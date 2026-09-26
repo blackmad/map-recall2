@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "id": "neighbourhood-1000-preview-2026-09-13",
+  "requestedBuildings": 1000,
+  "maxAdditionalUsd": 10,
+  "baselineGlobalUsd": 1.8065436344999992,
+  "cumulativeCeilingUsd": 11.806543634499999,
+  "scope": "source-only facade analysis; no registration, materialization, publication, or release acceptance",
+  "authorizedBy": "user request: try 1000 buildings",
+  "authorizedAt": "2026-09-13T00:00:00+02:00"
+}

@@ -43,7 +43,7 @@ Two Firebase Hosting behaviours are worth knowing before editing
 - A matching **static file is served before any rewrite is consulted**. This is
   what had Map Quest's `index.html` winning `/` on the Canal Recall site.
 
-Both sites ignore `**/*.md`. `TODO.md`, `WIP.md` and `HISTORY.md` live inside
+Both sites ignore `**/*.md`. `TODO.md` and `HISTORY.md` live inside
 `public/canal-drive`, so without that they are served as public pages.
 
 ## Deploying by hand

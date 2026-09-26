@@ -1,0 +1,396 @@
+{
+  "version": 2,
+  "publication": "preserved-release-no-activation",
+  "preservedRelease": {
+    "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+    "pointerSha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9",
+    "matchesBaseline": true
+  },
+  "processingCoverage": {
+    "priorReportedPercent": 96.4,
+    "meaning": "Previously processed route coverage; not reconstruction fidelity",
+    "activeDevelopmentCases": 12,
+    "verifiedDevelopmentSourceTiers": 24,
+    "completedRichImageAnalyses": 0
+  },
+  "renderedFeatureCoverage": {
+    "newAcceptedPhotographicFrontages": 0,
+    "status": "No newly verified photographic assembly published"
+  },
+  "measuredReconstructionFidelity": {
+    "precision": null,
+    "recall": null,
+    "status": "not-evaluated",
+    "registrationFailures": 24,
+    "abstentions": 24
+  },
+  "independentReferences": {
+    "manifest": "independent-reference-measurements.json",
+    "groundCases": 12,
+    "completeOpeningBoxes": 27,
+    "partialOpeningExtents": 13,
+    "fullTierReferences": 0,
+    "disposition": "agent-inspected; partial source references only"
+  },
+  "development": {
+    "manifest": "active-development-manifest.json",
+    "status": "replacement-set-source-bound; does-not-resolve-original-twelve",
+    "cases": 12,
+    "sourceChecks": [
+      {
+        "id": "replacement-entrance-01",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-entrance-01",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-entrance-02",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-entrance-02",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-entrance-03",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-entrance-03",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-entrance-04",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-entrance-04",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-curved-01",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-curved-01",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-curved-02",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-curved-02",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-contact-01",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-contact-01",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-awning-extended",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-awning-extended",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-awning-retracted",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-awning-retracted",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-finish-01",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-finish-01",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-finish-02",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-finish-02",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-masonry-01",
+        "tier": "full",
+        "status": "hash-and-dimensions-verified"
+      },
+      {
+        "id": "replacement-masonry-01",
+        "tier": "ground",
+        "status": "hash-and-dimensions-verified"
+      }
+    ]
+  },
+  "heldOut": {
+    "manifest": "heldout-source-inspection.json",
+    "cases": 30,
+    "certificationStatus": "uncertified",
+    "districtCounts": {
+      "Da Costabuurt": 15,
+      "Jordaan": 15
+    },
+    "overlaps": []
+  },
+  "registration": {
+    "artifact": "registration-artifact.json",
+    "candidateTransforms": 24,
+    "accepted": 0,
+    "tiers": [
+      {
+        "id": "replacement-entrance-01",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-entrance-01",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-entrance-02",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-entrance-02",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-entrance-03",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-entrance-03",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-entrance-04",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-entrance-04",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-curved-01",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-curved-01",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-curved-02",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-curved-02",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-contact-01",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-contact-01",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-awning-extended",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-awning-extended",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-awning-retracted",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-awning-retracted",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-finish-01",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-finish-01",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-finish-02",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-finish-02",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-masonry-01",
+        "tier": "full",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      },
+      {
+        "id": "replacement-masonry-01",
+        "tier": "ground",
+        "status": "ambiguous",
+        "reason": "registration-uncertainty",
+        "candidateTransform": true
+      }
+    ]
+  },
+  "cost": {
+    "settledEntries": 994,
+    "unresolvedCharges": 0,
+    "cumulativeUsd": 1.7052055019999988,
+    "additionalUsd": 0,
+    "additionalAuthorizedUsd": 3,
+    "cumulativeCeilingUsd": 5,
+    "phaseLimitsUsd": {
+      "development": 1,
+      "unseen": 0.5,
+      "expansion": 1.5
+    }
+  },
+  "originalTwelve": {
+    "manifest": "development-examples.json",
+    "status": "outstanding",
+    "resolved": 0,
+    "count": 12,
+    "note": "Cached replacement cases do not reproduce the original image-numbered examples."
+  },
+  "routeExpansion": false,
+  "gatesPassed": false,
+  "failures": [
+    "held-out-not-certified",
+    "registration-acceptance-incomplete",
+    "photographic-opening-fidelity-not-measured",
+    "dated-contact-measurements-incomplete",
+    "development-source-render-comparisons-incomplete",
+    "new-candidate-runtime-not-measured",
+    "named-shop-restoration-unverified"
+  ],
+  "engineeringVerification": {
+    "scope": "Infrastructure and synthetic rendering; not photographic candidate acceptance",
+    "checks": [
+      "test:facade-repair-pipeline",
+      "test:facade-fidelity",
+      "test:city-appearance-facades",
+      "test:machine-signs",
+      "test:facade-opening-layout",
+      "lint",
+      "check-city-pipeline.mjs",
+      "check-district-publication.ts",
+      "publish:city-expansion-demo -- --dry-run",
+      "capture:facade-fidelity-fixture",
+      "git diff --check"
+    ],
+    "status": "passed",
+    "candidateCameraCheck": "desktop/phone test discovery only; no new photographic candidate runtime result"
+  }
+}

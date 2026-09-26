@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "kind": "retail-stage-release-readiness",
+  "generatedAt": "2026-09-13T00:00:00+02:00",
+  "status": "blocked",
+  "scope": "three-case retail detail development pass plus case-18 registration diagnostic; no publication or expansion",
+  "candidate": {
+    "cases": {
+      "path": "public/data/facade-repair-preview/cases.json",
+      "sha256": "60148829ac835a4745b50faf21b0b1b3cf08b44c13d6a6977466bc884e2a332e",
+      "reviewedCases": 28,
+      "analyzedCases": 27,
+      "analyzedTiers": 54,
+      "sourceIdentityAbstentions": ["case-26"]
+    },
+    "checks": {
+      "path": "public/data/facade-repair-preview/checks.json",
+      "sha256": "d6a84697adc4ca9c9d781800b41e8e964ed0c7bc47989ee87ac07458e64f3c26",
+      "candidateDataSha256": "60148829ac835a4745b50faf21b0b1b3cf08b44c13d6a6977466bc884e2a332e",
+      "sourceFeatureCounts": {"door": 69, "window": 340, "awning": 10, "material": 105, "total": 524},
+      "compiledBuildingFeatureCounts": {"door": 37, "window": 249, "awning": 1, "material": 76, "total": 363},
+      "partialBuildingFeatures": 86,
+      "placementOmissions": 3
+    },
+    "captures": {
+      "path": "public/data/facade-repair-preview/captures.json",
+      "sha256": "3a5453be2eca20fb3d52693d1220b68cac27f0f043c0030dbe8f34b338ac6ec3",
+      "candidateDataSha256": "60148829ac835a4745b50faf21b0b1b3cf08b44c13d6a6977466bc884e2a332e",
+      "count": 94,
+      "errors": 0,
+      "scope": "local development preview; not both production viewers or fourteen-camera runtime evidence"
+    },
+    "provenance": {
+      "path": "public/data/facade-repair-preview/provenance.json",
+      "sha256": "a39e1e59aeae90ffa5f26331dda649c02f1aa45222f529c59da88fb64b127d58"
+    }
+  },
+  "retailEvidence": {
+    "sourceReview": {
+      "path": "scripts/review/retail-priority-source-review.json",
+      "sha256": "6c282e7b3c8afd23e6ec7c03fcb541580ceadd9dcc6cf2c076976d9b7e0f6fca",
+      "reviewedBeforePrediction": false,
+      "cases": ["case-03", "case-21", "case-29"]
+    },
+    "sourceCorrections": {
+      "path": "scripts/review/retail-source-corrections.ts",
+      "sha256": "cbc60b8fc38eb99f4006ffc937d779d0891884065597571be1d6f66c2a728a55"
+    },
+    "sharedSignAndAwningCompiler": {
+      "path": "src/canalRecall/facadeSignMaterial.ts",
+      "sha256": "84d9407efa92d0364c6a797743d2a6b103833fdbce2547d0c93caaa107a3532f"
+    },
+    "visualReview": {
+      "path": "public/data/facade-repair-preview/retail-visual-review.json",
+      "sha256": "a4710eff320030bddf1724e1ab31a3cdd61d84580c1f427ca2e705de5fae30df",
+      "candidateDataSha256": "60148829ac835a4745b50faf21b0b1b3cf08b44c13d6a6977466bc884e2a332e",
+      "inspectedCases": 3,
+      "photographicallyAccepted": 0
+    },
+    "implementedChanges": [
+      {
+        "caseId": "case-03",
+        "sourceInspectedTypology": "retail",
+        "change": "Separate key-color / het Fotolab and tagline fascia identities, FUJIFILM canopy text, broad glazing and a scalloped extended awning are visible in the preview.",
+        "remaining": "Logo typography, canopy lettering placement and interior detail remain approximate."
+      },
+      {
+        "caseId": "case-21",
+        "sourceInspectedTypology": "retail",
+        "change": "DE FIETSENMAKER and OPEN retain separate physical sign identities over the recessed entrance and return glazing.",
+        "remaining": "Physical sign depth, joinery, metric recess depth and the mounted bicycle remain unresolved."
+      },
+      {
+        "caseId": "case-29",
+        "sourceInspectedTypology": "retail",
+        "change": "The dated extended awning, separate DORUS valance/display signs and two entrances are present without stretched lettering.",
+        "remaining": "Glazing detail, timber cladding and metric recessed-entrance depth remain simplified or unresolved."
+      }
+    ]
+  },
+  "sampleComposition": {
+    "path": "scripts/review/sample-composition-audit.json",
+    "sha256": "7c071a90475143602a9469cb66a6d5bd7430ffc6795e3b4259ba18cc3de1f5a3",
+    "sourceInspectedCountsAcrossDevelopmentAndNamedCases": {"retail": 9, "residential": 1, "mixed": 0, "unknown": 20},
+    "activeCurrentPass": {
+      "retail": ["case-03", "case-21", "case-29"],
+      "residentialTargetUnconfirmed": ["case-18"],
+      "finding": "Case 18 proves a raised paired entrance and stair run, but its bound source review does not establish residential use; typology remains unknown."
+    },
+    "futureSourceCertifiedResidentialPriority": ["case-05"],
+    "namedCompatibilityChecksRetained": ["Fuoco Vivo", "Engels Verf"],
+    "namedCompatibilityRevalidated": false,
+    "streetLabelsUsedForTypology": false
+  },
+  "registration": {
+    "path": "scripts/review/retail-registration.json",
+    "sha256": "f55043a1a58199bacf237bf4976c9fd416d92f66713e4b36f075acff15d121bf",
+    "maximumAcceptedUncertaintyM": 0.15,
+    "diagnosticCases": ["case-18", "case-21", "case-29"],
+    "ambiguousDiagnosticTiers": 6,
+    "missingActiveCaseDiagnosticTiers": ["case-03:full", "case-03:ground"],
+    "acceptedMetricRegistrations": 0,
+    "contactMeasurementsAccepted": 0
+  },
+  "heldout": {
+    "exclusions": {
+      "path": "scripts/review/facade-regression-heldout-exclusions.json",
+      "sha256": "20f1d7847cce702d4c80fe8802a6d08f3af444e4d15f03f90fcdbfb71ff3940a"
+    },
+    "certified": false,
+    "remainingCandidates": 29,
+    "activeAndProposedPriorityOverlapCount": 0,
+    "status": "one candidate short after removing the reviewed-building overlap; quantitative held-out evaluation unavailable"
+  },
+  "cost": {
+    "globalLedger": {"path": ".cache/city-appearance/spend.json", "sha256": "306a150000ee695590c3cd77721283c092a96cbaf55fd3705c826c0001387be6", "settledEntries": 1053, "unresolvedEntries": 0, "settledUsd": 1.8065436345},
+    "extractionLedger": {"path": ".cache/city-appearance/fidelity-extraction/phase-budget.json", "sha256": "53108b8a390ab117f1355dc2980b7f54f00cbb2c8b0abec06711526f5300179c", "settledEntries": 59, "unresolvedEntries": 0, "settledUsd": 0.1013381325},
+    "retailStagePaidCalls": 0
+  },
+  "preservedRelease": {
+    "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+    "pointer": {"path": "public/data/city-expansion/current.json", "sha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9"},
+    "manifest": {"path": "public/data/city-expansion/releases/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d/manifest.json", "sha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9"}
+  },
+  "gates": {
+    "retailPhotographicAcceptance": false,
+    "metricRegistration": false,
+    "groundContact": false,
+    "heldoutPrecisionRecall": false,
+    "namedCompatibility": false,
+    "bothProductionViewers": false,
+    "candidateRuntime14Cameras": false,
+    "publication": false,
+    "routeExpansion": false,
+    "originalTwelveOutstanding": true
+  },
+  "decision": "retain preserved release; do not publish or expand"
+}

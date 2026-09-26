@@ -1,0 +1,27 @@
+/** Minimal fresh ground/wall observations after inspecting expanded aerial context. */
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {assertFrozenInput,readFrozenJson,REVIEW_INPUT_PINS,expandedGroundStreetPacket} from './review-input-pins.mjs';
+const root=path.resolve('.cache/da-costa-neighbourhood'),stage=path.join(root,'aerial-expanded-2026-09-09');
+const manifest=JSON.parse(await fs.readFile(path.join(root,'manifest.json')));
+assertFrozenInput('expanded ground street packet',expandedGroundStreetPacket(manifest),REVIEW_INPUT_PINS.expandedGroundStreet);
+const aerial=await readFrozenJson(path.join(stage,'aerial.json'),REVIEW_INPUT_PINS.expandedAerial);
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const frozen=[
+  {id:'0363100012237064_e_0tvudm4',key:'6cee127ff18a285c30f3b7b145ae84b81749cbccba9bab159a713cc762108781',proposal:{shopfront:'no',awning:'no',visibleSignText:'unknown',facadeTop:'unknown'},fieldEligibility:{shopfront:true,awning:true,visibleSignText:false,facadeTop:false},cropQuality:'partial',evidence:'The current narrow full strip shows a glazed vertical stair/lift-like bay of the modern complex, and the separate ground crop shows the stair/glazing/brick bay without a shop display, retail entrance or projecting awning. The narrow strip is useful for these local negatives, not a claim about all uses in the building. No text is confidently transcribed. Its narrow oblique upper edge is insufficient for a confident whole-wall decorative-top label. Expanded aerial context establishes complete building extent but does not reveal this ground-floor use.'},
+  {id:'0363100012237064_e_1hyy18v',key:'5729be752dbcae95c8dd9e82e0ef2e0269c799cc1f09f1d2fea9f45f44fd4048',proposal:{shopfront:'no',awning:'no',visibleSignText:'AMSTA De Poort',facadeTop:'straight'},fieldEligibility:{shopfront:true,awning:true,visibleSignText:true,facadeTop:true},cropQuality:'usable',evidence:'The broad full crop visibly reads AMSTA De Poort above the glazed institutional entrance. Repeated upper windows and a straight cornice/parapet are clear. The newer ground crop shows the entrance and terrace seating behind several freestanding cream parasols, not attached fabric awnings or retail shop windows. Structural upper-floor projection is not an awning. Shopfront=no describes the visible frontage, not an assertion that the institution cannot serve food. Expanded aerial context identifies both major wings but adds no ground-floor semantic label.'},
+];
+const records=[];
+for(const f of frozen){
+  const r=manifest.records.find(r=>r.id===f.id),a=aerial.records.find(a=>a.buildingId===r.buildingId);assert.equal(r.derivationKey,f.key,'Re-inspected street derivation changed');
+  const street=['full','ground'].map(kind=>({kind,...r.images[kind],absolutePath:path.join(root,'images',r.images[kind].file)}));
+  const overhead=[{kind:'aerial',file:a.file,sha256:a.sha256},{kind:'aerial-context',file:a.context.file,sha256:a.context.sha256}].map(m=>({...m,absolutePath:path.join(stage,'images',m.file),sourceSha256:a.sourceSha256,date:a.date,layer:a.layer}));
+  for(const im of [...street,...overhead])assert.equal(sha(await fs.readFile(im.absolutePath)),im.sha256,'Reviewed pixels changed');
+  const originalPanoramas=[...new Map(street.map(m=>[m.panoramaId,{file:path.join(root,'panoramas',m.panoramaId+'.jpg'),sha256:m.panoramaSha256,url:m.url}])).values()];
+  for(const im of originalPanoramas)assert.equal(sha(await fs.readFile(im.file)),im.sha256,'Panorama provenance changed');
+  records.push({id:r.id,buildingId:r.buildingId,address:r.address,derivationKey:r.derivationKey,origin:'agent-visual-review',reviewer:'Codex / review_hardening / direct current street and expanded aerial inspection',humanReviewed:false,metricEligible:false,buildingMatch:'yes',cropQuality:f.cropQuality,appearanceEligible:true,needsReview:f.cropQuality==='partial',proposal:f.proposal,fieldEligibility:f.fieldEligibility,evidence:f.evidence,scope:{shopfront:'Visible local photographed frontage only.',awning:'Attached canopy/awning; excludes freestanding parasols and structural floor projections.',visibleSignText:'Direct transcription from full crop when legible; not inferred from address.',facadeTop:'Photographed wall silhouette, not whole-building roof geometry.'},quality:{aerialCoverageComplete:true,recropBeforeHuman:false,upperWallNarrow:f.cropQuality==='partial'},images:[...street,...overhead],originalPanoramas,aerialSource:{sha256:a.sourceSha256,url:a.url,layer:a.layer,bbox:a.bbox,crs:'EPSG:28992',scalePxPerM:a.scalePxPerM},sourceBinding:{staged:true,sourceRoot:path.join(stage,'images'),integration:'Fresh observations bound to expanded aerial hashes. Omitted roof fields are not abstentions or overwrites of roof proposals.'}});
+}
+await fs.writeFile(path.join(stage,'expandedground-findings.json'),JSON.stringify({version:1,createdAt:new Date().toISOString(),origin:'agent-visual-review',humanReviewed:false,metricEligible:false,costUsd:0,method:'Fresh direct inspection of both current full and ground images plus the expanded Amsta aerial tight/context images. Previous findings and repair context are known; not a blinded benchmark. Original panoramas provenance-hashed but not reopened. No active writes.',summary:{records:2,appearanceEligible:2,roofFieldsAssessed:0},records},null,2));
+console.log(JSON.stringify({records:2,appearanceEligible:2,roofFieldsAssessed:0}));

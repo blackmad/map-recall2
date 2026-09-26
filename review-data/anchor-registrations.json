@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "kind": "anchor-registrations",
+  "generatedAt": "2026-09-20T22:44:56.290Z",
+  "note": "Residual is measured after the per-pano boresight (fitted on the same anchors), so it is optimistic; a calibration/validation split is still needed.",
+  "panos": [
+    {
+      "panoramaId": "b_20241129_0829_Track29_Sphere_00016",
+      "anchors": 4,
+      "medianM": 0.033,
+      "p95M": 0.065,
+      "validation": {
+        "medianPx": 15.98,
+        "rmsPx": 16.58,
+        "medianM": 0.085,
+        "count": 2
+      },
+      "qualifies": true,
+      "cameraModelId": "amsterdam-world-aligned+boresight/b_20241129_0829_Track29_Sphere_00016",
+      "evidence": {
+        "identityVerified": true,
+        "wallVerified": true,
+        "residualM": {
+          "median": 0.033,
+          "p95": 0.065
+        },
+        "independentAnchors": 4
+      }
+    },
+    {
+      "panoramaId": "TMX7316010203-002928_pano_0012_000070",
+      "anchors": 2,
+      "medianM": 0.12,
+      "p95M": 0.126,
+      "validation": {
+        "medianPx": 44.15,
+        "rmsPx": 44.15,
+        "medianM": 0.234,
+        "count": 1
+      },
+      "qualifies": false,
+      "cameraModelId": "amsterdam-world-aligned+boresight/TMX7316010203-002928_pano_0012_000070",
+      "evidence": null
+    },
+    {
+      "panoramaId": "TMX7316010203-003006_pano_0003_000165",
+      "anchors": 6,
+      "medianM": 0.1,
+      "p95M": 0.174,
+      "validation": {
+        "medianPx": 5.61,
+        "rmsPx": 6.71,
+        "medianM": 0.073,
+        "count": 2
+      },
+      "qualifies": true,
+      "cameraModelId": "amsterdam-world-aligned+boresight/TMX7316010203-003006_pano_0003_000165",
+      "evidence": {
+        "identityVerified": true,
+        "wallVerified": true,
+        "residualM": {
+          "median": 0.1,
+          "p95": 0.174
+        },
+        "independentAnchors": 6
+      }
+    }
+  ]
+}

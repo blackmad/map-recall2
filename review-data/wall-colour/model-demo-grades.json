@@ -1,0 +1,381 @@
+{
+  "version": 1,
+  "kind": "wall-colour/model-demo-grades",
+  "sampleSha256": "5711c358649d7f8d0309150bc05629f6846a65e0c617a459452bbf40b820134c",
+  "sampleFileSha256": "8285fb0c96e76749dfaab2760561e2fe44203e129133bcd81e2f03b118a0bb06",
+  "measurementsSha256": "175371b180d48cbd1be9faf76bc809c480335c3d875f6a1a4e5740526bb38591",
+  "reviewOrigin": "model-visual-review",
+  "reviewer": "gpt-6-sol",
+  "gradedAt": "2026-09-26T15:45:20.903830Z",
+  "policy": "Visual review of dated source crops; colour is a wall-region sample, not a claim of human approval or present-day paint. Ground-floor bands and trim are excluded.",
+  "grades": {
+    "0363100012168552_e_02n3874": {
+      "observationId": "0363100012168552_e_02n3874",
+      "buildingId": "0363100012168552",
+      "sourceSha256": "0babebef1dbde103a05ddd67c703f78e8cf52b754e959d9fad88f41dd1818377",
+      "verdict": "adjust",
+      "correctedHex": "#524e54",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 4,
+      "sampleRegionPx": {
+        "left": 301,
+        "top": 678,
+        "width": 35,
+        "height": 30
+      },
+      "regionMedianHex": "#524e54",
+      "notes": "Uncovered upper brick on the large Lauriergracht block; tree crosses other regions."
+    },
+    "0363100012174167_e_1ea8uo3": {
+      "observationId": "0363100012174167_e_1ea8uo3",
+      "buildingId": "0363100012174167",
+      "sourceSha256": "0e55b46a1b48d62118b1079863aa0d3db3c57438a14ec1285aa994ac461435e1",
+      "verdict": "adjust",
+      "correctedHex": "#434242",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 5,
+      "sampleRegionPx": {
+        "left": 111,
+        "top": 438,
+        "width": 13,
+        "height": 24
+      },
+      "regionMedianHex": "#434242",
+      "notes": "Dark brick in the central upper facade, away from window trim."
+    },
+    "0363100012155538_e_1e95kee": {
+      "observationId": "0363100012155538_e_1e95kee",
+      "buildingId": "0363100012155538",
+      "sourceSha256": "12fee26d810838d1d8a97fd3364cd5b76d66321a47f85e5a0c0d5b9c05b5b923",
+      "verdict": "adjust",
+      "correctedHex": "#83726e",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 8,
+      "sampleRegionPx": {
+        "left": 11,
+        "top": 510,
+        "width": 19,
+        "height": 30
+      },
+      "regionMedianHex": "#83726e",
+      "notes": "Muted brick on the left upper wall, away from bay and shopfront."
+    },
+    "0363100012236796_e_1wk1kml": {
+      "observationId": "0363100012236796_e_1wk1kml",
+      "buildingId": "0363100012236796",
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "verdict": "adjust",
+      "correctedHex": "#d8e9e6",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 12,
+      "sampleRegionPx": {
+        "left": 74,
+        "top": 443,
+        "width": 18,
+        "height": 20
+      },
+      "regionMedianHex": "#cdedec",
+      "notes": "Near-white painted upper wall; crop has a strong cyan cast, so the reviewed colour is slightly neutralised."
+    },
+    "0363100012159615_e_1woykk8": {
+      "observationId": "0363100012159615_e_1woykk8",
+      "buildingId": "0363100012159615",
+      "sourceSha256": "a2b4e5832f69df8696f86bbcc88042bdbe0eb5c9d652e14f48d177ce5f17153c",
+      "verdict": "adjust",
+      "correctedHex": "#786e6a",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 13,
+      "sampleRegionPx": {
+        "left": 10,
+        "top": 580,
+        "width": 15,
+        "height": 25
+      },
+      "regionMedianHex": "#786e6a",
+      "notes": "Mid-tone brick on the lower left wall; avoids balcony shadow and window trim."
+    },
+    "0363100012164499_e_0krqk0t": {
+      "observationId": "0363100012164499_e_0krqk0t",
+      "buildingId": "0363100012164499",
+      "sourceSha256": "520281fa8da3e02b09f3dd68fac03c03c4e3fc63c127f915acf0d763e3485b8a",
+      "verdict": "adjust",
+      "correctedHex": "#404241",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 21,
+      "sampleRegionPx": {
+        "left": 12,
+        "top": 404,
+        "width": 17,
+        "height": 24
+      },
+      "regionMedianHex": "#404241",
+      "notes": "Dark brick on the left upper wall, between window rows."
+    },
+    "0363100012156920_e_0khzxj2": {
+      "observationId": "0363100012156920_e_0khzxj2",
+      "buildingId": "0363100012156920",
+      "sourceSha256": "a33a5437ee4d8ab8e51afcc66c1302a13050e5a50a8f5192d445686f8578daff",
+      "verdict": "adjust",
+      "correctedHex": "#aa9e86",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 26,
+      "sampleRegionPx": {
+        "left": 200,
+        "top": 205,
+        "width": 15,
+        "height": 25
+      },
+      "regionMedianHex": "#aa9e86",
+      "notes": "Light yellow brick on the right upper wall, away from balcony and pale frame."
+    },
+    "0363100012157742_e_11zk6wp": {
+      "observationId": "0363100012157742_e_11zk6wp",
+      "buildingId": "0363100012157742",
+      "sourceSha256": "14e58cdf419b0ccc9b0b405695310abbdb21c648527ab5bafc44451d2df641de",
+      "verdict": "adjust",
+      "correctedHex": "#373d3e",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 29,
+      "sampleRegionPx": {
+        "left": 250,
+        "top": 416,
+        "width": 15,
+        "height": 24
+      },
+      "regionMedianHex": "#373d3e",
+      "notes": "Dark brick on the right upper wall between windows."
+    },
+    "0363100012237236_e_07oi4ua": {
+      "observationId": "0363100012237236_e_07oi4ua",
+      "buildingId": "0363100012237236",
+      "sourceSha256": "769c58df33953cac54e174af017fab3bda718cdf0a132d042f49b4d36913d9ff",
+      "verdict": "adjust",
+      "correctedHex": "#c6d5d3",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 33,
+      "sampleRegionPx": {
+        "left": 201,
+        "top": 335,
+        "width": 22,
+        "height": 35
+      },
+      "regionMedianHex": "#b7d4d7",
+      "notes": "Near-white painted upper wall; cyan cast is visibly reduced in reviewed hex."
+    },
+    "0363100012161828_e_155wly3": {
+      "observationId": "0363100012161828_e_155wly3",
+      "buildingId": "0363100012161828",
+      "sourceSha256": "71ba3b7c2afe7799906b3197db7cb8a3d6412d927b16d67d88ea9300cbc1fc3e",
+      "verdict": "adjust",
+      "correctedHex": "#505051",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 34,
+      "sampleRegionPx": {
+        "left": 174,
+        "top": 370,
+        "width": 18,
+        "height": 24
+      },
+      "regionMedianHex": "#505051",
+      "notes": "Dark brick between the second and third window rows."
+    },
+    "0363100012156993_e_1tt83o3": {
+      "observationId": "0363100012156993_e_1tt83o3",
+      "buildingId": "0363100012156993",
+      "sourceSha256": "ed59adb27156705f150248cbe6e9e988d1d48fb671f581965ce12f5f388f11fb",
+      "verdict": "adjust",
+      "correctedHex": "#8b8a87",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 43,
+      "sampleRegionPx": {
+        "left": 250,
+        "top": 370,
+        "width": 15,
+        "height": 28
+      },
+      "regionMedianHex": "#8b8a87",
+      "notes": "Brown-grey brick on the right upper facade, clear of white window trim."
+    },
+    "0363100012156077_e_1yr2ovu": {
+      "observationId": "0363100012156077_e_1yr2ovu",
+      "buildingId": "0363100012156077",
+      "sourceSha256": "efd7970d3197e5781a1f884e1204694ef1813324f38d00d9ec579e40d4dd32e8",
+      "verdict": "adjust",
+      "correctedHex": "#9c9a98",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 44,
+      "sampleRegionPx": {
+        "left": 250,
+        "top": 400,
+        "width": 15,
+        "height": 25
+      },
+      "regionMedianHex": "#9c9a98",
+      "notes": "Light grey-brown brick on the right upper facade."
+    },
+    "0363100012159112_e_0xfdv8v": {
+      "observationId": "0363100012159112_e_0xfdv8v",
+      "buildingId": "0363100012159112",
+      "sourceSha256": "3c804a561288aa625e33b462780ee5a0b30a76daa218305df60c13240efb599c",
+      "verdict": "adjust",
+      "correctedHex": "#515c5f",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 45,
+      "sampleRegionPx": {
+        "left": 151,
+        "top": 340,
+        "width": 12,
+        "height": 23
+      },
+      "regionMedianHex": "#515c5f",
+      "notes": "Grey-brown brick at the right edge of the upper wall, clear of balcony."
+    },
+    "0363100012166409_e_0azpu0d": {
+      "observationId": "0363100012166409_e_0azpu0d",
+      "buildingId": "0363100012166409",
+      "sourceSha256": "3efae179aee5aae24762ffdd984c023f8e014018772f949e50e94a2d3dd3401b",
+      "verdict": "adjust",
+      "correctedHex": "#898b89",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 47,
+      "sampleRegionPx": {
+        "left": 245,
+        "top": 415,
+        "width": 15,
+        "height": 28
+      },
+      "regionMedianHex": "#898b89",
+      "notes": "Muted brown brick on the right upper wall, clear of window trim."
+    },
+    "0363100012236141_e_041dz1t": {
+      "observationId": "0363100012236141_e_041dz1t",
+      "buildingId": "0363100012236141",
+      "sourceSha256": "face6caa50336664aad5f58ea966055a7e36923589b79310df356d7d9da565eb",
+      "verdict": "adjust",
+      "correctedHex": "#4d4843",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 50,
+      "sampleRegionPx": {
+        "left": 8,
+        "top": 410,
+        "width": 15,
+        "height": 25
+      },
+      "regionMedianHex": "#4d4843",
+      "notes": "Brown brick at left of middle window row; ground frontage differs and remains unmeasured."
+    },
+    "0363100012169812_e_0il89qt": {
+      "observationId": "0363100012169812_e_0il89qt",
+      "buildingId": "0363100012169812",
+      "sourceSha256": "917cdd7c7a3abc321a24fa67fdcf7a092c5a0c90cb1a40b83be19eb435b63b00",
+      "verdict": "adjust",
+      "correctedHex": "#504741",
+      "reviewOrigin": "model-visual-review",
+      "grader": "gpt-6-sol",
+      "gradedAt": "2026-09-26T15:45:20.903830Z",
+      "reasons": [
+        "visible-main-upper-wall",
+        "source-crop-visual-review"
+      ],
+      "sampleIndex": 55,
+      "sampleRegionPx": {
+        "left": 91,
+        "top": 407,
+        "width": 17,
+        "height": 21
+      },
+      "regionMedianHex": "#504741",
+      "notes": "Red-brown brick between window rows; white bands are separate trim and not included."
+    }
+  }
+}

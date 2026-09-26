@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thousand-building façade review</title>
+<style>
+  :root{font:15px/1.45 system-ui,sans-serif;color:#18231e;background:#f4f1e8} body{margin:0;max-width:1500px;padding:28px;margin:auto}h1{margin:0 0 5px}.warning{background:#fff1bd;border-left:4px solid #b67c11;padding:12px;margin:18px 0}.meta{color:#526057;font-family:ui-monospace,SFMono-Regular,monospace;overflow-wrap:anywhere}.pair{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;border-top:1px solid #c9c1ad;padding:24px 0}.pair h2{grid-column:1/-1;margin:0}.pane{margin:0;background:white;border:1px solid #d8d0be}.pane img{display:block;width:100%;height:600px;object-fit:contain;background:#f4f1e8}.pane figcaption{padding:8px 10px}.source{font:12px ui-monospace,SFMono-Regular,monospace;overflow-wrap:anywhere;color:#435047}@media(max-width:750px){.pair{grid-template-columns:1fr}}
+</style>
+<h1>Five staged façade comparisons</h1>
+<p class="warning"><strong>Preview only — not accepted reconstruction evidence.</strong> These candidate façades use ambiguous native-crop placement. They have zero accepted metric registrations and cannot be published as a validated release.</p>
+<p id="meta" class="meta">Loading gallery…</p>
+<main id="pairs"></main>
+<script type="module">
+const galleryUrl='../data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/gallery.json';
+const gallery=await fetch(galleryUrl).then(response=>{if(!response.ok)throw Error(`Gallery unavailable: ${response.status}`);return response.json()});
+document.querySelector('#meta').textContent=`release ${gallery.releaseId} · compiler bundle SHA-256 ${gallery.compilerBundleSha256} · ${gallery.captures.length} frontages · source hashes and dates shown below`;
+const pairs=document.querySelector('#pairs');
+for(const capture of gallery.captures){
+ const section=document.createElement('section');section.className='pair';
+ const title=document.createElement('h2');title.textContent=`${capture.index}. ${capture.street??'street unavailable'} — ${capture.observationId}`;section.append(title);
+ const panels=[['Bound source photograph',capture.source,`${capture.source.tier} · ${capture.source.captureDate} · SHA-256 ${capture.source.sha256}`],['Staged viewer frontage',capture.streetCapture,`frontage camera · SHA-256 ${capture.streetCapture.sha256}`]];
+ if(capture.fullSource)panels.splice(1,0,['Full façade photograph',capture.fullSource,`full · ${capture.fullSource.captureDate} · SHA-256 ${capture.fullSource.sha256}`]);
+ const finding=gallery.findings?.find(item=>item.index===capture.index);if(finding){const note=document.createElement('p');note.style.gridColumn='1/-1';note.textContent=`Agent review: ${finding.observed}`;section.append(note);}
+ for(const [label,asset,caption] of panels){
+  const figure=document.createElement('figure');figure.className='pane';const image=document.createElement('img');image.src=asset.publicPath;image.alt=`${label} for ${capture.observationId}`;figure.append(image);const text=document.createElement('figcaption');text.innerHTML=`<strong>${label}</strong><div class="source">${caption}</div>`;figure.append(text);section.append(figure);
+ }
+ pairs.append(section);
+}
+</script>

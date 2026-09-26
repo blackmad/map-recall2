@@ -1,0 +1,231 @@
+{
+  "version": 1,
+  "kind": "user-review-development-set",
+  "importedAt": "2026-09-21T06:43:44.883Z",
+  "source": ".cache/city-appearance/repair-preview-notes/f400bd071fef6207c8e4f0d2b3991c7e3e4a8986b6bdeb915214d6c02288eb57.json",
+  "releaseId": "f400bd071fef6207c8e4f0d2b3991c7e3e4a8986b6bdeb915214d6c02288eb57",
+  "packetSha256": "f400bd071fef6207c8e4f0d2b3991c7e3e4a8986b6bdeb915214d6c02288eb57",
+  "totalCases": 25,
+  "taxonomy": {
+    "roof-shape": [
+      "case-01"
+    ],
+    "missing-storefront": [
+      "case-02",
+      "case-11",
+      "case-29"
+    ],
+    "occlusion-source": [
+      "case-03",
+      "case-18"
+    ],
+    "missing-door": [
+      "case-05",
+      "case-09",
+      "case-21"
+    ],
+    "centering-framing": [
+      "case-06",
+      "case-20",
+      "case-30"
+    ],
+    "colour-material": [
+      "case-08",
+      "case-14"
+    ],
+    "good": [
+      "case-10",
+      "case-22",
+      "case-23",
+      "case-24",
+      "case-25"
+    ],
+    "missing-floor": [
+      "case-12",
+      "case-13",
+      "case-16",
+      "case-17"
+    ],
+    "missing-roof": [
+      "case-19",
+      "case-27"
+    ]
+  },
+  "cases": [
+    {
+      "caseId": "case-01",
+      "text": "windows too blobby, roof not symmetric enogugh",
+      "category": "roof-shape",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:35:18.814Z"
+    },
+    {
+      "caseId": "case-02",
+      "text": "missing business window",
+      "category": "missing-storefront",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:35:27.906Z"
+    },
+    {
+      "caseId": "case-03",
+      "text": "need to use a different photo to see the building without the tree",
+      "category": "occlusion-source",
+      "revision": 3,
+      "updatedAt": "2026-09-21T06:35:40.937Z"
+    },
+    {
+      "caseId": "case-05",
+      "text": "roof too high into the sky, windows opverlapping too much, no door",
+      "category": "missing-door",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:36:12.011Z"
+    },
+    {
+      "caseId": "case-06",
+      "text": "good, but maybe taking in a bit of the next building?",
+      "category": "centering-framing",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:36:21.133Z"
+    },
+    {
+      "caseId": "case-08",
+      "text": "good, missing building color and white cornice",
+      "category": "colour-material",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:36:31.121Z"
+    },
+    {
+      "caseId": "case-09",
+      "text": "missing door",
+      "category": "missing-door",
+      "revision": 2,
+      "updatedAt": "2026-09-21T06:36:35.578Z"
+    },
+    {
+      "caseId": "case-10",
+      "text": "good",
+      "category": "good",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:36:38.206Z"
+    },
+    {
+      "caseId": "case-11",
+      "text": "missing shopfront window",
+      "category": "missing-storefront",
+      "revision": 2,
+      "updatedAt": "2026-09-21T06:36:43.121Z"
+    },
+    {
+      "caseId": "case-12",
+      "text": "mising roof detail, missing one whole floor of windows",
+      "category": "missing-floor",
+      "revision": 2,
+      "updatedAt": "2026-09-21T06:36:53.779Z"
+    },
+    {
+      "caseId": "case-13",
+      "text": "missing inferred floor windows",
+      "category": "missing-floor",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:36:59.998Z"
+    },
+    {
+      "caseId": "case-14",
+      "text": "misunderstanding building color entirely - it's red brick with white acents, is there another year of photos we could use?",
+      "category": "colour-material",
+      "revision": 3,
+      "updatedAt": "2026-09-21T06:37:17.380Z"
+    },
+    {
+      "caseId": "case-16",
+      "text": "missing inferred first floor",
+      "category": "missing-floor",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:37:24.429Z"
+    },
+    {
+      "caseId": "case-17",
+      "text": "missing inferred first floor",
+      "category": "missing-floor",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:37:29.659Z"
+    },
+    {
+      "caseId": "case-18",
+      "text": "building occluded, need to infer",
+      "category": "occlusion-source",
+      "revision": 2,
+      "updatedAt": "2026-09-21T06:37:36.826Z"
+    },
+    {
+      "caseId": "case-19",
+      "text": "missing roof",
+      "category": "missing-roof",
+      "revision": 3,
+      "updatedAt": "2026-09-21T06:37:41.725Z"
+    },
+    {
+      "caseId": "case-20",
+      "text": "good but too much overlap, needs to be better centered",
+      "category": "centering-framing",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:37:50.755Z"
+    },
+    {
+      "caseId": "case-21",
+      "text": "missing roof, missing ground floor window, first floor is all widnows no door",
+      "category": "missing-door",
+      "revision": 5,
+      "updatedAt": "2026-09-21T06:38:06.338Z"
+    },
+    {
+      "caseId": "case-22",
+      "text": "good",
+      "category": "good",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:38:08.687Z"
+    },
+    {
+      "caseId": "case-23",
+      "text": "good",
+      "category": "good",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:38:10.224Z"
+    },
+    {
+      "caseId": "case-24",
+      "text": "good",
+      "category": "good",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:38:11.952Z"
+    },
+    {
+      "caseId": "case-25",
+      "text": "good",
+      "category": "good",
+      "revision": 1,
+      "updatedAt": "2026-09-21T06:38:13.912Z"
+    },
+    {
+      "caseId": "case-27",
+      "text": "missing ground floor, missing roof",
+      "category": "missing-roof",
+      "revision": 2,
+      "updatedAt": "2026-09-21T06:38:24.072Z"
+    },
+    {
+      "caseId": "case-29",
+      "text": "missing storefront window missing",
+      "category": "missing-storefront",
+      "revision": 2,
+      "updatedAt": "2026-09-21T06:38:29.170Z"
+    },
+    {
+      "caseId": "case-30",
+      "text": "I think we need some heuristics to \"center\" buildings - [Image 1]  - even though the registration here is slightly off we could have inferred the right fit",
+      "category": "centering-framing",
+      "revision": 3,
+      "updatedAt": "2026-09-21T06:34:55.551Z"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "scope": "Source-space opening frame clearances only. These declarations never establish building placement, camera calibration, or metric registration, and they are not measured frame widths.",
+  "coordinateConvention": "bounds and clearancePx use the reviewed source crop in pixels; clearance is the measured same-row glazing gap.",
+  "inspector": "agent-source-inspection",
+  "cases": {
+    "case-05": {
+      "full": {
+        "source": {
+          "cropSha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+          "captureDate": "2023-02-27T10:59:42.189530Z"
+        },
+        "clearances": [
+          { "featureId": "full:window-r1-b3", "clearancePx": 1.9 },
+          { "featureId": "full:window-r1-b4", "clearancePx": 1.9 },
+          { "featureId": "full:window-r2-b3", "clearancePx": 1.9 },
+          { "featureId": "full:window-r2-b4", "clearancePx": 1.9 },
+          { "featureId": "full:window-r3-b3", "clearancePx": 1.9 },
+          { "featureId": "full:window-r3-b4", "clearancePx": 1.9 }
+        ],
+        "reason": "Lauriergracht 67/69: the extracted narrow window (b3) and the wide bay beside it (b4) are 1.9 px apart in the source. The default .14 frame border makes each opening's frame cross the other, so the pair reads as overlapping windows. The declared 1.9 px clearance makes the two frames meet at the measured gap."
+      }
+    }
+  },
+  "integrationReview": "Bounds and gaps measured from the cached crop; a declared clearance only ever reduces the frame border and never moves an opening."
+}

@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Façade registration review · Map Recall</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/enamel.css">
+  <style>
+    :root { --panel: #0a1d42; --panel-raised: #102959; --hairline: rgba(255,255,255,.2); --success: #80d8ae; --danger: #ff9d90; --warning: #e6c46b; }
+    * { box-sizing: border-box; }
+    html { background: var(--night); }
+    body { margin: 0; min-height: 100vh; overflow: hidden; background: var(--night); color: var(--ink); font: 15px/1.45 system-ui, sans-serif; }
+    ::selection { background: var(--rivet); color: var(--night); }
+    :focus-visible { outline: 3px solid var(--rivet); outline-offset: 3px; }
+    button, input, select, textarea { font: inherit; }
+    [hidden] { display: none !important; }
+    button { color: inherit; }
+    a { color: #b9d7ff; text-underline-offset: .2em; }
+    * { scrollbar-color: var(--rivet) var(--night); scrollbar-width: thin; }
+    .shell { width: 100%; max-width: 100vw; height: 100vh; min-width: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); overflow-x: clip; }
+    header { min-height: 88px; display: flex; align-items: center; gap: 20px; padding: 14px 22px; background: #061128; border-bottom: 1px solid var(--hairline); }
+    .brand { min-width: 250px; padding: 12px 26px 13px; }
+    .brand strong { display: block; font: 800 1.65rem/.9 var(--font-plaque); letter-spacing: .035em; text-transform: uppercase; }
+    .brand span { display: block; margin-top: 7px; color: var(--enamel-muted); font: 600 .75rem/1 "JetBrains Mono", monospace; }
+    .headline { flex: 1; min-width: 0; }
+    .headline h1 { margin: 0 0 3px; font: 700 clamp(1.35rem, 2.4vw, 2rem)/1 var(--font-plaque); letter-spacing: .01em; text-transform: uppercase; }
+    .headline p { margin: 0; color: var(--muted); max-width: 72ch; }
+    .counter { color: var(--warning); font: 700 .82rem/1.3 "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; text-align: right; }
+    .workspace { min-height: 0; display: grid; grid-template-columns: minmax(250px, 19vw) minmax(470px, 1fr) minmax(300px, 24vw); }
+    aside, main { min-width: 0; min-height: 0; }
+    .fixtures { border-right: 1px solid var(--hairline); background: #081733; display: grid; grid-template-rows: auto auto minmax(0, 1fr); }
+    .queue-head { padding: 18px 18px 13px; }
+    .queue-head h2 { margin: 0 0 6px; font: 700 1.15rem/1 var(--font-plaque); letter-spacing: .025em; text-transform: uppercase; }
+    .queue-head p { margin: 0; color: var(--muted); font-size: .78rem; }
+    .filter { padding: 18px; border-bottom: 1px solid var(--hairline); }
+    .filter label, .field-label { display: block; margin-bottom: 7px; color: var(--enamel-muted); font: 700 .7rem/1 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; }
+    .filter input, input, select, textarea { width: 100%; border: 1px solid var(--hairline); border-radius: 7px; background: #061128; color: var(--ink); padding: 10px 11px; }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.54); }
+    .fixture-list { padding: 0 8px 12px; }
+    .fixture { width: 100%; display: grid; grid-template-columns: 9px 1fr auto; gap: 10px; align-items: center; border: 0; border-radius: 8px; background: transparent; padding: 11px 10px; text-align: left; cursor: pointer; }
+    .fixture:hover { background: rgba(255,255,255,.06); }
+    .fixture.active { background: var(--enamel); box-shadow: 0 5px 15px rgba(0,0,0,.22); }
+    .fixture .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--warning); }
+    .fixture[data-state="accepted"] .dot { background: var(--success); }
+    .fixture[data-state="rejected"] .dot { background: var(--danger); }
+    .fixture strong { display: block; font: 700 1rem/1.05 var(--font-plaque); letter-spacing: .025em; text-transform: uppercase; }
+    .fixture small { display: block; margin-top: 4px; color: var(--muted); font: 500 .62rem/1 "JetBrains Mono", monospace; }
+    .fixture b { color: var(--warning); font: 700 .66rem/1 "JetBrains Mono", monospace; }
+    .waiting { min-height: 0; overflow: auto; border-top: 1px solid var(--hairline); padding: 15px 18px 18px; }
+    .waiting summary { cursor: pointer; color: var(--ink); font: 700 .9rem/1.2 var(--font-plaque); letter-spacing: .025em; text-transform: uppercase; }
+    .waiting summary span { float: right; color: var(--warning); font: 700 .68rem/1.2 "JetBrains Mono", monospace; }
+    .waiting > p { margin: 9px 0 13px; color: var(--muted); font-size: .75rem; }
+    .waiting-list { display: grid; gap: 1px; }
+    .waiting-item { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 8px 0; border-top: 1px solid rgba(255,255,255,.09); color: var(--muted); }
+    .waiting-item strong { font: 600 .82rem/1.1 var(--font-plaque); letter-spacing: .02em; text-transform: uppercase; }
+    .waiting-item span { font: 600 .58rem/1 "JetBrains Mono", monospace; }
+    .observation { overflow: auto; background: #030b1d; }
+    .observation-bar { min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 18px; border-bottom: 1px solid var(--hairline); }
+    .observation-bar h2 { margin: 0; font: 700 1.25rem/1 var(--font-plaque); letter-spacing: .02em; text-transform: uppercase; }
+    .mono { font-family: "JetBrains Mono", monospace; font-variant-numeric: tabular-nums; }
+    .observation-bar code { color: var(--muted); font-size: .68rem; }
+    .phase-lock { color: var(--warning); font: 700 .65rem/1.2 "JetBrains Mono", monospace; text-align: right; }
+    .viewer { position: relative; min-height: 320px; display: grid; place-items: center; background: #000; overflow: hidden; cursor: crosshair; }
+    .viewer:not(.capture) { cursor: default; }
+    .viewer.capture { outline: 3px solid var(--rivet); outline-offset: -3px; }
+    .viewer img { display: block; width: 100%; height: auto; max-height: 64vh; object-fit: contain; }
+    .viewer.empty { cursor: default; }
+    .viewer-message { padding: 46px; max-width: 62ch; color: var(--muted); text-align: center; }
+    .anchor { position: absolute; width: 16px; height: 16px; margin: -8px 0 0 -8px; border: 2px solid #fff; border-radius: 50%; background: var(--rivet); box-shadow: 0 3px 10px rgba(0,0,0,.6); pointer-events: none; }
+    .anchor::after { content: attr(data-kind); position: absolute; left: 13px; top: -5px; white-space: nowrap; padding: 3px 6px; border-radius: 4px; background: rgba(3,11,29,.88); color: #fff; font: 700 .58rem/1 "JetBrains Mono", monospace; }
+    .under-viewer { display: grid; grid-template-columns: minmax(220px, .72fr) 1fr; border-top: 1px solid var(--hairline); }
+    .footprint { padding: 18px; border-right: 1px solid var(--hairline); }
+    .footprint svg { width: 100%; max-width: 100%; height: 220px; display: block; overflow: hidden; background: #071430; border-radius: 8px; }
+    .footprint path { fill: rgba(20,80,184,.18); stroke: rgba(255,255,255,.28); stroke-width: 1.5; }
+    .footprint line { stroke: var(--muted); stroke-width: 2; vector-effect: non-scaling-stroke; }
+    .footprint line.selected { stroke: var(--rivet); stroke-width: 5; }
+    .footprint line.camera-sight { stroke: var(--success); stroke-width: 2; stroke-dasharray: 6 5; opacity: .9; }
+    .footprint circle { fill: var(--enamel-copper-hi); }
+    .footprint circle.camera-position { fill: var(--success); stroke: #061128; stroke-width: 2; vector-effect: non-scaling-stroke; }
+    .footprint .camera-label { fill: var(--success); font-family: "JetBrains Mono", monospace; font-weight: 700; }
+    .preview { min-height: 260px; padding: 18px; display: grid; grid-template-rows: auto 1fr; }
+    .surface-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .surface-title h3 { margin: 0; font: 700 1rem/1 var(--font-plaque); letter-spacing: .035em; text-transform: uppercase; }
+    .surface-title span { color: var(--muted); font: 600 .6rem/1 "JetBrains Mono", monospace; }
+    .locked-preview { min-height: 190px; display: grid; place-items: center; border: 1px dashed rgba(255,255,255,.27); border-radius: 8px; color: var(--muted); text-align: center; padding: 28px; }
+    .locked-preview strong { display: block; color: var(--warning); font: 700 .72rem/1.2 "JetBrains Mono", monospace; }
+    .inspector { overflow: auto; border-left: 1px solid var(--hairline); background: var(--panel); }
+    .section { padding: 19px; border-bottom: 1px solid var(--hairline); }
+    .section h3 { margin: 0 0 13px; font: 700 1rem/1 var(--font-plaque); letter-spacing: .04em; text-transform: uppercase; }
+    .task-guide { background: #16346d; }
+    .task-guide > p { margin: 0 0 14px; color: #dbe7ff; font-size: .82rem; }
+    .task-steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 11px; }
+    .task-steps li { display: grid; grid-template-columns: 24px 1fr; gap: 9px; align-items: start; color: #dbe7ff; font-size: .76rem; }
+    .task-steps b { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--rivet); color: #061128; font: 800 .7rem/1 "JetBrains Mono", monospace; }
+    .task-steps strong { display: block; margin-bottom: 2px; color: #fff; }
+    .review-progress { margin: 14px 0 0; border-top: 1px solid rgba(255,255,255,.22); padding-top: 12px; color: var(--warning); font: 700 .68rem/1.35 "JetBrains Mono", monospace; }
+    .task-guide > .button { width: 100%; margin-top: 12px; }
+    .fact-grid { display: grid; grid-template-columns: minmax(90px, .7fr) 1.3fr; gap: 7px 12px; font-size: .78rem; }
+    .fact-grid dt { color: var(--muted); }
+    .fact-grid dd { margin: 0; overflow-wrap: anywhere; word-break: break-word; font-family: "JetBrains Mono", monospace; font-size: .7rem; font-variant-numeric: tabular-nums; }
+    .addresses { margin: 12px 0 0; padding: 0; list-style: none; }
+    .addresses li { padding: 7px 0; border-top: 1px solid rgba(255,255,255,.11); font-size: .78rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
+    .tag { border-radius: 999px; background: rgba(255,255,255,.09); padding: 5px 8px; color: var(--muted); font-size: .68rem; }
+    .elevation-list { display: grid; gap: 6px; }
+    .elevation-option { display: grid; grid-template-columns: auto 1fr auto; gap: 9px; align-items: center; padding: 8px; border-radius: 7px; cursor: pointer; }
+    .elevation-option:hover { background: rgba(255,255,255,.06); }
+    .elevation-option input { width: auto; margin: 0; accent-color: var(--rivet); }
+    .elevation-option span { min-width: 0; overflow-wrap: anywhere; word-break: break-word; font: 600 .65rem/1.35 "JetBrains Mono", monospace; }
+    .elevation-option b { color: var(--muted); font: 600 .62rem/1 "JetBrains Mono", monospace; }
+    .anchor-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .anchor-controls .wide { grid-column: 1 / -1; }
+    .anchor-list { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+    .anchor-item { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; border-top: 1px solid rgba(255,255,255,.12); padding-top: 8px; }
+    .anchor-item strong { display: block; color: var(--ink); font-size: .76rem; }
+    .anchor-item span { display: block; color: var(--muted); font: 500 .62rem/1.4 "JetBrains Mono", monospace; overflow-wrap: anywhere; }
+    .anchor-item .button { padding: 7px 9px; color: var(--danger); font-size: .7rem; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
+    .button { border: 1px solid var(--hairline); border-radius: 7px; background: rgba(255,255,255,.08); padding: 9px 11px; cursor: pointer; font-weight: 700; }
+    .button:hover { background: rgba(255,255,255,.14); }
+    .button.primary { border-color: rgba(196,163,90,.72); background: var(--enamel-copper); color: #071430; }
+    .button.danger { color: var(--danger); }
+    .button:disabled { cursor: not-allowed; opacity: .42; }
+    .review-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .review-fields .wide { grid-column: 1/-1; }
+    textarea { min-height: 72px; resize: vertical; }
+    .notice { border-radius: 8px; background: rgba(230,196,107,.1); padding: 11px; color: #f5dda0; font-size: .75rem; }
+    .compare-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+    .compare-list li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; color: var(--muted); }
+    .compare-list b { color: var(--rivet); font: 700 .78rem/1.4 "JetBrains Mono", monospace; }
+    .compare-list strong { display: block; color: var(--ink); }
+    .advanced summary { cursor: pointer; color: #b9d7ff; font-weight: 700; }
+    .advanced[open] summary { margin-bottom: 12px; }
+    .review-error { min-height: 1.2em; margin: 9px 0 0; color: var(--danger); font-size: .75rem; }
+    .error { margin: 32px; padding: 24px; border: 1px solid rgba(255,157,144,.5); border-radius: 10px; background: rgba(255,157,144,.08); color: #ffd0ca; }
+    @media (max-width: 1120px) {
+      .workspace { grid-template-columns: 260px minmax(0, 1fr); grid-template-rows: minmax(560px, 1fr) auto; overflow: auto; }
+      .fixtures, .observation { max-height: none; }
+      .observation { overflow: visible; }
+      .inspector { grid-column: 1 / -1; overflow: visible; border-left: 0; border-top: 1px solid var(--hairline); display: grid; grid-template-columns: repeat(3, 1fr); }
+      .section { border-right: 1px solid var(--hairline); }
+    }
+    @media (max-width: 760px) {
+      body { overflow: auto; }
+      .shell { width: 100vw; height: auto; min-height: 100vh; }
+      header { align-items: flex-start; flex-wrap: wrap; padding: 12px; }
+      .brand { min-width: 210px; }
+      .counter { margin-left: auto; }
+      .headline { order: 3; flex-basis: 100%; }
+      .workspace { display: block; width: 100%; max-width: 100vw; overflow-x: clip; }
+      .fixtures { border-right: 0; border-bottom: 1px solid var(--hairline); display: block; }
+      .fixture-list { width: 100%; max-width: 100vw; display: grid; grid-template-columns: 1fr; gap: 5px; overflow: visible; }
+      .fixture { min-width: 0; padding-inline: 7px; }
+      .fixture strong { font-size: .88rem; }
+      .fixture small { overflow-wrap: anywhere; }
+      .filter { padding: 12px; }
+      .viewer { min-height: 195px; }
+      .under-viewer { grid-template-columns: 1fr; }
+      .footprint { border-right: 0; border-bottom: 1px solid var(--hairline); }
+      .inspector { display: block; }
+      .section { border-right: 0; }
+      .phase-lock { display: block; font-size: .7rem; line-height: 1.25; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand enamel-plaque enamel-framed">
+        <strong>Map Recall</strong><span>FAÇADE EVIDENCE DESK</span>
+      </div>
+      <div class="headline">
+        <h1>Verify the building</h1>
+        <p>One prepared panorama is ready. Check that it shows the right building and the right street-facing wall.</p>
+      </div>
+      <div class="counter" id="counter">LOADING</div>
+    </header>
+    <div class="workspace" id="app" aria-live="polite"></div>
+  </div>
+  <script src="../js/facade-registration.bundle.js"></script>
+  <script>
+    const { registrationFixtureIsReviewed, registrationObservationHash, mergeRegistrationDraft } = window.CanalRecallRegistration;
+    let renderRevision = 0;
+    const reviewedFixtures = new Set();
+    const state = { fixtures: [], selected: 0, edits: {}, anchorsOpen: false };
+    const anchorKinds = ['wall-left', 'wall-right', 'ground', 'eaves', 'roofline'];
+    const storageKey = fixture => `map-recall-registration-review:${fixture.fixtureId}`;
+    const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+    const address = item => `${item.publicSpaceName} ${item.houseNumber}${item.houseLetter || ''}${item.suffix ? `-${item.suffix}` : ''}${item.postalCode ? `, ${item.postalCode}` : ''}`;
+    const current = () => state.fixtures[state.selected];
+    const edited = fixture => state.edits[fixture.fixtureId] || fixture;
+    const loadEdit = fixture => { try { return mergeRegistrationDraft(fixture, JSON.parse(localStorage.getItem(storageKey(fixture))) || fixture); } catch { return fixture; } };
+    const persist = fixture => { state.edits[fixture.fixtureId] = fixture; localStorage.setItem(storageKey(fixture), JSON.stringify(fixture)); render(); };
+    const isReviewed = fixture => reviewedFixtures.has(fixture.fixtureId);
+    const statusOf = fixture => { const item = edited(fixture); return item.status === 'rejected' ? 'rejected' : isReviewed(item) ? 'accepted' : 'candidate'; };
+    const reviewCount = fixture => edited(fixture).reviewPasses?.length || 0;
+    const displayStatus = fixture => statusOf(fixture) === 'accepted' ? 'Reviewed' : statusOf(fixture) === 'rejected' ? 'Marked unusable' : reviewCount(fixture) ? 'Needs attention' : 'Not reviewed';
+    const cardinal = degrees => ['north', 'north-east', 'east', 'south-east', 'south', 'south-west', 'west', 'north-west'][Math.round(((degrees % 360) + 360) % 360 / 45) % 8];
+    const reviewProgress = fixture => isReviewed(fixture)
+      ? 'Your accepted review is saved. You can update it at any time.'
+      : reviewCount(fixture)
+        ? 'Your review is saved but not accepted. Update it when the evidence is clear.'
+        : 'No review saved yet.';
+
+    function footprintSvg(fixture) {
+      const points = fixture.footprintRd;
+      const camera = fixture.panorama?.cameraRd;
+      const extentPoints = camera ? [...points, camera] : points;
+      const xs = extentPoints.map(point => point.x), ys = extentPoints.map(point => point.y);
+      const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+      const span = Math.max(maxX - minX, maxY - minY, 1), pad = span * .12;
+      const box = `${minX-pad} ${-(maxY+pad)} ${maxX-minX+pad*2} ${maxY-minY+pad*2}`;
+      const path = points.map((point, index) => `${index ? 'L' : 'M'} ${point.x} ${-point.y}`).join(' ') + ' Z';
+      const lines = fixture.elevations.map(elevation => `<line class="${elevation.elevationId === fixture.selectedElevationId ? 'selected' : ''}" x1="${elevation.start.x}" y1="${-elevation.start.y}" x2="${elevation.end.x}" y2="${-elevation.end.y}"><title>${escapeHtml(elevation.elevationId)} · ${elevation.lengthM.toFixed(2)} m · faces ${elevation.facingDeg.toFixed(0)}°</title></line>`).join('');
+      const selected = fixture.elevations.find(elevation => elevation.elevationId === fixture.selectedElevationId);
+      const sightline = camera && selected
+        ? `<line class="camera-sight" x1="${camera.x}" y1="${-camera.y}" x2="${(selected.start.x + selected.end.x) / 2}" y2="${-(selected.start.y + selected.end.y) / 2}"/>`
+        : '';
+      const cameraMarker = camera
+        ? `<circle class="camera-position" cx="${camera.x}" cy="${-camera.y}" r="${span * .025}"><title>Panorama camera position from municipal metadata; no heading or image yaw used.</title></circle><text class="camera-label" x="${camera.x - span * .04}" y="${-camera.y - span * .045}" text-anchor="end" font-size="${span * .035}">CAMERA</text>`
+        : '';
+      return `<svg viewBox="${box}" role="img" aria-label="Official building outline, candidate walls, panorama camera position, and connector to the selected wall"><path d="${path}"/>${sightline}${lines}${cameraMarker}</svg>`;
+    }
+
+    function renderViewer(fixture) {
+      if (!fixture.panorama?.localImageUrl) return `<div class="viewer empty"><div class="viewer-message"><strong>No panorama assigned.</strong><br>This contrast fixture is waiting for explicit geometric view selection. It cannot inherit an old crop.</div></div>`;
+      const width = fixture.sourceVersion?.width || 8000, height = fixture.sourceVersion?.height || 4000;
+      const anchors = fixture.anchors.map(anchor => `<span class="anchor" data-kind="${escapeHtml(anchor.kind)}" style="left:${anchor.pixel.x / width * 100}%;top:${anchor.pixel.y / height * 100}%"></span>`).join('');
+      return `<div class="viewer" id="viewer"><img id="panorama" src="${escapeHtml(fixture.panorama.localImageUrl)}" width="${width}" height="${height}" alt="Full equirectangular municipal panorama for ${escapeHtml(fixture.label)}">${anchors}</div>`;
+    }
+
+    async function render() {
+      const revision = ++renderRevision;
+      const verdicts = await Promise.all(state.fixtures.map(async source => [source.fixtureId, await registrationFixtureIsReviewed(edited(source))]));
+      if (revision !== renderRevision) return;
+      reviewedFixtures.clear();
+      for (const [id, accepted] of verdicts) if (accepted) reviewedFixtures.add(id);
+      const source = current();
+      if (!source) return;
+      const fixture = edited(source);
+      const ready = state.fixtures.map((item, index) => ({ fixture: item, index })).filter(item => item.fixture.panorama?.localImageUrl);
+      const waiting = state.fixtures.filter(item => !item.panorama?.localImageUrl);
+      const accepted = ready.filter(item => statusOf(item.fixture) === 'accepted').length;
+      document.querySelector('#counter').innerHTML = `${accepted}/${ready.length} REVIEWED<br>${waiting.length} WAITING FOR PANORAMAS`;
+      document.querySelector('#app').innerHTML = `
+        <aside class="fixtures">
+          <div class="queue-head"><h2>Ready now</h2><p>Review each available panorama against the official footprint and neighbouring buildings.</p></div>
+          <nav class="fixture-list" aria-label="Buildings ready for review">${ready.map(({fixture:item,index}) => `<button class="fixture ${index === state.selected ? 'active' : ''}" data-index="${index}" data-state="${statusOf(item)}"><span class="dot"></span><span><strong>${escapeHtml(item.label)}</strong><small>Official building ${escapeHtml(item.pandId)}</small></span><b>${reviewCount(item) ? 'SAVED' : 'START'}</b></button>`).join('')}</nav>
+          <details class="waiting"><summary>Not ready yet <span>${waiting.length}</span></summary><p>These records have official building geometry, but no freshly selected panorama. They cannot be reviewed yet.</p><div class="waiting-list">${waiting.map(item => `<div class="waiting-item"><strong>${escapeHtml(item.label)}</strong><span>WAITING</span></div>`).join('')}</div></details>
+        </aside>
+        <main class="observation">
+          <div class="observation-bar"><div><h2>${escapeHtml(fixture.label)}</h2><code>READY FOR REVIEW · ${escapeHtml(fixture.panorama?.panoramaId || 'NO PANORAMA')}</code></div><div class="phase-lock">IDENTITY REVIEW<br>METRIC REGISTRATION SEPARATE</div></div>
+          ${renderViewer(fixture)}
+          <div class="under-viewer">
+            <section class="footprint"><div class="surface-title"><h3>Building outline</h3><span>GREEN CAMERA → YELLOW WALL</span></div>${footprintSvg(fixture)}</section>
+            <section class="preview"><div class="surface-title"><h3>What to compare</h3><span>ONE DECISION</span></div><ul class="compare-list"><li><b>1</b><span><strong>Photo ↔ address</strong>Can you identify the target using visible address evidence, distinctive features and neighbour order?</span></li><li><b>2</b><span><strong>Photo ↔ outline</strong>Do the visible building limits match the selected footprint?</span></li><li><b>3</b><span><strong>Camera ↔ yellow wall</strong>Does the green camera-to-wall line reach the façade visible in the panorama? It uses position only, never image heading. If any answer is unclear, record “Not sure.”</span></li></ul></section>
+          </div>
+        </main>
+        <aside class="inspector">
+          <section class="section task-guide"><h3>Your task</h3><p>Decide whether the panorama, official building record, and highlighted wall all describe the same façade.</p><ol class="task-steps"><li><b>1</b><span><strong>Look at the panorama</strong>Locate the target independently. Consider adjacent buildings and the opposite canal bank.</span></li><li><b>2</b><span><strong>Follow the green line</strong>It runs from the camera position to the chosen yellow wall.</span></li><li><b>3</b><span><strong>Record your decision</strong>Answer two plain-language questions.</span></li></ol><p class="review-progress" role="status">${escapeHtml(reviewProgress(fixture))}</p><button class="button primary" id="jump-review">Record my decision</button></section>
+          <section class="section"><h3>Is this the right building?</h3><dl class="fact-grid"><dt>Expected address</dt><dd>${escapeHtml(fixture.label)}</dd><dt>Official building ID</dt><dd>${escapeHtml(fixture.pandId)}</dd><dt>Review status</dt><dd>${escapeHtml(displayStatus(source))}</dd></dl><details class="advanced"><summary>Show all ${fixture.addresses.length} official addresses</summary><ul class="addresses">${fixture.addresses.length ? fixture.addresses.map(item => `<li>${escapeHtml(address(item))}</li>`).join('') : '<li>No official addresses were found. Record “Not sure.”</li>'}</ul></details></section>
+          <section class="section"><h3>Which wall faces the camera?</h3><p class="notice">The green dot is the panorama position; its dashed line ends at the chosen yellow wall. Choose the wall supported by the image and street context. The initial selection is a geometric candidate.</p><div class="elevation-list">${fixture.elevations.map((elevation, index) => `<label class="elevation-option"><input type="radio" name="elevation" value="${escapeHtml(elevation.elevationId)}" ${elevation.elevationId === fixture.selectedElevationId ? 'checked' : ''}><span><strong>Wall ${index + 1}</strong><br>${elevation.lengthM.toFixed(2)} m</span><b>${cardinal(elevation.facingDeg)} · ${elevation.facingDeg.toFixed(0)}°</b></label>`).join('')}</div></section>
+          <section class="section" id="review-form"><h3>Record your decision</h3><div class="review-fields"><label class="wide"><span class="field-label">Your name or initials</span><input id="reviewer" autocomplete="name" placeholder="Required"></label><label><span class="field-label">Photo matches building?</span><select id="identity-verdict"><option value="uncertain">Not sure</option><option value="accepted">Yes — it matches</option><option value="rejected">No — wrong building</option></select></label><label><span class="field-label">Highlighted wall correct?</span><select id="elevation-verdict"><option value="uncertain">Not sure</option><option value="accepted">Yes — correct wall</option><option value="rejected">No — wrong wall</option></select></label><label class="wide"><span class="field-label">Notes (optional)</span><textarea id="review-note" placeholder="Explain anything uncertain or distinctive."></textarea></label></div><p class="notice">One recorded identity review is sufficient. Source or wall changes require a new review; metric registration needs world anchors and residual checks.</p><p class="review-error" id="review-error" role="alert"></p><div class="button-row"><button class="button primary" id="save-pass">Save this review</button><button class="button danger" id="reject-fixture">Mark fixture unusable</button><button class="button" id="export-review">Export review JSON</button><label class="button">Import review JSON<input id="import-review" type="file" accept="application/json" hidden></label></div></section>
+          <section class="section"><details class="advanced"><summary>Panorama and geometry details</summary>${fixture.panorama ? `<dl class="fact-grid"><dt>Captured</dt><dd>${escapeHtml(new Date(fixture.panorama.capturedAt).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'medium', timeZone: 'Europe/Amsterdam' }))}</dd><dt>Mission</dt><dd>${escapeHtml(fixture.panorama.mission || fixture.panorama.missionYear || 'not supplied')}</dd><dt>Longitude</dt><dd>${fixture.panorama.lngLat[0].toFixed(8)}</dd><dt>Latitude</dt><dd>${fixture.panorama.lngLat[1].toFixed(8)}</dd><dt>Camera height</dt><dd>${fixture.panorama.cameraHeight.toFixed(3)} m</dd><dt>Heading</dt><dd>${fixture.panorama.headingDeg.toFixed(3)}°</dd><dt>Pitch</dt><dd>${fixture.panorama.pitchDeg.toFixed(3)}°</dd><dt>Roll</dt><dd>${fixture.panorama.rollDeg.toFixed(3)}°</dd><dt>Outline vertices</dt><dd>${fixture.footprintRd.length}</dd></dl>` : '<p class="notice">No observation is assigned. Metadata cannot be inferred from a nearby image.</p>'}</details></section>
+          <section class="section"><details class="advanced" id="anchor-details" ${state.anchorsOpen ? 'open' : ''}><summary>Advanced: marked points (${fixture.anchors.length})</summary><div class="anchor-controls"><label><span class="field-label">Point kind</span><select id="anchor-kind">${anchorKinds.map(kind => `<option>${kind}</option>`).join('')}</select></label><label><span class="field-label">Note</span><input id="anchor-note" placeholder="Distinctive cornice"></label><label><span class="field-label">Pixel X</span><input id="anchor-x" type="number" min="0" max="${(fixture.sourceVersion?.width || 8000) - 1}" step="1"></label><label><span class="field-label">Pixel Y</span><input id="anchor-y" type="number" min="0" max="${(fixture.sourceVersion?.height || 4000) - 1}" step="1"></label></div><div class="button-row"><button class="button" id="capture-anchor" ${fixture.panorama ? '' : 'disabled'}>Pick point from panorama</button><button class="button" id="add-anchor" ${fixture.panorama ? '' : 'disabled'}>Add exact coordinates</button><button class="button" id="undo-anchor" ${fixture.anchors.length ? '' : 'disabled'}>Undo last point</button><button class="button danger" id="clear-anchors" ${fixture.anchors.length ? '' : 'disabled'}>Clear all points</button></div><p class="notice">Pixel marks support identity review. Metric registration also requires world coordinates, provenance and uncertainty. Export to preserve your edits.</p>${fixture.anchors.length ? `<ol class="anchor-list">${fixture.anchors.map((anchor, index) => `<li class="anchor-item"><span><strong>Point ${index + 1} · ${escapeHtml(anchor.kind)}</strong>x ${anchor.pixel.x}, y ${anchor.pixel.y}${anchor.note ? ` · ${escapeHtml(anchor.note)}` : ''}</span><button class="button remove-anchor" data-anchor-id="${escapeHtml(anchor.anchorId)}" aria-label="Remove point ${index + 1}">Remove</button></li>`).join('')}</ol>` : '<p class="notice">No points have been marked.</p>'}</details></section>
+          <section class="section"><details class="advanced"><summary>Why is there no corrected façade image?</summary><p class="notice">Camera tests and diagnostic rectifications may proceed. Accepting extracted measurements requires separately verified metric registration.</p></details></section>
+        </aside>`;
+      wire(fixture);
+    }
+
+    async function withFixture(change) { const fixture = structuredClone(edited(current())); await change(fixture); persist(fixture); }
+    function addAnchor(x, y) {
+      const kind = document.querySelector('#anchor-kind').value;
+      const note = document.querySelector('#anchor-note').value.trim();
+      withFixture(fixture => fixture.anchors.push({ anchorId: `${kind}-${Date.now()}`, kind, pixel: { x: Math.round(x), y: Math.round(y) }, note }));
+    }
+    function wire(fixture) {
+      document.querySelectorAll('.fixture').forEach(button => button.addEventListener('click', () => { state.selected = Number(button.dataset.index); render(); }));
+      document.querySelector('#jump-review').addEventListener('click', () => document.querySelector('#review-form').scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      document.querySelector('#anchor-details').addEventListener('toggle', event => { state.anchorsOpen = event.currentTarget.open; });
+      document.querySelectorAll('input[name="elevation"]').forEach(input => input.addEventListener('change', () => withFixture(item => { item.selectedElevationId = input.value; item.elevationSelectionBasis = 'Chosen in local registration review; awaiting an accepted review.'; })));
+      document.querySelector('#capture-anchor').addEventListener('click', event => {
+        document.querySelector('#viewer')?.classList.add('capture');
+        event.currentTarget.textContent = 'Click the panorama now';
+      });
+      document.querySelector('#add-anchor').addEventListener('click', () => {
+        const xValue = document.querySelector('#anchor-x').value;
+        const yValue = document.querySelector('#anchor-y').value;
+        const x = Number(xValue), y = Number(yValue);
+        if (xValue !== '' && yValue !== '' && Number.isFinite(x) && Number.isFinite(y) && x >= 0 && x < (fixture.sourceVersion?.width || 8000) && y >= 0 && y < (fixture.sourceVersion?.height || 4000)) addAnchor(x, y);
+      });
+      document.querySelector('#undo-anchor').addEventListener('click', () => {
+        withFixture(item => item.anchors.pop());
+        document.querySelector('#anchor-details summary').focus();
+      });
+      document.querySelectorAll('.remove-anchor').forEach((button, index) => button.addEventListener('click', () => {
+        const anchorId = button.dataset.anchorId;
+        withFixture(item => { item.anchors = item.anchors.filter(anchor => anchor.anchorId !== anchorId); });
+        const remaining = document.querySelectorAll('.remove-anchor');
+        (remaining[Math.min(index, remaining.length - 1)] || document.querySelector('#anchor-details summary')).focus();
+      }));
+      const clearButton = document.querySelector('#clear-anchors');
+      let clearResetTimer;
+      clearButton.addEventListener('click', () => {
+        if (clearButton.dataset.confirm !== 'true') {
+          clearButton.dataset.confirm = 'true';
+          clearButton.textContent = `Click again to clear ${fixture.anchors.length} points`;
+          clearResetTimer = window.setTimeout(() => {
+            clearButton.dataset.confirm = 'false';
+            clearButton.textContent = 'Clear all points';
+          }, 5000);
+          return;
+        }
+        window.clearTimeout(clearResetTimer);
+        withFixture(item => { item.anchors = []; });
+        document.querySelector('#anchor-details summary').focus();
+      });
+      const panoImage = document.querySelector('#panorama');
+      const imageBounds = () => {
+        const rect = panoImage.getBoundingClientRect();
+        const scale = Math.min(rect.width / panoImage.naturalWidth, rect.height / panoImage.naturalHeight);
+        const width = panoImage.naturalWidth * scale, height = panoImage.naturalHeight * scale;
+        return { left: rect.left + (rect.width - width) / 2, top: rect.top + (rect.height - height) / 2, width, height };
+      };
+      const positionAnchors = () => {
+        if (!panoImage?.naturalWidth) return;
+        const rect = imageBounds(), viewer = document.querySelector('#viewer').getBoundingClientRect();
+        document.querySelectorAll('#viewer .anchor').forEach((node, index) => {
+          const anchor = fixture.anchors[index];
+          node.style.left = `${rect.left - viewer.left + anchor.pixel.x / panoImage.naturalWidth * rect.width}px`;
+          node.style.top = `${rect.top - viewer.top + anchor.pixel.y / panoImage.naturalHeight * rect.height}px`;
+        });
+      };
+      if (panoImage) { panoImage.addEventListener('load', positionAnchors); positionAnchors(); }
+      window.onresize = positionAnchors;
+      document.querySelector('#viewer')?.addEventListener('click', event => {
+        if (!event.currentTarget.classList.contains('capture')) return;
+        const image = document.querySelector('#panorama');
+        const rect = imageBounds();
+        const x = (event.clientX - rect.left) / rect.width * image.naturalWidth;
+        const y = (event.clientY - rect.top) / rect.height * image.naturalHeight;
+        if (x >= 0 && y >= 0 && x < image.naturalWidth && y < image.naturalHeight) addAnchor(x, y);
+      });
+      async function saveReview(rejected = false) {
+        const reviewer = document.querySelector('#reviewer').value.trim();
+        if (!reviewer) { document.querySelector('#review-error').textContent = 'Enter your name or initials to record this decision.'; document.querySelector('#reviewer').focus(); return; }
+        const identityVerdict = rejected ? 'rejected' : document.querySelector('#identity-verdict').value;
+        const elevationVerdict = rejected ? 'rejected' : document.querySelector('#elevation-verdict').value;
+        const note = document.querySelector('#review-note').value.trim();
+        await withFixture(async item => {
+          const review = { passId: crypto.randomUUID(), reviewer, reviewedAt: new Date().toISOString(),
+            identityVerdict, elevationVerdict, note, observationHash: await registrationObservationHash(item) };
+          item.reviewPasses.push(review);
+          item.status = rejected ? 'rejected' : 'candidate';
+          if (await registrationFixtureIsReviewed(item)) item.status = 'accepted';
+        });
+      }
+      document.querySelector('#save-pass').addEventListener('click', () => saveReview());
+      document.querySelector('#reject-fixture').addEventListener('click', () => saveReview(true));
+      document.querySelector('#import-review').addEventListener('change', async event => {
+        try {
+          const file = event.target.files[0];
+          if (!file) return;
+          const payload = JSON.parse(await file.text());
+          if (!Array.isArray(payload.fixtures)) throw new Error('Expected a fixtures array.');
+          const drafts = state.fixtures.map(source => {
+            const draft = payload.fixtures.find(item => item.fixtureId === source.fixtureId);
+            return draft ? mergeRegistrationDraft(edited(source), draft) : edited(source);
+          });
+          for (const draft of drafts) { state.edits[draft.fixtureId] = draft; localStorage.setItem(storageKey(draft), JSON.stringify(draft)); }
+          render();
+        } catch (error) { document.querySelector('#review-error').textContent = `Import failed: ${error.message}`; }
+      });
+      document.querySelector('#export-review').addEventListener('click', () => {
+        const payload = { schemaVersion: 2, exportedAt: new Date().toISOString(), fixtures: state.fixtures.map(item => edited(item)) };
+        const link = document.createElement('a'); link.href = URL.createObjectURL(new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'})); link.download = 'facade-registration-review.json'; link.click(); URL.revokeObjectURL(link.href);
+      });
+    }
+
+    fetch('./local/fixtures.json').then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); }).then(payload => {
+      state.fixtures = payload.fixtures; for (const fixture of state.fixtures) state.edits[fixture.fixtureId] = loadEdit(fixture); render();
+    }).catch(error => {
+      document.querySelector('#counter').textContent = 'DATA UNAVAILABLE';
+      document.querySelector('#app').innerHTML = `<div class="error"><h2>Local review evidence has not been materialised.</h2><p>Run <code>npm run build:facade-registration-review</code>, then reload this page through the project dev server.</p><p class="mono">${escapeHtml(error.message)}</p></div>`;
+    });
+  </script>
+</body>
+</html>

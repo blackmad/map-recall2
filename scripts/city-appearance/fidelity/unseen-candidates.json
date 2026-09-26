@@ -1,0 +1,1355 @@
+{
+  "version": 1,
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "status": "frozen-candidates-not-yet-certified-unseen",
+  "blockingReason": "Twelve supplied observation identities missing; feature strata and source annotations await inspection. No candidate used for tuning.",
+  "excludedBuildingIds": [
+    "0363100012068916",
+    "0363100012077314",
+    "0363100012080836",
+    "0363100012081167",
+    "0363100012086076",
+    "0363100012096066",
+    "0363100012096164",
+    "0363100012107485",
+    "0363100012114631",
+    "0363100012116526",
+    "0363100012125896",
+    "0363100012135474",
+    "0363100012152349",
+    "0363100012152464",
+    "0363100012152665",
+    "0363100012152724",
+    "0363100012152830",
+    "0363100012152883",
+    "0363100012153066",
+    "0363100012153145",
+    "0363100012154294",
+    "0363100012155377",
+    "0363100012155539",
+    "0363100012155777",
+    "0363100012155995",
+    "0363100012156117",
+    "0363100012156131",
+    "0363100012156157",
+    "0363100012156172",
+    "0363100012156215",
+    "0363100012156454",
+    "0363100012156758",
+    "0363100012156901",
+    "0363100012156960",
+    "0363100012156993",
+    "0363100012157005",
+    "0363100012157068",
+    "0363100012157075",
+    "0363100012157171",
+    "0363100012157426",
+    "0363100012157610",
+    "0363100012157618",
+    "0363100012157746",
+    "0363100012157952",
+    "0363100012157989",
+    "0363100012158490",
+    "0363100012158603",
+    "0363100012158653",
+    "0363100012158752",
+    "0363100012158909",
+    "0363100012158911",
+    "0363100012159112",
+    "0363100012159114",
+    "0363100012159131",
+    "0363100012159173",
+    "0363100012159182",
+    "0363100012159278",
+    "0363100012159538",
+    "0363100012159694",
+    "0363100012160092",
+    "0363100012160115",
+    "0363100012160170",
+    "0363100012160273",
+    "0363100012161143",
+    "0363100012161422",
+    "0363100012162078",
+    "0363100012162168",
+    "0363100012162190",
+    "0363100012162280",
+    "0363100012162291",
+    "0363100012162435",
+    "0363100012162614",
+    "0363100012162782",
+    "0363100012162897",
+    "0363100012163064",
+    "0363100012163403",
+    "0363100012163422",
+    "0363100012163839",
+    "0363100012164219",
+    "0363100012164247",
+    "0363100012164841",
+    "0363100012164843",
+    "0363100012165211",
+    "0363100012165242",
+    "0363100012165505",
+    "0363100012165523",
+    "0363100012165792",
+    "0363100012165927",
+    "0363100012166189",
+    "0363100012166311",
+    "0363100012166335",
+    "0363100012166375",
+    "0363100012166397",
+    "0363100012166409",
+    "0363100012166471",
+    "0363100012166516",
+    "0363100012166570",
+    "0363100012166975",
+    "0363100012167295",
+    "0363100012167334",
+    "0363100012167877",
+    "0363100012167878",
+    "0363100012168366",
+    "0363100012168438",
+    "0363100012168440",
+    "0363100012168442",
+    "0363100012168547",
+    "0363100012168605",
+    "0363100012168906",
+    "0363100012168936",
+    "0363100012168954",
+    "0363100012168980",
+    "0363100012168990",
+    "0363100012169605",
+    "0363100012169621",
+    "0363100012169812",
+    "0363100012169813",
+    "0363100012169814",
+    "0363100012169816",
+    "0363100012169823",
+    "0363100012169824",
+    "0363100012169825",
+    "0363100012169826",
+    "0363100012169827",
+    "0363100012169890",
+    "0363100012170085",
+    "0363100012170086",
+    "0363100012170124",
+    "0363100012170140",
+    "0363100012170202",
+    "0363100012170796",
+    "0363100012173496",
+    "0363100012173864",
+    "0363100012173872",
+    "0363100012173919",
+    "0363100012174145",
+    "0363100012174161",
+    "0363100012174198",
+    "0363100012174296",
+    "0363100012174352",
+    "0363100012174521",
+    "0363100012174551",
+    "0363100012174554",
+    "0363100012174559",
+    "0363100012174562",
+    "0363100012174564",
+    "0363100012174566",
+    "0363100012185685",
+    "0363100012186296",
+    "0363100012236088",
+    "0363100012236121",
+    "0363100012236141",
+    "0363100012236262",
+    "0363100012236332",
+    "0363100012236381",
+    "0363100012236521",
+    "0363100012236681",
+    "0363100012236815",
+    "0363100012237064",
+    "0363100012237236",
+    "0363100012253787",
+    "0363100012253926",
+    "0363100012571031",
+    "0363100012571959",
+    "0363100012572095"
+  ],
+  "cases": [
+    {
+      "observationId": "0363100012129992_e_1ejkc4i",
+      "buildingId": "0363100012129992",
+      "geometryRevision": "5649ce2f7978f1c71c4a3966c263eb0e7ca37e40e6a9336b9b9802deba110323",
+      "district": "Da Costabuurt",
+      "evidenceKey": "ff893f4888e7fdc0c399ba7c2e09094aa44016c5bd24cf6023147766674365ec",
+      "frontage": [
+        [
+          -233.0812191885925,
+          -166.5312463439186
+        ],
+        [
+          -227.40521943423664,
+          -168.55924638052238
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012129992_e_1ejkc4i-full.jpg",
+          "sha256": "951fa586580fba2883e666d3ac23480d2fb00b61ad00ca6652be321b6c4d0b30",
+          "panoramaSha256": "7f424ab30bed7195267417390e261e6308485e4f9ea651f457397a273d343358",
+          "date": "2023-01-12T09:15:48.541690Z",
+          "publicUrl": "/data/city-expansion/evidence/951fa586580fba2883e666d3ac23480d2fb00b61ad00ca6652be321b6c4d0b30.jpg"
+        },
+        "ground": {
+          "file": "0363100012129992_e_1ejkc4i-ground.jpg",
+          "sha256": "33cdd796d334787772e938e20413ab42d2660a92fc3b8a1b5e61354ed3aa1e2b",
+          "panoramaSha256": "72666c38fdc77a30d4082857e7119c66a5e71d9d8ab7721ef18c73b09a04493b",
+          "date": "2025-06-18T10:05:18Z",
+          "publicUrl": "/data/city-expansion/evidence/33cdd796d334787772e938e20413ab42d2660a92fc3b8a1b5e61354ed3aa1e2b.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012153319_e_0wxtnpm",
+      "buildingId": "0363100012153319",
+      "geometryRevision": "6b96859e71f50d522c9bde307442a32ebbf37544f5b6d8e77b0122a01bcdbc17",
+      "district": "Da Costabuurt",
+      "evidenceKey": "5094cf09ae44283802ddd20cc00c0533da59b99dc6cbcbbdaad03532b4c37b0b",
+      "frontage": [
+        [
+          5.511766546784202,
+          -111.43824762594886
+        ],
+        [
+          1.7017667073523626,
+          -109.92824760347139
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012153319_e_0wxtnpm-full.jpg",
+          "sha256": "014e7290ab6dde156bee4f8791c0bd74b56bc332aa22677ff055864884be0071",
+          "panoramaSha256": "833bb96d951bc29c79169b8cc9c75bb4047d7cfd047ea3d6b548fc0ee334f880",
+          "date": "2023-01-12T09:06:41.626070Z",
+          "publicUrl": "/data/city-expansion/evidence/014e7290ab6dde156bee4f8791c0bd74b56bc332aa22677ff055864884be0071.jpg"
+        },
+        "ground": {
+          "file": "0363100012153319_e_0wxtnpm-ground.jpg",
+          "sha256": "150b6138c035f69929e4828b7a59f7130a09799dce950ec70bc9a329630c50cf",
+          "panoramaSha256": "336d06f5509f11b569c62e00d131d88cbc6ffd99853e1e0617d92aea8b6843f5",
+          "date": "2025-07-03T11:25:13Z",
+          "publicUrl": "/data/city-expansion/evidence/150b6138c035f69929e4828b7a59f7130a09799dce950ec70bc9a329630c50cf.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012084787_e_1flwaw8",
+      "buildingId": "0363100012084787",
+      "geometryRevision": "cb17b6489dfe56e5f585a3244935484b06325e0d5ec50ff326f94a8a68bd0174",
+      "district": "Da Costabuurt",
+      "evidenceKey": "8892c7d4123f8aced9f2d906e5c5295183955fd8ed50a19f58d68abf42d247f5",
+      "frontage": [
+        [
+          86.840750908872,
+          290.7327526069712
+        ],
+        [
+          76.62175213181763,
+          266.5887526242295
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012084787_e_1flwaw8-full.jpg",
+          "sha256": "3ef11dc40a5868a856bcefda47ee2459ef5e75cd3e6beff2e2fc05c5f5c6b6f5",
+          "panoramaSha256": "270a9f8926b9d9e8a679822fad5907d8ae925f299352fab7577a6a6135cc68c0",
+          "date": "2024-11-29T08:04:24Z",
+          "publicUrl": "/data/city-expansion/evidence/3ef11dc40a5868a856bcefda47ee2459ef5e75cd3e6beff2e2fc05c5f5c6b6f5.jpg"
+        },
+        "ground": {
+          "file": "0363100012084787_e_1flwaw8-ground.jpg",
+          "sha256": "56ce3b727c31ebe399fd152077a95916c543aa6d9392a5d6151fe7b68cd26aa3",
+          "panoramaSha256": "eb8637dfc69fcc148f44ab2a39c90b01952a0c716c638515efece119a60cf106",
+          "date": "2025-07-31T09:40:09Z",
+          "publicUrl": "/data/city-expansion/evidence/56ce3b727c31ebe399fd152077a95916c543aa6d9392a5d6151fe7b68cd26aa3.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012237100_e_1l4m54o",
+      "buildingId": "0363100012237100",
+      "geometryRevision": "207f1510d6406f8f80b4531d7a3c5a8b88a6754c14b16e91247c3216914a8d7e",
+      "district": "Da Costabuurt",
+      "evidenceKey": "dcd5c725a15da377edb14ed5b4328b71d3278aeeb1c5c6717e0d732d36dac584",
+      "frontage": [
+        [
+          37.62675686215516,
+          172.21575268148445
+        ],
+        [
+          34.52275723774801,
+          164.73575268359855
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012237100_e_1l4m54o-full.jpg",
+          "sha256": "d4b216dc43b07ccf78fe365cbd0ea77ffe683c8418c1db20f26af9a695ff30bb",
+          "panoramaSha256": "6567182c6f197321540e9fa4f6160bef64c1026b26ba709c6bfb1cec42546c7a",
+          "date": "2023-01-12T09:07:44.610590Z",
+          "publicUrl": "/data/city-expansion/evidence/d4b216dc43b07ccf78fe365cbd0ea77ffe683c8418c1db20f26af9a695ff30bb.jpg"
+        },
+        "ground": {
+          "file": "0363100012237100_e_1l4m54o-ground.jpg",
+          "sha256": "311818709b805dd918b8bf2e7ea71b233e0099d74072a098016b471cae0fda5e",
+          "panoramaSha256": "06a5a2051bff76deb39f72b70a6c599d392eea22f314704dd37d9057c9126894",
+          "date": "2025-07-31T11:09:53Z",
+          "publicUrl": "/data/city-expansion/evidence/311818709b805dd918b8bf2e7ea71b233e0099d74072a098016b471cae0fda5e.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012167013_e_0p7lv5i",
+      "buildingId": "0363100012167013",
+      "geometryRevision": "bbaee50341554a99711d35471af1426c7b9617f69e069c4545ae056c80652b6b",
+      "district": "Da Costabuurt",
+      "evidenceKey": "a78e5b74fdaf4ac23ec6723dcbb77d8675f4472efccd3c5146c6cc4bc1b86b19",
+      "frontage": [
+        [
+          -70.89822694371105,
+          -198.18824733106885
+        ],
+        [
+          -75.81822673112038,
+          -196.4182472989196
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012167013_e_0p7lv5i-full.jpg",
+          "sha256": "4676cd333c73831a0db4a36b6cc742ad0756ce88029a8e302cb7f3c6c4ca7dc3",
+          "panoramaSha256": "2d5cae8a6c4bbfbe1fa525f0064efc867caa81934a91d830a1ad156d97cdb9f8",
+          "date": "2023-01-10T10:53:27.416180Z",
+          "publicUrl": "/data/city-expansion/evidence/4676cd333c73831a0db4a36b6cc742ad0756ce88029a8e302cb7f3c6c4ca7dc3.jpg"
+        },
+        "ground": {
+          "file": "0363100012167013_e_0p7lv5i-ground.jpg",
+          "sha256": "76e189c1545272da96bc8c7dbf72f1ebbd417ea0c8187eb4c91236fad9583496",
+          "panoramaSha256": "cefbe1f12e0692c57e0f3e972e09397d8ca4767be87bd1d260e7b56cd7f07eef",
+          "date": "2025-07-03T08:55:26Z",
+          "publicUrl": "/data/city-expansion/evidence/76e189c1545272da96bc8c7dbf72f1ebbd417ea0c8187eb4c91236fad9583496.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012154336_e_1xz6eyd",
+      "buildingId": "0363100012154336",
+      "geometryRevision": "bb835d9291d3716f4efe3a555964066513aaa2c4320cd2c4029d4b494d78bd10",
+      "district": "Da Costabuurt",
+      "evidenceKey": "995510840bee822fca369bb4b52447c0b62726272c0dfdd39d637c41596e0f50",
+      "frontage": [
+        [
+          2.061765305668814,
+          -60.743247519247234
+        ],
+        [
+          3.271765150449937,
+          -57.518247517815325
+        ]
+      ],
+      "surfaceIndices": [
+        15
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012154336_e_1xz6eyd-full.jpg",
+          "sha256": "6a7cf83876a01f8e65827b5b0f2d899f350782b031ddccb16fac8edcc1fb4439",
+          "panoramaSha256": "0cb0b12f4ce647b498cc1cffb18e7dc6df33acf0e54c2341968d994a2ad1ea53",
+          "date": "2023-01-10T10:50:07.612780Z",
+          "publicUrl": "/data/city-expansion/evidence/6a7cf83876a01f8e65827b5b0f2d899f350782b031ddccb16fac8edcc1fb4439.jpg"
+        },
+        "ground": {
+          "file": "0363100012154336_e_1xz6eyd-ground.jpg",
+          "sha256": "fd189f176dad10dd61b2cc9a77e127ae6a0dc36e4f892d641f73bfe3d7fda824",
+          "panoramaSha256": "e292b73ebab4c3ba3400ec4623171db21f4eb9ed063571a5df1953cc092d3ab2",
+          "date": "2025-07-03T11:33:22Z",
+          "publicUrl": "/data/city-expansion/evidence/fd189f176dad10dd61b2cc9a77e127ae6a0dc36e4f892d641f73bfe3d7fda824.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012236441_e_0xxtbct",
+      "buildingId": "0363100012236441",
+      "geometryRevision": "159acecdd3f9f30e52f32af480761677e3b7519094a1f367699bfd75952d4594",
+      "district": "Da Costabuurt",
+      "evidenceKey": "f71a0cc43a8d78eab114c0cf9e1f4dcf14c0f7c9569671a954551cd6457b3c96",
+      "frontage": [
+        [
+          26.787756841498776,
+          193.4867527791066
+        ],
+        [
+          43.291756176739,
+          185.8617526696762
+        ]
+      ],
+      "surfaceIndices": [
+        50,
+        110,
+        114
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012236441_e_0xxtbct-full.jpg",
+          "sha256": "a68da6c2aaf6f7854fd642cc272f000eb37fe5e3301c7ce0bc86edc005d822b3",
+          "panoramaSha256": "f1501f7a81dfa31cd69e29b62540e4b951cacce7fc71d1c9d95fea989e87f304",
+          "date": "2024-11-29T09:33:36Z",
+          "publicUrl": "/data/city-expansion/evidence/a68da6c2aaf6f7854fd642cc272f000eb37fe5e3301c7ce0bc86edc005d822b3.jpg"
+        },
+        "ground": {
+          "file": "0363100012236441_e_0xxtbct-ground.jpg",
+          "sha256": "a54ff2312695f70f7677f80075fc3ca9413a91d76f474f2111e812dd441a0e90",
+          "panoramaSha256": "21598e79b618b6d82a64a9f3dd47a600cd7435d07fedb92af5b5a55f8ce166fb",
+          "date": "2024-11-29T09:57:09Z",
+          "publicUrl": "/data/city-expansion/evidence/a54ff2312695f70f7677f80075fc3ca9413a91d76f474f2111e812dd441a0e90.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012067309_e_1c8xhxm",
+      "buildingId": "0363100012067309",
+      "geometryRevision": "2a5f56ec2ec4817a0daae0df113a6fa0b9548babe11c2394db68d0b8de723cc3",
+      "district": "Da Costabuurt",
+      "evidenceKey": "b666e351a50469788bf4c4a11fa04dd0402f66c592c03fe5ab14796c0245c763",
+      "frontage": [
+        [
+          66.67075738345739,
+          98.65275238273898
+        ],
+        [
+          80.54675570712425,
+          131.99575236195233
+        ]
+      ],
+      "surfaceIndices": [
+        11,
+        16,
+        17,
+        22,
+        23
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012067309_e_1c8xhxm-full.jpg",
+          "sha256": "e054d353e964e217957ca4926798ac5cc539c34a127e93b65507add15f19cb23",
+          "panoramaSha256": "ca5042cf53528101460edcd7621427be717e29d613ff11e6c6e4862b940caa43",
+          "date": "2023-01-12T09:08:00.375470Z",
+          "publicUrl": "/data/city-expansion/evidence/e054d353e964e217957ca4926798ac5cc539c34a127e93b65507add15f19cb23.jpg"
+        },
+        "ground": {
+          "file": "0363100012067309_e_1c8xhxm-ground.jpg",
+          "sha256": "25318c3efed41adec00bd238a606f1d217ab35bd795b297f1a7ee732ca9eb427",
+          "panoramaSha256": "d3cf28d2be068deecb898742cd9a2c6114670ba02b489e180a165fa30e4da05d",
+          "date": "2025-07-03T11:32:10Z",
+          "publicUrl": "/data/city-expansion/evidence/25318c3efed41adec00bd238a606f1d217ab35bd795b297f1a7ee732ca9eb427.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012165919_e_0ca7kp7",
+      "buildingId": "0363100012165919",
+      "geometryRevision": "5b7c382892eec860e3603f95c7547207b7b81568b4c9989cc754c818e5b9c737",
+      "district": "Da Costabuurt",
+      "evidenceKey": "9de0e045b0a6678df30671140851067ec611ec702e1fe5347f38a402cfc11075",
+      "frontage": [
+        [
+          -167.47922203163034,
+          -189.80024676100584
+        ],
+        [
+          -161.3482222976745,
+          -191.96224679995794
+        ]
+      ],
+      "surfaceIndices": [
+        2,
+        14
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012165919_e_0ca7kp7-full.jpg",
+          "sha256": "cb4e87f1cda8b47c91ccf4fc78d062823840a774f5d3a4078aae2cb30d89cc14",
+          "panoramaSha256": "112eaf36358cb53df7eeb5c08a439650b224c8454aac9a4760e76055d1e5f355",
+          "date": "2024-11-29T09:59:37Z",
+          "publicUrl": "/data/city-expansion/evidence/cb4e87f1cda8b47c91ccf4fc78d062823840a774f5d3a4078aae2cb30d89cc14.jpg"
+        },
+        "ground": {
+          "file": "0363100012165919_e_0ca7kp7-ground.jpg",
+          "sha256": "9098c37917b4435781aff3915c60941ca805683bc01121f1db6fec42d61bc1d3",
+          "panoramaSha256": "6bfcf3bc6c388ba0933107622a4069be9b9538ffb8d5a195e1bac705250fb76d",
+          "date": "2025-06-18T10:05:08Z",
+          "publicUrl": "/data/city-expansion/evidence/9098c37917b4435781aff3915c60941ca805683bc01121f1db6fec42d61bc1d3.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012164571_e_00e1xvi",
+      "buildingId": "0363100012164571",
+      "geometryRevision": "49865233c4f4f475d445585b70f8b26abcc13987e50ddab88cf8c9ee2dd4df0d",
+      "district": "Da Costabuurt",
+      "evidenceKey": "ceed3d8ae3e791c4f5c2f3840b663ca136beae587b76a9d3dd0c55089a382aec",
+      "frontage": [
+        [
+          109.63075219084567,
+          201.97275231982348
+        ],
+        [
+          111.7207519399235,
+          206.9427523164195
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012164571_e_00e1xvi-full.jpg",
+          "sha256": "7ecef9bfff0795e66eb437becd25da6de7b9bcd2539cec42dd6bc25daece45e0",
+          "panoramaSha256": "8be926adc6a3ef998c9506bfc57f38cf556e9ebaab72c8a515982023d82601db",
+          "date": "2024-11-29T09:36:04Z",
+          "publicUrl": "/data/city-expansion/evidence/7ecef9bfff0795e66eb437becd25da6de7b9bcd2539cec42dd6bc25daece45e0.jpg"
+        },
+        "ground": {
+          "file": "0363100012164571_e_00e1xvi-ground.jpg",
+          "sha256": "9efb164e401f7a8b935cac7010608ffde761d81152c82239d431e90b19ba5afb",
+          "panoramaSha256": "f2669c2779287a1f029e99ed06fa66fd0c7e79eaac3c500f6be74ad5261675d5",
+          "date": "2025-07-31T11:12:15Z",
+          "publicUrl": "/data/city-expansion/evidence/9efb164e401f7a8b935cac7010608ffde761d81152c82239d431e90b19ba5afb.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012089603_e_1cvhymq",
+      "buildingId": "0363100012089603",
+      "geometryRevision": "b7f5db0bf44e58391025a264bf3a41bced19502c16df76bc465f1fe65a34f647",
+      "district": "Da Costabuurt",
+      "evidenceKey": "34b6023d27fa14bece035808233b7bc4568e209ad8ad5275281b1b30180cf5e1",
+      "frontage": [
+        [
+          76.72875212776125,
+          266.5337526258081
+        ],
+        [
+          69.30775302217808,
+          248.77575263514882
+        ]
+      ],
+      "surfaceIndices": [
+        12
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012089603_e_1cvhymq-full.jpg",
+          "sha256": "415df37042996ed93a1429444d59dfd646ab05f1caf69b41e32dbb8e10718f1a",
+          "panoramaSha256": "efc9a598b8130443d1cc2eee3521659fca6b4e1141ab3e591e9f08137c0aef6a",
+          "date": "2024-11-29T08:04:25Z",
+          "publicUrl": "/data/city-expansion/evidence/415df37042996ed93a1429444d59dfd646ab05f1caf69b41e32dbb8e10718f1a.jpg"
+        },
+        "ground": {
+          "file": "0363100012089603_e_1cvhymq-ground.jpg",
+          "sha256": "9e294e074dc9b14c5daf232fd344d7f29af3ea228c15e602dae57a68978107a7",
+          "panoramaSha256": "7b296209d6ed0c19c5a7bcca0a85775aafbdd74ba7bd5510f2481307c2c047ba",
+          "date": "2025-07-31T09:40:04Z",
+          "publicUrl": "/data/city-expansion/evidence/9e294e074dc9b14c5daf232fd344d7f29af3ea228c15e602dae57a68978107a7.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012156077_e_1yr2ovu",
+      "buildingId": "0363100012156077",
+      "geometryRevision": "4c15dc21cc262f33b7221a48d2ebd5f85a0f3808388bb7de0bb2826c03783639",
+      "district": "Da Costabuurt",
+      "evidenceKey": "2d022c9e0baf0e2f372018aabe4074ea342059e2ec0a90b38ae14a78b44957f3",
+      "frontage": [
+        [
+          -68.0102263167064,
+          -225.96224739629542
+        ],
+        [
+          -62.37022655966575,
+          -228.0142474329332
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012156077_e_1yr2ovu-full.jpg",
+          "sha256": "efd7970d3197e5781a1f884e1204694ef1813324f38d00d9ec579e40d4dd32e8",
+          "panoramaSha256": "d3999b774edcf21e0fd6f48c66d4c2658d672e49be34a531e8c377d9c34de5a5",
+          "date": "2025-07-03T08:55:33Z",
+          "publicUrl": "/data/city-expansion/evidence/efd7970d3197e5781a1f884e1204694ef1813324f38d00d9ec579e40d4dd32e8.jpg"
+        },
+        "ground": {
+          "file": "0363100012156077_e_1yr2ovu-ground.jpg",
+          "sha256": "cbfb9dfd13ce0a657b74d0fb6eceeb2c786dcea749ee2ed0ed50a76a011ee3b7",
+          "panoramaSha256": "d8d2ad9bcbbfc7fe94b873496d0840ec2cdae9020ae3f843838b930dd8a5478d",
+          "date": "2025-07-03T08:52:48Z",
+          "publicUrl": "/data/city-expansion/evidence/cbfb9dfd13ce0a657b74d0fb6eceeb2c786dcea749ee2ed0ed50a76a011ee3b7.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012156054_e_0u23hyv",
+      "buildingId": "0363100012156054",
+      "geometryRevision": "b7f4237f4d5aa1437979433d3405ae28940c248a790b6af6279edebf4b0245bd",
+      "district": "Da Costabuurt",
+      "evidenceKey": "adaa395d2476fe491ae6bd7bb86c8a3b730dd345e2352db3c27fca246885788f",
+      "frontage": [
+        [
+          -64.14023012084363,
+          -97.95924720232142
+        ],
+        [
+          -64.62822991394205,
+          -104.39824720838806
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012156054_e_0u23hyv-full.jpg",
+          "sha256": "d32a3366abfba39c08260662a2356ab0bb1805aec38ae6e94d99d24f0e916fa3",
+          "panoramaSha256": "0fcefcb3343dc8d292fcc643f72bb6d028588caadfc46d8cff4eeac22f4e343b",
+          "date": "2025-07-31T11:08:31Z",
+          "publicUrl": "/data/city-expansion/evidence/d32a3366abfba39c08260662a2356ab0bb1805aec38ae6e94d99d24f0e916fa3.jpg"
+        },
+        "ground": {
+          "file": "0363100012156054_e_0u23hyv-ground.jpg",
+          "sha256": "3e19ae0def0746f8821a06527d29c258a6328314ea18e9ed5dc4d28961261d29",
+          "panoramaSha256": "1ce8d464dba2e671a51ce99b991d9609a4443d89e4d3d3358052107323bb7243",
+          "date": "2025-07-31T11:08:30Z",
+          "publicUrl": "/data/city-expansion/evidence/3e19ae0def0746f8821a06527d29c258a6328314ea18e9ed5dc4d28961261d29.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012236796_e_11bsna7",
+      "buildingId": "0363100012236796",
+      "geometryRevision": "080d74ede530fb7a4145a10b2d0e7acecca3b3c69e53d5b608596de02692bf65",
+      "district": "Da Costabuurt",
+      "evidenceKey": "ec13db01e41b278f0fa04f540bf429aedd54e529fffb5d52b9dc78c75762ff9c",
+      "frontage": [
+        [
+          -53.95923194164061,
+          -52.487247184617445
+        ],
+        [
+          -54.988231778144836,
+          -56.35824717889773
+        ]
+      ],
+      "surfaceIndices": [
+        23
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012236796_e_11bsna7-full.jpg",
+          "sha256": "024b1220b34edb0bdc5ce348fd8270358b2b85b0adfd1138205607ec3f92bb43",
+          "panoramaSha256": "54231bf2c2ecd5190b67bac332cfa3427de689dfa9a0714dcac0f961334d0665",
+          "date": "2025-07-31T11:08:39Z",
+          "publicUrl": "/data/city-expansion/evidence/024b1220b34edb0bdc5ce348fd8270358b2b85b0adfd1138205607ec3f92bb43.jpg"
+        },
+        "ground": {
+          "file": "0363100012236796_e_11bsna7-ground.jpg",
+          "sha256": "4058c26a0da6603088b2c2ea5d490ca4a5e6295f54ebac643d42cedf59bcbeda",
+          "panoramaSha256": "27d9175eedf359724783c0bda7d0271961029fbeeb5d0d280b1dd720e69de6a3",
+          "date": "2025-07-31T11:08:38Z",
+          "publicUrl": "/data/city-expansion/evidence/4058c26a0da6603088b2c2ea5d490ca4a5e6295f54ebac643d42cedf59bcbeda.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012132271_e_09pgk76",
+      "buildingId": "0363100012132271",
+      "geometryRevision": "19b3b4e35dfe6f0bfe09a2ac05c52c8d60dceaf38bffbcd4c70eb8e586b575c6",
+      "district": "Da Costabuurt",
+      "evidenceKey": "4c0f31ccf561f5cbaccb1bef3600781a7485049a8ec8e9ebe419d5868a38df4a",
+      "frontage": [
+        [
+          -260.39821800607024,
+          -156.78824616817292
+        ],
+        [
+          -255.74721820649575,
+          -158.48224619793473
+        ]
+      ],
+      "surfaceIndices": [
+        8
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012132271_e_09pgk76-full.jpg",
+          "sha256": "a299cb91b4185c643eca0fd81830a0a8c0061323d465f79debfdddd116ddad93",
+          "panoramaSha256": "06b02a72b94aa1756e06d3bf2f20840fff5017d1edc26d5052dd97100a88721d",
+          "date": "2023-01-10T10:42:52.241930Z",
+          "publicUrl": "/data/city-expansion/evidence/a299cb91b4185c643eca0fd81830a0a8c0061323d465f79debfdddd116ddad93.jpg"
+        },
+        "ground": {
+          "file": "0363100012132271_e_09pgk76-ground.jpg",
+          "sha256": "6369cdec83afc8cc08aa6235d8b4733a4a99a548ae7696100b63db5dddd92306",
+          "panoramaSha256": "10414d2656ad2189aaec139a48488eb31169320a95aa7f65f43bd592e4882a13",
+          "date": "2025-06-18T10:05:32Z",
+          "publicUrl": "/data/city-expansion/evidence/6369cdec83afc8cc08aa6235d8b4733a4a99a548ae7696100b63db5dddd92306.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012167944_e_12245ey",
+      "buildingId": "0363100012167944",
+      "geometryRevision": "809d1d280c25f99851859e2157c30bac2744aaec53ba8b2d30e5fff0c634260f",
+      "district": "Jordaan",
+      "evidenceKey": "8adae5a2b9b342d00443120b59d767de8075371906ac20a36393ebf00941e186",
+      "frontage": [
+        [
+          432.47175239096396,
+          -416.8302506027976
+        ],
+        [
+          438.2007521496562,
+          -419.0972506386461
+        ]
+      ],
+      "surfaceIndices": [
+        10
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012167944_e_12245ey-full.jpg",
+          "sha256": "fd3c48bb503e8174e10cc919d80adbe13dcadb1249622909dc93a6bad7bcdf72",
+          "panoramaSha256": "5f34710ec2b788cdfbb2388985575e5a06f4358899e73cd8d0153ea4fa8da838",
+          "date": "2025-01-20T10:11:49Z",
+          "publicUrl": "/data/city-expansion/evidence/fd3c48bb503e8174e10cc919d80adbe13dcadb1249622909dc93a6bad7bcdf72.jpg"
+        },
+        "ground": {
+          "file": "0363100012167944_e_12245ey-ground.jpg",
+          "sha256": "25a31242806bf7d8802f1eedea2c1cfa2d19d49ddecc0882fede499112366c02",
+          "panoramaSha256": "28509eee2ec963193f80541ad5c21f9d6880dcc0ab2f574dd85e614c48952a8b",
+          "date": "2022-04-29T08:16:26.826500Z",
+          "publicUrl": "/data/city-expansion/evidence/25a31242806bf7d8802f1eedea2c1cfa2d19d49ddecc0882fede499112366c02.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012169892_e_0pklugu",
+      "buildingId": "0363100012169892",
+      "geometryRevision": "de9b2b178eeb321c5be320b2e702a4b8b1e2c2af9f9c4884b519b7d5ab295dc8",
+      "district": "Jordaan",
+      "evidenceKey": "248b5a4f325453cae07c7922a139129c89af383ae0394a389f6cee48e47d03cc",
+      "frontage": [
+        [
+          557.5587408353313,
+          -242.3492510287906
+        ],
+        [
+          561.9757406516001,
+          -244.17425105761504
+        ]
+      ],
+      "surfaceIndices": [
+        7,
+        10
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012169892_e_0pklugu-full.jpg",
+          "sha256": "9b93ec70a8f4a92434089a09e385ef2e8c01ad36d5ad38d3ff35a9588e8333e2",
+          "panoramaSha256": "3ae1f932cd31de1f217554e57d3836c758bf8c29dd3b54174815351f4eace0f3",
+          "date": "2023-02-13T10:59:00.229010Z",
+          "publicUrl": "/data/city-expansion/evidence/9b93ec70a8f4a92434089a09e385ef2e8c01ad36d5ad38d3ff35a9588e8333e2.jpg"
+        },
+        "ground": {
+          "file": "0363100012169892_e_0pklugu-ground.jpg",
+          "sha256": "7078da8e72e571ac89326811b36a697f1712a7978bafd6f631ad88f35a0d0d9f",
+          "panoramaSha256": "e8a2b19cc6763425136e617974ee96c8dab94914c0c198dc14478895fa04cde3",
+          "date": "2025-07-03T09:51:51Z",
+          "publicUrl": "/data/city-expansion/evidence/7078da8e72e571ac89326811b36a697f1712a7978bafd6f631ad88f35a0d0d9f.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012168967_e_1fakpw3",
+      "buildingId": "0363100012168967",
+      "geometryRevision": "4439faa11dc379f34707262cfe15686656ec24d85e2b92bba62a8c516e849483",
+      "district": "Jordaan",
+      "evidenceKey": "90d0d0d252426fd06431ca7eaa7ad82646d968b069852a59dc4a490a5b0b70b4",
+      "frontage": [
+        [
+          404.62774716362765,
+          -177.9462500330992
+        ],
+        [
+          407.67074703740946,
+          -179.21625005704118
+        ]
+      ],
+      "surfaceIndices": [
+        15
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012168967_e_1fakpw3-full.jpg",
+          "sha256": "1f5557468a214d243ed8c7e6498ea5688a47c115a8869e4fe9a3b8e677325579",
+          "panoramaSha256": "ef9cfcf51a60d09d11b557e1e192a8e7ce10e48c89172add0af7a0c0fbc2112b",
+          "date": "2024-12-17T08:53:08Z",
+          "publicUrl": "/data/city-expansion/evidence/1f5557468a214d243ed8c7e6498ea5688a47c115a8869e4fe9a3b8e677325579.jpg"
+        },
+        "ground": {
+          "file": "0363100012168967_e_1fakpw3-ground.jpg",
+          "sha256": "887d789c37c65c9d18b903070601380cf6936364a93c56bb36ed8d6213607771",
+          "panoramaSha256": "a64b88ec435eeed1f8afc527b7f09b2abe33412e4c07db59183959981f09715c",
+          "date": "2025-07-03T09:38:56Z",
+          "publicUrl": "/data/city-expansion/evidence/887d789c37c65c9d18b903070601380cf6936364a93c56bb36ed8d6213607771.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012170203_e_0antd5h",
+      "buildingId": "0363100012170203",
+      "geometryRevision": "82623dc510097d20138a0055552f5a151ac1d7a5339d34d4e2dff5ac83ec8e39",
+      "district": "Jordaan",
+      "evidenceKey": "1b679017df3c8083fa7f11764c419447dee4b078c28dff05d8afcbb3bc8f980c",
+      "frontage": [
+        [
+          549.180735713453,
+          -44.11725063162157
+        ],
+        [
+          545.5817361304653,
+          -52.14825062896125
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012170203_e_0antd5h-full.jpg",
+          "sha256": "e14957fbbea30926b4257f05e7f5c48fab729d54580dc48de24ae2fd23e80673",
+          "panoramaSha256": "b471115e0119149fcc0362a3f665bfb1cc67749ee2e0a4489e87117fc04d1d93",
+          "date": "2024-12-16T09:30:23Z",
+          "publicUrl": "/data/city-expansion/evidence/e14957fbbea30926b4257f05e7f5c48fab729d54580dc48de24ae2fd23e80673.jpg"
+        },
+        "ground": {
+          "file": "0363100012170203_e_0antd5h-ground.jpg",
+          "sha256": "4c24e7e8bb56ed2f081ef4637c38d1b80987e758be26535b6bb4275ea825ca3d",
+          "panoramaSha256": "7ee79df9197ddc792345c4a77b24385b3336255cb54ba446d72450f791ba3c12",
+          "date": "2022-04-29T08:33:32.482940Z",
+          "publicUrl": "/data/city-expansion/evidence/4c24e7e8bb56ed2f081ef4637c38d1b80987e758be26535b6bb4275ea825ca3d.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012170093_e_0n47f1p",
+      "buildingId": "0363100012170093",
+      "geometryRevision": "591ca96ba2f46be3d827934f74fa99ce7a74569092d43c28f9597d7a559ae121",
+      "district": "Jordaan",
+      "evidenceKey": "69aee5d248a8f8f6824d3a0bdc3b46cdf7560b3aebcaa55bf77fc8f4b07d7fcb",
+      "frontage": [
+        [
+          555.1417472316825,
+          -465.57825139310444
+        ],
+        [
+          561.7357469511335,
+          -468.07725143869175
+        ]
+      ],
+      "surfaceIndices": [
+        6
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012170093_e_0n47f1p-full.jpg",
+          "sha256": "9242ef2ef66b5020067b310ef31b7a8c97d7aa8092c862bcc9227629e50870da",
+          "panoramaSha256": "b8ea3de217942549021a5205536155058708f288735ce1ef52ecf5331764e8c8",
+          "date": "2025-01-20T10:12:06Z",
+          "publicUrl": "/data/city-expansion/evidence/9242ef2ef66b5020067b310ef31b7a8c97d7aa8092c862bcc9227629e50870da.jpg"
+        },
+        "ground": {
+          "file": "0363100012170093_e_0n47f1p-ground.jpg",
+          "sha256": "48c044462888b145fce6517b57f084f1f777c21ee563ef49ee4e6148871a28aa",
+          "panoramaSha256": "3da32713c0a2dcc71febbdf64103356f62408acc055b1ffc0a27b8619737c07f",
+          "date": "2022-04-22T10:28:30.049630Z",
+          "publicUrl": "/data/city-expansion/evidence/48c044462888b145fce6517b57f084f1f777c21ee563ef49ee4e6148871a28aa.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012174288_e_0z6ytzw",
+      "buildingId": "0363100012174288",
+      "geometryRevision": "4f237485c8bcdc955609e7e9780aea47e9423d19db1b52b5dac2af23a3fd6efd",
+      "district": "Jordaan",
+      "evidenceKey": "c31e88c6be9dfc2b60d1d0a22576141657d49c99329167c3707b06df40d63ee6",
+      "frontage": [
+        [
+          384.2157480154274,
+          -169.59724990365794
+        ],
+        [
+          389.205747807835,
+          -171.66424993606051
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012174288_e_0z6ytzw-full.jpg",
+          "sha256": "085e17da4565d3c30d0663eace81f78bd4a40d5b45793e521023632c9c2d91de",
+          "panoramaSha256": "ef9cfcf51a60d09d11b557e1e192a8e7ce10e48c89172add0af7a0c0fbc2112b",
+          "date": "2024-12-17T08:53:08Z",
+          "publicUrl": "/data/city-expansion/evidence/085e17da4565d3c30d0663eace81f78bd4a40d5b45793e521023632c9c2d91de.jpg"
+        },
+        "ground": {
+          "file": "0363100012174288_e_0z6ytzw-ground.jpg",
+          "sha256": "c72ee2ff40a82463b29160efc14e9f681817c5f40e13dba2bad3719a4fd8aa91",
+          "panoramaSha256": "a3d7014dcdb8765041ab0e4b9067bbd7ce3528498096dba67dcfeaefe2094407",
+          "date": "2025-07-03T09:38:50Z",
+          "publicUrl": "/data/city-expansion/evidence/c72ee2ff40a82463b29160efc14e9f681817c5f40e13dba2bad3719a4fd8aa91.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012174168_e_1x37anp",
+      "buildingId": "0363100012174168",
+      "geometryRevision": "8986ffd42e3eec96a95c18a7b451cb81290b97834e2bf31dbe05b4af7c85db63",
+      "district": "Jordaan",
+      "evidenceKey": "e34b6adee2eff6c07a78cdf4655fcb95b0aed1322e1bd431afcbc94bcbf21962",
+      "frontage": [
+        [
+          469.8417508218845,
+          -431.780250845477
+        ],
+        [
+          475.1017506013741,
+          -433.897250876762
+        ]
+      ],
+      "surfaceIndices": [],
+      "images": {
+        "full": {
+          "file": "0363100012174168_e_1x37anp-full.jpg",
+          "sha256": "59c2333cda1ef84a5fc7a5ae21afa35fc22d89457cb8d39fb0c8f6654455b6a1",
+          "panoramaSha256": "212f925c2071332530662e3fd42f4f94f7ff5ce828e8f53acc822f334e21115e",
+          "date": "2022-12-15T09:29:59.802150Z",
+          "publicUrl": "/data/city-expansion/evidence/59c2333cda1ef84a5fc7a5ae21afa35fc22d89457cb8d39fb0c8f6654455b6a1.jpg"
+        },
+        "ground": {
+          "file": "0363100012174168_e_1x37anp-ground.jpg",
+          "sha256": "03a55ca698ea6d1a3a699cc3aebd5453cb1fc1d1bc579b4016582c269fb1bb28",
+          "panoramaSha256": "49429702ebeadef888dd38bf8e408f0c6e4e5a64f4528e69ab3070fbfb0b7ba3",
+          "date": "2022-04-29T08:16:22.831460Z",
+          "publicUrl": "/data/city-expansion/evidence/03a55ca698ea6d1a3a699cc3aebd5453cb1fc1d1bc579b4016582c269fb1bb28.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012169948_e_0cg9q7q",
+      "buildingId": "0363100012169948",
+      "geometryRevision": "a9624d8a41163f858536e98fc459e2a5dc523c05aa898cb316cc73f0f63be849",
+      "district": "Jordaan",
+      "evidenceKey": "204429e3a8efb8138707cf861a3371523ebdfa767e04c9eec6114026da75d5f3",
+      "frontage": [
+        [
+          533.7657418196613,
+          -232.32525087258546
+        ],
+        [
+          542.5497414568963,
+          -236.04825092974352
+        ]
+      ],
+      "surfaceIndices": [
+        23
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012169948_e_0cg9q7q-full.jpg",
+          "sha256": "18d8144cac4e94e1ae839e4cd2b2dca096233782e9f206fd1d0798e74cd0e693",
+          "panoramaSha256": "723c7e3312146fac8e7c0ea9699ce280a46a5ce002ddbcd49d7fa951aed3f948",
+          "date": "2023-02-13T10:58:57.443990Z",
+          "publicUrl": "/data/city-expansion/evidence/18d8144cac4e94e1ae839e4cd2b2dca096233782e9f206fd1d0798e74cd0e693.jpg"
+        },
+        "ground": {
+          "file": "0363100012169948_e_0cg9q7q-ground.jpg",
+          "sha256": "2ab47d2455690c20280e5ef7a07e861e28567b15bf2cb15b96b9ef0e0d9ca8ba",
+          "panoramaSha256": "6f43ef1dfd6d82291b7a7d6e70ac3c6f7c089cfa927c27a6ef3d49a031c0491e",
+          "date": "2025-07-03T09:51:58Z",
+          "publicUrl": "/data/city-expansion/evidence/2ab47d2455690c20280e5ef7a07e861e28567b15bf2cb15b96b9ef0e0d9ca8ba.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012172773_e_0nlsds9",
+      "buildingId": "0363100012172773",
+      "geometryRevision": "f9003fe4d85b86aad2eeeba2c35cd1620cdacb9dfcd558e38c0ddbaa30537c78",
+      "district": "Jordaan",
+      "evidenceKey": "058adb4e8c743308e1b3209a16f08c4dbd830e80f5164e85fc90e59a839ed96a",
+      "frontage": [
+        [
+          652.2377431392815,
+          -503.79725201806286
+        ],
+        [
+          668.1197424830461,
+          -510.5152521186392
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012172773_e_0nlsds9-full.jpg",
+          "sha256": "d6d1d9126b1edd8b51e9418eeac790cc3ff768a34b63585d044ae8edbf7f07ae",
+          "panoramaSha256": "39690bf0cc33ec79d138fb04609c71441d186d8611395873fc7bb87e66709c17",
+          "date": "2025-01-20T10:12:18Z",
+          "publicUrl": "/data/city-expansion/evidence/d6d1d9126b1edd8b51e9418eeac790cc3ff768a34b63585d044ae8edbf7f07ae.jpg"
+        },
+        "ground": {
+          "file": "0363100012172773_e_0nlsds9-ground.jpg",
+          "sha256": "9fb3ac72b0af29b18393d9b3314d8b855c758794bc0a0c7abc937d8a80e28e80",
+          "panoramaSha256": "7482c9ed69f26e9bf1ab843bc61b5d9dcf36b1dbf3cbe3f4cb51b65f78c83c0a",
+          "date": "2024-12-16T09:18:10Z",
+          "publicUrl": "/data/city-expansion/evidence/9fb3ac72b0af29b18393d9b3314d8b855c758794bc0a0c7abc937d8a80e28e80.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012173914_e_1un6nri",
+      "buildingId": "0363100012173914",
+      "geometryRevision": "15ce37b842a6a3a4a59922567a5b12bd5d3e564a8e325a2b21aeeec28e602831",
+      "district": "Jordaan",
+      "evidenceKey": "de6bc90393abbdead2cf9438c94b2c0300c3a7c641e84dcb943b33d43f0096f3",
+      "frontage": [
+        [
+          618.7007374490495,
+          -237.57725137018133
+        ],
+        [
+          622.5347369985247,
+          -228.79225137707544
+        ]
+      ],
+      "surfaceIndices": [
+        2,
+        3
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012173914_e_1un6nri-full.jpg",
+          "sha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+          "panoramaSha256": "b55707ba58085baeb905d6bdf6fbccf9d36e58741ca858ac7b03abec7f9b5d85",
+          "date": "2023-01-30T10:20:45.950790Z",
+          "publicUrl": "/data/city-expansion/evidence/6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114.jpg"
+        },
+        "ground": {
+          "file": "0363100012173914_e_1un6nri-ground.jpg",
+          "sha256": "9d0ac687f89aeee328300bfa20b35f655c9a12c5870441467401b558192ae6bd",
+          "panoramaSha256": "a7e37fcf79f8205226ba43fd97d2ef98967c5fd0f57d3f1c77a94328a10fde1b",
+          "date": "2022-04-29T08:27:17.431130Z",
+          "publicUrl": "/data/city-expansion/evidence/9d0ac687f89aeee328300bfa20b35f655c9a12c5870441467401b558192ae6bd.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012174278_e_0oy3b32",
+      "buildingId": "0363100012174278",
+      "geometryRevision": "e0fdb5e4e0b35ca18d1af98a99f179cbe3bce934e4ca69b75e0cef12507cdf08",
+      "district": "Jordaan",
+      "evidenceKey": "b5d89835fadd7667e41d9246fadfcb215b3c78a416de16df396b1fb66be0b59c",
+      "frontage": [
+        [
+          382.19475365270046,
+          -366.46825022873236
+        ],
+        [
+          377.510753849725,
+          -364.6072501988965
+        ]
+      ],
+      "surfaceIndices": [
+        19,
+        21
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012174278_e_0oy3b32-full.jpg",
+          "sha256": "66d8d1b9e2b281015c99636fdd92c7b0a5eb416c9a4b046f697cfb51e942848b",
+          "panoramaSha256": "95ff7df057619354be1c03cf1e3fb1ae2f109faca77b335aa030027b7cfd9716",
+          "date": "2024-12-16T10:24:37Z",
+          "publicUrl": "/data/city-expansion/evidence/66d8d1b9e2b281015c99636fdd92c7b0a5eb416c9a4b046f697cfb51e942848b.jpg"
+        },
+        "ground": {
+          "file": "0363100012174278_e_0oy3b32-ground.jpg",
+          "sha256": "77658481481ab0b998b1264ed309f250b74acd03ac6dedb121de1ba71780961d",
+          "panoramaSha256": "d2a9d45b66eff02f2f7ffaeae8b50c30e340cc457fb32b49149c1361bdb849c6",
+          "date": "2023-01-16T11:28:00.467850Z",
+          "publicUrl": "/data/city-expansion/evidence/77658481481ab0b998b1264ed309f250b74acd03ac6dedb121de1ba71780961d.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012174159_e_1scn3au",
+      "buildingId": "0363100012174159",
+      "geometryRevision": "a77f1cf6bc49709f19d73368b832b6732eb2c4350a1c1f89335d9d78cb4e20a0",
+      "district": "Jordaan",
+      "evidenceKey": "ead11e14eb2b79e49cf67d7a0a2f8271f4093c389e8ed2840a980d9376b38119",
+      "frontage": [
+        [
+          452.8807379648206,
+          58.092750100651756
+        ],
+        [
+          445.9307387516019,
+          43.25175011425745
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012174159_e_1scn3au-full.jpg",
+          "sha256": "a05913333dcff4a12c1c86d3c105548b98cf8151a820bee1a19db0d25b0a9ad4",
+          "panoramaSha256": "9609dba6bd92dfb9d1d88cbc88bb924edff2cbeabc0a187b02e1ff7b986b6a07",
+          "date": "2024-12-16T10:02:36Z",
+          "publicUrl": "/data/city-expansion/evidence/a05913333dcff4a12c1c86d3c105548b98cf8151a820bee1a19db0d25b0a9ad4.jpg"
+        },
+        "ground": {
+          "file": "0363100012174159_e_1scn3au-ground.jpg",
+          "sha256": "081be65f94a5e3d298e2be062a656472a8df9fa11e844239013b73f20da6061b",
+          "panoramaSha256": "45e97d48f68573a3da8b82d0d2eee4eebc2f63e7c6f089e6863d89ea3655cbe1",
+          "date": "2025-07-03T10:09:20Z",
+          "publicUrl": "/data/city-expansion/evidence/081be65f94a5e3d298e2be062a656472a8df9fa11e844239013b73f20da6061b.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012174549_e_0brqvmp",
+      "buildingId": "0363100012174549",
+      "geometryRevision": "34bb45696a7b2d68b05c58de3de225d86558183d27a75b11af1e878291a67b56",
+      "district": "Jordaan",
+      "evidenceKey": "86111b814cc787c69b8248feefea948f7747041e92f23a9d57c0bffb0970da41",
+      "frontage": [
+        [
+          478.9857374944986,
+          25.40374989202246
+        ],
+        [
+          468.9057378770085,
+          30.872749960282817
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012174549_e_0brqvmp-full.jpg",
+          "sha256": "44590ed277645e3df88416c5454d61fac57336ad292067b6621aeb8766c330ff",
+          "panoramaSha256": "dac79d0d40e5af741bce246ba77e0c7f70fe1eef2a9e0df159f808db383ee35c",
+          "date": "2023-01-16T09:28:47.937320Z",
+          "publicUrl": "/data/city-expansion/evidence/44590ed277645e3df88416c5454d61fac57336ad292067b6621aeb8766c330ff.jpg"
+        },
+        "ground": {
+          "file": "0363100012174549_e_0brqvmp-ground.jpg",
+          "sha256": "c393ccf669178e0844f8b6200efa7b4927db382db7fc66901f1ed1146a6dc269",
+          "panoramaSha256": "623bcdf67c63f4b3f4dccd648d59928f4c60999366884c945d685d4417bb4635",
+          "date": "2025-06-30T05:28:14Z",
+          "publicUrl": "/data/city-expansion/evidence/c393ccf669178e0844f8b6200efa7b4927db382db7fc66901f1ed1146a6dc269.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012173932_e_0ec1tw7",
+      "buildingId": "0363100012173932",
+      "geometryRevision": "038c6f1ef8d21af24fb3ceced471ceea3d0aa1aa825129987d4305382bcd5d3d",
+      "district": "Jordaan",
+      "evidenceKey": "7d74c0298fe5c442f5b8dedcccaade49d088b56203c6528b29339a0766a430af",
+      "frontage": [
+        [
+          635.5037367511977,
+          -244.5522514791228
+        ],
+        [
+          631.6007369109866,
+          -242.8522514544893
+        ]
+      ],
+      "surfaceIndices": [
+        3,
+        5
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012173932_e_0ec1tw7-full.jpg",
+          "sha256": "6a61d36d8bd4372603a1bc1a3eb3b656b3460eb4534ce544ac7dc11d38db3e6f",
+          "panoramaSha256": "73aee9ecf8ac67d80cf2d5644705966f0c6a7e47d57519cc2943124dfb959b48",
+          "date": "2023-03-13T08:55:15.621740Z",
+          "publicUrl": "/data/city-expansion/evidence/6a61d36d8bd4372603a1bc1a3eb3b656b3460eb4534ce544ac7dc11d38db3e6f.jpg"
+        },
+        "ground": {
+          "file": "0363100012173932_e_0ec1tw7-ground.jpg",
+          "sha256": "12199bc99610351a57fb32bd93e9636a6d16200c990123246b13e720df778e8e",
+          "panoramaSha256": "af0b5670174b8ac80e52dc862a346fb0a498476e0a8ee2f7ae2a649cf898d2d9",
+          "date": "2025-07-03T09:49:50Z",
+          "publicUrl": "/data/city-expansion/evidence/12199bc99610351a57fb32bd93e9636a6d16200c990123246b13e720df778e8e.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    },
+    {
+      "observationId": "0363100012173863_e_05hdyw7",
+      "buildingId": "0363100012173863",
+      "geometryRevision": "fe3b5f963d5d98024f93fb526d150cf4129201760b82c7ec0009bd20ec67be80",
+      "district": "Jordaan",
+      "evidenceKey": "2b8b84157124b6a25bd16c642f402be58d5c9c6b8c902fee7ff6f03b689a5780",
+      "frontage": [
+        [
+          652.2227295462799,
+          -19.664251179958228
+        ],
+        [
+          660.8667292120226,
+          -24.129251239064615
+        ]
+      ],
+      "surfaceIndices": [
+        17,
+        93
+      ],
+      "images": {
+        "full": {
+          "file": "0363100012173863_e_05hdyw7-full.jpg",
+          "sha256": "ebbcd5d039b3203272678a8e3d8446383ec22d8be1fa4690f67ecde5ce31446c",
+          "panoramaSha256": "556b0e2fa9591c897e105d76ed7c920b8985633328937d5283602761d6c791b6",
+          "date": "2023-01-16T09:26:18.098830Z",
+          "publicUrl": "/data/city-expansion/evidence/ebbcd5d039b3203272678a8e3d8446383ec22d8be1fa4690f67ecde5ce31446c.jpg"
+        },
+        "ground": {
+          "file": "0363100012173863_e_05hdyw7-ground.jpg",
+          "sha256": "1a92c58e2581d9aa0900349dd9382fb61af84d88371dce3384f3cc56d0b24d60",
+          "panoramaSha256": "0d6bc086f28895965edb35c59a64d6a33febec996d26762b60245f3717cfc3da",
+          "date": "2022-04-29T08:51:58.598990Z",
+          "publicUrl": "/data/city-expansion/evidence/1a92c58e2581d9aa0900349dd9382fb61af84d88371dce3384f3cc56d0b24d60.jpg"
+        }
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "pending",
+      "featureStrata": "requires-source-inspection"
+    }
+  ]
+}

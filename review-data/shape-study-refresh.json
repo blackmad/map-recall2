@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "kind": "reviewed-shape-study-refresh",
+  "generatedAt": "2026-09-21T10:24:11.198Z",
+  "sourcePacket": {
+    "path": "public/data/facade-repair-preview/cases.json",
+    "sha256": "f400bd071fef6207c8e4f0d2b3991c7e3e4a8986b6bdeb915214d6c02288eb57"
+  },
+  "refreshed": [
+    {
+      "caseId": "case-14",
+      "tier": "full",
+      "beforePatches": 84,
+      "afterPatches": 83,
+      "removedTrimIds": [
+        "full:material-accent"
+      ],
+      "beforeColours": [
+        "#3f342d",
+        "#526a6b",
+        "#655e50",
+        "#8b4513",
+        "#aaa18a",
+        "#b4a17a",
+        "#ffffff"
+      ],
+      "afterColours": [
+        "#3f342d",
+        "#526a6b",
+        "#655e50",
+        "#8b4513",
+        "#aaa18a",
+        "#b4a17a",
+        "#ffffff"
+      ]
+    }
+  ],
+  "skipped": [],
+  "note": "Targeted shape-study revision through publishPreviewRevision. Metric patches, frames, owners and every other case are left byte-identical; prior packet bytes are archived by the publisher.",
+  "published": {
+    "currentSha256": "f400bd071fef6207c8e4f0d2b3991c7e3e4a8986b6bdeb915214d6c02288eb57",
+    "proposedSha256": "1a969c0fd2db5f212dfd35e203fc03f5a3d93de6022404db8135916993a87426",
+    "currentArchived": false,
+    "proposedArchived": true,
+    "casesPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/facade-repair-preview/cases.json"
+  }
+}

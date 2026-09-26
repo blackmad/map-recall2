@@ -1,0 +1,731 @@
+{
+  "version": 1,
+  "kind": "facade-sample-composition-audit",
+  "generatedAt": "2026-09-13T00:00:00+02:00",
+  "mutationPolicy": "read-only audit; frozen development and held-out sets unchanged",
+  "inputs": {
+    "developmentCases": {
+      "path": "public/data/facade-repair-preview/cases.json",
+      "sha256": "60148829ac835a4745b50faf21b0b1b3cf08b44c13d6a6977466bc884e2a332e"
+    },
+    "namedCompatibility": {
+      "path": "scripts/city-appearance/fidelity/named-compatibility.json",
+      "sha256": "2c730d8a8c81f21b8f7f249dd04dd2fd091dd01fd55463752ec8e91cf05eae93"
+    },
+    "heldoutCandidates": {
+      "path": "scripts/city-appearance/fidelity/heldout-source-inspection.json",
+      "sha256": "f5f1d4fdf7a494d50fecbd60e355d2eb3ed9c8f3e27286b42e69b4ecd4c2755b"
+    },
+    "developmentExclusions": {
+      "path": "scripts/review/facade-regression-heldout-exclusions.json",
+      "sha256": "20f1d7847cce702d4c80fe8802a6d08f3af444e4d15f03f90fcdbfb71ff3940a"
+    },
+    "sourceReview": {
+      "path": "scripts/review/next-stage-source-review.json",
+      "sha256": "b122527198ee86f6df4a797c9fa46891b85ab58effc939d6dc92cda759dae46c"
+    },
+    "retailSourceReview": {
+      "path": "scripts/review/retail-priority-source-review.json",
+      "sha256": "6c282e7b3c8afd23e6ec7c03fcb541580ceadd9dcc6cf2c076976d9b7e0f6fca"
+    },
+    "retailRegistration": {
+      "path": "scripts/review/retail-registration.json",
+      "sha256": "f55043a1a58199bacf237bf4976c9fd416d92f66713e4b36f075acff15d121bf"
+    },
+    "spatialCorrections": {
+      "path": "scripts/review/spatial-source-corrections.json",
+      "sha256": "5ed9984885f945e91f4d46568e2ed5bc275482ceb017c4b11ac7c642ac19c63e"
+    }
+  },
+  "methodology": {
+    "sourceInspectedTypology": "Assigned only where a bound agent-inspected source document explicitly supports a visible retail, residential, or mixed frontage. Mixed requires explicit evidence of both uses.",
+    "streetLabel": "Copied for identification only; never used to infer typology.",
+    "unknown": "Retained when the bound documents do not explicitly inspect use, even if an address, awning or generic opening suggests a use."
+  },
+  "composition": {
+    "totalEntries": 30,
+    "developmentEntries": 28,
+    "namedCompatibilityEntries": 2,
+    "sourceInspectedCounts": {
+      "retail": 9,
+      "residential": 1,
+      "mixed": 0,
+      "unknown": 20
+    },
+    "knownRetailOrMixedShare": 0.3,
+    "unknownShare": 0.6666666666666666,
+    "finding": "The current evidence has explicit use inspection for only a minority of entries, so its apparent canal-house composition cannot be quantified reliably from street labels."
+  },
+  "entries": [
+    {
+      "id": "case-01",
+      "buildingIds": [
+        "0363100012167878"
+      ],
+      "streetLabel": "Rozengracht 158",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-02",
+      "buildingIds": [
+        "0363100012153066"
+      ],
+      "streetLabel": "De Clercqstraat 20 / De Clercqstraat 22",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-03",
+      "buildingIds": [
+        "0363100012168954"
+      ],
+      "streetLabel": "Elandsgracht 96",
+      "sourceInspectedTypology": "retail",
+      "evidenceDisposition": "agent-inspected-source-bound",
+      "sourceEvidence": {
+        "document": "scripts/review/retail-priority-source-review.json",
+        "tier": "ground",
+        "cropSha256": "a2cc557bfd294d5df1152174cb360c89868ebd5fb386cea435307c17ec038758",
+        "captureDate": "2025-07-03T10:39:46Z",
+        "finding": "Agent source review identifies the key-color / het Fotolab fascia, FUJIFILM mark, scalloped dark awning and broad retail glazing."
+      },
+      "detailEvidence": {
+        "recess": false,
+        "awning": true,
+        "sign": true
+      }
+    },
+    {
+      "id": "case-04",
+      "buildingIds": [
+        "0363100012166335"
+      ],
+      "streetLabel": "Da Costakade 87",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-05",
+      "buildingIds": [
+        "0363100012168980"
+      ],
+      "streetLabel": "Lauriergracht 67 / Lauriergracht 69",
+      "sourceInspectedTypology": "residential",
+      "evidenceDisposition": "agent-inspected-source-bound",
+      "sourceEvidence": {
+        "document": "scripts/review/spatial-source-corrections.json",
+        "tier": "ground",
+        "cropSha256": "9cf6eb7e4114fcb745b4b8bc5c2f08b19a5704f48b5e22dd3c5927daaf18ddcf",
+        "captureDate": "2025-07-03T09:49:09Z",
+        "finding": "Agent inspection identifies a residential door behind recessed jambs with a stepped approach."
+      },
+      "detailEvidence": {
+        "recess": true,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-06",
+      "buildingIds": [
+        "0363100012163422"
+      ],
+      "streetLabel": "Da Costakade 204 / Jacob van Lennepstraat 41",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-08",
+      "buildingIds": [
+        "0363100012169816"
+      ],
+      "streetLabel": "Rozengracht 251",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-09",
+      "buildingIds": [
+        "0363100012169827"
+      ],
+      "streetLabel": "Rozengracht 228",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-10",
+      "buildingIds": [
+        "0363100012185685"
+      ],
+      "streetLabel": "Rozengracht 114 / Bloemstraat 123 / Bloemstraat 125",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-11",
+      "buildingIds": [
+        "0363100012156993"
+      ],
+      "streetLabel": "De Clercqstraat 26",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-12",
+      "buildingIds": [
+        "0363100012167877"
+      ],
+      "streetLabel": "Rozengracht 160",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-13",
+      "buildingIds": [
+        "0363100012156117"
+      ],
+      "streetLabel": "Da Costakade 116",
+      "sourceInspectedTypology": "retail",
+      "evidenceDisposition": "agent-inspected-source-bound",
+      "sourceEvidence": {
+        "document": "scripts/review/next-stage-source-review.json",
+        "tier": "full",
+        "cropSha256": "1b487142a5367681040c06dae3c6f3ae75f2db1e73a65badd1199b171f27474c",
+        "captureDate": "2023-01-12T09:08:43.325110Z",
+        "finding": "Agent source review records repeated upper windows and a lower entrance/shop zone."
+      },
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-14",
+      "buildingIds": [
+        "0363100012173872"
+      ],
+      "streetLabel": "Elandsgracht 19",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-15",
+      "buildingIds": [
+        "0363100012236381"
+      ],
+      "streetLabel": "Da Costakade 112 / Potgieterstraat 49",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-16",
+      "buildingIds": [
+        "0363100012169812"
+      ],
+      "streetLabel": "Rozengracht 247",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-17",
+      "buildingIds": [
+        "0363100012107485"
+      ],
+      "streetLabel": "De Clercqstraat 90",
+      "sourceInspectedTypology": "retail",
+      "evidenceDisposition": "agent-inspected-source-bound",
+      "sourceEvidence": {
+        "document": "scripts/review/next-stage-source-review.json",
+        "tier": "ground",
+        "cropSha256": "844bcc9aff1b0b876646f3ea4bf5b2825b3cf581cf01e9a1d6b83f5d6fb40071",
+        "captureDate": "2024-12-11T11:16:00Z",
+        "finding": "Agent source review records upper façade rows and a ground shopfront with display, recessed door and fascia/awning band."
+      },
+      "detailEvidence": {
+        "recess": true,
+        "awning": true,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-18",
+      "buildingIds": [
+        "0363100012169823"
+      ],
+      "streetLabel": "Rozengracht 230",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-19",
+      "buildingIds": [
+        "0363100012170124"
+      ],
+      "streetLabel": "Elandsgracht 69",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-20",
+      "buildingIds": [
+        "0363100012096164"
+      ],
+      "streetLabel": "De Clercqstraat 74",
+      "sourceInspectedTypology": "retail",
+      "evidenceDisposition": "agent-inspected-source-bound",
+      "sourceEvidence": {
+        "document": "scripts/review/next-stage-source-review.json",
+        "tier": "ground",
+        "cropSha256": "26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119",
+        "captureDate": "2025-06-18T10:05:19Z",
+        "finding": "Agent source review records upper windows and balconies above a ground shop window flanked by doors."
+      },
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-21",
+      "buildingIds": [
+        "0363100012173919"
+      ],
+      "streetLabel": "Lauriergracht 50",
+      "sourceInspectedTypology": "retail",
+      "evidenceDisposition": "agent-inspected-source-bound",
+      "sourceEvidence": {
+        "document": "scripts/review/next-stage-source-review.json",
+        "tier": "ground",
+        "cropSha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+        "captureDate": "2025-07-03T09:50:55Z",
+        "finding": "Agent source review identifies the recessed De Fietsenmaker storefront, projecting sign and upper window rows."
+      },
+      "detailEvidence": {
+        "recess": true,
+        "awning": false,
+        "sign": true
+      }
+    },
+    {
+      "id": "case-22",
+      "buildingIds": [
+        "0363100012165927"
+      ],
+      "streetLabel": "Da Costakade 118",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-23",
+      "buildingIds": [
+        "0363100012169605"
+      ],
+      "streetLabel": "Lauriergracht 37",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-24",
+      "buildingIds": [
+        "0363100012155539"
+      ],
+      "streetLabel": "Da Costakade 113",
+      "sourceInspectedTypology": "retail",
+      "evidenceDisposition": "agent-inspected-source-bound",
+      "sourceEvidence": {
+        "document": "scripts/review/next-stage-source-review.json",
+        "tier": "ground",
+        "cropSha256": "59c9babb71a3b4d4f71b4b752efbe0bfe0aff091b0fd22186c9e4ee78571c3f0",
+        "captureDate": "2025-07-03T11:32:36Z",
+        "finding": "Agent source review records upper windows over a shop display bay flanked by two doors."
+      },
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-25",
+      "buildingIds": [
+        "0363100012169813"
+      ],
+      "streetLabel": "Rozengracht 249",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-26",
+      "buildingIds": [
+        "0363100012571031"
+      ],
+      "streetLabel": "Elandsgracht 150",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-27",
+      "buildingIds": [
+        "0363100012086076"
+      ],
+      "streetLabel": "De Clercqstraat 79",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "case-29",
+      "buildingIds": [
+        "0363100012157746"
+      ],
+      "streetLabel": "De Clercqstraat 27 / Da Costakade 51",
+      "sourceInspectedTypology": "retail",
+      "evidenceDisposition": "agent-inspected-source-bound",
+      "sourceEvidence": {
+        "document": "scripts/review/retail-priority-source-review.json",
+        "tier": "ground",
+        "cropSha256": "788c84eae23e26305288ef67492c5095ee2f540151b4971c1b9473cd38127f49",
+        "captureDate": "2025-07-03T08:55:44Z",
+        "finding": "Agent source review identifies the DORUS retail frontage, extended striped awning, display and separate side entrances."
+      },
+      "detailEvidence": {
+        "recess": true,
+        "awning": true,
+        "sign": true
+      }
+    },
+    {
+      "id": "case-30",
+      "buildingIds": [
+        "0363100012174564"
+      ],
+      "streetLabel": "Rozengracht 212",
+      "sourceInspectedTypology": "unknown",
+      "evidenceDisposition": "no-explicit-source-typology-inspection",
+      "sourceEvidence": null,
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": false
+      }
+    },
+    {
+      "id": "named:Fuoco Vivo",
+      "buildingIds": [
+        "0363100012159182"
+      ],
+      "streetLabel": "Fuoco Vivo",
+      "sourceInspectedTypology": "retail",
+      "evidenceDisposition": "agent-inspected-source-bound",
+      "sourceEvidence": {
+        "document": "scripts/city-appearance/fidelity/named-compatibility.json",
+        "tier": "ground",
+        "cropSha256": "73ae1b58205eacc50f458c7109e117e5bdfc55fd6e9c2889ae74431f0ef876c8",
+        "captureDate": "2025-07-03T08:52:15Z",
+        "finding": "Dark painted ground frontage, separate side doors and central display window, red branded valance beneath rolled fabric/housing. Parking signs and scooters obscure portions. Do not infer the hidden sign letters or door thresholds. Registration and exact source-plane opening bounds remain unverified."
+      },
+      "detailEvidence": {
+        "recess": false,
+        "awning": true,
+        "sign": true
+      }
+    },
+    {
+      "id": "named:Engels Verf",
+      "buildingIds": [
+        "0363100012174146",
+        "0363100012174549"
+      ],
+      "streetLabel": "Engels Verf",
+      "sourceInspectedTypology": "retail",
+      "evidenceDisposition": "agent-inspected-source-bound",
+      "sourceEvidence": {
+        "document": "scripts/city-appearance/fidelity/named-compatibility.json",
+        "tier": "panorama",
+        "cropSha256": "0eee021f821f6778159de659d0d7955635479cd9f9406fab57529c8d7b89155c",
+        "captureDate": "2025-06-30T05:28:15Z",
+        "finding": "Panorama shows rainbow fascia, pale display surrounds and dark door assemblies. It crosses the panorama seam; wrapping duplicate pixels are not evidence of another physical sign. Legacy address anchors span two BAG buildings. Exact current wall intervals and dated rectified crops must be recovered before restoring assemblies."
+      },
+      "detailEvidence": {
+        "recess": false,
+        "awning": false,
+        "sign": true
+      }
+    }
+  ],
+  "activeCurrentPass": {
+    "requestedComposition": "three retail examples plus one raised-residential example",
+    "sourceInspectedCounts": {
+      "retail": 3,
+      "unknown": 1
+    },
+    "compositionEvidenceComplete": false,
+    "detailCoverage": {
+      "recess": true,
+      "awning": true,
+      "sign": true
+    },
+    "cases": [
+      {
+        "rank": 1,
+        "id": "case-03",
+        "typology": "retail",
+        "detailEvidence": {
+          "recess": false,
+          "awning": true,
+          "sign": true
+        },
+        "buildingIds": [
+          "0363100012168954"
+        ],
+        "heldoutOverlap": [],
+        "developmentExclusionAlreadyPresent": true,
+        "action": "continue source-bound development repair",
+        "typologyEvidenceStatus": "source-inspected"
+      },
+      {
+        "rank": 2,
+        "id": "case-21",
+        "typology": "retail",
+        "detailEvidence": {
+          "recess": true,
+          "awning": false,
+          "sign": true
+        },
+        "buildingIds": [
+          "0363100012173919"
+        ],
+        "heldoutOverlap": [],
+        "developmentExclusionAlreadyPresent": true,
+        "action": "continue source-bound development repair",
+        "typologyEvidenceStatus": "source-inspected"
+      },
+      {
+        "rank": 3,
+        "id": "case-29",
+        "typology": "retail",
+        "detailEvidence": {
+          "recess": true,
+          "awning": true,
+          "sign": true
+        },
+        "buildingIds": [
+          "0363100012157746"
+        ],
+        "heldoutOverlap": [],
+        "developmentExclusionAlreadyPresent": true,
+        "action": "continue source-bound development repair",
+        "typologyEvidenceStatus": "source-inspected"
+      },
+      {
+        "rank": 4,
+        "id": "case-18",
+        "typology": "unknown",
+        "detailEvidence": {
+          "recess": false,
+          "awning": false,
+          "sign": false
+        },
+        "buildingIds": [
+          "0363100012169823"
+        ],
+        "heldoutOverlap": [],
+        "developmentExclusionAlreadyPresent": true,
+        "action": "continue source-bound development repair",
+        "targetLabel": "raised residential entrance",
+        "typologyEvidenceStatus": "unconfirmed",
+        "reason": "The source proves a raised paired entrance and stair run, but the bound source review does not establish residential use."
+      }
+    ],
+    "finding": "Cases 03, 21 and 29 are source-inspected retail frontages. Case 18 is source-inspected as a raised paired entrance with stairs, but residential use is not established and remains unknown."
+  },
+  "proposedFutureCasePriority": {
+    "purpose": "Close the unverified residential slot with an explicitly source-inspected residential entrance.",
+    "cases": [
+      {
+        "rank": 1,
+        "id": "case-05",
+        "typology": "residential",
+        "detailEvidence": {
+          "recess": true,
+          "awning": false,
+          "sign": false
+        },
+        "buildingIds": [
+          "0363100012168980"
+        ],
+        "heldoutOverlap": [],
+        "developmentExclusionAlreadyPresent": true,
+        "action": "continue source-bound development repair"
+      }
+    ]
+  },
+  "namedCompatibilityCoverageChecks": {
+    "purpose": "Retain Fuoco Vivo and Engels Verf as named retail compatibility checks; they are not substitutes for or exclusive owners of the active case priorities.",
+    "cases": [
+      {
+        "rank": 1,
+        "id": "named:Fuoco Vivo",
+        "typology": "retail",
+        "detailEvidence": {
+          "recess": false,
+          "awning": true,
+          "sign": true
+        },
+        "buildingIds": [
+          "0363100012159182"
+        ],
+        "heldoutOverlap": [],
+        "developmentExclusionAlreadyPresent": false,
+        "action": "add building IDs to development exclusions before any tuning"
+      },
+      {
+        "rank": 2,
+        "id": "named:Engels Verf",
+        "typology": "retail",
+        "detailEvidence": {
+          "recess": false,
+          "awning": false,
+          "sign": true
+        },
+        "buildingIds": [
+          "0363100012174146",
+          "0363100012174549"
+        ],
+        "heldoutOverlap": [],
+        "developmentExclusionAlreadyPresent": false,
+        "action": "add building IDs to development exclusions before any tuning"
+      }
+    ]
+  },
+  "heldoutRisk": {
+    "certificationStatus": "uncertified",
+    "frozenCandidateCount": 30,
+    "priorReviewedBuildingOverlapCount": 1,
+    "retainedAfterExistingExclusions": 29,
+    "activeAndProposedHeldoutOverlapCount": 0,
+    "namedBuildingIdsRequiringDevelopmentExclusionBeforeUse": [
+      "0363100012159182",
+      "0363100012174146",
+      "0363100012174549"
+    ],
+    "conclusion": "No active or proposed case currently overlaps a held-out building, but named compatibility buildings must be added to development exclusions before tuning. The held-out set remains uncertified and one candidate short after the existing overlap removal."
+  },
+  "paidCalls": 0
+}

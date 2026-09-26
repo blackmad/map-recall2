@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "id": "slotervaart-slabs-v1",
+  "name": "Nieuw-West slabs (Slotervaart sample)",
+  "areas": [
+    { "id": "slotervaart-v1", "district": "Nieuw-West", "config": "../areas/slotervaart-v1.json", "priority": 10 }
+  ],
+  "boundary": [[[4.81874,52.35190],[4.83360,52.35190],[4.83360,52.37004],[4.81874,52.37004],[4.81874,52.35190]]],
+  "boundarySource": { "name": "Operational bbox around the municipal Slotervaart boundary", "revision": "operational-bbox-v1", "retrievedAt": "2026-09-21T00:00:00Z" },
+  "budgets": { "buildingTiles": 12, "contextTiles": 16, "detailBufferMB": 11 },
+  "spendLimitUsd": 2
+}

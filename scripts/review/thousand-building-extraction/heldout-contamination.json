@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "detectedAt": "2026-09-12T23:08:45.341Z",
+  "heldoutSourceManifest": {
+    "path": "scripts/review/thousand-building-sources.json",
+    "sha256": "c86d52de69dd0ebddd92ea8d9ff4f74893690b0eadb4e96c3e2beb05465f4c92",
+    "buildingCount": 30
+  },
+  "cause": "Initial preview inventory omitted the held-out building exclusion before paid execution.",
+  "disposition": "These analyzed buildings are retired from held-out evaluation. Future batches exclude all 30 held-out building IDs.",
+  "retiredBuildingCount": 14,
+  "actualUsd": 0.018951570000000004,
+  "unresolvedCharges": 0,
+  "records": [
+    {
+      "buildingId": "0363100012132271",
+      "observationId": "0363100012132271_e_09pgk76",
+      "tier": "ground",
+      "cropSha256": "6369cdec83afc8cc08aa6235d8b4733a4a99a548ae7696100b63db5dddd92306",
+      "analysisKey": "7dd731ac167d9848a14e995780a71311a6382910e543d34d6b85f9ec4c5406a2",
+      "status": "complete",
+      "actualUsd": 0.0011545875,
+      "generationId": "gen-1789253880-ZhSwYGT6eaNG558uMnyt"
+    },
+    {
+      "buildingId": "0363100012152724",
+      "observationId": "0363100012152724_e_1cjcooe",
+      "tier": "ground",
+      "cropSha256": "1887aab7c189e8a23a57369f443b1a6974ede957121a849006da827f239a7ee2",
+      "analysisKey": "0e0fbe4630892fca286aa110761a8f03c0963c3f68c02abf3ed74b396e7e2a51",
+      "status": "complete",
+      "actualUsd": 0.0016495875,
+      "generationId": "gen-1789253927-EqZWXlFEtXbhHO4ufQ2z"
+    },
+    {
+      "buildingId": "0363100012152977",
+      "observationId": "0363100012152977_e_13evhz4",
+      "tier": "ground",
+      "cropSha256": "f4450a2cd4eed971148ba9a62441805f4bbfe61f030d4927fed052473aa50e3b",
+      "analysisKey": "1b3e1d824026faa7cb0e70927f182995a88435ebb8b718a64548c47e468df295",
+      "status": "complete",
+      "actualUsd": 0.00131868,
+      "generationId": "gen-1789253933-Z2PgKBd9EN43fv2Q5T5z"
+    },
+    {
+      "buildingId": "0363100012154336",
+      "observationId": "0363100012154336_e_1xz6eyd",
+      "tier": "ground",
+      "cropSha256": "fd189f176dad10dd61b2cc9a77e127ae6a0dc36e4f892d641f73bfe3d7fda824",
+      "analysisKey": "9331c024a42a8c2c3a1b5cfa569243dc55ec40dd0c600c4e29242a7fabdaa693",
+      "status": "complete",
+      "actualUsd": 0.0011912175,
+      "generationId": "gen-1789253958-SWvwtyIC8uzDI992kpa1"
+    },
+    {
+      "buildingId": "0363100012156054",
+      "observationId": "0363100012156054_e_0u23hyv",
+      "tier": "ground",
+      "cropSha256": "3e19ae0def0746f8821a06527d29c258a6328314ea18e9ed5dc4d28961261d29",
+      "analysisKey": "0a47ddd3e9a41153fd885b3de1e47b3301b43d4a7c1a901268d6c838e8405f42",
+      "status": "complete",
+      "actualUsd": 0.0012491325,
+      "generationId": "gen-1789253969-49PTuCC35H6SuhAH5SVe"
+    },
+    {
+      "buildingId": "0363100012156077",
+      "observationId": "0363100012156077_e_1yr2ovu",
+      "tier": "ground",
+      "cropSha256": "cbfb9dfd13ce0a657b74d0fb6eceeb2c786dcea749ee2ed0ed50a76a011ee3b7",
+      "analysisKey": "aad9dc4eed3ae3f3d749029577d8c51573efe7c5521efaeba7162e9897343aa3",
+      "status": "complete",
+      "actualUsd": 0.00159786,
+      "generationId": "gen-1789253975-XUOgrvyImehHPN3Myk6m"
+    },
+    {
+      "buildingId": "0363100012158653",
+      "observationId": "0363100012158653_e_1do2dbd",
+      "tier": "ground",
+      "cropSha256": "c58d016e79a22199ad77adde023073c0a3628dce205492ac6ac1e7ed8979ad38",
+      "analysisKey": "ff5c2462f7cbc41e8df424b992eb22b03e73fb306ce960af3d8e54df71a513fc",
+      "status": "complete",
+      "actualUsd": 0.001807245,
+      "generationId": "gen-1789254048-dbDiOrOBeVYMXnWlJvRY"
+    },
+    {
+      "buildingId": "0363100012160092",
+      "observationId": "0363100012160092_e_0ttw5t9",
+      "tier": "ground",
+      "cropSha256": "e5af680f9a6a12faae5339dc5603c3a7917dafebb42959a5cc5f6f3d3a66e61c",
+      "analysisKey": "d69c72989f0b0a0e30e22fcfd7a4b8d2a1baaf0f8c055e1ec66a1c832ae83c2c",
+      "status": "complete",
+      "actualUsd": 0.001557765,
+      "generationId": "gen-1789254109-yt8Xd61vc53U5e5P6z30"
+    },
+    {
+      "buildingId": "0363100012160170",
+      "observationId": "0363100012160170_e_0ll0vf2",
+      "tier": "ground",
+      "cropSha256": "9ede370b82413cc384528e7cc492cd3e101a68b5c3f0c1de2b57012c109c416f",
+      "analysisKey": "f99a55902119a84bd41714a1deea9a464502b674198104df94a337785da9d088",
+      "status": "complete",
+      "actualUsd": 0.0010417275,
+      "generationId": "gen-1789254114-WcP4xt8mq2qnHKxvkWs5"
+    },
+    {
+      "buildingId": "0363100012162078",
+      "observationId": "0363100012162078_e_1kp3cga",
+      "tier": "ground",
+      "cropSha256": "d140e845c3cc7bc753c2e79453def78fd7b7d62f28415b494bd74675619e7806",
+      "analysisKey": "e488107a88dece3d60a068da72fd3c434b9dadff4600207aa54dcc5b5a936a83",
+      "status": "complete",
+      "actualUsd": 0.001242945,
+      "generationId": "gen-1789254174-8zYt5bcBhVCMV9kQnh2W"
+    },
+    {
+      "buildingId": "0363100012165211",
+      "observationId": "0363100012165211_e_15djkoz",
+      "tier": "ground",
+      "cropSha256": "99c5b73eef051d3ec46c4c559f954b6a063cfd09bd4eed69b9bfc3a2559f46c6",
+      "analysisKey": "cb633b694853dae0f31b2a3b86267e536f9fd3435d33d182c9d0a46d3983b89c",
+      "status": "complete",
+      "actualUsd": 0.0014624775,
+      "generationId": "gen-1789254242-j898hIJ5TPDGK9i4nAJl"
+    },
+    {
+      "buildingId": "0363100012165792",
+      "observationId": "0363100012165792_e_0tpgvya",
+      "tier": "ground",
+      "cropSha256": "d280b563b2545724356d7876121a17c95e5c234f14a7229990e11fdb4639c624",
+      "analysisKey": "19bf2d8fc50fa7d8392098dd6b440c104f3105e6f1fab50e487bf4004e05e5f8",
+      "status": "complete",
+      "actualUsd": 0.001498365,
+      "generationId": "gen-1789254251-uPdVNSqLxx83NsPE4NOk"
+    },
+    {
+      "buildingId": "0363100012165919",
+      "observationId": "0363100012165919_e_0ca7kp7",
+      "tier": "ground",
+      "cropSha256": "9098c37917b4435781aff3915c60941ca805683bc01121f1db6fec42d61bc1d3",
+      "analysisKey": "22e3ee146f2738b467741e7a5d1c48da770d95ab1370bbac0f5efbb26feb5cfe",
+      "status": "complete",
+      "actualUsd": 0.0011466675,
+      "generationId": "gen-1789254255-ipp1jllbCrd6tAAV822u"
+    },
+    {
+      "buildingId": "0363100012167944",
+      "observationId": "0363100012167944_e_12245ey",
+      "tier": "ground",
+      "cropSha256": "25a31242806bf7d8802f1eedea2c1cfa2d19d49ddecc0882fede499112366c02",
+      "analysisKey": "956c2b931b76d53713e39dd5e140d37c0dc0536becb679aebe0750457b08e166",
+      "status": "complete",
+      "actualUsd": 0.0010333125,
+      "generationId": "gen-1789254337-XExp0hc9FBeOHcotiM6D"
+    }
+  ]
+}

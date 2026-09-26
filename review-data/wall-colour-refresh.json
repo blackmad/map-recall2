@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "kind": "reviewed-wall-colour-refresh",
+  "generatedAt": "2026-09-21T12:01:14.819Z",
+  "sourcePacket": {
+    "path": "public/data/facade-repair-preview/cases.json",
+    "sha256": "11305a47af6cb48de6d0571be9d0237e8126bd2cd6fbb1425d6ef789950f53c5"
+  },
+  "refreshed": [
+    {
+      "caseId": "case-08",
+      "declaredFeatureIds": [
+        "full:mat-brick",
+        "full:mat-accent"
+      ],
+      "colours": {
+        "full:mat-brick": "#594e48",
+        "full:mat-accent": "#e8e8e8"
+      },
+      "beforeMaterials": 0,
+      "afterMaterials": 2,
+      "afterColours": [
+        "#242628",
+        "#3f342d",
+        "#526a6b",
+        "#594e48",
+        "#b9ad96",
+        "#e8e8e8"
+      ]
+    }
+  ],
+  "skipped": [],
+  "note": "Targeted source-shape-study revision through publishPreviewRevision. Only the declared colour corrections are applied, and only to the delivered study; stored shapeFeatures, metric patches, frames, owners and every other case are left byte-identical. Prior packet bytes are archived by the publisher.",
+  "published": {
+    "currentSha256": "11305a47af6cb48de6d0571be9d0237e8126bd2cd6fbb1425d6ef789950f53c5",
+    "proposedSha256": "297054a04e924678f76c81e6cdabe92a7610dad2eb4390c4a8d9774d8eeb9e85",
+    "currentArchived": false,
+    "proposedArchived": true,
+    "casesPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/facade-repair-preview/cases.json"
+  }
+}

@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {firstFootprintObstruction,insideBuildingFootprint,planFrontageCamera} from '../public/canal-drive/da-costa-block/frontage-camera.js';
+import {neighbourhoodDisplayBounds} from '../public/canal-drive/da-costa-block/neighbourhood-bounds.js';
+const polygon=(id,coordinates)=>({id,footprint:{type:'Polygon',coordinates}});
+const box=polygon('opposite',[[[10,-10],[20,-10],[20,10],[10,10],[10,-10]]]);
+assert.equal(firstFootprintObstruction([0,0],[1,0],[box],30).distanceM,10);
+assert.equal(firstFootprintObstruction([0,0],[-1,0],[box],30),null);
+const hole=polygon('courtyard',[[[-10,-10],[10,-10],[10,10],[-10,10],[-10,-10]],[[-5,-5],[-5,5],[5,5],[5,-5],[-5,-5]]]);
+assert.equal(insideBuildingFootprint([0,0],hole),false);assert.equal(firstFootprintObstruction([0,0],[1,0],[hole],20).distanceM,5);
+const concave=polygon('concave',[[[4,-4],[12,-4],[12,4],[8,4],[8,-1],[4,-1],[4,-4]]]);
+assert.equal(firstFootprintObstruction([0,0],[1,0],[concave],20).distanceM,8);
+const record={mid:[0,0],normal:[1,0],height:18,wallWidthM:10};
+assert.equal(planFrontageCamera(record,[box],1).position[0],8.5);
+assert.equal(planFrontageCamera(record,[],1).constrained,false);
+assert.equal(planFrontageCamera(record,[polygon('blocked',[[[-1,-1],[1,-1],[1,1],[-1,1],[-1,-1]]])],1).usable,false);
+const rounded=polygon('source',[[[-5,-5],[.1,-5],[.1,5],[-5,5],[-5,-5]]]);
+assert.equal(firstFootprintObstruction([0,0],[1,0],[rounded,box],30,{sourceBuildingId:'source',sourceBoundaryToleranceM:.25}).distanceM,10,'ignore only short rounding interval in source building');
+assert.equal(firstFootprintObstruction([0,0],[1,0],[rounded,box],30,{sourceBuildingId:'other',sourceBoundaryToleranceM:.25}).distanceM,0,'neighbour near-origin intrusion is not ignored');
+const folded=polygon('folded',[[[-3,-3],[10,-3],[10,4],[6,4],[6,-1],[.1,-1],[.1,4],[-3,4],[-3,-3]]]);
+assert.equal(firstFootprintObstruction([0,0],[1,0],[folded],30,{sourceBuildingId:'folded',sourceBoundaryToleranceM:.25}).distanceM,6,'later self-occlusion survives origin tolerance');
+const block=JSON.parse(await fs.readFile('public/data/da-costa-block/block.json')),data=JSON.parse(await fs.readFile('public/data/da-costa-block/neighbourhood.json'));
+const originalBounds=[...block.bounds],display=neighbourhoodDisplayBounds(block.bounds,data.records);
+assert.deepEqual(block.bounds,originalBounds,'compiled source bounds remain untouched');assert.deepEqual(display.clippedFrontageIds,[]);
+assert.deepEqual(display.bounds,[-131,-152,130,137],'edge frontages get bounded display coverage and a small margin');
+assert.deepEqual(neighbourhoodDisplayBounds([0,0,10,10],[{id:'far',localStart:[100,0],localEnd:[100,5]}]).clippedFrontageIds,['far'],'display bounds cannot silently expand unbounded');
+assert.deepEqual(neighbourhoodDisplayBounds([0,0,10,10],[{id:'invalid',localStart:null,localEnd:[NaN,5]}]).clippedFrontageIds,['invalid'],'invalid endpoints are flagged without breaking display bounds');
+const rows=data.records.map(r=>{
+  const plan=planFrontageCamera(r,block.buildings,.6);
+  if(plan.usable){assert.equal(block.buildings.some(b=>insideBuildingFootprint([plan.position[0],plan.position[2]],b)),false,r.id+' camera is outside every footprint');assert.equal(firstFootprintObstruction(r.mid,r.normal,block.buildings,Math.hypot(plan.position[0]-r.mid[0],plan.position[2]-r.mid[1]),{sourceBuildingId:r.buildingId,sourceBoundaryToleranceM:.25}),null,r.id+' centre sightline remains free');}
+  return {id:r.id,address:r.address,...plan};
+});
+const iwka=rows.find(r=>r.id==='0363100012162168_e_04g3jtu');assert.equal(iwka.usable,true);assert.equal(iwka.constrained,true);assert.ok(iwka.radius<21);
+await fs.writeFile('.cache/da-costa-neighbourhood/frontage-camera-audit.json',JSON.stringify({rows},null,2));
+console.log(JSON.stringify({frontages:rows.length,clear:rows.filter(r=>r.usable).length,constrained:rows.filter(r=>r.constrained).length,unusable:rows.filter(r=>!r.usable).map(r=>({id:r.id,obstruction:r.obstruction})),iwka},null,2));

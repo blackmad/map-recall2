@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "id": "apollobuurt-v1",
+  "bbox": [4.86636, 52.34399, 4.88629, 52.35225],
+  "origin": [4.876325, 52.34812],
+  "cacheRoot": ".cache/city-appearance/areas/apollobuurt-v1/raw",
+  "outputRoot": ".cache/city-appearance/areas/apollobuurt-v1/staging",
+  "panorama": { "center": [4.876325, 52.34812], "radiusM": 900, "after": "2022-01-01" },
+  "concurrency": 2
+}

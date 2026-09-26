@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "status": "agent-inspected-source-register; renderer-integration-pending",
+  "inspector": "agent-source-inspection",
+  "inspectionDate": "2026-09-12",
+  "sourceIntegrity": {
+    "caseCount": 28,
+    "tierCount": 56,
+    "uniqueTierHashes": 56,
+    "duplicateTierHashes": [],
+    "paidExtractionUsd": 0,
+    "dorusYellowAwningOverlap": {
+      "status": "not-established",
+      "note": "No duplicate source hash exists. A yellow awning identity cannot be asserted from hash comparison alone; retain the dated crop and inspect its visible frontage before compiling."
+    }
+  },
+  "corrections": [
+    {
+      "caseId": "case-08",
+      "kind": "tenant-sign",
+      "source": {
+        "full": {
+          "sha256": "6b9d07c1aa7d65cd81e920c54cb2ce3f72d06fbd7dc6b711d2aac71a8d14eb73",
+          "captureDate": "2025-07-03T08:51:51Z",
+          "width": 282,
+          "height": 755
+        },
+        "ground": {
+          "sha256": "ecd02b733f241cf5d1af1daec2d6df3511b762b673bb7881d1b34eafe41749fc",
+          "captureDate": "2022-12-15T09:04:06.631420Z",
+          "width": 690,
+          "height": 539
+        }
+      },
+      "sign": {
+        "text": "Moeders",
+        "background": "#242628",
+        "colour": "#f3eee4",
+        "font": "italic bold Georgia; approximate lettering, decorative logo motifs not reproduced",
+        "fullBoundsPx": [
+          3,
+          485,
+          274,
+          541
+        ],
+        "groundBoundsPx": [
+          30,
+          0,
+          625,
+          69
+        ],
+        "secondaryGroundFasciaBoundsPx": [
+          155,
+          84,
+          610,
+          117
+        ],
+        "state": "visible; ground primary fascia is clipped at the top edge",
+        "confidence": "primary-orchestrator-direct-source-inspection",
+        "secondaryFullFasciaBoundsPx": [
+          79,
+          549,
+          276,
+          568
+        ]
+      }
+    },
+    {
+      "caseId": "case-20",
+      "kind": "roof-window-and-silhouette",
+      "source": {
+        "full": {
+          "sha256": "c85f193a00e009915f48bc506ec9c589cdaefdaa3351e3a0cc5a5c5f72b672c0",
+          "captureDate": "2023-01-12T09:15:50.506690Z",
+          "width": 283,
+          "height": 811
+        },
+        "ground": {
+          "sha256": "26e259aebbfed207e7d9f02e6379d61e1c792e142806f88122e267eec660e119",
+          "captureDate": "2025-06-18T10:05:19Z",
+          "width": 692,
+          "height": 539
+        }
+      },
+      "roof": {
+        "sourceTier": "full",
+        "silhouettePolygonPx": [
+          [
+            0,
+            93
+          ],
+          [
+            50,
+            93
+          ],
+          [
+            88,
+            76
+          ],
+          [
+            121,
+            83
+          ],
+          [
+            155,
+            70
+          ],
+          [
+            193,
+            91
+          ],
+          [
+            235,
+            89
+          ],
+          [
+            283,
+            99
+          ],
+          [
+            283,
+            192
+          ],
+          [
+            0,
+            212
+          ]
+        ],
+        "status": "visible-silhouette-agent-estimate; trees and crop edges partially occlude the outer roof",
+        "dormerWindow": {
+          "boundsPx": [
+            111,
+            106,
+            172,
+            161
+          ],
+          "head": "rectangular-with-pitched-dormer-surround",
+          "visible": true,
+          "status": "agent-inspected"
+        }
+      }
+    },
+    {
+      "caseId": "case-22",
+      "kind": "stepped-gable-and-top-window",
+      "source": {
+        "full": {
+          "sha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+          "captureDate": "2023-01-12T09:08:29.970310Z",
+          "width": 296,
+          "height": 936
+        },
+        "ground": {
+          "sha256": "e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d",
+          "captureDate": "2025-07-31T11:09:13Z",
+          "width": 723,
+          "height": 539
+        }
+      },
+      "roof": {
+        "sourceTier": "full",
+        "silhouettePolygonPx": [
+          [
+            0,
+            214
+          ],
+          [
+            54,
+            214
+          ],
+          [
+            54,
+            188
+          ],
+          [
+            80,
+            188
+          ],
+          [
+            80,
+            158
+          ],
+          [
+            132,
+            158
+          ],
+          [
+            132,
+            188
+          ],
+          [
+            177,
+            188
+          ],
+          [
+            177,
+            207
+          ],
+          [
+            221,
+            207
+          ],
+          [
+            221,
+            230
+          ],
+          [
+            296,
+            230
+          ]
+        ],
+        "topWindow": {
+          "boundsPx": [
+            89,
+            207,
+            151,
+            267
+          ],
+          "head": "rectangular",
+          "visible": true,
+          "status": "agent-inspected"
+        },
+        "status": "visible-stepped-gable-agent-inspected"
+      }
+    },
+    {
+      "caseId": "case-14",
+      "kind": "source-identity-warning",
+      "source": {
+        "full": {
+          "sha256": "db162149669e0269dbc3b49782ded8c9e171176ddaf2dc665775ad53c6a57558",
+          "captureDate": "2024-12-16T09:30:08Z",
+          "width": 263,
+          "height": 782
+        },
+        "ground": {
+          "sha256": "5e3f1185f2094ed4369ed530f49ef3d7516f4659ca7c3bbe1077e9ed14db2115",
+          "captureDate": "2025-06-30T05:28:42Z",
+          "width": 643,
+          "height": 539
+        }
+      },
+      "status": "possible-frontage-mismatch",
+      "note": "Full crop shows a narrow ornate stepped-gable frontage; ground crop shows a wider stone-trimmed frontage with two dark doors. Preserve both dated sources, but do not bind them to one wall interval until independently registered."
+    }
+  ]
+}

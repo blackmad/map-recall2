@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 2,
+  "sources": [
+    {
+      "id": "funda.nl",
+      "state": "blocked",
+      "reason": "Funda's current terms prohibit automated scraping, copying, data mining, and AI use without written permission.",
+      "termsUrl": "https://www.funda.nl/voorwaarden-en-beleid/gebruiksvoorwaarden/"
+    },
+    {
+      "id": "wikimedia-commons",
+      "state": "active",
+      "reason": "Use only files whose per-file metadata declares a supported free or public-domain license; preserve source and attribution.",
+      "termsUrl": "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia/en"
+    }
+  ],
+  "rules": [
+    "A nearby photograph is discovery evidence, never identity proof.",
+    "File title and description improve ranking but never complete the identity decision.",
+    "An advisory assessment must bind to the observation hash and cite at least two distinct cached files and original images by hash, with visible correspondences. Distinct files do not prove independent identity.",
+    "Unknown, missing, or unsupported licenses fail closed.",
+    "External evidence is advisory and cannot silently accept a local registration fixture."
+  ]
+}

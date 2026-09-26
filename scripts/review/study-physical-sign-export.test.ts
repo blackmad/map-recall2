@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {observedPhysicalSignForGame} from '../city-appearance/publish-area-geometry-demo.ts';
+import {owner, record, image} from '../city-appearance/fidelity/synthetic-fixture.ts';
+const signed:any=structuredClone(record);signed.images={ground:image};const signedOwner:any=structuredClone(owner);signedOwner.geometry.building.center=[4,0];
+const patch:any={observationId:'obs',triangles:[0,1,0, 2,1,0, 2,2,0, 0,1,0, 2,2,0, 0,2,0],sign:{text:'MOEDERS',background:'#263330',colour:'#f4f1e8',font:'bold 24px serif',physicalSignId:'moeders:fascia:dated',uv:[0,0,1,0,1,1,0,0,1,1,0,1]}};
+const emitted=observedPhysicalSignForGame(signedOwner,patch,[signed]);
+assert.deepEqual(emitted&&{text:emitted.text,physicalSignId:emitted.physicalSignId,sourceSha256:emitted.sourceSha256,captureDate:emitted.captureDate,provenance:emitted.provenance},{text:'MOEDERS',physicalSignId:'moeders:fascia:dated',sourceSha256:image.sha256,captureDate:image.date,provenance:'source-bound physical façade sign'});
+assert.equal(emitted?.uv.length,emitted?.triangles.length/3*2,'physical sign preserves the compiled sign UV for every triangle vertex');
+assert.equal(observedPhysicalSignForGame(signedOwner,{...patch,sign:{...patch.sign,physicalSignId:''}},[signed]),null,'text without a physical sign ID cannot enter the game payload');
+assert.equal(observedPhysicalSignForGame(signedOwner,patch,[{...signed,images:{ground:{...image,sha256:'invalid'}}}]),null,'unbound source identity cannot enter the game payload');
+const identity=new Set([emitted?.physicalSignId]);assert.equal(identity.size,1,'one explicit physical sign identity is available for tile-level deduplication');
+console.log('Observed Moeders physical sign preserves source binding/UV and rejects unsupported duplicates.');

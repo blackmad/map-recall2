@@ -1,0 +1,2097 @@
+{
+  "schemaVersion": 1,
+  "id": "willemspark",
+  "label": "Willemspark",
+  "sha256": "4aaa1a290d92a710998ed927a2216fa1f759a31be21629a91077a109c8da7cf2",
+  "bytes": 42939972,
+  "points": 7165726,
+  "bounds": {
+    "minX": 119300,
+    "minY": 485100,
+    "minZ": -1.4312695174295555,
+    "maxX": 119350,
+    "maxY": 485150,
+    "maxZ": 21.146730482570447
+  },
+  "buildings": 8,
+  "exteriorWalls": 155,
+  "measuredWalls": 74,
+  "scannedWalls": 39,
+  "shapedRooflines": 5,
+  "openings": 18,
+  "gables": 6,
+  "vertices": 2425,
+  "faces": 618,
+  "groups": {
+    "measured": 39,
+    "massing": 116,
+    "roofs": 24
+  },
+  "demoPoints": 204736,
+  "demoPointStep": 35,
+  "walls": [
+    {
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_2",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:2",
+      "buildingId": "bag:0363100012070059",
+      "width": 0.66,
+      "height": 16.35,
+      "coverage": 1,
+      "cellCoverage": 0.757,
+      "density": 3040,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.04,
+      "storeys": 1,
+      "bays": 1,
+      "openings": 1,
+      "gableRise": 0,
+      "normal": [
+        0.9838,
+        -0.1792,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119316.521,
+          485127.296,
+          8.567
+        ],
+        "u": [
+          0.1792,
+          0.9838,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9838,
+          -0.1792,
+          0
+        ],
+        "baseUp": -8.133,
+        "wallTop": 8.219
+      },
+      "openingRects": [
+        {
+          "along": -0.029,
+          "up": -7.384,
+          "width": 0.25,
+          "height": 1.55
+        }
+      ],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_3",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:3",
+      "buildingId": "bag:0363100012070059",
+      "width": 0.66,
+      "height": 16.18,
+      "coverage": 1,
+      "cellCoverage": 0.469,
+      "density": 1993,
+      "rooflineShape": "sloped",
+      "rooflineRange": 2.69,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9887,
+        -0.1501,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119316.63,
+          485127.946,
+          8.492
+        ],
+        "u": [
+          0.1501,
+          0.9887,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9887,
+          -0.1501,
+          0
+        ],
+        "baseUp": -8.059,
+        "wallTop": 8.123
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_4",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:4",
+      "buildingId": "bag:0363100012070059",
+      "width": 0.37,
+      "height": 16.53,
+      "coverage": 1,
+      "cellCoverage": 0.451,
+      "density": 1843,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.82,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9996,
+        -0.0268,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119316.868,
+          485130.673,
+          10.216
+        ],
+        "u": [
+          0.0268,
+          0.9996,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9996,
+          -0.0268,
+          0
+        ],
+        "baseUp": -9.783,
+        "wallTop": 6.748
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_6",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:6",
+      "buildingId": "bag:0363100012070059",
+      "width": 0.66,
+      "height": 16.05,
+      "coverage": 1,
+      "cellCoverage": 0.48,
+      "density": 1805,
+      "rooflineShape": "sloped",
+      "rooflineRange": 2.28,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9926,
+        -0.1216,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119316.719,
+          485128.598,
+          8.439
+        ],
+        "u": [
+          0.1216,
+          0.9926,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9926,
+          -0.1216,
+          0
+        ],
+        "baseUp": -8.005,
+        "wallTop": 8.048
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_8",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:8",
+      "buildingId": "bag:0363100012070059",
+      "width": 1.32,
+      "height": 15.97,
+      "coverage": 1,
+      "cellCoverage": 0.615,
+      "density": 1627,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.52,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9973,
+        -0.073,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119316.807,
+          485129.581,
+          8.407
+        ],
+        "u": [
+          0.073,
+          0.9973,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9973,
+          -0.073,
+          0
+        ],
+        "baseUp": -7.973,
+        "wallTop": 7.994
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_9",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:9",
+      "buildingId": "bag:0363100012070059",
+      "width": 1.32,
+      "height": 16.31,
+      "coverage": 1,
+      "cellCoverage": 0.371,
+      "density": 850,
+      "rooflineShape": "flat",
+      "rooflineRange": 0.91,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9988,
+        0.0493,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119316.841,
+          485132.212,
+          8.549
+        ],
+        "u": [
+          -0.0493,
+          0.9988,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9988,
+          0.0493,
+          0
+        ],
+        "baseUp": -8.116,
+        "wallTop": 8.193
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_10",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:10",
+      "buildingId": "bag:0363100012070059",
+      "width": 0.59,
+      "height": 16.15,
+      "coverage": 1,
+      "cellCoverage": 0.321,
+      "density": 1008,
+      "rooflineShape": "flat",
+      "rooflineRange": 0.51,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9956,
+        0.0942,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119316.78,
+          485133.166,
+          8.505
+        ],
+        "u": [
+          -0.0942,
+          0.9956,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9956,
+          0.0942,
+          0
+        ],
+        "baseUp": -8.072,
+        "wallTop": 8.082
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_11",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:11",
+      "buildingId": "bag:0363100012070059",
+      "width": 0.66,
+      "height": 16.95,
+      "coverage": 1,
+      "cellCoverage": 0.541,
+      "density": 1635,
+      "rooflineShape": "sloped",
+      "rooflineRange": 2.49,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9924,
+        0.1231,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119316.714,
+          485133.786,
+          10.29
+        ],
+        "u": [
+          -0.1231,
+          0.9924,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9924,
+          0.1231,
+          0
+        ],
+        "baseUp": -9.856,
+        "wallTop": 7.091
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012070059_0_lod22_wall_38",
+      "surfaceId": "NL.IMBAG.Pand.0363100012070059-0:lod22:wall:38",
+      "buildingId": "bag:0363100012070059",
+      "width": 1.47,
+      "height": 18.9,
+      "coverage": 1,
+      "cellCoverage": 0.413,
+      "density": 1098,
+      "rooflineShape": "sloped",
+      "rooflineRange": 6.23,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9352,
+        0.3542,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119315.449,
+          485139.174,
+          9.503
+        ],
+        "u": [
+          -0.3542,
+          0.9352,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9352,
+          0.3542,
+          0
+        ],
+        "baseUp": -9.069,
+        "wallTop": 9.832
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_10",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:10",
+      "buildingId": "bag:0363100012143972",
+      "width": 1.06,
+      "height": 17.91,
+      "coverage": 1,
+      "cellCoverage": 0.3,
+      "density": 951,
+      "rooflineShape": "sloped",
+      "rooflineRange": 9.93,
+      "storeys": 1,
+      "bays": 1,
+      "openings": 1,
+      "gableRise": 0,
+      "normal": [
+        -0.8318,
+        -0.5551,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119344.57,
+          485148.025,
+          9.296
+        ],
+        "u": [
+          0.5551,
+          -0.8318,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          -0.8318,
+          -0.5551,
+          0
+        ],
+        "baseUp": -8.956,
+        "wallTop": 8.956
+      },
+      "openingRects": [
+        {
+          "along": -0.131,
+          "up": -6.106,
+          "width": 0.5,
+          "height": 0.8
+        }
+      ],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_11",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:11",
+      "buildingId": "bag:0363100012143972",
+      "width": 1.06,
+      "height": 17.91,
+      "coverage": 1,
+      "cellCoverage": 0.522,
+      "density": 1485,
+      "rooflineShape": "sloped",
+      "rooflineRange": 3.76,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        -0.8039,
+        -0.5947,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119345.181,
+          485147.157,
+          9.296
+        ],
+        "u": [
+          0.5947,
+          -0.8039,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          -0.8039,
+          -0.5947,
+          0
+        ],
+        "baseUp": -8.956,
+        "wallTop": 8.956
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_12",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:12",
+      "buildingId": "bag:0363100012143972",
+      "width": 0.51,
+      "height": 17.91,
+      "coverage": 1,
+      "cellCoverage": 0.542,
+      "density": 2072,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.71,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        -0.7831,
+        -0.6218,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119345.656,
+          485146.529,
+          9.296
+        ],
+        "u": [
+          0.6218,
+          -0.7831,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          -0.7831,
+          -0.6218,
+          0
+        ],
+        "baseUp": -8.955,
+        "wallTop": 8.956
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_13",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:13",
+      "buildingId": "bag:0363100012143972",
+      "width": 0.34,
+      "height": 17.91,
+      "coverage": 1,
+      "cellCoverage": 0.593,
+      "density": 2796,
+      "rooflineShape": "flat",
+      "rooflineRange": 0.05,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        -0.7417,
+        -0.6708,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119345.952,
+          485146.177,
+          8.318
+        ],
+        "u": [
+          0.6708,
+          -0.7417,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          -0.7417,
+          -0.6708,
+          0
+        ],
+        "baseUp": -7.978,
+        "wallTop": 9.932
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_20",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:20",
+      "buildingId": "bag:0363100012143972",
+      "width": 0.56,
+      "height": 17.91,
+      "coverage": 1,
+      "cellCoverage": 0.482,
+      "density": 1775,
+      "rooflineShape": "shaped",
+      "rooflineRange": 2.55,
+      "storeys": 1,
+      "bays": 1,
+      "openings": 1,
+      "gableRise": 0,
+      "normal": [
+        -0.743,
+        -0.6693,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119347.085,
+          485144.919,
+          8.309
+        ],
+        "u": [
+          0.6693,
+          -0.743,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          -0.743,
+          -0.6693,
+          0
+        ],
+        "baseUp": -7.968,
+        "wallTop": 9.938
+      },
+      "openingRects": [
+        {
+          "along": -0.222,
+          "up": -3.418,
+          "width": 0.6,
+          "height": 0.6
+        }
+      ],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_22",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:22",
+      "buildingId": "bag:0363100012143972",
+      "width": 1.13,
+      "height": 17.91,
+      "coverage": 1,
+      "cellCoverage": 0.381,
+      "density": 1347,
+      "rooflineShape": "sloped",
+      "rooflineRange": 7.69,
+      "storeys": 4,
+      "bays": 1,
+      "openings": 4,
+      "gableRise": 0.13,
+      "normal": [
+        -0.6708,
+        -0.7416,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119347.811,
+          485144.217,
+          10.331
+        ],
+        "u": [
+          0.7416,
+          -0.6708,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          -0.6708,
+          -0.7416,
+          0
+        ],
+        "baseUp": -9.99,
+        "wallTop": 7.915
+      },
+      "openingRects": [
+        {
+          "along": -0.578,
+          "up": -8.49,
+          "width": 0.6,
+          "height": 0.5
+        },
+        {
+          "along": -0.578,
+          "up": -7.09,
+          "width": 0.6,
+          "height": 0.9
+        },
+        {
+          "along": -0.578,
+          "up": -5.49,
+          "width": 0.6,
+          "height": 0.75
+        },
+        {
+          "along": -0.578,
+          "up": -4.64,
+          "width": 0.6,
+          "height": 1.7
+        }
+      ],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012143972_0_lod22_wall_23",
+      "surfaceId": "NL.IMBAG.Pand.0363100012143972-0:lod22:wall:23",
+      "buildingId": "bag:0363100012143972",
+      "width": 1.1,
+      "height": 14.15,
+      "coverage": 1,
+      "cellCoverage": 0.71,
+      "density": 2438,
+      "rooflineShape": "sloped",
+      "rooflineRange": 3.01,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        -0.6713,
+        -0.7412,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119348.554,
+          485143.544,
+          7.398
+        ],
+        "u": [
+          0.7412,
+          -0.6713,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          -0.6713,
+          -0.7412,
+          0
+        ],
+        "baseUp": -7.058,
+        "wallTop": 7.089
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012164118_0_lod22_wall_3",
+      "surfaceId": "NL.IMBAG.Pand.0363100012164118-0:lod22:wall:3",
+      "buildingId": "bag:0363100012164118",
+      "width": 3.2,
+      "height": 14.27,
+      "coverage": 1,
+      "cellCoverage": 0.346,
+      "density": 837,
+      "rooflineShape": "shaped",
+      "rooflineRange": 2.41,
+      "storeys": 1,
+      "bays": 1,
+      "openings": 1,
+      "gableRise": 0,
+      "normal": [
+        0.7204,
+        0.6935,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119310.792,
+          485148.8,
+          7.379
+        ],
+        "u": [
+          -0.6935,
+          0.7204,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.7204,
+          0.6935,
+          0
+        ],
+        "baseUp": -7.132,
+        "wallTop": 7.138
+      },
+      "openingRects": [
+        {
+          "along": -1.048,
+          "up": -6.332,
+          "width": 2.35,
+          "height": 0.25
+        }
+      ],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012164118_0_lod22_wall_15",
+      "surfaceId": "NL.IMBAG.Pand.0363100012164118-0:lod22:wall:15",
+      "buildingId": "bag:0363100012164118",
+      "width": 8.43,
+      "height": 14.35,
+      "coverage": 1,
+      "cellCoverage": 0.405,
+      "density": 888,
+      "rooflineShape": "shaped",
+      "rooflineRange": 5.77,
+      "storeys": 3,
+      "bays": 4,
+      "openings": 4,
+      "gableRise": 0,
+      "normal": [
+        0.919,
+        0.3943,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119313.526,
+          485143.736,
+          7.398
+        ],
+        "u": [
+          -0.3943,
+          0.919,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.919,
+          0.3943,
+          0
+        ],
+        "baseUp": -7.152,
+        "wallTop": 7.194
+      },
+      "openingRects": [
+        {
+          "along": 2.183,
+          "up": -6.352,
+          "width": 1.65,
+          "height": 0.25
+        },
+        {
+          "along": 0.383,
+          "up": -4.852,
+          "width": 1.05,
+          "height": 0.35
+        },
+        {
+          "along": -3.667,
+          "up": -2.652,
+          "width": 0.25,
+          "height": 1.175
+        },
+        {
+          "along": -0.467,
+          "up": -2.652,
+          "width": 0.35,
+          "height": 1.175
+        }
+      ],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_5",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:5",
+      "buildingId": "bag:0363100012237178",
+      "width": 1.22,
+      "height": 18.38,
+      "coverage": 1,
+      "cellCoverage": 0.342,
+      "density": 1010,
+      "rooflineShape": "sloped",
+      "rooflineRange": 10.8,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.4192,
+        -0.9079,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119304.386,
+          485111.656,
+          9.369
+        ],
+        "u": [
+          0.9079,
+          0.4192,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.4192,
+          -0.9079,
+          0
+        ],
+        "baseUp": -8.845,
+        "wallTop": 9.533
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_6",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:6",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.69,
+      "height": 19.15,
+      "coverage": 1,
+      "cellCoverage": 0.307,
+      "density": 1007,
+      "rooflineShape": "sloped",
+      "rooflineRange": 3,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.46,
+        -0.8879,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119305.246,
+          485112.071,
+          9.907
+        ],
+        "u": [
+          0.8879,
+          0.46,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.46,
+          -0.8879,
+          0
+        ],
+        "baseUp": -9.383,
+        "wallTop": 9.771
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_9",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:9",
+      "buildingId": "bag:0363100012237178",
+      "width": 1.29,
+      "height": 19.01,
+      "coverage": 1,
+      "cellCoverage": 0.366,
+      "density": 1213,
+      "rooflineShape": "sloped",
+      "rooflineRange": 6.45,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.5793,
+        -0.8151,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119307.815,
+          485113.644,
+          9.67
+        ],
+        "u": [
+          0.8151,
+          0.5793,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.5793,
+          -0.8151,
+          0
+        ],
+        "baseUp": -9.147,
+        "wallTop": 9.862
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_11",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:11",
+      "buildingId": "bag:0363100012237178",
+      "width": 1.26,
+      "height": 15.78,
+      "coverage": 1,
+      "cellCoverage": 0.379,
+      "density": 1439,
+      "rooflineShape": "sloped",
+      "rooflineRange": 6.17,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 1.59,
+      "normal": [
+        0.6746,
+        -0.7382,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119309.883,
+          485115.312,
+          8.369
+        ],
+        "u": [
+          0.7382,
+          0.6746,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.6746,
+          -0.7382,
+          0
+        ],
+        "baseUp": -7.845,
+        "wallTop": 7.936
+      },
+      "openingRects": [],
+      "gable": [
+        [
+          -0.604,
+          7.936
+        ],
+        [
+          -0.604,
+          8.099
+        ],
+        [
+          0.646,
+          9.523
+        ],
+        [
+          0.646,
+          7.936
+        ]
+      ]
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_12",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:12",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.63,
+      "height": 15.93,
+      "coverage": 1,
+      "cellCoverage": 0.517,
+      "density": 2466,
+      "rooflineShape": "sloped",
+      "rooflineRange": 2.85,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.6424,
+        -0.7664,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119309.177,
+          485114.686,
+          8.45
+        ],
+        "u": [
+          0.7664,
+          0.6424,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.6424,
+          -0.7664,
+          0
+        ],
+        "baseUp": -7.927,
+        "wallTop": 7.999
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_14",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:14",
+      "buildingId": "bag:0363100012237178",
+      "width": 1.13,
+      "height": 15.6,
+      "coverage": 1,
+      "cellCoverage": 0.498,
+      "density": 1535,
+      "rooflineShape": "sloped",
+      "rooflineRange": 2.3,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 1.74,
+      "normal": [
+        0.7159,
+        -0.6982,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119310.742,
+          485116.141,
+          8.314
+        ],
+        "u": [
+          0.6982,
+          0.7159,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.7159,
+          -0.6982,
+          0
+        ],
+        "baseUp": -7.79,
+        "wallTop": 7.81
+      },
+      "openingRects": [],
+      "gable": [
+        [
+          -0.541,
+          7.81
+        ],
+        [
+          -0.541,
+          9.542
+        ],
+        [
+          -0.241,
+          9.507
+        ],
+        [
+          0.409,
+          7.835
+        ],
+        [
+          0.559,
+          9.358
+        ],
+        [
+          0.559,
+          7.81
+        ]
+      ]
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_15",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:15",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.63,
+      "height": 15.59,
+      "coverage": 1,
+      "cellCoverage": 0.317,
+      "density": 1756,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.04,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0.39,
+      "normal": [
+        0.7427,
+        -0.6696,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119311.348,
+          485116.78,
+          8.311
+        ],
+        "u": [
+          0.6696,
+          0.7427,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.7427,
+          -0.6696,
+          0
+        ],
+        "baseUp": -7.788,
+        "wallTop": 7.802
+      },
+      "openingRects": [],
+      "gable": [
+        [
+          -0.289,
+          7.802
+        ],
+        [
+          -0.289,
+          8.195
+        ],
+        [
+          0.011,
+          7.909
+        ],
+        [
+          0.011,
+          7.802
+        ]
+      ]
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_16",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:16",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.76,
+      "height": 15.67,
+      "coverage": 1,
+      "cellCoverage": 0.753,
+      "density": 2855,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.4,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0.28,
+      "normal": [
+        0.7642,
+        -0.645,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119311.802,
+          485117.302,
+          8.339
+        ],
+        "u": [
+          0.645,
+          0.7642,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.7642,
+          -0.645,
+          0
+        ],
+        "baseUp": -7.815,
+        "wallTop": 7.856
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_17",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:17",
+      "buildingId": "bag:0363100012237178",
+      "width": 1.26,
+      "height": 15.92,
+      "coverage": 1,
+      "cellCoverage": 0.79,
+      "density": 2681,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.06,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.7936,
+        -0.6085,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119312.428,
+          485118.09,
+          8.423
+        ],
+        "u": [
+          0.6085,
+          0.7936,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.7936,
+          -0.6085,
+          0
+        ],
+        "baseUp": -7.899,
+        "wallTop": 8.026
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_18",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:18",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.75,
+      "height": 16.15,
+      "coverage": 1,
+      "cellCoverage": 0.458,
+      "density": 2008,
+      "rooflineShape": "shaped",
+      "rooflineRange": 1.48,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0.63,
+      "normal": [
+        0.8209,
+        -0.5711,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119313.026,
+          485118.899,
+          8.541
+        ],
+        "u": [
+          0.5711,
+          0.8209,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.8209,
+          -0.5711,
+          0
+        ],
+        "baseUp": -8.018,
+        "wallTop": 8.128
+      },
+      "openingRects": [],
+      "gable": [
+        [
+          0.199,
+          8.128
+        ],
+        [
+          0.199,
+          8.754
+        ],
+        [
+          0.249,
+          8.497
+        ],
+        [
+          0.249,
+          8.128
+        ]
+      ]
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_19",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:19",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.63,
+      "height": 16.37,
+      "coverage": 1,
+      "cellCoverage": 0.324,
+      "density": 1266,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.4,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0.81,
+      "normal": [
+        0.8386,
+        -0.5448,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119313.413,
+          485119.471,
+          8.652
+        ],
+        "u": [
+          0.5448,
+          0.8386,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.8386,
+          -0.5448,
+          0
+        ],
+        "baseUp": -8.128,
+        "wallTop": 8.24
+      },
+      "openingRects": [],
+      "gable": [
+        [
+          -0.29,
+          8.24
+        ],
+        [
+          -0.29,
+          9.053
+        ],
+        [
+          -0.09,
+          9.045
+        ],
+        [
+          -0.09,
+          8.24
+        ]
+      ]
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_22",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:22",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.91,
+      "height": 16.77,
+      "coverage": 1,
+      "cellCoverage": 0.602,
+      "density": 2010,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.68,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0.86,
+      "normal": [
+        0.8627,
+        -0.5057,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119313.814,
+          485120.127,
+          8.807
+        ],
+        "u": [
+          0.5057,
+          0.8627,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.8627,
+          -0.5057,
+          0
+        ],
+        "baseUp": -8.284,
+        "wallTop": 8.482
+      },
+      "openingRects": [],
+      "gable": [
+        [
+          -0.429,
+          8.482
+        ],
+        [
+          -0.429,
+          8.798
+        ],
+        [
+          -0.379,
+          8.619
+        ],
+        [
+          0.471,
+          9.344
+        ],
+        [
+          0.471,
+          8.482
+        ]
+      ]
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_24",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:24",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.76,
+      "height": 19.09,
+      "coverage": 1,
+      "cellCoverage": 0.452,
+      "density": 2038,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.1,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.885,
+        -0.4656,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119314.396,
+          485121.154,
+          9.834
+        ],
+        "u": [
+          0.4656,
+          0.885,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.885,
+          -0.4656,
+          0
+        ],
+        "baseUp": -9.311,
+        "wallTop": 9.78
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_28",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:28",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.63,
+      "height": 19.67,
+      "coverage": 1,
+      "cellCoverage": 0.305,
+      "density": 1666,
+      "rooflineShape": "sloped",
+      "rooflineRange": 2.78,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.925,
+        -0.3799,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119315.274,
+          485123.035,
+          10.167
+        ],
+        "u": [
+          0.3799,
+          0.925,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.925,
+          -0.3799,
+          0
+        ],
+        "baseUp": -9.643,
+        "wallTop": 10.03
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_29",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:29",
+      "buildingId": "bag:0363100012237178",
+      "width": 1.13,
+      "height": 18.9,
+      "coverage": 1,
+      "cellCoverage": 0.585,
+      "density": 2141,
+      "rooflineShape": "shaped",
+      "rooflineRange": 1.42,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9402,
+        -0.3405,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119315.587,
+          485123.857,
+          9.626
+        ],
+        "u": [
+          0.3405,
+          0.9402,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9402,
+          -0.3405,
+          0
+        ],
+        "baseUp": -9.102,
+        "wallTop": 9.797
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_31",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:31",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.37,
+      "height": 18.22,
+      "coverage": 1,
+      "cellCoverage": 0.579,
+      "density": 3112,
+      "rooflineShape": "flat",
+      "rooflineRange": 0.15,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9544,
+        -0.2984,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119315.937,
+          485124.897,
+          11.219
+        ],
+        "u": [
+          0.2984,
+          0.9544,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9544,
+          -0.2984,
+          0
+        ],
+        "baseUp": -10.696,
+        "wallTop": 7.523
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_34",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:34",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.38,
+      "height": 17.51,
+      "coverage": 1,
+      "cellCoverage": 0.707,
+      "density": 4231,
+      "rooflineShape": "flat",
+      "rooflineRange": 0.15,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.9548,
+        -0.2974,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119315.836,
+          485124.572,
+          9.161
+        ],
+        "u": [
+          0.2974,
+          0.9548,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9548,
+          -0.2974,
+          0
+        ],
+        "baseUp": -8.637,
+        "wallTop": 8.872
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_36",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:36",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.63,
+      "height": 18.22,
+      "coverage": 1,
+      "cellCoverage": 0.447,
+      "density": 1708,
+      "rooflineShape": "flat",
+      "rooflineRange": 0.78,
+      "storeys": 3,
+      "bays": 1,
+      "openings": 3,
+      "gableRise": 0,
+      "normal": [
+        0.9634,
+        -0.2682,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119316.088,
+          485125.413,
+          9.633
+        ],
+        "u": [
+          0.2682,
+          0.9634,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9634,
+          -0.2682,
+          0
+        ],
+        "baseUp": -9.11,
+        "wallTop": 9.11
+      },
+      "openingRects": [
+        {
+          "along": -0.265,
+          "up": -3.86,
+          "width": 0.6,
+          "height": 1.65
+        },
+        {
+          "along": -0.265,
+          "up": -0.36,
+          "width": 0.6,
+          "height": 1.65
+        },
+        {
+          "along": -0.265,
+          "up": 3.04,
+          "width": 0.6,
+          "height": 1.5
+        }
+      ],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_39",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:39",
+      "buildingId": "bag:0363100012237178",
+      "width": 1.29,
+      "height": 18.22,
+      "coverage": 1,
+      "cellCoverage": 0.586,
+      "density": 1846,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.85,
+      "storeys": 3,
+      "bays": 1,
+      "openings": 3,
+      "gableRise": 0,
+      "normal": [
+        0.9745,
+        -0.2244,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119316.318,
+          485126.344,
+          9.634
+        ],
+        "u": [
+          0.2244,
+          0.9745,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.9745,
+          -0.2244,
+          0
+        ],
+        "baseUp": -9.11,
+        "wallTop": 9.11
+      },
+      "openingRects": [
+        {
+          "along": -0.644,
+          "up": -3.26,
+          "width": 0.35,
+          "height": 1
+        },
+        {
+          "along": -0.644,
+          "up": -0.36,
+          "width": 0.35,
+          "height": 1.6
+        },
+        {
+          "along": -0.644,
+          "up": 2.99,
+          "width": 0.35,
+          "height": 1.55
+        }
+      ],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_40",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:40",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.35,
+      "height": 18.15,
+      "coverage": 1,
+      "cellCoverage": 0.735,
+      "density": 3716,
+      "rooflineShape": "flat",
+      "rooflineRange": 0.26,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.862,
+        -0.5069,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119314.114,
+          485120.639,
+          11.05
+        ],
+        "u": [
+          0.5069,
+          0.862,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.862,
+          -0.5069,
+          0
+        ],
+        "baseUp": -10.527,
+        "wallTop": 7.624
+      },
+      "openingRects": [],
+      "gable": null
+    },
+    {
+      "group": "NL_IMBAG_Pand_0363100012237178_0_lod22_wall_54",
+      "surfaceId": "NL.IMBAG.Pand.0363100012237178-0:lod22:wall:54",
+      "buildingId": "bag:0363100012237178",
+      "width": 0.59,
+      "height": 17.58,
+      "coverage": 1,
+      "cellCoverage": 0.56,
+      "density": 2136,
+      "rooflineShape": "sloped",
+      "rooflineRange": 1.52,
+      "storeys": 0,
+      "bays": 0,
+      "openings": 0,
+      "gableRise": 0,
+      "normal": [
+        0.6166,
+        -0.7873,
+        0
+      ],
+      "frame": {
+        "origin": [
+          119308.622,
+          485114.238,
+          10.619
+        ],
+        "u": [
+          0.7873,
+          0.6166,
+          0
+        ],
+        "v": [
+          0,
+          0,
+          1
+        ],
+        "n": [
+          0.6166,
+          -0.7873,
+          0
+        ],
+        "baseUp": -10.095,
+        "wallTop": 7.483
+      },
+      "openingRects": [],
+      "gable": null
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "split": "development-expansion",
+  "note": "Approximate outer frames labelled by Codex from the source images before inspecting DINO/SAM or fitted outputs on these buildings. First evaluation of the current fit configuration, not a blind release holdout or pixel-mask benchmark. Only listed visible frames are scored; other proposals remain unlabelled.",
+  "cases": [
+    {
+      "address": "Koningsplein 12",
+      "sourceSha256": "632c0b54a3210294f6a46632bb99c767f7cc9c0711522fa91e0536224deb6c90",
+      "boxes": [[46,58,93,124],[132,57,178,123],[215,55,265,125],[42,169,98,269],[125,169,183,267],[208,169,266,268],[40,296,98,394],[124,296,182,394],[208,296,265,394]]
+    },
+    {
+      "address": "Herenstraat 40",
+      "sourceSha256": "fca380674b0cba757546a3f7b3f325fe6a5f56f318d600cd09d5f0265015fbb8",
+      "boxes": [[60,116,101,161],[284,230,345,342],[112,379,178,454],[224,379,289,455]]
+    }
+  ]
+}

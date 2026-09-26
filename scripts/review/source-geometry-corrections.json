@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "coordinateConvention": "Native full-crop pixel edges; origin at top left. Approximate visual measurements from the dated source photograph.",
+  "cases": [
+    {
+      "caseId": "case-24",
+      "tier": "full",
+      "source": {
+        "sha256": "d41fbad9b2cab955a11725296c74f17d65e9e36907763f86eaf1396467186ebb",
+        "captureDate": "2023-01-10T10:49:47.057940Z",
+        "width": 213,
+        "height": 721
+      },
+      "silhouetteTopPx": [[0,174],[13,174],[19,164],[82,88],[84,77],[90,65],[99,60],[114,60],[124,67],[129,85],[133,87],[194,169],[200,174],[213,174]],
+      "replace": {
+        "full:window-1": {"bounds":[82,143,125,209],"head":"rectangular","mullions":[0.5],"transom":0.24,"mullionScope":"below-transom","sourceFrameWidthPx":4,"sourceJoineryWidthPx":2.2,"row":4,"bay":1,"archRise":null,"lintelHead":null},
+        "full:window-2": {"bounds":[36,249,91,339],"head":"rectangular","archRise":null,"lintelHead":null,"transom":0.33,"mullionScope":"below-transom","sourceFrameWidthPx":4,"sourceJoineryWidthPx":2.2,"row":3,"bay":1},
+        "full:window-3": {"bounds":[119,249,175,339],"head":"rectangular","archRise":null,"lintelHead":null,"transom":0.33,"mullionScope":"below-transom","sourceFrameWidthPx":4,"sourceJoineryWidthPx":2.2,"row":3,"bay":2},
+        "full:window-4": {"bounds":[36,365,91,458],"head":"rectangular","archRise":null,"lintelHead":null,"lintelRise":null,"transom":0.35,"mullions":[],"paired":false,"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2.2,"row":2,"bay":1},
+        "full:window-5": {"bounds":[119,365,175,458],"head":"rectangular","archRise":null,"lintelHead":null,"lintelRise":null,"transom":0.35,"mullions":[],"paired":false,"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2.2,"row":2,"bay":2},
+        "full:window-6": {"bounds":[36,492,91,585],"head":"rectangular","archRise":null,"lintelHead":null,"lintelRise":null,"transom":0.29,"mullions":[],"paired":false,"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2.2,"row":1,"bay":1},
+        "full:window-7": {"bounds":[119,492,175,585],"head":"rectangular","archRise":null,"lintelHead":null,"lintelRise":null,"transom":0.29,"mullions":[],"paired":false,"sourceFrameWidthPx":4,"sourceJoineryWidthPx":2.2,"row":1,"bay":2},
+        "full:door-1": {"bounds":[27,606,59,705],"head":"rectangular","transom":0.16,"row":0,"bay":1},
+        "full:door-2": {"bounds":[157,606,188,705],"head":"rectangular","transom":0.16,"row":0,"bay":2},
+        "full:material-2": {"bounds":[0,596,213,721]}
+      },
+      "add": [
+        {"id":"full:review:crown-vent","kind":"window","bounds":[93,69,120,86],"head":"rounded","archRise":0.5,"frameColour":"#c7c2b0","colour":"#555953","sourceFrameWidthPx":4,"sourceJoineryWidthPx":2.2,"row":5,"bay":1,"visibility":{"occluder":"projecting hoist pole","inferredEdges":["right"]}},
+        {"id":"full:review:shop-display","kind":"window","bounds":[60,606,156,705],"head":"rectangular","frameColour":"#e8e4d5","colour":"#343b3b","row":0,"bay":1,"transom":0.16}
+      ],
+      "reason": "Photographed frontal gable rises to a small rounded crown. The diagonal hoist pole projects above the roof and is excluded from the wall silhouette. The crown vent is partly obscured; the central gable glazing and paired window glazing are rectangular, with decorative brick arches outside the openings. The full-crop ground beam starts near y600 and two doors flank one broad shop display; the separate ground crop is unchanged. Source-space study only; no metric placement or depth claim."
+    },
+    {
+      "caseId": "case-05",
+      "tier": "full",
+      "source": {
+        "sha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+        "captureDate": "2023-02-27T10:59:42.189530Z",
+        "width": 477,
+        "height": 903
+      },
+      "add": [
+        {"id":"full:review:entrance-door","kind":"door","bounds":[202,711,228,815],"head":"rectangular","colour":"#38271f","frameColour":"#312d29","row":0,"bay":1,"visibility":{"occluder":"ivy and deep shadow over the recessed entrance","inferredEdges":["left","top"]}}
+      ],
+      "reason": "The reviewed full study painted three ground windows (full:window-r4-b1/b2/b3) but no entrance, so Lauriergracht 67/69 rendered as 'no door'. The dated full crop shows a central recessed entrance between the two ground-window banks; the leaf itself is hidden by ivy and shadow, so only the measured recess position and the building's own clearer ground-capture door colour are declared. Source-space study only; no metric placement, depth or access claim."
+    }
+  ]
+}

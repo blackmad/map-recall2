@@ -1,0 +1,406 @@
+{
+  "version": 1,
+  "kind": "retail-registration-evidence",
+  "maxAcceptedUncertaintyM": 0.15,
+  "canonicalDatum": "surface-base",
+  "pixelConvention": "pixel-edge",
+  "cases": [
+    {
+      "caseId": "case-18",
+      "buildingId": "0363100012169823",
+      "kind": "residential",
+      "tiers": {
+        "full": {
+          "status": "ambiguous",
+          "candidate": {
+            "wallDirection": [
+              0.9397342169709251,
+              0.3419058371160725
+            ],
+            "planeAlongM": [
+              -0.11839517301982277,
+              6.038153824069562
+            ],
+            "imageToWall": [
+              0.02222580865375229,
+              0,
+              -0.11839517301982277,
+              0,
+              -0.022229759364472433,
+              20.018000059127804,
+              0,
+              0,
+              1
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "planeMarginM": 0.11839517301982279,
+          "obliquityDeg": 43.52839389254601,
+          "standoffM": 22.322945871397085,
+          "heightInferred": false,
+          "datum": "published-minus-43.5m; track-unsolved",
+          "canonicalPavementNAP": 1.1619999408721924,
+          "contact": {
+            "status": "unresolved",
+            "reason": "groundNAP is geometry datum; no same-date measured pavement pixel contact"
+          },
+          "acceptance": {
+            "maxUncertaintyM": 0.15,
+            "uncertaintyM": null,
+            "blockers": [
+              "reviewed raw-pixel wall-boundary correspondences with residuals",
+              "camera centre height in NAP and stated accuracy",
+              "camera/panorama calibration convention and datum provenance"
+            ]
+          },
+          "sourceBinding": {
+            "sha256": "cd9f19353844138859906b48610edd915b32b22a9e70a82b49b7ff922b00d0e6",
+            "fileHashVerified": true,
+            "captureDate": "2022-12-15T09:04:08.001450Z",
+            "actualDimensions": {
+              "width": 277,
+              "height": 914
+            },
+            "nativeDimensions": {
+              "width": 277,
+              "height": 914
+            },
+            "manifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+            "observationId": "0363100012169823_e_0i7d2wr"
+          }
+        },
+        "ground": {
+          "status": "ambiguous",
+          "candidate": {
+            "wallDirection": [
+              0.9397342169709251,
+              0.3419058371160725
+            ],
+            "planeAlongM": [
+              -0.11839517301982277,
+              6.038153824069562
+            ],
+            "imageToWall": [
+              0.00909386853336689,
+              0,
+              -0.11839517301982277,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "planeMarginM": 0.11839517301982279,
+          "obliquityDeg": 5.6043029400261,
+          "standoffM": 8.878235697798086,
+          "heightInferred": false,
+          "datum": "published-minus-43.5m; track-unsolved",
+          "canonicalPavementNAP": 1.1619999408721924,
+          "contact": {
+            "status": "unresolved",
+            "reason": "groundNAP is geometry datum; no same-date measured pavement pixel contact"
+          },
+          "acceptance": {
+            "maxUncertaintyM": 0.15,
+            "uncertaintyM": null,
+            "blockers": [
+              "reviewed raw-pixel wall-boundary correspondences with residuals",
+              "camera centre height in NAP and stated accuracy",
+              "camera/panorama calibration convention and datum provenance"
+            ]
+          },
+          "sourceBinding": {
+            "sha256": "14bf99297ef60dfac3638ec32c05f174588f9c0d2180efadbe3221b2d001513d",
+            "fileHashVerified": true,
+            "captureDate": "2022-05-02T06:43:16.723290Z",
+            "actualDimensions": {
+              "width": 677,
+              "height": 539
+            },
+            "nativeDimensions": {
+              "width": 677,
+              "height": 539
+            },
+            "manifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+            "observationId": "0363100012169823_e_0i7d2wr"
+          }
+        }
+      },
+      "preferredCandidateTier": "ground",
+      "status": "ambiguous"
+    },
+    {
+      "caseId": "case-21",
+      "buildingId": "0363100012173919",
+      "kind": "retail",
+      "tiers": {
+        "full": {
+          "status": "ambiguous",
+          "candidate": {
+            "wallDirection": [
+              0.9106494967886231,
+              0.4131797357066626
+            ],
+            "planeAlongM": [
+              -0.11365513973096002,
+              5.7964121267339435
+            ],
+            "imageToWall": [
+              0.02221829799422896,
+              0,
+              -0.11365513973096002,
+              0,
+              -0.02222106482419703,
+              18.89900000810623,
+              0,
+              0,
+              1
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "planeMarginM": 0.11365513973096,
+          "obliquityDeg": 41.97968707571337,
+          "standoffM": 22.60147465189697,
+          "heightInferred": false,
+          "datum": "published-minus-43.5m; track-unsolved",
+          "canonicalPavementNAP": 0.3709999918937683,
+          "contact": {
+            "status": "unresolved",
+            "reason": "groundNAP is geometry datum; no same-date measured pavement pixel contact"
+          },
+          "acceptance": {
+            "maxUncertaintyM": 0.15,
+            "uncertaintyM": null,
+            "blockers": [
+              "reviewed raw-pixel wall-boundary correspondences with residuals",
+              "camera centre height in NAP and stated accuracy",
+              "camera/panorama calibration convention and datum provenance",
+              "surface-specific anchor set for recessed/angled shopfront planes"
+            ]
+          },
+          "sourceBinding": {
+            "sha256": "dbe58c60985bce1f18b3d3680c2434ead2f5cc0d115e0238a1fc27fae0d7b9c5",
+            "fileHashVerified": true,
+            "captureDate": "2023-02-13T10:59:09.853930Z",
+            "actualDimensions": {
+              "width": 266,
+              "height": 864
+            },
+            "nativeDimensions": {
+              "width": 266,
+              "height": 864
+            },
+            "manifest": ".cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/manifest.json",
+            "observationId": "0363100012173919_e_1wb5lrz"
+          }
+        },
+        "ground": {
+          "status": "ambiguous",
+          "candidate": {
+            "wallDirection": [
+              0.9106494967886231,
+              0.4131797357066626
+            ],
+            "planeAlongM": [
+              -0.11365513973096002,
+              5.7964121267339435
+            ],
+            "imageToWall": [
+              0.009092411179176774,
+              0,
+              -0.11365513973096002,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "planeMarginM": 0.11365513973096,
+          "obliquityDeg": 16.834709471484555,
+          "standoffM": 3.6073302087557937,
+          "heightInferred": true,
+          "datum": "ground-plus-2.44m; approximate",
+          "canonicalPavementNAP": 0.3709999918937683,
+          "contact": {
+            "status": "unresolved",
+            "reason": "groundNAP is geometry datum; no same-date measured pavement pixel contact"
+          },
+          "acceptance": {
+            "maxUncertaintyM": 0.15,
+            "uncertaintyM": null,
+            "blockers": [
+              "reviewed raw-pixel wall-boundary correspondences with residuals",
+              "camera centre height in NAP and stated accuracy",
+              "camera/panorama calibration convention and datum provenance",
+              "surface-specific anchor set for recessed/angled shopfront planes"
+            ]
+          },
+          "sourceBinding": {
+            "sha256": "9658823697aedc0a7554101ef617d14a3330481b10250a8b4035fb23f3b16ab9",
+            "fileHashVerified": true,
+            "captureDate": "2025-07-03T09:50:55Z",
+            "actualDimensions": {
+              "width": 650,
+              "height": 539
+            },
+            "nativeDimensions": {
+              "width": 650,
+              "height": 539
+            },
+            "manifest": ".cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/manifest.json",
+            "observationId": "0363100012173919_e_1wb5lrz"
+          }
+        }
+      },
+      "preferredCandidateTier": "ground",
+      "status": "ambiguous"
+    },
+    {
+      "caseId": "case-29",
+      "buildingId": "0363100012157746",
+      "kind": "retail",
+      "tiers": {
+        "full": {
+          "status": "ambiguous",
+          "candidate": {
+            "wallDirection": [
+              -0.9427710219246371,
+              -0.3334408496557899
+            ],
+            "planeAlongM": [
+              -0.12302032230418752,
+              6.274036437259229
+            ],
+            "imageToWall": [
+              0.022212002637372975,
+              0,
+              -0.12302032230418752,
+              0,
+              -0.02221987572664059,
+              17.586999959945675,
+              0,
+              0,
+              1
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "planeMarginM": 0.12302032230418754,
+          "obliquityDeg": 45.294624705395975,
+          "standoffM": 13.532062001063945,
+          "heightInferred": false,
+          "datum": "published-minus-43.5m; track-unsolved",
+          "canonicalPavementNAP": 1.9830000400543213,
+          "contact": {
+            "status": "unresolved",
+            "reason": "groundNAP is geometry datum; no same-date measured pavement pixel contact"
+          },
+          "acceptance": {
+            "maxUncertaintyM": 0.15,
+            "uncertaintyM": null,
+            "blockers": [
+              "reviewed raw-pixel wall-boundary correspondences with residuals",
+              "camera centre height in NAP and stated accuracy",
+              "camera/panorama calibration convention and datum provenance",
+              "surface-specific anchor set for recessed/angled shopfront planes"
+            ]
+          },
+          "sourceBinding": {
+            "sha256": "cb0f66e828b485b7ba2c3f6e6bc48457ec007b01dfe06521195e8bdbb42db346",
+            "fileHashVerified": true,
+            "captureDate": "2023-01-12T09:12:21.403370Z",
+            "actualDimensions": {
+              "width": 288,
+              "height": 805
+            },
+            "nativeDimensions": {
+              "width": 288,
+              "height": 805
+            },
+            "manifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+            "observationId": "0363100012157746_e_04nemym"
+          }
+        },
+        "ground": {
+          "status": "ambiguous",
+          "candidate": {
+            "wallDirection": [
+              -0.9427710219246371,
+              -0.3334408496557899
+            ],
+            "planeAlongM": [
+              -0.12302032230418752,
+              6.274036437259229
+            ],
+            "imageToWall": [
+              0.00908672835165258,
+              0,
+              -0.12302032230418752,
+              0,
+              -0.00909090909090909,
+              4.6,
+              0,
+              0,
+              1
+            ],
+            "sourceDatum": "NAP",
+            "canonicalDatum": "surface-base",
+            "pixelConvention": "pixel-edge"
+          },
+          "planeMarginM": 0.12302032230418754,
+          "obliquityDeg": 7.039273479709023,
+          "standoffM": 8.70628433391451,
+          "heightInferred": true,
+          "datum": "ground-plus-2.44m; approximate",
+          "canonicalPavementNAP": 1.9830000400543213,
+          "contact": {
+            "status": "unresolved",
+            "reason": "groundNAP is geometry datum; no same-date measured pavement pixel contact"
+          },
+          "acceptance": {
+            "maxUncertaintyM": 0.15,
+            "uncertaintyM": null,
+            "blockers": [
+              "reviewed raw-pixel wall-boundary correspondences with residuals",
+              "camera centre height in NAP and stated accuracy",
+              "camera/panorama calibration convention and datum provenance",
+              "surface-specific anchor set for recessed/angled shopfront planes"
+            ]
+          },
+          "sourceBinding": {
+            "sha256": "788c84eae23e26305288ef67492c5095ee2f540151b4971c1b9473cd38127f49",
+            "fileHashVerified": true,
+            "captureDate": "2025-07-03T08:55:44Z",
+            "actualDimensions": {
+              "width": 704,
+              "height": 539
+            },
+            "nativeDimensions": {
+              "width": 704,
+              "height": 539
+            },
+            "manifest": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/manifest.json",
+            "observationId": "0363100012157746_e_04nemym"
+          }
+        }
+      },
+      "preferredCandidateTier": "ground",
+      "status": "ambiguous"
+    }
+  ]
+}

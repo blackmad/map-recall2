@@ -5,6 +5,8 @@
  * (see FACADE_ENRICHMENT_DESIGN.md). The others are sheds, so this demo shows that the
  * grammar compiles into depth-correct geometry, not that the grammar is right.
  */
+import { rejectLegacyStreetInputs } from './lib/legacy-street-inputs.ts';
+rejectLegacyStreetInputs('build-facade-block-demo.ts');
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 

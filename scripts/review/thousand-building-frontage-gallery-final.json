@@ -1,0 +1,879 @@
+{
+  "version": 2,
+  "scope": "direct staged candidate frontage/source captures; ambiguous registration preview only",
+  "galleryId": "0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final",
+  "releaseId": "0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9",
+  "compilerBundleSha256": "cf405a67770e2332d996e887d38a9895f3458e9c178a3ba6187ad108f2ce8578",
+  "baseUrl": "http://127.0.0.1:5195",
+  "createdAt": "2026-09-13T00:43:39.701Z",
+  "captures": [
+    {
+      "fullSource": {
+        "tier": "full",
+        "sha256": "de17e6ec6b1a3d6cceb11a1fb8aa02353beed545fd17fbbdae2b40ef4e809916",
+        "captureDate": "2024-12-16T10:24:30Z",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/01-0363100012168431_e_1tp2fiv-full-source.jpg"
+      },
+      "index": 1,
+      "observationId": "0363100012168431_e_1tp2fiv",
+      "buildingId": "0363100012168431",
+      "street": "Rozengracht",
+      "tile": "16/33655/21536",
+      "role": "retail-or-mixed",
+      "source": {
+        "tier": "ground",
+        "sha256": "47261dbdedb21f0b1af68b9638861285e2ad1cfc5949f1df649076f6d1906a3e",
+        "captureDate": "2023-03-20T11:11:52.178190Z",
+        "width": 509,
+        "height": 539,
+        "originalPath": ".cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/images/0363100012168431_e_1tp2fiv-ground.jpg",
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/01-0363100012168431_e_1tp2fiv-source.jpg",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/01-0363100012168431_e_1tp2fiv-source.jpg",
+        "sha256Copied": "47261dbdedb21f0b1af68b9638861285e2ad1cfc5949f1df649076f6d1906a3e"
+      },
+      "streetCapture": {
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/01-0363100012168431_e_1tp2fiv-street.png",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/01-0363100012168431_e_1tp2fiv-street.png",
+        "sha256": "fa0bcf7d53845e230ba45cd715866aaee8fe366f475ad50ef204542d6b00ec2d",
+        "cameraPosition": [
+          314.7389355641313,
+          11.53431000090506,
+          -347.6023876303371
+        ],
+        "cameraTarget": [
+          307.09975766055874,
+          7.965,
+          -366.83524979578215
+        ],
+        "view": "frontage",
+        "facadeWindows": 2780,
+        "facadeDoors": 322,
+        "intervalPaintedWalls": 260
+      },
+      "features": [
+        {
+          "id": "full:door-main",
+          "kind": "door",
+          "head": "rounded",
+          "state": null
+        },
+        {
+          "id": "full:material-brick",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "full:material-plaster",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "full:window-attic",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r1-1",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:window-r1-2",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:window-r1-3",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:window-r2-1",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:window-r2-2",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:window-r2-3",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:window-r3-1",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:window-r3-2",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:window-r3-3",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "ground:door-1",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:door-2",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:fascia-1",
+          "kind": "fascia",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material-1",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material-2",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:window-1",
+          "kind": "window",
+          "head": "rounded",
+          "state": null
+        }
+      ],
+      "inspectorVisible": false
+    },
+    {
+      "fullSource": {
+        "tier": "full",
+        "sha256": "dcf6a3bd48cb4145487ed2baeb08d2744e5c3a52909aa8bd3e0e69921fc07c2b",
+        "captureDate": "2023-01-10T10:39:41.578430Z",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/02-0363100012064291_e_06e507d-full-source.jpg"
+      },
+      "index": 2,
+      "observationId": "0363100012064291_e_06e507d",
+      "buildingId": "0363100012064291",
+      "street": "De Clercqstraat",
+      "tile": "16/33654/21537",
+      "role": "retail-or-mixed",
+      "source": {
+        "tier": "ground",
+        "sha256": "922c156b81b806e475fab03de79ce36e1e322383712acb210ffe8f9ec15342e9",
+        "captureDate": "2025-06-18T10:05:17Z",
+        "width": 685,
+        "height": 539,
+        "originalPath": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012064291_e_06e507d-ground.jpg",
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/02-0363100012064291_e_06e507d-source.jpg",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/02-0363100012064291_e_06e507d-source.jpg",
+        "sha256Copied": "922c156b81b806e475fab03de79ce36e1e322383712acb210ffe8f9ec15342e9"
+      },
+      "streetCapture": {
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/02-0363100012064291_e_06e507d-street.png",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/02-0363100012064291_e_06e507d-street.png",
+        "sha256": "cd23d8cccdc6b29250043b0fa5c352222fe35d35eb0042774d7081fdc2835d8b",
+        "cameraPosition": [
+          -217.67241764558815,
+          11.569310000905062,
+          -150.05284707370672
+        ],
+        "cameraTarget": [
+          -224.58471955653658,
+          8,
+          -169.5587463969714
+        ],
+        "view": "frontage",
+        "facadeWindows": 2199,
+        "facadeDoors": 262,
+        "intervalPaintedWalls": 198
+      },
+      "features": [
+        {
+          "id": "full:door-1",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:fascia-1",
+          "kind": "fascia",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "full:material-1",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "full:window-1",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-2",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-3",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-4",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-5",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-6",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-7",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-8",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-9",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:door_01",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:fascia_01",
+          "kind": "fascia",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material_01",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material_02",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:window_01",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        }
+      ],
+      "inspectorVisible": false
+    },
+    {
+      "fullSource": {
+        "tier": "full",
+        "sha256": "84b1cc9ead8877173102a7caa693dea504818589fec454a22deb26a59c138911",
+        "captureDate": "2023-01-12T09:08:08.860370Z",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/03-0363100012062260_e_1vze6ea-full-source.jpg"
+      },
+      "index": 3,
+      "observationId": "0363100012062260_e_1vze6ea",
+      "buildingId": "0363100012062260",
+      "street": "Da Costakade",
+      "tile": "16/33654/21538",
+      "role": "residential",
+      "source": {
+        "tier": "ground",
+        "sha256": "38f7657c019aeac20ab492f573a92b5d9da4da0674cf605ff959e601f66622f7",
+        "captureDate": "2025-07-31T11:09:23Z",
+        "width": 723,
+        "height": 539,
+        "originalPath": ".cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012062260_e_1vze6ea-ground.jpg",
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/03-0363100012062260_e_1vze6ea-source.jpg",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/03-0363100012062260_e_1vze6ea-source.jpg",
+        "sha256Copied": "38f7657c019aeac20ab492f573a92b5d9da4da0674cf605ff959e601f66622f7"
+      },
+      "streetCapture": {
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/03-0363100012062260_e_1vze6ea-street.png",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/03-0363100012062260_e_1vze6ea-street.png",
+        "sha256": "34621c4258cdcb4974428585fb9999e67cd87a9c4417899acaab9fe37e4d4b12",
+        "cameraPosition": [
+          18.336946875475974,
+          12.464310000905062,
+          71.96454576580352
+        ],
+        "cameraTarget": [
+          -0.7922384948324179,
+          8.895,
+          79.85975274129305
+        ],
+        "view": "frontage",
+        "facadeWindows": 2244,
+        "facadeDoors": 192,
+        "intervalPaintedWalls": 159
+      },
+      "features": [
+        {
+          "id": "full:d1",
+          "kind": "door",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:d2",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w1",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w10",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:w2",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:w3",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:w4",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:w5",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:w6",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:w7",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:w8",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "full:w9",
+          "kind": "window",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "ground:door-1",
+          "kind": "door",
+          "head": "segmental",
+          "state": null
+        },
+        {
+          "id": "ground:door-2",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:material-1",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:material-2",
+          "kind": "material",
+          "head": null,
+          "state": null
+        }
+      ],
+      "inspectorVisible": false
+    },
+    {
+      "fullSource": {
+        "tier": "full",
+        "sha256": "b089335f4dfef1e9911909e65bd6e0a2f161f9df3006910878b265f6e32ffc0b",
+        "captureDate": "2024-11-29T10:09:09Z",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/04-0363100012062705_e_0xaan90-full-source.jpg"
+      },
+      "index": 4,
+      "observationId": "0363100012062705_e_0xaan90",
+      "buildingId": "0363100012062705",
+      "street": "Bilderdijkkade",
+      "tile": "16/33654/21539",
+      "role": "residential",
+      "source": {
+        "tier": "ground",
+        "sha256": "3f315080f35c740640b65abfe949bb7574cd85601223eee76690eb1cb4420da8",
+        "captureDate": "2025-07-31T10:22:33Z",
+        "width": 2764,
+        "height": 506,
+        "originalPath": ".cache/city-appearance/supplemental-1000/broader-staging/images/0363100012062705_e_0xaan90-ground.jpg",
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/04-0363100012062705_e_0xaan90-source.jpg",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/04-0363100012062705_e_0xaan90-source.jpg",
+        "sha256Copied": "3f315080f35c740640b65abfe949bb7574cd85601223eee76690eb1cb4420da8"
+      },
+      "streetCapture": {
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/04-0363100012062705_e_0xaan90-street.png",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/04-0363100012062705_e_0xaan90-street.png",
+        "sha256": "cfb1e69cf616a4d3e18ffc0a3828c02e4538085f944ef60279f0f73a66c36c3c",
+        "cameraPosition": [
+          -58.895219457015926,
+          11.949310000905063,
+          421.26514766490266
+        ],
+        "cameraTarget": [
+          -77.77374423336005,
+          8.38,
+          429.7422537976817
+        ],
+        "view": "frontage",
+        "facadeWindows": 1268,
+        "facadeDoors": 92,
+        "intervalPaintedWalls": 54
+      },
+      "features": [
+        {
+          "id": "full:d1",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:d2",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:d3",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w1",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w10",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w11",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w12",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w13",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w14",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w15",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w16",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w17",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w18",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w2",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w3",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w4",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w5",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w6",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w7",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w8",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:w9",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:door-1",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:door-2",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:door-3",
+          "kind": "door",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:material-1",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:window-1",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:window-2",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:window-3",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:window-4",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:window-5",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:window-6",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:window-7",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:window-8",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        }
+      ],
+      "inspectorVisible": false
+    },
+    {
+      "fullSource": {
+        "tier": "full",
+        "sha256": "a61fe2ff0bbdbefa2f25b1f6fbe26a242f0555d247bbb8c865d1034da6bf1871",
+        "captureDate": "2022-12-14T10:14:50.781530Z",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/05-0363100012062978_e_16ybfim-full-source.jpg"
+      },
+      "index": 5,
+      "observationId": "0363100012062978_e_16ybfim",
+      "buildingId": "0363100012062978",
+      "street": "Van Oldenbarneveldtstraat",
+      "tile": "16/33655/21536",
+      "role": "residential",
+      "source": {
+        "tier": "ground",
+        "sha256": "eabd312f775801b2ad49d1aa7c3ef3367be1a44871c888e51b1abae6ea7d8dd6",
+        "captureDate": "2025-06-18T09:24:09Z",
+        "width": 613,
+        "height": 539,
+        "originalPath": ".cache/city-appearance/supplemental-1000/staging/images/0363100012062978_e_16ybfim-ground.jpg",
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/05-0363100012062978_e_16ybfim-source.jpg",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/05-0363100012062978_e_16ybfim-source.jpg",
+        "sha256Copied": "eabd312f775801b2ad49d1aa7c3ef3367be1a44871c888e51b1abae6ea7d8dd6"
+      },
+      "streetCapture": {
+        "galleryPath": ".cache/city-appearance/thousand-building-frontage-gallery/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/05-0363100012062978_e_16ybfim-street.png",
+        "publicPath": "/data/facade-review-galleries/0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9-final/05-0363100012062978_e_16ybfim-street.png",
+        "sha256": "e822842dc885bda34effe0cf6bddc185db355f3b05d8421879adb761cc73831e",
+        "cameraPosition": [
+          105.43357460257643,
+          10.124777568689966,
+          -542.1508660823438
+        ],
+        "cameraTarget": [
+          92.917774123438,
+          7.820000000000001,
+          -546.8327488590439
+        ],
+        "view": "frontage",
+        "facadeWindows": 3652,
+        "facadeDoors": 340,
+        "intervalPaintedWalls": 271
+      },
+      "features": [
+        {
+          "id": "full:door-r4-b1",
+          "kind": "door",
+          "head": "rounded",
+          "state": null
+        },
+        {
+          "id": "full:material-brick",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "full:window-r1-b1",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r1-b2",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r1-b3",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r2-b1",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r2-b2",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r2-b3",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r3-b1",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r3-b2",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r3-b3",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r4-b2",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "full:window-r4-b3",
+          "kind": "window",
+          "head": "rectangular",
+          "state": null
+        },
+        {
+          "id": "ground:mat-1",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:mat-2",
+          "kind": "material",
+          "head": null,
+          "state": null
+        },
+        {
+          "id": "ground:mat-3",
+          "kind": "material",
+          "head": null,
+          "state": null
+        }
+      ],
+      "inspectorVisible": false
+    }
+  ],
+  "visualReview": "agent visual inspection completed; architectural acceptance failed",
+  "sourceHashesBound": true,
+  "metricRegistrationAccepted": 0,
+  "inspectedAt": "2026-09-13T00:46:03.560Z",
+  "findings": [
+    {
+      "index": 1,
+      "observed": "Curved openings and differentiated shopfront appear; ornate surrounds, window divisions and complete photographed floor rhythm remain missing or misplaced."
+    },
+    {
+      "index": 2,
+      "observed": "Door details and asymmetric windows appear; dormer, balconies, retail lettering and floor layout remain incomplete. Ground and full photographs have different dated tenants."
+    },
+    {
+      "index": 3,
+      "observed": "Arched doorway is recognizable; upper floor placement, gable, balconies and surround detail do not match the full photograph."
+    },
+    {
+      "index": 4,
+      "observed": "Modern apartment example demonstrates broader typology, but projecting balconies and distributed frontage windows are not reconstructed; much of the wall is blank."
+    },
+    {
+      "index": 5,
+      "observed": "Raised arched entrance appears, but photographed stairs, basement windows, roof dormer and upper opening proportions remain wrong or missing."
+    }
+  ],
+  "accepted": false
+}

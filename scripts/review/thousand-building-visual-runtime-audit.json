@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "scope": "Read-only visual/runtime audit of the first neighbourhood-candidate traversal captures. This is not photographic acceptance.",
+  "candidateReleaseId": "60f798f7d4ac5cd99938aa956ee85099ca596f91efa475d22a4df9bcab614461",
+  "captures": {
+    "camera04-desktop": {
+      "path": ".cache/city-appearance/fidelity-neighborhood-candidate/60f798f7d4ac5cd99938aa956ee85099ca596f91efa475d22a4df9bcab614461/camera04-desktop.png",
+      "routeDistanceM": 462.3715384615385,
+      "residentTiles": 12,
+      "facadeWindows": 239,
+      "facadeDoors": 52,
+      "intervalPaintedWalls": 45,
+      "nearestCandidate": {
+        "observationId": "0363100012168431_e_1tp2fiv",
+        "buildingId": "0363100012168431",
+        "tile": "16/33655/21536",
+        "distanceFromCameraTargetM": 12.59,
+        "source": {
+          "groundSha256": "47261dbdedb21f0b1af68b9638861285e2ad1cfc5949f1df649076f6d1906a3e",
+          "captureDate": "2023-03-20T11:11:52.178190Z",
+          "path": ".cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/images/0363100012168431_e_1tp2fiv-ground.jpg"
+        },
+        "sourceInspection": "The source visibly has a tall central curved display opening and dark flanking entrance assemblies."
+      },
+      "finding": "Observed geometry is resident and compiled near this camera. The wide route view and muted façade palette make it hard to distinguish at this scale; this capture is not evidence of culling or a missing compiler patch."
+    },
+    "camera09-desktop": {
+      "path": ".cache/city-appearance/fidelity-neighborhood-candidate/60f798f7d4ac5cd99938aa956ee85099ca596f91efa475d22a4df9bcab614461/camera09-desktop.png",
+      "routeDistanceM": 1232.9907692307693,
+      "residentTiles": 12,
+      "facadeWindows": 0,
+      "facadeDoors": 2,
+      "intervalPaintedWalls": 1,
+      "nearestCandidateDistanceM": 66.2,
+      "finding": "This route sample is outside practical new-batch frontage coverage. The blank street is an uncovered camera segment, not evidence that resident candidate patches were discarded."
+    }
+  },
+  "controlState": {
+    "machinePreviewCheckboxWasUnchecked": true,
+    "candidatePreviewPolicy": "Candidate release initializes observedFacades and candidateRegistrationPreview from developmentCandidate, independently of the machine-preview checkbox.",
+    "conclusion": "The unchecked machine-preview control does not explain missing candidate patches."
+  },
+  "runtime": {
+    "camera04": {"geometryBufferBytes": 10206380, "textureBytes": 327169, "combinedBytes": 10533549},
+    "camera09": {"geometryBufferBytes": 8860536, "textureBytes": 0, "combinedBytes": 8860536},
+    "finding": "The inspected captures stay below the 11 MB viewport-detail budget; this is not a complete 14-camera release gate."
+  },
+  "conclusion": "The traversal captures do not demonstrate user-visible new façades reliably. Camera 04 shows loaded candidate geometry but is a poor comparison composition; camera 09 has no nearby candidate coverage. Produce a direct candidate-frontage capture for 0363100012168431_e_1tp2fiv (and a source comparison) before claiming visual rollout. Keep the route traversal as runtime evidence only."
+}

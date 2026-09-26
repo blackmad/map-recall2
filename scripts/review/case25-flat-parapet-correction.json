@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "id": "case25-flat-parapet-source-owner-v1",
+  "caseId": "case-25",
+  "buildingId": "0363100012169813",
+  "observationId": "0363100012169813_e_1i9q96x",
+  "source": {
+    "cropSha256": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+    "dimensions": { "width": 255, "height": 697 },
+    "captureDate": "2025-07-03T08:57:54Z",
+    "plane": {
+      "start": { "x": 120124.39733213997, "y": 487234.5757163966 },
+      "end": { "x": 120119.07253236881, "y": 487232.62987635925 },
+      "baseZ": 1.4489999532699585,
+      "topZ": 16.928999953269958
+    },
+    "localToNAPOffsetM": 0.65
+  },
+  "facadeBoundsPx": { "left": 0, "right": 255, "bottom": 697 },
+  "silhouetteTopPx": [[0, 66], [128, 66], [255, 66]],
+  "extractionVersion": "source-facade-owner-candidate/v1",
+  "scopeNote": "Approximate source-plane facade with the existing pale interrupted bands, cornice, nine sill ledges, rectangular glazing and dated ground features, plus one source-observed central balcony front. The balcony's shallow projection is inferred; its oblique right return, underside brackets and fine iron ornament are omitted rather than flattened into the frontal assembly.",
+  "componentAssemblies": [
+    {
+      "name": "central-balcony-front",
+      "type": "balcony",
+      "boundsPx": [40, 327, 126, 373],
+      "projectionM": 0.1,
+      "slabThicknessPx": 7,
+      "verticalRailCount": 12,
+      "railWidthPx": 2,
+      "railColour": "#292725",
+      "slabColour": "#817970",
+      "observedBasis": "The 2025 full crop and wider same-panorama context directly show the central balcony's frontal rail from approximately x40 to x126, with top and bottom rails and repeated vertical ironwork. Independent 2022 panorama 5e961d5ea35ca091bd71860ee695c04bda32170d2e3b41592811c96148174ba4 confirms the projecting central balcony front, supports and three-bay arrangement, but supplies no measured depth. The photographed geometry to the right in the 2025 crop is an oblique side return and underside, so it is excluded from this rectangular frontal assembly; brackets and fine ornament remain omitted.",
+      "inferredDepthBasis": "The source shows an oblique side and underside but does not measure projection; 0.10m is an explicitly conservative shallow preview depth chosen to keep the observed front close to the source sampling plane."
+    }
+  ],
+  "sourceNote": "Agent-inspected 2025 full crop: flat wall top behind the published pale cornice; the higher far-right cornice belongs to the neighbouring building. Pale interrupted bands, sill ledges and rectangular glazing are preserved from the reviewed source fixture. The wider 2025 context is the same panorama. Independent cached 2022 panorama 5e961d5ea35ca091bd71860ee695c04bda32170d2e3b41592811c96148174ba4 confirms the central projecting balcony and three-bay frontage but does not recover metric projection depth.",
+  "placement": {
+    "status": "inferred",
+    "reason": "The dated crop sampling plane is reused to place the preview facade on the selected owner; no measured registration, vertical datum or rear depth is claimed."
+  }
+}

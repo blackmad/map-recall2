@@ -1,0 +1,2646 @@
+{
+  "schemaVersion": 1,
+  "kind": "signage/model-visual-review",
+  "indexRange": [
+    0,
+    37
+  ],
+  "entries": [
+    {
+      "id": "0363100012117496:e:0rc4xt5",
+      "crop": "0363100012117496_e_0rc4xt5-ground.jpg",
+      "signs": [
+        {
+          "left": 210,
+          "top": 183,
+          "width": 56,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 333,
+          "top": 184,
+          "width": 62,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.8,
+          "notes": ""
+        },
+        {
+          "left": 461,
+          "top": 184,
+          "width": 62,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 582,
+          "top": 183,
+          "width": 63,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 689,
+          "top": 183,
+          "width": 69,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.8,
+          "notes": ""
+        },
+        {
+          "left": 851,
+          "top": 184,
+          "width": 66,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 331,
+          "top": 394,
+          "width": 72,
+          "height": 24,
+          "text": "Sonus faber",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.85,
+          "notes": ""
+        },
+        {
+          "left": 453,
+          "top": 394,
+          "width": 73,
+          "height": 24,
+          "text": "FOCAL",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 578,
+          "top": 394,
+          "width": 70,
+          "height": 24,
+          "text": "KEF",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.8,
+          "notes": ""
+        },
+        {
+          "left": 678,
+          "top": 394,
+          "width": 88,
+          "height": 24,
+          "text": "DYNAUDIO",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.7,
+          "notes": ""
+        },
+        {
+          "left": 844,
+          "top": 395,
+          "width": 84,
+          "height": 24,
+          "text": "marantz",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.75,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "6ea7d285b65636a710218ac2134ec6f58a791df83b886db8327ae7bec4b8d754",
+      "notes": ""
+    },
+    {
+      "id": "0363100012145146:e:11zdx7s",
+      "crop": "0363100012145146_e_11zdx7s-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "d995308d45f8425e7e4799036dc352b8fcda01848c345965b98f5b6a9afa7d41",
+      "notes": "Only pasted advertisements and newspaper slogans visible; transient posters excluded."
+    },
+    {
+      "id": "0363100012067032:e:05obd85",
+      "crop": "0363100012067032_e_05obd85-ground.jpg",
+      "signs": [
+        {
+          "left": 791,
+          "top": 50,
+          "width": 365,
+          "height": 88,
+          "text": "VILLANOVA",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#1a2127",
+          "fg": null,
+          "confidence": 0.95,
+          "notes": "Dark fascia background sampled at native pixel (1000,50); gold foreground uncertain."
+        },
+        {
+          "left": 184,
+          "top": 189,
+          "width": 562,
+          "height": 29,
+          "text": "BAKKERIJ VESSEM",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.86,
+          "notes": "Repeated on the awning; centre copy partly behind a parking sign."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "e9ef2afb87431d08972c386ccc242b1e21e38c52bfa6a1223156e2664579962f",
+      "notes": ""
+    },
+    {
+      "id": "0363100012112655:e:0cdl10b",
+      "crop": "0363100012112655_e_0cdl10b-ground.jpg",
+      "signs": [
+        {
+          "left": 322,
+          "top": 0,
+          "width": 128,
+          "height": 110,
+          "text": "THE PHONE LAB",
+          "type": "blade",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.95,
+          "notes": ""
+        },
+        {
+          "left": 560,
+          "top": 0,
+          "width": 126,
+          "height": 90,
+          "text": "THE PHONE LAB",
+          "type": "blade",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.95,
+          "notes": ""
+        },
+        {
+          "left": 845,
+          "top": 2,
+          "width": 310,
+          "height": 57,
+          "text": "the bowl",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#6a797c",
+          "fg": "#212a31",
+          "confidence": 0.99,
+          "notes": "Opaque panel: sampled actual native pixels at background (890, 53) and letter (1109, 14); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 1630,
+          "top": 4,
+          "width": 325,
+          "height": 42,
+          "text": "HARTMAN CIGARS",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#69808e",
+          "fg": "#222431",
+          "confidence": 0.92,
+          "notes": "Opaque panel: sampled actual native pixels at background (1780, 14) and letter (1821, 23); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 2110,
+          "top": 3,
+          "width": 524,
+          "height": 50,
+          "text": "HET ZWARTE FIETSENPLAN",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#6c7b80",
+          "fg": "#1b2429",
+          "confidence": 0.94,
+          "notes": "Opaque panel: sampled actual native pixels at background (2361, 46) and letter (2282, 40); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 1516,
+          "top": 191,
+          "width": 760,
+          "height": 45,
+          "text": "HARTMAN CIGARS & MORE",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.6,
+          "notes": "Low contrast lettering on valance."
+        },
+        {
+          "left": 775,
+          "top": 332,
+          "width": 150,
+          "height": 26,
+          "text": "the bowl",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.92,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "35d1ac5c3abf0ed3f73590447cf33559002537d24b1de3289a99b0eb0af625ad",
+      "notes": ""
+    },
+    {
+      "id": "0363100012145146:e:008oalf",
+      "crop": "0363100012145146_e_008oalf-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "2efb69e9cdf7c131fa4469c12e74e7ff5fd9b3bb50c7bd967ad16e70b7d736a1",
+      "notes": "Construction hoarding, notices and repeated posters only; no permanent facade sign."
+    },
+    {
+      "id": "0363100012074701:e:0r7yg48",
+      "crop": "0363100012074701_e_0r7yg48-ground.jpg",
+      "signs": [
+        {
+          "left": 88,
+          "top": 24,
+          "width": 282,
+          "height": 72,
+          "text": "Hergo",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.82,
+          "notes": ""
+        },
+        {
+          "left": 401,
+          "top": 27,
+          "width": 850,
+          "height": 69,
+          "text": "De slager met ...",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.58,
+          "notes": "Final word obscured/dark and visually uncertain; do not publish full phrase."
+        },
+        {
+          "left": 1734,
+          "top": 164,
+          "width": 445,
+          "height": 48,
+          "text": "NEW CHINA CITY",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.82,
+          "notes": "Left edge hidden by pole."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "98f84755cbb1181d853f67e67c22acb5852bb72167efd0e594bf419b5638564a",
+      "notes": ""
+    },
+    {
+      "id": "0363100012074701:e:1y4w50n",
+      "crop": "0363100012074701_e_1y4w50n-ground.jpg",
+      "signs": [
+        {
+          "left": 271,
+          "top": 101,
+          "width": 172,
+          "height": 28,
+          "text": "OAKBERRY AÇAI",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.92,
+          "notes": ""
+        },
+        {
+          "left": 550,
+          "top": 40,
+          "width": 461,
+          "height": 84,
+          "text": "FLEUR DE LYS",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.99,
+          "notes": ""
+        },
+        {
+          "left": 1285,
+          "top": 118,
+          "width": 209,
+          "height": 46,
+          "text": "HOTEL BETHOVEN",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.92,
+          "notes": ""
+        },
+        {
+          "left": 384,
+          "top": 238,
+          "width": 72,
+          "height": 116,
+          "text": "BENEFITS",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.85,
+          "notes": "Vertical lettering partly hidden by tree."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "ed21bee32a88378a39a2e2bb02745471338efd1a2a9b3634b17305b4c7871222",
+      "notes": ""
+    },
+    {
+      "id": "0363100012117496:e:0kxbyrr",
+      "crop": "0363100012117496_e_0kxbyrr-ground.jpg",
+      "signs": [
+        {
+          "left": 145,
+          "top": 87,
+          "width": 165,
+          "height": 61,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.99,
+          "notes": ""
+        },
+        {
+          "left": 230,
+          "top": 260,
+          "width": 62,
+          "height": 35,
+          "text": "iEar",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.95,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "bd0bbf1a1288613fea191247ef3cb623510644b5dbdbb180450a66ff84fe17de",
+      "notes": ""
+    },
+    {
+      "id": "0363100012065001:e:16v68q9",
+      "crop": "0363100012065001_e_16v68q9-ground.jpg",
+      "signs": [
+        {
+          "left": 256,
+          "top": 261,
+          "width": 188,
+          "height": 78,
+          "text": "",
+          "type": "window",
+          "readable": false,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.35,
+          "notes": "Frosted logo/name visible but lettering cannot be resolved confidently."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "a0ce644606863fbda8f5b2e2bc643e84662c8dfdb75dd449e6d287901ff7badb",
+      "notes": ""
+    },
+    {
+      "id": "0363100012069555:e:06z2j1j",
+      "crop": "0363100012069555_e_06z2j1j-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "df7b928937ec5f233319b1066ddf04a1c52bab4dfb36dfd141d2873d13b58969",
+      "notes": "Skip text and parking signs are on a movable container, not the building."
+    },
+    {
+      "id": "0363100012170126:e:04gcn7d",
+      "crop": "0363100012170126_e_04gcn7d-ground.jpg",
+      "signs": [
+        {
+          "left": 145,
+          "top": 165,
+          "width": 161,
+          "height": 48,
+          "text": "Hollywood Music TATTOO",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 0,
+          "top": 177,
+          "width": 38,
+          "height": 226,
+          "text": "TATTOO",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.86,
+          "notes": "Vertical wall lettering, clipped by crop."
+        },
+        {
+          "left": 323,
+          "top": 180,
+          "width": 51,
+          "height": 222,
+          "text": "TATTOO",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": "Vertical wall lettering."
+        },
+        {
+          "left": 325,
+          "top": 101,
+          "width": 49,
+          "height": 77,
+          "text": "TATTOO",
+          "type": "blade",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.85,
+          "notes": "Projecting sign partly outside crop."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "2e6e37cf35b68f719ac23755f6d81324897aaee2a0ec1553510465adae58c767",
+      "notes": ""
+    },
+    {
+      "id": "0363100012168373:e:0610vpv",
+      "crop": "0363100012168373_e_0610vpv-ground.jpg",
+      "signs": [
+        {
+          "left": 1065,
+          "top": 66,
+          "width": 165,
+          "height": 66,
+          "text": "FJÄLLRÄVEN",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.68,
+          "notes": "Red brand lettering behind glass; first characters partly obscured by reflections."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "e81267d73d33c5e812d50a03d2189c3b7ce500cc8e67c74f7a34c4577f5f7f81",
+      "notes": ""
+    },
+    {
+      "id": "0363100012170152:e:144bc2c",
+      "crop": "0363100012170152_e_144bc2c-ground.jpg",
+      "signs": [
+        {
+          "left": 17,
+          "top": 192,
+          "width": 424,
+          "height": 50,
+          "text": "HAND & FOOT TREATMENT STORE",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#5f593f",
+          "fg": "#2f2714",
+          "confidence": 0.95,
+          "notes": "Opaque panel: sampled actual native pixels at background (375, 223) and letter (211, 202); points selected from luminance tails within the visually marked sign region."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "dbdac9187bc62cd3db102995a0332d3ac4c04562a5e06cd9a988256d17ad13ab",
+      "notes": ""
+    },
+    {
+      "id": "0363100012165428:e:09sa6x8",
+      "crop": "0363100012165428_e_09sa6x8-ground.jpg",
+      "signs": [
+        {
+          "left": 577,
+          "top": 125,
+          "width": 354,
+          "height": 128,
+          "text": "TENUE DE NÎMES Shoe Store",
+          "type": "awning",
+          "readable": true,
+          "bg": "#1f273a",
+          "fg": "#7a909b",
+          "confidence": 0.96,
+          "notes": "Opaque panel: sampled actual native pixels at background (808, 235) and letter (879, 152); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 919,
+          "top": 173,
+          "width": 72,
+          "height": 68,
+          "text": "TENUE DE NÎMES",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.74,
+          "notes": "Circular wall logo, small text."
+        },
+        {
+          "left": 856,
+          "top": 301,
+          "width": 64,
+          "height": 18,
+          "text": "Shoe Store",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.55,
+          "notes": "Small brass plaque."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "b9143bd0e8b8336cf73b6470b1d4038bbb4cff1c925bc4c622a8ef9b71cb0665",
+      "notes": ""
+    },
+    {
+      "id": "0363100012174521:e:0ur6ste",
+      "crop": "0363100012174521_e_0ur6ste-ground.jpg",
+      "signs": [
+        {
+          "left": 130,
+          "top": 199,
+          "width": 158,
+          "height": 119,
+          "text": "",
+          "type": "logo",
+          "readable": false,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.8,
+          "notes": "Large geometric W window mark; small word below is occluded by foreground person."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "562cd9a35f0207934ab457744909dddb19d586ee61a24e2bb9fc21d8cc9ad5f6",
+      "notes": ""
+    },
+    {
+      "id": "0363100012253926:e:15uoj4q",
+      "crop": "0363100012253926_e_15uoj4q-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "4fe9001c6078c471ca7081bb92cf76b370af336e22d7854f9fa51cf18a961fa7",
+      "notes": "Construction opening and adjacent event posters only; no persistent business sign."
+    },
+    {
+      "id": "0363100012236815:e:0zv81ra",
+      "crop": "0363100012236815_e_0zv81ra-ground.jpg",
+      "signs": [
+        {
+          "left": 379,
+          "top": 43,
+          "width": 391,
+          "height": 115,
+          "text": "wijnen STERK champagne",
+          "type": "awning",
+          "readable": true,
+          "bg": "#8da397",
+          "fg": "#2c3039",
+          "confidence": 0.92,
+          "notes": "Opaque panel: sampled actual native pixels at background (622, 101) and letter (423, 90); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 823,
+          "top": 31,
+          "width": 350,
+          "height": 121,
+          "text": "7 dagen per week GEOPEND",
+          "type": "awning",
+          "readable": true,
+          "bg": "#90a8a8",
+          "fg": "#212e37",
+          "confidence": 0.9,
+          "notes": "Opaque panel: sampled actual native pixels at background (894, 105) and letter (1117, 60); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 1250,
+          "top": 25,
+          "width": 307,
+          "height": 132,
+          "text": "vers brood en banket",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.72,
+          "notes": "Right side clipped by crop."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "1fc5974f66dfab6092ebe476df029ee687cdddbd4d3871d9a62d9f6840e2b065",
+      "notes": ""
+    },
+    {
+      "id": "0363100012236262:e:08gco44",
+      "crop": "0363100012236262_e_08gco44-ground.jpg",
+      "signs": [
+        {
+          "left": 198,
+          "top": 51,
+          "width": 622,
+          "height": 104,
+          "text": "Restaurant manoto",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#30393e",
+          "fg": "#fafeff",
+          "confidence": 0.97,
+          "notes": "Background and lettering sampled at native pixels (550,45) and (434,100). Opaque panel: sampled actual native pixels at background (278, 143) and letter (566, 126); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 1390,
+          "top": 55,
+          "width": 147,
+          "height": 98,
+          "text": "LA BASTA",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#63687c",
+          "fg": "#f3fef8",
+          "confidence": 0.97,
+          "notes": "Opaque panel: sampled actual native pixels at background (1413, 100) and letter (1408, 93); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 81,
+          "top": 188,
+          "width": 594,
+          "height": 40,
+          "text": "Restaurant Manoto",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.92,
+          "notes": ""
+        },
+        {
+          "left": 686,
+          "top": 189,
+          "width": 386,
+          "height": 39,
+          "text": "Restaurant Manoto",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.92,
+          "notes": ""
+        },
+        {
+          "left": 1080,
+          "top": 206,
+          "width": 288,
+          "height": 37,
+          "text": "Restaurant Manoto",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.86,
+          "notes": ""
+        },
+        {
+          "left": 1603,
+          "top": 270,
+          "width": 134,
+          "height": 76,
+          "text": "LA BASTA",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.91,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "647c832229e6d568cfd8d78e2ae3229d4d08048ab63da63ceda696466d6523d0",
+      "notes": ""
+    },
+    {
+      "id": "0363100012236441:e:00bs3qn",
+      "crop": "0363100012236441_e_00bs3qn-ground.jpg",
+      "signs": [
+        {
+          "left": 43,
+          "top": 78,
+          "width": 598,
+          "height": 46,
+          "text": "TEM BA",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#783e4c",
+          "fg": null,
+          "confidence": 0.7,
+          "notes": "Main name clear; small tagline uncertain. Awning background sampled at (100,93)."
+        },
+        {
+          "left": 766,
+          "top": 78,
+          "width": 630,
+          "height": 46,
+          "text": "TEM BA",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.69,
+          "notes": "Repeated fascia; tagline and central portion are hidden by parking sign."
+        },
+        {
+          "left": 0,
+          "top": 58,
+          "width": 45,
+          "height": 145,
+          "text": "TEM BA",
+          "type": "blade",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.91,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "171e0b3db5464d2c6b5a8116411d953ab8c5eff60184fc622f0d9c505334a239",
+      "notes": ""
+    },
+    {
+      "id": "0363100012167348:e:01hkquq",
+      "crop": "0363100012167348_e_01hkquq-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "ed0aba064629ab143c6aa274b23b0f4724f49e2b1989eb284ea0be277e08762e",
+      "notes": "SOFACOMPANY grand-opening window wraps are promotional and transient; excluded."
+    },
+    {
+      "id": "0363100012159268:e:1ptgn5v",
+      "crop": "0363100012159268_e_1ptgn5v-ground.jpg",
+      "signs": [
+        {
+          "left": 445,
+          "top": 0,
+          "width": 245,
+          "height": 87,
+          "text": "BESTSELLER MAGAZINES GIFTS",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.83,
+          "notes": "Upper sign clipped and tree covers continuation."
+        },
+        {
+          "left": 424,
+          "top": 144,
+          "width": 269,
+          "height": 79,
+          "text": "BESTSELLER MAGAZINES GIFTS BOOKS",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.73,
+          "notes": "Tree covers latter words."
+        },
+        {
+          "left": 817,
+          "top": 141,
+          "width": 388,
+          "height": 81,
+          "text": "BESTSELLER MAGAZINES GIFTS BOOKS",
+          "type": "awning",
+          "readable": true,
+          "bg": "#586063",
+          "fg": "#e0e9e8",
+          "confidence": 0.9,
+          "notes": "Bicycle warning sign crosses sign. Opaque panel: sampled actual native pixels at background (859, 154) and letter (935, 186); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 1270,
+          "top": 238,
+          "width": 150,
+          "height": 36,
+          "text": "BESTSELLER",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.83,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "5c1fa5f5ee69d5d1a99441e0b89fb005aa20856a4924dd51b96889e62ef7338b",
+      "notes": ""
+    },
+    {
+      "id": "0363100012160810:e:19qqf19",
+      "crop": "0363100012160810_e_19qqf19-ground.jpg",
+      "signs": [
+        {
+          "left": 71,
+          "top": 42,
+          "width": 226,
+          "height": 95,
+          "text": "SENER",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#635459",
+          "fg": "#d1e6e9",
+          "confidence": 0.94,
+          "notes": "Opaque panel: sampled actual native pixels at background (222, 123) and letter (119, 87); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 366,
+          "top": 60,
+          "width": 112,
+          "height": 43,
+          "text": "CULTURE OF BIODIVERS",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.78,
+          "notes": "Top-right brand lettering."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "f355eabe480193d678a6b5e83325ed2ee0298094a2097b986fbeb512b7e7e28e",
+      "notes": ""
+    },
+    {
+      "id": "0363100012168373:e:0610vpv",
+      "crop": "0363100012168373_e_0610vpv-ground.jpg",
+      "signs": [
+        {
+          "left": 1065,
+          "top": 66,
+          "width": 165,
+          "height": 66,
+          "text": "FJÄLLRÄVEN",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.68,
+          "notes": "Red brand lettering behind glass; first characters partly obscured by reflections."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "e81267d73d33c5e812d50a03d2189c3b7ce500cc8e67c74f7a34c4577f5f7f81",
+      "notes": "Duplicate sample entry and crop of index 11; same visual review labels."
+    },
+    {
+      "id": "0363100012168373:e:0610vpv",
+      "crop": "0363100012168373_e_0610vpv-ground.jpg",
+      "signs": [
+        {
+          "left": 1065,
+          "top": 66,
+          "width": 165,
+          "height": 66,
+          "text": "FJÄLLRÄVEN",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.68,
+          "notes": "Red brand lettering behind glass; first characters partly obscured by reflections."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "e81267d73d33c5e812d50a03d2189c3b7ce500cc8e67c74f7a34c4577f5f7f81",
+      "notes": "Duplicate sample entry and crop of index 11; same visual review labels."
+    },
+    {
+      "id": "0363100012161572:e:1j49qgz",
+      "crop": "0363100012161572_e_1j49qgz-ground.jpg",
+      "signs": [
+        {
+          "left": 92,
+          "top": 270,
+          "width": 438,
+          "height": 54,
+          "text": "",
+          "type": "window",
+          "readable": false,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.28,
+          "notes": "Three repeated frosted circular marks; no legible tenant name. Traffic and street signs excluded."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "9fc4fe8382a2e3821f2dfe048b1bd390dde480ff9fd40dda9496cf9935dda5d9",
+      "notes": ""
+    },
+    {
+      "id": "0363100012160703:e:11jm8u0",
+      "crop": "0363100012160703_e_11jm8u0-ground.jpg",
+      "signs": [
+        {
+          "left": 73,
+          "top": 225,
+          "width": 227,
+          "height": 70,
+          "text": "prijatelij.nl",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.83,
+          "notes": ""
+        },
+        {
+          "left": 875,
+          "top": 345,
+          "width": 152,
+          "height": 52,
+          "text": "CALVO",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.96,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "f1111778b44a4c167c2c7e9b6a4b0568b7a2942ab628f35aa26b84c96267b68c",
+      "notes": ""
+    },
+    {
+      "id": "0363100012080599:e:1gr53pm",
+      "crop": "0363100012080599_e_1gr53pm-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "4a3746fad8c496c43ebd678fdd65162511aa421169537abf44f964a58cbc11e4",
+      "notes": "Residential entry numbers and projecting red marker only; no commercial sign."
+    },
+    {
+      "id": "0363100012089249:e:1hhtrkm",
+      "crop": "0363100012089249_e_1hhtrkm-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "2812a9f545533b22f4548dcad3742cc7f8a79fef57e904c0917c4d47c116a874",
+      "notes": "Skip branding belongs to movable container, not facade."
+    },
+    {
+      "id": "0363100012094004:e:0fkgnyh",
+      "crop": "0363100012094004_e_0fkgnyh-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "612e673ad87fbbb906603732b4490510a2359f8a497a4d25876b2f687a597d54",
+      "notes": "Only parking/street signs and graffiti."
+    },
+    {
+      "id": "0363100012099632:e:1e6cf7d",
+      "crop": "0363100012099632_e_1e6cf7d-ground.jpg",
+      "signs": [
+        {
+          "left": 90,
+          "top": 237,
+          "width": 180,
+          "height": 52,
+          "text": "",
+          "type": "gevelsteen",
+          "readable": false,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.3,
+          "notes": "Weathered painted lettering or facade marking above a plaque; text and sign status uncertain."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "cca8c1bd62141ccbb5386ff5ce87e21f9775522dca26fd61b374c7719838b086",
+      "notes": ""
+    },
+    {
+      "id": "0363100012100560:e:1fthvg3",
+      "crop": "0363100012100560_e_1fthvg3-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "1b24ee33e315b03d56870e4b908811fabda408788c6f6f8e90fe0b005c58fbbb",
+      "notes": "Van lettering and parking sign excluded; facade shows residential entry."
+    },
+    {
+      "id": "0363100012102266:e:0wzt0c2",
+      "crop": "0363100012102266_e_0wzt0c2-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "1c24c5ddb2069bbe885ae944286eb0312deaaa5f472525a8d2988a9cce1db867",
+      "notes": "Residential entrances and street sign only."
+    },
+    {
+      "id": "0363100012132577:e:0qq1gyb",
+      "crop": "0363100012132577_e_0qq1gyb-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "2f112b5c335752511c410978a5411483b12e35c7ad8c2053cf3380eef5431acd",
+      "notes": "Only road restriction and speed signs on archway."
+    },
+    {
+      "id": "0363100012139187:e:04miq8c",
+      "crop": "0363100012139187_e_04miq8c-ground.jpg",
+      "signs": [
+        {
+          "left": 1167,
+          "top": 204,
+          "width": 170,
+          "height": 87,
+          "text": "Lina's",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": "White salon lettering on glass."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "f96c4fd7a69ca28f3c09eb3b6fb778010b6e7186a87ea42ab6942d07c8c481ba",
+      "notes": ""
+    },
+    {
+      "id": "0363100012061385:e:02uqtxa",
+      "crop": "0363100012061385_e_02uqtxa-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "8bf8956487da62e8614f921c5cba7f9b5519533364d6cb24289a600e7b475863",
+      "notes": "Garage and residential entry, no sign."
+    },
+    {
+      "id": "0363100012067754:e:1injpkj",
+      "crop": "0363100012067754_e_1injpkj-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "d4fb0b27f8a3e27a0a422141fb0ea32679ad76ff5649331f3bdb10205e275fe9",
+      "notes": "Residential frontage; chalk graffiti is not signage."
+    },
+    {
+      "id": "0363100012061963:e:1evm7i7",
+      "crop": "0363100012061963_e_1evm7i7-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "54e8bae1b472ca61accbc1943121de02e26236dc28ce1b8afaf68bed290d3249",
+      "notes": "Tree obscures much of window; no visible permanent sign in remaining area."
+    },
+    {
+      "id": "0363100012062260:e:1vze6ea",
+      "crop": "0363100012062260_e_1vze6ea-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "38f7657c019aeac20ab492f573a92b5d9da4da0674cf605ff959e601f66622f7",
+      "notes": "Small doorbell/address labels only; no visible storefront sign."
+    }
+  ],
+  "uniqueIds": 36,
+  "labels": {
+    "0363100012117496:e:0rc4xt5": {
+      "id": "0363100012117496:e:0rc4xt5",
+      "crop": "0363100012117496_e_0rc4xt5-ground.jpg",
+      "signs": [
+        {
+          "left": 210,
+          "top": 183,
+          "width": 56,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 333,
+          "top": 184,
+          "width": 62,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.8,
+          "notes": ""
+        },
+        {
+          "left": 461,
+          "top": 184,
+          "width": 62,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 582,
+          "top": 183,
+          "width": 63,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 689,
+          "top": 183,
+          "width": 69,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.8,
+          "notes": ""
+        },
+        {
+          "left": 851,
+          "top": 184,
+          "width": 66,
+          "height": 32,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 331,
+          "top": 394,
+          "width": 72,
+          "height": 24,
+          "text": "Sonus faber",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.85,
+          "notes": ""
+        },
+        {
+          "left": 453,
+          "top": 394,
+          "width": 73,
+          "height": 24,
+          "text": "FOCAL",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 578,
+          "top": 394,
+          "width": 70,
+          "height": 24,
+          "text": "KEF",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.8,
+          "notes": ""
+        },
+        {
+          "left": 678,
+          "top": 394,
+          "width": 88,
+          "height": 24,
+          "text": "DYNAUDIO",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.7,
+          "notes": ""
+        },
+        {
+          "left": 844,
+          "top": 395,
+          "width": 84,
+          "height": 24,
+          "text": "marantz",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.75,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "6ea7d285b65636a710218ac2134ec6f58a791df83b886db8327ae7bec4b8d754",
+      "reviewedIndices": [
+        0
+      ],
+      "notes": ""
+    },
+    "0363100012145146:e:11zdx7s": {
+      "id": "0363100012145146:e:11zdx7s",
+      "crop": "0363100012145146_e_11zdx7s-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "d995308d45f8425e7e4799036dc352b8fcda01848c345965b98f5b6a9afa7d41",
+      "reviewedIndices": [
+        1
+      ],
+      "notes": "Only pasted advertisements and newspaper slogans visible; transient posters excluded."
+    },
+    "0363100012067032:e:05obd85": {
+      "id": "0363100012067032:e:05obd85",
+      "crop": "0363100012067032_e_05obd85-ground.jpg",
+      "signs": [
+        {
+          "left": 791,
+          "top": 50,
+          "width": 365,
+          "height": 88,
+          "text": "VILLANOVA",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#1a2127",
+          "fg": null,
+          "confidence": 0.95,
+          "notes": "Dark fascia background sampled at native pixel (1000,50); gold foreground uncertain."
+        },
+        {
+          "left": 184,
+          "top": 189,
+          "width": 562,
+          "height": 29,
+          "text": "BAKKERIJ VESSEM",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.86,
+          "notes": "Repeated on the awning; centre copy partly behind a parking sign."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "e9ef2afb87431d08972c386ccc242b1e21e38c52bfa6a1223156e2664579962f",
+      "reviewedIndices": [
+        2
+      ],
+      "notes": ""
+    },
+    "0363100012112655:e:0cdl10b": {
+      "id": "0363100012112655:e:0cdl10b",
+      "crop": "0363100012112655_e_0cdl10b-ground.jpg",
+      "signs": [
+        {
+          "left": 322,
+          "top": 0,
+          "width": 128,
+          "height": 110,
+          "text": "THE PHONE LAB",
+          "type": "blade",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.95,
+          "notes": ""
+        },
+        {
+          "left": 560,
+          "top": 0,
+          "width": 126,
+          "height": 90,
+          "text": "THE PHONE LAB",
+          "type": "blade",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.95,
+          "notes": ""
+        },
+        {
+          "left": 845,
+          "top": 2,
+          "width": 310,
+          "height": 57,
+          "text": "the bowl",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#6a797c",
+          "fg": "#212a31",
+          "confidence": 0.99,
+          "notes": "Opaque panel: sampled actual native pixels at background (890, 53) and letter (1109, 14); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 1630,
+          "top": 4,
+          "width": 325,
+          "height": 42,
+          "text": "HARTMAN CIGARS",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#69808e",
+          "fg": "#222431",
+          "confidence": 0.92,
+          "notes": "Opaque panel: sampled actual native pixels at background (1780, 14) and letter (1821, 23); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 2110,
+          "top": 3,
+          "width": 524,
+          "height": 50,
+          "text": "HET ZWARTE FIETSENPLAN",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#6c7b80",
+          "fg": "#1b2429",
+          "confidence": 0.94,
+          "notes": "Opaque panel: sampled actual native pixels at background (2361, 46) and letter (2282, 40); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 1516,
+          "top": 191,
+          "width": 760,
+          "height": 45,
+          "text": "HARTMAN CIGARS & MORE",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.6,
+          "notes": "Low contrast lettering on valance."
+        },
+        {
+          "left": 775,
+          "top": 332,
+          "width": 150,
+          "height": 26,
+          "text": "the bowl",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.92,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "35d1ac5c3abf0ed3f73590447cf33559002537d24b1de3289a99b0eb0af625ad",
+      "reviewedIndices": [
+        3
+      ],
+      "notes": ""
+    },
+    "0363100012145146:e:008oalf": {
+      "id": "0363100012145146:e:008oalf",
+      "crop": "0363100012145146_e_008oalf-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "2efb69e9cdf7c131fa4469c12e74e7ff5fd9b3bb50c7bd967ad16e70b7d736a1",
+      "reviewedIndices": [
+        4
+      ],
+      "notes": "Construction hoarding, notices and repeated posters only; no permanent facade sign."
+    },
+    "0363100012074701:e:0r7yg48": {
+      "id": "0363100012074701:e:0r7yg48",
+      "crop": "0363100012074701_e_0r7yg48-ground.jpg",
+      "signs": [
+        {
+          "left": 88,
+          "top": 24,
+          "width": 282,
+          "height": 72,
+          "text": "Hergo",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.82,
+          "notes": ""
+        },
+        {
+          "left": 401,
+          "top": 27,
+          "width": 850,
+          "height": 69,
+          "text": "De slager met ...",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.58,
+          "notes": "Final word obscured/dark and visually uncertain; do not publish full phrase."
+        },
+        {
+          "left": 1734,
+          "top": 164,
+          "width": 445,
+          "height": 48,
+          "text": "NEW CHINA CITY",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.82,
+          "notes": "Left edge hidden by pole."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "98f84755cbb1181d853f67e67c22acb5852bb72167efd0e594bf419b5638564a",
+      "reviewedIndices": [
+        5
+      ],
+      "notes": ""
+    },
+    "0363100012074701:e:1y4w50n": {
+      "id": "0363100012074701:e:1y4w50n",
+      "crop": "0363100012074701_e_1y4w50n-ground.jpg",
+      "signs": [
+        {
+          "left": 271,
+          "top": 101,
+          "width": 172,
+          "height": 28,
+          "text": "OAKBERRY AÇAI",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.92,
+          "notes": ""
+        },
+        {
+          "left": 550,
+          "top": 40,
+          "width": 461,
+          "height": 84,
+          "text": "FLEUR DE LYS",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.99,
+          "notes": ""
+        },
+        {
+          "left": 1285,
+          "top": 118,
+          "width": 209,
+          "height": 46,
+          "text": "HOTEL BETHOVEN",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.92,
+          "notes": ""
+        },
+        {
+          "left": 384,
+          "top": 238,
+          "width": 72,
+          "height": 116,
+          "text": "BENEFITS",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.85,
+          "notes": "Vertical lettering partly hidden by tree."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "ed21bee32a88378a39a2e2bb02745471338efd1a2a9b3634b17305b4c7871222",
+      "reviewedIndices": [
+        6
+      ],
+      "notes": ""
+    },
+    "0363100012117496:e:0kxbyrr": {
+      "id": "0363100012117496:e:0kxbyrr",
+      "crop": "0363100012117496_e_0kxbyrr-ground.jpg",
+      "signs": [
+        {
+          "left": 145,
+          "top": 87,
+          "width": 165,
+          "height": 61,
+          "text": "iEar",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.99,
+          "notes": ""
+        },
+        {
+          "left": 230,
+          "top": 260,
+          "width": 62,
+          "height": 35,
+          "text": "iEar",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.95,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "bd0bbf1a1288613fea191247ef3cb623510644b5dbdbb180450a66ff84fe17de",
+      "reviewedIndices": [
+        7
+      ],
+      "notes": ""
+    },
+    "0363100012065001:e:16v68q9": {
+      "id": "0363100012065001:e:16v68q9",
+      "crop": "0363100012065001_e_16v68q9-ground.jpg",
+      "signs": [
+        {
+          "left": 256,
+          "top": 261,
+          "width": 188,
+          "height": 78,
+          "text": "",
+          "type": "window",
+          "readable": false,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.35,
+          "notes": "Frosted logo/name visible but lettering cannot be resolved confidently."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "a0ce644606863fbda8f5b2e2bc643e84662c8dfdb75dd449e6d287901ff7badb",
+      "reviewedIndices": [
+        8
+      ],
+      "notes": ""
+    },
+    "0363100012069555:e:06z2j1j": {
+      "id": "0363100012069555:e:06z2j1j",
+      "crop": "0363100012069555_e_06z2j1j-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "df7b928937ec5f233319b1066ddf04a1c52bab4dfb36dfd141d2873d13b58969",
+      "reviewedIndices": [
+        9
+      ],
+      "notes": "Skip text and parking signs are on a movable container, not the building."
+    },
+    "0363100012170126:e:04gcn7d": {
+      "id": "0363100012170126:e:04gcn7d",
+      "crop": "0363100012170126_e_04gcn7d-ground.jpg",
+      "signs": [
+        {
+          "left": 145,
+          "top": 165,
+          "width": 161,
+          "height": 48,
+          "text": "Hollywood Music TATTOO",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": ""
+        },
+        {
+          "left": 0,
+          "top": 177,
+          "width": 38,
+          "height": 226,
+          "text": "TATTOO",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.86,
+          "notes": "Vertical wall lettering, clipped by crop."
+        },
+        {
+          "left": 323,
+          "top": 180,
+          "width": 51,
+          "height": 222,
+          "text": "TATTOO",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": "Vertical wall lettering."
+        },
+        {
+          "left": 325,
+          "top": 101,
+          "width": 49,
+          "height": 77,
+          "text": "TATTOO",
+          "type": "blade",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.85,
+          "notes": "Projecting sign partly outside crop."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "2e6e37cf35b68f719ac23755f6d81324897aaee2a0ec1553510465adae58c767",
+      "reviewedIndices": [
+        10
+      ],
+      "notes": ""
+    },
+    "0363100012168373:e:0610vpv": {
+      "id": "0363100012168373:e:0610vpv",
+      "crop": "0363100012168373_e_0610vpv-ground.jpg",
+      "signs": [
+        {
+          "left": 1065,
+          "top": 66,
+          "width": 165,
+          "height": 66,
+          "text": "FJÄLLRÄVEN",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.68,
+          "notes": "Red brand lettering behind glass; first characters partly obscured by reflections."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "e81267d73d33c5e812d50a03d2189c3b7ce500cc8e67c74f7a34c4577f5f7f81",
+      "reviewedIndices": [
+        11,
+        22,
+        23
+      ],
+      "notes": ""
+    },
+    "0363100012170152:e:144bc2c": {
+      "id": "0363100012170152:e:144bc2c",
+      "crop": "0363100012170152_e_144bc2c-ground.jpg",
+      "signs": [
+        {
+          "left": 17,
+          "top": 192,
+          "width": 424,
+          "height": 50,
+          "text": "HAND & FOOT TREATMENT STORE",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#5f593f",
+          "fg": "#2f2714",
+          "confidence": 0.95,
+          "notes": "Opaque panel: sampled actual native pixels at background (375, 223) and letter (211, 202); points selected from luminance tails within the visually marked sign region."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "dbdac9187bc62cd3db102995a0332d3ac4c04562a5e06cd9a988256d17ad13ab",
+      "reviewedIndices": [
+        12
+      ],
+      "notes": ""
+    },
+    "0363100012165428:e:09sa6x8": {
+      "id": "0363100012165428:e:09sa6x8",
+      "crop": "0363100012165428_e_09sa6x8-ground.jpg",
+      "signs": [
+        {
+          "left": 577,
+          "top": 125,
+          "width": 354,
+          "height": 128,
+          "text": "TENUE DE NÎMES Shoe Store",
+          "type": "awning",
+          "readable": true,
+          "bg": "#1f273a",
+          "fg": "#7a909b",
+          "confidence": 0.96,
+          "notes": "Opaque panel: sampled actual native pixels at background (808, 235) and letter (879, 152); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 919,
+          "top": 173,
+          "width": 72,
+          "height": 68,
+          "text": "TENUE DE NÎMES",
+          "type": "logo",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.74,
+          "notes": "Circular wall logo, small text."
+        },
+        {
+          "left": 856,
+          "top": 301,
+          "width": 64,
+          "height": 18,
+          "text": "Shoe Store",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.55,
+          "notes": "Small brass plaque."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "b9143bd0e8b8336cf73b6470b1d4038bbb4cff1c925bc4c622a8ef9b71cb0665",
+      "reviewedIndices": [
+        13
+      ],
+      "notes": ""
+    },
+    "0363100012174521:e:0ur6ste": {
+      "id": "0363100012174521:e:0ur6ste",
+      "crop": "0363100012174521_e_0ur6ste-ground.jpg",
+      "signs": [
+        {
+          "left": 130,
+          "top": 199,
+          "width": 158,
+          "height": 119,
+          "text": "",
+          "type": "logo",
+          "readable": false,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.8,
+          "notes": "Large geometric W window mark; small word below is occluded by foreground person."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "562cd9a35f0207934ab457744909dddb19d586ee61a24e2bb9fc21d8cc9ad5f6",
+      "reviewedIndices": [
+        14
+      ],
+      "notes": ""
+    },
+    "0363100012253926:e:15uoj4q": {
+      "id": "0363100012253926:e:15uoj4q",
+      "crop": "0363100012253926_e_15uoj4q-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "4fe9001c6078c471ca7081bb92cf76b370af336e22d7854f9fa51cf18a961fa7",
+      "reviewedIndices": [
+        15
+      ],
+      "notes": "Construction opening and adjacent event posters only; no persistent business sign."
+    },
+    "0363100012236815:e:0zv81ra": {
+      "id": "0363100012236815:e:0zv81ra",
+      "crop": "0363100012236815_e_0zv81ra-ground.jpg",
+      "signs": [
+        {
+          "left": 379,
+          "top": 43,
+          "width": 391,
+          "height": 115,
+          "text": "wijnen STERK champagne",
+          "type": "awning",
+          "readable": true,
+          "bg": "#8da397",
+          "fg": "#2c3039",
+          "confidence": 0.92,
+          "notes": "Opaque panel: sampled actual native pixels at background (622, 101) and letter (423, 90); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 823,
+          "top": 31,
+          "width": 350,
+          "height": 121,
+          "text": "7 dagen per week GEOPEND",
+          "type": "awning",
+          "readable": true,
+          "bg": "#90a8a8",
+          "fg": "#212e37",
+          "confidence": 0.9,
+          "notes": "Opaque panel: sampled actual native pixels at background (894, 105) and letter (1117, 60); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 1250,
+          "top": 25,
+          "width": 307,
+          "height": 132,
+          "text": "vers brood en banket",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.72,
+          "notes": "Right side clipped by crop."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "1fc5974f66dfab6092ebe476df029ee687cdddbd4d3871d9a62d9f6840e2b065",
+      "reviewedIndices": [
+        16
+      ],
+      "notes": ""
+    },
+    "0363100012236262:e:08gco44": {
+      "id": "0363100012236262:e:08gco44",
+      "crop": "0363100012236262_e_08gco44-ground.jpg",
+      "signs": [
+        {
+          "left": 198,
+          "top": 51,
+          "width": 622,
+          "height": 104,
+          "text": "Restaurant manoto",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#30393e",
+          "fg": "#fafeff",
+          "confidence": 0.97,
+          "notes": "Background and lettering sampled at native pixels (550,45) and (434,100). Opaque panel: sampled actual native pixels at background (278, 143) and letter (566, 126); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 1390,
+          "top": 55,
+          "width": 147,
+          "height": 98,
+          "text": "LA BASTA",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#63687c",
+          "fg": "#f3fef8",
+          "confidence": 0.97,
+          "notes": "Opaque panel: sampled actual native pixels at background (1413, 100) and letter (1408, 93); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 81,
+          "top": 188,
+          "width": 594,
+          "height": 40,
+          "text": "Restaurant Manoto",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.92,
+          "notes": ""
+        },
+        {
+          "left": 686,
+          "top": 189,
+          "width": 386,
+          "height": 39,
+          "text": "Restaurant Manoto",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.92,
+          "notes": ""
+        },
+        {
+          "left": 1080,
+          "top": 206,
+          "width": 288,
+          "height": 37,
+          "text": "Restaurant Manoto",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.86,
+          "notes": ""
+        },
+        {
+          "left": 1603,
+          "top": 270,
+          "width": 134,
+          "height": 76,
+          "text": "LA BASTA",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.91,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "647c832229e6d568cfd8d78e2ae3229d4d08048ab63da63ceda696466d6523d0",
+      "reviewedIndices": [
+        17
+      ],
+      "notes": ""
+    },
+    "0363100012236441:e:00bs3qn": {
+      "id": "0363100012236441:e:00bs3qn",
+      "crop": "0363100012236441_e_00bs3qn-ground.jpg",
+      "signs": [
+        {
+          "left": 43,
+          "top": 78,
+          "width": 598,
+          "height": 46,
+          "text": "TEM BA",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#783e4c",
+          "fg": null,
+          "confidence": 0.7,
+          "notes": "Main name clear; small tagline uncertain. Awning background sampled at (100,93)."
+        },
+        {
+          "left": 766,
+          "top": 78,
+          "width": 630,
+          "height": 46,
+          "text": "TEM BA",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.69,
+          "notes": "Repeated fascia; tagline and central portion are hidden by parking sign."
+        },
+        {
+          "left": 0,
+          "top": 58,
+          "width": 45,
+          "height": 145,
+          "text": "TEM BA",
+          "type": "blade",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.91,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "171e0b3db5464d2c6b5a8116411d953ab8c5eff60184fc622f0d9c505334a239",
+      "reviewedIndices": [
+        18
+      ],
+      "notes": ""
+    },
+    "0363100012167348:e:01hkquq": {
+      "id": "0363100012167348:e:01hkquq",
+      "crop": "0363100012167348_e_01hkquq-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "ed0aba064629ab143c6aa274b23b0f4724f49e2b1989eb284ea0be277e08762e",
+      "reviewedIndices": [
+        19
+      ],
+      "notes": "SOFACOMPANY grand-opening window wraps are promotional and transient; excluded."
+    },
+    "0363100012159268:e:1ptgn5v": {
+      "id": "0363100012159268:e:1ptgn5v",
+      "crop": "0363100012159268_e_1ptgn5v-ground.jpg",
+      "signs": [
+        {
+          "left": 445,
+          "top": 0,
+          "width": 245,
+          "height": 87,
+          "text": "BESTSELLER MAGAZINES GIFTS",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.83,
+          "notes": "Upper sign clipped and tree covers continuation."
+        },
+        {
+          "left": 424,
+          "top": 144,
+          "width": 269,
+          "height": 79,
+          "text": "BESTSELLER MAGAZINES GIFTS BOOKS",
+          "type": "awning",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.73,
+          "notes": "Tree covers latter words."
+        },
+        {
+          "left": 817,
+          "top": 141,
+          "width": 388,
+          "height": 81,
+          "text": "BESTSELLER MAGAZINES GIFTS BOOKS",
+          "type": "awning",
+          "readable": true,
+          "bg": "#586063",
+          "fg": "#e0e9e8",
+          "confidence": 0.9,
+          "notes": "Bicycle warning sign crosses sign. Opaque panel: sampled actual native pixels at background (859, 154) and letter (935, 186); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 1270,
+          "top": 238,
+          "width": 150,
+          "height": 36,
+          "text": "BESTSELLER",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.83,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "5c1fa5f5ee69d5d1a99441e0b89fb005aa20856a4924dd51b96889e62ef7338b",
+      "reviewedIndices": [
+        20
+      ],
+      "notes": ""
+    },
+    "0363100012160810:e:19qqf19": {
+      "id": "0363100012160810:e:19qqf19",
+      "crop": "0363100012160810_e_19qqf19-ground.jpg",
+      "signs": [
+        {
+          "left": 71,
+          "top": 42,
+          "width": 226,
+          "height": 95,
+          "text": "SENER",
+          "type": "fascia",
+          "readable": true,
+          "bg": "#635459",
+          "fg": "#d1e6e9",
+          "confidence": 0.94,
+          "notes": "Opaque panel: sampled actual native pixels at background (222, 123) and letter (119, 87); points selected from luminance tails within the visually marked sign region."
+        },
+        {
+          "left": 366,
+          "top": 60,
+          "width": 112,
+          "height": 43,
+          "text": "CULTURE OF BIODIVERS",
+          "type": "fascia",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.78,
+          "notes": "Top-right brand lettering."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "f355eabe480193d678a6b5e83325ed2ee0298094a2097b986fbeb512b7e7e28e",
+      "reviewedIndices": [
+        21
+      ],
+      "notes": ""
+    },
+    "0363100012161572:e:1j49qgz": {
+      "id": "0363100012161572:e:1j49qgz",
+      "crop": "0363100012161572_e_1j49qgz-ground.jpg",
+      "signs": [
+        {
+          "left": 92,
+          "top": 270,
+          "width": 438,
+          "height": 54,
+          "text": "",
+          "type": "window",
+          "readable": false,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.28,
+          "notes": "Three repeated frosted circular marks; no legible tenant name. Traffic and street signs excluded."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "9fc4fe8382a2e3821f2dfe048b1bd390dde480ff9fd40dda9496cf9935dda5d9",
+      "reviewedIndices": [
+        24
+      ],
+      "notes": ""
+    },
+    "0363100012160703:e:11jm8u0": {
+      "id": "0363100012160703:e:11jm8u0",
+      "crop": "0363100012160703_e_11jm8u0-ground.jpg",
+      "signs": [
+        {
+          "left": 73,
+          "top": 225,
+          "width": 227,
+          "height": 70,
+          "text": "prijatelij.nl",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.83,
+          "notes": ""
+        },
+        {
+          "left": 875,
+          "top": 345,
+          "width": 152,
+          "height": 52,
+          "text": "CALVO",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.96,
+          "notes": ""
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "f1111778b44a4c167c2c7e9b6a4b0568b7a2942ab628f35aa26b84c96267b68c",
+      "reviewedIndices": [
+        25
+      ],
+      "notes": ""
+    },
+    "0363100012080599:e:1gr53pm": {
+      "id": "0363100012080599:e:1gr53pm",
+      "crop": "0363100012080599_e_1gr53pm-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "4a3746fad8c496c43ebd678fdd65162511aa421169537abf44f964a58cbc11e4",
+      "reviewedIndices": [
+        26
+      ],
+      "notes": "Residential entry numbers and projecting red marker only; no commercial sign."
+    },
+    "0363100012089249:e:1hhtrkm": {
+      "id": "0363100012089249:e:1hhtrkm",
+      "crop": "0363100012089249_e_1hhtrkm-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "2812a9f545533b22f4548dcad3742cc7f8a79fef57e904c0917c4d47c116a874",
+      "reviewedIndices": [
+        27
+      ],
+      "notes": "Skip branding belongs to movable container, not facade."
+    },
+    "0363100012094004:e:0fkgnyh": {
+      "id": "0363100012094004:e:0fkgnyh",
+      "crop": "0363100012094004_e_0fkgnyh-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "612e673ad87fbbb906603732b4490510a2359f8a497a4d25876b2f687a597d54",
+      "reviewedIndices": [
+        28
+      ],
+      "notes": "Only parking/street signs and graffiti."
+    },
+    "0363100012099632:e:1e6cf7d": {
+      "id": "0363100012099632:e:1e6cf7d",
+      "crop": "0363100012099632_e_1e6cf7d-ground.jpg",
+      "signs": [
+        {
+          "left": 90,
+          "top": 237,
+          "width": 180,
+          "height": 52,
+          "text": "",
+          "type": "gevelsteen",
+          "readable": false,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.3,
+          "notes": "Weathered painted lettering or facade marking above a plaque; text and sign status uncertain."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "cca8c1bd62141ccbb5386ff5ce87e21f9775522dca26fd61b374c7719838b086",
+      "reviewedIndices": [
+        29
+      ],
+      "notes": ""
+    },
+    "0363100012100560:e:1fthvg3": {
+      "id": "0363100012100560:e:1fthvg3",
+      "crop": "0363100012100560_e_1fthvg3-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "1b24ee33e315b03d56870e4b908811fabda408788c6f6f8e90fe0b005c58fbbb",
+      "reviewedIndices": [
+        30
+      ],
+      "notes": "Van lettering and parking sign excluded; facade shows residential entry."
+    },
+    "0363100012102266:e:0wzt0c2": {
+      "id": "0363100012102266:e:0wzt0c2",
+      "crop": "0363100012102266_e_0wzt0c2-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "1c24c5ddb2069bbe885ae944286eb0312deaaa5f472525a8d2988a9cce1db867",
+      "reviewedIndices": [
+        31
+      ],
+      "notes": "Residential entrances and street sign only."
+    },
+    "0363100012132577:e:0qq1gyb": {
+      "id": "0363100012132577:e:0qq1gyb",
+      "crop": "0363100012132577_e_0qq1gyb-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "2f112b5c335752511c410978a5411483b12e35c7ad8c2053cf3380eef5431acd",
+      "reviewedIndices": [
+        32
+      ],
+      "notes": "Only road restriction and speed signs on archway."
+    },
+    "0363100012139187:e:04miq8c": {
+      "id": "0363100012139187:e:04miq8c",
+      "crop": "0363100012139187_e_04miq8c-ground.jpg",
+      "signs": [
+        {
+          "left": 1167,
+          "top": 204,
+          "width": 170,
+          "height": 87,
+          "text": "Lina's",
+          "type": "window",
+          "readable": true,
+          "bg": null,
+          "fg": null,
+          "confidence": 0.9,
+          "notes": "White salon lettering on glass."
+        }
+      ],
+      "noSign": false,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "f96c4fd7a69ca28f3c09eb3b6fb778010b6e7186a87ea42ab6942d07c8c481ba",
+      "reviewedIndices": [
+        33
+      ],
+      "notes": ""
+    },
+    "0363100012061385:e:02uqtxa": {
+      "id": "0363100012061385:e:02uqtxa",
+      "crop": "0363100012061385_e_02uqtxa-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "8bf8956487da62e8614f921c5cba7f9b5519533364d6cb24289a600e7b475863",
+      "reviewedIndices": [
+        34
+      ],
+      "notes": "Garage and residential entry, no sign."
+    },
+    "0363100012067754:e:1injpkj": {
+      "id": "0363100012067754:e:1injpkj",
+      "crop": "0363100012067754_e_1injpkj-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "d4fb0b27f8a3e27a0a422141fb0ea32679ad76ff5649331f3bdb10205e275fe9",
+      "reviewedIndices": [
+        35
+      ],
+      "notes": "Residential frontage; chalk graffiti is not signage."
+    },
+    "0363100012061963:e:1evm7i7": {
+      "id": "0363100012061963:e:1evm7i7",
+      "crop": "0363100012061963_e_1evm7i7-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "54e8bae1b472ca61accbc1943121de02e26236dc28ce1b8afaf68bed290d3249",
+      "reviewedIndices": [
+        36
+      ],
+      "notes": "Tree obscures much of window; no visible permanent sign in remaining area."
+    },
+    "0363100012062260:e:1vze6ea": {
+      "id": "0363100012062260:e:1vze6ea",
+      "crop": "0363100012062260_e_1vze6ea-ground.jpg",
+      "signs": [],
+      "noSign": true,
+      "reviewed": true,
+      "reviewOrigin": "model-visual-review",
+      "reviewer": "gpt-6-sol",
+      "sourceSha256": "38f7657c019aeac20ab492f573a92b5d9da4da0674cf605ff959e601f66622f7",
+      "reviewedIndices": [
+        37
+      ],
+      "notes": "Small doorbell/address labels only; no visible storefront sign."
+    }
+  },
+  "sampleSha256": "c67709bc76c5a76fe91c3cbcc31a206976ef1e25b537dd969c22e9c7d894c102"
+}

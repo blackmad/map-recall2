@@ -11,9 +11,9 @@
  * What it does not do matters as much. It populates footprint and massing and
  * stops. No gable, no bays, no openings, no materials — none of that is in a
  * building registry or a roof reconstruction, and the record says so by
- * leaving those fields {@link defaulted}. A house built by this module renders
- * with a correct silhouette and no windows, which is the correct resting state
- * for a building nobody has yet looked at from the street.
+ * leaving those fields {@link defaulted}. A house built by this module retains
+ * supported massing dimensions and leaves unobserved façade fields unknown.
+ * Registry and roof metadata alone do not certify its silhouette.
  *
  * Inputs are the adapter interfaces in `sources.ts`, not any one country's
  * endpoints, so this path does not have to be rewritten for the second city.
@@ -22,7 +22,8 @@
 import { measured, type Measured, type Observation } from './evidence.ts';
 import { unobservedHouse, type CanalHouse } from './houseRecord.ts';
 import { readGable, readHoistBeam } from './heritageText.ts';
-import type { HeritageRecord, MassingRecord, RegistryBuilding } from './sources.ts';
+import { buildElevations } from './elevations.ts';
+import type { ProjectedCrs, HeritageRecord, MassingRecord, RegistryBuilding } from './sources.ts';
 
 /** Provenance of one source, as the recon metadata publishes it. */
 export interface SourceDescriptor {
@@ -45,78 +46,32 @@ export interface SourceDescriptor {
 const aboveGround = (value: number | null, groundLevel: number | null): number | null =>
   value == null || groundLevel == null ? null : value - groundLevel;
 
-/**
- * What the massing model can honestly say about this building's eaves and ridge.
- *
- * Measured across the pilot boundary before this was written: 198 of 2,892
- * buildings with both heights (6.8%) report an eaves height *above* their ridge
- * — and every single one is a pitched roof, none of the flat or mixed ones. The
- * inversion runs to 15.8 m at worst, 1.9 m median.
- *
- * That pattern says which of the two numbers is failing. The eaves figure is an
- * order statistic of the measured roof surface, so it cannot exceed the real
- * ridge; the ridge figure is a *modelled* ridge line, and modelling a ridge is
- * exactly what fails on the dormers, stepped gables and rear annexes that make
- * a canal roof complex. So on an inverted pair the eaves value is the reliable
- * one and the ridge is wrong.
- *
- * The record therefore keeps the higher of the two as a lower bound on the
- * ridge — the true ridge is at least the median roof height — and leaves the
- * eaves unobserved rather than shipping a number known to be inconsistent.
- * A silhouette that is slightly too low is a measurement; an eaves line above
- * its own ridge is a lie about the shape of the building.
- */
-export type HeightReason =
-  /** Both heights present and consistent. */
-  | 'ok'
-  /** The source carries one or both heights not at all. */
-  | 'missing'
-  /** Modelled ridge below the measured roof height: ridge kept as a lower bound. */
-  | 'inverted'
-  /** Modelled ridge at or below the building's own ground level. */
-  | 'impossible';
-
+/** Heights retain their semantics; consistency alone cannot identify an eaves line. */
+export type HeightReason = 'ok' | 'missing' | 'inverted' | 'impossible' | 'stale';
 export interface ResolvedHeights {
   eavesM: number | null;
   ridgeM: number | null;
-  /** Multiplies the source confidence when the two measures disagree. */
   confidenceFactor: number;
   reason: HeightReason;
   note: string | null;
 }
 
 export function resolveHeights(massing: MassingRecord): ResolvedHeights {
+  const absent = (reason: HeightReason, note: string): ResolvedHeights => ({
+    eavesM: null, ridgeM: null, confidenceFactor: 1, reason, note,
+  });
+  if (massing.heightSemantics !== 'surface-heights-v2') return absent('stale',
+    'legacy massing height semantics are unversioned; re-adapt raw source attributes before using heights');
   const eaves = aboveGround(massing.eavesHeight, massing.groundLevel);
   const ridge = aboveGround(massing.ridgeHeight, massing.groundLevel);
-
-  if (eaves == null || ridge == null) {
-    return {
-      eavesM: eaves, ridgeM: ridge, confidenceFactor: 1, reason: 'missing',
-      note: eaves == null && ridge == null ? 'massing model carries neither eaves nor ridge height' : null,
-    };
+  if ([eaves, ridge].some(value => value !== null && (!Number.isFinite(value) || value <= 0))) {
+    return absent('impossible', 'non-positive or non-finite height above local ground; heights left unobserved');
   }
-
-  // A ridge at or below the building's own ground level is not a low
-  // measurement, it is an impossible one. Prefer the gap: leave both
-  // unobserved and queue it.
-  if (ridge <= 0) {
-    return {
-      eavesM: null, ridgeM: null, confidenceFactor: 1, reason: 'impossible',
-      note: `modelled ridge is ${ridge.toFixed(2)} m relative to its own ground level, which is impossible; heights left unobserved`,
-    };
-  }
-
-  if (ridge >= eaves) return { eavesM: eaves, ridgeM: ridge, confidenceFactor: 1, reason: 'ok', note: null };
-
-  return {
-    eavesM: null,
-    ridgeM: eaves,
-    // Halved: the ridge is a lower bound rather than a measurement, and the
-    // building belongs in the review queue.
-    confidenceFactor: 0.5,
-    reason: 'inverted',
-    note: `modelled ridge ${ridge.toFixed(2)} m is below the measured roof height ${eaves.toFixed(2)} m; keeping the roof height as a ridge lower bound and leaving eaves unobserved`,
-  };
+  if (eaves !== null && ridge !== null && eaves > ridge) return absent('inverted',
+    'eaves exceed ridge; conflicting heights left unobserved rather than relabelled');
+  return { eavesM: eaves, ridgeM: ridge, confidenceFactor: 1,
+    reason: eaves === null || ridge === null ? 'missing' : 'ok',
+    note: eaves === null || ridge === null ? 'local eaves or modelled ridge missing; roof percentiles remain surface statistics' : null };
 }
 
 /**
@@ -202,10 +157,13 @@ export interface BuildRecordInput {
   registryReadAt: string;
   registry: SourceDescriptor;
   massingSource?: SourceDescriptor;
+  /** Explicit selected wall in the registry's metric footprint; never a rectangle side. */
+  frontage?: { crs: ProjectedCrs; elevationId: string };
 }
 
 export interface BuiltRecord {
   house: CanalHouse;
+  footprintExtent: { widthM: number; depthM: number } | null;
   observations: Observation[];
   /** Why a field that could have been populated was not. Reported, never silent. */
   notes: string[];
@@ -213,13 +171,7 @@ export interface BuiltRecord {
   heightReason: HeightReason | null;
 }
 
-/**
- * Measured footprint width and depth from the registry footprint.
- *
- * `plotWidthM` is the *short* side of the minimum-area rectangle, which is the
- * façade width and the one dimension every later façade measurement scales
- * from. It is recorded at the registry's own authority rather than hedged.
- */
+/** Registry extents supply fallback massing; an explicit wall supplies façade dimensions. */
 export function buildRecordFromRecon(input: BuildRecordInput): BuiltRecord {
   const { building, massing, registryReadAt, registry, massingSource } = input;
   const house = unobservedHouse(building.buildingId);
@@ -228,22 +180,22 @@ export function buildRecordFromRecon(input: BuildRecordInput): BuiltRecord {
   const massingObservation = observations[1];
   const notes: string[] = [];
 
-  // Prefer the extent the adapter already measured off the footprint, and fall
-  // back to deriving it here only when a source hands over the ring instead.
-  // Both routes are the short and long sides of the minimum-area rectangle, so
-  // they mean the same thing; recomputing when the answer is already published
-  // would just be a second chance to disagree with it.
   const extent = declaredExtent(building) ?? footprintExtent(building);
-  if (extent) {
-    house.plotWidthM = measured(extent.widthM, 'bag', 0.99, registryObservation);
-    house.depthM = measured(extent.depthM, 'bag', 0.99, registryObservation);
+  if (input.frontage) {
+    const { crs, elevationId } = input.frontage;
+    const footprintRd = building.footprintLngLat.map(point => crs.fromLngLat(point));
+    const wall = buildElevations(footprintRd, { pandId: building.buildingId }).find(item => item.elevationId === elevationId);
+    if (!wall) throw new Error(`Selected frontage ${elevationId} does not exist on ${building.buildingId}`);
+    house.plotWidthM = measured(round2(wall.lengthM), 'bag', 0.99, registryObservation);
+    const distances = footprintRd.map(point => (point.x - wall.start.x) * wall.normal.x + (point.y - wall.start.y) * wall.normal.y);
+    house.depthM = measured(round2(Math.max(...distances) - Math.min(...distances)), 'bag', 0.99, registryObservation);
   } else {
-    notes.push('registry carries neither a footprint extent nor a footprint ring');
+    notes.push('no selected elevation: façade width and depth unobserved; rectangle extent retained for fallback massing');
   }
 
   if (!massing || !massingObservation) {
     notes.push('no massing match: heights, storeys and roof form all unobserved');
-    return { house, observations, notes, heightReason: null };
+    return { house, footprintExtent: extent, observations, notes, heightReason: null };
   }
 
   const baseConfidence = massingConfidence(massing);
@@ -251,14 +203,12 @@ export function buildRecordFromRecon(input: BuildRecordInput): BuiltRecord {
   if (heights.note) notes.push(heights.note);
   const heightConfidence = clampConfidence(baseConfidence * heights.confidenceFactor);
 
-  // The survey measures the surface; the massing model fits planes to it.
-  // Attributing the heights to `ahn` rather than `3dbag` keeps the instrument
-  // visible, and the survey vintage is what dates the observation.
+  // These are reconstructed geometry heights, with the upstream survey vintage retained.
   if (heights.eavesM != null) {
-    house.eavesHeightM = measured(round2(heights.eavesM), 'ahn', heightConfidence, massingObservation);
+    house.eavesHeightM = measured(round2(heights.eavesM), '3dbag', heightConfidence, massingObservation);
   }
   if (heights.ridgeM != null) {
-    house.ridgeHeightM = measured(round2(heights.ridgeM), 'ahn', heightConfidence, massingObservation);
+    house.ridgeHeightM = measured(round2(heights.ridgeM), '3dbag', heightConfidence, massingObservation);
   }
 
   if (massing.storeys != null && massing.storeys > 0) {
@@ -272,19 +222,12 @@ export function buildRecordFromRecon(input: BuildRecordInput): BuiltRecord {
   if (massing.insufficientInput === true) notes.push('massing model flags insufficient survey input; heights are low-confidence');
   if (massing.geometryValid === false) notes.push('massing model marks this reconstruction invalid');
 
-  return { house, observations, notes, heightReason: heights.reason };
+  return { house, footprintExtent: extent, observations, notes, heightReason: heights.reason };
 }
 
 const round2 = (value: number) => Number(value.toFixed(2));
 
-/**
- * The extent the registry adapter already published, if it did.
- *
- * `plotWidthM` is the short side of the footprint's minimum-area rectangle —
- * the façade width, and the one dimension every later façade measurement
- * scales from. Guarded rather than trusted: the sides are only meaningful the
- * right way round, and a swapped pair would silently rescale the grammar.
- */
+/** Legacy rectangle sides, retained only as fallback footprint extents. */
 export function declaredExtent(building: RegistryBuilding): { widthM: number; depthM: number } | null {
   const width = (building as { plotWidthM?: number | null }).plotWidthM;
   const depth = (building as { plotDepthM?: number | null }).plotDepthM;
@@ -359,6 +302,7 @@ export interface ReconBuildSummary {
   invertedHeights: number;
   /** Buildings whose modelled ridge sat at or below their own ground level. */
   impossibleHeights: number;
+  staleHeightSemantics: number;
   unknownConstructionYear: number;
   meanHeightConfidence: number;
 }
@@ -384,6 +328,7 @@ export function summariseReconBuild(
     withStoreys: observedIn('storeys'),
     invertedHeights: built.filter(entry => entry.heightReason === 'inverted').length,
     impossibleHeights: built.filter(entry => entry.heightReason === 'impossible').length,
+    staleHeightSemantics: built.filter(entry => entry.heightReason === 'stale').length,
     // The adapter normalises a registry's "year unknown" sentinel to null, so
     // this counts genuinely unknown dates rather than a magic number.
     unknownConstructionYear: rows.filter(row => row.building.constructionYear == null).length,

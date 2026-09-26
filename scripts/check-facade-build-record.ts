@@ -14,6 +14,8 @@ import {
   massingConfidence, reconObservations, resolveHeights, summariseReconBuild,
   type BuildRecordInput, type SourceDescriptor,
 } from '../src/canalRecall/facade/buildRecord.ts';
+import { buildElevations } from '../src/canalRecall/facade/elevations.ts';
+import { threeBagSurfaceHeights, RD_NEW } from '../src/canalRecall/facade/sources/netherlands.ts';
 import { GABLE_CONFIDENCE } from '../src/canalRecall/facade/heritageText.ts';
 import { wasObserved } from '../src/canalRecall/facade/evidence.ts';
 import { CANAL_HOUSE_FIELDS, auditHouse, validateHouse } from '../src/canalRecall/facade/houseRecord.ts';
@@ -48,6 +50,7 @@ const massing = (overrides: Partial<MassingRecord> = {}): MassingRecord => ({
   roofForm: 'pitched',
   roofFormRaw: 'slanted',
   groundLevel: 1.0,
+  heightSemantics: 'surface-heights-v2',
   eavesHeight: 15.0,
   ridgeHeight: 19.0,
   reconstructionError: 0.3,
@@ -62,12 +65,16 @@ const massing = (overrides: Partial<MassingRecord> = {}): MassingRecord => ({
   ...overrides,
 });
 
+const registryFootprint = [{ x: 120000, y: 480000 }, { x: 120005.4, y: 480000 }, { x: 120005.4, y: 480024.1 }, { x: 120000, y: 480024.1 }].map(point => RD_NEW.toLngLat(point));
+const footprintRd = registryFootprint.map(point => RD_NEW.fromLngLat(point));
+const walls = buildElevations(footprintRd, { pandId: BUILDING });
 const input = (overrides: Partial<BuildRecordInput> = {}): BuildRecordInput => ({
-  building: building({ plotWidthM: 5.4, plotDepthM: 24.1 } as Partial<RegistryBuilding>),
+  building: building({ footprintLngLat: registryFootprint, plotWidthM: 5.4, plotDepthM: 24.1 } as Partial<RegistryBuilding>),
   massing: massing(),
   registryReadAt: '2026-09-03',
   registry: registrySource,
   massingSource,
+  frontage: { crs: RD_NEW, elevationId: walls[0].elevationId },
   ...overrides,
 });
 
@@ -110,13 +117,14 @@ const input = (overrides: Partial<BuildRecordInput> = {}): BuildRecordInput => (
   // with it, and the disagreement would land on plot width — the dimension
   // every later façade measurement is scaled from.
   const bothAvailable = buildRecordFromRecon(input({
+    frontage: undefined,
     building: building({
       plotWidthM: 5.4, plotDepthM: 24.1,
       footprintLngLat: [corner(0, 0), corner(30, 0), corner(30, 9), corner(0, 9), corner(0, 0)],
     } as Partial<RegistryBuilding>),
   }));
-  assert.equal(bothAvailable.house.plotWidthM.value, 5.4, 'the published extent is used, not a re-derived one');
-  assert.equal(bothAvailable.house.depthM.value, 24.1);
+  assert.equal(bothAvailable.footprintExtent?.widthM, 5.4, 'rectangle extent is retained separately');
+  assert.equal(bothAvailable.footprintExtent?.depthM, 24.1);
 }
 
 // ---------------------------------------------------------------------------
@@ -127,17 +135,13 @@ const input = (overrides: Partial<BuildRecordInput> = {}): BuildRecordInput => (
   assert.deepEqual([consistent.eavesM, consistent.ridgeM, consistent.reason], [14, 18, 'ok']);
   assert.equal(consistent.confidenceFactor, 1);
 
-  // 198 of 2,892 buildings in the pilot report a modelled ridge below their own
-  // measured roof height, every one of them a pitched roof. The roof height is
-  // an order statistic and cannot exceed the true ridge; the modelled ridge is
-  // what fails on complex roofs. So the roof height survives as a ridge lower
-  // bound, the eaves is dropped, and confidence is halved.
+  // A contradictory pair supplies neither height, regardless of order.
   const inverted = resolveHeights(massing({ eavesHeight: 19.0, ridgeHeight: 15.0 }));
   assert.equal(inverted.reason, 'inverted');
   assert.equal(inverted.eavesM, null, 'an eaves line above its own ridge is never shipped');
-  assert.equal(inverted.ridgeM, 18, 'the measured roof height survives as a lower bound');
-  assert.equal(inverted.confidenceFactor, 0.5);
-  assert.match(inverted.note ?? '', /lower bound/);
+  assert.equal(inverted.ridgeM, null, 'a conflicting height is not relabelled as ridge');
+  assert.equal(inverted.confidenceFactor, 1);
+  assert.match(inverted.note ?? '', /conflicting/);
 
   // A ridge at or below the building's own ground level is impossible rather
   // than low. Prefer the gap: five buildings in the pilot land here.
@@ -222,7 +226,7 @@ const input = (overrides: Partial<BuildRecordInput> = {}): BuildRecordInput => (
 
   assert.equal(house.plotWidthM.value, 5.4);
   assert.equal(house.plotWidthM.source, 'bag');
-  assert.equal(house.eavesHeightM.source, 'ahn', 'the survey measures the surface; the model only fits planes to it');
+  assert.equal(house.eavesHeightM.source, '3dbag', 'reconstructed boundary height retains model provenance');
   assert.equal(house.storeys.source, '3dbag');
   assert.equal(house.storeys.confidence <= 0.75, true, 'a derived storey count is recorded below the height confidence');
 }
@@ -237,13 +241,12 @@ const input = (overrides: Partial<BuildRecordInput> = {}): BuildRecordInput => (
   assert.match(notes[0], /no massing match/);
 }
 
-// An inverted pair reaches the record as a ridge alone, at reduced confidence.
+// An inverted pair leaves both heights unknown.
 {
   const { house, notes, heightReason } = buildRecordFromRecon(input({ massing: massing({ eavesHeight: 19.0, ridgeHeight: 15.0 }) }));
   assert.equal(heightReason, 'inverted');
   assert.equal(wasObserved(house.eavesHeightM), false);
-  assert.equal(wasObserved(house.ridgeHeightM), true);
-  assert.equal(house.ridgeHeightM.confidence < massingConfidence(massing()), true);
+  assert.equal(wasObserved(house.ridgeHeightM), false);
   assert.deepEqual(validateHouse(house), [], 'and the record it produces is internally consistent');
   assert.equal(notes.length, 1);
 }
@@ -264,7 +267,7 @@ for (const storeys of [null, 0]) {
     input({ massing: massing({ eavesHeight: 19.0, ridgeHeight: 15.0 }) }),
     input({ massing: massing({ eavesHeight: 0.5, ridgeHeight: 0.2 }) }),
     input({ massing: undefined }),
-    input({ building: building({ constructionYear: null, plotWidthM: 5, plotDepthM: 20 } as Partial<RegistryBuilding>) }),
+    input({ building: building({ footprintLngLat: registryFootprint, constructionYear: null, plotWidthM: 5, plotDepthM: 20 } as Partial<RegistryBuilding>) }),
   ];
   const summary = summariseReconBuild(rows, rows.map(buildRecordFromRecon));
   assert.equal(summary.buildings, 5);
@@ -272,7 +275,7 @@ for (const storeys of [null, 0]) {
   assert.equal(summary.withoutMassing, 1);
   assert.equal(summary.invertedHeights, 1);
   assert.equal(summary.impossibleHeights, 1, 'an impossible height is not filed as an inverted one');
-  assert.equal(summary.withRidge, 3, 'ok + inverted lower bound + the dateless building');
+  assert.equal(summary.withRidge, 2, 'only non-conflicting modelled ridges');
   assert.equal(summary.withEaves, 2);
   assert.equal(summary.unknownConstructionYear, 1, 'a normalised null year is the honest signal');
   assert.equal(summary.meanHeightConfidence > 0 && summary.meanHeightConfidence <= 1, true);
@@ -377,3 +380,29 @@ const heritage = (heritageId: string, description: string | null): HeritageRecor
 }
 
 console.log('All façade build-record checks passed.');
+
+// Named semantic failures from the 2026-09-05 audit.
+{
+  const raw = { b3_h_dak_50p: 15, b3_h_dak_max: 21, b3_h_nok: 19 };
+  const adapted = threeBagSurfaceHeights(raw);
+  assert.equal(adapted.roofSurfaceHeight50p, 15);
+  assert.equal(adapted.roofSurfaceHeightMax, 21);
+  assert.equal(adapted.eavesHeight, null, 'roof median is never eaves');
+  assert.equal(threeBagSurfaceHeights({ b3_h_dak_max: 21 }).ridgeHeight, null, 'roof maximum is not a modelled ridge');
+  assert.equal(threeBagSurfaceHeights({ b3_h_50p: 15 }).roofSurfaceHeight50p, null, 'different schema locations cannot silently alias');
+  const result = buildRecordFromRecon(input({ massing: massing(adapted), frontage: undefined }));
+  assert.equal(wasObserved(result.house.eavesHeightM), false);
+  assert.equal(wasObserved(result.house.plotWidthM), false, 'rectangle short side never becomes frontage');
+  assert.equal(result.footprintExtent?.widthM, 5.4, 'fallback massing extent remains available');
+  assert.equal(resolveHeights(massing({ heightSemantics: undefined })).reason, 'stale', 'cached v1 adapters cannot revive mislabeled heights');
+  for (const heights of [{ eavesHeight: null, ridgeHeight: -1 }, { eavesHeight: -1, ridgeHeight: null }, { eavesHeight: NaN }, { ridgeHeight: Infinity }]) {
+    assert.equal(resolveHeights(massing(heights)).reason, 'impossible');
+  }
+  const wideFront = buildRecordFromRecon(input({ frontage: { crs: RD_NEW, elevationId: walls[1].elevationId } }));
+  assert.equal(wideFront.house.plotWidthM.value, 24.1, 'a side/corner elevation can exceed rectangle width');
+  assert.equal(wideFront.house.depthM.value, 5.4);
+  assert.deepEqual(validateHouse(wideFront.house), [], 'a wide shallow façade is valid');
+  assert.throws(() => buildRecordFromRecon(input({ frontage: { crs: RD_NEW, elevationId: 'wrong-wall' } })), /does not exist/);
+}
+
+assert.throws(() => buildRecordFromRecon(input({ building: building({ footprintLngLat: [] }) })), /does not exist/, 'a wall from a different footprint cannot supply frontage');

@@ -1,0 +1,1849 @@
+{
+  "version": 1,
+  "mode": "offline-diagnostic",
+  "runId": "cfbc3087e98c116fe1a047e08c68a80d3ff04bd6aeea899eafe6e56c3c818f5b",
+  "write": true,
+  "paidCalls": 0,
+  "activationPerformed": false,
+  "repairsPerformed": 0,
+  "diagnostic": {
+    "iouThreshold": 0.7,
+    "referenceCases": 12,
+    "scorableCompleteReferences": 27,
+    "matchedReferences": 23,
+    "precision": null,
+    "metricRegistrationClaimed": false
+  },
+  "repairQueue": [
+    {
+      "caseId": "replacement-entrance-02",
+      "category": "annotation-needed",
+      "reason": "2 partial extents ignored; complete image annotation not established"
+    },
+    {
+      "caseId": "replacement-entrance-04",
+      "category": "detection-layout",
+      "reason": "4 complete reference misses; 0 localized type errors"
+    },
+    {
+      "caseId": "replacement-curved-02",
+      "category": "annotation-needed",
+      "reason": "3 partial extents ignored; complete image annotation not established"
+    },
+    {
+      "caseId": "replacement-awning-extended",
+      "category": "annotation-needed",
+      "reason": "6 partial extents ignored; complete image annotation not established"
+    },
+    {
+      "caseId": "replacement-finish-01",
+      "category": "annotation-needed",
+      "reason": "1 partial extents ignored; complete image annotation not established"
+    },
+    {
+      "caseId": "replacement-masonry-01",
+      "category": "annotation-needed",
+      "reason": "1 partial extents ignored; complete image annotation not established"
+    }
+  ],
+  "snapshot": {
+    "path": "review-data/snapshots/bb5587b2b6afeacd314f9e543936a333611211c593eba13dc29db6af5013a0b4",
+    "sha256": "bb5587b2b6afeacd314f9e543936a333611211c593eba13dc29db6af5013a0b4",
+    "missingBindings": [
+      ".cache/city-appearance/repair-preview-notes/60148829ac835a4745b50faf21b0b1b3cf08b44c13d6a6977466bc884e2a332e.json: preview cases hash mismatch",
+      ".cache/city-appearance/repair-preview-notes/aecbcde914a6b94ca330ae533bf024c76e05415a0edab4f25ab8e1863d8fbacd.json: preview cases hash mismatch"
+    ]
+  },
+  "generatedAt": "2026-09-13T08:33:15.431Z",
+  "pins": [
+    {
+      "path": ".cache/city-appearance/fidelity-extraction/analysis-results.json",
+      "sha256": "bdf09964e060915cd5ac69c4de6888d1b73ff0767ba87cfe7fcd94fd35d9de35"
+    },
+    {
+      "path": ".cache/city-appearance/spend.json",
+      "sha256": "a8bdf3b980739f459c7186be9662878c3673eae243cb2acd64facfcde014fbe7"
+    },
+    {
+      "path": "public/data/city-expansion/current.json",
+      "sha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9"
+    },
+    {
+      "path": "scripts/city-appearance/fidelity/active-development-manifest.json",
+      "sha256": "4dae29ec9c981a5fc92c8b5b2f0c901cd2686aabb1cd0139b6ec20a8da9f3651"
+    },
+    {
+      "path": "scripts/city-appearance/fidelity/independent-reference-measurements.json",
+      "sha256": "23940be99a7e04cef71c3284c2cc2908f267848488adaf39538f9e661f8d6aee"
+    },
+    {
+      "path": "scripts/city-appearance/quality-loop/source-evaluation.ts",
+      "sha256": "6352bc67a805a6319636de85bd9775631008bc6d5f07c8f4b07604aa469c57dd"
+    },
+    {
+      "path": "scripts/review/project-status.ts",
+      "sha256": "7f0488a6541135d52f322319b05aea917935342cc8ed02486fedc0c31036ea7a"
+    },
+    {
+      "path": "scripts/review/review-snapshot.ts",
+      "sha256": "841eb3095ccbde5a8248f08032ed3363676843d92d33418d9542a9931da392a2"
+    },
+    {
+      "path": "scripts/review/run-reconstruction-review.ts",
+      "sha256": "a1adf8ea7eeb6f1118fe16eec535df2e077c605125d69759ed189231d25fbea9"
+    },
+    {
+      "path": "scripts/review/thousand-building-candidate-report.json",
+      "sha256": "2bf44cd9a36e3bf09b1d9cf83a7dbd9030a4079da37d71e0284576d046897dad"
+    },
+    {
+      "path": "scripts/review/thousand-building-extraction/charge-reconciliation.json",
+      "sha256": "1fbb354128d077e56e7e4d468e9999f23781cb7f28577b22ee37d5274323193b"
+    },
+    {
+      "path": "scripts/review/thousand-building-extraction/final-report.json",
+      "sha256": "4c637fb4182ca42bb2bb50a03b58cb9c59d81c0458c1123b59f2ed82e44a5a50"
+    }
+  ],
+  "project": {
+    "schemaVersion": 1,
+    "generatedAt": "2026-09-13T08:33:15.339Z",
+    "root": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild",
+    "findings": [],
+    "artifacts": {
+      "current": {
+        "path": "public/data/city-expansion/current.json",
+        "present": true,
+        "valid": true,
+        "sha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9"
+      },
+      "candidate": {
+        "path": "scripts/review/thousand-building-candidate-report.json",
+        "present": true,
+        "valid": true,
+        "sha256": "2bf44cd9a36e3bf09b1d9cf83a7dbd9030a4079da37d71e0284576d046897dad"
+      },
+      "extraction": {
+        "path": "scripts/review/thousand-building-extraction/final-report.json",
+        "present": true,
+        "valid": true,
+        "sha256": "4c637fb4182ca42bb2bb50a03b58cb9c59d81c0458c1123b59f2ed82e44a5a50"
+      },
+      "spend": {
+        "path": ".cache/city-appearance/spend.json",
+        "present": true,
+        "valid": true,
+        "sha256": "a8bdf3b980739f459c7186be9662878c3673eae243cb2acd64facfcde014fbe7"
+      },
+      "reconciliation": {
+        "path": "scripts/review/thousand-building-extraction/charge-reconciliation.json",
+        "present": true,
+        "valid": true,
+        "sha256": "1fbb354128d077e56e7e4d468e9999f23781cb7f28577b22ee37d5274323193b"
+      }
+    },
+    "releases": {
+      "active": {
+        "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+        "buildings": 7395,
+        "pointerSha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9",
+        "publication": "experimental-city-demo"
+      },
+      "staged": {
+        "releaseId": "0f625ffc9c7929619629fc2f61019ec8a14cbf4e6427ca3383c015c23fb998d9",
+        "mode": "staged-preview-only",
+        "activated": false
+      }
+    },
+    "coverage": {
+      "processing": {
+        "safeGroundAttempted": 1009,
+        "safeGroundValid": 1000,
+        "fullTierAttempted": 1000,
+        "fullTierValid": 988,
+        "bothTiersValid": 988
+      },
+      "attached": {
+        "attachedSourceTiers": 1950,
+        "attachedUniqueBuildings": 991,
+        "omittedSourceTiers": 270,
+        "omittedByReason": {
+          "cached-analysis-missing-or-ambiguous": 270
+        }
+      },
+      "rendered": {
+        "compiledCandidateRecords": 991,
+        "compiledUniqueBuildings": 991,
+        "renderableObservedFeatureIds": 12104,
+        "renderableObservedUniqueBuildings": 973,
+        "excludedFromObservedCount": "generic contextual and procedural prior patches",
+        "renderedMeaning": "actual shared compiler patches with non-empty geometry from staged owner tiles"
+      }
+    },
+    "acceptance": {
+      "registration": {
+        "accepted": 0,
+        "status": "unaccepted"
+      },
+      "photographic": {
+        "accepted": "pending"
+      },
+      "publication": {
+        "stagedOnly": true,
+        "activated": false
+      },
+      "expansion": {
+        "activated": false
+      }
+    },
+    "costs": {
+      "accountedUsd": 5.384790739499998,
+      "knownConservativeChargeUsd": 0.015,
+      "unresolvedEntries": 0,
+      "ceilingUsd": 11.806543634499999,
+      "authorization": {
+        "ceilingUsd": 11.806543634499999,
+        "ceilingAuthorization": {
+          "id": "neighbourhood-1000-preview-2026-09-13",
+          "maxCeilingUsd": 11.806543634499999
+        }
+      }
+    },
+    "reviewStores": {
+      ".cache/city-appearance/review-notes": {
+        "present": true,
+        "files": [
+          {
+            "path": ".cache/city-appearance/review-notes/c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d.json",
+            "sha256": "e92aedf0191fb1912a5c34129e335d8bc0146a38b71401d4c036892cec59bad1",
+            "bytes": 64464
+          }
+        ]
+      },
+      ".cache/city-appearance/repair-preview-notes": {
+        "present": true,
+        "files": [
+          {
+            "path": ".cache/city-appearance/repair-preview-notes/60148829ac835a4745b50faf21b0b1b3cf08b44c13d6a6977466bc884e2a332e.json",
+            "sha256": "1b880ff615913535698f4249a8e302801b8da99db64a3e8dc3709695753de72a",
+            "bytes": 32099
+          },
+          {
+            "path": ".cache/city-appearance/repair-preview-notes/aecbcde914a6b94ca330ae533bf024c76e05415a0edab4f25ab8e1863d8fbacd.json",
+            "sha256": "74672d372beee1ec2fc0d35b04f1439301fcb90d0c4dc7fba8b9e5bcbefc0ce1",
+            "bytes": 6558
+          }
+        ]
+      },
+      ".cache/facade-rebuild/router-review": {
+        "present": true,
+        "files": [
+          {
+            "path": ".cache/facade-rebuild/router-review/labels.json",
+            "sha256": "fc6deee302c36414cc62dd54d9e3542237f7062e5390137e05f81b2db16c144c",
+            "bytes": 24289
+          }
+        ]
+      }
+    }
+  },
+  "source": {
+    "schemaVersion": 1,
+    "evaluator": {
+      "name": "source-space-opening-diagnostic",
+      "iouThreshold": 0.7,
+      "thresholdPurpose": "localization-only diagnostic; not equivalent to a fidelity acceptance gate",
+      "matching": "deterministic maximum-cardinality Hopcroft-Karp; adjacency prefers higher IoU then source order"
+    },
+    "provenance": {
+      "disposition": "development-agent-inspected-partial-reference",
+      "humanReviewed": false,
+      "heldout": false,
+      "certifiedTruth": false,
+      "sourceStatement": "Twelve individually viewed cached ground crops; no extractor output consulted. Full-tier quantitative references, hidden extents and accepted registrations remain outstanding."
+    },
+    "inputs": {
+      "root": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild",
+      "files": [
+        {
+          "path": "scripts/city-appearance/fidelity/independent-reference-measurements.json",
+          "sha256": "23940be99a7e04cef71c3284c2cc2908f267848488adaf39538f9e661f8d6aee"
+        },
+        {
+          "path": ".cache/city-appearance/fidelity-extraction/analysis-results.json",
+          "sha256": "bdf09964e060915cd5ac69c4de6888d1b73ff0767ba87cfe7fcd94fd35d9de35"
+        },
+        {
+          "path": "scripts/city-appearance/fidelity/active-development-manifest.json",
+          "sha256": "4dae29ec9c981a5fc92c8b5b2f0c901cd2686aabb1cd0139b6ec20a8da9f3651"
+        }
+      ],
+      "readConsistency": "hashes cover the exact bytes parsed for this report"
+    },
+    "registration": {
+      "requiredForThisEvaluation": false,
+      "status": "not-evaluated",
+      "metricAccuracyClaimed": false
+    },
+    "stage": {
+      "mode": "report-only",
+      "writesRepairs": false,
+      "acceptsCandidates": false
+    },
+    "coverage": {
+      "referenceEntries": 12,
+      "validReferenceCases": 12,
+      "invalidReferenceEntries": [],
+      "invalidAnalysisEntries": [],
+      "matchedAnalysisCases": 12,
+      "missingOutputCasesOnVerifiedSources": 0,
+      "ambiguousAnalysisCases": 0,
+      "unscorableCases": 0,
+      "totalCompleteVisibleReferences": 27,
+      "scorableCompleteVisibleReferences": 27,
+      "partialVisibleExtentsIgnored": 13
+    },
+    "aggregateDiagnostics": {
+      "extractionLocalizationRecallOnVerifiedSources": 0.851852,
+      "endToEndRecall": null,
+      "endToEndOmissionReason": "Invalid or unverified sources are unscorable, not extraction misses.",
+      "precision": null,
+      "precisionOmissionReason": "Complete annotation of all openings and image regions is not proven."
+    },
+    "summary": {
+      "scoredCases": 10,
+      "annotationNeededCases": 2,
+      "abstainedCases": 0,
+      "completeReferenceMatches": 23,
+      "completeReferenceMisses": 4
+    },
+    "cases": [
+      {
+        "caseId": "replacement-entrance-01",
+        "observationId": "0363100012152464_e_10yua55",
+        "buildingId": "0363100012152464",
+        "tier": "ground",
+        "cropSha256": "b73bfde1efd5029e26bd0f6c34b850f07c9388e55220570a20bfa96bbc05ca9e",
+        "dimensions": {
+          "width": 674,
+          "height": 539
+        },
+        "captureDate": "2023-01-12T10:59:29.172750Z",
+        "source": {
+          "cropSha256": "b73bfde1efd5029e26bd0f6c34b850f07c9388e55220570a20bfa96bbc05ca9e",
+          "width": 674,
+          "height": 539,
+          "captureDate": "2023-01-12T10:59:29.172750Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012152464_e_10yua55-ground.jpg",
+            "available": true,
+            "actualSha256": "b73bfde1efd5029e26bd0f6c34b850f07c9388e55220570a20bfa96bbc05ca9e"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "d1ff2bfa989a66e1536a47847d822454520ec12e392c42ca5ae0553eb19a83c2",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 4,
+              "id": "mat_brick",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 5,
+              "id": "mat_plinth",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 6,
+              "id": "mat_band",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 4,
+          "partialVisibleExtentsIgnored": 0,
+          "openingPredictions": 4,
+          "rejectedPredictions": 3
+        },
+        "matches": [
+          {
+            "referenceId": "left-window",
+            "predictionId": "window_1",
+            "iou": 0.866949,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "middle-window",
+            "predictionId": "window_2",
+            "iou": 0.870747,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "left-entrance",
+            "predictionId": "door_1",
+            "iou": 0.866023,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "right-entrance",
+            "predictionId": "door_2",
+            "iou": 0.87554,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          }
+        ],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [],
+        "partialReferences": [],
+        "diagnostics": {
+          "localizationRecall": 1,
+          "meanMatchedIou": 0.869815,
+          "typeAccuracyOnLocalized": 1,
+          "headAccuracyOnScoredLocalized": 1,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [
+            {
+              "referenceId": "left-window",
+              "predictionId": "window_1",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "middle-window",
+              "predictionId": "window_2",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "left-entrance",
+              "predictionId": "door_1",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "right-entrance",
+              "predictionId": "door_2",
+              "outcome": "correct"
+            }
+          ],
+          "assertions": {
+            "count": 4,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "diagnostic-scored"
+      },
+      {
+        "caseId": "replacement-entrance-02",
+        "observationId": "0363100012152562_e_17jq9cd",
+        "buildingId": "0363100012152562",
+        "tier": "ground",
+        "cropSha256": "34789bab2ed89c68a452605cc6774d9275079fe5cbf4686a89e4e1c658aa3281",
+        "dimensions": {
+          "width": 626,
+          "height": 539
+        },
+        "captureDate": "2025-07-03T11:25:40Z",
+        "source": {
+          "cropSha256": "34789bab2ed89c68a452605cc6774d9275079fe5cbf4686a89e4e1c658aa3281",
+          "width": 626,
+          "height": 539,
+          "captureDate": "2025-07-03T11:25:40Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012152562_e_17jq9cd-ground.jpg",
+            "available": true,
+            "actualSha256": "34789bab2ed89c68a452605cc6774d9275079fe5cbf4686a89e4e1c658aa3281"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "3eac372beb20f4b47ff14537bb812f5c29fbdc2ea7491c004b6f33c46a113dd2",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 3,
+              "id": "material-1",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 4,
+              "id": "material-2",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 2,
+          "partialVisibleExtentsIgnored": 2,
+          "openingPredictions": 3,
+          "rejectedPredictions": 2
+        },
+        "matches": [
+          {
+            "referenceId": "left-window",
+            "predictionId": "window-1",
+            "iou": 0.975084,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "right-window",
+            "predictionId": "window-2",
+            "iou": 0.94864,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          }
+        ],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [
+          "door-1"
+        ],
+        "partialReferences": [
+          {
+            "id": "lower-entrance-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          },
+          {
+            "id": "raised-entrance-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          }
+        ],
+        "diagnostics": {
+          "localizationRecall": 1,
+          "meanMatchedIou": 0.961862,
+          "typeAccuracyOnLocalized": 1,
+          "headAccuracyOnScoredLocalized": 1,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [
+            {
+              "referenceId": "left-window",
+              "predictionId": "window-1",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "right-window",
+              "predictionId": "window-2",
+              "outcome": "correct"
+            }
+          ],
+          "assertions": {
+            "count": 4,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "diagnostic-scored"
+      },
+      {
+        "caseId": "replacement-entrance-03",
+        "observationId": "0363100012157610_e_0sr2d2k",
+        "buildingId": "0363100012157610",
+        "tier": "ground",
+        "cropSha256": "12eef603e43f27680e279c87962c5f23b3682dabdf4e956280f71709a5de2163",
+        "dimensions": {
+          "width": 664,
+          "height": 539
+        },
+        "captureDate": "2023-01-12T10:59:26.477770Z",
+        "source": {
+          "cropSha256": "12eef603e43f27680e279c87962c5f23b3682dabdf4e956280f71709a5de2163",
+          "width": 664,
+          "height": 539,
+          "captureDate": "2023-01-12T10:59:26.477770Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012157610_e_0sr2d2k-ground.jpg",
+            "available": true,
+            "actualSha256": "12eef603e43f27680e279c87962c5f23b3682dabdf4e956280f71709a5de2163"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "79126e48f7839db61e5c67cc9d89528f7a1453a0bdc4c94887f634148e2de120",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 6,
+              "id": "mat-brick",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 7,
+              "id": "mat-plinth",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 4,
+          "partialVisibleExtentsIgnored": 0,
+          "openingPredictions": 6,
+          "rejectedPredictions": 2
+        },
+        "matches": [
+          {
+            "referenceId": "left-window",
+            "predictionId": "window-1",
+            "iou": 0.870363,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "middle-window",
+            "predictionId": "window-2",
+            "iou": 0.878032,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "left-entrance",
+            "predictionId": "door-1",
+            "iou": 0.824961,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "right-entrance",
+            "predictionId": "door-2",
+            "iou": 0.870288,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          }
+        ],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [
+          "window-3",
+          "window-4"
+        ],
+        "partialReferences": [],
+        "diagnostics": {
+          "localizationRecall": 1,
+          "meanMatchedIou": 0.860911,
+          "typeAccuracyOnLocalized": 1,
+          "headAccuracyOnScoredLocalized": 1,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [
+            {
+              "referenceId": "left-window",
+              "predictionId": "window-1",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "middle-window",
+              "predictionId": "window-2",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "left-entrance",
+              "predictionId": "door-1",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "right-entrance",
+              "predictionId": "door-2",
+              "outcome": "correct"
+            }
+          ],
+          "assertions": {
+            "count": 4,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "diagnostic-scored"
+      },
+      {
+        "caseId": "replacement-entrance-04",
+        "observationId": "0363100012170198_e_1wjd1ln",
+        "buildingId": "0363100012170198",
+        "tier": "ground",
+        "cropSha256": "1a794b21cfd27f0976160790e678b3f53438475c149a735ccfed942ab0a25e48",
+        "dimensions": {
+          "width": 654,
+          "height": 539
+        },
+        "captureDate": "2024-12-16T09:30:17Z",
+        "source": {
+          "cropSha256": "1a794b21cfd27f0976160790e678b3f53438475c149a735ccfed942ab0a25e48",
+          "width": 654,
+          "height": 539,
+          "captureDate": "2024-12-16T09:30:17Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012170198_e_1wjd1ln-ground.jpg",
+            "available": true,
+            "actualSha256": "1a794b21cfd27f0976160790e678b3f53438475c149a735ccfed942ab0a25e48"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "e430dcad977239b52ee7aff44310c170f4318c9dbc7a98ab5a18a0882a7455e1",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 6,
+              "id": "fascia-1",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 7,
+              "id": "wall-material",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 8,
+              "id": "plinth-material",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 4,
+          "partialVisibleExtentsIgnored": 0,
+          "openingPredictions": 6,
+          "rejectedPredictions": 3
+        },
+        "matches": [],
+        "misses": [
+          "shop-display-left",
+          "shop-display-middle",
+          "shop-entrance",
+          "right-residential-entrance"
+        ],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [
+          "window-1",
+          "window-2",
+          "window-3",
+          "display-window",
+          "entrance-door",
+          "door-transom"
+        ],
+        "partialReferences": [],
+        "diagnostics": {
+          "localizationRecall": 0,
+          "meanMatchedIou": null,
+          "typeAccuracyOnLocalized": null,
+          "headAccuracyOnScoredLocalized": null,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [],
+          "assertions": {
+            "count": 3,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "diagnostic-scored"
+      },
+      {
+        "caseId": "replacement-curved-01",
+        "observationId": "0363100012163064_e_068m6ak",
+        "buildingId": "0363100012163064",
+        "tier": "ground",
+        "cropSha256": "2204002d89c7ee79315e4e416f190676f8791a306d43510446b9e2861fcdfbfd",
+        "dimensions": {
+          "width": 1142,
+          "height": 539
+        },
+        "captureDate": "2022-04-29T11:03:12.870280Z",
+        "source": {
+          "cropSha256": "2204002d89c7ee79315e4e416f190676f8791a306d43510446b9e2861fcdfbfd",
+          "width": 1142,
+          "height": 539,
+          "captureDate": "2022-04-29T11:03:12.870280Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012163064_e_068m6ak-ground.jpg",
+            "available": true,
+            "actualSha256": "2204002d89c7ee79315e4e416f190676f8791a306d43510446b9e2861fcdfbfd"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "afd37aaff96c9ef6b0fffa393a433c83b61e0065e34bac24d9232e2e4e0b3709",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 4,
+              "id": "material-1",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 5,
+              "id": "material-2",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 4,
+          "partialVisibleExtentsIgnored": 0,
+          "openingPredictions": 4,
+          "rejectedPredictions": 2
+        },
+        "matches": [
+          {
+            "referenceId": "arched-window-1",
+            "predictionId": "window-1",
+            "iou": 0.942833,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "arched-window-2",
+            "predictionId": "window-2",
+            "iou": 0.882492,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "arched-window-3",
+            "predictionId": "window-3",
+            "iou": 0.849936,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "arched-window-4",
+            "predictionId": "window-4",
+            "iou": 0.843844,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          }
+        ],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [],
+        "partialReferences": [],
+        "diagnostics": {
+          "localizationRecall": 1,
+          "meanMatchedIou": 0.879776,
+          "typeAccuracyOnLocalized": 1,
+          "headAccuracyOnScoredLocalized": 1,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [
+            {
+              "referenceId": "arched-window-1",
+              "predictionId": "window-1",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "arched-window-2",
+              "predictionId": "window-2",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "arched-window-3",
+              "predictionId": "window-3",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "arched-window-4",
+              "predictionId": "window-4",
+              "outcome": "correct"
+            }
+          ],
+          "assertions": {
+            "count": 5,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "diagnostic-scored"
+      },
+      {
+        "caseId": "replacement-curved-02",
+        "observationId": "0363100012154294_e_1y3j89u",
+        "buildingId": "0363100012154294",
+        "tier": "ground",
+        "cropSha256": "973fbcf06fe53ea304d5cf1e79ee1c7272b675ed243e34b8c7de88f3af1a4fcc",
+        "dimensions": {
+          "width": 677,
+          "height": 539
+        },
+        "captureDate": "2024-12-11T11:11:47Z",
+        "source": {
+          "cropSha256": "973fbcf06fe53ea304d5cf1e79ee1c7272b675ed243e34b8c7de88f3af1a4fcc",
+          "width": 677,
+          "height": 539,
+          "captureDate": "2024-12-11T11:11:47Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012154294_e_1y3j89u-ground.jpg",
+            "available": true,
+            "actualSha256": "973fbcf06fe53ea304d5cf1e79ee1c7272b675ed243e34b8c7de88f3af1a4fcc"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "3a9aab92982ef4e16edc19899e18f7e28c394e2613a42d1d874fc2f2f0f5bd76",
+          "openingsComplete": false,
+          "rejectedPredictions": [
+            {
+              "index": 3,
+              "id": "material-1",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 4,
+              "id": "material-2",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 0,
+          "partialVisibleExtentsIgnored": 3,
+          "openingPredictions": 3,
+          "rejectedPredictions": 2
+        },
+        "matches": [],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [
+          "door-1",
+          "window-1",
+          "window-2"
+        ],
+        "partialReferences": [
+          {
+            "id": "entrance-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          },
+          {
+            "id": "middle-window-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          },
+          {
+            "id": "right-window-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          }
+        ],
+        "diagnostics": {
+          "localizationRecall": null,
+          "meanMatchedIou": null,
+          "typeAccuracyOnLocalized": null,
+          "headAccuracyOnScoredLocalized": null,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [],
+          "assertions": {
+            "count": 3,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "annotation-needed"
+      },
+      {
+        "caseId": "replacement-contact-01",
+        "observationId": "0363100012155777_e_0ggdhqa",
+        "buildingId": "0363100012155777",
+        "tier": "ground",
+        "cropSha256": "76c177306cc2b834ddc8176fe8b04547b44a39bebefafcbe6f028cf867434ffe",
+        "dimensions": {
+          "width": 680,
+          "height": 539
+        },
+        "captureDate": "2023-01-12T10:59:27.907740Z",
+        "source": {
+          "cropSha256": "76c177306cc2b834ddc8176fe8b04547b44a39bebefafcbe6f028cf867434ffe",
+          "width": 680,
+          "height": 539,
+          "captureDate": "2023-01-12T10:59:27.907740Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012155777_e_0ggdhqa-ground.jpg",
+            "available": true,
+            "actualSha256": "76c177306cc2b834ddc8176fe8b04547b44a39bebefafcbe6f028cf867434ffe"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "5b87e0494376cff181c97d08ba4fbc86ecbaa32447bb3905569adcfb37165333",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 4,
+              "id": "material-1",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 5,
+              "id": "material-2",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 6,
+              "id": "material-3",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 3,
+          "partialVisibleExtentsIgnored": 0,
+          "openingPredictions": 4,
+          "rejectedPredictions": 3
+        },
+        "matches": [
+          {
+            "referenceId": "garage-assembly",
+            "predictionId": "door-1",
+            "iou": 0.955853,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "left-pedestrian-entrance",
+            "predictionId": "door-2",
+            "iou": 0.886287,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "right-pedestrian-entrance",
+            "predictionId": "door-3",
+            "iou": 0.777963,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          }
+        ],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [
+          "window-1"
+        ],
+        "partialReferences": [],
+        "diagnostics": {
+          "localizationRecall": 1,
+          "meanMatchedIou": 0.873368,
+          "typeAccuracyOnLocalized": 1,
+          "headAccuracyOnScoredLocalized": 1,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [
+            {
+              "referenceId": "garage-assembly",
+              "predictionId": "door-1",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "left-pedestrian-entrance",
+              "predictionId": "door-2",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "right-pedestrian-entrance",
+              "predictionId": "door-3",
+              "outcome": "correct"
+            }
+          ],
+          "assertions": {
+            "count": 4,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "diagnostic-scored"
+      },
+      {
+        "caseId": "replacement-awning-extended",
+        "observationId": "0363100012166975_e_1bab2bg",
+        "buildingId": "0363100012166975",
+        "tier": "ground",
+        "cropSha256": "a132fb579d21a71b9c376198748b79dbf09f8d57e2b4c2f1d8d9b01e8346e875",
+        "dimensions": {
+          "width": 1451,
+          "height": 539
+        },
+        "captureDate": "2024-11-29T09:42:29Z",
+        "source": {
+          "cropSha256": "a132fb579d21a71b9c376198748b79dbf09f8d57e2b4c2f1d8d9b01e8346e875",
+          "width": 1451,
+          "height": 539,
+          "captureDate": "2024-11-29T09:42:29Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012166975_e_1bab2bg-ground.jpg",
+            "available": true,
+            "actualSha256": "a132fb579d21a71b9c376198748b79dbf09f8d57e2b4c2f1d8d9b01e8346e875"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "54168355389ed89a48b5d70d2d1aa2dcd27c89f054fc53eedc9aa000c9ae0eaf",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 10,
+              "id": "awning-1",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 11,
+              "id": "awning-2",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 12,
+              "id": "fascia-1",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 13,
+              "id": "fascia-2",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 14,
+              "id": "material-1",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 15,
+              "id": "material-2",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 16,
+              "id": "material-3",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 17,
+              "id": "material-4",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 18,
+              "id": "material-5",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 0,
+          "partialVisibleExtentsIgnored": 6,
+          "openingPredictions": 10,
+          "rejectedPredictions": 9
+        },
+        "matches": [],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [
+          "window-1",
+          "window-2",
+          "window-3",
+          "window-4",
+          "door-1",
+          "display-window-1",
+          "door-2",
+          "door-3",
+          "display-window-2",
+          "door-4"
+        ],
+        "partialReferences": [
+          {
+            "id": "left-pair-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          },
+          {
+            "id": "left-display-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          },
+          {
+            "id": "left-inner-entrance-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          },
+          {
+            "id": "middle-entrance-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          },
+          {
+            "id": "right-display-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          },
+          {
+            "id": "right-entrance-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          }
+        ],
+        "diagnostics": {
+          "localizationRecall": null,
+          "meanMatchedIou": null,
+          "typeAccuracyOnLocalized": null,
+          "headAccuracyOnScoredLocalized": null,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [],
+          "assertions": {
+            "count": 2,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "annotation-needed"
+      },
+      {
+        "caseId": "replacement-awning-retracted",
+        "observationId": "0363100012169358_e_03ogtfj",
+        "buildingId": "0363100012169358",
+        "tier": "ground",
+        "cropSha256": "56e4c29f7499e9b3305e4a5552aab065a9cf8ac45fb981332c6afe8a6e4f68c4",
+        "dimensions": {
+          "width": 390,
+          "height": 539
+        },
+        "captureDate": "2025-06-30T05:28:39Z",
+        "source": {
+          "cropSha256": "56e4c29f7499e9b3305e4a5552aab065a9cf8ac45fb981332c6afe8a6e4f68c4",
+          "width": 390,
+          "height": 539,
+          "captureDate": "2025-06-30T05:28:39Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012169358_e_03ogtfj-ground.jpg",
+            "available": true,
+            "actualSha256": "56e4c29f7499e9b3305e4a5552aab065a9cf8ac45fb981332c6afe8a6e4f68c4"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "48c18e7343a9801994595635a87d0e0ba9acb2f421771563cca57e23f3ff4e80",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 4,
+              "id": "fascia_sign",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 5,
+              "id": "awning_main",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 6,
+              "id": "material_upper_wall",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 7,
+              "id": "material_ground_frame",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 2,
+          "partialVisibleExtentsIgnored": 0,
+          "openingPredictions": 4,
+          "rejectedPredictions": 4
+        },
+        "matches": [
+          {
+            "referenceId": "entrance",
+            "predictionId": "door_ground_left",
+            "iou": 0.871982,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "display-window",
+            "predictionId": "window_ground_right",
+            "iou": 0.925758,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          }
+        ],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [
+          "window_upper_left",
+          "window_upper_right"
+        ],
+        "partialReferences": [],
+        "diagnostics": {
+          "localizationRecall": 1,
+          "meanMatchedIou": 0.89887,
+          "typeAccuracyOnLocalized": 1,
+          "headAccuracyOnScoredLocalized": 1,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [
+            {
+              "referenceId": "entrance",
+              "predictionId": "door_ground_left",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "display-window",
+              "predictionId": "window_ground_right",
+              "outcome": "correct"
+            }
+          ],
+          "assertions": {
+            "count": 4,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "diagnostic-scored"
+      },
+      {
+        "caseId": "replacement-finish-01",
+        "observationId": "0363100012168881_e_03vrmcz",
+        "buildingId": "0363100012168881",
+        "tier": "ground",
+        "cropSha256": "017585ec0b5e2d39b21dd2921c8fac42fc04400803f90f7256231acec9ad010f",
+        "dimensions": {
+          "width": 845,
+          "height": 539
+        },
+        "captureDate": "2025-07-03T10:39:13Z",
+        "source": {
+          "cropSha256": "017585ec0b5e2d39b21dd2921c8fac42fc04400803f90f7256231acec9ad010f",
+          "width": 845,
+          "height": 539,
+          "captureDate": "2025-07-03T10:39:13Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012168881_e_03vrmcz-ground.jpg",
+            "available": true,
+            "actualSha256": "017585ec0b5e2d39b21dd2921c8fac42fc04400803f90f7256231acec9ad010f"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "ff7a13aa04d6745c28aaea2b53d3e9c7510492096710651c5b7513fa45d2fba7",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 4,
+              "id": "fascia-1",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 5,
+              "id": "material-1",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 6,
+              "id": "material-2",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 7,
+              "id": "material-3",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 8,
+              "id": "material-4",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 1,
+          "partialVisibleExtentsIgnored": 1,
+          "openingPredictions": 4,
+          "rejectedPredictions": 5
+        },
+        "matches": [
+          {
+            "referenceId": "right-entrance",
+            "predictionId": "door-1",
+            "iou": 0.821144,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          }
+        ],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [
+          "window-1",
+          "window-2",
+          "display-window-1"
+        ],
+        "partialReferences": [
+          {
+            "id": "display-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          }
+        ],
+        "diagnostics": {
+          "localizationRecall": 1,
+          "meanMatchedIou": 0.821144,
+          "typeAccuracyOnLocalized": 1,
+          "headAccuracyOnScoredLocalized": 1,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [
+            {
+              "referenceId": "right-entrance",
+              "predictionId": "door-1",
+              "outcome": "correct"
+            }
+          ],
+          "assertions": {
+            "count": 3,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "diagnostic-scored"
+      },
+      {
+        "caseId": "replacement-finish-02",
+        "observationId": "0363100012170202_e_04beeuu",
+        "buildingId": "0363100012170202",
+        "tier": "ground",
+        "cropSha256": "6174679a0a547ac520d889ef8f5ccee2b16196fd883e91971ea68805ebe1bfd6",
+        "dimensions": {
+          "width": 828,
+          "height": 539
+        },
+        "captureDate": "2024-12-16T09:30:19Z",
+        "source": {
+          "cropSha256": "6174679a0a547ac520d889ef8f5ccee2b16196fd883e91971ea68805ebe1bfd6",
+          "width": 828,
+          "height": 539,
+          "captureDate": "2024-12-16T09:30:19Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012170202_e_04beeuu-ground.jpg",
+            "available": true,
+            "actualSha256": "6174679a0a547ac520d889ef8f5ccee2b16196fd883e91971ea68805ebe1bfd6"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "0e24a500201f64ea186e1e5abada979cd5bad0e9d9ccc3d700b6167e7215c5d9",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 2,
+              "id": "material_brick",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 3,
+              "id": "material_plinth",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 4,
+              "id": "material_band",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 2,
+          "partialVisibleExtentsIgnored": 0,
+          "openingPredictions": 2,
+          "rejectedPredictions": 3
+        },
+        "matches": [
+          {
+            "referenceId": "left-sash",
+            "predictionId": "window_1",
+            "iou": 0.948787,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          },
+          {
+            "referenceId": "right-sash",
+            "predictionId": "window_2",
+            "iou": 0.925041,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          }
+        ],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [],
+        "partialReferences": [],
+        "diagnostics": {
+          "localizationRecall": 1,
+          "meanMatchedIou": 0.936914,
+          "typeAccuracyOnLocalized": 1,
+          "headAccuracyOnScoredLocalized": 1,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [
+            {
+              "referenceId": "left-sash",
+              "predictionId": "window_1",
+              "outcome": "correct"
+            },
+            {
+              "referenceId": "right-sash",
+              "predictionId": "window_2",
+              "outcome": "correct"
+            }
+          ],
+          "assertions": {
+            "count": 4,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "diagnostic-scored"
+      },
+      {
+        "caseId": "replacement-masonry-01",
+        "observationId": "0363100012169410_e_1h0uyal",
+        "buildingId": "0363100012169410",
+        "tier": "ground",
+        "cropSha256": "cd71db98d24c79c3806c9fe558e4f70bfb82ca6f3a52ffce73992bdb6e41770a",
+        "dimensions": {
+          "width": 557,
+          "height": 539
+        },
+        "captureDate": "2024-12-16T09:30:07Z",
+        "source": {
+          "cropSha256": "cd71db98d24c79c3806c9fe558e4f70bfb82ca6f3a52ffce73992bdb6e41770a",
+          "width": 557,
+          "height": 539,
+          "captureDate": "2024-12-16T09:30:07Z"
+        },
+        "binding": {
+          "status": "verified",
+          "candidates": 1,
+          "image": {
+            "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012169410_e_1h0uyal-ground.jpg",
+            "available": true,
+            "actualSha256": "cd71db98d24c79c3806c9fe558e4f70bfb82ca6f3a52ffce73992bdb6e41770a"
+          }
+        },
+        "scorable": true,
+        "analysis": {
+          "outcome": "matched",
+          "candidateCount": 1,
+          "selectedKey": "2e242ff08e30398faf34b7d9bfd200f8a67e4640181686c334c5c68cc13fd179",
+          "openingsComplete": true,
+          "rejectedPredictions": [
+            {
+              "index": 4,
+              "id": "material_brick",
+              "reasons": [
+                "unsupported kind"
+              ]
+            },
+            {
+              "index": 5,
+              "id": "material_plinth",
+              "reasons": [
+                "unsupported kind"
+              ]
+            }
+          ]
+        },
+        "denominators": {
+          "completeVisibleReferences": 1,
+          "partialVisibleExtentsIgnored": 1,
+          "openingPredictions": 4,
+          "rejectedPredictions": 2
+        },
+        "matches": [
+          {
+            "referenceId": "entrance-assembly",
+            "predictionId": "door_main",
+            "iou": 0.805136,
+            "localization": "matched",
+            "type": "correct",
+            "head": "correct"
+          }
+        ],
+        "misses": [],
+        "unscoredReferences": [],
+        "unmatchedPredictions": [
+          "window_upper_left",
+          "window_upper_right",
+          "window_ground_right"
+        ],
+        "partialReferences": [
+          {
+            "id": "window-visible-extent",
+            "handling": "ignored-visible-extent-not-complete-box"
+          }
+        ],
+        "diagnostics": {
+          "localizationRecall": 1,
+          "meanMatchedIou": 0.805136,
+          "typeAccuracyOnLocalized": 1,
+          "headAccuracyOnScoredLocalized": 1,
+          "precision": null
+        },
+        "architecture": {
+          "headResults": [
+            {
+              "referenceId": "entrance-assembly",
+              "predictionId": "door_main",
+              "outcome": "correct"
+            }
+          ],
+          "assertions": {
+            "count": 4,
+            "status": "unscored-no-typed-prediction-mapping"
+          }
+        },
+        "claimLimits": [
+          "Reference is partial development evidence.",
+          "Unmatched predictions are diagnostic only because the image is not proven exhaustively annotated."
+        ],
+        "status": "diagnostic-scored"
+      }
+    ],
+    "repairQueue": [
+      {
+        "caseId": "replacement-entrance-02",
+        "category": "annotation-needed",
+        "reason": "2 partial extents ignored; complete image annotation not established"
+      },
+      {
+        "caseId": "replacement-entrance-04",
+        "category": "detection-layout",
+        "reason": "4 complete reference misses; 0 localized type errors"
+      },
+      {
+        "caseId": "replacement-curved-02",
+        "category": "annotation-needed",
+        "reason": "3 partial extents ignored; complete image annotation not established"
+      },
+      {
+        "caseId": "replacement-awning-extended",
+        "category": "annotation-needed",
+        "reason": "6 partial extents ignored; complete image annotation not established"
+      },
+      {
+        "caseId": "replacement-finish-01",
+        "category": "annotation-needed",
+        "reason": "1 partial extents ignored; complete image annotation not established"
+      },
+      {
+        "caseId": "replacement-masonry-01",
+        "category": "annotation-needed",
+        "reason": "1 partial extents ignored; complete image annotation not established"
+      }
+    ],
+    "reproducibility": {
+      "canonicalReportSha256": "30a5c2ac00ac79561ce9895e7a7f10a4104f0141539d1d098c1b1c567f3e3e8f"
+    }
+  }
+}

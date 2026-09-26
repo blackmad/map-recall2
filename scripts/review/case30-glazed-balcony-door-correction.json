@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "id": "case30-glazed-balcony-doors-source-owner-v1",
+  "caseId": "case-30",
+  "buildingId": "0363100012174564",
+  "observationId": "0363100012174564_e_14yoqnp",
+  "source": {
+    "cropSha256": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+    "dimensions": { "width": 207, "height": 799 },
+    "captureDate": "2023-03-20T11:11:48.788250Z",
+    "plane": {
+      "start": { "x": 120259.10268728876, "y": 487317.2184173163 },
+      "end": { "x": 120263.37916710896, "y": 487318.9281773379 },
+      "baseZ": 0.496999990940094,
+      "topZ": 18.249999999999996
+    },
+    "localToNAPOffsetM": 0.65
+  },
+  "facadeBoundsPx": { "left": 0, "right": 207, "bottom": 799 },
+  "silhouetteTopPx": [[0, 172], [207, 172]],
+  "extractionVersion": "source-facade-owner-candidate/v1",
+  "scopeNote": "Source-bound appearance correction for the three central elevated balcony/French doors only. Their near-full-height glazing and pale paired frame rhythm are explicit; the rail-obscured lower leaf remains without an invented opaque panel. The simple eave-to-ground carrier plane introduces no roof interpretation. Balcony geometry is out of scope; adjacent openings, the ground BIANCO shopfront and native owner geometry remain unchanged inputs.",
+  "sourceFeatureOverrides": [
+    {
+      "source": "full",
+      "sourceCropSha256": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+      "featureId": "full:door_1",
+      "expectedFeatureSha256": "02721d6be0a5fd1542fefc53e55a91be2f348a29f901e9488ef809209a54f763",
+      "expectedResultFeatureSha256": "a7167fb633692576d1b7fdbc61112b7378e674dedc5788ef3ce4340c7e403297",
+      "set": { "doorStyle": "glazed", "doorGlazingRatio": 0.95, "paired": true, "doorFurniture": "none", "disposition": "agent-inspected" },
+      "basis": "The exact 2023 full crop shows this elevated center opening behind a balcony rail with pale paired framing and glazing through essentially all visible door height; the rail hides the sill and does not support an opaque lower panel."
+    },
+    {
+      "source": "full",
+      "sourceCropSha256": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+      "featureId": "full:door_2",
+      "expectedFeatureSha256": "8c35290a75dfc9b2df39e923d782e3337b9096c8cecb87795c1869f4c16ab815",
+      "expectedResultFeatureSha256": "c9faea303906626e0d857a4fd14fca82bdb1af853b93287bee5e103e16a74497",
+      "set": { "doorStyle": "glazed", "doorGlazingRatio": 0.95, "paired": true, "doorFurniture": "none", "disposition": "agent-inspected" },
+      "basis": "The exact 2023 full crop shows the repeated elevated center opening as pale paired window-like framing and glass, aligned with the side windows and fronted by its balcony rail."
+    },
+    {
+      "source": "full",
+      "sourceCropSha256": "410f61590e953b0982563bfebf25d247f7f9b228ce0005ca0f07ecd1aa5403b7",
+      "featureId": "full:door_3",
+      "expectedFeatureSha256": "68729ede0e2f8530990a4c838d75d5613659532d0f45a96e65261c22196d0f07",
+      "expectedResultFeatureSha256": "f7ef3edee5f5ad31ce26af1fed2ed75b67446478f794686227a9539c5cf367a8",
+      "set": { "doorStyle": "glazed", "doorGlazingRatio": 0.95, "paired": true, "doorFurniture": "none", "disposition": "agent-inspected" },
+      "basis": "The exact 2023 full crop shows the lower elevated center opening as the same repeated glazed balcony/French door; the balcony rail obscures its base, so no solid panel is asserted."
+    }
+  ],
+  "sourceGeometryRepair": [
+    { "featureId": "full:door_1", "expectedStyledFeatureSha256": "9b739e01fe6fadec99b686db5cab05fc36ad16913debcb66f28a4535f30439a8", "expectedResultFeatureSha256": "a7167fb633692576d1b7fdbc61112b7378e674dedc5788ef3ce4340c7e403297", "set": { "sourceFrameWidthPx": 4, "sourceJoineryWidthPx": 2 }, "basis": "Repair 1: same-frame review found redundant nested framing. Keep the uncertain rail-obscured bounds unchanged; use a 4 px outer frame and 2 px centre joinery matching the light source rhythm." },
+    { "featureId": "full:door_2", "expectedStyledFeatureSha256": "14c75a87a3b67c3dcf483af2d219c0444dfb0c571737cf04cd4c7b58286cda47", "expectedResultFeatureSha256": "c9faea303906626e0d857a4fd14fca82bdb1af853b93287bee5e103e16a74497", "set": { "sourceFrameWidthPx": 4, "sourceJoineryWidthPx": 2 }, "basis": "Repair 1: same-frame review found redundant nested framing. Keep the rail-obscured lower extent uncertain and unchanged; slim source-pixel frame hints replace the inner border." },
+    { "featureId": "full:door_3", "expectedStyledFeatureSha256": "aa2e5e31799c7dc3324164f97299df14f416738eec98329899f80fb3c4a73444", "expectedResultFeatureSha256": "f7ef3edee5f5ad31ce26af1fed2ed75b67446478f794686227a9539c5cf367a8", "set": { "sourceFrameWidthPx": 4, "sourceJoineryWidthPx": 2 }, "basis": "Repair 1: same-frame review found redundant nested framing. Bounds remain frozen because the balcony rail hides the sill; glazing keeps the light repeated frame rhythm." }
+  ],
+  "sourceNote": "Agent-inspected exact 2023 full crop, SHA-256 410f6159…403b7. Only full:door_1, full:door_2 and full:door_3 receive appearance overrides. The ground tier is retained byte-for-byte from its distinct 2023 source.",
+  "placement": {
+    "status": "inferred",
+    "reason": "The dated full-crop sampling plane is reused for a staged inspection preview; no metric registration or release activation is claimed."
+  }
+}

@@ -134,7 +134,8 @@ class GameRouteRuntime {
     this.routePattern = prefs.routePattern;
     this.vectorMap.setTreesVisible(prefs.trees && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setDetailedBuildingsVisible(prefs.detailed3d && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
-    this.vectorMap.setGoogleTilesEnabled(!!prefs.googleTiles);
+    this.vectorMap.setGoogleTilesEnabled(!!prefs.googleTiles && !prefs.measuredColoursOnly);
+    this.vectorMap.setMeasuredColoursOnly(!!prefs.measuredColoursOnly);
     if (typeof this.vectorMap.setTransitNetwork === 'function') {
       this.vectorMap.setTransitNetwork(
         this.osmLoader && this.osmLoader.transitLoad,
@@ -416,6 +417,18 @@ class GameRouteRuntime {
       this.homeBase = null;
       this._homeLearningRadiusKm = null;
       try { localStorage.removeItem('canalRecall.homeLearningRadius.v1'); } catch (_) { /* ignore */ }
+    }
+    if (this.routePattern === 'study') {
+      try {
+        this._setRouteError('Loading the verified Da Costa lesson…');
+        const catalog = await CanalRecallBuildingTiles.loadVerifiedAppearanceCatalog('../data/city-appearance/areas.json');
+        const lesson = catalog.entries.find(entry => entry.lesson);
+        if (!lesson) throw new Error('No appearance lesson is published');
+        this._launchPoiRoute(lesson.studyRoute.from, lesson.studyRoute.to);
+      } catch (error) {
+        this._setRouteError('The verified Da Costa lesson is unavailable.');
+      }
+      return;
     }
 
     if (this.routePattern === 'here') {

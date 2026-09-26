@@ -1,0 +1,2645 @@
+{
+  "version": 2,
+  "phase": "neighbourhood-1000-preview",
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "analysisOnly": true,
+  "publicationBlocked": true,
+  "userAuthorizedPreviewScale": 1000,
+  "batchAuthorization": {
+    "path": "authorization.json",
+    "sha256": "eeb87fd984cd921c5df6e1317b5234a87df31f8babe6d2cb84f0306a71122c50"
+  },
+  "activeDevelopmentSet": {
+    "id": "thousand-building-full-c228048ed630-853673ef-05",
+    "status": "validated",
+    "kind": "source-bound-neighborhood-preview",
+    "sha256": "7b068ea3ae3a5e5d9b2dd7607d791f5fbb83019e998d33d8d552645fca75d747"
+  },
+  "cases": [
+    {
+      "id": "supplemental-0363100012157621-full",
+      "observationId": "0363100012157621_e_0u3p88c",
+      "buildingId": "0363100012157621",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119756.19094621661,
+          487037.4002939415
+        ],
+        [
+          119744.9159467005,
+          487033.2342938675
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012157621_e_0u3p88c-full.jpg",
+          "cropSha256": "91f44cd2ac2a24bdf5b927200dbc7b95ef00ac01332f984c24c3a5c061038b06",
+          "captureDate": "2023-01-10T10:42:25.996950Z",
+          "width": 563,
+          "height": 601,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157650-full",
+      "observationId": "0363100012157650_e_1l0673k",
+      "buildingId": "0363100012157650",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119865.71193412463,
+          486814.9232941869
+        ],
+        [
+          119863.16293443392,
+          486821.0872941851
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012157650_e_1l0673k-full.jpg",
+          "cropSha256": "2d6c6087bb3a3ec4f5459c5aaa0f4db6b718d50ecf7db26189936f0198efad8b",
+          "captureDate": "2024-11-29T09:57:48Z",
+          "width": 312,
+          "height": 956,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157665-full",
+      "observationId": "0363100012157665_e_0vdmptb",
+      "buildingId": "0363100012157665",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120026.66494395962,
+          487470.00629622454
+        ],
+        [
+          120028.15794399122,
+          487473.9632962385
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012157665_e_0vdmptb-full.jpg",
+          "cropSha256": "6e28cf070c75a8e9304cf6e8bc57baaed14273eb4914c99c242b37823f9a0e8d",
+          "captureDate": "2025-06-18T09:24:15Z",
+          "width": 198,
+          "height": 804,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157670-full",
+      "observationId": "0363100012157670_e_0mxtnv3",
+      "buildingId": "0363100012157670",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119890.75492670466,
+          486598.51329395315
+        ],
+        [
+          119893.46792637566,
+          486591.95429395535
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012157670_e_0mxtnv3-full.jpg",
+          "cropSha256": "3f402e8282dd1e4319c7559aabf8ec40cb284bd4fa2b4ee9cb3379e98d051077",
+          "captureDate": "2024-11-29T10:07:25Z",
+          "width": 332,
+          "height": 917,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157672-full",
+      "observationId": "0363100012157672_e_0ie2oz2",
+      "buildingId": "0363100012157672",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119905.00095179187,
+          487518.03029559663
+        ],
+        [
+          119903.09895177196,
+          487513.7102955797
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012157672_e_0ie2oz2-full.jpg",
+          "cropSha256": "efb9d6984f5220c947a3f173b573c46efad14ed1db5243e8c20ff76868f17389",
+          "captureDate": "2025-06-18T09:54:55Z",
+          "width": 221,
+          "height": 839,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157676-full",
+      "observationId": "0363100012157676_e_122dva4",
+      "buildingId": "0363100012157676",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119861.09095460818,
+          487534.9692953707
+        ],
+        [
+          119859.06395459702,
+          487530.72329534905
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012157676_e_122dva4-full.jpg",
+          "cropSha256": "642d24508bf17c9a8c4cad8fef6d47a3bf3bb84e0fa476c43c322c72cb90f5fc",
+          "captureDate": "2025-06-18T09:44:35Z",
+          "width": 220,
+          "height": 845,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157692-full",
+      "observationId": "0363100012157692_e_1wmismy",
+      "buildingId": "0363100012157692",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119897.50395170643,
+          487500.76529552415
+        ],
+        [
+          119895.60095168732,
+          487496.470295506
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012157692_e_1wmismy-full.jpg",
+          "cropSha256": "3b5dfc827bb61d2f06526e279e8acc1408cbf28b189d9548b7a40876faf89c48",
+          "captureDate": "2025-06-18T09:54:53Z",
+          "width": 220,
+          "height": 828,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157700-full",
+      "observationId": "0363100012157700_e_0q44jlm",
+      "buildingId": "0363100012157700",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119974.88693155107,
+          486930.2562950144
+        ],
+        [
+          119976.7069313316,
+          486925.8962950202
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012157700_e_0q44jlm-full.jpg",
+          "cropSha256": "c4e8666358b0c7893f5e1b3adb61382d6a1f7358ad1774bae9973a95f72a80a6",
+          "captureDate": "2023-01-12T09:08:41.650130Z",
+          "width": 221,
+          "height": 816,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157742-full",
+      "observationId": "0363100012157742_e_11zk6wp",
+      "buildingId": "0363100012157742",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119932.59093865858,
+          487102.9502950705
+        ],
+        [
+          119932.20093851132,
+          487096.9742950561
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/images/0363100012157742_e_11zk6wp-full.jpg",
+          "cropSha256": "14e58cdf419b0ccc9b0b405695310abbdb21c648527ab5bafc44451d2df641de",
+          "captureDate": "2024-11-29T09:42:46Z",
+          "width": 280,
+          "height": 831,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157756-full",
+      "observationId": "0363100012157756_e_10gejgn",
+      "buildingId": "0363100012157756",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119865.60993633358,
+          486893.2932943214
+        ],
+        [
+          119867.56093609723,
+          486888.58029432513
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012157756_e_10gejgn-full.jpg",
+          "cropSha256": "5753c9cfcae9dedbec645647522b9d502c2ce2af30c8818412b5fcc03f4a2bdc",
+          "captureDate": "2023-01-12T09:23:00.593290Z",
+          "width": 239,
+          "height": 877,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157757-full",
+      "observationId": "0363100012157757_e_03d3nog",
+      "buildingId": "0363100012157757",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119867.56093609723,
+          486888.58029432513
+        ],
+        [
+          119869.82693582262,
+          486883.11029433145
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012157757_e_03d3nog-full.jpg",
+          "cropSha256": "6607238a5b774e94a82db7675eb5b27fd0e851e529ff05b6412ce247ec63099e",
+          "captureDate": "2023-01-12T09:23:01.048450Z",
+          "width": 277,
+          "height": 914,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157831-full",
+      "observationId": "0363100012157831_e_1sklcn7",
+      "buildingId": "0363100012157831",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120116.24094065862,
+          487522.3802968279
+        ],
+        [
+          120118.49294069769,
+          487528.05129684834
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012157831_e_1sklcn7-full.jpg",
+          "cropSha256": "4b74d7f9a62b1c0d89bf73d30c194cd3f162f8972b74011f211ab545bdc244cb",
+          "captureDate": "2022-12-14T10:15:36.786060Z",
+          "width": 286,
+          "height": 972,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157839-full",
+      "observationId": "0363100012157839_e_0mhps9h",
+      "buildingId": "0363100012157839",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120089.72093898477,
+          487412.49029649486
+        ],
+        [
+          120094.08093879186,
+          487413.8902965238
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012157839_e_0mhps9h-full.jpg",
+          "cropSha256": "caff058b07611608e50d8472905cd7350035e10afe40cb6aaed8a60b76ad8e6f",
+          "captureDate": "2024-11-21T10:06:07Z",
+          "width": 214,
+          "height": 892,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157843-full",
+      "observationId": "0363100012157843_e_1wwdcnn",
+      "buildingId": "0363100012157843",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119910.74095184804,
+          487530.92029565066
+        ],
+        [
+          119908.82095183029,
+          487526.6402956323
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012157843_e_1wwdcnn-full.jpg",
+          "cropSha256": "e7f1a544994ebd2709d53f8d9084e086099e4d0a0b3c9c730f562377189ce691",
+          "captureDate": "2025-06-18T09:54:59Z",
+          "width": 220,
+          "height": 843,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157926-full",
+      "observationId": "0363100012157926_e_012eimg",
+      "buildingId": "0363100012157926",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120044.95992307909,
+          486761.6492951261
+        ],
+        [
+          120047.91992272655,
+          486754.7192951266
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012157926_e_012eimg-full.jpg",
+          "cropSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+          "captureDate": "2023-01-10T10:49:21.163240Z",
+          "width": 353,
+          "height": 798,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157952-full",
+      "observationId": "0363100012157952_e_1s4qwd4",
+      "buildingId": "0363100012157952",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119983.72594026168,
+          487256.9492956208
+        ],
+        [
+          119981.50194022404,
+          487251.3902956008
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012157952_e_1s4qwd4-full.jpg",
+          "cropSha256": "cb8c9708a1a7720623ec4583cd106cdfa004dbb72b8964c8d13c7324059dbb06",
+          "captureDate": "2024-12-11T12:18:25Z",
+          "width": 280,
+          "height": 925,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157962-full",
+      "observationId": "0363100012157962_e_1c00sgc",
+      "buildingId": "0363100012157962",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119693.5399465237,
+          486929.53929339617
+        ],
+        [
+          119691.20994680785,
+          486935.22929338994
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012157962_e_1c00sgc-full.jpg",
+          "cropSha256": "263e10727cb23b702da974f486aaa356dfa913c8c7db73c55e9616a7a8e1d575",
+          "captureDate": "2023-01-12T09:19:24.025160Z",
+          "width": 288,
+          "height": 916,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157976-full",
+      "observationId": "0363100012157976_e_1wlfmaw",
+      "buildingId": "0363100012157976",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119963.97094454349,
+          487371.88029569713
+        ],
+        [
+          119967.1109444043,
+          487372.88029571844
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012157976_e_1wlfmaw-full.jpg",
+          "cropSha256": "57fe257afa4e71c7290d500a336a9fbabf1701762be4035b9504c3d644cf7dd8",
+          "captureDate": "2025-06-18T10:03:55Z",
+          "width": 154,
+          "height": 861,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012157989-full",
+      "observationId": "0363100012157989_e_015txxo",
+      "buildingId": "0363100012157989",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119975.5549386138,
+          487182.8122954498
+        ],
+        [
+          119969.86093885939,
+          487180.76029541186
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012157989_e_015txxo-full.jpg",
+          "cropSha256": "70d891ad35ee4f33209a2a235616c1f06ee0fa1ed5b27eb8fc29d5f2b078126a",
+          "captureDate": "2023-01-10T10:53:14.601110Z",
+          "width": 283,
+          "height": 837,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158103-full",
+      "observationId": "0363100012158103_e_1sbwe88",
+      "buildingId": "0363100012158103",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119602.4589491397,
+          486849.8892927349
+        ],
+        [
+          119608.31194881874,
+          486849.5782927689
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012158103_e_1sbwe88-full.jpg",
+          "cropSha256": "ac341a4442b4b2260eb6be866aa838aafad299b3e517b9cc5385fa56f9f6aedc",
+          "captureDate": "2022-12-14T09:27:59.777310Z",
+          "width": 274,
+          "height": 762,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158179-full",
+      "observationId": "0363100012158179_e_1cnbov5",
+      "buildingId": "0363100012158179",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120052.01592953411,
+          487004.6532955892
+        ],
+        [
+          120057.97092928278,
+          487006.9992956272
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158179_e_1cnbov5-full.jpg",
+          "cropSha256": "0a3f2ee6cf2d45fa240fe829ac3aade9c0f6e2d26200a3e480d8cdcc1d2c8645",
+          "captureDate": "2024-12-11T12:16:23Z",
+          "width": 300,
+          "height": 830,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158186-full",
+      "observationId": "0363100012158186_e_1j7p681",
+      "buildingId": "0363100012158186",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119700.35994569518,
+          486913.0092934064
+        ],
+        [
+          119698.15094596439,
+          486918.39029340644
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012158186_e_1j7p681-full.jpg",
+          "cropSha256": "7c978d7aae58f0224915757b8f2770d750dce004b109f7b33754ee3c88440b8e",
+          "captureDate": "2023-01-12T09:19:26.819940Z",
+          "width": 272,
+          "height": 823,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158187-full",
+      "observationId": "0363100012158187_e_1tvt8y8",
+      "buildingId": "0363100012158187",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119702.74094540972,
+          486907.3702934105
+        ],
+        [
+          119700.35994569518,
+          486913.0092934064
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012158187_e_1tvt8y8-full.jpg",
+          "cropSha256": "61433457ee89f4772e94efef2f80aa2d9207da7a6fdff20be94d95403b90d728",
+          "captureDate": "2023-01-12T09:19:26.110190Z",
+          "width": 286,
+          "height": 824,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158252-full",
+      "observationId": "0363100012158252_e_02tvlhh",
+      "buildingId": "0363100012158252",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119686.72994735165,
+          486946.06929338735
+        ],
+        [
+          119684.35094763861,
+          486951.77029338037
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012158252_e_02tvlhh-full.jpg",
+          "cropSha256": "c2fc1d6955148e046e925965cb8ae50ec7b6b2dd4ae4524ec64aea635674ffe8",
+          "captureDate": "2023-01-12T09:19:21.475110Z",
+          "width": 289,
+          "height": 800,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158278-full",
+      "observationId": "0363100012158278_e_01yivfn",
+      "buildingId": "0363100012158278",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120080.09094168736,
+          487490.4502965657
+        ],
+        [
+          120069.89094234543,
+          487494.53029651294
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158278_e_01yivfn-full.jpg",
+          "cropSha256": "4ba575d73b80bf61358ba54b8295c9ddf89059ba7eda6f337a18f1bfac5bc854",
+          "captureDate": "2022-12-14T10:14:51.976520Z",
+          "width": 514,
+          "height": 716,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158307-full",
+      "observationId": "0363100012158307_e_0stztwm",
+      "buildingId": "0363100012158307",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119903.09895177196,
+          487513.7102955797
+        ],
+        [
+          119901.20395175213,
+          487509.408295561
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158307_e_0stztwm-full.jpg",
+          "cropSha256": "2213295596cdbc7d80ae7fdc2321b7007bd356ca59d2f4ae3533c06048122d58",
+          "captureDate": "2025-06-18T09:54:54Z",
+          "width": 220,
+          "height": 832,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158339-full",
+      "observationId": "0363100012158339_e_0opr8a8",
+      "buildingId": "0363100012158339",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120015.22093460041,
+          487115.19029556634
+        ],
+        [
+          120021.2889341744,
+          487111.53429559467
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158339_e_0opr8a8-full.jpg",
+          "cropSha256": "dfa966f09e9ecb505b9a62a7333f42aa3d243ee661f51f1d1c06d5f9e2237a8a",
+          "captureDate": "2023-01-10T10:52:10.656640Z",
+          "width": 332,
+          "height": 749,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158384-full",
+      "observationId": "0363100012158384_e_0dz2v4r",
+      "buildingId": "0363100012158384",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119621.08394811864,
+          486848.8992928417
+        ],
+        [
+          119626.93794779778,
+          486848.5882928721
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012158384_e_0dz2v4r-full.jpg",
+          "cropSha256": "467294e75b60b17499b45de12cb055934915c439039c877fc6a84e3d52ec64d5",
+          "captureDate": "2024-12-11T11:49:59Z",
+          "width": 274,
+          "height": 806,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158443-full",
+      "observationId": "0363100012158443_e_19uyu9t",
+      "buildingId": "0363100012158443",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119937.43093633412,
+          487029.43129497045
+        ],
+        [
+          119938.8079361014,
+          487023.7572949694
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/images/0363100012158443_e_19uyu9t-full.jpg",
+          "cropSha256": "c04ace935edfc066c0857082c49a5872649907a09dd996e308e8c213a6506fbe",
+          "captureDate": "2023-01-10T10:50:11.652760Z",
+          "width": 273,
+          "height": 838,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158481-full",
+      "observationId": "0363100012158481_e_1intvwd",
+      "buildingId": "0363100012158481",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120014.43094369222,
+          487437.2862960978
+        ],
+        [
+          120015.98594372807,
+          487441.5082961154
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158481_e_1intvwd-full.jpg",
+          "cropSha256": "607d5399687cfadc08673ad31db87f3c9ffc56c45563441c78718dd3577f026c",
+          "captureDate": "2025-06-18T09:24:22Z",
+          "width": 211,
+          "height": 816,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158488-full",
+      "observationId": "0363100012158488_e_08g3b7e",
+      "buildingId": "0363100012158488",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119601.66094658035,
+          486757.3902925726
+        ],
+        [
+          119594.27994748691,
+          486775.6292925608
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012158488_e_08g3b7e-full.jpg",
+          "cropSha256": "76e6372742ce569ac8d4017dd7b542426645811372be26209a6fd0b9f8462f00",
+          "captureDate": "2024-12-11T11:49:49Z",
+          "width": 921,
+          "height": 821,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158489-full",
+      "observationId": "0363100012158489_e_0i5bttk",
+      "buildingId": "0363100012158489",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119818.07095194337,
+          487358.5002948337
+        ],
+        [
+          119819.85095196238,
+          487362.5502948496
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158489_e_0i5bttk-full.jpg",
+          "cropSha256": "f41c1e67f5cc8a6569ee96000aa684be414f3c3c128e4b9f07d4d8ff9569ad23",
+          "captureDate": "2022-04-29T11:04:35.849390Z",
+          "width": 207,
+          "height": 793,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158490-full",
+      "observationId": "0363100012158490_e_1h52g2o",
+      "buildingId": "0363100012158490",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119844.05694427695,
+          487134.9972946091
+        ],
+        [
+          119838.67294450875,
+          487133.0352945765
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/images/0363100012158490_e_1h52g2o-full.jpg",
+          "cropSha256": "17c9f8d7a5cca3081e9c81e984760bc41db139feb01fe04fc971c8285adbd9de",
+          "captureDate": "2023-01-10T10:53:28.970970Z",
+          "width": 268,
+          "height": 800,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158550-full",
+      "observationId": "0363100012158550_e_14fhmr1",
+      "buildingId": "0363100012158550",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119793.4879344381,
+          486689.22529355576
+        ],
+        [
+          119791.98293462051,
+          486692.85629355145
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012158550_e_14fhmr1-full.jpg",
+          "cropSha256": "50bb484dcf6f2ecd2d0c99ec68469a7b0f81692ad1c778deaf2ca7d4a60e9dc3",
+          "captureDate": "2024-11-29T08:16:10Z",
+          "width": 184,
+          "height": 755,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158555-full",
+      "observationId": "0363100012158555_e_1p5f6k4",
+      "buildingId": "0363100012158555",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119924.76994479838,
+          487306.6072953633
+        ],
+        [
+          119919.1859450448,
+          487304.786295329
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158555_e_1p5f6k4-full.jpg",
+          "cropSha256": "060f1f09bd84c89c96e014536bad3023e75c97d937f9dc9e00074303888b942d",
+          "captureDate": "2023-01-10T10:37:23.194670Z",
+          "width": 275,
+          "height": 887,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158603-full",
+      "observationId": "0363100012158603_e_1np4ems",
+      "buildingId": "0363100012158603",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119998.8389383563,
+          487217.795295644
+        ],
+        [
+          120004.45193811503,
+          487219.8472956782
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012158603_e_1np4ems-full.jpg",
+          "cropSha256": "7858319ff1d34c5cbcd4cad6c41a2db7cc106278228768e80c83605afedf05c7",
+          "captureDate": "2023-01-10T10:53:09.351170Z",
+          "width": 280,
+          "height": 788,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158608-full",
+      "observationId": "0363100012158608_e_1owo3yg",
+      "buildingId": "0363100012158608",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120025.17194392791,
+          487466.04829620937
+        ],
+        [
+          120026.66494395962,
+          487470.00629622454
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158608_e_1owo3yg-full.jpg",
+          "cropSha256": "7f1f65480580e4821262d316b1443892619dd0c327074d60cb0330bd4f73bbee",
+          "captureDate": "2025-06-18T09:24:15Z",
+          "width": 198,
+          "height": 800,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158643-full",
+      "observationId": "0363100012158643_e_1kmxof2",
+      "buildingId": "0363100012158643",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120085.1819391854,
+          487411.02229646605
+        ],
+        [
+          120089.72093898477,
+          487412.49029649486
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158643_e_1kmxof2-full.jpg",
+          "cropSha256": "465c178b6bb8b289159bf59dd3032570535829b8647bac5ad73b68b2dda796e7",
+          "captureDate": "2024-11-21T10:06:07Z",
+          "width": 223,
+          "height": 835,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158652-full",
+      "observationId": "0363100012158652_e_0d8y6ey",
+      "buildingId": "0363100012158652",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119861.41095241679,
+          487457.57029524323
+        ],
+        [
+          119857.50095266764,
+          487459.0802952274
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158652_e_0d8y6ey-full.jpg",
+          "cropSha256": "e0dab5b9ee89a59bb7a74b74e6279a0e86c7269864e1b7da45678ec883145e67",
+          "captureDate": "2025-06-18T09:54:46Z",
+          "width": 196,
+          "height": 778,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158661-full",
+      "observationId": "0363100012158661_e_063ofwu",
+      "buildingId": "0363100012158661",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120109.7209384719,
+          487432.162296638
+        ],
+        [
+          120109.41093867303,
+          487438.72929665283
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158661_e_063ofwu-full.jpg",
+          "cropSha256": "3272e25ef71722dd790958ec90b8d0498025bbcd5a7de57270464b38c00a0a51",
+          "captureDate": "2024-11-21T10:06:02Z",
+          "width": 308,
+          "height": 930,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158667-full",
+      "observationId": "0363100012158667_e_1x1b0sg",
+      "buildingId": "0363100012158667",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119980.07693092522,
+          486917.8252950265
+        ],
+        [
+          119981.73393072526,
+          486913.8542950256
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012158667_e_1x1b0sg-full.jpg",
+          "cropSha256": "370b907a722693ac79a31a30f4e7d3edce8c81979112ea8ff919c2f00d0c7608",
+          "captureDate": "2023-01-10T10:49:47.822970Z",
+          "width": 201,
+          "height": 832,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158704-full",
+      "observationId": "0363100012158704_e_1elz8fa",
+      "buildingId": "0363100012158704",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119900.43995278419,
+          487544.69929561217
+        ],
+        [
+          119902.29895280644,
+          487549.01729563193
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158704_e_1elz8fa-full.jpg",
+          "cropSha256": "0d11aebf3b64aa9c43a88b4f8e038a5c822341d0eb2af535c1eb7068e330806b",
+          "captureDate": "2025-06-16T03:41:02Z",
+          "width": 220,
+          "height": 832,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158742-full",
+      "observationId": "0363100012158742_e_0c2rh4a",
+      "buildingId": "0363100012158742",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120021.2889341744,
+          487111.53429559467
+        ],
+        [
+          120027.24093369067,
+          487105.6002956183
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158742_e_0c2rh4a-full.jpg",
+          "cropSha256": "b9823c45c374ee7509c6e1a9eef7c562f707ba42b1350cfe1487dca8368552a2",
+          "captureDate": "2023-01-10T10:52:10.656640Z",
+          "width": 393,
+          "height": 775,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158752-full",
+      "observationId": "0363100012158752_e_10kib4v",
+      "buildingId": "0363100012158752",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120046.25793838428,
+          487308.69529606996
+        ],
+        [
+          120048.75793840931,
+          487314.32529609307
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158752_e_10kib4v-full.jpg",
+          "cropSha256": "3dc718b578b91c021af3df2622c5412d9df95e2defc4acd86c8b16eb09769c27",
+          "captureDate": "2025-06-18T09:22:23Z",
+          "width": 288,
+          "height": 860,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158833-full",
+      "observationId": "0363100012158833_e_19gblyu",
+      "buildingId": "0363100012158833",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119758.66095395759,
+          487317.470294422
+        ],
+        [
+          119755.88095394222,
+          487311.6502943964
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158833_e_19gblyu-full.jpg",
+          "cropSha256": "5ca044f42c8f71b2110c1203fd8336d810f4ae52a5d386c74a65e1f0c8fa735f",
+          "captureDate": "2025-06-18T09:52:17Z",
+          "width": 302,
+          "height": 907,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158868-full",
+      "observationId": "0363100012158868_e_15ooqvi",
+      "buildingId": "0363100012158868",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120024.34094528802,
+          487512.89029628056
+        ],
+        [
+          120019.33094560928,
+          487514.83029625623
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158868_e_15ooqvi-full.jpg",
+          "cropSha256": "c7703e5313cc302e0f59295b9a09267a63b1fd435e9806b7ed630cad5378a9be",
+          "captureDate": "2022-12-14T10:14:11.691920Z",
+          "width": 251,
+          "height": 788,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158889-full",
+      "observationId": "0363100012158889_e_1w1vpa1",
+      "buildingId": "0363100012158889",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120062.97193313084,
+          487153.40629590437
+        ],
+        [
+          120061.41193338079,
+          487159.34529590607
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158889_e_1w1vpa1-full.jpg",
+          "cropSha256": "6fde0fd51f35329d591357a5ef54ed98ba77712407d31a760567c46eaece4bfe",
+          "captureDate": "2024-12-16T09:33:23Z",
+          "width": 287,
+          "height": 729,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158909-full",
+      "observationId": "0363100012158909_e_0u03o2h",
+      "buildingId": "0363100012158909",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119964.25693909728,
+          487178.59729537915
+        ],
+        [
+          119958.57993934338,
+          487176.5912953439
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012158909_e_0u03o2h-full.jpg",
+          "cropSha256": "4cb0237bc22bc5d319b11b88e7ad5b587d12eb34e238b9bced3a3a246cf9ffbf",
+          "captureDate": "2023-01-12T09:12:20.258440Z",
+          "width": 282,
+          "height": 879,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158911-full",
+      "observationId": "0363100012158911_e_1gkrgvl",
+      "buildingId": "0363100012158911",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120050.83893920598,
+          487346.6342961586
+        ],
+        [
+          120048.14093917944,
+          487340.57029613154
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158911_e_1gkrgvl-full.jpg",
+          "cropSha256": "674c71273ce6261d04226af21c1fdd8d89d7bda2fef4404a56179c02f2f97835",
+          "captureDate": "2024-12-11T12:18:02Z",
+          "width": 311,
+          "height": 855,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158949-full",
+      "observationId": "0363100012158949_e_07kdyvj",
+      "buildingId": "0363100012158949",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119906.99895180433,
+          487522.2632956136
+        ],
+        [
+          119905.09995178565,
+          487517.9902955967
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158949_e_07kdyvj-full.jpg",
+          "cropSha256": "ba6c538df94725e3abe7fbf6d3e90bac60f32b06aa2a1241978bf83d081dc71b",
+          "captureDate": "2025-06-18T09:54:56Z",
+          "width": 219,
+          "height": 826,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158952-full",
+      "observationId": "0363100012158952_e_1pujpq3",
+      "buildingId": "0363100012158952",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120068.78694367546,
+          487539.79529658327
+        ],
+        [
+          120066.67694363074,
+          487534.1942965598
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158952_e_1pujpq3-full.jpg",
+          "cropSha256": "dc789ae39501f32f61126125910c8abc43b9166085540b8b26ce2aa4c5489c19",
+          "captureDate": "2022-12-14T10:13:42.792240Z",
+          "width": 280,
+          "height": 865,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158963-full",
+      "observationId": "0363100012158963_e_0gv5bo3",
+      "buildingId": "0363100012158963",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120040.6409430701,
+          487464.8502962932
+        ],
+        [
+          120038.53994302437,
+          487459.2422962744
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158963_e_0gv5bo3-full.jpg",
+          "cropSha256": "564240d44d3319207cf261f55b16ada5ac4522bea39200fc5ffc051dc86bffe3",
+          "captureDate": "2025-06-18T09:24:15Z",
+          "width": 280,
+          "height": 791,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012158975-full",
+      "observationId": "0363100012158975_e_0e1deuy",
+      "buildingId": "0363100012158975",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120023.67894389627,
+          487462.090296192
+        ],
+        [
+          120025.17194392791,
+          487466.04829620937
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012158975_e_0e1deuy-full.jpg",
+          "cropSha256": "d70b5f19859c77a915b957aa6b8e9b62168f538aedc4a7bff340362a2b8f72fa",
+          "captureDate": "2025-06-18T09:24:15Z",
+          "width": 198,
+          "height": 802,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159032-full",
+      "observationId": "0363100012159032_e_13atps5",
+      "buildingId": "0363100012159032",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119945.31093512848,
+          487001.4702949682
+        ],
+        [
+          119947.55293485387,
+          486995.95229496853
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012159032_e_13atps5-full.jpg",
+          "cropSha256": "52884b040724aa85c09b5f005813cff89d2213d32f91fd31e63d4e7fa11b3970",
+          "captureDate": "2023-01-12T09:05:46.151510Z",
+          "width": 279,
+          "height": 856,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159037-full",
+      "observationId": "0363100012159037_e_0dcotjs",
+      "buildingId": "0363100012159037",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120007.9099359801,
+          487150.4262955802
+        ],
+        [
+          120008.17093578792,
+          487144.0802955752
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159037_e_0dcotjs-full.jpg",
+          "cropSha256": "cebb4761572be7aa9f037daeb2c86daa709f24d98be667dbc18212f0edeae199",
+          "captureDate": "2024-11-29T09:53:14Z",
+          "width": 297,
+          "height": 799,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159105-full",
+      "observationId": "0363100012159105_e_111ks8e",
+      "buildingId": "0363100012159105",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119892.14095104327,
+          487466.98029544123
+        ],
+        [
+          119899.2089505895,
+          487464.2372954731
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159105_e_111ks8e-full.jpg",
+          "cropSha256": "3e5be4067db6dbbb6127c95ee919ec4f2de92e5da8653bfd5d536ffbe257affc",
+          "captureDate": "2022-04-29T11:06:43.778380Z",
+          "width": 355,
+          "height": 830,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159112-full",
+      "observationId": "0363100012159112_e_0xfdv8v",
+      "buildingId": "0363100012159112",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119883.00093905353,
+          487023.00029464345
+        ],
+        [
+          119882.28093919726,
+          487026.7502946491
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/images/0363100012159112_e_0xfdv8v-full.jpg",
+          "cropSha256": "3c804a561288aa625e33b462780ee5a0b30a76daa218305df60c13240efb599c",
+          "captureDate": "2025-07-31T11:08:32Z",
+          "width": 179,
+          "height": 733,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159114-full",
+      "observationId": "0363100012159114_e_1dienwb",
+      "buildingId": "0363100012159114",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120008.2809406778,
+          487318.32029586856
+        ],
+        [
+          120006.0059406418,
+          487312.72729584435
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012159114_e_1dienwb-full.jpg",
+          "cropSha256": "17acb6d754783faf014daeae65c22908a9ff0628bd540d5c66219857e21db8b0",
+          "captureDate": "2024-12-11T12:18:11Z",
+          "width": 283,
+          "height": 854,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159131-full",
+      "observationId": "0363100012159131_e_0fguf7w",
+      "buildingId": "0363100012159131",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119937.28393924242,
+          487132.62629514356
+        ],
+        [
+          119936.05193914563,
+          487126.84429512813
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/images/0363100012159131_e_0fguf7w-full.jpg",
+          "cropSha256": "1d087a0299ebbb41f7c01011c45817127404699addd2b1d1e5b4aa9c4a321815",
+          "captureDate": "2023-01-12T09:06:06.401370Z",
+          "width": 277,
+          "height": 869,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159135-full",
+      "observationId": "0363100012159135_e_069tz20",
+      "buildingId": "0363100012159135",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119894.73095272644,
+          487531.81029555894
+        ],
+        [
+          119896.63095274605,
+          487536.1102955789
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159135_e_069tz20-full.jpg",
+          "cropSha256": "c5d552e1857b5d2718b9ee713fa1716ff134dc3d38cc1d499c63ff835d6d5b12",
+          "captureDate": "2025-06-18T09:55:01Z",
+          "width": 220,
+          "height": 831,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159173-full",
+      "observationId": "0363100012159173_e_1ikilx4",
+      "buildingId": "0363100012159173",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120003.78794060354,
+          487307.1552958197
+        ],
+        [
+          120001.56894056493,
+          487301.57929579716
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012159173_e_1ikilx4-full.jpg",
+          "cropSha256": "aa7c9e506e7d99731bf1ff3284c760afb4856677317358b47d7657a3ecd1e5bd",
+          "captureDate": "2024-12-11T11:11:44Z",
+          "width": 281,
+          "height": 857,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159182-full",
+      "observationId": "0363100012159182_e_0nqcs47",
+      "buildingId": "0363100012159182",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120004.45193811503,
+          487219.8472956782
+        ],
+        [
+          120010.23293786647,
+          487221.9612957155
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012159182_e_0nqcs47-full.jpg",
+          "cropSha256": "3ebffa1679909575e0f469549d20366df1a91a3d9ab0b16da50bbba4e2407b57",
+          "captureDate": "2023-01-10T10:53:07.751160Z",
+          "width": 288,
+          "height": 800,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159242-full",
+      "observationId": "0363100012159242_e_08c88u2",
+      "buildingId": "0363100012159242",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119887.09095264995,
+          487514.5902954891
+        ],
+        [
+          119888.99095266941,
+          487518.89029550407
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159242_e_08c88u2-full.jpg",
+          "cropSha256": "170f091a804ff3a4a4e34f80f980e51760daf7a177b4b885910ec9e949955242",
+          "captureDate": "2025-06-18T09:54:57Z",
+          "width": 220,
+          "height": 861,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159278-full",
+      "observationId": "0363100012159278_e_0apw5ja",
+      "buildingId": "0363100012159278",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120039.96493805296,
+          487284.9742959931
+        ],
+        [
+          120041.24493815577,
+          487291.0562960106
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159278_e_0apw5ja-full.jpg",
+          "cropSha256": "086e819fcde4e0ce35112bc5940e96d1227c9d29cccf918921c99337e776afdc",
+          "captureDate": "2025-06-18T09:22:23Z",
+          "width": 291,
+          "height": 720,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159336-full",
+      "observationId": "0363100012159336_e_1a3oce1",
+      "buildingId": "0363100012159336",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120075.9169285257,
+          487014.06829574006
+        ],
+        [
+          120083.84092819158,
+          487017.1902957941
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159336_e_1a3oce1-full.jpg",
+          "cropSha256": "e5aaab8149c18f3e893e75c95517de01ed9229c7f82af5b9ce7d26546063c1ae",
+          "captureDate": "2024-12-11T12:16:23Z",
+          "width": 399,
+          "height": 841,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159457-full",
+      "observationId": "0363100012159457_e_0gro18d",
+      "buildingId": "0363100012159457",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120069.92492877862,
+          487011.7082957045
+        ],
+        [
+          120075.9169285257,
+          487014.06829574006
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159457_e_0gro18d-full.jpg",
+          "cropSha256": "0e7ca206bb9ad7873262266f89689eeb411ee4ffd629584dd3654e29235c7c27",
+          "captureDate": "2024-12-11T12:16:23Z",
+          "width": 301,
+          "height": 860,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159530-full",
+      "observationId": "0363100012159530_e_10fb4oj",
+      "buildingId": "0363100012159530",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120070.8609318551,
+          487122.9602958976
+        ],
+        [
+          120069.18493212634,
+          487129.43429589865
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159530_e_10fb4oj-full.jpg",
+          "cropSha256": "83df8f433f08fdb25fb72ab0f6bfcaa82e446ed7c80fbcd8568c5069ad07185b",
+          "captureDate": "2024-12-16T09:33:19Z",
+          "width": 313,
+          "height": 731,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159537-full",
+      "observationId": "0363100012159537_e_1ebeacq",
+      "buildingId": "0363100012159537",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120102.48091615087,
+          486624.1612952096
+        ],
+        [
+          120104.44491591163,
+          486619.37329521216
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012159537_e_1ebeacq-full.jpg",
+          "cropSha256": "f48dd8138842c94ff6f01c9ab53069362163251a9e6b4677244537c6331eecde",
+          "captureDate": "2023-01-12T09:26:47.676470Z",
+          "width": 242,
+          "height": 849,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159538-full",
+      "observationId": "0363100012159538_e_06ccnpk",
+      "buildingId": "0363100012159538",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120041.24493815577,
+          487291.0562960106
+        ],
+        [
+          120042.5249382583,
+          487297.1342960303
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159538_e_06ccnpk-full.jpg",
+          "cropSha256": "cc47dde7313353c0a8f94fab181347ac19610d64cb2f31f1aa89150151782932",
+          "captureDate": "2025-06-18T09:22:26Z",
+          "width": 291,
+          "height": 859,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159613-full",
+      "observationId": "0363100012159613_e_07c9c1z",
+      "buildingId": "0363100012159613",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119923.54095174288,
+          487551.46029575675
+        ],
+        [
+          119920.2999519496,
+          487552.67029574106
+        ]
+      ],
+      "surfaceIndices": [
+        10
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159613_e_07c9c1z-full.jpg",
+          "cropSha256": "287e413d89df8acee3d55f34f3abb8fc08962f779f3046a218231110da23cbe0",
+          "captureDate": "2025-06-17T12:18:44Z",
+          "width": 162,
+          "height": 838,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159615-full",
+      "observationId": "0363100012159615_e_1woykk8",
+      "buildingId": "0363100012159615",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119884.63093873036,
+          487014.59029464365
+        ],
+        [
+          119883.90093887431,
+          487018.3302946441
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costa-expansion-550m-v1/panorama-audit/35e8d2f29c4634cbd07d6afa0d624f6a971f518e2e056859cf988030dedea61a/evidence/images/0363100012159615_e_1woykk8-full.jpg",
+          "cropSha256": "a2b4e5832f69df8696f86bbcc88042bdbe0eb5c9d652e14f48d177ce5f17153c",
+          "captureDate": "2025-07-31T11:08:36Z",
+          "width": 178,
+          "height": 724,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159649-full",
+      "observationId": "0363100012159649_e_0xxtacq",
+      "buildingId": "0363100012159649",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119945.55492665287,
+          486700.4662944475
+        ],
+        [
+          119947.93392636647,
+          486694.7852944488
+        ]
+      ],
+      "surfaceIndices": [
+        0
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012159649_e_0xxtacq-full.jpg",
+          "cropSha256": "650feb3f82b06ab6f7e455231da8509dc31057b2f07252b512a01ece54ae57d9",
+          "captureDate": "2024-11-29T08:19:09Z",
+          "width": 288,
+          "height": 800,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159694-full",
+      "observationId": "0363100012159694_e_1qlmjws",
+      "buildingId": "0363100012159694",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          120039.18093792777,
+          487279.0302959802
+        ],
+        [
+          120039.96493805296,
+          487284.9742959931
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/staging/images/0363100012159694_e_1qlmjws-full.jpg",
+          "cropSha256": "e26b51691b8089f13072f563dc8bc64a6d695c7a7677c1453708500c21fe271f",
+          "captureDate": "2025-06-18T09:22:20Z",
+          "width": 281,
+          "height": 865,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159726-full",
+      "observationId": "0363100012159726_e_1y89f3j",
+      "buildingId": "0363100012159726",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119711.79094431807,
+          486885.7102934254
+        ],
+        [
+          119709.70094456949,
+          486890.68029342627
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012159726_e_1y89f3j-full.jpg",
+          "cropSha256": "c91de6f1e0588e37720fc9722a722cd7ed5084d2858227eb98c596c9b3e8258a",
+          "captureDate": "2024-11-29T10:05:34Z",
+          "width": 252,
+          "height": 853,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    },
+    {
+      "id": "supplemental-0363100012159739-full",
+      "observationId": "0363100012159739_e_04vyzgc",
+      "buildingId": "0363100012159739",
+      "geometryRevision": null,
+      "evidenceKey": null,
+      "geometryBindingStatus": "pending-source-only",
+      "frontage": [
+        [
+          119795.08594325042,
+          487005.63629411394
+        ],
+        [
+          119793.96294348231,
+          487011.7532941155
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/supplemental-1000/broader-staging/images/0363100012159739_e_04vyzgc-full.jpg",
+          "cropSha256": "962e3a165d49c7ac989ef1574145f1b5a4f1f54d39ab68e458a0e39b78655409",
+          "captureDate": "2023-01-10T10:35:58.185460Z",
+          "width": 291,
+          "height": 916,
+          "registration": {
+            "status": "ambiguous",
+            "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+          },
+          "registrationAbstention": "Source-space analysis only; district geometry/evidence binding and metric registration pending"
+        }
+      }
+    }
+  ]
+}

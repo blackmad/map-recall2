@@ -1,0 +1,379 @@
+{
+  "version": 1,
+  "purpose": "Twelve user-reported development cases; captions specify regressions, not architectural ground truth.",
+  "sameBuildingPolicy": "Retain multiple assertions on one building; exclude every such building from held-out evaluation.",
+  "cases": [
+    {
+      "caseId": "development-01",
+      "userImageNumber": 1,
+      "issueClasses": [
+        "entrances",
+        "opening-layout"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Represent visible residential entrances separately from windows.",
+        "Match visible opening count, proportions and placement."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-02",
+      "userImageNumber": 2,
+      "issueClasses": [
+        "opening-layout",
+        "curved-heads"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Preserve irregular rows, paired bays and different window proportions.",
+        "Match curved glazing heads and masonry surrounds independently."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-03",
+      "userImageNumber": 3,
+      "issueClasses": [
+        "ground-contact"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Building base meets designated pavement contact within 0.05 m.",
+        "Any raised threshold or basement exception carries dated source evidence.",
+        "A base correction must not move source roofs."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-04",
+      "userImageNumber": 4,
+      "issueClasses": [
+        "shop-identity",
+        "signs"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Match the target shop entrance, display divisions, fascia and major colours.",
+        "Do not spill features into neighbouring tenants.",
+        "Repeated sign geometry requires separate physical-sign evidence."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-05",
+      "userImageNumber": 5,
+      "issueClasses": [
+        "curved-heads",
+        "ground-assembly"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Match curved opening silhouettes and contrasting surrounds.",
+        "Keep an arched lintel separate from rectangular glazing where the source shows that distinction."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-06",
+      "userImageNumber": 6,
+      "issueClasses": [
+        "entrances",
+        "curved-heads",
+        "ground-assembly"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Preserve paired entrances and adjacent larger windows where visible.",
+        "Match ground-floor proportions and curved heads."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-07",
+      "userImageNumber": 7,
+      "issueClasses": [
+        "extended-awning"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Extended canopy must be supported by this ground crop and its capture date.",
+        "Match visible frontage extent and fabric colour."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-08",
+      "userImageNumber": 8,
+      "issueClasses": [
+        "retracted-awning",
+        "ground-finish"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Represent retracted fabric as a housing or roll, without an extended canopy.",
+        "Preserve the white ground-floor finish and its boundaries."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-09",
+      "userImageNumber": 9,
+      "issueClasses": [
+        "ground-finish",
+        "brick-material"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Preserve contrast between ground and upper wall regions.",
+        "Use metric brick appearance with restrained mortar; no individual brick geometry."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-10",
+      "userImageNumber": 10,
+      "issueClasses": [
+        "ground-finish"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Preserve ground-floor colour contrast and region boundaries."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-11",
+      "userImageNumber": 11,
+      "issueClasses": [
+        "entrances",
+        "opening-layout"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Match all clearly visible doors and windows, including their count and size.",
+        "Do not replace an entrance with a window."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    },
+    {
+      "caseId": "development-12",
+      "userImageNumber": 12,
+      "issueClasses": [
+        "masonry-accents",
+        "entrances",
+        "opening-layout"
+      ],
+      "mappingStatus": "issue-description-only; confirm against original image",
+      "baselineReleaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+      "binding": {
+        "buildingId": null,
+        "observationId": null,
+        "screenshotSha256": null,
+        "cropSha256": null,
+        "captureDate": null,
+        "surfaceIndices": null,
+        "frontageInterval": null
+      },
+      "referenceAnnotations": null,
+      "referenceDisposition": "unannotated",
+      "assertions": [
+        "Preserve visible white masonry accents and their alignment to openings.",
+        "Match visible entrance and window assemblies."
+      ],
+      "requiredViews": [
+        "tight-ground-floor",
+        "full-facade",
+        "oblique-game"
+      ],
+      "result": "not-evaluated"
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "kind": "thousand-building-source-analysis-final",
+  "createdAt": "2026-09-13T00:41:06.705Z",
+  "authorization": {
+    "requestedDistinctBuildings": 1000,
+    "additionalCapUsd": 10
+  },
+  "processing": {
+    "scheduledDistinctBuildings": 1009,
+    "attemptedDistinctBuildings": 1009,
+    "validDistinctBuildings": 1000,
+    "validGroundBuildings": 1000,
+    "validFullBuildings": 988,
+    "validBothTierBuildings": 988,
+    "uniqueTierRequests": 2009,
+    "statuses": {
+      "complete": 1988,
+      "error": 21
+    },
+    "heldoutBuildingsExcluded": 30
+  },
+  "coverage": {
+    "processingCoverage": {
+      "safeGroundAttempted": 1009,
+      "safeGroundValid": 1000,
+      "fullTierAttempted": 1000,
+      "fullTierValid": 988,
+      "bothTiersValid": 988
+    },
+    "bindingCoverage": {
+      "geometryAndEvidenceBoundValidGround": 421,
+      "sourceOnlyRegistrationPendingValidGround": 579,
+      "geometryAndEvidenceBoundValidFull": 0,
+      "sourceOnlyRegistrationPendingValidFull": 988
+    },
+    "renderedFeatureCoverage": "not computed by extraction; materialization and candidate compilation are separate",
+    "measuredReconstructionFidelity": "not claimed"
+  },
+  "costs": {
+    "confirmedProviderUsdAllNeighbourhoodPhase": 3.563247104999998,
+    "confirmedProviderUsdRetiredHeldout": 0.018951570000000004,
+    "confirmedProviderUsdSafeScope": 3.544295534999998,
+    "conservativeUnknownChargeUsd": 0.015,
+    "totalBudgetAccountedUsd": 3.578247104999998,
+    "pendingReservedUsd": 0,
+    "additionalCapUsd": 10
+  },
+  "retiredHeldout": {
+    "buildings": 14,
+    "disposition": "These analyzed buildings are retired from held-out evaluation. Future batches exclude all 30 held-out building IDs."
+  },
+  "evidence": {
+    "analysisCache": {
+      "path": ".cache/city-appearance/fidelity-extraction/analysis-results.json",
+      "sha256": "bdf09964e060915cd5ac69c4de6888d1b73ff0767ba87cfe7fcd94fd35d9de35"
+    },
+    "globalLedger": {
+      "path": ".cache/city-appearance/spend.json",
+      "sha256": "a8bdf3b980739f459c7186be9662878c3673eae243cb2acd64facfcde014fbe7"
+    },
+    "phaseLedger": {
+      "path": ".cache/city-appearance/fidelity-extraction/phase-budget.json",
+      "sha256": "2c434b6f8cd1dbf2ed83bc3f4e753fde45548302f7a69fb8bca33f94d60b500d"
+    },
+    "authorization": {
+      "path": "scripts/review/thousand-building-extraction/authorization.json",
+      "sha256": "eeb87fd984cd921c5df6e1317b5234a87df31f8babe6d2cb84f0306a71122c50"
+    },
+    "chargeReconciliation": {
+      "path": "scripts/review/thousand-building-extraction/charge-reconciliation.json",
+      "sha256": "1fbb354128d077e56e7e4d468e9999f23781cb7f28577b22ee37d5274323193b"
+    },
+    "sourceManifests": [
+      {
+        "path": "scripts/review/thousand-building-sources.json",
+        "sha256": "c86d52de69dd0ebddd92ea8d9ff4f74893690b0eadb4e96c3e2beb05465f4c92"
+      },
+      {
+        "path": "scripts/review/thousand-building-sources-supplemental.json",
+        "sha256": "453ab1ce5bb4b65d66de812e7fe9f153b1e05a0a82f5642d9f3d8d67d1d1489a"
+      }
+    ],
+    "requestManifests": [
+      {
+        "file": "batch-01.json",
+        "sha256": "517cf323f0d1e9a5c22a52c4676c471aefc09ebfbbe4d6a3877681ff7c489d50",
+        "cases": 100
+      },
+      {
+        "file": "batch-02.json",
+        "sha256": "82290894b4367575be8833f00cbd0d5e0070738ceb3b6e7c6463491e90f6c3be",
+        "cases": 75
+      },
+      {
+        "file": "batch-03.json",
+        "sha256": "515c9cfba4a955cd2c2ab30f4a02ace2b9e7f7ffc388cd598b9661a0d4553aa1",
+        "cases": 75
+      },
+      {
+        "file": "batch-04.json",
+        "sha256": "04626579940fdbc272db2e4d907c523d6b640ed07301ed85164476b031b77bb2",
+        "cases": 75
+      },
+      {
+        "file": "batch-05.json",
+        "sha256": "2b788d9c586d7a3eca4578a68280c550fb357ca43256f16d9216401b772a48da",
+        "cases": 75
+      },
+      {
+        "file": "batch-06.json",
+        "sha256": "134bb4fce4881b689f8e96d07c2c1747973807f690ad747dc5f4b56503eaa784",
+        "cases": 27
+      },
+      {
+        "file": "full-c228048ed630-853673ef-01.json",
+        "sha256": "ab6c8c34d331facda4b8b6cecf91913e72fa0e8ab79680173460c44ba92cd181",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-02.json",
+        "sha256": "c9ad48fc9efb90b8b37942f1b445578cb38c11ab67e67be83d249e20cd21646c",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-03.json",
+        "sha256": "0f5bc64f329351efc082b4fd5c85d41417b1e7aca06b557e2d2003752135b2de",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-04.json",
+        "sha256": "3fcf042a1acdb515aa3788a155961614df5984a6ef82099b7efec8c66bb4322b",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-05.json",
+        "sha256": "2de486f881177a67217812c7c516545f3d05ddc69ec3b42b03209e2d2a138a6e",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-06.json",
+        "sha256": "49ba25078656e361d607c75f4c233a0be27d499418a7987f5c5add9499937da2",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-07.json",
+        "sha256": "c7abe85b6261357716f21ff9513c0ab299ab40759992fc86e8b9a5933907685e",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-08.json",
+        "sha256": "dc4bb7b830b406b89365401d1dde8c2b26940a9edaa5fa84df2e7191de5ca7c2",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-09.json",
+        "sha256": "ff6a147be29c6240f1b7bd7615acaad160f1b4b496a8774a5cf30ed1cbeb7c8d",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-10.json",
+        "sha256": "6dda50849e67c9c3801031f20630244c949ba216a201f67c3a59a786ef394bfd",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-11.json",
+        "sha256": "4270de2dc3de56a6bcd95b127206b8fafbcf6225b83bb6f131e1d713ad27dfab",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-12.json",
+        "sha256": "07bed78a46e18a7ef69aca0f1d0e81f874b120626f1d1dc12f10e1c19833d2c8",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-13.json",
+        "sha256": "8143d4b486b4bdfdc441609ee8a45013c3c4201dedf37bfee406b3df5baea86e",
+        "cases": 75
+      },
+      {
+        "file": "full-c228048ed630-853673ef-14.json",
+        "sha256": "9fcb0ab3fbdd7bc5a5922c85bb5088103c5920603a75e93367e2eabee8a21191",
+        "cases": 25
+      },
+      {
+        "file": "incremental-453ab1ce5bb4-ground-n286-01.json",
+        "sha256": "00407b33d22053e5ff08166473ce35f09f00450872d0a37e5acf861d5f5fd2f4",
+        "cases": 75
+      },
+      {
+        "file": "incremental-453ab1ce5bb4-ground-n286-02.json",
+        "sha256": "490872d5b0456a4e7062c139e144c1ec475e37baca9fb5fb7bb6bc744c592550",
+        "cases": 75
+      },
+      {
+        "file": "incremental-453ab1ce5bb4-ground-n286-03.json",
+        "sha256": "bbbf0f846c66e2c769eac5cf09f72c304a6c2b2777da96bbd304fceb4de3376b",
+        "cases": 75
+      },
+      {
+        "file": "incremental-453ab1ce5bb4-ground-n286-04.json",
+        "sha256": "0884ce5fc3a5f32aec78bf521a94b0514efd73ef0e6236d68661a76184448827",
+        "cases": 61
+      },
+      {
+        "file": "incremental-453ab1ce5bb4-ground-n9-01.json",
+        "sha256": "fa9b2140dfbf70eafb4997d402cc1a42fec8b27a47dddbb172127638b1a745ce",
+        "cases": 9
+      },
+      {
+        "file": "supplemental-01.json",
+        "sha256": "fab9ff35373951b703a0832b5a0e2cf2091f0df4cb2cdc5b5226d51478f8adfb",
+        "cases": 75
+      },
+      {
+        "file": "supplemental-02.json",
+        "sha256": "6982d627c8572427a2440a3f10bc3514229b968924e4ba1a5880b48f90e51f99",
+        "cases": 75
+      },
+      {
+        "file": "supplemental-03.json",
+        "sha256": "b87cea3b7228212c5f87130b88f105c1a23aa68780ed24defcf504353c9d23fa",
+        "cases": 75
+      },
+      {
+        "file": "supplemental-04.json",
+        "sha256": "c54189934f4302d10ebe321958f3f21062f6c3ff42da819f63aa257899aead43",
+        "cases": 62
+      }
+    ]
+  },
+  "release": {
+    "publicationPerformed": false,
+    "currentPointerPreserved": true,
+    "currentPointerSha256": "e90a376c219d3a35ff965ffbdb181023fe5100a0bb785450d9ca0c2d35b449d9"
+  },
+  "gates": {
+    "metricRegistrationsAccepted": 0,
+    "materializationComplete": false,
+    "photographicFidelityAccepted": false,
+    "heldoutCertified": false,
+    "runtimeFourteenCameras": false,
+    "publicationBlocked": true,
+    "expansionActivated": false,
+    "originalTwelveOutstanding": true
+  }
+}

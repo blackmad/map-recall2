@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "kind": "reviewed-source-geometry-refresh",
+  "generatedAt": "2026-09-21T17:18:49.292Z",
+  "sourcePacket": {
+    "path": "public/data/facade-repair-preview/cases.json",
+    "sha256": "4181458d7c0f3c738255cefb1dc9087350dccde41ab7ef60ec7ea7f432c9ed2c"
+  },
+  "caseId": "case-05",
+  "addedFeatures": [
+    "full:review:entrance-door"
+  ],
+  "replacedFeatures": [],
+  "source": {
+    "sha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+    "captureDate": "2023-02-27T10:59:42.189530Z",
+    "width": 477,
+    "height": 903
+  },
+  "note": "A reviewed source-bound full-tier correction is applied through stageSourceGeometryPacket. Metric patches, owner geometry and every other case are left byte-identical; prior packet bytes are archived by the publisher.",
+  "published": {
+    "currentSha256": "4181458d7c0f3c738255cefb1dc9087350dccde41ab7ef60ec7ea7f432c9ed2c",
+    "proposedSha256": "9ddc545c1a17603f1b7dad9d7aa42af31a989c85d78c341c89607983248f0fd4",
+    "currentArchived": false,
+    "proposedArchived": true,
+    "casesPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/public/data/facade-repair-preview/cases.json"
+  }
+}

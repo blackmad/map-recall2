@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {prepareCandidateRecords} from './build-neighbourhood-candidate.js';
+
+const cases=JSON.parse(fs.readFileSync('public/data/facade-repair-preview/cases.json','utf8'));
+const candidates=cases.cases.flatMap((item:any)=>item.candidateObservations??[]);
+const baseline=[...new Map(candidates.map((record:any)=>[record.id,structuredClone({...record,facadeDescription:undefined})])).values()];
+const result=prepareCandidateRecords(cases,baseline);
+assert.equal(new Set(result.candidateRecords.map((r:any)=>r.developmentCaseId)).size,25);
+assert.equal(new Set(result.candidateRecords.map((r:any)=>r.buildingId)).size,25);
+assert.equal(result.candidateRecords.length,35);
+assert.equal(result.candidateRecords.reduce((n:number,r:any)=>n+Object.keys(r.facadeDescription.sources).length,0),70);
+assert.equal(new Set(result.records.map((r:any)=>r.id)).size,result.records.length);
+assert(result.candidateRecords.every((r:any)=>r.sourceObservationId&&!r.machineRevocation?.revoked&&Object.values(r.facadeDescription.sources).every((s:any)=>s.registration.status==='ambiguous'&&s.registration.preview.kind==='native-crop-plane')));
+assert(result.omissions.some((item:any)=>item.caseId==='case-26'));
+const stale=structuredClone(cases);stale.cases[0].candidateObservations[0].facadeDescription.sources.ground.cropSha256='0'.repeat(64);
+assert.throws(()=>prepareCandidateRecords(stale,baseline),/source hash, date, or dimensions changed/);
+const revoked=structuredClone(cases);revoked.cases[0].candidateObservations[0].machineRevocation={revoked:true};
+assert.throws(()=>prepareCandidateRecords(revoked,baseline),/revoked observation/);
+console.log(JSON.stringify({candidateCases:25,candidateBuildings:25,candidateWallObservations:35,sourceTiers:70,omissions:result.omissions.length}));

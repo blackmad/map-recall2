@@ -1,0 +1,3415 @@
+{
+  "version": 2,
+  "releaseId": "c4bebc1fcc1ad9622ea4972755b3eee69f037928db4573219c86d2c4e088920d",
+  "inspectionDate": "2026-09-12",
+  "status": "source-bound-hashes-only",
+  "certificationStatus": "uncertified",
+  "blockingIssues": [
+    {
+      "reason": "independent-quantitative-source-inspection-pending"
+    }
+  ],
+  "role": "held-out-reference-source-register",
+  "referenceAnnotationsAre": "agent-inspected-source-not-human-review",
+  "districtCounts": {
+    "Da Costabuurt": 15,
+    "Jordaan": 15
+  },
+  "cases": [
+    {
+      "id": "0363100012154336_e_1xz6eyd",
+      "observationId": "0363100012154336_e_1xz6eyd",
+      "buildingId": "0363100012154336",
+      "geometryRevision": "bb835d9291d3716f4efe3a555964066513aaa2c4320cd2c4029d4b494d78bd10",
+      "evidenceKey": "995510840bee822fca369bb4b52447c0b62726272c0dfdd39d637c41596e0f50",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          2.061765305668814,
+          -60.743247519247234
+        ],
+        [
+          3.271765150449937,
+          -57.518247517815325
+        ]
+      ],
+      "surfaceIndices": [
+        15
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012154336_e_1xz6eyd-full.jpg",
+          "cropSha256": "6a7cf83876a01f8e65827b5b0f2d899f350782b031ddccb16fac8edcc1fb4439",
+          "panoramaSha256": "0cb0b12f4ce647b498cc1cffb18e7dc6df33acf0e54c2341968d994a2ad1ea53",
+          "captureDate": "2023-01-10T10:50:07.612780Z",
+          "dimensions": {
+            "width": 161,
+            "height": 831
+          },
+          "width": 161,
+          "height": 831,
+          "actualDimensions": {
+            "width": 161,
+            "height": 831
+          },
+          "declaredDimensions": {
+            "width": 161,
+            "height": 831
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 15,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012154336_e_1xz6eyd-ground.jpg",
+          "cropSha256": "fd189f176dad10dd61b2cc9a77e127ae6a0dc36e4f892d641f73bfe3d7fda824",
+          "panoramaSha256": "e292b73ebab4c3ba3400ec4623171db21f4eb9ed063571a5df1953cc092d3ab2",
+          "captureDate": "2025-07-03T11:33:22Z",
+          "dimensions": {
+            "width": 394,
+            "height": 539
+          },
+          "width": 394,
+          "height": 539,
+          "actualDimensions": {
+            "width": 394,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 394,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 15,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012165919_e_0ca7kp7",
+      "observationId": "0363100012165919_e_0ca7kp7",
+      "buildingId": "0363100012165919",
+      "geometryRevision": "5b7c382892eec860e3603f95c7547207b7b81568b4c9989cc754c818e5b9c737",
+      "evidenceKey": "9de0e045b0a6678df30671140851067ec611ec702e1fe5347f38a402cfc11075",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          -167.47922203163034,
+          -189.80024676100584
+        ],
+        [
+          -161.3482222976745,
+          -191.96224679995794
+        ]
+      ],
+      "surfaceIndices": [
+        2,
+        14
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012165919_e_0ca7kp7-full.jpg",
+          "cropSha256": "cb4e87f1cda8b47c91ccf4fc78d062823840a774f5d3a4078aae2cb30d89cc14",
+          "panoramaSha256": "112eaf36358cb53df7eeb5c08a439650b224c8454aac9a4760e76055d1e5f355",
+          "captureDate": "2024-11-29T09:59:37Z",
+          "dimensions": {
+            "width": 304,
+            "height": 990
+          },
+          "width": 304,
+          "height": 990,
+          "actualDimensions": {
+            "width": 304,
+            "height": 990
+          },
+          "declaredDimensions": {
+            "width": 304,
+            "height": 990
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": null,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012165919_e_0ca7kp7-ground.jpg",
+          "cropSha256": "9098c37917b4435781aff3915c60941ca805683bc01121f1db6fec42d61bc1d3",
+          "panoramaSha256": "6bfcf3bc6c388ba0933107622a4069be9b9538ffb8d5a195e1bac705250fb76d",
+          "captureDate": "2025-06-18T10:05:08Z",
+          "dimensions": {
+            "width": 744,
+            "height": 539
+          },
+          "width": 744,
+          "height": 539,
+          "actualDimensions": {
+            "width": 744,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 744,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": null,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012156077_e_1yr2ovu",
+      "observationId": "0363100012156077_e_1yr2ovu",
+      "buildingId": "0363100012156077",
+      "geometryRevision": "4c15dc21cc262f33b7221a48d2ebd5f85a0f3808388bb7de0bb2826c03783639",
+      "evidenceKey": "2d022c9e0baf0e2f372018aabe4074ea342059e2ec0a90b38ae14a78b44957f3",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          -68.0102263167064,
+          -225.96224739629542
+        ],
+        [
+          -62.37022655966575,
+          -228.0142474329332
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012156077_e_1yr2ovu-full.jpg",
+          "cropSha256": "efd7970d3197e5781a1f884e1204694ef1813324f38d00d9ec579e40d4dd32e8",
+          "panoramaSha256": "d3999b774edcf21e0fd6f48c66d4c2658d672e49be34a531e8c377d9c34de5a5",
+          "captureDate": "2025-07-03T08:55:33Z",
+          "dimensions": {
+            "width": 281,
+            "height": 834
+          },
+          "width": 281,
+          "height": 834,
+          "actualDimensions": {
+            "width": 281,
+            "height": 834
+          },
+          "declaredDimensions": {
+            "width": 281,
+            "height": 834
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012156077_e_1yr2ovu-ground.jpg",
+          "cropSha256": "cbfb9dfd13ce0a657b74d0fb6eceeb2c786dcea749ee2ed0ed50a76a011ee3b7",
+          "panoramaSha256": "d8d2ad9bcbbfc7fe94b873496d0840ec2cdae9020ae3f843838b930dd8a5478d",
+          "captureDate": "2025-07-03T08:52:48Z",
+          "dimensions": {
+            "width": 687,
+            "height": 539
+          },
+          "width": 687,
+          "height": 539,
+          "actualDimensions": {
+            "width": 687,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 687,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012156054_e_0u23hyv",
+      "observationId": "0363100012156054_e_0u23hyv",
+      "buildingId": "0363100012156054",
+      "geometryRevision": "b7f4237f4d5aa1437979433d3405ae28940c248a790b6af6279edebf4b0245bd",
+      "evidenceKey": "adaa395d2476fe491ae6bd7bb86c8a3b730dd345e2352db3c27fca246885788f",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          -64.14023012084363,
+          -97.95924720232142
+        ],
+        [
+          -64.62822991394205,
+          -104.39824720838806
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012156054_e_0u23hyv-full.jpg",
+          "cropSha256": "d32a3366abfba39c08260662a2356ab0bb1805aec38ae6e94d99d24f0e916fa3",
+          "panoramaSha256": "0fcefcb3343dc8d292fcc643f72bb6d028588caadfc46d8cff4eeac22f4e343b",
+          "captureDate": "2025-07-31T11:08:31Z",
+          "dimensions": {
+            "width": 302,
+            "height": 753
+          },
+          "width": 302,
+          "height": 753,
+          "actualDimensions": {
+            "width": 302,
+            "height": 753
+          },
+          "declaredDimensions": {
+            "width": 302,
+            "height": 753
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 2,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012156054_e_0u23hyv-ground.jpg",
+          "cropSha256": "3e19ae0def0746f8821a06527d29c258a6328314ea18e9ed5dc4d28961261d29",
+          "panoramaSha256": "1ce8d464dba2e671a51ce99b991d9609a4443d89e4d3d3358052107323bb7243",
+          "captureDate": "2025-07-31T11:08:30Z",
+          "dimensions": {
+            "width": 739,
+            "height": 539
+          },
+          "width": 739,
+          "height": 539,
+          "actualDimensions": {
+            "width": 739,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 739,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 2,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012236796_e_11bsna7",
+      "observationId": "0363100012236796_e_11bsna7",
+      "buildingId": "0363100012236796",
+      "geometryRevision": "080d74ede530fb7a4145a10b2d0e7acecca3b3c69e53d5b608596de02692bf65",
+      "evidenceKey": "ec13db01e41b278f0fa04f540bf429aedd54e529fffb5d52b9dc78c75762ff9c",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          -53.95923194164061,
+          -52.487247184617445
+        ],
+        [
+          -54.988231778144836,
+          -56.35824717889773
+        ]
+      ],
+      "surfaceIndices": [
+        23
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012236796_e_11bsna7-full.jpg",
+          "cropSha256": "024b1220b34edb0bdc5ce348fd8270358b2b85b0adfd1138205607ec3f92bb43",
+          "panoramaSha256": "54231bf2c2ecd5190b67bac332cfa3427de689dfa9a0714dcac0f961334d0665",
+          "captureDate": "2025-07-31T11:08:39Z",
+          "dimensions": {
+            "width": 187,
+            "height": 867
+          },
+          "width": 187,
+          "height": 867,
+          "actualDimensions": {
+            "width": 187,
+            "height": 867
+          },
+          "declaredDimensions": {
+            "width": 187,
+            "height": 867
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 23,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012236796_e_11bsna7-ground.jpg",
+          "cropSha256": "4058c26a0da6603088b2c2ea5d490ca4a5e6295f54ebac643d42cedf59bcbeda",
+          "panoramaSha256": "27d9175eedf359724783c0bda7d0271961029fbeeb5d0d280b1dd720e69de6a3",
+          "captureDate": "2025-07-31T11:08:38Z",
+          "dimensions": {
+            "width": 458,
+            "height": 539
+          },
+          "width": 458,
+          "height": 539,
+          "actualDimensions": {
+            "width": 458,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 458,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 23,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012132271_e_09pgk76",
+      "observationId": "0363100012132271_e_09pgk76",
+      "buildingId": "0363100012132271",
+      "geometryRevision": "19b3b4e35dfe6f0bfe09a2ac05c52c8d60dceaf38bffbcd4c70eb8e586b575c6",
+      "evidenceKey": "4c0f31ccf561f5cbaccb1bef3600781a7485049a8ec8e9ebe419d5868a38df4a",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          -260.39821800607024,
+          -156.78824616817292
+        ],
+        [
+          -255.74721820649575,
+          -158.48224619793473
+        ]
+      ],
+      "surfaceIndices": [
+        8
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012132271_e_09pgk76-full.jpg",
+          "cropSha256": "a299cb91b4185c643eca0fd81830a0a8c0061323d465f79debfdddd116ddad93",
+          "panoramaSha256": "06b02a72b94aa1756e06d3bf2f20840fff5017d1edc26d5052dd97100a88721d",
+          "captureDate": "2023-01-10T10:42:52.241930Z",
+          "dimensions": {
+            "width": 232,
+            "height": 798
+          },
+          "width": 232,
+          "height": 798,
+          "actualDimensions": {
+            "width": 232,
+            "height": 798
+          },
+          "declaredDimensions": {
+            "width": 232,
+            "height": 798
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 8,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012132271_e_09pgk76-ground.jpg",
+          "cropSha256": "6369cdec83afc8cc08aa6235d8b4733a4a99a548ae7696100b63db5dddd92306",
+          "panoramaSha256": "10414d2656ad2189aaec139a48488eb31169320a95aa7f65f43bd592e4882a13",
+          "captureDate": "2025-06-18T10:05:32Z",
+          "dimensions": {
+            "width": 566,
+            "height": 539
+          },
+          "width": 566,
+          "height": 539,
+          "actualDimensions": {
+            "width": 566,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 566,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 8,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012167944_e_12245ey",
+      "observationId": "0363100012167944_e_12245ey",
+      "buildingId": "0363100012167944",
+      "geometryRevision": "809d1d280c25f99851859e2157c30bac2744aaec53ba8b2d30e5fff0c634260f",
+      "evidenceKey": "8adae5a2b9b342d00443120b59d767de8075371906ac20a36393ebf00941e186",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          432.47175239096396,
+          -416.8302506027976
+        ],
+        [
+          438.2007521496562,
+          -419.0972506386461
+        ]
+      ],
+      "surfaceIndices": [
+        10
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012167944_e_12245ey-full.jpg",
+          "cropSha256": "fd3c48bb503e8174e10cc919d80adbe13dcadb1249622909dc93a6bad7bcdf72",
+          "panoramaSha256": "5f34710ec2b788cdfbb2388985575e5a06f4358899e73cd8d0153ea4fa8da838",
+          "captureDate": "2025-01-20T10:11:49Z",
+          "dimensions": {
+            "width": 288,
+            "height": 1746
+          },
+          "width": 288,
+          "height": 1746,
+          "actualDimensions": {
+            "width": 288,
+            "height": 1746
+          },
+          "declaredDimensions": {
+            "width": 288,
+            "height": 1746
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 10,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012167944_e_12245ey-ground.jpg",
+          "cropSha256": "25a31242806bf7d8802f1eedea2c1cfa2d19d49ddecc0882fede499112366c02",
+          "panoramaSha256": "28509eee2ec963193f80541ad5c21f9d6880dcc0ab2f574dd85e614c48952a8b",
+          "captureDate": "2022-04-29T08:16:26.826500Z",
+          "dimensions": {
+            "width": 705,
+            "height": 539
+          },
+          "width": 705,
+          "height": 539,
+          "actualDimensions": {
+            "width": 705,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 705,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 10,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012169892_e_0pklugu",
+      "observationId": "0363100012169892_e_0pklugu",
+      "buildingId": "0363100012169892",
+      "geometryRevision": "de9b2b178eeb321c5be320b2e702a4b8b1e2c2af9f9c4884b519b7d5ab295dc8",
+      "evidenceKey": "248b5a4f325453cae07c7922a139129c89af383ae0394a389f6cee48e47d03cc",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          557.5587408353313,
+          -242.3492510287906
+        ],
+        [
+          561.9757406516001,
+          -244.17425105761504
+        ]
+      ],
+      "surfaceIndices": [
+        7,
+        10
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012169892_e_0pklugu-full.jpg",
+          "cropSha256": "9b93ec70a8f4a92434089a09e385ef2e8c01ad36d5ad38d3ff35a9588e8333e2",
+          "panoramaSha256": "3ae1f932cd31de1f217554e57d3836c758bf8c29dd3b54174815351f4eace0f3",
+          "captureDate": "2023-02-13T10:59:00.229010Z",
+          "dimensions": {
+            "width": 224,
+            "height": 668
+          },
+          "width": 224,
+          "height": 668,
+          "actualDimensions": {
+            "width": 224,
+            "height": 668
+          },
+          "declaredDimensions": {
+            "width": 224,
+            "height": 668
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": null,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012169892_e_0pklugu-ground.jpg",
+          "cropSha256": "7078da8e72e571ac89326811b36a697f1712a7978bafd6f631ad88f35a0d0d9f",
+          "panoramaSha256": "e8a2b19cc6763425136e617974ee96c8dab94914c0c198dc14478895fa04cde3",
+          "captureDate": "2025-07-03T09:51:51Z",
+          "dimensions": {
+            "width": 547,
+            "height": 539
+          },
+          "width": 547,
+          "height": 539,
+          "actualDimensions": {
+            "width": 547,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 547,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": null,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012170203_e_0antd5h",
+      "observationId": "0363100012170203_e_0antd5h",
+      "buildingId": "0363100012170203",
+      "geometryRevision": "82623dc510097d20138a0055552f5a151ac1d7a5339d34d4e2dff5ac83ec8e39",
+      "evidenceKey": "1b679017df3c8083fa7f11764c419447dee4b078c28dff05d8afcbb3bc8f980c",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          549.180735713453,
+          -44.11725063162157
+        ],
+        [
+          545.5817361304653,
+          -52.14825062896125
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012170203_e_0antd5h-full.jpg",
+          "cropSha256": "e14957fbbea30926b4257f05e7f5c48fab729d54580dc48de24ae2fd23e80673",
+          "panoramaSha256": "b471115e0119149fcc0362a3f665bfb1cc67749ee2e0a4489e87117fc04d1d93",
+          "captureDate": "2024-12-16T09:30:23Z",
+          "dimensions": {
+            "width": 412,
+            "height": 653
+          },
+          "width": 412,
+          "height": 653,
+          "actualDimensions": {
+            "width": 412,
+            "height": 653
+          },
+          "declaredDimensions": {
+            "width": 412,
+            "height": 653
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 2,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012170203_e_0antd5h-ground.jpg",
+          "cropSha256": "4c24e7e8bb56ed2f081ef4637c38d1b80987e758be26535b6bb4275ea825ca3d",
+          "panoramaSha256": "7ee79df9197ddc792345c4a77b24385b3336255cb54ba446d72450f791ba3c12",
+          "captureDate": "2022-04-29T08:33:32.482940Z",
+          "dimensions": {
+            "width": 1007,
+            "height": 539
+          },
+          "width": 1007,
+          "height": 539,
+          "actualDimensions": {
+            "width": 1007,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 1007,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 2,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012170093_e_0n47f1p",
+      "observationId": "0363100012170093_e_0n47f1p",
+      "buildingId": "0363100012170093",
+      "geometryRevision": "591ca96ba2f46be3d827934f74fa99ce7a74569092d43c28f9597d7a559ae121",
+      "evidenceKey": "69aee5d248a8f8f6824d3a0bdc3b46cdf7560b3aebcaa55bf77fc8f4b07d7fcb",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          555.1417472316825,
+          -465.57825139310444
+        ],
+        [
+          561.7357469511335,
+          -468.07725143869175
+        ]
+      ],
+      "surfaceIndices": [
+        6
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012170093_e_0n47f1p-full.jpg",
+          "cropSha256": "9242ef2ef66b5020067b310ef31b7a8c97d7aa8092c862bcc9227629e50870da",
+          "panoramaSha256": "b8ea3de217942549021a5205536155058708f288735ce1ef52ecf5331764e8c8",
+          "captureDate": "2025-01-20T10:12:06Z",
+          "dimensions": {
+            "width": 330,
+            "height": 679
+          },
+          "width": 330,
+          "height": 679,
+          "actualDimensions": {
+            "width": 330,
+            "height": 679
+          },
+          "declaredDimensions": {
+            "width": 330,
+            "height": 679
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 6,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012170093_e_0n47f1p-ground.jpg",
+          "cropSha256": "48c044462888b145fce6517b57f084f1f777c21ee563ef49ee4e6148871a28aa",
+          "panoramaSha256": "3da32713c0a2dcc71febbdf64103356f62408acc055b1ffc0a27b8619737c07f",
+          "captureDate": "2022-04-22T10:28:30.049630Z",
+          "dimensions": {
+            "width": 807,
+            "height": 539
+          },
+          "width": 807,
+          "height": 539,
+          "actualDimensions": {
+            "width": 807,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 807,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 6,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012174288_e_0z6ytzw",
+      "observationId": "0363100012174288_e_0z6ytzw",
+      "buildingId": "0363100012174288",
+      "geometryRevision": "4f237485c8bcdc955609e7e9780aea47e9423d19db1b52b5dac2af23a3fd6efd",
+      "evidenceKey": "c31e88c6be9dfc2b60d1d0a22576141657d49c99329167c3707b06df40d63ee6",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          384.2157480154274,
+          -169.59724990365794
+        ],
+        [
+          389.205747807835,
+          -171.66424993606051
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174288_e_0z6ytzw-full.jpg",
+          "cropSha256": "085e17da4565d3c30d0663eace81f78bd4a40d5b45793e521023632c9c2d91de",
+          "panoramaSha256": "ef9cfcf51a60d09d11b557e1e192a8e7ce10e48c89172add0af7a0c0fbc2112b",
+          "captureDate": "2024-12-17T08:53:08Z",
+          "dimensions": {
+            "width": 253,
+            "height": 754
+          },
+          "width": 253,
+          "height": 754,
+          "actualDimensions": {
+            "width": 253,
+            "height": 754
+          },
+          "declaredDimensions": {
+            "width": 253,
+            "height": 754
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 5,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174288_e_0z6ytzw-ground.jpg",
+          "cropSha256": "c72ee2ff40a82463b29160efc14e9f681817c5f40e13dba2bad3719a4fd8aa91",
+          "panoramaSha256": "a3d7014dcdb8765041ab0e4b9067bbd7ce3528498096dba67dcfeaefe2094407",
+          "captureDate": "2025-07-03T09:38:50Z",
+          "dimensions": {
+            "width": 618,
+            "height": 539
+          },
+          "width": 618,
+          "height": 539,
+          "actualDimensions": {
+            "width": 618,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 618,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 5,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012169948_e_0cg9q7q",
+      "observationId": "0363100012169948_e_0cg9q7q",
+      "buildingId": "0363100012169948",
+      "geometryRevision": "a9624d8a41163f858536e98fc459e2a5dc523c05aa898cb316cc73f0f63be849",
+      "evidenceKey": "204429e3a8efb8138707cf861a3371523ebdfa767e04c9eec6114026da75d5f3",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          533.7657418196613,
+          -232.32525087258546
+        ],
+        [
+          542.5497414568963,
+          -236.04825092974352
+        ]
+      ],
+      "surfaceIndices": [
+        23
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012169948_e_0cg9q7q-full.jpg",
+          "cropSha256": "18d8144cac4e94e1ae839e4cd2b2dca096233782e9f206fd1d0798e74cd0e693",
+          "panoramaSha256": "723c7e3312146fac8e7c0ea9699ce280a46a5ce002ddbcd49d7fa951aed3f948",
+          "captureDate": "2023-02-13T10:58:57.443990Z",
+          "dimensions": {
+            "width": 446,
+            "height": 738
+          },
+          "width": 446,
+          "height": 738,
+          "actualDimensions": {
+            "width": 446,
+            "height": 738
+          },
+          "declaredDimensions": {
+            "width": 446,
+            "height": 738
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 23,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012169948_e_0cg9q7q-ground.jpg",
+          "cropSha256": "2ab47d2455690c20280e5ef7a07e861e28567b15bf2cb15b96b9ef0e0d9ca8ba",
+          "panoramaSha256": "6f43ef1dfd6d82291b7a7d6e70ac3c6f7c089cfa927c27a6ef3d49a031c0491e",
+          "captureDate": "2025-07-03T09:51:58Z",
+          "dimensions": {
+            "width": 1091,
+            "height": 539
+          },
+          "width": 1091,
+          "height": 539,
+          "actualDimensions": {
+            "width": 1091,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 1091,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 23,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012172773_e_0nlsds9",
+      "observationId": "0363100012172773_e_0nlsds9",
+      "buildingId": "0363100012172773",
+      "geometryRevision": "f9003fe4d85b86aad2eeeba2c35cd1620cdacb9dfcd558e38c0ddbaa30537c78",
+      "evidenceKey": "058adb4e8c743308e1b3209a16f08c4dbd830e80f5164e85fc90e59a839ed96a",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          652.2377431392815,
+          -503.79725201806286
+        ],
+        [
+          668.1197424830461,
+          -510.5152521186392
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012172773_e_0nlsds9-full.jpg",
+          "cropSha256": "d6d1d9126b1edd8b51e9418eeac790cc3ff768a34b63585d044ae8edbf7f07ae",
+          "panoramaSha256": "39690bf0cc33ec79d138fb04609c71441d186d8611395873fc7bb87e66709c17",
+          "captureDate": "2025-01-20T10:12:18Z",
+          "dimensions": {
+            "width": 807,
+            "height": 731
+          },
+          "width": 807,
+          "height": 731,
+          "actualDimensions": {
+            "width": 807,
+            "height": 731
+          },
+          "declaredDimensions": {
+            "width": 807,
+            "height": 731
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 5,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012172773_e_0nlsds9-ground.jpg",
+          "cropSha256": "9fb3ac72b0af29b18393d9b3314d8b855c758794bc0a0c7abc937d8a80e28e80",
+          "panoramaSha256": "7482c9ed69f26e9bf1ab843bc61b5d9dcf36b1dbf3cbe3f4cb51b65f78c83c0a",
+          "captureDate": "2024-12-16T09:18:10Z",
+          "dimensions": {
+            "width": 1973,
+            "height": 539
+          },
+          "width": 1973,
+          "height": 539,
+          "actualDimensions": {
+            "width": 1973,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 1973,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 5,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012173914_e_1un6nri",
+      "observationId": "0363100012173914_e_1un6nri",
+      "buildingId": "0363100012173914",
+      "geometryRevision": "15ce37b842a6a3a4a59922567a5b12bd5d3e564a8e325a2b21aeeec28e602831",
+      "evidenceKey": "de6bc90393abbdead2cf9438c94b2c0300c3a7c641e84dcb943b33d43f0096f3",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          618.7007374490495,
+          -237.57725137018133
+        ],
+        [
+          622.5347369985247,
+          -228.79225137707544
+        ]
+      ],
+      "surfaceIndices": [
+        2,
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173914_e_1un6nri-full.jpg",
+          "cropSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+          "panoramaSha256": "b55707ba58085baeb905d6bdf6fbccf9d36e58741ca858ac7b03abec7f9b5d85",
+          "captureDate": "2023-01-30T10:20:45.950790Z",
+          "dimensions": {
+            "width": 449,
+            "height": 799
+          },
+          "width": 449,
+          "height": 799,
+          "actualDimensions": {
+            "width": 449,
+            "height": 799
+          },
+          "declaredDimensions": {
+            "width": 449,
+            "height": 799
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": null,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173914_e_1un6nri-ground.jpg",
+          "cropSha256": "9d0ac687f89aeee328300bfa20b35f655c9a12c5870441467401b558192ae6bd",
+          "panoramaSha256": "a7e37fcf79f8205226ba43fd97d2ef98967c5fd0f57d3f1c77a94328a10fde1b",
+          "captureDate": "2022-04-29T08:27:17.431130Z",
+          "dimensions": {
+            "width": 1097,
+            "height": 539
+          },
+          "width": 1097,
+          "height": 539,
+          "actualDimensions": {
+            "width": 1097,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 1097,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": null,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012174278_e_0oy3b32",
+      "observationId": "0363100012174278_e_0oy3b32",
+      "buildingId": "0363100012174278",
+      "geometryRevision": "e0fdb5e4e0b35ca18d1af98a99f179cbe3bce934e4ca69b75e0cef12507cdf08",
+      "evidenceKey": "b5d89835fadd7667e41d9246fadfcb215b3c78a416de16df396b1fb66be0b59c",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          382.19475365270046,
+          -366.46825022873236
+        ],
+        [
+          377.510753849725,
+          -364.6072501988965
+        ]
+      ],
+      "surfaceIndices": [
+        19,
+        21
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174278_e_0oy3b32-full.jpg",
+          "cropSha256": "66d8d1b9e2b281015c99636fdd92c7b0a5eb416c9a4b046f697cfb51e942848b",
+          "panoramaSha256": "95ff7df057619354be1c03cf1e3fb1ae2f109faca77b335aa030027b7cfd9716",
+          "captureDate": "2024-12-16T10:24:37Z",
+          "dimensions": {
+            "width": 236,
+            "height": 688
+          },
+          "width": 236,
+          "height": 688,
+          "actualDimensions": {
+            "width": 236,
+            "height": 688
+          },
+          "declaredDimensions": {
+            "width": 236,
+            "height": 688
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": null,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174278_e_0oy3b32-ground.jpg",
+          "cropSha256": "77658481481ab0b998b1264ed309f250b74acd03ac6dedb121de1ba71780961d",
+          "panoramaSha256": "d2a9d45b66eff02f2f7ffaeae8b50c30e340cc457fb32b49149c1361bdb849c6",
+          "captureDate": "2023-01-16T11:28:00.467850Z",
+          "dimensions": {
+            "width": 577,
+            "height": 539
+          },
+          "width": 577,
+          "height": 539,
+          "actualDimensions": {
+            "width": 577,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 577,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": null,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012174159_e_1scn3au",
+      "observationId": "0363100012174159_e_1scn3au",
+      "buildingId": "0363100012174159",
+      "geometryRevision": "a77f1cf6bc49709f19d73368b832b6732eb2c4350a1c1f89335d9d78cb4e20a0",
+      "evidenceKey": "ead11e14eb2b79e49cf67d7a0a2f8271f4093c389e8ed2840a980d9376b38119",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          452.8807379648206,
+          58.092750100651756
+        ],
+        [
+          445.9307387516019,
+          43.25175011425745
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174159_e_1scn3au-full.jpg",
+          "cropSha256": "a05913333dcff4a12c1c86d3c105548b98cf8151a820bee1a19db0d25b0a9ad4",
+          "panoramaSha256": "9609dba6bd92dfb9d1d88cbc88bb924edff2cbeabc0a187b02e1ff7b986b6a07",
+          "captureDate": "2024-12-16T10:02:36Z",
+          "dimensions": {
+            "width": 767,
+            "height": 630
+          },
+          "width": 767,
+          "height": 630,
+          "actualDimensions": {
+            "width": 767,
+            "height": 630
+          },
+          "declaredDimensions": {
+            "width": 767,
+            "height": 630
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 1,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012174159_e_1scn3au-ground.jpg",
+          "cropSha256": "081be65f94a5e3d298e2be062a656472a8df9fa11e844239013b73f20da6061b",
+          "panoramaSha256": "45e97d48f68573a3da8b82d0d2eee4eebc2f63e7c6f089e6863d89ea3655cbe1",
+          "captureDate": "2025-07-03T10:09:20Z",
+          "dimensions": {
+            "width": 1875,
+            "height": 539
+          },
+          "width": 1875,
+          "height": 539,
+          "actualDimensions": {
+            "width": 1875,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 1875,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 1,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012173932_e_0ec1tw7",
+      "observationId": "0363100012173932_e_0ec1tw7",
+      "buildingId": "0363100012173932",
+      "geometryRevision": "038c6f1ef8d21af24fb3ceced471ceea3d0aa1aa825129987d4305382bcd5d3d",
+      "evidenceKey": "7d74c0298fe5c442f5b8dedcccaade49d088b56203c6528b29339a0766a430af",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          635.5037367511977,
+          -244.5522514791228
+        ],
+        [
+          631.6007369109866,
+          -242.8522514544893
+        ]
+      ],
+      "surfaceIndices": [
+        3,
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173932_e_0ec1tw7-full.jpg",
+          "cropSha256": "6a61d36d8bd4372603a1bc1a3eb3b656b3460eb4534ce544ac7dc11d38db3e6f",
+          "panoramaSha256": "73aee9ecf8ac67d80cf2d5644705966f0c6a7e47d57519cc2943124dfb959b48",
+          "captureDate": "2023-03-13T08:55:15.621740Z",
+          "dimensions": {
+            "width": 199,
+            "height": 801
+          },
+          "width": 199,
+          "height": 801,
+          "actualDimensions": {
+            "width": 199,
+            "height": 801
+          },
+          "declaredDimensions": {
+            "width": 199,
+            "height": 801
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": null,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012173932_e_0ec1tw7-ground.jpg",
+          "cropSha256": "12199bc99610351a57fb32bd93e9636a6d16200c990123246b13e720df778e8e",
+          "panoramaSha256": "af0b5670174b8ac80e52dc862a346fb0a498476e0a8ee2f7ae2a649cf898d2d9",
+          "captureDate": "2025-07-03T09:49:50Z",
+          "dimensions": {
+            "width": 487,
+            "height": 539
+          },
+          "width": 487,
+          "height": 539,
+          "actualDimensions": {
+            "width": 487,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 487,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": null,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012152724_e_1cjcooe",
+      "observationId": "0363100012152724_e_1cjcooe",
+      "buildingId": "0363100012152724",
+      "geometryRevision": "d6e856b7c42dd2642b84d8307dec32e180417396fd61b5d6f94552554001261e",
+      "evidenceKey": "b0021a28cfdf0b57d0b97540e918f2280eaf36ed3836ddaf8b40ac3962151d6f",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          -9.538226862830925,
+          -317.4082478847122
+        ],
+        [
+          -4.285226776308264,
+          -330.4502479385119
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012152724_e_1cjcooe-full.jpg",
+          "cropSha256": "8f471468285f05c4975596a28e60ba0556abc1bcb15dcc18d455de5618df9a8c",
+          "panoramaSha256": "d672f6dc9db0aced565307c412c85006ba60e765f835a149771007aa71357bd1",
+          "captureDate": "2024-12-11T11:11:50Z",
+          "dimensions": {
+            "width": 658,
+            "height": 842
+          },
+          "width": 658,
+          "height": 842,
+          "actualDimensions": {
+            "width": 658,
+            "height": 842
+          },
+          "declaredDimensions": {
+            "width": 658,
+            "height": 842
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 4,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012152724_e_1cjcooe-ground.jpg",
+          "cropSha256": "1887aab7c189e8a23a57369f443b1a6974ede957121a849006da827f239a7ee2",
+          "panoramaSha256": "7a59c3f6cd9123e35ead45c033d2b75f378d718224dd5177487eb24a20ff0f34",
+          "captureDate": "2024-12-11T11:11:51Z",
+          "dimensions": {
+            "width": 1608,
+            "height": 539
+          },
+          "width": 1608,
+          "height": 539,
+          "actualDimensions": {
+            "width": 1608,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 1608,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 4,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012152977_e_13evhz4",
+      "observationId": "0363100012152977_e_13evhz4",
+      "buildingId": "0363100012152977",
+      "geometryRevision": "f06d94ae0b015fade83e911ad540ac59b64c92b728f951caf160594bb204b553",
+      "evidenceKey": "c71ea9277456b7c82708d1887f5f05a72bacb440450a7b5002ee0bae646445cc",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          1.1817695202189498,
+          -209.02824776415946
+        ],
+        [
+          -0.5472305501898518,
+          -203.24124774622032
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012152977_e_13evhz4-full.jpg",
+          "cropSha256": "bbe1972b32959acdc06fe5a3199d567e3abc82560d667af672ae020ecde0975f",
+          "panoramaSha256": "f70fb58c77bc05ed55741b8d3b966b9c59f79a1103818f40263660cb1c9faf65",
+          "captureDate": "2023-01-12T09:12:23.338350Z",
+          "dimensions": {
+            "width": 283,
+            "height": 974
+          },
+          "width": 283,
+          "height": 974,
+          "actualDimensions": {
+            "width": 283,
+            "height": 974
+          },
+          "declaredDimensions": {
+            "width": 283,
+            "height": 974
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012152977_e_13evhz4-ground.jpg",
+          "cropSha256": "f4450a2cd4eed971148ba9a62441805f4bbfe61f030d4927fed052473aa50e3b",
+          "panoramaSha256": "7d7417901cfab87a44eacfdbd6d83f38e6f505be9d7b09e3b822f06c556e4a5a",
+          "captureDate": "2025-07-03T11:25:43Z",
+          "dimensions": {
+            "width": 691,
+            "height": 539
+          },
+          "width": 691,
+          "height": 539,
+          "actualDimensions": {
+            "width": 691,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 691,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012158653_e_1do2dbd",
+      "observationId": "0363100012158653_e_1do2dbd",
+      "buildingId": "0363100012158653",
+      "geometryRevision": "e744caa08b46d19f14917037c264d5928f95928215c58b38ca795d2a372806f7",
+      "evidenceKey": "22c4a6750b38483227c1acbf4ea69c2b70dba73ba393ba2b6974dd8d0a4be844",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          32.27177008497529,
+          -288.0682480794494
+        ],
+        [
+          27.81177000858588,
+          -276.89624803548213
+        ]
+      ],
+      "surfaceIndices": [
+        5
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012158653_e_1do2dbd-full.jpg",
+          "cropSha256": "c7830f020a119cde14786fef25f3f52a606098d22d5f7812fea9f3884e7bb480",
+          "panoramaSha256": "dd6fa7acaf239aa6418f38f1a9c09188606ab8d25d8e3d3b50ca5f315bc3976f",
+          "captureDate": "2024-12-11T12:18:32Z",
+          "dimensions": {
+            "width": 563,
+            "height": 792
+          },
+          "width": 563,
+          "height": 792,
+          "actualDimensions": {
+            "width": 563,
+            "height": 792
+          },
+          "declaredDimensions": {
+            "width": 563,
+            "height": 792
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 5,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012158653_e_1do2dbd-ground.jpg",
+          "cropSha256": "c58d016e79a22199ad77adde023073c0a3628dce205492ac6ac1e7ed8979ad38",
+          "panoramaSha256": "ffa8a6789d20a18afaa657c63ca942e31fa3a10a31c93f8149e6980bf30b193d",
+          "captureDate": "2022-04-29T11:13:45.345050Z",
+          "dimensions": {
+            "width": 1376,
+            "height": 539
+          },
+          "width": 1376,
+          "height": 539,
+          "actualDimensions": {
+            "width": 1376,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 1376,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 5,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012160092_e_0ttw5t9",
+      "observationId": "0363100012160092_e_0ttw5t9",
+      "buildingId": "0363100012160092",
+      "geometryRevision": "15975cf00817cec8095243834993d2b468c1c5483b8f76b5f52a61a1be4a4e19",
+      "evidenceKey": "a96dd63dac71b360e0d44bbc6ff06c60e2b5bfcd7fbe0584a84e5b0ff1fd5e90",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          34.469770122203045,
+          -293.5612481019343
+        ],
+        [
+          32.27177008497529,
+          -288.0682480794494
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012160092_e_0ttw5t9-full.jpg",
+          "cropSha256": "10580442f0dd397938f25e92580ce6260e3669bf556933bde9b358e3f8fc9817",
+          "panoramaSha256": "0d87de9321e431eafd135115055d631ddcbd09ca87b9cdc32c3538bfb95b8773",
+          "captureDate": "2024-12-11T12:18:30Z",
+          "dimensions": {
+            "width": 277,
+            "height": 819
+          },
+          "width": 277,
+          "height": 819,
+          "actualDimensions": {
+            "width": 277,
+            "height": 819
+          },
+          "declaredDimensions": {
+            "width": 277,
+            "height": 819
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 4,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012160092_e_0ttw5t9-ground.jpg",
+          "cropSha256": "e5af680f9a6a12faae5339dc5603c3a7917dafebb42959a5cc5f6f3d3a66e61c",
+          "panoramaSha256": "74567bb26295e7a2c0eab051f590849db500d0cf62cb72019e84aaff65a18b10",
+          "captureDate": "2022-04-29T11:13:48.220060Z",
+          "dimensions": {
+            "width": 677,
+            "height": 539
+          },
+          "width": 677,
+          "height": 539,
+          "actualDimensions": {
+            "width": 677,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 677,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 4,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012160170_e_0ll0vf2",
+      "observationId": "0363100012160170_e_0ll0vf2",
+      "buildingId": "0363100012160170",
+      "geometryRevision": "e70ff2f77a3974acaee9fd29872ca5aa445e4446e79a6984c3e919b166310b52",
+      "evidenceKey": "e45ecd33104bea9d67bf0262e827a4bd637c7fdbb0665f44056f008ddbd0c54a",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          -57.978227937594056,
+          -187.31824738474097
+        ],
+        [
+          -56.788227863027714,
+          -192.22824740415672
+        ]
+      ],
+      "surfaceIndices": [
+        2
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012160170_e_0ll0vf2-full.jpg",
+          "cropSha256": "eca1b8a50efd6b7d9a5ce8a30ddb7a0d240244647e479088310f59708e400293",
+          "panoramaSha256": "e7bd39fe267ec5c800c570261816dc7a39dca5a51294a980b143631d279e81e0",
+          "captureDate": "2023-01-12T09:06:07.196380Z",
+          "dimensions": {
+            "width": 236,
+            "height": 854
+          },
+          "width": 236,
+          "height": 854,
+          "actualDimensions": {
+            "width": 236,
+            "height": 854
+          },
+          "declaredDimensions": {
+            "width": 236,
+            "height": 854
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 2,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012160170_e_0ll0vf2-ground.jpg",
+          "cropSha256": "9ede370b82413cc384528e7cc492cd3e101a68b5c3f0c1de2b57012c109c416f",
+          "panoramaSha256": "872fef9a736614a24cd0b1355e105e4c75cbf16095c3f7fbe64888a3d80254cf",
+          "captureDate": "2025-07-31T11:08:10Z",
+          "dimensions": {
+            "width": 578,
+            "height": 539
+          },
+          "width": 578,
+          "height": 539,
+          "actualDimensions": {
+            "width": 578,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 578,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 2,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012162078_e_1kp3cga",
+      "observationId": "0363100012162078_e_1kp3cga",
+      "buildingId": "0363100012162078",
+      "geometryRevision": "e5ae468594eaa722c96e439538b79a94c0987ab100af8d68af24c136a6c7d1e5",
+      "evidenceKey": "782262f449c1840a608b9f58831734d1d14bc7a6519d017f9e1bb6a6beddb0f5",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          63.45677061603055,
+          -366.1052483889507
+        ],
+        [
+          61.238770577765536,
+          -360.5332483642851
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012162078_e_1kp3cga-full.jpg",
+          "cropSha256": "247ee554eba220ac4b5367340f2df3fae681fd28f89685c3b9ef555f0f77ae09",
+          "panoramaSha256": "4dc675fbf25c1f1e66487d68a97d93dce8fec7344b02e377b584c3b334fe724d",
+          "captureDate": "2024-12-11T11:11:42Z",
+          "dimensions": {
+            "width": 281,
+            "height": 863
+          },
+          "width": 281,
+          "height": 863,
+          "actualDimensions": {
+            "width": 281,
+            "height": 863
+          },
+          "declaredDimensions": {
+            "width": 281,
+            "height": 863
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012162078_e_1kp3cga-ground.jpg",
+          "cropSha256": "d140e845c3cc7bc753c2e79453def78fd7b7d62f28415b494bd74675619e7806",
+          "panoramaSha256": "eacf95c64292903bee23b87df708930b465b5947be6f8fa4507f700641b681fd",
+          "captureDate": "2023-01-12T10:59:22.097800Z",
+          "dimensions": {
+            "width": 686,
+            "height": 539
+          },
+          "width": 686,
+          "height": 539,
+          "actualDimensions": {
+            "width": 686,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 686,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012165211_e_15djkoz",
+      "observationId": "0363100012165211_e_15djkoz",
+      "buildingId": "0363100012165211",
+      "geometryRevision": "2d3febee1cc47f34587ed5a6408b5a3e27d205d313f0df3ef7bf8ea468110448",
+      "evidenceKey": "65fc1296bd46c10db5533a7fd2f4510d28a0f53f9624daae3a18a2fd069b517b",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          56.797770500852494,
+          -349.3742483223323
+        ],
+        [
+          54.50777046123403,
+          -343.6192483003251
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012165211_e_15djkoz-full.jpg",
+          "cropSha256": "992fd4a012d69239945eb45290ad158a02b1c6730ee0a8d3ec321d4fd0196275",
+          "panoramaSha256": "95f2a9e2dda3365f789760e54b530d048be11ea27b8e3876c9de97a6f2e0ab75",
+          "captureDate": "2024-12-11T12:18:18Z",
+          "dimensions": {
+            "width": 290,
+            "height": 817
+          },
+          "width": 290,
+          "height": 817,
+          "actualDimensions": {
+            "width": 290,
+            "height": 817
+          },
+          "declaredDimensions": {
+            "width": 290,
+            "height": 817
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012165211_e_15djkoz-ground.jpg",
+          "cropSha256": "99c5b73eef051d3ec46c4c559f954b6a063cfd09bd4eed69b9bfc3a2559f46c6",
+          "panoramaSha256": "bd16330259e88b229b6c9bed77f0b451ff56de275441d121d02a59ef9e6b8c10",
+          "captureDate": "2022-04-29T11:14:08.614880Z",
+          "dimensions": {
+            "width": 709,
+            "height": 539
+          },
+          "width": 709,
+          "height": 539,
+          "actualDimensions": {
+            "width": 709,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 709,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012165792_e_0tpgvya",
+      "observationId": "0363100012165792_e_0tpgvya",
+      "buildingId": "0363100012165792",
+      "geometryRevision": "ff1a1ca42e11dcff30c14bba412dca11837bb80234e8effb4fdfeadd0e5debdd",
+      "evidenceKey": "2519680b7b477ff4e18e17526d0b1e0eacae77ab6a392aa9a6f0cf0ffffbd863",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          38.952770198273356,
+          -304.7682481454103
+        ],
+        [
+          36.70577016014431,
+          -299.1502481215866
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012165792_e_0tpgvya-full.jpg",
+          "cropSha256": "4d183402ba3b64790aba52909f8e3b658a318b47c70b5e24b038778da7a7ba18",
+          "panoramaSha256": "aebb9d47d2b6bbe6b1c668c8d84330a6fa21c5274fb798aa57166c4e5aa7399c",
+          "captureDate": "2024-12-11T12:18:28Z",
+          "dimensions": {
+            "width": 283,
+            "height": 928
+          },
+          "width": 283,
+          "height": 928,
+          "actualDimensions": {
+            "width": 283,
+            "height": 928
+          },
+          "declaredDimensions": {
+            "width": 283,
+            "height": 928
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012165792_e_0tpgvya-ground.jpg",
+          "cropSha256": "d280b563b2545724356d7876121a17c95e5c234f14a7229990e11fdb4639c624",
+          "panoramaSha256": "8ae0bc83b370a44f787c06a2d04fd90a319cb7f4e4015d394886cf4f4d86e990",
+          "captureDate": "2022-04-29T11:14:01.709950Z",
+          "dimensions": {
+            "width": 692,
+            "height": 539
+          },
+          "width": 692,
+          "height": 539,
+          "actualDimensions": {
+            "width": 692,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 692,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012165927_e_0xxqmsr",
+      "observationId": "0363100012165927_e_0xxqmsr",
+      "buildingId": "0363100012165927",
+      "geometryRevision": "43819576ca4d981cf794e115958efb62792506dc77db2a2d97fc12b155cd8eeb",
+      "evidenceKey": "fa03df4e847ead17d45986cef34fa5dbde8538c1598da287b7e614c72847c576",
+      "district": "Da Costabuurt",
+      "frontage": [
+        [
+          -14.05423688486917,
+          47.724752758513205
+        ],
+        [
+          -16.46623659216857,
+          41.88175276637776
+        ]
+      ],
+      "surfaceIndices": [
+        3
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012165927_e_0xxqmsr-full.jpg",
+          "cropSha256": "af27bca35f3f6f1ca50ef6cfa6e94733eec36f8790bc47ab3f54fe5aad4e3c70",
+          "panoramaSha256": "32a1a7210c2d09faf3c1350e23944878e032f9574eb06b434b6396589a3088be",
+          "captureDate": "2023-01-12T09:08:29.970310Z",
+          "dimensions": {
+            "width": 296,
+            "height": 936
+          },
+          "width": 296,
+          "height": 936,
+          "actualDimensions": {
+            "width": 296,
+            "height": 936
+          },
+          "declaredDimensions": {
+            "width": 296,
+            "height": 936
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/b4fc23112b0593e31eb3d4ae7226adb95639120d92a75965b4f841fd274a32fd/evidence/images/0363100012165927_e_0xxqmsr-ground.jpg",
+          "cropSha256": "e9e4836ac551167cbfa033e122f926db9075fc8afc43aa5fd80e48513e3f165d",
+          "panoramaSha256": "8df634b91b924e91137977b38591a2c6b850d040a50c215cabbfb2f8ab046f0b",
+          "captureDate": "2025-07-31T11:09:13Z",
+          "dimensions": {
+            "width": 723,
+            "height": 539
+          },
+          "width": 723,
+          "height": 539,
+          "actualDimensions": {
+            "width": 723,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 723,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 3,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012169411_e_139uowc",
+      "observationId": "0363100012169411_e_139uowc",
+      "buildingId": "0363100012169411",
+      "geometryRevision": "2ad85ab164eb6f815155c8f4526f90f4d9df1175b2b48b49712e29e27d8ea626",
+      "evidenceKey": "73f3320e09f717e0fa18f00220942124af83e21664cf292b6569a32016de2a65",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          -37.6575599538337,
+          493.9136792252539
+        ],
+        [
+          -32.79756013726001,
+          491.24367918947246
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012169411_e_139uowc-full.jpg",
+          "cropSha256": "9104e290ce3f7bc8271b442db6341f39022395bf9e114b93b7d97364a3048cf6",
+          "panoramaSha256": "0199d659bee2d409b9bb2a415e1ce6fd8306624bd600fa4469d27e5dd0254835",
+          "captureDate": "2024-12-16T09:29:40Z",
+          "dimensions": {
+            "width": 260,
+            "height": 784
+          },
+          "width": 260,
+          "height": 784,
+          "actualDimensions": {
+            "width": 260,
+            "height": 784
+          },
+          "declaredDimensions": {
+            "width": 260,
+            "height": 784
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 1,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012169411_e_139uowc-ground.jpg",
+          "cropSha256": "dc17efbc9ceb7042955c00f7f5ff4ede612fca15b525b90e3e071329a0f9a575",
+          "panoramaSha256": "7437a0957ae144fd0e884d2d54b771ad3e388707ab072edca83d627997a0b521",
+          "captureDate": "2025-07-03T10:39:04Z",
+          "dimensions": {
+            "width": 634,
+            "height": 539
+          },
+          "width": 634,
+          "height": 539,
+          "actualDimensions": {
+            "width": 634,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 634,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 1,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012169414_e_11ytrog",
+      "observationId": "0363100012169414_e_11ytrog",
+      "buildingId": "0363100012169414",
+      "geometryRevision": "2d0d961b5c098cb98ca2b5d9b02e27edbb6a478cfa39276770f4e34f1e5f3448",
+      "evidenceKey": "4686e4fac8a03f1e1ea307bb9ecb46adf6b341f2bcce55c8595f29d3529c6c63",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          -43.537559727352345,
+          496.9836792618735
+        ],
+        [
+          -38.90555990567373,
+          494.5656792325317
+        ]
+      ],
+      "surfaceIndices": [
+        4
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012169414_e_11ytrog-full.jpg",
+          "cropSha256": "83891214d7058e2801a8d836f0e4deb1b8462203404c927c0c088e53d730c316",
+          "panoramaSha256": "ccb19a8cccdefda9a749d16cb2f8952b7712f9b9e0bd0fc812d13d46bedea3c6",
+          "captureDate": "2024-12-16T09:29:43Z",
+          "dimensions": {
+            "width": 245,
+            "height": 802
+          },
+          "width": 245,
+          "height": 802,
+          "actualDimensions": {
+            "width": 245,
+            "height": 802
+          },
+          "declaredDimensions": {
+            "width": 245,
+            "height": 802
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 4,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012169414_e_11ytrog-ground.jpg",
+          "cropSha256": "cb2d1238a4e3474440e98c2b6fa177569d43e8548ccc3440a7d3647a5a054357",
+          "panoramaSha256": "a57b709e8ed789d55c5b7ef36b2c34aa48eb8f6189ff6efc1f016ec6b2a6e0f9",
+          "captureDate": "2024-12-16T09:30:06Z",
+          "dimensions": {
+            "width": 598,
+            "height": 539
+          },
+          "width": 598,
+          "height": 539,
+          "actualDimensions": {
+            "width": 598,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 598,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 4,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012170188_e_1x9mghy",
+      "observationId": "0363100012170188_e_1x9mghy",
+      "buildingId": "0363100012170188",
+      "geometryRevision": "e652588d33fd407873e6094145eba2b740b34ad3ef4db391f0ef9635c0dd8975",
+      "evidenceKey": "b085addfe6df1d1b9091973f8a94be538c5bb8116989bd78c7a962f728d02f98",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          -141.33155598495796,
+          548.9266799155157
+        ],
+        [
+          -137.34855613890977,
+          546.8656798883458
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012170188_e_1x9mghy-full.jpg",
+          "cropSha256": "269d8dc880501d693b7bad4c1d43340f24c4343d062a79b35ac9d9036fad6715",
+          "panoramaSha256": "2a6371520a4fa04f71498e0dd6a33f5b2d282549d76f520da113f509db5adb88",
+          "captureDate": "2024-12-17T08:57:58Z",
+          "dimensions": {
+            "width": 210,
+            "height": 797
+          },
+          "width": 210,
+          "height": 797,
+          "actualDimensions": {
+            "width": 210,
+            "height": 797
+          },
+          "declaredDimensions": {
+            "width": 210,
+            "height": 797
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 1,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012170188_e_1x9mghy-ground.jpg",
+          "cropSha256": "43970fe1b3e8abaf25bf5c134ac1988aaace6cf3e75a7a9aba03c317e4545272",
+          "panoramaSha256": "6dc830381767698d5e0ccd8276e64ea13e6e53024eaeb4caed97907063db46c4",
+          "captureDate": "2025-07-03T10:39:41Z",
+          "dimensions": {
+            "width": 513,
+            "height": 539
+          },
+          "width": 513,
+          "height": 539,
+          "actualDimensions": {
+            "width": 513,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 513,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 1,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    },
+    {
+      "id": "0363100012170190_e_1p5ck4k",
+      "observationId": "0363100012170190_e_1p5ck4k",
+      "buildingId": "0363100012170190",
+      "geometryRevision": "8603b7813c78d5000f1e195b7ce29bf2ab558102606949df518396fded05b3a2",
+      "evidenceKey": "236832d021a8506627c93cccb812e5d3bb18f600755605cb783f519b8771b56a",
+      "district": "Jordaan",
+      "frontage": [
+        [
+          -83.1675582175958,
+          518.2736795303645
+        ],
+        [
+          -78.00755841293721,
+          515.4536794939195
+        ]
+      ],
+      "surfaceIndices": [
+        1
+      ],
+      "sources": {
+        "full": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012170190_e_1p5ck4k-full.jpg",
+          "cropSha256": "849ab7f59d1fdaf2112d20c51592dd6308d755b6fa57cfdec13429841fdf9ca5",
+          "panoramaSha256": "b88735fda4ca982f81005b139fae72bdcfa6111fcac2a0bdc07ec8630b71eaa5",
+          "captureDate": "2024-12-16T09:28:22Z",
+          "dimensions": {
+            "width": 275,
+            "height": 903
+          },
+          "width": 275,
+          "height": 903,
+          "actualDimensions": {
+            "width": 275,
+            "height": 903
+          },
+          "declaredDimensions": {
+            "width": 275,
+            "height": 903
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 1,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        },
+        "ground": {
+          "path": "../../../.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/3efda804ec397771663a9af0cfab35b381c3fd30b70565029222bb0c25fbc61e/evidence/images/0363100012170190_e_1p5ck4k-ground.jpg",
+          "cropSha256": "f311638d11852030553c8082249862550043289cb8b3f4539b66118b28b2fc2f",
+          "panoramaSha256": "0e9866bc5cd51a7521bdbbdf030ab07fe3f585a1716fb7b718f804adb5379937",
+          "captureDate": "2024-12-16T09:30:14Z",
+          "dimensions": {
+            "width": 673,
+            "height": 539
+          },
+          "width": 673,
+          "height": 539,
+          "actualDimensions": {
+            "width": 673,
+            "height": 539
+          },
+          "declaredDimensions": {
+            "width": 673,
+            "height": 539
+          },
+          "cropMarginsPx": null,
+          "wallDirection": null,
+          "plane": null,
+          "alignment": {
+            "wallIdentity": "pending",
+            "boundaryEvidence": "pending",
+            "rooflineEvidence": "pending",
+            "cameraHeightResolved": false,
+            "uncertaintyM": null
+          },
+          "registration": {
+            "status": "ambiguous",
+            "surfaceIndex": 1,
+            "uncertaintyM": null,
+            "imageToWall": null,
+            "abstentionReason": "Cached crop identity is verified; wall alignment and camera height are not independently certified in this manifest.",
+            "registrationAbstention": "wall alignment and camera height require independent geometry review"
+          }
+        }
+      },
+      "featureStrata": [
+        "unverified-pending-independent-inspection"
+      ],
+      "referenceAnnotations": {
+        "disposition": "rejected-pending-independent-inspection",
+        "inspector": "none",
+        "reason": "No quantitative source annotation is claimed by this manifest."
+      },
+      "exclusionCheck": {
+        "status": "candidate-exclusion-certified",
+        "excludedFromDevelopment": true,
+        "excludedFromNamedCompatibility": true,
+        "excludedBuildingIdsSource": "unseen-candidates.json"
+      }
+    }
+  ]
+}

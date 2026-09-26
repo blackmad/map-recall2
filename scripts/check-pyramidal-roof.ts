@@ -70,11 +70,44 @@ assert.ok(Number.isFinite(mesh.originLng) && Number.isFinite(mesh.originLat));
 
 const wall = wallTopHeightExpression();
 assert.equal(wall[0], 'case');
-assert.equal(JSON.stringify(wall[1]), JSON.stringify(['==', ['get', 'roofShape'], 'pyramidal']),
-  'pyramidal walls stop under the mesh tip first');
 const wallJson = JSON.stringify(wall);
 assert.ok(wallJson.includes('flat'), 'flat roofs with a distinct colour still cut to eaves');
 assert.ok(wallJson.includes('roofColour'), 'same-colour flat roofs stay at full height');
+
+// Evaluate the expressions for representative features. Source-measured eaves
+// take precedence over procedural shape rules; otherwise pyramids and flat lids
+// cut walls to their eaves while gables retain the full wall height.
+function evaluate(expression: any, properties: Record<string, any>): any {
+  if (!Array.isArray(expression)) return expression;
+  const [operator, ...args] = expression;
+  const value = (item: any) => evaluate(item, properties);
+  switch (operator) {
+    case 'case':
+      for (let index = 0; index < args.length - 1; index += 2) if (value(args[index])) return value(args[index + 1]);
+      return value(args.at(-1));
+    case 'get': return properties[args[0]];
+    case 'has': return Object.hasOwn(properties, args[0]);
+    case 'coalesce': return args.map(value).find(item => item !== null && item !== undefined);
+    case '!': return !value(args[0]);
+    case 'all': return args.every(value);
+    case 'any': return args.some(value);
+    case '==': return value(args[0]) === value(args[1]);
+    case '>': return value(args[0]) > value(args[1]);
+    case '-': return value(args[0]) - value(args[1]);
+    case '*': return value(args[0]) * value(args[1]);
+    case 'max': return Math.max(...args.map(value));
+    case 'min': return Math.min(...args.map(value));
+    default: throw Error(`Unsupported wall expression operator: ${operator}`);
+  }
+}
+assert.equal(evaluate(wall, { roofShape: 'pyramidal', roofEavesHeightM: 11.2, height: 26, minHeight: 0, roofHeight: 10 }), 11.2,
+  'a source-measured eave wins when the building also has a procedural pyramidal mesh');
+assert.equal(evaluate(wall, { roofShape: 'pyramidal', height: 26, minHeight: 0, roofHeight: 10 }), 16,
+  'pyramidal walls stop at tagged eaves when no measured eave is available');
+assert.equal(evaluate(wall, { roofShape: 'flat', height: 12, roofHeight: 3, colour: '#aaa', roofColour: '#bbb' }), 9,
+  'a distinct flat roof lid owns the space above its eaves');
+assert.equal(evaluate(wall, { roofShape: 'gabled', height: 12, roofHeight: 3, colour: '#aaa', roofColour: '#bbb' }), 12,
+  'gabled walls retain their full height');
 const flat = flatRoofFilter();
 assert.equal(flat[0], 'all');
 assert.ok(JSON.stringify(flat).includes('flat'), 'only flat / untagged shapes get lids');
