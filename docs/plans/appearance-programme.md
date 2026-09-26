@@ -26,6 +26,13 @@ The owner explicitly requests **no human-in-the-loop** (2026-09-26). Agents must
 - Profiling and lattice evaluation are complete for this batch. Neither established
   evidence for lowering facade detail gates or automatically accepting lattice fills.
 
+- Final validation: full `check:canal`, fresh-install clean-checkout typechecking,
+  roof/artifact checks, and eight repeated desktop/iPhone-emulation route and
+  coverage checks pass. A startup source-replacement race is fixed and has a
+  regression that fails against the old implementation. The local demo is ready;
+  broader coverage, game placement of new signage labels and evidence hosting
+  remain future work, without requiring routine owner review.
+
 ## Execution revision — 2026-09-26
 
 This revision supersedes conflicting historical statements below. Baseline inspected:
