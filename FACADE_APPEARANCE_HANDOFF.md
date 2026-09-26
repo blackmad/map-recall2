@@ -213,6 +213,46 @@ Also unresolved and worth stating plainly: the occluder class cannot tell a van 
 shopfront from a tree *beside* one, which is what the 14 false abstentions are. That needs a
 wall-versus-not-wall notion or a crop tight to a single frontage, not another threshold.
 
+## 3c. Pass three result — the one-sided test is not the fix either
+
+Pass three was run against the metric frame and the one-sided test, as a diagnostic rather than a
+merge (`b823966` is still the last committed `facadeBands`). The result is negative and worth stating
+before anyone spends another pass on the same idea.
+
+**The lower region of every facade differs from the region above it, on `differs` and `same` alike.**
+Measured as the ratio of (mean colour distance from the base to 6.5 m, against the upper wall taken
+8–16 m up) to (the typical deviation within that upper wall), over the 46 ground-floor labels:
+
+| gold label | n | min | p25 | median | p75 | max |
+| --- | --- | --- | --- | --- | --- | --- |
+| `differs` | 36 | 1.13 | 1.75 | **2.12** | 3.25 | 6.67 |
+| `same` | 10 | 1.22 | 1.61 | **2.17** | 2.52 | 3.56 |
+
+The two distributions are the same. The best possible threshold on this statistic detects 36 of 36
+`differs` while keeping 0 of 10 `same` — i.e. it is detecting "the base is not the upper wall", which
+is true everywhere, not "the base is a different material". A band-mean version of the same test
+looked like 31 of 36 until the `same` set was scored; it was only ever recovering the same artefact.
+
+The reason a corollary of the handoff's own fact (4) predicts it: 78% of buildings differ at the
+base, so the ground floor is almost always *some* different surface, and the interesting variable is
+not presence but magnitude and persistence. Colour distance to the wall does not carry that.
+
+A secondary failure, which is what made the metric walk collapse to 0 of 36: the "upper wall" is not
+always above the ground floor. Lauriergracht 74 is cream from 18 m down to 3 m with one darker band
+at the pavement; the wall reference (8–16 m) is the cream, so the base reads as unlike it but with no
+persistent run. On a mostly-painted facade the wall reference must be chosen by coherence, not by a
+fixed height band.
+
+**What pass four should try instead, if the goal is worth another pass:** the discriminator is not the
+distance but its shape — a ground-floor boundary is a *sharp step in a step profile*; a `same`
+facade's base is a gradual drift or a single noisy band. The metric frame is still the right tool,
+because the step should be located in metres (2–6.5 m) rather than sought as a global maximum. But the
+statistic wants to be a change-point *within that window*, normalised by the local variation around
+it, not a distance to a wall that is itself partly the thing being tested.
+
+Also still unresolved: the occluder class cannot tell a van in front of a shopfront from a tree
+beside one. That is 4 of the 10 `same` crops abstaining and is not a threshold problem.
+
 ## 4. How to score it (do this before claiming it works)
 
 The gold set at `review-data/wall-colour-gold/v1/vision-labels.json` has 60 entries keyed by
