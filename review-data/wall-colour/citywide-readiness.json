@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "scope": "Cached game extract, not a municipality-wide coverage claim",
+  "sourcePins": {
+    "public/data/extracts/amsterdam/building-tiles/index-z14.json": "a95279eb8849f945fe6a62e157d71e5564c90cccce975c8a411bfb2adba9eefb",
+    "public/data/city-expansion/current.json": "aa09311491a4cea9bda76c4be0dd00e2135b1dc3f6dce8c2d9486db32063c07a",
+    "review-data/wall-colour/v1/measurements.json": "175371b180d48cbd1be9faf76bc809c480335c3d875f6a1a4e5740526bb38591",
+    "review-data/wall-colour/v1/accepted.json": "028e2f178b129c2ce4e26b6bcf50c090f8f48f984841715700446bb0badc982d",
+    "public/data/wall-materials/assignments.json": "f69ba60fa78b034f8a3fb16251bcd86d39f5d8506f9b51228f160ee7498598ca",
+    "public/data/wall-materials/report.json": "7952620c2aca6faeb663ea03f202d6575a7034a44a6333ee63346c24f5f74c8c",
+    "public/data/wall-materials/colour-trials.json": "1219bbb4f891be723e18eb8a8a4579fc8412d2a4d4613e67547cdccc5f621c69",
+    "review-data/wall-colour/visual-loop/cheap-vision-pilot.json": "69581c263371e7eeff933848624d68ce7ca4c2367a51a13e17b8f166b0934031"
+  },
+  "tileSetSha256": "925e08620a7d06688804b36bb28ea581343ef5c8da535eb0d909da1d36f5310f",
+  "geometry": {
+    "reportedFeatures": 342993,
+    "featureInstances": 342993,
+    "uniqueStableIds": 342993,
+    "withoutStableId": 0,
+    "duplicateInstances": 0,
+    "uniqueBagIds": 335123,
+    "bagIdPrefixes": {
+      "1696": 2471,
+      "1904": 223,
+      "1942": 1291,
+      "0453": 358,
+      "0393": 2385,
+      "0394": 22063,
+      "0479": 14856,
+      "0358": 12600,
+      "0363": 178441,
+      "0362": 42506,
+      "0431": 4912,
+      "0415": 6388,
+      "0437": 8269,
+      "0384": 11300,
+      "0305": 4374,
+      "0736": 778,
+      "0852": 4136,
+      "0424": 4676,
+      "0457": 12029,
+      "0329": 938,
+      "0425": 115,
+      "0034": 5,
+      "0402": 9
+    },
+    "tiles": 295,
+    "compressedBytes": 15357833,
+    "limitation": "BAG ID prefixes and cached extract are not a substitute for a current municipality boundary join."
+  },
+  "activeDistrict": {
+    "id": "da-costa-jordaan-v1",
+    "buildings": 7395,
+    "releaseId": "3d4551a8716c6b60dc59ba0d5de9b851628e62f4ae3eef2c6be7a5bd4ab7c9da"
+  },
+  "evidence": {
+    "photographicMeasurements": 598,
+    "photoOwners": 501,
+    "photoOwnersInCachedGeometry": 499,
+    "sourceAcceptedColourOwners": 372,
+    "sourceAcceptedColourOwnersInCachedGeometry": 371,
+    "materialAssessedOwners": 100,
+    "materialAssessedOwnersInCachedGeometry": 99,
+    "cohortOwnersMissingCachedGeometry": [
+      {
+        "index": 90,
+        "buildingId": "0363100012125896",
+        "address": "De Clercqstraat 81"
+      }
+    ],
+    "knownMaterialOwners": 89,
+    "unknownMaterialOwners": 11,
+    "byMaterial": {
+      "redbrick": 26,
+      "brownbrick": 18,
+      "buffbrick": 8,
+      "greybrick": 6,
+      "unknownneutral": 11,
+      "creamrender": 3,
+      "darkbrick": 27,
+      "whiterender": 1
+    },
+    "broadFamilyRenderVerdicts": {
+      "accepted-material-family": 6,
+      "revise": 0,
+      "unresolved": 4
+    },
+    "colourVariantTrials": 1,
+    "exactColourTextureAcceptance": "not established",
+    "geometryOwnersWithoutCohortMaterialAssessment": 335024,
+    "amsterdamPrefixOwnersWithoutCohortMaterialAssessment": 178342
+  },
+  "pilotExtrapolation": {
+    "status": "Arithmetic only, not a budget quote or validated throughput forecast",
+    "pilot": {
+      "model": "opencode-go/deepseek-v4-flash-vision-exp",
+      "secondsPerTenImages": 11.25,
+      "reportedCostPerTenImages": 0.00247575,
+      "currency": "unverified"
+    },
+    "scenarios": [
+      {
+        "owners": 100,
+        "tenImageBatches": 10,
+        "serialHours": 0.03125,
+        "reportedCostUnits": 0.0247575
+      },
+      {
+        "owners": 7395,
+        "tenImageBatches": 740,
+        "serialHours": 2.3125,
+        "reportedCostUnits": 1.832055
+      },
+      {
+        "owners": 178441,
+        "tenImageBatches": 17845,
+        "serialHours": 55.765625,
+        "reportedCostUnits": 44.179758750000005
+      },
+      {
+        "owners": 335123,
+        "tenImageBatches": 33513,
+        "serialHours": 104.728125,
+        "reportedCostUnits": 82.96980975
+      }
+    ],
+    "excluded": [
+      "panorama acquisition and image decoding",
+      "source-to-owner registration",
+      "retries, rate limits and independent reviews",
+      "higher-resolution per-building prompts",
+      "changed provider pricing or model availability"
+    ],
+    "qualityWarning": "Triage only: one apparent target-wall identity error and sensitivity to photographic shadow; not a validated automatic colour estimator. No training performed."
+  },
+  "publication": {
+    "defaultGameChanged": false,
+    "unknownPolicy": "Preserve existing appearance; never count procedural fallback as a photo match"
+  }
+}
