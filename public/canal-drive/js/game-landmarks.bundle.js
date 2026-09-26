@@ -777,6 +777,13 @@
           waterFeatures,
           (name) => this._normaliseCanalName(name)
         );
+        const transitStops = this.osmLoader?.transitLoad?.stops || [];
+        this.vectorMap.setSpoilerNames([
+          ...streetFeatures,
+          ...waterFeatures,
+          ...bridgeFeatures,
+          ...transitStops
+        ].map((item) => item.name || "").filter(Boolean));
         this.vectorMap.setPlaces(features, boundaries);
         this.vectorMap.setBrandedPois(brandedPois);
         const metersPerDegreeLat = 111320;

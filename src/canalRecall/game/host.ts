@@ -214,6 +214,8 @@ export interface RecallHost extends GameCoreHost {
   quizPromptKind: QuizPromptKind;
   quizPromptSegmentIndex: number;
   quizPromptPointIndex: number;
+  /** The just-answered feature, kept lit on the map through the answer hold. */
+  _answerReveal?: { name: string; segmentIndex: number; pointIndex: number } | null;
   quizCorrect: number;
   quizAttempts: number;
   quizPoints: number;
@@ -323,6 +325,7 @@ export interface PresentationHost extends GameCoreHost {
   _transitLineStickyAt: number | null;
   quizPromptSegmentIndex: number;
   quizPromptPointIndex: number;
+  _answerReveal?: { name: string; segmentIndex: number; pointIndex: number } | null;
 
   learnedNames: Set<string>;
   learnedStopNames: Set<string>;

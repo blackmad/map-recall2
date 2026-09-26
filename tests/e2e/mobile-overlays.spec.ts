@@ -183,3 +183,38 @@ test('absolute mode: holding the stick right drives due east', async ({ page }) 
   // by construction, and never a quarter-turn off.
   expect(Math.abs(heading), `heading ${heading.toFixed(2)} rad is eastward`).toBeLessThan((55 * Math.PI) / 180);
 });
+
+// Named regression (UI review 2026-09-26): a wrong answer was one amber line
+// (~1.7:1 on paper) below the choices — under the fold in landscape — and the
+// buttons never showed which was right. The miss is the lesson.
+test('a wrong answer marks the right choice and puts readable feedback under the question', async ({ page }) => {
+  await drive(page);
+  await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    game.routeOptions.answerMode = 'multiple';
+    game._openQuizPrompt({
+      kind: 'route', name: 'Prinsengracht', subject: 'water',
+      question: 'Which canal are you on?', context: 'Following it since the Westerkerk.',
+      choices: ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Brouwersgracht'],
+    });
+  });
+  await page.locator('#canal-choices button', { hasText: 'Keizersgracht' }).click();
+  await expect(page.locator('#canal-card')).toHaveClass(/answered/);
+  await expect(page.locator('#canal-choices button.is-correct')).toHaveText(/Prinsengracht/);
+  await expect(page.locator('#canal-choices button.is-wrong')).toHaveText(/Keizersgracht/);
+  const layout = await page.evaluate(() => {
+    const feedback = document.querySelector('#canal-feedback')!;
+    const heading = document.querySelector('#canal-card h2')!;
+    const choices = document.querySelector('#canal-choices')!;
+    const colour = getComputedStyle(feedback).color;
+    return {
+      text: feedback.textContent,
+      colour,
+      afterHeading: heading.getBoundingClientRect().bottom <= feedback.getBoundingClientRect().top,
+      beforeChoices: feedback.getBoundingClientRect().bottom <= choices.getBoundingClientRect().top,
+    };
+  });
+  expect(layout.text).toContain('Prinsengracht');
+  expect(layout.afterHeading && layout.beforeChoices, 'feedback sits between the question and the choices').toBe(true);
+  expect(layout.colour, 'feedback is the dark copper ink, not the old amber').toBe('rgb(138, 74, 24)');
+});

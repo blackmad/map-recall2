@@ -6,6 +6,30 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## A miss is the lesson, and labels cannot say the answer — 2026-09-26
+
+From the 2026-09-26 UI review. A wrong answer was one line of amber
+(#fbbf24, ~1.7:1 on the new paper card) printed *below* the choices — under
+the card's scroll fold in landscape — and the buttons never showed which was
+right. Now the feedback sits directly under the question in ink tones (all
+≥ 5:1: copper-ink miss, green hit, blue "no idea"), the right choice turns
+green with a drawn tick, a wrong pick is struck through, the rest step back,
+and the answered feature stays highlighted on the map through the hold
+(`_answerReveal`) so a miss shows *where* the right canal runs.
+
+Orientation labels could pre-teach answers: a "Nassaukade" tram stop on
+Nassaukade, a "Majoor Bosshardt" label beside the Majoor Bosshardtbrug. While a
+question is open every label layer was already hidden, but between questions
+they were not. `orientationPois.ts` now builds a spoiler index from every
+street, water, bridge (and, in transit, stop) name — plus Dutch-suffix stems —
+and matches labels by word n-grams; our own POI sources drop matches in JS and
+the basemap `poi` layers get an exact-name MapLibre filter. Pinned in
+`test:orientation-pois` and a wrong-answer e2e.
+
+Also found: `playwright.config.ts` reuses any server on :4173, and another
+worktree's dev server was on it, so e2e silently tested that checkout. Run
+with a private port when other sessions are live.
+
 ## Daylight paper replaces the cobalt chrome — 2026-09-26
 
 The owner called the navy/cobalt-on-blue theme "way too heavy". Every surface

@@ -164,17 +164,24 @@ export class GamePresentationRuntime {
       this.vectorMap.setPlayerTransit(player, this.osmLoader, pitched && byTransit, underground);
     }
     this.vectorMap.setRoute(this._liveRoutePath || this.routePath, this.osmLoader, this.routeOptions.line);
+    // While a question is open this is the feature being asked about; for the
+    // answer hold it is the feature just answered, so a miss shows where the
+    // right one runs.
+    const reveal = this.quizPromptName ? null : this._answerReveal;
+    const litName = this.quizPromptName || reveal?.name || '';
+    const litSegment = this.quizPromptName ? this.quizPromptSegmentIndex : (reveal?.segmentIndex ?? -1);
+    const litPoint = this.quizPromptName ? this.quizPromptPointIndex : (reveal?.pointIndex ?? 0);
     if (!byBoat) {
       this.vectorMap.setStreetHighlights(
         this.track, this.osmLoader, this.learnedNames,
-        this.quizPromptName, this.quizPromptSegmentIndex);
+        litName, litSegment);
     }
 
     this.renderer.drawTrack(this.camera, this.track);
     if (byBoat) {
       this.renderer.drawQuestionFeature(
-        this.camera, this.track, this.quizPromptName,
-        this.quizPromptSegmentIndex, this.quizPromptPointIndex, this.raceTime);
+        this.camera, this.track, litName,
+        litSegment, litPoint, this.raceTime);
     }
     this.renderer.drawSkidMarks(this.particles, this.camera);
 
