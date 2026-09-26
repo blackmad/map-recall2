@@ -27,9 +27,69 @@ export interface AcceptedWallColourSet {
   accepted: AcceptedWallColour[];
 }
 
+/** A game-render correction is a separate, source-bound material choice. It
+ * must never replace the accepted colour sampled from the reference photo. */
+export interface WallRenderCalibration {
+  buildingId: string;
+  observationId: string;
+  sourceSha256: string;
+  referenceSha256: string;
+  gameCaptureSha256: string;
+  renderSideColour: string;
+  reviewer: string;
+  reviewOrigin: WallReviewOrigin;
+  gradedAt: string;
+  reason: string;
+}
+export interface WallRenderCalibrationSet {
+  version: 1;
+  baselineReleaseId: string;
+  calibrations: WallRenderCalibration[];
+}
+export type PublishedWallRenderCalibration = Pick<WallRenderCalibration,
+  'observationId' | 'referenceSha256' | 'gameCaptureSha256' | 'reviewer' | 'reviewOrigin' | 'gradedAt' | 'reason'> & { baselineReleaseId: string };
+
 export const sha256 = (bytes: string | Buffer): string => createHash('sha256').update(bytes).digest('hex');
 const HASH = /^[a-f0-9]{64}$/;
 const HEX = /^#[a-f0-9]{6}$/i;
+
+/** Reject stale or unbound corrections before any release artifact is built. */
+export function validatedWallRenderCalibrations(set: WallRenderCalibrationSet, accepted: ReadonlyMap<string, AcceptedWallColour>, baselineReleaseId: string): ReadonlyMap<string, WallRenderCalibration & { baselineReleaseId: string }> {
+  if (set?.version !== 1 || !HASH.test(baselineReleaseId) || set.baselineReleaseId !== baselineReleaseId || !Array.isArray(set.calibrations))
+    throw Error('Wall render calibrations do not match the baseline release');
+  const result = new Map<string, WallRenderCalibration & { baselineReleaseId: string }>();
+  for (const item of set.calibrations) {
+    const source = accepted.get(item?.buildingId);
+    if (!source || result.has(item.buildingId) || item.observationId !== source.observationId
+      || item.sourceSha256 !== source.sourceSha256 || item.referenceSha256 !== source.sourceSha256
+      || !HASH.test(item.gameCaptureSha256) || !HEX.test(item.renderSideColour)
+      || !['human-visual-review', 'model-visual-review'].includes(item.reviewOrigin)
+      || !item.reviewer?.trim() || !Number.isFinite(Date.parse(item.gradedAt)) || !item.reason?.trim())
+      throw Error(`Invalid or stale wall render calibration: ${item?.buildingId}`);
+    result.set(item.buildingId, { ...item, baselineReleaseId });
+  }
+  return result;
+}
+
+/** Keep the measured source colour while publishing a separately reviewed
+ * colour for MapLibre's lit extrusion material. */
+export function wallRenderColourForBuilding(buildingId: string, calibrations: ReadonlyMap<string, WallRenderCalibration & { baselineReleaseId: string }>): { renderSideColour?: string; renderSideColourCalibration?: PublishedWallRenderCalibration } {
+  const item = calibrations.get(buildingId);
+  if (!item) return {};
+  return {
+    renderSideColour: item.renderSideColour,
+    renderSideColourCalibration: {
+      baselineReleaseId: item.baselineReleaseId,
+      observationId: item.observationId,
+      referenceSha256: item.referenceSha256,
+      gameCaptureSha256: item.gameCaptureSha256,
+      reviewer: item.reviewer,
+      reviewOrigin: item.reviewOrigin,
+      gradedAt: item.gradedAt,
+      reason: item.reason,
+    },
+  };
+}
 
 /** A grade must identify both the current observation and its BAG owner. */
 export function promoteWallColour(measurements: readonly WallMeasurement[], grades: Record<string, WallGrade>, measurementsSha256: string): AcceptedWallColourSet {

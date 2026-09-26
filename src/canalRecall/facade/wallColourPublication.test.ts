@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { acceptedWallColours, promoteWallColour, wallColourForBuilding, type WallGrade, type WallMeasurement } from './wallColourPublication.js';
+import { acceptedWallColours, promoteWallColour, validatedWallRenderCalibrations, wallColourForBuilding, wallRenderColourForBuilding, type WallGrade, type WallMeasurement, type WallRenderCalibrationSet } from './wallColourPublication.js';
 
 const H = 'a'.repeat(64), M = 'b'.repeat(64);
 const measurements: WallMeasurement[] = [{ id: 'obs-1', buildingId: '123', sourceSha256: H, status: 'measured', dominant: { hex: '#654321' } }];
@@ -25,4 +25,14 @@ assert.equal(model.accepted[0].reviewOrigin, 'model-visual-review');
 assert.equal(model.accepted[0].reviewer, 'gpt-6-sol');
 assert.equal(wallColourForBuilding('123', '#eeeeee', acceptedWallColours(model, measurements, M)).sideColourSource, 'measured-accepted');
 assert.throws(() => promoteWallColour(measurements, { 'obs-1': { ...grade, reviewOrigin: undefined as any } }, M), /provenance/);
-console.log('wallColourPublication: 17 assertions passed');
+const R='c'.repeat(64), C='d'.repeat(64);
+const calibration:WallRenderCalibrationSet={version:1,baselineReleaseId:R,calibrations:[{buildingId:'123',observationId:'obs-1',sourceSha256:H,referenceSha256:H,gameCaptureSha256:C,renderSideColour:'#a48770',reviewer:'gpt-6-sol',reviewOrigin:'model-visual-review',gradedAt:'2026-09-26T10:00:00Z',reason:'Rendered wall was darker than the same exposed wall in the source crop.'}]};
+const validated=validatedWallRenderCalibrations(calibration,accepted,R);
+assert.equal(wallColourForBuilding('123','#eeeeee',accepted).sideColour,'#654321');
+assert.deepEqual(wallRenderColourForBuilding('123',validated),{renderSideColour:'#a48770',renderSideColourCalibration:{baselineReleaseId:R,observationId:'obs-1',referenceSha256:H,gameCaptureSha256:C,reviewer:'gpt-6-sol',reviewOrigin:'model-visual-review',gradedAt:'2026-09-26T10:00:00Z',reason:calibration.calibrations[0].reason}});
+assert.deepEqual(wallRenderColourForBuilding('456',validated),{});
+assert.throws(()=>validatedWallRenderCalibrations(calibration,accepted,C),/baseline release/);
+assert.throws(()=>validatedWallRenderCalibrations({...calibration,calibrations:[{...calibration.calibrations[0],sourceSha256:C}]},accepted,R),/Invalid or stale/);
+assert.throws(()=>validatedWallRenderCalibrations({...calibration,calibrations:[{...calibration.calibrations[0],observationId:'other'}]},accepted,R),/Invalid or stale/);
+assert.throws(()=>validatedWallRenderCalibrations({...calibration,calibrations:[...calibration.calibrations,calibration.calibrations[0]]},accepted,R),/Invalid or stale/);
+console.log('wallColourPublication: source and render calibration assertions passed');
