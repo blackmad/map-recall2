@@ -1784,6 +1784,20 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## A destination no longer names the canal you are on — 2026-09-26
+
+TODO #29, from the UI review: boat routes could head for *Keizersgrachtkerk*
+along the Keizersgracht, so the destination card said the canal before the quiz
+asked it. `poiNameSpoils` could not catch it, because it matches whole words and
+Dutch compounds the street onto the landmark. `maskSpoiledName`
+(`orientationPois.ts`) matches a quiz name wherever a word *starts* with it and
+swaps the span for an ellipsis ("…kerk"), so the card still says what you are
+riding to. It uses this ride's track names. The ride HUD and the start briefing
+use the masked label via `_destinationLabel()`; the arrival card shows the real
+name. We masked instead of re-rolling the destination because the route, and so
+its names, only exist after the destination is picked. Pinned in
+`test:orientation-pois`.
+
 ## Ride settings share route setup's tiles — 2026-09-26
 
 The owner: "fix this settings to use buttons same as the opening screen,
