@@ -9,6 +9,23 @@ cited path. Written 2026-09-26 against `feat/amsterdam-facade-rebuild` @ `406130
 
 The owner explicitly requests **no human-in-the-loop** (2026-09-26). Agents must inspect imagery and answer review questions themselves, retaining `model-visual-review` provenance, crop hashes, uncertainty, and abstentions. Model judgements are authorized review evidence, never relabelled as human ground truth. This supersedes owner-review gates below for visual judgement. External licensing/storage constraints remain distinct.
 
+## Demo implementation status — 2026-09-26
+
+- Source integration includes current main, source-bound wall-colour promotion and
+  browser provenance, measured-colour coverage mode, end-to-end semantic tag
+  preservation, and the datum-corrected v3 roof compiler.
+- Agents visually reviewed all 72 unique signage frontages (76 sample rows), with
+  73 sign regions and explicit uncertainty. The review page loads the results.
+  Game placement for these new sign labels remains a separate task.
+- Sixteen model-reviewed wall colours are promoted into the local district demo.
+  Release `6ee345158a1091e6c9c56dd8ac095440023492379fc534fb1bfbd7d475b228c4`
+  contains 6,036 roof-bearing buildings / 19,973 surfaces / 26 roof tiles, with
+  626 slanted buildings withheld. Generated evidence and release assets stay local.
+- An eave-cut experiment was rejected: without source-supported gable-end walls,
+  complete roof coverage and loading fallback, it opens holes in building masses.
+- Profiling and lattice evaluation are complete for this batch. Neither established
+  evidence for lowering facade detail gates or automatically accepting lattice fills.
+
 ## Execution revision — 2026-09-26
 
 This revision supersedes conflicting historical statements below. Baseline inspected:
@@ -50,10 +67,10 @@ This revision supersedes conflicting historical statements below. Baseline inspe
   relevant tests and the aggregate gate, then prepare the ordinary main merge in a
   dedicated integration worktree. Resolve failures before pushing. The existing large
   divergence is its own integration task, not evidence that the new batch has shipped.
-- **Human/external gates remain explicit:** owner gable and sign recognisability review,
-  photo-texture redistribution licensing, evidence storage, and point-cloud spot checks.
-  Do not mark human labels complete based on model-generated labels. T3.3 may be drafted,
-  but sending external correspondence needs explicit user instruction.
+- **Autonomous visual gates:** agents perform gable/sign recognisability review and
+  point-cloud spot checks, preserving model provenance and abstentions. External
+  photo-texture redistribution licensing and evidence storage remain unresolved.
+  T3.3 may be drafted, but sending correspondence needs explicit user instruction.
 
 ## 0. Operating rules — read before touching anything
 

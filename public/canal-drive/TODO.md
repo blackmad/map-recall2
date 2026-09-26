@@ -136,49 +136,19 @@ a larger reference set; a tie is the answer, not an invitation.
    the shape of what voting cannot fix: redundancy pays only where the errors
    are independent.
 
-**8a. Close one measure → accept → render loop, then repeat it.**
-*Opened 2026-09-24. Plan: "Close one loop, then repeat it."* The appearance
-programme has never once completed the chain, for any property, for any
-building, and the reason is not extraction quality:
+**8a. Extend reviewed appearance coverage.**
+The first wall-colour loop is complete for 16 district buildings; see HISTORY.
+Remaining work:
 
-- **Populate accepted appearance evidence.** Source-bound wall-colour promotion,
-  publication and browser provenance now exist, with a coverage toggle. Run model
-  visual review of the wall-colour sample and extend promotion to preserve model
-  reviewer identity distinctly; never call model decisions human gold. Publish
-  accepted observations after validating exact crop and measurement hashes.
-- **Gable detail:** `classifyGable` has a non-test caller in
-  `scripts/roofline-eval/reconcile-gold.ts`, but no dedicated test; collect stronger
-  source profiles before enabling parametric gables in the game.
-- **Coverage:** 7,566 of 342,993 buildings citywide (2.2 %) have any appearance
-  data; 501 of 7,395 (6.8 %) in the target district have an observation.
-
-Owner decisions (2026-09-24): **ship only what is measured**; first target
-**Da Costabuurt + Jordaan**, the one district where `StudyRoofs`/`StudyFacades`
-already draw. Order: wall colour → signage → retail streetfronts → roof shape.
-
-Open sub-items:
-1. `scripts/facade-eval/measure-wall-colour.ts` — run `sampleWallColour` over
-   the district's existing crops. Publish the pixel sample, never
-   `effectiveProposal.wallColour` (a model guess whose failures are documented
-   in `wallColourSample.ts`'s own header). Two known gaps to close while there:
-   it returns one colour per crop, so a two-tone facade or a crop straddling a
-   party wall blends; and it masks the trim out and discards it, when white
-   trim on dark brick is much of what makes a street read as Amsterdam.
-2. Grading desk, modelled on the working `signage-review.html` +
-   `scripts/facade-eval/build-signage-sample.ts`. Queue sorted by `lumaSpread`
-   descending so ambiguous crops get human eyes first. ~500 decisions ≈ 30 min.
-3. **The keystone:** add an accepted state and the code that writes it. Grades
-   must bind to `sourceSha256` with a hard assertion, copying the staleness
-   check in `scripts/review/refresh-reviewed-wall-colour.ts` — without it a
-   re-measure silently re-keys grades onto pixels the owner never saw.
-4. Render: `publish-area-geometry-demo.ts:107` consults the accepted set;
-   `buildingTilesBrowser.ts` carries `sideColourSource` per building and
-   `decorateBuildingFeature:67` stops hard-coding the label.
-   `buildingStyle.ts:buildingColorExpression` needs no change.
-5. **Owner decision outstanding:** what the 93 % unobserved buildings render
-   as. Recommendation: keep the hash palette but label it truthfully per
-   building, plus a coverage-view toggle so observed and contextual can never
-   be confused while riding.
+- Review more district crops autonomously, preserving model identity, crop hashes
+  and uncertainty. Separate two-tone walls and trim instead of blending colours.
+- Wire the 72 unique frontage signage reviews into source-bound game sign placement;
+  the review page already loads them, but generic game signs do not consume this set.
+- Collect stronger source profiles before enabling parametric gables. Lowering
+  complete building masses to eaves leaves gaps without measured gable-end walls
+  and complete roof coverage, including while detail tiles load.
+- Expand coverage beyond the target district. Keep contextual colours explicitly
+  procedural, with the existing coverage switch exposing only accepted walls.
 
 **8c. Fill the openings the detectors cannot see.**
 *Opened 2026-09-24.* The owner reviewed `facade/openingMerge.ts`'s union of the

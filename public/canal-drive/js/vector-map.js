@@ -1612,19 +1612,32 @@ class VectorBasemap {
   }
 
   whenAppearanceRenderReady(timeoutMs = 30_000) {
-    const started = performance.now();
     const layers = [this._studyRoofAreas, this._studyFacadeAreas, this._studyTreeAreas, this._studyPublicRealmAreas].flat();
     const baseline = new Map(layers.map(layer => [layer, layer.debugPaints || 0]));
     return new Promise((resolve, reject) => {
+      // Game updates dirty the style before MapLibre paints. Sampling in an
+      // independent RAF can therefore miss every ready frame indefinitely.
+      // Keep the same readiness gates, evaluated after the actual map render.
+      const cleanup = () => {
+        clearTimeout(timer);
+        this.map.off('render', check);
+      };
       const check = () => {
         const status = this.appearanceRenderStatus();
         const paintedAfterCall = layers.every(layer => !layer.debugRenderable || (layer.debugPaints || 0) > (baseline.get(layer) || 0));
-        if (status.ready && paintedAfterCall) return resolve(status);
-        if (performance.now() - started > timeoutMs) return reject(new Error(`Appearance render readiness timed out: ${JSON.stringify(status)}`));
+        if (status.ready && paintedAfterCall) {
+          cleanup();
+          resolve(status);
+          return;
+        }
         this.map.triggerRepaint();
-        requestAnimationFrame(check);
       };
-      check();
+      const timer = setTimeout(() => {
+        cleanup();
+        reject(new Error(`Appearance render readiness timed out: ${JSON.stringify(this.appearanceRenderStatus())}`));
+      }, timeoutMs);
+      this.map.on('render', check);
+      this.map.triggerRepaint();
     });
   }
   /**
