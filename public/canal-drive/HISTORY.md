@@ -10,7 +10,10 @@ uncertain old labels, so no bulk appearance acceptance follows from that number.
 The resumable district worker now binds every batch to source/model/code hashes,
 records material proposals, applies pinned local segmentation, and measures upper
 wall photo colour. Resume verifies artifacts; transient retries and disk/time/work
-limits bound unattended runs. A nonuniform-mask regression caught Sharp expanding
+limits bound unattended runs. The first 99-image batch completed classification,
+masking and colour measurement; verified resume skipped it and started the next
+batch. Its 20 provisional and 79 review-needed photo measurements are visible in
+the live gallery. A nonuniform-mask regression caught Sharp expanding
 greyscale masks to RGB; decoding now explicitly preserves one label per pixel.
 
 An opt-in cohort demo adds 85 supported source-assessed owners while retaining
