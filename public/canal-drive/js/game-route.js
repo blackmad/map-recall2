@@ -869,6 +869,9 @@ class GameRouteRuntime {
     // Player at start
     this.player = new PlayerCar(startX, startY, startAngle);
     this.player.controlMode = this.controlMode;
+    // Absolute steering is screen-relative, so the player reads the camera's
+    // rotation each frame.
+    this.player.camera = this.camera;
     this.player.isBoat = this.travelMode === 'boat';
     if (this.player.isBoat) {
       this.player.turnRate *= 1.18;
