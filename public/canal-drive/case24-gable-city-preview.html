@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+  /><title>Case 24 · city gable preview</title
+  ><style>
+    :root {
+      font:
+        16px/1.45 system-ui,
+        sans-serif;
+      color: #263b2f;
+      background: #f3f1e9;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 350px;
+      min-height: 100dvh;
+    }
+    #stage {
+      position: relative;
+      min-height: 620px;
+      background: #e9e9df;
+      overflow: hidden;
+    }
+    canvas,
+    #source-overlay {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+    .source-frame #stage {
+      aspect-ratio: 213/721;
+      height: min(86dvh, calc(100vw - 390px) * 721/213);
+      min-height: 0;
+      max-width: calc(86dvh * 213 / 721);
+      margin: auto;
+    }
+    .wide-street-frame #stage {
+      height: min(86dvh, 820px);
+      min-height: 620px;
+    }
+    .source-frame #source-overlay {
+      opacity: 0;
+    }
+    .source-frame #source-overlay.active {
+      opacity: var(--source-opacity);
+      pointer-events: none;
+    }
+    .hud {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      z-index: 2;
+    }
+    .hud button,
+    button {
+      font: inherit;
+      border: 1px solid #9cae99;
+      border-radius: 5px;
+      background: #fafaf4;
+      color: inherit;
+      padding: 8px 11px;
+      cursor: pointer;
+    }
+    .hud button[aria-pressed="true"] {
+      background: #315b47;
+      color: white;
+    }
+    .label {
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      background: #fafaf4e8;
+      padding: 9px 11px;
+      font-size: 12px;
+      z-index: 2;
+    }
+    aside {
+      padding: 26px 24px;
+      border-left: 1px solid #cbd3c4;
+    }
+    h1 {
+      font:
+        31px/1.08 Georgia,
+        serif;
+      margin: 0 0 12px;
+    }
+    p {
+      margin: 0 0 15px;
+    }
+    .warning {
+      background: #fff1cf;
+      border-left: 5px solid #b67926;
+      padding: 12px;
+      margin: 18px 0;
+    }
+    .muted {
+      font-size: 13px;
+      color: #596a58;
+    }
+    pre {
+      font-size: 11px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      background: #e8ebe3;
+      padding: 11px;
+      max-height: 36dvh;
+      overflow: auto;
+    }
+    @media (max-width: 850px) {
+      main {
+        display: block;
+      }
+      #stage,
+      .source-frame #stage {
+        height: 65dvh;
+        min-height: 420px;
+        max-width: none;
+        aspect-ratio: auto;
+      }
+      aside {
+        border: 0;
+      }
+    }
+  </style>
+  <main>
+    <section id="stage">
+      <canvas
+        id="scene"
+        aria-label="Interactive shared city renderer preview"
+      ></canvas
+      ><img
+        id="source-overlay"
+        alt="Dated Case 24 full-facade source, shown only as an unregistered review overlay"
+      />
+      <div class="hud">
+        <button data-view="baseline" aria-pressed="false">Baseline</button
+        ><button data-view="candidate" aria-pressed="true">
+          Gable candidate</button
+        ><button id="context" aria-pressed="false">Street context</button
+        ><button id="street">Source-camera side</button
+        ><button id="wide-street">Wide street-eye</button
+        ><button id="front">Front</button><button id="oblique">Oblique</button
+        ><button data-overlay="0" aria-pressed="false">Model 0% source</button
+        ><button data-overlay="50" aria-pressed="false">Source 50%</button
+        ><button data-overlay="100" aria-pressed="false">Source 100%</button>
+      </div>
+      <div class="label" id="mode">Loading preview…</div>
+    </section>
+    <aside>
+      <p class="muted">REAL-OWNER PROTOTYPE · NOT RELEASED</p>
+      <h1>Da Costakade 113</h1>
+      <p id="status">Loading read-only preview…</p>
+      <div class="warning">
+        This renders the real shared city renderer with an approximate
+        replacement façade/roof cap and experimental source-façade preview. It
+        is not a registered survey correction or release candidate.
+      </div>
+      <p>
+        The magenta source outline becomes a building-bound gable. The roof cap
+        assumes a 2 m inward depth, then joins the clipped original LoD2.2 roof
+        boundary. That inferred topology is preview-only and remains unregistered.
+      </p>
+      <p class="muted">
+        The source-camera view has a measured 213×721 shared review viewport and
+        0/50/100 source overlay controls. It preserves the stored camera-side
+        orientation but is not camera registration; the overlay therefore
+        remains an explicit visual comparison, never a fit claim.
+      </p>
+      <p class="muted">
+        Wide street-eye uses an inferred position 20 m from the façade, retaining
+        the source eye height (local y 1.717 m), with an assumed 54° vertical FOV. It is a
+        context/recognisability check, not lens registration. Use Baseline /
+        Gable candidate to compare unchanged metric owner geometry. Street
+        context loads unchanged nearby buildings from the active release; real
+        occlusion is retained and the target is never activated there.
+      </p>
+      <pre id="details"></pre>
+    </aside>
+  </main>
+  <script type="module" src="./js/case24-gable-city-preview.bundle.js"></script>
+</html>
