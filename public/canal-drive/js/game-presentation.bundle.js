@@ -3,10 +3,10 @@
   // src/canalRecall/game/routeRibbon.ts
   var RIBBON_AID_COST = { line: 0.5, arrow: 0.25, minimap: 0.25 };
   var ROUTE_RIBBON_TIERS = [
-    { id: "gold", label: "GOLD RIBBON", min: 0.85, minRecall: 0.8, color: "#FACC15", dim: "rgba(250,204,21,.16)" },
-    { id: "silver", label: "SILVER RIBBON", min: 0.68, minRecall: 0.55, color: "#CBD5E1", dim: "rgba(203,213,225,.14)" },
-    { id: "bronze", label: "BRONZE RIBBON", min: 0.5, minRecall: 0.25, color: "#D8964A", dim: "rgba(216,150,74,.16)" },
-    { id: "none", label: "ROUTE COMPLETE", min: -Infinity, minRecall: -Infinity, color: "#7DD3FC", dim: "rgba(56,189,248,.12)" }
+    { id: "gold", label: "GOLD RIBBON", min: 0.85, minRecall: 0.8, color: "#7a5d0f", dim: "rgba(196,150,30,.16)" },
+    { id: "silver", label: "SILVER RIBBON", min: 0.68, minRecall: 0.55, color: "#4f5864", dim: "rgba(79,88,100,.12)" },
+    { id: "bronze", label: "BRONZE RIBBON", min: 0.5, minRecall: 0.25, color: "#8a4a18", dim: "rgba(180,104,44,.14)" },
+    { id: "none", label: "ROUTE COMPLETE", min: -Infinity, minRecall: -Infinity, color: "#3a5a86", dim: "rgba(58,90,134,.1)" }
   ];
   var TYPING_SELF_RELIANCE_BONUS = 0.15;
   var EFFICIENCY_FULL = 0.9;
@@ -468,8 +468,19 @@
     _cityDisplayName() {
       return this._activeCity().name || "Amsterdam";
     }
+    /** Re-layout when the window no longer matches the last layout. Phones can
+     *  settle their width after load (980 → 390 in iPhone emulation) without a
+     *  resize event reaching the game, which left the whole HUD drawn at ~47%
+     *  scale with 5 px text (UI review 2026-09-26). One comparison per frame. */
+    _syncViewportSize() {
+      const key = `${window.innerWidth}x${window.innerHeight}@${window.devicePixelRatio || 1}`;
+      if (key === this._viewportKey) return;
+      this._viewportKey = key;
+      if (typeof this._resize === "function") this._resize();
+    }
     // ---- The frame ----
     _render() {
+      this._syncViewportSize();
       const ctx = this.ctx;
       ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
       const utility = document.getElementById("utility-buttons");
@@ -838,7 +849,7 @@
       roundRect(ctx, cx - 200, CANVAS_H / 2 + 120, 400, 28, 6);
       ctx.fill();
       ctx.fillStyle = "rgba(255,255,255,0.85)";
-      ctx.font = "11px monospace";
+      ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.textAlign = "center";
       ctx.fillText(
         `${this._cityDisplayName()}: ${parts.join(" \xB7 ")} \xB7 ${exploration.totalRoutes} routes`,
@@ -894,14 +905,14 @@
       ctx.fill();
       ctx.restore();
       ctx.fillStyle = "rgba(255,255,255,0.15)";
-      ctx.font = "11px monospace";
+      ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.textAlign = "center";
       ["RICHMOND", "CHICAGO", "NEW YORK", "LONDON", "PARIS"].forEach((name, index) => ctx.fillText(name, 130 + index * 230, CANVAS_H - 50));
     }
     _renderMenuFooter(cx) {
       const ctx = this.ctx;
       ctx.fillStyle = "rgba(255,255,255,0.35)";
-      ctx.font = "11px monospace";
+      ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.textAlign = "center";
       const creditText = "Vibe coded by Alan and Claude \u2014 ";
       const linkText = "alan.is";
@@ -915,11 +926,11 @@
       ctx.fillRect(startX + creditWidth, CANVAS_H - 13, linkWidth, 1);
       this._alanLinkBounds = { x: startX + creditWidth, y: CANVAS_H - 26, w: linkWidth, h: 16 };
       ctx.fillStyle = "rgba(255,255,255,0.25)";
-      ctx.font = "10px monospace";
+      ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.textAlign = "right";
       ctx.fillText(`v${GAME_VERSION}`, CANVAS_W - 10, 15);
       const ghText = "GitHub";
-      ctx.font = "11px monospace";
+      ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       const ghWidth = ctx.measureText(ghText).width;
       const ghX = cx - ghWidth / 2;
       ctx.fillStyle = "rgba(100,180,255,0.6)";
@@ -940,13 +951,13 @@
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       const actions = [
         { id: "resume", key: "P / ESC", caption: "Resume" },
-        { id: "route", key: "M", caption: "New route" }
+        { id: "route", key: "M", caption: "Route setup" }
       ];
       if (this._shareUrl) {
         actions.push({
           id: "copy",
           key: "C",
-          caption: this._copiedTimer > 0 ? "Link copied" : "Copy race link"
+          caption: this._copiedTimer > 0 ? "Link copied" : "Share this route"
         });
       }
       const BUTTON_H = 44;
@@ -956,13 +967,11 @@
       const actionsH = compact ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP : 28;
       const cardH = 20 + titleH + actionsH + statsH + 18;
       const cardY = (CANVAS_H - cardH) / 2;
-      ctx.fillStyle = "rgba(0,0,0,0.78)";
-      roundRect(ctx, cardX, cardY, cardW, cardH, 12);
-      ctx.fill();
-      ctx.fillStyle = "#FFD700";
-      ctx.font = compact ? "bold 32px monospace" : "bold 40px monospace";
+      this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH }, { solid: true, radius: 12 });
+      ctx.fillStyle = INK;
+      ctx.font = `800 ${compact ? 30 : 36}px ${window.CanalRecallUi.hudSurface.fontPlaque}`;
       ctx.textAlign = "center";
-      ctx.fillText("PAUSED", cx, cardY + (compact ? 38 : 44));
+      ctx.fillText("PAUSED", cx, cardY + (compact ? 40 : 46));
       const pauseButtons = [];
       this._pauseButtonBounds = pauseButtons;
       let y = cardY + titleH;
@@ -988,7 +997,7 @@
         ctx.textAlign = "left";
         let ax = cardX + padX;
         for (const action of actions) {
-          ctx.font = "bold 11px monospace";
+          ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           const keyW = ctx.measureText(action.key).width + 14;
           ctx.fillStyle = "rgba(31,28,23,.08)";
           roundRect(ctx, ax, y + 2, keyW, 20, 5);
@@ -1012,12 +1021,11 @@
         y += 28;
       }
       ctx.textAlign = "center";
-      ctx.font = "12px monospace";
-      ctx.fillStyle = "#AAA";
-      const miles = this._playerDistancePx() / PIXELS_PER_METER / 1609.344;
-      const progress = this.player?.raceProgress ?? 0;
+      ctx.font = `500 12px ${window.CanalRecallUi.hudSurface.fontUi}`;
+      ctx.fillStyle = MUTED;
+      const kilometres = this._playerDistancePx() / PIXELS_PER_METER / 1e3;
       ctx.fillText(
-        `Time: ${this.hud.formatTime(this.raceTime)}  \xB7  ${miles.toFixed(2)} mi  \xB7  ${Math.round(progress * 100)}%`,
+        `${this.hud.formatTime(this.raceTime)}  \xB7  ${kilometres.toFixed(2)} km  \xB7  ${this.quizCorrect} of ${this.quizAttempts} named`,
         cx,
         y + 18
       );
@@ -1065,7 +1073,7 @@
       blocks.push({ height: 74, draw: (top) => {
         ctx.textAlign = "left";
         ctx.fillStyle = ACCENT;
-        ctx.font = "bold 10px monospace";
+        ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
         ctx.fillText("ARRIVED", cardX + padX, top + 11);
         ctx.fillStyle = INK;
         ctx.font = "800 26px system-ui, sans-serif";
@@ -1103,7 +1111,7 @@
           }
           ctx.textAlign = "left";
           ctx.fillStyle = MUTED;
-          ctx.font = "bold 9px monospace";
+          ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           const kind = String(landmark.type || "landmark").toUpperCase();
           ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  W  WIKIPEDIA` : kind, textX, top + 10);
           ctx.fillStyle = BODY;
@@ -1114,13 +1122,15 @@
       const profile = travelProfile(this.travelMode);
       const recallNoun = profile.recallNoun;
       const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
-      const stats = [
+      const stats = this.quizAttempts > 0 ? [
         { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
-        { label: "Recall", value: `${accuracy}%` },
+        { label: "Recall", value: `${accuracy}%` }
+      ] : [];
+      stats.push(
         { label: "Time", value: this.hud.formatTime(this.raceTime).slice(0, -2) },
         { label: "Distance", value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1e3).toFixed(2)} km` }
-      ];
-      if (gamey) stats.splice(2, 0, { label: "Points", value: String(this.quizPoints) });
+      );
+      if (gamey && this.quizAttempts > 0) stats.splice(2, 0, { label: "Points", value: String(this.quizPoints) });
       const footerBits = [
         this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
         profile.label,
@@ -1139,7 +1149,7 @@
           const sx = cardX + padX + column * (index % statsPerRow + 0.5);
           const sy = top + row * ROW_H;
           ctx.fillStyle = INK;
-          ctx.font = `bold ${compact ? 19 : 21}px monospace`;
+          ctx.font = `700 ${compact ? 19 : 21}px ${window.CanalRecallUi.hudSurface.fontMono}`;
           ctx.fillText(stat.value, sx, sy + 24);
           ctx.fillStyle = MUTED;
           ctx.font = "11px system-ui, sans-serif";
@@ -1181,7 +1191,7 @@
         blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
           ctx.textAlign = "left";
           ctx.fillStyle = MUTED;
-          ctx.font = "bold 9px monospace";
+          ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           ctx.fillText("CITY KNOWLEDGE", cardX + padX, top + 12);
           ctx.fillStyle = BODY;
           ctx.font = "12px system-ui, sans-serif";
@@ -1217,11 +1227,13 @@
         } });
       }
       const actions = [
-        { id: "again", key: "ENTER", caption: "Continue" },
-        { id: "route", key: "ESC", caption: "Finish" }
+        // Say what happens: 'again' deals another route with these settings,
+        // 'route' goes back to setup. "Continue" / "Finish" said neither.
+        { id: "again", key: "ENTER", caption: "Next route" },
+        { id: "route", key: "ESC", caption: "Route setup" }
       ];
       if (this._shareUrl) {
-        actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? "Link copied" : "Copy race link" });
+        actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? "Link copied" : "Share this route" });
       }
       const BUTTON_H = 44, BUTTON_GAP = 8;
       const finishButtons = [];
@@ -1256,7 +1268,7 @@
           ctx.textAlign = "left";
           let ax = cardX + padX;
           for (const action of actions) {
-            ctx.font = "bold 11px monospace";
+            ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
             const keyW = ctx.measureText(action.key).width + 14;
             ctx.fillStyle = "rgba(31,28,23,.08)";
             roundRect(ctx, ax, top + 4, keyW, 20, 5);
@@ -1356,7 +1368,7 @@
       ctx.strokeStyle = ribbon.color;
       ctx.stroke();
       ctx.fillStyle = ribbon.color;
-      ctx.font = "bold 18px monospace";
+      ctx.font = `700 18px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(ribbon.id === "none" ? "\xB7" : ribbon.label[0], medalX, medalY + 1);
@@ -1364,11 +1376,11 @@
       const textX = boxX + 76;
       ctx.textAlign = "left";
       ctx.fillStyle = ribbon.color;
-      ctx.font = "bold 19px monospace";
+      ctx.font = `700 19px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.fillText(ribbon.label, textX, boxY + 26);
       const labelWidth = ctx.measureText(ribbon.label).width;
       ctx.fillStyle = "#94A3B8";
-      ctx.font = "11px monospace";
+      ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.fillText(`${Math.round(ribbon.score * 100)}%`, textX + labelWidth + 12, boxY + 26);
       const axes = ribbon.axes;
       const trackW = (boxX + boxW - 18 - textX) / axes.length;
@@ -1376,7 +1388,7 @@
         const x = textX + index * trackW;
         const w = trackW - 14;
         ctx.fillStyle = "#94A3B8";
-        ctx.font = "10px monospace";
+        ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
         ctx.fillText(`${axis.label} ${Math.round(axis.score * 100)}%`, x, boxY + 45);
         ctx.fillStyle = "rgba(148,163,184,.25)";
         roundRect(ctx, x, boxY + 52, w, 7, 3.5);

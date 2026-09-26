@@ -116,7 +116,9 @@ export const hudSurface = {
   /** Only the finish arrow is copper-bright, so it reads as "go there". */
   arrow: daylightTheme.accent,
   fontPlaque: enamelTheme.fontPlaque,
-  fontMono: 'ui-monospace, "JetBrains Mono", Menlo, monospace',
+  /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
+   *  through to Courier/Menlo. index.html loads JetBrains Mono. */
+  fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
   fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif',
 } as const;
 

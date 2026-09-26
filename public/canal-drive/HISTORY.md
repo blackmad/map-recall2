@@ -6,6 +6,30 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## The last arcade surfaces go to paper; speed leaves the HUD — 2026-09-26
+
+From the 2026-09-26 UI review. The pause card was still the old skin — 78%
+black, yellow bold Courier "PAUSED", ink captions invisible on it, miles and
+an unlabelled percentage. It is now the arrival card's paper plate with
+kilometres and "n of m named". Canvas numerals asked for bare `monospace` (or
+`ui-monospace`, which canvas ignores) and drew in Courier; JetBrains Mono is
+loaded, preloaded for canvas, and every canvas mono string goes through
+`hudSurface.fontMono`, at no less than 11 px. Copper stamps were 2.8:1 at the
+gradient's bottom stop; every stop is now ≥ 4.8:1 with ink. The disabled
+"Nothing due now" is a quiet outline instead of a greyed plaque.
+
+Speed is gone from the HUD (owner: hide speed, keep points). The toy physics
+put a canal boat at 200+ km/h and a bike at 62 — a false number in a game
+whose promise is true geography. Distance stays. "Copy race link" is "Share
+this route"; the arrival actions say what they do ("Next route" / "Route
+setup", not "Continue" / "Finish"); a ride with no questions no longer ends on
+"0% recall"; ribbon colours are ink tones that read on paper.
+
+The phone HUD could latch the pre-settle 980 px layout and draw at ~47% (5 px
+text): `_syncViewportSize` re-lays out whenever the window stops matching the
+last layout. The spoiler index also takes the route's own track names, since a
+bike ride can ask any street, not only the curated knowledge subset.
+
 ## A miss is the lesson, and labels cannot say the answer — 2026-09-26
 
 From the 2026-09-26 UI review. A wrong answer was one line of amber

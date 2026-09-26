@@ -326,6 +326,9 @@ export interface PresentationHost extends GameCoreHost {
   quizPromptSegmentIndex: number;
   quizPromptPointIndex: number;
   _answerReveal?: { name: string; segmentIndex: number; pointIndex: number } | null;
+  /** Window size the HUD was last laid out for; see `_syncViewportSize`. */
+  _viewportKey?: string;
+  _resize?(): void;
 
   learnedNames: Set<string>;
   learnedStopNames: Set<string>;
