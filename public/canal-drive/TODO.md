@@ -794,8 +794,6 @@ matching part of the destination label until answered.
   44 px, and the setup has no spare height. Consider making the whole field
   the select.
 - There's no mid-drive shortcut to the knowledge review.
-- Answer mode (type or choose) is only settable in setup, not in live
-  settings.
 - Landscape phones: the quiz card still docks to the bottom at 46dvh. The
   feedback now sits under the question, so a miss is visible, but side
   docking would show more of the corridor.

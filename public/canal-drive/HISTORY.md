@@ -1784,6 +1784,21 @@ belongs here.
 Entries keep the words they were written in, because each records *why* a thing
 is the way it is, and that is the expensive part to recover later.
 
+## Ride settings share route setup's tiles — 2026-09-26
+
+The owner: "fix this settings to use buttons same as the opening screen,
+ideally share the opening screen". The in-ride panel was a column of native
+selects, sliders in boxes and bare checkboxes, while setup used paper tiles, so
+the same preference looked like two different controls. Both now render one
+`RideOptions` component in `OverlayApp.tsx`: choice tiles for view, controls
+(Steer / Point), answers (Choose / Type), bicycle and map style, and on/off
+`ToggleTile`s (a real checkbox inside the tile, so ids and Space still work)
+grouped as "On the map" and "Comfort & detail". `live` prefixes ids and
+`data-choice` names so both copies coexist. Answer mode moved into it, so it is
+now settable mid-ride (`_readLiveSettings` already applied it). The panel reuses
+the setup rail's scroll fade and "More" cue. Pinned in `mobile-overlays.spec.ts`
+("ride settings use the same tile buttons as route setup").
+
 ## Help that explains the game; copy that says what it means — 2026-09-26
 
 From the 2026-09-26 UI review. "?" opened a keyboard table, even on phones,

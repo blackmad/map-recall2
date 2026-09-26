@@ -227,6 +227,29 @@ canvas { display: block; position: relative; z-index: 2; }
 .setup-choice-row.strip + .setup-choice-row.icons { margin-top: 8px; }
 .setup-choice-row.icons + .setup-choice-row.strip { margin-top: 12px; }
 
+/* On/off settings share the choice tile: a check mark leads, copper when on.
+   The checkbox itself is visually hidden but still focusable. */
+.setup-choice-row.toggles .setup-choice-options { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.toggle-tile { position: relative; min-height: 44px; padding: 8px 10px; gap: 9px; }
+.toggle-tile .setup-choice-text strong { font-size: 12px; letter-spacing: .05em; }
+.toggle-tile .setup-choice-text small { font-size: 11px; }
+.toggle-tile-input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.toggle-tile-mark {
+  flex: none; width: 16px; height: 16px;
+  border: 1.5px solid var(--day-line-strong); border-radius: 4px;
+  background: var(--day-paper);
+}
+.toggle-tile.active .toggle-tile-mark {
+  border-color: var(--day-accent-ink);
+  background: var(--day-accent-ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fbf8f2' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+.toggle-tile:has(.toggle-tile-input:focus-visible) { outline: 2px solid var(--day-accent-ink); outline-offset: 2px; }
+.range-row { display: block; }
+.range-row input[type="range"] { display: block; width: 100%; margin: 2px 0 0; accent-color: var(--day-accent); }
+@media (hover: none) and (pointer: coarse) { .key-hint { display: none; } }
+
 .setup-city-select {
   margin: 10px 0 0;
   gap: 4px;
