@@ -9,7 +9,8 @@ export interface WallMeasurement {
   status: string;
   dominant?: { hex?: string };
 }
-export interface WallGrade extends AppearanceGrade { buildingId: string }
+export type WallReviewOrigin = 'human-visual-review' | 'model-visual-review';
+export interface WallGrade extends AppearanceGrade { buildingId: string; reviewOrigin: WallReviewOrigin }
 export interface AcceptedWallColour {
   observationId: string;
   buildingId: string;
@@ -17,6 +18,8 @@ export interface AcceptedWallColour {
   hex: string;
   gradedAt: string;
   grader: string;
+  reviewOrigin: WallReviewOrigin;
+  reviewer: string;
 }
 export interface AcceptedWallColourSet {
   version: 1;
@@ -43,16 +46,18 @@ export function promoteWallColour(measurements: readonly WallMeasurement[], grad
       throw Error(`Wall grade identity mismatch: ${key}`);
     if (!HASH.test(grade.sourceSha256) || grade.sourceSha256 !== measurement.sourceSha256)
       throw Error(`Stale wall grade sourceSha256: ${key}`);
+    if (!['human-visual-review', 'model-visual-review'].includes(grade.reviewOrigin) || !grade.grader?.trim() || !Number.isFinite(Date.parse(grade.gradedAt)))
+      throw Error(`Wall grade lacks review provenance: ${key}`);
     if (grade.verdict !== 'accept' && grade.verdict !== 'adjust') continue;
     if (measurement.status !== 'measured') throw Error(`Unmeasured wall accepted: ${key}`);
     // The desk records a brighter swatch as an accepted correction. Do not
     // silently replace that explicit choice with the raw cluster hex.
     const decision = grade.verdict === 'accept' && grade.correctedHex
-      ? resolvePublication({ current: 'quarantined-machine-preview', grade: { ...grade, verdict: 'adjust' }, sourceSha256: measurement.sourceSha256 })
-      : resolvePublication({ current: 'quarantined-machine-preview', grade, sourceSha256: measurement.sourceSha256, measuredHex: measurement.dominant?.hex });
-    if (decision.publication !== 'accepted-human-reviewed' || !decision.hex)
+      ? resolvePublication({ current: 'quarantined-machine-preview', grade: { ...grade, verdict: 'adjust' }, sourceSha256: measurement.sourceSha256, reviewOrigin: grade.reviewOrigin })
+      : resolvePublication({ current: 'quarantined-machine-preview', grade, sourceSha256: measurement.sourceSha256, measuredHex: measurement.dominant?.hex, reviewOrigin: grade.reviewOrigin });
+    if (!['accepted-human-reviewed', 'accepted-model-reviewed'].includes(decision.publication) || !decision.hex)
       throw Error(`Wall grade has no publishable colour: ${key}`);
-    accepted.push({ observationId: key, buildingId: measurement.buildingId, sourceSha256: measurement.sourceSha256, hex: decision.hex, gradedAt: grade.gradedAt, grader: grade.grader });
+    accepted.push({ observationId: key, buildingId: measurement.buildingId, sourceSha256: measurement.sourceSha256, hex: decision.hex, gradedAt: grade.gradedAt, grader: grade.grader, reviewOrigin: grade.reviewOrigin, reviewer: grade.grader });
   }
   return { version: 1, measurementsSha256, accepted: accepted.sort((a, b) => a.observationId.localeCompare(b.observationId)) };
 }
@@ -67,7 +72,7 @@ export function acceptedWallColours(set: AcceptedWallColourSet, measurements: re
   const observations = new Set<string>();
   for (const entry of set.accepted) {
     const measurement = byId.get(entry.observationId);
-    if (!measurement || measurement.status !== 'measured' || measurement.buildingId !== entry.buildingId || measurement.sourceSha256 !== entry.sourceSha256 || !HASH.test(entry.sourceSha256) || !HEX.test(entry.hex) || observations.has(entry.observationId))
+    if (!measurement || measurement.status !== 'measured' || measurement.buildingId !== entry.buildingId || measurement.sourceSha256 !== entry.sourceSha256 || !HASH.test(entry.sourceSha256) || !HEX.test(entry.hex) || !['human-visual-review', 'model-visual-review'].includes(entry.reviewOrigin) || !entry.reviewer?.trim() || entry.reviewer !== entry.grader || !Number.isFinite(Date.parse(entry.gradedAt)) || observations.has(entry.observationId))
       throw Error(`Invalid accepted wall colour: ${entry.observationId}`);
     observations.add(entry.observationId);
     // Multiple façades of one BAG building can legitimately be reviewed, but
@@ -78,7 +83,7 @@ export function acceptedWallColours(set: AcceptedWallColourSet, measurements: re
   return byBuilding;
 }
 
-export function wallColourForBuilding(buildingId: string, fallback: string, accepted: ReadonlyMap<string, AcceptedWallColour>): { sideColour: string; sideColourSource: 'measured-accepted' | 'procedural-prior-not-measured'; sideColourObservationId?: string; sideColourSourceSha256?: string } {
+export function wallColourForBuilding(buildingId: string, fallback: string, accepted: ReadonlyMap<string, AcceptedWallColour>): { sideColour: string; sideColourSource: 'measured-accepted' | 'procedural-prior-not-measured'; sideColourObservationId?: string; sideColourSourceSha256?: string; sideColourReviewOrigin?: WallReviewOrigin; sideColourReviewer?: string } {
   const entry = accepted.get(buildingId);
-  return entry ? { sideColour: entry.hex, sideColourSource: 'measured-accepted', sideColourObservationId: entry.observationId, sideColourSourceSha256: entry.sourceSha256 } : { sideColour: fallback, sideColourSource: 'procedural-prior-not-measured' };
+  return entry ? { sideColour: entry.hex, sideColourSource: 'measured-accepted', sideColourObservationId: entry.observationId, sideColourSourceSha256: entry.sourceSha256, sideColourReviewOrigin: entry.reviewOrigin, sideColourReviewer: entry.reviewer } : { sideColour: fallback, sideColourSource: 'procedural-prior-not-measured' };
 }

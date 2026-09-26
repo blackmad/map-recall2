@@ -229,6 +229,7 @@ const grade = (verdict, correctedHex) => {
     sourceSha256: e.sourceSha256,
     gradedAt: new Date().toISOString(),
     grader: 'owner',
+    reviewOrigin: 'human-visual-review',
   };
   save();
   if (state.i < state.entries.length - 1) state.i += 1;
