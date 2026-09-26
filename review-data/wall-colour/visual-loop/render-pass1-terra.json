@@ -1,0 +1,96 @@
+{
+  "reviewer": "gpt-5.6-terra",
+  "pass": "material-trial-1",
+  "entries": [
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "materialId": "creamrender",
+      "verdict": "revise",
+      "reason": "The trial warm cream mass is visibly darker and browner than the muted light-ochre source facade. Both views are too distant to establish a texture scale, but the apparent brightness/family mismatch is sufficient to revise.",
+      "dimensions": {
+        "identity": "Panel label matches index 11, but the likely target is merged into a long block; no owner outline distinguishes it from neighbours.",
+        "colourFamily": "Trial reads brown-ochre; reference reads subdued cream/ochre.",
+        "brightness": "Trial is materially darker than the overcast source wall.",
+        "textureScale": "No reliable course scale is visible at this capture distance.",
+        "front": "Target-facing wall is distant and shares a continuous mass with neighbours.",
+        "oblique": "Oblique view remains distant; it does not reveal a surface pattern.",
+        "occlusion": "Other LoD1 masses and the camera angle prevent an isolated facade comparison."
+      }
+    },
+    {
+      "index": 15,
+      "buildingId": "0363100012174169",
+      "observationId": "0363100012174169_e_1w30ns5",
+      "sourceSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
+      "materialId": "redbrick",
+      "verdict": "revise",
+      "reason": "The exposed red-brick trial face is much more saturated than the aged brown-red source and shows oversized, strongly regular horizontal courses. The same defect remains visible in front and oblique views.",
+      "dimensions": {
+        "identity": "The narrow exposed material-trial face is consistent with the labelled index, although tall adjacent masses limit context.",
+        "colourFamily": "Trial reads orange-red; source reads muted aged brown-red.",
+        "brightness": "Trial is slightly brighter and flatter than the shaded source brick.",
+        "textureScale": "Clearly oversized courses: only a few very broad bands span the visible face, unlike the fine source brick courses.",
+        "front": "Front view exposes the coarse horizontal bands on the trial face.",
+        "oblique": "Oblique view preserves the same coarse banding rather than reducing it to plausible distance detail.",
+        "occlusion": "A very tall dark neighbour masks much of the owner, but the visible trial face is sufficient to diagnose the error."
+      }
+    },
+    {
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "observationId": "0363100012094649_e_16jqzp7",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "materialId": "creamrender",
+      "verdict": "unresolved",
+      "reason": "The source is a pale yellow/cream facade, but neither view isolates a surface that can be confidently tied to index 17. Foreground masses and trees obscure the candidate, so colour, brightness, and texture cannot be judged.",
+      "dimensions": {
+        "identity": "Panel label identifies index 17, but no owner boundary or unobstructed target facade is visible.",
+        "colourFamily": "Not assessable from the candidate surface.",
+        "brightness": "Not assessable from the candidate surface.",
+        "textureScale": "Not assessable; no source-comparable wall patch is visible.",
+        "front": "Foreground roof and block faces conceal the target-facing facade.",
+        "oblique": "Oblique capture remains overhead and only exposes roofs and neighbouring masses.",
+        "occlusion": "High: foreground building mass and two trees block the likely target."
+      }
+    },
+    {
+      "index": 30,
+      "buildingId": "0363100012236796",
+      "observationId": "0363100012236796_e_1wk1kml",
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "materialId": "whiterender",
+      "verdict": "accept",
+      "reason": "The labelled trial shows a clean near-white wall in both views, matching the source building\u2019s white rendered appearance at the available district scale. The material is intentionally smooth; no brick-course claim is visible.",
+      "dimensions": {
+        "identity": "The isolated white facade in the trial matches the labelled selection and source\u2019s white facade family.",
+        "colourFamily": "Near-white neutral, consistent with the source.",
+        "brightness": "Bright but not blown out against the light basemap; consistent with the pale source render.",
+        "textureScale": "Smooth render is appropriate; no artificial course pattern is visible.",
+        "front": "White facade is visible as a distinct light mass against darker neighbours.",
+        "oblique": "The same neutral white material is stable from the oblique camera.",
+        "occlusion": "Low for colour/material reading, though trees block part of the street edge."
+      }
+    },
+    {
+      "index": 64,
+      "buildingId": "0363100012157926",
+      "observationId": "0363100012157926_e_012eimg",
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "materialId": "brownbrick",
+      "verdict": "revise",
+      "reason": "The labelled brown-brick trial reads overly uniform and coarse compared with the source\u2019s warm, fine-grained brown brick. The material\u2019s horizontal courses are oversized and its top/roof-facing surfaces repeat the brick treatment, which should not be used as evidence for a facade texture.",
+      "dimensions": {
+        "identity": "Panel label matches index 64, but adjacent same-height blocks reduce owner-boundary confidence.",
+        "colourFamily": "Trial is brown and broadly in family, but flatter and less warm than the source.",
+        "brightness": "Trial is somewhat darker and more uniform than the reference brick facade.",
+        "textureScale": "Oversized and overly regular courses remain visible at district scale; source courses are much finer.",
+        "front": "Front view shows a broad, uniform brown trial wall with no convincing fine brick reading.",
+        "oblique": "Oblique view makes the repeated brick treatment on upper-facing surfaces especially apparent.",
+        "occlusion": "Moderate: trees and neighbouring blocks conceal parts of the facade but do not hide the texture issue."
+      }
+    }
+  ]
+}
