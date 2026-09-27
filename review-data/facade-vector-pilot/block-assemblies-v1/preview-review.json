@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "kind": "independent-review-only-preview-qa",
+  "reviewer": "gpt-5.6-terra",
+  "reviewedAt": "2026-09-27",
+  "policy": "This report is not an acceptance, source registration, ownership assignment, or geometry instruction. Count agreement is insufficient for acceptance.",
+  "artifacts": {
+    "source": {"path":".cache/facade-assessment/banana-head-on-v1/inputs/strip1.jpg","sha256":"254e3ba215e9c1cccce1ae7f6276b0ea0e38859ab002048bba90bdbb8aa37d88"},
+    "front": {"path":".cache/facade-assessment/block-assemblies-v1/front.png","sha256":"92793ed82f2b934b690efb786feb29709ab3b9eba29a4c348bf45922f9baa305"},
+    "entranceOverlay": {"path":".cache/facade-assessment/block-assemblies-v1/strip1/entrances-overlay.png","sha256":"5239c94c360179759070f35c0f79729ceaf2079704de48f1ff3dc07f33f53138"},
+    "bananaClean": {"path":".cache/facade-assessment/block-assemblies-v1/banana-clean.png","sha256":"f292e306edd12eada372490f9436ede424783e5d39c7ed56f1f7c9314514216b"}
+  },
+  "frontPreview": {
+    "verdict":"revise",
+    "findings":[
+      "The broad gable sequence and ground commercial rhythm are legible, but the result remains a flat illustrated block rather than source-faithful component reconstruction.",
+      "Dark old balcony side-rail/return strokes remain visible after the cleanup rectangles. They read as tall repeated vertical side frames instead of the source's shallow, discrete rail-and-slab assemblies.",
+      "The repeated window/rail treatment is more uniform than the source. It should not be accepted because the visible balcony count happens to agree."
+    ],
+    "action":"Remove or replace the residual painted rail returns before judging any raised balcony geometry; then compare each retained rail/slab against source-visible support."
+  },
+  "entranceOverlay": {
+    "verdict":"revise",
+    "findings":[
+      "The overlay has 8 entrance candidates versus the review-only source inventory's 7 doorway-like apertures, while its 10 shopfront candidates fragment approximately 4 visible shopfront groups into individual bays.",
+      "ground-004, ground-005, ground-006 and ground-009 are entrance proposals made by symmetric-arch or filled-colour fallback with no fitted edge; they require classifier abstention or a grouped outcome, not automatic doorway promotion.",
+      "ground-007 is already uncertain and overlaps the same local generated-ground logic as neighbouring entrances; it must not reach assembly geometry.",
+      "ground-010/011 and ground-015 through ground-018 are individual glazing-bay candidates. Treating them as separate shopfronts would overstate shop count; group-level classification is needed."
+    ],
+    "action":"Use an ID-only grouping/classifier pass with explicit unknown output. Retain candidate provenance, but render neither fallback entrances nor per-bay shopfronts until grouped and independently checked against the original."
+  },
+  "bananaClean": {
+    "verdict":"experimental-only",
+    "findings":[
+      "It removes the source-visible balcony rail/slab assemblies entirely, so it cannot be used as a balcony mask, opening mask, or evidence of flat wall surface at those positions.",
+      "It simplifies upper facade and eave detail and retains illustrated opening and signage treatment; these changes are drift, not measured correction.",
+      "The broad facade segmentation and major gable sequence remain useful as an explicitly inferred whole-block texture/region hypothesis."
+    ],
+    "allowedUse":"Opt-in generated-image ablation for broad inferred wall/roof region appearance only, with source and generated layers visibly separable.",
+    "disallowedUse":"Albedo claim, component coordinates, door/balcony masks, registration fitting, owner assignment, or release texture."
+  },
+  "nextGate":"Re-render after residual rail removal and candidate grouping. Judge source-supported rail extent, entrance role and shopfront grouping separately; do not accept a pass from matching totals."
+}
