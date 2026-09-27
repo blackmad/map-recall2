@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "kind": "review-only-whole-block-inventory",
+  "reviewer": "gpt-5.6-terra",
+  "reviewedAt": "2026-09-27",
+  "policy": {
+    "consumer": "review-only",
+    "notFor": ["component-extraction", "registration", "owner-assignment", "geometry-compilation", "appearance-publication"],
+    "coordinatePolicy": "Approximate normalized review rectangles locate observations for visual QA only. They are intentionally not extraction coordinates and no compiler may consume them.",
+    "generatedImagePolicy": "The generated strip is an experimental inferred comparison. It does not establish source geometry, colour, depth, or hidden detail."
+  },
+  "inputs": {
+    "original": {
+      "path": ".cache/facade-assessment/banana-head-on-v1/inputs/strip1.jpg",
+      "sha256": "254e3ba215e9c1cccce1ae7f6276b0ea0e38859ab002048bba90bdbb8aa37d88",
+      "dimensions": [1360, 771]
+    },
+    "generated": {
+      "path": ".cache/facade-assessment/banana-head-on-v1/strip1.png",
+      "sha256": "2b5fb1d2be53da5f4e0225cb6e030da62237935eb437730bb6f38a219eee941f",
+      "dimensions": [2752, 1536]
+    }
+  },
+  "summary": {
+    "sourceVisibleBalconies": 10,
+    "generatedVisibleBalconies": 10,
+    "sourceDoorwayLikeApertures": 7,
+    "generatedDoorwayLikeApertures": 7,
+    "sourceShopfrontGroups": 4,
+    "generatedShopfrontGroups": 4,
+    "finding": "The generated strip retains broad counts but makes the balcony lattice and ground rhythm more regular than the original. Count agreement is not component acceptance."
+  },
+  "balconies": [
+    {"reviewId":"strip1-balcony-west-upper","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.10,0.43,0.16,0.51],"note":"Rail/slab above a tall opening; bounds exclude that opening."},
+    {"reviewId":"strip1-balcony-west-lower","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.10,0.58,0.16,0.66],"note":"Paired with west upper balcony."},
+    {"reviewId":"strip1-balcony-west-centre-upper","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.29,0.43,0.34,0.51],"note":"Source rail silhouette remains visible."},
+    {"reviewId":"strip1-balcony-west-centre-lower","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.29,0.58,0.34,0.66],"note":"Paired rail/slab."},
+    {"reviewId":"strip1-balcony-centre-upper","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.48,0.43,0.53,0.51],"note":"Rail/slab visible; generated treatment is more uniform."},
+    {"reviewId":"strip1-balcony-centre-lower","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.48,0.58,0.53,0.66],"note":"Paired rail/slab."},
+    {"reviewId":"strip1-balcony-east-centre-upper","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.66,0.43,0.71,0.51],"note":"Rail/slab visible."},
+    {"reviewId":"strip1-balcony-east-centre-lower","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.66,0.58,0.71,0.66],"note":"Paired rail/slab."},
+    {"reviewId":"strip1-balcony-east-upper","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.84,0.43,0.89,0.51],"note":"Rail/slab visible."},
+    {"reviewId":"strip1-balcony-east-lower","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.84,0.58,0.89,0.66],"note":"Paired rail/slab."}
+  ],
+  "groundAssemblies": [
+    {"reviewId":"strip1-ground-entrance-01","classification":"pedestrian-entrance-like","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.19,0.82,0.21,0.99],"ambiguity":"Narrow doorway; continuous strip does not establish frontage ownership."},
+    {"reviewId":"strip1-ground-entrance-02","classification":"pedestrian-entrance-like","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.28,0.82,0.33,0.99],"ambiguity":"Doorway occurs within a larger commercial arch."},
+    {"reviewId":"strip1-ground-entrance-03","classification":"pedestrian-entrance-like","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.34,0.82,0.38,0.99],"ambiguity":"Ground detail differs in the generated illustration."},
+    {"reviewId":"strip1-ground-entrance-04","classification":"pedestrian-entrance-like","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.42,0.82,0.44,0.99],"ambiguity":"Narrow door beside display/glazing."},
+    {"reviewId":"strip1-ground-entrance-05","classification":"pedestrian-entrance-like","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.68,0.82,0.72,0.99],"ambiguity":"Doorway occurs within a larger commercial arch."},
+    {"reviewId":"strip1-ground-entrance-06","classification":"pedestrian-entrance-like","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.74,0.82,0.76,0.99],"ambiguity":"Narrow door beside display/glazing."},
+    {"reviewId":"strip1-ground-entrance-07","classification":"pedestrian-entrance-like","sourceVisibility":"partial","generatedVisibility":"observed","reviewBox":[0.96,0.82,0.98,0.99],"ambiguity":"At the right crop edge in the original; do not promote without a dedicated crop."},
+    {"reviewId":"strip1-shopfront-west","classification":"shopfront-group","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.00,0.79,0.18,0.99],"ambiguity":"Several display bays; not each bay is a pedestrian entrance."},
+    {"reviewId":"strip1-shopfront-centre-west","classification":"shopfront-group","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.34,0.79,0.58,0.99],"ambiguity":"Multiple arched glazing/display bays and at least one entrance."},
+    {"reviewId":"strip1-shopfront-centre-east","classification":"shopfront-group","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.58,0.79,0.78,0.99],"ambiguity":"Ground glazing and doorway mixture."},
+    {"reviewId":"strip1-shopfront-east","classification":"shopfront-group","sourceVisibility":"observed","generatedVisibility":"observed","reviewBox":[0.79,0.79,0.94,0.99],"ambiguity":"Signed display group; generated lettering and fills are inferred."}
+  ],
+  "extractionComparison": {
+    "artifact": ".cache/facade-assessment/components-v1/qwen-extraction.json",
+    "status": "invalid",
+    "reasons": ["Returned apparent 0..1000 coordinates despite 0..1 requirement.", "Several window candidates are duplicated.", "Every candidate has confidence 0.95 and no uncertainty notes."],
+    "use": "Visual count cross-check only; not an extraction source."
+  },
+  "heldOutAwningReference": {
+    "reviewId": "awning-heldout-elandsgracht-148-ground",
+    "source": {
+      "path": "public/data/city-expansion/evidence/0c88f6a476cd73af99d862752f290753de8f225a198200abb839847003505444.jpg",
+      "sha256": "0c88f6a476cd73af99d862752f290753de8f225a198200abb839847003505444",
+      "dimensions": [948,539],
+      "buildingId": "0363100012168920",
+      "observationId": "0363100012168920_e_0bxls2d"
+    },
+    "visualFinding": "Two short dark projecting hoods above the salon display windows are clearly visible. The right hood is partly affected by roadside/plant context but both are readable as hoods rather than balcony rails.",
+    "feasibility": "Suitable as a held-out awning-presence/short-hood classification case. It is not suitable for owner-bound production geometry because the existing review records target-owner ambiguity and its full/ground crops differ in date."
+  }
+}
