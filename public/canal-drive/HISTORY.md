@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — source-wall controls and vector experiment specification
+
+Added 44 source-hash-bound pixel controls across ten photos after independent
+model review removed six unsuitable regions. The reproducible report separates
+31 wall patches from 13 glass/occluder negatives: the mask intersection retains
+88.17% and 1.82% respectively, averaged per selected patch. These are diagnostic
+probes, not whole-image accuracy or calibrated albedo. Desktop and phone load
+all 54 report images without errors or overflow; focused tests and tsc pass.
+
+Specified a matched direct-SVG versus structured-facade versus OccFacade-assisted
+experiment using existing FacadeDescription components. Official API prices
+suggest a modest pilot cost, but no LLM SVG quality/cost benchmark has run.
+See docs/plans/photo-to-facade-vector-pilot.md for assumptions and holdout design.
+
 ## 2026-09-27 — completed 100-case visual mask audit
 
 All 100 full-view mask pairs now have native-image review notes bound to source

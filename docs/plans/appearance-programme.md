@@ -11,6 +11,13 @@ The owner explicitly requests **no human-in-the-loop** (2026-09-26). Agents must
 
 ## Current priority — material and colour validation, 2026-09-26
 
+Latest owner steering (2026-09-27): compare direct photo-to-SVG with structured
+facade generation, with and without OccFacade window/door/shop proposals.
+[The bounded vector pilot](photo-to-facade-vector-pilot.md) specifies matched
+inputs, independent visual evaluation, a subsequent holdout, and token-cost
+assumptions. No SVG quality benchmark has run yet; retain source/owner checks
+and do not promote plausible drawings as measured facade geometry.
+
 The owner has narrowed this phase to accurate colour/material matching, ahead of
 roof/gable work. The execution plan and honest results are in
 [wall-material-demo.md](wall-material-demo.md). A working opt-in game demo and

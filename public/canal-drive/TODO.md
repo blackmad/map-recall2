@@ -50,13 +50,20 @@ Home-base routes already grow an expanding learning radius from the address
 
 ## P2 — Weight and reach
 
+**Photo-to-SVG comparison before another facade pipeline expansion.**
+Run the matched ten-source direct-SVG / structured-description / structured
+with OccFacade-proposals pilot in `docs/plans/photo-to-facade-vector-pilot.md`.
+Reuse FacadeDescription and existing compilers; measure visible opening/retail
+fidelity, inventions and actual billed tokens, then evaluate a frozen 20-case
+holdout. Costs are currently estimates; no generated-SVG benchmark has run.
+
 **OccFacade follow-up: validate full-facade proposals before integration.**
 All 100 cohort full views now have OccFacade/Vistas intersection masks. All 100
 visual audits now withhold 20 cases for colour and qualify the other 80;
 intersection alone does not certify visible masonry. Same-photo crop testing
-confirms severe context sensitivity (55.43% median label agreement). Next score
-observed-wall/opening masks on annotated examples and separate material from
-lighting-sensitive photo RGB. Details and local galleries:
+confirms severe context sensitivity (55.43% median label agreement). Ten-source wall controls now measure mask coverage/leakage on selected patches.
+Next score opening/door/shop proposals, expand independent wall controls and
+separate material from lighting-sensitive photo RGB. Details and local galleries:
 `scripts/facade-eval/OCCFACADE_PILOT.md`. No game rollout is accepted.
 
 **Wall colour/material: finish Jordaan + Da Costabuurt evidence and local-model evaluation.**

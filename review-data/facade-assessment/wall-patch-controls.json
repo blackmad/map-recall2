@@ -1,0 +1,893 @@
+{
+  "version": 1,
+  "policy": "Reviewed source-photo rectangles, uncalibrated RGB; negative controls excluded from wall estimates. Model-selected controls are not independent human ground truth.",
+  "records": [
+    {
+      "index": 0,
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "regions": [
+        {
+          "id": "0-u1",
+          "role": "upper-wall",
+          "bounds": [
+            110,
+            315,
+            138,
+            350
+          ],
+          "material": "brick",
+          "colourFamily": "brown",
+          "textureEvidence": "Small dark masonry units and mortar joints",
+          "note": "Pier between the left and right upper windows; avoids glass and vines.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "0-u2",
+          "role": "upper-wall",
+          "bounds": [
+            110,
+            465,
+            140,
+            495
+          ],
+          "material": "brick",
+          "colourFamily": "brown",
+          "textureEvidence": "Dark brick and fine horizontal joints",
+          "note": "Middle-storey pier away from frames and the branch line.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "0-u3",
+          "role": "upper-wall",
+          "bounds": [
+            110,
+            555,
+            140,
+            580
+          ],
+          "material": "brick",
+          "colourFamily": "brown",
+          "textureEvidence": "Exposed dark brick field",
+          "note": "Spandrel above lower windows; under even shade.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "0-n1",
+          "role": "exclude-window",
+          "bounds": [
+            160,
+            315,
+            179,
+            343
+          ],
+          "material": "glass",
+          "colourFamily": "grey",
+          "textureEvidence": "Smooth reflected window pane",
+          "note": "Inside the upper right-hand window, inset from frame.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "0-n2",
+          "role": "exclude-occluder",
+          "bounds": [
+            57,
+            722,
+            82,
+            747
+          ],
+          "material": "vegetation",
+          "colourFamily": "brown",
+          "textureEvidence": "Tangled foreground shrub branches",
+          "note": "Shrub in front of the lower left facade; exclude from wall pixels.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        }
+      ],
+      "annotator": "sol_worker",
+      "rejectedRegions": []
+    },
+    {
+      "index": 3,
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "regions": [
+        {
+          "id": "3-u1",
+          "role": "upper-wall",
+          "bounds": [
+            12,
+            268,
+            33,
+            325
+          ],
+          "material": "brick",
+          "colourFamily": "brown",
+          "textureEvidence": "Orange-brown masonry units and mortar",
+          "note": "Left pier above the first upper window row; avoids the pale cornice.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "3-u2",
+          "role": "upper-wall",
+          "bounds": [
+            174,
+            286,
+            193,
+            333
+          ],
+          "material": "brick",
+          "colourFamily": "brown",
+          "textureEvidence": "Sunlit red-brown brick texture",
+          "note": "Pier between two upper windows, away from white frames.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "3-u3",
+          "role": "upper-wall",
+          "bounds": [
+            13,
+            521,
+            34,
+            575
+          ],
+          "material": "brick",
+          "colourFamily": "brown",
+          "textureEvidence": "Brick courses on the left facade field",
+          "note": "Mid-lower upper wall, avoiding the shopfront and window arch.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "3-b1",
+          "role": "base-wall",
+          "bounds": [
+            11,
+            790,
+            31,
+            827
+          ],
+          "material": "unknown",
+          "colourFamily": "white",
+          "textureEvidence": "Pale base field; substrate not established.",
+          "note": "Small white base panel to the left of the shop glazing; exact stone substrate uncertain.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "3-n1",
+          "role": "exclude-window",
+          "bounds": [
+            55,
+            293,
+            81,
+            322
+          ],
+          "material": "glass",
+          "colourFamily": "black",
+          "textureEvidence": "Dark smooth pane",
+          "note": "Inside first upper window, clear of the white sash.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        }
+      ],
+      "annotator": "sol_worker",
+      "rejectedRegions": []
+    },
+    {
+      "index": 4,
+      "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "regions": [
+        {
+          "id": "4-u1",
+          "role": "upper-wall",
+          "bounds": [
+            13,
+            224,
+            34,
+            278
+          ],
+          "material": "brick",
+          "colourFamily": "buff",
+          "textureEvidence": "Fine light brick courses",
+          "note": "Left upper pier, excluding window and roof edge.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "4-u2",
+          "role": "upper-wall",
+          "bounds": [
+            109,
+            269,
+            139,
+            299
+          ],
+          "material": "brick",
+          "colourFamily": "buff",
+          "textureEvidence": "Pale granular brick and mortar",
+          "note": "Spandrel between upper rows, clear of balcony metal.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "4-u3",
+          "role": "upper-wall",
+          "bounds": [
+            180,
+            215,
+            199,
+            258
+          ],
+          "material": "brick",
+          "colourFamily": "buff",
+          "textureEvidence": "Light masonry between central and right windows",
+          "note": "Narrow exposed vertical pier between upper central and right windows, above pale sills.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "4-n1",
+          "role": "exclude-window",
+          "bounds": [
+            52,
+            226,
+            78,
+            251
+          ],
+          "material": "glass",
+          "colourFamily": "grey",
+          "textureEvidence": "Smooth reflected pane",
+          "note": "Inside top left window, no white sash.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "4-n2",
+          "role": "exclude-occluder",
+          "bounds": [
+            112,
+            756,
+            145,
+            780
+          ],
+          "material": "vehicle",
+          "colourFamily": "red",
+          "textureEvidence": "Glossy red car hood",
+          "note": "Foreground car at bottom of crop.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        }
+      ],
+      "annotator": "sol_worker",
+      "rejectedRegions": [
+        {
+          "id": "4-b1",
+          "role": "base-wall",
+          "bounds": [
+            177,
+            611,
+            194,
+            641
+          ],
+          "material": "brick",
+          "colourFamily": "buff",
+          "textureEvidence": "Same fine brick texture at ground storey",
+          "note": "Narrow base pier between lower glazing and doorway; keep separate from shadowed shop recess.",
+          "reason": "Dark glazed/recessed doorway edge, not clean wall.",
+          "reviewer": "terra_tags"
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "regions": [
+        {
+          "id": "11-u1",
+          "role": "upper-wall",
+          "bounds": [
+            135,
+            404,
+            185,
+            434
+          ],
+          "material": "render",
+          "colourFamily": "cream",
+          "textureEvidence": "Continuous matte lightly textured render",
+          "note": "Plain left wall below a window row and left of the balcony recess.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "11-u2",
+          "role": "upper-wall",
+          "bounds": [
+            470,
+            411,
+            523,
+            440
+          ],
+          "material": "render",
+          "colourFamily": "cream",
+          "textureEvidence": "Smooth matte rendered field",
+          "note": "Plain right wall between window rows, away from glass and balcony.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "11-u3",
+          "role": "upper-wall",
+          "bounds": [
+            121,
+            521,
+            171,
+            549
+          ],
+          "material": "render",
+          "colourFamily": "cream",
+          "textureEvidence": "Continuous beige surface without masonry joints",
+          "note": "Lower left upper-wall spandrel above the ground-floor base.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "11-b1",
+          "role": "base-wall",
+          "bounds": [
+            111,
+            718,
+            158,
+            751
+          ],
+          "material": "unknown",
+          "colourFamily": "grey",
+          "textureEvidence": "Visible small rectangular gray cladding units and joints",
+          "note": "Gray ground-floor cladding; photo does not establish ceramic, stone or masonry substrate.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "11-n1",
+          "role": "exclude-window",
+          "bounds": [
+            222,
+            217,
+            248,
+            244
+          ],
+          "material": "glass",
+          "colourFamily": "grey",
+          "textureEvidence": "Smooth reflective upper-window pane",
+          "note": "Inset within upper left window; excludes sash.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        }
+      ],
+      "annotator": "sol_worker",
+      "rejectedRegions": []
+    },
+    {
+      "index": 13,
+      "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+      "regions": [
+        {
+          "id": "13-u1",
+          "role": "upper-wall",
+          "bounds": [
+            105,
+            318,
+            146,
+            359
+          ],
+          "material": "unknown",
+          "colourFamily": "grey",
+          "textureEvidence": "Smooth pale facade with shallow horizontal seams",
+          "note": "Blank left upper wall; panel seams do not prove stone versus scored render.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "13-u3",
+          "role": "upper-wall",
+          "bounds": [
+            106,
+            558,
+            148,
+            601
+          ],
+          "material": "unknown",
+          "colourFamily": "grey",
+          "textureEvidence": "Light smooth wall and sparse horizontal seams",
+          "note": "Lower section of the same broad painted-looking wall, clear of lamp and windows.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "13-b1",
+          "role": "base-wall",
+          "bounds": [
+            160,
+            706,
+            186,
+            739
+          ],
+          "material": "unknown",
+          "colourFamily": "grey",
+          "textureEvidence": "Opaque light lower-wall surface with faint scored joints",
+          "note": "Base field left of the small basement window and clear of the road sign; material uncertain.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "13-n1",
+          "role": "exclude-window",
+          "bounds": [
+            319,
+            322,
+            339,
+            348
+          ],
+          "material": "glass",
+          "colourFamily": "grey",
+          "textureEvidence": "Reflective pane inside the upper right window",
+          "note": "Kept off dark frame and pale sill.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        }
+      ],
+      "annotator": "sol_worker",
+      "rejectedRegions": [
+        {
+          "id": "13-u2",
+          "role": "upper-wall",
+          "bounds": [
+            177,
+            363,
+            224,
+            396
+          ],
+          "material": "unknown",
+          "colourFamily": "grey",
+          "textureEvidence": "Even light-gray surface with faint joint lines",
+          "note": "Plain central wall below the overhead cable path.",
+          "reason": "Diagonal cable traverses patch.",
+          "reviewer": "terra_tags"
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "regions": [
+        {
+          "id": "u1",
+          "role": "upper-wall",
+          "bounds": [
+            446,
+            263,
+            492,
+            315
+          ],
+          "material": "render",
+          "colourFamily": "pale-cream",
+          "textureEvidence": "fine smooth surface",
+          "note": "Right-side wall between first and second window rows; avoids frames and balcony.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "u2",
+          "role": "upper-wall",
+          "bounds": [
+            446,
+            386,
+            492,
+            433
+          ],
+          "material": "render",
+          "colourFamily": "pale-cream",
+          "textureEvidence": "fine smooth surface",
+          "note": "Right-side pier between second and third window rows.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "u3",
+          "role": "upper-wall",
+          "bounds": [
+            187,
+            399,
+            210,
+            432
+          ],
+          "material": "render",
+          "colourFamily": "pale-cream",
+          "textureEvidence": "fine smooth surface",
+          "note": "Narrow left wall pier beside the recessed central balconies.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "b1",
+          "role": "base-wall",
+          "bounds": [
+            68,
+            600,
+            107,
+            622
+          ],
+          "material": "brick",
+          "colourFamily": "muted-red-brown",
+          "textureEvidence": "horizontal brick courses",
+          "note": "Ground-floor brick beneath the glass-block opening, left of the metal door.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "xw1",
+          "role": "exclude-window",
+          "bounds": [
+            379,
+            338,
+            393,
+            375
+          ],
+          "material": "glass",
+          "colourFamily": "unknown",
+          "textureEvidence": "reflective glass",
+          "note": "Interior of the middle right-side window, clear of its frame.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "xo1",
+          "role": "exclude-occluder",
+          "bounds": [
+            350,
+            659,
+            500,
+            689
+          ],
+          "material": "vehicle",
+          "colourFamily": "unknown",
+          "textureEvidence": "car body",
+          "note": "Dark vehicle body covering the lower edge of the fa\u00e7ade.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        }
+      ],
+      "annotator": "sol_colour",
+      "rejectedRegions": []
+    },
+    {
+      "index": 30,
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "regions": [
+        {
+          "id": "u1",
+          "role": "upper-wall",
+          "bounds": [
+            67,
+            243,
+            94,
+            269
+          ],
+          "material": "render",
+          "colourFamily": "white",
+          "textureEvidence": "smooth painted render",
+          "note": "White rendered area immediately below the small top dormer sill and above the dark roof overhang.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "u2",
+          "role": "upper-wall",
+          "bounds": [
+            79,
+            404,
+            101,
+            435
+          ],
+          "material": "render",
+          "colourFamily": "white",
+          "textureEvidence": "smooth painted render",
+          "note": "White centre pier below the upper windows and above the arched main window.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "xw1",
+          "role": "exclude-window",
+          "bounds": [
+            62,
+            507,
+            87,
+            555
+          ],
+          "material": "glass",
+          "colourFamily": "unknown",
+          "textureEvidence": "reflective window glass",
+          "note": "Inner left pane of the broad arched window, away from the mullions.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "xo1",
+          "role": "exclude-occluder",
+          "bounds": [
+            69,
+            648,
+            123,
+            688
+          ],
+          "material": "vegetation",
+          "colourFamily": "unknown",
+          "textureEvidence": "leafy foliage",
+          "note": "Tree crown occluding the lower fa\u00e7ade.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        }
+      ],
+      "annotator": "sol_colour",
+      "rejectedRegions": [
+        {
+          "id": "u3",
+          "role": "upper-wall",
+          "bounds": [
+            53,
+            405,
+            72,
+            434
+          ],
+          "material": "render",
+          "colourFamily": "white",
+          "textureEvidence": "smooth painted render",
+          "note": "Left-side white wall field above the broad arched window.",
+          "reason": "Crosses horizontal trim/arch edge.",
+          "reviewer": "terra_tags"
+        }
+      ]
+    },
+    {
+      "index": 64,
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "regions": [
+        {
+          "id": "u1",
+          "role": "upper-wall",
+          "bounds": [
+            162,
+            275,
+            183,
+            326
+          ],
+          "material": "brick",
+          "colourFamily": "warm-brown",
+          "textureEvidence": "Brick texture unresolved at this resolution.",
+          "note": "Masonry pier between the upper second and third window bays.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "u2",
+          "role": "upper-wall",
+          "bounds": [
+            162,
+            397,
+            183,
+            447
+          ],
+          "material": "brick",
+          "colourFamily": "warm-brown",
+          "textureEvidence": "Brick texture unresolved at this resolution.",
+          "note": "Same masonry pier in the middle window row.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "u3",
+          "role": "upper-wall",
+          "bounds": [
+            162,
+            520,
+            183,
+            567
+          ],
+          "material": "brick",
+          "colourFamily": "warm-brown",
+          "textureEvidence": "Brick texture unresolved at this resolution.",
+          "note": "Same masonry pier in the lower upper-wall row.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        }
+      ],
+      "annotator": "sol_colour",
+      "rejectedRegions": [
+        {
+          "id": "xw1",
+          "role": "exclude-window",
+          "bounds": [
+            119,
+            272,
+            141,
+            319
+          ],
+          "material": "glass",
+          "colourFamily": "unknown",
+          "textureEvidence": "window glass",
+          "note": "Upper middle window pane, clear of its brick surround.",
+          "reason": "Includes window ledge/frame, not pure glass.",
+          "reviewer": "terra_tags"
+        }
+      ]
+    },
+    {
+      "index": 80,
+      "sourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+      "regions": [
+        {
+          "id": "u2",
+          "role": "upper-wall",
+          "bounds": [
+            228,
+            410,
+            248,
+            477
+          ],
+          "material": "brick",
+          "colourFamily": "dark-red-brown",
+          "textureEvidence": "subtle brick courses",
+          "note": "Right-hand masonry pier beside the central window.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "u3",
+          "role": "upper-wall",
+          "bounds": [
+            227,
+            521,
+            247,
+            577
+          ],
+          "material": "brick",
+          "colourFamily": "dark-red-brown",
+          "textureEvidence": "subtle brick courses",
+          "note": "Right-hand masonry pier beside the lower upper-wall window.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "xw1",
+          "role": "exclude-window",
+          "bounds": [
+            181,
+            128,
+            197,
+            153
+          ],
+          "material": "glass",
+          "colourFamily": "unknown",
+          "textureEvidence": "window glass",
+          "note": "Interior of upper-right window pane, inside its pale frame.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        }
+      ],
+      "annotator": "sol_colour",
+      "rejectedRegions": [
+        {
+          "id": "u1",
+          "role": "upper-wall",
+          "bounds": [
+            228,
+            166,
+            248,
+            193
+          ],
+          "material": "brick",
+          "colourFamily": "dark-red-brown",
+          "textureEvidence": "subtle brick courses",
+          "note": "Right-hand wall pier below the highest window line.",
+          "reason": "Includes dark horizontal ledge/band.",
+          "reviewer": "terra_tags"
+        }
+      ]
+    },
+    {
+      "index": 93,
+      "sourceSha256": "0ffe63aa1333aabb17f4f6ba3219ff4facd68e26972e1b91c3f5c21fe3d0e331",
+      "regions": [
+        {
+          "id": "u1",
+          "role": "upper-wall",
+          "bounds": [
+            122,
+            272,
+            146,
+            348
+          ],
+          "material": "brick",
+          "colourFamily": "dark-brown",
+          "textureEvidence": "fine brick courses",
+          "note": "Masonry pier between left and central upper windows.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "u2",
+          "role": "upper-wall",
+          "bounds": [
+            233,
+            272,
+            257,
+            348
+          ],
+          "material": "brick",
+          "colourFamily": "dark-brown",
+          "textureEvidence": "fine brick courses",
+          "note": "Masonry pier between central and right upper windows.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "u3",
+          "role": "upper-wall",
+          "bounds": [
+            121,
+            418,
+            145,
+            493
+          ],
+          "material": "brick",
+          "colourFamily": "dark-brown",
+          "textureEvidence": "fine brick courses",
+          "note": "Same left-side pier in the middle window row.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        },
+        {
+          "id": "xo1",
+          "role": "exclude-occluder",
+          "bounds": [
+            56,
+            623,
+            148,
+            648
+          ],
+          "material": "vehicle",
+          "colourFamily": "unknown",
+          "textureEvidence": "vehicle body",
+          "note": "Vehicle covering the bottom of the source photograph.",
+          "semanticPatchReview": "retained",
+          "reviewer": "terra_tags"
+        }
+      ],
+      "annotator": "sol_colour",
+      "rejectedRegions": [
+        {
+          "id": "xw1",
+          "role": "exclude-window",
+          "bounds": [
+            167,
+            281,
+            180,
+            320
+          ],
+          "material": "glass",
+          "colourFamily": "unknown",
+          "textureEvidence": "dark window glass",
+          "note": "Inner pane of the upper central window, avoiding the mullion.",
+          "reason": "Includes sash/mullion; not pure glass.",
+          "reviewer": "terra_tags"
+        }
+      ]
+    }
+  ],
+  "reviewPolicy": "Independent native-image QA removed six contaminated rectangles. Retained semantic controls do not certify material albedo or owner identity."
+}

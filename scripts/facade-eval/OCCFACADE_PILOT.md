@@ -177,3 +177,60 @@ pixel equality checked for all ten same-capture crops; stale review deliberately
 rejected without emitting a completed comparison; galleries checked at desktop
 and phone widths with all images loading and no horizontal overflow. TypeScript
 pre-commit check and Python compile checks pass.
+
+## Reviewed source-pixel wall controls (2026-09-27)
+
+Ten full-view source photos have 44 model-reviewed rectangular controls in
+`review-data/facade-assessment/wall-patch-controls.json`: 27 upper-wall patches,
+4 base-wall patches, 8 window-glass negatives and 5 occluder negatives. Six
+candidate regions were removed after native visual review before this v2
+report. Each rectangle is in the original photo's integer pixel coordinates;
+its source SHA-256 is checked against the cohort. The report also verifies the
+OccFacade, Vistas and intersection-mask hashes and records patch crops and
+source-photo medians over every pixel in each rectangle, not medians of the
+mask intersection. These are selected diagnostic controls, not independent
+human ground truth, verified BAG owner identities, or calibrated render albedo.
+
+Mean mask coverage **per patch** (each rectangle gets equal weight, regardless
+of its size):
+
+| Reviewed control | Patches | OccFacade wall | Vistas building | Intersection |
+| --- | ---: | ---: | ---: | ---: |
+| Upper wall | 27 | 96.18% | 96.30% | 92.48% |
+| Base wall | 4 | 59.07% | 100.00% | 59.07% |
+| All wall | 31 | 91.39% | 96.77% | 88.17% |
+| Window glass | 8 | 1.57% | 97.06% | 1.57% |
+| Occluders | 5 | 51.25% | 2.20% | 2.20% |
+| All negatives | 13 | 20.68% | 60.58% | 1.82% |
+
+The intersection excludes almost all pixels in these selected negative
+patches, but also loses some true wall, particularly at the four base-wall
+patches. OccFacade alone leaks into selected vegetation/vehicle patches;
+Vistas building alone retains selected glass. These means describe only the
+reviewed rectangles in ten photos. They do not estimate whole-image mask
+accuracy, independent wall visibility, physical material correctness, or game
+render quality. The patch RGB values remain photographed colours affected by
+lighting and exposure; no new game colours or materials were accepted.
+
+Rebuild the report into a **fresh** local directory (existing outputs are
+rejected to protect evidence):
+
+```sh
+node --import tsx scripts/review/build-wall-patch-report.ts \
+  --input=review-data/facade-assessment/wall-patch-controls.json \
+  --out=/tmp/wall-patch-controls-rebuild
+node --import tsx src/canalRecall/facade/wallPatchMeasurement.test.ts
+```
+
+The builder reads `.cache/facade-assessment/cohort.json`, the full-view
+OccFacade receipt, Vistas provenance, and the reviewed wall-mask comparison;
+it refuses changed image and mask hashes. The local gallery is
+`public/data/facade-review-galleries/wall-patch-controls-v2/index.html`
+(or `http://localhost:5195/data/facade-review-galleries/wall-patch-controls-v2/index.html`
+when the local server is running). A rebuild produced byte-identical
+`report.json` (SHA-256
+`cd391a411ad1d24948fe73167760a9367d9b8b8fa668e3dcfd4954456b34f8f8`).
+Desktop 1440×900 and phone 390×844 loaded all 10 cards and 54 images, with no
+broken images, horizontal overflow, or JavaScript errors. All 44 published
+patch crops match their report SHA-256 hashes. `tsc --noEmit` and the focused
+patch test pass.
