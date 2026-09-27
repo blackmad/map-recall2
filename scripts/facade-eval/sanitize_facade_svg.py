@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 TAGS = {'svg', 'g', 'rect', 'path', 'polygon', 'polyline', 'circle', 'ellipse', 'line', 'title', 'desc', 'metadata'}
 ATTRS = {'xmlns', 'viewBox', 'width', 'height', 'preserveAspectRatio', 'x', 'y', 'x1', 'x2', 'y1', 'y2', 'rx', 'ry', 'cx', 'cy', 'r', 'd', 'points', 'fill', 'stroke', 'stroke-width', 'opacity', 'fill-opacity', 'stroke-opacity', 'stroke-linecap', 'stroke-linejoin', 'fill-rule', 'transform', 'id'}
 
-def sanitize_svg(text, width, height):
+def sanitize_svg(text, width, height, native=False):
     if len(text) > 250000 or re.search(r'<!DOCTYPE|<!ENTITY|<\?', text, re.I):
         raise ValueError('SVG declarations/entities or oversized response')
     root = ET.fromstring(text)
@@ -27,12 +27,18 @@ def sanitize_svg(text, width, height):
     if root.tag.removeprefix('{http://www.w3.org/2000/svg}') != 'svg':
         raise ValueError('Root must be SVG')
     box = [float(x) for x in re.split(r'[ ,]+', root.attrib.get('viewBox', '').strip())]
-    if box != [0, 0, 1000, 1000]:
-        raise ValueError('Expected normalized viewBox')
+    expected = [0, 0, width, height] if native else [0, 0, 1000, 1000]
+    if box != expected:
+        raise ValueError('Expected native image viewBox' if native else 'Expected normalized viewBox')
     root.set('width', str(width)); root.set('height', str(height))
-    root.set('preserveAspectRatio', 'none')
+    if native:
+        root.attrib.pop('preserveAspectRatio', None)
+    else:
+        root.set('preserveAspectRatio', 'none')
     ET.register_namespace('', 'http://www.w3.org/2000/svg')
     return ET.tostring(root, encoding='unicode')
 
 if __name__ == '__main__':
-    print(sanitize_svg(sys.stdin.read(), int(sys.argv[1]), int(sys.argv[2])))
+    if len(sys.argv) not in (3, 4) or (len(sys.argv) == 4 and sys.argv[3] != '--native'):
+        raise SystemExit('Usage: sanitize_facade_svg.py WIDTH HEIGHT [--native]')
+    print(sanitize_svg(sys.stdin.read(), int(sys.argv[1]), int(sys.argv[2]), '--native' in sys.argv[3:]))
