@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — Assembly preview regression corrections
+
+User screenshots exposed residual painted rail returns that the earlier visual
+review missed, plus a holdout opening stretched down through retail signage.
+Expanded cleanup margins while clamping them to neighboring openings, and added
+a strip-relative occluded-height outlier gate that preserves the rejected
+opening and balcony. One new regression test covers the storefront stretch.
+The earlier nine-balcony review was too strong: these corrections supersede its
+claim of no residual painted rails. Missing balcony and door insets remain open.
+
 ## 2026-09-27 — Whole-block automatic assembly pipeline
 
 Added a reproducible two-strip extraction/compiler command, ID-only GLM review,

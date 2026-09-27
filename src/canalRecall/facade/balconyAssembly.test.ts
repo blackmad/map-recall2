@@ -54,3 +54,13 @@ test('ambiguous balcony link adds neither slab nor cleanup mask', () => {
   assert.equal(result.stats.skippedBalconies[0].reason, 'ambiguous-linked-window');
   assert.equal(result.meshes.some(mesh => mesh.id === 'component:b:slab'), false);
 });
+
+test('an anomalous slab match cannot stretch an opening through the storefront', () => {
+  const openings = [0,1,2,3].map(i=>({id:`w${i}`,kind:'window' as const,bbox:[.05+i*.24,.2,.15+i*.24,.4] as const}));
+  const balconies = openings.map((w,i)=>({id:`b${i}`,bbox:[w.bbox[0]-.01,.38,w.bbox[2]+.01,i===3?.68:.5] as const}));
+  const result=applyBalconyAssemblies([wall()],balconies,openings);
+  assert.equal(result.stats.skippedBalconies.find(b=>b.id==='b3')?.reason,'occluded-height-outlier');
+  assert.equal(result.stats.inferredCompletions.some(c=>c.openingId==='w3'),false);
+  assert.equal(result.paintRemovalMasks.some(m=>m.id==='b3'),false);
+  assert.equal(result.meshes.some(m=>m.id.includes(':component:w3:')||m.id==='component:b3:slab'),false);
+});

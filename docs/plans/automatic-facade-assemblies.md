@@ -33,7 +33,7 @@ The dropdown also exposes the unchanged-method strip2 holdout. Toggle
 ## Current limits and next correction
 
 This is an **experimental partial pipeline**, not a completed block or rollout.
-Nine strip1 balcony assemblies survive the paint-cleanup gate; one retains its original appearance. Ten holdout balconies remain provisional. Strip1 has eight entrance proposals,
+Nine strip1 balcony assemblies survive the paint-cleanup gate; one retains its original appearance. Nine holdout balconies remain provisional; a tenth is withheld because its inferred extension is an outlier that crosses the shopfront. Strip1 has eight entrance proposals,
 only four edge-supported mouths, and the ID classifier withholds one of those;
 three reached geometry preview, but independent close-up review rejected all three for duplicate painted reveals or wrong surrounds. All ground candidates remain visible in reports as withheld; their original appearance is preserved. Strip2 admits no uncertain ground entrances. Shopfront bays
 still need grouping into complete retail assemblies; inferred depths remain

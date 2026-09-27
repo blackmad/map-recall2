@@ -45,7 +45,18 @@ export function fitBalconyPaint(balcony:Feature,opening:Feature,dark:Uint8Array,
   const slabEvidence=slabRows>=1;
   const top=clamp(Math.min(firstSide,o.y0+Math.floor(oh*.12))-2,o.y0-3,b.y0);
   const bottom=clamp(Math.max(slabLast+3,b.y1+2),b.y1+1,scanBottom);
-  const bbox={x0,y0:top,x1,y1:bottom};
+  // Include thin side-return strokes and support tips beyond the dense rail box.
+  // Bound the safety margin by neighboring openings instead of erasing them.
+  const margin=Math.max(2,Math.round(w*.008));
+  const bbox={x0:Math.max(0,x0-margin),y0:top,x1:Math.min(w,x1+margin),y1:Math.min(h,bottom+margin)};
+  for(const other of otherOpenings.filter(f=>f.id!==opening.id&&valid(f))){
+    const q=px(other.bounds,w,h);
+    if(q.y0<bottom&&q.y1>top){
+      if(q.x1<=x0)bbox.x0=Math.max(bbox.x0,q.x1+1);
+      if(q.x0>=x1)bbox.x1=Math.min(bbox.x1,q.x0-1);
+    }
+    if(q.x0<bbox.x1&&q.x1>bbox.x0&&q.y0>=bottom)bbox.y1=Math.min(bbox.y1,q.y0-1);
+  }
   const overlapsOther=otherOpenings.filter(f=>f.id!==opening.id&&valid(f))
     .filter(f=>{const q=px(f.bounds,w,h);return q.x0<bbox.x1&&q.x1>bbox.x0&&q.y0<bbox.y1&&q.y1>bbox.y0;})
     .map(f=>f.id);

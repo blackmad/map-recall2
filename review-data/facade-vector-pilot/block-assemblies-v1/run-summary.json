@@ -140,13 +140,16 @@
         "balcony-36",
         "balcony-45",
         "balcony-46",
-        "balcony-47",
-        "balcony-48"
+        "balcony-47"
       ],
       "withheldBalconies": [
         {
           "id": "balcony-70",
           "reason": "no-linked-window"
+        },
+        {
+          "id": "balcony-48",
+          "reason": "occluded-height-outlier"
         }
       ],
       "entrances": [
@@ -323,101 +326,101 @@
     "reason": "Requires source-detail preservation and independent visual review in addition to alignment; current review rejects replacement"
   },
   "cleanup": {
-    "outputTextureSha256": "26c0d2f7ead70cfc5f58a881a66ffa43a506a7a7e1b7f262b14ba7cf335708ee",
+    "outputTextureSha256": "bfa6789c5e8bd5400b32092162b1c922ed25046ab805a401a03979d981490d8a",
     "sourceTextureSha256": "9b62924dbb9a47769e0f8a003007d20af14acd793c4ee07eb4d70ffe605f033d",
     "generatedSourceSha256": "2b5fb1d2be53da5f4e0225cb6e030da62237935eb437730bb6f38a219eee941f",
     "cleanSha256": "f292e306edd12eada372490f9436ede424783e5d39c7ed56f1f7c9314514216b",
-    "maskSha256": "e18e3f8784f236472da39ebddcd4304adee9a6c8a78195ec656c56ff06643806",
+    "maskSha256": "d7280d3bdbb82d77d889ecac4bbffcd6caef3aa07617cc475f4f54c3c58b2bd2",
     "outsideMaskUnchanged": true,
-    "changedChannels": 854835,
+    "changedChannels": 1048872,
     "regions": [
       {
         "id": "balcony-10",
         "cleanupBounds": [
-          0.287109,
+          0.28418,
           0.372378,
-          0.348633,
-          0.5
+          0.349609,
+          0.513986
         ],
         "verified": true
       },
       {
         "id": "balcony-13",
         "cleanupBounds": [
-          0.469727,
+          0.46582,
           0.372378,
-          0.52832,
-          0.5
+          0.533203,
+          0.513986
         ],
         "verified": true
       },
       {
         "id": "balcony-16",
         "cleanupBounds": [
-          0.65332,
+          0.648438,
           0.372378,
-          0.711914,
-          0.5
+          0.71582,
+          0.513986
         ],
         "verified": true
       },
       {
         "id": "balcony-21",
         "cleanupBounds": [
-          0.108398,
+          0.100586,
           0.393357,
-          0.166016,
-          0.536713
+          0.172852,
+          0.541958
         ],
         "verified": true
       },
       {
         "id": "balcony-23",
         "cleanupBounds": [
-          0.838867,
+          0.831055,
           0.494755,
-          0.897461,
-          0.636364
+          0.905273,
+          0.641608
         ],
         "verified": true
       },
       {
         "id": "balcony-26",
         "cleanupBounds": [
-          0.287109,
+          0.28418,
           0.520979,
-          0.348633,
-          0.657343
+          0.349609,
+          0.660839
         ],
         "verified": true
       },
       {
         "id": "balcony-29",
         "cleanupBounds": [
-          0.469727,
+          0.46582,
           0.520979,
-          0.52832,
-          0.657343
+          0.533203,
+          0.660839
         ],
         "verified": true
       },
       {
         "id": "balcony-32",
         "cleanupBounds": [
-          0.65332,
+          0.648438,
           0.520979,
-          0.711914,
-          0.657343
+          0.71582,
+          0.660839
         ],
         "verified": true
       },
       {
         "id": "balcony-37",
         "cleanupBounds": [
-          0.108398,
+          0.100586,
           0.543706,
-          0.166016,
-          0.685315
+          0.172852,
+          0.688811
         ],
         "verified": true
       }

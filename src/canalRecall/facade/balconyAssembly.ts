@@ -110,11 +110,26 @@ export function applyBalconyAssemblies(
     eligible.push({balcony, opening});
     claimed.add(opening.id);
   }
-  let active = [...eligible];
+  // A false slab row can extend one opening through the floor/storefront below.
+  // Compare occluded-height fractions within the strip instead of imposing one
+  // fixed ratio (different drawings expose different amounts of glazing).
+  const fractions = eligible.map(({balcony, opening}) =>
+    (balcony.bbox[3] - opening.bbox[3]) / (opening.bbox[3] - opening.bbox[1])).sort((a,b)=>a-b);
+  const typical = fractions[Math.floor(fractions.length / 2)];
+  const preserved = new Set<string>();
+  let active = eligible.filter(({balcony, opening}) => {
+    const fraction = (balcony.bbox[3] - opening.bbox[3]) / (opening.bbox[3] - opening.bbox[1]);
+    if (fractions.length >= 4 && fraction > typical * 1.75) {
+      skippedBalconies.push({id: balcony.id, reason: 'occluded-height-outlier'});
+      preserved.add(opening.id);
+      return false;
+    }
+    return true;
+  });
   const build = () => {
     const activeIds = new Set(active.map(pair => pair.opening.id));
     const features: FacadeComponent[] = [
-      ...openings.map(opening => {
+      ...openings.filter(opening => !preserved.has(opening.id)).map(opening => {
         const current = activeIds.has(opening.id) ? completed.get(opening.id)! : opening;
         return {id: opening.id, kind: opening.kind, bbox: current.bbox, depth: opening.depth ?? 0.18,
           colour: activeIds.has(opening.id) ? '#333d3d' : undefined};
