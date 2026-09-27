@@ -18,13 +18,44 @@ assert.equal(FACADE_SVG_JSON_SCHEMA.additionalProperties,false);
 assert.equal(validateFacadeSvgExperiment(sample).openings.length,3);
 const svg=renderFacadeSvg(sample,{width:640,height:960});
 assert.equal(svg,renderFacadeSvg(sample,{width:640,height:960}));
-assert.match(svg,/width="640" height="960" viewBox="0 0 1000 1000" preserveAspectRatio="none"/);
+assert.match(svg,/width="640" height="960" viewBox="0 0 640 960"/);
+assert.ok(!svg.includes('preserveAspectRatio="none"'));
 assert.match(svg,/Evidence only: &lt;not accepted&gt; &amp; unregistered/);
-assert.match(svg,/data-material="render"/);
-assert.match(svg,/data-material="tile"/);
+assert.match(svg,/data-material="render" d="M64 192 L576 192 L576 912 L64 912 Z"/);
+assert.match(svg,/data-material="tile" d="M64 192 L192 76\.8 L448 76\.8 L576 192 Z"/);
+assert.match(svg,/<rect x="128" y="288" width="128" height="240" data-kind="window"/);
 assert.match(svg,/data-kind="door" data-visibility="inferred"/);
-assert.match(svg,/data-occlusion="tree"/);
+assert.match(svg,/data-occlusion="tree" d="M12\.8 566\.4 L70\.4 528 L115\.2 912 L12\.8 912 Z"/);
 assert.ok(!svg.includes('<not accepted>'));
+
+// The same normalized shape must occupy the same source-pixel box on either
+// aspect ratio. Its arched head radius is computed in physical pixels.
+const arch={...sample,openings:[{...sample.openings[1],visibility:'observed'}]};
+const tall=renderFacadeSvg(arch,{width:200,height:1000});
+const wide=renderFacadeSvg(arch,{width:1000,height:200});
+const arc=(markup:string)=>{
+ const match=markup.match(/<path d="M([\d.]+) ([\d.]+) V([\d.]+) A([\d.]+) ([\d.]+) 0 0 1 ([\d.]+) ([\d.]+) V([\d.]+) Z" data-kind="door"/);
+ assert.ok(match,'rendered door has a source-pixel arc');
+ return match.slice(1).map(Number);
+};
+const [tx,tyBottom,tyTop,trX,trY,tRight]=arc(tall);
+assert.deepEqual([tx,tyBottom,tRight],[126,950,158]);
+assert.equal(tyTop,620+trY);
+assert.equal(trX,16);
+assert.ok(trY<=16,'vertical arch radius cannot exceed half its physical width');
+const [wx,wyBottom,wyTop,wrX,wrY,wRight]=arc(wide);
+assert.deepEqual([wx,wyBottom,wRight],[630,190,790]);
+assert.equal(wyTop,124+wrY);
+assert.equal(wrX,80);
+assert.ok(wrY<=80);
+assert.equal(wrY,Math.min(80,66/3));
+assert.deepEqual(toSourceFacadeFeatures(arch,{width:200,height:1000})[0].bounds,[126,620,158,950]);
+const source80={...sample,openings:[{...sample.openings[1],bounds:[150,120,120,180]}]};
+const source80Arc=arc(renderFacadeSvg(source80,{width:275,height:873}));
+assert.equal(source80Arc[3],16.5);
+assert.equal(source80Arc[4],16.5,'narrow source 80 arch uses width in source pixels');
+assert.equal(source80Arc[5]-source80Arc[0],33,'the proposed box width is unchanged');
+assert.ok(Math.abs(source80Arc[1]-source80Arc[2]-140.64)<1e-9);
 
 const features=toSourceFacadeFeatures(sample,{width:640,height:960});
 assert.equal(features.length,2,'inferred door is not an observed FacadeFeature');

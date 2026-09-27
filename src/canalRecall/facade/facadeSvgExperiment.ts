@@ -104,7 +104,9 @@ export function validateFacadeSvgExperiment(input:unknown):FacadeSvgExperiment{
 }
 
 const escapeXml=(value:string)=>value.replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[char]!));
-const path=(polygon:Polygon)=>`M${polygon.map(([x,y])=>`${x} ${y}`).join(' L')} Z`;
+const sourcePoint=([x,y]:Point,width:number,height:number):Point=>[x*width/1000,y*height/1000];
+const path=(polygon:Polygon,width:number,height:number)=>
+ `M${polygon.map(point=>sourcePoint(point,width,height).join(' ')).join(' L')} Z`;
 const canvas=(size:{width:number;height:number})=>{
  if(!Number.isInteger(size.width)||!Number.isInteger(size.height)||size.width<1||size.height<1||size.width>20000||size.height>20000)
   throw Error('Source image dimensions must be positive integers at most 20000');
@@ -113,20 +115,22 @@ const canvas=(size:{width:number;height:number})=>{
 /** Flat colours intentionally avoid implying measured brick scale or albedo. */
 export function renderFacadeSvg(input:unknown,size:{width:number;height:number}):string{
  const data=validateFacadeSvgExperiment(input),{width,height}=canvas(size);
- const out=[`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 1000 1000" preserveAspectRatio="none">`,
+ const out=[`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`,
   `<desc>${escapeXml(data.notes)}</desc>`,
-  '<rect width="1000" height="1000" fill="#F4F4F1"/>'];
- if(data.roof)out.push(`<path data-material="${data.roof.material}" d="${path(data.roof.points)}" fill="${data.roof.colour}"/>`);
- for(const wall of data.walls)out.push(`<path data-material="${wall.material}" d="${path(wall.points)}" fill="${wall.colour}"/>`);
+  `<rect width="${width}" height="${height}" fill="#F4F4F1"/>`];
+ if(data.roof)out.push(`<path data-material="${data.roof.material}" d="${path(data.roof.points,width,height)}" fill="${data.roof.colour}"/>`);
+ for(const wall of data.walls)out.push(`<path data-material="${wall.material}" d="${path(wall.points,width,height)}" fill="${wall.colour}"/>`);
  for(const opening of data.openings){
-  const [x,y,w,h]=opening.bounds,r=Math.min(w/2,h/3),shape=opening.shape==='rect'
+  const [nx,ny,nw,nh]=opening.bounds;
+  const x=nx*width/1000,y=ny*height/1000,w=nw*width/1000,h=nh*height/1000;
+  const r=Math.min(w/2,h/3),shape=opening.shape==='rect'
    ?`<rect x="${x}" y="${y}" width="${w}" height="${h}"`
    :`<path d="M${x} ${y+h} V${y+r} A${w/2} ${r} 0 0 1 ${x+w} ${y+r} V${y+h} Z"`;
   const opacity=opening.visibility==='observed'?1:opening.visibility==='inferred'?.6:.35;
   const dash=opening.visibility==='observed'?'':' stroke-dasharray="8 5"';
   out.push(`${shape} data-kind="${opening.kind}" data-visibility="${opening.visibility}" fill="${opening.colour}" stroke="${opening.frameColour}" stroke-width="5" opacity="${opacity}"${dash}/>`);
  }
- for(const occlusion of data.occlusions??[])out.push(`<path data-occlusion="${occlusion.kind}" d="${path(occlusion.points)}" fill="#8D928B" fill-opacity="0.55" stroke="#525851" stroke-width="2"/>`);
+ for(const occlusion of data.occlusions??[])out.push(`<path data-occlusion="${occlusion.kind}" d="${path(occlusion.points,width,height)}" fill="#8D928B" fill-opacity="0.55" stroke="#525851" stroke-width="2"/>`);
  out.push('</svg>');return out.join('');
 }
 
