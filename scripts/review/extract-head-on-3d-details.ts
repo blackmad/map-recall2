@@ -11,6 +11,28 @@ const analysisWidth = 1024;
 type Box = {x0: number; y0: number; x1: number; y1: number; darkPixels: number};
 const clamp = (n: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, n));
 const overlap = (a0: number, a1: number, b0: number, b1: number) => Math.max(0, Math.min(a1, b1) - Math.max(a0, b0));
+async function textureWithoutSky(source: Buffer, width: number, height: number) {
+  const rgb = await sharp(source).removeAlpha().raw().toBuffer();
+  const pixels = width * height, sky = new Uint8Array(pixels), queue = new Int32Array(pixels);
+  let head = 0, tail = 0;
+  const white = (i: number) => rgb[i * 3] >= 245 && rgb[i * 3 + 1] >= 245 && rgb[i * 3 + 2] >= 245;
+  const visit = (i: number) => {if (!sky[i] && white(i)) {sky[i] = 1; queue[tail++] = i;}};
+  for (let x = 0; x < width; x++) {visit(x); visit((height - 1) * width + x);}
+  for (let y = 0; y < height; y++) {visit(y * width); visit(y * width + width - 1);}
+  while (head < tail) {
+    const i = queue[head++], x = i % width, y = (i / width) | 0;
+    if (x) visit(i - 1);
+    if (x + 1 < width) visit(i + 1);
+    if (y) visit(i - width);
+    if (y + 1 < height) visit(i + width);
+  }
+  const rgba = Buffer.allocUnsafe(pixels * 4);
+  for (let i = 0; i < pixels; i++) {
+    rgba[i * 4] = rgb[i * 3]; rgba[i * 4 + 1] = rgb[i * 3 + 1];
+    rgba[i * 4 + 2] = rgb[i * 3 + 2]; rgba[i * 4 + 3] = sky[i] ? 0 : 255;
+  }
+  return {png: await sharp(rgba, {raw: {width, height, channels: 4}}).png().toBuffer(), skyPixels: tail};
+}
 function extract(mask: Uint8Array, width: number, height: number): Box[] {
   const seen = new Uint8Array(mask.length), boxes: Box[] = [];
   const queue = new Int32Array(mask.length);
@@ -67,6 +89,7 @@ for (const number of [1, 2, 3]) {
   if (receipt.status !== 'ok' || receipt.pngPath !== `${id}.png` || sha(source) !== receipt.pngSha256 ||
       sourceInfo.width !== receipt.width || sourceInfo.height !== receipt.height)
     throw Error(`Generated source changed for ${id}`);
+  const texture = await textureWithoutSky(source, receipt.width, receipt.height);
   const {data, info} = await sharp(source).resize({width: analysisWidth, withoutEnlargement: true})
     .removeAlpha().raw().toBuffer({resolveWithObject: true});
   if (info.channels !== 3) throw Error('Expected RGB analysis image');
@@ -100,7 +123,7 @@ for (const number of [1, 2, 3]) {
     normalizedBounds: candidate.normalizedTopLeft}));
   const bump = await sharp(heights, {raw: {width, height, channels: 1}}).png().toBuffer();
   const originalName = `${id}-texture.png`, bumpName = `${id}-bump.png`, overlayName = `${id}-candidates.png`;
-  await fs.writeFile(path.join(outDir, originalName), source);
+  await fs.writeFile(path.join(outDir, originalName), texture.png);
   await fs.writeFile(path.join(outDir, bumpName), bump);
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">${boxes.map(box =>
     `<rect x="${box.x0}" y="${box.y0}" width="${box.x1 - box.x0}" height="${box.y1 - box.y0}" fill="none" stroke="#00ffea" stroke-width="2"/>`).join('')}</svg>`;
@@ -113,7 +136,8 @@ for (const number of [1, 2, 3]) {
       glassLikeRule: 'luma 65–190, |R-G|<16, |G-B|<21, B>=R+2',
       bumpRule: 'neutral128 plus 10% luminance detail; subtract28 on glass-like pixels',
       candidateCount: candidates.length},
-    artifacts: {texture: {path: originalName, sha256: sha(source)},
+    artifacts: {texture: {path: originalName, sha256: sha(texture.png), skyPixelsTransparent: texture.skyPixels,
+      skyRule: '4-connected from image border, every RGB channel >=245; other pixels retain source RGB and full opacity'},
       bump: {path: bumpName, sha256: sha(bump)}, overlay: {path: overlayName, sha256: sha(overlay)}},
     candidates};
   await fs.writeFile(path.join(outDir, `${id}-candidates.json`), JSON.stringify(record, null, 2) + '\n');
@@ -122,7 +146,8 @@ for (const number of [1, 2, 3]) {
     policy: 'Approximate upper-window quads inferred from generated pixels. No measured openings or georegistration.',
     sourceSha256: sha(source), coordinateFrame: 'full generated image, x-right/y-down, fractions 0..1',
     features}, null, 2) + '\n');
-  output.push({id, sourceSha256: sha(source), candidateCount: candidates.length,
+  output.push({id, sourceSha256: sha(source), textureSha256: sha(texture.png), skyPixelsTransparent: texture.skyPixels,
+    candidateCount: candidates.length,
     featureCount: features.length, texture: originalName, bump: bumpName, overlay: overlayName,
     candidates: `${id}-candidates.json`, features: featuresName});
 }
