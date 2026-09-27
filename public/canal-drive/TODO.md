@@ -78,6 +78,13 @@ trial used an explicit three-call/$0.60 scoped continuation, now exhausted.
 Default paid runners still block on the old unknown. Lite's promising coarse
 layouts still require source-bound geometry review and a generic-prompt ten-case
 test before expansion. See `docs/plans/facade-banana-lite-pilot.md`.
+Pro packed-versus-continuous-panorama pilot is complete: five calls, $0.689862.
+Four-column 2K packing is the strongest candidate here, but floor-count errors
+at 1K and geometry/detail changes prohibit rollout. Next: held-out cases, explicit
+white-padded single controls and measured source-bound alignment. Continuous pano
+cuts need per-frontage rectification and verified ownership. The five-call/$1.10
+scoped continuation is exhausted; old unknown remains reserved. Results:
+`docs/plans/facade-banana-pro-pack-pilot.md`.
 
 **OccFacade follow-up: validate full-facade proposals before integration.**
 All 100 cohort full views now have OccFacade/Vistas intersection masks. All 100

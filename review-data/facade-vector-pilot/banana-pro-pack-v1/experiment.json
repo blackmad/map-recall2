@@ -1,0 +1,363 @@
+{
+  "experimentHash": "9b0df1a8b6ab051288cbd39775f78eb965443667899b20df6395f772af9e4cf9",
+  "experiment": {
+    "version": 1,
+    "model": "google/gemini-3-pro-image",
+    "provider": "google-ai-studio/global",
+    "endpoint": "https://openrouter.ai/api/v1/images",
+    "manifestSha256": "98f4e9463a80f5115179aba5a73e5a80a835b20364575bec76eb3b5cf5253890",
+    "sourceManifestSha256": "8a9d1496074810a0b3f6b8fff20ef12764275a4f8e201b1e73ccab224e48712a",
+    "runnerSha256": "6bfbbf3127aa584475bf05bd3df8b3e6e383a87f0a2d37e597edae2c48ff2fed",
+    "unitReservationUsd": 0.22,
+    "maxRequests": 5,
+    "maxNewReservationsUsd": 1.1,
+    "imagesPerRequest": 1,
+    "jobs": [
+      {
+        "job": "single0",
+        "inputSha256": "032a16bee549c5a40a5683676c6e002031310b9ba92c114a2869ef4226e3c4f2",
+        "promptSha256": "9606e5645d9d0f886bd2eb67a07b2fbb587aead5313d8facea3555618f27f7f5",
+        "aspectRatio": "9:16",
+        "resolution": "1K",
+        "sourceBindings": [
+          {
+            "index": 0,
+            "buildingId": "0363100012166570",
+            "observationId": "0363100012166570_e_0wwk20u",
+            "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/000-image.jpg",
+            "sourceSha256": "032a16bee549c5a40a5683676c6e002031310b9ba92c114a2869ef4226e3c4f2",
+            "originalSourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+            "cellBounds": [
+              0,
+              0,
+              263,
+              892
+            ],
+            "photoBounds": [
+              0,
+              0,
+              263,
+              892
+            ],
+            "originalSize": [
+              263,
+              892
+            ],
+            "scale": 1
+          }
+        ],
+        "panoramaBinding": null
+      },
+      {
+        "job": "single80",
+        "inputSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+        "promptSha256": "9606e5645d9d0f886bd2eb67a07b2fbb587aead5313d8facea3555618f27f7f5",
+        "aspectRatio": "9:16",
+        "resolution": "1K",
+        "sourceBindings": [
+          {
+            "index": 80,
+            "buildingId": "0363100012148915",
+            "observationId": "0363100012148915_e_1w53m9k",
+            "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/080-image.jpg",
+            "sourceSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+            "originalSourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+            "cellBounds": [
+              0,
+              0,
+              275,
+              873
+            ],
+            "photoBounds": [
+              0,
+              0,
+              275,
+              873
+            ],
+            "originalSize": [
+              275,
+              873
+            ],
+            "scale": 1
+          }
+        ],
+        "panoramaBinding": null
+      },
+      {
+        "job": "sheet1k",
+        "inputSha256": "0aa7cefc5da34fd5bad012e7c01a4ee7d3cb0ddbdf54d79700a96b4b5ef8aadb",
+        "promptSha256": "caf02fcd691b0f8bdd8fd0d5761c0e9147c4abb91a53691df8c9b5ea923c0016",
+        "aspectRatio": "1:1",
+        "resolution": "1K",
+        "sourceBindings": [
+          {
+            "index": 0,
+            "buildingId": "0363100012166570",
+            "observationId": "0363100012166570_e_0wwk20u",
+            "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/000-image.jpg",
+            "sourceSha256": "032a16bee549c5a40a5683676c6e002031310b9ba92c114a2869ef4226e3c4f2",
+            "originalSourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+            "cellBounds": [
+              16,
+              16,
+              252,
+              1008
+            ],
+            "photoBounds": [
+              16,
+              112,
+              252,
+              912
+            ],
+            "originalSize": [
+              263,
+              892
+            ],
+            "scale": 0.8973384030418251
+          },
+          {
+            "index": 3,
+            "buildingId": "0363100012162897",
+            "observationId": "0363100012162897_e_0c4e2gf",
+            "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/003-image.jpg",
+            "sourceSha256": "611b8b3b00cc14ba07abb443f22ee329c2ce6d0579e742a9c8cc8124dd2f07ac",
+            "originalSourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+            "cellBounds": [
+              268,
+              16,
+              504,
+              1008
+            ],
+            "photoBounds": [
+              268,
+              129,
+              504,
+              894
+            ],
+            "originalSize": [
+              275,
+              892
+            ],
+            "scale": 0.8581818181818182
+          },
+          {
+            "index": 4,
+            "buildingId": "0363100012165154",
+            "observationId": "0363100012165154_e_16tobqf",
+            "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/004-image.jpg",
+            "sourceSha256": "2756742abf5387c857eedf0925884ad922c0261fb7531ee1098ac65d5270593f",
+            "originalSourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+            "cellBounds": [
+              520,
+              16,
+              756,
+              1008
+            ],
+            "photoBounds": [
+              520,
+              178,
+              756,
+              846
+            ],
+            "originalSize": [
+              282,
+              798
+            ],
+            "scale": 0.8368794326241135
+          },
+          {
+            "index": 80,
+            "buildingId": "0363100012148915",
+            "observationId": "0363100012148915_e_1w53m9k",
+            "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/080-image.jpg",
+            "sourceSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+            "originalSourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+            "cellBounds": [
+              772,
+              16,
+              1008,
+              1008
+            ],
+            "photoBounds": [
+              772,
+              137,
+              1008,
+              886
+            ],
+            "originalSize": [
+              275,
+              873
+            ],
+            "scale": 0.8581818181818182
+          }
+        ],
+        "panoramaBinding": null
+      },
+      {
+        "job": "sheet2k",
+        "inputSha256": "0aa7cefc5da34fd5bad012e7c01a4ee7d3cb0ddbdf54d79700a96b4b5ef8aadb",
+        "promptSha256": "caf02fcd691b0f8bdd8fd0d5761c0e9147c4abb91a53691df8c9b5ea923c0016",
+        "aspectRatio": "1:1",
+        "resolution": "2K",
+        "sourceBindings": [
+          {
+            "index": 0,
+            "buildingId": "0363100012166570",
+            "observationId": "0363100012166570_e_0wwk20u",
+            "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/000-image.jpg",
+            "sourceSha256": "032a16bee549c5a40a5683676c6e002031310b9ba92c114a2869ef4226e3c4f2",
+            "originalSourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+            "cellBounds": [
+              16,
+              16,
+              252,
+              1008
+            ],
+            "photoBounds": [
+              16,
+              112,
+              252,
+              912
+            ],
+            "originalSize": [
+              263,
+              892
+            ],
+            "scale": 0.8973384030418251
+          },
+          {
+            "index": 3,
+            "buildingId": "0363100012162897",
+            "observationId": "0363100012162897_e_0c4e2gf",
+            "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/003-image.jpg",
+            "sourceSha256": "611b8b3b00cc14ba07abb443f22ee329c2ce6d0579e742a9c8cc8124dd2f07ac",
+            "originalSourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+            "cellBounds": [
+              268,
+              16,
+              504,
+              1008
+            ],
+            "photoBounds": [
+              268,
+              129,
+              504,
+              894
+            ],
+            "originalSize": [
+              275,
+              892
+            ],
+            "scale": 0.8581818181818182
+          },
+          {
+            "index": 4,
+            "buildingId": "0363100012165154",
+            "observationId": "0363100012165154_e_16tobqf",
+            "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/004-image.jpg",
+            "sourceSha256": "2756742abf5387c857eedf0925884ad922c0261fb7531ee1098ac65d5270593f",
+            "originalSourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+            "cellBounds": [
+              520,
+              16,
+              756,
+              1008
+            ],
+            "photoBounds": [
+              520,
+              178,
+              756,
+              846
+            ],
+            "originalSize": [
+              282,
+              798
+            ],
+            "scale": 0.8368794326241135
+          },
+          {
+            "index": 80,
+            "buildingId": "0363100012148915",
+            "observationId": "0363100012148915_e_1w53m9k",
+            "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/080-image.jpg",
+            "sourceSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+            "originalSourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+            "cellBounds": [
+              772,
+              16,
+              1008,
+              1008
+            ],
+            "photoBounds": [
+              772,
+              137,
+              1008,
+              886
+            ],
+            "originalSize": [
+              275,
+              873
+            ],
+            "scale": 0.8581818181818182
+          }
+        ],
+        "panoramaBinding": null
+      },
+      {
+        "job": "panorama1k",
+        "inputSha256": "4f8ab4c23a7137120155471d095656aa5779d6dffa7c39b486498fce8baab632",
+        "promptSha256": "e39823e0115f6e13369674bff8f483ee4aa6ff1fa1b578d419fbdc25843ef2ae",
+        "aspectRatio": "16:9",
+        "resolution": "1K",
+        "sourceBindings": [],
+        "panoramaBinding": {
+          "recordId": "0363100012077314_e_14o9326",
+          "buildingId": "0363100012077314",
+          "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/da-costa-height-stage/followup/evidence/images/0363100012077314_e_14o9326-context.jpg",
+          "sourceSha256": "ffdce2031fbca832e2de7ca5ed3ad74ca5acff94cc5d337de794a24f4a735b55",
+          "sourceManifestPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/da-costa-height-stage/followup/evidence/manifest.json",
+          "sourceManifestSha256": "28358e1a8d78041da9106027a4708382fcec3e2656b6e116de8c171a97a3afb2",
+          "panoramaId": "TMX7316010203-002928_pano_0014_000001",
+          "panoramaSha256": "519d55b4c8d5140474c339b8b625958787374098b4643801da379156bf90c625",
+          "capturedAt": "2023-01-12T09:12:21.403370Z",
+          "sourceDimensions": [
+            3451,
+            406
+          ],
+          "sourceCropBounds": [
+            450,
+            0,
+            1170,
+            405
+          ],
+          "outputBounds": [
+            0,
+            0,
+            1024,
+            576
+          ],
+          "projection": "existing single rectified panorama context; no image concatenation",
+          "identity": "source record is one target elevation; neighbouring facades remain unregistered context"
+        }
+      }
+    ],
+    "note": "Generic architectural prompt across jobs, with framing suffix only. Pro aspect/output differ from prior Lite. Five calls maximum, no retries. Old unknown charge remains reserved."
+  },
+  "authorization": {
+    "id": "owner-vector-pilot-cheap-multimodal-2026-09-27",
+    "source": "User: go for it; try local, deepseek4.1flash and cheap multimodal OpenRouter models with configured key budget",
+    "baselineGlobalUsd": 5.384790739499998,
+    "maxAdditionalUsd": 1.5,
+    "maxCeilingUsd": 6.884790739499998,
+    "recordedAt": "2026-09-27T07:11:21.980Z",
+    "scopedContinuation": {
+      "id": "nano-pro-pack-five-2026-09-27",
+      "source": "User requested Nano Banana Pro single-facade, packed-sheet and panorama trials.",
+      "maxNewReservationsUsd": 1.1,
+      "maxRequests": 5,
+      "acknowledgedUnknownIds": [
+        "request:068099f48543ee8fad1e83e3db344e72d3c28aeec9c35cb0f3e2410e38121068"
+      ]
+    }
+  }
+}

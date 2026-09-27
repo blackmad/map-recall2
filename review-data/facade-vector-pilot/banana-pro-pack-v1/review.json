@@ -1,0 +1,30 @@
+{
+  "summary": "Four-column packing is usable for separating candidate artwork. The 2K sample retains source3 floor count where 1K invents one floor, but neither is geometry-accepted. Continuous panorama preserves broad perspective and roof masses while simplifying visible details. No game rollout.",
+  "acceptedForGame": false,
+  "reviewer": "root visual inspection",
+  "findings": {
+    "single0": "Broad opening count retained; facade widened to fill 9:16 instead of white padding, opaque white glass, altered trim.",
+    "single80": "Main gable, attic pair and three balcony levels retained; invented flanking buildings, widened framing and reconstructed obscured shop.",
+    "sheet1k": "Four columns remain separable at original horizontal coordinates. Source3 has five upper opening rows instead of four, upward-expanded roof/mast and brighter orange masonry. Source0,4,80 broad opening rhythms retained; ground details idealized.",
+    "sheet2k": "Four columns remain separable. Source3 has correct four upper rows, but masonry bands/trim still changed. Extra drawn grid lines, source4 brick pattern despite no-texture prompt, neutral ground occlusions; no exact registration established.",
+    "panorama1k": "One continuous real panorama-derived context crop, not packed images. Broad roofline and receding street perspective retained; right-side inset balconies reduced to blank recesses, ground occlusions flattened and some doors reconstructed. Context-zone cuts are not verified per-building boundaries."
+  },
+  "limitations": [
+    "One sample per condition; resolution effect not statistically isolated from generation randomness.",
+    "Both sheets use identical 1024-square input. 2K output does not recover additional source pixels.",
+    "Single controls use 9:16 framing suffix; Pro lacks the narrower source aspect. Explicit pre-padding would improve control design.",
+    "Prompt asks flat colours without texture. This does not evaluate brick-texture synthesis quality.",
+    "Earlier Lite used bespoke prompts; this Pro trial uses a generic prompt, so no controlled Pro/Lite winner.",
+    "Sources have unverified building ownership."
+  ],
+  "next": "Use 2K four-facade packs for the next small held-out comparison, with explicit padded single controls and fixed geometry overlays. Keep continuous panoramas as context; isolate and rectify each frontage before production textures.",
+  "qa": {
+    "desktopWidth": 1440,
+    "phoneWidth": 390,
+    "imagesLoaded": 26,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "horizontalOverflow": false
+  },
+  "independentReviewer": "Sol visual review confirms source3 extra floor at1K, correct count at2K; all columns remain separate; panorama preserves broad roofline but regularizes distant/hidden geometry."
+}

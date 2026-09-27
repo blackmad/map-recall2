@@ -1,0 +1,80 @@
+{
+  "job": "single80",
+  "model": "google/gemini-3-pro-image",
+  "provider": "google-ai-studio/global",
+  "experimentHash": "9b0df1a8b6ab051288cbd39775f78eb965443667899b20df6395f772af9e4cf9",
+  "key": "677a08be17752a53e87638c257e0857b23864ac2b4b4c1b1b67839c5745a7bce",
+  "reservation": "request:d77015490f4ae135d9ae6309d91a8d080dc6bfadb903f1ba63541aa73f6a7461",
+  "inputSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+  "promptSha256": "9606e5645d9d0f886bd2eb67a07b2fbb587aead5313d8facea3555618f27f7f5",
+  "prompt": "Transform the supplied photograph into a flat-colour architectural drawing in the same framing. Preserve only the photographed architecture: exact visible opening count, ordering, relative positions and proportions, entrance location, roof outline, wall colour families, and material bands. Keep lintels, arches, openings and doors distinct. Remove transient cars, people, wires and vegetation only where the wall behind them is unambiguous; leave uncertain hidden areas as plain neutral shapes. Use clean flat colour fills and simple outlines without texture, stylization, beautification, extra floors, invented windows, invented doors, invented balconies, or invented text. No labels or explanatory marks.\nPlace this one complete front-facing facade on a white-padded 9:16 canvas. Do not crop or stretch the facade to fill the canvas.",
+  "aspectRatio": "9:16",
+  "resolution": "1K",
+  "sourceBindings": [
+    {
+      "index": 80,
+      "buildingId": "0363100012148915",
+      "observationId": "0363100012148915_e_1w53m9k",
+      "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/080-image.jpg",
+      "sourceSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+      "originalSourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+      "cellBounds": [
+        0,
+        0,
+        275,
+        873
+      ],
+      "photoBounds": [
+        0,
+        0,
+        275,
+        873
+      ],
+      "originalSize": [
+        275,
+        873
+      ],
+      "scale": 1
+    }
+  ],
+  "panoramaBinding": null,
+  "status": "ok",
+  "startedAt": "2026-09-27T13:23:14.646Z",
+  "httpStatus": 200,
+  "requestId": null,
+  "rawResponseSha256": "ce01d0257a44594f2ff265e8807cbebebc6bd9c66418ece64c79c11752c831c6",
+  "clientLatencyMs": 18536,
+  "usage": {
+    "prompt_tokens": 417,
+    "completion_tokens": 1309,
+    "total_tokens": 1726,
+    "cost": 0.137502,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.137502,
+      "upstream_inference_prompt_cost": 0.000834,
+      "upstream_inference_completions_cost": 0.136668
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 1120
+    }
+  },
+  "generationId": null,
+  "settlement": {
+    "totalUsd": 6.024944059153995,
+    "exceededCeiling": false,
+    "exceededContinuation": false
+  },
+  "actualCostUsd": 0.137502,
+  "pngPath": "single80.png",
+  "pngSha256": "44550a473514f13e557e6242933bb521c783d2c29a0d195df4d78031729fc67a",
+  "width": 768,
+  "height": 1376
+}

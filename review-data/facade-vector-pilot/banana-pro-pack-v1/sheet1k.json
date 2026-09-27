@@ -1,0 +1,155 @@
+{
+  "job": "sheet1k",
+  "model": "google/gemini-3-pro-image",
+  "provider": "google-ai-studio/global",
+  "experimentHash": "9b0df1a8b6ab051288cbd39775f78eb965443667899b20df6395f772af9e4cf9",
+  "key": "b3de6d31889f2d0317c41d2a0de1f14754c808718ae414144887db1f5705ea19",
+  "reservation": "request:01503e0149345dbb9dfb7b7be62d0269703826ba4daacdbbc227c14aab45ce31",
+  "inputSha256": "0aa7cefc5da34fd5bad012e7c01a4ee7d3cb0ddbdf54d79700a96b4b5ef8aadb",
+  "promptSha256": "caf02fcd691b0f8bdd8fd0d5761c0e9147c4abb91a53691df8c9b5ea923c0016",
+  "prompt": "Transform the supplied photograph into a flat-colour architectural drawing in the same framing. Preserve only the photographed architecture: exact visible opening count, ordering, relative positions and proportions, entrance location, roof outline, wall colour families, and material bands. Keep lintels, arches, openings and doors distinct. Remove transient cars, people, wires and vegetation only where the wall behind them is unambiguous; leave uncertain hidden areas as plain neutral shapes. Use clean flat colour fills and simple outlines without texture, stylization, beautification, extra floors, invented windows, invented doors, invented balconies, or invented text. No labels or explanatory marks.\nThe input is a contact sheet. Preserve every cell independently in exactly the same grid, order, cell bounds, white gutters and margins. Transform each cell without joining or swapping buildings. Keep the output as one contact sheet.",
+  "aspectRatio": "1:1",
+  "resolution": "1K",
+  "sourceBindings": [
+    {
+      "index": 0,
+      "buildingId": "0363100012166570",
+      "observationId": "0363100012166570_e_0wwk20u",
+      "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/000-image.jpg",
+      "sourceSha256": "032a16bee549c5a40a5683676c6e002031310b9ba92c114a2869ef4226e3c4f2",
+      "originalSourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "cellBounds": [
+        16,
+        16,
+        252,
+        1008
+      ],
+      "photoBounds": [
+        16,
+        112,
+        252,
+        912
+      ],
+      "originalSize": [
+        263,
+        892
+      ],
+      "scale": 0.8973384030418251
+    },
+    {
+      "index": 3,
+      "buildingId": "0363100012162897",
+      "observationId": "0363100012162897_e_0c4e2gf",
+      "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/003-image.jpg",
+      "sourceSha256": "611b8b3b00cc14ba07abb443f22ee329c2ce6d0579e742a9c8cc8124dd2f07ac",
+      "originalSourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "cellBounds": [
+        268,
+        16,
+        504,
+        1008
+      ],
+      "photoBounds": [
+        268,
+        129,
+        504,
+        894
+      ],
+      "originalSize": [
+        275,
+        892
+      ],
+      "scale": 0.8581818181818182
+    },
+    {
+      "index": 4,
+      "buildingId": "0363100012165154",
+      "observationId": "0363100012165154_e_16tobqf",
+      "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/004-image.jpg",
+      "sourceSha256": "2756742abf5387c857eedf0925884ad922c0261fb7531ee1098ac65d5270593f",
+      "originalSourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "cellBounds": [
+        520,
+        16,
+        756,
+        1008
+      ],
+      "photoBounds": [
+        520,
+        178,
+        756,
+        846
+      ],
+      "originalSize": [
+        282,
+        798
+      ],
+      "scale": 0.8368794326241135
+    },
+    {
+      "index": 80,
+      "buildingId": "0363100012148915",
+      "observationId": "0363100012148915_e_1w53m9k",
+      "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-inputs-v1/080-image.jpg",
+      "sourceSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+      "originalSourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+      "cellBounds": [
+        772,
+        16,
+        1008,
+        1008
+      ],
+      "photoBounds": [
+        772,
+        137,
+        1008,
+        886
+      ],
+      "originalSize": [
+        275,
+        873
+      ],
+      "scale": 0.8581818181818182
+    }
+  ],
+  "panoramaBinding": null,
+  "status": "ok",
+  "startedAt": "2026-09-27T13:23:33.261Z",
+  "httpStatus": 200,
+  "requestId": null,
+  "rawResponseSha256": "2b659d4c0637f694ce0338d3bf9ac8d73cc0e4f245c8ff35f24c02f9835425b6",
+  "clientLatencyMs": 50419,
+  "usage": {
+    "prompt_tokens": 429,
+    "completion_tokens": 1460,
+    "total_tokens": 1889,
+    "cost": 0.139338,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.139338,
+      "upstream_inference_prompt_cost": 0.000858,
+      "upstream_inference_completions_cost": 0.13848
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 1120
+    }
+  },
+  "generationId": null,
+  "settlement": {
+    "totalUsd": 6.1642820591539955,
+    "exceededCeiling": false,
+    "exceededContinuation": false
+  },
+  "actualCostUsd": 0.139338,
+  "pngPath": "sheet1k.png",
+  "pngSha256": "a2e83a90f16074b0eff6120418eb0a9b6eabafc145ec74826bff1cfaa7f65514",
+  "width": 1024,
+  "height": 1024
+}

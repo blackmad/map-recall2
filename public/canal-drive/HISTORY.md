@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — Nano Banana Pro packing and continuous panorama pilot
+
+Five pinned Pro Image calls compared two singles, identical four-facade packed
+input at 1K/2K output, and one real panorama-derived continuous context crop.
+Actual total $0.689862; packed cost $0.0348345/0.0345165 per requested facade.
+Original-coordinate cuts stay separate, but 1K invents a source3 floor; the 2K
+sample keeps its four upper rows. Continuous panorama retains perspective and
+broad roofs but simplifies balconies and obscured ground. No accepted game data.
+New gallery, immutable input manifest, bounded runner, receipts and review are
+under banana-pro-pack-v1. Both desktop/phone load all26 images without errors or
+overflow; TypeScript passes. Existing unknown $0.06 remains reserved; the new
+five-call/$1.10 scope is exhausted, without increasing the global ceiling.
+See `docs/plans/facade-banana-pro-pack-pilot.md` for limits and follow-up.
+
 ## 2026-09-27 — Nano Banana 2 Lite raster pilot
 
 Tested `google/gemini-3.1-flash-lite-image` on sources0/17/80 with the same saved

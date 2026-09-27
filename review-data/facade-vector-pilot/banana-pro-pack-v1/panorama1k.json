@@ -1,0 +1,82 @@
+{
+  "job": "panorama1k",
+  "model": "google/gemini-3-pro-image",
+  "provider": "google-ai-studio/global",
+  "experimentHash": "9b0df1a8b6ab051288cbd39775f78eb965443667899b20df6395f772af9e4cf9",
+  "key": "cb67153dcea92edb49f6fbad6233b0aad35673857318b4d23b92bb7be8b6bd55",
+  "reservation": "request:9d30ed3a80815197b0e5280d8a1a3c3a5744d7bffce432fa382388b06a55e599",
+  "inputSha256": "4f8ab4c23a7137120155471d095656aa5779d6dffa7c39b486498fce8baab632",
+  "promptSha256": "e39823e0115f6e13369674bff8f483ee4aa6ff1fa1b578d419fbdc25843ef2ae",
+  "prompt": "Transform the supplied photograph into a flat-colour architectural drawing in the same framing. Preserve only the photographed architecture: exact visible opening count, ordering, relative positions and proportions, entrance location, roof outline, wall colour families, and material bands. Keep lintels, arches, openings and doors distinct. Remove transient cars, people, wires and vegetation only where the wall behind them is unambiguous; leave uncertain hidden areas as plain neutral shapes. Use clean flat colour fills and simple outlines without texture, stylization, beautification, extra floors, invented windows, invented doors, invented balconies, or invented text. No labels or explanatory marks.\nThe input is a panorama/context image. Preserve its existing camera perspective, receding street, roof and wall boundaries, and relative positions of visible facades. Do not rearrange them into an ideal front-on building strip or one invented building. The construction-fence/occluded area must remain plain and unknown rather than becoming an invented shopfront.",
+  "aspectRatio": "16:9",
+  "resolution": "1K",
+  "sourceBindings": [],
+  "panoramaBinding": {
+    "recordId": "0363100012077314_e_14o9326",
+    "buildingId": "0363100012077314",
+    "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/da-costa-height-stage/followup/evidence/images/0363100012077314_e_14o9326-context.jpg",
+    "sourceSha256": "ffdce2031fbca832e2de7ca5ed3ad74ca5acff94cc5d337de794a24f4a735b55",
+    "sourceManifestPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/da-costa-height-stage/followup/evidence/manifest.json",
+    "sourceManifestSha256": "28358e1a8d78041da9106027a4708382fcec3e2656b6e116de8c171a97a3afb2",
+    "panoramaId": "TMX7316010203-002928_pano_0014_000001",
+    "panoramaSha256": "519d55b4c8d5140474c339b8b625958787374098b4643801da379156bf90c625",
+    "capturedAt": "2023-01-12T09:12:21.403370Z",
+    "sourceDimensions": [
+      3451,
+      406
+    ],
+    "sourceCropBounds": [
+      450,
+      0,
+      1170,
+      405
+    ],
+    "outputBounds": [
+      0,
+      0,
+      1024,
+      576
+    ],
+    "projection": "existing single rectified panorama context; no image concatenation",
+    "identity": "source record is one target elevation; neighbouring facades remain unregistered context"
+  },
+  "status": "ok",
+  "startedAt": "2026-09-27T13:25:21.328Z",
+  "httpStatus": 200,
+  "requestId": null,
+  "rawResponseSha256": "183c3efeec61300ec305917fc61c06642a19798e7042c46d13c2dc3831404aba",
+  "clientLatencyMs": 17898,
+  "usage": {
+    "prompt_tokens": 453,
+    "completion_tokens": 1294,
+    "total_tokens": 1747,
+    "cost": 0.137394,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.137394,
+      "upstream_inference_prompt_cost": 0.000906,
+      "upstream_inference_completions_cost": 0.136488
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 1120
+    }
+  },
+  "generationId": null,
+  "settlement": {
+    "totalUsd": 6.439742059153995,
+    "exceededCeiling": false,
+    "exceededContinuation": false
+  },
+  "actualCostUsd": 0.137394,
+  "pngPath": "panorama1k.png",
+  "pngSha256": "7f018d36c16f75d1fbd9b4621c6e34a3cc296d19ed82f6cf0dc7d887ba1c3177",
+  "width": 1376,
+  "height": 768
+}
