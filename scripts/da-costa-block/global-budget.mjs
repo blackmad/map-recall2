@@ -7,9 +7,22 @@ export const LEGACY_BUDGET_LEDGER = '.cache/da-costa-neighbourhood/spend.json';
 const validCost = value => Number.isFinite(value) && value >= 0;
 const total = state => state.entries.reduce((sum, entry) => sum + (validCost(entry.actualUsd) ? entry.actualUsd : entry.reservedUsd), 0);
 
-export function globalBudget({ file = DEFAULT_BUDGET_LEDGER, ceiling = 5, legacyLedgers = [LEGACY_BUDGET_LEDGER], authorization = null } = {}) {
+export function globalBudget({ file = DEFAULT_BUDGET_LEDGER, ceiling = 5, legacyLedgers = [LEGACY_BUDGET_LEDGER], authorization = null, acknowledgedUnknownIds = [] } = {}) {
   const extended=authorization&&typeof authorization.id==='string'&&authorization.id&&Number.isFinite(authorization.maxCeilingUsd)&&authorization.maxCeilingUsd>=ceiling;
   if (!Number.isFinite(ceiling) || ceiling <= 0 || (ceiling > 5&&!extended)) throw Error('Budget ceiling exceeds its recorded authorization');
+  if (!Array.isArray(acknowledgedUnknownIds) || new Set(acknowledgedUnknownIds).size !== acknowledgedUnknownIds.length || acknowledgedUnknownIds.some(id => typeof id !== 'string' || !id)) throw Error('Invalid acknowledged unknown IDs');
+  const scope = acknowledgedUnknownIds.length ? authorization?.scopedContinuation : null;
+  if (acknowledgedUnknownIds.length) {
+    const authorizedIds=scope?.acknowledgedUnknownIds;
+    if (!extended || typeof scope?.id !== 'string' || !scope.id || typeof scope.source !== 'string' || !scope.source ||
+        !Array.isArray(authorizedIds) || authorizedIds.length !== acknowledgedUnknownIds.length ||
+        authorizedIds.some(id => !acknowledgedUnknownIds.includes(id)) ||
+        !Number.isFinite(scope.maxNewReservationsUsd) || scope.maxNewReservationsUsd <= 0 ||
+        !Number.isInteger(scope.maxRequests) || scope.maxRequests < 1) {
+      throw Error('Acknowledged unknowns require matching scoped continuation authorization');
+    }
+  }
+  const acknowledged = new Set(acknowledgedUnknownIds);
   file = path.resolve(file);
   const transaction = async change => lockedJson(file, { version: 1, entries: [] }, async state => {
     if (state.version !== 1 || !Array.isArray(state.entries)) throw Error('Unsupported global budget journal');
@@ -53,7 +66,12 @@ export function globalBudget({ file = DEFAULT_BUDGET_LEDGER, ceiling = 5, legacy
     return result;
   });
   const assertResolved = state => {
-    if (state.entries.some(entry => entry.status === 'unknown')) throw Error('Unresolved previous charge in global budget; reconcile before more calls');
+    const unknown = state.entries.filter(entry => entry.status === 'unknown');
+    if (unknown.some(entry => !acknowledged.has(entry.id)) ||
+        acknowledged.size && [...acknowledged].some(id => !unknown.some(entry => entry.id === id)))
+      throw Error('Unresolved previous charge in global budget; reconcile before more calls');
+    if (acknowledged.size && state.entries.some(entry => entry.status === 'pending'))
+      throw Error('Pending request in scoped continuation; reconcile before more calls');
   };
   return {
     file,
@@ -64,8 +82,18 @@ export function globalBudget({ file = DEFAULT_BUDGET_LEDGER, ceiling = 5, legacy
       if (!key || !sourceLedger || !Number.isFinite(reservedUsd) || reservedUsd <= 0) throw Error('Invalid reservation');
       const id = `request:${digest([path.resolve(sourceLedger), key])}`;
       if (state.entries.some(entry => entry.id === id)) throw Error('Request already reserved globally; reconcile or reuse its local result');
+      if (scope) {
+        const prior=state.entries.filter(entry => entry.scopedContinuationId === scope.id);
+        if (reservedUsd + 1e-12 < scope.maxNewReservationsUsd / scope.maxRequests)
+          throw Error('Scoped continuation reservation below authorized per-request minimum');
+        if (prior.length >= scope.maxRequests || prior.reduce((sum, entry) => sum + entry.reservedUsd, 0) + reservedUsd > scope.maxNewReservationsUsd + 1e-12 ||
+            prior.reduce((sum, entry) => sum + (validCost(entry.actualUsd) ? entry.actualUsd : entry.reservedUsd), 0) + reservedUsd > scope.maxNewReservationsUsd + 1e-12)
+          throw Error('Scoped continuation reservation or request cap exceeded');
+      }
       if (total(state) + reservedUsd > ceiling + 1e-12) throw Error('Global spend reservation exceeds ceiling');
-      state.entries.push({ ...metadata, id, key, sourceLedger: path.resolve(sourceLedger), reservedUsd, status: 'pending', owner: owner(), startedAt: new Date().toISOString() });
+      state.entries.push({ ...metadata, id, key, sourceLedger: path.resolve(sourceLedger), reservedUsd,
+        ...(scope ? { scopedContinuationId: scope.id, scopedContinuationSource: scope.source } : {}),
+        status: 'pending', owner: owner(), startedAt: new Date().toISOString() });
       return id;
     }),
     settle: (id, actualUsd, metadata = {}) => transaction(state => {
@@ -73,14 +101,16 @@ export function globalBudget({ file = DEFAULT_BUDGET_LEDGER, ceiling = 5, legacy
       if (!entry) throw Error('Unknown reservation');
       if (entry.status === 'settled') {
         if (!validCost(actualUsd) || actualUsd !== entry.actualUsd) throw Error('Settlement does not match recorded charge');
-        return { totalUsd: total(state), exceededCeiling: total(state) > ceiling };
+        return { totalUsd: total(state), exceededCeiling: total(state) > ceiling,
+          exceededContinuation: !!scope && state.entries.filter(value => value.scopedContinuationId === scope.id).reduce((sum,value) => sum + (validCost(value.actualUsd) ? value.actualUsd : value.reservedUsd),0) > scope.maxNewReservationsUsd };
       }
       entry.status = validCost(actualUsd) ? 'settled' : 'unknown';
       entry.actualUsd = validCost(actualUsd) ? actualUsd : undefined;
       entry.completedAt = new Date().toISOString();
       entry.generationId = metadata.generationId;
       // An unexpectedly expensive response is recorded in full, never rounded to its reservation.
-      return { totalUsd: total(state), exceededCeiling: total(state) > ceiling };
+      return { totalUsd: total(state), exceededCeiling: total(state) > ceiling,
+        exceededContinuation: !!scope && state.entries.filter(value => value.scopedContinuationId === scope.id).reduce((sum,value) => sum + (validCost(value.actualUsd) ? value.actualUsd : value.reservedUsd),0) > scope.maxNewReservationsUsd };
     }),
   };
 }
