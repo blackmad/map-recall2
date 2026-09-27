@@ -71,6 +71,13 @@ sessions do not measure per-image API cost/latency. A native-pixel, streaming
 metered runner is ready, blocked by the same unresolved charge. Next compare
 against fixed observed bounds and a generic raster prompt on ten controls.
 Details: `docs/plans/facade-raster-effort-pilot.md`.
+Nano Banana 2 Lite now has a three-source standard-price comparison at
+`/data/facade-review-galleries/banana-lite-v1/index.html`: $0.10363175 total,
+3.4–3.8s/image. Old GLM unknown is still reserved; this user-requested Lite
+trial used an explicit three-call/$0.60 scoped continuation, now exhausted.
+Default paid runners still block on the old unknown. Lite's promising coarse
+layouts still require source-bound geometry review and a generic-prompt ten-case
+test before expansion. See `docs/plans/facade-banana-lite-pilot.md`.
 
 **OccFacade follow-up: validate full-facade proposals before integration.**
 All 100 cohort full views now have OccFacade/Vistas intersection masks. All 100

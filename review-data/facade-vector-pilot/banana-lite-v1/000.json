@@ -1,0 +1,52 @@
+{
+  "index": 0,
+  "model": "google/gemini-3.1-flash-lite-image",
+  "experimentHash": "abc5745157b1a6494f58e35ae3c9208e17251058dbf491619536f0c7b5995093",
+  "key": "419203448101140d403c85cd17c91e03b7f095bba9c8d607a6238fc44dfb9e57",
+  "reservation": "request:456fd6a3be50e68915bad1621f53e498dae5cfc815f1f6f5946e60a9fcc80018",
+  "sourceSha256": "032a16bee549c5a40a5683676c6e002031310b9ba92c114a2869ef4226e3c4f2",
+  "promptSha256": "9f5f6908a9a1768ebce0940bc167bfa9b8dd498e224672e1153766c7b0ca42ed",
+  "prompt": "Reconstruct the attached building photograph as a flat, clean, solid-colour architectural facade elevation raster for subsequent automatic vector tracing. Fidelity experiment, not a redesign. Preserve the entire photograph's tall 263:892 aspect ratio, exact framing, sky margin, facade silhouette, opening counts, widths, heights and positions. Do not make the door narrower or move it. Three upper rows each have one wide left window and two narrow right windows; ground floor has left window and broad right double entrance with semicircular stone arch and transom. Preserve observed warm dark red-brown brick, pale cream window frames, muted green horizontal brick bands, red double door, stone entrance surround. Use a restrained flat colour palette, no gradients, no shadow embellishments, no brick-by-brick pattern. Separate window lintels from aperture shapes accurately. Roofline is mostly horizontal cornice with small raised parapet details, not a triangular gable. Remove tree branches and cars only where facade reconstruction is unambiguous; do not invent extra openings. Background plain white. Return one image, no labels, no side-by-side comparison, no border. Fit the full original tall image centered on the output canvas if exact aspect cannot be preserved, with only white padding.\n",
+  "aspectRatio": "1:4",
+  "resolution": "1K",
+  "provider": "google-ai-studio",
+  "status": "ok",
+  "startedAt": "2026-09-27T12:11:33.022Z",
+  "httpStatus": 200,
+  "requestId": null,
+  "rawResponseSha256": "7f7b5274b40ce358b495e6d1edbfaf45945f6bfe61de9bf7fe9e82969516f5b7",
+  "clientLatencyMs": 3459,
+  "usage": {
+    "prompt_tokens": 1374,
+    "completion_tokens": 1496,
+    "total_tokens": 2870,
+    "cost": 0.0345075,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.0345075,
+      "upstream_inference_prompt_cost": 0.0003435,
+      "upstream_inference_completions_cost": 0.034164
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 1120
+    }
+  },
+  "generationId": null,
+  "settlement": {
+    "totalUsd": 5.680755809153995,
+    "exceededCeiling": false,
+    "exceededContinuation": false
+  },
+  "actualCostUsd": 0.0345075,
+  "pngPath": "000.png",
+  "pngSha256": "3652ff2dfb6e28a1b2ec7891c6e29bcf699f833df7f74bd6d8c093279a0b526a",
+  "width": 512,
+  "height": 2064
+}

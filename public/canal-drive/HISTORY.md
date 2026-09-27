@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — Nano Banana 2 Lite raster pilot
+
+Tested `google/gemini-3.1-flash-lite-image` on sources0/17/80 with the same saved
+photo-specific prompts as the built-in raster trial. Three successful standard
+Image API calls, $0.10363175 total, 3.411–3.840s client latency. Local VTracer
+produced144/299/606 paths. New `banana-lite-v1` gallery preserves references,
+old/new rasters, traced SVGs, costs and prompt hashes. No game rollout.
+Added a tested, explicitly scoped accounting continuation for this new request:
+the old GLM unknown stays unknown and $0.06 reserved; only three new reservations
+totaling at most $0.60 were allowed under the existing ceiling, with all other
+unknown/pending charges blocking. Those three reservations are now consumed.
+
 ## 2026-09-27 — raster/vector and GPT effort diagnostics
 
 Executed three built-in imagegen reconstructions (sources0/17/80) and local

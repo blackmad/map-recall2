@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "status": "diagnostic-not-accepted",
+  "model": "google/gemini-3.1-flash-lite-image",
+  "reviewers": ["root", "sol_colour"],
+  "summary": "Lite preserves the main opening counts on all three facades and generates simpler artwork quickly. It loses material and glazing detail, changes balcony barriers and misreads wires as window railings. It has not demonstrated equal quality to the previous built-in raster generator. None of these outputs is accepted as measured facade geometry.",
+  "findings": [
+    {
+      "index": 0,
+      "retained": ["Three upper rows with one broad left and two narrow right windows", "Arched broad red double entrance", "Green accent bands"],
+      "errors": ["Dark uniform panels replace observed glazed panes", "Green lintels and bands are exaggerated and regularized", "Material becomes smooth reddish-brown rather than visible brick", "Tall output changes spacing and framing"],
+      "comparison": "Previous built-in raster retains more frame and brick detail, though it also changes framing and colour."
+    },
+    {
+      "index": 17,
+      "retained": ["Three upper rows with two windows left and three right", "Three central balcony levels", "Different lower wall band"],
+      "errors": ["Varied/glazed balcony barriers replaced by repeated dark metal railings", "Small glass-block opening at ground left omitted", "Grey left door loses its porthole", "Ground-floor glazing regularized"],
+      "comparison": "Previous built-in raster is closer on balcony glazing and left door detail; neither fully matches the ground floor."
+    },
+    {
+      "index": 80,
+      "retained": ["Left gable and top arched-left/rectangular-right pair", "Three central balcony/door levels", "Blue sign band"],
+      "errors": ["Crossing photo wires appear as extra rails on side windows", "Stone lintel and keystone shapes exaggerated", "Blank lower area loses some observed shop evidence", "Sign lettering partly copied despite prompt asking no guessed lettering"],
+      "comparison": "Leaving occluded areas plain is preferable to invented shop openings, but the output also removes visible storefront evidence. Prior built-in raster invented a more complete shopfront."
+    }
+  ],
+  "cost": {"actualTotalUsd": 0.10363175, "requests": 3, "pricingMode": "standard", "clientLatencyMs": [3459, 3411, 3840], "batchRun": false},
+  "limitations": ["Only three source-specific prompts", "Lite 1K and supported aspect ratios differ from prior automatic output dimensions", "Source identity and world registration remain unresolved", "Visual judgments are not measured accuracy"],
+  "validation": {"desktopWidth": 1440, "phoneWidth": 390, "loadedImages": 12, "brokenImages": 0, "pageErrors": 0, "horizontalOverflow": false}
+}

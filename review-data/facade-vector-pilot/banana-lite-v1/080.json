@@ -1,0 +1,52 @@
+{
+  "index": 80,
+  "model": "google/gemini-3.1-flash-lite-image",
+  "experimentHash": "abc5745157b1a6494f58e35ae3c9208e17251058dbf491619536f0c7b5995093",
+  "key": "b2f52be60cdf5c92e92f3b20c6518c9cdcf03b1d77ca611bce57503cefebe4b5",
+  "reservation": "request:06cf028876f71ae895b0d3172906774d3ca4223096d3ef505e24912fba7d6c0f",
+  "sourceSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+  "promptSha256": "bd665f12b9fdb1bccca27a6d06af34aeceb77e6d355c5ca32790a771a4824496",
+  "prompt": "Reconstruct this exact photographed facade as a faithful flat-colour architectural elevation raster for vector tracing. Entire original tall 275:873 framing preserved, do not stretch opening shapes. The upper silhouette includes a left triangular gable and lower horizontal roofline on the right. Preserve the real window/door shapes: many decorative arched lintels surround rectangular glazed apertures, not tall pointed arch windows. Top floor has one arched left opening and rectangular right opening; three floors below have left/right rectangular windows and central balcony French doors. Preserve all three shallow projecting balconies with dark railings, observed brown-red brick facade, pale stone trim, and blue storefront fascia at street level. Preserve opening widths, heights, spacings and alignments from reference. Remove wires and cars but leave genuinely occluded ground-floor portions plain. Do not invent doors, signs, floors or details. No guessed lettering. Use simple solid matte colour fills, crisp edges, no gradient, no brick pattern or texture, no photorealism. If exact aspect unavailable, center entire facade on white canvas with white padding only, do not crop the gable or stretch the building. One image without labels or border.\n",
+  "aspectRatio": "1:4",
+  "resolution": "1K",
+  "provider": "google-ai-studio",
+  "status": "ok",
+  "startedAt": "2026-09-27T12:11:40.075Z",
+  "httpStatus": 200,
+  "requestId": null,
+  "rawResponseSha256": "92e0fb6f618e36bdac3af86afd6de0904d8e0bf70cf3895bfa57ddae467b748c",
+  "clientLatencyMs": 3840,
+  "usage": {
+    "prompt_tokens": 1356,
+    "completion_tokens": 1538,
+    "total_tokens": 2894,
+    "cost": 0.034566,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.034566,
+      "upstream_inference_prompt_cost": 0.000339,
+      "upstream_inference_completions_cost": 0.034227
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 1120
+    }
+  },
+  "generationId": null,
+  "settlement": {
+    "totalUsd": 5.749880059153995,
+    "exceededCeiling": false,
+    "exceededContinuation": false
+  },
+  "actualCostUsd": 0.034566,
+  "pngPath": "080.png",
+  "pngSha256": "a670f20b6fc386e3f209f4f919218aaa915350fc85eea27eb8ae3287be293926",
+  "width": 512,
+  "height": 2064
+}

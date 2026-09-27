@@ -1,0 +1,53 @@
+{
+  "experimentHash": "abc5745157b1a6494f58e35ae3c9208e17251058dbf491619536f0c7b5995093",
+  "experiment": {
+    "version": 1,
+    "model": "google/gemini-3.1-flash-lite-image",
+    "endpoint": "https://openrouter.ai/api/v1/images",
+    "provider": "google-ai-studio",
+    "resolution": "1K",
+    "imagesPerRequest": 1,
+    "unitReservationUsd": 0.2,
+    "maxRequests": 3,
+    "maxNewReservationsUsd": 0.6,
+    "sourceAndPromptHashes": [
+      {
+        "index": 0,
+        "sourceSha256": "032a16bee549c5a40a5683676c6e002031310b9ba92c114a2869ef4226e3c4f2",
+        "promptSha256": "9f5f6908a9a1768ebce0940bc167bfa9b8dd498e224672e1153766c7b0ca42ed",
+        "aspectRatio": "1:4"
+      },
+      {
+        "index": 17,
+        "sourceSha256": "80a6391630195c4c9c3fc7c85740121fd613fac4062f95e02eaea797fa7b9b82",
+        "promptSha256": "aa5b0177d948bcc1ae7b4ad231f22b5621ac1852aa856b42f94c68c73cfddb19",
+        "aspectRatio": "1:1"
+      },
+      {
+        "index": 80,
+        "sourceSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+        "promptSha256": "bd665f12b9fdb1bccca27a6d06af34aeceb77e6d355c5ca32790a771a4824496",
+        "aspectRatio": "1:4"
+      }
+    ],
+    "runnerSha256": "8adcc35db900d2f8d82bebb58577a900c5cf4a8bf38dcdb6635c925c2c0ddab9",
+    "note": "Identical photo/prompt to built-in raster trial; explicit Lite 1K/allowed aspect ratio differs from earlier opaque tool output size. Old unknown charge remains unknown and reserved. No automatic retries."
+  },
+  "authorization": {
+    "id": "owner-vector-pilot-cheap-multimodal-2026-09-27",
+    "source": "User: go for it; try local, deepseek4.1flash and cheap multimodal OpenRouter models with configured key budget",
+    "baselineGlobalUsd": 5.384790739499998,
+    "maxAdditionalUsd": 1.5,
+    "maxCeilingUsd": 6.884790739499998,
+    "recordedAt": "2026-09-27T07:11:21.980Z",
+    "scopedContinuation": {
+      "id": "nano-lite-3-source-2026-09-27",
+      "source": "User: let's see how lite does",
+      "maxNewReservationsUsd": 0.6,
+      "maxRequests": 3,
+      "acknowledgedUnknownIds": [
+        "request:068099f48543ee8fad1e83e3db344e72d3c28aeec9c35cb0f3e2410e38121068"
+      ]
+    }
+  }
+}

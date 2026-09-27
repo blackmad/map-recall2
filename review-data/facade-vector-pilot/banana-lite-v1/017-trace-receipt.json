@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "policy": "Pixel tracing only; source identity, architectural geometry and material are not verified or accepted.",
+  "source": {
+    "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/banana-lite-v1/017.png",
+    "sha256": "8b836dc75cf3f6bb4e82e53ebaf6610be79af646218834634d3e60fa1db11b95",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 729081
+  },
+  "preprocessing": {
+    "maxSide": 1600,
+    "paletteColors": 32,
+    "dither": 0,
+    "resizeFit": "inside",
+    "withoutEnlargement": true,
+    "rotateExif": true
+  },
+  "traceInput": {
+    "path": "trace-input.png",
+    "sha256": "03adc5dfd1dad6003c96b558d01f072db8a8fe801651f7c8328c352f185561c6",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 365560
+  },
+  "tool": {
+    "name": "vtracer-python",
+    "version": "0.6.15",
+    "settings": {
+      "colormode": "color",
+      "hierarchical": "cutout",
+      "mode": "spline",
+      "filter_speckle": 8,
+      "color_precision": 6,
+      "layer_difference": 16,
+      "corner_threshold": 60,
+      "length_threshold": 4,
+      "max_iterations": 10,
+      "splice_threshold": 45,
+      "path_precision": 2
+    },
+    "elapsedSeconds": 0.223059584
+  },
+  "svg": {
+    "path": "facade.svg",
+    "sha256": "2e8d9de50331e30555126a3d533d04d717b4ec41f7a5950de7481028ad8f994c",
+    "width": 1024,
+    "height": 1024,
+    "pathCount": 299,
+    "bytes": 123349
+  },
+  "rendered": {
+    "path": "render.png",
+    "sha256": "695838187d501d6dfceef8f8b2b8097a80fc6d670cafdee0e38710c05a8e9797",
+    "width": 1024,
+    "height": 1024,
+    "bytes": 61732
+  }
+}

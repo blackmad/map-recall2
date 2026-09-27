@@ -1,0 +1,52 @@
+{
+  "index": 17,
+  "model": "google/gemini-3.1-flash-lite-image",
+  "experimentHash": "abc5745157b1a6494f58e35ae3c9208e17251058dbf491619536f0c7b5995093",
+  "key": "a4fa88d9ef326ce7ca852518c1cefa7bfb4f5467a5c61e3acb6e735c4fffd4e1",
+  "reservation": "request:21ae9b17e887cbd0e5630bd13cca2a83cc8303e13700046302e11a5caefcb0f0",
+  "sourceSha256": "80a6391630195c4c9c3fc7c85740121fd613fac4062f95e02eaea797fa7b9b82",
+  "promptSha256": "aa5b0177d948bcc1ae7b4ad231f22b5621ac1852aa856b42f94c68c73cfddb19",
+  "prompt": "Convert the attached photograph into one faithful flat-colour architectural facade elevation raster suitable for vector tracing. Match the original 679x699 composition and opening positions, sizes and count exactly. The building has three upper storeys with cream pale yellow-green rendered walls, recessed central stacked balconies slightly left of centre, and a visibly different reddish-brown brick ground floor. Preserve the asymmetry: two upper windows left of balconies, one immediately right, then two more at far right per row. Ground floor has entrance/glazing under balconies, grey door to left and narrow windows to right. Preserve flat roofline. White sky. Remove cars, foliage, street poles and reflections, leaving uncertain hidden ground-floor areas plain without invented openings. Use solid matte colour regions, crisp edges, no gradients, no texture/no brick pattern, no photorealism, no perspective exaggeration. No labels, border or comparison layout.\n",
+  "aspectRatio": "1:1",
+  "resolution": "1K",
+  "provider": "google-ai-studio",
+  "status": "ok",
+  "startedAt": "2026-09-27T12:11:36.572Z",
+  "httpStatus": 200,
+  "requestId": null,
+  "rawResponseSha256": "8fb92a0c090df59061036be537b5eb43076ee19e995ec4abda5783038f7a8b83",
+  "clientLatencyMs": 3411,
+  "usage": {
+    "prompt_tokens": 1307,
+    "completion_tokens": 1541,
+    "total_tokens": 2848,
+    "cost": 0.03455825,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.03455825,
+      "upstream_inference_prompt_cost": 0.00032675,
+      "upstream_inference_completions_cost": 0.0342315
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 1120
+    }
+  },
+  "generationId": null,
+  "settlement": {
+    "totalUsd": 5.715314059153995,
+    "exceededCeiling": false,
+    "exceededContinuation": false
+  },
+  "actualCostUsd": 0.03455825,
+  "pngPath": "017.png",
+  "pngSha256": "8b836dc75cf3f6bb4e82e53ebaf6610be79af646218834634d3e60fa1db11b95",
+  "width": 1024,
+  "height": 1024
+}
