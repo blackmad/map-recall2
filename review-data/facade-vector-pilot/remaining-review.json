@@ -1,0 +1,565 @@
+{
+  "version": 1,
+  "kind": "read-only-human-visual-review",
+  "scope": "Remaining seven sources, DeepSeek and Gemini v2 three-arm contacts; source-visible layout only; no owner identity or acceptance",
+  "records": [
+    {
+      "index": 3,
+      "model": "deepseek",
+      "sourceVisible": "Brick facade: four levels of three window bays, alternating rectangular/arched heads, pale shop ground with wide left glazing and arched right entrance; cornice/roof edge.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modeldeepseek-3.png",
+      "contactSha256": "eafb97f31b317fe9964679bbfe796f10356a53ccb6f636c6b6f813f5235aa220",
+      "leastWrongArm": "assisted",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "failed",
+          "note": "No raster: output truncated at token cap.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/3-svg.json",
+          "receiptSha256": "3c624f8abd340ec996ff39f36b3ed418543e1b5443af050dda397357b7ac81e9",
+          "error": "Output truncated at token limit"
+        },
+        "structured": {
+          "status": "failed",
+          "note": "No raster: invalid roof material.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/3-structured.json",
+          "receiptSha256": "b536f1cb2fb7b82728f74e101933d431c05e0e3ec5c34ce6d53a460f5529270e",
+          "error": "experiment.roof.material must be one of tile, slate, metal, unknown"
+        },
+        "assisted": {
+          "status": "rendered",
+          "note": "Four approximate three-bay rows and right entrance/ground division survive, but window heads are uniformly arched, broad shop glazing is blacked out and roof/cornice is flattened.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/3-assisted.json",
+          "receiptSha256": "3ed531ff7ba8cd26c9bb3df4c5055384ff2026f86dade17b9a5a1c16239fe5f1",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/3-assisted.png",
+          "pngSha256": "847c1545cef5ec960b147ae575fd814d7f496abf35998803e938ed6adecee780",
+          "receiptPngSha256": "847c1545cef5ec960b147ae575fd814d7f496abf35998803e938ed6adecee780"
+        }
+      },
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "preparedImageSha256": "611b8b3b00cc14ba07abb443f22ee329c2ce6d0579e742a9c8cc8124dd2f07ac",
+      "experimentHash": "13c4c3736ba9c1b92f87633fe4703a19b2ed2704edf972af290f7e9b4c9c25be",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 3,
+      "model": "gemini",
+      "sourceVisible": "Brick facade: four levels of three window bays, alternating rectangular/arched heads, pale shop ground with wide left glazing and arched right entrance; cornice/roof edge.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modelgemini-3.png",
+      "contactSha256": "118f059115f3ea08aa90281a649a15b9ee062edf3ae624f230dc5526a6c8703f",
+      "leastWrongArm": "structured",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "rendered",
+          "note": "Four three-bay rows and right arch/left ground window, but all openings rectangular and roof parapet invented.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/3-svg.json",
+          "receiptSha256": "a7adccf70129e319dd1fd661f4102e449d8f504689488e6e0970049dd3dfc39a",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/3-svg.png",
+          "pngSha256": "3f15b70f723bb21c6feeb33699703576912d5f543def87113c66dd5fc93097db",
+          "receiptPngSha256": "3f15b70f723bb21c6feeb33699703576912d5f543def87113c66dd5fc93097db"
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Four three-bay rows with some alternating arched heads and ground right arch/left shop glazing; simplified cornice and coarse colour/layout.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/3-structured.json",
+          "receiptSha256": "1f358b8daa733f136346cba4ea0f03638aff1cae767b81bed10929b48d9c7ae0",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/3-structured.png",
+          "pngSha256": "3894f6996db0d0d75b330181aa022c9ba7868ba948f18dd41f27d8410228951b",
+          "receiptPngSha256": "3894f6996db0d0d75b330181aa022c9ba7868ba948f18dd41f27d8410228951b"
+        },
+        "assisted": {
+          "status": "rendered",
+          "note": "Four rows and right entrance, but almost every window is made an arch and roof band colours are invented.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/3-assisted.json",
+          "receiptSha256": "26503a829e793b9e7760b7f2ce8260c30ad323d6a69d396fc0cba95d3b6366e4",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/3-assisted.png",
+          "pngSha256": "d9976c611eb959785e6dacc1f6d3443f3be23a14b1ee63050353690084d39e3a",
+          "receiptPngSha256": "d9976c611eb959785e6dacc1f6d3443f3be23a14b1ee63050353690084d39e3a"
+        }
+      },
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "preparedImageSha256": "611b8b3b00cc14ba07abb443f22ee329c2ce6d0579e742a9c8cc8124dd2f07ac",
+      "experimentHash": "6dc8f90625e215520174c5bb7299c0cf4ce0a053abc18db561ba3bdbcad8e13e",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 4,
+      "model": "deepseek",
+      "sourceVisible": "Grey-brown narrow facade: four levels of three broad windows, two projecting central balconies, right ground entrance, flat/stepped parapet.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modeldeepseek-4.png",
+      "contactSha256": "b33946530a77fb435a367d3c30849e5e3f6542b559ff232b3edf5a8cdb851618",
+      "leastWrongArm": "structured",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "failed",
+          "note": "No raster: SVG rejected.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/4-svg.json",
+          "receiptSha256": "3b79218ba230ee99eeb8a9edd471daecd278741652157bddbd29180d3c7c5bc3",
+          "error": "SVG rejected:     ~~~~~~~~~~~^^^^^^ xml.etree.ElementTree.ParseError: syntax error: line 1, column 0 "
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Three vertical strips replace four separate rows; both projecting center balconies and right door disappear.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/4-structured.json",
+          "receiptSha256": "d0227b0e3f8e9c0fdf75b06330a42e3818d1ec983b7a0cc483b1d49e97ee11e4",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/4-structured.png",
+          "pngSha256": "1eb80fcdedd1f2b97da655dbdb49fbbc76366d2af8ee66a7b38f9ed5b779154a",
+          "receiptPngSha256": "1eb80fcdedd1f2b97da655dbdb49fbbc76366d2af8ee66a7b38f9ed5b779154a"
+        },
+        "assisted": {
+          "status": "failed",
+          "note": "No raster: schema rejected experiment.type.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/4-assisted.json",
+          "receiptSha256": "6a861840cd5a3cbaa52ea84b7642aa622200c8a7f3e52aa4963481d5d0de981d",
+          "error": "experiment.type is not allowed"
+        }
+      },
+      "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "preparedImageSha256": "2756742abf5387c857eedf0925884ad922c0261fb7531ee1098ac65d5270593f",
+      "experimentHash": "13c4c3736ba9c1b92f87633fe4703a19b2ed2704edf972af290f7e9b4c9c25be",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 4,
+      "model": "gemini",
+      "sourceVisible": "Grey-brown narrow facade: four levels of three broad windows, two projecting central balconies, right ground entrance, flat/stepped parapet.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modelgemini-4.png",
+      "contactSha256": "65b7039df07daf5adf01a694e01a6d1a69f54e63885aa09341702d52df4e3aae",
+      "leastWrongArm": "svg",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "rendered",
+          "note": "Four three-bay rows and two center balcony hints, but balcony projections/rails are flat small rectangles, right ground entrance absent, windows too pale.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/4-svg.json",
+          "receiptSha256": "c29e1166e0f83aa8e41aef6396a5552b72d0814e0345243d49b52ed1cc0be8a4",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/4-svg.png",
+          "pngSha256": "fdc1a3f814847f0c5c2bff78f1e39ee42a3def054744cc7eeb66ed52eed2a180",
+          "receiptPngSha256": "fdc1a3f814847f0c5c2bff78f1e39ee42a3def054744cc7eeb66ed52eed2a180"
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Three full-height slit columns erase separate floors and balconies; dark slit door uncertain.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/4-structured.json",
+          "receiptSha256": "c263d6ae855615abc41e127269226891a1154cfe8dc8c55eedd3979e99300653",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/4-structured.png",
+          "pngSha256": "2f336b6c49b9b6cd907d2ac9dc5998d1e71c41030d1df7508ecd2f461f1116e9",
+          "receiptPngSha256": "2f336b6c49b9b6cd907d2ac9dc5998d1e71c41030d1df7508ecd2f461f1116e9"
+        },
+        "assisted": {
+          "status": "rendered",
+          "note": "Three full-height slit columns erase balconies and floor rhythm; ground entry not faithfully placed.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/4-assisted.json",
+          "receiptSha256": "a3dc9a685d3fe471014676bdb96b61ee9fe29293ee302271952b1ff24c037de3",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/4-assisted.png",
+          "pngSha256": "47ad98ff1fb8660c4fe334360f8e5839403aff233d22e87ff164d6d8928a8454",
+          "receiptPngSha256": "47ad98ff1fb8660c4fe334360f8e5839403aff233d22e87ff164d6d8928a8454"
+        }
+      },
+      "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "preparedImageSha256": "2756742abf5387c857eedf0925884ad922c0261fb7531ee1098ac65d5270593f",
+      "experimentHash": "6dc8f90625e215520174c5bb7299c0cf4ce0a053abc18db561ba3bdbcad8e13e",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 11,
+      "model": "deepseek",
+      "sourceVisible": "Wide cream apartment facade: central dark recess with three curved balconies, windows on both sides, charcoal ground band and central entrance.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modeldeepseek-11.png",
+      "contactSha256": "1b4b42a85e31da5c89ce8798f5dc31e8cfe0d058de2532cbdcea87c568451bc9",
+      "leastWrongArm": "structured",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "failed",
+          "note": "No raster: SVG rejected.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/11-svg.json",
+          "receiptSha256": "156263ce35a9a80308e3955af8b1d27917f99974988dc6e4c65a6c14387b2024",
+          "error": "SVG rejected:     raise ValueError('Unsupported SVG attribute: ' + key) ValueError: Unsupported SVG attribute: stroke-dasharray "
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Cream upper wall and charcoal ground band/central door, but central recess and all three curved balconies are replaced by ordinary windows.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/11-structured.json",
+          "receiptSha256": "0e291d968583c226b75a19e2b9f6f7129a95a8969c826d612285fc2f427a3568",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/11-structured.png",
+          "pngSha256": "88093e44e3c5c8eb2a09c6f3770e1511a9ce64c1660fdd0910c69a4c737338fe",
+          "receiptPngSha256": "88093e44e3c5c8eb2a09c6f3770e1511a9ce64c1660fdd0910c69a4c737338fe"
+        },
+        "assisted": {
+          "status": "failed",
+          "note": "No raster: occlusion polygon schema rejected.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/11-assisted.json",
+          "receiptSha256": "c18e82931c1d743c9f980029096c7158f9e8b062eb303b1777df5b00a03ffa89",
+          "error": "experiment.occlusions[0].points needs 3\u201332 points"
+        }
+      },
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "preparedImageSha256": "c47b78abb4083fba58aea10299c39b0cd6ed36a6807c8efc56c65648f19ed8d4",
+      "experimentHash": "13c4c3736ba9c1b92f87633fe4703a19b2ed2704edf972af290f7e9b4c9c25be",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 11,
+      "model": "gemini",
+      "sourceVisible": "Wide cream apartment facade: central dark recess with three curved balconies, windows on both sides, charcoal ground band and central entrance.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modelgemini-11.png",
+      "contactSha256": "a272b85f5167facec33fecfe08323728f6319959562ee1ada5352d6506942373",
+      "leastWrongArm": "svg",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "rendered",
+          "note": "Cream/dark base and three curved balcony marks; central dark recess and railings not represented, large windows overwhitened, ground entrance schematic.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/11-svg.json",
+          "receiptSha256": "f2c2248d2f733d9ede0a665ec3feb9d0c39b6701521b9323e369d49997570761",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/11-svg.png",
+          "pngSha256": "42a57f4511670e62bad4d2c35df6ddab44d47bc1003012217aa5be80e7a22375",
+          "receiptPngSha256": "42a57f4511670e62bad4d2c35df6ddab44d47bc1003012217aa5be80e7a22375"
+        },
+        "structured": {
+          "status": "failed",
+          "note": "No raster: invalid roof polygon.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/11-structured.json",
+          "receiptSha256": "7893e2673dd37ea572d9db174927d001768cc15664d250c05ea9f52bb5396228",
+          "error": "experiment.roof.points must have nonzero area"
+        },
+        "assisted": {
+          "status": "failed",
+          "note": "No raster: invalid roof polygon.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/11-assisted.json",
+          "receiptSha256": "72d1099251a9ae140095d7fd15cad3904c04b381746b29a37af91cddae8306fe",
+          "error": "experiment.roof.points must have nonzero area"
+        }
+      },
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "preparedImageSha256": "c47b78abb4083fba58aea10299c39b0cd6ed36a6807c8efc56c65648f19ed8d4",
+      "experimentHash": "6dc8f90625e215520174c5bb7299c0cf4ce0a053abc18db561ba3bdbcad8e13e",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 13,
+      "model": "deepseek",
+      "sourceVisible": "Mostly blank pale rendered wall at left; three stacked right window rows, small low vent, dark far-right ground door, patterned dark roof band/skylight.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modeldeepseek-13.png",
+      "contactSha256": "1a01540046740812d7df17f5f8f4eb4202205ae9acec3d123e8a1f572339df07",
+      "leastWrongArm": "structured",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "failed",
+          "note": "No raster: SVG rejected.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/13-svg.json",
+          "receiptSha256": "d6cd560a7bce9c27752433ce98933d60bb9c12f55f2133321d2cab9f5f65a824",
+          "error": "SVG rejected:     ~~~~~~~~~~~^^^^^^ xml.etree.ElementTree.ParseError: syntax error: line 1, column 0 "
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Right-stacked windows and low vent roughly located with pale wall, but roof band/skylight and door detail omitted; part of right edge clipped.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/13-structured.json",
+          "receiptSha256": "ca0754939120cd524e5ddd67221e87699cde2a8158bec4ff9bbac24d623f2d8e",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/13-structured.png",
+          "pngSha256": "b4a0a8a53172e9ad750920d690524a5d0f8a460845ef28d8cb337e8ae2dd4e23",
+          "receiptPngSha256": "b4a0a8a53172e9ad750920d690524a5d0f8a460845ef28d8cb337e8ae2dd4e23"
+        },
+        "assisted": {
+          "status": "rendered",
+          "note": "Keeps pale blank left and right windows, but loses low vent, roof band and credible entrance detail.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/13-assisted.json",
+          "receiptSha256": "7c8d0b79688c269dd5120fd700b7c0f6f345a96ad61927341cfc3cccd3f22c54",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/13-assisted.png",
+          "pngSha256": "74b63dea763b161a48879bba36073d98e4f558ae062f61e02e8063ccb109af84",
+          "receiptPngSha256": "74b63dea763b161a48879bba36073d98e4f558ae062f61e02e8063ccb109af84"
+        }
+      },
+      "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+      "preparedImageSha256": "c9ac9b5d7bf616e60327680e9d4e5379fc91c8f3c5b68dc67a51b7e75f84936c",
+      "experimentHash": "13c4c3736ba9c1b92f87633fe4703a19b2ed2704edf972af290f7e9b4c9c25be",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 13,
+      "model": "gemini",
+      "sourceVisible": "Mostly blank pale rendered wall at left; three stacked right window rows, small low vent, dark far-right ground door, patterned dark roof band/skylight.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modelgemini-13.png",
+      "contactSha256": "ca31321b3d51ac35edba681a66e7da0a6bf59d0aa1b41f4c20d072a1e1d96cc0",
+      "leastWrongArm": "svg",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "rendered",
+          "note": "Preserves blank pale left, right three-row windows, low vent, right dark door, and dark roof band; roof skylight and exact proportions are inaccurate.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/13-svg.json",
+          "receiptSha256": "89c28bb1b9c6326da7d3b5a59612f2cbc3736e4d3bc7bc8312a067a99577cc99",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/13-svg.png",
+          "pngSha256": "30ae574fdda8ed0f678e6b85b1e9e14e53dd2ee43ce71625a240feeb821610d0",
+          "receiptPngSha256": "30ae574fdda8ed0f678e6b85b1e9e14e53dd2ee43ce71625a240feeb821610d0"
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Right rows and ground vent/door approximated but roof absent and windows shifted/overwide.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/13-structured.json",
+          "receiptSha256": "52cb65b8131a24a255b5859ecb2381e9a49bfbd17c06de12bd7700f0383a09a7",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/13-structured.png",
+          "pngSha256": "21e029799a113afe27d02d6b4b761e495163dcab738b558109797264724ef8d9",
+          "receiptPngSha256": "21e029799a113afe27d02d6b4b761e495163dcab738b558109797264724ef8d9"
+        },
+        "assisted": {
+          "status": "rendered",
+          "note": "Pale wall and right rows retained but roof absent, low vent weak, ground openings simplified.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/13-assisted.json",
+          "receiptSha256": "ffa8d5506eef8247c142df3030ebc960feb331f69d080bd7634eefc3a5b29295",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/13-assisted.png",
+          "pngSha256": "53d1680761bd2acc77f66dac7cf682f36152eef2478c19558dee11b2949109b8",
+          "receiptPngSha256": "53d1680761bd2acc77f66dac7cf682f36152eef2478c19558dee11b2949109b8"
+        }
+      },
+      "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+      "preparedImageSha256": "c9ac9b5d7bf616e60327680e9d4e5379fc91c8f3c5b68dc67a51b7e75f84936c",
+      "experimentHash": "6dc8f90625e215520174c5bb7299c0cf4ce0a053abc18db561ba3bdbcad8e13e",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 64,
+      "model": "deepseek",
+      "sourceVisible": "Brick facade with three upper rows of openings spanning an adjacent edge, dark charcoal shop ground with broad left glazing and right doorway; mixed flat/gabled roof context.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modeldeepseek-64.png",
+      "contactSha256": "0175ee08a43790bbd521dd4e01024d7ab908dec669051e1d9b0415120c35aac4",
+      "leastWrongArm": "structured",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "failed",
+          "note": "No raster: SVG rejected.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/64-svg.json",
+          "receiptSha256": "24148639cae7615f0244662431931e876ca363ef247d6843446636a37841253e",
+          "error": "SVG rejected:     ~~~~~~~~~~~^^^^^^ xml.etree.ElementTree.ParseError: syntax error: line 1, column 0 "
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Three four-opening rows over brown brick approximate upper count, but dark storefront/glazing/door and mixed roofline disappear.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/64-structured.json",
+          "receiptSha256": "fbcafaa94594b1c401e480a63c30abbba4fbc5bf79c256a822364a07fe3ad50f",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/64-structured.png",
+          "pngSha256": "110fe69e7003be790bb0913d26df7b2a687aab409eb1428457b1d6ddc11cc3c5",
+          "receiptPngSha256": "110fe69e7003be790bb0913d26df7b2a687aab409eb1428457b1d6ddc11cc3c5"
+        },
+        "assisted": {
+          "status": "rendered",
+          "note": "Window bays become continuous vertical ribbons through floors and base; dark storefront becomes generic panels.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/64-assisted.json",
+          "receiptSha256": "52cb97576c594e6355973909b44d965ae90d610d111909b35a98ad4b50b75707",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/64-assisted.png",
+          "pngSha256": "8153e56c931c16cfb4f99251c1e04041ba209fdc5027132fe9004c632745a27b",
+          "receiptPngSha256": "8153e56c931c16cfb4f99251c1e04041ba209fdc5027132fe9004c632745a27b"
+        }
+      },
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "preparedImageSha256": "a2e23415efd5fbb88b0d738ce0700ef3ef7fd62b0a9f60cdbc8a1e9fd41a4483",
+      "experimentHash": "13c4c3736ba9c1b92f87633fe4703a19b2ed2704edf972af290f7e9b4c9c25be",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 64,
+      "model": "gemini",
+      "sourceVisible": "Brick facade with three upper rows of openings spanning an adjacent edge, dark charcoal shop ground with broad left glazing and right doorway; mixed flat/gabled roof context.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modelgemini-64.png",
+      "contactSha256": "3f0d475078a1e47a0ffce735bc34226c48ce7b9d42c6d6132371e6d98c5e662a",
+      "leastWrongArm": "svg",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "rendered",
+          "note": "Dark shop base, left glazing/right door and mixed roof mass acknowledged, but most windows rendered as opaque brown grid and adjoining gable geometry wrong.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/64-svg.json",
+          "receiptSha256": "39060af90338ef4b28867409827192d9a7f2dd85b2979e574dce6dbd4f88f48d",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/64-svg.png",
+          "pngSha256": "b09574d37824df65b9c51bd947fc23ffdf39ec860fe648071b149692d85d09a4",
+          "receiptPngSha256": "b09574d37824df65b9c51bd947fc23ffdf39ec860fe648071b149692d85d09a4"
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Invents tall arches and tall right tower/gable; shop glazing reduced to a white wedge.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/64-structured.json",
+          "receiptSha256": "5752f0919d0fd5c0c1ad7f5e252787ba59148a1be64b31b34713708ffa052ea2",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/64-structured.png",
+          "pngSha256": "6a602abe30b3b25077c9fa9b44d5d3299c727eaab31477053b9d4309f361c820",
+          "receiptPngSha256": "6a602abe30b3b25077c9fa9b44d5d3299c727eaab31477053b9d4309f361c820"
+        },
+        "assisted": {
+          "status": "rendered",
+          "note": "Invents rounded rows and steep roof; shop is a blank white opening.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/64-assisted.json",
+          "receiptSha256": "140962000bf3e1501712bed64f03dfc05646f21a44e3a23de877e6db05bfd6c8",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/64-assisted.png",
+          "pngSha256": "496868c875951932ebb3f1a2413ac1d326deaa96fa590114c74de46c5fa16a5c",
+          "receiptPngSha256": "496868c875951932ebb3f1a2413ac1d326deaa96fa590114c74de46c5fa16a5c"
+        }
+      },
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "preparedImageSha256": "a2e23415efd5fbb88b0d738ce0700ef3ef7fd62b0a9f60cdbc8a1e9fd41a4483",
+      "experimentHash": "6dc8f90625e215520174c5bb7299c0cf4ce0a053abc18db561ba3bdbcad8e13e",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 80,
+      "model": "deepseek",
+      "sourceVisible": "Dark brick facade: left gable, attic arch/rect pair, three main levels with central balcony/door and flanking windows, blue shop sign band above storefront.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modeldeepseek-80.png",
+      "contactSha256": "686f44f3cd6b3fb5c93aa4fa47783b156eb76023f696707caa8cfbe5f545c7a0",
+      "leastWrongArm": "structured",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "failed",
+          "note": "No raster: output truncated at token cap.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/80-svg.json",
+          "receiptSha256": "9243a4aff059f0c4c17a49ad1327c5dc24a4cb716153e263a239aefa0a9b38aa",
+          "error": "Output truncated at token limit"
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Blue shop band and rough two-at-attic/three-across main rhythm, but gable and three balconies absent; storefront blank.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/80-structured.json",
+          "receiptSha256": "8b501adbb6f33c9e3e244c65b044442c8cfd41c3534619dd759dc7d96563899c",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/80-structured.png",
+          "pngSha256": "23a73d43b865db2bba87e93e26b962a1dbac676f4cbeafdf90314be7b4bf4439",
+          "receiptPngSha256": "23a73d43b865db2bba87e93e26b962a1dbac676f4cbeafdf90314be7b4bf4439"
+        },
+        "assisted": {
+          "status": "rendered",
+          "note": "Rough upper rhythm but lower shop band is invented neon green; no balconies or gable.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/80-assisted.json",
+          "receiptSha256": "f59835a814f2d2770b360d48f99b331853737715da0dedba8b14d37230b45ded",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/80-assisted.png",
+          "pngSha256": "94e7d1d4abe5c912967c5da8d44312a4d14acf1f83aad6cb74f7f91673cf34df",
+          "receiptPngSha256": "94e7d1d4abe5c912967c5da8d44312a4d14acf1f83aad6cb74f7f91673cf34df"
+        }
+      },
+      "sourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+      "preparedImageSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+      "experimentHash": "13c4c3736ba9c1b92f87633fe4703a19b2ed2704edf972af290f7e9b4c9c25be",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 80,
+      "model": "gemini",
+      "sourceVisible": "Dark brick facade: left gable, attic arch/rect pair, three main levels with central balcony/door and flanking windows, blue shop sign band above storefront.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modelgemini-80.png",
+      "contactSha256": "4290da7d1a0aaed28d48ad4e8c8de5cce925a6c2ed6d55406dd5d118c3cbf59f",
+      "leastWrongArm": "svg",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "rendered",
+          "note": "Blue shop band and three balcony-rail hints with left/right opening layout, but gable/attic roof shape missing and shop/door too blank.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/80-svg.json",
+          "receiptSha256": "2fcd44c7ba0dc221ce40fbccf31889f8b6cdaea07c4b9b4e1a62f9d91d8bddde",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/80-svg.png",
+          "pngSha256": "016077cda5796c336d7d8d74150e965dfbe00dd14bc30970af75f2e95eeade0a",
+          "receiptPngSha256": "016077cda5796c336d7d8d74150e965dfbe00dd14bc30970af75f2e95eeade0a"
+        },
+        "structured": {
+          "status": "failed",
+          "note": "No raster: roof polygon outside schema.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/80-structured.json",
+          "receiptSha256": "861a68e96e92d463fd5e4469036e46fb558030911a74d6293190c4c5974261b1",
+          "error": "experiment.roof.points[1][1] must be an integer from 0 to 1000"
+        },
+        "assisted": {
+          "status": "failed",
+          "note": "No raster: roof polygon outside schema.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/80-assisted.json",
+          "receiptSha256": "4987d9cc08cde40bd5e9a046385955600d1d1b40bca235d31bc37b13f5bf97c2",
+          "error": "experiment.roof.points[1][1] must be an integer from 0 to 1000"
+        }
+      },
+      "sourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+      "preparedImageSha256": "8a6b3f423b1b7b2501db501666d2a3e1994b6af7c05dac620ed67820b855d954",
+      "experimentHash": "6dc8f90625e215520174c5bb7299c0cf4ce0a053abc18db561ba3bdbcad8e13e",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 93,
+      "model": "deepseek",
+      "sourceVisible": "Brick facade: dark pitched roof with three dormers, two main rows of three tall window bays, low small shop/ground windows and far-right entrance.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modeldeepseek-93.png",
+      "contactSha256": "214d877f3aa68d5f260dadf9a7ba246bdca1895397cde543b1021b4af73b2b04",
+      "leastWrongArm": "assisted",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "failed",
+          "note": "No raster: SVG rejected.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/93-svg.json",
+          "receiptSha256": "7ad7425cc5d12a1f3ada98958ccdfbb4f65969fe60ac241a31ac88cd3e1ca22b",
+          "error": "SVG rejected:     ~~~~~~~~~~~^^^^^^ xml.etree.ElementTree.ParseError: syntax error: line 1, column 0 "
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Two main three-bay rows but also invents a full extra row; roof dormers and low ground windows/door largely absent.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/93-structured.json",
+          "receiptSha256": "d4ef535c0c5cbc42f52d43a0f7606a399592ba38445295510632eedf2d89ea42",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/93-structured.png",
+          "pngSha256": "aadb1d4677a1d59c5ffaa2df8ffa1bb5827c3c9cdabb0d8f19e6fee947441ab6",
+          "receiptPngSha256": "aadb1d4677a1d59c5ffaa2df8ffa1bb5827c3c9cdabb0d8f19e6fee947441ab6"
+        },
+        "assisted": {
+          "status": "rendered",
+          "note": "Two main three-bay rows, three roof markers and right ground doorway retained; actual pitched roof/dormers and ground composition flattened.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/93-assisted.json",
+          "receiptSha256": "dd089f5b1b05430b3c46245260b68bcbe8798516aa4fbd5aea149a249502ac9c",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/93-assisted.png",
+          "pngSha256": "319b14aa3af0d82301e388c9e5da1b34c7ce73af92852454fddc319f50de0f82",
+          "receiptPngSha256": "319b14aa3af0d82301e388c9e5da1b34c7ce73af92852454fddc319f50de0f82"
+        }
+      },
+      "sourceSha256": "0ffe63aa1333aabb17f4f6ba3219ff4facd68e26972e1b91c3f5c21fe3d0e331",
+      "preparedImageSha256": "ace9bc41ab17af60d50dc36a7fb284d5184998a57af55ed06e58aec129a46215",
+      "experimentHash": "13c4c3736ba9c1b92f87633fe4703a19b2ed2704edf972af290f7e9b4c9c25be",
+      "identity": "crop-owner-not-certified"
+    },
+    {
+      "index": 93,
+      "model": "gemini",
+      "sourceVisible": "Brick facade: dark pitched roof with three dormers, two main rows of three tall window bays, low small shop/ground windows and far-right entrance.",
+      "contactPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/contacts/modelgemini-93.png",
+      "contactSha256": "39dadbd5e46e0e8e7ced1c02f71d17e55644387357b4a13911d6d398a50747ab",
+      "leastWrongArm": "svg",
+      "accepted": false,
+      "arms": {
+        "svg": {
+          "status": "rendered",
+          "note": "Three roof markers, two main three-bay rows and low ground zone; roof changes to a simple triangular cap and dormers/ground door lack detail.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/93-svg.json",
+          "receiptSha256": "b7be11c2ebbb3baa5bf2c5803fb1379822cf4448ea7ea63e916082dcb5487b27",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/93-svg.png",
+          "pngSha256": "3b0d1f2ee660c22285f0920f5680d8463c8a3c56261c8075235f356868adf6de",
+          "receiptPngSha256": "3b0d1f2ee660c22285f0920f5680d8463c8a3c56261c8075235f356868adf6de"
+        },
+        "structured": {
+          "status": "rendered",
+          "note": "Very steep triangular roof invents different building form; ground windows/door generic.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/93-structured.json",
+          "receiptSha256": "d27d9c62f180cd348f3ed9c1e6486789ce0f8a167cbdb0ab2c587edacdf96de1",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/93-structured.png",
+          "pngSha256": "f630000fdccc37e5e3078d21aec53b6630a27822eed91f4aec36594cd2f8ab5e",
+          "receiptPngSha256": "f630000fdccc37e5e3078d21aec53b6630a27822eed91f4aec36594cd2f8ab5e"
+        },
+        "assisted": {
+          "status": "failed",
+          "note": "No raster: opening bounds invalid.",
+          "receiptPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/gemini/93-assisted.json",
+          "receiptSha256": "27553acfefab15622a755ba8332093a574a32be8474fa55eea12e6db4c97d8ea",
+          "error": "experiment.openings[3].bounds must be positive and inside the image"
+        }
+      },
+      "sourceSha256": "0ffe63aa1333aabb17f4f6ba3219ff4facd68e26972e1b91c3f5c21fe3d0e331",
+      "preparedImageSha256": "ace9bc41ab17af60d50dc36a7fb284d5184998a57af55ed06e58aec129a46215",
+      "experimentHash": "6dc8f90625e215520174c5bb7299c0cf4ce0a053abc18db561ba3bdbcad8e13e",
+      "identity": "crop-owner-not-certified"
+    }
+  ]
+}

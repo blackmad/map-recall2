@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "purpose": "Source-only visual rubric for the ten-photo vector-reconstruction pilot. Counts are visible camera-space observations and intervals, not ownership certification, facade ground truth, rectification, or material albedo.",
+  "records": [
+    {
+      "index": 0,
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "visibleWindows": {"min": 9, "max": 10, "note": "Three repeated upper rows show three openings each; the lower-left glazed opening is partly hidden by shrubs and may be counted separately by an output."},
+      "visibleDoors": {"min": 1, "max": 1, "note": "One arched double-leaf entrance is plainly visible at lower right."},
+      "materialBands": ["dark brown brick over the principal facade", "pale window surrounds and arch trim", "dark/red entrance zone at ground level"],
+      "occlusion": "Bare shrub growth blocks the lower left; wires cross the middle facade.",
+      "sourceIdentityUnverified": true
+    },
+    {
+      "index": 3,
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "visibleWindows": {"min": 11, "max": 12, "note": "Four mostly repeated rows of three tall openings are visible; the left edge is cropped and should not be regularized beyond the photograph."},
+      "visibleDoors": {"min": 0, "max": 1, "note": "A deep arched ground-level recess is visible at right, but its door leaf is not reliably resolved."},
+      "materialBands": ["sunlit red-brown brick field", "pale/white cornice and window trim", "pale ground-floor retail or glazed band"],
+      "occlusion": "Strong directional sunlight and a crop through the left neighbor; ground detail is limited.",
+      "sourceIdentityUnverified": true
+    },
+    {
+      "index": 4,
+      "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "visibleWindows": {"min": 8, "max": 9, "note": "Three upper rows largely present as three bays, but balcony railings and the lower crop make one central opening ambiguous."},
+      "visibleDoors": {"min": 1, "max": 2, "note": "A lower-right entrance zone is visible; a second ground-level glazed/door-like opening cannot be separated reliably."},
+      "materialBands": ["pale buff-grey brick upper facade", "dark metal balcony bands", "mixed dark glazing and patterned/tiled entrance treatment at ground level"],
+      "occlusion": "Balconies cut across the central bay; cars cover the lower edge.",
+      "sourceIdentityUnverified": true
+    },
+    {
+      "index": 11,
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "visibleWindows": {"min": 14, "max": 16, "note": "A broad apartment frontage shows repeated horizontal window rows, but edge truncation and the recessed balcony stack make several apertures partial."},
+      "visibleDoors": {"min": 1, "max": 2, "note": "At least one central ground entrance is visible; another dark ground opening is ambiguous."},
+      "materialBands": ["ochre/cream rendered upper facade", "grey block or tile-clad base", "recessed balcony voids and metal rails"],
+      "occlusion": "Cars and bicycles cover part of the base; balcony recesses must not be converted into flat windows.",
+      "sourceIdentityUnverified": true
+    },
+    {
+      "index": 13,
+      "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+      "visibleWindows": {"min": 3, "max": 4, "note": "Three full right-side windows and a partial far-right window are visible; the broad left wall is deliberately blank."},
+      "visibleDoors": {"min": 0, "max": 0, "note": "No entrance is visible in this full crop."},
+      "materialBands": ["pale grey scored/rendered wall field", "darker roof tiles", "small lower basement/window zone"],
+      "occlusion": "Diagonal cable and suspended streetlamp cross the blank wall; street sign at the base.",
+      "sourceIdentityUnverified": true
+    },
+    {
+      "index": 17,
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "visibleWindows": {"min": 15, "max": 18, "note": "Left and right facade wings contain repeated rectangular window rows; stacked balcony recesses introduce opening/door ambiguity in the centre."},
+      "visibleDoors": {"min": 2, "max": 3, "note": "A grey service door at left and a central glazed entrance are visible; a balcony-level door should remain an observed opening unless the output clearly distinguishes it."},
+      "materialBands": ["pale yellow/cream rendered main facade", "muted red-brown brick base", "grey balcony slabs and rails"],
+      "occlusion": "Vehicles hide the lower edge; a signpost interrupts the base; balcony rails and recess shadows are structural, not windows.",
+      "sourceIdentityUnverified": true
+    },
+    {
+      "index": 30,
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "visibleWindows": {"min": 3, "max": 4, "note": "A small upper opening, a pair of narrow middle openings and a large arched opening are visible; lower detail is not sufficiently exposed."},
+      "visibleDoors": {"min": 0, "max": 0, "note": "No entrance can be distinguished behind lower foliage/crop."},
+      "materialBands": ["pale/white rendered facade", "dark decorative roof and cornice elements", "arched pale window surround"],
+      "occlusion": "Dense vegetation hides the ground storey; the narrow source view makes inferred symmetry especially unsafe.",
+      "sourceIdentityUnverified": true
+    },
+    {
+      "index": 64,
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "visibleWindows": {"min": 9, "max": 10, "note": "Three bays across three upper rows are clear; the lower dark glazed band may add an opening but is not separable at this source resolution."},
+      "visibleDoors": {"min": 0, "max": 1, "note": "No leaf is reliably distinguished from the lower dark/glazed band."},
+      "materialBands": ["muted brown brick upper facade", "pale window surrounds and arch details", "dark painted or glazed ground band"],
+      "occlusion": "Low-resolution source and overhead wire; signage/ground glazing should not be interpreted as masonry openings without evidence.",
+      "sourceIdentityUnverified": true
+    },
+    {
+      "index": 80,
+      "sourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+      "visibleWindows": {"min": 9, "max": 10, "note": "Three upper rows of three bays are visible, plus a small roof/dormer opening that should not be merged into the regular facade grid."},
+      "visibleDoors": {"min": 0, "max": 0, "note": "Ground-level entrance is not visible in the source crop."},
+      "materialBands": ["dark red-brown brick facade", "pale lintel/sill/ornament accents", "dark ground-level sign or fascia band"],
+      "occlusion": "Low contrast, overhead wires and bottom signage; preserve the asymmetrical roof/dormer treatment.",
+      "sourceIdentityUnverified": true
+    },
+    {
+      "index": 93,
+      "sourceSha256": "0ffe63aa1333aabb17f4f6ba3219ff4facd68e26972e1b91c3f5c21fe3d0e331",
+      "visibleWindows": {"min": 8, "max": 9, "note": "Three broad bays repeat over the main facade; lower-left detail is obscured by a vehicle and the rightmost base includes a door-like opening."},
+      "visibleDoors": {"min": 1, "max": 1, "note": "One narrow lower-right entrance is visible."},
+      "materialBands": ["brown brick facade", "pale stone/painted lintels and sill accents", "dark roof tile band"],
+      "occlusion": "Vehicle masks part of the base and the left neighboring facade intrudes; do not invent a symmetric lower row.",
+      "sourceIdentityUnverified": true
+    }
+  ]
+}

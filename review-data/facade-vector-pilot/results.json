@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "date": "2026-09-27",
+  "status": "pilot-complete-no-rollout; one provider charge unresolved",
+  "models": [
+    {
+      "model": "deepseek/deepseek-v4.1-flash",
+      "rendered": 17,
+      "attempted": 30,
+      "costUsd": 0.051985368863999994,
+      "unresolvedCosts": 0,
+      "medianSeconds": 5.301
+    },
+    {
+      "model": "google/gemini-3.1-flash-lite",
+      "rendered": 25,
+      "attempted": 30,
+      "costUsd": 0.06400746,
+      "unresolvedCosts": 0,
+      "medianSeconds": 3.721
+    },
+    {
+      "model": "z-ai/glm-4.6v",
+      "rendered": 1,
+      "attempted": 7,
+      "costUsd": 0.0142935111,
+      "unresolvedCosts": 1,
+      "medianSeconds": 42.507
+    },
+    {
+      "model": "z-ai/glm-5.3-flash",
+      "rendered": 14,
+      "attempted": 16,
+      "costUsd": 0.0151844616,
+      "unresolvedCosts": 0,
+      "medianSeconds": 15.969
+    },
+    {
+      "model": "local/qwen3.5:9b",
+      "rendered": 2,
+      "attempted": 9,
+      "costUsd": 0,
+      "unresolvedCosts": 0,
+      "medianSeconds": 58.418
+    },
+    {
+      "model": "xiaomi/mimo-v2.6-flash",
+      "rendered": 8,
+      "attempted": 9,
+      "costUsd": 0.008381352671999999,
+      "unresolvedCosts": 0,
+      "medianSeconds": 38.991
+    }
+  ],
+  "allDevelopmentPaidRequests": 119,
+  "allDevelopmentKnownApiUsd": 0.201457569654,
+  "unresolvedReservedUsd": 0.06,
+  "unresolvedRequests": [
+    {
+      "id": "request:068099f48543ee8fad1e83e3db344e72d3c28aeec9c35cb0f3e2410e38121068",
+      "key": "9da60f224a537206b0a4ef60eb889bec73b359a6739457a33bee6e1e8eeecab9",
+      "model": "z-ai/glm-4.6v",
+      "index": 30,
+      "arm": "svg",
+      "status": "unknown",
+      "reservedUsd": 0.06,
+      "sourceLedger": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/glm/30-svg.json"
+    }
+  ],
+  "localApiUsd": 0,
+  "budgetCapAdditionalUsd": 1.5,
+  "policy": "Technical render counts are not accuracy. Development v1 costs included; model table only corrected v2/v3 experiment. No acceptance or current-game appearance change."
+}

@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "reviewOrigin": "model-visual-review",
+  "reviewer": "gpt-6-sol",
+  "reviewedAt": "2026-09-27T07:32:10.521372+00:00",
+  "manifestSha256": "8a9d1496074810a0b3f6b8fff20ef12764275a4f8e201b1e73ccab224e48712a",
+  "scope": "Local Qwen3.5:9B pilot; only indices 0 and 17 SVG renders received visual review. Index 30 SVG failed fetch after 301.6 seconds and has no render to assess. Source-crop comparison is not verified BAG identity or publication approval.",
+  "records": [
+    {
+      "index": 0,
+      "arm": "svg",
+      "model": "local/qwen3.5:9b",
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "preparedImageSha256": "032a16bee549c5a40a5683676c6e002031310b9ba92c114a2869ef4226e3c4f2",
+      "renderPngSha256": "47413f27daa2b76e54b0cfd112452d7ac9660cadef7995298b886428cfc03bb3",
+      "renderSvgSha256": "2b67090260f5a2d59b526ea0aa115884c295f06e63c22dd7e63c170d58ee60cb",
+      "receiptSha256": "56c98efa65d9a7b9bd3a9b726d0cfd2c02169709cb1fd3660b0168af7572ad0b",
+      "verdict": "withhold-source-faithful-vector",
+      "note": "Source has separate window rows, a broad left window, two narrow right windows, and an arched ground entrance. The SVG collapses upper openings into three tall black shafts spanning floors, uses a generic orange-brown wall, and places a tiny entrance at the lower edge. The roof parapet is oversimplified. This is not a usable visible-opening reconstruction."
+    },
+    {
+      "index": 17,
+      "arm": "svg",
+      "model": "local/qwen3.5:9b",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "preparedImageSha256": "80a6391630195c4c9c3fc7c85740121fd613fac4062f95e02eaea797fa7b9b82",
+      "renderPngSha256": "2d876b67b1a725ccf81aa07095f78d7ed8e4918b583e6efd25712876e8eccb9f",
+      "renderSvgSha256": "89059ca2108f44971e597aae0ddfde1e60891b76adbdec2e87e8e1c020a0ec73",
+      "receiptSha256": "6760b3aa31e576eb5dcf5040a2db5805670dd5e706aa2642e2a692adcae29be3",
+      "verdict": "diagnostic-only-withhold-geometry",
+      "note": "The broad cream-render upper and reddish-brick lower division is recognizable. However, three large recessed balcony voids become small solid rectangles, right windows are enlarged and merged, and ground openings are generic; the visible fa\u00e7ade layout is not faithful enough to publish."
+    }
+  ],
+  "failedArms": [
+    {
+      "index": 0,
+      "arm": "structured",
+      "receiptSha256": "6dce00eca5228c85632931f494c9cc224ef6981d887576a5c77929e2431c251c",
+      "status": "failed",
+      "error": "experiment.openings[1].bounds must be positive and inside the image",
+      "clientLatencyMs": 38294
+    },
+    {
+      "index": 0,
+      "arm": "assisted",
+      "receiptSha256": "e8b048097cc30e05505e6f49ee64b536826bd02e46ee93eeb330e359eb216117",
+      "status": "failed",
+      "error": "experiment.openings[1].bounds must be positive and inside the image",
+      "clientLatencyMs": 28756
+    },
+    {
+      "index": 17,
+      "arm": "structured",
+      "receiptSha256": "50c5cffc24fbfc1690f6c8e30105a46a865466076923b7f4343844ea1ac36cbc",
+      "status": "failed",
+      "error": "experiment.openings[2].bounds must be positive and inside the image",
+      "clientLatencyMs": 72547
+    },
+    {
+      "index": 17,
+      "arm": "assisted",
+      "receiptSha256": "4f076fe267f94db5a60b7a503ebad38598bf53bfef71d4b96c63a22721c5d3c9",
+      "status": "failed",
+      "error": "experiment.openings[2].bounds must be positive and inside the image",
+      "clientLatencyMs": 68768
+    },
+    {
+      "index": 30,
+      "arm": "svg",
+      "receiptSha256": "7dbd1a10ba14a7479026b3d5235d805a6ccdbd266a7d8ad79509686fba36f567",
+      "status": "failed",
+      "error": "fetch failed",
+      "clientLatencyMs": 301612
+    },
+    {
+      "index": 30,
+      "arm": "structured",
+      "receiptSha256": "2772a542a0acd5b9005202f555c1c309c85a16a4754ac95fe44e77ef632a8c05",
+      "status": "failed",
+      "error": "experiment.openings[2].bounds must be positive and inside the image",
+      "clientLatencyMs": 18903
+    },
+    {
+      "index": 30,
+      "arm": "assisted",
+      "receiptSha256": "034da2e1b1cd011f266a2acf236a8cab6bc7d1fe98273a9b64a6c6d5e65ea963",
+      "status": "failed",
+      "error": "experiment.openings[1].bounds must be positive and inside the image",
+      "clientLatencyMs": 11341
+    }
+  ],
+  "recommendation": "Do not accept local vector geometry from this pilot. The two rendered SVGs miss key observed openings; six structured/assisted arms violate the explicit [x,y,width,height] contract. Index 30 SVG failed fetch after 301.6 seconds. Retain the local model for bounded broad-material diagnostics or test constrained output separately; never silently reinterpret failed coordinates or treat request failure as a visual result."
+}

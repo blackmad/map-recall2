@@ -50,12 +50,16 @@ Home-base routes already grow an expanding learning radius from the address
 
 ## P2 — Weight and reach
 
-**Photo-to-SVG comparison before another facade pipeline expansion.**
-Run the matched ten-source direct-SVG / structured-description / structured
-with OccFacade-proposals pilot in `docs/plans/photo-to-facade-vector-pilot.md`.
-Reuse FacadeDescription and existing compilers; measure visible opening/retail
-fidelity, inventions and actual billed tokens, then evaluate a frozen 20-case
-holdout. Costs are currently estimates; no generated-SVG benchmark has run.
+**Facade inference: preserve pixel geometry; classify/group candidates.**
+The six-model direct-SVG / structured / OccFacade-overlay pilot is complete;
+no general facade reconstruction passed review. GLM 5.3 yielded four coarse
+candidates (structured 0/3, direct 4/11), with material/geometry corrections left. Next test LLM selection/grouping of numbered mask
+components with fixed pixel bounds, named coordinates for new observations,
+and explicit balcony/storefront-zone representation. Ten-control and holdout
+quality gates remain. Results: `scripts/facade-eval/FACADE_VECTOR_PILOT.md`.
+One GLM4.6V request timed out without usage/ID; its $0.06 remains reserved in the
+shared ledger. Reconcile that charge before further paid inference; do not replay
+it or zero/reset the ledger. Free/local diagnostics can proceed independently.
 
 **OccFacade follow-up: validate full-facade proposals before integration.**
 All 100 cohort full views now have OccFacade/Vistas intersection masks. All 100

@@ -15,8 +15,10 @@ Latest owner steering (2026-09-27): compare direct photo-to-SVG with structured
 facade generation, with and without OccFacade window/door/shop proposals.
 [The bounded vector pilot](photo-to-facade-vector-pilot.md) specifies matched
 inputs, independent visual evaluation, a subsequent holdout, and token-cost
-assumptions. No SVG quality benchmark has run yet; retain source/owner checks
-and do not promote plausible drawings as measured facade geometry.
+assumptions. The six-model pilot has now run; no general facade winner passed visual review.
+See `scripts/facade-eval/FACADE_VECTOR_PILOT.md`. Next preserve OccFacade pixel
+geometry and test LLM selection/grouping/classification of numbered components.
+Retain source/owner checks; plausible drawings are not measured facade geometry.
 
 The owner has narrowed this phase to accurate colour/material matching, ahead of
 roof/gable work. The execution plan and honest results are in

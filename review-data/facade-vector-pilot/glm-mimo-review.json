@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "reviewBasis": "Source-only pilot rubric at /tmp/vector-pilot-source-review.json; native rendered PNGs plus stable contact sheets. Visual assessment only: no ownership, albedo, or publication acceptance.",
+  "schemaLimitation": "The current description schema has no explicit balcony feature. Missing balcony rails cannot be attributed solely to a model, but a useful arm must at least preserve the observed central recess/void and avoid replacing it with a solid regular window grid.",
+  "contacts": {
+    "glm53": {
+      "0": "14ee04a0899abf5d4eee0270d887bb47318da98ab8ddc1dafbe6f7ede146db26",
+      "30": "18e09ff17aa4200460a30b69587ff807630f67d0a2469e06b804025f967692b3",
+      "3": "54888db8cb18f82aee88fb4ee0761850f0ca45a23f0fbfc9651be4e054ca353b",
+      "4": "0ec1ecb04fba86f5f0f80d832c8a6576a0caf1a67c2a3baf7e70c8aad011c799",
+      "11": "86b3075a78942eeb6ca60765cec4f8e66a0dd97d1b63be8a36771bacbc13649b"
+    },
+    "mimo": {
+      "0": "6a027550936d2a815dd9011c0d05f5feb7d3b0e55c05d64180e669e46ff479d5",
+      "17": "209b30486e8f7c852991c103bcdba495c934b091751884003c5d168c94318921",
+      "30": "6fc1bf057bfe93133b5a501c9c5a3168fae37f5ffefd0c02abbebc2d9747f9aa"
+    }
+  },
+  "records": [
+    {
+      "model": "glm53",
+      "index": 0,
+      "arms": {
+        "directSVG": {
+          "status": "render-missing",
+          "note": "No native PNG was produced; it cannot count as a usable arm."
+        },
+        "structured": {
+          "pngSha256": "c2274e00b1e1cbddfae233ceea9906fd1ff01fd94f79b297203d5480c990816c",
+          "verdict": "provisional-coarse-only",
+          "note": "Best observed result for this source: preserves three separated rows and the broad-left/two-narrow-right rhythm, with a plausible dark-brown wall band. It still simplifies the double entrance and roof/trim, so needs correction before any use beyond coarse game geometry."
+        },
+        "assisted": {
+          "pngSha256": "e607011ae7ff6f5babac1dbe33b88a2fc50c4babcb9108a4897b9388b8a1986d",
+          "verdict": "revise",
+          "note": "Restores the 3\u00d73 opening count but makes the left openings too uniformly arched and alters row/band spacing; entrance remains overlarge and simplified."
+        }
+      }
+    },
+    {
+      "model": "glm53",
+      "index": 17,
+      "arms": {
+        "directSVG": {
+          "pngSha256": "b8d373cbaf03b6a8ada756fff32a279d4f93e85900ede7f0a1d50978b7c9d263",
+          "verdict": "revise",
+          "note": "Closest GLM representation: preserves the broad cream-over-brick banding, repeated wings and a central stacked recess. It does not express rails/slabs, and its foreground triangles are unsupported facade geometry; retain only as a correction candidate."
+        },
+        "structured": {
+          "pngSha256": "3fbed6d25420904856b9b16be7b37151164533a6683338d934de7ffbd5f32361",
+          "verdict": "reject",
+          "note": "Turns the central balcony stack into a tall solid brown block and adds unsupported base polygons. Regular opening rows alone do not preserve the source layout."
+        },
+        "assisted": {
+          "pngSha256": "bb9eba10680f76c91d7690c295a9e8c1ea172cfd6be05e31fc88b9ddefd845fd",
+          "verdict": "reject",
+          "note": "Likewise substitutes a solid central field for the stacked recess and creates an unobserved regular ground row. This is a schema limitation plus an inadequate fallback, not a balcony acceptance."
+        }
+      }
+    },
+    {
+      "model": "glm53",
+      "index": 30,
+      "arms": {
+        "directSVG": {
+          "pngSha256": "d5d4f340231636936de7b4011e1f6cb6b0c957c14185444f245e61611eefcc00",
+          "verdict": "revise",
+          "note": "The only arm that roughly retains the photographed hierarchy of small top opening, middle pair and large arch. It invents circular/diagonal roof decoration and literal shrubs where lower foliage should remain unknown; not acceptable without correction."
+        },
+        "structured": {
+          "status": "render-missing",
+          "note": "No native PNG was produced; not usable."
+        },
+        "assisted": {
+          "pngSha256": "f953c712fd7030f98d3dc6450d572b449341685c681822054e17c573ea532d6f",
+          "verdict": "reject",
+          "note": "Misplaces the upper/middle openings and produces an unsupported oversized central form and lower geometry."
+        }
+      }
+    },
+    {
+      "model": "mimo",
+      "index": 0,
+      "arms": {
+        "directSVG": {
+          "status": "render-missing",
+          "note": "No native PNG was produced; not usable."
+        },
+        "structured": {
+          "pngSha256": "a149c9c60260cafd3c461766e6e60c5eea97ad725077a03171766febd734ee28",
+          "verdict": "revise",
+          "note": "It captures repeated rows and broadly the left-plus-two-right opening pattern, but stretches the facade vertically and makes the ground entrance a pair of narrow red openings rather than the observed arched double entrance."
+        },
+        "assisted": {
+          "pngSha256": "2c6e85bb32f0206fee18ae58df285e6b990e368950b8f69ddacebca2a770d7b1",
+          "verdict": "revise",
+          "note": "Count is close but all openings are too tall and uniformly arched. It is weaker than GLM structured for coarse geometry."
+        }
+      }
+    },
+    {
+      "model": "mimo",
+      "index": 17,
+      "arms": {
+        "directSVG": {
+          "pngSha256": "9f3d4077d0d5c47b0ab33d46360d516e0a9224afbef31a6a12d95d24a02c0b18",
+          "verdict": "reject",
+          "note": "Creates dense micro-window grids that do not align with the photographed bays or counts."
+        },
+        "structured": {
+          "pngSha256": "38c3c68f301a7c61a46f58421e51431114450d87db889b5f139196bd09f1d083",
+          "verdict": "reject",
+          "note": "Regularizes windows but fails to retain a central recess and adds unsupported base geometry."
+        },
+        "assisted": {
+          "pngSha256": "1664b63b955ae06545034fdec3814fff69dc74dce3fb72fe346162e5fbaac89d",
+          "verdict": "reject",
+          "note": "Also removes the central stacked recess and makes a generic base; no coarse-game fit."
+        }
+      }
+    },
+    {
+      "model": "mimo",
+      "index": 30,
+      "arms": {
+        "directSVG": {
+          "pngSha256": "25ee05f4219a7e1b9ecbed8ba5f96c6d79da74bb9f49bcd84ace18b6ae9d05c5",
+          "verdict": "revise",
+          "note": "Final native render shows the visible hierarchy of one small upper opening, a middle pair and a dominant arch more closely than the earlier contact implied. It still turns foliage-hidden ground into definite geometry and cannot be used without correction."
+        },
+        "structured": {
+          "pngSha256": "37cd0e32faae7ec1aed7baa8de36aa98a144b858162a83e4b01261729f98e98f",
+          "verdict": "revise",
+          "note": "Also approximates the visible one-plus-pair-plus-arch hierarchy, but omits the photographed roof/cornice complexity and makes the concealed lower field definite."
+        },
+        "assisted": {
+          "pngSha256": "72783a08a0df8f071221430806041570f7c99acb7a0ab1aee6b55778227be883",
+          "verdict": "revise",
+          "note": "Keeps the broad arched opening but invents an extra upper split and solid lower treatment; correction candidate only."
+        }
+      }
+    },
+    {
+      "model": "glm53",
+      "index": 3,
+      "arms": {
+        "directSVG": {
+          "pngSha256": "42585505698e2f53563349dda70254f50bafff28f07c6213e16bc09f25714705",
+          "verdict": "reject",
+          "note": "Merges the photographed four window rows into two extremely tall paired strips and invents a generic base. It misses the visible 11\u201312 opening rhythm."
+        },
+        "structured": {
+          "pngSha256": "d3ce4360f7bfe185a75050b595977d05e73048cedd30e146b5683beb89cf6512",
+          "verdict": "provisional-coarse-only",
+          "note": "Best GLM arm here: it preserves four rows of three openings, brown brick and pale base/entrance separation. It over-regularizes the changing arch/trim treatment and simplifies the ground shop/recess, so needs correction."
+        },
+        "assisted": {
+          "pngSha256": "f172b59131fb4f40d483626c38ade52d8aef7d9cf264c4ac164afd0818d519d9",
+          "verdict": "revise",
+          "note": "Captures a 4\u00d73 rhythm but regularizes different window-head treatments and ground detail into generic forms."
+        }
+      }
+    },
+    {
+      "model": "glm53",
+      "index": 4,
+      "arms": {
+        "directSVG": {
+          "pngSha256": "55f2bc220d679706b32edfe72ddb32a7da40688b04ca8690159673835cc1243a",
+          "verdict": "provisional-coarse-only",
+          "note": "Best arm: retains three bays, four observed vertical levels, two central balcony rail bands, buff-brown wall and a distinct ground entrance zone. Window proportions and lower vehicle-obscured edge still require correction."
+        },
+        "structured": {
+          "pngSha256": "4200cd7c699952be38ffa3fe9390eb180597d9d7e553cd5aa3f509f6a41101bb",
+          "verdict": "reject",
+          "note": "Erases the two observed balcony levels and substitutes uniform arched openings; this changes the visible facade structure."
+        },
+        "assisted": {
+          "pngSha256": "014b8df1761c0356b495accb7e4fe951fb1f37e10b3c5f28679cc06a9656c128",
+          "verdict": "reject",
+          "note": "Likewise replaces balcony structure with a regular opening grid and invents a simplified base/door arrangement."
+        }
+      }
+    },
+    {
+      "model": "glm53",
+      "index": 11,
+      "arms": {
+        "directSVG": {
+          "pngSha256": "b908fed8c4e3bbf6515ee3187e41b253fa99f9d70202d6ba480e491644b867ed",
+          "verdict": "provisional-coarse-only",
+          "note": "Preserves the visible broad yellow rendered field, grey base, central stacked curved balcony/recess stack and repeated wing-window layout. Edge truncation, exact opening count and lower parked-object detail remain unresolved; retain only as a correction candidate."
+        },
+        "structured": {
+          "status": "render-missing",
+          "note": "No native PNG was produced; unusable."
+        },
+        "assisted": {
+          "status": "render-missing",
+          "note": "No native PNG was produced; unusable."
+        }
+      }
+    }
+  ],
+  "decision": "GLM structured index 0 and 3, GLM direct index 4 and 11 are provisional coarse-only candidates needing correction. GLM direct index 17/30 and all MiMo 30 arms are correction candidates only. No output is fit for automated or source-authoritative publication."
+}

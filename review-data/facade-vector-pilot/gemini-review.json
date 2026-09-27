@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "reviewBasis": "Independent comparison of rendered arm PNGs with the frozen source-only notes in /tmp/vector-pilot-source-review.json. This is a visual model review, not ownership certification, ground truth, or albedo acceptance.",
+  "records": [
+    {
+      "index": 0,
+      "contact": {
+        "path": ".cache/facade-assessment/vector-pilot/v2/contacts/model1-0.png",
+        "sha256": "fb83ca0ae340715dd7a5ca9ac679bdfda3f9009eaa87b41769e72c86fa45d57e"
+      },
+      "arms": {
+        "directSVG": {"path": "gemini/0-svg.png", "sha256": "394b6086140aa4fcbb37fc52ad279946e36a9b21ced9202ede32e0e00f2bd938", "verdict": "reject", "note": "Collapses the observed three upper rows into three extreme full-height strips. It misses the discrete 9–10 visible window rhythm and its ground opening/door geometry is not proportionate to the photo."},
+        "structured": {"path": "gemini/0-structured.png", "sha256": "222967ff996ae540424579c9dba4a0e74c436a76a85e6fd258e780933e38883f", "verdict": "reject", "note": "Retains three bays but merges each row into continuous vertical arched openings. The source has separated storeys and unequal broad-left/narrow-right apertures."},
+        "assisted": {"path": "gemini/0-assisted.png", "sha256": "154cdb2cf0d380ab40a977af8e3fff6b1ca7257f4bc6ddf09964597130f6a96a", "verdict": "revise", "note": "Closest arm: it restores a three-row, three-opening rhythm. But openings are too tall and too uniformly arched, row gaps and mixed window widths are lost, and the oversized red entrance is not source-faithful."}
+      },
+      "bestArm": "assisted",
+      "usableForCoarseGame": false,
+      "summary": "Brown wall family is directionally plausible, but all arms require opening geometry correction; assistance is a starting point only."
+    },
+    {
+      "index": 17,
+      "contact": {
+        "path": ".cache/facade-assessment/vector-pilot/v2/contacts/model1-17.png",
+        "sha256": "f66e03d6492697765e6652ed10e48d87b2f386baec8b18d9da5b42ff500cafa4"
+      },
+      "arms": {
+        "directSVG": {"path": "gemini/17-svg.png", "sha256": "eba334adf7a04f83671a4a7de77f2b0e5c29161cf250409c209508db54ad533e", "verdict": "reject", "note": "Regularizes the facade into flat window rows and omits the defining stacked central balcony/recess geometry. The large diagonal ground polygon is unsupported as facade geometry."},
+        "structured": {"path": "gemini/17-structured.png", "sha256": "e52aa6b650ab57f0e442f3be6f444e9297f313d7689eb83783b272bc594c04a8", "verdict": "reject", "note": "Has a broadly plausible cream-over-brick banding and repeated window rows, but removes all balcony voids, rails and the observed central entrances. It also replaces observed base variation with generic openings and a foreground polygon."},
+        "assisted": {"path": "gemini/17-assisted.png", "sha256": "b995ef913ee8adf60a5bcc45c2f1205c5295581f7f768487c82223fd3090c8f2", "verdict": "reject", "note": "Also omits the three stacked balcony/recess levels and creates an unsupported regular run of narrow base openings. The main floor/bay count is only superficially plausible."}
+      },
+      "bestArm": null,
+      "usableForCoarseGame": false,
+      "summary": "The missing balcony/recess structure is a severe failure for this facade; no arm is suitable even for a coarse game representation."
+    },
+    {
+      "index": 30,
+      "contact": {
+        "path": ".cache/facade-assessment/vector-pilot/v2/contacts/model1-30.png",
+        "sha256": "cff21c63d28129b569aecf0e836f63bd706683e93af9e0475b7d365193f86a5c"
+      },
+      "arms": {
+        "directSVG": {"path": "gemini/30-svg.png", "sha256": "f045e7d0b83ba57b11ee24aa184e122739d065c19c671ddf570ad340ae8ab173", "verdict": "reject", "note": "Invents a narrow tower-like composition, circular ornaments and a diagonal element. It does not preserve the observed small upper opening, middle pair and distinct large arched opening."},
+        "structured": {"path": "gemini/30-structured.png", "sha256": "4b9309d84c6f4724d89889a8a15ca2adbf769303de564eaea1842fcfab17cb4b", "verdict": "reject", "note": "Reduces the source to generic rectangles and one oversized arch; visible roof/cornice structure and the two middle openings are not placed faithfully. The foliage-hidden lower storey should remain unknown, not become a definite plain base."},
+        "assisted": {"path": "gemini/30-assisted.png", "sha256": "548b7e0d2b2218cd08e5d70c136553aa299a6875fabac86c8d30c00383790a7c", "verdict": "reject", "note": "Creates overlapping upper rectangles unrelated to the photographed arrangement and an oversized generic arch. It supplies no faithful handling of the ornate roof/cornice or foliage-occluded ground."}
+      },
+      "bestArm": null,
+      "usableForCoarseGame": false,
+      "summary": "None preserves the small, asymmetric visible opening layout; pale material alone is insufficient."
+    }
+  ]
+}

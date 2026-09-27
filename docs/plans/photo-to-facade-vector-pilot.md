@@ -1,6 +1,8 @@
 # Photo-to-facade vector pilot
 
-2026-09-27. Status: experiment specified; no LLM-generated SVG benchmark has run.
+2026-09-27. Status: six-model pilot executed; no general facade winner accepted.
+See [measured results](../../scripts/facade-eval/FACADE_VECTOR_PILOT.md). One
+provider charge remains unresolved; further paid calls stopped.
 
 The owner asks whether a vision LLM generating an SVG facade could replace the
 growing collection of separate window, door, retail and material passes. Test
@@ -90,5 +92,5 @@ Start with one model across all three arms, then compare a cheaper model on the
 winning representation. Ten sources x three arms at the Sonnet assumption is
 $1.14 before review/retries. Local Qwen has no API fee, but its earlier door
 omissions mean that free inference alone is not a quality argument. Record
-actual usage before any district-scale run. No paid benchmark was performed
-as part of this cost investigation.
+actual usage before any district-scale run. These were pre-run estimates. The completed pilot cost and limitations are in
+the measured-results report linked above.

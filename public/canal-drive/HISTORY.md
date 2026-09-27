@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — six-model photo-to-vector pilot and pixel-component baseline
+
+Compared direct SVG, structured rendering and OccFacade-assisted rendering with
+DeepSeek4.1Flash, Gemini3.1FlashLite, GLM5.3Flash, GLM4.6V, MiMo2.6Flash and local
+Qwen3.5:9b. DeepSeek/Gemini completed ten cases; other samples were smaller.
+Source-hash-bound independent visual review rejects general reconstruction:
+merged windows, moved doors, missing recesses, invented detail and a black SVG
+survive technical validation. GLM5.3 yielded four coarse-only candidates
+(structured 0/3, direct 4/11), making it the most promising inspected model.
+The next design keeps CV pixel geometry and asks models to classify/group IDs.
+A free connected-component baseline produced 233 unaccepted proposals, with
+useful positions but fragmentation and broad shop-zone over-merging.
+
+Reported development charges total $0.20146; an unresolved GLM4.6V timeout retains
+$0.06 and stops further paid work. No accounting reset or production appearance
+change. Gallery has 45 cards/132 images and passes desktop/phone checks. Details,
+provenance, caveats and reproduction: `scripts/facade-eval/FACADE_VECTOR_PILOT.md`.
+
 ## 2026-09-27 — opt-in photographed material-band trial
 
 `material-demo.html?owner=17&isolated=1&bands=1` splits the existing owner into

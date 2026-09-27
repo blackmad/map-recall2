@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "kind": "read-only-human-visual-review",
+  "scope": "DeepSeek v2 model0 contact images, indices 0,17,30; source-visible features only; no owner identity or acceptance",
+  "records": [
+    {
+      "index": 0,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "contactPath": ".cache/facade-assessment/vector-pilot/v2/contacts/model0-0.png",
+      "contactSha256": "327521a1de1a6f2a28b3c59b116bd96cc8c228e3a948bfdbef2cbc3f2a039af2",
+      "sourceVisible": "Dark brown brick, flat parapet; three upper rows, each with one wider left window and a close right pair; left ground window and red paired entrance under an arch at right. Vegetation partly covers ground.",
+      "arms": {
+        "svg": {
+          "receiptPath": ".cache/facade-assessment/vector-pilot/v2/deepseek/0-svg.json",
+          "receiptSha256": "5ef28c5130d40ec9f3b4878da5403cff7a6759ac6f85961f0214ff05434cc844",
+          "receiptStatus": "rendered",
+          "visualGrade": "partial",
+          "note": "Preserves three upper rows with wider left and right pair, brown wall, left ground opening, and red arched entrance on right. Simplifies brick and ornament, but major layout is recognizable.",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/0-svg.png",
+          "pngSha256": "2dd06d09a55e7a759f7f7f833296c7b04a8856dca02585e5c2ca32bb6abb4f43",
+          "receiptPngSha256": "2dd06d09a55e7a759f7f7f833296c7b04a8856dca02585e5c2ca32bb6abb4f43"
+        },
+        "structured": {
+          "receiptPath": ".cache/facade-assessment/vector-pilot/v2/deepseek/0-structured.json",
+          "receiptSha256": "114b86761ae1ab9b249805e4cb5f200741f1fcca0eb0d2f7faa6ac3a928e7abe",
+          "receiptStatus": "rendered",
+          "visualGrade": "poor",
+          "note": "Three rows collapse into narrow pale slits, left windows are too narrow/tall, arches and frames lost; red entrance placed toward left instead of right and ground composition is wrong.",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/0-structured.png",
+          "pngSha256": "92d1e4c60a19f7c00774e34209d58941b0203f0107256c00e369103d8294276a",
+          "receiptPngSha256": "92d1e4c60a19f7c00774e34209d58941b0203f0107256c00e369103d8294276a"
+        },
+        "assisted": {
+          "receiptPath": ".cache/facade-assessment/vector-pilot/v2/deepseek/0-assisted.json",
+          "receiptSha256": "375b063722bd166e26b45f2192f20ae7dd07e368a3646bf6e32db128e980d666",
+          "receiptStatus": "rendered",
+          "visualGrade": "poor",
+          "note": "Three rows of arched openings and brown wall retain rough rhythm, but wider left windows become narrow arches, entrance is grey instead of red, and ground details/vegetation are flattened. The mask does not repair key appearance.",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/0-assisted.png",
+          "pngSha256": "2ba84347838ddccfd9d65a59ca9c1508fef20a8216a03a776cdc050d20479527",
+          "receiptPngSha256": "2ba84347838ddccfd9d65a59ca9c1508fef20a8216a03a776cdc050d20479527"
+        }
+      },
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "preparedImageSha256": "032a16bee549c5a40a5683676c6e002031310b9ba92c114a2869ef4226e3c4f2",
+      "identity": "crop-owner-not-certified",
+      "experimentHash": "13c4c3736ba9c1b92f87633fe4703a19b2ed2704edf972af290f7e9b4c9c25be"
+    },
+    {
+      "index": 17,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "contactPath": ".cache/facade-assessment/vector-pilot/v2/contacts/model0-17.png",
+      "contactSha256": "b43aee6ee561f18bf2a7f29a65a3b1f9c1a83d0a204aa1810e5a28b9edd2bb0c",
+      "sourceVisible": "Cream upper render over red-brown brick ground band; three upper window rows flank a deep central open balcony stack; two ground entrances/glazing areas and cars/plant occlusion below.",
+      "arms": {
+        "svg": {
+          "receiptPath": ".cache/facade-assessment/vector-pilot/v2/deepseek/17-svg.json",
+          "receiptSha256": "485aaa1af33bbb2dc73ff1b9b8e56f170e8b0dab2a59fa3b9d199ff3427292db",
+          "receiptStatus": "failed",
+          "visualGrade": "rejected",
+          "note": "No raster: generated SVG uses stroke-dasharray, rejected by sanitizer.",
+          "error": "SVG rejected:     raise ValueError('Unsupported SVG attribute: ' + key) ValueError: Unsupported SVG attribute: stroke-dasharray "
+        },
+        "structured": {
+          "receiptPath": ".cache/facade-assessment/vector-pilot/v2/deepseek/17-structured.json",
+          "receiptSha256": "ae23ed6475d65fbc8149ea941dabb654f86e3abef4dd02a4da8840fb630311dc",
+          "receiptStatus": "failed",
+          "visualGrade": "rejected",
+          "note": "No raster: schema validation failed on experiment.type.",
+          "error": "experiment.type is not allowed"
+        },
+        "assisted": {
+          "receiptPath": ".cache/facade-assessment/vector-pilot/v2/deepseek/17-assisted.json",
+          "receiptSha256": "06d9b647f020446357adeb5cbb836e7ce7a4ae2ad3b26c6a2618d3f78c546ec2",
+          "receiptStatus": "rendered",
+          "visualGrade": "poor",
+          "note": "Gets cream-over-brick material direction and approximate band transition. Replaces central open balcony stack with ordinary windows, inventing a continuous window grid; only partial ground entrance/glazing placement, with the central recess and cars omitted.",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/17-assisted.png",
+          "pngSha256": "3e9956a96289758dcf2bd1ce41c1d09b049e3f7cab2f6fc649dcc36d52629026",
+          "receiptPngSha256": "3e9956a96289758dcf2bd1ce41c1d09b049e3f7cab2f6fc649dcc36d52629026"
+        }
+      },
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "preparedImageSha256": "80a6391630195c4c9c3fc7c85740121fd613fac4062f95e02eaea797fa7b9b82",
+      "identity": "crop-owner-not-certified",
+      "experimentHash": "13c4c3736ba9c1b92f87633fe4703a19b2ed2704edf972af290f7e9b4c9c25be"
+    },
+    {
+      "index": 30,
+      "model": "deepseek/deepseek-v4.1-flash",
+      "contactPath": ".cache/facade-assessment/vector-pilot/v2/contacts/model0-30.png",
+      "contactSha256": "55e80d388fa24de2ce8883c0e423eb86af0141122aa2b22422eeab49c545a5e2",
+      "sourceVisible": "Narrow pale rendered gabled facade; distinct sloped/ornate roofline and tiny high opening, paired midlevel windows with dark hoods, one broad lower arched window; vegetation obscures base.",
+      "arms": {
+        "svg": {
+          "receiptPath": ".cache/facade-assessment/vector-pilot/v2/deepseek/30-svg.json",
+          "receiptSha256": "03612bfcdc8d4c96acab2a0666dc34dac815c35c42134b6bddfa8c5f7c0b957d",
+          "receiptStatus": "rendered",
+          "visualGrade": "unusable",
+          "note": "Rendered PNG is entirely black. SVG contains repeated full-width polygon bands ending in black polygons covering the whole canvas, despite technical render success.",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/30-svg.png",
+          "pngSha256": "4234a2a8b395c6e59c09f39aa7d4d78b12d74cf684de3d2bc87ff84fc824b3df",
+          "receiptPngSha256": "4234a2a8b395c6e59c09f39aa7d4d78b12d74cf684de3d2bc87ff84fc824b3df"
+        },
+        "structured": {
+          "receiptPath": ".cache/facade-assessment/vector-pilot/v2/deepseek/30-structured.json",
+          "receiptSha256": "27507bd449a6e7df3eb88b76df07ce10ea404102fa8e72c6a4f345a60e79289c",
+          "receiptStatus": "rendered",
+          "visualGrade": "poor",
+          "note": "Pale wall colour direction only. Omits gable silhouette and ornamental hoods; creates five narrow windows across two lower rows where photo has paired midlevel windows and one broad lower arch; invents lower openings behind vegetation.",
+          "pngPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/vector-pilot/v2/deepseek/30-structured.png",
+          "pngSha256": "e264ddb0429f4f27a54bd10903a7791ba2843d5e092314f93ef1502dc168e43c",
+          "receiptPngSha256": "e264ddb0429f4f27a54bd10903a7791ba2843d5e092314f93ef1502dc168e43c"
+        },
+        "assisted": {
+          "receiptPath": ".cache/facade-assessment/vector-pilot/v2/deepseek/30-assisted.json",
+          "receiptSha256": "0a1a9386bb99409aef9179bb2630fb049be8a9ebb2bf5dd4ab3fb16f4a59ffb1",
+          "receiptStatus": "failed",
+          "visualGrade": "rejected",
+          "note": "No raster: schema validation failed on experiment.type.",
+          "error": "experiment.type is not allowed"
+        }
+      },
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "preparedImageSha256": "79119449e5531e5209c3dcb7dc1e4b91a68f36761e3a9ce6f0b383e0304c862d",
+      "identity": "crop-owner-not-certified",
+      "experimentHash": "13c4c3736ba9c1b92f87633fe4703a19b2ed2704edf972af290f7e9b4c9c25be"
+    }
+  ]
+}
