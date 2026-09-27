@@ -29,8 +29,8 @@ const model=arg('model','openai/gpt-6-luna'),local=false;
 const effort=arg('reasoning-effort','');
 if(!['low','medium','high'].includes(effort)||!['openai/gpt-6-luna','openai/gpt-6-sol'].includes(model))
  throw Error('Use --reasoning-effort=low|medium|high with GPT-6 Luna or Sol');
-const indices=arg('indices','0,17,30').split(',').map(Number);
-const arms=arg('arms','svg,structured,assisted').split(',');
+const indices=arg('indices','0,17,80').split(',').map(Number);
+const arms=arg('arms','svg').split(',');
 if(indices.length>30||indices.some(v=>!Number.isInteger(v))||new Set(indices).size!==indices.length||arms.some(a=>!['svg','structured','assisted'].includes(a)))throw Error('Invalid cohort/arms');
 const root=path.resolve('.cache/facade-assessment/vector-pilot'),manifestFile=path.resolve(arg('manifest','.cache/facade-assessment/vector-inputs-v1/manifest.json'));
 const out=path.resolve(arg('out',`${root}/gpt-effort-v1/${model.replaceAll(/[^a-z0-9.-]/gi,'_')}-${effort}`));
@@ -41,7 +41,7 @@ if(!local&&!info?.architecture?.input_modalities.includes('image'))throw Error('
 const auth=await json(root+'/authorization.json');
 const budget=globalBudget({ceiling:auth.maxCeilingUsd,authorization:auth});
 const basePrompt=`Reconstruct the visible architectural facade in this photograph as a flat vector study in source-image coordinates. Canvas coordinates: x and y independently normalized to 0..1000 across the ENTIRE original image, origin top left. Preserve visible positions, proportions, window counts, asymmetry, door versus shop glazing, material changes at the ground floor and visible roof outline. Do not turn this into an idealized generic house. Do not fill hidden areas with invented openings. Do not draw cars or vegetation as architectural features. Mark uncertainty. This is an unregistered crop: no metric dimensions or verified building identity are supplied. Colour should convey the observed material family; the photo is not calibrated albedo. Do not draw title text, labels or explanatory paragraphs into the image. Avoid decorative detail that prevents completion of the whole visible facade.`;
-const svgPrompt=`Return ONLY one complete SVG, no markdown. Root viewBox="0 0 1000 1000", preserveAspectRatio="none". Use only svg,g,rect,path,polygon,polyline,circle,ellipse,line,title,desc,metadata; hex fill/stroke colours or none. No CSS/style, defs,use,images,fonts,external references, scripts or events. Use at most 150 simple elements, no individual bricks, no repetitive embellishments; prioritize completing all main openings. In SVG rect, x/y are position and width/height are SIZE, not right/bottom coordinates. Group elements by walls, windows, doors, storefronts, roof, with data-visibility="observed|inferred|unknown". Describe uncertainty in desc. Keep the drawing inside the canvas. Include the whole visible facade before adding details.`;
+const svgPrompt=`This is a controlled qualitative facade reconstruction experiment. Reconstruct the one attached photograph as a standalone inert SVG of the observed facade in NATIVE image pixel coordinates, viewBox="0 0 {WIDTH} {HEIGHT}" matching the original image. Preserve actual framing, silhouette, opening count, bounds, window frame/lintel distinctions, door proportions, material bands and visible balconies/signage. Use observed colour; no palette legend. No external assets, text annotations, scripts or animation. Use simple SVG rect,path,polygon,line,circle,ellipse groups only, at most 150 elements. No invented repeated floors or gables. Occluded uncertain areas should remain plain, not invented openings. Make one initial reconstruction, without iteration. Return ONLY one complete SVG, no markdown. Describe uncertainty in a desc element. Use hex fill/stroke colours or none. In SVG rect, x/y are position and width/height are SIZE, not right/bottom coordinates. Keep all geometry inside the native image canvas.`;
 const structuredPrompt=`Return ONLY JSON satisfying this schema; no markdown. IMPORTANT: every opening bounds is [x,y,width,height], NOT corner coordinates. Example: left=200 top=300 right=350 bottom=540 must be bounds [200,300,150,240]. Require x+width<=1000 and y+height<=1000. Individual visible openings must have separate bounds; walls may be polygons. Coordinates are integers. Use notes for uncertain/occluded areas; do not mark unseen features observed. Schema: ${JSON.stringify(FACADE_SVG_JSON_SCHEMA)}`;
 const assistPrompt=`The second image is an OccFacade segmentation overlay of exactly the same photograph, not another view. It is fallible evidence, not ground truth. ENPC overlay colours: door orange [255,128,0], shop green [0,255,0], balcony purple [128,0,255], window red [255,0,0], wall yellow [255,255,0], sky cyan [128,255,255], roof blue [0,0,255], background black. Use it only where the original photo supports it; reject tree/glass/shop misclassifications. Original-photo coordinates apply to both.`;
 let digest=null;if(local){const tags=await(await fetch('http://127.0.0.1:11434/api/tags')).json();digest=tags.models.find((m:any)=>m.name===model.slice(6))?.digest;if(!digest)throw Error('Missing local model');}
@@ -70,7 +70,8 @@ for(const index of indices)for(const arm of arms){
  const receipt:any={key,experimentHash,index,arm,model,sourceSha256:e.sourceSha256,buildingId:e.buildingId,identity:'crop-owner-not-certified',inputs,startedAt:new Date().toISOString(),status:'requesting',...(local?{actualCostUsd:0}:{})};
  if(!local)receipt.reservation=await budget.reserve({key,sourceLedger:file,reservedUsd:reserveUsd,metadata:{experiment:'facade-vector-pilot',model,index,arm,...(effort?{effort}:{})}});
  await save(file,receipt);
- const text=basePrompt+'\n'+(arm==='svg'?svgPrompt:structuredPrompt)+(arm==='assisted'?'\n'+assistPrompt:'');
+ const text=arm==='svg'?svgPrompt.replace('{WIDTH}',String(e.originalWidth)).replace('{HEIGHT}',String(e.originalHeight)):
+  basePrompt+'\n'+structuredPrompt+(arm==='assisted'?'\n'+assistPrompt:'');
  const started=performance.now();
  try{
   let raw:any;
@@ -103,7 +104,7 @@ for(const index of indices)for(const arm of arms){
   const output=String(receipt.output??'').trim().replace(/^```(?:json|svg|xml)?\s*/,'').replace(/\s*```$/,'');
   let svg:string;
   if(arm==='svg'){
-   const cleaned=spawnSync('python3',['scripts/facade-eval/sanitize_facade_svg.py',String(e.originalWidth),String(e.originalHeight)],{input:output,encoding:'utf8',maxBuffer:1024*1024});
+   const cleaned=spawnSync('python3',['scripts/facade-eval/sanitize_facade_svg.py',String(e.originalWidth),String(e.originalHeight),'--native'],{input:output,encoding:'utf8',maxBuffer:1024*1024});
    if(cleaned.status!==0)throw Error('SVG rejected: '+cleaned.stderr.split('\n').slice(-3).join(' '));svg=cleaned.stdout;
   }else{
    const description=validateFacadeSvgExperiment(JSON.parse(output));receipt.description=description;

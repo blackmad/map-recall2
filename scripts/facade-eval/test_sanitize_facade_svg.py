@@ -12,5 +12,15 @@ class SvgTest(unittest.TestCase):
     def test_wrong_frame(self):
         with self.assertRaises(ValueError):
             sanitize_svg('<svg viewBox="0 0 200 100"/>', 100, 100)
+    def test_native_frame_preserves_source_pixels_without_stretch(self):
+        source = '<svg viewBox="0 0 275 873" preserveAspectRatio="none"><path d="M10 20 L30 40" fill="none" stroke="#112233"/></svg>'
+        out = sanitize_svg(source, 275, 873, native=True)
+        self.assertIn('viewBox="0 0 275 873"', out)
+        self.assertNotIn('preserveAspectRatio="none"', out)
+        self.assertIn('M10 20 L30 40', out)
+        with self.assertRaisesRegex(ValueError, 'native image viewBox'):
+            sanitize_svg('<svg viewBox="0 0 1000 1000"/>', 275, 873, native=True)
+        with self.assertRaisesRegex(ValueError, 'normalized viewBox'):
+            sanitize_svg(source, 275, 873)
 
 if __name__ == '__main__': unittest.main()
