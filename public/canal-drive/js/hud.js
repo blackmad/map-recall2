@@ -161,8 +161,7 @@ class HUD {
    *  have a card of its own beside this one, showing the same distance twice. */
   drawDestination(ctx, name, distancePx, expectedNovelty = null, arrowAngle = null) {
     const surface = window.CanalRecallUi.hudSurface;
-    const meters = Math.max(0, distancePx / PIXELS_PER_METER);
-    const distance = meters >= 1000 ? `${(meters / 1000).toFixed(1)} km` : `${Math.round(meters)} m`;
+    const distance = this._destinationDistance(distancePx);
     const rect = this._rect('destination', { x: CANVAS_W - 350, y: 15, width: 335, height: 48 });
     this.paperCard(ctx, rect);
     const compact = rect.height < 44;
@@ -174,19 +173,7 @@ class HUD {
     if (hasArrow) {
       const r = compact ? 10 : 12;
       const acx = left + r;
-      ctx.save();
-      ctx.translate(acx, midY);
-      ctx.rotate(arrowAngle);
-      const len = r * 0.95, wid = r * 0.55;
-      ctx.fillStyle = surface.arrow;
-      ctx.beginPath();
-      ctx.moveTo(len, 0);
-      ctx.lineTo(-len * 0.55, -wid);
-      ctx.lineTo(-len * 0.25, 0);
-      ctx.lineTo(-len * 0.55, wid);
-      ctx.closePath();
-      ctx.fill();
-      ctx.restore();
+      this._finishArrow(ctx, acx, midY, r, arrowAngle);
       left = acx + r + 10;
     }
 
@@ -209,6 +196,28 @@ class HUD {
     ctx.fillStyle = surface.ink;
     ctx.fillText(this._fit(ctx, (name || '').toUpperCase(), distanceLeft - left - 12), left, midY + 1);
     ctx.restore();
+  }
+
+  /** The copper finish arrow, centred on (cx, cy), `r` its half-length. */
+  _finishArrow(ctx, cx, cy, r, angle) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(angle);
+    const len = r * 0.95, wid = r * 0.55;
+    ctx.fillStyle = window.CanalRecallUi.hudSurface.arrow;
+    ctx.beginPath();
+    ctx.moveTo(len, 0);
+    ctx.lineTo(-len * 0.55, -wid);
+    ctx.lineTo(-len * 0.25, 0);
+    ctx.lineTo(-len * 0.55, wid);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  _destinationDistance(distancePx) {
+    const meters = Math.max(0, distancePx / PIXELS_PER_METER);
+    return meters >= 1000 ? `${(meters / 1000).toFixed(1)} km` : `${Math.round(meters)} m`;
   }
 
   drawStreetName(ctx, name) {
@@ -236,8 +245,15 @@ class HUD {
   drawPlaque(ctx, {
     routeName = '', neighborhood = '', answerHidden = false,
     correct = 0, attempts = 0, points = 0, streak = 0, gamey = true,
-    trip = '', feedback = '', restrictionNote = '',
+    trip = '', feedback = '', restrictionNote = '', destination = null,
   } = {}) {
+    if (this.layout?.destinationInRecall) {
+      this._drawMergedPlaque(ctx, {
+        routeName, neighborhood, answerHidden, correct, attempts, points, streak, gamey,
+        feedback, restrictionNote, destination,
+      });
+      return;
+    }
     const surface = window.CanalRecallUi.hudSurface;
     const anchor = this._rect('recall', { x: 15, y: 15, width: 310, height: 43 });
     const slot = this._rect('location', null);
@@ -312,6 +328,102 @@ class HUD {
       ctx.font = this._font(500, 12, surface.fontUi);
       ctx.fillStyle = surface.inkMuted;
       ctx.fillText(this._fit(ctx, feedback, inner), left, y);
+    }
+    ctx.restore();
+  }
+
+  /** Portrait phone: the whole top chrome in one card.
+   *
+   *    WESTERSTRAAT                          ➤ 1.2 km
+   *    Jordaan · 3 / 4 · 40 pts          to Rijksmuseum
+   *
+   *  The destination bar used to be a second full-width row under a
+   *  three-line plaque, and the odometer and "% new" were a third distance on
+   *  screen. A phone keeps the arrow, the distance left, and the name; the
+   *  odometer and novelty stay on the roomier layouts. */
+  _drawMergedPlaque(ctx, {
+    routeName, neighborhood, answerHidden, correct, attempts, points, streak, gamey,
+    feedback, restrictionNote, destination,
+  }) {
+    const surface = window.CanalRecallUi.hudSurface;
+    const rect = this._rect('recall', { x: 12, y: 12, width: CANVAS_W - 24, height: 56 });
+    this.paperCard(ctx, rect);
+    const pad = 12;
+    const left = rect.x + pad + 1;
+    const right = rect.x + rect.width - pad - 1;
+    const inner = right - left;
+    ctx.save();
+    ctx.textBaseline = 'alphabetic';
+
+    // Row 1: the street (withheld while it is the question), then the finish.
+    let y = rect.y + pad + 15;
+    let headlineRight = right;
+    if (destination) {
+      const distance = this._destinationDistance(destination.distancePx);
+      ctx.font = this._font(700, 13, surface.fontMono);
+      ctx.fillStyle = surface.accent;
+      ctx.textAlign = 'right';
+      ctx.fillText(distance, right, y);
+      headlineRight = right - ctx.measureText(distance).width - 6;
+      if (Number.isFinite(destination.arrowAngle)) {
+        this._finishArrow(ctx, headlineRight - 9, y - 5, 9, destination.arrowAngle);
+        headlineRight -= 22;
+      }
+      headlineRight -= 10;
+    }
+    ctx.textAlign = 'left';
+    ctx.font = this._font(800, 19, surface.fontPlaque);
+    ctx.fillStyle = surface.ink;
+    const headline = answerHidden ? '? ? ?' : (routeName || '—');
+    ctx.fillText(this._fit(ctx, headline.toUpperCase(), headlineRight - left), left, y + 2);
+
+    // Row 2: where and how well on the left; where to on the right. The score
+    // never moves; the neighbourhood and destination name trim to fit.
+    y += 20;
+    const tally = gamey ? `${correct}/${attempts} · ${points} pts` : `${correct}/${attempts}`;
+    const streakText = gamey && streak >= 2 ? `  ${streak}×streak` : '';
+    ctx.font = this._font(700, 11, surface.fontMono);
+    const tallyWidth = ctx.measureText(tally + streakText).width;
+    let destWidth = 0;
+    const destName = destination?.name ? `to ${destination.name}` : '';
+    if (destName) {
+      ctx.font = this._font(500, 12, surface.fontUi);
+      const room = Math.max(60, inner * 0.45);
+      const fitted = this._fit(ctx, destName, room);
+      destWidth = ctx.measureText(fitted).width + 10;
+      ctx.fillStyle = surface.inkMuted;
+      ctx.textAlign = 'right';
+      ctx.fillText(fitted, right, y);
+      ctx.textAlign = 'left';
+    }
+    let x = left;
+    if (neighborhood) {
+      ctx.font = this._font(500, 12, surface.fontUi);
+      ctx.fillStyle = surface.inkMuted;
+      const hood = this._fit(ctx, neighborhood, Math.max(0, inner - destWidth - tallyWidth - 14));
+      if (hood && hood !== '…') {
+        ctx.fillText(`${hood} · `, x, y);
+        x += ctx.measureText(`${hood} · `).width;
+      }
+    }
+    ctx.font = this._font(700, 11, surface.fontMono);
+    ctx.fillStyle = surface.ink;
+    ctx.fillText(tally, x, y);
+    if (streakText) {
+      ctx.fillStyle = surface.accent;
+      ctx.fillText(streakText, x + ctx.measureText(tally).width, y);
+    }
+
+    // Optional lines, only when the layout reserved room for them.
+    const lines = [];
+    if (restrictionNote) lines.push([restrictionNote, 600, surface.accent]);
+    if (feedback) lines.push([feedback, 500, surface.inkMuted]);
+    for (const [text, weight, colour] of lines) {
+      if (y + 15 > rect.y + rect.height - 6) break;
+      y += 15;
+      ctx.font = this._font(weight, 12, surface.fontUi);
+      ctx.fillStyle = colour;
+      ctx.fillText(this._fit(ctx, text, inner), left, y);
     }
     ctx.restore();
   }

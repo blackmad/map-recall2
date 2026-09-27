@@ -50,15 +50,6 @@ Home-base routes already grow an expanding learning radius from the address
 
 ## P2 — Weight and reach
 
-**Phone HUD takes too much of the screen (user report 2026-09-27).**
-Measured on iPhone 13 (390×664 CSS px): the street/stats card plus the
-destination bar reach y≈168 (~25% of height), the minimap is ~125×95 px mid-left,
-and the stick plus its hint fill most of the bottom third, leaving a thin
-driving corridor. The two top cards repeat information (distance appears in
-both). Direction: merge them into one ~48 px strip, shrink or collapse the
-minimap to a tappable chip, and drop the stick hint after first use. Add
-Storybook phone states and a Playwright assertion on the corridor fraction.
-
 **Start-of-ride orientation zoom (user idea 2026-09-27).**
 A ride starts at street scale with no sense of where in the city you are.
 Spike: a ~2 s camera zoom from a city overview (start pin, destination pin,
