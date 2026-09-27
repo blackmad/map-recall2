@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {applyFacadeComponents, type MeshData} from './componentGeometry';
+import {applyEntranceAssembly, applyFacadeComponents, type MeshData} from './componentGeometry';
 
 const wall = (): MeshData => ({id: 'front', kind: 'wall', textured: true,
   positions: [0, 0, 0, 4, 0, 0, 4, 4, 0, 0, 4, 0],
@@ -62,4 +62,43 @@ test('standalone balcony does not invent an aperture', () => {
   assert.equal(result.stats.apertures, 0);
   assert.equal(result.meshes.some(mesh => mesh.id.includes('component:b:inset')), false);
   assert.ok(result.meshes.some(mesh => mesh.id === 'component:b:slab'));
+});
+
+test('reviewed arched entrance cuts its polygon exactly and leaves outer trim intact', () => {
+  const outline = [[0.3, 0.8], [0.3, 0.35], [0.37, 0.25], [0.5, 0.2], [0.63, 0.25], [0.7, 0.35], [0.7, 0.8]] as const;
+  const result = applyEntranceAssembly([wall()], {id: 'door', outline, depth: 0.65});
+  assert.equal(result.stats.accepted, true);
+  assert.ok(result.stats.cutAreaUv > 0.2);
+  assert.deepEqual(result.stats.focus?.outward, [0, 0, 1]);
+  const retained = result.meshes.find(mesh => mesh.id === 'front');
+  assert.ok(retained?.uvs);
+  const onOriginalWall = (point: readonly [number, number]) => {
+    for (let i = 0; i < retained.indices.length; i += 3) {
+      const points = retained.indices.slice(i, i + 3).map(index =>
+        [retained.uvs![index * 2], retained.uvs![index * 2 + 1]] as const);
+      if (contains(point, points[0], points[1], points[2])) return true;
+    }
+    return false;
+  };
+  assert.equal(onOriginalWall([0.5, 0.5]), false, 'door center must be fully cut');
+  assert.equal(onOriginalWall([0.31, 0.7]), true, 'spandrel beside arch must remain');
+  assert.equal(onOriginalWall([0.5, 0.1]), true, 'trim above arch must remain');
+  const door = result.meshes.find(mesh => mesh.id === 'entrance:door:door');
+  assert.ok(door && !door.textured);
+  assert.ok(door.positions.filter((_, i) => i % 3 === 2).every(z => Math.abs(z + 0.65) < 1e-6));
+  const reveal = result.meshes.find(mesh => mesh.id === 'entrance:door:reveal');
+  assert.ok(reveal && !reveal.textured && reveal.indices.length === outline.length * 6);
+  assert.ok(result.meshes.some(mesh => mesh.id === 'entrance:door:transom'));
+  assert.ok(result.meshes.some(mesh => mesh.id === 'entrance:door:glazing'));
+  assert.equal(result.meshes.some(mesh => mesh.id.includes('front-frame')), false);
+});
+
+test('entrance refuses an outline crossing the wall boundary', () => {
+  const half = wall();
+  half.positions = [0, 0, 0, 2, 0, 0, 2, 4, 0, 0, 4, 0];
+  half.uvs = [0, 0, 0.5, 0, 0.5, 1, 0, 1];
+  const result = applyEntranceAssembly([half], {id: 'off', outline: [[0.35, 0.7], [0.65, 0.7], [0.65, 0.2], [0.35, 0.2]]});
+  assert.equal(result.stats.accepted, false);
+  assert.equal(result.stats.reason, 'outside-or-ambiguous-wall');
+  assert.equal(result.meshes[0], half);
 });
