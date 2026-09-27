@@ -13,7 +13,7 @@ Building / façade / 3D mesh work is owned by other agents — do not queue it
 here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 `HISTORY.md`. The isolated facade atelier follow-up (automatic assembly classification beyond the reviewed entrance,
 clean wall-colour textures, missing mullions and inferred-depth validation) is tracked in
-`docs/plans/facade-texture-3d-pilot.md`.
+`docs/plans/facade-texture-3d-pilot.md` and `docs/plans/automatic-facade-assemblies.md` (whole-block entrance fitting and remaining visual coverage).
 
 ---
 
@@ -96,7 +96,7 @@ local bump relief and raised frame candidates on3/5/6 BAG buildings. Main next
 work: per-facade registration landmarks, source-corrected gable outlines, and
 verified window grouping before close-range geometry. Existing texture drawings
 are not accepted into gameplay. Demo: `facade-texture-demo.html`; pipeline and
-prompt alternatives: `docs/plans/facade-texture-3d-pilot.md`.
+prompt alternatives: `docs/plans/facade-texture-3d-pilot.md` and `docs/plans/automatic-facade-assemblies.md` (whole-block entrance fitting and remaining visual coverage).
 
 **OccFacade follow-up: validate full-facade proposals before integration.**
 All 100 cohort full views now have OccFacade/Vistas intersection masks. All 100

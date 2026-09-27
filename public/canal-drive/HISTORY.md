@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — Whole-block automatic assembly pipeline
+
+Added a reproducible two-strip extraction/compiler command, ID-only GLM review,
+complete linked balcony geometry, automatic outer-mouth candidates, and a bounded
+clean-layer comparison. Nine strip1 balconies pass the cleanup gate; original
+pixels outside their source-bound masks are unchanged. One balcony and all ground
+entrance reconstructions are withheld after uncertainty/visual checks, retaining
+original appearance. Three geometry-admitted entrances failed independent close-up
+review, so the block is explicitly incomplete. Awning geometry and a separate real
+reference classification are implemented; owner-bound placement remains open.
+
+The atelier has automatic-block and unchanged-method holdout rows, camera-preserving
+before/after, per-candidate reports, and front/left/right captures. Twenty-one focused
+tests, TypeScript, and twelve desktop/phone browser checks pass. Additional model
+spend: $0.2770560485 of the authorized $2. MAI provider requests failed at no charge;
+no MAI quality claim. Implementation and remaining work:
+`docs/plans/automatic-facade-assemblies.md`. No game appearance data published.
+
 ## 2026-09-27 — Reviewed entrance assembly
 
 Replaced the reported glass-box doorway with a complete source-bound reviewed

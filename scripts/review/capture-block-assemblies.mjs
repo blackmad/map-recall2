@@ -1,0 +1,7 @@
+import {chromium} from 'playwright';import fs from 'node:fs/promises';
+const out='.cache/facade-assessment/block-assemblies-v1/assembly-views';await fs.mkdir(out,{recursive:true});const b=await chromium.launch();const page=await b.newPage({viewport:{width:1200,height:900}});const captures=[];
+try{await page.goto('http://localhost:5195/canal-drive/facade-texture-demo.html?study=block-auto');await page.waitForFunction(()=>window.facadeTextureDemo?.row?.id==='block-auto'&&document.getElementById('loading').classList.contains('hidden'));
+const targets=await page.evaluate(()=>{const s=window.facadeTextureDemo.row.entranceRepair.stats;return [...s.balconyViews,...s.entrances.filter(e=>e.focus)];});
+for(const t of targets)for(const angle of [0,-.6,.6]){
+await page.evaluate(({focus,angle})=>{const d=window.facadeTextureDemo,c=d.camera.position.clone().set(...focus.center),n=d.camera.position.clone().set(...focus.outward).normalize();const x=n.x*Math.cos(angle)+n.z*Math.sin(angle),z=-n.x*Math.sin(angle)+n.z*Math.cos(angle);n.x=x;n.z=z;d.camera.position.copy(c).addScaledVector(n,Math.max(focus.heightM,focus.widthM,3)*2.4);d.camera.position.y+=.3;d.controls.target.copy(c);d.controls.update();}, {focus:t.focus,angle});await page.waitForTimeout(100);const file=`${t.id}-${angle}.png`;await page.locator('#viewport').screenshot({path:out+'/'+file});captures.push({id:t.id,angle,file});}
+}finally{await b.close();}await fs.writeFile(out+'/index.json',JSON.stringify({captures,visualAcceptance:false},null,2));console.log({captures:captures.length});

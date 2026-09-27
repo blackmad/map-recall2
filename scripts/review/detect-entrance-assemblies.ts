@@ -171,7 +171,7 @@ export async function run(inputPath:string,receiptPath:string,outDir:string) {
     counts:{seeds:seeds.length,candidates:candidates.length,entrance:candidates.filter(c=>c.role==='entrance').length,
       shopfront:candidates.filter(c=>c.role==='shopfront').length,uncertain:candidates.filter(c=>c.role==='uncertain').length,
       geometryReady:candidates.filter(c=>c.geometryReady).length,gaps:coverageGaps.length},
-    overlay:{path:overlayPath,sha256:sha(overlay)}};
+    overlay:{path:path.resolve(overlayPath),sha256:sha(overlay)}};
   await fs.writeFile(path.join(outDir,'entrances.json'),JSON.stringify(output,null,2)+'\n');return output;
 }
 

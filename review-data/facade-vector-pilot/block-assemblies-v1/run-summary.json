@@ -1,0 +1,438 @@
+{
+  "version": 1,
+  "status": "partial",
+  "inventorySummary": {
+    "sourceVisibleBalconies": 10,
+    "generatedVisibleBalconies": 10,
+    "sourceDoorwayLikeApertures": 7,
+    "generatedDoorwayLikeApertures": 7,
+    "sourceShopfrontGroups": 4,
+    "generatedShopfrontGroups": 4,
+    "finding": "The generated strip retains broad counts but makes the balcony lattice and ground rhythm more regular than the original. Count agreement is not component acceptance."
+  },
+  "geometry": [
+    {
+      "id": "strip1",
+      "balconies": [
+        "balcony-10",
+        "balcony-13",
+        "balcony-16",
+        "balcony-21",
+        "balcony-23",
+        "balcony-26",
+        "balcony-29",
+        "balcony-32",
+        "balcony-37"
+      ],
+      "withheldBalconies": [
+        {
+          "id": "balcony-7",
+          "reason": "paint-cleanup-unverified:both-side-rails-dark,lower-slab-evidence-insufficient,no-other-opening-overlap"
+        }
+      ],
+      "entrances": [
+        {
+          "id": "ground-001",
+          "status": "withheld",
+          "reason": "classifier:window"
+        },
+        {
+          "id": "ground-002",
+          "status": "withheld",
+          "reason": "classifier:window"
+        },
+        {
+          "id": "ground-003",
+          "status": "withheld",
+          "reason": "classifier:window"
+        },
+        {
+          "id": "ground-004",
+          "status": "withheld",
+          "reason": "outer-mouth-edge-unresolved"
+        },
+        {
+          "id": "ground-005",
+          "status": "withheld",
+          "reason": "outer-mouth-edge-unresolved"
+        },
+        {
+          "id": "ground-006",
+          "status": "withheld",
+          "reason": "outer-mouth-edge-unresolved"
+        },
+        {
+          "id": "ground-007",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-008",
+          "status": "withheld",
+          "reason": "independent-visual-review-rejected"
+        },
+        {
+          "id": "ground-009",
+          "status": "withheld",
+          "reason": "outer-mouth-edge-unresolved"
+        },
+        {
+          "id": "ground-010",
+          "status": "withheld",
+          "reason": "classifier:window"
+        },
+        {
+          "id": "ground-011",
+          "status": "withheld",
+          "reason": "classifier:window"
+        },
+        {
+          "id": "ground-012",
+          "status": "withheld",
+          "reason": "classifier:window"
+        },
+        {
+          "id": "ground-013",
+          "status": "withheld",
+          "reason": "independent-visual-review-rejected"
+        },
+        {
+          "id": "ground-014",
+          "status": "withheld",
+          "reason": "independent-visual-review-rejected"
+        },
+        {
+          "id": "ground-015",
+          "status": "withheld",
+          "reason": "classifier:shopfront"
+        },
+        {
+          "id": "ground-016",
+          "status": "withheld",
+          "reason": "classifier:shopfront"
+        },
+        {
+          "id": "ground-017",
+          "status": "withheld",
+          "reason": "shopfront"
+        },
+        {
+          "id": "ground-018",
+          "status": "withheld",
+          "reason": "classifier:unknown"
+        },
+        {
+          "id": "ground-019",
+          "status": "withheld",
+          "reason": "classifier:unknown"
+        }
+      ],
+      "qa": "Nine balcony assemblies individually visually reviewed; rejected entrances retain original. Whole block incomplete."
+    },
+    {
+      "id": "strip2",
+      "balconies": [
+        "balcony-27",
+        "balcony-28",
+        "balcony-31",
+        "balcony-32",
+        "balcony-33",
+        "balcony-36",
+        "balcony-45",
+        "balcony-46",
+        "balcony-47",
+        "balcony-48"
+      ],
+      "withheldBalconies": [
+        {
+          "id": "balcony-70",
+          "reason": "no-linked-window"
+        }
+      ],
+      "entrances": [
+        {
+          "id": "ground-001",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-002",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-003",
+          "status": "withheld",
+          "reason": "shopfront"
+        },
+        {
+          "id": "ground-004",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-005",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-006",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-007",
+          "status": "withheld",
+          "reason": "shopfront"
+        },
+        {
+          "id": "ground-008",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-009",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-010",
+          "status": "withheld",
+          "reason": "shopfront"
+        },
+        {
+          "id": "ground-011",
+          "status": "withheld",
+          "reason": "shopfront"
+        },
+        {
+          "id": "ground-012",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-013",
+          "status": "withheld",
+          "reason": "shopfront"
+        },
+        {
+          "id": "ground-014",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-015",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-016",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-017",
+          "status": "withheld",
+          "reason": "shopfront"
+        },
+        {
+          "id": "ground-018",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-019",
+          "status": "withheld",
+          "reason": "shopfront"
+        },
+        {
+          "id": "ground-020",
+          "status": "withheld",
+          "reason": "uncertain"
+        },
+        {
+          "id": "ground-021",
+          "status": "withheld",
+          "reason": "uncertain"
+        }
+      ],
+      "qa": "Holdout geometry provisional; no full visual acceptance"
+    }
+  ],
+  "receipts": [
+    {
+      "name": "mai-clean",
+      "status": "failed",
+      "model": "microsoft/mai-image-2.6",
+      "costUsd": 0,
+      "error": "Error: API failed or charge unresolved/exceeded",
+      "inputSha256": "2b5fb1d2be53da5f4e0225cb6e030da62237935eb437730bb6f38a219eee941f"
+    },
+    {
+      "name": "mai-clean-v2",
+      "status": "failed",
+      "model": "microsoft/mai-image-2.6",
+      "costUsd": 0,
+      "error": "Error: API failed or charge unresolved/exceeded",
+      "inputSha256": "2b5fb1d2be53da5f4e0225cb6e030da62237935eb437730bb6f38a219eee941f"
+    },
+    {
+      "name": "banana-clean",
+      "status": "ok",
+      "model": "google/gemini-3-pro-image",
+      "costUsd": 0.137582,
+      "error": null,
+      "inputSha256": "2b5fb1d2be53da5f4e0225cb6e030da62237935eb437730bb6f38a219eee941f"
+    },
+    {
+      "name": "banana-masks",
+      "status": "ok",
+      "model": "google/gemini-3-pro-image",
+      "costUsd": 0.138276,
+      "error": null,
+      "inputSha256": "2b5fb1d2be53da5f4e0225cb6e030da62237935eb437730bb6f38a219eee941f"
+    },
+    {
+      "name": "classification/strip1",
+      "status": "ok",
+      "model": "z-ai/glm-5.3-flash",
+      "costUsd": 0.000923769,
+      "error": null,
+      "inputSha256": "254e3ba215e9c1cccce1ae7f6276b0ea0e38859ab002048bba90bdbb8aa37d88"
+    },
+    {
+      "name": "classification/awning",
+      "status": "ok",
+      "model": "z-ai/glm-5.3-flash",
+      "costUsd": 0.0002742795,
+      "error": null,
+      "inputSha256": "0c88f6a476cd73af99d862752f290753de8f225a198200abb839847003505444"
+    }
+  ],
+  "alignment": {
+    "method": "local edge NCC on upper opening patches at 1024 width; diagnostic only, repetitive features may alias",
+    "reliable": 47,
+    "rmsPixels": 0,
+    "maxPixels": 0,
+    "thresholds": {
+      "rms": 3,
+      "max": 8
+    },
+    "geometricGate": true,
+    "acceptedForTexture": false,
+    "reason": "Requires source-detail preservation and independent visual review in addition to alignment; current review rejects replacement"
+  },
+  "cleanup": {
+    "outputTextureSha256": "26c0d2f7ead70cfc5f58a881a66ffa43a506a7a7e1b7f262b14ba7cf335708ee",
+    "sourceTextureSha256": "9b62924dbb9a47769e0f8a003007d20af14acd793c4ee07eb4d70ffe605f033d",
+    "generatedSourceSha256": "2b5fb1d2be53da5f4e0225cb6e030da62237935eb437730bb6f38a219eee941f",
+    "cleanSha256": "f292e306edd12eada372490f9436ede424783e5d39c7ed56f1f7c9314514216b",
+    "maskSha256": "e18e3f8784f236472da39ebddcd4304adee9a6c8a78195ec656c56ff06643806",
+    "outsideMaskUnchanged": true,
+    "changedChannels": 854835,
+    "regions": [
+      {
+        "id": "balcony-10",
+        "cleanupBounds": [
+          0.287109,
+          0.372378,
+          0.348633,
+          0.5
+        ],
+        "verified": true
+      },
+      {
+        "id": "balcony-13",
+        "cleanupBounds": [
+          0.469727,
+          0.372378,
+          0.52832,
+          0.5
+        ],
+        "verified": true
+      },
+      {
+        "id": "balcony-16",
+        "cleanupBounds": [
+          0.65332,
+          0.372378,
+          0.711914,
+          0.5
+        ],
+        "verified": true
+      },
+      {
+        "id": "balcony-21",
+        "cleanupBounds": [
+          0.108398,
+          0.393357,
+          0.166016,
+          0.536713
+        ],
+        "verified": true
+      },
+      {
+        "id": "balcony-23",
+        "cleanupBounds": [
+          0.838867,
+          0.494755,
+          0.897461,
+          0.636364
+        ],
+        "verified": true
+      },
+      {
+        "id": "balcony-26",
+        "cleanupBounds": [
+          0.287109,
+          0.520979,
+          0.348633,
+          0.657343
+        ],
+        "verified": true
+      },
+      {
+        "id": "balcony-29",
+        "cleanupBounds": [
+          0.469727,
+          0.520979,
+          0.52832,
+          0.657343
+        ],
+        "verified": true
+      },
+      {
+        "id": "balcony-32",
+        "cleanupBounds": [
+          0.65332,
+          0.520979,
+          0.711914,
+          0.657343
+        ],
+        "verified": true
+      },
+      {
+        "id": "balcony-37",
+        "cleanupBounds": [
+          0.108398,
+          0.543706,
+          0.166016,
+          0.685315
+        ],
+        "verified": true
+      }
+    ],
+    "policy": "Inferred local inpaint; original alpha and all pixels outside accepted masks preserved; not measured albedo"
+  },
+  "awningReference": [
+    {
+      "id": "awning-reference",
+      "role": "awning",
+      "visibility": "visible",
+      "confidence": 0.85,
+      "evidence": "Dark fabric awnings over both shopfront windows in the original photo, matching the overlay.",
+      "reason": "Awnings clearly present above both 'Hair Look' windows; overlay appears aligned with the photograph, minor uncertainty from perspective."
+    }
+  ],
+  "completion": "Not complete: coverage and quality gates have unresolved inventory items. No game data published."
+}

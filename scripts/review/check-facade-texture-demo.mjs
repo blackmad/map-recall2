@@ -8,7 +8,7 @@ try{
   page.on('pageerror',e=>failures.push(e.message));page.on('console',m=>{if(m.type()==='error')failures.push(m.text());});page.on('response',r=>{if(r.status()>=400)failures.push(`${r.status()} ${r.url()}`);});
   await page.goto('http://localhost:5195/canal-drive/facade-texture-demo.html');
   await page.waitForFunction(()=>window.facadeTextureDemo?.row && document.getElementById('loading').classList.contains('hidden'),{timeout:60000});
-  const n=await page.locator('#row option').count();if(n!==5)throw Error(`Expected5 rows, got${n}`);
+  const n=await page.locator('#row option').count();if(![5,7].includes(n))throw Error(`Expected 5 baseline or 7 assembly rows, got ${n}`);
   for(let row=0;row<n;row++){
    await page.selectOption('#row',String(row));await page.waitForFunction(()=>!document.getElementById('row').disabled);
    await page.waitForTimeout(500);
