@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "kind": "continuous-head-on-source-selection",
+  "policy": "Three single-panorama rectilinear context crops; diagnostic only, no owner or geometry acceptance. Crops are not stitched or stretched. Bounds are half-open pixels in the archived context image.",
+  "sources": {
+    "strip1": {
+      "contextPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f92db8d4da2d7b08094b280657246cbf711d1857474672462acee907540e7d8/evidence/images/0363100012233629_e_0r89lkl-context.jpg",
+      "contextSha256": "acecd8d17ab2f0613766615589be64ce2337eae072cb0f3ffff309ab6562441b",
+      "evidenceManifestPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f92db8d4da2d7b08094b280657246cbf711d1857474672462acee907540e7d8/evidence/manifest.json",
+      "evidenceManifestSha256": "4ae5445c296af66c6e372ebad2b2ff00a05cd445ddf413a5be02f6a8ceda8202",
+      "evidenceRecordId": "0363100012233629_e_0r89lkl",
+      "panoramaPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f92db8d4da2d7b08094b280657246cbf711d1857474672462acee907540e7d8/evidence/panoramas/b_20241129_0829_Track03_Sphere_00051.jpg",
+      "panoramaSha256": "c9f5b7f682379e0ad5f4927387a5c25adc73e6dded86718dc7679d6562acc159",
+      "panoramaId": "b_20241129_0829_Track03_Sphere_00051",
+      "contextCropBounds": [
+        220,
+        0,
+        1580,
+        771
+      ],
+      "contextSize": [
+        1815,
+        771
+      ],
+      "cropPath": "strip1.jpg",
+      "cropSha256": "254e3ba215e9c1cccce1ae7f6276b0ea0e38859ab002048bba90bdbb8aa37d88",
+      "cropSize": [
+        1360,
+        771
+      ]
+    },
+    "strip2": {
+      "contextPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f2ec76c39394add2c9195ddb1df39b6589a3fd01a91d21efae00557e89fc2bc/evidence/images/0363100012153173_e_1tg4eqq-context.jpg",
+      "contextSha256": "87b9bce49c06bbb64d64449c0acb0349929136f54da93a173f286b035ee0289d",
+      "evidenceManifestPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f2ec76c39394add2c9195ddb1df39b6589a3fd01a91d21efae00557e89fc2bc/evidence/manifest.json",
+      "evidenceManifestSha256": "e413503ddf9a5a963714b83d4a38c03bf5cca861b8a7fcfcd49845db8b3fdf90",
+      "evidenceRecordId": "0363100012153173_e_1tg4eqq",
+      "panoramaPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f2ec76c39394add2c9195ddb1df39b6589a3fd01a91d21efae00557e89fc2bc/evidence/panoramas/TMX7316010203-002921_pano_0015_000001.jpg",
+      "panoramaSha256": "10a7feac12735a9539ddbe042e904d58e46d2b0fb519f95699df9372d2c1f286",
+      "panoramaId": "TMX7316010203-002921_pano_0015_000001",
+      "contextCropBounds": [
+        0,
+        0,
+        1540,
+        760
+      ],
+      "contextSize": [
+        1842,
+        760
+      ],
+      "cropPath": "strip2.jpg",
+      "cropSha256": "e2ed9abd5d1c93b628719b9f737e96a0b6c497c924c37047c9d31a49a774fa89",
+      "cropSize": [
+        1540,
+        760
+      ]
+    },
+    "strip3": {
+      "contextPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/images/0363100012169373_e_0f1ygyt-context.jpg",
+      "contextSha256": "667e25959c337e7591998850ec831cd16656ee5a47f105ff75338910e2d815a9",
+      "evidenceManifestPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/manifest.json",
+      "evidenceManifestSha256": "b983655b6ed5518859997cd1e060084fe3a465a0373e1492a202109a71d819df",
+      "evidenceRecordId": "0363100012169373_e_0f1ygyt",
+      "panoramaPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/jordaan-sample-v1/panorama-audit/0ddc74ae17e878ca192e3cc5f1e873055eabfee837c2f5223f0db93847895bcc/evidence/panoramas/b_20250129_0912_Track01_Sphere_00024.jpg",
+      "panoramaSha256": "98ebaaed76f495de1110be4f89530c71dd7be0fa11bd35678ff45d1e5a5b6496",
+      "panoramaId": "b_20250129_0912_Track01_Sphere_00024",
+      "contextCropBounds": [
+        440,
+        0,
+        1820,
+        760
+      ],
+      "contextSize": [
+        1843,
+        760
+      ],
+      "cropPath": "strip3.jpg",
+      "cropSha256": "f9dce1605287345d89a00d60e1abf32374a3b31829c5e4d32c1af17cfe82e4e1",
+      "cropSize": [
+        1380,
+        760
+      ]
+    }
+  }
+}

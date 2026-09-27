@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — Continuous head-on Pro facade strips
+
+Replaced the occluded corner test with three single-source, near-front-on street
+rows, tightly cropped from SHA-bound panorama context images. The revised prompt
+completes foreground occlusions: no car-shaped grey blanks remain. Broad floor
+rhythms/gables survive, but shops, colours and details still drift. Three2K Pro
+outputs cost $0.414096 total, 24–28seconds each. New banana-head-on-v1 gallery
+archives inputs/results and review. No game rollout; inferred regions remain
+unverified. Three-call scope exhausted without changing the global ceiling.
+See `docs/plans/facade-banana-head-on-pilot.md`.
+
 ## 2026-09-27 — Nano Banana Pro packing and continuous panorama pilot
 
 Five pinned Pro Image calls compared two singles, identical four-facade packed

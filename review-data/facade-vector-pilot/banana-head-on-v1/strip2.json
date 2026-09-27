@@ -1,0 +1,75 @@
+{
+  "job": "strip2",
+  "model": "google/gemini-3-pro-image",
+  "provider": "google-ai-studio/global",
+  "experimentHash": "fdef499b024a6efb50ae4eb65faa23bc6739d69c0d397f69d7e2d510940c5e37",
+  "key": "e8753d48ef90485e2749b8bb5075567ea8410d782af8a0750e5638f9b0b34d80",
+  "reservation": "request:4c6ce01f09c84cbd6992fe67b41f8acc4192e328a2379aec69598302d578813c",
+  "inputSha256": "e2ed9abd5d1c93b628719b9f737e96a0b6c497c924c37047c9d31a49a774fa89",
+  "promptSha256": "16bfaeccda6f0d52ace029fe00165f6010c8fe9b08eba0154ca358f2e0e1e81c",
+  "prompt": "Transform this continuous photograph of adjacent facades into a clean flat-colour architectural elevation drawing. Preserve the input framing, building boundaries, exact visible floor and opening counts, relative positions, proportions, roof silhouettes, wall colour families and material bands. Do not widen, reorder, merge or add buildings. Keep windows, lintels, arches, doors and balconies distinct and preserve visible details. Remove cars, bicycles, people, vegetation, wires and temporary barriers. Fill their former silhouettes with plausible continuation of the surrounding facade: masonry colour, plinth, trim and architectural lines. Complete partially visible openings only where their outlines support it. Otherwise prefer uninterrupted matching wall to invented doors or shopfronts. Do not retain car-shaped or tree-shaped grey blanks. Do not add floors or openings. Preserve observed shopfront layout and sign colour blocks but do not invent lettering. Use flat fills and restrained outlines, neutral white sky, no labels, borders, dimension lines or drawn panel grid. Keep the same continuous street strip, not a contact sheet.",
+  "aspectRatio": "16:9",
+  "resolution": "2K",
+  "sourceBindings": [],
+  "panoramaBinding": {
+    "sourcePath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f2ec76c39394add2c9195ddb1df39b6589a3fd01a91d21efae00557e89fc2bc/evidence/images/0363100012153173_e_1tg4eqq-context.jpg",
+    "sourceSha256": "87b9bce49c06bbb64d64449c0acb0349929136f54da93a173f286b035ee0289d",
+    "sourceManifestPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f2ec76c39394add2c9195ddb1df39b6589a3fd01a91d21efae00557e89fc2bc/evidence/manifest.json",
+    "sourceManifestSha256": "e413503ddf9a5a963714b83d4a38c03bf5cca861b8a7fcfcd49845db8b3fdf90",
+    "panoramaPath": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/city-appearance/areas/da-costabuurt-v1/panorama-audit/3f2ec76c39394add2c9195ddb1df39b6589a3fd01a91d21efae00557e89fc2bc/evidence/panoramas/TMX7316010203-002921_pano_0015_000001.jpg",
+    "panoramaSha256": "10a7feac12735a9539ddbe042e904d58e46d2b0fb519f95699df9372d2c1f286",
+    "panoramaId": "TMX7316010203-002921_pano_0015_000001",
+    "sourceRecordId": "0363100012153173_e_1tg4eqq",
+    "sourceAddress": "Bilderdijkstraat 177 / Bilderdijkstraat 179 / Bilderdijkstraat 181",
+    "sourceCropBounds": [
+      0,
+      0,
+      1540,
+      760
+    ],
+    "sourceSize": [
+      1842,
+      760
+    ],
+    "projection": "existing single-panorama rectilinear context; metadata in source evidence record"
+  },
+  "status": "ok",
+  "startedAt": "2026-09-27T13:54:11.852Z",
+  "httpStatus": 200,
+  "requestId": null,
+  "rawResponseSha256": "a9cdf2a0ba5952f1bec3f6eda6f066ebbc91d56d62a85adfe0d784e9e1a4336e",
+  "clientLatencyMs": 27785,
+  "usage": {
+    "prompt_tokens": 466,
+    "completion_tokens": 1368,
+    "total_tokens": 1834,
+    "cost": 0.138308,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0.138308,
+      "upstream_inference_prompt_cost": 0.000932,
+      "upstream_inference_completions_cost": 0.137376
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "image_tokens": 1120
+    }
+  },
+  "generationId": null,
+  "settlement": {
+    "totalUsd": 6.715962059153996,
+    "exceededCeiling": false,
+    "exceededContinuation": false
+  },
+  "actualCostUsd": 0.138308,
+  "pngPath": "strip2.png",
+  "pngSha256": "930145dbcec16fc0a566c7f55a89745e49961c856ccf4eedaa88f88903e0a39e",
+  "width": 2752,
+  "height": 1536
+}

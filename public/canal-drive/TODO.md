@@ -85,6 +85,10 @@ white-padded single controls and measured source-bound alignment. Continuous pan
 cuts need per-frontage rectification and verified ownership. The five-call/$1.10
 scoped continuation is exhausted; old unknown remains reserved. Results:
 `docs/plans/facade-banana-pro-pack-pilot.md`.
+Three better continuous head-on strips are now reviewed ($0.414096 total), with
+occlusions filled instead of grey silhouettes. Next validate boundary/opening
+alignment and colour drift, protect roof hoisting beams and retain inferred-area
+provenance before slicing. No rollout. See `docs/plans/facade-banana-head-on-pilot.md`.
 
 **OccFacade follow-up: validate full-facade proposals before integration.**
 All 100 cohort full views now have OccFacade/Vistas intersection masks. All 100

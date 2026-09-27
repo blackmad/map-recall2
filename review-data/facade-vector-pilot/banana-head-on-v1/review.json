@@ -1,0 +1,28 @@
+{
+  "summary": "Three continuous, nearly head-on strips render as complete facade rows without the previous car-shaped grey blanks. Main floor rhythms and distinctive gables largely survive, but window details, storefront geometry, colours and lettering are still idealized or inferred. These are useful artwork candidates, not measured reconstructions.",
+  "acceptedForGame": false,
+  "findings": {
+    "strip1": "Three upper window levels and the main curved gables remain; ground arches and balcony locations broadly survive. Foreground bikes/lamp removed, hoisting beams also removed. Repeated window rail details and altered masonry colours; crisp sign text inferred from blurred source.",
+    "strip2": "Shop row preserves three upper window levels and broad dormer/gable order. Bikes, bins and poles disappear; lower shop glazing is reconstructed into cleaner, repeated layouts. Brick turns warmer/redder and sign lettering is reinterpreted. Input aspect1540:760 differs from16:9 output; alignment is unverified. Some shallow dormered roof silhouettes become taller regularized mansards.",
+    "strip3": "Varied gable sequence, tall central facade and green awning retained. Van/foreground clutter removed with no silhouette-shaped holes. Central dark shopfront becomes brown/orange framing; side doors/windows and trim are simplified or inferred; roof side planes also change. Central dormer/roof is exaggerated and right-side cornices simplified."
+  },
+  "limitations": [
+    "One output per strip; no accuracy rate inferred.",
+    "Continuous source views have perspective/edge softness, and the model straightens or moves geometry. Fixed-coordinate slicing not yet validated.",
+    "Infilled areas are hypotheses. Separate pixel occlusion masks have not been created in this trial.",
+    "Roof hoisting beams should be distinguished from transient wires in the next prompt.",
+    "Floor counts were visually reviewed; individual opening correspondence and source ownership are not certified."
+  ],
+  "independentReview": "Sol confirmed broad building order and floor counts, with no clear extra full storey; roof shapes, openings, lettering and ground details still change.",
+  "qa": {
+    "widths": [
+      1440,
+      390
+    ],
+    "imagesLoaded": 6,
+    "brokenImages": 0,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "horizontalOverflow": false
+  }
+}
