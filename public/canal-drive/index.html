@@ -123,10 +123,15 @@ canvas { display: block; position: relative; z-index: 2; }
 #canal-card.answered #canal-no-idea { visibility: hidden; }
 #canal-choices { display: none; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
 #canal-no-idea { width: 100%; margin-top: 6px; padding: 9px 8px; border: 1px dashed var(--day-line-strong); border-radius: var(--radius-sm); background: transparent; color: var(--enamel-muted); font-weight: 600; cursor: pointer; font-size: 13px; }
-#canal-no-idea:hover { background: var(--day-fill); color: var(--ink); }
 #canal-no-idea .canal-choice-key { margin-right: 0; margin-left: 6px; }
 .canal-choice { padding: 10px 8px; border: 1px solid var(--day-line); border-radius: var(--radius-sm); background: var(--day-fill); color: var(--ink); font: 700 13px/1.2 var(--font-plaque); letter-spacing: .04em; text-transform: uppercase; cursor: pointer; }
-.canal-choice:hover { border-color: var(--day-accent); background: var(--day-accent-soft); }
+/* Hover only where a pointer really hovers: touch latches `:hover` at the
+   lifted finger, and the next question's fresh button under it came up
+   pre-tinted — reading as a hint before any pick. */
+@media (hover: hover) {
+  .canal-choice:hover { border-color: var(--day-accent); background: var(--day-accent-soft); }
+  #canal-no-idea:hover { background: var(--day-fill); color: var(--ink); }
+}
 .canal-choice-key { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-right: 8px; border-radius: 4px; background: var(--day-fill-hover); color: var(--enamel-muted); font-size: 11px; font-weight: bold; }
 
 /* ---- Shared form components (both themes) ---- */

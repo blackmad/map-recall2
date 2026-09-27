@@ -1,6 +1,18 @@
 # Canal Recall — what is built
 
 
+## 2026-09-27 — phone choices no longer pre-tint an answer
+
+On a phone the next multiple-choice question came up with one button already
+tinted copper, which read as a hint before any pick. Touch browsers (iOS Safari
+in particular) keep `:hover` on the element under the lifted finger, and the new
+question's buttons are rebuilt in the same spot, so a fresh button inherited the
+hover style. `.canal-choice:hover` and `#canal-no-idea:hover` now apply only
+under `@media (hover: hover)`. Named regression in
+`tests/e2e/mobile-overlays.spec.ts` ("a new question shows every choice
+alike…") parks the pointer at the tap point, since emulated Chromium does not
+latch hover itself; it failed before the fix and passes after.
+
 ## 2026-09-26 — materials-first wall demo and identity-bound visual review
 
 The photo-colour promotion was not adequate visual validation: Da Costakade 13

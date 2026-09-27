@@ -305,3 +305,38 @@ test('a landscape phone docks the question beside the vehicle, not under it', as
   expect(card.x >= centreX || card.x + card.width <= centreX, 'the card clears the vehicle at the centre').toBe(true);
   expect(card.y + card.height).toBeLessThanOrEqual(391);
 });
+
+// Named regression (2026-09-27): on a phone the next question's choices came up
+// with one already tinted. Touch leaves `:hover` latched at the last tap point,
+// so the fresh button under the finger read as a highlighted answer before any
+// pick. Every choice must look alike until you answer.
+test('a new question shows every choice alike, with no hover left over from the last tap', async ({ page }) => {
+  await drive(page);
+  const ask = (name: string, choices: string[]) => page.evaluate(({ name, choices }) => {
+    const game = window.canalRecallGame;
+    game.routeOptions.answerMode = 'multiple';
+    game._openQuizPrompt({
+      kind: 'route', name, subject: 'water',
+      question: 'Which canal are you on?', context: 'Following it.',
+      choices,
+    });
+  }, { name, choices });
+  const names = ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Brouwersgracht'];
+  await ask('Prinsengracht', names);
+  const tapped = page.locator('#canal-choices button', { hasText: 'Keizersgracht' });
+  const box = (await tapped.boundingBox())!;
+  await tapped.tap();
+  await expect(page.locator('#canal-card')).toHaveClass(/answered/);
+  // iOS Safari keeps `:hover` at the lifted finger; emulated Chromium does
+  // not, so park the pointer there to stand in for it.
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  // Ask again: a fresh button always lands under the last tap point.
+  for (let round = 0; round < 4; round++) {
+    await ask('Herengracht', names);
+    const looks = await page.locator('#canal-choices button').evaluateAll(buttons => buttons.map(button => {
+      const style = getComputedStyle(button);
+      return `${style.backgroundColor}|${style.borderColor}|${style.color}`;
+    }));
+    expect(new Set(looks).size, `round ${round}: ${looks.join(', ')}`).toBe(1);
+  }
+});
