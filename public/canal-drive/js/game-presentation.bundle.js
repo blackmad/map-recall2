@@ -739,18 +739,17 @@
         routeAnswerHidden = !!this.quizPromptName || !!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName;
         visibleRouteName = routeAnswerHidden ? "" : roadName || "";
       }
-      let restrictionNote = "";
-      if (isCar(this.travelMode) && this.player) {
-        const road = this.track.getNearestRoad(player.x, player.y, player.angle);
-        const segment = road && this.track.segments?.[road.segIdx];
-        if (segment?.bicycleRestricted) {
-          restrictionNote = bicycleRestrictionNotice({
-            bicycleRestricted: "yes",
-            bicycle: segment.bicycle || "no"
-          }) || "No cycling in real life";
-        }
-      }
-      const homeLearningNote = this.routePattern === "home" && Number.isFinite(this._homeLearningRadiusKm) && this._homeLearningRadiusKm > 0 ? `Learning near home \xB7 ~${this._homeLearningRadiusKm.toFixed(1)} km` : "";
+      const { feedback, restrictionNote } = this._plaqueNotes();
+      const finishAngle = this.routeOptions.arrow ? this.hud.finishDirection(
+        player.x,
+        player.y,
+        this.track.finishPoint.x,
+        this.track.finishPoint.y,
+        this.camera
+      ) : null;
+      const destinationLabel = this._destinationLabel();
+      const distanceToFinish = this.track.getDistanceToFinish(player.x, player.y);
+      const merged = this._hudRects().destinationInRecall;
       this.hud.drawPlaque(ctx, {
         routeName: visibleRouteName,
         neighborhood: this.currentNeighborhood,
@@ -761,23 +760,24 @@
         streak: this.quizStreak,
         gamey: this.gameyFeatures,
         trip: this.hud.tripText(player.speed, this._playerDistancePx()),
-        feedback: this.quizFeedback || homeLearningNote,
-        restrictionNote
+        feedback,
+        restrictionNote,
+        destination: merged ? {
+          // "to your destination" says nothing; only a real name earns room.
+          name: destinationLabel && destinationLabel !== "your destination" ? destinationLabel : "",
+          distancePx: distanceToFinish,
+          arrowAngle: finishAngle
+        } : null
       });
-      const finishAngle = this.routeOptions.arrow ? this.hud.finishDirection(
-        player.x,
-        player.y,
-        this.track.finishPoint.x,
-        this.track.finishPoint.y,
-        this.camera
-      ) : null;
-      this.hud.drawDestination(
-        ctx,
-        this._destinationLabel(),
-        this.track.getDistanceToFinish(player.x, player.y),
-        this._routeLearningPlan?.expectedNovelty ?? null,
-        finishAngle
-      );
+      if (!merged) {
+        this.hud.drawDestination(
+          ctx,
+          destinationLabel,
+          distanceToFinish,
+          this._routeLearningPlan?.expectedNovelty ?? null,
+          finishAngle
+        );
+      }
       this.hud.drawCompass(ctx, this.camera);
       if (showMiniMap) this.hud.drawCityOverview(ctx, this);
       this.vectorMap.setQuizQuietMap(!canShowPoiLabels(true, teaching));
@@ -794,6 +794,25 @@
       if (this.state === GameState.PAUSED) this._renderPaused();
       if (this.state === GameState.FINISHED) this._renderFinish();
     }
+    /** The plaque's optional lines: quiz feedback (or the home-ring note) and a
+     *  real-world cycling ban on this corridor — which never names the street,
+     *  since the headline may still be hidden under a quiz. */
+    _plaqueNotes() {
+      let restrictionNote = "";
+      const player = this.player;
+      if (isCar(this.travelMode) && player) {
+        const road = this.track.getNearestRoad(player.x, player.y, player.angle);
+        const segment = road && this.track.segments?.[road.segIdx];
+        if (segment?.bicycleRestricted) {
+          restrictionNote = bicycleRestrictionNotice({
+            bicycleRestricted: "yes",
+            bicycle: segment.bicycle || "no"
+          }) || "No cycling in real life";
+        }
+      }
+      const homeLearningNote = this.routePattern === "home" && Number.isFinite(this._homeLearningRadiusKm) && this._homeLearningRadiusKm > 0 ? `Learning near home \xB7 ~${this._homeLearningRadiusKm.toFixed(1)} km` : "";
+      return { feedback: this.quizFeedback || homeLearningNote, restrictionNote };
+    }
     /** Place the whole HUD for this frame. One call, so every card agrees about
      *  where the others are and the phone layout stays collision-free. */
     _syncHudLayout() {
@@ -805,6 +824,10 @@
         tripWidth: 180,
         landmarkHeight: 130,
         feedbackVisible: !!this.quizFeedback,
+        plaqueExtraLines: (() => {
+          const notes = this._plaqueNotes();
+          return (notes.feedback ? 1 : 0) + (notes.restrictionNote ? 1 : 0);
+        })(),
         neighborhoodVisible: !!this.currentNeighborhood,
         minimapVisible,
         zoomVisible: this._zoomBadgeTimer > 0,

@@ -59,6 +59,9 @@ export type HudLayout = {
   dpad: DpadLayout | null;
   /** True when the trip readout is drawn inside the recall row, not separately. */
   tripInRecall: boolean;
+  /** True on a portrait phone: the plaque carries the destination arrow and
+   *  distance itself, and `location`/`destination` alias the `recall` rect. */
+  destinationInRecall: boolean;
   mode: Viewport['mode'];
   /** The centred band the chrome was laid into. */
   band: HudBand;
@@ -80,6 +83,9 @@ export type HudLayoutInput = {
   postcardHeight?: number;
   neighborhoodVisible?: boolean;
   minimapVisible?: boolean;
+  /** Extra plaque lines under the two fixed rows (a feedback line, a cycling
+   *  restriction). Only the merged portrait plaque sizes from this. */
+  plaqueExtraLines?: number;
 };
 
 const MARGIN = 12;
@@ -94,6 +100,12 @@ const COMPACT_DESTINATION_H = 36;
 const COMPACT_MINIMAP_W = 124;
 const COMPACT_MINIMAP_H = 96;
 const COMPACT_ZOOM_H = 22;
+// Portrait phone: one merged plaque (street + destination, then place + score)
+// and a smaller overview tucked under it, clear of the vehicle's row.
+const PORTRAIT_PLAQUE_H = 56;
+const PORTRAIT_PLAQUE_LINE_H = 15;
+const PORTRAIT_MINIMAP_W = 100;
+const PORTRAIT_MINIMAP_H = 76;
 
 /** The centred strip the chrome occupies. Narrower than the canvas on wide
  *  windows so cards stay next to the driving corridor instead of the bezels. */
@@ -157,6 +169,7 @@ export function hudLayout({
   postcardHeight = 104,
   neighborhoodVisible = false,
   minimapVisible = true,
+  plaqueExtraLines = feedbackVisible ? 1 : 0,
 }: HudLayoutInput): HudLayout {
   const band = hudBand(viewport);
   const width = band.width;
@@ -169,61 +182,56 @@ export function hudLayout({
 
     if (viewport.orientation === 'portrait') {
       const rowWidth = width - MARGIN * 2;
-      // Three full-width rows beat two corner cards: on a narrow screen a
-      // 310 px card is most of the width anyway, so the corner buys nothing and
-      // costs a column of unusable space beside it.
-      let cursor = viewport.safeTop + MARGIN;
+      // One plaque, not three stacked rows. The street/score card and the
+      // destination bar together used to reach a quarter of the way down a
+      // 390×664 phone and both showed a distance; the driving corridor is
+      // what a phone is short of. The plaque now carries the finish arrow and
+      // distance on its headline row.
+      const extraLines = Math.max(0, Math.min(2, Math.round(plaqueExtraLines)));
       const recall = offsetRect({
-        x: MARGIN, y: cursor, width: rowWidth,
-        height: feedbackVisible ? COMPACT_RECALL_FEEDBACK_H : COMPACT_RECALL_H,
+        x: MARGIN, y: viewport.safeTop + MARGIN, width: rowWidth,
+        height: PORTRAIT_PLAQUE_H + extraLines * PORTRAIT_PLAQUE_LINE_H,
       }, left);
-      cursor += recall.height + GAP;
-      const location = offsetRect({
-        x: MARGIN, y: cursor, width: rowWidth,
-        height: neighborhoodVisible ? COMPACT_LOCATION_H : COMPACT_LOCATION_PLAIN_H,
-      }, left);
-      cursor += location.height + GAP;
-      const destination = offsetRect(
-        { x: MARGIN, y: cursor, width: rowWidth, height: COMPACT_DESTINATION_H },
-        left,
-      );
-      const topBottom = destination.y + destination.height;
-      // Top-right under the destination row, flush with its right edge. The
-      // finish arrow used to dock beside it here; it lives inside the
-      // destination card now.
+      const topBottom = recall.y + recall.height;
+      // Compass top-right and the city overview top-left, one row under the
+      // plaque: out of the vehicle's row, where the overview used to sit.
       const compass = offsetRect({
         x: width - MARGIN - COMPASS_SIZE_COMPACT,
         y: topBottom + GAP,
         width: COMPASS_SIZE_COMPACT, height: COMPASS_SIZE_COMPACT,
       }, left);
+      const minimap = offsetRect({
+        x: MARGIN, y: topBottom + GAP,
+        width: PORTRAIT_MINIMAP_W, height: PORTRAIT_MINIMAP_H,
+      }, left);
+      const upperBottom = Math.max(
+        compass.y + compass.height,
+        minimapVisible ? minimap.y + minimap.height : 0,
+      );
 
       // The bottom stack is built upwards from the d-pad, so the controls are
       // always reachable and everything else yields to them.
-      const minimapBudget = minimapVisible ? COMPACT_MINIMAP_H + GAP : 0;
-      const cardHeight = clampHeight(landmarkHeight, controlsTop - GAP - (topBottom + GAP) - minimapBudget);
+      const cardHeight = clampHeight(landmarkHeight, controlsTop - GAP - (upperBottom + GAP));
       const cardWidth = Math.min(landmarkWidth, rowWidth);
       const landmark = offsetRect(
         { x: MARGIN, y: controlsTop - GAP - cardHeight, width: cardWidth, height: cardHeight },
         left,
       );
-      const minimap = offsetRect({
-        x: MARGIN, y: landmark.y - GAP - COMPACT_MINIMAP_H,
-        width: COMPACT_MINIMAP_W, height: COMPACT_MINIMAP_H,
-      }, left);
-      const postcardH = clampHeight(postcardHeight, controlsTop - GAP - (topBottom + GAP));
+      const postcardH = clampHeight(postcardHeight, controlsTop - GAP - (upperBottom + GAP));
       const postcard = offsetRect({
         x: MARGIN, y: controlsTop - GAP - postcardH,
         width: Math.min(postcardWidth(viewport), rowWidth), height: postcardH,
       }, left);
       const zoomBadge = {
         x: Math.round(left + width / 2 - 35),
-        y: (minimapVisible ? minimap.y : landmark.y) - GAP - COMPACT_ZOOM_H,
+        y: landmark.y - GAP - COMPACT_ZOOM_H,
         width: 70, height: COMPACT_ZOOM_H,
       };
       return {
-        recall, location, destination, compass, trip: recall, postcard, landmark, minimap, zoomBadge,
+        recall, location: recall, destination: recall, compass, trip: recall,
+        postcard, landmark, minimap, zoomBadge,
         controlsHint: { x: Math.round(left + width / 2 - 177), y: zoomBadge.y, width: 354, height: 12 },
-        dpad, tripInRecall: true, mode: viewport.mode, band,
+        dpad, tripInRecall: true, destinationInRecall: true, mode: viewport.mode, band,
       };
     }
 
@@ -276,7 +284,7 @@ export function hudLayout({
     return {
       recall, location, destination, compass, trip: recall, postcard, landmark, minimap, zoomBadge,
       controlsHint: { x: Math.round(left + width / 2 - 177), y: zoomBadge.y, width: 354, height: 12 },
-      dpad, tripInRecall: true, mode: viewport.mode, band,
+      dpad, tripInRecall: true, destinationInRecall: false, mode: viewport.mode, band,
     };
   }
 
@@ -332,7 +340,7 @@ export function hudLayout({
   };
   return {
     recall, location, destination, compass, trip, postcard, landmark, minimap,
-    zoomBadge, controlsHint, dpad: null, tripInRecall: false, mode: viewport.mode, band,
+    zoomBadge, controlsHint, dpad: null, tripInRecall: false, destinationInRecall: false, mode: viewport.mode, band,
   };
 }
 

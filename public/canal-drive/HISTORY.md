@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+
+## 2026-09-27 — the portrait phone HUD is one plaque
+
+User report: "the mobile HUD takes up way too much of the screen". Measured on
+a 390×664 phone, the street/score plaque plus the full-width destination bar
+reached y≈168 (a quarter of the height), both showed a distance, and the city
+overview sat mid-left beside the vehicle. On a portrait phone the plaque now
+carries the finish arrow and distance on its headline row and the destination
+name on its second row, beside neighbourhood and score; the odometer and
+"% new" stay on the roomier layouts. It ends at y≈70 (≈83 with a feedback
+line). The overview (100×76) and compass share the row under it, clear of the
+vehicle. `hudLayout` marks this with `destinationInRecall`, aliasing the
+location/destination rects to the plaque, and sizes the plaque from
+`plaqueExtraLines` so a feedback line plus a cycling-ban line fit instead of
+clipping. Landscape and desktop are unchanged. Named regression in
+`scripts/check-mobile-hud.ts` (plaque ≤ y=90 and <14% of height; overview in
+the top 30%); Storybook adds `PortraitHudLongNames`.
 ## 2026-09-26 — local overnight colour diagnostics and broader opt-in demo
 
 The conservative local Qwen run produced 100 valid responses at 2.980 seconds

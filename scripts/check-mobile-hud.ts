@@ -180,13 +180,18 @@ for (const phone of PHONES) {
               const layout = hudLayout({
                 viewport, tripWidth: 180, feedbackVisible, neighborhoodVisible,
                 landmarkHeight, minimapVisible, zoomVisible,
+                plaqueExtraLines: feedbackVisible ? 2 : 0,
               });
-              const band: Array<[string, Rect]> = [
-                ['recall', layout.recall],
-                ['location', layout.location],
-                ['destination', layout.destination],
-                ['compass', layout.compass],
-              ];
+              // A portrait phone folds location and destination into the
+              // plaque; those rects alias `recall` rather than competing.
+              const band: Array<[string, Rect]> = layout.destinationInRecall
+                ? [['recall', layout.recall], ['compass', layout.compass]]
+                : [
+                  ['recall', layout.recall],
+                  ['location', layout.location],
+                  ['destination', layout.destination],
+                  ['compass', layout.compass],
+                ];
               if (landmarkVisible) band.push(['landmark', layout.landmark]);
               if (minimapVisible) band.push(['minimap', layout.minimap]);
               if (zoomVisible) band.push(['zoom', layout.zoomBadge]);
@@ -212,6 +217,26 @@ for (const phone of PHONES) {
       }
     }
   }
+}
+
+// Named regression (user report 2026-09-27, "the mobile HUD takes up way too
+// much of the screen"): on a 390×664 phone the plaque plus the destination bar
+// reached y≈168 and the overview sat beside the vehicle at mid-screen. The
+// portrait top chrome is now one card, and the overview stays in the top band.
+{
+  for (const [w, h] of [[390, 664], [375, 667], [390, 844]]) {
+    const viewport = resolveViewport({ windowWidth: w, windowHeight: h, touch: true });
+    const layout = hudLayout({ viewport, tripWidth: 180, feedbackVisible: true, neighborhoodVisible: true });
+    ok(layout.destinationInRecall, `${w}×${h} portrait folds the destination into the plaque`);
+    const plaqueBottom = layout.recall.y + layout.recall.height;
+    ok(plaqueBottom <= 90, `${w}×${h} plaque ends by y=90 even with a feedback line (got ${plaqueBottom})`);
+    ok(plaqueBottom / viewport.height < 0.14, `${w}×${h} plaque is under 14% of the screen`);
+    const mapBottom = layout.minimap.y + layout.minimap.height;
+    ok(mapBottom < viewport.height * 0.3,
+      `${w}×${h} overview stays in the top band, clear of the vehicle at mid-screen (bottom ${mapBottom})`);
+  }
+  const landscape = hudLayout({ viewport: resolveViewport({ windowWidth: 844, windowHeight: 390, touch: true }), tripWidth: 180 });
+  ok(!landscape.destinationInRecall, 'landscape keeps its corner destination card');
 }
 
 // The d-pad must never be covered: it is the only way to drive.

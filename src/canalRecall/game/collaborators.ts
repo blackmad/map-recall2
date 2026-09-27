@@ -151,6 +151,8 @@ export interface Hud {
     trip?: string; feedback?: string;
     /** Real-world bike ban on this corridor (no street name). */
     restrictionNote?: string;
+    /** Drawn inside the plaque when the layout sets `destinationInRecall`. */
+    destination?: { name: string; distancePx: number; arrowAngle: number | null } | null;
   }): void;
   /** Destination card; the finish arrow draws inside it when `arrowAngle` is set. */
   drawDestination(

@@ -264,7 +264,10 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
         }
         if (scenario === 'hud' || scenario.startsWith('touch-hud')) {
           const asking = scenario === 'touch-hud-question';
-          game.currentNeighborhood = 'Jordaan';
+          const long = scenario === 'touch-hud-long';
+          const hood = long ? 'Van Lennepbuurt en Kinkerbuurt-Noord' : 'Jordaan';
+          const destinationName = long ? 'Rijksmuseum en Museumplein (hoofdingang)' : 'Westerkerk';
+          game.currentNeighborhood = hood;
           game.quizFeedback = asking ? '' : 'Correct — Singel';
           game.showMiniMap = true;
           game.routeTo = { id: 'westerkerk', name: 'Westerkerk' };
@@ -272,12 +275,18 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           // would, so the story shows the real arrangement and not a guess.
           game._syncHudLayout();
           // The street under question is withheld: the HUD must never answer it.
+          // A portrait phone folds the destination into the plaque, as the
+          // live frame does; every other layout keeps its own card.
+          const merged = !!game.hud.layout?.destinationInRecall;
           game.hud.drawPlaque(ctx, {
-            routeName: 'Prinsengracht', neighborhood: 'Jordaan', answerHidden: asking,
+            routeName: long ? 'Burgemeester de Vlugtlaan-Oost' : 'Prinsengracht',
+            neighborhood: hood, answerHidden: asking,
             correct: 7, attempts: 9, points: 640, streak: 4, gamey: true,
             trip: game.hud.tripText(42, 6240), feedback: game.quizFeedback,
+            restrictionNote: long ? 'No cycling here in real life' : '',
+            destination: merged ? { name: destinationName, distancePx: 1860, arrowAngle: -Math.PI / 3 } : null,
           });
-          game.hud.drawDestination(ctx, 'Westerkerk', 1860, 0.42, -Math.PI / 3);
+          if (!merged) game.hud.drawDestination(ctx, destinationName, 1860, 0.42, -Math.PI / 3);
           game.hud.drawCompass(ctx, game.camera);
           game.hud.drawCityOverview(ctx, game);
           // Steering: a thumb that landed in the zone and slid up-left, as a
@@ -393,6 +402,13 @@ export const PortraitHudSteering: Story = {
  *  which is the taller/shorter pair the card stack has to absorb. */
 export const PortraitHudAsking: Story = {
   args: { scenario: 'touch-hud-question' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** Long street, neighbourhood and destination names plus a cycling-ban
+ *  line: the merged plaque has to trim, never overflow. */
+export const PortraitHudLongNames: Story = {
+  args: { scenario: 'touch-hud-long' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 
