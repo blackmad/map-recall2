@@ -6,9 +6,9 @@
       "mode": "bare",
       "parts": 203,
       "textured": 10,
-      "frames": 45,
-      "calls": 199,
-      "triangles": 595,
+      "frames": 50,
+      "calls": 177,
+      "triangles": 949,
       "overflow": false
     },
     {
@@ -17,9 +17,9 @@
       "mode": "texture",
       "parts": 203,
       "textured": 10,
-      "frames": 45,
-      "calls": 199,
-      "triangles": 595,
+      "frames": 50,
+      "calls": 177,
+      "triangles": 949,
       "overflow": false
     },
     {
@@ -28,9 +28,9 @@
       "mode": "relief",
       "parts": 203,
       "textured": 10,
-      "frames": 45,
-      "calls": 199,
-      "triangles": 595,
+      "frames": 50,
+      "calls": 177,
+      "triangles": 949,
       "overflow": false
     },
     {
@@ -39,9 +39,9 @@
       "mode": "frames",
       "parts": 203,
       "textured": 10,
-      "frames": 45,
-      "calls": 379,
-      "triangles": 2755,
+      "frames": 50,
+      "calls": 377,
+      "triangles": 3349,
       "overflow": false
     },
     {
@@ -50,9 +50,9 @@
       "mode": "bare",
       "parts": 196,
       "textured": 29,
-      "frames": 35,
-      "calls": 166,
-      "triangles": 515,
+      "frames": 62,
+      "calls": 107,
+      "triangles": 774,
       "overflow": false
     },
     {
@@ -61,9 +61,9 @@
       "mode": "texture",
       "parts": 196,
       "textured": 29,
-      "frames": 35,
-      "calls": 166,
-      "triangles": 515,
+      "frames": 62,
+      "calls": 107,
+      "triangles": 774,
       "overflow": false
     },
     {
@@ -72,9 +72,9 @@
       "mode": "relief",
       "parts": 196,
       "textured": 29,
-      "frames": 35,
-      "calls": 166,
-      "triangles": 515,
+      "frames": 62,
+      "calls": 107,
+      "triangles": 774,
       "overflow": false
     },
     {
@@ -83,9 +83,9 @@
       "mode": "frames",
       "parts": 196,
       "textured": 29,
-      "frames": 35,
-      "calls": 306,
-      "triangles": 2195,
+      "frames": 62,
+      "calls": 355,
+      "triangles": 3750,
       "overflow": false
     },
     {
@@ -94,9 +94,9 @@
       "mode": "bare",
       "parts": 232,
       "textured": 32,
-      "frames": 29,
-      "calls": 231,
-      "triangles": 716,
+      "frames": 40,
+      "calls": 178,
+      "triangles": 1008,
       "overflow": false
     },
     {
@@ -105,9 +105,9 @@
       "mode": "texture",
       "parts": 232,
       "textured": 32,
-      "frames": 29,
-      "calls": 231,
-      "triangles": 716,
+      "frames": 40,
+      "calls": 178,
+      "triangles": 1008,
       "overflow": false
     },
     {
@@ -116,9 +116,9 @@
       "mode": "relief",
       "parts": 232,
       "textured": 32,
-      "frames": 29,
-      "calls": 231,
-      "triangles": 716,
+      "frames": 40,
+      "calls": 178,
+      "triangles": 1008,
       "overflow": false
     },
     {
@@ -127,9 +127,20 @@
       "mode": "frames",
       "parts": 232,
       "textured": 32,
-      "frames": 29,
-      "calls": 347,
-      "triangles": 2108,
+      "frames": 40,
+      "calls": 338,
+      "triangles": 2928,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "row": "recipe",
+      "mode": "bare",
+      "parts": 8,
+      "textured": 0,
+      "frames": 0,
+      "calls": 9,
+      "triangles": 3010,
       "overflow": false
     },
     {
@@ -138,9 +149,9 @@
       "mode": "bare",
       "parts": 203,
       "textured": 10,
-      "frames": 45,
-      "calls": 196,
-      "triangles": 589,
+      "frames": 50,
+      "calls": 174,
+      "triangles": 943,
       "overflow": false
     },
     {
@@ -149,9 +160,9 @@
       "mode": "texture",
       "parts": 203,
       "textured": 10,
-      "frames": 45,
-      "calls": 196,
-      "triangles": 589,
+      "frames": 50,
+      "calls": 174,
+      "triangles": 943,
       "overflow": false
     },
     {
@@ -160,9 +171,9 @@
       "mode": "relief",
       "parts": 203,
       "textured": 10,
-      "frames": 45,
-      "calls": 196,
-      "triangles": 589,
+      "frames": 50,
+      "calls": 174,
+      "triangles": 943,
       "overflow": false
     },
     {
@@ -171,9 +182,9 @@
       "mode": "frames",
       "parts": 203,
       "textured": 10,
-      "frames": 45,
-      "calls": 376,
-      "triangles": 2749,
+      "frames": 50,
+      "calls": 374,
+      "triangles": 3343,
       "overflow": false
     },
     {
@@ -182,9 +193,9 @@
       "mode": "bare",
       "parts": 196,
       "textured": 29,
-      "frames": 35,
-      "calls": 158,
-      "triangles": 503,
+      "frames": 62,
+      "calls": 96,
+      "triangles": 754,
       "overflow": false
     },
     {
@@ -193,9 +204,9 @@
       "mode": "texture",
       "parts": 196,
       "textured": 29,
-      "frames": 35,
-      "calls": 158,
-      "triangles": 503,
+      "frames": 62,
+      "calls": 96,
+      "triangles": 754,
       "overflow": false
     },
     {
@@ -204,9 +215,9 @@
       "mode": "relief",
       "parts": 196,
       "textured": 29,
-      "frames": 35,
-      "calls": 158,
-      "triangles": 503,
+      "frames": 62,
+      "calls": 96,
+      "triangles": 754,
       "overflow": false
     },
     {
@@ -215,9 +226,9 @@
       "mode": "frames",
       "parts": 196,
       "textured": 29,
-      "frames": 35,
-      "calls": 298,
-      "triangles": 2183,
+      "frames": 62,
+      "calls": 344,
+      "triangles": 3730,
       "overflow": false
     },
     {
@@ -226,9 +237,9 @@
       "mode": "bare",
       "parts": 232,
       "textured": 32,
-      "frames": 29,
-      "calls": 231,
-      "triangles": 716,
+      "frames": 40,
+      "calls": 178,
+      "triangles": 1008,
       "overflow": false
     },
     {
@@ -237,9 +248,9 @@
       "mode": "texture",
       "parts": 232,
       "textured": 32,
-      "frames": 29,
-      "calls": 231,
-      "triangles": 716,
+      "frames": 40,
+      "calls": 178,
+      "triangles": 1008,
       "overflow": false
     },
     {
@@ -248,9 +259,9 @@
       "mode": "relief",
       "parts": 232,
       "textured": 32,
-      "frames": 29,
-      "calls": 231,
-      "triangles": 716,
+      "frames": 40,
+      "calls": 178,
+      "triangles": 1008,
       "overflow": false
     },
     {
@@ -259,9 +270,20 @@
       "mode": "frames",
       "parts": 232,
       "textured": 32,
-      "frames": 29,
-      "calls": 347,
-      "triangles": 2108,
+      "frames": 40,
+      "calls": 338,
+      "triangles": 2928,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "row": "recipe",
+      "mode": "bare",
+      "parts": 8,
+      "textured": 0,
+      "frames": 0,
+      "calls": 9,
+      "triangles": 3010,
       "overflow": false
     }
   ],

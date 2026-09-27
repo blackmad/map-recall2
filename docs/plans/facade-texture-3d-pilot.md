@@ -89,10 +89,23 @@ raised frames. Some are missed or split into panes; storefronts are deliberately
 excluded from this simple detector. A feature is not accepted merely because it
 can be rendered. Normal/bump relief does not create actual window recesses.
 
-The largest visible mismatch is the roof silhouette. BAG's simplified triangular
-or flat roof/front geometry cuts through the drawing's curved gables and dormers.
-This remains visible in the demo rather than replacing source geometry with an
-unverified image extrusion. A separate source-reviewed gable pass is needed.
+Roof fit now replaces the front 2 m with an illustrated silhouette and a roof
+apron joining the retained BAG roof. The original meshes remain available via
+Fit roofline. All three strips join 97/97 skyline samples to actual rear roof
+surfaces, with no fallback joins. Generated profiles remain provisional; they
+are not surveyed roof reconstructions.
+
+A fourth study demonstrates a compact, agent-authored JSON recipe built locally
+with Blender: real wall voids, inset glazing, two projecting balcony slabs with
+railings, and simplified roof/trim. Its 8 material meshes contain 3,008 triangles.
+This is a geometry construction test, not an image-to-3D model benchmark or a
+photo-matched building. Metric dimensions/depths are inferred; roof details differ
+from the reference and wall tessellation leaves subtle shading seams.
+
+Next experiment: extract fixed image-space opening outlines and balcony groups
+into this recipe, constrain scale with BAG, and compare front and side views.
+Use a clean wall-colour pass so projected balcony/door perspective is not baked
+back onto the geometry. Preserve measured/inferred provenance for each depth.
 
 Recommendation: start with registered colour textures, then add selected verified
 opening details at close range. Use the LLM for appearance and semantic grouping;
@@ -112,3 +125,12 @@ Remaining roofline/registration inaccuracies are recorded above.
 Independent review also found an unfair unlit-versus-lit mode comparison. All
 three textured treatments now use the same MeshStandardMaterial, roughness and
 lighting; only bump/frame detail changes. Final24 browser checks pass again.
+
+## Roof and Blender reproduction update
+
+After exporting geometry, run `node --import tsx scripts/review/repair-head-on-3d-roofs.ts`.
+Then run `blender --background --python scripts/review/build-facade-recipe-blender.py -- --recipe review-data/facade-assessment/blender-facade-recipe-v1.json --out public/data/facade-review-galleries/head-on-3d-v1`.
+The Blender study is a separate scene JSON so roof regeneration does not erase it.
+Current validation: 26 desktop/phone treatment checks, no browser errors or overflow;
+roof toggle preserves camera position. Three roof geometry tests pass. Root and
+Sol reviewed roof joins and the Blender prototype from multiple angles.

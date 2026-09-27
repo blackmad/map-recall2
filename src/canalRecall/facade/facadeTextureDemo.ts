@@ -4,7 +4,7 @@ import * as THREE from 'three';
 // @ts-expect-error Three runtime is installed without its declaration package.
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 type MeshData={id:string;positions:number[];indices?:number[];uvs?:number[];kind:string;textured?:boolean;colour?:string};
-type Row={id:string;label:string;sourceImage:string;generatedImage:string;meshes:MeshData[];camera?:{position:number[];target:number[]};frontCamera?:{position:number[];target:number[]};notes?:string[];focusBounds?:{min:number[];max:number[]}};
+type Row={id:string;label:string;sourceImage:string;generatedImage:string;meshes:MeshData[];camera?:{position:number[];target:number[]};frontCamera?:{position:number[];target:number[]};roofRepair?:{meshes:MeshData[]};notes?:string[];focusBounds?:{min:number[];max:number[]}};
 const $=(id:string)=>document.getElementById(id)!;
 const base='/data/facade-review-galleries/head-on-3d-v1/';
 const scene=new THREE.Scene();scene.background=new THREE.Color('#e8e5dd');
@@ -15,7 +15,7 @@ const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamp
 const ambient=new THREE.AmbientLight('#ffffff',2.5);scene.add(ambient);
 const sun=new THREE.DirectionalLight('#fff6e9',1);scene.add(sun);
 let group=new THREE.Group(),edges=new THREE.Group(),frames=new THREE.Group();scene.add(group,edges,frames);
-let rows:Row[]=[],current:Row,mode='texture',photo=false,wire=false;
+let rows:Row[]=[],current:Row,mode='texture',photo=false,wire=false,roofFit=true;
 let centre=new THREE.Vector3(),radius=30,frontDirection=new THREE.Vector3(0,0,1),ground:any;
 let texture:any,sourceTexture:any,bump:any;let generation=0;
 const resources:any[]=[];const loader=new THREE.TextureLoader();
@@ -49,19 +49,27 @@ async function addFrames(row:Row,token:number){
  }
  frames.userData.count=count;materials();status();
 }
-function status(){const count=current.meshes.filter(m=>m.textured).length;$('status').textContent=`${current.label} · ${current.meshes.length} source mesh parts · ${count} textured wall parts · ${frames.userData.count??0} candidate window frames. ${current.notes?.join(' ')??'Experimental image registration; inferred facade details.'}`;}
-async function show(index:number){($('row')as HTMLSelectElement).disabled=true;const token=++generation;$('loading').classList.remove('hidden');current=rows[index];clear();frames.userData.count=0;
- [texture,sourceTexture]=await Promise.all([loadTexture(current.id+'-texture.png'),loadTexture(current.sourceImage)]);resources.push(texture,sourceTexture);bump=null;
- try{bump=await loadTexture(current.id+'-bump.png',false);resources.push(bump);}catch{/* Relief assets can be regenerated independently. */}
+function status(){if(current.id==='recipe'){$('status').textContent='Blender recipe · agent-authored geometry with inferred dimensions and depths. Real balcony projections and recessed openings; simplified roof and trim. Not registered to a BAG building.';return;}const count=current.meshes.filter(m=>m.textured).length;$('status').textContent=`${current.label} · ${current.meshes.length} source mesh parts · ${count} textured wall parts · ${frames.userData.count??0} candidate window frames. ${current.notes?.join(' ')??`Experimental image registration; inferred facade details. ${roofFit?'Illustrated roofline with a joined 2 m apron.':'Original BAG roofline.'}`}`;}
+async function show(index:number,preserveView=false){const oldPosition=camera.position.clone(),oldTarget=controls.target.clone();($('row')as HTMLSelectElement).disabled=true;const token=++generation;$('loading').classList.remove('hidden');current=rows[index];clear();frames.userData.count=0;
+ const recipe=current.id==='recipe';
+ if(recipe)mode='bare';else if(mode==='bare'&&!preserveView)mode='texture';
+ for(const b of document.querySelectorAll<HTMLButtonElement>('[data-mode]'))b.disabled=recipe&&b.dataset.mode!=='bare';
+ for(const id of ['photo','depth'])($(id)as HTMLInputElement).disabled=recipe;
+ ($('roof-fit')as HTMLButtonElement).disabled=!current.roofRepair;
+ $('data-link').setAttribute('href',base+(recipe?'blender-facade.glb':'scene.json'));$('data-link').textContent=recipe?'Download Blender model (GLB)':'Geometry and registration record';
+ texture=null;sourceTexture=null;bump=null;
+ if(!recipe){[texture,sourceTexture]=await Promise.all([loadTexture(current.id+'-texture.png'),loadTexture(current.sourceImage)]);resources.push(texture,sourceTexture);bump=null;
+ try{bump=await loadTexture(current.id+'-bump.png',false);resources.push(bump);}catch{/* Relief assets can be regenerated independently. */}}
  if(token!==generation)return;
- for(const data of current.meshes){const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(data.positions,3));if(data.indices)geometry.setIndex(data.indices);if(data.uvs)geometry.setAttribute('uv',new THREE.Float32BufferAttribute(data.uvs,2));geometry.computeVertexNormals();const mesh=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial());mesh.userData.data=data;group.add(mesh);const line=new THREE.LineSegments(new THREE.EdgesGeometry(geometry,25),new THREE.LineBasicMaterial({color:'#283f35',transparent:true,opacity:.4}));edges.add(line);}
+ for(const data of roofFit&&current.roofRepair?current.roofRepair.meshes:current.meshes){const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(data.positions,3));if(data.indices)geometry.setIndex(data.indices);if(data.uvs)geometry.setAttribute('uv',new THREE.Float32BufferAttribute(data.uvs,2));geometry.computeVertexNormals();const mesh=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial());mesh.userData.data=data;group.add(mesh);const line=new THREE.LineSegments(new THREE.EdgesGeometry(geometry,25),new THREE.LineBasicMaterial({color:'#283f35',transparent:true,opacity:.4}));edges.add(line);}
  const fullBounds=new THREE.Box3().setFromObject(group);const bounds=new THREE.Box3();for(const m of group.children)if(m.userData.data.textured)bounds.expandByObject(m);if(current.focusBounds)bounds.set(new THREE.Vector3(...current.focusBounds.min),new THREE.Vector3(...current.focusBounds.max));else if(bounds.isEmpty())bounds.copy(fullBounds);bounds.getCenter(centre);const size=bounds.getSize(new THREE.Vector3());radius=Math.max(size.x,size.z,size.y*1.6)*.7;
  if(current.camera){const p=new THREE.Vector3(...current.camera.position),t=new THREE.Vector3(...current.camera.target);frontDirection.copy(p.sub(t));frontDirection.y=0;frontDirection.normalize();centre.copy(t);}
  ground=new THREE.Mesh(new THREE.PlaneGeometry(radius*8,radius*8),new THREE.MeshStandardMaterial({color:'#dad7ca',roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.set(centre.x,bounds.min.y-.08,centre.z);scene.add(ground);
- $('source').setAttribute('src',url(current.sourceImage));$('generated').setAttribute('src',url(current.generatedImage));setView('oblique');lighting();materials();status();$('loading').classList.add('hidden');($('row')as HTMLSelectElement).disabled=false;void addFrames(current,token);
+ $('source').setAttribute('src',url(current.sourceImage));$('generated').setAttribute('src',url(current.generatedImage));if(preserveView){camera.position.copy(oldPosition);controls.target.copy(oldTarget);controls.update();}else setView('oblique');lighting();materials();status();$('loading').classList.add('hidden');($('row')as HTMLSelectElement).disabled=false;if(!recipe)void addFrames(current,token);
 }
 function resize(){const box=$('viewport').getBoundingClientRect();renderer.setSize(box.width,box.height);camera.aspect=box.width/box.height;camera.updateProjectionMatrix();}new ResizeObserver(resize).observe($('viewport'));
 for(const id of ['front','oblique','roof'])$(id).onclick=()=>setView(id);
+$('roof-fit').onclick=()=>{roofFit=!roofFit;$('roof-fit').classList.toggle('active',roofFit);void show(Number(($('row')as HTMLSelectElement).value),true).catch(fail);};
 $('rotate').onclick=()=>{$('rotate').classList.toggle('active');controls.autoRotate=!controls.autoRotate;};$('wire').onclick=()=>{wire=!wire;$('wire').classList.toggle('active',wire);materials();};
 for(const b of document.querySelectorAll<HTMLButtonElement>('[data-mode]'))b.onclick=()=>{mode=b.dataset.mode!;materials();};
 $('light').oninput=lighting;$('depth').oninput=materials;$('photo').onchange=()=>{photo=($('photo')as HTMLInputElement).checked;materials();};
@@ -69,5 +77,5 @@ $('row').onchange=()=>{void show(Number(($('row')as HTMLSelectElement).value)).c
 for(const id of ['source','generated'])$(id).onclick=()=>{const dialog=$('zoom')as HTMLDialogElement;dialog.querySelector('img')!.src=($(id)as HTMLImageElement).src;dialog.showModal();};$('close').onclick=()=>($('zoom')as HTMLDialogElement).close();
 function fail(error:unknown){$('loading').classList.remove('hidden');$('error').textContent=String(error);console.error(error);}
 renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
-fetch(base+'scene.json').then(async response=>{if(!response.ok)throw Error('Build the local scene assets first.');const data=await response.json();rows=data.rows;if(!rows?.length)throw Error('No scene rows');for(const [i,row]of rows.entries()){const o=document.createElement('option');o.value=String(i);o.textContent=({strip1:'Bilderdijkkade · brick & balconies',strip2:'Bilderdijkstraat · shops',strip3:'Westerstraat · gables'} as Record<string,string>)[row.id]??row.label;($('row')as HTMLSelectElement).append(o);}await show(0);}).catch(fail);
-(window as any).facadeTextureDemo={scene,renderer,camera,controls,get row(){return current;},get mode(){return mode;},setView,show,get frames(){return frames.children.length/4;}};
+fetch(base+'scene.json').then(async response=>{if(!response.ok)throw Error('Build the local scene assets first.');const data=await response.json();rows=data.rows;const recipeResponse=await fetch(base+'blender-recipe-scene.json');if(!recipeResponse.ok)throw Error('Build the Blender recipe assets first.');rows.push(await recipeResponse.json());if(!rows?.length)throw Error('No scene rows');for(const [i,row]of rows.entries()){const o=document.createElement('option');o.value=String(i);o.textContent=({strip1:'Bilderdijkkade · brick & balconies',strip2:'Bilderdijkstraat · shops',strip3:'Westerstraat · gables'} as Record<string,string>)[row.id]??row.label;($('row')as HTMLSelectElement).append(o);}await show(0);}).catch(fail);
+(window as any).facadeTextureDemo={scene,renderer,camera,controls,get row(){return current;},get mode(){return mode;},get roofFit(){return roofFit;},setView,show,get frames(){return frames.children.length/4;}};

@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — Joined rooflines and Blender recipe study
+
+Facade atelier now fits illustrated gables to retained rear BAG roofs with a
+2 m apron; original geometry is preserved behind a toggle. Three strips each
+join 97 skyline samples without fallback. Added a fourth, agent-authored Blender
+recipe study with real recessed openings and projecting balcony geometry, plus
+a GLB download. Dimensions and depths are inferred, roof/trim simplified; this
+is not a photo-matched reconstruction. No paid API calls or game rollout.
+26 browser checks and three roof unit tests pass; independent visual review
+confirms joins/projections while recording remaining roof and shading limits.
+
 ## 2026-09-27 — Generated facades on real 3DBAG geometry
 
 Added isolated `facade-texture-demo.html`: three street studies with actual

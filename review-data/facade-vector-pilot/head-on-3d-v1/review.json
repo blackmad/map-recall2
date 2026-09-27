@@ -1,7 +1,7 @@
 {
   "demo": "/canal-drive/facade-texture-demo.html",
   "additionalInferenceCostUsd": 0,
-  "sceneSha256": "952ec2896026cb710e5d2e1fa06250d771abf300e3560ab91ca09866cee2780f",
+  "sceneSha256": "3fe11a3d232be51a259efd14ffb4d80d8633a07bf8f07763bc78dcf8b9cadff6",
   "geometry": "Actual3DBAG LoD2.2 semantic surfaces; no extruded image boxes",
   "rows": [
     {
@@ -155,15 +155,27 @@
       "UV edge repetition outside photographed crop",
       "White sky paint on gables",
       "Omitted roof-step vertical walls",
-      "Equalized material and lighting across texture, relief and frame modes"
+      "Equalized material and lighting across texture, relief and frame modes",
+      "Front roof clipping repaired by provisional silhouette shell and joined apron; originals retained"
     ],
     "remaining": [
-      "Generated gables and3DBAG silhouettes disagree",
+      "Generated silhouette shell remains provisional rather than surveyed roof geometry",
       "Approximate source-to-generated registration",
       "Incomplete and spurious heuristic window rectangles",
       "Illustration lighting/reflections already baked into raster",
       "Inferred hidden ground details not measured"
     ],
     "independentReviewer": "Sol visual and browser QA; roofline and approximate-registration limitations confirmed."
+  },
+  "blender": {
+    "authorship": "agent-authored inferred JSON recipe, built locally with Blender",
+    "triangles": 3008,
+    "materialGroups": 8,
+    "registeredToBag": false,
+    "limitations": [
+      "Simplified roof/trim",
+      "Inferred depths and dimensions",
+      "Subtle tessellation shading seams"
+    ]
   }
 }
