@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "id": "strip1-middle-flat-cornice-facade",
+  "status": "source-assisted-inferred-prototype",
+  "policy": "One illustrative facade based on visible strip 1 photo and generated drawing. No measured owner identity, metric dimensions, depths, georegistration, or accepted 3D detail.",
+  "source": {
+    "photoPath": ".cache/facade-assessment/banana-head-on-v1/inputs/strip1.jpg",
+    "photoSha256": "254e3ba215e9c1cccce1ae7f6276b0ea0e38859ab002048bba90bdbb8aa37d88",
+    "photoDimensions": [1360, 771],
+    "photoInspectionBounds": [505, 180, 820, 745],
+    "photoInspectionBoundsNormalized": [0.371324, 0.233463, 0.602941, 0.966278],
+    "generatedPath": ".cache/facade-assessment/banana-head-on-v1/strip1.png",
+    "generatedSha256": "2b5fb1d2be53da5f4e0225cb6e030da62237935eb437730bb6f38a219eee941f",
+    "generatedDimensions": [2752, 1536],
+    "generatedInspectionBounds": [1105, 330, 1610, 1500],
+    "generatedInspectionBoundsNormalized": [0.401526, 0.214844, 0.585029, 0.976563],
+    "pixelFrame": "full image, origin top left, half-open bounds",
+    "sourceImageUrl": "/data/facade-review-galleries/banana-head-on-v1/strip1-input.png",
+    "generatedImageUrl": "/data/facade-review-galleries/banana-head-on-v1/strip1-output.png"
+  },
+  "inference": {
+    "visibleEvidence": "Three upper storeys, each with three vertically aligned openings; two projecting balcony rails at the central upper openings; two broad ground arches and a narrow left doorway; shallow flat cornice with one roof dormer.",
+    "metricCaveat": "Facade width 6.4 m, height 14.4 m and all projection/recess depths are chosen to demonstrate geometry, not derived from photo calibration or BAG.",
+    "assumedFacadeWidthM": 6.4,
+    "assumedFacadeHeightM": 14.4,
+    "assumedWallThicknessM": 0.32,
+    "assumedGlassRecessM": 0.22,
+    "assumedBalconyProjectionM": 0.72
+  },
+  "materialColours": {
+    "wall": "#9b6456",
+    "trim": "#ded4bd",
+    "glass": "#536267",
+    "glassFrame": "#272c2c",
+    "metal": "#292b28",
+    "plinth": "#655b53",
+    "roof": "#6f6154",
+    "shopRed": "#992f29"
+  },
+  "openings": [
+    {"id":"upper-left-1","kind":"window","x0":0.55,"z0":4.55,"width":1.18,"height":2.25},
+    {"id":"upper-center-1","kind":"window","x0":2.61,"z0":4.55,"width":1.18,"height":2.25},
+    {"id":"upper-right-1","kind":"window","x0":4.67,"z0":4.55,"width":1.18,"height":2.25},
+    {"id":"upper-left-2","kind":"window","x0":0.55,"z0":7.72,"width":1.18,"height":2.25},
+    {"id":"upper-center-2","kind":"balcony-door","x0":2.61,"z0":7.72,"width":1.18,"height":2.25},
+    {"id":"upper-right-2","kind":"window","x0":4.67,"z0":7.72,"width":1.18,"height":2.25},
+    {"id":"upper-left-3","kind":"window","x0":0.55,"z0":10.89,"width":1.18,"height":2.25},
+    {"id":"upper-center-3","kind":"balcony-door","x0":2.61,"z0":10.89,"width":1.18,"height":2.25},
+    {"id":"upper-right-3","kind":"window","x0":4.67,"z0":10.89,"width":1.18,"height":2.25},
+    {"id":"ground-door","kind":"door","x0":0.50,"z0":0.20,"width":0.90,"height":2.65},
+    {"id":"ground-left-arch","kind":"shop-window","x0":2.02,"z0":0.37,"width":1.55,"height":2.58},
+    {"id":"ground-right-arch","kind":"shop-window","x0":4.00,"z0":0.37,"width":1.55,"height":2.58}
+  ],
+  "balconies": [
+    {"atOpening":"upper-center-2","slabZ":7.63,"width":1.65,"projection":0.72,"railHeight":1.05},
+    {"atOpening":"upper-center-3","slabZ":10.80,"width":1.65,"projection":0.72,"railHeight":1.05}
+  ],
+  "roofDetail": {"kind":"inferred-flat-cornice-and-dormer","dormerX0":2.54,"dormerWidth":1.32,"dormerHeight":1.42}
+}
