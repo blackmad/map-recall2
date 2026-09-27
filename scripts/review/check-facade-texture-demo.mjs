@@ -8,11 +8,11 @@ try{
   page.on('pageerror',e=>failures.push(e.message));page.on('console',m=>{if(m.type()==='error')failures.push(m.text());});page.on('response',r=>{if(r.status()>=400)failures.push(`${r.status()} ${r.url()}`);});
   await page.goto('http://localhost:5195/canal-drive/facade-texture-demo.html');
   await page.waitForFunction(()=>window.facadeTextureDemo?.row && document.getElementById('loading').classList.contains('hidden'),{timeout:60000});
-  const n=await page.locator('#row option').count();if(n!==4)throw Error(`Expected4 rows, got${n}`);
+  const n=await page.locator('#row option').count();if(n!==5)throw Error(`Expected5 rows, got${n}`);
   for(let row=0;row<n;row++){
    await page.selectOption('#row',String(row));await page.waitForFunction(()=>!document.getElementById('row').disabled);
    await page.waitForTimeout(500);
-   for(const mode of (row===3?['bare']:['bare','texture','relief','frames'])){
+   for(const mode of (row===3?['bare']:row===4?['bare','texture']:['bare','texture','relief','frames'])){
     await page.click(`[data-mode="${mode}"]`);await page.waitForTimeout(100);
     const result=await page.evaluate(()=>({row:window.facadeTextureDemo.row.id,mode:window.facadeTextureDemo.mode,parts:window.facadeTextureDemo.row.meshes.length,textured:window.facadeTextureDemo.row.meshes.filter(m=>m.textured).length,frames:window.facadeTextureDemo.frames,calls:window.facadeTextureDemo.renderer.info.render.calls,triangles:window.facadeTextureDemo.renderer.info.render.triangles,overflow:document.documentElement.scrollWidth>innerWidth}));
     if((row!==3&&!result.textured)||!result.triangles||result.overflow)failures.push(JSON.stringify(result));checks.push({width,...result});

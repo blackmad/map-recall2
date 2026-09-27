@@ -134,3 +134,46 @@ The Blender study is a separate scene JSON so roof regeneration does not erase i
 Current validation: 26 desktop/phone treatment checks, no browser errors or overflow;
 roof toggle preserves camera position. Three roof geometry tests pass. Root and
 Sol reviewed roof joins and the Blender prototype from multiple angles.
+
+## Automatic component strip — 2026-09-27
+
+Open `/canal-drive/facade-texture-demo.html?study=components` for the fifth study.
+The hash-bound generated-image detector proposes 64 windows, 10 balconies and
+one tentative door. The geometry compiler admits 63 openings and all 10 balconies;
+it withholds both members of a conflicting window/door pair. Triangle clipping
+creates actual wall apertures, inset textured panels, reveals and projecting
+slabs/rails. Depth defaults are 0.12 m recess / 0.65 m projection, not measurements.
+Ten uniquely aligned partial openings are extended behind railing to the detected
+slab; these completions are explicitly recorded as inferred. No independent
+aperture is invented for a standalone balcony.
+
+The texture shader replaces detected painted balcony regions with sampled wall
+colour on masonry and neutral glass on inset panels. This removes much of the
+baked projection, but rectangular cleanup and missing lower mullions remain
+visible. This is a working diagnostic pipeline, not a finished visual upgrade.
+Ground-floor semantic identification, precise arches and source-photo fidelity
+remain unresolved. There is no automatic door success claim from this strip.
+
+Local Qwen3.5:9b free-coordinate extraction took 248.6 seconds and returned
+invalid coordinate scale plus duplicate windows; it was rejected. A smaller
+fixed-ID classification trial timed out and was not used. Neither trial incurred
+API spend. Do not treat its elapsed wall time as a reliable throughput benchmark.
+
+Reproduce after prior scene/roof steps:
+
+```
+node --import tsx scripts/review/extract-facade-components.ts --input=.cache/facade-assessment/banana-head-on-v1/strip1.png --receipt=.cache/facade-assessment/banana-head-on-v1/strip1.json --out=.cache/facade-assessment/banana-head-on-v1/auto-components-strip1
+node --import tsx scripts/review/build-component-scene.ts
+node --import tsx scripts/review/build-component-extraction-report.ts
+```
+
+The review report additionally uses cached Qwen receipts. Eight extraction/geometry
+tests pass; 30 desktop/mobile browser checks pass. Root and Sol inspected
+projection directions, inset surfaces and roof views. All output remains an
+isolated demo. See `facade-component-output-contract.md` for alternative prompts.
+
+Next comparisons: MAI-Image-2.6 editing for clean colour and separate masks versus
+Nano Banana; TRELLIS.2 isolated facade/detail generation and existing-shape
+texturing versus this deterministic geometry. Neither has been run here. MAI
+image-edit endpoint verified through OpenRouter; TRELLIS official setup requires
+Linux/NVIDIA >=24 GB. Keep shape/location accuracy separate from visual appeal.

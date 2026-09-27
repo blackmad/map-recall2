@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — Automatic facade component experiment
+
+Added fifth facade-atelier study with automatic image candidates mapped into
+actual apertures and projecting balconies: 63 openings and 10 balconies admitted;
+conflicting door/window pair withheld. Ten occluded lower opening extents are
+explicitly inferred. Shader cleanup separates painted railings from geometry,
+with remaining patch/trim artifacts recorded. Local Qwen coordinate trial failed
+validation; fixed-ID retry timed out. No API spend or accepted game release.
+Eight focused tests and 30 browser checks pass; source/mask/geometry provenance
+and alternatives are in docs/plans/facade-texture-3d-pilot.md.
+
 ## 2026-09-27 — Joined rooflines and Blender recipe study
 
 Facade atelier now fits illustrated gables to retained rear BAG roofs with a

@@ -1,0 +1,206 @@
+{
+  "path": ".cache/facade-assessment/banana-head-on-v1/auto-components-strip1/components.json",
+  "sha256": "c4f7afb97d93fea802e6d86cba2eb0d43702c111fd7f3ded3313ca81ae6552d4",
+  "stats": {
+    "accepted": [
+      "opening-1",
+      "opening-2",
+      "opening-3",
+      "opening-4",
+      "opening-5",
+      "opening-6",
+      "opening-7",
+      "balcony-7",
+      "opening-8",
+      "opening-9",
+      "opening-10",
+      "balcony-10",
+      "opening-11",
+      "opening-12",
+      "opening-13",
+      "balcony-13",
+      "opening-14",
+      "opening-15",
+      "opening-16",
+      "balcony-16",
+      "opening-17",
+      "opening-18",
+      "opening-19",
+      "opening-20",
+      "opening-21",
+      "balcony-21",
+      "opening-22",
+      "opening-23",
+      "balcony-23",
+      "opening-24",
+      "opening-25",
+      "opening-26",
+      "balcony-26",
+      "opening-27",
+      "opening-28",
+      "opening-29",
+      "balcony-29",
+      "opening-30",
+      "opening-31",
+      "opening-32",
+      "balcony-32",
+      "opening-33",
+      "opening-34",
+      "opening-35",
+      "opening-36",
+      "opening-37",
+      "balcony-37",
+      "opening-38",
+      "opening-39",
+      "opening-40",
+      "opening-41",
+      "opening-42",
+      "opening-43",
+      "opening-44",
+      "opening-45",
+      "opening-46",
+      "opening-47",
+      "opening-48",
+      "opening-49",
+      "opening-50",
+      "opening-51",
+      "opening-52",
+      "opening-53",
+      "opening-54",
+      "opening-55",
+      "opening-56",
+      "opening-57",
+      "opening-58",
+      "opening-59",
+      "opening-60",
+      "opening-62",
+      "opening-63",
+      "opening-64"
+    ],
+    "skipped": [
+      {
+        "id": "opening-61",
+        "reason": "ambiguous-opening-conflict"
+      },
+      {
+        "id": "door-1",
+        "reason": "ambiguous-opening-conflict"
+      }
+    ],
+    "apertures": 63,
+    "inserted": 800
+  },
+  "inferredCompletions": [
+    {
+      "id": "opening-7",
+      "balcony": "balcony-7",
+      "originalBounds": [
+        0.85547,
+        0.34266,
+        0.88184,
+        0.40035
+      ],
+      "status": "inferred-behind-railing"
+    },
+    {
+      "id": "opening-10",
+      "balcony": "balcony-10",
+      "originalBounds": [
+        0.30371,
+        0.37238,
+        0.33105,
+        0.42832
+      ],
+      "status": "inferred-behind-railing"
+    },
+    {
+      "id": "opening-13",
+      "balcony": "balcony-13",
+      "originalBounds": [
+        0.48633,
+        0.37238,
+        0.5127,
+        0.42832
+      ],
+      "status": "inferred-behind-railing"
+    },
+    {
+      "id": "opening-16",
+      "balcony": "balcony-16",
+      "originalBounds": [
+        0.66895,
+        0.37238,
+        0.69531,
+        0.42832
+      ],
+      "status": "inferred-behind-railing"
+    },
+    {
+      "id": "opening-21",
+      "balcony": "balcony-21",
+      "originalBounds": [
+        0.12402,
+        0.3951,
+        0.14941,
+        0.45629
+      ],
+      "status": "inferred-behind-railing"
+    },
+    {
+      "id": "opening-23",
+      "balcony": "balcony-23",
+      "originalBounds": [
+        0.85547,
+        0.49476,
+        0.88184,
+        0.55594
+      ],
+      "status": "inferred-behind-railing"
+    },
+    {
+      "id": "opening-26",
+      "balcony": "balcony-26",
+      "originalBounds": [
+        0.30371,
+        0.52098,
+        0.33105,
+        0.58042
+      ],
+      "status": "inferred-behind-railing"
+    },
+    {
+      "id": "opening-29",
+      "balcony": "balcony-29",
+      "originalBounds": [
+        0.48633,
+        0.52098,
+        0.5127,
+        0.58042
+      ],
+      "status": "inferred-behind-railing"
+    },
+    {
+      "id": "opening-32",
+      "balcony": "balcony-32",
+      "originalBounds": [
+        0.66895,
+        0.52098,
+        0.69531,
+        0.58042
+      ],
+      "status": "inferred-behind-railing"
+    },
+    {
+      "id": "opening-37",
+      "balcony": "balcony-37",
+      "originalBounds": [
+        0.12402,
+        0.54371,
+        0.14941,
+        0.60839
+      ],
+      "status": "inferred-behind-railing"
+    }
+  ],
+  "cleanupCount": 10
+}

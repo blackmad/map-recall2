@@ -9,27 +9,27 @@ The strip-1 head-on experiment demonstrates why. Its source crop preserves
 irregular openings, balcony rails, shopfronts and roof beams. The generated
 strip is a clean, useful illustration of broad rhythm, but it regularises
 openings and replaces the source with a different 2752 × 1536 image. Its
-receipt has no per-building source binding or pixel masks. It cannot supply
-coordinates, wall texture, depth, or hidden detail to the game.
+receipt has no per-building source binding or pixel masks. Its coordinates, wall texture, depth and hidden detail are therefore experimental,
+not accepted building measurements.
 
 ## Decision
 
 Use **source-derived component selection plus a typed 2.5D sidecar**. A model
 may select, reject, group and classify fixed source components. A deterministic
 compiler maps the retained source pixels through the existing registration.
-No model-generated pixel, coordinate, transform, colour, normal map, or mesh
-reaches the renderer.
+For the measurement-led control, model-generated coordinates and depth do not
+replace source measurements. Separate, explicitly inferred generated-image
+branches remain valid demo experiments; this is not a ban on rendering them.
 
 | Candidate output | Useful contribution | Blocking failure | Decision |
 | --- | --- | --- | --- |
 | Current flat illustrative image | Candidate floor rhythm, broad material bands and prompts for inspection | Reframes the source, regularises openings and completes occlusion; it has neither owner binding nor source-pixel geometry | Gallery-only hypothesis |
 | Source image + fixed instance masks + typed relations | Keeps observed positions; can group fragmented components and express a recess or rail without inventing its bounds | A single photograph does not yield physical albedo or metric depth | Build this next |
-| Direct model mesh / textured mesh | Convenient demonstration asset | Depth, attachment and unseen faces are invented; a generated texture is a painted projection with no source registration | Do not implement from one image |
+| Direct model mesh / textured mesh | Convenient demonstration asset | Depth, attachment and unseen faces are invented; a generated texture is a painted projection with no source registration | Separate inferred experiment; not measured reconstruction |
 
-“Albedo” in a one-photo request is misleading. The only permissible colour
-measurement is a source-photo sample with a `measured-provisional` status; it
-is not illumination-free material colour. A generated image must never be
-sampled for wall colour.
+“Albedo” in a one-photo request is misleading. A source-photo colour sample has a `measured-provisional` status; it
+is not illumination-free material colour. Generated-image colour can be used in
+an inferred demo branch, but must not be reported as a source measurement.
 
 ## Fixed input packet
 
@@ -173,3 +173,13 @@ remain transparent/withheld rather than painted over.
 This gives a model a task it can perform—component interpretation—while leaving
 registration, measurements, colours and geometry construction reproducible and
 source-bound.
+
+## Generated-image ablation alongside the source control
+
+The user explicitly requested a generated-strip reconstruction demo. Test that
+branch alongside this stricter source-component control: retain separate image
+hashes, instance masks and alignment residuals, and mark all generated/inpainted
+appearance as inferred. Compare visible opening counts, anchor positions,
+balcony/recess preservation, material bands, and unsupported completion. Neither
+branch may silently overwrite the other's observations. A clean-colour image
+plus labelled masks is a useful experiment, not a measured albedo claim.

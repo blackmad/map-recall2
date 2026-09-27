@@ -3,8 +3,8 @@
 import * as THREE from 'three';
 // @ts-expect-error Three runtime is installed without its declaration package.
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
-type MeshData={id:string;positions:number[];indices?:number[];uvs?:number[];kind:string;textured?:boolean;colour?:string};
-type Row={id:string;label:string;sourceImage:string;generatedImage:string;meshes:MeshData[];camera?:{position:number[];target:number[]};frontCamera?:{position:number[];target:number[]};roofRepair?:{meshes:MeshData[]};notes?:string[];focusBounds?:{min:number[];max:number[]}};
+type MeshData={id:string;positions:number[];indices?:number[];uvs?:number[];kind:string;textured?:boolean;colour?:string;cleanup?:{bbox:number[];colour:string}[]};
+type Row={id:string;textureId?:string;label:string;sourceImage:string;generatedImage:string;meshes:MeshData[];camera?:{position:number[];target:number[]};frontCamera?:{position:number[];target:number[]};roofRepair?:{meshes:MeshData[]};notes?:string[];focusBounds?:{min:number[];max:number[]}};
 const $=(id:string)=>document.getElementById(id)!;
 const base='/data/facade-review-galleries/head-on-3d-v1/';
 const scene=new THREE.Scene();scene.background=new THREE.Color('#e8e5dd');
@@ -25,13 +25,15 @@ function clear(){for(const g of [group,edges,frames]){for(const child of [...g.c
 function setView(view:string){const d=frontDirection.clone();if(view==='oblique')d.applyAxisAngle(new THREE.Vector3(0,1,0),.36);const elevation=view==='roof'?.85:view==='front'?.025:.22;camera.position.copy(centre).addScaledVector(d,radius*(view==='roof'?1.6:1.85)*Math.max(1,1.25/camera.aspect));camera.position.y=centre.y+radius*elevation;controls.target.copy(centre);camera.near=Math.max(.05,radius/1000);camera.far=radius*30;camera.updateProjectionMatrix();controls.update();for(const id of ['front','oblique','roof'])$(id).classList.toggle('active',id===view);}
 function lighting(){const a=Number(($('light')as HTMLInputElement).value)*Math.PI/180;sun.position.set(centre.x+Math.sin(a)*radius*3,centre.y+radius*2,centre.z+Math.cos(a)*radius*3);sun.target.position.copy(centre);sun.target.updateMatrixWorld();}
 function mappedMaterial(relief:boolean,map:any,data:MeshData){
+ const cleanup=(data.cleanup??[]).map(f=>{const [x0,y0,x1,y1]=f.bbox;const c=new THREE.Color(f.colour);return `if(vMapUv.x>=${x0.toFixed(6)}&&vMapUv.x<=${x1.toFixed(6)}&&vMapUv.y>=${(1-y1).toFixed(6)}&&vMapUv.y<=${(1-y0).toFixed(6)}) sampledDiffuseColor=vec4(${c.r.toFixed(6)},${c.g.toFixed(6)},${c.b.toFixed(6)},1.0);`;}).join('\n');
  const m=new THREE.MeshStandardMaterial({bumpMap:relief&&!photo?bump:null,bumpScale:Number(($('depth')as HTMLInputElement).value)/100,roughness:.95,metalness:0,side:THREE.DoubleSide});
  m.map=map;m.color.set('#ffffff');
  m.onBeforeCompile=(shader:any)=>{shader.fragmentShader=shader.fragmentShader.replace('#include <bumpmap_pars_fragment>',THREE.ShaderChunk.bumpmap_pars_fragment.replace('vec2 dHdxy_fwd() {','vec2 dHdxy_fwd() { if (any(lessThan(vBumpMapUv,vec2(0.0))) || any(greaterThan(vBumpMapUv,vec2(1.0)))) return vec2(0.0);'));shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#ifdef USE_MAP
  vec4 sampledDiffuseColor=texture2D(map,vMapUv);
+ ${photo?'':cleanup}
  float covered=step(0.0,vMapUv.x)*step(vMapUv.x,1.0)*step(0.0,vMapUv.y)*step(vMapUv.y,1.0)*sampledDiffuseColor.a;
  diffuseColor.rgb*=mix(vec3(0.43,0.35,0.28),sampledDiffuseColor.rgb,covered);
- #endif`);};m.customProgramCacheKey=()=> 'facade-bounded-alpha-v1';return m;
+ #endif`);};m.customProgramCacheKey=()=> 'facade-bounded-alpha-v2'+(photo?'photo':cleanup);return m;
 }
 function materials(){if(!current)return;const map=photo?sourceTexture:texture;for(const mesh of group.children){const data=mesh.userData.data as MeshData;mesh.material.dispose();if(data.textured&&mode!=='bare')mesh.material=mappedMaterial(mode!=='texture',map,data);else mesh.material=new THREE.MeshStandardMaterial({color:data.colour??(data.kind==='roof'?'#8a8175':'#c4b9a4'),roughness:1,side:THREE.DoubleSide});}
  frames.visible=mode==='frames'&&!photo;edges.visible=wire;for(const b of document.querySelectorAll<HTMLButtonElement>('[data-mode]'))b.classList.toggle('active',b.dataset.mode===mode);}
@@ -49,23 +51,23 @@ async function addFrames(row:Row,token:number){
  }
  frames.userData.count=count;materials();status();
 }
-function status(){if(current.id==='recipe'){$('status').textContent='Blender recipe · agent-authored geometry with inferred dimensions and depths. Real balcony projections and recessed openings; simplified roof and trim. Not registered to a BAG building.';return;}const count=current.meshes.filter(m=>m.textured).length;$('status').textContent=`${current.label} · ${current.meshes.length} source mesh parts · ${count} textured wall parts · ${frames.userData.count??0} candidate window frames. ${current.notes?.join(' ')??`Experimental image registration; inferred facade details. ${roofFit?'Illustrated roofline with a joined 2 m apron.':'Original BAG roofline.'}`}`;}
+function status(){if(current.id==='recipe'){$('status').textContent='Blender recipe · agent-authored geometry with inferred dimensions and depths. Real balcony projections and recessed openings; simplified roof and trim. Not registered to a BAG building.';return;}const count=current.meshes.filter(m=>m.textured).length;$('status').textContent=`${current.label} · ${current.meshes.length} mesh parts · ${count} textured wall parts · ${frames.userData.count??0} candidate window frames. ${current.notes?.join(' ')??`Experimental image registration; inferred facade details. ${roofFit?'Illustrated roofline with a joined 2 m apron.':'Original BAG roofline.'}`}`;}
 async function show(index:number,preserveView=false){const oldPosition=camera.position.clone(),oldTarget=controls.target.clone();($('row')as HTMLSelectElement).disabled=true;const token=++generation;$('loading').classList.remove('hidden');current=rows[index];clear();frames.userData.count=0;
- const recipe=current.id==='recipe';
- if(recipe)mode='bare';else if(mode==='bare'&&!preserveView)mode='texture';
- for(const b of document.querySelectorAll<HTMLButtonElement>('[data-mode]'))b.disabled=recipe&&b.dataset.mode!=='bare';
- for(const id of ['photo','depth'])($(id)as HTMLInputElement).disabled=recipe;
+ const recipe=current.id==='recipe',components=current.id==='components';
+ if(recipe)mode='bare';else if(components)mode='texture';else if(mode==='bare'&&!preserveView)mode='texture';
+ for(const b of document.querySelectorAll<HTMLButtonElement>('[data-mode]'))b.disabled=(recipe&&b.dataset.mode!=='bare')||(components&&['frames','relief'].includes(b.dataset.mode!));
+ for(const id of ['photo','depth'])($(id)as HTMLInputElement).disabled=recipe||components;
  ($('roof-fit')as HTMLButtonElement).disabled=!current.roofRepair;
- $('data-link').setAttribute('href',base+(recipe?'blender-facade.glb':'scene.json'));$('data-link').textContent=recipe?'Download Blender model (GLB)':'Geometry and registration record';
+ $('data-link').setAttribute('href',base+(recipe?'blender-facade.glb':components?'component-stats.json':'scene.json'));$('data-link').textContent=recipe?'Download Blender model (GLB)':components?'Automatic extraction and geometry results':'Geometry and registration record';
  texture=null;sourceTexture=null;bump=null;
- if(!recipe){[texture,sourceTexture]=await Promise.all([loadTexture(current.id+'-texture.png'),loadTexture(current.sourceImage)]);resources.push(texture,sourceTexture);bump=null;
- try{bump=await loadTexture(current.id+'-bump.png',false);resources.push(bump);}catch{/* Relief assets can be regenerated independently. */}}
+ if(!recipe){[texture,sourceTexture]=await Promise.all([loadTexture((current.textureId??current.id)+'-texture.png'),loadTexture(current.sourceImage)]);resources.push(texture,sourceTexture);bump=null;
+ try{bump=await loadTexture((current.textureId??current.id)+'-bump.png',false);resources.push(bump);}catch{/* Relief assets can be regenerated independently. */}}
  if(token!==generation)return;
  for(const data of roofFit&&current.roofRepair?current.roofRepair.meshes:current.meshes){const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(data.positions,3));if(data.indices)geometry.setIndex(data.indices);if(data.uvs)geometry.setAttribute('uv',new THREE.Float32BufferAttribute(data.uvs,2));geometry.computeVertexNormals();const mesh=new THREE.Mesh(geometry,new THREE.MeshBasicMaterial());mesh.userData.data=data;group.add(mesh);const line=new THREE.LineSegments(new THREE.EdgesGeometry(geometry,25),new THREE.LineBasicMaterial({color:'#283f35',transparent:true,opacity:.4}));edges.add(line);}
  const fullBounds=new THREE.Box3().setFromObject(group);const bounds=new THREE.Box3();for(const m of group.children)if(m.userData.data.textured)bounds.expandByObject(m);if(current.focusBounds)bounds.set(new THREE.Vector3(...current.focusBounds.min),new THREE.Vector3(...current.focusBounds.max));else if(bounds.isEmpty())bounds.copy(fullBounds);bounds.getCenter(centre);const size=bounds.getSize(new THREE.Vector3());radius=Math.max(size.x,size.z,size.y*1.6)*.7;
  if(current.camera){const p=new THREE.Vector3(...current.camera.position),t=new THREE.Vector3(...current.camera.target);frontDirection.copy(p.sub(t));frontDirection.y=0;frontDirection.normalize();centre.copy(t);}
  ground=new THREE.Mesh(new THREE.PlaneGeometry(radius*8,radius*8),new THREE.MeshStandardMaterial({color:'#dad7ca',roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.set(centre.x,bounds.min.y-.08,centre.z);scene.add(ground);
- $('source').setAttribute('src',url(current.sourceImage));$('generated').setAttribute('src',url(current.generatedImage));if(preserveView){camera.position.copy(oldPosition);controls.target.copy(oldTarget);controls.update();}else setView('oblique');lighting();materials();status();$('loading').classList.add('hidden');($('row')as HTMLSelectElement).disabled=false;if(!recipe)void addFrames(current,token);
+ $('source').setAttribute('src',url(current.sourceImage));$('generated').setAttribute('src',url(current.generatedImage));if(preserveView){camera.position.copy(oldPosition);controls.target.copy(oldTarget);controls.update();}else setView('oblique');lighting();materials();status();$('loading').classList.add('hidden');($('row')as HTMLSelectElement).disabled=false;if(!recipe&&current.id!=='components')void addFrames(current,token);
 }
 function resize(){const box=$('viewport').getBoundingClientRect();renderer.setSize(box.width,box.height);camera.aspect=box.width/box.height;camera.updateProjectionMatrix();}new ResizeObserver(resize).observe($('viewport'));
 for(const id of ['front','oblique','roof'])$(id).onclick=()=>setView(id);
@@ -77,5 +79,5 @@ $('row').onchange=()=>{void show(Number(($('row')as HTMLSelectElement).value)).c
 for(const id of ['source','generated'])$(id).onclick=()=>{const dialog=$('zoom')as HTMLDialogElement;dialog.querySelector('img')!.src=($(id)as HTMLImageElement).src;dialog.showModal();};$('close').onclick=()=>($('zoom')as HTMLDialogElement).close();
 function fail(error:unknown){$('loading').classList.remove('hidden');$('error').textContent=String(error);console.error(error);}
 renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
-fetch(base+'scene.json').then(async response=>{if(!response.ok)throw Error('Build the local scene assets first.');const data=await response.json();rows=data.rows;const recipeResponse=await fetch(base+'blender-recipe-scene.json');if(!recipeResponse.ok)throw Error('Build the Blender recipe assets first.');rows.push(await recipeResponse.json());if(!rows?.length)throw Error('No scene rows');for(const [i,row]of rows.entries()){const o=document.createElement('option');o.value=String(i);o.textContent=({strip1:'Bilderdijkkade · brick & balconies',strip2:'Bilderdijkstraat · shops',strip3:'Westerstraat · gables'} as Record<string,string>)[row.id]??row.label;($('row')as HTMLSelectElement).append(o);}await show(0);}).catch(fail);
+fetch(base+'scene.json').then(async response=>{if(!response.ok)throw Error('Build the local scene assets first.');const data=await response.json();rows=data.rows;const recipeResponse=await fetch(base+'blender-recipe-scene.json');if(!recipeResponse.ok)throw Error('Build the Blender recipe assets first.');rows.push(await recipeResponse.json());const componentResponse=await fetch(base+'component-scene.json');if(!componentResponse.ok)throw Error('Build component scene assets first.');rows.push(await componentResponse.json());if(!rows?.length)throw Error('No scene rows');for(const [i,row]of rows.entries()){const o=document.createElement('option');o.value=String(i);o.textContent=({strip1:'Bilderdijkkade · brick & balconies',strip2:'Bilderdijkstraat · shops',strip3:'Westerstraat · gables'} as Record<string,string>)[row.id]??row.label;($('row')as HTMLSelectElement).append(o);}const requested=new URLSearchParams(location.search).get('study');const selected=Math.max(0,rows.findIndex(r=>r.id===requested));($('row')as HTMLSelectElement).value=String(selected);await show(selected);}).catch(fail);
 (window as any).facadeTextureDemo={scene,renderer,camera,controls,get row(){return current;},get mode(){return mode;},get roofFit(){return roofFit;},setView,show,get frames(){return frames.children.length/4;}};

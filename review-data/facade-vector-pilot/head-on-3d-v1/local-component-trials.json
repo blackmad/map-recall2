@@ -1,0 +1,18 @@
+[
+  {
+    "model": "qwen3.5:9b",
+    "status": "invalid",
+    "latencyMs": 248576,
+    "apiCostUsd": 0,
+    "error": null,
+    "prompt": "Identify architectural components in this generated street elevation. Return JSON only: {\"features\":[{\"id\":\"unique\",\"kind\":\"window|door|balcony\",\"bbox\":[left,top,right,bottom],\"confidence\":0.0}],\"notes\":[]}. Coordinates normalized 0..1 across the ENTIRE supplied image including white sky, origin top-left. Extract all visible windows and ground entrances separately. Balcony bbox encloses only slab+railing, not the tall window behind. Window bbox encloses the whole opening, not individual panes; do not count painted railing bars as windows. Door means pedestrian entrance, not shop glazing. Preserve asymmetry. No metric depth guesses. Omit uncertain hidden openings. Keep JSON compact, maximum 90 features. This is a candidate extraction, not measured geometry."
+  },
+  {
+    "model": "qwen3.5:9b",
+    "status": "failed",
+    "latencyMs": 1076646,
+    "apiCostUsd": 0,
+    "error": "TimeoutError: The operation was aborted due to timeout",
+    "prompt": "Review these fixed component candidates against this drawing. Bounds are immutable normalized [left,top,right,bottom] across the whole image. Do NOT return new coordinates or invent IDs. For each candidate return {id,decision:\"keep\"|\"reject\"|\"uncertain\",kind:\"balcony\"|\"door\"|\"unknown\",reason:\"short visual reason\"}. A balcony must show a projecting slab plus rail, not just window mullions. A door must clearly be a pedestrian entrance rather than shop glazing. Return JSON {decisions:[],notes:[]}. Candidates: [{\"id\":\"balcony-7\",\"proposedKind\":\"balcony\",\"bounds\":[0.8457,0.39685,0.8916,0.48077]},{\"id\":\"balcony-10\",\"proposedKind\":\"balcony\",\"bounds\":[0.29297,0.42483,0.3418,0.49476]},{\"id\":\"balcony-13\",\"proposedKind\":\"balcony\",\"bounds\":[0.47656,0.42483,0.52246,0.49476]},{\"id\":\"balcony-16\",\"proposedKind\":\"balcony\",\"bounds\":[0.65918,0.42483,0.70508,0.49476]},{\"id\":\"balcony-21\",\"proposedKind\":\"balcony\",\"bounds\":[0.11426,0.4528,0.15918,0.53147]},{\"id\":\"balcony-23\",\"proposedKind\":\"balcony\",\"bounds\":[0.8457,0.55245,0.8916,0.63112]},{\"id\":\"balcony-26\",\"proposedKind\":\"balcony\",\"bounds\":[0.29297,0.57692,0.3418,0.65559]},{\"id\":\"balcony-29\",\"proposedKind\":\"balcony\",\"bounds\":[0.47656,0.57692,0.52246,0.65559]},{\"id\":\"balcony-32\",\"proposedKind\":\"balcony\",\"bounds\":[0.65918,0.57692,0.70508,0.65559]},{\"id\":\"balcony-37\",\"proposedKind\":\"balcony\",\"bounds\":[0.11426,0.6049,0.15918,0.68007]},{\"id\":\"door-1\",\"proposedKind\":\"door\",\"bounds\":[0.31641,0.80769,0.34082,0.98427]}]"
+  }
+]
