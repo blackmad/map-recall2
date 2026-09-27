@@ -1,5 +1,51 @@
 # Canal Recall — what is built
 
+## 2026-09-26 — local overnight colour diagnostics and broader opt-in demo
+
+The conservative local Qwen run produced 100 valid responses at 2.980 seconds
+median per image (3.704 seconds p90). Agreement with existing material names is
+88/89 known cases, not independent accuracy. Native-image auditing identified
+uncertain old labels, so no bulk appearance acceptance follows from that number.
+
+The resumable district worker now binds every batch to source/model/code hashes,
+records material proposals, applies pinned local segmentation, and measures upper
+wall photo colour. Resume verifies artifacts; transient retries and disk/time/work
+limits bound unattended runs. The first 99-image batch completed classification,
+masking and colour measurement; verified resume skipped it and started the next
+batch. Its 20 provisional and 79 review-needed photo measurements are visible in
+the live gallery. A nonuniform-mask regression caught Sharp expanding
+greyscale masks to RGB; decoding now explicitly preserves one label per pixel.
+
+An opt-in cohort demo adds 85 supported source-assessed owners while retaining
+original appearance for eleven unknown and four unsupported cases. The default
+ten-case experiment and default game remain unchanged. Focused worker, mask,
+rectification retry and scope checks pass; complete render acceptance remains open.
+
+
+## 2026-09-26 — exhaustive district rectification and local material benchmark
+
+The former five-street source sample is replaced by an exact municipal-boundary
+queue: 4,339 eligible frontages across 3,472 of 4,155 district owners. A native
+4000px panorama profile keeps bulk evidence affordable on disk, shares immutable
+panoramas with hardlinks and checkpoints each batch. Byte hashes and resolution
+profiles prevent accidental cache mixing. Blank crops remain explicit omissions;
+network/decode/resource failures stop for retry instead of becoming permanent gaps.
+
+The independent first ten-image resolution review accepted seven for broad
+colour/material triage, limited two, and rejected a sign-obscured wall. A second
+30-image reference set was audited against every native image after incorrect
+visual descriptions were found. Its corrected development revision has five
+material-abstention cases; the original accuracy report is withdrawn. The new local-only Ollama
+benchmark binds source hashes and model digest, captures real image latency and
+raw responses, and preserves failed attempts on resume. These are evidence and
+evaluation tools; neither successful rectification nor model agreement certifies
+owner identity, exact wall colour or measured texture.
+
+The coverage-gap audit identifies 355 owners failing address/height eligibility
+and 328 passing those initial gates without an inventory frontage. The 49
+addressless owners taller than five metres form a possible isolated next test;
+no nearest-building identity guess or blanket height relaxation was introduced.
+
 
 ## 2026-09-27 — phone choices no longer pre-tint an answer
 

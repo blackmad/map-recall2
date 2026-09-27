@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2efe7">
+  <title>District material evidence · Canal Drive</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #26362f;
+      --muted: #68756d;
+      --paper: #f2efe7;
+      --card: #fffdf8;
+      --line: #d8d9cf;
+      --green: #236346;
+      --green-soft: #e4eee7;
+      --amber: #815b17;
+      --amber-soft: #f7efd9;
+      --red: #8c3e36;
+      --red-soft: #f6e7e2;
+      --shadow: 0 5px 18px rgb(38 54 47 / 6%);
+      font: 15px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); }
+    a { color: var(--green); text-underline-offset: 3px; }
+    button, select, input { font: inherit; }
+    button, select, input[type="search"] {
+      min-height: 42px; border: 1px solid var(--line); border-radius: 9px;
+      background: var(--card); color: var(--ink); padding: 8px 12px;
+    }
+    button { cursor: pointer; font-weight: 650; }
+    button:hover { border-color: #789183; }
+    button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible {
+      outline: 3px solid #6ba987; outline-offset: 2px;
+    }
+    .shell { max-width: 1500px; margin: auto; padding: clamp(16px, 3vw, 34px); }
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .titleline { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 14px; }
+    .eyebrow { margin: 0; color: var(--green); font-size: 11px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(23px, 3vw, 32px); line-height: 1.1; letter-spacing: -.035em; }
+    .subhead { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+    .header-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 14px; white-space: nowrap; font-size: 13px; }
+    .notice { margin: 12px 0 10px; padding: 7px 11px; border-left: 3px solid #b7812b; border-radius: 5px; background: #fbf5e7; color: #514729; font-size: 12px; }
+    .notice strong { color: #352f20; }
+    .section-label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: 8px 0 4px; }
+    .section-label h2 { margin: 0; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .section-label p { margin: 0; color: var(--muted); font-size: 11px; }
+    .metrics { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+    .metric { min-width: 0; min-height: 53px; display: flex; flex-direction: column; justify-content: center; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+    .metric .value { display: block; font-size: 17px; line-height: 1.1; font-weight: 760; font-variant-numeric: tabular-nums; letter-spacing: -.02em; overflow-wrap: anywhere; }
+    .metric .label { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; line-height: 1.2; }
+    .metric.model { border-top: 2px solid #c3a05d; }
+    .metric.danger { border-color: #d9aaa2; background: var(--red-soft); }
+    .metric.danger .value, .metric.danger .label { color: var(--red); }
+    .coverage-note { margin: 4px 1px 0; color: var(--muted); font-size: 11px; }
+    .overview { margin-top: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+    .overview summary { cursor: pointer; padding: 13px 16px; font-weight: 700; }
+    .overview-inner { padding: 0 16px 15px; }
+    .plot { display: block; width: 100%; height: 260px; overflow: visible; }
+    .plot-bg { fill: #f3f1eb; stroke: #deddd3; }
+    .plot-dot { cursor: pointer; stroke: #fffdf8; stroke-width: 1.3; opacity: .83; }
+    .plot-dot:hover, .plot-dot:focus { stroke: #26362f; stroke-width: 2.5; opacity: 1; }
+    .plot-caption { margin: 7px 0 0; color: var(--muted); font-size: 12px; }
+    .toolbar { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(150px, 210px) minmax(150px, 210px) auto auto; align-items: end; gap: 8px; padding: 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+    .field { display: grid; gap: 4px; color: var(--muted); font-size: 12px; font-weight: 700; }
+    .field input, .field select { width: 100%; color: var(--ink); font-size: 14px; font-weight: 450; }
+    .toggle { display: flex; align-items: center; gap: 8px; min-height: 42px; padding: 0 6px; white-space: nowrap; font-weight: 600; }
+    .toggle input { width: 18px; height: 18px; accent-color: var(--green); }
+    .refresh-state { margin: 8px 2px 0; color: var(--muted); font-size: 12px; }
+    .list-head { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin: 11px 1px 7px; }
+    .list-head h2 { margin: 0; font-size: 20px; }
+    .pagination { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; }
+    .pagination button { min-height: 36px; padding: 5px 11px; }
+    .pagination button:disabled { cursor: default; opacity: .45; }
+    .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 14px; }
+    .entry { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--card); box-shadow: var(--shadow); }
+    .entry-main { padding: 15px 16px 0; }
+    .entry-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .entry h3 { margin: 0; font-size: 18px; line-height: 1.25; }
+    .entry-loc { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    .status { flex: 0 0 auto; padding: 4px 9px; border-radius: 999px; background: #edf0ec; color: #4e5b52; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+    .status.agree { background: var(--green-soft); color: var(--green); }
+    .status.disagree { background: var(--red-soft); color: var(--red); }
+    .status.withheld { background: var(--amber-soft); color: var(--amber); }
+    .source-frame { display: flex; align-items: center; justify-content: center; min-height: 210px; max-height: 520px; margin: 13px -16px 0; overflow: hidden; background: #e9e6dd; }
+    .source-frame img { display: block; width: 100%; height: auto; max-height: 520px; object-fit: contain; }
+    .missing-photo { padding: 42px 20px; color: #59655e; text-align: center; }
+    .context-wrap { padding: 12px 0 0; }
+    .context-wrap[hidden] { display: none; }
+    .context-wrap img { display: block; width: 100%; max-height: 300px; object-fit: contain; background: #e9e6dd; }
+    .context-label { margin: 0 0 6px; color: var(--muted); font-size: 11px; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+    .assessment { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 14px 16px 15px; }
+    .assess-box { min-width: 0; padding: 11px 12px; border: 1px solid #e4e3da; border-radius: 10px; background: #fffefa; }
+    .assess-box h4 { margin: 0 0 7px; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .07em; }
+    .family { display: flex; align-items: center; gap: 8px; font-weight: 720; overflow-wrap: anywhere; }
+    .swatch { flex: 0 0 18px; width: 18px; height: 18px; border: 1px solid rgb(0 0 0 / 18%); border-radius: 5px; background: #b8b8ae; }
+    .family-sub { margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .proposal-label { color: #7b6945; font-size: 10px; font-weight: 750; letter-spacing: .055em; text-transform: uppercase; }
+    .reason { margin: 7px 0 0; color: #4e5b52; font-size: 12px; }
+    .provenance { margin: 0 16px; border-top: 1px solid #e8e6dd; }
+    .provenance summary { padding: 11px 0; cursor: pointer; color: var(--green); font-size: 13px; font-weight: 700; }
+    .provenance dl { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 5px 10px; margin: 0 0 14px; font-size: 12px; }
+    .provenance dt { color: var(--muted); }
+    .provenance dd { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+    .image-link { display: inline-block; margin: 0 16px 15px; font-size: 13px; font-weight: 650; }
+    .empty, .error { padding: 38px 20px; border: 1px dashed #b8bdb3; border-radius: 12px; background: var(--card); text-align: center; }
+    .error { border-color: #d3a29a; color: var(--red); }
+    .error button { margin-top: 10px; }
+    footer { margin: 30px 0 5px; color: var(--muted); font-size: 12px; }
+    footer a { margin-right: 12px; }
+    @media (max-width: 900px) {
+      .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .toolbar .search { grid-column: 1 / -1; }
+      .toolbar button { width: 100%; }
+      .cards { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .shell { padding: 11px 10px 24px; }
+      .masthead { display: block; }
+      .titleline { gap: 3px 10px; }
+      .header-links { justify-content: flex-start; margin-top: 7px; white-space: normal; font-size: 12px; }
+      .notice { margin-top: 8px; }
+      .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; }
+      .metric { min-height: 48px; padding: 5px 8px; }
+      .metric .value { font-size: 15px; }
+      .metric .label { font-size: 9px; }
+      .toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 8px; }
+      .toolbar .search { grid-column: 1 / -1; }
+      .toolbar .toggle { padding-left: 2px; }
+      .list-head { align-items: flex-start; flex-direction: column; }
+      .assessment { grid-template-columns: 1fr; }
+      .source-frame { min-height: 170px; }
+      .provenance dl { grid-template-columns: 105px minmax(0, 1fr); }
+      .section-label { align-items: flex-start; flex-direction: column; gap: 1px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div>
+        <div class="titleline"><p class="eyebrow">Canal Drive</p><h1>District wall materials</h1></div>
+        <p class="subhead">Street photographs and provisional classifier results for Da Costabuurt and Jordaan.</p>
+      </div>
+      <nav class="header-links" aria-label="Related pages">
+        <a href="material-demo.html">Material demo</a>
+        <a href="material-report.html">Previous visual review</a>
+        <a href="/data/district-materials/report.json">Evidence JSON</a>
+      </nav>
+    </header>
+
+    <aside class="notice"><strong>Diagnostic evidence only.</strong> Classifier swatches are illustrative. Photo colour is a measured source-image RGB cluster; it is not calibrated albedo, accepted wall colour, or the rendered game colour. Source identity remains unverified.</aside>
+
+    <section aria-labelledby="coverage-title">
+      <div class="section-label"><h2 id="coverage-title">Evidence coverage</h2><p>Owner and frontage processing</p></div>
+      <div id="coverageMetrics" class="metrics" aria-live="polite"></div>
+    </section>
+    <section aria-labelledby="model-title">
+      <div class="section-label"><h2 id="model-title">Classifier check</h2><p>Scored separately from source coverage</p></div>
+      <div id="modelMetrics" class="metrics"></div>
+      <p id="modelCaption" class="coverage-note"></p>
+    </section>
+
+    <div class="section-label"><h2>Source photographs</h2><p>Search and filter without changing evidence or review state.</p></div>
+    <section class="toolbar" aria-label="Filter source records">
+      <label class="field search">Search address, street or ID<input id="search" type="search" autocomplete="off" placeholder="Try an address or BAG ID"></label>
+      <label class="field">District<select id="district"><option value="">All districts</option></select></label>
+      <label class="field">Comparison<select id="status"><option value="">All states</option><option value="unreviewed">Unreviewed</option><option value="agree">Agree</option><option value="disagree">Disagree</option><option value="withheld">Withheld</option></select></label>
+      <label class="toggle"><input id="contextToggle" type="checkbox"> Show context photos</label>
+      <button id="refresh" type="button">Refresh now</button>
+    </section>
+    <p class="refresh-state" id="refreshState" aria-live="polite">Loading district evidence…</p>
+
+    <div class="list-head"><h2 id="listTitle">Frontage records</h2><div class="pagination"><button id="previous" type="button" aria-label="Previous page">Previous</button><span id="pageState">Page 1</span><button id="next" type="button" aria-label="Next page">Next</button></div></div>
+    <div id="cards" class="cards"></div>
+    <div id="empty" class="empty" hidden>No frontage records match these filters.</div>
+    <div id="loadError" class="error" hidden></div>
+
+    <details class="overview" id="overview">
+      <summary>Evidence overview · source positions, no basemap</summary>
+      <div class="overview-inner">
+        <svg id="plot" class="plot" viewBox="0 0 900 260" role="img" aria-label="Source frontage positions coloured by proposed colour family"></svg>
+        <p class="plot-caption">Dots use the reported RD coordinates. Colour indicates a model proposal when available, not a measured wall colour. Select a dot to find its record in the current filtered list.</p>
+      </div>
+    </details>
+
+    <footer>
+      <a href="material-report.html">Prior reviewed material trial</a>
+      <a href="/data/district-materials/report.json">Open report data</a>
+      <span id="updatedAt"></span>
+    </footer>
+  </main>
+
+  <script type="module">
+    const REPORT_URL = '/data/district-materials/report.json';
+    const PAGE_SIZE = 40;
+    const familySwatches = {
+      'red-brick': '#a45242', 'red brick': '#a45242', 'red': '#b95847',
+      'red-brown': '#8f5041', 'brown-brick': '#825e50', 'brown brick': '#825e50',
+      'brown': '#8b6655', 'dark-brick': '#554c47', 'dark brick': '#554c47',
+      'buff-brick': '#b58b5c', 'buff brick': '#b58b5c', 'buff': '#b58b5c',
+      'grey-brick': '#898984', 'gray-brick': '#898984', 'grey': '#92948e', 'gray': '#92948e',
+      'cream': '#d6c8ae', 'white': '#e6e1d4', 'pale': '#ded6c5', 'other': '#89958c',
+      'unknown': '#b9b9ad', 'unknown-neutral': '#b9b9ad'
+    };
+    const $ = selector => document.querySelector(selector);
+    const state = { report: null, page: 0, loading: false, error: '' };
+    const elements = {
+      search: $('#search'), district: $('#district'), status: $('#status'), context: $('#contextToggle'),
+      cards: $('#cards'), empty: $('#empty'), error: $('#loadError'), refreshState: $('#refreshState'),
+      coverage: $('#coverageMetrics'), model: $('#modelMetrics'), modelCaption: $('#modelCaption'),
+      listTitle: $('#listTitle'), pageState: $('#pageState'), previous: $('#previous'), next: $('#next'),
+      plot: $('#plot'), updated: $('#updatedAt')
+    };
+    const number = value => value != null && value !== '' && Number.isFinite(Number(value)) ? Number(value).toLocaleString() : '—';
+    const ratio = (a, b) => Number.isFinite(Number(a)) && Number(b) > 0 ? `${(100 * Number(a) / Number(b)).toFixed(1)}%` : '—';
+    const escAttr = value => String(value ?? '').replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+    const text = (node, value) => { node.textContent = value == null || value === '' ? '—' : String(value); };
+    const safeUrl = value => {
+      if (typeof value !== 'string') return '';
+      try { const url = new URL(value, location.href); return url.origin === location.origin && ['http:', 'https:'].includes(url.protocol) ? url.href : ''; }
+      catch { return ''; }
+    };
+    const familyColor = value => {
+      const key = String(value ?? 'unknown').toLowerCase();
+      if (familySwatches[key]) return familySwatches[key];
+      for (const [candidate, colour] of Object.entries(familySwatches)) if (key.includes(candidate)) return colour;
+      return '#a4a79d';
+    };
+    const photoHex = value => typeof value === 'string' && /^#[0-9a-fA-F]{6}$/.test(value) ? value : null;
+    const metric = (value, label, className = '') => `<div class="metric ${className}"><span class="value">${escAttr(value)}</span><span class="label">${escAttr(label)}</span></div>`;
+
+    function renderMetrics() {
+      const s = state.report?.summary;
+      if (!s) return;
+      elements.coverage.innerHTML = [
+        metric(number(s.districtOwners), 'District owners'),
+        metric(`${number(s.eligibleOwners)} · ${ratio(s.eligibleOwners, s.districtOwners)}`, 'Eligible owners'),
+        metric(number(s.eligibleFrontages), 'Eligible frontages'),
+        metric(number(s.noCandidateOwners), 'No panorama candidate'),
+        metric(number(s.rectifiedFrontages), 'Rectified'),
+        metric(`${number(s.pendingFrontages)} · ${number(s.omittedFrontages)}`, 'Pending · omitted')
+      ].join('');
+      const agreement = s.agreement == null ? '—' : typeof s.agreement === 'number' ? `${(s.agreement <= 1 ? s.agreement * 100 : s.agreement).toFixed(1)}%` : s.agreement;
+      const falseAcceptances = Number.isFinite(Number(s.falseAcceptances)) ? Number(s.falseAcceptances) : null;
+      elements.model.innerHTML = [
+        metric(number(s.classified), 'Classified proposals', 'model'),
+        metric(number(s.abstained), 'Model abstentions', 'model'),
+        metric(number(s.reviewed), 'Compared references', 'model'),
+        metric(agreement, `Material + colour match · n=${number(s.agreementDenominator)}`, 'model'),
+        metric(number(s.referenceAbstentions), 'Reference abstentions', 'model'),
+        metric(falseAcceptances == null ? '—' : number(falseAcceptances), 'False accepts · reviewed mismatch', `model${falseAcceptances > 0 ? ' danger' : ''}`)
+      ].join('');
+      elements.modelCaption.textContent = `Model: ${s.model || 'not reported'} · median ${s.speedMedianSeconds == null ? '—' : `${s.speedMedianSeconds}s`}/image. Photo RGB: ${number(s.measuredPhotoColours)} provisional, ${number(s.photoColoursNeedingReview)} need review, ${number(s.photoColoursWithheld)} withheld. Match rate is joint material and colour-family agreement among non-abstaining known references.`;
+    }
+
+    function statusLabel(status) {
+      return ({ agree: 'Agree', disagree: 'Disagree', withheld: 'Withheld', unreviewed: 'Unreviewed' })[status] || 'Unreviewed';
+    }
+    function isAbstained(entry) { return entry.classification?.abstain === true || entry.classification?.visibility === 'not-visible' || entry.classification?.visibility === 'unverifiable'; }
+    function filteredEntries() {
+      const entries = state.report?.entries || [];
+      const query = elements.search.value.trim().toLocaleLowerCase();
+      const district = elements.district.value;
+      const status = elements.status.value;
+      return entries.filter(entry => {
+        if (district && entry.district !== district) return false;
+        if (status && entry.comparison !== status) return false;
+        if (!query) return true;
+        return [entry.address, entry.street, entry.id, entry.buildingId, entry.elevationId, entry.district]
+          .some(value => String(value ?? '').toLocaleLowerCase().includes(query));
+      });
+    }
+    function proposalBox(classification) {
+      if (!classification) return '<div class="family-sub">No classifier output</div>';
+      const material = classification.materialFamily || 'Unknown material';
+      const colour = classification.colourFamily || 'Unknown colour';
+      const status = isAbstained({ classification }) ? ' · abstained' : '';
+      return `<div class="proposal-label">Model proposal · illustrative swatch</div><div class="family" style="margin-top:5px"><span class="swatch" style="background:${familyColor(colour)}"></span><span>${escAttr(material)}</span></div><div class="family-sub">${escAttr(colour)}${status}</div>`;
+    }
+    function referenceBox(reference) {
+      if (!reference) return '<div class="family-sub">No source reference recorded</div>';
+      const material = reference.materialFamily || 'Unknown material';
+      const colour = reference.colourFamily || 'Unknown colour';
+      return `<div class="family"><span class="swatch" style="background:${familyColor(colour)}"></span><span>${escAttr(material)}</span></div><div class="family-sub">${escAttr(colour)}${reference.visibility ? ` · ${escAttr(reference.visibility)}` : ''}</div>${reference.reason ? `<p class="reason">${escAttr(reference.reason)}</p>` : ''}`;
+    }
+    function photoColourBox(measurement) {
+      if (!measurement) return '<div class="family-sub">No verified local photo measurement yet</div>';
+      const colour = photoHex(measurement.photoHex);
+      const status = ({ 'measured-provisional': 'Provisional photo RGB', 'needs-review': 'Needs visual review', withheld: 'Withheld' })[measurement.status] || 'Unavailable';
+      const swatch = colour ? `<span class="swatch" style="background:${colour}"></span>` : '';
+      const fraction = Number.isFinite(measurement.upperBuildingFraction) ? ` · ${(measurement.upperBuildingFraction * 100).toFixed(1)}% upper mask` : '';
+      return `<div class="family">${swatch}<span>${colour ? escAttr(colour) : 'No colour estimate'}</span></div><div class="family-sub">${escAttr(status)}${fraction}</div>${measurement.reason ? `<p class="reason">${escAttr(measurement.reason)}</p>` : ''}`;
+    }
+    function card(entry, index) {
+      const photo = safeUrl(entry.photo);
+      const contextPhoto = safeUrl(entry.contextPhoto);
+      const classification = entry.classification;
+      const sourceDate = entry.sourceDate || 'Date unavailable';
+      const statusClass = ['agree', 'disagree', 'withheld'].includes(entry.comparison) ? entry.comparison : '';
+      const article = document.createElement('article');
+      article.className = 'entry';
+      article.dataset.entryId = entry.id;
+      article.id = `entry-${index}`;
+      const loc = [entry.street, entry.district].filter(Boolean).join(' · ');
+      const photoBlock = photo
+        ? `<a class="source-frame" href="${escAttr(photo)}" target="_blank" rel="noopener" aria-label="Open full source photograph for ${escAttr(entry.address || entry.id)}"><img src="${escAttr(photo)}" alt="Rectified source photograph for ${escAttr(entry.address || entry.id)}" loading="lazy"></a>`
+        : '<div class="source-frame"><div class="missing-photo">Source photograph unavailable in this report.</div></div>';
+      const contextBlock = contextPhoto
+        ? `<div class="context-wrap" data-context><p class="context-label">Street context</p><a href="${escAttr(contextPhoto)}" target="_blank" rel="noopener"><img src="${escAttr(contextPhoto)}" alt="Street context for ${escAttr(entry.address || entry.id)}" loading="lazy"></a></div>`
+        : '<div class="context-wrap" data-context><p class="context-label">No context photo recorded.</p></div>';
+      const sha = entry.sourceSha256 || 'Unavailable';
+      article.innerHTML = `
+        <div class="entry-main">
+          <div class="entry-top"><div><h3>${escAttr(entry.address || entry.id || 'Unknown frontage')}</h3><p class="entry-loc">${escAttr(loc || 'District not recorded')}</p></div><span class="status ${statusClass}">${statusLabel(entry.comparison)}</span></div>
+          ${photoBlock}${contextBlock}
+        </div>
+        <div class="assessment">
+          <section class="assess-box"><h4>Classifier output</h4>${proposalBox(classification)}</section>
+          <section class="assess-box"><h4>Source photo RGB · diagnostic</h4>${photoColourBox(entry.photoColour)}</section>
+          <section class="assess-box"><h4>Source reference</h4>${referenceBox(entry.reference)}</section>
+        </div>
+        <details class="provenance"><summary>Evidence provenance</summary><dl>
+          <dt>Record</dt><dd>${escAttr(entry.id || '—')}</dd>
+          <dt>Building / frontage</dt><dd>${escAttr(entry.buildingId || '—')} · ${escAttr(entry.elevationId || '—')}</dd>
+          <dt>Source date</dt><dd>${escAttr(sourceDate)}</dd>
+          <dt>Source profile</dt><dd>${escAttr(entry.sourceProfile || '—')}</dd>
+          <dt>Source SHA-256</dt><dd>${escAttr(sha)}</dd>
+          <dt>Model</dt><dd>${escAttr(classification?.model || state.report?.summary?.model || 'Not classified')}</dd>
+          <dt>Visibility</dt><dd>${escAttr(classification?.visibility || entry.reference?.visibility || 'Not recorded')}</dd>
+          <dt>Photo mask SHA-256</dt><dd>${escAttr(entry.photoColour?.maskSha256 || 'Not measured')}</dd>
+          <dt>Source position</dt><dd>${Array.isArray(entry.point) && entry.point.length >= 2 ? `${Number(entry.point[0]).toFixed(2)}, ${Number(entry.point[1]).toFixed(2)} RD` : 'Not recorded'}</dd>
+        </dl></details>
+        ${photo ? `<a class="image-link" href="${escAttr(photo)}" target="_blank" rel="noopener">Open source image at native size ↗</a>` : ''}`;
+      const toggleContext = () => { const wrap = article.querySelector('[data-context]'); if (wrap) wrap.hidden = !elements.context.checked; };
+      toggleContext();
+      const mainImg = article.querySelector('.source-frame img');
+      if (mainImg) mainImg.addEventListener('error', () => { mainImg.replaceWith(Object.assign(document.createElement('div'), { className: 'missing-photo', textContent: 'Source image could not be loaded.' })); });
+      return article;
+    }
+    function renderPlot() {
+      const entries = state.report?.entries || [];
+      const points = entries.filter(entry => Array.isArray(entry.point) && entry.point.length >= 2 && entry.point.every(value => Number.isFinite(Number(value))));
+      elements.plot.replaceChildren();
+      const ns = 'http://www.w3.org/2000/svg';
+      const rect = document.createElementNS(ns, 'rect'); rect.setAttribute('class', 'plot-bg'); rect.setAttribute('x', '1'); rect.setAttribute('y', '1'); rect.setAttribute('width', '898'); rect.setAttribute('height', '258'); rect.setAttribute('rx', '12'); elements.plot.append(rect);
+      if (!points.length) {
+        const label = document.createElementNS(ns, 'text'); label.setAttribute('x', '450'); label.setAttribute('y', '132'); label.setAttribute('text-anchor', 'middle'); label.setAttribute('fill', '#68756d'); label.textContent = 'No mapped source points are available.'; elements.plot.append(label); return;
+      }
+      const xs = points.map(e => Number(e.point[0])), ys = points.map(e => Number(e.point[1]));
+      const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+      const dx = Math.max(1, maxX - minX), dy = Math.max(1, maxY - minY);
+      points.forEach((entry, index) => {
+        const dot = document.createElementNS(ns, 'circle');
+        const x = 18 + (Number(entry.point[0]) - minX) / dx * 864;
+        const y = 18 + (1 - (Number(entry.point[1]) - minY) / dy) * 224;
+        dot.setAttribute('cx', String(x)); dot.setAttribute('cy', String(y)); dot.setAttribute('r', '4');
+        dot.setAttribute('class', 'plot-dot'); dot.setAttribute('fill', familyColor(entry.classification?.colourFamily));
+        dot.setAttribute('tabindex', '0'); dot.setAttribute('role', 'button');
+        dot.setAttribute('aria-label', `${entry.address || entry.id}: ${entry.classification?.colourFamily || 'no colour proposal'}`);
+        dot.dataset.id = entry.id || '';
+        dot.addEventListener('click', () => focusEntry(entry.id));
+        dot.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); focusEntry(entry.id); } });
+        elements.plot.append(dot);
+      });
+    }
+    function focusEntry(id) {
+      if (!id) return;
+      elements.search.value = id;
+      elements.district.value = '';
+      elements.status.value = '';
+      state.page = 0;
+      renderCards();
+      requestAnimationFrame(() => document.querySelector('.entry')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    }
+    function renderCards() {
+      const matches = filteredEntries();
+      const pages = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
+      state.page = Math.min(state.page, pages - 1);
+      const from = state.page * PAGE_SIZE;
+      const pageEntries = matches.slice(from, from + PAGE_SIZE);
+      elements.cards.replaceChildren(...pageEntries.map((entry, i) => card(entry, from + i)));
+      elements.empty.hidden = matches.length !== 0;
+      elements.listTitle.textContent = `${number(matches.length)} frontage ${matches.length === 1 ? 'record' : 'records'}`;
+      elements.pageState.textContent = `Page ${state.page + 1} of ${pages}`;
+      elements.previous.disabled = state.page <= 0;
+      elements.next.disabled = state.page >= pages - 1;
+      elements.error.hidden = true;
+    }
+    function fillDistrictOptions() {
+      const current = elements.district.value;
+      const values = [...new Set((state.report?.entries || []).map(entry => entry.district).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+      elements.district.replaceChildren(new Option('All districts', ''), ...values.map(value => new Option(value, value)));
+      if (values.includes(current)) elements.district.value = current;
+    }
+    function render() {
+      if (!state.report) return;
+      renderMetrics(); fillDistrictOptions(); renderCards(); renderPlot();
+      const date = state.report.generatedAt ? new Date(state.report.generatedAt) : null;
+      elements.updated.textContent = date && !Number.isNaN(date.valueOf()) ? `Report generated ${date.toLocaleString()}.` : 'Report generation time unavailable.';
+      elements.refreshState.textContent = `${number(state.report.entries?.length || 0)} source records · refreshes every 60 seconds · ${state.loading ? 'updating…' : 'up to date'}`;
+    }
+    async function loadReport() {
+      if (state.loading) return;
+      state.loading = true;
+      elements.refreshState.textContent = 'Refreshing district evidence…';
+      try {
+        const response = await fetch(REPORT_URL, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`Evidence report returned HTTP ${response.status}.`);
+        const report = await response.json();
+        if (!report || !report.summary || !Array.isArray(report.entries)) throw new Error('Evidence report has an unexpected format.');
+        state.report = report; state.error = '';
+        render();
+      } catch (error) {
+        state.error = error instanceof Error ? error.message : String(error);
+        elements.error.hidden = false;
+        elements.error.replaceChildren();
+        const message = document.createElement('p'); message.textContent = `District evidence is unavailable: ${state.error}`;
+        const retry = document.createElement('button'); retry.type = 'button'; retry.textContent = 'Try again'; retry.addEventListener('click', loadReport);
+        elements.error.append(message, retry);
+        elements.refreshState.textContent = 'Could not refresh source evidence.';
+        if (!state.report) { elements.cards.replaceChildren(); elements.empty.hidden = true; }
+      } finally { state.loading = false; }
+    }
+    elements.search.addEventListener('input', () => { state.page = 0; renderCards(); });
+    elements.district.addEventListener('change', () => { state.page = 0; renderCards(); });
+    elements.status.addEventListener('change', () => { state.page = 0; renderCards(); });
+    elements.context.addEventListener('change', () => document.querySelectorAll('[data-context]').forEach(node => { node.hidden = !elements.context.checked; }));
+    elements.previous.addEventListener('click', () => { state.page--; renderCards(); });
+    elements.next.addEventListener('click', () => { state.page++; renderCards(); });
+    $('#refresh').addEventListener('click', loadReport);
+    loadReport();
+    window.setInterval(loadReport, 60_000);
+  </script>
+</body>
+</html>

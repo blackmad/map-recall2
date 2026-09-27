@@ -3,7 +3,7 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { DEFAULT_AREA, selectPanoramaAudit, selectPanoramaCoverage } from './select-panorama-audit.mjs';
+import { DEFAULT_AREA, selectPanoramaFromArgs } from './select-panorama-audit.mjs';
 import { auditEvidence } from './materialize-panorama-audit.mjs';
 import { loadAreaConfig } from '../da-costa-block/area-config.mjs';
 import { atomicJson, digest } from '../da-costa-block/pipeline-state.mjs';
@@ -18,13 +18,9 @@ const partial = new Map([
 const flag = name => process.argv.find(value => value.startsWith(`--${name}=`))?.slice(name.length + 3);
 const area = await loadAreaConfig([`--area-config=${path.resolve(flag('area-config') ?? DEFAULT_AREA)}`]);
 const mode = flag('mode') ?? 'audit';
-if (!['audit', 'coverage'].includes(mode)) throw Error('Mode must be audit or coverage');
 const automated = process.argv.includes('--automated');
-const streets = flag('streets')?.split(',').map(value => value.trim()).filter(Boolean);
-const cap = Number(flag('cap') ?? (mode === 'coverage' ? 1000 : 24));
-const selected = mode === 'coverage'
-  ? await selectPanoramaCoverage(area, { streets, cap, includeBaseline:process.argv.includes('--include-baseline') })
-  : await selectPanoramaAudit(area, { cap });
+if (mode === 'district-coverage' && !automated) throw Error('District coverage preflight must be explicitly automated and unreviewed');
+const selected = await selectPanoramaFromArgs(area, process.argv.slice(2));
 const evidence = path.join(selected.destination, 'evidence');
 const byteAudit = await auditEvidence(selected.report, evidence), manifestBytes = await fs.readFile(path.join(evidence, 'manifest.json')), manifest = JSON.parse(manifestBytes);
 const assessments = manifest.records.map(record => {

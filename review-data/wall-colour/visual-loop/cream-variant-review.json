@@ -1,0 +1,621 @@
+{
+  "version": 1,
+  "scope": "directional palette comparison only; no exact colour, texture or default-game acceptance",
+  "experimentManifestSha256": "59632666e3172f7d7f117fab957c661cd1837cbac47a06fb8a2eb87157ee5a8a",
+  "experimentManifest": ".cache/wall-material-demo/cream-variants/manifest.json",
+  "reviewers": [
+    "gpt-6-sol",
+    "gpt-5.6-terra"
+  ],
+  "finding17": "Candidate improves lightness and reduces tan/brown cast in both isolated angles; source remains a little cooler/greener.",
+  "control11": "Pale candidate makes deeper ochre source too pale; retain warmer cream.",
+  "verdict": "improved-direction-only",
+  "candidate": "#ece8c8",
+  "lightIntensity": 0.18,
+  "evidence": {
+    "version": 1,
+    "scope": "reversible browser-only shared pale-yellow creamrender candidate; not accepted material or colour evidence",
+    "candidate": "#ece8c8",
+    "records": [
+      {
+        "index": 11,
+        "buildingId": "0363100012127485",
+        "observationId": "0363100012127485_e_1w0ttzw",
+        "sourceFile": "/data/city-expansion/evidence/9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30.jpg",
+        "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+        "candidateSpriteBase": "#ece8c8",
+        "baseSpriteBase": "#dfd2b6",
+        "spriteRatio": 32,
+        "light": {
+          "anchor": "map",
+          "color": "#ffffff",
+          "intensity": 0.18,
+          "position": [
+            1.25,
+            210,
+            42
+          ]
+        },
+        "cameras": [
+          {
+            "angle": "front",
+            "view": {
+              "center": [
+                4.871337360855746,
+                52.37288001247842
+              ],
+              "zoom": 19.35,
+              "pitch": 55,
+              "bearing": 292.33484575909984
+            },
+            "visiblePixels": 8521,
+            "baselineMedian": [
+              197,
+              185,
+              160
+            ],
+            "candidateMedian": [
+              208,
+              204,
+              176
+            ],
+            "images": {
+              "011-front-base.png": "899e93f855d552c82589d61771bdeb2dff12b3ca5c4bfaf67cd065ff3dd4310c",
+              "011-front-pale-yellow.png": "0f203fc257bd76b846ae35703a809f2f9dd3aa458466addfddf848ff5a52620e",
+              "011-front-identity.png": "ec35efc055c72cc31803d80f7b0879088100ec1908f936753afa7173435596cb"
+            }
+          },
+          {
+            "angle": "oblique",
+            "view": {
+              "center": [
+                4.871337360855746,
+                52.37288001247842
+              ],
+              "zoom": 19.1,
+              "pitch": 55,
+              "bearing": 322.33484575909984
+            },
+            "visiblePixels": 10135,
+            "baselineMedian": [
+              200,
+              189,
+              164
+            ],
+            "candidateMedian": [
+              212,
+              209,
+              180
+            ],
+            "images": {
+              "011-oblique-base.png": "833596294cf9cbab8e82fd49245fc5507333bc8cbedb3aab6e93e987492fe7a1",
+              "011-oblique-pale-yellow.png": "581b076df18e4edb021a17d6046d0fb772d2cd009856068f7075ce30a931ebaa",
+              "011-oblique-identity.png": "86995ee9561336f3464a6212189eeeb3e852683aaf84f75fa3dda205c9028e45"
+            }
+          }
+        ]
+      },
+      {
+        "index": 17,
+        "buildingId": "0363100012094649",
+        "observationId": "0363100012094649_e_16jqzp7",
+        "sourceFile": "/data/city-expansion/evidence/a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee.jpg",
+        "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+        "candidateSpriteBase": "#ece8c8",
+        "baseSpriteBase": "#dfd2b6",
+        "spriteRatio": 32,
+        "light": {
+          "anchor": "map",
+          "color": "#ffffff",
+          "intensity": 0.18,
+          "position": [
+            1.25,
+            210,
+            42
+          ]
+        },
+        "cameras": [
+          {
+            "angle": "front",
+            "view": {
+              "center": [
+                4.8711026357183655,
+                52.373374123163586
+              ],
+              "zoom": 19.35,
+              "pitch": 55,
+              "bearing": 113.85989765336649
+            },
+            "visiblePixels": 37374,
+            "baselineMedian": [
+              187,
+              176,
+              152
+            ],
+            "candidateMedian": [
+              198,
+              194,
+              167
+            ],
+            "images": {
+              "017-front-base.png": "b5761982d9e1bdfc5cfbb03d969af5b800ecea507583ef28cdc46e72d50a0eb3",
+              "017-front-pale-yellow.png": "37961e9890725a5b177a7e88ed89d3a60cbc55784d56480d18dee6773dd5fb2b",
+              "017-front-identity.png": "727d3c4dd5e0983fc948b9f1f38e5cd3c66b225b68229f3da2d4dedafbe5005f"
+            }
+          },
+          {
+            "angle": "oblique",
+            "view": {
+              "center": [
+                4.8711026357183655,
+                52.373374123163586
+              ],
+              "zoom": 19.1,
+              "pitch": 55,
+              "bearing": 143.8598976533665
+            },
+            "visiblePixels": 22424,
+            "baselineMedian": [
+              187,
+              176,
+              152
+            ],
+            "candidateMedian": [
+              198,
+              194,
+              167
+            ],
+            "images": {
+              "017-oblique-base.png": "d913ed0b745b8a96d2e530a1309b2dde1f624eb137c7db530edf6b8fe709baad",
+              "017-oblique-pale-yellow.png": "89424127dd1ad5083a2cb7df73831eb37a6e2578f0fa9748978b7b6066570109",
+              "017-oblique-identity.png": "970213e71805d459223861a7b696dd8a361497c42fc07739de613715e8dd91e7"
+            }
+          }
+        ]
+      }
+    ],
+    "createdAt": "2026-09-26T19:04:27.897Z",
+    "reproductionScript": {
+      "path": "/tmp/cream-variant-compare.mjs",
+      "sha256": "b36c6b5e319f823d5798e5511d4a23623c89f39923d6dfd2dc6d0bb1a5f15781"
+    },
+    "pairedImages": {
+      "011": {
+        "file": "011-paired.png",
+        "sha256": "4a95d9887e5c318ebab0b44f85c805e19a6be5e22ac44c0a737c800025eaef8b"
+      },
+      "017": {
+        "file": "017-paired.png",
+        "sha256": "514fa4ed71cfe6cee9b8b037c40cc97ff2b07450be47a39b02f70c0a25cc37cb"
+      }
+    }
+  },
+  "pipelineConfirmation": [
+    {
+      "run": "pass-5-isolated",
+      "manifestSha256": "ad2496b71b388f0a299b19a2105af6acc0188073d4b6f4a6432b3a09254e6bb6",
+      "measurements": [
+        {
+          "index": 11,
+          "buildingId": "0363100012127485",
+          "angle": "front",
+          "isolated": true,
+          "identitySha256": "ec35efc055c72cc31803d80f7b0879088100ec1908f936753afa7173435596cb",
+          "normalSha256": "74b5457b35a5e8f36e5263fedd0d63c344a88952a49e45a1ab79ed9260c81c61",
+          "visibleWallPixels": 53345,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 425,
+            "top": 216,
+            "width": 280,
+            "height": 229
+          },
+          "medianGameRGB": [
+            183,
+            172,
+            149
+          ],
+          "percentile10RGB": [
+            182,
+            172,
+            149
+          ],
+          "percentile90RGB": [
+            195,
+            183,
+            159
+          ],
+          "focusedFile": "011-focused-front.png",
+          "focusedSha256": "50d55a47a43911696968283997d7515f17f8b2868290b2869e0393ea11bf61d9"
+        },
+        {
+          "index": 11,
+          "buildingId": "0363100012127485",
+          "angle": "oblique",
+          "isolated": true,
+          "identitySha256": "82487c81412ced1100fc7c2e670abe82f767441e2e562455a6ce0db71be2c17a",
+          "normalSha256": "32dcdc91ca6c4bdb1b672fc81d6308b71824cae2ec09c621937a09c98aea647e",
+          "visibleWallPixels": 37191,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 440,
+            "top": 257,
+            "width": 232,
+            "height": 216
+          },
+          "medianGameRGB": [
+            183,
+            173,
+            150
+          ],
+          "percentile10RGB": [
+            182,
+            172,
+            149
+          ],
+          "percentile90RGB": [
+            202,
+            191,
+            165
+          ],
+          "focusedFile": "011-focused-oblique.png",
+          "focusedSha256": "c10e20222362936733aff646120c1b042b36d934d15c7327a5d84114eda0db14"
+        },
+        {
+          "index": 17,
+          "buildingId": "0363100012094649",
+          "angle": "front",
+          "isolated": true,
+          "identitySha256": "32a404cf931bb663fb9489a49860500517e7455c5a26a9eaa539a386e21d0930",
+          "normalSha256": "d5df1007af3da366d70a518282e47ea0ce3f5422295698a085394c5462fa0552",
+          "visibleWallPixels": 37371,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 480,
+            "top": 267,
+            "width": 222,
+            "height": 177
+          },
+          "medianGameRGB": [
+            187,
+            176,
+            152
+          ],
+          "percentile10RGB": [
+            186,
+            175,
+            152
+          ],
+          "percentile90RGB": [
+            187,
+            177,
+            153
+          ],
+          "focusedFile": "017-focused-front.png",
+          "focusedSha256": "0b7160b3203cf38b70be195c9e996f23390c6191b6a3f2e690c18c653fa8acc9"
+        },
+        {
+          "index": 17,
+          "buildingId": "0363100012094649",
+          "angle": "oblique",
+          "isolated": true,
+          "identitySha256": "d60056089bad8a7f96e31da880d9ca9b5d91edad34d4e98e996c3697dbbf8810",
+          "normalSha256": "1634dda3b012dd0f82c22955969ae61566e46d561b71cb822e59570452d6de1c",
+          "visibleWallPixels": 29904,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 454,
+            "top": 250,
+            "width": 215,
+            "height": 220
+          },
+          "medianGameRGB": [
+            187,
+            176,
+            152
+          ],
+          "percentile10RGB": [
+            183,
+            172,
+            149
+          ],
+          "percentile90RGB": [
+            187,
+            176,
+            153
+          ],
+          "focusedFile": "017-focused-oblique.png",
+          "focusedSha256": "21ebdd5a1334ec5b29ed4384cde600719932fdb8c57e2b52afc5cb4212a2e132"
+        }
+      ]
+    },
+    {
+      "run": "pass-6-isolated",
+      "manifestSha256": "534cf93a9f03ed3b8cb604283b07cbaa2ea9cab4bf22fb9d82db4a36f663b477",
+      "measurements": [
+        {
+          "index": 11,
+          "buildingId": "0363100012127485",
+          "angle": "front",
+          "isolated": true,
+          "identitySha256": "ec35efc055c72cc31803d80f7b0879088100ec1908f936753afa7173435596cb",
+          "normalSha256": "74b5457b35a5e8f36e5263fedd0d63c344a88952a49e45a1ab79ed9260c81c61",
+          "visibleWallPixels": 53345,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 425,
+            "top": 216,
+            "width": 280,
+            "height": 229
+          },
+          "medianGameRGB": [
+            183,
+            172,
+            149
+          ],
+          "percentile10RGB": [
+            182,
+            172,
+            149
+          ],
+          "percentile90RGB": [
+            195,
+            183,
+            159
+          ],
+          "focusedFile": "011-focused-front.png",
+          "focusedSha256": "50d55a47a43911696968283997d7515f17f8b2868290b2869e0393ea11bf61d9"
+        },
+        {
+          "index": 11,
+          "buildingId": "0363100012127485",
+          "angle": "oblique",
+          "isolated": true,
+          "identitySha256": "90a86bb2579d4d3d5ee83f0318e75c73893cbbce342000c6fcbbd8c9f9f33526",
+          "normalSha256": "32dcdc91ca6c4bdb1b672fc81d6308b71824cae2ec09c621937a09c98aea647e",
+          "visibleWallPixels": 37191,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 440,
+            "top": 257,
+            "width": 232,
+            "height": 216
+          },
+          "medianGameRGB": [
+            183,
+            173,
+            150
+          ],
+          "percentile10RGB": [
+            182,
+            172,
+            149
+          ],
+          "percentile90RGB": [
+            202,
+            191,
+            165
+          ],
+          "focusedFile": "011-focused-oblique.png",
+          "focusedSha256": "c10e20222362936733aff646120c1b042b36d934d15c7327a5d84114eda0db14"
+        },
+        {
+          "index": 17,
+          "buildingId": "0363100012094649",
+          "angle": "front",
+          "isolated": true,
+          "identitySha256": "32a404cf931bb663fb9489a49860500517e7455c5a26a9eaa539a386e21d0930",
+          "normalSha256": "defc8198578f1bc009688671d5a170ac3ec363056bfa93bc2a0c9c3a0f71cd0e",
+          "visibleWallPixels": 37371,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 480,
+            "top": 267,
+            "width": 222,
+            "height": 177
+          },
+          "medianGameRGB": [
+            198,
+            194,
+            167
+          ],
+          "percentile10RGB": [
+            197,
+            194,
+            167
+          ],
+          "percentile90RGB": [
+            198,
+            195,
+            168
+          ],
+          "focusedFile": "017-focused-front.png",
+          "focusedSha256": "1ab8e2b4b034581aff29a920eabe8fabcdb4db32a52088d94acd408f905bc989"
+        },
+        {
+          "index": 17,
+          "buildingId": "0363100012094649",
+          "angle": "oblique",
+          "isolated": true,
+          "identitySha256": "d60056089bad8a7f96e31da880d9ca9b5d91edad34d4e98e996c3697dbbf8810",
+          "normalSha256": "6ea5e7ed3d6f3784cffb9a56ccd20b45f2b75994f318534aef2ebe263ca3df59",
+          "visibleWallPixels": 29904,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 454,
+            "top": 250,
+            "width": 215,
+            "height": 220
+          },
+          "medianGameRGB": [
+            197,
+            194,
+            167
+          ],
+          "percentile10RGB": [
+            193,
+            190,
+            164
+          ],
+          "percentile90RGB": [
+            198,
+            195,
+            168
+          ],
+          "focusedFile": "017-focused-oblique.png",
+          "focusedSha256": "ccc69d40b2967f4baee835cc10ce95c6c7c4fd1ce75537d4cad096ef2509406e"
+        }
+      ]
+    },
+    {
+      "run": "pass-6-context",
+      "manifestSha256": "bdfcae5daff7ff077fb21b91b9aa7e8649443f67c9bf872eac9c2ce1a6223916",
+      "measurements": [
+        {
+          "index": 11,
+          "buildingId": "0363100012127485",
+          "angle": "front",
+          "isolated": false,
+          "identitySha256": "2a1179bace54a92b2e6fd450fa32d5dcdc7065d239a2914df35608b7ed6a34c7",
+          "normalSha256": "17a3fd6d79d88619b243b7e3566026b3c65fbe08af191f9e09c04bd4a15e0fdf",
+          "visibleWallPixels": 40745,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 425,
+            "top": 216,
+            "width": 280,
+            "height": 229
+          },
+          "medianGameRGB": [
+            183,
+            172,
+            149
+          ],
+          "percentile10RGB": [
+            182,
+            172,
+            149
+          ],
+          "percentile90RGB": [
+            196,
+            184,
+            160
+          ],
+          "focusedFile": "011-focused-front.png",
+          "focusedSha256": "92a55a599e3160ce6359a05eb230173346c126523f5510b60b5e44770857e188"
+        },
+        {
+          "index": 11,
+          "buildingId": "0363100012127485",
+          "angle": "oblique",
+          "isolated": false,
+          "identitySha256": "fb793252ce915983edd82beb8acc361f5a6eedd30be033f82109bcf1b5c92095",
+          "normalSha256": "5fc845d521c164bcd238b4588c12d8cd6f029a788451bc9b435afe083adad6c7",
+          "visibleWallPixels": 37152,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 440,
+            "top": 257,
+            "width": 232,
+            "height": 215
+          },
+          "medianGameRGB": [
+            183,
+            172,
+            149
+          ],
+          "percentile10RGB": [
+            100,
+            104,
+            95
+          ],
+          "percentile90RGB": [
+            201,
+            189,
+            164
+          ],
+          "focusedFile": "011-focused-oblique.png",
+          "focusedSha256": "5ab354f9e5ccdb7b2938c951875f5a17c8f8d0fe2ef2f5e35b02df6792272b84"
+        },
+        {
+          "index": 17,
+          "buildingId": "0363100012094649",
+          "angle": "front",
+          "isolated": false,
+          "identitySha256": "b412fda0063f02295ecc2cd3755bbd83b7dce2a907caa4e154728a771e48edbf",
+          "normalSha256": "fa94037eab898ce20edd9521674954fd7785e6420658c173ca8c0285649d20a1",
+          "visibleWallPixels": 7809,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 480,
+            "top": 268,
+            "width": 218,
+            "height": 99
+          },
+          "medianGameRGB": [
+            198,
+            194,
+            167
+          ],
+          "percentile10RGB": [
+            197,
+            194,
+            167
+          ],
+          "percentile90RGB": [
+            198,
+            195,
+            168
+          ],
+          "focusedFile": "017-focused-front.png",
+          "focusedSha256": "72ee5ccc1075bbd8ad3c0d61c8f3b4e2e49647f55d9d0b1e79ff95a5622139fd"
+        },
+        {
+          "index": 17,
+          "buildingId": "0363100012094649",
+          "angle": "oblique",
+          "isolated": false,
+          "identitySha256": "b5ced46bb70d535a9129054e7e5c982d6cca77003dfbb3a1e28eb7dcb48c72b1",
+          "normalSha256": "bdd6893c1070ed2a6cc42e6af30fa48c5d1d6a8268b90389004359a5d71114c5",
+          "visibleWallPixels": 10194,
+          "policy": "Identity-bound crop with original screenshot RGB; contextual occluders can remain within bounds. Isolated views hide context, not alter material or light. Diagnostic only, never automatic acceptance.",
+          "status": "measured",
+          "bounds": {
+            "left": 454,
+            "top": 250,
+            "width": 212,
+            "height": 168
+          },
+          "medianGameRGB": [
+            198,
+            194,
+            167
+          ],
+          "percentile10RGB": [
+            197,
+            194,
+            167
+          ],
+          "percentile90RGB": [
+            198,
+            195,
+            168
+          ],
+          "focusedFile": "017-focused-oblique.png",
+          "focusedSha256": "4bbcfcb7131f7fe90d0e1833327e1e54d212c04d4b99547a14a521f74f58c443"
+        }
+      ]
+    }
+  ]
+}

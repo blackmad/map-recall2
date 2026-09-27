@@ -7,7 +7,7 @@ export type WallPatternKind = 'brick-courses' | 'stone-blocks' | 'smooth';
 export type WallMaterialId =
   | 'redbrick' | 'brownbrick' | 'darkbrick' | 'buffbrick' | 'greybrick'
   | 'paintedcreambrick' | 'paintedwhitebrick' | 'creamrender' | 'whiterender'
-  | 'greystone' | 'concrete' | 'unknownneutral';
+  | 'palecreamrender' | 'greystone' | 'concrete' | 'unknownneutral';
 
 export interface WallMaterialPreset {
   id: WallMaterialId;
@@ -35,6 +35,7 @@ export const WALL_MATERIALS: readonly WallMaterialPreset[] = Object.freeze([
   brick('paintedcreambrick', 'Cream painted brick', 'painted-brick', '#c9bea5', '#c3bba9', 127),
   brick('paintedwhitebrick', 'White painted brick', 'painted-brick', '#d9d8ce', '#d0d0ca', 131),
   smooth('creamrender', 'Cream render', 'render', '#dfd2b6', 137),
+  smooth('palecreamrender', 'Pale yellow cream render', 'render', '#ece8c8', 137),
   smooth('whiterender', 'White render', 'render', '#dbd9ce', 139),
   { id: 'greystone', label:'Grey stone', materialFamily: 'stone', baseColour: '#99968e', mortarColour: '#89877f', courseWidthM: .48, courseHeightM: .24, patternKind: 'stone-blocks', seed: 149 },
   smooth('concrete', 'Concrete', 'concrete', '#aaa9a2', 151),

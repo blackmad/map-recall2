@@ -3,6 +3,8 @@
 Updated 2026-09-26. Owner asks for a demo or accurate updated plan by morning;
 no routine owner visual-review gate. Scope is wall colour and material appearance.
 
+City-wide follow-up: [rollout plan and measured coverage](citywide-wall-colour-texture-rollout.md).
+
 ## Result of this batch
 
 A working opt-in demo is at `/canal-drive/material-demo.html`; the checked
@@ -12,7 +14,7 @@ server on port 5195 serves both. No default game appearance was changed.
 - All 100 owners have source-bound colour/material assessments across 12 streets.
   Eleven source material assignments remain unknown. This is not 100 accurate
   rendered matches.
-- Twelve reusable procedural presets, a fixed block gallery and neutral diffuse
+- Thirteen reusable procedural presets (including a pale-cream colour variant), a fixed block gallery and neutral diffuse
   lighting are implemented. The actual-game trial contains nine material
   substitutions and one deliberately withheld unknown among ten reviewed cases.
 - Independent identity-bound visual review accepts **six broad material families**:
@@ -123,3 +125,23 @@ windows, geometry reconstruction and new image collection are out of scope.
   when integrating a new reviewed iteration, preserving earlier verdicts.
 - `PW_PORT=4392 npx playwright test tests/e2e/wall-material-demo.spec.ts` checks
   demo isolation, exclusive wall rendering, switching and the local evidence page.
+
+
+## Follow-up: the dark cream wall
+
+See [colour diagnosis](wall-material-colour-diagnosis.md). The live demo now has
+an **Isolate selected owner** control and source-bound pale-cream colour trial
+for entry 17. Isolation preserves the camera and lighting, hides neighbouring
+extrusions and study details, survives panning, and restores normal residency.
+Unresolved/non-trial owners remain excluded from experimental geometry.
+
+Capture `--isolated=true` writes a separate diagnostic run; both angles receive
+identity masks and focused RGB statistics. Ordinary contextual evidence remains
+separate. The saved ten-case report still reflects its original reviewed runs;
+its link identifies the newer live colour trial without silently replacing history.
+
+The pale-cream variant improves hue/brightness direction for entry 17 under the
+same shared lighting. Entry 11 retains the warmer cream variant. Both independent
+reviews support this direction, not exact colour or texture acceptance. Remaining
+work is stricter source-region colour evaluation and texture scale/stability before
+expansion to the other 90 owners.
