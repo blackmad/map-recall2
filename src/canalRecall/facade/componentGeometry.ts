@@ -285,3 +285,170 @@ export function applyFacadeComponents(sourceMeshes: readonly MeshData[], feature
   stats.inserted = output.length - sourceMeshes.length;
   return {meshes: output, stats};
 }
+
+export interface EntranceAssembly {
+  id: string;
+  /** Convex visible opening outline in normalized source-image coordinates (y down). */
+  outline: readonly Vec2[];
+  /** Distance of the opaque door panel behind the original wall plane, in metres. */
+  depth?: number;
+  wallColour?: string;
+  revealColour?: string;
+  doorColour?: string;
+  frameColour?: string;
+  transomColour?: string;
+}
+
+export interface EntranceAssemblyStats {
+  accepted: boolean;
+  reason?: string;
+  cutAreaUv: number;
+  focus?: {center: Vec3; outward: Vec3; widthM: number; heightM: number};
+}
+
+const uvCross = (a: Vec2, b: Vec2, p: Vec2) =>
+  (b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]);
+
+function uvArea(poly: readonly Vec2[]): number {
+  let sum = 0;
+  for (let i = 0; i < poly.length; i++) {
+    const a = poly[i], b = poly[(i + 1) % poly.length];
+    sum += a[0] * b[1] - a[1] * b[0];
+  }
+  return sum / 2;
+}
+
+function entranceOutline(input: readonly Vec2[]): Vec2[] | null {
+  const points: Vec2[] = input.map(([x, y]) => [x, 1 - y]);
+  if (points.length > 3 && Math.hypot(points[0][0] - points.at(-1)![0], points[0][1] - points.at(-1)![1]) < EPS) points.pop();
+  if (points.length < 3 || points.length > 32 || points.some(p => p.length !== 2 || p.some(v => !Number.isFinite(v) || v < 0 || v > 1))) return null;
+  const area = uvArea(points);
+  if (Math.abs(area) < 1e-5) return null;
+  if (area < 0) points.reverse();
+  for (let i = 0; i < points.length; i++) {
+    const a = points[i], b = points[(i + 1) % points.length], c = points[(i + 2) % points.length];
+    if (uvCross(a, b, c) < -EPS || Math.hypot(b[0] - a[0], b[1] - a[1]) < EPS) return null;
+  }
+  return points;
+}
+
+function clipEdge(poly: readonly V[], a: Vec2, b: Vec2, keepInside: boolean): V[] {
+  const signed = (v: V) => uvCross(a, b, v.uv);
+  const result: V[] = [];
+  for (let i = 0; i < poly.length; i++) {
+    const start = poly[i], end = poly[(i + 1) % poly.length];
+    const sa = signed(start), sb = signed(end);
+    const startIn = keepInside ? sa >= -EPS : sa <= EPS;
+    const endIn = keepInside ? sb >= -EPS : sb <= EPS;
+    if (startIn) result.push(start);
+    if (startIn !== endIn && Math.abs(sa - sb) > EPS) result.push(lerpV(start, end, sa / (sa - sb)));
+  }
+  return result;
+}
+
+function cutConvex(poly: readonly V[], outline: readonly Vec2[]): {outside: V[][]; inside: V[]} {
+  let inside = [...poly];
+  const outside: V[][] = [];
+  for (let i = 0; i < outline.length; i++) {
+    const a = outline[i], b = outline[(i + 1) % outline.length];
+    const fragment = clipEdge(inside, a, b, false);
+    if (fragment.length >= 3 && Math.abs(signedArea(fragment)) > EPS) outside.push(fragment);
+    inside = clipEdge(inside, a, b, true);
+    if (inside.length < 3) break;
+  }
+  return {outside, inside: inside.length >= 3 && Math.abs(signedArea(inside)) > EPS ? inside : []};
+}
+
+function horizontalSpan(outline: readonly Vec2[], y: number): readonly [number, number] | null {
+  const intersections: number[] = [];
+  for (let i = 0; i < outline.length; i++) {
+    const a = outline[i], b = outline[(i + 1) % outline.length];
+    if ((a[1] <= y && b[1] > y) || (b[1] <= y && a[1] > y)) intersections.push(lerp(a[0], b[0], (y - a[1]) / (b[1] - a[1])));
+  }
+  if (intersections.length !== 2) return null;
+  return [Math.min(...intersections), Math.max(...intersections)];
+}
+
+/** Replace only a reviewed convex entrance outline with a solid recessed door assembly. */
+export function applyEntranceAssembly(sourceMeshes: readonly MeshData[], entrance: EntranceAssembly): {meshes: MeshData[]; stats: EntranceAssemblyStats} {
+  const reject = (reason: string) => ({meshes: [...sourceMeshes], stats: {accepted: false, reason, cutAreaUv: 0}});
+  const outline = entranceOutline(entrance.outline);
+  const depth = entrance.depth ?? 0.65;
+  if (!entrance.id || !outline || !Number.isFinite(depth) || depth < 0.1 || depth > 1.5) return reject('invalid-outline-or-depth');
+  const sourceTriangles = sourceMeshes.filter(mesh => mesh.kind === 'wall' && mesh.textured).flatMap(triangles);
+  const expectedArea = uvArea(outline);
+  const mapped = outline.map(uv => atUv(sourceTriangles, uv));
+  const cutArea = sourceTriangles.reduce((sum, tri) => sum + Math.abs(signedArea(cutConvex(tri, outline).inside)), 0);
+  if (mapped.some(value => !value) || cutArea < expectedArea * 0.98 || cutArea > expectedArea * 1.02) return reject('outside-or-ambiguous-wall');
+  const normal = unit(mapped.reduce<Vec3>((sum, value) => add(sum, value!.normal), [0, 0, 0]));
+  if (length(normal) < 0.9 || mapped.some(value => value!.normal[0] * normal[0] + value!.normal[1] * normal[1] + value!.normal[2] * normal[2] < 0.95)) return reject('nonplanar-or-reversed-wall');
+
+  const output: MeshData[] = [];
+  for (const source of sourceMeshes) {
+    if (source.kind !== 'wall' || !source.textured || !source.uvs) {output.push(source); continue;}
+    const retained: MeshData = {...source, positions: [], indices: [], uvs: []};
+    for (const tri of triangles(source)) {
+      for (const fragment of cutConvex(tri, outline).outside) appendPolygon(retained, fragment);
+    }
+    if (retained.indices.length) output.push(retained);
+  }
+
+  const front = mapped.map(value => value!.point);
+  const back = front.map(point => sub(point, mul(normal, depth)));
+  const reveal = solid(`entrance:${entrance.id}:reveal`, entrance.revealColour ?? entrance.wallColour ?? '#71685e');
+  for (let i = 0; i < front.length; i++) quad(reveal, front[i], front[(i + 1) % front.length], back[(i + 1) % back.length], back[i]);
+  output.push(reveal);
+  const door = solid(`entrance:${entrance.id}:door`, entrance.doorColour ?? '#26332e');
+  for (let i = 1; i < back.length - 1; i++) {
+    const start = door.positions.length / 3;
+    door.positions.push(...back[0], ...back[i], ...back[i + 1]);
+    door.indices.push(start, start + 1, start + 2);
+  }
+  output.push(door);
+  const frameColour = entrance.frameColour ?? '#303738';
+  const bottom = Math.min(...outline.map(p => p[1])), top = Math.max(...outline.map(p => p[1]));
+  const transomY = bottom + 0.72 * (top - bottom);
+  const cream = entrance.transomColour ?? '#d8d0bd';
+  for (let i = 0; i < back.length; i++) {
+    const upperEdge = Math.max(outline[i][1], outline[(i + 1) % outline.length][1]) > transomY;
+    output.push(boxBeam(`entrance:${entrance.id}:rear-frame:${i}`, back[i], back[(i + 1) % back.length], normal, 0.045, 0.025, upperEdge ? cream : frameColour));
+  }
+  const span = horizontalSpan(outline, transomY);
+  if (span && span[1] - span[0] > 0.01) {
+    const from = atUv(sourceTriangles, [span[0], transomY])!, to = atUv(sourceTriangles, [span[1], transomY])!;
+    const a = sub(from.point, mul(normal, depth - 0.03)), b = sub(to.point, mul(normal, depth - 0.03));
+    output.push(boxBeam(`entrance:${entrance.id}:transom`, a, b, normal, 0.055, 0.025, cream));
+    const panes = solid(`entrance:${entrance.id}:glazing`, '#69777b');
+    const upper: V[] = outline.map((uv, i) => ({uv, p: add(back[i], mul(normal, 0.008))}));
+    appendPolygon(panes, clip(upper, 1, transomY + 0.008 * (top - bottom), false));
+    const lowerY = bottom + 0.23 * (top - bottom), upperY = transomY - 0.055 * (top - bottom);
+    const lowerSpan = horizontalSpan(outline, lowerY), upperSpan = horizontalSpan(outline, upperY);
+    if (lowerSpan && upperSpan && upperY > lowerY) {
+      const left = Math.max(lowerSpan[0], upperSpan[0]) + 0.09 * (span[1] - span[0]);
+      const right = Math.min(lowerSpan[1], upperSpan[1]) - 0.09 * (span[1] - span[0]);
+      const middle = (left + right) / 2, gap = 0.025 * (right - left);
+      for (const [x0, x1] of [[left, middle - gap], [middle + gap, right]]) {
+        const points = [[x0, lowerY], [x1, lowerY], [x1, upperY], [x0, upperY]] as const;
+        const mappedPane = points.map(uv => atUv(sourceTriangles, uv));
+        if (mappedPane.every(Boolean)) {
+          const p = mappedPane.map(item => sub(item!.point, mul(normal, depth - 0.008)));
+          quad(panes, p[0], p[1], p[2], p[3]);
+        }
+      }
+    }
+    if (panes.indices.length) output.push(panes);
+    const baseSpan = horizontalSpan(outline, bottom + 0.05 * (top - bottom));
+    if (baseSpan) {
+      const midX = (span[0] + span[1]) / 2;
+      const foot = atUv(sourceTriangles, [midX, bottom + 0.05 * (top - bottom)]);
+      const head = atUv(sourceTriangles, [midX, transomY]);
+      if (foot && head) output.push(boxBeam(`entrance:${entrance.id}:mullion`, sub(foot.point, mul(normal, depth - 0.03)), sub(head.point, mul(normal, depth - 0.03)), normal, 0.04, 0.025, frameColour));
+    }
+  }
+  const focusCenter = mul(front.reduce<Vec3>((sum, p) => add(sum, p), [0, 0, 0]), 1 / front.length);
+  const horizontal = unit(cross([0, 1, 0], normal));
+  const projected = front.map(p => p[0] * horizontal[0] + p[1] * horizontal[1] + p[2] * horizontal[2]);
+  const widthM = Math.max(...projected) - Math.min(...projected);
+  const heightM = Math.max(...front.map(p => p[1])) - Math.min(...front.map(p => p[1]));
+  return {meshes: output, stats: {accepted: true, cutAreaUv: cutArea, focus: {center: focusCenter, outward: normal, widthM, heightM}}};
+}
