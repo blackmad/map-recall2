@@ -1,0 +1,12 @@
+{
+  "rejectedAssemblyIds": ["ground-008", "ground-013", "ground-014"],
+  "reviewedAssemblyIds": ["balcony-10", "ground-008", "ground-013", "ground-014"],
+  "findings": [
+    "balcony-10: retain. The close-up shows a coherent projecting slab and rail with no remaining painted side-return duplicate in this representative view. This sample does not approve unreviewed balcony IDs.",
+    "ground-013: withhold. A thick extruded outer reveal is drawn in front of a second painted arched reveal, producing duplicate mouths and an implausibly deep, wide portal.",
+    "ground-014: withhold. The narrow entrance has the same double-reveal artifact; its extruded surround and apparent height do not read as one source-supported doorway.",
+    "ground-008: withhold. The projected portal overlaps the existing painted opening/reveal and reads as an additional large doorway rather than a replacement.",
+    "Leave rejected ground assemblies in the original layer and report their misses. Do not compensate by changing their dimensions from these review images."
+  ],
+  "status": "partial"
+}
