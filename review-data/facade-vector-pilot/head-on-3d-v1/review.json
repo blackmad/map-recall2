@@ -1,0 +1,169 @@
+{
+  "demo": "/canal-drive/facade-texture-demo.html",
+  "additionalInferenceCostUsd": 0,
+  "sceneSha256": "952ec2896026cb710e5d2e1fa06250d771abf300e3560ab91ca09866cee2780f",
+  "geometry": "Actual3DBAG LoD2.2 semantic surfaces; no extruded image boxes",
+  "rows": [
+    {
+      "id": "strip1",
+      "label": "Bilderdijkkade 47 / Bilderdijkkade 49 / Bilderdijkkade 53 / Bilderdijkstraat 126 (b_20241129_0829_Track03_Sphere_00051)",
+      "source": {
+        "targetBuildingId": "0363100012233629",
+        "buildingIds": [
+          "0363100012161150",
+          "0363100012233629",
+          "0363100012572072"
+        ],
+        "panoramaId": "b_20241129_0829_Track03_Sphere_00051",
+        "panoramaSha256": "c9f5b7f682379e0ad5f4927387a5c25adc73e6dded86718dc7679d6562acc159",
+        "generatedSha256": "2b5fb1d2be53da5f4e0225cb6e030da62237935eb437730bb6f38a219eee941f",
+        "contextSha256": "acecd8d17ab2f0613766615589be64ce2337eae072cb0f3ffff309ab6562441b",
+        "evidenceManifestSha256": "4ae5445c296af66c6e372ebad2b2ff00a05cd445ddf413a5be02f6a8ceda8202",
+        "sourceCropBounds": [
+          220,
+          0,
+          1580,
+          771
+        ],
+        "contextPlane": {
+          "start": {
+            "x": 119803.09593730514,
+            "y": 486809.37369381654
+          },
+          "end": {
+            "x": 119821.86393504364,
+            "y": 486764.5128938515
+          },
+          "baseZ": 0.2870000123977661,
+          "topZ": 20.959999999999997
+        },
+        "tileHashes": {
+          "3dbag-15.json": "3e73c718d0026a1b360c33cd7113574fe82a2bbef2c13bdbdee1e5f5fb5edc41",
+          "3dbag-28.json": "ad7c249e847dd433a19fdd907df229b6b1818237a21b526eb051173fa3ab0851",
+          "3dbag-32.json": "0ae63acef4d19d19bf13900fb2244f1c7afcbc4da2b4afad55a328c11617a71a"
+        },
+        "identityStatus": "target evidence record and BAG ID matched; neighbor IDs selected by collinear frontal wall overlap, not photo-owner certified",
+        "textureRegistration": "provisional orthographic projection from evidence context plane; output generated image is stylized and not measured photography"
+      },
+      "surfaceCount": 203,
+      "texturedSurfaces": 10,
+      "sourceImage": "strip1-source.jpg",
+      "generatedImage": "strip1-generated.png"
+    },
+    {
+      "id": "strip2",
+      "label": "Bilderdijkstraat 177 / Bilderdijkstraat 179 / Bilderdijkstraat 181 (TMX7316010203-002921_pano_0015_000001)",
+      "source": {
+        "targetBuildingId": "0363100012153173",
+        "buildingIds": [
+          "0363100012133467",
+          "0363100012153173",
+          "0363100012153782",
+          "0363100012159649",
+          "0363100012164390"
+        ],
+        "panoramaId": "TMX7316010203-002921_pano_0015_000001",
+        "panoramaSha256": "10a7feac12735a9539ddbe042e904d58e46d2b0fb519f95699df9372d2c1f286",
+        "generatedSha256": "930145dbcec16fc0a566c7f55a89745e49961c856ccf4eedaa88f88903e0a39e",
+        "contextSha256": "87b9bce49c06bbb64d64449c0acb0349929136f54da93a173f286b035ee0289d",
+        "evidenceManifestSha256": "e413503ddf9a5a963714b83d4a38c03bf5cca861b8a7fcfcd49845db8b3fdf90",
+        "sourceCropBounds": [
+          0,
+          0,
+          1540,
+          760
+        ],
+        "contextPlane": {
+          "start": {
+            "x": 119943.20892693545,
+            "y": 486706.0678944408
+          },
+          "end": {
+            "x": 119959.40892498469,
+            "y": 486667.3846944682
+          },
+          "baseZ": 0.5709999918937683,
+          "topZ": 17.88
+        },
+        "tileHashes": {
+          "3dbag-13.json": "ba3cc0206c1ffc69ce9c0e589884d2bee44c286430f79db82e413c3b4c27ea53",
+          "3dbag-19.json": "4590aa478832de575dff2651ed0c779d05e30c0cc4b770a518cb475dd3e7057e",
+          "3dbag-4.json": "df784ce78580ca3ad9572096fc520d5213e883a3e4f5422739d8814ad5fca8fa",
+          "3dbag-7.json": "2ce5a60fab54c7f0c4712a044eeefa10932fecdc46edbf529fdb138f02a4bfdd"
+        },
+        "identityStatus": "target evidence record and BAG ID matched; neighbor IDs selected by collinear frontal wall overlap, not photo-owner certified",
+        "textureRegistration": "provisional orthographic projection from evidence context plane; output generated image is stylized and not measured photography"
+      },
+      "surfaceCount": 196,
+      "texturedSurfaces": 29,
+      "sourceImage": "strip2-source.jpg",
+      "generatedImage": "strip2-generated.png"
+    },
+    {
+      "id": "strip3",
+      "label": "Westerstraat 10 / Westerstraat 14 / Westerstraat 16 / Boomstraat 9 / Boomstraat 11 (b_20250129_0912_Track01_Sphere_00024)",
+      "source": {
+        "targetBuildingId": "0363100012169373",
+        "buildingIds": [
+          "0363100012169191",
+          "0363100012169373",
+          "0363100012176675",
+          "0363100012176676",
+          "0363100012176677",
+          "0363100012176678"
+        ],
+        "panoramaId": "b_20250129_0912_Track01_Sphere_00024",
+        "panoramaSha256": "98ebaaed76f495de1110be4f89530c71dd7be0fa11bd35678ff45d1e5a5b6496",
+        "generatedSha256": "f1a6d68dfe990474da24a6a52eab1c2f2944685999833532732a9e3e7a69ccee",
+        "contextSha256": "667e25959c337e7591998850ec831cd16656ee5a47f105ff75338910e2d815a9",
+        "evidenceManifestSha256": "b983655b6ed5518859997cd1e060084fe3a465a0373e1492a202109a71d819df",
+        "sourceCropBounds": [
+          440,
+          0,
+          1820,
+          760
+        ],
+        "contextPlane": {
+          "start": {
+            "x": 120838.90731597289,
+            "y": 488013.2997018122
+          },
+          "end": {
+            "x": 120882.67851399796,
+            "y": 488025.8709020952
+          },
+          "baseZ": -0.16800000071525573,
+          "topZ": 18.61
+        },
+        "tileHashes": {
+          "3dbag-101.json": "7fe87828b45f2cb5e8362e786e0bd06d641a04f55037bb5d18d32f66a4f11ab9",
+          "3dbag-26.json": "7cd073723df0d9c530dd8051c874f37c7afa25dfe77a1cebad2fca163b526368",
+          "3dbag-29.json": "e1dab2823f81df98f2e052b13e60d0d50a236316951945e61e368f19cf9f417b"
+        },
+        "identityStatus": "target evidence record and BAG ID matched; neighbor IDs selected by collinear frontal wall overlap, not photo-owner certified",
+        "textureRegistration": "provisional orthographic projection from evidence context plane; output generated image is stylized and not measured photography"
+      },
+      "surfaceCount": 232,
+      "texturedSurfaces": 32,
+      "sourceImage": "strip3-source.jpg",
+      "generatedImage": "strip3-generated.png"
+    }
+  ],
+  "review": {
+    "acceptedForGame": false,
+    "fixed": [
+      "UV edge repetition outside photographed crop",
+      "White sky paint on gables",
+      "Omitted roof-step vertical walls",
+      "Equalized material and lighting across texture, relief and frame modes"
+    ],
+    "remaining": [
+      "Generated gables and3DBAG silhouettes disagree",
+      "Approximate source-to-generated registration",
+      "Incomplete and spurious heuristic window rectangles",
+      "Illustration lighting/reflections already baked into raster",
+      "Inferred hidden ground details not measured"
+    ],
+    "independentReviewer": "Sol visual and browser QA; roofline and approximate-registration limitations confirmed."
+  }
+}

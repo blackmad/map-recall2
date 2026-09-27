@@ -62,8 +62,8 @@ function decode(tile: Tile, feature: Feature): Point3[] {
   return feature.vertices.map(vertex => [0, 1, 2].map(i => vertex[i] * scale[i] + translate[i]) as Point3);
 }
 
-function surfaces(feature: Feature, decoded: Point3[]): Array<{id: string; kind: Mesh['kind']; rings: Point3[][]; normal: Point3}> {
-  const result: Array<{id: string; kind: Mesh['kind']; rings: Point3[][]; normal: Point3}> = [];
+function surfaces(feature: Feature, decoded: Point3[]): Array<{id: string; kind: Mesh['kind']; rings: Point3[][]; normal: Point3; onFootprintEdge?: boolean}> {
+  const result: Array<{id: string; kind: Mesh['kind']; rings: Point3[][]; normal: Point3; onFootprintEdge?: boolean}> = [];
   for (const [objectId, object] of Object.entries(feature.CityObjects)) {
     for (const geometry of object.geometry ?? []) {
       if (String(geometry.lod) !== '2.2' || !geometry.boundaries || !geometry.semantics) continue;
@@ -72,10 +72,10 @@ function surfaces(feature: Feature, decoded: Point3[]): Array<{id: string; kind:
       shell.forEach((surface, i) => {
         const semantic = geometry.semantics!.surfaces?.[values[i]];
         const kind = semantic?.type === 'WallSurface' ? 'wall' : semantic?.type === 'RoofSurface' ? 'roof' : semantic?.type === 'GroundSurface' ? 'ground' : null;
-        if (!kind || (kind === 'wall' && semantic?.on_footprint_edge === false)) return;
+        if (!kind) return;
         const rings = surface.map(ring => ring.map(index => decoded[index]).filter(Boolean)).filter(ring => ring.length >= 3);
         if (!rings.length) return;
-        result.push({id: `${objectId}:lod22:${kind}:${i}`, kind, rings, normal: normal(rings[0])});
+        result.push({id: `${objectId}:lod22:${kind}:${i}`, kind, rings, normal: normal(rings[0]), onFootprintEdge: semantic?.on_footprint_edge});
       });
     }
   }
@@ -83,7 +83,7 @@ function surfaces(feature: Feature, decoded: Point3[]): Array<{id: string; kind:
 }
 
 function frontWall(surface: ReturnType<typeof surfaces>[number], plane: Plane, cameraDirection: Point2): boolean {
-  if (surface.kind !== 'wall') return false;
+  if (surface.kind !== 'wall' || surface.onFootprintEdge === false) return false;
   const points = surface.rings.flat();
   const maxDistance = Math.max(...points.map(point => Math.abs(planeCoordinates(point, plane).distance)));
   return maxDistance <= 1.5 && dot([surface.normal[0], surface.normal[1]], cameraDirection) >= 0.75;
@@ -160,7 +160,10 @@ async function main() {
     const image = `${job}-source.jpg`, generatedImage = `${job}-generated.png`;
     await fs.mkdir(outRoot, {recursive: true});
     await fs.copyFile(path.join(inputDir, binding.cropPath), path.join(outRoot, image));
-    await fs.copyFile(path.join(sourceRoot, `.cache/facade-assessment/banana-head-on-v1/${job}.png`), path.join(outRoot, generatedImage));
+    const generatedPath=path.join(sourceRoot, `.cache/facade-assessment/banana-head-on-v1/${job}.png`);
+    const receipt=await readJson<{status:string;pngSha256:string}>(path.join(sourceRoot, `.cache/facade-assessment/banana-head-on-v1/${job}.json`));
+    if(receipt.status!=='ok'||sha(await fs.readFile(generatedPath))!==receipt.pngSha256)throw Error(`${job}: generated image receipt mismatch`);
+    await fs.copyFile(generatedPath, path.join(outRoot, generatedImage));
     const cropWidthM = (cropEnd - cropStart) * length;
     const target: Point3 = [0, round((plane.topZ - plane.baseZ) / 2), 0];
     const cameraDistance = Math.max(30, cropWidthM * 1.1);
@@ -176,7 +179,7 @@ async function main() {
       originRD: origin.map(round), coordinateSystem: 'local Three XYZ metres: east, NAP up, negative north; originRD is EPSG:7415 east,north,NAP',
       focusBounds, camera: {position: camera, target}, obliqueCamera: {position: [round(camera[0] + delta[0] * 0.55), camera[1] + 10, round(camera[2] - delta[1] * 0.55)], target},
       source: {targetBuildingId: record.buildingId, buildingIds: [...new Set(buildingIds)].sort(), panoramaId: binding.panoramaId, panoramaSha256: binding.panoramaSha256,
-        contextSha256: binding.contextSha256, evidenceManifestSha256: binding.evidenceManifestSha256, sourceCropBounds: binding.contextCropBounds,
+        generatedSha256:receipt.pngSha256, contextSha256: binding.contextSha256, evidenceManifestSha256: binding.evidenceManifestSha256, sourceCropBounds: binding.contextCropBounds,
         contextPlane: plane, tileHashes, identityStatus: 'target evidence record and BAG ID matched; neighbor IDs selected by collinear frontal wall overlap, not photo-owner certified',
         textureRegistration: 'provisional orthographic projection from evidence context plane; output generated image is stylized and not measured photography'}, meshes});
     console.log(`${job}: ${buildingIds.length} BAG buildings, ${meshes.length} surfaces, ${meshes.filter(mesh => mesh.textured).length} front textured`);

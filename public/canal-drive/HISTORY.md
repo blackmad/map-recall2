@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — Generated facades on real 3DBAG geometry
+
+Added isolated `facade-texture-demo.html`: three street studies with actual
+LoD2.2 wall/roof/ground meshes for14 BAG buildings, orbit/front/roof views and
+four treatments: plain source geometry, generated colour texture, texture+bump,
+and heuristic raised window frames. Source photographs remain available as a
+texture comparison. No paid generation and no game-data activation.
+
+The exporter validates source/provenance hashes and retains unclamped source-
+plane UVs. The renderer bounds texture/bump sampling to the photographed strip,
+composites sky-alpha over plain walls, and retains untextured roof-step walls.
+This avoids stretched edge pixels and white sky on gables. Curved generated
+rooflines still disagree with coarse BAG geometry; no silhouette accuracy claim.
+Local extractor proposes50/62/40 upper-window boxes, with only on-wall candidates
+rendered. Prepared follow-up prompts separate colour, semantic features and depth.
+Desktop1440/phone390 checks cover all3×4 treatments; all24 pass without browser
+errors or overflow. TypeScript and geometry index/UV sanity checks pass.
+See `docs/plans/facade-texture-3d-pilot.md`.
+
 ## 2026-09-27 — Continuous head-on Pro facade strips
 
 Replaced the occluded corner test with three single-source, near-front-on street

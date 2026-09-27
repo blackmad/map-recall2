@@ -89,6 +89,12 @@ Three better continuous head-on strips are now reviewed ($0.414096 total), with
 occlusions filled instead of grey silhouettes. Next validate boundary/opening
 alignment and colour drift, protect roof hoisting beams and retain inferred-area
 provenance before slicing. No rollout. See `docs/plans/facade-banana-head-on-pilot.md`.
+Interactive3DBAG texture/detail demo now compares bare geometry, generated texture,
+local bump relief and raised frame candidates on3/5/6 BAG buildings. Main next
+work: per-facade registration landmarks, source-corrected gable outlines, and
+verified window grouping before close-range geometry. Existing texture drawings
+are not accepted into gameplay. Demo: `facade-texture-demo.html`; pipeline and
+prompt alternatives: `docs/plans/facade-texture-3d-pilot.md`.
 
 **OccFacade follow-up: validate full-facade proposals before integration.**
 All 100 cohort full views now have OccFacade/Vistas intersection masks. All 100
