@@ -68,10 +68,11 @@ broken images, horizontal overflow or JavaScript errors.
   ground view labels portions of the skip, paving and unrelated pixels as wall.
 - Index 1: overexposure damages the wall/sky boundary; ground doors are largely
   missed/misclassified, and the parked car contributes predicted wall pixels.
-- Index 30: ornamental gable portions become sky; foliage becomes wall. The
-  full and ground images show substantially different architectural context,
-  so their owner/view correspondence needs checking before treating this pair
-  as a same-building accuracy comparison.
+- Index 30: ornamental gable portions become sky; foliage becomes wall.
+  Follow-up inspection of the original context image confirms full/ground show
+  the same white gabled facade (arched lower opening, shrubs, utility boxes).
+  Consecutive 2025 panoramas and different crop heights explain the apparent
+  architectural difference. This resolves photo correspondence, not BAG ownership.
 - Independent Sol review of indices 3, 10, 17, 52 and 64 found the same scale
   sensitivity: useful upper-window rhythm in full views, missed entrances and
   pavement/cars labeled shop in ground views. Index 52's black doors become
@@ -93,3 +94,69 @@ opening/wall set against the existing detector. Reject ground-only inference as
 a replacement. Keep original crop coordinates when extracting ground predictions
 from the full-facade output. No appearance or geometry has been published to the
 game from this pilot.
+
+
+## Follow-up: full-view cohort and same-capture context test
+
+Processed all 100 full-view cohort images with OccFacade and the already-pinned
+local Mapillary Vistas Mask2Former. All 100 intersected masks contain some pixels;
+this is coverage, not correctness. Median removal is 12.35% of OccFacade wall
+pixels; nine cases lose more than half. OccFacade median forward in this batch
+was 0.393 seconds (different concurrent load/warmup from the initial pilot).
+
+`compare_occfacade.py` validates exact source, mask and provenance hashes before
+intersecting OccFacade wall (5) with Vistas building (2). The gallery preserves
+source, both separate masks and the intersection. Native-image auditing of 19
+additional cases is recorded with image+mask hashes in
+`review-data/facade-assessment/occfacade-wall100-review.json`. Four explicit
+failures (45, 70, 90, 99) have combined photo medians withheld; all other outputs
+remain unaccepted diagnostics. Stale reviews fail rather than applying to a new
+image/mask. The other 81 cases are not declared audited by this review file;
+the original ten-case pilot and targeted root reviews are separate evidence.
+
+The intersection removes large trees and vehicles but can also erase exposed
+masonry, retain glass/trim/metalwork, and cannot repair exposure. It is an input
+to sampling, not sufficient certification of wall colour or material.
+
+`prepare_occfacade_context.py` generated lower crops from the exact full-view
+photographs for the original ten cases. Applying OccFacade to these crops alone
+versus extracting the same pixels from its full-view predictions yields median
+class agreement **55.43%**. The crops show invented repeated rows, so the issue
+persists without different dates/panoramas. This is sensitivity, not accuracy.
+The original plane heights only select the approximate crop band; inference is
+compared in exact source pixel coordinates, not projected between photographs.
+
+Source pair audit: index 30 is visually paired; index 11's winter full image and
+summer ground image cannot support ground absence claims through foliage;
+index 10's exact subfacade pairing is uncertain. Full and ground panoramas are
+selected independently by `prepare-neighbourhood.ts`, and its footprint blocker
+score does not measure foliage. Receipts are recorded in
+`review-data/facade-assessment/source-pair-review-occfacade.json`.
+
+Reproduce comparisons:
+
+```sh
+.cache/roofline-eval/venv/bin/python scripts/facade-eval/prepare_occfacade_context.py \
+  --cohort .cache/facade-assessment/cohort.json \
+  --pilot .cache/facade-assessment/occfacade-v1 --out /tmp/new-context-input
+# Run run_occfacade.py on that manifest into a fresh directory, then:
+.cache/roofline-eval/venv/bin/python scripts/facade-eval/compare_occfacade.py \
+  --pilot .cache/facade-assessment/occfacade-full100-v1 \
+  --vistas .cache/facade-assessment/occfacade-visible100-v1/segmentation \
+  --wall-only --review review-data/facade-assessment/occfacade-wall100-review.json \
+  --out /tmp/new-wall-comparison
+```
+
+Full-only inference is now selected with `run_occfacade.py --kinds full` and an
+explicit comma-separated `--indices` list. Default remains the original 20-crop
+pilot. Models, evidence and derived masks remain local/ignored.
+
+Review gallery:
+http://localhost:5195/data/facade-review-galleries/occfacade-wall100-reviewed-v1/index.html
+Same-capture test:
+http://localhost:5195/data/facade-review-galleries/occfacade-comparison-v1/index.html
+
+Next priority: quantify on annotated observed-wall/opening regions and separate
+material classification from lighting-sensitive photo RGB. Do not spend the next
+batch on ground-only OccFacade or treat model agreement as acceptance. Nothing
+from this follow-up changes default game appearance or geometry.

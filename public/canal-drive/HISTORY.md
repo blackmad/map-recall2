@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — 100-facade mask comparison and same-photo context experiment
+
+Processed 100 full views with local OccFacade and Vistas and published an
+evidence-only comparison gallery. Exact source/mask hashes bind intersection
+outputs and 19 additional visual reviews; four failed colour cases are withheld.
+Ten exact lower crops from full images reproduce the ground-view failures, with
+55.43% median label agreement between cropped and full-context inference.
+Original-context inspection corrected the suspected index-30 mismatch: the two
+photos show the same facade. Index 11's ground is obscured and index 10's exact
+subfacade match remains uncertain. No appearance pointers or accepted materials
+were changed. See the OccFacade pilot report for reproduction and limitations.
+
 ## 2026-09-27 — OccFacade local inference and visual rejection of ground-only use
 
 Added a source-hashed ENPC2014 inference runner using the upstream architecture

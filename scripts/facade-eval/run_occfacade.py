@@ -65,6 +65,7 @@ def main():
     parser.add_argument('--manifest', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--indices', default='0,1,3,10,11,13,17,30,52,64')
+    parser.add_argument('--kinds', choices=['full', 'ground', 'both'], default='both')
     parser.add_argument('--device', choices=['mps', 'cpu', 'cuda'], default='mps')
     args = parser.parse_args()
     if args.out.exists():
@@ -76,7 +77,7 @@ def main():
     sources = []
     for index in indices:
         for source in entries[index]['images']:
-            if source['kind'] in ('full', 'ground'):
+            if source['kind'] in ('full', 'ground') and (args.kinds == 'both' or source['kind'] == args.kinds):
                 if sha(source['path']) != source['sha256']:
                     raise ValueError(f'Source hash mismatch: {index}/{source["kind"]}')
                 sources.append((entries[index], source))

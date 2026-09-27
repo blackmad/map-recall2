@@ -1,0 +1,148 @@
+{
+  "date": "2026-09-27",
+  "reviewers": [
+    "root",
+    "sol_worker"
+  ],
+  "policy": "Photo correspondence review only; no accepted owner geometry or material",
+  "records": [
+    {
+      "index": 30,
+      "buildingId": "0363100012236796",
+      "address": "Da Costakade 102",
+      "status": "visually-paired-owner-unverified",
+      "note": "Original context confirms white gable, arched lower opening, shrubs and utility boxes. Consecutive same-day panoramas; different framing is not wrong-owner evidence.",
+      "images": [
+        {
+          "kind": "full",
+          "sha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+          "panoramaId": "recording_2025-07-31_10-53-44_00615",
+          "capturedAt": "2025-07-31T11:08:35Z",
+          "plane": {
+            "start": {
+              "x": 119886.22153846077,
+              "y": 487008.02289463865
+            },
+            "end": {
+              "x": 119885.15033863114,
+              "y": 487012.0476946388
+            },
+            "baseZ": 0.024999988079071056,
+            "topZ": 19.299999999999997
+          }
+        },
+        {
+          "kind": "ground",
+          "sha256": "c6e6185e8382122c7222df35cdfd27323d98c55e3131186c3e63d450e03cb5c4",
+          "panoramaId": "recording_2025-07-31_10-53-44_00616",
+          "capturedAt": "2025-07-31T11:08:36Z",
+          "plane": {
+            "start": {
+              "x": 119886.22153846077,
+              "y": 487008.02289463865
+            },
+            "end": {
+              "x": 119885.15033863114,
+              "y": 487012.0476946388
+            },
+            "baseZ": 0.024999988079071056,
+            "topZ": 4.924999988079071
+          }
+        }
+      ],
+      "ownerIdentityAccepted": false
+    },
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "address": "Frederik Hendrikstraat 202 / Frederik Hendrikstraat 204 / Frederik Hendrikstraat 206 / Frederik Hendrikstraat 208 / Frederik Hendrikstraat 210 / Frederik Hendrikstraat 216 / Frederik Hendrikstraat 212 / Frederik Hendrikstraat 200 / Frederik Hendrikstraat 214 / Frederik Hendrikstraat 218 / Frederik Hendrikstraat 220",
+      "status": "ground-occluded",
+      "note": "Winter 2023 full view and summer 2025 ground view; foliage prevents checking ground facade. No absence inference from ground crop.",
+      "images": [
+        {
+          "kind": "full",
+          "sha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+          "panoramaId": "TMX7316010203-002921_pano_0014_000123",
+          "capturedAt": "2023-01-10T10:37:25.989700Z",
+          "plane": {
+            "start": {
+              "x": 119866.90534885119,
+              "y": 487341.0886950867
+            },
+            "end": {
+              "x": 119872.34454893327,
+              "y": 487354.3278951394
+            },
+            "baseZ": 1.2980000495910644,
+            "topZ": 20.49
+          }
+        },
+        {
+          "kind": "ground",
+          "sha256": "b0b79ea50578bdf9f6853ced109582edb30762210103769d8006f69fc552e9a1",
+          "panoramaId": "recording_2025-06-18_08-56-14_00910",
+          "capturedAt": "2025-06-18T09:18:28Z",
+          "plane": {
+            "start": {
+              "x": 119866.90534885119,
+              "y": 487341.0886950867
+            },
+            "end": {
+              "x": 119872.34454893327,
+              "y": 487354.3278951394
+            },
+            "baseZ": 1.2980000495910644,
+            "topZ": 6.198000049591064
+          }
+        }
+      ],
+      "ownerIdentityAccepted": false
+    },
+    {
+      "index": 10,
+      "buildingId": "0363100012168920",
+      "address": "Elandsgracht 148",
+      "status": "subfacade-pair-uncertain",
+      "note": "2023 oblique corner view and 2025 close salon frontage selected independently; context suggests shared frontage but exact subfacade not certified.",
+      "images": [
+        {
+          "kind": "full",
+          "sha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
+          "panoramaId": "TMX7316010203-002995_pano_0000_000228",
+          "capturedAt": "2023-03-13T08:49:46.949240Z",
+          "plane": {
+            "start": {
+              "x": 120345.50957159586,
+              "y": 486922.30943713227
+            },
+            "end": {
+              "x": 120348.80325119682,
+              "y": 486914.3461571351
+            },
+            "baseZ": 0.727999997138977,
+            "topZ": 13.549999999999999
+          }
+        },
+        {
+          "kind": "ground",
+          "sha256": "0c88f6a476cd73af99d862752f290753de8f225a198200abb839847003505444",
+          "panoramaId": "recording_2025-07-03_08-35-58_01780",
+          "capturedAt": "2025-07-03T09:54:48Z",
+          "plane": {
+            "start": {
+              "x": 120345.50957159586,
+              "y": 486922.30943713227
+            },
+            "end": {
+              "x": 120348.80325119682,
+              "y": 486914.3461571351
+            },
+            "baseZ": 0.727999997138977,
+            "topZ": 5.627999997138977
+          }
+        }
+      ],
+      "ownerIdentityAccepted": false
+    }
+  ]
+}

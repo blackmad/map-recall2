@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "policy": "Native-image visual audit; no candidate is accepted for game colour",
+  "records": [
+    {
+      "index": 20,
+      "sourceSha256": "dcf6a3bd48cb4145487ed2baeb08d2744e5c3a52909aa8bd3e0e69921fc07c2b",
+      "combinedMaskSha256": "e12131418311ec1a1e66d1183402cb3c0c41d27fa6ad79eb393cb368da3e239f",
+      "status": "limited-evidence",
+      "note": "Substantial dark upper brick retained; lower storefront/bike fragments and cornice/trim remain.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 25,
+      "sourceSha256": "abb4ae73ce2690c935c7dd550d758ae937ca575f5ed2c90b0bf470aaa2b55ebd",
+      "combinedMaskSha256": "96897d70bfa80c40442a6c4603a7ed5e94d21f7c5bd3a8353e382458bd508e88",
+      "status": "limited-evidence",
+      "note": "Large tree and cars removed, exposed right brick retained; bright cornice and bottom street/canal strip remain.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 40,
+      "sourceSha256": "45cbef0ded656258d6e09e1f4ae48bfbbd0b11c85ecc495198af94b22486273f",
+      "combinedMaskSha256": "c33ecf63e172b8487a69f435609d20ddc82b292cad97969edd1cb828d5185d54",
+      "status": "limited-evidence",
+      "note": "Useful central/right brick piers, but exposed gable and base lost.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 45,
+      "sourceSha256": "5eece14f926b008abbdd81785ccabead61e76b8ffc839dfa51d1762bbc1bdc27",
+      "combinedMaskSha256": "a213233f1066516277c0324c417448bac13eff504b2ab6901e8744cd06e89010",
+      "status": "withhold-colour",
+      "note": "Wall reduced to small dark fragments while glass/reflections and ledge/trim survive; not representative masonry.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 55,
+      "sourceSha256": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
+      "combinedMaskSha256": "3a25d9674e15c958a9babf774c42a50ed5e2f5c555b9cb39bfc7f40a24f2a96f",
+      "status": "limited-evidence",
+      "note": "Brick retained and construction fence largely removed; white decorative courses and railing details remain.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 65,
+      "sourceSha256": "520281fa8da3e02b09f3dd68fac03c03c4e3fc63c127f915acf0d763e3485b8a",
+      "combinedMaskSha256": "ef7e0cf29d115e47269200e271486573d6539eb08f7e00328d2fce04a57ac44e",
+      "status": "limited-evidence",
+      "note": "Useful central brick piers; exposed gable/base lost and some balcony rail remains.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 70,
+      "sourceSha256": "a3f1c5172ff1ae96227cd7659ffad871fa044b7cf3c41cdc20d8da0b0765cbe0",
+      "combinedMaskSha256": "1a73403c2943d1a3fe140ffa8a7a18ed7b8f43a3d654a81c7b85ebd1a57d68d1",
+      "status": "withhold-colour",
+      "note": "Bright washed-out source; broad wall retained but exposure prevents reliable colour estimation.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 80,
+      "sourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
+      "combinedMaskSha256": "e4ec9b5666d146b77dcfd7708b6308982ae5de30dc386f97a714018de8b5e2a8",
+      "status": "limited-evidence",
+      "note": "Upper dark brick retained, shop/street mostly removed; gable lost and pale arch trim remains.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 90,
+      "sourceSha256": "3d62d50d25e6e484ff3f9767177db07067ec043c8b4af035438cf2d54ac722b3",
+      "combinedMaskSha256": "b427d1c2065cf84cd25fdba98c6bac2af34c271f0048f1b08e8ab902f9c98067",
+      "status": "withhold-colour",
+      "note": "Limited shadowed wall retained, with lower sign/shop and foreground fragments.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 99,
+      "sourceSha256": "8581ab026af56453a493a8181cacd306f71dc1c5cdd17bae3f921e4ec787a61d",
+      "combinedMaskSha256": "3a8ebdf4b23066b2a279de743cf9cf3c7c3c286978a60f7a8fb5c9c50545276a",
+      "status": "withhold-colour",
+      "note": "Metal balcony cage/interior retained alongside brick. Neither one visible material nor owner is isolated.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 81,
+      "sourceSha256": "3eab160877b6733ce8cae206d17dc931d3226add33d99263f0c9754d8f218375",
+      "combinedMaskSha256": "65998410dbb31c3946abb431b6e4986809e27ff4f01f025dd08265b50736aed7",
+      "status": "limited-evidence",
+      "note": "Extensive tree/sign rejection also removes much exposed facade; only narrow right-wall fragments remain.",
+      "reviewer": "root"
+    },
+    {
+      "index": 75,
+      "sourceSha256": "3c2ced81de03a084e6c7155dc16f146cee6a51a233f17f06762f898157bec3a1",
+      "combinedMaskSha256": "1923c47cb3624e205dc8d7ef34caa3647397ca002c27e55a61fb6b18dd4c2684",
+      "status": "limited-evidence",
+      "note": "Large trunk removed, but central facade also removed; small side patches and ground trim remain.",
+      "reviewer": "root"
+    },
+    {
+      "index": 35,
+      "sourceSha256": "45d5e93c8b4b84473df8aafebdb59588493ec318b350a3823d287b86d2164390",
+      "combinedMaskSha256": "21e4c6b5f5e75b2f193aa0ca57c13f6eb8b0c18f6e38ec111c9a0d2969174e72",
+      "status": "limited-evidence",
+      "note": "Tree/cars largely removed; much exposed upper masonry also removed; lower facade dominates retained evidence.",
+      "reviewer": "root"
+    },
+    {
+      "index": 18,
+      "sourceSha256": "92836709b5ce82d22da4e187bd4963cbbad3c0de6284f0c976545234cc932b42",
+      "combinedMaskSha256": "75e0e7b909f266017346f72fe5f6acd360983503f9ea2724fe274bcc7057de38",
+      "status": "limited-evidence",
+      "note": "Foliage removed conservatively with large adjacent wall regions; retained surfaces span different lighting and base finishes.",
+      "reviewer": "root"
+    },
+    {
+      "index": 27,
+      "sourceSha256": "3223287c23e5334519608af0c3ae7da2b6b2d22a2873e05da670d004fed5880f",
+      "combinedMaskSha256": "4811a1fd424787fe23257124504f8e52d92f5e57f6dae1e2f7196d33df07cd1b",
+      "status": "limited-evidence",
+      "note": "Upper facade largely removed; retained wall includes surviving window/frame pixels and signage trim.",
+      "reviewer": "root"
+    },
+    {
+      "index": 37,
+      "sourceSha256": "052697332e686dd4d8cb05ad7acded0a93280657d078b45c8fe971959fae510c",
+      "combinedMaskSha256": "a527795fae48dd79a6c3fd07e77cfda630a4f2ea85fffe5cba65add785f37acc",
+      "status": "limited-evidence",
+      "note": "Trunk removed but upper masonry broadly lost; isolated lower wall strips remain.",
+      "reviewer": "root"
+    },
+    {
+      "index": 54,
+      "sourceSha256": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+      "combinedMaskSha256": "b5efe4245deff288aa076b2fc96f8d75848b1f60adf2e600fcd289697373b1a6",
+      "status": "limited-evidence",
+      "note": "Large exposed upper wall area removed; remaining lower wall and trim are not full-facade evidence.",
+      "reviewer": "root"
+    },
+    {
+      "index": 69,
+      "sourceSha256": "9138a92901658023ace68f3c1d74bc43b84b48b88e92c5fe7947d169b2616d34",
+      "combinedMaskSha256": "2697eb02072b33f46dccccff00c2f592e550673ba46aa6a4a9b07af7a557e609",
+      "status": "limited-evidence",
+      "note": "Upper roof/wall heavily excluded; useful central masonry remains, alongside decorative bands.",
+      "reviewer": "root"
+    },
+    {
+      "index": 83,
+      "sourceSha256": "d50b534484a94ef2d66da304b02f2ebea5244886491f8895771b87de3a89f3ba",
+      "combinedMaskSha256": "605b359d3452e517278a8b353eaf083e221e338fdad36b195186fe974d5357f1",
+      "status": "limited-evidence",
+      "note": "Most upper facade removed with tree canopy; lower wall strips and joinery remain.",
+      "reviewer": "root"
+    }
+  ]
+}
