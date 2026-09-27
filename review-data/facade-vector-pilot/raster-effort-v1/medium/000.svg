@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 263 892" width="263" height="892">
+<rect width="263" height="892" fill="#fdfdfc"/>
+<path d="M0 204 L7 216 L94 213 L95 195 L171 195 L171 210 L245 214 L252 198 L263 198 L263 864 L0 864Z" fill="#493d33"/>
+<path d="M0 216 L263 216 L263 231 L0 230Z" fill="#615347"/><path d="M0 222 L263 224" stroke="#b5a58b" stroke-width="3"/>
+<path d="M0 230H263V861H0Z" fill="#493a30"/>
+<!-- brick courses -->
+<path d="M0 422H250 M0 571H251 M0 717H252" stroke="#705b4b" stroke-width="3"/>
+<!-- upper wide window -->
+<path d="M39 299 Q40 285 67 284 Q93 285 101 295 L101 393 Q69 398 40 392Z" fill="#887d68"/>
+<rect x="47" y="306" width="46" height="77" fill="#9aa3a0" stroke="#d4cfba" stroke-width="5"/><path d="M47 328H93 M49 312H92" stroke="#584e40" stroke-width="5"/><path d="M52 339L87 378 M87 339L53 378" stroke="#bbc0b6" stroke-width="2"/>
+<!-- upper pair -->
+<path d="M152 290 Q169 270 187 290 L190 380H153Z M201 290 Q217 270 235 290 L238 380H201Z" fill="#887d68"/>
+<path d="M159 298 Q170 281 181 298V372H159Z M208 298 Q219 281 229 298V372H208Z" fill="#aab3ae" stroke="#c6c2ad" stroke-width="3"/>
+<path d="M159 325H182 M208 325H229" stroke="#554b3f" stroke-width="5"/><path d="M159 332H182 M208 332H229" stroke="#ded5ba" stroke-width="4"/>
+<!-- second level -->
+<path d="M39 445Q68 426 102 443V541H40Z" fill="#817561"/><rect x="47" y="454" width="46" height="78" fill="#a2aaa4" stroke="#d1c9b2" stroke-width="5"/><path d="M48 476H93 M48 483H93" stroke="#51483d" stroke-width="5"/>
+<path d="M151 440Q170 420 190 440V531H152Z M200 440Q219 420 239 440V531H201Z" fill="#817561"/><path d="M158 449Q170 432 183 449V523H158Z M207 449Q219 432 232 449V523H207Z" fill="#a8b0aa" stroke="#d0c8b1" stroke-width="3"/><path d="M158 476H183 M207 476H232" stroke="#51483d" stroke-width="5"/><path d="M158 483H183 M207 483H232" stroke="#ddd3b9" stroke-width="4"/>
+<!-- third level -->
+<path d="M39 591Q70 573 104 589V692H39Z" fill="#857865"/><rect x="47" y="600" width="47" height="82" fill="#a6aeaa" stroke="#d0c6ad" stroke-width="5"/><path d="M47 622H93 M48 630H93" stroke="#53483c" stroke-width="5"/><rect x="48" y="649" width="45" height="32" fill="#e4dfcf"/><path d="M152 588Q170 571 190 587V680H152Z M200 588Q218 571 239 587V680H200Z" fill="#857865"/><path d="M159 596Q170 583 183 597V674H159Z M207 596Q219 583 232 597V674H207Z" fill="#a6aeaa" stroke="#c8c0aa" stroke-width="3"/><path d="M159 622H183 M207 622H232" stroke="#51483c" stroke-width="5"/>
+<!-- entry -->
+<path d="M39 861V777Q39 737 131 726Q222 739 223 777V861Z" fill="#826f5a"/><path d="M48 856V779Q49 754 131 742Q212 755 213 779V856Z" fill="#332a24"/><path d="M50 802H212V855H50Z" fill="#4c221b"/><path d="M130 748V856" stroke="#c2b292" stroke-width="5"/><path d="M53 792Q131 726 209 792" fill="none" stroke="#c4b391" stroke-width="8"/><path d="M57 804V850 M202 804V850" stroke="#8d5942" stroke-width="4"/>
+<path d="M0 856H263V892H0Z" fill="#39352e"/><path d="M0 858H263" stroke="#91826a" stroke-width="4"/>
+<!-- edge downpipe and sparse wires -->
+<path d="M250 227V858" stroke="#8d8a79" stroke-width="4"/><path d="M4 429Q80 420 157 410 M0 574Q90 562 155 552" stroke="#292a27" stroke-width="2"/>
+</svg>

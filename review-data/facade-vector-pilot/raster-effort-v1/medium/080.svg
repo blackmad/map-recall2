@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 275 873" width="275" height="873">
+<rect width="275" height="873" fill="#e8e9e5"/>
+<path d="M0 80L86 0L151 75L275 76V780H0Z" fill="#483c38"/>
+<!-- pitched gable -->
+<path d="M0 80L86 0L151 76L275 76V107L152 104L86 29L0 111Z" fill="#655a54"/><path d="M0 106L86 27L151 102L275 103" stroke="#b4a999" stroke-width="5" fill="none"/>
+<path d="M0 107H275V780H0Z" fill="#4c3f3a"/>
+<!-- brick bands -->
+<path d="M0 347H275 M0 497H275 M0 648H275" stroke="#745d50" stroke-width="4"/>
+<!-- attic arched window -->
+<path d="M52 153Q53 125 78 117Q103 125 105 153V221H52Z" fill="#786b5e"/><path d="M59 156Q60 132 78 128Q97 133 98 156V214H59Z" fill="#b6b8b0" stroke="#ded8ca" stroke-width="4"/><path d="M58 161H99 M59 168H98" stroke="#61574e" stroke-width="4"/>
+<!-- small upper window -->
+<rect x="179" y="126" width="43" height="62" fill="#a9b4ae" stroke="#c9c1b2" stroke-width="6"/><path d="M182 130H219 M200 129V186" stroke="#777268" stroke-width="3"/>
+<!-- top row three openings -->
+<path d="M17 254Q33 224 54 253V322H17Z M95 254Q116 228 138 253V322H95Z M184 254Q204 227 226 253V322H184Z" fill="#756659"/>
+<path d="M24 260Q35 239 48 260V315H24Z M102 260Q116 240 131 260V315H102Z M191 260Q204 239 219 260V315H191Z" fill="#b1b7b0" stroke="#ddd4c4" stroke-width="4"/><path d="M23 279H49 M101 279H132 M190 279H220" stroke="#62594f" stroke-width="4"/>
+<!-- center balcony and upper door -->
+<rect x="101" y="264" width="30" height="53" fill="#aab4ad" stroke="#cfc7b7" stroke-width="3"/><path d="M116 266V316" stroke="#68645b" stroke-width="3"/><path d="M87 316H145L152 329H82Z" fill="#6b574b"/><path d="M84 328H151V356H84Z" fill="#493b36"/><path d="M86 331H149V350H86Z" fill="#8a7866" fill-opacity=".7"/><path d="M89 331V355 M99 331V355 M110 331V355 M121 331V355 M132 331V355 M143 331V355" stroke="#c5b49b" stroke-width="2"/>
+<!-- second row -->
+<path d="M17 401Q34 374 54 400V470H17Z M94 401Q115 375 139 400V470H94Z M184 401Q204 375 226 400V470H184Z" fill="#756659"/>
+<path d="M24 407Q35 386 48 407V463H24Z M101 407Q116 386 132 407V463H101Z M191 407Q204 386 219 407V463H191Z" fill="#b1b7b0" stroke="#ddd4c4" stroke-width="4"/><path d="M23 427H49 M101 427H132 M190 427H220" stroke="#62594f" stroke-width="4"/>
+<!-- French doors with balconies -->
+<rect x="100" y="399" width="34" height="72" fill="#aeb7b1" stroke="#cfc6b5" stroke-width="4"/><path d="M117 401V469 M101 430H133" stroke="#666159" stroke-width="3"/><path d="M86 468H147L153 480H82Z" fill="#715b4d"/><path d="M86 478H150V507H86Z" fill="#463b35" fill-opacity=".75"/><path d="M90 479V505 M101 479V505 M112 479V505 M123 479V505 M134 479V505 M145 479V505" stroke="#bcaa91" stroke-width="2"/>
+<!-- bottom window row -->
+<path d="M17 551Q34 527 54 550V622H17Z M94 551Q115 526 139 550V622H94Z M184 551Q204 526 226 550V622H184Z" fill="#756659"/>
+<path d="M24 558Q35 538 48 558V615H24Z M101 558Q116 537 132 558V615H101Z M191 558Q204 537 219 558V615H191Z" fill="#aeb8b2" stroke="#ded5c5" stroke-width="4"/><path d="M23 578H49 M101 578H132 M190 578H220" stroke="#635950" stroke-width="4"/>
+<rect x="100" y="549" width="34" height="68" fill="#aeb8b2" stroke="#d4ccbb" stroke-width="4"/><path d="M117 552V615 M102 578H132" stroke="#665f56" stroke-width="3"/><path d="M85 615H151V628H85Z" fill="#715b4d"/><path d="M88 626H150V655H88Z" fill="#453a34" fill-opacity=".8"/><path d="M92 628V653 M103 628V653 M114 628V653 M125 628V653 M136 628V653 M147 628V653" stroke="#bda98e" stroke-width="2"/>
+<!-- shopfront and blue fascia -->
+<path d="M0 662H275V704H0Z" fill="#24768c"/><path d="M0 699H275V710H0Z" fill="#d6d0c1"/><path d="M0 710H275V779H0Z" fill="#71695c"/><path d="M18 715H95V777H18Z M104 715H183V777H104Z M191 715H266V777H191Z" fill="#a2aaa4" stroke="#d1c8b6" stroke-width="4"/><path d="M56 716V777 M144 716V777 M228 716V777" stroke="#6d7068" stroke-width="3"/>
+<!-- storefront text band and blurred street foreground -->
+<path d="M0 778H275V873H0Z" fill="#514c46"/><path d="M0 779H275" stroke="#c2b9a8" stroke-width="5"/><path d="M14 803H259" stroke="#d3caba" stroke-width="3"/><path d="M0 824H275" stroke="#393a37" stroke-width="8"/>
+<path d="M3 831H49V873H3Z M64 833H102V873H64Z M186 832H232V873H186Z" fill="#77766f"/><path d="M10 837H45V867H10Z M69 838H98V867H69Z M192 837H226V867H192Z" fill="#424b49"/>
+<!-- horizontal street wires, downpipe, hanging sign -->
+<path d="M0 190H275 M0 244H275 M0 388H275 M0 539H275" stroke="#332f2c" stroke-width="3" opacity=".8"/>
+<path d="M258 76V806" stroke="#918979" stroke-width="3"/><path d="M151 189L151 228 M139 225H164L157 251H145Z" fill="#9a8b77"/><path d="M145 249H158V264H145Z" fill="#b6a58b"/>
+<path d="M0 780L24 771L34 873H0Z M248 782L275 767V873H255Z" fill="#66615a" opacity=".8"/>
+</svg>

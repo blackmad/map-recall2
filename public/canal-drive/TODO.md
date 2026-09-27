@@ -63,6 +63,14 @@ quality gates remain. Results: `scripts/facade-eval/FACADE_VECTOR_PILOT.md`.
 One GLM4.6V request timed out without usage/ID; its $0.06 remains reserved in the
 shared ledger. Reconcile that charge before further paid inference; do not replay
 it or zero/reset the ledger. Free/local diagnostics can proceed independently.
+The three-source raster→VTracer and GPT-6 Luna low/medium/high agent trials are
+now in `/data/facade-review-galleries/raster-effort-v1/index.html`. Raster output
+is more detailed but changes framing/colour and invents obscured shop geometry;
+tracing does not repair it. GPT effort needs repeated metered trials: these agent
+sessions do not measure per-image API cost/latency. A native-pixel, streaming
+metered runner is ready, blocked by the same unresolved charge. Next compare
+against fixed observed bounds and a generic raster prompt on ten controls.
+Details: `docs/plans/facade-raster-effort-pilot.md`.
 
 **OccFacade follow-up: validate full-facade proposals before integration.**
 All 100 cohort full views now have OccFacade/Vistas intersection masks. All 100

@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — raster/vector and GPT effort diagnostics
+
+Executed three built-in imagegen reconstructions (sources0/17/80) and local
+VTracer0.6.15 conversion: 350–755 paths, 140–313KB, 0.29–0.35s tracing per facade.
+The main errors precede tracing: geometry regularization, brighter material
+colours, missing small openings and invented hidden storefronts. Source-informed
+raster prompts make this an exploratory workflow test, not a fair model ranking.
+Ran GPT-6 Luna fresh agents at low/medium/high on the same three original photos
+and generic native-pixel SVG prompt. No iteration, no metered API cost claims.
+Published all results at `raster-effort-v1`; none accepted into game data.
+Added a separate bounded GPT API effort runner with early SSE generation-ID
+capture, native-pixel SVG sanitization, synthetic stream and sanitizer tests.
+The old GLM timeout charge remains reserved and blocks paid inference.
+
 ## 2026-09-27 — corrected stretched SVG arch rendering
 
 Structured SVG geometry now converts normalized points into native source pixels

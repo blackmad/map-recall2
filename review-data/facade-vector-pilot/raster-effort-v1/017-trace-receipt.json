@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "policy": "Pixel tracing only; source identity, architectural geometry and material are not verified or accepted.",
+  "source": {
+    "path": "/Users/blackmad/Code/map-recall2/.worktrees/amsterdam-facade-rebuild/.cache/facade-assessment/raster-vector-v1/017-generated.png",
+    "sha256": "71c6fde48ade33584ee7ffb6c58c2027f988cc8c7fa4ba09fd1f652837957dfc",
+    "width": 1236,
+    "height": 1273,
+    "bytes": 926511
+  },
+  "preprocessing": {
+    "maxSide": 1600,
+    "paletteColors": 32,
+    "dither": 0,
+    "resizeFit": "inside",
+    "withoutEnlargement": true,
+    "rotateExif": true
+  },
+  "traceInput": {
+    "path": "trace-input.png",
+    "sha256": "111960407a136f2c5106b8f55f4d02c166b24d4a64e4985fe2c874613ec6e916",
+    "width": 1236,
+    "height": 1273,
+    "bytes": 522123
+  },
+  "tool": {
+    "name": "vtracer-python",
+    "version": "0.6.15",
+    "settings": {
+      "colormode": "color",
+      "hierarchical": "cutout",
+      "mode": "spline",
+      "filter_speckle": 8,
+      "color_precision": 6,
+      "layer_difference": 16,
+      "corner_threshold": 60,
+      "length_threshold": 4,
+      "max_iterations": 10,
+      "splice_threshold": 45,
+      "path_precision": 2
+    },
+    "elapsedSeconds": 0.321716
+  },
+  "svg": {
+    "path": "facade.svg",
+    "sha256": "604a21f695eb9dcab6388d126bf4392f791da96ed71a89e508191af4a5443c8a",
+    "width": 1236,
+    "height": 1273,
+    "pathCount": 350,
+    "bytes": 139511
+  },
+  "rendered": {
+    "path": "render.png",
+    "sha256": "785a80c3cb1dc6c829e827aaf6b7623e5005655e6ac144357a18fddfc25e0aa1",
+    "width": 1236,
+    "height": 1273,
+    "bytes": 96489
+  }
+}

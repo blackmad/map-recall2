@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "status": "diagnostic-not-accepted",
+  "sources": [
+    0,
+    17,
+    80
+  ],
+  "rasterReview": {
+    "reviewers": [
+      "root",
+      "sol_colour"
+    ],
+    "finding": "Main fidelity loss occurs at photo-to-raster generation, not local vector tracing. Source-informed prompts are a confound; no broad accuracy claim.",
+    "source0": "Upper opening inventory and wide double entrance retained. Framing changes substantially, facade is brighter/redder and idealized. Vector trace preserves those changes and flattens fine detail.",
+    "source17": "Three upper rows and stacked balconies retained. Small ground-left glass-block window disappears; lower windows and entry regularized. Wall/base colours brighter and smoother than source.",
+    "source80": "Gable, top arched window, right rectangular opening and three balconies retained. Source rectangular apertures versus arched lintels better represented than old structured output. Roof/stone details idealized; uncertain shopfront replaced with invented generic glass and door."
+  },
+  "effortReview": {
+    "status": "completed-not-accepted",
+    "reviewers": [
+      "root",
+      "sol_colour"
+    ],
+    "method": "Independent reviewer first saw A/B/C without effort labels, then inspected individual renders; root knew labels. Visual judgments, not ground truth or measured accuracy.",
+    "source0": {
+      "preferred": "high",
+      "finding": "High best preserves double entrance and window detail. Low simplifies ground opening and entrance; medium adds slanted black lines and oversized entrance arch. High still invents crisp glazing and foliage."
+    },
+    "source17": {
+      "preferred": "high-narrowly",
+      "finding": "High retains more varied balcony and lower-floor evidence; low flattens balconies, medium invents triangular balcony hood. High adds unsupported mullions/strokes and cartoon cars/plants."
+    },
+    "source80": {
+      "preferred": "medium",
+      "finding": "Medium keeps three balcony rows and better opening arrangement. Low adds extra side openings; high shortens/rounds windows, omits middle balcony and invents expanded bright storefront. Medium also changes trim and shop geometry."
+    },
+    "conclusion": "High improves two examples but regresses the third. No monotonic effort benefit, no accepted output; repeat metered trials before cost/quality decision."
+  },
+  "cost": {
+    "rasterToolUsd": null,
+    "agentSessionsUsd": null,
+    "newOpenRouterRequests": 0,
+    "vectorizationApiUsd": 0
+  },
+  "limitations": [
+    "Three images, one attempt per condition",
+    "Agent sessions are not metered single-call API tests",
+    "Imagegen received bespoke photo observations; GPT received a generic shared prompt",
+    "No source identity or world registration verified",
+    "No output accepted into game data"
+  ],
+  "validation": {
+    "nativeSvgSanitizer": "9/9 passed",
+    "galleryDesktopWidth": 1440,
+    "galleryPhoneWidth": 390,
+    "loadedImages": 18,
+    "brokenImages": 0,
+    "pageErrors": 0,
+    "horizontalOverflow": false
+  }
+}

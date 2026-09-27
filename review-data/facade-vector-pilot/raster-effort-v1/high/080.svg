@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="275" height="873" viewBox="0 0 275 873">
+<rect width="275" height="873" fill="#f6f7f4"/>
+<path d="M0 74L81 0l53 72 141 0v801H0z" fill="#51403b"/>
+<path d="M0 78L81 5l51 70 143 0v8H131L81 13 0 86z" fill="#8c877d"/><path d="M0 85h275v5H0z" fill="#6a5b52"/>
+<path d="M0 91h275v782H0z" fill="#553e37"/>
+<path d="M0 93h275v780H0z" fill="#593f37"/>
+<!-- brick course texture -->
+<g stroke="#72564a" stroke-width="1" opacity=".7"><path d="M0 114h275M0 141h275M0 168h275M0 197h275M0 216h275M0 301h275M0 326h275M0 420h275M0 444h275M0 554h275M0 575h275M0 631h275"/><path d="M20 94v20m39 0v27m38-27v27m37-27v27m44-27v27m37-27v27m36-27v27M0 141v27m31-27v27m39-27v27m38-27v27m39-27v27m36-27v27m42-27v27m-28 50v28m-41-28v28m-43-28v28m-40-28v28m-33-28v28m30 85v25m42-25v25m41-25v25m40-25v25m40-25v25M20 420v24m41-24v24m42-24v24m41-24v24m41-24v24m42-24v24M0 554v21m37-21v21m43-21v21m44-21v21m41-21v21m41-21v21m41-21v21"/></g>
+<!-- attic arched and square windows -->
+<path d="M51 124Q51 96 74 96Q98 98 99 125v65H51z" fill="#9a8c78"/><path d="M57 125Q58 103 75 103Q92 104 93 126v57H57z" fill="#ccd0c7"/><path d="M60 128h30v19H60z" fill="#9eaaab"/><path d="M60 150h30v31H60z" fill="#899b9e"/><path d="M57 147h36m-18-19v52" stroke="#eee9d9" stroke-width="3"/><path d="M50 122q0-30 25-30 26 0 26 30h-5q-2-23-21-23t-20 23z" fill="#d3cbbb"/>
+<rect x="177" y="120" width="39" height="64" fill="#9b8e7a"/><rect x="183" y="126" width="27" height="52" fill="#c6c7bd"/><path d="M186 130h21v44h-21z" fill="#9aa7a6"/><path d="M181 121h32v6h-32zM181 178h32v6h-32z" fill="#d7d0be"/>
+<!-- upper row: arched side windows and central balcony door -->
+<path d="M15 255Q16 226 44 224Q72 225 73 256v39H15zM91 254Q93 227 121 226Q148 227 149 255v57H91zM171 255Q172 226 200 224Q227 225 228 256v39h-57z" fill="#958673"/>
+<path d="M21 258Q22 234 44 232Q66 233 67 258v29H21zM97 257Q99 234 121 233Q142 234 143 257v48H97zM177 258Q178 234 200 232Q221 233 222 258v29h-45z" fill="#c6c7bd"/>
+<path d="M24 262h40v22H24zM100 262h40v18h-40zM180 262h39v22h-39z" fill="#91a0a1"/><path d="M24 285h40v-1h-40zM100 283h40v20h-40zM180 285h39v-1h-39z" fill="#899b9f"/><path d="M22 257h43M98 257h43M178 257h43m-97 4v41" stroke="#eee8d8" stroke-width="3"/>
+<path d="M16 250q2-30 28-30 27 1 29 30h-6q-3-23-23-23t-22 23zM92 249q2-29 29-29 27 1 29 29h-6q-3-22-23-22t-22 22zM172 250q2-30 28-30 27 1 29 30h-6q-3-23-23-23t-22 23z" fill="#cfc6b6"/>
+<!-- balcony doors, canopy and guardrail -->
+<path d="M93 213q26-34 55 0l-4 10H97z" fill="#756054"/><path d="M101 229h38v72h-38z" fill="#bfc5ba"/><path d="M105 233h30v64h-30z" fill="#85999b"/><path d="M120 233v64m-15-35h30" stroke="#ece6d6" stroke-width="3"/>
+<path d="M91 300h60v6h-60z" fill="#a9967d"/><path d="M85 305h73v5l-8 5H92z" fill="#6b5146"/><path d="M86 308h71v3" fill="none" stroke="#c4b395" stroke-width="2"/>
+<path d="M92 308v32m12-32v34m12-34v34m12-34v34m12-34v34m12-34v34m-61-1h63" fill="none" stroke="#322d29" stroke-width="2"/>
+<!-- middle row -->
+<path d="M15 390Q16 359 44 357Q72 359 73 391v32H15zM91 387h58v68H91zM171 390Q172 359 200 357Q227 359 228 391v32h-57z" fill="#948572"/>
+<path d="M21 393Q22 366 44 365Q66 366 67 393v24H21zM98 393h44v55H98zM177 393Q178 366 200 365Q221 366 222 393v24h-45z" fill="#c8c9bf"/>
+<path d="M24 397h40v17H24zM101 398h38v47h-38zM180 397h39v17h-39z" fill="#8d9b9c"/><path d="M22 392h43m34 0h44m34 0h44" stroke="#f1ebdc" stroke-width="3"/><path d="M44 398v17m77-16v44m79-45v17" stroke="#f1ebdc" stroke-width="3"/>
+<path d="M16 385q2-30 28-30 27 0 29 30h-6q-3-23-23-23t-22 23zM172 385q2-30 28-30 27 0 29 30h-6q-3-23-23-23t-22 23z" fill="#d1c8b7"/>
+<path d="M94 383h54v5H94z" fill="#776459"/>
+<path d="M91 448h61v8H91z" fill="#544137"/><path d="M97 452h49v86H97z" fill="#c4c7bd"/><path d="M102 457h39v75h-39z" fill="#7f9194"/><path d="M121 457v74m-17-48h38" stroke="#eee9d9" stroke-width="3"/>
+<path d="M91 536h65v5H91zM85 541h77v6H85z" fill="#ab977d"/><path d="M87 545v30m12-30v31m12-31v31m12-31v31m12-31v31m12-31v31m12-31v31M86 575h71" fill="none" stroke="#332c28" stroke-width="2"/>
+<!-- lower arched windows -->
+<path d="M15 492Q16 461 44 459Q72 461 73 493v39H15zM171 492Q172 461 200 459Q227 461 228 493v39h-57z" fill="#928471"/>
+<path d="M21 495Q22 468 44 467Q66 468 67 495v29H21zM177 495Q178 468 200 467Q221 468 222 495v29h-45z" fill="#c6c7bd"/>
+<path d="M24 499h40v20H24zM180 499h39v20h-39zM24 522h40v-2H24zM180 522h39v-2h-39z" fill="#88999b"/><path d="M22 494h43m112 0h44" stroke="#eee8d8" stroke-width="3"/><path d="M44 499v23m156-23v23" stroke="#eee8d8" stroke-width="3"/>
+<path d="M16 487q2-30 28-30 27 0 29 30h-6q-3-23-23-23t-22 23zM172 487q2-30 28-30 27 0 29 30h-6q-3-23-23-23t-22 23z" fill="#cfc6b6"/>
+<!-- awning/store fascia -->
+<path d="M0 590h275v34H0z" fill="#197a99"/><path d="M0 590h275v5H0z" fill="#9aa6a0"/><path d="M0 620h275v8H0z" fill="#d4d0bd"/>
+<path d="M0 627h275v15H0z" fill="#f0eee4"/><path d="M0 642h275v231H0z" fill="#6b6259"/>
+<!-- storefront panes, partially obscured -->
+<path d="M12 649h93v106H12zM112 649h69v107h-69zM187 649h78v112h-78z" fill="#8caaa8"/><path d="M17 654h83v94H17zM117 654h59v96h-59zM192 654h68v101h-68z" fill="#b5c3bd"/>
+<path d="M106 647v112m77-112v116m-83-108h4m-83-5h83m17 6h59m15 0h68" stroke="#5e554d" stroke-width="4"/>
+<path d="M0 754h275v119H0z" fill="#77746d" opacity=".86"/><path d="M0 769l32-12 20 18 15-13 21 18 22-17 25 22 17-21 20 19 23-15 19 20 24-20 37 18v107H0z" fill="#8b8a82" opacity=".72"/>
+<!-- foreground bicycle and cropped street silhouettes -->
+<circle cx="54" cy="847" r="20" fill="none" stroke="#55514b" stroke-width="3"/><circle cx="120" cy="847" r="19" fill="none" stroke="#55514b" stroke-width="3"/><path d="M54 847l21-31 18 31H54l17-24h24l25 24m-18-35h13m-27 0h15" fill="none" stroke="#484743" stroke-width="3"/>
+<path d="M0 860h275v13H0z" fill="#625f58"/><path d="M236 666h39v207h-39z" fill="#77736a" opacity=".45"/>
+</svg>

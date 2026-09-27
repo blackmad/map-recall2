@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 679 699" width="679" height="699">
+<rect width="679" height="699" fill="#fbfbf9"/>
+<path d="M0 128L679 124V699H0Z" fill="#c5c29b"/><path d="M0 126H679V135H0Z" fill="#877f6c"/>
+<!-- broad plaster facade -->
+<path d="M0 136H679V559H0Z" fill="#c5c29b"/>
+<!-- basement brick band -->
+<path d="M0 557H679V699H0Z" fill="#886f5e"/><path d="M0 570H679 M0 592H679 M0 614H679" stroke="#9e8973" stroke-width="2"/>
+<!-- left windows, three levels -->
+<g fill="#b6cfce" stroke="#e8e6d9" stroke-width="5"><rect x="33" y="201" width="64" height="61"/><rect x="118" y="201" width="64" height="61"/><rect x="34" y="323" width="63" height="63"/><rect x="119" y="323" width="63" height="63"/><rect x="34" y="447" width="63" height="64"/><rect x="119" y="447" width="63" height="64"/></g>
+<g stroke="#758785" stroke-width="3"><path d="M65 203V260 M151 203V260 M65 325V384 M151 325V384 M65 449V509 M151 449V509"/><path d="M36 207H94 M121 207H180 M37 329H95 M122 329H180 M37 453H95 M122 453H180"/></g>
+<!-- recessed balcony stack -->
+<path d="M218 191H337V557H218Z" fill="#756d57"/><path d="M219 191H338V285H219Z" fill="#716852"/><path d="M219 316H338V406H219Z" fill="#756c56"/><path d="M219 437H338V526H219Z" fill="#736b54"/>
+<path d="M218 284H338V317H218Z M218 405H338V438H218Z M218 526H338V557H218Z" fill="#bfc3b2" stroke="#e2e2d6" stroke-width="4"/>
+<path d="M220 276H336V285H220Z M220 397H336V406H220Z M220 518H336V527H220Z" fill="#d8d8ca"/>
+<!-- balcony glass and rails -->
+<g fill="#a9bfba" fill-opacity=".72" stroke="#d9ded5" stroke-width="3"><path d="M220 253H336V282H220Z M220 374H336V403H220Z M220 495H336V524H220Z"/></g><g stroke="#76827c" stroke-width="2"><path d="M230 254V282 M246 254V282 M262 254V282 M278 254V282 M294 254V282 M310 254V282 M326 254V282 M230 375V403 M246 375V403 M262 375V403 M278 375V403 M294 375V403 M310 375V403 M326 375V403 M230 496V524 M246 496V524 M262 496V524 M278 496V524 M294 496V524 M310 496V524 M326 496V524"/></g>
+<path d="M218 191H338L318 160H236Z" fill="#79735e"/>
+<!-- canopy umbrellas and plants -->
+<path d="M245 245L258 216L268 245Z M286 247L301 220L312 247Z" fill="#b5e0dd"/><path d="M237 254H278V266H237Z M282 254H324V266H282Z" fill="#464d49"/>
+<path d="M225 489Q241 465 252 488 M302 490Q314 468 331 489" stroke="#576849" stroke-width="5" fill="none"/>
+<!-- right windows -->
+<g fill="#a8ced2" stroke="#e8e5d8" stroke-width="5"><rect x="372" y="201" width="63" height="61"/><rect x="508" y="201" width="63" height="61"/><rect x="594" y="201" width="64" height="61"/><rect x="372" y="323" width="63" height="63"/><rect x="508" y="323" width="63" height="63"/><rect x="594" y="323" width="64" height="63"/><rect x="372" y="447" width="63" height="64"/><rect x="508" y="447" width="63" height="64"/><rect x="594" y="447" width="64" height="64"/></g>
+<g stroke="#718687" stroke-width="3"><path d="M403 203V260 M539 203V260 M626 203V260 M403 325V384 M539 325V384 M626 325V384 M403 449V509 M539 449V509 M626 449V509"/><path d="M374 207H433 M510 207H569 M596 207H656 M374 329H433 M510 329H569 M596 329H656 M374 453H433 M510 453H569 M596 453H656"/></g>
+<!-- lower openings -->
+<g fill="#59615b" stroke="#b8ae98" stroke-width="4"><rect x="31" y="571" width="31" height="80"/><rect x="65" y="571" width="29" height="80"/><rect x="375" y="571" width="45" height="83"/><rect x="435" y="571" width="47" height="83"/><rect x="511" y="571" width="48" height="83"/><rect x="597" y="571" width="48" height="83"/></g>
+<rect x="149" y="573" width="49" height="99" fill="#9ba8a5" stroke="#aaa18a" stroke-width="5"/><circle cx="173" cy="628" r="7" fill="#cfcbbb"/>
+<rect x="222" y="565" width="86" height="99" fill="#53605b" stroke="#b1ad98" stroke-width="4"/><path d="M264 567V662 M222 612H308" stroke="#b7b9ab" stroke-width="3"/>
+<rect x="31" y="572" width="27" height="26" fill="#a3b7b0"/><path d="M31 585H58 M44 572V598" stroke="#817e6d" stroke-width="2"/>
+<path d="M0 678H679" stroke="#494942" stroke-width="7"/>
+<!-- roof lamp bars, aerial, sign, cars and shrubs -->
+<path d="M51 141L69 194 M238 143L279 184 M618 141L594 185" stroke="#898777" stroke-width="7"/>
+<path d="M278 127L287 0 M269 57H320" stroke="#404847" stroke-width="5"/>
+<rect x="434" y="537" width="22" height="50" fill="#64737b"/><path d="M446 538V587" stroke="#ced0c5" stroke-width="2"/>
+<path d="M0 642Q22 622 46 638L75 699H0Z M451 650Q490 624 520 653L544 699H426Z M604 649Q645 623 679 648V699H580Z" fill="#425b38"/>
+<path d="M0 664H187L231 699H0Z" fill="#ecece6"/><path d="M41 664H165L182 699H31Z" fill="#3c4d4e"/><path d="M271 687Q293 638 401 647Q450 654 468 699H252Z" fill="#333a3b"/><path d="M324 650H393L425 685H300Z" fill="#859092"/><path d="M468 688Q527 641 616 659L679 698Z" fill="#30383a"/>
+</svg>
