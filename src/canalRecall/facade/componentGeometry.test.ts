@@ -66,10 +66,14 @@ test('standalone balcony does not invent an aperture', () => {
 
 test('reviewed arched entrance cuts its polygon exactly and leaves outer trim intact', () => {
   const outline = [[0.3, 0.8], [0.3, 0.35], [0.37, 0.25], [0.5, 0.2], [0.63, 0.25], [0.7, 0.35], [0.7, 0.8]] as const;
-  const result = applyEntranceAssembly([wall()], {id: 'door', outline, depth: 0.65});
+  const result = applyEntranceAssembly([wall()], {id: 'door', outline, depth: 0.65, basePosts: true});
   assert.equal(result.stats.accepted, true);
   assert.ok(result.stats.cutAreaUv > 0.2);
   assert.deepEqual(result.stats.focus?.outward, [0, 0, 1]);
+  assert.ok(Math.abs(result.stats.focus!.center[1]-2)<1e-6, 'camera focus uses full-height midpoint, not arch vertex density');
+  const posts=result.meshes.filter(m=>m.id.includes(':stone-post:'));
+  assert.equal(posts.length,2);
+  assert.ok(posts.every(m=>m.positions.filter((_,i)=>i%3===2).every(z=>z>0)), 'stone posts stand in front of mouth');
   const retained = result.meshes.find(mesh => mesh.id === 'front');
   assert.ok(retained?.uvs);
   const onOriginalWall = (point: readonly [number, number]) => {

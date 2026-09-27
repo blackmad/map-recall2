@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — Reviewed entrance assembly
+
+Replaced the reported glass-box doorway with a complete source-bound reviewed
+arch cut, recessed door/transom and solid reveals. Removed duplicate painted
+arch/reveal; replaced intersected painted stone posts with foreground geometry.
+Added entrance close-up and camera-preserving before/after toggle. Geometry depth
+is inferred; this is one fixture, not automated detection. Ground-floor candidate
+frames are withheld in the repaired branch. Close-up self-review and independent
+review caught defects before the final revision. Six geometry tests and six
+desktop/phone view checks pass; other balcony/awning work remains open.
+
 ## 2026-09-27 — Automatic facade component experiment
 
 Added fifth facade-atelier study with automatic image candidates mapped into

@@ -11,7 +11,7 @@ Within a tier, cheap-and-blocking comes before expensive-and-isolated.
 
 Building / façade / 3D mesh work is owned by other agents — do not queue it
 here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
-`HISTORY.md`. The isolated facade atelier follow-up (ground-door classification,
+`HISTORY.md`. The isolated facade atelier follow-up (automatic assembly classification beyond the reviewed entrance,
 clean wall-colour textures, missing mullions and inferred-depth validation) is tracked in
 `docs/plans/facade-texture-3d-pilot.md`.
 

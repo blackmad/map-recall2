@@ -287,6 +287,7 @@ export function applyFacadeComponents(sourceMeshes: readonly MeshData[], feature
 }
 
 export interface EntranceAssembly {
+  basePosts?: boolean;
   id: string;
   /** Convex visible opening outline in normalized source-image coordinates (y down). */
   outline: readonly Vec2[];
@@ -446,9 +447,24 @@ export function applyEntranceAssembly(sourceMeshes: readonly MeshData[], entranc
     }
   }
   const focusCenter = mul(front.reduce<Vec3>((sum, p) => add(sum, p), [0, 0, 0]), 1 / front.length);
+  const centeredFocus:Vec3=[focusCenter[0],(Math.min(...front.map(p=>p[1]))+Math.max(...front.map(p=>p[1])))/2,focusCenter[2]];
+  if(entrance.basePosts){
+    const tangent=unit(cross([0,1,0],normal));
+    const feet=front.filter(p=>Math.abs(p[1]-Math.min(...front.map(v=>v[1])))<1e-4);
+    for(const [j,foot] of feet.entries()){
+      const post=solid(`entrance:${entrance.id}:stone-post:${j}`,'#72736c');
+      const profile:number[][]=[[-.17,0],[.17,0]];
+      for(let k=0;k<=16;k++){const a=k*Math.PI/16;profile.push([.17*Math.cos(a),.61+.17*Math.sin(a)]);}
+      const ring=(depth:number)=>profile.map(([x,y])=>add(add(add(foot,mul(tangent,x)),[0,y,0]),mul(normal,depth)));
+      const backPost=ring(.04),frontPost=ring(.28);
+      for(let k=1;k<frontPost.length-1;k++){const b=post.positions.length/3;post.positions.push(...frontPost[0],...frontPost[k],...frontPost[k+1]);post.indices.push(b,b+1,b+2);}
+      for(let k=0;k<frontPost.length;k++)quad(post,backPost[k],backPost[(k+1)%frontPost.length],frontPost[(k+1)%frontPost.length],frontPost[k]);
+      output.push(post);
+    }
+  }
   const horizontal = unit(cross([0, 1, 0], normal));
   const projected = front.map(p => p[0] * horizontal[0] + p[1] * horizontal[1] + p[2] * horizontal[2]);
   const widthM = Math.max(...projected) - Math.min(...projected);
   const heightM = Math.max(...front.map(p => p[1])) - Math.min(...front.map(p => p[1]));
-  return {meshes: output, stats: {accepted: true, cutAreaUv: cutArea, focus: {center: focusCenter, outward: normal, widthM, heightM}}};
+  return {meshes: output, stats: {accepted: true, cutAreaUv: cutArea, focus: {center: centeredFocus, outward: normal, widthM, heightM}}};
 }

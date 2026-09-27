@@ -177,3 +177,32 @@ Nano Banana; TRELLIS.2 isolated facade/detail generation and existing-shape
 texturing versus this deterministic geometry. Neither has been run here. MAI
 image-edit endpoint verified through OpenRouter; TRELLIS official setup requires
 Linux/NVIDIA >=24 GB. Keep shape/location accuracy separate from visual appeal.
+
+## Reviewed entrance assembly — close-up regression
+
+`?study=components&focus=entrance` opens the exact reported entrance. Entrance
+repair toggles the old glass-box treatment and a complete assembly without
+moving the camera. This is one reviewed generated-image fixture, not automatic
+entrance extraction. Source hash, fitted outer arch, estimated depth and local
+stone-post paint masks live in
+`review-data/facade-vector-pilot/head-on-3d-v1/entrance-assembly.json`.
+
+The wall is cut to the full convex arch; solid reveals, opaque rear door, paired
+glazing and arched transom sit 0.65 m behind it. The depth is inferred. The outer
+edge follows a quadratic fitted within the reviewed image region, with a 2 px
+coverage margin to remove the old black outline. Two foreground stone posts
+replace painted posts that the cut would otherwise bisect. Their dimensions and
+material are simplified. Automatic ground-floor glass-box frames are withheld
+in the repaired branch; their original appearance remains until assemblies are
+classified correctly.
+
+Root and independent Sol close-up review caught/fixed a remaining painted arch,
+painted reveal, clipped stone posts and a camera that hid the threshold. The
+revised front and both oblique views show a coherent provisional entrance.
+Six geometry tests pass, including retained wall outside the polygon, recessed
+panel depth, foreground posts and full-height camera focus. Six desktop/phone
+view-toggle checks pass. Other balconies and awnings remain unresolved; this is
+not a whole-facade or neighbourhood acceptance claim. No paid generation.
+
+Rebuild with `node --import tsx scripts/review/build-component-scene.ts`;
+review with `node scripts/review/check-entrance-assembly.mjs`.

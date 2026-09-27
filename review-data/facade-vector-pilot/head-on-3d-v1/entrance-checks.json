@@ -1,0 +1,47 @@
+{
+  "checks": [
+    {
+      "width": 1440,
+      "view": "front"
+    },
+    {
+      "width": 1440,
+      "view": "oblique"
+    },
+    {
+      "width": 1440,
+      "view": "reverse"
+    },
+    {
+      "width": 390,
+      "view": "front"
+    },
+    {
+      "width": 390,
+      "view": "oblique"
+    },
+    {
+      "width": 390,
+      "view": "reverse"
+    }
+  ],
+  "failures": [],
+  "visualReview": {
+    "reviewers": [
+      "root",
+      "sol_colour"
+    ],
+    "result": "provisional entrance coherent in front and both oblique views",
+    "fixed": [
+      "duplicate cream glass-box frame",
+      "painted arch and right reveal",
+      "clipped foreground stone posts",
+      "camera hiding threshold"
+    ],
+    "limits": [
+      "traced generated-image fixture",
+      "depth and post dimensions inferred",
+      "other balconies and awnings unresolved"
+    ]
+  }
+}
