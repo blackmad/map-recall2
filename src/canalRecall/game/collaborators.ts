@@ -17,6 +17,18 @@ export interface Camera {
   maxZoom: number;
   pan(deltaX: number, deltaY: number): void;
   resetPan(): void;
+  /** View centre in world px. The intro flight drives these directly. */
+  x: number;
+  y: number;
+  rotation: number;
+  northUp: boolean;
+  holdHeading: boolean;
+  bearingOffset: number;
+  viewMode: string;
+  reducedMotion: boolean;
+  /** 1 while the start-of-ride overview is up, easing to 0 as it lands; the
+   *  map flattens its tilt by this much. */
+  introOverview?: number;
 }
 
 export interface InputManager {
@@ -33,6 +45,8 @@ export interface InputManager {
   setViewport(viewport: import('../viewport.ts').Viewport): void;
   /** A tap on the map restarts a finished route; while driving it must not. */
   setTapRestartEnabled(enabled: boolean): void;
+  /** Any key edge, a touch on the canvas, or a held stick this frame. */
+  readonly anyInput: boolean;
 }
 
 /** One road segment of the loaded network, as `osm-loader.js` produces it. */

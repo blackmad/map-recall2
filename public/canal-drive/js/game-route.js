@@ -1210,6 +1210,7 @@ class GameRouteRuntime {
       await new Promise(r => setTimeout(r, 200));
 
       this.state = GameState.RACING;
+      this._beginIntro();
 
     } catch (err) {
       console.error('OSM loading error:', err);

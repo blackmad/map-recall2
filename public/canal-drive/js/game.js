@@ -256,6 +256,7 @@ class Game {
       if (this.routePattern === 'home') { this._startNextHomeLeg(); return; }
       this._setupRace();
       this.state = GameState.RACING;
+      this._beginIntro();
     } else if (id === 'route') {
       this._openRouteSetup();
     } else if (id === 'copy' && this._shareUrl) {
@@ -457,6 +458,10 @@ class Game {
   // ---- Racing sub-updates (extracted for readability) ----
 
   _updateRacing(dt) {
+    // The start-of-ride orientation flight owns the camera and holds the
+    // vehicle until it lands or the player does anything.
+    if (this._intro && this._updateIntro(dt)) return;
+
     this.raceTime += dt;
     for (const car of this.cars) car.totalTime = this.raceTime;
     if (this.routeOptions.line) this._assistUsage.line = true;

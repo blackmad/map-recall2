@@ -32,6 +32,7 @@ import {
 } from './neighborhoodPassport';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
+import { introFrame, introOverview, introPlan } from './introFlight';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
@@ -78,6 +79,139 @@ export class GamePresentationRuntime {
     const rect = this.canvas.getBoundingClientRect();
     if (!rect.width || !rect.height) return { x: 0, y: 0 };
     return { x: (event.clientX - rect.left) * CANVAS_W / rect.width, y: (event.clientY - rect.top) * CANVAS_H / rect.height };
+  }
+
+  // ---- Start-of-ride orientation flight ----
+
+  /** Open the ride on an overview of start and destination, then fly down.
+   *  Automated browsers skip it — dozens of specs inspect the driving camera
+   *  straight after spawning — unless they set `__canalRecallForceIntro`. */
+  _beginIntro(): void {
+    this._intro = null;
+    const player = this.player;
+    const finish = this.track?.finishPoint;
+    if (!player || !finish) return;
+    const forced = (window as unknown as { __canalRecallForceIntro?: boolean }).__canalRecallForceIntro;
+    if (navigator.webdriver && !forced) return;
+    this._syncHudLayout();
+    const layout = this._hudRects();
+    const top = layout.destinationInRecall
+      ? layout.recall.y + layout.recall.height
+      : Math.max(layout.recall.y + layout.recall.height, layout.destination.y + layout.destination.height);
+    const bottom = layout.dpad ? CANVAS_H - layout.dpad.bounds.y : 40;
+    const playZoom = this.camera.zoom;
+    const from = introOverview(
+      { x: player.x, y: player.y }, finish,
+      { width: CANVAS_W, height: CANVAS_H, top: top + 8, bottom: bottom + 8 },
+      playZoom,
+    );
+    this._intro = { plan: introPlan(from, this.camera.reducedMotion), elapsed: 0, playZoom, overview: 1 };
+    this.camera.resetPan();
+    this.camera.rotation = 0;
+    this.camera.introOverview = 1;
+    this._applyIntroCamera(from.x, from.y, from.zoom);
+  }
+
+  _applyIntroCamera(x: number, y: number, zoom: number): void {
+    this.camera.x = x;
+    this.camera.y = y;
+    this.camera.zoom = zoom;
+  }
+
+  /** Advance the flight. True while it still owns the frame. Any input skips
+   *  it: the flight is orientation, never a gate in front of the controls. */
+  _updateIntro(dt: number): boolean {
+    const intro = this._intro;
+    const player = this.player;
+    if (!intro || !player) return false;
+    const to = { x: player.x, y: player.y, zoom: intro.playZoom };
+    intro.elapsed += dt;
+    const frame = this.input.anyInput
+      ? { ...to, overview: 0, done: true }
+      : introFrame(intro.plan, to, intro.elapsed);
+    this._applyIntroCamera(frame.x, frame.y, frame.zoom);
+    intro.overview = frame.overview;
+    this.camera.introOverview = frame.overview;
+    // North-up on the overview, easing into the driving orientation, so a
+    // heading-up camera does not snap round at the landing.
+    const cam = this.camera;
+    const is3d = cam.viewMode === 'chase' || cam.viewMode === 'cockpit';
+    const wanted = (cam.northUp || cam.holdHeading ? 0 : player.angle + Math.PI / 2) + (is3d ? cam.bearingOffset : 0);
+    const delta = Math.atan2(Math.sin(wanted), Math.cos(wanted));
+    cam.rotation = delta * (1 - frame.overview);
+    if (frame.done) {
+      cam.zoom = intro.playZoom;
+      cam.introOverview = 0;
+      this._intro = null;
+      return false;
+    }
+    return true;
+  }
+
+  /** "You" and the way to the destination, while the overview is up. The
+   *  destination pin itself is the renderer's; it is screen-sized, so it
+   *  already reads at city scale. No street or canal names are drawn. */
+  _renderIntroOverlay(): void {
+    const intro = this._intro;
+    const player = this.player;
+    if (!intro || !player || intro.overview <= 0.02) return;
+    const ctx = this.ctx;
+    const surface = window.CanalRecallUi.hudSurface;
+    const alpha = Math.min(1, intro.overview * 1.4);
+    const here = this.camera.worldToScreen(player.x, player.y);
+    const finish = this.camera.worldToScreen(this.track.finishPoint.x, this.track.finishPoint.y);
+    ctx.save();
+    ctx.globalAlpha = alpha;
+
+    // A faint straight bearing between the two, not the route: the flight
+    // says which way, the ride teaches how.
+    ctx.strokeStyle = surface.arrow;
+    ctx.lineWidth = 2;
+    ctx.setLineDash([4, 7]);
+    ctx.beginPath();
+    ctx.moveTo(here.x, here.y);
+    ctx.lineTo(finish.x, finish.y);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Pulsing ring on the vehicle, which is a speck at this scale.
+    const pulse = (intro.elapsed % 1.2) / 1.2;
+    ctx.strokeStyle = surface.arrow;
+    ctx.lineWidth = 3;
+    ctx.globalAlpha = alpha * (1 - pulse);
+    ctx.beginPath();
+    ctx.arc(here.x, here.y, 10 + pulse * 22, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = surface.arrow;
+    ctx.strokeStyle = '#fbf8f2';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.arc(here.x, here.y, 7, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+
+    const tag = 'YOU';
+    ctx.font = `800 12px ${surface.fontPlaque}`;
+    const tagWidth = ctx.measureText(tag).width + 16;
+    const tagRect = { x: Math.round(here.x - tagWidth / 2), y: Math.round(here.y - 38), width: tagWidth, height: 20 };
+    this.hud.paperCard(ctx, tagRect, { solid: true, radius: 6 });
+    ctx.fillStyle = surface.ink;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(tag, here.x, tagRect.y + 11);
+
+    // Skip affordance where the stick will be (it is not drawn yet), or in
+    // the desktop controls-hint slot, which yields to it.
+    const layout = this._hudRects();
+    const hintY = layout.dpad ? layout.dpad.cy : CANVAS_H - 28;
+    const hint = layout.mode === 'compact' ? 'tap to start riding' : 'press any key to start';
+    ctx.font = `600 12px ${surface.fontUi}`;
+    const hintWidth = ctx.measureText(hint).width + 24;
+    this.hud.paperCard(ctx, { x: Math.round(CANVAS_W / 2 - hintWidth / 2), y: hintY - 12, width: hintWidth, height: 24 }, { radius: 9 });
+    ctx.fillStyle = surface.inkMuted;
+    ctx.fillText(hint, CANVAS_W / 2, hintY + 1);
+    ctx.restore();
   }
 
   /** Canvas camera controls and card hit targets belong with the presentation layer. */
@@ -243,6 +377,8 @@ export class GamePresentationRuntime {
     const player = this.player;
 
     this.hud.setTime(this.raceTime);
+    // The intro flight changes zoom every frame; that is not the player's zoom.
+    if (this._intro) this._lastZoomShown = this.camera.zoom;
     if (this._lastZoomShown !== this.camera.zoom) {
       this._lastZoomShown = this.camera.zoom;
       this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
@@ -388,8 +524,9 @@ export class GamePresentationRuntime {
     this._renderRecenterButton();
     if (this._debugMode) this._renderDebug();
     this._renderControlsHint();
+    this._renderIntroOverlay();
 
-    if (this.state === GameState.RACING && !this._overlayOpen()) {
+    if (this.state === GameState.RACING && !this._overlayOpen() && !this._intro) {
       // Last, so nothing can be drawn over the only way to steer — but not at
       // all while a question or panel owns the screen: the vehicle is stopped,
       // the card covers the stick, and a stick drawn under a card is dead controls.
@@ -498,7 +635,7 @@ export class GamePresentationRuntime {
   /** Only while the player is settling in. It used to sit permanently on top
    *  of the recall panel. */
   _renderControlsHint(): void {
-    if (this.input.isMobile || this.raceTime >= CONTROLS_HINT_DURATION) return;
+    if (this.input.isMobile || this.raceTime >= CONTROLS_HINT_DURATION || this._intro) return;
     const ctx = this.ctx;
     const rect = this._hudRects().controlsHint;
     const surface = window.CanalRecallUi.hudSurface;

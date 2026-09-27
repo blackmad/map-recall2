@@ -1482,16 +1482,20 @@ class VectorBasemap {
     // sides, which is what makes a top-down city look like a place rather than
     // a diagram. The canvas overlay then has to project through MapLibre so it
     // keeps sitting exactly on the basemap.
-    const targetPitch = this.pitchForViewMode(viewMode);
+    // The start-of-ride flight opens flat and tilts down into the street as it
+    // lands (`introOverview` 1 → 0), so the overview is a true plan view and
+    // its framing matches the flat camera maths exactly.
+    const introFlat = Math.max(0, Math.min(1, camera.introOverview || 0));
+    const targetPitch = this.pitchForViewMode(viewMode) * (1 - introFlat);
     // Ease pitch when entering chase/cockpit so the load-to-race handoff is
     // not a hard snap, then apply the appearance branch's clearance guard.
-    if (this._pitchSmoothed == null || camera.reducedMotion) this._pitchSmoothed = targetPitch;
+    if (this._pitchSmoothed == null || camera.reducedMotion || introFlat > 0) this._pitchSmoothed = targetPitch;
     else {
       this._pitchSmoothed += (targetPitch - this._pitchSmoothed) * 0.12;
       if (Math.abs(targetPitch - this._pitchSmoothed) < 0.15) this._pitchSmoothed = targetPitch;
     }
     const pitch = this._pitchSmoothed;
-    const mapZoom = zoom + this.zoomOffsetForViewMode(viewMode);
+    const mapZoom = zoom + this.zoomOffsetForViewMode(viewMode) * (1 - introFlat);
     const previousCheck = this._cameraClearanceCheck;
     const movedMetres = previousCheck ? Math.hypot(
       (lon - previousCheck.center[0]) * metersPerDegreeLng,

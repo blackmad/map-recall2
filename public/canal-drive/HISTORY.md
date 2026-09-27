@@ -1,6 +1,27 @@
 # Canal Recall — what is built
 
 
+## 2026-09-27 — a ride opens on an overview and flies down to the vehicle
+
+User report: "when the game starts it's really hard to get oriented". A ride
+now opens on a flat, north-up overview framing the start ("YOU", pulsing) and
+the destination pin with city around them, with a faint straight bearing
+between them — not the route. After 1.6 s it flies down for 1.9 s (log-space
+zoom, centre following the zoom's progress) and tilts into the normal view as
+it lands; reduced motion gets the still and a cut. Any key, tap or stick
+touch skips it. The vehicle, race clock and quizzes wait for it; no names are
+drawn beyond ones already earned.
+
+The first phone overview overflowed: the chase camera's tilt and zoom offset
+drew the city ~2× larger than the flat camera maths, so the map now flattens
+both by `camera.introOverview` (1 → 0), which makes the framing exact. A quick
+tap could start and end between frames, so input tracks `_touchedThisFrame`.
+Automated browsers (`navigator.webdriver`) skip the flight unless
+`__canalRecallForceIntro` is set, because many specs inspect the driving
+camera right after spawning. Pure maths in `src/canalRecall/game/introFlight.ts`
+(`npm run test:intro-flight`, in `check:canal`); e2e in
+`tests/e2e/intro-flight.spec.ts` for phone and desktop.
+
 ## 2026-09-27 — the portrait phone HUD is one plaque
 
 User report: "the mobile HUD takes up way too much of the screen". Measured on
