@@ -9,6 +9,16 @@ growing collection of separate window, door, retail and material passes. Test
 this directly before adding another production model. Existing OccFacade masks
 remain useful candidate evidence, not authoritative labels.
 
+## Next contract correction — squashed source-0 door
+
+Use native source-pixel coordinates and an aspect-matched SVG viewBox in the next
+revision. The normalized-square experiment is retained below as the executed
+protocol, not the preferred next protocol. In the DeepSeek example the generated
+door becomes 42x178px when mapped to the 263x892 source, far narrower than the
+photo. Sanitization did not alter its geometry. The next test must distinguish
+model geometry errors from format-induced aspect mistakes and use named box
+fields; do not stretch whole outputs to compensate.
+
 ## Comparison
 
 Use the same ten patch-control sources (indices 0, 3, 4, 11, 13, 17, 30, 64,

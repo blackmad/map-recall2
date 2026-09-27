@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — traced squashed SVG entrance to generated coordinates
+
+The source0 DeepSeek door is already too narrow/left in the provider SVG; the
+sanitizer leaves child geometry unchanged. The 1000-square normalized frame maps
+its 160x200 door to 42x178 pixels in the 263x892 photo aspect. Gallery containment
+is not the cause. Added a named regression and changed the next experiment plan
+to native pixel/aspect coordinates plus CV bounds, preserving the faulty output.
+
 ## 2026-09-27 — six-model photo-to-vector pilot and pixel-component baseline
 
 Compared direct SVG, structured rendering and OccFacade-assisted rendering with

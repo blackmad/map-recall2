@@ -54,7 +54,8 @@ Home-base routes already grow an expanding learning radius from the address
 The six-model direct-SVG / structured / OccFacade-overlay pilot is complete;
 no general facade reconstruction passed review. GLM 5.3 yielded four coarse
 candidates (structured 0/3, direct 4/11), with material/geometry corrections left. Next test LLM selection/grouping of numbered mask
-components with fixed pixel bounds, named coordinates for new observations,
+components with fixed pixel bounds, native-aspect SVG viewBoxes and named pixel
+coordinates for new observations (source0 squashed-door regression),
 and explicit balcony/storefront-zone representation. Ten-control and holdout
 quality gates remain. Results: `scripts/facade-eval/FACADE_VECTOR_PILOT.md`.
 One GLM4.6V request timed out without usage/ID; its $0.06 remains reserved in the

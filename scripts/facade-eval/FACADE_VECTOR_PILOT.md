@@ -98,6 +98,24 @@ representation also needs separate glazing versus masonry arch profiles, and
 separate storefront zones versus actual glazing apertures. Generic arched-head
 rendering can exaggerate model shape suggestions.
 
+## Named regression: source 0 squashed entrance
+
+Owner screenshot identified the DeepSeek direct-SVG door as too narrow. The raw
+provider SVG already places its opening at normalized x420..580, y800..1000.
+Our sanitizer leaves every child element/attribute unchanged. Mapping the
+1000-square coordinate frame to the 263x892 source produces a roughly 42x178px
+opening, centered at x132px. The photo entrance is visibly wider and farther
+right. The SVG gallery uses aspect-preserving image containment; this is not a
+CSS-only distortion. The square normalized contract is mathematically valid
+only when independent x/y normalization is correct, but encourages the model
+to draw square-canvas proportions. It likely contributed to the error.
+
+For the next direct-SVG test, use the photograph's native pixel viewBox and
+matching aspect ratio (0 0 263 892 for source0), with named pixel bounds for
+structured output. Anchor opening bounds to reviewed CV proposals where usable.
+Keep the original faulty output as regression evidence; do not globally widen
+it, because its window/door positions and neighbour strip are independently wrong.
+
 ## OccFacade geometry baseline and next decision
 
 A deterministic connected-component pass over the same ten full-view masks
