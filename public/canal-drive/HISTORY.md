@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — corrected stretched SVG arch rendering
+
+Structured SVG geometry now converts normalized points into native source pixels
+before deriving curves and uniform frame strokes. Source80's vertical arch
+radius falls from 52.38px to 16.5px while its 33x157.14px model box is unchanged.
+Re-rendered 45 saved structured outputs without API calls into a separate
+`vector-pilot-renderer-fix-v2` gallery, preserving original inference evidence.
+Roof zigzags and green storefronts trace to raw model geometry/label-colour
+leakage and remain failed observations. Tests cover the non-square source80 case.
+
 ## 2026-09-27 — traced squashed SVG entrance to generated coordinates
 
 The source0 DeepSeek door is already too narrow/left in the provider SVG; the

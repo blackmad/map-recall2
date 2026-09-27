@@ -56,7 +56,9 @@ no general facade reconstruction passed review. GLM 5.3 yielded four coarse
 candidates (structured 0/3, direct 4/11), with material/geometry corrections left. Next test LLM selection/grouping of numbered mask
 components with fixed pixel bounds, native-aspect SVG viewBoxes and named pixel
 coordinates for new observations (source0 squashed-door regression),
-and explicit balcony/storefront-zone representation. Ten-control and holdout
+and explicit balcony/storefront-zone representation. Require roof geometry
+visibility independently of material, and use numbered outlines instead of
+colour-filled masks to prevent source80 green-shop/blue-roof label leakage. Ten-control and holdout
 quality gates remain. Results: `scripts/facade-eval/FACADE_VECTOR_PILOT.md`.
 One GLM4.6V request timed out without usage/ID; its $0.06 remains reserved in the
 shared ledger. Reconcile that charge before further paid inference; do not replay

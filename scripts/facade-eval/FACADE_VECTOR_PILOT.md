@@ -116,6 +116,37 @@ structured output. Anchor opening bounds to reviewed CV proposals where usable.
 Keep the original faulty output as regression evidence; do not globally widen
 it, because its window/door positions and neighbour strip are independently wrong.
 
+## Additional owner-reported regressions: roof, arches and mask-colour leakage
+
+GLM source0's raw structured JSON explicitly invents a zigzag wall top and a
+matching dark roof strip. Its prose says the roof ridge is not visible and the
+parapet approximate, but the schema has no independent roof-geometry visibility
+field. Rendering an uncertain polygon as a solid roof overstates the evidence.
+A future contract must distinguish visible cornice/parapet silhouette from roof
+surface and retain per-region uncertainty.
+
+DeepSeek source80 assisted explicitly supplies shop colour `#00FF00` and roof
+colour `#0000FF`: exact OccFacade label colours. This is mask-colour leakage,
+not a texture choice. Replace colour-filled overlays with numbered outlines /
+component IDs, and sample material colour from the original photo only.
+
+The structured renderer also computes arch radius in independently normalized
+coordinates. On the 275x873 source80 image a 120x180 normalized box is 33x157.14
+pixels, but the old arch radii become 16.5x52.38 pixels. Drawing geometry in source
+pixels before deriving curves fixes that renderer distortion; it does not fix
+the model's oversized box. Keep old and corrected renders separately so the
+representation correction is not mistaken for a new/better model response.
+
+The correction is now implemented and all 45 valid structured outputs have been
+re-rendered with zero inference calls. The original vector-pilot-v2 gallery is
+preserved; corrected renderer comparison:
+http://localhost:5195/data/facade-review-galleries/vector-pilot-renderer-fix-v2/index.html
+`rerender-facade-vector-pilot.ts` verifies original artifact hashes and records
+both old and new renderer hashes. Native viewBoxes, uniform pixel-space strokes
+and the source80 radius regression are tested. Model box heights, invented roof
+vertices and leaked label colours intentionally remain unchanged in this
+ablation; this is not a corrected-building claim.
+
 ## OccFacade geometry baseline and next decision
 
 A deterministic connected-component pass over the same ten full-view masks

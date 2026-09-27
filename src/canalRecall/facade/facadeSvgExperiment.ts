@@ -115,6 +115,7 @@ const canvas=(size:{width:number;height:number})=>{
 /** Flat colours intentionally avoid implying measured brick scale or albedo. */
 export function renderFacadeSvg(input:unknown,size:{width:number;height:number}):string{
  const data=validateFacadeSvgExperiment(input),{width,height}=canvas(size);
+ const strokeScale=Math.min(width,height)/1000;
  const out=[`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`,
   `<desc>${escapeXml(data.notes)}</desc>`,
   `<rect width="${width}" height="${height}" fill="#F4F4F1"/>`];
@@ -127,10 +128,10 @@ export function renderFacadeSvg(input:unknown,size:{width:number;height:number})
    ?`<rect x="${x}" y="${y}" width="${w}" height="${h}"`
    :`<path d="M${x} ${y+h} V${y+r} A${w/2} ${r} 0 0 1 ${x+w} ${y+r} V${y+h} Z"`;
   const opacity=opening.visibility==='observed'?1:opening.visibility==='inferred'?.6:.35;
-  const dash=opening.visibility==='observed'?'':' stroke-dasharray="8 5"';
-  out.push(`${shape} data-kind="${opening.kind}" data-visibility="${opening.visibility}" fill="${opening.colour}" stroke="${opening.frameColour}" stroke-width="5" opacity="${opacity}"${dash}/>`);
+  const dash=opening.visibility==='observed'?'':` stroke-dasharray="${8*strokeScale} ${5*strokeScale}"`;
+  out.push(`${shape} data-kind="${opening.kind}" data-visibility="${opening.visibility}" fill="${opening.colour}" stroke="${opening.frameColour}" stroke-width="${5*strokeScale}" opacity="${opacity}"${dash}/>`);
  }
- for(const occlusion of data.occlusions??[])out.push(`<path data-occlusion="${occlusion.kind}" d="${path(occlusion.points,width,height)}" fill="#8D928B" fill-opacity="0.55" stroke="#525851" stroke-width="2"/>`);
+ for(const occlusion of data.occlusions??[])out.push(`<path data-occlusion="${occlusion.kind}" d="${path(occlusion.points,width,height)}" fill="#8D928B" fill-opacity="0.55" stroke="#525851" stroke-width="${2*strokeScale}"/>`);
  out.push('</svg>');return out.join('');
 }
 
