@@ -69,17 +69,25 @@ export function classifyRgb(data:Buffer,w:number,h:number) {
   return {glass,wall,dark,palette:[...palette].sort((a,b)=>b[1]-a[1]).slice(0,8).map(([hex,pixels])=>({hex:'#'+hex,pixels}))};
 }
 
-export function railEvidence(box:Box,dark:Uint8Array,w:number,h:number) {
+export function railEvidence(box:Box,dark:Uint8Array,w:number,h:number,nextOpeningY=h) {
   const bw=box.x1-box.x0,bh=box.y1-box.y0;
-  const x0=Math.max(0,Math.floor(box.x0-bw*.22)),x1=Math.min(w,Math.ceil(box.x1+bw*.22));
+  const x0=Math.max(0,Math.floor(box.x0-bw*.36)),x1=Math.min(w,Math.ceil(box.x1+bw*.36));
   const y0=Math.max(0,Math.floor(box.y0+bh*.64)),y1=Math.min(h,Math.ceil(box.y1+bh*.35));
   let lines=0,pixels=0;
   for(let y=y0;y<y1;y++) {let row=0;for(let x=x0;x<x1;x++) row+=dark[y*w+x];pixels+=row;if(row/(x1-x0)>.55) lines++;}
   let lower=0,lowerCount=0;
   for(let y=Math.floor(box.y0+bh*.55);y<box.y1;y++)for(let x=box.x0;x<box.x1;x++)
     {lower+=dark[y*w+x];lowerCount++;}
+  // The glazed component ends at the rail. The projection continues below it:
+  // scan for its last broad dark rail/slab row, stopping before the next floor.
+  const railTop=Math.max(0,box.y1-2),limit=Math.min(h,nextOpeningY-4,Math.ceil(box.y1+bh*1.5));
+  let last=railTop;
+  for(let y=railTop;y<limit;y++) {
+    let count=0;for(let x=x0;x<x1;x++)count+=dark[y*w+x];
+    if(count/(x1-x0)>.43)last=y;
+  }
   return {fraction:pixels/((x1-x0)*(y1-y0)||1),lines,lowerDarkFraction:lower/(lowerCount||1),
-    box:{x0,y0,x1,y1,pixels}};
+    box:{x0,y0:railTop,x1,y1:Math.min(limit,Math.max(railTop+4,last+2)),pixels}};
 }
 
 export function localWallColour(box:Box,data:Buffer,wall:Uint8Array,w:number,h:number) {
@@ -116,7 +124,9 @@ export async function run(inputPath:string,receiptPath:string,outDir:string) {
   const boxes=groupPanes(components(glass,info.width,info.height),info.width,info.height);
   const features:object[]=[];const balconyMask=new Uint8Array(info.width*info.height),doorMask=new Uint8Array(info.width*info.height);
   boxes.forEach((b,i)=>{
-    const rel=railEvidence(b,dark,info.width,info.height),bounds=norm(b,info.width,info.height);
+    const nextOpeningY=Math.min(info.height,...boxes.filter(other=>other.y0>b.y1+5&&
+      overlap(other.x0,other.x1,b.x0,b.x1)>.5*(b.x1-b.x0)).map(other=>other.y0));
+    const rel=railEvidence(b,dark,info.width,info.height,nextOpeningY),bounds=norm(b,info.width,info.height);
     const nearBase=b.y1>info.height*.83;
     const balcony=!nearBase&&b.y0>info.height*.32&&rel.lowerDarkFraction>.22&&rel.lines>=2;
     const colour=localWallColour(b,data,wall,info.width,info.height);
