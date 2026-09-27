@@ -4,7 +4,7 @@ import {mkdtemp,readFile,writeFile} from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import sharp from 'sharp';
-import {components,groupPanes,classifyRgb,localWallColour,run} from './extract-facade-components.ts';
+import {components,groupPanes,classifyRgb,localWallColour,railEvidence,run} from './extract-facade-components.ts';
 
 test('short mullion gap groups panes; masonry gap remains separate',()=>{
   const w=200,h=200,mask=new Uint8Array(w*h);
@@ -24,6 +24,15 @@ test('sampled wall colour excludes dark glazing',()=>{
   assert.equal(glass[7*w+8],1);
   assert.equal(wall[7*w+8],0);
   assert.equal(localWallColour(box,data,wall,w,h).wallColour,'#935e4d');
+});
+
+test('balcony extent follows the rail and slab below glazing',()=>{
+  const w=100,h=100,dark=new Uint8Array(w*h),opening={x0:30,y0:10,x1:50,y1:40,pixels:450};
+  for(let y=40;y<=58;y++)for(let x=23;x<57;x++)dark[y*w+x]=1;
+  const result=railEvidence(opening,dark,w,h,80);
+  assert.equal(result.box.y0,38);
+  assert.equal(result.box.y1,60);
+  assert.ok(result.box.x0<opening.x0&&result.box.x1>opening.x1);
 });
 
 test('receipt/image binding fails closed before emitting a mask',async()=>{
