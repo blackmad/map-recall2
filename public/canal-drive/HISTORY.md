@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — completed 100-case visual mask audit
+
+All 100 full-view mask pairs now have native-image review notes bound to source
+and mask hashes. Twenty fail representative colour sampling; 80 retain limited
+wall evidence. The report withholds failed measurements and makes no new colour
+acceptance. A stale-review check rejects changed sources without a completed
+report. Earlier district diagnostics are also complete (4,218 sources / 44
+batches); provisional worker measurements remain distinct from visual acceptance.
+
 ## 2026-09-27 — 100-facade mask comparison and same-photo context experiment
 
 Processed 100 full views with local OccFacade and Vistas and published an

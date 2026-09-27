@@ -51,8 +51,8 @@ Home-base routes already grow an expanding learning radius from the address
 ## P2 — Weight and reach
 
 **OccFacade follow-up: validate full-facade proposals before integration.**
-All 100 cohort full views now have OccFacade/Vistas intersection masks. Nineteen
-additional visual audits reject four cases for colour and qualify the rest;
+All 100 cohort full views now have OccFacade/Vistas intersection masks. All 100
+visual audits now withhold 20 cases for colour and qualify the other 80;
 intersection alone does not certify visible masonry. Same-photo crop testing
 confirms severe context sensitivity (55.43% median label agreement). Next score
 observed-wall/opening masks on annotated examples and separate material from

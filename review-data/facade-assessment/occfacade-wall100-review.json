@@ -3,11 +3,203 @@
   "policy": "Native-image visual audit; no candidate is accepted for game colour",
   "records": [
     {
+      "index": 0,
+      "status": "limited-evidence",
+      "note": "Retains a broad dark-brick field on the right of the facade between upper windows; the left half and lower doorway are largely lost, so any colour evidence is spatially partial.",
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "combinedMaskSha256": "2f72ebe07c2fcd0e1ec2b5dc1f36805ef107e7dbdb92de084d9ec4c4cae0cf8d",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 1,
+      "status": "withhold-colour",
+      "note": "The left and upper facade is blown nearly white while the right brick remains dark; the surviving mask straddles this abrupt exposure boundary and cannot represent one reliable wall colour.",
+      "sourceSha256": "e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262",
+      "combinedMaskSha256": "2b286a0f9bcf9fe959181a86a8f90d4d26e81e67a34cd97b65063a7b2fff5bf3",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 2,
+      "status": "limited-evidence",
+      "note": "Retains middle-storey brown brick piers around windows, but loses the gable and includes some gray ground-floor infill; only the upper masonry is useful as provisional evidence.",
+      "sourceSha256": "2683304b0cbe75c04ce8cc8473487624f52c5a45a2d72e34a8d2681d82c97d50",
+      "combinedMaskSha256": "5c26d7093653b4472bf15996fc6fc3009ce4a5d1765112e2d54487637d1f7b36",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 3,
+      "status": "limited-evidence",
+      "note": "Retains broad, clearly visible brick between regular upper windows while removing glass; pale cornice and arched entrance trim also survive and must be excluded.",
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "combinedMaskSha256": "f8b802678579e4d254ec3bc08ef7cfc4086ef4def0234eb82a597d09848c3a5e",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 4,
+      "status": "limited-evidence",
+      "note": "Retains substantial light-gray brick between windows on several floors; balcony metalwork and some pale window trim remain, with some upper wall missing.",
+      "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "combinedMaskSha256": "e705446cc883a3d551c74c235705951d54585f674259e505e26cfebf8f1c61f8",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 5,
+      "status": "limited-evidence",
+      "note": "Retains broad dark masonry piers and spandrels across the upper floors; the central street-sign pole is mostly removed, though balcony and cornice details remain.",
+      "sourceSha256": "9f90fba5e089e5eaec6feeb24b243207a464e5eb9bf8778e84c8fee06aa5d7f4",
+      "combinedMaskSha256": "552fdb2b15eb36f3603253470f9ea676646660d8f3c53498a2c04369988a7053",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 6,
+      "status": "limited-evidence",
+      "note": "Retains a representative dark-brick field around upper windows and part of the stepped gable; most street-level foreground is masked, with small architectural-edge contamination.",
+      "sourceSha256": "ac8924387ea8f6d928dfd57e7a2dbbf7ab9a553f02338b0f109d5a824b5be8fe",
+      "combinedMaskSha256": "a13ce07f5ab2951d9208dad0af2dc6b4586f9da0e226c5aa4eb1b9001689948b",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 7,
+      "status": "limited-evidence",
+      "note": "Retains dark brick between upper windows and beside balconies; shopfront is largely excluded, but railing and awning edges survive.",
+      "sourceSha256": "3ebffa1679909575e0f469549d20366df1a91a3d9ab0b16da50bbba4e2407b57",
+      "combinedMaskSha256": "a5e25ef66f01778e81864945c72e52b96e784ed3e7d7307e8db2e458c640e256",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 8,
+      "status": "limited-evidence",
+      "note": "Retains broad light-brick wall between windows despite dropping the top gable and shopfront; white cornice and window surrounds remain mixed into the mask.",
+      "sourceSha256": "3efae179aee5aae24762ffdd984c023f8e014018772f949e50e94a2d3dd3401b",
+      "combinedMaskSha256": "dd780051cd890b180e1c80e7101ac0ef82f5cb40c0a97faf91c7ef0b56f90755",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 9,
+      "status": "withhold-colour",
+      "note": "Leafy branches and strong colour fringing obscure the facade; the combined mask leaves only narrow mottled brick strips and some lower storefront fragments.",
+      "sourceSha256": "3630ec30fb87cf536e3f92536d256c5578c84144fbdb4cc52c8567718488e200",
+      "combinedMaskSha256": "1cb737ee6026a32850003006048b1fb959c9faf7fdf1822848549ca61dcb61ce",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 10,
+      "status": "limited-evidence",
+      "note": "Retains parts of the dark-gray painted wall between windows and around the large lettering, but the sign, window trim and corner frontage make the surviving field patchy; isolate plain paint only.",
+      "sourceSha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
+      "combinedMaskSha256": "ee1aaad6423d29fe1c3c4c021cf655e4070f78cb6471ceca8c6c25f5774e610c",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 11,
+      "status": "limited-evidence",
+      "note": "Retains a broad beige rendered upper facade between windows and balconies; the gray lower base and foreground are mostly excluded, though balcony recesses remain.",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "combinedMaskSha256": "d05277f8e07f562f4ce8e613ce0ff164355a315b87b27964cce5e1c27b94704b",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 12,
+      "status": "limited-evidence",
+      "note": "Retains a large continuous red-brown brick grid across the modern facade while excluding its repeated windows; little visible street foreground survives.",
+      "sourceSha256": "94de67d298fa9ceabfe3f4950a1dd871fc32a2db7fc88a51eaa5424f21df571e",
+      "combinedMaskSha256": "997b5889a1fc37c2e704a937b265448d10ce79cf61060ebf708e66a73a22df8a",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 13,
+      "status": "limited-evidence",
+      "note": "Retains a broad pale rendered wall, including the mostly blank left bay; windows are removed, though road sign, cable and small base details contaminate edges.",
+      "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+      "combinedMaskSha256": "3f551543373d585bbe42ad6ce1f1dbb151f91ae33b91d00b911f3e2a8e41d791",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 14,
+      "status": "withhold-colour",
+      "note": "The dark facade is crossed by a foreground tree and the mask preserves only narrow wall strips around white window and door trim; no representative unoccluded paint field remains.",
+      "sourceSha256": "294b029d72ea7c8f8079422ab57b50ab95b509768abb56083b4e76b1bcf227e0",
+      "combinedMaskSha256": "bc2285c9fc57a1946f793857f1c5b682b48659d382e5db6a1ebd6177cbae7a7e",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 15,
+      "status": "limited-evidence",
+      "note": "Retains brown masonry piers over several floors of the narrow corner facade; a white mid-level band, balcony edge and ground shop fragments also survive.",
+      "sourceSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
+      "combinedMaskSha256": "4237ae9572595380a30b9f1665f1754fe44f96a988aa4daf25a7e4c5fea49614",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 16,
+      "status": "limited-evidence",
+      "note": "Retains red-brown brick around middle and lower windows, while the white upper cornice and advertising shelter are mostly removed; white decorative courses remain in the field.",
+      "sourceSha256": "917cdd7c7a3abc321a24fa67fdcf7a092c5a0c90cb1a40b83be19eb435b63b00",
+      "combinedMaskSha256": "b6efbc6b421c48157ac19af4379c685f2c8e64afbaaf7b73419811b37c42c5ec",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 17,
+      "status": "limited-evidence",
+      "note": "Retains a broad cream rendered upper wall on both sides of the balcony stack; the brick base, parked cars and most ground-floor clutter are removed.",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "combinedMaskSha256": "bb19441de0b524a58e57cb3938bb83a88b3d401ca00c43250d305f782413652d",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 18,
+      "sourceSha256": "92836709b5ce82d22da4e187bd4963cbbad3c0de6284f0c976545234cc932b42",
+      "combinedMaskSha256": "75e0e7b909f266017346f72fe5f6acd360983503f9ea2724fe274bcc7057de38",
+      "status": "limited-evidence",
+      "note": "Foliage removed conservatively with large adjacent wall regions; retained surfaces span different lighting and base finishes.",
+      "reviewer": "root"
+    },
+    {
+      "index": 19,
+      "status": "limited-evidence",
+      "note": "Retains continuous gray-brown brick between upper windows; the lower doorway and window surrounds remain partly mixed, so evidence is strongest above ground level.",
+      "sourceSha256": "9ad1e92293cd81284985fc98955dbbfb87bc9f58e99868adbf2ed6c85862081f",
+      "combinedMaskSha256": "118f100dec858262e3f5b0d5bac848b1c5c31090343d97844a791f9ddb6fa93f",
+      "reviewer": "sol_worker"
+    },
+    {
       "index": 20,
       "sourceSha256": "dcf6a3bd48cb4145487ed2baeb08d2744e5c3a52909aa8bd3e0e69921fc07c2b",
       "combinedMaskSha256": "e12131418311ec1a1e66d1183402cb3c0c41d27fa6ad79eb393cb368da3e239f",
       "status": "limited-evidence",
       "note": "Substantial dark upper brick retained; lower storefront/bike fragments and cornice/trim remain.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 21,
+      "status": "limited-evidence",
+      "note": "Retains exposed red-brown brick piers between upper windows, especially to the right; tree and street furniture cut through the left and lower wall, leaving a partial field.",
+      "sourceSha256": "36a509a4ac17009959b6e642b83d3ff825882a22538aa7f6db94c147bcea1af1",
+      "combinedMaskSha256": "c6f4b57f4e44085f02bd91ff25dd64b0464d99e1efa4915436a80fc387be3b81",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 22,
+      "status": "limited-evidence",
+      "note": "Retains a dark-brick field across upper storeys and rejects much of the bikes and fence, though the lower arch and foreground leak into the edge.",
+      "sourceSha256": "71e099916e4ee06101670b6cbcdd59a797f6565062337963cb7415f9a3489836",
+      "combinedMaskSha256": "0fb55e45c06a36b6c246f3f0137003e1d8894992050d51b0d9cafec79b2413b7",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 23,
+      "status": "withhold-colour",
+      "note": "A broad dark blur or haze veils the upper wall and changes its apparent tone; retained pixels are not a representative view of the underlying masonry.",
+      "sourceSha256": "3fbf4e5a698ef605c90a8dc4d3392e07907114d3d0585a651763add7284070c9",
+      "combinedMaskSha256": "4ab5de5645fda44c60d824fb0ccb07aa551089a216826ea2bdd0c41935dad920",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 24,
+      "status": "limited-evidence",
+      "note": "Retains an extensive regular brick grid between windows across the long block; sky and most ground cars are excluded, although owner identity within the long facade remains unverified.",
+      "sourceSha256": "0d5a96074112cc2927269430f3eaff4b27ccbbf3dfbacc6c0d6bc6f024363f39",
+      "combinedMaskSha256": "a3d7cd8fd37718c3d4f05fa9d4641bccdcd69311470243551d3701487559a5c7",
       "reviewer": "sol_worker"
     },
     {
@@ -19,12 +211,156 @@
       "reviewer": "sol_worker"
     },
     {
+      "index": 26,
+      "status": "withhold-colour",
+      "note": "The mask removes most upper facade and leaves narrow lower piers mixed with a street-sign pole, tree branches and bright window trim; no clean representative wall patch is left.",
+      "sourceSha256": "b5cec6ce06fb7382d5c06c3e92a4f169ba24c8f74d78875549d0d95539241efb",
+      "combinedMaskSha256": "9f542935872bce31d05be0516e0c119ef67239bd5fe8b988ff99503b97067687",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 27,
+      "sourceSha256": "3223287c23e5334519608af0c3ae7da2b6b2d22a2873e05da670d004fed5880f",
+      "combinedMaskSha256": "4811a1fd424787fe23257124504f8e52d92f5e57f6dae1e2f7196d33df07cd1b",
+      "status": "limited-evidence",
+      "note": "Upper facade largely removed; retained wall includes surviving window/frame pixels and signage trim.",
+      "reviewer": "root"
+    },
+    {
+      "index": 28,
+      "status": "limited-evidence",
+      "note": "Retains brown brick piers on three upper floors while dropping most storefront and construction fence; white horizontal trim and dark sign-band edges remain.",
+      "sourceSha256": "6b9d07c1aa7d65cd81e920c54cb2ce3f72d06fbd7dc6b711d2aac71a8d14eb73",
+      "combinedMaskSha256": "f309819e3b909bbdb6764239506fe8e3b4a915a5c25baa79260cb212bac67008",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 29,
+      "status": "limited-evidence",
+      "note": "Retains broad brown masonry between windows on the paired stepped-gable fronts; balcony edges and a few base fragments remain, and the crop may span more than one owner.",
+      "sourceSha256": "d89d47567a33252524a1a9cd59868fc808ff9861b717d4c5eb466a90c20a0563",
+      "combinedMaskSha256": "e308035bb39aa5ea90a442f46387c24a97c20b0cc94169b189898aa490074d1f",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 30,
+      "status": "limited-evidence",
+      "note": "Retains a broad white-painted wall around the middle windows and lower arch; the upper gable is largely lost and shrubs at the base are mostly excluded. Photo pair aligns, but owner identity is unverified.",
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "combinedMaskSha256": "05ae70e27988a15291ec52905360574310c3c96e042c6ccce76dfa2a48797ba8",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 31,
+      "status": "limited-evidence",
+      "note": "Upper brown masonry is broad and visible; shop-sign and glazed ground-floor areas are excluded by the combined mask.",
+      "sourceSha256": "b91842f6d2d13b5ed7caf3319c048aa248c5d812dcd2bb68c54651fcdc1def1f",
+      "combinedMaskSha256": "31dd5bc5449607f0134c7cc95f42a51dbc87556b4fb6948026e04b418e2e76ec",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 32,
+      "status": "limited-evidence",
+      "note": "Repeated dark masonry strips around the upper window grid remain visible; the shop front is not used.",
+      "sourceSha256": "8d970c75e961b9ea134de64df311e45e06ee485ddcc91b9d7d2af0a28cd1d6e8",
+      "combinedMaskSha256": "1dd17c738137c8982189e5dc8bf22685c38f0f46cb7bcbfadfe353cb1e691aa2",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 33,
+      "status": "limited-evidence",
+      "note": "Large repeated facade fields remain after window removal; lower street-level detail is not needed for wall colour.",
+      "sourceSha256": "073e168197dffe1f6c671e4db4a5e5f9101d65aef8c3d50bc3e8c52b95ece31c",
+      "combinedMaskSha256": "a90c153a3c8e429c350de4d7464be9f4350729c566b37caafeb81d7695b685a5",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 34,
+      "status": "limited-evidence",
+      "note": "Dark masonry remains in repeated strips between the unusually broad pale trim and window openings.",
+      "sourceSha256": "b9cce0baa74834587e5073184fcbaa7e5e9a75375d77b3abaa58215c0b3b66ec",
+      "combinedMaskSha256": "ea27807684d4e176d2733b1b46df368e633c9ea215ede9c903c1dcda4433f747",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 35,
+      "sourceSha256": "45d5e93c8b4b84473df8aafebdb59588493ec318b350a3823d287b86d2164390",
+      "combinedMaskSha256": "21e4c6b5f5e75b2f193aa0ca57c13f6eb8b0c18f6e38ec111c9a0d2969174e72",
+      "status": "limited-evidence",
+      "note": "Tree/cars largely removed; much exposed upper masonry also removed; lower facade dominates retained evidence.",
+      "reviewer": "root"
+    },
+    {
+      "index": 36,
+      "status": "limited-evidence",
+      "note": "The upper dark facade has repeated exposed wall bands between windows, with no material obstruction over most of it.",
+      "sourceSha256": "6cc0e9a5f2607c50375b66abefb4a1100ba26a55d4d2c874564ea47d13c96310",
+      "combinedMaskSha256": "a65a855bf46c6e26c74a159e638679857607707d62ee2ef3573e48b31166d68a",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 37,
+      "sourceSha256": "052697332e686dd4d8cb05ad7acded0a93280657d078b45c8fe971959fae510c",
+      "combinedMaskSha256": "a527795fae48dd79a6c3fd07e77cfda630a4f2ea85fffe5cba65add785f37acc",
+      "status": "limited-evidence",
+      "note": "Trunk removed but upper masonry broadly lost; isolated lower wall strips remain.",
+      "reviewer": "root"
+    },
+    {
+      "index": 38,
+      "status": "limited-evidence",
+      "note": "The narrow dark facade retains repeated wall areas above the shop front.",
+      "sourceSha256": "b4dff4b80c1c864ade6e924313bae0fbee188dcf621de70a5d5c57b2d60cec31",
+      "combinedMaskSha256": "2a48432a6652c8b905dae51a5a56d10927b01810ae0317b791b2369ebfe20c7b",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 39,
+      "status": "limited-evidence",
+      "note": "Brown wall areas remain visible between windows despite fine bare branches; use only the unobstructed upper and side regions.",
+      "sourceSha256": "105a7a024e1f8825dedb993d6dc7c2e3ef0d2442395755a2fed2732f2faa2f0f",
+      "combinedMaskSha256": "909b23633cdda5595613139789d135208f4f4ecee06192d68564789b012e91df",
+      "reviewer": "terra_tags"
+    },
+    {
       "index": 40,
       "sourceSha256": "45cbef0ded656258d6e09e1f4ae48bfbbd0b11c85ecc495198af94b22486273f",
       "combinedMaskSha256": "c33ecf63e172b8487a69f435609d20ddc82b292cad97969edd1cb828d5185d54",
       "status": "limited-evidence",
       "note": "Useful central/right brick piers, but exposed gable and base lost.",
       "reviewer": "sol_worker"
+    },
+    {
+      "index": 41,
+      "status": "limited-evidence",
+      "note": "The narrow brown facade has repeated exposed wall strips between the window bays.",
+      "sourceSha256": "d3151f09f92a2169aed1d52e0c3f95f806f9bdb89441d4925d01921334a734f0",
+      "combinedMaskSha256": "5720c2c1c806ed0f0eb12bee763656c824f38361b9013c57f18ea60219170dac",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 42,
+      "status": "limited-evidence",
+      "note": "Clear grey-brown wall panels are retained between windows; the lower commercial frontage is excluded.",
+      "sourceSha256": "1744c58efe3817e08aa3f6dd71f7e330b4d0450f97e94c7a68676f4d17de9996",
+      "combinedMaskSha256": "cbab20d34c0be36be144699dfb980e07378e58dda47808c0d7ba7b9f6e037164",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 43,
+      "status": "limited-evidence",
+      "note": "Upper brown facade fields are visible and retained around the regular window grid.",
+      "sourceSha256": "0261f915b2673b7a77eb8b82b7ecb13ccd7991f882ef0e53d49ef9690a790a65",
+      "combinedMaskSha256": "2eec4ceb4b9d2fdf9958f04040e671987fdbb93a4946c1e29a5f033226f4dd96",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 44,
+      "status": "withhold-colour",
+      "note": "Strong direct sun flare and blown highlights cover the right side and roof area, leaving non-representative illumination.",
+      "sourceSha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+      "combinedMaskSha256": "710a8cf8b12a17732ff3c15a3ae017debba3577a18d44b4bea28560aec4caeb1",
+      "reviewer": "terra_tags"
     },
     {
       "index": 45,
@@ -35,12 +371,156 @@
       "reviewer": "sol_worker"
     },
     {
+      "index": 46,
+      "status": "withhold-colour",
+      "note": "A large tree trunk and branches cross the central facade; surviving mask fragments are narrow and materially mixed with trim.",
+      "sourceSha256": "2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660",
+      "combinedMaskSha256": "64b8a627a7da9581781c3379ca0824969c8dd1df133a4ff36070adf9deb03603",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 47,
+      "status": "limited-evidence",
+      "note": "Although dim and cool-toned, the wide facade retains repeated exposed wall bands away from the lower street obstruction.",
+      "sourceSha256": "d865fc4c1a3bc849874f149818fc8942804719e22e2d0680ab3cf1cef3266470",
+      "combinedMaskSha256": "577eea7f434fd0da1b389396c969eb6d0c342bd7d31bd0268a52a4e6881b884f",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 48,
+      "status": "limited-evidence",
+      "note": "Warm brown masonry is visible across several upper courses; windows and lower frontage are removed.",
+      "sourceSha256": "5912311cce2d6cfc9b8de8553987eb37b77ea57b4d679501cd33d9e4c80607c1",
+      "combinedMaskSha256": "a16f37ab731a4b5a0f61750158668df29eb863ead743e25da88b26344f933605",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 49,
+      "status": "limited-evidence",
+      "note": "Repeated wall strips remain visible on the tall cool-grey facade, away from the lower glazed frontage.",
+      "sourceSha256": "48b1bdc3737b16137edb45e357aed9800f3745feefbf022e2c33a0cb6c8da474",
+      "combinedMaskSha256": "8db33a5994808e6fd5deb084cf94687558f5619e1643a2ca54cf9dcd330d5ef4",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 50,
+      "status": "limited-evidence",
+      "note": "Broad pale rendered wall regions remain after window removal; balcony and awning edges are localized exclusions.",
+      "sourceSha256": "769c58df33953cac54e174af017fab3bda718cdf0a132d042f49b4d36913d9ff",
+      "combinedMaskSha256": "8ced6c646b1b336ccb53558cc7a5b5cd807d0467083f8bee98b844e939806b19",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 51,
+      "status": "limited-evidence",
+      "note": "Clear brown brick areas survive around the upper windows; the delivery vehicle only affects the lower edge.",
+      "sourceSha256": "374119376f39a1d75d8b9c6cd89136e704e0188ef0b34a67a4869e812de187be",
+      "combinedMaskSha256": "43b54a7875d6997d77db1695ba1abed8912b5b345091a266d490c59630223ebe",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 52,
+      "status": "limited-evidence",
+      "note": "The red brick facade is broadly visible; the small bare branches do not dominate the retained wall fields.",
+      "sourceSha256": "8fc212b8156a2987502234e4dfc291b4329d07981dc90e682d3db242932305e3",
+      "combinedMaskSha256": "3ed36ddec950da28a62b961279ed69577cbc1503247dacaaff7ae4821a01dc1f",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 53,
+      "status": "limited-evidence",
+      "note": "The narrow facade retains repeated wall strips between its regular window bays.",
+      "sourceSha256": "6a61d36d8bd4372603a1bc1a3eb3b656b3460eb4534ce544ac7dc11d38db3e6f",
+      "combinedMaskSha256": "9a23c98db117cb965996114ad49b9aca34fcacc9450ba490bc2a9524faecd073",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 54,
+      "sourceSha256": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+      "combinedMaskSha256": "b5efe4245deff288aa076b2fc96f8d75848b1f60adf2e600fcd289697373b1a6",
+      "status": "limited-evidence",
+      "note": "Large exposed upper wall area removed; remaining lower wall and trim are not full-facade evidence.",
+      "reviewer": "root"
+    },
+    {
       "index": 55,
       "sourceSha256": "e4a4b377bf89267f26ea395fd6bb5bb066770063279004d3b1dea0ea2031ea7d",
       "combinedMaskSha256": "3a25d9674e15c958a9babf774c42a50ed5e2f5c555b9cb39bfc7f40a24f2a96f",
       "status": "limited-evidence",
       "note": "Brick retained and construction fence largely removed; white decorative courses and railing details remain.",
       "reviewer": "sol_worker"
+    },
+    {
+      "index": 56,
+      "status": "withhold-colour",
+      "note": "Balconies, railings, planting and adjacent facade fragments dominate the view; the remaining wall pieces are not representative.",
+      "sourceSha256": "a4b4d7f65b424fa4a25d035077e310e23db74e985cbfdaebb08eef401c6cf573",
+      "combinedMaskSha256": "4f26abfaf970af27e7882dcbff80d477670022ad9130df3dd1684b590bd6a099",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 57,
+      "status": "limited-evidence",
+      "note": "A substantial dark-brown wall field remains on both sides of the bare tree and above the lower street clutter.",
+      "sourceSha256": "a3ec97dd0a84cfc1a3c9dbfc1a9aab7f4abb9a8a4a499d0e51fa585121dc5200",
+      "combinedMaskSha256": "7203835278cfbc44b3340c9f9a14570698ae5ae203e7f9318f44dcd77a440441",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 58,
+      "status": "limited-evidence",
+      "note": "Exposed warm-brown wall strips recur around the window grid, despite the large pale trim and shop base.",
+      "sourceSha256": "70d891ad35ee4f33209a2a235616c1f06ee0fa1ed5b27eb8fc29d5f2b078126a",
+      "combinedMaskSha256": "447f1e319a4e76c56bd64da2c99cecb37fbb725571b4b1086464c53b973bbc7a",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 59,
+      "status": "withhold-colour",
+      "note": "The narrow facade is in deep, cool shadow with weak tonal separation; retained pixels are not reliable for colour.",
+      "sourceSha256": "04f1092089650c377922fadc4ce1424a3463435c78032e061281be9b9e390b25",
+      "combinedMaskSha256": "9485fec374301680b918292524b5a1ec3d012095f96b61535196498dfbbac9f4",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 60,
+      "status": "limited-evidence",
+      "note": "Warm brick wall is visible over several bays; balconies and vegetation occupy only local portions of the facade.",
+      "sourceSha256": "4484f064eff95284779f1384cb48d22b4baa45b96a31381929aab08e11be4d98",
+      "combinedMaskSha256": "c90109623ce7ea4d1fb0b9cc3f1ff4dc3d1fe2ab7f05089f9cebfbc67ebe5d38",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 61,
+      "status": "limited-evidence",
+      "note": "Clear, repeated brown masonry fields remain around the regular upper window grid.",
+      "sourceSha256": "0babebef1dbde103a05ddd67c703f78e8cf52b754e959d9fad88f41dd1818377",
+      "combinedMaskSha256": "6450cf39d285bf1258b35576bcb0057e0e7d97bc21d61afd379ceac2e0760760",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 62,
+      "status": "withhold-colour",
+      "note": "Hard direct sunlight and near-blown roof/upper-wall highlights make the retained facade colour non-representative.",
+      "sourceSha256": "89b783ddf4edfd0441141029292be25d0b79b12656e35060a3a51588158d7fe2",
+      "combinedMaskSha256": "7fc66a2c79f7c19442533e5b8ea146216d26b489fb80108224de27949832d5a2",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 63,
+      "status": "withhold-colour",
+      "note": "The facade is dark and strongly cool/green cast in shade, so retained wall pixels are not dependable colour evidence.",
+      "sourceSha256": "f804e8586bafcb665f530f458b1454d3075f09f6626ffbbb5c683f3dc9ada4cf",
+      "combinedMaskSha256": "4fd9aaa8688f3f933b341885ad32b9a8eebd2b8ee80300f052fbafee2aefe21c",
+      "reviewer": "terra_tags"
+    },
+    {
+      "index": 64,
+      "status": "limited-evidence",
+      "note": "The retained upper brick piers and lintels form a coherent brown masonry field, but the dark shop base is separate and the crop includes the adjoining gabled portion.",
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "combinedMaskSha256": "0418bde4b03f3c33b514c27dc5e0eff59921a422596d68865f33b8eaacfb2bc4",
+      "reviewer": "sol_colour"
     },
     {
       "index": 65,
@@ -51,6 +531,38 @@
       "reviewer": "sol_worker"
     },
     {
+      "index": 66,
+      "status": "limited-evidence",
+      "note": "Dark brown brick remains around the upper window rows; deep shade and the masked stone shopfront make its photo colour uncertain.",
+      "sourceSha256": "face6caa50336664aad5f58ea966055a7e36923589b79310df356d7d9da565eb",
+      "combinedMaskSha256": "9046743272556759dc99fa2c11d4cda9ba8027abdff1ac76d78ac6b608274b9b",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 67,
+      "status": "limited-evidence",
+      "note": "Broad orange-red brick piers remain between three window rows, though direct sun washes the cornice and upper masonry.",
+      "sourceSha256": "d2efba4dadeddcd808f19cdd8570e3c1a1df08482cd5480f89eb1cbbb3203fb7",
+      "combinedMaskSha256": "e0a4d34cb33fc0656961a415a80d2bcb8a40591b67201d34e4d48f0e633ad6ee",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 68,
+      "status": "limited-evidence",
+      "note": "The narrow red-brown brick field survives around the windows; pale ground-floor cladding is a different surface and mostly masked.",
+      "sourceSha256": "1ec8121b7324cea73458b1442a86d2e476a74886c87bc5490e998ccbc1c22e65",
+      "combinedMaskSha256": "f18909434054a1402dd73c4d09f09d640532b4fc124fbc7234d420e228b487c9",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 69,
+      "sourceSha256": "9138a92901658023ace68f3c1d74bc43b84b48b88e92c5fe7947d169b2616d34",
+      "combinedMaskSha256": "2697eb02072b33f46dccccff00c2f592e550673ba46aa6a4a9b07af7a557e609",
+      "status": "limited-evidence",
+      "note": "Upper roof/wall heavily excluded; useful central masonry remains, alongside decorative bands.",
+      "reviewer": "root"
+    },
+    {
       "index": 70,
       "sourceSha256": "a3f1c5172ff1ae96227cd7659ffad871fa044b7cf3c41cdc20d8da0b0765cbe0",
       "combinedMaskSha256": "1a73403c2943d1a3fe140ffa8a7a18ed7b8f43a3d654a81c7b85ebd1a57d68d1",
@@ -59,27 +571,83 @@
       "reviewer": "sol_worker"
     },
     {
+      "index": 71,
+      "status": "limited-evidence",
+      "note": "Only a narrow side slice of the dark masonry fa\u00e7ade is shown; the remaining upper wall is visible but not a broad representative field.",
+      "sourceSha256": "b96acbf197f4c91f2f071f5d27bc7627c8d755b72d07b6795d30ffa182536853",
+      "combinedMaskSha256": "c34c2e868188a4e84b1d76f96f2ec6311870e47e5f1aba192af7a7205bda0cd9",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 72,
+      "status": "limited-evidence",
+      "note": "Red brick remains across several floors, interleaved with many pale horizontal bands; a single colour must target the brick, not the bands.",
+      "sourceSha256": "27f91a4953409ff6bed64cdf9e88157b13c26ce756a0dcf558775dedff60a2a7",
+      "combinedMaskSha256": "e47026b9865ab1398c8ac3134956cd88c16d279ea5c74b8af23f2203e2df460f",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 73,
+      "status": "withhold-colour",
+      "note": "This very narrow crop is dominated by windows, balconies, and pale trim; retained masonry strips are too small to support one representative wall colour.",
+      "sourceSha256": "3c804a561288aa625e33b462780ee5a0b30a76daa218305df60c13240efb599c",
+      "combinedMaskSha256": "114e32b32b296a18f3ccae9f79fbace6ef069fafa07c3f8ca14c3d245dc9aa8c",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 74,
+      "status": "limited-evidence",
+      "note": "Brown masonry remains around repeated upper windows, while the shopfront is masked; the wall is dim and its exact colour is uncertain.",
+      "sourceSha256": "f297a34355f601a20402f2429834d4cece94b3800ee1e7589effd149d1931c2f",
+      "combinedMaskSha256": "6d4c0d1c12c55cbe408a08196d411e7546f6c3d39df3e63fe854936dfe9a0f4f",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 75,
+      "sourceSha256": "3c2ced81de03a084e6c7155dc16f146cee6a51a233f17f06762f898157bec3a1",
+      "combinedMaskSha256": "1923c47cb3624e205dc8d7ef34caa3647397ca002c27e55a61fb6b18dd4c2684",
+      "status": "limited-evidence",
+      "note": "Large trunk removed, but central facade also removed; small side patches and ground trim remain.",
+      "reviewer": "root"
+    },
+    {
+      "index": 76,
+      "status": "limited-evidence",
+      "note": "A medium brown brick field remains around the upper windows; ornate pale gable trim and the pale doorway must not enter a wall-colour estimate.",
+      "sourceSha256": "80a0dd052b27182155a117fec0fb50f6c0d75bf6eece460542b207ab95662d95",
+      "combinedMaskSha256": "cb739488681d0b54bf50620dd351d8dee2b129f27027038445ca57e860e151b2",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 77,
+      "status": "limited-evidence",
+      "note": "Dark red-brown wall is retained around the middle-floor windows, but strong sky glare and branches affect the roof and upper edge.",
+      "sourceSha256": "a688f453e72007c16b1d4b811b456c2fc063ca99023a22a19e0275c211104295",
+      "combinedMaskSha256": "22265b6e81ee0a87b3e49395db17bab538e81f474184ff98c1154f2244d50bd5",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 78,
+      "status": "limited-evidence",
+      "note": "Pale rendered wall survives beside the windows, but the crop is narrow, crossed by a tree, and includes contrasting red trim bands.",
+      "sourceSha256": "771d6bb33004042e398858d48cf811406fcb4cbe1fe29ae68f42eac37be13923",
+      "combinedMaskSha256": "9cdc8f8c7bc57c08d0aa6d1e217ce4b2106cfbc269d5ed0196d939fc6f0dd737",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 79,
+      "status": "limited-evidence",
+      "note": "A brown brick field remains across the middle storeys despite a dense window rhythm; the pale top band is a different finish.",
+      "sourceSha256": "8f471468285f05c4975596a28e60ba0556abc1bcb15dcc18d455de5618df9a8c",
+      "combinedMaskSha256": "9fb963982bb895ae387226118a3b6367381a5c8d2295384fc5703808b7776f89",
+      "reviewer": "sol_colour"
+    },
+    {
       "index": 80,
       "sourceSha256": "85330213764d3185b5455b68968efdf593aab167e8b96b2d411c8fcd62d037f0",
       "combinedMaskSha256": "e4ec9b5666d146b77dcfd7708b6308982ae5de30dc386f97a714018de8b5e2a8",
       "status": "limited-evidence",
       "note": "Upper dark brick retained, shop/street mostly removed; gable lost and pale arch trim remains.",
-      "reviewer": "sol_worker"
-    },
-    {
-      "index": 90,
-      "sourceSha256": "3d62d50d25e6e484ff3f9767177db07067ec043c8b4af035438cf2d54ac722b3",
-      "combinedMaskSha256": "b427d1c2065cf84cd25fdba98c6bac2af34c271f0048f1b08e8ab902f9c98067",
-      "status": "withhold-colour",
-      "note": "Limited shadowed wall retained, with lower sign/shop and foreground fragments.",
-      "reviewer": "sol_worker"
-    },
-    {
-      "index": 99,
-      "sourceSha256": "8581ab026af56453a493a8181cacd306f71dc1c5cdd17bae3f921e4ec787a61d",
-      "combinedMaskSha256": "3a8ebdf4b23066b2a279de743cf9cf3c7c3c286978a60f7a8fb5c9c50545276a",
-      "status": "withhold-colour",
-      "note": "Metal balcony cage/interior retained alongside brick. Neither one visible material nor owner is isolated.",
       "reviewer": "sol_worker"
     },
     {
@@ -91,60 +659,12 @@
       "reviewer": "root"
     },
     {
-      "index": 75,
-      "sourceSha256": "3c2ced81de03a084e6c7155dc16f146cee6a51a233f17f06762f898157bec3a1",
-      "combinedMaskSha256": "1923c47cb3624e205dc8d7ef34caa3647397ca002c27e55a61fb6b18dd4c2684",
-      "status": "limited-evidence",
-      "note": "Large trunk removed, but central facade also removed; small side patches and ground trim remain.",
-      "reviewer": "root"
-    },
-    {
-      "index": 35,
-      "sourceSha256": "45d5e93c8b4b84473df8aafebdb59588493ec318b350a3823d287b86d2164390",
-      "combinedMaskSha256": "21e4c6b5f5e75b2f193aa0ca57c13f6eb8b0c18f6e38ec111c9a0d2969174e72",
-      "status": "limited-evidence",
-      "note": "Tree/cars largely removed; much exposed upper masonry also removed; lower facade dominates retained evidence.",
-      "reviewer": "root"
-    },
-    {
-      "index": 18,
-      "sourceSha256": "92836709b5ce82d22da4e187bd4963cbbad3c0de6284f0c976545234cc932b42",
-      "combinedMaskSha256": "75e0e7b909f266017346f72fe5f6acd360983503f9ea2724fe274bcc7057de38",
-      "status": "limited-evidence",
-      "note": "Foliage removed conservatively with large adjacent wall regions; retained surfaces span different lighting and base finishes.",
-      "reviewer": "root"
-    },
-    {
-      "index": 27,
-      "sourceSha256": "3223287c23e5334519608af0c3ae7da2b6b2d22a2873e05da670d004fed5880f",
-      "combinedMaskSha256": "4811a1fd424787fe23257124504f8e52d92f5e57f6dae1e2f7196d33df07cd1b",
-      "status": "limited-evidence",
-      "note": "Upper facade largely removed; retained wall includes surviving window/frame pixels and signage trim.",
-      "reviewer": "root"
-    },
-    {
-      "index": 37,
-      "sourceSha256": "052697332e686dd4d8cb05ad7acded0a93280657d078b45c8fe971959fae510c",
-      "combinedMaskSha256": "a527795fae48dd79a6c3fd07e77cfda630a4f2ea85fffe5cba65add785f37acc",
-      "status": "limited-evidence",
-      "note": "Trunk removed but upper masonry broadly lost; isolated lower wall strips remain.",
-      "reviewer": "root"
-    },
-    {
-      "index": 54,
-      "sourceSha256": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
-      "combinedMaskSha256": "b5efe4245deff288aa076b2fc96f8d75848b1f60adf2e600fcd289697373b1a6",
-      "status": "limited-evidence",
-      "note": "Large exposed upper wall area removed; remaining lower wall and trim are not full-facade evidence.",
-      "reviewer": "root"
-    },
-    {
-      "index": 69,
-      "sourceSha256": "9138a92901658023ace68f3c1d74bc43b84b48b88e92c5fe7947d169b2616d34",
-      "combinedMaskSha256": "2697eb02072b33f46dccccff00c2f592e550673ba46aa6a4a9b07af7a557e609",
-      "status": "limited-evidence",
-      "note": "Upper roof/wall heavily excluded; useful central masonry remains, alongside decorative bands.",
-      "reviewer": "root"
+      "index": 82,
+      "status": "withhold-colour",
+      "note": "Sunlight clips large parts of the pale fa\u00e7ade almost white; the remaining coloured strips cannot yield a dependable wall colour.",
+      "sourceSha256": "bfc0e650f940a3c5f7ff7f6f282ff6befdf10b992b7a0b29678367788c0bd49b",
+      "combinedMaskSha256": "12ca1249d2c7924109ec51709931ddcaae425b171547d88feabad001f45ce5e6",
+      "reviewer": "sol_colour"
     },
     {
       "index": 83,
@@ -153,6 +673,139 @@
       "status": "limited-evidence",
       "note": "Most upper facade removed with tree canopy; lower wall strips and joinery remain.",
       "reviewer": "root"
+    },
+    {
+      "index": 84,
+      "status": "limited-evidence",
+      "note": "Brick bands and piers remain across three floors, but the fa\u00e7ade is dim and pale horizontal stonework is mixed into the retained crop.",
+      "sourceSha256": "a2e3da90156cda9fa3cf66ab4b2d12140b8b3248de39eb4a2e6be6370c289be4",
+      "combinedMaskSha256": "fe4de4ba154a154ebfb26c71e8506784a3d1b367ca4df3446d494768ee721541",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 85,
+      "status": "limited-evidence",
+      "note": "Continuous dark brown masonry survives between the window bays and balconies; the lower frontage and roof are separate surfaces.",
+      "sourceSha256": "e9334db29c6374f4153462c49daf3805f2db8eb5bda928a00383b8caf2179e64",
+      "combinedMaskSha256": "13d24bfe8fd50dba048f78371634c4aaf9c0fdaf0bae77ac4a1c481d0283db8f",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 86,
+      "status": "withhold-colour",
+      "note": "A large flare washes out the upper half, while the lower wall is very dark and partly lost behind a vehicle; no dependable representative colour remains.",
+      "sourceSha256": "ec475100577e52fe5641d201f2c4990c2f239c09651c8f5f0da159ca341b46bd",
+      "combinedMaskSha256": "c1901695458a9c3b4abbd4cb86ade8c177072c9bfd61b2caaeb9c60d34ba8d53",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 87,
+      "status": "limited-evidence",
+      "note": "Red-brown upper wall remains around two rows of windows, though the narrow street crop and pale cornice limit representativeness.",
+      "sourceSha256": "4e24f59fb04c821f0242f4c23abe5a232660d5b4333636b766b56379a7cbdb7c",
+      "combinedMaskSha256": "6dab4e59bcd467edde0d727bb231f8a658768643b24dfd0e235526c84423ce4e",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 88,
+      "status": "limited-evidence",
+      "note": "Dark red-brown brick is visible between pale decorative bands; the strong contrast and dim capture limit a precise colour estimate.",
+      "sourceSha256": "19b64774c4e98bd0a28370d10a877ae6c696c4b3e41c92616d5e544db413f704",
+      "combinedMaskSha256": "299b4ef802476f7ccd9ac1e8ed4a6ab9c04080a7f094543387bb94b007e92af7",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 89,
+      "status": "limited-evidence",
+      "note": "The retained brick piers span several floors despite masked windows and balconies; the wall is underlit, so its measured colour would need caution.",
+      "sourceSha256": "4def1337d462b838f2a733f59bfd6d4c375bf18b31480449894f3fc50473471f",
+      "combinedMaskSha256": "8ffad9bc92e711f6766f3cbd366971ac6a74c34e0cabd8cd8f0e8573ff3d433c",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 90,
+      "sourceSha256": "3d62d50d25e6e484ff3f9767177db07067ec043c8b4af035438cf2d54ac722b3",
+      "combinedMaskSha256": "b427d1c2065cf84cd25fdba98c6bac2af34c271f0048f1b08e8ab902f9c98067",
+      "status": "withhold-colour",
+      "note": "Limited shadowed wall retained, with lower sign/shop and foreground fragments.",
+      "reviewer": "sol_worker"
+    },
+    {
+      "index": 91,
+      "status": "withhold-colour",
+      "note": "The fa\u00e7ade is soft and brightly washed, with small blurred wall strips between large windows; colour cannot be separated reliably from exposure and pale trim.",
+      "sourceSha256": "3427cb784a57d1b746a775d78b80acb1ad410b701b427c662ada6ee4b4979dcb",
+      "combinedMaskSha256": "77114c0d1f818f8c53bbafe978f97960f2bf3d16b90afeddbf1aedf216b53bec",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 92,
+      "status": "limited-evidence",
+      "note": "Brick wall survives around windows and the doorway, but strong sun and tree shadows create very different apparent colours across the same surface.",
+      "sourceSha256": "a465a8c056040e5f1657f6446dd6dfa493e02a74d68ea6b491a693a04df3a293",
+      "combinedMaskSha256": "0fbd4c1e82915f6f647aeffd7e4eb8fef5980b5779920074e89a6f2135905dcb",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 93,
+      "status": "limited-evidence",
+      "note": "A fairly continuous brown brick field remains across the upper floors; the pale window surrounds and ground-floor frontage are distinct.",
+      "sourceSha256": "0ffe63aa1333aabb17f4f6ba3219ff4facd68e26972e1b91c3f5c21fe3d0e331",
+      "combinedMaskSha256": "6bb2e0339c19a1360dfe92a30d0c9b48774a635a57ab792ce12062a8e776e040",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 94,
+      "status": "limited-evidence",
+      "note": "Red-brown brick remains around three window levels, though balconies and the overhanging top structure interrupt the wall field.",
+      "sourceSha256": "ee90d131a505678290603f51227c801b67f6182f3262154d51560c875f8bebb3",
+      "combinedMaskSha256": "a6908b5093c7f09109fe9741b5318c9669c5f4672af4cab12c953d711577b654",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 95,
+      "status": "limited-evidence",
+      "note": "Mid-tone brown brick survives between the repeated windows; the roof and grey shop base are different materials.",
+      "sourceSha256": "8446b3360954c8545a5f8c9aa3a78ea9cbf2bd5da2b47b31e410411d7196d6f0",
+      "combinedMaskSha256": "ef5628c49cb667329f8682f1558dac5c7ad011beb7279f7c5b9bf0a281c7888a",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 96,
+      "status": "limited-evidence",
+      "note": "Brown-red masonry remains across the broad upper fa\u00e7ade, but window openings and street signs break up the lower wall.",
+      "sourceSha256": "c917c60d5e52d4f84a7261d97232acd9dc44e2f4c5f21b657622f17acca7feac",
+      "combinedMaskSha256": "9875f19c530220ae99be7c08d03bfe83d8d515000a03e1be1694a3a8f9668992",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 97,
+      "status": "withhold-colour",
+      "note": "The fa\u00e7ade is heavily overexposed and blurred; surviving salmon-coloured strips are too affected by glare to support a wall colour.",
+      "sourceSha256": "9a8cceca03269103081658f86b609189159517607ef658690d081fb372b9842f",
+      "combinedMaskSha256": "8f44b4aeef7764ea6003ff6c7c7ad952ea71c7a98e6e48d17548a55640b0874e",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 98,
+      "status": "limited-evidence",
+      "note": "A continuous brown upper-wall field remains beside the masked windows; the glazed shopfront below is a separate surface.",
+      "sourceSha256": "de8a826c392abc7116afdb69cbdb4bea4d79530a6fb03703f95bc0239f0c2632",
+      "combinedMaskSha256": "eb9052c56cf04c39ba86ad7a8e75b6428d3aed9763cb39f2c9ebc7e3cc103315",
+      "reviewer": "sol_colour"
+    },
+    {
+      "index": 99,
+      "sourceSha256": "8581ab026af56453a493a8181cacd306f71dc1c5cdd17bae3f921e4ec787a61d",
+      "combinedMaskSha256": "3a8ebdf4b23066b2a279de743cf9cf3c7c3c286978a60f7a8fb5c9c50545276a",
+      "status": "withhold-colour",
+      "note": "Metal balcony cage/interior retained alongside brick. Neither one visible material nor owner is isolated.",
+      "reviewer": "sol_worker"
     }
-  ]
+  ],
+  "summary": {
+    "visuallyAudited": 100,
+    "withholdColour": 20,
+    "accepted": 0
+  }
 }

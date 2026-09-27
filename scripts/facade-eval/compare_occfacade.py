@@ -38,6 +38,8 @@ def main():
     strips=Path(vistas['stripsDir']);check(strips/'manifest.json',vistas['sourceManifestSha256'])
     a.out.mkdir(parents=True)
     reviews=json.loads(a.review.read_text())['records'] if a.review else []
+    if len({x['index'] for x in reviews}) != len(reviews):
+        raise ValueError('Duplicate visual review index')
     rows=[];cards=[]
     for r in pilot['records']:
         if r['kind']!='full':continue
@@ -99,8 +101,19 @@ def main():
              'visualReviewSha256':sha(a.review) if a.review else None,
              'contextReceiptSha256':sha(a.context/'receipt.json') if not a.wall_only else None,'contextManifestSha256':sha(a.context_input/'manifest.json') if not a.wall_only else None,
              'medianSameCaptureClassAgreement':statistics.median(x['sameCaptureClassAgreement'] for x in rows) if not a.wall_only else None,'records':rows}
+    if any(x['index'] not in {row['index'] for row in rows} for x in reviews):
+        raise ValueError('Review references an absent source')
+    receipt['reviewCounts']={
+        'sources':len(rows),
+        'visuallyAudited':sum('visualReview' in x for x in rows),
+        'colourWithheld':sum(x['measurementEligibility']=='withheld-by-visual-audit' for x in rows),
+        'accepted':0,
+    }
     (a.out/'comparison.json').write_text(json.dumps(receipt,indent=2)+'\n')
     page='''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>OccFacade context and visible wall test</title><style>body{font:16px system-ui;background:#f7f5ef;color:#252922;margin:24px}article{background:white;padding:16px;margin:24px 0;border:1px solid #ddd}.grid,.context{display:grid;gap:8px;grid-template-columns:repeat(4,minmax(0,1fr))}.context{grid-template-columns:repeat(3,minmax(0,1fr))}figure{margin:0}img{width:100%;height:430px;object-fit:contain;background:#eee}.context img{height:230px}figcaption{font-size:13px}@media(max-width:750px){body{margin:10px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.context{grid-template-columns:1fr}img{height:300px}}</style><h1>OccFacade: visible-wall and context tests</h1><p>Yellow wall · red window · orange door · green shop · purple balcony · blue roof · cyan sky.</p><p>Intersection retains pixels both models call wall/building. It is a candidate mask, not proof of visible masonry. Context test uses an exact crop from the same photograph, eliminating different capture dates/viewpoints.</p><p><a href="comparison.json">Evidence and measurements</a></p>'''+''.join(cards)+'</html>'
+    counts=receipt['reviewCounts']
+    summary=f'<p><strong>{counts["sources"]} sources · {counts["visuallyAudited"]} visually audited · {counts["colourWithheld"]} withheld for colour · 0 new game colours accepted by this experiment</strong></p>'
+    page=page.replace('<p><a href="comparison.json">',summary+'<p><a href="comparison.json">')
     (a.out/'index.html').write_text(page)
     print(json.dumps({'cases':len(rows),'medianSameCaptureClassAgreement':receipt['medianSameCaptureClassAgreement']}))
 

@@ -106,13 +106,15 @@ was 0.393 seconds (different concurrent load/warmup from the initial pilot).
 
 `compare_occfacade.py` validates exact source, mask and provenance hashes before
 intersecting OccFacade wall (5) with Vistas building (2). The gallery preserves
-source, both separate masks and the intersection. Native-image auditing of 19
-additional cases is recorded with image+mask hashes in
-`review-data/facade-assessment/occfacade-wall100-review.json`. Four explicit
-failures (45, 70, 90, 99) have combined photo medians withheld; all other outputs
-remain unaccepted diagnostics. Stale reviews fail rather than applying to a new
-image/mask. The other 81 cases are not declared audited by this review file;
-the original ten-case pilot and targeted root reviews are separate evidence.
+source, both separate masks and the intersection. Native-image auditing of all 100 cases is recorded with image+mask hashes in
+`review-data/facade-assessment/occfacade-wall100-review.json`. Twenty cases have
+combined photo medians withheld; the remaining 80 have limited evidence, not
+accepted colour. Stale or duplicate reviews fail rather than applying to a new
+image/mask. The first 19-case checkpoint withheld four; the completed pass adds
+81 reviews and brings the total to 20 withheld. Four model reviewers performed
+the visual work; these are qualitative observations, not ground-truth labels.
+Previously reviewed material presets in the opt-in demo are unaffected; zero
+**new** game colours were accepted from this experiment.
 
 The intersection removes large trees and vehicles but can also erase exposed
 masonry, retain glass/trim/metalwork, and cannot repair exposure. It is an input
@@ -152,7 +154,7 @@ explicit comma-separated `--indices` list. Default remains the original 20-crop
 pilot. Models, evidence and derived masks remain local/ignored.
 
 Review gallery:
-http://localhost:5195/data/facade-review-galleries/occfacade-wall100-reviewed-v1/index.html
+http://localhost:5195/data/facade-review-galleries/occfacade-wall100-reviewed-v3/index.html
 Same-capture test:
 http://localhost:5195/data/facade-review-galleries/occfacade-comparison-v1/index.html
 
@@ -160,3 +162,18 @@ Next priority: quantify on annotated observed-wall/opening regions and separate
 material classification from lighting-sensitive photo RGB. Do not spend the next
 batch on ground-only OccFacade or treat model agreement as acceptance. Nothing
 from this follow-up changes default game appearance or geometry.
+
+
+The earlier district worker has also completed 44 diagnostic batches, covering
+4,218 sources: 2,036 provisional measurements, 2,169 requiring review, 13 withheld
+(as read from progress and colour reports on 2026-09-27). Those statuses are
+algorithmic triage, not visual acceptance or new game publication. The 100-case
+visual pass demonstrates why bulk provisional measurements must not be treated
+as calibrated facade albedo. OpenCode/DeepSeek tools were not exposed in this
+session; this pass used the available local CV models and Sol/Terra agents.
+
+Verification: 100 source/mask pairs and all 100 review hashes validated; exact
+pixel equality checked for all ten same-capture crops; stale review deliberately
+rejected without emitting a completed comparison; galleries checked at desktop
+and phone widths with all images loading and no horizontal overflow. TypeScript
+pre-commit check and Python compile checks pass.
