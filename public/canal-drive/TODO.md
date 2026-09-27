@@ -50,12 +50,6 @@ Home-base routes already grow an expanding learning radius from the address
 
 ## P2 — Weight and reach
 
-**Start-of-ride orientation zoom (user idea 2026-09-27).**
-A ride starts at street scale with no sense of where in the city you are.
-Spike: a ~2 s camera zoom from a city overview (start pin, destination pin,
-the route's rough direction) down to the vehicle, skippable by any input.
-It must not reveal the names of streets or canals that will be asked.
-
 **Wall colour/material: finish Jordaan + Da Costabuurt evidence and local-model evaluation.**
 The colour/texture focus supersedes new roof work for this appearance batch.
 See `docs/plans/district-rectification-expansion.md` and

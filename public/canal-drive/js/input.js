@@ -123,6 +123,8 @@ class InputManager {
       // pan and pinch.
       if (claimed) e.preventDefault();
       this._touchActive = true;
+      // A quick tap can start and end between two frames; remember it.
+      this._touchedThisFrame = true;
       if (claimed) this._showTouchHint = false;
       // A tap restarts the finished screen. It must not fire while driving,
       // where it used to press Enter on every single touch.
@@ -187,10 +189,18 @@ class InputManager {
 
   clear() {
     this.justPressed = {};
+    this._touchedThisFrame = false;
     if (this._showTouchHint && this._touchHintTimer > 0) {
       this._touchHintTimer -= 1 / 60;
       if (this._touchHintTimer <= 0) this._showTouchHint = false;
     }
+  }
+
+  /** Anything the player did this frame: a key edge, a touch, the stick.
+   *  The start-of-ride flight uses it as "skip". */
+  get anyInput() {
+    return this._touchActive || this._touchedThisFrame || !!this._stickTouch
+      || Object.keys(this.justPressed).length > 0;
   }
 
   get isMobile() { return this._isMobile; }
