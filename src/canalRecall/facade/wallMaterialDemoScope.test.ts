@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { selectMaterialDemoEntries } from './wallMaterialDemoScope.ts';
+
+const data=JSON.parse(fs.readFileSync('public/data/wall-materials/assignments.json','utf8'));
+const ten=selectMaterialDemoEntries(data,'ten'),cohort=selectMaterialDemoEntries(data,'cohort');
+assert.equal(data.entries.length,100);
+assert.equal(data.gate.length,10,'default scope remains the explicitly gated ten');
+assert.equal(ten.length,9,'the unresolved gated owner retains its current appearance');
+assert.equal(cohort.length,85,'the cohort excludes 11 unresolved and four visibly unsupported owners');
+assert(ten.every(entry=>data.gate.includes(entry.index)));
+assert(cohort.every(entry=>entry.materialId!=='unknownneutral'&&entry.assessment?.visiblySupported!==false));
+assert(ten.every(entry=>cohort.some(candidate=>candidate.index===entry.index)));
+assert(cohort.every(entry=>/^[a-f0-9]{64}$/.test(entry.sourceSha256)));
+assert.equal(new Set(cohort.map(entry=>entry.buildingId)).size,cohort.length);
+for(const index of [18,23,39,44])assert(!cohort.some(entry=>entry.index===index),'explicitly unsupported material must retain current appearance');
+assert.throws(()=>selectMaterialDemoEntries({...data,entries:[...data.entries,data.entries[0]]},'cohort'),/duplicated/);
+assert.throws(()=>selectMaterialDemoEntries({...data,gate:[...data.gate,999]},'ten'),/missing entry/);
+assert.throws(()=>selectMaterialDemoEntries({...data,entries:data.entries.map((entry:any,index:number)=>index===0?{...entry,materialId:'invented-brick'}:entry)},'cohort'),/material binding/);
+console.log('Material demo scope: exact ten default and evidence-limited cohort passed');

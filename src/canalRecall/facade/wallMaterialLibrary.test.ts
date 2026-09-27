@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { createWallMaterialSprite, WALL_MATERIALS, WALL_MATERIAL_PIXEL_RATIO, WALL_MATERIAL_SPRITE_SIZE, type WallMaterialId } from './wallMaterialLibrary.js';
 
-assert.equal(WALL_MATERIALS.length, 12);
-assert.equal(new Set(WALL_MATERIALS.map(item=>item.id)).size, 12);
+assert.equal(WALL_MATERIALS.length, 13);
+assert.equal(new Set(WALL_MATERIALS.map(item=>item.id)).size, 13);
 assert.equal(WALL_MATERIAL_PIXEL_RATIO, 1);
 assert.equal(WALL_MATERIAL_SPRITE_SIZE & (WALL_MATERIAL_SPRITE_SIZE - 1), 0);
 
@@ -35,4 +35,4 @@ assert.notDeepEqual(at(0,8), at(32,8));
 assert.notDeepEqual(at(32,8), at(32,24));
 for (const y of [0,16,32,48,64,80,96,112]) assert.deepEqual(at(10,y), at(10,y+1));
 assert.throws(() => createWallMaterialSprite('unsupported' as WallMaterialId), /Unknown wall material/);
-console.log('wallMaterialLibrary: 12 deterministic opaque reusable materials and periodic courses passed');
+console.log('wallMaterialLibrary: 13 deterministic opaque reusable materials and periodic courses passed');

@@ -1,33 +1,35 @@
 name: Deploy to Firebase Hosting
 
-# Ship only after Canal CI is green on main. Manual runs still work.
+# Deployment has its own reproducible release checks. The broader Canal CI
+# includes local evidence/review tests and must not starve Hosting releases.
 on:
-  workflow_run:
-    workflows: ["Canal CI"]
-    types: [completed]
+  push:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
   group: firebase-hosting
-  cancel-in-progress: true
+  # Finish publishing both sites; keep only the newest pending push.
+  cancel-in-progress: false
 
 jobs:
   deploy:
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.workflow_run.conclusion == 'success' &&
-       github.event.workflow_run.event == 'push')
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: npm run lint
       # No DEPLOY_TARGET here: each Firebase site serves from its own domain
       # root, so the build keeps Vite's default '/' base.
       - run: npm run build
@@ -42,6 +44,17 @@ jobs:
           VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
       - run: node scripts/assemble-canalrecall-site.mjs
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e:smoke
+      - name: Stamp deployed revision
+        run: |
+          node --input-type=module <<'JS'
+          import { writeFileSync } from 'node:fs';
+          const revision = JSON.stringify({ sha: process.env.GITHUB_SHA, run: process.env.GITHUB_RUN_ID });
+          for (const site of ['dist', 'dist-canalrecall']) {
+            writeFileSync(`${site}/deployment.json`, revision);
+          }
+          JS
       - name: Write deploy credentials
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
@@ -52,6 +65,24 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-service-account.json
         run: npx firebase-tools@15 deploy --only hosting --project map-recall2-blackmad --non-interactive
+      - name: Verify live revision on both sites
+        run: |
+          for site in edumap-blackmad canalrecall-blackmad; do
+            for attempt in 1 2 3 4 5; do
+              if curl --fail --silent --show-error "https://${site}.web.app/deployment.json?sha=${GITHUB_SHA}" | \
+                node -e 'let body=""; process.stdin.on("data", c => body += c); process.stdin.on("end", () => { if (JSON.parse(body).sha !== process.env.GITHUB_SHA) process.exit(1); });'; then
+                break
+              fi
+              if [ "$attempt" = 5 ]; then exit 1; fi
+              sleep 5
+            done
+          done
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: firebase-playwright-report
+          path: playwright-report/
+          retention-days: 14
       - name: Remove deploy credentials
         if: always()
         run: rm -f "$RUNNER_TEMP/firebase-service-account.json"

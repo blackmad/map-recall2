@@ -65,13 +65,19 @@ Spike: a ~2 s camera zoom from a city overview (start pin, destination pin,
 the route's rough direction) down to the vehicle, skippable by any input.
 It must not reveal the names of streets or canals that will be asked.
 
-**Wall material demo: finish the visual gate before expanding.**
+**Wall colour/material: finish Jordaan + Da Costabuurt evidence and local-model evaluation.**
 The colour/texture focus supersedes new roof work for this appearance batch.
-See `docs/plans/wall-material-demo.md` and `/canal-drive/material-report.html`.
-100 owners have reference assessments; the ten-case trial has six broad-family
-passes and four unresolved cases. Resolve source-facing visibility and material
-uncertainty, verify colour beyond family labels and texture scale across zooms,
-then review the remaining 90. No default-game texture rollout yet.
+See `docs/plans/district-rectification-expansion.md` and
+`docs/plans/district-rectification-gaps.md`. The complete eligible queue is 4,339
+frontages / 3,472 owners; 683 exact-district owners need candidate recovery.
+The resumable native-4000px worker is processing both districts. Local Qwen
+completed the 100-source speed/label comparison; independent, diverse references
+and obstruction abstention still need evaluation before trusting bulk proposals.
+The resumable material worker now combines classifier receipts, native masks and
+upper-wall photo measurements. Review these diagnostics before any publication. Finish source identity, photo colour
+sampling and rendered colour/texture review separately. Existing 100-owner source
+assessments and six broad-family renderer passes remain useful but are not an
+accepted district appearance overlay. No default-game texture rollout yet.
 
 **8e. Ground-floor colour band: three passes, and the statistic is wrong.**
 *Opened 2026-09-26. See `FACADE_BANDS_REPORT.md` at the repo root.* 36 of 46
