@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## 2026-09-27 — opt-in photographed material-band trial
+
+`material-demo.html?owner=17&isolated=1&bands=1` splits the existing owner into
+cream render above a brick base, bound to the reviewed photo and geometry hash.
+The approximate 2.88m boundary comes from the source plane, not the old generic
+floor-height heuristic. Upper and lower extrusion ranges meet without overlap;
+identity highlighting and current/preview mode cover both. Default mode is
+unchanged. Independent front/oblique review supports the broad two-material
+hierarchy but finds duller cream and darker/redder brick than the photo; it does
+not establish exact albedo. Repetition around unseen sides is a stated trial
+limitation. Windows and entrances remain absent in this isolated material view.
+
 ## 2026-09-27 — source-wall controls and vector experiment specification
 
 Added 44 source-hash-bound pixel controls across ten photos after independent

@@ -66,6 +66,12 @@ Next score opening/door/shop proposals, expand independent wall controls and
 separate material from lighting-sensitive photo RGB. Details and local galleries:
 `scripts/facade-eval/OCCFACADE_PILOT.md`. No game rollout is accepted.
 
+**Material-band trial: validate frontage-specific colour and geometry.**
+Owner 17 has an opt-in cream/brick split (`material-demo.html?owner=17&isolated=1&bands=1`).
+Resolve the approximate boundary, darker/redder brick and repeated unseen sides
+before integrating; combine observed entrances/windows with frontage geometry.
+This diagnostic does not accept a full reconstructed facade.
+
 **Wall colour/material: finish Jordaan + Da Costabuurt evidence and local-model evaluation.**
 The colour/texture focus supersedes new roof work for this appearance batch.
 See `docs/plans/district-rectification-expansion.md` and
