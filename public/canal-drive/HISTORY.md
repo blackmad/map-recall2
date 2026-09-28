@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — no drive-by cards on the phone
+
+User request: "disable the local interest cards on mobile for now, they break
+the navigation game too much". On the compact (phone) layout, landmark cards
+no longer pop up as you ride past, and neighbourhood postcards no longer
+appear on entry (`canShowDriveByCard` in `teachingSurface.ts`). Tapping a
+building still opens its card. Desktop is unchanged.
+
 ## 2026-09-28 — pinch zoom is 1:1 and no longer throws the camera off the bike
 
 User reports: "zoom in out on mobile is way too sensitive, can only get to 10%

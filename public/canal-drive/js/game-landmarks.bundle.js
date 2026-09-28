@@ -484,6 +484,9 @@
   function canShowTeachingCard(input) {
     return !teachingOwnsBottom(input);
   }
+  function canShowDriveByCard(viewportMode, input) {
+    return viewportMode !== "compact" && canShowTeachingCard(input);
+  }
   function canShowMiniMap(enabled, input) {
     return enabled && !input.utilityOpen;
   }
@@ -850,7 +853,7 @@
       if (this.currentNeighborhood) this._visitedNeighborhoods.add(this.currentNeighborhood);
       if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
         this._previousNeighborhood = this.currentNeighborhood;
-        if (canShowTeachingCard(this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+        if (canShowDriveByCard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
           if (hood) this._ensureNeighborhoodImage(hood);
           this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
           this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
@@ -874,7 +877,7 @@
         }
       }
       if (this._landmarkNotice) return;
-      if (!canShowTeachingCard(this._teachingGate())) return;
+      if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
       if (nearest) {
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);

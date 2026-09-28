@@ -28,6 +28,17 @@ export function canShowTeachingCard(input: TeachingGateInput): boolean {
 }
 
 /**
+ * Cards that pop up on their own as you ride past a landmark or into a
+ * neighbourhood. Off on the phone layout: on a phone-sized map they covered
+ * the corridor and broke the navigation game (user request 2026-09-28,
+ * "disable the local interest cards on mobile for now"). Tapping a building
+ * still opens its card; that one the rider asked for.
+ */
+export function canShowDriveByCard(viewportMode: string | undefined, input: TeachingGateInput): boolean {
+  return viewportMode !== 'compact' && canShowTeachingCard(input);
+}
+
+/**
  * The city overview stays up during a quiz. It draws no names, so it does not
  * answer the question, and orientation is most useful exactly when you are
  * stopped and thinking. Utility panels still own the screen; hide under those.

@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {
+  canShowDriveByCard,
   canShowMiniMap,
   canShowPoiLabels,
   canShowTeachingCard,
@@ -34,4 +35,8 @@ assert.equal(canShowPoiLabels(true, idle), true);
 assert.equal(canShowPoiLabels(true, quiz), false);
 assert.equal(canShowPoiLabels(false, idle), false);
 
-console.log('teaching surface: 17 checks passed');
+assert.equal(canShowDriveByCard('desktop', idle), true, 'desktop still gets drive-by cards');
+assert.equal(canShowDriveByCard('compact', idle), false, 'the phone layout does not (user request 2026-09-28)');
+assert.equal(canShowDriveByCard('desktop', quiz), false, 'and never under a quiz');
+
+console.log('teaching surface: 20 checks passed');
