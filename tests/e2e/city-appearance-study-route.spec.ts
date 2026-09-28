@@ -48,8 +48,12 @@ test('the published Da Costa–Jordaan appearance lesson renders through the rea
   await page.goto('/canal-drive/');
   await expect(page.locator('#route-card')).toBeVisible();
 
-  await page.locator('[data-choice="route:study"]').click();
-  await expect(page.locator('[data-choice="route:study"]')).toHaveClass(/active/);
+  // The study is no longer a visible route choice (2026-09-28); select the
+  // pattern through the hidden form control the harness has always read.
+  await page.locator('#route-pattern').evaluate((select: HTMLSelectElement) => {
+    select.value = 'study';
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+  });
   await expect(page.locator('#route-pattern')).toHaveValue('study');
   await expect(page.locator('#travel-mode')).toHaveValue('car');
   await expect(page.locator('#view-mode')).toHaveValue('chase');

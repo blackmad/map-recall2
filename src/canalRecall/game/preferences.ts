@@ -75,7 +75,12 @@ export {
 } from './cities.ts';
 
 export const PREFERENCES_STORAGE_KEY = 'canalRecall.preferences.v1';
-export const ZOOM_DEFAULT_VERSION = 2 as const;
+/**
+ * v3 (2026-09-28): every saved zoom resets once to the 50% default. The Da
+ * Costa study choice silently saved 0.8, and the broken pinch saved 0.1 or
+ * 1.5, so a chase ride on the web opened far from 50% (user request).
+ */
+export const ZOOM_DEFAULT_VERSION = 3 as const;
 /** Degrees of extra pitch the live tilt slider may add or subtract. */
 export const CAMERA_TILT_MIN = -36;
 export const CAMERA_TILT_MAX = 36;
@@ -194,9 +199,7 @@ function parseZoom(raw: Record<string, unknown>, zoom: ZoomClamp): number {
   const value = raw.zoom;
   if (typeof value !== 'number' || !Number.isFinite(value)) return zoom.defaultZoom;
   const version = raw.zoomDefaultVersion;
-  const migrated = version !== ZOOM_DEFAULT_VERSION && value === LEGACY_ZOOM_DEFAULT
-    ? zoom.defaultZoom
-    : value;
+  const migrated = version !== ZOOM_DEFAULT_VERSION ? zoom.defaultZoom : value;
   return clampZoom(migrated, zoom);
 }
 
@@ -247,7 +250,11 @@ export function parsePreferences(raw: unknown, zoom: ZoomClamp): CanalPreference
   const withDifficulty: CanalPreferences = difficulty === 'custom'
     ? { ...base, difficulty }
     : { ...base, difficulty, ...DIFFICULTY_PRESETS[difficulty] };
-  return fillPreferences(source, withDifficulty, zoom);
+  const filled = fillPreferences(source, withDifficulty, zoom);
+  // "Da Costa study" left the route choices (2026-09-28); a save that still
+  // holds it would leave no route chip selected. The pattern itself remains
+  // for the appearance study harness, which selects it explicitly.
+  return filled.routePattern === 'study' ? { ...filled, routePattern: base.routePattern } : filled;
 }
 
 /**

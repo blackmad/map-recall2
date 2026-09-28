@@ -231,7 +231,6 @@ const VIEW: Choice<CanalPreferences['viewMode']>[] = [
 const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
   { value: 'surprise', title: 'Surprise', hint: 'Landmark to landmark' },
   { value: 'home', title: 'Home', hint: 'Nearby first, expands as you learn' },
-  { value: 'study', title: 'Da Costa study', hint: 'Styled street lesson' },
   { value: 'here', title: 'Here', hint: 'Start from where you are now' },
 ];
 
@@ -797,9 +796,7 @@ export function OverlayApp({
               label="Route"
               name="route"
               value={prefs.routePattern}
-              onChange={value => patch(value === 'study'
-                ? { routePattern: value, travelMode: 'car', viewMode: 'chase', zoom: 0.8 }
-                : { routePattern: value })}
+              onChange={value => patch({ routePattern: value })}
               options={ROUTE}
               icons={ROUTE_ICONS}
               layout="strip"

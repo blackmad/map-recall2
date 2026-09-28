@@ -294,7 +294,7 @@
 
   // src/canalRecall/game/preferences.ts
   var PREFERENCES_STORAGE_KEY = "canalRecall.preferences.v1";
-  var ZOOM_DEFAULT_VERSION = 2;
+  var ZOOM_DEFAULT_VERSION = 3;
   var DIFFICULTY_PRESETS = {
     easy: { answerMode: "multiple", line: true, arrow: true, minimap: true },
     medium: { answerMode: "multiple", line: false, arrow: true, minimap: true },

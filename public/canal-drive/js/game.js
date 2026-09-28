@@ -449,7 +449,6 @@ class Game {
         if (this.input.wasPressed('Enter') || this.input.wasPressed('Space') || this.input.wasPressed('KeyM')) {
           this._runFinishAction('again');
         }
-        if (this.input.wasPressed('Escape')) this._runFinishAction('route');
         if (this.input.wasPressed('KeyC')) this._runFinishAction('copy');
         break;
     }
