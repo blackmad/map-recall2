@@ -489,7 +489,14 @@ class Game {
           blockedFrames: this._blockedCarFrames,
           unwedgeAfter: 4,
         }
-        : { edgeTolerance: CAR_ROAD_EDGE_TOLERANCE, blockedFrames: this._blockedCarFrames };
+        : {
+          edgeTolerance: CAR_ROAD_EDGE_TOLERANCE,
+          blockedFrames: this._blockedCarFrames,
+          // A hard stick steer (or a turn-around in progress) is the rider's
+          // call; the guard still keeps the bike on the road. Keyboard steering
+          // is always full lock and keeps the kerb-gliding heading ease.
+          holdHeading: !!this.player._stickHardSteer || this.player._uTurnHeading != null,
+        };
       const guard = CanalRecallCar.constrainCarToRoad(
         this.player,
         previousPlayerPosition,

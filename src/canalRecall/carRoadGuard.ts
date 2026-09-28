@@ -23,6 +23,13 @@ export interface RoadGuardOptions {
   blockedFrames?: number;
   /** Rolled-back frames tolerated before the car is walked back to the centreline. */
   unwedgeAfter?: number;
+  /**
+   * The rider is steering hard. Keep blocking the position, but leave the
+   * heading alone: easing it back along the street every frame cancelled a
+   * deliberate full-lock turn at the kerb (it settled ~15° off the street),
+   * so a bike could never turn round mid-block.
+   */
+  holdHeading?: boolean;
 }
 
 export type RoadGuardResult = 'on-road' | 'soft-edge' | 'rolled-back' | 'unwedged';
@@ -63,9 +70,11 @@ export function constrainCarToRoad(
       car.speed = 0;
       car.vx = 0;
       car.vy = 0;
-      const forwardDot = Math.cos(car.angle) * Math.cos(road.angle) + Math.sin(car.angle) * Math.sin(road.angle);
-      const roadHeading = road.angle + (forwardDot < 0 ? Math.PI : 0);
-      car.angle += normalizeAngle(roadHeading - car.angle) * 0.5;
+      if (!options.holdHeading) {
+        const forwardDot = Math.cos(car.angle) * Math.cos(road.angle) + Math.sin(car.angle) * Math.sin(road.angle);
+        const roadHeading = road.angle + (forwardDot < 0 ? Math.PI : 0);
+        car.angle += normalizeAngle(roadHeading - car.angle) * 0.5;
+      }
       return 'unwedged';
     }
     if (!road) {
@@ -92,9 +101,11 @@ export function constrainCarToRoad(
     car.vx = tangentX * tangentVelocity * 0.72;
     car.vy = tangentY * tangentVelocity * 0.72;
     car.speed = Math.sign(car.speed) * Math.min(Math.abs(car.speed) * 0.7, Math.abs(tangentVelocity));
-    const forwardDot = Math.cos(car.angle) * tangentX + Math.sin(car.angle) * tangentY;
-    const roadHeading = road.angle + (forwardDot < 0 ? Math.PI : 0);
-    car.angle += normalizeAngle(roadHeading - car.angle) * 0.18;
+    if (!options.holdHeading) {
+      const forwardDot = Math.cos(car.angle) * tangentX + Math.sin(car.angle) * tangentY;
+      const roadHeading = road.angle + (forwardDot < 0 ? Math.PI : 0);
+      car.angle += normalizeAngle(roadHeading - car.angle) * 0.18;
+    }
     return 'rolled-back';
   }
 
@@ -120,10 +131,12 @@ export function constrainCarToRoad(
   // it is not enough on its own: a car aimed off the road keeps walking off it.
   // Ease the heading back along the street as well, exactly as the rollback
   // branch does, so the shoulder always resolves itself within a few frames.
-  const shoulderForwardDot = Math.cos(car.angle) * Math.cos(candidateRoad.angle)
-    + Math.sin(car.angle) * Math.sin(candidateRoad.angle);
-  const shoulderHeading = candidateRoad.angle + (shoulderForwardDot < 0 ? Math.PI : 0);
-  car.angle += normalizeAngle(shoulderHeading - car.angle) * 0.12;
+  if (!options.holdHeading) {
+    const shoulderForwardDot = Math.cos(car.angle) * Math.cos(candidateRoad.angle)
+      + Math.sin(car.angle) * Math.sin(candidateRoad.angle);
+    const shoulderHeading = candidateRoad.angle + (shoulderForwardDot < 0 ? Math.PI : 0);
+    car.angle += normalizeAngle(shoulderHeading - car.angle) * 0.12;
+  }
   const pullStrength = Math.min(
     options.softPullLimit ?? 3,
     Math.max(offRoadMargin * (options.softPullFactor ?? 0.18), Math.min(offRoadMargin, 1)),

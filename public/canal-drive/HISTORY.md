@@ -1,6 +1,26 @@
 # Canal Recall — what is built
 
 
+## 2026-09-28 — the phone stick can turn you round
+
+User report: "mobile controls are better but still an issue, can't really turn
+around". Measured on the iPhone profile with a scripted stick: full left for
+3 s turned 12° and settled about 15° off the street. A cruise-speed turn
+reached the kerb before 90°, and the road guard eased the heading back along
+the street each frame, which balanced the steering. Pulling back reversed in
+circles at -30 px/s. Now:
+- A hard stick turn slows to 30% of cruise, and while the stick is steering
+  hard the guard still blocks and slides the position but leaves the heading
+  alone (`holdHeading`). Keyboard keeps the old kerb-gliding behaviour, since
+  its steering is always full lock (driving-harness arrivals unchanged at
+  41/120).
+- Pulling straight back brakes and, once below 30 px/s, swings the bike 180°
+  along the street in about 0.6 s. Stick braking never reverses.
+- In absolute mode, pointing well away from the heading slows the bike, so it
+  turns on the spot instead of arcing into the kerb.
+Pure checks in `scripts/check-mobile-hud.ts` (including the guard); phone e2e
+in `tests/e2e/mobile-overlays.spec.ts`.
+
 ## 2026-09-28 — stutter: per-frame work that did not need to run
 
 User report: "the fly-in is really stuttery … the whole game is pretty
