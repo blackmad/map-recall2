@@ -424,7 +424,9 @@ test('panning the map leaves the vehicle to drive across it', async ({ page }) =
   expect(Math.abs(result.panX)).toBeGreaterThan(40);
 });
 
-test('the first neighborhood entered also gets a postcard', async ({ page }) => {
+test('the first neighborhood entered also gets a postcard', async ({ page }, testInfo) => {
+  // Drive-by cards are off on the phone layout (user request 2026-09-28).
+  test.skip(testInfo.project.name === 'iphone', 'no drive-by cards on the phone');
   await openCarRoute(page);
   const notice = await page.evaluate(() => {
     const game = window.canalRecallGame;

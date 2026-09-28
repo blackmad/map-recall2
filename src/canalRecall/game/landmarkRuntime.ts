@@ -44,7 +44,7 @@ import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge } from './routeKnowledge';
-import { canShowMiniMap, canShowTeachingCard } from './teachingSurface';
+import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
 import {
   buildCorridorStreetIndex,
@@ -394,7 +394,7 @@ export class GameLandmarkRuntime {
     // for the neighborhood the route starts in never appeared at all.
     if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
       this._previousNeighborhood = this.currentNeighborhood;
-      if (canShowTeachingCard(this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      if (canShowDriveByCard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
         if (hood) this._ensureNeighborhoodImage(hood);
         this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
         this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
@@ -420,7 +420,7 @@ export class GameLandmarkRuntime {
       if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
     }
     if (this._landmarkNotice) return;
-    if (!canShowTeachingCard(this._teachingGate())) return;
+    if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
     if (nearest) {
       this._seenLandmarks.add(nearest.id);
       this._seenLandmarkNames.add(nearest.name);
