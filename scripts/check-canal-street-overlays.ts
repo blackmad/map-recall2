@@ -110,6 +110,15 @@ assert.equal(stitchOverlayPaths([[{ x: 0, y: 0 }]]).length, 0, 'a single point i
   const linked = collapseParallelFragments([farSide, east, link, after], east);
   assert.equal(length(linked.filter(path => path.every(point => Math.abs(point.y) < 1))), 700, 'the walk crosses a short link');
   assert.equal(linked.filter(path => path.every(point => Math.abs(point.y - 45) < 1)).length, 0, 'and the far carriageway stays hidden');
+  // At a bridge the carriageways fork in a "<" and rejoin; the angled arms
+  // used to survive as stubs (Raadhuisstraat, user report 2026-09-28).
+  const main = { points: line(0, 0, 600, 0), type: 'tertiary' };
+  const forkIn = { points: line(100, 0, 140, 30), type: 'tertiary' };
+  const beside = { points: line(140, 30, 460, 30), type: 'tertiary' };
+  const forkOut = { points: line(460, 30, 500, 0), type: 'tertiary' };
+  const forked = collapseParallelFragments([forkIn, beside, forkOut, main], main);
+  assert.equal(forked.length, 1, `the fork's arms are not drawn (${forked.length} paths)`);
+  assert.equal(length(forked), 600, 'and the ridden line is whole');
   // The two quays of a canal (Herengracht, about 40 m apart) are both the answer.
   const quays = collapseParallelFragments([east, { points: line(300, 120, 0, 120), type: 'residential' }], east);
   assert.equal(quays.length, 2, 'the opposite quay survives');

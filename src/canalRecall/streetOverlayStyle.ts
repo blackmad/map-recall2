@@ -184,36 +184,64 @@ export function collapseParallelFragments(
   seed: HighlightFragment | null,
   spacing: number = PARALLEL_SPACING,
 ): OverlayPoint[][] {
-  const usable = fragments.filter(fragment => fragment.points && fragment.points.length > 1);
+  // The extract stores most ways twice (grouped and original). A copy sits
+  // exactly on the kept line's nodes, so drop exact duplicates first.
+  const seenGeometry = new Set<string>();
+  const usable = fragments.filter(fragment => {
+    if (!fragment.points || fragment.points.length < 2) return false;
+    if (fragment === seed) return true;
+    const forward = fragment.points.map(point => `${point.x},${point.y}`).join(';');
+    const reverse = fragment.points.slice().reverse().map(point => `${point.x},${point.y}`).join(';');
+    const key = forward < reverse ? forward : reverse;
+    if (seenGeometry.has(key)) return false;
+    seenGeometry.add(key);
+    return true;
+  });
+  if (seed && seed.points && seed.points.length > 1) {
+    // The seed wins over its own duplicate, wherever it sits in the list.
+    const seedKey = [seed.points, seed.points.slice().reverse()]
+      .map(points => points.map(point => `${point.x},${point.y}`).join(';')).sort()[0];
+    for (let i = usable.length - 1; i >= 0; i--) {
+      const fragment = usable[i];
+      if (fragment === seed) continue;
+      const key = [fragment.points, fragment.points.slice().reverse()]
+        .map(points => points.map(point => `${point.x},${point.y}`).join(';')).sort()[0];
+      if (key === seedKey) usable.splice(i, 1);
+    }
+  }
   if (usable.length < 2) return usable.map(fragment => fragment.points.slice());
   const cellSize = spacing;
-  const grid = new Map<string, Array<[OverlayPoint, OverlayPoint]>>();
+  // Each kept edge, and whether its ends are the ends of a kept run (a real
+  // shared node a continuation may start from).
+  const grid = new Map<string, Array<[OverlayPoint, OverlayPoint, boolean, boolean]>>();
   const cellOf = (x: number, y: number) => `${Math.floor(x / cellSize)},${Math.floor(y / cellSize)}`;
   const accept = (run: OverlayPoint[]) => {
     for (let i = 1; i < run.length; i++) {
       const a = run[i - 1], b = run[i];
       const key = cellOf((a.x + b.x) / 2, (a.y + b.y) / 2);
+      const edge: [OverlayPoint, OverlayPoint, boolean, boolean] = [a, b, i === 1, i === run.length - 1];
       const bucket = grid.get(key);
-      if (bucket) bucket.push([a, b]); else grid.set(key, [[a, b]]);
+      if (bucket) bucket.push(edge); else grid.set(key, [edge]);
     }
   };
   const alongside = (point: OverlayPoint, dx: number, dy: number) => {
     const length = Math.hypot(dx, dy) || 1;
     const cx = Math.floor(point.x / cellSize), cy = Math.floor(point.y / cellSize);
     for (let gx = cx - 1; gx <= cx + 1; gx++) for (let gy = cy - 1; gy <= cy + 1; gy++) {
-      for (const [a, b] of grid.get(`${gx},${gy}`) ?? []) {
+      for (const [a, b, aIsEnd, bIsEnd] of grid.get(`${gx},${gy}`) ?? []) {
         const ex = b.x - a.x, ey = b.y - a.y, edge = Math.hypot(ex, ey) || 1;
         if (Math.abs((ex * dx + ey * dy) / (edge * length)) < PARALLEL_COS) continue;
         const t = ((point.x - a.x) * ex + (point.y - a.y) * ey) / (edge * edge);
         if (t < 0 || t > 1) continue;
         // The node a continuation shares with the line before it.
-        if (Math.min(Math.hypot(point.x - a.x, point.y - a.y), Math.hypot(point.x - b.x, point.y - b.y)) <= STITCH_TOLERANCE) continue;
+        if ((aIsEnd && Math.hypot(point.x - a.x, point.y - a.y) <= STITCH_TOLERANCE)
+          || (bIsEnd && Math.hypot(point.x - b.x, point.y - b.y) <= STITCH_TOLERANCE)) continue;
         if (Math.abs((point.x - a.x) * ey - (point.y - a.y) * ex) / edge <= spacing) return true;
       }
     }
     return false;
   };
-  const runsOf = (points: OverlayPoint[]): OverlayPoint[][] => {
+  const runsOf = (points: OverlayPoint[]): Array<OverlayPoint[] & { whole?: boolean }> => {
     const samples = resample(points);
     const runs: OverlayPoint[][] = [];
     let run: OverlayPoint[] = [];
@@ -223,7 +251,8 @@ export function collapseParallelFragments(
       for (let i = 1; i < run.length; i++) length += Math.hypot(run[i].x - run[i - 1].x, run[i].y - run[i - 1].y);
       // Slivers left over from a cut are noise, but a short uncut fragment
       // is a link in the road: dropping it strands the walk.
-      if (run.length > 1 && (length >= MIN_RUN || (!cut && run.length === samples.length))) runs.push(run);
+      const whole = !cut && run.length === samples.length;
+      if (run.length > 1 && (length >= MIN_RUN || whole)) runs.push(Object.assign(run, { whole }));
       run = [];
     };
     samples.forEach((point, i) => {
@@ -246,42 +275,203 @@ export function collapseParallelFragments(
   });
   const byPriority = usable.map((_, index) => index).sort((a, b) =>
     rankOf(usable[a].type) - rankOf(usable[b].type) || usable[b].points.length - usable[a].points.length);
-  const done = new Set<number>();
-  // Neighbours waiting to be walked, each with how sharply it turns off the
-  // run that reached it: the straight continuation goes before a slip road,
-  // or the slip road is kept and the road itself is cut beside it.
-  const frontier: Array<{ index: number; turn: number }> = [];
-  const kept: OverlayPoint[][] = [];
   const heading = (from: OverlayPoint, to: OverlayPoint) => Math.atan2(to.y - from.y, to.x - from.x);
   const turnBetween = (a: number, b: number) => Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b)));
   const seedIndex = seed ? usable.indexOf(seed) : -1;
-  let next: number | undefined = seedIndex >= 0 ? seedIndex : byPriority[0];
-  while (next !== undefined) {
-    done.add(next);
-    for (const run of runsOf(usable[next].points)) {
-      accept(run);
-      kept.push(run);
-      const exits: Array<[OverlayPoint, number]> = [
-        [run[0], heading(run[1], run[0])],
-        [run[run.length - 1], heading(run[run.length - 2], run[run.length - 1])],
-      ];
-      for (const [point, outward] of exits) {
-        for (const index of ends.get(endKey(point)) ?? []) {
-          if (done.has(index)) continue;
-          const points = usable[index].points;
-          const fromStart = Math.hypot(points[0].x - point.x, points[0].y - point.y) <= STITCH_TOLERANCE;
-          const onward = fromStart ? heading(points[0], points[1]) : heading(points[points.length - 1], points[points.length - 2]);
-          frontier.push({ index, turn: turnBetween(outward, onward) });
+  // The spine: the longest course through the name's own network that runs
+  // through the ridden fragment. It is drawn whole and never pruned, so the
+  // line under the rider is continuous; everything else is a candidate branch
+  // cut against it. A diamond's other sides run beside the spine and are cut.
+  const spine = spineThrough(usable, seedIndex >= 0 ? seedIndex : byPriority[0], endKey);
+  const onSpine = new Set(spine);
+  const walk = (excluded: Set<number>): Piece[] => {
+    const done = new Set<number>(excluded);
+    grid.clear();
+    // Neighbours waiting to be walked, each with how sharply it turns off the
+    // run that reached it: the straight continuation goes before a slip road,
+    // or the slip road is kept and the road itself is cut beside it.
+    const frontier: Array<{ index: number; turn: number }> = [];
+    const kept: Piece[] = [];
+    const visit = (index: number, whole: boolean) => {
+      done.add(index);
+      const runs = whole ? [Object.assign(resample(usable[index].points), { whole: true })] : runsOf(usable[index].points);
+      for (const run of runs) {
+        accept(run);
+        kept.push({ points: run, index, whole: Boolean(run.whole) });
+        const exits: Array<[OverlayPoint, number]> = [
+          [run[0], heading(run[1], run[0])],
+          [run[run.length - 1], heading(run[run.length - 2], run[run.length - 1])],
+        ];
+        for (const [point, outward] of exits) {
+          for (const neighbour of ends.get(endKey(point)) ?? []) {
+            if (done.has(neighbour)) continue;
+            const points = usable[neighbour].points;
+            const fromStart = Math.hypot(points[0].x - point.x, points[0].y - point.y) <= STITCH_TOLERANCE;
+            const onward = fromStart ? heading(points[0], points[1]) : heading(points[points.length - 1], points[points.length - 2]);
+            frontier.push({ index: neighbour, turn: turnBetween(outward, onward) });
+          }
+        }
+      }
+    };
+    for (const index of spine) visit(index, true);
+    for (;;) {
+      frontier.sort((a, b) => rankOf(usable[a.index].type) - rankOf(usable[b.index].type) || a.turn - b.turn);
+      let candidate: number | undefined;
+      while (frontier.length && candidate === undefined) {
+        const { index } = frontier.shift()!;
+        if (!done.has(index)) candidate = index;
+      }
+      const next = candidate ?? byPriority.find(index => !done.has(index));
+      if (next === undefined) break;
+      visit(next, false);
+    }
+    return kept;
+  };
+  // Fork arms that lead only to cut lines are left out and the walk rerun
+  // (see findStubs); rerun rather than erased, because in the first walk an
+  // arm may already have cut the start of a branch beside it.
+  const excluded = new Set<number>();
+  let pieces = walk(excluded);
+  for (let pass = 0; pass < 4; pass++) {
+    const stubs = findStubs(pieces, onSpine, spacing);
+    if (!stubs.length) break;
+    for (const index of stubs) excluded.add(index);
+    pieces = walk(excluded);
+  }
+  return pieces.map(piece => piece.points);
+}
+
+/**
+ * The fragments, in order, of the longest course through `seed`: shortest
+ * paths from each end of the seed to the node on that end's side that lies
+ * farthest from the other end.
+ * A node belongs to the side whose end is nearer, so the two halves cannot
+ * both run off the same way (through the far side of a diamond).
+ */
+function spineThrough(
+  fragments: HighlightFragment[],
+  seed: number | undefined,
+  endKey: (point: OverlayPoint) => string,
+): number[] {
+  if (seed === undefined || !fragments[seed]) return [];
+  const lengthOf = (points: OverlayPoint[]) => {
+    let total = 0;
+    for (let i = 1; i < points.length; i++) total += Math.hypot(points[i].x - points[i - 1].x, points[i].y - points[i - 1].y);
+    return total;
+  };
+  const edges = fragments.map((fragment, index) => ({
+    index,
+    a: endKey(fragment.points[0]),
+    b: endKey(fragment.points[fragment.points.length - 1]),
+    length: lengthOf(fragment.points),
+  }));
+  const position = new Map<string, OverlayPoint>();
+  fragments.forEach((fragment, index) => {
+    position.set(edges[index].a, fragment.points[0]);
+    position.set(edges[index].b, fragment.points[fragment.points.length - 1]);
+  });
+  const adjacency = new Map<string, typeof edges>();
+  for (const edge of edges) {
+    for (const node of [edge.a, edge.b]) {
+      if (!adjacency.has(node)) adjacency.set(node, []);
+      adjacency.get(node)!.push(edge);
+    }
+  }
+  const shortest = (from: string) => {
+    const distance = new Map<string, number>([[from, 0]]);
+    const via = new Map<string, (typeof edges)[number]>();
+    const open = new Set<string>([from]);
+    while (open.size) {
+      let node = '', best = Infinity;
+      for (const candidate of open) {
+        const d = distance.get(candidate)!;
+        if (d < best) { best = d; node = candidate; }
+      }
+      open.delete(node);
+      for (const edge of adjacency.get(node) ?? []) {
+        if (edge.index === seed) continue;
+        const other = edge.a === node ? edge.b : edge.a;
+        const d = best + edge.length;
+        if (d < (distance.get(other) ?? Infinity)) {
+          distance.set(other, d);
+          via.set(other, edge);
+          open.add(other);
         }
       }
     }
-    frontier.sort((a, b) => rankOf(usable[a.index].type) - rankOf(usable[b.index].type) || a.turn - b.turn);
-    let candidate: number | undefined;
-    while (frontier.length && candidate === undefined) {
-      const { index } = frontier.shift()!;
-      if (!done.has(index)) candidate = index;
+    return { distance, via };
+  };
+  const start = edges[seed].a, end = edges[seed].b;
+  const fromStart = shortest(start), fromEnd = shortest(end);
+  // The far end of each half is the node on that side farthest in a straight
+  // line from the seed's other end. By path length it was often the loose end
+  // of the opposite one-way line, reached by going round the pair and back
+  // (Martelaarsgracht), which put both lines on the spine.
+  const half = (own: ReturnType<typeof shortest>, other: ReturnType<typeof shortest>, origin: string, awayFrom: string) => {
+    const anchor = position.get(awayFrom)!;
+    let far = origin, farthest = -1;
+    for (const [node, d] of own.distance) {
+      if (d >= (other.distance.get(node) ?? Infinity)) continue;
+      const point = position.get(node)!;
+      const reach = Math.hypot(point.x - anchor.x, point.y - anchor.y);
+      if (reach > farthest) { far = node; farthest = reach; }
     }
-    next = candidate ?? byPriority.find(index => !done.has(index));
-  }
-  return kept;
+    const path: number[] = [];
+    for (let node = far; node !== origin;) {
+      const edge = own.via.get(node);
+      if (!edge) break;
+      path.push(edge.index);
+      node = edge.a === node ? edge.b : edge.a;
+    }
+    return path;
+  };
+  const before = half(fromStart, fromEnd, start, end).reverse();
+  const after = half(fromEnd, fromStart, end, start);
+  return [...new Set([...before, seed, ...after])];
+}
+
+
+/** World units: pieces shorter than this (45 m) may be stubs. */
+const STUB_LENGTH = 135;
+
+type Piece = { points: OverlayPoint[]; index: number; whole: boolean };
+
+/**
+ * The fork arms among the kept pieces. At a bridge the carriageways split into
+ * a diamond of short ways; the parallel sides are cut, but the angled
+ * connector arms (8 m each) are neither beside a kept line nor past its end,
+ * so they survived as a fan of stubs (Raadhuisstraat, user report
+ * 2026-09-28). An arm is a whole, uncut fragment shorter than 45 m that lies
+ * wholly within `spacing` of the other pieces and has a loose end: it leads
+ * only to a line that was cut. A link joining two drawn pieces touches them at
+ * both ends and stays; a cut run is never an arm, since its loose end is
+ * where it was cut, not where it leads.
+ */
+function findStubs(pieces: Piece[], protectedFragments: Set<number>, spacing: number): number[] {
+  const lengthOf = (path: OverlayPoint[]) => {
+    let total = 0;
+    for (let i = 1; i < path.length; i++) total += Math.hypot(path[i].x - path[i - 1].x, path[i].y - path[i - 1].y);
+    return total;
+  };
+  const distanceToPath = (point: OverlayPoint, path: OverlayPoint[]) => {
+    let best = Infinity;
+    for (let i = 1; i < path.length; i++) {
+      const a = path[i - 1], b = path[i];
+      const ex = b.x - a.x, ey = b.y - a.y;
+      const t = Math.max(0, Math.min(1, ((point.x - a.x) * ex + (point.y - a.y) * ey) / (ex * ex + ey * ey || 1)));
+      best = Math.min(best, Math.hypot(point.x - a.x - ex * t, point.y - a.y - ey * t));
+    }
+    return best;
+  };
+  const stubs: number[] = [];
+  pieces.forEach((piece, position) => {
+    if (!piece.whole || protectedFragments.has(piece.index) || lengthOf(piece.points) >= STUB_LENGTH) return;
+    const others = pieces.filter((_, other) => other !== position).map(other => other.points);
+    if (!others.length) return;
+    const touches = (point: OverlayPoint) => others.some(other => distanceToPath(point, other) <= STITCH_TOLERANCE);
+    if (touches(piece.points[0]) && touches(piece.points[piece.points.length - 1])) return;
+    if (!piece.points.every(point => others.some(other => distanceToPath(point, other) <= spacing))) return;
+    stubs.push(piece.index);
+  });
+  return stubs;
 }

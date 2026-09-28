@@ -11,9 +11,9 @@ test('a highlighted street is one line, not its carriageways and cycle tracks', 
   test.skip(testInfo.project.name !== 'desktop', 'data check; one project is enough');
   test.setTimeout(120000);
   await openRoute(page, { travelMode: 'car', viewMode: 'north' });
-  const result = await page.evaluate(() => {
+  const measure = (name: string) => page.evaluate((name) => {
     const game = (window as any).canalRecallGame, track = game.track, streets = (window as any).CanalRecallStreets;
-    const seedIndex = track.segments.findIndex((segment: any) => segment.name === 'Prins Hendrikkade');
+    const seedIndex = track.segments.findIndex((segment: any) => segment.name === name);
     const connected = track.getConnectedNamedSegments(seedIndex);
     const doubled = (paths: Array<Array<{ x: number; y: number }>>) => {
       // Sample every path every ~3 m; a sample is doubled when another path
@@ -49,9 +49,17 @@ test('a highlighted street is one line, not its carriageways and cycle tracks', 
     };
     const before = streets.stitchOverlayPaths(connected.map((segment: any) => segment.points));
     const after = streets.stitchOverlayPaths(streets.collapseParallelFragments(connected, track.segments[seedIndex]));
-    return { fragments: connected.length, before: doubled(before), after: doubled(after) };
-  });
+    return { fragments: connected.length, before: doubled(before), after: doubled(after), chains: after.length };
+  }, name);
+  const result = await measure('Prins Hendrikkade');
   expect(result.fragments, 'the name is still many ways').toBeGreaterThan(100);
   expect(result.before, JSON.stringify(result)).toBeGreaterThan(0.3);
   expect(result.after, JSON.stringify(result)).toBeLessThan(0.12);
+
+  // Raadhuisstraat forks into a diamond of short ways at every bridge; the
+  // connector arms drew as a fan of stubs, and pruning them once unravelled
+  // the carriageway beyond (user report 2026-09-28, "too many lines").
+  const raadhuis = await measure('Raadhuisstraat');
+  expect(raadhuis.after, JSON.stringify(raadhuis)).toBeLessThan(0.05);
+  expect(raadhuis.chains, `one unbroken line: ${JSON.stringify(raadhuis)}`).toBe(1);
 });

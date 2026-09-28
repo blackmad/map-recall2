@@ -1,5 +1,33 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — one highlight line across bridge forks
+
+User report: "too many lines" (screenshot: a bridge with parallel highlight
+lines and stubs fanning off it). Follow-up to the corridor collapse below.
+- Most ways are stored twice. The collapse excused any sample sitting on a
+  kept line's vertex, so the duplicate sat exactly on the kept copy and was
+  never cut. Exact duplicates are now dropped first, and only the *ends* of
+  kept runs (real shared nodes) are excused.
+- At every bridge the carriageways fork into a diamond of short ways. The
+  angled connector arms were neither beside a kept line nor past its end, so
+  they drew as a fan of stubs (Raadhuisstraat). Pruning them afterwards
+  cascaded: an arm had already cut the first metres of the next carriageway
+  fragment, so that fragment had a loose end, was pruned in turn, and the
+  road beyond vanished.
+- The collapse now starts from a spine. That is the course through the
+  name's own network that runs through the ridden fragment, out to the node
+  on each side farthest in a straight line from the seed's other end.
+  Measured by path length instead, it doubled back round one-way pairs
+  (Martelaarsgracht). The spine is drawn whole and never pruned; the rest are
+  branches, cut against it. A whole short branch fragment that lies within
+  30 m of the rest and has a loose end is an arm: it is left out and the
+  walk rerun.
+- Raadhuisstraat is one unbroken line through three bridge diamonds.
+  Citywide, names still drawing a parallel overlap longer than 15 m fell from
+  376 to 206, mostly squares and genuinely two-sided streets. Pinned in
+  `tests/e2e/street-highlight-parallel.spec.ts` (Raadhuisstraat: one chain)
+  and the fork case in `scripts/check-canal-street-overlays.ts`.
+
 ## 2026-09-28 — corners can be cut
 
 User report: "we should be able to cut-corners a bit more" (the Oosterdokskade
