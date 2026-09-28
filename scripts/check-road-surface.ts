@@ -14,6 +14,7 @@ import {
   classifySurface,
   connectedNamedSegments,
   contactsAt,
+  filletedExcess,
   headingDifference,
   pickNearestRoadContactForName,
   pickGuardContact,
@@ -335,11 +336,12 @@ check('a way meeting another mid-span is not joined by this rule', () => {
 
 check('the road guard counts any containing corridor, not only the heading pick', () => {
   // Bullebakssluis shape: riding south down Marnixstraat (x = 0) and turning
-  // east into Westerkade, which starts 27 px east of it. On Westerkade's
-  // centreline, heading still picks Marnixstraat at its very edge.
+  // east into Westerkade, which starts 27 px east of it. Just off
+  // Marnixstraat's asphalt and on Westerkade's, heading still picks
+  // Marnixstraat (within the alignment slack of the nearer Westerkade).
   const base = { angle: Math.PI / 2, width: 27, segIdx: 0, ptIdx: 0, nx: 1, ny: 0 };
-  const marnix = { ...base, x: 0, y: 0, dist: 40 };
-  const westerkade = { ...base, x: 30, y: 0, dist: 0, angle: 0, segIdx: 1, nx: 0, ny: 1 };
+  const marnix = { ...base, x: 0, y: 0, dist: 32 };
+  const westerkade = { ...base, x: 30, y: 0, dist: 24, angle: 0, segIdx: 1, nx: 0, ny: 1 };
   const heading = Math.PI / 2;
   assert.equal(pickRoadContact([marnix, westerkade], heading), marnix, 'naming still follows the heading');
   assert.equal(pickGuardContact([marnix, westerkade], heading), westerkade, 'a cross street that contains the bike wins');
@@ -349,6 +351,29 @@ check('the road guard counts any containing corridor, not only the heading pick'
   assert.equal(pickGuardContact([shoulder, busway], heading), shoulder, 'a wider parallel duplicate does not widen the corridor');
   const inside = { ...marnix, dist: 10 };
   assert.equal(pickGuardContact([inside, westerkade], heading), inside, 'the heading pick wins while the bike is on its asphalt');
+});
+
+check('the inside of a corner is filleted so a rider can cut it (Oosterdokskade, LOT 61)', () => {
+  // An L: one road arrives from the west and the other leaves south, both 18 wide.
+  const spans = [
+    { a: { x: -200, y: 0 }, b: { x: 0, y: 0 }, width: 18, segIdx: 0, ptIdx: 0 },
+    { a: { x: 0, y: 0 }, b: { x: 0, y: 200 }, width: 18, segIdx: 1, ptIdx: 0 },
+  ];
+  const at = (x: number, y: number) => filletedExcess(contactsAt(spans, x, y), x, y);
+  assert.ok(at(-24, 24) < 0, `a diagonal cut 6 past both edges is asphalt (${at(-24, 24).toFixed(1)})`);
+  assert.ok(at(-40, 40) > 10, 'cutting straight across the block is still off the road');
+  assert.ok(Math.abs(at(20, -20) - (Math.hypot(20, 20) - 18)) < 1e-9, 'the outer corner is not filleted');
+  assert.equal(at(-100, 10), -8, 'on a road the plain edge distance stands');
+  const parallel = [
+    { a: { x: -200, y: 0 }, b: { x: 200, y: 0 }, width: 18, segIdx: 0, ptIdx: 0 },
+    { a: { x: -200, y: 60 }, b: { x: 200, y: 60 }, width: 18, segIdx: 1, ptIdx: 0 },
+  ];
+  assert.equal(filletedExcess(contactsAt(parallel, 0, 30), 0, 30), 12, 'two parallel roads leave the gap between them');
+  // The guard reports the filleted distance, so the cut is ridden, not rolled back.
+  const contacts = contactsAt(spans, -24, 24);
+  const picked = pickGuardContact(contacts, 0, { x: -24, y: 24 })!;
+  assert.ok(picked.dist <= picked.width, 'the guard sees asphalt in the fillet');
+  assert.ok(pickGuardContact(contacts, 0)!.dist > pickGuardContact(contacts, 0)!.width, 'without the point it is the old edge test');
 });
 
 process.stdout.write(`Road surface and named-run checks passed (${checks} checks).\n`);

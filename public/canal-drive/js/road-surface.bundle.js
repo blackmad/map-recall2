@@ -23,6 +23,7 @@ var CanalRecallRoadSurface = (() => {
   __export(roadSurface_exports, {
     ALIGNMENT_DISTANCE_SLACK: () => ALIGNMENT_DISTANCE_SLACK,
     ALIGNMENT_WIDTH_SLACK: () => ALIGNMENT_WIDTH_SLACK,
+    CORNER_FILLET_RADIUS: () => CORNER_FILLET_RADIUS,
     CURB_INNER_MARGIN: () => CURB_INNER_MARGIN,
     CURB_OUTER_MARGIN: () => CURB_OUTER_MARGIN,
     GUARD_CROSS_ANGLE: () => GUARD_CROSS_ANGLE,
@@ -33,6 +34,7 @@ var CanalRecallRoadSurface = (() => {
     classifySurface: () => classifySurface,
     connectedNamedSegments: () => connectedNamedSegments,
     contactsAt: () => contactsAt,
+    filletedExcess: () => filletedExcess,
     headingDifference: () => headingDifference,
     pickGuardContact: () => pickGuardContact,
     pickNearestRoadContactForName: () => pickNearestRoadContactForName,
@@ -146,9 +148,36 @@ var CanalRecallRoadSurface = (() => {
     return aligned ?? nearest;
   }
   var GUARD_CROSS_ANGLE = Math.PI / 6;
-  function pickGuardContact(contacts, preferredAngle = null) {
+  var CORNER_FILLET_RADIUS = 36;
+  function filletedExcess(contacts, x, y, radius = CORNER_FILLET_RADIUS) {
+    let best = Infinity;
+    for (const contact of contacts) best = Math.min(best, contact.dist - contact.width);
+    if (best <= 0) return best;
+    const perpendicular = (contact) => {
+      const along = Math.abs((x - contact.x) * contact.ny - (y - contact.y) * contact.nx);
+      return along <= 0.2 * contact.dist + 0.5;
+    };
+    const inCorner = contacts.filter((contact) => {
+      const excess = contact.dist - contact.width;
+      return excess > 0 && excess <= radius && perpendicular(contact);
+    });
+    for (let i = 0; i < inCorner.length; i++) {
+      for (let j = i + 1; j < inCorner.length; j++) {
+        const a = inCorner[i], b = inCorner[j];
+        if (headingDifference(a.angle, b.angle) <= GUARD_CROSS_ANGLE) continue;
+        const ea = a.dist - a.width, eb = b.dist - b.width;
+        best = Math.min(best, radius - Math.hypot(radius - ea, radius - eb));
+      }
+    }
+    return best;
+  }
+  function pickGuardContact(contacts, preferredAngle = null, point = null) {
     const aligned = pickRoadContact(contacts, preferredAngle);
     if (!aligned || aligned.dist <= aligned.width) return aligned;
+    if (point) {
+      const excess = filletedExcess(contacts, point.x, point.y);
+      if (excess < aligned.dist - aligned.width) return { ...aligned, dist: aligned.width + Math.max(0, excess) };
+    }
     let inside = null;
     for (const contact of contacts) {
       if (contact.dist > contact.width) continue;

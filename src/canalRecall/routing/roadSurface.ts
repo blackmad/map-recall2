@@ -244,12 +244,68 @@ export function pickRoadContact(
  */
 export const GUARD_CROSS_ANGLE = Math.PI / 6;
 
+/**
+ * World units (12 m) of fillet on the inside of a corner. Road corridors are
+ * straight bands, so where two meet the union has a square inside corner and a
+ * rider cutting the corner diagonally hit the rollback ("we should be able to
+ * cut corners a bit more", Oosterdokskade by LOT 61, 2026-09-28). With the
+ * fillet a diagonal line reaches about 3.5 m past both edges.
+ */
+export const CORNER_FILLET_RADIUS = 36;
+
+/**
+ * How far outside the asphalt (x, y) is once the inside corners of the network
+ * are filleted: at most the plain distance past the nearest road's edge, less
+ * wherever the point sits in the inside corner of two roads that meet or cross
+ * at more than `GUARD_CROSS_ANGLE`.
+ *
+ * "Inside" means both roads' nearest points are perpendicular projections,
+ * not an end vertex: the outer corner of an L is usually a building and stays
+ * where it was. The fillet is an arc in edge-distance space: with eA and eB
+ * the distances past each road's edge, points with hypot(r − eA, r − eB) ≥ r
+ * are on the asphalt.
+ */
+export function filletedExcess(
+  contacts: readonly RoadContact[],
+  x: number,
+  y: number,
+  radius: number = CORNER_FILLET_RADIUS,
+): number {
+  let best = Infinity;
+  for (const contact of contacts) best = Math.min(best, contact.dist - contact.width);
+  if (best <= 0) return best;
+  const perpendicular = (contact: RoadContact) => {
+    const along = Math.abs((x - contact.x) * contact.ny - (y - contact.y) * contact.nx);
+    return along <= 0.2 * contact.dist + 0.5;
+  };
+  const inCorner = contacts.filter(contact => {
+    const excess = contact.dist - contact.width;
+    return excess > 0 && excess <= radius && perpendicular(contact);
+  });
+  for (let i = 0; i < inCorner.length; i++) {
+    for (let j = i + 1; j < inCorner.length; j++) {
+      const a = inCorner[i], b = inCorner[j];
+      if (headingDifference(a.angle, b.angle) <= GUARD_CROSS_ANGLE) continue;
+      const ea = a.dist - a.width, eb = b.dist - b.width;
+      best = Math.min(best, radius - Math.hypot(radius - ea, radius - eb));
+    }
+  }
+  return best;
+}
+
 export function pickGuardContact(
   contacts: readonly RoadContact[],
   preferredAngle: number | null = null,
+  point: RoadPoint | null = null,
 ): RoadContact | null {
   const aligned = pickRoadContact(contacts, preferredAngle);
   if (!aligned || aligned.dist <= aligned.width) return aligned;
+  if (point) {
+    // Inside a corner: report the filleted edge distance, so the guard treats
+    // the cut corner as asphalt (or as a shallower shoulder).
+    const excess = filletedExcess(contacts, point.x, point.y);
+    if (excess < aligned.dist - aligned.width) return { ...aligned, dist: aligned.width + Math.max(0, excess) };
+  }
   let inside: RoadContact | null = null;
   for (const contact of contacts) {
     if (contact.dist > contact.width) continue;

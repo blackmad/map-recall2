@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — corners can be cut
+
+User report: "we should be able to cut-corners a bit more" (the Oosterdokskade
+corner by LOT 61).
+- Road corridors are straight bands around each centreline, so where two meet
+  the union has a square inside corner. A diagonal line through a turn went
+  more than 4 px past both edges and hit the rollback.
+- `filletedExcess` (`roadSurface.ts`) fillets the inside of every corner or
+  crossing at more than 30°, with a radius of 12 m. A diagonal now reaches
+  about 3.5 m past both edges. It applies only when both nearest points are
+  perpendicular projections, so the outer corner of an L, usually a
+  building, stays blocked.
+- `pickGuardContact` reports the filleted edge distance when given the point,
+  and `getSurface` uses it too, so a cut corner reads as asphalt/curb rather
+  than grass drag.
+- Pinned in `tests/e2e/corner-cut.spec.ts`: at Oosterdokskade × Simon
+  Carmiggeltstraat, a point 2 m past both edges was a rollback and is now
+  asphalt. The driving harness holds at 104/120 with 0 wedges.
+- Also fixed a `check-road-surface` fixture from the Bullebakssluis change
+  (29fc2b3). Its heading contact sat outside the alignment slack, so the
+  check had never passed; only `tsc` runs at commit.
+
 ## 2026-09-28 — bikes stay out of the IJ-tunnel
 
 User report: "my bike is seemingly entirely stuck in this building". A ride
