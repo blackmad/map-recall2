@@ -263,8 +263,20 @@ export class GamePresentationRuntime {
   /** Canvas camera controls and card hit targets belong with the presentation layer. */
   _setupCameraGestures(): void {
     let dragging = false, moved = false, lastX = 0, lastY = 0, downX = 0, downY = 0, pinchDistance = 0;
+    let detachedBeforeDrag = false;
     const livePinch = new Map<number, { x: number; y: number }>();
-    const syncZoom = () => { this._cameraZoom.value = this._liveZoom.value = String(this.camera.zoom); };
+    // `_cameraZoom` / `_liveZoom` were never assigned once settings moved into
+    // the React overlay, so this threw on every pinch step before the step
+    // was recorded, and each step multiplied by the distance since the pinch
+    // began: a 1.1x pinch zoomed 1.7x (user report 2026-09-28, "zoom in out
+    // on mobile is way too sensitive"). Look the sliders up, and tolerate
+    // their absence.
+    const syncZoom = () => {
+      for (const id of ['camera-zoom', 'live-zoom']) {
+        const input = document.getElementById(id) as HTMLInputElement | null;
+        if (input) input.value = String(this.camera.zoom);
+      }
+    };
     this.canvas.addEventListener('wheel', event => {
       if (this.state === GameState.MENU) return;
       event.preventDefault();
@@ -278,7 +290,17 @@ export class GamePresentationRuntime {
         if (!window.CanalRecallUi.isInsideDpad(point, this.input.dpad)) livePinch.set(touch.identifier, point);
       }
       const points = [...livePinch.values()];
-      if (points.length === 2) pinchDistance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+      if (points.length === 2) {
+        pinchDistance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+        // The first finger of a pinch lands alone and starts a drag. A pinch
+        // is not a pan: drop the drag and whatever it moved, or every pinch
+        // detached the camera and left the bike off screen (user report
+        // 2026-09-28).
+        if (dragging) {
+          dragging = false;
+          if (!detachedBeforeDrag) this.camera.resetPan();
+        }
+      }
     }, { passive: true });
     this.canvas.addEventListener('touchmove', event => {
       let changed = false;
@@ -305,11 +327,14 @@ export class GamePresentationRuntime {
     });
     this.canvas.addEventListener('pointerdown', event => {
       if (event.button !== 0 || this.state === GameState.MENU || livePinch.size >= 2 || window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) return;
-      dragging = true; moved = false; downX = lastX = event.clientX; downY = lastY = event.clientY; this.canvas.setPointerCapture(event.pointerId);
+      dragging = true; moved = false; detachedBeforeDrag = !!this.camera.detached;
+      downX = lastX = event.clientX; downY = lastY = event.clientY; this.canvas.setPointerCapture(event.pointerId);
     });
     this.canvas.addEventListener('pointermove', event => {
-      if (!dragging) return;
+      if (!dragging || livePinch.size >= 2) return;
       if (Math.hypot(event.clientX - downX, event.clientY - downY) > 6) moved = true;
+      // A tap wobbles a few pixels; only a real drag detaches the camera.
+      if (!moved) return;
       this.camera.pan(lastX - event.clientX, lastY - event.clientY); lastX = event.clientX; lastY = event.clientY;
     });
     this.canvas.addEventListener('pointerup', event => {
