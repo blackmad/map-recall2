@@ -13,6 +13,7 @@ import { buildingForLandmark,
 } from '../src/canalRecall/buildingTileSource.js';
 import { BuildingTileStreamer, decorateBuildingFeature, loadVerifiedAppearanceCatalog, loadVerifiedAppearancePriors, loadVerifiedAppearanceRelease } from '../src/canalRecall/buildingTilesBrowser.js';
 import { tileFor, tileKey } from '../src/canalRecall/slippyTiles.js';
+import { separateNestedBuildings } from '../src/canalRecall/buildingNesting.js';
 
 /** A camera over the Nieuwmarkt, roughly what a driving viewport spans. */
 const view = { west: 4.895, south: 52.369, east: 4.906, north: 52.376 };
@@ -236,4 +237,37 @@ process.stdout.write(`Building tile source checks passed (z${BUILDING_TILE_ZOOM}
   // 0.00005 degrees of latitude past w1's north edge is about 5.6 m: an entrance node.
   assert.equal(buildingForLandmark(features, { lng: 4.9001, lat: 52.37025 }, idOf), 'w1', 'an entrance node on the pavement');
   assert.equal(buildingForLandmark(features, { lng: 4.9001, lat: 52.3705 }, idOf), null, 'nothing within 10 m');
+}
+
+{
+  // Nested footprints z-fight (Oosterdokskade, user report 2026-09-28).
+  const box = (id: string, x: number, y: number, size: number, height: number, minHeight = 0) => ({
+    type: 'Feature' as const,
+    properties: { id, height, minHeight },
+    geometry: { type: 'Polygon', coordinates: [[[x, y], [x + size, y], [x + size, y + size], [x, y + size], [x, y]]] },
+  });
+  const ring = (feature: { geometry: unknown }) => (feature.geometry as { coordinates: number[][][] }).coordinates[0];
+  const outer = box('w1', 4.9, 52.37, 0.0004, 36);
+  const sharedWall = box('w2', 4.9, 52.37, 0.0002, 48); // a taller part sharing two walls
+  const sameRoof = box('w3', 4.9002, 52.3702, 0.0001, 36.1);
+  const beside = box('w4', 4.9005, 52.37, 0.0002, 20);
+  const stacked = box('w5', 4.90032, 52.37002, 0.00005, 50, 40); // sits above w1's roof
+  const input = [outer, sharedWall, sameRoof, beside, stacked];
+  const before = JSON.stringify(input);
+  const out = separateNestedBuildings(input);
+  assert.equal(JSON.stringify(input), before, 'the input is not mutated');
+  assert.equal(out[0], outer, 'the outer building is untouched');
+  assert.equal(out[3], beside, 'a neighbour is untouched');
+  assert.equal(out[4], stacked, 'a part above the outer roof is untouched');
+  assert.equal(out[1].properties.nestedInset, true, 'a contained part is inset');
+  assert.ok(ring(out[1])[0][0] > 4.9 && ring(out[1])[0][1] > 52.37, 'its shared corner moves inward');
+  const movedMetres = (ring(out[1])[0][1] - 52.37) * 111_320;
+  assert.ok(movedMetres > 0.15 && movedMetres < 0.4, `by a few tens of centimetres (${movedMetres.toFixed(2)} m)`);
+  assert.equal(out[1].properties.height, 48, 'a clearly taller part keeps its height');
+  assert.ok(Math.abs((out[2].properties.height as number) - 35.7) < 1e-9, 'a flush roof drops below the outer roof');
+  assert.deepEqual(ring(out[1])[0], ring(out[1])[4], 'the ring stays closed');
+
+  // Two copies of one footprint (BAG pand under an OSM way): only one shrinks.
+  const twins = separateNestedBuildings([box('NL.IMBAG.Pand.1', 4.9, 52.37, 0.0002, 20), box('w9', 4.9, 52.37, 0.0002, 20)]);
+  assert.equal(twins.filter(feature => feature.properties.nestedInset).length, 1, 'exactly one twin is inset');
 }

@@ -20,6 +20,7 @@
  * a single request for the index rather than an assumption.
  */
 
+import { separateNestedBuildings } from './buildingNesting.js';
 import {
   BuildingTileCache, BUILDING_TILE_ZOOM, buildingForLandmark, planTiles, planSourceDiff, tileUrl,
   type BuildingFeature, type Bounds, type LandmarkBuildingQuery
@@ -314,11 +315,14 @@ export class BuildingTileStreamer {
       // MapLibre's GeoJSON source tiles and may rewrite rings in place.
       // Pyramidal roofs need the original closed footprint, so keep our own
       // copy of coordinates before `setData`.
-      const features: BuildingFeature[] = (collection.features ?? []).map((feature) => ({
+      const copies: BuildingFeature[] = (collection.features ?? []).map((feature) => ({
         type: 'Feature',
         properties: { ...(feature.properties || {}) },
         geometry: feature.geometry && JSON.parse(JSON.stringify(feature.geometry)),
       }));
+      // Nested duplicates (OSM outline + parts, BAG pand under an OSM way)
+      // share walls and z-fight; see `buildingNesting.ts`.
+      const features = separateNestedBuildings(copies);
       this.cache.adopt(key, features);
       this.firstTileLanded = true;
       if (!this.disposed) this.scheduleFlush();
