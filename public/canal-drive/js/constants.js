@@ -203,6 +203,10 @@ const COCKPIT_PITCH_DEGREES = 82;
 const CHASE_ZOOM_OFFSET = 0.55;
 const COCKPIT_ZOOM_OFFSET = 1.65;
 const COCKPIT_LOOKAHEAD = 160; // px — camera centre ahead of the vehicle
+// Chase view: a constant lead puts the rider below centre, so more of the
+// street ahead is on screen. At 0 the rider sat at exactly mid-height and the
+// view felt "cut off" ahead (user report 2026-09-28).
+const CHASE_LOOKAHEAD = 65;
 const FINISH_RADIUS = 80;                      // px — proximity to finish point to complete race
 
 // --- Road Widths (px) ---

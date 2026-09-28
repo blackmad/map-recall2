@@ -1,6 +1,15 @@
 # Canal Recall — what is built
 
 
+## 2026-09-28 — the chase view shows more street ahead
+
+User report: the chase view "seems slightly too … high? like I'm a little
+cut-off". The chase camera had no constant lead, so the rider sat at exactly
+50% of screen height (measured on desktop and phone) and half the view was
+street already passed. `CHASE_LOOKAHEAD = 65` puts the rider at about 60%
+(62% on the phone) when stopped; the speed-based lead adds more while moving.
+Pitch (42°) is unchanged; `[` and `]` still adjust tilt.
+
 ## 2026-09-28 — the phone stick can turn you round
 
 User report: "mobile controls are better but still an issue, can't really turn
