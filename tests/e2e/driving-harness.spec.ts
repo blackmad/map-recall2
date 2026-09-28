@@ -174,6 +174,9 @@ function installHarness(): void {
           if (d < nearestDistance) { nearestDistance = d; nearest = i; }
         }
         index = nearest;
+        // A vertex within reach counts as passed; otherwise a bike that
+        // overshoots a hairpin keeps turning back to the point behind it.
+        if (nearestDistance < 25 && index < path.length - 1) index++;
         let lookahead = 0, targetIndex = index;
         while (targetIndex < path.length - 1 && lookahead < 120) {
           lookahead += Math.hypot(path[targetIndex + 1].x - path[targetIndex].x, path[targetIndex + 1].y - path[targetIndex].y);
@@ -196,6 +199,9 @@ function installHarness(): void {
           return true;
         };
         while (targetIndex > index + 1 && !inSight(path[targetIndex])) targetIndex--;
+        // Cut the corner short of a junction and even the next route point is
+        // out of sight: ride into the junction first, as a rider would.
+        if (targetIndex === index + 1 && !inSight(path[targetIndex])) targetIndex = index;
         const target = path[targetIndex];
         let error = Math.atan2(target.y - player.y, target.x - player.x) - player.angle;
         while (error > Math.PI) error -= 2 * Math.PI;
