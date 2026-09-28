@@ -1,6 +1,35 @@
 # Canal Recall — what is built
 
 
+## 2026-09-28 — stutter: per-frame work that did not need to run
+
+User report: "the fly-in is really stuttery … the whole game is pretty
+stuttery right now - is that from our coloring algo?". Measured with the
+iPhone Playwright profile at 4× CPU throttle and CDP CPU profiles. (Starting
+the profiler itself stalls the page for about 1.7 s, so first-frame spikes
+in profiled runs are artifacts; the timing runs used wrappers instead.)
+
+Riding, chase view: median frame 33 → 16.7 ms, frames over 33 ms 212 → 43.
+- The minimap walked every road segment through a string test every frame
+  just to count water for its cache key (15%). Now counted once per route.
+- `drawLabels` ran the per-place knowledge test on every label in the city
+  before its on-screen test (~15%). It now culls in world space first.
+- `setQuizQuietMap` serialised the whole style (`getStyle`) three times a
+  frame. It now acts only when quiet or labels change.
+- Camera clearance: the sightline walk point-in-polygon-tested up to 20 000
+  footprints per metre, rerun every 8 m of travel. It now prefilters by
+  cached bounding boxes.
+- Partly yes, the colouring: `sampleFeatures` and every tile flush re-styled
+  every resident building (`decorateBuildingFeature`) into new objects. The
+  styled copy is now memoised per feature per priors set.
+
+Start flight: p90 150 → 16.7 ms, frames over 33 ms 58 → 3. Clearance checks
+and building-tile planning and flushing (which `moveend` from every `jumpTo`
+also triggered) are suspended while `camera.introOverview` > 0, and resume
+once on landing (about 96 ms at 4× throttle, roughly one frame on a device).
+The overview is aimed and settled behind the loading screen
+(`_prepareIntro`), and vehicle shaders are precompiled when the model mounts.
+
 ## 2026-09-28 — dragging the map keeps the 3D tilt
 
 User report: panning "seems to switch between top-down while panning and then

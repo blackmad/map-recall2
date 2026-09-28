@@ -557,8 +557,15 @@ class RoadNetwork {
     // Road name labels — with screen-space overlap + same-name proximity rejection
     const drawnRects = []; // [{x, y, w, h, text}] in screen space
 
+    // Cheap world-space cull before the knowledge test: the test ran for every
+    // label in the city each frame (~15% of a throttled phone frame). A
+    // pitched camera sees much further up-screen, hence the wider reach.
+    const reach = Math.hypot(halfW, halfH) * (camera.projector ? 4 : 1.2);
+    const cx = camera.x, cy = camera.y;
+
     if (this.labels && this.labels.length > 0) {
       for (const lbl of this.labels) {
+        if (Math.abs(lbl.x - cx) > reach || Math.abs(lbl.y - cy) > reach) continue;
         if (isLabelled && !isLabelled(lbl.text, lbl.x, lbl.y)) continue;
         if (hiddenName && lbl.text === hiddenName) continue;
         const screen = camera.worldToScreen(lbl.x, lbl.y);

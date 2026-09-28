@@ -1209,6 +1209,14 @@ class GameRouteRuntime {
 
       await new Promise(r => setTimeout(r, 200));
 
+      // Load the start flight's overview tiles while the loading screen is
+      // still up; see _prepareIntro.
+      if (this._prepareIntro()) {
+        this.loadingMessage = 'Finding your way...';
+        await this._waitForMapSettle(1800);
+        if (this._loadingAborted) return;
+      }
+
       this.state = GameState.RACING;
       this._beginIntro();
 

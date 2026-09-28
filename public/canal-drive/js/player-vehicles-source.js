@@ -184,8 +184,29 @@ class Vehicle3D {
     this._scene.add(model);
     this._modelRoot = model;
     this.model = model;
+    this._precompile();
     this.ready = true;
     this.map.triggerRepaint();
+  }
+
+  /** Compile the model's shaders (and the x-ray's) now, while the ride is
+   *  still loading, instead of on the first frame the vehicle is visible. */
+  _precompile() {
+    const renderer = this._renderer;
+    if (!renderer || !this._scene) return;
+    try {
+      const camera = new THREE.Camera();
+      renderer.compile(this._scene, camera);
+      if (this._occlusionMaterial) {
+        this._scene.overrideMaterial = this._occlusionMaterial;
+        renderer.compile(this._scene, camera);
+        this._scene.overrideMaterial = null;
+      }
+      renderer.resetState();
+    } catch (error) {
+      this._scene.overrideMaterial = null;
+      console.warn('Could not precompile vehicle shaders', error);
+    }
   }
 
   _loadModel(url) {
@@ -235,6 +256,8 @@ class Vehicle3D {
         }
         renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         renderer.autoClear = false;
+        owner._renderer = renderer;
+        owner._occlusionMaterial = occlusionMaterial;
         owner._loadModel(modelUrl);
       },
       render(_gl, args) {

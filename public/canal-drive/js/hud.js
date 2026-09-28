@@ -526,9 +526,17 @@ class HUD {
       void key;
     }
     stampDue = Object.keys(reviewDue).length;
-    for (const segment of game.track.segments || []) {
-      if (isWater(segment.type)) stampWater += 1;
+    // Fixed for a track, so counted once per route. Counting it every frame
+    // walked every segment of the network through a string test — 15% of a
+    // throttled phone frame while riding.
+    if (this._overviewWaterTrack !== game.track) {
+      this._overviewWaterTrack = game.track;
+      this._overviewWaterCount = 0;
+      for (const segment of game.track.segments || []) {
+        if (isWater(segment.type)) this._overviewWaterCount += 1;
+      }
     }
+    stampWater = this._overviewWaterCount;
     const cacheKey = `${rect.width}x${rect.height}|L${stampLearning}|K${stampKnown}|M${stampMastered}|D${stampDue}|W${stampWater}`;
     if (this._overviewTrack !== game.track || this._overviewKey !== cacheKey || !this._overviewCache) {
       const fog = [];

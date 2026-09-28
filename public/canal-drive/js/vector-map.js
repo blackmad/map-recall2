@@ -1399,6 +1399,7 @@ class VectorBasemap {
 
   _hideLabels() {
     if (!this.map || !this.map.getStyle()) return;
+    this._quietApplied = null;
     this._labelsVisible = false;
     for (const layer of this.map.getStyle().layers || []) {
       if (layer.type !== 'symbol') continue;
@@ -1411,6 +1412,7 @@ class VectorBasemap {
 
   _showLabels() {
     if (!this.map || !this.map.getStyle()) return;
+    this._quietApplied = null;
     this._labelsVisible = true;
     for (const layer of this.map.getStyle().layers || []) {
       if (layer.type !== 'symbol') continue;
@@ -1430,7 +1432,12 @@ class VectorBasemap {
    * resting state via `_labelsVisible`.
    */
   setQuizQuietMap(quiet) {
+    // Called every frame. Re-applying serialised the whole style (getStyle)
+    // three times a frame; only act when the answer actually changes.
+    const key = `${!!quiet}|${!!this._labelsVisible}`;
+    if (key === this._quietApplied) return;
     if (!this.map || !this.map.getStyle()) return;
+    this._quietApplied = key;
     this._quizQuietMap = !!quiet;
     this._setBasemapOrientationPoisVisible(!this._quizQuietMap);
     const ids = ['poi-labels', 'brand-poi-labels', 'local-food-labels', 'neighborhood-labels'];
@@ -1510,9 +1517,11 @@ class VectorBasemap {
     // checking the sightline to an arbitrary point dropped the pitch toward
     // plan view on every drag frame and restored it when the drag stopped.
     const detached = !!camera.detached;
-    const needsClearanceCheck = pitch > 0 && !detached && (!previousCheck || movedMetres > 8 || bearingChange > 8
+    // The start flight sweeps zoom every frame; clearance and tile planning
+    // wait for it to land (see below).
+    const needsClearanceCheck = pitch > 0 && !detached && introFlat === 0 && (!previousCheck || movedMetres > 8 || bearingChange > 8
       || Math.abs(mapZoom - previousCheck.zoom) > 0.05 || performance.now() - previousCheck.at > 1000);
-    const appliedPitch = needsClearanceCheck || detached ? pitch
+    const appliedPitch = needsClearanceCheck || detached || introFlat > 0 ? pitch
       : Math.min(pitch, this._lastCameraClearance.safePitch ?? pitch);
     this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
     if (needsClearanceCheck) {
@@ -1522,7 +1531,13 @@ class VectorBasemap {
     this._lastCameraZoom = camera.zoom;
     // Building tiles follow the driving camera, not the style's Damrak default.
     // followCamera no-ops until the centre tile / zoom bucket changes.
-    if (this._completeCity && typeof this._completeCity.followCamera === 'function') {
+    // Not during the start flight: every half-step of zoom re-planned and
+    // re-flushed the building tiles, which is where the flight stuttered. The
+    // first frame after landing plans once for the driving view.
+    if (this._completeCity && typeof this._completeCity.setSuspended === 'function') {
+      this._completeCity.setSuspended(introFlat > 0);
+    }
+    if (introFlat === 0 && this._completeCity && typeof this._completeCity.followCamera === 'function') {
       this._completeCity.followCamera();
     }
     this._updateGoogleTiles();
@@ -1549,6 +1564,32 @@ class VectorBasemap {
       && !rings.slice(1).some(ring => this._pointInRing(point, ring)));
   }
 
+  /** [west, south, east, north] of a footprint's outer rings, cached per
+   *  feature object (resident features are reused until their tile drops). */
+  _featureBox(feature) {
+    if (!this._featureBoxes) this._featureBoxes = new WeakMap();
+    let box = this._featureBoxes.get(feature);
+    if (box !== undefined) return box;
+    const geometry = feature && feature.geometry;
+    const polygons = geometry && geometry.type === 'Polygon' ? [geometry.coordinates]
+      : geometry && geometry.type === 'MultiPolygon' ? geometry.coordinates : [];
+    let w = Infinity, s = Infinity, e = -Infinity, n = -Infinity;
+    for (const rings of polygons) {
+      const outer = Array.isArray(rings) && rings[0];
+      if (!Array.isArray(outer)) continue;
+      for (const vertex of outer) {
+        if (!Array.isArray(vertex)) continue;
+        if (vertex[0] < w) w = vertex[0];
+        if (vertex[0] > e) e = vertex[0];
+        if (vertex[1] < s) s = vertex[1];
+        if (vertex[1] > n) n = vertex[1];
+      }
+    }
+    box = Number.isFinite(w) ? [w, s, e, n] : null;
+    this._featureBoxes.set(feature, box);
+    return box;
+  }
+
   _cameraBlockingFeature(point, altitude, residentFeatures) {
     if (!this._completeCity || typeof this._completeCity.sampleFeatures !== 'function') return null;
     const features = residentFeatures || this._completeCity.sampleFeatures(20_000);
@@ -1569,13 +1610,31 @@ class VectorBasemap {
     if (!distance) return null;
     const residentFeatures = this._completeCity && this._completeCity.sampleFeatures
       ? this._completeCity.sampleFeatures(20_000) : [];
+    // Only footprints whose box touches the sightline's box can block it. The
+    // walk below used to point-in-polygon every resident footprint (up to
+    // 20 000) at every metre of the line, on every 8 m of travel — the largest
+    // single cost in a phone frame profile, and most of the start flight's
+    // stutter.
+    const west = Math.min(from[0], center[0]), eastEdge = Math.max(from[0], center[0]);
+    const south = Math.min(from[1], center[1]), northEdge = Math.max(from[1], center[1]);
+    const candidates = [];
+    for (const feature of residentFeatures) {
+      const box = this._featureBox(feature);
+      if (box && box[0] <= eastEdge && box[2] >= west && box[1] <= northEdge && box[3] >= south) candidates.push(feature);
+    }
+    if (!candidates.length) return null;
     // Ignore the final 2 m around the route centre: the player is on the road
     // and rounding differences at a kerb must not make the camera oscillate.
     for (let travelled = 1; travelled < distance - 2; travelled += 1) {
       const t = travelled / distance;
       const point = [from[0] + east * t / metresPerDegreeLng, from[1] + north * t / metresPerDegreeLat];
       const rayAltitude = cameraAltitude * (1 - t);
-      const blocker = this._cameraBlockingFeature(point, rayAltitude, residentFeatures);
+      const here = candidates.filter(feature => {
+        const box = this._featureBox(feature);
+        return point[0] >= box[0] && point[0] <= box[2] && point[1] >= box[1] && point[1] <= box[3];
+      });
+      if (!here.length) continue;
+      const blocker = this._cameraBlockingFeature(point, rayAltitude, here);
       if (blocker) return blocker;
     }
     return null;

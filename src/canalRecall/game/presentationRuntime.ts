@@ -89,12 +89,28 @@ export class GamePresentationRuntime {
    *  Automated browsers skip it — dozens of specs inspect the driving camera
    *  straight after spawning — unless they set `__canalRecallForceIntro`. */
   _beginIntro(): void {
+    const prepared = this._introPrepared;
+    this._introPrepared = null;
     this._intro = null;
+    const planned = prepared || this._planIntro();
+    if (!planned) {
+      this.camera.introOverview = 0;
+      return;
+    }
+    this._intro = { plan: planned.plan, elapsed: 0, playZoom: planned.playZoom, overview: 1 };
+    this.camera.resetPan();
+    this.camera.rotation = 0;
+    this.camera.introOverview = 1;
+    this._applyIntroCamera(planned.plan.from.x, planned.plan.from.y, planned.plan.from.zoom);
+  }
+
+  /** The overview framing for this ride, or null when there is no flight. */
+  _planIntro(): { plan: import('./introFlight').IntroPlan; playZoom: number } | null {
     const player = this.player;
     const finish = this.track?.finishPoint;
-    if (!player || !finish) return;
+    if (!player || !finish) return null;
     const forced = (window as unknown as { __canalRecallForceIntro?: boolean }).__canalRecallForceIntro;
-    if (navigator.webdriver && !forced) return;
+    if (navigator.webdriver && !forced) return null;
     this._syncHudLayout();
     const layout = this._hudRects();
     const top = layout.destinationInRecall
@@ -107,11 +123,23 @@ export class GamePresentationRuntime {
       { width: CANVAS_W, height: CANVAS_H, top: top + 8, bottom: bottom + 8 },
       playZoom,
     );
-    this._intro = { plan: introPlan(from, this.camera.reducedMotion), elapsed: 0, playZoom, overview: 1 };
+    return { plan: introPlan(from, this.camera.reducedMotion), playZoom };
+  }
+
+  /** Aim the map at the overview while the loading screen is still up, so
+   *  the city-scale tiles load there instead of in the flight's first frame
+   *  (a ~2 s hitch at 4× CPU throttle). True when the caller should wait for
+   *  the map to settle before racing. */
+  _prepareIntro(): boolean {
+    const planned = this._planIntro();
+    this._introPrepared = planned;
+    if (!planned) return false;
     this.camera.resetPan();
     this.camera.rotation = 0;
     this.camera.introOverview = 1;
-    this._applyIntroCamera(from.x, from.y, from.zoom);
+    this._applyIntroCamera(planned.plan.from.x, planned.plan.from.y, planned.plan.from.zoom);
+    this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
+    return true;
   }
 
   _applyIntroCamera(x: number, y: number, zoom: number): void {
