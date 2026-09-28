@@ -50,17 +50,19 @@ Home-base routes already grow an expanding learning radius from the address
 
 ## P2 — Weight and reach
 
-**Two e2e specs were already red on `main` (found 2026-09-28).**
-`tests/e2e/driving-harness.spec.ts` gets 51 of 120 planned drives to arrive
-(the bar is 45%; it was 41 before the junction guard fix of 2026-09-28).
-None pin; all 69 misses are "lost" (25 s without route progress), spread
-across the city (Nieuw-West, Noord, Buikslotermeerplein). Next: sample those
-failure points with the arm-to-arm sweep used for the Bullebakssluis
-(`tests/e2e/bullebakssluis-junction.spec.ts`) to separate guard wedges from
-autopilot corner-cutting.
+**Driving harness: the remaining lost drives (2026-09-28).**
+`tests/e2e/driving-harness.spec.ts` passes again at 90–94 of 120 (bar 45%)
+after the autopilot learned line of sight, braking for bends and turning
+round. Arrivals still vary by a few drives between runs with the same seed;
+find the nondeterminism (tile/extract load order?) before tightening the bar.
+Of the ~26 lost, about 15 sit motionless at a corridor edge while still on
+the route. The traced case at 52.36993, 4.96976 is two unnamed segments whose
+drawn corridors do not overlap at a junction the routing graph stitched, so
+the guard rolls the bike back at the gap. That is a real "stuck and can't
+turn round" trap (user report from the phone, same day). Scratch tracers for
+this are `zz-harness-diag` / `zz-drive-one` patterns (see HISTORY).
 `tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
 or facades resident, probably because it needs locally generated study data.
-Diagnose both before trusting either as a gate.
 
 **Wall colour/material: finish Jordaan + Da Costabuurt evidence and local-model evaluation.**
 The colour/texture focus supersedes new roof work for this appearance batch.

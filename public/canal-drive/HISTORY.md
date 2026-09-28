@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — the driving harness measures the city, not its autopilot
+
+The harness was red at 41–65 of 120 arrivals, varying by run. A diagnostic
+copy recorded how each lost drive failed. Most were the test driver:
+- It aimed 40 m ahead in a straight line, across hairpins and turning loops
+  (Science Park), and rode into the kerb.
+- It took sharp corners at cruising speed and cut into side alleys
+  (Nieuwendijk into Nieuwezijds Armsteeg).
+- It never turned round, steering full lock into a block for ever.
+The autopilot now aims at the farthest route point it has a clear line of
+sight to along the road, slows for bends within 90 px on the route, and does
+its back-off-and-turn when the route is behind it. Result: 90–94 of 120
+arrive, 0 pinned, so it passes the 45% bar. What is left is mostly real
+corridor-gap traps (see TODO).
+
 ## 2026-09-28 — no Da Costa study choice, 50% zoom again, no ESC on arrival
 
 User requests: "get rid of 'da costa study'", "default zoom on web for
