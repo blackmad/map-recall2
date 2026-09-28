@@ -161,6 +161,7 @@ function installHarness(): void {
       let lostSeconds = 0;
       let pinnedSeconds = 0;
       let reversing = 0;
+      let facingAwaySeconds = 0;
       let elapsed = 0;
       let outcome: DriveOutcome = 'timeout';
       while (elapsed < MAX_SECONDS) {
@@ -178,6 +179,23 @@ function installHarness(): void {
           lookahead += Math.hypot(path[targetIndex + 1].x - path[targetIndex].x, path[targetIndex + 1].y - path[targetIndex].y);
           targetIndex++;
         }
+        // Line of sight: a lookahead point across a hairpin or a turning
+        // loop has open ground between it and the bike, and a driver who aims
+        // straight at it only rides into the kerb. Pull the target back along
+        // the route until the straight line to it stays on the road.
+        const onRoad = (x: number, y: number) => {
+          const road = game.track.getNearestRoad(x, y);
+          return !!road && road.dist <= road.width;
+        };
+        const inSight = (point: Point) => {
+          const length = Math.hypot(point.x - player.x, point.y - player.y);
+          for (let step = 10; step < length; step += 10) {
+            const t = step / length;
+            if (!onRoad(player.x + (point.x - player.x) * t, player.y + (point.y - player.y) * t)) return false;
+          }
+          return true;
+        };
+        while (targetIndex > index + 1 && !inSight(path[targetIndex])) targetIndex--;
         const target = path[targetIndex];
         let error = Math.atan2(target.y - player.y, target.x - player.x) - player.angle;
         while (error > Math.PI) error -= 2 * Math.PI;
@@ -194,7 +212,17 @@ function installHarness(): void {
           player.throttle = 0;
           player.brake = 1;
         } else {
-          const cruise = Math.abs(error) > 0.5 ? 60 : 170;
+          // Slow for the bend ahead on the route, not only for the heading
+          // error now: arriving at a sharp corner at cruising speed cut its
+          // inside into a side alley (Nieuwendijk into Nieuwezijds Armsteeg).
+          let bend = 0, ahead = 0;
+          for (let i = index; i < path.length - 2 && ahead < 90; i++) {
+            const a1 = Math.atan2(path[i + 1].y - path[i].y, path[i + 1].x - path[i].x);
+            const a2 = Math.atan2(path[i + 2].y - path[i + 1].y, path[i + 2].x - path[i + 1].x);
+            bend = Math.max(bend, Math.abs(Math.atan2(Math.sin(a2 - a1), Math.cos(a2 - a1))));
+            ahead += Math.hypot(path[i + 1].x - path[i].x, path[i + 1].y - path[i].y);
+          }
+          const cruise = Math.abs(error) > 0.5 || bend > 0.7 ? 60 : 170;
           player.steerInput = Math.max(-1, Math.min(1, error * 2.5));
           player.throttle = player.speed < cruise ? 1 : 0;
           player.brake = player.speed > cruise * 1.6 ? 1 : 0;
@@ -223,6 +251,10 @@ function installHarness(): void {
         // Every wedge is counted, even the ones the driver reverses out of:
         // being stopped dead with the throttle open is the bug, whether or not
         // a three-point turn eventually frees the car.
+        // A driver whose route is behind them turns round rather than
+        // steering full lock into the kerb for ever.
+        facingAwaySeconds = Math.abs(error) > 1.9 && reversing <= 0 ? facingAwaySeconds + STEP : 0;
+        if (facingAwaySeconds > 0.6) { reversing = 1.2; facingAwaySeconds = 0; }
         if (reversing <= 0 && pinnedSeconds > 1.5) { reversing = 1.2; wedges++; }
 
         if (remaining < ARRIVE_PX) { outcome = 'arrived'; break; }
