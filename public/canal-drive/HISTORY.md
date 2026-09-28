@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — the chase bike grows with the window
+
+User report: "the bike is small in the chase view on desktop". The bike is a
+world-space game piece (2.15 m × `BIKE_GAME_SCALE` 4.5), so it drew at the
+same CSS size on every screen: 24 px, or 2.7% of the short side, in a
+1440×900 window, against 5.4% on a phone. `Vehicle3D.viewportScale()` now
+scales it by the short side over 500 CSS px, clamped to 1–2×, so desktop
+draws it at 1.8× (43 px, 4.8%) and phones are unchanged. Pinned in
+`tests/e2e/bike-screen-size.spec.ts`.
+
 ## 2026-09-28 — fewer settings, and a wider zoom-out
 
 User requests: "get rid of all these options" (Detailed 3D, Photoreal, Map

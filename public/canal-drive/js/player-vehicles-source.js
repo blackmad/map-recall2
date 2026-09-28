@@ -18,6 +18,15 @@ const TRANSIT_MODEL_URL = assetUrl('./gvb-metro-51-runtime.glb');
  * object seen over open water, so it needs much less exaggeration.
  */
 const BIKE_GAME_SCALE = 4.5;
+/**
+ * A world-space piece draws at one CSS size on every screen, so a bike that
+ * reads on a phone was 2.7% of a desktop window's short side against 5.4% on
+ * the phone (user report 2026-09-28, "the bike is small in the chase view on
+ * desktop"). Above this many CSS px of short side the bike grows with the
+ * window, up to BIKE_VIEWPORT_MAX_SCALE.
+ */
+const BIKE_VIEWPORT_REFERENCE_PX = 500;
+const BIKE_VIEWPORT_MAX_SCALE = 2;
 const BOAT_GAME_SCALE = 1.5;
 /** Metro car is ~6 m long; exaggerate more than boat so it reads cartoony at chase altitude. */
 const TRANSIT_GAME_SCALE = 3.4;
@@ -121,6 +130,16 @@ class Vehicle3D {
     this.angle = angle || 0;
     this.visible = !!visible;
     this.map.triggerRepaint();
+  }
+
+  /** Extra scale for the window size; 1 unless the vehicle opts in. */
+  viewportScale() {
+    const reference = this.options.viewportReferencePx;
+    if (!reference) return 1;
+    const container = this.map.getContainer && this.map.getContainer();
+    const shortSide = container ? Math.min(container.clientWidth, container.clientHeight) : 0;
+    if (!(shortSide > 0)) return 1;
+    return Math.max(1, Math.min(this.options.viewportMaxScale || 1, shortSide / reference));
   }
 
   /** Subclasses pose their moving parts here; a hull has none by default. */
@@ -254,6 +273,7 @@ class Vehicle3D {
       },
       render(_gl, args) {
         if (!owner.ready || !owner.visible || !owner.lngLat || !owner._modelRoot) return;
+        owner._modelRoot.scale.setScalar(owner.options.gameScale * owner.viewportScale());
         owner._pose(owner._modelRoot);
         const coordinate = owner.maplibregl.MercatorCoordinate.fromLngLat(
           owner.lngLat,
@@ -291,6 +311,8 @@ export class PlayerBike3D extends Vehicle3D {
       modelUrl: BIKE_MODEL_URL,
       label: 'bicycle',
       gameScale: BIKE_GAME_SCALE,
+      viewportReferencePx: BIKE_VIEWPORT_REFERENCE_PX,
+      viewportMaxScale: BIKE_VIEWPORT_MAX_SCALE,
       headingOffset: BIKE_HEADING_OFFSET,
       normaliseTo: 2.15,
       widthScale: 1.35,
