@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — the chase view dips at most 10° for a building
+
+User report: "still getting behavior where camera randomly changes from chase
+to above". A scripted 30 s chase ride on desktop opened at the guard's 17°
+floor for about 4 s, blocked by one building, and dipped again later. The
+guard dates from before the bike's x-ray silhouette. It now lowers pitch at
+most `CLEARANCE_MAX_DROP` (10°) below the view's own pitch, so the lowest
+pitch on the same ride is 32° instead of 17°. The x-ray keeps the rider
+visible behind anything the capped drop cannot clear. Pinned in
+`tests/e2e/camera-pan-pitch.spec.ts`.
+
 ## 2026-09-28 — the bike can turn off Marnixstraat at the Bullebakssluis
 
 User report: "my bike is stuck at this intersection" (Nieuwe Naatje statue,

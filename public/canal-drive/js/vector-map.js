@@ -1,6 +1,9 @@
 // ============================================================
 // VECTOR BASEMAP — MapLibre + OpenFreeMap, synchronized to Smokey's camera
 // ============================================================
+// Degrees the building-clearance guard may lower the camera pitch.
+const CLEARANCE_MAX_DROP = 10;
+
 class VectorBasemap {
   constructor(container) {
     this.container = container;
@@ -1680,11 +1683,14 @@ class VectorBasemap {
     let blocker = this._cameraSightlineBlocker(finalCamera, subject, finalAltitude);
     let safePitch = view.pitch;
     // Lower pitch raises the physical camera and its sightline without moving
-    // the route centre. Four-degree steps avoid a visible framing jump while
-    // a 17-degree floor still gives buildings readable sides while remaining
-    // close enough to plan view to clear the tightest portrait approaches.
-    while (blocker && safePitch > 17) {
-      safePitch = Math.max(17, safePitch - 4);
+    // the route centre. The drop is capped at CLEARANCE_MAX_DROP below the
+    // view's pitch: it used to fall to a 17° floor, which read as the chase
+    // view randomly switching to overhead (user report 2026-09-28). The bike's
+    // x-ray silhouette keeps the rider visible behind a building the capped
+    // drop cannot clear.
+    const floor = Math.max(17, view.pitch - CLEARANCE_MAX_DROP);
+    while (blocker && safePitch > floor) {
+      safePitch = Math.max(floor, safePitch - 4);
       this.map.jumpTo({ ...view, center, pitch: safePitch });
       const nextCamera = transform.getCameraLngLat();
       finalCamera = [nextCamera.lng, nextCamera.lat];

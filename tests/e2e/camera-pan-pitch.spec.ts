@@ -46,10 +46,11 @@ test('turning and reversing in chase view never snaps the pitch', async ({ page 
   await page.keyboard.down('ArrowLeft'); await page.waitForTimeout(1500); await page.keyboard.up('ArrowLeft');
   await page.keyboard.up('ArrowUp');
   await page.keyboard.down('ArrowDown'); await page.waitForTimeout(2500); await page.keyboard.up('ArrowDown');
-  const { pitches, subject, rider } = await page.evaluate(() => {
+  const { pitches, subject, rider, chase } = await page.evaluate(() => {
     const g = (window as any).canalRecallGame;
     const request = g.vectorMap._cameraClearanceRequest;
     return {
+      chase: g.vectorMap.pitchForViewMode('chase') as number,
       pitches: (window as any).__pitches as number[],
       subject: request?.subject ?? null,
       rider: g.vectorMap.worldToLngLat(g.player.x, g.player.y, g.osmLoader),
@@ -58,6 +59,10 @@ test('turning and reversing in chase view never snaps the pitch', async ({ page 
   let worst = 0;
   for (let i = 1; i < pitches.length; i++) worst = Math.max(worst, pitches[i - 1] - pitches[i]);
   expect(worst, `largest one-frame pitch drop (${pitches.length} frames)`).toBeLessThan(8);
+  // "still getting behavior where camera randomly changes from chase to
+  // above": the guard may lower the chase view by at most 10°, never to the
+  // old 17° floor.
+  expect(Math.min(...pitches), 'lowest chase pitch').toBeGreaterThanOrEqual(chase - 10.5);
   expect(subject, 'the clearance sightline has a subject').not.toBeNull();
   const metres = Math.hypot((subject[0] - rider[0]) * 111320 * Math.cos(rider[1] * Math.PI / 180), (subject[1] - rider[1]) * 111320);
   expect(metres, 'the sightline ends at the rider, not the lead point').toBeLessThan(12);
