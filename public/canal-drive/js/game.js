@@ -479,8 +479,11 @@ class Game {
     this.player.handleInput(this.input);
     this.player.update(dt, this.track);
     if (this.travelMode === 'car' || this.travelMode === 'transit') {
-      const road = this.track.getNearestRoad(this.player.x, this.player.y, this.player.angle);
-      const previousRoad = this.track.getNearestRoad(previousPlayerPosition.x, previousPlayerPosition.y, this.player.angle);
+      const guardRoad = (x, y) => (this.track.getGuardRoad
+        ? this.track.getGuardRoad(x, y, this.player.angle)
+        : this.track.getNearestRoad(x, y, this.player.angle));
+      const road = guardRoad(this.player.x, this.player.y);
+      const previousRoad = guardRoad(previousPlayerPosition.x, previousPlayerPosition.y);
       const guardOpts = this.travelMode === 'transit'
         ? {
           edgeTolerance: CAR_ROAD_EDGE_TOLERANCE,

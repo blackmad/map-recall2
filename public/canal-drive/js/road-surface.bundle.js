@@ -25,6 +25,7 @@ var CanalRecallRoadSurface = (() => {
     ALIGNMENT_WIDTH_SLACK: () => ALIGNMENT_WIDTH_SLACK,
     CURB_INNER_MARGIN: () => CURB_INNER_MARGIN,
     CURB_OUTER_MARGIN: () => CURB_OUTER_MARGIN,
+    GUARD_CROSS_ANGLE: () => GUARD_CROSS_ANGLE,
     NAME_MERGE_SIZE: () => NAME_MERGE_SIZE,
     NAME_WIDTH_SLACK: () => NAME_WIDTH_SLACK,
     ROAD_GRID_CELL: () => ROAD_GRID_CELL,
@@ -33,6 +34,7 @@ var CanalRecallRoadSurface = (() => {
     connectedNamedSegments: () => connectedNamedSegments,
     contactsAt: () => contactsAt,
     headingDifference: () => headingDifference,
+    pickGuardContact: () => pickGuardContact,
     pickNearestRoadContactForName: () => pickNearestRoadContactForName,
     pickRoadContact: () => pickRoadContact,
     pickRoadContactPreferName: () => pickRoadContactPreferName,
@@ -142,6 +144,18 @@ var CanalRecallRoadSurface = (() => {
       if (delta < 0 || delta === 0 && contact.dist < aligned.dist) aligned = contact;
     }
     return aligned ?? nearest;
+  }
+  var GUARD_CROSS_ANGLE = Math.PI / 6;
+  function pickGuardContact(contacts, preferredAngle = null) {
+    const aligned = pickRoadContact(contacts, preferredAngle);
+    if (!aligned || aligned.dist <= aligned.width) return aligned;
+    let inside = null;
+    for (const contact of contacts) {
+      if (contact.dist > contact.width) continue;
+      if (headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
+      if (!inside || contact.dist - contact.width < inside.dist - inside.width) inside = contact;
+    }
+    return inside ?? aligned;
   }
   function pickRoadContactPreferName(contacts, segmentNameAt, preferredName, preferredAngle = null, maxPreferDist = 90) {
     const named = contacts.filter((contact) => segmentNameAt(contact.segIdx) === preferredName && contact.dist <= maxPreferDist);

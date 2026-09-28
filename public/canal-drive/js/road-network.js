@@ -160,6 +160,22 @@ class RoadNetwork {
     return best;
   }
 
+  // The contact the road guard judges the vehicle against: the heading pick
+  // while it contains the vehicle, else whichever corridor it is most inside
+  // of, so turning into a cross street is not read as leaving the road.
+  getGuardRoad(x, y, preferredAngle = null) {
+    if (!SURFACE.pickGuardContact || this._preferredCorridorName) return this.getNearestRoad(x, y, preferredAngle);
+    const qx = Math.round(x / 5) * 5;
+    const qy = Math.round(y / 5) * 5;
+    const cacheKey = `g:${qx},${qy}:${preferredAngle == null ? '' : Math.round(preferredAngle * 12)}`;
+    const cached = this._frameCache.get(cacheKey);
+    if (cached !== undefined) return cached;
+    const contacts = SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
+    const best = SURFACE.pickGuardContact(contacts, preferredAngle);
+    this._frameCache.set(cacheKey, best);
+    return best;
+  }
+
   // Name of the road the player is on. Prefer `preferredAngle` (player heading)
   // at junctions: without it the geometrically nearest centreline is often the
   // cross street, and the HUD/quiz would teach the wrong name.

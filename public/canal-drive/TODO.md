@@ -51,8 +51,13 @@ Home-base routes already grow an expanding learning radius from the address
 ## P2 — Weight and reach
 
 **Two e2e specs were already red on `main` (found 2026-09-28).**
-`tests/e2e/driving-harness.spec.ts` gets 41 of 120 planned drives to arrive
-(the bar is 45%), with or without the day's control changes.
+`tests/e2e/driving-harness.spec.ts` gets 51 of 120 planned drives to arrive
+(the bar is 45%; it was 41 before the junction guard fix of 2026-09-28).
+None pin; all 69 misses are "lost" (25 s without route progress), spread
+across the city (Nieuw-West, Noord, Buikslotermeerplein). Next: sample those
+failure points with the arm-to-arm sweep used for the Bullebakssluis
+(`tests/e2e/bullebakssluis-junction.spec.ts`) to separate guard wedges from
+autopilot corner-cutting.
 `tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
 or facades resident, probably because it needs locally generated study data.
 Diagnose both before trusting either as a gate.
