@@ -16,6 +16,7 @@ import {
   contactsAt,
   headingDifference,
   pickNearestRoadContactForName,
+  pickGuardContact,
   pickRoadContact,
   pickRoadContactPreferName,
   roadNameAt,
@@ -331,5 +332,23 @@ check('a way meeting another mid-span is not joined by this rule', () => {
 
   process.stdout.write(`  real extract: ${segments.length} waterway ways\n`);
 }
+
+check('the road guard counts any containing corridor, not only the heading pick', () => {
+  // Bullebakssluis shape: riding south down Marnixstraat (x = 0) and turning
+  // east into Westerkade, which starts 27 px east of it. On Westerkade's
+  // centreline, heading still picks Marnixstraat at its very edge.
+  const base = { angle: Math.PI / 2, width: 27, segIdx: 0, ptIdx: 0, nx: 1, ny: 0 };
+  const marnix = { ...base, x: 0, y: 0, dist: 40 };
+  const westerkade = { ...base, x: 30, y: 0, dist: 0, angle: 0, segIdx: 1, nx: 0, ny: 1 };
+  const heading = Math.PI / 2;
+  assert.equal(pickRoadContact([marnix, westerkade], heading), marnix, 'naming still follows the heading');
+  assert.equal(pickGuardContact([marnix, westerkade], heading), westerkade, 'a cross street that contains the bike wins');
+  const shoulder = { ...marnix, dist: 29 };
+  assert.equal(pickGuardContact([shoulder, westerkade], heading), westerkade, 'including on the heading road\'s soft shoulder');
+  const busway = { ...marnix, width: 54, dist: 29, segIdx: 2 };
+  assert.equal(pickGuardContact([shoulder, busway], heading), shoulder, 'a wider parallel duplicate does not widen the corridor');
+  const inside = { ...marnix, dist: 10 };
+  assert.equal(pickGuardContact([inside, westerkade], heading), inside, 'the heading pick wins while the bike is on its asphalt');
+});
 
 process.stdout.write(`Road surface and named-run checks passed (${checks} checks).\n`);

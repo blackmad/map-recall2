@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — the bike can turn off Marnixstraat at the Bullebakssluis
+
+User report: "my bike is stuck at this intersection" (Nieuwe Naatje statue,
+Marnixstraat / Westerkade / Lijnbaansgracht). An arm-to-arm sweep of scripted
+drives there failed 13 of 30, including every turn off Marnixstraat into
+Westerkade. The road guard judged the bike against the heading-matched road
+(`pickRoadContact`, which is right for naming), so while the bike sat on
+Westerkade's centreline it was on Marnixstraat's shoulder: the guard pulled
+it back and turned it along Marnixstraat every frame, and it wedged past the
+junction. The guard now uses `pickGuardContact`: once off the heading road's
+asphalt, a cross street (more than 30° off) that contains the bike wins.
+Parallel duplicates don't: Marnixstraat has same-geometry ways of width 9 and
+18, and letting the widest win stalled the bike on a busway shoulder. The
+sweep now passes 29 of 30 (Marnixstraat south → Westerkade still wedges once
+the autopilot aims across the plaza). City-wide driving-harness arrivals rose
+from 41 to 51 of 120, with none pinned. Named regression:
+`tests/e2e/bullebakssluis-junction.spec.ts` (fails without the fix); unit
+checks are in `scripts/check-road-surface.ts`.
+
 ## 2026-09-28 — one bicycle: the omafiets, no child seat
 
 User request: "get rid of all the bike options, just use the omafiets without

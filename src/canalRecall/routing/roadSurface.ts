@@ -227,6 +227,39 @@ export function pickRoadContact(
 }
 
 /**
+ * The contact the road guard should judge the vehicle against.
+ *
+ * Naming prefers the road whose heading matches the rider (`pickRoadContact`),
+ * but containment must not: turning off Marnixstraat into Westerkade at the
+ * Bullebakssluis, the heading pick stayed on Marnixstraat while the bike sat
+ * on Westerkade's centreline, so every step into the turn read as leaving the
+ * road and the guard wedged the bike past the junction (user report
+ * 2026-09-28). And not only past the rollback line: on the soft shoulder
+ * the guard pulls toward the heading road and turns the bike along it, which
+ * undid the turn every frame. So once the vehicle is off the heading road's
+ * asphalt, a cross street (more than `GUARD_CROSS_ANGLE` off it) that fully
+ * contains the vehicle wins. Parallel duplicates do not: Marnixstraat carries
+ * same-geometry ways of different widths, and letting the widest win let the
+ * bike stall on the shoulder of a busway beside the street it was riding.
+ */
+export const GUARD_CROSS_ANGLE = Math.PI / 6;
+
+export function pickGuardContact(
+  contacts: readonly RoadContact[],
+  preferredAngle: number | null = null,
+): RoadContact | null {
+  const aligned = pickRoadContact(contacts, preferredAngle);
+  if (!aligned || aligned.dist <= aligned.width) return aligned;
+  let inside: RoadContact | null = null;
+  for (const contact of contacts) {
+    if (contact.dist > contact.width) continue;
+    if (headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
+    if (!inside || contact.dist - contact.width < inside.dist - inside.width) inside = contact;
+  }
+  return inside ?? aligned;
+}
+
+/**
  * Prefer a named corridor (transit leg) when its centreline is nearby.
  * Falls back to ordinary heading pick only when that corridor is absent from
  * the contact set — never steals a far-away preferred line over a near one.
