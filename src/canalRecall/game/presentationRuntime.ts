@@ -62,6 +62,8 @@ const GOOD = '#8a4a18';
 // Button fill under ink text: copper-mid, 5.6:1 with INK (the darker accent was 4.0:1).
 const COPPER = '#c9844a';
 const RULE = 'rgba(31,28,23,0.16)';
+/** How long a tap or mouse move keeps the settings/help buttons up mid-ride. */
+const UTILITY_REVEAL_MS = 3500;
 
 export interface GamePresentationRuntime extends PresentationHost {}
 
@@ -247,6 +249,16 @@ export class GamePresentationRuntime {
     const endPinch = (event: TouchEvent) => { for (const touch of event.changedTouches) livePinch.delete(touch.identifier); if (livePinch.size < 2) pinchDistance = 0; };
     this.canvas.addEventListener('touchend', endPinch, { passive: true });
     this.canvas.addEventListener('touchcancel', endPinch, { passive: true });
+    const revealUtility = () => { this._utilityRevealUntil = performance.now() + UTILITY_REVEAL_MS; };
+    this.canvas.addEventListener('pointerdown', event => {
+      if (!window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) revealUtility();
+    });
+    let lastMouse = { x: 0, y: 0 };
+    this.canvas.addEventListener('pointermove', event => {
+      if (event.pointerType !== 'mouse') return;
+      if (Math.hypot(event.clientX - lastMouse.x, event.clientY - lastMouse.y) > 12) revealUtility();
+      lastMouse = { x: event.clientX, y: event.clientY };
+    });
     this.canvas.addEventListener('pointerdown', event => {
       if (event.button !== 0 || this.state === GameState.MENU || livePinch.size >= 2 || window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) return;
       dragging = true; moved = false; downX = lastX = event.clientX; downY = lastY = event.clientY; this.canvas.setPointerCapture(event.pointerId);
@@ -360,6 +372,12 @@ export class GamePresentationRuntime {
     // Nor while loading: there is nothing yet to configure or explain.
     if (utility) {
       utility.style.display = this.state === GameState.FINISHED || this.state === GameState.LOADING ? 'none' : '';
+      // While riding they stay out of the corridor until asked for: a tap on
+      // the map (not the stick) or a mouse move brings them up for a moment.
+      // Keys G and ? work regardless.
+      const riding = this.state === GameState.RACING && !this._utilityOpen;
+      const revealed = !riding || performance.now() < (this._utilityRevealUntil || 0);
+      utility.classList.toggle('tucked', !revealed);
     }
 
     if (this.state === GameState.MENU) { this._renderMenu(); return; }

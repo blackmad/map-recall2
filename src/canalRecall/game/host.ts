@@ -282,6 +282,8 @@ export interface RecallHost extends GameCoreHost {
 export interface PresentationHost extends GameCoreHost {
   _routeLearningPlan: { expectedNovelty: number } | null;
   /** The start-of-ride orientation flight while it runs; see introFlight.ts. */
+  /** performance.now() until which the settings/help buttons show mid-ride. */
+  _utilityRevealUntil?: number;
   _intro?: { plan: import('./introFlight.ts').IntroPlan; elapsed: number; playZoom: number; overview: number } | null;
   state: number;
   track: Track;

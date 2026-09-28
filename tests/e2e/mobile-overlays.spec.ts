@@ -43,6 +43,18 @@ async function drive(page: Page): Promise<void> {
   await openRoute(page, { travelMode: 'car' });
 }
 
+/** Mid-ride the settings/help buttons are tucked away; a tap on the map
+ *  (clear of the stick) brings them up, as a player would. */
+async function openSettings(page: Page): Promise<void> {
+  const utility = page.locator('#utility-buttons');
+  // The route can still be settling right after spawn, so reveal and tap as
+  // one retried step rather than trusting a single reveal.
+  await expect(async () => {
+    if (await utility.evaluate(el => el.classList.contains('tucked'))) await page.touchscreen.tap(195, 260);
+    await page.locator('#open-settings').click({ timeout: 1500 });
+  }).toPass({ timeout: 15_000 });
+}
+
 /** Did this frame draw the thumbstick? */
 async function padDrawn(page: Page): Promise<boolean> {
   return page.evaluate(() => {
@@ -118,7 +130,7 @@ test('the arrival card offers tappable actions, not keys a phone does not have',
 
 test('the settings panel keeps its Done button on screen', async ({ page }) => {
   await drive(page);
-  await page.locator('#open-settings').click();
+  await openSettings(page);
   const done = page.locator('#settings-panel .utility-close');
   await expect(done).toBeVisible();
   const box = (await done.boundingBox())!;
@@ -135,7 +147,7 @@ test('the settings panel keeps its Done button on screen', async ({ page }) => {
 // render the same RideOptions, so the panel has tiles and no dropdowns.
 test('ride settings use the same tile buttons as route setup', async ({ page }) => {
   await drive(page);
-  await page.locator('#open-settings').click();
+  await openSettings(page);
   const panel = page.locator('#settings-panel');
   await expect(panel.locator('select')).toHaveCount(0);
   const point = panel.locator('[data-choice="live-controls:absolute"]');
@@ -275,7 +287,7 @@ test('the city field is one 44px tap target', async ({ page }) => {
 
 test('the knowledge review opens mid-ride and returns to the ride', async ({ page }) => {
   await drive(page);
-  await page.locator('#open-settings').click();
+  await openSettings(page);
   await page.locator('#live-knowledge-button').click();
   const review = page.locator('#knowledge-review');
   await expect(review).toBeVisible();
@@ -339,4 +351,17 @@ test('a new question shows every choice alike, with no hover left over from the 
     }));
     expect(new Set(looks).size, `round ${round}: ${looks.join(', ')}`).toBe(1);
   }
+});
+
+// Named regression (user request 2026-09-28, "hide these controls by
+// default"): the settings/help buttons sat over the corridor for the whole
+// ride. They are tucked while riding and come back on a tap on the map.
+test('settings and help stay tucked while riding until the map is tapped', async ({ page }) => {
+  await drive(page);
+  const utility = page.locator('#utility-buttons');
+  await expect(utility).toHaveClass(/tucked/);
+  expect(await utility.evaluate(el => getComputedStyle(el).pointerEvents)).toBe('none');
+  await page.touchscreen.tap(195, 260);
+  await expect(utility).not.toHaveClass(/tucked/);
+  await expect(utility).toHaveClass(/tucked/, { timeout: 6000 });
 });
