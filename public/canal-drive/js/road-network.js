@@ -118,9 +118,16 @@ class RoadNetwork {
     }
     let minDist = Infinity;
     let nearestWidth = DEFAULT_ROAD_WIDTH;
-    for (const road of SURFACE.roadsNear(this.roadIndex, x, y)) {
+    const spans = SURFACE.roadsNear(this.roadIndex, x, y);
+    for (const road of spans) {
       const d = this._pointToSegDist(x, y, road.a, road.b);
       if (d < minDist) { minDist = d; nearestWidth = road.width; }
+    }
+    // The inside of a corner is filleted (see `filletedExcess`), so a cut
+    // corner reads as asphalt/curb rather than dragging like grass.
+    if (SURFACE.filletedExcess && Number.isFinite(minDist) && minDist > nearestWidth - SURFACE.CURB_INNER_MARGIN) {
+      const excess = SURFACE.filletedExcess(SURFACE.contactsAt(spans, x, y), x, y);
+      if (excess < minDist - nearestWidth) minDist = nearestWidth + excess;
     }
     const surface = SURFACE.classifySurface(minDist, nearestWidth);
     this._frameCache.set(surfaceKey, surface);
@@ -171,7 +178,7 @@ class RoadNetwork {
     const cached = this._frameCache.get(cacheKey);
     if (cached !== undefined) return cached;
     const contacts = SURFACE.contactsAt(SURFACE.roadsNear(this.roadIndex, x, y, 2), x, y);
-    const best = SURFACE.pickGuardContact(contacts, preferredAngle);
+    const best = SURFACE.pickGuardContact(contacts, preferredAngle, { x, y });
     this._frameCache.set(cacheKey, best);
     return best;
   }
