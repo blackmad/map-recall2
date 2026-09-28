@@ -1,6 +1,16 @@
 # Canal Recall — what is built
 
 
+## 2026-09-28 — dragging the map keeps the 3D tilt
+
+User report: panning "seems to switch between top-down while panning and then
+back to 3d/isometric when stopped". The camera-clearance guard, which lowers
+pitch so no building blocks the sightline to the rider, ran against the
+dragged centre. On every drag frame it found a blocker and cut the pitch to
+the 17° floor (measured: 17° for the first 16 drag frames, then 42°). The
+guard is now skipped while the camera is detached, since there is no rider at
+the centre to protect. Regression: `tests/e2e/camera-pan-pitch.spec.ts`.
+
 ## 2026-09-28 — settings and help tuck away while riding
 
 User request: "hide these controls by default". While riding, the settings
