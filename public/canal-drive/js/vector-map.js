@@ -1505,9 +1505,14 @@ class VectorBasemap {
       Math.sin((bearing - previousCheck.bearing) * Math.PI / 180),
       Math.cos((bearing - previousCheck.bearing) * Math.PI / 180),
     ) * 180 / Math.PI) : Infinity;
-    const needsClearanceCheck = pitch > 0 && (!previousCheck || movedMetres > 8 || bearingChange > 8
+    // The clearance guard keeps the *rider* in sight. A panned view is centred
+    // on wherever the player dragged it, so there is no rider to protect, and
+    // checking the sightline to an arbitrary point dropped the pitch toward
+    // plan view on every drag frame and restored it when the drag stopped.
+    const detached = !!camera.detached;
+    const needsClearanceCheck = pitch > 0 && !detached && (!previousCheck || movedMetres > 8 || bearingChange > 8
       || Math.abs(mapZoom - previousCheck.zoom) > 0.05 || performance.now() - previousCheck.at > 1000);
-    const appliedPitch = needsClearanceCheck ? pitch
+    const appliedPitch = needsClearanceCheck || detached ? pitch
       : Math.min(pitch, this._lastCameraClearance.safePitch ?? pitch);
     this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
     if (needsClearanceCheck) {
