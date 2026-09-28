@@ -1,6 +1,15 @@
 # Canal Recall — what is built
 
 
+## 2026-09-28 — settings and help tuck away while riding
+
+User request: "hide these controls by default". While riding, the settings
+and help buttons are faded out and ignore taps (`#utility-buttons.tucked`).
+A tap on the map outside the stick, or a mouse move, brings them back for
+3.5 s. They stay up when paused, in menus and while a panel is open, and G and
+? still work. Regression in `tests/e2e/mobile-overlays.spec.ts`; phone specs
+that open settings now tap the map first, like a player.
+
 ## 2026-09-28 — the chase bike is no longer solid yellow
 
 User report: "why is the bike bright yellow now?", and "switching between the

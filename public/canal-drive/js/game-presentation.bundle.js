@@ -512,6 +512,7 @@
   var GOOD = "#8a4a18";
   var COPPER = "#c9844a";
   var RULE = "rgba(31,28,23,0.16)";
+  var UTILITY_REVEAL_MS = 3500;
   var GamePresentationRuntime = class {
     /** Return focus to the canvas after a card action so keyboard driving resumes. */
     _reclaimKeyboardFocus() {
@@ -690,6 +691,18 @@
       };
       this.canvas.addEventListener("touchend", endPinch, { passive: true });
       this.canvas.addEventListener("touchcancel", endPinch, { passive: true });
+      const revealUtility = () => {
+        this._utilityRevealUntil = performance.now() + UTILITY_REVEAL_MS;
+      };
+      this.canvas.addEventListener("pointerdown", (event) => {
+        if (!window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) revealUtility();
+      });
+      let lastMouse = { x: 0, y: 0 };
+      this.canvas.addEventListener("pointermove", (event) => {
+        if (event.pointerType !== "mouse") return;
+        if (Math.hypot(event.clientX - lastMouse.x, event.clientY - lastMouse.y) > 12) revealUtility();
+        lastMouse = { x: event.clientX, y: event.clientY };
+      });
       this.canvas.addEventListener("pointerdown", (event) => {
         if (event.button !== 0 || this.state === GameState.MENU || livePinch.size >= 2 || window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) return;
         dragging = true;
@@ -794,6 +807,9 @@
       const utility = document.getElementById("utility-buttons");
       if (utility) {
         utility.style.display = this.state === GameState.FINISHED || this.state === GameState.LOADING ? "none" : "";
+        const riding = this.state === GameState.RACING && !this._utilityOpen;
+        const revealed = !riding || performance.now() < (this._utilityRevealUntil || 0);
+        utility.classList.toggle("tucked", !revealed);
       }
       if (this.state === GameState.MENU) {
         this._renderMenu();
