@@ -192,7 +192,16 @@ class Renderer {
     if (!featureName || !track || !track.segments) return;
     const seed = track.segments[segmentIndex];
     if (!seed || seed.name !== featureName || !seed.points || seed.points.length < 2) return;
-    const segments = track.getConnectedNamedSegments ? track.getConnectedNamedSegments(segmentIndex) : [seed];
+    // One line per corridor, not one per carriageway and cycle track. This
+    // draws every frame, so the collapsed corridor is kept per seed.
+    const cache = this._questionFeatureCache;
+    let segments = cache && cache.track === track && cache.seed === seed ? cache.segments : null;
+    if (!segments) {
+      const connected = track.getConnectedNamedSegments ? track.getConnectedNamedSegments(segmentIndex) : [seed];
+      const collapse = window.CanalRecallStreets && window.CanalRecallStreets.collapseParallelFragments;
+      segments = collapse ? collapse(connected, seed).map(points => ({ points })) : connected;
+      this._questionFeatureCache = { track, seed, segments };
+    }
     const ctx = this.ctx;
     const pulse = 0.5 + 0.5 * Math.sin(time * 5);
     // Highlight the full connected feature, including OSM fragments split at
