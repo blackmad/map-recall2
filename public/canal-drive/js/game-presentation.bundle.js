@@ -685,9 +685,13 @@
     /** Canvas camera controls and card hit targets belong with the presentation layer. */
     _setupCameraGestures() {
       let dragging = false, moved = false, lastX = 0, lastY = 0, downX = 0, downY = 0, pinchDistance = 0;
+      let detachedBeforeDrag = false;
       const livePinch = /* @__PURE__ */ new Map();
       const syncZoom = () => {
-        this._cameraZoom.value = this._liveZoom.value = String(this.camera.zoom);
+        for (const id of ["camera-zoom", "live-zoom"]) {
+          const input = document.getElementById(id);
+          if (input) input.value = String(this.camera.zoom);
+        }
       };
       this.canvas.addEventListener("wheel", (event) => {
         if (this.state === GameState.MENU) return;
@@ -704,7 +708,13 @@
           if (!window.CanalRecallUi.isInsideDpad(point, this.input.dpad)) livePinch.set(touch.identifier, point);
         }
         const points = [...livePinch.values()];
-        if (points.length === 2) pinchDistance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+        if (points.length === 2) {
+          pinchDistance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+          if (dragging) {
+            dragging = false;
+            if (!detachedBeforeDrag) this.camera.resetPan();
+          }
+        }
       }, { passive: true });
       this.canvas.addEventListener("touchmove", (event) => {
         let changed = false;
@@ -745,13 +755,15 @@
         if (event.button !== 0 || this.state === GameState.MENU || livePinch.size >= 2 || window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) return;
         dragging = true;
         moved = false;
+        detachedBeforeDrag = !!this.camera.detached;
         downX = lastX = event.clientX;
         downY = lastY = event.clientY;
         this.canvas.setPointerCapture(event.pointerId);
       });
       this.canvas.addEventListener("pointermove", (event) => {
-        if (!dragging) return;
+        if (!dragging || livePinch.size >= 2) return;
         if (Math.hypot(event.clientX - downX, event.clientY - downY) > 6) moved = true;
+        if (!moved) return;
         this.camera.pan(lastX - event.clientX, lastY - event.clientY);
         lastX = event.clientX;
         lastY = event.clientY;

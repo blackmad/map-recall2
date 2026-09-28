@@ -360,8 +360,6 @@ export interface PresentationHost extends GameCoreHost {
   _debugMode: boolean;
   _lastZoomShown: number | null;
   _zoomTouchedByPlayer: boolean;
-  _cameraZoom: HTMLInputElement;
-  _liveZoom: HTMLInputElement;
 
   /** Canvas hit targets, recomputed as they are drawn. */
   _alanLinkBounds: LinkBounds | null;

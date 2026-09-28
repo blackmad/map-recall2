@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — pinch zoom is 1:1 and no longer throws the camera off the bike
+
+User reports: "zoom in out on mobile is way too sensitive, can only get to 10%
+or 150%" and "centering on the phone is now horribly wrong, it puts the bike
+entirely offscreen". Two gesture bugs:
+- The pinch handler synced the zoom sliders through `_cameraZoom` and
+  `_liveZoom`, which were never assigned after settings moved into the React
+  overlay. It threw on every step before recording the new finger distance,
+  so each step multiplied by the distance since the pinch began: a 1.1×
+  pinch zoomed 1.7×. The sliders are now looked up by id, and a missing one
+  is tolerated.
+- A pinch's first finger lands alone and started a map drag, so every pinch
+  also panned and detached the camera. A second finger now cancels the drag
+  and undoes its pan. A drag also only pans once past the 6 px tap
+  threshold, so a wobbly tap no longer detaches the view.
+Pinned in `tests/e2e/phone-pinch.spec.ts`.
+
 ## 2026-09-28 — the chase bike grows with the window
 
 User report: "the bike is small in the chase view on desktop". The bike is a
