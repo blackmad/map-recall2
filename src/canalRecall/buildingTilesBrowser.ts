@@ -174,14 +174,48 @@ export class BuildingTileStreamer {
     this.map.on('moveend', () => this.followCamera());
   }
 
-  setAppearancePriors(priors:ReadonlyMap<string,BuildingAppearancePrior>):void{this.appearancePriors=new Map(priors);if(this.cache.size)this.flush();}
+  setAppearancePriors(priors:ReadonlyMap<string,BuildingAppearancePrior>):void{this.appearancePriors=new Map(priors);this.decorated=new WeakMap();if(this.cache.size)this.flush();}
+
+  /**
+   * Styled copy of a resident feature, made once per feature per priors set.
+   * Both the flush and the camera-clearance sample used to re-style every
+   * resident building (up to 20 000) on every call; the clearance check runs
+   * every 8 m of travel. Stable objects also let callers cache per feature.
+   */
+  private decorated = new WeakMap<BuildingFeature, BuildingFeature>();
+
+  private styled(feature: BuildingFeature): BuildingFeature {
+    let out = this.decorated.get(feature);
+    if (!out) {
+      out = decorateBuildingFeature(feature, this.appearancePriors);
+      this.decorated.set(feature, out);
+    }
+    return out;
+  }
 
   /**
    * Re-plan when the camera's centre tile or half-step zoom changes.
    * Called from `vector-map.sync` so the first driving frame targets the
    * start point, not the style's default centre.
    */
+  /**
+   * Hold tile planning while the camera sweeps (the start-of-ride flight),
+   * then plan once for wherever it settled. `jumpTo` fires `moveend` every
+   * frame, so gating the game's own call alone was not enough.
+   */
+  setSuspended(suspended: boolean): void {
+    if (this.suspended === suspended) return;
+    this.suspended = suspended;
+    if (!suspended) {
+      if (this.flushDirty) this.scheduleFlush();
+      this.followCamera();
+    }
+  }
+
+  private suspended = false;
+
   followCamera(): void {
+    if (this.suspended) return;
     // The caller replaces its GeoJSON source after probing and loading priors.
     // Loading before attach would populate the old source, then leave the new
     // source empty while the cache/signature incorrectly say it is current.
@@ -297,7 +331,9 @@ export class BuildingTileStreamer {
     this.flushScheduled = true;
     const run = () => {
       this.flushScheduled = false;
-      if (!this.flushDirty || this.disposed) return;
+      // Tiles that land mid-flight wait: a flush re-styles and re-uploads the
+      // whole resident set, a visible hitch while the camera is sweeping.
+      if (!this.flushDirty || this.disposed || this.suspended) return;
       this.flushDirty = false;
       this.flush();
     };
@@ -306,7 +342,7 @@ export class BuildingTileStreamer {
   }
 
   private flush(): void {
-    const source = this.cache.collection(),features=source.features.map(feature=>decorateBuildingFeature(feature,this.appearancePriors)),collection={...source,features};this.styledFeatures=features.filter(feature=>feature.properties.appearanceStyleSource==='procedural-prior-not-measured').length;this.contextualFeatures=features.filter(feature=>feature.properties.appearanceStyleSource==='citywide-identity-palette-v2-not-measured').length;this.contextualGrounds=features.filter(feature=>feature.properties.groundAppearanceStyleSource==='wall-inherited-not-independently-measured').length;this.contextualRoofs=features.filter(feature=>feature.properties.roofAppearanceStyleSource==='citywide-flat-cap-palette-v2-not-measured').length;
+    const source = this.cache.collection(),features=source.features.map(feature=>this.styled(feature)),collection={...source,features};this.styledFeatures=features.filter(feature=>feature.properties.appearanceStyleSource==='procedural-prior-not-measured').length;this.contextualFeatures=features.filter(feature=>feature.properties.appearanceStyleSource==='citywide-identity-palette-v2-not-measured').length;this.contextualGrounds=features.filter(feature=>feature.properties.groundAppearanceStyleSource==='wall-inherited-not-independently-measured').length;this.contextualRoofs=features.filter(feature=>feature.properties.roofAppearanceStyleSource==='citywide-flat-cap-palette-v2-not-measured').length;
     this.onFeatures?.(collection.features);
     // Deep-clone for MapLibre: the GeoJSON source may rewrite rings in place.
     // Coalescing via scheduleFlush keeps this to once per frame during a burst.
@@ -319,7 +355,7 @@ export class BuildingTileStreamer {
   }
 
   /** For diagnostics: how much of the city is resident right now. */
-  sampleFeatures(limit=400):BuildingFeature[]{return this.cache.collection().features.slice(0,Math.max(0,limit)).map(feature=>decorateBuildingFeature(feature,this.appearancePriors));}
+  sampleFeatures(limit=400):BuildingFeature[]{return this.cache.collection().features.slice(0,Math.max(0,limit)).map(feature=>this.styled(feature));}
 
   status(): { tiles: number; features: number; styledFeatures:number; contextualFeatures:number; contextualGrounds:number; contextualRoofs:number; inFlight: number; available: boolean; queued: number } {
     return {
