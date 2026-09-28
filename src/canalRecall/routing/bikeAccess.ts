@@ -20,6 +20,20 @@ export const CAR_ROUTING_HIGHWAYS = new Set([
   'residential', 'living_street', 'unclassified', 'service', 'busway',
 ]);
 
+/**
+ * Roads closed to bikes by law: Dutch motorways and the trunk autowegen.
+ * Street mode is cycling, and the IJ-tunnel (trunk) routed a ride under the IJ
+ * and into its portal building (user report 2026-09-28). The Piet Hein and
+ * Spaarndammer tunnels, the A10 and the Coen Tunnel are the same case.
+ * Where a trunk road has a parallel named cycle track (IJburglaan, Gooiseweg),
+ * the track is a separate way and stays.
+ */
+export const MOTOR_ONLY_HIGHWAYS = new Set(['motorway', 'motorway_link', 'trunk', 'trunk_link']);
+
+export function isMotorOnlyHighway(highway: string | undefined | null): boolean {
+  return MOTOR_ONLY_HIGHWAYS.has(highway || '');
+}
+
 const BICYCLE_ALLOWED = new Set(['yes', 'designated', 'permissive', 'official']);
 const BICYCLE_DENIED = new Set(['no', 'dismount', 'private', 'customers']);
 
@@ -54,7 +68,7 @@ export function bicycleRestrictionNotice(
  */
 export function isBikeRoutingHighway(tags: Readonly<Record<string, string | undefined>>): boolean {
   const highway = tags.highway;
-  if (!highway) return false;
+  if (!highway || isMotorOnlyHighway(highway)) return false;
   if (CAR_ROUTING_HIGHWAYS.has(highway)) return true;
 
   const bicycle = tags.bicycle || '';
@@ -63,4 +77,37 @@ export function isBikeRoutingHighway(tags: Readonly<Record<string, string | unde
   if (highway === 'pedestrian') return true;
   if (highway === 'path' || highway === 'footway') return BICYCLE_ALLOWED.has(bicycle);
   return false;
+}
+
+type NamedRoutingFeature = {
+  name?: string;
+  highway?: string;
+  path?: Array<[number, number]>;
+  paths?: Array<Array<[number, number]>>;
+};
+
+/**
+ * Names that are mostly motor road: the IJ-tunnel's approach ramps are tagged
+ * `primary`, so dropping trunk alone leaves 200 m dead-end stubs still called
+ * "IJ-tunnel" that lead into the portal and still get asked about. A name
+ * whose length is mostly motorway/trunk goes as a whole.
+ */
+export function motorOnlyNames(features: readonly NamedRoutingFeature[], share = 0.5): Set<string> {
+  const motor = new Map<string, number>(), total = new Map<string, number>();
+  for (const feature of features) {
+    if (!feature.name) continue;
+    let length = 0;
+    for (const path of feature.paths ?? (feature.path ? [feature.path] : [])) {
+      for (let i = 1; i < path.length; i++) {
+        const dLat = path[i][0] - path[i - 1][0];
+        const dLon = (path[i][1] - path[i - 1][1]) * Math.cos(path[i][0] * Math.PI / 180);
+        length += Math.hypot(dLat, dLon);
+      }
+    }
+    total.set(feature.name, (total.get(feature.name) ?? 0) + length);
+    if (isMotorOnlyHighway(feature.highway)) motor.set(feature.name, (motor.get(feature.name) ?? 0) + length);
+  }
+  const names = new Set<string>();
+  for (const [name, length] of motor) if (length > share * (total.get(name) ?? 0)) names.add(name);
+  return names;
 }

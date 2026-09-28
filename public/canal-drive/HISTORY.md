@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — bikes stay out of the IJ-tunnel
+
+User report: "my bike is seemingly entirely stuck in this building". A ride
+from Oosterdokskade toward Noord was routed through the IJ-tunnel, under the
+IJ and into its portal building.
+- Street mode is cycling, but it loaded every car highway. The extract holds
+  1,785 motorway/trunk ways: the A10 ring, the Coen Tunnel, and the IJ, Piet
+  Hein and Spaarndammer tunnels. All of them are closed to bikes by law.
+- `isMotorOnlyHighway` / `motorOnlyNames` (`routing/bikeAccess.ts`, exported
+  by the road-projection bundle) drop them in `osm-loader.js`. They are
+  neither ridden nor asked about. A name that is mostly motor road goes as a
+  whole, because the IJ-tunnel's ramps are tagged `primary` and left 200 m
+  dead-end stubs into the portal. IJburglaan and Gooiseweg keep their named
+  cycle tracks. `isBikeRoutingHighway` excludes motor roads for the next
+  extract build.
+- Noord stays reachable without them. The reachability audit mirrors the
+  loader and now pins the Dam, Buikslotermeerplein, NDSM-werf and
+  Oosterdokskade to one component. The live graph goes from 247 to 272
+  components; the largest share goes from 80.0% to 79.8%. Pinned in
+  `tests/e2e/bike-motor-roads.spec.ts` and `scripts/check-bike-access.ts`.
+
 ## 2026-09-28 — a highlighted street is one line
 
 User report: "I still sometimes get crazy multiple blue lines when a street

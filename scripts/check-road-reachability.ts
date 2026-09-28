@@ -9,6 +9,7 @@
 // Run: npm run test:reachability
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { isMotorOnlyHighway, motorOnlyNames } from '../src/canalRecall/routing/bikeAccess.ts';
 
 const PIXELS_PER_METER = 3;
 const SIMPLIFICATION_TOLERANCE = 0.00003; // degrees, as constants.js
@@ -26,7 +27,13 @@ const features: Feature[] = JSON.parse(await readFile(path.join(directory, 'stre
 type Way = { id: string; name: string; nodes: LatLon[] };
 const ways: Way[] = [];
 let closedRings = 0;
+let motorOnly = 0;
+const motorNames = motorOnlyNames(features as Parameters<typeof motorOnlyNames>[0]);
 for (const feature of features) {
+  // Street mode is cycling: the loader drops motorways, trunk autowegen and
+  // names that are mostly motor road.
+  const closed = isMotorOnlyHighway(feature.highway) || (feature.name !== undefined && motorNames.has(feature.name));
+  if (closed && process.env.KEEP_MOTOR_ONLY !== '1') { motorOnly++; continue; }
   const paths = feature.paths || (feature.path ? [feature.path] : []);
   for (let index = 0; index < paths.length; index++) {
     const line = paths[index];
@@ -244,3 +251,37 @@ for (const group of live.groups.slice(1, 11)) {
   console.log(`  ${String(group.length).padStart(4)} nodes @ ${lat.toFixed(5)},${lon.toFixed(5)} — ${[...names].slice(0, 5).join(', ')}`);
 }
 console.log(`\nunsimplified reference: ${unsimplified.groups.length} components`);
+
+// Named regression (user report 2026-09-28): with the IJ-tunnel closed to
+// bikes, Amsterdam-Noord must still be reachable from the centre on the live
+// graph, or every Noord route fails to plan.
+{
+  const { nodes } = stitch(simplified, 10);
+  const groups = components(nodes);
+  const componentOf = new Map<Node, number>();
+  groups.forEach((group, index) => { for (const node of group) componentOf.set(node, index); });
+  const nearest = (lat: number, lon: number) => {
+    const target = project([lat, lon]);
+    let best: Node | null = null, bestDistance = Infinity;
+    for (const node of nodes.values()) {
+      const distance = Math.hypot(node.x - target.x, node.y - target.y);
+      if (distance < bestDistance) { best = node; bestDistance = distance; }
+    }
+    return best!;
+  };
+  const places: Array<[string, number, number]> = [
+    ['Dam', 52.37310, 4.89260],
+    ['Buikslotermeerplein (Noord)', 52.40030, 4.93240],
+    ['NDSM-werf (Noord)', 52.40090, 4.89150],
+    ['Oosterdokskade', 52.37655, 4.90750],
+  ];
+  const centre = componentOf.get(nearest(places[0][1], places[0][2]));
+  console.log(`\nmotor-only ways dropped for cycling: ${motorOnly}`);
+  let failed = false;
+  for (const [label, lat, lon] of places) {
+    const component = componentOf.get(nearest(lat, lon));
+    console.log(`  ${label}: component ${component}${component === centre ? '' : '  <-- cut off from the Dam'}`);
+    if (component !== centre) failed = true;
+  }
+  if (failed) { console.error('Some named places are cut off from the centre.'); process.exitCode = 1; }
+}

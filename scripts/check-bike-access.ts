@@ -7,6 +7,8 @@ import {
   bicycleRestrictionNotice,
   isBicycleRestricted,
   isBikeRoutingHighway,
+  isMotorOnlyHighway,
+  motorOnlyNames,
 } from '../src/canalRecall/routing/bikeAccess.ts';
 
 assert.equal(isBikeRoutingHighway({ highway: 'residential' }), true);
@@ -42,3 +44,22 @@ assert.ok(CAR_ROUTING_HIGHWAYS.has('primary'));
 assert.equal(isBikeRoutingHighway({}), false);
 
 console.log('bike-access checks passed');
+
+// The IJ-tunnel (trunk) routed a ride under the IJ into its portal building
+// (user report 2026-09-28). Motorways and trunk autowegen are closed to bikes.
+for (const highway of ['motorway', 'motorway_link', 'trunk', 'trunk_link']) {
+  assert.equal(isMotorOnlyHighway(highway), true, highway);
+  assert.equal(isBikeRoutingHighway({ highway }), false, `${highway} is not in the cycling graph`);
+}
+assert.equal(isMotorOnlyHighway('primary'), false);
+assert.equal(isMotorOnlyHighway(undefined), false);
+assert.equal(isBikeRoutingHighway({ highway: 'primary' }), true, 'Wibautstraat-class roads stay');
+
+// The IJ-tunnel's approach ramps are `primary`; the name goes as a whole.
+const tunnelNames = motorOnlyNames([
+  { name: 'IJ-tunnel', highway: 'trunk', path: [[52.3736, 4.9123], [52.3838, 4.9109]] },
+  { name: 'IJ-tunnel', highway: 'primary', path: [[52.3704, 4.9092], [52.3708, 4.9099]] },
+  { name: 'IJburglaan', highway: 'trunk', path: [[52.35, 4.99], [52.351, 4.99]] },
+  { name: 'IJburglaan', highway: 'cycleway', path: [[52.35, 4.99], [52.354, 4.99]] },
+]);
+assert.deepEqual([...tunnelNames], ['IJ-tunnel'], 'a mostly-cycleable name keeps its cycle track');
