@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — nested building footprints no longer z-fight
+
+User report: "*still* getting texturefighting" (Waterkant, Oosterdokskade).
+- The streamed extract often draws one building twice: an OSM outline and the
+  parts inside it, or a BAG pand under an OSM way. The tiles carry no part
+  flag. Shared walls put two faces in one plane. At Oosterdokskade three
+  overlap: w453809679 (36 m), w779659694 (48 m) and w1487606297 (3–12 m).
+- `separateNestedBuildings` (`buildingNesting.ts`) runs as each tile decodes.
+  It pulls a contained footprint in by 0.35 m. When the inner and outer roofs
+  are within 0.3 m, it drops the inner roof 0.3 m below the outer one. Of two
+  identical copies, only one shrinks.
+- Nothing is dropped, so podiums and taller parts survive. Tile 8415/5383
+  insets 185 of 2713 features (30 lowered); 8414/5383 insets 81 of 4886. Each
+  tile takes about 24 ms on desktop.
+- Checks are in `scripts/check-building-tile-source.ts`. An overhead
+  screenshot shows the striped courtyard wall cleared. Street-level flicker
+  was not reproduced by teleporting, so it needs a look in play.
+
 ## 2026-09-28 — landmark cards light up their building; full destination names
 
 User reports: "why don't I see that museum on my screen highlighted?", "the
