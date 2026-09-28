@@ -1,5 +1,57 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — one bicycle: the omafiets, no child seat
+
+User request: "get rid of all the bike options, just use the omafiets without
+a baby carrier". The Bicycle choice and Baby seat toggle are gone from route
+setup and ride settings, along with the `bikeSkin` / `bikeBabySeat`
+preferences (old stored values are ignored) and `src/canalRecall/game/bikeSkins.ts`.
+`PlayerBike3D` always loads `omafiets-runtime.glb` and hides its `BabySeat`
+node. The pink city bike and Swapfiets GLBs remain only for `bike-preview.html`.
+
+## 2026-09-28 — start pins sit on the map during the start flight
+
+User report: "start isn't at the start of the line, later it moves there".
+On a retina laptop window (1000×615 at 2×) the overview's pins were drawn with
+the flat camera maths while MapLibre drew the map at a different scale, so
+START sat 173 px from its road and jumped on landing. The overview now keeps
+MapLibre's projector for the pins, and `_planIntro` refits the overview zoom
+against the real projected start–finish distance (two rounds). Pinned in
+`tests/e2e/intro-flight.spec.ts` (under 4 px on a retina 1000×615 window).
+
+## 2026-09-28 — the chase camera no longer snaps overhead on turns
+
+User report: "why is the camera now jumping to almost overhead view when I
+back up or sometimes turn?". The chase lead (entry below) moved the view
+centre ahead of the rider, and the building-clearance guard aimed its
+sightline at that centre. On a turn or reverse the lead point swung behind a
+building and the guard cut pitch toward its 17° floor in one frame (25°
+measured on the phone). Now:
+- The sightline aims at the rider (`camera.targetX/Y`).
+- The guard's cap eases toward its target: down at 25% per frame, back up at
+  5% per frame. The slow climb applies only when recovering from a building;
+  otherwise the cap follows the view mode's own pitch, so toggling north to
+  chase tilts at the usual pace.
+- Code review caught that the check measured the previous frame's camera
+  (stale centre, bearing and lowered pitch), which could read a building as
+  clear and pump the pitch. The guard now jumps to the requested view before
+  measuring.
+`tests/e2e/camera-pan-pitch.spec.ts` requires the largest one-frame pitch
+drop to stay under 8° while turning and reversing, and the sightline subject
+to stay within 12 m of the rider.
+
+## 2026-09-28 — building tiles send MapLibre a diff, not the whole city
+
+Each tile arrival re-sent, and deep-cloned, every resident building through
+`setData`. On a throttled phone that was the remaining ~130 ms spike while
+riding. `BuildingTileStreamer` now remembers the published tile arrays and
+sends `updateData({remove, add})` for only the tiles that left or arrived
+(`planSourceDiff`). It still uses a full `setData` for the first flush and
+after appearance priors change. Ids are `promoteId: 'id'`, and all 342,993
+extract ids are unique, which `updateData` requires. `updateData` reports a
+rejected diff later, as the source's `error` event rather than a throw, so
+that event resets the snapshot and resends everything. Checks are in
+`scripts/check-building-tile-source.ts`.
 
 ## 2026-09-28 — the chase view shows more street ahead
 

@@ -95,14 +95,7 @@ class VectorBasemap {
       // MapLibre/Three canvas (see TODO item 22).
       if (window.CanalRecallVehicles) {
         const { PlayerBike3D, PlayerBoat3D, PlayerTransit3D } = window.CanalRecallVehicles;
-        const Prefs = window.CanalRecallPreferences;
-        let bikeSkin = 'omafiets';
-        try {
-          if (Prefs?.readPreferences) {
-            bikeSkin = Prefs.readPreferences(localStorage, { min: 0.2, max: 1.5, defaultZoom: 0.5 }).bikeSkin || 'omafiets';
-          }
-        } catch (_) { /* ignore */ }
-        if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl, bikeSkin);
+        if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl);
         if (PlayerBoat3D) this._playerBoat = new PlayerBoat3D(this.map, maplibregl);
         if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
@@ -757,6 +750,7 @@ class VectorBasemap {
       // between the physical camera and the route centre.
       if (this._cameraClearanceRequest) this._clearCameraFromBuildingFootprints(
         this._cameraClearanceRequest.center, this._cameraClearanceRequest.view,
+        this._cameraClearanceRequest.subject,
       );
     }, (features) => this._syncPyramidalRoofs(features));
     // Loading may already have aimed at the route start before the probe
@@ -1176,16 +1170,6 @@ class VectorBasemap {
     );
   }
 
-  setBikeSkin(skinId) {
-    if (!this._playerBike || typeof this._playerBike.setSkin !== 'function') return;
-    this._playerBike.setSkin(skinId);
-  }
-
-  setBikeBabySeat(visible) {
-    if (!this._playerBike || typeof this._playerBike.setBabySeatVisible !== 'function') return;
-    this._playerBike.setBabySeatVisible(visible);
-  }
-
   setPlayerBoat(player, loader, visible) {
     if (!this._playerBoat || !player || !loader) return;
     this._playerBoat.update(
@@ -1521,13 +1505,39 @@ class VectorBasemap {
     // wait for it to land (see below).
     const needsClearanceCheck = pitch > 0 && !detached && introFlat === 0 && (!previousCheck || movedMetres > 8 || bearingChange > 8
       || Math.abs(mapZoom - previousCheck.zoom) > 0.05 || performance.now() - previousCheck.at > 1000);
-    const appliedPitch = needsClearanceCheck || detached || introFlat > 0 ? pitch
-      : Math.min(pitch, this._lastCameraClearance.safePitch ?? pitch);
-    this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
+    // The sightline protects the rider, not the view centre: chase and
+    // cockpit lead the camera ahead of the vehicle, and aiming at that lead
+    // point swung it behind buildings on every turn or reverse, cutting the
+    // pitch toward plan view (user report 2026-09-28).
+    const subject = Number.isFinite(camera.targetX) && Number.isFinite(camera.targetY)
+      ? [
+        loader._lastCenterLng + (camera.targetX - loader._lastOffsetX) / (metersPerDegreeLng * PIXELS_PER_METER),
+        loader._lastCenterLat - (camera.targetY - loader._lastOffsetY) / (metersPerDegreeLat * PIXELS_PER_METER),
+      ]
+      : [lon, lat];
     if (needsClearanceCheck) {
-      this._clearCameraFromBuildingFootprints([lon, lat], { zoom: mapZoom, bearing, pitch });
+      this._clearCameraFromBuildingFootprints([lon, lat], { zoom: mapZoom, bearing, pitch }, subject);
       this._cameraClearanceCheck = { center: [lon, lat], zoom: mapZoom, bearing, at: performance.now() };
     }
+    // Ease toward the safe pitch rather than snapping to it: down over a few
+    // frames (a building really is in the way), back up slowly, so a check
+    // that flips between blocked and clear never reads as a jump.
+    // The slow climb applies only to recovering from a building: when nothing
+    // limits the view and the cap was already following the view mode's own
+    // pitch, it keeps following, so a north-to-chase toggle tilts at the view
+    // mode's pace instead of this one.
+    const safePitch = detached || introFlat > 0 ? pitch : Math.min(pitch, this._lastCameraClearance.safePitch ?? pitch);
+    const followingView = safePitch >= pitch && this._clearancePitch != null
+      && this._clearancePitch >= (this._clearancePitchRequested ?? pitch) - 0.1;
+    if (this._clearancePitch == null || detached || introFlat > 0 || camera.reducedMotion || followingView) this._clearancePitch = safePitch;
+    else {
+      const rate = safePitch < this._clearancePitch ? 0.25 : 0.05;
+      this._clearancePitch += (safePitch - this._clearancePitch) * rate;
+      if (Math.abs(safePitch - this._clearancePitch) < 0.1) this._clearancePitch = safePitch;
+    }
+    this._clearancePitchRequested = pitch;
+    const appliedPitch = Math.min(pitch, this._clearancePitch);
+    this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
     this._lastCameraZoom = camera.zoom;
     // Building tiles follow the driving camera, not the style's Damrak default.
     // followCamera no-ops until the centre tile / zoom bucket changes.
@@ -1541,7 +1551,11 @@ class VectorBasemap {
       this._completeCity.followCamera();
     }
     this._updateGoogleTiles();
-    camera.projector = pitch > 0
+    // The start flight's overview is flat, but its pins must still go through
+    // MapLibre's projection: the flat camera maths drew them at half the map's
+    // scale on a retina desktop, so START sat mid-way along the route line and
+    // jumped into place on landing (user report 2026-09-28).
+    camera.projector = pitch > 0 || introFlat > 0
       ? (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas)
       : null;
   }
@@ -1648,17 +1662,22 @@ class VectorBasemap {
    * camera-to-road sightline clears resident measured footprints. Keeping the
    * route centre fixed also keeps the canvas overlays registered.
    */
-  _clearCameraFromBuildingFootprints(center, view) {
-    this._cameraClearanceRequest = { center: [...center], view: { ...view } };
+  _clearCameraFromBuildingFootprints(center, view, subject = center) {
+    this._cameraClearanceRequest = { center: [...center], view: { ...view }, subject: [...subject] };
     // This MapLibre release predates Mapbox's public free-camera API. Its
     // transform exposes the same calculated camera location and altitude.
     const transform = this.map && this.map.transform;
+    // Measure from the camera this request asks for, at full pitch. The map
+    // still holds the previous frame's centre, bearing and (eased, possibly
+    // lowered) pitch, which could read a building as clear and let the pitch
+    // pump back up into it.
+    if (this.map && typeof this.map.jumpTo === 'function') this.map.jumpTo({ ...view, center });
     const cameraLngLat = transform && transform.getCameraLngLat && transform.getCameraLngLat();
     const altitude = transform && transform.getCameraAltitude && transform.getCameraAltitude();
     if (!cameraLngLat || !Number.isFinite(altitude)) return;
     const before = [cameraLngLat.lng, cameraLngLat.lat];
     let finalCamera = before, finalAltitude = altitude;
-    let blocker = this._cameraSightlineBlocker(finalCamera, center, finalAltitude);
+    let blocker = this._cameraSightlineBlocker(finalCamera, subject, finalAltitude);
     let safePitch = view.pitch;
     // Lower pitch raises the physical camera and its sightline without moving
     // the route centre. Four-degree steps avoid a visible framing jump while
@@ -1670,7 +1689,7 @@ class VectorBasemap {
       const nextCamera = transform.getCameraLngLat();
       finalCamera = [nextCamera.lng, nextCamera.lat];
       finalAltitude = transform.getCameraAltitude();
-      blocker = this._cameraSightlineBlocker(finalCamera, center, finalAltitude);
+      blocker = this._cameraSightlineBlocker(finalCamera, subject, finalAltitude);
     }
     this._lastCameraClearance = {
       constrained: safePitch !== view.pitch,

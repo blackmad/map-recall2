@@ -120,24 +120,68 @@ export type BuildingFeature = { type: 'Feature'; properties: Record<string, unkn
 /**
  * The loaded tiles, as the one FeatureCollection MapLibre draws.
  *
- * Rebuilt on every change rather than diffed: the working set is a few tens of
- * thousands of features, MapLibre re-parses a GeoJSON source on `setData`
- * anyway, and a diffing scheme would be the kind of cleverness that goes wrong
- * silently when a tile fails to load.
+ * The collection is still the source of truth, but MapLibre is now fed diffs
+ * (`planSourceDiff`): re-sending tens of thousands of features on every tile
+ * arrival was a ~130 ms spike on a throttled phone. The diff works on whole
+ * adopted tiles only, so a tile that fails to load is simply never adopted and
+ * never appears in one; the streamer falls back to a full `setData` whenever
+ * a diff cannot be applied.
  */
 export class BuildingTileCache {
   private readonly tiles = new Map<string, BuildingFeature[]>();
+  private list: BuildingFeature[] | null = null;
 
   get heldKeys(): string[] { return [...this.tiles.keys()]; }
   get size(): number { return this.tiles.size; }
   has(key: string): boolean { return this.tiles.has(key); }
 
-  adopt(key: string, features: BuildingFeature[]): void { this.tiles.set(key, features); }
-  drop(key: string): void { this.tiles.delete(key); }
+  adopt(key: string, features: BuildingFeature[]): void { this.tiles.set(key, features); this.list = null; }
+  drop(key: string): void { if (this.tiles.delete(key)) this.list = null; }
 
+  /** The resident tiles by key, for diffing against what MapLibre holds. */
+  entries(): ReadonlyMap<string, BuildingFeature[]> { return this.tiles; }
+
+  /** Every resident feature. Concatenated once per change, not per call: the
+   *  camera-clearance check asks for it every 8 m of travel. */
   collection(): { type: 'FeatureCollection'; features: BuildingFeature[] } {
-    const features: BuildingFeature[] = [];
-    for (const tile of this.tiles.values()) features.push(...tile);
-    return { type: 'FeatureCollection', features };
+    if (!this.list) {
+      const features: BuildingFeature[] = [];
+      for (const tile of this.tiles.values()) features.push(...tile);
+      this.list = features;
+    }
+    return { type: 'FeatureCollection', features: this.list };
   }
+}
+
+export type SourceDiffPlan = {
+  /** Promoted ids to remove from the GeoJSON source. */
+  removeIds: string[];
+  /** Tiles whose features must be added (whole tiles, in resident order). */
+  addTiles: string[];
+};
+
+/**
+ * What to send MapLibre to go from the tiles it holds to the resident tiles.
+ *
+ * `published` maps each tile MapLibre holds to the feature array it was sent,
+ * so a tile evicted and re-fetched between flushes (a new array under the same
+ * key) is replaced rather than assumed current. Ids come from `idOf`; building
+ * ids are unique across the whole tile set (342 993 of 342 993 in the
+ * Amsterdam extract), which is what makes removal by id safe.
+ */
+export function planSourceDiff(
+  published: ReadonlyMap<string, readonly BuildingFeature[]>,
+  resident: ReadonlyMap<string, readonly BuildingFeature[]>,
+  idOf: (feature: BuildingFeature) => string,
+): SourceDiffPlan {
+  const removeIds: string[] = [];
+  const addTiles: string[] = [];
+  for (const [key, features] of published) {
+    if (resident.get(key) === features) continue;
+    for (const feature of features) removeIds.push(idOf(feature));
+  }
+  for (const [key, features] of resident) {
+    if (published.get(key) !== features) addTiles.push(key);
+  }
+  return { removeIds, addTiles };
 }

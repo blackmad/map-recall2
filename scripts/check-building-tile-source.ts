@@ -9,7 +9,7 @@
 
 import assert from 'node:assert/strict';
 import {
-  BuildingTileCache, BUILDING_TILE_ZOOM, DEFAULT_BUDGET, planTiles, tileUrl
+  BuildingTileCache, BUILDING_TILE_ZOOM, DEFAULT_BUDGET, planSourceDiff, planTiles, tileUrl
 } from '../src/canalRecall/buildingTileSource.js';
 import { BuildingTileStreamer, decorateBuildingFeature, loadVerifiedAppearanceCatalog, loadVerifiedAppearancePriors, loadVerifiedAppearanceRelease } from '../src/canalRecall/buildingTilesBrowser.js';
 import { tileFor, tileKey } from '../src/canalRecall/slippyTiles.js';
@@ -149,6 +149,75 @@ try {
 } finally {
   streamer.dispose();
   globalThis.fetch = originalFetch;
+}
+
+// --- incremental source updates ------------------------------------------
+// Named regression (2026-09-28): every tile arrival re-sent and deep-cloned the
+// whole resident set (~130 ms at 4× throttle). MapLibre now gets diffs; these
+// pin the cases a diff could get silently wrong.
+{
+  const feature = (id: string) => ({ type: 'Feature' as const, properties: { id }, geometry: null });
+  const idOf = (f: { properties: Record<string, unknown> }) => String(f.properties.id);
+  const a = [feature('a1'), feature('a2')], b = [feature('b1')], c = [feature('c1')];
+  const plan = planSourceDiff(new Map([['A', a], ['B', b]]), new Map([['A', a], ['C', c]]), idOf);
+  assert.deepEqual(plan.removeIds, ['b1'], 'a tile that left is removed by its ids');
+  assert.deepEqual(plan.addTiles, ['C'], 'a tile that arrived is added; an unchanged one is not resent');
+  const refetched = [feature('a1'), feature('a2')];
+  const again = planSourceDiff(new Map([['A', a]]), new Map([['A', refetched]]), idOf);
+  assert.deepEqual([again.removeIds, again.addTiles], [['a1', 'a2'], ['A']],
+    'a tile evicted and re-fetched between flushes (new array, same key) is replaced');
+  const idle = planSourceDiff(new Map([['A', a]]), new Map([['A', a]]), idOf);
+  assert.deepEqual([idle.removeIds, idle.addTiles], [[], []], 'nothing changed, nothing sent');
+
+  // The streamer: first flush sends the whole set, later arrivals only a diff.
+  const sent: Array<{ kind: string; add?: number; remove?: number; total?: number }> = [];
+  let bounds = { w: 4.8717, e: 4.8718, s: 52.3728, n: 52.3729 };
+  let sourceError: ((event: unknown) => void) | null = null;
+  const diffSource = {
+    setData: (data: any) => { sent.push({ kind: 'set', total: data.features.length }); },
+    updateData: (diff: any) => { sent.push({ kind: 'update', add: diff.add?.length ?? 0, remove: diff.remove?.length ?? 0 }); },
+    on: (_type: string, listener: (event: unknown) => void) => { sourceError = listener; },
+  };
+  const diffMap = {
+    getSource: () => diffSource,
+    getCenter: () => ({ lng: (bounds.w + bounds.e) / 2, lat: (bounds.s + bounds.n) / 2 }),
+    getZoom: () => 19.55,
+    getBounds: () => ({ getWest: () => bounds.w, getEast: () => bounds.e, getSouth: () => bounds.s, getNorth: () => bounds.n }),
+    on: () => {},
+  };
+  const diffStreamer = new BuildingTileStreamer(diffMap, 'buildings', '/test');
+  const savedFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = (async (input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes('index-z')) return Response.json({ zoom: 14, tileList: ['test'] });
+      return Response.json({ type: 'FeatureCollection', features: [{ type: 'Feature', properties: { id: `bldg:${url}` }, geometry: null }] });
+    }) as typeof fetch;
+    assert.equal(await diffStreamer.probe(), true);
+    diffStreamer.attach();
+    diffStreamer.followCamera();
+    for (let turn = 0; turn < 30 && !sent.length; turn++) await new Promise(resolve => setTimeout(resolve, 0));
+    // Cross into the neighbouring z14 tile to the east.
+    bounds = { w: 4.8925, e: 4.8926, s: 52.3728, n: 52.3729 };
+    diffStreamer.followCamera();
+    for (let turn = 0; turn < 30 && sent.length < 2; turn++) await new Promise(resolve => setTimeout(resolve, 0));
+    assert.equal(sent[0]?.kind, 'set', 'the first flush sends the whole resident set');
+    assert.deepEqual(sent[1], { kind: 'update', add: 1, remove: 0 }, 'a later arrival sends only its own tile');
+    // MapLibre reports a rejected diff asynchronously as a source error event.
+    assert.ok(sourceError, 'the streamer listens for a rejected diff');
+    sourceError!({ error: new Error('GeoJSON data is not compatible with updateData') });
+    assert.deepEqual(sent[2], { kind: 'set', total: 2 }, 'a rejected diff resends the whole resident set');
+  } finally {
+    diffStreamer.dispose();
+    globalThis.fetch = savedFetch;
+  }
+
+  const cache = new BuildingTileCache();
+  cache.adopt('A', a);
+  const first = cache.collection().features;
+  assert.equal(cache.collection().features, first, 'the resident list is reused until the cache changes');
+  cache.adopt('B', b);
+  assert.equal(cache.collection().features.length, 3, 'and rebuilt after it does');
 }
 
 process.stdout.write(`Building tile source checks passed (z${BUILDING_TILE_ZOOM}, ${fresh.load.length} tiles for a viewport, budget ${DEFAULT_BUDGET})\n`);

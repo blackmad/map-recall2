@@ -142,12 +142,6 @@ class GameRouteRuntime {
         prefs.travelMode === 'transit' && !!(this.osmLoader && this.osmLoader.transitLoad),
       );
     }
-    if (typeof this.vectorMap.setBikeSkin === 'function') {
-      this.vectorMap.setBikeSkin(prefs.bikeSkin || 'omafiets');
-    }
-    if (typeof this.vectorMap.setBikeBabySeat === 'function') {
-      this.vectorMap.setBikeBabySeat(!!prefs.bikeBabySeat);
-    }
     if (applySound) this._setSoundEnabled(prefs.sound);
     if (persist) this._savePreferences();
   }

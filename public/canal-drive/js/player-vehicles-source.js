@@ -3,17 +3,9 @@ const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 
 const assetUrl = path => new URL(path, window.location.href).href;
 
-/** Keep in sync with `src/canalRecall/game/bikeSkins.ts`. */
-const BIKE_SKINS = {
-  omafiets: { id: 'omafiets', file: 'omafiets-runtime.glb', widthScale: 1.35, motion: true, babySeat: true, label: 'Omafiets' },
-  pink: { id: 'pink', file: 'pink-city-bicycle-runtime.glb', widthScale: 1.2, motion: true, babySeat: false, label: 'City bike' },
-  swapfiets: { id: 'swapfiets', file: 'swapfiets-runtime.glb', widthScale: 1.3, motion: true, babySeat: false, label: 'Swapfiets' },
-};
-const DEFAULT_BIKE_SKIN = 'omafiets';
-
-function bikeSkin(id) {
-  return BIKE_SKINS[id] || BIKE_SKINS[DEFAULT_BIKE_SKIN];
-}
+// The chase bicycle is the omafiets, without its optional rear child seat.
+// Other bikes (pink city bike, Swapfiets) are kept only for bike-preview.html.
+const BIKE_MODEL_URL = assetUrl('./omafiets-runtime.glb');
 
 const BOAT_MODEL_URL = assetUrl('./canal-boat-runtime.glb');
 /** Demo chase mesh for transit mode — GVB metro 51 lookalike from mini-amsterdam-3d. */
@@ -293,48 +285,19 @@ class Vehicle3D {
 }
 
 export class PlayerBike3D extends Vehicle3D {
-  constructor(map, maplibregl, skinId = DEFAULT_BIKE_SKIN) {
-    const skin = bikeSkin(skinId);
+  constructor(map, maplibregl) {
     super(map, maplibregl, {
       id: 'player-bike-3d',
-      modelUrl: assetUrl(`./${skin.file}`),
-      label: `bicycle (${skin.label})`,
+      modelUrl: BIKE_MODEL_URL,
+      label: 'bicycle',
       gameScale: BIKE_GAME_SCALE,
       headingOffset: BIKE_HEADING_OFFSET,
       normaliseTo: 2.15,
-      widthScale: skin.widthScale,
+      widthScale: 1.35,
       occlusionColor: 0xffd21f,
     });
-    this.skinId = skin.id || DEFAULT_BIKE_SKIN;
     this.steerAngle = 0;
     this.wheelSpin = 0;
-    this.babySeatVisible = false;
-  }
-
-  /** Swap chase bicycle GLB at runtime (preferences bikeSkin). */
-  setSkin(skinId) {
-    const next = typeof skinId === 'string' ? skinId : DEFAULT_BIKE_SKIN;
-    if (next === this.skinId) return;
-    const skin = bikeSkin(next);
-    this.skinId = skin.id || DEFAULT_BIKE_SKIN;
-    this.options.modelUrl = assetUrl(`./${skin.file}`);
-    this.options.widthScale = skin.widthScale;
-    this.options.label = `bicycle (${skin.label})`;
-    this.parts = {};
-    this._loadModel(this.options.modelUrl);
-  }
-
-  /** Show/hide named `BabySeat` when the active skin includes one. */
-  setBabySeatVisible(visible) {
-    this.babySeatVisible = !!visible;
-    this._applyBabySeatVisibility();
-  }
-
-  _applyBabySeatVisibility() {
-    const seat = this.parts && this.parts.babySeat;
-    if (!seat) return;
-    const skin = bikeSkin(this.skinId);
-    seat.visible = !!(skin.babySeat && this.babySeatVisible);
   }
 
   // Named `Lenker` / `RadVorn` / `RadHinten` empties. Missing parts must not
@@ -353,21 +316,18 @@ export class PlayerBike3D extends Vehicle3D {
       this.parts.steer.userData.restQuaternion
         .multiply(SCRATCH_QUAT.setFromAxisAngle(STEER_AXIS, AUTHORED_STEER_OFFSET));
     }
-    this._applyBabySeatVisibility();
+    // The omafiets GLB carries an optional child seat; the game never shows it.
+    if (this.parts.babySeat) this.parts.babySeat.visible = false;
   }
 
   update(lngLat, angle, visible, steerInput = 0, distancePx = 0) {
     super.update(lngLat, angle, visible);
-    const skin = bikeSkin(this.skinId);
-    const input = skin.motion ? steerInput : 0;
     // Keyboard/right-pad: +1 = turn right. With the bike facing +X and steer
     // about +Y, a positive angle yaws the fork toward +Z (the bike's left).
     // Negate so the bars and front wheel follow the turn the rider asked for.
-    const target = -Math.max(-1, Math.min(1, input || 0)) * MAX_STEER;
+    const target = -Math.max(-1, Math.min(1, steerInput || 0)) * MAX_STEER;
     this.steerAngle += (target - this.steerAngle) * STEER_EASING;
-    this.wheelSpin = skin.motion
-      ? (distancePx || 0) / (PIXELS_PER_METER_FALLBACK * WHEEL_RADIUS_M)
-      : 0;
+    this.wheelSpin = (distancePx || 0) / (PIXELS_PER_METER_FALLBACK * WHEEL_RADIUS_M);
   }
 
   _pose() {

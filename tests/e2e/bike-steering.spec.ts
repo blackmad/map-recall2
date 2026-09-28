@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { openRoute } from './helpers';
 
-// Swapfiets is authored level with `Lenker` / `RadVorn` / `RadHinten` from
-// `scripts/stylize-swapfiets-bike.py`. This pins that the fork turns about +Y,
+// The omafiets is authored level with `Lenker` / `RadVorn` / `RadHinten` from
+// `scripts/build-omafiets-bike.py`. This pins that the fork turns about +Y,
 // the frame does not, and the wheels roll about their +Z axle by distance
 // travelled rather than by frame count. The bike is usually behind a building,
 // so the pose is measured off the scene graph instead of a screenshot.
@@ -16,7 +16,7 @@ test('the front wheel steers and the wheels roll, and the frame stays put', asyn
     g.state = 3;
     const bike = g.vectorMap._playerBike;
     const ll = g.vectorMap.worldToLngLat(g.player.x, g.player.y, g.osmLoader);
-    // Local +Z of a Swapfiets wheel is its axle (carbon bike used +Y).
+    // Local +Z of an omafiets wheel is its axle (carbon bike used +Y).
     const axleOf = (o: any) => {
       o.updateWorldMatrix(true, false);
       const e = o.matrixWorld.elements;

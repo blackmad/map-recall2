@@ -191,9 +191,6 @@
   // src/canalRecall/routing/cycleTrack.ts
   var CYCLE_TRACK_ANSWER_MULTIPLIER = 1.1;
 
-  // src/canalRecall/game/bikeSkins.ts
-  var DEFAULT_BIKE_SKIN = "omafiets";
-
   // src/canalRecall/game/cities.ts
   var AMSTERDAM_POIS = [
     { id: "central", name: "Central Station", lat: 52.3784943, lng: 4.899843 },
@@ -323,8 +320,6 @@
       skipMastered: true,
       gamey: true,
       sound: false,
-      bikeSkin: DEFAULT_BIKE_SKIN,
-      bikeBabySeat: false,
       zoom: zoom.defaultZoom,
       zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
       cameraTilt: 0,

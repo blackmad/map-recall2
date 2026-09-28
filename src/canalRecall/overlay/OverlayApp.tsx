@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { ArrowLeft, BookOpenCheck, ChevronDown, Clock3, Search } from 'lucide-react';
 import {
-  BIKE_SKINS,
-  BIKE_SKIN_IDS,
   CAMERA_TILT_MAX,
   CAMERA_TILT_MIN,
   playableCities,
@@ -223,12 +221,6 @@ const TRAVEL: Choice<CanalPreferences['travelMode']>[] = [
   { value: 'transit', title: 'Transit' },
 ];
 
-const BIKE_SKIN_OPTIONS: Choice<CanalPreferences['bikeSkin']>[] = BIKE_SKIN_IDS.map(id => ({
-  value: id,
-  title: BIKE_SKINS[id].label,
-  hint: BIKE_SKINS[id].motion ? 'Steer + spin' : 'Look only',
-}));
-
 const VIEW: Choice<CanalPreferences['viewMode']>[] = [
   { value: 'north', title: 'North up', hint: 'Flat map, north at top' },
   { value: 'heading', title: 'Heading up', hint: 'Flat map, turns with you' },
@@ -318,24 +310,6 @@ function RideOptions({
         onChange={value => set({ answerMode: value })}
         options={ANSWERS}
       />
-      {live && prefs.travelMode === 'car' ? (
-        <>
-          <ChoiceRow
-            label="Bicycle"
-            name={name('bike-skin')}
-            value={prefs.bikeSkin}
-            onChange={value => set({ bikeSkin: value })}
-            options={BIKE_SKIN_OPTIONS}
-            compact
-          />
-          {BIKE_SKINS[prefs.bikeSkin]?.babySeat ? (
-            <ToggleGroup label="Bicycle extras">
-              <ToggleTile id="live-bike-baby-seat" checked={prefs.bikeBabySeat} onChange={bikeBabySeat => set({ bikeBabySeat })}
-                title="Baby seat" hint="Rear child seat" />
-            </ToggleGroup>
-          ) : null}
-        </>
-      ) : null}
       <ToggleGroup label="On the map">
         <ToggleTile id={id('assist-line', 'live-line')} checked={prefs.line} onChange={line => set({ line })} title="Route line" />
         <ToggleTile id={id('assist-arrow', 'live-arrow')} checked={prefs.arrow} onChange={arrow => set({ arrow })} title="Arrow" hint="Points at the destination" />
@@ -827,29 +801,6 @@ export function OverlayApp({
               icons={TRAVEL_ICONS}
               layout="strip"
             />
-            {prefs.travelMode === 'car' ? (
-              <>
-                <ChoiceRow
-                  label="Bicycle"
-                  name="bike-skin"
-                  value={prefs.bikeSkin}
-                  onChange={value => patch({ bikeSkin: value })}
-                  options={BIKE_SKIN_OPTIONS}
-                  compact
-                  gloss="Chase bike look. Swapfiets is photoreal reference (no spin)."
-                />
-                {BIKE_SKINS[prefs.bikeSkin]?.babySeat ? (
-                  <label className="master-toggle" style={{ marginTop: 6 }}>
-                    <input
-                      type="checkbox"
-                      checked={prefs.bikeBabySeat}
-                      onChange={event => patch({ bikeBabySeat: event.target.checked })}
-                    />
-                    <span><strong>Baby seat</strong><small>Rear child seat on the luggage rack.</small></span>
-                  </label>
-                ) : null}
-              </>
-            ) : null}
             <ChoiceRow
               label="View"
               name="view"
