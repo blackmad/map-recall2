@@ -11,9 +11,12 @@ copy recorded how each lost drive failed. Most were the test driver:
 - It never turned round, steering full lock into a block for ever.
 The autopilot now aims at the farthest route point it has a clear line of
 sight to along the road, slows for bends within 90 px on the route, and does
-its back-off-and-turn when the route is behind it. Result: 90–94 of 120
-arrive, 0 pinned, so it passes the 45% bar. What is left is mostly real
-corridor-gap traps (see TODO).
+its back-off-and-turn when the route is behind it. It rides into a junction
+whose corner it cut short, instead of aiming down the next road from the
+kerb. And it counts a vertex within 25 px as passed, so an overshot hairpin
+no longer makes it turn back and forth. The 52.36993, 4.96976 "corridor gap"
+turned out to be the autopilot aiming past its junction. Result: about 100
+of 120 arrive, 0 pinned, so it passes the 45% bar.
 
 ## 2026-09-28 — no Da Costa study choice, 50% zoom again, no ESC on arrival
 

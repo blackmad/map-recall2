@@ -51,16 +51,14 @@ Home-base routes already grow an expanding learning radius from the address
 ## P2 — Weight and reach
 
 **Driving harness: the remaining lost drives (2026-09-28).**
-`tests/e2e/driving-harness.spec.ts` passes again at 90–94 of 120 (bar 45%)
-after the autopilot learned line of sight, braking for bends and turning
-round. Arrivals still vary by a few drives between runs with the same seed;
-find the nondeterminism (tile/extract load order?) before tightening the bar.
-Of the ~26 lost, about 15 sit motionless at a corridor edge while still on
-the route. The traced case at 52.36993, 4.96976 is two unnamed segments whose
-drawn corridors do not overlap at a junction the routing graph stitched, so
-the guard rolls the bike back at the gap. That is a real "stuck and can't
-turn round" trap (user report from the phone, same day). Scratch tracers for
-this are `zz-harness-diag` / `zz-drive-one` patterns (see HISTORY).
+`tests/e2e/driving-harness.spec.ts` passes at about 100 of 120 (bar 45%)
+since the autopilot learned line of sight, bend braking, turning round,
+riding into a junction it cut short, and passing a vertex within reach.
+Arrivals still vary by a few drives between runs with the same seed; find
+the nondeterminism (tile or extract load order?) before raising the bar.
+Only about 2 of the ~17 lost drives now sit stuck at a kerb on their route
+(e.g. 52.34421, 4.83856); trace those with the single-drive tracer pattern
+before deciding whether they are guard traps.
 `tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
 or facades resident, probably because it needs locally generated study data.
 
