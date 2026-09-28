@@ -1275,9 +1275,12 @@ class VectorBasemap {
       // line leaves a seam at every join, so one canal reads as several. Join
       // only the fragments whose endpoints actually meet: concatenating blindly
       // is what draws the giant diagonal chord across the map.
-      const paths = connected
-        .map(segment => segment.points)
-        .filter(points => points && points.length > 1);
+      // Parallel same-name ways (both carriageways, the named cycle track)
+      // collapse to the ridden one first; see `collapseParallelFragments`.
+      const collapse = window.CanalRecallStreets && window.CanalRecallStreets.collapseParallelFragments;
+      const paths = collapse
+        ? collapse(connected, seed)
+        : connected.map(segment => segment.points).filter(points => points && points.length > 1);
       const stitch = window.CanalRecallStreets && window.CanalRecallStreets.stitchOverlayPaths;
       const chains = stitch ? stitch(paths) : paths;
       this.map.getSource('active-street').setData({

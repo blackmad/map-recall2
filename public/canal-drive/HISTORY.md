@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — a highlighted street is one line
+
+User report: "I still sometimes get crazy multiple blue lines when a street
+is highlighted" (Prins Hendrikkade by the IJ).
+- The highlight drew every connected fragment of the name. Prins Hendrikkade
+  is 262 of them, each stored twice: two one-way carriageways, named cycle
+  tracks and service roads, all side by side. `stitchOverlayPaths` keeps
+  parallel ways apart on purpose, so they drew as three or four lines.
+- `collapseParallelFragments` (`streetOverlayStyle.ts`) runs before stitching,
+  in the MapLibre highlight and in the canvas `drawQuestionFeature` (which
+  caches per seed). It walks from the ridden fragment along touching
+  fragments: busiest road class first, then the straightest continuation.
+  It drops the stretches that run alongside a kept line. Alongside means
+  within 30 m, within 25° of its heading, and projecting onto that line
+  rather than past its end.
+- Continuations, branches and a canal's opposite quay (~40 m) survive. A short
+  uncut fragment is always kept: dropping a 9 m link as a sliver stranded the
+  walk, and the other carriageway won the rest of the road.
+- Share of highlighted length with another highlighted line within 20 m:
+  94% → 6.6%. The collapse takes 5 ms, once per question. Pinned in
+  `tests/e2e/street-highlight-parallel.spec.ts` and
+  `scripts/check-canal-street-overlays.ts`.
+
 ## 2026-09-28 — nested building footprints no longer z-fight
 
 User report: "*still* getting texturefighting" (Waterkant, Oosterdokskade).
