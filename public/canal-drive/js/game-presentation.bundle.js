@@ -1630,9 +1630,9 @@
       const actions = [
         // Say what happens: 'again' deals another route with these settings,
         // 'route' goes back to setup. "Continue" / "Finish" said neither.
-        { id: "again", key: "ENTER", caption: "Next route" },
-        { id: "route", key: "ESC", caption: "Route setup" }
+        { id: "again", key: "ENTER", caption: "Next route" }
       ];
+      if (compact) actions.push({ id: "route", key: "", caption: "Route setup" });
       if (this._shareUrl) {
         actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? "Link copied" : "Share this route" });
       }

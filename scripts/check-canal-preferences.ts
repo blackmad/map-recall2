@@ -100,8 +100,11 @@ const memory = () => {
 {
   const migrated = parsePreferences({ zoom: LEGACY_ZOOM_DEFAULT }, zoom);
   assert.equal(migrated.zoom, 0.5, 'legacy 0.65 without a version flag becomes 0.50');
-  const kept = parsePreferences({ zoom: LEGACY_ZOOM_DEFAULT, zoomDefaultVersion: 2 }, zoom);
-  assert.equal(kept.zoom, LEGACY_ZOOM_DEFAULT, 'an explicit post-migration 0.65 is kept');
+  const studyZoom = parsePreferences({ zoom: 0.8, zoomDefaultVersion: 2 }, zoom);
+  assert.equal(studyZoom.zoom, 0.5, 'v3 resets any older saved zoom (study 0.8, broken-pinch 0.1/1.5) to 50%');
+  const kept = parsePreferences({ zoom: LEGACY_ZOOM_DEFAULT, zoomDefaultVersion: 3 }, zoom);
+  assert.equal(kept.zoom, LEGACY_ZOOM_DEFAULT, 'a zoom saved since v3 is kept');
+  assert.equal(parsePreferences({ routePattern: 'study' }, zoom).routePattern, 'surprise', 'the retired study choice is not restored from a save');
 }
 
 

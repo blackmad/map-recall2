@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — no Da Costa study choice, 50% zoom again, no ESC on arrival
+
+User requests: "get rid of 'da costa study'", "default zoom on web for
+chase: 50%", "no 'esc' shortcut on final destination card".
+- The study is gone from the route choices, and a saved `study` pattern falls
+  back to Surprise. The pattern itself stays for the appearance harness, which
+  now selects it through the hidden `#route-pattern` control.
+- Picking the study used to set zoom to 0.8 silently, which is why chase
+  opened zoomed in. `ZOOM_DEFAULT_VERSION` 3 resets every older saved zoom to
+  the 50% default once. That also clears the 10%/150% the broken pinch saved.
+- The desktop arrival card offers only ENTER (Next route), plus C to share
+  when there's a link. The Escape binding is gone. Route setup is still a tap
+  button on the phone and M in the pause menu.
+
 ## 2026-09-28 — no drive-by cards on the phone
 
 User request: "disable the local interest cards on mobile for now, they break
