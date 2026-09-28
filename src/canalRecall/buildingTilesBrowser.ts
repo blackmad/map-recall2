@@ -21,13 +21,17 @@
  */
 
 import {
-  BuildingTileCache, BUILDING_TILE_ZOOM, planTiles, tileUrl,
+  BuildingTileCache, BUILDING_TILE_ZOOM, planTiles, planSourceDiff, tileUrl,
   type BuildingFeature, type Bounds
 } from './buildingTileSource.js';
 import { tileFor, tileKey } from './slippyTiles.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior } from './cityAppearancePalette.js';
 
-type GeoJsonSource = { setData(data: unknown): void };
+type GeoJsonSource = {
+  setData(data: unknown): void;
+  updateData?(diff: { remove?: string[]; add?: unknown[] }): void;
+  on?(type: 'error', listener: (event: unknown) => void): void;
+};
 export type BuildingAppearancePrior={id:string;sourceId:string;geometryRevision:string;constructionYear:number|null;sideColour:string;sideColourSource?:'measured-accepted'|'procedural-prior-not-measured';sideColourObservationId?:string;sideColourSourceSha256?:string;sideColourReviewOrigin?:'human-visual-review'|'model-visual-review';sideColourReviewer?:string;roofColour:string;groundColour:string;groundFloorHeightM:number;roofShape:string|null;roofEavesHeightM:number|null;roofGeometrySource:string|null};
 export type AppearanceStudyRoute={id:string;distanceM:number;source:'guided-route-source-graph';from:{id:string;name:string;lat:number;lng:number};to:{id:string;name:string;lat:number;lng:number}};
 export type AppearanceAreaCatalogEntry={id:string;name:string;pointerUrl:string;lesson:boolean;priority:number};
@@ -174,7 +178,11 @@ export class BuildingTileStreamer {
     this.map.on('moveend', () => this.followCamera());
   }
 
-  setAppearancePriors(priors:ReadonlyMap<string,BuildingAppearancePrior>):void{this.appearancePriors=new Map(priors);this.decorated=new WeakMap();if(this.cache.size)this.flush();}
+  setAppearancePriors(priors:ReadonlyMap<string,BuildingAppearancePrior>):void{this.appearancePriors=new Map(priors);this.decorated=new WeakMap();this.published=null;if(this.cache.size)this.flush();}
+
+  /** Tile → feature array MapLibre currently holds; null forces a full send. */
+  private published: Map<string, BuildingFeature[]> | null = null;
+  private countsDirty = true;
 
   /**
    * Styled copy of a resident feature, made once per feature per priors set.
@@ -342,22 +350,84 @@ export class BuildingTileStreamer {
   }
 
   private flush(): void {
-    const source = this.cache.collection(),features=source.features.map(feature=>this.styled(feature)),collection={...source,features};this.styledFeatures=features.filter(feature=>feature.properties.appearanceStyleSource==='procedural-prior-not-measured').length;this.contextualFeatures=features.filter(feature=>feature.properties.appearanceStyleSource==='citywide-identity-palette-v2-not-measured').length;this.contextualGrounds=features.filter(feature=>feature.properties.groundAppearanceStyleSource==='wall-inherited-not-independently-measured').length;this.contextualRoofs=features.filter(feature=>feature.properties.roofAppearanceStyleSource==='citywide-flat-cap-palette-v2-not-measured').length;
-    this.onFeatures?.(collection.features);
-    // Deep-clone for MapLibre: the GeoJSON source may rewrite rings in place.
-    // Coalescing via scheduleFlush keeps this to once per frame during a burst.
-    this.map.getSource(this.sourceId)?.setData(JSON.parse(JSON.stringify(collection)));
-    if (collection.features.length > 0 && this.onFirstBuildings) {
+    const collection = this.cache.collection();
+    const features = collection.features.map(feature => this.styled(feature));
+    this.countsDirty = true;
+    this.onFeatures?.(features);
+    const source = this.map.getSource(this.sourceId);
+    if (source) this.sendToSource(source, features);
+    if (features.length > 0 && this.onFirstBuildings) {
       const announce = this.onFirstBuildings;
       this.onFirstBuildings = undefined;
       announce();
     }
   }
 
+  /**
+   * Send MapLibre only what changed since the last flush: remove the ids of
+   * tiles that left, add clones of tiles that arrived. Re-sending (and deep-
+   * cloning) every resident building on each tile arrival was the ~130 ms
+   * spike a throttled phone showed while riding. Any failure falls back to a
+   * full `setData`, the previous behaviour. `updateData` only queues the diff:
+   * MapLibre reports a rejected diff (say, a missing or duplicate id) later as
+   * the source's `error` event, not as a throw, so that event resets the
+   * published snapshot and resends everything.
+   */
+  private sendToSource(source: GeoJsonSource, features: BuildingFeature[]): void {
+    const resident = this.cache.entries();
+    const snapshot = new Map(resident);
+    const full = () => {
+      // Deep-clone for MapLibre: the GeoJSON source may rewrite rings in place.
+      source.setData(JSON.parse(JSON.stringify({ type: 'FeatureCollection', features })));
+      this.published = snapshot;
+    };
+    if (!this.published || typeof source.updateData !== 'function') { full(); return; }
+    this.watchForDiffErrors(source);
+    const plan = planSourceDiff(this.published, resident, feature => String(feature.properties?.id ?? ''));
+    if (!plan.removeIds.length && !plan.addTiles.length) return;
+    try {
+      const add: BuildingFeature[] = [];
+      for (const key of plan.addTiles) for (const feature of resident.get(key) ?? []) add.push(this.styled(feature));
+      source.updateData({ remove: plan.removeIds, add: JSON.parse(JSON.stringify(add)) });
+      this.published = snapshot;
+    } catch (error) {
+      console.warn('Building source diff failed; resending the whole set', error);
+      full();
+    }
+  }
+
+  private watchedSources = new WeakSet<GeoJsonSource>();
+  private watchForDiffErrors(source: GeoJsonSource): void {
+    if (this.watchedSources.has(source) || typeof source.on !== 'function') return;
+    this.watchedSources.add(source);
+    source.on('error', error => {
+      if (!this.published) return;
+      console.warn('Building source diff failed; resending the whole set', error);
+      this.published = null;
+      this.flush();
+    });
+  }
+
+  private refreshCounts(): void {
+    if (!this.countsDirty) return;
+    this.countsDirty = false;
+    let styled = 0, contextual = 0, grounds = 0, roofs = 0;
+    for (const raw of this.cache.collection().features) {
+      const properties = this.styled(raw).properties;
+      if (properties.appearanceStyleSource === 'procedural-prior-not-measured') styled++;
+      if (properties.appearanceStyleSource === 'citywide-identity-palette-v2-not-measured') contextual++;
+      if (properties.groundAppearanceStyleSource === 'wall-inherited-not-independently-measured') grounds++;
+      if (properties.roofAppearanceStyleSource === 'citywide-flat-cap-palette-v2-not-measured') roofs++;
+    }
+    this.styledFeatures = styled; this.contextualFeatures = contextual;
+    this.contextualGrounds = grounds; this.contextualRoofs = roofs;
+  }
+
   /** For diagnostics: how much of the city is resident right now. */
   sampleFeatures(limit=400):BuildingFeature[]{return this.cache.collection().features.slice(0,Math.max(0,limit)).map(feature=>this.styled(feature));}
 
   status(): { tiles: number; features: number; styledFeatures:number; contextualFeatures:number; contextualGrounds:number; contextualRoofs:number; inFlight: number; available: boolean; queued: number } {
+    this.refreshCounts();
     return {
       tiles: this.cache.size,
       features: this.cache.collection().features.length,

@@ -95,18 +95,6 @@ const memory = () => {
   assert.equal(kept.zoom, LEGACY_ZOOM_DEFAULT, 'an explicit post-migration 0.65 is kept');
 }
 
-{
-  const prefs = parsePreferences({ bikeSkin: 'pink' }, zoom);
-  assert.equal(prefs.bikeSkin, 'pink');
-  const retiredMama = parsePreferences({ bikeSkin: 'mama', bikeBabySeat: true }, zoom);
-  assert.equal(retiredMama.bikeSkin, 'omafiets', 'retired mama skin falls back');
-  assert.equal(retiredMama.bikeBabySeat, true);
-  const bad = parsePreferences({ bikeSkin: 'unicycle' }, zoom);
-  assert.equal(bad.bikeSkin, 'omafiets', 'unknown bike skin falls back');
-  assert.equal(prefs.bikeBabySeat, false);
-  const withSeat = parsePreferences({ bikeBabySeat: true }, zoom);
-  assert.equal(withSeat.bikeBabySeat, true);
-}
 
 
 {

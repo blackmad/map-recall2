@@ -118,11 +118,27 @@ export class GamePresentationRuntime {
       : Math.max(layout.recall.y + layout.recall.height, layout.destination.y + layout.destination.height);
     const bottom = layout.dpad ? CANVAS_H - layout.dpad.bounds.y : 40;
     const playZoom = this.camera.zoom;
-    const from = introOverview(
-      { x: player.x, y: player.y }, finish,
-      { width: CANVAS_W, height: CANVAS_H, top: top + 8, bottom: bottom + 8 },
-      playZoom,
-    );
+    const start = { x: player.x, y: player.y };
+    const box = { width: CANVAS_W, height: CANVAS_H, top: top + 8, bottom: bottom + 8 };
+    let from = introOverview(start, finish, box, playZoom);
+    // Fit through the projection actually drawn, not the flat maths: aim,
+    // measure where the two pins land, refit with the measured scale. Two
+    // rounds converge; the flat guess alone was ~2× off on a retina desktop.
+    const previous = { introOverview: this.camera.introOverview, rotation: this.camera.rotation };
+    this.camera.introOverview = 1;
+    this.camera.rotation = 0;
+    for (let round = 0; round < 2; round++) {
+      this._applyIntroCamera(from.x, from.y, from.zoom);
+      this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
+      const a = this.camera.worldToScreen(start.x, start.y);
+      const b = this.camera.worldToScreen(finish.x, finish.y);
+      const worldSpan = Math.hypot(finish.x - start.x, finish.y - start.y) * from.zoom;
+      const scale = Math.hypot(b.x - a.x, b.y - a.y) / worldSpan;
+      if (!Number.isFinite(scale) || scale <= 0.05 || scale > 20) break;
+      from = introOverview(start, finish, box, playZoom, scale);
+    }
+    this.camera.introOverview = previous.introOverview;
+    this.camera.rotation = previous.rotation;
     return { plan: introPlan(from, this.camera.reducedMotion), playZoom };
   }
 

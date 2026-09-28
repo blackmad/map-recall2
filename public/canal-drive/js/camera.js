@@ -29,6 +29,10 @@ class Camera {
     this._lookahead = 0;
   }
   update(target, dt) {
+    // The vehicle itself, for the clearance guard's sightline (the view centre
+    // leads it in chase and cockpit).
+    this.targetX = target.x;
+    this.targetY = target.y;
     const speedRatio = clamp(target.speed / target.maxSpeed, 0, 1);
     // Ease the lookahead instead of binding it straight to speed, so the view
     // no longer surges forward and back with the throttle.
