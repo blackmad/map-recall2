@@ -104,6 +104,19 @@ class Vehicle3D {
     this.altitudeM = 0.22;
     this.layer = this._makeLayer();
     map.addLayer(this.layer);
+    // Buildings and other 3D layers are added after the vehicles. Keep the
+    // vehicle last so their depth is already in the buffer: that is what lets
+    // the x-ray pass show the bike through a building instead of the building
+    // simply painting over it.
+    this._keepOnTop = () => {
+      const order = map.style && map.style._order;
+      if (!order || !map.getLayer(this.layer.id)) return;
+      const vehicleIds = order.filter(id => /^player-.*-3d$/.test(id));
+      const tail = order.slice(order.length - vehicleIds.length);
+      if (tail.every(id => vehicleIds.includes(id))) return;
+      map.moveLayer(this.layer.id);
+    };
+    map.on('styledata', this._keepOnTop);
   }
 
   setAltitude(metres) {
@@ -239,12 +252,17 @@ class Vehicle3D {
           .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
         camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(transform);
         renderer.resetState();
-        renderer.render(owner._scene, camera);
+        // X-ray first, against the map's depth alone: it paints only where
+        // nearer map geometry covers the model. Drawn after the normal pass it
+        // also passed on the model's own far side (back faces, the far wheel),
+        // so the whole bike came out yellow. The normal pass then draws every
+        // visible fragment over it.
         if (occlusionMaterial) {
           owner._scene.overrideMaterial = occlusionMaterial;
           renderer.render(owner._scene, camera);
           owner._scene.overrideMaterial = null;
         }
+        renderer.render(owner._scene, camera);
         owner.map.triggerRepaint();
       },
     };

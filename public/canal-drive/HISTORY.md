@@ -1,6 +1,21 @@
 # Canal Recall — what is built
 
 
+## 2026-09-28 — the chase bike is no longer solid yellow
+
+User report: "why is the bike bright yellow now?", and "switching between the
+bikes in settings doesn't do anything". Both were the x-ray pass
+(`occlusionColor` #ffd21f) that shows the bike through buildings. It ran after
+the normal pass with a greater-than depth test, so it also passed wherever
+the model overlapped itself (back faces, the far wheel) and painted the
+whole bike yellow, which made every skin look identical. The skin switch
+itself worked. The x-ray now draws first, against the map's depth only, and
+the normal pass draws the visible bike over it. The vehicle layers also sat
+before the building extrusions, so the x-ray could never see a building;
+`Vehicle3D` now moves itself to the top of the layer order on `styledata`.
+Regression: `tests/e2e/bike-xray.spec.ts` (layer order, and <40 x-ray pixels
+around an uncovered bike; it measured 169 before the fix).
+
 ## 2026-09-27 — a ride opens on an overview and flies down to the vehicle
 
 User report: "when the game starts it's really hard to get oriented". A ride
