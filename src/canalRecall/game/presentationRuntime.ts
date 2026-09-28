@@ -408,11 +408,15 @@ export class GamePresentationRuntime {
    *  Keizersgracht question. The arrival card still shows the real name. */
   _destinationLabel(): string {
     const name = this.routeTo?.name || '';
-    const segments = this.track?.segments || [];
-    const key = `${name}|${segments.length}`;
+    // Mask only the answer of the question open right now. Masking every
+    // street in the ride cut most destinations to "…kerk" for the whole ride
+    // (user report 2026-09-28, "this should not cut off my destination");
+    // the spoiler only matters while that street is being asked.
+    const asking = this.quizPromptName || '';
+    const key = `${name}|${asking}`;
     if (this._destinationLabelKey !== key) {
       this._destinationLabelKey = key;
-      this._destinationLabelText = maskSpoiledName(name, segments.map(segment => segment.name).filter((n): n is string => !!n));
+      this._destinationLabelText = asking ? maskSpoiledName(name, [asking]) : name;
     }
     return this._destinationLabelText || name;
   }

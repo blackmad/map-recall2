@@ -1345,10 +1345,26 @@ class VectorBasemap {
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
     if (this._signatureLandmarks) this._signatureLandmarks.setActiveLandmark(detailed ? null : landmark);
-    if (!detailed && landmark && landmark.featureTarget) {
+    // A drive-by card knows only the landmark's point. Find the streamed
+    // building under it so the card's subject lights up on the map, rather
+    // than a dot the surrounding buildings hide (user report 2026-09-28).
+    let target = landmark && landmark.featureTarget;
+    if (!target && landmark && Array.isArray(landmark.lngLat) && this._completeCityHasBuildings
+      && this._completeCity && typeof this._completeCity.buildingForLandmark === 'function') {
+      // Landmark ids end in their OSM id; one mapped as a way with an outline
+      // (`geojson` polygon from `path`) is the building's own `w…` feature.
+      const osmId = String(landmark.id || '').match(/(\d+)$/);
+      const isWay = !!(landmark.geojson && landmark.geojson.features
+        && landmark.geojson.features.some(f => f.geometry && /Polygon|LineString/.test(f.geometry.type)));
+      const id = this._completeCity.buildingForLandmark({
+        lng: landmark.lngLat[0], lat: landmark.lngLat[1], wayId: osmId && isWay ? `w${osmId[1]}` : null,
+      });
+      if (id) target = { source: 'osm-building-appearance', id };
+    }
+    if (!detailed && target) {
       try {
-        this.map.setFeatureState(landmark.featureTarget, { highlighted: true });
-        this._highlightedBuilding = landmark.featureTarget;
+        this.map.setFeatureState(target, { highlighted: true });
+        this._highlightedBuilding = target;
       } catch (_) {}
     }
     // Never fabricate an extrusion from an OSM footprint. If no renderer can

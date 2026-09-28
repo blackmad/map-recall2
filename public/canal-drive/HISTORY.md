@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — landmark cards light up their building; full destination names
+
+User reports: "why don't I see that museum on my screen highlighted?", "the
+tags on the card still look weirdly off-center vertically", and "this should
+not cut off my destination".
+- A drive-by card knows only the landmark's point. The highlight went to the
+  basemap building, which is hidden once streamed tiles own the city, or
+  nowhere. `buildingForLandmark` (`buildingTileSource.ts`) now finds the
+  streamed building. It tries the landmark's own OSM way first (`w<id>`,
+  when mapped as a building). Next, the footprint around its node (Bimhuis).
+  Last, the nearest footprint within 10 m of an entrance node (Sexmuseum).
+  Only 11 of 420 landmark points fell inside a footprint. Now 15 of 19 in a
+  loaded area highlight; the misses are plaques and monuments, which keep
+  the dot. Pinned in `tests/e2e/landmark-highlight.spec.ts`.
+- Card chips centre the measured cap height in a 15 px pill. The fixed
+  baseline sat the all-caps labels off-centre.
+- The destination label masked any route street inside its name for the
+  whole ride, so it often read "…KERK". It now masks only the answer of the
+  question open right now (`_destinationLabel`).
+
 ## 2026-09-28 — the driving harness measures the city, not its autopilot
 
 The harness was red at 41–65 of 120 arrivals, varying by run. A diagnostic

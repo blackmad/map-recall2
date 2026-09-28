@@ -21,8 +21,8 @@
  */
 
 import {
-  BuildingTileCache, BUILDING_TILE_ZOOM, planTiles, planSourceDiff, tileUrl,
-  type BuildingFeature, type Bounds
+  BuildingTileCache, BUILDING_TILE_ZOOM, buildingForLandmark, planTiles, planSourceDiff, tileUrl,
+  type BuildingFeature, type Bounds, type LandmarkBuildingQuery
 } from './buildingTileSource.js';
 import { tileFor, tileKey } from './slippyTiles.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior } from './cityAppearancePalette.js';
@@ -421,6 +421,11 @@ export class BuildingTileStreamer {
     }
     this.styledFeatures = styled; this.contextualFeatures = contextual;
     this.contextualGrounds = grounds; this.contextualRoofs = roofs;
+  }
+
+  /** The resident building a landmark card is about; see `buildingForLandmark`. */
+  buildingForLandmark(query: LandmarkBuildingQuery): string | null {
+    return buildingForLandmark(this.cache.collection().features, query, feature => String(feature.properties?.id ?? ''));
   }
 
   /** For diagnostics: how much of the city is resident right now. */
