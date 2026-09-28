@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## 2026-09-28 — fewer settings, and a wider zoom-out
+
+User requests: "get rid of all these options" (Detailed 3D, Photoreal, Map
+style) and "the game should let me zoom out further". Those three settings
+are gone from route setup and ride settings. `parsePreferences` ignores
+their stored values, so a player who had picked 8-bit or Photoreal is not
+stuck with it: the map is always clean, standard 3D, with no Google tiles.
+The vector map keeps its `setGoogleTilesEnabled` hook for the overview test.
+`CAMERA_ZOOM_MIN` drops from 0.2 to 0.1, one map zoom level wider, and the
+Zoom slider now starts at 0.1. At the minimum on desktop the map sits at
+z15.5 and streams 9 building tiles (31k features) inside the budget.
+
 ## 2026-09-28 — the chase view dips at most 10° for a building
 
 User report: "still getting behavior where camera randomly changes from chase

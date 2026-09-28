@@ -245,14 +245,6 @@ const ANSWERS: Choice<CanalPreferences['answerMode']>[] = [
   { value: 'typing', title: 'Type', hint: 'Spell the name yourself' },
 ];
 
-const THEMES: Choice<CanalPreferences['themeMode']>[] = [
-  { value: 'clean', title: 'Clean' },
-  { value: '8bit', title: '8-bit' },
-  { value: '16bit', title: '16-bit' },
-  { value: 'psx', title: 'PSX' },
-  { value: 'cyberpunk', title: 'Cyber' },
-];
-
 /**
  * The ride options, drawn once and used by both route setup ("More options")
  * and the in-ride settings panel, so the two never drift into different
@@ -294,7 +286,7 @@ function RideOptions({
             value={prefs.cameraBearing} onChange={cameraBearing => set({ cameraBearing })} />
         </>
       ) : null}
-      <RangeRow label="Zoom" id={id('camera-zoom', 'live-zoom')} min="0.35" max="1.3" step="0.05"
+      <RangeRow label="Zoom" id={id('camera-zoom', 'live-zoom')} min="0.1" max="1.3" step="0.05"
         value={prefs.zoom} onChange={zoom => set({ zoom })} />
       <ChoiceRow
         label="Controls"
@@ -319,18 +311,8 @@ function RideOptions({
       <ToggleGroup label="Comfort & detail">
         <ToggleTile id={id('sound-enabled', 'live-sound')} checked={prefs.sound} onChange={sound => set({ sound })} title="Sound" />
         <ToggleTile id={id('reduced-motion', 'live-reduced-motion')} checked={prefs.reducedMotion} onChange={reducedMotion => set({ reducedMotion })} title="Less motion" />
-        <ToggleTile id={id('detailed-3d', 'live-detailed-3d')} checked={prefs.detailed3d} onChange={detailed3d => set({ detailed3d })} title="Detailed 3D" hint="Beta" />
-        <ToggleTile id={id('google-tiles', 'live-google-tiles')} checked={prefs.googleTiles} onChange={googleTiles => set({ googleTiles })} title="Photoreal" hint="Google 3D, overview only" />
         <ToggleTile id={id('trees-enabled', 'live-trees')} checked={prefs.trees} onChange={trees => set({ trees })} title="Trees in 3D" hidden />
       </ToggleGroup>
-      <ChoiceRow
-        label="Map style"
-        name={name('theme')}
-        value={prefs.themeMode}
-        onChange={value => set({ themeMode: value })}
-        options={THEMES}
-        compact
-      />
     </>
   );
 }

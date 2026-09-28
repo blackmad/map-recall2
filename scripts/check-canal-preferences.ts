@@ -89,6 +89,15 @@ const memory = () => {
 }
 
 {
+  // Map style, Detailed 3D and Photoreal left settings on 2026-09-28; a
+  // value saved before then must not lock a player into it.
+  const retired = parsePreferences({ themeMode: '8bit', detailed3d: true, googleTiles: true }, zoom);
+  assert.equal(retired.themeMode, 'clean');
+  assert.equal(retired.detailed3d, false);
+  assert.equal(retired.googleTiles, false);
+}
+
+{
   const migrated = parsePreferences({ zoom: LEGACY_ZOOM_DEFAULT }, zoom);
   assert.equal(migrated.zoom, 0.5, 'legacy 0.65 without a version flag becomes 0.50');
   const kept = parsePreferences({ zoom: LEGACY_ZOOM_DEFAULT, zoomDefaultVersion: 2 }, zoom);

@@ -78,7 +78,7 @@ const GRASS_DRAG = 80;                         // px/s² drag on grass
 // --- Camera ---
 const CAMERA_SMOOTHING = 0.07;                 // exponential smoothing (0 = snap, 1 = frozen)
 const CAMERA_ZOOM_INITIAL = 0.50;
-const CAMERA_ZOOM_MIN = 0.2;
+const CAMERA_ZOOM_MIN = 0.1;                   // one map zoom level wider than 0.2
 const CAMERA_ZOOM_MAX = 1.5;
 const CAMERA_ZOOM_STEP = 0.15;                 // per key press
 const CAMERA_LOOKAHEAD = 60;                   // px — camera leads player by this much

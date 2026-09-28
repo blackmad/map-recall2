@@ -212,7 +212,9 @@ function fillPreferences(
     travelMode: parseMode(TRAVEL_MODES, source.travelMode, base.travelMode),
     controlMode: parseMode(CONTROL_MODES, source.controlMode, base.controlMode),
     viewMode: parseMode(VIEW_MODES, source.viewMode, base.viewMode),
-    themeMode: parseMode(THEME_MODES, source.themeMode, base.themeMode),
+    // Map style, Detailed 3D and Photoreal were retired from settings
+    // (2026-09-28); a value stored before then is ignored.
+    themeMode: base.themeMode,
     routePattern: parseMode(ROUTE_PATTERNS, source.routePattern, base.routePattern),
     homeAddress: typeof source.homeAddress === 'string' ? source.homeAddress : base.homeAddress,
     line: parseBoolean(source.line, base.line),
@@ -220,8 +222,8 @@ function fillPreferences(
     minimap: parseBoolean(source.minimap, base.minimap),
     trees: parseBoolean(source.trees, base.trees),
     measuredColoursOnly: parseBoolean(source.measuredColoursOnly, base.measuredColoursOnly),
-    detailed3d: parseBoolean(source.detailed3d, base.detailed3d),
-    googleTiles: parseBoolean(source.googleTiles, base.googleTiles),
+    detailed3d: base.detailed3d,
+    googleTiles: base.googleTiles,
     reducedMotion: parseBoolean(source.reducedMotion, base.reducedMotion),
     skipMastered: parseBoolean(source.skipMastered, base.skipMastered),
     gamey: parseBoolean(source.gamey, base.gamey),
