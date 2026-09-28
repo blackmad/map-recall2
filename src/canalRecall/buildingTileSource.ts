@@ -185,3 +185,85 @@ export function planSourceDiff(
   }
   return { removeIds, addTiles };
 }
+
+type Ring = ReadonlyArray<readonly [number, number]>;
+
+function pointInRing(lng: number, lat: number, ring: Ring): boolean {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i], [xj, yj] = ring[j];
+    if ((yi > lat) !== (yj > lat) && lng < (xj - xi) * (lat - yi) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+
+function outerRings(geometry: unknown): Ring[] {
+  const shape = geometry as { type?: string; coordinates?: unknown } | null;
+  if (!shape || !Array.isArray(shape.coordinates)) return [];
+  if (shape.type === 'Polygon') return [(shape.coordinates as Ring[])[0]].filter(Boolean);
+  if (shape.type === 'MultiPolygon') return (shape.coordinates as Ring[][]).map(polygon => polygon[0]).filter(Boolean);
+  return [];
+}
+
+/** Metres from a point to a ring's edges, in a local equirectangular frame. */
+function metresToRing(lng: number, lat: number, ring: Ring): number {
+  const kx = 111_320 * Math.cos(lat * Math.PI / 180), ky = 111_320;
+  let best = Infinity;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const ax = (ring[j][0] - lng) * kx, ay = (ring[j][1] - lat) * ky;
+    const bx = (ring[i][0] - lng) * kx, by = (ring[i][1] - lat) * ky;
+    const dx = bx - ax, dy = by - ay;
+    const t = Math.max(0, Math.min(1, -(ax * dx + ay * dy) / (dx * dx + dy * dy || 1)));
+    best = Math.min(best, Math.hypot(ax + dx * t, ay + dy * t));
+  }
+  return best;
+}
+
+export type LandmarkBuildingQuery = {
+  lng: number;
+  lat: number;
+  /** OSM way id, when the landmark itself is mapped as a building way. */
+  wayId?: string | null;
+  /** How far outside a footprint an entrance-node landmark may sit. */
+  maxMetres?: number;
+};
+
+/**
+ * The resident building a landmark card is about (user reports 2026-09-28,
+ * "why don't I see that museum on my screen highlighted?"). In order:
+ * - the landmark's own OSM way, when it is mapped as the building;
+ * - the footprint containing its point (a node inside the building, e.g. Bimhuis);
+ * - the nearest footprint within `maxMetres` (a node at the entrance, on
+ *   the pavement, e.g. the Sexmuseum).
+ * Only 11 of 420 landmark points fell inside a footprint, which is why the
+ * other two steps exist.
+ */
+export function buildingForLandmark(
+  features: readonly BuildingFeature[], query: LandmarkBuildingQuery,
+  idOf: (feature: BuildingFeature) => string,
+): string | null {
+  const { lng, lat, wayId, maxMetres = 10 } = query;
+  const padLng = maxMetres / (111_320 * Math.cos(lat * Math.PI / 180)), padLat = maxMetres / 111_320;
+  let nearest: string | null = null, nearestMetres = maxMetres;
+  for (const feature of features) {
+    const id = idOf(feature);
+    if (wayId && id === wayId) return id;
+    for (const ring of outerRings(feature.geometry)) {
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+      for (const [x, y] of ring) {
+        if (x < minX) minX = x; if (x > maxX) maxX = x;
+        if (y < minY) minY = y; if (y > maxY) maxY = y;
+      }
+      if (lng < minX - padLng || lng > maxX + padLng || lat < minY - padLat || lat > maxY + padLat) continue;
+      if (pointInRing(lng, lat, ring)) {
+        if (!wayId) return id || null;
+        nearest = id; nearestMetres = 0;
+        continue;
+      }
+      if (nearestMetres === 0) continue;
+      const metres = metresToRing(lng, lat, ring);
+      if (metres < nearestMetres) { nearest = id; nearestMetres = metres; }
+    }
+  }
+  return nearest || null;
+}

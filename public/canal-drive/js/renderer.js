@@ -361,13 +361,20 @@ class Renderer {
     let textY = y + 18;
     ctx.font = `700 11px ${surface.fontMono}`;
     ctx.textAlign = 'left';
+    // Centre the capitals, not the em box, in the pill: the labels are all
+    // caps, and a fixed baseline sat them visibly off-centre (user report
+    // 2026-09-28). Measured, because the mono webfont's cap height is not a
+    // fixed fraction of 11 px across fallbacks.
+    const pillTop = textY - 10, pillHeight = 15;
+    const capHeight = ctx.measureText('M').actualBoundingBoxAscent || 8;
+    const badgeBaseline = pillTop + (pillHeight + capHeight) / 2;
     for (const badge of card.badges) {
       const [fill, ink] = badgeColors[badge.kind];
       ctx.fillStyle = fill;
-      roundRect(ctx, x + badge.x, textY - 9, badge.width, 14, 3);
+      roundRect(ctx, x + badge.x, pillTop, badge.width, pillHeight, 3);
       ctx.fill();
       ctx.fillStyle = ink;
-      ctx.fillText(badge.label, x + badge.x + 5, textY);
+      ctx.fillText(badge.label, x + badge.x + 5, badgeBaseline);
     }
     if (card.badges.length) textY += 18;
 

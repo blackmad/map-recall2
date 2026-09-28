@@ -831,11 +831,11 @@
      *  Keizersgracht question. The arrival card still shows the real name. */
     _destinationLabel() {
       const name = this.routeTo?.name || "";
-      const segments = this.track?.segments || [];
-      const key = `${name}|${segments.length}`;
+      const asking = this.quizPromptName || "";
+      const key = `${name}|${asking}`;
       if (this._destinationLabelKey !== key) {
         this._destinationLabelKey = key;
-        this._destinationLabelText = maskSpoiledName(name, segments.map((segment) => segment.name).filter((n) => !!n));
+        this._destinationLabelText = asking ? maskSpoiledName(name, [asking]) : name;
       }
       return this._destinationLabelText || name;
     }

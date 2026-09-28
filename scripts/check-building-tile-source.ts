@@ -8,7 +8,7 @@
  */
 
 import assert from 'node:assert/strict';
-import {
+import { buildingForLandmark,
   BuildingTileCache, BUILDING_TILE_ZOOM, DEFAULT_BUDGET, planSourceDiff, planTiles, tileUrl
 } from '../src/canalRecall/buildingTileSource.js';
 import { BuildingTileStreamer, decorateBuildingFeature, loadVerifiedAppearanceCatalog, loadVerifiedAppearancePriors, loadVerifiedAppearanceRelease } from '../src/canalRecall/buildingTilesBrowser.js';
@@ -221,3 +221,19 @@ try {
 }
 
 process.stdout.write(`Building tile source checks passed (z${BUILDING_TILE_ZOOM}, ${fresh.load.length} tiles for a viewport, budget ${DEFAULT_BUDGET})\n`);
+
+{
+  // Which building a landmark card is about (user report 2026-09-28).
+  const square = (id: string, x: number, y: number, size = 0.0002) => ({
+    type: 'Feature' as const,
+    properties: { id },
+    geometry: { type: 'Polygon', coordinates: [[[x, y], [x + size, y], [x + size, y + size], [x, y + size], [x, y]]] },
+  });
+  const features = [square('w1', 4.9, 52.37), square('w2', 4.9003, 52.37)];
+  const idOf = (feature: { properties: Record<string, unknown> }) => String(feature.properties.id);
+  assert.equal(buildingForLandmark(features, { lng: 4.9001, lat: 52.3701 }, idOf), 'w1', 'a node inside a footprint');
+  assert.equal(buildingForLandmark(features, { lng: 4.9001, lat: 52.3701, wayId: 'w2' }, idOf), 'w2', 'the landmark\'s own way wins');
+  // 0.00005 degrees of latitude past w1's north edge is about 5.6 m: an entrance node.
+  assert.equal(buildingForLandmark(features, { lng: 4.9001, lat: 52.37025 }, idOf), 'w1', 'an entrance node on the pavement');
+  assert.equal(buildingForLandmark(features, { lng: 4.9001, lat: 52.3705 }, idOf), null, 'nothing within 10 m');
+}
