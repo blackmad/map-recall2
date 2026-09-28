@@ -42,10 +42,12 @@ test('the gate ships with the page and agrees with play vs overview zoom', async
   expect(verdicts.activation).toBe(0.32);
 });
 
-test('the setting exists in both panels and reaches the map', async ({ page }) => {
+// The Photoreal setting was retired from both panels (2026-09-28); the map
+// keeps the hook so the overview path stays testable.
+test('the setting is gone from both panels, and the map keeps its hook', async ({ page }) => {
   await loaded(page);
-  await expect(page.locator('#google-tiles')).toHaveCount(1);
-  await expect(page.locator('#live-google-tiles')).toHaveCount(1);
+  await expect(page.locator('#google-tiles')).toHaveCount(0);
+  await expect(page.locator('#live-google-tiles')).toHaveCount(0);
   expect(await page.evaluate(() =>
     typeof (window as any).canalRecallGame?.vectorMap?.setGoogleTilesEnabled)).toBe('function');
 });
