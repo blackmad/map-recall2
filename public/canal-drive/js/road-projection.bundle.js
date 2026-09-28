@@ -30,9 +30,11 @@ var CanalRecallRoadProjection = (() => {
     closestPointOnSegment: () => closestPointOnSegment,
     findStartFinish: () => findStartFinish,
     haversineMetres: () => haversineMetres,
+    isMotorOnlyHighway: () => isMotorOnlyHighway,
     latToTileY: () => latToTileY,
     lngToTileX: () => lngToTileX,
     metresPerDegreeLng: () => metresPerDegreeLng,
+    motorOnlyNames: () => motorOnlyNames,
     projectToWorld: () => projectToWorld,
     segmentBounds: () => segmentBounds,
     simplifyPath: () => simplifyPath,
@@ -55,9 +57,32 @@ var CanalRecallRoadProjection = (() => {
   }
 
   // src/canalRecall/routing/bikeAccess.ts
+  var MOTOR_ONLY_HIGHWAYS = /* @__PURE__ */ new Set(["motorway", "motorway_link", "trunk", "trunk_link"]);
+  function isMotorOnlyHighway(highway) {
+    return MOTOR_ONLY_HIGHWAYS.has(highway || "");
+  }
   var BICYCLE_DENIED = /* @__PURE__ */ new Set(["no", "dismount", "private", "customers"]);
   function isBicycleRestricted(tags) {
     return BICYCLE_DENIED.has(tags.bicycle || "") || tags.bicycleRestricted === "yes";
+  }
+  function motorOnlyNames(features, share = 0.5) {
+    const motor = /* @__PURE__ */ new Map(), total = /* @__PURE__ */ new Map();
+    for (const feature of features) {
+      if (!feature.name) continue;
+      let length = 0;
+      for (const path of feature.paths ?? (feature.path ? [feature.path] : [])) {
+        for (let i = 1; i < path.length; i++) {
+          const dLat = path[i][0] - path[i - 1][0];
+          const dLon = (path[i][1] - path[i - 1][1]) * Math.cos(path[i][0] * Math.PI / 180);
+          length += Math.hypot(dLat, dLon);
+        }
+      }
+      total.set(feature.name, (total.get(feature.name) ?? 0) + length);
+      if (isMotorOnlyHighway(feature.highway)) motor.set(feature.name, (motor.get(feature.name) ?? 0) + length);
+    }
+    const names = /* @__PURE__ */ new Set();
+    for (const [name, length] of motor) if (length > share * (total.get(name) ?? 0)) names.add(name);
+    return names;
   }
 
   // src/canalRecall/osm/roadProjection.ts

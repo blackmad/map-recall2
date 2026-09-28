@@ -41,7 +41,15 @@ class OSMLoader {
       this.cityId = city.id;
       this.transitLoad = null;
       this.transitTransfers = null;
+      // Street mode is cycling: motorways and trunk autowegen (the IJ-tunnel)
+      // are closed to bikes, so they are neither ridden nor asked about.
+      // A name that is mostly motor road (the IJ-tunnel's `primary` ramps)
+      // goes as a whole, or its stubs lead into the portal.
+      const motorNames = travelMode === 'car' && PROJECT.motorOnlyNames ? PROJECT.motorOnlyNames(features) : new Set();
+      const closedToBikes = (feature) => travelMode === 'car'
+        && Boolean((PROJECT.isMotorOnlyHighway && PROJECT.isMotorOnlyHighway(feature.highway)) || motorNames.has(feature.name));
       for (const feature of features) {
+        if (closedToBikes(feature)) continue;
         if (feature.name && feature.center && !this.featureMeta.has(feature.name)) {
           this.featureMeta.set(feature.name, {
             name: feature.name,
@@ -52,6 +60,7 @@ class OSMLoader {
         }
       }
       for (const feature of features) {
+        if (closedToBikes(feature)) continue;
         const paths = feature.paths || (feature.path ? [feature.path] : []);
         for (let pathIndex = 0; pathIndex < paths.length; pathIndex++) {
           const path = paths[pathIndex];
