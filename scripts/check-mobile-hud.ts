@@ -17,7 +17,9 @@ import { hudLayout, hudBand, rectsIntersect, type Rect } from '../src/canalRecal
 import {
   dpadLayout, isInsideDpad, noKeys, stickRadius, stickVector, relativeCommand, absoluteCommand,
   keysScreenAngle, assistedHeading, turnToward, cruiseThrottle, normalizeAngle, STICK_CRUISE_FRACTION,
+  HARD_TURN_SPEED_SCALE, alignmentSpeedScale, turnAroundHeading,
 } from '../src/canalRecall/touchControls.ts';
+import { constrainCarToRoad } from '../src/canalRecall/carRoadGuard.ts';
 
 let checks = 0;
 const ok = (condition: boolean, message: string): void => { assert.ok(condition, message); checks++; };
@@ -337,6 +339,41 @@ const near = (a: number, b: number, eps = 1e-9) => Math.abs(normalizeAngle(a - b
   assert.equal(dpadLayout(desktop), null);
   assert.equal(isInsideDpad({ x: 100, y: 100 }, null), false);
   checks += 2;
+}
+
+// --- Turning round ------------------------------------------------------------
+//
+// Named regression (user report 2026-09-28, "mobile controls are better but
+// still an issue, can't really turn around"). Measured on the iPhone profile:
+// full left for 3 s turned 12° and locked ~15° off the street, because a
+// cruise-speed turn reached the kerb before 90° and the road guard eased the
+// heading straight every frame; pulling back reversed in circles at -30 px/s.
+{
+  const stick = (x: number, y: number) => ({ x, y, magnitude: Math.hypot(x, y), screenAngle: Math.atan2(y, x) });
+  const straight = relativeCommand(stick(0, -0.1));
+  const fullLock = relativeCommand(stick(-1, 0));
+  ok(fullLock.speedFraction <= straight.speedFraction * (HARD_TURN_SPEED_SCALE + 0.01),
+    'a full-lock turn slows to a crawl so it fits inside the street');
+  ok(relativeCommand(stick(-0.35, -0.1)).speedFraction > straight.speedFraction * 0.95,
+    'a gentle curve keeps its speed');
+  const back = relativeCommand(stick(0, 1));
+  ok(back.turnAround && back.steer === 0 && back.brake > 0, 'straight back brakes and asks to turn round');
+  ok(!relativeCommand(stick(-0.6, 0.8)).turnAround, 'back-and-sideways is a braking turn, not a turn-round');
+  ok(alignmentSpeedScale(0) === 1 && alignmentSpeedScale(Math.PI) < 0.2,
+    'absolute mode crawls while pointing back down the street');
+  ok(Math.abs(normalizeAngle(turnAroundHeading(0.3, 0.3) - (0.3 + Math.PI))) < 1e-9,
+    'turn-round heads straight back along the street');
+
+  // The guard keeps the bike on the road either way, but only eases the
+  // heading when the rider is not steering hard.
+  const road = { x: 0, y: 0, dist: 30, width: 10, angle: 0 };
+  const car = () => ({ x: 0, y: 30, angle: 1.2, vx: 0, vy: 40, speed: 40 });
+  const eased = car();
+  constrainCarToRoad(eased, { x: 0, y: 8 }, road, road, { edgeTolerance: 4 });
+  const held = car();
+  constrainCarToRoad(held, { x: 0, y: 8 }, road, road, { edgeTolerance: 4, holdHeading: true });
+  ok(eased.angle < 1.2, 'without a hard steer the guard eases the heading along the street');
+  ok(held.angle === 1.2 && held.y === 8, 'with one it keeps the heading and still blocks the step off the road');
 }
 
 process.stdout.write(`Mobile HUD checks passed (${scenarios} layout scenarios, ${checks} assertions).\n`);

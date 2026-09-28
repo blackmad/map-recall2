@@ -50,6 +50,13 @@ Home-base routes already grow an expanding learning radius from the address
 
 ## P2 — Weight and reach
 
+**Two e2e specs were already red on `main` (found 2026-09-28).**
+`tests/e2e/driving-harness.spec.ts` gets 41 of 120 planned drives to arrive
+(the bar is 45%), with or without the day's control changes.
+`tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
+or facades resident, probably because it needs locally generated study data.
+Diagnose both before trusting either as a gate.
+
 **Wall colour/material: finish Jordaan + Da Costabuurt evidence and local-model evaluation.**
 The colour/texture focus supersedes new roof work for this appearance batch.
 See `docs/plans/district-rectification-expansion.md` and

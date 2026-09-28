@@ -365,3 +365,49 @@ test('settings and help stay tucked while riding until the map is tapped', async
   await expect(utility).not.toHaveClass(/tucked/);
   await expect(utility).toHaveClass(/tucked/, { timeout: 6000 });
 });
+
+// Named regression (user report 2026-09-28, "can't really turn around").
+// Measured before: full left for 3 s turned 12° and locked off the street;
+// pulling back reversed in circles. Now full lock turns right round within
+// the street, and straight back stops and swings the bike 180° without
+// ever rolling backwards.
+test('relative stick: full lock turns right round, and pulling back turns about without reversing', async ({ page }) => {
+  await drive(page);
+  // A question opening mid-turn freezes the bike; this is about steering.
+  await page.evaluate(() => {
+    const game = window.canalRecallGame as unknown as Record<string, unknown>;
+    game._updateCanalQuiz = () => {};
+    game._updateBridgeQuiz = () => {};
+  });
+  const cdp = await page.context().newCDPSession(page);
+  const origin = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const pad = game.input.dpad!;
+    const rect = game.canvas.getBoundingClientRect();
+    const scale = rect.width / CANVAS_W;
+    const ui = (window as unknown as { CanalRecallUi: { stickRadius: (p: unknown) => number } }).CanalRecallUi;
+    return { x: rect.left + pad.cx * scale, y: rect.top + pad.cy * scale, r: ui.stickRadius(pad) * scale };
+  });
+  const heading = () => page.evaluate(() => (window.canalRecallGame.player as unknown as { angle: number }).angle);
+  const speed = () => page.evaluate(() => (window.canalRecallGame.player as unknown as { speed: number }).speed);
+  const hold = async (dx: number, dy: number, ms: number) => {
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: origin.x, y: origin.y, id: 1 }] });
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: origin.x + dx * origin.r, y: origin.y + dy * origin.r, id: 1 }] });
+    let turned = 0, last = await heading(), slowest = Infinity;
+    for (let t = 0; t < ms; t += 100) {
+      await page.waitForTimeout(100);
+      const now = await heading();
+      turned += Math.atan2(Math.sin(now - last), Math.cos(now - last));
+      last = now;
+      slowest = Math.min(slowest, await speed());
+    }
+    await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+    return { turned: Math.abs(turned) * 180 / Math.PI, slowest };
+  };
+  await hold(0, -0.6, 1500); // get moving
+  const lock = await hold(-1, 0, 3500);
+  expect(lock.turned, 'full lock keeps turning instead of locking to the street').toBeGreaterThan(150);
+  const about = await hold(0, 1, 2500);
+  expect(about.turned, 'straight back swings the bike round').toBeGreaterThan(120);
+  expect(about.slowest, 'and never rolls it backwards').toBeGreaterThanOrEqual(0);
+});

@@ -14,6 +14,10 @@ class PlayerCar extends Car {
     const ui = window.CanalRecallUi;
     this._headingTarget = null;
     this._cruiseFraction = null;
+    this._stickBraking = false;
+    this._stickHardSteer = false;
+    const wantedTurnAround = this._turnAroundHeld;
+    this._turnAroundHeld = false;
     this.handbrake = input.isDown('Space');
     const keyboard = {
       ArrowUp: input.isDown('ArrowUp') || input.isDown('KeyW'),
@@ -49,8 +53,15 @@ class PlayerCar extends Car {
       this.brake = command.brake;
       this.throttle = 0;
       this._cruiseFraction = command.brake > 0 ? null : command.speedFraction;
+      this._stickBraking = command.brake > 0;
+      this._stickHardSteer = Math.abs(command.steer) > 0.6;
+      // One swing per pull: the stick must come off "back" to arm another.
+      this._turnAroundHeld = command.turnAround;
+      if (command.turnAround && !wantedTurnAround) this._turnAroundArmed = true;
+      if (!command.turnAround) this._turnAroundArmed = false;
       return;
     }
+    this._turnAroundArmed = false;
     this.throttle = keyboard.ArrowUp ? 1 : 0;
     this.brake = keyboard.ArrowDown ? 1 : 0;
     this.steerInput = 0;
@@ -60,18 +71,37 @@ class PlayerCar extends Car {
 
   update(dt, track) {
     const ui = window.CanalRecallUi;
+    const nearestRoad = (angle) => (track && track.isOpenTrack && track.getNearestRoad
+      ? track.getNearestRoad(this.x, this.y, angle)
+      : null);
+    // Relative stick pulled straight back and held: once slow, swing round
+    // along the street on the spot (see touchControls.relativeCommand).
+    if (this._turnAroundArmed && this._uTurnHeading == null && Math.abs(this.speed) < ui.TURN_AROUND_MAX_SPEED) {
+      const road = nearestRoad(this.angle);
+      this._uTurnHeading = ui.turnAroundHeading(this.angle, road ? road.angle : null);
+      this._turnAroundArmed = false;
+    }
+    if (this._uTurnHeading != null) {
+      this.angle = ui.turnToward(this.angle, this._uTurnHeading, ui.TURN_AROUND_RATE * dt);
+      this.speed = 0; this.vx = 0; this.vy = 0; this.throttle = 0; this.steerInput = 0;
+      if (Math.abs(ui.normalizeAngle(this._uTurnHeading - this.angle)) < 1e-3) this._uTurnHeading = null;
+    }
+    let cruise = this._cruiseFraction;
     if (this._headingTarget != null) {
       // Follow the street/canal when the pointed direction is close to it, so
       // a slanted street does not mean steering into the kerb.
-      const road = track && track.isOpenTrack && track.getNearestRoad
-        ? track.getNearestRoad(this.x, this.y, this._headingTarget)
-        : null;
+      const road = nearestRoad(this._headingTarget);
       const heading = ui.assistedHeading(this._headingTarget, road ? road.angle : null);
+      // Pointing back down the street turns on the spot instead of arcing
+      // into the kerb, where the road guard would straighten it again.
+      if (cruise != null) cruise *= ui.alignmentSpeedScale(heading - this.angle);
       this.angle = ui.turnToward(this.angle, heading, ui.ABSOLUTE_TURN_RATE * dt);
     }
-    if (this._cruiseFraction != null) {
-      this.throttle = ui.cruiseThrottle(this.speed, this.maxSpeed * this._cruiseFraction, this.maxSpeed);
+    if (cruise != null) {
+      this.throttle = ui.cruiseThrottle(this.speed, this.maxSpeed * cruise, this.maxSpeed);
     }
     super.update(dt, track);
+    // Stick braking stops; it does not reverse a bicycle down the street.
+    if (this._stickBraking && this.speed < 0) { this.speed = 0; this.vx = 0; this.vy = 0; }
   }
 }
