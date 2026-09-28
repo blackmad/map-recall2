@@ -35,7 +35,9 @@ class Camera {
     const wantedLookahead = this.reducedMotion ? 0 : CAMERA_LOOKAHEAD * speedRatio;
     this._lookahead += (wantedLookahead - this._lookahead) * CAMERA_LOOKAHEAD_SMOOTHING;
     const cockpitLead = typeof COCKPIT_LOOKAHEAD === 'number' ? COCKPIT_LOOKAHEAD : 160;
-    const lookahead = (this.viewMode === 'cockpit' ? cockpitLead : 0) + this._lookahead;
+    const chaseLead = typeof CHASE_LOOKAHEAD === 'number' ? CHASE_LOOKAHEAD : 0;
+    const lead = this.viewMode === 'cockpit' ? cockpitLead : this.viewMode === 'chase' ? chaseLead : 0;
+    const lookahead = lead + this._lookahead;
     const tx = this.detached ? this.anchorX : target.x + Math.cos(target.angle) * lookahead;
     const ty = this.detached ? this.anchorY : target.y + Math.sin(target.angle) * lookahead;
     this.x += (tx - this.x) * this.smoothing;
