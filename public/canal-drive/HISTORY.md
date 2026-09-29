@@ -1,12 +1,13 @@
 # Canal Recall — what is built
 
-## 2026-09-29 — due-for-review streets are violet on the minimap
+## 2026-09-29 — the minimap no longer draws due-for-review streets
 
-User report: "what is the orange and red in the minimap?". Due-for-review
-streets were copper, which read as a second route beside the terracotta route
-and finish. They are now violet at 1.1 px, a hue nothing else on the overview
-uses. Many parallel ways of one name (Prins Hendrikkade) had stacked into a
-heavy copper blob.
+User reports: "what is the orange and red in the minimap?", then "just discard
+the orange in the minimap". Due-for-review streets were copper, which read as a
+second route beside the terracotta route and finish. Many parallel ways of one
+name (Prins Hendrikkade) stacked into a heavy blob. A violet recolour was tried
+first; the layer is now simply not drawn. `cityOverview.ts` still builds it,
+so the schedule can surface elsewhere.
 
 ## 2026-09-29 — drop duplicate buildings instead of insetting them; roof lids sit on the wall
 

@@ -386,15 +386,10 @@ export function drawOverviewStatic(
   ctx.lineWidth = 1.4;
   strokeLayer(ctx, layers.masteredWater, projection);
 
-  // Due ink sits above mastery bands so overdue places stay visible even when
-  // they would otherwise paint as known/mastered green.
-  ctx.strokeStyle = colors.reviewDueNetwork;
-  ctx.lineWidth = 1.1;
-  strokeLayer(ctx, layers.reviewDueNetwork, projection);
-
-  ctx.strokeStyle = colors.reviewDueWater;
-  ctx.lineWidth = 1.2;
-  strokeLayer(ctx, layers.reviewDueWater, projection);
+  // Due-for-review streets are not drawn: the orange/violet ink read as a
+  // second route and crowded the overview (user report 2026-09-29, "just
+  // discard the orange in the minimap"). The layers are still built so the
+  // schedule can be shown elsewhere.
 
   ctx.strokeStyle = colors.area;
   ctx.lineWidth = 0.8;
