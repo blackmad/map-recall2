@@ -4,6 +4,9 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-panel' | 'landmark-panel-dutch'
+  // Cards with no photo that arrive from data rather than Wikipedia: a named
+  // bridge's origin (municipal register) and a clicked building's facts.
+  | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
   // Phone states. `touch-*` force the compact layout on a pointer device,
   // which is the only way to see the d-pad and the portrait card stack in the
   // workbench; the viewport addon alone just makes a small desktop window.
@@ -168,6 +171,24 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           photo.onload = () => { game._landmarkImages.set('theater', photo); game._renderFinish(); };
           photo.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#41603f"/><rect y="200" width="400" height="100" fill="#6d8a70"/><circle cx="200" cy="120" r="70" fill="#8fb08a"/></svg>')}`;
           game._renderFinish();
+          return;
+        }
+        if (scenario.startsWith('landmark-card-bridge') || scenario.startsWith('landmark-card-building')) {
+          game._landmarkNotice = scenario.startsWith('landmark-card-bridge')
+            ? {
+              id: 'bridge-knowledge:magere brug', name: 'Magere Brug', type: 'bridge', extractLang: 'en',
+              detail: 'Around 1670, a ferry bridge was built over the Amstel, which was so narrow that it was only suitable for pedestrians.',
+              longDetail: 'Around 1670, a ferry bridge was built over the Amstel, which was so narrow that it was only suitable for pedestrians. '
+                + 'Although this bridge was officially called the Kerkstraatbrug, it soon became known as the Magere Brug.',
+            }
+            : {
+              id: 'clicked-NL.IMBAG.Pand.0363100012169999', name: 'Built 1665', type: 'building',
+              detail: 'A warehouse, built in 1665, in the Dutch Golden Age. A national monument (rijksmonument). About 13 m tall, some 4 storeys.',
+            };
+          game._landmarkNoticeAlpha = 1;
+          game.currentNeighborhood = 'Grachtengordel';
+          game._syncHudLayout?.();
+          game._renderLandmarkNotice();
           return;
         }
         if (scenario.startsWith('landmark')) {
@@ -376,6 +397,18 @@ export const LandmarkPanelUntranslated: Story = { args: { scenario: 'landmark-pa
 export const LandmarkPanelMobile: Story = {
   args: { scenario: 'landmark-panel' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
+/** A correctly named bridge tells why it is called that (no photo). */
+export const BridgeOriginCard: Story = { args: { scenario: 'landmark-card-bridge' } };
+/** A clicked ordinary building: year, period, type, listing and size. */
+export const BuildingFactsCard: Story = { args: { scenario: 'landmark-card-building' } };
+export const PortraitBridgeOriginCard: Story = {
+  args: { scenario: 'landmark-card-bridge-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+export const PortraitBuildingFactsCard: Story = {
+  args: { scenario: 'landmark-card-building-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 export const LandmarkCardMobile: Story = {
   args: { scenario: 'landmark-card' },

@@ -59,6 +59,18 @@ const stub = (text: string, font: string) => {
   assert.ok(long.startsWith(bare.lines[0]), 'wrapping preserves the text in order');
   assert.equal(bare.truncated, true, 'a body cut to three lines says so');
   assert.equal(photo.truncated, true, 'even four lines cannot hold this body');
+  assert.ok(bare.lines[bare.lines.length - 1].endsWith('…'), 'a cut with no sentence end in reach ends on a word with …');
+}
+
+// --- A cut card ends on a sentence, never mid-clause ------------------------
+{
+  // Magere Brug on a phone ended "…officially called the Kerkstraatbrug,".
+  const body = 'Around 1670, a ferry bridge was built over the Amstel, which was so narrow '
+    + 'that it was only suitable for pedestrians. Although this bridge was officially called '
+    + 'the Kerkstraatbrug, it soon became known as the Magere Brug, and the name stuck for good.';
+  const card = measureLandmarkCard({ name: 'Magere Brug', body }, stub);
+  assert.equal(card.truncated, true);
+  assert.ok(card.lines[card.lines.length - 1].endsWith('pedestrians.'), JSON.stringify(card.lines));
 }
 
 // --- Only a cut card advertises the expanded panel --------------------------
