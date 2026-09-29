@@ -509,6 +509,17 @@ class GameRouteRuntime {
    * whose line passes the most of them, inside the pattern's usual range.
    * Null falls through to the ordinary pickers. See routeSelection.pickReviewRoute.
    */
+  /** Names due for review in this city (streets, canals, bridges; not stops). */
+  _dueReviewNames() {
+    if (!this.recall || typeof this.recall.dueReviews !== 'function') return null;
+    const cityId = this.cityId || 'amsterdam';
+    const now = Date.now();
+    const names = this.recall.dueReviews()
+      .filter(place => place.cityId === cityId && place.dueAt <= now && place.type !== 'stop' && place.name)
+      .map(place => place.name);
+    return names.length ? new Set(names) : null;
+  }
+
   _pickReviewRide(choices, fromOverride = null) {
     const Route = window.CanalRecallRoute;
     if (!Route || !Route.pickReviewRoute || !this._prefs().skipMastered || this.travelMode === 'transit') return null;
@@ -1194,6 +1205,9 @@ class GameRouteRuntime {
           this.travelMode === 'transit',
         );
       }
+      // A review ride routes along the names it was chosen for; see
+      // roadGraph.planLearningRoadRoute's `dueNames`.
+      this.track._reviewDueNames = this._reviewRoute ? this._dueReviewNames() : null;
       this._routeLearningPlan = this.track.planRoute(start, finish);
       this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : [];
       if (!this.routePath || this.routePath.length < 2) {
@@ -1225,6 +1239,8 @@ class GameRouteRuntime {
           console.warn('Route not found between start and finish — route line will not display');
         }
       }
+      // The briefing promises only the due names the planned path rides.
+      if (this._reviewRoute) this._reviewRoute.dueOnPath = (this._routeLearningPlan && this._routeLearningPlan.dueNamesOnPath) || [];
       this._plannedRouteLengthPx = 0;
       this._plannedRouteLengthPx = this._idealRouteLength();
       this.trackMode = TRACK_MODE_POINT_TO_POINT;

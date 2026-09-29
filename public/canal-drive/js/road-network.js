@@ -381,6 +381,8 @@ class RoadNetwork {
       familiarityPenalty: 0.18,
       maxDetourRatio: 0.12,
       homeBias: this._homeBias || undefined,
+      // Review rides ride the due streets instead of avoiding them as familiar.
+      dueNames: this._reviewDueNames || undefined,
     });
   }
 

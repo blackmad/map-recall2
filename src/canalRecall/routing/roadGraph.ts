@@ -64,6 +64,16 @@ export type LearningRouteOptions<TMetadata = unknown> = Readonly<{
     radius: number;
     outsidePenalty?: number;
   }>;
+  /**
+   * A review ride: names due for review. Their edges are discounted by
+   * `dueDiscount` (default 35%) instead of paying the familiarity penalty,
+   * which would otherwise steer a review ride away from exactly the streets
+   * it was chosen to review. The detour cap widens to `reviewDetourRatio`
+   * (default 25%) when any are given.
+   */
+  dueNames?: ReadonlySet<string>;
+  dueDiscount?: number;
+  reviewDetourRatio?: number;
 }>;
 
 export type LearningRoutePlan = Readonly<{
@@ -74,6 +84,8 @@ export type LearningRoutePlan = Readonly<{
   shortestDistance: number;
   detourRatio: number;
   usedLearningBias: boolean;
+  /** Due names the chosen path rides along (review rides; empty otherwise). */
+  dueNamesOnPath: readonly string[];
 }>;
 
 export type ShortestPathOptions<TMetadata = unknown> = Readonly<{
@@ -422,7 +434,9 @@ export function planLearningRoadRoute<TMetadata>(
   options: LearningRouteOptions<TMetadata>,
 ): LearningRoutePlan | null {
   const familiarityPenalty = options.familiarityPenalty ?? 0.18;
-  const maxDetourRatio = options.maxDetourRatio ?? 0.12;
+  const dueNames = options.dueNames && options.dueNames.size ? options.dueNames : null;
+  const dueDiscount = Math.max(0, Math.min(0.9, options.dueDiscount ?? 0.35));
+  const maxDetourRatio = dueNames ? (options.reviewDetourRatio ?? 0.25) : (options.maxDetourRatio ?? 0.12);
   if (!(familiarityPenalty >= 0) || !(maxDetourRatio >= 0)) {
     throw new RangeError('Learning-route bounds must be non-negative');
   }
@@ -448,10 +462,13 @@ export function planLearningRoadRoute<TMetadata>(
     const dist = Math.hypot(midX - homeBias.x, midY - homeBias.y);
     return Math.max(0, Math.min(1, dist / homeBias.radius - 1));
   };
+  const isDue = (edge: RoadGraphEdge<TMetadata>): boolean =>
+    !!dueNames && options.namesForEdge(edge).some(name => name && dueNames.has(name));
   const preferred = shortestRoadPaths(graph, startPoint, {
     stopAt: finish,
-    edgeCost: ({ edge, distance, from, to }) =>
-      distance * (1 + familiarityPenalty * mastery(edge) + outsidePenalty * homeOutside(from, to)),
+    edgeCost: ({ edge, distance, from, to }) => isDue(edge)
+      ? distance * (1 - dueDiscount + outsidePenalty * homeOutside(from, to))
+      : distance * (1 + familiarityPenalty * mastery(edge) + outsidePenalty * homeOutside(from, to)),
   });
   const shortestNodes = nodePath(shortest.previous, finish);
   const preferredNodes = preferred?.distances.has(finish.key) ? nodePath(preferred.previous, finish) : shortestNodes;
@@ -463,9 +480,11 @@ export function planLearningRoadRoute<TMetadata>(
   const selected = withinCap ? preferredNodes : shortestNodes;
   const physicalDistance = withinCap ? preferredDistance : shortestDistance;
   let newDistance = 0;
+  const dueOnPath = new Set<string>();
   for (let index = 1; index < selected.length; index++) {
     const edge = edgeBetween(selected[index - 1], selected[index]);
     if (edge && options.namesForEdge(edge).some(Boolean) && mastery(edge) < 0.5) newDistance += edge.distance;
+    if (edge && dueNames) for (const name of options.namesForEdge(edge)) if (name && dueNames.has(name)) dueOnPath.add(name);
   }
   return {
     path: selected.map(({ x, y }) => ({ x, y })),
@@ -474,5 +493,6 @@ export function planLearningRoadRoute<TMetadata>(
     shortestDistance,
     detourRatio: shortestDistance > 0 ? physicalDistance / shortestDistance - 1 : 0,
     usedLearningBias: withinCap && selected.some((node, index) => node !== shortestNodes[index]),
+    dueNamesOnPath: [...dueOnPath].sort(),
   };
 }

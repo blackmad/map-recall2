@@ -42,8 +42,9 @@ Wikipedia evidence.
 **6. Due-aware “where next” routing.**
 The thin slice shipped 2026-09-29 (see HISTORY). With Plan review on, a ride
 runs between the landmarks whose line passes the most due names. Still open:
-- a named-route check that the *planned path* (not only the straight line)
-  passes the due names, and a detour cap measured on it;
+- choosing the *pair* by planned paths too: the pick still scores the
+  straight line, and only then does the router ride the due names within its
+  25% cap (see HISTORY, 2026-09-30);
 - choosing the review pair when `routePois` is thin (outer districts),
   perhaps with street midpoints as endpoints;
 - re-enabling cold-open review now that a location-honest route exists

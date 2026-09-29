@@ -51,11 +51,73 @@ test('plan review picks a ride past the names that are due', async ({ page }, te
       const t = Math.max(0, Math.min(1, (px * bx + py * by) / (bx * bx + by * by)));
       return Math.hypot(px - bx * t, py - by * t);
     });
-    return { from: a.id, to: b.id, offLine, dueNear: game._reviewRoute.dueNear, tease: game._composeMissionBrief().tease };
+    return { from: a.id, to: b.id, offLine, dueNear: game._reviewRoute.dueNear };
   });
   // Landmarks are dense in the centre, so another pair may pass the same
   // names; what matters is that every due name is on the chosen line.
   for (const km of result.offLine) expect(km, JSON.stringify({ planted, result })).toBeLessThanOrEqual(0.2);
   expect(result.dueNear).toHaveLength(3);
-  expect(result.tease).toBe('Review ride: 3 overdue names on the way');
+
+  // Once the path is planned, the briefing promises only the due names it
+  // actually rides (2026-09-30). These planted names are on no real street,
+  // so an honest briefing makes no review promise at all.
+  await expect.poll(() => page.evaluate(() => Array.isArray((window as any).canalRecallGame._reviewRoute?.dueOnPath)), { timeout: 90000 }).toBe(true);
+  const planned = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    return { dueOnPath: game._reviewRoute.dueOnPath, tease: game._composeMissionBrief().tease || '' };
+  });
+  expect(planned.dueOnPath).toEqual([]);
+  expect(planned.tease).not.toContain('Review ride');
+});
+
+// The router rides the due names: a real street beside the planned path,
+// once due, pulls the path onto it when the detour is within the cap.
+test('a review ride routes along a due street it would otherwise avoid', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'route choice; one project is enough');
+  test.setTimeout(150000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame))).toBe(true);
+  await setHiddenSelect(page, 'travel-mode', 'car');
+  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
+  await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.player?.x)), { timeout: 90000 }).toBe(true);
+  const result = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    const track = game.track;
+    const start = track.startPoint, finish = track.finishPoint;
+    const namesOn = (path: Array<{ x: number; y: number }>) => {
+      const names = new Set<string>();
+      for (let i = 1; i < path.length; i++) {
+        const name = track.getRoadName((path[i - 1].x + path[i].x) / 2, (path[i - 1].y + path[i].y) / 2,
+          Math.atan2(path[i].y - path[i - 1].y, path[i].x - path[i - 1].x));
+        if (name) names.add(name);
+      }
+      return names;
+    };
+    track._reviewDueNames = null;
+    const plain = track.planRoute(start, finish);
+    const onPlain = namesOn(plain.path);
+    // Candidate due streets: named segments near the plain path, not on it.
+    const candidates = new Set<string>();
+    for (const segment of track.segments) {
+      const name = segment.name || segment.tags?.name;
+      if (!name || onPlain.has(name)) continue;
+      const near = segment.points?.some((p: any) => plain.path.some((q: any) => Math.hypot(p.x - q.x, p.y - q.y) < 120));
+      if (near) candidates.add(name);
+    }
+    for (const name of candidates) {
+      track._reviewDueNames = new Set([name]);
+      const review = track.planRoute(start, finish);
+      if (review.dueNamesOnPath.includes(name)) {
+        track._reviewDueNames = null;
+        return { name, rode: true, detour: review.physicalDistance / plain.physicalDistance, tried: candidates.size };
+      }
+    }
+    track._reviewDueNames = null;
+    return { name: null, rode: false, detour: 0, tried: candidates.size };
+  });
+  expect(result.tried, 'there are streets beside the path to try').toBeGreaterThan(0);
+  expect(result.rode, JSON.stringify(result)).toBe(true);
+  // Capped against the shortest path, which the plain plan is no shorter than.
+  expect(result.detour).toBeLessThanOrEqual(1.25 + 1e-6);
 });
