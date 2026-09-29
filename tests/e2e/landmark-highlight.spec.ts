@@ -36,3 +36,27 @@ test('drive-by landmark cards light up their building', async ({ page }, testInf
   // Plaques and monuments have no building and keep the locator dot.
   expect(result.highlighted / result.loaded, JSON.stringify(result)).toBeGreaterThan(0.6);
 });
+
+// Named regression (user report 2026-09-29, "why is this building highlighted
+// yellow when no card is onscreen"). A question opening closed the card but
+// left its building yellow; only the fade-out path cleared the highlight.
+test('closing a landmark card any way clears its building', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'map lookup; one project is enough');
+  test.setTimeout(200000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
+  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._completeCityHasBuildings), { timeout: 60000 }).toBe(true);
+  const result = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame, map = game.vectorMap;
+    for (const landmark of game.landmarks) {
+      map.setActiveLandmark(landmark);
+      const target = map._highlightedBuilding;
+      if (!target || !map.map.getFeatureState(target).highlighted) continue;
+      game._landmarkNotice = { ...landmark };
+      game._clearLandmarkNotice();
+      return { found: true, still: Boolean(map.map.getFeatureState(target).highlighted), target: map._highlightedBuilding };
+    }
+    return { found: false };
+  });
+  expect(result.found, 'a landmark with a streamed building').toBe(true);
+  expect(result.still, JSON.stringify(result)).toBe(false);
+});

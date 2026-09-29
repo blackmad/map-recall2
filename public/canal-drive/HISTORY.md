@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — a closed card takes its yellow building with it
+
+User report: "why is this building highlighted yellow when no card is
+onscreen". The card-close path that faded out cleared the building
+highlight, but the others did not: a question opening, or a new route,
+closed the card and left its building yellow. `_clearLandmarkNotice` now
+clears the highlight itself. Pinned in `tests/e2e/landmark-highlight.spec.ts`.
+
 ## 2026-09-28 — one highlight line across bridge forks
 
 User report: "too many lines" (screenshot: a bridge with parallel highlight

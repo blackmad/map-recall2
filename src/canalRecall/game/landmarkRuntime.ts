@@ -161,6 +161,11 @@ export class GameLandmarkRuntime {
   }
 
   _clearLandmarkNotice(): void {
+    // The yellow building belongs to the card: closing the card any way at
+    // all (a question opening, a new route) takes the highlight down with it.
+    // Only the fade-out path cleared it, so a building stayed yellow with no
+    // card on screen (user report 2026-09-29).
+    if (this._landmarkNotice) this.vectorMap?.setActiveLandmark(null);
     this._landmarkNotice = null;
     this._landmarkNoticeState = openNotice();
     this._landmarkNoticeAlpha = 0;
@@ -372,7 +377,6 @@ export class GameLandmarkRuntime {
       this._landmarkNoticeAlpha = visibility.alpha;
       if (!visibility.visible) {
         this._clearLandmarkNotice();
-        this.vectorMap.setActiveLandmark(null);
       }
     }
     if (!this.player) return;
