@@ -51,6 +51,7 @@ const CHECKS = [
   'check:enamel-css',
   'test:orientation-pois',
   'test:cycle-tracks',
+  'test:own-pois',
   'test:photoreal-gate',
   'test:canal-preferences',
   'test:transit-extract',

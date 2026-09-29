@@ -89,6 +89,7 @@ class VectorBasemap {
       this._ensureTreeLayers();
       this._ensureBuildingAppearanceLayers();
       this._ensurePlaceLayers();
+      this._ensureOwnPoiLayers();
       this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
       this.setBrandedPois(this._rawBrandedPois || this._pendingBrandedPois);
       this._applyBasemapSpoilerFilter();
@@ -129,6 +130,7 @@ class VectorBasemap {
   setExtractRoot(path) {
     if (!path || path === this._extractPath) return;
     this._extractPath = path;
+    if (this.map && this.map.getSource('own-pois')) this._loadOwnPois();
     // Drop the previous city's tile streamer so the next probe uses the new root.
     if (this._completeCity && typeof this._completeCity.dispose === 'function') {
       try { this._completeCity.dispose(); } catch (_) { /* ignore */ }
@@ -931,7 +933,8 @@ class VectorBasemap {
       this._poiLayerIds = [...basemap, 'poi-dots', 'poi-labels', 'brand-poi-dots', 'brand-poi-icons', 'brand-poi-labels', 'local-food-labels',
         // The active landmark's locator too: under the extrusions, the dot
         // for a tree beside a building was hidden by that building.
-        'active-landmark-line', 'active-landmark-point'];
+        'active-landmark-line', 'active-landmark-point',
+        ...((lib && lib.OWN_POI_BANDS) || []).flatMap(band => Object.values(lib.ownPoiLayerIds(band)))];
       // Building layers are re-created later (themes, detailed buildings), so
       // keep checking. Once the order is right the check moves nothing, so
       // the styledata its own moves fire cannot loop.
@@ -980,6 +983,14 @@ class VectorBasemap {
         this.map.setPaintProperty(id, name, translate);
       }
     }
+    // Our own POIs know their building's height band: each band is lifted to
+    // its own roofline, and parks, markets and places outdoors stay down.
+    for (const band of lib.OWN_POI_BANDS || []) {
+      const { dots, labels } = lib.ownPoiLayerIds(band);
+      const lift = lib.roofLiftTranslate(pitch, latitude, lib.HEIGHT_BAND_METRES[band]);
+      if (this.map.getLayer(dots)) this.map.setPaintProperty(dots, 'circle-translate', lift);
+      if (this.map.getLayer(labels)) this.map.setPaintProperty(labels, 'text-translate', lift);
+    }
   }
 
   _loadBrandIcon(id, url) {
@@ -1015,6 +1026,58 @@ class VectorBasemap {
     this._applyBasemapSpoilerFilter();
     if (this._pendingPlaces) this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
     if (this._rawBrandedPois) this.setBrandedPois(this._rawBrandedPois);
+    this._applyOwnPois();
+  }
+
+  /** The game's own POI layer (`orientation-pois.json`, built by
+   *  `scripts/build-orientation-pois.ts`): categories and density we choose,
+   *  names screened for spoilers before they draw, and each label on its
+   *  building's roofline band. Where a city has no file, the basemap's POI
+   *  layer stays (user requests 2026-09-29). */
+  _ensureOwnPoiLayers() {
+    const lib = window.CanalRecallOrientationPois;
+    if (!lib || !lib.ownPoiFeatures || this.map.getSource('own-pois')) return;
+    this.map.addSource('own-pois', { type: 'geojson', data: { type: 'FeatureCollection', features: [] }, attribution: 'POIs © OpenStreetMap contributors' });
+    for (const band of lib.OWN_POI_BANDS) {
+      const { dots, labels } = lib.ownPoiLayerIds(band);
+      const filter = ['==', ['get', 'band'], band];
+      this.map.addLayer({ id: dots, type: 'circle', source: 'own-pois', minzoom: 16, filter, paint: {
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 16, 2.5, 18, 4], 'circle-color': ['get', 'colour'],
+        'circle-stroke-color': '#FFFFFF', 'circle-stroke-width': 1.2, 'circle-opacity': 0.9, 'circle-translate-anchor': 'viewport' } });
+      this.map.addLayer({ id: labels, type: 'symbol', source: 'own-pois', minzoom: 16.5, filter, layout: {
+        'text-field': ['get', 'name'], 'text-font': ['Noto Sans Regular'],
+        'text-size': ['interpolate', ['linear'], ['zoom'], 16.5, 10, 18, 12], 'text-anchor': 'top', 'text-offset': [0, 0.45],
+        'text-max-width': 8, 'text-allow-overlap': false, 'symbol-sort-key': ['-', 200, ['get', 'rank']] }, paint: {
+        'text-color': '#34424d', 'text-halo-color': 'rgba(255,255,255,0.92)', 'text-halo-width': 1.6, 'text-translate-anchor': 'viewport' } });
+    }
+    this._loadOwnPois();
+  }
+
+  async _loadOwnPois() {
+    const url = this._extractFile('orientation-pois.json');
+    if (this._ownPoiUrl === url) return;
+    this._ownPoiUrl = url;
+    let file = null;
+    try {
+      const response = await fetch(url);
+      // A history fallback can answer a missing file with index.html and 200.
+      if (response.ok) file = await response.json().catch(() => null);
+    } catch (_) { /* no file: the basemap keeps the job */ }
+    if (this._ownPoiUrl !== url) return;
+    this._ownPoiFile = file && Array.isArray(file.pois) ? file : null;
+    this._applyOwnPois();
+  }
+
+  _applyOwnPois() {
+    const lib = window.CanalRecallOrientationPois;
+    const source = this.map && this.map.getSource('own-pois');
+    if (!lib || !lib.ownPoiFeatures || !source) return;
+    const data = lib.ownPoiFeatures(this._ownPoiFile, name => this._spoils(name));
+    source.setData(data);
+    this._ownPoiData = data;
+    this._ownPoisActive = data.features.length > 0;
+    this._poiLiftPitch = null;
+    this._setBasemapOrientationPoisVisible(!this._quizQuietMap);
   }
 
   _spoils(name) {
@@ -1503,8 +1566,19 @@ class VectorBasemap {
       && window.CanalRecallOrientationPois.basemapOrientationPoiLayerIds;
     if (!pickLayers) return;
     const ids = pickLayers(this.map.getStyle().layers || []);
+    // Our own layer replaces the basemap's where it loaded; its dots stay up
+    // through a quiz like the landmark dots, its names do not.
+    const own = !!this._ownPoisActive;
     for (const id of ids) {
-      try { this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none'); } catch (_) {}
+      try { this.map.setLayoutProperty(id, 'visibility', visible && !own ? 'visible' : 'none'); } catch (_) {}
+    }
+    const lib = window.CanalRecallOrientationPois;
+    for (const band of (lib && lib.OWN_POI_BANDS) || []) {
+      const { dots, labels } = lib.ownPoiLayerIds(band);
+      try {
+        if (this.map.getLayer(dots)) this.map.setLayoutProperty(dots, 'visibility', own ? 'visible' : 'none');
+        if (this.map.getLayer(labels)) this.map.setLayoutProperty(labels, 'visibility', visible && own ? 'visible' : 'none');
+      } catch (_) {}
     }
   }
 
@@ -1529,6 +1603,8 @@ class VectorBasemap {
       if (layer.type !== 'symbol') continue;
       try { this.map.setLayoutProperty(layer.id, 'visibility', 'visible'); } catch (_) {}
     }
+    // Showing every label must not bring the basemap's POIs back over ours.
+    this._setBasemapOrientationPoisVisible(!this._quizQuietMap);
   }
 
   toggleLabels() {
