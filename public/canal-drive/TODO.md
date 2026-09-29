@@ -49,9 +49,46 @@ runs between the landmarks whose line passes the most due names. Still open:
 - re-enabling cold-open review now that a location-honest route exists
   (`COLD_OPEN_ENABLED`), gated on the due name being on the planned path.
 
+**Street-name origins: publish the full set, then bridges and waters.**
+The pipeline shipped on 2026-09-29 (see HISTORY). The source is the BAG
+`beschrijvingNaam`, translated on-device with `trn --quality high`.
+- The full translation is running at about 60/min and is resumable through
+  `scripts/street-name-origin-translations.json`.
+- When it finishes: run `npm run publish:street-name-origins`, check a
+  street card that has no Wikipedia text (e.g. Lirestraat), then commit the
+  cache and the published file.
+- Bridge and water origins are translated but no card shows them yet.
+- The API states no licence for `beschrijvingNaam`. Confirm it before a
+  public release.
+
 ---
 
 ## P2 — Weight and reach
+
+**Our own POI layer (user request 2026-09-29).**
+The basemap's POI layer can't be filtered for spoilers or density, sits at
+ground level, and has no link to our buildings. Build one from the OSM extract
+with our own filtering:
+- spoiler names, category and density caps per zoom;
+- a building join, using the `ref:bag` path that `resolve-landmark-buildings.ts`
+  already proved;
+- a per-POI roof-height lift.
+
+Then drop the basemap POI layers.
+
+**Draw the route on what the rider is actually riding on (user report
+2026-09-29, "get the blue line onto the white rendered street").**
+On Nassaukade the route follows the separated `highway=cycleway`, which the
+basemap draws faintly or not at all, so the blue line floats beside the street
+that is drawn. Draw separated cycle tracks ourselves (Amsterdam red asphalt)
+from the routing extract, so the line sits on a visible path. That also shows
+the infrastructure the novelty bonus rewards.
+
+**Municipal trivia beyond street names.** `monumenten` (9,817 records with
+architect, build year, original function, and a public description on about
+20%), `amsterdam_canon` (49 windows with location), and `civieleconstructies`
+bridges and locks are all in the Amsterdam data API. Stage them like the
+street-name origins and attach them to landmark and bridge cards.
 
 **Driving harness: the remaining lost drives (2026-09-29).**
 `tests/e2e/driving-harness.spec.ts` passes at 97–104 of 120 (bar 45%) with 0
