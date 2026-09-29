@@ -17,7 +17,7 @@ import { hudLayout, hudBand, rectsIntersect, type Rect } from '../src/canalRecal
 import {
   dpadLayout, isInsideDpad, noKeys, stickRadius, stickVector, relativeCommand, absoluteCommand,
   keysScreenAngle, assistedHeading, turnToward, cruiseThrottle, normalizeAngle, STICK_CRUISE_FRACTION,
-  HARD_TURN_SPEED_SCALE, alignmentSpeedScale, turnAroundHeading,
+  HARD_TURN_SPEED_SCALE, alignmentSpeedScale, turnAroundHeading, PIVOT_RATE,
 } from '../src/canalRecall/touchControls.ts';
 import { constrainCarToRoad } from '../src/canalRecall/carRoadGuard.ts';
 
@@ -359,6 +359,14 @@ const near = (a: number, b: number, eps = 1e-9) => Math.abs(normalizeAngle(a - b
   const back = relativeCommand(stick(0, 1));
   ok(back.turnAround && back.steer === 0 && back.brake > 0, 'straight back brakes and asks to turn round');
   ok(!relativeCommand(stick(-0.6, 0.8)).turnAround, 'back-and-sideways is a braking turn, not a turn-round');
+  // Named regression (user report 2026-09-29, "because turning also tries to
+  // go forward, my bike was struggling to turn around"): hard sideways asks to
+  // pivot on the spot; any real forward push or a gentle curve does not.
+  ok(fullLock.pivot === -1 && relativeCommand(stick(1, 0)).pivot === 1, 'hard sideways asks to pivot that way');
+  ok(relativeCommand(stick(-0.9, -0.5)).pivot === 0, 'sideways and forward arcs instead of pivoting');
+  ok(relativeCommand(stick(-0.35, 0)).pivot === 0, 'a gentle steer does not pivot');
+  ok(back.pivot === 0 && relativeCommand(null).pivot === 0, 'back and released never pivot');
+  ok(Math.PI / PIVOT_RATE > 0.7 && Math.PI / PIVOT_RATE < 1.5, 'a pivot takes about a second for 180°');
   ok(alignmentSpeedScale(0) === 1 && alignmentSpeedScale(Math.PI) < 0.2,
     'absolute mode crawls while pointing back down the street');
   ok(Math.abs(normalizeAngle(turnAroundHeading(0.3, 0.3) - (0.3 + Math.PI))) < 1e-9,

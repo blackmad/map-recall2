@@ -411,3 +411,45 @@ test('relative stick: full lock turns right round, and pulling back turns about 
   expect(about.turned, 'straight back swings the bike round').toBeGreaterThan(120);
   expect(about.slowest, 'and never rolls it backwards').toBeGreaterThanOrEqual(0);
 });
+
+// Named regression (user report 2026-09-29, "if I need to execute a 180 and
+// I'm stuck, because turning also tries to go forward, my bike was struggling
+// to turn around"). A hard-turn cruise still rolled a stopped bike forward
+// into the kerb. Hard sideways while stopped now pivots on the spot.
+test('relative stick: hard sideways from a standstill pivots on the spot', async ({ page }) => {
+  await drive(page);
+  await page.evaluate(() => {
+    const game = window.canalRecallGame as unknown as Record<string, unknown>;
+    game._updateCanalQuiz = () => {};
+    game._updateBridgeQuiz = () => {};
+    const player = game.player as { speed: number; vx: number; vy: number };
+    player.speed = 0; player.vx = 0; player.vy = 0;
+  });
+  const cdp = await page.context().newCDPSession(page);
+  const origin = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const pad = game.input.dpad!;
+    const rect = game.canvas.getBoundingClientRect();
+    const scale = rect.width / CANVAS_W;
+    const ui = (window as unknown as { CanalRecallUi: { stickRadius: (p: unknown) => number } }).CanalRecallUi;
+    return { x: rect.left + pad.cx * scale, y: rect.top + pad.cy * scale, r: ui.stickRadius(pad) * scale };
+  });
+  const pose = () => page.evaluate(() => {
+    const p = window.canalRecallGame.player as unknown as { x: number; y: number; angle: number };
+    return { x: p.x, y: p.y, angle: p.angle };
+  });
+  const start = await pose();
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: origin.x, y: origin.y, id: 1 }] });
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: origin.x + origin.r, y: origin.y, id: 1 }] });
+  let turned = 0, last = start.angle;
+  for (let t = 0; t < 1200; t += 100) {
+    await page.waitForTimeout(100);
+    const now = (await pose()).angle;
+    turned += Math.atan2(Math.sin(now - last), Math.cos(now - last));
+    last = now;
+  }
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  const end = await pose();
+  expect(Math.abs(turned) * 180 / Math.PI, 'a second of hard right swings well past 90°').toBeGreaterThan(120);
+  expect(Math.hypot(end.x - start.x, end.y - start.y), 'without rolling into the kerb').toBeLessThan(8);
+});

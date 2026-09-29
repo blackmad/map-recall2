@@ -16,6 +16,7 @@ class PlayerCar extends Car {
     this._cruiseFraction = null;
     this._stickBraking = false;
     this._stickHardSteer = false;
+    this._pivot = 0;
     const wantedTurnAround = this._turnAroundHeld;
     this._turnAroundHeld = false;
     this.handbrake = input.isDown('Space');
@@ -55,6 +56,7 @@ class PlayerCar extends Car {
       this._cruiseFraction = command.brake > 0 ? null : command.speedFraction;
       this._stickBraking = command.brake > 0;
       this._stickHardSteer = Math.abs(command.steer) > 0.6;
+      this._pivot = command.pivot;
       // One swing per pull: the stick must come off "back" to arm another.
       this._turnAroundHeld = command.turnAround;
       if (command.turnAround && !wantedTurnAround) this._turnAroundArmed = true;
@@ -87,6 +89,13 @@ class PlayerCar extends Car {
       if (Math.abs(ui.normalizeAngle(this._uTurnHeading - this.angle)) < 1e-3) this._uTurnHeading = null;
     }
     let cruise = this._cruiseFraction;
+    // Hard sideways while nearly stopped (stuck at a kerb, or waiting at a
+    // junction): swing on the spot rather than rolling forward into the kerb.
+    if (this._pivot && this._uTurnHeading == null && Math.abs(this.speed) < ui.TURN_AROUND_MAX_SPEED) {
+      this.angle = ui.normalizeAngle(this.angle + this._pivot * ui.PIVOT_RATE * dt);
+      this.speed = 0; this.vx = 0; this.vy = 0; this.steerInput = 0;
+      cruise = null; this.throttle = 0;
+    }
     if (this._headingTarget != null) {
       // Follow the street/canal when the pointed direction is close to it, so
       // a slanted street does not mean steering into the kerb.

@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — hard sideways on the stick pivots a stopped bike on the spot
+
+User report: "if I need to execute a 180 and I'm stuck, because turning also
+tries to go forward, my bike was struggling to turn around". A full-lock stick
+still cruised at 30% of the cruise (~19% of top speed). A bike stopped at a
+kerb rolled forward into it, and the road guard eased the heading straight.
+`relativeCommand` now also returns `pivot` when the stick is past 0.7 steer
+with less than 0.25 forward push. Below `TURN_AROUND_MAX_SPEED` the player
+swings on the spot at `PIVOT_RATE` (3.2 rad/s, about 1 s for 180°), without
+throttle. Moving, the same stick still arcs, so junction turns are unchanged.
+Measured on the iPhone profile: before, 1.2 s of hard right from a standstill
+rolled 18 px; now it stays put and turns more than 120°.
+
 ## 2026-09-29 — one route load owns the loading screen
 
 User report: "this progress bar jumps back and forth". Route loads shared one
