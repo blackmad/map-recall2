@@ -643,6 +643,7 @@
       );
     }
     _clearLandmarkNotice() {
+      if (this._landmarkNotice) this.vectorMap?.setActiveLandmark(null);
       this._landmarkNotice = null;
       this._landmarkNoticeState = openNotice();
       this._landmarkNoticeAlpha = 0;
@@ -836,7 +837,6 @@
         this._landmarkNoticeAlpha = visibility.alpha;
         if (!visibility.visible) {
           this._clearLandmarkNotice();
-          this.vectorMap.setActiveLandmark(null);
         }
       }
       if (!this.player) return;
