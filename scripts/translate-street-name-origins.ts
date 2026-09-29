@@ -25,7 +25,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
 import {
-  CLI_TRANSLATORS, type CliTranslator, cleanTranslatorOutput, droppedProperNames, protectNames,
+  CLI_TRANSLATORS, type CliTranslator, cleanTranslatorOutput, protectNames,
   translatorInvocation, trimToSentence,
 } from './lib/translation.ts';
 import { indexOrigins, originFor, type NameOrigin } from './lib/streetNameOrigins.ts';
@@ -91,9 +91,19 @@ async function translate(origin: NameOrigin): Promise<string> {
   if (code !== 0) throw new Error(`exited ${code}: ${err.join('').trim().split('\n')[0]}`);
   const english = trimToSentence(held.restore(cleanTranslatorOutput(out.join(''))), MAX_ORIGIN_CHARS);
   if (!english) throw new Error('empty output');
-  const dropped = droppedProperNames(origin.nl, english, [origin.name]);
-  if (dropped.length) throw new Error(`refused — renamed ${dropped.join(', ')}`);
+  // Unlike a lede, an explanation may and should translate the words the
+  // name is built from ("Burgemeester Stramanweg: Burgemeester van …" is
+  // rightly "Mayor of …"). Only the name itself, where the Dutch spells it
+  // out, must survive intact; `protectNames` held it out, this checks it.
+  if (containsWholeName(origin.nl, origin.name) && !containsWholeName(english, origin.name)) {
+    throw new Error('refused — the translation renamed the street itself');
+  }
   return english;
+}
+
+function containsWholeName(text: string, name: string): boolean {
+  const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(?<![\\p{L}\\p{N}])${escaped}(?![\\p{L}\\p{N}])`, 'u').test(text);
 }
 
 const source = tool === 'trn' ? 'trn-high' : tool;
