@@ -103,6 +103,11 @@ class VectorBasemap {
           this._raisePoiLayers();
           this.setActiveLandmark(this._activeLandmark);
         });
+        this._detailedBuildings.onLandmarkHighlighted = (landmark) => {
+          if (!landmark || landmark !== this._activeLandmark) return;
+          const source = this.map.getSource('active-landmark');
+          if (source) source.setData({ type: 'FeatureCollection', features: [] });
+        };
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
       // Signature landmark GLBs are built and demoable, but disabled in the
