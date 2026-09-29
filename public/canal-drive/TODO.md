@@ -76,14 +76,6 @@ with our own filtering:
 
 Then drop the basemap POI layers.
 
-**Draw the route on what the rider is actually riding on (user report
-2026-09-29, "get the blue line onto the white rendered street").**
-On Nassaukade the route follows the separated `highway=cycleway`, which the
-basemap draws faintly or not at all, so the blue line floats beside the street
-that is drawn. Draw separated cycle tracks ourselves (Amsterdam red asphalt)
-from the routing extract, so the line sits on a visible path. That also shows
-the infrastructure the novelty bonus rewards.
-
 **Municipal trivia beyond street names.** `monumenten` (9,817 records with
 architect, build year, original function, and a public description on about
 20%), `amsterdam_canon` (49 windows with location), and `civieleconstructies`

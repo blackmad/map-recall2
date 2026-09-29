@@ -50,6 +50,7 @@ const CHECKS = [
   'check:facade-rebuild',
   'check:enamel-css',
   'test:orientation-pois',
+  'test:cycle-tracks',
   'test:photoreal-gate',
   'test:canal-preferences',
   'test:transit-extract',
