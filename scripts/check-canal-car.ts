@@ -51,6 +51,24 @@ const car = (overrides: Partial<CarKinematics> = {}): CarKinematics => ({
 }
 
 {
+  // Named regression (driving harness, 2026-09-29, Solitudobrug end on
+  // Weesperzijde): the rollback slide follows the contact's tangent, and past
+  // the end of a span that carries straight on off the road. With a probe of
+  // the real edge, a slide that ends further out than it started is refused.
+  const bridgeEnd = road({ x: 0, y: 0, dist: 20, width: 9, angle: 0 });
+  const excessAt = (x: number, y: number) => Math.hypot(x, y) - 9; // round dead end at the origin
+  const slid = car({ x: 22, y: 0, vx: 90, vy: 0, speed: 90 });
+  constrainCarToRoad(slid, { x: 16, y: 0 }, bridgeEnd, road({ dist: 16, width: 9 }), { edgeTolerance: 4 });
+  assert.ok(slid.x > 16, 'without the probe the slide carries on past the end');
+  const held = car({ x: 22, y: 0, vx: 90, vy: 0, speed: 90 });
+  constrainCarToRoad(held, { x: 16, y: 0 }, bridgeEnd, road({ dist: 16, width: 9 }), { edgeTolerance: 4, excessAt });
+  assert.deepEqual({ x: held.x, y: held.y }, { x: 16, y: 0 }, 'with it the bike stays where it was');
+  const along = car({ x: 20, y: 25, vx: 0, vy: 90 });
+  constrainCarToRoad(along, { x: 10, y: 0 }, road({ x: 0, y: 25, dist: 20, width: 9 }), road({ dist: 10, width: 9 }), { edgeTolerance: 4, excessAt: (x: number, y: number) => Math.abs(y) - 30 });
+  assert.equal(along.x, 20, 'a slide that stays on the road is kept');
+}
+
+{
   const subject = car({ x: 80, y: 80, vx: 100, vy: 50 });
   constrainCarToRoad(subject, { x: 40, y: 40 }, null, null, options);
   assert.deepEqual({ x: subject.x, y: subject.y }, { x: 40, y: 40 });

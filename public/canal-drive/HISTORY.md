@@ -1,5 +1,31 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — two road-guard traps at span ends, found by tracing harness drives
+
+The driving harness now makes failures replayable. Each lost drive reports
+its `pair`, how far off the route it ended, how far it wandered, its speed
+and its off-road margin. `HARNESS_PAIRS='[[[lat,lng],[lat,lng]],…]'`
+re-drives exactly those pairs and prints the last seconds as a trace. Three
+drives shared one signature (about 18 px off the route, 7–10 px off the road,
+~500 px wandered, speed pulsing 0–45) and turned out to be the same two bugs:
+- **The shoulder ease fought the rider.** Turning right off the end of the
+  Solitudobrug onto Weesperzijde (one straight 640 m span with no vertex at
+  the bridge), the bike drifted 1.4 px past Weesperzijde's edge. It was still
+  pointing roughly along the bridge, so `pickGuardContact` kept judging it
+  against the bridge's end. The soft-edge ease then turned it back along the
+  bridge 12% a frame against full lock, and it stood on the kerb for good.
+  Outside every corridor, the guard now judges the cross street the vehicle
+  is least outside of (parallel copies excluded, as before), then applies
+  the corner fillet to that choice.
+- **The rollback slide carried on past a span's end.** It follows the
+  contact's tangent, which beyond a dead end points straight off the road.
+  `constrainCarToRoad` takes an `excessAt` probe and refuses a slide that ends
+  further out than it started (Nannie van Wehlstraat).
+Both are pinned in `check-road-surface.ts` / `check-canal-car.ts`. Re-driven,
+3 of the 4 trapped pairs now arrive. The fourth (Weesperzijde by Kruislaan)
+is the autopilot circling a block, not a trap. The full harness measures 102
+of 120 with 0 pinned, inside its run-to-run spread of 97–104.
+
 ## 2026-09-29 — a livelier invented building palette (v3)
 
 User report: "these fake colors are too drab". Buildings with no observed

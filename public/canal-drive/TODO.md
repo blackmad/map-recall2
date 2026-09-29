@@ -50,15 +50,17 @@ Home-base routes already grow an expanding learning radius from the address
 
 ## P2 — Weight and reach
 
-**Driving harness: the remaining lost drives (2026-09-28).**
-`tests/e2e/driving-harness.spec.ts` passes at about 100 of 120 (bar 45%)
-since the autopilot learned line of sight, bend braking, turning round,
-riding into a junction it cut short, and passing a vertex within reach.
-Arrivals still vary by a few drives between runs with the same seed; find
-the nondeterminism (tile or extract load order?) before raising the bar.
-Only about 2 of the ~17 lost drives now sit stuck at a kerb on their route
-(e.g. 52.34421, 4.83856); trace those with the single-drive tracer pattern
-before deciding whether they are guard traps.
+**Driving harness: the remaining lost drives (2026-09-29).**
+`tests/e2e/driving-harness.spec.ts` passes at 97–104 of 120 (bar 45%) with 0
+pinned. Arrivals vary by a few drives between runs with the same seed, and two
+runs can produce identical failure lists. Find the nondeterminism (tile or
+extract load order?) before raising the bar. Kerb traps are now traceable: each
+lost drive prints its `pair`, off-route/off-road margins and wander, and
+`HARNESS_PAIRS` re-drives pairs with a trace. The traced traps (Solitudobrug →
+Weesperzijde, Nannie van Wehlstraat) are fixed (see HISTORY). Most of the ~15
+remaining lost drives circle at speed 100–600 px off the route, which is
+autopilot navigation, not the guard. Next: trace the slow, near-route ones
+(small off-route, speed under 35), e.g. 52.33263, 4.85767.
 `tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
 or facades resident, probably because it needs locally generated study data.
 

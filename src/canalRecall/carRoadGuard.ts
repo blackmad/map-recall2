@@ -30,6 +30,15 @@ export interface RoadGuardOptions {
    * so a bike could never turn round mid-block.
    */
   holdHeading?: boolean;
+  /**
+   * How far outside the road edge a point is (negative inside). When given, a
+   * rollback slide that would end further off the road than where the car
+   * started is refused. Sliding along the tangent of a span's end carries
+   * straight on past it: off the end of the Solitudobrug that walked the bike
+   * across Weesperzijde and off its far kerb, where it slid, stopped and was
+   * walked back every second for good (driving harness, 2026-09-29).
+   */
+  excessAt?: (x: number, y: number) => number;
 }
 
 export type RoadGuardResult = 'on-road' | 'soft-edge' | 'rolled-back' | 'unwedged';
@@ -98,6 +107,13 @@ export function constrainCarToRoad(
     const alongStep = Math.max(-12, Math.min(12, rawAlong));
     car.x = previous.x + tangentX * alongStep;
     car.y = previous.y + tangentY * alongStep;
+    if (options.excessAt) {
+      const slid = options.excessAt(car.x, car.y);
+      if (slid > options.edgeTolerance && slid > options.excessAt(previous.x, previous.y) + 0.01) {
+        car.x = previous.x;
+        car.y = previous.y;
+      }
+    }
     car.vx = tangentX * tangentVelocity * 0.72;
     car.vy = tangentY * tangentVelocity * 0.72;
     car.speed = Math.sign(car.speed) * Math.min(Math.abs(car.speed) * 0.7, Math.abs(tangentVelocity));

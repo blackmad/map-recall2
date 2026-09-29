@@ -483,6 +483,10 @@ class Game {
         : this.track.getNearestRoad(x, y, this.player.angle));
       const road = guardRoad(this.player.x, this.player.y);
       const previousRoad = guardRoad(previousPlayerPosition.x, previousPlayerPosition.y);
+      const excessAt = (x, y) => {
+        const contact = guardRoad(x, y);
+        return contact ? contact.dist - contact.width : Infinity;
+      };
       const guardOpts = this.travelMode === 'transit'
         ? {
           edgeTolerance: CAR_ROAD_EDGE_TOLERANCE,
@@ -490,6 +494,7 @@ class Game {
           softPullLimit: 5.5,
           blockedFrames: this._blockedCarFrames,
           unwedgeAfter: 4,
+          excessAt,
         }
         : {
           edgeTolerance: CAR_ROAD_EDGE_TOLERANCE,
@@ -498,6 +503,7 @@ class Game {
           // call; the guard still keeps the bike on the road. Keyboard steering
           // is always full lock and keeps the kerb-gliding heading ease.
           holdHeading: !!this.player._stickHardSteer || this.player._uTurnHeading != null,
+          excessAt,
         };
       const guard = CanalRecallCar.constrainCarToRoad(
         this.player,
