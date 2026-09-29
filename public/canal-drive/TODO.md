@@ -749,20 +749,16 @@ Keep the missing twelve original image-numbered examples as an unresolved
 historical issue while defining new work against identified evidence.
 
 
-**11. Let the game actually play a second city.**
-The extractor is city-agnostic and four cities are now built and checked:
-Amsterdam, Utrecht (11,801 routing ways, 380 landmarks), Rotterdam (31,810
-routing ways, 22,559 appearance-backed buildings) and Den Haag (17,920 /
-27,576). The runtime is not: `osm-loader.js` hardcodes
-`../data/extracts/amsterdam/${dataset}.json`, so there is no way to reach any
-of them from the game. Needs a city selector, a cityId that flows through
-to review keys, and a basemap origin that is not assumed to be Amsterdam's.
-Rotterdam and Den Haag have had no landmark-text pass at all yet.
-One data gap behind it: 275 of Utrecht's 380 landmarks still have no text at
-all, so under the a9b21c7 rule the city is thin rather than noisy. Its bridges
-are built (300 resolved into 386 crossings) and its cards are English as far
-as Wikidata descriptions reach — 71 of 105 written-up landmarks, with 34 still
-Dutch pending a real translator.
+**11. Other cities: content, not plumbing.**
+Utrecht, Rotterdam and Den Haag are playable from the City row (see HISTORY,
+"Full city selector"), and `other-cities.spec.ts` rides each one. What is
+left is content:
+- 275 of Utrecht's 380 landmarks have no text, and Rotterdam and Den Haag
+  have had no landmark-text pass at all;
+- the teaching data is Amsterdam-only so far: street-name origins, the
+  bridge register, building facts and monuments. Each came from an
+  Amsterdam municipal API. Utrecht, Rotterdam and Den Haag publish their own
+  open data, which needs a source per city before cards there can match.
 
 **11b. Re-run Amsterdam through the general pipeline.**
 Only the branded POIs were merged in from a staging build, deliberately — a

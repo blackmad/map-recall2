@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — the other three cities ride end to end in e2e
+
+TODO item 11 still said the runtime hardcoded Amsterdam, but the city
+selector shipped earlier (see "Full city selector" below). Nothing had
+driven the other cities since. `other-cities.spec.ts` now starts a bike ride
+in Utrecht, Rotterdam and Den Haag and checks, for each:
+- the city id;
+- both landmarks within 15 km of the centre;
+- a planned path and a spawn on the network;
+- no uncaught errors from the Amsterdam-only files that city lacks.
+
+All three pass. The TODO item is now about content.
+
 ## 2026-09-30 — cold-open review stays off: review rides are the location-honest version
 
 The reopen condition for the cold-open (2026-09-07) was that a due name be on
