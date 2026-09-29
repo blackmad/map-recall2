@@ -300,19 +300,32 @@ export function pickGuardContact(
 ): RoadContact | null {
   const aligned = pickRoadContact(contacts, preferredAngle);
   if (!aligned || aligned.dist <= aligned.width) return aligned;
-  if (point) {
-    // Inside a corner: report the filleted edge distance, so the guard treats
-    // the cut corner as asphalt (or as a shallower shoulder).
-    const excess = filletedExcess(contacts, point.x, point.y);
-    if (excess < aligned.dist - aligned.width) return { ...aligned, dist: aligned.width + Math.max(0, excess) };
-  }
   let inside: RoadContact | null = null;
   for (const contact of contacts) {
     if (contact.dist > contact.width) continue;
     if (headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
     if (!inside || contact.dist - contact.width < inside.dist - inside.width) inside = contact;
   }
-  return inside ?? aligned;
+  if (inside) return inside;
+  // Outside every corridor, judge the vehicle against the cross street it is
+  // least outside of, not the street it is pointing along. Turning right off
+  // the end of the Solitudobrug onto Weesperzijde, the heading pick stayed the
+  // bridge's end: the shoulder ease turned the bike back along the bridge 12%
+  // a frame against full lock, and it stood on the kerb for good (driving
+  // harness, 2026-09-29). Parallel copies of the aligned street stay out of
+  // it, as above: a wider duplicate must not widen the corridor.
+  let chosen = aligned;
+  for (const contact of contacts) {
+    if (headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
+    if (contact.dist - contact.width < chosen.dist - chosen.width - 0.25) chosen = contact;
+  }
+  if (point) {
+    // Inside a corner: report the filleted edge distance, so the guard treats
+    // the cut corner as asphalt (or as a shallower shoulder).
+    const excess = filletedExcess(contacts, point.x, point.y);
+    if (excess < chosen.dist - chosen.width) return { ...chosen, dist: chosen.width + Math.max(0, excess) };
+  }
+  return chosen;
 }
 
 /**

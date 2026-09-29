@@ -25,6 +25,18 @@ type DriveFailure = {
   lng: number;
   street: string;
   distanceLeftPx?: number;
+  /** Diagnostics for a lost drive: how far off the planned route it ended,
+   *  how far it travelled while making no progress, its speed, and how far
+   *  outside the nearest road's width it sits. A small `wanderPx` at speed 0
+   *  is a trap; a large one is the autopilot circling. */
+  offRoutePx?: number;
+  wanderPx?: number;
+  speed?: number;
+  offRoadPx?: number;
+  /** The pair, so `HARNESS_PAIRS` can re-drive exactly this route. */
+  pair?: [[number, number], [number, number]];
+  /** With `HARNESS_PAIRS`: the last seconds before failing, one row per 0.25 s. */
+  trace?: Array<{ at: [number, number]; angle: number; speed: number; steer: number; road: string; offRoad: number }>;
 };
 type HarnessReport = {
   pairs: number;
@@ -53,7 +65,7 @@ declare global {
       _updateRacing(dt: number): void;
       _updateCanalQuiz(dt: number): void;
       _updateBridgeQuiz(previous: Point | null): void;
-      driveHarness?: (runs: number, seed: number) => HarnessReport;
+      driveHarness?: (runs: number, seed: number, pairs?: Array<[[number, number], [number, number]]>) => HarnessReport;
     };
   }
 }
@@ -85,7 +97,21 @@ function installHarness(): void {
     };
   };
 
-  game.driveHarness = (runs, seed) => {
+  const toXY = ([lat, lng]: [number, number]) => {
+    const loader = game.osmLoader;
+    const metersPerDegreeLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180);
+    return {
+      x: loader._lastOffsetX + (lng - loader._lastCenterLng) * metersPerDegreeLng * 3,
+      y: loader._lastOffsetY - (lat - loader._lastCenterLat) * 111320 * 3,
+    };
+  };
+  const round5 = (point: Point): [number, number] => {
+    const { lat, lng } = toLatLng(point);
+    return [Number(lat.toFixed(5)), Number(lng.toFixed(5))];
+  };
+
+  game.driveHarness = (runs, seed, pairs) => {
+    if (pairs) runs = pairs.length;
     // Park the real animation loop: this harness drives the simulation itself,
     // and a second updater running at display rate makes every run different.
     game.state = 6; // PAUSED
@@ -127,12 +153,13 @@ function installHarness(): void {
     game._updateBridgeQuiz = () => {};
 
     for (let run = 0; run < runs; run++) {
-      const from = largest[Math.floor(random() * largest.length)];
-      const to = largest[Math.floor(random() * largest.length)];
+      const tracing = !!pairs;
+      const from = pairs ? toXY(pairs[run][0]) : largest[Math.floor(random() * largest.length)];
+      const to = pairs ? toXY(pairs[run][1]) : largest[Math.floor(random() * largest.length)];
       // City-trip distances: several junctions to negotiate, and short enough
       // that a completed drive fits inside the simulated time budget.
       const straightLine = from && to ? Math.hypot(from.x - to.x, from.y - to.y) : 0;
-      if (straightLine < 1200 || straightLine > 6000) { run--; continue; }
+      if (!pairs && (straightLine < 1200 || straightLine > 6000)) { run--; continue; }
       const path = game.track.findRoute(from, to);
       if (!path || path.length < 2) {
         failures.push({ reason: 'unroutable', street: game.track.getRoadName(from.x, from.y), ...toLatLng(from) });
@@ -141,7 +168,8 @@ function installHarness(): void {
       routable++;
 
       const startRoad = game.track.getNearestRoad(from.x, from.y);
-      if (startRoad && startRoad.dist > startRoad.width) { run--; routable--; continue; }
+      if (!pairs && startRoad && startRoad.dist > startRoad.width) { run--; routable--; continue; }
+      const trace: NonNullable<DriveFailure['trace']> = [];
       player.x = from.x; player.y = from.y;
       player.angle = Math.atan2(path[1].y - from.y, path[1].x - from.x);
       player.speed = 0; player.vx = 0; player.vy = 0; player.distancePx = 0;
@@ -159,6 +187,8 @@ function installHarness(): void {
       }
       let closestRouteApproach = Infinity;
       let lostSeconds = 0;
+      let wander = 0;
+      let lastOffRoute = 0;
       let pinnedSeconds = 0;
       let reversing = 0;
       let facingAwaySeconds = 0;
@@ -241,15 +271,23 @@ function installHarness(): void {
         const before = { x: player.x, y: player.y };
         game._updateRacing(STEP);
         elapsed += STEP;
+        if (tracing && Math.round(elapsed / STEP) % 8 === 0) {
+          const road = game.track.getNearestRoad(player.x, player.y);
+          trace.push({ at: round5(player), angle: Math.round(player.angle * 100) / 100, speed: Math.round(player.speed), steer: Math.round(player.steerInput * 100) / 100, road: game.track.getRoadName(player.x, player.y), offRoad: road ? Math.round(road.dist - road.width) : -1 });
+          if (trace.length > 40) trace.shift();
+        }
 
         const moved = Math.hypot(player.x - before.x, player.y - before.y);
         const remaining = Math.hypot(to.x - player.x, to.y - player.y);
         const routeRemaining = distanceFrom[index] + nearestDistance;
+        lastOffRoute = nearestDistance;
         if (routeRemaining < closestRouteApproach - 20) {
           closestRouteApproach = routeRemaining;
           lostSeconds = 0;
+          wander = 0;
         } else {
           lostSeconds += STEP;
+          wander += moved;
         }
         // Pinned: the car is asking to move and barely moving. A rolling stop
         // at a tight junction is fine; five seconds of it is the wedge bug.
@@ -273,6 +311,12 @@ function installHarness(): void {
           reason: outcome,
           street: game.track.getRoadName(player.x, player.y),
           distanceLeftPx: Math.round(Math.hypot(to.x - player.x, to.y - player.y)),
+          offRoutePx: Math.round(lastOffRoute),
+          wanderPx: Math.round(wander),
+          speed: Math.round(player.speed),
+          pair: [round5(from), round5(to)],
+          ...(tracing ? { trace } : {}),
+          offRoadPx: (() => { const road = game.track.getNearestRoad(player.x, player.y); return road ? Math.round(road.dist - road.width) : -1; })(),
           ...toLatLng(player),
         });
       }
@@ -286,13 +330,19 @@ test('driving harness: planned routes can actually be driven', async ({ page }) 
   test.setTimeout(300_000);
   await openCarRoute(page);
   await page.evaluate(installHarness);
-  const report = await page.evaluate(() => window.canalRecallGame.driveHarness!(120, 0x51ce7));
+  // HARNESS_PAIRS='[[[lat,lng],[lat,lng]],…]' re-drives failures from an
+  // earlier run's `pair` and prints each one's trace; the bars do not apply.
+  const pairs = process.env.HARNESS_PAIRS ? JSON.parse(process.env.HARNESS_PAIRS) : undefined;
+  const report = await page.evaluate(p => window.canalRecallGame.driveHarness!(120, 0x51ce7, p), pairs);
 
   console.log(`largest routing component: ${(report.componentShare * 100).toFixed(1)}% of graph nodes`);
   console.log(`routable ${report.routable}/${report.pairs} — ${JSON.stringify(report.outcomes)}, ${report.wedges} wedges against the kerb`);
-  for (const failure of report.failures.slice(0, 10)) {
-    console.log(`  ${failure.reason} @ ${failure.lat.toFixed(5)},${failure.lng.toFixed(5)} — ${failure.street || '(unnamed)'}${failure.distanceLeftPx ? ` (${failure.distanceLeftPx}px short)` : ''}`);
+  for (const failure of report.failures.slice(0, Number(process.env.HARNESS_SHOW || 10))) {
+    console.log(`  ${failure.reason} @ ${failure.lat.toFixed(5)},${failure.lng.toFixed(5)} — ${failure.street || '(unnamed)'}${failure.distanceLeftPx ? ` (${failure.distanceLeftPx}px short)` : ''}`
+      + (failure.wanderPx != null ? ` off-route ${failure.offRoutePx}px, wandered ${failure.wanderPx}px, speed ${failure.speed}, off-road ${failure.offRoadPx}px pair ${JSON.stringify(failure.pair)}` : ''));
+    for (const row of failure.trace ?? []) console.log(`    ${JSON.stringify(row)}`);
   }
+  if (pairs) return;
 
   // Inside one component every pair is routable by definition; this catches a
   // regression in the graph builder rather than in the extract.

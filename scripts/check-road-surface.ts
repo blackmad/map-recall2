@@ -376,4 +376,24 @@ check('the inside of a corner is filleted so a rider can cut it (Oosterdokskade,
   assert.ok(pickGuardContact(contacts, 0)!.dist > pickGuardContact(contacts, 0)!.width, 'without the point it is the old edge test');
 });
 
+check('off every corridor, the guard judges the cross street it is least outside of (Solitudobrug → Weesperzijde)', () => {
+  // Named regression (driving harness, 2026-09-29, 52.34088, 4.92546). The
+  // Solitudobrug ends on Weesperzijde, one straight 640 m span with no vertex
+  // there. Turning right off the bridge, the bike drifted 1.4 px past
+  // Weesperzijde's edge while still pointing roughly along the bridge; the
+  // guard kept judging it against the bridge's end, and the shoulder ease
+  // turned it back along the bridge against full lock, for good.
+  const spans = [
+    { a: { x: -83, y: 100 }, b: { x: -14, y: 9 }, width: 9, segIdx: 0, ptIdx: 0 },
+    { a: { x: -918, y: -663 }, b: { x: 622, y: 482 }, width: 9, segIdx: 1, ptIdx: 0 },
+  ];
+  const point = { x: -2, y: 5 };
+  const heading = -0.42;
+  const contacts = contactsAt(spans, point.x, point.y);
+  assert.equal(pickRoadContact(contacts, heading)!.segIdx, 0, 'naming still follows the heading onto the bridge');
+  const guard = pickGuardContact(contacts, heading, point)!;
+  assert.equal(guard.segIdx, 1, 'the guard judges Weesperzijde, whose shoulder the bike is on');
+  assert.ok(Math.abs(guard.angle - 0.64) < 0.01 || Math.abs(guard.angle + 2.5) < 0.01, 'so the shoulder ease turns it along Weesperzijde');
+});
+
 process.stdout.write(`Road surface and named-run checks passed (${checks} checks).\n`);
