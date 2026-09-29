@@ -62,6 +62,15 @@ before deciding whether they are guard traps.
 `tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
 or facades resident, probably because it needs locally generated study data.
 
+**Republish area appearance sidecars on the v3 palette (2026-09-29).**
+The citywide fallback moved to the livelier v3 palette (see HISTORY). The
+three hash-bound releases under `public/data/city-expansion/releases/` still
+carry V2 `procedural-prior-not-measured` walls and caps, so those districts
+stay drab next to the rest of the city. Regenerate them through the staging
+path, keep every `measured-accepted` colour, review the diff, then update the
+pointers. The frozen review bundles (`case24-gable-city-preview`,
+`source-to-owner-city-preview`) also embed V2 and have no build script.
+
 **Wall colour/material: finish Jordaan + Da Costabuurt evidence and local-model evaluation.**
 The colour/texture focus supersedes new roof work for this appearance batch.
 See `docs/plans/district-rectification-expansion.md` and
