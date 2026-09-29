@@ -14,7 +14,7 @@
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { indexOrigins, originFor, type NameOrigin } from './lib/streetNameOrigins.ts';
+import { indexOrigins, originFor, repairOriginTranslation, type NameOrigin } from './lib/streetNameOrigins.ts';
 
 const directory = path.resolve('public/data/extracts/amsterdam');
 const staged = JSON.parse(await readFile(path.join(directory, 'staging/street-name-origins.json'), 'utf8')) as {
@@ -36,7 +36,7 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
     explained++;
     if (!origin.en) continue;
     english++;
-    published.set(`${kind}\u0000${name}`, { name, kind, en: origin.en, bagId: origin.bagId });
+    published.set(`${kind}\u0000${name}`, { name, kind, en: repairOriginTranslation(origin.nl, origin.en), bagId: origin.bagId });
   }
   report.push(`  ${file}: ${names.length} names, ${explained} explained, ${english} with English`);
 }

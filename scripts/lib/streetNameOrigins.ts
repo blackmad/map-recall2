@@ -133,3 +133,45 @@ export function indexOrigins(origins: readonly NameOrigin[]): Map<string, NameOr
   }
   return index;
 }
+
+/**
+ * Repair what the on-device translator reliably gets wrong in this register
+ * (measured on the 2026-09-29 run of 5,203 texts):
+ * - `gedempt` (a canal filled in) came out as "muted", "silenced" or
+ *   "suppressed" in 10 of 55 texts: "The Rozengracht was suppressed in 1895";
+ * - a bare year after `voor` read as a clock time: "even voor 1600" became
+ *   "just before 4:00 p.m.";
+ * - council-decision references (`Rb. 26-1-1922`) are register shorthand, and
+ *   an unfinished one trails some texts as junk ("Oud-Zuid Rb. 26-1-1922 15: m 9").
+ */
+export function repairOriginTranslation(nl: string, en: string): string {
+  let text = en;
+  // An unfinished register note after the last full sentence: drop it.
+  // A reference is `Rb.`, perhaps the former municipality that decided
+  // (Nieuwer-Amstel, Sloten, Watergraafsmeer), and a date.
+  const reference = String.raw`Rb\.?\s*(?:of\s+)?(?:([A-Za-z][\w'-]*(?:[ -][A-Za-z][\w'-]*)?)\s+)?\d{1,2}-\d{1,2}-(\d{4})`;
+  // "Unfinished" = nothing after the date ends in a sentence stop.
+  const note = new RegExp(reference).exec(text);
+  if (note && !/[.!?]["')]?$/.test(text.slice(note.index + note[0].length).trim())) {
+    const before = text.slice(0, note.index);
+    const stop = Math.max(before.lastIndexOf('. '), before.lastIndexOf('! '), before.lastIndexOf('? '));
+    if (stop >= 0) text = before.slice(0, stop + 1);
+  }
+  const decided = (council: string | undefined, year: string) =>
+    council ? `council decision of ${council}, ${year}` : `council decision, ${year}`;
+  text = text
+    .replace(new RegExp(String.raw`\(\s*${reference}\s*\)`, 'g'), (_, council, year) => `(${decided(council, year)})`)
+    .replace(new RegExp(String.raw`\b(by|at|with|in)\s+${reference}`, 'gi'),
+      (_, preposition: string, _council, year) => `${preposition[0] === preposition[0].toUpperCase() ? 'By' : 'by'} council decision in ${year}`)
+    .replace(new RegExp(reference, 'g'), (_, council, year) => decided(council, year));
+  if (/gedempt|dempen|demping/i.test(nl)) {
+    text = text.replace(/\b(muted|silenced|suppressed|dampened|damped|muffled)\b/g, 'filled in');
+  }
+  if (!/\d{1,2}[:.]\d{2}\s*uur|\d{1,2}:\d{2}/.test(nl)) {
+    const missingYears = [...new Set(nl.match(/\b1[0-9]{3}\b/g) ?? [])].filter(year => !text.includes(year));
+    if (missingYears.length === 1) {
+      text = text.replace(/\b\d{1,2}:\d{2}\s*[ap]\.m\./, missingYears[0]);
+    }
+  }
+  return text.replace(/\s{2,}/g, ' ').trim();
+}

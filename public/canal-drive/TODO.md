@@ -49,17 +49,19 @@ runs between the landmarks whose line passes the most due names. Still open:
 - re-enabling cold-open review now that a location-honest route exists
   (`COLD_OPEN_ENABLED`), gated on the due name being on the planned path.
 
-**Street-name origins: publish the full set, then bridges and waters.**
-The pipeline shipped on 2026-09-29 (see HISTORY). The source is the BAG
-`beschrijvingNaam`, translated on-device with `trn --quality high`.
-- The full translation is running at about 60/min and is resumable through
-  `scripts/street-name-origin-translations.json`.
-- When it finishes: run `npm run publish:street-name-origins`, check a
-  street card that has no Wikipedia text (e.g. Lirestraat), then commit the
-  cache and the published file.
-- Bridge and water origins are translated but no card shows them yet.
-- The API states no licence for `beschrijvingNaam`. Confirm it before a
-  public release.
+**Street-name origins: bridge cards, and the licence.**
+All 5,333 origins are published (see HISTORY, 2026-09-30).
+- 203 of 300 quiz bridges have an English origin. No card shows it yet,
+  because a correct bridge answer opens no knowledge card (`learnedRoute` is
+  empty `atCrossing`). A bridge card after a correct answer is the natural
+  place for it.
+- Water origins show through the street/water card when the waterway is
+  learned by boat.
+- The API states no licence for `beschrijvingNaam`. Confirm it with the
+  municipality before a public release.
+- Two known translator glitches remain: "Ten bThe Zwanenburgerstraat…" and
+  "rope warehouses" for touwslagerijen. Review the long texts in Trivia Lab or
+  with a glossary.
 
 ---
 
