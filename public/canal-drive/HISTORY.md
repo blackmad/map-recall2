@@ -31,6 +31,10 @@ origins, Magere Brug among them. `sentenceChunks` (`lib/translation.ts`) now
 sends at most 400 characters of whole sentences per call. `--rechunk` redoes
 the cached long translations (278 entries) and tags the new ones
 `trn-high/chunked`.
+The rechunk run finished and is published: no splices remain (the
+camel-join scan finds only source spellings such as "lJsbrand"). Where a
+chunked translation renamed the street itself, the guard refused it and the
+earlier translation stays.
 
 ## 2026-09-30 — review rides ride the due streets, and the briefing counts only those
 
