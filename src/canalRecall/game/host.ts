@@ -115,6 +115,9 @@ export interface LandmarkHost extends GameCoreHost {
   _landmarkNotice: LandmarkNotice | null;
   /** Why the current card is up, and how far through its life it is. */
   _landmarkNoticeHold: NoticeHold;
+  /** What opened the current card, which decides whether a landmark about to
+   *  be passed may replace it (`driveByTrigger.mayReplaceNotice`). */
+  _landmarkNoticeSource: import('./driveByTrigger').NoticeSource | null;
   _landmarkNoticeState: NoticeState;
   /** Recomputed each frame by `_updateLandmarks`, so the renderer does not have
    *  to know the fade rules. */

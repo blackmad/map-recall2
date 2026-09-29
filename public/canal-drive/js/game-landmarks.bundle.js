@@ -529,6 +529,95 @@
     return mode === "transit";
   }
 
+  // src/canalRecall/game/routeSelection.ts
+  function nearestRouteIndex(route, player) {
+    if (route.length === 1) return { index: 0, distance: Math.hypot(route[0].x - player.x, route[0].y - player.y) };
+    let index = 0, distance = Infinity;
+    for (let i = 0; i < route.length - 1; i++) {
+      const a = route[i], b = route[i + 1];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const t = Math.max(0, Math.min(1, ((player.x - a.x) * dx + (player.y - a.y) * dy) / (dx * dx + dy * dy || 1)));
+      const d = Math.hypot(a.x + dx * t - player.x, a.y + dy * t - player.y);
+      if (d < distance) {
+        distance = d;
+        index = i;
+      }
+    }
+    return { index, distance };
+  }
+
+  // src/canalRecall/game/driveByTrigger.ts
+  var DRIVE_BY_RADIUS = 300;
+  var DRIVE_BY_LOOKAHEAD_SECONDS = 3;
+  var DRIVE_BY_MIN_LOOKAHEAD = DRIVE_BY_RADIUS;
+  var DRIVE_BY_ROUTE_TOLERANCE = 140;
+  var DRIVE_BY_PASSED_BEHIND = 90;
+  var PREEMPT_AFTER_SECONDS = 2.5;
+  function pathAhead(rider, route) {
+    const reach = Math.max(DRIVE_BY_MIN_LOOKAHEAD, Math.abs(rider.speed) * DRIVE_BY_LOOKAHEAD_SECONDS);
+    if (route && route.length >= 2) {
+      const nearest = nearestRouteIndex(route, rider);
+      if (nearest.distance <= DRIVE_BY_ROUTE_TOLERANCE) {
+        const path = [{ x: rider.x, y: rider.y }];
+        let left = reach;
+        for (let i = nearest.index + 1; i < route.length && left > 0; i++) {
+          const from = path[path.length - 1];
+          const step = Math.hypot(route[i].x - from.x, route[i].y - from.y);
+          if (step >= left) {
+            const t = left / step;
+            path.push({ x: from.x + (route[i].x - from.x) * t, y: from.y + (route[i].y - from.y) * t });
+            left = 0;
+          } else {
+            path.push({ x: route[i].x, y: route[i].y });
+            left -= step;
+          }
+        }
+        if (path.length >= 2) return path;
+      }
+    }
+    const direction = rider.speed < 0 ? rider.angle + Math.PI : rider.angle;
+    return [
+      { x: rider.x, y: rider.y },
+      { x: rider.x + Math.cos(direction) * reach, y: rider.y + Math.sin(direction) * reach }
+    ];
+  }
+  function approachAlong(path, point) {
+    const start = path[0];
+    const lead = path[1];
+    const leadLength = Math.hypot(lead.x - start.x, lead.y - start.y) || 1;
+    const forward = ((point.x - start.x) * (lead.x - start.x) + (point.y - start.y) * (lead.y - start.y)) / leadLength;
+    if (forward < -DRIVE_BY_PASSED_BEHIND) return null;
+    let travelled = 0;
+    let best = null;
+    for (let i = 0; i < path.length - 1; i++) {
+      const a = path[i], b = path[i + 1];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const length = Math.hypot(dx, dy);
+      const t = length ? Math.max(0, Math.min(1, ((point.x - a.x) * dx + (point.y - a.y) * dy) / (length * length))) : 0;
+      const distance = Math.hypot(a.x + dx * t - point.x, a.y + dy * t - point.y);
+      if (!best || distance < best.distance) best = { distance, along: travelled + length * t };
+      travelled += length;
+    }
+    return best && best.distance <= DRIVE_BY_RADIUS ? best.along : null;
+  }
+  function pickDriveBy(candidates, path) {
+    let chosen = null;
+    let soonest = Infinity;
+    for (const candidate of candidates) {
+      const along = approachAlong(path, candidate);
+      if (along !== null && along < soonest) {
+        chosen = candidate;
+        soonest = along;
+      }
+    }
+    return chosen;
+  }
+  function mayReplaceNotice(source, hold, elapsed) {
+    if (!source || !hold) return true;
+    if (source === "click" || source === "arrival" || hold.kind === "sticky") return false;
+    return elapsed >= PREEMPT_AFTER_SECONDS;
+  }
+
   // src/canalRecall/transit/corridorStreets.ts
   function pointToSegDist(px, py, ax, ay, bx, by) {
     const dx = bx - ax;
@@ -592,7 +681,6 @@
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
   var CLICK_SELECT_RADIUS = 120;
-  var DRIVE_BY_RADIUS = 300;
   async function readJson(response, fallback) {
     if (!response.ok) return fallback;
     try {
@@ -628,7 +716,7 @@
         if (!building) return;
         nearest = this._cardForClickedBuilding(building);
       }
-      this._showLandmarkNotice(nearest, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
+      this._showLandmarkNotice(nearest, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS }, "click");
       this.vectorMap.setActiveLandmark(nearest);
     }
     /** Open a landmark card, saying why it is up — which is what decides when it
@@ -640,9 +728,11 @@
      *  certain to be shown, and a fact must not be spent on a card that never
      *  appears: `factCardText` chooses, and `commitShownFact` is what marks the
      *  sentence as told. */
-    _showLandmarkNotice(notice, hold) {
+    _showLandmarkNotice(notice, hold, source = "click") {
+      if (this._landmarkNotice) this.vectorMap?.setActiveLandmark(null);
       this._landmarkNotice = this._withRotatedFact(notice);
       this._landmarkNoticeHold = hold;
+      this._landmarkNoticeSource = source;
       this._landmarkNoticeState = openNotice();
       this._landmarkNoticeAlpha = 0;
       this._ensureLandmarkImage(this._landmarkNotice);
@@ -746,7 +836,7 @@
         imageUrl: entry.wikipediaImageUrl || "",
         wikipediaUrl: entry.wikipediaUrl || "",
         extractLang: entry.wikipediaExtractLang || "en"
-      }, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS });
+      }, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS }, "street");
     }
     // ---- Loading the extract ----
     async _loadLandmarks(centerLat, centerLng, segments) {
@@ -898,29 +988,34 @@
           this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
         }
       }
-      let nearest = null;
-      let nearestDistance = DRIVE_BY_RADIUS;
       const routePath = this.routePath;
       const landmarkRouteRadiusPx = isTransit(this.travelMode) ? (window.CanalRecallTransit?.TRANSIT_LANDMARK_ROUTE_RADIUS_M ?? 120) * PIXELS_PER_METER : Infinity;
+      const candidates = [];
+      const player = this.player;
+      const ahead = pathAhead(player, routePath);
+      const reach = ahead.reduce((sum, point, i) => i ? sum + Math.hypot(point.x - ahead[i - 1].x, point.y - ahead[i - 1].y) : 0, 0) + DRIVE_BY_RADIUS;
       for (const landmark of this.landmarks) {
         const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
         if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
         if (this._seenLandmarks.has(landmark.id)) continue;
         if (!isWorthACard(landmark)) continue;
+        if (distance > reach) continue;
         if (isTransit(this.travelMode) && routePath && routePath.length >= 2) {
           if (distanceToPath(routePath, landmark.x, landmark.y) > landmarkRouteRadiusPx) continue;
         }
-        if (distance < nearestDistance) {
-          nearest = landmark;
-          nearestDistance = distance;
-        }
+        candidates.push(landmark);
       }
-      if (this._landmarkNotice) return;
       if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
-      if (nearest) {
+      if (this._landmarkNotice && !mayReplaceNotice(
+        this._landmarkNoticeSource ?? null,
+        this._landmarkNoticeHold,
+        this._landmarkNoticeState.elapsed
+      )) return;
+      const nearest = pickDriveBy(candidates, ahead);
+      if (nearest && nearest.id !== this._landmarkNotice?.id) {
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);
-        this._showLandmarkNotice(nearest, { kind: "proximity", anchor: { x: nearest.x, y: nearest.y } });
+        this._showLandmarkNotice(nearest, { kind: "proximity", anchor: { x: nearest.x, y: nearest.y } }, "drive-by");
         this.vectorMap.setActiveLandmark(nearest);
       }
     }
