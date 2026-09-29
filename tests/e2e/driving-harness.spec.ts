@@ -368,9 +368,15 @@ test('driving harness: planned routes can actually be driven', async ({ page }) 
   // *sparser* network scores higher, since a half-sized one measured 71%. So
   // this asserts that the city stays drivable, and says nothing about whether
   // it is still fully mapped; `test:canal-car` is what pins coverage.
+  //
+  // Raised to 0.7 on 2026-09-30: the harness is deterministic now (102 of 120
+  // on every run, same lost drives, with one worker or three), so a drop of
+  // eighteen arrivals is a real regression in the guard, the graph or the
+  // physics, not noise. The earlier run-to-run spread went away with the
+  // 2026-09-29 load token, which stopped two loads writing the same world.
   const arrivalRate = report.outcomes.arrived / report.pairs;
   expect(arrivalRate,
-    `${report.outcomes.arrived} of ${report.pairs} drives arrived`).toBeGreaterThanOrEqual(0.45);
+    `${report.outcomes.arrived} of ${report.pairs} drives arrived`).toBeGreaterThanOrEqual(0.7);
 
   // And the network must not fragment back into islands.
   expect(report.componentShare).toBeGreaterThan(0.7);

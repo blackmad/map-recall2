@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — the driving harness is deterministic; arrival floor 45% → 70%
+
+TODO listed "arrivals vary by a few drives between runs with the same seed".
+That no longer reproduces:
+- 40 drives three times in one page, in two fresh pages, and in three at
+  once under CPU contention all give identical outcomes and failure lists;
+- the full 120 gives 102 arrived on every desktop run, and 103 on iPhone.
+
+The likely fix is the 2026-09-29 load token: two loads used to write the same
+world, so the origin and graph could differ. The floor was set loose at 45%
+to absorb that noise. It is now 70%, so a real regression shows. The traced
+lost drive at De Groene Zoom × Gelrestraat is the autopilot riding down a
+narrow-angle pedestrian fork and aiming past the kerb, not the road guard.
+
 ## 2026-09-30 — a glossary for street-name translations
 
 The Apple translator renders Dutch trade and planning words literally:
@@ -11,7 +25,7 @@ The Apple translator renders Dutch trade and planning words literally:
 
 `ORIGIN_GLOSSARY` in `lib/streetNameOrigins.ts` fixes each one only where
 the Dutch uses the trigger word, so "layout" stays in "garden city layout",
-and "dammed" stays where the Dutch has afgedamd. Republished with 14 texts
+and "dammed" stays where the Dutch has afgedamd. Republished with 30 texts
 corrected.
 
 ## 2026-09-30 — review rides plan their runners-up and ride the best one
