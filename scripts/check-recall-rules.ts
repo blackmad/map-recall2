@@ -12,6 +12,7 @@ import {
   findBridgeRouteAt,
   findCrossedBridge,
   headingOffRoad,
+  hudWithholdsRouteName,
   isPlaceKnown,
   pickDistractors,
   segmentsIntersect,
@@ -303,6 +304,20 @@ check('headingOffRoad folds direction of travel away', () => {
     'driving the same road backwards is still driving it');
   assert.ok(Math.abs(headingOffRoad(0, Math.PI / 2) - Math.PI / 2) < 1e-9,
     'a perpendicular crossing is the maximum offset');
+});
+
+check('the HUD never prints an unanswered name, however the bike is turned', () => {
+  const base = { roadName: 'Tuinstraat', currentName: '', promptName: '', candidateName: '', revealed: false, learned: false };
+  // Heading more than 45° off the road clears the candidate: the old rule
+  // then printed the name.
+  assert.equal(hudWithholdsRouteName(base), true, 'unasked, misaligned: withheld');
+  assert.equal(hudWithholdsRouteName({ ...base, currentName: 'Tuinstraat' }), false, 'the current corridor shows');
+  assert.equal(hudWithholdsRouteName({ ...base, learned: true }), false, 'an answered name shows');
+  assert.equal(hudWithholdsRouteName({ ...base, revealed: true }), false, 'a name already shown shows');
+  assert.equal(hudWithholdsRouteName({ ...base, currentName: 'Tuinstraat', promptName: 'Tuinstraat' }), true, 'the open question is withheld');
+  assert.equal(hudWithholdsRouteName({ ...base, currentName: 'Egelantiersgracht', candidateName: 'Tuinstraat', learned: true }), true,
+    'a settling candidate is withheld');
+  assert.equal(hudWithholdsRouteName({ ...base, roadName: '' }), false);
 });
 
 console.log(`Recall rules OK: ${checks.length} checks.`);

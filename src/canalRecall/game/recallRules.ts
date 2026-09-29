@@ -304,3 +304,37 @@ export function headingOffRoad(playerAngle: number, roadAngle: number): number {
   if (difference > Math.PI / 2) difference = Math.PI - difference;
   return difference;
 }
+
+export interface HudNameInput {
+  /** The name under the vehicle. */
+  roadName: string;
+  /** The corridor already asked, adopted or deferred. */
+  currentName: string;
+  /** The open question, if any. */
+  promptName: string;
+  /** The name settling into a question, if any. */
+  candidateName: string;
+  /** Shown to the player already (a correction, a label). */
+  revealed: boolean;
+  /** Answered correctly or adopted as known. */
+  learned: boolean;
+}
+
+/**
+ * Whether the HUD must withhold the name under the vehicle.
+ *
+ * It used to hide a name only while it was a question or a settling
+ * candidate. But candidacy is cleared whenever the heading is more than 45°
+ * off the road, so stopping and pivoting at a junction, riding across a street,
+ * or spawning misaligned printed an unanswered name in the plaque, and it was
+ * asked a moment later (found 2026-09-30 from screenshots with
+ * "DE WITTENKADE" and "TUINSTRAAT" in the HUD of a fresh profile). Now any
+ * name that is not the current corridor, and has not been answered or shown,
+ * stays hidden.
+ */
+export function hudWithholdsRouteName(input: HudNameInput): boolean {
+  if (input.promptName) return true;
+  if (input.candidateName && input.candidateName !== input.currentName) return true;
+  if (!input.roadName || input.roadName === input.currentName) return false;
+  return !input.revealed && !input.learned;
+}

@@ -163,6 +163,31 @@ test('HUD hides a new street before the delayed question opens', async ({ page }
   expect(hudCall).toEqual({ routeName: '', answerHidden: true });
 });
 
+// Named regression (2026-09-30, "DE WITTENKADE" / "TUINSTRAAT" in the plaque
+// of a fresh profile). Turned more than 45° off the road — pivoting at a
+// junction, crossing a street — the candidate is cleared, and the old rule
+// then printed the unanswered name.
+test('HUD withholds an unanswered street even when the bike is turned across it', async ({ page }) => {
+  await openCarRoute(page);
+  const hudCall = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const road = game.track.getRoadName(game.player.x, game.player.y, game.player.angle);
+    game.quizCurrentName = 'Previous Street';
+    game.quizCandidateName = '';
+    game.quizPromptName = '';
+    game.learnedNames.delete(road);
+    game.revealedNames.delete(road);
+    let captured: { routeName?: string; answerHidden?: boolean } | null = null;
+    game.hud.drawPlaque = (_ctx: unknown, opts: { routeName?: string; answerHidden?: boolean }) => {
+      captured = { routeName: opts.routeName, answerHidden: opts.answerHidden };
+    };
+    game._render();
+    return { road, captured };
+  });
+  expect(hudCall.road).toBeTruthy();
+  expect(hudCall.captured).toEqual({ routeName: '', answerHidden: true });
+});
+
 test('an actual high-speed car cannot escape the mapped road corridor', async ({ page }) => {
   await openCarRoute(page);
   await page.evaluate(() => {

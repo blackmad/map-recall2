@@ -346,6 +346,8 @@ export interface PresentationHost extends GameCoreHost {
 
   learnedNames: Set<string>;
   learnedStopNames: Set<string>;
+  /** Names already shown to the player; the HUD may print them. */
+  revealedNames: Set<string>;
   _mapLabelNames: Set<string>;
   _visitedNeighborhoods: Set<string>;
   _seenLandmarkNames: Set<string>;
