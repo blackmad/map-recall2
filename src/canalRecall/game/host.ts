@@ -311,8 +311,10 @@ export interface PresentationHost extends GameCoreHost {
   routePattern: RoutePattern;
   /** Expanding home-base learning ring, km; 0 when not on a home route. */
   _homeLearningRadiusKm: number;
-  /** Set when the current route is a review ride (see routeSelection.pickReviewRoute). */
-  _reviewRoute: { dueNear: string[] } | null;
+  /** Set when the current route is a review ride (see routeSelection.pickReviewRoute).
+   *  `dueNear`: due names near the straight line, at pick time; `dueOnPath`:
+   *  the due names the planned path rides, once planned. */
+  _reviewRoute: { dueNear: string[]; dueOnPath?: string[] } | null;
   /** 0-based leg while driving a multi-line transit hop. */
   _transitLegIndex: number;
   routeOptions: { answerMode: AnswerMode; line: boolean; arrow: boolean; minimap: boolean };

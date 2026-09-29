@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — review rides ride the due streets, and the briefing counts only those
+
+The learning router adds a familiarity penalty to mastered streets. Names due
+for review are mastered names, so a review ride, chosen because its straight
+line passes due names, was routed *away* from them. The briefing still
+promised "Review ride: N overdue names on the way" from the straight-line
+count.
+
+`planLearningRoadRoute` now takes `dueNames`:
+- due edges are discounted 35% instead of paying the familiarity penalty;
+- the detour cap widens from 12% to 25% (`reviewDetourRatio`);
+- the plan returns `dueNamesOnPath`.
+
+On a review ride, `game-route.js` passes every due name in the city (not
+stops). Mid-ride replans keep the bias. `_reviewRoute.dueOnPath` feeds the
+briefing, so it promises only the names the path rides. Regressions:
+- `check-road-graph.ts`: a due street beside a new one is ridden, and a due
+  street beyond the cap is not;
+- `review-ride.spec.ts`: planted names on no real street leave an honest
+  briefing with no review promise, and a real street beside the planned path,
+  once due, is ridden within the cap.
+
 ## 2026-09-30 — the gate rebuilds every game bundle and names stale ones
 
 `check:canal` rebuilt 21 bundles. The car guard, three.js, the 3D/vehicle and

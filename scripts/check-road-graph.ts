@@ -4,6 +4,7 @@ import {
   findRoadRoute,
   findRoadRouteToFirstReachable,
   planLearningRoadRoute,
+  type RoadGraphEdge,
   type RoadGraphSegment,
 } from '../src/canalRecall/routing/roadGraph';
 
@@ -42,6 +43,38 @@ const cappedPlan = planLearningRoadRoute(graph, { x: 0, y: 0 }, { x: 20, y: 0 },
 });
 assert.equal(cappedPlan?.usedLearningBias, false, 'an attractive but long unfamiliar route is rejected');
 assert.deepEqual(cappedPlan?.path, [{ x: 0, y: 0 }, { x: 10, y: 0 }, { x: 20, y: 0 }]);
+
+// Review rides: a due name is the point of the ride. The familiarity penalty
+// used to push a review ride off the very (familiar, due) street it was
+// chosen to review.
+{
+  // 'familiar' is due and slightly longer than the new street beside it.
+  const reviewSegments: RoadGraphSegment<Street>[] = [
+    { metadata: { id: 'novel' }, points: [{ x: 0, y: 0 }, { x: 20, y: 0 }] },
+    { metadata: { id: 'familiar' }, points: [{ x: 0, y: 0 }, { x: 10, y: 5 }, { x: 20, y: 0 }] },
+  ];
+  const reviewGraph = buildRoadGraph(reviewSegments, { mergeSize: 1, junctionStitchRadius: 0 });
+  const names = (edge: RoadGraphEdge<Street>) => edge.segmentMetadata.flatMap((street) => street?.id ?? []);
+  const plain = planLearningRoadRoute(reviewGraph, { x: 0, y: 0 }, { x: 20, y: 0 }, {
+    masteryForName: (name) => name === 'familiar' ? 1 : 0, namesForEdge: names,
+  });
+  assert.deepEqual(plain?.dueNamesOnPath, [], 'no review: nothing is due');
+  assert.ok(plain?.path.every((point) => point.y === 0), 'an ordinary ride takes the new street');
+  const review = planLearningRoadRoute(reviewGraph, { x: 0, y: 0 }, { x: 20, y: 0 }, {
+    masteryForName: (name) => name === 'familiar' ? 1 : 0, namesForEdge: names,
+    dueNames: new Set(['familiar']),
+  });
+  assert.deepEqual(review?.dueNamesOnPath, ['familiar'], 'a review ride rides the due street');
+  assert.ok((review?.detourRatio ?? 1) <= 0.25);
+  // Beyond the review cap, the shortest path stands and says what it passes.
+  const far = planLearningRoadRoute(buildRoadGraph([
+    { metadata: { id: 'novel' }, points: [{ x: 0, y: 0 }, { x: 20, y: 0 }] },
+    { metadata: { id: 'familiar' }, points: [{ x: 0, y: 0 }, { x: 10, y: 15 }, { x: 20, y: 0 }] },
+  ], { mergeSize: 1, junctionStitchRadius: 0 }), { x: 0, y: 0 }, { x: 20, y: 0 }, {
+    masteryForName: () => 0, namesForEdge: names, dueNames: new Set(['familiar']),
+  });
+  assert.deepEqual(far?.dueNamesOnPath, [], 'a review never costs more than the cap');
+}
 
 // Soft home-ring bias: the outer corridor costs more, so the path hugs home.
 const ringSegments: RoadGraphSegment<Street>[] = [
