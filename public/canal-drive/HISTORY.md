@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — `check:canal` is a runner, not a 104-step `&&` chain
+
+User: "this seems absurd btw" about the one-line gate in package.json. It
+stopped at the first failure without saying what else was broken, ran
+everything serially, and could not be read or edited. `scripts/check-canal.ts`
+keeps exactly the same 104 steps as lists. Lint and the 21 builds run in order
+and fail fast, because checks read the bundles they write. The 81 checks run in
+parallel (`--jobs`, default half the cores) and keep going past failures, then
+Storybook builds. It ends with a summary and each failure's output. `--only=`,
+`--skip=` and `--no-storybook` narrow a run. The whole gate now takes about
+30 s.
+Two checks that could never pass in a fresh checkout were fixed along the way.
+`check-lod1-semantic-tags` looked for `tsx` two directories above the repo (a
+nested-worktree assumption), and now uses this checkout's first.
+`check-panorama-variety-review` pinned a manifest in a gitignored `local/`
+folder. It now checks the fixture's own invariants always and the pinning only
+where the manifest is on disk, saying so when it skips.
+
 ## 2026-09-29 — review rides: Plan review picks a route past the names that are due
 
 TODO item 6. **Plan review** on the knowledge screen used to switch questions
