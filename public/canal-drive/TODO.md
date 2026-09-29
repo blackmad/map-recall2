@@ -65,17 +65,6 @@ The pipeline shipped on 2026-09-29 (see HISTORY). The source is the BAG
 
 ## P2 — Weight and reach
 
-**Our own POI layer (user request 2026-09-29).**
-The basemap's POI layer can't be filtered for spoilers or density, sits at
-ground level, and has no link to our buildings. Build one from the OSM extract
-with our own filtering:
-- spoiler names, category and density caps per zoom;
-- a building join, using the `ref:bag` path that `resolve-landmark-buildings.ts`
-  already proved;
-- a per-POI roof-height lift.
-
-Then drop the basemap POI layers.
-
 **Municipal trivia beyond street names.** `monumenten` (9,817 records with
 architect, build year, original function, and a public description on about
 20%), `amsterdam_canon` (49 windows with location), and `civieleconstructies`

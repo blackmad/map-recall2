@@ -54,3 +54,59 @@ test('pitched chase lifts landmark and shop labels onto the buildings', async ({
   // Landmarks include trees and memorials on open ground (Bevrijdingslinde).
   expect(result.landmarks, 'landmark dots and labels stay on their ground point').toBe(0);
 });
+
+// Named regression (user requests 2026-09-29, "should we just implement our
+// own POI later?" / "for POI layer we can also do our own filtering"). Our own
+// layer replaces the basemap's: the basemap POIs are hidden, ours draw above
+// the buildings, each height band on its own roofline, outdoor places on the
+// ground, and no label names a quiz-eligible street.
+test('our own POI layer replaces the basemap and sits on each building\'s roofline', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'map styling; one project is enough');
+  test.setTimeout(150000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._ownPoisActive ?? false), { timeout: 30000 }).toBe(true);
+  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getPitch()), { timeout: 30000 }).toBeGreaterThan(20);
+  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._poiLiftPitch ?? null)).not.toBeNull();
+  const result = await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+    const lib = (window as any).CanalRecallOrientationPois;
+    const zoom = map.getZoom();
+    const liftAt = (id: string) => {
+      const value = map.getPaintProperty(id, 'text-translate');
+      if (!Array.isArray(value) || value[0] !== 'interpolate') return 0;
+      const [, , , z0, [, v0], z1, [, v1]] = value;
+      return v0[1] + (v1[1] - v0[1]) * (2 ** (zoom - z0) - 1) / (2 ** (z1 - z0) - 1);
+    };
+    const order = map.getStyle().layers.map((layer: any) => layer.id);
+    const lift: Record<string, number> = {};
+    for (const band of lib.OWN_POI_BANDS) lift[band] = liftAt(lib.ownPoiLayerIds(band).labels);
+    const basemapVisible = lib.basemapOrientationPoiLayerIds(map.getStyle().layers)
+      .filter((id: string) => map.getLayoutProperty(id, 'visibility') !== 'none');
+    const ownIds = lib.OWN_POI_BANDS.flatMap((band: string) => Object.values(lib.ownPoiLayerIds(band)));
+    const features = vm._ownPoiData?.features ?? [];
+    const spoiled = features.filter((f: any) => vm._spoils(f.properties.name)).map((f: any) => f.properties.name);
+    return {
+      lift, basemapVisible, count: features.length, spoiled,
+      belowBuildings: ownIds.filter((id: string) => order.indexOf(id) < order.indexOf('osm-colored-building-roofs')),
+    };
+  });
+  expect(result.basemapVisible, 'the basemap POIs are hidden').toEqual([]);
+  expect(result.count).toBeGreaterThan(1000);
+  expect(result.spoiled).toEqual([]);
+  expect(result.belowBuildings).toEqual([]);
+  expect(result.lift.ground).toBe(0);
+  expect(result.lift.low).toBeLessThan(-3);
+  expect(result.lift.mid).toBeLessThan(result.lift.low);
+  expect(result.lift.high).toBeLessThan(result.lift.mid);
+
+  // A question hides the names, which could answer "where am I?"; the dots stay.
+  const quiet = await page.evaluate(() => {
+    const vm = (window as any).canalRecallGame.vectorMap, lib = (window as any).CanalRecallOrientationPois;
+    vm.setQuizQuietMap(true);
+    const { dots, labels } = lib.ownPoiLayerIds('mid');
+    const state = { dots: vm.map.getLayoutProperty(dots, 'visibility'), labels: vm.map.getLayoutProperty(labels, 'visibility') };
+    vm.setQuizQuietMap(false);
+    return { ...state, after: vm.map.getLayoutProperty(labels, 'visibility') };
+  });
+  expect(quiet).toEqual({ dots: 'visible', labels: 'none', after: 'visible' });
+});

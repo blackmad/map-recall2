@@ -60,6 +60,8 @@
     "build:canal-orientation-pois": "esbuild src/canalRecall/orientationPois.ts --bundle --format=iife --global-name=CanalRecallOrientationPois --outfile=public/canal-drive/js/orientation-pois.bundle.js --minify",
     "test:orientation-pois": "tsx scripts/check-orientation-pois.ts",
     "test:cycle-tracks": "tsx scripts/check-cycle-tracks.ts",
+    "test:own-pois": "tsx scripts/check-own-pois.ts",
+    "build:orientation-pois": "tsx scripts/build-orientation-pois.ts",
     "test:translation": "tsx scripts/check-translation.ts",
     "fetch:street-name-origins": "tsx scripts/fetch-street-name-origins.ts",
     "translate:street-name-origins": "tsx scripts/translate-street-name-origins.ts",

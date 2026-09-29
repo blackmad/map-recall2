@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — the game draws its own POIs
+
+User requests: "should we just implement our own POI later?" and "for POI layer
+we can also do our own filtering". The basemap's POI layer drew what
+OpenMapTiles ranks for a general map: bins and toilet icons in every park,
+grey names on the pavement. We could only screen its spoilers through a
+filter expression, and it knew nothing about our buildings.
+
+`scripts/build-orientation-pois.ts` builds `orientation-pois.json` (468 KB)
+from the local OSM PBF:
+- `src/canalRecall/poiCatalog.ts` decides what is a cue: culture, worship,
+  education, health, civic, lodging, shops, bike shops and rental, parks and
+  markets, and food and drink. Street furniture and closed places are out.
+- Rank is category weight plus Wikidata/Wikipedia plus mapped as an area.
+- The Albert Heijn brand icons and the landmarks are deduplicated away.
+- Every indoor place is joined to its streamed building, exactly as landmarks
+  are, and gets that building's height band (ground/low/mid/high).
+- Result: 10,707 places, of which 4,749 are food.
+
+At runtime (`src/canalRecall/ownPois.ts`, shipped in the orientation bundle):
+- spoilers are screened before drawing, and places are thinned to the best
+  per 70 m cell;
+- each band is one layer pair (dot and label) lifted to its own roofline;
+  parks and markets stay on the ground;
+- the layers sit above the buildings with the other POI layers;
+- names hide during a quiz and dots stay;
+- the basemap POIs are hidden wherever our file loaded, including when every
+  label is toggled on. A city without the file keeps the basemap's.
+
+Regressions: `scripts/check-own-pois.ts` and `poi-lift.spec.ts` (basemap
+hidden, bands ordered, no spoilers, quiz-quiet).
+
 ## 2026-09-29 — separated cycle tracks are drawn, so the route lies on something
 
 User report: "what could we do to get the blue line onto the white rendered
