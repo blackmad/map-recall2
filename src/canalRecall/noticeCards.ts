@@ -92,11 +92,12 @@ export function measureLandmarkCard(
   const maxTextWidth = Math.max(60, cardWidth - textLeft - PAD_RIGHT);
   const body = props.body || '';
   const maxLines = hasImage ? PHOTO_BODY_LINES : (body ? BARE_BODY_LINES : 0);
-  const lines = wrapToLines(body, maxTextWidth, maxLines, measure, BODY_FONT);
+  const wrapped = wrapToLines(body, maxTextWidth, maxLines, measure, BODY_FONT);
   // The card shows a prefix of the body; whether anything was left behind is
   // what decides if there is a bigger version worth opening.
-  const shownWords = lines.reduce((total, line) => total + line.split(' ').length, 0);
+  const shownWords = wrapped.reduce((total, line) => total + line.split(' ').length, 0);
   const truncated = body ? shownWords < body.split(' ').length : false;
+  const lines = truncated ? endCutLines(wrapped, maxTextWidth, measure, BODY_FONT) : wrapped;
 
   const badges: LandmarkCardLayout['badges'] = [];
   let cursor = textLeft;
@@ -147,6 +148,27 @@ export function measureLandmarkCard(
     lines,
     truncated,
   };
+}
+
+/**
+ * A cut body ends cleanly: on the last whole sentence the lines hold, when
+ * that keeps at least half of them, otherwise on a word with "…". A card
+ * ending "…officially called the Kerkstraatbrug," read as a rendering fault
+ * (the same complaint as the finish card, user report 2026-09-29).
+ */
+export function endCutLines(lines: readonly string[], maxWidth: number, measure: TextMeasurer, font: string): string[] {
+  if (!lines.length) return [];
+  const shown = lines.join(' ');
+  let stop = -1;
+  for (const match of shown.matchAll(/[.!?]["')\]]?(?=\s|$)/g)) stop = match.index! + match[0].length;
+  if (stop >= shown.length / 2) return wrapToLines(shown.slice(0, stop), maxWidth, lines.length, measure, font);
+  const out = lines.slice();
+  let last = out[out.length - 1].replace(/[\s,;:–—-]+$/, '');
+  while (last.includes(' ') && measure(`${last}…`, font) > maxWidth) {
+    last = last.slice(0, last.lastIndexOf(' ')).replace(/[\s,;:–—-]+$/, '');
+  }
+  out[out.length - 1] = `${last}…`;
+  return out;
 }
 
 /**

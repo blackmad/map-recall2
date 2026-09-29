@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — canvas cards end on a sentence; Storybook states for the new cards
+
+The phone BRIDGE card ended "…officially called the Kerkstraatbrug,". That is
+the same complaint as the finish card (user report 2026-09-29), in the canvas
+card's line budget (`noticeCards.wrapToLines`). `endCutLines` now ends a cut
+body on the last whole sentence the lines hold, when that keeps at least half
+of them. Otherwise it ends on a word with "…". The "+ MORE" badge still opens
+the rest. Named check in `check-notice-cards.ts` (Magere Brug).
+
+New Storybook states: `BridgeOriginCard`, `BuildingFactsCard` and their
+`Portrait…` phone variants.
+
 ## 2026-09-30 — a clicked building says when it was built; clicks open what was clicked
 
 **Building facts.** Clicking a building that is not a landmark used to open a
