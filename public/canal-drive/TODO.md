@@ -70,7 +70,7 @@ and function now reach clicked buildings (see HISTORY, 2026-09-30). Still open:
 - `amsterdam_canon` (49 windows with location and a stadsarchief link) could
   be landmark-like stops;
 - bridge cards now carry the register (see HISTORY). Locks (`sluizen`, 46)
-  and the 17 ambiguous bridges are not described yet. The ambiguous ones
+  and the 11 ambiguous bridges are not described yet. The ambiguous ones
   could be resolved per crossing from `bridge-crossings.json`, not per name.
 
 **Driving harness: the remaining lost drives (updated 2026-09-30).**

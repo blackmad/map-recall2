@@ -82,6 +82,35 @@ const capitalise = (text: string) => text.charAt(0).toUpperCase() + text.slice(1
 
 const normaliseName = (name: string) => name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
 
+/** A spelling key: `ij` and `y` are one letter in older Dutch spelling
+ *  (Ryckerbrug, Rijckerbrug), and the bridge/lock suffix is dropped. */
+const spellingKey = (name: string) => normaliseName(name).replace(/ij/g, 'y').replace(/(brug|sluis)$/, '');
+
+function editDistance(a: string, b: string): number {
+  let previous = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    const current = [i];
+    for (let j = 1; j <= b.length; j++) {
+      current[j] = Math.min(previous[j] + 1, current[j - 1] + 1, previous[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    previous = current;
+  }
+  return previous[b.length];
+}
+
+/**
+ * The same bridge under two spellings: OSM "Gustav Leonhardtbrug", register
+ * "Gustav Leonardbrug"; "Bullebaksluis" and "Bullebakssluis". At most two
+ * edits, on names of six letters or more. Neighbouring bridges in one
+ * district are named from one theme and differ by more than that
+ * (Goudvinkbrug and Goudhaanbrug are four edits apart).
+ */
+export function sameBridgeName(a: string, b: string): boolean {
+  const x = spellingKey(a), y = spellingKey(b);
+  if (x === y) return true;
+  return Math.min(x.length, y.length) >= 6 && editDistance(x, y) <= 2;
+}
+
 /**
  * Which register bridge a named game bridge is. `candidates` are the register
  * rows whose outline the bridge's mapped ways touch. One named like the bridge
@@ -93,12 +122,11 @@ export function chooseRegisterBridge(name: string, candidates: readonly BridgeRe
   // OSM names some bridges only by their painted number ("Brug 68").
   const numbered = /^brug\s+(\d+)$/i.exec(name.trim());
   if (numbered) return candidates.find(row => bridgeNumber(row[0]) === Number(numbered[1])) ?? null;
-  const key = normaliseName(name);
-  const named = candidates.filter(row => row[1] && normaliseName(row[1]) === key);
+  const named = candidates.filter(row => row[1] && sameBridgeName(row[1], name));
   if (named.length === 1) return named[0];
   if (named.length > 1) return null;
   const distinct = [...new Map(candidates.map(row => [row[0], row])).values()];
   if (distinct.length !== 1) return null;
   // A register name that differs is another bridge the way only brushes.
-  return distinct[0][1] && normaliseName(distinct[0][1]) !== key ? null : distinct[0];
+  return distinct[0][1] && !sameBridgeName(distinct[0][1], name) ? null : distinct[0];
 }
