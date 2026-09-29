@@ -149,6 +149,9 @@ export type RelativeCommand = {
   speedFraction: number;
   /** Pulled straight back hard: brake, and once slow, turn round. */
   turnAround: boolean;
+  /** Held hard sideways without pushing forward: when nearly stopped, swing
+   *  on the spot this way (-1 left .. 1 right) instead of rolling forward. */
+  pivot: number;
 };
 
 /** A hard turn slows to this fraction of the cruise, like a cyclist turning
@@ -159,6 +162,15 @@ export const HARD_TURN_SPEED_SCALE = 0.3;
 export const TURN_AROUND_MAX_SPEED = 30;
 /** How quickly the bike swings round on the spot, rad/s (~0.6 s for 180°). */
 export const TURN_AROUND_RATE = 5.5;
+/** Pivot on the spot at full sideways lock, rad/s (~1 s for 180°). Slower
+ *  than a turn-around so the rider can stop on the heading they want. */
+export const PIVOT_RATE = 3.2;
+/** Sideways past this steer, with less forward push than PIVOT_MAX_FORWARD,
+ *  asks for a pivot. Stuck against a kerb, the hard-turn cruise still rolled
+ *  the bike forward into it, and the road guard straightened it again (user
+ *  report 2026-09-29, "because turning also tries to go forward"). */
+export const PIVOT_MIN_STEER = 0.7;
+export const PIVOT_MAX_FORWARD = 0.25;
 
 /** Absolute mode: slow down while the heading is far from where the stick
  *  points, so turning back along the street happens in place rather than as
@@ -180,9 +192,10 @@ export function turnAroundHeading(angle: number, roadAngle: number | null | unde
 
 /** Relative (car-style) steering from a held stick. Holding the stick at all
  *  means "drive": it cruises, sideways steers in proportion, pulling back
- *  brakes, pushing forward runs at full speed. */
+ *  brakes, pushing forward runs at full speed. Hard sideways also carries a
+ *  pivot, which the player uses only when nearly stopped: moving, it arcs. */
 export function relativeCommand(vector: StickVector | null): RelativeCommand {
-  if (!vector) return { steer: 0, brake: 0, speedFraction: STICK_CRUISE_FRACTION, turnAround: false };
+  if (!vector) return { steer: 0, brake: 0, speedFraction: STICK_CRUISE_FRACTION, turnAround: false, pivot: 0 };
   // A gentle curve: small deflections make fine corrections, the rim is full lock.
   const steer = Math.sign(vector.x) * Math.min(1, Math.abs(vector.x) ** 0.8 * 1.15);
   const back = vector.y;
@@ -190,14 +203,15 @@ export function relativeCommand(vector: StickVector | null): RelativeCommand {
     // Straight back and hard is "turn round", not reverse: a bike does not
     // back down a street, and reversing in circles was all it used to do.
     const turnAround = back > 0.75 && Math.abs(vector.x) < 0.45;
-    return { steer: turnAround ? 0 : steer, brake: Math.min(1, (back - 0.45) / 0.35), speedFraction: 0, turnAround };
+    return { steer: turnAround ? 0 : steer, brake: Math.min(1, (back - 0.45) / 0.35), speedFraction: 0, turnAround, pivot: 0 };
   }
   const forward = Math.max(0, -vector.y);
   let speedFraction = STICK_CRUISE_FRACTION + (1 - STICK_CRUISE_FRACTION) * Math.min(1, forward / 0.8);
   // Ease off as the turn tightens: full speed to half lock, a crawl at full lock.
   const lock = Math.max(0, (Math.abs(steer) - 0.5) / 0.5);
   speedFraction *= 1 - (1 - HARD_TURN_SPEED_SCALE) * lock;
-  return { steer, brake: 0, speedFraction, turnAround: false };
+  const pivot = Math.abs(steer) > PIVOT_MIN_STEER && forward < PIVOT_MAX_FORWARD ? steer : 0;
+  return { steer, brake: 0, speedFraction, turnAround: false, pivot };
 }
 
 export type AbsoluteCommand = {
