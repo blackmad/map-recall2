@@ -1551,6 +1551,7 @@ export class GamePresentationRuntime {
       cityName: this._cityDisplayName(),
       homeLearningRadiusKm: this._homeLearningRadiusKm || 0,
       hasColdOpenReview: COLD_OPEN_ENABLED && hasCold,
+      reviewDueNearRoute: this._reviewRoute ? this._reviewRoute.dueNear.length : 0,
     });
   }
 

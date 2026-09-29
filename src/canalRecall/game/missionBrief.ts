@@ -13,6 +13,9 @@ export interface MissionBriefInput {
   homeLearningRadiusKm?: number;
   /** Overdue review waiting in the first minute. */
   hasColdOpenReview?: boolean;
+  /** Due names near a review ride's line. A count only: naming them would
+   *  answer the questions before they are asked. */
+  reviewDueNearRoute?: number;
 }
 
 export interface MissionBrief {
@@ -58,6 +61,13 @@ function pick<T>(items: T[], salt: string): T {
 
 /** Build a punchline that teaches intent without revealing corridor names. */
 export function missionBrief(input: MissionBriefInput): MissionBrief {
+  const brief = composeBrief(input);
+  const due = input.reviewDueNearRoute ?? 0;
+  if (due > 0) return { ...brief, tease: due === 1 ? 'Review ride: 1 overdue name on the way' : `Review ride: ${due} overdue names on the way` };
+  return brief;
+}
+
+function composeBrief(input: MissionBriefInput): MissionBrief {
   const dest = (input.destinationName || 'your destination').trim();
   const salt = `${input.cityName}|${dest}|${input.travelMode}|${input.routePattern}`;
 

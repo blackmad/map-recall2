@@ -211,6 +211,96 @@ export function pickHomeDestination(
   return fallback ? { poi: fallback, radiusKm } : null;
 }
 
+// ---------------------------------------------------------------------------
+// Review rides (TODO item 6, "due-aware where next").
+//
+// Plan review used to switch questions to due names only, while the route
+// was still a random pair: most due names never came under the wheels, and a
+// question about a place you cannot see teaches a false pairing. A review
+// ride instead picks the landmark pair whose straight line passes the most
+// due names. Trips keep their usual length cap, so the detour is bounded by
+// construction; the route planner's own due-name bias does the rest.
+// ---------------------------------------------------------------------------
+
+/** A due name counts as on the way within this distance of the from→to line. */
+export const REVIEW_CORRIDOR_KM = 0.2;
+/** Shorter pairs are stub trips that pass nothing. */
+export const REVIEW_MIN_TRIP_KM = 0.8;
+/** Starts sampled when the start is free (surprise); keeps the search cheap. */
+export const REVIEW_FROM_SAMPLES = 40;
+/** Among pairs passing the most names, allow this much extra length. */
+export const REVIEW_LENGTH_SLACK = 1.3;
+
+export interface DuePlace {
+  name: string;
+  center: [number, number];
+}
+
+export interface ReviewRouteInput {
+  pois: readonly RoutePoi[];
+  due: readonly DuePlace[];
+  /** Fixed start (home, GPS); omitted, a start is chosen too. */
+  from?: RoutePoi | null;
+  maxKm?: number;
+  chooseIndex?: ChooseIndex;
+  excludeId?: string | null;
+}
+
+export interface ReviewRoutePick {
+  from: RoutePoi;
+  to: RoutePoi;
+  /** Distinct due names within the corridor, for the briefing count. */
+  dueNear: string[];
+}
+
+function kmToSegment(point: { lat: number; lng: number }, a: { lat: number; lng: number }, b: { lat: number; lng: number }): number {
+  const kx = 111.32 * Math.cos(a.lat * Math.PI / 180), ky = 111.32;
+  const px = (point.lng - a.lng) * kx, py = (point.lat - a.lat) * ky;
+  const bx = (b.lng - a.lng) * kx, by = (b.lat - a.lat) * ky;
+  const t = Math.max(0, Math.min(1, (px * bx + py * by) / (bx * bx + by * by || 1)));
+  return Math.hypot(px - bx * t, py - by * t);
+}
+
+/** The pair passing the most due names, or null when no pair passes any. */
+export function pickReviewRoute(input: ReviewRouteInput): ReviewRoutePick | null {
+  const maxKm = input.maxKm ?? ROUTE_POI_MAX_PAIR_KM;
+  const chooseIndex = input.chooseIndex ?? randomIndex;
+  const due = input.due.filter(place => place.name && Number.isFinite(place.center[0]) && Number.isFinite(place.center[1]))
+    .map(place => ({ name: place.name, lat: place.center[0], lng: place.center[1] }));
+  const pois = input.pois.filter(poi => poi.id !== input.excludeId);
+  if (!due.length || pois.length < 2) return null;
+  let froms: RoutePoi[];
+  if (input.from) froms = [input.from];
+  else {
+    const pool = pois.slice();
+    froms = [];
+    while (pool.length && froms.length < REVIEW_FROM_SAMPLES) froms.push(pool.splice(chooseIndex(pool.length), 1)[0]);
+  }
+  type Pair = ReviewRoutePick & { km: number };
+  let best = 0;
+  let pairs: Pair[] = [];
+  for (const from of froms) {
+    // Only due names that could lie near some line out of this start.
+    const reachable = due.filter(place => kmBetween(from, place) <= maxKm + REVIEW_CORRIDOR_KM);
+    if (!reachable.length) continue;
+    for (const to of pois) {
+      if (to.id === from.id) continue;
+      const km = kmBetween(from, to);
+      if (km < REVIEW_MIN_TRIP_KM || km > maxKm) continue;
+      const names = new Set<string>();
+      for (const place of reachable) if (kmToSegment(place, from, to) <= REVIEW_CORRIDOR_KM) names.add(place.name);
+      if (names.size < best || names.size === 0) continue;
+      if (names.size > best) { best = names.size; pairs = []; }
+      pairs.push({ from, to, dueNear: [...names].sort(), km });
+    }
+  }
+  if (!pairs.length) return null;
+  const shortest = Math.min(...pairs.map(pair => pair.km));
+  const close = pairs.filter(pair => pair.km <= shortest * REVIEW_LENGTH_SLACK);
+  const { km: _km, ...picked } = close[chooseIndex(close.length)];
+  return picked;
+}
+
 /** Projects a POI onto the loaded network, or `null` where it does not snap. */
 export type SnapToNetwork = (poi: RoutePoi) => WorldPoint | null;
 
