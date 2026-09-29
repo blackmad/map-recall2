@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — detailed mode: no dot once the building is lit; no raycast for a tree
+
+In detailed (3D tile) mode the locator dot is drawn deliberately, because the
+mesh highlight raycasts straight down at the landmark's point and misses
+whenever the place is not its own mesh. It was drawn even when the raycast
+did light the building: "both the yellow dot and the yellow building" (user
+report 2026-09-29). Now:
+- `DetailedBuildings` calls `onLandmarkHighlighted` when its raycast lights
+  a mesh, and the map then clears the dot;
+- a landmark resolved to no building (`buildingIds: []`, a tree or statue) is
+  not raycast at all, because the ray could only find the building beside it.
+
+The signature bundle rebuilt here also carries the earlier `highlights()`
+check, which had not been bundled.
+
 ## 2026-09-30 — listed buildings say who designed them and what they were for
 
 The municipal monument register (`api.data.amsterdam.nl/v1/monumenten`) links

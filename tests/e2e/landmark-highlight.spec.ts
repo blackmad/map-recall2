@@ -115,6 +115,8 @@ test('a clicked ordinary building tells its year instead of "no details"', async
   }), { timeout: 60000 }).toBe(true);
   const card = await page.evaluate(() => {
     const game = (window as any).canalRecallGame;
+    // An ordinary building: not a landmark's, so the landmark card cannot answer.
+    game.landmarks = [];
     const feature = game.vectorMap._completeCity.cache.collection().features
       .find((f: any) => (game._buildingFacts.lookup(f.properties.id) || [0])[0] > 0);
     const [lng, lat] = feature.geometry.type === 'Polygon' ? feature.geometry.coordinates[0][0] : feature.geometry.coordinates[0][0][0];

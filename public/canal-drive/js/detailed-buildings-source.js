@@ -39,7 +39,11 @@ export class DetailedBuildings {
   }
 
   setActiveLandmark(landmark) {
-    this.activeLandmark = landmark && landmark.lngLat ? landmark : null;
+    // A landmark resolved to no building (a tree, a statue) has nothing to
+    // raycast for: straight down from its point, the ray could only find the
+    // building beside it (landmark-buildings.json, 2026-09-30).
+    const noBuilding = landmark && Array.isArray(landmark.buildingIds) && !landmark.buildingIds.length;
+    this.activeLandmark = landmark && landmark.lngLat && !noBuilding ? landmark : null;
     this._clearHighlight();
     this.map.triggerRepaint();
   }
@@ -106,6 +110,9 @@ export class DetailedBuildings {
     mesh.userData.canalRecallOriginalMaterial = mesh.material;
     mesh.material = Array.isArray(mesh.material) ? mesh.material.map(tint) : tint(mesh.material);
     this._highlightedMesh = mesh;
+    // The map drops its locator dot once the building itself is lit (user
+    // report 2026-09-29, "both the yellow dot and the yellow building").
+    if (typeof this.onLandmarkHighlighted === 'function') this.onLandmarkHighlighted(this.activeLandmark);
   }
 
   _makeLayer() {
