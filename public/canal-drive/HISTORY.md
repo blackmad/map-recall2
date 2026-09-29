@@ -95,7 +95,13 @@ number (Magere Brug is 242) comes from the object number.
   Several unnamed outlines count as ambiguous and the bridge is left out,
   because giving a road over five bridges one of them's year would teach
   something false.
-- Result: 240 of 300 described, 17 ambiguous, and 43 with no outline. The
+- Result: 240 of 300 described, 17 ambiguous, and 43 with no outline.
+  Later the same night, `sameBridgeName` began accepting spelling variants:
+  `ij`/`y`, the brug/sluis suffix, and at most two edits on names of six
+  letters or more (Ryckerbrug = Rijckerbrug, Gustav Leonhardtbrug = Gustav
+  Leonardbrug). That brought it to 246, with 11 ambiguous. Neighbouring
+  bridges named from one theme (Goudvinkbrug, Goudhaanbrug) are four edits
+  apart and still refused. The
   unmatched ones are mostly railway bridges and bridges the city does not
   manage.
 - The card sentence attributes the year ("dated 1884 in the city's bridge

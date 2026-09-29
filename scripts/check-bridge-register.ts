@@ -9,7 +9,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import {
-  bridgeNumber, chooseRegisterBridge, describeRegisteredBridge, registerFact,
+  bridgeNumber, chooseRegisterBridge, sameBridgeName, describeRegisteredBridge, registerFact,
   type BridgeRegisterFile, type BridgeRegisterRow,
 } from '../src/canalRecall/bridgeRegister';
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, streetCardText, STREET_CARD_LONG_CHARS } from '../src/canalRecall/game/routeKnowledge';
@@ -36,6 +36,17 @@ check('register rows read as English facts (Magere Brug is "Beweegbare brug")', 
   assert.deepEqual(blauw, { movable: false, nr: 236, material: 'steel', year: 1884, carries: 'road traffic' });
   assert.equal(registerFact(row('BRU0001', '', 'Vaste brug', 'Onbekend', 1005)).year, undefined, 'a placeholder year is not taught');
   assert.equal(registerFact(row('BRU0001', '', 'Vaste brug', '', 2999)).material, undefined);
+});
+
+check('spelling variants of one bridge match; neighbouring bridges named from one theme do not', () => {
+  assert.ok(sameBridgeName('Ryckerbrug', 'Rijckerbrug'), 'ij and y');
+  assert.ok(sameBridgeName('Bullebaksluis', 'Bullebakssluis'));
+  assert.ok(sameBridgeName('Gustav Leonhardtbrug', 'Gustav Leonardbrug'));
+  assert.ok(sameBridgeName('Kattenrugbrug', 'Katterug'));
+  assert.ok(!sameBridgeName('Goudvinkbrug', 'Goudhaanbrug'), 'Gierzwaluwbrug\'s outline neighbour');
+  assert.ok(!sameBridgeName('Gierzwaluwbrug', 'Goudvinkbrug'));
+  assert.ok(!sameBridgeName('Groene spechtbrug', 'Grote Zilverreigerbrug'));
+  assert.ok(!sameBridgeName('Oostbrug', 'Westbrug'), 'short names must match exactly');
 });
 
 check('the card sentence attributes the year and reads naturally', () => {
@@ -88,7 +99,9 @@ check('published: named bridges carry their register entries', () => {
   assert.equal(published.bridges['Brug 68']?.nr, 68, 'an OSM "Brug N" joins by number');
   assert.equal(published.bridges.Berlagebrug?.movable, true);
   assert.equal(published.bridges['Oosterdokse Spoorbrug'], undefined, 'railway bridges are not the city\'s and stay undescribed');
-  assert.ok(Object.keys(published.bridges).length >= 230, `coverage: ${Object.keys(published.bridges).length}`);
+  assert.equal(published.bridges.Ryckerbrug?.nr, 167, 'a spelling variant joins');
+  assert.equal(published.bridges.Gierzwaluwbrug, undefined, 'a lone outline of the neighbouring Goudvinkbrug does not');
+  assert.ok(Object.keys(published.bridges).length >= 240, `coverage: ${Object.keys(published.bridges).length}`);
 });
 
 if (failures) { process.stdout.write(`${failures} failed\n`); process.exit(1); }
