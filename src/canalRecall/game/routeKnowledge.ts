@@ -1,7 +1,7 @@
 import type { StreetKnowledgeEntry } from './extracts';
 import { sentencesUpTo } from './landmarkData';
 
-export type RouteKnowledgeType = 'street' | 'water';
+export type RouteKnowledgeType = 'street' | 'water' | 'bridge';
 export type RouteKnowledgeIndex = Map<string, StreetKnowledgeEntry>;
 
 const eligible = (entry: StreetKnowledgeEntry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
@@ -31,10 +31,11 @@ export function buildRouteKnowledgeIndex(
   for (const entry of streets) if (eligible(entry)) add(entry, 'street');
   for (const entry of waters) if (eligible(entry)) add(entry, 'water');
   // Name origins cover ~4,900 streets against a few hundred with Wikipedia:
-  // attach to an existing entry, or stand alone as the whole card.
+  // attach to an existing entry, or stand alone as the whole card. Bridges
+  // get their own entries, for the card after a bridge is named.
   for (const origin of origins) {
-    if (!origin.en || origin.kind === 'bridge') continue;
-    const type: RouteKnowledgeType = origin.kind === 'water' ? 'water' : 'street';
+    if (!origin.en) continue;
+    const type: RouteKnowledgeType = origin.kind;
     const key = `${type}:${normalise(origin.name)}`;
     const existing = index.get(key);
     index.set(key, existing ? { ...existing, nameOrigin: origin.en } : { name: origin.name, type, nameOrigin: origin.en });
@@ -73,6 +74,9 @@ export function routeKnowledgeFor(
   normalise: (name: string) => string,
 ): StreetKnowledgeEntry | undefined {
   const key = normalise(name);
+  // A bridge is only ever explained as a bridge; a street and the canal it
+  // replaced share a story.
+  if (type === 'bridge') return index.get(`bridge:${key}`);
   return index.get(`${type}:${key}`)
     || index.get(`${type === 'street' ? 'water' : 'street'}:${key}`);
 }

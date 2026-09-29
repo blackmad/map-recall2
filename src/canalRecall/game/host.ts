@@ -273,7 +273,7 @@ export interface RecallHost extends GameCoreHost {
   /** Owned by other subsystems. */
   _savePreferences(): void;
   _setRouteError(message: string): void;
-  _showStreetKnowledge(name: string, type?: 'street' | 'water' | 'line', replaceOpenCard?: boolean): void;
+  _showStreetKnowledge(name: string, type?: 'street' | 'water' | 'bridge' | 'line', replaceOpenCard?: boolean): void;
   _clearLandmarkNotice(): void;
   _neighborhoodNotice: { name: string; kind?: string; imageArea?: string } | null;
   _neighborhoodNoticeTimer: number;

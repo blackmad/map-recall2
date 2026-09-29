@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — a named bridge tells its story
+
+Naming a bridge correctly used to open no card, because `learnedRoute` is
+empty at a crossing. The 203 quiz bridges with an English name origin now get a
+BRIDGE card after a correct answer. Bridges have their own `bridge:` entries in
+the route-knowledge index, and a bridge is only explained as a bridge
+(`check-landmark-data.ts`). For example, Magere Brug: "Around 1670, a ferry
+bridge was built over the Amstel, which was so narrow that it was only
+suitable for pedestrians."
+
 ## 2026-09-30 — every street's name origin, in English
 
 The full on-device translation of the BAG `beschrijvingNaam` register

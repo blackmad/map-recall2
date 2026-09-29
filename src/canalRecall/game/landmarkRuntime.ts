@@ -210,7 +210,7 @@ export class GameLandmarkRuntime {
    * game must not fetch Wikipedia at runtime (that path shipped Dutch ledes
    * with an NL badge).
    */
-  _showStreetKnowledge(name: string, type: 'street' | 'water' | 'line' = 'street', replaceOpenCard = false): void {
+  _showStreetKnowledge(name: string, type: 'street' | 'water' | 'bridge' | 'line' = 'street', replaceOpenCard = false): void {
     // Transit lines/stops are not in the street/water encyclopedia extract yet.
     if (type === 'line') return;
     const key = this._normaliseCanalName(name);
@@ -231,7 +231,7 @@ export class GameLandmarkRuntime {
     this._showLandmarkNotice({
       id: noticeId,
       name: entry.name || name,
-      type: 'street',
+      type: type === 'bridge' ? 'bridge' : 'street',
       detail: split.detail,
       longDetail: split.longDetail,
       imageUrl: entry.wikipediaImageUrl || '',

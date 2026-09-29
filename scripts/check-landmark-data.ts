@@ -86,6 +86,9 @@ check('street-name origins from the municipal register fill and lead street card
   assert.equal(routeKnowledgeFor(index, 'Lirestraat', 'street', normalise)?.nameOrigin, 'The currency of Italy.',
     'a street with no Wikipedia gets a card from its origin alone');
   assert.equal(routeKnowledgeFor(index, 'Magere Brug', 'street', normalise), undefined, 'bridges are not street cards');
+  assert.equal(routeKnowledgeFor(index, 'Magere Brug', 'bridge', normalise)?.nameOrigin, 'The narrow bridge.',
+    'a named bridge gets its own card from its origin');
+  assert.equal(routeKnowledgeFor(index, 'Rozengracht', 'bridge', normalise), undefined, 'a street never explains a bridge');
   const card = streetCardText(rozengracht);
   assert.equal(card.detail, 'The flower. The Rozengracht was filled in in 1895.', 'a thin first sentence takes the next one with it');
   assert.ok(card.longDetail.startsWith(card.detail) && card.longDetail.includes('Jordaan'), 'the origin leads and the lede follows');

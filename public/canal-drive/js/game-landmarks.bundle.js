@@ -477,8 +477,8 @@
     for (const entry of streets) if (eligible(entry)) add(entry, "street");
     for (const entry of waters) if (eligible(entry)) add(entry, "water");
     for (const origin of origins) {
-      if (!origin.en || origin.kind === "bridge") continue;
-      const type = origin.kind === "water" ? "water" : "street";
+      if (!origin.en) continue;
+      const type = origin.kind;
       const key = `${type}:${normalise(origin.name)}`;
       const existing = index.get(key);
       index.set(key, existing ? { ...existing, nameOrigin: origin.en } : { name: origin.name, type, nameOrigin: origin.en });
@@ -501,6 +501,7 @@
   }
   function routeKnowledgeFor(index, name, type, normalise) {
     const key = normalise(name);
+    if (type === "bridge") return index.get(`bridge:${key}`);
     return index.get(`${type}:${key}`) || index.get(`${type === "street" ? "water" : "street"}:${key}`);
   }
   function shouldOfferStreetKnowledge(input) {
@@ -830,7 +831,7 @@
       this._showLandmarkNotice({
         id: noticeId,
         name: entry.name || name,
-        type: "street",
+        type: type === "bridge" ? "bridge" : "street",
         detail: split.detail,
         longDetail: split.longDetail,
         imageUrl: entry.wikipediaImageUrl || "",
