@@ -94,9 +94,11 @@ class VectorBasemap {
       this.setTrees(this._pendingTrees);
       this._ensureLandmarkLayers();
       this._styleLandmarks();
+      this._raisePoiLayers();
       if (window.CanalRecallDetailed3D && window.CanalRecallDetailed3D.DetailedBuildings) {
         this._detailedBuildings = new window.CanalRecallDetailed3D.DetailedBuildings(this.map, maplibregl, () => {
           this._syncDetailedBuildingLayers();
+          this._raisePoiLayers();
           this.setActiveLandmark(this._activeLandmark);
         });
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
@@ -896,6 +898,36 @@ class VectorBasemap {
     this.map.addLayer({ id: 'neighborhood-labels', type: 'symbol', source: 'amsterdam-neighborhood-labels', minzoom: 13, maxzoom: 18.5, layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': ['interpolate', ['linear'], ['zoom'], 13, 11, 17, 16], 'text-letter-spacing': 0.12, 'text-allow-overlap': false }, paint: { 'text-color': '#6D28D9', 'text-halo-color': 'rgba(255,255,255,.9)', 'text-halo-width': 2 } });
   }
 
+  /** Business and landmark labels draw above every building layer. The
+   *  basemap's shop and café layers sit low in its style, under the building
+   *  extrusions added later, so lifting them onto the facades only slid them
+   *  behind the walls (user report 2026-09-29, "Café De Jo…" cut off by the
+   *  building beside it). Moved to the top whenever buildings are (re)added. */
+  _raisePoiLayers() {
+    const lib = window.CanalRecallOrientationPois;
+    if (!this.map || !this.map.getStyle()) return;
+    if (!this._poiLayerIds) {
+      const basemap = lib && lib.basemapOrientationPoiLayerIds
+        ? lib.basemapOrientationPoiLayerIds(this.map.getStyle().layers || []) : [];
+      this._poiLayerIds = [...basemap, 'poi-dots', 'poi-labels', 'brand-poi-dots', 'brand-poi-icons', 'brand-poi-labels', 'local-food-labels'];
+      // Building layers are re-created later (themes, detailed buildings), so
+      // keep checking. Once the order is right the check moves nothing, so
+      // the styledata its own moves fire cannot loop.
+      this.map.on('styledata', () => this._raisePoiLayersIfBuried());
+    }
+    this._raisePoiLayersIfBuried();
+  }
+
+  _raisePoiLayersIfBuried() {
+    if (!this.map || !this._poiLayerIds || typeof this.map.getLayersOrder !== 'function') return;
+    const order = this.map.getLayersOrder();
+    let topBuilding = -1;
+    order.forEach((id, index) => { if (/^osm-colored-building|^building-3d|detailed|signature/.test(id)) topBuilding = index; });
+    if (topBuilding < 0) return;
+    const buried = this._poiLayerIds.filter(id => { const index = order.indexOf(id); return index >= 0 && index < topBuilding; });
+    for (const id of buried) this.map.moveLayer(id);
+  }
+
   /** Lift landmark and venue markers onto the buildings (see
    *  orientationPois.roofLiftTranslate). Pitch changes every frame while the
    *  sightline eases, so only a degree's change repaints. */
@@ -905,8 +937,11 @@ class VectorBasemap {
     if (this._poiLiftPitch != null && Math.abs(pitch - this._poiLiftPitch) < 1) return;
     this._poiLiftPitch = pitch;
     const translate = lib.roofLiftTranslate(pitch, latitude);
+    // Our landmark dots stay on the ground: landmarks include trees, statues
+    // and memorials, and a lifted dot floated beside the Bevrijdingslinde
+    // instead of marking it (user report 2026-09-29). Shops, cafés and
+    // supermarkets are nearly always in a building, so they are lifted.
     const properties = {
-      'poi-dots': ['circle-translate'], 'poi-labels': ['text-translate'],
       'brand-poi-dots': ['circle-translate'], 'brand-poi-icons': ['icon-translate'],
       'brand-poi-labels': ['text-translate'], 'local-food-labels': ['text-translate'],
     };

@@ -509,7 +509,7 @@ class GameRouteRuntime {
    * whose line passes the most of them, inside the pattern's usual range.
    * Null falls through to the ordinary pickers. See routeSelection.pickReviewRoute.
    */
-  _pickReviewRide(choices) {
+  _pickReviewRide(choices, fromOverride = null) {
     const Route = window.CanalRecallRoute;
     if (!Route || !Route.pickReviewRoute || !this._prefs().skipMastered || this.travelMode === 'transit') return null;
     if (!this.recall || typeof this.recall.dueReviews !== 'function') return null;
@@ -517,11 +517,11 @@ class GameRouteRuntime {
     const now = Date.now();
     const due = this.recall.dueReviews().filter(place => place.cityId === cityId && place.dueAt <= now && place.type !== 'stop');
     if (!due.length) return null;
-    const from = this.routePattern === 'home' ? this.homeBase
-      : this.routePattern === 'here' ? this.gpsOrigin : null;
+    const from = fromOverride || (this.routePattern === 'home' ? this.homeBase
+      : this.routePattern === 'here' ? this.gpsOrigin : null);
     if (this.routePattern !== 'surprise' && !from) return null;
     let maxKm = Route.ROUTE_POI_MAX_PAIR_KM;
-    if (this.routePattern === 'home') {
+    if (this.routePattern === 'home' && !fromOverride) {
       const samples = typeof this.recall.homeMasterySamples === 'function' ? this.recall.homeMasterySamples(cityId) : [];
       this._homeLearningRadiusKm = Route.homeLearningRadiusKm(from, samples);
       maxKm = this._homeLearningRadiusKm * Route.HOME_RADIUS_OVERSHOOT;
@@ -819,6 +819,23 @@ class GameRouteRuntime {
       { lat: from.lat, lng: from.lng },
       { lat: to.lat, lng: to.lng }
     );
+  }
+
+  /**
+   * Enter on the finish card: ride on from where this route ended, not the
+   * same route again (user report 2026-09-29). A review ride when Plan review
+   * has something due near the arrival, else a destination in pairing range
+   * that is not the start just left. The study lesson is one fixed route and
+   * transit pairs are chosen for their transfers, so both replay.
+   */
+  _startNextRouteFromArrival() {
+    const from = this.routeTo;
+    const replay = () => { this._setupRace(); this.state = GameState.RACING; this._beginIntro(); };
+    if (!from || this.routePattern === 'study' || this.travelMode === 'transit') { replay(); return; }
+    this._reviewRoute = this._pickReviewRide(this.routePois, from);
+    const dest = this._reviewRoute ? this._reviewRoute.to : this._pickDestinationNear(from, this.routeFrom ? this.routeFrom.id : null);
+    if (!dest) { replay(); return; }
+    this._launchPoiRoute(from, dest);
   }
 
   _startNextHomeLeg() {

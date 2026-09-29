@@ -61,11 +61,30 @@ export interface DetailText {
   longDetail: string;
 }
 
+/**
+ * Whole sentences up to `max` characters. A first sentence longer than that
+ * is cut at a word with an ellipsis rather than dropped. The old hard
+ * `.slice(0, 280)` ended the Haarlemmerpoort card on "fortifications of
+ * Amste" (user report 2026-09-29).
+ */
+export function sentencesUpTo(parts: readonly string[], max: number): string {
+  let out = '';
+  for (const part of parts) {
+    const next = out ? `${out} ${part}` : part;
+    if (next.length > max) break;
+    out = next;
+  }
+  if (out || !parts.length) return out;
+  const cut = parts[0].slice(0, max - 1);
+  const space = cut.lastIndexOf(' ');
+  return `${(space > max / 2 ? cut.slice(0, space) : cut).trimEnd()}…`;
+}
+
 export function splitDetail(text: string | undefined): DetailText {
-  const parts = sentences(text || '');
+  const parts = sentences((text || '').trim()).filter(Boolean);
   return {
-    detail: (parts[0] || '').slice(0, 150),
-    longDetail: parts.slice(0, 3).join(' ').slice(0, 280),
+    detail: sentencesUpTo(parts.slice(0, 1), 150),
+    longDetail: sentencesUpTo(parts.slice(0, 3), 280),
   };
 }
 

@@ -1,4 +1,5 @@
 import type { StreetKnowledgeEntry } from './extracts';
+import { sentencesUpTo } from './landmarkData';
 
 export type RouteKnowledgeType = 'street' | 'water';
 export type RouteKnowledgeIndex = Map<string, StreetKnowledgeEntry>;
@@ -43,20 +44,6 @@ export function buildRouteKnowledgeIndex(
 
 const sentencesOf = (text: string) => text.trim().split(/(?<=[.!?])\s+/).map(part => part.trim()).filter(Boolean);
 
-/** Whole sentences up to `max` characters; a first sentence longer than that
- *  is cut at a word with an ellipsis rather than dropped. */
-function sentencesUpTo(parts: readonly string[], max: number): string {
-  let out = '';
-  for (const part of parts) {
-    const next = out ? `${out} ${part}` : part;
-    if (next.length > max) break;
-    out = next;
-  }
-  if (out || !parts.length) return out;
-  const cut = parts[0].slice(0, max - 1);
-  return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), 1)).trimEnd()}…`;
-}
-
 export const STREET_CARD_DETAIL_CHARS = 150;
 export const STREET_CARD_LONG_CHARS = 280;
 
@@ -71,7 +58,7 @@ export function streetCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 
   const origin = sentencesOf(entry.nameOrigin || '');
   const extract = sentencesOf(entry.wikipediaExtract || '');
   if (!origin.length) {
-    return { detail: (extract[0] || '').slice(0, STREET_CARD_DETAIL_CHARS), longDetail: extract.slice(0, 3).join(' ').slice(0, STREET_CARD_LONG_CHARS) };
+    return { detail: sentencesUpTo(extract.slice(0, 1), STREET_CARD_DETAIL_CHARS), longDetail: sentencesUpTo(extract.slice(0, 3), STREET_CARD_LONG_CHARS) };
   }
   return {
     detail: sentencesUpTo(origin, STREET_CARD_DETAIL_CHARS),

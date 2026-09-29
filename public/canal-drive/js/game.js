@@ -255,9 +255,7 @@ class Game {
   _runFinishAction(id) {
     if (id === 'again') {
       if (this.routePattern === 'home') { this._startNextHomeLeg(); return; }
-      this._setupRace();
-      this.state = GameState.RACING;
-      this._beginIntro();
+      this._startNextRouteFromArrival();
     } else if (id === 'route') {
       this._openRouteSetup();
     } else if (id === 'copy' && this._shareUrl) {
