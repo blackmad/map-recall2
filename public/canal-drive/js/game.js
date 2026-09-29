@@ -140,6 +140,7 @@ class Game {
     this._landmarkNotice = null;
     this._landmarkCardBounds = null;
     this._landmarkNoticeHold = { kind: 'timed', seconds: 0 }; // see game/landmarkNotice.ts
+    this._landmarkNoticeSource = null;
     this._landmarkNoticeState = { elapsed: 0, fadeRemaining: null };
     this._landmarkNoticeAlpha = 0;
     this._landmarkImages = new Map();
@@ -588,7 +589,7 @@ class Game {
       if (arrived) {
         // The arrival card belongs to the finish screen and stays until
         // something replaces it, rather than pretending to be an hour-long timer.
-        this._showLandmarkNotice(arrived, { kind: 'sticky' });
+        this._showLandmarkNotice(arrived, { kind: 'sticky' }, 'arrival');
         this._landmarkNoticeAlpha = 1;
       }
       this._ribbon = this.gameyFeatures ? this._computeRouteRibbon() : null;

@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — drive-by cards look ahead, and may replace a street card
+
+User report: "this card/highlight happens a little late — after I've already
+almost passed it". Two causes. The card opened within 300 px (≈100 m) of the
+landmark's centre, which at cruise (260 px/s) is about a second before
+passing, and most of that second went on the 0.8 s fade-in. And a street card
+opened at the start of a street held the one card slot for 8 s, so a
+landmark part-way down the block waited behind it.
+
+`src/canalRecall/game/driveByTrigger.ts` now looks 3 s of travel ahead (never
+less than the radius): along the route line while the rider is within 140 px
+of it, along the heading otherwise. It opens the landmark the path passes
+within 300 px of *soonest* (not the nearest centre) and skips anything more
+than 90 px behind. A drive-by landmark may replace a street or earlier drive-by
+card once it has had 2.5 s on screen, but never a clicked card or the arrival
+card. The source of every card is recorded in `_landmarkNoticeSource`.
+Regressions are in `scripts/check-drive-by-trigger.ts` and
+`tests/e2e/drive-by-early.spec.ts`.
+
 ## 2026-09-29 — the live route measures to its line, not its corners
 
 User report: "the routing is hopping / unstable — while I'm on it, it jumps to

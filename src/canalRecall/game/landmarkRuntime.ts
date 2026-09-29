@@ -45,6 +45,7 @@ import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } 
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge, streetCardText, type StreetNameOrigin } from './routeKnowledge';
 import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
+import { DRIVE_BY_RADIUS, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import {
   buildCorridorStreetIndex,
   distanceToPath,
@@ -56,9 +57,6 @@ import {
 const CLICKED_NOTICE_SECONDS = 8;
 /** px — how far a click may be from a landmark's marker and still select it. */
 const CLICK_SELECT_RADIUS = 120;
-/** px — how close the vehicle must come before a landmark card opens by
- *  itself. About 100 m at the current world scale. */
-const DRIVE_BY_RADIUS = 300;
 
 async function readJson<T>(response: Response, fallback: T): Promise<T> {
   if (!response.ok) return fallback;
@@ -102,7 +100,7 @@ export class GameLandmarkRuntime {
       if (!building) return;
       nearest = this._cardForClickedBuilding(building);
     }
-    this._showLandmarkNotice(nearest, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS });
+    this._showLandmarkNotice(nearest, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS }, 'click');
     this.vectorMap.setActiveLandmark(nearest);
   }
 
@@ -115,9 +113,11 @@ export class GameLandmarkRuntime {
    *  certain to be shown, and a fact must not be spent on a card that never
    *  appears: `factCardText` chooses, and `commitShownFact` is what marks the
    *  sentence as told. */
-  _showLandmarkNotice(notice: LandmarkNotice, hold: NoticeHold): void {
+  _showLandmarkNotice(notice: LandmarkNotice, hold: NoticeHold, source: NoticeSource = 'click'): void {
+    if (this._landmarkNotice) this.vectorMap?.setActiveLandmark(null);
     this._landmarkNotice = this._withRotatedFact(notice);
     this._landmarkNoticeHold = hold;
+    this._landmarkNoticeSource = source;
     this._landmarkNoticeState = openNotice();
     // Start transparent so the card fades in, and so a new card never inherits
     // the alpha the previous one happened to be at.
@@ -237,7 +237,7 @@ export class GameLandmarkRuntime {
       imageUrl: entry.wikipediaImageUrl || '',
       wikipediaUrl: entry.wikipediaUrl || '',
       extractLang: entry.wikipediaExtractLang || 'en',
-    }, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS });
+    }, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS }, 'street');
   }
 
   // ---- Loading the extract ----
@@ -408,12 +408,15 @@ export class GameLandmarkRuntime {
       }
     }
 
-    let nearest: Landmark | null = null;
-    let nearestDistance = DRIVE_BY_RADIUS;
     const routePath = this.routePath;
     const landmarkRouteRadiusPx = isTransit(this.travelMode)
       ? (window.CanalRecallTransit?.TRANSIT_LANDMARK_ROUTE_RADIUS_M ?? 120) * PIXELS_PER_METER
       : Infinity;
+    const candidates: Landmark[] = [];
+    const player = this.player as Rider;
+    const ahead = pathAhead(player, routePath);
+    const reach = ahead.reduce((sum, point, i) => i ? sum + Math.hypot(point.x - ahead[i - 1].x, point.y - ahead[i - 1].y) : 0, 0)
+      + DRIVE_BY_RADIUS;
     for (const landmark of this.landmarks) {
       const distance = Math.hypot(landmark.x - this.player.x, landmark.y - this.player.y);
       if (distance < LANDMARK_IMAGE_PREFETCH_RADIUS) this._ensureLandmarkImage(landmark);
@@ -421,19 +424,24 @@ export class GameLandmarkRuntime {
       // A card with nothing but a name interrupts the driving corridor to teach
       // nothing. Clicking such a building still answers; driving past it does not.
       if (!isWorthACard(landmark)) continue;
+      if (distance > reach) continue;
       if (isTransit(this.travelMode) && routePath && routePath.length >= 2) {
         if (distanceToPath(routePath, landmark.x, landmark.y) > landmarkRouteRadiusPx) continue;
       }
-      if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
+      candidates.push(landmark);
     }
-    if (this._landmarkNotice) return;
     if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
-    if (nearest) {
+    if (this._landmarkNotice && !mayReplaceNotice(
+      this._landmarkNoticeSource ?? null, this._landmarkNoticeHold, this._landmarkNoticeState.elapsed)) return;
+    // Look ahead along where the rider is going, so the card is up before
+    // they reach the landmark rather than as they pass it.
+    const nearest = pickDriveBy(candidates, ahead);
+    if (nearest && nearest.id !== this._landmarkNotice?.id) {
       this._seenLandmarks.add(nearest.id);
       this._seenLandmarkNames.add(nearest.name);
       // Held while the player is still near it, rather than for a fixed six
       // seconds that expired while they were still approaching.
-      this._showLandmarkNotice(nearest, { kind: 'proximity', anchor: { x: nearest.x, y: nearest.y } });
+      this._showLandmarkNotice(nearest, { kind: 'proximity', anchor: { x: nearest.x, y: nearest.y } }, 'drive-by');
       this.vectorMap.setActiveLandmark(nearest);
     }
   }

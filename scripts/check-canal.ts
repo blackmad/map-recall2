@@ -58,6 +58,7 @@ const CHECKS = [
   'test:canal-overlay',
   'test:landmark-data',
   'test:landmark-notice',
+  'test:drive-by-trigger',
   'test:teaching-surface',
   'test:recall-rules',
   'test:boat-navigability',
