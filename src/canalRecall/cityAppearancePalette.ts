@@ -5,9 +5,13 @@ export const CONTEXTUAL_BUILDING_COLOURS = {
   // whole blocks legible after MapLibre's directional light is applied. V1's
   // plaster/light values bleached into the basemap in overview and mobile
   // captures, making otherwise decorated buildings look uncoloured.
-  priorBrickRed:'#94553f',priorBrickBrown:'#73513f',priorBrickBuff:'#aa8d62',
-  priorPlaster:'#c3b99e',priorModernLight:'#b6b8b0',priorModernGrey:'#858b87',
-  roof:'#777b7b',priorRoofWarm:'#756b66',priorRoofDark:'#5f6565',
+  // V3 (user report 2026-09-29, "these fake colors are too drab"): V2's
+  // grey-browns and grey flat caps read as one dun mass from the chase. Brick
+  // is redder and richer, buff is ochre, grey is a blue slate, a rare canal
+  // green joins, and flat caps mix bitumen, terracotta, slate and gravel.
+  priorBrickRed:'#a4523b',priorBrickBrown:'#84503a',priorBrickDark:'#6a3b2e',priorBrickBuff:'#c49a5c',
+  priorPlaster:'#d3c3a0',priorModernLight:'#c2bdb2',priorModernGrey:'#7a8a94',priorCanalGreen:'#557260',
+  roof:'#7c8080',priorRoofWarm:'#9a5e48',priorRoofDark:'#56606a',priorRoofGravel:'#a59e8f',
 } as const;
 
 export type ContextualBuildingColour=keyof typeof CONTEXTUAL_BUILDING_COLOURS;
@@ -17,18 +21,18 @@ function stableVariant(id:string,values:ContextualBuildingColour[]):ContextualBu
  * material/colour nor a source-bound area prior. Identity gives adjacent BAG
  * buildings stable restrained variation without pretending an unknown build
  * year or facade material was observed. */
-export function citywideBuildingWallPrior(id:string):string{return CONTEXTUAL_BUILDING_COLOURS[stableVariant(id,['priorBrickRed','priorBrickBrown','priorBrickBrown','priorBrickBuff','priorPlaster','priorModernLight','priorModernGrey'])];}
-export function citywideBuildingRoofPrior(id:string):string{return CONTEXTUAL_BUILDING_COLOURS[stableVariant(`${id}:roof`,['roof','priorRoofWarm','priorRoofDark'])];}
+export function citywideBuildingWallPrior(id:string):string{return CONTEXTUAL_BUILDING_COLOURS[stableVariant(id,['priorBrickRed','priorBrickRed','priorBrickBrown','priorBrickDark','priorBrickBuff','priorPlaster','priorModernLight','priorModernGrey','priorCanalGreen'])];}
+export function citywideBuildingRoofPrior(id:string):string{return CONTEXTUAL_BUILDING_COLOURS[stableVariant(`${id}:roof`,['roof','priorRoofWarm','priorRoofDark','priorRoofGravel'])];}
 /** Without ground-floor evidence, continue the wall colour to street level. */
 export function citywideBuildingGroundPrior(id:string):string{return citywideBuildingWallPrior(id);}
 
 export function contextualBuildingPalette(id:string,constructionYear?:number|null){
   const year=Number(constructionYear),wall=Number.isFinite(year)&&year<1925
-    ?stableVariant(id,['priorBrickRed','priorBrickBrown','priorBrickBrown','priorBrickBuff','priorPlaster'])
+    ?stableVariant(id,['priorBrickRed','priorBrickBrown','priorBrickDark','priorBrickBuff','priorPlaster','priorCanalGreen'])
     :Number.isFinite(year)&&year<1965
       ?stableVariant(id,['priorBrickRed','priorBrickBrown','priorBrickBuff','priorModernGrey'])
       :stableVariant(id,['priorBrickBuff','priorModernLight','priorModernGrey','priorPlaster']);
-  const roof=stableVariant(id,['roof','priorRoofWarm','priorRoofDark']);
+  const roof=stableVariant(id,['roof','priorRoofWarm','priorRoofDark','priorRoofGravel']);
   // A separate base colour would invent a material change without evidence.
   const ground=wall;
   return{wallKey:wall,roofKey:roof,groundKey:ground,wall:CONTEXTUAL_BUILDING_COLOURS[wall],roof:CONTEXTUAL_BUILDING_COLOURS[roof],ground:CONTEXTUAL_BUILDING_COLOURS[ground]};
