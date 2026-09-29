@@ -45,6 +45,7 @@ import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } 
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge, streetCardText, type StreetNameOrigin } from './routeKnowledge';
 import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
+import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import { DRIVE_BY_RADIUS, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import {
   buildCorridorStreetIndex,
@@ -57,6 +58,9 @@ import {
 const CLICKED_NOTICE_SECONDS = 8;
 /** px — how far a click may be from a landmark's marker and still select it. */
 const CLICK_SELECT_RADIUS = 120;
+/** px — a click this close to a landmark's marker means the landmark, even
+ *  over another building. */
+const CLICK_MARKER_RADIUS = 40;
 
 async function readJson<T>(response: Response, fallback: T): Promise<T> {
   if (!response.ok) return fallback;
@@ -91,7 +95,16 @@ export class GameLandmarkRuntime {
       const distance = Math.hypot(point.x - screen.x, point.y - screen.y);
       if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
     }
-    if (nearest && building && building.featureTarget) {
+    // A building that is a landmark's own, by the extract-time join, is that
+    // landmark. Otherwise a landmark nearby wins only when its marker itself
+    // was clicked: within 120 px it used to take any click, and lit the
+    // ordinary house next door as the museum.
+    const owner = building && building.id != null
+      ? this.landmarks.find(landmark => landmark.buildingIds?.includes(String(building.id)))
+      : undefined;
+    if (owner) nearest = owner;
+    else if (nearest && building && nearestDistance > CLICK_MARKER_RADIUS) nearest = null;
+    if (nearest && !owner && building && building.featureTarget) {
       // Keep the curated card identity, but highlight the actual extrusion
       // under the click rather than rebuilding its approximate OSM footprint.
       nearest = { ...nearest, featureTarget: building.featureTarget };
@@ -180,12 +193,14 @@ export class GameLandmarkRuntime {
     const buildingName = building.name || '';
     const matched = matchLandmarkToBuilding(this.landmarks, building, buildingName);
     if (matched) return { ...matched, featureTarget: building.featureTarget };
+    // Not a landmark: say what the register knows (year, type, listing, size)
+    // rather than "no building details".
+    const facts = describeBuilding(this._buildingFacts?.lookup(building.id) ?? null, building.height, buildingName);
     return {
       id: `clicked-${building.id || building.lngLat.join('-')}`,
-      name: buildingName || 'No building details',
-      detail: buildingName
-        ? 'Mapped building — click nearby landmarks to learn more.'
-        : 'This building has no name in the map data.',
+      name: facts.name,
+      type: 'building',
+      detail: facts.detail,
       lngLat: building.lngLat,
       featureTarget: building.featureTarget,
     };
@@ -255,6 +270,9 @@ export class GameLandmarkRuntime {
         : { extractPath: '../data/extracts/amsterdam' };
       const base = window.location.href;
       const url = (name: string) => new URL(`${city.extractPath}/${name}`, base);
+      const factBase = new URL(`${city.extractPath}/`, base).href;
+      if (this._buildingFacts) this._buildingFacts.setBase(factBase);
+      else this._buildingFacts = new BuildingFactStore(factBase);
       const [
         landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse,
         bridgeResponse, crossingResponse, streetKnowledgeResponse, streetResponse,
@@ -380,6 +398,11 @@ export class GameLandmarkRuntime {
   // ---- Per-frame ----
 
   _updateLandmarks(dt: number): void {
+    // Keep the clicked-building facts for the tiles around the rider loaded.
+    if (this._buildingFacts && this.player && this._toLatLon) {
+      const at = this._toLatLon(this.player.x, this.player.y);
+      if (at) this._buildingFacts.prefetchAround(at[1], at[0]);
+    }
     if (this._neighborhoodNoticeTimer > 0) this._neighborhoodNoticeTimer -= dt;
     if (this._landmarkNotice) {
       const visibility = advanceNotice(

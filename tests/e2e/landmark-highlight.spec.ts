@@ -98,3 +98,28 @@ test('a tree keeps its dot; a resolved landmark lights its own building', async 
   expect(result.hallState.ids.length).toBeGreaterThan(0);
   expect(result.hallState.highlighted).toEqual(result.hallState.ids);
 });
+
+// Named regression (2026-09-30): clicking a building that is no landmark said
+// "No building details — This building has no name in the map data." for
+// nearly every building. It now says what the register knows: the year and
+// period, the type when it is worth naming, a listing, and the size.
+test('a clicked ordinary building tells its year instead of "no details"', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'map lookup; one project is enough');
+  test.setTimeout(200000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
+  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._completeCityHasBuildings), { timeout: 60000 }).toBe(true);
+  await expect.poll(() => page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    const features = game.vectorMap._completeCity.cache.collection().features;
+    return features.some((f: any) => game._buildingFacts?.lookup(f.properties.id));
+  }), { timeout: 60000 }).toBe(true);
+  const card = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    const feature = game.vectorMap._completeCity.cache.collection().features
+      .find((f: any) => (game._buildingFacts.lookup(f.properties.id) || [0])[0] > 0);
+    const [lng, lat] = feature.geometry.type === 'Polygon' ? feature.geometry.coordinates[0][0] : feature.geometry.coordinates[0][0][0];
+    return game._cardForClickedBuilding({ id: feature.properties.id, height: feature.properties.height, lngLat: [lng, lat], featureTarget: null });
+  });
+  expect(card.detail).toMatch(/built in \d{4}|Built in \d{4}/);
+  expect(card.detail).not.toContain('no name in the map data');
+});

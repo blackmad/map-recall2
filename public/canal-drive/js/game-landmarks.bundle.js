@@ -530,6 +530,156 @@
     return mode === "transit";
   }
 
+  // src/canalRecall/buildingFacts.ts
+  var BUILDING_TYPES = [
+    "warehouse",
+    "church",
+    "chapel",
+    "cathedral",
+    "mosque",
+    "synagogue",
+    "temple",
+    "school",
+    "university",
+    "hospital",
+    "train_station",
+    "industrial",
+    "office",
+    "retail",
+    "commercial",
+    "hotel",
+    "windmill",
+    "houseboat",
+    "civic",
+    "government",
+    "public",
+    "kindergarten",
+    "college",
+    "museum",
+    "theatre"
+  ];
+  var TYPE_LABELS = {
+    warehouse: "warehouse",
+    church: "church",
+    chapel: "chapel",
+    cathedral: "cathedral",
+    mosque: "mosque",
+    synagogue: "synagogue",
+    temple: "temple",
+    school: "school",
+    university: "university building",
+    hospital: "hospital",
+    train_station: "station building",
+    industrial: "industrial building",
+    office: "office building",
+    retail: "shop building",
+    commercial: "commercial building",
+    hotel: "hotel",
+    windmill: "windmill",
+    houseboat: "houseboat",
+    civic: "civic building",
+    government: "government building",
+    public: "public building",
+    kindergarten: "nursery school",
+    college: "college",
+    museum: "museum building",
+    theatre: "theatre"
+  };
+  var BUILDING_FACT_ZOOM = 14;
+  var shortBuildingId = (id) => id.replace(/^NL\.IMBAG\.Pand\./, "P");
+  function plausibleYear(year, now = (/* @__PURE__ */ new Date()).getFullYear()) {
+    return Number.isInteger(year) && year >= 1200 && year <= now + 2;
+  }
+  function periodOf(year) {
+    if (year < 1588) return "before the Dutch Golden Age";
+    if (year <= 1672) return "in the Dutch Golden Age";
+    if (year < 1700) return "in the late seventeenth century";
+    if (year < 1800) return "in the eighteenth century";
+    if (year < 1860) return "in the early nineteenth century";
+    if (year < 1900) return "in the late nineteenth century";
+    if (year < 1940) return "in the early twentieth century";
+    if (year < 1946) return "during the Second World War";
+    if (year < 1975) return "in the post-war decades";
+    if (year < 2e3) return "in the late twentieth century";
+    return "this century";
+  }
+  var HERITAGE_LABELS = {
+    0: "",
+    1: "Part of a World Heritage site.",
+    2: "A national monument (rijksmonument).",
+    3: "A municipal monument."
+  };
+  function storeysFor(heightMetres) {
+    if (!heightMetres || !(heightMetres > 2.5)) return null;
+    return Math.max(1, Math.round(heightMetres / 3.2));
+  }
+  function describeBuilding(row, heightMetres, name = "") {
+    const storeys = storeysFor(heightMetres);
+    const type = row && row[1] >= 0 ? TYPE_LABELS[BUILDING_TYPES[row[1]]] : "";
+    const year = row && plausibleYear(row[0]) ? row[0] : null;
+    const title = name || (year ? `Built ${year}` : type ? capitalise(type) : "No building details");
+    const parts = [];
+    if (year) {
+      const what = type ? `A ${type}` : "Built";
+      parts.push(type ? `${what}, built in ${year}, ${periodOf(year)}.` : `${what} in ${year}, ${periodOf(year)}.`);
+    } else if (type && name) {
+      parts.push(`A ${type}.`);
+    }
+    if (row && row[2]) parts.push(HERITAGE_LABELS[row[2]]);
+    if (storeys) parts.push(`About ${Math.round(heightMetres)} m tall, some ${storeys} ${storeys === 1 ? "storey" : "storeys"}.`);
+    return { name: title, detail: parts.join(" ") || "This building has no name or date in the map data." };
+  }
+  var capitalise = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+  function factTileOf(lng, lat) {
+    const n = 2 ** BUILDING_FACT_ZOOM;
+    return {
+      x: Math.floor((lng + 180) / 360 * n),
+      y: Math.floor((1 - Math.asinh(Math.tan(lat * Math.PI / 180)) / Math.PI) / 2 * n)
+    };
+  }
+  var BuildingFactStore = class {
+    constructor(base, fetchImpl = (...args) => fetch(...args)) {
+      this.base = base;
+      this.fetchImpl = fetchImpl;
+    }
+    rows = /* @__PURE__ */ new Map();
+    requested = /* @__PURE__ */ new Set();
+    lastCentre = "";
+    setBase(base) {
+      if (base === this.base) return;
+      this.base = base;
+      this.rows.clear();
+      this.requested.clear();
+      this.lastCentre = "";
+    }
+    /** Load the tile under a point and its eight neighbours. Cheap when unchanged. */
+    prefetchAround(lng, lat) {
+      const { x, y } = factTileOf(lng, lat);
+      const centre = `${x}/${y}`;
+      if (centre === this.lastCentre) return;
+      this.lastCentre = centre;
+      for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) void this.load(x + dx, y + dy);
+    }
+    lookup(id) {
+      return id == null ? null : this.rows.get(shortBuildingId(String(id))) ?? null;
+    }
+    async load(x, y) {
+      const key = `${x}/${y}`;
+      if (this.requested.has(key)) return;
+      this.requested.add(key);
+      try {
+        const response = await this.fetchImpl(`${this.base.replace(/\/$/, "")}/building-facts/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
+        if (!response.ok) return;
+        const bytes = new Uint8Array(await response.arrayBuffer());
+        const gzipped = bytes.length >= 2 && bytes[0] === 31 && bytes[1] === 139;
+        const text = gzipped && typeof DecompressionStream !== "undefined" ? await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).text() : new TextDecoder().decode(bytes);
+        const tile = JSON.parse(text);
+        for (const [id, row] of Object.entries(tile.buildings || {})) this.rows.set(id, row);
+      } catch {
+      }
+    }
+  };
+
   // src/canalRecall/game/routeSelection.ts
   function nearestRouteIndex(route, player) {
     if (route.length === 1) return { index: 0, distance: Math.hypot(route[0].x - player.x, route[0].y - player.y) };
@@ -682,6 +832,7 @@
   // src/canalRecall/game/landmarkRuntime.ts
   var CLICKED_NOTICE_SECONDS = 8;
   var CLICK_SELECT_RADIUS = 120;
+  var CLICK_MARKER_RADIUS = 40;
   async function readJson(response, fallback) {
     if (!response.ok) return fallback;
     try {
@@ -710,7 +861,10 @@
           nearestDistance = distance;
         }
       }
-      if (nearest && building && building.featureTarget) {
+      const owner = building && building.id != null ? this.landmarks.find((landmark) => landmark.buildingIds?.includes(String(building.id))) : void 0;
+      if (owner) nearest = owner;
+      else if (nearest && building && nearestDistance > CLICK_MARKER_RADIUS) nearest = null;
+      if (nearest && !owner && building && building.featureTarget) {
         nearest = { ...nearest, featureTarget: building.featureTarget };
       }
       if (!nearest) {
@@ -782,10 +936,12 @@
       const buildingName = building.name || "";
       const matched = matchLandmarkToBuilding(this.landmarks, building, buildingName);
       if (matched) return { ...matched, featureTarget: building.featureTarget };
+      const facts = describeBuilding(this._buildingFacts?.lookup(building.id) ?? null, building.height, buildingName);
       return {
         id: `clicked-${building.id || building.lngLat.join("-")}`,
-        name: buildingName || "No building details",
-        detail: buildingName ? "Mapped building \u2014 click nearby landmarks to learn more." : "This building has no name in the map data.",
+        name: facts.name,
+        type: "building",
+        detail: facts.detail,
         lngLat: building.lngLat,
         featureTarget: building.featureTarget
       };
@@ -846,6 +1002,9 @@
         const city = Prefs && Prefs.cityById ? Prefs.cityById(this.cityId || Prefs.DEFAULT_CITY_ID || "amsterdam") : { extractPath: "../data/extracts/amsterdam" };
         const base = window.location.href;
         const url = (name) => new URL(`${city.extractPath}/${name}`, base);
+        const factBase = new URL(`${city.extractPath}/`, base).href;
+        if (this._buildingFacts) this._buildingFacts.setBase(factBase);
+        else this._buildingFacts = new BuildingFactStore(factBase);
         const [
           landmarkResponse,
           boundaryResponse,
@@ -963,6 +1122,10 @@
     }
     // ---- Per-frame ----
     _updateLandmarks(dt) {
+      if (this._buildingFacts && this.player && this._toLatLon) {
+        const at = this._toLatLon(this.player.x, this.player.y);
+        if (at) this._buildingFacts.prefetchAround(at[1], at[0]);
+      }
       if (this._neighborhoodNoticeTimer > 0) this._neighborhoodNoticeTimer -= dt;
       if (this._landmarkNotice) {
         const visibility = advanceNotice(

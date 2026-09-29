@@ -1408,7 +1408,7 @@ class VectorBasemap {
       id: feature.id,
     };
     if (poiResult) return { ...poiResult, featureTarget };
-    return { id: feature.id, name: properties.name || properties['name:en'] || '', lngLat: [lngLat.lng, lngLat.lat], geojson: geometry, featureTarget };
+    return { id: feature.id, name: properties.name || properties['name:en'] || '', height: Number(properties.height) || undefined, lngLat: [lngLat.lng, lngLat.lat], geojson: geometry, featureTarget };
   }
 
   setRoute(routePath, loader, visible) {
