@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — a glossary for street-name translations
+
+The Apple translator renders Dutch trade and planning words literally:
+- lijnbanen van de touwslagerijen came out "line tracks of the rope
+  warehouses"; they are ropewalks of the rope-making works;
+- stadsuitleg came out "city layout" (it means city expansion);
+- demping came out "damming" (it means filling in);
+- also "singing seed" (birdseed) and "regency families" (regent families).
+
+`ORIGIN_GLOSSARY` in `lib/streetNameOrigins.ts` fixes each one only where
+the Dutch uses the trigger word, so "layout" stays in "garden city layout",
+and "dammed" stays where the Dutch has afgedamd. Republished with 14 texts
+corrected.
+
 ## 2026-09-30 — review rides plan their runners-up and ride the best one
 
 `pickReviewRoute` scores pairs by due names within 200 m of the straight

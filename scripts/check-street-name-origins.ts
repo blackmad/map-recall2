@@ -50,6 +50,14 @@ assert.equal(originFor(index, 'Magere Brug', 'street')?.kind, 'bridge', 'a bridg
 assert.equal(repairOriginTranslation('De bloem. De Rozengracht is gedempt in 1895.', 'The flower. The Rozengracht was suppressed in 1895.'),
   'The flower. The Rozengracht was filled in in 1895.', 'gedempt is filled in, not suppressed');
 assert.equal(repairOriginTranslation('Een gracht, gedeeltelijk gedempt.', 'A canal, partially silenced.'), 'A canal, partially filled in.');
+// Glossary, from the published texts (Korte Lijnbaanssteeg, Haarlemmerdijk, Albert Cuypstraat).
+assert.equal(repairOriginTranslation('Naar de lijnbanen van de touwslagerijen.', 'The line tracks of the rope warehouses.'),
+  'The ropewalks of the rope-making works.');
+assert.equal(repairOriginTranslation('Vóór de stadsuitleg van 1593.', 'Before the city layout of 1593.'), 'Before the city expansion of 1593.');
+assert.equal(repairOriginTranslation('Een plan voor de wijk.', 'A city layout for the district.'), 'A city layout for the district.',
+  'a glossary fix applies only where the Dutch says the word');
+assert.equal(repairOriginTranslation('Na demping van de Zaagmolensloot.', 'After the damming of the Zaagmolensloot.'),
+  'After the filling in of the Zaagmolensloot.');
 assert.equal(repairOriginTranslation('Zij waren niet gedempt.', 'The protest was suppressed.').includes('filled in'), true, 'only where the Dutch says gedempt');
 assert.equal(repairOriginTranslation('De protesten werden onderdrukt.', 'The protests were suppressed.'), 'The protests were suppressed.');
 assert.equal(repairOriginTranslation('Kort nadat de grond even voor 1600 bij de stad wordt getrokken.',
