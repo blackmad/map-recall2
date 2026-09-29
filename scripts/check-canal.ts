@@ -43,6 +43,18 @@ const BUILDS = [
   'build:canal-game-recall',
   'build:canal-game-presentation',
   'build:canal-buildings',
+  // Game bundles the old chain never rebuilt, so a stale one could pass the
+  // gate (the signature-landmark bundle did, 2026-09-30).
+  'build:canal-car',
+  'build:canal-three',
+  'build:canal-3d',
+  'build:canal-study-roofs',
+  'build:canal-study-facades',
+  'build:canal-study-trees',
+  'build:canal-study-public-realm',
+  'build:canal-neighborhoods',
+  'build:canal-bridges',
+  'build:canal-recall-store',
 ];
 
 /** Typed checks and named geographic regressions. Independent of each other. */
@@ -177,8 +189,25 @@ async function phase(title: string, names: string[], parallel: number, failFast:
   return !failed;
 }
 
+/** Committed bundles a fresh build changed: a source edited without its
+ *  bundle, or the reverse. A warning, not a failure, since work in progress
+ *  is expected to be uncommitted. */
+function changedBundles(): Promise<string[]> {
+  return new Promise(resolve => {
+    const child = spawn('git', ['diff', '--name-only', '--', 'public/canal-drive/js'], { stdio: ['ignore', 'pipe', 'ignore'] });
+    const chunks: Buffer[] = [];
+    child.stdout.on('data', (chunk: Buffer) => chunks.push(chunk));
+    child.on('close', () => resolve(Buffer.concat(chunks).toString('utf8').split('\n').filter(line => /bundle|recall-store\//.test(line))));
+  });
+}
+
 const started = performance.now();
+const bundlesBefore = new Set(await changedBundles());
 const built = await phase('Builds', ['lint', ...BUILDS], 1, true);
+const rebuilt = (await changedBundles()).filter(file => !bundlesBefore.has(file));
+if (rebuilt.length) {
+  process.stdout.write(`\n⚠ The builds changed committed bundles; commit them with their sources:\n${rebuilt.map(file => `    ${file}`).join('\n')}\n\n`);
+}
 if (built) {
   await phase('Checks', CHECKS, jobs, false);
   if (!process.argv.includes('--no-storybook')) await phase('Storybook', ['build-storybook'], 1, true);
