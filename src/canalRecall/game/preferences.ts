@@ -76,11 +76,13 @@ export {
 
 export const PREFERENCES_STORAGE_KEY = 'canalRecall.preferences.v1';
 /**
+ * v4 (2026-09-29): every saved zoom resets once to the 65% default. At 50%
+ * a chase ride opened framing the whole route ("start is way too zoomed out").
  * v3 (2026-09-28): every saved zoom resets once to the 50% default. The Da
  * Costa study choice silently saved 0.8, and the broken pinch saved 0.1 or
  * 1.5, so a chase ride on the web opened far from 50% (user request).
  */
-export const ZOOM_DEFAULT_VERSION = 3 as const;
+export const ZOOM_DEFAULT_VERSION = 4 as const;
 /** Degrees of extra pitch the live tilt slider may add or subtract. */
 export const CAMERA_TILT_MIN = -36;
 export const CAMERA_TILT_MAX = 36;

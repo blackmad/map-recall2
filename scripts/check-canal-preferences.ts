@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import {
-  LEGACY_ZOOM_DEFAULT,
   PREFERENCES_STORAGE_KEY,
   ZOOM_DEFAULT_VERSION,
   applyDifficulty,
@@ -12,7 +11,7 @@ import {
   type CanalPreferences,
 } from '../src/canalRecall/game/preferences.ts';
 
-const zoom = { min: 0.2, max: 1.5, defaultZoom: 0.5 };
+const zoom = { min: 0.2, max: 1.5, defaultZoom: 0.65 };
 
 const memory = () => {
   const data = new Map<string, string>();
@@ -31,7 +30,7 @@ const memory = () => {
   assert.equal(prefs.arrow, true);
   assert.equal(prefs.gamey, true);
   assert.equal(prefs.sound, false);
-  assert.equal(prefs.zoom, 0.5);
+  assert.equal(prefs.zoom, 0.65);
   assert.equal(prefs.cameraTilt, 0);
 }
 
@@ -98,12 +97,12 @@ const memory = () => {
 }
 
 {
-  const migrated = parsePreferences({ zoom: LEGACY_ZOOM_DEFAULT }, zoom);
-  assert.equal(migrated.zoom, 0.5, 'legacy 0.65 without a version flag becomes 0.50');
-  const studyZoom = parsePreferences({ zoom: 0.8, zoomDefaultVersion: 2 }, zoom);
-  assert.equal(studyZoom.zoom, 0.5, 'v3 resets any older saved zoom (study 0.8, broken-pinch 0.1/1.5) to 50%');
-  const kept = parsePreferences({ zoom: LEGACY_ZOOM_DEFAULT, zoomDefaultVersion: 3 }, zoom);
-  assert.equal(kept.zoom, LEGACY_ZOOM_DEFAULT, 'a zoom saved since v3 is kept');
+  const migrated = parsePreferences({ zoom: 1.2 }, zoom);
+  assert.equal(migrated.zoom, 0.65, 'a zoom saved without a version flag becomes the default');
+  const halfZoom = parsePreferences({ zoom: 0.5, zoomDefaultVersion: 3 }, zoom);
+  assert.equal(halfZoom.zoom, 0.65, 'v4 resets the 50% default, which framed the whole route, to 65%');
+  const kept = parsePreferences({ zoom: 0.9, zoomDefaultVersion: ZOOM_DEFAULT_VERSION }, zoom);
+  assert.equal(kept.zoom, 0.9, 'a zoom saved since v4 is kept');
   assert.equal(parsePreferences({ routePattern: 'study' }, zoom).routePattern, 'surprise', 'the retired study choice is not restored from a save');
 }
 

@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — start the chase at 65%; buildings fade in during the intro
+
+User reports: "start is way too zoomed out now", "it jumps zoom levels while
+showing a 2d overview of the start view".
+- `CAMERA_ZOOM_INITIAL` is 0.65 (was 0.5, which framed a whole route).
+  `ZOOM_DEFAULT_VERSION` 4 moves saved untouched 0.5 defaults to 0.65.
+- The intro camera itself was smooth (log-zoom interpolation). The jumps were
+  3D buildings appearing at once at zoom 14 across half-loaded tiles. Building
+  layers now fade from zoom 15 to 15.6 (`BUILDING_FADE_IN`), so the overview
+  stays a flat map and buildings grow in as the camera descends.
+- Landmark dots start at zoom 16 with their names, not as bare yellow dots
+  over the overview.
+
 ## 2026-09-29 — the minimap no longer draws due-for-review streets
 
 User reports: "what is the orange and red in the minimap?", then "just discard
