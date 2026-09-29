@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — the live route measures to its line, not its corners
+
+User report: "the routing is hopping / unstable — while I'm on it, it jumps to
+another street" (Marnixstraat, race 52.3748,4.8819 → 52.3850,4.8829).
+`nearestRouteIndex` measured the rider's distance to route *vertices*. Down a
+long straight with few vertices, mid-block was more than
+`LIVE_ROUTE_OFF_ROUTE_DIST` (140 px) from every vertex while riding on the line,
+so `advanceLiveRoute` replanned every reroute interval and `findRoute` was free
+to pick a near-equal parallel street. It now projects onto each segment and
+returns the segment start, so the stretch being ridden stays drawn. Named
+regression "riding down a long straight is on the route (Marnixstraat)" in
+`scripts/check-route-selection.ts`.
+
 ## 2026-09-29 — labels above the buildings, landmarks on their ground point, Enter rides on, cards end on a sentence
 
 - **"Café De Jo…" cut off by a building.** The basemap's shop and café layers

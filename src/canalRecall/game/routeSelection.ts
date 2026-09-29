@@ -386,13 +386,29 @@ export interface LiveRouteDecision {
   offBy: number;
 }
 
+/**
+ * Where the player is along the route: the start of the nearest segment, and
+ * the distance to the route line itself.
+ *
+ * This used to measure to the route's vertices. Down a long straight with few
+ * vertices (Marnixstraat), a rider mid-block was more than
+ * `LIVE_ROUTE_OFF_ROUTE_DIST` from every vertex while riding on the line, so
+ * the game replanned every two seconds and the line hopped to a near-equal
+ * street across the canal (user report 2026-09-29, "while I'm on it, it
+ * jumps to another street"). The segment start, not the nearer vertex, is
+ * returned so the stretch being ridden stays drawn.
+ */
 export function nearestRouteIndex(
   route: readonly WorldPoint[],
   player: WorldPoint,
 ): { index: number; distance: number } {
+  if (route.length === 1) return { index: 0, distance: Math.hypot(route[0].x - player.x, route[0].y - player.y) };
   let index = 0, distance = Infinity;
-  for (let i = 0; i < route.length; i++) {
-    const d = Math.hypot(route[i].x - player.x, route[i].y - player.y);
+  for (let i = 0; i < route.length - 1; i++) {
+    const a = route[i], b = route[i + 1];
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const t = Math.max(0, Math.min(1, ((player.x - a.x) * dx + (player.y - a.y) * dy) / (dx * dx + dy * dy || 1)));
+    const d = Math.hypot(a.x + dx * t - player.x, a.y + dy * t - player.y);
     if (d < distance) { distance = d; index = i; }
   }
   return { index, distance };
