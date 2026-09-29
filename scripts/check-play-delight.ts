@@ -92,3 +92,31 @@ assert.deepEqual(stamped.fresh, ['Jordaan']);
 assert.ok(stamped.passport.stamped.includes('Jordaan'));
 
 console.log('play-delight checks passed');
+
+// Review rides (TODO item 6): Plan review picks the landmark pair whose line
+// passes the most due names, inside the usual pairing range, and says only
+// how many are on the way.
+{
+  const { pickReviewRoute, REVIEW_CORRIDOR_KM } = await import('../src/canalRecall/game/routeSelection.ts');
+  const poi = (id: string, lat: number, lng: number) => ({ id, name: id, lat, lng });
+  // Three landmarks on an east-west line through the Jordaan, one far south.
+  const pois = [poi('west', 52.3760, 4.8750), poi('east', 52.3760, 4.8950), poi('south', 52.3560, 4.8850), poi('far', 52.3000, 4.9900)];
+  const due = [
+    { name: 'Rozengracht', center: [52.3762, 4.8800] as [number, number] },
+    { name: 'Bloemgracht', center: [52.3758, 4.8900] as [number, number] },
+    { name: 'Ferdinand Bolstraat', center: [52.3560, 4.8800] as [number, number] },
+  ];
+  const first = (count: number) => 0 * count;
+  const pick = pickReviewRoute({ pois, due, chooseIndex: first });
+  assert.ok(pick, 'a pair passing due names is found');
+  assert.deepEqual(new Set([pick!.from.id, pick!.to.id]), new Set(['west', 'east']), 'the pair whose line passes two due names wins');
+  assert.deepEqual(pick!.dueNear, ['Bloemgracht', 'Rozengracht']);
+  const fixed = pickReviewRoute({ pois, due, from: poi('home', 52.3560, 4.8700), chooseIndex: first, maxKm: 2 });
+  assert.equal(fixed?.from.id, 'home', 'a home or GPS start is kept');
+  assert.ok(fixed!.dueNear.includes('Ferdinand Bolstraat'), 'and the destination is chosen for the names on its way');
+  assert.equal(pickReviewRoute({ pois, due: [{ name: 'Nowhere', center: [52.2, 5.2] }], chooseIndex: first }), null,
+    'no due name near any pair falls back to the ordinary pickers');
+  assert.ok(REVIEW_CORRIDOR_KM <= 0.25, 'the corridor stays tight enough to be location-honest');
+  const briefWith = missionBrief({ destinationName: 'Westerkerk', travelMode: 'car', routePattern: 'surprise', cityName: 'Amsterdam', reviewDueNearRoute: 2 });
+  assert.equal(briefWith.tease, 'Review ride: 2 overdue names on the way', 'the briefing counts, never names');
+}

@@ -40,11 +40,14 @@ translations, and model-verifier disagreements. Corrections must keep exact
 Wikipedia evidence.
 
 **6. Due-aware “where next” routing.**
-The full-city mastery map and dedicated knowledge review screen are shipped.
-Still open: let **Plan review** choose a location-honest route near overdue
-names, with a bounded detour, instead of only enabling due-only questions.
-Home-base routes already grow an expanding learning radius from the address
-(HUD/briefing readout + soft path bias inside the ring).
+The thin slice shipped 2026-09-29 (see HISTORY). With Plan review on, a ride
+runs between the landmarks whose line passes the most due names. Still open:
+- a named-route check that the *planned path* (not only the straight line)
+  passes the due names, and a detour cap measured on it;
+- choosing the review pair when `routePois` is thin (outer districts),
+  perhaps with street midpoints as endpoints;
+- re-enabling cold-open review now that a location-honest route exists
+  (`COLD_OPEN_ENABLED`), gated on the due name being on the planned path.
 
 ---
 

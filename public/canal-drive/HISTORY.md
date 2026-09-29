@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — review rides: Plan review picks a route past the names that are due
+
+TODO item 6. **Plan review** on the knowledge screen used to switch questions
+to due names only, while the route stayed a random landmark pair. Most due
+names never came under the wheels, and a question about a place you cannot see
+teaches a false pairing. `pickReviewRoute` (`routeSelection.ts`) now scores
+landmark pairs by the distinct due names within 200 m of the straight from→to
+line (at least 0.8 km, at most the pattern's usual range). It breaks ties by
+length, within 30% of the shortest. Surprise samples 40 starts; home and GPS
+keep their start, and home stays inside its learning ring. The route planner's
+existing due-name bias steers the path past them. With nothing due near any
+pair, or in transit mode, the ordinary pickers run. The briefing tease says
+"Review ride: N overdue names on the way": a count, never the names, so
+nothing is answered before it is asked. `tests/e2e/review-ride.spec.ts`
+plants due names on a line and checks the ride passes all of them.
+
 ## 2026-09-29 — two road-guard traps at span ends, found by tracing harness drives
 
 The driving harness now makes failures replayable. Each lost drive reports

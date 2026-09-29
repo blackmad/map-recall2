@@ -105,6 +105,7 @@ class Game {
     this.loadingMessage = '';
     this.loadingProgress = 0;
     this.trackMode = TRACK_MODE_POINT_TO_POINT;
+    this._reviewRoute = null;        // set by _pickReviewRide for a review ride
     this._loadToken = 0;             // bumped per route load; see _onLocationSelected
     this._raceKey = null;
     this._shareUrl = null;

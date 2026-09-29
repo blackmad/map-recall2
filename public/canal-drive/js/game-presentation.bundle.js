@@ -304,6 +304,12 @@
     return items[h % items.length];
   }
   function missionBrief(input) {
+    const brief = composeBrief(input);
+    const due = input.reviewDueNearRoute ?? 0;
+    if (due > 0) return { ...brief, tease: due === 1 ? "Review ride: 1 overdue name on the way" : `Review ride: ${due} overdue names on the way` };
+    return brief;
+  }
+  function composeBrief(input) {
     const dest = (input.destinationName || "your destination").trim();
     const salt = `${input.cityName}|${dest}|${input.travelMode}|${input.routePattern}`;
     if (input.routePattern === "home") {
@@ -1849,7 +1855,8 @@
         routePattern: this.routePattern === "home" ? "home" : this.routePattern === "here" ? "here" : "surprise",
         cityName: this._cityDisplayName(),
         homeLearningRadiusKm: this._homeLearningRadiusKm || 0,
-        hasColdOpenReview: COLD_OPEN_ENABLED && hasCold
+        hasColdOpenReview: COLD_OPEN_ENABLED && hasCold,
+        reviewDueNearRoute: this._reviewRoute ? this._reviewRoute.dueNear.length : 0
       });
     }
     /** Returns the merged collection so the finish card can show both the totals

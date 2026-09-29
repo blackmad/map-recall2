@@ -371,6 +371,7 @@ class GameRouteRuntime {
 
   async _startConfiguredRoute({ isReroll = false } = {}) {
     if (!isReroll) this._routeRerolls = 0;
+    this._reviewRoute = null;
     this._setRouteError('');
     const prefs = this._prefs();
     this._applyPrefsToRuntime(prefs, { persist: true, applySound: false });
@@ -456,6 +457,12 @@ class GameRouteRuntime {
 
     const pool = this.routePois;
     const choices = pool.filter(poi => poi.id !== this.routeFrom?.id || pool.length < 3);
+    // Review ride: with Plan review on, pick the pair that passes due names.
+    this._reviewRoute = this._pickReviewRide(choices);
+    if (this._reviewRoute) {
+      this._launchPoiRoute(this._reviewRoute.from, this._reviewRoute.to);
+      return;
+    }
     const from = this.routePattern === 'home' ? this.homeBase
       : this.routePattern === 'here' ? this.gpsOrigin
         : choices[Math.floor(Math.random() * choices.length)];
@@ -497,6 +504,31 @@ class GameRouteRuntime {
 
   // The geographic rules live in game/routeSelection.ts, where they are tested
   // without generating routes until one looks wrong.
+  /**
+   * Plan review (skip mastered) plus names due in this city: the landmark pair
+   * whose line passes the most of them, inside the pattern's usual range.
+   * Null falls through to the ordinary pickers. See routeSelection.pickReviewRoute.
+   */
+  _pickReviewRide(choices) {
+    const Route = window.CanalRecallRoute;
+    if (!Route || !Route.pickReviewRoute || !this._prefs().skipMastered || this.travelMode === 'transit') return null;
+    if (!this.recall || typeof this.recall.dueReviews !== 'function') return null;
+    const cityId = this.cityId || 'amsterdam';
+    const now = Date.now();
+    const due = this.recall.dueReviews().filter(place => place.cityId === cityId && place.dueAt <= now && place.type !== 'stop');
+    if (!due.length) return null;
+    const from = this.routePattern === 'home' ? this.homeBase
+      : this.routePattern === 'here' ? this.gpsOrigin : null;
+    if (this.routePattern !== 'surprise' && !from) return null;
+    let maxKm = Route.ROUTE_POI_MAX_PAIR_KM;
+    if (this.routePattern === 'home') {
+      const samples = typeof this.recall.homeMasterySamples === 'function' ? this.recall.homeMasterySamples(cityId) : [];
+      this._homeLearningRadiusKm = Route.homeLearningRadiusKm(from, samples);
+      maxKm = this._homeLearningRadiusKm * Route.HOME_RADIUS_OVERSHOOT;
+    }
+    return Route.pickReviewRoute({ pois: from ? this.routePois : choices, due, from, maxKm });
+  }
+
   _pickDestinationNear(from, alsoExcludeId = null) {
     return CanalRecallRoute.pickDestinationNear(this.routePois, from, undefined, alsoExcludeId);
   }
@@ -791,6 +823,7 @@ class GameRouteRuntime {
 
   _startNextHomeLeg() {
     if (!this.homeBase) return;
+    this._reviewRoute = null;
     if (this.homeLeg === 'outbound') {
       this.homeLeg = 'return';
       this._launchPoiRoute(this.routeTo, this.homeBase);
