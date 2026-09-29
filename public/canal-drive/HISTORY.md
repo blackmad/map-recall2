@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — a livelier invented building palette (v3)
+
+User report: "these fake colors are too drab". Buildings with no observed
+colour use `cityAppearancePalette.ts`. Its V2 grey-browns and grey flat caps
+read as one dun mass from the chase, and flat caps are most of what the camera
+sees. V3 makes brick redder and richer and adds a dark brick. Buff is ochre,
+plaster is cream, grey is a blue slate, and a rare canal green joins (1 in 9).
+Flat caps mix bitumen, terracotta, slate and gravel. Values stay below the
+clean theme's cream ground, as V1's bleaching lesson requires. Observed OSM
+colours and the reviewed area sidecars are untouched. Source labels are now
+`citywide-identity-palette-v3-not-measured` /
+`citywide-flat-cap-palette-v3-not-measured`.
+
 ## 2026-09-29 — landmark and shop labels sit on the buildings
 
 User report: "can we move the map POI labels up onto the buildings instead of

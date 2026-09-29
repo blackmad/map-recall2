@@ -72,8 +72,8 @@ export function decorateBuildingFeature(feature:BuildingFeature,priors:ReadonlyM
   if(prior)return{...feature,properties:{...properties,sideColour:prior.sideColour,sideColourSource:prior.sideColourSource??'procedural-prior-not-measured',sideColourObservationId:prior.sideColourObservationId,sideColourSourceSha256:prior.sideColourSourceSha256,sideColourReviewOrigin:prior.sideColourReviewOrigin,sideColourReviewer:prior.sideColourReviewer,roofColour:prior.roofColour,groundColour:prior.sideColour,groundAppearanceStyleSource:'wall-inherited-not-independently-measured',groundFloorHeightM:prior.groundFloorHeightM,roofShape:prior.roofShape,roofEavesHeightM:prior.roofEavesHeightM,roofGeometrySource:prior.roofGeometrySource,constructionYear:prior.constructionYear,appearanceStyleSource:prior.sideColourSource??'procedural-prior-not-measured',appearanceGeometryRevision:prior.geometryRevision}};
   if(!/^NL\.IMBAG\.Pand\.\d+$/.test(id))return feature;
   const additions:Record<string,unknown>={};
-  if(!['sideColour','colour','color','material'].some(key=>present(properties[key]))){additions.sideColour=citywideBuildingWallPrior(id);additions.groundColour=citywideBuildingGroundPrior(id);additions.groundFloorHeightM=3.2;additions.appearanceStyleSource='citywide-identity-palette-v2-not-measured';additions.wallAppearanceStyleSource='citywide-identity-palette-v2-not-measured';additions.groundAppearanceStyleSource='wall-inherited-not-independently-measured';}
-  if(!present(properties.roofColour)&&(!present(properties.roofShape)||properties.roofShape==='flat')){additions.roofColour=citywideBuildingRoofPrior(id);additions.roofAppearanceStyleSource='citywide-flat-cap-palette-v2-not-measured';}
+  if(!['sideColour','colour','color','material'].some(key=>present(properties[key]))){additions.sideColour=citywideBuildingWallPrior(id);additions.groundColour=citywideBuildingGroundPrior(id);additions.groundFloorHeightM=3.2;additions.appearanceStyleSource='citywide-identity-palette-v3-not-measured';additions.wallAppearanceStyleSource='citywide-identity-palette-v3-not-measured';additions.groundAppearanceStyleSource='wall-inherited-not-independently-measured';}
+  if(!present(properties.roofColour)&&(!present(properties.roofShape)||properties.roofShape==='flat')){additions.roofColour=citywideBuildingRoofPrior(id);additions.roofAppearanceStyleSource='citywide-flat-cap-palette-v3-not-measured';}
   return Object.keys(additions).length?{...feature,properties:{...properties,...additions}}:feature;
 }
 
@@ -419,9 +419,9 @@ export class BuildingTileStreamer {
     for (const raw of this.cache.collection().features) {
       const properties = this.styled(raw).properties;
       if (properties.appearanceStyleSource === 'procedural-prior-not-measured') styled++;
-      if (properties.appearanceStyleSource === 'citywide-identity-palette-v2-not-measured') contextual++;
+      if (properties.appearanceStyleSource === 'citywide-identity-palette-v3-not-measured') contextual++;
       if (properties.groundAppearanceStyleSource === 'wall-inherited-not-independently-measured') grounds++;
-      if (properties.roofAppearanceStyleSource === 'citywide-flat-cap-palette-v2-not-measured') roofs++;
+      if (properties.roofAppearanceStyleSource === 'citywide-flat-cap-palette-v3-not-measured') roofs++;
     }
     this.styledFeatures = styled; this.contextualFeatures = contextual;
     this.contextualGrounds = grounds; this.contextualRoofs = roofs;
