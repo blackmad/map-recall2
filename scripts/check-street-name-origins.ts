@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {
-  AMSTERDAM_WOONPLAATS_ID, cleanDescription, indexOrigins, nameKey, originFor, originsFromRecords,
+  AMSTERDAM_WOONPLAATS_ID, cleanDescription, indexOrigins, nameKey, originFor, originsFromRecords, repairOriginTranslation,
   type BagOpenbareRuimte,
 } from './lib/streetNameOrigins.ts';
 
@@ -45,5 +45,22 @@ assert.equal(originFor(index, 'Kerkstraat', 'street')?.nl, 'Naar de kerk.', 'Ams
 assert.equal(originFor(index, 'Dubbelstraat', 'street'), null, 'two explanations of one name are refused, not guessed');
 assert.equal(originFor(index, 'Nergensstraat', 'street'), null);
 assert.equal(originFor(index, 'Magere Brug', 'street')?.kind, 'bridge', 'a bridge carried as a routing way is explained by its Kunstwerk');
+
+// Known translator failures on this register (2026-09-29 run).
+assert.equal(repairOriginTranslation('De bloem. De Rozengracht is gedempt in 1895.', 'The flower. The Rozengracht was suppressed in 1895.'),
+  'The flower. The Rozengracht was filled in in 1895.', 'gedempt is filled in, not suppressed');
+assert.equal(repairOriginTranslation('Een gracht, gedeeltelijk gedempt.', 'A canal, partially silenced.'), 'A canal, partially filled in.');
+assert.equal(repairOriginTranslation('Zij waren niet gedempt.', 'The protest was suppressed.').includes('filled in'), true, 'only where the Dutch says gedempt');
+assert.equal(repairOriginTranslation('De protesten werden onderdrukt.', 'The protests were suppressed.'), 'The protests were suppressed.');
+assert.equal(repairOriginTranslation('Kort nadat de grond even voor 1600 bij de stad wordt getrokken.',
+  'Shortly after the land was drawn to the city just before 4:00 p.m.'), 'Shortly after the land was drawn to the city just before 1600', 'a year read as a clock time');
+assert.equal(repairOriginTranslation('Om 15:00 uur.', 'At 3:00 p.m.'), 'At 3:00 p.m.', 'a real time stays');
+assert.equal(repairOriginTranslation('Natuurkundige. Ontdekte de blinde vlek. Marisplein, Jacob Oud-Zuid Rb. 26-1-1922 15: m 9',
+  'Physicist. Discovered the blind spot. Marisplein, Jacob Oud-Zuid Rb. 26-1-1922 3:00 p.m. m 9'),
+  'Physicist. Discovered the blind spot.', 'an unfinished register note is dropped');
+assert.equal(repairOriginTranslation('Later (Rb. 29-11-1986) veranderd.', 'Later (Rb. 29-11-1986) changed.'), 'Later (council decision, 1986) changed.');
+assert.equal(repairOriginTranslation('Opgeheven bij Rb. 19-10-1949.', 'Abolished by Rb. 19-10-1949.'), 'Abolished by council decision in 1949.');
+assert.equal(repairOriginTranslation('x', 'In Rb. of 21-1-1976, a part was renamed.'), 'By council decision in 1976, a part was renamed.');
+assert.equal(repairOriginTranslation('x', 'Laid out (Rb. Nieuwer-Amstel 12-3-1914).'), 'Laid out (council decision of Nieuwer-Amstel, 1914).');
 
 process.stdout.write('Street-name origin checks passed\n');

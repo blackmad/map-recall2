@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — every street's name origin, in English
+
+The full on-device translation of the BAG `beschrijvingNaam` register
+finished: 4,360 new translations at about 60/min (`trn --quality high`, ×3).
+5 were refused because the translation renamed the street itself. Published
+coverage:
+- routable streets: 4,904 of 5,432;
+- curated streets: 326 of 343;
+- waters: 226 of 300;
+- bridges: 203 of 300.
+
+The file is `street-name-origins.json`: 1.2 MB, 364 KB gzipped, loaded
+alongside the other optional extracts.
+
+A spot check found three systematic translator failures. `repairOriginTranslation`
+fixes them at publish time, and each has a named check in
+`check-street-name-origins.ts`:
+- `gedempt` (a canal filled in) came out as "muted", "silenced" or
+  "suppressed" in 10 of 55 texts ("The Rozengracht was suppressed in 1895").
+- A bare year after `voor` read as a clock time ("just before 4:00 p.m." for
+  "even voor 1600").
+- Council-decision shorthand (`Rb. [Nieuwer-Amstel] 12-3-1914`) is now "council
+  decision of Nieuwer-Amstel, 1914". An unfinished register note trailing a
+  text (`Rb. 26-1-1922 15: m 9`) is dropped.
+
+The committed translation cache, `scripts/street-name-origin-translations.json`
+(2.3 MB), holds the Dutch next to each English text. It is the reviewable
+source and makes the run resumable.
+
 ## 2026-09-29 — the game draws its own POIs
 
 User requests: "should we just implement our own POI later?" and "for POI layer
