@@ -4,7 +4,12 @@ declare const GameState: { RACING: number };
 test('camera updates preserve resident trees, windows, roofs and water', async ({ page }) => {
   test.setTimeout(120_000);
   await page.goto('/canal-drive/');
-  await page.locator('[data-choice="route:study"]').click();
+  // The study is no longer a visible route choice (2026-09-28); select the
+  // pattern through the hidden form control the harness reads.
+  await page.locator('#route-pattern').evaluate((select: HTMLSelectElement) => {
+    select.value = 'study';
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+  });
   await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
   await page.waitForFunction(() => (window as any).canalRecallGame?.state === GameState.RACING, {}, { timeout: 90_000 });
   await page.waitForFunction(() => {

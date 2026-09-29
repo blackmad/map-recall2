@@ -88,6 +88,19 @@ autopilot navigation, not the guard. Next: trace the slow, near-route ones
 `tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
 or facades resident, probably because it needs locally generated study data.
 
+**Appearance-lane e2e failures seen in the 2026-09-30 full run.** These are
+not from the teaching lanes. Each is for the appearance owner:
+- `appearance-wall-colour.spec.ts`: Da Costakade 13 (`NL.IMBAG.Pand.0363100012166570`)
+  reads `procedural-prior-not-measured`, not `measured-accepted`. This is
+  probably the pending v3 sidecar republish below.
+- `complete-city.spec.ts`: 12,686 citywide unknown-wall priors, pinned 11,888.
+- `city-appearance-study-route.spec.ts`: asserts that choosing the study
+  sets car, chase and zoom 0.8. The chip that did that was removed on
+  2026-09-28, at the user's request for a 50% zoom. The harness should set
+  those itself. It also needs locally generated study data.
+- `wall-material-demo.spec.ts`: `material-demo.html` never reports ready,
+  probably because it needs local demo data.
+
 **Republish area appearance sidecars on the v3 palette (2026-09-29).**
 The citywide fallback moved to the livelier v3 palette (see HISTORY). The
 three hash-bound releases under `public/data/city-expansion/releases/` still

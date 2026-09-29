@@ -117,6 +117,37 @@ export function trimToSentence(text: string, maxChars: number = MAX_EXTRACT_CHAR
   return `${(space > 0 ? window.slice(0, space) : window).trim()}…`;
 }
 
+/** Characters per translator call. `trn` splits longer input itself, at a
+ *  fixed length and sometimes mid-word, and translates the pieces apart:
+ *  "het dek v|an het vaste gedeelte" came back "the deck vThe fixed part"
+ *  (22 of 5,203 street-name origins, 2026-09-30). */
+export const TRANSLATOR_CHUNK_CHARS = 400;
+
+/**
+ * Split text into runs of whole sentences no longer than `maxChars`, for
+ * translating one run per call. A single sentence longer than that stands
+ * alone rather than being cut.
+ */
+export function sentenceChunks(text: string, maxChars: number = TRANSLATOR_CHUNK_CHARS): string[] {
+  const clean = text.trim();
+  if (clean.length <= maxChars) return clean ? [clean] : [];
+  const sentences: string[] = [];
+  let start = 0;
+  for (const match of clean.matchAll(/[.!?](?=\s)/g)) {
+    if (!isSentenceEnd(clean, match.index)) continue;
+    sentences.push(clean.slice(start, match.index + 1).trim());
+    start = match.index + 1;
+  }
+  if (start < clean.length) sentences.push(clean.slice(start).trim());
+  const chunks: string[] = [];
+  for (const sentence of sentences.filter(Boolean)) {
+    const last = chunks[chunks.length - 1];
+    if (last && last.length + 1 + sentence.length <= maxChars) chunks[chunks.length - 1] = `${last} ${sentence}`;
+    else chunks.push(sentence);
+  }
+  return chunks;
+}
+
 /**
  * Proper nouns that the source had and the translation lost.
  *

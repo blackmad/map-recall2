@@ -16,7 +16,12 @@
  * Only origins that explain something the game can ask are translated unless
  * `--all` is passed.
  *
- * Usage: npm run translate:street-name-origins [-- --limit=50] [-- --all]
+ * Long texts go to the translator a few whole sentences at a time
+ * (`sentenceChunks`): given more, `trn` splits it itself, mid-word.
+ * `--rechunk` drops cached long translations made before that, so they are
+ * translated again.
+ *
+ * Usage: npm run translate:street-name-origins [-- --limit=50] [-- --all] [-- --rechunk]
  *                                              [-- --concurrency=4] [-- --translator=trn|translate]
  */
 import { execFile } from 'node:child_process';
@@ -25,8 +30,8 @@ import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
 import {
-  CLI_TRANSLATORS, type CliTranslator, cleanTranslatorOutput, protectNames,
-  translatorInvocation, trimToSentence,
+  CLI_TRANSLATORS, type CliTranslator, cleanTranslatorOutput, protectNames, sentenceChunks,
+  TRANSLATOR_CHUNK_CHARS, translatorInvocation, trimToSentence,
 } from './lib/translation.ts';
 import { indexOrigins, originFor, type NameOrigin } from './lib/streetNameOrigins.ts';
 
@@ -53,7 +58,13 @@ interface CachedOrigin { name: string; hash: string; nl?: string; en: string; so
 const hash = (text: string) => createHash('sha1').update(text).digest('hex').slice(0, 12);
 
 const staged = JSON.parse(await readFile(stagingFile, 'utf8')) as { origins: NameOrigin[] };
-const cache: CachedOrigin[] = JSON.parse(await readFile(cacheFile, 'utf8').catch(() => '[]'));
+let cache: CachedOrigin[] = JSON.parse(await readFile(cacheFile, 'utf8').catch(() => '[]'));
+const CHUNKED = '/chunked';
+if (process.argv.includes('--rechunk')) {
+  const before = cache.length;
+  cache = cache.filter(entry => !(entry.nl && entry.nl.length > TRANSLATOR_CHUNK_CHARS && !entry.source.endsWith(CHUNKED)));
+  process.stdout.write(`--rechunk: ${before - cache.length} long translations will be redone in sentence chunks\n`);
+}
 const cached = new Map(cache.map(entry => [entry.hash, entry]));
 
 // Which origins the game can use: those matched to a feature it can ask.
@@ -81,15 +92,9 @@ process.stdout.write(`${wanted.length} origins wanted (${distinct.size} distinct
 
 async function translate(origin: NameOrigin): Promise<string> {
   const held = protectNames(origin.nl, [origin.name]);
-  const invocation = translatorInvocation(tool!, 'nl', held.text);
-  const child = execFile(tool!, invocation.args);
-  if (invocation.stdin === null) child.stdin!.end(); else child.stdin!.end(invocation.stdin);
-  const out: string[] = [], err: string[] = [];
-  child.stdout!.on('data', (piece: Buffer) => out.push(piece.toString('utf8')));
-  child.stderr!.on('data', (piece: Buffer) => err.push(piece.toString('utf8')));
-  const code = await new Promise<number>((resolve, reject) => { child.on('error', reject); child.on('close', resolve); });
-  if (code !== 0) throw new Error(`exited ${code}: ${err.join('').trim().split('\n')[0]}`);
-  const english = trimToSentence(held.restore(cleanTranslatorOutput(out.join(''))), MAX_ORIGIN_CHARS);
+  const parts: string[] = [];
+  for (const chunk of sentenceChunks(held.text)) parts.push(await translateText(chunk));
+  const english = trimToSentence(held.restore(parts.join(' ')), MAX_ORIGIN_CHARS);
   if (!english) throw new Error('empty output');
   // Unlike a lede, an explanation may and should translate the words the
   // name is built from ("Burgemeester Stramanweg: Burgemeester van …" is
@@ -99,6 +104,19 @@ async function translate(origin: NameOrigin): Promise<string> {
     throw new Error('refused — the translation renamed the street itself');
   }
   return english;
+}
+
+/** One translator call on text short enough that it will not split it. */
+async function translateText(text: string): Promise<string> {
+  const invocation = translatorInvocation(tool!, 'nl', text);
+  const child = execFile(tool!, invocation.args);
+  if (invocation.stdin === null) child.stdin!.end(); else child.stdin!.end(invocation.stdin);
+  const out: string[] = [], err: string[] = [];
+  child.stdout!.on('data', (piece: Buffer) => out.push(piece.toString('utf8')));
+  child.stderr!.on('data', (piece: Buffer) => err.push(piece.toString('utf8')));
+  const code = await new Promise<number>((resolve, reject) => { child.on('error', reject); child.on('close', resolve); });
+  if (code !== 0) throw new Error(`exited ${code}: ${err.join('').trim().split('\n')[0]}`);
+  return cleanTranslatorOutput(out.join(''));
 }
 
 function containsWholeName(text: string, name: string): boolean {
@@ -121,7 +139,10 @@ await Promise.all(Array.from({ length: concurrency }, async () => {
     const origin = queue[next++];
     try {
       const en = await translate(origin);
-      const entry = { name: origin.name, hash: hash(`${origin.name}\u0000${origin.nl}`), nl: origin.nl, en, source };
+      const entry = {
+        name: origin.name, hash: hash(`${origin.name}\u0000${origin.nl}`), nl: origin.nl, en,
+        source: origin.nl.length > TRANSLATOR_CHUNK_CHARS ? `${source}${CHUNKED}` : source,
+      };
       cache.push(entry); cached.set(entry.hash, entry);
       done++; sinceSave++;
       if (sinceSave >= 25) { sinceSave = 0; await save(); process.stdout.write(`  ${done + failed}/${queue.length}\n`); }

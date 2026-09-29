@@ -159,7 +159,7 @@ test('a long street is learned a stretch at a time, and labelled only where it i
       recall: { record(feature: unknown, correct: boolean): void };
       player: Point;
       _recallFeatureAt(name: string, x: number, y: number): { name: string; center: [number, number] } | null;
-      _isRecallSuppressedHere(name: string): boolean;
+      _recallStatusHere(name: string): 'known' | 'learning' | 'none';
       _rememberKnownPlace(name: string, center: [number, number]): void;
       _isPlaceKnown(name: string, x: number, y: number): boolean;
     };
@@ -182,9 +182,10 @@ test('a long street is learned a stretch at a time, and labelled only where it i
     game._rememberKnownPlace(longest.name, feature.center);
 
     game.player.x = near.x; game.player.y = near.y;
-    const suppressedNear = game._isRecallSuppressedHere(longest.name);
+    // Known or recently missed here: either way not asked again here.
+    const suppressedNear = game._recallStatusHere(longest.name) !== 'none';
     game.player.x = far.x; game.player.y = far.y;
-    const suppressedFar = game._isRecallSuppressedHere(longest.name);
+    const suppressedFar = game._recallStatusHere(longest.name) !== 'none';
     return {
       name: longest.name,
       spanMeters: Math.round(longest.span / 3),

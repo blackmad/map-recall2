@@ -1050,7 +1050,6 @@
           waterResponse,
           brandedPoiResponse,
           factResponse,
-          originResponse,
           landmarkBuildingResponse
         ] = await Promise.all([
           fetch(url("landmarks.json")),
@@ -1065,8 +1064,6 @@
           // Generated trivia. Absent until a batch has been reviewed and
           // published, and the cards fall back to the Wikipedia lede when it is.
           fetch(url("facts.json")).catch(() => new Response("null", { status: 404 })),
-          // Why each street is called what it is (municipal register, English).
-          fetch(url("street-name-origins.json")).catch(() => new Response("null", { status: 404 })),
           // Which streamed building each landmark is, resolved at extract time.
           fetch(url("landmark-buildings.json")).catch(() => new Response("null", { status: 404 }))
         ]);
@@ -1082,7 +1079,6 @@
           waterFeatures,
           brandedPois,
           factsFile,
-          originsFile,
           landmarkBuildings
         ] = await Promise.all([
           landmarkResponse.json(),
@@ -1095,20 +1091,25 @@
           readJson(waterResponse, []),
           readJson(brandedPoiResponse, []),
           readJson(factResponse, null),
-          readJson(originResponse, null),
           readJson(landmarkBuildingResponse, null)
         ]);
         this._facts = buildFactIndex(factsFile);
         this._factRotation = loadRotationState(
           typeof localStorage === "undefined" ? null : localStorage
         );
-        this.streetKnowledge = buildRouteKnowledgeIndex(
-          streetKnowledge,
-          streetFeatures,
-          waterFeatures,
-          (name) => this._normaliseCanalName(name),
-          originsFile?.origins ?? []
-        );
+        const normalise = (name) => this._normaliseCanalName(name);
+        const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise);
+        this.streetKnowledge = knowledge;
+        void fetch(url("street-name-origins.json")).then((response) => readJson(response, null)).catch(() => null).then((originsFile) => {
+          if (!originsFile?.origins?.length || this.streetKnowledge !== knowledge) return;
+          this.streetKnowledge = buildRouteKnowledgeIndex(
+            streetKnowledge,
+            streetFeatures,
+            waterFeatures,
+            normalise,
+            originsFile.origins
+          );
+        });
         const transitStops = this.osmLoader?.transitLoad?.stops || [];
         this.vectorMap.setSpoilerNames([
           ...streetFeatures,
