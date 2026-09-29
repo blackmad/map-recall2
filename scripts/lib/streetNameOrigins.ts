@@ -144,6 +144,18 @@ export function indexOrigins(origins: readonly NameOrigin[]): Map<string, NameOr
  * - council-decision references (`Rb. 26-1-1922`) are register shorthand, and
  *   an unfinished one trails some texts as junk ("Oud-Zuid Rb. 26-1-1922 15: m 9").
  */
+/** [Dutch trigger, literal translation, meaning]. From reading the
+ *  published texts: a lijnbaan is a ropewalk, not a "line track". */
+const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
+  [/touwslager/i, /\brope warehouses\b/g, 'rope-making works'],
+  [/touwslager/i, /\brope warehouse\b/g, 'rope-making works'],
+  [/lijnban/i, /\bline tracks\b/g, 'ropewalks'],
+  [/lijnban/i, /\bline track\b/g, 'ropewalk'],
+  [/stadsuitleg/i, /\bcity layout\b/g, 'city expansion'],
+  [/zangzaad/i, /\bsinging seed\b/g, 'birdseed'],
+  [/regenten/i, /\bregency families\b/g, 'regent families'],
+];
+
 export function repairOriginTranslation(nl: string, en: string): string {
   let text = en;
   // An unfinished register note after the last full sentence: drop it.
@@ -165,7 +177,14 @@ export function repairOriginTranslation(nl: string, en: string): string {
       (_, preposition: string, _council, year) => `${preposition[0] === preposition[0].toUpperCase() ? 'By' : 'by'} council decision in ${year}`)
     .replace(new RegExp(reference, 'g'), (_, council, year) => decided(council, year));
   if (/gedempt|dempen|demping/i.test(nl)) {
-    text = text.replace(/\b(muted|silenced|suppressed|dampened|damped|muffled)\b/g, 'filled in');
+    text = text
+      .replace(/\b(muted|silenced|suppressed|dampened|damped|muffled|dammed)\b/g, 'filled in')
+      .replace(/\bdamming\b/g, 'filling in');
+  }
+  // Trade and planning words the translator takes literally. Each applies
+  // only where the Dutch says the word, so an English "layout" elsewhere stays.
+  for (const [dutch, wrong, right] of ORIGIN_GLOSSARY) {
+    if (dutch.test(nl)) text = text.replace(wrong, right);
   }
   if (!/\d{1,2}[:.]\d{2}\s*uur|\d{1,2}:\d{2}/.test(nl)) {
     const missingYears = [...new Set(nl.match(/\b1[0-9]{3}\b/g) ?? [])].filter(year => !text.includes(year));

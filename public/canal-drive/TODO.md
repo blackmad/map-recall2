@@ -56,8 +56,8 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   learned by boat.
 - The API states no licence for `beschrijvingNaam`. Confirm it with the
   municipality before a public release.
-- A known translator glitch remains: "rope warehouses" for touwslagerijen. Review the long texts in Trivia Lab or
-  with a glossary.
+- `ORIGIN_GLOSSARY` fixes the translator's literal renderings that have been
+  found (see HISTORY). Grow it when reading turns up more.
 
 ---
 
