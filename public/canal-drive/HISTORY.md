@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — separated cycle tracks are drawn, so the route lies on something
+
+User report: "what could we do to get the blue line onto the white rendered
+street?" (Nassaukade). The router prefers the separated `highway=cycleway`
+beside the road, and the basemap draws that as a faint dashed path, so the blue
+line seemed to float off the white street. `src/canalRecall/cycleTracks.ts`
+(shipped in the orientation-POI bundle) turns the routing extract's separated
+tracks into a line layer in Amsterdam red. There are 11,874 track paths. The
+layer sits just under the route casing and fades in from z13. Painted lanes are
+tagged on the road, which is drawn already, so they are not included. The
+layer only shows when cycling. Regression: `scripts/check-cycle-tracks.ts`.
+The TODO item is closed.
+
 ## 2026-09-29 — landmarks name their buildings exactly; no 10 m guess, no double marker
 
 User reports: "I can't see where on the map this landmark is" (Bevrijdingslinde),

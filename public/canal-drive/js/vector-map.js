@@ -145,8 +145,26 @@ class VectorBasemap {
     if (this.map.getSource('navigation-route')) return;
     this.map.addSource('navigation-route', { type: 'geojson', lineMetrics: true, data: { type: 'FeatureCollection', features: [] } });
     const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
+    // Separated cycle tracks sit just under the route, so a route along one
+    // lies on something drawn (see cycleTracks.ts).
+    const lib = window.CanalRecallOrientationPois;
+    if (lib && lib.cycleTrackFeatures) {
+      this.map.addSource('cycle-tracks', { type: 'geojson', data: this._cycleTracks || { type: 'FeatureCollection', features: [] } });
+      this.map.addLayer({ id: 'cycle-tracks', type: 'line', source: 'cycle-tracks', minzoom: 12,
+        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: { 'line-color': lib.CYCLE_TRACK_COLOUR, 'line-width': lib.CYCLE_TRACK_WIDTH, 'line-opacity': lib.CYCLE_TRACK_OPACITY } }, before);
+    }
     this.map.addLayer({ id: 'navigation-route-casing', type: 'line', source: 'navigation-route', layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' }, paint: { 'line-color': 'rgba(3,18,28,.75)', 'line-width': 10 } }, before);
     this.map.addLayer({ id: 'navigation-route-line', type: 'line', source: 'navigation-route', layout: { 'line-cap': 'round', 'line-join': 'round', visibility: 'none' }, paint: { 'line-color': '#38BDF8', 'line-width': 6, 'line-opacity': 0.9 } }, before);
+  }
+
+  /** The routing ways of the current network; only separated cycle tracks
+   *  are drawn, and only when cycling (`ways` empty otherwise). */
+  setCycleTracks(ways) {
+    const lib = window.CanalRecallOrientationPois;
+    this._cycleTracks = lib && lib.cycleTrackFeatures ? lib.cycleTrackFeatures(ways || []) : null;
+    const source = this.map && this.map.getSource('cycle-tracks');
+    if (source && this._cycleTracks) source.setData(this._cycleTracks);
   }
 
   _ensureStreetOverlayLayers() {

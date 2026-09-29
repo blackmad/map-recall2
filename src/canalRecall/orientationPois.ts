@@ -260,3 +260,6 @@ export function roofLiftTranslate(pitchDegrees: number, latitude: number, height
   const lift = (zoom: number) => ['literal', [0, -roofLiftPixels(zoom, pitchDegrees, latitude, heightMetres)]];
   return ['interpolate', ['exponential', 2], ['zoom'], 14, lift(14), 22, lift(22)];
 }
+
+// The cycle-track layer is drawn by the same map adapter, so it shares this bundle.
+export * from './cycleTracks';
