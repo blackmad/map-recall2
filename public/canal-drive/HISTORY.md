@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — the gate rebuilds every game bundle and names stale ones
+
+`check:canal` rebuilt 21 bundles. The car guard, three.js, the 3D/vehicle and
+signature bundles, the study layers, neighbourhoods, bridges and the recall
+store were never rebuilt, so a stale one could pass. The signature bundle did
+tonight: its `highlights()` fix was unbundled until a manual 3D rebuild.
+
+Those ten builds are now in the gate. After the builds it lists any committed
+bundle the rebuild changed ("commit them with their sources"), as a warning,
+since work in progress is expected to be uncommitted. Its first run found
+four study-layer bundles and the recall-store entry stale since 2026-09-26.
+They were rebuilt from current sources and committed.
+
 ## 2026-09-30 — detailed mode: no dot once the building is lit; no raycast for a tree
 
 In detailed (3D tile) mode the locator dot is drawn deliberately, because the
