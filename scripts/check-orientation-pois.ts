@@ -9,6 +9,9 @@ import {
   poiNameSpoils,
   maskSpoiledName,
   thinOrientationPois,
+  roofLiftPixels,
+  roofLiftTranslate,
+  POI_ROOF_HEIGHT_METRES,
 } from '../src/canalRecall/orientationPois';
 
 const poi = (id: string, lat: number, lng: number, orientationScore = 0, kind = 'local-food') =>
@@ -118,6 +121,20 @@ assert.equal(
   assert.equal(maskSpoiledName('Prinsenkeizersgracht', route), 'Prinsenkeizersgracht', 'mid-word containment is not a start');
   assert.equal(maskSpoiledName('Leliegracht', route), 'your destination', 'nothing left falls back');
   assert.equal(maskSpoiledName('Café Lelieg\u0072acht', route), 'Café …', 'accents and escapes normalise');
+}
+
+// Named regression (user report 2026-09-29, "move the map POI labels up onto
+// the buildings"): labels lift by the roofline's screen height.
+{
+  const lat = 52.37;
+  // Zoom 16 in Amsterdam is ~0.73 m per pixel: 12 m straight up at 90° pitch.
+  assert.ok(Math.abs(roofLiftPixels(16, 90, lat) - POI_ROOF_HEIGHT_METRES / 0.729) < 0.3, 'ground scale at zoom 16');
+  assert.equal(roofLiftPixels(17, 0, lat), 0, 'a flat map lifts nothing');
+  assert.ok(Math.abs(roofLiftPixels(17, 60, lat) / roofLiftPixels(16, 60, lat) - 2) < 1e-9, 'one zoom doubles the lift');
+  const expression = roofLiftTranslate(60, lat) as [string, unknown, unknown, number, [string, number[]], number, [string, number[]]];
+  const [, , , z0, [, v0], z1, [, v1]] = expression;
+  const at = (z: number) => v0[1] + (v1[1] - v0[1]) * (2 ** (z - z0) - 1) / (2 ** (z1 - z0) - 1);
+  assert.ok(Math.abs(-at(17.3) - roofLiftPixels(17.3, 60, lat)) < 1e-6, 'the base-2 stops reproduce the lift at any zoom');
 }
 
 process.stdout.write(

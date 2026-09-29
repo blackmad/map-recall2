@@ -230,3 +230,33 @@ export function maskSpoiledName(
   out += label.slice(cursor);
   return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
 }
+
+// ---------------------------------------------------------------------------
+// Landmark labels on the buildings.
+//
+// A symbol is drawn at its point on the ground, so under a pitched camera the
+// landmark names sat on the pavement at the foot of the facades (user report
+// 2026-09-29, "move the map POI labels up onto the buildings"). MapLibre has
+// no per-symbol height, so the dot and label are lifted in screen space by
+// what a nominal roofline would rise at this zoom and pitch. Exact at the
+// view centre; nearer the camera it sits a little low, towards the horizon a
+// little high, which still reads as "on the building".
+// ---------------------------------------------------------------------------
+
+/** A four-storey canal house, the common roofline of the centre. */
+export const POI_ROOF_HEIGHT_METRES = 12;
+const EARTH_CIRCUMFERENCE_METRES = 40_075_016.686;
+const TILE_SIZE = 512;
+
+/** Screen pixels a vertical `heightMetres` spans at `zoom` and `pitchDegrees`. */
+export function roofLiftPixels(zoom: number, pitchDegrees: number, latitude: number, heightMetres = POI_ROOF_HEIGHT_METRES): number {
+  const metresPerPixel = EARTH_CIRCUMFERENCE_METRES * Math.cos(latitude * Math.PI / 180) / (TILE_SIZE * 2 ** zoom);
+  return heightMetres / metresPerPixel * Math.sin(Math.max(0, pitchDegrees) * Math.PI / 180);
+}
+
+/** A `*-translate` paint value (viewport anchor) lifting by the roofline:
+ *  exponential in zoom, like the ground scale itself. */
+export function roofLiftTranslate(pitchDegrees: number, latitude: number, heightMetres = POI_ROOF_HEIGHT_METRES): unknown[] {
+  const lift = (zoom: number) => ['literal', [0, -roofLiftPixels(zoom, pitchDegrees, latitude, heightMetres)]];
+  return ['interpolate', ['exponential', 2], ['zoom'], 14, lift(14), 22, lift(22)];
+}
