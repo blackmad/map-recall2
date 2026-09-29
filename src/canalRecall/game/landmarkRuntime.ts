@@ -46,6 +46,7 @@ import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge
 import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
+import type { BridgeRegisterFile } from '../bridgeRegister';
 import { DRIVE_BY_RADIUS, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import {
   buildCorridorStreetIndex,
@@ -244,7 +245,7 @@ export class GameLandmarkRuntime {
     const noticeId = entry.id || `${type}-knowledge:${key}`;
     this._seenStreetKnowledge = this._seenStreetKnowledge || new Set();
     if (!shouldOfferStreetKnowledge({
-      hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin),
+      hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin || entry.structureFact),
       alreadyShownThisDrive: this._seenStreetKnowledge.has(noticeId),
       quizOpen: !!this.quizPromptName,
       landmarkCardOpen: !!this._landmarkNotice,
@@ -332,14 +333,19 @@ export class GameLandmarkRuntime {
       // 1.2 MB (364 KB gzipped) for 5,333 names, and no card needs it before
       // the first correct answer, so it no longer holds up the ride's start:
       // it merges in when it arrives, unless another load has replaced this one.
-      void fetch(url('street-name-origins.json'))
-        .then(response => readJson<{ origins?: StreetNameOrigin[] } | null>(response, null))
-        .catch(() => null)
-        .then(originsFile => {
-          if (!originsFile?.origins?.length || this.streetKnowledge !== knowledge) return;
-          this.streetKnowledge = buildRouteKnowledgeIndex(
-            streetKnowledge, streetFeatures, waterFeatures, normalise, originsFile.origins);
-        });
+      // The bridge register (number, type, material, year) rides along.
+      const deferredJson = <T>(name: string) => fetch(url(name))
+        .then(response => readJson<T | null>(response, null))
+        .catch(() => null);
+      void Promise.all([
+        deferredJson<{ origins?: StreetNameOrigin[] }>('street-name-origins.json'),
+        deferredJson<BridgeRegisterFile>('bridge-register.json'),
+      ]).then(([originsFile, bridgeRegister]) => {
+        if (!originsFile?.origins?.length && !bridgeRegister?.bridges) return;
+        if (this.streetKnowledge !== knowledge) return;
+        this.streetKnowledge = buildRouteKnowledgeIndex(
+          streetKnowledge, streetFeatures, waterFeatures, normalise, originsFile?.origins ?? [], bridgeRegister?.bridges ?? {});
+      });
       // Everything the game can ask about, so no orientation label says it
       // first. Stops join in transit mode, where a stop name is the answer.
       const transitStops = (this.osmLoader as { transitLoad?: { stops?: Array<{ name?: string }> } })

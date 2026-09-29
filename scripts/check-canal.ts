@@ -65,6 +65,7 @@ const CHECKS = [
   'test:cycle-tracks',
   'test:own-pois',
   'test:building-facts',
+  'test:bridge-register',
   'test:photoreal-gate',
   'test:canal-preferences',
   'test:transit-extract',

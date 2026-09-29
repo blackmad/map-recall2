@@ -1,0 +1,104 @@
+// What the city's bridge register says about a named bridge.
+//
+// Amsterdam numbers its bridges (the number is painted on many of them:
+// Magere Brug is 242, Blauwbrug 236), and its asset register
+// (`civieleconstructies`) records each one's type, material, and, for fixed
+// bridges, a construction year and the traffic it carries. After a bridge is
+// named, its card can say that even when no name origin exists: the register
+// covers 1,837 bridges against 203 bridge origins.
+
+/** One register row as `scripts/data/amsterdam-bridge-register.json` stores it:
+ *  [number, name, type, material, year (0 unknown), modality, street, ring]. */
+export type BridgeRegisterRow = [
+  number: string, name: string, type: string, material: string,
+  year: number, modality: string, street: string, ring: Array<[number, number]>,
+];
+
+/** A bridge's register entry as the extract publishes it. */
+export interface BridgeRegisterFact {
+  /** The painted bridge number (242), when the object number carries one. */
+  nr?: number;
+  movable: boolean;
+  /** English material, e.g. "steel". */
+  material?: string;
+  /** Construction year per the register. */
+  year?: number;
+  /** English traffic it carries, e.g. "cyclists". */
+  carries?: string;
+}
+
+export interface BridgeRegisterFile {
+  version: 1;
+  source: string;
+  /** Keyed by the bridge's name as `bridges.json` spells it. */
+  bridges: Record<string, BridgeRegisterFact>;
+}
+
+const MATERIALS: Record<string, string> = {
+  Staal: 'steel', 'Gewapend beton': 'reinforced concrete', Hout: 'wooden', Beton: 'concrete',
+  Metselwerk: 'brick', Composiet: 'composite', Kunststof: 'plastic',
+};
+
+const CARRIES: Record<string, string> = {
+  'Licht wegverkeer': 'road traffic', Voetganger: 'pedestrians', Fiets: 'cyclists',
+  Metro: 'the metro', Tram: 'trams', Trein: 'trains',
+};
+
+/** `BRU0242` → 242. Other prefixes (viaducts, `VIA…`) have no painted number. */
+export function bridgeNumber(objectNumber: string): number | undefined {
+  const match = /^BRU0*(\d+)$/.exec(objectNumber.trim());
+  return match ? Number(match[1]) : undefined;
+}
+
+/** A register row, reduced to what a card says. Years outside the plausible
+ *  range (a placeholder, or a typo) are dropped rather than taught. */
+export function registerFact(row: BridgeRegisterRow, now = new Date().getFullYear()): BridgeRegisterFact {
+  const [number, , type, material, year, modality] = row;
+  const fact: BridgeRegisterFact = { movable: /^beweegba/i.test(type) };
+  const nr = bridgeNumber(number);
+  if (nr != null) fact.nr = nr;
+  if (MATERIALS[material]) fact.material = MATERIALS[material];
+  if (Number.isInteger(year) && year >= 1400 && year <= now + 1) fact.year = year;
+  if (CARRIES[modality]) fact.carries = CARRIES[modality];
+  return fact;
+}
+
+/**
+ * One sentence for the card: "Bridge 236, a steel bridge for road traffic,
+ * dated 1884 in the city's bridge register." The year is attributed, since
+ * the register sometimes dates the current deck, not the first bridge here.
+ */
+export function describeRegisteredBridge(fact: BridgeRegisterFact): string {
+  const kind = [fact.movable ? 'movable' : '', fact.material].filter(Boolean).join(' ');
+  const noun = `${kind ? `${/^[aeiou]/i.test(kind) ? 'an' : 'a'} ${kind} ` : 'a '}bridge`;
+  const carries = fact.carries ? ` for ${fact.carries}` : '';
+  const dated = fact.year ? `, dated ${fact.year} in the city's bridge register` : '';
+  const lead = fact.nr != null ? `Bridge ${fact.nr}: ${noun}` : capitalise(noun);
+  if (!kind && !carries && !dated && fact.nr == null) return '';
+  return `${lead}${carries}${dated}.`;
+}
+
+const capitalise = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);
+
+const normaliseName = (name: string) => name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+
+/**
+ * Which register bridge a named game bridge is. `candidates` are the register
+ * rows whose outline the bridge's mapped ways touch. One named like the bridge
+ * wins; otherwise a single candidate is taken; several unnamed candidates (a
+ * long road such as IJburglaan crossing five bridges) are ambiguous, and
+ * saying the wrong bridge's year would teach something false.
+ */
+export function chooseRegisterBridge(name: string, candidates: readonly BridgeRegisterRow[]): BridgeRegisterRow | null {
+  // OSM names some bridges only by their painted number ("Brug 68").
+  const numbered = /^brug\s+(\d+)$/i.exec(name.trim());
+  if (numbered) return candidates.find(row => bridgeNumber(row[0]) === Number(numbered[1])) ?? null;
+  const key = normaliseName(name);
+  const named = candidates.filter(row => row[1] && normaliseName(row[1]) === key);
+  if (named.length === 1) return named[0];
+  if (named.length > 1) return null;
+  const distinct = [...new Map(candidates.map(row => [row[0], row])).values()];
+  if (distinct.length !== 1) return null;
+  // A register name that differs is another bridge the way only brushes.
+  return distinct[0][1] && normaliseName(distinct[0][1]) !== key ? null : distinct[0];
+}

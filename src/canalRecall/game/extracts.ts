@@ -83,6 +83,9 @@ export interface StreetKnowledgeEntry {
   /** Why the street is called this, from the municipal register, in English
    *  (`street-name-origins.json`; see scripts/fetch-street-name-origins.ts). */
   nameOrigin?: string;
+  /** For a bridge: its number, type, material and year from the city's
+   *  bridge register (`bridge-register.json`), as one sentence. */
+  structureFact?: string;
   /** Curated street geometry — used for transit corridor street quizzes. */
   path?: LatLng[];
   paths?: LatLng[][];

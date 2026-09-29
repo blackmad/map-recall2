@@ -1,5 +1,38 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — bridge cards say what the city's bridge register records
+
+Of 300 bridges the game asks about, 203 have a name origin. The municipal
+asset register (`civieleconstructies`: `brug` joined to `brug_vast` by object
+number) has 1,837 bridges, each with a type and a material. Fixed bridges also
+have a construction year and the traffic they carry. The painted bridge
+number (Magere Brug is 242) comes from the object number.
+
+- `fetch:amsterdam-bridge-register` snapshots the register into
+  `scripts/data/amsterdam-bridge-register.json`, with outlines converted from
+  RD New to lng/lat.
+- `build:bridge-register [--publish]` joins the game's bridges to register
+  outlines their ways touch within 3 m. It samples every 2 m along each way,
+  because a way often has no vertex on the deck. `chooseRegisterBridge`
+  (`src/canalRecall/bridgeRegister.ts`) settles the match in this order:
+  1. a register name that matches;
+  2. for OSM names that are only a number ("Brug 68"), that painted number;
+  3. a single unnamed outline.
+  Several unnamed outlines count as ambiguous and the bridge is left out,
+  because giving a road over five bridges one of them's year would teach
+  something false.
+- Result: 240 of 300 described, 17 ambiguous, and 43 with no outline. The
+  unmatched ones are mostly railway bridges and bridges the city does not
+  manage.
+- The card sentence attributes the year ("dated 1884 in the city's bridge
+  register"), because the register sometimes dates the current deck rather
+  than the first bridge on the site.
+- The sentence is a card on its own, or closes the long text after the
+  origin; `streetCardText` shortens the origin to make room, never the
+  sentence. It loads deferred, together with the street-name origins.
+- The Dutch word is "Beweegbare", so a first regex for "beweegbaar" called
+  every movable bridge fixed. `check-bridge-register.ts` pins Magere Brug.
+
 ## 2026-09-30 — full-suite sweep: five stale tests repaired, origins no longer delay the start
 
 A full Playwright run after tonight's changes (208 tests) failed 15. None of

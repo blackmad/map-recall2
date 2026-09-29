@@ -466,9 +466,21 @@
     return next;
   }
 
+  // src/canalRecall/bridgeRegister.ts
+  function describeRegisteredBridge(fact) {
+    const kind = [fact.movable ? "movable" : "", fact.material].filter(Boolean).join(" ");
+    const noun = `${kind ? `${/^[aeiou]/i.test(kind) ? "an" : "a"} ${kind} ` : "a "}bridge`;
+    const carries = fact.carries ? ` for ${fact.carries}` : "";
+    const dated = fact.year ? `, dated ${fact.year} in the city's bridge register` : "";
+    const lead = fact.nr != null ? `Bridge ${fact.nr}: ${noun}` : capitalise(noun);
+    if (!kind && !carries && !dated && fact.nr == null) return "";
+    return `${lead}${carries}${dated}.`;
+  }
+  var capitalise = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+
   // src/canalRecall/game/routeKnowledge.ts
   var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
-  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = []) {
+  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = [], bridgeRegister = {}) {
     const index = /* @__PURE__ */ new Map();
     const add = (entry, type) => {
       index.set(`${type}:${normalise(entry.name)}`, { ...entry, type });
@@ -483,12 +495,28 @@
       const existing = index.get(key);
       index.set(key, existing ? { ...existing, nameOrigin: origin.en } : { name: origin.name, type, nameOrigin: origin.en });
     }
+    for (const [name, fact] of Object.entries(bridgeRegister)) {
+      const structureFact = describeRegisteredBridge(fact);
+      if (!structureFact) continue;
+      const key = `bridge:${normalise(name)}`;
+      const existing = index.get(key);
+      index.set(key, existing ? { ...existing, structureFact } : { name, type: "bridge", structureFact });
+    }
     return index;
   }
   var sentencesOf = (text) => text.trim().split(/(?<=[.!?])\s+/).map((part) => part.trim()).filter(Boolean);
   var STREET_CARD_DETAIL_CHARS = 150;
   var STREET_CARD_LONG_CHARS = 280;
   function streetCardText(entry) {
+    const fact = (entry.structureFact || "").trim();
+    const text = structureLessCardText(entry);
+    if (!fact) return text;
+    if (!text.detail) return { detail: fact, longDetail: fact };
+    const room = STREET_CARD_LONG_CHARS - fact.length - 1;
+    const lead = sentencesUpTo(sentencesOf(`${entry.nameOrigin || ""} ${entry.wikipediaExtract || ""}`), room);
+    return { detail: text.detail, longDetail: lead ? `${lead} ${fact}` : fact };
+  }
+  function structureLessCardText(entry) {
     const origin = sentencesOf(entry.nameOrigin || "");
     const extract = sentencesOf(entry.wikipediaExtract || "");
     if (!origin.length) {
@@ -639,7 +667,7 @@
     const year = plausibleYear(monumentYear) ? monumentYear : row && plausibleYear(row[0]) ? row[0] : null;
     const years = plausibleYear(monumentYear) ? monument.y : year ? String(year) : "";
     const shownName = name || monument?.n || "";
-    const title = shownName || (year ? `Built ${year}` : type ? capitalise(type) : "No building details");
+    const title = shownName || (year ? `Built ${year}` : type ? capitalise2(type) : "No building details");
     const parts = [];
     const designed = monument?.a ? `, designed by ${monument.a}` : "";
     if (year) {
@@ -656,7 +684,7 @@
     if (storeys) parts.push(`About ${Math.round(heightMetres)} m tall, some ${storeys} ${storeys === 1 ? "storey" : "storeys"}.`);
     return { name: title, detail: parts.join(" ") || "This building has no name or date in the map data." };
   }
-  var capitalise = (text) => text.charAt(0).toUpperCase() + text.slice(1);
+  var capitalise2 = (text) => text.charAt(0).toUpperCase() + text.slice(1);
   function factTileOf(lng, lat) {
     const n = 2 ** BUILDING_FACT_ZOOM;
     return {
@@ -1010,7 +1038,7 @@
       const noticeId = entry.id || `${type}-knowledge:${key}`;
       this._seenStreetKnowledge = this._seenStreetKnowledge || /* @__PURE__ */ new Set();
       if (!shouldOfferStreetKnowledge({
-        hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin),
+        hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin || entry.structureFact),
         alreadyShownThisDrive: this._seenStreetKnowledge.has(noticeId),
         quizOpen: !!this.quizPromptName,
         landmarkCardOpen: !!this._landmarkNotice,
@@ -1100,14 +1128,20 @@
         const normalise = (name) => this._normaliseCanalName(name);
         const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise);
         this.streetKnowledge = knowledge;
-        void fetch(url("street-name-origins.json")).then((response) => readJson(response, null)).catch(() => null).then((originsFile) => {
-          if (!originsFile?.origins?.length || this.streetKnowledge !== knowledge) return;
+        const deferredJson = (name) => fetch(url(name)).then((response) => readJson(response, null)).catch(() => null);
+        void Promise.all([
+          deferredJson("street-name-origins.json"),
+          deferredJson("bridge-register.json")
+        ]).then(([originsFile, bridgeRegister]) => {
+          if (!originsFile?.origins?.length && !bridgeRegister?.bridges) return;
+          if (this.streetKnowledge !== knowledge) return;
           this.streetKnowledge = buildRouteKnowledgeIndex(
             streetKnowledge,
             streetFeatures,
             waterFeatures,
             normalise,
-            originsFile.origins
+            originsFile?.origins ?? [],
+            bridgeRegister?.bridges ?? {}
           );
         });
         const transitStops = this.osmLoader?.transitLoad?.stops || [];
