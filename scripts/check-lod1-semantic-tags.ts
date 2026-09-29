@@ -5,13 +5,17 @@
  */
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
+import { existsSync } from 'node:fs';
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
 
 const repo = path.resolve(import.meta.dirname, '..');
-const tsx = path.resolve(repo, '..', '..', 'node_modules', '.bin', 'tsx');
+// This checkout's own tsx; a worktree nested in the main checkout (two levels
+// down) may only have the parent's node_modules.
+const tsx = [path.resolve(repo, 'node_modules', '.bin', 'tsx'), path.resolve(repo, '..', '..', 'node_modules', '.bin', 'tsx')]
+  .find(candidate => existsSync(candidate)) ?? 'tsx';
 const city = 'semantic-tags-fixture';
 const root = await mkdtemp(path.join(tmpdir(), 'map-recall-semantic-tags-'));
 const staging = path.join(root, 'public', 'data', 'extracts', city, 'staging');
