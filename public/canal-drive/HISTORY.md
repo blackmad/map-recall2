@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — one route load owns the loading screen
+
+User report: "this progress bar jumps back and forth". Route loads shared one
+`_loadingAborted` flag, and each new load cleared it. A second start (a double
+start, or Escape then a new route) revived the first load, and both wrote the
+bar and message in turn: "Finding your way" over a 92% bar. The first load also
+began its own intro. Each load now takes a token (`_loadToken`); Escape and
+newer loads bump it, and a stale load stops at its next await, including its
+return-to-setup timers. `tests/e2e/loading-progress.spec.ts` records every
+progress write across a restart.
+
 ## 2026-09-29 — start the chase at 65%; buildings fade in during the intro
 
 User reports: "start is way too zoomed out now", "it jumps zoom levels while
