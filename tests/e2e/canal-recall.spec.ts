@@ -420,6 +420,30 @@ test('a learned street can open its encyclopedia card and article', async ({ pag
   expect(notice.url).toBe('https://en.wikipedia.org/wiki/Nes_(Amsterdam)');
 });
 
+test('a named bridge card says what the city bridge register records (Blauwbrug, Magere Brug)', async ({ page }) => {
+  await openCarRoute(page);
+  // The register arrives after the ride starts, with the street-name origins.
+  await expect.poll(() => page.evaluate(() => {
+    const game = window.canalRecallGame;
+    return Boolean(game.streetKnowledge.get(`bridge:${game._normaliseCanalName('Blauwbrug')}`)?.structureFact);
+  }), { timeout: 20_000 }).toBe(true);
+  const cards = await page.evaluate(() => {
+    const game = window.canalRecallGame;
+    const show = (name: string) => {
+      game._landmarkNotice = null;
+      game._seenStreetKnowledge = new Set();
+      (game._showStreetKnowledge as (name: string, type: string, replace: boolean) => void)(name, 'bridge', true);
+      const notice = game._landmarkNotice as { type?: string; detail?: string; longDetail?: string } | null;
+      return notice && { type: notice.type, detail: notice.detail, longDetail: notice.longDetail };
+    };
+    return { blauw: show('Blauwbrug'), magere: show('Magere Brug') };
+  });
+  expect(cards.blauw?.type).toBe('bridge');
+  expect(cards.blauw?.longDetail).toContain("Bridge 236: a steel bridge for road traffic, dated 1884 in the city's bridge register.");
+  expect(cards.magere?.detail, 'the name origin still leads').toMatch(/^Around 1670/);
+  expect(cards.magere?.longDetail).toMatch(/Bridge 242: a movable wooden bridge\.$/);
+});
+
 test('neighborhood entry renders as a compact photo lower-third', async ({ page }, testInfo) => {
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);

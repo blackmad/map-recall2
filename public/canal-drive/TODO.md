@@ -70,8 +70,9 @@ and function now reach clicked buildings (see HISTORY, 2026-09-30). Still open:
   shortening pass before translation;
 - `amsterdam_canon` (49 windows with location and a stadsarchief link) could
   be landmark-like stops;
-- the `civieleconstructies` bridges and locks (1,837 bridges with material
-  and type) could enrich bridge cards.
+- bridge cards now carry the register (see HISTORY). Locks (`sluizen`, 46)
+  and the 17 ambiguous bridges are not described yet. The ambiguous ones
+  could be resolved per crossing from `bridge-crossings.json`, not per name.
 
 **Driving harness: the remaining lost drives (2026-09-29).**
 `tests/e2e/driving-harness.spec.ts` passes at 97–104 of 120 (bar 45%) with 0

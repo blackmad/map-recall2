@@ -7,6 +7,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // Cards with no photo that arrive from data rather than Wikipedia: a named
   // bridge's origin (municipal register) and a clicked building's facts.
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
+  // A named bridge with no origin: the city's bridge register alone.
+  | 'landmark-card-bridge-register' | 'landmark-card-bridge-register-touch'
   // Phone states. `touch-*` force the compact layout on a pointer device,
   // which is the only way to see the d-pad and the portrait card stack in the
   // workbench; the viewport addon alone just makes a small desktop window.
@@ -174,7 +176,10 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           return;
         }
         if (scenario.startsWith('landmark-card-bridge') || scenario.startsWith('landmark-card-building')) {
-          game._landmarkNotice = scenario.startsWith('landmark-card-bridge')
+          const registerOnly = "Bridge 236: a steel bridge for road traffic, dated 1884 in the city's bridge register.";
+          game._landmarkNotice = scenario.startsWith('landmark-card-bridge-register')
+            ? { id: 'bridge-knowledge:blauwbrug', name: 'Blauwbrug', type: 'bridge', extractLang: 'en', detail: registerOnly, longDetail: registerOnly }
+            : scenario.startsWith('landmark-card-bridge')
             ? {
               id: 'bridge-knowledge:magere brug', name: 'Magere Brug', type: 'bridge', extractLang: 'en',
               detail: 'Around 1670, a ferry bridge was built over the Amstel, which was so narrow that it was only suitable for pedestrians.',
@@ -402,6 +407,12 @@ export const LandmarkPanelMobile: Story = {
 export const BridgeOriginCard: Story = { args: { scenario: 'landmark-card-bridge' } };
 /** A clicked ordinary building: year, period, type, listing and size. */
 export const BuildingFactsCard: Story = { args: { scenario: 'landmark-card-building' } };
+/** A named bridge the register describes but no origin explains. */
+export const BridgeRegisterCard: Story = { args: { scenario: 'landmark-card-bridge-register' } };
+export const PortraitBridgeRegisterCard: Story = {
+  args: { scenario: 'landmark-card-bridge-register-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
 export const PortraitBridgeOriginCard: Story = {
   args: { scenario: 'landmark-card-bridge-touch' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },

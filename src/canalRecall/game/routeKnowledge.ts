@@ -1,5 +1,6 @@
 import type { StreetKnowledgeEntry } from './extracts';
 import { sentencesUpTo } from './landmarkData';
+import { describeRegisteredBridge, type BridgeRegisterFact } from '../bridgeRegister';
 
 export type RouteKnowledgeType = 'street' | 'water' | 'bridge';
 export type RouteKnowledgeIndex = Map<string, StreetKnowledgeEntry>;
@@ -20,6 +21,7 @@ export function buildRouteKnowledgeIndex(
   waters: readonly StreetKnowledgeEntry[],
   normalise: (name: string) => string,
   origins: readonly StreetNameOrigin[] = [],
+  bridgeRegister: Readonly<Record<string, BridgeRegisterFact>> = {},
 ): RouteKnowledgeIndex {
   const index: RouteKnowledgeIndex = new Map();
   const add = (entry: StreetKnowledgeEntry, type: RouteKnowledgeType) => {
@@ -40,6 +42,15 @@ export function buildRouteKnowledgeIndex(
     const existing = index.get(key);
     index.set(key, existing ? { ...existing, nameOrigin: origin.en } : { name: origin.name, type, nameOrigin: origin.en });
   }
+  // The register describes 235 of 300 named bridges against 203 with an
+  // origin, so a bridge card can stand on it alone.
+  for (const [name, fact] of Object.entries(bridgeRegister)) {
+    const structureFact = describeRegisteredBridge(fact);
+    if (!structureFact) continue;
+    const key = `bridge:${normalise(name)}`;
+    const existing = index.get(key);
+    index.set(key, existing ? { ...existing, structureFact } : { name, type: 'bridge', structureFact });
+  }
   return index;
 }
 
@@ -55,7 +66,19 @@ export const STREET_CARD_LONG_CHARS = 280;
  * A first sentence like "Legume." is too thin alone, so the short text takes
  * sentences until it is full.
  */
-export function streetCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'wikipediaExtract'>): { detail: string; longDetail: string } {
+export function streetCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'wikipediaExtract' | 'structureFact'>): { detail: string; longDetail: string } {
+  const fact = (entry.structureFact || '').trim();
+  const text = structureLessCardText(entry);
+  if (!fact) return text;
+  // The register sentence is the bridge's own, so it is never the part cut:
+  // the origin gives up room for it in the long text.
+  if (!text.detail) return { detail: fact, longDetail: fact };
+  const room = STREET_CARD_LONG_CHARS - fact.length - 1;
+  const lead = sentencesUpTo(sentencesOf(`${entry.nameOrigin || ''} ${entry.wikipediaExtract || ''}`), room);
+  return { detail: text.detail, longDetail: lead ? `${lead} ${fact}` : fact };
+}
+
+function structureLessCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'wikipediaExtract'>): { detail: string; longDetail: string } {
   const origin = sentencesOf(entry.nameOrigin || '');
   const extract = sentencesOf(entry.wikipediaExtract || '');
   if (!origin.length) {
