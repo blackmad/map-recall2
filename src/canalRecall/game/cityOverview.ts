@@ -291,10 +291,11 @@ export const OVERVIEW_COLORS: OverviewColors = {
   knownWater: 'rgba(15,100,140,0.55)',
   masteredNetwork: 'rgba(28,82,58,0.82)',
   masteredWater: 'rgba(8,78,120,0.78)',
-  // Warm copper — distinct from green mastery and blue waterways so “due for
-  // review” reads at a glance on the city overview.
-  reviewDueNetwork: 'rgba(176,96,28,0.82)',
-  reviewDueWater: 'rgba(150,78,36,0.78)',
+  // Violet — distinct from green mastery, blue waterways and the terracotta
+  // route. Copper read as a second route ("what is the orange and red in the
+  // minimap?", user report 2026-09-28).
+  reviewDueNetwork: 'rgba(124,58,237,0.62)',
+  reviewDueWater: 'rgba(109,40,217,0.6)',
   route: '#c75f43',
   start: '#356653',
   finish: '#c75f43',
@@ -388,11 +389,11 @@ export function drawOverviewStatic(
   // Due ink sits above mastery bands so overdue places stay visible even when
   // they would otherwise paint as known/mastered green.
   ctx.strokeStyle = colors.reviewDueNetwork;
-  ctx.lineWidth = 1.5;
+  ctx.lineWidth = 1.1;
   strokeLayer(ctx, layers.reviewDueNetwork, projection);
 
   ctx.strokeStyle = colors.reviewDueWater;
-  ctx.lineWidth = 1.55;
+  ctx.lineWidth = 1.2;
   strokeLayer(ctx, layers.reviewDueWater, projection);
 
   ctx.strokeStyle = colors.area;
