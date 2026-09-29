@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — drop duplicate buildings instead of insetting them; roof lids sit on the wall
+
+User report: "texture fighting still happening, and every single building also
+now has this weird lip".
+- The 0.35 m inset (below) was inside the depth buffer's precision at game
+  distance, so nested walls still striped. Where the inner copy was a little
+  taller it also left a ledge. `dropNestedDuplicates` (`buildingNesting.ts`)
+  replaces it and drops the redundant copy, as OSM renderers do. Of two
+  near-identical footprints (area ≥ 85%) the lower goes. An outline whose
+  parts cover at least half of it gives way to them. A small part on a big
+  building is left alone. It drops 42 of 2713 features on tile 8415/5383 and
+  24 of 4886 on 8414/5383, in about 20 ms each.
+- The lip on every roof was older (5d2a17c). The flat-roof lid floated from
+  wall top + 0.15 m to + 0.55 m, drawing a light gap line and a dark band
+  round every roof. It now runs from the wall top to + 0.4 m. Its sides start
+  where the wall's end, so nothing is coplanar.
+
 ## 2026-09-29 — a closed card takes its yellow building with it
 
 User report: "why is this building highlighted yellow when no card is
