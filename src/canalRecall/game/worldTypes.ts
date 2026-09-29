@@ -75,6 +75,9 @@ export interface Landmark extends LandmarkNotice {
   wikipedia: string;
   extractLang: string;
   geojson: GeoJsonFeatureCollection;
+  /** Building-tile ids this landmark is, from `landmark-buildings.json`. Empty
+   *  when it has no building; absent when the city has no resolved file. */
+  buildingIds?: string[];
 }
 
 export interface Neighborhood {

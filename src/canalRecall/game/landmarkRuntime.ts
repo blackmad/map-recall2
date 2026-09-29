@@ -259,7 +259,7 @@ export class GameLandmarkRuntime {
         landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse,
         bridgeResponse, crossingResponse, streetKnowledgeResponse, streetResponse,
         waterResponse, brandedPoiResponse,
-        factResponse, originResponse,
+        factResponse, originResponse, landmarkBuildingResponse,
       ] = await Promise.all([
         fetch(url('landmarks.json')),
         fetch(url('boundaries.json')),
@@ -275,11 +275,13 @@ export class GameLandmarkRuntime {
         fetch(url('facts.json')).catch(() => new Response('null', { status: 404 })),
         // Why each street is called what it is (municipal register, English).
         fetch(url('street-name-origins.json')).catch(() => new Response('null', { status: 404 })),
+        // Which streamed building each landmark is, resolved at extract time.
+        fetch(url('landmark-buildings.json')).catch(() => new Response('null', { status: 404 })),
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
 
       const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex,
-        streetKnowledge, streetFeatures, waterFeatures, brandedPois, factsFile, originsFile] =
+        streetKnowledge, streetFeatures, waterFeatures, brandedPois, factsFile, originsFile, landmarkBuildings] =
         await Promise.all([
           landmarkResponse.json() as Promise<LandmarkFeature[]>,
           boundaryResponse.json() as Promise<BoundaryFeature[]>,
@@ -292,6 +294,7 @@ export class GameLandmarkRuntime {
           readJson<unknown[]>(brandedPoiResponse, []),
           readJson<FactsFile | null>(factResponse, null),
           readJson<{ origins?: StreetNameOrigin[] } | null>(originResponse, null),
+          readJson<{ buildings?: Record<string, string[]> } | null>(landmarkBuildingResponse, null),
         ]);
 
       this._facts = buildFactIndex(factsFile);
@@ -327,6 +330,11 @@ export class GameLandmarkRuntime {
           ? toWorld([lat, lng])
           : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false)
       ));
+      // With the resolved file, a landmark it does not list has no building (a
+      // tree, a statue) and keeps its dot; without it, the map guesses.
+      if (landmarkBuildings?.buildings) {
+        for (const landmark of this.landmarks) landmark.buildingIds = landmarkBuildings.buildings[landmark.id] ?? [];
+      }
 
       // Photos are fetched as the player approaches, not up front. Preloading
       // the 50 most prominent landmarks in the city meant 229 landmarks had a

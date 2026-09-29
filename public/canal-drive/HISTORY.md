@@ -1,5 +1,49 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — landmarks name their buildings exactly; no 10 m guess, no double marker
+
+User reports: "I can't see where on the map this landmark is" (Bevrijdingslinde),
+"why can't we tie buildings to OSM ids and need to do this 10m thing?" and "why
+do I get both the yellow dot and the yellow building?".
+
+What was really going on:
+- Landmark ids are hashes of category and name (`build-amsterdam-extract.ts`),
+  not OSM ids. The runtime's "own way" step (`w<id>`) never matched, so every
+  highlight came from containment or the 10 m nearest footprint. For the
+  Bevrijdingslinde, a tree, that lit a 52 m² shed 5 m away.
+- The building tiles are keyed by BAG pand id. Where OSM maps `building:part`
+  ways (Royal Palace, Muziekgebouw, Waag), the tiles draw those parts in place
+  of the footprint.
+- Signature models (Royal Palace, …) are lit by their own renderer. The map
+  found no tile building there and drew the dot as well.
+- The dot layer sat below the building layers.
+
+`scripts/resolve-landmark-buildings.ts` (with rules in `lib/landmarkBuildings.ts`)
+now resolves each landmark from the local OSM PBF with osmium, in this order:
+1. the building carrying its Wikidata item;
+2. a building whose ring is the landmark's outline;
+3. the buildings inside a site (up to 12);
+4. the smallest drawn building containing its node;
+5. for an institution's node, the nearest building within 10 m.
+
+A building is expanded into its parts where the tiles draw parts. It finds a
+node's tags by name or Wikidata near the point, so trees, statues, artworks and
+plaques resolve to no building (an address overrides that, as with the
+Hollandsche Schouwburg).
+
+Result: 394 of 420 landmarks resolve.
+- Wikidata 103, containment 185, site 36, own ring 3, entrance 5.
+- Object 62.
+- None 26: districts, monuments on open ground, a houseboat.
+
+332 are published to `landmark-buildings.json`, and the runtime highlights
+exactly those ids. The distance guess remains only for a city without the
+file. The dot is raised above the buildings with the POI layers, and it is
+skipped when a signature model lights up (`highlights()`). Regressions are in
+`scripts/check-landmark-buildings.ts` and `landmark-highlight.spec.ts` (the
+Bevrijdingslinde keeps a dot above the buildings; the Concertgebouw lights
+exactly its ids).
+
 ## 2026-09-29 — drive-by cards look ahead, and may replace a street card
 
 User report: "this card/highlight happens a little late — after I've already

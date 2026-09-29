@@ -856,7 +856,8 @@
           waterResponse,
           brandedPoiResponse,
           factResponse,
-          originResponse
+          originResponse,
+          landmarkBuildingResponse
         ] = await Promise.all([
           fetch(url("landmarks.json")),
           fetch(url("boundaries.json")),
@@ -871,7 +872,9 @@
           // published, and the cards fall back to the Wikipedia lede when it is.
           fetch(url("facts.json")).catch(() => new Response("null", { status: 404 })),
           // Why each street is called what it is (municipal register, English).
-          fetch(url("street-name-origins.json")).catch(() => new Response("null", { status: 404 }))
+          fetch(url("street-name-origins.json")).catch(() => new Response("null", { status: 404 })),
+          // Which streamed building each landmark is, resolved at extract time.
+          fetch(url("landmark-buildings.json")).catch(() => new Response("null", { status: 404 }))
         ]);
         if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error("Cached place data unavailable");
         const [
@@ -885,7 +888,8 @@
           waterFeatures,
           brandedPois,
           factsFile,
-          originsFile
+          originsFile,
+          landmarkBuildings
         ] = await Promise.all([
           landmarkResponse.json(),
           boundaryResponse.json(),
@@ -897,7 +901,8 @@
           readJson(waterResponse, []),
           readJson(brandedPoiResponse, []),
           readJson(factResponse, null),
-          readJson(originResponse, null)
+          readJson(originResponse, null),
+          readJson(landmarkBuildingResponse, null)
         ]);
         this._facts = buildFactIndex(factsFile);
         this._factRotation = loadRotationState(
@@ -926,6 +931,9 @@
           y: -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this.osmLoader._lastOffsetY
         });
         this.landmarks = buildLandmarks(features, (lat, lng) => isTransit(this.travelMode) ? toWorld([lat, lng]) : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false));
+        if (landmarkBuildings?.buildings) {
+          for (const landmark of this.landmarks) landmark.buildingIds = landmarkBuildings.buildings[landmark.id] ?? [];
+        }
         this._landmarkImages = /* @__PURE__ */ new Map();
         this._landmarkImageRequests = /* @__PURE__ */ new Set();
         this.neighborhoods = buildNeighborhoods(boundaries, neighborhoodEnriched, toWorld);
