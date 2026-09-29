@@ -16,7 +16,6 @@ import {
   isWorthACard,
   matchLandmarkToBuilding,
   neighborhoodAt,
-  splitDetail,
 } from './landmarkData';
 import type { RoadSegment } from './collaborators';
 import type {
@@ -43,7 +42,7 @@ import type { FactsFile } from '../facts/factTypes';
 import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
-import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge } from './routeKnowledge';
+import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge, streetCardText, type StreetNameOrigin } from './routeKnowledge';
 import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
 import {
@@ -221,14 +220,14 @@ export class GameLandmarkRuntime {
     const noticeId = entry.id || `${type}-knowledge:${key}`;
     this._seenStreetKnowledge = this._seenStreetKnowledge || new Set();
     if (!shouldOfferStreetKnowledge({
-      hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract),
+      hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin),
       alreadyShownThisDrive: this._seenStreetKnowledge.has(noticeId),
       quizOpen: !!this.quizPromptName,
       landmarkCardOpen: !!this._landmarkNotice,
       replaceOpenCard,
     })) return;
     this._seenStreetKnowledge.add(noticeId);
-    const split = splitDetail(entry.wikipediaExtract || '');
+    const split = streetCardText(entry);
     this._showLandmarkNotice({
       id: noticeId,
       name: entry.name || name,
@@ -260,7 +259,7 @@ export class GameLandmarkRuntime {
         landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse,
         bridgeResponse, crossingResponse, streetKnowledgeResponse, streetResponse,
         waterResponse, brandedPoiResponse,
-        factResponse,
+        factResponse, originResponse,
       ] = await Promise.all([
         fetch(url('landmarks.json')),
         fetch(url('boundaries.json')),
@@ -274,11 +273,13 @@ export class GameLandmarkRuntime {
         // Generated trivia. Absent until a batch has been reviewed and
         // published, and the cards fall back to the Wikipedia lede when it is.
         fetch(url('facts.json')).catch(() => new Response('null', { status: 404 })),
+        // Why each street is called what it is (municipal register, English).
+        fetch(url('street-name-origins.json')).catch(() => new Response('null', { status: 404 })),
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
 
       const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex,
-        streetKnowledge, streetFeatures, waterFeatures, brandedPois, factsFile] =
+        streetKnowledge, streetFeatures, waterFeatures, brandedPois, factsFile, originsFile] =
         await Promise.all([
           landmarkResponse.json() as Promise<LandmarkFeature[]>,
           boundaryResponse.json() as Promise<BoundaryFeature[]>,
@@ -290,6 +291,7 @@ export class GameLandmarkRuntime {
           readJson<StreetKnowledgeEntry[]>(waterResponse, []),
           readJson<unknown[]>(brandedPoiResponse, []),
           readJson<FactsFile | null>(factResponse, null),
+          readJson<{ origins?: StreetNameOrigin[] } | null>(originResponse, null),
         ]);
 
       this._facts = buildFactIndex(factsFile);
@@ -299,6 +301,7 @@ export class GameLandmarkRuntime {
       this.streetKnowledge = buildRouteKnowledgeIndex(
         streetKnowledge, streetFeatures, waterFeatures,
         (name) => this._normaliseCanalName(name),
+        originsFile?.origins ?? [],
       );
       // Everything the game can ask about, so no orientation label says it
       // first. Stops join in transit mode, where a stop name is the answer.

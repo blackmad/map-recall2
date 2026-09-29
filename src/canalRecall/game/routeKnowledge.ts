@@ -3,7 +3,14 @@ import type { StreetKnowledgeEntry } from './extracts';
 export type RouteKnowledgeType = 'street' | 'water';
 export type RouteKnowledgeIndex = Map<string, StreetKnowledgeEntry>;
 
-const eligible = (entry: StreetKnowledgeEntry) => entry.wikipediaUrl || entry.wikipediaExtract;
+const eligible = (entry: StreetKnowledgeEntry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
+
+/** One published street-name origin (`street-name-origins.json`). */
+export interface StreetNameOrigin {
+  name: string;
+  kind: 'street' | 'water' | 'bridge';
+  en: string;
+}
 
 /** Join answer names to exact extract identities without merging street/water homonyms. */
 export function buildRouteKnowledgeIndex(
@@ -11,6 +18,7 @@ export function buildRouteKnowledgeIndex(
   streets: readonly StreetKnowledgeEntry[],
   waters: readonly StreetKnowledgeEntry[],
   normalise: (name: string) => string,
+  origins: readonly StreetNameOrigin[] = [],
 ): RouteKnowledgeIndex {
   const index: RouteKnowledgeIndex = new Map();
   const add = (entry: StreetKnowledgeEntry, type: RouteKnowledgeType) => {
@@ -21,7 +29,54 @@ export function buildRouteKnowledgeIndex(
   // are what join to the reviewed fact catalog.
   for (const entry of streets) if (eligible(entry)) add(entry, 'street');
   for (const entry of waters) if (eligible(entry)) add(entry, 'water');
+  // Name origins cover ~4,900 streets against a few hundred with Wikipedia:
+  // attach to an existing entry, or stand alone as the whole card.
+  for (const origin of origins) {
+    if (!origin.en || origin.kind === 'bridge') continue;
+    const type: RouteKnowledgeType = origin.kind === 'water' ? 'water' : 'street';
+    const key = `${type}:${normalise(origin.name)}`;
+    const existing = index.get(key);
+    index.set(key, existing ? { ...existing, nameOrigin: origin.en } : { name: origin.name, type, nameOrigin: origin.en });
+  }
   return index;
+}
+
+const sentencesOf = (text: string) => text.trim().split(/(?<=[.!?])\s+/).map(part => part.trim()).filter(Boolean);
+
+/** Whole sentences up to `max` characters; a first sentence longer than that
+ *  is cut at a word with an ellipsis rather than dropped. */
+function sentencesUpTo(parts: readonly string[], max: number): string {
+  let out = '';
+  for (const part of parts) {
+    const next = out ? `${out} ${part}` : part;
+    if (next.length > max) break;
+    out = next;
+  }
+  if (out || !parts.length) return out;
+  const cut = parts[0].slice(0, max - 1);
+  return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), 1)).trimEnd()}…`;
+}
+
+export const STREET_CARD_DETAIL_CHARS = 150;
+export const STREET_CARD_LONG_CHARS = 280;
+
+/**
+ * The text of a street card. The name's origin leads: why a street is called
+ * what it is, is the hook that makes the name stick, which is what the game
+ * teaches. A Wikipedia lede, when there is one, follows in the long text.
+ * A first sentence like "Legume." is too thin alone, so the short text takes
+ * sentences until it is full.
+ */
+export function streetCardText(entry: Pick<StreetKnowledgeEntry, 'nameOrigin' | 'wikipediaExtract'>): { detail: string; longDetail: string } {
+  const origin = sentencesOf(entry.nameOrigin || '');
+  const extract = sentencesOf(entry.wikipediaExtract || '');
+  if (!origin.length) {
+    return { detail: (extract[0] || '').slice(0, STREET_CARD_DETAIL_CHARS), longDetail: extract.slice(0, 3).join(' ').slice(0, STREET_CARD_LONG_CHARS) };
+  }
+  return {
+    detail: sentencesUpTo(origin, STREET_CARD_DETAIL_CHARS),
+    longDetail: sentencesUpTo([...origin, ...extract], STREET_CARD_LONG_CHARS),
+  };
 }
 
 export function routeKnowledgeFor(
