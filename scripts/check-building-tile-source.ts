@@ -13,7 +13,7 @@ import { buildingForLandmark,
 } from '../src/canalRecall/buildingTileSource.js';
 import { BuildingTileStreamer, decorateBuildingFeature, loadVerifiedAppearanceCatalog, loadVerifiedAppearancePriors, loadVerifiedAppearanceRelease } from '../src/canalRecall/buildingTilesBrowser.js';
 import { tileFor, tileKey } from '../src/canalRecall/slippyTiles.js';
-import { separateNestedBuildings } from '../src/canalRecall/buildingNesting.js';
+import { dropNestedDuplicates } from '../src/canalRecall/buildingNesting.js';
 
 /** A camera over the Nieuwmarkt, roughly what a driving viewport spans. */
 const view = { west: 4.895, south: 52.369, east: 4.906, north: 52.376 };
@@ -240,34 +240,32 @@ process.stdout.write(`Building tile source checks passed (z${BUILDING_TILE_ZOOM}
 }
 
 {
-  // Nested footprints z-fight (Oosterdokskade, user report 2026-09-28).
+  // Nested footprints z-fight (Oosterdokskade, user reports 2026-09-28/29).
+  // The redundant copy is dropped; nothing is inset (that left a ledge).
   const box = (id: string, x: number, y: number, size: number, height: number, minHeight = 0) => ({
     type: 'Feature' as const,
     properties: { id, height, minHeight },
     geometry: { type: 'Polygon', coordinates: [[[x, y], [x + size, y], [x + size, y + size], [x, y + size], [x, y]]] },
   });
-  const ring = (feature: { geometry: unknown }) => (feature.geometry as { coordinates: number[][][] }).coordinates[0];
-  const outer = box('w1', 4.9, 52.37, 0.0004, 36);
-  const sharedWall = box('w2', 4.9, 52.37, 0.0002, 48); // a taller part sharing two walls
-  const sameRoof = box('w3', 4.9002, 52.3702, 0.0001, 36.1);
-  const beside = box('w4', 4.9005, 52.37, 0.0002, 20);
-  const stacked = box('w5', 4.90032, 52.37002, 0.00005, 50, 40); // sits above w1's roof
-  const input = [outer, sharedWall, sameRoof, beside, stacked];
+  const ids = (features: Array<{ properties: Record<string, unknown> }>) => features.map(feature => feature.properties.id).sort();
+  // Twins: a BAG pand under an OSM way. The lower copy goes.
+  const twins = dropNestedDuplicates([box('NL.IMBAG.Pand.1', 4.9, 52.37, 0.0002, 19), box('w9', 4.9, 52.37, 0.0002, 20)]);
+  assert.deepEqual(ids(twins), ['w9'], 'of two copies the taller stays');
+  // An outline filled by its parts gives way to them.
+  const outline = box('w1', 4.9, 52.37, 0.0004, 30);
+  const west = box('w2', 4.9, 52.37, 0.0002, 36), east = box('w3', 4.9002, 52.37, 0.0002, 24);
+  const parted = dropNestedDuplicates([outline, west, east, box('w4', 4.9, 52.3702, 0.0002, 30)]);
+  assert.deepEqual(ids(parted), ['w2', 'w3', 'w4'], 'the outline goes, every part stays');
+  // A small part on a big building, and a neighbour, are left alone.
+  const big = box('w5', 4.91, 52.37, 0.0006, 20), chimney = box('w6', 4.9102, 52.3702, 0.00005, 24);
+  const beside = box('w7', 4.9107, 52.37, 0.0002, 20);
+  const input = [big, chimney, beside];
   const before = JSON.stringify(input);
-  const out = separateNestedBuildings(input);
+  const kept = dropNestedDuplicates(input);
   assert.equal(JSON.stringify(input), before, 'the input is not mutated');
-  assert.equal(out[0], outer, 'the outer building is untouched');
-  assert.equal(out[3], beside, 'a neighbour is untouched');
-  assert.equal(out[4], stacked, 'a part above the outer roof is untouched');
-  assert.equal(out[1].properties.nestedInset, true, 'a contained part is inset');
-  assert.ok(ring(out[1])[0][0] > 4.9 && ring(out[1])[0][1] > 52.37, 'its shared corner moves inward');
-  const movedMetres = (ring(out[1])[0][1] - 52.37) * 111_320;
-  assert.ok(movedMetres > 0.15 && movedMetres < 0.4, `by a few tens of centimetres (${movedMetres.toFixed(2)} m)`);
-  assert.equal(out[1].properties.height, 48, 'a clearly taller part keeps its height');
-  assert.ok(Math.abs((out[2].properties.height as number) - 35.7) < 1e-9, 'a flush roof drops below the outer roof');
-  assert.deepEqual(ring(out[1])[0], ring(out[1])[4], 'the ring stays closed');
-
-  // Two copies of one footprint (BAG pand under an OSM way): only one shrinks.
-  const twins = separateNestedBuildings([box('NL.IMBAG.Pand.1', 4.9, 52.37, 0.0002, 20), box('w9', 4.9, 52.37, 0.0002, 20)]);
-  assert.equal(twins.filter(feature => feature.properties.nestedInset).length, 1, 'exactly one twin is inset');
+  assert.deepEqual(ids(kept), ['w5', 'w6', 'w7'], 'a small part and a neighbour stay');
+  assert.ok(kept.every((feature, index) => feature === input[index]), 'kept features pass through untouched');
+  // A part stacked above the outline's roof does not count as covering it.
+  const stacked = dropNestedDuplicates([box('w8', 4.92, 52.37, 0.0004, 10), box('w10', 4.92, 52.37, 0.0003, 30, 12)]);
+  assert.equal(stacked.length, 2, 'a part above the roof leaves the outline');
 }

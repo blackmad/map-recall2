@@ -363,8 +363,11 @@ class VectorBasemap {
       filter: flatRoofFilter,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'roofColour']],
-        'fill-extrusion-base': ['+', WALL_TOP, 0.15],
-        'fill-extrusion-height': ['+', WALL_TOP, 0.55],
+        // The lid sits on the wall: its sides start where the wall's end, so
+        // nothing is coplanar. Floating it 0.15 m up drew a light gap line and
+        // a dark band round every roof (user report 2026-09-29, "weird lip").
+        'fill-extrusion-base': WALL_TOP,
+        'fill-extrusion-height': ['+', WALL_TOP, 0.4],
         'fill-extrusion-opacity': 1
       }
     });
@@ -861,8 +864,8 @@ class VectorBasemap {
     this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-color', [
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['to-color', ['get', 'roofColour'], '#B09999']
     ]);
-    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-base', ['+', height, 0.15]);
-    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-height', ['+', height, 0.55]);
+    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-base', height);
+    this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-height', ['+', height, 0.4]);
   }
 
   _ensurePlaceLayers() {

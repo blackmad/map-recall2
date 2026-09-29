@@ -1,26 +1,23 @@
 // Nested building footprints z-fight.
 //
-// The streamed extract sometimes describes one building twice: an OSM outline
-// and the `building:part`s inside it, or a BAG pand and an OSM way drawn over
-// it. Wherever the two share a wall, both extrusions put a face in the same
-// plane and the renderer picks a different winner per pixel: the striping on
-// Oosterdokskade and the Muziekgebouw (user reports 2026-09-28). About 4% of
-// features in the city-centre tiles sit inside another with overlapping
-// heights.
+// The streamed extract often describes one building twice: an OSM outline and
+// the `building:part`s inside it, or a BAG pand and an OSM way drawn over it.
+// Wherever the two share a wall, both extrusions put a face in the same plane
+// and the renderer picks a different winner per pixel: the striping on
+// Oosterdokskade and the Muziekgebouw (user reports 2026-09-28).
 //
-// Dropping either copy would lose geometry (a podium, a courtyard, a taller
-// part). Instead the inner building's footprint is pulled in by a few tens of
-// centimetres, which separates every shared wall, and when the two roofs are
-// within a hair of each other the inner roof drops just below the outer one.
-// At game scale neither change is visible.
+// A first fix pulled the inner copy in by 0.35 m. At game distance that is
+// inside the depth buffer's precision, so the walls still striped, and where
+// the inner copy was a little taller it left a ledge round the top of the
+// building (user report 2026-09-29). Now the redundant copy is dropped, as
+// OSM renderers do: of two near-identical footprints only one is drawn, and
+// an outline whose parts cover most of it gives way to the parts.
 
 import type { BuildingFeature } from './buildingTileSource.js';
 
 type Position = [number, number];
 type Ring = Position[];
 
-export const NESTED_INSET_METRES = 0.35;
-export const NESTED_ROOF_GAP_METRES = 0.3;
 /** How far outside the outer footprint an inner vertex may sit and still count as inside. */
 const EDGE_TOLERANCE_METRES = 0.6;
 /** Share of the inner footprint's vertices that must lie inside the outer one. */
@@ -81,49 +78,32 @@ function containedIn(inner: Entry, outer: Entry): boolean {
   return total > 0 && inside / total >= CONTAINED_SHARE;
 }
 
-function insetRing(ring: Ring, metres: number): Ring {
-  const closed = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1];
-  const open = closed ? ring.slice(0, -1) : ring;
-  if (open.length < 3) return ring;
-  let cx = 0, cy = 0;
-  for (const [x, y] of open) { cx += x; cy += y; }
-  cx /= open.length; cy /= open.length;
-  const kx = METRES_PER_DEGREE * Math.cos(cy * Math.PI / 180);
-  const moved: Ring = open.map(([x, y]) => {
-    const dx = (cx - x) * kx, dy = (cy - y) * METRES_PER_DEGREE;
-    const distance = Math.hypot(dx, dy);
-    if (distance < 1e-6) return [x, y];
-    // Never pull a vertex more than a fifth of the way to the centre.
-    const step = Math.min(metres, distance * 0.2) / distance;
-    return [x + (cx - x) * step, y + (cy - y) * step];
-  });
-  return closed ? [...moved, moved[0]] : moved;
+function ringArea(ring: Ring): number {
+  const kx = METRES_PER_DEGREE * Math.cos((ring[0]?.[1] ?? 52) * Math.PI / 180);
+  let area = 0;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    area += (ring[j][0] * kx) * (ring[i][1] * METRES_PER_DEGREE) - (ring[i][0] * kx) * (ring[j][1] * METRES_PER_DEGREE);
+  }
+  return Math.abs(area) / 2;
 }
 
-function insetGeometry(geometry: unknown, metres: number): unknown {
-  const shape = geometry as { type: string; coordinates: Ring[] | Ring[][] };
-  if (shape.type === 'Polygon') {
-    const [outer, ...holes] = shape.coordinates as Ring[];
-    return { ...shape, coordinates: [insetRing(outer, metres), ...holes] };
-  }
-  return {
-    ...shape,
-    coordinates: (shape.coordinates as Ring[][]).map(([outer, ...holes]) => [insetRing(outer, metres), ...holes]),
-  };
-}
+/** Of two footprints this alike in area, one is a copy of the other. */
+export const TWIN_AREA_SHARE = 0.85;
+/** An outline whose parts cover this much of it is replaced by the parts. */
+export const PARTS_COVER_SHARE = 0.5;
 
 /**
- * Separate buildings nested inside another building's footprint. Returns a new
- * array; features that are not nested are passed through untouched. Only the
- * copies this returns are changed; the input is not mutated.
+ * Drop the redundant copy of nested buildings. Returns a new array without
+ * them; the input is not mutated and every other feature passes through as is.
+ * - Twins: one footprint inside another of nearly the same area, overlapping
+ *   in height. The lower is dropped (a tie keeps the smaller id).
+ * - Outlines: a footprint that contains parts overlapping it in height, which
+ *   together cover at least half of it. The outline is dropped.
+ * A small part on a big building is left alone: its walls are inside the big
+ * one except where it rises above it.
  */
-export function separateNestedBuildings(
-  features: readonly BuildingFeature[],
-  options: { insetMetres?: number; roofGapMetres?: number } = {},
-): BuildingFeature[] {
-  const insetMetres = options.insetMetres ?? NESTED_INSET_METRES;
-  const roofGap = options.roofGapMetres ?? NESTED_ROOF_GAP_METRES;
-  const entries: Array<Entry | null> = features.map(feature => {
+export function dropNestedDuplicates(features: readonly BuildingFeature[]): BuildingFeature[] {
+  const entries: Array<(Entry & { area: number; id: string }) | null> = features.map(feature => {
     const rings = outerRings(feature.geometry).filter(ring => ring.length >= 4);
     if (!rings.length) return null;
     let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
@@ -133,10 +113,9 @@ export function separateNestedBuildings(
     }
     const base = numberOr(feature.properties?.minHeight, 0);
     const top = numberOr(feature.properties?.height, base + 5);
-    return { feature, rings, box: [minX, minY, maxX, maxY], base, top };
+    const area = rings.reduce((sum, ring) => sum + ringArea(ring), 0);
+    return { feature, rings, box: [minX, minY, maxX, maxY], base, top, area, id: String(feature.properties?.id ?? '') };
   });
-
-  // Grid of footprints so each one only meets its neighbours.
   const cell = 0.0005;
   const grid = new Map<string, number[]>();
   entries.forEach((entry, index) => {
@@ -150,45 +129,37 @@ export function separateNestedBuildings(
       }
     }
   });
-
-  const out = features.slice();
   const tolerance = EDGE_TOLERANCE_METRES / METRES_PER_DEGREE * 2;
+  const dropped = new Set<number>();
+  const partsArea = new Map<number, number>();
   entries.forEach((inner, index) => {
     if (!inner) return;
     const [x0, y0, x1, y1] = inner.box;
     const seen = new Set<number>();
-    let outer: Entry | null = null;
-    for (let gx = Math.floor(x0 / cell); gx <= Math.floor(x1 / cell) && !outer; gx++) {
-      for (let gy = Math.floor(y0 / cell); gy <= Math.floor(y1 / cell) && !outer; gy++) {
+    for (let gx = Math.floor(x0 / cell); gx <= Math.floor(x1 / cell); gx++) {
+      for (let gy = Math.floor(y0 / cell); gy <= Math.floor(y1 / cell); gy++) {
         for (const other of grid.get(`${gx},${gy}`) ?? []) {
           if (other === index || seen.has(other)) continue;
           seen.add(other);
-          const candidate = entries[other]!;
-          const [ox0, oy0, ox1, oy1] = candidate.box;
+          const outer = entries[other]!;
+          const [ox0, oy0, ox1, oy1] = outer.box;
           if (x0 < ox0 - tolerance || y0 < oy0 - tolerance || x1 > ox1 + tolerance || y1 > oy1 + tolerance) continue;
-          if (Math.min(inner.top, candidate.top) <= Math.max(inner.base, candidate.base)) continue;
-          if (!containedIn(inner, candidate)) continue;
-          // Two copies of one footprint: inset only one of them, the lower
-          // (then the lower id), or both would shrink and still meet.
-          const mutual = x0 <= ox0 + tolerance && y0 <= oy0 + tolerance && x1 >= ox1 - tolerance && y1 >= oy1 - tolerance
-            && containedIn(candidate, inner);
-          if (mutual) {
-            const innerId = String(inner.feature.properties?.id ?? '');
-            const otherId = String(candidate.feature.properties?.id ?? '');
-            const innerYields = inner.top < candidate.top || (inner.top === candidate.top && innerId > otherId);
-            if (!innerYields) continue;
+          if (inner.area > outer.area * 1.02) continue;
+          if (Math.min(inner.top, outer.top) <= Math.max(inner.base, outer.base)) continue;
+          if (!containedIn(inner, outer)) continue;
+          if (inner.area >= TWIN_AREA_SHARE * outer.area) {
+            // Twins meet twice, once from each side; decide once.
+            const innerYields = inner.top < outer.top || (inner.top === outer.top && inner.id > outer.id);
+            dropped.add(innerYields ? index : other);
+          } else {
+            partsArea.set(other, (partsArea.get(other) ?? 0) + inner.area);
           }
-          outer = candidate;
         }
       }
     }
-    if (!outer) return;
-    const properties: Record<string, unknown> = { ...(inner.feature.properties ?? {}), nestedInset: true };
-    if (Math.abs(inner.top - outer.top) < roofGap) {
-      const lowered = outer.top - roofGap;
-      if (lowered > inner.base + 0.5) properties.height = lowered;
-    }
-    out[index] = { ...inner.feature, properties, geometry: insetGeometry(inner.feature.geometry, insetMetres) };
   });
-  return out;
+  for (const [index, area] of partsArea) {
+    if (area >= PARTS_COVER_SHARE * entries[index]!.area) dropped.add(index);
+  }
+  return dropped.size ? features.filter((_, index) => !dropped.has(index)) : features.slice();
 }

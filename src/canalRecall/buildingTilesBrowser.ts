@@ -20,7 +20,7 @@
  * a single request for the index rather than an assumption.
  */
 
-import { separateNestedBuildings } from './buildingNesting.js';
+import { dropNestedDuplicates } from './buildingNesting.js';
 import {
   BuildingTileCache, BUILDING_TILE_ZOOM, buildingForLandmark, planTiles, planSourceDiff, tileUrl,
   type BuildingFeature, type Bounds, type LandmarkBuildingQuery
@@ -320,9 +320,9 @@ export class BuildingTileStreamer {
         properties: { ...(feature.properties || {}) },
         geometry: feature.geometry && JSON.parse(JSON.stringify(feature.geometry)),
       }));
-      // Nested duplicates (OSM outline + parts, BAG pand under an OSM way)
-      // share walls and z-fight; see `buildingNesting.ts`.
-      const features = separateNestedBuildings(copies);
+      // Redundant nested copies (OSM outline + parts, BAG pand under an OSM way)
+      // share walls and z-fight, so they are dropped; see `buildingNesting.ts`.
+      const features = dropNestedDuplicates(copies);
       this.cache.adopt(key, features);
       this.firstTileLanded = true;
       if (!this.disposed) this.scheduleFlush();
