@@ -118,6 +118,8 @@ export interface Bridge {
 export interface BuildingHit {
   id?: string | number;
   name?: string;
+  /** Metres, from the streamed building tile. */
+  height?: number;
   lngLat: LngLat;
   geojson?: GeoJsonFeatureCollection;
   featureTarget: FeatureTarget | null;

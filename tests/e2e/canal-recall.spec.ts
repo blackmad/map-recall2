@@ -251,9 +251,46 @@ test('anonymous building footprints acknowledge the click without inventing a na
   expect(result).toMatchObject({
     id: 'clicked-anonymous-footprint',
     name: 'No building details',
-    detail: 'This building has no name in the map data.',
+    // With no facts for it either (see buildingFacts.ts for what it says when
+    // the register has a year).
+    detail: 'This building has no name or date in the map data.',
   });
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
+});
+
+// Named regression (2026-09-30): any click within 120 px of a landmark opened
+// the landmark and lit the clicked building, so the house next door lit up as
+// the museum. The extract-time join decides now; a nearby landmark wins only
+// when its marker itself is clicked.
+test('a click opens the building clicked, not the landmark next door', async ({ page }) => {
+  await openCarRoute(page);
+  const result = await page.evaluate(() => {
+    const game = window.canalRecallGame as any;
+    const canvas = document.querySelector<HTMLCanvasElement>('#gameCanvas')!;
+    const rect = canvas.getBoundingClientRect();
+    const logicalW = (0, eval)('CANVAS_W') as number, logicalH = (0, eval)('CANVAS_H') as number;
+    const toClient = (p: { x: number; y: number }) => [rect.left + p.x * rect.width / logicalW, rect.top + p.y * rect.height / logicalH];
+    // A landmark whose own building is 'museum', beside the player.
+    const landmark = { ...game.landmarks[0], id: 'museum-landmark', name: 'Museum', x: game.player.x, y: game.player.y, buildingIds: ['museum'] };
+    game.landmarks = [landmark];
+    const marker = game.camera.worldToScreen(landmark.x, landmark.y);
+    const clickOn = (id: string, at: { x: number; y: number }) => {
+      game._landmarkNotice = null;
+      game.vectorMap.inspectBuilding = () => ({ id, name: '', lngLat: [4.9, 52.37], featureTarget: null });
+      const [x, y] = toClient(at);
+      game._inspectBuildingAt(x, y);
+      return game._landmarkNotice?.id;
+    };
+    const beside = { x: marker.x + 80, y: marker.y };
+    return {
+      neighbour: clickOn('house-next-door', beside),
+      own: clickOn('museum', beside),
+      marker: clickOn('house-next-door', marker),
+    };
+  });
+  expect(result.neighbour, '80 px from the marker, on another building').toBe('clicked-house-next-door');
+  expect(result.own, 'the landmark\'s own building').toBe('museum-landmark');
+  expect(result.marker, 'on the marker itself').toBe('museum-landmark');
 });
 
 // A card that names a landmark with nothing on the map pointing at it is the

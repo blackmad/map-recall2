@@ -52,6 +52,7 @@ const CHECKS = [
   'test:orientation-pois',
   'test:cycle-tracks',
   'test:own-pois',
+  'test:building-facts',
   'test:photoreal-gate',
   'test:canal-preferences',
   'test:transit-extract',

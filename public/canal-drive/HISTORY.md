@@ -1,5 +1,34 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — a clicked building says when it was built; clicks open what was clicked
+
+**Building facts.** Clicking a building that is not a landmark used to open a
+dead end: "No building details — This building has no name in the map data."
+OSM carries the BAG construction year (`start_date`) on 1,057,404 of 1,082,604
+building ways, plus a building type and a few heritage tags.
+`scripts/build-building-facts.ts` cuts these into `building-facts/14/x/y.json.gz`.
+The files are keyed by the building tiles' own ids, with parts inheriting their
+building's facts. That covers 339,419 tile buildings, 1.4 MB gzipped in total.
+`BuildingFactStore` loads the 3×3 tiles around the rider, and
+`describeBuilding` writes the card, e.g. "Built 1665 — Built in 1665, in the
+Dutch Golden Age. About 13 m tall, some 4 storeys." It adds the type when it
+is worth naming ("A warehouse, built in 1720…") and a listing when tagged.
+Periods are plain date ranges, true in Weesp as in the canal ring. BAG's 1005
+placeholder is not a year. With nothing known the title is still "No building
+details": no invented names.
+
+**Click priority.** Any click within 120 px of a landmark opened that
+landmark and lit the clicked building, so the house next door lit up as the
+museum. Now:
+- a building that is a landmark's own, by the extract-time join, opens that
+  landmark;
+- a nearby landmark wins only when its marker is clicked (within 40 px);
+- otherwise the clicked building opens its own card.
+
+Regressions: `check-building-facts.mts`, `canal-recall.spec.ts` ("a click
+opens the building clicked…") and `landmark-highlight.spec.ts` ("a clicked
+ordinary building tells its year").
+
 ## 2026-09-30 — the HUD never prints an unanswered street, however the bike is turned
 
 Found while reading screenshots from this session: a fresh profile's plaque

@@ -115,6 +115,11 @@ export interface LandmarkHost extends GameCoreHost {
   _landmarkNotice: LandmarkNotice | null;
   /** Why the current card is up, and how far through its life it is. */
   _landmarkNoticeHold: NoticeHold;
+  /** Construction year, type and listing for clicked buildings, loaded
+   *  around the rider (`buildingFacts.ts`). */
+  _buildingFacts?: import('../buildingFacts').BuildingFactStore;
+  /** World pixels to [lat, lng]; provided by the recall runtime. */
+  _toLatLon?(x: number, y: number): [number, number] | null;
   /** What opened the current card, which decides whether a landmark about to
    *  be passed may replace it (`driveByTrigger.mayReplaceNotice`). */
   _landmarkNoticeSource: import('./driveByTrigger').NoticeSource | null;
