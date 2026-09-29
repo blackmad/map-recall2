@@ -36,6 +36,7 @@ import { introFrame, introOverview, introPlan } from './introFlight';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
+import { hudWithholdsRouteName } from './recallRules';
 import type { PresentationHost } from './host';
 import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
@@ -565,8 +566,14 @@ export class GamePresentationRuntime {
       visibleRouteName = plaque.routeName;
       routeAnswerHidden = plaque.answerHidden;
     } else {
-      routeAnswerHidden = !!this.quizPromptName
-        || (!!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName);
+      routeAnswerHidden = hudWithholdsRouteName({
+        roadName: roadName || '',
+        currentName: this.quizCurrentName || '',
+        promptName: this.quizPromptName || '',
+        candidateName: this.quizCandidateName || '',
+        revealed: !!roadName && this.revealedNames.has(roadName),
+        learned: !!roadName && this.learnedNames.has(roadName),
+      });
       visibleRouteName = routeAnswerHidden ? '' : (roadName || '');
     }
     // One plaque: street, neighbourhood + trip, score. Speed and odometer live

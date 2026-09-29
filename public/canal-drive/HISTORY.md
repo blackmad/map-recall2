@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — the HUD never prints an unanswered street, however the bike is turned
+
+Found while reading screenshots from this session: a fresh profile's plaque
+read "DE WITTENKADE" and "TUINSTRAAT". The HUD hid a name only while it was a
+question or a settling candidate. `advanceRouteQuiz` clears the candidate
+whenever the heading is more than 45° off the road, so the plaque printed the
+unanswered name, and the game asked for it moments later. That happened when:
+- stopped and pivoting at a junction (the new mobile pivot makes this common);
+- riding across a street;
+- spawning misaligned.
+
+`hudWithholdsRouteName` (`recallRules.ts`) now withholds any name that is not
+the current corridor and has not been answered or shown. Regressions are in
+`check-recall-rules.ts` and `canal-recall.spec.ts` ("HUD withholds an
+unanswered street even when the bike is turned across it").
+
 ## 2026-09-30 — a named bridge tells its story
 
 Naming a bridge correctly used to open no card, because `learnedRoute` is

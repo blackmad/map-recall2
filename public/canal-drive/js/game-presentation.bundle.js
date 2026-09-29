@@ -447,6 +447,15 @@
     return PROFILES[mode] ?? PROFILES.boat;
   }
 
+  // src/canalRecall/game/recallRules.ts
+  var MAX_HEADING_OFF_ROAD = Math.PI / 4;
+  function hudWithholdsRouteName(input) {
+    if (input.promptName) return true;
+    if (input.candidateName && input.candidateName !== input.currentName) return true;
+    if (!input.roadName || input.roadName === input.currentName) return false;
+    return !input.revealed && !input.learned;
+  }
+
   // src/canalRecall/game/teachingSurface.ts
   function canShowMiniMap(enabled, input) {
     return enabled && !input.utilityOpen;
@@ -967,7 +976,14 @@
         visibleRouteName = plaque.routeName;
         routeAnswerHidden = plaque.answerHidden;
       } else {
-        routeAnswerHidden = !!this.quizPromptName || !!this.quizCandidateName && this.quizCandidateName !== this.quizCurrentName;
+        routeAnswerHidden = hudWithholdsRouteName({
+          roadName: roadName || "",
+          currentName: this.quizCurrentName || "",
+          promptName: this.quizPromptName || "",
+          candidateName: this.quizCandidateName || "",
+          revealed: !!roadName && this.revealedNames.has(roadName),
+          learned: !!roadName && this.learnedNames.has(roadName)
+        });
         visibleRouteName = routeAnswerHidden ? "" : roadName || "";
       }
       const { feedback, restrictionNote } = this._plaqueNotes();
