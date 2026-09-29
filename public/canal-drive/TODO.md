@@ -30,7 +30,8 @@ correct-only encyclopedia. Cold-open review is **disabled** (2026-09-07) until
 a due name is on/near the route or shown (highlight/camera) — see HISTORY.
 Still open: rival-route novelty bias, landmark scavenger stop-to-look,
 transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
-weather/time mood. Location-honest cold-open is the reopen condition.
+weather/time mood. Cold-open is superseded by review rides (see HISTORY,
+2026-09-30).
 
 **16. Review and refine the published Randstad trivia.**
 v11 is published (4,052 facts / 1,628 features). Trivia Lab’s **Human review**
@@ -47,8 +48,6 @@ runs between the landmarks whose line passes the most due names. Still open:
   ridden; street midpoints as endpoints would reach it (next bullet);
 - choosing the review pair when `routePois` is thin (outer districts),
   perhaps with street midpoints as endpoints;
-- re-enabling cold-open review now that a location-honest route exists
-  (`COLD_OPEN_ENABLED`), gated on the due name being on the planned path.
 
 **Street-name origins: the licence, and a glossary pass.**
 All 5,333 origins are published (see HISTORY, 2026-09-30).
