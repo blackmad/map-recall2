@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — landmark and shop labels sit on the buildings
+
+User report: "can we move the map POI labels up onto the buildings instead of
+being on the ground?". A symbol is drawn at its ground point, so under the
+chase pitch the names lay on the pavement at the foot of the facades.
+MapLibre 5.24 has no per-symbol height. Instead `roofLiftTranslate`
+(`orientationPois.ts`) turns a nominal 12 m roofline into a viewport
+translate. It is exponential in zoom and scaled by sin(pitch), and the map
+repaints it when the pitch moves more than a degree (`_liftPoiMarkers`). It
+lifts our landmark dots and labels, the Albert Heijn and local-food markers,
+and the basemap's shop and café layers. Basemap transit stops stay on the
+street. The lift is exact at the view centre, a little low near the camera
+and a little high towards the horizon. Labels now sit above their dot rather
+than below it.
+
 ## 2026-09-29 — hard sideways on the stick pivots a stopped bike on the spot
 
 User report: "if I need to execute a 180 and I'm stuck, because turning also
