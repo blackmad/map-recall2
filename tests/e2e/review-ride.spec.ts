@@ -121,3 +121,40 @@ test('a review ride routes along a due street it would otherwise avoid', async (
   // Capped against the shortest path, which the plain plan is no shorter than.
   expect(result.detour).toBeLessThanOrEqual(1.25 + 1e-6);
 });
+
+// The straight line only guesses what the router rides (2026-09-30): the
+// pick and its runners-up are planned, and the ride goes with the pair whose
+// path passes the most due names. Rozengracht is due; the random pick is two
+// landmarks in Oost, a runner-up two landmarks at either end of Rozengracht.
+test('a review ride plans its runners-up and rides the one past the due street', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'route choice; one project is enough');
+  test.setTimeout(150000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame))).toBe(true);
+  await setHiddenSelect(page, 'travel-mode', 'car');
+  await expect.poll(() => page.evaluate(() => ((window as any).canalRecallGame.routePois || []).length)).toBeGreaterThan(10);
+  const setup = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    const nearest = (lat: number, lng: number) => game.routePois.slice().sort((a: any, b: any) =>
+      Math.hypot(a.lat - lat, (a.lng - lng) * 0.61) - Math.hypot(b.lat - lat, (b.lng - lng) * 0.61))[0];
+    const oostA = nearest(52.3600, 4.9270), oostB = nearest(52.3660, 4.9400);
+    const west = nearest(52.3728, 4.8700), east = nearest(52.3745, 4.8870);
+    game.recall.dueReviews = () => [{ name: 'Rozengracht', type: 'street', cityId: game.cityId || 'amsterdam', center: [52.3737, 4.8800], dueAt: Date.now() - 1000 }];
+    const prefs = game._prefs();
+    game._prefs = () => ({ ...prefs, skipMastered: true });
+    game._pickReviewRide = () => ({
+      from: oostA, to: oostB, dueNear: ['Rozengracht'],
+      alternatives: [{ from: west, to: east, dueNear: ['Rozengracht'] }],
+    });
+    return { oost: [oostA.name, oostB.name], rozengracht: [west.name, east.name], eastId: east.id };
+  });
+  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
+  await expect.poll(() => page.evaluate(() => Array.isArray((window as any).canalRecallGame._reviewRoute?.dueOnPath)), { timeout: 90000 }).toBe(true);
+  const result = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    return { to: game.routeTo.id, from: game.routeFrom.name, dueOnPath: game._reviewRoute.dueOnPath };
+  });
+  expect(result.to, JSON.stringify({ setup, result })).toBe(setup.eastId);
+  expect(result.dueOnPath).toContain('Rozengracht');
+});

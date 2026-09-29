@@ -1187,6 +1187,29 @@ class GameRouteRuntime {
         this.track.setHomeBias(null);
       }
       if (this.travelMode === 'boat') this.track.waterTest = (x, y) => this.vectorMap.isWater(x, y, this.osmLoader);
+      // A review ride's pair was picked by the straight line; plan it and its
+      // runners-up and ride the one whose path passes the most due names.
+      if (this._reviewRoute && this._reviewRoute.alternatives && this._reviewRoute.alternatives.length
+        && window.CanalRecallRoute && window.CanalRecallRoute.choosePlannedReview) {
+        this.track._reviewDueNames = this._dueReviewNames();
+        const snap = (poi) => (poi.id === this.routeFrom?.id && poi.lat === startLL?.lat ? start
+          : poi.id === this.routeTo?.id && poi.lat === finishLL?.lat ? finish
+          : this.osmLoader.latLngToGamePoint(poi.lat, poi.lng, lat, lng, segments,
+            this._isGenerousSnapOrigin(poi) ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST));
+        const chosen = window.CanalRecallRoute.choosePlannedReview(this._reviewRoute, snap,
+          (from, to) => this.track.planRoute(from, to));
+        if (chosen && (chosen.pick.from.id !== this.routeFrom?.id || chosen.pick.to.id !== this.routeTo?.id)) {
+          console.info(`Review ride: ${chosen.pick.from.name} → ${chosen.pick.to.name} rides ${chosen.dueOnPath.length} due names`);
+          start = chosen.start;
+          finish = chosen.finish;
+          this.routeFrom = chosen.pick.from;
+          this.routeTo = chosen.pick.to;
+          startLL = { lat: chosen.pick.from.lat, lng: chosen.pick.from.lng };
+          finishLL = { lat: chosen.pick.to.lat, lng: chosen.pick.to.lng };
+          this._reviewRoute = { ...chosen.pick, alternatives: [] };
+          this.track.setEndpoints(start, finish);
+        }
+      }
       // Aim the basemap at the start while the loading overlay is still up so
       // LoD1 tiles download under the spawn — not on Damrak, and not as a hitch
       // on the first racing frame.

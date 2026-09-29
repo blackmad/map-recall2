@@ -251,7 +251,13 @@ export interface ReviewRoutePick {
   to: RoutePoi;
   /** Distinct due names within the corridor, for the briefing count. */
   dueNear: string[];
+  /** Runner-up pairs by straight-line count, for `choosePlannedReview`: the
+   *  line is only a guess at what the router will ride. */
+  alternatives?: Array<Omit<ReviewRoutePick, 'alternatives'>>;
 }
+
+/** Pairs planned for real before a review ride starts, the pick included. */
+export const REVIEW_PLANNED_CANDIDATES = 5;
 
 function kmToSegment(point: { lat: number; lng: number }, a: { lat: number; lng: number }, b: { lat: number; lng: number }): number {
   const kx = 111.32 * Math.cos(a.lat * Math.PI / 180), ky = 111.32;
@@ -276,9 +282,10 @@ export function pickReviewRoute(input: ReviewRouteInput): ReviewRoutePick | null
     froms = [];
     while (pool.length && froms.length < REVIEW_FROM_SAMPLES) froms.push(pool.splice(chooseIndex(pool.length), 1)[0]);
   }
-  type Pair = ReviewRoutePick & { km: number };
+  type Pair = Omit<ReviewRoutePick, 'alternatives'> & { km: number };
   let best = 0;
   let pairs: Pair[] = [];
+  const all: Pair[] = [];
   for (const from of froms) {
     // Only due names that could lie near some line out of this start.
     const reachable = due.filter(place => kmBetween(from, place) <= maxKm + REVIEW_CORRIDOR_KM);
@@ -289,16 +296,65 @@ export function pickReviewRoute(input: ReviewRouteInput): ReviewRoutePick | null
       if (km < REVIEW_MIN_TRIP_KM || km > maxKm) continue;
       const names = new Set<string>();
       for (const place of reachable) if (kmToSegment(place, from, to) <= REVIEW_CORRIDOR_KM) names.add(place.name);
-      if (names.size < best || names.size === 0) continue;
+      if (!names.size) continue;
+      const pair = { from, to, dueNear: [...names].sort(), km };
+      all.push(pair);
+      if (names.size < best) continue;
       if (names.size > best) { best = names.size; pairs = []; }
-      pairs.push({ from, to, dueNear: [...names].sort(), km });
+      pairs.push(pair);
     }
   }
   if (!pairs.length) return null;
   const shortest = Math.min(...pairs.map(pair => pair.km));
   const close = pairs.filter(pair => pair.km <= shortest * REVIEW_LENGTH_SLACK);
-  const { km: _km, ...picked } = close[chooseIndex(close.length)];
-  return picked;
+  const chosen = close[chooseIndex(close.length)];
+  const strip = ({ km: _km, ...pick }: Pair) => pick;
+  // Runners-up by count, then length, one per destination, from any start.
+  const seen = new Set([`${chosen.from.id}>${chosen.to.id}`]);
+  const alternatives: Array<Omit<ReviewRoutePick, 'alternatives'>> = [];
+  for (const pair of all.sort((a, b) => b.dueNear.length - a.dueNear.length || a.km - b.km)) {
+    if (alternatives.length >= REVIEW_PLANNED_CANDIDATES - 1) break;
+    const key = `${pair.from.id}>${pair.to.id}`;
+    if (seen.has(key) || pair.to.id === chosen.to.id) continue;
+    seen.add(key);
+    alternatives.push(strip(pair));
+  }
+  return { ...strip(chosen), alternatives };
+}
+
+export interface PlannedReview<P> {
+  pick: Omit<ReviewRoutePick, 'alternatives'>;
+  start: P;
+  finish: P;
+  /** Due names the planned path rides. */
+  dueOnPath: string[];
+}
+
+/**
+ * Plan the pick and its runners-up and keep the one whose *planned path*
+ * rides the most due names. The straight line guesses: a pair whose line
+ * grazes four due streets may be routed along none of them, while one past
+ * two can ride both. The pick is kept on a tie, so an equal alternative does
+ * not replace the random choice. Null when nothing snaps or plans.
+ */
+export function choosePlannedReview<P>(
+  pick: ReviewRoutePick,
+  snap: (poi: RoutePoi) => P | null,
+  plan: (start: P, finish: P) => { dueNamesOnPath?: readonly string[] } | null,
+): PlannedReview<P> | null {
+  let best: PlannedReview<P> | null = null;
+  for (const candidate of [pick, ...(pick.alternatives ?? [])].slice(0, REVIEW_PLANNED_CANDIDATES)) {
+    const start = snap(candidate.from), finish = snap(candidate.to);
+    if (!start || !finish) continue;
+    const planned = plan(start, finish);
+    if (!planned) continue;
+    const dueOnPath = [...(planned.dueNamesOnPath ?? [])];
+    if (!best || dueOnPath.length > best.dueOnPath.length) {
+      const { alternatives: _alternatives, ...bare } = candidate as ReviewRoutePick;
+      best = { pick: bare, start, finish, dueOnPath };
+    }
+  }
+  return best;
 }
 
 /** Projects a POI onto the loaded network, or `null` where it does not snap. */

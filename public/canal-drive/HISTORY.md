@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — review rides plan their runners-up and ride the best one
+
+`pickReviewRoute` scores pairs by due names within 200 m of the straight
+line, but the router decides what is actually ridden. A pair whose line
+grazed four due streets could be routed along none of them. Its
+`dueOnPath` was then empty, and the briefing, correctly, promised nothing.
+
+The pick now carries up to four runners-up: next by count, then by length,
+one per destination. Once the city network is built, and before the path is
+planned, `choosePlannedReview` (`routeSelection.ts`) plans each pair with the
+due-name discount and keeps the one whose path rides the most due names. On
+a tie the random pick stays. `RoadNetwork.setEndpoints` moves the ride's ends
+on the same network.
+
+Each plan takes 3–7 ms on desktop, so five run behind the loading screen.
+`review-ride.spec.ts` covers the case: the random pick is two landmarks in
+Oost, a runner-up rides Rozengracht, Rozengracht is due, and the ride goes
+along Rozengracht.
+
 ## 2026-09-30 — bridge cards say what the city's bridge register records
 
 Of 300 bridges the game asks about, 203 have a name origin. The municipal

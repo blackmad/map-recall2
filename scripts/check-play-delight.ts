@@ -97,7 +97,7 @@ console.log('play-delight checks passed');
 // passes the most due names, inside the usual pairing range, and says only
 // how many are on the way.
 {
-  const { pickReviewRoute, REVIEW_CORRIDOR_KM } = await import('../src/canalRecall/game/routeSelection.ts');
+  const { pickReviewRoute, choosePlannedReview, REVIEW_CORRIDOR_KM, REVIEW_PLANNED_CANDIDATES } = await import('../src/canalRecall/game/routeSelection.ts');
   const poi = (id: string, lat: number, lng: number) => ({ id, name: id, lat, lng });
   // Three landmarks on an east-west line through the Jordaan, one far south.
   const pois = [poi('west', 52.3760, 4.8750), poi('east', 52.3760, 4.8950), poi('south', 52.3560, 4.8850), poi('far', 52.3000, 4.9900)];
@@ -117,6 +117,27 @@ console.log('play-delight checks passed');
   assert.equal(pickReviewRoute({ pois, due: [{ name: 'Nowhere', center: [52.2, 5.2] }], chooseIndex: first }), null,
     'no due name near any pair falls back to the ordinary pickers');
   assert.ok(REVIEW_CORRIDOR_KM <= 0.25, 'the corridor stays tight enough to be location-honest');
+  // The line only guesses what the router rides; runners-up are planned too.
+  assert.ok(pick!.alternatives!.length >= 1 && pick!.alternatives!.length < REVIEW_PLANNED_CANDIDATES, 'runners-up travel with the pick');
+  assert.ok(pick!.alternatives!.every(alt => alt.to.id !== pick!.to.id && alt.dueNear.length >= 1), 'each runner-up passes a due name and ends elsewhere');
+  const counts = pick!.alternatives!.map(alt => alt.dueNear.length);
+  assert.deepEqual(counts, [...counts].sort((a, b) => b - a), 'runners-up by count');
+  const synthetic = {
+    from: poi('west', 52.3760, 4.8750), to: poi('east', 52.3760, 4.8950), dueNear: ['Bloemgracht', 'Rozengracht'],
+    alternatives: [
+      { from: poi('west', 52.3760, 4.8750), to: poi('south', 52.3560, 4.8850), dueNear: ['Rozengracht'] },
+      { from: poi('far', 52.3000, 4.9900), to: poi('south', 52.3560, 4.8850), dueNear: ['Rozengracht'] },
+    ],
+  };
+  const riding: Record<string, string[]> = { 'west>east': [], 'west>south': ['Rozengracht', 'Ferdinand Bolstraat'] };
+  const planned = choosePlannedReview(synthetic, p => p.id === 'far' ? null : p.id,
+    (s, f) => ({ dueNamesOnPath: riding[`${s}>${f}`] ?? ['Everything'] }));
+  assert.equal(planned?.pick.to.id, 'south', 'a runner-up whose planned path rides due names beats a pick that rides none');
+  assert.deepEqual(planned!.dueOnPath, ['Rozengracht', 'Ferdinand Bolstraat']);
+  assert.equal('alternatives' in planned!.pick, false);
+  const tie = choosePlannedReview(synthetic, p => p.id, () => ({ dueNamesOnPath: ['Rozengracht'] }));
+  assert.equal(tie!.pick.to.id, 'east', 'on a tie the random pick is kept');
+  assert.equal(choosePlannedReview(pick!, () => null, () => ({ dueNamesOnPath: [] })), null, 'nothing snaps, nothing chosen');
   const briefWith = missionBrief({ destinationName: 'Westerkerk', travelMode: 'car', routePattern: 'surprise', cityName: 'Amsterdam', reviewDueNearRoute: 2 });
   assert.equal(briefWith.tease, 'Review ride: 2 overdue names on the way', 'the briefing counts, never names');
 }

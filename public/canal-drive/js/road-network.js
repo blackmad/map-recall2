@@ -54,6 +54,15 @@ class RoadNetwork {
     // zooming never magnifies a cached bitmap.
   }
 
+  /** Move the ride's ends on the same network: a review ride re-picks its
+   *  pair after planning a few (routeSelection.choosePlannedReview). */
+  setEndpoints(startPoint, finishPoint) {
+    this.startPoint = { ...startPoint };
+    this.finishPoint = { ...finishPoint };
+    this.totalLength = dist(this.startPoint.x, this.startPoint.y, this.finishPoint.x, this.finishPoint.y);
+    this._computeEndpointAngles();
+  }
+
   _computeSegmentGeometry() {
     for (const seg of this.segments) {
       seg.normals = [];
