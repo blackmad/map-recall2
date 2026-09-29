@@ -286,7 +286,7 @@ export class GameLandmarkRuntime {
         landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse,
         bridgeResponse, crossingResponse, streetKnowledgeResponse, streetResponse,
         waterResponse, brandedPoiResponse,
-        factResponse, originResponse, landmarkBuildingResponse,
+        factResponse, landmarkBuildingResponse,
       ] = await Promise.all([
         fetch(url('landmarks.json')),
         fetch(url('boundaries.json')),
@@ -300,15 +300,13 @@ export class GameLandmarkRuntime {
         // Generated trivia. Absent until a batch has been reviewed and
         // published, and the cards fall back to the Wikipedia lede when it is.
         fetch(url('facts.json')).catch(() => new Response('null', { status: 404 })),
-        // Why each street is called what it is (municipal register, English).
-        fetch(url('street-name-origins.json')).catch(() => new Response('null', { status: 404 })),
         // Which streamed building each landmark is, resolved at extract time.
         fetch(url('landmark-buildings.json')).catch(() => new Response('null', { status: 404 })),
       ]);
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
 
       const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex,
-        streetKnowledge, streetFeatures, waterFeatures, brandedPois, factsFile, originsFile, landmarkBuildings] =
+        streetKnowledge, streetFeatures, waterFeatures, brandedPois, factsFile, landmarkBuildings] =
         await Promise.all([
           landmarkResponse.json() as Promise<LandmarkFeature[]>,
           boundaryResponse.json() as Promise<BoundaryFeature[]>,
@@ -320,7 +318,6 @@ export class GameLandmarkRuntime {
           readJson<StreetKnowledgeEntry[]>(waterResponse, []),
           readJson<unknown[]>(brandedPoiResponse, []),
           readJson<FactsFile | null>(factResponse, null),
-          readJson<{ origins?: StreetNameOrigin[] } | null>(originResponse, null),
           readJson<{ buildings?: Record<string, string[]> } | null>(landmarkBuildingResponse, null),
         ]);
 
@@ -328,11 +325,21 @@ export class GameLandmarkRuntime {
       this._factRotation = loadRotationState(
         typeof localStorage === 'undefined' ? null : localStorage);
 
-      this.streetKnowledge = buildRouteKnowledgeIndex(
-        streetKnowledge, streetFeatures, waterFeatures,
-        (name) => this._normaliseCanalName(name),
-        originsFile?.origins ?? [],
-      );
+      const normalise = (name: string) => this._normaliseCanalName(name);
+      const knowledge = buildRouteKnowledgeIndex(streetKnowledge, streetFeatures, waterFeatures, normalise);
+      this.streetKnowledge = knowledge;
+      // Why each street is called what it is (municipal register, English).
+      // 1.2 MB (364 KB gzipped) for 5,333 names, and no card needs it before
+      // the first correct answer, so it no longer holds up the ride's start:
+      // it merges in when it arrives, unless another load has replaced this one.
+      void fetch(url('street-name-origins.json'))
+        .then(response => readJson<{ origins?: StreetNameOrigin[] } | null>(response, null))
+        .catch(() => null)
+        .then(originsFile => {
+          if (!originsFile?.origins?.length || this.streetKnowledge !== knowledge) return;
+          this.streetKnowledge = buildRouteKnowledgeIndex(
+            streetKnowledge, streetFeatures, waterFeatures, normalise, originsFile.origins);
+        });
       // Everything the game can ask about, so no orientation label says it
       // first. Stops join in transit mode, where a stop name is the answer.
       const transitStops = (this.osmLoader as { transitLoad?: { stops?: Array<{ name?: string }> } })

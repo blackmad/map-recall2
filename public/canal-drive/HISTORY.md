@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — full-suite sweep: five stale tests repaired, origins no longer delay the start
+
+A full Playwright run after tonight's changes (208 tests) failed 15. None of
+the failures came from tonight's changes. Repaired:
+- Three `appearance-*` specs clicked the "Da Costa study" route chip removed
+  on 2026-09-28. That commit fixed one spec and missed these three. They now
+  select the pattern through the hidden `#route-pattern`, as the other spec
+  does.
+- `crossing-quiz.spec.ts` "a long street is learned a stretch at a time"
+  called `_isRecallSuppressedHere`, which `_recallStatusHere` replaced on
+  2026-09-07.
+- `bike-screen-size.spec.ts` sampled the zoom while the camera was still
+  easing in from the overview. It passed or failed at random; it now waits
+  for the zoom to settle.
+
+Left for the appearance lane (see TODO): Da Costakade 13's measured wall
+colour, the complete-city prior count, the study-route spec and the material
+demo.
+
+`street-name-origins.json` (1.2 MB, 364 KB gzipped) was in the parallel fetch
+that gates the ride's start. No card needs it before the first correct answer,
+so it now merges into the knowledge index when it arrives, unless another load
+has replaced this one.
+
+**Translator splicing.** `trn` splits long input itself at a fixed length,
+sometimes mid-word, and translates the pieces apart. "het dek v|an het vaste
+gedeelte" came back "the deck vThe fixed part". That affected 22 of 5,203
+origins, Magere Brug among them. `sentenceChunks` (`lib/translation.ts`) now
+sends at most 400 characters of whole sentences per call. `--rechunk` redoes
+the cached long translations (278 entries) and tags the new ones
+`trn-high/chunked`.
+
 ## 2026-09-30 — review rides ride the due streets, and the briefing counts only those
 
 The learning router adds a familiarity penalty to mastered streets. Names due

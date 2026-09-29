@@ -9,6 +9,14 @@ test('the chase bike takes a similar share of the screen on desktop and phone', 
   test.setTimeout(180000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', seedRandom: false });
   await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.vectorMap?.isPlayerBikeReady?.())), { timeout: 90000 }).toBe(true);
+  // Measure once the camera has settled: sampled while it was still easing in
+  // from the overview, the zoom (and so the share) came out low at random.
+  await expect.poll(async () => {
+    const zoom = () => page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getZoom());
+    const before = await zoom();
+    await page.waitForTimeout(600);
+    return Math.abs((await zoom()) - before) < 0.005;
+  }, { timeout: 30000 }).toBe(true);
   const share = await page.evaluate(() => {
     const g = (window as any).canalRecallGame;
     const map = g.vectorMap.map;

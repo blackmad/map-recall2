@@ -12,6 +12,7 @@ import {
   protectNames,
   translatorInvocation,
   trimToSentence,
+  sentenceChunks,
 } from './lib/translation.ts';
 
 let checks = 0;
@@ -302,3 +303,18 @@ check('restoring text the translator dropped the placeholder from changes nothin
 }
 
 process.stdout.write(`Translation pass checks passed (${checks} checks).\n`);
+
+// Long texts go to the translator a few sentences at a time: `trn` cut the
+// Magere Brug origin mid-word ("the deck vThe fixed part") when given 778 characters.
+{
+  const magere = 'Omstreeks 1670 werd er een ophaalbrug over de Amstel gelegd, die zo smal was, dat ze alleen geschikt was voor voetgangers. '
+    + 'Hoewel deze brug officieel Kerkstraatbrug heette (naar de Lange Kerkstraat), werd zij in de volksmond hardnekkig \'Magere brug\' genoemd. '
+    + 'Vervolgens werd deze naam door het stadsbestuur overgenomen. Het verhaal over de dames Mager, die daar in de buurt woonden, behoort tot het rijk der fabelen. '
+    + 'Uit oude afbeeldingen blijkt dat de oude brug van een eenvoudige houtconstructie was.';
+  const chunks = sentenceChunks(magere, 200);
+  assert.ok(chunks.length > 1);
+  assert.ok(chunks.every(chunk => /[.!?]$/.test(chunk)), 'every chunk is whole sentences');
+  assert.equal(chunks.join(' '), magere.trim(), 'nothing is lost or reordered');
+  assert.deepEqual(sentenceChunks('Kort.'), ['Kort.']);
+  assert.deepEqual(sentenceChunks('Ca. 1600 gebouwd door dhr. Jansen. Tweede zin.', 20).length, 2, 'abbreviations are not sentence ends');
+}
