@@ -74,17 +74,17 @@ and function now reach clicked buildings (see HISTORY, 2026-09-30). Still open:
   and the 17 ambiguous bridges are not described yet. The ambiguous ones
   could be resolved per crossing from `bridge-crossings.json`, not per name.
 
-**Driving harness: the remaining lost drives (2026-09-29).**
-`tests/e2e/driving-harness.spec.ts` passes at 97–104 of 120 (bar 45%) with 0
-pinned. Arrivals vary by a few drives between runs with the same seed, and two
-runs can produce identical failure lists. Find the nondeterminism (tile or
-extract load order?) before raising the bar. Kerb traps are now traceable: each
-lost drive prints its `pair`, off-route/off-road margins and wander, and
-`HARNESS_PAIRS` re-drives pairs with a trace. The traced traps (Solitudobrug →
-Weesperzijde, Nannie van Wehlstraat) are fixed (see HISTORY). Most of the ~15
-remaining lost drives circle at speed 100–600 px off the route, which is
-autopilot navigation, not the guard. Next: trace the slow, near-route ones
-(small off-route, speed under 35), e.g. 52.33263, 4.85767.
+**Driving harness: the remaining lost drives (updated 2026-09-30).**
+`tests/e2e/driving-harness.spec.ts` is deterministic now: 102 of 120 arrive
+on every desktop run, with the same 12 lost and 6 timed out, 0 pinned, and 9
+wedges. The iPhone project differs but repeats too: 103, 13 lost, 5 wedges.
+It holds with one worker or three, and in the same page or a fresh one. The
+floor is raised to 70%. Traced 52.33769,4.89434 → 52.33073,4.86869: at De
+Groene Zoom × Gelrestraat the autopilot rides 8 m down a pedestrian way that
+forks off at a narrow angle. It then keeps aiming at the cycleway beyond the
+kerb instead of backing to the junction. That is the test driver, not the
+guard. Next, if the number matters: a reverse that retargets the last passed
+junction.
 `tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
 or facades resident, probably because it needs locally generated study data.
 
