@@ -978,7 +978,11 @@ class GameRouteRuntime {
 
   async _onLocationSelected(lat, lng, startLL, finishLL) {
     this.state = GameState.LOADING;
-    this._loadingAborted = false;
+    // One token per load. A shared abort flag let a second start (or Escape
+    // then start) clear the first load's abort, and both loads then wrote the
+    // progress bar in turn: it jumped back and forth (user report 2026-09-29).
+    const load = ++this._loadToken;
+    const stale = () => load !== this._loadToken;
     this.loadingProgress = 0.05;
     const Prefs = window.CanalRecallPreferences;
     const profile = Prefs && Prefs.travelProfile
@@ -994,11 +998,11 @@ class GameRouteRuntime {
       // Step 1: Fetch from Overpass API (tries multiple servers)
       this.loadingProgress = 0.1;
       const ways = await this.osmLoader.fetchRoads(lat, lng, OSM_FETCH_RADIUS, this.travelMode, this.cityId);
-      if (this._loadingAborted) return;
+      if (stale()) return;
 
       if (ways.length === 0) {
         this.loadingMessage = `No named ${networkNoun} found here.`;
-        setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 2500);
+        setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
         return;
       }
 
@@ -1009,16 +1013,17 @@ class GameRouteRuntime {
 
       if (segments.length === 0) {
         this.loadingMessage = 'Could not build the canal network.';
-        setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 2500);
+        setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
         return;
       }
       await this._loadLandmarks(lat, lng, segments);
+      if (stale()) return;
 
       // Step 3: MapLibre supplies a continuously rendered vector basemap.
       this.loadingMessage = 'Preparing vector map...';
       this.loadingProgress = 0.45;
       const tiles = [];
-      if (this._loadingAborted) return;
+      if (stale()) return;
 
       // Step 4: Find start/finish — use user-picked points or auto-find
       this.loadingMessage = `Choosing a starting ${profile.networkNounSingular}...`;
@@ -1059,7 +1064,7 @@ class GameRouteRuntime {
         const sfDist = result.distance;
         if (!start || !finish || sfDist < 200) {
           this.loadingMessage = 'Area too small. Try a different area.';
-          setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 2500);
+          setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
           return;
         }
       }
@@ -1070,7 +1075,7 @@ class GameRouteRuntime {
           : this.routePattern === 'here'
             ? 'Could not snap your location to a mapped street or waterway. Move closer to the network, or try Surprise.'
             : 'Could not place start/finish. Try different points.';
-        setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 2500);
+        setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
         return;
       }
 
@@ -1078,7 +1083,7 @@ class GameRouteRuntime {
       const sfDist2 = Math.sqrt((start.x - finish.x) ** 2 + (start.y - finish.y) ** 2);
       if (sfDist2 < MIN_START_FINISH_DIST) {
         this.loadingMessage = 'Start and finish are too close. Try different points.';
-        setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 2500);
+        setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
         return;
       }
 
@@ -1092,7 +1097,7 @@ class GameRouteRuntime {
 
       // Use a small delay to let the loading screen render
       await new Promise(r => setTimeout(r, 50));
-      if (this._loadingAborted) return;
+      if (stale()) return;
 
       this.track = new RoadNetwork(segments, start, finish, tiles);
       this._routeMastery = this.recall ? this.recall.routeMastery(this.cityId || 'amsterdam') : {};
@@ -1182,7 +1187,7 @@ class GameRouteRuntime {
       // Hold briefly until MapLibre finishes the first idle at the spawn so
       // the handoff into racing is not a Damrak→neighbourhood jump mid-frame.
       await this._waitForMapSettle(2800);
-      if (this._loadingAborted) return;
+      if (stale()) return;
 
       this.loadingMessage = 'Ready!';
       this.loadingProgress = 1.0;
@@ -1202,22 +1207,24 @@ class GameRouteRuntime {
       }
 
       await new Promise(r => setTimeout(r, 200));
+      if (stale()) return;
 
       // Load the start flight's overview tiles while the loading screen is
       // still up; see _prepareIntro.
       if (this._prepareIntro()) {
         this.loadingMessage = 'Finding your way...';
         await this._waitForMapSettle(1800);
-        if (this._loadingAborted) return;
+        if (stale()) return;
       }
 
       this.state = GameState.RACING;
       this._beginIntro();
 
     } catch (err) {
+      if (stale()) return;
       console.error('OSM loading error:', err);
       this.loadingMessage = 'Error: ' + (err.message || 'Failed to load waterways');
-      setTimeout(() => this._returnToRouteSetup(this.loadingMessage), 3000);
+      setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 3000);
     }
   }
 

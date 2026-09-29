@@ -105,7 +105,7 @@ class Game {
     this.loadingMessage = '';
     this.loadingProgress = 0;
     this.trackMode = TRACK_MODE_POINT_TO_POINT;
-    this._loadingAborted = false;
+    this._loadToken = 0;             // bumped per route load; see _onLocationSelected
     this._raceKey = null;
     this._shareUrl = null;
     this._copiedTimer = 0;
@@ -410,7 +410,7 @@ class Game {
 
       case GameState.LOADING:
         if (this.input.wasPressed('Escape')) {
-          this._loadingAborted = true;
+          this._loadToken++;           // abandon the load in flight
           this.state = GameState.MENU;
         }
         break;
