@@ -455,8 +455,8 @@
   }
 
   // src/canalRecall/game/routeKnowledge.ts
-  var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract;
-  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise) {
+  var eligible = (entry) => entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin;
+  function buildRouteKnowledgeIndex(legacy, streets, waters, normalise, origins = []) {
     const index = /* @__PURE__ */ new Map();
     const add = (entry, type) => {
       index.set(`${type}:${normalise(entry.name)}`, { ...entry, type });
@@ -464,7 +464,39 @@
     for (const entry of legacy) add(entry, entry.type === "water" ? "water" : "street");
     for (const entry of streets) if (eligible(entry)) add(entry, "street");
     for (const entry of waters) if (eligible(entry)) add(entry, "water");
+    for (const origin of origins) {
+      if (!origin.en || origin.kind === "bridge") continue;
+      const type = origin.kind === "water" ? "water" : "street";
+      const key = `${type}:${normalise(origin.name)}`;
+      const existing = index.get(key);
+      index.set(key, existing ? { ...existing, nameOrigin: origin.en } : { name: origin.name, type, nameOrigin: origin.en });
+    }
     return index;
+  }
+  var sentencesOf = (text) => text.trim().split(/(?<=[.!?])\s+/).map((part) => part.trim()).filter(Boolean);
+  function sentencesUpTo(parts, max) {
+    let out = "";
+    for (const part of parts) {
+      const next = out ? `${out} ${part}` : part;
+      if (next.length > max) break;
+      out = next;
+    }
+    if (out || !parts.length) return out;
+    const cut = parts[0].slice(0, max - 1);
+    return `${cut.slice(0, Math.max(cut.lastIndexOf(" "), 1)).trimEnd()}\u2026`;
+  }
+  var STREET_CARD_DETAIL_CHARS = 150;
+  var STREET_CARD_LONG_CHARS = 280;
+  function streetCardText(entry) {
+    const origin = sentencesOf(entry.nameOrigin || "");
+    const extract = sentencesOf(entry.wikipediaExtract || "");
+    if (!origin.length) {
+      return { detail: (extract[0] || "").slice(0, STREET_CARD_DETAIL_CHARS), longDetail: extract.slice(0, 3).join(" ").slice(0, STREET_CARD_LONG_CHARS) };
+    }
+    return {
+      detail: sentencesUpTo(origin, STREET_CARD_DETAIL_CHARS),
+      longDetail: sentencesUpTo([...origin, ...extract], STREET_CARD_LONG_CHARS)
+    };
   }
   function routeKnowledgeFor(index, name, type, normalise) {
     const key = normalise(name);
@@ -696,14 +728,14 @@
       const noticeId = entry.id || `${type}-knowledge:${key}`;
       this._seenStreetKnowledge = this._seenStreetKnowledge || /* @__PURE__ */ new Set();
       if (!shouldOfferStreetKnowledge({
-        hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract),
+        hasExtract: !!(entry.wikipediaUrl || entry.wikipediaExtract || entry.nameOrigin),
         alreadyShownThisDrive: this._seenStreetKnowledge.has(noticeId),
         quizOpen: !!this.quizPromptName,
         landmarkCardOpen: !!this._landmarkNotice,
         replaceOpenCard
       })) return;
       this._seenStreetKnowledge.add(noticeId);
-      const split = splitDetail(entry.wikipediaExtract || "");
+      const split = streetCardText(entry);
       this._showLandmarkNotice({
         id: noticeId,
         name: entry.name || name,
@@ -732,7 +764,8 @@
           streetResponse,
           waterResponse,
           brandedPoiResponse,
-          factResponse
+          factResponse,
+          originResponse
         ] = await Promise.all([
           fetch(url("landmarks.json")),
           fetch(url("boundaries.json")),
@@ -745,7 +778,9 @@
           fetch(url("branded-pois.json")),
           // Generated trivia. Absent until a batch has been reviewed and
           // published, and the cards fall back to the Wikipedia lede when it is.
-          fetch(url("facts.json")).catch(() => new Response("null", { status: 404 }))
+          fetch(url("facts.json")).catch(() => new Response("null", { status: 404 })),
+          // Why each street is called what it is (municipal register, English).
+          fetch(url("street-name-origins.json")).catch(() => new Response("null", { status: 404 }))
         ]);
         if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error("Cached place data unavailable");
         const [
@@ -758,7 +793,8 @@
           streetFeatures,
           waterFeatures,
           brandedPois,
-          factsFile
+          factsFile,
+          originsFile
         ] = await Promise.all([
           landmarkResponse.json(),
           boundaryResponse.json(),
@@ -769,7 +805,8 @@
           readJson(streetResponse, []),
           readJson(waterResponse, []),
           readJson(brandedPoiResponse, []),
-          readJson(factResponse, null)
+          readJson(factResponse, null),
+          readJson(originResponse, null)
         ]);
         this._facts = buildFactIndex(factsFile);
         this._factRotation = loadRotationState(
@@ -779,7 +816,8 @@
           streetKnowledge,
           streetFeatures,
           waterFeatures,
-          (name) => this._normaliseCanalName(name)
+          (name) => this._normaliseCanalName(name),
+          originsFile?.origins ?? []
         );
         const transitStops = this.osmLoader?.transitLoad?.stops || [];
         this.vectorMap.setSpoilerNames([

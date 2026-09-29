@@ -34,6 +34,7 @@ import {
   buildRouteKnowledgeIndex,
   routeKnowledgeFor,
   shouldOfferStreetKnowledge,
+  streetCardText,
 } from '../src/canalRecall/game/routeKnowledge';
 
 const checks: string[] = [];
@@ -55,6 +56,34 @@ const toWorld = ([lat, lng]: LatLng): WorldPoint => ({
 });
 
 // ---- Text ----
+
+check('street-name origins from the municipal register fill and lead street cards', () => {
+  const normalise = (name: string) => name.toLowerCase();
+  const index = buildRouteKnowledgeIndex(
+    [],
+    [{ id: 'street:rozengracht', name: 'Rozengracht', wikipediaExtract: 'Rozengracht is a street in the Jordaan. It was a canal until 1889.' }],
+    [],
+    normalise,
+    [
+      { name: 'Rozengracht', kind: 'street', en: 'The flower. The Rozengracht was filled in in 1895.' },
+      { name: 'Lirestraat', kind: 'street', en: 'The currency of Italy.' },
+      { name: 'Magere Brug', kind: 'bridge', en: 'The narrow bridge.' },
+    ],
+  );
+  const rozengracht = routeKnowledgeFor(index, 'Rozengracht', 'street', normalise)!;
+  assert.equal(rozengracht.id, 'street:rozengracht', 'an origin attaches to the extract entry, keeping its fact-catalog id');
+  assert.equal(rozengracht.nameOrigin, 'The flower. The Rozengracht was filled in in 1895.');
+  assert.equal(routeKnowledgeFor(index, 'Lirestraat', 'street', normalise)?.nameOrigin, 'The currency of Italy.',
+    'a street with no Wikipedia gets a card from its origin alone');
+  assert.equal(routeKnowledgeFor(index, 'Magere Brug', 'street', normalise), undefined, 'bridges are not street cards');
+  const card = streetCardText(rozengracht);
+  assert.equal(card.detail, 'The flower. The Rozengracht was filled in in 1895.', 'a thin first sentence takes the next one with it');
+  assert.ok(card.longDetail.startsWith(card.detail) && card.longDetail.includes('Jordaan'), 'the origin leads and the lede follows');
+  assert.ok(card.longDetail.length <= 280);
+  const long = streetCardText({ nameOrigin: `${'Verzetsstrijder '.repeat(12)}einde. Tweede zin.` });
+  assert.ok(long.detail.endsWith('…') && long.detail.length <= 150, 'an overlong first sentence is cut at a word, not dropped');
+  assert.equal(streetCardText({ wikipediaExtract: 'Only a lede. Second.' }).detail, 'Only a lede.', 'without an origin the card is as before');
+});
 
 check('street encyclopedia stays off a novel unasked name and an open quiz', () => {
   assert.equal(shouldOfferStreetKnowledge({

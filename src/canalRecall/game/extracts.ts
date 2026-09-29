@@ -80,6 +80,9 @@ export interface StreetKnowledgeEntry {
   /** Commons / Wikipedia page image when the enricher found one. Street and
    *  water cards use the same notice slot as landmarks, so this must travel. */
   wikipediaImageUrl?: string;
+  /** Why the street is called this, from the municipal register, in English
+   *  (`street-name-origins.json`; see scripts/fetch-street-name-origins.ts). */
+  nameOrigin?: string;
   /** Curated street geometry — used for transit corridor street quizzes. */
   path?: LatLng[];
   paths?: LatLng[][];
