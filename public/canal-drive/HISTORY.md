@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — cold-open review stays off: review rides are the location-honest version
+
+The reopen condition for the cold-open (2026-09-07) was that a due name be on
+the ridden corridor, or shown. Review rides now meet it more directly:
+- with Plan review on, the pair is chosen and planned for the due names it
+  rides, and the router takes them within a 25% detour;
+- the route quiz asks every street the rider settles on unless
+  `isSuppressedHere` holds it back, which it does only inside the review
+  interval. So each due street on the path is asked with the bike on it.
+
+A "Review — what is this place called?" prompt in the first minute would
+repeat that without location. `COLD_OPEN_ENABLED` stays false, and the
+reopen item is closed.
+
 ## 2026-09-30 — the driving harness is deterministic; arrival floor 45% → 70%
 
 TODO listed "arrivals vary by a few drives between runs with the same seed".
