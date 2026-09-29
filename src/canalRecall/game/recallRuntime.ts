@@ -1085,6 +1085,9 @@ export class GameRecallRuntime {
     // quiz re-fires the moment the prompt closes. Stop/street overlays on a
     // transit hop likewise must not displace the corridor line identity.
     const atCrossing = this.quizPromptKind === 'bridge' || this.quizPromptKind === 'crossing-water';
+    // A bridge named correctly earns its own story: why it is called that
+    // (203 of the 300 quiz bridges have one, from the municipal register).
+    const learnedBridge = this.quizPromptKind === 'bridge' && correct ? correctName : '';
     if (!atCrossing && !isStopQuiz && !isStreetQuiz) {
       this.quizCurrentName = correctName;
       if (isTransit(this.travelMode) || isLineQuiz) {
@@ -1125,6 +1128,7 @@ export class GameRecallRuntime {
       if (typeof this._reclaimKeyboardFocus === 'function') this._reclaimKeyboardFocus();
       else this.canvas.focus();
       if (learnedRoute && correct) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
+      else if (learnedBridge) this._showStreetKnowledge(learnedBridge, 'bridge', true);
     }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
   }
 }

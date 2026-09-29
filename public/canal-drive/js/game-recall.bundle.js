@@ -1310,6 +1310,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       this._neighborhoodNotice = null;
       this._neighborhoodNoticeTimer = 0;
       const atCrossing = this.quizPromptKind === "bridge" || this.quizPromptKind === "crossing-water";
+      const learnedBridge = this.quizPromptKind === "bridge" && correct ? correctName : "";
       if (!atCrossing && !isStopQuiz && !isStreetQuiz) {
         this.quizCurrentName = correctName;
         if (isTransit(this.travelMode) || isLineQuiz) {
@@ -1343,6 +1344,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         if (typeof this._reclaimKeyboardFocus === "function") this._reclaimKeyboardFocus();
         else this.canvas.focus();
         if (learnedRoute && correct) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
+        else if (learnedBridge) this._showStreetKnowledge(learnedBridge, "bridge", true);
       }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
     }
   };

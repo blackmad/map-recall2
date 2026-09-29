@@ -49,12 +49,8 @@ runs between the landmarks whose line passes the most due names. Still open:
 - re-enabling cold-open review now that a location-honest route exists
   (`COLD_OPEN_ENABLED`), gated on the due name being on the planned path.
 
-**Street-name origins: bridge cards, and the licence.**
+**Street-name origins: the licence, and a glossary pass.**
 All 5,333 origins are published (see HISTORY, 2026-09-30).
-- 203 of 300 quiz bridges have an English origin. No card shows it yet,
-  because a correct bridge answer opens no knowledge card (`learnedRoute` is
-  empty `atCrossing`). A bridge card after a correct answer is the natural
-  place for it.
 - Water origins show through the street/water card when the waterway is
   learned by boat.
 - The API states no licence for `beschrijvingNaam`. Confirm it with the
