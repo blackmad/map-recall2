@@ -3,6 +3,14 @@
 // ============================================================
 // Degrees the building-clearance guard may lower the camera pitch.
 const CLEARANCE_MAX_DROP = 10;
+// Streamed buildings start at zoom 14 and used to switch on in a single frame
+// part-way through the start flight (the phone overview sits at ~12.9). At
+// the desktop overview (~14.1) the tile budget covers only the tiles around
+// the rider, so half the view had buildings and the rest filled in during the
+// flight. Both read as jumps in zoom level (user report 2026-09-29). The
+// overview is now a flat map and the city grows in from zoom 15, where the
+// budget covers the view; the 10% zoom floor sits right at 15.
+const BUILDING_FADE_IN = ['interpolate', ['linear'], ['zoom'], 15, 0, 15.6, 1];
 
 class VectorBasemap {
   constructor(container) {
@@ -346,7 +354,7 @@ class VectorBasemap {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['get', 'groundColour']],
         'fill-extrusion-base': MIN_HEIGHT,
         'fill-extrusion-height': GROUND_TOP,
-        'fill-extrusion-opacity': 1
+        'fill-extrusion-opacity': BUILDING_FADE_IN
       }
     });
     this.map.addLayer({
@@ -355,7 +363,7 @@ class VectorBasemap {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['coalesce', ['get', 'sideColour'], ['get', 'colour']]],
         'fill-extrusion-base': ['case', this._coloredBuildingBaseFilter('osm-colored-building-ground-floors'), GROUND_TOP, MIN_HEIGHT],
         'fill-extrusion-height': WALL_TOP,
-        'fill-extrusion-opacity': 1
+        'fill-extrusion-opacity': BUILDING_FADE_IN
       }
     });
     this.map.addLayer({
@@ -368,7 +376,7 @@ class VectorBasemap {
         // a dark band round every roof (user report 2026-09-29, "weird lip").
         'fill-extrusion-base': WALL_TOP,
         'fill-extrusion-height': ['+', WALL_TOP, 0.4],
-        'fill-extrusion-opacity': 1
+        'fill-extrusion-opacity': BUILDING_FADE_IN
       }
     });
     // Prefer streamed LoD1 tiles when published; only then fall back to the
@@ -876,7 +884,9 @@ class VectorBasemap {
     this.map.addSource('branded-pois', { type: 'geojson', data: { type: 'FeatureCollection', features: [] }, attribution: 'POIs © OpenStreetMap contributors' });
     const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
     this.map.addLayer({ id: 'neighborhood-boundaries', type: 'line', source: 'amsterdam-neighborhoods', minzoom: 13, paint: { 'line-color': '#8B5CF6', 'line-width': ['interpolate', ['linear'], ['zoom'], 13, 1, 18, 2.5], 'line-opacity': 0.48, 'line-dasharray': [3, 3] } }, before);
-    this.map.addLayer({ id: 'poi-dots', type: 'circle', source: 'amsterdam-pois', minzoom: 14.5, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 14.5, 3, 18, 6], 'circle-color': '#FACC15', 'circle-stroke-color': '#071E2B', 'circle-stroke-width': 1.5, 'circle-opacity': 0.9 } });
+    // Dots only where their names show: bare dots crowded the overview and
+    // the zoomed-out chase ("why so many yellow dots", 2026-09-29).
+    this.map.addLayer({ id: 'poi-dots', type: 'circle', source: 'amsterdam-pois', minzoom: 16, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 16, 4, 18, 6], 'circle-color': '#FACC15', 'circle-stroke-color': '#071E2B', 'circle-stroke-width': 1.5, 'circle-opacity': 0.9 } });
     this.map.addLayer({ id: 'poi-labels', type: 'symbol', source: 'amsterdam-pois', minzoom: 16, layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': 11, 'text-offset': [0, 1.1], 'text-anchor': 'top', 'text-allow-overlap': false }, paint: { 'text-color': '#FFF7CC', 'text-halo-color': '#071E2B', 'text-halo-width': 2 } });
     this.map.addLayer({ id: 'brand-poi-dots', type: 'circle', source: 'branded-pois', minzoom: 15.5, filter: ['==', ['get', 'kind'], 'albert-heijn'], paint: { 'circle-radius': 5, 'circle-color': '#FFFFFF', 'circle-stroke-color': '#0F3040', 'circle-stroke-width': 2, 'circle-opacity': 0.9 } });
     this._loadBrandIcon('albert-heijn', './brand-icons/albert-heijn.svg');
