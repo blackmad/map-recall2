@@ -585,6 +585,24 @@
     museum: "museum building",
     theatre: "theatre"
   };
+  var MONUMENT_FUNCTIONS = [
+    ["wonen", "housing"],
+    ["onderwijs en wetenschap", "education and science"],
+    ["religie", "worship"],
+    ["verkeer en vervoer", "transport"],
+    ["zorg en welzijn", "care and welfare"],
+    ["bestuur en recht", "government and justice"],
+    ["horeca, sport en recreatie", "hospitality, sport and recreation"],
+    ["landbouw en bosbouw", "farming"],
+    ["nutsvoorziening", "a public utility"],
+    ["industrie en ambacht", "industry and crafts"],
+    ["kunst en cultuur", "the arts"],
+    ["waterstaat", "water management"],
+    ["oorlog en defensie", "defence"],
+    ["begraven", "burial"],
+    ["herdenken", "remembrance"],
+    ["landgoederen en buitenplaatsen", "a country estate"]
+  ];
   var BUILDING_FACT_ZOOM = 14;
   var shortBuildingId = (id) => id.replace(/^NL\.IMBAG\.Pand\./, "P");
   function plausibleYear(year, now = (/* @__PURE__ */ new Date()).getFullYear()) {
@@ -616,16 +634,25 @@
   function describeBuilding(row, heightMetres, name = "") {
     const storeys = storeysFor(heightMetres);
     const type = row && row[1] >= 0 ? TYPE_LABELS[BUILDING_TYPES[row[1]]] : "";
-    const year = row && plausibleYear(row[0]) ? row[0] : null;
-    const title = name || (year ? `Built ${year}` : type ? capitalise(type) : "No building details");
+    const monument = row && row.length > 3 ? row[3] : null;
+    const monumentYear = monument?.y ? Number(monument.y.slice(0, 4)) : NaN;
+    const year = plausibleYear(monumentYear) ? monumentYear : row && plausibleYear(row[0]) ? row[0] : null;
+    const years = plausibleYear(monumentYear) ? monument.y : year ? String(year) : "";
+    const shownName = name || monument?.n || "";
+    const title = shownName || (year ? `Built ${year}` : type ? capitalise(type) : "No building details");
     const parts = [];
+    const designed = monument?.a ? `, designed by ${monument.a}` : "";
     if (year) {
-      const what = type ? `A ${type}` : "Built";
-      parts.push(type ? `${what}, built in ${year}, ${periodOf(year)}.` : `${what} in ${year}, ${periodOf(year)}.`);
-    } else if (type && name) {
+      parts.push(type ? `A ${type}, built in ${years}, ${periodOf(year)}${designed}.` : `Built in ${years}, ${periodOf(year)}${designed}.`);
+    } else if (designed) {
+      parts.push(`Designed by ${monument.a}.`);
+    } else if (type && shownName) {
       parts.push(`A ${type}.`);
     }
-    if (row && row[2]) parts.push(HERITAGE_LABELS[row[2]]);
+    const heritage = row ? HERITAGE_LABELS[row[2]] : "";
+    const purpose = monument?.f != null && MONUMENT_FUNCTIONS[monument.f] && monument.f > 0 ? `Originally built for ${MONUMENT_FUNCTIONS[monument.f][1]}.` : "";
+    if (heritage) parts.push(heritage);
+    if (purpose) parts.push(purpose);
     if (storeys) parts.push(`About ${Math.round(heightMetres)} m tall, some ${storeys} ${storeys === 1 ? "storey" : "storeys"}.`);
     return { name: title, detail: parts.join(" ") || "This building has no name or date in the map data." };
   }
@@ -936,7 +963,14 @@
       const buildingName = building.name || "";
       const matched = matchLandmarkToBuilding(this.landmarks, building, buildingName);
       if (matched) return { ...matched, featureTarget: building.featureTarget };
-      const facts = describeBuilding(this._buildingFacts?.lookup(building.id) ?? null, building.height, buildingName);
+      let row = this._buildingFacts?.lookup(building.id) ?? null;
+      const spoils = this.vectorMap._spoils;
+      const monument = row && row.length > 3 ? row[3] : void 0;
+      if (row && monument?.n && spoils?.call(this.vectorMap, monument.n)) {
+        const { n: _hidden, ...rest } = monument;
+        row = [row[0], row[1], row[2], rest];
+      }
+      const facts = describeBuilding(row, building.height, buildingName);
       return {
         id: `clicked-${building.id || building.lngLat.join("-")}`,
         name: facts.name,

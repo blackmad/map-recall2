@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — listed buildings say who designed them and what they were for
+
+The municipal monument register (`api.data.amsterdam.nl/v1/monumenten`) links
+each monument to its BAG panden (`betreftBagPand`), the building tiles' own
+ids. `scripts/fetch-amsterdam-monuments.ts` snapshots it to
+`scripts/data/amsterdam-monuments.json` (867 KB, committed, so rebuilds need
+no network). The snapshot has 9,817 monuments: 7,686 national and 2,111
+municipal. 7,660 are linked to panden.
+
+`build-building-facts.ts` folds these into the fact tiles: 15,917 listed
+panden, 1.5 MB gzipped in total. Each gets:
+- the listing, with a national listing outranking a municipal one;
+- the monument's name;
+- the architect(s), turned from the register's "Gendt, A.L. van" into "A.L. van
+  Gendt";
+- the construction years, which beat BAG's single year;
+- the original function, from a 16-term English glossary. "Housing" goes
+  without saying.
+
+Example card: "Apollohal — Built in 1933–1935, in the early twentieth century,
+designed by A. Boeken. A municipal monument. Originally built for hospitality,
+sport and recreation."
+
+A monument name that would spoil a quiz answer is dropped from the card. The
+register's long Dutch descriptions (median 4.5k characters) are left out until
+there is a reviewed way to shorten and translate them.
+
 ## 2026-09-30 — canvas cards end on a sentence; Storybook states for the new cards
 
 The phone BRIDGE card ended "…officially called the Kerkstraatbrug,". That is

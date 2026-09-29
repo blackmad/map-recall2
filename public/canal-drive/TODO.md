@@ -63,11 +63,15 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
-**Municipal trivia beyond street names.** `monumenten` (9,817 records with
-architect, build year, original function, and a public description on about
-20%), `amsterdam_canon` (49 windows with location), and `civieleconstructies`
-bridges and locks are all in the Amsterdam data API. Stage them like the
-street-name origins and attach them to landmark and bridge cards.
+**Municipal trivia beyond street names.** Monument status, architect, years
+and function now reach clicked buildings (see HISTORY, 2026-09-30). Still open:
+- the register's public descriptions (`redengevendeOmschrijvingPubliek`,
+  1,891 texts, median 4.5k characters of architectural Dutch) need a
+  shortening pass before translation;
+- `amsterdam_canon` (49 windows with location and a stadsarchief link) could
+  be landmark-like stops;
+- the `civieleconstructies` bridges and locks (1,837 bridges with material
+  and type) could enrich bridge cards.
 
 **Driving harness: the remaining lost drives (2026-09-29).**
 `tests/e2e/driving-harness.spec.ts` passes at 97–104 of 120 (bar 45%) with 0
