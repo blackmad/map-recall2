@@ -20,6 +20,7 @@ class VectorBasemap {
     this.theme = 'clean';
     this._basePaint = new Map();
     this._highlightedBuilding = null;
+    this._highlightedBuildings = [];
     this._pendingTrees = [];
     this._pendingPlaces = { landmarks: [], boundaries: [] };
     this._pendingBrandedPois = [];
@@ -909,7 +910,10 @@ class VectorBasemap {
     if (!this._poiLayerIds) {
       const basemap = lib && lib.basemapOrientationPoiLayerIds
         ? lib.basemapOrientationPoiLayerIds(this.map.getStyle().layers || []) : [];
-      this._poiLayerIds = [...basemap, 'poi-dots', 'poi-labels', 'brand-poi-dots', 'brand-poi-icons', 'brand-poi-labels', 'local-food-labels'];
+      this._poiLayerIds = [...basemap, 'poi-dots', 'poi-labels', 'brand-poi-dots', 'brand-poi-icons', 'brand-poi-labels', 'local-food-labels',
+        // The active landmark's locator too: under the extrusions, the dot
+        // for a tree beside a building was hidden by that building.
+        'active-landmark-line', 'active-landmark-point'];
       // Building layers are re-created later (themes, detailed buildings), so
       // keep checking. Once the order is right the check moves nothing, so
       // the styledata its own moves fire cannot loop.
@@ -1418,34 +1422,37 @@ class VectorBasemap {
     this._activeLandmark = landmark || null;
     const source = this.map.getSource('active-landmark');
     if (!source) return;
-    if (this._highlightedBuilding) {
-      try { this.map.setFeatureState(this._highlightedBuilding, { highlighted: false }); } catch (_) {}
-      this._highlightedBuilding = null;
+    for (const previous of this._highlightedBuildings || []) {
+      try { this.map.setFeatureState(previous, { highlighted: false }); } catch (_) {}
     }
+    this._highlightedBuildings = [];
+    this._highlightedBuilding = null;
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
     if (this._signatureLandmarks) this._signatureLandmarks.setActiveLandmark(detailed ? null : landmark);
-    // A drive-by card knows only the landmark's point. Find the streamed
-    // building under it so the card's subject lights up on the map, rather
-    // than a dot the surrounding buildings hide (user report 2026-09-28).
-    let target = landmark && landmark.featureTarget;
-    if (!target && landmark && Array.isArray(landmark.lngLat) && this._completeCityHasBuildings
+    // The streamed building(s) a card is about, so its subject lights up on the
+    // map rather than a dot the surrounding buildings hide (user report
+    // 2026-09-28). `buildingIds` is resolved at extract time from OSM
+    // `ref:bag` and Wikidata (`scripts/resolve-landmark-buildings.ts`); an
+    // empty list means the landmark is a tree, statue or plaque and keeps its
+    // dot. The distance guess is only for a city without that file — it lit a
+    // shed beside the Bevrijdingslinde (user report 2026-09-29).
+    let targets = landmark && landmark.featureTarget ? [landmark.featureTarget] : [];
+    if (!targets.length && landmark && Array.isArray(landmark.buildingIds)) {
+      targets = landmark.buildingIds.map(id => ({ source: 'osm-building-appearance', id }));
+    } else if (!targets.length && landmark && Array.isArray(landmark.lngLat) && this._completeCityHasBuildings
       && this._completeCity && typeof this._completeCity.buildingForLandmark === 'function') {
-      // Landmark ids end in their OSM id; one mapped as a way with an outline
-      // (`geojson` polygon from `path`) is the building's own `w…` feature.
-      const osmId = String(landmark.id || '').match(/(\d+)$/);
-      const isWay = !!(landmark.geojson && landmark.geojson.features
-        && landmark.geojson.features.some(f => f.geometry && /Polygon|LineString/.test(f.geometry.type)));
-      const id = this._completeCity.buildingForLandmark({
-        lng: landmark.lngLat[0], lat: landmark.lngLat[1], wayId: osmId && isWay ? `w${osmId[1]}` : null,
-      });
-      if (id) target = { source: 'osm-building-appearance', id };
+      const id = this._completeCity.buildingForLandmark({ lng: landmark.lngLat[0], lat: landmark.lngLat[1] });
+      if (id) targets = [{ source: 'osm-building-appearance', id }];
     }
-    if (!detailed && target) {
-      try {
-        this.map.setFeatureState(target, { highlighted: true });
-        this._highlightedBuilding = target;
-      } catch (_) {}
+    if (!detailed) {
+      for (const target of targets) {
+        try {
+          this.map.setFeatureState(target, { highlighted: true });
+          this._highlightedBuildings.push(target);
+        } catch (_) {}
+      }
+      this._highlightedBuilding = this._highlightedBuildings[0] || null;
     }
     // Never fabricate an extrusion from an OSM footprint. If no renderer can
     // identify the actual building, a point acknowledges the selection without
@@ -1456,9 +1463,12 @@ class VectorBasemap {
     // its own extruded building — a theatre inside a block, anything outside the
     // loaded tiles — and suppressing the dot there left a card naming a landmark
     // with nothing on the map pointing at it, which is the opposite of a
-    // geography game. A dot beside a highlighted mesh is redundant; a card with
-    // no locator at all is broken.
-    const point = landmark && !this._highlightedBuilding && landmark.lngLat
+    // geography game. A dot beside a highlighted mesh or a lit signature model
+    // is redundant (user report 2026-09-29, "both the yellow dot and the
+    // yellow building").
+    const modelLit = !detailed && !!(this._signatureLandmarks && this._signatureLandmarks.highlights
+      && this._signatureLandmarks.highlights(landmark));
+    const point = landmark && !this._highlightedBuilding && !modelLit && landmark.lngLat
       ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: landmark.lngLat } }]
       : [];
     source.setData({ type: 'FeatureCollection', features: point });

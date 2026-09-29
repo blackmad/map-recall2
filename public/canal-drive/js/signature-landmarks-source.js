@@ -78,6 +78,14 @@ export class SignatureLandmarks {
     this.map.triggerRepaint();
   }
 
+  /** Whether a loaded, visible model lights up for this landmark — in which
+   *  case the map needs no locator dot beside it (user report 2026-09-29,
+   *  "why do I get both the yellow dot and the yellow building?"). */
+  highlights(landmark) {
+    if (!this.enabled || !landmark || !landmark.id) return false;
+    return (this._entries || []).some(entry => entry.spec.landmarkId === landmark.id);
+  }
+
   /** Mirrors the extrusion layer's highlight onto the models, so a landmark
    *  question looks the same whichever representation is on screen. */
   setActiveLandmark(landmark) {
