@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## 2026-09-29 — labels above the buildings, landmarks on their ground point, Enter rides on, cards end on a sentence
+
+- **"Café De Jo…" cut off by a building.** The basemap's shop and café layers
+  sit low in its style, under the building extrusions added later, so the
+  label lift slid them behind the walls. `_raisePoiLayers` moves the POI
+  layers to the top. It re-checks on every `styledata`, because themes and
+  detailed buildings re-create building layers. The check uses the cheap
+  `getLayersOrder()` and moves nothing once the order is right.
+- **A floating yellow dot beside the Bevrijdingslinde.** Our landmark dots
+  and labels were lifted as if every landmark were a building, but landmarks
+  include trees, statues and memorials. They stay on their ground point now;
+  shops, cafés and supermarkets are still lifted. (The yellow shed next to it
+  is the runtime's 10 m building guess; see TODO for the exact OSM→BAG join
+  that replaces it.)
+- **Enter repeated the same route.** The finish card says "Next route", and
+  now `_startNextRouteFromArrival` does that: from the landmark just reached,
+  a review ride if one is due, else a destination in range other than the
+  start just left. The study lesson and transit keep replaying.
+- **"…fortifications of Amste".** `splitDetail` hard-sliced card text at
+  150/280 characters. `sentencesUpTo` keeps whole sentences and cuts an
+  overlong one at a word with an ellipsis. Street cards share it.
+
 ## 2026-09-29 — `check:canal` is a runner, not a 104-step `&&` chain
 
 User: "this seems absurd btw" about the one-line gate in package.json. It

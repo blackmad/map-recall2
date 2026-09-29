@@ -57,6 +57,16 @@ const toWorld = ([lat, lng]: LatLng): WorldPoint => ({
 
 // ---- Text ----
 
+check('card text ends on a whole sentence, never mid-word (Haarlemmerpoort)', () => {
+  const lede = 'The Haarlemmerpoort on the Haarlemmerplein in Amsterdam is officially called Willemspoort but is never called that in the city. '
+    + 'It is in fact the fifth gate on the side of Haarlem that appears in the history of Amsterdam. '
+    + 'The earlier gates were part of the fortifications of Amsterdam and stood elsewhere.';
+  const split = splitDetail(lede);
+  assert.ok(split.longDetail.endsWith('Amsterdam.'), `ends on a sentence: …${split.longDetail.slice(-30)}`);
+  assert.ok(split.longDetail.length <= 280 && !split.longDetail.includes('Amste '));
+  assert.ok(splitDetail('x'.repeat(10) + ' ' + 'y'.repeat(200) + ' z.').detail.endsWith('…'), 'an overlong sentence is cut at a word');
+});
+
 check('street-name origins from the municipal register fill and lead street cards', () => {
   const normalise = (name: string) => name.toLowerCase();
   const index = buildRouteKnowledgeIndex(
