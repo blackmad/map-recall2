@@ -29,8 +29,61 @@ const TYPE_LABELS: Record<BuildingType, string> = {
  *  (rijksmonument), 3 municipal monument. 0 when untagged. */
 export type HeritageLevel = 0 | 1 | 2 | 3;
 
-/** One building's facts as a tile file stores them: [year, type index or -1, heritage]. */
-export type BuildingFactRow = [number, number, HeritageLevel];
+/** A listed monument's register entry, shortened for a card. */
+export interface MonumentFact {
+  /** The monument's own name ("Apollohal"), when it has one. */
+  n?: string;
+  /** Architect(s), display order ("A.L. van Gendt"). */
+  a?: string;
+  /** Construction years as the register gives them ("1874" or "1874–1876"). */
+  y?: string;
+  /** Index into `MONUMENT_FUNCTIONS`: what it was built for. */
+  f?: number;
+}
+
+/** One building's facts as a tile file stores them:
+ *  [year, type index or -1, heritage, monument entry when listed]. */
+export type BuildingFactRow = [number, number, HeritageLevel] | [number, number, HeritageLevel, MonumentFact];
+
+/** The register's original-function categories, in English, in its order of
+ *  frequency. `wonen` (housing) is 7,820 of 9,817. */
+export const MONUMENT_FUNCTIONS: ReadonlyArray<[dutch: string, english: string]> = [
+  ['wonen', 'housing'],
+  ['onderwijs en wetenschap', 'education and science'],
+  ['religie', 'worship'],
+  ['verkeer en vervoer', 'transport'],
+  ['zorg en welzijn', 'care and welfare'],
+  ['bestuur en recht', 'government and justice'],
+  ['horeca, sport en recreatie', 'hospitality, sport and recreation'],
+  ['landbouw en bosbouw', 'farming'],
+  ['nutsvoorziening', 'a public utility'],
+  ['industrie en ambacht', 'industry and crafts'],
+  ['kunst en cultuur', 'the arts'],
+  ['waterstaat', 'water management'],
+  ['oorlog en defensie', 'defence'],
+  ['begraven', 'burial'],
+  ['herdenken', 'remembrance'],
+  ['landgoederen en buitenplaatsen', 'a country estate'],
+];
+
+/** The register writes architects surname first: "Gendt, A.L. van",
+ *  "Zietsma, J. en Lammers, Th.J.", "Leliman, J.H.W. (Willem)". */
+export function architectDisplay(raw: string | null | undefined): string {
+  const names = (raw || '').split(/\s+(?:en|&)\s+|;\s*/).map(part => part.trim()).filter(Boolean);
+  const shown = names.map(name => {
+    const plain = name.replace(/\s*\([^)]*\)/g, '').trim();
+    const [surname, rest] = plain.split(/,\s*/, 2);
+    return rest ? `${rest} ${surname}` : plain;
+  });
+  if (shown.length <= 1) return shown[0] ?? '';
+  return `${shown.slice(0, -1).join(', ')} and ${shown[shown.length - 1]}`;
+}
+
+export function monumentHeritage(status: string | null | undefined): HeritageLevel {
+  if (/^rijksmonument/i.test(status || '')) return 2;
+  if (/^gemeentelijk monument/i.test(status || '')) return 3;
+  return 0;
+}
 
 export interface BuildingFactTile {
   version: 1;
@@ -96,16 +149,29 @@ export function describeBuilding(
 ): { name: string; detail: string } {
   const storeys = storeysFor(heightMetres);
   const type = row && row[1] >= 0 ? TYPE_LABELS[BUILDING_TYPES[row[1]]] : '';
-  const year = row && plausibleYear(row[0]) ? row[0] : null;
-  const title = name || (year ? `Built ${year}` : type ? capitalise(type) : 'No building details');
+  const monument = row && row.length > 3 ? row[3] as MonumentFact : null;
+  // The register's construction years beat BAG's single year when present.
+  const monumentYear = monument?.y ? Number(monument.y.slice(0, 4)) : NaN;
+  const year = plausibleYear(monumentYear) ? monumentYear : row && plausibleYear(row[0]) ? row[0] : null;
+  const years = plausibleYear(monumentYear) ? monument!.y! : year ? String(year) : '';
+  const shownName = name || monument?.n || '';
+  const title = shownName || (year ? `Built ${year}` : type ? capitalise(type) : 'No building details');
   const parts: string[] = [];
+  const designed = monument?.a ? `, designed by ${monument.a}` : '';
   if (year) {
-    const what = type ? `A ${type}` : 'Built';
-    parts.push(type ? `${what}, built in ${year}, ${periodOf(year)}.` : `${what} in ${year}, ${periodOf(year)}.`);
-  } else if (type && name) {
+    parts.push(type
+      ? `A ${type}, built in ${years}, ${periodOf(year)}${designed}.`
+      : `Built in ${years}, ${periodOf(year)}${designed}.`);
+  } else if (designed) {
+    parts.push(`Designed by ${monument!.a}.`);
+  } else if (type && shownName) {
     parts.push(`A ${type}.`);
   }
-  if (row && row[2]) parts.push(HERITAGE_LABELS[row[2]]);
+  const heritage = row ? HERITAGE_LABELS[row[2]] : '';
+  const purpose = monument?.f != null && MONUMENT_FUNCTIONS[monument.f] && monument.f > 0
+    ? `Originally built for ${MONUMENT_FUNCTIONS[monument.f][1]}.` : '';
+  if (heritage) parts.push(heritage);
+  if (purpose) parts.push(purpose);
   if (storeys) parts.push(`About ${Math.round(heightMetres!)} m tall, some ${storeys} ${storeys === 1 ? 'storey' : 'storeys'}.`);
   return { name: title, detail: parts.join(' ') || 'This building has no name or date in the map data.' };
 }

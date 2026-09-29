@@ -195,7 +195,16 @@ export class GameLandmarkRuntime {
     if (matched) return { ...matched, featureTarget: building.featureTarget };
     // Not a landmark: say what the register knows (year, type, listing, size)
     // rather than "no building details".
-    const facts = describeBuilding(this._buildingFacts?.lookup(building.id) ?? null, building.height, buildingName);
+    // A monument's own name can carry a quiz answer ("Pakhuis Prinsengracht");
+    // screen it like every other label before it becomes a title.
+    let row = this._buildingFacts?.lookup(building.id) ?? null;
+    const spoils = (this.vectorMap as { _spoils?: (name: string) => boolean })._spoils;
+    const monument = row && row.length > 3 ? row[3] : undefined;
+    if (row && monument?.n && spoils?.call(this.vectorMap, monument.n)) {
+      const { n: _hidden, ...rest } = monument;
+      row = [row[0], row[1], row[2], rest];
+    }
+    const facts = describeBuilding(row, building.height, buildingName);
     return {
       id: `clicked-${building.id || building.lngLat.join('-')}`,
       name: facts.name,
