@@ -215,8 +215,19 @@ const ROUTE: WorldPoint[] = [
 const FINISH: WorldPoint = { x: 400, y: 0 };
 const fresh: LiveRouteState = { index: 0, rerouteTimer: 0 };
 
-check('nearestRouteIndex finds the vertex the player is beside', () => {
-  assert.deepEqual(nearestRouteIndex(ROUTE, { x: 205, y: 10 }), { index: 2, distance: Math.hypot(5, 10) });
+check('nearestRouteIndex finds the segment the player is on and the distance to the line', () => {
+  assert.deepEqual(nearestRouteIndex(ROUTE, { x: 205, y: 10 }), { index: 2, distance: 10 });
+});
+
+check('riding down a long straight is on the route (Marnixstraat)', () => {
+  // Named regression (user report 2026-09-29, "while I'm on it, it jumps to
+  // another street"): measured to vertices, mid-block on a 2 km straight was
+  // 1 km "off route", so the line replanned every two seconds.
+  const straight: WorldPoint[] = [{ x: 0, y: 0 }, { x: 2000, y: 0 }, { x: 2000, y: 500 }];
+  const decision = advanceLiveRoute(fresh, straight, { x: 1000, y: 12 }, 1 / 60);
+  assert.equal(decision.shouldReroute, false);
+  assert.equal(decision.offBy, 12);
+  assert.equal(decision.nearestIndex, 0, 'the stretch being ridden stays drawn');
 });
 
 check('staying on the route never triggers a reroute', () => {
