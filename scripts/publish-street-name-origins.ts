@@ -14,7 +14,7 @@
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { indexOrigins, originFor, repairOriginTranslation, type NameOrigin } from './lib/streetNameOrigins.ts';
+import { indexOrigins, nameGenericOrigin, originFor, repairOriginTranslation, type NameOrigin } from './lib/streetNameOrigins.ts';
 
 const directory = path.resolve('public/data/extracts/amsterdam');
 const staged = JSON.parse(await readFile(path.join(directory, 'staging/street-name-origins.json'), 'utf8')) as {
@@ -22,6 +22,8 @@ const staged = JSON.parse(await readFile(path.join(directory, 'staging/street-na
   origins: NameOrigin[];
 };
 const index = indexOrigins(staged.origins);
+// Reviewed meanings of name stems, for origins that only name the class.
+const { stems } = JSON.parse(await readFile(path.resolve('scripts/data/street-name-stems.json'), 'utf8')) as { stems: Record<string, string> };
 
 interface PublishedOrigin { name: string; kind: 'street' | 'water' | 'bridge'; en: string; bagId: string }
 const published = new Map<string, PublishedOrigin>();
@@ -36,7 +38,7 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
     explained++;
     if (!origin.en) continue;
     english++;
-    published.set(`${kind}\u0000${name}`, { name, kind, en: repairOriginTranslation(origin.nl, origin.en), bagId: origin.bagId });
+    published.set(`${kind}\u0000${name}`, { name, kind, en: nameGenericOrigin(name, repairOriginTranslation(origin.nl, origin.en), stems), bagId: origin.bagId });
   }
   report.push(`  ${file}: ${names.length} names, ${explained} explained, ${english} with English`);
 }

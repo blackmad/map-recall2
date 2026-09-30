@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {
-  AMSTERDAM_WOONPLAATS_ID, cleanDescription, indexOrigins, nameKey, originFor, originsFromRecords, repairOriginTranslation,
+  AMSTERDAM_WOONPLAATS_ID, cleanDescription, indexOrigins, nameGenericOrigin, nameKey, nameStem, originFor, originsFromRecords, repairOriginTranslation,
   type BagOpenbareRuimte,
 } from './lib/streetNameOrigins.ts';
 
@@ -50,6 +50,22 @@ assert.equal(originFor(index, 'Magere Brug', 'street')?.kind, 'bridge', 'a bridg
 assert.equal(repairOriginTranslation('De bloem. De Rozengracht is gedempt in 1895.', 'The flower. The Rozengracht was suppressed in 1895.'),
   'The flower. The Rozengracht was filled in in 1895.', 'gedempt is filled in, not suppressed');
 assert.equal(repairOriginTranslation('Een gracht, gedeeltelijk gedempt.', 'A canal, partially silenced.'), 'A canal, partially filled in.');
+// Mistranslations that taught something false (Pruimenstraat, Mussenstraat, Fazantenweg).
+assert.equal(repairOriginTranslation('De vruchten van de pruimenboom.', 'The fruits of the pear tree.'), 'The fruits of the plum tree.');
+assert.equal(repairOriginTranslation('De tot de vinken behorende vogels.', 'The birds belonging to the sparrows.'), 'The birds belonging to the finches.');
+assert.equal(repairOriginTranslation('De hoender.', 'The chicken.'), 'The fowl.');
+// A bare class says what the name means, from the reviewed stem glossary.
+const stems = { egelantier: 'eglantine (sweet briar)', linden: 'linden (lime tree)', berberis: 'barberry', kogeldistel: 'globe thistle', fazanten: 'pheasant' };
+assert.equal(nameStem('Tweede Egelantiersdwarsstraat'), 'egelantier');
+assert.equal(nameStem('Koekoeksplein'), 'koekoek');
+assert.equal(nameGenericOrigin('Egelantiersgracht', 'The shrub.', stems), 'Named after the eglantine (sweet briar), a shrub.');
+assert.equal(nameGenericOrigin('Lindengracht', 'The deciduous tree.', stems), 'Named after the linden (lime tree), a deciduous tree.');
+assert.equal(nameGenericOrigin('Berberisstraat', 'The shrub.', stems), 'Named after the barberry, a shrub.');
+assert.equal(nameGenericOrigin('Kogeldistelstraat', 'Thistle species', stems), 'Named after the globe thistle, a thistle.');
+assert.equal(nameGenericOrigin('Fazantenweg', 'The fowl.', stems), 'Named after the pheasant, a fowl.');
+assert.equal(nameGenericOrigin('Meeuwenlaan', 'The bird family.', { meeuwen: 'gull' }), 'Named after the gull, a bird.');
+assert.equal(nameGenericOrigin('Duinbeek', 'The shrub.', stems), 'The shrub.', 'a stem the glossary lacks is left alone');
+assert.equal(nameGenericOrigin('Lindengracht', 'The canal was filled in in 1895.', stems), 'The canal was filled in in 1895.', 'only a bare class is rewritten');
 // Glossary, from the published texts (Korte Lijnbaanssteeg, Haarlemmerdijk, Albert Cuypstraat).
 assert.equal(repairOriginTranslation('Naar de lijnbanen van de touwslagerijen.', 'The line tracks of the rope warehouses.'),
   'The ropewalks of the rope-making works.');

@@ -1,5 +1,28 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — thin street-name origins name their word; three false translations fixed
+
+A playtest card for Tweede Egelantiersdwarsstraat read, in full, "The shrub."
+The register's own text is "De heester.", which only helps a rider who knows
+that an egelantier is sweet briar. 177 origins name nothing but a class like
+this. The Jordaan flower streets, the Bird and Tree districts and the
+Tuindorp fruit streets are most of them.
+
+- `scripts/data/street-name-stems.json` holds 67 hand-reviewed stem meanings
+  (egelantier → eglantine (sweet briar), iepen → elm, kievit → lapwing…).
+- `nameGenericOrigin` rewrites only a bare whitelisted class, and only for a
+  known stem: "Named after the eglantine (sweet briar), a shrub." That
+  covers 98 origins. Unknown stems (Duinbeek) and real sentences are left
+  alone.
+
+Reading the list turned up translations that taught something false. Each is
+now fixed through `ORIGIN_GLOSSARY` and pinned in
+`check-street-name-origins.ts`:
+- Pruimenstraat said "the fruits of the pear tree" (pruim is plum);
+- Mussenstraat said sparrows "belonging to the sparrows" (the Dutch says
+  finches);
+- Fazantenweg and Kalkoenstraat said "The chicken." (hoender: fowl).
+
 ## 2026-09-30 — naming the water at a bridge earns the water's card
 
 Found in a screenshot playtest of a bike ride. After "Which waterway are you
