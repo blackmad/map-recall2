@@ -109,6 +109,23 @@ const COMPATIBLE: Record<string, readonly OriginKind[]> = {
  * Amsterdam proper over Weesp, and refuses a name that two different
  * explanations still share after that: better no card than the wrong person.
  */
+/**
+ * A card cannot follow "See Boomgaardlaan.", so a trailing cross-reference
+ * goes, and so does register index noise glued to the end of a text
+ * ("Blancplein, Mont See Mont."). An origin that is nothing but a
+ * reference comes back as `{ see }` for the caller to resolve.
+ */
+export function withoutCrossReference(en: string): { text: string; see?: string } {
+  const text = en.trim()
+    // Index noise: "Name, Prefix See Prefix." / "Name, Prefix Zie Prefix."
+    .replace(/\s+[A-Z][\p{L}'-]*,\s+[A-Z][\p{L}'-]*\s+(?:See|Zie)\s+[A-Z][\p{L}'-]*\.?$/u, '')
+    .trim();
+  const only = /^(?:See|Zie)\s+(?:further\s+|also\s+)?(.+?)\.?$/i.exec(text);
+  if (only) return { text: '', see: only[1].trim() };
+  const stripped = text.replace(/\s+(?:See|Zie)\s+(?:further\s+|also\s+)?[^.]+\.?$/i, '').trim();
+  return { text: stripped || text };
+}
+
 export function refersToItself(origin: Pick<NameOrigin, 'name' | 'nl'>): boolean {
   const name = origin.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return new RegExp(`\\bzie\\s+(?:verder\\s+)?${name}\\b`, 'i').test(origin.nl);
@@ -175,6 +192,21 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/burgemeester van/i, /\bBurgemeester van\b/g, 'Mayor of'],
   [/voor de stadsuitleg/i, /\bFor the city (?:tour|layout|expansion)\b/g, 'Before the city expansion'],
   [/stadsuitleg/i, /\bcity tour\b/g, 'city expansion'],
+  // A uitleg of the city is an expansion, not an explanation (Herengracht:
+  // "the part beyond the Leidsegracht belongs to the expansion of 1658").
+  [/\buitleg (?:van|in) 1\d{3}|(?:eerste|tweede|derde|vierde|deze) uitleg/i, /\bexplanation\b/g, 'expansion'],
+  [/overwelv|overkluis/i, /\bfilling in and filling in\b/g, 'filling in and vaulting over'],
+  [/kloveniers werd genoemd/i, /a part of the artillery that was called crossbowmen, after the firearm used by the men, a field snake/,
+    'a company of the civic guard called the kloveniers, after the firearm its men carried, the klover or culverin'],
+  [/schutters- en regentenstukken/i, /\bsoldier and regent portraits\b/g, "civic guard and regents' group portraits"],
+  [/schuttersstuk/i, /\b(?:hunting scenes|gunfight scenes|shooting pieces)\b/g, 'civic guard portraits'],
+  [/kuiperij/i, /\bbrewery\b/g, 'cooperage'],
+  [/dijkgraaf/i, /\bdam engineer\b/gi, 'dike reeve'],
+  [/dijk- of waterschap/i, /\bdam or water board\b/g, 'dike or water board'],
+  [/schout-bij-nacht/i, /\b(?:night commander|lieutenant-governor)\b/g, 'rear admiral'],
+  [/stadhouderschap/i, /\bgovernorship\b/g, 'stadtholdership'],
+  [/volkstuinder/i, /\bVegetable Growers\b/g, 'Allotment Gardeners'],
+  [/steigers/i, /\bscaffolding\b/g, 'jetties'],
   // Outright mistranslations that taught something false: a plum is not a
   // pear, sparrows are not finches' parents, and a pheasant is no chicken.
   [/pruimenboom/i, /\bpear tree\b/g, 'plum tree'],

@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — a third pass: historical terms, and cross-references a card cannot follow
+
+A second noun-pair scan, over trade and office words, found more literal
+renderings that taught something false:
+- "uitleg" (a city expansion) came out "explanation" in 15 texts, the
+  Herengracht among them ("belongs to the explanation of 1658");
+- the Kloveniersburgwal's kloveniers, a company of the civic guard named
+  after their klover (culverin), came out "a part of the artillery that was
+  called crossbowmen … a field snake";
+- schuttersstukken (civic guard group portraits) came out "hunting scenes"
+  and "gunfight scenes" for Frans Hals and Govert Flinck;
+- kuiperij (cooperage) came out "brewery";
+- dijkgraaf (dike reeve) came out "dam engineer";
+- schout-bij-nacht (rear admiral) came out "night commander";
+- also stadtholdership, Allotment Gardeners, jetties, and "demping en
+  overwelving" → "filling in and vaulting over".
+
+`withoutCrossReference` handles register references:
+- a trailing "See Boomgaardlaan." goes, because a card cannot follow it;
+- register index noise ("Blancplein, Mont See Mont.") goes;
+- an origin that is only "See Rozengracht." borrows that street's text, once.
+
+The full e2e run after tonight's work passed 150, skipped 58 and failed 10.
+All 10 failures are in the appearance lane and were already on the board.
+
 ## 2026-09-30 — a second pass over street-name translations: "filled in", aldermen, and a mis-filed record
 
 A scan paired Dutch nouns with the English each should produce and flagged
