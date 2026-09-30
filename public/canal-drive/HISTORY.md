@@ -1,5 +1,33 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — a second pass over street-name translations: "filled in", aldermen, and a mis-filed record
+
+A scan paired Dutch nouns with the English each should produce and flagged
+the origins where the English lacked it. Findings:
+
+- **Dempen.** Filling in a canal came out as "demoted", "flattened",
+  "straightened", "canalized", "Muted" (capital M, which the lowercase fix
+  missed), "dampening", and "after flooding", the opposite. The repair is now
+  case-insensitive and covers all of these. Each rendering is kept where the
+  Dutch has its own word for it (recht → straightened, overstroming →
+  flooding).
+- **Schepen van de stad** (alderman) came out "captain of the city"
+  (Realengracht).
+- **Voor de stadsuitleg van 1593** came out "For the city tour of 1593"
+  (Haarlemmerstraat).
+- **Burgemeester van Amsterdam** was left in Dutch (Tellegenstraat).
+- **The Oudezijds Voorburgwal street record is the Nieuwezijds text.** The
+  municipal register filed it under the wrong street, which is why it says
+  "zie Oudezijds Voorburgwal" about itself. `refersToItself` now drops such
+  records. The street then takes the canal's own story, since the runtime
+  falls back from street to water.
+- **Five texts had no English** because each translation renamed the street
+  itself: Lastageweg, Nieuwe Oostenburgerstraat, Oudezijds Voorburgwal (water),
+  Sarphatipark and Sarphatistraat. They are hand-translated in the cache as
+  `source: "manual"`.
+
+All of these are pinned in `check-street-name-origins.ts`.
+
 ## 2026-09-30 — thin street-name origins name their word; three false translations fixed
 
 A playtest card for Tweede Egelantiersdwarsstraat read, in full, "The shrub."
