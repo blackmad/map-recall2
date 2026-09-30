@@ -122,7 +122,12 @@ export function withoutCrossReference(en: string): { text: string; see?: string 
     .trim();
   const only = /^(?:See|Zie)\s+(?:further\s+|also\s+)?(.+?)\.?$/i.exec(text);
   if (only) return { text: '', see: only[1].trim() };
-  const stripped = text.replace(/\s+(?:See|Zie)\s+(?:further\s+|also\s+)?[^.]+\.?$/i, '').trim();
+  const stripped = text
+    .replace(/(^|\.\s+)(?:See|Zie)\s+(?:there|aldaar)\.?(?=\s|$)/gi, '$1')
+    .replace(/(^|\.\s+)(?:See|Zie)\s+(?:further\s+|also\s+)?[A-Z][^.]*\.(?=\s+\S)/g, '$1')
+    .replace(/\s+(?:See|Zie)\s+(?:further\s+|also\s+)?[^.]+\.?$/i, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
   return { text: stripped || text };
 }
 
@@ -174,7 +179,7 @@ export function indexOrigins(origins: readonly NameOrigin[]): Map<string, NameOr
 /** Dutch that really does mean what a "filled in" mistranslation says. */
 const FILLED_IN_GUARDS: Record<string, RegExp> = {
   straightened: /recht/i, canalized: /kanalis/i, flooding: /overstro|inundat|onder water/i,
-  flattened: /geslecht|afgegraven|gesloopt/i, flattening: /geslecht|afgegraven|gesloopt/i, dammed: /afgedamd|\bdam\b/i,
+  flattened: /geslecht|afgegraven|gesloopt/i, flattening: /geslecht|afgegraven|gesloopt/i, dammed: /afgedamd|afdamm/i,
   demoted: /gedegradeerd/i, demotion: /degrad/i,
 };
 
@@ -207,6 +212,15 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/stadhouderschap/i, /\bgovernorship\b/g, 'stadtholdership'],
   [/volkstuinder/i, /\bVegetable Growers\b/g, 'Allotment Gardeners'],
   [/steigers/i, /\bscaffolding\b/g, 'jetties'],
+  // Herengracht: the Heren Regeerders were the city's ruling regents, and
+  // the aside contrasts being governed with being ruled.
+  [/slaperdijk/i, /\bsleeping wall\b/g, 'sleeper dike (a reserve dike behind the front line)'],
+  [/lijnbaan/i, /\bLinebaan/g, 'Lijnbaan'],
+  [/voorburgwal/i, /\bForeburgwal\b/g, 'Voorburgwal'],
+  [/waalse kerk/i, /\bOld Wall Church\b/g, 'Oude Waalse Kerk (the old Walloon Church)'],
+  [/deel uitmaakte van deze burgwal/i, /\bpart of this city wall\b/g, 'part of this canal'],
+  [/heren regeerders/i, /\bLords Regulators\b/g, 'ruling lords (Heren Regeerders)'],
+  [/niet bestuurd, maar geregeerd/i, /\(The city was not previously governed, but ruled\)/, '(in those days the city was not governed but ruled)'],
   // Outright mistranslations that taught something false: a plum is not a
   // pear, sparrows are not finches' parents, and a pheasant is no chicken.
   [/pruimenboom/i, /\bpear tree\b/g, 'plum tree'],

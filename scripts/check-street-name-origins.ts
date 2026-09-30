@@ -62,6 +62,9 @@ assert.equal(repairOriginTranslation('Schout-bij-nacht in Nederlands-Indië.', '
   'a capitalised rendering is left for review rather than guessed');
 assert.equal(repairOriginTranslation('Tijdens de oorlog schout-bij-nacht in Nederlands-Indië.', 'During the war, he was night commander in the Dutch East Indies.'),
   'During the war, he was rear admiral in the Dutch East Indies.');
+assert.equal(repairOriginTranslation('Naar de Heren Regeerders van de stad (De stad werd vroeger niet bestuurd, maar geregeerd).',
+  'To the Lords Regulators of the city (The city was not previously governed, but ruled).'),
+  'To the ruling lords (Heren Regeerders) of the city (in those days the city was not governed but ruled).');
 // Cross-references a card cannot follow, and register index noise (Goudbalpad, Blancefloorstraat, Rozenstraat).
 assert.deepEqual(withoutCrossReference('A pear variety. The street is on the former allotments De Bongerd. See Boomgaardlaan.'),
   { text: 'A pear variety. The street is on the former allotments De Bongerd.' });
@@ -71,6 +74,12 @@ assert.deepEqual(withoutCrossReference('Village west of Utrecht. Meerpad, Nieuwe
 assert.deepEqual(withoutCrossReference('See Rozengracht.'), { text: '', see: 'Rozengracht' });
 assert.deepEqual(withoutCrossReference('The canal behind the Voorburgwal. See further Oudezijds Voorburgwal.'),
   { text: 'The canal behind the Voorburgwal.' });
+assert.deepEqual(withoutCrossReference('The canal behind the Voorburgwal on the old side. See further Oudezijds Voorburgwal. The square was named Walenpleintje in 1978. See there.'),
+  { text: 'The canal behind the Voorburgwal on the old side. The square was named Walenpleintje in 1978.' }, 'a reference mid-text goes too');
+assert.equal(repairOriginTranslation('Deze Amstel, nu voor 2/3 gedempt, bij de Dam.', 'This Amstel, now partially dammed for 2/3, near the Dam.'),
+  'This Amstel, now partially filled in for 2/3, near the Dam.', 'the Dam square is not afdammen');
+assert.equal(repairOriginTranslation('Nog steeds waterkering, zij het als slaperdijk.', 'Still a water barrier, albeit as a sleeping wall.'),
+  'Still a water barrier, albeit as a sleeper dike (a reserve dike behind the front line).');
 // The register's Oudezijds Voorburgwal street record is the Nieuwezijds text; it points at itself.
 assert.ok(refersToItself({ name: 'Oudezijds Voorburgwal', nl: 'Voor het ontstaan van de naam zie Oudezijds Voorburgwal. De Nieuwezijds Voorburgwal is gedempt.' }));
 assert.ok(!refersToItself({ name: 'Oudezijds Achterburgwal', nl: 'De gracht achter de voorburgwal. Zie verder Oudezijds Voorburgwal.' }), 'a cross-reference to another name is fine');
