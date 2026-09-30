@@ -12,8 +12,10 @@
  *
  * Usage: npm run publish:street-name-origins [-- --dry-run]
  */
+import { createHash } from 'node:crypto';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { trimToSentence } from './lib/translation.ts';
 import { indexOrigins, nameGenericOrigin, originFor, repairOriginTranslation, WITHHELD_ORIGINS, withoutCrossReference, type NameOrigin } from './lib/streetNameOrigins.ts';
 
 const directory = path.resolve('public/data/extracts/amsterdam');
@@ -24,6 +26,25 @@ const staged = JSON.parse(await readFile(path.join(directory, 'staging/street-na
 const index = indexOrigins(staged.origins);
 // Reviewed meanings of name stems, for origins that only name the class.
 const { stems } = JSON.parse(await readFile(path.resolve('scripts/data/street-name-stems.json'), 'utf8')) as { stems: Record<string, string> };
+
+// The language-model translation (`translate-street-name-origins-llm.ts`),
+// keyed like the `trn` cache by name + Dutch, replaces the `trn` English
+// wherever it has an entry. `--trn` publishes the old English instead.
+const llmHash = (origin: NameOrigin) => createHash('sha1').update(`${origin.name}\u0000${origin.nl}`).digest('hex').slice(0, 12);
+let llm = new Map<string, string>();
+if (!process.argv.includes('--trn')) {
+  try {
+    const entries = JSON.parse(await readFile(path.resolve('scripts/street-name-origin-translations-llm.json'), 'utf8')) as Array<{ hash: string; en: string }>;
+    llm = new Map(entries.map(entry => [entry.hash, entry.en]));
+  } catch { /* no LLM pass yet */ }
+}
+let fromLlm = 0;
+const englishOf = (origin: NameOrigin): string => {
+  const better = origin.nl ? llm.get(llmHash(origin)) : undefined;
+  // Cut like the trn pass (MAX_ORIGIN_CHARS there): whole sentences, 700 characters.
+  if (better) { fromLlm++; return trimToSentence(better, 700); }
+  return origin.en ?? '';
+};
 
 interface PublishedOrigin { name: string; kind: 'street' | 'water' | 'bridge'; en: string; bagId: string }
 const published = new Map<string, PublishedOrigin>();
@@ -36,7 +57,7 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
     const origin = originFor(index, name, kind);
     if (!origin || WITHHELD_ORIGINS[name]) continue;
     explained++;
-    if (!origin.en) continue;
+    if (!englishOf(origin)) continue;
     english++;
     const card = englishFor(name, origin, kind);
     if (!card) continue;
@@ -48,11 +69,11 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
 /** The card text for an origin; "See Rozengracht." borrows the Rozengracht's
  *  text, once, and a reference that leads nowhere publishes nothing. */
 function englishFor(name: string, origin: NameOrigin, kind: 'street' | 'water' | 'bridge', depth = 0): string {
-  const repaired = repairOriginTranslation(origin.nl, origin.en ?? '');
+  const repaired = repairOriginTranslation(origin.nl, englishOf(origin));
   const { text, see } = withoutCrossReference(repaired);
   if (see) {
     const target = depth === 0 ? originFor(index, see, kind) ?? originFor(index, see, kind === 'street' ? 'water' : 'street') : null;
-    return target?.en && target.name !== name ? englishFor(target.name, target, kind, depth + 1) : '';
+    return target && englishOf(target) && target.name !== name ? englishFor(target.name, target, kind, depth + 1) : '';
   }
   return nameGenericOrigin(name, text, stems);
 }
@@ -63,4 +84,5 @@ if (!process.argv.includes('--dry-run')) {
   await writeFile(path.join(directory, 'street-name-origins.json'), `${JSON.stringify(output)}\n`);
 }
 process.stdout.write(`${process.argv.includes('--dry-run') ? 'DRY RUN — would publish' : 'published'} ${origins.length} origins`
-  + ` → public/data/extracts/amsterdam/street-name-origins.json (${(JSON.stringify(output).length / 1024).toFixed(0)} KB)\n${report.join('\n')}\n`);
+  + ` → public/data/extracts/amsterdam/street-name-origins.json (${(JSON.stringify(output).length / 1024).toFixed(0)} KB)\n${report.join('\n')}\n`
+  + `  English from the language-model pass for ${fromLlm} lookups; the rest from trn\n`);

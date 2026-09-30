@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name origins: retranslating off `trn`
+
+Random samples kept finding mistranslations in the on-device `trn` text (14
+of 30 in one sample), so glossary patches were never going to catch up.
+Street-name origins are now retranslated whole by a language model:
+- `scripts/street-name-origin-translations-llm.json` stores one translation
+  per distinct Dutch text (`nlHash`), fanned out to every name that shares it.
+- Publishing prefers that text, trimmed to 700 characters, and falls back to
+  `trn` (`--trn` forces the old text).
+- `ORIGIN_GLOSSARY` and the generic-name rule still run afterwards. A diff of
+  947 published names found nothing damaged: the generic rule still turns
+  "The fruit." into "Named after the apricot, a fruit".
+- The first 480 texts came from Opus 5.5 over OpenRouter
+  (`translate-street-name-origins-llm.ts`). The glossary sits in its prompt
+  under "only when that Dutch word is in the text": without that rule, a
+  Sonnet pilot added a drained lake to Gooilust.
+- The rest are translated inside Claude Code sessions, at no API cost, through
+  `origin-translation-batch.ts` (`next` / `ingest`). `ingest` refuses a
+  translation that loses a three- or four-digit number from the Dutch.
+- One draft batch written after a context break had not been checked against
+  the Dutch, and it "corrected" the source (Herschel's telescopes are
+  seventeenth-century in the register). Each batch must be translated against
+  its printed Dutch.
+
 ## 2026-09-30 — Street-name translations: a random sample of 30, 14 wrong
 
 A fresh random sample of 30 origins had 14 slips. Fixing them touched
