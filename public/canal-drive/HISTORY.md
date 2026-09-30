@@ -49,6 +49,15 @@ A fresh random sample of 30 origins had 14 slips. Fixing them touched
   movable one; 15 cards called it "permanent". The Zilveren Penning is a
   silver medal, not a "Silver Pen". The koek-en-zopie stalls on the ice
   (hot drinks and cake) had become "pie and soup stalls".
+- **Water origins, 16 read.**
+  - The IJ was an arm of the Zuiderzee and was closed off from it in 1872.
+    The text said "the North Sea" both times, which reverses the
+    geography.
+  - Le Maire found a strait (zeestraat), not a "sea route".
+  - Aangeplempt means built up with fill, not "drained".
+  - "Op last van prins Maurits" means on Maurice's orders, not "at his
+    request".
+  - Amsterdammers say "het Singel", which is the point of that sentence.
 - **Withheld: Piet Kranenbergpad.** The register gives it Piet Keizer's
   Ajax biography word for word, so the card would teach one footballer's
   record as another's. `WITHHELD_ORIGINS` names it with the reason, and

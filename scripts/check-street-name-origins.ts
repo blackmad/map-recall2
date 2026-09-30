@@ -280,4 +280,7 @@ assert.equal(repairOriginTranslation("Genoemd naar 't Giethuis, de stadsgeschut-
 }
 assert.equal(repairOriginTranslation('De naam van deze vaste brug verwijst naar de toren.', 'The name of this permanent bridge refers to the tower.'),
   'The name of this fixed bridge refers to the tower.', 'a vaste brug is fixed, not permanent');
+assert.equal(repairOriginTranslation('Het IJ was vroeger een zeearm van de Zuiderzee. In 1872 door de IJdijk en de Oranjesluizen afgesloten van de Zuiderzee.',
+  'The IJ was formerly a branch of the North Sea. In 1872 closed off from the North Sea by the IJdijk and the Orange Locks.'),
+  'The IJ was formerly an arm of the Zuiderzee. In 1872 closed off from the Zuiderzee by the IJdijk and the Oranjesluizen.', 'the IJ was an arm of the Zuiderzee');
 process.stdout.write('Street-name origin checks passed\n');
