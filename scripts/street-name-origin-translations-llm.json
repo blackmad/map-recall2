@@ -19866,10 +19866,136 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Luzacstraat",
+  "hash": "451d04c3199f",
+  "nlHash": "69f120cd89d0",
+  "en": "Lodewijk Caspar Luzac (1786-1861), statesman and Minister of the Interior, who helped prepare the constitutional revision of 1848.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Lyceumbrug",
+  "hash": "5ca36573f0bb",
+  "nlHash": "ec44c256a5f2",
+  "en": "The name of this bridge refers to the nearby Amsterdams Lyceum (a secondary school).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "M. Berdenis van Berlekomstraat",
+  "hash": "6fe0a07daa49",
+  "nlHash": "2e95cd1853c6",
+  "en": "Mathilde Wibaut-Berdenis van Berlekom (1862-1952), socialist and feminist, who in 1895 founded a Middelburg branch of the Association for Women's Suffrage and campaigned for universal women's suffrage. She was married to the alderman F.M. Wibaut, with whom she wrote the book 'Wordend huwelijk' (marriage in the making).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "M. Gandhilaan",
+  "hash": "08ed828990cc",
+  "nlHash": "932c6cbe8141",
+  "en": "Mohandas (Mahatma) Karamchand Gandhi (1869-1948), leader of the non-violent resistance in India that led to the country's independence in 1947. Besides opposing British rule, he called for a boycott of imported goods. He was often imprisoned for his actions, and was murdered shortly after independence.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "M. Hanenbergstraat",
+  "hash": "6740e06f1c02",
+  "nlHash": "3e606e87dc43",
+  "en": "Matthijs Abel Joannes Hanenberg (1781-1838), from 1815 first schout (sheriff) and then, until 1837, burgomaster of the municipality of Sloten, Sloterdijk, Osdorp and De Vrije Geer.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "M. Justbrug",
+  "hash": "6772c162a2a7",
+  "nlHash": "0952c7905626",
+  "en": "Named after Chief Rabbi Meir Just (1908-2010), who served in Buitenveldert. He lived in Soetendael and so often walked over this bridge to the Jewish Cultural Centre on the Van der Boechorststraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "M.C. Addicksstraat",
+  "hash": "a8119e56cdfe",
+  "nlHash": "258cb15bce94",
+  "en": "Martinus Casimir Addicks (1887-1941), born in Amersfoort, one of the first victims among the resistance during the German occupation, executed by firing squad in Amsterdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "M.J. Granpré Molièreplein",
+  "hash": "72bb63065327",
+  "nlHash": "849eeb4ff4bc",
+  "en": "Marinus Jan Granpré Molière (1883-1972), architect, founder of the 'Delft School', which sought to join traditional and modern architecture. He drew up expansion plans for many Dutch towns and built, among other things, the town halls of Naaldwijk, Zwijndrecht and Uithoorn. He also designed the church on this square.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "M.J.E. Lippitsstraat",
+  "hash": "b61dd46f6b7c",
+  "nlHash": "57100c94ec3c",
+  "en": "Meinardus Johannes Elias Lippits (1869-1941), architect, who designed housing blocks in Amsterdam-Noord on the garden-city model. He was also involved in building the Hotel Schiller on the Rembrandtplein.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "M.S. Vaz Diasbrug",
+  "hash": "e360da1021b0",
+  "nlHash": "07c89adfefde",
+  "en": "This bascule bridge is named after Mozes Salomon Vaz Dias (1882-1963), founder of the press agency M.S. Vaz Dias, which in 1934 merged into the Algemeen Nederlands Persbureau (ANP), which he co-founded.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ma Braunpad",
+  "hash": "6356a7aa0c25",
+  "nlHash": "6803671866a0",
+  "en": "Mrs M.J. Braun-Voorwinde (1883-1956), a Rotterdam swimming instructor, who lives on as Ma Braun, one of the pioneers of swimming in the Netherlands. She trained the first Dutch women to compete successfully at the Olympic Games, from 1924.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maagdenpalmstraat",
+  "hash": "5fdd1747c0be",
+  "nlHash": "3c9a705392de",
+  "en": "A plant family (periwinkle) of mainly warm, but sometimes temperate, regions. The Madagascar periwinkle contains substances used in cancer drugs. An infusion of the lesser periwinkle, native to the Netherlands, can be used as a gargle and against diarrhoea.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maanhof",
+  "hash": "c2e6d7544a72",
+  "nlHash": "cf7faff0d473",
+  "en": "The celestial body (the moon) that moves around the earth in an elliptical orbit.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maanstraat",
+  "hash": "a32f76c65d84",
+  "nlHash": "cf7faff0d473",
+  "en": "The celestial body (the moon) that moves around the earth in an elliptical orbit.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Maarkedalpad",
   "hash": "1971b8617f12",
   "nlHash": "63f43eae7a5f",
   "en": "A Belgian town in the province of Brabant.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maarsenhof",
+  "hash": "9f8c7131d510",
+  "nlHash": "86f525f7a74f",
+  "en": "A village on the Vecht (Utrecht).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maarten Harpertszoon Trompstraat",
+  "hash": "5d733a41bc8f",
+  "nlHash": "1fac1c394d84",
+  "en": "Dutch admiral (1597-1653), who defeated the Spanish fleet at the Downs in 1639. He was killed fighting the English in the naval battle of Ter Heijde.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maarten Jansz. Kosterstraat",
+  "hash": "a92c8c259b18",
+  "nlHash": "e1168efcd1cc",
+  "en": "He lived from about 1520 to 1592. From 1567 to 1576 he was personal physician to Frederik II, King of Denmark and Norway. In 1578 he was one of the leading figures of the Alteration (the quiet revolution in Amsterdam in which the pro-Spanish burgomasters were put outside the city walls). From that year Koster was several times burgomaster of Amsterdam, and throughout he kept up his medical practice. He gave the first public lessons in anatomy. Before 1872 the street was called the Amstelgrachtje, filled in in 1866; earlier still it was part of the Lijnbaansgracht.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maasdrielhof",
+  "hash": "37bfd8569874",
+  "nlHash": "d5811e63679e",
+  "en": "A village on the Maas in Gelderland.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -19887,10 +20013,192 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Maaslandstraat",
+  "hash": "818da72ea1b6",
+  "nlHash": "e17e7d5b34dc",
+  "en": "A Zuid-Holland village in the municipality of Midden-Delfland.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maassluisstraat",
+  "hash": "6232c8577835",
+  "nlHash": "fd56717aa6e0",
+  "en": "A town on the Nieuwe Waterweg (Zuid-Holland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maasstraat",
+  "hash": "8e922dfe5d37",
+  "nlHash": "72caf459b923",
+  "en": "The river (Meuse) that rises in France and flows through the Netherlands from Maastricht.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Machineslootbrug",
+  "hash": "32354b44b626",
+  "nlHash": "a28068d4e8cf",
+  "en": "This bridge keeps alive the memory of one of the former names of today's Admiralengracht.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Machinetocht",
+  "hash": "dcc8446b62bd",
+  "nlHash": "977f6f0941cb",
+  "en": "A canal in Amsterdam Nieuw-West.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Madagascarhaven",
+  "hash": "07d77f818202",
+  "nlHash": "a6311b9dbb5f",
+  "en": "An African island, the fourth largest island in the world, south-east of Africa.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Madelievenstraat",
+  "hash": "f676a5077f0a",
+  "nlHash": "f1aea2b44fc1",
+  "en": "The little wild flower (the daisy), of the daisy family.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Madibabrug",
+  "hash": "23aa2d67b28d",
+  "nlHash": "264ec2afd599",
+  "en": "Nickname of Nelson Mandela.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Madurastraat",
+  "hash": "8b947f8371b3",
+  "nlHash": "28324f48d029",
+  "en": "An island north of Java (Indonesia).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Magalhaensplein",
+  "hash": "68b78fd71592",
+  "nlHash": "411603299602",
+  "en": "Fernão de Magalhães or Magellan (1480-1521), Portuguese navigator, who in 1520 discovered the strait between South America and Tierra del Fuego named after him, and from there was the first to cross the Pacific Ocean, to the Philippines.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Magalhaensstraat",
+  "hash": "8688f63eeb33",
+  "nlHash": "411603299602",
+  "en": "Fernão de Magalhães or Magellan (1480-1521), Portuguese navigator, who in 1520 discovered the strait between South America and Tierra del Fuego named after him, and from there was the first to cross the Pacific Ocean, to the Philippines.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Magere Brug",
+  "hash": "8a9bb1bff2af",
+  "nlHash": "cb6d4269d47b",
+  "en": "Around 1670 a drawbridge was laid over the Amstel so narrow that it was only fit for pedestrians. Although officially called the Kerkstraatbrug (after the Lange Kerkstraat), people stubbornly called it the 'Magere brug' (skinny bridge), and the city council then adopted the name. The story of the Mager sisters, who lived nearby, belongs to the realm of fables. Old pictures show that the old bridge was a simple wooden structure: the deck of the fixed part lay on simple wooden trestles, while the movable middle was a drawbridge with a single leaf. In 1772 it was given a double leaf, and in 1871 the bridge was demolished entirely and replaced by one with nine spans.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Magersfonteinstraat",
+  "hash": "202d6b045263",
+  "nlHash": "458ca3e677b3",
+  "en": "A place in South Africa (Orange Free State), known for the Boer victory over the British in the Boer War (1899-1902).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Magneetstraat",
+  "hash": "3f36e48548cd",
+  "nlHash": "58e9e4c0b10f",
+  "en": "The electromagnet is meant: an iron circuit that is not entirely closed, with windings through which direct current is passed.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Magnoliastraat",
+  "hash": "6f19e4c918c5",
+  "nlHash": "595bcd9dff04",
+  "en": "An ornamental tree that flowers before its leaves appear.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mainhaven",
+  "hash": "dbcdce3401b9",
+  "nlHash": "0eed7dbe690f",
+  "en": "A tributary of the Rhine, on which the city of Mainz lies (the Main).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mainhavenweg",
+  "hash": "d807146e6eb4",
+  "nlHash": "0eed7dbe690f",
+  "en": "A tributary of the Rhine, on which the city of Mainz lies (the Main).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Majanggracht",
   "hash": "b96223c84573",
   "nlHash": "4218151b7b20",
   "en": "A river on the Indonesian island of Java.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Majoie Hajarystraat",
+  "hash": "d6c03c236e66",
+  "nlHash": "527b780a7f12",
+  "en": "Majoie Hajary (Paramaribo, 16 August 1921 - Neuilly-sur-Seine, 25 August 2017) was a composer from a multicultural family, who won fame with music that conveyed, among other things, the value of a diverse society.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Majoor Bosshardtbrug",
+  "hash": "4ee2b1c36f1e",
+  "nlHash": "fed49a570aea",
+  "en": "Alida Margaretha Bosshardt (1913-2007) became known for her work for the Salvation Army, most of which took place right around this bridge. Here on the Wallen she also founded the Goodwill Centre. In 2009 she was voted 'Greatest Amsterdammer of all time'. The 'Major' (who was actually a lieutenant-colonel) was a true bridge-builder between different groups, which is why a bridge was chosen for her rather than a street.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Majoor Fransweg",
+  "hash": "b608bf65243c",
+  "nlHash": "9118defa1e7e",
+  "en": "The name of Bosboom-Toussaint's epistolary novel of 1874.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Majubastraat",
+  "hash": "46b051562246",
+  "nlHash": "ca192967967a",
+  "en": "Amajuba or Majuba, Zulu for 'dovecote', was a mountain top in Natal, on the border with the Transvaal, known from the First Boer War (1880-1881).",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Makassarplein",
+  "hash": "2673cf1b4557",
+  "nlHash": "e85536d4902e",
+  "en": "An Indonesian port on the island of Sulawesi (Celebes), called Ujung Pandang from 1971 to 1999.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Makassarstraat",
+  "hash": "dd27f7a333b4",
+  "nlHash": "e85536d4902e",
+  "en": "An Indonesian port on the island of Sulawesi (Celebes), now called Ujung Pandang.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Makersstraat",
+  "hash": "f981544e9dc9",
+  "nlHash": "3a58a6e17bd4",
+  "en": "Refers to an area of Strandeiland where many creative businesses in manufacturing (makers) can set up.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maldenhof",
+  "hash": "4cee049ae3fc",
+  "nlHash": "068619cac0cf",
+  "en": "The village on the Maas-Waal canal (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maliebaan",
+  "hash": "48150003e6c1",
+  "nlHash": "f4d37d9babee",
+  "en": "The name recalls the 'Maliebaen' that once lay near the Schagerlaan. A maliebaan is a ground for a game like kolf (pall-mall), played with long iron mallets and wooden balls.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -19901,11 +20209,354 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Malvastraat",
+  "hash": "507f97a9926a",
+  "nlHash": "9c81bf6bc304",
+  "en": "A plant genus, better known as mallow.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Mandarijnenstraat",
   "hash": "5f85b95135ea",
   "nlHash": "f655cf4582b7",
   "en": "The fruit.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Mandenmakerspad",
+  "hash": "1044547c96e7",
+  "nlHash": "034bd4b23bf5",
+  "en": "Basket-making was originally a typical travelling trade. The name is linked to the world of travelling people and refers to the caravan site here.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Manegestraat",
+  "hash": "516aa58e9edf",
+  "nlHash": "5a0c3cd86eb7",
+  "en": "After the French riding school (manège) that stood here from 1761 to 1881.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Manenburgstraat",
+  "hash": "69dfd7bb7f10",
+  "nlHash": "e2f3f6b071ca",
+  "en": "A former eighteenth-century country estate on the Kruislaan, on the site of today's Nieuwe Ooster cemetery.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Manna de Wijs-Moutonhof",
+  "hash": "7369dd2a713a",
+  "nlHash": "cc6c5cae968b",
+  "en": "Writer of cabaret songs (1873-1947), who also performed in cabaret herself, singing her own songs.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maputoweg",
+  "hash": "9dfed4f7788a",
+  "nlHash": "f86bf84db6b8",
+  "en": "A port and the capital of Mozambique. The street is near the Afrikahaven in the Western Port Area.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marathonweg",
+  "hash": "14aaf38a2a8d",
+  "nlHash": "6b7f208989c5",
+  "en": "Originally a village on the east coast of Attica (Greece), where the Persians were defeated in 490 BC. A messenger, by tradition Pheidippides, ran with the news to Athens (42 km), and the marathon race is named after this event.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Marcantilaan",
+  "hash": "906a56476e4d",
+  "nlHash": "47e2b72e49ac",
+  "en": "Marcanti was the former name of the 'De Hoeksteen' conference centre next to the entrance of the Centrale Markt, opposite this avenue. Marcanti is a contraction of MarktCantine (market canteen), the original function of the 1933 building.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marcellus Emantsstraat",
+  "hash": "ee8dd283f75b",
+  "nlHash": "3175e5c765f7",
+  "en": "Poet, novelist and playwright (1848-1923), a forerunner of the Tachtigers, whose work is deeply sombre in tone.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marchanthof",
+  "hash": "c1228656133d",
+  "nlHash": "2fece79042f3",
+  "en": "Hendrik Pieter (Henri) Marchant (1869-1956), statesman, one of the founders of the Vrijzinnig-Democratische Bond (Liberal Democratic League) and, among other posts, Minister of Education, Arts and Sciences under Prime Minister Colijn. The Nieuwe Spelling (new spelling) of 1933 is named after him.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marco Polostraat",
+  "hash": "176813c20089",
+  "nlHash": "18e2f57c1c40",
+  "en": "Venetian traveller (1254-1323), who spent a quarter of a century among the Chinese and is known for his travel accounts.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marconistraat",
+  "hash": "d41f4870584c",
+  "nlHash": "6058322f8a67",
+  "en": "The Italian engineer Guglielmo Marconi (1874-1937), who invented wireless telegraphy in 1896. In 1909 he received the Nobel Prize in Physics.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Marcusstraat",
+  "hash": "731f1a8556e2",
+  "nlHash": "0f348145307a",
+  "en": "Balthazar Jan Fred. Marcus (1806-1865), burgomaster of the municipality of Nieuwer-Amstel, to which this street belonged until 1896.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marga Klompélaan",
+  "hash": "3437d99f9886",
+  "nlHash": "90a36df7faa4",
+  "en": "Margaretha Albertina Maria Klompé (1912-1986), politician of the KVP. She became the first woman minister in the Netherlands when she was made Minister of Social Work in 1956, and with a break of three years remained so until 1971. That year she was appointed a Minister of State.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Margaret Bourke-Whitebrug",
+  "hash": "e4a43c663733",
+  "nlHash": "75e8394a2cf2",
+  "en": "Margaret Bourke-White (1904-1971) was the first war correspondent accredited to the US Army and a photographer for the US Air Force.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marguerite Yourcenarstraat",
+  "hash": "569b24d1adb5",
+  "nlHash": "bad9d62a9194",
+  "en": "Pseudonym of the French writer Marguerite Cleenewerck de Crayencour (1903-1987). She taught French literature in the United States from 1942 to 1950 and from 1952 to 1953, and finally settled there. Yourcenar wrote in every literary genre and was also an excellent translator.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maria Austriastraat",
+  "hash": "95e3aafac9dd",
+  "nlHash": "831459e4bfaf",
+  "en": "Professional name of the Czech-Jewish photographer Marie Karoline Oestreicher (1915-1975), who settled in Amsterdam before the war and was active in the resistance during it. In 1945 she co-founded the photo agency Particam (Partisan Camera). She is known for her theatre photographs and her portraits of musicians, actors, dancers, directors and writers.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maria Beshof",
+  "hash": "58d3dd2ef616",
+  "nlHash": "04feccde4ac7",
+  "en": "Maria Elisabeth Bes was the first woman student at the Polytechnic School in Delft (today's TU Delft) and the first woman chemical engineer.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maria Montessoristraat",
+  "hash": "29817f8067b8",
+  "nlHash": "afeb172d4b8c",
+  "en": "Italian doctor (1870-1952), who became famous as an educator for her teaching method, based on the child's free individual development.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maria Snelplantsoen",
+  "hash": "167eefd5f41d",
+  "nlHash": "933f80398616",
+  "en": "Maria Dina Snel (1890-1941), resistance fighter, born in Amsterdam, died in Scheveningen prison. She had a part in distributing the clandestine paper 'Vrij Nederland'.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maria Ulfahstraat",
+  "hash": "8c2ae0967a59",
+  "nlHash": "de4b5d163eda",
+  "en": "Maria Ulfah Santoso (Serang 1911 - Jakarta 1988), who after her husband's execution by Dutch troops in February 1949 remarried and was known as Maria Ulfah Soebadio. From an aristocratic family, she was the first Indonesian woman to complete a law degree in the Netherlands (1929-1933). She worked for the emancipation of Indonesian women on many boards, among others as chair of the Indonesian women's federation Kowani. She was the first woman to hold a ministerial post, Social Affairs in the second and third Sjahrir cabinets (1946-1947).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mariadistelkade",
+  "hash": "ebe993bba3df",
+  "nlHash": "4e646a03529d",
+  "en": "The milk thistle (Silybum marianum) is an annual or biennial plant of the daisy family (Asteraceae).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marianellastraat",
+  "hash": "2d7e8e30402e",
+  "nlHash": "5bb292d3fa71",
+  "en": "Marianella García Villas (1949-1983), president of the Human Rights Commission of El Salvador from its founding in 1973. The regime regarded her as a terrorist and she had to leave the country, continuing her work from Mexico. In 1983 she was captured and murdered by the army.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marianne Hilaridesplantsoen",
+  "hash": "8f77e5f28559",
+  "nlHash": "3f4c52ac5dfb",
+  "en": "Marianne Hilarides was a Dutch ballet dancer. A pupil of Sonia Gaskell, she made her debut in 1950 with the Ballet Recital, where she was given solo roles, among them the pas de deux of Le Cygne Noir (the Black Swan).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marianne Philipsstraat",
+  "hash": "7d8f395935dc",
+  "nlHash": "178afaaec0fd",
+  "en": "Marianne Goudeket née Philips (1866-1950), novelist, whose books include 'Bruiloft in Europa' (wedding in Europe) and 'De biecht' (the confession).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marie Altelaarplein",
+  "hash": "ad08cecb37b1",
+  "nlHash": "0bfe0a4d3d94",
+  "en": "Neighbourhood activist, feminist and communist (1917-2005), nicknamed Tante (Aunt) Marie, the driving force behind a fifteen-year campaign against high rents on the Eastern Islands in the 1970s and 1980s.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marie Baronlaan",
+  "hash": "0d15f35e8c67",
+  "nlHash": "4054d012c875",
+  "en": "Marie Baron competed as a swimmer at the age of 16 in the modern Olympic Games of 1924 in Paris.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marie Heinekenplein",
+  "hash": "1a3d9703b189",
+  "nlHash": "d5eeb848c5e5",
+  "en": "Painter (1844-1930), mainly of flowers and still lifes, who held several exhibitions in Amsterdam between 1883 and 1899. She was a member of the Amsterdam artists' society 'Arti et Amicitiae'.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marie van Westerhovenstraat",
+  "hash": "342960f3c211",
+  "nlHash": "0bf171291b7b",
+  "en": "Actress (1857-1946), married to Louis Chrispijn, who was on the stage for more than sixty years and also performed in operetta for many years.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marieken van Nimwegenstraat",
+  "hash": "45f8315f0a8e",
+  "nlHash": "c78b833d5ad9",
+  "en": "The name of a fifteenth-century miracle play (Mariken van Nieumeghen).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mariëndaal",
+  "hash": "857a0e6a65a3",
+  "nlHash": "2014d610ea78",
+  "en": "An estate with a nineteenth-century country house and a nature area, between Arnhem and Oosterbeek.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marifoonweg",
+  "hash": "ee88fed86696",
+  "nlHash": "6ff7483bb1fe",
+  "en": "A mobile radio telephone for use on the water (marine VHF).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mariniersbrug",
+  "hash": "4272464e15eb",
+  "nlHash": "de06d7b70a9c",
+  "en": "After the nearby Marines barracks.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marinierskade",
+  "hash": "649d7f138c13",
+  "nlHash": "de06d7b70a9c",
+  "en": "After the nearby Marines barracks.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mariotteplein",
+  "hash": "ca1d1f5fb2f8",
+  "nlHash": "436ac5e1e57c",
+  "en": "Edme Mariotte (1620-1684), French physicist, who discovered the coloured rings around the sun and moon and the blind spot in the eye.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Mariottestraat",
+  "hash": "6d99f0451987",
+  "nlHash": "436ac5e1e57c",
+  "en": "Edme Mariotte (1620-1684), French physicist, who discovered the coloured rings around the sun and moon and the blind spot in the eye. Marisplein, Jacob Oud-Zuid council decision 26 January 1922 15: m 9",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maritzstraat",
+  "hash": "ce903ac0c887",
+  "nlHash": "3a7debdcc954",
+  "en": "Gerrit Maritz (1797-1839), one of the leaders of the Great Trek of the Boers in South Africa in 1835 and the years after. He defeated the Matabele in 1837. The boys' book Pieter Maritz and the place name Pietermaritzburg do not refer to a historical figure of that name: it is a contraction of the two Voortrekkers Gerrit Maritz and Piet Retief.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Marius Bauerplantsoen",
+  "hash": "6d238d863694",
+  "nlHash": "0a569b5c2ec5",
+  "en": "Marius A.J. Bauer (1867-1932), painter and etcher, whose many journeys to the East give his etchings their striking oriental fantasy.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marius Bauerstraat",
+  "hash": "f86ac1f76eda",
+  "nlHash": "0a569b5c2ec5",
+  "en": "Marius A.J. Bauer (1867-1932), painter and etcher, whose many journeys to the East give his etchings their striking oriental fantasy.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marius Meijboomstraat",
+  "hash": "577a8330f7d5",
+  "nlHash": "eca0e66ad8ba",
+  "en": "Photographer (1911-1998), who had a famous photo studio in Amsterdam and made mainly portraits and fashion and advertising photographs. He was known for his photographs of the royal family. During the war he belonged to the group of photographers later known as 'De Ondergedoken Camera' (the camera in hiding).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marius van Bouwdijk Bastiaansestraat",
+  "hash": "8fd8ae47d0c5",
+  "nlHash": "6d7675bbfc6d",
+  "en": "Marius A. van Bouwdijk Bastiaanse (1886-1964), gynaecologist at the Wilhelmina Gasthuis and professor at the University of Amsterdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marjoleinstraat",
+  "hash": "eaeed7d3ac82",
+  "nlHash": "395c821e3e0f",
+  "en": "The shrubby plant used as a herb (marjoram).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Markelerbergpad",
+  "hash": "3e65537a04d6",
+  "nlHash": "ed1d85cc0894",
+  "en": "Refers to the Markelerberg, a hill of 66 metres in the municipality of Hof van Twente.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Markengouw",
+  "hash": "46076c637421",
+  "nlHash": "b96291d8892c",
+  "en": "The village and former island of that name, Marken (Noord-Holland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Markerveld",
+  "hash": "a4ca00d1f6b6",
+  "nlHash": "78c91bbbb02c",
+  "en": "A polder near Uitgeest (Noord-Holland), created in 1637.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Markiespad",
+  "hash": "124684403a8d",
+  "nlHash": "9723f64f09bc",
+  "en": "The cloth awning over the door of a caravan. The street name refers to the caravan site here.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Markonstraat",
+  "hash": "51999d18ca04",
+  "nlHash": "aabf418ab402",
+  "en": "This was probably a former country estate on the Amstel.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marksingel",
+  "hash": "4f6e32cdd76e",
+  "nlHash": "bba76ec5ead5",
+  "en": "The currency of Germany and Finland before the euro (the mark).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marmolada",
+  "hash": "bccd9fe0a85a",
+  "nlHash": "f45823ca133c",
+  "en": "A mountain peak in Italy, 3354 metres high.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Marnixkade",
@@ -19929,11 +20580,256 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Maroastraat",
+  "hash": "64d0d3113773",
+  "nlHash": "9db312f43c80",
+  "en": "A volcano in New Zealand.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marowijnestraat",
+  "hash": "f4beed2ea6f8",
+  "nlHash": "cb0b9e519e28",
+  "en": "A river in Suriname, on the border with French Guiana.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marquette",
+  "hash": "e3758d652ffc",
+  "nlHash": "02e49c941c3d",
+  "en": "A castle in Heemskerk, so called since 1612 after Daniel de Hertaing, Lord of Marquette. The castle dates from the fourteenth century and was then a stronghold of the Cods. Its present form dates largely from 1741.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marskramerstraat",
+  "hash": "69558a856f42",
+  "nlHash": "8d47bdc9970e",
+  "en": "Originally a typical travelling trade: a street trader who carries his wares in a basket on his back (a pedlar). The name is linked to the world of travelling people and refers to the caravan site here.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marsmanstraat",
+  "hash": "166c22784064",
+  "nlHash": "ef64e65907bf",
+  "en": "Hendrik Marsman (1899-1940), poet. In 1940 he fled to England, but the ship struck a mine and Marsman was among the victims.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marssloot",
+  "hash": "c2f75903df17",
+  "nlHash": "62326ecdd52a",
+  "en": "A ditch in Amsterdam-Noord, near the Kadoelen.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marsstraat",
+  "hash": "abcdca390538",
+  "nlHash": "5cf1593c2d79",
+  "en": "The planet (Mars).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martelaarsgracht",
+  "hash": "bc310561b4b7",
+  "nlHash": "73b6811e8e93",
+  "en": "Probably named after a house with the sign of 'the martyr'. Before it was filled in, the water of the Nieuwezijds Voorburgwal and Achterburgwal drained into the IJ here. There was then a quay only on the even-numbered side. The bridge in the Nieuwendijk over this canal was called the Martelaarsbrug.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marten Corverhof",
+  "hash": "2c32a69f8551",
+  "nlHash": "7877d016caa3",
+  "en": "Actor and theatre reformer (1727-1794).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Marten Toonderbrug",
+  "hash": "3a4b11e4c075",
+  "nlHash": "738036c478ed",
+  "en": "Marten Toonder (Rotterdam, 2 May 1912 - Laren, 27 July 2005) was a Dutch comics author. Besides his great role in literature, Toonder also put his talents to use during the Second World War.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martien Coppenshof",
+  "hash": "85d223e77aa3",
+  "nlHash": "5b76c755f9e4",
+  "en": "Martinus Franciscus Josephus Coppens (1908-1986), photographer, known above all for his photographs of Brabant farming families. Besides people he also photographed churches, cathedrals and landscapes.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martin Cortesstraat",
+  "hash": "444b7c5ec818",
+  "nlHash": "e1cfdedea3b2",
+  "en": "Spanish teacher of navigation (1532-1589), who in 1551 wrote the navigation handbook 'Breve Compendio de la Sphera y de la Arte de Navegar', published in English in 1561 as 'The Arte of Navigation' and popular with English seamen.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martin Ennalsplein",
+  "hash": "f4d07a93b71c",
+  "nlHash": "e03694c41ab2",
+  "en": "Human rights defender (1927-1991), secretary-general of Amnesty International in the 1970s and involved in founding many other human rights organisations. Under his leadership Amnesty's work was extended to campaigns against torture, the death penalty, extrajudicial executions and disappearances.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martin Ennalsstraat",
+  "hash": "421d202c1903",
+  "nlHash": "e03694c41ab2",
+  "en": "Human rights defender (1927-1991), secretary-general of Amnesty International in the 1970s and involved in founding many other human rights organisations. Under his leadership Amnesty's work was extended to campaigns against torture, the death penalty, extrajudicial executions and disappearances.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martin Luther Kingpark",
+  "hash": "a82e43458b24",
+  "nlHash": "242a7a0ec635",
+  "en": "American preacher (1929-1968), known internationally for his struggle against poverty and discrimination, murdered in Memphis (USA) on 4 April 1968. Before 1968 the park was called Amstelpark (council decision of 19 October 1949), a name later given to another park. The name was changed at the request of the Pacifist Socialist Party (PSP).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martin Niemöllerstraat",
+  "hash": "0dd5b19a0617",
+  "nlHash": "200f21bd4496",
+  "en": "German pastor (1892-1984) and peace activist. The 'Bekennende Kirche' (Confessing Church) he founded openly opposed Hitler. He was arrested in 1937 and held in concentration camps as Hitler's 'personal prisoner' until 1945. After the war he argued for international reconciliation and against rearmament.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martin Vlaarkade",
+  "hash": "fe2ad8738e84",
+  "nlHash": "59f936f3100d",
+  "en": "Martinus Vlaar (1904-1975), one of the organisers of the February Strike of 1941, was arrested soon after and freed by American troops in 1945. Afterwards he was very active in the Spaarndammerbuurt.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martini van Geffenstraat",
+  "hash": "ce2bad818c6c",
+  "nlHash": "1eb4a5bf6fd5",
+  "en": "Jhr. Frans Willem H.P.J. Martini van Geffen (1832-1883), burgomaster of the municipality of Sloten from 1881 to 1883.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martinus Jan Langeveldstraat",
+  "hash": "89001a33a4e7",
+  "nlHash": "b358aadf97ef",
+  "en": "Educationalist (1905-1989), a pupil of Philip Kohnstamm among others. Langeveld is regarded as one of the most important educationalists of the second half of the twentieth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Martinus Nijhoffstraat",
+  "hash": "918a26d79bf4",
+  "nlHash": "324e00d4400b",
+  "en": "Poet and essayist (1894-1953), a well-known critic and editor of 'De Gids', one of the great figures of his generation.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mary van der Sluisstraat",
+  "hash": "0e8e87d0f7a3",
+  "nlHash": "6374f3cc2a17",
+  "en": "Mary Meijer-van der Sluis (1917-1994), fencer, Dutch champion in 1937 and 1947 and a competitor at the 1948 Olympic Games. She had to suspend her sporting career during the war because she was Jewish.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mary Zeldenruststraat",
+  "hash": "5ca723ac91f5",
+  "nlHash": "fda4a855b8b4",
+  "en": "Mary Zeldenrust-Noordanus (1928-1984), psychologist, who worked for sexual emancipation and women's emancipation. She founded the Institute for Psychological Market Research.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mastbos",
+  "hash": "48e8dc19e629",
+  "nlHash": "a55dbc0e9586",
+  "en": "A nature reserve near Breda.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Masthof",
   "hash": "031a5794a42d",
   "nlHash": "5067dc39963b",
   "en": "An anker (anchor) is the ship's part.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Mata Harihof",
+  "hash": "0a99f2cccc08",
+  "nlHash": "b87522ff5ef8",
+  "en": "Stage name of the Frisian Margaretha Geertruida Zelle (1876-1917). Mata Hari is Malay for 'eye of the day' (the sun). An oriental dancer, in Paris among other places, and a spy during the First World War. Convicted by the French of spying for Germany, she was executed in 1917. Five films about her life were made in various countries.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Mataramstraat",
+  "hash": "493870720fcf",
+  "nlHash": "1927e17948ef",
+  "en": "A region on the island of Java (Indonesia) under Dutch rule. It was originally a separate kingdom on Java. It was also the name of a principality on the island of Lombok that existed until 1894.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Matenesse-hof",
+  "hash": "00028aa39799",
+  "nlHash": "304a8456050d",
+  "en": "A thirteenth-century castle on the Schie in the old manor of Mathenesse, now a district of Rotterdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mathurastraat",
+  "hash": "a52dbbc1ed41",
+  "nlHash": "09fcd7305c9b",
+  "en": "One of the three most important fighters who resisted the oppressive system on the plantations of Suriname through the so-called 'Fonale Sankties'.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Matrozenhof",
+  "hash": "19d4c3129ad4",
+  "nlHash": "f9d15f293398",
+  "en": "Refers to the nearby shipping training institute (matrozen = sailors).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mattenbiesstraat",
+  "hash": "e7eb670c1f5e",
+  "nlHash": "a4c00a22c4a1",
+  "en": "A kind of reed (bulrush) that grows on the banks of fresh and brackish waters.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Matterhorn",
+  "hash": "d037c20ac6ea",
+  "nlHash": "51dbc43c7d58",
+  "en": "A mountain in Switzerland and Italy, 4477 metres high.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mattheus Sladushof",
+  "hash": "35e28ade873f",
+  "nlHash": "780b8fd2ec12",
+  "en": "Linguist (1569-1629), specialising in Hebrew and Arabic.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maurice Peeterspad",
+  "hash": "ef5b9cf37356",
+  "nlHash": "faa8762a18c7",
+  "en": "Mauritius Prosper Peeters (1882-1957), cyclist, who became the Netherlands' first Olympic cycling champion by winning the sprint in 1920 in Antwerp. Four years later in Paris he won bronze in the tandem.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maurice Ravellaan",
+  "hash": "2995be6cafca",
+  "nlHash": "3d3795d71767",
+  "en": "Joseph Maurice Ravel (1875-1937), French composer, conductor and pianist of Swiss and Basque descent. With his contemporary Claude Debussy (1862-1918) he is seen as the leading impressionist composer. His most famous work is the ballet 'Boléro' (1928).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mauritiushaven",
+  "hash": "681779e48bd6",
+  "nlHash": "3e9d7308ef9f",
+  "en": "An island east of Madagascar, colonised from 1598 by Dutch seamen and later taken over by the French and the English, among others. It is named after Stadtholder Prince Maurits, Count of Nassau.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Maurits Kannstraat",
+  "hash": "baceff4e0826",
+  "nlHash": "23b47da03f54",
+  "en": "Resistance fighter (1894-1942), a lawyer by profession, born in The Hague, died in the Sachsenhausen concentration camp.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Mechelensingel",
@@ -20139,6 +21035,13 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Nieuwe Maanstraat",
+  "hash": "2f908f4bbb97",
+  "nlHash": "cf7faff0d473",
+  "en": "The celestial body (the moon) that moves around the earth in an elliptical orbit.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Nieuwe Passeerdersstraat",
   "hash": "7191892cb7d4",
   "nlHash": "66b25631cb67",
@@ -20164,6 +21067,13 @@
   "hash": "fbf590c679e4",
   "nlHash": "2615d29d9bf8",
   "en": "The central body of the planetary system to which the Earth belongs (the sun).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nieuwersluishof",
+  "hash": "183b0628842e",
+  "nlHash": "86f525f7a74f",
+  "en": "A village on the Vecht (Utrecht).",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -20213,6 +21123,13 @@
   "hash": "4b18d7c4745b",
   "nlHash": "e63e9f6e4bf9",
   "en": "A former country house on the Amstel.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Orgeldraaierspad",
+  "hash": "7265b5cca5e1",
+  "nlHash": "034bd4b23bf5",
+  "en": "Basket-making was originally a typical travelling trade. The name is linked to the world of travelling people and refers to the caravan site here.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -20503,6 +21420,13 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Scharenslijperspad",
+  "hash": "26b9172380a4",
+  "nlHash": "034bd4b23bf5",
+  "en": "Basket-making was originally a typical travelling trade. The name is linked to the world of travelling people and refers to the caravan site here.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Schimmelstraat",
   "hash": "1bee606a152e",
   "nlHash": "5c9fd469df0d",
@@ -20612,6 +21536,13 @@
   "hash": "2a4f41a8b6ab",
   "nlHash": "21622a0f88e4",
   "en": "The bird (the crow).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Stoelenmatterspad",
+  "hash": "8ec214e63a7f",
+  "nlHash": "034bd4b23bf5",
+  "en": "Basket-making was originally a typical travelling trade. The name is linked to the world of travelling people and refers to the caravan site here.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -21011,6 +21942,13 @@
   "hash": "c861ed766e54",
   "nlHash": "63f43eae7a5f",
   "en": "A Belgian town in the province of Brabant.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Uranusstraat",
+  "hash": "1e60933af543",
+  "nlHash": "5cf1593c2d79",
+  "en": "The planet (Mars).",
   "source": "claude-code-opus-5.5"
  },
  {
