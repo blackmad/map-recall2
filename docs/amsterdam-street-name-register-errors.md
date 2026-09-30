@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Karel Klinkenbergstraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Kombuisweg, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -44,6 +44,7 @@ next record.
 |---|---|---|---|
 | Elim | [0363300000002417](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002417/) | The whole text is "tot Park Frankendael". |  Replaced by a sourced supplement (Wikipedia). |
 | Piet Wiedijkstraat | [0363300000004367](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004367/) | The whole text is "met name op het gebied van het verkeer." |  Replaced by a sourced supplement (Wikipedia). |
+| Kinkerstraat | [0363300000004001](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004001/) | The whole text is "Hij vertaalde werk van Shakespeare en Schiller...", the tail of the Kinkerbrug record ([0363300011950672](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950672/)), and never names Kinker. | Sourced supplement from Wikipedia. |
 | Vredenburgerbrug | [0363300011950362](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950362/) | Starts mid-sentence ("katholieke bejaardenhuis Vredenburg werd gebouwd…") and stops mid-sentence ("…waren hier achtereen"). | Not yet reached. |
 | Na Druk Gelukbrug | [0363300011950397](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950397/) | Starts mid-sentence, repeats its first clause ("…aan de toenmalige Brug is vernoemd naar…"), and stops at "De naam van deze boerderij refereert". | Not yet reached. |
 | Jan Poytstraat | [0363300011951814](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951814/) | Carries a stray sentence from another architect's record: "Simon van Woerden (1902-1998) heeft rond 1958 de Bethelkerk ontworpen." | Translated without the stray sentence. |
@@ -95,6 +96,8 @@ the municipality's sources.
 | Johannes Vermeerplein | [0363300000003512](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003512/) | "voornamelijk landschappen en binnenhuizen" | mainly interiors; only two townscapes, no landscapes | Corrected |
 | John Coltranestraat | [0363300000001237](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001237/) | "William John Coltrane" | John William Coltrane | Corrected |
 | Joseph Scaligerstraat | [0363300000003932](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003932/) | fled "na de Bartholomeusnacht naar Holland" | he fled to Geneva in 1572 and came to Leiden only in 1593 | Corrected |
+| Karveelstraat | [0363300000003971](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003971/) | "Zeilschip uit de negentiende eeuw" | a late-medieval type (Columbus's Niña and Pinta, 1492) | Corrected |
+| Kinkerbrug | [0363300011950672](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950672/) | Johannes Kinker (1765-1845) | born 1 January 1764 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 

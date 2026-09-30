@@ -16247,6 +16247,111 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Karel van de Woestijnestraat",
+  "hash": "32bf2302dcba",
+  "nlHash": "0fc6bdb95de2",
+  "en": "Flemish man of letters (1878-1929), professor at Ghent from 1921, one of the greatest Flemish poets after Guido Gezelle, and also known as a critic.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karel van het Revebrug",
+  "hash": "ae9e771d41a6",
+  "nlHash": "25454965bad7",
+  "en": "Karel van het Reve (1921-1999) was a professor of Russian literature and a man of letters, widely regarded as one of the most important non-fiction writers in the Netherlands.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karimatastraat",
+  "hash": "766442276782",
+  "nlHash": "c5f97bca9c8f",
+  "en": "An Indonesian island group off the west coast of Kalimantan (Borneo).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karl Grögersingel",
+  "hash": "b63fbfecf6ba",
+  "nlHash": "830a766de4bd",
+  "en": "Resistance fighter (1918-1943), one of the nine involved in the attack on the Amsterdam population register on 27 March 1943. He was also involved in the attack on the railway near Sloterdijk and in founding the seditious magazine 'Rattenkruid' (rat poison).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karl Marxpad",
+  "hash": "7bea761337ec",
+  "nlHash": "8d3f13635b43",
+  "en": "Karl Heinrich Marx (1818-1883), German philosopher and economist, who believed that capitalism would necessarily perish through its own development. Founder of Marxism, in which class struggle and the overthrow of the ruling class are central.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karlskrona-eiland",
+  "hash": "ded257e9d932",
+  "nlHash": "abed3a00b4c1",
+  "en": "A Swedish port on the Baltic from which much potash, timber and iron used to be shipped to Amsterdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karnstraat",
+  "hash": "008b5f001146",
+  "nlHash": "d636eacc06ba",
+  "en": "A dairy implement for making butter from milk (a churn).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karpatastraat",
+  "hash": "3a71328b5c69",
+  "nlHash": "cb33f1abcb63",
+  "en": "Karpata, nicknamed Bastian, one of the leaders of the slave revolt that broke out on Curaçao in August 1795. He was captured in September that year and executed.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karperstraat",
+  "hash": "d7df645fca7a",
+  "nlHash": "5afad920f3be",
+  "en": "The freshwater fish (the carp).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karperweg",
+  "hash": "e0b8293b98be",
+  "nlHash": "5afad920f3be",
+  "en": "The freshwater fish (the carp).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karspeldreef",
+  "hash": "b31701c706a5",
+  "nlHash": "90e36a040260",
+  "en": "The name recalls the former municipality of Weesperkarspel. Karspel or kerspel is an old word for a rural municipality, and earlier still for a church village or parish.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karthuizersdwarsstraat",
+  "hash": "07be9668df26",
+  "nlHash": "cbf7ab3c7d09",
+  "en": "The streets were laid out where the monastery of the 'Carthuysers ter saliger havene' (Carthusians of the blessed haven) stood from 1394 to 1578. Until 1892 the cross street was called Blindemansteeg, but the name was changed because of confusion with the other Blindemansteeg. The path and playground are on the site of the monastery's former graveyard, which is why the park was called Karthuizer Kerkhof until 1889.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karthuizersplantsoen",
+  "hash": "c9969a59474e",
+  "nlHash": "cbf7ab3c7d09",
+  "en": "The streets were laid out where the monastery of the 'Carthuysers ter saliger havene' (Carthusians of the blessed haven) stood from 1394 to 1578. Until 1892 the cross street was called Blindemansteeg, but the name was changed because of confusion with the other Blindemansteeg. The path and playground are on the site of the monastery's former graveyard, which is why the park was called Karthuizer Kerkhof until 1889.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karthuizersstraat",
+  "hash": "a56071791f90",
+  "nlHash": "cbf7ab3c7d09",
+  "en": "The streets were laid out where the monastery of the 'Carthuysers ter saliger havene' (Carthusians of the blessed haven) stood from 1394 to 1578. Until 1892 the cross street was called Blindemansteeg, but the name was changed because of confusion with the other Blindemansteeg. The path and playground are on the site of the monastery's former graveyard, which is why the park was called Karthuizer Kerkhof until 1889.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Karveelstraat",
+  "hash": "fc98e3eb74c8",
+  "nlHash": "e1298bc416bb",
+  "en": "A fast sailing ship (caravel), carrying mainly a mainsail. The type dates from the late Middle Ages: two of Columbus's three ships in 1492, the Niña and the Pinta, were caravels.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
   "name": "Kastanjeplein",
   "hash": "bb6e3129f484",
   "nlHash": "9eaa30855f57",
@@ -16261,11 +16366,291 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Kastelenstraat",
+  "hash": "d3e3cfcae575",
+  "nlHash": "d5e4dd2c3770",
+  "en": "The name was given because the street runs right through the neighbourhood of castle names. The last stretch of the Kastelenstraat was renamed Zwaansvliet on 3 February 1965.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Kasterleepark",
   "hash": "4ba8cee0f2d4",
   "nlHash": "fbd52f017544",
   "en": "Belgian town in the province of Antwerp.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Kastrupstraat",
+  "hash": "9e095d5216c4",
+  "nlHash": "2a66ed341311",
+  "en": "The name of Copenhagen's airport.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Katrijpstraat",
+  "hash": "07dd3508fc3d",
+  "nlHash": "b74910fdd04c",
+  "en": "A hamlet, also spelt Catrijp, at the foot of the dunes near Schoorl (Noord-Holland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattenburgerbrug",
+  "hash": "61bb8395d492",
+  "nlHash": "08a7c11c8c70",
+  "en": "One of the three eastern islands, with Wittenburg and Oostenburg. It was already called Kattenburg before it was diked and built on in the second half of the seventeenth century. No explanation for the name has been found so far. There was a house called 'de Cat', but that name is only recorded in the eighteenth century. After many buildings had been demolished during the occupation, the rest were demolished in 1965-1968. Rebuilding then began on a new street plan. The Kattenburgerplein is the only thing that still recalls the old buildings.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattenburgergracht",
+  "hash": "2ae0f632263b",
+  "nlHash": "08a7c11c8c70",
+  "en": "One of the three eastern islands, with Wittenburg and Oostenburg. It was already called Kattenburg before it was diked and built on in the second half of the seventeenth century. No explanation for the name has been found so far. There was a house called 'de Cat', but that name is only recorded in the eighteenth century. After many buildings had been demolished during the occupation, the rest were demolished in 1965-1968. Rebuilding then began on a new street plan. The Kattenburgerplein is the only thing that still recalls the old buildings.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattenburgerhof",
+  "hash": "7da5953bef02",
+  "nlHash": "08a7c11c8c70",
+  "en": "One of the three eastern islands, with Wittenburg and Oostenburg. It was already called Kattenburg before it was diked and built on in the second half of the seventeenth century. No explanation for the name has been found so far. There was a house called 'de Cat', but that name is only recorded in the eighteenth century. After many buildings had been demolished during the occupation, the rest were demolished in 1965-1968. Rebuilding then began on a new street plan. The Kattenburgerplein is the only thing that still recalls the old buildings.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattenburgerkade",
+  "hash": "891f87109e0c",
+  "nlHash": "08a7c11c8c70",
+  "en": "One of the three eastern islands, with Wittenburg and Oostenburg. It was already called Kattenburg before it was diked and built on in the second half of the seventeenth century. No explanation for the name has been found so far. There was a house called 'de Cat', but that name is only recorded in the eighteenth century. After many buildings had been demolished during the occupation, the rest were demolished in 1965-1968. Rebuilding then began on a new street plan. The Kattenburgerplein is the only thing that still recalls the old buildings.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattenburgerkruisstraat",
+  "hash": "11eb008b2196",
+  "nlHash": "08a7c11c8c70",
+  "en": "One of the three eastern islands, with Wittenburg and Oostenburg. It was already called Kattenburg before it was diked and built on in the second half of the seventeenth century. No explanation for the name has been found so far. There was a house called 'de Cat', but that name is only recorded in the eighteenth century. After many buildings had been demolished during the occupation, the rest were demolished in 1965-1968. Rebuilding then began on a new street plan. The Kattenburgerplein is the only thing that still recalls the old buildings.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattenburgerplein",
+  "hash": "50896e64264a",
+  "nlHash": "08a7c11c8c70",
+  "en": "One of the three eastern islands, with Wittenburg and Oostenburg. It was already called Kattenburg before it was diked and built on in the second half of the seventeenth century. No explanation for the name has been found so far. There was a house called 'de Cat', but that name is only recorded in the eighteenth century. After many buildings had been demolished during the occupation, the rest were demolished in 1965-1968. Rebuilding then began on a new street plan. The Kattenburgerplein is the only thing that still recalls the old buildings.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattenburgerstraat",
+  "hash": "0e3ba613d11e",
+  "nlHash": "08a7c11c8c70",
+  "en": "One of the three eastern islands, with Wittenburg and Oostenburg. It was already called Kattenburg before it was diked and built on in the second half of the seventeenth century. No explanation for the name has been found so far. There was a house called 'de Cat', but that name is only recorded in the eighteenth century. After many buildings had been demolished during the occupation, the rest were demolished in 1965-1968. Rebuilding then began on a new street plan. The Kattenburgerplein is the only thing that still recalls the old buildings.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattenburgervaart",
+  "hash": "ea434a45c4c0",
+  "nlHash": "65fff5c95234",
+  "en": "A canal named after Kattenburg, the westernmost of the three Eastern Islands in Amsterdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattengat",
+  "hash": "e957f62ec7c2",
+  "nlHash": "c249934d1b2f",
+  "en": "Originally this was a narrow little canal running from the Nieuwezijds Achterburgwal (now the Spuistraat) to the Singel. There is no agreement about the origin of the name. A narrow passage used to be called, figuratively, a kattegat: a gap so narrow that not even a cat could get through. The name may also come from the old nature of the ground: marshy land where catmint grows. The little canal was filled in during the second half of the nineteenth century. Part of it is now called Koggestraat. The remaining little street was widened considerably by demolition in 1936.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattenlaan",
+  "hash": "3161b6c5b3b1",
+  "nlHash": "c75da93e651a",
+  "en": "The origin and age of the name are unknown. The street came over under the same name from the municipality of Nieuwer-Amstel in 1896.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattensloot",
+  "hash": "1baed9a8870a",
+  "nlHash": "b9aa56ba09d7",
+  "en": "This name probably refers to the animal (cats).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kattenslootbrug",
+  "hash": "550b79d116ef",
+  "nlHash": "c272cd555371",
+  "en": "The name of the ditch beneath it.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Katwijkstraat",
+  "hash": "4f74b5b56609",
+  "nlHash": "6470eed54b58",
+  "en": "The Zuid-Holland fishing village and seaside resort.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kazernestraat",
+  "hash": "f5374a953329",
+  "nlHash": "dbff749cc09a",
+  "en": "After the Oranje-Nassau barracks (kazerne), built in 1811.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kea Boumanstraat",
+  "hash": "52ff38d6c232",
+  "nlHash": "e1774d9a4049",
+  "en": "Kornelia Bouman (1903-1998), tennis player. Until 1996 she was the only Dutch Grand Slam winner (French Championships, 1927). She won bronze in the mixed doubles at the 1924 Olympic Games.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Keerpunt",
+  "hash": "d9fa7b16b42a",
+  "nlHash": "2273eb3d7ad3",
+  "en": "The name came out of conversations with residents: a keerpunt (turning point) in the city council's thinking, to build homes instead of office buildings, the result of the neighbourhood's participation.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Keerwal",
+  "hash": "8795876700c9",
+  "nlHash": "3b95dccd6810",
+  "en": "A place where you can go no further and have to turn back (keren). The buildings on the Keerwal screen the homes by the railway in the Funenpark.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kees Abspoelstraat",
+  "hash": "cd25e4018296",
+  "nlHash": "f9e9307481af",
+  "en": "Kees Abspoel (1899-1970) was Shell's in-house architect, and as such designed Shell's Great Laboratory in Amsterdam-Noord, on the Overhoeks site.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kees Boekestraat",
+  "hash": "ae3411db1399",
+  "nlHash": "a2c7826dfdef",
+  "en": "For this neighbourhood the chosen category was the names of Dutch architects involved in housing projects in Amsterdam-Noord.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kees Broekmanstraat",
+  "hash": "0e4658e3d001",
+  "nlHash": "e5d6ec95ffd4",
+  "en": "Cornelis Broekman (1927-1992), speed skater. In 1952 he was the first Dutchman to win a Winter Olympics medal, silver in the 5000 metres. He was also second in the 10 km.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kees Fensbrug",
+  "hash": "8275bddcd916",
+  "nlHash": "dd775a46c361",
+  "en": "Kees Fens (1929-2008) was an Amsterdam literary critic, essayist and man of letters. He received the P.C. Hooft Prize in 1990 and an honorary doctorate from the University of Amsterdam in 2004. From his house he looked out on this bridge, and in 2008 he published the book 'Het geluk van de brug' (the happiness of the bridge).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kees Schererhof",
+  "hash": "664174452296",
+  "nlHash": "deecb0e12f1c",
+  "en": "Christoffel Johannes Scherer (1920-1993), photographer, who made his breakthrough with reportage on the North Sea flood of 1953, among other things. Two years later he co-founded World Press Photo. He portrayed Amsterdam poetically.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Keienbergweg",
+  "hash": "3f5d9ac76142",
+  "nlHash": "d805f193f843",
+  "en": "The name of a hill in Gelderland, between Velp and Beekhuizen.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Keizersbrug",
+  "hash": "e5ce203feaa3",
+  "nlHash": "c17bcaa06412",
+  "en": "It takes its name from the nearby Keizersstraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Keizersgracht",
+  "hash": "6086dbff6b2d",
+  "nlHash": "ca7825173064",
+  "en": "After Emperor Maximilian, Archduke of Austria, who in 1489 granted Amsterdam the privilege of bearing the imperial crown on its coat of arms.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Keizersstraat",
+  "hash": "79e76682b71a",
+  "nlHash": "4253a3d8aa28",
+  "en": "On the Lastage. The streets were laid out at the end of the sixteenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kelbergen",
+  "hash": "89c107a0f193",
+  "nlHash": "313891bd17c9",
+  "en": "The name of a manor house in Brummen (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kelbergenpad",
+  "hash": "6eb565b3eb7e",
+  "nlHash": "313891bd17c9",
+  "en": "The name of a manor house in Brummen (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kemangiestraat",
+  "hash": "0490ba06811d",
+  "nlHash": "6e5fe7b6e67d",
+  "en": "A herb, also called lemon basil or Thai basil.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kemiriestraat",
+  "hash": "e1ed992d240c",
+  "nlHash": "aefce2fd3a69",
+  "en": "A nut. A kemiri (candlenut) is a kind of almond with a very strong taste.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kemminkhorstweg",
+  "hash": "00e2f8c6d472",
+  "nlHash": "5b8a2af34fe7",
+  "en": "Named after the old farm Kemminckhorst near Dalfsen (Overijssel).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kempenlaan",
+  "hash": "5901fb850fb2",
+  "nlHash": "847b04e4089d",
+  "en": "The border region of Belgian and Dutch Brabant (the Kempen).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kempering",
+  "hash": "554ea85f34b8",
+  "nlHash": "a5b764faeba1",
+  "en": "The name of a farm at Reutum, in Tubbergen (Overijssel).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ken Saro-Wiwastraat",
+  "hash": "c830e109abb5",
+  "nlHash": "a475b1ad6154",
+  "en": "Nigerian writer (1941-1995), politician and businessman. As leader of MOSOP, the Movement for the Survival of the Ogoni People founded in 1990, he campaigned for more autonomy for the Ogoni. In 1995 he was sentenced to death after a show trial by the dictatorial regime, and on 10 November 1995 he was hanged together with eight other Ogoni activists.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kennemerduinstraat",
+  "hash": "2446dfb7e904",
+  "nlHash": "a15c0177e8cd",
+  "en": "The Kennemerduinen national park, a nature reserve north of the Bloemendaalse Zeeweg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Keratellastraat",
+  "hash": "70968cec5d27",
+  "nlHash": "1443350c3059",
+  "en": "A microscopic water creature (a rotifer) with two fast-spinning crowns of cilia and strong chewing parts for grinding its food. The keratella lives in a small case marked by spines.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kerdijkhof",
+  "hash": "55f13941d862",
+  "nlHash": "ea2923eaa8ad",
+  "en": "Arnoldus Polak Kerdijk (1846-1905), politician and journalist, who as a progressive liberal worked for the emancipation of workers. He was also a director of the Rijkspostspaarbank (post office savings bank).",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Kerkepad",
@@ -16275,11 +16660,277 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Kerklaan Zunderdorp",
+  "hash": "ba67fa0ff937",
+  "nlHash": "cdcce1704c55",
+  "en": "The main street of Zunderdorp, leading towards the village church.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kerkstraat",
+  "hash": "0f777a8308ac",
+  "nlHash": "b125921e358c",
+  "en": "The Kerkstraat was laid out in 1665 and named for the plan to link four churches (kerken) with it: the Amstelkerk, the Oosterkerk and two others that were never built, one by the Molenpad and one by the Weesperstraat. Later the street got various names: Kerkstraat (to the Amstel), Nieuwe Kerkstraat (to the Roetersstraat), Plantage Kerklaan (in the Plantage) and Korte Kerkstraat, which was renamed Tussen Kadijken in 1943.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kermispad",
+  "hash": "2692fc330dff",
+  "nlHash": "a21a563aed4d",
+  "en": "The fair (kermis) with its attractions. The name is linked to the world of travelling people and refers to the caravan site here.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kerriestraat",
+  "hash": "401a599296f3",
+  "nlHash": "5a26c0464718",
+  "en": "A spice mix (curry), originally from India, where the word 'kari' means sauce. The English corrupted 'kari' into 'curry'. Kerrie came to the Netherlands by way of Indonesia.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kersenstraat",
+  "hash": "ac2399672b44",
+  "nlHash": "077a16a44530",
+  "en": "The fruit of the cherry tree.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kerstomaatplantsoen",
+  "hash": "b8d936294888",
+  "nlHash": "cfea97cc6440",
+  "en": "A kind of tomato, also called cocktail or cherry tomato.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kervelplantsoen",
+  "hash": "bfe648a3e212",
+  "nlHash": "c182c228643e",
+  "en": "A herb (chervil). In the Middle Ages the plant was often found in monastery gardens.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ketelhuisplein",
+  "hash": "d487224b5f3c",
+  "nlHash": "db2fa442c015",
+  "en": "The very striking boiler house of the former Wilhelmina Gasthuis.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ketelmakerij",
+  "hash": "a535888387a0",
+  "nlHash": "45a29504d3f9",
+  "en": "The street lies on the site of the former Amsterdamsche Droogdok Maatschappij. Ketelmakerij (boilerworks) refers to one of the workshops that were here.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ketelmakerstraat",
+  "hash": "e5639f3b100c",
+  "nlHash": "53742b07588c",
+  "en": "This trade name (boilermaker) recalls the old boilerworks that was here.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ketelstraat",
+  "hash": "19eefd2f4927",
+  "nlHash": "b4f9e2763fdb",
+  "en": "The machine part, the steam boiler (ketel): a closed vessel in which water is turned into steam by heating.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Keurenplein",
+  "hash": "336b9068138e",
+  "nlHash": "5444476f467e",
+  "en": "Keuren are the ordinances of any public authority before 1795. The name is linked to the verb 'keuren' in the sense of 'choosing': originally these were the rules to be observed, or laid down, on the day new officials were chosen.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Keverberg",
+  "hash": "fac555f713fe",
+  "nlHash": "bcf3b2d0f40f",
+  "en": "A castle in Kessel (Limburg), also called Kessel castle, built on the foundations of an eleventh-century stronghold and destroyed by German troops in 1944.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kiefskamp",
+  "hash": "41c23275d89e",
+  "nlHash": "eaa73ea1ff1f",
+  "en": "One of the best-preserved eighteenth-century country houses, from about 1770, near Vorden (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kiekstraat",
+  "hash": "f2e394e49c40",
+  "nlHash": "f38cf2959c9f",
+  "en": "Israël David Kiek (1811-1899), photography pioneer. In the Netherlands his surname has become a byword for the unpretentious, off-the-cuff photo: the kiekje (snapshot). He had a photo studio in Leiden and photographed Leiden student life.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kierkegaardstraat",
+  "hash": "09dba1d62151",
+  "nlHash": "c85f1d6a1f2c",
+  "en": "Søren Kierkegaard (1813-1855), Danish preacher and philosopher, whose work centres on his personal view of life. He rejected the state church and institutional Christianity.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kievitstraat",
+  "hash": "7201cb05f460",
+  "nlHash": "dc1b987db9b3",
+  "en": "The meadow bird (the lapwing).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kijkduinstraat",
+  "hash": "350b95edc6e3",
+  "nlHash": "cc7b2f89c41d",
+  "en": "The former fort south of Huisduinen near Den Helder, known for the naval battle of 1673 in which Admiral De Ruyter defeated the combined Anglo-French fleet.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kikkenstein",
+  "hash": "4aa6cea653f9",
+  "nlHash": "3972a5bfe2de",
+  "en": "The name of a patrician house in Loenen (Utrecht).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kikkensteinhof",
+  "hash": "1605f6a27675",
+  "nlHash": "3972a5bfe2de",
+  "en": "The name of a patrician house in Loenen (Utrecht).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kikkensteinstraat",
+  "hash": "bfb497e83f03",
+  "nlHash": "3972a5bfe2de",
+  "en": "The name of a patrician house in Loenen (Utrecht).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kimpoweg",
+  "hash": "310e80aad749",
+  "nlHash": "9ac0e029f7fc",
+  "en": "The name of the airport of Seoul, South Korea.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kinderdijkstraat",
+  "hash": "080107df8a1a",
+  "nlHash": "2af8166d80f3",
+  "en": "The river dike along the Noord, in the Alblasserwaard (Zuid-Holland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "King's Cross",
+  "hash": "dfe22f34ec68",
+  "nlHash": "cb228eafcead",
+  "en": "A major railway station in north London.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kingsfordweg",
+  "hash": "d58f1a74a266",
+  "nlHash": "1bffa4d5b5f8",
+  "en": "The name of the airport of Sydney, Australia.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kinkerbrug",
+  "hash": "939a1dfbef75",
+  "nlHash": "9dd7cc2e0568",
+  "en": "This bascule bridge is named after Johannes Kinker (1764-1845), poet and lawyer in Amsterdam and The Hague, who later became a professor at Liège.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Kinkerstraat",
+  "hash": "93730265c810",
+  "nlHash": "8125c2709ff7",
+  "en": "He translated work by Shakespeare and Schiller.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Kinrooistraat",
   "hash": "cd822a6cb627",
   "nlHash": "764cee365f4e",
   "en": "A Belgian town in the province of Limburg.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Kinselmeer",
+  "hash": "544614e52ca1",
+  "nlHash": "f389e39907ea",
+  "en": "A lake north of Durgerdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klaas Geertsplantsoen",
+  "hash": "92c7ebd1f03f",
+  "nlHash": "ffe597cba2ab",
+  "en": "Klaas Geerts (1932-2002) founded the architectural practice INBO. He played an important part in the post-war reconstruction of the Netherlands and designed the Molenwijk. For this neighbourhood the chosen category was the names of Dutch architects involved in housing projects in Amsterdam-Noord.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klaas Katerstraat",
+  "hash": "9a6e92696acc",
+  "nlHash": "841f0e5d8aa8",
+  "en": "Amsterdam bricklayer (1833-1906), who in 1876 founded the Christian association Patrimonium in Amsterdam and chaired it until 1899. From 1880 to 1900 he led the Christian Workers' League.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klaas Wannen",
+  "hash": "b2278dacad48",
+  "nlHash": "95388e286b1b",
+  "en": "Named after the ditch between the Twiske and the Gouw, probably named after a farmer. It disappeared when the Twiske was turned into a polder and laid out as woodland.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klapmutsenveem",
+  "hash": "f4b22777fde9",
+  "nlHash": "89d5894e0767",
+  "en": "A veem is a company that stores goods in its warehouses and delivers them out again. Each veem had its own badge, after which it was named. These could be hats of different colours and shapes (Klapmutsen, Blauwhoeden and others). Some took their name from where their workmen came from (Vriesseveem, Zeeuwse Veem and others).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klaprozenweg",
+  "hash": "99b3c14a80bc",
+  "nlHash": "d1b1b4e8ecd6",
+  "en": "The klaproos (corn poppy), a plant of the poppy family.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klarenburg",
+  "hash": "73135003b4e0",
+  "nlHash": "bbb79d30fbba",
+  "en": "The former farm Karenburg on the Uitweg, demolished to build the Osdorp garden city. The l in the street name is therefore a mistake, but the burgomaster and aldermen later judged the difference not important enough to change the council decision.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klaroenstraat",
+  "hash": "7287effaf7bd",
+  "nlHash": "8f5fd7cc68d2",
+  "en": "A leaf vegetable with red-flamed leaves, also known as amaranth or Chinese spinach.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klaverbladstraat",
+  "hash": "9eb09e71546b",
+  "nlHash": "6f4904068ae5",
+  "en": "The name refers to the leaf of the native edible plants of the pea family (clover).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kleefkruidstraat",
+  "hash": "a3c316bd599f",
+  "nlHash": "ff6e619fc871",
+  "en": "An edible plant of the bedstraw family (cleavers), which owes its stickiness to the many little hooks that cover it.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kleiburg",
+  "hash": "d29f6e9c408b",
+  "nlHash": "5b4a9e9a7b16",
+  "en": "A former farm in the Bijlmermeer, on the Weespertrekvaart.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Kleine Beerstraat",
@@ -16296,10 +16947,80 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Kleine Diestraat",
+  "hash": "8b442c24604b",
+  "nlHash": "22bc22c53c90",
+  "en": "The nearby waters of the Kleine Die and the Grote Die. 'Die' is a contraction of 'de' (the) and 'ie'. 'Ie' in turn is a Noord-Holland variant of 'aa', meaning water, which in Frisian-speaking areas is written 'ee'. The spelling 'IJ' is actually incorrect.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kleine Houtstraat",
+  "hash": "5e92ad59a148",
+  "nlHash": "cdd5ad498a57",
+  "en": "Recalls the timber trade that used to be concentrated around the Haarlemmer Houttuinen. (The Grote Houtstraat was abolished in 1973.)",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kleine Pimpernelstraat",
+  "hash": "e8d88d4a4aa8",
+  "nlHash": "17aff99ef274",
+  "en": "A perennial with edible leaves (salad burnet). Its round flower head carries small greenish-purple flowers.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kleine Wetering",
+  "hash": "003b6b01212b",
+  "nlHash": "eedfa2508d77",
+  "en": "A wetering is a dug watercourse. Called Kleine (little) Wetering because of its size.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Kleine Wittenburgerstraat",
   "hash": "751d57ad6297",
   "nlHash": "4ecd62c84593",
   "en": "One of the three eastern islands (with Kattenburg and Oostenburg), laid out in the second half of the seventeenth century and built up with shipyards and houses from the start. One of the first yards was that of Jan Witheyn (1610-1662), founded in 1657. This is very probably where the name Wittenburg comes from.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kleine Zonneplein",
+  "hash": "8dbfc999bdea",
+  "nlHash": "2615d29d9bf8",
+  "en": "The central body of the planetary system to which the Earth belongs (the sun).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kleine-Gartmanplantsoen",
+  "hash": "4d266737516c",
+  "nlHash": "a875afe41464",
+  "en": "Maria Johanna Kleine née Gartman (1818-1885), actress. As the first woman teacher at the Drama School she trained many actors and directors. Before it was named in 1915, the square was part of the Lijnbaansgracht and the Weteringschans.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klieverink",
+  "hash": "4b78e524d71d",
+  "nlHash": "3f8ac13bcb90",
+  "en": "Het Klieverink or Klievering, the name of a farm in Losser (Overijssel).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klieverinkweg",
+  "hash": "189fa3680f95",
+  "nlHash": "3f8ac13bcb90",
+  "en": "Het Klieverink or Klievering, the name of a farm in Losser (Overijssel).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klimopbrug",
+  "hash": "123ec85f9aec",
+  "nlHash": "df6b93fddf07",
+  "en": "The climbing shrub (ivy).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klimopstraatje",
+  "hash": "0447c62ed7a6",
+  "nlHash": "df6b93fddf07",
+  "en": "The climbing shrub (ivy).",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -16310,11 +17031,151 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Klinkerweg",
+  "hash": "f671832492c7",
+  "nlHash": "31545bd5a635",
+  "en": "A metalworker who fastens iron parts together with rivets (a riveter). The street name refers to the shipbuilding that Amsterdam-Noord has lost.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klipperstraat",
+  "hash": "6d57773bdf1f",
+  "nlHash": "a51507d192be",
+  "en": "A long, narrow, fast-sailing three-master (a clipper).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kloekhorststraat",
+  "hash": "8a9f4429b5e9",
+  "nlHash": "0eeac5736cea",
+  "en": "The name of an old farm in the hamlet of Klein Dochteren, in Lochem (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klokkenbergweg",
+  "hash": "28d47074b200",
+  "nlHash": "a889344c1f50",
+  "en": "The name of a hill near Nijmegen.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klönne plein",
+  "hash": "70211b5417e6",
+  "nlHash": "c549e84b4c71",
+  "en": "The gasholder specialists August Klönne built the Westergasfabriek's new telescopic gasholder in 1902. The gasholder is the landmark of the former works site.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kloveniersburgwal",
+  "hash": "1d998373ec97",
+  "nlHash": "ae4c5f932f10",
+  "en": "The Kloveniersburgwal owes its name to a part of the civic guard called kloveniers, after the firearm its men used, a culverin.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Klovenierssteeg",
+  "hash": "54ba9036eeed",
+  "nlHash": "e12ed39d32d1",
+  "en": "After the Kloveniersdoelen, the meeting place of the old civic guard, where the Doelen Hotel now stands. The old civic guard originally used the crossbow, but in 1522 the guardsmen were given guns, or kloveren, and were named kloveniers after them. Until the end of the sixteenth century this burgwal was the outermost city moat. Before 1909 the alley was called Watersteeg, but this caused confusion with the Watersteeg by the Rokin.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kneppelhoutstraat",
+  "hash": "d6fff594b00c",
+  "nlHash": "47f0d54f5f13",
+  "en": "Johannes Kneppelhout (1814-1885), pseudonym Klikspaan, writer of realistic, humorous sketches and stories.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kneppelweg",
+  "hash": "b22f307a0cbc",
+  "nlHash": "31253ed3ba50",
+  "en": "The name of an old farm near Eefde (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Knokkestraat",
   "hash": "5c0cba179ac2",
   "nlHash": "d741d2b19da9",
   "en": "A Belgian coastal town in the province of West Flanders (West-Vlaanderen).",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Knollendamstraat",
+  "hash": "2e67945f135c",
+  "nlHash": "7a35e2103a87",
+  "en": "A village in the Zaan region. The street was originally named Derde Spaarndammerdwarsstraat (council decision of 30 March 1881).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "KNSM-laan",
+  "hash": "f097fb5f5a96",
+  "nlHash": "2ccfd62d48ef",
+  "en": "The Koninklijke Nederlandsche Stoomboot-Maatschappij (Royal Netherlands Steamship Company), founded in 1856 and one of the largest Dutch shipping companies. It ran scheduled services to the West Indies, Central America, the west and north coasts of South America, the Levant and European ports, and also sailed between North and South America. In 1981 the KNSM was absorbed into the Koninklijke Nedlloyd group.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Koekjesbrug",
+  "hash": "073f19df25c2",
+  "nlHash": "0183bcc65ff9",
+  "en": "There are four possible explanations for the name of this fixed bridge. It may be named after a popular biscuit (koekjes) seller who was pushed into the mud here by jostling youths. There also used to be a small cocoa mill here where cocoa biscuits were sold. The name may also go back to the market gardener Pannenkoek, who once owned land next to the bridge. A fourth possibility is that it is named after a policeman called Koek, who just before the bridge opened walked across it demonstratively after a quarrel with the ferryman. The ferryman is then said to have written on the bridge railing 'Deze brug is gedoopt Koekjesbrug' (this bridge is christened Koekjesbrug).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Koekoeksplein",
+  "hash": "4fed3903bb6f",
+  "nlHash": "97b7fda9ccb8",
+  "en": "The songbird (the cuckoo).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Koekoeksstraat",
+  "hash": "0472047a78e0",
+  "nlHash": "97b7fda9ccb8",
+  "en": "The songbird (the cuckoo).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Koen Limpergstraat",
+  "hash": "39bce4eedf7f",
+  "nlHash": "b74a3ca03242",
+  "en": "Resistance fighter (1908-1943), born in Amsterdam, executed by firing squad in Haarlem.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Koenenkade",
+  "hash": "1a261196d60f",
+  "nlHash": "ecca7bec38eb",
+  "en": "After a former resident.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Koerierstersplein",
+  "hash": "9632c17ac1b2",
+  "nlHash": "a96cacb59fda",
+  "en": "Girls who were active in the resistance in the Second World War. They handed out ration cards, false papers and money, and escorted Jewish children by bicycle or train. The street name is also a tribute to the couriers Miep Gies and Elly Voskuijl, who looked after the people hiding in the Secret Annex, among them Anne Frank.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Koestraat",
+  "hash": "9f7b5c40f8a6",
+  "nlHash": "5ffa7c67a58b",
+  "en": "The street ran along the cowshed (koestal) of the former Bethany convent, which stretched between this street and the Bethaniënstraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Koffieweg",
+  "hash": "e74798be105c",
+  "nlHash": "a920abee5da9",
+  "en": "The ground powder of roasted coffee beans. Coffee is handled in the port of Amsterdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kofschipstraat",
+  "hash": "9c3339112ad0",
+  "nlHash": "d99acdadd76c",
+  "en": "A round-built two-master with a broad stern (a kof), a slow sailer.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Kogeldistelstraat",
@@ -16324,10 +17185,94 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Koggestraat",
+  "hash": "7484289d49cd",
+  "nlHash": "393b92ccacb3",
+  "en": "An old type of ship (the cog), after which the traditional Amsterdam Koggeschip is named. Before it was filled in in the nineteenth century, the water was part of the Kattengat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Koivistokade",
+  "hash": "90974ed0ae42",
+  "nlHash": "36609b7c3af2",
+  "en": "A large Russian oil port on the Baltic, today known as Primorsk. Koivisto, Finnish for 'birch grove', belonged to Finland from 1918 to 1944.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kokmeeuwpad",
+  "hash": "b23554193f17",
+  "nlHash": "8f5e5f8cbeb4",
+  "en": "A bird of the gull family (the black-headed gull).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kokospalmhof",
+  "hash": "ec1522782405",
+  "nlHash": "9ae6e29ae387",
+  "en": "A kind of palm. The inside of the fruit of this palm looks like the face of a monkey, which in Portuguese is called 'coco'.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kolbergbrug",
+  "hash": "02550b79385d",
+  "nlHash": "9c0a0c6b24f9",
+  "en": "Kolberg was the German name for the Polish Baltic port of Kołobrzeg. The names in the Houthavens are taken from places the Netherlands traded with a great deal in the seventeenth and eighteenth centuries.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Kolberggracht",
   "hash": "d95dbc6ae153",
   "nlHash": "fe4e4c51f243",
   "en": "The names of the canals refer to the names of the bridges that cross them.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kolfschotenstraat",
+  "hash": "ccbe817090b4",
+  "nlHash": "ff69450d4f59",
+  "en": "An estate with a house near Scherpenzeel (Utrecht).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kolibristraat",
+  "hash": "581e9096a9a7",
+  "nlHash": "e378c7c8d8dd",
+  "en": "A very small tropical bird (the hummingbird).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kolksluis",
+  "hash": "15cdd6e6d710",
+  "nlHash": "b07239c50819",
+  "en": "Bridge 302 lies in the Zeedijk over the Oudezijdskolk. The kolk of a lock is the chamber between its two pairs of gates. This was where the Oudezijds Voorburgwal and Achterburgwal drained into the IJ. The lock dates from the early fifteenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kolksteeg",
+  "hash": "c3eb5020b327",
+  "nlHash": "1ff884021bc7",
+  "en": "This was where the Oudezijds Voorburgwal and Achterburgwal drained into the IJ. The lock dates from the early fifteenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kollenbergweg",
+  "hash": "c6d4f3f8f356",
+  "nlHash": "f977f19c9e95",
+  "en": "The name of a hill east of Sittard (Limburg).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kölpinstraat",
+  "hash": "b88442e1271f",
+  "nlHash": "ee3be47db0a2",
+  "en": "The lake, the Kölpinsee, in Mecklenburg-Vorpommern, northern Germany.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Kombuisweg",
+  "hash": "11eba6b6156e",
+  "nlHash": "be92fcb2a600",
+  "en": "A kombuis is a ship's kitchen (galley).",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -16370,6 +17315,27 @@
   "hash": "7a56bbbb5889",
   "nlHash": "c65eb485e4bb",
   "en": "At first meant as a term of abuse (geuzen: beggars), but taken as a title of honour by the allied nobles in the fight against Spain. Later the fighting name of all opponents of Spain in the Eighty Years' War. The Korte Geuzenstraat was earlier part of the Geuzenstraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Korte Keizersdwarsstraat",
+  "hash": "1d5cd9f6769e",
+  "nlHash": "4253a3d8aa28",
+  "en": "On the Lastage. The streets were laid out at the end of the sixteenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Korte Keizersstraat",
+  "hash": "9c099e31ecc9",
+  "nlHash": "4253a3d8aa28",
+  "en": "On the Lastage. The streets were laid out at the end of the sixteenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Korte Koningsdwarsstraat",
+  "hash": "62fd2f7bd9f6",
+  "nlHash": "4253a3d8aa28",
+  "en": "On the Lastage. The streets were laid out at the end of the sixteenth century.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -16464,6 +17430,13 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Leeuwerikstraat",
+  "hash": "e5394f6816dd",
+  "nlHash": "97b7fda9ccb8",
+  "en": "The songbird (the cuckoo).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Leliegracht",
   "hash": "e07bb1a8e6e5",
   "nlHash": "65caa5ce0ef5",
@@ -16475,6 +17448,13 @@
   "hash": "bcb0ce69f4a0",
   "nlHash": "63f43eae7a5f",
   "en": "A Belgian town in the province of Brabant.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Lijsterweg",
+  "hash": "3e401fe24d22",
+  "nlHash": "97b7fda9ccb8",
+  "en": "The songbird (the cuckoo).",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -16639,11 +17619,25 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Mezenstraat",
+  "hash": "c13d0c490ea9",
+  "nlHash": "97b7fda9ccb8",
+  "en": "The songbird (the cuckoo).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Michiel de Ruijtertunnel",
   "hash": "99c10c90c8c8",
   "nlHash": "d2e174ca4f5d",
   "en": "Michiel Adriaansz. de Ruyter (1607-1676), the renowned admiral of Holland and West Friesland. He was born in Vlissingen. In Amsterdam he lived on what is now the Prins Hendrikkade.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Nachtegaalstraat",
+  "hash": "32ebdf45f9b8",
+  "nlHash": "97b7fda9ccb8",
+  "en": "The songbird (the cuckoo).",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Naritaweg",
@@ -16723,6 +17717,20 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Nieuwe Keizersgracht",
+  "hash": "242599bce3a3",
+  "nlHash": "ca7825173064",
+  "en": "After Emperor Maximilian, Archduke of Austria, who in 1489 granted Amsterdam the privilege of bearing the imperial crown on its coat of arms.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nieuwe Kerkstraat",
+  "hash": "85e1e85715e0",
+  "nlHash": "b125921e358c",
+  "en": "The Kerkstraat was laid out in 1665 and named for the plan to link four churches (kerken) with it: the Amstelkerk, the Oosterkerk and two others that were never built, one by the Molenpad and one by the Weesperstraat. Later the street got various names: Kerkstraat (to the Amstel), Nieuwe Kerkstraat (to the Roetersstraat), Plantage Kerklaan (in the Plantage) and Korte Kerkstraat, which was renamed Tussen Kadijken in 1943.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Nieuwe Leliestraat",
   "hash": "bae76adf96c7",
   "nlHash": "65caa5ce0ef5",
@@ -16755,6 +17763,13 @@
   "hash": "70ed391ef77a",
   "nlHash": "61e9953a6760",
   "en": "Tuin (garden) here means a yard or enclosed space. The street name comes from the Stadstimmertuin (the city's carpentry yard, the Stadswerf), which lay here from 1612 to 1660 (by the Lijnbaansgracht) and to which the street led.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nieuwe Zonneweg",
+  "hash": "fbf590c679e4",
+  "nlHash": "2615d29d9bf8",
+  "en": "The central body of the planetary system to which the Earth belongs (the sun).",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -16931,6 +17946,13 @@
   "nlHash": "26fda1c6a275",
   "en": "Named after the shrub berberis (barberry).",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Rietzangerweg",
+  "hash": "8863b57ff4c8",
+  "nlHash": "97b7fda9ccb8",
+  "en": "The songbird (the cuckoo).",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Rigelstraat",
@@ -17598,6 +18620,13 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Wielewaalstraat",
+  "hash": "b9ec07347ff6",
+  "nlHash": "97b7fda9ccb8",
+  "en": "The songbird (the cuckoo).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Wijde Kerksteeg",
   "hash": "4dd6ffc3b776",
   "nlHash": "84842a7d35b9",
@@ -17710,11 +18739,39 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Zonnehof",
+  "hash": "10d50775b5b5",
+  "nlHash": "2615d29d9bf8",
+  "en": "The central body of the planetary system to which the Earth belongs (the sun).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zonneplein",
+  "hash": "a43a4942203d",
+  "nlHash": "2615d29d9bf8",
+  "en": "The central body of the planetary system to which the Earth belongs (the sun).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zonneweg",
+  "hash": "6a1f92d34f92",
+  "nlHash": "2615d29d9bf8",
+  "en": "The central body of the planetary system to which the Earth belongs (the sun).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Zutendaalstraat",
   "hash": "7a8d64f193c3",
   "nlHash": "764cee365f4e",
   "en": "A Belgian town in the province of Limburg.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Zwaluwstraat",
+  "hash": "2c0f07f8dc01",
+  "nlHash": "97b7fda9ccb8",
+  "en": "The songbird (the cuckoo).",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Zwanenplein",
