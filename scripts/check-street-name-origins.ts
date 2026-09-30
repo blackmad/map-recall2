@@ -272,11 +272,22 @@ assert.equal(repairOriginTranslation('Lid van de Tweede Kamer, later van de Eers
 assert.equal(repairOriginTranslation("Genoemd naar 't Giethuis, de stadsgeschut- en klokkengieterij.", "Named after 't Giethuis, the city's gunpowder and bell foundry."),
   "Named after 't Giethuis, the city's cannon and bell foundry.");
 {
-  const published = JSON.parse(readFileSync('public/data/extracts/amsterdam/street-name-origins.json', 'utf8')) as { origins: Array<{ name: string }> };
+  const published = JSON.parse(readFileSync('public/data/extracts/amsterdam/street-name-origins.json', 'utf8')) as { origins: Array<{ name: string; en: string }> };
+  const supplements = JSON.parse(readFileSync('scripts/street-name-origin-supplements.json', 'utf8')) as Array<{ name: string; en: string; sources: string[] }>;
+  const supplemented = new Map(supplements.map(entry => [entry.name, entry]));
   const { WITHHELD_ORIGINS } = await import('./lib/streetNameOrigins.ts');
+  // A withheld register text never reaches a card; a sourced supplement may take its place.
   for (const name of Object.keys(WITHHELD_ORIGINS)) {
-    assert.equal(published.origins.some(origin => origin.name === name), false, `${name} is withheld: ${WITHHELD_ORIGINS[name]}`);
+    const card = published.origins.find(origin => origin.name === name);
+    if (supplemented.has(name)) assert.equal(card?.en, supplemented.get(name)!.en, `${name} shows its sourced supplement`);
+    else assert.equal(card, undefined, `${name} is withheld: ${WITHHELD_ORIGINS[name]}`);
   }
+  for (const entry of supplements) {
+    assert.ok(entry.sources.length && entry.sources.every(url => url.startsWith('https://')), `${entry.name}'s supplement cites a source`);
+  }
+  // Regression: Enny Vredestraat had the end of Enneüs Heerma's CDA career.
+  assert.match(published.origins.find(origin => origin.name === 'Enny Vredestraat')!.en, /actress/);
+  assert.match(published.origins.find(origin => origin.name === 'Enneüs Heermabrug')!.en, /CDA/);
 }
 assert.equal(repairOriginTranslation('De naam van deze vaste brug verwijst naar de toren.', 'The name of this permanent bridge refers to the tower.'),
   'The name of this fixed bridge refers to the tower.', 'a vaste brug is fixed, not permanent');
