@@ -578,6 +578,12 @@ class Game {
         this.player.finished = false;
         return;
       }
+      if (this._reviewStopHoldsArrival(dt)) {
+        this.player.finished = false;
+        return;
+      }
+      // A review stop's name was held back for the ride; arrival reveals it.
+      if (this.routeTo && this.routeTo.reviewStop) this.routeTo = { ...this.routeTo, name: this.routeTo.reviewStop };
       this.state = GameState.FINISHED;
       this.sound.silence();
       // Settings/help may still be "open" in state even though the finish card
@@ -597,6 +603,7 @@ class Game {
       this._explorationSnapshot = this._saveExploration();
     } else {
       this.player.finished = false;
+      this._reviewStopWait = 0;
     }
   }
 

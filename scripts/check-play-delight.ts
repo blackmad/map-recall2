@@ -153,6 +153,29 @@ console.log('play-delight checks passed');
   assert.equal(viaPlanned?.via, 'via:', 'the planned via travels with the choice');
   const refused = choosePlannedReview({ ...viaPick!, alternatives: [] }, p => p.id, () => ({ dueNamesOnPath: [], viaUsed: false }));
   assert.equal(refused?.via, undefined, 'a via the planner refused is not ridden');
+  // A cul-de-sac cannot be ridden through, so the via is refused; the ride
+  // can end on it instead, under a blank destination name (2026-09-30).
+  const { reviewStopHoldsArrival, isReviewStop, REVIEW_STOP_LABEL } = await import('../src/canalRecall/game/routeSelection.ts');
+  const stopAlt = viaPick!.alternatives!.at(-1)!;
+  assert.equal(stopAlt.stop?.name, 'Noordstraat', 'the uncovered name travels as the last runner-up, as a stop');
+  assert.ok(isReviewStop(stopAlt.to) && stopAlt.to.name === '' && stopAlt.to.reviewStop === 'Noordstraat', 'the stop destination has no name to show');
+  assert.ok(stopAlt.dueNear.includes('Noordstraat'));
+  const stopPlanned = choosePlannedReview({ ...viaPick!, alternatives: [stopAlt] }, p => p.id,
+    (s, f) => ({ dueNamesOnPath: String(f).startsWith('review-stop:') ? ['Noordstraat'] : [], viaUsed: false }));
+  assert.equal(stopPlanned?.pick.stop?.name, 'Noordstraat', 'a refused via falls back to ending the ride on the street');
+  const viaWins = choosePlannedReview({ ...viaPick!, alternatives: [stopAlt] }, p => p.id,
+    (s, f, v) => ({ dueNamesOnPath: v ? ['Noordstraat', 'Rozengracht'] : ['Noordstraat'], viaUsed: !!v }));
+  assert.equal(viaWins?.pick.stop, undefined, 'a via that rides is kept over the stop');
+  const unreachable = choosePlannedReview({ ...stopAlt, alternatives: [] }, p => p.id, () => ({ dueNamesOnPath: [] }));
+  assert.equal(unreachable, null, 'a stop the planned path never reaches is not ridden to');
+  const onlyStop = pickReviewRoute({ pois: [poi('west', 52.3760, 4.8750), poi('far', 52.3000, 4.9900)], due: [north], chooseIndex: first });
+  assert.equal(onlyStop?.stop?.name, 'Noordstraat', 'with no pair in range, the stop is the pick');
+  assert.equal(REVIEW_STOP_LABEL.includes('Noord'), false);
+  assert.equal(reviewStopHoldsArrival({ stop: 'Noordstraat', promptOpen: true, revealed: false, waitedSeconds: 9 }), true, 'arrival waits for an open question');
+  assert.equal(reviewStopHoldsArrival({ stop: 'Noordstraat', promptOpen: false, revealed: false, waitedSeconds: 0.5 }), true, 'and briefly for it to open');
+  assert.equal(reviewStopHoldsArrival({ stop: 'Noordstraat', promptOpen: false, revealed: true, waitedSeconds: 0 }), false, 'not once it is answered');
+  assert.equal(reviewStopHoldsArrival({ stop: 'Noordstraat', promptOpen: false, revealed: false, waitedSeconds: 5 }), false, 'nor forever');
+  assert.equal(reviewStopHoldsArrival({ stop: null, promptOpen: true, revealed: false, waitedSeconds: 0 }), false, 'a landmark arrival never waits');
   const briefWith = missionBrief({ destinationName: 'Westerkerk', travelMode: 'car', routePattern: 'surprise', cityName: 'Amsterdam', reviewDueNearRoute: 2 });
   assert.equal(briefWith.tease, 'Review ride: 2 overdue names on the way', 'the briefing counts, never names');
 }

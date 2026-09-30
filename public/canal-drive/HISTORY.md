@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Review rides end on a due cul-de-sac, as "the mystery street"
+
+A due court or cul-de-sac off every landmark line could not be ridden
+through, so the planner refused it as a via and it never came up for review.
+`pickReviewRoute` now offers the best such name as a *stop*: the ride ends on
+that street. The stop travels as the last runner-up, so `choosePlannedReview`
+plans it only when nothing ahead of it rides as many due names, and a via
+that rides is kept over it.
+- **Nothing reveals the name.** The destination is a `ReviewStopPoi` with a
+  blank name and the street in `reviewStop`. The HUD and the briefing show
+  `REVIEW_STOP_LABEL` ("the mystery street", as in "Pedal to the mystery
+  street"). Arrival reveals the name. No nearby landmark claims the arrival
+  card.
+- **The finish is the court's dead end**, the end no other way touches, so
+  the whole court is ridden.
+- **Arrival waits for the question.** It waits while a question is open, and
+  up to 2.5 s for one to open (`reviewStopHoldsArrival`). Otherwise a 30 m
+  court inside the 80 px finish radius would end the ride before the
+  question's 0.65 s delay.
+- **A stop must be reached.** A stop the planned path does not ride (a court
+  outside the routing graph) is rejected. The ride then ends at the nearest
+  landmark, so it never aims at a finish the rider cannot reach.
+- **Measured:** of 20 courts and paths off every landmark line, 13 are
+  reviewed (10 as stops, 3 as vias). Before, courts like these went
+  unreviewed. Zeevaarthof (Noord) is pinned in `tests/e2e/review-ride.spec.ts`,
+  including the held arrival and the reveal.
+- The "routes along a due street it would otherwise avoid" spec rode one
+  random route, and about one route in three has no side street inside the
+  cap. It now tries up to three routes.
+
 ## 2026-09-30 — Street-name translations: rare openings read one by one
 
 Openings that occur once or twice were read against the Dutch; 61 origins

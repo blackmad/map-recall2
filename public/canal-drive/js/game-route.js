@@ -564,6 +564,51 @@ class GameRouteRuntime {
     return stretches.slice(0, REVIEW_VIA_STRETCHES).map(entry => entry.stretch);
   }
 
+  /** Where a review stop's ride ends: the dead end of its street near the
+   *  due place, so the whole cul-de-sac is ridden and its question opens
+   *  before arrival. Failing a dead end, the nearest point of the street.
+   *  Null when no way of that name is near (the same name elsewhere is
+   *  another street). */
+  _reviewStopPoint(poi, lat, lng, segments) {
+    const centre = this.osmLoader.latLngToGamePoint(poi.lat, poi.lng, lat, lng, segments, REVIEW_VIA_RADIUS);
+    if (!centre || !this.track) return null;
+    const ends = [];
+    let nearest = null, nearestGap = Infinity;
+    for (const segment of this.track.segments) {
+      if (segment.name !== poi.reviewStop || !segment.points || segment.points.length < 2) continue;
+      for (const point of segment.points) {
+        const gap = Math.hypot(point.x - centre.x, point.y - centre.y);
+        if (gap < nearestGap) { nearestGap = gap; nearest = point; }
+      }
+      ends.push({ end: segment.points[0], segment }, { end: segment.points[segment.points.length - 1], segment });
+    }
+    if (!nearest || nearestGap > REVIEW_VIA_RADIUS) return null;
+    // A dead end: an end no other way's point touches.
+    const touches = ({ end, segment }) => this.track.segments.some(other => other !== segment && other.points
+      && other.points.some(point => Math.hypot(point.x - end.x, point.y - end.y) <= JUNCTION_STITCH_RADIUS));
+    const deadEnds = ends
+      .filter(entry => Math.hypot(entry.end.x - centre.x, entry.end.y - centre.y) <= REVIEW_VIA_RADIUS && !touches(entry))
+      .map(entry => entry.end);
+    deadEnds.sort((a, b) => Math.hypot(a.x - centre.x, a.y - centre.y) - Math.hypot(b.x - centre.x, b.y - centre.y));
+    const end = deadEnds[0] || nearest;
+    return { x: end.x, y: end.y };
+  }
+
+  /** Arrival at a review stop waits for its question; see
+   *  routeSelection.reviewStopHoldsArrival. */
+  _reviewStopHoldsArrival(dt) {
+    const stop = this.routeTo && this.routeTo.reviewStop;
+    const Route = window.CanalRecallRoute;
+    if (!stop || !Route || !Route.reviewStopHoldsArrival) return false;
+    this._reviewStopWait = (this._reviewStopWait || 0) + dt;
+    return Route.reviewStopHoldsArrival({
+      stop,
+      promptOpen: !!this.quizPromptName,
+      revealed: !!(this.revealedNames && this.revealedNames.has(stop)),
+      waitedSeconds: this._reviewStopWait,
+    });
+  }
+
   _pickDestinationNear(from, alsoExcludeId = null) {
     return CanalRecallRoute.pickDestinationNear(this.routePois, from, undefined, alsoExcludeId);
   }
@@ -1215,10 +1260,11 @@ class GameRouteRuntime {
       // runners-up and ride the one whose path passes the most due names.
       // A via (a due street off every line) is planned here too.
       this._reviewVia = null;
-      if (this._reviewRoute && ((this._reviewRoute.alternatives && this._reviewRoute.alternatives.length) || this._reviewRoute.via)
+      if (this._reviewRoute && ((this._reviewRoute.alternatives && this._reviewRoute.alternatives.length) || this._reviewRoute.via || this._reviewRoute.stop)
         && window.CanalRecallRoute && window.CanalRecallRoute.choosePlannedReview) {
         this.track._reviewDueNames = this._dueReviewNames();
-        const snap = (poi) => (poi.id === this.routeFrom?.id && poi.lat === startLL?.lat ? start
+        const snap = (poi) => (poi.reviewStop ? this._reviewStopPoint(poi, lat, lng, segments)
+          : poi.id === this.routeFrom?.id && poi.lat === startLL?.lat ? start
           : poi.id === this.routeTo?.id && poi.lat === finishLL?.lat ? finish
           : this.osmLoader.latLngToGamePoint(poi.lat, poi.lng, lat, lng, segments,
             this._isGenerousSnapOrigin(poi) ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST));
@@ -1237,7 +1283,20 @@ class GameRouteRuntime {
           });
         // Replan the stretch that was ridden, not the whole list.
         this._reviewVia = chosen && chosen.via ? ridden.get(chosen.start) || null : null;
-        if (chosen && (chosen.pick.from.id !== this.routeFrom?.id || chosen.pick.to.id !== this.routeTo?.id)) {
+        // A stop nothing reaches: end at the landmark nearest it instead.
+        if (!chosen && this.routeTo && this.routeTo.reviewStop) {
+          const near = this._nearestSnappableDestination(finishLL, segments, lat, lng, MAX_SNAP_DIST, this.routeFrom?.id);
+          if (near) {
+            console.info(`Review stop ${this.routeTo.reviewStop} is unreachable; ending at ${near.poi.name}`);
+            finish = near.point;
+            this.routeTo = near.poi;
+            finishLL = { lat: near.poi.lat, lng: near.poi.lng };
+            this._reviewRoute = { ...this._reviewRoute, to: near.poi, stop: undefined, alternatives: [] };
+            this.track.setEndpoints(start, finish);
+          }
+        }
+        // A stop's finish is its street's end, not the generic snap of its centre.
+        if (chosen && (chosen.pick.from.id !== this.routeFrom?.id || chosen.pick.to.id !== this.routeTo?.id || chosen.finish !== finish)) {
           console.info(`Review ride: ${chosen.pick.from.name} → ${chosen.pick.to.name} rides ${chosen.dueOnPath.length} due names`);
           start = chosen.start;
           finish = chosen.finish;

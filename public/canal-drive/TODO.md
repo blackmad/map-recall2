@@ -70,12 +70,14 @@ article ("Dirk" Sterenberg). A human could skim that list (`npx tsx scripts/audi
 **6. Due-aware “where next” routing.**
 The thin slice shipped 2026-09-29 (see HISTORY). With Plan review on, a ride
 runs between the landmarks whose line passes the most due names. Still open:
-- a due street off every landmark line is now ridden as a via (see HISTORY,
-  2026-09-30), one via per ride. With several such names due, the others wait
-  for later rides. Of 30 sampled uncovered names, 16 are ridden. The rest
-  are mostly cul-de-sacs, courts and pedestrian squares that cannot be
-  ridden through. Those could be reviewed by ending the ride there, under a
-  blank destination name;
+- A due street off every landmark line is ridden as a via, or, when it
+  cannot be ridden through, ends the ride as "the mystery street" (see
+  HISTORY, 2026-09-30). Each ride takes one such name; the others wait for
+  later rides. Of 20 sampled courts and paths off every line, 13 are now
+  reviewed (10 as stops, 3 as vias). The other 7 are footpaths and courts
+  the bike routing graph does not reach, so the ride ends at the nearest
+  landmark instead. Reaching them would take footway access in the graph,
+  walking the bike.
 
 **Street-name origins: the licence, and a glossary pass.**
 All 5,333 origins are published (see HISTORY, 2026-09-30).
