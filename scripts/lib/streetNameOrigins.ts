@@ -229,6 +229,37 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   // Outright mistranslations that taught something false: a plum is not a
   // pear, sparrows are not finches' parents, and a pheasant is no chicken.
   [/pruimenboom/i, /\bpear tree\b/g, 'plum tree'],
+  // Amsterdam annexed Nieuwer-Amstel, Watergraafsmeer and Sloten and took
+  // their streets over; "van de gemeente X overgenomen" is taken over *from*
+  // X, not by it (Vondelkerkstraat, Jacob Obrechtstraat).
+  [/van de gemeente .{0,40}overgenomen/i, /\btaken over by the municipality of\b/g, 'taken over from the municipality of'],
+  // English names for Dutch history: the Anglo-Dutch Wars, the Battle of the
+  // Downs (Duins, 1639), the Geuzen, Zeeland's admirals, and a wethouder.
+  [/engelse oorlog/i, /\b(First|Second|Third|Fourth) English War\b/g, '$1 Anglo-Dutch War'],
+  [/duins/i, /\b[Bb]attle of Duins\b/g, 'Battle of the Downs'],
+  [/duins/i, /\bat Duins\b/g, 'at the Downs (Duins)'],
+  [/geuzen/i, /\bconquered by the Gueux on the Spaniards\b/g, 'taken from the Spanish by the Geuzen'],
+  [/geuzen/i, /\bGueux\b/g, 'Geuzen'],
+  [/zeeuws/i, /\bZeelandish\b/g, 'Zeeland'],
+  [/wethouder/i, /\bWethouder for\b/g, 'Alderman for'],
+  // More that taught something false: a pont is a ferry, the watergeuzen
+  // were the Sea Beggars, gelei is jelly, Grotius escaped in a book chest,
+  // and the Wetering flowed into the Spui, not out of it.
+  [/-pont\b/i, /\b(\w+) bridge was therefore renamed\b/g, '$1 ferry was therefore renamed'],
+  [/watergeuzen/i, /\bwater gunners\b/g, 'Sea Beggars (watergeuzen)'],
+  [/geleihulsel/i, /\byellowish sheath\b/g, 'a jelly sheath'],
+  [/schiere monniken/i, /\bgray or semi-monks\b/g, 'grey (schiere) monks'],
+  [/boekenkist/i, /\bthrough a bookcase\b/g, 'in a book chest'],
+  [/hulppersoneel/i, /\baid workers\b/g, 'domestic staff'],
+  [/in het Spui uitmondde/i, /\bflowed out of the Spui from the outside\b/g, 'flowed into the Spui from outside the city'],
+  [/\bborgen\b/i, /\bGroninger castles \(castles\)/g, 'Groningen castles (borgen)'],
+  [/natuur-? ?en scheikundige/i, /\bnatural and chemist\b/g, 'physicist and chemist'],
+  [/zeevaart-, wis- en sterrenkundige/i, /\bMaritime, scientific and astronomical\b/g, 'Navigation expert, mathematician and astronomer'],
+  [/letterkundige/i, /\bLiterary(?= \(|,| and)/g, 'Man of letters'],
+  [/werelddeel/i, /\bworld region\b/g, 'continent'],
+  [/zangvogel/i, /\b[Ss]inging bird\b/g, 'songbird'],
+  // Grammar the translator gets wrong before a vowel.
+  [/./, /\ba (?=(?:inn|embankment|alderman|island|estate|old|important|admiral|officer|engineer|author|actor|actress|architect|artist|area|order|eighteenth|eleventh|inland|English|Amsterdam)\b)/g, 'an '],
   [/tot de vinken behorende/i, /\bbelonging to the sparrows\b/g, 'belonging to the finches'],
   [/^de hoender\.?$/i, /^The chicken\.?$/, 'The fowl.'],
 ];

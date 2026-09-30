@@ -141,4 +141,25 @@ assert.equal(repairOriginTranslation('Opgeheven bij Rb. 19-10-1949.', 'Abolished
 assert.equal(repairOriginTranslation('x', 'In Rb. of 21-1-1976, a part was renamed.'), 'By council decision in 1976, a part was renamed.');
 assert.equal(repairOriginTranslation('x', 'Laid out (Rb. Nieuwer-Amstel 12-3-1914).'), 'Laid out (council decision of Nieuwer-Amstel, 1914).');
 
+// Direction and English names (Vondelkerkstraat, Den Brielstraat, Jan Evertsenstraat).
+assert.equal(repairOriginTranslation('De straat is onder deze naam van de gemeente Nieuwer-Amstel overgenomen.',
+  'The street was taken over by the municipality of Nieuwer-Amstel under this name.'),
+  'The street was taken over from the municipality of Nieuwer-Amstel under this name.', 'annexed, not handed over');
+assert.equal(repairOriginTranslation('Den Briel werd in 1572 als eerste stad door de geuzen op de Spanjaarden veroverd.',
+  'Den Briel was the first city to be conquered by the Gueux on the Spaniards in 1572.'),
+  'Den Briel was the first city to be taken from the Spanish by the Geuzen in 1572.');
+assert.equal(repairOriginTranslation('Zeeuws geslacht. Slag bij Duins (1639). Gesneuveld in de Tweede Engelse oorlog.',
+  'Zeelandish family. Battle of Duins (1639). Killed in the Second English War.'),
+  'Zeeland family. Battle of the Downs (1639). Killed in the Second Anglo-Dutch War.');
+
+assert.equal(repairOriginTranslation('De Valkenweg-pont werd daardoor Adelaarsweg-pont.', 'The Valkenweg bridge was therefore renamed Adelaarsweg-pont.'),
+  'The Valkenweg ferry was therefore renamed Adelaarsweg-pont.', 'a pont is a ferry');
+assert.equal(repairOriginTranslation('de veerman die de watergeuzen hielp', 'the ferryman who helped the water gunners'),
+  'the ferryman who helped the Sea Beggars (watergeuzen)');
+assert.equal(repairOriginTranslation('per boekenkist', 'he managed to escape in 1621 through a bookcase.'), 'he managed to escape in 1621 in a book chest.');
+assert.equal(repairOriginTranslation('Letterkundige (1876-1931).', 'Literary (1876-1931).'), 'Man of letters (1876-1931).');
+assert.equal(repairOriginTranslation('Het werelddeel.', 'The world region.'), 'The continent.');
+assert.equal(repairOriginTranslation('x', 'they stayed in a inn, a embankment, a one-year plant.'), 'they stayed in an inn, an embankment, a one-year plant.',
+  'a/an only before the listed words');
+
 process.stdout.write('Street-name origin checks passed\n');

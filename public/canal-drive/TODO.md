@@ -68,8 +68,10 @@ and function now reach clicked buildings (see HISTORY, 2026-09-30). Still open:
 - the register's public descriptions (`redengevendeOmschrijvingPubliek`,
   1,891 texts, median 4.5k characters of architectural Dutch) need a
   shortening pass before translation;
-- `amsterdam_canon` (49 windows with location and a stadsarchief link) could
-  be landmark-like stops;
+- `amsterdam_canon` (49 windows; API `amsterdam_canon/canon_amsterdam_2025`)
+  has only year, title, location and theme. The window text is on
+  amsterdam.nl behind a bot check, so it is not scraped. These need another
+  text source before they can be stops;
 - bridge cards now carry the register (see HISTORY), including all 14
   bridges named "…sluis". The separate lock register (`sluizen`, 46) is not
   used; it would only add that a lock lies beneath. Two road names on multi-bridge ways, Jan van

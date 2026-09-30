@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: annexation direction, a ferry, the Sea Beggars
+
+A random-sample read of 55 origins found more renderings that taught
+something false. `ORIGIN_GLOSSARY` now fixes each wherever the Dutch says
+the word, correcting 88 published origins:
+- **Annexation direction.** "Van de gemeente Nieuwer-Amstel overgenomen" is
+  taken over *from* that municipality when Amsterdam annexed it, not by it
+  (Vondelkerkstraat, Jacob Obrechtstraat, Frederiksstraat).
+- **Things that were not so.** A pont is a ferry, not a bridge (Valkenweg).
+  The watergeuzen were the Sea Beggars, not "water gunners". Grotius escaped
+  in a book chest, not "through a bookcase". Gelei is jelly, not
+  "yellowish". The Wetering flowed *into* the Spui. Hulppersoneel are
+  domestic staff.
+- **English names.** The Anglo-Dutch Wars, the Battle of the Downs (Duins),
+  Geuzen (not the French Gueux), Zeeland admirals, alderman, Groningen
+  borgen, continent (werelddeel), songbird.
+- **Mangled professions.** "Literary (1876–1931)" becomes "Man of letters";
+  "natural and chemist" becomes "physicist and chemist"; "maritime,
+  scientific and astronomical" becomes "navigation expert, mathematician and
+  astronomer".
+- **Grammar.** "a inn" and "a embankment" become "an", limited to listed
+  words.
+
+The Amsterdam Canon (49 windows) was checked as a stop source. The API holds
+only year, title and place. The window text is on amsterdam.nl behind a bot
+check, so it was not scraped.
+
 ## 2026-09-30 — Review rides reach due streets off every landmark line
 
 A review ride runs between two landmarks whose straight line passes due
