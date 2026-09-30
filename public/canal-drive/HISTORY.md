@@ -21,7 +21,8 @@ Street-name origins are now retranslated whole by a language model:
   translation that loses a three- or four-digit number from the Dutch.
 - A scan for register texts that start or stop mid-sentence found a few
   split entries. Pure fragments are withheld (`WITHHELD_ORIGINS`):
-  Dirk van Hasseltssteeg, Elim, Piet Wiedijkstraat and Enny Vredestraat (the
+  Dirk van Hasseltssteeg, Elim, Piet Wiedijkstraat, Hamerstraat (a paragraph
+  of Piet Meerburg's biography) and Enny Vredestraat (the
   second half of Enneüs Heerma's biography, confirmed in the live API). Eilandsgracht is
   withheld too: it carries the Elandsgracht's text about tanning elk hides.
   Texts that are only cut at one edge are translated without the broken
