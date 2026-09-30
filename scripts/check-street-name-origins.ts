@@ -298,6 +298,8 @@ assert.equal(repairOriginTranslation("Genoemd naar 't Giethuis, de stadsgeschut-
   assert.ok(!published.origins.some(origin => origin.name === 'Scharwouderstraat'));
   // Regression: the Smallepadsgracht record repeats the Smalschipstraat's boat text.
   assert.ok(!published.origins.some(origin => origin.name === 'Smallepadsgracht'));
+  // Regression: the register's whole Trimurtistraat text is "Trimur: onafhankelijkheid".
+  assert.match(published.origins.find(origin => origin.name === 'Trimurtistraat')!.en, /S\.K\. Trimurti/);
 }
 assert.equal(repairOriginTranslation('De naam van deze vaste brug verwijst naar de toren.', 'The name of this permanent bridge refers to the tower.'),
   'The name of this fixed bridge refers to the tower.', 'a vaste brug is fixed, not permanent');
