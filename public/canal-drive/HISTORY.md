@@ -27,8 +27,15 @@ pieces, so a "midpoint" is a junction. The ride would reach it and turn back
 whenever the finish lay behind it. Avenhornstraat was refused on all 11
 segments. So the game passes stretches of the street (`_reviewViaPoints`):
 the longest first, since long pieces are more often through streets, within
-800 m of the due centre, up to 3. Each stretch is tried in its likelier
-direction first.
+800 m of the due centre, up to 8. The planner drops stretches that end in a
+dead end (a node of degree 1) and tries three of the rest, each in its
+likelier direction first.
+
+**Measured.** 30 of the 731 uncovered names were each given a real ride. 16
+are now reviewed; before this change none were. Most refusals are streets
+the rules should refuse: courts ("…hof"), cul-de-sacs, service roads,
+pedestrian squares, or cases over the 40% cap. A refused via costs at most
+~200 ms per planned candidate on desktop.
 
 **Cost.** A via plan costs about 95 ms against 85 ms for a direct plan (a
 100k-node graph, desktop), because legs skip the biased second pass.

@@ -104,7 +104,7 @@ const MIN_START_FINISH_DIST = 200;             // px — minimum distance betwee
 const MAX_SNAP_DIST = 800;                     // px — POIs may sit a short walk from the water
 const HOME_MAX_SNAP_DIST = 240;                // px (~80 m) — never teleport a home launch across the neighborhood
 const REVIEW_VIA_RADIUS = 2400;                // px (~800 m) — stretches of a review via street, around its centre
-const REVIEW_VIA_TRIES = 3;                    // points along a review via street to plan through (routeSelection.choosePlannedReview)
+const REVIEW_VIA_STRETCHES = 8;                // stretches of a review via street offered; the planner drops dead ends and tries 3
 // The city overview map, bottom-left. Larger than the 180x140 local minimap it
 // replaced: the whole city has to be legible in it.
 const MINIMAP_W = 260, MINIMAP_H = 200, MINIMAP_X = 15;

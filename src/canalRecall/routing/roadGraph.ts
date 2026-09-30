@@ -86,6 +86,9 @@ export type LearningRouteOptions<TMetadata = unknown> = Readonly<{
    */
   via?: RoadGraphPoint | ViaStretch | readonly ViaStretch[];
   viaDetourRatio?: number;
+  /** Stretches planned at most, after those ending in a dead end are
+   *  dropped (default 3): each try plans three legs per direction. */
+  viaTries?: number;
 }>;
 
 /** Two points on one street, ridden from one to the other in either order. */
@@ -457,7 +460,12 @@ export function planLearningRoadRoute<TMetadata>(
   if (!via || !plan || (Array.isArray(via) && !via.length)) return plan;
   const viaDetourRatio = options.viaDetourRatio ?? 0.4;
   const isPoint = (value: unknown): value is RoadGraphPoint => !Array.isArray(value);
-  const stretches: ViaStretch[] = isPoint(via) ? [] : isPoint(via[0]) ? [via as ViaStretch] : [...(via as readonly ViaStretch[])];
+  // A stretch with a dead-end end can only be ridden out and back, which the
+  // repeat check below refuses anyway; dropping it first saves its planning.
+  const through = (point: RoadGraphPoint) => (nearestRoadGraphNode(graph, point)?.edges.length ?? 0) >= 2;
+  const stretches: ViaStretch[] = (isPoint(via) ? [] : isPoint(via[0]) ? [via as ViaStretch] : [...(via as readonly ViaStretch[])])
+    .filter(([a, b]) => through(a) && through(b))
+    .slice(0, options.viaTries ?? 3);
   const crow = (a: RoadGraphPoint, b: RoadGraphPoint) => Math.hypot(a.x - b.x, a.y - b.y);
   // Each stretch in the order that looks likelier to lead on, then reversed.
   const orders: RoadGraphPoint[][] = isPoint(via) ? [[via]] : stretches.flatMap(([a, b]) =>
