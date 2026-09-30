@@ -4,7 +4,10 @@
 
 The translator rendered every opening "Naar de …" ("named after the …")
 as "To the …": 123 origins read "To the city of Rotterdam". A glossary rule
-now rewrites the opening whenever the Dutch starts with "Naar ". Reading
+now rewrites the opening whenever the Dutch starts with "Naar ", including
+"To a …" and "To 'the princely title'". A herenhuis is a country house,
+not a "Men's house", and the Hem became an island as its shore washed away
+(oeverafslag), not "due to a river bend". Reading
 those 85 distinct texts turned up more slips:
 - An uitspanning, the Schollenbrug inn, had become "the extension".
 - Vastenavond (Shrovetide) had become "Good Friday".
