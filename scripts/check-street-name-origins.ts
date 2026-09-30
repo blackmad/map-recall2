@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import {
   AMSTERDAM_WOONPLAATS_ID, cleanDescription, indexOrigins, nameGenericOrigin, refersToItself, withoutCrossReference, nameKey, nameStem, originFor, originsFromRecords, repairOriginTranslation,
@@ -270,4 +271,11 @@ assert.equal(repairOriginTranslation('Lid van de Tweede Kamer, later van de Eers
   'Member of the House of Representatives, later of the Senate.', 'the Tweede Kamer stays the House');
 assert.equal(repairOriginTranslation("Genoemd naar 't Giethuis, de stadsgeschut- en klokkengieterij.", "Named after 't Giethuis, the city's gunpowder and bell foundry."),
   "Named after 't Giethuis, the city's cannon and bell foundry.");
+{
+  const published = JSON.parse(readFileSync('public/data/extracts/amsterdam/street-name-origins.json', 'utf8')) as { origins: Array<{ name: string }> };
+  const { WITHHELD_ORIGINS } = await import('./lib/streetNameOrigins.ts');
+  for (const name of Object.keys(WITHHELD_ORIGINS)) {
+    assert.equal(published.origins.some(origin => origin.name === name), false, `${name} is withheld: ${WITHHELD_ORIGINS[name]}`);
+  }
+}
 process.stdout.write('Street-name origin checks passed\n');
