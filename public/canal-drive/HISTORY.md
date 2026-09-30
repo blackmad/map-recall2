@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: opening words read literally
+
+Pairing each Dutch opening word with its English opening found more
+systematic slips. Together they cover 49 origins:
+- A meer is a lake: "More, located in southern Friesland".
+- A buurtschap is a hamlet, not a "neighbourhood".
+- A zijrivier is a tributary, not a "side river".
+- A waterstroom is a stream, not a "water flow".
+- A geuzenkapitein, a Sea Beggar captain, had become a "Guerrilla" or
+  "Guzen" captain.
+- Passeren, the dressing of Spanish leather, had become "Passing".
+
 ## 2026-09-30 — Street-name translations: "Naar de …" is "Named after", not "To the …"
 
 The translator rendered every opening "Naar de …" ("named after the …")

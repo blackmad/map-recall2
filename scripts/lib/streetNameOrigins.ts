@@ -558,6 +558,19 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/^Herenhuis/, /^Men's house\b/, 'Country house (herenhuis)'],
   [/door oeverafslag/i, /\bonly later became an island due to a river bend\b/g, 'only later became an island as its shore washed away'],
   [/door oeverafslag/i, /\bwas only later made into an island by a breakwater\b/g, 'only later became an island as its shore washed away'],
+  // Openings read word by word: Meer is a lake, a buurtschap a hamlet, a
+  // zijrivier a tributary, and a geuzenkapitein a Sea Beggar captain.
+  [/^Meer[,\s]/, /^More\b/, 'Lake'],
+  [/^Buurtschap/, /^Neighbou?rhood\b/, 'Hamlet'],
+  [/zijrivier/i, /\bSide river\b/g, 'Tributary'],
+  [/zijrivier/i, /\bside river\b/g, 'tributary'],
+  [/waaraan de plaats/i, /\bto which the city of\b/g, 'on which the city of'],
+  [/^Waterstroom/, /^Water flow\b/, 'Stream'],
+  [/^Transportgoed/, /^Transportation goods\b/, 'Goods'],
+  [/geuzenkapitein/i, /\b(?:Guerrilla|Guzen|Geuzen) captain\b/g, 'Geuzen (Sea Beggar) captain'],
+  [/^Passeren is/, /^Passing was\b/, 'Passeren was'],
+  [/passeerderij/i, /\bthis passership\b/g, 'this passeerderij (leather works)'],
+  [/een voort of voorde/i, /\bA ford is a passable place\b/g, 'A voort or voorde is a ford'],
   // "Naar de …" opens an origin: named after it, not "To the …". Runs after
   // the rules above that match a whole "To the …" opening.
   [/^Naar /, /^To (?=the |an? |[A-Z'])/, 'Named after '],
