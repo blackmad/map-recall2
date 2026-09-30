@@ -36,6 +36,9 @@ Reading the best-known streets' cards turned up more:
 - the Oudeschans "bastion" is a rampart (schans; bastion is bolwerk);
 - Ferdinand Bol's "regency portraits" are regents' group portraits;
 - the Lauriergracht now names the laurel.
+- the Eerste Kamer is the Senate, not the "House of Lords";
+- a schutterij is a civic guard, not a "shooting club";
+- the klovers of 1522 were arquebuses, not "rifles or crossbows".
 
 The full e2e run after tonight's work passed 150, skipped 58 and failed 10.
 All 10 failures are in the appearance lane and were already on the board.

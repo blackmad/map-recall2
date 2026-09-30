@@ -215,6 +215,10 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   // Herengracht: the Heren Regeerders were the city's ruling regents, and
   // the aside contrasts being governed with being ruled.
   [/regentenstuk/i, /\bregency portraits\b/g, "regents' group portraits"],
+  [/eerste kamer/i, /\bHouse of Lords\b/g, 'Senate (Eerste Kamer)'],
+  [/koninkrijkszaken/i, /\broyal affairs\b/g, 'Kingdom relations'],
+  [/schutterij/i, /\bshooting club\b/g, 'civic guard'],
+  [/geweren of kloveren/i, /\brifles or crossbows\b/g, 'firearms (klovers, or arquebuses)'],
   [/slaperdijk/i, /\bsleeping wall\b/g, 'sleeper dike (a reserve dike behind the front line)'],
   [/lijnbaan/i, /\bLinebaan/g, 'Lijnbaan'],
   [/voorburgwal/i, /\bForeburgwal\b/g, 'Voorburgwal'],
