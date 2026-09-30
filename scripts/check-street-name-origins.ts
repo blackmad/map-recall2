@@ -278,4 +278,6 @@ assert.equal(repairOriginTranslation("Genoemd naar 't Giethuis, de stadsgeschut-
     assert.equal(published.origins.some(origin => origin.name === name), false, `${name} is withheld: ${WITHHELD_ORIGINS[name]}`);
   }
 }
+assert.equal(repairOriginTranslation('De naam van deze vaste brug verwijst naar de toren.', 'The name of this permanent bridge refers to the tower.'),
+  'The name of this fixed bridge refers to the tower.', 'a vaste brug is fixed, not permanent');
 process.stdout.write('Street-name origin checks passed\n');
