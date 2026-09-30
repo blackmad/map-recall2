@@ -1088,6 +1088,9 @@ export class GameRecallRuntime {
     // A bridge named correctly earns its own story: why it is called that
     // (203 of the 300 quiz bridges have one, from the municipal register).
     const learnedBridge = this.quizPromptKind === 'bridge' && correct ? correctName : '';
+    // So is the water under it. On a bike this is the only moment a canal's
+    // name is learned, and it used to earn no card at all (2026-09-30).
+    const learnedWater = this.quizPromptKind === 'crossing-water' && correct ? correctName : '';
     if (!atCrossing && !isStopQuiz && !isStreetQuiz) {
       this.quizCurrentName = correctName;
       if (isTransit(this.travelMode) || isLineQuiz) {
@@ -1129,6 +1132,7 @@ export class GameRecallRuntime {
       else this.canvas.focus();
       if (learnedRoute && correct) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
       else if (learnedBridge) this._showStreetKnowledge(learnedBridge, 'bridge', true);
+      else if (learnedWater) this._showStreetKnowledge(learnedWater, 'water', true);
     }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
   }
 }

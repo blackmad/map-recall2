@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — naming the water at a bridge earns the water's card
+
+Found in a screenshot playtest of a bike ride. After "Which waterway are you
+crossing?" was answered correctly, no card came, and a drive-by landmark
+filled the slot. `submitAnswer` showed the route card for streets and the
+bridge card for bridges, but nothing for `crossing-water`. On a bike that is
+the only moment a canal's name is learned, so 227 water origins (Singelgracht,
+Amstel…) never appeared in bike mode. The water card now follows a correct
+water answer. `crossing-quiz.spec.ts` asserts the Amstel card, then the
+Magere Brug card, along the real answer path.
+
 ## 2026-09-30 — the other three cities ride end to end in e2e
 
 TODO item 11 still said the runtime hardcoded Amsterdam, but the city

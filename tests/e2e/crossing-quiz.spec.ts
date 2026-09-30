@@ -102,14 +102,24 @@ test('a bridge over water teaches the water first and the bridge second', async 
   expect(first.subject).toBe('Water');
   expect(first.subjectKind).toBe('water');
 
-  // Answering it right is what unlocks the bridge above it.
+  // Answering it right is what unlocks the bridge above it, and earns the
+  // water's own card: the only moment a bike rider learns a canal's name.
   await page.evaluate(() => window.canalRecallGame._submitCanalAnswer('Amstel'));
+  await expect.poll(() => page.evaluate(() => (window.canalRecallGame as any)._landmarkNotice?.name ?? ''), { timeout: 5000 }).toBe('Amstel');
+  (await page.evaluate(() => { (window.canalRecallGame as any)._landmarkNotice = null; }));
   const second = await crossBridge(page, 'Magere Brug', 0);
   expect(second.kind).toBe('bridge');
   expect(second.asked).toBe('Magere Brug');
   expect(second.question).toBe('Which bridge is this?');
   expect(second.subject).toBe('Bridge');
   expect(second.subjectKind).toBe('bridge');
+
+  // And naming the bridge earns the bridge's card: its origin, then what
+  // the city's bridge register records.
+  await page.evaluate(() => window.canalRecallGame._submitCanalAnswer('Magere Brug'));
+  await expect.poll(() => page.evaluate(() => (window.canalRecallGame as any)._landmarkNotice?.name ?? ''), { timeout: 5000 }).toBe('Magere Brug');
+  const card = await page.evaluate(() => (window.canalRecallGame as any)._landmarkNotice);
+  expect(card.type).toBe('bridge');
 });
 
 test('a wrong answer about the water does not unlock the bridge', async ({ page }) => {
