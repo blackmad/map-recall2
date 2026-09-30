@@ -138,6 +138,21 @@ console.log('play-delight checks passed');
   const tie = choosePlannedReview(synthetic, p => p.id, () => ({ dueNamesOnPath: ['Rozengracht'] }));
   assert.equal(tie!.pick.to.id, 'east', 'on a tie the random pick is kept');
   assert.equal(choosePlannedReview(pick!, () => null, () => ({ dueNamesOnPath: [] })), null, 'nothing snaps, nothing chosen');
+  // A due street no line passes (440 m north of west→east) is ridden as a via.
+  const north = { name: 'Noordstraat', center: [52.3800, 4.8850] as [number, number] };
+  const viaPick = pickReviewRoute({ pois, due: [...due, north], chooseIndex: first });
+  assert.equal(viaPick?.via?.name, 'Noordstraat', 'the uncovered name becomes the via');
+  assert.deepEqual(new Set([viaPick!.from.id, viaPick!.to.id]), new Set(['west', 'east']), 'on the pair whose line it detours least');
+  assert.deepEqual(viaPick!.dueNear, ['Bloemgracht', 'Noordstraat', 'Rozengracht'], 'the via counts with the line names');
+  const lineOnly = pickReviewRoute({ pois, due: [{ name: 'Rozengracht', center: [52.3762, 4.8800] }], chooseIndex: first });
+  assert.equal(lineOnly?.via, undefined, 'a name on a line needs no via');
+  const viaPlans: Array<string | undefined> = [];
+  const viaPlanned = choosePlannedReview({ ...viaPick!, alternatives: [] }, p => p.id === 'review-via' ? `via:${p.name}` : p.id,
+    (s, f, v) => { viaPlans.push(v); return { dueNamesOnPath: v ? ['Noordstraat'] : [], viaUsed: !!v }; });
+  assert.deepEqual(viaPlans, ['via:'], 'the via is snapped and planned under a blank name');
+  assert.equal(viaPlanned?.via, 'via:', 'the planned via travels with the choice');
+  const refused = choosePlannedReview({ ...viaPick!, alternatives: [] }, p => p.id, () => ({ dueNamesOnPath: [], viaUsed: false }));
+  assert.equal(refused?.via, undefined, 'a via the planner refused is not ridden');
   const briefWith = missionBrief({ destinationName: 'Westerkerk', travelMode: 'car', routePattern: 'surprise', cityName: 'Amsterdam', reviewDueNearRoute: 2 });
   assert.equal(briefWith.tease, 'Review ride: 2 overdue names on the way', 'the briefing counts, never names');
 }

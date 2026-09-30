@@ -74,7 +74,22 @@ export type LearningRouteOptions<TMetadata = unknown> = Readonly<{
   dueNames?: ReadonlySet<string>;
   dueDiscount?: number;
   reviewDetourRatio?: number;
+  /**
+   * A review ride's waypoint: a due street that no line between two landmarks
+   * passes. The ride is planned start → via → finish and kept only if it is at
+   * most `viaDetourRatio` (default 40%) longer than the shortest direct ride,
+   * and does not turn back on itself at the via (a cul-de-sac). Otherwise the
+   * direct plan stands. A pair of points is a stretch of street to ride
+   * along, in either direction: touching a single point lets the ride arrive
+   * and turn straight back when the finish lies behind it. A list of
+   * stretches is tried in order, and the first that can be ridden is kept.
+   */
+  via?: RoadGraphPoint | ViaStretch | readonly ViaStretch[];
+  viaDetourRatio?: number;
 }>;
+
+/** Two points on one street, ridden from one to the other in either order. */
+export type ViaStretch = readonly [RoadGraphPoint, RoadGraphPoint];
 
 export type LearningRoutePlan = Readonly<{
   path: readonly RoadGraphPoint[];
@@ -86,6 +101,10 @@ export type LearningRoutePlan = Readonly<{
   usedLearningBias: boolean;
   /** Due names the chosen path rides along (review rides; empty otherwise). */
   dueNamesOnPath: readonly string[];
+  /** True when the path goes through `options.via`. */
+  viaUsed?: boolean;
+  /** The stretch ridden, in riding order, when `via` offered stretches. */
+  viaStretch?: ViaStretch;
 }>;
 
 export type ShortestPathOptions<TMetadata = unknown> = Readonly<{
@@ -433,6 +452,61 @@ export function planLearningRoadRoute<TMetadata>(
   finishPoint: RoadGraphPoint,
   options: LearningRouteOptions<TMetadata>,
 ): LearningRoutePlan | null {
+  const { via, ...direct } = options;
+  const plan = planDirectLearningRoute(graph, startPoint, finishPoint, direct);
+  if (!via || !plan || (Array.isArray(via) && !via.length)) return plan;
+  const viaDetourRatio = options.viaDetourRatio ?? 0.4;
+  const isPoint = (value: unknown): value is RoadGraphPoint => !Array.isArray(value);
+  const stretches: ViaStretch[] = isPoint(via) ? [] : isPoint(via[0]) ? [via as ViaStretch] : [...(via as readonly ViaStretch[])];
+  const crow = (a: RoadGraphPoint, b: RoadGraphPoint) => Math.hypot(a.x - b.x, a.y - b.y);
+  // Each stretch in the order that looks likelier to lead on, then reversed.
+  const orders: RoadGraphPoint[][] = isPoint(via) ? [[via]] : stretches.flatMap(([a, b]) =>
+    crow(startPoint, a) + crow(b, finishPoint) <= crow(startPoint, b) + crow(a, finishPoint) ? [[a, b], [b, a]] : [[b, a], [a, b]]);
+  for (const stretch of orders) {
+    const legs: LearningRoutePlan[] = [];
+    const stops = [startPoint, ...stretch, finishPoint];
+    for (let index = 1; index < stops.length; index++) {
+      const leg = planDirectLearningRoute(graph, stops[index - 1], stops[index], direct, true);
+      // Only the stretch itself may collapse to one node (its ends merged).
+      if (!leg || (leg.path.length < 2 && !(stretch.length === 2 && index === 2))) break;
+      legs.push(leg);
+    }
+    if (legs.length !== stops.length - 1) continue;
+    const path: RoadGraphPoint[] = [];
+    for (const leg of legs) path.push(...(path.length ? leg.path.slice(1) : leg.path));
+    // Every node once: a repeat means riding back the way it came, out of a
+    // dead end or round a lollipop to a junction already passed, which also
+    // confuses the live route line's nearest point.
+    const keys = path.map(({ x, y }) => `${x},${y}`);
+    if (new Set(keys).size !== keys.length) continue;
+    const physicalDistance = legs.reduce((sum, leg) => sum + leg.physicalDistance, 0);
+    if (plan.shortestDistance > 0 && physicalDistance > plan.shortestDistance * (1 + viaDetourRatio + 1e-9)) continue;
+    return {
+      path,
+      expectedNovelty: physicalDistance > 0
+        ? legs.reduce((sum, leg) => sum + leg.expectedNovelty * leg.physicalDistance, 0) / physicalDistance
+        : 0,
+      physicalDistance,
+      shortestDistance: plan.shortestDistance,
+      detourRatio: plan.shortestDistance > 0 ? physicalDistance / plan.shortestDistance - 1 : 0,
+      usedLearningBias: true,
+      dueNamesOnPath: [...new Set(legs.flatMap(leg => leg.dueNamesOnPath))].sort(),
+      viaUsed: true,
+      ...(stretch.length === 2 ? { viaStretch: [stretch[0], stretch[1]] as const } : {}),
+    };
+  }
+  return plan;
+}
+
+function planDirectLearningRoute<TMetadata>(
+  graph: RoadGraph<TMetadata>,
+  startPoint: RoadGraphPoint,
+  finishPoint: RoadGraphPoint,
+  options: LearningRouteOptions<TMetadata>,
+  /** Skip the biased pass: a via leg is short, and the via itself is the
+   *  review, so a second Dijkstra per leg buys little. */
+  shortestOnly = false,
+): LearningRoutePlan | null {
   const familiarityPenalty = options.familiarityPenalty ?? 0.18;
   const dueNames = options.dueNames && options.dueNames.size ? options.dueNames : null;
   const dueDiscount = Math.max(0, Math.min(0.9, options.dueDiscount ?? 0.35));
@@ -464,7 +538,7 @@ export function planLearningRoadRoute<TMetadata>(
   };
   const isDue = (edge: RoadGraphEdge<TMetadata>): boolean =>
     !!dueNames && options.namesForEdge(edge).some(name => name && dueNames.has(name));
-  const preferred = shortestRoadPaths(graph, startPoint, {
+  const preferred = shortestOnly ? null : shortestRoadPaths(graph, startPoint, {
     stopAt: finish,
     edgeCost: ({ edge, distance, from, to }) => isDue(edge)
       ? distance * (1 - dueDiscount + outsidePenalty * homeOutside(from, to))

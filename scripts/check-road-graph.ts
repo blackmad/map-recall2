@@ -76,6 +76,52 @@ assert.deepEqual(cappedPlan?.path, [{ x: 0, y: 0 }, { x: 10, y: 0 }, { x: 20, y:
   assert.deepEqual(far?.dueNamesOnPath, [], 'a review never costs more than the cap');
 }
 
+// Review via: a due street off every landmark line is ridden through, within
+// a cap, and never as an out-and-back into a dead end.
+{
+  const names = (edge: RoadGraphEdge<Street>) => edge.segmentMetadata.flatMap((street) => street?.id ?? []);
+  const ladder = buildRoadGraph([
+    { metadata: { id: 'direct' }, points: [{ x: 0, y: 0 }, { x: 40, y: 0 }] },
+    { metadata: { id: 'loop' }, points: [{ x: 0, y: 0 }, { x: 10, y: 10 }, { x: 30, y: 10 }, { x: 40, y: 0 }] },
+    { metadata: { id: 'stub' }, points: [{ x: 40, y: 0 }, { x: 40, y: 10 }] },
+  ], { mergeSize: 1, junctionStitchRadius: 0 });
+  const base = { masteryForName: () => 0, namesForEdge: names, dueNames: new Set(['stub']) };
+  const plain = planLearningRoadRoute(ladder, { x: 0, y: 0 }, { x: 40, y: 0 }, base);
+  assert.ok(plain?.path.every((point) => point.y === 0), 'without a via the direct street wins');
+  const through = planLearningRoadRoute(ladder, { x: 0, y: 0 }, { x: 40, y: 0 }, { ...base, via: { x: 20, y: 10 } });
+  assert.equal(through?.viaUsed, true, 'the loop is ridden through its middle');
+  assert.ok(through?.path.some((point) => point.y === 10), 'through the via');
+  assert.ok((through?.detourRatio ?? 1) <= 0.4, `within the via cap: ${through?.detourRatio}`);
+  const capped = planLearningRoadRoute(ladder, { x: 0, y: 0 }, { x: 40, y: 0 }, { ...base, via: { x: 20, y: 10 }, viaDetourRatio: 0.1 });
+  assert.ok(!capped?.viaUsed, 'a via past the cap leaves the direct ride');
+  const deadEnd = planLearningRoadRoute(ladder, { x: 0, y: 0 }, { x: 40, y: 0 }, { ...base, via: { x: 40, y: 10 }, viaDetourRatio: 5 });
+  assert.ok(!deadEnd?.viaUsed, 'a via up a dead end is not ridden out and back');
+  // Touching a point lets the ride arrive and turn back when the finish lies
+  // behind it; a stretch of the street is ridden along, in whichever
+  // direction leads on.
+  const hoop = buildRoadGraph([
+    { metadata: { id: 'direct' }, points: [{ x: 0, y: 0 }, { x: 10, y: 0 }, { x: 30, y: 0 }, { x: 40, y: 0 }] },
+    { metadata: { id: 'hoop' }, points: [{ x: 30, y: 0 }, { x: 30, y: 5 }, { x: 10, y: 8 }, { x: 10, y: 0 }] },
+  ], { mergeSize: 1, junctionStitchRadius: 0 });
+  const touched = planLearningRoadRoute(hoop, { x: 0, y: 0 }, { x: 40, y: 0 }, { ...base, via: { x: 30, y: 5 } });
+  assert.ok(!touched?.viaUsed, 'a point beside the finish is reached and ridden back from');
+  const along = planLearningRoadRoute(hoop, { x: 0, y: 0 }, { x: 40, y: 0 }, { ...base, via: [{ x: 30, y: 5 }, { x: 10, y: 8 }] });
+  assert.equal(along?.viaUsed, true, 'the stretch is ridden along');
+  assert.deepEqual(along?.path.map(({ x, y }) => `${x},${y}`), ['0,0', '10,0', '10,8', '30,5', '30,0', '40,0'], 'in the direction that leads on');
+  const listed = planLearningRoadRoute(hoop, { x: 0, y: 0 }, { x: 40, y: 0 }, {
+    ...base, via: [[{ x: 30, y: 5 }, { x: 30, y: 0 }], [{ x: 10, y: 8 }, { x: 30, y: 5 }]],
+  });
+  assert.deepEqual(listed?.viaStretch, [{ x: 10, y: 8 }, { x: 30, y: 5 }], 'a list is tried in turn; the stub that turns back is passed over');
+  assert.equal(planLearningRoadRoute(hoop, { x: 0, y: 0 }, { x: 40, y: 0 }, { ...base, via: [] })?.viaUsed, undefined, 'an empty list is no via');
+  const lollipop = buildRoadGraph([
+    { metadata: { id: 'direct' }, points: [{ x: 0, y: 0 }, { x: 40, y: 0 }] },
+    { metadata: { id: 'stem' }, points: [{ x: 20, y: 0 }, { x: 20, y: 10 }] },
+    { metadata: { id: 'ring' }, points: [{ x: 20, y: 10 }, { x: 15, y: 15 }, { x: 20, y: 20 }, { x: 25, y: 15 }, { x: 20, y: 10 }] },
+  ], { mergeSize: 1, junctionStitchRadius: 0 });
+  const round = planLearningRoadRoute(lollipop, { x: 0, y: 0 }, { x: 40, y: 0 }, { ...base, via: { x: 20, y: 20 }, viaDetourRatio: 5 });
+  assert.ok(!round?.viaUsed, 'nor round a lollipop back down its stem');
+}
+
 // Soft home-ring bias: the outer corridor costs more, so the path hugs home.
 const ringSegments: RoadGraphSegment<Street>[] = [
   { metadata: { id: 'familiar' }, points: [{ x: 0, y: 0 }, { x: 20, y: 0 }] }, // through home

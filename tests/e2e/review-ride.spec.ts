@@ -158,3 +158,40 @@ test('a review ride plans its runners-up and rides the one past the due street',
   expect(result.to, JSON.stringify({ setup, result })).toBe(setup.eastId);
   expect(result.dueOnPath).toContain('Rozengracht');
 });
+
+// A quarter of Amsterdam's street names lie more than 200 m from every line
+// between two landmarks, mostly in Noord and the outer districts, so a due
+// street there was never ridden again (2026-09-30). It is now ridden as a via,
+// when the detour stays inside the caps. Avenhornstraat in Nieuwendam-Noord
+// is 350 m from the nearest landmark.
+test('a due street off every landmark line is ridden as a via', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'route choice; one project is enough');
+  test.setTimeout(150000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame))).toBe(true);
+  await setHiddenSelect(page, 'travel-mode', 'car');
+  await expect.poll(() => page.evaluate(() => ((window as any).canalRecallGame.routePois || []).length)).toBeGreaterThan(10);
+  await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    game.recall.dueReviews = () => [{ name: 'Avenhornstraat', type: 'street', cityId: game.cityId || 'amsterdam', center: [52.39044, 4.945227], dueAt: Date.now() - 1000 }];
+    const prefs = game._prefs();
+    game._prefs = () => ({ ...prefs, skipMastered: true });
+  });
+  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
+  await expect.poll(() => page.evaluate(() => Array.isArray((window as any).canalRecallGame._reviewRoute?.dueOnPath)), { timeout: 90000 }).toBe(true);
+  const result = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    const plan = game._routeLearningPlan;
+    return {
+      from: game.routeFrom.name, to: game.routeTo.name, via: game._reviewRoute.via?.name,
+      dueOnPath: game._reviewRoute.dueOnPath, viaUsed: plan?.viaUsed, detour: plan?.detourRatio,
+      tease: game._composeMissionBrief().tease || '',
+    };
+  });
+  expect(result.via, JSON.stringify(result)).toBe('Avenhornstraat');
+  expect(result.viaUsed, JSON.stringify(result)).toBe(true);
+  expect(result.dueOnPath).toContain('Avenhornstraat');
+  expect(result.detour).toBeLessThanOrEqual(0.4 + 1e-6);
+  expect(result.tease, 'the briefing counts, never names').not.toContain('Avenhornstraat');
+});

@@ -540,6 +540,30 @@ class GameRouteRuntime {
     return Route.pickReviewRoute({ pois: from ? this.routePois : choices, due, from, maxKm });
   }
 
+  /** Stretches of a review via's street for the planner to ride along,
+   *  longest first: a long piece is more often a through street than a
+   *  cul-de-sac stub, and teaches more of the name. A single point would let
+   *  the ride touch it and turn back. At most REVIEW_VIA_TRIES, since each
+   *  try plans three legs per direction. */
+  _reviewViaPoints(via, snap) {
+    const centre = snap({ id: 'review-via', name: '', lat: via.center[0], lng: via.center[1] });
+    if (!centre || !this.track) return [];
+    const stretches = [];
+    for (const segment of this.track.segments) {
+      if (segment.name !== via.name || !segment.points || segment.points.length < 2) continue;
+      const a = segment.points[0], b = segment.points[segment.points.length - 1];
+      // The same name elsewhere in the city is another street.
+      if (Math.hypot((a.x + b.x) / 2 - centre.x, (a.y + b.y) / 2 - centre.y) > REVIEW_VIA_RADIUS) continue;
+      let length = 0;
+      for (let i = 1; i < segment.points.length; i++) {
+        length += Math.hypot(segment.points[i].x - segment.points[i - 1].x, segment.points[i].y - segment.points[i - 1].y);
+      }
+      stretches.push({ length, stretch: [{ x: a.x, y: a.y }, { x: b.x, y: b.y }] });
+    }
+    stretches.sort((p, q) => q.length - p.length);
+    return stretches.slice(0, REVIEW_VIA_TRIES).map(entry => entry.stretch);
+  }
+
   _pickDestinationNear(from, alsoExcludeId = null) {
     return CanalRecallRoute.pickDestinationNear(this.routePois, from, undefined, alsoExcludeId);
   }
@@ -1189,15 +1213,30 @@ class GameRouteRuntime {
       if (this.travelMode === 'boat') this.track.waterTest = (x, y) => this.vectorMap.isWater(x, y, this.osmLoader);
       // A review ride's pair was picked by the straight line; plan it and its
       // runners-up and ride the one whose path passes the most due names.
-      if (this._reviewRoute && this._reviewRoute.alternatives && this._reviewRoute.alternatives.length
+      // A via (a due street off every line) is planned here too.
+      this._reviewVia = null;
+      if (this._reviewRoute && ((this._reviewRoute.alternatives && this._reviewRoute.alternatives.length) || this._reviewRoute.via)
         && window.CanalRecallRoute && window.CanalRecallRoute.choosePlannedReview) {
         this.track._reviewDueNames = this._dueReviewNames();
         const snap = (poi) => (poi.id === this.routeFrom?.id && poi.lat === startLL?.lat ? start
           : poi.id === this.routeTo?.id && poi.lat === finishLL?.lat ? finish
           : this.osmLoader.latLngToGamePoint(poi.lat, poi.lng, lat, lng, segments,
             this._isGenerousSnapOrigin(poi) ? HOME_MAX_SNAP_DIST : MAX_SNAP_DIST));
+        const ridden = new Map();
         const chosen = window.CanalRecallRoute.choosePlannedReview(this._reviewRoute, snap,
-          (from, to) => this.track.planRoute(from, to));
+          (from, to, via) => {
+            const planned = this.track.planRoute(from, to, via);
+            if (planned && planned.viaStretch) ridden.set(from, planned.viaStretch);
+            return planned;
+          },
+          // One list: the planner tries its stretches in turn, planning the
+          // direct ride once.
+          (via) => {
+            const stretches = this._reviewViaPoints(via, snap);
+            return stretches.length ? [stretches] : [];
+          });
+        // Replan the stretch that was ridden, not the whole list.
+        this._reviewVia = chosen && chosen.via ? ridden.get(chosen.start) || null : null;
         if (chosen && (chosen.pick.from.id !== this.routeFrom?.id || chosen.pick.to.id !== this.routeTo?.id)) {
           console.info(`Review ride: ${chosen.pick.from.name} → ${chosen.pick.to.name} rides ${chosen.dueOnPath.length} due names`);
           start = chosen.start;
@@ -1231,7 +1270,7 @@ class GameRouteRuntime {
       // A review ride routes along the names it was chosen for; see
       // roadGraph.planLearningRoadRoute's `dueNames`.
       this.track._reviewDueNames = this._reviewRoute ? this._dueReviewNames() : null;
-      this._routeLearningPlan = this.track.planRoute(start, finish);
+      this._routeLearningPlan = this.track.planRoute(start, finish, this._reviewVia);
       this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : [];
       if (!this.routePath || this.routePath.length < 2) {
         // Widening the destination pool to the whole landmark extract means a
