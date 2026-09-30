@@ -235,4 +235,14 @@ assert.equal(repairOriginTranslation('De goudvink (Pyrrhula pyrrhula).', 'The go
   'The bullfinch (Pyrrhula pyrrhula). Bullfinches can be found here.', 'a goudvink is a bullfinch');
 assert.equal(repairOriginTranslation('De gierzwaluw (Apus apus).', 'The swallow (Apus apus). Swallows fly.'), 'The swift (Apus apus). Swifts fly.');
 
+assert.equal(repairOriginTranslation('De plant, wild en gekweekt. wordt ook klaproos genoemd.', 'The plant, wild and cultivated. is also called buttercup.'),
+  'The plant, wild and cultivated. Also called klaproos (corn poppy).', 'a papaver is a poppy, not a buttercup');
+assert.equal(repairOriginTranslation('Bloem, behorende tot de anjerfamilie.', 'Flower, belonging to the rose family.'), 'Flower, belonging to the pink (carnation) family.');
+assert.equal(repairOriginTranslation('Plant uit de schermbloemenfamilie.', 'Plant from the aster family.'), 'Plant from the carrot (umbellifer) family.');
+assert.equal(repairOriginTranslation('Ook wel rode bosbes. De vossenbes.', 'Also known as red currant. The foxberry.'), 'Also known as lingonberry (cowberry). The lingonberry.');
+assert.equal(repairOriginTranslation("Tot 1863 ... zogenaamde 'bomen' ... de boomklok geluid.",
+  "Until 1863, the city of the IJ was separated by a palisade, so-called 'trees'. When opening the 'trees', the tree bell was sounded."),
+  "Until 1863, the city was separated from the IJ by a palisade, so-called 'bomen' (booms). When opening the booms, the boom bell (boomklok) was sounded.");
+assert.equal(repairOriginTranslation('Vervaardigde een elektriseermachine.', 'Developed an electroplating machine.'), 'Developed an electrostatic generator.');
+
 process.stdout.write('Street-name origin checks passed\n');
