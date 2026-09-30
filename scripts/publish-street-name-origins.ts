@@ -46,6 +46,17 @@ const englishOf = (origin: NameOrigin): string => {
   return origin.en ?? '';
 };
 
+// Sourced replacements (`street-name-origin-supplements.json`) for names whose
+// register text is missing, a fragment or another name's: each carries its
+// source URLs, and it beats both the register and `WITHHELD_ORIGINS`.
+interface Supplement { name: string; kind: 'street' | 'water' | 'bridge'; en: string; sources: string[]; reason: string }
+const supplements = new Map<string, Supplement>();
+for (const entry of JSON.parse(await readFile(path.resolve('scripts/street-name-origin-supplements.json'), 'utf8')) as Supplement[]) {
+  if (!entry.sources?.length) throw new Error(`supplement for ${entry.name} has no source`);
+  supplements.set(`${entry.kind}\u0000${entry.name}`, entry);
+}
+let fromSupplements = 0;
+
 interface PublishedOrigin { name: string; kind: 'street' | 'water' | 'bridge'; en: string; bagId: string }
 const published = new Map<string, PublishedOrigin>();
 const report: string[] = [];
@@ -55,6 +66,12 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
   let explained = 0, english = 0;
   for (const name of names) {
     const origin = originFor(index, name, kind);
+    const supplement = supplements.get(`${kind}\u0000${name}`);
+    if (supplement && origin) {
+      explained++; english++; fromSupplements++;
+      published.set(`${kind}\u0000${name}`, { name, kind, en: supplement.en, bagId: origin.bagId });
+      continue;
+    }
     if (!origin || WITHHELD_ORIGINS[name]) continue;
     explained++;
     if (!englishOf(origin)) continue;
@@ -85,4 +102,5 @@ if (!process.argv.includes('--dry-run')) {
 }
 process.stdout.write(`${process.argv.includes('--dry-run') ? 'DRY RUN — would publish' : 'published'} ${origins.length} origins`
   + ` → public/data/extracts/amsterdam/street-name-origins.json (${(JSON.stringify(output).length / 1024).toFixed(0)} KB)\n${report.join('\n')}\n`
-  + `  English from the language-model pass for ${fromLlm} lookups; the rest from trn\n`);
+  + `  English from the language-model pass for ${fromLlm} lookups; the rest from trn\n`
+  + `  ${fromSupplements} names from sourced supplements\n`);

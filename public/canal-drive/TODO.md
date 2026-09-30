@@ -95,6 +95,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   Record every register error found in
   `docs/amsterdam-street-name-register-errors.md` (with its BAG id), for a
   report to the municipality.
+  For a name whose register text is missing or broken, write a short sourced
+  text into `scripts/street-name-origin-supplements.json` (still to do:
+  Vredenburgerbrug, Na Druk Gelukbrug, Bastingstraat, Robijnstraat).
 - `ORIGIN_GLOSSARY` still repairs whatever stays on `trn` text; once the
   retranslation is done, check which rules still fire and drop the dead ones.
 

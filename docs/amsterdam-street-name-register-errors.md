@@ -14,7 +14,9 @@ How the game handles each: **withheld** means no origin card at all
 `scripts/check-street-name-origins.ts`); **repaired** means the English is
 translated from the corrected text; **kept** means the English follows the
 register, error included; **corrected** means the English fixes a clear
-factual error.
+factual error; **replaced by a sourced supplement** means the card shows a
+short text written from the cited source instead
+(`scripts/street-name-origin-supplements.json`, which keeps the URLs).
 
 ## 1. Text filed under the wrong name
 
@@ -24,21 +26,21 @@ next record.
 | Name | BAG id | What is wrong | In the game |
 |---|---|---|---|
 | Dirk de Waterduikerbrug | [0363300011951530](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951530/) | Text stops mid-sentence: "…een zeer gerespecteerd figuur in". | Repaired: joined with the next row's text. |
-| Dirk van Hasseltssteeg | [0363300000003271](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003271/) | Its whole text is the rest of the Waterduikerbrug's: "de Jordaan en hij kreeg diverse medailles…". | Withheld. |
+| Dirk van Hasseltssteeg | [0363300000003271](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003271/) | Its whole text is the rest of the Waterduikerbrug's: "de Jordaan en hij kreeg diverse medailles…". |  Replaced by a sourced supplement (Wikipedia). |
 | Enneüs Heermabrug | [0363300011950195](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950195/) | Only the first sentence: "Deze brug is vernoemd naar Enneüs Heerma (1944-1999)." | Repaired: joined with the next row's text. |
-| Enny Vredestraat | [0363300000002843](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002843/) | Its whole text is the rest of Heerma's career: "Hij was voor het CDA wethouder… fractievoorzitter van het CDA in de Tweede Kamer." Enny Vrede's own text is missing. | Withheld. |
-| Hamerstraat | [0363300000003331](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003331/) | "Hij redde … samen met Lau Mazirel en Walter Süskind … oprichters van … Kriterion": part of Piet Meerburg's biography, not the Hamerkanaal street's origin. | Withheld. |
+| Enny Vredestraat | [0363300000002843](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002843/) | Its whole text is the rest of Heerma's career: "Hij was voor het CDA wethouder… fractievoorzitter van het CDA in de Tweede Kamer." Enny Vrede's own text is missing. |  Replaced by a sourced supplement (Wikipedia). |
+| Hamerstraat | [0363300000003331](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003331/) | "Hij redde … samen met Lau Mazirel en Walter Süskind … oprichters van … Kriterion": part of Piet Meerburg's biography, not the Hamerkanaal street's origin. |  Replaced by a sourced supplement (Wikipedia). |
 | Piet Meerburgbrug | [0363300011951254](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951254/) | Complete on its own, but missing the paragraph now under Hamerstraat. | Not yet reached. |
-| Eilandsgracht | [0363300011950501](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950501/) | Carries the Elandsgracht's text word for word ("huiden van elanden, herten, beren"): eiland (island) confused with eland (elk). | Withheld. |
+| Eilandsgracht | [0363300011950501](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950501/) | Carries the Elandsgracht's text word for word ("huiden van elanden, herten, beren"): eiland (island) confused with eland (elk). |  Replaced by a sourced supplement (Wikipedia). |
 | Elandsgracht | [0363300000002818](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002818/) | Correct, and the source of the Eilandsgracht copy. | Kept. |
-| Piet Kranenbergpad | [0363300000006028](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000006028/) | Its text is Piet Keizer's Ajax biography, word for word, the same as the Piet Keizerbrug's ([0363300011950122](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950122/)). | Withheld (found in an earlier session). |
+| Piet Kranenbergpad | [0363300000006028](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000006028/) | Its text is Piet Keizer's Ajax biography, word for word, the same as the Piet Keizerbrug's ([0363300011950122](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950122/)). |  Replaced by a sourced supplement (Wikipedia). |
 
 ## 2. Fragments
 
 | Name | BAG id | What is wrong | In the game |
 |---|---|---|---|
-| Elim | [0363300000002417](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002417/) | The whole text is "tot Park Frankendael". | Withheld. |
-| Piet Wiedijkstraat | [0363300000004367](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004367/) | The whole text is "met name op het gebied van het verkeer." | Withheld. |
+| Elim | [0363300000002417](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002417/) | The whole text is "tot Park Frankendael". |  Replaced by a sourced supplement (Wikipedia). |
+| Piet Wiedijkstraat | [0363300000004367](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004367/) | The whole text is "met name op het gebied van het verkeer." |  Replaced by a sourced supplement (Wikipedia). |
 | Vredenburgerbrug | [0363300011950362](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950362/) | Starts mid-sentence ("katholieke bejaardenhuis Vredenburg werd gebouwd…") and stops mid-sentence ("…waren hier achtereen"). | Not yet reached. |
 | Na Druk Gelukbrug | [0363300011950397](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950397/) | Starts mid-sentence, repeats its first clause ("…aan de toenmalige Brug is vernoemd naar…"), and stops at "De naam van deze boerderij refereert". | Not yet reached. |
 | Bastingstraat | [0363300000002489](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002489/) | Starts mid-sentence: "het Mosplein. Voor deze buurt…". Says nothing about Basting. | Earlier translation; to review. |
@@ -46,19 +48,18 @@ next record.
 
 ## 3. Cut off at the end
 
-| Name | BAG id | Where it stops |
-|---|---|---|
-| Dokter Meurerlaan | [0363300000003285](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003285/) | "…Amsterdams Medisch Sportkeuringsbureau. M" |
-| Gerrie Mührenbrug | [0363300011950381](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950381/) | The whole text is "Gerrie (Gerrit) Mühren". |
-| Haarlemmersluis | [0363300011950354](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950354/) | "…die de uitvalsweg van Amsterdam naar Haarlem" (no verb). |
-| Eva Schalkbrug | [0363300011951791](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951791/) | "…21 jaar lang hoofdingeland van het Hoogheemraadschap" (which one is missing). |
-| Robijnstraat | [0363300000004676](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004676/) | "…gaf de straat bij de aanleg de naam Tweede De" |
-| Sint Anthoniesluis | [0363300011950601](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950601/) | "…die tot de zeventiende eeuw buiten de stad lag en" |
-| Bickersgracht (water) | [0363300011950695](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950695/) | "…kregen automatisch de naam van de stichter. Voor het" (the street record, [0363300000002930](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002930/), ends cleanly). |
-| Hederabrug | [0363300011951351](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951351/) | A stray "Waterland" after the last sentence. |
-| Mariotteplein | [0363300000004265](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004265/) | Junk appended: "Marisplein, Jacob Oud-Zuid Rb. 26-1-1922 15: m 9". |
+| Name | BAG id | Where it stops | In the game |
+|---|---|---|---|
+| Dokter Meurerlaan | [0363300000003285](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003285/) | "…Amsterdams Medisch Sportkeuringsbureau. M" | Translated without the broken edge. |
+| Gerrie Mührenbrug | [0363300011950381](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950381/) | The whole text is "Gerrie (Gerrit) Mühren". | Replaced by a sourced supplement (Wikipedia). |
+| Haarlemmersluis | [0363300011950354](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950354/) | "…die de uitvalsweg van Amsterdam naar Haarlem" (no verb). | Translated without the broken edge. |
+| Eva Schalkbrug | [0363300011951791](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951791/) | "…21 jaar lang hoofdingeland van het Hoogheemraadschap" (which one is missing). | Translated without the broken edge. |
+| Robijnstraat | [0363300000004676](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004676/) | "…gaf de straat bij de aanleg de naam Tweede De" | Translated without the broken edge. |
+| Sint Anthoniesluis | [0363300011950601](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950601/) | "…die tot de zeventiende eeuw buiten de stad lag en" | Translated without the broken edge. |
+| Bickersgracht (water) | [0363300011950695](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950695/) | "…kregen automatisch de naam van de stichter. Voor het" (the street record, [0363300000002930](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002930/), ends cleanly). | Translated without the broken edge. |
+| Hederabrug | [0363300011951351](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951351/) | A stray "Waterland" after the last sentence. | Translated without the broken edge. |
+| Mariotteplein | [0363300000004265](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004265/) | Junk appended: "Marisplein, Jacob Oud-Zuid Rb. 26-1-1922 15: m 9". | Translated without the broken edge. |
 
-In the game, cut and fragment texts are translated without the broken edge.
 
 ## 4. Factual errors in the text
 

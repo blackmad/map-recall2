@@ -35,6 +35,18 @@ Street-name origins are now retranslated whole by a language model:
   every one is listed in `docs/amsterdam-street-name-register-errors.md`.
   User, asked whether "extermination camp Buchenwald" should stay as the
   register has it: "no, loose is fine". Doubtful cases stay as written.
+- Names with missing, fragmentary or misfiled register text can now show a
+  short text written from a cited source (user: "you can add facts (if you
+  can find a source online like wikipedia) for entries that are missing
+  data"). They live in `scripts/street-name-origin-supplements.json` with
+  their URLs. A supplement beats both the register and `WITHHELD_ORIGINS`,
+  and publishing refuses one that has no source. The first eight are
+  Dirk van Hasseltssteeg, Eilandsgracht, Elim (a Moravian mission village in
+  the Western Cape, not "tot Park Frankendael"), Enny Vredestraat (the actress),
+  Gerrie Mührenbrug, Hamerstraat, Piet Kranenbergpad (one of the Olympic
+  Stadium's rescuers) and Piet Wiedijkstraat. Each attribution was checked
+  against the street's position, for example Elim among the South African
+  names and Enny Vrede among the actresses in Slotervaart.
 
 ## 2026-09-30 — Street-name translations: a random sample of 30, 14 wrong
 
