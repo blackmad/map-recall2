@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Bridge register: reviewed aliases; the other refusals checked
+
+The build left 11 named bridges undescribed as ambiguous. Each was read
+against the outlines it touches:
+- **Three are aliases** of the register's official names. Python Bridge is
+  Hoge brug (1998), Zeilbrug is Zeilstraatbrug (348), and Zouthavenbrug is
+  Willem Breukerbrug (2326, renamed in January 2024). `REGISTER_ALIASES` in
+  `bridgeRegister.ts` records these with their sources. An alias is accepted
+  only when an outline under the way carries that register name. 249/300
+  bridges are described.
+- **Six refusals are right.** The bird bridges (Gierzwaluw-, Goudvink-,
+  Groene spechtbrug) only brush their neighbours' outlines. The Rozenoord
+  metro and rail bridges run beside the Rozenoordbrug road bridge.
+  "Entrepotdok" is a quay name on a way over the Armand Sunierbrug lock
+  bridge.
+- **Two are road names over several bridges**: Jan van Galenstraat and
+  Radioweg. They would need per-crossing facts (TODO).
+
 ## 2026-09-30 — Card chips fit a 320 px phone
 
 The "Landmark Card Mobile" story expanded its card into the desktop panel, so
