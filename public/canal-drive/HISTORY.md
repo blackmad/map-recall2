@@ -25,6 +25,14 @@ odd ones against the Dutch. Mistranslations cluster there. Found:
   "linen windows". The author H.J. Schimmel is not "H.J. mould". The oneven
   side of a street is its odd-numbered side. The illegaliteit was the
   resistance.
+- **Third rare-word round.** A mill's cap is turned into the wind (verkruid)
+  from its stelling; the mill is not "watered". Silene is in the pink
+  family, not the daisy family. Harry Diesveldt was an Engelandvaarder, not
+  "an Englishman". Maagdenpalm is periwinkle. Vice-admiral Claeszen blew up
+  his ship rather than being "flown into the air". The sandbank Razende Bol
+  is no "Furious Ball". Also fixed: the valreep (gangway), veem
+  (weigh-house porters' guilds), the gouge (guts), the punch (ponsen),
+  pistils, and Van der Heijden's fire engine with a hose.
 
 ## 2026-09-30 — Street-name translations: a right back, a killer whale, filled in not renamed
 
