@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: laying out, not demolishing; the Intercontinental Cup
+
+A read of 16 long origins found more false renderings, now fixed in 29
+published origins:
+- **Oostenburg.** "Rooien van de straten" is laying streets out, not their
+  demolition. "Aan het openbaar verkeer onttrokken" is closed to public
+  traffic.
+- **Tuiger.** A tuiger rigs and unrigs ships; they do not hoist and lower
+  them.
+- **Schout.** Jan Arentsz Schouten was the schout (sheriff), not an
+  alderman.
+- **Wereldbeker.** For the Ajax players this is the Intercontinental Cup.
+  Neeskens, Krol, Suurbier and Blankenburg never won the World Cup.
+- **Indisch.** Indisch recht, spoorwegen, verhalen and Partij belong to the
+  Dutch East Indies, and the West India Company keeps its English name.
+  Indische muziek (Coltrane) and Indische talen (Kern) stay Indian: each fix
+  names its own phrase.
+- **Smaller fixes.** Procureur is a solicitor, not a prosecutor. Noordse Bos
+  is a name, not a "North Sea Forest". Rode and rooien stay Dutch, and
+  Papiaments is Papiamento.
+
 ## 2026-09-30 — Street-name translations: annexation direction, a ferry, the Sea Beggars
 
 A random-sample read of 55 origins found more renderings that taught
