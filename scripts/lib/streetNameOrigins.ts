@@ -109,12 +109,22 @@ const COMPATIBLE: Record<string, readonly OriginKind[]> = {
  * Amsterdam proper over Weesp, and refuses a name that two different
  * explanations still share after that: better no card than the wrong person.
  */
+export function refersToItself(origin: Pick<NameOrigin, 'name' | 'nl'>): boolean {
+  const name = origin.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`\\bzie\\s+(?:verder\\s+)?${name}\\b`, 'i').test(origin.nl);
+}
+
 export function originFor(
   index: ReadonlyMap<string, readonly NameOrigin[]>,
   name: string,
   featureKind: 'street' | 'water' | 'bridge',
 ): NameOrigin | null {
-  const candidates = (index.get(nameKey(name)) ?? []).filter(origin => COMPATIBLE[featureKind].includes(origin.kind));
+  // A record that sends the reader to its own name ("zie Oudezijds
+  // Voorburgwal" on the Oudezijds Voorburgwal) is another street's text
+  // filed under this one: the register's street record for the Oudezijds
+  // Voorburgwal is a copy of the Nieuwezijds one.
+  const candidates = (index.get(nameKey(name)) ?? [])
+    .filter(origin => COMPATIBLE[featureKind].includes(origin.kind) && !refersToItself(origin));
   if (!candidates.length) return null;
   const ranked = [...candidates].sort((a, b) =>
     COMPATIBLE[featureKind].indexOf(a.kind) - COMPATIBLE[featureKind].indexOf(b.kind)
@@ -144,6 +154,13 @@ export function indexOrigins(origins: readonly NameOrigin[]): Map<string, NameOr
  * - council-decision references (`Rb. 26-1-1922`) are register shorthand, and
  *   an unfinished one trails some texts as junk ("Oud-Zuid Rb. 26-1-1922 15: m 9").
  */
+/** Dutch that really does mean what a "filled in" mistranslation says. */
+const FILLED_IN_GUARDS: Record<string, RegExp> = {
+  straightened: /recht/i, canalized: /kanalis/i, flooding: /overstro|inundat|onder water/i,
+  flattened: /geslecht|afgegraven|gesloopt/i, flattening: /geslecht|afgegraven|gesloopt/i, dammed: /afgedamd|\bdam\b/i,
+  demoted: /gedegradeerd/i, demotion: /degrad/i,
+};
+
 /** [Dutch trigger, literal translation, meaning]. From reading the
  *  published texts: a lijnbaan is a ropewalk, not a "line track". */
 const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
@@ -154,6 +171,10 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/stadsuitleg/i, /\bcity layout\b/g, 'city expansion'],
   [/zangzaad/i, /\bsinging seed\b/g, 'birdseed'],
   [/regenten/i, /\bregency families\b/g, 'regent families'],
+  [/schepen van de stad/i, /\bcaptain of the city\b/g, 'alderman (schepen) of the city'],
+  [/burgemeester van/i, /\bBurgemeester van\b/g, 'Mayor of'],
+  [/voor de stadsuitleg/i, /\bFor the city (?:tour|layout|expansion)\b/g, 'Before the city expansion'],
+  [/stadsuitleg/i, /\bcity tour\b/g, 'city expansion'],
   // Outright mistranslations that taught something false: a plum is not a
   // pear, sparrows are not finches' parents, and a pheasant is no chicken.
   [/pruimenboom/i, /\bpear tree\b/g, 'plum tree'],
@@ -216,9 +237,17 @@ export function repairOriginTranslation(nl: string, en: string): string {
       (_, preposition: string, _council, year) => `${preposition[0] === preposition[0].toUpperCase() ? 'By' : 'by'} council decision in ${year}`)
     .replace(new RegExp(reference, 'g'), (_, council, year) => decided(council, year));
   if (/gedempt|dempen|demping/i.test(nl)) {
+    // Filling in a canal (dempen) comes out as muting, damping, demoting,
+    // flattening, straightening, even flooding: the opposite. A rendering is
+    // kept where the Dutch has its own word for it (recht, overstroming…).
+    const guarded = (word: string) => !FILLED_IN_GUARDS[word.toLowerCase()]?.test(nl);
+    const keepCase = (found: string, replacement: string) =>
+      found[0] === found[0].toUpperCase() ? replacement[0].toUpperCase() + replacement.slice(1) : replacement;
     text = text
-      .replace(/\b(muted|silenced|suppressed|dampened|damped|muffled|dammed)\b/g, 'filled in')
-      .replace(/\bdamming\b/g, 'filling in');
+      .replace(/\b(muted|silenced|suppressed|dampened|damped|muffled|dammed|demoted|flattened|straightened|canalized)\b/gi,
+        found => guarded(found) ? keepCase(found, 'filled in') : found)
+      .replace(/\b(dampening|damping|damming|demotion|flattening|flooding|muting)\b/gi,
+        found => guarded(found) ? keepCase(found, 'filling in') : found);
   }
   // Trade and planning words the translator takes literally. Each applies
   // only where the Dutch says the word, so an English "layout" elsewhere stays.

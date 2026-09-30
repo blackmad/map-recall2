@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {
-  AMSTERDAM_WOONPLAATS_ID, cleanDescription, indexOrigins, nameGenericOrigin, nameKey, nameStem, originFor, originsFromRecords, repairOriginTranslation,
+  AMSTERDAM_WOONPLAATS_ID, cleanDescription, indexOrigins, nameGenericOrigin, refersToItself, nameKey, nameStem, originFor, originsFromRecords, repairOriginTranslation,
   type BagOpenbareRuimte,
 } from './lib/streetNameOrigins.ts';
 
@@ -50,6 +50,23 @@ assert.equal(originFor(index, 'Magere Brug', 'street')?.kind, 'bridge', 'a bridg
 assert.equal(repairOriginTranslation('De bloem. De Rozengracht is gedempt in 1895.', 'The flower. The Rozengracht was suppressed in 1895.'),
   'The flower. The Rozengracht was filled in in 1895.', 'gedempt is filled in, not suppressed');
 assert.equal(repairOriginTranslation('Een gracht, gedeeltelijk gedempt.', 'A canal, partially silenced.'), 'A canal, partially filled in.');
+// The register's Oudezijds Voorburgwal street record is the Nieuwezijds text; it points at itself.
+assert.ok(refersToItself({ name: 'Oudezijds Voorburgwal', nl: 'Voor het ontstaan van de naam zie Oudezijds Voorburgwal. De Nieuwezijds Voorburgwal is gedempt.' }));
+assert.ok(!refersToItself({ name: 'Oudezijds Achterburgwal', nl: 'De gracht achter de voorburgwal. Zie verder Oudezijds Voorburgwal.' }), 'a cross-reference to another name is fine');
+// Filling in, however the translator rendered it (Open Havenfront, Plantage Muidergracht, Westerstraat).
+assert.equal(repairOriginTranslation('Gedempt voor de bouw van het Centraal Station.', 'Muted for the construction of Central Station.'),
+  'Filled in for the construction of Central Station.');
+assert.equal(repairOriginTranslation('Na demping hernoemd.', 'Renamed after flooding.'), 'Renamed after filling in.');
+assert.equal(repairOriginTranslation('De Nieuwezijds Voorburgwal werd in 1884 gedempt.', 'The Nieuwezijds Voorburgwal was demoted in 1884.'),
+  'The Nieuwezijds Voorburgwal was filled in in 1884.');
+assert.equal(repairOriginTranslation('Het terrein overstroomde; later gedempt.', 'The site suffered flooding; later filled in.'),
+  'The site suffered flooding; later filled in.', 'flooding stays where the Dutch says overstroming');
+assert.equal(repairOriginTranslation('De gracht werd rechtgetrokken en later gedempt.', 'The canal was straightened and later dampened.'),
+  'The canal was straightened and later filled in.', 'straightened stays where the Dutch says recht');
+assert.equal(repairOriginTranslation('Reynier Reael, schepen van de stad.', 'Reynier Reael, captain of the city.'),
+  'Reynier Reael, alderman (schepen) of the city.');
+assert.equal(repairOriginTranslation('Voor de stadsuitleg van 1593 lag de poort hier.', 'For the city tour of 1593, the gate was here.'),
+  'Before the city expansion of 1593, the gate was here.');
 // Mistranslations that taught something false (Pruimenstraat, Mussenstraat, Fazantenweg).
 assert.equal(repairOriginTranslation('De vruchten van de pruimenboom.', 'The fruits of the pear tree.'), 'The fruits of the plum tree.');
 assert.equal(repairOriginTranslation('De tot de vinken behorende vogels.', 'The birds belonging to the sparrows.'), 'The birds belonging to the finches.');
