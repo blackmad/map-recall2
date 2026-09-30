@@ -118,7 +118,28 @@ export function sameBridgeName(a: string, b: string): boolean {
  * long road such as IJburglaan crossing five bridges) are ambiguous, and
  * saying the wrong bridge's year would teach something false.
  */
+/**
+ * OSM names that the register spells differently, each checked against a
+ * source. The register uses the official name, and OSM often keeps the popular
+ * or older one. Only a candidate outline whose register name matches the
+ * alias is accepted, so an alias never overrides geometry.
+ */
+export const REGISTER_ALIASES: Readonly<Record<string, string>> = {
+  // nl.wikipedia "Pythonbrug": officially Hoge brug, bridge 1998.
+  'Python Bridge': 'Hoge brug',
+  // nl.wikipedia "Brug 348": Zeilbrug and Zeilstraatbrug, over the Schinkel.
+  Zeilbrug: 'Zeilstraatbrug',
+  // nl.wikipedia "Willem Breukerbrug": bridge 2326 was called Zouthavenbrug
+  // until the Willem Breukerbrug name was made official in January 2024.
+  Zouthavenbrug: 'Willem Breukerbrug',
+};
+
 export function chooseRegisterBridge(name: string, candidates: readonly BridgeRegisterRow[]): BridgeRegisterRow | null {
+  const alias = REGISTER_ALIASES[name.trim()];
+  if (alias) {
+    const matched = candidates.filter(row => row[1] && sameBridgeName(row[1], alias));
+    if (matched.length === 1) return matched[0];
+  }
   // OSM names some bridges only by their painted number ("Brug 68").
   const numbered = /^brug\s+(\d+)$/i.exec(name.trim());
   if (numbered) return candidates.find(row => bridgeNumber(row[0]) === Number(numbered[1])) ?? null;

@@ -67,6 +67,9 @@ check('choosing the register bridge: by name, by painted number, by a lone outli
   assert.equal(chooseRegisterBridge('Nieuwe Brug', [other, row('BRU0244', '')]), null,
     'a road over several bridges (IJburglaan) is ambiguous, and a wrong year would teach something false');
   assert.equal(chooseRegisterBridge('Nieuwe Brug', [magere]), null, 'a lone outline named otherwise is another bridge');
+  const hoge = row('BRU1998', 'Hoge brug');
+  assert.equal(chooseRegisterBridge('Python Bridge', [hoge]), hoge, 'a reviewed alias: the Python Bridge is officially Hoge brug');
+  assert.equal(chooseRegisterBridge('Python Bridge', [magere]), null, 'an alias still needs its outline under the way');
 });
 
 check('bridge cards: the register sentence stands alone or follows the origin, never cut', () => {
@@ -100,6 +103,11 @@ check('published: named bridges carry their register entries', () => {
   assert.equal(published.bridges.Berlagebrug?.movable, true);
   assert.equal(published.bridges['Oosterdokse Spoorbrug'], undefined, 'railway bridges are not the city\'s and stay undescribed');
   assert.equal(published.bridges.Ryckerbrug?.nr, 167, 'a spelling variant joins');
+  assert.equal(published.bridges['Python Bridge']?.nr, 1998, 'reviewed alias: Hoge brug');
+  assert.equal(published.bridges.Zeilbrug?.nr, 348, 'reviewed alias: Zeilstraatbrug');
+  assert.equal(published.bridges.Zouthavenbrug?.nr, 2326, 'reviewed alias: Willem Breukerbrug');
+  assert.equal(published.bridges.Entrepotdok, undefined, 'a quay name on a way is not the Armand Sunierbrug it touches');
+  assert.equal(published.bridges.Rozenoordmetrobrug, undefined, 'the metro bridge beside the Rozenoordbrug is another structure');
   assert.equal(published.bridges.Gierzwaluwbrug, undefined, 'a lone outline of the neighbouring Goudvinkbrug does not');
   assert.ok(Object.keys(published.bridges).length >= 240, `coverage: ${Object.keys(published.bridges).length}`);
 });
