@@ -42,6 +42,7 @@ import type { Landmark } from './worldTypes';
 import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teachingSurface';
 import { bicycleRestrictionNotice } from '../routing/bikeAccess';
 import { maskSpoiledName } from '../orientationPois';
+import { isReviewStop, REVIEW_STOP_LABEL } from './routeSelection';
 
 /** One measured band of the arrival card. Each block reports its own height so
  *  the card measures itself, instead of keeping a stack of hand-tuned offsets
@@ -408,6 +409,8 @@ export class GamePresentationRuntime {
    *  from this track hidden, so "Keizersgrachtkerk" cannot answer the
    *  Keizersgracht question. The arrival card still shows the real name. */
   _destinationLabel(): string {
+    // A review stop's name is the answer; it shows only on arrival.
+    if (isReviewStop(this.routeTo) && !this.routeTo.name) return REVIEW_STOP_LABEL;
     const name = this.routeTo?.name || '';
     // Mask only the answer of the question open right now. Masking every
     // street in the ride cut most destinations to "…kerk" for the whole ride
@@ -1406,7 +1409,8 @@ export class GamePresentationRuntime {
   /** The landmark that stands for the destination: the one that shares its
    *  name, or failing that the nearest one to the finish point. */
   _finishLandmark(): Landmark | null {
-    if (!this.routeTo || this.routeTo.id === 'home' || !this.landmarks) return null;
+    // A review stop is a street; a nearby landmark would claim its arrival.
+    if (!this.routeTo || this.routeTo.id === 'home' || isReviewStop(this.routeTo) || !this.landmarks) return null;
     const wanted = this._normaliseCanalName(this.routeTo.name);
     const byName = this.landmarks.find(
       landmark => this._normaliseCanalName(landmark.name) === wanted);

@@ -519,6 +519,12 @@
     return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
   }
 
+  // src/canalRecall/game/routeSelection.ts
+  var REVIEW_STOP_LABEL = "the mystery street";
+  function isReviewStop(poi) {
+    return !!poi && typeof poi.reviewStop === "string";
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
   var INK = "#1f1c17";
   var MUTED = "#5f584d";
@@ -845,6 +851,7 @@
      *  from this track hidden, so "Keizersgrachtkerk" cannot answer the
      *  Keizersgracht question. The arrival card still shows the real name. */
     _destinationLabel() {
+      if (isReviewStop(this.routeTo) && !this.routeTo.name) return REVIEW_STOP_LABEL;
       const name = this.routeTo?.name || "";
       const asking = this.quizPromptName || "";
       const key = `${name}|${asking}`;
@@ -1735,7 +1742,7 @@
     /** The landmark that stands for the destination: the one that shares its
      *  name, or failing that the nearest one to the finish point. */
     _finishLandmark() {
-      if (!this.routeTo || this.routeTo.id === "home" || !this.landmarks) return null;
+      if (!this.routeTo || this.routeTo.id === "home" || isReviewStop(this.routeTo) || !this.landmarks) return null;
       const wanted = this._normaliseCanalName(this.routeTo.name);
       const byName = this.landmarks.find(
         (landmark) => this._normaliseCanalName(landmark.name) === wanted

@@ -244,6 +244,48 @@ export interface DuePlace {
   center: [number, number];
 }
 
+/**
+ * A review ride can end on a due street instead of at a landmark: a
+ * cul-de-sac or court cannot be ridden through as a via, but it can be ridden
+ * to. The street's name is the answer, so until arrival the destination shows
+ * only as this label, and the POI carries a blank name.
+ */
+export const REVIEW_STOP_LABEL = 'the mystery street';
+/** Seconds arrival may wait inside the finish radius for the stop's question
+ *  to open (it opens after `QUIZ_CANDIDATE_DELAY` on the street). */
+export const REVIEW_STOP_MAX_WAIT = 2.5;
+
+export interface ReviewStopPoi extends RoutePoi {
+  /** The due street the ride ends on; `name` stays blank until arrival. */
+  reviewStop: string;
+}
+
+export function reviewStopPoi(place: { name: string; lat: number; lng: number }): ReviewStopPoi {
+  return { id: `review-stop:${place.name}`, name: '', lat: place.lat, lng: place.lng, reviewStop: place.name };
+}
+
+export function isReviewStop(poi: unknown): poi is ReviewStopPoi {
+  return !!poi && typeof (poi as ReviewStopPoi).reviewStop === 'string';
+}
+
+/**
+ * Whether arrival at a review stop waits: while a question is open, and
+ * briefly before the stop's question opens, so a short court cannot end the
+ * ride before its review. Never once the name is revealed, and never past
+ * `REVIEW_STOP_MAX_WAIT` (the question may be suppressed there).
+ */
+export function reviewStopHoldsArrival(input: {
+  stop: string | null | undefined;
+  promptOpen: boolean;
+  revealed: boolean;
+  waitedSeconds: number;
+}): boolean {
+  if (!input.stop) return false;
+  if (input.promptOpen) return true;
+  if (input.revealed) return false;
+  return input.waitedSeconds < REVIEW_STOP_MAX_WAIT;
+}
+
 export interface ReviewRouteInput {
   pois: readonly RoutePoi[];
   due: readonly DuePlace[];
@@ -262,6 +304,10 @@ export interface ReviewRoutePick {
   /** A due name off every line, ridden through on the way. Its name is for
    *  the count only; the briefing never shows it. */
   via?: DuePlace;
+  /** A due name off every line that the ride ends on (`to` is then a
+   *  `ReviewStopPoi`). Offered as the last runner-up, for when the planner
+   *  refuses the via (a cul-de-sac). */
+  stop?: DuePlace;
   /** Runner-up pairs by straight-line count, for `choosePlannedReview`: the
    *  line is only a guess at what the router will ride. */
   alternatives?: Array<Omit<ReviewRoutePick, 'alternatives'>>;
@@ -342,11 +388,25 @@ export function pickReviewRoute(input: ReviewRouteInput): ReviewRoutePick | null
       }
     }
   }
-  if (!pairs.length) return null;
+  // Ending the ride on an uncovered name, for when its via is refused. The
+  // best such pair travels as the last runner-up, so it is planned only when
+  // nothing ahead of it rides as many due names.
+  let stopPair: Pair | null = null;
+  for (const from of froms) {
+    for (const place of uncovered) {
+      const km = kmBetween(from, place);
+      if (km < REVIEW_MIN_TRIP_KM || km > maxKm) continue;
+      const names = new Set([place.name]);
+      for (const other of due) if (kmToSegment(other, from, place) <= REVIEW_CORRIDOR_KM) names.add(other.name);
+      if (stopPair && (names.size < stopPair.dueNear.length || (names.size === stopPair.dueNear.length && km >= stopPair.km))) continue;
+      stopPair = { from, to: reviewStopPoi(place), dueNear: [...names].sort(), km, stop: { name: place.name, center: [place.lat, place.lng] } };
+    }
+  }
+  const strip = ({ km: _km, ...pick }: Pair) => pick;
+  if (!pairs.length) return stopPair ? { ...strip(stopPair), alternatives: [] } : null;
   const shortest = Math.min(...pairs.map(pair => pair.km));
   const close = pairs.filter(pair => pair.km <= shortest * REVIEW_LENGTH_SLACK);
   const chosen = close[chooseIndex(close.length)];
-  const strip = ({ km: _km, ...pick }: Pair) => pick;
   // Runners-up by count, then length, one per destination, from any start.
   const seen = new Set([`${chosen.from.id}>${chosen.to.id}`]);
   const alternatives: Array<Omit<ReviewRoutePick, 'alternatives'>> = [];
@@ -356,6 +416,10 @@ export function pickReviewRoute(input: ReviewRouteInput): ReviewRoutePick | null
     if (seen.has(key) || pair.to.id === chosen.to.id) continue;
     seen.add(key);
     alternatives.push(strip(pair));
+  }
+  if (stopPair) {
+    if (alternatives.length >= REVIEW_PLANNED_CANDIDATES - 1) alternatives.pop();
+    alternatives.push(strip(stopPair));
   }
   return { ...strip(chosen), alternatives };
 }
@@ -407,6 +471,9 @@ export function choosePlannedReview<P, V = P>(
     if (!tries.length) planned = plan(start, finish);
     if (!planned) continue;
     const dueOnPath = [...(planned.dueNamesOnPath ?? [])];
+    // A stop the path does not reach (a court outside the routing graph)
+    // would send the ride to a finish it cannot ride to.
+    if (candidate.stop && !dueOnPath.includes(candidate.stop.name)) continue;
     if (!best || dueOnPath.length > best.dueOnPath.length) {
       const { alternatives: _alternatives, ...bare } = candidate as ReviewRoutePick;
       best = { pick: bare, start, finish, dueOnPath, ...(via && planned.viaUsed ? { via } : {}) };

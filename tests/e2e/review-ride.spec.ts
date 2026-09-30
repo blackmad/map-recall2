@@ -81,7 +81,9 @@ test('a review ride routes along a due street it would otherwise avoid', async (
   await setHiddenSelect(page, 'travel-mode', 'car');
   await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
   await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.player?.x)), { timeout: 90000 }).toBe(true);
-  const result = await page.evaluate(() => {
+  // The route is random, and about one in three has no side street inside
+  // the detour cap; try a few routes before calling it a failure.
+  const tryRoute = () => page.evaluate(() => {
     const game = (window as any).canalRecallGame;
     const track = game.track;
     const start = track.startPoint, finish = track.finishPoint;
@@ -116,6 +118,12 @@ test('a review ride routes along a due street it would otherwise avoid', async (
     track._reviewDueNames = null;
     return { name: null, rode: false, detour: 0, tried: candidates.size };
   });
+  let result = await tryRoute();
+  for (let attempt = 1; attempt < 3 && !result.rode; attempt++) {
+    await page.evaluate(() => { const game = (window as any).canalRecallGame; game.player.x = 0; game._startConfiguredRoute({}); });
+    await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.player?.x)), { timeout: 90000 }).toBe(true);
+    result = await tryRoute();
+  }
   expect(result.tried, 'there are streets beside the path to try').toBeGreaterThan(0);
   expect(result.rode, JSON.stringify(result)).toBe(true);
   // Capped against the shortest path, which the plain plan is no shorter than.
@@ -194,4 +202,68 @@ test('a due street off every landmark line is ridden as a via', async ({ page },
   expect(result.dueOnPath).toContain('Avenhornstraat');
   expect(result.detour).toBeLessThanOrEqual(0.4 + 1e-6);
   expect(result.tease, 'the briefing counts, never names').not.toContain('Avenhornstraat');
+});
+
+// A due cul-de-sac cannot be ridden through, so its via is refused; the ride
+// ends on it instead (2026-09-30). Zeevaarthof is a court in Noord, 1.1 km
+// from the nearest landmark. The destination is "the mystery street" until
+// arrival, and the finish is the court's dead end.
+test('a due cul-de-sac off every landmark line ends the ride', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'route choice; one project is enough');
+  test.setTimeout(150000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await page.goto('/canal-drive/');
+  await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame))).toBe(true);
+  await setHiddenSelect(page, 'travel-mode', 'car');
+  await expect.poll(() => page.evaluate(() => ((window as any).canalRecallGame.routePois || []).length)).toBeGreaterThan(10);
+  await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    game.recall.dueReviews = () => [{ name: 'Zeevaarthof', type: 'street', cityId: game.cityId || 'amsterdam', center: [52.41131, 4.91936], dueAt: Date.now() - 1000 }];
+    const prefs = game._prefs();
+    game._prefs = () => ({ ...prefs, skipMastered: true });
+  });
+  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
+  await expect.poll(() => page.evaluate(() => Array.isArray((window as any).canalRecallGame._reviewRoute?.dueOnPath)), { timeout: 90000 }).toBe(true);
+  const result = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    const track = game.track;
+    const finish = track.finishPoint;
+    const onCourt = track.segments.filter((s: any) => s.name === 'Zeevaarthof')
+      .some((s: any) => s.points.some((p: any) => Math.hypot(p.x - finish.x, p.y - finish.y) < 2));
+    return {
+      to: { id: game.routeTo.id, name: game.routeTo.name, reviewStop: game.routeTo.reviewStop },
+      via: game._reviewRoute.via?.name, stop: game._reviewRoute.stop?.name,
+      dueOnPath: game._reviewRoute.dueOnPath, label: game._destinationLabel(),
+      brief: game._composeMissionBrief(), onCourt, landmark: game._finishLandmark()?.name ?? null,
+    };
+  });
+  expect(result.to.reviewStop, JSON.stringify(result)).toBe('Zeevaarthof');
+  expect(result.to.name, 'the destination has no name to show').toBe('');
+  expect(result.onCourt, 'the ride ends on the court').toBe(true);
+  expect(result.dueOnPath).toContain('Zeevaarthof');
+  expect(result.label).toBe('the mystery street');
+  expect(JSON.stringify(result.brief), 'the briefing never names it').not.toContain('Zeevaarthof');
+  expect(result.landmark, 'no nearby landmark claims the arrival').toBeNull();
+
+  // At the dead end, arrival waits for the open question, then reveals the name.
+  await page.waitForFunction(() => (window as any).canalRecallGame?.state === 4, null, { timeout: 60000 });
+  const arrival = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    game._update = () => undefined;
+    const park = () => {
+      game.player.x = game.track.finishPoint.x; game.player.y = game.track.finishPoint.y;
+      game.player.speed = 0; game.player.vx = 0; game.player.vy = 0;
+    };
+    park();
+    game.quizPromptName = 'Zeevaarthof';
+    game._updateRacing(0.05);
+    const whileAsked = { state: game.state, name: game.routeTo.name };
+    game.quizPromptName = '';
+    game.revealedNames.add('Zeevaarthof');
+    park();
+    game._updateRacing(0.05);
+    return { whileAsked, after: { state: game.state, name: game.routeTo.name } };
+  });
+  expect(arrival.whileAsked, 'the ride cannot end under an open question').toEqual({ state: 4, name: '' });
+  expect(arrival.after, 'answered, it arrives and names the street').toEqual({ state: 5, name: 'Zeevaarthof' });
 });
