@@ -1311,6 +1311,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
       this._neighborhoodNoticeTimer = 0;
       const atCrossing = this.quizPromptKind === "bridge" || this.quizPromptKind === "crossing-water";
       const learnedBridge = this.quizPromptKind === "bridge" && correct ? correctName : "";
+      const learnedWater = this.quizPromptKind === "crossing-water" && correct ? correctName : "";
       if (!atCrossing && !isStopQuiz && !isStreetQuiz) {
         this.quizCurrentName = correctName;
         if (isTransit(this.travelMode) || isLineQuiz) {
@@ -1345,6 +1346,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         else this.canvas.focus();
         if (learnedRoute && correct) this._showStreetKnowledge(learnedRoute, learnedRouteType, true);
         else if (learnedBridge) this._showStreetKnowledge(learnedBridge, "bridge", true);
+        else if (learnedWater) this._showStreetKnowledge(learnedWater, "water", true);
       }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
     }
   };

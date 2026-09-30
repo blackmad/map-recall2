@@ -51,8 +51,8 @@ runs between the landmarks whose line passes the most due names. Still open:
 
 **Street-name origins: the licence, and a glossary pass.**
 All 5,333 origins are published (see HISTORY, 2026-09-30).
-- Water origins show through the street/water card when the waterway is
-  learned by boat.
+- Water origins show when a waterway is learned by boat, or named at a
+  bridge on a bike.
 - The API states no licence for `beschrijvingNaam`. Confirm it with the
   municipality before a public release.
 - `ORIGIN_GLOSSARY` fixes the translator's literal renderings that have been
