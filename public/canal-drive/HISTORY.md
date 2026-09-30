@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: Grand Pensionary, boezem, umbellifers
+
+A targeted pass looked up Dutch words with known false friends, and Dutch
+words left in the English. Fixed: raadpensionaris is the Grand Pensionary
+(De Witt, Heinsius), not a "council pensionary". A ringvaart is the polder's
+storage basin (boezem), not its "bosom". Turf ships carried peat.
+Schermbloemen are umbellifers (the carrot family), not a "screenflower
+family". Reed beds replace "reedlands".
+
 ## 2026-09-30 — Street-name translations: laying out, not demolishing; the Intercontinental Cup
 
 A read of 16 long origins found more false renderings, now fixed in 29

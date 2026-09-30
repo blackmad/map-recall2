@@ -278,6 +278,12 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/indische spoorwegen/i, /\bthe Indian railways\b/g, 'the railways of the Dutch East Indies'],
   [/indische verhalen/i, /\bIndian stories\b/g, 'stories of the Dutch East Indies'],
   [/indische partij/i, /\bIndian Party\b/g, 'Indische Partij (Indies Party)'],
+  [/raadpensionaris/i, /\b[Cc]ouncil pensionary\b/g, 'Grand Pensionary'],
+  [/is de boezem van een polder/i, /\bA canal is the bosom of a polder\b/g, 'A ring canal (ringvaart) is the storage basin (boezem) of a polder'],
+  [/turfschepen|turfschuit/i, /\bturf (ships|boats|barges)\b/g, 'peat $1'],
+  [/^de hof, gesticht/i, /^The court, founded\b/, 'The court (hof), founded'],
+  [/schermbloem/i, /\bscreen ?flower family\b/gi, 'umbellifer (carrot) family'],
+  [/rietlanden/i, /\breedlands\b/g, 'reed beds'],
   // Grammar the translator gets wrong before a vowel.
   [/./, /\ba (?=(?:inn|embankment|alderman|island|estate|old|important|admiral|officer|engineer|author|actor|actress|architect|artist|area|order|eighteenth|eleventh|inland|English|Amsterdam)\b)/g, 'an '],
   [/tot de vinken behorende/i, /\bbelonging to the sparrows\b/g, 'belonging to the finches'],
