@@ -19,6 +19,18 @@ changed.
   - A paddle steamer had become "a vehicle propelled by propellers".
   - Leeboards (zwaarden) had become "side swords".
   - The schokker, which is related to the botter, was "related to the hull".
+- **Second pass (26 origins).**
+  - A spinnaker is set dead before the wind; the text said "directly into
+    the wind".
+  - Octane is a hydrocarbon, not "carbon monoxide".
+  - The Oude Houthaven was dug (gegraven), not "buried".
+  - The zwarte pad is a toad species, not a "fungus species".
+  - A kwelder is silted-up land outside the dikes, not "extensive land
+    reclamation".
+  - Brievenroman is an epistolary novel, hoogbootsman a chief boatswain, and
+    ridderhofstad a knightly manor.
+  - The first conductor of the Concertgebouw Orchestra was a musician
+    (toonkunstenaar), not a "visual artist".
 - **Others.**
   - Bonkaarten (ration cards) had become "bonka cards".
   - A voormalig buiten (former country house) was "formerly outside", and

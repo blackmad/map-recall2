@@ -259,4 +259,9 @@ assert.equal(repairOriginTranslation('Zeestraat in Turkije, die een deel vormt v
   'Strait in Turkey, which forms part of the connection.', 'the Bosporus is a strait, not the Sea of Marmara');
 assert.equal(repairOriginTranslation('Vaartuig, dat door middel van schepraderen wordt voortbewogen.', 'Vehicle, which is propelled by means of propellers.'), 'Vessel propelled by paddle wheels.');
 assert.equal(repairOriginTranslation('Waterbouwkundige (1590-1677).', 'Hydrologist (1590-1677).'), 'Hydraulic engineer (1590-1677).', 'a waterbouwkundige builds, not studies, water works');
+assert.equal(repairOriginTranslation('Bedoeld wordt een spinnaker: een zeil, dat wordt uitgezet als een schip pal voor de wind zeilt.',
+  'A spinnaker is meant: a sail, which is deployed when a ship sails directly into the wind.'),
+  'A spinnaker is meant: a sail, which is deployed when a ship sails dead before the wind.', 'a spinnaker is set downwind');
+assert.equal(repairOriginTranslation('Koolwaterstof, een petroleum-derivaat.', 'Carbon monoxide, a petroleum derivative.'), 'Hydrocarbon, a petroleum derivative.');
+assert.equal(repairOriginTranslation('Paddensoort. De zwarte pad.', 'Fungus species. The black toad.'), 'Toad species. The black toad.');
 process.stdout.write('Street-name origin checks passed\n');
