@@ -79,6 +79,34 @@ const PHOTO_BODY_LINES = 4;
  * height sized to the content so badges and the last line keep air from the
  * plate edge.
  */
+const BADGE_GAP = 6;
+
+/**
+ * Badges that fit on one row of the text column. On a 320 px phone
+ * "CHURCH · W WIKIPEDIA · + MORE" ran off the card's edge. The Wikipedia
+ * chip shortens to its "W" mark first, and then chips go by priority. The
+ * chips that stay longest are "+ MORE", the only sign the card opens, and
+ * the language chip, which says the text is not English.
+ */
+export function fitBadges(
+  badges: LandmarkCardLayout['badges'],
+  maxWidth: number,
+  measure: TextMeasurer,
+): LandmarkCardLayout['badges'] {
+  const rowWidth = (row: LandmarkCardLayout['badges']) =>
+    row.reduce((total, badge) => total + badge.width, 0) + Math.max(0, row.length - 1) * BADGE_GAP;
+  let row = badges.map(badge => ({ ...badge }));
+  if (rowWidth(row) <= maxWidth) return row;
+  const article = row.find(badge => badge.kind === 'article');
+  if (article) { article.label = 'W'; article.width = measure('W', BADGE_FONT) + 10; }
+  const dropOrder: Array<LandmarkCardLayout['badges'][number]['kind']> = ['article', 'fact', 'category', 'lang', 'more'];
+  for (const kind of dropOrder) {
+    if (rowWidth(row) <= maxWidth) break;
+    row = row.filter(badge => badge.kind !== kind);
+  }
+  return row;
+}
+
 export function measureLandmarkCard(
   props: LandmarkCardProps,
   measure: TextMeasurer,
@@ -99,12 +127,9 @@ export function measureLandmarkCard(
   const truncated = body ? shownWords < body.split(' ').length : false;
   const lines = truncated ? endCutLines(wrapped, maxTextWidth, measure, BODY_FONT) : wrapped;
 
-  const badges: LandmarkCardLayout['badges'] = [];
-  let cursor = textLeft;
+  let badges: LandmarkCardLayout['badges'] = [];
   const pushBadge = (label: string, kind: LandmarkCardLayout['badges'][number]['kind']) => {
-    const width = measure(label, BADGE_FONT) + 10;
-    badges.push({ label, x: cursor, width, kind });
-    cursor += width + 6;
+    badges.push({ label, x: 0, width: measure(label, BADGE_FONT) + 10, kind });
   };
   if (props.category) pushBadge(props.category, 'category');
   // Directly after the category, because it qualifies the same thing: what
@@ -119,6 +144,9 @@ export function measureLandmarkCard(
   // Nothing else on a canvas card says it can be clicked, so the cut body has
   // to advertise the panel that holds the rest of it.
   if (truncated) pushBadge('+  MORE', 'more');
+  badges = fitBadges(badges, maxTextWidth, measure);
+  let cursor = textLeft;
+  for (const badge of badges) { badge.x = cursor; cursor += badge.width + BADGE_GAP; }
 
   let displayName = props.name || '';
   if (measure(displayName, NAME_FONT) > maxTextWidth) {

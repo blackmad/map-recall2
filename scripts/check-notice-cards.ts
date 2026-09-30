@@ -173,6 +173,22 @@ const stub = (text: string, font: string) => {
   assert.ok(tall.sy > 0 && tall.sx === 0);
 }
 
+// --- Chips fit the text column on a narrow phone ---------------------------
+{
+  // A 320-wide phone gives the touch card ~300 px; CATEGORY + WIKIPEDIA + MORE
+  // overflowed it and clipped "+ MORE", the one chip saying there is more.
+  const long = 'The Oude Kerk is the oldest building in Amsterdam, consecrated in 1306 and extended over three centuries into a cruciform basilica. '.repeat(12);
+  const props = { name: 'Oude Kerk', body: long, category: 'CHURCH', factKind: 'history', hasArticle: true, hasImage: true };
+  const narrow = measureLandmarkCard(props, stub, 300);
+  const right = narrow.width - 20; // PAD_RIGHT
+  const last = narrow.badges[narrow.badges.length - 1];
+  assert.ok(last.x + last.width <= right + 0.001, `chips end at ${last.x + last.width}, column at ${right}`);
+  assert.equal(last.kind, 'more', 'the MORE chip survives');
+  const wide = measureLandmarkCard(props, stub, 900);
+  assert.deepEqual(wide.badges.map(badge => badge.kind), ['category', 'fact', 'article', 'more'], 'a wide card keeps them all');
+  assert.equal(wide.badges.find(badge => badge.kind === 'article')?.label, 'W  WIKIPEDIA');
+}
+
 // --- Wrapping degenerate input ----------------------------------------------
 {
   assert.deepEqual(wrapToLines('', 100, 2, stub, '10px monospace'), []);
