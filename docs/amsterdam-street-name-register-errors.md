@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Wijttenbachstraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Zeelandstraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -76,6 +76,7 @@ next record.
 | Piet Bakkerbrug | [0363300011951476](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951476/) | "…aan wie twee succesvolle films en een musical gewijd zijn. In de omgeving" | Translated without the broken edge. |
 | Utrechtsedwarsstraat | [0363300000005178](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005178/) | "Naar de stad Utrecht. is de nieuwe uitvalsroute naar Utrecht…": a sentence about some road's route to Utrecht, spliced in without its subject. | Kept only "After the city of Utrecht". |
 | Volewijckbrug | [0363300011951283](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951283/) | Stops mid-sentence: "…waaraan de lijken van misdadigers, die op de Dam waren opgehangen," | Completed with "were displayed", as the Volewijkshof's text says. |
+| Wim Suurbierbrug | [0363300011950620](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950620/) | Stops mid-sentence: "…zowel onaantastbaar als toonaangevend" | Completed from the identical Ajax paragraph on the Ruud Krolbrug. |
 | VOC-kade | [0363300000002333](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002333/) | "Vanuit Batavia, het bestuurlijke Amsterdam-Centrum Azië": the register-wide replacement of "centrum" (section 6) hit this text too | Translated as "its administrative centre in Asia". |
 
 
@@ -180,6 +181,9 @@ the municipality's sources.
 | Waterlooplein | [0363300000004822](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004822/) | square created "in 1874" | the Houtgracht and Leprozengracht were filled in 1882 (nl.wikipedia) | Corrected |
 | Weissenbruchstraat | [0363300000004838](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004838/) | born 1825 | born 19 June 1824 | Corrected |
 | Wigbolt Ripperdastraat | [0363300000004871](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004871/) | the siege of Haarlem "van 1672 op 1673" | 1572–1573 | Corrected |
+| Willem Schoutenstraat | [0363300000004909](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004909/) | born 1580 | born c. 1567 | Corrected |
+| William Boothstraat | [0363300000004916](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004916/) | died 1914 | died 20 August 1912 | Corrected |
+| Zacharias Jansestraat | [0363300000004946](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004946/) | "(1580-1620), uitvinder van de verrekijker" | c. 1585 – c. 1632; the invention is disputed (Lipperhey filed the first patent in 1608) | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
