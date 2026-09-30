@@ -50,9 +50,14 @@ either:
   elevation". The quote says that of the Lage Brug.
 - Den Haag, 'Grenadiers en Jagers': "Seventh-grade students … May 10
   ceremony". Groep 7 is ages 10–11, and the quote has no 10 May.
-The proper-noun pass also left 69 facts naming someone the quote does not
-name, mostly first names filled in from the article ("Dirk" Sterenberg). A
-human could skim that list (`npx tsx scripts/audit-fact-quotes.ts -- --names`).
+- Vrijheidslaan: "named in 1946 after leaders". It was Stalinlaan in 1946.
+- Marinehaven: "Unlike Zeebrugge…", unsupported. This feature is linked to
+  the generic naval-harbour article, so its remaining sentences describe
+  naval harbours in general, not Amsterdam's. It needs a human decision
+  (reject the feature?).
+The Amsterdam name list has been read through; Utrecht, Rotterdam and Den
+Haag were skimmed. What remains is mostly first names filled in from the
+article ("Dirk" Sterenberg). A human could skim that list (`npx tsx scripts/audit-fact-quotes.ts -- --names`).
 
 **6. Due-aware “where next” routing.**
 The thin slice shipped 2026-09-29 (see HISTORY). With Plan review on, a ride

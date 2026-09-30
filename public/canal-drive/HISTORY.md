@@ -21,6 +21,11 @@ can undo it:
   annual May 10 ceremony." Groep 7 pupils are 10–11, and the quote names no
   date.
 
+A full read of Amsterdam's name list struck two more: Vrijheidslaan "named
+in 1946 after leaders who defeated Nazi Germany" (in 1946 it became
+Stalinlaan; Freedom came later) and Marinehaven "Unlike Zeebrugge…" (not in
+the quote). `scripts/audit-fact-quotes.ts` reruns both passes.
+
 Publishing re-ran for both cities. The diff is exactly those sentences (and
 the emptied feature). `check-facts.ts` keeps both out of a later republish.
 

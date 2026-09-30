@@ -2851,7 +2851,10 @@
     },
     "extract_streets_1950136997": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05. Model-flagged 2026-09-30, struck: in 1946 the street was named Stalinlaan (its opening says so); Freedom came later, so \"named in 1946 after leaders\" conflates the two names.",
+      "drop": [
+        "Vrijheidslaan means Freedom Avenue, named in 1946 after leaders who defeated Nazi Germany."
+      ]
     },
     "extract_streets_1966764676": {
       "verdict": "approved",
@@ -3707,7 +3710,10 @@
     },
     "extract_water_777552464": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05. Model-flagged 2026-09-30, struck: the quote makes no comparison with Zeebrugge. Also note: this feature is linked to the generic naval-harbour article, so its other sentences describe naval harbours in general.",
+      "drop": [
+        "Unlike Zeebrugge, Marinehaven is a dedicated naval harbor used exclusively by military ships."
+      ]
     },
     "extract_water_794484432": {
       "verdict": "approved",
