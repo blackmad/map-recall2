@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Jacob Cabeliaustraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Joannes Reddingiusstraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -46,6 +46,7 @@ next record.
 | Piet Wiedijkstraat | [0363300000004367](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004367/) | The whole text is "met name op het gebied van het verkeer." |  Replaced by a sourced supplement (Wikipedia). |
 | Vredenburgerbrug | [0363300011950362](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950362/) | Starts mid-sentence ("katholieke bejaardenhuis Vredenburg werd gebouwd…") and stops mid-sentence ("…waren hier achtereen"). | Not yet reached. |
 | Na Druk Gelukbrug | [0363300011950397](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950397/) | Starts mid-sentence, repeats its first clause ("…aan de toenmalige Brug is vernoemd naar…"), and stops at "De naam van deze boerderij refereert". | Not yet reached. |
+| Jan Poytstraat | [0363300011951814](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951814/) | Carries a stray sentence from another architect's record: "Simon van Woerden (1902-1998) heeft rond 1958 de Bethelkerk ontworpen." | Translated without the stray sentence. |
 | Bastingstraat | [0363300000002489](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002489/) | Starts mid-sentence: "het Mosplein. Voor deze buurt…". Says nothing about Basting. | Earlier translation; to review. |
 | Badhuiskade | [0363300003695538](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003695538/) | Starts mid-sentence: "vroegere badinrichting Obelt, gebouwd 1914…". | Earlier translation; to review. |
 
@@ -87,6 +88,9 @@ the municipality's sources.
 | Guggenheimlaan | [0363300000001311](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001311/) | built in 1956 | opened 1959 (construction 1956–59) | Kept (construction did start in 1956) |
 | Hudsonhof | [0363300000001097](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001097/) | born 1550; discovered Hudson Bay (1610) "in dienst van de Verenigde Oostindische Compagnie" | born c. 1565; he sailed for the VOC in 1609, the 1610 voyage was English | Corrected |
 | Jaap Edenstraat | [0363300000003654](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003654/) | "Van 1896 tot 1914 wereldkampioen schaatsen op de 5000 m" | world skating champion 1893, 1895, 1896; his 5000 m world record of 1894 stood for seventeen years | Corrected |
+| James Wattstraat | [0363300000003414](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003414/) | "Engels natuurkundige … uitvinder van de stoommachine" | Scottish engineer who improved the steam engine (Newcomen's engine came first) | Corrected |
+| Jan Luijkenstraat | [0363300000003434](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003434/) | 'Het menselijk bedrijf' made "samen met zijn broer Caspar" | Caspar Luyken was his son | Corrected |
+| Jan van Goyenkade | [0363300000003452](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003452/) | 1595–1635 | 1596–1656 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
