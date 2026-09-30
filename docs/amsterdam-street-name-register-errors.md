@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Van Zeggelaarstraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Walcherenstraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -52,7 +52,7 @@ next record.
 | Piet Wiedijkstraat | [0363300000004367](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004367/) | The whole text is "met name op het gebied van het verkeer." |  Replaced by a sourced supplement (Wikipedia). |
 | Kinkerstraat | [0363300000004001](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004001/) | The whole text is "Hij vertaalde werk van Shakespeare en Schiller...", the tail of the Kinkerbrug record ([0363300011950672](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950672/)), and never names Kinker. | Sourced supplement from Wikipedia. |
 | Sint Antoniesbreestraat | [0363300000005009](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005009/) | The whole text is "die op zijn beurt zijn naam ontleende aan het Sint Antoniesgasthuis of Leprozenhuis", the tail of a sentence. | Completed from the Sint Antoniesluis's text, which gives the same origin (the Sint Antoniesdijk). |
-| Vredenburgerbrug | [0363300011950362](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950362/) | Starts mid-sentence ("katholieke bejaardenhuis Vredenburg werd gebouwd…") and stops mid-sentence ("…waren hier achtereen"). | Not yet reached. |
+| Vredenburgerbrug | [0363300011950362](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950362/) | Starts mid-sentence ("katholieke bejaardenhuis Vredenburg werd gebouwd…") and stops mid-sentence ("…waren hier achtereen"). | Completed from the Vredenburgersteeg's text, which is the whole of the same entry. |
 | Na Druk Gelukbrug | [0363300011950397](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950397/) | Starts mid-sentence, repeats its first clause ("…aan de toenmalige Brug is vernoemd naar…"), and stops at "De naam van deze boerderij refereert". | Replaced by a sourced supplement (nl.wikipedia, Olympisch Kwartier). |
 | Jan Poytstraat | [0363300011951814](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951814/) | Carries a stray sentence from another architect's record: "Simon van Woerden (1902-1998) heeft rond 1958 de Bethelkerk ontworpen." | Translated without the stray sentence. |
 | Lizzy Ansinghstraat | [0363300000005728](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005728/) | Ends with a spliced-in piece of the Nicolaas Anslijnstraat record ([0363300000003854](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003854/)), register markup included: "Anslijnstraat, Nicolaas Osdorp Rb. 15-4-1959 14: l 6 Onderwijshervormer (1778-1838)…" | Translated without the spliced text. |
@@ -75,6 +75,8 @@ next record.
 | Nieuwe Vaart (street) | [0363300011950711](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950711/) | "…gegraven om het IJ en het Oosterdok." | Completed from the Nieuwevaart record ([0363300000003876](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003876/)). |
 | Piet Bakkerbrug | [0363300011951476](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951476/) | "…aan wie twee succesvolle films en een musical gewijd zijn. In de omgeving" | Translated without the broken edge. |
 | Utrechtsedwarsstraat | [0363300000005178](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005178/) | "Naar de stad Utrecht. is de nieuwe uitvalsroute naar Utrecht…": a sentence about some road's route to Utrecht, spliced in without its subject. | Kept only "After the city of Utrecht". |
+| Volewijckbrug | [0363300011951283](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951283/) | Stops mid-sentence: "…waaraan de lijken van misdadigers, die op de Dam waren opgehangen," | Completed with "were displayed", as the Volewijkshof's text says. |
+| VOC-kade | [0363300000002333](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002333/) | "Vanuit Batavia, het bestuurlijke Amsterdam-Centrum Azië": the register-wide replacement of "centrum" (section 6) hit this text too | Translated as "its administrative centre in Asia". |
 
 
 ## 4. Factual errors in the text
@@ -172,6 +174,9 @@ the municipality's sources.
 | Van Reigersbergenstraat | [0363300000005237](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005237/) | died 1643 | died 1653 | Corrected |
 | Van Rensselaerstraat | [0363300000005238](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005238/) | 1580–1646 | c. 1586–1643 | Corrected |
 | Van Woustraat | [0363300000005247](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005247/) | 1460–1524 | c. 1450–1527 (nl.wikipedia) | Corrected |
+| Vancouverstraat | [0363300000005262](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005262/) | 1758–1790 | 1757–1798 (his Pacific voyage was 1791–1795) | Corrected |
+| Vasco da Gamastraat | [0363300000005264](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005264/) | "vond in 1497 de zeeweg rond Kaap de Goede Hoop" | Dias rounded the Cape in 1488; Da Gama opened the sea route to India in 1497–1498 | Corrected |
+| Vespuccistraat | [0363300000005283](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005283/) | born 1451 | born 9 March 1454 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
