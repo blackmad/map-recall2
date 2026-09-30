@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Hoofddorpplein, plus a register-wide scan for
+from 's-Gravelandse Veer to Jacob Cabeliaustraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -33,6 +33,9 @@ next record.
 | Piet Meerburgbrug | [0363300011951254](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951254/) | Complete on its own, but missing the paragraph now under Hamerstraat. | Not yet reached. |
 | Eilandsgracht | [0363300011950501](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950501/) | Carries the Elandsgracht's text word for word ("huiden van elanden, herten, beren"): eiland (island) confused with eland (elk). |  Replaced by a sourced supplement (Wikipedia). |
 | Elandsgracht | [0363300000002818](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002818/) | Correct, and the source of the Eilandsgracht copy. | Kept. |
+| Jaap Kunstbrug | [0363300011951948](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951948/) | Stops after his Java years; the rest of his biography is in the next two records. | Repaired: joined with the next two rows' text. |
+| Jaap Nunes Vazstraat | [0363300000003655](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003655/) | Its whole text is the middle of Jaap Kunst's biography ("In 1930 bracht zijn groeiende reputatie…"). | Replaced by a sourced supplement (Wikipedia). |
+| Jaap Speyerstraat | [0363300000002395](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002395/) | Its whole text is the last sentence of Jaap Kunst's biography ("En maakte een begin met een van de grootste musicologische collecties in Europa."). | Replaced by a sourced supplement (Wikipedia). |
 | Piet Kranenbergpad | [0363300000006028](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000006028/) | Its text is Piet Keizer's Ajax biography, word for word, the same as the Piet Keizerbrug's ([0363300011950122](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950122/)). |  Replaced by a sourced supplement (Wikipedia). |
 
 ## 2. Fragments
@@ -82,6 +85,8 @@ the municipality's sources.
 | Geerdinkhof | [0363300000005608](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005608/) | Tubbergen "(Gelderland)" | Overijssel | Corrected |
 | De Tourton Bruynsstraat | [0363300000003230](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003230/) | "vernietigingskamp Buchenwald" | Buchenwald was a concentration camp, not an extermination camp | Corrected |
 | Guggenheimlaan | [0363300000001311](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001311/) | built in 1956 | opened 1959 (construction 1956–59) | Kept (construction did start in 1956) |
+| Hudsonhof | [0363300000001097](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001097/) | born 1550; discovered Hudson Bay (1610) "in dienst van de Verenigde Oostindische Compagnie" | born c. 1565; he sailed for the VOC in 1609, the 1610 voyage was English | Corrected |
+| Jaap Edenstraat | [0363300000003654](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003654/) | "Van 1896 tot 1914 wereldkampioen schaatsen op de 5000 m" | world skating champion 1893, 1895, 1896; his 5000 m world record of 1894 stood for seventeen years | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
@@ -90,3 +95,16 @@ the municipality's sources.
 | H. Diesveldsingel | [0363300000001398](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001398/) | The text opens "De naam is foutief gespeld": the man was Diesveldt. |
 | Carolina MacGillavrylaan | [0363300000002032](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002032/) | "KNWA" for KNAW. |
 | Frank Martinus Arionstraat | [0363300011952045](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011952045/) | "een he kolonisatie" (herkolonisatie). |
+
+## 6. A search-and-replace across the register
+
+Some earlier edit replaced "centrum" or "binnenstad" with the district name
+"Amsterdam-Centrum", even where the text means a centre in general. The
+English translates the meant word.
+
+| Name | BAG id | Damaged phrase |
+|---|---|---|
+| Jacob Bontiusplaats | [0363300000002174](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002174/) | Batavia, "het bestuurlijk Amsterdam-Centrum van de voormalige kolonie" |
+| VOC-kade | [0363300000002333](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002333/) | "Batavia, het bestuurlijke Amsterdam-Centrum Azië" |
+| Slijkstraat | [0363300000004535](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004535/) | "In de Amsterdam-Centrum geven verschillende straatnamen…" |
+| Passeerdersgracht | [0363300011950312](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950312/) | "…in de Amsterdam-Centrum werd verboden" (the same text in Passeerdersstraat, Nieuwe Passeerdersstraat and the Eerste and Tweede Passeerdersdwarsstraat) |

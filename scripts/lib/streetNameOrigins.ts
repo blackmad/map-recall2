@@ -211,6 +211,9 @@ export const WITHHELD_ORIGINS: Readonly<Record<string, string>> = {
   // "Hij redde … samen met Lau Mazirel en Walter Süskind … Kriterion": a
   // paragraph of Piet Meerburg's biography, not the Hamerkanaal street's.
   Hamerstraat: "the register's text is part of Piet Meerburg's biography",
+  // Jaap Kunst's biography runs on across the next two names alphabetically.
+  'Jaap Nunes Vazstraat': "the register's text is the middle of Jaap Kunst's biography",
+  'Jaap Speyerstraat': "the register's text is the last sentence of Jaap Kunst's biography",
 };
 
 const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
