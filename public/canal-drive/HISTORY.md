@@ -16,6 +16,18 @@ exploration snapshot never had, so it threw. The story now provides them.
 Byte-identical baselines are a cheap check for this: two stories that should
 differ but don't are rendering nothing of their own.
 
+Reading every baseline by eye found two more broken stories:
+- **Recall prompt:** `_openQuizPrompt` returns early without a bike, and a
+  story never starts a ride, so no question showed. The story now provides a
+  stand-in player, and pins the shuffle so the choice order is stable.
+- **Steering HUD:** the story read `CanalRecallUi` from Storybook's window
+  instead of the game frame's and threw before drawing the pad.
+
+The pad also exposed a tolerance problem. At 1% and the default per-pixel
+threshold, a missing d-pad still passed: its translucent base sits within
+the colour tolerance of the pale map. The comparison is now 0.1% of pixels
+at threshold 0.05, and stays stable across repeated parallel runs (120/120).
+
 Re-baseline after an intended change:
 `npm run build-storybook && PW_PORT=4388 npx playwright test tests/e2e/storybook-visual.spec.ts --update-snapshots`.
 
