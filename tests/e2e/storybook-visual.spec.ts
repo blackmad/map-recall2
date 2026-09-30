@@ -66,6 +66,6 @@ for (const [id, width, height] of STORIES) {
     const frame = page.frameLocator('iframe').first();
     await expect(frame.locator('#gameCanvas')).toBeVisible({ timeout: 60_000 });
     await page.waitForTimeout(4000);
-    await expect(page).toHaveScreenshot(`${id}.png`, { maxDiffPixelRatio: 0.01, animations: 'disabled' });
+    await expect(page).toHaveScreenshot(`${id}.png`, { maxDiffPixelRatio: 0.001, threshold: 0.05, animations: 'disabled' });
   });
 }

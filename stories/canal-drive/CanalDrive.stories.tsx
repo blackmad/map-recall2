@@ -284,12 +284,20 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
             return;
           }
           game.routeOptions.answerMode = 'multiple';
+          // The prompt stops the bike, so it needs one: without a ride the
+          // story showed an empty map (found by the screenshot comparison).
+          game.player = game.player || { x: 0, y: 0, angle: 0, speed: 0, vx: 0, vy: 0 };
+          // The choices are shuffled; a fixed order keeps the screenshot stable.
+          const frameMath = (frame.contentWindow as unknown as { Math: Math }).Math;
+          const random = frameMath.random;
+          frameMath.random = () => 0.42;
           game._openQuizPrompt({
             kind: 'route', name: 'Prinsengracht', subject: 'water',
             question: 'Which canal are you on?',
             context: 'You have been following it since the Westerkerk.',
             choices: ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Brouwersgracht'],
           });
+          frameMath.random = random;
           return;
         }
         if (scenario === 'hud' || scenario.startsWith('touch-hud')) {
@@ -322,7 +330,9 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           // Steering: a thumb that landed in the zone and slid up-left, as a
           // held stick draws it. Idle: the faint ring that says "drive here".
           const pad = game.hud.layout?.dpad;
-          const ui = (window as unknown as { CanalRecallUi: { stickRadius: (p: unknown) => number; stickVector: (o: unknown, p: unknown, r: number) => unknown } }).CanalRecallUi;
+          // The game's own window, not Storybook's: reading it off `window`
+          // was undefined, and the steering story threw before the pad drew.
+          const ui = (frame.contentWindow as unknown as { CanalRecallUi: { stickRadius: (p: unknown) => number; stickVector: (o: unknown, p: unknown, r: number) => unknown } }).CanalRecallUi;
           if (scenario === 'touch-hud-steering' && pad) {
             const radius = ui.stickRadius(pad);
             const origin = { x: pad.cx + 8, y: pad.cy + 6 };
