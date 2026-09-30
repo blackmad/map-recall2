@@ -9019,7 +9019,77 @@
   "name": "Enneüs Heermabrug",
   "hash": "a4b7993a7774",
   "nlHash": "c12ebfd11d8d",
-  "en": "This bridge is named after Enneüs Heerma (1944-1999).",
+  "en": "This bridge is named after Enneüs Heerma (1944-1999). He was an alderman of Amsterdam for the CDA from 1978 to 1986. He then became state secretary, first for Foreign Trade and later for Housing. From 1994 to 1997 he led the CDA group in the House of Representatives.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Enny Vredestraat",
+  "hash": "e7eb0f4b2f02",
+  "nlHash": "e67230b2493f",
+  "en": "(Belongs to Enneüs Heerma) He was an alderman of Amsterdam for the CDA from 1978 to 1986. He then became state secretary, first for Foreign Trade and later for Housing. From 1994 to 1997 he led the CDA group in the House of Representatives.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Entabeni",
+  "hash": "1ab5268c1a4d",
+  "nlHash": "4df5c51cac34",
+  "en": "A game reserve in South Africa, in the province of Limpopo. The name means 'the place of the mountain', after its position in the mountainous Waterberg region. The area is part of a World Heritage site.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Entrepotdok",
+  "hash": "2a56bf4c1e82",
+  "nlHash": "51679be07301",
+  "en": "Named after its function. The dock was built in 1827; imported goods had to be stored here until the import duties were paid (a bonded warehouse, entrepot). The warehouses have lost their function as an entrepot, and in part of them the upper floors have now been converted into homes (Binnenkadijk).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Entrepotdoksluis",
+  "hash": "d0872cca07bd",
+  "nlHash": "51679be07301",
+  "en": "Named after its function. The dock was built in 1827; imported goods had to be stored here until the import duties were paid (a bonded warehouse, entrepot). The warehouses have lost their function as an entrepot, and in part of them the upper floors have now been converted into homes (Binnenkadijk).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Entrepothaven",
+  "hash": "fbe012e5c217",
+  "nlHash": "cff5f61b84e9",
+  "en": "Named after its function. The dock was built in 1827; imported goods had to be stored here until the import duties were paid (a bonded warehouse, entrepot). The warehouses have lost their function as an entrepot. In part of them the upper floors have now been converted into homes (Binnenkadijk).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Entrepothof",
+  "hash": "29757ad3af64",
+  "nlHash": "51679be07301",
+  "en": "Named after its function. The dock was built in 1827; imported goods had to be stored here until the import duties were paid (a bonded warehouse, entrepot). The warehouses have lost their function as an entrepot, and in part of them the upper floors have now been converted into homes (Binnenkadijk).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Entrepotkade",
+  "hash": "f2b8724edcf3",
+  "nlHash": "51679be07301",
+  "en": "Named after its function. The dock was built in 1827; imported goods had to be stored here until the import duties were paid (a bonded warehouse, entrepot). The warehouses have lost their function as an entrepot, and in part of them the upper floors have now been converted into homes (Binnenkadijk).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Eosstraat",
+  "hash": "34f42e009f9e",
+  "nlHash": "3df63c76f215",
+  "en": "A figure from Greek mythology, also known as Aurore or Aurora: the goddess of sunrise and the dawn.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Epicurusstraat",
+  "hash": "c884a628ec2a",
+  "nlHash": "99b379e070bb",
+  "en": "Greek philosopher (341-270 BC). His philosophy held that only insight and a moral life lead to happiness.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Erasmusgracht",
+  "hash": "0447fb8d0c32",
+  "nlHash": "c5df03bf4511",
+  "en": "Desiderius Erasmus (1467-1536), humanist, who fiercely attacked the abuses in the Roman Catholic Church. His best-known work is 'In Praise of Folly'.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -9030,10 +9100,815 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Erich Salomonstraat",
+  "hash": "3d6865802062",
+  "nlHash": "171f0ac759bb",
+  "en": "German-Jewish photojournalist (1886-1944), a pioneer of candid photography, in which people are photographed without their noticing. A grand master of political documentary and society photography.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Erik de Roodestraat",
+  "hash": "db90a39ad14c",
+  "nlHash": "21a98f53debb",
+  "en": "Also Eric the Red. A Norse navigator who settled in Iceland in 960 and from there discovered Greenland in 985.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ernest Staesplein",
+  "hash": "ead492351daa",
+  "nlHash": "52b9ceb9db22",
+  "en": "The title of an 1874 prose collection by the Flemish writer Anton Bergmann (1835-1874).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ernest Staesstraat",
+  "hash": "fb90df37036a",
+  "nlHash": "52b9ceb9db22",
+  "en": "The title of an 1874 prose collection by the Flemish writer Anton Bergmann (1835-1874).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ernst Cahn en Alfred Kohnbrug",
+  "hash": "7c8f14b02953",
+  "nlHash": "ca8d8afccf5a",
+  "en": "Ernst Cahn, the man with whom Alfred Kohn (died 1941) ran the Koco ice-cream parlours, the home base of Jewish fighting squads in the Second World War.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ernst Cahnsingel",
+  "hash": "3d41a627b030",
+  "nlHash": "be02a5dde96d",
+  "en": "Resistance fighter (1889-1941), owner of the ice-cream parlour 'Koco' on the Van Woustraat, from which resistance to anti-Jewish riots was organised in 1941.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ertshaven",
+  "hash": "7e65c56cb5e1",
+  "nlHash": "8a3b66eedc73",
+  "en": "Ore boats used to be unloaded at this quay.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ertskade",
+  "hash": "3bcfa7331cdd",
+  "nlHash": "8a3b66eedc73",
+  "en": "Ore boats used to be unloaded at this quay.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Escudolaan",
+  "hash": "57f95f2b9f79",
+  "nlHash": "148f2e1bd45a",
+  "en": "The escudo is the currency of Portugal.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Eshowe",
+  "hash": "1987e918c1a3",
+  "nlHash": "8c22c9666411",
+  "en": "Eshowe is a town in South Africa whose name was inspired by the sound of the wind blowing through the native Dlinza forest.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Esmoreitstraat",
+  "hash": "c9311ad47f00",
+  "nlHash": "17b1798553b8",
+  "en": "A fourteenth-century Flemish abel spel (a serious secular play).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Esplanade de Meer",
+  "hash": "d8d59b03c33f",
+  "nlHash": "78186063c6ef",
+  "en": "The former Ajax stadium De Meer.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Esther de Boer-van Rijkstraat",
+  "hash": "adb49416c642",
+  "nlHash": "d2c475c04870",
+  "en": "Actress (1854-1937). She played the part of Kniertje in Herman Heijermans's 'Op hoop van zegen' more than a thousand times.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ethekwini",
+  "hash": "84a9194fe7dd",
+  "nlHash": "dfbd6f3424d1",
+  "en": "A port city in South Africa, formerly Durban, in the province of KwaZulu-Natal. The Zulu name means 'place where the ocean and the earth meet'.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Etnastraat",
+  "hash": "88af7190062b",
+  "nlHash": "c8312da02927",
+  "en": "A volcano on the Italian island of Sicily, the highest and most active volcano in Europe.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Etty Hillesumbrug",
+  "hash": "e26380237716",
+  "nlHash": "0ccb80cb8965",
+  "en": "Etty Hillesum (Middelburg, 15 January 1914 - Auschwitz, c. 30 November 1943) was a Jewish writer who wrote her diaries in the first years of the Second World War.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Eudorinastraat",
+  "hash": "c111edf3b8e8",
+  "nlHash": "fbf17d3f1d71",
+  "en": "A microscopic water creature, a flagellate alga. Because it contains chlorophyll it can assimilate carbon dioxide.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Eurokade",
+  "hash": "f16f099ce939",
+  "nlHash": "2105cf1460d2",
+  "en": "The name of the future European currency.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Europaboulevard",
+  "hash": "0d4139b88911",
+  "nlHash": "58cee0a5c2d0",
+  "en": "Named after the continent. The naming followed the resolution of the Consultative Assembly of the Council of Europe of 29 December 1957, which called on every municipality in Europe to give a square or street the name Europe, to help promote the idea of European unity. With this naming the name Westerscheldeplein (council decision of 30 January 1935) and the name Scheldestraat for part of that street (council decision of 16 February 1927) were abolished.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Europaplein",
+  "hash": "6bc04824aecf",
+  "nlHash": "58cee0a5c2d0",
+  "en": "Named after the continent. The naming followed the resolution of the Consultative Assembly of the Council of Europe of 29 December 1957, which called on every municipality in Europe to give a square or street the name Europe, to help promote the idea of European unity. With this naming the name Westerscheldeplein (council decision of 30 January 1935) and the name Scheldestraat for part of that street (council decision of 16 February 1927) were abolished.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Eva Besnyöstraat",
+  "hash": "cc8e1de3bbdd",
+  "nlHash": "1ce0a203f306",
+  "en": "Hungarian-Dutch photographer (1910-2003), born in Budapest, who came to the Netherlands in the 1930s. Known for her socially engaged reportage, architectural photography and portraits.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Eva Schalkbrug",
+  "hash": "3a718ab17a86",
+  "nlHash": "978c2d3d4126",
+  "en": "Eva Schalk (1890-1978) was the first woman on a water board. She was for 27 years a hoofdingeland (board member) of the Buikslotermeer polder and for 21 years a hoofdingeland of the Hoogheemraadschap (regional water board).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Everard van Reijdhof",
+  "hash": "86f52758e869",
+  "nlHash": "7a15e1fd4afa",
+  "en": "Historian (1550-1602), councillor of the Frisian stadholder Willem Lodewijk. His works include 'Historie der Nederlandscher oorlogen' (history of the Netherlands wars), an important source for knowledge of the Dutch Revolt.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Eversdal",
   "hash": "fc3e747e1a18",
   "nlHash": "b2457c1d65e2",
   "en": "A South African place name.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Evert Cornelisstraat",
+  "hash": "99258c8e0728",
+  "nlHash": "4171f9a5475a",
+  "en": "Conductor and pianist (1884-1931). Second conductor of the Concertgebouw Orchestra from 1910 to 1919, then conductor of the Utrecht City Orchestra.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Evert van der Wallbrug",
+  "hash": "5916fbf577b8",
+  "nlHash": "f343c9f19bfc",
+  "en": "Evert van der Wall (1944-2003) was alderman for education and youth affairs in Amsterdam for the PvdA from 1979 to 1983. In 2002 he became chairman of the Oost-Watergraafsmeer district. He worked for the development of Oostpoort with a central district hall and a community school, and that is why this bridge is named after him.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Evertsweertplantsoen",
+  "hash": "c26ffb43a523",
+  "nlHash": "6ee17b3cef58",
+  "en": "A village near Reimerswaal on Zuid-Beveland (Zeeland) drowned in 1530.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Evertsweertstraat",
+  "hash": "79bc55f4a5f6",
+  "nlHash": "6ee17b3cef58",
+  "en": "A village near Reimerswaal on Zuid-Beveland (Zeeland) drowned in 1530.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ewoud Worststraat",
+  "hash": "a17c97448d25",
+  "nlHash": "d383e3ff7ac0",
+  "en": "A Beggar admiral (died 1574) who took part in the uprising in Vlissingen in 1572 and the siege of Middelburg in 1573.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ezelsbrug",
+  "hash": "6e2f5125061b",
+  "nlHash": "36109c082024",
+  "en": "The name of this bridge (donkey bridge) recalls the hard struggle the residents had to wage against the car lobby, which would rather have seen bridges for ordinary traffic here. They often felt like donkeys that kept stumbling over the same stone. The name also refers to the memory aid called an ezelsbruggetje (a mnemonic). The bridge was officially opened on 14 March 1987 by having a donkey walk across it.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "F.C. Dondersstraat",
+  "hash": "f9863fdff8e7",
+  "nlHash": "c6bec1444b76",
+  "en": "Franciscus Cornelis Donders (1818-1889), world-famous ophthalmologist.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Faas Wilkesstraat",
+  "hash": "af2aed7a9103",
+  "nlHash": "6a252f87008c",
+  "en": "Servaas Wilkes (1923-2006), footballer. With his elegant play he was Johan Cruijff's great role model. He was the first Dutchman to play for a top foreign club. Until 1998 he held the Dutch national team record with 35 goals in 38 internationals.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fagelstraat",
+  "hash": "de6b3fc4dddb",
+  "nlHash": "f952514680fb",
+  "en": "Caspar Fagel (1629-1688), who in 1672 succeeded Johan de Witt as Grand Pensionary of Holland.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fahrenheitsingel",
+  "hash": "1210d693282a",
+  "nlHash": "30bed4391c72",
+  "en": "Gabriel Daniel Fahrenheit (1686-1736), German by birth, who settled in the Netherlands as a physicist. In 1715 he set the freezing point of the thermometer at 32 degrees and the boiling point at 212 degrees. The Fahrenheitstraat was originally called De Wetstraat (council decision of Watergraafsmeer, 31 October 1901).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fahrenheitstraat",
+  "hash": "945d4a29b35f",
+  "nlHash": "30bed4391c72",
+  "en": "Gabriel Daniel Fahrenheit (1686-1736), German by birth, who settled in the Netherlands as a physicist. In 1715 he set the freezing point of the thermometer at 32 degrees and the boiling point at 212 degrees. The Fahrenheitstraat was originally called De Wetstraat (council decision of Watergraafsmeer, 31 October 1901).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Falckstraat",
+  "hash": "2d0e813ddf3a",
+  "nlHash": "3e94ed921e18",
+  "en": "Anton Reinhard Falck (1777-1843), statesman and lawyer, one of the leaders of the revolution of 1813. Under King Willem I he was Minister of Education, Industry and the Colonies. Founder of the Leesmuseum (reading society). The street was laid out on a filled-in part of the Achtergracht.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fannius Scholtenstraat",
+  "hash": "5169db590eed",
+  "nlHash": "200747179e95",
+  "en": "Cornelis A. Fannius Scholten (1767-1832), lawyer in The Hague. During the revolution of 1813 he was, with Melchior Kemper, commissioner of the General Government in Amsterdam, and afterwards Councillor of State in extraordinary service.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fanny Blankers-Koenlaan",
+  "hash": "d320f6d198ac",
+  "nlHash": "6916264c6bfb",
+  "en": "Francina Elsje Blankers-Koen (1918-2004), athlete. She won four gold medals at the 1948 Olympic Games in London. In 1999 the International Amateur Athletic Federation (IAAF) named her 'Female Athlete of the Century'.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fanny Durackstraat",
+  "hash": "32e1b937927c",
+  "nlHash": "a14dfbb8aa12",
+  "en": "Australian swimmer who won gold in the 100 metres freestyle at the 1912 Olympic Games in Stockholm, the first woman to win Olympic swimming gold.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fanny Mendelssohnstraat",
+  "hash": "0ea173adedab",
+  "nlHash": "5dd262c28df8",
+  "en": "Fanny Mendelssohn was a German composer and pianist.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Faradaystraat",
+  "hash": "109adcd86b16",
+  "nlHash": "a97850355ce4",
+  "en": "Michael Faraday (1791-1867), English physicist and chemist, founder of the electromagnetic theory of light.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fazantenweg",
+  "hash": "2af590743865",
+  "nlHash": "8fec1d7a0f58",
+  "en": "The game bird (the pheasant).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Februariplein",
+  "hash": "ae2e464a4cf3",
+  "nlHash": "4f6905720664",
+  "en": "After the February Strike of 25 and 26 February 1941, a protest strike against the first raids in the Jewish quarter.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Feike de Boerlaan",
+  "hash": "1b3533a5eb3d",
+  "nlHash": "318ffb0bf556",
+  "en": "Feike de Boer (1892-1976), director of the N.V. Stoomvaart Maatschappij 'Nederland' (Netherlands Steamship Company) from 1934 to 1946. He held countless other posts, among them board member of the N.V. Nederlandsch-Indische Steenkolen Handel Maatschappij and of the N.V. Nederlandsche Dok Maatschappij. From 1945 to 1946, exactly three hundred days, he was burgomaster of Amsterdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ferdinand Bolstraat",
+  "hash": "84f8abf4700c",
+  "nlHash": "50cd0c72d804",
+  "en": "Painter (1616-1680), a pupil of Rembrandt, who painted portraits and regents' group portraits, among other things. (The boundary with the Gerard Doustraat was set more precisely by council decision of 9 June 1921.)",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ferdinand Huyckstraat",
+  "hash": "3b784727280f",
+  "nlHash": "7fe554e89964",
+  "en": "A historical novel by Jacob van Lennep about life in Amsterdam in the eighteenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ferguutstraat",
+  "hash": "a2381734d4b9",
+  "nlHash": "d5dc821b442c",
+  "en": "A thirteenth-century Celtic (Arthurian) chivalric romance.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ferrarisstraat",
+  "hash": "078988e0782f",
+  "nlHash": "093f43cb3962",
+  "en": "Giorgi Ferraris (1847-1897), Italian mathematician and physicist, discoverer of the principle of rotating (three-phase) current.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ferry Ploegerstraat",
+  "hash": "b918b7cdd302",
+  "nlHash": "c87e404461e9",
+  "en": "Ferdinand Ploeger (1915-1944), resistance fighter, born in Amsterdam, executed by firing squad in Bloemendaal.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fibigerstraat",
+  "hash": "ff30bea5a57f",
+  "nlHash": "652e0549cc1e",
+  "en": "Johannes Andreas Grib Fibiger (1867-1928), Danish physician, a well-known scientist in cancer research. He received the Nobel Prize in Medicine in 1926.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fijnje van Salverdastraat",
+  "hash": "9f27c3c291df",
+  "nlHash": "e1b21ef5d8a9",
+  "en": "Johannes Gerardus Wijbo Fijnje van Salverda (1796-1889), water management and railway engineer and inventor. As chief engineer of Rijkswaterstaat he was put in charge of the improvement of the Nieuwe Waterweg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Filips van Almondestraat",
+  "hash": "e83214f92ec5",
+  "nlHash": "44926ca827b8",
+  "en": "Naval hero (1646-1711), admiral in the Nine Years' War against France of 1688 to 1697.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Finsenstraat",
+  "hash": "30440b02a9b2",
+  "nlHash": "92a10ef42bd3",
+  "en": "Niels Finsen (1860-1904), Danish physician, inventor of the Finsen lamp named after him, for light therapy. He received the Nobel Prize in 1903. From 26 July 1939 until it was given this name, the street was part of the Bunsenstraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Firststraat",
+  "hash": "41f96e5340cd",
+  "nlHash": "c4976e149dde",
+  "en": "Ruth First (1925-1982), journalist, daughter of Jewish immigrants from Eastern Europe who came to South Africa. She wrote about the evil consequences of apartheid. After several arrests she fled to England, where she kept working for the anti-apartheid movement. In 1982 she was murdered by the South African secret service.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fizeaustraat",
+  "hash": "dae1efbfabc0",
+  "nlHash": "ffcc6b536db1",
+  "en": "Armand Hippolyte Fizeau (1819-1896), French physicist, inventor of a method for measuring the speed of light.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Flamingostraat",
+  "hash": "913bb9de6805",
+  "nlHash": "3bf0f96af7b7",
+  "en": "A bird that lives in subtropical regions and occasionally appears in temperate zones too.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Flammarionstraat",
+  "hash": "223e6a8ea9fd",
+  "nlHash": "28e99319417f",
+  "en": "Camille Flammarion (1842-1925), French astronomer and author of many popular works on astronomy and geology.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fleerde",
+  "hash": "fd07d57b55b5",
+  "nlHash": "0c0935093939",
+  "en": "The name of a patrician house in Bergharen (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Flevopark",
+  "hash": "bb63a78e5ff4",
+  "nlHash": "1ceb458dbf83",
+  "en": "Named after Lake Flevo, from which the Zuiderzee formed.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Flevoparkweg",
+  "hash": "f3f12dbe00b3",
+  "nlHash": "dd2175733cd8",
+  "en": "Named after Lake Flevo, from which the Zuiderzee (now the IJsselmeer) formed.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Flierbosdreef",
+  "hash": "0c8e558e415c",
+  "nlHash": "d1d53859237a",
+  "en": "The name of several farms, among them in Wouw (Noord-Brabant) and Stedum (Groningen).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Florapad",
+  "hash": "0e2c8be696e7",
+  "nlHash": "cc137f9d84b2",
+  "en": "The collective name for the plant world. Originally the Roman goddess of spring and flowers.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Floraparkweg",
+  "hash": "c822f95c68a3",
+  "nlHash": "cc137f9d84b2",
+  "en": "The collective name for the plant world. Originally the Roman goddess of spring and flowers.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Floraweg",
+  "hash": "d8473a66f6d6",
+  "nlHash": "cc137f9d84b2",
+  "en": "The collective name for the plant world. Originally the Roman goddess of spring and flowers.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Florence Nightingalestraat",
+  "hash": "b2785d63f233",
+  "nlHash": "66f937dc2aed",
+  "en": "British nurse (1820-1910), nicknamed the lady with the lamp, known from the Crimean War of 1854. She became the pioneer of modern nursing and was a forerunner of the Red Cross.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Florijn",
+  "hash": "a7a82bbd729e",
+  "nlHash": "ec2087149e13",
+  "en": "The name of farms in Groenlo (Gelderland) and Wassenaar (Zuid-Holland). In Eibergen (Gelderland) it is the name of a hamlet.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Floris van der Laakenstraat",
+  "hash": "cd581d6dfe88",
+  "nlHash": "6d808ae33411",
+  "en": "Resistance fighter (1919-1945), born in Amsterdam, executed by firing squad at Hattem. He was commander of the radio service of the Raad van Verzet (Resistance Council).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Floris Versterstraat",
+  "hash": "bf17e028bea0",
+  "nlHash": "b5ab8d27b2ec",
+  "en": "Painter (1861-1927), a pupil of Breitner and at first an impressionist. He painted still lifes, portraits and landscapes.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fluessenlaan",
+  "hash": "f4eea9fcd498",
+  "nlHash": "1096204f7f7b",
+  "en": "A lake in southern Friesland.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fluitschipstraat",
+  "hash": "02d842fe5d52",
+  "nlHash": "55958b157f69",
+  "en": "A seventeenth-century cargo ship (the fluyt), a three-master with a rounded hull.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Foekje Dillemastraat",
+  "hash": "5760b0160850",
+  "nlHash": "c52c15157473",
+  "en": "Athlete (1926-2007), rival of Fanny Blankers-Koen over 200 metres. After a compulsory sex test in 1950 she was banned for life, on the grounds that she was not fully a woman. The criteria were later changed, and after her death she was rehabilitated.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Foeliedwarsstraat",
+  "hash": "399b217b8dfd",
+  "nlHash": "b3d04aba3f9a",
+  "en": "One of the products, important at the time, brought from the East Indies and stored here in the East India Company's warehouses (foelie is mace).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Foeliestraat",
+  "hash": "a9d38b67b313",
+  "nlHash": "b3d04aba3f9a",
+  "en": "One of the products, important at the time, brought from the East Indies and stored here in the East India Company's warehouses (foelie is mace).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Foersterhof",
+  "hash": "3db6d38b5da9",
+  "nlHash": "188519c3ce51",
+  "en": "Friedrich Wilhelm Foerster (1869-1959), founder of the modern work school (arbeidsschool).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fogostraat",
+  "hash": "89837c543975",
+  "nlHash": "66ab64e667f4",
+  "en": "A volcano in Cape Verde that is still active.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fokke Simonszstraat",
+  "hash": "428076f0d46f",
+  "nlHash": "035584781952",
+  "en": "Arend Fokke Simonsz (1755-1812), Amsterdam bookseller, poet and prose writer, who lived on the Looierssloot. Fokke was for a time in charge of the archives and antiquities, of which he left descriptions. The street was laid out on the Nieuwe Looierssloot, filled in in 1873.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fokkemast",
+  "hash": "1551effbda33",
+  "nlHash": "900275ace6ec",
+  "en": "One of the masts (the foremost) of a ship: the foremast.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fokkezeil",
+  "hash": "4a3123f7c2b5",
+  "nlHash": "4c87aaf187ec",
+  "en": "One of the sails of a ship (the foresail).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fonteinkruidstraat",
+  "hash": "7ee56a04f4f5",
+  "nlHash": "f17befea5ef3",
+  "en": "The name comes from the pondweed genus, of the family of the same name. Its leaves lie on the water surface or float under water, and its flowers are in green spikes.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Foppingadreef",
+  "hash": "0bd705c496f6",
+  "nlHash": "016777736382",
+  "en": "A state, or farmstead, near Dronrijp (Friesland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Forintplantsoen",
+  "hash": "d5307a74c5f2",
+  "nlHash": "6f20566b85a7",
+  "en": "The currency of Hungary (the forint).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Formosastraat",
+  "hash": "ef8f9bfd6947",
+  "nlHash": "613d522984bd",
+  "en": "The island of Formosa, or Taiwan, off the coast of China, occupied by Japan until 1945 and Chinese after that. Taiwan is now in effect an independent state, although China regards the island as a Chinese province. The name, incidentally, is Portuguese: 'ilha formosa' means 'the beautiful island'.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fortuinstraat",
+  "hash": "ba8b449cbc96",
+  "nlHash": "68c449b0219c",
+  "en": "Named after the shipyard Het Fortuin (fortune), which was on the island of Wittenburg in the second half of the seventeenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fosfaatweg",
+  "hash": "48d367d99898",
+  "nlHash": "ef55c8c86315",
+  "en": "Named after the phosphate factory to which this road and quay lead. Before 1949 the road was part of the Ringweg in the Amsterdammer Polder.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Foucaultstraat",
+  "hash": "a9e766938684",
+  "nlHash": "8b768409748e",
+  "en": "Jean B.L. Foucault (1819-1868), French physicist. He demonstrated the rotation of the earth with a pendulum hung in the Panthéon in Paris, and discovered the induction (eddy) currents named after him.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fraijlemaborg",
+  "hash": "28196446b03a",
+  "nlHash": "4bb7452120df",
+  "en": "The name of an estate in Slochteren. A borg was originally a stone fortification; the province of Groningen once had many borgen. The Fraeylemaborg is now a museum with period rooms.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frambozenstraat",
+  "hash": "f4cca589377b",
+  "nlHash": "7efd3377f31e",
+  "en": "The fruit of the raspberry bush.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frances Harperstraat",
+  "hash": "6c0bfeb579dd",
+  "nlHash": "9abfb6c0736b",
+  "en": "Frances Ellen Watkins Harper (1825-1911) was an African-American poet and writer.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Francisco Faleirostraat",
+  "hash": "c8647775160c",
+  "nlHash": "ec224d9d5f6c",
+  "en": "An exiled Portuguese scholar who entered Spanish government service. His scientific work dealt with navigation and its problems. He supported Ferdinand Magellan in finding the route around South America.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Franciscus Claessenstraat",
+  "hash": "89ce27ed6cf1",
+  "nlHash": "fb9feffc42d7",
+  "en": "Resistance fighter (1894-1945), born in Helden, died in the Bergen-Belsen concentration camp.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frank Martinus Arionstraat",
+  "hash": "4ba4b75cf32f",
+  "nlHash": "31c2941f7210",
+  "en": "Frank Martinus Arion, pen name of Frank Efraim Martinus (Curaçao, 1936 - Curaçao, 2015), was a writer, poet and linguist. He worked in the Netherlands, Suriname and the Netherlands Antilles, and wrote in Dutch and Papiamentu. In 1955 Martinus Arion left for the Netherlands to study Dutch language and literature at Leiden University. There he came into contact with Cola Debrot, with whom he published his first collection of poems in 1957. He then founded an Antillean magazine, Encuentro Antilliano, with others. His debut novel Dubbelspel (double play, 1973) was his greatest success. In 1975 he taught at the teacher-training institute in Paramaribo. After Bouterse's coup the family left for Curaçao, where Martinus Arion concentrated on standardising and promoting Papiamentu. In 1996 his doctoral thesis on the origins of Papiamentu appeared: The Kiss of a Slave. Papiamentu's West-African Connections. In 2001 he was awarded the Cola Debrot Prize. In 1992 Arion was made a Knight of the Order of Orange-Nassau, but in 2008 he announced that he wanted to give the decoration back to the Dutch state. He believed that the Netherlands was recolonising the Antilles.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frank van der Goesstraat",
+  "hash": "e6f472d74e34",
+  "nlHash": "0d39ef5f8744",
+  "en": "Journalist and writer (1859-1939), a well-known socialist theorist. Co-founder of 'De Nieuwe Gids', founder of the SDAP in 1894, and foreign editor of 'Het Volk'.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frankemaheerdpad",
+  "hash": "52f455034f5b",
+  "nlHash": "9fc8bbfbd61d",
+  "en": "Named after a farm in Warffum (Groningen).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frankenstraat",
+  "hash": "a79ed0125b61",
+  "nlHash": "e26c0bc7c70a",
+  "en": "The franc is the currency of France, Belgium, Luxembourg and Switzerland.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frans Bastiaansestraat",
+  "hash": "0ab71437bcb4",
+  "nlHash": "b2e15e127ae0",
+  "en": "W.A.F. Bastiaanse (1868-1947), poet and writer. He wrote the Geschiedenis der Nederlandsche Letterkunde (history of Dutch literature, 1927).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frans de Wollantstraat",
+  "hash": "07cecfa08514",
+  "nlHash": "14c9a65cf093",
+  "en": "An eighteenth-century Dutch military engineer who made his name in Russia under Catherine the Great as a designer of hydraulic works and builder of the city of Odessa.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frans Duwaerstraat",
+  "hash": "985e0198808f",
+  "nlHash": "7ae9042098e7",
+  "en": "Resistance fighter (1911-1944), born in Amsterdam and executed by firing squad there too.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frans Halsstraat",
+  "hash": "7dbe8c3c9d67",
+  "nlHash": "774fa0a54431",
+  "en": "Painter (1580-1666) of portraits and militia group portraits.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frans Naerebouthof",
+  "hash": "e1e78fd6c865",
+  "nlHash": "384f5b20edb1",
+  "en": "A Vlissingen pilot, known as a rescuer at sea (1748-1818). He became famous above all at the wreck of the Woestduin in 1779.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frans van Mierisstraat",
+  "hash": "06e1b9b68126",
+  "nlHash": "2dd8360d7402",
+  "en": "Frans van Mieris the Elder (1635-1681), painter of genre and history pieces. His father and his son were also well-known painters.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Franz Kafkastraat",
+  "hash": "5dc7333ffe75",
+  "nlHash": "e26560d0fe02",
+  "en": "Franz Kafka (1883-1924) was a German-language writer regarded as one of the most important authors of the twentieth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Franz Zieglerstraat",
+  "hash": "d42b0b11518f",
+  "nlHash": "0b971b472fb5",
+  "en": "Photographer (1893-1939) who photographed members of the royal house and Hague society. Official court photographer from 1929.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fraunhoferstraat",
+  "hash": "0e5174e3e380",
+  "nlHash": "9ec5e3a6f3ec",
+  "en": "Joseph Fraunhofer (1787-1826), German physicist. He improved many optical instruments and discovered the lines in the solar spectrum (the Fraunhofer lines).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fré Cohenbrug",
+  "hash": "81e6839c0ae1",
+  "nlHash": "7339584f1fcb",
+  "en": "Frederika Sophia Cohen (1903-1943), graphic artist, whose brochures, covers, bindings and other work gave 1930s design its face. She worked for the Amsterdam city printing office from 1929 to 1941, giving her own twist to influences from Jugendstil, the Amsterdam School and De Stijl. She went on working while in hiding until she was betrayed.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fred Petterbaan",
+  "hash": "d7a152db0981",
+  "nlHash": "ab6833f9d407",
+  "en": "Frederik Hermanus Petter was a trade unionist and one of the leaders of the railway strike of 1903.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fred. Roeskestraat",
+  "hash": "d00b958e5e4b",
+  "nlHash": "25a21841a183",
+  "en": "Frederik J. Roeske (1868-1961), conductor of the Royal Male Choir Apollo from 1891 to 1953, and also composer of music for a great many songs. Before it got this name, the street was part of the Prinses Irenestraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fred. Thomasstraat",
+  "hash": "16d01c562431",
+  "nlHash": "0d306b28ffec",
+  "en": "Fredericus F.X.M.D. Thomas (1906-1959), journalist, editor of the daily 'De Tijd' and author of 'Amsterdam, stad van mijn hart' (Amsterdam, city of my heart).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frederik Hendrikplantsoen",
+  "hash": "9c0b207e40e3",
+  "nlHash": "12482fbc2f08",
+  "en": "Prince Frederik Hendrik (1584-1647), son of Prince William of Orange's fourth marriage, half-brother of Prince Maurice, and stadholder from 1625. His success as a military commander earned him the name 'stedendwinger' (tamer of cities). For some years the Frederik Hendrikplantsoen was first called Frederik Hendrikplein (council decision of 20 January 1886).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frederik Hendrikstraat",
+  "hash": "03b8b7ae7c82",
+  "nlHash": "12482fbc2f08",
+  "en": "Prince Frederik Hendrik (1584-1647), son of Prince William of Orange's fourth marriage, half-brother of Prince Maurice, and stadholder from 1625. His success as a military commander earned him the name 'stedendwinger' (tamer of cities). For some years the Frederik Hendrikplantsoen was first called Frederik Hendrikplein (council decision of 20 January 1886).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frederik van Dorpstraat",
+  "hash": "2f696e16032c",
+  "nlHash": "0c0d7b3e38d2",
+  "en": "A member of the Compromise of Nobles, of East Frisian descent (1547-1612). He fought at Heiligerlee and took part in the capture of Den Briel and the relief of Leiden.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frederik van Eedenstraat",
+  "hash": "5a0eca25d835",
+  "nlHash": "4270c99d0608",
+  "en": "Writer and psychiatrist (1860-1932), co-founder of the literary magazine 'De Nieuwe Gids'. From 1894 he went his own way and founded a cooperative commune in Bussum. His works include 'Van de koele meren des doods' (the deeps of deliverance).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frederiksplein",
+  "hash": "ccc48855b18a",
+  "nlHash": "e8ac8ad6f147",
+  "en": "Prince Frederik Willem Karel (1798-1881), second son of King Willem I. Partly through his support the building of the Paleis voor Volksvlijt was promoted (opened 1864, burnt down 1929).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frederiksstraat",
+  "hash": "1ded428cd5f0",
+  "nlHash": "e6c3a6d70d59",
+  "en": "Around 1880 Frederik Schröder provided a building loan for the houses along this street, which was then to be laid out, and so the street was named after him. The street was taken over from the municipality of Nieuwer-Amstel under this name.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Freek Oxstraat",
+  "hash": "2563e3ab4558",
+  "nlHash": "a5060da1202c",
+  "en": "Frederik Johannes Marius Ox (1920-1944), resistance fighter, born in Amsterdam, killed on 15 June 1944 in a gunfight with Germans in the Euterpestraat (now the Gerrit van der Veenstraat).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fregatstraat",
+  "hash": "f2e7f11aa32e",
+  "nlHash": "23b316635330",
+  "en": "A fast-sailing three-masted ship (a frigate).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fregelaan",
+  "hash": "4b3e9fe2180e",
+  "nlHash": "7361837bb613",
+  "en": "Gottlob Frege (1848-1925), German mathematician and philosopher, professor in Jena. He was the first to give a consistently worked-out reduction of mathematics to logic, and designed the Begriffsschrift, a symbolic notation for logic.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -9044,11 +9919,221 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Freule Wttewaalpad",
+  "hash": "2b6b035ba905",
+  "nlHash": "c574a3ff27c8",
+  "en": "Freule Christine Wilhelmine Isabelle Wttewaal van Stoetwegen (1901-1986), politician, member of the House of Representatives for the Christian Historical Union from 1945 to 1971. She sat on the parliamentary inquiry committee (1949-1956) that investigated the policy of the Dutch government in London during the Second World War.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frida Katzstraat",
+  "hash": "6a0220f4b6aa",
+  "nlHash": "c8008e04a1f5",
+  "en": "Frida Mackay-Katz (Amsterdam, 29 July 1885 - Aerdenhout, 30 March 1963) was a pioneer as a lawyer and as a municipal, national and local politician, and a campaigner for women's suffrage.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frieslandstraat",
+  "hash": "18b4a2c36dbe",
+  "nlHash": "fcc6cd76ac07",
+  "en": "The province. Several nearby streets are named after Frisian castles.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frissenstein",
+  "hash": "f0c187290ce1",
+  "nlHash": "05ab8c971196",
+  "en": "The name of a manor house in Deil (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frissensteinpad",
+  "hash": "e5be8d0d7ed8",
+  "nlHash": "05ab8c971196",
+  "en": "The name of a manor house in Deil (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Frits Rotganshof",
+  "hash": "f61b0ce704c0",
+  "nlHash": "3e509afbf34d",
+  "en": "Photographer (1912-1978), a master of the panoramic photograph. During the Second World War he secretly photographed the German occupation. After the war he photographed the activity in the ports of Rotterdam and Amsterdam. In the 1960s Rotgans worked on aviation photography and photomontages.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fritz Conijnstraat",
+  "hash": "43dd0f876c9c",
+  "nlHash": "0044bc3d89a2",
+  "en": "Fritz Gerhard Marie Conijn (1923-1944), resistance fighter and student, born in Alkmaar, executed by firing squad in Vught.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fritz Dietrich Kahlenbergstraat",
+  "hash": "66d2c55b9696",
+  "nlHash": "904626fbabbb",
+  "en": "Filmmaker (1916-1995), who also took many photographs during the Second World War. In 1944 he brought the Amsterdam group of photographers together to record the last year of the occupation. The group later became known as 'De Ondergedoken Camera' (the hidden camera).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Fröbelstraat",
+  "hash": "59948ac6f84b",
+  "nlHash": "858611c7e6c5",
+  "en": "Friedrich Wilhelm August Fröbel (1782-1852), German educator, who founded the first kindergarten in 1827.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Funenkade",
+  "hash": "0f7b0a2063ba",
+  "nlHash": "11b1377aa60c",
+  "en": "The strip of land on which the Czaar Peterstraat, among others, was laid out came inside the city with the expansion of 1658 and was afterwards called the Funen. The name recalled the Danish island of Funen, where Admiral De Ruyter won a naval battle against the Swedes in 1659.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Funenpark",
+  "hash": "f7ab7ce98d54",
+  "nlHash": "11b1377aa60c",
+  "en": "The strip of land on which the Czaar Peterstraat, among others, was laid out came inside the city with the expansion of 1658 and was afterwards called the Funen. The name recalled the Danish island of Funen, where Admiral De Ruyter won a naval battle against the Swedes in 1659.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Funke Küpperstraat",
+  "hash": "f249b765cdf2",
+  "nlHash": "96462ee23304",
+  "en": "Albert Funke Küpper (1894-1934), illustrator and caricaturist, who worked for the political-satirical weekly 'De Notenkraker'.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "G.J. Scheurleerpad",
+  "hash": "cadd67e34833",
+  "nlHash": "a69572d0f0ee",
+  "en": "Gerardus Jacobus Scheurleer (1886-1948), tennis player, many times Dutch doubles champion with, among others, Diemer Kool.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "G.J. Scheurleerweg",
+  "hash": "deaeb1228596",
+  "nlHash": "a69572d0f0ee",
+  "en": "Gerardus Jacobus Scheurleer (1886-1948), tennis player, many times Dutch doubles champion with, among others, Diemer Kool.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "G.J.M. Sarlemijnstraat",
+  "hash": "c422aa83da9d",
+  "nlHash": "a48b42c1c5eb",
+  "en": "Gerardus Josephus Maria Sarlemijn (1909-1993), Amsterdam architect. With Adriaan Evers he designed in the conservative Bossche School style. He received the city of Amsterdam's Golden Pin for listing the city's monuments.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "G.T. Ketjenweg",
+  "hash": "7bd2da423587",
+  "nlHash": "9264c6894ec5",
+  "en": "Gerard Tileman Ketjen, dealer in drugs and paints and the original founder of AKZO Nobel. In 1935 he founded the Ketjen sulphuric acid works on what is now the Marnixstraat. From 1916 production was concentrated in Amsterdam-Noord. In 1969 the Ketjen works merged with the company AKU to form AKZO.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Gaandeweg",
   "hash": "8b6b1f082043",
   "nlHash": "71886902ccbf",
   "en": "The name belongs to the theme 'Sociaal en tevreden wonen' (Social and contented living) for the G-buurt Grunder/Grubbehoeve.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Gaasp",
+  "hash": "62ef39565c02",
+  "nlHash": "8ee7b179352f",
+  "en": "The name comes from the small river Gaasp.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaasperdammerpad",
+  "hash": "48041eb65923",
+  "nlHash": "8ee7b179352f",
+  "en": "The name comes from the small river Gaasp.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaasperdammerweg",
+  "hash": "349f901b6626",
+  "nlHash": "c829895f0660",
+  "en": "After the hamlet of the same name on the small river Gaasp.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaasperparkpad",
+  "hash": "d037f9c45cf7",
+  "nlHash": "8ee7b179352f",
+  "en": "The name comes from the small river Gaasp.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaasperplas",
+  "hash": "409f833a2992",
+  "nlHash": "aa0ef6dabca2",
+  "en": "The name comes from the small river Gaasp. The Gaasperplas itself is an artificial lake up to 35 metres deep, created by digging sand for building the Bijlmermeer.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaasperplaspad",
+  "hash": "54eb20ac8cc4",
+  "nlHash": "aa0ef6dabca2",
+  "en": "The name comes from the small river Gaasp. The Gaasperplas itself is an artificial lake up to 35 metres deep, created by digging sand for building the Bijlmermeer.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaasperzoompad",
+  "hash": "3732673d739a",
+  "nlHash": "8ee7b179352f",
+  "en": "The name comes from the small river Gaasp.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaaspstraat",
+  "hash": "842cbad60160",
+  "nlHash": "a88327700f3a",
+  "en": "The small river Gaasp, the part of the Weespertrekvaart that was not dug.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaasterlandpad",
+  "hash": "3a4852c341fb",
+  "nlHash": "db8910d1b947",
+  "en": "The southern part of Friesland, between Stavoren and Lemmer. Here are the only places where the Frisian coast does not need dikes to protect it.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaasterlandstraat",
+  "hash": "0fd3b689638e",
+  "nlHash": "db8910d1b947",
+  "en": "The southern part of Friesland, between Stavoren and Lemmer. Here are the only places where the Frisian coast does not need dikes to protect it.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gabriël Metsustraat",
+  "hash": "5410e01d30b7",
+  "nlHash": "6b93d1c85dca",
+  "en": "Painter (1629-1667), mainly of genre pieces, and a pupil of Gerard Dou. A street had already been named after Metsu on 10 June 1880, but that name was changed to Paulus Potterstraat in 1893.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gabriela Mistralstraat",
+  "hash": "1ae6810eb49f",
+  "nlHash": "3fe208caadd7",
+  "en": "Gabriela Mistral (1889-1957) was a Chilean poet, the first Latin American to receive the Nobel Prize in Literature.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaffelaarspad",
+  "hash": "cd973c2d3f04",
+  "nlHash": "1af37bbf3be0",
+  "en": "A ship with a flat bottom and a round stem, used mainly on inland waterways.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gaffelstraat",
+  "hash": "4de9a7058b5c",
+  "nlHash": "5f9cedff0784",
+  "en": "A farm implement (a pitchfork) for pitching hay.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Galantstraat",
@@ -9058,10 +10143,94 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Galastraat",
+  "hash": "7e7c20935f06",
+  "nlHash": "f57621a04849",
+  "en": "A sweet, juicy apple from New Zealand, a variety that arose in the first half of the twentieth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Galgenbrug",
+  "hash": "447189476ac5",
+  "nlHash": "d98f8453e069",
+  "en": "The name (gallows bridge) refers to the view from this bridge of the gallows of the Volewijk, which stood there until 1795.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Galgenstraat",
+  "hash": "cfb0e0d4c783",
+  "nlHash": "782b93f0575d",
+  "en": "The view from this street of the gallows of the Volewijk is the origin of this name. In 1662 the city council decided to change the name to Prinsendwarsstraat, but that name never caught on.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Galggouw",
+  "hash": "d5c0a98d3eb0",
+  "nlHash": "f596dc3a9a44",
+  "en": "This gouw (village road), in the municipality of Broek in Waterland, owes its name to an old gallows field.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Galileïplantsoen",
+  "hash": "9449381a77c3",
+  "nlHash": "4de8ecd1dab2",
+  "en": "Galileo Galilei (1564-1642), Italian mathematician, professor at Pisa and Padua. He discovered the laws of falling bodies and of the pendulum, built the first telescope and discovered many celestial bodies.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Galjoenstraat",
+  "hash": "1c59c650b5e8",
+  "nlHash": "91b0e468342b",
+  "en": "A heavy, cumbersome sailing ship of the sixteenth and seventeenth centuries (a galleon), with three or four masts and a high forecastle and sterncastle.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Galjootstraat",
+  "hash": "b08adb733de8",
+  "nlHash": "0de7db36ecf7",
+  "en": "A ship: a flat-bottomed merchant ship with leeboards for coastal trade (a galliot).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Galvanistraat",
+  "hash": "281ecf0fa8b6",
+  "nlHash": "81ea7a401a5f",
+  "en": "Luigi Galvani (1737-1798), Italian physicist, who discovered electricity generated by chemical action.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Galwin",
+  "hash": "cf5734e599e0",
+  "nlHash": "361c45865c45",
+  "en": "A corrupted spelling of the Irish port of Galway, as found on sea charts of the sixteenth and seventeenth centuries.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gamerenstraat",
+  "hash": "65fd02c85ab9",
+  "nlHash": "a3f10b08dc75",
+  "en": "The Gamerenstraat (formerly Van Gamerenstraat) is named after Virginie Gameren (Curaçao, 19 March 1833 - date and place of death unknown). Virginie was an enslaved woman who fought for her freedom by starting legal proceedings against her owner. She won, and so forced the Ministry of the Colonies to grant her freedom. She took the surname Gameren, which gave her and her children autonomy.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Ganzebloemstraat",
   "hash": "4028f4bde9df",
   "nlHash": "5db5185a8bb6",
   "en": "The flower (the marigold), of the daisy family.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ganzenhoefpad",
+  "hash": "6a683b9916bd",
+  "nlHash": "fc09c466e647",
+  "en": "The name of a farm on the Vecht near Maarsseveen (Utrecht).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ganzenveldstraat",
+  "hash": "c5192532d4d5",
+  "nlHash": "bc112eac1c1a",
+  "en": "The Ganzenveld is part of the Schoorl dunes (Noord-Holland).",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -9072,11 +10241,585 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Garcia Lorcastraat",
+  "hash": "37a5a06bec8e",
+  "nlHash": "8375d14c112c",
+  "en": "Federico García Lorca (1898-1936) was a progressive Spanish poet and playwright.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gare du Nord",
+  "hash": "22e2e53205a5",
+  "nlHash": "42ec8a4f49b1",
+  "en": "A major railway station in the north of Paris, opened in 1864.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Garstkamp",
+  "hash": "91fd0d716718",
+  "nlHash": "b0d17ed5601b",
+  "en": "The name of a farm near Beesd (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gasthuismolensteeg",
+  "hash": "ef5bcf830bc0",
+  "nlHash": "63720f4d3950",
+  "en": "On the city rampart (the Singel), where the alley is now, stood the mill of the Sint Elisabethsgasthuis (fifteenth and sixteenth centuries). The Sint Elisabethsgasthuis was the city's oldest hospital, founded in the fourteenth century. In 1492 its building was added to the city hall. Both buildings were later demolished to build the new city hall (now the palace). Before 1913 this was the Wijde Gasthuismolensteeg; earlier still the names Molensteeg and Benninghstraat occur.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gatwickstraat",
+  "hash": "d249f1450b8f",
+  "nlHash": "e27d92d14aec",
+  "en": "The name of one of London's airports.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gebroeders A. en B. Wolfswinkelweg",
+  "hash": "c549bc046ffb",
+  "nlHash": "f22cddf39633",
+  "en": "The brothers Antoon (1919-1942) and Bertus (1921-1942) Wolfswinkel, resistance fighters. They distributed clandestine material, collected money for the resistance and belonged to a sabotage group at the Fokker factory in Amsterdam-Noord, where they worked. They took an active part in the February Strike of 1941. On 19 November 1942 both were executed by firing squad at Soesterberg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gedempt Hamerkanaal",
+  "hash": "4c8fb4c5abe6",
+  "nlHash": "d0d3586c5ad3",
+  "en": "Refers to the former Hamerkanaal (gedempt: filled in).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Gedempte Begijnensloot",
   "hash": "c1478206a5f7",
   "nlHash": "a407dfb928e6",
   "en": "The hof (courtyard), founded in the fourteenth century, was built to house beguines (lay sisters). The Begijnhof, together with the Sint Luciënklooster, was originally surrounded entirely by water. Behind the houses of the Kalverstraat ran a ditch, the Begijnensloot, which led from the Spui, not yet filled in at the time, to the Nieuwezijds Voorburgwal. This ditch was neglected, and so what remained of it was filled in in 1865. It was given the name Gedempte Begijnensloot, a name made official by a council decision in 1914.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Gedempte Insteekhaven",
+  "hash": "11a05e2e9ba7",
+  "nlHash": "130f37a2f883",
+  "en": "This side basin (insteekhaven) was part of the shipyard of the Amsterdamsche Droogdok Maatschappij (ADM). Several floating dry docks lay in it. It was filled in to build housing on the site.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geduld",
+  "hash": "844f2a91266a",
+  "nlHash": "12afeee600be",
+  "en": "The ability to wait a long time to reach a goal (patience).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geelbekstraat",
+  "hash": "651cc3617309",
+  "nlHash": "29b4b3b7e9b2",
+  "en": "The songbird (the yellowhammer), of the finch family.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geelvinckssteeg",
+  "hash": "05cdb9ce8e17",
+  "nlHash": "02ca0bbc7cc4",
+  "en": "On the corner of this alley there once stood two warehouses called De Geelvinck. The name first appears in the last years of the sixteenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geer Ban",
+  "hash": "4c8b45852ec8",
+  "nlHash": "23f171d1f4b1",
+  "en": "The Geer Ban, or Vrije Geer, was one of the four parts that made up the municipality of Sloten in earlier centuries. A ban was in the old days an administrative district; a number of bannen together formed a bailiwick.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geerdinkhof",
+  "hash": "3fa2a24004c4",
+  "nlHash": "6436f7acb787",
+  "en": "A very old name of a plot of land at Vasse near Tubbergen (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geerdinkhofpad",
+  "hash": "6d7ea4105e5b",
+  "nlHash": "6436f7acb787",
+  "en": "A very old name of a plot of land at Vasse near Tubbergen (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geerdinkhofweg",
+  "hash": "9b97f34a1b7e",
+  "nlHash": "6436f7acb787",
+  "en": "A very old name of a plot of land at Vasse near Tubbergen (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geert Geertsenbrug",
+  "hash": "3202d0348ca1",
+  "nlHash": "b23fe9383ef1",
+  "en": "Geert Geertsen was the birth name of Desiderius Erasmus (1467-1536). Because his Dutch name is linked to the word begeerte (desire), he took the Latin word for desire as his first name and the Greek word as his surname.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geert Grootestraat",
+  "hash": "853ffd237f9c",
+  "nlHash": "075df0812c48",
+  "en": "Philosopher (1340-1384), founder of the Brethren of the Common Life. He railed against the abuses in the church, but also against heretics. He founded the religious renewal known as the Modern Devotion.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geertje Wielemaplein",
+  "hash": "0fff9f14f75e",
+  "nlHash": "700a1e7782cd",
+  "en": "Swimmer (1934-2009), who won a silver medal in the 100 metres backstroke at the 1952 Olympic Games in Helsinki. In 1954 she became the Netherlands' first Sportswoman of the Year.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geertruida van Lierstraat",
+  "hash": "050f1490aa34",
+  "nlHash": "8ddc5b84f6db",
+  "en": "Resistance fighter (1915-1969), involved in many clandestine activities and a member of the Amsterdam resistance group CS-6.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geervliet",
+  "hash": "ef22ad28997b",
+  "nlHash": "1d19fdc29c34",
+  "en": "An old little town (town rights 1381) on the Brielse Maas and the now silted-up Bernisse (Zuid-Holland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geldersekade",
+  "hash": "a6d41a0ccc5e",
+  "nlHash": "91511c538d7a",
+  "en": "At the city's second expansion on the east side, today's Geldersekade was the city moat. So the inner bank (on the Zeedijk side) is the oldest, built around 1500. The other side lay outside the city until 1585. In the seventeenth century the old side was called partly Keulse kaai (Cologne quay) and further on Gelderse kaai, and for a short time also Londense kaai or Engelse kaai. The names came from the landing stages here where ships moored that sailed to the towns of Gelderland, to Cologne, London and other English ports. Some remains of the city wall built here around 1500 between the Waag and the Schreierstoren can still be found in the quay wall and by the Bantammerbrug. To match the name of the quay, in 1911 the alley previously called Leliestraat was renamed Geldersesteeg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geldersekade",
+  "hash": "f2cd5da09140",
+  "nlHash": "f87620829b59",
+  "en": "At the city's second expansion on the east side, today's Geldersekade was the city moat. So the inner bank (on the Zeedijk side) is the oldest, built around 1500. The other side lay outside the city until 1585. In the seventeenth century the old side was called partly Keulse kaai (Cologne quay) and further on Gelderse kaai, and for a short time also Londense kaai or Engelse kaai. The names came from the landing stages here where ships moored that sailed to the towns of Gelderland, to Cologne, London and other English ports. Some remains of the city wall built here around 1500 between the Waag and the Schreierstoren can still be found in the quay wall and by the Bantammerbrug. To match the name of the quay, in 1911 the alley previously called Leliestraat was renamed Geldersesteeg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geldershoofd",
+  "hash": "079a16874289",
+  "nlHash": "20bd75541d8b",
+  "en": "The name of a country estate near Brummen (Gelderland). Before their renovation in 1983, the buildings Geldershoofd and Gravestein together formed the Gliphoeve building.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geleenstraat",
+  "hash": "78219a1948f6",
+  "nlHash": "7b70f7017a33",
+  "en": "A small river in South Limburg that flows into the Maas at Stevensweert.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geleyn Bouwenszstraat",
+  "hash": "f86e9d87f024",
+  "nlHash": "277c61f39a2e",
+  "en": "A captain of the Sea Beggars at the capture of Den Briel in 1572.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gelrestraat",
+  "hash": "d3fa18867f60",
+  "nlHash": "d9c02c119478",
+  "en": "The old name of Gelderland. Also a county (1046-1339) and then, until 1795, a duchy, roughly matching today's Gelderland plus part of Limburg and Germany.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Generaal Vetterstraat",
+  "hash": "1229bd4778f6",
+  "nlHash": "79835d154e36",
+  "en": "Jacobus Augustinus Vetter (1837-1907), military commander-in-chief of the expeditions to Lombok (1894) and Aceh (1896).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Generatorstraat",
+  "hash": "328e8375018f",
+  "nlHash": "fa74da749ae0",
+  "en": "The machine for generating electric current.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Genhoes",
+  "hash": "5a0c1ef3ed61",
+  "nlHash": "8e0d68d13b02",
+  "en": "Genhoes castle, or Oud-Valkenburg, near Valkenburg (Limburg), built around 1500: a late-Gothic main building of marlstone, altered and extended in the seventeenth and eighteenth centuries, and restored from 1962.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gentiaanplein",
+  "hash": "e0c66ac7d920",
+  "nlHash": "b90ec85155f3",
+  "en": "The plant family (gentians).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gentiaanstraat",
+  "hash": "c1566c235849",
+  "nlHash": "b90ec85155f3",
+  "en": "The plant family (gentians).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "George Balanchinestraat",
+  "hash": "ebc79c413abe",
+  "nlHash": "5b8902ac3c61",
+  "en": "George Balanchine was an American choreographer of Georgian descent, regarded as one of the most important choreographers of twentieth-century classical ballet.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "George Gershwinlaan",
+  "hash": "a134f5cc2783",
+  "nlHash": "8739b6b649c4",
+  "en": "American composer and pianist (1898-1990) who worked jazz elements into classical music. He wrote the opera 'Porgy and Bess' and countless musicals, as well as piano works, orchestral works and concertos.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "George Gershwinplein",
+  "hash": "8d17d2169104",
+  "nlHash": "8739b6b649c4",
+  "en": "American composer and pianist (1898-1990) who worked jazz elements into classical music. He wrote the opera 'Porgy and Bess' and countless musicals, as well as piano works, orchestral works and concertos.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "George Madurobrug",
+  "hash": "98d2c01b8022",
+  "nlHash": "28201d12c4e7",
+  "en": "George John Lionel Maduro (1916-1945) was a resistance man of Antillean descent who died in the Dachau concentration camp. The miniature city of Madurodam in The Hague is named after him.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "George Sandstraat",
+  "hash": "ebb624ff1e91",
+  "nlHash": "aa122ac54acd",
+  "en": "Pseudonym of Aurore Dupin, Baroness Dudevant (1804-1876), French novelist. Through her free way of life and in her work she stood up for the unrestrained development of women. She counts as the first truly emancipated woman of the modern era.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "George Sliekerkade",
+  "hash": "2c5788b55307",
+  "nlHash": "dcea701cc722",
+  "en": "George Christiaan Slieker (1861-1945), the first Dutch film exhibitor, who toured fairs and markets with his travelling cinema.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "George Westinghousestraat",
+  "hash": "348447a0102c",
+  "nlHash": "48301dc17807",
+  "en": "American engineer (1846-1914) who invented the Westinghouse brake named after him: an air brake, used especially on the railways.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Ger van Zanenbrug",
+  "hash": "e1f3e1e4dad5",
+  "nlHash": "48201b4f2ca5",
+  "en": "Ger van Zanen (1929-2015) was a passionate nature lover and from 1960 until his death a member of the Royal Dutch Natural History Society, Amsterdam (KNNV). Under his leadership a great deal of field-biology research and surveying was done in Amsterdam. Ger van Zanen was always ready to show anyone interested the way in nature. The bridge leads from the housing area to the Ruige Riet, a valuable, still untouched nature area that is part of the Sloterpark. The area is rich in mushrooms, among other things, and people on mushroom walks mostly cross the bridge and will all remember Ger van Zanen. On 14 February 2004 Ger van Zanen received the Amsterdam Nature and Environment Prize on behalf of the KNNV Amsterdam branch from alderman Stadig.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geraardsbergenstraat",
+  "hash": "bc7df2449884",
+  "nlHash": "4c741e47ea3d",
+  "en": "A Belgian town in the province of East Flanders.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geraniumweg",
+  "hash": "aec826211ffb",
+  "nlHash": "46c17e9e0223",
+  "en": "The garden and house plant.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerard Borstkade",
+  "hash": "f9754b2a1880",
+  "nlHash": "c759af1dfb2d",
+  "en": "Jacobus Gerardus Gerbrant Borst (1902-1975), internist, for 35 years professor at the University of Amsterdam and head of the internal medicine clinic at the Binnengasthuis. During the war years he was, among other things, one of the leaders of the doctors' resistance. Founder of modern blood transfusion therapy.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerard Brandtstraat",
+  "hash": "26f85944b788",
+  "nlHash": "8ae15de61c79",
+  "en": "Remonstrant theologian (1626-1685) who wrote church history at first and poetry later. Until 1896 the street belonged to the municipality of Nieuwer-Amstel and was called H.G. Kosterstraat, after a building contractor (council decision of Nieuwer-Amstel, 5 October 1880).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerard Callenburgstraat",
+  "hash": "29bec01f80c8",
+  "nlHash": "ccdcc15c215f",
+  "en": "Fleet commander (1642-1722). Captain of Admiral De Ruyter's flagship, he took part in the naval battles of Solebay (1672) and off Etna (1676) and in the capture of Gibraltar (1704).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerard Douplein",
+  "hash": "4bcc9223699a",
+  "nlHash": "1d8b48318416",
+  "en": "Painter (1613-1675), a representative of the Leiden school, a pupil of Rembrandt and teacher of, among others, Metsu and Van Mieris.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerard Doustraat",
+  "hash": "63c9319b92f1",
+  "nlHash": "1d8b48318416",
+  "en": "Painter (1613-1675), a representative of the Leiden school, a pupil of Rembrandt and teacher of, among others, Metsu and Van Mieris.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerard Hulst van Keulenstraat",
+  "hash": "4208b28276e3",
+  "nlHash": "da7a6c5efdce",
+  "en": "From 1756 Gerard Hulst van Keulen (1733-1801) ran the well-known firm of Van Keulen, which for two centuries (c. 1680-1885) was based in Amsterdam on the corner of the Nieuwebrugsteeg and the Prins Hendrikkade. The firm specialised in making and selling sea charts and nautical instruments, and published and sold books, mainly on nautical subjects.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerard Revebrug",
+  "hash": "68d9f3a15a77",
+  "nlHash": "2ba94a185629",
+  "en": "Gerard Kornelis van het Reve (1923-2006), writer and poet. With Harry Mulisch (1927-2010) and Willem Frederik Hermans (1921-1995) he formed the Big Three of post-war literature. His works include 'De avonden' (the evenings, 1947), 'Werther Nieland' (1949) and 'Nader tot U' (nearer to thee, 1966). He received the P.C. Hooft Prize (1968) and the Prize for Dutch Literature (2001).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerard Ruttenhof",
+  "hash": "cfede9229d31",
+  "nlHash": "9b34a545ccb2",
+  "en": "Film director (1902-1982). With 'Dood water' (dead water, 1934), about the building of the Afsluitdijk, and 'Rubber' (1935), about a planter's wife in Suriname, he made two important Dutch feature films of the 1930s.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerard Schaepstraat",
+  "hash": "46c677e1a602",
+  "nlHash": "d76a46a527f2",
+  "en": "Councillor and schepen (alderman) of Amsterdam (1594-1666), ambassador to the English and Danish courts.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerard Terborgstraat",
+  "hash": "6016d70d1fc1",
+  "nlHash": "278c412f27c0",
+  "en": "Painter (1617-1681) of portraits and genre pieces.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerardus van der Groeplaan",
+  "hash": "37db6c9bbf8b",
+  "nlHash": "30e996438318",
+  "en": "Resistance fighter (1922-1945) who worked at the Fokker factory in Amsterdam-Noord and belonged to a sabotage group there. He distributed 'De Waarheid' and raised money for the resistance. Sentenced to death in 1942, a sentence commuted to life imprisonment with penal servitude. Freed by the French, he died on 16 July 1945.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerda Brautigamstraat",
+  "hash": "55677ab81d54",
+  "nlHash": "847f0ef70c43",
+  "en": "Gerarda Brautigam (1913-1982), politician and journalist. Editor at Het Vrije Volk from 1945 to 1967 and member of the House of Representatives for the Labour Party (PvdA) from 1963 to 1972. She worked above all for consumer affairs, which made her very well known.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerda Tarobrug",
+  "hash": "1973760e9a61",
+  "nlHash": "e145acdaf9c3",
+  "en": "Gerda Taro (1910-1937) was the first woman photographer at the front. She fought against Nazism, and her passion has made her a symbol of anti-fascism.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerrie Knetemannlaan",
+  "hash": "994890b7f72d",
+  "nlHash": "8096093b83da",
+  "en": "Racing cyclist (1951-2004), nicknamed 'de Kneet'. His greatest success was the world road championship in 1978.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerrie Mührenbrug",
+  "hash": "13b9ecab73b2",
+  "nlHash": "af2e5f538a8d",
+  "en": "Gerrie (Gerrit) Mühren.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerrit Bronkepad",
+  "hash": "be772ecf4f3d",
+  "nlHash": "6f12c41d8acb",
+  "en": "Gerrit Bronke (nineteenth century) designed the church in Holysloot (a national monument) in 1846. For this neighbourhood the chosen category was the names of Dutch architects involved in housing projects in Amsterdam-Noord.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerrit Mannourystraat",
+  "hash": "f17b0c31a5cf",
+  "nlHash": "aed558403649",
+  "en": "Mathematician and philosopher (1867-1956), professor at the University of Amsterdam and one of the most important Dutch mathematicians of this century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerrit Stuyverstraat",
+  "hash": "6b14985cd535",
+  "nlHash": "a78a04c618c0",
+  "en": "A Sea Beggar who fought at the relief of Haarlem in 1572.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerrit van den Boschpad",
+  "hash": "0bc8d5e9ffb1",
+  "nlHash": "6e1464d86f99",
+  "en": "Resistance fighter (1911-1944) who played an important part in distributing the clandestine paper 'De Waarheid'. He died in the Dachau concentration camp.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerrit van der Puijstraat",
+  "hash": "509262c94bf3",
+  "nlHash": "7f1f6200fde6",
+  "en": "A resident of Sloten (1915-1988) who worked for the Sloten community for many years.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerrit van der Veenstraat",
+  "hash": "cf71f3a53c75",
+  "nlHash": "157ba9392c85",
+  "en": "Gerrit Jan van der Veen (1902-1944), resistance fighter and sculptor by profession, who won the Prix de Rome for his sculpture. He took an active part in the resistance. Van der Veen was one of the instigators of the attack on the population register (27 March 1943) and was executed by firing squad in the dunes near Overveen. The street was previously called Euterpestraat, after the muse of music and poetry, and during the occupation of 1940-1945 was notorious because the German Sicherheitsdienst (SD) was based in the girls' secondary school (Meisjes-HBS).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerrit van Erkelstraat",
+  "hash": "327ef493bfeb",
+  "nlHash": "61ccce0764ca",
+  "en": "Gerrit van Erkel (1860-1937), leader of the radical-socialist trade union movement.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerrit Versteegstraat",
+  "hash": "ad1d60dcc057",
+  "nlHash": "b579507f15f9",
+  "en": "Architect (1873-1938) who built part of Tuindorp Watergraafsmeer, worked with Hendrik Berlage on the western part of the Transvaalbuurt, and designed the housing blocks on the Koekoekstraat in Noord.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gerritsloot",
+  "hash": "b7c266f6ed48",
+  "nlHash": "e6c91c2bbfe3",
+  "en": "The origin of the name is unclear.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geschutswerf",
+  "hash": "faeca1dc6f15",
+  "nlHash": "8ac4e3c4e91a",
+  "en": "Geschut (ordnance) is the collective name for cannon and heavy machine guns. The street lies where the Ordnance Yard of the Admiralty of Amsterdam was; guns were made here in the eighteenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geulstraat",
+  "hash": "81bce53ceac6",
+  "nlHash": "a8310db23641",
+  "en": "A small river in South Limburg, a tributary of the Maas. The Geul valley forms part of the border with Belgium.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geurt Brinkgrevebrug",
+  "hash": "4cdfc40a5a20",
+  "nlHash": "7332d1d2dd56",
+  "en": "Monument conservationist, sculptor and writer (1917-2005). An advocate for preserving the historic city centre, he eventually brought about a turning point in thinking about the old cultural heritage. He also played a major part in keeping the old street pattern of the Nieuwmarkt neighbourhood. He received the Silver Medal (Zilveren Penning) in 1982.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geuzenkade",
+  "hash": "fd2e87c42e14",
+  "nlHash": "c65eb485e4bb",
+  "en": "At first meant as a term of abuse (geuzen: beggars), but taken as a title of honour by the allied nobles in the fight against Spain. Later the fighting name of all opponents of Spain in the Eighty Years' War. The Korte Geuzenstraat was earlier part of the Geuzenstraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Geuzenstraat",
+  "hash": "376236d7717e",
+  "nlHash": "c65eb485e4bb",
+  "en": "At first meant as a term of abuse (geuzen: beggars), but taken as a title of honour by the allied nobles in the fight against Spain. Later the fighting name of all opponents of Spain in the Eighty Years' War. The Korte Geuzenstraat was earlier part of the Geuzenstraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gevlebrug",
+  "hash": "9da9c0541f39",
+  "nlHash": "cdbe8e9ef636",
+  "en": "The Swedish port of Gävle on the Gulf of Bothnia, an important timber export port and now one of Sweden's largest oil ports.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gevlewater",
+  "hash": "9abb2698666e",
+  "nlHash": "fe4e4c51f243",
+  "en": "The names of the canals refer to the names of the bridges that cross them.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gibraltarstraat",
+  "hash": "101572febfe7",
+  "nlHash": "7ea91bc57416",
+  "en": "The southern tip of Spain, named here for the naval battle against the Spanish in 1607 in which Jacob van Heemskerck was killed.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gierzwaluwbrug",
+  "hash": "3be947dea9b1",
+  "nlHash": "9a7f8c48804b",
+  "en": "The common swift (Apus apus) is a very special bird. Swifts spend almost their whole lives in the air: they eat, drink, mate and even sleep on the wing! They land only in spring at a fixed nest site, usually under roof tiles. They breed in almost every city in Europe, including the centre of Amsterdam, and catch mainly midges in flight. They are enormously fast and agile in the air, but once landed on the nest they can only shuffle on their short legs. In the Bijlmerweide by the G-buurt, seven bridges have been given bird names beginning with G. City ecologists gave a workshop about birds to children from the local Kidsclub, who then chose their favourite species. So each bridge got a unique name that suits the nature around it. These names are part of a naming project carried out in 2024.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Giessenburg",
+  "hash": "4ee5b221ca0c",
+  "nlHash": "f35e2bcfc627",
+  "en": "A lost castle at Giessen-Oudekerk, of which some remains survive.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gieterij",
+  "hash": "abccb3b11646",
+  "nlHash": "34c66d3dc905",
+  "en": "This and other streets were laid out on the grounds of the former Amsterdamsche Droogdok Maatschappij (ADM). To recall that former use, the names of the various workshops were used for the streets, in this case the shipyard's foundry (gieterij).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gietersstraat",
+  "hash": "bfa8bd7b8fde",
+  "nlHash": "70e1d2e3726c",
+  "en": "Named after 't Giethuis, the city's gun and bell foundry, which stood here from 1614 to 1821. The street name first came into use in the eighteenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gijsbrecht van Aemstelstraat",
+  "hash": "8b2337790045",
+  "nlHash": "7f3b2b5ac659",
+  "en": "After Gijsbrecht IV (c. 1235-1303), the last lord of Aemstel to be Lord of Amsterdam, and bailiff of Amstelland. Made famous by Vondel's tragedy.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gijsbrecht van IJselsteinstraat",
+  "hash": "27d2af45a169",
+  "nlHash": "510d9800c9b1",
+  "en": "Bailiff of Amstelland and Waterland from 1358 to 1361.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gillis Steltmanstraat",
+  "hash": "d190acb06452",
+  "nlHash": "e834dd7a6fde",
+  "en": "A Sea Beggar who became known at the capture of Den Briel in 1572.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gillis van Ledenberchstraat",
+  "hash": "108a7b0cc3dc",
+  "nlHash": "efcff7608313",
+  "en": "Clerk of the States of Utrecht (1550-1618), a supporter of Van Oldenbarnevelt, imprisoned by Prince Maurice. The street was earlier called Tweede Hugo de Grootdwarsstraat (council decisions of 13 October 1897 and 1 September 1908).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Glauberweg",
+  "hash": "f69b61927455",
+  "nlHash": "cd5430a3ce4c",
+  "en": "Johann Rudolf Glauber (1604-1670), German chemist and physician. He discovered the laxative effect of the Glauber's salt named after him, used against bile complaints.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Glitterstraat",
@@ -9086,11 +10829,130 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Gloriantstraat",
+  "hash": "23218f83da03",
+  "nlHash": "c97ba8f2bda5",
+  "en": "A fourteenth-century abel spel (a serious secular play).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Goed Geluimd hof",
   "hash": "4036c85b0595",
   "nlHash": "71886902ccbf",
   "en": "The name belongs to the theme 'Sociaal en tevreden wonen' (Social and contented living) for the G-buurt Grunder/Grubbehoeve.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Goeman Borgesiusstraat",
+  "hash": "603f618b90cf",
+  "nlHash": "4a951432b4de",
+  "en": "Hendrik Goeman Borgesius (1847-1917), liberal statesman, Minister of the Interior from 1897 to 1901 (Compulsory Education Act, Housing Act, Accidents Act).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Goereestraat",
+  "hash": "0e109ba071ef",
+  "nlHash": "53a863acd84c",
+  "en": "Part of the Zuid-Holland island of Goeree-Overflakkee.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Golfbaanpad",
+  "hash": "0d971dd3d49b",
+  "nlHash": "6ff9507a242b",
+  "en": "A path by the De Hoge Dijk golf course.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gooiluststraat",
+  "hash": "e5b2ae572c03",
+  "nlHash": "ed77da0ebe13",
+  "en": "An estate in 's-Graveland, of which the Corversbos was originally also part. 's-Graveland is a stretch of Gooi heath from which the sand was dug away (afzanding). Once the sand was removed, Amsterdam regents laid out country estates and nurseries here in the seventeenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gooioord",
+  "hash": "700f8a1292c3",
+  "nlHash": "84e02a8c9781",
+  "en": "The name of a manor house in Bussum (Noord-Holland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gooise Kant",
+  "hash": "e017fada43e9",
+  "nlHash": "bb2c88304fa1",
+  "en": "A neighbourhood access road that comes out on and connects to the K-buurt and the Gooiseweg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gooiseweg",
+  "hash": "1e0abafcb7a0",
+  "nlHash": "d154df2ab4aa",
+  "en": "The road leads towards Het Gooi.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gordijnensteeg",
+  "hash": "54b92f3704b2",
+  "nlHash": "f0cd077090ba",
+  "en": "Named after the sixteenth- and seventeenth-century residents Willem and Samuel du Gardijn. At that time the alley was also known as Bloeddwarsstraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gorontalostraat",
+  "hash": "b6713a61e734",
+  "nlHash": "b8e2e6e04b2a",
+  "en": "A town on the island of Sulawesi (Celebes) in Indonesia.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gorsstraat",
+  "hash": "99a49fb87716",
+  "nlHash": "713111aeaf85",
+  "en": "A name used in Zuid-Holland for vegetated land outside the dikes that floods only at high water (elsewhere called schor or kwelder: salt marsh).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gosschalklaan",
+  "hash": "ebbf74695140",
+  "nlHash": "ca77f47171cf",
+  "en": "Isaac Gosschalk (1838-1907), one of the most important Dutch architects of the nineteenth century. In 1885 Gosschalk was commissioned by the Imperial Continental Gas Association to design the buildings of the Westergasfabriek.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Goudbalpad",
+  "hash": "18f6e9637491",
+  "nlHash": "1aad72faba7b",
+  "en": "An old Dutch pear variety. The street lies on the former De Bongerd allotment complex.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Gouden Leeuw",
+  "hash": "d62d21d87f68",
+  "nlHash": "f727788f3074",
+  "en": "The name of a farm in the Haarlemmermeer (the golden lion). (The name also occurs in Hummelo and Leiden.)",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Goudestein",
+  "hash": "6d8b04a31323",
+  "nlHash": "ff40d7d92b08",
+  "en": "A castle near Maarssen on the Vecht, dating from 1754, built for the Amsterdam burgomaster Huydecoper.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Goudreinetstraat",
+  "hash": "8d345ad747bd",
+  "nlHash": "4af6c079a6e3",
+  "en": "The fruit, a variety of apple (golden reinette).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Goudriaanstraat",
+  "hash": "0093ed1df8d1",
+  "nlHash": "814909e59a61",
+  "en": "Bernardus Hermanus Goudriaan (1796-1842), chief engineer of Rijkswaterstaat, appointed by the government to assess the first railway plans.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Goudsbloemstraat",
@@ -9104,6 +10966,20 @@
   "hash": "ff7d27c5d225",
   "nlHash": "63f43eae7a5f",
   "en": "A Belgian town in the province of Brabant.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Grootzeil",
+  "hash": "cd1253c84d0a",
+  "nlHash": "4c87aaf187ec",
+  "en": "One of the sails of a ship (the foresail).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Grootzeilhof",
+  "hash": "8c7688c463ba",
+  "nlHash": "4c87aaf187ec",
+  "en": "One of the sails of a ship (the foresail).",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -9140,6 +11016,13 @@
   "nlHash": "9789e5889a9f",
   "en": "Street name in the Information Technology category.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Heathrowstraat",
+  "hash": "17fc110fdd68",
+  "nlHash": "e27d92d14aec",
+  "en": "The name of one of London's airports.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Hechtelstraat",
@@ -9205,6 +11088,13 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Houthavengracht",
+  "hash": "99ad2169c635",
+  "nlHash": "fe4e4c51f243",
+  "en": "The names of the canals refer to the names of the bridges that cross them.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Hugo de Grootgracht",
   "hash": "15e9c32c15cd",
   "nlHash": "9d6803a7654f",
@@ -9268,11 +11158,25 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Juttepeerpad",
+  "hash": "f68df4dbfe68",
+  "nlHash": "1aad72faba7b",
+  "en": "An old Dutch pear variety. The street lies on the former De Bongerd allotment complex.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Kadijksplein",
   "hash": "d174b9245818",
   "nlHash": "18e75807b23c",
   "en": "When a great deal of land had built up through silting outside the old sea dike (St. Antoniesdijk), a summer dike, or quay dike (kadijk), was built. It was originally called the new sea dike, but that name later fell out of use. When this new dike was raised further, people spoke of the Laagte (low part) and the Hoogte (high part) of the Kadijk. Until 1943 the Tussen Kadijken was called Korte Kerkstraat. This is because it lies in line with the Plantage Kerklaan, although it has never been connected to it.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Kalkoenstraat",
+  "hash": "f324ce767cbb",
+  "nlHash": "8fec1d7a0f58",
+  "en": "The game bird (the pheasant).",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Kastanjeplein",
@@ -9345,6 +11249,20 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Kolberggracht",
+  "hash": "d95dbc6ae153",
+  "nlHash": "fe4e4c51f243",
+  "en": "The names of the canals refer to the names of the bridges that cross them.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Koningsbergengracht",
+  "hash": "749edafdd346",
+  "nlHash": "fe4e4c51f243",
+  "en": "The names of the canals refer to the names of the bridges that cross them.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Korte 's-Gravesandestraat",
   "hash": "ee5a79ff82b7",
   "nlHash": "678026c72b69",
@@ -9370,6 +11288,13 @@
   "hash": "9b168b9992cf",
   "nlHash": "f1f40a3475a1",
   "en": "The plant (the thistle). The Distel streets, except the Distelweg, form a complex of emergency housing (Disteldorp) built in 1919 to meet quickly the great demand for homes for the workers of the industry that grew fast after the First World War.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Korte Geuzenstraat",
+  "hash": "7a56bbbb5889",
+  "nlHash": "c65eb485e4bb",
+  "en": "At first meant as a term of abuse (geuzen: beggars), but taken as a title of honour by the allied nobles in the fight against Spain. Later the fighting name of all opponents of Spain in the Eighty Years' War. The Korte Geuzenstraat was earlier part of the Geuzenstraat.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -9492,6 +11417,13 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Lokerenstraat",
+  "hash": "e684b019e766",
+  "nlHash": "4c741e47ea3d",
+  "en": "A Belgian town in the province of East Flanders.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Lommelstraat",
   "hash": "3f397435597c",
   "nlHash": "764cee365f4e",
@@ -9503,6 +11435,13 @@
   "hash": "3d873093684b",
   "nlHash": "aa50c6cbfe0c",
   "en": "The tanneries and the hide trade, after which this street and nearby streets in the Jordaan and the canal ring are named, were at first sited outside the city in the sixteenth century. When the area gradually came inside the city and streets were laid out here, they were named after these long-flourishing trades, starting with the Runstraat (run is tanbark) and the Huidenstraat (hides street). After 1658 the tanneries spread to land east of the Vijzelgracht, where the Nieuwe Looiersstraat and dwarsstraat are now. Before it was filled in, the Derde Looiersdwarsstraat was the Oude Looierssloot (council decision of 1 June 1898).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Lübeckgracht",
+  "hash": "10ca26443b40",
+  "nlHash": "fe4e4c51f243",
+  "en": "The names of the canals refer to the names of the bridges that cross them.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -9681,6 +11620,20 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Nieuwe Foeliestraat",
+  "hash": "3f76c840043f",
+  "nlHash": "b3d04aba3f9a",
+  "en": "One of the products, important at the time, brought from the East Indies and stored here in the East India Company's warehouses (foelie is mace).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nieuwe Gietersstraat",
+  "hash": "56eb21057b39",
+  "nlHash": "70e1d2e3726c",
+  "en": "Named after 't Giethuis, the city's gun and bell foundry, which stood here from 1614 to 1821. The street name first came into use in the eighteenth century.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Nieuwe Leliestraat",
   "hash": "bae76adf96c7",
   "nlHash": "65caa5ce0ef5",
@@ -9723,6 +11676,13 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Oostakkerstraat",
+  "hash": "1549712d08e0",
+  "nlHash": "4c741e47ea3d",
+  "en": "A Belgian town in the province of East Flanders.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Ooster Ringdijk",
   "hash": "e7e4e6bed661",
   "nlHash": "6f64bf03f030",
@@ -9751,6 +11711,20 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Oudenaardeplantsoen",
+  "hash": "75bdefa9fbf7",
+  "nlHash": "4c741e47ea3d",
+  "en": "A Belgian town in the province of East Flanders.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Overflakkeestraat",
+  "hash": "d8374a169399",
+  "nlHash": "53a863acd84c",
+  "en": "Part of the Zuid-Holland island of Goeree-Overflakkee.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Overpeltstraat",
   "hash": "848ded1b3897",
   "nlHash": "764cee365f4e",
@@ -9776,6 +11750,13 @@
   "hash": "f031b460489e",
   "nlHash": "6ab9becf0ed5",
   "en": "A constellation (the Dolphin).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Pernaugracht",
+  "hash": "154ad3f6b41a",
+  "nlHash": "fe4e4c51f243",
+  "en": "The names of the canals refer to the names of the bridges that cross them.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -9982,6 +11963,13 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Stralsundgracht",
+  "hash": "5d0badec9e00",
+  "nlHash": "fe4e4c51f243",
+  "en": "The names of the canals refer to the names of the bridges that cross them.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Sumatrakade",
   "hash": "581f5771d82b",
   "nlHash": "d5fa4100ea44",
@@ -10028,6 +12016,13 @@
   "hash": "62eb0f721714",
   "nlHash": "63f43eae7a5f",
   "en": "A Belgian town in the province of Brabant.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Tjeukemeerhof",
+  "hash": "38136752168f",
+  "nlHash": "1096204f7f7b",
+  "en": "A lake in southern Friesland.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -10423,6 +12418,13 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Weegbreestraat",
+  "hash": "e63c9d9ed9c6",
+  "nlHash": "b90ec85155f3",
+  "en": "The plant family (gentians).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Westerkoggestraat",
   "hash": "8de0266006fa",
   "nlHash": "5e9930786869",
@@ -10486,6 +12488,13 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Wismargracht",
+  "hash": "41bc4e460146",
+  "nlHash": "fe4e4c51f243",
+  "en": "The names of the canals refer to the names of the bridges that cross them.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Wittenburgergracht",
   "hash": "8404af19f238",
   "nlHash": "4ecd62c84593",
@@ -10532,6 +12541,13 @@
   "hash": "18ab0a0988d1",
   "nlHash": "d792b11e224a",
   "en": "One of the Veluwe border lakes (randmeren).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zelzatestraat",
+  "hash": "4204359763af",
+  "nlHash": "4c741e47ea3d",
+  "en": "A Belgian town in the province of East Flanders.",
   "source": "claude-code-opus-5.5"
  },
  {

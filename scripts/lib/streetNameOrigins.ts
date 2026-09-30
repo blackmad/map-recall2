@@ -205,6 +205,9 @@ export const WITHHELD_ORIGINS: Readonly<Record<string, string>> = {
   // The whole text is "met name op het gebied van het verkeer.", the end of
   // some other entry.
   'Piet Wiedijkstraat': "the register's text is a fragment",
+  // "Hij was voor het CDA wethouder…": the second half of Enneüs Heerma's
+  // biography, whose bridge has only the first sentence.
+  'Enny Vredestraat': "the register's text is the end of Enneüs Heerma's",
 };
 
 const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
