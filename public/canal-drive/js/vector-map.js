@@ -1044,11 +1044,12 @@ class VectorBasemap {
     if (!lib || !lib.ownPoiFeatures || this.map.getSource('own-pois')) return;
     this.map.addSource('own-pois', { type: 'geojson', data: { type: 'FeatureCollection', features: [] }, attribution: 'POIs © OpenStreetMap contributors' });
     for (const band of lib.OWN_POI_BANDS) {
-      const { dots, labels } = lib.ownPoiLayerIds(band);
+      // Names only, no dots. A dot drew for every POI from zoom 16 while the
+      // names, collision-thinned, drew for few of them: the facades were
+      // freckled with coloured dots that said nothing ("these dots everywhere
+      // are ugly and not helpful", user report 2026-09-30).
+      const { labels } = lib.ownPoiLayerIds(band);
       const filter = ['==', ['get', 'band'], band];
-      this.map.addLayer({ id: dots, type: 'circle', source: 'own-pois', minzoom: 16, filter, paint: {
-        'circle-radius': ['interpolate', ['linear'], ['zoom'], 16, 2.5, 18, 4], 'circle-color': ['get', 'colour'],
-        'circle-stroke-color': '#FFFFFF', 'circle-stroke-width': 1.2, 'circle-opacity': 0.9, 'circle-translate-anchor': 'viewport' } });
       this.map.addLayer({ id: labels, type: 'symbol', source: 'own-pois', minzoom: 16.5, filter, layout: {
         'text-field': ['get', 'name'], 'text-font': ['Noto Sans Regular'],
         'text-size': ['interpolate', ['linear'], ['zoom'], 16.5, 10, 18, 12], 'text-anchor': 'top', 'text-offset': [0, 0.45],

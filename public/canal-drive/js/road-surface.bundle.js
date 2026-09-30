@@ -58,29 +58,34 @@ var CanalRecallRoadSurface = (() => {
     const cy = a.y + aby * t;
     return { x: cx, y: cy, dist: Math.hypot(px - cx, py - cy) };
   }
-  function buildRoadSpatialIndex(segments, cellSize = ROAD_GRID_CELL) {
+  function buildRoadSpatialIndex(segments, cellSize = ROAD_GRID_CELL, connectors = []) {
     const cells = /* @__PURE__ */ new Map();
-    for (let segIdx = 0; segIdx < segments.length; segIdx++) {
-      const segment = segments[segIdx];
-      const width = segment.width;
-      for (let ptIdx = 0; ptIdx < segment.points.length - 1; ptIdx++) {
-        const a = segment.points[ptIdx];
-        const b = segment.points[ptIdx + 1];
-        const pad = width + 10;
-        const gx0 = Math.floor((Math.min(a.x, b.x) - pad) / cellSize);
-        const gx1 = Math.floor((Math.max(a.x, b.x) + pad) / cellSize);
-        const gy0 = Math.floor((Math.min(a.y, b.y) - pad) / cellSize);
-        const gy1 = Math.floor((Math.max(a.y, b.y) + pad) / cellSize);
-        const span = { a, b, segIdx, ptIdx, width };
-        for (let gx = gx0; gx <= gx1; gx++) {
-          for (let gy = gy0; gy <= gy1; gy++) {
-            const key = cellKey(gx, gy);
-            const bucket = cells.get(key);
-            if (bucket) bucket.push(span);
-            else cells.set(key, [span]);
-          }
+    const add = (span) => {
+      const { a, b, width } = span;
+      const pad = width + 10;
+      const gx0 = Math.floor((Math.min(a.x, b.x) - pad) / cellSize);
+      const gx1 = Math.floor((Math.max(a.x, b.x) + pad) / cellSize);
+      const gy0 = Math.floor((Math.min(a.y, b.y) - pad) / cellSize);
+      const gy1 = Math.floor((Math.max(a.y, b.y) + pad) / cellSize);
+      for (let gx = gx0; gx <= gx1; gx++) {
+        for (let gy = gy0; gy <= gy1; gy++) {
+          const key = cellKey(gx, gy);
+          const bucket = cells.get(key);
+          if (bucket) bucket.push(span);
+          else cells.set(key, [span]);
         }
       }
+    };
+    for (let segIdx = 0; segIdx < segments.length; segIdx++) {
+      const segment = segments[segIdx];
+      for (let ptIdx = 0; ptIdx < segment.points.length - 1; ptIdx++) {
+        add({ a: segment.points[ptIdx], b: segment.points[ptIdx + 1], segIdx, ptIdx, width: segment.width });
+      }
+    }
+    for (const connector of connectors) {
+      const segment = segments[connector.segmentIndex];
+      if (!segment) continue;
+      add({ a: connector.a, b: connector.b, segIdx: connector.segmentIndex, ptIdx: -1, width: segment.width });
     }
     return { cellSize, cells };
   }
@@ -149,14 +154,15 @@ var CanalRecallRoadSurface = (() => {
   }
   var GUARD_CROSS_ANGLE = Math.PI / 6;
   var CORNER_FILLET_RADIUS = 36;
+  function perpendicularContact(contact, x, y) {
+    const along = Math.abs((x - contact.x) * contact.ny - (y - contact.y) * contact.nx);
+    return along <= 0.2 * contact.dist + 0.5;
+  }
   function filletedExcess(contacts, x, y, radius = CORNER_FILLET_RADIUS) {
     let best = Infinity;
     for (const contact of contacts) best = Math.min(best, contact.dist - contact.width);
     if (best <= 0) return best;
-    const perpendicular = (contact) => {
-      const along = Math.abs((x - contact.x) * contact.ny - (y - contact.y) * contact.nx);
-      return along <= 0.2 * contact.dist + 0.5;
-    };
+    const perpendicular = (contact) => perpendicularContact(contact, x, y);
     const inCorner = contacts.filter((contact) => {
       const excess = contact.dist - contact.width;
       return excess > 0 && excess <= radius && perpendicular(contact);
@@ -174,10 +180,11 @@ var CanalRecallRoadSurface = (() => {
   function pickGuardContact(contacts, preferredAngle = null, point = null) {
     const aligned = pickRoadContact(contacts, preferredAngle);
     if (!aligned || aligned.dist <= aligned.width) return aligned;
+    const pastEnd = point !== null && !perpendicularContact(aligned, point.x, point.y);
     let inside = null;
     for (const contact of contacts) {
       if (contact.dist > contact.width) continue;
-      if (headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
+      if (!pastEnd && headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
       if (!inside || contact.dist - contact.width < inside.dist - inside.width) inside = contact;
     }
     if (inside) return inside;

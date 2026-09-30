@@ -22,9 +22,22 @@ export type RoadGraphEdge<TMetadata = unknown> = {
   readonly segmentMetadata: readonly (TMetadata | undefined)[];
 };
 
+/**
+ * A piece of the graph that no centreline covers: an endpoint merged onto a
+ * node a few metres away, or a side street stitched onto a through street.
+ * The router plans across these, so the road surface must be rideable there
+ * too (see `buildRoadSpatialIndex`'s `connectors`).
+ */
+export type RoadGraphConnector = Readonly<{
+  a: RoadGraphPoint;
+  b: RoadGraphPoint;
+  segmentIndex: number;
+}>;
+
 export type RoadGraph<TMetadata = unknown> = Readonly<{
   nodes: ReadonlyMap<string, RoadGraphNode<TMetadata>>;
   allNodes: readonly RoadGraphNode<TMetadata>[];
+  connectors: readonly RoadGraphConnector[];
 }>;
 
 export type RoadGraphBuildOptions = Readonly<{
@@ -165,15 +178,23 @@ export function buildRoadGraph<TMetadata = unknown>(
   }
 
   const nodes = new Map<string, RoadGraphNode<TMetadata>>();
+  const connectors: RoadGraphConnector[] = [];
+  // Below this a merge is the same vertex; above it the gap is rideable only
+  // through a connector span.
+  const CONNECTOR_MIN = 0.5;
   const spanGrid = new Map<string, IndexedSpan[]>();
   const keyFor = (point: RoadGraphPoint): string =>
     `${Math.round(point.x / mergeSize)},${Math.round(point.y / mergeSize)}`;
-  const nodeFor = (point: RoadGraphPoint): RoadGraphNode<TMetadata> => {
+  const nodeFor = (point: RoadGraphPoint, segmentIndex = -1): RoadGraphNode<TMetadata> => {
     const key = keyFor(point);
     let node = nodes.get(key);
     if (!node) {
       node = { key, x: point.x, y: point.y, edges: [] };
       nodes.set(key, node);
+    } else if (segmentIndex >= 0 && distanceBetween(point, node) > CONNECTOR_MIN) {
+      // Merged onto another way's vertex up to a cell diagonal away (25 px at
+      // mergeSize 18): the route jumps the gap, so the surface must span it.
+      connectors.push({ a: point, b: { x: node.x, y: node.y }, segmentIndex });
     }
     return node;
   };
@@ -258,7 +279,7 @@ export function buildRoadGraph<TMetadata = unknown>(
     for (let pointIndex = 1; pointIndex < segment.points.length; pointIndex++) {
       const a = segment.points[pointIndex - 1];
       const b = segment.points[pointIndex];
-      link(nodeFor(a), nodeFor(b), segmentIndex, 'centreline');
+      link(nodeFor(a, segmentIndex), nodeFor(b, segmentIndex), segmentIndex, 'centreline');
       addSpanToGrid({ a, b, segmentIndex }, segment.width ?? 0);
     }
   });
@@ -297,11 +318,14 @@ export function buildRoadGraph<TMetadata = unknown>(
         link(spanStart, target, span.segmentIndex, 'centreline');
         link(target, spanEnd, span.segmentIndex, 'centreline');
         link(from, target, span.segmentIndex, 'junction-stitch');
+        if (projection.distance > CONNECTOR_MIN) {
+          connectors.push({ a: endpoint, b: { x: projection.x, y: projection.y }, segmentIndex });
+        }
       }
     }
   });
 
-  return { nodes, allNodes: [...nodes.values()] };
+  return { nodes, allNodes: [...nodes.values()], connectors };
 }
 
 export function nearestRoadGraphNode<TMetadata>(

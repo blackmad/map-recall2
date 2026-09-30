@@ -127,6 +127,22 @@ junction.
 `tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
 or facades resident, probably because it needs locally generated study data.
 
+**Bridge sweep: 13 crossings still pin the autopilot (2026-09-30).**
+`BRIDGE_SWEEP_ALL=1 tests/e2e/bridge-sweep.spec.ts` drives all 2,417 bridge
+ways both ways: 1,846 driven, 1,738 arrive, 161 pins on 13 crossings, and 0
+traps, where a trap means no input, reverse included, moves the bike 5 m.
+Still pinning: Muiderbergbrug (routing_12208), Bruinvisstraat (12752), two
+unnamed ways at Kortrijk (13899/13900), routing_18, 18430 (Pracanalaan),
+1975, 20435, 20975, 21473, 27231, 33084 and 38386. Traced ones are the test
+driver aiming at a route point across a kerb after it was knocked off the
+plan. A player can steer out, but check each one before calling it that.
+`route-surface-coverage.spec.ts` also knows two graph edges that cross the
+guard's rollback line by < 1 px: an unnamed way at 52.411459,4.829727 and
+Geldershoofd at 52.323929,4.971265. Both are long spans where a parallel
+road is the better heading match. The user's stuck-bridge screenshot, which
+looks like Westeinde south of Frederiksplein, did not reproduce there.
+Westeinde is pinned in the named sweep set and in `bridge-deck-poses.spec.ts`.
+
 **Appearance-lane e2e failures seen in the 2026-09-30 full run.** These are
 not from the teaching lanes. Each is for the appearance owner:
 - `appearance-wall-colour.spec.ts`: Da Costakade 13 (`NL.IMBAG.Pand.0363100012166570`)

@@ -89,7 +89,10 @@ class RoadNetwork {
   }
 
   _buildGrid() {
-    this.roadIndex = SURFACE.buildRoadSpatialIndex(this.segments, ROAD_GRID_CELL);
+    // Surface and router agree: every gap the routing graph bridges between
+    // two ways (merged ends, stitched T-junctions) is rideable too.
+    const connectors = this.segments.length ? (this._routingGraph().connectors || []) : [];
+    this.roadIndex = SURFACE.buildRoadSpatialIndex(this.segments, ROAD_GRID_CELL, connectors);
   }
 
   _computeBounds() {
