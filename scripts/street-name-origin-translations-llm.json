@@ -2145,8 +2145,8 @@
   "name": "Badhuiskade",
   "hash": "efe2b7069e0b",
   "nlHash": "434781bf4d0f",
-  "en": "The former Obelt bathhouse, built in 1914 and demolished around 1927. The road is no longer a public road and lies entirely on the grounds of the Shell laboratory.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Named after the former Obelt bathhouse, built in 1914 and demolished around 1927. The road is no longer a public road and lies entirely on the grounds of the Shell laboratory.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Badrianhof",
@@ -2572,8 +2572,8 @@
   "name": "Bastingstraat",
   "hash": "077c0b340764",
   "nlHash": "083f146b05e8",
-  "en": "...the Mosplein. For this neighbourhood, the category chosen was names of Dutch architects who were involved in housing projects in Amsterdam-Noord.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "The streets of this neighbourhood are named after Dutch architects who were involved in housing projects in Amsterdam-Noord.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Bataviastraat",
@@ -10727,15 +10727,15 @@
   "name": "Geuzenkade",
   "hash": "fd2e87c42e14",
   "nlHash": "c65eb485e4bb",
-  "en": "At first meant as a term of abuse (geuzen: beggars), but taken as a title of honour by the allied nobles in the fight against Spain. Later the fighting name of all opponents of Spain in the Eighty Years' War. The Korte Geuzenstraat was earlier part of the Geuzenstraat.",
-  "source": "claude-code-opus-5.5"
+  "en": "At first meant as a term of abuse (geuzen: beggars), but taken as a title of honour by the Confederated Nobles (verbonden edelen) in the fight against Spain. Later the fighting name of all opponents of Spain in the Eighty Years' War. The Korte Geuzenstraat was earlier part of the Geuzenstraat.",
+  "source": "claude-code-opus-5.5+corrected"
  },
  {
   "name": "Geuzenstraat",
   "hash": "376236d7717e",
   "nlHash": "c65eb485e4bb",
-  "en": "At first meant as a term of abuse (geuzen: beggars), but taken as a title of honour by the allied nobles in the fight against Spain. Later the fighting name of all opponents of Spain in the Eighty Years' War. The Korte Geuzenstraat was earlier part of the Geuzenstraat.",
-  "source": "claude-code-opus-5.5"
+  "en": "At first meant as a term of abuse (geuzen: beggars), but taken as a title of honour by the Confederated Nobles (verbonden edelen) in the fight against Spain. Later the fighting name of all opponents of Spain in the Eighty Years' War. The Korte Geuzenstraat was earlier part of the Geuzenstraat.",
+  "source": "claude-code-opus-5.5+corrected"
  },
  {
   "name": "Gevlebrug",
@@ -17531,8 +17531,8 @@
   "name": "Korte Geuzenstraat",
   "hash": "7a56bbbb5889",
   "nlHash": "c65eb485e4bb",
-  "en": "At first meant as a term of abuse (geuzen: beggars), but taken as a title of honour by the allied nobles in the fight against Spain. Later the fighting name of all opponents of Spain in the Eighty Years' War. The Korte Geuzenstraat was earlier part of the Geuzenstraat.",
-  "source": "claude-code-opus-5.5"
+  "en": "At first meant as a term of abuse (geuzen: beggars), but taken as a title of honour by the Confederated Nobles (verbonden edelen) in the fight against Spain. Later the fighting name of all opponents of Spain in the Eighty Years' War. The Korte Geuzenstraat was earlier part of the Geuzenstraat.",
+  "source": "claude-code-opus-5.5+corrected"
  },
  {
   "name": "Korte Keizersdwarsstraat",
@@ -35973,10 +35973,45 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Zeemagazijnkade",
+  "hash": "e30940914689",
+  "nlHash": "0d77f51a19dc",
+  "en": "Named after the VOC's warehouse (the Zeemagazijn) on Oostenburg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zeevaart",
+  "hash": "4740e9069254",
+  "nlHash": "621ca9a9842d",
+  "en": "Shipping at sea (seafaring).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zeevaarthof",
+  "hash": "a5bd83938141",
+  "nlHash": "621ca9a9842d",
+  "en": "Shipping at sea (seafaring).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Zeilmakerstraat",
   "hash": "f1bb7f394bc9",
   "nlHash": "cd5e9262837e",
   "en": "A trade name from shipbuilding (ropemaker). The name recalls the many shipyards here in earlier centuries.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zeilstraat",
+  "hash": "808b58dd68a4",
+  "nlHash": "e28df059f4b8",
+  "en": "The cloth on vessels that catches the wind (the sail).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zekeringstraat",
+  "hash": "0cafe388781e",
+  "nlHash": "3abd7b1d513e",
+  "en": "The fuse in an electrical circuit, which protects the network from overload in case of a short circuit.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -35987,10 +36022,101 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Zennehof",
+  "hash": "27b6acd95391",
+  "nlHash": "e4342f559ea6",
+  "en": "A river in Belgium (the Senne) that flows through Brussels.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Zenostraat",
+  "hash": "98eac5e0b3f6",
+  "nlHash": "03b51d08f215",
+  "en": "Greek philosopher (c. 334-c. 262 BC), founder of the Stoic school.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
   "name": "Zesde Vogelstraat",
   "hash": "e50e0f6ee3ba",
   "nlHash": "aecc2a6be94f",
   "en": "The streets in this neighbourhood are named after birds.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zieseniskade",
+  "hash": "632631fe48f1",
+  "nlHash": "0f0eaf18e606",
+  "en": "Johanna Cornelia Ziesenis-Wattier (1762-1827), in her day one of the greatest Dutch actresses. The quay was laid out on the old Gangpad.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zijkanaal H-weg",
+  "hash": "f0c79869d532",
+  "nlHash": "8f6cfaf554cc",
+  "en": "The road over the dike along Zijkanaal H, created by the reclamation of the Noorder IJpolder.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zijkanaal I",
+  "hash": "05ca41c107b9",
+  "nlHash": "cb437ef993b1",
+  "en": "One of the ten side canals, A to K, brought into use in 1876 together with the North Sea Canal.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zilverberg",
+  "hash": "36274a166d9d",
+  "nlHash": "54f456c235bc",
+  "en": "A nature reserve of woods and oak coppice between Oosterbeek and Doorwerth.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zilvermeeuwpad",
+  "hash": "54cee71f127d",
+  "nlHash": "2180169b92dd",
+  "en": "A large, common species of gull (the herring gull).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zilverplevierstraat",
+  "hash": "f82fc5cf3cbd",
+  "nlHash": "8ae3034a2817",
+  "en": "A sturdy bird (the grey plover) with a black bill and black-and-white plumage. It breeds in the far north but is common on the Wadden and in the Zeeland delta, especially in spring and autumn.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zilverschoonstraat",
+  "hash": "5d1a16ca1d17",
+  "nlHash": "df636ab3d92e",
+  "en": "The little plant (silverweed), of the rose family.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Zlotylaan",
+  "hash": "8cc6650c355f",
+  "nlHash": "234148e2ae2e",
+  "en": "The currency of Poland (the złoty).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zocherstraat",
+  "hash": "80ec1a01c586",
+  "nlHash": "3813ced852f8",
+  "en": "Louis Paul Zocher (1820-1915), landscape architect, designer and builder of the Vondelpark (1864).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zomerdijkstraat",
+  "hash": "960241894f08",
+  "nlHash": "a93cc603d713",
+  "en": "A zomerdijk (summer dike) is the low dike or embankment right beside the river bed, which bounds the river in summer, at low water.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zomerstraat",
+  "hash": "1d80d96e1189",
+  "nlHash": "55d0f161c466",
+  "en": "The season (summer). The street name was earlier set as Geinstraat by the former municipality of Weesperkarspel on 29 November 1957.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -36006,6 +36132,13 @@
   "nlHash": "414b872f4b07",
   "en": "A Belgian town in the province of West-Vlaanderen (West Flanders).",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Zonnehoekspad",
+  "hash": "9625ba2b806b",
+  "nlHash": "e22f736b6e2f",
+  "en": "In the Netherlands the sun stands much higher above the horizon in summer than in winter. The angle made by the sun's rays is also called the zonnehoek (sun angle).",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Zonnehof",
@@ -36029,10 +36162,206 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Zonnewendebrug",
+  "hash": "1ea10c84f9b5",
+  "nlHash": "8cd9c099f19f",
+  "en": "The Zonnewendebrug is a bridge on Oostenburg in the Centrum district of Amsterdam. Its design took account of the fall of light and shadow: the 3D-printed railing makes the bridge's perspective change with the sunlight during the day and as you walk across it. The bridge has number 2106, referring to the longest day of the year, 21 June: the solstice (zonnewende).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zonzeelstraat",
+  "hash": "48dabe21717a",
+  "nlHash": "dc80831829a8",
+  "en": "A village in the north-west of Noord-Brabant, drowned in the St Elizabeth's Flood of 1421.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zoomstraat",
+  "hash": "27735bf2da5f",
+  "nlHash": "e7513c559d6f",
+  "en": "A small river in Noord-Brabant, by Bergen op Zoom.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zorgwijkstraat",
+  "hash": "0844d3fad022",
+  "nlHash": "e96321d4765d",
+  "en": "A farmstead at the end of the Middenweg on the corner of the Oosterringdijk, built in 1696 and demolished in 1820 to widen the Middenweg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Zorgzaam",
   "hash": "2c7b74cf9968",
   "nlHash": "5cf8d8aabc4d",
   "en": "The group of women who regularly hold their silent march on the Plaza de Mayo in Buenos Aires (Argentina), wanting the truth about the fate of their husbands and children who disappeared under the generals' regime. Against the weapons of violence and empty talk, they show through their solidarity and persistence their struggle for truth, freedom and justice. Several streets around this square are named after the virtues they stand for (opmerkzaam = attentive).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zoutberg",
+  "hash": "a6a2412002fd",
+  "nlHash": "c85d82de6fa0",
+  "en": "A farm on the western ring ditch of the Purmer, now gone.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zouthaven",
+  "hash": "88bdcb866c6f",
+  "nlHash": "7e0aa615ab26",
+  "en": "In the past this was the city's salt harbour (Zouthaven).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zoutkeetsbrug",
+  "hash": "cbebf95f3eab",
+  "nlHash": "6c4c623ac6d7",
+  "en": "In the seventeenth and eighteenth centuries the zoutketen stood on both sides of this canal: sheds where coarse salt was processed for household use.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zoutkeetsgracht",
+  "hash": "5a29ad57a64b",
+  "nlHash": "6c4c623ac6d7",
+  "en": "In the seventeenth and eighteenth centuries the zoutketen stood on both sides of this canal: sheds where coarse salt was processed for household use.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zoutkeetsgracht",
+  "hash": "09a1d4c19277",
+  "nlHash": "b3fd868f8f77",
+  "en": "In the seventeenth and eighteenth centuries the zoutketen stood on both sides of this canal: sheds where coarse salt was processed for household use.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zoutkeetsplein",
+  "hash": "71302106d0c7",
+  "nlHash": "6c4c623ac6d7",
+  "en": "In the seventeenth and eighteenth centuries the zoutketen stood on both sides of this canal: sheds where coarse salt was processed for household use.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuid-Bevelandstraat",
+  "hash": "ed51d9fd7e3b",
+  "nlHash": "a98621b9426b",
+  "en": "The Zeeland island.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuid-Hollandstraat",
+  "hash": "fc20b797e969",
+  "nlHash": "e58a2ff3340c",
+  "en": "The province. The surrounding streets are named after castles in this province.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuideinde",
+  "hash": "32274984d4ee",
+  "nlHash": "52b09d02cd0f",
+  "en": "Taken over from the municipality of Oostzaan in 1966. The name refers to its position relative to the village of Oostzaan (south end). The part that passed from the municipality of Landsmeer to Amsterdam at the same time also had a Zuideinde (relative to the village of Landsmeer), but because of confusion that road was later renamed Kadoelenweg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuidelijke Wandelweg",
+  "hash": "79aacb59ec5f",
+  "nlHash": "54b07ce44980",
+  "en": "Originally laid out as a promenade between the Amsteldijk and the Amstelveenseweg. Parallel to it, but further outside the pre-1940 built-up area, ran the Buitenveldertse Wandelweg, which disappeared when the Buitenveldert garden suburb was built. The surviving remnant of the Zuidelijke Wandelweg shares only the name; it is no longer a footpath in character.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuider Amstelkanaal",
+  "hash": "495b39319bb1",
+  "nlHash": "1d1aa2dda645",
+  "en": "The southern part of the Amstelkanaal, referring to the river Amstel.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuider IJdijk",
+  "hash": "edb8a9283b74",
+  "nlHash": "c6380d2a28c9",
+  "en": "The south side of the IJ.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuiderakerweg",
+  "hash": "763b2ae0c7ee",
+  "nlHash": "33364652816d",
+  "en": "Its position in the Akerpolder. The street was taken over in 1921 under the name Zuiderweg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuidergasfabriekbrug",
+  "hash": "90022c9e9cf5",
+  "nlHash": "bc4c5aecd26e",
+  "en": "This bridge's name refers to the Zuidergasfabriek (southern gasworks), which stood here from 1909 to 1967.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuiderkerkhof",
+  "hash": "ffc725dd229d",
+  "nlHash": "783808b1c530",
+  "en": "Named after the square's original function as a churchyard. The little gate that led to the old churchyard has been restored and placed at the entrance to the square from the Sint Antoniesbreestraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuidermolenweg",
+  "hash": "02ad9d78efad",
+  "nlHash": "11fb2796fca7",
+  "en": "An old mill in former Sloten (suyder Mole, the south mill), shown on Jan Dou's map of 1687.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuiderzeepark",
+  "hash": "20e4f0dc5ffd",
+  "nlHash": "3fed69380516",
+  "en": "The Zuiderzee, called the IJsselmeer after it was closed off in 1932.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuiderzeeweg",
+  "hash": "21ac0e6e5ce3",
+  "nlHash": "3fed69380516",
+  "en": "The Zuiderzee, called the IJsselmeer after it was closed off in 1932.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuidewijn",
+  "hash": "624b832107fe",
+  "nlHash": "aded5eb19208",
+  "en": "A knightly house at Vrijhoeve-Capelle (Noord-Brabant), partly sixteenth- and partly seventeenth-century, rebuilt in 1763, with two wings at right angles and stepped gables.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuidgorsstraat",
+  "hash": "17b12291c952",
+  "nlHash": "88bea5149c27",
+  "en": "A nature area near Ellewoutsdijk (Zeeland), a stretch of land outside the dike in the Westerschelde.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuidplein",
+  "hash": "42e66fd3f2e4",
+  "nlHash": "4f8ac26909d1",
+  "en": "The Zuidplein takes its name from its position by Station Zuid and its location in the city. The square is an important hub in Amsterdam-Zuid and is linked by the metro line to Noord and the Noordplein there.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zuivelplein",
+  "hash": "7bd40d238139",
+  "nlHash": "f41b509d4cd0",
+  "en": "Dairy products (milk, butter and cheese).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zunderdorpergouw",
+  "hash": "71ce343df3c8",
+  "nlHash": "121899f47b37",
+  "en": "The gouw (village road) leads to the village of Zunderdorp, part of the municipality of Amsterdam since 1 January 1921.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zus Braunstraat",
+  "hash": "3ca20cb0add0",
+  "nlHash": "9920b65164ea",
+  "en": "Swimmer, who won gold in the 100 metres backstroke at the 1928 Olympic Games in Amsterdam.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -36043,6 +36372,27 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Zwaagstraat",
+  "hash": "99a0218d202f",
+  "nlHash": "bcbc5f596fb7",
+  "en": "A village in Noord-Holland, north of Hoorn.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zwaansvliet",
+  "hash": "9887f5dbe34b",
+  "nlHash": "2b73732efadc",
+  "en": "A mansion in the Beemster (Noord-Holland). Before 1965 the street was part of the Kastelenstraat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zwaardemakerstraat",
+  "hash": "c27384e2dd3d",
+  "nlHash": "cf61dbe4cad9",
+  "en": "Hendrik Zwaardemaker (1857-1930), physiologist and professor at Utrecht, known for his studies of smell and taste.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Zwaluwstraat",
   "hash": "2c0f07f8dc01",
   "nlHash": "97b7fda9ccb8",
@@ -36050,10 +36400,59 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Zwanebloemlaan",
+  "hash": "d430754727c2",
+  "nlHash": "391b470bf233",
+  "en": "A marsh plant (flowering rush) with pink flowers. The name (swan flower) refers to the shape of the pistils, which look like little swans. It grows along ditches, canals and drainage channels and is planted as an ornamental in ponds.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zwanenburgwal",
+  "hash": "2c102f8144af",
+  "nlHash": "89c166274b74",
+  "en": "Shortly after the land (on which the street and quay were laid out) was brought into the city just before 1600, there is mention of a house 'with the sign of Swanenburg' on the corner of the Zwanenburgwal, which will probably have given the name. Swanenburg was already a fairly common name at the time: Gerrit Barentsz Swanenburgh, for example, built the Muiderpoort, Weesperpoort and Utrechtsepoort in the seventeenth century. By council decision of 21 January 1976 part of the Zwanenburgwal was renamed Sint Antoniesluis. To build the Stopera, the Zwanenburgerstraat and its buildings were cleared.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Zwanenplein",
   "hash": "3ad80ec9f935",
   "nlHash": "931501d853de",
   "en": "The water bird (the duck).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zwarte Pad",
+  "hash": "31661ba51328",
+  "nlHash": "5bfa5ae8ea9e",
+  "en": "A kind of toad (pad). The zwarte pad is black with irregular light brown blotches on its back and legs, or brown with black blotches.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zwartegouw",
+  "hash": "07c2917b2e73",
+  "nlHash": "3828c22d3171",
+  "en": "This path was laid out around 1965, after the Nieuwendam garden suburb and the De Weeren sports park were built, to give access to the adjoining farmland. It was soon popularly called the 'Zwarte weggetje' (the little black road).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Zwenkgrasstraat",
+  "hash": "f86bfca8ce65",
+  "nlHash": "11b89f0bd159",
+  "en": "A rare native plant of the grass family (fescue) with plume-like flowers.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nieuwe Weteringstraat",
+  "hash": "891c35845e62",
+  "nlHash": "c05e771727b1",
+  "en": "These streets lie in the Weteringbuurt. The names recall the Wetering, which originally flowed into the Spui from outside the city; the Boerenwetering is a remnant of it. The Schans was once the rampart on the inside of the city wall. In the first half of the nineteenth century the walls and ramparts were demolished. Parts were turned into promenades (the Eerste and Tweede Weteringplantsoen) and a road was laid out, at first called the Schans along its whole length, but later renamed Marnixstraat, Weteringschans and Sarphatistraat. The Nieuwe Weteringstraat was laid out on the site freed by the demolition of the flour and bread factory. In the eighteenth and nineteenth centuries the paving yard was here.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Weteringstraat",
+  "hash": "159b0af76894",
+  "nlHash": "c05e771727b1",
+  "en": "These streets lie in the Weteringbuurt. The names recall the Wetering, which originally flowed into the Spui from outside the city; the Boerenwetering is a remnant of it. The Schans was once the rampart on the inside of the city wall. In the first half of the nineteenth century the walls and ramparts were demolished. Parts were turned into promenades (the Eerste and Tweede Weteringplantsoen) and a road was laid out, at first called the Schans along its whole length, but later renamed Marnixstraat, Weteringschans and Sarphatistraat. The Nieuwe Weteringstraat was laid out on the site freed by the demolition of the flour and bread factory. In the eighteenth and nineteenth centuries the paving yard was here.",
   "source": "claude-code-opus-5.5"
  }
 ]

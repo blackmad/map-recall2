@@ -85,21 +85,14 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   bridge on a bike.
 - The API states no licence for `beschrijvingNaam`. Confirm it with the
   municipality before a public release.
-- Retranslation off `trn` is under way (see HISTORY, 2026-09-30): 4,290 of
-  4,340 distinct Dutch texts done, 50 left. Continue with
-  `npx tsx scripts/origin-translation-batch.ts next --count=60`, write
-  `[{"id","en"}]`, then `ingest`, then `npm run publish:street-name-origins`.
-  Translate each batch against its printed Dutch: no added facts; correct only
-  clear factual errors (ingest the faithful text, which keeps the year
-  check meaningful, then fix the cache entry and tag it `+corrected`).
-  Record every register error found in
-  `docs/amsterdam-street-name-register-errors.md` (with its BAG id), for a
-  report to the municipality.
-  For a name whose register text is missing or broken, write a short sourced
-  text into `scripts/street-name-origin-supplements.json` (still to do:
-  Bastingstraat, Badhuiskade).
-- `ORIGIN_GLOSSARY` still repairs whatever stays on `trn` text; once the
-  retranslation is done, check which rules still fire and drop the dead ones.
+- `ORIGIN_GLOSSARY` no longer changes any published card: all origins are
+  retranslated, and the one rule that still fired was fixed at source (see
+  HISTORY). It matters only for `--trn`. Drop it together with the ~80
+  glossary asserts in `check-street-name-origins.ts`, or keep it as the
+  `--trn` fallback.
+- Send `docs/amsterdam-street-name-register-errors.md` (148 register
+  errors, BAG links) to the municipality once the licence question above is
+  settled.
 
 ---
 
