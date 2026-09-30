@@ -662,6 +662,23 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/natuur- en letterkundige/i, /\bnaturalist and literary scholar\b/g, 'physicist and literary scholar'],
   [/overleden als gevolg van gevangenschap te Davos/i, /\bdied as a result of imprisonment in Davos\b/g, 'died in Davos from the effects of his imprisonment'],
   [/behoudende Bossche stijl/i, /\ba conservative Bossche style\b/g, 'the traditionalist Bossche School style'],
+  // Long origins, read whole (2026-09-30).
+  [/De walen waren oudtijds/, /^The quays were ancient harbors of the IJ\b/, 'The walen were, in the early seventeenth century, inlets of the IJ'],
+  [/door aanslibbing te ondiep/i, /\bwas made shallow by dredging\b/g, 'silted up and became too shallow'],
+  [/Daarop is het Waalseiland aangeplempt/, /\bOn top of that, the Waalseiland was built in\b/g, 'The Waalseiland was then reclaimed in'],
+  [/kreeg zij de titel Erfprinses/i, /\bthe title of Princess Royal\b/g, 'the title of Hereditary Princess'],
+  [/met de erfprins van Oranje/i, /\bthe heir to the throne of Orange\b/g, 'the Hereditary Prince of Orange'],
+  [/door haar opvoeding bepaalde, afstandelijke/i, /\bDespite her, by her upbringing determined, distant and sometimes lofty attitude as queen\b/g,
+    'Despite a distant and sometimes haughty manner as queen, shaped by her upbringing'],
+  [/geannexeerd bij de vierde uitleg/i, /\bannexed by Amsterdam to the fourth extension\b/g, 'annexed by Amsterdam in its fourth expansion'],
+  [/geamoveerd/i, /\bwas relocated\b/g, 'was demolished'],
+  [/bij de stad wordt getrokken/i, /\bwas drawn to the city\b/g, 'was brought within the city'],
+  [/kreeg een der nieuw aangelegde straten de naam van de 'nieuwe straat'/i, /\bAgain, one of the newly built streets was named after the 'new street'/g,
+    "Here too, one of the newly laid streets was called 'the new street'"],
+  [/geen contractanten aangeworven/i, /\bdid not recruit contractors\b/g, 'recruited no contract labourers'],
+  [/iets moet inrukken/i, /\bwas moved back from the Dam, something had to give way, a quay was built here\b/g,
+    "was set back from the Dam (it had to 'ruck in'), a quay was built here"],
+  [/waartoe hij in 1864 de Nederlandsche Bouwmaatschappij oprichtte/, /\bamong other things, to which he founded\b/g, 'among other things, for which he founded'],
   // "Naar de …" opens an origin: named after it, not "To the …". Runs after
   // the rules above that match a whole "To the …" opening.
   [/^Naar /, /^To (?=the |an? |[A-Z'])/, 'Named after '],

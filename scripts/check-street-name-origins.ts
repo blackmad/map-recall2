@@ -131,7 +131,7 @@ assert.equal(repairOriginTranslation('Na demping van de Zaagmolensloot.', 'After
 assert.equal(repairOriginTranslation('Zij waren niet gedempt.', 'The protest was suppressed.').includes('filled in'), true, 'only where the Dutch says gedempt');
 assert.equal(repairOriginTranslation('De protesten werden onderdrukt.', 'The protests were suppressed.'), 'The protests were suppressed.');
 assert.equal(repairOriginTranslation('Kort nadat de grond even voor 1600 bij de stad wordt getrokken.',
-  'Shortly after the land was drawn to the city just before 4:00 p.m.'), 'Shortly after the land was drawn to the city just before 1600', 'a year read as a clock time');
+  'Shortly after the land was drawn to the city just before 4:00 p.m.'), 'Shortly after the land was brought within the city just before 1600', 'a year read as a clock time');
 assert.equal(repairOriginTranslation('Om 15:00 uur.', 'At 3:00 p.m.'), 'At 3:00 p.m.', 'a real time stays');
 assert.equal(repairOriginTranslation('Natuurkundige. Ontdekte de blinde vlek. Marisplein, Jacob Oud-Zuid Rb. 26-1-1922 15: m 9',
   'Physicist. Discovered the blind spot. Marisplein, Jacob Oud-Zuid Rb. 26-1-1922 3:00 p.m. m 9'),

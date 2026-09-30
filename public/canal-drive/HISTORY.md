@@ -28,6 +28,15 @@ A fresh random sample of 30 origins had 14 slips. Fixing them touched
   - The nadir is directly below the observer, not "perpendicular to" them.
   - Stuurmanskunst is navigation.
   - Burgersdijk's natuurkundige is a physicist, not a "naturalist".
+- **Twelve of the 100 long origins** (over 500 characters) were read whole:
+  - The walen were inlets of the IJ that silted up. The text said "the
+    quays were ancient harbors" made "shallow by dredging".
+  - Anna Paulowna became Hereditary Princess (erfprinses), not "Princess
+    Royal".
+  - The Zwanenburgerstraat was demolished (geamoveerd), not "relocated",
+    for the Stopera.
+  - Hecht en Sterk recruited no contract labourers, not "contractors".
+  - The Rokin text now explains the 'ruck in' that names the street.
 
 ## 2026-09-30 — Review rides end on a due cul-de-sac, as "the mystery street"
 
