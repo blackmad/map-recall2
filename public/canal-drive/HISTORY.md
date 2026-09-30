@@ -17,6 +17,14 @@ odd ones against the Dutch. Mistranslations cluster there. Found:
   means harbour basins.
 - **Clock time.** The year-read-as-clock-time repair now also catches
   "4:00 PM" (Zwanenburgwal: "just before 1600").
+- **Second rare-word round.** Heer Halewijn murdered women; he was no
+  "female murderer". Hekelveld's flax was hackled, not bleached, and made
+  into rope on ropewalks, not "railway lines". A schuttersvaandrig was the
+  civic guard's standard-bearer, not a sharpshooter. A kaatsbaan is a court
+  for kaatsen, not a billiards hall. Lakenramen are tenter frames, not
+  "linen windows". The author H.J. Schimmel is not "H.J. mould". The oneven
+  side of a street is its odd-numbered side. The illegaliteit was the
+  resistance.
 
 ## 2026-09-30 — Street-name translations: a right back, a killer whale, filled in not renamed
 

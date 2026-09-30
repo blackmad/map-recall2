@@ -190,6 +190,13 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/touwslager/i, /\brope warehouse\b/g, 'rope-making works'],
   [/lijnban/i, /\bline tracks\b/g, 'ropewalks'],
   [/lijnban/i, /\bline track\b/g, 'ropewalk'],
+  // More renderings of lijnbaan (a ropewalk): lineways, line railways,
+  // neighbouring railway lines, a canal line.
+  [/lijnban/i, /\b(?:lineways|line railways|railway lines)\b/g, 'ropewalks'],
+  [/lijnbaan liet bouwen/i, /\bshipyard and canal line\b/g, 'shipyard and ropewalk'],
+  [/lakenramen/i, /\bThe linen windows, which were moved here, were drawn into the city during the enlargements of the city in the sixteenth century when\b/g,
+    'The lakenramen (tenter frames for stretching cloth) were moved here during the sixteenth-century enlargements, when'],
+  [/lakenramen/i, /\blinen windows\b/g, 'lakenramen (tenter frames for stretching cloth)'],
   [/stadsuitleg/i, /\bcity layout\b/g, 'city expansion'],
   [/zangzaad/i, /\bsinging seed\b/g, 'birdseed'],
   [/regenten/i, /\bregency families\b/g, 'regent families'],
@@ -395,6 +402,21 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   // The register writes atoomtemperatuur; the Dulong–Petit law is about the
   // heat capacity per atom (atoomwarmte).
   [/atoomtemperatuur/i, /\bthe atomic temperature is the same\b/g, 'the heat capacity per atom is about the same'],
+  // Flax was hackled (combed), not bleached; Heer Halewijn murdered women; a
+  // schuttersvaandrig carried the civic guard's standard; a kaatsbaan is a
+  // court for kaatsen; the author H.J. Schimmel is no mould.
+  [/gehekeld/i, /\bthe flax was bleached\b/g, 'the flax was hackled (combed out)'],
+  [/vrouwenmoordenaar/i, /\ba female murderer who is herself murdered\b/g, 'a murderer of women who is himself killed'],
+  [/schuttersvaandrig/i, /\bas a sharpshooter\b/g, 'as an ensign (standard-bearer) of the civic guard'],
+  [/kaatsbaan/i, /\bis a billiards hall\b/g, 'is a kaatsbaan (a court for the ball game kaatsen)'],
+  [/kaatsbaan/i, /\bThis billiards hall\b/g, 'This court'],
+  [/h\.j\. schimmel/i, /\bH\.J\. mould\b/g, 'H.J. Schimmel'],
+  [/\boneven\b/i, /\bthe uneven side\b/g, 'the odd-numbered side'],
+  [/illegaliteit/i, /\bthe illegality\b/g, 'the resistance (illegaliteit)'],
+  [/op hoop van zegen/i, /'In the hope of blessing'/g, "'Op hoop van zegen' (The Good Hope)"],
+  [/kleurstift/i, /\bA colored pencil\b/g, 'A coloured crayon (pastel stick)'],
+  [/salversan/i, /\bsalversan\b/g, 'Salvarsan'],
+  [/./, /\bthe handicaps section\b/g, 'the handicap section'],
   // Grammar the translator gets wrong before a vowel.
   [/./, /\ba (?=(?:inn|embankment|alderman|island|estate|old|important|admiral|officer|engineer|author|actor|actress|architect|artist|area|order|eighteenth|eleventh|inland|English|Amsterdam)\b)/g, 'an '],
   [/tot de vinken behorende/i, /\bbelonging to the sparrows\b/g, 'belonging to the finches'],
