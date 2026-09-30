@@ -769,12 +769,12 @@ left is content:
 Amsterdam’s card-facing extracts are English in the publish gate
 (`check:extract-english` after `enrich:english` in `refresh-city-extract.sh`).
 Remaining thin blurbs are Wikidata description floors or rename refusals that
-fell back to a description. Utrecht still has Dutch / one-liner backlog:
-
-    brew tap hotchpotch/trn https://github.com/hotchpotch/trn
-    brew install hotchpotch/trn/trn     # or install translate-cli
-    npm run enrich:utrecht-english -- --translator=trn --dry-run --limit=20
-    npm run enrich:utrecht-english -- --translator=trn
+fell back to a description. Utrecht's backlog, measured 2026-09-30 with `trn`
+(`npm run enrich:utrecht-english -- --translator=trn --dry-run`), is 11
+distinct blurbs. All 11 are refused for translating the place's own name
+(Eendenkooi, Verzetsmonument, Ridderhofstad Den Engh, …) and fall back to
+English Wikidata descriptions, so none still reads Dutch. What remains is
+thin ledes, not Dutch.
 
 `street-knowledge.json` is now generated from streets/water
 (`npm run build:street-knowledge`) — do not hand-edit it.
