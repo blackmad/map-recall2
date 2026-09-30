@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Roosje Vospad, plus a register-wide scan for
+from 's-Gravelandse Veer to Schuitenhuisstraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -39,6 +39,8 @@ next record.
 | Piet Kranenbergpad | [0363300000006028](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000006028/) | Its text is Piet Keizer's Ajax biography, word for word, the same as the Piet Keizerbrug's ([0363300011950122](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950122/)). |  Replaced by a sourced supplement (Wikipedia). |
 | Nieuwendammerkade | [0363300000003871](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003871/) | Carries the Nieuwendijk's explanation ("Vermoedelijk dankt de Nieuwendijk zijn naam…"), a street in the city centre, not this quay in Noord. | Uses the Nieuwendammerdijk record's explanation of Nieuwendam ([0363300000003870](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003870/)). |
 | Rembrandtpark | [0363300000001738](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001738/) | After the first sentence, explains how the Rembrandtplein got its name (the statue of 1852/1875, the Botermarkt), not the park in West. | Kept only the opening sentence about Rembrandt. |
+| Scharwouderstraat | [0363300000004473](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004473/) | "Deze 'dunne' biersoort werd vroeger op deze ophaalbrug verkocht…", the second half of the Scharrebiersluis's text. | Withheld. |
+| Scheepmakerskade | [0363300000004474](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004474/) | "Een onofficiële naam van deze brug is Rapenburgerschutsluis…", a bridge's text, not this quay's. | Withheld. |
 
 ## 2. Fragments
 
@@ -132,6 +134,10 @@ the municipality's sources.
 | Pradolaan | [0363300000001312](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001312/) | the Prado "geopend in 1918" | opened in 1819 | Corrected |
 | Raphaëlplein | [0363300000004618](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004618/) | "Raffaëllo di Senti" | Raffaello Santi (Sanzio) | Corrected |
 | Rooseveltlaan | [0363300000004416](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004416/) | president "vanaf 1932" | elected in November 1932, in office from March 1933 | Corrected |
+| Rousseaustraat | [0363300000004422](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004422/) | 1711–1778 | born 28 June 1712 | Corrected |
+| Rutherfordstraat | [0363300000004437](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004437/) | "Engels natuur- en scheikundige" | born in New Zealand, a British subject | Corrected |
+| Sara Burgerhartstraat | [0363300000004458](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004458/) | the novel "uit 1872" | 1782, by Betje Wolff and Aagje Deken (digits transposed) | Corrected |
+| Schopenhauerhof | [0363300000004500](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004500/) | 1778–1860 | born 22 February 1788 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 

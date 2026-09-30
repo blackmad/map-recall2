@@ -214,6 +214,13 @@ export const WITHHELD_ORIGINS: Readonly<Record<string, string>> = {
   // Jaap Kunst's biography runs on across the next two names alphabetically.
   'Jaap Nunes Vazstraat': "the register's text is the middle of Jaap Kunst's biography",
   'Jaap Speyerstraat': "the register's text is the last sentence of Jaap Kunst's biography",
+  // "Deze 'dunne' biersoort werd vroeger op deze ophaalbrug verkocht": the
+  // second half of the Scharrebiersluis's text. Which Scharwoude is meant
+  // (the Koggenland village or Noord-/Zuid-Scharwoude) is not recorded.
+  Scharwouderstraat: "the register's text is the end of the Scharrebiersluis's",
+  // "Een onofficiële naam van deze brug is Rapenburgerschutsluis": a bridge's
+  // text, not this quay's.
+  Scheepmakerskade: "the register's text describes the Rapenburgerschutsluis bridge",
 };
 
 const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
