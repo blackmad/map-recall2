@@ -290,6 +290,8 @@ assert.equal(repairOriginTranslation("Genoemd naar 't Giethuis, de stadsgeschut-
   assert.match(published.origins.find(origin => origin.name === 'Enneüs Heermabrug')!.en, /CDA/);
   // Regression: the Kinkerstraat record is only the tail of the Kinkerbrug's.
   assert.match(published.origins.find(origin => origin.name === 'Kinkerstraat')!.en, /Johannes Kinker/);
+  // Regression: the register's Na Druk Gelukbrug text stops before explaining the farm's name.
+  assert.match(published.origins.find(origin => origin.name === 'Na Druk Gelukbrug')!.en, /after hardship, good fortune/);
 }
 assert.equal(repairOriginTranslation('De naam van deze vaste brug verwijst naar de toren.', 'The name of this permanent bridge refers to the tower.'),
   'The name of this fixed bridge refers to the tower.', 'a vaste brug is fixed, not permanent');

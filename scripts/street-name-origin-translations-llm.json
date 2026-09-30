@@ -20832,11 +20832,102 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Maurits Sabbehof",
+  "hash": "9adb2db47bf5",
+  "nlHash": "55a9335cf7b4",
+  "en": "Flemish man of letters (1873-1938), writer of novels, literary criticism and plays, who in 1923 became a professor at Brussels and curator of the Plantin Museum in Antwerp.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mauritskade",
+  "hash": "3083375ba610",
+  "nlHash": "3f5d426c9014",
+  "en": "Maurits, Prince of Orange (1567-1625), stadtholder of Holland and Zeeland from 1585, and later of all seven provinces. The quay was originally part of the Buitensingel.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mauritsstraat",
+  "hash": "73de1c4de980",
+  "nlHash": "702125e08308",
+  "en": "There was once a Mauritsstraat here too (council decision of 10 June 1880), which then ran as far as the Rhijnspoorplein (Weesperpoort station). It was added to the Swammerdamstraat in 1970, and the old name has now returned. The name honours Maurits, Prince of Orange.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mauvestraat",
+  "hash": "03f073e2acf4",
+  "nlHash": "f71828a598f7",
+  "en": "Anton Mauve (1838-1888), landscape painter.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Max de Haasstraat",
+  "hash": "d2ec3f5a4456",
+  "nlHash": "4f0fc9b6d0b2",
+  "en": "Max de Haas (1898-1983), journalist, director and screenwriter. When the Germans invaded the Netherlands in May 1940, De Haas, a politically aware Jew with few illusions about the Nazis' plans, fled to England with his Viennese wife Gretl.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Max Euweplein",
+  "hash": "2d3792f145d8",
+  "nlHash": "0b53c0ffa401",
+  "en": "Machgielis Euwe (1901-1981), mathematician, chess grandmaster and theorist. From 1921 to 1958 he was almost continuously Dutch champion, and in 1935 he won the world title. In 1981 he was awarded the Silver Medal of the City of Amsterdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Max Planckstraat",
+  "hash": "ad09c8ab790b",
+  "nlHash": "1fae4796f11c",
+  "en": "German physicist (1858-1947), professor at Kiel and Berlin, the founder of quantum theory,, who received the Nobel Prize in Physics in 1918.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Maxwellstraat",
+  "hash": "7e242fea526a",
+  "nlHash": "49ecd8a76d0a",
+  "en": "The Scottish physicist James Clerk Maxwell (1831-1879), originator of the electromagnetic theory of light.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Maya Angeloustraat",
+  "hash": "00227475f774",
+  "nlHash": "28b5540bfa4c",
+  "en": "Maya Angelou (1928-2014), born Marguerite Johnson, was an American writer and poet.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Mechelensingel",
   "hash": "dd7ffd1971f6",
   "nlHash": "fbd52f017544",
   "en": "Belgian town in the province of Antwerp.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Medemblikstraat",
+  "hash": "1d7dcaa7b19c",
+  "nlHash": "581977162b80",
+  "en": "A town in Noord-Holland, formerly an important Zuiderzee town.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meentstraat",
+  "hash": "7543c692cce1",
+  "nlHash": "f1691ffa8f27",
+  "en": "Meent is an old Dutch word for common pasture. Here it is a historical Rijnland name: land east of Heemstede lost to flooding.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meer en Vaart",
+  "hash": "94b14437eef1",
+  "nlHash": "c8aa60e0589c",
+  "en": "A former farmstead on the Sloterdijkermeerweg near the Haarlemmerweg, demolished to build Bos en Lommer. It was the official residence of the burgomaster of the municipality of Sloten, abolished in 1921.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meerbrug",
+  "hash": "d3af6684810a",
+  "nlHash": "ad10358f2e14",
+  "en": "The name of this fixed bridge in Kadoelen comes from the surrounding hamlet called 't Meertje (the little lake), which belonged to Landsmeer before the annexation of 1921.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Meerhuizenplein",
@@ -20850,6 +20941,13 @@
   "hash": "b31a06582b8c",
   "nlHash": "af2a8246c363",
   "en": "A former country house on the Amstel, where the Amstelkade now meets the Amsteldijk, demolished around 1914. In the seventeenth century the poet Hendrik Laurensz Spiegel lived here.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meerkerkdreef",
+  "hash": "8c73b9de17c5",
+  "nlHash": "004637bd6412",
+  "en": "The village of Meerkerk on the Merwedekanaal (Zuid-Holland), between Vianen and Gorinchem.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -20867,11 +20965,95 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Meernhof",
+  "hash": "2a1bfaaf2543",
+  "nlHash": "212992ab7639",
+  "en": "A village west of Utrecht (De Meern).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meerpad",
+  "hash": "e0f01b0b1fe1",
+  "nlHash": "77a37e964a9d",
+  "en": "This means the former Buikslotermeer, to which the path led.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meeuwenlaan",
+  "hash": "b5a4f0df6dea",
+  "nlHash": "b2af15dd46f1",
+  "en": "The bird family (the gulls).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meeuwenplein",
+  "hash": "b1f4d07d8b72",
+  "nlHash": "b2af15dd46f1",
+  "en": "The bird family (the gulls).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meibergdreef",
+  "hash": "4bd02a582373",
+  "nlHash": "6c3481455cb4",
+  "en": "A hill south of Berg en Dal/Groesbeek (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meibergpad",
+  "hash": "fd4540f02894",
+  "nlHash": "6c3481455cb4",
+  "en": "A hill south of Berg en Dal/Groesbeek (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meidoornplein",
+  "hash": "aafacaff9c41",
+  "nlHash": "34ffcf6d58b9",
+  "en": "The tree or shrub (hawthorn) of the apple family.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meidoornweg",
+  "hash": "30b9403a2eb8",
+  "nlHash": "34ffcf6d58b9",
+  "en": "The tree or shrub (hawthorn) of the apple family.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meimorgenstraat",
+  "hash": "291b15a6422e",
+  "nlHash": "0d9126aaf320",
+  "en": "The poem of the same name ('May morning') by Jacqueline E. van der Waals (1868-1922), in the collection 'Nieuwe Verzen' (1909).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mekongweg",
+  "hash": "d624dd9c0a87",
+  "nlHash": "df303c200dcf",
+  "en": "A river more than four thousand kilometres long that flows through China, Laos, Thailand, Cambodia and Vietnam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Melis Stokehof",
+  "hash": "065f243e7006",
+  "nlHash": "89ae7544162c",
+  "en": "A thirteenth-century Dutch poet, known for his 'Rijmkroniek' (rhymed chronicle), regarded as a follower of Jacob van Maerlant.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Melkdistelstraat",
   "hash": "2c32770cb578",
   "nlHash": "6322dbc15801",
   "en": "An akkerdistel (creeping thistle) is a species of thistle.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Melkweg",
+  "hash": "a549e6c3cb02",
+  "nlHash": "b924cd540edc",
+  "en": "The Milky Way is the faintly shining band across the sky, caused by the light of the millions of stars of the galaxy our sun belongs to. The road was earlier called Ringweg.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Meloenenstraat",
@@ -20888,6 +21070,111 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Memeleiland",
+  "hash": "133129c5f4c5",
+  "nlHash": "cf399ca9a064",
+  "en": "An old Prussian town, called Klaipėda since 1945 and part of Lithuania. In the second half of the eighteenth century it was important for supplying timber to Amsterdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Memlingstraat",
+  "hash": "5ed768097c9f",
+  "nlHash": "449c0a0c466f",
+  "en": "Hans Memling (1430-1494), Southern Netherlandish painter of altarpieces and portraits. A number of his works are brought together in Bruges.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Menadostraat",
+  "hash": "3fc82fcea33c",
+  "nlHash": "5e6f65f0b45a",
+  "en": "A town on the Indonesian island of Sulawesi (Celebes).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mendelhof",
+  "hash": "2e9810c68f5e",
+  "nlHash": "aea716d7e2a1",
+  "en": "Gregor Mendel (1822-1884), Austrian biologist who discovered the laws of heredity in plants.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mendes da Costahof",
+  "hash": "3b1ba9af02c0",
+  "nlHash": "b9b8a2b6cb0c",
+  "en": "Jozef Mendes da Costa (1863-1939), sculptor, whose work can be seen among other places in the boardroom of the Stock Exchange.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Menno ter Braakstraat",
+  "hash": "518ceafdb736",
+  "nlHash": "41db996c0a07",
+  "en": "Essayist and critic (1902-1940), who fiercely opposed the rise of National Socialism.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mensinge",
+  "hash": "9fe7535e1221",
+  "nlHash": "1bbab957cacc",
+  "en": "An old Drenthe manor (havezate), partly surrounded by water, near Roden. It dates originally from 1381 and was rebuilt in 1728.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mercatorplein",
+  "hash": "fb34ab3aece8",
+  "nlHash": "79600e09a144",
+  "en": "Flemish geographer and cartographer whose real name was Gerard Kremer (1512-1594), who drew the first world map in cylindrical projection.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mercatorstraat",
+  "hash": "713efe60b294",
+  "nlHash": "79600e09a144",
+  "en": "Flemish geographer and cartographer whose real name was Gerard Kremer (1512-1594), who drew the first world map in cylindrical projection.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Merckenburg",
+  "hash": "83cbd071105a",
+  "nlHash": "40261510836f",
+  "en": "An eighteenth-century building in Heukelum (Zuid-Holland) with a fourteenth-century square tower in the middle of its façade, the remnant of the original castle.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mercuriushaven",
+  "hash": "8956c7922f07",
+  "nlHash": "17b3eb0cae9f",
+  "en": "In Roman mythology, the god of trade (Mercury).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mercuriusplein",
+  "hash": "ff56d05fb989",
+  "nlHash": "0038121f6fcb",
+  "en": "The smallest planet (Mercury), closest to the sun.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mercuriusstraat",
+  "hash": "4d7cb29cfea4",
+  "nlHash": "0038121f6fcb",
+  "en": "The smallest planet (Mercury), closest to the sun.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Merdekagracht",
+  "hash": "cfc7d3cffa89",
+  "nlHash": "02bb48c0b08e",
+  "en": "Merdeka means free or independent. Already in colonial times it was the forbidden rallying cry of the nationalist movement, and after the proclamation of the Republic of Indonesia on 17 August 1945 it became the characteristic battle cry of the independence fighters.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Merelstraat",
+  "hash": "b5c81fc929fb",
+  "nlHash": "4dbad87cb2a5",
+  "en": "The songbird (the blackbird).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Merenburgstraat",
   "hash": "5a17d04e1a34",
   "nlHash": "2630425f8b58",
@@ -20895,10 +21182,101 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Merlijnstraat",
+  "hash": "7b3e55437bd4",
+  "nlHash": "e43195291d51",
+  "en": "The name of a Celtic romance (Merlin), adapted by Jacob van Maerlant in 1260.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Merwedeplein",
+  "hash": "9f48dc4c4813",
+  "nlHash": "4adb7d24e0ff",
+  "en": "The river formed where the Maas and the Waal flow together.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mesdagstraat",
+  "hash": "81e07e377906",
+  "nlHash": "ab6dbaf51d86",
+  "en": "Hendrik Mesdag (1831-1915), painter of seascapes.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Messchaertstraat",
+  "hash": "7be91f03bbc6",
+  "nlHash": "ddd3399b32d0",
+  "en": "Johannes Martinus Messchaert (1857-1922), baritone, who in 1884 founded the Amsterdam Conservatory with Daniël de Lange, Frans Coenen and Julius Röntgen.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Messinastraat",
+  "hash": "d263b2b3ce96",
+  "nlHash": "1c31ae855423",
+  "en": "An Italian port on Sicily, to which the former KNSM ran a scheduled service.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Metaalbewerkerweg",
+  "hash": "9b3dd1df13ae",
+  "nlHash": "4dc8cdf564e5",
+  "en": "The trade: a collective name for workers in the metal industry.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meteorensingel",
+  "hash": "330dc03b9290",
+  "nlHash": "9d0f1f0fd6bb",
+  "en": "Meteors are 'shooting stars', probably fragments of former comets.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Meteorenweg",
+  "hash": "7574cca75097",
+  "nlHash": "9d0f1f0fd6bb",
+  "en": "Meteors are 'shooting stars', probably fragments of former comets.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Methaanweg",
+  "hash": "a8aa04888b99",
+  "nlHash": "13feb88b0a3e",
+  "en": "The gas (methane), a colourless and odourless firedamp and marsh gas.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Metselstraat",
+  "hash": "742ad15ad7df",
+  "nlHash": "19832801dc75",
+  "en": "A reference to the concrete company Albeton, on the Cruquius site between 1977 and 2014 (metselen = to lay bricks).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Mezenstraat",
   "hash": "c13d0c490ea9",
   "nlHash": "97b7fda9ccb8",
   "en": "The songbird (the cuckoo).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mezquitalaan",
+  "hash": "b6e5e233bfc7",
+  "nlHash": "fe3d1c5d80e0",
+  "en": "An Islamic building in Córdoba, fortress-like in appearance, founded in 785 by Emir Abd al-Rahman. Over the centuries Christian elements were added, the most important being the sixteenth-century cathedral in the middle of the complex.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Michel de Klerkhof",
+  "hash": "3e09a1133e3f",
+  "nlHash": "b38e814c3458",
+  "en": "Architect (1884-1923), who built several housing complexes in Amsterdam, including in the Spaarndammerbuurt (Amsterdam School style).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Michelangelostraat",
+  "hash": "2e44dcb9f147",
+  "nlHash": "89b8c97f3854",
+  "en": "Michelangelo Buonarroti (1475-1564), Italian sculptor, painter, architect and poet, the greatest artist of his time (the dome of St Peter's and the paintings in the Sistine Chapel in Rome).",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -20909,6 +21287,678 @@
   "source": "anthropic/claude-opus-5.5"
  },
  {
+  "name": "Middelhoffstraat",
+  "hash": "08896c571025",
+  "nlHash": "395fef3894d1",
+  "en": "A former pleasure garden on the east side of the Schagerlaan.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Middeliestraat",
+  "hash": "d1a920b99b57",
+  "nlHash": "9674d97f0ff8",
+  "en": "A village north-west of Edam (Noord-Holland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Middelveldstraat",
+  "hash": "c6819045b99d",
+  "nlHash": "2afd19782e13",
+  "en": "After the Middelveldsche Akerpolder, in which this neighbourhood lies.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Middenlaan Zunderdorp",
+  "hash": "a548599268dd",
+  "nlHash": "80010c671d5e",
+  "en": "The street was officially named in 1953, following the local name it had long had. It does not run through the middle of the village, but it is the central road in relation to the village and the nearby hamlets.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Middenmeerpad",
+  "hash": "8d5c07b347f8",
+  "nlHash": "9ba27a2b5630",
+  "en": "After the former farmstead Midden-Meer, which stood on the corner of the Middenweg and the Kruislaan until 1809.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Middenweg",
+  "hash": "8ecb7915a79b",
+  "nlHash": "aafd4a5afe55",
+  "en": "Named after its position: the road was laid right across (through the middle of) the drained Watergraafsmeer.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Midscheeps",
+  "hash": "f0558d6409e4",
+  "nlHash": "c041fc15179f",
+  "en": "A term for everything in the middle of a ship (amidships).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Midwoudpad",
+  "hash": "a869ba35ba93",
+  "nlHash": "3737fa3f6df6",
+  "en": "A village in Noord-Holland, in the West-Friesland region.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mien Labbertonstraat",
+  "hash": "431308d857cd",
+  "nlHash": "765be3929d41",
+  "en": "Writer of books for young people (1883-1966), whose works include 'Jonge Harten' (young hearts, 1938) and 'Lentebloesem' (spring blossom, verse, 1926).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mien Ruysbrug",
+  "hash": "7d9b9a7e6049",
+  "nlHash": "420781fdc273",
+  "en": "Wilhelmina Jacoba (Mien) Moussault-Ruys, better known by her maiden name Mien Ruys (Dedemsvaart, 12 April 1904 - Deventer, 9 January 1999), was an internationally known Dutch garden architect. In the Netherlands she was nicknamed Bielzen Mien (Sleeper Mien) because she pioneered the use of railway sleepers in gardens, which was especially popular in the 1970s. She liked to work with straight forms: rectangles, squares and clean lines. She was one of the first in the Netherlands to take small town gardens seriously as a garden architect. Her work lives on in the Mien Ruys Gardens Foundation, which maintains 30 gardens in her style in Dedemsvaart (the Tuinen van Mien Ruys), open to visitors from April to October. In 1954 she and her husband, the publisher Theo Moussault, founded the quarterly Onze Eigen Tuin (our own garden). In 1958-1959 she designed, for and with Gerrit Rietveld, the gardens around his factory building for the De Ploeg weaving mill in Bergeijk, which is still well preserved today as a 'village garden'. The same goes for the garden of the Rosa Spier Huis for elderly artists in Laren. She also designed, among other things, the greenery between the home zones of Tuindorp Frankendael.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mijehof",
+  "hash": "282b7d950795",
+  "nlHash": "936fda8d102d",
+  "en": "A small village on the little river of the same name in Zuid-Holland (the Meije), which flows into the Oude Rijn at Zwammerdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mijndenhof",
+  "hash": "cab927309e9b",
+  "nlHash": "ee1b3eef9bbf",
+  "en": "The little village on the Vecht opposite Loenen (Utrecht).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Milletstraat",
+  "hash": "c7e88bfd7d09",
+  "nlHash": "e217991768a6",
+  "en": "Jean-François Millet (1815-1875), French landscape painter.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Millingenhof",
+  "hash": "ec4cdefb9a80",
+  "nlHash": "407848f77051",
+  "en": "The village on the Rhine (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Milovan Djilasplein",
+  "hash": "4845da9cc299",
+  "nlHash": "f4c3a387aa62",
+  "en": "Yugoslav politician and human rights activist (1911-1995). In 1941 he co-founded the Partisan army, and in 1946 became deputy prime minister under Marshal Tito. He fell from favour through his struggle for more democracy.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Milovan Djilasstraat",
+  "hash": "38ec90ec525a",
+  "nlHash": "8aa92931b1e5",
+  "en": "Yugoslav writer and human rights activist (1911-1995), one of Josip Tito's closest associates and a leading figure in the Yugoslav Communist Party. He spoke openly of his disappointment with communism, broke with Tito and was imprisoned several times.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Minahassastraat",
+  "hash": "910dc141dddf",
+  "nlHash": "5896653f3a57",
+  "en": "A region on the island of Sulawesi (Indonesia).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Minckelersstraat",
+  "hash": "8e9a8f109c8a",
+  "nlHash": "14a95deb25f1",
+  "en": "Jan Pieter Minckelers (1748-1824), physicist, who discovered that coal gas could be used for lighting.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Minervahaven",
+  "hash": "72207de67ffd",
+  "nlHash": "912097601b6f",
+  "en": "In Roman mythology, the goddess of wisdom (Minerva).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Minervahavenweg",
+  "hash": "74aef0aafc0b",
+  "nlHash": "912097601b6f",
+  "en": "In Roman mythology, the goddess of wisdom (Minerva).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Minervalaan",
+  "hash": "1a2449bef4ea",
+  "nlHash": "912097601b6f",
+  "en": "In Roman mythology, the goddess of wisdom (Minerva).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Minervaplein",
+  "hash": "d73012a0f72c",
+  "nlHash": "912097601b6f",
+  "en": "In Roman mythology, the goddess of wisdom (Minerva).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Minnemoersstraat",
+  "hash": "201fafb8b272",
+  "nlHash": "456545fe876d",
+  "en": "The name arose at the end of the seventeenth century and probably comes from a gable stone or shop sign. Before that the little street appears as Bickersdwarsstraat. A minnemoer or minnemoeder was a woman who took on the mothering of a baby, nursing and/or swaddling it (a wet nurse).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Miraplein",
+  "hash": "25b54a308811",
+  "nlHash": "b00675b60aab",
+  "en": "A star in the constellation Cetus (the Whale).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Modelmakerstraat",
+  "hash": "58d11a65b031",
+  "nlHash": "f37414e6c20f",
+  "en": "A trade name: someone who makes models, for example for casting moulds (a pattern maker). The street name refers to the shipbuilding that Amsterdam-Noord has lost.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Modemstraat",
+  "hash": "b8be5a80ecda",
+  "nlHash": "92cf3595c3d9",
+  "en": "A device that converts computer signals for the telephone network. As a counterpart to the street names recalling Amsterdam-Noord's former shipbuilding industry, this name refers to modern information technology.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Moeder Alacoquebrug",
+  "hash": "a5a082e48f1e",
+  "nlHash": "232bdc1b701e",
+  "en": "This fixed bridge is named after Mother Alacoque (1892-1956), a Dutch nun who helped many prisoners during the Japanese occupation of the Dutch East Indies (1942-1945). She was mother superior of the Charitas Hospital in Palembang on Sumatra, whose patients included several people involved in spreading war news and smuggling money and medicines into the prison camps in Palembang.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Moederkruidstraat",
+  "hash": "2560521b369e",
+  "nlHash": "d64cc0394505",
+  "en": "A medicinal plant (feverfew).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Moerbeienstraat",
+  "hash": "455c4c3f3497",
+  "nlHash": "e05429645029",
+  "en": "The fruit of the mulberry tree, whose leaves are used to rear silkworms.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Moerdijkstraat",
+  "hash": "b26ded5314df",
+  "nlHash": "c3f1894d2abc",
+  "en": "A spot on the Hollandsch Diep where Johan Willem Friso drowned in 1711. The Moerdijk railway bridge (2530 m) was built here between 1868 and 1872, and the road bridge in 1936.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Moermanskkade",
+  "hash": "11065327092c",
+  "nlHash": "16a6883bd1e1",
+  "en": "A Russian port and naval base on the Barents Sea (Murmansk), founded in 1915.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Moermond",
+  "hash": "dea6796eceb9",
+  "nlHash": "d7679f9a9ee7",
+  "en": "A picturesque castle in Renesse (Zeeland), badly damaged by the water in the flood of 1953. During its restoration the foundations of a large early medieval castle came to light.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Moestuinlaan",
+  "hash": "24bf19924db8",
+  "nlHash": "fc715f416fe8",
+  "en": "A vegetable garden. The street lies on the former De Bongerd allotment complex.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Moezelhaven",
+  "hash": "f177b7fcbf6b",
+  "nlHash": "074ddd8af457",
+  "en": "A tributary (the Moselle) that flows into the Rhine at Koblenz (Germany), an important river for the industries and mines of the Saar region.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Moezelhavenweg",
+  "hash": "5ea2f842368f",
+  "nlHash": "074ddd8af457",
+  "en": "A tributary (the Moselle) that flows into the Rhine at Koblenz (Germany), an important river for the industries and mines of the Saar region.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mokerstraat",
+  "hash": "02af804c4993",
+  "nlHash": "94869cf912d8",
+  "en": "A heavy smith's hammer or sledgehammer.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molen 't Haasjepad",
+  "hash": "c2d04dbb0bc4",
+  "nlHash": "312b79deadcc",
+  "en": "A polder mill, an octagonal ground-sailer, which kept the Wilmkebreek dry from its reclamation in 1633. The mill was badly damaged in the flood of 1916, after which it was replaced by an electric pumping station. It was demolished in 1924.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molenaarsweg",
+  "hash": "73228e686181",
+  "nlHash": "64f7ed6deb59",
+  "en": "The miller is the person who works a mill. The road runs along the Molenwijk park. Before 1976 the road was part of the Stellingweg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molenbeekstraat",
+  "hash": "1c1a52ce4a94",
+  "nlHash": "c8832fd556a2",
+  "en": "The name of several Dutch watercourses, among them ones in Limburg and along the Veluwezoom.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molengouw",
+  "hash": "36991e52fb7e",
+  "nlHash": "796111ab1254",
+  "en": "After the mill that stood level with today's Nibbixwoudstraat, to which this street once led as a path.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molenpad",
+  "hash": "73be01462f3f",
+  "nlHash": "e72eeafe209b",
+  "en": "In the sixteenth century this path lay outside the city and led to a mill (molen) level with today's Raamplein (until the seventeenth century the Raamstraat was also called Molenpad). The Molenpad is in fact the only one of the many outer paths to have kept the name 'pad' when it came inside the walls after 1612.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molenslootpad",
+  "hash": "9d54aa7a666f",
+  "nlHash": "a8a1935f92b1",
+  "en": "The name for a main drainage ditch leading to the polder mill.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molensteeg",
+  "hash": "f39d05f6212f",
+  "nlHash": "e18e230b6392",
+  "en": "The alley dates from the early fourteenth century, when the Count of Holland had a mill built on the Zeedijk. The mill had gone before 1357, but the alley has kept the name to this day. In the sixteenth century it was also called Minderbroederssteeg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molenwerf",
+  "hash": "f5ccd58c8689",
+  "nlHash": "258bb72f1975",
+  "en": "This name was set in 1956, but had existed for a long time. A molenwerf is the plot of ground a mill stands on; here, the site of the mill in the old village of Sloterdijk.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molenwijk",
+  "hash": "4880e015ea4b",
+  "nlHash": "83415a2e4778",
+  "en": "This is the name of a park. The residential blocks built in it form a number of windmill sails in plan and bear the names of types of mill.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molsteeg",
+  "hash": "d92075d14cbc",
+  "nlHash": "b967855c7bc4",
+  "en": "The name of this alley first appears in 1557 and refers to the house 'De Mol' (the mole), mentioned as early as 1533, which stood on the ground now occupied by the alley.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Molukkenstraat",
+  "hash": "9ab8d82a769b",
+  "nlHash": "743995fd10a4",
+  "en": "An island group in Indonesia between Sulawesi and New Guinea, which includes the islands of Ambon, Ceram and Halmahera (Indonesian name: Maluku).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mondlanestraat",
+  "hash": "ea0049a402d7",
+  "nlHash": "ac2c1e18d095",
+  "en": "Eduardo Mondlane (1920-1969), leader of the Frelimo liberation movement in Mozambique, murdered in 1969. Mozambique did not become independent of Portugal until 1975.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Monitorstraat",
+  "hash": "cb29b098c535",
+  "nlHash": "142c40ab0fde",
+  "en": "A display screen. As a counterpart to the street names recalling Amsterdam-Noord's former shipbuilding industry, this name refers to modern information technology.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Monnikendammerplantsoen",
+  "hash": "11a4cce9c5f8",
+  "nlHash": "b597733fe7b9",
+  "en": "The town in Noord-Holland, once a flourishing Zuiderzee town.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Monnikendammerweg",
+  "hash": "8b05cd2573fc",
+  "nlHash": "b597733fe7b9",
+  "en": "The town in Noord-Holland, once a flourishing Zuiderzee town.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Monnikendwarsstraat",
+  "hash": "a576c9a455b0",
+  "nlHash": "d0e0473d37a5",
+  "en": "Named after the Franciscan or Grey Friars' monastery, founded in 1464 and destroyed in 1578. The street's oldest name is Grauwemonnikenstraat (1581).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Monnikenstraat",
+  "hash": "575127ce58d1",
+  "nlHash": "d0e0473d37a5",
+  "en": "Named after the Franciscan or Grey Friars' monastery, founded in 1464 and destroyed in 1578. The street's oldest name is Grauwemonnikenstraat (1581).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Monnikskapstraat",
+  "hash": "1fce62e00044",
+  "nlHash": "6fb7c9fc09f2",
+  "en": "A plant genus (monkshood) of the buttercup family, flowering yellow, purple, blue, pink or white. The name comes from the strikingly shaped upper petal. Monkshood grows mainly in mountain meadows in the northern hemisphere. Of the more than 250 species, only the yellow monkshood is native to the Netherlands.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Monte Adi",
+  "hash": "84abf2e0b4f9",
+  "nlHash": "5cfa240f1604",
+  "en": "A mountain peak in Spain, 1453 metres high.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Monte Perdido",
+  "hash": "324f7c1083ec",
+  "nlHash": "ce63fb3a6c2c",
+  "en": "A mountain peak in Spain, 3355 metres high.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Monte Viso",
+  "hash": "7873dd25511c",
+  "nlHash": "fcc62a7832f2",
+  "en": "A mountain peak in Italy, 3841 metres high.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Montelbaanstraat",
+  "hash": "45d3fd014ec0",
+  "nlHash": "0687cf2e8490",
+  "en": "Named after the Montelbaanstoren, built in the sixteenth century. The street was laid out after the slum clearance of the Jonker and Ridder neighbourhood around 1930. Where the name Montelbaan comes from, we are in the dark.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Montferlandstraat",
+  "hash": "3c957f9c8afc",
+  "nlHash": "d1593df27971",
+  "en": "The hilly country near 's-Heerenberg and Zeddam (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Montfoorthof",
+  "hash": "97464246300f",
+  "nlHash": "5d1a9ad4f47e",
+  "en": "The town on the Hollandse IJssel (Utrecht).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Moreelsestraat",
+  "hash": "d31e6c390d46",
+  "nlHash": "0e6fccdcc2dc",
+  "en": "Paulus Moreelse (1571-1638), painter, influenced by Titian, whose works include the civic guardsmen of the Kloveniersdoelen.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Morellenstraat",
+  "hash": "ac6a2bb18001",
+  "nlHash": "2eb1a71bb41a",
+  "en": "The fruit, a kind of cherry (morello).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Morsestraat",
+  "hash": "a899bb15dbba",
+  "nlHash": "c0d84fae9cd4",
+  "en": "The North American Samuel Morse (1791-1872), who devised a system of signs from combinations of dots and dashes (Morse code).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mortelstraat",
+  "hash": "587ab70b442b",
+  "nlHash": "19832801dc75",
+  "en": "A reference to the concrete company Albeton, on the Cruquius site between 1977 and 2014 (metselen = to lay bricks).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mosplein",
+  "hash": "21f830faf1f3",
+  "nlHash": "2c42c36c1379",
+  "en": "The little plants (mosses), spore plants found all over the world.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mosstraat",
+  "hash": "855320f2b8ad",
+  "nlHash": "2c42c36c1379",
+  "en": "The little plants (mosses), spore plants found all over the world.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mosveld",
+  "hash": "25b7b8b78b88",
+  "nlHash": "2c42c36c1379",
+  "en": "The little plants (mosses), spore plants found all over the world.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Motorkade",
+  "hash": "376820304e1b",
+  "nlHash": "55ed35da0128",
+  "en": "A motor is an engine that supplies motive power, driven by electricity, gases or heat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Motorwal",
+  "hash": "5eb4a322a15b",
+  "nlHash": "55ed35da0128",
+  "en": "A motor is an engine that supplies motive power, driven by electricity, gases or heat.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mozartkade",
+  "hash": "3ddb3ead4c97",
+  "nlHash": "ef0f24778580",
+  "en": "Wolfgang Amadeus Mozart (1756-1791), Austrian composer of church music, operas, symphonies, piano concertos, songs and chamber music, the greatest composer of the classical period.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mozes en Aäronstraat",
+  "hash": "31784843fdad",
+  "nlHash": "d11ee6f01d1a",
+  "en": "After the two Old Testament figures Moses, leader of the exodus from Egypt, and Aaron, head of the priesthood. The street runs between the former city hall (secular authority, Moses) and the Nieuwe Kerk (spiritual authority, Aaron).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mr. P.N. Arntzeniusweg",
+  "hash": "2ec34edb2478",
+  "nlHash": "ee330bc57f49",
+  "en": "Pieter N. Arntzenius (1745-1799), lawyer and poet, secretary of the former municipality of Watergraafsmeer.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "ms. Oslofjordweg",
+  "hash": "3f555c8f4b1f",
+  "nlHash": "bcb2fa713baf",
+  "en": "The motor ship Oslofjord, a passenger ship built at the yard of the Nederlandsche Dok en Scheepsbouw Maatschappij (NDSM) for a Norwegian shipping line, for service between Norway and North America. At its launch in 1948 the ship was christened by the Queen of Norway.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "ms. Tarnweg",
+  "hash": "6ec8c79b6e6c",
+  "nlHash": "cb8043169375",
+  "en": "The motor ship (ms) Tarn, built at the yard of the Nederlandsche Dok Maatschappij (later NDSM).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "ms. van Riemsdijkweg",
+  "hash": "97218a968459",
+  "nlHash": "211faa764809",
+  "en": "The motor ship Van Riemsdijk, a cargo and passenger ship built in 1939 at the yard of the Nederlandsche Dok Maatschappij (later NDSM) for the Koninklijke Paketvaart Maatschappij (KPM), for service in Indonesia. When war broke out in May 1940 the ship was not yet finished. Towards the end of the war the occupiers sank it in the Noordzeekanaal; after the war it was raised and completed.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "mt. Lincolnweg",
+  "hash": "985ae8b2fac7",
+  "nlHash": "bbce4d30146d",
+  "en": "The turbine tanker Esso Lincoln was built in 1961 at the yard of the Nederlandsche Dok en Scheepsbouw Maatschappij (NDSM) for Esso. It was the hundredth ship launched there after 1945, on 15 December 1962.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "mt. Ondinaweg",
+  "hash": "3f33bd756d06",
+  "nlHash": "9a52e19f5043",
+  "en": "A motor tanker of 6341 tonnes, built in 1939 at the yard of the Nederlandsche Dok Maatschappij (later NDSM) for the Anglo Saxon Petroleum Co.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Muiderbergbrug",
+  "hash": "53992b622487",
+  "nlHash": "179bf8fb472b",
+  "en": "After the village of Muiderberg.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Muiderlaan",
+  "hash": "1e378408ba92",
+  "nlHash": "91e8c9b84b68",
+  "en": "It runs towards Muiden, like the Muiderstraat and the Plantage Muidergracht.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Muiderstraat",
+  "hash": "d08838dbfc07",
+  "nlHash": "a001bb0b74db",
+  "en": "The street runs towards the town of Muiden (as does the Plantage Muidergracht). Most of the north side of the street was demolished in the Hunger Winter of 1944-45 and the rest in the years after, and the street was then widened to 37 metres.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Muntbergweg",
+  "hash": "76576725aae2",
+  "nlHash": "cbde4bc8977b",
+  "en": "A hill west of Groesbeek (Gelderland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Muntendamstraat",
+  "hash": "cbc876e9ea48",
+  "nlHash": "7a7c5322f74f",
+  "en": "Pieter Muntendam (1901-1986), professor of social medicine at Leiden from 1953. For sixty years he worked intensively on public health in the Netherlands, among other things as director-general and as state secretary. He held progressive views on euthanasia and abortion. Among his many posts was the chairmanship of the State Commission on alternative medicine.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Muntplein",
+  "hash": "79562e97801e",
+  "nlHash": "33afbac070df",
+  "en": "Amsterdammers simply call it the Munt. In the building next to the Munttoren (the remnant of the Regulierspoort) coins were minted (munt) for a time in the seventeenth century, and the name Munt has stuck to it ever since. The official name Muntplein dates from 1917. From 25 January 1877 to 1917 the square was called Sophiaplein, and before 1877 Schapenplein (sheep square).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Muntsluis",
+  "hash": "9850953f6aae",
+  "nlHash": "c0c7a3cf6348",
+  "en": "Amsterdammers simply call it the Munt. In the building next to the Munttoren (the remnant of the Regulierspoort) coins were minted (munt) for a time in the seventeenth century, and the name Munt has stuck to it ever since.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Murdoch Mackenziestraat",
+  "hash": "8522d5f756be",
+  "nlHash": "b89226764d0e",
+  "en": "Scottish cartographer (1712-1797), whose maps include those of the Orkney Islands. The sea atlas of the Orkneys that the VOC issued to its ships after 1753 was a translation of Mackenzie's work.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Murillostraat",
+  "hash": "8e85c829a081",
+  "nlHash": "c463763244a7",
+  "en": "Bartolomé Esteban Murillo (1618-1682), Spanish Baroque painter (Madonnas and saints).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Museumbrug",
+  "hash": "dff60672f401",
+  "nlHash": "00d321febf50",
+  "en": "This fixed bridge is named after the nearby Rijksmuseum, built in 1883 by Pierre Cuypers.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Museumplein",
+  "hash": "6d717c749d52",
+  "nlHash": "c07290fe8553",
+  "en": "After the nearby Rijksmuseum, built in 1883 by Pierre Cuypers. Large exhibitions were held on the Museumplein in 1883, 1887 and 1895, and after that, until about 1940, it was an ice club's ground.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Museumstraat",
+  "hash": "daa67a8b1a05",
+  "nlHash": "c07290fe8553",
+  "en": "After the nearby Rijksmuseum, built in 1883 by Pierre Cuypers. Large exhibitions were held on the Museumplein in 1883, 1887 and 1895, and after that, until about 1940, it was an ice club's ground.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Mussenstraat",
+  "hash": "775f3a68b802",
+  "nlHash": "3b0c3593ab10",
+  "en": "The birds (sparrows), related to the finches.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Muurbloemstraat",
+  "hash": "f11770dd830e",
+  "nlHash": "021ab5867b94",
+  "en": "The plant (wallflower), of the cabbage family.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Muzenplein",
+  "hash": "074235d3ff3c",
+  "nlHash": "bf875f71ddb1",
+  "en": "In Greek mythology the Muses (daughters of Zeus) are the goddesses of the arts and sciences.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "N. Lansdorpstraat",
+  "hash": "c387f353e278",
+  "nlHash": "eceab43f8983",
+  "en": "Nicolaas Lansdorp (1885-1968), architect, who designed the church on the Mosstraat. In Amsterdam he built 2000 homes and 160 schools, such as the Vossius Gymnasium.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Na Druk Gelukbrug",
+  "hash": "c23ef3c6a9ef",
+  "nlHash": "ff4a426f7365",
+  "en": "Named after Dirk Beukeboom's farm at what was then Oude Amstelveenseweg 255, which had to make way for the Olympic Stadium and the Olympic neighbourhood.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Naaldwijkstraat",
+  "hash": "757bf23e3de4",
+  "nlHash": "d1a14b7eae2a",
+  "en": "The name of a village in the Westland (Zuid-Holland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Naardermeerstraat",
+  "hash": "8f4b60dad16b",
+  "nlHash": "40f53b32597c",
+  "en": "The nature reserve west of Naarden. In 1905 a plan by the municipality of Amsterdam to buy the area as a rubbish dump was rejected by the city council. This led to the founding of the Society for the Preservation of Nature Monuments in the Netherlands (Natuurmonumenten), which bought the Naardermeer in 1906.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Nachtegaalstraat",
   "hash": "32ebdf45f9b8",
   "nlHash": "97b7fda9ccb8",
@@ -20916,10 +21966,87 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Nachtwachtlaan",
+  "hash": "23d05839cb31",
+  "nlHash": "1acf3bcdbc9d",
+  "en": "Rembrandt's famous painting of the militia company of Captain Frans Banninck Cocq (1642). The painting got the name Nachtwacht (Night Watch) by mistake, because its paint had darkened.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nadezjda Mandelstamstraat",
+  "hash": "89def0ce1ae8",
+  "nlHash": "59d4942f3b19",
+  "en": "Wife of the dissident Russian writer Osip Mandelstam. Nadezhda Mandelstam (1899-1980) risked her own life to get her husband's poetry published; he died in 1938 while interned.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nadia en Lili Boulangerplantsoen",
+  "hash": "c38468007d09",
+  "nlHash": "82dcd031818c",
+  "en": "Nadia (Paris, 16 September 1887 - Paris, 22 October 1979) and Lili (Paris, 1893 - Mézy-sur-Seine, 1918) Boulanger were sisters and both composers. They meant a great deal to classical music in the early twentieth century, known above all in their native France but eventually abroad too. Nadia Boulanger's musical work is closely linked with the American Conservatory at Fontainebleau, which she directed from 1949 until the end of her life, training more than 600 pupils. Lili Boulanger was the first woman to win the Prix de Rome. After that she was constantly ill, and died aged only 24.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nadirstraat",
+  "hash": "6176bb42b577",
+  "nlHash": "97f1f6ea3209",
+  "en": "A term in astronomy: the imaginary point on the celestial sphere directly beneath the observer (the opposite of the zenith).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nadorststeeg",
+  "hash": "0015f10a37b2",
+  "nlHash": "d6645064e8ac",
+  "en": "Old registers show that in 1557 an inn with the sign 'Nadorst' (after-thirst) stood on the corner of the Nes and this alley.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nageljongenstraat",
+  "hash": "5cc48f3396b6",
+  "nlHash": "8963a518c786",
+  "en": "A trade name: a young worker who heats the rivets red-hot and hands them to the riveter. The street name refers to the shipbuilding that Amsterdam-Noord has lost.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Namenhof",
+  "hash": "9ea63ccd3827",
+  "nlHash": "c11e05c16b0c",
+  "en": "A Belgian town (Namur), in the province of Namur.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nannie van Wehlstraat",
+  "hash": "5d4018490458",
+  "nlHash": "85fc46ec1a15",
+  "en": "Pseudonym of Susanne J.A. Reys (1880-1944), writer of books for young people, who wrote not only girls' books but also essays on educational and feminist questions.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nannoplein",
+  "hash": "04db204812e4",
+  "nlHash": "33516de2a32b",
+  "en": "The name of an idyll by the writer Carel Vosmaer (1882).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Naritaweg",
   "hash": "a7dcb7f3f1c8",
   "nlHash": "1bdabcf4d36e",
   "en": "The name of one of Tokyo's airports.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Narva-eiland",
+  "hash": "5811f7f48ee4",
+  "nlHash": "419d03ac288e",
+  "en": "A town in Estonia on the Russian border, which mattered to Amsterdam as a historical timber-exporting port.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Narwalstraat",
+  "hash": "f0fdea534e40",
+  "nlHash": "3e8448122f70",
+  "en": "A cetacean (the narwhal), grey with brown spots on its back, with only a few teeth in its upper jaw, no more than five metres long. It lives in the Arctic.",
   "source": "claude-code-opus-5.5"
  },
  {
@@ -20937,11 +22064,291 @@
   "source": "claude-code-opus-5.5"
  },
  {
+  "name": "Nathan F. Israëlweg",
+  "hash": "bcf676b4dac5",
+  "nlHash": "57638b8b13bd",
+  "en": "Nathan Frederik Israël (1904-1944), resistance fighter, who was involved in preparing the February Strike of 1941, took part in the armed resistance and produced the clandestine paper 'De Waarheid' in Amsterdam-Noord. He was killed in a gunfight on 15 August 1944.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Navigatiepad",
+  "hash": "c5eab47fbe01",
+  "nlHash": "24642881b4fd",
+  "en": "Finding position at sea. The streets around here relate to shipping and navigation.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "NDSM-kade",
+  "hash": "6e59a205c6ae",
+  "nlHash": "52ee801ab452",
+  "en": "The Nederlandsche Dok en Scheepsbouw Maatschappij, formed in 1946 by merging the Nederlandsche Scheepsbouw Maatschappij (NSM) and the Nederlandsche Dok Maatschappij (NDM). It lay along the north bank of the IJ and built cargo ships, among others, and carried out repairs and conversions. The newbuilding yard closed in 1979; the repair side (a second NSM) went bankrupt in 1984.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "NDSM-pier",
+  "hash": "c90e36146a35",
+  "nlHash": "d6b08a813fbe",
+  "en": "The Nederlandsche Dok en Scheepsbouw Maatschappij, formed in 1946 by merging the Nederlandsche Scheepsbouw Maatschappij (NSM) and the Nederlandsche Dok Maatschappij (NDM). It lay along the north bank of the IJ and built cargo ships, among others, and carried out repairs and conversions. The newbuilding yard closed in 1979.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "NDSM-plein",
+  "hash": "d350b880091b",
+  "nlHash": "d6b08a813fbe",
+  "en": "The Nederlandsche Dok en Scheepsbouw Maatschappij, formed in 1946 by merging the Nederlandsche Scheepsbouw Maatschappij (NSM) and the Nederlandsche Dok Maatschappij (NDM). It lay along the north bank of the IJ and built cargo ships, among others, and carried out repairs and conversions. The newbuilding yard closed in 1979.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "NDSM-straat",
+  "hash": "be9cacafc1fc",
+  "nlHash": "d6b08a813fbe",
+  "en": "The Nederlandsche Dok en Scheepsbouw Maatschappij, formed in 1946 by merging the Nederlandsche Scheepsbouw Maatschappij (NSM) and the Nederlandsche Dok Maatschappij (NDM). It lay along the north bank of the IJ and built cargo ships, among others, and carried out repairs and conversions. The newbuilding yard closed in 1979.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nederhoven",
+  "hash": "a3065eee95d6",
+  "nlHash": "c755fb2b8966",
+  "en": "A small moated castle in Beegden (Limburg), with the date 1614 in its wall anchors.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nedersticht",
+  "hash": "12601f216312",
+  "nlHash": "e467ff5d48ab",
+  "en": "The old name for today's province of Utrecht, as opposed to the Oversticht, which comprised today's provinces of Overijssel and Drenthe together with Oost- and Weststellingwerf and the city of Groningen.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Neerkanne",
+  "hash": "295274288942",
+  "nlHash": "a8e2d85904f7",
+  "en": "Originally a medieval castle at Canne near Maastricht, repeatedly destroyed. Its present form dates from 1700, restored in 1955. It is also called Agimont castle.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Neerlandiaplein",
+  "hash": "783c8c340898",
+  "nlHash": "3a71dbdd889f",
+  "en": "The name of the building put up in 1888 by the Diaconate of the Reformed congregation as a home for elderly married couples, part of the Amstelhof complex for elderly people in need of care. Today it is part of the Hermitage.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nellesteinpad",
+  "hash": "23135bdc75f3",
+  "nlHash": "d3d748830d78",
+  "en": "The name of a house near Maarn (Utrecht). Since 1976 the name Nellestein has been used for a residential area by the Gaasperplas metro station.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nellie Bodenheimstraat",
+  "hash": "8c31e3c736a4",
+  "nlHash": "818511ae34b0",
+  "en": "Writer of books for young people (1874-1951), known above all for her illustrations for children's books.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nelson Mandelapark",
+  "hash": "8764d665a8bb",
+  "nlHash": "d8f49f8b7210",
+  "en": "Nelson Rolihlahla 'Madiba' Mandela (1918-2013), South African anti-apartheid fighter and politician, regarded in his own country as the Father of the Nation. As leader of the ANC's military wing he was sentenced to life imprisonment in 1964, but was freed in 1990. In 1993 he received the Nobel Peace Prize with President F.W. de Klerk for their efforts to end the apartheid regime. In the first free elections of 1994 he was elected president, an office he held for five years.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Neptunushaven",
+  "hash": "89e5131f90e3",
+  "nlHash": "5cdaf5f779e4",
+  "en": "In Roman mythology, the god of the sea (Neptune).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Neptunusplein",
+  "hash": "1d93ce10fdfa",
+  "nlHash": "1a61b0854b4f",
+  "en": "A planet of our solar system (Neptune).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Neptunusstraat",
+  "hash": "c127e0b326ed",
+  "nlHash": "1a61b0854b4f",
+  "en": "A planet of our solar system (Neptune).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nepveustraat",
+  "hash": "5c314b3bb78f",
+  "nlHash": "533fb2f403e2",
+  "en": "Jan Nepveu (1719-1779), governor of Suriname.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nes",
+  "hash": "5f3f4eca632f",
+  "nlHash": "29f419f1691b",
+  "en": "The place name nes means a low-lying spit of land along water. The name Nes, originally Nesse, shows that the land here was once marshy. Until the seventeenth century the northern part was still called Gansoord. The word oord means much the same as nes, but occurs mainly along the larger rivers.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nesciobrug",
+  "hash": "2d609e55082d",
+  "nlHash": "934708536aa4",
+  "en": "Nescio was the pseudonym of the Amsterdam writer J.H.F. Grönloh, known for novellas such as De Uitvreter (the sponger) and Titaantjes (little titans). He liked to walk around the nearby Diemerzeedijk and the Buiten-IJ.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nesserhoek",
+  "hash": "fe8d7e0fbf4a",
+  "nlHash": "84d6ee72b99a",
+  "en": "Named after the right-angled bend in the Waterland sea dike, now the Buiksloterdijk, that stood out into the IJ, exposed to westerly winds and waves.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nesserland",
+  "hash": "6b630ac971e4",
+  "nlHash": "443cc70867bf",
+  "en": "Named after the spit of land, the Nes, that jutted out into the IJ from the Buiksloot sea dike.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nesserton",
+  "hash": "fa81e6ed9d34",
+  "nlHash": "262dd327959a",
+  "en": "Named after the end of the Nes, a spit of land in the IJ on the north-west side of the Buiksloterham, marked by a barrel (ton) on a pole. It disappeared when the Noordzeekanaal was built.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
   "name": "Netwerkweg",
   "hash": "cb5dbb2be543",
   "nlHash": "9789e5889a9f",
   "en": "Street name in the Information Technology category.",
   "source": "anthropic/claude-opus-5.5"
+ },
+ {
+  "name": "Newtonstraat",
+  "hash": "e3f7544d69b2",
+  "nlHash": "4f5564254572",
+  "en": "Isaac Newton (1642-1727), English mathematician and physicist, who discovered important laws of gravitation.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Niasstraat",
+  "hash": "45883dd01616",
+  "nlHash": "cea344954d79",
+  "en": "An island group off the west coast of Sumatra (Indonesia).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nibbixwoudstraat",
+  "hash": "e7ca92857948",
+  "nlHash": "4f3d8e55e5d5",
+  "en": "A village between Hoorn and Medemblik (Noord-Holland).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nic. de Roeverstraat",
+  "hash": "1f0363f08edf",
+  "nlHash": "53b7e138068d",
+  "en": "Nicolaas de Roever (1850-1893), Amsterdam city archivist and historian, author of 'In de oude Amstelstad' (in the old city on the Amstel).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nickeriestraat",
+  "hash": "24a20ba4c678",
+  "nlHash": "e1941e22cb81",
+  "en": "A river in Suriname.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nico Broekhuysenweg",
+  "hash": "4adaf689e654",
+  "nlHash": "68838e31a042",
+  "en": "Nicolaas Broekhuysen (1876-1958), initiator and pioneer of korfball in the Netherlands.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nico Jessekade",
+  "hash": "8021d3790911",
+  "nlHash": "564b7c518f3d",
+  "en": "Photographer (1911-1976), who began as a doctor with his own general practice. Known for his loose way of photographing, marked by blur and the use of flash. His most famous book is 'Vrouwen van Parijs' (women of Paris), published in several countries.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nico Snijdersstraat",
+  "hash": "983ff7641e75",
+  "nlHash": "a93884ee383f",
+  "en": "Resistance fighter (1918-1943), born in Amsterdam, executed by firing squad on the Leusderheide.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nico van Suchtelenhof",
+  "hash": "37f807fc8ce5",
+  "nlHash": "f7eb48fb484b",
+  "en": "Man of letters (1878-1949), who wrote poetry at first and later novels, and was for many years director of the Wereldbibliotheek publishing house in Amsterdam.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nicolaas Anslijnstraat",
+  "hash": "7af34f8d96c4",
+  "nlHash": "f3e39a9015f6",
+  "en": "Nicolaas Anslijn, education reformer (1778-1838), writer of school readers, including 'De Brave Hendrik' (good Henry). Born in Leiden, died in Alkmaar.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nicolaas Beetsplantsoen",
+  "hash": "ff2ab8528671",
+  "nlHash": "8ec3b0d2fbee",
+  "en": "Man of letters and writer (1814-1903), who as a student wrote the celebrated 'Camera Obscura' under the pseudonym Hildebrand.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nicolaas Beetsstraat",
+  "hash": "a15d715eae0f",
+  "nlHash": "8ec3b0d2fbee",
+  "en": "Man of letters and writer (1814-1903), who as a student wrote the celebrated 'Camera Obscura' under the pseudonym Hildebrand.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nicolaas Berchemstraat",
+  "hash": "33f584b7c569",
+  "nlHash": "dea170a7adc7",
+  "en": "Painter (1620-1683), mainly of landscapes.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nicolaas Hennemanhof",
+  "hash": "ef3897a7bcc5",
+  "nlHash": "ec42ac606213",
+  "en": "Photographer (1813-1898), who settled in London around 1847, was for years assistant to the famous English photographer William Henry Fox Talbot, and was appointed court photographer to Queen Victoria.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nicolaas Japiksestraat",
+  "hash": "51730c3f12d4",
+  "nlHash": "73d6474a1beb",
+  "en": "Historian (1872-1944), director of the Queen's Royal House Archive, who wrote historical studies including 'Geschiedenis van het Huis van Oranje-Nassau' (history of the House of Orange-Nassau).",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nicolaas Maesstraat",
+  "hash": "916b768b0fec",
+  "nlHash": "8b2c41953e05",
+  "en": "Painter (1634-1693) of history pieces and portraits, a pupil of Rembrandt.",
+  "source": "claude-code-opus-5.5+corrected"
+ },
+ {
+  "name": "Nicolaas Ruychaverstraat",
+  "hash": "c4e8717fb4fc",
+  "nlHash": "11520f69aeac",
+  "en": "A Beggar captain at the capture of Den Briel and the siege of Alkmaar. He was killed in 1577 in a failed raid on Amsterdam meant to bring the city over to the Prince's side.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Nicolaas Tetterodestraat",
+  "hash": "97b66e05c07b",
+  "nlHash": "3ff0c5b509ff",
+  "en": "Amsterdam industrialist (1816-1894), founder of the 'Amsterdam' type foundry.",
+  "source": "claude-code-opus-5.5"
  },
  {
   "name": "Nieuwe Achtergracht",
@@ -21368,6 +22775,13 @@
   "hash": "7728a52e0a84",
   "nlHash": "6f64bf03f030",
   "en": "After its position relative to the Watergraafsmeer. Before the municipality of Watergraafsmeer was annexed, the Ooster Ringdijk was called Noorder- and Zuider-Ringdijk. The Eerste Ringdijkstraat was then called Schoollaan, and earlier still the name Dielemanstraat seems to have been used. A Tweede Ringdijkstraat (formerly Dijklaan) has since disappeared entirely through demolition.",
+  "source": "claude-code-opus-5.5"
+ },
+ {
+  "name": "Robert Doumastraat",
+  "hash": "4f1e7aa28032",
+  "nlHash": "a93884ee383f",
+  "en": "Resistance fighter (1918-1943), born in Amsterdam, executed by firing squad on the Leusderheide.",
   "source": "claude-code-opus-5.5"
  },
  {

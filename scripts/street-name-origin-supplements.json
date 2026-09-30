@@ -84,6 +84,16 @@
     "reason": "The register's text for the Kinkerstraat is only the tail of the Kinkerbrug record ('Hij vertaalde werk van Shakespeare en Schiller...'), so on its own it never names Kinker."
   },
   {
+    "name": "Na Druk Gelukbrug",
+    "kind": "bridge",
+    "en": "Named after the farm Na Druk Geluk ('after hardship, good fortune'), which belonged to Dirk Beukeboom and stood on the Amstelveenseweg until the early twentieth century, roughly where the block between the Stadionplein, Stadionkade, Jasonstraat and Argonautenstraat is now. It had to make way for the Olympic Stadium and the Olympic neighbourhood. The bridge, between the Olympic Stadium and the IJsbaanpad and designed by René van Zuuk, was named by local residents in a competition.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Olympisch_Kwartier",
+      "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950397/"
+    ],
+    "reason": "The register's text repeats its own opening words and stops mid-sentence ('De naam van deze boerderij refereert'), before explaining the name."
+  },
+  {
     "name": "Piet Kranenbergpad",
     "kind": "street",
     "en": "Named after Piet Kranenberg, one of the people who saved the Olympic Stadium beside this path. In 1996, with Bram Mulder and the stadium director Otto Roffel, he set up the rescue and operating plan that led to its renovation, begun in 1998.",
