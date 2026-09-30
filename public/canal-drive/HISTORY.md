@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: read by theme (trades, cloth, animals)
+
+Errors cluster in themed street groups, so whole groups were read at once:
+- **Trades** (Noord shipyards, Bickerseiland). A breeuwer is a caulker. The
+  Breeuwersstraat text had said brewers sealed the ships' seams. Cable
+  splicing had become "welding", and the rivet boy "indicated the rivet for
+  sounding" instead of handing it to the riveter.
+- **Cloth.** Laken is woollen cloth, but every Raam/Verver/Staal text said
+  linen. The lakenververs (cloth dyers) had become "linen merchants", and
+  the drying frames "windows".
+- **Animals.**
+  - A gierzwaluw is a swift, not a swallow. A goudvink is a bullfinch, not a
+    goldfinch (the putter or distelvink is the goldfinch). A tuimelaar is a
+    bottlenose dolphin, not a spinner.
+  - Lepelaars are spoonbills, not storks, and an eidereend is an eider, not
+    a mallard. The strandpluvier is the Kentish plover, the zilverplevier
+    the grey plover, and a mees (tit) is not a sparrow.
+  - Brem and klaver are in the pea family (vlinderbloemfamilie), not "heather
+    of the daisy family".
+- **Geography.** Spitsbergen is in the Arctic Ocean, not "the North Sea".
+  Schorren are silted-up land, not "eroded". "Enige kreken" are some creeks,
+  not "the only ponds".
+- **Source error.** The register's Beloega text describes the beluga
+  sturgeon (Caspian Sea, 1,400 kg, a century old) under the white whale's
+  name. The street is among the whale streets, so the card now describes the
+  beluga whale.
+
+`street-name-stems.json` was checked for the same species slips and is
+correct.
+
 ## 2026-09-30 — Street-name translations: rare-word scan finds opposites
 
 A new pass lists English words that occur in only one origin and reads the

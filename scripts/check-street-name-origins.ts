@@ -228,4 +228,11 @@ assert.equal(repairOriginTranslation('Middeleeuws lied over een vrouwenmoordenaa
   'Medieval song about a female murderer who is herself murdered by a princess.'),
   'Medieval song about a murderer of women who is himself killed by a princess.');
 
+assert.equal(repairOriginTranslation('Een breeuwer dichtte de naden. De lakenindustrie.', 'A brewer sealed the seams. The linen industry.'),
+  'A caulker (breeuwer) sealed the seams. The cloth (laken) industry.');
+
+assert.equal(repairOriginTranslation('De goudvink (Pyrrhula pyrrhula).', 'The goldfinch (Pyrrhula pyrrhula). Goldfinches can be found here.'),
+  'The bullfinch (Pyrrhula pyrrhula). Bullfinches can be found here.', 'a goudvink is a bullfinch');
+assert.equal(repairOriginTranslation('De gierzwaluw (Apus apus).', 'The swallow (Apus apus). Swallows fly.'), 'The swift (Apus apus). Swifts fly.');
+
 process.stdout.write('Street-name origin checks passed\n');
