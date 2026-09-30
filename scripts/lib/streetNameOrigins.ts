@@ -700,6 +700,14 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/Spaansgezinde burgemeesters buiten de stadsmuur werden gezet/i, /\bthe Spanish-minded mayors were removed outside the city walls\b/g, 'the pro-Spanish burgomasters were put outside the city walls'],
   [/zijn geneeskundige praktijk bleef uitoefenen/i, /\bhe continued to practice his medical practice\b/g, 'he kept up his medical practice'],
   [/geen ingang gevonden bij de burgerij/i, /\bdid not find favor with the bourgeoisie\b/g, 'never caught on with the townspeople'],
+  // Bridges: a vaste brug is fixed, as against movable, not "permanent".
+  [/vaste brug/i, /\bpermanent bridge\b/g, 'fixed bridge'],
+  [/./, /\bafternamed after\b/g, 'named after'],
+  [/Zilveren Penning/, /\bSilver Pen\b/g, 'Silver Medal (Zilveren Penning)'],
+  [/^Sint Nicolaas van Myra/, /^Sint Nicholas\b/, 'Saint Nicholas'],
+  [/koek-en-zopietenten/i, /\btwo pie and soup stalls\b/g, 'two koek-en-zopie stalls, selling hot drinks and cake on the ice,'],
+  [/Bestuurslid van het Genootschap/i, /\bMember of the Genootschap\b/g, 'Board member of the Genootschap'],
+  [/ceintuurweg of gordel/i, /\ba beltway or belt was laid\b/g, 'a ring road (ceintuurweg or gordel) was laid'],
   // "Naar de …" opens an origin: named after it, not "To the …". Runs after
   // the rules above that match a whole "To the …" opening.
   [/^Naar /, /^To (?=the |an? |[A-Z'])/, 'Named after '],

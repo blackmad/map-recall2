@@ -45,6 +45,10 @@ A fresh random sample of 30 origins had 14 slips. Fixing them touched
   - The Quakers gathered outside the walls because they had been expelled,
     not "so that they could gather".
   - The Kalverstraat calf-market sentence is rebuilt.
+- **Bridge origins, 16 read.** A vaste brug is a fixed bridge, as against a
+  movable one; 15 cards called it "permanent". The Zilveren Penning is a
+  silver medal, not a "Silver Pen". The koek-en-zopie stalls on the ice
+  (hot drinks and cake) had become "pie and soup stalls".
 - **Withheld: Piet Kranenbergpad.** The register gives it Piet Keizer's
   Ajax biography word for word, so the card would teach one footballer's
   record as another's. `WITHHELD_ORIGINS` names it with the reason, and
