@@ -654,6 +654,14 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/door de Duitsers gefusilleerd/i, /\bShot dead by the Germans\b/g, 'Executed by the Germans'],
   [/van het eerste uur/i, /\bfrom the first hour\b/g, 'from the very beginning'],
   [/uit vier delen bestaande staatkundige geschriften/i, /\bWrote his political writings consisting of four parts\b/g, 'Wrote political writings in four volumes'],
+  [/vernoemd in [A-Z]/, /\bwas named in (?=[A-Z])/g, 'was renamed '],
+  [/een inlaagdijk is een dijk die is teruggelegd/i, /^A fill embankment is an? embankment that has been built up because the original embankment is threatened by erosion from the waves and must be abandoned as the main water barrier\./,
+    'An inlaagdijk is a dike built further inland, behind the original dike, when the waves threaten to undermine that one and it must be given up as the main sea defence.'],
+  [/loodrecht onder de waarnemer/i, /\blocated perpendicular to the observer\b/g, 'directly below the observer'],
+  [/Grondbeginzels der Stuurmanskunst/, /'Fundamental principles of seamanship'/g, "'Grondbeginzels der Stuurmanskunst' (principles of navigation)"],
+  [/natuur- en letterkundige/i, /\bnaturalist and literary scholar\b/g, 'physicist and literary scholar'],
+  [/overleden als gevolg van gevangenschap te Davos/i, /\bdied as a result of imprisonment in Davos\b/g, 'died in Davos from the effects of his imprisonment'],
+  [/behoudende Bossche stijl/i, /\ba conservative Bossche style\b/g, 'the traditionalist Bossche School style'],
   // "Naar de …" opens an origin: named after it, not "To the …". Runs after
   // the rules above that match a whole "To the …" opening.
   [/^Naar /, /^To (?=the |an? |[A-Z'])/, 'Named after '],

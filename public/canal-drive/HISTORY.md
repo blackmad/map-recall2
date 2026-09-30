@@ -19,6 +19,15 @@ A fresh random sample of 30 origins had 14 slips. Fixing them touched
     the Suez Canal".
   - A werelddeel is a continent, and kernen are villages.
   - The Nieuwe Amstelbrug sentence is rebuilt.
+- **A second sample of 30** had fewer slips, since the earlier rules
+  already caught several:
+  - An inlaagdijk is a dike set back behind the old one, not "a fill
+    embankment".
+  - "Vernoemd in Zwaansvliet" means renamed Zwaansvliet, not "named in"
+    it.
+  - The nadir is directly below the observer, not "perpendicular to" them.
+  - Stuurmanskunst is navigation.
+  - Burgersdijk's natuurkundige is a physicist, not a "naturalist".
 
 ## 2026-09-30 — Review rides end on a due cul-de-sac, as "the mystery street"
 
