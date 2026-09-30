@@ -328,7 +328,10 @@
     },
     "extract_landmarks_186262375": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05. Model-flagged 2026-09-30, struck: groep 7 pupils are 10-11 (not US seventh grade) and the quote gives no 10 May ceremony.",
+      "drop": [
+        "Seventh-grade students from Basisschool De Startbaan maintain the site and attend its annual May 10 ceremony."
+      ]
     },
     "extract_landmarks_1872400083": {
       "verdict": "approved",

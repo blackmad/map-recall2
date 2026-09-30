@@ -42,10 +42,17 @@ Wikipedia evidence.
 Model audit, 2026-09-30: every number in all 4,052 published facts was
 checked against its own source quote. Only 8 facts had a number the quote
 lacks, and 7 are derived (14 December plus two days) or context (house
-numbers). One needs a human strike, since publishing is review-gated:
-- Den Haag, Oorlogsmonument 'Grenadiers en Jagers': "Seventh-grade students
-  … attend its annual May 10 ceremony". Groep 7 pupils are 10–11, not US
-  seventh-graders, and the quote never says 10 May.
+numbers). A proper-noun pass (names in a fact that are absent from its
+quote) found one inverted fact. Two sentences are struck in the review files
+with a "Model-flagged 2026-09-30" note; delete the `drop` entry to undo
+either:
+- Python Bridge: "Unlike the nearby Lage Brug, this structure lacks high
+  elevation". The quote says that of the Lage Brug.
+- Den Haag, 'Grenadiers en Jagers': "Seventh-grade students … May 10
+  ceremony". Groep 7 is ages 10–11, and the quote has no 10 May.
+The proper-noun pass also left 69 facts naming someone the quote does not
+name, mostly first names filled in from the article ("Dirk" Sterenberg). A
+human could skim that list (rerun the check sketched in HISTORY).
 
 **6. Due-aware “where next” routing.**
 The thin slice shipped 2026-09-29 (see HISTORY). With Plan review on, a ride

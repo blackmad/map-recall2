@@ -6,6 +6,7 @@
 // cannot quietly re-admit it.
 
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 import {
   countSentences,
@@ -660,6 +661,18 @@ check('lab helpers build a version-matched review download', () => {
   assert.deepEqual(countReviewLabels(review), { approved: 1, rejected: 1, labelled: 2 });
   assert.equal(reviewDownloadName('amsterdam'), 'facts-review.json');
   assert.equal(reviewDownloadName('utrecht'), 'facts-review-utrecht.json');
+});
+
+// Published sentences found false by reading them against their own quotes
+// (2026-09-30). The strikes live in the review files; this keeps a republish
+// from bringing them back.
+check('published: sentences found false stay struck', () => {
+  const published = (city: string) => JSON.parse(readFileSync(`public/data/extracts/${city}/facts.json`, 'utf8')) as { features: FeatureFacts[] };
+  const texts = (city: string) => published(city).features.flatMap((feature) => feature.facts.map((fact) => fact.text));
+  // The quote is about the Lage Brug; the Python Bridge is the Hoge brug.
+  assert.ok(!texts('amsterdam').some((text) => /Lage Brug, this structure lacks high elevation/.test(text)));
+  // Groep 7 is not US seventh grade, and the quote gives no 10 May.
+  assert.ok(!texts('den-haag').some((text) => /Seventh-grade students from Basisschool De Startbaan/.test(text)));
 });
 
 console.log(`Facts OK: ${checks.length} checks.`);
