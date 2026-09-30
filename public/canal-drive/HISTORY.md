@@ -58,6 +58,15 @@ A fresh random sample of 30 origins had 14 slips. Fixing them touched
   - "Op last van prins Maurits" means on Maurice's orders, not "at his
     request".
   - Amsterdammers say "het Singel", which is the point of that sentence.
+- **Another 30 read:**
+  - Ptolemy's theorem is about a cyclic quadrilateral (koordenvierhoek), not
+    "a quadrilateral with coordinates".
+  - 's-Graveland was dug out for sand (afzanding), not "a peninsula".
+  - An uitspanning is a roadside inn. It had been an "amusement park" or an
+    "entertainment venue" in 7 cards.
+  - The Entrepotdok was a bonded warehouse, not a "transhipment point".
+  - Van Tussenbroek took a doctorate (promoveerde), not a degree, and was
+    an obstetrician, not a midwife.
 - **Withheld: Piet Kranenbergpad.** The register gives it Piet Keizer's
   Ajax biography word for word, so the card would teach one footballer's
   record as another's. `WITHHELD_ORIGINS` names it with the reason, and
