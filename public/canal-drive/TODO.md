@@ -55,6 +55,11 @@ either:
   the generic naval-harbour article, so its remaining sentences describe
   naval harbours in general, not Amsterdam's. It needs a human decision
   (reject the feature?).
+- Same pattern, true of the concept but shown as if about one place:
+  Schutsluis (en "Lock (water navigation)": Ptolemy's Nile locks),
+  Afwateringstocht (nl "Hoofdwatergang") and Rotterdam's Spoorweghaven (nl
+  "Spoorhaven"). Their openings define a class ("A rail port is…").
+  Consider rejecting these, and have the generator refuse concept articles.
 The Amsterdam name list has been read through; Utrecht, Rotterdam and Den
 Haag were skimmed. What remains is mostly first names filled in from the
 article ("Dirk" Sterenberg). A human could skim that list (`npx tsx scripts/audit-fact-quotes.ts -- --names`).
