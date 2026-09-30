@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Luyendijkje, plus a register-wide scan for
+from 's-Gravelandse Veer to Maurits Kannstraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -106,6 +106,12 @@ the municipality's sources.
 | Lodewijk Boisotstraat | [0363300000004194](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004194/) | relieved Leiden "in 1572" | the Relief of Leiden was in 1574 | Corrected |
 | Lord Kelvinstraat | [0363300000004208](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004208/) | "Engels natuurkundige … ontdekte het element argon" | British (born in Belfast, professor at Glasgow); argon was isolated by Rayleigh and Ramsay in 1894 | Corrected |
 | Louvrelaan | [0363300000001309](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001309/) | the collection began with "de kunstschatten van Lodewijk XV" | the royal collection goes back to Francis I and Louis XIV | Corrected |
+| Majubastraat | [0363300000004246](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004246/) | "op de grens van Transvaal en Oranje Vrijstaat" | Majuba Hill is in Natal, on the Transvaal border | Corrected |
+| Makassarplein | [0363300000001211](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001211/) | "Heet thans Ujung Pandang" | the city was called Ujung Pandang only from 1971 to 1999 and is Makassar again | Corrected |
+| Marathonweg | [0363300000004255](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004255/) | "Diomedon bracht dit bericht in snelle loop naar Athene" | tradition names the runner Pheidippides | Corrected |
+| Marconistraat | [0363300000004258](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004258/) | Guilielmo Marconi | Guglielmo | Corrected |
+| Maritzstraat | [0363300000004267](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004267/) | "Versloeg in 1937 de Matabellen" | 1837 (Maritz died in 1839) | Corrected |
+| Mata Harihof | [0363300000002449](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002449/) | "Vanwege haar spionageactiviteiten gericht tegen de Duitsers" | she was convicted by the French of spying for Germany | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
