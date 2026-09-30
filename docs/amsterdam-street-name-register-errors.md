@@ -13,7 +13,8 @@ How the game handles each: **withheld** means no origin card at all
 (`WITHHELD_ORIGINS` in `scripts/lib/streetNameOrigins.ts`, checked by
 `scripts/check-street-name-origins.ts`); **repaired** means the English is
 translated from the corrected text; **kept** means the English follows the
-register, error included.
+register, error included; **corrected** means the English fixes a clear
+factual error.
 
 ## 1. Text filed under the wrong name
 
@@ -61,23 +62,25 @@ In the game, cut and fragment texts are translated without the broken edge.
 
 ## 4. Factual errors in the text
 
-These are kept in the English, because the game translates and does not
-correct. Each is worth checking with the municipality.
+Clear errors are corrected in the game's English (the cache entry's
+`source` ends in `+corrected`); doubtful ones are kept as the register has
+them. The "likely correct" column is general knowledge, not checked against
+the municipality's sources.
 
-| Name | BAG id | Register says | Likely correct |
-|---|---|---|---|
-| Caroline Herschelbrug | [0363300012500688](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300012500688/) | telescopes "van de 17e eeuw" | eighteenth century (she lived 1750–1848) |
-| Dachstein | [0363300000001425](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001425/) | 1995 metres | 2995 m |
-| Gran Paradiso | [0363300000005922](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005922/) | "Hoogste berg van Italië" | highest entirely within Italy; Mont Blanc is higher |
-| George Gershwinlaan | [0363300000000940](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000000940/) | 1898–1990 | 1898–1937 |
-| Hegelhof | [0363300000003357](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003357/) | 1841–1926 | 1770–1831 |
-| G.T. Ketjenweg | [0363300000001067](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001067/) | works founded "in 1935", yet production centralised "vanaf 1916" | 1835 |
-| Groene Ridderhof | [0363300011951434](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951434/) | began the inn around 1631, sold it "rond 1538" | a later year (1638?) |
-| Ferrarisstraat | [0363300000002871](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002871/) | "Giorgi Ferraris" | Galileo Ferraris |
-| Dulongstraat | [0363300000002785](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002785/) | "atoomtemperatuur" | atoomwarmte (atomic heat) (translated as "atomic heat") |
-| Geerdinkhof | [0363300000005608](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005608/) | Tubbergen "(Gelderland)" | Overijssel |
-| De Tourton Bruynsstraat | [0363300000003230](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003230/) | "vernietigingskamp Buchenwald" | Buchenwald was a concentration camp, not an extermination camp |
-| Guggenheimlaan | [0363300000001311](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001311/) | built in 1956 | opened 1959 (construction 1956–59) |
+| Name | BAG id | Register says | Likely correct | In the game |
+|---|---|---|---|---|
+| Caroline Herschelbrug | [0363300012500688](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300012500688/) | telescopes "van de 17e eeuw" | eighteenth century (she lived 1750–1848) | Corrected |
+| Dachstein | [0363300000001425](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001425/) | 1995 metres | 2995 m | Corrected |
+| Gran Paradiso | [0363300000005922](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005922/) | "Hoogste berg van Italië" | highest entirely within Italy; Mont Blanc is higher | Corrected ("highest entirely within Italy") |
+| George Gershwinlaan | [0363300000000940](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000000940/) | 1898–1990 | 1898–1937 | Corrected |
+| Hegelhof | [0363300000003357](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003357/) | 1841–1926 | 1770–1831 | Corrected |
+| G.T. Ketjenweg | [0363300000001067](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001067/) | works founded "in 1935", yet production centralised "vanaf 1916" | 1835 | Corrected |
+| Groene Ridderhof | [0363300011951434](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951434/) | began the inn around 1631, sold it "rond 1538" | a later year (1638?) | Kept (right year unknown) |
+| Ferrarisstraat | [0363300000002871](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002871/) | "Giorgi Ferraris" | Galileo Ferraris | Corrected |
+| Dulongstraat | [0363300000002785](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002785/) | "atoomtemperatuur" | atoomwarmte (atomic heat) | Corrected |
+| Geerdinkhof | [0363300000005608](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005608/) | Tubbergen "(Gelderland)" | Overijssel | Corrected |
+| De Tourton Bruynsstraat | [0363300000003230](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003230/) | "vernietigingskamp Buchenwald" | Buchenwald was a concentration camp, not an extermination camp | Corrected |
+| Guggenheimlaan | [0363300000001311](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001311/) | built in 1956 | opened 1959 (construction 1956–59) | Kept (construction did start in 1956) |
 
 ## 5. Misspellings flagged by the register itself
 
