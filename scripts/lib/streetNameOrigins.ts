@@ -543,6 +543,21 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/oude Joodse proletariaat/, /\bstrong woman\. and there\b/g, 'strong woman, and there'],
   [/oude Joodse proletariaat/, /\bShe was born in 1887 and died in 1982\.$/,
     'She was born in 1887 and died in 1982. She came from the old Jewish working class, a hard-working woman and a true Amsterdammer.'],
+  [/uitspanning/i, /\bthe extension\b/g, 'the roadside inn'],
+  [/uitspanning/i, /\ban extension\b/g, 'a roadside inn'],
+  [/vastenavond/i, /\bon a Good Friday\b/g, 'at Shrovetide (Vastenavond)'],
+  [/kapelstegen/i, /\bChapel Stops\b/g, 'Kapelstegen (chapel alleys)'],
+  [/waar de stegen op toelopen/i, /\bwhere the steps lead up from\b/g, 'towards which the alleys run from'],
+  [/huidenhandel/i, /\bfur trade\b/g, 'hide trade'],
+  [/aanliggende houtvemen/i, /\bwood pits\b/g, 'timber yards (houtvemen)'],
+  [/aangevoerde specerijen/i, /\bthe spices mentioned\b/g, 'the imported spices'],
+  [/door de landengte/i, /\bby the Isthmus\b/g, 'through the Isthmus'],
+  [/ijsclubterrein/i, /\ban ice club field\b/g, "a skating club's ice rink"],
+  [/drooggemalen meertje/i, /\ba dry-milled pond\b/g, 'a small lake pumped dry'],
+  [/een postje is/i, /\bA post is\b/g, 'A postje is'],
+  // "Naar de …" opens an origin: named after it, not "To the …". Runs after
+  // the rules above that match a whole "To the …" opening.
+  [/^Naar /, /^To (?=the |[A-Z])/, 'Named after '],
   // Grammar the translator gets wrong before a vowel.
   [/./, /\ba (?=(?:inn|embankment|alderman|island|estate|old|important|admiral|officer|engineer|author|actor|actress|architect|artist|area|order|eighteenth|eleventh|inland|English|Amsterdam)\b)/g, 'an '],
   [/tot de vinken behorende/i, /\bbelonging to the sparrows\b/g, 'belonging to the finches'],
