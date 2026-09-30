@@ -808,11 +808,12 @@ churn encyclopedia blurbs — stage, diff coverage, publish only after review.
 Do not treat this as a red routing bug.
 
 **14. Storybook visual regressions.**
-The workbench has HUD, briefing, finish, notice and card states for desktop
-and phone (driven by a `canalRecallForceTouch` override), including the
-2026-09-30 bridge-origin, bridge-register and building-facts cards.
-`build-storybook` proves they compile. Still open: automated screenshot
-diffs of those states.
+`storybook-visual.spec.ts` compares 40 Storybook states (cards, HUD, finish,
+panels; desktop and phone at each story's own viewport) against committed
+screenshots (2.3 MB), stable across repeated and parallel runs. Still open:
+- the five desktop briefing screens, left out because their photo backdrop
+  makes each baseline 1.5 MB;
+- baselines are darwin-only, so a Linux CI would need its own set.
 
 
 ---

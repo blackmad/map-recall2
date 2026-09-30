@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Storybook states are screenshot-compared; the finish stories were blank
+
+`tests/e2e/storybook-visual.spec.ts` loads each story from the production
+Storybook build (served by the dev server from the repository root) at the
+viewport the story declares. It compares each one against a committed
+baseline. Of 45 route-setup stories, 40 are covered and hold across repeated
+and parallel runs. The five desktop briefing screens are left out, because
+their photo backdrop makes each baseline 1.5 MB.
+
+The first baselines turned up a broken state. Every finish-card story
+showed an empty dimmed map, byte-identical across all four variants.
+`_renderFinish` counts transit lines and stops, which the story's fake
+exploration snapshot never had, so it threw. The story now provides them.
+Byte-identical baselines are a cheap check for this: two stories that should
+differ but don't are rendering nothing of their own.
+
+Re-baseline after an intended change:
+`npm run build-storybook && PW_PORT=4388 npx playwright test tests/e2e/storybook-visual.spec.ts --update-snapshots`.
+
 ## 2026-09-30 — a third pass: historical terms, and cross-references a card cannot follow
 
 A second noun-pair scan, over trade and office words, found more literal
