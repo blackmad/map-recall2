@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Nicolaas Tetterodestraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Olmenweg, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -37,6 +37,7 @@ next record.
 | Jaap Nunes Vazstraat | [0363300000003655](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003655/) | Its whole text is the middle of Jaap Kunst's biography ("In 1930 bracht zijn groeiende reputatie…"). | Replaced by a sourced supplement (Wikipedia). |
 | Jaap Speyerstraat | [0363300000002395](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002395/) | Its whole text is the last sentence of Jaap Kunst's biography ("En maakte een begin met een van de grootste musicologische collecties in Europa."). | Replaced by a sourced supplement (Wikipedia). |
 | Piet Kranenbergpad | [0363300000006028](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000006028/) | Its text is Piet Keizer's Ajax biography, word for word, the same as the Piet Keizerbrug's ([0363300011950122](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950122/)). |  Replaced by a sourced supplement (Wikipedia). |
+| Nieuwendammerkade | [0363300000003871](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003871/) | Carries the Nieuwendijk's explanation ("Vermoedelijk dankt de Nieuwendijk zijn naam…"), a street in the city centre, not this quay in Noord. | Uses the Nieuwendammerdijk record's explanation of Nieuwendam ([0363300000003870](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003870/)). |
 
 ## 2. Fragments
 
@@ -65,6 +66,7 @@ next record.
 | Bickersgracht (water) | [0363300011950695](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950695/) | "…kregen automatisch de naam van de stichter. Voor het" (the street record, [0363300000002930](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002930/), ends cleanly). | Translated without the broken edge. |
 | Hederabrug | [0363300011951351](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951351/) | A stray "Waterland" after the last sentence. | Translated without the broken edge. |
 | Mariotteplein | [0363300000004265](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004265/) | Junk appended: "Marisplein, Jacob Oud-Zuid Rb. 26-1-1922 15: m 9". | Translated without the broken edge. |
+| Nieuwe Vaart (street) | [0363300011950711](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950711/) | "…gegraven om het IJ en het Oosterdok." | Completed from the Nieuwevaart record ([0363300000003876](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003876/)). |
 
 
 ## 4. Factual errors in the text
@@ -117,6 +119,8 @@ the municipality's sources.
 | Milovan Djilasstraat | [0363300000000892](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000000892/) | (1911-1997), "secretaris-generaal van de Joegoslavische Communistische Partij" | died 1995, as the Milovan Djilasplein record ([0363300003714180](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003714180/)) says; Tito, not Djilas, led the party | Corrected |
 | Nelson Mandelapark | [0363300000005538](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005538/) | sentenced to life "in 1963" | 12 June 1964, at the end of the Rivonia Trial | Corrected |
 | Nicolaas Maesstraat | [0363300000003859](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003859/) | 1632–1693 | born January 1634 | Corrected |
+| Nobelweg | [0363300000003883](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003883/) | "uitvinder van het dynamiet en de nitroglycerine"; six prizes "sinds 1901" | nitroglycerine was discovered by Ascanio Sobrero (1847); the economics prize dates from 1969 and is not paid from Nobel's fund | Corrected |
+| Okeghemstraat | [0363300000004704](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004704/) | "de leermeester van Dufay en Obrecht" | Dufay (c. 1397–1474) was a generation older; only Obrecht is plausibly his pupil | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
