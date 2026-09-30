@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Olmenweg, plus a register-wide scan for
+from 's-Gravelandse Veer to Persijn, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -121,6 +121,8 @@ the municipality's sources.
 | Nicolaas Maesstraat | [0363300000003859](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003859/) | 1632–1693 | born January 1634 | Corrected |
 | Nobelweg | [0363300000003883](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003883/) | "uitvinder van het dynamiet en de nitroglycerine"; six prizes "sinds 1901" | nitroglycerine was discovered by Ascanio Sobrero (1847); the economics prize dates from 1969 and is not paid from Nobel's fund | Corrected |
 | Okeghemstraat | [0363300000004704](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004704/) | "de leermeester van Dufay en Obrecht" | Dufay (c. 1397–1474) was a generation older; only Obrecht is plausibly his pupil | Corrected |
+| Oranje-Vrijstaatkade | [0363300000005939](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005939/) | "De in 1842 gestichte Boeren republiek" | the Orange Free State was founded in 1854 (Bloemfontein Convention) | Corrected |
+| Pasteurstraat | [0363300000004337](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004337/) | "Vond een serum tegen hondsdolheid" | a vaccine (1885) | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
