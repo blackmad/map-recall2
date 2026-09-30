@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: a random sample of 30, 14 wrong
+
+A fresh random sample of 30 origins had 14 slips. Fixing them touched
+24 origins:
+- **Parliament.** The Eerste Kamer (the Senate) had become the "House of
+  Representatives" in four biographies, including the first woman senator.
+  The rule applies only where the Dutch names the Eerste Kamer alone.
+- **Named places.**
+  - The Paleis voor Volksvlijt keeps its name; it had been "the Palace of
+    Public Enterprise/Industry" in four versions.
+  - The Hoge Sluis keeps its name, not "the High Lock".
+- **Words.**
+  - The city's cannon foundry (geschutgieterij) had become a "gunpowder"
+    foundry.
+  - Broodfabrieken are bread factories, not bakeries.
+  - Conrad planned a cut through the Isthmus of Suez, not "the dredging of
+    the Suez Canal".
+  - A werelddeel is a continent, and kernen are villages.
+  - The Nieuwe Amstelbrug sentence is rebuilt.
+
 ## 2026-09-30 — Review rides end on a due cul-de-sac, as "the mystery street"
 
 A due court or cul-de-sac off every landmark line could not be ridden
