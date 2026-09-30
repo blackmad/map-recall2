@@ -80,29 +80,41 @@ function closestPointOnSpan(px: number, py: number, a: RoadPoint, b: RoadPoint) 
 export function buildRoadSpatialIndex(
   segments: readonly RoadSegmentLike[],
   cellSize: number = ROAD_GRID_CELL,
+  connectors: ReadonlyArray<Readonly<{ a: RoadPoint; b: RoadPoint; segmentIndex: number }>> = [],
 ): RoadSpatialIndex {
   const cells = new Map<string, RoadSpan[]>();
-  for (let segIdx = 0; segIdx < segments.length; segIdx++) {
-    const segment = segments[segIdx];
-    const width = segment.width;
-    for (let ptIdx = 0; ptIdx < segment.points.length - 1; ptIdx++) {
-      const a = segment.points[ptIdx];
-      const b = segment.points[ptIdx + 1];
-      const pad = width + 10;
-      const gx0 = Math.floor((Math.min(a.x, b.x) - pad) / cellSize);
-      const gx1 = Math.floor((Math.max(a.x, b.x) + pad) / cellSize);
-      const gy0 = Math.floor((Math.min(a.y, b.y) - pad) / cellSize);
-      const gy1 = Math.floor((Math.max(a.y, b.y) + pad) / cellSize);
-      const span: RoadSpan = { a, b, segIdx, ptIdx, width };
-      for (let gx = gx0; gx <= gx1; gx++) {
-        for (let gy = gy0; gy <= gy1; gy++) {
-          const key = cellKey(gx, gy);
-          const bucket = cells.get(key);
-          if (bucket) bucket.push(span);
-          else cells.set(key, [span]);
-        }
+  const add = (span: RoadSpan) => {
+    const { a, b, width } = span;
+    const pad = width + 10;
+    const gx0 = Math.floor((Math.min(a.x, b.x) - pad) / cellSize);
+    const gx1 = Math.floor((Math.max(a.x, b.x) + pad) / cellSize);
+    const gy0 = Math.floor((Math.min(a.y, b.y) - pad) / cellSize);
+    const gy1 = Math.floor((Math.max(a.y, b.y) + pad) / cellSize);
+    for (let gx = gx0; gx <= gx1; gx++) {
+      for (let gy = gy0; gy <= gy1; gy++) {
+        const key = cellKey(gx, gy);
+        const bucket = cells.get(key);
+        if (bucket) bucket.push(span);
+        else cells.set(key, [span]);
       }
     }
+  };
+  for (let segIdx = 0; segIdx < segments.length; segIdx++) {
+    const segment = segments[segIdx];
+    for (let ptIdx = 0; ptIdx < segment.points.length - 1; ptIdx++) {
+      add({ a: segment.points[ptIdx], b: segment.points[ptIdx + 1], segIdx, ptIdx, width: segment.width });
+    }
+  }
+  // The routing graph joins ways whose ends are a few metres apart (merged
+  // vertices, stitched T-junctions). Without a span across each gap the router
+  // planned a crossing the road guard then refused: a bike at the end of a
+  // bridge way sat on the shoulder, pulled back toward the last vertex, with
+  // the next street's corridor out of reach (bridge sweep, 2026-09-30). A
+  // connector carries its way's index and width, and `ptIdx` -1.
+  for (const connector of connectors) {
+    const segment = segments[connector.segmentIndex];
+    if (!segment) continue;
+    add({ a: connector.a, b: connector.b, segIdx: connector.segmentIndex, ptIdx: -1, width: segment.width });
   }
   return { cellSize, cells };
 }
@@ -265,6 +277,12 @@ export const CORNER_FILLET_RADIUS = 36;
  * the distances past each road's edge, points with hypot(r − eA, r − eB) ≥ r
  * are on the asphalt.
  */
+/** The contact is a perpendicular projection onto its span, not an end vertex. */
+function perpendicularContact(contact: RoadContact, x: number, y: number): boolean {
+  const along = Math.abs((x - contact.x) * contact.ny - (y - contact.y) * contact.nx);
+  return along <= 0.2 * contact.dist + 0.5;
+}
+
 export function filletedExcess(
   contacts: readonly RoadContact[],
   x: number,
@@ -274,10 +292,7 @@ export function filletedExcess(
   let best = Infinity;
   for (const contact of contacts) best = Math.min(best, contact.dist - contact.width);
   if (best <= 0) return best;
-  const perpendicular = (contact: RoadContact) => {
-    const along = Math.abs((x - contact.x) * contact.ny - (y - contact.y) * contact.nx);
-    return along <= 0.2 * contact.dist + 0.5;
-  };
+  const perpendicular = (contact: RoadContact) => perpendicularContact(contact, x, y);
   const inCorner = contacts.filter(contact => {
     const excess = contact.dist - contact.width;
     return excess > 0 && excess <= radius && perpendicular(contact);
@@ -300,10 +315,20 @@ export function pickGuardContact(
 ): RoadContact | null {
   const aligned = pickRoadContact(contacts, preferredAngle);
   if (!aligned || aligned.dist <= aligned.width) return aligned;
+  // Past the end of the aligned span the aligned road simply stops here, and a
+  // parallel corridor that holds the vehicle is its continuation, not a
+  // duplicate beside it. Bridges are separate ways: a few degrees of bend
+  // where the deck meets the street made the ended way the better heading
+  // match, the parallel continuation was ignored, and the shoulder pull drew
+  // the bike back to the end of the way every frame, throttle open, for good
+  // (bridge sweep, 2026-09-30; user report "my bike is entirely stuck on this
+  // bridge"). Beside a span — the Marnixstraat busway — duplicates still do
+  // not widen the corridor.
+  const pastEnd = point !== null && !perpendicularContact(aligned, point.x, point.y);
   let inside: RoadContact | null = null;
   for (const contact of contacts) {
     if (contact.dist > contact.width) continue;
-    if (headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
+    if (!pastEnd && headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
     if (!inside || contact.dist - contact.width < inside.dist - inside.width) inside = contact;
   }
   if (inside) return inside;

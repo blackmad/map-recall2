@@ -143,6 +143,16 @@ export function constrainCarToRoad(
     car.vx -= unitX * outwardVelocity;
     car.vy -= unitY * outwardVelocity;
   }
+  // The step this frame already carried it outward, and the pull below is only
+  // ~1 px on a shallow shoulder: a bike aimed off the end of a way or across a
+  // junction corner stepped out as far as it was pulled in and stood there,
+  // throttle open, for good (bridge sweep, 2026-09-30: 34 crossings). Take
+  // back the outward part of the step and keep the part along the kerb.
+  const outwardStep = (attemptedX - previous.x) * unitX + (attemptedY - previous.y) * unitY;
+  if (outwardStep < 0) {
+    car.x -= unitX * outwardStep;
+    car.y -= unitY * outwardStep;
+  }
   // Velocity is rebuilt from heading and speed on the next frame, so cancelling
   // it is not enough on its own: a car aimed off the road keeps walking off it.
   // Ease the heading back along the street as well, exactly as the rollback

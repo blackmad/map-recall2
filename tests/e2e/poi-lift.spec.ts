@@ -87,7 +87,7 @@ test('our own POI layer replaces the basemap and sits on each building\'s roofli
     const spoiled = features.filter((f: any) => vm._spoils(f.properties.name)).map((f: any) => f.properties.name);
     return {
       lift, basemapVisible, count: features.length, spoiled,
-      belowBuildings: ownIds.filter((id: string) => order.indexOf(id) < order.indexOf('osm-colored-building-roofs')),
+      belowBuildings: ownIds.filter((id: string) => order.includes(id) && order.indexOf(id) < order.indexOf('osm-colored-building-roofs')),
     };
   });
   expect(result.basemapVisible, 'the basemap POIs are hidden').toEqual([]);
@@ -99,14 +99,16 @@ test('our own POI layer replaces the basemap and sits on each building\'s roofli
   expect(result.lift.mid).toBeLessThan(result.lift.low);
   expect(result.lift.high).toBeLessThan(result.lift.mid);
 
-  // A question hides the names, which could answer "where am I?"; the dots stay.
+  // A question hides the names, which could answer "where am I?". There are
+  // no own-POI dots at all: they freckled the facades without saying anything
+  // (user report 2026-09-30).
   const quiet = await page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap, lib = (window as any).CanalRecallOrientationPois;
     vm.setQuizQuietMap(true);
     const { dots, labels } = lib.ownPoiLayerIds('mid');
-    const state = { dots: vm.map.getLayoutProperty(dots, 'visibility'), labels: vm.map.getLayoutProperty(labels, 'visibility') };
+    const state = { dots: !!vm.map.getLayer(dots), labels: vm.map.getLayoutProperty(labels, 'visibility') };
     vm.setQuizQuietMap(false);
     return { ...state, after: vm.map.getLayoutProperty(labels, 'visibility') };
   });
-  expect(quiet).toEqual({ dots: 'visible', labels: 'none', after: 'visible' });
+  expect(quiet).toEqual({ dots: false, labels: 'none', after: 'visible' });
 });

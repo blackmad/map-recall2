@@ -1,5 +1,53 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Bridges: the surface covers what the router plans, and ended ways stop holding the bike
+
+User reports: "my bike is entirely stuck on this bridge, can't move at all"
+and "please make sure to fix the bridge navigation once and for all". A new
+sweep, `tests/e2e/bridge-sweep.spec.ts`, drives every bridge way in the
+routing extract in both directions with the game's own physics and guard.
+Before this change it found 416 pins on 33 crossings. It turned up three
+separate causes:
+- **The router plans across gaps the surface did not have.** `buildRoadGraph`
+  merges vertices up to a grid-cell diagonal apart (~25 px) and stitches
+  side streets onto through streets up to 10 px away, but the surface index
+  held only centrelines. At the end of a bridge way (Karel van het Revebrug)
+  the next street's corridor was out of reach, so the guard pulled the bike
+  back. The graph now returns those gaps as `connectors`, and
+  `buildRoadSpatialIndex` indexes each one as a span with its way's width
+  (`ptIdx` -1).
+- **An ended way kept holding the bike.** `pickGuardContact` judged the bike
+  against the best-aligned contact and ignored parallel corridors, so that
+  a Marnixstraat busway duplicate could not widen the street. But bridges
+  are separate ways: where a few degrees of bend made the ended way the
+  better heading match, its continuation was ignored and the shoulder pull
+  drew the bike back to the ended way's last vertex. Now, when the aligned
+  contact is an end vertex rather than a perpendicular projection, any
+  corridor that contains the bike wins. Beside a span, duplicates still do
+  not count.
+- **The shoulder was a stable equilibrium.** The soft-edge branch cancelled
+  outward velocity, but that frame's step had already carried the bike
+  outward, and the inward pull on a shallow shoulder is ~1 px. A bike aimed
+  off a way end stepped out as far as it was pulled in, forever.
+  `constrainCarToRoad` now takes back the outward part of the step and keeps
+  the part along the kerb.
+
+After the change the full sweep has 161 pins on 13 crossings and 0 traps (a
+trap: no input, reverse included, moves the bike 5 m). The remaining pins are
+listed in TODO. By default the spec drives a named set: the Westeinde bridges
+south of Frederiksplein, where the screenshot appears to be, plus ten bridges
+that used to pin. Against the old bundles that set has 99 pins; with the
+change it has 0. Also new:
+- `route-surface-coverage.spec.ts`: every one of 158,104 graph edges lies on
+  a rideable surface, bar two known < 1 px spans.
+- `bridge-deck-poses.spec.ts`: every pose on the Westeinde deck can move.
+- `pose-trace.spec.ts`: a single-pose diagnostic.
+
+Also from a report the same day, "these dots everywhere are ugly and not
+helpful": the game's own POI layer no longer draws dots, only names. A dot
+drew for every POI from zoom 16, while the collision-thinned names drew for
+only a few of them.
+
 ## 2026-09-30 — Street-name origins: retranslation complete
 
 All 4,340 distinct Dutch texts that the game looks up are now retranslated
