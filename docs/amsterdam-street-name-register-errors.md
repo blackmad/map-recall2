@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Pieter van der Werfstraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Rachel Ruyschbrug, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -127,6 +127,8 @@ the municipality's sources.
 | Philip Vingboonsstraat | [0363300000004358](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004358/) | born 1613; built "onder meer het Trippenhuis" | born c. 1607; the Trippenhuis was designed by his brother Justus Vingboons | Corrected |
 | Pieter de Hoochstraat | [0363300000004373](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004373/) | 1639–1684 | baptised 1629, died in or after 1679 | Corrected |
 | Pieter van der Werfstraat | [0363300000004384](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004384/) | "het beleg van Leiden in 1572" | 1573–1574 | Corrected |
+| Plutostraat | [0363300000004551](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004551/) | "De planeet die het verst van de zon afstaat" | a dwarf planet since 2006 (out of date rather than wrong when written) | Corrected |
+| Pradolaan | [0363300000001312](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001312/) | the Prado "geopend in 1918" | opened in 1819 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
