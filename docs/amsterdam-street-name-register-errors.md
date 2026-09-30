@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Walcherenstraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Wijttenbachstraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -177,6 +177,9 @@ the municipality's sources.
 | Vancouverstraat | [0363300000005262](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005262/) | 1758–1790 | 1757–1798 (his Pacific voyage was 1791–1795) | Corrected |
 | Vasco da Gamastraat | [0363300000005264](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005264/) | "vond in 1497 de zeeweg rond Kaap de Goede Hoop" | Dias rounded the Cape in 1488; Da Gama opened the sea route to India in 1497–1498 | Corrected |
 | Vespuccistraat | [0363300000005283](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005283/) | born 1451 | born 9 March 1454 | Corrected |
+| Waterlooplein | [0363300000004822](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004822/) | square created "in 1874" | the Houtgracht and Leprozengracht were filled in 1882 (nl.wikipedia) | Corrected |
+| Weissenbruchstraat | [0363300000004838](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004838/) | born 1825 | born 19 June 1824 | Corrected |
+| Wigbolt Ripperdastraat | [0363300000004871](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004871/) | the siege of Haarlem "van 1672 op 1673" | 1572–1573 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
