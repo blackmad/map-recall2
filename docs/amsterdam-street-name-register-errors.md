@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Schuitenhuisstraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Sonneveld, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -41,6 +41,8 @@ next record.
 | Rembrandtpark | [0363300000001738](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001738/) | After the first sentence, explains how the Rembrandtplein got its name (the statue of 1852/1875, the Botermarkt), not the park in West. | Kept only the opening sentence about Rembrandt. |
 | Scharwouderstraat | [0363300000004473](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004473/) | "Deze 'dunne' biersoort werd vroeger op deze ophaalbrug verkocht…", the second half of the Scharrebiersluis's text. | Withheld. |
 | Scheepmakerskade | [0363300000004474](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004474/) | "Een onofficiële naam van deze brug is Rapenburgerschutsluis…", a bridge's text, not this quay's. | Withheld. |
+| Smallepadsgracht | [0363300011951137](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951137/) | The Smalschipstraat's text about the smalschip (a Frisian flat-bottomed boat), word for word. The canal on the Realeneiland has nothing to do with it. | Withheld. |
+| Smaragdplein | [0363300000004961](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004961/) | The Smederij's text about the ADM shipyard smithy, word for word. | Withheld. |
 
 ## 2. Fragments
 
@@ -49,6 +51,7 @@ next record.
 | Elim | [0363300000002417](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002417/) | The whole text is "tot Park Frankendael". |  Replaced by a sourced supplement (Wikipedia). |
 | Piet Wiedijkstraat | [0363300000004367](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004367/) | The whole text is "met name op het gebied van het verkeer." |  Replaced by a sourced supplement (Wikipedia). |
 | Kinkerstraat | [0363300000004001](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004001/) | The whole text is "Hij vertaalde werk van Shakespeare en Schiller...", the tail of the Kinkerbrug record ([0363300011950672](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950672/)), and never names Kinker. | Sourced supplement from Wikipedia. |
+| Sint Antoniesbreestraat | [0363300000005009](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005009/) | The whole text is "die op zijn beurt zijn naam ontleende aan het Sint Antoniesgasthuis of Leprozenhuis", the tail of a sentence. | Completed from the Sint Antoniesluis's text, which gives the same origin (the Sint Antoniesdijk). |
 | Vredenburgerbrug | [0363300011950362](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950362/) | Starts mid-sentence ("katholieke bejaardenhuis Vredenburg werd gebouwd…") and stops mid-sentence ("…waren hier achtereen"). | Not yet reached. |
 | Na Druk Gelukbrug | [0363300011950397](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950397/) | Starts mid-sentence, repeats its first clause ("…aan de toenmalige Brug is vernoemd naar…"), and stops at "De naam van deze boerderij refereert". | Replaced by a sourced supplement (nl.wikipedia, Olympisch Kwartier). |
 | Jan Poytstraat | [0363300011951814](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951814/) | Carries a stray sentence from another architect's record: "Simon van Woerden (1902-1998) heeft rond 1958 de Bethelkerk ontworpen." | Translated without the stray sentence. |
@@ -138,6 +141,10 @@ the municipality's sources.
 | Rutherfordstraat | [0363300000004437](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004437/) | "Engels natuur- en scheikundige" | born in New Zealand, a British subject | Corrected |
 | Sara Burgerhartstraat | [0363300000004458](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004458/) | the novel "uit 1872" | 1782, by Betje Wolff and Aagje Deken (digits transposed) | Corrected |
 | Schopenhauerhof | [0363300000004500](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004500/) | 1778–1860 | born 22 February 1788 | Corrected |
+| Senefelderstraat | [0363300000004510](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004510/) | "Oostenrijks typograaf" | born in Prague, a German (Bavarian) actor and printer | Corrected |
+| Shackletonstraat | [0363300000004513](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004513/) | "Bereikte in 1909 de magnetische zuidpool" | Shackleton led the Nimrod expedition; the pole party was David, Mawson and Mackay. Irish-born | Corrected |
+| Silvretta | [0363300000001348](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001348/) | "Bergtop in Zwitserland, 3411 meter hoog" | a range on the Swiss–Austrian border; 3,411 m is its highest peak, Piz Linard | Corrected |
+| Snelliusstraat | [0363300000004966](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004966/) | "richtte de eerste Europese sterrenwacht in" | Leiden's observatory was set up in 1633 by Golius, seven years after Snellius's death | Replaced with his law of refraction and triangulation |
 
 ## 5. Misspellings flagged by the register itself
 

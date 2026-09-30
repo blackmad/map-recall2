@@ -221,6 +221,11 @@ export const WITHHELD_ORIGINS: Readonly<Record<string, string>> = {
   // "Een onofficiële naam van deze brug is Rapenburgerschutsluis": a bridge's
   // text, not this quay's.
   Scheepmakerskade: "the register's text describes the Rapenburgerschutsluis bridge",
+  // The smalschip text word for word, the same as the Smalschipstraat's; the
+  // canal on the Realeneiland has no recorded origin of its own.
+  Smallepadsgracht: "the register's text is the Smalschipstraat's",
+  // The ADM-smithy text word for word, the same as the Smederij's.
+  Smaragdplein: "the register's text is the Smederij's",
 };
 
 const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
