@@ -66,7 +66,9 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
   let explained = 0, english = 0;
   for (const name of names) {
     const origin = originFor(index, name, kind);
-    const supplement = supplements.get(`${kind}\u0000${name}`);
+    // Keyed by the register record's own kind, not the extract's: a road
+    // bridge such as the Na Druk Gelukbrug is looked up as a street.
+    const supplement = origin && supplements.get(`${origin.kind}\u0000${name}`);
     if (supplement && origin) {
       explained++; english++; fromSupplements++;
       published.set(`${kind}\u0000${name}`, { name, kind, en: supplement.en, bagId: origin.bagId });
