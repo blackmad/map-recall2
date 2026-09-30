@@ -113,6 +113,15 @@ assert.deepEqual(cappedPlan?.path, [{ x: 0, y: 0 }, { x: 10, y: 0 }, { x: 20, y:
   });
   assert.deepEqual(listed?.viaStretch, [{ x: 10, y: 8 }, { x: 30, y: 5 }], 'a list is tried in turn; the stub that turns back is passed over');
   assert.equal(planLearningRoadRoute(hoop, { x: 0, y: 0 }, { x: 40, y: 0 }, { ...base, via: [] })?.viaUsed, undefined, 'an empty list is no via');
+  const spur = buildRoadGraph([
+    { metadata: { id: 'direct' }, points: [{ x: 0, y: 0 }, { x: 10, y: 0 }, { x: 30, y: 0 }, { x: 40, y: 0 }] },
+    { metadata: { id: 'hoop' }, points: [{ x: 30, y: 0 }, { x: 30, y: 5 }, { x: 10, y: 8 }, { x: 10, y: 0 }] },
+    { metadata: { id: 'spur' }, points: [{ x: 30, y: 5 }, { x: 34, y: 9 }] },
+  ], { mergeSize: 1, junctionStitchRadius: 0 });
+  const spurred = planLearningRoadRoute(spur, { x: 0, y: 0 }, { x: 40, y: 0 }, {
+    ...base, viaTries: 1, via: [[{ x: 30, y: 5 }, { x: 34, y: 9 }], [{ x: 10, y: 8 }, { x: 30, y: 5 }]],
+  });
+  assert.deepEqual(spurred?.viaStretch, [{ x: 10, y: 8 }, { x: 30, y: 5 }], 'a dead-end stretch does not use up a try');
   const lollipop = buildRoadGraph([
     { metadata: { id: 'direct' }, points: [{ x: 0, y: 0 }, { x: 40, y: 0 }] },
     { metadata: { id: 'stem' }, points: [{ x: 20, y: 0 }, { x: 20, y: 10 }] },

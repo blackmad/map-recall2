@@ -543,8 +543,8 @@ class GameRouteRuntime {
   /** Stretches of a review via's street for the planner to ride along,
    *  longest first: a long piece is more often a through street than a
    *  cul-de-sac stub, and teaches more of the name. A single point would let
-   *  the ride touch it and turn back. At most REVIEW_VIA_TRIES, since each
-   *  try plans three legs per direction. */
+   *  the ride touch it and turn back. The planner drops those ending in a
+   *  dead end and tries the first three of the rest. */
   _reviewViaPoints(via, snap) {
     const centre = snap({ id: 'review-via', name: '', lat: via.center[0], lng: via.center[1] });
     if (!centre || !this.track) return [];
@@ -561,7 +561,7 @@ class GameRouteRuntime {
       stretches.push({ length, stretch: [{ x: a.x, y: a.y }, { x: b.x, y: b.y }] });
     }
     stretches.sort((p, q) => q.length - p.length);
-    return stretches.slice(0, REVIEW_VIA_TRIES).map(entry => entry.stretch);
+    return stretches.slice(0, REVIEW_VIA_STRETCHES).map(entry => entry.stretch);
   }
 
   _pickDestinationNear(from, alsoExcludeId = null) {
