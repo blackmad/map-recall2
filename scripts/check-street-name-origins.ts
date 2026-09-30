@@ -162,4 +162,12 @@ assert.equal(repairOriginTranslation('Het werelddeel.', 'The world region.'), 'T
 assert.equal(repairOriginTranslation('x', 'they stayed in a inn, a embankment, a one-year plant.'), 'they stayed in an inn, an embankment, a one-year plant.',
   'a/an only before the listed words');
 
+assert.equal(repairOriginTranslation('Met het rooien van de straten en de bebouwing werd in 1664 begonnen.',
+  'The demolition of the streets and buildings began in 1664.'), 'Laying out the streets and building began in 1664.', 'rooien lays streets out');
+assert.equal(repairOriginTranslation('1 x winnaar Wereldbeker', '1 x winner World Cup, played two World Cup finals'),
+  '1 x winner Intercontinental Cup (Wereldbeker), played two World Cup finals', 'the finals stay the World Cup');
+assert.equal(repairOriginTranslation('Geïnspireerd door Indische en Arabische muziek.', 'Inspired by Indian and Arabic music.'),
+  'Inspired by Indian and Arabic music.', 'Indian music is Indian');
+assert.equal(repairOriginTranslation('in dienst van de West-Indische Compagnie', 'in service of the West Indian Company'), 'in service of the West India Company');
+
 process.stdout.write('Street-name origin checks passed\n');

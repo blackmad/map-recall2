@@ -258,6 +258,26 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/letterkundige/i, /\bLiterary(?= \(|,| and)/g, 'Man of letters'],
   [/werelddeel/i, /\bworld region\b/g, 'continent'],
   [/zangvogel/i, /\b[Ss]inging bird\b/g, 'songbird'],
+  // Rooien van de straten is laying them out, not demolishing them; a tuiger
+  // rigs ships; the schout was the sheriff; Wereldbeker is the
+  // Intercontinental Cup, which Ajax won, not the World Cup.
+  [/rooien van de straten/i, /\bThe demolition of the streets and buildings began\b/g, 'Laying out the streets and building began'],
+  [/openbaar verkeer onttrokken/i, /\bremoved from public transport\b/g, 'closed to public traffic'],
+  [/op- en aftuigt/i, /\bhoists and lowers ships\b/g, 'rigs and unrigs ships'],
+  [/schout van amsterdam/i, /\bthe alderman of Amsterdam\b/g, 'the schout (sheriff) of Amsterdam'],
+  [/wereldbeker/i, /\bwinner World Cup\b/g, 'winner Intercontinental Cup (Wereldbeker)'],
+  [/advocaat en procureur/i, /\blawyer and prosecutor\b/g, 'lawyer and solicitor (procureur)'],
+  [/noordse bos/i, /\bNorth Sea Forest\b/g, 'Noordse Bos'],
+  [/rode is een oude benaming/i, /\bRed is an old term\b/g, 'Rode is an old term'],
+  [/werkwoord rooien/i, /\bthe still existing verb rake\b/g, 'the still existing verb rooien (to grub up)'],
+  [/papiaments/i, /\bPapiaments\b/g, 'Papiamento'],
+  // Indisch is of the Dutch East Indies, though Indische muziek and Indische
+  // talen can be Indian: each fix names its own phrase.
+  [/west-indische compagnie/i, /\bWest Indian Company\b/g, 'West India Company'],
+  [/indisch recht/i, /\bIndian law\b/g, 'the law of the Dutch East Indies'],
+  [/indische spoorwegen/i, /\bthe Indian railways\b/g, 'the railways of the Dutch East Indies'],
+  [/indische verhalen/i, /\bIndian stories\b/g, 'stories of the Dutch East Indies'],
+  [/indische partij/i, /\bIndian Party\b/g, 'Indische Partij (Indies Party)'],
   // Grammar the translator gets wrong before a vowel.
   [/./, /\ba (?=(?:inn|embankment|alderman|island|estate|old|important|admiral|officer|engineer|author|actor|actress|architect|artist|area|order|eighteenth|eleventh|inland|English|Amsterdam)\b)/g, 'an '],
   [/tot de vinken behorende/i, /\bbelonging to the sparrows\b/g, 'belonging to the finches'],
