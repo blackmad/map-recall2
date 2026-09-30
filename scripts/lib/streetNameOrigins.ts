@@ -194,6 +194,9 @@ export const WITHHELD_ORIGINS: Readonly<Record<string, string>> = {
   // The text is Piet Keizer's Ajax biography, word for word ("Piet Keizer
   // speelde 34 interlands"), the same as the Piet Keizerbrug's.
   'Piet Kranenbergpad': "the register's text is Piet Keizer's biography",
+  // The text is the second half of the Dirk de Waterduikerbrug's ("de Jordaan
+  // en hij kreeg diverse medailles"), whose own text stops mid-sentence.
+  'Dirk van Hasseltssteeg': "the register's text is the end of the Dirk de Waterduikerbrug's",
 };
 
 const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
