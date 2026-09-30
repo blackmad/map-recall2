@@ -220,4 +220,8 @@ assert.equal(repairOriginTranslation('De Korte Geuzenstraat. Anne Frank is in 19
   'The Short Geuzenstraat. Anne Frank died in the Bergen-Belsen extermination camp in 1945. A short walk.'),
   'The Korte Geuzenstraat. Anne Frank died in the Bergen-Belsen concentration camp in 1945. A short walk.');
 
+assert.equal(repairOriginTranslation('even voor 1600 bij de stad getrokken', 'drawn to the city just before 4:00 PM, there is talk'),
+  'drawn to the city just before 1600, there is talk', 'a year read as a clock time, capitals too');
+assert.equal(repairOriginTranslation('de pretentieloze, uit de losse pols geschoten foto', 'the pretentious, candid photo'), 'the unpretentious, candid photo');
+
 process.stdout.write('Street-name origin checks passed\n');
