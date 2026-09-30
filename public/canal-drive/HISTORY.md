@@ -37,6 +37,18 @@ A fresh random sample of 30 origins had 14 slips. Fixing them touched
     for the Stopera.
   - Hecht en Sterk recruited no contract labourers, not "contractors".
   - The Rokin text now explains the 'ruck in' that names the street.
+- **Twelve more long origins:**
+  - Van Mierlo sat in the Senate, not in "the House of Councillors", which
+    is Japan's upper house.
+  - The Oostenburg streets were formally abolished (vervallen verklaard),
+    not "declared abandoned".
+  - The Quakers gathered outside the walls because they had been expelled,
+    not "so that they could gather".
+  - The Kalverstraat calf-market sentence is rebuilt.
+- **Withheld: Piet Kranenbergpad.** The register gives it Piet Keizer's
+  Ajax biography word for word, so the card would teach one footballer's
+  record as another's. `WITHHELD_ORIGINS` names it with the reason, and
+  `publish:street-name-origins` skips it until the register is corrected.
 
 ## 2026-09-30 — Review rides end on a due cul-de-sac, as "the mystery street"
 

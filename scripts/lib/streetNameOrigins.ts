@@ -185,6 +185,17 @@ const FILLED_IN_GUARDS: Record<string, RegExp> = {
 
 /** [Dutch trigger, literal translation, meaning]. From reading the
  *  published texts: a lijnbaan is a ropewalk, not a "line track". */
+/**
+ * Origins the register gets wrong in a way no repair can fix: the text is
+ * about someone else. Each is withheld, with the reason, until the register
+ * is corrected.
+ */
+export const WITHHELD_ORIGINS: Readonly<Record<string, string>> = {
+  // The text is Piet Keizer's Ajax biography, word for word ("Piet Keizer
+  // speelde 34 interlands"), the same as the Piet Keizerbrug's.
+  'Piet Kranenbergpad': "the register's text is Piet Keizer's biography",
+};
+
 const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/touwslager/i, /\brope warehouses\b/g, 'rope-making works'],
   [/touwslager/i, /\brope warehouse\b/g, 'rope-making works'],
@@ -679,6 +690,16 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/iets moet inrukken/i, /\bwas moved back from the Dam, something had to give way, a quay was built here\b/g,
     "was set back from the Dam (it had to 'ruck in'), a quay was built here"],
   [/waartoe hij in 1864 de Nederlandsche Bouwmaatschappij oprichtte/, /\bamong other things, to which he founded\b/g, 'among other things, for which he founded'],
+  [/Eerste Kamer/, /\bthe House of Councillors\b/g, 'the Senate (Eerste Kamer)'],
+  [/Wel dat in 1586 kalvermarkt op de Dam was/, /\bHowever, that in 1586 calf market was on the Dam\./g, 'There is evidence, though, of a calf market on the Dam in 1586.'],
+  [/vervallen verklaard/i, /\bdeclared abandoned\b/g, 'formally abolished'],
+  [/is in 1985 vervallen/i, /\bwas abandoned in 1985\b/g, 'was abolished in 1985'],
+  [/zodat zij op deze afgelegen plaats/i, /\bso that they could gather in this remote place\b/g, 'and so they gathered at this remote spot'],
+  [/pleit ook de naam/i, /\balso advocates for this name\b/g, 'also supports this explanation'],
+  [/sekte van de kwakers \(Quakers\)/i, /\bthe Quakers \(Quakers\)/g, 'the Quakers (kwakers)'],
+  [/Spaansgezinde burgemeesters buiten de stadsmuur werden gezet/i, /\bthe Spanish-minded mayors were removed outside the city walls\b/g, 'the pro-Spanish burgomasters were put outside the city walls'],
+  [/zijn geneeskundige praktijk bleef uitoefenen/i, /\bhe continued to practice his medical practice\b/g, 'he kept up his medical practice'],
+  [/geen ingang gevonden bij de burgerij/i, /\bdid not find favor with the bourgeoisie\b/g, 'never caught on with the townspeople'],
   // "Naar de …" opens an origin: named after it, not "To the …". Runs after
   // the rules above that match a whole "To the …" opening.
   [/^Naar /, /^To (?=the |an? |[A-Z'])/, 'Named after '],
