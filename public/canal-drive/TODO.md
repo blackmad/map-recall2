@@ -39,6 +39,13 @@ view is the audit path: approve / reject / strike / note, then
 `npm run facts:publish`. Still worth a pass: dates, quantities, Dutch
 translations, and model-verifier disagreements. Corrections must keep exact
 Wikipedia evidence.
+Model audit, 2026-09-30: every number in all 4,052 published facts was
+checked against its own source quote. Only 8 facts had a number the quote
+lacks, and 7 are derived (14 December plus two days) or context (house
+numbers). One needs a human strike, since publishing is review-gated:
+- Den Haag, Oorlogsmonument 'Grenadiers en Jagers': "Seventh-grade students
+  … attend its annual May 10 ceremony". Groep 7 pupils are 10–11, not US
+  seventh-graders, and the quote never says 10 May.
 
 **6. Due-aware “where next” routing.**
 The thin slice shipped 2026-09-29 (see HISTORY). With Plan review on, a ride
