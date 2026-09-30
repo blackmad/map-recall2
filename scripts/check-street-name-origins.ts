@@ -251,4 +251,8 @@ assert.equal(repairOriginTranslation('Naar de uitspanning die hier vroeger heeft
 
 assert.equal(repairOriginTranslation('Naar een gedicht van Vondel uit 1613.', 'To a poem by Vondel from 1613.'), 'Named after a poem by Vondel from 1613.');
 assert.equal(repairOriginTranslation('Herenhuis te Emmen (Drente).', "Men's house in Emmen (Drenthe)."), 'Country house (herenhuis) in Emmen (Drenthe).');
+assert.equal(repairOriginTranslation('Meer, gelegen in zuidelijk Friesland.', 'More, located in southern Friesland.'), 'Lake, located in southern Friesland.');
+assert.equal(repairOriginTranslation('Buurtschap nabij Leusden (Utrecht).', 'Neighborhood near Leusden (Utrecht).'), 'Hamlet near Leusden (Utrecht).');
+assert.equal(repairOriginTranslation('Geuzenkapitein tijdens de inneming van Den Briel in 1572.', 'Guzen captain during the capture of Den Briel in 1572.'),
+  'Geuzen (Sea Beggar) captain during the capture of Den Briel in 1572.');
 process.stdout.write('Street-name origin checks passed\n');
