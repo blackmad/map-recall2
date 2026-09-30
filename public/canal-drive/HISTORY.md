@@ -22,6 +22,18 @@ renderings that taught something false:
 - register index noise ("Blancplein, Mont See Mont.") goes;
 - an origin that is only "See Rozengracht." borrows that street's text, once.
 
+Reading the best-known streets' cards turned up more:
+- Herengracht's "Lords Regulators" are the Heren Regeerders, the ruling
+  lords;
+- the Zeedijk's "sleeping wall" is a slaperdijk, a sleeper dike;
+- Rokin's "dammed": the filled-in guard had matched the Dam square, and now
+  requires afdammen;
+- "Linebaan" should read Lijnbaan;
+- "Foreburgwal" should read Voorburgwal;
+- the "Old Wall Church" is the Oude Waalse Kerk;
+- a reference in the middle of a text ("See further …", "See there.") now
+  goes too.
+
 The full e2e run after tonight's work passed 150, skipped 58 and failed 10.
 All 10 failures are in the appearance lane and were already on the board.
 
