@@ -170,4 +170,8 @@ assert.equal(repairOriginTranslation('Geïnspireerd door Indische en Arabische m
   'Inspired by Indian and Arabic music.', 'Indian music is Indian');
 assert.equal(repairOriginTranslation('in dienst van de West-Indische Compagnie', 'in service of the West Indian Company'), 'in service of the West India Company');
 
+assert.equal(repairOriginTranslation('Johan de Witt, raadpensionaris van Holland', 'Johan de Witt, council pensionary of Holland'), 'Johan de Witt, Grand Pensionary of Holland');
+assert.equal(repairOriginTranslation('Een Ringvaart is de boezem van een polder.', 'A canal is the bosom of a polder.'),
+  'A ring canal (ringvaart) is the storage basin (boezem) of a polder.');
+
 process.stdout.write('Street-name origin checks passed\n');
