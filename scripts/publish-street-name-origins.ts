@@ -14,7 +14,7 @@
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { indexOrigins, nameGenericOrigin, originFor, repairOriginTranslation, type NameOrigin } from './lib/streetNameOrigins.ts';
+import { indexOrigins, nameGenericOrigin, originFor, repairOriginTranslation, withoutCrossReference, type NameOrigin } from './lib/streetNameOrigins.ts';
 
 const directory = path.resolve('public/data/extracts/amsterdam');
 const staged = JSON.parse(await readFile(path.join(directory, 'staging/street-name-origins.json'), 'utf8')) as {
@@ -38,9 +38,23 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
     explained++;
     if (!origin.en) continue;
     english++;
-    published.set(`${kind}\u0000${name}`, { name, kind, en: nameGenericOrigin(name, repairOriginTranslation(origin.nl, origin.en), stems), bagId: origin.bagId });
+    const card = englishFor(name, origin, kind);
+    if (!card) continue;
+    published.set(`${kind}\u0000${name}`, { name, kind, en: card, bagId: origin.bagId });
   }
   report.push(`  ${file}: ${names.length} names, ${explained} explained, ${english} with English`);
+}
+
+/** The card text for an origin; "See Rozengracht." borrows the Rozengracht's
+ *  text, once, and a reference that leads nowhere publishes nothing. */
+function englishFor(name: string, origin: NameOrigin, kind: 'street' | 'water' | 'bridge', depth = 0): string {
+  const repaired = repairOriginTranslation(origin.nl, origin.en ?? '');
+  const { text, see } = withoutCrossReference(repaired);
+  if (see) {
+    const target = depth === 0 ? originFor(index, see, kind) ?? originFor(index, see, kind === 'street' ? 'water' : 'street') : null;
+    return target?.en && target.name !== name ? englishFor(target.name, target, kind, depth + 1) : '';
+  }
+  return nameGenericOrigin(name, text, stems);
 }
 
 const origins = [...published.values()].sort((a, b) => a.kind.localeCompare(b.kind) || a.name.localeCompare(b.name, 'nl'));

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {
-  AMSTERDAM_WOONPLAATS_ID, cleanDescription, indexOrigins, nameGenericOrigin, refersToItself, nameKey, nameStem, originFor, originsFromRecords, repairOriginTranslation,
+  AMSTERDAM_WOONPLAATS_ID, cleanDescription, indexOrigins, nameGenericOrigin, refersToItself, withoutCrossReference, nameKey, nameStem, originFor, originsFromRecords, repairOriginTranslation,
   type BagOpenbareRuimte,
 } from './lib/streetNameOrigins.ts';
 
@@ -50,6 +50,27 @@ assert.equal(originFor(index, 'Magere Brug', 'street')?.kind, 'bridge', 'a bridg
 assert.equal(repairOriginTranslation('De bloem. De Rozengracht is gedempt in 1895.', 'The flower. The Rozengracht was suppressed in 1895.'),
   'The flower. The Rozengracht was filled in in 1895.', 'gedempt is filled in, not suppressed');
 assert.equal(repairOriginTranslation('Een gracht, gedeeltelijk gedempt.', 'A canal, partially silenced.'), 'A canal, partially filled in.');
+// Historical terms the translator took literally (Herengracht, Kloveniersburgwal, Frans Halsstraat, Kuiperssteeg, Karel Doormanstraat).
+assert.equal(repairOriginTranslation('Het gedeelte voorbij de Leidsegracht behoort tot de uitleg van 1658.', 'The part beyond the Leidsegracht belongs to the explanation of 1658.'),
+  'The part beyond the Leidsegracht belongs to the expansion of 1658.');
+assert.equal(repairOriginTranslation('De Kloveniersburgwal dankt zijn naam aan een onderdeel van de schutterij dat kloveniers werd genoemd, naar het vuurwapen dat de manschappen gebruikten, een veldslang.',
+  'The Kloveniersburgwal owes its name to a part of the artillery that was called crossbowmen, after the firearm used by the men, a field snake.'),
+  'The Kloveniersburgwal owes its name to a company of the civic guard called the kloveniers, after the firearm its men carried, the klover or culverin.');
+assert.equal(repairOriginTranslation('Schilderde portretten en schuttersstukken.', 'Painted portraits and hunting scenes.'), 'Painted portraits and civic guard portraits.');
+assert.equal(repairOriginTranslation('Naar de hier gevestigde kuiperij.', 'To the brewery established here.'), 'To the cooperage established here.');
+assert.equal(repairOriginTranslation('Schout-bij-nacht in Nederlands-Indië.', 'Night commander in the Dutch East Indies.'), 'Night commander in the Dutch East Indies.',
+  'a capitalised rendering is left for review rather than guessed');
+assert.equal(repairOriginTranslation('Tijdens de oorlog schout-bij-nacht in Nederlands-Indië.', 'During the war, he was night commander in the Dutch East Indies.'),
+  'During the war, he was rear admiral in the Dutch East Indies.');
+// Cross-references a card cannot follow, and register index noise (Goudbalpad, Blancefloorstraat, Rozenstraat).
+assert.deepEqual(withoutCrossReference('A pear variety. The street is on the former allotments De Bongerd. See Boomgaardlaan.'),
+  { text: 'A pear variety. The street is on the former allotments De Bongerd.' });
+assert.deepEqual(withoutCrossReference("Figure from the medieval romance 'Floris ende Blancefloor'. Blancplein, Mont See Mont."),
+  { text: "Figure from the medieval romance 'Floris ende Blancefloor'." });
+assert.deepEqual(withoutCrossReference('Village west of Utrecht. Meerpad, Nieuwe Zie Nieuwe.'), { text: 'Village west of Utrecht.' });
+assert.deepEqual(withoutCrossReference('See Rozengracht.'), { text: '', see: 'Rozengracht' });
+assert.deepEqual(withoutCrossReference('The canal behind the Voorburgwal. See further Oudezijds Voorburgwal.'),
+  { text: 'The canal behind the Voorburgwal.' });
 // The register's Oudezijds Voorburgwal street record is the Nieuwezijds text; it points at itself.
 assert.ok(refersToItself({ name: 'Oudezijds Voorburgwal', nl: 'Voor het ontstaan van de naam zie Oudezijds Voorburgwal. De Nieuwezijds Voorburgwal is gedempt.' }));
 assert.ok(!refersToItself({ name: 'Oudezijds Achterburgwal', nl: 'De gracht achter de voorburgwal. Zie verder Oudezijds Voorburgwal.' }), 'a cross-reference to another name is fine');
