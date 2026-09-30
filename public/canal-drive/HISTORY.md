@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: rare-word scan finds opposites
+
+A new pass lists English words that occur in only one origin and reads the
+odd ones against the Dutch. Mistranslations cluster there. Found:
+- **Opposites.** Kiek's snapshot is "unpretentious" (pretentieloos), not
+  "pretentious".
+- **False things.** A trilhaardier is a ciliate, not a trilobite. Lallement
+  put pedals on a draisine (loopfiets), not on a "tricycle". A verspieder is
+  a spy, not a "wastrel". A vroedschapsresolutie is a city-council
+  resolution, not a "maternity resolution" (vroedvrouw is midwife).
+- **Source wording.** The register's "atoomtemperatuur" for Dulong is the
+  heat capacity per atom.
+- **Smaller fixes.** A grietman is a Frisian magistrate. A kinderwagenbouwer
+  made prams. The house was "where the sign of Swanenburg hangs". Havenkom
+  means harbour basins.
+- **Clock time.** The year-read-as-clock-time repair now also catches
+  "4:00 PM" (Zwanenburgwal: "just before 1600").
+
 ## 2026-09-30 — Street-name translations: a right back, a killer whale, filled in not renamed
 
 Six more reading passes (about 150 origins) found renderings that taught

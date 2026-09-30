@@ -378,6 +378,23 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/vernietigingskamp buchenwald/i, /\bextermination camp Buchenwald\b/g, 'concentration camp Buchenwald'],
   [/hij bouwde onder meer het trippenhuis/i, /\bHe built, among other things, the Trippenhuis and many beautiful canal houses\b/g,
     'He built many fine canal houses (the Trippenhuis, often credited to him, was designed by his brother Justus)'],
+  // The vroedschap was the city council; the translator heard vroedvrouw (midwife).
+  [/vroedschapsresolutie/i, /\b[Aa] maternity resolution\b/g, 'a resolution of the city council (vroedschap)'],
+  // Opposites and near-misses: pretentieloos is unpretentious; a trilhaardier
+  // is a ciliate; a verspieder a spy; a loopfiets the pedal-less draisine
+  // that Lallement put pedals on; a grietman a Frisian magistrate.
+  [/pretentieloze/i, /\bthe pretentious\b/g, 'the unpretentious'],
+  [/trilhaardier/i, /\btrilobite\b/g, 'ciliate (trilhaardier)'],
+  [/verspieder/i, /\bLiterally: wastrel, also known as lookout\b/g, 'Literally: spy (verspieder), or gun sight (vizier)'],
+  [/loopfiets/i, /\ba passing tricycle\b/g, 'a passing draisine (a running machine without pedals)'],
+  [/grietman/i, /\bgreaveman\b/g, 'grietman (district magistrate)'],
+  [/kaasachtige vruchtvorm/i, /\bthe somewhat cheesy fruit shape\b/g, 'its fruit, shaped somewhat like a small round cheese'],
+  [/kinderwagenbouwer/i, /\ba stroller builder\b/g, 'a maker of prams'],
+  [/uithangt/i, /\bwhere Swanenburg hangs out\b/g, 'where the sign of Swanenburg hangs'],
+  [/havenkom/i, /\bharbor bowls\b/g, 'harbour basins'],
+  // The register writes atoomtemperatuur; the Dulong–Petit law is about the
+  // heat capacity per atom (atoomwarmte).
+  [/atoomtemperatuur/i, /\bthe atomic temperature is the same\b/g, 'the heat capacity per atom is about the same'],
   // Grammar the translator gets wrong before a vowel.
   [/./, /\ba (?=(?:inn|embankment|alderman|island|estate|old|important|admiral|officer|engineer|author|actor|actress|architect|artist|area|order|eighteenth|eleventh|inland|English|Amsterdam)\b)/g, 'an '],
   [/tot de vinken behorende/i, /\bbelonging to the sparrows\b/g, 'belonging to the finches'],
@@ -481,7 +498,7 @@ export function repairOriginTranslation(nl: string, en: string): string {
   if (!/\d{1,2}[:.]\d{2}\s*uur|\d{1,2}:\d{2}/.test(nl)) {
     const missingYears = [...new Set(nl.match(/\b1[0-9]{3}\b/g) ?? [])].filter(year => !text.includes(year));
     if (missingYears.length === 1) {
-      text = text.replace(/\b\d{1,2}:\d{2}\s*[ap]\.m\./, missingYears[0]);
+      text = text.replace(/\b\d{1,2}:\d{2}\s*(?:[ap]\.m\.|[AP]M\b)/, missingYears[0]);
     }
   }
   return text.replace(/\s{2,}/g, ' ').trim();
