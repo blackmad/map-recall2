@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Fix: the songbird repair unnamed ten birds
+
+The glossary's "singing bird" → "songbird" repair (earlier today) runs before
+`nameGenericOrigin`. Its class list only knew "singing bird", so ten streets
+lost "Named after the tit, a singing bird" and read just "The songbird."
+(Mezenstraat, Kanariestraat, Koekoeksplein, …). "songbird" is now a class
+too. A check runs repair then rewrite in the publish order, and a diff
+against the published file from before the glossary work shows no other
+"Named after" text was lost.
+
 ## 2026-09-30 — Street-name translations: Grand Pensionary, boezem, umbellifers
 
 A targeted pass looked up Dutch words with known false friends, and Dutch
