@@ -249,4 +249,6 @@ assert.equal(repairOriginTranslation('Naar de stad Rotterdam', 'To the city of R
 assert.equal(repairOriginTranslation('Naar Gijsbrecht IV.', 'To Gijsbrecht IV.'), 'Named after Gijsbrecht IV.');
 assert.equal(repairOriginTranslation('Naar de uitspanning die hier vroeger heeft gestaan.', 'To the extension that used to stand here.'), 'Named after the roadside inn that used to stand here.');
 
+assert.equal(repairOriginTranslation('Naar een gedicht van Vondel uit 1613.', 'To a poem by Vondel from 1613.'), 'Named after a poem by Vondel from 1613.');
+assert.equal(repairOriginTranslation('Herenhuis te Emmen (Drente).', "Men's house in Emmen (Drenthe)."), 'Country house (herenhuis) in Emmen (Drenthe).');
 process.stdout.write('Street-name origin checks passed\n');

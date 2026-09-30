@@ -555,9 +555,12 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/ijsclubterrein/i, /\ban ice club field\b/g, "a skating club's ice rink"],
   [/drooggemalen meertje/i, /\ba dry-milled pond\b/g, 'a small lake pumped dry'],
   [/een postje is/i, /\bA post is\b/g, 'A postje is'],
+  [/^Herenhuis/, /^Men's house\b/, 'Country house (herenhuis)'],
+  [/door oeverafslag/i, /\bonly later became an island due to a river bend\b/g, 'only later became an island as its shore washed away'],
+  [/door oeverafslag/i, /\bwas only later made into an island by a breakwater\b/g, 'only later became an island as its shore washed away'],
   // "Naar de …" opens an origin: named after it, not "To the …". Runs after
   // the rules above that match a whole "To the …" opening.
-  [/^Naar /, /^To (?=the |[A-Z])/, 'Named after '],
+  [/^Naar /, /^To (?=the |an? |[A-Z'])/, 'Named after '],
   // Grammar the translator gets wrong before a vowel.
   [/./, /\ba (?=(?:inn|embankment|alderman|island|estate|old|important|admiral|officer|engineer|author|actor|actress|architect|artist|area|order|eighteenth|eleventh|inland|English|Amsterdam)\b)/g, 'an '],
   [/tot de vinken behorende/i, /\bbelonging to the sparrows\b/g, 'belonging to the finches'],
