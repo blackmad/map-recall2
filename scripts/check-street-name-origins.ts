@@ -179,4 +179,45 @@ assert.equal(repairOriginTranslation('Een Ringvaart is de boezem van een polder.
 assert.equal(nameGenericOrigin('Mezenstraat', repairOriginTranslation('De zangvogel.', 'The singing bird.'), { mezen: 'tit' }),
   'Named after the tit, a songbird.');
 
+assert.equal(repairOriginTranslation('Jhr. George Gerard Clifford (1779-1847). Thesaurier van Amsterdam.',
+  'Mr. George Gerard Clifford (1779-1847). Thesaurus of Amsterdam.'), 'Jonkheer George Gerard Clifford (1779-1847). Treasurer of Amsterdam.');
+assert.equal(repairOriginTranslation('Mr. Hendrik Ludolf Wichers (1800-1853).', 'Mr. Hendrik Ludolf Wichers (1800-1853).'),
+  'Mr. Hendrik Ludolf Wichers (1800-1853).', 'a Dutch law degree (mr.) is not a jonkheer');
+assert.equal(repairOriginTranslation('Griffier van de Staten van Utrecht (1550-1618).', 'Treasurer of the States of Utrecht (1550-1618).'),
+  'Clerk (griffier) of the States of Utrecht (1550-1618).');
+
+assert.equal(repairOriginTranslation('De overtoom was ter hoogte van de Nieuwendijk.', 'The quay was at the level of the Nieuwendijk.'),
+  'The overtoom (a slipway for hauling boats over a dam) was at the level of the Nieuwendijk.');
+assert.equal(repairOriginTranslation('Toen hij verongelukte', 'When he was killed in a car accident'), 'When he died in an accident', 'no car in the source');
+
+assert.equal(repairOriginTranslation('Een vonder is een smalle houten verbinding over een water.', 'A viaduct is a narrow wooden connection over a body of water.'),
+  'A vonder is a narrow wooden footbridge over a body of water.');
+assert.equal(repairOriginTranslation('Een van de boerengeneraals van Oranje Vrijstaat.', 'One of the farmer generals of the Orange Free State.'),
+  'One of the Boer generals of the Orange Free State.');
+
+assert.equal(repairOriginTranslation('Kasteel onder Haelen. Onder Michiel de Ruyter.', 'Castle under Haelen. Vice-admiral under Michiel de Ruyter.'),
+  'Castle near Haelen. Vice-admiral under Michiel de Ruyter.', 'a place near, a commander under');
+assert.equal(repairOriginTranslation('Ook wel zwaardwalvis.', 'Also known as swordfish, black.'), 'Also known as the killer whale (zwaardwalvis), black.');
+
+assert.equal(repairOriginTranslation('De straat is onder de naam Ringlaan van de vroegere gemeente Watergraafsmeer overgekomen.',
+  'The street has been renamed Ringlaan from the former municipality of Watergraafsmeer.'),
+  'The street came over from the former municipality of Watergraafsmeer under the name Ringlaan.', 'came over under a name, not renamed');
+assert.equal(repairOriginTranslation('namens de PVDA wethouder Onderwijs', 'was from 1979 to 1983 a member of parliament for the PVDA as a councillor for Education'),
+  'was from 1979 to 1983 alderman for the PvdA, responsible for Education');
+
+assert.equal(repairOriginTranslation('Wim Suurbier, rechter verdediger. 3 x winnaar Europa Cup Landskampioenen',
+  'Wim Suurbier, lawyer and defender. 3 x winner European Cup Winners\' Cup'), 'Wim Suurbier, right back. 3 x winner European Cup',
+  'a rechter verdediger is a right back, and the Landskampioenen cup is the European Cup');
+assert.equal(repairOriginTranslation('Voor de Gedempte Nieuwe Looierssloot zie ...', 'For the Drowned Nieuwe Looierssloot, see ...'),
+  'For the filled-in Nieuwe Looierssloot, see ...');
+
+assert.equal(repairOriginTranslation('de Tweede, Derde en Vierde Boerhaavestraat; Eerste Hulp',
+  'For the Second, Third and Fourth Boerhaavestraat; First Aid; the Second Anglo-Dutch War; First and Second Wetering Plantsoen'),
+  'For the Tweede, Derde and Vierde Boerhaavestraat; First Aid; the Second Anglo-Dutch War; Eerste and Tweede Weteringplantsoen',
+  'ordinals stay Dutch only in street names');
+
+assert.equal(repairOriginTranslation('De Korte Geuzenstraat. Anne Frank is in 1945 in het vernietigingskamp Bergen-Belsen overleden.',
+  'The Short Geuzenstraat. Anne Frank died in the Bergen-Belsen extermination camp in 1945. A short walk.'),
+  'The Korte Geuzenstraat. Anne Frank died in the Bergen-Belsen concentration camp in 1945. A short walk.');
+
 process.stdout.write('Street-name origin checks passed\n');
