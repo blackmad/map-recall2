@@ -288,6 +288,8 @@ assert.equal(repairOriginTranslation("Genoemd naar 't Giethuis, de stadsgeschut-
   // Regression: Enny Vredestraat had the end of Enneüs Heerma's CDA career.
   assert.match(published.origins.find(origin => origin.name === 'Enny Vredestraat')!.en, /actress/);
   assert.match(published.origins.find(origin => origin.name === 'Enneüs Heermabrug')!.en, /CDA/);
+  // Regression: the Kinkerstraat record is only the tail of the Kinkerbrug's.
+  assert.match(published.origins.find(origin => origin.name === 'Kinkerstraat')!.en, /Johannes Kinker/);
 }
 assert.equal(repairOriginTranslation('De naam van deze vaste brug verwijst naar de toren.', 'The name of this permanent bridge refers to the tower.'),
   'The name of this fixed bridge refers to the tower.', 'a vaste brug is fixed, not permanent');
