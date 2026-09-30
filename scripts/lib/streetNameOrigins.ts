@@ -708,6 +708,20 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/koek-en-zopietenten/i, /\btwo pie and soup stalls\b/g, 'two koek-en-zopie stalls, selling hot drinks and cake on the ice,'],
   [/Bestuurslid van het Genootschap/i, /\bMember of the Genootschap\b/g, 'Board member of the Genootschap'],
   [/ceintuurweg of gordel/i, /\ba beltway or belt was laid\b/g, 'a ring road (ceintuurweg or gordel) was laid'],
+  // Water origins (2026-09-30).
+  [/zeearm van de Zuiderzee/i, /\ba branch of the North Sea\b/g, 'an arm of the Zuiderzee'],
+  [/afgesloten van de Zuiderzee/i, /\bclosed off from the North Sea\b/g, 'closed off from the Zuiderzee'],
+  [/Oranjesluizen/, /\bthe Orange Locks\b/g, 'the Oranjesluizen'],
+  [/ingepolderd bij de aanleg/i, /\breclaimed by the construction of\b/g, 'reclaimed during the construction of'],
+  [/naar hem genoemde zeestraat/i, /\bthe sea route named after him\b/g, 'the strait named after him'],
+  [/naar zijn vaderstad Hoorn/i, /\bto his hometown Hoorn\b/g, 'after his home town of Hoorn'],
+  [/De Le Mairestraat was op/, /\bThe Le Maire Street was projected and named in a different place\b/g, 'A Le Mairestraat had been planned and named elsewhere'],
+  [/doorbraak van de Zuiderzee door de Diemerdijk/i, /\bDue to a breakthrough of the Zuiderzee through the Diemerdijk in 1422, the new lake was formed under the lake the Bovendiep\b/g,
+    'When the Zuiderzee broke through the Diemerdijk in 1422, the new lake formed below the Bovendiep'],
+  [/op last van prins Maurits/i, /\bat the request of Prince Maurice\b/g, 'on the orders of Prince Maurice'],
+  [/werd aangeplempt/i, /\bwas drained\b/g, 'was built up with fill (aangeplempt)'],
+  [/de Amsterdammer spreekt van het Singel/i, /\(the Amsterdammer speaks of the Singel\)/g, '(Amsterdammers say "het Singel")'],
+  [/de naam Koningsgracht geïntroduceerd/i, /\bthe name Koningsgracht for this purpose\b/g, 'the name Koningsgracht for it'],
   // "Naar de …" opens an origin: named after it, not "To the …". Runs after
   // the rules above that match a whole "To the …" opening.
   [/^Naar /, /^To (?=the |an? |[A-Z'])/, 'Named after '],
