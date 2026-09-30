@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Rachel Ruyschbrug, plus a register-wide scan for
+from 's-Gravelandse Veer to Roosje Vospad, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -38,6 +38,7 @@ next record.
 | Jaap Speyerstraat | [0363300000002395](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002395/) | Its whole text is the last sentence of Jaap Kunst's biography ("En maakte een begin met een van de grootste musicologische collecties in Europa."). | Replaced by a sourced supplement (Wikipedia). |
 | Piet Kranenbergpad | [0363300000006028](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000006028/) | Its text is Piet Keizer's Ajax biography, word for word, the same as the Piet Keizerbrug's ([0363300011950122](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950122/)). |  Replaced by a sourced supplement (Wikipedia). |
 | Nieuwendammerkade | [0363300000003871](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003871/) | Carries the Nieuwendijk's explanation ("Vermoedelijk dankt de Nieuwendijk zijn naam…"), a street in the city centre, not this quay in Noord. | Uses the Nieuwendammerdijk record's explanation of Nieuwendam ([0363300000003870](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003870/)). |
+| Rembrandtpark | [0363300000001738](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001738/) | After the first sentence, explains how the Rembrandtplein got its name (the statue of 1852/1875, the Botermarkt), not the park in West. | Kept only the opening sentence about Rembrandt. |
 
 ## 2. Fragments
 
@@ -61,7 +62,7 @@ next record.
 | Gerrie Mührenbrug | [0363300011950381](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950381/) | The whole text is "Gerrie (Gerrit) Mühren". | Replaced by a sourced supplement (Wikipedia). |
 | Haarlemmersluis | [0363300011950354](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950354/) | "…die de uitvalsweg van Amsterdam naar Haarlem" (no verb). | Translated without the broken edge. |
 | Eva Schalkbrug | [0363300011951791](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951791/) | "…21 jaar lang hoofdingeland van het Hoogheemraadschap" (which one is missing). | Translated without the broken edge. |
-| Robijnstraat | [0363300000004676](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004676/) | "…gaf de straat bij de aanleg de naam Tweede De" | Translated without the broken edge. |
+| Robijnstraat | [0363300000004676](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004676/) | "…gaf de straat bij de aanleg de naam Tweede De" | Translated without the broken edge ("a hard, red gemstone"). |
 | Sint Anthoniesluis | [0363300011950601](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950601/) | "…die tot de zeventiende eeuw buiten de stad lag en" | Translated without the broken edge. |
 | Bickersgracht (water) | [0363300011950695](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950695/) | "…kregen automatisch de naam van de stichter. Voor het" (the street record, [0363300000002930](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002930/), ends cleanly). | Translated without the broken edge. |
 | Hederabrug | [0363300011951351](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951351/) | A stray "Waterland" after the last sentence. | Translated without the broken edge. |
@@ -129,6 +130,8 @@ the municipality's sources.
 | Pieter van der Werfstraat | [0363300000004384](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004384/) | "het beleg van Leiden in 1572" | 1573–1574 | Corrected |
 | Plutostraat | [0363300000004551](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004551/) | "De planeet die het verst van de zon afstaat" | a dwarf planet since 2006 (out of date rather than wrong when written) | Corrected |
 | Pradolaan | [0363300000001312](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001312/) | the Prado "geopend in 1918" | opened in 1819 | Corrected |
+| Raphaëlplein | [0363300000004618](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004618/) | "Raffaëllo di Senti" | Raffaello Santi (Sanzio) | Corrected |
+| Rooseveltlaan | [0363300000004416](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004416/) | president "vanaf 1932" | elected in November 1932, in office from March 1933 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
