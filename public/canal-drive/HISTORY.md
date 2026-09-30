@@ -33,6 +33,9 @@ Reading the best-known streets' cards turned up more:
 - the "Old Wall Church" is the Oude Waalse Kerk;
 - a reference in the middle of a text ("See further …", "See there.") now
   goes too.
+- the Oudeschans "bastion" is a rampart (schans; bastion is bolwerk);
+- Ferdinand Bol's "regency portraits" are regents' group portraits;
+- the Lauriergracht now names the laurel.
 
 The full e2e run after tonight's work passed 150, skipped 58 and failed 10.
 All 10 failures are in the appearance lane and were already on the board.
