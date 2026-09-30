@@ -197,6 +197,14 @@ export const WITHHELD_ORIGINS: Readonly<Record<string, string>> = {
   // The text is the second half of the Dirk de Waterduikerbrug's ("de Jordaan
   // en hij kreeg diverse medailles"), whose own text stops mid-sentence.
   'Dirk van Hasseltssteeg': "the register's text is the end of the Dirk de Waterduikerbrug's",
+  // The whole text is "tot Park Frankendael", a fragment of some other entry.
+  Elim: "the register's text is a fragment",
+  // The water on the Western Islands carries the Elandsgracht's text about
+  // tanning elk and deer hides; eiland (island) is not eland (elk).
+  Eilandsgracht: "the register's text is the Elandsgracht's",
+  // The whole text is "met name op het gebied van het verkeer.", the end of
+  // some other entry.
+  'Piet Wiedijkstraat': "the register's text is a fragment",
 };
 
 const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
