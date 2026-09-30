@@ -3,56 +3,92 @@
   "name": "Dirk van Hasseltssteeg",
   "kind": "street",
   "en": "Named after the skipper Dirk van Hasselt; archive records show that he himself owned a corner house in this alley. Under nos. 2 to 6 lie the remains of foundations, possibly of the thirteenth-century castle of the lords of Amstel.",
-  "sources": ["https://nl.wikipedia.org/wiki/Dirk_van_Hasseltssteeg"],
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Dirk_van_Hasseltssteeg"
+  ],
   "reason": "The register's text is the second half of the Dirk de Waterduikerbrug's."
  },
  {
   "name": "Eilandsgracht",
   "kind": "water",
   "en": "The canal between the Western Islands and the mainland (eiland: island). It dates from the city's third expansion (1610-1615), when the islands were made, and originally ran between the mainland and two of them, the Prinseneiland and the Bickerseiland. The stretch along the Bickerseiland was filled in in 1928.",
-  "sources": ["https://nl.wikipedia.org/wiki/Eilandsgracht"],
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Eilandsgracht"
+  ],
   "reason": "The register carries the Elandsgracht's text about tanning elk hides."
  },
  {
   "name": "Elim",
   "kind": "street",
   "en": "Named after Elim, a village on the Agulhas Plain in the Western Cape of South Africa, founded in 1824 by German missionaries as a Moravian mission station. The street lies in a neighbourhood whose names come from South Africa.",
-  "sources": ["https://en.wikipedia.org/wiki/Elim,_Western_Cape", "https://nl.wikipedia.org/wiki/Lijst_van_straten_in_Amsterdam"],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Elim,_Western_Cape",
+   "https://nl.wikipedia.org/wiki/Lijst_van_straten_in_Amsterdam"
+  ],
   "reason": "The register's whole text is the fragment \"tot Park Frankendael\"."
  },
  {
   "name": "Enny Vredestraat",
   "kind": "street",
   "en": "Enny Vrede, stage name of Maria Magdalena Müller (Utrecht, 3 November 1883 - 2 April 1919), Dutch actress. She made her debut in 1908 with Eduard Verkade's company De Hagespelers, studied in Berlin with Max Reinhardt, and made her name in English society plays as well as in leading roles such as Shakespeare's Juliet and Shaw's Candida. She and her second husband died on the way back from their honeymoon in Norway, when the SS Amstel sank between Gothenburg and Rotterdam; their bodies were never found.",
-  "sources": ["https://nl.wikipedia.org/wiki/Enny_Vrede"],
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Enny_Vrede"
+  ],
   "reason": "The register's text is the second half of Enneüs Heerma's biography."
  },
  {
   "name": "Gerrie Mührenbrug",
   "kind": "bridge",
   "en": "Gerrie Mühren (Volendam, 2 February 1946 - Volendam, 19 September 2013), footballer. In a 22-year career he played for Volendam, Ajax, Real Betis, MVV, Seiko SA and DS '79. With Ajax he won the European Cup three times and the Dutch league three times. He played ten times for the Netherlands.",
-  "sources": ["https://nl.wikipedia.org/wiki/Gerrie_M%C3%BChren"],
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Gerrie_M%C3%BChren"
+  ],
   "reason": "The register's whole text is \"Gerrie (Gerrit) Mühren\"."
  },
  {
   "name": "Hamerstraat",
   "kind": "street",
   "en": "Named after the hammer. The street lies in the industrial part of Amsterdam-Noord where streets are named after tools and workshop materials, such as the Aambeeldstraat (anvil) and the Hamerkanaal.",
-  "sources": ["https://nl.wikipedia.org/wiki/Lijst_van_straten_in_Amsterdam", "https://nl.wikipedia.org/wiki/Zamenhofstraat"],
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Lijst_van_straten_in_Amsterdam",
+   "https://nl.wikipedia.org/wiki/Zamenhofstraat"
+  ],
   "reason": "The register's text is part of Piet Meerburg's biography."
+ },
+ {
+  "name": "Jaap Nunes Vazstraat",
+  "kind": "street",
+  "en": "Jacob (Jaap) Nunes Vaz (Amsterdam, 20 September 1906 - Sobibor, 13 March 1943), Jewish journalist and one of the founders of the resistance newspaper Het Parool. Dismissed by the ANP press agency on the day the Netherlands surrendered in May 1940 because he was Jewish, he hosted Het Parool's first editorial meeting in his room on the Keizersgracht in December 1940. He refused to wear the yellow star, went into hiding in Wageningen in 1942. The Germans found his address; he was arrested in October 1942 and taken via the Oranjehotel prison and Westerbork to Sobibor, where he was murdered. The street was named after him in 1953.",
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Jaap_Nunes_Vaz"
+  ],
+  "reason": "The register's text is the middle of Jaap Kunst's biography."
+ },
+ {
+  "name": "Jaap Speyerstraat",
+  "kind": "street",
+  "en": "Jaap Speyer (Amsterdam, 29 November 1891 - Amsterdam, 17 September 1952), Dutch film director. He learned film-making in Berlin, where he directed his first film in 1917, and returned to the Netherlands as the Nazis rose to power. His De Jantjes (1934) drew at least 100,000 Dutch cinema-goers, and his last film, Een koninkrijk voor een huis (1949), drew even more.",
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Jaap_Speyer"
+  ],
+  "reason": "The register's text is the last sentence of Jaap Kunst's biography."
  },
  {
   "name": "Piet Kranenbergpad",
   "kind": "street",
   "en": "Named after Piet Kranenberg, one of the people who saved the Olympic Stadium beside this path. In 1996, with Bram Mulder and the stadium director Otto Roffel, he set up the rescue and operating plan that led to its renovation, begun in 1998.",
-  "sources": ["https://nl.wikipedia.org/wiki/Olympisch_Stadion_(Amsterdam)"],
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Olympisch_Stadion_(Amsterdam)"
+  ],
   "reason": "The register's text is Piet Keizer's Ajax record."
  },
  {
   "name": "Piet Wiedijkstraat",
   "kind": "street",
   "en": "Named after the pharmacist and writer Piet Wiedijk (died 1938), who wrote the first biography of Multatuli under the pseudonym J. Saks.",
-  "sources": ["https://nl.wikipedia.org/wiki/Piet_Wiedijkpark"],
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Piet_Wiedijkpark"
+  ],
   "reason": "The register's whole text is the fragment \"met name op het gebied van het verkeer.\""
  }
 ]

@@ -47,6 +47,10 @@ Street-name origins are now retranslated whole by a language model:
   Stadium's rescuers) and Piet Wiedijkstraat. Each attribution was checked
   against the street's position, for example Elim among the South African
   names and Enny Vrede among the actresses in Slotervaart.
+  Jaap Kunst's biography runs across three records; Jaap Nunes Vazstraat
+  and Jaap Speyerstraat now show their own people. The register also shows
+  a search-and-replace of "centrum" by "Amsterdam-Centrum" (Batavia, "het
+  bestuurlijke Amsterdam-Centrum Azië").
 
 ## 2026-09-30 — Street-name translations: a random sample of 30, 14 wrong
 
