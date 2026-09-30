@@ -151,7 +151,11 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           game._visitedNeighborhoods = new Set(['a', 'b', 'c']);
           game._seenLandmarkNames = new Set(['a', 'b']);
           game._explorationSnapshot = {
+            // The arrival card counts transit too; without these it threw and
+            // every finish story showed an empty dimmed map (found by the
+            // screenshot comparison, 2026-09-30).
             totalRoutes: 3, learnedWaterways: new Array(14).fill('w'), learnedStreets: [],
+            learnedTransitLines: [], learnedTransitStops: [],
             visitedNeighborhoods: new Array(8).fill('n'), seenLandmarks: new Array(8).fill('l'),
           };
           game._ribbon = calm ? null : {
