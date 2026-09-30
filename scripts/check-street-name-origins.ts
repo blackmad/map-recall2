@@ -68,6 +68,10 @@ assert.equal(repairOriginTranslation('Naar de Heren Regeerders van de stad (De s
 assert.equal(repairOriginTranslation('Een schans is een aarden wal en als zodanig is de Oudeschans gebouwd.', 'A bastion is an earthen wall and as such the Oudeschans was built.'),
   'A rampart is an earthen wall and as such the Oudeschans was built.');
 assert.equal(nameGenericOrigin('Lauriergracht', 'The South European ornamental tree', { laurier: 'laurel' }), 'Named after the laurel, a South European ornamental tree.');
+assert.equal(repairOriginTranslation('Van 1974 tot 1980 lid van de Eerste Kamer.', 'From 1974 to 1980 member of the House of Lords.'),
+  'From 1974 to 1980 member of the Senate (Eerste Kamer).');
+assert.equal(repairOriginTranslation('De oude schutterij kreeg in 1522 geweren of kloveren.', 'In 1522 the old shooting club received rifles or crossbows.'),
+  'In 1522 the old civic guard received firearms (klovers, or arquebuses).');
 // Cross-references a card cannot follow, and register index noise (Goudbalpad, Blancefloorstraat, Rozenstraat).
 assert.deepEqual(withoutCrossReference('A pear variety. The street is on the former allotments De Bongerd. See Boomgaardlaan.'),
   { text: 'A pear variety. The street is on the former allotments De Bongerd.' });
