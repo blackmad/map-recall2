@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name origins: retranslation complete
+
+All 4,340 distinct Dutch texts that the game looks up are now retranslated
+(`origin-translation-batch.ts status`: 0 left), and no published card uses
+`trn` English any more. Two cards, Weteringstraat and Nieuwe
+Weteringstraat, were missing from the batch source and were translated by
+hand. The remaining ~1,400 register records without a retranslation are
+names the game never shows.
+- `docs/amsterdam-street-name-register-errors.md` lists 148 register errors,
+  each with a link to its BAG record: 18 misfiled texts, 10 fragments, 15
+  cut off at the end, 98 factual errors, 3 misspellings and 4
+  search-and-replace hits. It is ready to send to the municipality.
+- Newly withheld because the text is another name's: Scharwouderstraat
+  (the Scharrebiersluis's beer), Scheepmakerskade (a bridge),
+  Smallepadsgracht (the Smalschipstraat's boat) and Smaragdplein (the
+  Smederij's smithy). The register's whole Trimurtistraat text is
+  "Trimur: onafhankelijkheid"; the card now names S.K. Trimurti, sourced
+  from en.wikipedia and the 2019 Centrumeiland naming. Broken edges on
+  Vredenburgerbrug, Volewijckbrug, Wim Suurbierbrug and Sint
+  Antoniesbreestraat are completed from sibling records that carry the
+  same text.
+- `ORIGIN_GLOSSARY` measured against the new English: 1 of its 451 rules
+  still fires ("the allied nobles" on the three Geuzen names). That text is
+  now fixed in the cache, so the glossary changes no published card. It
+  still repairs `--trn` output and is covered by about 80 asserts, so it
+  stays until someone removes it together with those asserts.
+- Lesson: a supplement keyed `bridge` never matched, because the game looks
+  up the Na Druk Gelukbrug as a street. The failed check went unnoticed
+  because its output was piped through `tail`, and the commit went in
+  anyway. Supplements are now keyed by the register record's kind, and
+  commits are gated on the check's exit code.
+
 ## 2026-09-30 — Street-name origins: retranslating off `trn`
 
 Random samples kept finding mistranslations in the on-device `trn` text (14

@@ -5,9 +5,9 @@ links to the live record in the municipal BAG API
 (`https://api.data.amsterdam.nl/v1/bag/openbareruimtes/<id>/`), the source
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
-The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Zeelandstraat, plus a register-wide scan for
-texts that start or stop mid-sentence.
+It covers every name in the register, from 's-Gravelandse Veer to
+Zwenkgrasstraat (4,340 distinct texts, all retranslated by hand), plus a
+register-wide scan for texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
 (`WITHHELD_ORIGINS` in `scripts/lib/streetNameOrigins.ts`, checked by
@@ -30,7 +30,7 @@ next record.
 | Enneüs Heermabrug | [0363300011950195](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950195/) | Only the first sentence: "Deze brug is vernoemd naar Enneüs Heerma (1944-1999)." | Repaired: joined with the next row's text. |
 | Enny Vredestraat | [0363300000002843](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002843/) | Its whole text is the rest of Heerma's career: "Hij was voor het CDA wethouder… fractievoorzitter van het CDA in de Tweede Kamer." Enny Vrede's own text is missing. |  Replaced by a sourced supplement (Wikipedia). |
 | Hamerstraat | [0363300000003331](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003331/) | "Hij redde … samen met Lau Mazirel en Walter Süskind … oprichters van … Kriterion": part of Piet Meerburg's biography, not the Hamerkanaal street's origin. | Replaced by a sourced supplement (Wikipedia); the paragraph is restored to the Piet Meerburgbrug's card. |
-| Piet Meerburgbrug | [0363300011951254](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951254/) | Complete on its own, but missing the paragraph now under Hamerstraat. | Not yet reached. |
+| Piet Meerburgbrug | [0363300011951254](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951254/) | Complete on its own, but missing the paragraph now under Hamerstraat. | Repaired: the Hamerstraat paragraph is appended. |
 | Eilandsgracht | [0363300011950501](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950501/) | Carries the Elandsgracht's text word for word ("huiden van elanden, herten, beren"): eiland (island) confused with eland (elk). |  Replaced by a sourced supplement (Wikipedia). |
 | Elandsgracht | [0363300000002818](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002818/) | Correct, and the source of the Eilandsgracht copy. | Kept. |
 | Jaap Kunstbrug | [0363300011951948](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951948/) | Stops after his Java years; the rest of his biography is in the next two records. | Repaired: joined with the next two rows' text. |
@@ -56,8 +56,8 @@ next record.
 | Na Druk Gelukbrug | [0363300011950397](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950397/) | Starts mid-sentence, repeats its first clause ("…aan de toenmalige Brug is vernoemd naar…"), and stops at "De naam van deze boerderij refereert". | Replaced by a sourced supplement (nl.wikipedia, Olympisch Kwartier). |
 | Jan Poytstraat | [0363300011951814](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951814/) | Carries a stray sentence from another architect's record: "Simon van Woerden (1902-1998) heeft rond 1958 de Bethelkerk ontworpen." | Translated without the stray sentence. |
 | Lizzy Ansinghstraat | [0363300000005728](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005728/) | Ends with a spliced-in piece of the Nicolaas Anslijnstraat record ([0363300000003854](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003854/)), register markup included: "Anslijnstraat, Nicolaas Osdorp Rb. 15-4-1959 14: l 6 Onderwijshervormer (1778-1838)…" | Translated without the spliced text. |
-| Bastingstraat | [0363300000002489](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002489/) | Starts mid-sentence: "het Mosplein. Voor deze buurt…". Says nothing about Basting. | Earlier translation; to review. |
-| Badhuiskade | [0363300003695538](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003695538/) | Starts mid-sentence: "vroegere badinrichting Obelt, gebouwd 1914…". | Earlier translation; to review. |
+| Bastingstraat | [0363300000002489](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002489/) | Starts mid-sentence: "het Mosplein. Voor deze buurt…". Says nothing about Basting. | Broken edge trimmed; the card says only that the neighbourhood's streets are named after Amsterdam-Noord housing architects. No source found for Basting himself. |
+| Badhuiskade | [0363300003695538](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003695538/) | Starts mid-sentence: "vroegere badinrichting Obelt, gebouwd 1914…". | Translated from the surviving part ("Named after the former Obelt bathhouse…"), which reads complete. |
 
 ## 3. Cut off at the end
 
@@ -184,6 +184,9 @@ the municipality's sources.
 | Willem Schoutenstraat | [0363300000004909](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004909/) | born 1580 | born c. 1567 | Corrected |
 | William Boothstraat | [0363300000004916](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004916/) | died 1914 | died 20 August 1912 | Corrected |
 | Zacharias Jansestraat | [0363300000004946](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004946/) | "(1580-1620), uitvinder van de verrekijker" | c. 1585 – c. 1632; the invention is disputed (Lipperhey filed the first patent in 1608) | Corrected |
+| Zennehof | [0363300000001300](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001300/) | "Kanaal in België, nabij Brussel" | the Zenne (Senne) is a river through Brussels | Corrected |
+| Zenostraat | [0363300000005561](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005561/) | 342–270 BC | c. 334 – c. 262 BC | Corrected |
+| Zilverschoonstraat | [0363300000005564](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005564/) | silverweed "behorende tot de ranonkelfamilie" | rose family (Potentilla anserina) | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
