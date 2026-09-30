@@ -1,0 +1,1825 @@
+{
+  "version": 1,
+  "scope": "Broad upper-wall material diagnostic; no training/publication acceptance",
+  "assignmentSha256": "f69ba60fa78b034f8a3fb16251bcd86d39f5d8506f9b51228f160ee7498598ca",
+  "budget": {
+    "authorizedApiCeilingUsd": 25,
+    "paidCalls": 0,
+    "trainingAuthorized": false
+  },
+  "splitPolicy": "40 development including all ten renderer cases; 20 Lauriergracht evaluation. Owner/image/street disjoint. Shared panorama identity unavailable; no panorama-disjoint claim. Existing model references are not independent ground truth.",
+  "acceptance": {
+    "materialAgreementOnKnown": 0.95,
+    "falseAcceptOnUnknown": 0,
+    "minimumKnownCoverage": 0.8,
+    "renderGate": "All ten cases independently demonstrated in both views; currently incomplete"
+  },
+  "limitations": [
+    "No stone/concrete reference examples",
+    "Colour bins may overlap; compatibility is not exact colour accuracy",
+    "No region masks or metric texture labels",
+    "Evaluation street is geographically narrow"
+  ],
+  "entries": [
+    {
+      "index": 0,
+      "buildingId": "0363100012166570",
+      "observationId": "0363100012166570_e_0wwk20u",
+      "address": "Da Costakade 13",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64.jpg",
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "dimensions": [
+        263,
+        892
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": {
+        "normalizedXYXY": [
+          0.03,
+          0.26,
+          0.96,
+          0.79
+        ],
+        "origin": "model-visual-review",
+        "scope": "upper-wall crop; not segmentation or geographic identity certification"
+      }
+    },
+    {
+      "index": 1,
+      "buildingId": "0363100012162796",
+      "observationId": "0363100012162796_e_13u2mzl",
+      "address": "Allard Piersonstraat 2",
+      "street": "Allard Piersonstraat",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262.jpg",
+      "sourceSha256": "e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262",
+      "dimensions": [
+        281,
+        734
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": {
+        "normalizedXYXY": [
+          0.65,
+          0.4,
+          0.98,
+          0.86
+        ],
+        "origin": "model-visual-review",
+        "scope": "upper-wall crop; not segmentation or geographic identity certification"
+      }
+    },
+    {
+      "index": 3,
+      "buildingId": "0363100012162897",
+      "observationId": "0363100012162897_e_0c4e2gf",
+      "address": "Da Costakade 182",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb.jpg",
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "dimensions": [
+        275,
+        892
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "buff",
+          "cream"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": {
+        "normalizedXYXY": [
+          0.03,
+          0.27,
+          0.96,
+          0.76
+        ],
+        "origin": "model-visual-review",
+        "scope": "upper-wall crop; not segmentation or geographic identity certification"
+      }
+    },
+    {
+      "index": 4,
+      "buildingId": "0363100012165154",
+      "observationId": "0363100012165154_e_16tobqf",
+      "address": "Da Costakade 40",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1.jpg",
+      "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "dimensions": [
+        282,
+        798
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": false,
+        "correction": "Native source shows regular brick courses and masonry heads; prior unknown material contradicted visible evidence. Broad grey/brown illumination remains uncertain.",
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": {
+        "normalizedXYXY": [
+          0.02,
+          0.19,
+          0.98,
+          0.76
+        ],
+        "origin": "model-visual-review",
+        "scope": "upper-wall crop; not segmentation or geographic identity certification"
+      }
+    },
+    {
+      "index": 10,
+      "buildingId": "0363100012168920",
+      "observationId": "0363100012168920_e_0bxls2d",
+      "address": "Elandsgracht 148",
+      "street": "Elandsgracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767.jpg",
+      "sourceSha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
+      "dimensions": [
+        388,
+        577
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": {
+        "normalizedXYXY": [
+          0.04,
+          0.08,
+          0.84,
+          0.69
+        ],
+        "origin": "model-visual-review",
+        "scope": "upper-wall crop; not segmentation or geographic identity certification"
+      }
+    },
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "address": "Frederik Hendrikstraat 202 / Frederik Hendrikstraat 204 / Frederik Hendrikstraat 206 / Frederik Hendrikstraat 208 / Frederik Hendrikstraat 210 / Frederik Hendrikstraat 216 / Frederik Hendrikstraat 212 / Frederik Hendrikstraat 200 / Frederik Hendrikstraat 214 / Frederik Hendrikstraat 218 / Frederik Hendrikstraat 220",
+      "street": "Frederik Hendrikstraat",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30.jpg",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "dimensions": [
+        644,
+        864
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "render",
+        "colourFamilies": [
+          "buff",
+          "cream"
+        ],
+        "priorMaterial": "render-plaster",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": {
+        "normalizedXYXY": [
+          0.19,
+          0.13,
+          0.94,
+          0.8
+        ],
+        "origin": "model-visual-review",
+        "scope": "upper-wall crop; not segmentation or geographic identity certification"
+      }
+    },
+    {
+      "index": 15,
+      "buildingId": "0363100012174169",
+      "observationId": "0363100012174169_e_1w30ns5",
+      "address": "Rozengracht 142",
+      "street": "Rozengracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d.jpg",
+      "sourceSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
+      "dimensions": [
+        238,
+        791
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": {
+        "normalizedXYXY": [
+          0.07,
+          0.24,
+          0.98,
+          0.72
+        ],
+        "origin": "model-visual-review",
+        "scope": "upper-wall crop; not segmentation or geographic identity certification"
+      }
+    },
+    {
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "observationId": "0363100012094649_e_16jqzp7",
+      "address": "Van Houweningenstraat 197 / Van Houweningenstraat 199 / Van Houweningenstraat 201 / Van Houweningenstraat 203 / Van Houweningenstraat 205 / Van Houweningenstraat 207 / Van Houweningenstraat 209 / Van Houweningenstraat 211 / Van Houweningenstraat 213",
+      "street": "Van Houweningenstraat",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee.jpg",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "dimensions": [
+        679,
+        699
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "render",
+        "colourFamilies": [
+          "buff",
+          "cream"
+        ],
+        "priorMaterial": "render-plaster",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": {
+        "normalizedXYXY": [
+          0.04,
+          0.18,
+          0.99,
+          0.73
+        ],
+        "origin": "model-visual-review",
+        "scope": "upper-wall crop; not segmentation or geographic identity certification"
+      }
+    },
+    {
+      "index": 30,
+      "buildingId": "0363100012236796",
+      "observationId": "0363100012236796_e_1wk1kml",
+      "address": "Da Costakade 102",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91.jpg",
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "dimensions": [
+        187,
+        867
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "render",
+        "colourFamilies": [
+          "white",
+          "cream"
+        ],
+        "priorMaterial": "render-plaster",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": {
+        "normalizedXYXY": [
+          0.04,
+          0.3,
+          0.95,
+          0.72
+        ],
+        "origin": "model-visual-review",
+        "scope": "upper-wall crop; not segmentation or geographic identity certification"
+      }
+    },
+    {
+      "index": 64,
+      "buildingId": "0363100012157926",
+      "observationId": "0363100012157926_e_012eimg",
+      "address": "Da Costakade 167 / Kinkerstraat 49",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e.jpg",
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "dimensions": [
+        353,
+        798
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": {
+        "normalizedXYXY": [
+          0.05,
+          0.31,
+          0.99,
+          0.72
+        ],
+        "origin": "model-visual-review",
+        "scope": "upper-wall crop; not segmentation or geographic identity certification"
+      }
+    },
+    {
+      "index": 46,
+      "buildingId": "0363100012167877",
+      "observationId": "0363100012167877_e_1dcf5va",
+      "address": "Rozengracht 160",
+      "street": "Rozengracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660.jpg",
+      "sourceSha256": "2a78e9b4fdb0d8fda52198952942c456722872a43abdf165b06204bdbed6e660",
+      "dimensions": [
+        271,
+        597
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 27,
+      "buildingId": "0363100012170088",
+      "observationId": "0363100012170088_e_0idr2lr",
+      "address": "Rozengracht 60",
+      "street": "Rozengracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/3223287c23e5334519608af0c3ae7da2b6b2d22a2873e05da670d004fed5880f.jpg",
+      "sourceSha256": "3223287c23e5334519608af0c3ae7da2b6b2d22a2873e05da670d004fed5880f",
+      "dimensions": [
+        191,
+        645
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 62,
+      "buildingId": "0363100012170144",
+      "observationId": "0363100012170144_e_1n3e2zb",
+      "address": "Rozengracht 78",
+      "street": "Rozengracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/89b783ddf4edfd0441141029292be25d0b79b12656e35060a3a51588158d7fe2.jpg",
+      "sourceSha256": "89b783ddf4edfd0441141029292be25d0b79b12656e35060a3a51588158d7fe2",
+      "dimensions": [
+        261,
+        834
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "buff",
+          "cream"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 19,
+      "buildingId": "0363100012156057",
+      "observationId": "0363100012156057_e_1qwmq6j",
+      "address": "Da Costakade 46",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/9ad1e92293cd81284985fc98955dbbfb87bc9f58e99868adbf2ed6c85862081f.jpg",
+      "sourceSha256": "9ad1e92293cd81284985fc98955dbbfb87bc9f58e99868adbf2ed6c85862081f",
+      "dimensions": [
+        280,
+        823
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 7,
+      "buildingId": "0363100012159182",
+      "observationId": "0363100012159182_e_0nqcs47",
+      "address": "De Clercqstraat 12",
+      "street": "De Clercqstraat",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/3ebffa1679909575e0f469549d20366df1a91a3d9ab0b16da50bbba4e2407b57.jpg",
+      "sourceSha256": "3ebffa1679909575e0f469549d20366df1a91a3d9ab0b16da50bbba4e2407b57",
+      "dimensions": [
+        288,
+        800
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 99,
+      "buildingId": "0363100012073508",
+      "observationId": "0363100012073508_e_0vmx9l7",
+      "address": "Da Costakade 123 / Da Costakade 125 / Da Costakade 127",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/8581ab026af56453a493a8181cacd306f71dc1c5cdd17bae3f921e4ec787a61d.jpg",
+      "sourceSha256": "8581ab026af56453a493a8181cacd306f71dc1c5cdd17bae3f921e4ec787a61d",
+      "dimensions": [
+        585,
+        692
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "mixed",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 73,
+      "buildingId": "0363100012159112",
+      "observationId": "0363100012159112_e_0xfdv8v",
+      "address": "Da Costakade 70",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/3c804a561288aa625e33b462780ee5a0b30a76daa218305df60c13240efb599c.jpg",
+      "sourceSha256": "3c804a561288aa625e33b462780ee5a0b30a76daa218305df60c13240efb599c",
+      "dimensions": [
+        179,
+        733
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "painted-brick",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "painted-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 50,
+      "buildingId": "0363100012237236",
+      "observationId": "0363100012237236_e_07oi4ua",
+      "address": "De Clercqstraat 44 / Bilderdijkstraat 31 / Bilderdijkstraat 33 / De Clercqstraat 42",
+      "street": "De Clercqstraat",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/769c58df33953cac54e174af017fab3bda718cdf0a132d042f49b4d36913d9ff.jpg",
+      "sourceSha256": "769c58df33953cac54e174af017fab3bda718cdf0a132d042f49b4d36913d9ff",
+      "dimensions": [
+        821,
+        833
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "render",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "render-plaster",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 40,
+      "buildingId": "0363100012154205",
+      "observationId": "0363100012154205_e_1aluzx5",
+      "address": "Da Costakade 77",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/45cbef0ded656258d6e09e1f4ae48bfbbd0b11c85ecc495198af94b22486273f.jpg",
+      "sourceSha256": "45cbef0ded656258d6e09e1f4ae48bfbbd0b11c85ecc495198af94b22486273f",
+      "dimensions": [
+        326,
+        828
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 18,
+      "buildingId": "0363100012166397",
+      "observationId": "0363100012166397_e_08rpzbw",
+      "address": "Da Costakade 95 / Potgieterstraat 32",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/92836709b5ce82d22da4e187bd4963cbbad3c0de6284f0c976545234cc932b42.jpg",
+      "sourceSha256": "92836709b5ce82d22da4e187bd4963cbbad3c0de6284f0c976545234cc932b42",
+      "dimensions": [
+        823,
+        764
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 33,
+      "buildingId": "0363100012169621",
+      "observationId": "0363100012169621_e_17b6ps7",
+      "address": "Elandsgracht 51",
+      "street": "Elandsgracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/073e168197dffe1f6c671e4db4a5e5f9101d65aef8c3d50bc3e8c52b95ece31c.jpg",
+      "sourceSha256": "073e168197dffe1f6c671e4db4a5e5f9101d65aef8c3d50bc3e8c52b95ece31c",
+      "dimensions": [
+        245,
+        618
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "black",
+          "grey"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 9,
+      "buildingId": "0363100012170186",
+      "observationId": "0363100012170186_e_09fw20r",
+      "address": "Elandsgracht 88",
+      "street": "Elandsgracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/3630ec30fb87cf536e3f92536d256c5578c84144fbdb4cc52c8567718488e200.jpg",
+      "sourceSha256": "3630ec30fb87cf536e3f92536d256c5578c84144fbdb4cc52c8567718488e200",
+      "dimensions": [
+        261,
+        767
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 20,
+      "buildingId": "0363100012064291",
+      "observationId": "0363100012064291_e_06e507d",
+      "address": "De Clercqstraat 70",
+      "street": "De Clercqstraat",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/dcf6a3bd48cb4145487ed2baeb08d2744e5c3a52909aa8bd3e0e69921fc07c2b.jpg",
+      "sourceSha256": "dcf6a3bd48cb4145487ed2baeb08d2744e5c3a52909aa8bd3e0e69921fc07c2b",
+      "dimensions": [
+        280,
+        793
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 70,
+      "buildingId": "0363100012168649",
+      "observationId": "0363100012168649_e_00c6tmy",
+      "address": "Rozengracht 57",
+      "street": "Rozengracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/a3f1c5172ff1ae96227cd7659ffad871fa044b7cf3c41cdc20d8da0b0765cbe0.jpg",
+      "sourceSha256": "a3f1c5172ff1ae96227cd7659ffad871fa044b7cf3c41cdc20d8da0b0765cbe0",
+      "dimensions": [
+        284,
+        991
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "buff",
+          "cream"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 48,
+      "buildingId": "0363100012163422",
+      "observationId": "0363100012163422_e_1wc57v0",
+      "address": "Da Costakade 204 / Jacob van Lennepstraat 41",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/5912311cce2d6cfc9b8de8553987eb37b77ea57b4d679501cd33d9e4c80607c1.jpg",
+      "sourceSha256": "5912311cce2d6cfc9b8de8553987eb37b77ea57b4d679501cd33d9e4c80607c1",
+      "dimensions": [
+        238,
+        716
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 37,
+      "buildingId": "0363100012170146",
+      "observationId": "0363100012170146_e_15sat8c",
+      "address": "Rozengracht 74 / Rozengracht 78",
+      "street": "Rozengracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/052697332e686dd4d8cb05ad7acded0a93280657d078b45c8fe971959fae510c.jpg",
+      "sourceSha256": "052697332e686dd4d8cb05ad7acded0a93280657d078b45c8fe971959fae510c",
+      "dimensions": [
+        285,
+        842
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 78,
+      "buildingId": "0363100012168644",
+      "observationId": "0363100012168644_e_0kxn3w7",
+      "address": "Rozengracht 26",
+      "street": "Rozengracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/771d6bb33004042e398858d48cf811406fcb4cbe1fe29ae68f42eac37be13923.jpg",
+      "sourceSha256": "771d6bb33004042e398858d48cf811406fcb4cbe1fe29ae68f42eac37be13923",
+      "dimensions": [
+        227,
+        739
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "render",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "render-plaster",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 23,
+      "buildingId": "0363100012168929",
+      "observationId": "0363100012168929_e_0a506dn",
+      "address": "Elandsgracht 122",
+      "street": "Elandsgracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/3fbf4e5a698ef605c90a8dc4d3392e07907114d3d0585a651763add7284070c9.jpg",
+      "sourceSha256": "3fbf4e5a698ef605c90a8dc4d3392e07907114d3d0585a651763add7284070c9",
+      "dimensions": [
+        329,
+        897
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 38,
+      "buildingId": "0363100012175000",
+      "observationId": "0363100012175000_e_1opro3y",
+      "address": "Rozengracht 115",
+      "street": "Rozengracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/b4dff4b80c1c864ade6e924313bae0fbee188dcf621de70a5d5c57b2d60cec31.jpg",
+      "sourceSha256": "b4dff4b80c1c864ade6e924313bae0fbee188dcf621de70a5d5c57b2d60cec31",
+      "dimensions": [
+        216,
+        746
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "black",
+          "grey"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 39,
+      "buildingId": "0363100012163064",
+      "observationId": "0363100012163064_e_068m6ak",
+      "address": "Da Costakade 2 / Hugo de Grootkade 1",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/105a7a024e1f8825dedb993d6dc7c2e3ef0d2442395755a2fed2732f2faa2f0f.jpg",
+      "sourceSha256": "105a7a024e1f8825dedb993d6dc7c2e3ef0d2442395755a2fed2732f2faa2f0f",
+      "dimensions": [
+        467,
+        962
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 54,
+      "buildingId": "0363100012167878",
+      "observationId": "0363100012167878_e_07hebf3",
+      "address": "Rozengracht 158",
+      "street": "Rozengracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5.jpg",
+      "sourceSha256": "8d873cf946f8a85908523a369b6ce36dfd7aad931ad0e087888872c72c70c0b5",
+      "dimensions": [
+        163,
+        723
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 59,
+      "buildingId": "0363100012170196",
+      "observationId": "0363100012170196_e_1k62i7a",
+      "address": "Elandsgracht 43",
+      "street": "Elandsgracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/04f1092089650c377922fadc4ce1424a3463435c78032e061281be9b9e390b25.jpg",
+      "sourceSha256": "04f1092089650c377922fadc4ce1424a3463435c78032e061281be9b9e390b25",
+      "dimensions": [
+        246,
+        632
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "buff",
+          "cream"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 8,
+      "buildingId": "0363100012166409",
+      "observationId": "0363100012166409_e_0azpu0d",
+      "address": "De Clercqstraat 38",
+      "street": "De Clercqstraat",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/3efae179aee5aae24762ffdd984c023f8e014018772f949e50e94a2d3dd3401b.jpg",
+      "sourceSha256": "3efae179aee5aae24762ffdd984c023f8e014018772f949e50e94a2d3dd3401b",
+      "dimensions": [
+        280,
+        825
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 31,
+      "buildingId": "0363100012236815",
+      "observationId": "0363100012236815_e_0zv81ra",
+      "address": "De Clercqstraat 1 / De Clercqstraat 3 / De Clercqstraat 5",
+      "street": "De Clercqstraat",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/b91842f6d2d13b5ed7caf3319c048aa248c5d812dcd2bb68c54651fcdc1def1f.jpg",
+      "sourceSha256": "b91842f6d2d13b5ed7caf3319c048aa248c5d812dcd2bb68c54651fcdc1def1f",
+      "dimensions": [
+        637,
+        758
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 47,
+      "buildingId": "0363100012174000",
+      "observationId": "0363100012174000_e_1626xz1",
+      "address": "Rozengracht 51",
+      "street": "Rozengracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/d865fc4c1a3bc849874f149818fc8942804719e22e2d0680ab3cf1cef3266470.jpg",
+      "sourceSha256": "d865fc4c1a3bc849874f149818fc8942804719e22e2d0680ab3cf1cef3266470",
+      "dimensions": [
+        244,
+        751
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 22,
+      "buildingId": "0363100012170054",
+      "observationId": "0363100012170054_e_0by4u0f",
+      "address": "Elandsgracht 73",
+      "street": "Elandsgracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/71e099916e4ee06101670b6cbcdd59a797f6565062337963cb7415f9a3489836.jpg",
+      "sourceSha256": "71e099916e4ee06101670b6cbcdd59a797f6565062337963cb7415f9a3489836",
+      "dimensions": [
+        210,
+        882
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 67,
+      "buildingId": "0363100012170198",
+      "observationId": "0363100012170198_e_1wjd1ln",
+      "address": "Elandsgracht 68",
+      "street": "Elandsgracht",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/d2efba4dadeddcd808f19cdd8570e3c1a1df08482cd5480f89eb1cbbb3203fb7.jpg",
+      "sourceSha256": "d2efba4dadeddcd808f19cdd8570e3c1a1df08482cd5480f89eb1cbbb3203fb7",
+      "dimensions": [
+        268,
+        712
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "buff",
+          "cream"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 49,
+      "buildingId": "0363100012153010",
+      "observationId": "0363100012153010_e_0t1g4df",
+      "address": "Da Costakade 68",
+      "street": "Da Costakade",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/48b1bdc3737b16137edb45e357aed9800f3745feefbf022e2c33a0cb6c8da474.jpg",
+      "sourceSha256": "48b1bdc3737b16137edb45e357aed9800f3745feefbf022e2c33a0cb6c8da474",
+      "dimensions": [
+        163,
+        725
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 41,
+      "buildingId": "0363100012236418",
+      "observationId": "0363100012236418_e_0ypeler",
+      "address": "De Clercqstraat 65",
+      "street": "De Clercqstraat",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/d3151f09f92a2169aed1d52e0c3f95f806f9bdb89441d4925d01921334a734f0.jpg",
+      "sourceSha256": "d3151f09f92a2169aed1d52e0c3f95f806f9bdb89441d4925d01921334a734f0",
+      "dimensions": [
+        281,
+        907
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 58,
+      "buildingId": "0363100012157989",
+      "observationId": "0363100012157989_e_015txxo",
+      "address": "De Clercqstraat 21",
+      "street": "De Clercqstraat",
+      "split": "development",
+      "crop": "/data/city-expansion/evidence/70d891ad35ee4f33209a2a235616c1f06ee0fa1ed5b27eb8fc29d5f2b078126a.jpg",
+      "sourceSha256": "70d891ad35ee4f33209a2a235616c1f06ee0fa1ed5b27eb8fc29d5f2b078126a",
+      "dimensions": [
+        283,
+        837
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 13,
+      "buildingId": "0363100012173914",
+      "observationId": "0363100012173914_e_1un6nri",
+      "address": "Lauriergracht 29",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114.jpg",
+      "sourceSha256": "6ac5d51a5abdd9569aea2d8b86dcbb861b4b785449e641104ce72a16ab799114",
+      "dimensions": [
+        449,
+        799
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "render",
+        "colourFamilies": [
+          "buff",
+          "cream"
+        ],
+        "priorMaterial": "render-plaster",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 14,
+      "buildingId": "0363100012173926",
+      "observationId": "0363100012173926_e_1b2i50t",
+      "address": "Lauriergracht 7",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/294b029d72ea7c8f8079422ab57b50ab95b509768abb56083b4e76b1bcf227e0.jpg",
+      "sourceSha256": "294b029d72ea7c8f8079422ab57b50ab95b509768abb56083b4e76b1bcf227e0",
+      "dimensions": [
+        198,
+        555
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "grey"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 25,
+      "buildingId": "0363100012169894",
+      "observationId": "0363100012169894_e_1b99ler",
+      "address": "Lauriergracht 96 / Lauriergracht 98",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/abb4ae73ce2690c935c7dd550d758ae937ca575f5ed2c90b0bf470aaa2b55ebd.jpg",
+      "sourceSha256": "abb4ae73ce2690c935c7dd550d758ae937ca575f5ed2c90b0bf470aaa2b55ebd",
+      "dimensions": [
+        523,
+        737
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 26,
+      "buildingId": "0363100012173922",
+      "observationId": "0363100012173922_e_1h64jk6",
+      "address": "Lauriergracht 1",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/b5cec6ce06fb7382d5c06c3e92a4f169ba24c8f74d78875549d0d95539241efb.jpg",
+      "sourceSha256": "b5cec6ce06fb7382d5c06c3e92a4f169ba24c8f74d78875549d0d95539241efb",
+      "dimensions": [
+        208,
+        697
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 35,
+      "buildingId": "0363100012253909",
+      "observationId": "0363100012253909_e_0rpyd19",
+      "address": "Lauriergracht 97",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/45d5e93c8b4b84473df8aafebdb59588493ec318b350a3823d287b86d2164390.jpg",
+      "sourceSha256": "45d5e93c8b4b84473df8aafebdb59588493ec318b350a3823d287b86d2164390",
+      "dimensions": [
+        383,
+        791
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 36,
+      "buildingId": "0363100012174520",
+      "observationId": "0363100012174520_e_1vmewhe",
+      "address": "Lauriergracht 73",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/6cc0e9a5f2607c50375b66abefb4a1100ba26a55d4d2c874564ea47d13c96310.jpg",
+      "sourceSha256": "6cc0e9a5f2607c50375b66abefb4a1100ba26a55d4d2c874564ea47d13c96310",
+      "dimensions": [
+        261,
+        779
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 44,
+      "buildingId": "0363100012168980",
+      "observationId": "0363100012168980_e_1o2cn0o",
+      "address": "Lauriergracht 67 / Lauriergracht 69",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4.jpg",
+      "sourceSha256": "9f518a1ebd8a637fbd7e8183ce638210d480d3296644ea26d45e7df922b5f1a4",
+      "dimensions": [
+        477,
+        903
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "black",
+          "grey"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 45,
+      "buildingId": "0363100012173929",
+      "observationId": "0363100012173929_e_0dk14yr",
+      "address": "Lauriergracht 11",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/5eece14f926b008abbdd81785ccabead61e76b8ffc839dfa51d1762bbc1bdc27.jpg",
+      "sourceSha256": "5eece14f926b008abbdd81785ccabead61e76b8ffc839dfa51d1762bbc1bdc27",
+      "dimensions": [
+        219,
+        597
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "unknown",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "unknown",
+        "requiresAbstention": true,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 52,
+      "buildingId": "0363100012174204",
+      "observationId": "0363100012174204_e_1r4mm2h",
+      "address": "Lauriergracht 119",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/8fc212b8156a2987502234e4dfc291b4329d07981dc90e682d3db242932305e3.jpg",
+      "sourceSha256": "8fc212b8156a2987502234e4dfc291b4329d07981dc90e682d3db242932305e3",
+      "dimensions": [
+        268,
+        802
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 53,
+      "buildingId": "0363100012173932",
+      "observationId": "0363100012173932_e_0ec1tw7",
+      "address": "Lauriergracht 23",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/6a61d36d8bd4372603a1bc1a3eb3b656b3460eb4534ce544ac7dc11d38db3e6f.jpg",
+      "sourceSha256": "6a61d36d8bd4372603a1bc1a3eb3b656b3460eb4534ce544ac7dc11d38db3e6f",
+      "dimensions": [
+        199,
+        801
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 60,
+      "buildingId": "0363100012173930",
+      "observationId": "0363100012173930_e_1c8qzkz",
+      "address": "Lauriergracht 9",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/4484f064eff95284779f1384cb48d22b4baa45b96a31381929aab08e11be4d98.jpg",
+      "sourceSha256": "4484f064eff95284779f1384cb48d22b4baa45b96a31381929aab08e11be4d98",
+      "dimensions": [
+        215,
+        553
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 61,
+      "buildingId": "0363100012168552",
+      "observationId": "0363100012168552_e_02n3874",
+      "address": "Lauriergracht 47",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/0babebef1dbde103a05ddd67c703f78e8cf52b754e959d9fad88f41dd1818377.jpg",
+      "sourceSha256": "0babebef1dbde103a05ddd67c703f78e8cf52b754e959d9fad88f41dd1818377",
+      "dimensions": [
+        923,
+        1173
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 68,
+      "buildingId": "0363100012174289",
+      "observationId": "0363100012174289_e_0cj0mg6",
+      "address": "Lauriergracht 150",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/1ec8121b7324cea73458b1442a86d2e476a74886c87bc5490e998ccbc1c22e65.jpg",
+      "sourceSha256": "1ec8121b7324cea73458b1442a86d2e476a74886c87bc5490e998ccbc1c22e65",
+      "dimensions": [
+        228,
+        751
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 69,
+      "buildingId": "0363100012173927",
+      "observationId": "0363100012173927_e_023fr62",
+      "address": "Lauriergracht 5",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/9138a92901658023ace68f3c1d74bc43b84b48b88e92c5fe7947d169b2616d34.jpg",
+      "sourceSha256": "9138a92901658023ace68f3c1d74bc43b84b48b88e92c5fe7947d169b2616d34",
+      "dimensions": [
+        201,
+        592
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 76,
+      "buildingId": "0363100012169607",
+      "observationId": "0363100012169607_e_1p1xb85",
+      "address": "Lauriergracht 2",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/80a0dd052b27182155a117fec0fb50f6c0d75bf6eece460542b207ab95662d95.jpg",
+      "sourceSha256": "80a0dd052b27182155a117fec0fb50f6c0d75bf6eece460542b207ab95662d95",
+      "dimensions": [
+        216,
+        607
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 77,
+      "buildingId": "0363100012173928",
+      "observationId": "0363100012173928_e_1o9nhk8",
+      "address": "Lauriergracht 3",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/a688f453e72007c16b1d4b811b456c2fc063ca99023a22a19e0275c211104295.jpg",
+      "sourceSha256": "a688f453e72007c16b1d4b811b456c2fc063ca99023a22a19e0275c211104295",
+      "dimensions": [
+        201,
+        617
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 82,
+      "buildingId": "0363100012174100",
+      "observationId": "0363100012174100_e_023a1el",
+      "address": "Lauriergracht 152 / Lauriergracht 154",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/bfc0e650f940a3c5f7ff7f6f282ff6befdf10b992b7a0b29678367788c0bd49b.jpg",
+      "sourceSha256": "bfc0e650f940a3c5f7ff7f6f282ff6befdf10b992b7a0b29678367788c0bd49b",
+      "dimensions": [
+        192,
+        729
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "buff",
+          "cream"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 87,
+      "buildingId": "0363100012173913",
+      "observationId": "0363100012173913_e_1anh9vq",
+      "address": "Lauriergracht 19",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/4e24f59fb04c821f0242f4c23abe5a232660d5b4333636b766b56379a7cbdb7c.jpg",
+      "sourceSha256": "4e24f59fb04c821f0242f4c23abe5a232660d5b4333636b766b56379a7cbdb7c",
+      "dimensions": [
+        194,
+        647
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 92,
+      "buildingId": "0363100012174821",
+      "observationId": "0363100012174821_e_19molap",
+      "address": "Lauriergracht 108",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/a465a8c056040e5f1657f6446dd6dfa493e02a74d68ea6b491a693a04df3a293.jpg",
+      "sourceSha256": "a465a8c056040e5f1657f6446dd6dfa493e02a74d68ea6b491a693a04df3a293",
+      "dimensions": [
+        291,
+        849
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "buff",
+          "cream"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    },
+    {
+      "index": 97,
+      "buildingId": "0363100012174531",
+      "observationId": "0363100012174531_e_0hh8b2x",
+      "address": "Lauriergracht 128",
+      "street": "Lauriergracht",
+      "split": "evaluation",
+      "crop": "/data/city-expansion/evidence/9a8cceca03269103081658f86b609189159517607ef658690d081fb372b9842f.jpg",
+      "sourceSha256": "9a8cceca03269103081658f86b609189159517607ef658690d081fb372b9842f",
+      "dimensions": [
+        232,
+        681
+      ],
+      "reference": {
+        "origin": "model-visual-review",
+        "materialFamily": "brick",
+        "colourFamilies": [
+          "red",
+          "brown"
+        ],
+        "priorMaterial": "fired-clay-brick",
+        "requiresAbstention": false,
+        "correction": null,
+        "materialOnly": true,
+        "exactColourAccepted": false,
+        "identityCertified": false
+      },
+      "targetRegion": null
+    }
+  ]
+}

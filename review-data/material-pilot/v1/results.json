@@ -1,0 +1,2794 @@
+{
+  "version": 1,
+  "selectionSha256": "c10f79b4a07a170e78171616b9f560a3cbdf5a9208209be43b7559f65ade0a6a",
+  "scope": "Agreement with frozen model-reviewed material references, not physical accuracy or game acceptance",
+  "cost": {
+    "paidApiUsd": 0,
+    "paidCalls": 0,
+    "authorizedApiCeilingUsd": 25,
+    "localCompute": "not monetized"
+  },
+  "decision": "Do not train or expand publication: reference/identity/renderer gates remain incomplete.",
+  "interpretation": "Answers on unresolved references are disagreements with a review policy, not proven model mistakes. Unknown labels need native-source adjudication.",
+  "hostedTeacher": {
+    "status": "not-run",
+    "reason": "OPENROUTER_API_KEY unavailable in environment and root dotenv files; existing model reviews used only as diagnostic references"
+  },
+  "reports": {
+    "full": {
+      "reportSha256": "8343bc282635292b445e1e42d4d976682f41b2e72edc1a9e5c4a2148f5419670",
+      "experimentHash": "49f7e59c8b021c0dabef72f9d7542bc80e1b9f73b3d8020f07bb0f4db24f88ce",
+      "model": "qwen3.5:9b",
+      "modelDigest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "rows": [
+        {
+          "index": 0,
+          "buildingId": "0363100012166570",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 1,
+          "buildingId": "0363100012162796",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 3,
+          "buildingId": "0363100012162897",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 4,
+          "buildingId": "0363100012165154",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": false,
+            "correction": "Native source shows regular brick courses and masonry heads; prior unknown material contradicted visible evidence. Broad grey/brown illumination remains uncertain.",
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 10,
+          "buildingId": "0363100012168920",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "render",
+            "colourFamily": "grey",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 11,
+          "buildingId": "0363100012127485",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "render",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "render-plaster",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "render",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 15,
+          "buildingId": "0363100012174169",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 17,
+          "buildingId": "0363100012094649",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "render",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "render-plaster",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "render",
+            "colourFamily": "cream",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 30,
+          "buildingId": "0363100012236796",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "render",
+            "colourFamilies": [
+              "white",
+              "cream"
+            ],
+            "priorMaterial": "render-plaster",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "render",
+            "colourFamily": "white",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 64,
+          "buildingId": "0363100012157926",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 46,
+          "buildingId": "0363100012167877",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "partial",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 27,
+          "buildingId": "0363100012170088",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 62,
+          "buildingId": "0363100012170144",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 19,
+          "buildingId": "0363100012156057",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 7,
+          "buildingId": "0363100012159182",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 99,
+          "buildingId": "0363100012073508",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "mixed",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 73,
+          "buildingId": "0363100012159112",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "painted-brick",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "painted-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 50,
+          "buildingId": "0363100012237236",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "render",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "render-plaster",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "render",
+            "colourFamily": "white",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 40,
+          "buildingId": "0363100012154205",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 18,
+          "buildingId": "0363100012166397",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "partial",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 33,
+          "buildingId": "0363100012169621",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "black",
+              "grey"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "stone",
+            "colourFamily": "grey",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 9,
+          "buildingId": "0363100012170186",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 20,
+          "buildingId": "0363100012064291",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 70,
+          "buildingId": "0363100012168649",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 48,
+          "buildingId": "0363100012163422",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 37,
+          "buildingId": "0363100012170146",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "partial",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 78,
+          "buildingId": "0363100012168644",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "render",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "render-plaster",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "stone",
+            "colourFamily": "white",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 23,
+          "buildingId": "0363100012168929",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "partial",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 38,
+          "buildingId": "0363100012175000",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "black",
+              "grey"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 39,
+          "buildingId": "0363100012163064",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "partial",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 54,
+          "buildingId": "0363100012167878",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 59,
+          "buildingId": "0363100012170196",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 8,
+          "buildingId": "0363100012166409",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 31,
+          "buildingId": "0363100012236815",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 47,
+          "buildingId": "0363100012174000",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 22,
+          "buildingId": "0363100012170054",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 67,
+          "buildingId": "0363100012170198",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 49,
+          "buildingId": "0363100012153010",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 41,
+          "buildingId": "0363100012236418",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 58,
+          "buildingId": "0363100012157989",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 13,
+          "buildingId": "0363100012173914",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "render",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "render-plaster",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "stone",
+            "colourFamily": "white",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 14,
+          "buildingId": "0363100012173926",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 25,
+          "buildingId": "0363100012169894",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 26,
+          "buildingId": "0363100012173922",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "grey",
+            "visibility": "partial",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 35,
+          "buildingId": "0363100012253909",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "partial",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 36,
+          "buildingId": "0363100012174520",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "stone",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 44,
+          "buildingId": "0363100012168980",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "black",
+              "grey"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 45,
+          "buildingId": "0363100012173929",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 52,
+          "buildingId": "0363100012174204",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 53,
+          "buildingId": "0363100012173932",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 60,
+          "buildingId": "0363100012173930",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 61,
+          "buildingId": "0363100012168552",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 68,
+          "buildingId": "0363100012174289",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 69,
+          "buildingId": "0363100012173927",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "partial",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 76,
+          "buildingId": "0363100012169607",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 77,
+          "buildingId": "0363100012173928",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 82,
+          "buildingId": "0363100012174100",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 87,
+          "buildingId": "0363100012173913",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 92,
+          "buildingId": "0363100012174821",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 97,
+          "buildingId": "0363100012174531",
+          "split": "evaluation",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        }
+      ],
+      "summary": {
+        "total": 60,
+        "known": 47,
+        "unknown": 13,
+        "answeredKnown": 47,
+        "correctMaterial": 44,
+        "alwaysBrickBaselineCorrect": 40,
+        "perMaterial": {
+          "brick": {
+            "total": 40,
+            "correct": 40
+          },
+          "painted-brick": {
+            "total": 1,
+            "correct": 0
+          },
+          "render": {
+            "total": 6,
+            "correct": 4
+          }
+        },
+        "materialAgreement": 0.9361702127659575,
+        "knownCoverage": 1,
+        "colourCompatible": 26,
+        "answersOnUnresolvedReferences": 13,
+        "abstentions": 0,
+        "missingOrInvalid": 0,
+        "gate": "fail"
+      },
+      "development": {
+        "total": 40,
+        "known": 30,
+        "unknown": 10,
+        "answeredKnown": 30,
+        "correctMaterial": 28,
+        "alwaysBrickBaselineCorrect": 24,
+        "perMaterial": {
+          "brick": {
+            "total": 24,
+            "correct": 24
+          },
+          "painted-brick": {
+            "total": 1,
+            "correct": 0
+          },
+          "render": {
+            "total": 5,
+            "correct": 4
+          }
+        },
+        "materialAgreement": 0.9333333333333333,
+        "knownCoverage": 1,
+        "colourCompatible": 15,
+        "answersOnUnresolvedReferences": 10,
+        "abstentions": 0,
+        "missingOrInvalid": 0,
+        "gate": "fail"
+      },
+      "evaluation": {
+        "total": 20,
+        "known": 17,
+        "unknown": 3,
+        "answeredKnown": 17,
+        "correctMaterial": 16,
+        "alwaysBrickBaselineCorrect": 16,
+        "perMaterial": {
+          "brick": {
+            "total": 16,
+            "correct": 16
+          },
+          "render": {
+            "total": 1,
+            "correct": 0
+          }
+        },
+        "materialAgreement": 0.9411764705882353,
+        "knownCoverage": 1,
+        "colourCompatible": 11,
+        "answersOnUnresolvedReferences": 3,
+        "abstentions": 0,
+        "missingOrInvalid": 0,
+        "gate": "fail"
+      }
+    },
+    "target": {
+      "reportSha256": "fbb1552de06f9972dedd7e473997e5c9b19cb50605b22c1c71732e451e74c868",
+      "experimentHash": "49f7e59c8b021c0dabef72f9d7542bc80e1b9f73b3d8020f07bb0f4db24f88ce",
+      "model": "qwen3.5:9b",
+      "modelDigest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "rows": [
+        {
+          "index": 0,
+          "buildingId": "0363100012166570",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 1,
+          "buildingId": "0363100012162796",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "red",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 3,
+          "buildingId": "0363100012162897",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 4,
+          "buildingId": "0363100012165154",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": false,
+            "correction": "Native source shows regular brick courses and masonry heads; prior unknown material contradicted visible evidence. Broad grey/brown illumination remains uncertain.",
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 10,
+          "buildingId": "0363100012168920",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "unknown",
+            "colourFamilies": [
+              "grey"
+            ],
+            "priorMaterial": "unknown",
+            "requiresAbstention": true,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "render",
+            "colourFamily": "grey",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": false,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": true
+        },
+        {
+          "index": 11,
+          "buildingId": "0363100012127485",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "render",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "render-plaster",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "render",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 15,
+          "buildingId": "0363100012174169",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "red",
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 17,
+          "buildingId": "0363100012094649",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "render",
+            "colourFamilies": [
+              "buff",
+              "cream"
+            ],
+            "priorMaterial": "render-plaster",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "render",
+            "colourFamily": "grey",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": false,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 30,
+          "buildingId": "0363100012236796",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "render",
+            "colourFamilies": [
+              "white",
+              "cream"
+            ],
+            "priorMaterial": "render-plaster",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "render",
+            "colourFamily": "white",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        },
+        {
+          "index": 64,
+          "buildingId": "0363100012157926",
+          "split": "development",
+          "reference": {
+            "origin": "model-visual-review",
+            "materialFamily": "brick",
+            "colourFamilies": [
+              "brown"
+            ],
+            "priorMaterial": "fired-clay-brick",
+            "requiresAbstention": false,
+            "correction": null,
+            "materialOnly": true,
+            "exactColourAccepted": false,
+            "identityCertified": false
+          },
+          "status": "predicted",
+          "prediction": {
+            "materialFamily": "brick",
+            "colourFamily": "brown",
+            "visibility": "clear",
+            "abstain": false
+          },
+          "materialCorrect": true,
+          "colourCompatible": true,
+          "answersOnUnresolvedReferences": false
+        }
+      ],
+      "summary": {
+        "total": 10,
+        "known": 9,
+        "unknown": 1,
+        "answeredKnown": 9,
+        "correctMaterial": 9,
+        "alwaysBrickBaselineCorrect": 6,
+        "perMaterial": {
+          "brick": {
+            "total": 6,
+            "correct": 6
+          },
+          "render": {
+            "total": 3,
+            "correct": 3
+          }
+        },
+        "materialAgreement": 1,
+        "knownCoverage": 1,
+        "colourCompatible": 5,
+        "answersOnUnresolvedReferences": 1,
+        "abstentions": 0,
+        "missingOrInvalid": 0,
+        "gate": "fail"
+      },
+      "development": {
+        "total": 10,
+        "known": 9,
+        "unknown": 1,
+        "answeredKnown": 9,
+        "correctMaterial": 9,
+        "alwaysBrickBaselineCorrect": 6,
+        "perMaterial": {
+          "brick": {
+            "total": 6,
+            "correct": 6
+          },
+          "render": {
+            "total": 3,
+            "correct": 3
+          }
+        },
+        "materialAgreement": 1,
+        "knownCoverage": 1,
+        "colourCompatible": 5,
+        "answersOnUnresolvedReferences": 1,
+        "abstentions": 0,
+        "missingOrInvalid": 0,
+        "gate": "fail"
+      },
+      "evaluation": {
+        "total": 0,
+        "known": 0,
+        "unknown": 0,
+        "answeredKnown": 0,
+        "correctMaterial": 0,
+        "alwaysBrickBaselineCorrect": 0,
+        "perMaterial": {},
+        "materialAgreement": null,
+        "knownCoverage": null,
+        "colourCompatible": 0,
+        "answersOnUnresolvedReferences": 0,
+        "abstentions": 0,
+        "missingOrInvalid": 0,
+        "gate": "fail"
+      }
+    }
+  },
+  "paired": {
+    "known": 9,
+    "fullMaterialCorrect": 9,
+    "targetMaterialCorrect": 9,
+    "fullColourCompatible": 6,
+    "targetColourCompatible": 5
+  },
+  "comparisons": [
+    {
+      "index": 0,
+      "full": {
+        "index": 0,
+        "buildingId": "0363100012166570",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "red",
+            "brown"
+          ],
+          "priorMaterial": "fired-clay-brick",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "red",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      },
+      "target": {
+        "index": 0,
+        "buildingId": "0363100012166570",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "red",
+            "brown"
+          ],
+          "priorMaterial": "fired-clay-brick",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      }
+    },
+    {
+      "index": 1,
+      "full": {
+        "index": 1,
+        "buildingId": "0363100012162796",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "red",
+            "brown"
+          ],
+          "priorMaterial": "fired-clay-brick",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "red",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      },
+      "target": {
+        "index": 1,
+        "buildingId": "0363100012162796",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "red",
+            "brown"
+          ],
+          "priorMaterial": "fired-clay-brick",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "red",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      }
+    },
+    {
+      "index": 3,
+      "full": {
+        "index": 3,
+        "buildingId": "0363100012162897",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "buff",
+            "cream"
+          ],
+          "priorMaterial": "fired-clay-brick",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": false,
+        "answersOnUnresolvedReferences": false
+      },
+      "target": {
+        "index": 3,
+        "buildingId": "0363100012162897",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "buff",
+            "cream"
+          ],
+          "priorMaterial": "fired-clay-brick",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": false,
+        "answersOnUnresolvedReferences": false
+      }
+    },
+    {
+      "index": 4,
+      "full": {
+        "index": 4,
+        "buildingId": "0363100012165154",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "grey"
+          ],
+          "priorMaterial": "unknown",
+          "requiresAbstention": false,
+          "correction": "Native source shows regular brick courses and masonry heads; prior unknown material contradicted visible evidence. Broad grey/brown illumination remains uncertain.",
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": false,
+        "answersOnUnresolvedReferences": false
+      },
+      "target": {
+        "index": 4,
+        "buildingId": "0363100012165154",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "grey"
+          ],
+          "priorMaterial": "unknown",
+          "requiresAbstention": false,
+          "correction": "Native source shows regular brick courses and masonry heads; prior unknown material contradicted visible evidence. Broad grey/brown illumination remains uncertain.",
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": false,
+        "answersOnUnresolvedReferences": false
+      }
+    },
+    {
+      "index": 10,
+      "full": {
+        "index": 10,
+        "buildingId": "0363100012168920",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "unknown",
+          "colourFamilies": [
+            "grey"
+          ],
+          "priorMaterial": "unknown",
+          "requiresAbstention": true,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "render",
+          "colourFamily": "grey",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": false,
+        "colourCompatible": false,
+        "answersOnUnresolvedReferences": true
+      },
+      "target": {
+        "index": 10,
+        "buildingId": "0363100012168920",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "unknown",
+          "colourFamilies": [
+            "grey"
+          ],
+          "priorMaterial": "unknown",
+          "requiresAbstention": true,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "render",
+          "colourFamily": "grey",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": false,
+        "colourCompatible": false,
+        "answersOnUnresolvedReferences": true
+      }
+    },
+    {
+      "index": 11,
+      "full": {
+        "index": 11,
+        "buildingId": "0363100012127485",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "render",
+          "colourFamilies": [
+            "buff",
+            "cream"
+          ],
+          "priorMaterial": "render-plaster",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "render",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": false,
+        "answersOnUnresolvedReferences": false
+      },
+      "target": {
+        "index": 11,
+        "buildingId": "0363100012127485",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "render",
+          "colourFamilies": [
+            "buff",
+            "cream"
+          ],
+          "priorMaterial": "render-plaster",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "render",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": false,
+        "answersOnUnresolvedReferences": false
+      }
+    },
+    {
+      "index": 15,
+      "full": {
+        "index": 15,
+        "buildingId": "0363100012174169",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "red",
+            "brown"
+          ],
+          "priorMaterial": "fired-clay-brick",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      },
+      "target": {
+        "index": 15,
+        "buildingId": "0363100012174169",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "red",
+            "brown"
+          ],
+          "priorMaterial": "fired-clay-brick",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      }
+    },
+    {
+      "index": 17,
+      "full": {
+        "index": 17,
+        "buildingId": "0363100012094649",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "render",
+          "colourFamilies": [
+            "buff",
+            "cream"
+          ],
+          "priorMaterial": "render-plaster",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "render",
+          "colourFamily": "cream",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      },
+      "target": {
+        "index": 17,
+        "buildingId": "0363100012094649",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "render",
+          "colourFamilies": [
+            "buff",
+            "cream"
+          ],
+          "priorMaterial": "render-plaster",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "render",
+          "colourFamily": "grey",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": false,
+        "answersOnUnresolvedReferences": false
+      }
+    },
+    {
+      "index": 30,
+      "full": {
+        "index": 30,
+        "buildingId": "0363100012236796",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "render",
+          "colourFamilies": [
+            "white",
+            "cream"
+          ],
+          "priorMaterial": "render-plaster",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "render",
+          "colourFamily": "white",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      },
+      "target": {
+        "index": 30,
+        "buildingId": "0363100012236796",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "render",
+          "colourFamilies": [
+            "white",
+            "cream"
+          ],
+          "priorMaterial": "render-plaster",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "render",
+          "colourFamily": "white",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      }
+    },
+    {
+      "index": 64,
+      "full": {
+        "index": 64,
+        "buildingId": "0363100012157926",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "brown"
+          ],
+          "priorMaterial": "fired-clay-brick",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      },
+      "target": {
+        "index": 64,
+        "buildingId": "0363100012157926",
+        "split": "development",
+        "reference": {
+          "origin": "model-visual-review",
+          "materialFamily": "brick",
+          "colourFamilies": [
+            "brown"
+          ],
+          "priorMaterial": "fired-clay-brick",
+          "requiresAbstention": false,
+          "correction": null,
+          "materialOnly": true,
+          "exactColourAccepted": false,
+          "identityCertified": false
+        },
+        "status": "predicted",
+        "prediction": {
+          "materialFamily": "brick",
+          "colourFamily": "brown",
+          "visibility": "clear",
+          "abstain": false
+        },
+        "materialCorrect": true,
+        "colourCompatible": true,
+        "answersOnUnresolvedReferences": false
+      }
+    }
+  ]
+}

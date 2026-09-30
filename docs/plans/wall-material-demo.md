@@ -5,6 +5,59 @@ no routine owner visual-review gate. Scope is wall colour and material appearanc
 
 City-wide follow-up: [rollout plan and measured coverage](citywide-wall-colour-texture-rollout.md).
 
+
+## Material pilot — 30 September 2026
+
+A bounded follow-up to the Isometric NYC discussion is recorded in
+`review-data/material-pilot/v1/`. It uses 40 development examples (including the
+existing ten-case render gate) and 20 Lauriergracht evaluation examples. Owner,
+source-image and street sets are disjoint; shared panorama identity is not known.
+The references remain model reviews, not independently measured ground truth.
+
+**Completed:** 60 local Qwen 3.5 9B full-image predictions plus ten manually
+selected upper-wall crop predictions, source/capture hash verification, a source
+and historical-render gallery, and a per-stage visual diagnosis. Paid inference:
+**$0**. The authorized $25 API allowance is unused. A fresh hosted teacher run
+was not possible because `OPENROUTER_API_KEY` was unavailable in the process and
+root dotenv files; existing teacher reviews were used only as diagnostic labels.
+
+- Full-image material agreement: **44/47 known labels**; colour compatibility:
+  **26/47**, with overlapping hue bins allowed. All 13 unresolved references
+  received confident answers; these are review-policy disagreements, not proof
+  of 13 model mistakes. Post-hoc inspection found questionable reference labels.
+- Evaluation street: **16/17** known material labels, exactly the score of always
+  predicting brick. It contains sixteen brick references and one render reference
+  (missed), plus three unresolved cases. This does not establish general accuracy.
+- Target-crop comparison: **9/9** known material labels for both inputs; colour
+  compatibility falls from **6/9 to 5/9**. Tighter cropping alone is not the fix.
+- Native source review corrects pilot case 4 (Da Costakade 40) from unknown to
+  brick, preserving its historical label. It does not rewrite accepted releases.
+- Historical cases 0, 3 and 15 show mostly blank wall/strip renders where the
+  source contains articulated facades. Verify wall orientation and feature
+  delivery before spending on material extraction. Colour/lighting and texture
+  scale remain separate unresolved renderer questions.
+
+**Decision:** no fine-tuning, training-pair export or publication expansion from
+this pilot. The first ten corrected source-to-game examples are still not
+complete. Adjudicate unresolved/rare material labels and source regions; then
+repair the identified render delivery and palette problems. Preserve the original
+frozen results when correcting labels after seeing predictions.
+
+Reproduce from the pilot worktree, using an evidence checkout containing the
+ignored photographs and saved captures:
+
+```sh
+node scripts/review/prepare-material-pilot.mjs --evidence-root=../amsterdam-facade-rebuild
+node scripts/city-appearance/benchmark-local-materials.mjs --cohort=review-data/material-pilot/v1/selection.json --limit=60 --out=.cache/material-pilot/full
+node scripts/city-appearance/benchmark-local-materials.mjs --cohort=review-data/material-pilot/v1/target-crops.json --limit=10 --out=.cache/material-pilot/target
+node scripts/review/evaluate-material-pilot.mjs --evidence-root=../amsterdam-facade-rebuild
+node --test scripts/review/material-pilot.test.mjs
+```
+
+The browsable report is `.cache/material-pilot/gallery/index.html`. Benchmark
+summaries, frozen selection, crop transforms, visual diagnosis and checked
+historical capture bindings are versioned; photographs and the gallery stay local.
+
 ## Result of this batch
 
 A working opt-in demo is at `/canal-drive/material-demo.html`; the checked

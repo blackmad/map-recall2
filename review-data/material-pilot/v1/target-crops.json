@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "selectionSha256": "c10f79b4a07a170e78171616b9f560a3cbdf5a9208209be43b7559f65ade0a6a",
+  "entries": [
+    {
+      "index": 0,
+      "buildingId": "0363100012166570",
+      "observationId": "0363100012166570_e_0wwk20u",
+      "sourceSha256": "337693a3415bd2deb9ef24f92c9633502e01b0a249bd582227b235c683fd777f",
+      "crop": "/data/city-expansion/evidence/337693a3415bd2deb9ef24f92c9633502e01b0a249bd582227b235c683fd777f.jpg",
+      "parentSourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "rectangle": {
+        "left": 7,
+        "top": 231,
+        "width": 246,
+        "height": 474
+      }
+    },
+    {
+      "index": 1,
+      "buildingId": "0363100012162796",
+      "observationId": "0363100012162796_e_13u2mzl",
+      "sourceSha256": "e6f43ecea4efea374c80d9984cc7b316d4a77fd1356274747301f87afcf1f1a8",
+      "crop": "/data/city-expansion/evidence/e6f43ecea4efea374c80d9984cc7b316d4a77fd1356274747301f87afcf1f1a8.jpg",
+      "parentSourceSha256": "e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262",
+      "rectangle": {
+        "left": 182,
+        "top": 293,
+        "width": 94,
+        "height": 339
+      }
+    },
+    {
+      "index": 3,
+      "buildingId": "0363100012162897",
+      "observationId": "0363100012162897_e_0c4e2gf",
+      "sourceSha256": "0ab5015d7b96c912262955db445821c730deca865fa251cf21b69c44cc75dd43",
+      "crop": "/data/city-expansion/evidence/0ab5015d7b96c912262955db445821c730deca865fa251cf21b69c44cc75dd43.jpg",
+      "parentSourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "rectangle": {
+        "left": 8,
+        "top": 240,
+        "width": 256,
+        "height": 438
+      }
+    },
+    {
+      "index": 4,
+      "buildingId": "0363100012165154",
+      "observationId": "0363100012165154_e_16tobqf",
+      "sourceSha256": "fee2810fb907fcd3a2e84daccc0b0aafb2474a08d45d84fba6558d9f38fb1924",
+      "crop": "/data/city-expansion/evidence/fee2810fb907fcd3a2e84daccc0b0aafb2474a08d45d84fba6558d9f38fb1924.jpg",
+      "parentSourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "rectangle": {
+        "left": 5,
+        "top": 151,
+        "width": 272,
+        "height": 456
+      }
+    },
+    {
+      "index": 10,
+      "buildingId": "0363100012168920",
+      "observationId": "0363100012168920_e_0bxls2d",
+      "sourceSha256": "c06d72228be8bac8cb89e9c629704def03f1952a89467bf9303cf4ff913ff91f",
+      "crop": "/data/city-expansion/evidence/c06d72228be8bac8cb89e9c629704def03f1952a89467bf9303cf4ff913ff91f.jpg",
+      "parentSourceSha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
+      "rectangle": {
+        "left": 15,
+        "top": 46,
+        "width": 311,
+        "height": 353
+      }
+    },
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "observationId": "0363100012127485_e_1w0ttzw",
+      "sourceSha256": "b9ec72bbfc56848c874a9f4d6abcd5dc6d49e36b067829e9e37fc33083a9ebb9",
+      "crop": "/data/city-expansion/evidence/b9ec72bbfc56848c874a9f4d6abcd5dc6d49e36b067829e9e37fc33083a9ebb9.jpg",
+      "parentSourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "rectangle": {
+        "left": 122,
+        "top": 112,
+        "width": 484,
+        "height": 580
+      }
+    },
+    {
+      "index": 15,
+      "buildingId": "0363100012174169",
+      "observationId": "0363100012174169_e_1w30ns5",
+      "sourceSha256": "edb35369291bdbc9c75bc8acdd2e7982c7b5320634cdd0ea4cf6aec4971fc6ab",
+      "crop": "/data/city-expansion/evidence/edb35369291bdbc9c75bc8acdd2e7982c7b5320634cdd0ea4cf6aec4971fc6ab.jpg",
+      "parentSourceSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
+      "rectangle": {
+        "left": 16,
+        "top": 189,
+        "width": 218,
+        "height": 381
+      }
+    },
+    {
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "observationId": "0363100012094649_e_16jqzp7",
+      "sourceSha256": "cc47b34a60281710c8e1a99da1bd151e4206cae31f5e5f90fd23a4d9e600074a",
+      "crop": "/data/city-expansion/evidence/cc47b34a60281710c8e1a99da1bd151e4206cae31f5e5f90fd23a4d9e600074a.jpg",
+      "parentSourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "rectangle": {
+        "left": 27,
+        "top": 125,
+        "width": 646,
+        "height": 386
+      }
+    },
+    {
+      "index": 30,
+      "buildingId": "0363100012236796",
+      "observationId": "0363100012236796_e_1wk1kml",
+      "sourceSha256": "11e20961ad949882a66b0b73e34b992f0bf7f9cbf18f75cc37385a0ab426e62b",
+      "crop": "/data/city-expansion/evidence/11e20961ad949882a66b0b73e34b992f0bf7f9cbf18f75cc37385a0ab426e62b.jpg",
+      "parentSourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "rectangle": {
+        "left": 7,
+        "top": 260,
+        "width": 171,
+        "height": 365
+      }
+    },
+    {
+      "index": 64,
+      "buildingId": "0363100012157926",
+      "observationId": "0363100012157926_e_012eimg",
+      "sourceSha256": "c43ab9d943ee5d45bd311b957f15778731b441d098287cc8edd2c5d48b25cf1f",
+      "crop": "/data/city-expansion/evidence/c43ab9d943ee5d45bd311b957f15778731b441d098287cc8edd2c5d48b25cf1f.jpg",
+      "parentSourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "rectangle": {
+        "left": 17,
+        "top": 247,
+        "width": 333,
+        "height": 328
+      }
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "experiment": {
+    "version": 1,
+    "model": "qwen3.5:9b",
+    "modelDigest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+    "prompt": "Inspect the selected building facade in this rectified Amsterdam street photograph. Classify only the dominant visible UPPER WALL, excluding glass, roof, shopfront, signs, trees and neighbouring buildings. Choose the broad material family and colour family from the JSON schema. Visibility is clear, partial, or occluded for the target wall. If representative wall is too dark, cropped, obstructed or ambiguous, set abstain true and both families unknown. Do not infer hidden surfaces or a precise colour. Return only JSON.",
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "materialFamily",
+        "colourFamily",
+        "visibility",
+        "abstain"
+      ],
+      "properties": {
+        "materialFamily": {
+          "type": "string",
+          "enum": [
+            "brick",
+            "painted-brick",
+            "render",
+            "stone",
+            "concrete",
+            "other",
+            "unknown"
+          ]
+        },
+        "colourFamily": {
+          "type": "string",
+          "enum": [
+            "red",
+            "brown",
+            "buff",
+            "cream",
+            "white",
+            "grey",
+            "black",
+            "other",
+            "unknown"
+          ]
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "partial",
+            "occluded"
+          ]
+        },
+        "abstain": {
+          "type": "boolean"
+        }
+      }
+    },
+    "think": false,
+    "options": {
+      "temperature": 0,
+      "seed": 17,
+      "num_predict": 160,
+      "num_ctx": 2048
+    },
+    "imageEncoding": "sharp-fit-inside-no-upscale-jpeg85",
+    "imageSize": 768,
+    "timeoutMs": 90000,
+    "provider": "ollama-local-only"
+  },
+  "experimentHash": "49f7e59c8b021c0dabef72f9d7542bc80e1b9f73b3d8020f07bb0f4db24f88ce",
+  "generatedAt": "2026-09-30T18:50:40.874Z",
+  "sourceCount": 10,
+  "selectedCount": 10,
+  "offset": 0,
+  "limit": 10,
+  "dryRun": false,
+  "receipts": [
+    {
+      "key": "e0d758a905a4581348de10459de9a88cc2c8f8525e06dd4e58d22dc0c9989e06",
+      "status": "ok",
+      "sourceSha256": "cc47b34a60281710c8e1a99da1bd151e4206cae31f5e5f90fd23a4d9e600074a",
+      "sourceManifestSha256": "b83eac6ad13d4e8aac7fa272a51f91207cc1665aaf54fbf763f491a8ea0a8c1d",
+      "imagePath": "/Users/blackmad/Code/map-recall2/.worktrees/facade-material-pilot/public/data/city-expansion/evidence/cc47b34a60281710c8e1a99da1bd151e4206cae31f5e5f90fd23a4d9e600074a.jpg",
+      "buildingId": "0363100012094649",
+      "elevationId": "0363100012094649_e_16jqzp7",
+      "imageKind": "reference",
+      "label": {
+        "materialFamily": "render",
+        "colourFamily": "grey",
+        "visibility": "clear",
+        "abstain": false
+      },
+      "clientLatencyMs": 3144,
+      "schema": {
+        "valid": true,
+        "reason": null
+      },
+      "reused": false
+    },
+    {
+      "key": "bcb5a7b334c00f87bbb5dcbac19845ab48ac1b47fc355e6285dcd2dd04400261",
+      "status": "ok",
+      "sourceSha256": "b9ec72bbfc56848c874a9f4d6abcd5dc6d49e36b067829e9e37fc33083a9ebb9",
+      "sourceManifestSha256": "b83eac6ad13d4e8aac7fa272a51f91207cc1665aaf54fbf763f491a8ea0a8c1d",
+      "imagePath": "/Users/blackmad/Code/map-recall2/.worktrees/facade-material-pilot/public/data/city-expansion/evidence/b9ec72bbfc56848c874a9f4d6abcd5dc6d49e36b067829e9e37fc33083a9ebb9.jpg",
+      "buildingId": "0363100012127485",
+      "elevationId": "0363100012127485_e_1w0ttzw",
+      "imageKind": "reference",
+      "label": {
+        "materialFamily": "render",
+        "colourFamily": "brown",
+        "visibility": "clear",
+        "abstain": false
+      },
+      "clientLatencyMs": 3673,
+      "schema": {
+        "valid": true,
+        "reason": null
+      },
+      "reused": false
+    },
+    {
+      "key": "6b403062bdeef6c253624cf15c3e17ba2c6803795d8b71606e7f62c4fd82a8e5",
+      "status": "ok",
+      "sourceSha256": "c43ab9d943ee5d45bd311b957f15778731b441d098287cc8edd2c5d48b25cf1f",
+      "sourceManifestSha256": "b83eac6ad13d4e8aac7fa272a51f91207cc1665aaf54fbf763f491a8ea0a8c1d",
+      "imagePath": "/Users/blackmad/Code/map-recall2/.worktrees/facade-material-pilot/public/data/city-expansion/evidence/c43ab9d943ee5d45bd311b957f15778731b441d098287cc8edd2c5d48b25cf1f.jpg",
+      "buildingId": "0363100012157926",
+      "elevationId": "0363100012157926_e_012eimg",
+      "imageKind": "reference",
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear",
+        "abstain": false
+      },
+      "clientLatencyMs": 2385,
+      "schema": {
+        "valid": true,
+        "reason": null
+      },
+      "reused": false
+    },
+    {
+      "key": "9e0c80c3600c08b039d6e44ab9fe47d4a33951e4c687c8a2d5959c2a3806b745",
+      "status": "ok",
+      "sourceSha256": "e6f43ecea4efea374c80d9984cc7b316d4a77fd1356274747301f87afcf1f1a8",
+      "sourceManifestSha256": "b83eac6ad13d4e8aac7fa272a51f91207cc1665aaf54fbf763f491a8ea0a8c1d",
+      "imagePath": "/Users/blackmad/Code/map-recall2/.worktrees/facade-material-pilot/public/data/city-expansion/evidence/e6f43ecea4efea374c80d9984cc7b316d4a77fd1356274747301f87afcf1f1a8.jpg",
+      "buildingId": "0363100012162796",
+      "elevationId": "0363100012162796_e_13u2mzl",
+      "imageKind": "reference",
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "red",
+        "visibility": "clear",
+        "abstain": false
+      },
+      "clientLatencyMs": 2748,
+      "schema": {
+        "valid": true,
+        "reason": null
+      },
+      "reused": false
+    },
+    {
+      "key": "f805d17cd8ef5df7d0f7a95aa9649f3657d9d14be36c4aacacdbed08c44ec60b",
+      "status": "ok",
+      "sourceSha256": "0ab5015d7b96c912262955db445821c730deca865fa251cf21b69c44cc75dd43",
+      "sourceManifestSha256": "b83eac6ad13d4e8aac7fa272a51f91207cc1665aaf54fbf763f491a8ea0a8c1d",
+      "imagePath": "/Users/blackmad/Code/map-recall2/.worktrees/facade-material-pilot/public/data/city-expansion/evidence/0ab5015d7b96c912262955db445821c730deca865fa251cf21b69c44cc75dd43.jpg",
+      "buildingId": "0363100012162897",
+      "elevationId": "0363100012162897_e_0c4e2gf",
+      "imageKind": "reference",
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear",
+        "abstain": false
+      },
+      "clientLatencyMs": 2436,
+      "schema": {
+        "valid": true,
+        "reason": null
+      },
+      "reused": false
+    },
+    {
+      "key": "2c8f175516f22a498c8c0c7e4906390fea14011a13bd82d435cc42a4e07d876a",
+      "status": "ok",
+      "sourceSha256": "fee2810fb907fcd3a2e84daccc0b0aafb2474a08d45d84fba6558d9f38fb1924",
+      "sourceManifestSha256": "b83eac6ad13d4e8aac7fa272a51f91207cc1665aaf54fbf763f491a8ea0a8c1d",
+      "imagePath": "/Users/blackmad/Code/map-recall2/.worktrees/facade-material-pilot/public/data/city-expansion/evidence/fee2810fb907fcd3a2e84daccc0b0aafb2474a08d45d84fba6558d9f38fb1924.jpg",
+      "buildingId": "0363100012165154",
+      "elevationId": "0363100012165154_e_16tobqf",
+      "imageKind": "reference",
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear",
+        "abstain": false
+      },
+      "clientLatencyMs": 2523,
+      "schema": {
+        "valid": true,
+        "reason": null
+      },
+      "reused": false
+    },
+    {
+      "key": "279503de059b8e9f05a24d8680f9163544a3f7b1880304db98cdc7f7e5eb22e1",
+      "status": "ok",
+      "sourceSha256": "337693a3415bd2deb9ef24f92c9633502e01b0a249bd582227b235c683fd777f",
+      "sourceManifestSha256": "b83eac6ad13d4e8aac7fa272a51f91207cc1665aaf54fbf763f491a8ea0a8c1d",
+      "imagePath": "/Users/blackmad/Code/map-recall2/.worktrees/facade-material-pilot/public/data/city-expansion/evidence/337693a3415bd2deb9ef24f92c9633502e01b0a249bd582227b235c683fd777f.jpg",
+      "buildingId": "0363100012166570",
+      "elevationId": "0363100012166570_e_0wwk20u",
+      "imageKind": "reference",
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear",
+        "abstain": false
+      },
+      "clientLatencyMs": 2438,
+      "schema": {
+        "valid": true,
+        "reason": null
+      },
+      "reused": false
+    },
+    {
+      "key": "c9366010aa110e7848b08579823298a1b56e3886bb45d26db3368e8987a07f49",
+      "status": "ok",
+      "sourceSha256": "c06d72228be8bac8cb89e9c629704def03f1952a89467bf9303cf4ff913ff91f",
+      "sourceManifestSha256": "b83eac6ad13d4e8aac7fa272a51f91207cc1665aaf54fbf763f491a8ea0a8c1d",
+      "imagePath": "/Users/blackmad/Code/map-recall2/.worktrees/facade-material-pilot/public/data/city-expansion/evidence/c06d72228be8bac8cb89e9c629704def03f1952a89467bf9303cf4ff913ff91f.jpg",
+      "buildingId": "0363100012168920",
+      "elevationId": "0363100012168920_e_0bxls2d",
+      "imageKind": "reference",
+      "label": {
+        "materialFamily": "render",
+        "colourFamily": "grey",
+        "visibility": "clear",
+        "abstain": false
+      },
+      "clientLatencyMs": 2480,
+      "schema": {
+        "valid": true,
+        "reason": null
+      },
+      "reused": false
+    },
+    {
+      "key": "7c3bbb1f8e29677e92f126acdff4a2f1e12b12a72d26d501b873c43d8e9f7bc3",
+      "status": "ok",
+      "sourceSha256": "edb35369291bdbc9c75bc8acdd2e7982c7b5320634cdd0ea4cf6aec4971fc6ab",
+      "sourceManifestSha256": "b83eac6ad13d4e8aac7fa272a51f91207cc1665aaf54fbf763f491a8ea0a8c1d",
+      "imagePath": "/Users/blackmad/Code/map-recall2/.worktrees/facade-material-pilot/public/data/city-expansion/evidence/edb35369291bdbc9c75bc8acdd2e7982c7b5320634cdd0ea4cf6aec4971fc6ab.jpg",
+      "buildingId": "0363100012174169",
+      "elevationId": "0363100012174169_e_1w30ns5",
+      "imageKind": "reference",
+      "label": {
+        "materialFamily": "brick",
+        "colourFamily": "brown",
+        "visibility": "clear",
+        "abstain": false
+      },
+      "clientLatencyMs": 2258,
+      "schema": {
+        "valid": true,
+        "reason": null
+      },
+      "reused": false
+    },
+    {
+      "key": "7dfcc9f3cbbf91a7ce87c7e09241cb6fd2419c5e1a6236fcee5a3536746c1a84",
+      "status": "ok",
+      "sourceSha256": "11e20961ad949882a66b0b73e34b992f0bf7f9cbf18f75cc37385a0ab426e62b",
+      "sourceManifestSha256": "b83eac6ad13d4e8aac7fa272a51f91207cc1665aaf54fbf763f491a8ea0a8c1d",
+      "imagePath": "/Users/blackmad/Code/map-recall2/.worktrees/facade-material-pilot/public/data/city-expansion/evidence/11e20961ad949882a66b0b73e34b992f0bf7f9cbf18f75cc37385a0ab426e62b.jpg",
+      "buildingId": "0363100012236796",
+      "elevationId": "0363100012236796_e_1wk1kml",
+      "imageKind": "reference",
+      "label": {
+        "materialFamily": "render",
+        "colourFamily": "white",
+        "visibility": "clear",
+        "abstain": false
+      },
+      "clientLatencyMs": 2061,
+      "schema": {
+        "valid": true,
+        "reason": null
+      },
+      "reused": false
+    }
+  ],
+  "speed": {
+    "successfulSamples": 10,
+    "excludedErrors": 0,
+    "latencyMs": {
+      "median": 2438,
+      "p90": 3144,
+      "min": 2061,
+      "max": 3673
+    },
+    "modelLoadMs": {
+      "median": 1.169125,
+      "p90": 1.651667
+    }
+  },
+  "policy": "Local diagnostic predictions only. Source identity is not visually certified; no publication or accepted appearance grades.",
+  "paidCalls": 0
+}

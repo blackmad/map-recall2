@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "date": "2026-09-30",
+  "reviewer": "root-codex",
+  "origin": "model-visual-review",
+  "selectionSha256": "c10f79b4a07a170e78171616b9f560a3cbdf5a9208209be43b7559f65ade0a6a",
+  "scope": "Diagnostic source/historical-render inspection; no new render acceptance or geographic identity certification",
+  "imagesInspected": [
+    "gate-sources.png",
+    "gate-render-0.png",
+    "gate-render-5.png",
+    "disagreements.png"
+  ],
+  "nativeSourcesInspected": [
+    4,
+    10
+  ],
+  "conclusion": "The first cheap-model bottleneck is colour/uncertainty and reference quality. Several game comparisons additionally lack source-visible facade detail. Fine-tuning broad material classes before correcting those stages is not justified.",
+  "gateCases": [
+    {
+      "index": 0,
+      "buildingId": "0363100012166570",
+      "sourceSha256": "7552484350c90e5dbd43bce12d22e239bfd1ca98bc735da1020f8f037a2a6f64",
+      "stage": "renderer-delivery",
+      "finding": "Saved game view is mostly a blank brick wall while source shows repeated openings, arches and contrasting heads. Verify the rendered face and detail delivery before treating this as a texture-training example.",
+      "trainingReady": false
+    },
+    {
+      "index": 1,
+      "buildingId": "0363100012162796",
+      "sourceSha256": "e32641a5598fd1ac6382d2dbac7835fd195f37d7feae39abc18675a9bc34f262",
+      "stage": "source-exposure-target",
+      "finding": "Severe upper exposure loss; visible right/bottom masonry supports brick but exact target boundary is not certified. Local model already identifies brick in full image; tighter crop gives no benefit.",
+      "trainingReady": false
+    },
+    {
+      "index": 3,
+      "buildingId": "0363100012162897",
+      "sourceSha256": "57d3be0724715fea79eb8d5ed6b91a9400bc9f14300c361697ee9112599920cb",
+      "stage": "renderer-delivery-palette",
+      "finding": "Source shows varied warm masonry and pale trim; saved focused game view is a plain uniform ochre wall. Colour label buff versus model brown is not an albedo measurement.",
+      "trainingReady": false
+    },
+    {
+      "index": 4,
+      "buildingId": "0363100012165154",
+      "sourceSha256": "049152d3deff29eb2b69cd0c9e635c28fa6dd3a25a752765432cac3ac771b3a1",
+      "stage": "reference-label-and-render",
+      "finding": "Native source visibly has brick courses and arched masonry heads. Corrected the pilot material reference from unknown to brick. Saved game appears darker; no exact colour or texture scale acceptance.",
+      "trainingReady": false
+    },
+    {
+      "index": 10,
+      "buildingId": "0363100012168920",
+      "sourceSha256": "c23ad304909fdd9f4a5a16e9ebc2839850e7585f31f94d36b77b46b09dc6d767",
+      "stage": "source-substrate-uncertainty",
+      "finding": "Broad dark blue-grey appearance is visible; substrate/finish is unresolved. Both local inputs answer render/grey. Keep the substrate unknown rather than promoting model confidence.",
+      "trainingReady": false
+    },
+    {
+      "index": 11,
+      "buildingId": "0363100012127485",
+      "sourceSha256": "9f03a4974454e96ff4b0ad831ee96ee15dc38dbfaf0b8d14e8596f2b916c6a30",
+      "stage": "palette-lighting",
+      "finding": "Source is ochre/buff; model says brown under both input crops. Saved game is paler and smoother. Historical cream-variant evidence supports a separate warmer palette member; no exact colour match.",
+      "trainingReady": false
+    },
+    {
+      "index": 15,
+      "buildingId": "0363100012174169",
+      "sourceSha256": "7bb869e6263a36d9b71aebce2fc2c5c958430bd3c01edc47967c2ef0ed12931d",
+      "stage": "renderer-view",
+      "finding": "Source is a narrow articulated brick frontage; saved focused game view is mostly an unarticulated strip. Resolve wall/view identity and detail residency before buying appearance inference.",
+      "trainingReady": false
+    },
+    {
+      "index": 17,
+      "buildingId": "0363100012094649",
+      "sourceSha256": "a122cf2d42e5b8cde414affec4fd7946ba2082af3b4143c9bfd72c28f74891ee",
+      "stage": "palette-lighting-and-occlusion",
+      "finding": "Contextual game view is substantially tree-occluded. Earlier isolated pale-cream trial improved direction only. Tighter source crop changes local cream answer to grey, reducing reference compatibility.",
+      "trainingReady": false
+    },
+    {
+      "index": 30,
+      "buildingId": "0363100012236796",
+      "sourceSha256": "fa9c3ab9bee42dd26531c6c1fdfd1328eaa8bd637e25a27815a0596893c3bf91",
+      "stage": "renderer-delivery-and-lighting",
+      "finding": "Source reads white/pale smooth facade with dark trim and distinctive openings. Saved game changes silhouette/opening layout and appears beige. Broad material extraction already returns render/white.",
+      "trainingReady": false
+    },
+    {
+      "index": 64,
+      "buildingId": "0363100012157926",
+      "sourceSha256": "c5ec5094eba8c34f1d9128513b31c73c33978c2caf2ec2f4db1e0d5cf1e5f70e",
+      "stage": "renderer-detail",
+      "finding": "Brown brick is recognised in both inputs. Saved game retains coarse window rhythm but loses decorative pale horizontal/arched features. Material-family classification cannot supply those assemblies.",
+      "trainingReady": false
+    }
+  ],
+  "postHocDisagreementReview": {
+    "scope": "Inspected after seeing model outputs; cannot be treated as independent held-out ground truth",
+    "finding": "Several unresolved references visibly contain masonry, mixed assemblies or ambiguous finish, rather than uniformly unusable evidence. Do not turn all thirteen disagreements into negative training labels. Re-audit unknown substrate, mixed material, poor visibility and uncertain identity separately."
+  },
+  "nextExperiment": {
+    "priority": "Repair/reference audit before fine-tuning",
+    "tasks": [
+      "Adjudicate unresolved and minority material examples with explicit visible support, independent of model answers.",
+      "Use a palette-selection task with illumination uncertainty rather than predicting precise photo RGB or forcing every warm hue into one bin.",
+      "For source/render cases 0, 3 and 15, verify facade orientation and feature delivery before texture changes.",
+      "Keep exact texture scale and material masks unaccepted until measured; do not export current pilot as image-edit training pairs."
+    ],
+    "apiBudgetRemainingUsd": 25
+  }
+}
