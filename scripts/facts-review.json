@@ -696,7 +696,10 @@
     },
     "extract_bridges_256052628": {
       "verdict": "approved",
-      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05."
+      "note": "Owner blanket-approved the v11 opening-then-trivia catalog on 2026-09-05. Model-flagged 2026-09-30, struck: the quote describes the Lage Brug (similar but without the high elevation); the sentence gave that to the Python Bridge, which is officially Hoge brug.",
+      "drop": [
+        "Unlike the nearby Lage Brug, this structure lacks high elevation to accommodate cyclists."
+      ]
     },
     "extract_bridges_260390055": {
       "verdict": "approved",

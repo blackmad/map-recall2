@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Trivia audited against its own quotes; two false sentences struck
+
+Every published fact (4,052 across four cities) carries the source quote it
+was written from. Two mechanical passes read each fact against its quote:
+- **Numbers the quote lacks.** 8 facts: 7 derived ("two days later" → 16
+  December) or context (house numbers), and one real error.
+- **Capitalised names the quote lacks** (sentence-initial words and common
+  nouns excluded). 69 facts, mostly first names filled in from the article.
+  It also caught an inversion.
+
+Struck through the review files' `drop` lists, each with a note so a person
+can undo it:
+- **Python Bridge.** "Unlike the nearby Lage Brug, this structure lacks high
+  elevation to accommodate cyclists." The quote says that of the Lage Brug.
+  The Python Bridge is officially Hoge brug. It was the feature's only
+  sentence, so the feature leaves facts.json, by design (no empty cards). Its
+  card keeps the Wikipedia extract and, since today, bridge register 1998.
+- **Den Haag, 'Grenadiers en Jagers'.** "Seventh-grade students … attend its
+  annual May 10 ceremony." Groep 7 pupils are 10–11, and the quote names no
+  date.
+
+Publishing re-ran for both cities. The diff is exactly those sentences (and
+the emptied feature). `check-facts.ts` keeps both out of a later republish.
+
 ## 2026-09-30 — Fix: the songbird repair unnamed ten birds
 
 The glossary's "singing bird" → "songbird" repair (earlier today) runs before
