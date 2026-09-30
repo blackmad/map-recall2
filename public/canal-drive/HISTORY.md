@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: rare openings read one by one
+
+Openings that occur once or twice were read against the Dutch; 61 origins
+changed.
+- **A factual error.** The Bosporus was "The Sea of Marmara"; the Dutch
+  says a strait (zeestraat).
+- **Waterbouwkundigen** built dikes and canals. They are hydraulic
+  engineers, not "hydrologists"; this touched 10 origins, including Lely and
+  Vermuyden.
+- **Words read literally.**
+  - Droogmakerij (a drained lake) had become "drying plant", klokkenspel
+    (carillon) "clock game", and zeegat (tidal inlet) "sea gap".
+  - Hefschroefvliegtuig had become "elevator aircraft", ruiterhoofdman
+    (cavalry captain) "rider chief", and a jonkheer a "baron".
+  - Walvisachtige, a cetacean, had become "whale-like".
+- **Ships.**
+  - A paddle steamer had become "a vehicle propelled by propellers".
+  - Leeboards (zwaarden) had become "side swords".
+  - The schokker, which is related to the botter, was "related to the hull".
+- **Others.**
+  - Bonkaarten (ration cards) had become "bonka cards".
+  - A voormalig buiten (former country house) was "formerly outside", and
+    "Herinnert aan" was "Reminds me of".
+
 ## 2026-09-30 — Street-name translations: opening words read literally
 
 Pairing each Dutch opening word with its English opening found more

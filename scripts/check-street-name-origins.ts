@@ -255,4 +255,8 @@ assert.equal(repairOriginTranslation('Meer, gelegen in zuidelijk Friesland.', 'M
 assert.equal(repairOriginTranslation('Buurtschap nabij Leusden (Utrecht).', 'Neighborhood near Leusden (Utrecht).'), 'Hamlet near Leusden (Utrecht).');
 assert.equal(repairOriginTranslation('Geuzenkapitein tijdens de inneming van Den Briel in 1572.', 'Guzen captain during the capture of Den Briel in 1572.'),
   'Geuzen (Sea Beggar) captain during the capture of Den Briel in 1572.');
+assert.equal(repairOriginTranslation('Zeestraat in Turkije, die een deel vormt van de verbinding.', 'The Sea of Marmara in Turkey, which forms part of the connection.'),
+  'Strait in Turkey, which forms part of the connection.', 'the Bosporus is a strait, not the Sea of Marmara');
+assert.equal(repairOriginTranslation('Vaartuig, dat door middel van schepraderen wordt voortbewogen.', 'Vehicle, which is propelled by means of propellers.'), 'Vessel propelled by paddle wheels.');
+assert.equal(repairOriginTranslation('Waterbouwkundige (1590-1677).', 'Hydrologist (1590-1677).'), 'Hydraulic engineer (1590-1677).', 'a waterbouwkundige builds, not studies, water works');
 process.stdout.write('Street-name origin checks passed\n');
