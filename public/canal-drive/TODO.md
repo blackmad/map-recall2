@@ -52,7 +52,7 @@ either:
   ceremony". Groep 7 is ages 10–11, and the quote has no 10 May.
 The proper-noun pass also left 69 facts naming someone the quote does not
 name, mostly first names filled in from the article ("Dirk" Sterenberg). A
-human could skim that list (rerun the check sketched in HISTORY).
+human could skim that list (`npx tsx scripts/audit-fact-quotes.ts -- --names`).
 
 **6. Due-aware “where next” routing.**
 The thin slice shipped 2026-09-29 (see HISTORY). With Plan review on, a ride
