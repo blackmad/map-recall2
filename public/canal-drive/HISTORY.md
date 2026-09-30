@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: "Naar de …" is "Named after", not "To the …"
+
+The translator rendered every opening "Naar de …" ("named after the …")
+as "To the …": 123 origins read "To the city of Rotterdam". A glossary rule
+now rewrites the opening whenever the Dutch starts with "Naar ". Reading
+those 85 distinct texts turned up more slips:
+- An uitspanning, the Schollenbrug inn, had become "the extension".
+- Vastenavond (Shrovetide) had become "Good Friday".
+- The Kapelstegen had become "Chapel Stops".
+- The Kerksteeg alleys had become "steps".
+- Huidenhandel is the hide trade, not the fur trade.
+- The Panama Canal was dug "through" the isthmus, not "by" it.
+- The VOC's imported spices had become "the spices mentioned".
+
 ## 2026-09-30 — Street-name translations: plants read as a group, and the Kadijk
 
 The plant streets were read together, as were the Plantage and Kadijk

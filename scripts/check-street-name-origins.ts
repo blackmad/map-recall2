@@ -57,14 +57,14 @@ assert.equal(repairOriginTranslation('De Kloveniersburgwal dankt zijn naam aan e
   'The Kloveniersburgwal owes its name to a part of the artillery that was called crossbowmen, after the firearm used by the men, a field snake.'),
   'The Kloveniersburgwal owes its name to a company of the civic guard called the kloveniers, after the firearm its men carried, the klover or culverin.');
 assert.equal(repairOriginTranslation('Schilderde portretten en schuttersstukken.', 'Painted portraits and hunting scenes.'), 'Painted portraits and civic guard portraits.');
-assert.equal(repairOriginTranslation('Naar de hier gevestigde kuiperij.', 'To the brewery established here.'), 'To the cooperage established here.');
+assert.equal(repairOriginTranslation('Naar de hier gevestigde kuiperij.', 'To the brewery established here.'), 'Named after the cooperage established here.');
 assert.equal(repairOriginTranslation('Schout-bij-nacht in Nederlands-Indië.', 'Night commander in the Dutch East Indies.'), 'Night commander in the Dutch East Indies.',
   'a capitalised rendering is left for review rather than guessed');
 assert.equal(repairOriginTranslation('Tijdens de oorlog schout-bij-nacht in Nederlands-Indië.', 'During the war, he was night commander in the Dutch East Indies.'),
   'During the war, he was rear admiral in the Dutch East Indies.');
 assert.equal(repairOriginTranslation('Naar de Heren Regeerders van de stad (De stad werd vroeger niet bestuurd, maar geregeerd).',
   'To the Lords Regulators of the city (The city was not previously governed, but ruled).'),
-  'To the ruling lords (Heren Regeerders) of the city (in those days the city was not governed but ruled).');
+  'Named after the ruling lords (Heren Regeerders) of the city (in those days the city was not governed but ruled).');
 assert.equal(repairOriginTranslation('Een schans is een aarden wal en als zodanig is de Oudeschans gebouwd.', 'A bastion is an earthen wall and as such the Oudeschans was built.'),
   'A rampart is an earthen wall and as such the Oudeschans was built.');
 assert.equal(nameGenericOrigin('Lauriergracht', 'The South European ornamental tree', { laurier: 'laurel' }), 'Named after the laurel, a South European ornamental tree.');
@@ -244,5 +244,9 @@ assert.equal(repairOriginTranslation("Tot 1863 ... zogenaamde 'bomen' ... de boo
   "Until 1863, the city of the IJ was separated by a palisade, so-called 'trees'. When opening the 'trees', the tree bell was sounded."),
   "Until 1863, the city was separated from the IJ by a palisade, so-called 'bomen' (booms). When opening the booms, the boom bell (boomklok) was sounded.");
 assert.equal(repairOriginTranslation('Vervaardigde een elektriseermachine.', 'Developed an electroplating machine.'), 'Developed an electrostatic generator.');
+
+assert.equal(repairOriginTranslation('Naar de stad Rotterdam', 'To the city of Rotterdam'), 'Named after the city of Rotterdam', 'Naar opens a named-after origin');
+assert.equal(repairOriginTranslation('Naar Gijsbrecht IV.', 'To Gijsbrecht IV.'), 'Named after Gijsbrecht IV.');
+assert.equal(repairOriginTranslation('Naar de uitspanning die hier vroeger heeft gestaan.', 'To the extension that used to stand here.'), 'Named after the roadside inn that used to stand here.');
 
 process.stdout.write('Street-name origin checks passed\n');
