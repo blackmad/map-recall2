@@ -31,6 +31,10 @@ Street-name origins are now retranslated whole by a language model:
   the Dutch, and it "corrected" the source (Herschel's telescopes are
   seventeenth-century in the register). Each batch must be translated against
   its printed Dutch.
+- Clear factual errors in the register are now corrected in the English, and
+  every one is listed in `docs/amsterdam-street-name-register-errors.md`.
+  User, asked whether "extermination camp Buchenwald" should stay as the
+  register has it: "no, loose is fine". Doubtful cases stay as written.
 
 ## 2026-09-30 — Street-name translations: a random sample of 30, 14 wrong
 

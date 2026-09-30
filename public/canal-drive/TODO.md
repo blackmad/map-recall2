@@ -89,8 +89,9 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   4,340 distinct Dutch texts done, 2,690 left. Continue with
   `npx tsx scripts/origin-translation-batch.ts next --count=60`, write
   `[{"id","en"}]`, then `ingest`, then `npm run publish:street-name-origins`.
-  Translate each batch against its printed Dutch: no added facts, and keep
-  the source's own errors.
+  Translate each batch against its printed Dutch: no added facts; correct only
+  clear factual errors (ingest the faithful text, which keeps the year
+  check meaningful, then fix the cache entry and tag it `+corrected`).
   Record every register error found in
   `docs/amsterdam-street-name-register-errors.md` (with its BAG id), for a
   report to the municipality.
