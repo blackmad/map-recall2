@@ -19,6 +19,12 @@ Street-name origins are now retranslated whole by a language model:
 - The rest are translated inside Claude Code sessions, at no API cost, through
   `origin-translation-batch.ts` (`next` / `ingest`). `ingest` refuses a
   translation that loses a three- or four-digit number from the Dutch.
+- A scan for register texts that start or stop mid-sentence found a few
+  split entries. Pure fragments are withheld (`WITHHELD_ORIGINS`):
+  Dirk van Hasseltssteeg, Elim and Piet Wiedijkstraat. Eilandsgracht is
+  withheld too: it carries the Elandsgracht's text about tanning elk hides.
+  Texts that are only cut at one edge are translated without the broken
+  edge; the Dirk de Waterduikerbrug gets its missing second half back.
 - One draft batch written after a context break had not been checked against
   the Dutch, and it "corrected" the source (Herschel's telescopes are
   seventeenth-century in the register). Each batch must be translated against
