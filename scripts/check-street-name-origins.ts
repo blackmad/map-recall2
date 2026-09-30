@@ -224,4 +224,8 @@ assert.equal(repairOriginTranslation('even voor 1600 bij de stad getrokken', 'dr
   'drawn to the city just before 1600, there is talk', 'a year read as a clock time, capitals too');
 assert.equal(repairOriginTranslation('de pretentieloze, uit de losse pols geschoten foto', 'the pretentious, candid photo'), 'the unpretentious, candid photo');
 
+assert.equal(repairOriginTranslation('Middeleeuws lied over een vrouwenmoordenaar die zelf door een prinses vermoord wordt.',
+  'Medieval song about a female murderer who is herself murdered by a princess.'),
+  'Medieval song about a murderer of women who is himself killed by a princess.');
+
 process.stdout.write('Street-name origin checks passed\n');
