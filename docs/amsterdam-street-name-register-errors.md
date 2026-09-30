@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Kwintsheulstraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Luyendijkje, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -48,6 +48,7 @@ next record.
 | Vredenburgerbrug | [0363300011950362](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950362/) | Starts mid-sentence ("katholieke bejaardenhuis Vredenburg werd gebouwd…") and stops mid-sentence ("…waren hier achtereen"). | Not yet reached. |
 | Na Druk Gelukbrug | [0363300011950397](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950397/) | Starts mid-sentence, repeats its first clause ("…aan de toenmalige Brug is vernoemd naar…"), and stops at "De naam van deze boerderij refereert". | Not yet reached. |
 | Jan Poytstraat | [0363300011951814](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951814/) | Carries a stray sentence from another architect's record: "Simon van Woerden (1902-1998) heeft rond 1958 de Bethelkerk ontworpen." | Translated without the stray sentence. |
+| Lizzy Ansinghstraat | [0363300000005728](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005728/) | Ends with a spliced-in piece of the Nicolaas Anslijnstraat record ([0363300000003854](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003854/)), register markup included: "Anslijnstraat, Nicolaas Osdorp Rb. 15-4-1959 14: l 6 Onderwijshervormer (1778-1838)…" | Translated without the spliced text. |
 | Bastingstraat | [0363300000002489](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002489/) | Starts mid-sentence: "het Mosplein. Voor deze buurt…". Says nothing about Basting. | Earlier translation; to review. |
 | Badhuiskade | [0363300003695538](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003695538/) | Starts mid-sentence: "vroegere badinrichting Obelt, gebouwd 1914…". | Earlier translation; to review. |
 
@@ -99,6 +100,12 @@ the municipality's sources.
 | Karveelstraat | [0363300000003971](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003971/) | "Zeilschip uit de negentiende eeuw" | a late-medieval type (Columbus's Niña and Pinta, 1492) | Corrected |
 | Kinkerbrug | [0363300011950672](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950672/) | Johannes Kinker (1765-1845) | born 1 January 1764 | Corrected |
 | Korte Van Eeghenstraat | [0363300000004094](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004094/) | named after Isabelle Henriette van Eeghen (1913-1996), the opening sentence of the Isa van Eeghenbrug record ([0363300011951445](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951445/)) | Christiaan Pieter van Eeghen (1816-1889), like the Van Eeghenstraat ([0363300000005201](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005201/)); the record itself says the street was named in 1896 | Corrected |
+| Le Mairegracht | [0363300000001765](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001765/) | Le Maire named Cape Horn "naar zijn vaderstad Hoorn" | Hoorn was Willem Schouten's home town; Le Maire was from an Amsterdam merchant family, and the two made the discovery together | Corrected |
+| Leeuwenhoekstraat | [0363300000004147](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004147/) | "uitvinder van de microscoop" | he built improved single-lens microscopes; the microscope predates him | Corrected |
+| Lise Meitnerpad | [0363300011951519](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951519/) | "onderzoek naar kernfusie in uranium" | nuclear fission (kernsplijting) | Corrected |
+| Lodewijk Boisotstraat | [0363300000004194](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004194/) | relieved Leiden "in 1572" | the Relief of Leiden was in 1574 | Corrected |
+| Lord Kelvinstraat | [0363300000004208](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004208/) | "Engels natuurkundige … ontdekte het element argon" | British (born in Belfast, professor at Glasgow); argon was isolated by Rayleigh and Ramsay in 1894 | Corrected |
+| Louvrelaan | [0363300000001309](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001309/) | the collection began with "de kunstschatten van Lodewijk XV" | the royal collection goes back to Francis I and Louis XIV | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
