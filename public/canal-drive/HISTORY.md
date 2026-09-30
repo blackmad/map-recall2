@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Card chips fit a 320 px phone
+
+The "Landmark Card Mobile" story expanded its card into the desktop panel, so
+it never showed what a phone draws. With the story switched to the touch card
+(`landmark-card-touch`), the new screenshot check found an overflow. At about
+300 px of card, CHURCH + W WIKIPEDIA + MORE ran past the text column, and
+"+ MORE" was clipped. That is the one chip saying there is more to read.
+
+`fitBadges` in `noticeCards.ts` now fits the row to the column. It shortens
+the Wikipedia chip to "W" first, then drops chips in the order article, fact,
+category, language. MORE is dropped last. `check-notice-cards.ts` pins the
+narrow case, and also the wide case, where every chip keeps its full label.
+
 ## 2026-09-30 — Storybook states are screenshot-compared; the finish stories were blank
 
 `tests/e2e/storybook-visual.spec.ts` loads each story from the production

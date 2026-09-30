@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
-  | 'landmark-card' | 'landmark-card-bare' | 'landmark-panel' | 'landmark-panel-dutch'
+  | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
   // bridge's origin (municipal register) and a clicked building's facts.
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
@@ -232,7 +232,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           paint.onload = () => {
             game._landmarkImages.set('oude-kerk', paint);
             game._renderLandmarkNotice();
-            if (scenario !== 'landmark-card' && scenario !== 'landmark-card-bare') game._expandLandmarkNotice();
+            if (!['landmark-card', 'landmark-card-bare', 'landmark-card-touch'].includes(scenario)) game._expandLandmarkNotice();
           };
           paint.src = game._landmarkNotice.imageUrl;
           return;
@@ -435,8 +435,10 @@ export const PortraitBuildingFactsCard: Story = {
   args: { scenario: 'landmark-card-building-touch' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
+/** A phone is a touch screen: without the touch layout the desktop HUD was
+ *  drawn at a quarter size and the card was unreadable. */
 export const LandmarkCardMobile: Story = {
-  args: { scenario: 'landmark-card' },
+  args: { scenario: 'landmark-card-touch' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 
