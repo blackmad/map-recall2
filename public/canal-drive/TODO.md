@@ -85,8 +85,8 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   bridge on a bike.
 - The API states no licence for `beschrijvingNaam`. Confirm it with the
   municipality before a public release.
-- Retranslation off `trn` is under way (see HISTORY, 2026-09-30): 2,550 of
-  4,340 distinct Dutch texts done, 1,790 left. Continue with
+- Retranslation off `trn` is under way (see HISTORY, 2026-09-30): 2,730 of
+  4,340 distinct Dutch texts done, 1,610 left. Continue with
   `npx tsx scripts/origin-translation-batch.ts next --count=60`, write
   `[{"id","en"}]`, then `ingest`, then `npm run publish:street-name-origins`.
   Translate each batch against its printed Dutch: no added facts; correct only
@@ -97,7 +97,7 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   report to the municipality.
   For a name whose register text is missing or broken, write a short sourced
   text into `scripts/street-name-origin-supplements.json` (still to do:
-  Vredenburgerbrug, Na Druk Gelukbrug, Bastingstraat, Robijnstraat).
+  Vredenburgerbrug, Bastingstraat, Robijnstraat).
 - `ORIGIN_GLOSSARY` still repairs whatever stays on `trn` text; once the
   retranslation is done, check which rules still fire and drop the dead ones.
 

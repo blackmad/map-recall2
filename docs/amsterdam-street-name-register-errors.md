@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Maurits Kannstraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Nicolaas Tetterodestraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -46,7 +46,7 @@ next record.
 | Piet Wiedijkstraat | [0363300000004367](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004367/) | The whole text is "met name op het gebied van het verkeer." |  Replaced by a sourced supplement (Wikipedia). |
 | Kinkerstraat | [0363300000004001](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004001/) | The whole text is "Hij vertaalde werk van Shakespeare en Schiller...", the tail of the Kinkerbrug record ([0363300011950672](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950672/)), and never names Kinker. | Sourced supplement from Wikipedia. |
 | Vredenburgerbrug | [0363300011950362](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950362/) | Starts mid-sentence ("katholieke bejaardenhuis Vredenburg werd gebouwd…") and stops mid-sentence ("…waren hier achtereen"). | Not yet reached. |
-| Na Druk Gelukbrug | [0363300011950397](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950397/) | Starts mid-sentence, repeats its first clause ("…aan de toenmalige Brug is vernoemd naar…"), and stops at "De naam van deze boerderij refereert". | Not yet reached. |
+| Na Druk Gelukbrug | [0363300011950397](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950397/) | Starts mid-sentence, repeats its first clause ("…aan de toenmalige Brug is vernoemd naar…"), and stops at "De naam van deze boerderij refereert". | Replaced by a sourced supplement (nl.wikipedia, Olympisch Kwartier). |
 | Jan Poytstraat | [0363300011951814](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951814/) | Carries a stray sentence from another architect's record: "Simon van Woerden (1902-1998) heeft rond 1958 de Bethelkerk ontworpen." | Translated without the stray sentence. |
 | Lizzy Ansinghstraat | [0363300000005728](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005728/) | Ends with a spliced-in piece of the Nicolaas Anslijnstraat record ([0363300000003854](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003854/)), register markup included: "Anslijnstraat, Nicolaas Osdorp Rb. 15-4-1959 14: l 6 Onderwijshervormer (1778-1838)…" | Translated without the spliced text. |
 | Bastingstraat | [0363300000002489](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002489/) | Starts mid-sentence: "het Mosplein. Voor deze buurt…". Says nothing about Basting. | Earlier translation; to review. |
@@ -112,6 +112,11 @@ the municipality's sources.
 | Marconistraat | [0363300000004258](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004258/) | Guilielmo Marconi | Guglielmo | Corrected |
 | Maritzstraat | [0363300000004267](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004267/) | "Versloeg in 1937 de Matabellen" | 1837 (Maritz died in 1839) | Corrected |
 | Mata Harihof | [0363300000002449](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002449/) | "Vanwege haar spionageactiviteiten gericht tegen de Duitsers" | she was convicted by the French of spying for Germany | Corrected |
+| Max Planckstraat | [0363300000004289](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004289/) | "hoogleraar te Berlijn en Wenen" | Kiel and Berlin | Corrected |
+| Maxwellstraat | [0363300000004290](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004290/) | "De Engelse natuurkundige" | Scottish | Corrected |
+| Milovan Djilasstraat | [0363300000000892](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000000892/) | (1911-1997), "secretaris-generaal van de Joegoslavische Communistische Partij" | died 1995, as the Milovan Djilasplein record ([0363300003714180](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003714180/)) says; Tito, not Djilas, led the party | Corrected |
+| Nelson Mandelapark | [0363300000005538](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005538/) | sentenced to life "in 1963" | 12 June 1964, at the end of the Rivonia Trial | Corrected |
+| Nicolaas Maesstraat | [0363300000003859](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003859/) | 1632–1693 | born January 1634 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
