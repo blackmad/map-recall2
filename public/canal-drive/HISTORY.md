@@ -1,5 +1,42 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: plants read as a group, and the Kadijk
+
+The plant streets were read together, as were the Plantage and Kadijk
+streets that share a text; 60 origins changed.
+- **Plant families.**
+  - The translator had swapped several families. Anjelier is in the pink
+    family, not the rose family. Dille and koriander are umbellifers, not
+    asters. Kleefkruid (cleavers) is in the bedstraw family, not the
+    Asteraceae. Ogentroost is in the figwort family, not the mint family.
+    Muurbloem is a crucifer, not a "cruciferous vegetable".
+  - Korte Papaverweg said papaver "is also called buttercup". It is the
+    klaproos, the corn poppy.
+  - Vossenbes is the lingonberry, not the red currant. Kaasjeskruid is
+    mallow, not "cheese herb", and monnikskap is monkshood.
+- **Source error.** Zilverschoon (silverweed) is in the rose family; the
+  register says the buttercup family.
+- **Words read literally.**
+  - A kadijk (quay dike) had become "canal". The Laagte and Hoogte Kadijk,
+    both street names, had become "the Lowness and Height of the Canal".
+  - The harbour booms (bomen) and the boom bell had become "trees" and a
+    "tree bell". Bongerd, an orchard, was a "tree garden", and a hogeboom
+    footbridge was "a high tree".
+  - The bullebak (a bogeyman) was a "bull's head", and a gouw was a
+    "county".
+  - Ontvening (peat digging) had become "draining", and the lift bridge it
+    served a "loading bridge".
+- **People.**
+  - Domela Nieuwenhuis was a Lutheran minister, not "Luther's pastor", and
+    went from socialist to anarchist.
+  - Van Marum built an electrostatic generator, not an "electroplating
+    machine". Johannes Post led knokploegen (armed squads), not "strike
+    groups", and died after a raid on the remand prison, not a "robbery of
+    the Prison House".
+  - Hilbert van Dijk was a milk seller, not a "milk slicer".
+  - Quashiba's partner went back "five years later", not "five years ago".
+  - The Tante Saar text gets back its dropped last sentence.
+
 ## 2026-09-30 — Street-name translations: read by theme (trades, cloth, animals)
 
 Errors cluster in themed street groups, so whole groups were read at once:
