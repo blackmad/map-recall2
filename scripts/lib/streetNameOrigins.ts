@@ -154,7 +154,46 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/stadsuitleg/i, /\bcity layout\b/g, 'city expansion'],
   [/zangzaad/i, /\bsinging seed\b/g, 'birdseed'],
   [/regenten/i, /\bregency families\b/g, 'regent families'],
+  // Outright mistranslations that taught something false: a plum is not a
+  // pear, sparrows are not finches' parents, and a pheasant is no chicken.
+  [/pruimenboom/i, /\bpear tree\b/g, 'plum tree'],
+  [/tot de vinken behorende/i, /\bbelonging to the sparrows\b/g, 'belonging to the finches'],
+  [/^de hoender\.?$/i, /^The chicken\.?$/, 'The fowl.'],
 ];
+
+/** Classes an origin may name alone ("The shrub."), as the card says them. */
+const GENERIC_CLASSES = new Set([
+  'shrub', 'deciduous tree', 'tree', 'singing bird', 'bird', 'water bird', 'meadow bird', 'bird of prey',
+  'bird family', 'fruit', 'citrus fruit', 'plant', 'flower', 'climbing shrub', 'climbing plant',
+  'ornamental shrub', 'ornamental plant', 'plant family', 'freshwater fish', 'constellation', 'fowl',
+  'gardening tool', 'tool', 'ship part',
+]);
+
+/** The word a street is named after: "Tweede Egelantiersdwarsstraat" → "egelantier". */
+export function nameStem(name: string): string {
+  const base = name.replace(/^(Eerste|Tweede|Derde|Vierde|Korte|Lange|Nieuwe|Oude|Kleine|Grote)\s+/, '').split(/\s+/).pop() ?? '';
+  const stem = base.toLowerCase()
+    .replace(/(dwarsstraat|straatje|straat|gracht|weg|laan|plein|kade|pad|hof|brug|steeg|dijk|park|plantsoen|singel|dreef)$/, '');
+  return stem.length > 4 ? stem.replace(/s$/, '') : stem;
+}
+
+/**
+ * An origin that only names the class — "De heester." for the
+ * Egelantiersgracht — says nothing unless the rider knows what an egelantier
+ * is. With the stem's meaning from a reviewed glossary it teaches the name:
+ * "Named after the eglantine (sweet briar), a shrub." Anything that is not a
+ * bare class, or a stem the glossary lacks, is left alone.
+ */
+export function nameGenericOrigin(name: string, en: string, stems: Readonly<Record<string, string>>): string {
+  const match = /^(?:The|Named after the)\s+([a-z ]+?)\.?$/i.exec(en.trim());
+  const thistle = /^thistle species\.?$/i.test(en.trim());
+  const word = stems[nameStem(name)] ?? stems[`${nameStem(name)}s`];
+  if (!word || (!thistle && !(match && GENERIC_CLASSES.has(match[1].toLowerCase())))) return en;
+  if (thistle) return `Named after the ${word}, a thistle.`;
+  // One gull is not a family: the family names the kind of thing it is.
+  const kind = match![1].toLowerCase().replace(/ family$/, '');
+  return `Named after the ${word}, ${/^[aeiou]/.test(kind) ? 'an' : 'a'} ${kind}.`;
+}
 
 export function repairOriginTranslation(nl: string, en: string): string {
   let text = en;
