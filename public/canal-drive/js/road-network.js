@@ -383,8 +383,11 @@ class RoadNetwork {
     };
   }
 
-  planRoute(startPoint, finishPoint) {
+  /** `via`: a review ride's waypoint (routeSelection.choosePlannedReview),
+   *  kept only within roadGraph's via detour cap. */
+  planRoute(startPoint, finishPoint, via = null) {
     return GRAPH.planLearningRoadRoute(this._routingGraph(), startPoint, finishPoint, {
+      via: via || undefined,
       masteryForName: name => this._masteryForName(name),
       namesForEdge: edge => this._edgeNames(edge),
       familiarityPenalty: 0.18,

@@ -1,5 +1,47 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Review rides reach due streets off every landmark line
+
+A review ride runs between two landmarks whose straight line passes due
+names within 200 m. Measured over the routing extract, 731 of the 2,932
+street names within 4.5 km of the centre (25%) are farther than that from
+every landmark-pair line, mostly in Noord and the outer districts. A due
+street there never came up for review again. At a 1.3× straight-line slack,
+every one of those 2,932 names lies in some pair's ellipse.
+
+**Selection.** `pickReviewRoute` offers each pair the due name that no line
+covers and that the pair detours least for (`REVIEW_VIA_SLACK` = 1.3). The via
+counts with the line names. The briefing still only counts; the via is
+snapped under a blank name.
+
+**Planning.** `planLearningRoadRoute` takes `via` as a point, a stretch, or
+a list of stretches. It plans start → stretch → finish and keeps the result
+only when both hold:
+- it is at most 40% longer than the shortest direct ride (`viaDetourRatio`);
+- no node repeats. A repeat means riding back out of a dead end, or round a
+  lollipop to a junction already passed, which also confuses the live route
+  line.
+
+A single point failed on real data. The game's segments are two-point
+pieces, so a "midpoint" is a junction. The ride would reach it and turn back
+whenever the finish lay behind it. Avenhornstraat was refused on all 11
+segments. So the game passes stretches of the street (`_reviewViaPoints`):
+the longest first, since long pieces are more often through streets, within
+800 m of the due centre, up to 3. Each stretch is tried in its likelier
+direction first.
+
+**Cost.** A via plan costs about 95 ms against 85 ms for a direct plan (a
+100k-node graph, desktop), because legs skip the biased second pass.
+`choosePlannedReview` also skips a candidate whose line passes no more due
+names than the best planned path already rides. The ~1.2 s seen on the first
+plan is the routing graph being built, which every ride pays anyway.
+
+Pinned by `check-road-graph.ts` (through, cap, dead end, lollipop, stretch
+direction, list, empty list), `check-play-delight.ts` (via selection and
+planning, a refused via is not ridden) and `review-ride.spec.ts`
+(Avenhornstraat ridden with a detour under 40%, and not named in the
+briefing).
+
 ## 2026-09-30 — Bridge register: reviewed aliases; the other refusals checked
 
 The build left 11 named bridges undescribed as ambiguous. Each was read

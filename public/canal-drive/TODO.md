@@ -43,11 +43,11 @@ Wikipedia evidence.
 **6. Due-aware “where next” routing.**
 The thin slice shipped 2026-09-29 (see HISTORY). With Plan review on, a ride
 runs between the landmarks whose line passes the most due names. Still open:
-- the planned-path choice (see HISTORY, 2026-09-30) only re-ranks the
-  straight line's top five. A due street off every good line is still never
-  ridden; street midpoints as endpoints would reach it (next bullet);
-- choosing the review pair when `routePois` is thin (outer districts),
-  perhaps with street midpoints as endpoints;
+- a due street off every landmark line is now ridden as a via (see HISTORY,
+  2026-09-30), one via per ride. With several such names due, the others wait
+  for later rides. Only one due name is tested in a real e2e (Avenhornstraat).
+  Not yet measured: how often the planner refuses every stretch of a
+  due street. A street made only of cul-de-sacs is never ridden through;
 
 **Street-name origins: the licence, and a glossary pass.**
 All 5,333 origins are published (see HISTORY, 2026-09-30).
@@ -69,8 +69,9 @@ and function now reach clicked buildings (see HISTORY, 2026-09-30). Still open:
   shortening pass before translation;
 - `amsterdam_canon` (49 windows with location and a stadsarchief link) could
   be landmark-like stops;
-- bridge cards now carry the register (see HISTORY). Locks (`sluizen`, 46)
-  are not described yet. Two road names on multi-bridge ways, Jan van
+- bridge cards now carry the register (see HISTORY), including all 14
+  bridges named "…sluis". The separate lock register (`sluizen`, 46) is not
+  used; it would only add that a lock lies beneath. Two road names on multi-bridge ways, Jan van
   Galenstraat and Radioweg, could be resolved per crossing from
   `bridge-crossings.json`. The other six refusals are correct.
 

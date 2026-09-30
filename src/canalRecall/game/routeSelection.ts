@@ -230,6 +230,14 @@ export const REVIEW_MIN_TRIP_KM = 0.8;
 export const REVIEW_FROM_SAMPLES = 40;
 /** Among pairs passing the most names, allow this much extra length. */
 export const REVIEW_LENGTH_SLACK = 1.3;
+/**
+ * A due name no pair's line passes (a quarter of Amsterdam's street names:
+ * Noord and the outer districts have few landmarks) can be ridden as a via
+ * when from → via → to is at most this much longer than from → to in a
+ * straight line. The planner caps the real detour again
+ * (`planLearningRoadRoute`'s `viaDetourRatio`).
+ */
+export const REVIEW_VIA_SLACK = 1.3;
 
 export interface DuePlace {
   name: string;
@@ -251,6 +259,9 @@ export interface ReviewRoutePick {
   to: RoutePoi;
   /** Distinct due names within the corridor, for the briefing count. */
   dueNear: string[];
+  /** A due name off every line, ridden through on the way. Its name is for
+   *  the count only; the briefing never shows it. */
+  via?: DuePlace;
   /** Runner-up pairs by straight-line count, for `choosePlannedReview`: the
    *  line is only a guess at what the router will ride. */
   alternatives?: Array<Omit<ReviewRoutePick, 'alternatives'>>;
@@ -304,6 +315,33 @@ export function pickReviewRoute(input: ReviewRouteInput): ReviewRoutePick | null
       pairs.push(pair);
     }
   }
+  // Due names no line passes: offer each pair the one it detours least for.
+  const covered = new Set(all.flatMap(pair => pair.dueNear));
+  const uncovered = due.filter(place => !covered.has(place.name));
+  if (uncovered.length) {
+    const lineNames = new Map(all.map(pair => [`${pair.from.id}>${pair.to.id}`, pair.dueNear]));
+    for (const from of froms) {
+      const reachable = uncovered.filter(place => kmBetween(from, place) <= maxKm * REVIEW_VIA_SLACK);
+      if (!reachable.length) continue;
+      for (const to of pois) {
+        if (to.id === from.id) continue;
+        const km = kmBetween(from, to);
+        if (km < REVIEW_MIN_TRIP_KM || km > maxKm) continue;
+        let via: (typeof due)[number] | null = null, viaKm = km * REVIEW_VIA_SLACK;
+        for (const place of reachable) {
+          const through = kmBetween(from, place) + kmBetween(place, to);
+          if (through <= viaKm) { via = place; viaKm = through; }
+        }
+        if (!via) continue;
+        const names = [...new Set([...(lineNames.get(`${from.id}>${to.id}`) ?? []), via.name])].sort();
+        const pair = { from, to, dueNear: names, km: viaKm, via: { name: via.name, center: [via.lat, via.lng] as [number, number] } };
+        all.push(pair);
+        if (names.length < best) continue;
+        if (names.length > best) { best = names.length; pairs = []; }
+        pairs.push(pair);
+      }
+    }
+  }
   if (!pairs.length) return null;
   const shortest = Math.min(...pairs.map(pair => pair.km));
   const close = pairs.filter(pair => pair.km <= shortest * REVIEW_LENGTH_SLACK);
@@ -322,10 +360,13 @@ export function pickReviewRoute(input: ReviewRouteInput): ReviewRoutePick | null
   return { ...strip(chosen), alternatives };
 }
 
-export interface PlannedReview<P> {
+export interface PlannedReview<P, V = P> {
   pick: Omit<ReviewRoutePick, 'alternatives'>;
   start: P;
   finish: P;
+  /** The via as planned (a point or a stretch of street), when the pick has
+   *  one and the planned path rides it. */
+  via?: V;
   /** Due names the planned path rides. */
   dueOnPath: string[];
 }
@@ -337,21 +378,38 @@ export interface PlannedReview<P> {
  * two can ride both. The pick is kept on a tie, so an equal alternative does
  * not replace the random choice. Null when nothing snaps or plans.
  */
-export function choosePlannedReview<P>(
+export function choosePlannedReview<P, V = P>(
   pick: ReviewRoutePick,
   snap: (poi: RoutePoi) => P | null,
-  plan: (start: P, finish: P) => { dueNamesOnPath?: readonly string[] } | null,
-): PlannedReview<P> | null {
-  let best: PlannedReview<P> | null = null;
+  plan: (start: P, finish: P, via?: V) => { dueNamesOnPath?: readonly string[]; viaUsed?: boolean } | null,
+  /** Where along the via's street to plan through, tried in turn: the game
+   *  passes stretches of it, since its centre may be a node the ride would
+   *  touch and turn back from. Defaults to the snapped centre alone. */
+  viaPoints?: (via: DuePlace) => V[],
+): PlannedReview<P, V> | null {
+  let best: PlannedReview<P, V> | null = null;
   for (const candidate of [pick, ...(pick.alternatives ?? [])].slice(0, REVIEW_PLANNED_CANDIDATES)) {
+    // A line past no more due names than the best path already rides is not
+    // expected to beat it, and planning costs (a via plans several legs).
+    if (best && best.dueOnPath.length >= candidate.dueNear.length) continue;
     const start = snap(candidate.from), finish = snap(candidate.to);
     if (!start || !finish) continue;
-    const planned = plan(start, finish);
+    // Snapped under a blank name, so nothing downstream can show it.
+    const centre = candidate.via && !viaPoints ? snap({ id: 'review-via', name: '', lat: candidate.via.center[0], lng: candidate.via.center[1] }) : null;
+    const tries: V[] = candidate.via ? (viaPoints ? viaPoints(candidate.via) : centre ? [centre as unknown as V] : []) : [];
+    let via: V | null = null;
+    let planned: ReturnType<typeof plan> = null;
+    for (const point of tries) {
+      planned = plan(start, finish, point);
+      if (planned?.viaUsed) { via = point; break; }
+    }
+    // A refused via comes back as the direct plan, so only plan when none was tried.
+    if (!tries.length) planned = plan(start, finish);
     if (!planned) continue;
     const dueOnPath = [...(planned.dueNamesOnPath ?? [])];
     if (!best || dueOnPath.length > best.dueOnPath.length) {
       const { alternatives: _alternatives, ...bare } = candidate as ReviewRoutePick;
-      best = { pick: bare, start, finish, dueOnPath };
+      best = { pick: bare, start, finish, dueOnPath, ...(via && planned.viaUsed ? { via } : {}) };
     }
   }
   return best;
