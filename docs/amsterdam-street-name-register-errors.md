@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Tan Malakastraat, plus a register-wide scan for
+from 's-Gravelandse Veer to tt. Neveritaweg, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -152,6 +152,17 @@ the municipality's sources.
 | Stephensonstraat | [0363300000005042](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005042/) | "uitvinder van de locomotief (1814)" | Trevithick's locomotive ran in 1804; Stephenson's first (Blücher) in 1814 | Corrected |
 | Stuyvesantstraat | [0363300000005059](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005059/) | born 1592 | born 1611/12 (nl.wikipedia calls 1592 an old error) | Corrected |
 | Suze Robertsonstraat | [0363300000005067](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005067/) | born 1856 | born 17 December 1855 | Corrected |
+| Tasmanstraat | [0363300000005077](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005077/) | discovered Tasmania and New Zealand "in 1642 en 1644" | both on the 1642 voyage; the 1644 voyage charted northern Australia | Corrected |
+| Tempelhofstraat | [0363300000001655](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001655/) | "de luchthaven van Berlijn" | closed in 2008 | Corrected |
+| Teniersstraat | [0363300000005083](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005083/) | founded "de Brusselse Academie" in 1663 | the Antwerp Academy | Corrected |
+| Teslastraat | [0363300000001356](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001356/) | "Joegoslavisch ingenieur" | Serbian, born in Croatia (then Austria), American from 1891; Yugoslavia did not exist until 1918 | Corrected |
+| Thérèse Schwartzeplein | [0363300000005107](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005107/) | born 1852 | born 20 December 1851 | Corrected |
+| Thomas à Kempisstraat | [0363300000005111](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005111/) | Kempen "in het land van Kleef" | Kempen belonged to the Electorate of Cologne | Corrected |
+| Tienraaikade | [0363300000005745](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005745/) | "Dorp in de gemeente Mierlo" | Tienray was in Meerlo (later Meerlo-Wanssum, now Horst aan de Maas); Mierlo is in Noord-Brabant | Corrected |
+| Titiaanstraat | [0363300000005124](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005124/) | born 1477 | born c. 1488–1490 | Corrected |
+| Titus van Rijnstraat | [0363300000006082](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000006082/) | ran the art business with Hendrickje "na Rembrandts dood" | Hendrickje died in 1663 and Titus in 1668, both before Rembrandt; the business dates from 1660 | Corrected |
+| Torresstraat | [0363300000005144](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005144/) | Torres "(1728-1779)" | he sailed the strait in 1606 | Corrected |
+| Trimurtistraat | [0363300011952041](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011952041/) | the whole text is "Trimur: onafhankelijkheid" | named after S.K. Trimurti (1912–2008), Indonesian independence activist and first labour minister (Centrumeiland's 2019 anti-colonial names; en.wikipedia) | Replaced |
 
 ## 5. Misspellings flagged by the register itself
 
