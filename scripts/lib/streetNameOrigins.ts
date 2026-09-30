@@ -214,6 +214,7 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/steigers/i, /\bscaffolding\b/g, 'jetties'],
   // Herengracht: the Heren Regeerders were the city's ruling regents, and
   // the aside contrasts being governed with being ruled.
+  [/regentenstuk/i, /\bregency portraits\b/g, "regents' group portraits"],
   [/slaperdijk/i, /\bsleeping wall\b/g, 'sleeper dike (a reserve dike behind the front line)'],
   [/lijnbaan/i, /\bLinebaan/g, 'Lijnbaan'],
   [/voorburgwal/i, /\bForeburgwal\b/g, 'Voorburgwal'],
@@ -233,7 +234,7 @@ const GENERIC_CLASSES = new Set([
   'shrub', 'deciduous tree', 'tree', 'singing bird', 'bird', 'water bird', 'meadow bird', 'bird of prey',
   'bird family', 'fruit', 'citrus fruit', 'plant', 'flower', 'climbing shrub', 'climbing plant',
   'ornamental shrub', 'ornamental plant', 'plant family', 'freshwater fish', 'constellation', 'fowl',
-  'gardening tool', 'tool', 'ship part',
+  'gardening tool', 'tool', 'ship part', 'south european ornamental tree',
 ]);
 
 /** The word a street is named after: "Tweede Egelantiersdwarsstraat" → "egelantier". */
@@ -258,7 +259,8 @@ export function nameGenericOrigin(name: string, en: string, stems: Readonly<Reco
   if (!word || (!thistle && !(match && GENERIC_CLASSES.has(match[1].toLowerCase())))) return en;
   if (thistle) return `Named after the ${word}, a thistle.`;
   // One gull is not a family: the family names the kind of thing it is.
-  const kind = match![1].toLowerCase().replace(/ family$/, '');
+  // The class keeps its own casing: "South European ornamental tree".
+  const kind = match![1].replace(/ family$/, '');
   return `Named after the ${word}, ${/^[aeiou]/.test(kind) ? 'an' : 'a'} ${kind}.`;
 }
 
@@ -297,6 +299,11 @@ export function repairOriginTranslation(nl: string, en: string): string {
   }
   // Trade and planning words the translator takes literally. Each applies
   // only where the Dutch says the word, so an English "layout" elsewhere stays.
+  // A schans is an earthen rampart; a bastion is a bolwerk. Only where the
+  // Dutch never says bolwerk (Oudeschans: "A bastion is an earthen wall").
+  if (/schans/i.test(nl) && !/bolwerk|bastion/i.test(nl)) {
+    text = text.replace(/\bbastions\b/g, 'ramparts').replace(/\bbastion\b/g, 'rampart').replace(/\bBastion\b/g, 'Rampart');
+  }
   for (const [dutch, wrong, right] of ORIGIN_GLOSSARY) {
     if (dutch.test(nl)) text = text.replace(wrong, right);
   }

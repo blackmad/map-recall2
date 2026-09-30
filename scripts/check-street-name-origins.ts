@@ -65,6 +65,9 @@ assert.equal(repairOriginTranslation('Tijdens de oorlog schout-bij-nacht in Nede
 assert.equal(repairOriginTranslation('Naar de Heren Regeerders van de stad (De stad werd vroeger niet bestuurd, maar geregeerd).',
   'To the Lords Regulators of the city (The city was not previously governed, but ruled).'),
   'To the ruling lords (Heren Regeerders) of the city (in those days the city was not governed but ruled).');
+assert.equal(repairOriginTranslation('Een schans is een aarden wal en als zodanig is de Oudeschans gebouwd.', 'A bastion is an earthen wall and as such the Oudeschans was built.'),
+  'A rampart is an earthen wall and as such the Oudeschans was built.');
+assert.equal(nameGenericOrigin('Lauriergracht', 'The South European ornamental tree', { laurier: 'laurel' }), 'Named after the laurel, a South European ornamental tree.');
 // Cross-references a card cannot follow, and register index noise (Goudbalpad, Blancefloorstraat, Rozenstraat).
 assert.deepEqual(withoutCrossReference('A pear variety. The street is on the former allotments De Bongerd. See Boomgaardlaan.'),
   { text: 'A pear variety. The street is on the former allotments De Bongerd.' });
