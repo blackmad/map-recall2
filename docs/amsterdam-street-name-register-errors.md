@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Joannes Reddingiusstraat, plus a register-wide scan for
+from 's-Gravelandse Veer to Karel Klinkenbergstraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -91,6 +91,10 @@ the municipality's sources.
 | James Wattstraat | [0363300000003414](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003414/) | "Engels natuurkundige … uitvinder van de stoommachine" | Scottish engineer who improved the steam engine (Newcomen's engine came first) | Corrected |
 | Jan Luijkenstraat | [0363300000003434](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003434/) | 'Het menselijk bedrijf' made "samen met zijn broer Caspar" | Caspar Luyken was his son | Corrected |
 | Jan van Goyenkade | [0363300000003452](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003452/) | 1595–1635 | 1596–1656 | Corrected |
+| Johann Keplerstraat | [0363300000003499](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003499/) | "Boheems astronoom" | German; he worked in Prague | Corrected |
+| Johannes Vermeerplein | [0363300000003512](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003512/) | "voornamelijk landschappen en binnenhuizen" | mainly interiors; only two townscapes, no landscapes | Corrected |
+| John Coltranestraat | [0363300000001237](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001237/) | "William John Coltrane" | John William Coltrane | Corrected |
+| Joseph Scaligerstraat | [0363300000003932](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003932/) | fled "na de Bartholomeusnacht naar Holland" | he fled to Geneva in 1572 and came to Leiden only in 1593 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
