@@ -264,4 +264,10 @@ assert.equal(repairOriginTranslation('Bedoeld wordt een spinnaker: een zeil, dat
   'A spinnaker is meant: a sail, which is deployed when a ship sails dead before the wind.', 'a spinnaker is set downwind');
 assert.equal(repairOriginTranslation('Koolwaterstof, een petroleum-derivaat.', 'Carbon monoxide, a petroleum derivative.'), 'Hydrocarbon, a petroleum derivative.');
 assert.equal(repairOriginTranslation('Paddensoort. De zwarte pad.', 'Fungus species. The black toad.'), 'Toad species. The black toad.');
+assert.equal(repairOriginTranslation('In 1920 werd ze het eerste vrouwelijke lid in de Eerste Kamer.', 'In 1920, she became the first female member of the House of Representatives.'),
+  'In 1920, she became the first female member of the Senate (Eerste Kamer).', 'the Eerste Kamer is the Senate');
+assert.equal(repairOriginTranslation('Lid van de Tweede Kamer, later van de Eerste Kamer.', 'Member of the House of Representatives, later of the Senate.'),
+  'Member of the House of Representatives, later of the Senate.', 'the Tweede Kamer stays the House');
+assert.equal(repairOriginTranslation("Genoemd naar 't Giethuis, de stadsgeschut- en klokkengieterij.", "Named after 't Giethuis, the city's gunpowder and bell foundry."),
+  "Named after 't Giethuis, the city's cannon and bell foundry.");
 process.stdout.write('Street-name origin checks passed\n');

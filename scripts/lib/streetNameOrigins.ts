@@ -635,6 +635,25 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/^Buitendijks ondiep/, /^Offshore shallow area, which dries up\b/, 'Shallow area outside the dikes that falls dry'],
   // "Onder" a village is in its municipality, not "under" it.
   [/onder (?:Tubbergen|Laak|Landsmeer)\b/, /\bunder (Tubbergen|Laak|Landsmeer)\b/g, 'in the municipality of $1'],
+  // The Eerste Kamer is the Senate; the Tweede Kamer the House. Only where
+  // the Dutch names the Eerste Kamer alone.
+  [/^(?![\s\S]*Tweede (?:en Eerste )?Kamer)[\s\S]*Eerste Kamer/, /\bHouse of Representatives\b/g, 'Senate (Eerste Kamer)'],
+  [/Paleis voor Volksvlijt/, /\bPalace (?:of|for) (?:Public|Popular) (?:Enterprise|Industry)\b/g, 'Paleis voor Volksvlijt'],
+  [/geschut- en klokkengieterij/i, /\bgunpowder and bell foundry\b/g, 'cannon and bell foundry'],
+  [/werd hier geschut vervaardigd/i, /\bgunpowder was manufactured here\b/g, 'guns were made here'],
+  [/broodfabrieken/i, /\bseveral bakeries\b/g, 'several bread factories'],
+  [/doorgraven van de Landengte van Suez/i, /\bthe dredging of the Suez Canal\b/g, 'cutting a canal through the Isthmus of Suez'],
+  [/Den spieghel der Salicheyt/, /'The mirror of the Salicheyt of Elckerlijc'/g, "'Den spieghel der Salicheyt van Elckerlijc' (the mirror of salvation of Everyman)"],
+  [/mede door Berlage ontworpen, dubbele basculebrug/, /^At the delivery in 1903 of this, partly designed by Berlage, double bascule bridge, this was the latest bridge over the Amstel\./,
+    'When this double bascule bridge, designed partly by Berlage, opened in 1903, it was the newest bridge over the Amstel.'],
+  [/Hoge Sluis/, /\bThe High Lock\b/g, 'The Hoge Sluis'],
+  [/^Samen met de kernen/, /^Together with the municipalities of\b/, 'Together with the villages of'],
+  [/^Hofstede/, /^Hofstede\b/, 'Country estate (hofstede)'],
+  [/Afke's tiental/, /'Afke's dozen'/g, "'Afke's tiental' (Afke's ten)"],
+  [/^Werelddeel/, /^World region\b/, 'Continent'],
+  [/door de Duitsers gefusilleerd/i, /\bShot dead by the Germans\b/g, 'Executed by the Germans'],
+  [/van het eerste uur/i, /\bfrom the first hour\b/g, 'from the very beginning'],
+  [/uit vier delen bestaande staatkundige geschriften/i, /\bWrote his political writings consisting of four parts\b/g, 'Wrote political writings in four volumes'],
   // "Naar de …" opens an origin: named after it, not "To the …". Runs after
   // the rules above that match a whole "To the …" opening.
   [/^Naar /, /^To (?=the |an? |[A-Z'])/, 'Named after '],
