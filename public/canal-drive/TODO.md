@@ -760,29 +760,6 @@ left is content:
   Amsterdam municipal API. Utrecht, Rotterdam and Den Haag publish their own
   open data, which needs a source per city before cards there can match.
 
-**11b. Re-run Amsterdam through the general pipeline.**
-Only the branded POIs were merged in from a staging build, deliberately — a
-full refresh would have churned 29,051 routing ways and every landmark blurb
-mid-review. So Amsterdam has not yet been rebuilt with shared-vertex
-connectivity or the `motorway`/`trunk`/`*_link` classes, and lacks the
-`cityProfile` Utrecht now has. Run it, diff the coverage counts, publish only
-after review.
-
-An attempt is preserved on the **`wip/extract-rebuild`** branch. Its script and
-building-colour work looks sound; its regenerated data is not, and it does not
-pass checks. Two regressions to fix before any of it reaches `main`:
-
-- `streets-routing.json` fell from 29,051 to 15,363 ways and lost
-  Potgieterstraat, so `test:canal-car` fails. Find out why the shared-vertex
-  connectivity filter halves the network — most likely it runs before the
-  vertices are deduplicated, so ways that genuinely meet no longer share a node.
-- `bridges.json` renumbered every bridge id without rebuilding
-  `bridge-crossings.json`, dropping matched bridges from 257/300 to 28/300.
-  Nothing crashed, which is what made it dangerous: 229 bridges silently lost
-  the water beneath them and the water-before-bridge rule stopped applying.
-  The two files are a matched pair keyed on id — rebuild them together.
-  `test:bridge-crossings` now asserts that alignment.
-
 **11c. Give Amsterdam and Utrecht real ledes.**
 Amsterdam’s card-facing extracts are English in the publish gate
 (`check:extract-english` after `enrich:english` in `refresh-city-extract.sh`).
@@ -795,8 +772,12 @@ fell back to a description. Utrecht still has Dutch / one-liner backlog:
     npm run enrich:utrecht-english -- --translator=trn
 
 `street-knowledge.json` is now generated from streets/water
-(`npm run build:street-knowledge`) — do not hand-edit it. Stale entries in
-`scripts/english-translations.json` are still counted but not pruned.
+(`npm run build:street-knowledge`) — do not hand-edit it.
+
+The shared translation cache is pruned against all Randstad extracts
+(`--prune-stale` on `translate-extracts-to-english.ts`; 322 orphans removed,
+1,422 kept). Remaining thin cards are mostly Wikidata description floors
+(~400 distinct).
 
 Expect some refusals: the pass rejects a translation that lost the feature's
 own name. Those come back as `refused — translated the name itself` and fall
@@ -808,17 +789,6 @@ confirms before wiping). It clears local + signed-in spaced-repetition memory
 and fact-rotation history, leaves auth and Canal preferences. Still open: a
 full “clear preferences / exploration / everything” path if we want that
 separate from knowledge reset.
-
-**14. Finish the Storybook workbench.**
-Ten phone states existed already — the driving HUD (idle, steering, mid-question,
-small phone, landscape), the route briefing, the recall prompt, the arrival
-card, the settings panel and the expanded article — driven by a
-`canalRecallForceTouch` override. Added: neighborhood photo fallback, stacked
-neighborhood+landmark notices (desktop + phone), bare landmark card, bike
-finish card, and **calm finish without landmark photo** (desktop + phone).
-Still open: automated screenshot regressions for the new states (build-storybook
-compiles them; visual diffs are not wired yet). Follows naturally from item 3 —
-the same extraction serves both.
 
 **15. Keep naming regression locations.**
 Continue expanding named cul-de-sac and dead-end cases in
@@ -837,17 +807,12 @@ pipeline currency (dab-follow enrich, English rename-refusal handling) but will
 churn encyclopedia blurbs — stage, diff coverage, publish only after review.
 Do not treat this as a red routing bug.
 
-**11c. Thicken thin English ledes; prune translation cache.**
-English publish gates are green. `--prune-stale` on
-`translate-extracts-to-english.ts` now drops orphaned cache entries against
-**all** Randstad extracts (shared cache; one-city prune would delete live
-siblings) — 322 orphans removed → 1,422 kept. Remaining thin cards are mostly
-Wikidata description floors (~400 distinct); upgrade-from-original is sparse
-and `trn` still rename-refuses many. Re-run `enrich:*-english` after refresh.
-
 **14. Storybook visual regressions.**
-HUD / briefing / finish / notice states compile in Storybook. Still open:
-automated screenshot diffs for those states (not just `build-storybook`).
+The workbench has HUD, briefing, finish, notice and card states for desktop
+and phone (driven by a `canalRecallForceTouch` override), including the
+2026-09-30 bridge-origin, bridge-register and building-facts cards.
+`build-storybook` proves they compile. Still open: automated screenshot
+diffs of those states.
 
 
 ---
