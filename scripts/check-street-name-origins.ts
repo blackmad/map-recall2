@@ -174,4 +174,9 @@ assert.equal(repairOriginTranslation('Johan de Witt, raadpensionaris van Holland
 assert.equal(repairOriginTranslation('Een Ringvaart is de boezem van een polder.', 'A canal is the bosom of a polder.'),
   'A ring canal (ringvaart) is the storage basin (boezem) of a polder.');
 
+// Repair runs before the stem rewrite (as the publish script does), so a
+// class the glossary renames must stay a class (Mezenstraat, 2026-09-30).
+assert.equal(nameGenericOrigin('Mezenstraat', repairOriginTranslation('De zangvogel.', 'The singing bird.'), { mezen: 'tit' }),
+  'Named after the tit, a songbird.');
+
 process.stdout.write('Street-name origin checks passed\n');

@@ -292,7 +292,9 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
 
 /** Classes an origin may name alone ("The shrub."), as the card says them. */
 const GENERIC_CLASSES = new Set([
-  'shrub', 'deciduous tree', 'tree', 'singing bird', 'bird', 'water bird', 'meadow bird', 'bird of prey',
+  // 'songbird' is the glossary's repair of the translator's 'singing bird',
+  // and the repair runs first.
+  'shrub', 'deciduous tree', 'tree', 'singing bird', 'songbird', 'bird', 'water bird', 'meadow bird', 'bird of prey',
   'bird family', 'fruit', 'citrus fruit', 'plant', 'flower', 'climbing shrub', 'climbing plant',
   'ornamental shrub', 'ornamental plant', 'plant family', 'freshwater fish', 'constellation', 'fowl',
   'gardening tool', 'tool', 'ship part', 'south european ornamental tree',
