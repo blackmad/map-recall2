@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to tt. Neveritaweg, plus a register-wide scan for
+from 's-Gravelandse Veer to Van Zeggelaarstraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -74,6 +74,7 @@ next record.
 | Mariotteplein | [0363300000004265](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004265/) | Junk appended: "Marisplein, Jacob Oud-Zuid Rb. 26-1-1922 15: m 9". | Translated without the broken edge. |
 | Nieuwe Vaart (street) | [0363300011950711](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950711/) | "…gegraven om het IJ en het Oosterdok." | Completed from the Nieuwevaart record ([0363300000003876](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003876/)). |
 | Piet Bakkerbrug | [0363300011951476](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951476/) | "…aan wie twee succesvolle films en een musical gewijd zijn. In de omgeving" | Translated without the broken edge. |
+| Utrechtsedwarsstraat | [0363300000005178](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005178/) | "Naar de stad Utrecht. is de nieuwe uitvalsroute naar Utrecht…": a sentence about some road's route to Utrecht, spliced in without its subject. | Kept only "After the city of Utrecht". |
 
 
 ## 4. Factual errors in the text
@@ -163,6 +164,14 @@ the municipality's sources.
 | Titus van Rijnstraat | [0363300000006082](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000006082/) | ran the art business with Hendrickje "na Rembrandts dood" | Hendrickje died in 1663 and Titus in 1668, both before Rembrandt; the business dates from 1660 | Corrected |
 | Torresstraat | [0363300000005144](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005144/) | Torres "(1728-1779)" | he sailed the strait in 1606 | Corrected |
 | Trimurtistraat | [0363300011952041](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011952041/) | the whole text is "Trimur: onafhankelijkheid" | named after S.K. Trimurti (1912–2008), Indonesian independence activist and first labour minister (Centrumeiland's 2019 anti-colonial names; en.wikipedia) | Replaced |
+| Tweede Jacob van Campenstraat | [0363300000002580](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002580/) | built "voor prins Frederik Hendrik in 1657 een paleis in Rijswijk" | Frederik Hendrik died in 1647 | Year dropped |
+| Valeriusplein | [0363300000005252](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005252/) | died 1626 | died 27 January 1625 | Corrected |
+| Van Diemenkade | [0363300000001210](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001210/) | "Samen met Tasman ontdekte hij Nieuw Holland (Australië) en Van Diemensland" | Van Diemen sent Tasman; Australia's coast was already known as New Holland | Corrected |
+| Van Effenstraat | [0363300000005202](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005202/) | "de eerste Nederlandse vertaling" of Robinson Crusoe | Van Effen translated from English into French (en.wikipedia) | Corrected |
+| Van Musschenbroekstraat | [0363300000005226](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005226/) | "hoogleraar te Londen" | Duisburg, Utrecht and Leiden | Corrected; Leyden jar added |
+| Van Reigersbergenstraat | [0363300000005237](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005237/) | died 1643 | died 1653 | Corrected |
+| Van Rensselaerstraat | [0363300000005238](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005238/) | 1580–1646 | c. 1586–1643 | Corrected |
+| Van Woustraat | [0363300000005247](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005247/) | 1460–1524 | c. 1450–1527 (nl.wikipedia) | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
