@@ -633,6 +633,8 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/^Omstreeks \d{4} verdronken kerkdorp/, /^Around (\d{4}), a church village drowned\b/, 'Church village drowned around $1'],
   [/^Plaatsbepaling op zee/, /^Location determination at sea\b/, 'Fixing a position at sea'],
   [/^Buitendijks ondiep/, /^Offshore shallow area, which dries up\b/, 'Shallow area outside the dikes that falls dry'],
+  // "Onder" a village is in its municipality, not "under" it.
+  [/onder (?:Tubbergen|Laak|Landsmeer)\b/, /\bunder (Tubbergen|Laak|Landsmeer)\b/g, 'in the municipality of $1'],
   // "Naar de …" opens an origin: named after it, not "To the …". Runs after
   // the rules above that match a whole "To the …" opening.
   [/^Naar /, /^To (?=the |an? |[A-Z'])/, 'Named after '],
