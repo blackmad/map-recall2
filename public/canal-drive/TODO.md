@@ -85,8 +85,8 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   bridge on a bike.
 - The API states no licence for `beschrijvingNaam`. Confirm it with the
   municipality before a public release.
-- Retranslation off `trn` is under way (see HISTORY, 2026-09-30): 3,570 of
-  4,340 distinct Dutch texts done, 770 left. Continue with
+- Retranslation off `trn` is under way (see HISTORY, 2026-09-30): 3,690 of
+  4,340 distinct Dutch texts done, 650 left. Continue with
   `npx tsx scripts/origin-translation-batch.ts next --count=60`, write
   `[{"id","en"}]`, then `ingest`, then `npm run publish:street-name-origins`.
   Translate each batch against its printed Dutch: no added facts; correct only

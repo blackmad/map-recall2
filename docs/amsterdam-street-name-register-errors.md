@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Sonneveld, plus a register-wide scan for
+from 's-Gravelandse Veer to Tan Malakastraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -145,6 +145,13 @@ the municipality's sources.
 | Shackletonstraat | [0363300000004513](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004513/) | "Bereikte in 1909 de magnetische zuidpool" | Shackleton led the Nimrod expedition; the pole party was David, Mawson and Mackay. Irish-born | Corrected |
 | Silvretta | [0363300000001348](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001348/) | "Bergtop in Zwitserland, 3411 meter hoog" | a range on the Swiss–Austrian border; 3,411 m is its highest peak, Piz Linard | Corrected |
 | Snelliusstraat | [0363300000004966](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004966/) | "richtte de eerste Europese sterrenwacht in" | Leiden's observatory was set up in 1633 by Golius, seven years after Snellius's death | Replaced with his law of refraction and triangulation |
+| Sontvaarderstraat | [0363300011290589](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011290589/) | "een binnenschip dat vaart tussen Nederland en de Zweedse zuidkust" | a seagoing merchant ship trading through the Sound to the Baltic | Corrected |
+| Sophialaan | [0363300000004979](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004979/) | 1817–1877 | born 17 June 1818 | Corrected |
+| Spaanse Brabanderstraat | [0363300000004980](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004980/) | "de roman" | a stage comedy | Corrected |
+| Spitsbergenstraat | [0363300000005778](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005778/) | Barentsz "liet er de nederzetting Smeerenburg bouwen" | Barentsz died in 1597; Smeerenburg dates from 1619 | Corrected |
+| Stephensonstraat | [0363300000005042](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005042/) | "uitvinder van de locomotief (1814)" | Trevithick's locomotive ran in 1804; Stephenson's first (Blücher) in 1814 | Corrected |
+| Stuyvesantstraat | [0363300000005059](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005059/) | born 1592 | born 1611/12 (nl.wikipedia calls 1592 an old error) | Corrected |
+| Suze Robertsonstraat | [0363300000005067](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005067/) | born 1856 | born 17 December 1855 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
