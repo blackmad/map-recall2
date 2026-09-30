@@ -1,5 +1,46 @@
 # Canal Recall — what is built
 
+## 2026-09-30 — Street-name translations: a right back, a killer whale, filled in not renamed
+
+Six more reading passes (about 150 origins) found renderings that taught
+something false. Each is now a glossary repair tied to the Dutch that
+triggers it:
+- **People.** Wim Suurbier was a right back, not a "lawyer and defender"
+  (rechter = right, and also judge). His European Cup wins had become Cup
+  Winners' Cups. An alderman (wethouder) had become "a member of
+  parliament". Jhr. is jonkheer, not "Mr."; a griffier is a clerk, not a
+  treasurer; a thesaurier was the city treasurer, not a "thesaurus".
+  Hoofdingeland was rendered "head country".
+- **History.** "Gedempt in 1866" is filled in, not renamed. "Gedempte" is
+  filled-in, not "drowned". A street "overgekomen onder de naam Ringlaan"
+  came over under that name; it was not renamed to it. A party "illegaal
+  geworden" was outlawed, not "illegally established". Boerengeneraals were
+  Boer generals.
+- **Things.** A zwaardwalvis is a killer whale, not a swordfish. Zoutketen
+  are salt sheds, not "the salt chain". A wiegbrug rocks and does not swing.
+  A vonder is a plank footbridge, not a viaduct. An overtoom hauled boats
+  over a dam; it was no quay. Fonteinkruid is pondweed. Vloeistaal is
+  Bessemer steel.
+- **Places and names.** "Kasteel onder Mill" is near Mill, not "under" it.
+  The fix applies only after a place word, so "vice-admiral under De
+  Ruyter" stays. The translator had renamed Betondorp "Betonstad", the
+  Uitweg "The Exit", the Oude Looierssloot "Old Tanneries Canal", and "Derde
+  Looiersdwarsstraat" "Third …". Ordinals in street names now stay Dutch
+  (`dutchOrdinalStreetNames`). The Tweede Kamer is the House of
+  Representatives.
+- **Source errors.** The register gives George Vancouver as (1758–1790); he
+  lived 1757–1798. It calls Bergen-Belsen and Buchenwald extermination camps;
+  they were concentration camps (Sobibor and Treblinka stay extermination
+  camps). It credits Philip Vingboons with the Trippenhuis, which his
+  brother Justus designed.
+- **More renamings by the translator:** Danzig became "Gdańsk (now
+  Gdansk)", a plotter became a typewriter, and Korte street names became
+  "Short".
+- **Also:** Charley Toorop's Expressief Zakelijk Realisme is objective, not
+  "Business" realism. The achtste finale is the round of 16. Werelddeel
+  became continent, Nederlandse Antillen the Netherlands Antilles, and
+  verbasterd "corrupted", not "simplified".
+
 ## 2026-09-30 — Trivia audited against its own quotes; two false sentences struck
 
 Every published fact (4,052 across four cities) carries the source quote it

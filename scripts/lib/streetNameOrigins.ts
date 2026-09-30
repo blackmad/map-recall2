@@ -284,6 +284,100 @@ const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/^de hof, gesticht/i, /^The court, founded\b/, 'The court (hof), founded'],
   [/schermbloem/i, /\bscreen ?flower family\b/gi, 'umbellifer (carrot) family'],
   [/rietlanden/i, /\breedlands\b/g, 'reed beds'],
+  // Jhr. is jonkheer, a title of the untitled nobility, not "Mr."; a
+  // griffier is a clerk; a thesaurier was the city's treasurer.
+  [/^Jhr\.\s/, /^Mr\. /, 'Jonkheer '],
+  [/^Griffier van/, /^Treasurer of\b/, 'Clerk (griffier) of'],
+  [/thesaurier/i, /\bThesaurus of\b/g, 'Treasurer of'],
+  [/jaren 1860-'61/, /\bin the 1860s-'61\b/g, 'in 1860–61'],
+  [/\(Rb\. [\d-]+ en [\d-]+\)/, /\(council decision, (\d{4}) and \d{1,2}-\d{1,2}-(\d{4})\)/g, '(council decisions, $1 and $2)'],
+  // An error in the register itself: Vancouver lived 1757–1798.
+  [/George Vancouver \(1758-1790\)/, /George Vancouver \(1758-1790\)/g, 'George Vancouver (1757-1798)'],
+  // Water-board offices: a hoofdingeland sits on a polder board, and a
+  // hoogheemraadschap is a regional water authority. An overtoom hauled boats
+  // over a dam; it was no quay.
+  [/hoofdingeland/i, /\bthe head country of\b/g, 'a board member (hoofdingeland) of'],
+  [/hoogheemraadschap/i, /\bthe High Authority for Waters\b/g, 'the regional water authority (hoogheemraadschap)'],
+  [/^Hoogheemraadschap in/, /^High Council in\b/, 'Regional water authority (hoogheemraadschap) in'],
+  [/de overtoom was/i, /\bThe quay was\b/g, 'The overtoom (a slipway for hauling boats over a dam) was'],
+  [/vijfsprong/i, /\ba five-branching canal system\b/g, 'a five-way junction of canals'],
+  [/buitenlandredacteur/i, /\bforeign correspondent\b/g, 'foreign editor'],
+  // Verongelukken is dying in an accident; the source does not say a car.
+  [/verongelukte/i, /\bwas killed in a car accident\b/g, 'died in an accident'],
+  // Zakelijk in a style is objective (Nieuwe Zakelijkheid), a vonder is a
+  // plank footbridge, boerengeneraals were Boer generals, a buiten in
+  // Voorburg is a country house there, and verbasterd is corrupted.
+  [/expressief zakelijk realisme/i, /\bExpressive Business Realism\b/g, 'Expressive Objective Realism (Expressief Zakelijk Realisme)'],
+  [/krachtigste vrouw in de nederlandse schilderkunst/i, /\bthe most powerful woman in Dutch painting\b/g, 'the most forceful woman in Dutch painting'],
+  [/vonder is een/i, /\bA viaduct is a narrow wooden connection\b/g, 'A vonder is a narrow wooden footbridge'],
+  [/uitloper van de rivier/i, /\bthe outcrop of the\b/g, 'the branch of the'],
+  [/boerengeneraal/i, /\b[Ff]armer (generals?)\b/g, 'Boer $1'],
+  [/bij zijn leven vernoemd/i, /\bHe was still named after him during his lifetime\b/g, 'The street was named after him in his lifetime'],
+  [/zijn buiten in/i, /\bhis house outside\b/g, 'his country house in'],
+  [/verbasterde/i, /\bSimplified spelling\b/g, 'Corrupted spelling'],
+  [/volkssport/i, /\bsailing as a folk sport\b/g, 'sailing as a sport for everyone'],
+  // A zoutkeet is a salt shed, a zwaardwalvis the killer whale, fonteinkruid
+  // pondweed; and the translator renamed Betondorp.
+  [/zoutketen/i, /\bthe salt chain\b/g, 'the zoutketen (salt sheds)'],
+  [/zwaardwalvis/i, /\bAlso known as swordfish\b/g, 'Also known as the killer whale (zwaardwalvis)'],
+  [/betondorp/i, /\bBetonstad\b/g, 'Betondorp'],
+  [/fonteinkruid/i, /\bfountain herb\b/gi, 'pondweed (fonteinkruid)'],
+  [/eleaten/i, /\bthe main of the school of the Eleates\b/g, 'the foremost of the Eleatic school'],
+  [/stoombootdienst op Amsterdam/i, /\bsteamboat service on Amsterdam\b/g, 'steamboat service to Amsterdam'],
+  // "Kasteel onder Mill" lies near (in the jurisdiction of) Mill, not under
+  // it; only after a place word, so "vice-admiral under De Ruyter" stays.
+  [/\bonder [A-Z]/, /\b((?:[Cc]astle|[Hh]ouse|[Ff]arm(?:house)?|[Mm]anor(?: house)?|[Ee]state|reserve|[Mm]ill|[Hh]omestead|[Hh]amlet(?: of [A-Z][\w ]+?)?|[Ll]ocated|[Ss]ituated|lying|seat|ruin|[Cc]ourt|[Vv]illa|[Vv]illage|[Nn]eighbou?rhood|[Bb]ridge over the [\w ]+?|[Rr]idderhofstad|[Bb]uitenplaats|on the Vecht|[Mm]eadow along the [\w ]+?|Bos),?) under (?=[A-Z])/g, '$1 near '],
+  // An alderman is not a member of parliament; a street that came over under
+  // a name was not renamed to it; illegaal geworden is outlawed; a wiegbrug
+  // rocks, it does not swing; an achtste finale is the round of 16.
+  [/namens de pvda wethouder/i, /\ba member of parliament for the PVDA as a councillor for\b/g, 'alderman for the PvdA, responsible for'],
+  [/overgekomen/, /\bThe street has been renamed (\w+) from the former municipality of ([\w-]+)/g, 'The street came over from the former municipality of $2 under the name $1'],
+  [/vloeistaal/i, /\bmolten metal\b/g, 'mild (Bessemer) steel'],
+  [/illegaal geworden/i, /\billegally established\b/g, 'outlawed'],
+  [/fractievoorzitter/i, /\bfaction (?:chairman|leader)\b/g, 'parliamentary leader'],
+  [/fractie/i, /\bleader of the (\w+) faction\b/g, 'parliamentary leader of the $1'],
+  [/wiegbrug is/i, /\bA swing bridge is a roller bascule bridge\b/g, 'A wiegbrug (rocking bridge) is a rolling bascule bridge'],
+  [/achtste finale/i, /\bthe eighth final\b/g, 'the round of 16'],
+  [/nederlandse antillen/i, /\bDutch Antilles\b/g, 'Netherlands Antilles'],
+  [/diaconessen/i, /\bSisters' Institution\b/g, "Deaconesses' Institution"],
+  [/diaconessen/i, /\bSisters Institution\b/g, "Deaconesses' Institution"],
+  [/de diaconessen/i, /\bThe Sisters\b/g, 'The deaconesses'],
+  [/westelijke tuinsteden/i, /\bwestern garden towns\b/g, 'Western Garden Cities (westelijke tuinsteden)'],
+  [/brede school/i, /\ba large school\b/g, 'a community school (brede school)'],
+  [/de uitweg/i, /\bThe Exit\b/g, 'The Uitweg'],
+  [/door de annexatie van sloten in amsterdam te liggen/i, /\bcame to be located due to the annexation of Sloten in Amsterdam\b/g, 'came within Amsterdam with the annexation of Sloten'],
+  [/weer tot water werd gegraven/i, /\bwhich was dredged back into the water after repeated dryings for the purpose of sand mining\b/g, 'which, after being drained more than once, was dug out again into a lake for sand extraction'],
+  // Gedempt is filled in, not renamed or drowned; a rechter verdediger plays
+  // right back; Europa Cup Landskampioenen is the European Cup; a klap is a
+  // drawbridge leaf.
+  [/Amstelgrachtje, gedempt in 1866/, /\brenamed in 1866\b/g, 'filled in in 1866'],
+  [/voor de demping/i, /\) for filling in\./g, ') before it was filled in.'],
+  [/gedempte/i, /\b[Dd]rowned\b/g, 'filled-in'],
+  [/oude looierssloot/i, /\bOld Tanneries Canal\b/g, 'Oude Looierssloot'],
+  [/nieuwe looierssloot/i, /\bNieuwe Tanneries Canal\b/g, 'Nieuwe Looierssloot'],
+  [/rechter verdediger/i, /\blawyer and defender\b/g, 'right back'],
+  [/^(?![\s\S]*Bekerwinnaars)[\s\S]*Europa ?Cup (?:voor )?Landskampioenen/, /\bEuropean Cup Winners' Cup\b/g, 'European Cup'],
+  [/ophaalbrug met 1 klap/i, /\ba 1-fold lifting bridge\b/g, 'a single-leaf drawbridge'],
+  [/'magere brug'/i, /'Magere bridge'/g, "'Magere brug' (skinny bridge)"],
+  [/jaren 1940-45/, /\bin the 1940s-45s\b/g, 'from 1940 to 1945'],
+  [/verdwenen tevens/i, /\bThis widening also disappeared\b/g, 'This widening also did away with'],
+  [/om het plan met deze straat vier kerken te verbinden/i, /\bwas named so to connect the plan with this street to four churches\b/g,
+    'was so named for the plan to link four churches with this street'],
+  [/tweede kamer/i, /\bSecond Chamber(?: of Representatives)?\b/g, 'House of Representatives (Tweede Kamer)'],
+  [/derde looiersdwarsstraat/i, /\bThird (?:Looiersdwarsstraat|Tanneriesdwarsstraat|Tanner Cross Street)\b/g, 'Derde Looiersdwarsstraat'],
+  [/oude looierssloot/i, /\bOld Tann\w+ (?:Canal|Ditch)\b/g, 'Oude Looierssloot'],
+  [/tekenmachine/i, /\bTypewriter controlled by a computer\b/g, 'Drawing machine controlled by a computer'],
+  [/de stad danzig/i, /\bThe city of Gdańsk \(now Gdansk\)/g, 'The city of Danzig (now Gdańsk)'],
+  [/het wassende water/i, /'The flowing water'/g, "'Het wassende water' (The Rising Water)"],
+  [/verhoogde halsgevel/i, /\bthe raised gable\b/g, 'the raised neck gable'],
+  [/oost-indië/i, /\bto East India\b/g, 'to the East Indies'],
+  [/verbonden edelen/i, /\bthe allied nobles\b/g, 'the Confederated Nobles (verbonden edelen)'],
+  // Errors in the register itself. Bergen-Belsen and Buchenwald were
+  // concentration camps, not extermination camps (Sobibor and Treblinka were); the Trippenhuis was Justus Vingboons's design.
+  [/vernietigingskamp bergen[- ]belsen/i, /\bBergen-Belsen extermination camp\b/g, 'Bergen-Belsen concentration camp'],
+  [/vernietigingskamp buchenwald/i, /\bextermination camp Buchenwald\b/g, 'concentration camp Buchenwald'],
+  [/hij bouwde onder meer het trippenhuis/i, /\bHe built, among other things, the Trippenhuis and many beautiful canal houses\b/g,
+    'He built many fine canal houses (the Trippenhuis, often credited to him, was designed by his brother Justus)'],
   // Grammar the translator gets wrong before a vowel.
   [/./, /\ba (?=(?:inn|embankment|alderman|island|estate|old|important|admiral|officer|engineer|author|actor|actress|architect|artist|area|order|eighteenth|eleventh|inland|English|Amsterdam)\b)/g, 'an '],
   [/tot de vinken behorende/i, /\bbelonging to the sparrows\b/g, 'belonging to the finches'],
@@ -325,6 +419,19 @@ export function nameGenericOrigin(name: string, en: string, stems: Readonly<Reco
   // The class keeps its own casing: "South European ornamental tree".
   const kind = match![1].replace(/ family$/, '');
   return `Named after the ${word}, ${/^[aeiou]/.test(kind) ? 'an' : 'a'} ${kind}.`;
+}
+
+const DUTCH_ORDINALS: Readonly<Record<string, string>> = { First: 'Eerste', Second: 'Tweede', Third: 'Derde', Fourth: 'Vierde', Short: 'Korte', Long: 'Lange' };
+const STREET_WORD = /^(?:[A-Z][\w-]*?(?:straat|dwarsstraat|plantsoen|gracht|laan|kade|weg|dwarsweg|steeg|pad)|Wetering Plantsoen)$/;
+
+/** "First and Second Weteringplantsoen" are street names, which keep their
+ *  Dutch ordinals: "Eerste and Tweede Weteringplantsoen". A run of ordinals
+ *  is converted only when a Dutch street word follows it. */
+export function dutchOrdinalStreetNames(text: string): string {
+  return text.replace(/\b((?:First|Second|Third|Fourth|Short|Long)(?:(?:, | and )(?:First|Second|Third|Fourth))*) ([A-Z][\w-]*(?: Plantsoen)?)\b/g,
+    (whole, run: string, street: string) => STREET_WORD.test(street)
+      ? `${run.replace(/First|Second|Third|Fourth|Short|Long/g, word => DUTCH_ORDINALS[word])} ${street.replace('Wetering Plantsoen', 'Weteringplantsoen')}`
+      : whole);
 }
 
 export function repairOriginTranslation(nl: string, en: string): string {
@@ -370,6 +477,7 @@ export function repairOriginTranslation(nl: string, en: string): string {
   for (const [dutch, wrong, right] of ORIGIN_GLOSSARY) {
     if (dutch.test(nl)) text = text.replace(wrong, right);
   }
+  if (/\b(?:Eerste|Tweede|Derde|Vierde|Korte|Lange)\b/.test(nl)) text = dutchOrdinalStreetNames(text);
   if (!/\d{1,2}[:.]\d{2}\s*uur|\d{1,2}:\d{2}/.test(nl)) {
     const missingYears = [...new Set(nl.match(/\b1[0-9]{3}\b/g) ?? [])].filter(year => !text.includes(year));
     if (missingYears.length === 1) {

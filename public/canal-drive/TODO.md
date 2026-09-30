@@ -60,6 +60,9 @@ either:
   Afwateringstocht (nl "Hoofdwatergang") and Rotterdam's Spoorweghaven (nl
   "Spoorhaven"). Their openings define a class ("A rail port is…").
   Consider rejecting these, and have the generator refuse concept articles.
+  Marinehaven's and Afwateringstocht's water cards (`water.json`
+  wikipediaExtract) carry the same concept definition, which is generic
+  rather than false.
 The Amsterdam name list has been read through; Utrecht, Rotterdam and Den
 Haag were skimmed. What remains is mostly first names filled in from the
 article ("Dirk" Sterenberg). A human could skim that list (`npx tsx scripts/audit-fact-quotes.ts -- --names`).
