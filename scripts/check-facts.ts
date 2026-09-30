@@ -671,6 +671,10 @@ check('published: sentences found false stay struck', () => {
   const texts = (city: string) => published(city).features.flatMap((feature) => feature.facts.map((fact) => fact.text));
   // The quote is about the Lage Brug; the Python Bridge is the Hoge brug.
   assert.ok(!texts('amsterdam').some((text) => /Lage Brug, this structure lacks high elevation/.test(text)));
+  // In 1946 it became Stalinlaan; Freedom came later.
+  assert.ok(!texts('amsterdam').some((text) => /Freedom Avenue, named in 1946/.test(text)));
+  // No Zeebrugge in the quote.
+  assert.ok(!texts('amsterdam').some((text) => /^Unlike Zeebrugge, Marinehaven/.test(text)));
   // Groep 7 is not US seventh grade, and the quote gives no 10 May.
   assert.ok(!texts('den-haag').some((text) => /Seventh-grade students from Basisschool De Startbaan/.test(text)));
 });
