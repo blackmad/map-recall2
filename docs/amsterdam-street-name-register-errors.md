@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Persijn, plus a register-wide scan for
+from 's-Gravelandse Veer to Pieter van der Werfstraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -29,7 +29,7 @@ next record.
 | Dirk van Hasseltssteeg | [0363300000003271](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003271/) | Its whole text is the rest of the Waterduikerbrug's: "de Jordaan en hij kreeg diverse medailles…". |  Replaced by a sourced supplement (Wikipedia). |
 | Enneüs Heermabrug | [0363300011950195](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950195/) | Only the first sentence: "Deze brug is vernoemd naar Enneüs Heerma (1944-1999)." | Repaired: joined with the next row's text. |
 | Enny Vredestraat | [0363300000002843](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002843/) | Its whole text is the rest of Heerma's career: "Hij was voor het CDA wethouder… fractievoorzitter van het CDA in de Tweede Kamer." Enny Vrede's own text is missing. |  Replaced by a sourced supplement (Wikipedia). |
-| Hamerstraat | [0363300000003331](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003331/) | "Hij redde … samen met Lau Mazirel en Walter Süskind … oprichters van … Kriterion": part of Piet Meerburg's biography, not the Hamerkanaal street's origin. |  Replaced by a sourced supplement (Wikipedia). |
+| Hamerstraat | [0363300000003331](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003331/) | "Hij redde … samen met Lau Mazirel en Walter Süskind … oprichters van … Kriterion": part of Piet Meerburg's biography, not the Hamerkanaal street's origin. | Replaced by a sourced supplement (Wikipedia); the paragraph is restored to the Piet Meerburgbrug's card. |
 | Piet Meerburgbrug | [0363300011951254](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951254/) | Complete on its own, but missing the paragraph now under Hamerstraat. | Not yet reached. |
 | Eilandsgracht | [0363300011950501](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950501/) | Carries the Elandsgracht's text word for word ("huiden van elanden, herten, beren"): eiland (island) confused with eland (elk). |  Replaced by a sourced supplement (Wikipedia). |
 | Elandsgracht | [0363300000002818](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002818/) | Correct, and the source of the Eilandsgracht copy. | Kept. |
@@ -67,6 +67,7 @@ next record.
 | Hederabrug | [0363300011951351](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951351/) | A stray "Waterland" after the last sentence. | Translated without the broken edge. |
 | Mariotteplein | [0363300000004265](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004265/) | Junk appended: "Marisplein, Jacob Oud-Zuid Rb. 26-1-1922 15: m 9". | Translated without the broken edge. |
 | Nieuwe Vaart (street) | [0363300011950711](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950711/) | "…gegraven om het IJ en het Oosterdok." | Completed from the Nieuwevaart record ([0363300000003876](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003876/)). |
+| Piet Bakkerbrug | [0363300011951476](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951476/) | "…aan wie twee succesvolle films en een musical gewijd zijn. In de omgeving" | Translated without the broken edge. |
 
 
 ## 4. Factual errors in the text
@@ -123,6 +124,9 @@ the municipality's sources.
 | Okeghemstraat | [0363300000004704](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004704/) | "de leermeester van Dufay en Obrecht" | Dufay (c. 1397–1474) was a generation older; only Obrecht is plausibly his pupil | Corrected |
 | Oranje-Vrijstaatkade | [0363300000005939](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005939/) | "De in 1842 gestichte Boeren republiek" | the Orange Free State was founded in 1854 (Bloemfontein Convention) | Corrected |
 | Pasteurstraat | [0363300000004337](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004337/) | "Vond een serum tegen hondsdolheid" | a vaccine (1885) | Corrected |
+| Philip Vingboonsstraat | [0363300000004358](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004358/) | born 1613; built "onder meer het Trippenhuis" | born c. 1607; the Trippenhuis was designed by his brother Justus Vingboons | Corrected |
+| Pieter de Hoochstraat | [0363300000004373](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004373/) | 1639–1684 | baptised 1629, died in or after 1679 | Corrected |
+| Pieter van der Werfstraat | [0363300000004384](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004384/) | "het beleg van Leiden in 1572" | 1573–1574 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
