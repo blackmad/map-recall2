@@ -208,6 +208,9 @@ export const WITHHELD_ORIGINS: Readonly<Record<string, string>> = {
   // "Hij was voor het CDA wethouder…": the second half of Enneüs Heerma's
   // biography, whose bridge has only the first sentence.
   'Enny Vredestraat': "the register's text is the end of Enneüs Heerma's",
+  // "Hij redde … samen met Lau Mazirel en Walter Süskind … Kriterion": a
+  // paragraph of Piet Meerburg's biography, not the Hamerkanaal street's.
+  Hamerstraat: "the register's text is part of Piet Meerburg's biography",
 };
 
 const ORIGIN_GLOSSARY: ReadonlyArray<[RegExp, RegExp, string]> = [
