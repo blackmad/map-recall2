@@ -6,7 +6,7 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 The list grows as the retranslation proceeds; so far it covers the names
-from 's-Gravelandse Veer to Kombuisweg, plus a register-wide scan for
+from 's-Gravelandse Veer to Kwintsheulstraat, plus a register-wide scan for
 texts that start or stop mid-sentence.
 
 How the game handles each: **withheld** means no origin card at all
@@ -98,6 +98,7 @@ the municipality's sources.
 | Joseph Scaligerstraat | [0363300000003932](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003932/) | fled "na de Bartholomeusnacht naar Holland" | he fled to Geneva in 1572 and came to Leiden only in 1593 | Corrected |
 | Karveelstraat | [0363300000003971](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003971/) | "Zeilschip uit de negentiende eeuw" | a late-medieval type (Columbus's Niña and Pinta, 1492) | Corrected |
 | Kinkerbrug | [0363300011950672](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950672/) | Johannes Kinker (1765-1845) | born 1 January 1764 | Corrected |
+| Korte Van Eeghenstraat | [0363300000004094](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004094/) | named after Isabelle Henriette van Eeghen (1913-1996), the opening sentence of the Isa van Eeghenbrug record ([0363300011951445](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011951445/)) | Christiaan Pieter van Eeghen (1816-1889), like the Van Eeghenstraat ([0363300000005201](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005201/)); the record itself says the street was named in 1896 | Corrected |
 
 ## 5. Misspellings flagged by the register itself
 
