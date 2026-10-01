@@ -54,9 +54,9 @@ test('the answered street is named on the street ahead, never the open question'
   });
   expect(result.name, 'the test needs a long named street near the bike').toBeTruthy();
   expect(result.whileAsking, 'nothing shown while the question is open').toBe(0);
-  expect(result.right.length, 'two names on the street ahead').toBe(2);
+  expect(result.right.length, 'one name painted on the street ahead').toBe(1);
   expect(result.right.every((p: any) => p.name === result.name && p.correct === true && p.type === 'Point')).toBe(true);
-  expect(result.wrong.length).toBe(2);
+  expect(result.wrong.length).toBe(1);
   expect(result.wrong.every((p: any) => p.name === result.name && p.correct === false)).toBe(true);
   expect(result.expired, 'cleared after a few seconds').toBe(0);
 });

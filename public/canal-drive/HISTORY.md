@@ -1,5 +1,33 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — "Stuck on a bridge": a question hidden behind the bike
+
+A question freezes the bike until it is answered (`_updateRacing` returns
+early while `quizPromptName` is set). Answering starts a hold whose timer
+hides the card. Crossing a bridge during that hold (0.9 s right, 3.2 s wrong)
+opened the bridge question, and the stale timer then hid the new card and
+cleared its feedback. The bike stood on the bridge, throttle open, behind a
+question nobody could see. That matches the repeated reports at Sint
+Antoniessluis, by the Koepelkerk and elsewhere, with no card on screen. The
+bridge sweep, pose probes and harness all stub the quiz, which is why they
+reported zero traps (15,600 + 1,120 probed poses at those two spots).
+
+Fix: a hold token. Each new question and each answer bump
+`_answerHoldToken`, and a timer whose token is stale, or that finds a question
+open, does nothing. As a safety net, the game loop re-shows the card whenever
+a question is pending and its card is hidden.
+`tests/e2e/question-after-answer-hold.spec.ts` fails on the old code and
+passes now. Lesson: a "stuck" report needs a test that runs the real input and
+quiz path, not only the physics.
+
+## 2026-10-01 — The answered name is painted on the road
+
+"These are hideous": two big green upright labels read as a debug overlay.
+Now there is one name, about 40 m ahead, lying flat on the road in cream like
+road paint, rotated so each letter's top points along the direction of travel
+(it reads from the saddle, unlike text run along the line). The right or wrong
+colour is only a thin edge.
+
 ## 2026-10-01 — Cameras: the follow cam was Chase
 
 The user confirmed the "follow cam ... a little too far" was Chase, so the "chase

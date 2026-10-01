@@ -527,49 +527,54 @@ export const ANSWERED_STREET_SOURCE_ID = 'answered-street';
 export const ANSWERED_STREET_SECONDS = 6;
 
 /**
- * The answered street's name, in big letters standing on the street ahead,
+ * The answered street's name, painted in big letters on the street ahead,
  * green when right and red when missed (user request 2026-10-01: "after I get
  * a street right or wrong ... in big letters on the street ahead of me to
  * reinforce it"). Its source is filled only after the answer, never while the
  * question is open, so it cannot give an answer away.
  */
 export function answeredStreetNameLayer(): Record<string, unknown> {
-  // Points on the street ahead, upright to the camera: painted along the line
-  // the name ran sideways whenever the street led away from the rider.
+  // Road lettering: flat on the street, each letter's top pointing along the
+  // direction of travel so it reads from the saddle. Run along the line it
+  // read sideways; standing upright as big green labels it looked like a
+  // debug overlay ("these are hideous", 2026-10-01). Cream like road paint;
+  // the right/wrong colour is only the edge.
   return {
     id: 'answered-street-name', type: 'symbol', source: ANSWERED_STREET_SOURCE_ID,
     layout: {
       'text-field': ['upcase', ['get', 'name']],
       'text-font': ['Noto Sans Bold'],
-      'text-size': ['interpolate', ['linear'], ['zoom'], 14, 18, 17, 30, 19, 44],
-      'text-letter-spacing': 0.08,
-      'text-anchor': 'bottom',
-      'text-pitch-alignment': 'viewport',
-      'text-rotation-alignment': 'viewport',
+      'text-size': ['interpolate', ['exponential', 2], ['zoom'], 15, 6, 18, 48, 20, 192],
+      'text-letter-spacing': 0.1,
+      'text-rotate': ['get', 'bearing'],
+      'text-pitch-alignment': 'map',
+      'text-rotation-alignment': 'map',
+      'text-keep-upright': false,
       'text-allow-overlap': true,
       'text-ignore-placement': true,
     },
     paint: {
-      'text-color': ['case', ['get', 'correct'], '#15803D', '#B91C1C'],
-      'text-halo-color': '#FFFFFF',
-      'text-halo-width': 3,
-      'text-opacity': 0.95,
+      'text-color': '#FBF7EC',
+      'text-opacity': 0.92,
+      'text-halo-color': ['case', ['get', 'correct'], '#15803D', '#B91C1C'],
+      'text-halo-width': 1.4,
     },
   };
 }
 
 /** px along the answered street, ahead of the rider, where its name stands. */
-export const ANSWERED_STREET_AHEAD = [120, 330] as const;
+export const ANSWERED_STREET_AHEAD = [120] as const;
 
 /**
  * Points `distances` ahead of the rider along the polyline nearest them,
  * walking whichever way the heading points. Fewer when the street ends first.
+ * `angle` is the direction of travel there (world radians, y down).
  */
 export function pointsAheadOnChains(
   chains: readonly (readonly OverlayPoint[])[],
   rider: Readonly<{ x: number; y: number; angle: number }>,
   distances: readonly number[] = ANSWERED_STREET_AHEAD,
-): OverlayPoint[] {
+): Array<OverlayPoint & { angle: number }> {
   let best: { chain: readonly OverlayPoint[]; index: number; t: number; dist: number } | null = null;
   for (const chain of chains) {
     for (let i = 0; i < chain.length - 1; i++) {
@@ -589,7 +594,7 @@ export function pointsAheadOnChains(
   const path: OverlayPoint[] = [start];
   if (forward) for (let i = index + 1; i < chain.length; i++) path.push(chain[i]);
   else for (let i = index; i >= 0; i--) path.push(chain[i]);
-  const out: OverlayPoint[] = [];
+  const out: Array<OverlayPoint & { angle: number }> = [];
   const wanted = [...distances].sort((x, y) => x - y);
   let travelled = 0, next = 0;
   for (let i = 1; i < path.length && next < wanted.length; i++) {
@@ -597,7 +602,7 @@ export function pointsAheadOnChains(
     const step = Math.hypot(q.x - p.x, q.y - p.y);
     while (next < wanted.length && travelled + step >= wanted[next]) {
       const f = step ? (wanted[next] - travelled) / step : 0;
-      out.push({ x: p.x + (q.x - p.x) * f, y: p.y + (q.y - p.y) * f });
+      out.push({ x: p.x + (q.x - p.x) * f, y: p.y + (q.y - p.y) * f, angle: Math.atan2(q.y - p.y, q.x - p.x) });
       next++;
     }
     travelled += step;
