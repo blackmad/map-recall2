@@ -127,20 +127,6 @@ junction.
 `tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
 or facades resident, probably because it needs locally generated study data.
 
-**Bridge sweep: the test driver still pins at 14 way tips (2026-10-01).**
-`BRIDGE_SWEEP_ALL=1 tests/e2e/bridge-sweep.spec.ts` drives all 2,417 bridge
-ways both ways: 1,756 driven, 1,661 arrive, 61 pins on 14 crossings, 0 traps.
-`bridge-deck-poses.spec.ts` around all 14 pin points found 0 traps in 2,408
-poses, so a player can always ride or back away. The pins come from the
-driver's crude recovery: it reverses past the start of a way, then noses
-forward into the same tip. Sint Antoniesluis, the Jan Schaeferbrug and
-Wembleylaan were traced and show this. Next, if the number matters: back the
-driver up along the route it came by instead of straight back.
-`route-surface-coverage.spec.ts` allows two graph edges past the guard's
-rollback line by < 1 px on some loads: an unnamed way at 52.411459,4.829727
-and Geldershoofd at 52.323929,4.971265. On both long spans a parallel road
-is the better heading match.
-
 **Appearance-lane e2e failures seen in the 2026-09-30 full run.** These are
 not from the teaching lanes. Each is for the appearance owner:
 - `appearance-wall-colour.spec.ts`: Da Costakade 13 (`NL.IMBAG.Pand.0363100012166570`)

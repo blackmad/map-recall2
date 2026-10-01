@@ -20,7 +20,7 @@ import { openRoute } from './helpers';
 //   COVERAGE_OUT=path   write every uncovered edge as JSON
 
 const ROLLBACK_LINE = 4;
-const KNOWN_PAST_ROLLBACK: Array<[number, number]> = [[52.411459, 4.829727], [52.323929, 4.971265]];
+const KNOWN_PAST_ROLLBACK: Array<[number, number]> = [];
 
 test('every routing-graph edge lies on a rideable road surface', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop', 'pure geometry; one project is enough');
@@ -48,19 +48,25 @@ test('every routing-graph edge lies on a rideable road surface', async ({ page }
         edges++;
         const steps = Math.max(1, Math.ceil(edge.distance / 4));
         const heading = Math.atan2(edge.node.y - node.y, edge.node.x - node.x);
-        let worst = 0, worstAt: [number, number] | null = null;
+        let worst = 0, worstAt: [number, number] | null = null, worstXY: any = null;
         for (let i = 0; i <= steps; i++) {
           const x = node.x + (edge.node.x - node.x) * i / steps;
           const y = node.y + (edge.node.y - node.y) * i / steps;
           track.clearFrameCache();
           const g = track.getGuardRoad(x, y, heading);
           const excess = g ? g.dist - g.width : Infinity;
-          if (excess > worst) { worst = excess; worstAt = toLatLng(x, y); }
+          if (excess > worst) { worst = excess; worstAt = toLatLng(x, y); worstXY = { x, y, heading }; }
         }
         if (worst > 0.5) {
           kinds[edge.kind] = (kinds[edge.kind] || 0) + 1;
+          // What the guard saw at the worst point (diagnostics for a failure).
+          const S = (window as any).CanalRecallRoadSurface;
+          const contacts = worst > 4 && worstXY ? S.contactsAt(S.roadsNear(track.roadIndex, worstXY.x, worstXY.y, 2), worstXY.x, worstXY.y)
+            .filter((c: any) => c.dist < c.width + 20)
+            .map((c: any) => `${c.segIdx}/${c.ptIdx} ${track.segments[c.segIdx]?.name || '-'} d${c.dist.toFixed(1)} w${c.width} a${c.angle.toFixed(2)}`) : undefined;
           uncovered.push({ kind: edge.kind, excess: +worst.toFixed(1), at: worstAt, lengthPx: +edge.distance.toFixed(1),
-            names: [...new Set(edge.segmentMetadata.map((m: any) => m?.name).filter(Boolean))] });
+            names: [...new Set(edge.segmentMetadata.map((m: any) => m?.name).filter(Boolean))],
+            segments: edge.segmentIndexes, heading: worstXY && +worstXY.heading.toFixed(2), contacts: contacts && [...new Set(contacts)] });
         }
       }
     }

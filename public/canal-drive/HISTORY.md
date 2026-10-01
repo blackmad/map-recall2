@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Bridges: the full sweep at zero; every planned edge on the road
+
+- **The sweep driver backs out the way it came.** After the earlier fixes,
+  the full sweep still had 61 pins on 14 crossings. All were the test driver
+  reversing blindly into the tip of a short side way, then nosing forward
+  into it again. It now keeps a trail of where it actually rode, every 8 px,
+  which is always on the road. When stuck it reverses ~50 px back along that
+  trail, further on each retry, then plans again from there.
+  `BRIDGE_SWEEP_ALL=1` now gives 0 pins and 0 traps over all 2,417 bridge
+  ways, identical across runs, with 1,684 arrivals (was 1,661). It runs in
+  ~1 min and asserts zero pins in both modes.
+- **Planned edges now lie on the surface.** The graph merges vertices into a
+  node at whichever vertex arrived first, so an edge between merged nodes
+  runs up to a cell diagonal (~25 px) beside its span. On long spans the
+  planned line left the corridor mid-way. These were the two stretches
+  `route-surface-coverage` had allowed: an unnamed way in Westpoort, and
+  Geldershoofd. Which vertex arrives first depends on load order, so they
+  failed on some runs only. The graph now adds the planned edge itself as a
+  connector span whenever either end was merged off its vertex. Coverage is
+  0 uncovered edges and allows no exceptions.
+- **Guard contacts prefer the parallel road the bike is on.** If the bike is
+  nearer a parallel road's centre than the aligned road's, that parallel
+  road counts as the road it is on. The Marnixstraat busway check still
+  holds.
+
 ## 2026-10-01 — Street-name origins: the earlier paid model pass reviewed
 
 The first 673 cache entries ('s-Gravelandse Veer to Boomstraat, 480 distinct

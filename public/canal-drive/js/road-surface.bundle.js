@@ -198,6 +198,12 @@ var CanalRecallRoadSurface = (() => {
       if (!inside || contact.dist - contact.width < inside.dist - inside.width) inside = contact;
     }
     if (inside) return inside;
+    let onParallel = null;
+    for (const contact of contacts) {
+      if (contact.dist > contact.width || contact.dist >= aligned.dist) continue;
+      if (!onParallel || contact.dist < onParallel.dist) onParallel = contact;
+    }
+    if (onParallel) return onParallel;
     let chosen = aligned;
     for (const contact of contacts) {
       if (headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
