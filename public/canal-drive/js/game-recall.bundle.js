@@ -1039,6 +1039,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
      */
     _openQuizPrompt({ kind, name, subject, question, context, choices = null, segmentIndex = -1, pointIndex = 0 }) {
       if (!this.player) return;
+      this._answerHoldToken = (this._answerHoldToken || 0) + 1;
       this._pendingCrossing = null;
       this.quizPromptKind = kind;
       this.quizPromptName = name;
@@ -1347,7 +1348,9 @@ Learned names, exploration collection, personal bests, route settings and the ho
       const learnedRoute = !atCrossing && !isStopQuiz ? correctName : "";
       const profile = travelProfile(this.travelMode);
       const learnedRouteType = isStreetQuiz ? "street" : profile.learnedKind === "street" ? "street" : profile.learnedKind === "transit" ? "line" : "water";
+      const holdToken = this._answerHoldToken = (this._answerHoldToken || 0) + 1;
       setTimeout(() => {
+        if (holdToken !== this._answerHoldToken || this.quizPromptName) return;
         this._prompt.style.display = "none";
         document.getElementById("canal-card")?.classList.remove("answered");
         this._answerReveal = null;

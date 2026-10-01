@@ -468,6 +468,10 @@ class Game {
     if (this.showMiniMap) this._assistUsage.minimap = true;
 
     if (this.quizPromptName) {
+      // The bike waits for the answer, so the question must be on screen. If
+      // anything hid its card, show it again rather than freeze the bike
+      // behind an invisible question (user reports 2026-10-01).
+      if (this._prompt && this._prompt.style.display === 'none') this._prompt.style.display = 'flex';
       this.camera.update(this.player, dt);
       return;
     }
