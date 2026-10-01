@@ -100,7 +100,10 @@ test('the bike crosses every bridge in both directions without wedging', async (
           if (d < bestDistance) { bestDistance = d; best = node; }
         }
       }
-      return bestDistance < 90 ? best : null;
+      // 150, not 90: past a canal-side bridge the projected point usually lands
+      // 105-120 px from the nearest junction, and 90 skipped about 1,700
+      // connected bridges (2026-10-01).
+      return bestDistance < 150 ? best : null;
     };
     const segDist = (p: any, a: any, b: any) => {
       const abx = b.x - a.x, aby = b.y - a.y;
@@ -150,6 +153,8 @@ test('the bike crosses every bridge in both directions without wedging', async (
     let trapCount = 0;
     const failures: any[] = [];
     let driven = 0, skipped = 0, arrivedCount = 0, wedgeCount = 0;
+    const skipReasons = { noSnap: 0, noRoute: 0, missesDeck: 0 };
+    const skippedAt: Array<[string, string, number, number]> = [];
     for (const bridge of bridges) {
       const pts = bridge.path.map(toWorld);
       const mid = pts[Math.floor(pts.length / 2)];
@@ -159,12 +164,12 @@ test('the bike crosses every bridge in both directions without wedging', async (
         const a = way[0], a2 = way[1], b = way.at(-1)!, b2 = way.at(-2)!;
         const out = (p: any, q: any) => { const l = Math.hypot(p.x - q.x, p.y - q.y) || 1; return { x: p.x + (p.x - q.x) / l * 135, y: p.y + (p.y - q.y) / l * 135 }; };
         const from = snap(out(a, a2)), to = snap(out(b, b2));
-        if (!from || !to || from === to) { skipped++; continue; }
+        if (!from || !to || from === to) { skipped++; skipReasons.noSnap++; skippedAt.push(['noSnap', bridge.id, ...bridge.path[0]] as any); continue; }
         const route = game.track.findRoute(from, to);
-        if (!route || route.length < 2) { skipped++; continue; }
+        if (!route || route.length < 2) { skipped++; skipReasons.noRoute++; continue; }
         let crosses = false;
         for (let i = 0; i < route.length - 1 && !crosses; i++) crosses = segDist(midpoint, route[i], route[i + 1]) < 12;
-        if (!crosses) { skipped++; continue; }
+        if (!crosses) { skipped++; skipReasons.missesDeck++; skippedAt.push(['missesDeck', bridge.id, ...bridge.path[0]] as any); continue; }
         driven++;
         Object.assign(player, { x: from.x, y: from.y, speed: 0, vx: 0, vy: 0, angle: Math.atan2(route[1].y - from.y, route[1].x - from.x) });
         player._uTurnHeading = null;
@@ -285,10 +290,10 @@ test('the bike crosses every bridge in both directions without wedging', async (
       }
     }
     game.state = 4;
-    return { bridges: bridges.length, driven, skipped, arrived: arrivedCount, wedges: wedgeCount, traps: trapCount, failures };
+    return { bridges: bridges.length, driven, skipped, skipReasons, skippedAt, arrived: arrivedCount, wedges: wedgeCount, traps: trapCount, failures };
   }, { limit, onlyIds, near });
   if (process.env.BRIDGE_SWEEP_OUT) writeFileSync(process.env.BRIDGE_SWEEP_OUT, JSON.stringify(report, null, 1));
-  console.log(JSON.stringify({ ...report, failures: report.failures.length }));
+  console.log(JSON.stringify({ ...report, skippedAt: undefined, failures: report.failures.length }));
   expect(report.failures.filter((f: any) => f.traps.length), 'crossings with a trap').toEqual([]);
   expect(report.failures.filter((f: any) => f.wedges).map((f: any) => `${f.name || f.id} ${f.reverse ? '←' : '→'}`), 'pinned crossings').toEqual([]);
 });
