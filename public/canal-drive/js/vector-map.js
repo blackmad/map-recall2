@@ -300,7 +300,7 @@ class VectorBasemap {
     const base = cockpit
       ? (typeof COCKPIT_PITCH_DEGREES === 'number' ? COCKPIT_PITCH_DEGREES : 82)
       : chase
-        ? (typeof CHASE_PITCH_DEGREES === 'number' ? CHASE_PITCH_DEGREES : 42)
+        ? (typeof CHASE_PITCH_DEGREES === 'number' ? CHASE_PITCH_DEGREES : 48)
         : (typeof TOPDOWN_TILT_DEGREES === 'number' ? TOPDOWN_TILT_DEGREES : 14);
     if (!chase && !cockpit) return base;
     return Math.max(0, Math.min(85, base + (this._cameraTilt || 0)));
@@ -311,7 +311,7 @@ class VectorBasemap {
       return typeof COCKPIT_ZOOM_OFFSET === 'number' ? COCKPIT_ZOOM_OFFSET : 1.65;
     }
     if (viewMode === 'chase') {
-      return typeof CHASE_ZOOM_OFFSET === 'number' ? CHASE_ZOOM_OFFSET : 0.55;
+      return typeof CHASE_ZOOM_OFFSET === 'number' ? CHASE_ZOOM_OFFSET : 0.35;
     }
     return 0;
   }
@@ -905,11 +905,9 @@ class VectorBasemap {
     this.map.addSource('branded-pois', { type: 'geojson', data: { type: 'FeatureCollection', features: [] }, attribution: 'POIs © OpenStreetMap contributors' });
     const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
     this.map.addLayer({ id: 'neighborhood-boundaries', type: 'line', source: 'amsterdam-neighborhoods', minzoom: 13, paint: { 'line-color': '#8B5CF6', 'line-width': ['interpolate', ['linear'], ['zoom'], 13, 1, 18, 2.5], 'line-opacity': 0.48, 'line-dasharray': [3, 3] } }, before);
-    // Dots only where their names show: bare dots crowded the overview and
-    // the zoomed-out chase ("why so many yellow dots", 2026-09-29).
-    this.map.addLayer({ id: 'poi-dots', type: 'circle', source: 'amsterdam-pois', minzoom: 16, paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 16, 4, 18, 6], 'circle-color': '#FACC15', 'circle-stroke-color': '#071E2B', 'circle-stroke-width': 1.5, 'circle-opacity': 0.9, 'circle-translate-anchor': 'viewport' } });
+    // No landmark or shop dots: bare dots crowded the map ("why so many yellow
+    // dots", 2026-09-29; "still seeing yellow dots", 2026-10-01). Names only.
     this.map.addLayer({ id: 'poi-labels', type: 'symbol', source: 'amsterdam-pois', minzoom: 16, layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': 11, 'text-offset': [0, -0.7], 'text-anchor': 'bottom', 'text-allow-overlap': false }, paint: { 'text-color': '#FFF7CC', 'text-halo-color': '#071E2B', 'text-halo-width': 2, 'text-translate-anchor': 'viewport' } });
-    this.map.addLayer({ id: 'brand-poi-dots', type: 'circle', source: 'branded-pois', minzoom: 15.5, filter: ['==', ['get', 'kind'], 'albert-heijn'], paint: { 'circle-radius': 5, 'circle-color': '#FFFFFF', 'circle-stroke-color': '#0F3040', 'circle-stroke-width': 2, 'circle-opacity': 0.9, 'circle-translate-anchor': 'viewport' } });
     this._loadBrandIcon('albert-heijn', './brand-icons/albert-heijn.svg');
     this.map.addLayer({ id: 'brand-poi-icons', type: 'symbol', source: 'branded-pois', minzoom: 15.5, filter: ['all', ['==', ['get', 'kind'], 'albert-heijn'], ['has', 'icon']], layout: { 'icon-image': ['get', 'icon'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 15.5, 0.62, 18, 0.9], 'icon-allow-overlap': false, 'icon-ignore-placement': false }, paint: { 'icon-translate-anchor': 'viewport' } });
     this.map.addLayer({ id: 'brand-poi-labels', type: 'symbol', source: 'branded-pois', minzoom: 17, filter: ['==', ['get', 'kind'], 'albert-heijn'], layout: { 'text-field': ['get', 'name'], 'text-font': ['Noto Sans Bold'], 'text-size': 10, 'text-offset': [0, -1.7], 'text-anchor': 'bottom', 'text-allow-overlap': false }, paint: { 'text-color': '#E0F2FE', 'text-halo-color': '#071E2B', 'text-halo-width': 2, 'text-translate-anchor': 'viewport' } });
@@ -928,7 +926,7 @@ class VectorBasemap {
     if (!this._poiLayerIds) {
       const basemap = lib && lib.basemapOrientationPoiLayerIds
         ? lib.basemapOrientationPoiLayerIds(this.map.getStyle().layers || []) : [];
-      this._poiLayerIds = [...basemap, 'poi-dots', 'poi-labels', 'brand-poi-dots', 'brand-poi-icons', 'brand-poi-labels', 'local-food-labels',
+      this._poiLayerIds = [...basemap, 'poi-labels', 'brand-poi-icons', 'brand-poi-labels', 'local-food-labels',
         // The active landmark's locator too: under the extrusions, the dot
         // for a tree beside a building was hidden by that building.
         'active-landmark-line', 'active-landmark-point',
@@ -956,7 +954,7 @@ class VectorBasemap {
    *  sightline eases, so only a degree's change repaints. */
   _liftPoiMarkers(pitch, latitude) {
     const lib = window.CanalRecallOrientationPois;
-    if (!lib || !lib.roofLiftTranslate || !this.map.getLayer('poi-dots')) return;
+    if (!lib || !lib.roofLiftTranslate || !this.map.getLayer('poi-labels')) return;
     if (this._poiLiftPitch != null && Math.abs(pitch - this._poiLiftPitch) < 1) return;
     this._poiLiftPitch = pitch;
     const translate = lib.roofLiftTranslate(pitch, latitude);
@@ -965,7 +963,7 @@ class VectorBasemap {
     // instead of marking it (user report 2026-09-29). Shops, cafés and
     // supermarkets are nearly always in a building, so they are lifted.
     const properties = {
-      'brand-poi-dots': ['circle-translate'], 'brand-poi-icons': ['icon-translate'],
+      'brand-poi-icons': ['icon-translate'],
       'brand-poi-labels': ['text-translate'], 'local-food-labels': ['text-translate'],
     };
     // The basemap's own shop and café labels too: those were the grey names
@@ -1376,7 +1374,7 @@ class VectorBasemap {
     // Curated POIs must win over the much larger building extrusion under the
     // pointer. The hit box is forgiving because dots are intentionally small.
     let poiResult = null;
-    const poiLayers = ['poi-labels', 'poi-dots'].filter(id => this.map.getLayer(id));
+    const poiLayers = ['poi-labels'].filter(id => this.map.getLayer(id));
     if (poiLayers.length) {
       const hitRadius = 28;
       const poi = this.map.queryRenderedFeatures([
