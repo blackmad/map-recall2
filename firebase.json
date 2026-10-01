@@ -14,7 +14,18 @@
         "**/*.md",
         "server.cjs",
         "server.cjs.map",
-        "canal-drive/**"
+        "canal-drive/**",
+        "data/city-expansion/**",
+        "data/signage/**",
+        "data/rgb-city-demo/**",
+        "data/pointcloud-facades/**",
+        "data/facade-model-eval/**",
+        "data/elandsgracht/**",
+        "data/da-costa-block/**",
+        "data/facade-materials/**",
+        "data/wall-colour/**",
+        "data/wall-materials/**",
+        "data/facade-block-demo/**"
       ],
       "headers": [
         {
@@ -52,7 +63,18 @@
         "**/node_modules/**",
         "**/*.md",
         "server.cjs",
-        "server.cjs.map"
+        "server.cjs.map",
+        "data/city-expansion/**",
+        "data/signage/**",
+        "data/rgb-city-demo/**",
+        "data/pointcloud-facades/**",
+        "data/facade-model-eval/**",
+        "data/elandsgracht/**",
+        "data/da-costa-block/**",
+        "data/facade-materials/**",
+        "data/wall-colour/**",
+        "data/wall-materials/**",
+        "data/facade-block-demo/**"
       ],
       "headers": [
         {

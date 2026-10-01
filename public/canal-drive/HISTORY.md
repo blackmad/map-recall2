@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Hosting: deploys were failing on the storage quota
+
+Every Firebase deploy from 2026-09-29 23:38 to 2026-10-01 14:00 failed with
+HTTP 429 (Hosting storage quota exceeded). The live game therefore lacked two
+days of bridge fixes while main had them. Each site kept 19 finalized versions
+of ~300 MB despite maxVersions 10, so the 9 oldest per site were deleted and
+the deploy re-run (2f18077 went live). Releases were ~300 MB because both sites
+uploaded all of public/data, including 313 MB of old city-expansion builds and
+the data for dev/eval pages. firebase.json now ignores city-expansion, signage,
+rgb-city-demo, pointcloud-facades, facade-model-eval, elandsgracht,
+da-costa-block, facade-materials, wall-colour, wall-materials and
+facade-block-demo on both targets. The data stays in git and on the dev server.
+city-appearance and every city extract stay hosted; the game loads
+city-appearance/areas.json. The hidden Da Costa study route needs
+city-expansion and now works only on the dev server, as the harness uses it.
+After a push, check that <site>/deployment.json shows the pushed SHA before
+calling a fix live.
+
 ## 2026-10-01 — Driving harness: the trail back-out driver
 
 The harness driver used to reverse blindly for 1.2 s with the stick
