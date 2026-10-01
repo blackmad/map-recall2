@@ -413,19 +413,6 @@ class GameRouteRuntime {
       this._homeLearningRadiusKm = null;
       try { localStorage.removeItem('canalRecall.homeLearningRadius.v1'); } catch (_) { /* ignore */ }
     }
-    if (this.routePattern === 'study') {
-      try {
-        this._setRouteError('Loading the verified Da Costa lesson…');
-        const catalog = await CanalRecallBuildingTiles.loadVerifiedAppearanceCatalog('../data/city-appearance/areas.json');
-        const lesson = catalog.entries.find(entry => entry.lesson);
-        if (!lesson) throw new Error('No appearance lesson is published');
-        this._launchPoiRoute(lesson.studyRoute.from, lesson.studyRoute.to);
-      } catch (error) {
-        this._setRouteError('The verified Da Costa lesson is unavailable.');
-      }
-      return;
-    }
-
     if (this.routePattern === 'here') {
       try {
         if (!(isReroll && this.gpsOrigin)) {
@@ -905,13 +892,13 @@ class GameRouteRuntime {
    * Enter on the finish card: ride on from where this route ended, not the
    * same route again (user report 2026-09-29). A review ride when Plan review
    * has something due near the arrival, else a destination in pairing range
-   * that is not the start just left. The study lesson is one fixed route and
-   * transit pairs are chosen for their transfers, so both replay.
+   * that is not the start just left. Transit pairs are chosen for their
+   * transfers, so they replay.
    */
   _startNextRouteFromArrival() {
     const from = this.routeTo;
     const replay = () => { this._setupRace(); this.state = GameState.RACING; this._beginIntro(); };
-    if (!from || this.routePattern === 'study' || this.travelMode === 'transit') { replay(); return; }
+    if (!from || this.travelMode === 'transit') { replay(); return; }
     this._reviewRoute = this._pickReviewRide(this.routePois, from);
     const dest = this._reviewRoute ? this._reviewRoute.to : this._pickDestinationNear(from, this.routeFrom ? this.routeFrom.id : null);
     if (!dest) { replay(); return; }

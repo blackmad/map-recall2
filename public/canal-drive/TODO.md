@@ -120,30 +120,13 @@ and function now reach clicked buildings (see HISTORY, 2026-09-30). Still open:
 that the 200 s budget does not cover at the driver's 60/170 cruise. Replanning
 when off the route, or when lost, was measured and lowered arrivals (98 and
 109), so the driver replans only after backing out.
-`tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
-or facades resident, probably because it needs locally generated study data.
 
-**Appearance-lane e2e failures seen in the 2026-09-30 full run.** These are
-not from the teaching lanes. Each is for the appearance owner:
-- `appearance-wall-colour.spec.ts`: Da Costakade 13 (`NL.IMBAG.Pand.0363100012166570`)
-  reads `procedural-prior-not-measured`, not `measured-accepted`. This is
-  probably the pending v3 sidecar republish below.
-- `complete-city.spec.ts`: 12,686 citywide unknown-wall priors, pinned 11,888.
-- `city-appearance-study-route.spec.ts`: asserts that choosing the study
-  sets car, chase and zoom 0.8. The chip that did that was removed on
-  2026-09-28, at the user's request for a 50% zoom. The harness should set
-  those itself. It also needs locally generated study data.
-- `wall-material-demo.spec.ts`: `material-demo.html` never reports ready,
-  probably because it needs local demo data.
-
-**Republish area appearance sidecars on the v3 palette (2026-09-29).**
-The citywide fallback moved to the livelier v3 palette (see HISTORY). The
-three hash-bound releases under `public/data/city-expansion/releases/` still
-carry V2 `procedural-prior-not-measured` walls and caps, so those districts
-stay drab next to the rest of the city. Regenerate them through the staging
-path, keep every `measured-accepted` colour, review the diff, then update the
-pointers. The frozen review bundles (`case24-gable-city-preview`,
-`source-to-owner-city-preview`) also embed V2 and have no build script.
+**Material demo e2e fails (seen 2026-09-30, still failing 2026-10-01).**
+`wall-material-demo.spec.ts`: `material-demo.html` never reports ready and the
+visual report finds no checked evidence. This is probably missing local demo
+data. Both tests failed the same way before the Da Costa study was retired.
+The study-route, appearance-colour, wall-colour and camera-stability specs
+were deleted with the study (see HISTORY).
 
 **Wall colour/material: finish Jordaan + Da Costabuurt evidence and local-model evaluation.**
 The colour/texture focus supersedes new roof work for this appearance batch.

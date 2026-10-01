@@ -252,11 +252,9 @@ export function parsePreferences(raw: unknown, zoom: ZoomClamp): CanalPreference
   const withDifficulty: CanalPreferences = difficulty === 'custom'
     ? { ...base, difficulty }
     : { ...base, difficulty, ...DIFFICULTY_PRESETS[difficulty] };
-  const filled = fillPreferences(source, withDifficulty, zoom);
-  // "Da Costa study" left the route choices (2026-09-28); a save that still
-  // holds it would leave no route chip selected. The pattern itself remains
-  // for the appearance study harness, which selects it explicitly.
-  return filled.routePattern === 'study' ? { ...filled, routePattern: base.routePattern } : filled;
+  // A save from before 2026-10-01 may hold the retired 'study' pattern;
+  // parseMode rejects it and the default pattern applies.
+  return fillPreferences(source, withDifficulty, zoom);
 }
 
 /**

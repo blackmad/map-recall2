@@ -757,16 +757,9 @@ class VectorBasemap {
     }
     if (!available || !this.map.getSource('osm-building-appearance')) return false;
 
-    if (runtime.loadVerifiedAppearanceCatalog && this._completeCity.setAppearancePriors) {
-      try {
-        const catalog = await runtime.loadVerifiedAppearanceCatalog('../data/city-appearance/areas.json');
-        this._appearanceAreas = catalog.entries;
-        this._appearanceAreaFailures = catalog.failures;
-        this._completeCity.setAppearancePriors(catalog.priors);
-      } catch (error) {
-        console.warn('Verified area appearance unavailable; retaining the citywide display palette.', error);
-      }
-    }
+    // The Da Costa appearance study (city-expansion) was retired on 2026-10-01;
+    // the game no longer loads the appearance catalog, so _appearanceAreas stays
+    // empty and none of the optional study renderers start.
 
     // Hand the verified priors to the complete-city source before optional
     // roofs, facades, trees and water start their independent loads. Waiting

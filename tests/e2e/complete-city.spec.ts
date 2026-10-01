@@ -40,12 +40,6 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
       { timeout: 60000 }
     )
     .toBeGreaterThan(0);
-  await expect
-    .poll(
-      () => page.evaluate(() => (window as any).canalRecallGame?.vectorMap?._appearanceAreas?.length ?? 0),
-      { timeout: 60000 }
-    )
-    .toBeGreaterThan(0);
 
   const loaded = await page.evaluate(() => {
     const map = (window as any).canalRecallGame.vectorMap;
@@ -54,7 +48,6 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
     map.setDetailedBuildingsVisible(false);
     return {
       status: map._completeCity.status(),
-      appearanceAreas: map._appearanceAreas,
       // A hidden `building-3d` is the point: once every building is described
       // locally, the basemap's gray extrusion is a second solid in the same
       // place, which is what the height-offset stack existed to hide.
@@ -65,7 +58,6 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
   });
 
   expect(loaded.status.features, 'the streamed tiles carry real buildings').toBeGreaterThan(500);
-  expect(loaded.appearanceAreas.some((area: any) => typeof area.id === 'string' && area.id.length > 0 && area.lesson), 'the current appearance lesson is discovered through the verified catalog').toBe(true);
   expect(loaded.status.contextualFeatures, 'most otherwise-uncolored BAG masses receive the explicit citywide display prior').toBeGreaterThan(loaded.status.features * 0.5);
   expect(loaded.status.contextualGrounds, 'every citywide unknown-wall prior receives its provenance-labelled street base').toBe(loaded.status.contextualFeatures);
   expect(loaded.status.contextualRoofs, 'most flat or unspecified caps receive a separate explicit roof display prior').toBeGreaterThan(loaded.status.features * 0.5);
@@ -161,187 +153,4 @@ test('the streamed city loads, and replaces the basemap extrusion', async ({ pag
   }, idBefore), { timeout: 30000 }).toBe(true);
   const sourceIdentity = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.getSource('osm-building-appearance').promoteId);
   expect(sourceIdentity, 'tile replacement keeps feature state keyed by canonical building identity').toBe('id');
-
-  // Enter the published 550 m appearance study. The complete-city geometry
-  // remains the game's source; matching BAG ids are decorated only after the
-  // independently hashed appearance sidecar has verified successfully.
-  await page.evaluate(() => {
-    const vectorMap = (window as any).canalRecallGame.vectorMap, map = vectorMap.map;
-    // Stop the game loop from immediately returning MapLibre to the random
-    // route while this test inspects the published study working set.
-    (window as any).__appearanceStudySync = vectorMap.sync;
-    vectorMap.sync = () => undefined;
-    map.jumpTo({ center: [4.8735, 52.3723], zoom: 17, pitch: 58 });
-    vectorMap._completeCity.followCamera();
-  });
-  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._completeCity.status().inFlight), { timeout: 30000 }).toBe(0);
-  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._completeCity.status().styledFeatures), { timeout: 30000 }).toBeGreaterThan(100);
-  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.vectorMap._studyFacades?.debugResident ?? 0), { timeout: 30000 }).toBeGreaterThan(0);
-  const integratedAppearance = await page.evaluate(() => {
-    const vectorMap = (window as any).canalRecallGame.vectorMap, map = vectorMap.map;
-    const appearanceSample = vectorMap._completeCity.sampleFeatures(100_000)
-      .filter((feature: any) => feature.properties?.appearanceStyleSource === 'procedural-prior-not-measured');
-    return {
-      status: vectorMap._completeCity.status(),
-      appearanceSample: appearanceSample.slice(0, 200).map((feature: any) => ({
-        sideColour: feature.properties.sideColour,
-        groundColour: feature.properties.groundColour,
-        roofColour: feature.properties.roofColour,
-      })),
-      paint: map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-color'),
-      groundLayer: Boolean(map.getLayer('osm-colored-building-ground-floors')),
-      groundPaint: map.getPaintProperty('osm-colored-building-ground-floors', 'fill-extrusion-color'),
-      wallBase: map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-base'),
-      wallHeight: map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-height'),
-      light: map.getLight(),
-      detailAreas: {
-        roofs: vectorMap._studyRoofAreas.length,
-        facades: vectorMap._studyFacadeAreas.length,
-        trees: vectorMap._studyTreeAreas.length,
-        publicRealm: vectorMap._studyPublicRealmAreas.length,
-        failures: vectorMap._appearanceAreaFailures,
-        layerIds: map.getStyle().layers.map((layer: any) => layer.id).filter((id: string) => id.startsWith('city-appearance-')),
-      },
-      sourceRoofs: vectorMap._studyRoofs ? {
-        ready: vectorMap._studyRoofs.ready,
-        renderable: vectorMap._studyRoofs.debugRenderable,
-        buildings: vectorMap._studyRoofs.debugBuildings,
-        surfaces: vectorMap._studyRoofs.debugSurfaces,
-        resident: vectorMap._studyRoofs.debugResident,
-        meshes: vectorMap._studyRoofs.debugMeshes,
-        geometryBytes: vectorMap._studyRoofs.debugGeometryBytes,
-      } : null,
-      contextualFacades: vectorMap._studyFacades ? {
-        ready: vectorMap._studyFacades.ready,
-        renderable: vectorMap._studyFacades.debugRenderable,
-        windows: vectorMap._studyFacades.debugWindows,
-        doors: vectorMap._studyFacades.debugDoors,
-        trims: vectorMap._studyFacades.debugTrims,
-        resident: vectorMap._studyFacades.debugResident,
-        triangles: vectorMap._studyFacades.debugTriangles,
-        geometryBytes: vectorMap._studyFacades.debugGeometryBytes,
-      } : null,
-      inventoryTrees: vectorMap._studyTrees ? {
-        ready: vectorMap._studyTrees.ready,
-        renderable: vectorMap._studyTrees.debugRenderable,
-        trees: vectorMap._studyTrees.debugTrees,
-        resident: vectorMap._studyTrees.debugResident,
-        meshes: vectorMap._studyTrees.debugMeshes,
-        trunkAxis: vectorMap._studyTrees.debugTrunkAxis,
-        geometryBytes: vectorMap._studyTrees.debugGeometryBytes,
-      } : null,
-      publicRealm: vectorMap._studyPublicRealm ? {
-        ready: vectorMap._studyPublicRealm.ready,
-        renderable: vectorMap._studyPublicRealm.debugRenderable,
-        water: vectorMap._studyPublicRealm.debugWater,
-        bridges: vectorMap._studyPublicRealm.debugBridges,
-        bridgeMeshes: vectorMap._studyPublicRealm.debugBridgeMeshes,
-        green: vectorMap._studyPublicRealm.debugGreen,
-        footpaths: vectorMap._studyPublicRealm.debugFootpaths,
-        cycleways: vectorMap._studyPublicRealm.debugCycleways,
-        boundaries: vectorMap._studyPublicRealm.debugBoundaries,
-        resident: vectorMap._studyPublicRealm.debugResident,
-        meshes: vectorMap._studyPublicRealm.debugMeshes,
-        geometryBytes: vectorMap._studyPublicRealm.debugGeometryBytes,
-      } : null,
-    };
-  });
-  expect(integratedAppearance.status.styledFeatures, 'the working set handed to the main game source contains verified appearance priors').toBeGreaterThan(100);
-  expect(integratedAppearance.detailAreas, 'every catalog district gets independently namespaced optional renderers').toMatchObject({ roofs: 1, facades: 1, trees: 1, publicRealm: 1, failures: [] });
-  expect(integratedAppearance.publicRealm, 'source-bound public realm is available in the live game').toBeTruthy();
-  expect(['water', 'bridges', 'green', 'footpaths', 'cycleways', 'boundaries'].every(kind => integratedAppearance.publicRealm[kind] > 0), 'the current release supplies every public-realm family without pinning obsolete area totals').toBe(true);
-  expect(new Set(integratedAppearance.detailAreas.layerIds).size, 'custom layer ids remain unique as the area catalog grows').toBe(integratedAppearance.detailAreas.layerIds.length);
-  expect(integratedAppearance.appearanceSample.length, 'the test reads decorated buildings from the live game source').toBeGreaterThan(100);
-  expect(integratedAppearance.appearanceSample.every((building: any) =>
-    [building.sideColour, building.groundColour, building.roofColour].every(colour => /^#[0-9a-f]{6}$/i.test(colour))
-  ), 'every decorated live building carries valid wall, ground-floor and roof colours').toBe(true);
-  expect(new Set(integratedAppearance.appearanceSample.map((building: any) => building.sideColour)).size,
-    'the live study uses multiple facade families, not one neutral fallback colour').toBeGreaterThan(4);
-  expect(JSON.stringify(integratedAppearance.paint), 'the main game paint expression consumes sidecar wall colour').toContain('sideColour');
-  expect(integratedAppearance.groundLayer, 'the game splits verified street storeys from upper walls').toBe(true);
-  expect(JSON.stringify(integratedAppearance.groundPaint), 'the lower volume consumes the verified sidecar tone').toContain('groundColour');
-  expect(JSON.stringify(integratedAppearance.wallBase), 'upper walls start above the sidecar street-storey height').toContain('groundFloorHeightM');
-  expect(JSON.stringify(integratedAppearance.wallHeight), 'the renderer retains support for coherent measured eaves without forcing one eave across compound masses').toContain('roofEavesHeightM');
-  expect(integratedAppearance.light, 'the clean theme installs stable map-anchored directional light').toEqual({ anchor: 'map', color: '#fff7ea', intensity: 0.5, position: [1.25, 210, 42] });
-  expect(integratedAppearance.sourceRoofs?.ready).toBe(true);
-  expect(integratedAppearance.sourceRoofs?.buildings).toBeGreaterThan(0);
-  expect(integratedAppearance.sourceRoofs?.surfaces).toBeGreaterThan(integratedAppearance.sourceRoofs!.buildings);
-  expect(integratedAppearance.contextualFacades?.ready, 'the game installs the source-bound contextual facade streamer').toBe(true);
-  expect(integratedAppearance.contextualFacades?.renderable).toBe(true);
-  expect(integratedAppearance.contextualFacades?.windows, 'the release reports its deterministic opening coverage').toBeGreaterThan(0);
-  expect(integratedAppearance.sourceRoofs?.ready, 'the game installs the source roof tile streamer').toBe(true);
-  expect(integratedAppearance.sourceRoofs?.renderable).toBe(true);
-  expect(integratedAppearance.sourceRoofs?.resident, 'source roofs use a bounded nonempty working set').toBeGreaterThan(0);
-  expect(integratedAppearance.sourceRoofs?.resident).toBeLessThanOrEqual(12);
-  expect(integratedAppearance.sourceRoofs?.meshes).toBeLessThanOrEqual(12);
-  expect(integratedAppearance.contextualFacades?.doors).toBeGreaterThan(0);
-  expect(integratedAppearance.contextualFacades?.trims, 'the release reports its source-contained procedural trim bands').toBeGreaterThan(0);
-  expect(integratedAppearance.contextualFacades?.resident, 'facade detail residency is bounded and nonempty near the study').toBeGreaterThan(0);
-  expect(integratedAppearance.contextualFacades?.resident).toBeLessThanOrEqual(12);
-  expect(integratedAppearance.contextualFacades?.triangles, 'resident facade tiles contribute actual geometry').toBeGreaterThan(1000);
-  expect(integratedAppearance.inventoryTrees?.ready, 'the game installs the source-bound inventory tree streamer').toBe(true);
-  expect(integratedAppearance.inventoryTrees?.renderable).toBe(true);
-  expect(integratedAppearance.inventoryTrees?.trees, 'the tree release reports all source inventory positions').toBeGreaterThan(0);
-  expect(integratedAppearance.inventoryTrees?.resident).toBeGreaterThan(0);
-  expect(integratedAppearance.inventoryTrees?.resident).toBeLessThanOrEqual(12);
-  expect(integratedAppearance.inventoryTrees?.meshes, 'resident trees are GPU-instanced rather than one draw per crown').toBeLessThanOrEqual(48);
-  expect(integratedAppearance.inventoryTrees?.trunkAxis, 'tree trunk source geometry is vertical before instancing').toBe('z');
-  expect(integratedAppearance.publicRealm?.ready, 'the game installs the BGT public-realm streamer').toBe(true);
-  expect(integratedAppearance.publicRealm?.renderable).toBe(true);
-  expect(integratedAppearance.publicRealm?.water).toBeGreaterThan(0);
-  expect(integratedAppearance.publicRealm?.bridges, 'exact BGT bridge records feed the understructure renderer').toBeGreaterThan(0);
-  expect(integratedAppearance.publicRealm?.bridgeMeshes, 'bridge perimeter faces render without adding a road-top surface').toBeGreaterThan(0);
-  expect(integratedAppearance.publicRealm?.resident).toBeGreaterThan(0);
-  expect(integratedAppearance.publicRealm?.resident).toBeLessThanOrEqual(12);
-  expect(integratedAppearance.publicRealm?.meshes, 'public-realm geometry remains at most six source-class batches per resident tile').toBeLessThanOrEqual(integratedAppearance.publicRealm!.resident*6);
-  const residentDetailBytes = integratedAppearance.sourceRoofs!.geometryBytes
-    + integratedAppearance.contextualFacades!.geometryBytes
-    + integratedAppearance.inventoryTrees!.geometryBytes
-    + integratedAppearance.publicRealm!.geometryBytes;
-  expect(residentDetailBytes, 'all optional source-detail streams share the viewport-wide GPU budget').toBeLessThan(11_000_000);
-  const overviewLod = await page.evaluate(() => {
-    const vectorMap = (window as any).canalRecallGame.vectorMap;
-    vectorMap.map.jumpTo({ zoom: 14 });
-    return {
-      roofs: vectorMap._studyRoofs.debugRenderable,
-      facades: vectorMap._studyFacades.debugRenderable,
-      trees: vectorMap._studyTrees.debugRenderable,
-      publicRealm: vectorMap._studyPublicRealm.debugRenderable,
-    };
-  });
-  expect(overviewLod, 'overview LOD suppresses bounded local detail and leaves city-scale structure to the basemap').toEqual({ roofs: false, facades: false, trees: false, publicRealm: false });
-  await expect.poll(() => page.evaluate(() => {
-    const vectorMap = (window as any).canalRecallGame.vectorMap;
-    return vectorMap._studyRoofs.debugResident + vectorMap._studyFacades.debugResident + vectorMap._studyTrees.debugResident + vectorMap._studyPublicRealm.debugResident;
-  }), { timeout: 30_000 }).toBe(0);
-  const releasedDetailBytes = await page.evaluate(() => {
-    const vectorMap = (window as any).canalRecallGame.vectorMap;
-    return vectorMap._studyRoofs.debugGeometryBytes + vectorMap._studyFacades.debugGeometryBytes + vectorMap._studyTrees.debugGeometryBytes + vectorMap._studyPublicRealm.debugGeometryBytes;
-  });
-  expect(releasedDetailBytes, 'overview LOD disposes invisible custom geometry instead of only hiding it').toBe(0);
-  await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.jumpTo({ zoom: 17 }));
-  await expect.poll(() => page.evaluate(() => {
-    const vectorMap = (window as any).canalRecallGame.vectorMap;
-    return [vectorMap._studyRoofs.debugResident, vectorMap._studyFacades.debugResident, vectorMap._studyTrees.debugResident, vectorMap._studyPublicRealm.debugResident].every(value => value > 0)
-      && vectorMap._studyRoofs.inFlight === 0 && vectorMap._studyFacades.inFlight === 0 && vectorMap._studyTrees.inFlight === 0 && vectorMap._studyPublicRealm.inFlight === 0;
-  }), { timeout: 30_000 }).toBe(true);
-  const rehydratedDetail = await page.evaluate(() => {
-    const vectorMap = (window as any).canalRecallGame.vectorMap;
-    return {
-      resident: [vectorMap._studyRoofs.debugResident, vectorMap._studyFacades.debugResident, vectorMap._studyTrees.debugResident, vectorMap._studyPublicRealm.debugResident],
-      bytes: [vectorMap._studyRoofs.debugGeometryBytes, vectorMap._studyFacades.debugGeometryBytes, vectorMap._studyTrees.debugGeometryBytes, vectorMap._studyPublicRealm.debugGeometryBytes],
-    };
-  });
-  expect(rehydratedDetail.resident.every(value => value > 0 && value <= 12), 'returning to gameplay reloads each bounded working set').toBe(true);
-  expect(rehydratedDetail.bytes.reduce((sum: number, bytes: number) => sum + bytes, 0),
-    'rehydration restores detail within the same viewport-wide GPU budget').toBeLessThan(11_000_000);
-  await page.evaluate(() => { (window as any).canalRecallGame.vectorMap.sync = (window as any).__appearanceStudySync; });
-
-  // Printed because "the city loaded" is the kind of pass that is worth being
-  // able to read a number for when it later regresses to loading one tile.
-  console.log(
-    `streamed city: ${loaded.status.tiles} tiles, ${loaded.status.features} features, ` +
-    `${integratedAppearance.status.styledFeatures} verified appearance priors; sampled ${sample.length} with heights ${Math.min(...sample.map((f: any) => f.height)).toFixed(1)}–` +
-    `${Math.max(...sample.map((f: any) => f.height)).toFixed(1)} m`
-  );
 });
