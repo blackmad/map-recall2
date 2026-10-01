@@ -200,9 +200,11 @@ const TOPDOWN_TILT_DEGREES = 14;
 // two 3D modes no longer share nearly the same frustum.
 // Chase was reading as a distant aerial — bump zoom so the vehicle fills the
 // frame. Cockpit lookahead is a soft lead ahead of the bumper, not a far shove.
-const CHASE_PITCH_DEGREES = 42;
+// 2026-10-01 (user): "chase camera is a little too close ... slightly too high
+// angle". Chase steps back (zoom 0.55 -> 0.35) and lowers (42° -> 48°).
+const CHASE_PITCH_DEGREES = 48;
 const COCKPIT_PITCH_DEGREES = 82;
-const CHASE_ZOOM_OFFSET = 0.55;
+const CHASE_ZOOM_OFFSET = 0.35;
 const COCKPIT_ZOOM_OFFSET = 1.65;
 const COCKPIT_LOOKAHEAD = 160; // px — camera centre ahead of the vehicle
 // Chase view: a constant lead puts the rider below centre, so more of the

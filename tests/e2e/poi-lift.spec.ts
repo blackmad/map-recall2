@@ -33,7 +33,8 @@ test('pitched chase lifts landmark and shop labels onto the buildings', async ({
       liftPitch: (window as any).canalRecallGame.vectorMap._poiLiftPitch,
       labels: liftAt('brand-poi-labels', 'text-translate'),
       landmarks: liftAt('poi-labels', 'text-translate'),
-      dots: liftAt('brand-poi-dots', 'circle-translate'),
+      icons: liftAt('brand-poi-icons', 'icon-translate'),
+      dotLayers: ['poi-dots', 'brand-poi-dots'].filter(id => map.getLayer(id)),
       shops: layers.filter((id: string) => !/transit/.test(id)).map((id: string) => liftAt(id, 'text-translate')),
       transit: layers.filter((id: string) => /transit/.test(id)).map((id: string) => liftAt(id, 'text-translate')),
       anchor: map.getPaintProperty('brand-poi-labels', 'text-translate-anchor'),
@@ -47,7 +48,8 @@ test('pitched chase lifts landmark and shop labels onto the buildings', async ({
   expect(result.anchor).toBe('viewport');
   expect(result.belowBuildings, 'shop and café labels draw above the buildings').toEqual([]);
   expect(result.labels, JSON.stringify(result)).toBeLessThan(-10);
-  expect(result.dots).toBe(result.labels);
+  expect(result.icons).toBe(result.labels);
+  expect(result.dotLayers, 'no landmark or shop dots (user report 2026-10-01)').toEqual([]);
   expect(result.shops.length).toBeGreaterThan(0);
   for (const lift of result.shops) expect(lift).toBe(result.labels);
   for (const lift of result.transit) expect(lift).toBe(0);

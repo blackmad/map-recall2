@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — No landmark or shop dots; chase camera steps back
+
+"Still seeing yellow dots": the own-POI dots were removed on 2026-09-30, but
+the curated landmark layer `poi-dots` (yellow) and the Albert Heijn
+`brand-poi-dots` (white disc under the icon) still drew. Both layers are gone;
+names, brand icons and the active-landmark highlight remain, and POI clicks
+hit-test the labels. Chase camera, "a little too close ... slightly too high
+angle": zoom offset 0.55 -> 0.35, pitch 42° -> 48°. The "follow cam" in the same
+report is not yet identified. Cockpit was tried at 84°/1.9, but that pushed the
+handlebars off the bottom of the screen, so it was reverted pending the
+user's answer.
+
 ## 2026-10-01 — Drive-by cards: nearer landmarks, paced
 
 A card for Huis Bartolotti opened while it stood a block away behind other
