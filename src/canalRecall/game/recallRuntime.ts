@@ -45,6 +45,7 @@ import {
 } from './coldOpenReview';
 import { knowThisCornerFeedback } from './finishStory';
 import { ROTATION_STORAGE_KEY } from '../facts/factStore';
+import { ANSWERED_STREET_SECONDS } from '../streetOverlayStyle';
 
 /** How many wrong answers a multiple-choice question offers. */
 const DISTRACTOR_COUNT = 3;
@@ -1075,6 +1076,13 @@ export class GameRecallRuntime {
       segmentIndex: this.quizPromptSegmentIndex,
       pointIndex: this.quizPromptPointIndex,
     };
+    // And paint its name on the road for a few seconds, right or wrong.
+    this._answerStamp = this.quizPromptSegmentIndex >= 0 ? {
+      name: correctName,
+      segmentIndex: this.quizPromptSegmentIndex,
+      correct,
+      until: this.raceTime + ANSWERED_STREET_SECONDS,
+    } : null;
     // Feedback owns the band for the hold; do not leave a museum card waiting
     // to reappear the moment the prompt hides.
     this._clearLandmarkNotice();

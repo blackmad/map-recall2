@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — The answered street, named on the street ahead; highlight on the route line
+
+After a street, water or line answer, its name stands in big letters on the
+street ahead for 6 s: green when right, red when missed (user request,
+"in big letters on the street ahead of me to reinforce it"). It is placed
+once, at the answer, 40 m and 110 m ahead along the answered street
+(`pointsAheadOnChains`), upright to the camera, and drawn last in the style so
+facades do not cut it. Painted along the street, it read sideways whenever the
+street led away. It has its own source (`answered-street`), filled only after
+an answer, so it cannot reveal an open question
+(`tests/e2e/answered-street-name.spec.ts`).
+
+"The street highlight and the road line are different": Damrak,
+Raadhuisstraat, Rozengracht and Prins Hendrikkade are each a carriageway, a
+tram way and named cycle tracks. The router prefers the cycle track, the
+highlight seeded from the way the rider's position matched, and the two ran
+side by side. The route line itself lies on its ways (1 of 62 links more than
+4 px off on the reported race). With the route line on, the highlight now
+seeds from the same-name way nearest the route (`seedNearestRoute`).
+
 ## 2026-10-01 — No landmark or shop dots; chase camera steps back
 
 "Still seeing yellow dots": the own-POI dots were removed on 2026-09-30, but

@@ -954,6 +954,7 @@ class GameRouteRuntime {
 
     this._seenLandmarks = new Set();
     this._lastDriveByAt = null;
+    this._answerStamp = null;
     this._seenStreetKnowledge = new Set();
     this._clearLandmarkNotice();
 
