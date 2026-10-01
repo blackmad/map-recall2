@@ -20,6 +20,24 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 *Empty. Keep it that way: anything that makes the game teach something false
 belongs here before anything below it.*
 
+**Bridges: 6 sweep drives still wedge (found 2026-10-01).**
+The full sweep (`BRIDGE_SWEEP_ALL=1`) used to snap its start/end to a junction
+within 90 px of a point projected 135 px past each bridge end. That skipped
+about 1,700 connected bridges, so its "0 pins" covered 1,756 of 4,834 crossing
+directions. At 150 px it drives 3,006 and finds 37 wedges in 6 drives:
+- Liesdelsluis (`routing_12056`, reverse), wedged at Oudekerksplein 52.374643,4.898578. This is the only central one.
+- Gooiseweg (`routing_16255`, reverse) at Rozenburglaan 52.343121,4.933154.
+- Burgemeester Fockstraat (`routing_11260` F, `routing_13031` R) at Menno ter Braakstraat 52.37666,4.830687.
+- `routing_10632` (unnamed) at 52.348371,4.821924.
+- Bosch van Drakesteinpad (`routing_30423`) at 52.375782,4.788704.
+
+Fix each one, then add it to `NAMED_BRIDGES`. Of 141 drives that did not
+arrive, the central ones traced so far (Liefdesverklaring, Heibrug) are the
+sweep driver circling or rocking, not physics. Snap skips remain: 486
+`noSnap`, 70 `noRoute`, 1,272 `missesDeck` (parallel same-name ways). Melkwegbrug
+(pedestrian) has a dead-end graph node on one side, so its connecting path may
+be missing from the extract.
+
 ---
 
 ## P1 — The learning model itself
