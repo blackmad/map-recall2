@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Road guard: the surface is the union of corridors
+
+Every bridge trap fixed through September was the guard judging containment
+against one heading-picked road. That happened at a bridge way's end, at a
+cross street, or beside a same-name duplicate, while the bike sat on another
+corridor's asphalt. `pickGuardContact` now returns any containing corridor
+(the heading picks among them) and, outside every corridor, the one the bike
+is least outside of, with the corner fillet as before. The Marnixstraat
+"a wider duplicate does not widen the corridor" rule is gone on purpose.
+
+Measured: the bridge sweep, now snapping within 150 px so it drives 3,006
+crossings, not 1,756, went from 37 wedges in 6 drives to 23 in 4.
+Liesdelsluis, Gooiseweg and `routing_10632` are fixed. Driving harness: desktop
+109/120 (111 before), iPhone 110/120 (104 before), 0 pinned, 0 wedges. The
+named bridge set and route-surface coverage pass.
+
 ## 2026-10-01 — Da Costa study retired; city-expansion removed
 
 The "Da Costa study" route had been hidden from players since 2026-09-28,

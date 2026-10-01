@@ -250,9 +250,9 @@ export function pickRoadContact(
  * the guard pulls toward the heading road and turns the bike along it, which
  * undid the turn every frame. So once the vehicle is off the heading road's
  * asphalt, a cross street (more than `GUARD_CROSS_ANGLE` off it) that fully
- * contains the vehicle wins. Parallel duplicates do not: Marnixstraat carries
- * same-geometry ways of different widths, and letting the widest win let the
- * bike stall on the shoulder of a busway beside the street it was riding.
+ * contains the vehicle wins. Since 2026-10-01 any containing corridor wins
+ * (see `pickGuardContact`); the angle still separates cross streets in the
+ * corner fillet.
  */
 export const GUARD_CROSS_ANGLE = Math.PI / 6;
 
@@ -335,57 +335,31 @@ export function pickGuardContact(
   preferredAngle: number | null = null,
   point: RoadPoint | null = null,
 ): RoadContact | null {
-  const aligned = pickRoadContact(contacts, preferredAngle);
-  if (!aligned || aligned.dist <= aligned.width) return aligned;
-  // Past the end of the aligned span the aligned road simply stops here, and a
-  // parallel corridor that holds the vehicle is its continuation, not a
-  // duplicate beside it. Bridges are separate ways: a few degrees of bend
-  // where the deck meets the street made the ended way the better heading
-  // match, the parallel continuation was ignored, and the shoulder pull drew
-  // the bike back to the end of the way every frame, throttle open, for good
-  // (bridge sweep, 2026-09-30; user report "my bike is entirely stuck on this
-  // bridge"). Beside a span — the Marnixstraat busway — duplicates still do
-  // not widen the corridor.
-  const pastEnd = point !== null && !perpendicularContact(aligned, point.x, point.y);
-  let inside: RoadContact | null = null;
-  for (const contact of contacts) {
-    if (contact.dist > contact.width) continue;
-    if (!pastEnd && headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
-    if (!inside || contact.dist - contact.width < inside.dist - inside.width) inside = contact;
-  }
-  if (inside) return inside;
-  // A parallel road the vehicle is nearer the centre of than the aligned one
-  // is the road it is on. A neighbouring way a few degrees better aligned
-  // judged a bike riding a long span's centreline as off its shoulder (route
-  // coverage, 2026-10-01: an unnamed way in Westpoort and Geldershoofd). The
-  // Marnixstraat busway rule still holds: a duplicate beside the aligned road
-  // that the vehicle is not nearer to does not widen it.
-  let onParallel: RoadContact | null = null;
-  for (const contact of contacts) {
-    if (contact.dist > contact.width || contact.dist >= aligned.dist) continue;
-    if (!onParallel || contact.dist < onParallel.dist) onParallel = contact;
-  }
-  if (onParallel) return onParallel;
-  // Outside every corridor, judge the vehicle against the cross street it is
-  // least outside of, not the street it is pointing along. Turning right off
-  // the end of the Solitudobrug onto Weesperzijde, the heading pick stayed the
-  // bridge's end: the shoulder ease turned the bike back along the bridge 12%
-  // a frame against full lock, and it stood on the kerb for good (driving
-  // harness, 2026-09-29). Parallel copies of the aligned street stay out of
-  // it, as above: a wider duplicate must not widen the corridor.
+  // The drivable surface is the union of every corridor, and the guard judges
+  // the vehicle against that union, not against one road. Heading only decides
+  // which road to report (its angle steers the slide and the shoulder ease).
+  // Judging containment against a single heading-picked road was the cause of
+  // every bridge trap fixed one by one through September 2026: where a bridge
+  // way ends and the street continues as another way, at a cross street, or
+  // beside a same-name duplicate, the bike sat on asphalt and was "off" the
+  // road the heuristic had picked (bridge sweep, 2026-10-01: 37 wedges in 6
+  // drives once the sweep drove every connected bridge).
+  const containing = contacts.filter(contact => contact.dist <= contact.width);
+  if (containing.length) return pickRoadContact(containing, preferredAngle);
+  if (!contacts.length) return null;
+  // Outside every corridor: the road the vehicle is least outside of, so the
+  // shoulder pull points at the nearest asphalt. Ties keep the heading pick.
+  const aligned = pickRoadContact(contacts, preferredAngle)!;
   let chosen = aligned;
   for (const contact of contacts) {
-    if (headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
     if (contact.dist - contact.width < chosen.dist - chosen.width - 0.25) chosen = contact;
   }
   if (point) {
     // Inside a corner: report the filleted edge distance, so the guard treats
-    // the cut corner as asphalt (or as a shallower shoulder).
-    // The contact's point moves onto the arc's inward normal: the guard pulls
-    // toward (x, y), and the raw nearest point lies across the corner. On a
-    // sliver of fillet shoulder that sent the shoulder pull — and the outward
-    // step it takes back — the wrong way, and the bike stood at the corner
-    // (bridge sweep, 2026-10-01: Kortrijk, IJdoornlaan, Pracanalaan).
+    // the cut corner as asphalt (or as a shallower shoulder). The contact's
+    // point moves onto the arc's inward normal, because the guard pulls toward
+    // it and the raw nearest point lies across the corner (bridge sweep,
+    // 2026-10-01: Kortrijk, IJdoornlaan, Pracanalaan).
     const { excess, outward } = filletedEdge(contacts, point.x, point.y, CORNER_FILLET_RADIUS);
     if (excess < chosen.dist - chosen.width) {
       const dist = chosen.width + Math.max(0, excess);

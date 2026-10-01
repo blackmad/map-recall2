@@ -188,25 +188,12 @@ var CanalRecallRoadSurface = (() => {
     return { excess: best, outward };
   }
   function pickGuardContact(contacts, preferredAngle = null, point = null) {
+    const containing = contacts.filter((contact) => contact.dist <= contact.width);
+    if (containing.length) return pickRoadContact(containing, preferredAngle);
+    if (!contacts.length) return null;
     const aligned = pickRoadContact(contacts, preferredAngle);
-    if (!aligned || aligned.dist <= aligned.width) return aligned;
-    const pastEnd = point !== null && !perpendicularContact(aligned, point.x, point.y);
-    let inside = null;
-    for (const contact of contacts) {
-      if (contact.dist > contact.width) continue;
-      if (!pastEnd && headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
-      if (!inside || contact.dist - contact.width < inside.dist - inside.width) inside = contact;
-    }
-    if (inside) return inside;
-    let onParallel = null;
-    for (const contact of contacts) {
-      if (contact.dist > contact.width || contact.dist >= aligned.dist) continue;
-      if (!onParallel || contact.dist < onParallel.dist) onParallel = contact;
-    }
-    if (onParallel) return onParallel;
     let chosen = aligned;
     for (const contact of contacts) {
-      if (headingDifference(contact.angle, aligned.angle) <= GUARD_CROSS_ANGLE) continue;
       if (contact.dist - contact.width < chosen.dist - chosen.width - 0.25) chosen = contact;
     }
     if (point) {
