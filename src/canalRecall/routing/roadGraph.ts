@@ -279,7 +279,17 @@ export function buildRoadGraph<TMetadata = unknown>(
     for (let pointIndex = 1; pointIndex < segment.points.length; pointIndex++) {
       const a = segment.points[pointIndex - 1];
       const b = segment.points[pointIndex];
-      link(nodeFor(a, segmentIndex), nodeFor(b, segmentIndex), segmentIndex, 'centreline');
+      const from = nodeFor(a, segmentIndex);
+      const to = nodeFor(b, segmentIndex);
+      link(from, to, segmentIndex, 'centreline');
+      // A merged end sits up to a cell diagonal off its vertex, so the edge
+      // the router plans along runs beside the span, not on it: over a long
+      // span the planned line left the corridor by ~5 px mid-way (route
+      // coverage, 2026-10-01: an unnamed way in Westpoort, Geldershoofd).
+      // Cover the edge as planned, too.
+      if (distanceBetween(a, from) > CONNECTOR_MIN || distanceBetween(b, to) > CONNECTOR_MIN) {
+        connectors.push({ a: { x: from.x, y: from.y }, b: { x: to.x, y: to.y }, segmentIndex });
+      }
       addSpanToGrid({ a, b, segmentIndex }, segment.width ?? 0);
     }
   });

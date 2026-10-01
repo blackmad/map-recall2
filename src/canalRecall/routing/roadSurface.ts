@@ -354,6 +354,18 @@ export function pickGuardContact(
     if (!inside || contact.dist - contact.width < inside.dist - inside.width) inside = contact;
   }
   if (inside) return inside;
+  // A parallel road the vehicle is nearer the centre of than the aligned one
+  // is the road it is on. A neighbouring way a few degrees better aligned
+  // judged a bike riding a long span's centreline as off its shoulder (route
+  // coverage, 2026-10-01: an unnamed way in Westpoort and Geldershoofd). The
+  // Marnixstraat busway rule still holds: a duplicate beside the aligned road
+  // that the vehicle is not nearer to does not widen it.
+  let onParallel: RoadContact | null = null;
+  for (const contact of contacts) {
+    if (contact.dist > contact.width || contact.dist >= aligned.dist) continue;
+    if (!onParallel || contact.dist < onParallel.dist) onParallel = contact;
+  }
+  if (onParallel) return onParallel;
   // Outside every corridor, judge the vehicle against the cross street it is
   // least outside of, not the street it is pointing along. Turning right off
   // the end of the Solitudobrug onto Weesperzijde, the heading pick stayed the

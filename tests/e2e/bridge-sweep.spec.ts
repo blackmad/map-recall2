@@ -9,9 +9,9 @@ import { openRoute } from './helpers';
 // By default it drives a named set: the Westeinde bridges south of
 // Frederiksplein from the report, and bridges the full sweep pinned the bike
 // on before surface connectors, the past-the-end guard contact and the
-// shoulder step fix (2026-09-30: 416 pins on 33 crossings → 161 on 13), where
-// the assertion is zero pins. BRIDGE_SWEEP_ALL=1 drives every bridge way
-// (~20 min), asserting zero traps.
+// shoulder step fix (2026-09-30: 416 pins on 33 crossings → 161 on 13).
+// BRIDGE_SWEEP_ALL=1 drives every bridge way (~1 min; 0 pins since the
+// trail-following back-out, 2026-10-01). Both assert zero pins and traps.
 //
 // For each bridge way in the routing extract the bike starts ~45 m before one
 // end, is routed to ~45 m past the other, and is driven there by the driving
@@ -25,10 +25,9 @@ import { openRoute } from './helpers';
 //   BRIDGE_SWEEP_OUT=path  write the full report as JSON
 //
 // The driver rides like a player: stopped for 0.75 s (or rocking within 8 px
-// for 1.5 s) it backs out, steering
-// the nose toward the route, for 1.2 s and then until it points within ~60°
-// of it (≤ 2.5 s in all). A pin is 4 s,
-// recovery included, without getting 10 px from anywhere. Each pin is then
+// for 1.5 s) it backs out the way it came, along the trail it actually rode,
+// ~50 px (further on each retry, ≤ 3 s), then plans again from there. A pin is
+// 4 s, recovery included, without getting 10 px from anywhere. Each pin is then
 // tested the way a player would get out (full left, straight, full right and
 // reverse, 3 s each); a pin none of those frees is a trap.
 
@@ -173,6 +172,10 @@ test('the bike crosses every bridge in both directions without wedging', async (
         game.track.finishPoint = { ...to };
         let index = 1, pinned = 0, wedges = 0, arrived = false, wedgeAt: [number, number] | null = null;
         let path = route, replans = 0, stillFor = 0, recover = 0;
+        // Where the bike has actually been, every 8 px: always rideable, so the
+        // way out of a tip it nosed into.
+        const trail: Array<{ x: number; y: number }> = [{ x: from.x, y: from.y }];
+        let backTo: { x: number; y: number } | null = null;
         const history: Array<{ x: number; y: number }> = [];
         const pinHistory: Array<{ x: number; y: number }> = [];
         const traps: any[] = [];
@@ -202,15 +205,33 @@ test('the bike crosses every bridge in both directions without wedging', async (
           // Stopped, or rocking in place without getting anywhere.
           const recent = history.slice(-45);
           const rocking = recent.length === 45 && recent.every(q => Math.hypot(q.x - recent[0].x, q.y - recent[0].y) < 8);
-          if ((stillFor > 0.75 || rocking) && recover <= 0) { recover = 2.5; stillFor = 0; history.length = 0; }
+          if ((stillFor > 0.75 || rocking) && recover <= 0) {
+            recover = 3; stillFor = 0; history.length = 0;
+            // ~50 px back along the trail; the points passed are dropped, so a
+            // second try goes further back.
+            let back = 0;
+            while (trail.length > 1 && back < 50) {
+              const last = trail.pop()!;
+              back += Math.hypot(last.x - trail[trail.length - 1].x, last.y - trail[trail.length - 1].y);
+            }
+            backTo = { ...trail[trail.length - 1] };
+          }
           // (`history` drives recovery; `pinHistory` is never cleared by it, so
           // a bike that recovery cannot free still counts as pinned.)
-          // At least 1.2 s, then until the nose points within ~60° of the route.
-          if (recover > 0 && recover < 1.3 && Math.abs(error) < 1) recover = 0;
-          if (recover > 0) {
-            // Back out, steering so the nose swings toward the route.
+          if (recover > 0 && backTo && Math.hypot(backTo.x - player.x, backTo.y - player.y) < 12) recover = 0;
+          if (recover <= 0 && backTo) {
+            // Backed out: plan again from here.
+            backTo = null;
+            const again = game.track.findRoute({ x: player.x, y: player.y }, to);
+            if (again && again.length >= 2) { path = again; index = 0; }
+          }
+          if (recover > 0 && backTo) {
+            // Reverse with the tail toward the trail point: the bike moves
+            // along -heading, so point the nose straight away from it.
             recover -= STEP;
-            player.steerInput = -Math.sign(error || 1);
+            let away = Math.atan2(player.y - backTo.y, player.x - backTo.x) - player.angle;
+            away = Math.atan2(Math.sin(away), Math.cos(away));
+            player.steerInput = Math.max(-1, Math.min(1, away * 2.5));
             player.throttle = 0;
             player.brake = 1;
           } else {
@@ -230,6 +251,10 @@ test('the bike crosses every bridge in both directions without wedging', async (
             if (trace.length > 90) trace.shift();
           }
           stillFor = moved < 0.5 ? stillFor + STEP : 0;
+          if (recover <= 0) {
+            const tip = trail[trail.length - 1];
+            if (Math.hypot(player.x - tip.x, player.y - tip.y) >= 8) trail.push({ x: player.x, y: player.y });
+          }
           // A pin: 4 s, recovery included, without getting 10 px from anywhere.
           history.push({ x: player.x, y: player.y });
           if (history.length > 120) history.shift();
@@ -265,5 +290,5 @@ test('the bike crosses every bridge in both directions without wedging', async (
   if (process.env.BRIDGE_SWEEP_OUT) writeFileSync(process.env.BRIDGE_SWEEP_OUT, JSON.stringify(report, null, 1));
   console.log(JSON.stringify({ ...report, failures: report.failures.length }));
   expect(report.failures.filter((f: any) => f.traps.length), 'crossings with a trap').toEqual([]);
-  if (!all) expect(report.failures.filter((f: any) => f.wedges).map((f: any) => `${f.name || f.id} ${f.reverse ? '←' : '→'}`), 'pinned crossings').toEqual([]);
+  expect(report.failures.filter((f: any) => f.wedges).map((f: any) => `${f.name || f.id} ${f.reverse ? '←' : '→'}`), 'pinned crossings').toEqual([]);
 });
