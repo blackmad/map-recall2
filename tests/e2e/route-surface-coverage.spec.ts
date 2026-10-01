@@ -13,8 +13,9 @@ import { openRoute } from './helpers';
 //
 // Graph edges that dip onto the soft shoulder (≤ CAR_ROAD_EDGE_TOLERANCE, 4 px)
 // are rideable. Past it the guard rolls the bike back. Two long unnamed or
-// side-street spans are known to cross it by < 1 px (TODO.md); anything else
-// is a regression.
+// side-street spans are known to cross it by < 1 px on some loads (the
+// loaded network varies slightly between runs); anything else is a
+// regression.
 //
 //   COVERAGE_OUT=path   write every uncovered edge as JSON
 

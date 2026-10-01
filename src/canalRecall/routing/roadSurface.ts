@@ -289,9 +289,25 @@ export function filletedExcess(
   y: number,
   radius: number = CORNER_FILLET_RADIUS,
 ): number {
+  return filletedEdge(contacts, x, y, radius).excess;
+}
+
+/**
+ * `filletedExcess`, plus the outward direction at (x, y): for a point in a
+ * fillet, the gradient of the arc, (r − eA)·ûA + (r − eB)·ûB normalised, with
+ * û the unit vector from each road's nearest point out to (x, y). `null`
+ * where no fillet applies.
+ */
+function filletedEdge(
+  contacts: readonly RoadContact[],
+  x: number,
+  y: number,
+  radius: number,
+): { excess: number; outward: { x: number; y: number } | null } {
   let best = Infinity;
+  let outward: { x: number; y: number } | null = null;
   for (const contact of contacts) best = Math.min(best, contact.dist - contact.width);
-  if (best <= 0) return best;
+  if (best <= 0) return { excess: best, outward };
   const perpendicular = (contact: RoadContact) => perpendicularContact(contact, x, y);
   const inCorner = contacts.filter(contact => {
     const excess = contact.dist - contact.width;
@@ -302,10 +318,16 @@ export function filletedExcess(
       const a = inCorner[i], b = inCorner[j];
       if (headingDifference(a.angle, b.angle) <= GUARD_CROSS_ANGLE) continue;
       const ea = a.dist - a.width, eb = b.dist - b.width;
-      best = Math.min(best, radius - Math.hypot(radius - ea, radius - eb));
+      const excess = radius - Math.hypot(radius - ea, radius - eb);
+      if (excess >= best) continue;
+      best = excess;
+      const ox = (radius - ea) * (x - a.x) / (a.dist || 1) + (radius - eb) * (x - b.x) / (b.dist || 1);
+      const oy = (radius - ea) * (y - a.y) / (a.dist || 1) + (radius - eb) * (y - b.y) / (b.dist || 1);
+      const length = Math.hypot(ox, oy) || 1;
+      outward = { x: ox / length, y: oy / length };
     }
   }
-  return best;
+  return { excess: best, outward };
 }
 
 export function pickGuardContact(
@@ -347,8 +369,17 @@ export function pickGuardContact(
   if (point) {
     // Inside a corner: report the filleted edge distance, so the guard treats
     // the cut corner as asphalt (or as a shallower shoulder).
-    const excess = filletedExcess(contacts, point.x, point.y);
-    if (excess < chosen.dist - chosen.width) return { ...chosen, dist: chosen.width + Math.max(0, excess) };
+    // The contact's point moves onto the arc's inward normal: the guard pulls
+    // toward (x, y), and the raw nearest point lies across the corner. On a
+    // sliver of fillet shoulder that sent the shoulder pull — and the outward
+    // step it takes back — the wrong way, and the bike stood at the corner
+    // (bridge sweep, 2026-10-01: Kortrijk, IJdoornlaan, Pracanalaan).
+    const { excess, outward } = filletedEdge(contacts, point.x, point.y, CORNER_FILLET_RADIUS);
+    if (excess < chosen.dist - chosen.width) {
+      const dist = chosen.width + Math.max(0, excess);
+      if (!outward || excess <= 0) return { ...chosen, dist };
+      return { ...chosen, dist, x: point.x - outward.x * dist, y: point.y - outward.y * dist };
+    }
   }
   return chosen;
 }

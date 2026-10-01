@@ -2,14 +2,14 @@ import { test } from '@playwright/test';
 import { writeFileSync } from 'node:fs';
 import { openRoute } from './helpers';
 
-// Diagnostic, not a regression: POSE_TRACE="lat,lng,headingDeg,steer[,speed]" drives
+// Diagnostic, not a regression: POSE_TRACE="lat,lng,headingDeg,steer[,speed[,throttle,brake]]" drives
 // one pose for 3 s with the throttle open and writes every frame (position,
 // speed, guard contact and blocked frames) to POSE_TRACE_OUT.
 test('trace one pose', async ({ page }, testInfo) => {
   test.skip(!process.env.POSE_TRACE || testInfo.project.name !== 'desktop', 'diagnostic; set POSE_TRACE');
   await openRoute(page, { travelMode: 'car', viewMode: 'north', playerTimeoutMs: 90_000 });
-  const [lat, lng, headingDeg, steer, speed = 0] = process.env.POSE_TRACE!.split(',').map(Number);
-  const frames = await page.evaluate(({ lat, lng, headingDeg, steer, speed }) => {
+  const [lat, lng, headingDeg, steer, speed = 0, throttle = 1, brake = 0] = process.env.POSE_TRACE!.split(',').map(Number);
+  const frames = await page.evaluate(({ lat, lng, headingDeg, steer, speed, throttle, brake }) => {
     const game = (window as any).canalRecallGame;
     const loader = game.osmLoader;
     const perLat = 111320 * 3, perLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180) * 3;
@@ -40,7 +40,7 @@ test('trace one pose', async ({ page }, testInfo) => {
         .map((c: any) => ({ seg: c.segIdx, name: game.track.segments[c.segIdx]?.name, dist: +c.dist.toFixed(1), width: c.width, angle: +c.angle.toFixed(2) }));
     };
     for (let f = 0; f < 90; f++) {
-      player.steerInput = steer; player.throttle = 1; player.brake = 0; player.handbrake = false;
+      player.steerInput = steer; player.throttle = throttle; player.brake = brake; player.handbrake = false;
       game.track.clearFrameCache();
       game.track.clearFrameCache();
       game._updateRacing(1 / 30);
@@ -52,6 +52,6 @@ test('trace one pose', async ({ page }, testInfo) => {
     Car.constrainCarToRoad = original;
     game.state = 4;
     return out;
-  }, { lat, lng, headingDeg, steer, speed });
+  }, { lat, lng, headingDeg, steer, speed, throttle, brake });
   writeFileSync(process.env.POSE_TRACE_OUT || 'pose-trace.json', JSON.stringify(frames, null, 1));
 });

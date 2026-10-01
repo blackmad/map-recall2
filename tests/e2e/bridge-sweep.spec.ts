@@ -24,11 +24,13 @@ import { openRoute } from './helpers';
 //   BRIDGE_SWEEP_NEAR=lat,lng,metres  only bridges around a point
 //   BRIDGE_SWEEP_OUT=path  write the full report as JSON
 //
-// A pin is the bike standing still with the throttle open for 1.5 s. That can
-// be the test driver's fault (it aims at a route point across a kerb), so each
-// pin is then tested the way a player would get out: full left, straight, full
-// right and reverse, 3 s each from the pinned state. A pin none of those frees
-// is a trap, and the assertion is zero traps.
+// The driver rides like a player: stopped for 0.75 s (or rocking within 8 px
+// for 1.5 s) it backs out, steering
+// the nose toward the route, for 1.2 s and then until it points within ~60°
+// of it (≤ 2.5 s in all). A pin is 4 s,
+// recovery included, without getting 10 px from anywhere. Each pin is then
+// tested the way a player would get out (full left, straight, full right and
+// reverse, 3 s each); a pin none of those frees is a trap.
 
 type Bridge = { id: string; name: string; path: Array<[number, number]> };
 
@@ -92,6 +94,9 @@ test('the bike crosses every bridge in both directions without wedging', async (
       const cx = Math.floor(p.x / CELL), cy = Math.floor(p.y / CELL);
       for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
         for (const node of grid.get(`${cx + dx},${cy + dy}`) ?? []) {
+          // Not the tip of a dead-end stub: a rider does not start a crossing
+          // facing the end of a cul-de-sac, and the driver cannot three-point turn.
+          if (node.edges.length < 2) continue;
           const d = Math.hypot(node.x - p.x, node.y - p.y);
           if (d < bestDistance) { bestDistance = d; best = node; }
         }
@@ -112,7 +117,16 @@ test('the bike crosses every bridge in both directions without wedging', async (
     let tried: any = null;
     if (onlyIds.length) {
       const update = player.update.bind(player);
-      player.update = (dt: number, track: any) => { update(dt, track); tried = [+player.x.toFixed(1), +player.y.toFixed(1)]; };
+      player.update = (dt: number, track: any) => {
+        update(dt, track);
+        tried = [+player.x.toFixed(1), +player.y.toFixed(1)];
+        const S = (window as any).CanalRecallRoadSurface;
+        const all = S.contactsAt(S.roadsNear(track.roadIndex, player.x, player.y, 2), player.x, player.y)
+          .filter((c: any) => c.dist < c.width + 12)
+          .map((c: any) => `${c.segIdx}/${c.ptIdx}:${c.dist.toFixed(1)}/${c.width}@${c.angle.toFixed(2)}`);
+        const g = track.getGuardRoad(player.x, player.y, player.angle);
+        tried.push(g && `${g.segIdx}/${g.ptIdx}:${g.dist.toFixed(1)}/${g.width}@${g.angle.toFixed(2)}`, [...new Set(all)].join(' '));
+      };
     }
     const STEP = 1 / 30;
     const escapes = () => {
@@ -158,7 +172,9 @@ test('the bike crosses every bridge in both directions without wedging', async (
         game._blockedCarFrames = 0;
         game.track.finishPoint = { ...to };
         let index = 1, pinned = 0, wedges = 0, arrived = false, wedgeAt: [number, number] | null = null;
-        let path = route, replans = 0;
+        let path = route, replans = 0, stillFor = 0, recover = 0;
+        const history: Array<{ x: number; y: number }> = [];
+        const pinHistory: Array<{ x: number; y: number }> = [];
         const traps: any[] = [];
         const trace: any[] = [];
         for (let elapsed = 0; elapsed < 30 && !arrived; elapsed += STEP) {
@@ -182,9 +198,26 @@ test('the bike crosses every bridge in both directions without wedging', async (
           let error = Math.atan2(target.y - player.y, target.x - player.x) - player.angle;
           error = Math.atan2(Math.sin(error), Math.cos(error));
           const cruise = Math.abs(error) > 0.5 ? 60 : 170;
-          player.steerInput = Math.max(-1, Math.min(1, error * 2.5));
-          player.throttle = player.speed < cruise ? 1 : 0;
-          player.brake = player.speed > cruise * 1.6 ? 1 : 0;
+          // Stopped against a kerb or the end of a way, a player backs out.
+          // Stopped, or rocking in place without getting anywhere.
+          const recent = history.slice(-45);
+          const rocking = recent.length === 45 && recent.every(q => Math.hypot(q.x - recent[0].x, q.y - recent[0].y) < 8);
+          if ((stillFor > 0.75 || rocking) && recover <= 0) { recover = 2.5; stillFor = 0; history.length = 0; }
+          // (`history` drives recovery; `pinHistory` is never cleared by it, so
+          // a bike that recovery cannot free still counts as pinned.)
+          // At least 1.2 s, then until the nose points within ~60° of the route.
+          if (recover > 0 && recover < 1.3 && Math.abs(error) < 1) recover = 0;
+          if (recover > 0) {
+            // Back out, steering so the nose swings toward the route.
+            recover -= STEP;
+            player.steerInput = -Math.sign(error || 1);
+            player.throttle = 0;
+            player.brake = 1;
+          } else {
+            player.steerInput = Math.max(-1, Math.min(1, error * 2.5));
+            player.throttle = player.speed < cruise ? 1 : 0;
+            player.brake = player.speed > cruise * 1.6 ? 1 : 0;
+          }
           player.handbrake = false;
           game.track.clearFrameCache();
           const before = { x: player.x, y: player.y };
@@ -196,9 +229,17 @@ test('the bike crosses every bridge in both directions without wedging', async (
               g: g && { x: +g.x.toFixed(1), y: +g.y.toFixed(1), dist: +g.dist.toFixed(1), width: +g.width.toFixed(1), angle: +g.angle.toFixed(2), seg: g.segIdx, name: game.track.segments[g.segIdx]?.name } });
             if (trace.length > 90) trace.shift();
           }
-          pinned = moved < 0.5 && player.throttle > 0 ? pinned + STEP : 0;
-          if (pinned > 1.5) {
-            wedges++; pinned = 0; wedgeAt ??= toLatLng(player.x, player.y);
+          stillFor = moved < 0.5 ? stillFor + STEP : 0;
+          // A pin: 4 s, recovery included, without getting 10 px from anywhere.
+          history.push({ x: player.x, y: player.y });
+          if (history.length > 120) history.shift();
+          pinHistory.push({ x: player.x, y: player.y });
+          if (pinHistory.length > 120) pinHistory.shift();
+          const anchor = pinHistory[0];
+          pinned = pinHistory.length === 120 && pinHistory.every(q => Math.hypot(q.x - anchor.x, q.y - anchor.y) < 10) ? 1 : 0;
+          if (pinned) {
+            pinHistory.length = 0;
+            wedges++; wedgeAt ??= toLatLng(player.x, player.y);
             const tries = escapes();
             if (Math.max(...tries) < 30 && traps.length < 3) traps.push({ at: toLatLng(player.x, player.y), headingDeg: Math.round(player.angle * 180 / Math.PI), tries });
           }

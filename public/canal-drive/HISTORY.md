@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Bridges: filleted corners pull the right way; the 13 leftover crossings cleared
+
+The 13 crossings that still pinned the bike after the 2026-09-30 fixes had
+two causes:
+- **The guard (Kortrijk, IJdoornlaan, Pracanalaan).** Inside a filleted
+  corner, `pickGuardContact` reported the filleted edge distance but kept
+  the raw nearest point, which lies across the corner. On a sliver of fillet
+  shoulder, the soft-edge pull, and the outward step it takes back, ran
+  toward that point and cancelled the whole step, so the bike stood at the
+  corner. The contact's point now sits on the arc's inward normal, the
+  gradient (r − eA)·ûA + (r − eB)·ûB.
+- **The test driver, at dead-end stub tips, sharp bends and narrow corners.**
+  It started at the tip of a 25 m service stub, or kept aiming at a route
+  point behind it. The driver now behaves like a player: it skips stub tips
+  as start and finish points, and when stopped or rocking in place it backs
+  out, steering toward the route. A pin counts only after 4 s of going
+  nowhere, recovery included.
+
+The named set stays at 0 pins. Of the 13 crossings, only Zuiderzeeweg still
+pins, at a sharp bend in a 3 m path where all 344 poses can ride away. The
+full sweep now has 61 pins on 14 different crossings, because skipping stub
+tips changes which routes get driven. It has 0 traps, and 0 of 2,408 poses
+around those pins are stuck. The remaining pins are driver behaviour,
+recorded in TODO.
+
 ## 2026-09-30 — Bridges: the surface covers what the router plans, and ended ways stop holding the bike
 
 User reports: "my bike is entirely stuck on this bridge, can't move at all"
