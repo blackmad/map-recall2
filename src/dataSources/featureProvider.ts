@@ -3,6 +3,10 @@ import { calculateHaversineDistanceMeters } from '../utils/geo';
 import { fetchCategorySpecificOSMFeatures } from '../utils/osm';
 import { attachLocalFacts } from '../mapRecall/localFacts';
 import type { FactsFile } from '../canalRecall/facts/factTypes';
+import {
+  attachNameOrigins, attachNeighborhoodTrivia, nearestAreaNames,
+  type NeighborhoodHistoryEntry, type NeighborhoodPhoto, type StreetNameOrigin,
+} from '../mapRecall/trivia';
 
 interface FeatureRequest {
   cityId: string;
@@ -35,6 +39,14 @@ const partitionPromises = new Map<string, Promise<StreetFeature[]>>();
 let amsterdamAreasPromise: Promise<AdministrativeArea[]> | null = null;
 let amsterdamFactsPromise: Promise<FactsFile | null> | null = null;
 
+/** Optional trivia files: a missing one means fewer facts, never a failed quiz. */
+const optionalJson = <T>(path: string): Promise<T | null> => fetch(assetUrl(path))
+  .then((response) => response.ok ? response.json() as Promise<T> : null)
+  .catch(() => null);
+let amsterdamOriginsPromise: Promise<{ origins?: StreetNameOrigin[] } | null> | null = null;
+let amsterdamHistoryPromise: Promise<{ neighborhoods?: NeighborhoodHistoryEntry[] } | null> | null = null;
+let amsterdamPhotosPromise: Promise<NeighborhoodPhoto[] | null> | null = null;
+
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}data/extracts/${path}`;
 
 async function loadAmsterdamExtract(category: FeatureCategory): Promise<StreetFeature[] | null> {
@@ -55,7 +67,9 @@ async function loadAmsterdamExtract(category: FeatureCategory): Promise<StreetFe
   amsterdamFactsPromise ||= fetch(assetUrl('amsterdam/facts.json'))
     .then(async (response) => response.ok ? response.json() as Promise<FactsFile> : null)
     .catch(() => null);
-  return attachLocalFacts(features, await amsterdamFactsPromise, 'amsterdam');
+  amsterdamOriginsPromise ||= optionalJson('amsterdam/street-name-origins.json');
+  const withFacts = attachLocalFacts(features, await amsterdamFactsPromise, 'amsterdam');
+  return attachNameOrigins(withFacts, (await amsterdamOriginsPromise)?.origins);
 }
 
 function pointInRing([lat, lon]: [number, number], ring: [number, number][]): boolean {
@@ -97,7 +111,9 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
   if (inAmsterdamExtract) {
     request.onProgress?.({ percent: 30, message: 'Loading Amsterdam extract…', subMessage: 'Using the locally hosted quiz dataset' });
     const amsterdamAreas = await loadAmsterdamAreas();
-    const extracted = await loadAmsterdamExtract(request.category);
+    // Neighbourhoods are the boundary areas themselves, added below; there is
+    // no feature partition for them.
+    const extracted = request.category === 'neighborhoods' ? [] : await loadAmsterdamExtract(request.category);
     if (!extracted) throw new Error(`The local Amsterdam ${request.category} dataset is unavailable. No Overpass request was made.`);
     {
       const neighborhoods = (amsterdamAreas || []).filter(({ kind, geometry }) => kind !== 'municipality' && geometry);
@@ -135,8 +151,14 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
           difficulty: 'medium',
           prominenceScore: area.kind === 'quarter' ? 65 : 55,
         }));
+      // Guess Name needs choices: the nearest other areas, which are the
+      // plausible confusions. Trivia is joined by exact name.
+      amsterdamHistoryPromise ||= optionalJson('amsterdam/neighborhood-history.json');
+      amsterdamPhotosPromise ||= optionalJson('amsterdam/neighborhoods-enriched.json');
+      const withChoices = neighborhoodFeatures.map((feature) => ({ ...feature, distractors: nearestAreaNames(neighborhoodFeatures, feature, 6) }));
+      const withTrivia = attachNeighborhoodTrivia(withChoices, (await amsterdamHistoryPromise)?.neighborhoods, await amsterdamPhotosPromise);
       const selectedArea = amsterdamAreas?.find(({ id }) => id === request.areaId);
-      const allFeatures = [...enriched, ...neighborhoodFeatures];
+      const allFeatures = [...enriched, ...withTrivia];
       const features = selectedArea?.geometry
         ? allFeatures.filter((feature) => pointInBoundary(feature.center, selectedArea.geometry!)
           || feature.paths?.some((path) => path.some((point) => pointInBoundary(point, selectedArea.geometry!)))
@@ -147,6 +169,11 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
     }
   }
 
+  // Live OSM has no reliable neighbourhood polygons; the areas come from a
+  // city extract's boundaries.
+  if (request.category === 'neighborhoods') {
+    throw new Error('Neighborhood quizzes need a local city extract; this city does not have one yet.');
+  }
   return fetchCategorySpecificOSMFeatures(
     request.center[0],
     request.center[1],

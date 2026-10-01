@@ -76,6 +76,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
       squares: 0,
       parks: 0,
       landmarks: 0,
+      neighborhoods: 0,
     };
 
     currentCity.features.forEach((feat) => {

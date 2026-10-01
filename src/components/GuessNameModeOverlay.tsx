@@ -34,6 +34,8 @@ function getFeatureTypeBadge(type: string) {
     case 'landmark':
     case 'monument':
       return { label: 'Landmark', icon: '◆' };
+    case 'neighborhood':
+      return { label: 'Neighborhood', icon: '⬡' };
     case 'avenue':
     case 'boulevard':
     case 'street':

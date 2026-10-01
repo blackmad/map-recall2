@@ -122,6 +122,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       squares: 0,
       parks: 0,
       landmarks: 0,
+      neighborhoods: 0,
     };
 
     currentCity.features.forEach((feat) => {
@@ -206,7 +207,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             )}
 
             {/* Feature Type Quick Filter Badge / Dropdown */}
-            {gameMode !== 'guess_neighborhood' && <div className="relative flex items-center min-w-0 max-w-[105px] sm:max-w-[145px]">
+            {<div className="relative flex items-center min-w-0 max-w-[105px] sm:max-w-[145px]">
               <select
                 id="feature-category-dropdown"
                 value={selectedCategory}
@@ -225,7 +226,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               </select>
               <span className="absolute right-1.5 pointer-events-none text-xs text-white/70">▼</span>
             </div>}
-            {gameMode !== 'guess_neighborhood' && <button
+            {selectedCategory !== 'neighborhoods' && <button
               onClick={onToggleLinkedFeaturesOnly}
               className={`enamel-chip hidden sm:block px-2 py-1 text-xs font-bold cursor-pointer${linkedFeaturesOnly ? ' active' : ''}`}
               title="Only quiz features that have an encyclopedia page"
@@ -271,16 +272,6 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               >
                 <Eye className="w-3.5 h-3.5 sm:w-3 sm:h-3" />
                 <span className="hidden sm:inline">Guess Name</span>
-              </button>
-              <button
-                onClick={() => gameMode !== 'guess_neighborhood' && onChangeMode('guess_neighborhood')}
-                aria-pressed={gameMode === 'guess_neighborhood'}
-                aria-label="Neighborhood: place neighborhood boundaries on the map"
-                title="Neighborhood: place neighborhood boundaries on the map"
-                className="flex items-center gap-1 px-1.5 sm:px-2.5 py-1 text-xs font-semibold cursor-pointer"
-              >
-                <Compass className="w-3.5 h-3.5 sm:w-3 sm:h-3" />
-                <span className="hidden sm:inline">Neighborhood</span>
               </button>
             </div>
             )}
@@ -581,18 +572,6 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                   <Eye className="w-4 h-4" />
                   <span>Guess Name</span>
                   <span className="font-normal text-white/70">Name the highlight</span>
-                </button>
-                <button
-                  onClick={() => {
-                    sounds.playPinDrop();
-                    onChangeMode('guess_neighborhood');
-                    setIsMenuOpen(false);
-                  }}
-                  className={`enamel-tile p-2.5 text-xs font-semibold flex flex-col items-center gap-1 cursor-pointer${gameMode === 'guess_neighborhood' ? ' active' : ''}`}
-                >
-                  <Compass className="w-4 h-4" />
-                  <span>Neighborhood</span>
-                  <span className="font-normal text-white/70">Place the area</span>
                 </button>
               </div>
             </div>

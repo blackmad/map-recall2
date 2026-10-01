@@ -71,10 +71,13 @@ test('the prompted feature remains the revealed feature', async ({ page }) => {
   await expect(page.locator('#pinpoint-feedback-card')).toContainText(prompt!);
 });
 
-test('neighborhood guessing accepts a map click and drops a pin', async ({ page }) => {
+// Neighbourhoods are a category now; an old mode link opens Pinpoint on them.
+test('a legacy neighborhood-mode link plays neighborhoods in Pinpoint and drops a pin', async ({ page }) => {
   await quietExternalRequests(page);
   await page.goto('/?city=amsterdam&mode=guess_neighborhood&category=all&radius=4500&map=light_nolabels&labels=off&rounds=5');
   await expect(page.locator('#target-feature-name')).toBeVisible();
+  await expect.poll(() => new URL(page.url()).searchParams.get('category')).toBe('neighborhoods');
+  expect(new URL(page.url()).searchParams.get('mode')).toBe('pinpoint');
   const map = page.locator('.leaflet-container');
   const box = await map.boundingBox();
   expect(box).not.toBeNull();

@@ -1,0 +1,218 @@
+{
+  "_about": "Reviewed English for scripts/fetch-neighborhood-history.ts. Per neighbourhood and field: {en} is the text shown (a translation of a Dutch source, or a cleaned English one); null drops a field whose sentences are not about the name or place; {from} is the start of the source text it was written against, so a re-fetch that changed the source is reported instead of silently mismatched; {sourceField} borrows another field's article as the source. Translated and reviewed 2026-10-01 under the street-name-origin policy: fix clear errors, add nothing unsourced.",
+  "Overhoeks": {
+    "nameOrigin": { "from": "De buurt is vernoemd naar Toren Overhoeks", "en": "Named after the Overhoeks tower, renamed A'DAM Toren in 2016. Most streets and squares in the area are named after urban waterfront developments around the world." }
+  },
+  "Spaarndammerbuurt": {
+    "nameOrigin": { "from": "De buurt ontleent zijn naam aan de Spaarndammerstraat", "en": "Named after the Spaarndammerstraat, which on 20 November 1878 was named after the village of Spaarndam, north-east of Haarlem." }
+  },
+  "Chassébuurt": {
+    "history": { "from": "Aan het begin van de jaren twintig", "en": "In the early 1920s the state cut back loans for housing associations to build workers' homes and instead subsidised middle-class housing built privately, paying up to about 20% of the cost. Many builders formed partnerships to build and let homes, and most of the Chassébuurt was built by such partnerships." }
+  },
+  "Helmersbuurt": {
+    "description": null,
+    "nameOrigin": { "from": "De wijk werd vernoemd naar de Nederlandse dichter", "en": "Named after the Dutch poet Jan Frederik Helmers. It was part of one of the city's expansions at the end of the 19th century." }
+  },
+  "Rivierenbuurt": {
+    "history": { "from": "De Dienst der Publieke Werken", "en": "In 1921 the city leased a large plot of expropriated land north-east of the Victorieplein to the Amstels Bouwvereniging, a partnership of 71 builders. They built 1,739 small, poorly made middle-class homes renting for 11 to 20 guilders a week. When the homes were finished in 1925, 16 of the builders could not meet their obligations and the city bought their property." }
+  },
+  "Apollobuurt": {
+    "history": { "from": "Het merendeel van de gebouwen", "en": "Most of the buildings date from the 1920s and 1930s and are in the Amsterdam School style. The whole neighbourhood is part of Berlage's Plan Zuid. Between the wars it was popularly called Nieuw-Zuid, and in Yiddish-speaking circles Joods-Zuid (Jewish South)." }
+  },
+  "Stadionbuurt": {
+    "history": { "from": "Het uitgebreide plan voor de Stadionbuurt", "en": "The plan for the Stadionbuurt, with more than 1,750 homes, was one of Arie Keppler's ambitious attempts, as head of the city's housing department, to relieve the housing shortage under city-directed conditions. Streets were designed as continuous facades, an idea taken from German planners' 'einheitliche Blockfront', of which Keppler was an enthusiastic advocate." },
+    "nameOrigin": { "from": "De buurt is vernoemd naar het nationale stadion", "en": "Named after Harry Elte's national stadium, not Jan Wils's Olympic Stadium." }
+  },
+  "Willemspark": {
+    "history": { "from": "Het Willemspark werd in 1881", "en": "In 1881 J.G. van Niftrik planned Willemspark as a villa park around ponds that continue into the Vondelpark. The villa district between the Vondelpark and the Koninginneweg was only laid out from 1902. Its best-known feature is the central sightline of the Emmaplein." },
+    "nameOrigin": { "from": "Pas vanaf 1902 werd de villawijk", "en": "Laid out from 1902 between the Vondelpark and the Koninginneweg, the villa district was named after King William III." }
+  },
+  "Tuindorp Nieuwendam": {
+    "nameOrigin": { "from": "De Amsterdamse wijk Tuindorp Nieuwendam", "en": "It takes its name from the dyke village of Nieuwendam." }
+  },
+  "Landlust": {
+    "nameOrigin": { "from": "De naam komt van een voormalige boerderij", "en": "The name comes from a former farm on the Haarlemmerweg." }
+  },
+  "Stettineiland": {
+    "description": { "from": "Stettineiland is een rechthoekig kunstmatig eiland", "en": "Stettineiland is a rectangular artificial island, and a street, in Amsterdam-West. It stands where part of the Houthavens timber port lay until the early 21st century, when the city needed the emptying site for housing." },
+    "nameOrigin": { "from": "De naam verwijst naar de Oostzeehaven Stettin", "en": "Named after the Baltic port of Stettin, today Szczecin in Poland, once important for Amsterdam's timber trade." }
+  },
+  "Narva-eiland": {
+    "description": { "from": "Narva-eiland is een rechthoekig kunstmatig eiland", "en": "Narva-eiland is a rectangular artificial island, and a street, in Amsterdam-West. It stands where part of the Houthavens timber port lay until the early 21st century, when the city needed the emptying site for housing." },
+    "nameOrigin": { "from": "De naam verwijst naar de Etse Oostzeehaven", "en": "Named after the Estonian Baltic port of Narva, once important for Amsterdam's timber trade." }
+  },
+  "Memeleiland": {
+    "description": { "from": "Memeleiland is een rechthoekig kunstmatig eiland", "en": "Memeleiland is a rectangular artificial island, and a street, in Amsterdam-West. It stands where part of the Houthavens timber port lay until the early 21st century, when the city needed the emptying site for housing." },
+    "nameOrigin": { "from": "De naam verwijst de stad Klaipėda", "en": "Named after the city of Klaipėda, formerly Memel, once important for Amsterdam's timber trade." }
+  },
+  "IJburg": {
+    "description": { "from": "IJburg is een woongebied en archipel", "en": "IJburg is a residential area on an archipelago of artificial islands in the IJmeer, in the Oost borough. The city counts six main islands or island groups: Steigereiland, Haveneiland, the three Rieteilanden, Centrumeiland, Strandeiland and Buiteneiland. The first phase, Steigereiland, Haveneiland and the Rieteilanden, is largely complete." },
+    "nameOrigin": { "from": "De naam IJburg sloot aan bij die van oudere", "en": "The name follows older Amsterdam islands such as Kattenburg, Wittenburg, Oostenburg, Sporenburg and Zeeburg." }
+  },
+  "Slotervaart": {
+    "history": { "from": "Net als de andere westelijke tuinsteden", "en": "Like the other western garden suburbs, Slotervaart was part of the General Expansion Plan, designed in 1935 by Cornelis van Eesteren. The first pile was driven in 1954, and on 19 October 1955 the first residents, the Charmant couple, moved in. A mix of low, mid and high-rise, it was built up by the early 1960s; its streets are named after historians, hydraulic engineers and actors, among others." },
+    "nameOrigin": { "en": "Named after the Slotervaart canal." }
+  },
+  "Uilenburg": {
+    "history": { "from": "Het aanpassen van de plannen", "en": "Revised plans and new military thinking led in 1591 to the Second Expansion, which dug out and built up the islands of Uilenburg, Marken and Rapenburg. In December 1593 twenty-two generous plots on Uilenburg were sold to shipwrights who had to move because the city was expanding over the Lastage. The west side was set aside for timber storage and the east side for shipyards." },
+    "nameOrigin": { "from": "De naam Uilenburg is mogelijk afkomstig", "en": "The name may come from an area here called Uylenbraeck in 1470." }
+  },
+  "Nieuwmarktbuurt": {
+    "description": { "from": "De Lastage is een oude wijk", "en": "The Lastage is an old district between the Geldersekade and the Oudeschans, east of and outside the walls of the medieval city. Today the area is known as the Nieuwmarktbuurt, and it is a protected townscape." },
+    "history": { "from": "De Lastage behoorde door het handvest", "en": "By a charter of Count Albrecht (1386), confirmed in 1404, the Lastage belonged to Amsterdam's 'city liberty': land outside the walls under city law. The soft ground could not be raised or paved, so besiegers could not set up cannon, parts were kept clear as a field of fire, and elsewhere only wooden buildings were allowed, quick to pull down or burn." },
+    "nameOrigin": { "from": "Als alle stadsvrijheden ontwikkelde de Lastage", "en": "In the 15th century the Lastage was where ships took on ballast: the name comes from 'lastaedse', ballast. In the 16th century it grew into the city's industrial and harbour district." }
+  },
+  "Marineterrein": {
+    "description": { "from": "Het Marineterrein, voorheen Marine Etablissement", "en": "The Marineterrein, formerly the Marine Etablissement Amsterdam, is a former naval site on Kattenburg on the east side of the city centre, between the Oosterdok, the Kattenburgerstraat and the Dijksgracht." },
+    "nameOrigin": null
+  },
+  "Rapenburg": {
+    "history": { "from": "De drie eilanden Uilenburg, Valkenburg", "en": "The three islands of Uilenburg, Valkenburg (also called Marken) and Rapenburg were dug out of land beyond the dyke in the city's Second Expansion. For better defence, and because there was too little room for timber yards and shipyards, the 1585 plan was revised and the city was extended eastward again in 1593. Rapenburg was never quite an island: on its east side it was joined to the ramparts." },
+    "nameOrigin": { "from": "De herkomst van de naam is onbekend", "en": "The origin of the name is unknown. The main street took its name from the island." }
+  },
+  "Oostenburg": {
+    "description": { "from": "Oostenburg is het meest oostelijk gelegen", "en": "Oostenburg is the easternmost of the three Eastern Islands, built out into the IJ in the second half of the 17th century. The Wittenburgervaart separates it from Wittenburg to the west, and the partly filled-in Oostenburgervaart from the Czaar Peterbuurt to the east." },
+    "nameOrigin": null
+  },
+  "Kattenburg": {
+    "description": { "from": "Kattenburg is het meest westelijke", "en": "Kattenburg is the westernmost of the three Eastern Islands, built out into the IJ in the second half of the 17th century." },
+    "history": { "from": "Tot halverwege de zeventiende eeuw", "en": "Until the mid-17th century the Eastern Islands were marshy land outside the dyke, bounded by a summer dyke, the Cadijck, to the south and the IJ to the north. As Amsterdam grew explosively from the late 16th century, the Lastage was added to the city and the islands of Rapenburg, Uilenburg and Valkenburg were built; the last, opposite the Lastage, was the Waalseiland in 1634." },
+    "nameOrigin": { "from": "Een verklaring voor de naam Kattenburg", "en": "One explanation is that a 'kat', a defensive work, once stood here; it can still be seen in the bend of the Kattenburgerstraat. 'Kat' and 'burg' together made 'Kattenburg'." }
+  },
+  "Wittenburg": {
+    "description": { "from": "Wittenburg is een van de drie Oostelijke Eilanden", "en": "Wittenburg is one of the three Eastern Islands, built out into the IJ in the second half of the 17th century. It is dominated by the tall Oosterkerk." },
+    "history": { "from": "Een verklaring voor de naam is te vinden", "en": "Streets and plots were laid out from 1661, with two narrow parallel streets along the island, the Grote and Kleine Wittenburgerstraat. Building took several decades; only at the end of the 17th century did the island reach the IJ." },
+    "nameOrigin": { "from": "Een verklaring voor de naam is te vinden", "en": "The name may come from one of the first shipyards here, founded in 1657 by Jan Witheyn and his partner Jacob Burggraaf. The oldest record of the name Wittenburg is from 1662." }
+  },
+  "Funenpark": {
+    "description": { "from": "Funenpark is een straat op de Oostelijke Eilanden", "en": "Funenpark is a street on the Eastern Islands, in the area Het Funen, which is also popularly called Funenpark. The roughly triangular area lies between the Lozingskanaal, a footpath through the park and the Keerwal." },
+    "history": { "from": "Tot in de 19e eeuw lag hier het bolwerk", "en": "Until the 19th century the Zeeburg bastion stood here, and the Keerwal follows the line of the city's old eastern rampart. Until the late 1970s Van Gend & Loos had a transhipment yard here. After years of dereliction, 551 homes were built in the early 21st century; archaeologists found the bastion's wall remains before the work began." },
+    "nameOrigin": { "from": "Funenpark is in 2003 vernoemd", "en": "Named in 2003 after the Danish island of Funen (Fyn). Despite the name, it is not a park." }
+  },
+  "Valkenburg": {
+    "description": { "from": "Marken is een voormalig eiland", "en": "Marken, also called Valkenburg, is a former island laid out in the 16th century. With Uilenburg and Rapenburg it is one of the islands built out into the IJ that came within the city around 1600. Since the works for the IJ tunnel it is no longer an island." },
+    "history": { "from": "De drie eilanden Uilenburg, Valkenburg en Rapenburg", "en": "Uilenburg, Valkenburg and Rapenburg were dug out of land beyond the dyke in the city's Second Expansion, when the 1585 plan was revised and the city extended eastward again in 1593. In 1595 small carpenters' yards and timber yards of up to 750 m² were granted on Marken, for building, hauling out and repairing barges." }
+  },
+  "Czaar Peterbuurt": {
+    "history": { "from": "De Oostelijke Eilanden werden aangelegd", "en": "The Eastern Islands, built in the second half of the 17th century, held many shipyards, including those of the Amsterdam Admiralty and the Dutch East India Company (VOC). Part of today's Czaar Peterbuurt was reclaimed from the IJ in 1663 for the VOC's ropewalks, where the company's ropes were made. The water between the ropewalks and the city wall was filled in around 1877." },
+    "nameOrigin": { "from": "De Czaar Peterbuurt, vernoemd naar tsaar Peter", "en": "Named after Tsar Peter the Great." }
+  },
+  "Oostelijke Eilanden": {
+    "history": { "from": "Van oudsher waren op de Oostelijke Eilanden", "en": "Close to the IJ, the Eastern Islands long held shipyards and their suppliers, and dozens of surgeons and apothecaries too. The Amsterdam Admiralty was on Kattenburg, where the naval yard still is, and the Dutch East India Company had its warehouse and yards on Oostenburg. The most striking building is 's Lands Zeemagazijn, home of the National Maritime Museum since 1973." },
+    "nameOrigin": { "en": "Oostelijke Eilanden means 'Eastern Islands': the neighbourhood consists of Kattenburg, Wittenburg and Oostenburg." }
+  },
+  "Plantage": {
+    "history": { "from": "Voor het gebied, dat bij de stadsuitbreiding", "en": "The area brought inside the new ramparts in the expansion of about 1663 found too few buyers. Building stalled, and gardens and pleasure grounds were laid out where Amsterdammers could relax in the green. The city let the plots for 20 years at a time, meaning to sell them later; building on them was not the intention." },
+    "nameOrigin": { "sourceField": "history", "en": "The gardens laid out here after the 1663 expansion were called the Plantagie or Plantaadje, and most streets in the neighbourhood still begin with 'Plantage'." }
+  },
+  "Weesperbuurt": {
+    "description": { "from": "De Weesperbuurt is een buurt in Amsterdam-Centrum", "en": "The Weesperbuurt is the easternmost part of the canal belt, between the Binnen Amstel, the Nieuwe Herengracht, the Plantage and the Nieuwe Achtergracht." },
+    "history": { "from": "De Weesperbuurt was tot in de Tweede Wereldoorlog", "en": "Until the Second World War the Weesperbuurt was part of the Jewish quarter. Many of its residents were deported and murdered. After the war part of the neighbourhood was demolished to widen the Weesperstraat." }
+  },
+  "Nieuwmarkt/Lastage": {
+    "description": { "from": "De Nieuwmarkt is een plein", "en": "The Nieuwmarkt is a square between the Geldersekade and the Kloveniersburgwal, bordered by the Zeedijk to the north and the Sint Antoniesbreestraat to the south. At its centre stands the Waag, originally a 15th-century city gate. Almost every building around it is a listed monument." },
+    "history": { "from": "Sinds ca. 1425 ligt hier", "en": "The Sint Anthoniespoort, now the Waag, was built in 1481–1494 as part of the medieval city wall. The square was made in 1614, when the water around the gate was vaulted over. As the city expanded over the Lastage, its border moved out to the Montelbaanstoren and the Oudeschans, and the gate lost its defensive role and became a weigh house." },
+    "nameOrigin": null
+  },
+  "Borneo-eiland": {
+    "description": { "from": "Het Borneo-eiland in het Oostelijk Havengebied", "en": "Borneo-eiland is a peninsula in the Eastern Docklands, between the Spoorwegbassin and the Entrepothaven. From 1926 a coal tip here emptied coal wagons into seagoing ships." },
+    "nameOrigin": { "from": "Het ontleent zijn naam aan de Borneokade", "en": "Named after the Borneokade, the quay along its whole south side, which in 1917 was named after the East Indies island of Borneo." }
+  },
+  "Sporenburg": {
+    "description": { "from": "Sporenburg is een kunstmatig schiereiland", "en": "Sporenburg is a long artificial peninsula, built out in the 19th century in the Eastern Docklands, running roughly east to west." },
+    "nameOrigin": { "sourceField": "description", "en": "Sporenburg owes its name to its use as a railway shunting yard." }
+  },
+  "Kinkerbuurt": {
+    "history": { "from": "De Kinkerbuurt werd begin 20e eeuw aangelegd", "en": "The Kinkerbuurt was laid out in the early 20th century to a design by contractor-architect Nicolaas Redeker Bisdom, mostly on land annexed from Nieuwer-Amstel in 1896. As elsewhere in West and Oost, it was built fast and cheaply, the so-called revolutiebouw. Its streets were named after writers and poets. In 1902 the city tram opened the Tollensstraat depot in its middle." }
+  },
+  "Frederik Hendrikbuurt": {
+    "history": { "from": "Tussen de zeventiende eeuw en het begin", "en": "From the 17th to the early 20th century this was the 'Zaagmolenbuurt' (sawmill quarter), part of Nieuwer-Amstel, full of windmills sawing timber for ships and houses. Steam engines made them redundant and they were pulled down; one survives, De Otter, on the Kostverlorenvaart." }
+  },
+  "Da Costabuurt": {
+    "description": { "from": "De Da Costabuurt is een buurt in Amsterdam-West", "en": "The Da Costabuurt is a neighbourhood in Amsterdam-West, bounded by the Hugo de Grootgracht, the Singelgracht, the Jacob van Lennepkanaal and the Bilderdijkgracht." },
+    "nameOrigin": { "from": "De buurt is vernoemd naar de Da Costagracht", "en": "Named after the Da Costagracht and Da Costastraat, which are named after Isaäc da Costa (1798–1860), an Amsterdam poet and historian." }
+  },
+  "Zuidoost": { "nameOrigin": null },
+  "Weesp": {
+    "nameOrigin": { "from": "De oude Latijnse (gelatiniseerde) benaming", "en": "Weesp's old Latinised name is Wesopa, but the earliest records, from around 1150, call it Wesepa or Wis(e)pe." }
+  },
+  "Nieuw-West": { "nameOrigin": null },
+  "Prinses Irenebuurt e.o.": {
+    "description": { "from": "Prinses Irenebuurt is een buurt in het stadsdeel Zuid", "en": "Prinses Irenebuurt is a neighbourhood in the Zuid borough; with the Beatrixpark it forms the district Prinses Irenebuurt e.o. It was built between 1954 and 1958." },
+    "history": { "from": "Prinses Irenebuurt vormt het zuidelijkste deel", "en": "The Prinses Irenebuurt is the southernmost part of Berlage's 1917 Plan Zuid, but was never built in that form. A new plan of 1940 used open rows instead of closed blocks; after the war it was revised as the Zuider Amstelkanaal I expansion plan, and the neighbourhood was built between 1954 and 1958." },
+    "nameOrigin": { "from": "De buurt ontleent haar naam aan de Prinses Irenestraat", "en": "Named after the Prinses Irenestraat, which runs east–west through it and was named in 1953 after Princess Irene, daughter of Queen Juliana." }
+  },
+  "Schinkelbuurt": {
+    "nameOrigin": { "from": "De straten zijn hier genoemd naar begrippen", "en": "The streets here are named after shipping terms, such as Sluisstraat (lock), Zeilstraat (sail), Vaartstraat (canal), Havenstraat (harbour) and Karperweg (carp)." }
+  },
+  "Vivaldi": {
+    "description": { "from": "Vivaldi is een kantorenpark", "en": "Vivaldi is an office park and part of the Zuidas project in Amsterdam-Zuid, south of the A10 ring road and west of the Europaboulevard." },
+    "nameOrigin": { "from": "Het gebied heette oorspronkelijk Drentepark", "en": "The area was originally called Drentepark, after the Drentestraat, named in 1961 after the province of Drenthe." }
+  },
+  "Buitenveldert": {
+    "description": { "from": "Buitenveldert is een naoorlogse tuinstad", "en": "Buitenveldert is a post-war garden suburb in the Zuid borough, made up of the districts Buitenveldert-West and Buitenveldert-Oost. Areas once counted as Buitenveldert, around the Vrije Universiteit and the Zuidas, now belong to the separate Zuidas district." },
+    "nameOrigin": { "from": "De naam is ontleend aan de gelijknamige buurtschap", "en": "Named after the hamlet of Buitenveldert on the Amstelveenseweg, near today's Buitenveldert cemetery." }
+  },
+  "Zuidas": {
+    "history": { "from": "De Nederlandse Middenstandsbank opende", "en": "The NMB bank opened a head office here in 1974, followed by the World Trade Center in 1985. In the 1990s the city looked for a well-connected office location between Schiphol and Zuidoost; ABN AMRO's new head office, built 1996–1999, set development going. In 1998 the city council adopted the Zuidas masterplan." },
+    "nameOrigin": { "en": "Zuidas means 'South Axis'." }
+  },
+  "Van Lennepbuurt": {
+    "description": { "from": "De Van Lennepbuurt is een buurt in Amsterdam-West", "en": "The Van Lennepbuurt is a neighbourhood in Amsterdam-West, bounded by the Kinkerstraat, the Singelgracht, the Jacob van Lennepkanaal and the Kostverlorenvaart." },
+    "nameOrigin": { "from": "De buurt is vernoemd naar de Van Lennepstraat", "en": "Named after the Van Lennepstraat, named after the writer, linguist and politician Jacob van Lennep (1802–1868). Its streets are named after 19th-century Dutch writers." }
+  },
+  "Hoofddorppleinbuurt": {
+    "nameOrigin": { "from": "De straatnamen zijn genoemd naar 19e-eeuwse", "en": "Its streets are named after 19th-century painters and places south-west of Amsterdam." }
+  },
+  "Overtoomse Sluis": {
+    "description": { "from": "De Overtoomse Sluis (brug nr. 199)", "en": "The Overtoomse Sluis (bridge no. 199) crosses the Kostverlorenvaart, linking the Overtoom and Amstelveenseweg with the Surinameplein. The present bascule bridge, by Piet Kramer in the Amsterdam School style, was built in 1948." },
+    "history": { "from": "Amsterdam kreeg in 1515 toestemming", "en": "In 1515 Amsterdam was allowed to build an 'overtoom' here, a slipway where small local boats were hauled over the dam; big ships still had to follow the prescribed route through Holland. It divided the waters of Rijnland from those of Amstelland. In 1809, in the Napoleonic era, it was replaced by a lock." },
+    "nameOrigin": { "from": "De brug is genoemd naar de Overtoom", "en": "Named after the Overtoom and the Overtoom lock that once stood here. The street name Overtoom comes from the Overtoomse Vaart, the canal to the overtoom, filled in in 1904." }
+  },
+  "Museumkwartier": {
+    "history": { "from": "In 1874 werd de Onteigeningswet", "en": "In 1874 an expropriation act was passed for building the Rijksmuseum and a genteel residential district. Building waited until the royal candle factory closed in 1906. The street plan, based on designs by Pierre Cuypers from 1891, was laid out from 1902, and the district was built from 1907; its houses are rich in Art Nouveau details." },
+    "nameOrigin": { "en": "The neighbourhood takes its name from the major museums at Museumplein: the Rijksmuseum, the Stedelijk Museum and the Van Gogh Museum." }
+  },
+  "Vondelparkbuurt": {
+    "description": { "from": "Vondelparkbuurt is een gemeenschappelijke benaming", "en": "Vondelparkbuurt is the shared name of three neighbourhoods in Amsterdam-West. The area belonged to Nieuwer-Amstel until it was annexed in 1896; around then it changed from an industrial strip with windmills into a residential and shopping area." },
+    "nameOrigin": null
+  },
+  "Oud-Zuid": {
+    "history": { "from": "Delen van het huidige Oud-Zuid", "en": "Parts of Oud-Zuid were built in the city's expansions of the late 19th and early 20th centuries, with mansions and apartment blocks around the Museumplein and the Concertgebouw, and the green villa district of Willemspark south of the Vondelpark around 1900. For further growth south, Berlage designed Plan Zuid; his second design was adopted in 1917." },
+    "nameOrigin": { "en": "Oud-Zuid means 'Old South'. From 1998 to 2010 it was also the name of a larger borough that included De Pijp." }
+  },
+  "Zuid": { "nameOrigin": null },
+  "KNSM-eiland": {
+    "description": { "from": "Het KNSM-eiland is een schiereiland", "en": "The KNSM-eiland is a peninsula in the IJ, one of eleven neighbourhoods in the Eastern Docklands. Of its 86 hectares, 74 are water; about 2,300 people live there." },
+    "nameOrigin": { "from": "Het 'eiland' is genoemd naar de Koninklijke", "en": "Named after the Royal Netherlands Steamship Company (KNSM), based here from 1903 to 1979. The old quays Levantkade and Surinamekade kept the names of the company's main destinations." }
+  },
+  "Oostelijk Havengebied": {
+    "description": { "from": "Het Oostelijk Havengebied is een woonwijk", "en": "The Eastern Docklands (Oostelijk Havengebied) is a residential district in the Oost borough. At the end of the 19th century this area on the south side of the IJ, close to the Zuiderzee, was set aside to expand Amsterdam's port." },
+    "nameOrigin": null
+  },
+  "Centrum": { "nameOrigin": null },
+  "Noord": {
+    "history": { "from": "Amsterdam benoorden het IJ bestond", "en": "Amsterdam north of the IJ was at first only a small peninsula, the Volewijck, which the city acquired in 1393. Until 1795 it was the gallows field, where the bodies of the executed were hung as a warning. Beyond lay Waterland, with villages such as Buiksloot, Nieuwendam and Durgerdam." },
+    "nameOrigin": null
+  },
+  "West": { "nameOrigin": null },
+  "Duivelseiland": {
+    "description": { "en": "Duivelseiland is a neighbourhood of Amsterdam." },
+    "nameOrigin": { "en": "Duivelseiland means 'Devil's Island'." }
+  },
+  "Grachtengordel": {
+    "nameOrigin": { "en": "Grachtengordel means 'canal belt' (or 'canal girdle'); in English it is known as the Canal District." }
+  },
+  "Staatsliedenbuurt": {
+    "nameOrigin": { "en": "Staatsliedenbuurt means 'Neighbourhood of the Statesmen': after Amsterdam annexed the area in 1877, its streets were named after Dutch statesmen of the 18th and 19th centuries." }
+  },
+  "Java-eiland": {
+    "nameOrigin": { "en": "Java-eiland means 'Java Island'. The Stoomvaart Maatschappij Nederland, based here, ran services to the Dutch East Indies, particularly Java; the name was given when the area was designated for housing in the 1990s." }
+  },
+  "Houthaven": {
+    "nameOrigin": { "en": "Houthaven means 'timber port': it was dug in 1876 to tranship and store timber." }
+  },
+  "Diamantbuurt": {
+    "nameOrigin": { "en": "Its streets are named after precious stones: Diamantstraat (diamond), Robijnstraat (ruby), Saffierstraat (sapphire), Smaragdstraat (emerald), Topaasstraat (topaz) and Granaatstraat (garnet)." }
+  }
+}

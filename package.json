@@ -134,6 +134,8 @@
     "build:canal-neighborhoods": "esbuild src/canalRecall/neighborhoodState.ts --bundle --format=iife --global-name=CanalRecallNeighborhood --outfile=public/canal-drive/js/neighborhood-state.bundle.js --minify",
     "test:neighborhoods": "tsx scripts/check-neighborhood-transitions.ts",
     "check:canal": "tsx scripts/check-canal.ts",
+    "test:map-recall-trivia": "tsx scripts/check-map-recall-trivia.ts",
+    "fetch:neighborhood-history": "tsx scripts/fetch-neighborhood-history.ts",
     "enrich:english": "tsx scripts/translate-extracts-to-english.ts",
     "enrich:utrecht-english": "tsx scripts/translate-extracts-to-english.ts --directory=public/data/extracts/utrecht --ollama",
     "test:canal-buildings": "tsx scripts/check-canal-buildings.ts",

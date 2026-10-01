@@ -199,6 +199,28 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     }).addTo(mapInstanceRef.current);
   }, [tileStyle, blindMapMode, BASEMAP_CONFIG_VERSION]);
 
+  // After a guess, lay the place names over the blind map so the player can
+  // get their bearings around the answer; they go again with the next
+  // question (user request 2026-10-01). Labels-only tiles keep the base map,
+  // and its cache, as it was.
+  const revealLabelsRef = useRef<L.TileLayer | null>(null);
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    if (!map) return;
+    const showLabels = blindMapMode && isRoundComplete && !isGameOver;
+    if (showLabels && !revealLabelsRef.current) {
+      const cartoKey = import.meta.env.VITE_CARTO_API_KEY;
+      const cartoAuth = cartoKey ? `?key=${encodeURIComponent(cartoKey)}` : '';
+      const flavour = tileStyle === 'dark' ? 'dark_only_labels' : 'light_only_labels';
+      revealLabelsRef.current = L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/${flavour}/{z}/{x}/{y}{r}.png${cartoAuth}`, {
+        maxZoom: 19, subdomains: ['a', 'b', 'c', 'd'], className: 'reveal-labels', zIndex: 5,
+      }).addTo(map);
+    } else if (!showLabels && revealLabelsRef.current) {
+      map.removeLayer(revealLabelsRef.current);
+      revealLabelsRef.current = null;
+    }
+  }, [blindMapMode, isRoundComplete, isGameOver, tileStyle]);
+
   // Both location-based modes use a dropped pin. Keep this list in sync with
   // the crosshair cursor below so a map that looks clickable is clickable.
   useEffect(() => {

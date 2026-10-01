@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Map Recall: trivia on every answer; neighbourhoods are a category
+
+The user asked for "both name trivia and neighborhood history/description"
+across streets, canals and bridges, and for neighbourhoods to be a "start
+with" choice rather than a mode.
+
+- Name origins: the Gemeente Amsterdam register (`street-name-origins.json`,
+  about 5,300 streets, waters and bridges) is joined onto Map Recall features
+  by exact name and kind (`src/mapRecall/trivia.ts`), never by proximity:
+  "Amstel" the river and the street are different entries. Each card links the
+  BAG record.
+- Neighbourhoods: `scripts/fetch-neighborhood-history.ts` reads both Wikipedia
+  articles for each of the 85 OSM neighbourhoods and stages a description,
+  history and name origin. Pattern matching also caught council election
+  results, company names and Overtoombuurt's text under Helmersbuurt, so
+  nothing Dutch ships unread. Every Dutch field was translated and reviewed by
+  hand in `scripts/data/neighborhood-history-review.json` (keyed to its source
+  text, so a changed article is reported); junk is dropped; one clear source
+  error is corrected (Narval → Narva). Published: 70 descriptions, 43
+  histories, 52 name origins. 14 neighbourhoods have no article in either
+  language.
+- Neighbourhoods are a category in both Pinpoint and Guess Name (choices: the
+  nearest other areas). Old `mode=guess_neighborhood` links open Pinpoint on
+  them; the type keeps the value for saved results.
+- After a guess, CARTO's labels-only tiles are laid over the blind map, and
+  removed for the next question ("so that I could get my bearings").
+
 ## 2026-10-01 — Rides on the real keyboard; arrow steering beat the shoulder
 
 The sweep, pose probe and harness set throttle and steering directly and stub
