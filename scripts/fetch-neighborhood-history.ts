@@ -19,12 +19,18 @@
  * Writes to `staging/neighborhood-history.json` and prints coverage; publish
  * with `--publish` after review, which copies it into the extract.
  *
- *   npx tsx scripts/fetch-neighborhood-history.ts [--publish]
+ *   npx tsx scripts/fetch-neighborhood-history.ts [--city=amsterdam|utrecht|rotterdam|den-haag] [--publish]
+ *
+ * Per-city settings (search name, "(City)" title qualifiers, review file) live
+ * in scripts/lib/neighborhoodCities.ts; Amsterdam is the default and its
+ * output is unchanged by the generalisation.
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { neighborhoodCityFromArgs, type NeighborhoodCity } from './lib/neighborhoodCities';
 
-const directory = path.resolve('public/data/extracts/amsterdam');
+const city: NeighborhoodCity = neighborhoodCityFromArgs();
+const directory = path.resolve(city.directory);
 const stagingPath = path.join(directory, 'staging/neighborhood-history.json');
 const publishedPath = path.join(directory, 'neighborhood-history.json');
 const headers = { 'User-Agent': 'MapQuestExtractBuilder/1.0 (https://github.com/blackmad/map-recall2)' };
@@ -77,10 +83,10 @@ async function plainText(lang: 'en' | 'nl', title: string): Promise<string | nul
   return page && !('missing' in page) ? page.extract || null : null;
 }
 
-/** Titles the Dutch Wikipedia search offers for "<name> Amsterdam". */
+/** Titles the Dutch Wikipedia search offers for "<name> <city>". */
 async function searchTitles(name: string): Promise<string[]> {
   const url = new URL('https://nl.wikipedia.org/w/api.php');
-  url.search = new URLSearchParams({ action: 'query', list: 'search', srsearch: `${name} Amsterdam`, srlimit: '5', format: 'json' }).toString();
+  url.search = new URLSearchParams({ action: 'query', list: 'search', srsearch: `${name} ${city.name}`, srlimit: '5', format: 'json' }).toString();
   const data = await fetchJson(url);
   return (data.query?.search || []).map((hit: { title: string }) => hit.title);
 }
@@ -91,7 +97,7 @@ export function coreName(name: string): string {
 }
 
 export const isDisambiguation = (text: string) => /\b(kan verwijzen naar|may refer to|can refer to)\b/i.test(text.slice(0, 400));
-const aboutAmsterdam = (text: string) => /Amsterdam/.test(text.slice(0, 1500));
+const aboutCity = (text: string) => city.aboutPattern.test(text.slice(0, 1500));
 /** Whether a lede names the neighbourhood (ignoring case, spaces and hyphens). */
 export function mentions(lede: string, name: string): boolean {
   const flat = lede.toLowerCase().replace(/[-\s]+/g, '');
@@ -175,7 +181,7 @@ export function historyText(text: string): string | undefined {
 
 type Field = 'description' | 'history' | 'nameOrigin';
 const FIELDS: Field[] = ['description', 'history', 'nameOrigin'];
-const reviewPath = path.resolve('scripts/data/neighborhood-history-review.json');
+const reviewPath = path.resolve(city.reviewPath);
 type ReviewEntry = { en: string; from?: string; sourceField?: Field } | null;
 type Review = Record<string, Partial<Record<Field, ReviewEntry>> | string>;
 
@@ -220,7 +226,13 @@ async function main() {
     const review: Review = JSON.parse(await readFile(reviewPath, 'utf8'));
     const { published, problems } = applyReview(staged, review);
     for (const problem of problems) console.log(`  ! ${problem}`);
-    await writeFile(publishedPath, `${JSON.stringify({ version: 1, generatedAt: new Date().toISOString(), neighborhoods: published }, null, 1)}\n`);
+    // An unchanged publish keeps its timestamp, so re-running is a no-op diff.
+    let generatedAt = new Date().toISOString();
+    try {
+      const previous = JSON.parse(await readFile(publishedPath, 'utf8'));
+      if (JSON.stringify(previous.neighborhoods) === JSON.stringify(published)) generatedAt = previous.generatedAt;
+    } catch { /* first publish */ }
+    await writeFile(publishedPath, `${JSON.stringify({ version: 1, generatedAt, neighborhoods: published }, null, 1)}\n`);
     const count = (field: Field) => published.filter((entry) => entry[field]).length;
     console.log(`published ${published.length} → ${publishedPath}: description ${count('description')}, history ${count('history')}, nameOrigin ${count('nameOrigin')}`);
     return;
@@ -231,17 +243,17 @@ async function main() {
     const entry: NeighborhoodHistory = { name: hood.name, wikidataId: hood.wikidataId };
     const titles = hood.wikidataId ? links.get(hood.wikidataId) || {} : {};
     // No Wikidata match: the Dutch article usually exists under the name or
-    // "Name (Amsterdam)".
+    // "Name (<City>)".
     const enText = titles.en ? await plainText('en', titles.en) : null;
-    // The Wikidata title first, then "<name> (Amsterdam)" and the bare name,
+    // The Wikidata title first, then "<name> (<City>)" and the bare name,
     // then search hits that carry the name itself (a search for an obscure
     // buurt otherwise returns the borough it is in). Disambiguation pages
     // and namesakes elsewhere are skipped.
-    const candidates = [titles.nl, `${hood.name} (Amsterdam)`, hood.name].filter((t): t is string => !!t);
+    const candidates = [titles.nl, ...city.titleQualifiers.map((qualifier) => `${hood.name} (${qualifier})`), hood.name].filter((t): t is string => !!t);
     let nlText: string | null = null, nlTitle = '', searched = false;
     for (let i = 0; i < candidates.length; i++) {
       const text = await plainText('nl', candidates[i]);
-      if (text && !isDisambiguation(text) && aboutAmsterdam(text) && mentions(sections(text).lede, hood.name)) { nlText = text; nlTitle = candidates[i]; break; }
+      if (text && !isDisambiguation(text) && aboutCity(text) && mentions(sections(text).lede, hood.name)) { nlText = text; nlTitle = candidates[i]; break; }
       if (i === candidates.length - 1 && !searched) {
         searched = true;
         for (const title of await searchTitles(hood.name)) {
