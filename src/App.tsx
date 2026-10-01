@@ -114,8 +114,11 @@ export default function App() {
   const [searchRadiusMeters, setSearchRadiusMeters] = useState<number>(() => numberParam('radius', 4500, 250, 50000));
   const [administrativeAreas, setAdministrativeAreas] = useState<AdministrativeArea[]>([]);
   const [selectedAdministrativeAreaId, setSelectedAdministrativeAreaId] = useState<number | null>(bookmarkedAreaId);
-  const [gameMode, setGameMode] = useState<GameMode>(() => validValue(urlParams.get('mode'), ['pinpoint', 'guess_name', 'guess_neighborhood'] as const, 'pinpoint'));
-  const [selectedCategory, setSelectedCategory] = useState<FeatureCategory>(() => validValue(urlParams.get('category'), FEATURE_CATEGORIES.map(({ id }) => id), 'all'));
+  // Neighbourhoods used to be a mode; an old `mode=guess_neighborhood` link
+  // now opens Pinpoint with the Neighborhoods category.
+  const legacyNeighborhoodLink = urlParams.get('mode') === 'guess_neighborhood';
+  const [gameMode, setGameMode] = useState<GameMode>(() => validValue(urlParams.get('mode'), ['pinpoint', 'guess_name'] as const, 'pinpoint'));
+  const [selectedCategory, setSelectedCategory] = useState<FeatureCategory>(() => legacyNeighborhoodLink ? 'neighborhoods' : validValue(urlParams.get('category'), FEATURE_CATEGORIES.map(({ id }) => id), 'all'));
   const [linkedFeaturesOnly, setLinkedFeaturesOnly] = useState<boolean>(() => urlParams.get('references') === 'wiki');
   const [roundsPerGame, setRoundsPerGame] = useState<number>(() => Math.round(numberParam('rounds', 5, 1, 50)));
   const [blindMapMode, setBlindMapMode] = useState<boolean>(() => urlParams.get('labels') !== 'on'); // Label-less by default
@@ -317,15 +320,15 @@ export default function App() {
 
   // Filter features based on selectedCategory for current city
   const filteredCityFeatures = useMemo(() => {
-    const modeFeatures = gameMode === 'guess_neighborhood'
-      ? currentCity.features.filter((feature) => feature.type === 'neighborhood')
-      : currentCity.features.filter((feature) => feature.type !== 'neighborhood' && (!linkedFeaturesOnly || feature.wikipedia || feature.wikidata));
-    if (gameMode === 'guess_neighborhood') return modeFeatures;
+    // Neighbourhoods are their own category (and never in the mixed quiz);
+    // the encyclopedia filter does not apply to areas.
+    if (selectedCategory === 'neighborhoods') return currentCity.features.filter((feature) => feature.type === 'neighborhood');
+    const modeFeatures = currentCity.features.filter((feature) => feature.type !== 'neighborhood' && (!linkedFeaturesOnly || feature.wikipedia || feature.wikidata));
     if (selectedCategory === 'all') return modeFeatures;
     const cat = FEATURE_CATEGORIES.find((c) => c.id === selectedCategory);
     if (!cat) return modeFeatures;
     return modeFeatures.filter((feature) => cat.types.includes(feature.type));
-  }, [currentCity, selectedCategory, linkedFeaturesOnly, gameMode]);
+  }, [currentCity, selectedCategory, linkedFeaturesOnly]);
 
   // Features selected for current game session
   const featuresForGame: StreetFeature[] = useMemo(() => {
@@ -954,7 +957,7 @@ export default function App() {
               <div className="space-y-2">
                 <p className="enamel-brand text-sm text-white tracking-wide">Start with</p>
                 <div className="grid grid-cols-1 gap-2.5">
-                  {FEATURE_CATEGORIES.filter((c) => c.id === 'water' || c.id === 'streets').map((category) => (
+                  {FEATURE_CATEGORIES.filter((c) => c.id === 'water' || c.id === 'streets' || c.id === 'neighborhoods').map((category) => (
                     <button
                       key={category.id}
                       onClick={() => {
@@ -976,7 +979,7 @@ export default function App() {
               <div className="space-y-2 pt-1">
                 <p className="text-xs font-bold uppercase tracking-wider text-white/45">Also</p>
                 <div className="grid grid-cols-2 gap-1.5">
-                  {FEATURE_CATEGORIES.filter((c) => !['all', 'water', 'streets'].includes(c.id)).map((category) => (
+                  {FEATURE_CATEGORIES.filter((c) => !['all', 'water', 'streets', 'neighborhoods'].includes(c.id)).map((category) => (
                     <button
                       key={category.id}
                       onClick={() => {
@@ -1006,7 +1009,6 @@ export default function App() {
                     [
                       { id: 'pinpoint' as const, label: 'Pinpoint' },
                       { id: 'guess_name' as const, label: 'Guess Name' },
-                      { id: 'guess_neighborhood' as const, label: 'Neighborhood' },
                     ]
                   ).map((mode) => (
                     <button
@@ -1021,7 +1023,7 @@ export default function App() {
                   ))}
                 </div>
                 <p className="text-xs text-white/55 leading-relaxed">
-                  Pinpoint places a named spot. Guess Name names the highlight. Neighborhood places area boundaries.
+                  Pinpoint places a named spot or area. Guess Name names the highlight.
                 </p>
               </div>
             </div>

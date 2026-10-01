@@ -1,3 +1,6 @@
+/** `guess_neighborhood` is legacy: neighbourhoods are now a category played in
+ *  either mode. Saved results and old links still carry it; links are mapped to
+ *  pinpoint + the neighbourhoods category when read. */
 export type GameMode = 'pinpoint' | 'guess_name' | 'guess_neighborhood';
 import type { Fact } from './canalRecall/facts/factTypes';
 
@@ -37,6 +40,7 @@ export type FeatureCategory =
   | 'bridges'    // bridges ('bridge')
   | 'squares'    // squares, plazas ('square')
   | 'parks'      // parks, gardens ('park')
+  | 'neighborhoods' // neighbourhood and district areas ('neighborhood')
   | 'landmarks';  // monuments, museums, civic venues ('landmark', 'museum', 'monument', 'cinema', 'library', 'university', 'music venue')
 
 export interface CategoryInfo {
@@ -105,6 +109,14 @@ export const FEATURE_CATEGORIES: CategoryInfo[] = [
     types: ['landmark', 'museum', 'monument', 'cinema', 'library', 'university', 'music venue'],
     description: 'Famous monuments, museums & cultural attractions',
   },
+  {
+    id: 'neighborhoods',
+    label: 'Neighborhoods',
+    shortLabel: 'Neighborhoods',
+    icon: '⬡',
+    types: ['neighborhood'],
+    description: 'Districts and buurten: find the area, or name it',
+  },
 ];
 
 export type TileStyle = 'voyager' | 'light_nolabels' | 'osm' | 'dark';
@@ -152,6 +164,14 @@ export interface SearchHistoryEntry {
   errorMessage?: string;
 }
 
+/** One sourced piece of trivia, already in English. */
+export interface TriviaText {
+  text: string;
+  sourceUrl: string;
+  /** "Wikipedia", "Wikipedia (translated from Dutch)", "Gemeente Amsterdam"… */
+  sourceLabel: string;
+}
+
 export interface StreetFeature {
   id: string;
   name: string;
@@ -178,6 +198,11 @@ export interface StreetFeature {
   wikipediaImageUrl?: string;
   /** Human-reviewed, statement-provenance trivia joined by exact extract id. */
   localFacts?: Fact[];
+  /** Why it is called this: BAG street-name origins, or a neighbourhood's reviewed
+   *  Wikipedia text (`neighborhood-history.json`). */
+  nameOrigin?: TriviaText;
+  /** A neighbourhood's history, from its Wikipedia article. */
+  history?: TriviaText;
   highway?: string;
   neighborhood?: string;
   neighborhoodDistractors?: string[];
