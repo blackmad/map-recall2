@@ -160,7 +160,7 @@ function installHarness(): void {
       // that a completed drive fits inside the simulated time budget.
       const straightLine = from && to ? Math.hypot(from.x - to.x, from.y - to.y) : 0;
       if (!pairs && (straightLine < 1200 || straightLine > 6000)) { run--; continue; }
-      const path = game.track.findRoute(from, to);
+      let path = game.track.findRoute(from, to);
       if (!path || path.length < 2) {
         failures.push({ reason: 'unroutable', street: game.track.getRoadName(from.x, from.y), ...toLatLng(from) });
         continue;
@@ -180,11 +180,29 @@ function installHarness(): void {
       // destination. Amsterdam routes routinely head away from their endpoint
       // to get around a canal, rail line, or one-way block. The old Euclidean
       // check declared those correct detours lost after 25 seconds.
-      const distanceFrom = new Array(path.length).fill(0);
-      for (let i = path.length - 2; i >= 0; i--) {
-        distanceFrom[i] = distanceFrom[i + 1]
-          + Math.hypot(path[i + 1].x - path[i].x, path[i + 1].y - path[i].y);
-      }
+      const distancesFrom = (route: Point[]) => {
+        const out = new Array(route.length).fill(0);
+        for (let i = route.length - 2; i >= 0; i--) {
+          out[i] = out[i + 1] + Math.hypot(route[i + 1].x - route[i].x, route[i + 1].y - route[i].y);
+        }
+        return out;
+      };
+      let distanceFrom = distancesFrom(path);
+      // Knocked off the plan, or backed out of a dead end: plan again from
+      // here, as the game's own reroute does. Progress is then measured along
+      // the new route, from where the bike now is.
+      let replans = 0;
+      const replan = () => {
+        const again = game.track.findRoute({ x: player.x, y: player.y }, to);
+        if (!again || again.length < 2) return;
+        path = again; distanceFrom = distancesFrom(path); index = 0; replans++;
+        closestRouteApproach = distanceFrom[0] + Math.hypot(path[0].x - player.x, path[0].y - player.y);
+      };
+      // Where the bike has actually been, every 8 px: always rideable, so the
+      // way back out of a tip or a wrong turn (bridge sweep, 2026-10-01).
+      const trail: Point[] = [{ x: from.x, y: from.y }];
+      let backTo: Point | null = null;
+      const recent: Point[] = [];
       let closestRouteApproach = Infinity;
       let lostSeconds = 0;
       let wander = 0;
@@ -240,11 +258,17 @@ function installHarness(): void {
         // A city driver, not a qualifying lap: hold a modest cruise and slow
         // for the turn, or the car overshoots every junction and the harness
         // ends up measuring the autopilot instead of the network.
-        if (reversing > 0) {
-          // What a player does when they have nosed into a kerb: back off,
-          // turn the other way, and take the junction again.
+        if (reversing > 0 && backTo && Math.hypot(backTo.x - player.x, backTo.y - player.y) < 12) reversing = 0;
+        if (reversing <= 0 && backTo) { backTo = null; replan(); }
+        if (reversing > 0 && backTo) {
+          // What a player does when they have nosed into a kerb or a dead end:
+          // back out the way they came, along the trail they actually rode,
+          // then plan again. The bike reverses along -heading, so the nose
+          // points straight away from the trail point.
           reversing -= STEP;
-          player.steerInput = Math.max(-1, Math.min(1, -error * 2.5));
+          let away = Math.atan2(player.y - backTo.y, player.x - backTo.x) - player.angle;
+          away = Math.atan2(Math.sin(away), Math.cos(away));
+          player.steerInput = Math.max(-1, Math.min(1, away * 2.5));
           player.throttle = 0;
           player.brake = 1;
         } else {
@@ -278,6 +302,12 @@ function installHarness(): void {
         }
 
         const moved = Math.hypot(player.x - before.x, player.y - before.y);
+        if (reversing <= 0) {
+          const tip = trail[trail.length - 1];
+          if (Math.hypot(player.x - tip.x, player.y - tip.y) >= 8) trail.push({ x: player.x, y: player.y });
+        }
+        recent.push({ x: player.x, y: player.y });
+        if (recent.length > 45) recent.shift();
         const remaining = Math.hypot(to.x - player.x, to.y - player.y);
         const routeRemaining = distanceFrom[index] + nearestDistance;
         lastOffRoute = nearestDistance;
@@ -298,8 +328,22 @@ function installHarness(): void {
         // A driver whose route is behind them turns round rather than
         // steering full lock into the kerb for ever.
         facingAwaySeconds = Math.abs(error) > 1.9 && reversing <= 0 ? facingAwaySeconds + STEP : 0;
-        if (facingAwaySeconds > 0.6) { reversing = 1.2; facingAwaySeconds = 0; }
-        if (reversing <= 0 && pinnedSeconds > 1.5) { reversing = 1.2; wedges++; }
+        // Rocking in place: 1.5 s inside 8 px without being pinned outright.
+        const rocking = reversing <= 0 && recent.length === 45
+          && recent.every(q => Math.hypot(q.x - recent[0].x, q.y - recent[0].y) < 8);
+        const backOut = () => {
+          // ~50 px back along the trail; the points passed are dropped, so a
+          // second try goes further back.
+          let back = 0;
+          while (trail.length > 1 && back < 50) {
+            const last = trail.pop()!;
+            back += Math.hypot(last.x - trail[trail.length - 1].x, last.y - trail[trail.length - 1].y);
+          }
+          backTo = { ...trail[trail.length - 1] };
+          reversing = 3; facingAwaySeconds = 0; recent.length = 0;
+        };
+        if (reversing <= 0 && pinnedSeconds > 1.5) { wedges++; backOut(); }
+        else if (reversing <= 0 && (facingAwaySeconds > 0.6 || rocking)) backOut();
 
         if (remaining < ARRIVE_PX) { outcome = 'arrived'; break; }
         if (pinnedSeconds > PINNED_SECONDS) { outcome = 'pinned'; break; }
@@ -376,7 +420,7 @@ test('driving harness: planned routes can actually be driven', async ({ page }) 
   // 2026-09-29 load token, which stopped two loads writing the same world.
   const arrivalRate = report.outcomes.arrived / report.pairs;
   expect(arrivalRate,
-    `${report.outcomes.arrived} of ${report.pairs} drives arrived`).toBeGreaterThanOrEqual(0.7);
+    `${report.outcomes.arrived} of ${report.pairs} drives arrived`).toBeGreaterThanOrEqual(0.8);
 
   // And the network must not fragment back into islands.
   expect(report.componentShare).toBeGreaterThan(0.7);
