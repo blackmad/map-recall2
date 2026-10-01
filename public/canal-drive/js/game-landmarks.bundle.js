@@ -753,12 +753,13 @@
   }
 
   // src/canalRecall/game/driveByTrigger.ts
-  var DRIVE_BY_RADIUS = 300;
+  var DRIVE_BY_RADIUS = 135;
   var DRIVE_BY_LOOKAHEAD_SECONDS = 3;
   var DRIVE_BY_MIN_LOOKAHEAD = DRIVE_BY_RADIUS;
   var DRIVE_BY_ROUTE_TOLERANCE = 140;
   var DRIVE_BY_PASSED_BEHIND = 90;
-  var PREEMPT_AFTER_SECONDS = 2.5;
+  var PREEMPT_AFTER_SECONDS = 6;
+  var DRIVE_BY_MIN_GAP_SECONDS = 15;
   function pathAhead(rider, route) {
     const reach = Math.max(DRIVE_BY_MIN_LOOKAHEAD, Math.abs(rider.speed) * DRIVE_BY_LOOKAHEAD_SECONDS);
     if (route && route.length >= 2) {
@@ -822,6 +823,9 @@
     if (!source || !hold) return true;
     if (source === "click" || source === "arrival" || hold.kind === "sticky") return false;
     return elapsed >= PREEMPT_AFTER_SECONDS;
+  }
+  function driveByGapElapsed(lastShownAt, now) {
+    return lastShownAt == null || now - lastShownAt >= DRIVE_BY_MIN_GAP_SECONDS;
   }
 
   // src/canalRecall/transit/corridorStreets.ts
@@ -1247,6 +1251,7 @@
         candidates.push(landmark);
       }
       if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
+      if (!driveByGapElapsed(this._lastDriveByAt, this.raceTime)) return;
       if (this._landmarkNotice && !mayReplaceNotice(
         this._landmarkNoticeSource ?? null,
         this._landmarkNoticeHold,
@@ -1257,6 +1262,7 @@
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);
         this._showLandmarkNotice(nearest, { kind: "proximity", anchor: { x: nearest.x, y: nearest.y } }, "drive-by");
+        this._lastDriveByAt = this.raceTime;
         this.vectorMap.setActiveLandmark(nearest);
       }
     }

@@ -953,6 +953,7 @@ class GameRouteRuntime {
     this.particles = new ParticleSystem();
 
     this._seenLandmarks = new Set();
+    this._lastDriveByAt = null;
     this._seenStreetKnowledge = new Set();
     this._clearLandmarkNotice();
 

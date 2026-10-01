@@ -19,9 +19,9 @@ test('a drive-by card opens seconds before the landmark, even over a street card
     game.routePath = null;
     game.quizFeedback = null;
     Object.assign(game.player, { x: landmark.x - 700, y: landmark.y + 100, angle: 0, speed: 260 });
-    // A street card that has been up for three seconds.
+    // A street card that has been up for six seconds (PREEMPT_AFTER_SECONDS).
     game._showLandmarkNotice({ id: 'street:test', name: 'Teststraat', detail: 'A street.' }, { kind: 'timed', seconds: 8 }, 'street');
-    game._landmarkNoticeState.elapsed = 3;
+    game._landmarkNoticeState.elapsed = 6;
     game._updateLandmarks(1 / 60);
     const opened = game._landmarkNotice?.id;
     game.routePath = route;
