@@ -506,7 +506,13 @@ class Game {
           // A hard stick steer (or a turn-around in progress) is the rider's
           // call; the guard still keeps the bike on the road. Keyboard steering
           // is always full lock and keeps the kerb-gliding heading ease.
-          holdHeading: !!this.player._stickHardSteer || this.player._uTurnHeading != null,
+          // Stalled at the edge with the arrows held: the shoulder's heading
+          // ease (12% a frame) exactly cancelled keyboard steering, so a bike
+          // nosed into the end of Zanddwarsstraat by Sint Antoniessluis could
+          // neither turn nor move (keyboard-ride.spec.ts, 2026-10-01). After
+          // 0.2 s of that, steering wins.
+          holdHeading: !!this.player._stickHardSteer || this.player._uTurnHeading != null
+            || (this._edgeStallFrames || 0) > 12,
           excessAt,
         };
       const guard = CanalRecallCar.constrainCarToRoad(
@@ -517,6 +523,9 @@ class Game {
         guardOpts,
       );
       this._blockedCarFrames = guard === 'rolled-back' ? this._blockedCarFrames + 1 : 0;
+      const stalled = guard !== 'on-road' && Math.abs(this.player.steerInput) > 0.5
+        && Math.hypot(this.player.x - previousPlayerPosition.x, this.player.y - previousPlayerPosition.y) < 0.5;
+      this._edgeStallFrames = stalled ? (this._edgeStallFrames || 0) + 1 : 0;
     } else if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
       this._blockedBoatFrames++;
       // Do not let a fast frame step carry the boat across a quay. The old

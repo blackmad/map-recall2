@@ -370,13 +370,24 @@ class Renderer {
     let textY = y + 18;
     ctx.font = `700 11px ${surface.fontMono}`;
     ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
     // Centre the capitals, not the em box, in the pill: the labels are all
     // caps, and a fixed baseline sat them visibly off-centre (user report
     // 2026-09-28). Measured, because the mono webfont's cap height is not a
     // fixed fraction of 11 px across fallbacks.
-    const pillTop = textY - 10, pillHeight = 15;
-    const capHeight = ctx.measureText('M').actualBoundingBoxAscent || 8;
-    const badgeBaseline = pillTop + (pillHeight + capHeight) / 2;
+    // Snapped to device pixels. The HUD canvas is scaled (1.125 on a 1440 px
+    // window, more on others), so a baseline on a half device pixel, which
+    // WebKit rounds down and Chrome does not, put the capitals visibly low in
+    // Safari (user reports 2026-09-28, 2026-10-01). The pill and the baseline
+    // are placed in device space, with the air split evenly.
+    const transform = ctx.getTransform();
+    const scaleY = transform.d || 1;
+    const toDevice = v => Math.round(v * scaleY + transform.f);
+    const fromDevice = v => (v - transform.f) / scaleY;
+    const pillTopDevice = toDevice(textY - 11), pillBottomDevice = toDevice(textY + 5);
+    const capDevice = Math.round((ctx.measureText('M').actualBoundingBoxAscent || 8) * scaleY);
+    const pillTop = fromDevice(pillTopDevice), pillHeight = fromDevice(pillBottomDevice) - pillTop;
+    const badgeBaseline = fromDevice(pillTopDevice + Math.round((pillBottomDevice - pillTopDevice + capDevice) / 2));
     for (const badge of card.badges) {
       const [fill, ink] = badgeColors[badge.kind];
       ctx.fillStyle = fill;

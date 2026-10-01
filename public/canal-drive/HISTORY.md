@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Rides on the real keyboard; arrow steering beat the shoulder
+
+The sweep, pose probe and harness set throttle and steering directly and stub
+the quiz, so they reported zero traps where the user kept getting stuck.
+`tests/e2e/keyboard-ride.spec.ts` places the bike before a reported bridge and
+then uses only Playwright key presses: arrows to ride, number keys or typing to
+answer. The quiz stays on, and every other answer is wrong, which gives the
+longest hold. It found a real wedge at once: at the end of Zanddwarsstraat by
+Sint Antoniessluis, with up and left held, the soft shoulder's heading ease
+(12% a frame toward the street) cancelled keyboard steering (0.033 rad a frame)
+exactly. The bike neither turned nor moved. Stick riders already had
+`holdHeading` on a hard steer; keyboard steering is always full lock, so it
+kept the ease. Now, after 0.2 s stalled at an edge with steering held, the
+guard leaves the heading to the rider. The spec fails on the old code and
+passes now (Sint Antoniessluis, Westeinde, Koepelkerk). Harness unchanged: no
+pinned or wedged drives.
+
+Card badges are snapped to device pixels. The desktop HUD is drawn in a
+1280-wide design space scaled to the window (1.125 at 1440 px), so the
+centred baseline fell between device pixels and WebKit drew the capitals low.
+Measured after the fix: 9 device rows above and 9 below, in WebKit and Chrome.
+
 ## 2026-10-01 — "Stuck on a bridge": a question hidden behind the bike
 
 A question freezes the bike until it is answered (`_updateRacing` returns
