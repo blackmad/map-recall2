@@ -47,7 +47,7 @@ import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teach
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import type { BridgeRegisterFile } from '../bridgeRegister';
-import { DRIVE_BY_RADIUS, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
+import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import {
   buildCorridorStreetIndex,
   distanceToPath,
@@ -484,6 +484,7 @@ export class GameLandmarkRuntime {
       candidates.push(landmark);
     }
     if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
+    if (!driveByGapElapsed(this._lastDriveByAt, this.raceTime)) return;
     if (this._landmarkNotice && !mayReplaceNotice(
       this._landmarkNoticeSource ?? null, this._landmarkNoticeHold, this._landmarkNoticeState.elapsed)) return;
     // Look ahead along where the rider is going, so the card is up before
@@ -495,6 +496,7 @@ export class GameLandmarkRuntime {
       // Held while the player is still near it, rather than for a fixed six
       // seconds that expired while they were still approaching.
       this._showLandmarkNotice(nearest, { kind: 'proximity', anchor: { x: nearest.x, y: nearest.y } }, 'drive-by');
+      this._lastDriveByAt = this.raceTime;
       this.vectorMap.setActiveLandmark(nearest);
     }
   }

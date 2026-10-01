@@ -19,8 +19,10 @@ import type { NoticeHold } from './landmarkNotice';
 import { nearestRouteIndex } from './routeSelection';
 
 /** px — how close the path ahead must pass to a landmark to open its card.
- *  About 100 m at the current world scale. */
-export const DRIVE_BY_RADIUS = 300;
+ *  About 45 m: a facade on the street being ridden, or across one canal. At
+ *  100 m (300 px) a card opened for Huis Bartolotti while it stood a block
+ *  away behind other houses, never on screen (user report 2026-10-01). */
+export const DRIVE_BY_RADIUS = 135;
 /** Seconds of travel the trigger looks ahead, so the card is up and readable
  *  before the rider reaches the landmark rather than as they pass it. */
 export const DRIVE_BY_LOOKAHEAD_SECONDS = 3;
@@ -35,7 +37,12 @@ export const DRIVE_BY_ROUTE_TOLERANCE = 140;
 export const DRIVE_BY_PASSED_BEHIND = 90;
 /** Seconds a street or drive-by card keeps the slot before a landmark about to
  *  be passed may take it. */
-export const PREEMPT_AFTER_SECONDS = 2.5;
+export const PREEMPT_AFTER_SECONDS = 6;
+/** Seconds between drive-by cards. In the canal belt a landmark stands every
+ *  few houses, and cards replacing each other every few seconds left no time
+ *  to read one or to watch the road (user report 2026-10-01, "pace the rate
+ *  at which we pop up those cards"). */
+export const DRIVE_BY_MIN_GAP_SECONDS = 15;
 
 export interface Rider extends WorldPoint {
   /** Radians; the direction of travel is (cos, sin). */
@@ -120,4 +127,9 @@ export function mayReplaceNotice(source: NoticeSource | null, hold: NoticeHold |
   if (!source || !hold) return true;
   if (source === 'click' || source === 'arrival' || hold.kind === 'sticky') return false;
   return elapsed >= PREEMPT_AFTER_SECONDS;
+}
+
+/** Whether enough time has passed since the last drive-by card for another. */
+export function driveByGapElapsed(lastShownAt: number | null | undefined, now: number): boolean {
+  return lastShownAt == null || now - lastShownAt >= DRIVE_BY_MIN_GAP_SECONDS;
 }

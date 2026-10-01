@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Drive-by cards: nearer landmarks, paced
+
+A card for Huis Bartolotti opened while it stood a block away behind other
+houses, never on screen, and in the canal belt cards replaced each other every
+few seconds (user report). The drive-by radius around the path ahead is now
+135 px (about 45 m: a facade on the street being ridden, or across one canal),
+down from 300 px (100 m). A drive-by card may replace a street or drive-by card
+after 6 s, up from 2.5 s, and drive-by cards are at least 15 s apart
+(`DRIVE_BY_MIN_GAP_SECONDS`, reset each ride). Clicked cards are unaffected.
+
 ## 2026-10-01 — Road guard: the shoulder resists only leaving the surface
 
 The soft-shoulder branch of `constrainCarToRoad` cancelled any velocity and

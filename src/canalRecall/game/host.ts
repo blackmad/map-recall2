@@ -133,6 +133,8 @@ export interface LandmarkHost extends GameCoreHost {
   _landmarkImages: Map<string, HTMLImageElement>;
   _landmarkImageRequests: Set<string>;
   _seenLandmarks: Set<string>;
+  /** `raceTime` when the last drive-by card opened (see driveByGapElapsed). */
+  _lastDriveByAt?: number | null;
   _seenLandmarkNames: Set<string>;
   /** Encyclopedia cards already shown this drive, keyed like landmark ids. */
   _seenStreetKnowledge: Set<string>;
