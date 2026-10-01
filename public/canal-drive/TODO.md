@@ -17,7 +17,7 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ## P0 — Red, or actively teaching something false
 
-*Empty. Keep it that way: anything that makes the game teach something false
+*Anything that makes the game teach something false, or traps the rider,
 belongs here before anything below it.*
 
 **Bridges: 6 sweep drives still wedge (found 2026-10-01).**
