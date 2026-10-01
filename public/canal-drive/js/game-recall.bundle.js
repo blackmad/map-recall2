@@ -425,6 +425,10 @@
   // src/canalRecall/facts/factStore.ts
   var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
 
+  // src/canalRecall/streetOverlayStyle.ts
+  var PARALLEL_COS = Math.cos(25 * Math.PI / 180);
+  var ANSWERED_STREET_SECONDS = 6;
+
   // src/canalRecall/game/recallRuntime.ts
   var DISTRACTOR_COUNT = 3;
   var CHOICE_POOL_RADIUS = 1500;
@@ -1306,6 +1310,12 @@ Learned names, exploration collection, personal bests, route settings and the ho
         segmentIndex: this.quizPromptSegmentIndex,
         pointIndex: this.quizPromptPointIndex
       };
+      this._answerStamp = this.quizPromptSegmentIndex >= 0 ? {
+        name: correctName,
+        segmentIndex: this.quizPromptSegmentIndex,
+        correct,
+        until: this.raceTime + ANSWERED_STREET_SECONDS
+      } : null;
       this._clearLandmarkNotice();
       this._neighborhoodNotice = null;
       this._neighborhoodNoticeTimer = 0;

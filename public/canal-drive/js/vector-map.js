@@ -182,6 +182,12 @@ class VectorBasemap {
     for (const layer of window.CanalRecallStreets.streetOverlayLayers()) {
       this.map.addLayer(layer, layer.type === 'symbol' ? undefined : before);
     }
+    // The just-answered name, painted on the road; its own source, filled only
+    // after an answer (see answeredStreetNameLayer).
+    if (window.CanalRecallStreets.answeredStreetNameLayer) {
+      this.map.addSource(window.CanalRecallStreets.ANSWERED_STREET_SOURCE_ID, { type: 'geojson', data: empty });
+      this.map.addLayer(window.CanalRecallStreets.answeredStreetNameLayer());
+    }
   }
 
   _ensureTransitOverlayLayers() {
@@ -930,6 +936,8 @@ class VectorBasemap {
         // The active landmark's locator too: under the extrusions, the dot
         // for a tree beside a building was hidden by that building.
         'active-landmark-line', 'active-landmark-point',
+        // The answered street name stands above the facades, not cut by them.
+        'answered-street-name',
         ...((lib && lib.OWN_POI_BANDS) || []).flatMap(band => Object.values(lib.ownPoiLayerIds(band)))];
       // Building layers are re-created later (themes, detailed buildings), so
       // keep checking. Once the order is right the check moves nothing, so
@@ -1420,15 +1428,60 @@ class VectorBasemap {
     this.map.getSource('navigation-route').setData({ type: 'Feature', properties: {}, geometry: { type: 'LineString', coordinates } });
   }
 
-  setStreetHighlights(track, loader, learnedNames, activeName, activeSegmentIndex) {
+  /** Polylines for the named street through `segmentIndex`, its same-name
+   *  fragments joined and parallel copies collapsed onto `seed`. */
+  _namedStreetChains(track, name, segmentIndex, seed) {
+    const ridden = track.segments[segmentIndex];
+    const connected = name && ridden && ridden.name === name
+      ? (track.getConnectedNamedSegments ? track.getConnectedNamedSegments(segmentIndex) : [ridden])
+      : [];
+    const collapse = window.CanalRecallStreets && window.CanalRecallStreets.collapseParallelFragments;
+    const paths = collapse
+      ? collapse(connected, seed || ridden)
+      : connected.map(segment => segment.points).filter(points => points && points.length > 1);
+    const stitch = window.CanalRecallStreets && window.CanalRecallStreets.stitchOverlayPaths;
+    return stitch ? stitch(paths) : paths;
+  }
+
+  /** Paint the just-answered street's name on the road; null clears it. */
+  setAnsweredStreetName(track, loader, stamp, rider = null) {
+    const sourceId = window.CanalRecallStreets && window.CanalRecallStreets.ANSWERED_STREET_SOURCE_ID;
+    if (!this.ready || !track || !loader || !sourceId || !this.map.getSource(sourceId)) return;
+    const key = stamp ? `${stamp.name}:${stamp.segmentIndex}:${stamp.correct}` : '';
+    if (key === this._answeredStreetKey) return;
+    this._answeredStreetKey = key;
+    // Placed once, at the answer: on the street ahead of the rider, who then
+    // rides past them.
+    const chains = stamp ? this._namedStreetChains(track, stamp.name, stamp.segmentIndex, null) : [];
+    const ahead = window.CanalRecallStreets.pointsAheadOnChains;
+    const points = stamp && rider && ahead ? ahead(chains, rider) : [];
+    // Last in the style: the detailed-building renderer draws above the raised
+    // POI layers and cut the name off behind the nearest facade.
+    if (points.length && this.map.getLayer('answered-street-name')) this.map.moveLayer('answered-street-name');
+    this.map.getSource(sourceId).setData({
+      type: 'FeatureCollection',
+      features: points.map(point => ({
+        type: 'Feature',
+        properties: { name: stamp.name, correct: !!stamp.correct },
+        geometry: { type: 'Point', coordinates: this.worldToLngLat(point.x, point.y, loader) },
+      })),
+    });
+  }
+
+  setStreetHighlights(track, loader, learnedNames, activeName, activeSegmentIndex, routePath = null) {
     if (!this.ready || !track || !loader || !this.map.getSource('active-street')) return;
     const activeKey = `${activeName || ''}:${activeSegmentIndex}`;
-    if (activeKey !== this._activeStreetKey) {
+    if (activeKey !== this._activeStreetKey || routePath !== this._activeStreetRoute) {
       this._activeStreetKey = activeKey;
-      const seed = track.segments[activeSegmentIndex];
-      const connected = activeName && seed && seed.name === activeName
-        ? (track.getConnectedNamedSegments ? track.getConnectedNamedSegments(activeSegmentIndex) : [seed])
+      this._activeStreetRoute = routePath;
+      const ridden = track.segments[activeSegmentIndex];
+      const connected = activeName && ridden && ridden.name === activeName
+        ? (track.getConnectedNamedSegments ? track.getConnectedNamedSegments(activeSegmentIndex) : [ridden])
         : [];
+      // With the route line on, draw the same-name way the route runs along
+      // (seedNearestRoute), so the highlight lies on the line, not beside it.
+      const nearestRoute = window.CanalRecallStreets && window.CanalRecallStreets.seedNearestRoute;
+      const seed = nearestRoute ? nearestRoute(connected, ridden, routePath) : ridden;
       // A named waterway or street is stored as several OSM ways — Grimburgwal
       // is three, laid end to end — and drawing each as its own round-capped
       // line leaves a seam at every join, so one canal reads as several. Join

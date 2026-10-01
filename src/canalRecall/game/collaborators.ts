@@ -229,7 +229,11 @@ export interface VectorMap {
   setStreetHighlights(
     track: Track, loader: OsmLoader, learnedNames: Set<string>,
     activeName: string, activeSegmentIndex: number,
+    /** The route line, when shown: the highlight follows its same-name way. */
+    routePath?: readonly WorldPoint[] | null,
   ): void;
+  /** Paint the just-answered street's name on the road; null clears it. */
+  setAnsweredStreetName?(track: Track, loader: OsmLoader, stamp: { name: string; segmentIndex: number; correct: boolean } | null, rider?: Readonly<{ x: number; y: number; angle: number }>): void;
   isWater(x: number, y: number, loader: OsmLoader): boolean;
   inspectBuilding(cssX: number, cssY: number, canvasRect: DOMRect): BuildingHit | null;
   setActiveLandmark(landmark: LandmarkNotice | null): void;

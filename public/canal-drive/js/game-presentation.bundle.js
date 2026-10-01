@@ -931,8 +931,11 @@
           this.osmLoader,
           this.learnedNames,
           litName,
-          litSegment
+          litSegment,
+          this.routeOptions.line ? this._liveRoutePath || this.routePath : null
         );
+        const stamp = this._answerStamp && this.raceTime < this._answerStamp.until ? this._answerStamp : null;
+        this.vectorMap.setAnsweredStreetName?.(this.track, this.osmLoader, stamp, player);
       }
       this.renderer.drawTrack(this.camera, this.track);
       if (byBoat) {

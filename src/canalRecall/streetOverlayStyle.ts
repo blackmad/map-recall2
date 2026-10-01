@@ -475,3 +475,132 @@ function findStubs(pieces: Piece[], protectedFragments: Set<number>, spacing: nu
   });
   return stubs;
 }
+
+/**
+ * The same-name way to seed the highlight from when the route line is shown:
+ * the fragment the route runs along, not the one the rider's position matched.
+ * Damrak, Raadhuisstraat and Prins Hendrikkade are each a carriageway, a tram
+ * way and named cycle tracks; the router prefers the cycle track, the position
+ * often matched the carriageway, and the highlight ran beside the route line
+ * instead of on it (user report 2026-10-01, "the street highlight and the road
+ * line are different"). Returns `seed` unless another fragment lies clearly
+ * nearer the route (mean distance of its points, within `maxDistance`).
+ */
+export function seedNearestRoute<T extends HighlightFragment>(
+  fragments: readonly T[],
+  seed: T | null,
+  route: readonly OverlayPoint[] | null | undefined,
+  maxDistance: number = 12,
+): T | null {
+  if (!route || route.length < 2 || fragments.length < 2) return seed;
+  const distanceToRoute = (point: OverlayPoint) => {
+    let best = Infinity;
+    for (let i = 0; i < route.length - 1; i++) {
+      const a = route[i], b = route[i + 1];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const lengthSquared = dx * dx + dy * dy || 1;
+      const t = Math.max(0, Math.min(1, ((point.x - a.x) * dx + (point.y - a.y) * dy) / lengthSquared));
+      best = Math.min(best, Math.hypot(a.x + dx * t - point.x, a.y + dy * t - point.y));
+    }
+    return best;
+  };
+  const meanDistance = (fragment: T) => {
+    if (!fragment.points || fragment.points.length < 2) return Infinity;
+    let sum = 0;
+    for (const point of fragment.points) sum += distanceToRoute(point);
+    return sum / fragment.points.length;
+  };
+  let best = seed, bestDistance = seed ? meanDistance(seed) : Infinity;
+  const seedDistance = bestDistance;
+  for (const fragment of fragments) {
+    if (fragment === seed) continue;
+    const distance = meanDistance(fragment);
+    if (distance < bestDistance) { best = fragment; bestDistance = distance; }
+  }
+  if (best === seed || bestDistance > maxDistance || bestDistance > seedDistance - 3) return seed;
+  return best;
+}
+
+/** Source the just-answered street's name is painted from. */
+export const ANSWERED_STREET_SOURCE_ID = 'answered-street';
+/** Seconds the answered name stays painted on the street. */
+export const ANSWERED_STREET_SECONDS = 6;
+
+/**
+ * The answered street's name, in big letters standing on the street ahead,
+ * green when right and red when missed (user request 2026-10-01: "after I get
+ * a street right or wrong ... in big letters on the street ahead of me to
+ * reinforce it"). Its source is filled only after the answer, never while the
+ * question is open, so it cannot give an answer away.
+ */
+export function answeredStreetNameLayer(): Record<string, unknown> {
+  // Points on the street ahead, upright to the camera: painted along the line
+  // the name ran sideways whenever the street led away from the rider.
+  return {
+    id: 'answered-street-name', type: 'symbol', source: ANSWERED_STREET_SOURCE_ID,
+    layout: {
+      'text-field': ['upcase', ['get', 'name']],
+      'text-font': ['Noto Sans Bold'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 14, 18, 17, 30, 19, 44],
+      'text-letter-spacing': 0.08,
+      'text-anchor': 'bottom',
+      'text-pitch-alignment': 'viewport',
+      'text-rotation-alignment': 'viewport',
+      'text-allow-overlap': true,
+      'text-ignore-placement': true,
+    },
+    paint: {
+      'text-color': ['case', ['get', 'correct'], '#15803D', '#B91C1C'],
+      'text-halo-color': '#FFFFFF',
+      'text-halo-width': 3,
+      'text-opacity': 0.95,
+    },
+  };
+}
+
+/** px along the answered street, ahead of the rider, where its name stands. */
+export const ANSWERED_STREET_AHEAD = [120, 330] as const;
+
+/**
+ * Points `distances` ahead of the rider along the polyline nearest them,
+ * walking whichever way the heading points. Fewer when the street ends first.
+ */
+export function pointsAheadOnChains(
+  chains: readonly (readonly OverlayPoint[])[],
+  rider: Readonly<{ x: number; y: number; angle: number }>,
+  distances: readonly number[] = ANSWERED_STREET_AHEAD,
+): OverlayPoint[] {
+  let best: { chain: readonly OverlayPoint[]; index: number; t: number; dist: number } | null = null;
+  for (const chain of chains) {
+    for (let i = 0; i < chain.length - 1; i++) {
+      const a = chain[i], b = chain[i + 1];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const lengthSquared = dx * dx + dy * dy || 1;
+      const t = Math.max(0, Math.min(1, ((rider.x - a.x) * dx + (rider.y - a.y) * dy) / lengthSquared));
+      const dist = Math.hypot(a.x + dx * t - rider.x, a.y + dy * t - rider.y);
+      if (!best || dist < best.dist) best = { chain, index: i, t, dist };
+    }
+  }
+  if (!best) return [];
+  const { chain, index, t } = best;
+  const a = chain[index], b = chain[index + 1];
+  const forward = (b.x - a.x) * Math.cos(rider.angle) + (b.y - a.y) * Math.sin(rider.angle) >= 0;
+  const start = { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t };
+  const path: OverlayPoint[] = [start];
+  if (forward) for (let i = index + 1; i < chain.length; i++) path.push(chain[i]);
+  else for (let i = index; i >= 0; i--) path.push(chain[i]);
+  const out: OverlayPoint[] = [];
+  const wanted = [...distances].sort((x, y) => x - y);
+  let travelled = 0, next = 0;
+  for (let i = 1; i < path.length && next < wanted.length; i++) {
+    const p = path[i - 1], q = path[i];
+    const step = Math.hypot(q.x - p.x, q.y - p.y);
+    while (next < wanted.length && travelled + step >= wanted[next]) {
+      const f = step ? (wanted[next] - travelled) / step : 0;
+      out.push({ x: p.x + (q.x - p.x) * f, y: p.y + (q.y - p.y) * f });
+      next++;
+    }
+    travelled += step;
+  }
+  return out;
+}
