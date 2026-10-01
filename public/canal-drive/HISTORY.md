@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Cameras: the follow cam was Chase
+
+The user confirmed the "follow cam ... a little too far" was Chase, so the "chase
+camera ... a little too close" was Cockpit. The earlier Chase change went the
+wrong way. Chase now comes in (zoom offset 0.55 -> 0.7) at 48°; Cockpit steps
+back (1.65 -> 1.45) and lowers (82° -> 84°), and its handlebars and more of the
+bike stay in frame (checked by screenshot).
+
 ## 2026-10-01 — The answered street, named on the street ahead; highlight on the route line
 
 After a street, water or line answer, its name stands in big letters on the

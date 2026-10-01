@@ -781,6 +781,9 @@ export class GameRecallRuntime {
     pointIndex?: number;
   }): void {
     if (!this.player) return;
+    // A new question outlives the last answer's hold: its timer must not hide
+    // this card (see the token in _submitCanalAnswer).
+    this._answerHoldToken = (this._answerHoldToken || 0) + 1;
     this._pendingCrossing = null;
     this.quizPromptKind = kind;
     this.quizPromptName = name;
@@ -1131,7 +1134,14 @@ export class GameRecallRuntime {
     const learnedRouteType = isStreetQuiz ? 'street'
       : profile.learnedKind === 'street' ? 'street'
         : profile.learnedKind === 'transit' ? 'line' : 'water';
+    // The hold ends by hiding the card, unless another question opened since:
+    // crossing a bridge during the hold opened the bridge question, which
+    // freezes the bike, and this timer then hid its card. The bike stood on
+    // the bridge behind a question nobody could see (user reports 2026-10-01,
+    // "stuck on this bridge", Sint Antoniessluis and others).
+    const holdToken = this._answerHoldToken = (this._answerHoldToken || 0) + 1;
     setTimeout(() => {
+      if (holdToken !== this._answerHoldToken || this.quizPromptName) return;
       this._prompt.style.display = 'none';
       document.getElementById('canal-card')?.classList.remove('answered');
       this._answerReveal = null;

@@ -304,7 +304,7 @@ class VectorBasemap {
     const chase = viewMode === 'chase';
     const cockpit = viewMode === 'cockpit';
     const base = cockpit
-      ? (typeof COCKPIT_PITCH_DEGREES === 'number' ? COCKPIT_PITCH_DEGREES : 82)
+      ? (typeof COCKPIT_PITCH_DEGREES === 'number' ? COCKPIT_PITCH_DEGREES : 84)
       : chase
         ? (typeof CHASE_PITCH_DEGREES === 'number' ? CHASE_PITCH_DEGREES : 48)
         : (typeof TOPDOWN_TILT_DEGREES === 'number' ? TOPDOWN_TILT_DEGREES : 14);
@@ -314,10 +314,10 @@ class VectorBasemap {
 
   zoomOffsetForViewMode(viewMode) {
     if (viewMode === 'cockpit') {
-      return typeof COCKPIT_ZOOM_OFFSET === 'number' ? COCKPIT_ZOOM_OFFSET : 1.65;
+      return typeof COCKPIT_ZOOM_OFFSET === 'number' ? COCKPIT_ZOOM_OFFSET : 1.45;
     }
     if (viewMode === 'chase') {
-      return typeof CHASE_ZOOM_OFFSET === 'number' ? CHASE_ZOOM_OFFSET : 0.35;
+      return typeof CHASE_ZOOM_OFFSET === 'number' ? CHASE_ZOOM_OFFSET : 0.7;
     }
     return 0;
   }

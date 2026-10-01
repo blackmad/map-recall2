@@ -200,12 +200,14 @@ const TOPDOWN_TILT_DEGREES = 14;
 // two 3D modes no longer share nearly the same frustum.
 // Chase was reading as a distant aerial — bump zoom so the vehicle fills the
 // frame. Cockpit lookahead is a soft lead ahead of the bumper, not a far shove.
-// 2026-10-01 (user): "chase camera is a little too close ... slightly too high
-// angle". Chase steps back (zoom 0.55 -> 0.35) and lowers (42° -> 48°).
+// 2026-10-01 (user): "chase camera is a little too close, follow cam a little
+// too far, both are slightly too high angle" — the follow cam being Chase and
+// the close one Cockpit. Chase comes in (zoom 0.55 -> 0.7) and lowers
+// (42° -> 48°); Cockpit steps back (1.65 -> 1.45) and lowers (82° -> 84°).
 const CHASE_PITCH_DEGREES = 48;
-const COCKPIT_PITCH_DEGREES = 82;
-const CHASE_ZOOM_OFFSET = 0.35;
-const COCKPIT_ZOOM_OFFSET = 1.65;
+const COCKPIT_PITCH_DEGREES = 84;
+const CHASE_ZOOM_OFFSET = 0.7;
+const COCKPIT_ZOOM_OFFSET = 1.45;
 const COCKPIT_LOOKAHEAD = 160; // px — camera centre ahead of the vehicle
 // Chase view: a constant lead puts the rider below centre, so more of the
 // street ahead is on screen. At 0 the rider sat at exactly mid-height and the
