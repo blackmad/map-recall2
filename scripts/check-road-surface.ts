@@ -348,7 +348,7 @@ check('the road guard counts any containing corridor, not only the heading pick'
   const shoulder = { ...marnix, dist: 29 };
   assert.equal(pickGuardContact([shoulder, westerkade], heading), westerkade, 'including on the heading road\'s soft shoulder');
   const busway = { ...marnix, width: 54, dist: 29, segIdx: 2 };
-  assert.equal(pickGuardContact([shoulder, busway], heading), shoulder, 'a wider parallel duplicate does not widen the corridor');
+  assert.equal(pickGuardContact([shoulder, busway], heading), busway, 'a parallel corridor that contains the bike is road too: the surface is the union');
   const inside = { ...marnix, dist: 10 };
   assert.equal(pickGuardContact([inside, westerkade], heading), inside, 'the heading pick wins while the bike is on its asphalt');
 });
