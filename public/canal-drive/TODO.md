@@ -20,29 +20,22 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 *Anything that makes the game teach something false, or traps the rider,
 belongs here before anything below it.*
 
-**Road surface: build it once as a distance field (in progress 2026-10-01).**
-The guard rebuilds "on asphalt?" every frame from centreline distances, and
-every seam where ways meet is a chance for a hole. The plan: buffer each way
-to its width, add a disc at every graph node sized to the widest incident way,
-add the router's connectors, and rasterise the union into a distance field
-with signed distance to the edge. The guard asks the field "inside?", and when
-the bike leaves, slides along the field's gradient. The check: every graph edge
-and node disc lies inside the field. That is data, not a driver.
+**Bridges: one sweep artefact left; extend the sweep to non-bridge seams.**
+After the union guard and the union-aware shoulder (see HISTORY, 2026-10-01),
+the full sweep (`BRIDGE_SWEEP_ALL=1`) drives 3,006 crossings with 2,875
+arrivals and 0 traps. Its only wedges (14 frames in 2 drives) are Burgemeester
+Fockstraat (`routing_11260` F, `routing_13031` R). The sweep starts inside the
+Menno ter Braakstraat cul-de-sac, which raw OSM joins to Burgemeester van
+Tienhovengracht only by footway + steps (excluded on purpose). Next:
+- Make the sweep's snap skip geometric cul-de-sacs, then make the full sweep
+  part of a nightly or pre-release check.
+- Seams are not only at bridges: run the same "step toward any road is kept"
+  probe across ordinary junctions where a path ends a few metres from a street.
 
-State after the union guard (`pickGuardContact` counts any containing
-corridor): the full sweep has 23 wedges in 4 drives (was 37 in 6).
-- Burgemeester Fockstraat (`routing_11260` F, `routing_13031` R): the sweep
-  starts inside the Menno ter Braakstraat cul-de-sac. Raw OSM joins it to
-  Burgemeester van Tienhovengracht only by footway + steps, which are excluded
-  on purpose, so this is a sweep artefact.
-- Bosch van Drakesteinpad (`routing_30423`) 52.375782,4.788704 and
-  `routing_41165` (Jan Voermanstraat) 52.368926,4.84149: seam gaps at the
-  drive's start, where a 9 px path's end sits outside the street corridor.
-
-Snap skips remain: 484 `noSnap`, 70 `noRoute`, 1,270 `missesDeck`. Not
-arriving (139) is mostly the sweep driver circling, not physics. Measured and
-reverted: stopping the heading ease from turning against the rider's steering
-raised wedges to 71.
+Measured and dropped: a junction disc at every graph node (closed no extra
+case, and the ~150k extra spans made the harness time out), and stopping the
+heading ease from turning against the rider's steering (wedges rose to 71).
+Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 
 ---
 
@@ -93,7 +86,11 @@ article ("Dirk" Sterenberg). A human could skim that list (`npx tsx scripts/audi
 
 **6. Due-aware “where next” routing.**
 The thin slice shipped 2026-09-29 (see HISTORY). With Plan review on, a ride
-runs between the landmarks whose line passes the most due names. Still open:
+runs between the landmarks whose line passes the most due names.
+**Condition (user, 2026-10-01):** steering past due streets only makes sense
+when the route line is shown. With the line off, the rider picks their own
+way and never sees the planned detour, so due-aware planning should apply only
+with the line on (or be reframed as a hint the rider can see). Still open:
 - A due street off every landmark line is ridden as a via, or, when it
   cannot be ridden through, ends the ride as "the mystery street" (see
   HISTORY, 2026-09-30). Each ride takes one such name; the others wait for

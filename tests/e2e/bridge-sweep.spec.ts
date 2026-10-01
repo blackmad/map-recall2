@@ -45,6 +45,12 @@ const NAMED_BRIDGES = [
   'routing_43343', // Dijkmeerlaan
   'routing_22983', // Papendrechtstraat
   'routing_11538', // Oeverlandenweg
+  // 2026-10-01, fixed by the union guard and the union-aware shoulder:
+  'routing_12056', // Liesdelsluis at Oudekerksplein
+  'routing_16255', // Gooiseweg at Rozenburglaan
+  'routing_10632', // unnamed, 52.3484,4.8219
+  'routing_30423', // Bosch van Drakesteinpad: service road ends 3 m from the path
+  'routing_41165', // Jan Voermanstraat seam
 ];
 
 test('the bike crosses every bridge in both directions without wedging', async ({ page }, testInfo) => {

@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Road guard: the shoulder resists only leaving the surface
+
+The soft-shoulder branch of `constrainCarToRoad` cancelled any velocity and
+step "outward" from the one road the bike was nearest. That was the last
+single-road judgement left after the union guard. Where a service road ends
+3 m from a cycle path (Bosch van Drakesteinpad), the bike sat in the 1 px
+notch between the two corridors, and every step onto the path was taken back.
+The shoulder now cancels motion only when `excessAt` (distance past the edge
+of the whole surface) grows. The heading ease still runs on the shoulder: when
+it was skipped too, the desktop harness lost 5 arrivals. Full sweep: 2,875 of
+3,006 arrive (2,867 before), wedges only at the Fockstraat cul-de-sac
+artefact. Bosch van Drakesteinpad and Jan Voermanstraat are fixed and named
+in the sweep. Harness: desktop 109, iPhone 110, 0 pinned, 0 wedges. A junction
+disc per graph node was tried and dropped: no extra fixes, and the extra
+spans slowed the harness past its timeout.
+
 ## 2026-10-01 — Road guard: the surface is the union of corridors
 
 Every bridge trap fixed through September was the guard judging containment

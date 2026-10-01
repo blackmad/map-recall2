@@ -127,6 +127,13 @@ export function constrainCarToRoad(
 
   const offRoadMargin = candidateRoad.dist - candidateRoad.width;
   if (offRoadMargin <= 0) return 'on-road';
+  // Only motion that takes the car further off the whole surface is resisted.
+  // Judged against the one road it is nearest, a step toward a second road
+  // read as outward: where a service road ends 3 m from a cycle path the bike
+  // sat in the 1 px notch between the two corridors, every step onto the path
+  // taken back, for good (bridge sweep, 2026-10-01: Bosch van Drakesteinpad).
+  const leaving = !options.excessAt
+    || options.excessAt(attemptedX, attemptedY) > options.excessAt(previous.x, previous.y) + 0.01;
 
   const inwardX = candidateRoad.x - car.x;
   const inwardY = candidateRoad.y - car.y;
@@ -139,7 +146,7 @@ export function constrainCarToRoad(
   // Cancelling any outward velocity makes the pull decisive: you may graze the
   // shoulder, but you cannot push further off it.
   const outwardVelocity = car.vx * unitX + car.vy * unitY;
-  if (outwardVelocity < 0) {
+  if (leaving && outwardVelocity < 0) {
     car.vx -= unitX * outwardVelocity;
     car.vy -= unitY * outwardVelocity;
   }
@@ -149,7 +156,7 @@ export function constrainCarToRoad(
   // throttle open, for good (bridge sweep, 2026-09-30: 34 crossings). Take
   // back the outward part of the step and keep the part along the kerb.
   const outwardStep = (attemptedX - previous.x) * unitX + (attemptedY - previous.y) * unitY;
-  if (outwardStep < 0) {
+  if (leaving && outwardStep < 0) {
     car.x -= unitX * outwardStep;
     car.y -= unitY * outwardStep;
   }
