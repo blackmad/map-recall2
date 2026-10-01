@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Da Costa study retired; city-expansion removed
+
+The "Da Costa study" route had been hidden from players since 2026-09-28,
+but the game still fetched its release on every load. vector-map.js loaded
+`data/city-appearance/areas.json`, whose only area pointed at
+`data/city-expansion/current.json`. It used that for appearance priors and
+the optional study roof, facade, tree and public-realm renderers around Da
+Costakade. At the user's request the study is gone. The route pattern, its
+chip and icon, and the game-route branch are removed, and vector-map no longer
+loads the catalog. `public/data/city-expansion/` (63 releases, 313 MB, 5 MB
+current) is deleted from the tree, along with the study-route,
+appearance-colour, wall-colour and camera-stability specs, the material
+demo's owner-isolation test, the publication checks, and the study half of
+complete-city.spec. A saved 'study' preference falls back to the default
+pattern. The study renderer bundles still load in index.html but stay idle.
+The city-appearance publishing scripts would write city-expansion again if
+run. Dev pages that read city-expansion evidence (district evaluation,
+reconstruction status, case 24) lose those images.
+
 ## 2026-10-01 — Hosting: deploys were failing on the storage quota
 
 Every Firebase deploy from 2026-09-29 23:38 to 2026-10-01 14:00 failed with

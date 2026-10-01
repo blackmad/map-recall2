@@ -752,7 +752,6 @@ export function OverlayApp({
             <select id="route-pattern" hidden value={prefs.routePattern} onChange={event => patch({ routePattern: event.target.value as CanalPreferences['routePattern'] })}>
               <option value="surprise">Surprise</option>
               <option value="home">Home</option>
-              <option value="study">Da Costa study</option>
               <option value="here">Here</option>
             </select>
             <select id="route-difficulty" hidden value={prefs.difficulty} onChange={event => patch({ difficulty: event.target.value as CanalPreferences['difficulty'] })}>
