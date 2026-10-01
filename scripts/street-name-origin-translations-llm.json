@@ -101,8 +101,8 @@
   "name": "A. Moenstraat",
   "hash": "8a3f3da19aeb",
   "nlHash": "13fac2e9a5cf",
-  "en": "Adriaan Moen (1879-1950), Amsterdam architect. He designed various factory buildings, villas and shops in the style of the Amsterdamse School. He built the Betlehemkerk on the Zwanenplein.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Adriaan Moen (1879-1950), Amsterdam architect. He designed various factory buildings, villas and shops in the style of the Amsterdam School. He built the Betlehemkerk on the Zwanenplein.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "A. Reitsmakade",
@@ -339,8 +339,8 @@
   "name": "Accason",
   "hash": "a1af5b23a005",
   "nlHash": "a979f969272c",
-  "en": "A corrupted spelling of the French port of Archachon, as it appears on sea charts from the sixteenth and seventeenth centuries.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "A corrupted spelling of the French port of Arcachon, as it appears on sea charts from the sixteenth and seventeenth centuries.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Accraweg",
@@ -416,8 +416,8 @@
   "name": "Ad Grimmonbrug",
   "hash": "403fe6825ebb",
   "nlHash": "73f6d168d0e3",
-  "en": "Ad (Adriaan Alphonsus Maria) Grimmon (1883-1953). As a furniture maker, (interior) architect and colour specialist, he moved from the craft tradition of the Amsterdamse School towards industrial modernism. His career spanned the first half of the 20th century.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Ad (Adriaan Alphonsus Maria) Grimmon (1883-1953). As a furniture maker, (interior) architect and colour specialist, he moved from the craft tradition of the Amsterdam School towards industrial modernism. His career spanned the first half of the 20th century.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Ad Windighof",
@@ -437,8 +437,8 @@
   "name": "Adam van Germezhof",
   "hash": "8a06d0b03633",
   "nlHash": "51d925741aca",
-  "en": "Actor from the time of Vondel (1610-1667). He played roles in the plays of Brederode.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Actor (1610-1667) from the time of Vondel. He played roles in the plays of Brederode.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Adama van Scheltemaplein",
@@ -556,8 +556,8 @@
   "name": "Adriaan van Bergenstraat",
   "hash": "2aee54c3717a",
   "nlHash": "8219c3818976",
-  "en": "The Brabant peat skipper who in 1590 smuggled Sea Beggars into Breda in his peat boat.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "The Brabant peat skipper who in 1590 smuggled soldiers of the Dutch Republic (geuzen) into Breda in his peat boat.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Adriaan van der Horststraat",
@@ -570,8 +570,8 @@
   "name": "Adriaan van Oordthof",
   "hash": "f25b6ee1a905",
   "nlHash": "95cd8d8ceec2",
-  "en": "Writer (1865-1910) who belonged to the school of the Tachtigers (the Movement of the Eighties) (1865-1910). He wrote historical novels.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Writer (1865-1910) who belonged to the Tachtigers (the Movement of the Eighties). He wrote historical novels.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Adrianus van Waertweg",
@@ -850,8 +850,8 @@
   "name": "Alcantarastraat",
   "hash": "16a68cf56e1b",
   "nlHash": "30263b27d692",
-  "en": "A lake in Spain, the Embalse Alcantara, located in the province of Extremadura near the border with Portugal.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "A lake in Spain, the Embalse de Alcántara, a reservoir in Extremadura near the border with Portugal.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Aldebaranplein",
@@ -983,8 +983,8 @@
   "name": "Allenstraat",
   "hash": "eb6c49e38a9d",
   "nlHash": "a007462d3377",
-  "en": "The lake Loch Allen, in County Leitrim, Northern Ireland.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "The lake Lough Allen, in County Leitrim, Ireland.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Alma Tademastraat",
@@ -1053,8 +1053,8 @@
   "name": "Amelandstraat",
   "hash": "f1bb46f5a7c4",
   "nlHash": "b06cb10d4871",
-  "en": "A Wadden island (Noord-Holland).",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "One of the Wadden Islands.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Amerbos",
@@ -1214,8 +1214,8 @@
   "name": "Amundsenweg",
   "hash": "9d1a3936be3c",
   "nlHash": "b69d9a6d97c1",
-  "en": "Roald Amundsen (1872-1928), Norwegian polar explorer. In 1903 he discovered the Northwest Passage. He lost his life during an attempt to rescue the crew of the airship Italia.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Roald Amundsen (1872-1928), Norwegian polar explorer. Setting out in 1903, he was the first to sail through the Northwest Passage. He lost his life during an attempt to rescue the crew of the airship Italia.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Analoogstraat",
@@ -1410,15 +1410,15 @@
   "name": "Anna van Burenstraat",
   "hash": "c46f47fcaedc",
   "nlHash": "f67acc26c5c2",
-  "en": "The first wife of Prince William of Orange (1533-1558).",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Anna van Buren (1533-1558), the first wife of Prince William of Orange.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Anna van den Vondelstraat",
   "hash": "5a830915b855",
   "nlHash": "bac119f2fe28",
-  "en": "Daughter of Joost van den Vondel (1620-1675), who cared for her father for many years. The street was originally named Anna Vondelstraat, but was later renamed (council decision of 29 November 1986) because it was confused with the Vondelstraat.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Anna van den Vondel (1620-1675), daughter of Joost van den Vondel, who cared for her father for many years. The street was originally named Anna Vondelstraat, but was later renamed (council decision of 29 November 1986) because it was confused with the Vondelstraat.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Anna van Saksenbrug",
@@ -1445,8 +1445,8 @@
   "name": "Anne Frankstraat",
   "hash": "76cfaa7d59fb",
   "nlHash": "956a2264c033",
-  "en": "Anne Frank, born to Jewish parents in 1929, was in hiding from 1942 to 1944 with her parents and other members of her family in the building at Prinsengracht 263, where she kept a diary. In 1944 the German occupiers discovered the family and deported them. Anne Frank died of illness and exhaustion in 1945 in the Bergen Belsen extermination camp.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Anne Frank, born to Jewish parents in 1929, was in hiding from 1942 to 1944 with her parents and other members of her family in the building at Prinsengracht 263, where she kept a diary. In 1944 the German occupiers discovered the family and deported them. Anne Frank died of illness and exhaustion in 1945 in the Bergen-Belsen concentration camp.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Anne Kooistrahof",
@@ -1655,8 +1655,8 @@
   "name": "Aragohof",
   "hash": "e42d934202c5",
   "nlHash": "3d48aa2c2abb",
-  "en": "Dominique F.J. Arago (1786-1853), French physicist and astronomer, discoverer of electromagnetism.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Dominique F.J. Arago (1786-1853), French physicist and astronomer, who made early discoveries in electromagnetism.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Arcadia",
@@ -1676,15 +1676,15 @@
   "name": "Archangelkade",
   "hash": "5f370c6d15af",
   "nlHash": "5f1d2ee7df71",
-  "en": "The Russian port city on the Barents Sea (Arctic Ocean), a port that exports timber. Amsterdam merchants were already visiting the city regularly around 1600.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "The Russian port city on the White Sea (Arctic Ocean), a port that exports timber. Amsterdam merchants were already visiting the city regularly around 1600.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Archangelweg",
   "hash": "6ac5dfceb7ba",
   "nlHash": "5f1d2ee7df71",
-  "en": "The Russian port city on the Barents Sea (Arctic Ocean), a port that exports timber. Amsterdam merchants were already visiting the city regularly around 1600.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "The Russian port city on the White Sea (Arctic Ocean), a port that exports timber. Amsterdam merchants were already visiting the city regularly around 1600.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Archimedeslaan",
@@ -2033,8 +2033,8 @@
   "name": "Avogadrostraat",
   "hash": "96688e81ce0c",
   "nlHash": "ffef9bae4e15",
-  "en": "Italian physicist (1776-1856). He is known for Avogadro's law of 1814: 'equal volumes of different gases and vapours contain the same number of molecules at the same pressure and temperature'.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Italian physicist (1776-1856). He is known for Avogadro's law of 1811: 'equal volumes of different gases and vapours contain the same number of molecules at the same pressure and temperature'.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Azaleastraat",
@@ -2110,15 +2110,15 @@
   "name": "Bachplein",
   "hash": "621c64c23393",
   "nlHash": "0649ab7a92d4",
-  "en": "Johann Sebastian Bach (1685-1750), German composer. He was the most important member of the German Bach family, which produced many composers. His works include oratorios (the St Matthew Passion) and more than four hundred cantatas. He was the last and most universal representative of the Baroque.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Johann Sebastian Bach (1685-1750), German composer. He was the most important member of the German Bach family, which produced many composers. His works include oratorios (the St Matthew Passion) and some two hundred surviving cantatas. He was the last and most universal representative of the Baroque.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Bachstraat",
   "hash": "008247d0e3a2",
   "nlHash": "0649ab7a92d4",
-  "en": "Johann Sebastian Bach (1685-1750), German composer. He was the most important member of the German Bach family, which produced many composers. His works include oratorios (the St Matthew Passion) and more than four hundred cantatas. He was the last and most universal representative of the Baroque.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Johann Sebastian Bach (1685-1750), German composer. He was the most important member of the German Bach family, which produced many composers. His works include oratorios (the St Matthew Passion) and some two hundred surviving cantatas. He was the last and most universal representative of the Baroque.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Back-upstraat",
@@ -2523,8 +2523,8 @@
   "name": "Bartholomeus Diazstraat",
   "hash": "ca10525f7e6b",
   "nlHash": "594b812a8bf8",
-  "en": "Portuguese explorer (1450-1500). In 1486 he became the first European to sail around the Cape of Good Hope.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Portuguese explorer (1450-1500). In 1488 he became the first European to sail around the Cape of Good Hope.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Bartholomeus Drijfhoutstraat",
@@ -2544,8 +2544,8 @@
   "name": "Bartholt Enthesstraat",
   "hash": "2b220b3ab77b",
   "nlHash": "dde069c1b814",
-  "en": "Member of the Verbond der Edelen (Compromise of Nobles) (1540-1580) and vice-admiral of the Sea Beggars under Lumey at the capture of Den Briel. In the same year, on Lumey's orders, he tried to take Amsterdam from the Spanish troops.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Bartholt Entens (1540-1580), a member of the Verbond der Edelen (Compromise of Nobles) and vice-admiral of the Sea Beggars under Lumey at the capture of Den Briel. In the same year, on Lumey's orders, he tried to take Amsterdam from the Spanish troops.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Basisweg",
@@ -2768,8 +2768,8 @@
   "name": "Beloegastraat",
   "hash": "2ea6df6c3bb6",
   "nlHash": "b668f164264d",
-  "en": "The beluga, also called the white dolphin, can grow to ten to twelve metres long, weigh up to 1400 kilos and live for at least a hundred years. It lives in the Caspian Sea and the Black Sea.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "The beluga, or white whale, a toothed whale of Arctic and sub-Arctic seas that grows to about five metres long.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Beltbrug",
@@ -2810,8 +2810,8 @@
   "name": "Ben Viljoenstraat",
   "hash": "35891d829c73",
   "nlHash": "159d39e52425",
-  "en": "South African Boer commander who repelled an English raid in 1896. He took part in the Second Boer War in 1899. Born in 1868, he died in America (year of death unknown).",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "South African Boer commander who repelled an English raid in 1896. He took part in the Second Boer War in 1899. Born in 1868, he died in the United States in 1917.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Ben Websterstraat",
@@ -2950,8 +2950,8 @@
   "name": "Beringhaven",
   "hash": "d1e87d2b32fb",
   "nlHash": "539c360e07ce",
-  "en": "The Beringstraat (Bering Strait), a strait between Asia and America. It was discovered in 1741 and named after the Dane Vitus Bering.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "The Beringstraat (Bering Strait), a strait between Asia and America, named after the Dane Vitus Bering, who sailed through it in 1728.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Berkelstraat",
@@ -3027,8 +3027,8 @@
   "name": "Bert Haanstrakade",
   "hash": "e223c9e99394",
   "nlHash": "4956b84fd84a",
-  "en": "Film director (1916-1997) who became famous for films such as 'Fanfare', 'Zoo', 'Alleman' and 'Bij de beesten af', in which he took a witty look at Dutch society. He received 78 awards for his films and documentaries, including an Oscar in 1958 for his documentary 'Glas' (Glass).",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Film director (1916-1997) who became famous for films such as 'Fanfare', 'Zoo', 'Alleman' and 'Bij de beesten af', in which he took a witty look at Dutch society. He received 78 awards for his films and documentaries, including an Oscar for his 1958 documentary 'Glas' (Glass).",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Berta de Vriesbrug",
@@ -3090,8 +3090,8 @@
   "name": "Berzeliusstraat",
   "hash": "7ae57b974642",
   "nlHash": "4d6c202550f6",
-  "en": "Johannes Jacob Berzelius (1779-1848), Swedish chemist. Founder of modern analysis.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Jöns Jacob Berzelius (1779-1848), Swedish chemist. Founder of modern analysis.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Bessemerstraat",
@@ -3230,8 +3230,8 @@
   "name": "Bickersgracht",
   "hash": "116a583e2a5e",
   "nlHash": "59b62d181704",
-  "en": "These streets are on the Bickerseiland. This island was originally owned by Dr Johan Bicker (1591-1653), a shipbuilder and merchant, and a schepen (magistrate) and burgomaster of Amsterdam, who bought it in 1631. The streets later laid out on the island automatically took the name of its founder. For the",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "These streets are on the Bickerseiland. This island was originally owned by Dr Johan Bicker (1591-1653), a shipbuilder and merchant, and a schepen (magistrate) and burgomaster of Amsterdam, who bought it in 1631. The streets later laid out on the island automatically took the name of its founder.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Bickersgracht",
@@ -3650,8 +3650,8 @@
   "name": "Bodenseehof",
   "hash": "0e4b411c4ab0",
   "nlHash": "8cb462d48197",
-  "en": "The lake known as the Bodensee (Lake Constance), on the border between Germany and Switzerland.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "The lake known as the Bodensee (Lake Constance), where Germany, Switzerland and Austria meet.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Boeckenburg",
@@ -3727,8 +3727,8 @@
   "name": "Bogortuin",
   "hash": "9e51c05c133e",
   "nlHash": "5d714b804b16",
-  "en": "The Indonesian city of Bogor, formerly Buitenzorg, lies sixty kilometres south of Jakarta and is famous above all for its botanical garden. The garden, laid out in 1817, contains well over a thousand species of tropical plants from all over the world.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "The Indonesian city of Bogor, formerly Buitenzorg, lies sixty kilometres south of Jakarta and is famous above all for its botanical garden. The garden, laid out in 1817, contains many thousands of species of tropical plants from all over the world.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Bok de Korverweg",
@@ -3846,8 +3846,8 @@
   "name": "Bontekoestraat",
   "hash": "c2c81e929bc6",
   "nlHash": "e7553bf8544c",
-  "en": "Willem IJsbrantsz Bontekoe (1587-1618), seafarer, known for his accounts of his voyages.",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "Willem IJsbrantsz Bontekoe (1587-1657), seafarer, known for the account of his voyage of 1618.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Boomgaardlaan",
@@ -30943,15 +30943,15 @@
   "name": "Texelplein",
   "hash": "c8fec3355d11",
   "nlHash": "b06cb10d4871",
-  "en": "A Wadden island (Noord-Holland).",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "One of the Wadden Islands.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Texelweg",
   "hash": "f8d26fe81e9c",
   "nlHash": "b06cb10d4871",
-  "en": "A Wadden island (Noord-Holland).",
-  "source": "anthropic/claude-opus-5.5"
+  "en": "One of the Wadden Islands.",
+  "source": "anthropic/claude-opus-5.5+corrected"
  },
  {
   "name": "Teylerplein",

@@ -1,5 +1,38 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Street-name origins: the earlier paid model pass reviewed
+
+The first 673 cache entries ('s-Gravelandse Veer to Boomstraat, 480 distinct
+Dutch texts) came from the paid OpenRouter pass (`anthropic/claude-opus-5.5`)
+and had never been checked against the Dutch. All 480 are now reviewed, and
+the translations were faithful almost throughout. 28 texts (32 cache
+entries) are corrected, tagged `+corrected`:
+- **19 register errors**, now in section 7 of
+  `docs/amsterdam-street-name-register-errors.md` with BAG ids:
+  - Bergen-Belsen called an extermination camp;
+  - Dias at the Cape in 1486 (it was 1488);
+  - Bering's strait in 1741 (1728);
+  - Arkhangelsk on the Barents Sea (the White Sea);
+  - Leitrim in Northern Ireland (it is in the Republic);
+  - Ameland in Noord-Holland (Friesland);
+  - Arago "discovering" electromagnetism;
+  - Avogadro's law in 1814 (1811);
+  - Bach's "more than four hundred" cantatas;
+  - Bontekoe dying in 1618 (1657);
+  - Beloega described as the beluga sturgeon on a street among whale names;
+  - Ben Viljoen's "unknown" year of death (1917, sourced).
+- **One fragment:** a second Bickersgracht record stops at "Voor het".
+- **Translation slips by the model:**
+  - dates attached to the wrong person (Anna van Buren, Anna van den Vondel,
+    Germez, Entens);
+  - geuzen at Breda as "Sea Beggars";
+  - Bogor's "ruim duizenden" soorten as "well over a thousand";
+  - "Amsterdamse School" left in Dutch twice.
+
+Dated but true-at-the-time facts are kept as the register has them, as in the
+hand retranslation: the municipality of Schoorl, the province of Brabant, the
+six islands of the Netherlands Antilles.
+
 ## 2026-10-01 — Bridges: filleted corners pull the right way; the 13 leftover crossings cleared
 
 The 13 crossings that still pinned the bike after the 2026-09-30 fixes had
