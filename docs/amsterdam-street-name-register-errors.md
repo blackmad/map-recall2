@@ -6,8 +6,10 @@ links to the live record in the municipal BAG API
 of `public/data/extracts/amsterdam/staging/street-name-origins.json`.
 
 It covers every name in the register, from 's-Gravelandse Veer to
-Zwenkgrasstraat (4,340 distinct texts, all retranslated by hand), plus a
-register-wide scan for texts that start or stop mid-sentence.
+Zwenkgrasstraat (4,340 distinct texts), plus a register-wide scan for texts
+that start or stop mid-sentence. 3,860 texts were retranslated by hand. The
+other 480, 's-Gravelandse Veer to Boomstraat, came from an earlier paid model
+pass and were reviewed against the Dutch on 2026-10-01 (section 7).
 
 How the game handles each: **withheld** means no origin card at all
 (`WITHHELD_ORIGINS` in `scripts/lib/streetNameOrigins.ts`, checked by
@@ -208,3 +210,33 @@ English translates the meant word.
 | VOC-kade | [0363300000002333](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002333/) | "Batavia, het bestuurlijke Amsterdam-Centrum Azië" |
 | Slijkstraat | [0363300000004535](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004535/) | "In de Amsterdam-Centrum geven verschillende straatnamen…" |
 | Passeerdersgracht | [0363300011950312](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950312/) | "…in de Amsterdam-Centrum werd verboden" (the same text in Passeerdersstraat, Nieuwe Passeerdersstraat and the Eerste and Tweede Passeerdersdwarsstraat) |
+
+## 7. Found reviewing the OpenRouter pass
+
+The first ~670 names, 's-Gravelandse Veer to Boomstraat (480 distinct
+texts), were translated earlier by a paid model pass and checked against the
+Dutch on 2026-10-01. These register errors were found then. One more text, a
+second Bickersgracht record ([0363300011950695](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300011950695/)),
+stops mid-sentence at "Voor het"; its English drops the dangling words.
+
+| Name | BAG id | Register says | Likely correct | In the game |
+|---|---|---|---|---|
+| Accason | [0363300000001072](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001072/) | "Archachon" | Arcachon | Corrected |
+| Adriaan van Oordthof | [0363300000002653](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002653/) | gives his dates (1865-1910) a second time as the Tachtigers' | the movement was c. 1880-1895 | Corrected (repeat dropped) |
+| Alcantarastraat | [0363300000001479](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001479/) | "in de provincie Extremadura" | Extremadura is a region (the reservoir is in the province of Cáceres) | Corrected ("in Extremadura") |
+| Allenstraat | [0363300000001473](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001473/) | "Loch Allen … county Leitrim, Noord-Ierland" | Lough Allen; Leitrim is in the Republic of Ireland | Corrected |
+| Amelandstraat (shared with Texelplein, Texelweg) | [0363300000002697](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002697/) | "Waddeneiland (Noord-Holland)" | Ameland is in Friesland | Corrected ("One of the Wadden Islands") |
+| Amundsenweg | [0363300000002707](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002707/) | "Ontdekte in 1903 de noordwestelijke doorvaart" | first to sail it, 1903-1906 | Corrected |
+| Anne Frankstraat | [0363300000002722](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002722/) | "vernietigingskamp Bergen Belsen" | Bergen-Belsen was a concentration camp | Corrected |
+| Aragohof | [0363300000002740](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002740/) | "ontdekker van het elektromagnetisme" | Ørsted (1820); Arago made early discoveries in it | Corrected |
+| Archangelkade, Archangelweg | [0363300000002742](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002742/) | "aan de Barentsz Zee" | Arkhangelsk is on the White Sea | Corrected |
+| Avogadrostraat | [0363300000002769](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002769/) | "Wet van Avogadro uit 1814" | 1811 | Corrected |
+| Bachplein, Bachstraat | [0363300000002776](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002776/) | "meer dan vierhonderd cantates" | about 200 survive | Corrected ("some two hundred surviving cantatas") |
+| Bartholomeus Diazstraat | [0363300000002484](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002484/) | rounded the Cape "in 1486" | 1488 | Corrected |
+| Beloegastraat | [0363300000001149](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001149/) | "witte dolfijn", then 10-12 m, 1,400 kg, a hundred years, Caspian and Black Seas | those are the beluga sturgeon's; the street is among whale names (Orca, Narwal, Potvis) | Corrected (the white whale; [Wikipedia](https://en.wikipedia.org/wiki/Beluga_whale)) |
+| Ben Viljoenstraat | [0363300000002509](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002509/) | "sterfjaar onbekend" | died 1917, La Mesilla, New Mexico | Corrected ([Wikipedia](https://en.wikipedia.org/wiki/Ben_Viljoen)) |
+| Beringhaven | [0363300000005959](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005959/) | Bering Strait "in 1741 ontdekt" | Bering sailed it in 1728 | Corrected |
+| Bert Haanstrakade | [0363300000001010](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001010/) | "in 1958 een Oscar voor … 'Glas'" | Glas is from 1958; the Oscar came at the 1960 ceremony | Corrected ("an Oscar for his 1958 documentary") |
+| Berzeliusstraat | [0363300000002913](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002913/) | "Johannes Jacob Berzelius" | Jöns Jacob | Corrected |
+| Bodenseehof | [0363300000001396](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001396/) | "op de grens tussen Duitsland en Zwitserland" | Austria borders it too | Corrected |
+| Bontekoestraat | [0363300000002980](https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000002980/) | (1587-1618) | 1587-1657; 1618 is when his voyage began | Corrected ([Wikipedia](https://en.wikipedia.org/wiki/Willem_Bontekoe)) |
