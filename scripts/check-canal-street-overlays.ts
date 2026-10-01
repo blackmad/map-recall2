@@ -140,10 +140,11 @@ assert.equal(stitchOverlayPaths([[{ x: 0, y: 0 }]]).length, 0, 'a single point i
   const layer = answeredStreetNameLayer() as any;
   assert.equal(layer.source, ANSWERED_STREET_SOURCE_ID, 'painted only from the answered source, never the question source');
   assert.notEqual(layer.source, 'active-street');
-  assert.equal(layer.layout['text-rotation-alignment'], 'viewport', 'upright and readable, not sideways along the street');
+  assert.equal(layer.layout['text-pitch-alignment'], 'map', 'painted on the road');
+  assert.deepEqual(layer.layout['text-rotate'], ['get', 'bearing'], 'turned to face the rider, not run along the street');
   const street = [[{ x: 0, y: 0 }, { x: 1000, y: 0 }]];
-  assert.deepEqual(pointsAheadOnChains(street, { x: 100, y: 10, angle: 0 }, [120, 330]), [{ x: 220, y: 0 }, { x: 430, y: 0 }], 'ahead in the heading');
-  assert.deepEqual(pointsAheadOnChains(street, { x: 500, y: 0, angle: Math.PI }, [120]), [{ x: 380, y: 0 }], 'riding the other way');
+  assert.deepEqual(pointsAheadOnChains(street, { x: 100, y: 10, angle: 0 }, [120, 330]), [{ x: 220, y: 0, angle: 0 }, { x: 430, y: 0, angle: 0 }], 'ahead in the heading');
+  assert.deepEqual(pointsAheadOnChains(street, { x: 500, y: 0, angle: Math.PI }, [120]), [{ x: 380, y: 0, angle: Math.PI }], 'riding the other way');
   assert.equal(pointsAheadOnChains(street, { x: 950, y: 0, angle: 0 }, [120, 330]).length, 0, 'not past the end of the street');
 }
 
