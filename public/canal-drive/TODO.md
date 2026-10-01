@@ -113,17 +113,13 @@ and function now reach clicked buildings (see HISTORY, 2026-09-30). Still open:
   Galenstraat and Radioweg, could be resolved per crossing from
   `bridge-crossings.json`. The other six refusals are correct.
 
-**Driving harness: the remaining lost drives (updated 2026-09-30).**
-`tests/e2e/driving-harness.spec.ts` is deterministic now: 102 of 120 arrive
-on every desktop run, with the same 12 lost and 6 timed out, 0 pinned, and 9
-wedges. The iPhone project differs but repeats too: 103, 13 lost, 5 wedges.
-It holds with one worker or three, and in the same page or a fresh one. The
-floor is raised to 70%. Traced 52.33769,4.89434 → 52.33073,4.86869: at De
-Groene Zoom × Gelrestraat the autopilot rides 8 m down a pedestrian way that
-forks off at a narrow angle. It then keeps aiming at the cycleway beyond the
-kerb instead of backing to the junction. That is the test driver, not the
-guard. Next, if the number matters: a reverse that retargets the last passed
-junction.
+**Driving harness: the remaining misses (updated 2026-10-01).**
+`tests/e2e/driving-harness.spec.ts`, with the trail back-out driver: desktop
+111 of 120 arrive (2 lost, 7 timeouts); iPhone 104 (3 lost, 13 timeouts);
+0 pinned, 0 wedges. The floor is raised to 80%. The timeouts are long routes
+that the 200 s budget does not cover at the driver's 60/170 cruise. Replanning
+when off the route, or when lost, was measured and lowered arrivals (98 and
+109), so the driver replans only after backing out.
 `tests/e2e/city-appearance-study-route.spec.ts` times out with no study roofs
 or facades resident, probably because it needs locally generated study data.
 

@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — Driving harness: the trail back-out driver
+
+The harness driver used to reverse blindly for 1.2 s with the stick
+reversed. Several of its "lost" drives were that reverse taking it into a
+side way. It now backs out along the trail it actually rode, as the bridge
+sweep's driver does, then replans from where it stops. It does this when
+pinned, when facing away from the route, or when rocking in place. Desktop
+arrivals rose from 103 to 111 of 120, with lost drives down from 11 to 2.
+iPhone went from 103 to 104. Two variants were measured and dropped:
+replanning whenever the driver is more than 60 px off the route, or more
+than 150 px for 2 s (97 and 98 arrivals), and replanning after 10 s without
+progress (109, with lost drives turning into timeouts).
+
 ## 2026-10-01 — Bridges: the full sweep at zero; every planned edge on the road
 
 - **The sweep driver backs out the way it came.** After the earlier fixes,
