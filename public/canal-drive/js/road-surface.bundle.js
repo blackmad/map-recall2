@@ -159,9 +159,13 @@ var CanalRecallRoadSurface = (() => {
     return along <= 0.2 * contact.dist + 0.5;
   }
   function filletedExcess(contacts, x, y, radius = CORNER_FILLET_RADIUS) {
+    return filletedEdge(contacts, x, y, radius).excess;
+  }
+  function filletedEdge(contacts, x, y, radius) {
     let best = Infinity;
+    let outward = null;
     for (const contact of contacts) best = Math.min(best, contact.dist - contact.width);
-    if (best <= 0) return best;
+    if (best <= 0) return { excess: best, outward };
     const perpendicular = (contact) => perpendicularContact(contact, x, y);
     const inCorner = contacts.filter((contact) => {
       const excess = contact.dist - contact.width;
@@ -172,10 +176,16 @@ var CanalRecallRoadSurface = (() => {
         const a = inCorner[i], b = inCorner[j];
         if (headingDifference(a.angle, b.angle) <= GUARD_CROSS_ANGLE) continue;
         const ea = a.dist - a.width, eb = b.dist - b.width;
-        best = Math.min(best, radius - Math.hypot(radius - ea, radius - eb));
+        const excess = radius - Math.hypot(radius - ea, radius - eb);
+        if (excess >= best) continue;
+        best = excess;
+        const ox = (radius - ea) * (x - a.x) / (a.dist || 1) + (radius - eb) * (x - b.x) / (b.dist || 1);
+        const oy = (radius - ea) * (y - a.y) / (a.dist || 1) + (radius - eb) * (y - b.y) / (b.dist || 1);
+        const length = Math.hypot(ox, oy) || 1;
+        outward = { x: ox / length, y: oy / length };
       }
     }
-    return best;
+    return { excess: best, outward };
   }
   function pickGuardContact(contacts, preferredAngle = null, point = null) {
     const aligned = pickRoadContact(contacts, preferredAngle);
@@ -194,8 +204,12 @@ var CanalRecallRoadSurface = (() => {
       if (contact.dist - contact.width < chosen.dist - chosen.width - 0.25) chosen = contact;
     }
     if (point) {
-      const excess = filletedExcess(contacts, point.x, point.y);
-      if (excess < chosen.dist - chosen.width) return { ...chosen, dist: chosen.width + Math.max(0, excess) };
+      const { excess, outward } = filletedEdge(contacts, point.x, point.y, CORNER_FILLET_RADIUS);
+      if (excess < chosen.dist - chosen.width) {
+        const dist = chosen.width + Math.max(0, excess);
+        if (!outward || excess <= 0) return { ...chosen, dist };
+        return { ...chosen, dist, x: point.x - outward.x * dist, y: point.y - outward.y * dist };
+      }
     }
     return chosen;
   }
