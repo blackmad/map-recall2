@@ -90,7 +90,7 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
   HISTORY). It matters only for `--trn`. Drop it together with the ~80
   glossary asserts in `check-street-name-origins.ts`, or keep it as the
   `--trn` fallback.
-- Send `docs/amsterdam-street-name-register-errors.md` (148 register
+- Send `docs/amsterdam-street-name-register-errors.md` (167 register
   errors, BAG links) to the municipality once the licence question above is
   settled.
 
