@@ -51,6 +51,23 @@ const car = (overrides: Partial<CarKinematics> = {}): CarKinematics => ({
 }
 
 {
+  // Named regression (bridge sweep, 2026-10-01, Bosch van Drakesteinpad): a
+  // service road ends 3 m from a cycle path. On the road's shoulder, a step
+  // toward the path is outward from the road's end, but it brings the bike
+  // nearer the whole surface, so the guard must keep it.
+  const serviceEnd = road({ x: 0, y: 0, dist: 13.1, width: 13, angle: 0 });
+  const pathEdge = (_x: number, y: number) => Math.abs(y + 22) - 9; // a path along y = -22
+  const excessAt = (x: number, y: number) => Math.min(Math.hypot(x, y) - 13, pathEdge(x, y));
+  const subject = car({ x: 0, y: -13.6, angle: -Math.PI / 2, vx: 0, vy: -60, speed: 60 });
+  const result = constrainCarToRoad(subject, { x: 0, y: -13.1 }, serviceEnd, serviceEnd, { edgeTolerance: 4, excessAt });
+  assert.equal(result, 'soft-edge');
+  assert.ok(subject.y < -13.1, `the step onto the path is kept (y ${subject.y.toFixed(2)})`);
+  const away = car({ x: 13.6, y: 0, vx: 60, vy: 0, speed: 60 });
+  constrainCarToRoad(away, { x: 13.1, y: 0 }, road({ dist: 13.1, width: 13 }), road({ dist: 13.1, width: 13 }), { edgeTolerance: 4, excessAt });
+  assert.ok(away.x <= 13.1, 'a step further off every road is still taken back');
+}
+
+{
   // Named regression (driving harness, 2026-09-29, Solitudobrug end on
   // Weesperzijde): the rollback slide follows the contact's tangent, and past
   // the end of a span that carries straight on off the road. With a probe of
