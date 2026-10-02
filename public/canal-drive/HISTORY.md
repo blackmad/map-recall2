@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Map Recall: a neighbourhood's best-known places as clues
+
+User request: "a few very notable POIs in that neighborhood (retail is fine) to
+help understand it". `notablePlacesIn` (src/mapRecall/trivia.ts) picks up to
+five places inside the area polygon: encyclopedia landmarks first (minus
+regions such as "Canal Ring Area"), then the ranked orientation POIs. It
+allows two landmarks of a kind but one of any other kind, so the clues aren't
+two bike shops. A place whose name contains an offered answer is never shown:
+"Jordaan Café" would give away or mislead. Guess Name shows them as labelled
+dots from the start, since they sit inside the drawn area. Pinpoint shows them
+only after the guess, because before it they would reveal where the area is.
+Labels go best first; one that would overlap a better one hides until the
+player zooms in. Six of the 91 areas have no places.
+
 ## 2026-10-02 — Building look setting; photo and cartoon looks tuned
 
 Settings now has "Building look" (Default, Painted, Cartoon, Photo), saved with

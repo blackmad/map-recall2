@@ -221,6 +221,41 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     }
   }, [blindMapMode, isRoundComplete, isGameOver, tileStyle]);
 
+  // A neighbourhood's best-known places (user request 2026-10-02): clues while
+  // naming it, since they sit inside the drawn area; in Pinpoint only after the
+  // guess, because before it they would show where the area is.
+  const notablePlacesRef = useRef<L.LayerGroup | null>(null);
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    if (!map) return;
+    notablePlacesRef.current?.remove();
+    notablePlacesRef.current = null;
+    const places = currentFeature?.type === 'neighborhood' ? currentFeature.notablePlaces : undefined;
+    if (!places?.length || isGameOver || (gameMode !== 'guess_name' && !isRoundComplete)) return;
+    const group = L.layerGroup();
+    const markers = places.map((place) => L.circleMarker(place.center, { radius: 5, color: '#fff', weight: 2, fillColor: '#8a4a18', fillOpacity: 1, className: 'notable-place' })
+      .bindTooltip(place.name, { permanent: true, direction: 'top', offset: [0, -6], className: 'notable-place-label' })
+      .addTo(group));
+    notablePlacesRef.current = group.addTo(map);
+    // Places arrive best first; a label that would overlap a better one waits
+    // until the player zooms in far enough to separate them.
+    const declutter = () => {
+      const kept: DOMRect[] = [];
+      for (const marker of markers) {
+        const element = marker.getTooltip()?.getElement();
+        if (!element) continue;
+        element.style.visibility = 'visible';
+        const box = element.getBoundingClientRect();
+        const overlaps = kept.some((other) => box.left < other.right + 2 && box.right > other.left - 2 && box.top < other.bottom + 2 && box.bottom > other.top - 2);
+        if (overlaps) element.style.visibility = 'hidden';
+        else kept.push(box);
+      }
+    };
+    const frame = requestAnimationFrame(declutter);
+    map.on('zoomend', declutter);
+    return () => { cancelAnimationFrame(frame); map.off('zoomend', declutter); };
+  }, [currentFeature, gameMode, isRoundComplete, isGameOver]);
+
   // Both location-based modes use a dropped pin. Keep this list in sync with
   // the crosshair cursor below so a map that looks clickable is clickable.
   useEffect(() => {

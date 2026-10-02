@@ -107,6 +107,11 @@ Uilenburg quay end (turned 0.02 rad, so no steering key was held) while the
 machine ran other perf tests. Make the test driver robust to slow frames and
 save the trace whenever a ride fails, before calling it a game trap.
 
+**Map Recall: overlapping areas as rival answers.** The area list holds both
+quarters and buurten, so Guess Name can offer Nieuwmarktbuurt and
+Nieuwmarkt/Lastage together, though they cover the same streets. Choices
+should skip an area that overlaps the answer by more than about half.
+
 **Map Recall follow-ups.** 14 OSM neighbourhoods have no article in either
 language (Rijnbuurt, Scheldebuurt, Westindische Buurt, Van Galenbuurt, …);
 a street-named one could borrow its street's register origin, labelled as such.

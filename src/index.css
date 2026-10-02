@@ -311,3 +311,10 @@ input {
 .leaflet-popup-tip {
   background: var(--day-paper-raised);
 }
+
+/* Neighbourhood clue places (MapComponent notablePlaces). */
+.leaflet-tooltip.notable-place-label {
+  padding: 1px 6px; border: 0; border-radius: 4px; background: rgba(255, 252, 245, 0.92);
+  color: #3b2412; font: 700 11px/1.4 system-ui, sans-serif; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+.leaflet-tooltip.notable-place-label::before { display: none; }
