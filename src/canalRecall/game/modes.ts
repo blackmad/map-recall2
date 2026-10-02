@@ -22,6 +22,17 @@ export type ViewMode = typeof VIEW_MODES[number];
 export const BUILDING_LOOKS = ['default', 'procedural', 'storybook', 'cartoon', 'photo'] as const;
 export type BuildingLookMode = typeof BUILDING_LOOKS[number];
 
+/** Names as the settings panel shows them. */
+export const BUILDING_LOOK_LABELS: Record<BuildingLookMode, string> = {
+  default: 'Default', procedural: 'Painted', storybook: 'Storybook', cartoon: 'Cartoon', photo: 'Photo',
+};
+
+/** The look after `current` in settings order, wrapping round; anything unknown starts again at Default. */
+export function nextBuildingLook(current: string | null | undefined): BuildingLookMode {
+  const index = BUILDING_LOOKS.indexOf(current as BuildingLookMode);
+  return BUILDING_LOOKS[(index + 1) % BUILDING_LOOKS.length];
+}
+
 export const THEME_MODES = ['clean', '8bit', '16bit', 'psx', 'cyberpunk'] as const;
 export type ThemeMode = typeof THEME_MODES[number];
 

@@ -45,3 +45,25 @@ test('a URL look is not overridden by the saved preference', async ({ page }) =>
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.setBuildingLook('default'));
   expect(await page.evaluate(() => (window as any).canalRecallGame.vectorMap._buildings3dLook)).toBe('default');
 });
+
+test('B cycles the building look through every renderer and back, saved with the settings', async ({ page }) => {
+  test.setTimeout(240_000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: true, enterRacing: true });
+  await page.waitForFunction(() => (window as any).canalRecallGame.vectorMap._facadesActive?.() === true, null, { timeout: 90_000 });
+  const look = () => page.evaluate(() => (window as any).canalRecallGame.vectorMap.buildingLook());
+  const saved = () => page.evaluate(() => JSON.parse(localStorage.getItem('canalRecall.preferences.v1') || '{}').buildingLook);
+
+  expect(await look()).toBe('default');
+  const seen = ['default'];
+  for (const [expected, label] of [['procedural', 'Painted'], ['storybook', 'Storybook'], ['cartoon', 'Cartoon'], ['photo', 'Photo'], ['default', 'Default']] as const) {
+    await page.keyboard.press('b');
+    await expect.poll(look, { timeout: 15_000 }).toBe(expected);
+    seen.push(expected);
+    // A brief label says what changed, and the choice is saved like the Settings control would.
+    await expect(page.locator('#canal-look-label')).toHaveText(`Buildings: ${label}`);
+    await expect.poll(saved).toBe(expected);
+  }
+  expect(seen).toEqual(['default', 'procedural', 'storybook', 'cartoon', 'photo', 'default']);
+  // The Settings panel shows the same choice (it reads the same preferences).
+  expect(await page.evaluate(() => (window as any).canalRecallGame._prefs().buildingLook)).toBe('default');
+});
