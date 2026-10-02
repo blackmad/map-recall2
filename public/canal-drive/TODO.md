@@ -20,6 +20,16 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 *Anything that makes the game teach something false, or traps the rider,
 belongs here before anything below it.*
 
+**Centraal Station cycle tunnel is hard to ride (user report 2026-10-01).**
+In progress on the driving lane (worktree branch): pin it as a named
+keyboard-ride location, find why (corridor, graph gap, excluded tunnel ways,
+camera under the roof), and fix it generally.
+
+**Keyboard rides for every reported spot; nightly sweep.** `keyboard-ride.spec.ts`
+rides with real key presses and the quiz on; it found the shoulder wedge the
+physics probes could not see. In progress on the driving lane: every bridge the
+user has reported, plus a nightly run of rides, harness and full bridge sweep.
+
 **Bridges: one sweep artefact left; extend the sweep to non-bridge seams.**
 After the union guard and the union-aware shoulder (see HISTORY, 2026-10-01),
 the full sweep (`BRIDGE_SWEEP_ALL=1`) drives 3,006 crossings with 2,875
@@ -49,6 +59,20 @@ Still open: rival-route novelty bias, landmark scavenger stop-to-look,
 transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
 weather/time mood. Cold-open is superseded by review rides (see HISTORY,
 2026-09-30).
+
+**Randstad trivia parity (in progress, data lane).** Utrecht, Rotterdam and
+Den Haag have no name origins, neighbourhood photos/history, and (Rotterdam,
+Den Haag) no street encyclopedia text. Same rules as Amsterdam: sourced only,
+Dutch reviewed before it ships. Map Recall also still reads only the Amsterdam
+extract; other cities fall back to live OSM.
+
+**Map Recall follow-ups.** 14 OSM neighbourhoods have no article in either
+language (Rijnbuurt, Scheldebuurt, Westindische Buurt, Van Galenbuurt, …);
+a street-named one could borrow its street's register origin, labelled as such.
+The city publishes ~480 official buurten / ~99 wijken with boundaries: a finer,
+complete neighbourhood set than OSM's 85. Canal Recall shows a street card
+only after a correct answer; showing it for streets ridden (paced like
+landmark cards) is an open question for the user.
 
 **16. Review and refine the published Randstad trivia.**
 v11 is published (4,052 facts / 1,628 features). Trivia Lab’s **Human review**

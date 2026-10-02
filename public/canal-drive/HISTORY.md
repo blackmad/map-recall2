@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+## 2026-10-01 — "Building street network…" was the trivia download
+
+The user asked whether that loading step is real. It is the slowest one, but it
+isn't the network: building segments takes 2 ms. The message stays up through
+`_loadLandmarks`, which waited for every place and trivia file. On a 4 Mbps,
+70 ms link against the live site it stood for 2.8 s, 2.7 s of it downloads.
+Now:
+- the start waits only for `START_EXTRACTS`: places, areas, bridges, and every
+  street and water name (spoiler list before any label is drawn);
+- facts (2 MB), street encyclopedia ledes, brand POIs and landmark-building
+  links merge in after the ride starts, as the name origins already did;
+- `_prefetchCityExtracts` fetches the start files at low priority while the
+  setup screen is up (served with max-age=3600), so the start reads them from
+  cache.
+
 ## 2026-10-01 — Map Recall: trivia on every answer; neighbourhoods are a category
 
 The user asked for "both name trivia and neighborhood history/description"
