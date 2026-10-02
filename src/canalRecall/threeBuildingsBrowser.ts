@@ -69,6 +69,8 @@ precision highp sampler2DArray;
 uniform sampler2DArray cells;
 uniform sampler2DArray masks;
 uniform float bands;
+// Untextured: the vertex colour alone, no brick, tile or grain from any cell.
+uniform float flatColour;
 in vec2 vUv;
 flat in float vLayer;
 in vec3 vTint;
@@ -82,6 +84,7 @@ void main() {
   vec3 c = texture(cells, p).rgb;
   vec2 m = texture(masks, p).rg;
   c *= mix(vec3(1.0), vTint, m.r) * mix(vec3(1.0), vAccent, m.g);
+  if (flatColour > 0.5) c = vTint;
   float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
   fragColor = vec4(c * shade, 1.0);
 }`;
@@ -198,6 +201,7 @@ export class ThreeBuildings {
     this.material.uniforms.cells.value = set.colour;
     this.material.uniforms.masks.value = set.mask;
     this.material.uniforms.bands.value = look === 'cartoon' ? 3 : 0;
+    this.material.uniforms.flatColour.value = look === 'untextured' ? 1 : 0;
     this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
     for (const [key, entry] of [...this.chunks]) this.pending.push(() => this.rebuild(key, entry.source));
     this.pump();
@@ -579,7 +583,7 @@ export class ThreeBuildings {
         });
         owner.material = new THREE.RawShaderMaterial({
           glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
-          uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 } }, side: THREE.FrontSide,
+          uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 }, flatColour: { value: owner.look === 'untextured' ? 1 : 0 } }, side: THREE.FrontSide,
         });
         void owner.texturesFor(cellSetOf(owner.look)).then(set => {
           owner.material.uniforms.cells.value = set.colour;
