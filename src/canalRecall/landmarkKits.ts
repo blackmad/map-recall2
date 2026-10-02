@@ -25,7 +25,8 @@ export type Stage = { shape: StageShape; w0: number; w1: number; h: number; mat:
 export type Stack = { onId: string; startZ?: number; stages: Stage[] };
 export type KitRoof = { id: string; riseM: number; mat: 'slate' | 'tile' | 'lead' };
 /** How a kit's roofed parts are walled: bare brick or stone, or a window grid in a facade style. */
-export type KitWall = { plain: true; hex: string } | { plain: false; style: 'canal' | 'school'; hex: string };
+/** `flat`: one flat colour with no wall texture at all (patinated copper, glass, render). */
+export type KitWall = { plain: true; hex: string; flat?: boolean } | { plain: false; style: 'canal' | 'school'; hex: string };
 /** `hides`: further parts the kit's own geometry replaces (a dome's OSM bands under a modelled dome). */
 /** `body`: the landmark's remaining parts, walled in the kit's own style instead of a generic facade. */
 export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; wall?: KitWall; hides?: string[]; body?: string[] };
@@ -236,6 +237,53 @@ export const KITS: Kit[] = [
     roofs: [{ id: 'w751713223', riseM: 10, mat: 'slate' }, { id: 'w751713221', riseM: 10, mat: 'slate' }],
     body: ['w751713218', 'w751713219', 'w751713220', 'w751713222', 'w751905303', 'w751979070'],
   },
+  {
+    // Oude Kerk: the brick tower base with clocks, then octagonal lead stages, an open
+    // lantern and the spire; steep roofs over the hall church and its chapels.
+    name: 'Oude Kerk',
+    wall: { plain: true, hex: '#8a5a44' },
+    tiers: [
+      { id: 'w747868982', shape: 'square', mat: 'brick', clocks: true },
+      { id: 'w747868971', shape: 'octagon', mat: 'lead' },
+    ],
+    stacks: [{ onId: 'w747868971', stages: [
+      { shape: 'octagon', w0: 6, w1: 5.4, h: 5, mat: 'lead' },
+      { shape: 'octagon', w0: 4.6, w1: 4.2, h: 4, mat: 'white' },
+      { shape: 'octagon', w0: 4.4, w1: 0.3, h: 8.5, mat: 'lead' },
+      { shape: 'octagon', w0: 0.5, w1: 0, h: 1.2, mat: 'gold' },
+    ] }],
+    roofs: [
+      ...['w747868974', 'w747868975'].map(id => ({ id, riseM: 9, mat: 'slate' as const })),
+      ...['w747868972', 'w747868973', 'w747868976', 'w747868977', 'w747868978', 'w747868979', 'w747868980', 'w747868981', 'w747868984'].map(id => ({ id, riseM: 5.5, mat: 'slate' as const })),
+    ],
+    hides: ['w747868970'],
+  },
+  {
+    // Nieuwe Kerk on the Dam: towering nave and transept roofs (the tower was never built)
+    // with a slim lead flèche over the crossing; lower aisle and chapel roofs.
+    name: 'Nieuwe Kerk',
+    wall: { plain: true, hex: '#8f5d48' },
+    tiers: [],
+    stacks: [{ onId: 'w747911439', startZ: 34, stages: [
+      { shape: 'octagon', w0: 2.6, w1: 2.2, h: 3.2, mat: 'lead' },
+      { shape: 'octagon', w0: 2.4, w1: 0, h: 8, mat: 'lead' },
+      { shape: 'octagon', w0: 0.4, w1: 0, h: 1, mat: 'gold' },
+    ] }],
+    roofs: [
+      { id: 'w747911441', riseM: 14, mat: 'slate' }, { id: 'w747911439', riseM: 14, mat: 'slate' }, { id: 'w747911438', riseM: 5, mat: 'slate' },
+      ...['w747911436', 'w747911437', 'w747924626'].map(id => ({ id, riseM: 6, mat: 'slate' as const })),
+    ],
+  },
+  {
+    // NEMO: Renzo Piano's copper-green ship rising out of the IJ tunnel mouth; its colour is
+    // the recognisable part, so the whole building is walled in patinated copper.
+    name: 'NEMO',
+    wall: { plain: true, hex: '#4f9a82', flat: true },
+    tiers: [],
+    stacks: [],
+    roofs: [],
+    body: ['w1390692763', 'w1390692767', 'w1390692768', 'w1390692769', 'w1390692770', 'w1390692771', 'w1390692772', 'w1390692766', 'w1390692764', 'w1390692765'],
+  },
 ];
 
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */
@@ -250,7 +298,7 @@ type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geomet
 export function decorateKitRoof<T extends GeoFeature>(feature: T): T {
   const body = KIT_BODY.get(String(feature.properties.id ?? ''));
   if (body && !feature.properties.kitWall) {
-    return { ...feature, properties: { ...feature.properties, facade: 'kit', facadeStyle: body.plain ? 'school' : body.style, kitWall: body.plain ? 'plain' : 'grid', kitWallHex: body.hex, sideColour: body.hex } };
+    return { ...feature, properties: { ...feature.properties, facade: 'kit', facadeStyle: body.plain ? 'school' : body.style, kitWall: body.plain ? (body.flat ? 'flat' : 'plain') : 'grid', kitWallHex: body.hex, sideColour: body.hex } };
   }
   const entry = KIT_ROOF.get(String(feature.properties.id ?? ''));
   if (!entry || feature.properties.kitRoof) return feature;
