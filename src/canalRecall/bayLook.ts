@@ -50,11 +50,11 @@ export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal'
  * the way they do on the streets. The spike's palette was pastel, which over
  * the dark brick photo came out as one chocolate wall.
  */
-const PHOTO_WALLS = ['#b05a40', '#b05a40', '#a24d38', '#bd6a45', '#9a5846', '#8c5a48', '#c58b5e', '#d3b184', '#a8766a', '#7f6258', '#d9c5a4'];
+export const PHOTO_WALLS = ['#b05a40', '#b05a40', '#a24d38', '#bd6a45', '#9a5846', '#8c5a48', '#c58b5e', '#d3b184', '#a8766a', '#7f6258', '#d9c5a4'];
 /** Storybook: the natural palette, slightly warmed and softened, as an illustrator would paint it. */
-const STORYBOOK_WALLS = ['#c8664a', '#c8664a', '#b9583f', '#d98b5f', '#e0b36a', '#ead9b0', '#c9a08c', '#b87a5c', '#9bb09a', '#8aa4b8', '#d9b995'];
+export const STORYBOOK_WALLS = ['#c8664a', '#c8664a', '#b9583f', '#d98b5f', '#e0b36a', '#ead9b0', '#c9a08c', '#b87a5c', '#9bb09a', '#8aa4b8', '#d9b995'];
 /** Cartoon: a short sticker palette, saturated and similar in value, so the street reads as one bold design. */
-const CARTOON_WALLS = ['#e8573d', '#e8573d', '#ee7f2c', '#f2b92e', '#f2b92e', '#2a9d8f', '#4672b0', '#f3e6c8', '#d96a4d'];
+export const CARTOON_WALLS = ['#e8573d', '#e8573d', '#ee7f2c', '#f2b92e', '#f2b92e', '#2a9d8f', '#4672b0', '#f3e6c8', '#d96a4d'];
 
 /** Everything the mesh builder needs from a feature for a bay look. */
 export function bayLookFor(id: string, year: number | null, heightM: number, look: Look) {

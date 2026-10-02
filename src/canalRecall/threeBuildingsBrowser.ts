@@ -132,7 +132,7 @@ export { decorateRoof, exceptLandmarks, decorateKitRoof, KIT_HIDE_IDS };
 const KIT_KEY = '__kit';
 
 /** Roof colours per look: pantile and slate (a look's own tones, picked by the plan's `tone`). */
-const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
+export const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
   procedural: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
   photo: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
   storybook: { tile: ['#b9553a', '#a94a33', '#c46a45'], slate: ['#556070', '#4a5666', '#657282'] },
