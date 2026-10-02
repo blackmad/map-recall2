@@ -7,7 +7,7 @@ const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-119
 const page = await b.newPage({ viewport: { width: 1200, height: 380 } });
 const tiles = [];
 for (const slug of slugs) {
-  await page.goto(`http://127.0.0.1:4388/canal-drive/facade-compare.html?storefront=${slug}&r=17&el=4`);
+  await page.goto(`http://127.0.0.1:4388/canal-drive/facade-compare.html?storefront=${slug}&el=4`);
   try { await page.waitForFunction(() => document.title === 'ready', null, { timeout: 40000 }); } catch { continue; }
   await page.waitForTimeout(300);
   const shot = await page.screenshot({ clip: { x: 400, y: 0, width: 800, height: 380 } });
