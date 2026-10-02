@@ -534,10 +534,11 @@
   {
    "name": "Memeleiland",
    "description": {
-    "en": "Memeleiland is a rectangular artificial island, and a street, in Amsterdam-West. It stands where part of the Houthavens timber port lay until the early 21st century, when the city needed the emptying site for housing.",
-    "sourceUrl": "https://nl.wikipedia.org/wiki/Memeleiland",
-    "lang": "nl",
-    "original": "Memeleiland is een rechthoekig kunstmatig eiland en een straat in Amsterdam-West. De naam verwijst de stad Klaipėda, vroeger Memel genoemd. Dat gebied was voor Amsterdam ooit belangrijk in de houthandel. Het eiland ligt op de plaats waar tot en met begin 21e eeuw een deel van de Houthavens waren gesitueerd. Dat terrein lag er steeds meer verlatener bij en Amsterdam had behoefte aan ruimte voor woningbouw."
+    "en": "Memeleiland is the \"Deftige Dames\" (Stately Ladies) island: stately buildings with an elegant look. The Houthaven's seven car-free islands are named after Baltic ports and each was given its own character.",
+    "sourceUrl": "https://pphp.nl/project/houthaven-amsterdam/",
+    "lang": "en",
+    "sourceLabel": "PPHP architects, Houthaven (translated from Dutch)",
+    "kind": "derived"
    },
    "nameOrigin": {
     "en": "Named after the city of Klaipėda, formerly Memel, once important for Amsterdam's timber trade.",
@@ -564,10 +565,10 @@
     "kind": "derived"
    },
    "description": {
-    "en": "Revaleiland is one of seven artificial islands raised in the 2010s in the Houthavens, Amsterdam's old timber harbour, which was dug in 1876. The islands are named after Baltic ports, partly by their German names from before 1945, and are linked by fifteen bridges that carry Baltic names too. Reval is the old German name of Tallinn.",
-    "sourceUrl": "https://nl.wikipedia.org/wiki/Houthavens_(Amsterdam)",
+    "en": "On Revaleiland the closed building blocks show the Amsterdam School style. The Houthaven's seven car-free islands are named after Baltic ports and each was given its own character.",
+    "sourceUrl": "https://pphp.nl/project/houthaven-amsterdam/",
     "lang": "en",
-    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "sourceLabel": "PPHP architects, Houthaven (translated from Dutch)",
     "kind": "derived"
    },
    "history": {
@@ -588,10 +589,10 @@
     "kind": "derived"
    },
    "description": {
-    "en": "Wiborgeiland is one of seven artificial islands raised in the 2010s in the Houthavens, Amsterdam's old timber harbour, which was dug in 1876. The islands are named after Baltic ports, partly by their German names from before 1945, and are linked by fifteen bridges that carry Baltic names too. Wiborg is Vyborg, now in Russia.",
-    "sourceUrl": "https://nl.wikipedia.org/wiki/Houthavens_(Amsterdam)",
+    "en": "Wiborgeiland's theme is the \"Stoere Jongens\" (Tough Guys): buildings that refer to the traditional warehouses of the old timber harbour. The Houthaven's seven car-free islands are named after Baltic ports and each was given its own character.",
+    "sourceUrl": "https://pphp.nl/project/houthaven-amsterdam/",
     "lang": "en",
-    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "sourceLabel": "PPHP architects, Houthaven (translated from Dutch)",
     "kind": "derived"
    },
    "history": {
