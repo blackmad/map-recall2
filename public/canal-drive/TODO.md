@@ -1000,7 +1000,7 @@ Not milestones — standing obligations with live guards.
   fragments.
 - Tune neighborhood postcard scale and long-name typography on mobile.
 
-- P2: Panorama facade textures: pick correct Anne Frank House (Prinsengracht 263) parts, add Bijenkorf/Waag/Sherlocked, apply the JPEG to the landmark wall in the three layer, confirm licence/attribution. Script: `scripts/pano-facades/build-pano-facade.ts`.
+- P2: Low-poly landmark fronts (`landmarkFronts.ts`, data in `landmarkFrontData.ts`; Bijenkorf and Beurs hall wall done in the viewer only). Next: render fronts in the game's three layer next to `KITS` (and cap the carrying part at `bodyTopM`); model the Beurs Damrak front with its clock tower (build its reference with `--wall`); Anne Frank House needs a usable reference (no close panorama of the canal front; try Mapillary, token from the user via env var `MAPILLARY_TOKEN`, never committed); then Centraal, Rijksmuseum. Photo textures are dropped: the user judged them awful and panoramas stay drawing references only.
 
 - P2: Anne Frank House facade needs a source other than panoramas (Commons photos once the rate limit clears, with per-image licence/attribution); Sherlocked is not in the landmark data (which building was meant?).
 - P2: Apply panorama JPEGs to landmark walls in the three layer (needs per-wall UV mapping) and ship Waag kit via KITS if kept.
