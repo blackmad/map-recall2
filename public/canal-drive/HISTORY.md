@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Fronts: Royal Palace, Concertgebouw, Tuschinski
+
+Three more measured fronts in `landmarkFrontData.ts`, in the game in the three.js looks. The panorama builder gained `--toward=lng,lat` (only walls facing a square or street) and joins collinear edges of several parts into one wall, so a front drawn as many OSM parts is found as one. Fronts can carry extra forward `slabs`: OSM often maps a risalit or portico as its own part standing metres in front of the wall (the palace's w748659170, 5 m; the Concertgebouw's portico w754269610, 4.3 m), and the rectified photo shows such a part 18-40% too wide because it is nearer the camera, so its features are mapped from photo metres onto the OSM part. `photoSilhouette` now finds sky per pixel by colour (white overcast or blue): the old top-band threshold called the whole palace sky when its pediment reached the crop. `check-landmark-fronts` takes a per-front `roofline` mode: `full`, `front-only` (roofs behind or a forward part drawn at OSM width: only a front taller than the photo is an error), or `unmeasured` (Tuschinski's fused reference stops below its tower crowns).
+
 ## "Greetings from X" postcard on the Map Recall card
 
 The large-letter postcard compositor (src/canalRecall/largeLetterPostcard.ts, previously only in Storybook) now heads a neighbourhood's answer card via `PostcardHeader` (lazy-loaded canvas, Archivo Black). Its letters are cut from the area's own photograph plus photographs of landmarks, parks and squares inside it (`feature.areaPhotos`, up to five, from `<city>/place-photos.json`; `fetch-place-photos.ts` now covers parks and squares too). It needs two or more photographs; otherwise the card keeps its thumbnail. If the images fail to load it stays hidden. When the postcard shows, the "Around here" photo strip and the thumbnail are dropped and the places are listed by name.
