@@ -2,6 +2,9 @@
 // rectified Gemeente Amsterdam street panoramas (public/data/landmark-facades/*.jpg),
 // which are drawing references only: no pixels are used. x runs along the wall from
 // its start, z up from the pavement, both in metres.
+import { compileStorefront } from './storefronts.js';
+import { STOREFRONT_SPECS } from './storefrontSpecs.js';
+import { STOREFRONT_WALLS } from './storefrontWalls.generated.js';
 import { along, arch, lettering, stripedAwning, type Front, type FrontBox } from './landmarkFronts.js';
 
 const span = (xs: number[], half: number) => xs.flatMap(x => [x - half, x + half]);
@@ -380,7 +383,13 @@ export const FRONTS: Record<string, Front> = { bijenkorf: BIJENKORF, beurs: BEUR
   'kema-vlees': KEMA_VLEES, 't-mandje': T_MANDJE, 'de-jaren': DE_JAREN, winkel43: WINKEL_43, hoppe: CAFE_HOPPE,
   'massimo-pretorius': MASSIMO_PRETORIUS, 'massimo-janhanzen': MASSIMO_JAN_HANZEN, 'massimo-ostade': MASSIMO_OSTADE };
 
-export const FRONT_LIST: readonly Front[] = Object.values(FRONTS);
+/** Hand-tuned storefronts from one-line specs (storefrontSpecs.ts), on their reference walls. */
+export const STOREFRONT_BY_SLUG: ReadonlyMap<string, Front> = new Map(Object.entries(STOREFRONT_SPECS).flatMap(([slug, spec]) => {
+  const wall = STOREFRONT_WALLS[slug];
+  return spec && wall ? [[slug, compileStorefront(slug, spec, wall)] as const] : [];
+}));
+export const STOREFRONT_FRONTS: readonly Front[] = [...STOREFRONT_BY_SLUG.values()];
+export const FRONT_LIST: readonly Front[] = [...Object.values(FRONTS), ...STOREFRONT_FRONTS];
 
 /** Footprint parts that carry a front: routed to the landmark-kit mesh, which draws the front with them. */
 export const FRONT_PART_IDS: ReadonlySet<string> = new Set(FRONT_LIST.flatMap(f => f.ids));

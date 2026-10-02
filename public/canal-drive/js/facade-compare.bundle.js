@@ -642,6 +642,328 @@
   var DOOR_COLOURS = [hex("#2c4a3d"), hex("#3a2a22"), hex("#1f3b57"), hex("#5a2a24")];
   var SHUTTER_COLOURS = [hex("#2f4a3a"), hex("#7a2f27"), hex("#27384f")];
 
+  // src/canalRecall/facadeExtras.ts
+  function hash012(text) {
+    let h = 2166136261;
+    for (const c of text) {
+      h ^= c.charCodeAt(0);
+      h = Math.imul(h, 16777619);
+    }
+    return (h >>> 0) / 4294967296;
+  }
+  var STONE2 = "#cfc6b4";
+  var IRON = "#26282b";
+  var WOOD = "#5a4030";
+  var GREEN = "#3f7a3a";
+  var DARKGREEN = "#2c4f33";
+  var CONCRETE = "#b9b5ac";
+  var GLASS = "#5d6f7c";
+  var FLOWERS = ["#e84a7f", "#f2b92e", "#ffffff", "#c04fd0", "#ff7a45", "#e8573d"];
+  var SHUTTERS = ["#2c4f33", "#1f3550", "#7a1f2b", "#2a2a2a", "#3f6f5a"];
+  var pickOf = (list, r) => list[Math.floor(r * list.length) % list.length];
+  var bayCentre = (l, i) => (i + 0.5) * l.bayWidthM;
+  function windowXs(c) {
+    const l = c.layout, per = c.style === "canal" && l.bayWidthM > 4 ? 2 : 1, out = [];
+    for (let i = 0; i < l.bays; i++) for (let k = 0; k < per; k++) out.push(i * l.bayWidthM + (k + 0.5) / per * l.bayWidthM);
+    return out;
+  }
+  var doorX = (c) => c.layout.doorBays.length ? bayCentre(c.layout, c.layout.doorBays[0]) - c.layout.bayWidthM * 0.3 : null;
+  var storeyZ = (c, s) => c.base + c.layout.groundM + s * c.layout.storeyM;
+  var ALL = ["canal", "c19", "school", "postwar", "modern", "tower"];
+  function roofBox(c, s, u0, u1, v0, v1, z0, z1, hex2) {
+    const { cx: cx2, cy, ux, uy } = c.rect, vx = -uy, vy = ux;
+    return s.box({ x0: cx2 + vx * v0, y0: cy + vy * v0, ux, uy, nx: vx, ny: vy, len: 0 }, u0, u1, 0, v1 - v0, z0, z1, hex2, false);
+  }
+  var WALL_COMPONENTS = [
+    // --- Canal houses --------------------------------------------------------------
+    { id: "hoist-beam", styles: ["canal"], p: 0.55, build: (c, s) => {
+      const x = c.f.len / 2;
+      s.box(c.f, x - 0.1, x + 0.1, 0, 0.95, c.top - 0.55, c.top - 0.35, WOOD, true);
+      s.box(c.f, x - 0.02, x + 0.02, 0.85, 0.9, c.top - 0.9, c.top - 0.55, IRON);
+    } },
+    { id: "hoist-hood", styles: ["canal"], p: 0.2, build: (c, s) => {
+      const x = c.f.len / 2;
+      s.box(c.f, x - 0.1, x + 0.1, 0, 1, c.top - 0.6, c.top - 0.42, WOOD, true);
+      s.slope(c.f, x - 0.35, x + 0.35, 0, 1.1, c.top - 0.05, c.top - 0.4, WOOD);
+    } },
+    { id: "stoop", styles: ["canal"], p: 0.5, build: (c, s) => {
+      const x = doorX(c);
+      if (x == null || !c.groundLevel) return;
+      for (let k = 0; k < 3; k++) s.box(c.f, x - 0.75, x + 0.75, 0, 1.2 - k * 0.35, c.base + k * 0.18, c.base + (k + 1) * 0.18, STONE2);
+    } },
+    { id: "stoop-railing", styles: ["canal"], p: 0.35, build: (c, s) => {
+      const x = doorX(c);
+      if (x == null || !c.groundLevel) return;
+      for (const dx of [-0.75, 0.73]) s.box(c.f, x + dx, x + dx + 0.03, 0.1, 1.2, c.base + 0.5, c.base + 0.55, IRON);
+    } },
+    { id: "double-stoop", styles: ["canal"], p: 0.08, build: (c, s) => {
+      const x = doorX(c);
+      if (x == null || !c.groundLevel) return;
+      s.box(c.f, x - 0.7, x + 0.7, 0, 1, c.base, c.base + 0.75, STONE2);
+      for (const side of [-1, 1]) for (let k = 0; k < 3; k++) s.box(c.f, x + side * (0.7 + k * 0.3) - (side > 0 ? 0 : 0.3), x + side * (0.7 + k * 0.3) + (side > 0 ? 0.3 : 0), 0.1, 0.95, c.base, c.base + 0.75 - k * 0.25, STONE2);
+    } },
+    { id: "basement-well", styles: ["canal", "c19"], p: 0.25, build: (c, s) => {
+      if (!c.groundLevel) return;
+      const xs = windowXs(c);
+      const x = xs[xs.length - 1];
+      s.box(c.f, x - 0.6, x + 0.6, 0.6, 0.65, c.base, c.base + 0.75, IRON);
+    } },
+    { id: "wall-anchors", styles: ["canal"], p: 0.5, build: (c, s) => {
+      for (let k = 0; k < Math.min(3, c.layout.storeys); k++) for (const x of [0.5, c.f.len - 0.5]) {
+        const z = storeyZ(c, k) - 0.1;
+        s.box(c.f, x - 0.25, x + 0.25, 0, 0.05, z - 0.03, z + 0.03, IRON);
+        s.box(c.f, x - 0.03, x + 0.03, 0, 0.05, z - 0.25, z + 0.25, IRON);
+      }
+    } },
+    { id: "gable-stone", styles: ["canal"], p: 0.15, build: (c, s) => {
+      const x = doorX(c);
+      if (x == null) return;
+      const z = c.base + c.layout.groundM + 0.25;
+      s.box(c.f, x - 0.35, x + 0.35, 0, 0.06, z, z + 0.5, STONE2);
+      s.box(c.f, x - 0.25, x + 0.25, 0.06, 0.08, z + 0.08, z + 0.42, pickOf(["#3f6f8a", "#a8442c", "#c9a227"], hash012(c.id)));
+    } },
+    { id: "door-pediment", styles: ["canal"], p: 0.3, build: (c, s) => {
+      const x = doorX(c);
+      if (x == null) return;
+      const z = c.base + Math.min(2.7, c.layout.groundM - 0.2);
+      s.box(c.f, x - 0.65, x + 0.65, 0, 0.18, z, z + 0.14, STONE2, true);
+      s.slope(c.f, x - 0.6, x + 0.6, 0, 0.16, z + 0.45, z + 0.14, STONE2);
+    } },
+    { id: "shutters-3d", styles: ["canal"], p: 0.3, build: (c, s, r) => {
+      const hex2 = pickOf(SHUTTERS, r), z0 = c.base + 0.9, z1 = z0 + 1.5;
+      for (const x of windowXs(c).slice(0, 3)) for (const side of [-1, 1]) s.box(c.f, x + side * 0.62 - 0.22, x + side * 0.62 + 0.22, 0, 0.06, z0, z1, hex2);
+    } },
+    // --- Flowers and green --------------------------------------------------------
+    { id: "flower-boxes", styles: ALL, p: 0.25, build: (c, s, r) => {
+      const z = c.base + c.layout.groundM + 0.85;
+      if (!c.layout.storeys) return;
+      for (const [i, x] of windowXs(c).slice(0, 4).entries()) {
+        s.box(c.f, x - 0.5, x + 0.5, 0, 0.3, z - 0.25, z, WOOD, true);
+        s.box(c.f, x - 0.48, x + 0.48, 0.05, 0.32, z, z + 0.2, pickOf(FLOWERS, r + i * 0.17));
+      }
+    } },
+    { id: "ground-flower-boxes", styles: ["canal", "c19"], p: 0.2, build: (c, s, r) => {
+      const z = c.base + 0.95;
+      for (const [i, x] of windowXs(c).slice(0, 3).entries()) {
+        if (doorX(c) != null && Math.abs(x - doorX(c)) < 0.8) continue;
+        s.box(c.f, x - 0.5, x + 0.5, 0, 0.28, z - 0.22, z, "#3a3f45", true);
+        s.box(c.f, x - 0.48, x + 0.48, 0.04, 0.3, z, z + 0.22, pickOf(FLOWERS, r * 3 + i * 0.29));
+      }
+    } },
+    { id: "geveltuin", styles: ["canal", "c19", "school"], p: 0.3, build: (c, s, r) => {
+      if (!c.groundLevel) return;
+      const d = doorX(c);
+      for (let x = 0.3; x < Math.min(c.f.len - 0.3, 8); x += 0.55) {
+        if (d != null && Math.abs(x - d) < 0.7) continue;
+        const h = 0.8 + hash012(`${c.id}:${x}`) * 1.4;
+        s.box(c.f, x - 0.08, x + 0.08, 0.05, 0.3, c.base, c.base + h, GREEN);
+        if (hash012(`${c.id}:f${x}`) < 0.5) s.box(c.f, x - 0.12, x + 0.12, 0.05, 0.33, c.base + h - 0.4, c.base + h, pickOf(["#e84a7f", "#f2b92e", "#c04fd0", "#ffffff"], r + x));
+      }
+    } },
+    { id: "climbing-ivy", styles: ALL, p: 0.08, build: (c, s) => {
+      const x0 = hash012(c.wallKey) * Math.max(0, c.f.len - 3), h = Math.min(c.top - c.base, 4 + hash012(`${c.wallKey}:h`) * 6);
+      s.box(c.f, x0, x0 + 2.2, 0, 0.12, c.base, c.base + h, DARKGREEN);
+      s.box(c.f, x0 + 0.4, x0 + 1.6, 0, 0.14, c.base + h, c.base + h + 1.2, GREEN);
+    } },
+    // --- 19th century -----------------------------------------------------------------
+    { id: "juliet-balcony", styles: ["c19", "school"], p: 0.3, build: (c, s) => {
+      if (c.layout.storeys < 2) return;
+      const z = storeyZ(c, 1) + 0.05;
+      for (const x of windowXs(c).slice(0, 4)) {
+        s.box(c.f, x - 0.6, x + 0.6, 0, 0.35, z, z + 0.06, STONE2, true);
+        s.box(c.f, x - 0.6, x + 0.6, 0.32, 0.36, z + 0.06, z + 0.95, IRON);
+      }
+    } },
+    { id: "bay-window", styles: ["c19", "school"], p: 0.2, build: (c, s) => {
+      if (c.layout.storeys < 1 || c.f.len < 5) return;
+      const x = c.f.len / 2, z0 = storeyZ(c, 0), z1 = z0 + c.layout.storeyM * Math.min(2, c.layout.storeys) - 0.2;
+      s.box(c.f, x - 1.3, x + 1.3, 0, 0.8, z0, z1, c.wallHex, true);
+      s.box(c.f, x - 1.1, x + 1.1, 0.8, 0.82, z0 + 0.5, z1 - 0.4, GLASS);
+      s.box(c.f, x - 1.4, x + 1.4, 0, 0.9, z1, z1 + 0.15, STONE2);
+    } },
+    { id: "cornice-brackets", styles: ["c19", "canal"], p: 0.35, build: (c, s) => {
+      const z = c.top - 0.15;
+      s.box(c.f, 0, c.f.len, 0, 0.45, z - 0.15, z + 0.1, STONE2, true);
+      for (let x = 0.4; x < c.f.len - 0.2; x += 1.1) s.box(c.f, x - 0.08, x + 0.08, 0, 0.35, z - 0.55, z - 0.15, STONE2);
+    } },
+    { id: "door-canopy", styles: ["c19", "school", "postwar"], p: 0.25, build: (c, s) => {
+      const x = doorX(c);
+      if (x == null) return;
+      const z = c.base + Math.min(2.6, c.layout.groundM - 0.25);
+      s.box(c.f, x - 0.8, x + 0.8, 0, 0.9, z, z + 0.1, c.style === "c19" ? IRON : CONCRETE, true);
+    } },
+    { id: "downpipe", styles: ALL, p: 0.4, build: (c, s) => {
+      const x = hash012(`${c.wallKey}:dp`) < 0.5 ? 0.15 : c.f.len - 0.15;
+      s.box(c.f, x - 0.05, x + 0.05, 0, 0.1, c.base, c.top - 0.2, "#4a4d50");
+      s.box(c.f, x - 0.15, x + 0.15, 0, 0.2, c.top - 0.45, c.top - 0.2, "#4a4d50");
+    } },
+    { id: "gutter", styles: ["canal", "c19", "school"], p: 0.3, build: (c, s) => {
+      s.box(c.f, 0, c.f.len, 0, 0.16, c.top - 0.12, c.top, "#3a3d40", true);
+    } },
+    // --- Amsterdam School ------------------------------------------------------------
+    { id: "brick-balcony", styles: ["school"], p: 0.3, build: (c, s) => {
+      for (let k = 1; k < Math.min(4, c.layout.storeys + 1); k++) {
+        const x = c.f.len / 2, z = storeyZ(c, k - 1) + 0.05;
+        s.box(c.f, x - 1.4, x + 1.4, 0, 1, z, z + 0.15, c.wallHex, true);
+        s.box(c.f, x - 1.4, x + 1.4, 0.85, 1, z + 0.15, z + 1, c.wallHex);
+      }
+    } },
+    { id: "brick-bands", styles: ["school"], p: 0.35, build: (c, s) => {
+      for (let k = 0; k < c.layout.storeys; k++) s.box(c.f, 0, c.f.len, 0, 0.05, storeyZ(c, k) - 0.15, storeyZ(c, k), "#6b3a2c");
+    } },
+    { id: "stair-glass", styles: ["school", "postwar", "modern"], p: 0.3, build: (c, s) => {
+      const x = doorX(c) ?? c.f.len / 2;
+      s.box(c.f, x - 0.5, x + 0.5, 0, 0.06, c.base + c.layout.groundM + 0.3, c.top - 0.6, GLASS);
+    } },
+    { id: "window-grilles", styles: ["school", "c19"], p: 0.15, build: (c, s) => {
+      const d = doorX(c);
+      for (const x of windowXs(c).slice(0, 4)) {
+        if (d != null && Math.abs(x - d) < 0.8) continue;
+        for (let k = -2; k <= 2; k++) s.box(c.f, x + k * 0.22 - 0.02, x + k * 0.22 + 0.02, 0.04, 0.08, c.base + 0.8, c.base + 2.4, IRON);
+      }
+    } },
+    // --- Postwar / modern ------------------------------------------------------------------
+    { id: "balcony-slabs", styles: ["postwar"], p: 0.5, build: (c, s) => {
+      for (let k = 0; k < Math.min(6, c.layout.storeys); k++) for (let i = 0; i < c.layout.bays; i += 2) {
+        const x = bayCentre(c.layout, i), z = storeyZ(c, k) + 0.02;
+        s.box(c.f, x - 1.4, x + 1.4, 0, 1.2, z, z + 0.15, CONCRETE, true);
+        s.box(c.f, x - 1.4, x + 1.4, 1.15, 1.2, z + 0.15, z + 1, k % 2 ? "#d9d4c7" : "#c84b3c");
+      }
+    } },
+    { id: "gallery-walkway", styles: ["postwar"], p: 0.18, build: (c, s) => {
+      for (let k = 0; k < Math.min(8, c.layout.storeys); k++) {
+        const z = storeyZ(c, k) + 0.02;
+        s.box(c.f, 0, c.f.len, 0, 1.5, z, z + 0.18, CONCRETE, true);
+        s.box(c.f, 0, c.f.len, 1.45, 1.5, z + 0.18, z + 1.05, "#e6e2d8");
+      }
+    } },
+    { id: "satellite-dishes", styles: ["postwar"], p: 0.3, build: (c, s) => {
+      for (let k = 0; k < 3; k++) {
+        const x = hash012(`${c.wallKey}:sd${k}`) * c.f.len, z = storeyZ(c, Math.floor(hash012(`${c.wallKey}:sz${k}`) * Math.max(1, c.layout.storeys))) + 1.3;
+        s.box(c.f, x - 0.3, x + 0.3, 0.9, 0.95, z - 0.3, z + 0.3, "#e9e7e2");
+      }
+    } },
+    { id: "entrance-slab", styles: ["postwar", "modern", "tower"], p: 0.4, build: (c, s) => {
+      const x = doorX(c);
+      if (x == null) return;
+      s.box(c.f, x - 1.6, x + 1.6, 0, 1.8, c.base + 2.55, c.base + 2.8, CONCRETE, true);
+    } },
+    { id: "glass-balconies", styles: ["modern", "tower"], p: 0.45, build: (c, s) => {
+      for (let k = 0; k < Math.min(8, c.layout.storeys); k++) {
+        const z = storeyZ(c, k) + 0.02, x = c.f.len * (0.25 + 0.5 * (k % 2));
+        s.box(c.f, x - 1.6, x + 1.6, 0, 1.3, z, z + 0.12, CONCRETE, true);
+        s.box(c.f, x - 1.6, x + 1.6, 1.26, 1.3, z + 0.12, z + 1.05, "#a9c4cf");
+      }
+    } },
+    { id: "vertical-fins", styles: ["modern", "tower"], p: 0.25, build: (c, s) => {
+      for (let x = 0.6; x < c.f.len - 0.3; x += 1.5) s.box(c.f, x - 0.06, x + 0.06, 0, 0.45, c.base + c.layout.groundM, c.top - 0.3, "#d6d2c8");
+    } },
+    { id: "garage-door", styles: ["postwar"], p: 0.12, build: (c, s) => {
+      if (!c.groundLevel || c.f.len < 4) return;
+      const x = c.f.len - 2;
+      s.box(c.f, x - 1.25, x + 1.25, 0, 0.04, c.base, c.base + 2.3, "#9aa0a6");
+    } },
+    { id: "plinth", styles: ["canal", "c19", "school"], p: 0.35, build: (c, s) => {
+      if (c.groundLevel) s.box(c.f, 0, c.f.len, 0, 0.06, c.base, c.base + 0.5, "#3a3530");
+    } },
+    // --- Street life ------------------------------------------------------------------
+    { id: "parked-bikes", styles: ALL, p: 0.3, build: (c, s, r) => {
+      if (!c.groundLevel) return;
+      const n = 1 + Math.floor(r * 4), x0 = hash012(`${c.wallKey}:bx`) * Math.max(0, c.f.len - n * 0.7);
+      for (let k = 0; k < n; k++) {
+        const x = x0 + k * 0.7, hex2 = pickOf(["#1d1d1f", "#2f5d8a", "#7a1f2b", "#3f6f5a", "#c9a227"], hash012(`${c.wallKey}:bc${k}`));
+        s.box(c.f, x - 0.03, x + 0.03, 0.15, 1.9, c.base + 0.3, c.base + 0.6, hex2);
+        s.box(c.f, x - 0.02, x + 0.02, 0.15, 0.25, c.base, c.base + 0.95, hex2);
+        s.box(c.f, x - 0.02, x + 0.02, 1.75, 1.85, c.base, c.base + 0.9, hex2);
+      }
+    } },
+    { id: "bike-racks", styles: ["school", "postwar", "modern"], p: 0.2, build: (c, s) => {
+      if (!c.groundLevel) return;
+      for (let x = 1; x < Math.min(c.f.len - 0.5, 9); x += 0.8) s.box(c.f, x - 0.03, x + 0.03, 1.2, 1.9, c.base, c.base + 0.8, "#8a8f94");
+    } },
+    { id: "bench", styles: ["canal", "c19"], p: 0.1, build: (c, s) => {
+      if (!c.groundLevel) return;
+      const x = c.f.len * 0.3;
+      s.box(c.f, x - 0.8, x + 0.8, 0.1, 0.5, c.base, c.base + 0.45, WOOD);
+      s.box(c.f, x - 0.8, x + 0.8, 0.05, 0.12, c.base + 0.45, c.base + 0.9, WOOD);
+    } },
+    { id: "door-lantern", styles: ["canal", "c19"], p: 0.3, build: (c, s) => {
+      const x = doorX(c);
+      if (x == null) return;
+      const z = c.base + 2.3;
+      s.box(c.f, x + 0.6, x + 0.64, 0, 0.3, z + 0.3, z + 0.34, IRON);
+      s.box(c.f, x + 0.52, x + 0.72, 0.2, 0.4, z, z + 0.3, "#f3d58a");
+    } },
+    { id: "house-flag", styles: ["canal", "c19"], p: 0.06, build: (c, s, r) => {
+      const z = storeyZ(c, 0) + 0.5;
+      s.box(c.f, 0.5, 0.54, 0, 1.6, z, z + 0.04, "#d9d4c7");
+      const colours = r < 0.4 ? ["#ae1c28", "#ffffff", "#21468b"] : r < 0.7 ? ["#ec0000", "#000000", "#ec0000"] : ["#e40303", "#ff8c00", "#008026"];
+      colours.forEach((hex2, i) => s.box(c.f, 0.52, 0.55, 0.6, 1.55, z - 0.15 - i * 0.2, z - i * 0.2, hex2));
+    } },
+    { id: "scaffolding", styles: ALL, p: 0.025, build: (c, s) => {
+      const h = c.top - c.base, L = Math.min(c.f.len, 10);
+      for (let x = 0; x <= L; x += 2.5) s.box(c.f, x - 0.03, x + 0.03, 0.9, 0.96, c.base, c.base + h, "#9aa0a6");
+      for (let z = 2; z < h; z += 2) s.box(c.f, 0, L, 0.3, 1, c.base + z, c.base + z + 0.05, "#c9a76a", true);
+    } }
+  ];
+  var ROOF_COMPONENTS = [
+    { id: "roof-terrace", styles: ["canal", "c19", "school", "postwar"], p: 0.18, build: (c, s, r) => {
+      const { len, wid } = c.rect, u = len * 0.25, v = wid * 0.25;
+      for (const [a, b, p, q2] of [[-u, u, -v, -v + 0.04], [-u, u, v - 0.04, v], [-u, -u + 0.04, -v, v], [u - 0.04, u, -v, v]]) roofBox(c, s, a, b, p, q2, c.z, c.z + 1, "#9a9fa3");
+      roofBox(c, s, -0.03, 0.03, -0.03, 0.03, c.z, c.z + 2, "#e9e6de");
+      roofBox(c, s, -1, 1, -1, 1, c.z + 2, c.z + 2.1, pickOf(["#e85a3c", "#f2b92e", "#ffffff", "#2a9d8f"], r));
+    } },
+    { id: "roof-extension", styles: ["c19", "school", "postwar"], p: 0.15, build: (c, s) => {
+      const { len, wid } = c.rect;
+      if (len < 8 || wid < 6) return;
+      roofBox(c, s, -len * 0.3, len * 0.3, -wid * 0.1, wid * 0.35, c.z, c.z + 2.6, "#5d6064");
+      roofBox(c, s, -len * 0.3, len * 0.3, -wid * 0.12, -wid * 0.1, c.z + 0.3, c.z + 2.2, GLASS);
+    } },
+    { id: "ac-units", styles: ["postwar", "modern", "tower", "school"], p: 0.35, build: (c, s) => {
+      for (let k = 0; k < 3; k++) {
+        const u = (hash012(`${c.id}:ac${k}`) - 0.5) * c.rect.len * 0.7, v = (hash012(`${c.id}:av${k}`) - 0.5) * c.rect.wid * 0.7;
+        roofBox(c, s, u - 0.5, u + 0.5, v - 0.4, v + 0.4, c.z, c.z + 0.9, "#c9cbcd");
+      }
+    } },
+    { id: "skylights", styles: ALL, p: 0.3, build: (c, s) => {
+      for (let k = 0; k < 2; k++) {
+        const u = (hash012(`${c.id}:sk${k}`) - 0.5) * c.rect.len * 0.6;
+        roofBox(c, s, u - 0.6, u + 0.6, -0.5, 0.5, c.z, c.z + 0.35, GLASS);
+      }
+    } },
+    { id: "solar-panels", styles: ["c19", "school", "postwar", "modern"], p: 0.25, build: (c, s) => {
+      const { len, wid } = c.rect;
+      for (let k = 0; k < Math.min(5, Math.floor(len / 2.2)); k++) {
+        const u = -len * 0.35 + k * 2.2;
+        roofBox(c, s, u, u + 1.7, -wid * 0.3, -wid * 0.3 + 1, c.z + 0.2, c.z + 0.45, "#2b3a55");
+      }
+    } },
+    { id: "antenna", styles: ["canal", "c19", "school", "postwar"], p: 0.15, build: (c, s) => {
+      roofBox(c, s, -0.03, 0.03, 0.3, 0.36, c.z, c.z + 3.2, "#8a8f94");
+      roofBox(c, s, -0.6, 0.6, 0.31, 0.35, c.z + 2.8, c.z + 2.84, "#8a8f94");
+    } },
+    { id: "roof-garden", styles: ["postwar", "modern", "school"], p: 0.15, build: (c, s) => {
+      const { len, wid } = c.rect;
+      roofBox(c, s, -len * 0.35, len * 0.35, -wid * 0.35, wid * 0.35, c.z, c.z + 0.08, "#5f8a4a");
+      roofBox(c, s, -0.6, 0.6, -0.6, 0.6, c.z + 0.08, c.z + 1.4, GREEN);
+    } },
+    { id: "lift-housing", styles: ["postwar", "modern", "tower"], p: 0.4, build: (c, s) => {
+      const u = c.rect.len * 0.2;
+      roofBox(c, s, u - 1.2, u + 1.2, -1.2, 1.2, c.z, c.z + 2.4, "#a7a49c");
+    } },
+    { id: "vent-stacks", styles: ["canal", "c19", "school", "postwar"], p: 0.3, build: (c, s) => {
+      for (let k = 0; k < 3; k++) {
+        const u = (hash012(`${c.id}:vs${k}`) - 0.5) * c.rect.len * 0.7;
+        roofBox(c, s, u - 0.1, u + 0.1, -0.1 + k * 0.4, 0.1 + k * 0.4, c.z, c.z + 0.9, "#6a6d70");
+      }
+    } },
+    { id: "water-tank", styles: ["school", "postwar"], p: 0.06, build: (c, s) => {
+      roofBox(c, s, -1.2, 1.2, -1.2, 1.2, c.z + 1.6, c.z + 3.6, "#7c6a58");
+      for (const [u, v] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) roofBox(c, s, u - 0.06, u + 0.06, v - 0.06, v + 0.06, c.z, c.z + 1.6, IRON);
+    } }
+  ];
+  var COMPONENT_COUNT = WALL_COMPONENTS.length + ROOF_COMPONENTS.length;
+
   // src/canalRecall/threeBuildingMesh.ts
   var parseHex = (hex2) => {
     const m = /^#?([0-9a-f]{6})$/i.exec(hex2);
@@ -743,6 +1065,529 @@
     const k = t / lengthM;
     return [start[0] + (end[0] - start[0]) * k, start[1] + (end[1] - start[1]) * k];
   }
+
+  // src/canalRecall/storefronts.ts
+  var luma = (hex2) => {
+    const n = parseInt(hex2.slice(1), 16);
+    return 0.299 * (n >> 16 & 255) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255);
+  };
+  var GLASS2 = "#4b5a68";
+  var DOOR = "#15171a";
+  var WHITE2 = "#f2f0ea";
+  var INK = "#1d1d1f";
+  var CHAIR = "#6b5444";
+  function compileStorefront(slug, spec, wall) {
+    const L = wall.lengthM, h = spec.heightM ?? 3.6;
+    const half = Math.min(3.5, L / 2);
+    const [x0, x1] = spec.span ?? [Math.max(0, Math.min(L - 2 * half, wall.alongM - half)), Math.min(L, Math.max(2 * half, wall.alongM + half))];
+    const w = x1 - x0, frame = spec.frame, fascia = spec.fascia === false ? null : spec.fascia ?? frame;
+    const letters = spec.letters ?? (luma(fascia ?? frame) < 120 ? WHITE2 : INK);
+    const boxes = [{ x0, x1, z0: 0, z1: h, out1: 0.12, hex: frame }];
+    const out = 0.12;
+    const fz0 = h - 0.75;
+    if (fascia) {
+      boxes.push({ x0: x0 + 0.05, x1: x1 - 0.05, z0: fz0, z1: h - 0.1, out0: out, out1: out + 0.06, hex: fascia });
+      const n = Math.max(3, Math.min(16, spec.name.replace(/[^A-Za-z0-9]/g, "").length));
+      boxes.push(...lettering(x0 + w * 0.15, x1 - w * 0.15, fz0 + 0.2, h - 0.3, out + 0.06, letters, n));
+    }
+    const door = spec.door ?? "left", dw = 0.95;
+    const dx0 = door === "left" ? x0 + 0.2 : door === "right" ? x1 - 0.2 - dw : x0 + w / 2 - dw / 2;
+    const glassSpans = door === "none" ? [[x0 + 0.2, x1 - 0.2]] : door === "centre" ? [[x0 + 0.2, dx0 - 0.15], [dx0 + dw + 0.15, x1 - 0.2]] : door === "left" ? [[dx0 + dw + 0.15, x1 - 0.2]] : [[x0 + 0.2, dx0 - 0.15]];
+    if (door !== "none") {
+      const dTop = Math.min(2.5, fz0 - 0.2);
+      boxes.push({ x0: dx0, x1: dx0 + dw, z0: 0, z1: dTop, out0: out - 0.02, out1: out + 0.01, hex: DOOR });
+      boxes.push({ x0: dx0 + 0.15, x1: dx0 + dw - 0.15, z0: 1.1, z1: dTop - 0.2, out0: out, out1: out + 0.015, hex: GLASS2 });
+    }
+    const gTop = spec.transom ? fz0 - 0.55 : fz0 - 0.15, gBot = 0.45;
+    for (const [a, b] of glassSpans) {
+      if (b - a < 0.4) continue;
+      if (spec.transom) {
+        const n = Math.max(2, Math.round((b - a) / 0.55)), pw = (b - a) / n;
+        for (let i = 0; i < n; i++) boxes.push({ x0: a + i * pw + 0.05, x1: a + (i + 1) * pw - 0.05, z0: gTop + 0.1, z1: fz0 - 0.1, out0: out, out1: out + 0.02, hex: GLASS2 });
+      }
+      if (spec.shutters) for (const sx of [a, b - 0.32]) boxes.push({ x0: sx, x1: sx + 0.32, z0: gBot, z1: gTop, out0: out + 0.03, out1: out + 0.07, hex: spec.shutters });
+      const style = spec.windows ?? "big";
+      const bays = style === "big" ? 1 : Math.max(2, Math.round((b - a) / (style === "panes" ? 0.9 : 1.6)));
+      const bw = (b - a) / bays;
+      for (let i = 0; i < bays; i++) {
+        const g0 = a + i * bw + (bays > 1 ? 0.06 : 0), g1 = a + (i + 1) * bw - (bays > 1 ? 0.06 : 0);
+        boxes.push({ x0: g0, x1: g1, z0: gBot, z1: style === "arched" ? gTop - 0.35 : gTop, out0: out, out1: out + 0.02, hex: GLASS2 });
+        if (style === "arched") boxes.push({ x0: g0 + bw * 0.15, x1: g1 - bw * 0.15, z0: gTop - 0.35, z1: gTop, out0: out, out1: out + 0.02, hex: GLASS2 });
+        if (style === "panes") boxes.push({ x0: g0, x1: g1, z0: (gBot + gTop) / 2 - 0.03, z1: (gBot + gTop) / 2 + 0.03, out0: out + 0.02, out1: out + 0.04, hex: frame });
+      }
+    }
+    if (spec.rollers) for (const [a, b] of glassSpans) {
+      if (b - a < 0.4) continue;
+      const rHex = typeof spec.rollers === "string" ? spec.rollers : "#5a6270";
+      boxes.push({ x0: a - 0.05, x1: b + 0.05, z0: gTop - 0.3, z1: gTop, out0: out, out1: out + 0.22, hex: "#8a8c8e" }, { x0: a, x1: b, z0: gBot, z1: gTop - 0.3, out0: out + 0.1, out1: out + 0.12, hex: rHex });
+      for (let z = gBot + 0.25; z < gTop - 0.35; z += 0.25) boxes.push({ x0: a, x1: b, z0: z, z1: z + 0.04, out0: out + 0.12, out1: out + 0.14, hex: "#3a3f48" });
+    }
+    boxes.push({ x0, x1, z0: 0, z1: gBot, out0: out, out1: out + 0.05, hex: frame });
+    const aHex = spec.awningHex ?? frame, aZ = fz0 - 0.02;
+    switch (spec.awning ?? "none") {
+      case "flat":
+        boxes.push({ x0: x0 + 0.1, x1: x1 - 0.1, z0: aZ - 0.4, z1: aZ, out0: out, out1: 1.4, hex: aHex });
+        break;
+      case "striped":
+        boxes.push(...stripedAwning(x0 + 0.1, x1 - 0.1, aZ, 1.4, aHex, spec.awningHex2 ?? WHITE2).map((b) => ({ ...b, out0: out })));
+        break;
+      case "scalloped": {
+        boxes.push({ x0: x0 + 0.1, x1: x1 - 0.1, z0: aZ - 0.3, z1: aZ, out0: out, out1: 1.3, hex: aHex });
+        for (let x = x0 + 0.1; x < x1 - 0.35; x += 0.5) boxes.push({ x0: x + 0.05, x1: x + 0.4, z0: aZ - 0.5, z1: aZ - 0.3, out0: 1.25, out1: 1.3, hex: aHex });
+        break;
+      }
+      case "tiled": {
+        for (let k = 0; k < 3; k++) boxes.push({ x0: x0 - 0.15, x1: x1 + 0.15, z0: aZ - 0.2 - k * 0.18, z1: aZ - k * 0.18, out0: out + k * 0.35, out1: out + (k + 1) * 0.35, hex: aHex });
+        boxes.push({ x0: x0 - 0.25, x1: x1 + 0.25, z0: aZ - 0.72, z1: aZ - 0.6, out0: 1.1, out1: 1.2, hex: "#9a1f22" });
+        break;
+      }
+      case "canopy":
+        boxes.push({ x0: x0 - 0.2, x1: x1 + 0.2, z0: aZ - 0.15, z1: aZ, out0: out, out1: 2.2, hex: aHex });
+        break;
+    }
+    const sAt = door === "right" ? x0 + 0.25 : x1 - 0.25, sHex = spec.signHex ?? (fascia ?? frame);
+    switch (spec.sign ?? "none") {
+      case "round":
+        boxes.push({ x0: sAt - 0.03, x1: sAt + 0.03, z0: h - 0.15, z1: h - 0.1, out0: out, out1: 0.8, hex: INK }, { x0: sAt - 0.06, x1: sAt + 0.06, z0: h - 0.75, z1: h - 0.15, out0: 0.2, out1: 0.8, hex: sHex });
+        break;
+      case "square":
+        boxes.push({ x0: sAt - 0.03, x1: sAt + 0.03, z0: h + 0.35, z1: h + 0.4, out0: out, out1: 0.95, hex: INK }, { x0: sAt - 0.06, x1: sAt + 0.06, z0: h - 0.45, z1: h + 0.35, out0: 0.2, out1: 0.95, hex: sHex });
+        break;
+      case "lamp":
+        boxes.push({ x0: sAt - 0.03, x1: sAt + 0.03, z0: h + 0.2, z1: h + 0.25, out0: out, out1: 0.7, hex: INK }, { x0: sAt - 0.12, x1: sAt + 0.12, z0: h - 0.25, z1: h + 0.2, out0: 0.5, out1: 0.74, hex: "#f3d58a" });
+        break;
+    }
+    if (spec.terrace) for (let x = x0 + 0.8; x < x1 - 0.5; x += 1.6) {
+      boxes.push({ x0: x - 0.03, x1: x + 0.03, z0: 0, z1: 0.72, out0: 1.55, out1: 1.61, hex: INK }, { x0: x - 0.3, x1: x + 0.3, z0: 0.72, z1: 0.76, out0: 1.28, out1: 1.88, hex: aHex });
+      for (const dx of [-0.5, 0.5]) boxes.push({ x0: x + dx - 0.16, x1: x + dx + 0.16, z0: 0.4, z1: 0.45, out0: 1.42, out1: 1.74, hex: CHAIR }, { x0: x + dx - 0.14, x1: x + dx - 0.1, z0: 0, z1: 0.4, out0: 1.5, out1: 1.66, hex: CHAIR }, { x0: x + dx + 0.1, x1: x + dx + 0.14, z0: 0, z1: 0.4, out0: 1.5, out1: 1.66, hex: CHAIR }, { x0: x + dx - 0.16, x1: x + dx + 0.16, z0: 0.45, z1: 0.8, out0: 1.7, out1: 1.74, hex: CHAIR });
+    }
+    if (spec.plants) for (let x = x0 + 0.3; x < x1 - 0.6; x += 2.2) boxes.push({ x0: x, x1: x + 0.5, z0: 0, z1: 0.5, out0: 0.25, out1: 0.75, hex: "#4a3b30" }, { x0: x - 0.05, x1: x + 0.55, z0: 0.5, z1: 1.05, out0: 0.2, out1: 0.8, hex: "#3f7a3a" });
+    return {
+      name: spec.name,
+      storefront: true,
+      roofline: "unmeasured",
+      ids: [wall.pand],
+      start: wall.start,
+      end: wall.end,
+      depthM: 0.05,
+      hex: frame,
+      outline: [[x0, 0.01], [x1, 0.01]],
+      boxes,
+      windows: []
+    };
+  }
+
+  // src/canalRecall/storefrontSpecs.ts
+  var WHITE3 = "#ece8de";
+  var CREAM2 = "#efe9d6";
+  var BLACK = "#1e1e1f";
+  var DARK = "#3b3d40";
+  var RED = "#c8321f";
+  var GREEN2 = "#2f6b47";
+  var STOREFRONT_SPECS = {
+    // --- Sheet 00 ---
+    "a-fushion-42477": { name: "A-Fusion", frame: "#6b6b68", fascia: false, windows: "split", door: "centre" },
+    "a-sentimento-pizza-33537": null,
+    "a-tavola-81149": null,
+    "a-volo-72841": { name: "A Volo", frame: WHITE3, fascia: false, windows: "split", door: "left", plants: true },
+    "aaltje-54926": { name: "Aaltje", frame: "#2f4a36", fascia: false, windows: "panes", door: "centre", sign: "lamp" },
+    "abyssinia-49625": { name: "Abyssinia", frame: BLACK, fascia: "#e9e4da", letters: BLACK, windows: "split", door: "right", sign: "square", signHex: RED, plants: true },
+    "afhaalcentrum-terang-boelan-65034": { name: "Terang Boelan", frame: "#4a3328", awning: "striped", awningHex: "#b8442c", windows: "big", door: "left" },
+    "akitsu-69827": { name: "Akitsu", frame: WHITE3, fascia: false, windows: "split", door: "none" },
+    "al-argentino-65689": { name: "Al Argentino", frame: DARK, fascia: "#7a1f2b", windows: "split", door: "centre" },
+    "al-basha-47236": { name: "Al Basha", frame: "#e9e6e0", letters: RED, windows: "big", door: "centre" },
+    "alberto-pozzetto-private-dining-56811": null,
+    "albina-10961": { name: "Albina", frame: "#3f4a4a", fascia: false, windows: "split", door: "centre", plants: true },
+    "ali-ocakbas-78972": { name: "Ali Ocakbas", frame: "#e8e2d4", fascia: false, windows: "big", door: "none" },
+    "ama-sushi-ramen-35932": { name: "Coffeedate", frame: WHITE3, letters: RED, windows: "split", door: "centre", terrace: true },
+    "amra-74506": { name: "Amra", frame: DARK, windows: "split", door: "left", sign: "round", signHex: GREEN2 },
+    "aneka-rasa-71504": { name: "Aneka Rasa", frame: CREAM2, letters: GREEN2, windows: "split", door: "centre" },
+    // Sheet 01.
+    "anjappar-65520": { name: "Anjappar", frame: DARK, fascia: false, windows: "big", door: "none" },
+    "any-thaim-delivery-23690": { name: "Any Thaim", frame: WHITE3, fascia: false, windows: "big", transom: true, door: "none" },
+    "argentalia-78811": { name: "Argentalia", frame: BLACK, fascia: false, windows: "arched", door: "centre" },
+    "arles-60398": { name: "Arles", frame: "#4a2e22", fascia: false, windows: "panes", transom: true, door: "right" },
+    "attila-turkish-food-78174": null,
+    "auberge-36577": { name: "Auberge", frame: "#5a3a24", fascia: false, windows: "panes", door: "left", terrace: true },
+    "baibua-75627": { name: "Baibua", frame: BLACK, fascia: BLACK, windows: "big", door: "left" },
+    "baires-40662": { name: "Baires", frame: "#3a2a22", fascia: false, awning: "flat", awningHex: RED, windows: "split", door: "left" },
+    "baires-60490": null,
+    "baked-59205": null,
+    "bakers-roasters-33622": { name: "Bakers & Roasters", frame: "#3c5566", fascia: false, windows: "split", door: "right", terrace: true },
+    "balraj-67821": { name: "Balraj", frame: WHITE3, fascia: "#f2efe8", letters: RED, windows: "split", door: "right", sign: "square", signHex: RED },
+    "banh-mi-ba-my-68914": { name: "Banh Mi Ba My", frame: BLACK, fascia: false, windows: "panes", door: "left" },
+    "bar-bistro-river-68038": { name: "River", frame: "#3c3c3c", fascia: false, windows: "split", door: "none", plants: true },
+    "bar-dancing-multipla-74176": null,
+    "bar-karma-78156": { name: "Karma", frame: BLACK, fascia: false, windows: "big", door: "centre", heightM: 4.2 },
+    // Sheet 02.
+    "bar-ristorante-gallizia-64155": { name: "Gallizia", frame: DARK, fascia: false, awning: "flat", awningHex: "#3a3d40", windows: "split", door: "left" },
+    "barada-54271": { name: "Barada", frame: "#4a6f95", fascia: false, windows: "arched", door: "centre", transom: true },
+    "bella-storia-trattoria-italiana-64646": { name: "Bella Storia", frame: DARK, fascia: false, windows: "panes", door: "right", sign: "square", signHex: RED },
+    "beyoglu-26283": { name: "Beyoglu", frame: DARK, fascia: false, windows: "split", door: "centre", plants: true, sign: "square", signHex: "#e0b020" },
+    "beyrouth-36814": { name: "Beyrouth", frame: "#7a4a2a", fascia: false, awning: "striped", awningHex: RED, windows: "panes", door: "centre", terrace: true },
+    "billy-s-thai-restaurant-73820": null,
+    "bir-tat-37903": { name: "Bir Tat", frame: WHITE3, fascia: "#e8303a", windows: "split", door: "centre", transom: false },
+    "bisous-52622": { name: "Bisous", frame: "#2c3034", fascia: false, windows: "panes", door: "right", plants: true },
+    "bistro-amsterdam-74130": { name: "Bistro Amsterdam", frame: BLACK, fascia: BLACK, windows: "panes", door: "centre", sign: "lamp" },
+    "bistro-de-la-mer-77684": null,
+    "bistrot-des-alpes-82275": { name: "Bistrot des Alpes", frame: "#262626", fascia: false, windows: "split", door: "centre" },
+    "bistrot-neuf-71114": { name: "Bistrot Neuf", frame: "#e6e1d6", fascia: "#efe9d6", letters: RED, windows: "split", door: "right", terrace: true },
+    "blauw-56113": { name: "Blauw", frame: CREAM2, fascia: false, windows: "big", door: "centre", transom: true, plants: true },
+    "blin-queen-78949": { name: "Blin Queen", frame: CREAM2, fascia: DARK, windows: "split", door: "right" },
+    "bloem-op-ijburg-06701": null,
+    "blue-dragon-82246": { name: "Indian Restaurant", frame: "#7a1f2b", fascia: "#7a1f2b", windows: "split", door: "right", sign: "round", signHex: "#7a1f2b" },
+    // Sheet 03.
+    "blue-pepper-56684": { name: "Blue Pepper", frame: "#2f4f7a", fascia: false, windows: "arched", door: "left" },
+    "boeuf-53646": { name: "Boeuf", frame: DARK, fascia: false, windows: "split", door: "centre", plants: true, terrace: true },
+    "bojo-68561": { name: "Bojo", frame: BLACK, fascia: RED, windows: "big", door: "left", sign: "round", signHex: RED },
+    "bougainville-65129": null,
+    "bouillon-d-amsterdam-75580": { name: "Bouillon", frame: "#8a4a22", fascia: false, windows: "arched", door: "none", heightM: 4.4, sign: "square", signHex: "#c9a227" },
+    "brandon-76429": { name: "Brandon", frame: WHITE3, fascia: false, awning: "flat", awningHex: "#cfcac0", windows: "split", door: "centre", terrace: true },
+    "brasserie-nenette-86764": { name: "Nenette", frame: "#4a4036", fascia: false, awning: "flat", awningHex: "#e3b62a", windows: "split", door: "centre", terrace: true },
+    "bret-43513": { name: "Bret", frame: "#b52a22", fascia: false, windows: "panes", door: "left", plants: true, terrace: true },
+    "bridges-50983": null,
+    "bromo-indah-70189": null,
+    "brouwerij-t-ij-69757": { name: "Brouwerij 't IJ", frame: "#3a3a36", fascia: false, windows: "panes", door: "centre", terrace: true },
+    "brouwerij-troost-26831": { name: "Brouwerij Troost", frame: "#5a1f1a", fascia: false, windows: "split", door: "centre", terrace: true },
+    "brunchdale-51598": { name: "Brunchdale", frame: "#2a2c2e", fascia: false, windows: "split", door: "centre", heightM: 4.6 },
+    "brunchie-71533": { name: "Brunchie", frame: BLACK, fascia: BLACK, windows: "big", door: "left" },
+    "brut-de-mer-57580": { name: "Brut de Mer", frame: WHITE3, fascia: "#2b3a55", windows: "panes", door: "centre", plants: true },
+    "buffet-van-odette-76062": { name: "Buffet van Odette", frame: WHITE3, fascia: false, awning: "canopy", awningHex: "#e8e4dc", windows: "split", door: "left", terrace: true },
+    // Sheet 04.
+    "buiten-amsterdam-48608": { name: "Buiten", frame: "#2f6f7a", fascia: false, windows: "panes", door: "centre", plants: true, heightM: 4.2 },
+    "bullewijck-par-hasard-01986": { name: "Bullewijck", frame: "#3a2a26", fascia: "#b02a2a", windows: "split", door: "centre", terrace: true },
+    "buurman-buurman-eetwinkel-de-with-02216": { name: "Buurman & Buurman", frame: "#2a2c30", fascia: false, windows: "split", door: "left" },
+    "cabron-59249": { name: "Cabron", frame: "#5fa58a", fascia: "#5fa58a", windows: "split", door: "centre" },
+    "cafe-carbon-72095": { name: "Carbon", frame: DARK, fascia: false, awning: "flat", awningHex: "#2a2c2e", windows: "split", door: "centre", terrace: true },
+    "cafe-caron-05340": { name: "Caron", frame: "#8fa6a4", fascia: false, windows: "split", door: "centre", heightM: 3.2, plants: true },
+    "cafe-de-klos-72453": { name: "De Klos", frame: "#1f1f1f", fascia: false, windows: "panes", door: "centre", sign: "square", signHex: "#e3c020" },
+    "cafe-diner-t-weesperplein-54930": { name: "'t Weesperplein", frame: "#2a2c2e", fascia: "#2a2c2e", windows: "panes", door: "centre", plants: true },
+    "cafe-kadijk-70737": { name: "Kadijk", frame: "#e8e6e0", fascia: false, windows: "split", door: "right", plants: true },
+    "cafe-luxembourg-71813": { name: "Luxembourg", frame: "#3a3634", fascia: false, awning: "canopy", awningHex: "#3c3f3a", windows: "split", door: "centre", terrace: true },
+    "cafe-maurits-18332": { name: "Maurits", frame: BLACK, fascia: false, windows: "big", door: "centre", terrace: true },
+    "cafe-modern-00305": { name: "Modern", frame: "#efe9d6", fascia: false, windows: "panes", door: "centre", plants: true },
+    "cafe-parlotte-69678": { name: "Parlotte", frame: "#2a2a28", fascia: false, windows: "split", door: "none" },
+    "cafe-piazza-82586": { name: "Piazza", frame: "#6b1f1a", fascia: BLACK, windows: "panes", door: "left" },
+    "cafe-warung-pas-22965": null,
+    "cai-cai-15768": { name: "Cai Cai", frame: "#5a1f22", fascia: "#1f4d3a", windows: "panes", door: "centre" },
+    // Sheet 05.
+    "calisto-76282": { name: "Calisto", frame: "#e8e6e0", fascia: false, windows: "split", door: "centre", plants: true },
+    "calle-ocho-59713": { name: "Calle Ocho", frame: "#3a3a36", fascia: false, awning: "canopy", awningHex: "#e8e4dc", windows: "split", door: "centre", terrace: true },
+    "camino-taqueria-36027": { name: "Camino", frame: "#2a2420", fascia: false, windows: "panes", door: "centre", transom: true, sign: "round", signHex: "#e8e4dc" },
+    "cannibale-royale-52862": { name: "Cannibale Royale", frame: "#3d4652", fascia: false, awning: "scalloped", awningHex: "#1f1f1f", windows: "split", door: "centre" },
+    "cannibale-royale-handboogstraat-75878": { name: "Cannibale Royale", frame: "#6b1f1a", fascia: BLACK, windows: "split", door: "left" },
+    "cantina-caliente-70417": { name: "Cantina Caliente", frame: "#2f6f7a", fascia: "#2f6f7a", windows: "panes", door: "centre", terrace: true },
+    "cantine-de-caron-52471": null,
+    "carletto-67455": { name: "Carletto", frame: BLACK, fascia: BLACK, windows: "split", door: "centre", plants: true },
+    "cartagena-62560": { name: "Cartagena", frame: WHITE3, fascia: false, windows: "panes", transom: true, door: "none", sign: "square", signHex: "#d8501f" },
+    "casa-nostra-52357": { name: "Casa Nostra", frame: "#e8e6e0", fascia: false, windows: "big", door: "left" },
+    "casa-peru-68820": { name: "Casa Peru", frame: "#2a2420", fascia: false, windows: "panes", door: "right", plants: true },
+    "cascada-40347": null,
+    "castillo-79394": { name: "Castillo", frame: "#2a2420", fascia: false, awning: "scalloped", awningHex: "#1f4d3a", windows: "panes", door: "centre", plants: true },
+    "cavataria-14248": { name: "Cavataria", frame: "#4a2a1a", fascia: "#1f4d3a", awning: "flat", awningHex: "#1f4d3a", windows: "panes", door: "centre", terrace: true },
+    "cedars-05128": { name: "Cedars", frame: "#9aa4aa", fascia: false, windows: "split", door: "none", heightM: 4.4 },
+    "chadni-chowk-17679": { name: "Chadni Chowk", frame: "#e8e2d4", fascia: false, windows: "arched", door: "left" },
+    // Sheet 06.
+    "cham-so-good-58473": { name: "Cham So Good", frame: "#2a3a5a", fascia: "#2a3a5a", windows: "big", door: "left" },
+    "chateau-amsterdam-13565": { name: "Chateau", frame: "#3a3d40", fascia: false, windows: "big", door: "centre", heightM: 4.4 },
+    "chhiwat-bladi-lunch-grill-62478": { name: "Chhiwat Bladi", frame: "#2a2c2e", fascia: "#3a3d40", windows: "split", door: "centre" },
+    "china-supreme-99001": null,
+    "chuzo-king-77947": null,
+    "cinq-oriental-bistro-47188": { name: "Restaurant", frame: "#4a4440", fascia: "#4a4440", windows: "big", door: "centre", heightM: 4.2 },
+    "city-noord-eethuis-84998": { name: "City Noord", frame: WHITE3, fascia: "#c8321f", windows: "big", door: "left" },
+    "classico-37221": { name: "Classico", frame: "#e3e0d8", fascia: "#d8d4ca", letters: "#5a5a58", windows: "big", door: "left" },
+    "colima-71772": { name: "Colima", frame: "#2a2c2e", fascia: "#3a3a36", windows: "split", door: "right" },
+    "couscous-bar-61747": { name: "Couscous Bar", frame: "#e6e2d6", fascia: false, awning: "flat", awningHex: "#1f4d3a", windows: "split", door: "centre" },
+    "couscous-club-53618": { name: "Couscous Club", frame: "#4a3328", fascia: "#8a6a3a", windows: "big", door: "left" },
+    "ctaste-77277": { name: "Ctaste", frame: "#232a4a", fascia: "#232a4a", windows: "arched", door: "centre", transom: true },
+    "cucina-casalinga-34703": { name: "Cucina Casalinga", frame: WHITE3, fascia: "#e3c020", letters: "#c8321f", windows: "big", door: "right" },
+    "de-aardige-pers-58278": { name: "De Aardige Pers", frame: "#8a4a26", fascia: "#8a4a26", windows: "split", door: "centre", heightM: 4 },
+    "de-italiaan-66559": { name: "De Italiaan", frame: "#2a2420", fascia: false, awning: "flat", awningHex: "#b8282a", windows: "panes", door: "centre", terrace: true, plants: true },
+    "de-juwelier-77678": { name: "De Juwelier", frame: "#5a3a22", fascia: "#4a2e1c", windows: "panes", transom: true, door: "left", plants: true },
+    // Sheet 07.
+    "de-nieuwe-khl-80851": null,
+    "de-nieuwe-rai-93538": { name: "De Nieuwe Rai", frame: "#3a2a22", fascia: false, awning: "flat", awningHex: "#c8282a", windows: "panes", door: "centre", terrace: true },
+    "de-palmboom-71180": { name: "De Palmboom", frame: "#e8e2d4", fascia: false, windows: "panes", door: "centre", transom: true },
+    "de-patchka-56486": { name: "De Patchka", frame: "#e8e6e0", fascia: "#f2f0ea", letters: "#c8321f", awning: "flat", awningHex: "#e8e6e0", windows: "big", door: "right" },
+    "de-pizzakamer-30670": { name: "De Pizzakamer", frame: "#3a2a22", fascia: "#2a2420", windows: "panes", door: "centre", terrace: true },
+    "desa-61346": null,
+    "di-luca-43829": { name: "Di Luca", frame: "#4a2e1c", fascia: false, windows: "split", door: "centre", terrace: true, plants: true },
+    "dignita-93370": { name: "Dignita", frame: "#e8e6e0", fascia: false, awning: "flat", awningHex: "#d8d4ca", windows: "arched", door: "left", plants: true },
+    "dionysos-taverna-36240": { name: "Dionysos Taverna", frame: WHITE3, fascia: "#b8282a", awning: "flat", awningHex: "#e8e6e0", windows: "split", door: "centre", plants: true },
+    "domenica-67762": null,
+    "dong-son-takeaway-restaurant-72773": { name: "Dong Son", frame: "#e3c020", fascia: "#e3c020", windows: "split", door: "centre" },
+    "dos-73278": { name: "Dos", frame: "#e8e2d4", fascia: false, windows: "panes", door: "centre", terrace: true },
+    "eatmosfera-82121": { name: "Eatmosfera", frame: WHITE3, fascia: false, windows: "big", door: "left" },
+    "eetcafe-koevoet-72933": { name: "Koevoet", frame: "#1f1f1f", fascia: false, windows: "panes", door: "left", sign: "lamp", plants: true },
+    "eetcafe-t-pakhuis-75883": { name: "'t Pakhuis", frame: "#2a2a28", fascia: false, awning: "striped", awningHex: "#1f1f1f", awningHex2: "#e8e4dc", windows: "split", door: "centre" },
+    "eetcafe-van-beeren-82699": { name: "Van Beeren", frame: "#1f2a24", fascia: "#e8e2d4", letters: "#c8321f", windows: "panes", door: "left", transom: true },
+    // Sheet 08.
+    "eggs-benaddicted-72390": { name: "Eggs Benaddicted", frame: "#2a2c2e", fascia: false, awning: "canopy", awningHex: "#e8e4dc", windows: "split", door: "centre", terrace: true },
+    "el-torado-grill-68110": { name: "El Torado", frame: BLACK, fascia: "#c8282a", windows: "split", door: "centre", transom: true },
+    "ethiopisch-restaurant-addis-ababa-66610": { name: "Addis Ababa", frame: "#3a2a22", fascia: false, windows: "panes", door: "left" },
+    "fabian-78620": { name: "Fabian", frame: "#1f2a24", fascia: "#1f2a24", windows: "split", door: "centre", sign: "round", signHex: RED },
+    "feduzzi-85026": { name: "Feduzzi", frame: "#3a2a22", fascia: "#5a2a22", awning: "flat", awningHex: "#9a1f22", windows: "split", door: "centre" },
+    "fiaschetteria-pistoia-59698": null,
+    "fiaschetteria-pistoia-73112": { name: "Fiaschetteria Pistoia", frame: "#1f1f1f", fascia: false, windows: "big", door: "right" },
+    "fiko-80855": null,
+    "flore-68170": { name: "Flore", frame: WHITE3, fascia: false, awning: "flat", awningHex: "#e8e4dc", windows: "split", door: "centre", terrace: true, heightM: 4.2 },
+    "florentin-st-81813": null,
+    "flow-62418": { name: "Striphoek", frame: WHITE3, fascia: "#c8282a", windows: "big", transom: true, door: "right", plants: true },
+    "fondue-fondue-53352": { name: "Fondue Fondue", frame: BLACK, fascia: false, windows: "split", door: "centre" },
+    "food-brothers-83027": { name: "Food Brothers", frame: "#3a3d40", fascia: "#2a6f8a", windows: "split", door: "left" },
+    "franggo-63278": { name: "Franggo", frame: "#2a2a2c", fascia: false, windows: "big", door: "left", sign: "lamp" },
+    "fujitora-61426": { name: "Kaze", frame: "#2a2420", fascia: "#e8e2d4", letters: "#c8282a", windows: "split", door: "right" },
+    "fuku-ramen-63449": { name: "Fuku Ramen", frame: "#e8e2d4", fascia: false, windows: "big", door: "none" },
+    // Sheet 09.
+    "full-moon-garden-74474": { name: "Full Moon Garden", frame: "#3a3634", fascia: false, windows: "big", door: "left", sign: "round", signHex: "#e8e4dc" },
+    "gaja-korean-bbq-bar-67636": { name: "Gaja", frame: "#5a5a58", fascia: false, windows: "big", door: "left", heightM: 4.4 },
+    "gartine-75728": { name: "Gartine", frame: "#2a2a28", fascia: false, windows: "big", door: "left" },
+    "gebr-hartering-82661": { name: "Gebr. Hartering", frame: "#e8e6e0", fascia: false, windows: "panes", transom: true, door: "centre" },
+    "golden-thali-50442": { name: "Golden Thali", frame: WHITE3, fascia: false, windows: "big", transom: true, door: "centre" },
+    "grieks-restaurant-plato-38635": null,
+    "hakata-senpachi-00201": { name: "Hakata Senpachi", frame: "#e8e2d4", fascia: "#3a3d40", awning: "flat", awningHex: "#3a3d40", windows: "split", door: "right" },
+    "hannekes-boom-38899": null,
+    "hanoi-old-quarter-restaurant-65114": null,
+    "hans-im-gluck-51814": { name: "Hans im Gl\xFCck", frame: "#1f2a24", fascia: false, windows: "arched", door: "centre", terrace: true, heightM: 4.2 },
+    "hap-hmm-63575": { name: "Hap-Hmm", frame: "#2a2420", fascia: false, windows: "panes", door: "left" },
+    "hap-li-90676": { name: "Hap Li", frame: "#e8e2d4", fascia: false, windows: "big", door: "left", sign: "square", signHex: RED },
+    "harmani-63659": { name: "Harmani", frame: "#1f1f1f", fascia: false, windows: "panes", door: "centre" },
+    "havzan-37053": { name: "Havzan", frame: "#3a3d40", fascia: "#3a3d40", windows: "split", door: "centre", sign: "round", signHex: RED },
+    "hawaiian-poke-bowl-37272": { name: "Poke Bowl", frame: "#2a2c2e", fascia: "#2a2c2e", awning: "canopy", awningHex: "#e8e4dc", windows: "split", door: "centre" },
+    "hayran-61341": { name: "Hayran", frame: "#4a4036", fascia: false, awning: "flat", awningHex: "#3f4a32", windows: "split", door: "left" },
+    // Sheet 10.
+    "hinata-72121": { name: "Hinata", frame: "#2a2420", fascia: false, windows: "big", door: "right" },
+    "hoi-tin-77906": { name: "Hoi Tin", frame: "#5a1f1a", fascia: false, awning: "tiled", awningHex: "#b8602a", windows: "panes", door: "centre", sign: "lamp" },
+    "hummus-bistro-d-a-73434": { name: "Hummus d'A", frame: "#3a3634", fascia: "#8a6a3a", windows: "split", door: "left" },
+    "hunkar-restaurant-16023": { name: "Hunkar", frame: "#2a2c2e", fascia: "#2a2c2e", awning: "canopy", awningHex: "#3a3d40", windows: "split", door: "centre", terrace: true, plants: true },
+    "ibericus-amsterdam-79660": { name: "Ibericus", frame: "#a0602a", fascia: "#1f1f1f", windows: "panes", door: "left" },
+    "il-delfino-blu-36816": null,
+    "il-primo-68332": { name: "Il Primo", frame: "#e8e6e0", fascia: "#2a2c2e", windows: "split", door: "centre" },
+    "il-sogno-08857": null,
+    "il-tramezzino-68426": { name: "Il Tramezzino", frame: "#4a2a1c", fascia: "#4a2a1c", windows: "big", door: "right" },
+    "impero-romano-52924": { name: "Impero Romano", frame: "#2a2420", fascia: "#3a2a22", windows: "panes", door: "centre", terrace: true },
+    "incanto-79461": null,
+    "indrapura-78846": { name: "Indrapura", frame: "#1f1f1f", fascia: "#1f4d3a", windows: "panes", door: "centre", transom: true, sign: "round", signHex: "#c9a227" },
+    "insieme-71619": { name: "Insieme", frame: "#e8e6e0", fascia: "#3a3d40", windows: "panes", door: "left", plants: true },
+    "instock-amsterdam-69762": null,
+    "isshin-59354": { name: "Isshin", frame: "#2a2420", fascia: false, windows: "big", door: "left", sign: "square", signHex: RED },
+    "italia-oggi-71755": { name: "Italia Oggi", frame: "#1f1f1f", fascia: false, windows: "arched", door: "left", plants: true },
+    // Sheet 11.
+    "jen-s-bing-81194": { name: "Jen's Bing", frame: "#e8e2d4", fascia: false, awning: "flat", awningHex: "#b8b4aa", windows: "big", door: "right", plants: true },
+    "jinso-07340": { name: "Jinso", frame: "#2a2c2e", fascia: false, windows: "split", door: "centre", terrace: true, heightM: 4.4 },
+    "joselito-tapas-79619": { name: "Joselito", frame: "#1f2a24", fascia: false, windows: "panes", door: "centre" },
+    "jun-93249": { name: "Jun", frame: "#6b1f1a", fascia: "#6b1f1a", windows: "panes", door: "centre", plants: true },
+    "kaagman-kortekaas-69080": null,
+    "kafe-kontrast-36508": { name: "Kontrast", frame: "#1f1f1f", fascia: "#1f1f1f", windows: "big", door: "centre", terrace: true },
+    "kamasutra-78550": { name: "Kamasutra", frame: "#e8e6e0", fascia: false, windows: "arched", door: "left", sign: "round", signHex: RED },
+    "kathmandu-kitchen-15728": { name: "Intisari", frame: "#e8e6e0", fascia: false, windows: "big", door: "centre" },
+    "kebaphan-69641": null,
+    "kebec-corner-13694": null,
+    "kerkzicht-29775": { name: "Kerkzicht", frame: "#2a2420", fascia: false, windows: "panes", door: "centre", shutters: "#1f5a32", terrace: true },
+    "kilimanjaro-37317": { name: "Kilimanjaro", frame: "#e8e6e0", fascia: "#e3c020", windows: "big", door: "right" },
+    "kim-s-so-18480": { name: "Kim's So", frame: "#2a2c2e", fascia: "#2a2c2e", windows: "split", door: "centre" },
+    "klein-breda-78942": { name: "Klein Breda", frame: "#1f2a2a", fascia: false, windows: "panes", door: "right", terrace: true },
+    "koeah-75819": { name: "Koeah", frame: "#3a3634", fascia: false, windows: "split", door: "centre", plants: true },
+    "kokohili-01213": { name: "Kokohili", frame: "#e8e6e0", fascia: "#2a2c2e", awning: "flat", awningHex: "#9a2a3a", windows: "split", door: "centre" },
+    // Sheet 12.
+    "kreeftenbar-12628": null,
+    "kruabuppha-87294": { name: "Kruabuppha", frame: "#e8e6e0", fascia: "#2a2c2e", windows: "big", door: "left" },
+    "kyo-82963": { name: "Kyo", frame: "#6b1f22", fascia: false, windows: "panes", transom: true, door: "centre" },
+    "la-brasa-67816": { name: "La Brasa", frame: "#2a2c2e", fascia: false, windows: "arched", door: "right", plants: true },
+    "la-bruschetta-87323": null,
+    "la-cacerola-71888": { name: "La Cacerola", frame: "#1f1f1f", fascia: false, windows: "panes", door: "left", plants: true },
+    "la-cantina-79571": null,
+    "la-fucina-81789": { name: "La Fucina", frame: "#2a2c2e", fascia: "#2a2c2e", windows: "split", door: "right", terrace: true },
+    "la-maschera-68857": { name: "La Maschera", frame: "#2a2a28", fascia: false, windows: "big", door: "right" },
+    "la-oliva-pintxos-y-vinos-72953": { name: "La Oliva", frame: "#e8e2d4", fascia: false, windows: "split", door: "centre", sign: "square", signHex: "#1f5a32" },
+    "la-paella-78816": { name: "La Paella", frame: "#2a2420", fascia: false, windows: "split", door: "left" },
+    "la-perla-72878": { name: "La Perla", frame: "#3d4652", fascia: false, awning: "flat", awningHex: "#8a8070", windows: "split", door: "right", plants: true },
+    "la-piazza-65128": { name: "La Piazza", frame: "#2a2420", fascia: "#3a2a22", letters: "#c8282a", windows: "big", door: "left", heightM: 4.4 },
+    "la-polpetta-31526": { name: "La Polpetta", frame: "#2a2c2e", fascia: "#2a2c2e", windows: "split", door: "centre", plants: true },
+    "la-reinita-empanadas-73572": { name: "La Reinita", frame: "#2a2a28", fascia: false, awning: "flat", awningHex: "#1f4d3a", windows: "big", door: "left" },
+    "la-roma-81243": null,
+    // Sheet 13.
+    "la-ruelle-54949": null,
+    "ladybird-fried-chicken-54143": { name: "Ladybird", frame: "#7a2a1c", fascia: false, awning: "flat", awningHex: "#e8e6e0", windows: "big", door: "right", terrace: true },
+    "le-4-stagioni-57247": { name: "Le 4 Stagioni", frame: "#3a3d40", fascia: false, windows: "split", door: "centre", terrace: true },
+    "le-sud-76570": { name: "Le Sud", frame: "#2a2a28", fascia: false, windows: "big", door: "left" },
+    "lemoene-33308": null,
+    "leonardo-s-ravioli-bar-59331": { name: "Leonardo's", frame: "#2a2a2c", fascia: "#2a2a2c", windows: "big", door: "right" },
+    "les-zazous-79884": null,
+    "leziz-71219": { name: "Leziz", frame: "#2a2c2e", fascia: "#2a2c2e", windows: "split", door: "centre", plants: true },
+    "little-chinatown-asian-cuisine-19312": null,
+    "little-saigon-68107": { name: "Little Saigon", frame: "#1f1f1f", fascia: "#e8e6e0", letters: "#2a2a2c", windows: "big", door: "centre", heightM: 4.2 },
+    "lloyd-hotel-18149": null,
+    "lokaal-van-de-stad-40908": { name: "Lokaal van de Stad", frame: "#2a2420", fascia: false, awning: "flat", awningHex: "#3a3634", windows: "split", door: "centre", terrace: true, plants: true },
+    "lombardo-s-77099": { name: "Lombardo's", frame: "#2a2c2e", fascia: false, awning: "flat", awningHex: "#1f1f1f", windows: "panes", door: "right" },
+    "long-pura-70087": null,
+    "loulou-pizzabar-57281": { name: "Loulou", frame: "#2a2420", fascia: false, windows: "arched", door: "centre", plants: true },
+    "lucca-due-80345": { name: "Lucca Due", frame: "#5a1a14", fascia: "#5a1a14", windows: "panes", transom: true, door: "left", sign: "lamp" },
+    // Sheet 14.
+    "lucius-75671": { name: "Lucius", frame: "#1f2a2a", fascia: false, awning: "flat", awningHex: "#1f2a2a", windows: "panes", door: "centre" },
+    "lucky-house-73005": { name: "Lucky House", frame: "#e8e6e0", fascia: false, windows: "panes", door: "left" },
+    "luna-73311": { name: "Luna", frame: "#6b1f22", fascia: "#3a2a22", windows: "panes", door: "right" },
+    "lupe-72083": { name: "Lupe", frame: "#2a2c2e", fascia: "#2a2c2e", windows: "split", door: "centre", terrace: true },
+    "made-s-warung-26789": { name: "Made's Warung", frame: "#9a5a22", fascia: "#3a2a22", windows: "panes", transom: true, door: "right", plants: true },
+    "maenaam-thai-75826": { name: "Maenaam", frame: "#1f1f1f", fascia: false, windows: "panes", door: "centre", shutters: "#b8282a" },
+    "makachi-64043": { name: "Mercer", frame: "#e8e6e0", fascia: false, awning: "flat", awningHex: "#2a2a2c", windows: "big", door: "centre" },
+    "mama-makan-43487": { name: "Mama Makan", frame: "#e3d8a0", fascia: false, windows: "split", door: "centre", heightM: 4.2 },
+    "mamas-tapas-63129": { name: "Viswinkel Tol", frame: WHITE3, fascia: "#c8282a", awning: "flat", awningHex: "#c8282a", windows: "big", door: "left" },
+    "mangia-pizza-centrum-75482": { name: "Mangia", frame: "#3a3a3a", fascia: false, windows: "big", door: "right", terrace: true },
+    "mangiancora-65866": { name: "Mangiancora", frame: "#2f4a40", fascia: false, windows: "split", door: "centre", sign: "square", signHex: RED },
+    "maris-piper-brasserie-36608": { name: "Maris Piper", frame: "#1f1f1f", fascia: false, awning: "canopy", awningHex: "#3a3d40", windows: "panes", door: "centre" },
+    "marmaris-grill-pizza-73393": null,
+    "maydanoz-56807": { name: "Maydanoz", frame: "#2a2c2e", fascia: "#2a2c2e", letters: "#5fa58a", awning: "striped", awningHex: "#3a3a3a", windows: "big", door: "left" },
+    "mchi-42337": null,
+    "meghna-78969": { name: "Meghna", frame: "#3a1a1a", fascia: false, windows: "panes", door: "right" },
+    // Sheet 15.
+    "men-impossible-69882": { name: "Men Impossible", frame: "#2a2420", fascia: false, windows: "panes", door: "left" },
+    "merza-45331": null,
+    "mesken-56710": { name: "Mesken", frame: "#2a2420", fascia: "#7a1f2b", windows: "split", door: "centre", terrace: true },
+    "middl-eat-67960": { name: "Middl'Eat", frame: "#e8e2d4", fascia: "#1f4d3a", windows: "split", door: "right" },
+    "miko-s-28387": null,
+    "mima-09184": { name: "Mima", frame: "#3a3d40", fascia: false, windows: "split", door: "centre", heightM: 4.6 },
+    "mirchi-63270": { name: "Mirchi", frame: "#e8e6e0", fascia: "#2a2c2e", windows: "big", door: "right" },
+    "miri-mary-83742": { name: "Miri Mary", frame: "#2a3a5a", fascia: "#8a8a88", windows: "split", door: "centre" },
+    "moak-pancakes-19677": { name: "Moak", frame: "#e8e6e0", fascia: "#2a4a8a", windows: "big", door: "left" },
+    "moche-67178": { name: "Moche", frame: "#5a3a22", fascia: false, windows: "arched", door: "left" },
+    "mogu-amsterdam-89620": { name: "Loving Hut", frame: "#e8e2d4", fascia: "#e8e2d4", letters: "#3a7a3a", windows: "big", door: "right", plants: true },
+    "momo-tibet-57116": { name: "Momo Tibet", frame: "#c9a227", fascia: "#c8282a", windows: "split", door: "right" },
+    "mont-blanc-66374": { name: "Mont Blanc", frame: "#e8e2d4", fascia: false, windows: "panes", door: "right" },
+    "moon-68473": null,
+    "moshik-06274": { name: "Moshik", frame: "#5a5048", fascia: false, windows: "big", door: "centre", heightM: 4.4 },
+    "mount-everest-05308": { name: "Mount Everest", frame: "#e8e6e0", fascia: "#c86a2a", windows: "big", door: "left" },
+    // Sheet 16.
+    "mr-gyoza-61236": { name: "Mr Gyoza", frame: "#e8e2d4", fascia: false, windows: "big", door: "left" },
+    "mr-sushi-54293": null,
+    "muang-thai-66837": { name: "Muang Thai", frame: "#d8ccb0", fascia: false, windows: "split", door: "none" },
+    "mudavim-58188": null,
+    "my-surinaamse-broodjes-36700": { name: "Surinaamse", frame: "#e8e6e0", fascia: "#2f7a3a", windows: "big", door: "right", plants: true },
+    "mythos-69645": { name: "Mythos", frame: WHITE3, fascia: "#2a4a8a", windows: "panes", door: "centre", sign: "round", signHex: "#2a4a8a" },
+    "naa-thai-63810": { name: "Naa Thai", frame: "#2a2420", fascia: false, awning: "flat", awningHex: "#b8282a", windows: "big", door: "left" },
+    "nap-amsterdam-83408": null,
+    "nara-nara-81960": { name: "Nara Nara", frame: "#8fc8b0", fascia: false, awning: "striped", awningHex: "#1f1f1f", windows: "big", door: "centre", heightM: 4.2 },
+    "nefis-etli-ekmek-59658": { name: "Nefis", frame: "#e8e6e0", fascia: false, awning: "canopy", awningHex: "#9a1f2a", windows: "big", door: "right", terrace: true },
+    "nikotin-19058": { name: "Nikotin", frame: "#1f1f1f", fascia: false, windows: "panes", door: "centre", terrace: true, heightM: 4.2 },
+    "nk-thai-noodles-68178": { name: "Thai Corner", frame: "#e8e6e0", fascia: "#e8e6e0", windows: "big", door: "right", plants: true },
+    "nnea-pizza-66802": { name: "NNea", frame: "#1f3a8a", fascia: "#1f3a8a", windows: "big", door: "right" },
+    "no-man-s-art-gallery-94050": { name: "No Man's Art", frame: "#e8e6e0", fascia: false, awning: "flat", awningHex: "#c8282a", windows: "panes", door: "centre" },
+    "noemi-37240": null,
+    "nom-nom-vietnamese-foodshop-73355": null,
+    // Sheet 17.
+    "nonna-06423": { name: "Nonna", frame: "#1f2a3a", fascia: "#1f2a3a", windows: "split", door: "centre" },
+    "northeast-kitchen-67017": { name: "Northeast Kitchen", frame: "#2a2c2e", fascia: false, awning: "striped", awningHex: "#2a3a5a", awningHex2: "#d8d4ca", windows: "split", door: "centre" },
+    "nyonya-78393": { name: "Coffeeshop", frame: "#1f1f1f", fascia: "#1f1f1f", windows: "big", door: "right" },
+    "o-bistro-68625": null,
+    "o-mai-vietnamees-restaurant-78850": { name: "O'Mai", frame: "#e8e6e0", fascia: false, windows: "big", door: "centre" },
+    "o-sole-mio-68570": { name: "O Sole Mio", frame: "#e8e6e0", fascia: "#1f3a6a", windows: "big", door: "right", transom: true },
+    "obalade-suya-55235": { name: "Obalade", frame: "#3a2a22", fascia: false, awning: "flat", awningHex: "#3a2a22", windows: "split", door: "centre", plants: true },
+    "oceania-40557": { name: "Oceania", frame: "#1f2a24", fascia: "#3a2420", awning: "flat", awningHex: "#2a2c2e", windows: "split", door: "centre", plants: true },
+    "ode-aan-de-amstel-40353": { name: "Ode aan de Amstel", frame: "#8a8478", fascia: false, windows: "split", door: "none" },
+    "olijfje-65616": null,
+    "omahe-72216": { name: "Omahe", frame: "#e8e6e0", fascia: false, awning: "flat", awningHex: "#e8e6e0", windows: "big", door: "left" },
+    "omg-burger-79311": { name: "OMG!", frame: "#e8e6e0", fascia: "#e8e6e0", letters: "#2f7a3a", windows: "split", door: "centre", terrace: true, plants: true },
+    "ons-dorpje-21431": null,
+    "oresti-s-taverna-62627": { name: "Oresti's", frame: "#e8e2d4", fascia: "#7a1f2b", windows: "arched", door: "centre", terrace: true, plants: true },
+    "oriental-city-78751": { name: "Oriental City", frame: "#e8e6e0", fascia: "#3a3d40", windows: "split", door: "left", sign: "round", signHex: "#e3a020" },
+    "osteria-bella-ciao-73586": null,
+    // Sheet 18.
+    "otaru-91498": { name: "Otaru", frame: "#e8e2d4", fascia: "#e8e2d4", windows: "panes", door: "centre", shutters: "#8a6a4a" },
+    "otemba-61722": { name: "Otemba", frame: "#2a2420", fascia: false, awning: "flat", awningHex: "#1f1f1f", windows: "split", door: "centre", terrace: true },
+    "otemba-ramen-36441": { name: "Otemba Ramen", frame: "#e8e6e0", fascia: false, windows: "arched", door: "left" },
+    "pad-thai-72000": { name: "Pad Thai", frame: "#e8e2d4", fascia: "#1f4d3a", windows: "big", door: "right" },
+    "paik-s-noodle-75231": null,
+    "palladio-70190": { name: "Palladio", frame: "#2a2a28", fascia: false, awning: "flat", awningHex: "#2a2a28", windows: "panes", door: "centre", sign: "lamp" },
+    "paloma-blanca-60566": { name: "Coffee Roastery", frame: "#2a2c2e", fascia: false, awning: "flat", awningHex: "#2a2c2e", windows: "split", door: "centre", plants: true },
+    "pancakes-amsterdam-aan-t-ij-77894": null,
+    "pannenkoekerij-gansi-87577": null,
+    "papa-ali-mix-grill-82440": { name: "Papa Ali", frame: WHITE3, fascia: "#c8282a", windows: "big", door: "left", terrace: true },
+    "pasta-e-pizza-62433": { name: "Pasta e Pizza", frame: "#9ad8b0", fascia: "#1f4d3a", windows: "split", door: "right" },
+    "pasta-paradijs-52857": { name: "Pasta Paradijs", frame: "#2a2a2c", fascia: "#e8e6e0", letters: "#c8282a", windows: "big", door: "left" },
+    "pastai-60962": { name: "Pastai", frame: "#1f3a3a", fascia: false, windows: "big", door: "left" },
+    "pastini-72218": { name: "Pastini", frame: "#e8e6e0", fascia: "#3a3d40", windows: "panes", door: "right", transom: true },
+    "pata-negra-71777": { name: "Pata Negra", frame: "#4a3a1c", fascia: false, windows: "split", door: "centre", terrace: true },
+    "pepenero-64223": { name: "Pepenero", frame: "#e8e2d4", fascia: false, awning: "flat", awningHex: "#2a2a2c", windows: "arched", door: "right", sign: "lamp", plants: true },
+    // Sheet 19.
+    "pepenero-cucina-pizza-99914": null,
+    "peperoncino-84094": { name: "Peperoncino", frame: "#e8e6e0", fascia: false, awning: "flat", awningHex: "#b8282a", windows: "big", door: "left", terrace: true },
+    "perla-di-roma-48686": null,
+    "petit-caron-73912": { name: "Petit Caron", frame: "#e8e6e0", fascia: "#1f1f1f", awning: "flat", awningHex: "#b8282a", windows: "big", door: "right", terrace: true },
+    "pho-viet-76172": { name: "Pho Viet", frame: "#8a3b12", fascia: false, windows: "big", transom: true, door: "right" },
+    "pica-pica-90102": null,
+    "picchino-53915": { name: "Picchino", frame: "#1f1f1f", fascia: false, windows: "big", door: "right" },
+    "pide-dunyas-78723": { name: "Pide Dunyas", frame: "#2a2c2e", fascia: "#e8e6e0", letters: "#c8282a", windows: "big", door: "left" },
+    "piet-de-leeuw-80082": { name: "Piet de Leeuw", frame: "#1f1f1f", fascia: false, windows: "panes", door: "centre", sign: "lamp" },
+    "pizza-project-64561": null,
+    "pizza-project-bar-69760": { name: "De Nieuwe Vaart", frame: "#3a3d40", fascia: false, awning: "flat", awningHex: "#a89a6a", windows: "split", door: "centre", terrace: true },
+    "pizza-taxi-da-paolo-seba-66100": { name: "Da Paolo", frame: "#e8e2d4", fascia: "#e8e2d4", windows: "big", transom: true, door: "left" },
+    "pizzeria-steakhouse-ijburg-80574": { name: "Steakhouse IJburg", frame: "#2a2c2e", fascia: "#2a2c2e", windows: "big", door: "centre" },
+    "plato-loco-19305": { name: "Plato Loco", frame: "#3a3d40", fascia: false, windows: "big", door: "none" },
+    "proper-indofood-75795": { name: "Proper Indofood", frame: "#2a2a2c", fascia: false, windows: "panes", door: "centre", sign: "lamp" },
+    "rainbowls-35465": { name: "Rainbowls", frame: "#2a2a2c", fascia: false, awning: "flat", awningHex: "#1f1f1f", windows: "big", door: "left", plants: true },
+    // Sheet 20.
+    "ramen-city-37023": null,
+    "ramen-ism-78019": { name: "Ramen-ism", frame: "#e8e2d4", fascia: false, windows: "panes", transom: true, door: "right" },
+    "rangla-punjab-61813": { name: "Rangla Punjab", frame: "#e8e6e0", fascia: "#3a2a5a", windows: "big", door: "right" },
+    "rasoi-74500": { name: "Rasoi", frame: "#e8e2d4", fascia: false, awning: "flat", awningHex: "#d8d4ca", windows: "big", door: "right" },
+    "reijnders-68746": { name: "Reijnders", frame: "#4a2414", fascia: "#3a1a10", letters: "#c8282a", windows: "panes", transom: true, door: "centre", terrace: true },
+    "renato-s-osteria-32916": { name: "Renato's", frame: "#2a4a8a", fascia: false, windows: "panes", door: "centre", plants: true },
+    "restaurant-212-71575": { name: "212", frame: "#2a2420", fascia: false, windows: "split", door: "left", heightM: 4.4 },
+    "restaurant-asian-fantasy-14927": null,
+    "restaurant-ja-36832": { name: "Ja", frame: "#e8e2d4", fascia: false, windows: "arched", door: "none", plants: true },
+    "restaurant-klaproos-35403": { name: "Uku", frame: "#2f6f7a", fascia: false, windows: "big", door: "centre", heightM: 4.4 },
+    "restaurant-lastage-82260": { name: "Lastage", frame: "#2a2a2c", fascia: false, windows: "panes", transom: true, door: "right", plants: true },
+    "restaurant-sallora-51279": null,
+    "restaurant-shiva-79404": { name: "Shiva", frame: "#1f1f1f", fascia: "#1f1f1f", windows: "panes", transom: true, door: "left" },
+    "ricardo-s-63107": { name: "Rongsen", frame: "#e8e6e0", fascia: "#2a3a5a", windows: "split", door: "centre" },
+    "rijnbar-80338": { name: "Rijnbar", frame: "#2a2420", fascia: false, windows: "big", door: "left", sign: "round", signHex: "#2f7a3a" },
+    "rijsel-36544": null,
+    // Sheet 21.
+    "ristorante-papa-carlo-82585": { name: "Papa Carlo", frame: "#3a2a22", fascia: false, awning: "flat", awningHex: "#3a2a22", windows: "panes", door: "centre" },
+    "ristorante-pizzeria-monte-verde-65953": { name: "Monte Verde", frame: "#4a2414", fascia: "#1f4d3a", windows: "panes", door: "centre", transom: true },
+    "ron-gastrobar-32011": { name: "Ron Gastrobar", frame: "#e8e6e0", fascia: false, awning: "canopy", awningHex: "#e8e6e0", windows: "split", door: "centre", terrace: true, plants: true },
+    "roopram-roti-55550": { name: "Roopram", frame: "#e8e6e0", fascia: false, windows: "panes", door: "centre" },
+    "rossi-sandwiches-31005": { name: "Rossi", frame: "#e8e6e0", fascia: false, windows: "split", door: "left" },
+    "roum-cafe-61185": { name: "Roum", frame: "#e8e2d4", fascia: false, awning: "flat", awningHex: "#1f1f1f", windows: "big", door: "right", terrace: true },
+    "royal-fook-long-42162": { name: "Royal Fook Long", frame: "#3a3d40", fascia: "#9a1f22", windows: "split", door: "centre" },
+    "royal98-53823": { name: "Royal98", frame: "#1f1f1f", fascia: false, windows: "big", door: "left" },
+    "royalvis-traiteur-18311": { name: "Royal Med", frame: "#3a3d40", fascia: "#2a3a5a", windows: "big", door: "centre", rollers: "#2a3a6a" },
+    "rue-la-bastille-77670": null,
+    "rufus-restaurant-57012": { name: "Rufus", frame: "#1f1f1f", fascia: "#1f1f1f", windows: "big", door: "right", terrace: true },
+    "sab-s-deli-36070": { name: "Sab's", frame: "#3a2a22", fascia: false, awning: "flat", awningHex: "#1f4d3a", windows: "split", door: "centre", terrace: true, plants: true },
+    "sababa-58581": { name: "Sababa", frame: "#e8e2d4", fascia: "#c8282a", windows: "split", door: "left" },
+    "saeed-s-curry-house-54207": { name: "Saeed's", frame: "#5a1a14", fascia: false, awning: "striped", awningHex: "#c8282a", windows: "big", door: "right" },
+    "sagardi-72053": null,
+    "sahan-92837": { name: "Sahan", frame: "#2a2c2e", fascia: "#e8e6e0", letters: "#2a2c2e", awning: "canopy", awningHex: "#3a3d40", windows: "split", door: "centre", terrace: true, plants: true },
+    // Sheet 22.
+    "salento-latino-78584": { name: "Salento Latino", frame: "#3a3d40", fascia: false, awning: "flat", awningHex: "#b8282a", windows: "split", door: "centre" },
+    "salvatorica-74729": { name: "Salvatorica", frame: "#2a2c2e", fascia: false, windows: "split", door: "centre" },
+    "sama-sebo-65990": { name: "Sama Sebo", frame: "#e8e2d4", fascia: "#3a2a22", windows: "panes", door: "right" },
+    "samba-kitchen-59252": { name: "Samba Kitchen", frame: "#e8e6e0", fascia: "#e8e6e0", windows: "big", door: "left", terrace: true },
+    "sapporo-ramen-sora-35936": null,
+    "scheltema-67522": null,
+    "schiller-78854": { name: "Schiller", frame: "#e3dcc8", fascia: "#3a3d40", windows: "split", door: "centre", terrace: true, heightM: 4.2 },
+    "seafood-bistro-78815": { name: "Seafood Bistro", frame: "#e8e6e0", fascia: false, windows: "big", door: "left", sign: "square", signHex: "#e3c020" },
+    "seasons-restaurant-75049": { name: "Seasons", frame: "#e8e2d4", fascia: false, windows: "big", door: "right", transom: true },
+    "semai-52074": { name: "Semai", frame: "#e8e6e0", fascia: "#3a3d40", windows: "split", door: "centre" },
+    "semhar-74838": { name: "Semhar", frame: "#7a1f1a", fascia: "#7a1f1a", letters: "#e3c020", windows: "split", door: "right" },
+    "senayan-73612": { name: "Senayan", frame: "#e8e2d4", fascia: "#2a2c2e", windows: "split", door: "centre" },
+    "seth-takeout-76929": { name: "Seth", frame: "#e8e6e0", fascia: false, windows: "big", door: "right" },
+    "sham-87688": { name: "Sham", frame: "#1f1f1f", fascia: "#1f1f1f", letters: "#c9a227", windows: "arched", door: "centre", terrace: true },
+    "sham-maza-80856": { name: "Sham Maza", frame: "#2a2a28", fascia: "#2a2a28", windows: "big", door: "centre" },
+    "sherpa-39376": { name: "Sherpa", frame: "#2a2c2e", fascia: "#2a2c2e", windows: "big", door: "right", terrace: true },
+    // Sheet 23.
+    "shiki-79220": null,
+    "sichuan-food-68478": { name: "Sichuan Food", frame: "#2a2420", fascia: false, awning: "flat", awningHex: "#c9a227", windows: "big", door: "centre", terrace: true },
+    "silk-road-kebab-house-80959": { name: "Silk Road", frame: "#2a2c2e", fascia: "#2a2c2e", windows: "big", door: "centre" },
+    "sinne-35937": { name: "Sinne", frame: "#2a2c2e", fascia: false, awning: "flat", awningHex: "#3a3d40", windows: "big", door: "left" },
+    "t-vliegertje-36397": { name: "'t Vliegertje", frame: "#1f1f1f", fascia: "#1f2a3a", windows: "split", door: "right", terrace: true },
+    "vermeer-82718": { name: "Vermeer", frame: "#8a8a88", fascia: false, windows: "split", door: "none" },
+    "vinkeles-74123": null
+  };
+
+  // src/canalRecall/storefrontWalls.generated.ts
+  var STOREFRONT_WALLS = { "a-fushion-42477": { "pand": "NL.IMBAG.Pand.0363100012242477", "start": [4.87742, 52.394882], "end": [4.877239, 52.394788], "lengthM": 16.16, "alongM": 9.21 }, "a-sentimento-pizza-33537": { "pand": "NL.IMBAG.Pand.0363100012233537", "start": [4.878281, 52.382555], "end": [4.878786, 52.382256], "lengthM": 47.84, "alongM": 3.44 }, "a-tavola-81149": { "pand": "NL.IMBAG.Pand.0363100012181149", "start": [4.912204, 52.370208], "end": [4.912365, 52.370151], "lengthM": 12.67, "alongM": 2.94 }, "a-volo-72841": { "pand": "NL.IMBAG.Pand.0363100012172841", "start": [4.884505, 52.384252], "end": [4.884549, 52.384227], "lengthM": 4.09, "alongM": 2.18 }, "aaltje-54926": { "pand": "NL.IMBAG.Pand.0457100000054926", "start": [5.038447, 52.30882], "end": [5.038561, 52.308802], "lengthM": 8.03, "alongM": 3.97 }, "abyssinia-49625": { "pand": "NL.IMBAG.Pand.0363100012149625", "start": [4.865334, 52.360411], "end": [4.865277, 52.3605], "lengthM": 10.64, "alongM": 3.49 }, "afhaalcentrum-terang-boelan-65034": { "pand": "NL.IMBAG.Pand.0363100012165034", "start": [4.882712, 52.379703], "end": [4.882739, 52.379638], "lengthM": 7.46, "alongM": 3.72 }, "akitsu-69827": { "pand": "NL.IMBAG.Pand.0363100012169827", "start": [4.875213, 52.372192], "end": [4.875279, 52.372207], "lengthM": 4.79, "alongM": 1.2 }, "al-argentino-65689": { "pand": "NL.IMBAG.Pand.0363100012165689", "start": [4.900874, 52.375669], "end": [4.900916, 52.375632], "lengthM": 5.01, "alongM": 1.45 }, "al-basha-47236": { "pand": "NL.IMBAG.Pand.0363100012147236", "start": [4.819684, 52.378038], "end": [4.819739, 52.37817], "lengthM": 15.16, "alongM": 4.25 }, "alberto-pozzetto-private-dining-56811": { "pand": "NL.IMBAG.Pand.0363100012156811", "start": [4.892798, 52.355527], "end": [4.892722, 52.355672], "lengthM": 16.94, "alongM": 2.5 }, "albina-10961": { "pand": "NL.IMBAG.Pand.0363100012110961", "start": [4.889607, 52.354928], "end": [4.889759, 52.354957], "lengthM": 10.85, "alongM": 3.61 }, "ali-ocakbas-78972": { "pand": "NL.IMBAG.Pand.0363100012178972", "start": [4.89783, 52.364823], "end": [4.897797, 52.364909], "lengthM": 9.83, "alongM": 7.14 }, "ama-sushi-ramen-35932": { "pand": "NL.IMBAG.Pand.0363100012235932", "start": [4.90157, 52.355077], "end": [4.901645, 52.3551], "lengthM": 5.71, "alongM": 2.22 }, "amra-74506": { "pand": "NL.IMBAG.Pand.0363100012174506", "start": [4.883395, 52.378092], "end": [4.883353, 52.378171], "lengthM": 9.24, "alongM": 1.49 }, "aneka-rasa-71504": { "pand": "NL.IMBAG.Pand.0363100012171504", "start": [4.898846, 52.375779], "end": [4.89875, 52.375711], "lengthM": 10, "alongM": 3.36 }, "anjappar-65520": { "pand": "NL.IMBAG.Pand.0363100012165520", "start": [4.880389, 52.354725], "end": [4.8807, 52.354795], "lengthM": 22.57, "alongM": 18.38 }, "any-thaim-delivery-23690": { "pand": "NL.IMBAG.Pand.0363100012123690", "start": [4.912787, 52.383599], "end": [4.912691, 52.383611], "lengthM": 6.67, "alongM": 3.8 }, "argentalia-78811": { "pand": "NL.IMBAG.Pand.0363100012178811", "start": [4.898599, 52.375603], "end": [4.898482, 52.375524], "lengthM": 11.86, "alongM": 0.5 }, "arles-60398": { "pand": "NL.IMBAG.Pand.0363100012160398", "start": [4.898084, 52.35627], "end": [4.898156, 52.356292], "lengthM": 5.48, "alongM": 2.65 }, "attila-turkish-food-78174": { "pand": "NL.IMBAG.Pand.0363100012078174", "start": [4.841104, 52.378141], "end": [4.840559, 52.378235], "lengthM": 38.56, "alongM": 27.29 }, "auberge-36577": { "pand": "NL.IMBAG.Pand.0363100012236577", "start": [4.889261, 52.354671], "end": [4.889028, 52.354624], "lengthM": 16.71, "alongM": 0.73 }, "baibua-75627": { "pand": "NL.IMBAG.Pand.0363100012175627", "start": [4.891275, 52.366524], "end": [4.891524, 52.366479], "lengthM": 17.68, "alongM": 15.13 }, "baires-40662": { "pand": "NL.IMBAG.Pand.0363100012140662", "start": [4.869785, 52.368952], "end": [4.869809, 52.368917], "lengthM": 4.22, "alongM": 2.7 }, "baires-60490": { "pand": "NL.IMBAG.Pand.0363100012160490", "start": [4.925268, 52.359771], "end": [4.92491, 52.359681], "lengthM": 26.36, "alongM": 4.32 }, "baked-59205": { "pand": "NL.IMBAG.Pand.0363100012159205", "start": [4.87234, 52.375037], "end": [4.872411, 52.374943], "lengthM": 11.52, "alongM": 7.91 }, "bakers-roasters-33622": { "pand": "NL.IMBAG.Pand.0363100012233622", "start": [4.889911, 52.357355], "end": [4.889724, 52.357365], "lengthM": 12.79, "alongM": 3.27 }, "balraj-67821": { "pand": "NL.IMBAG.Pand.0363100012167821", "start": [4.888448, 52.382039], "end": [4.888531, 52.381992], "lengthM": 7.7, "alongM": 6.78 }, "banh-mi-ba-my-68914": { "pand": "NL.IMBAG.Pand.0363100012168914", "start": [4.875499, 52.371974], "end": [4.875424, 52.371957], "lengthM": 5.45, "alongM": 3.31 }, "bar-bistro-river-68038": { "pand": "NL.IMBAG.Pand.0363100012068038", "start": [4.902385, 52.342741], "end": [4.902248, 52.342747], "lengthM": 9.36, "alongM": 9.16 }, "bar-dancing-multipla-74176": { "pand": "NL.IMBAG.Pand.0363100012074176", "start": [4.844557, 52.342083], "end": [4.843604, 52.342077], "lengthM": 64.95, "alongM": 56.87 }, "bar-karma-78156": { "pand": "w717278156", "start": [4.8915152, 52.4015942], "end": [4.8917218, 52.4014969], "lengthM": 17.75, "alongM": 9.32 }, "bar-ristorante-gallizia-64155": { "pand": "NL.IMBAG.Pand.0363100012164155", "start": [4.934173, 52.36404], "end": [4.9342, 52.363828], "lengthM": 23.66, "alongM": 20.55 }, "barada-54271": { "pand": "NL.IMBAG.Pand.0457100000054271", "start": [5.043215, 52.30803], "end": [5.043173, 52.308085], "lengthM": 6.76, "alongM": 3.41 }, "bella-storia-trattoria-italiana-64646": { "pand": "NL.IMBAG.Pand.0363100012164646", "start": [4.874124, 52.383766], "end": [4.874175, 52.383798], "lengthM": 4.97, "alongM": 3.16 }, "beyoglu-26283": { "pand": "NL.IMBAG.Pand.0363100012126283", "start": [4.913566, 52.35716], "end": [4.913851, 52.357231], "lengthM": 20.96, "alongM": 14.45 }, "beyrouth-36814": { "pand": "NL.IMBAG.Pand.0363100012236814", "start": [4.875233, 52.368191], "end": [4.875338, 52.368218], "lengthM": 7.76, "alongM": 3.45 }, "billy-s-thai-restaurant-73820": { "pand": "NL.IMBAG.Pand.0363100012173820", "start": [4.882199, 52.367944], "end": [4.882057, 52.367898], "lengthM": 10.94, "alongM": 5.61 }, "bir-tat-37903": { "pand": "NL.IMBAG.Pand.0363100012137903", "start": [4.848265, 52.378608], "end": [4.848401, 52.378635], "lengthM": 9.74, "alongM": 3.17 }, "bisous-52622": { "pand": "NL.IMBAG.Pand.0363100012152622", "start": [4.887778, 52.354699], "end": [4.887847, 52.354695], "lengthM": 4.72, "alongM": 2.48 }, "bistro-amsterdam-74130": { "pand": "NL.IMBAG.Pand.0363100012174130", "start": [4.883377, 52.373823], "end": [4.883373, 52.373778], "lengthM": 5.01, "alongM": 2.82 }, "bistro-de-la-mer-77684": { "pand": "NL.IMBAG.Pand.0363100012177684", "start": [4.898277, 52.36411], "end": [4.89856, 52.364148], "lengthM": 19.73, "alongM": 1.51 }, "bistrot-des-alpes-82275": { "pand": "NL.IMBAG.Pand.0363100012182275", "start": [4.901355, 52.361944], "end": [4.901487, 52.361969], "lengthM": 9.41, "alongM": 4.43 }, "bistrot-neuf-71114": { "pand": "NL.IMBAG.Pand.0363100012171114", "start": [4.893878, 52.379346], "end": [4.893753, 52.379413], "lengthM": 11.31, "alongM": 7.82 }, "blauw-56113": { "pand": "NL.IMBAG.Pand.0363100012156113", "start": [4.855755, 52.353414], "end": [4.855721, 52.35351], "lengthM": 10.93, "alongM": 4.8 }, "blin-queen-78949": { "pand": "NL.IMBAG.Pand.0363100012178949", "start": [4.896885, 52.366995], "end": [4.896811, 52.366991], "lengthM": 5.06, "alongM": 2.37 }, "bloem-op-ijburg-06701": { "pand": "NL.IMBAG.Pand.0363100012106701", "start": [4.9963438, 52.3549166], "end": [4.9975492, 52.354275], "lengthM": 108.81, "alongM": 70.36 }, "blue-dragon-82246": { "pand": "NL.IMBAG.Pand.0363100012082246", "start": [4.891045, 52.357495], "end": [4.8911, 52.357387], "lengthM": 12.59, "alongM": 11.77 }, "blue-pepper-56684": { "pand": "NL.IMBAG.Pand.0363100012156684", "start": [4.878063, 52.365814], "end": [4.877857, 52.365755], "lengthM": 15.49, "alongM": 1.85 }, "boeuf-53646": { "pand": "NL.IMBAG.Pand.0363100012153646", "start": [4.888544, 52.356128], "end": [4.888562, 52.356236], "lengthM": 12.08, "alongM": 7.33 }, "bojo-68561": { "pand": "NL.IMBAG.Pand.0363100012168561", "start": [4.884739, 52.363929], "end": [4.884781, 52.3639], "lengthM": 4.31, "alongM": 2.13 }, "bougainville-65129": { "pand": "NL.IMBAG.Pand.0363100012165129", "start": [4.893659, 52.372478], "end": [4.893141, 52.372584], "lengthM": 37.2, "alongM": 27.42 }, "bouillon-d-amsterdam-75580": { "pand": "NL.IMBAG.Pand.0363100012175580", "start": [4.890709, 52.373996], "end": [4.890784, 52.374085], "lengthM": 11.14, "alongM": 5.49 }, "brandon-76429": { "pand": "NL.IMBAG.Pand.0363100012176429", "start": [4.886387, 52.375397], "end": [4.886524, 52.375351], "lengthM": 10.64, "alongM": 1.46 }, "brasserie-nenette-86764": { "pand": "NL.IMBAG.Pand.0363100012086764", "start": [4.892765, 52.342418], "end": [4.892869, 52.342311], "lengthM": 13.86, "alongM": 2.24 }, "bret-43513": { "pand": "NL.IMBAG.Pand.0363100012243513", "start": [4.836683, 52.389792], "end": [4.836861, 52.389793], "lengthM": 12.12, "alongM": 5.58 }, "bridges-50983": { "pand": "NL.IMBAG.Pand.0363100012250983", "start": [4.895389, 52.371161], "end": [4.89516, 52.370911], "lengthM": 31.89, "alongM": 27.12 }, "bromo-indah-70189": { "pand": "NL.IMBAG.Pand.0363100012170189", "start": [4.880407, 52.36967], "end": [4.880342, 52.369748], "lengthM": 9.74, "alongM": 1.74 }, "brouwerij-t-ij-69757": { "pand": "NL.IMBAG.Pand.0363100012169757", "start": [4.926348, 52.366613], "end": [4.926568, 52.366752], "lengthM": 21.53, "alongM": 6.73 }, "brouwerij-troost-26831": { "pand": "NL.IMBAG.Pand.0363100012126831", "start": [4.89129, 52.350536], "end": [4.89077, 52.350561], "lengthM": 35.54, "alongM": 15.99 }, "brunchdale-51598": { "pand": "NL.IMBAG.Pand.0363100012251598", "start": [4.904222, 52.396246], "end": [4.904398, 52.396417], "lengthM": 22.48, "alongM": 13.93 }, "brunchie-71533": { "pand": "NL.IMBAG.Pand.0363100012571533", "start": [4.88557, 52.36526], "end": [4.885521, 52.365291], "lengthM": 4.8, "alongM": 3.64 }, "brut-de-mer-57580": { "pand": "NL.IMBAG.Pand.0363100012157580", "start": [4.89258, 52.355807], "end": [4.892505, 52.355792], "lengthM": 5.38, "alongM": 2.79 }, "buffet-van-odette-76062": { "pand": "NL.IMBAG.Pand.0363100012176062", "start": [4.889031, 52.362229], "end": [4.889069, 52.362334], "lengthM": 11.97, "alongM": 5.52 }, "buiten-amsterdam-48608": { "pand": "NL.IMBAG.Pand.0363100012248608", "start": [4.821366, 52.371482], "end": [4.821151, 52.371466], "lengthM": 14.75, "alongM": 8.12 }, "bullewijck-par-hasard-01986": { "pand": "NL.IMBAG.Pand.0363100012101986", "start": [4.948241, 52.306935], "end": [4.948383, 52.30678], "lengthM": 19.78, "alongM": 8.56 }, "buurman-buurman-eetwinkel-de-with-02216": { "pand": "NL.IMBAG.Pand.0363100012102216", "start": [4.859269, 52.368757], "end": [4.859474, 52.368767], "lengthM": 14.01, "alongM": 2.36 }, "cabron-59249": { "pand": "NL.IMBAG.Pand.0363100012159249", "start": [4.894911, 52.355763], "end": [4.894828, 52.355744], "lengthM": 6.04, "alongM": 3.24 }, "cafe-carbon-72095": { "pand": "NL.IMBAG.Pand.0363100012072095", "start": [4.857287, 52.346223], "end": [4.856893, 52.34617], "lengthM": 27.49, "alongM": 5.86 }, "cafe-caron-05340": { "pand": "NL.IMBAG.Pand.0363100012105340", "start": [4.888785, 52.357295], "end": [4.888803, 52.357403], "lengthM": 12.08, "alongM": 9.35 }, "cafe-de-klos-72453": { "pand": "NL.IMBAG.Pand.0363100012172453", "start": [4.885611, 52.365373], "end": [4.885699, 52.365319], "lengthM": 8.49, "alongM": 4.14 }, "cafe-diner-t-weesperplein-54930": { "pand": "NL.IMBAG.Pand.0457100000054930", "start": [5.04094, 52.308278], "end": [5.040831, 52.308283], "lengthM": 7.45, "alongM": 3.81 }, "cafe-kadijk-70737": { "pand": "NL.IMBAG.Pand.0363100012170737", "start": [4.912058, 52.370109], "end": [4.912191, 52.370063], "lengthM": 10.4, "alongM": 2.63 }, "cafe-luxembourg-71813": { "pand": "NL.IMBAG.Pand.0363100012171813", "start": [4.8887741, 52.368654], "end": [4.8886931, 52.3687436], "lengthM": 11.39, "alongM": 3 }, "cafe-maurits-18332": { "pand": "NL.IMBAG.Pand.0363100012118332", "start": [4.850374, 52.350791], "end": [4.850372, 52.350917], "lengthM": 14.02, "alongM": 11.21 }, "cafe-modern-00305": { "pand": "NL.IMBAG.Pand.0363100012100305", "start": [4.908969, 52.386474], "end": [4.909101, 52.386332], "lengthM": 18.18, "alongM": 2.4 }, "cafe-parlotte-69678": { "pand": "NL.IMBAG.Pand.0363100012169678", "start": [4.881594, 52.378481], "end": [4.88172, 52.378234], "lengthM": 28.79, "alongM": 27.21 }, "cafe-piazza-82586": { "pand": "NL.IMBAG.Pand.0363100012182586", "start": [4.900026, 52.371962], "end": [4.899993, 52.371925], "lengthM": 4.69, "alongM": 2.48 }, "cafe-warung-pas-22965": { "pand": "NL.IMBAG.Pand.0363100012122965", "start": [4.912899, 52.381153], "end": [4.912739, 52.381138], "lengthM": 11.02, "alongM": 5.75 }, "caffe-italia-77743": { "pand": "NL.IMBAG.Pand.0363100012177743", "start": [4.897114, 52.37459], "end": [4.897067, 52.374556], "lengthM": 4.96, "alongM": 2.13 }, "cai-cai-15768": { "pand": "NL.IMBAG.Pand.0363100012115768", "start": [4.940142, 52.371344], "end": [4.940194, 52.371172], "lengthM": 19.46, "alongM": 3.33 }, "calisto-76282": { "pand": "NL.IMBAG.Pand.0363100012176282", "start": [4.887495, 52.382428], "end": [4.887351, 52.382333], "lengthM": 14.42, "alongM": 3.38 }, "calle-ocho-59713": { "pand": "NL.IMBAG.Pand.0363100012159713", "start": [4.897022, 52.356325], "end": [4.896939, 52.3563], "lengthM": 6.3, "alongM": 3.35 }, "camino-taqueria-36027": { "pand": "NL.IMBAG.Pand.0363100012236027", "start": [4.871182, 52.367059], "end": [4.871299, 52.367093], "lengthM": 8.82, "alongM": 6.62 }, "cannibale-royale-52862": { "pand": "NL.IMBAG.Pand.0363100012152862", "start": [4.887182, 52.353586], "end": [4.887391, 52.353619], "lengthM": 14.7, "alongM": 2.97 }, "cannibale-royale-handboogstraat-75878": { "pand": "NL.IMBAG.Pand.0363100012175878", "start": [4.890318, 52.367927], "end": [4.890531, 52.367988], "lengthM": 16.02, "alongM": 3.63 }, "cantina-caliente-70417": { "pand": "NL.IMBAG.Pand.0363100012170417", "start": [4.910894, 52.362327], "end": [4.910805, 52.362492], "lengthM": 19.33, "alongM": 3.88 }, "cantine-de-caron-52471": { "pand": "NL.IMBAG.Pand.0363100012152471", "start": [4.872627, 52.386263], "end": [4.873004, 52.38627], "lengthM": 25.68, "alongM": 13.05 }, "carletto-67455": { "pand": "NL.IMBAG.Pand.0363100012167455", "start": [4.891797, 52.355654], "end": [4.891714, 52.355637], "lengthM": 5.96, "alongM": 3.18 }, "cartagena-62560": { "pand": "NL.IMBAG.Pand.0363100012162560", "start": [4.86592, 52.36568], "end": [4.865975, 52.365693], "lengthM": 4.02, "alongM": 1.97 }, "casa-nostra-52357": { "pand": "NL.IMBAG.Pand.0363100012152357", "start": [4.903099, 52.355559], "end": [4.903012, 52.355662], "lengthM": 12.9, "alongM": 2.66 }, "casa-peru-68820": { "pand": "NL.IMBAG.Pand.0363100012168820", "start": [4.882894, 52.366487], "end": [4.882952, 52.366424], "lengthM": 8.05, "alongM": 8.08 }, "cascada-40347": { "pand": "NL.IMBAG.Pand.0363100012240347", "start": [4.948087, 52.311175], "end": [4.948586, 52.31135], "lengthM": 39.21, "alongM": 35.73 }, "castillo-79394": { "pand": "NL.IMBAG.Pand.0363100012179394", "start": [4.893577, 52.366078], "end": [4.893668, 52.366066], "lengthM": 6.34, "alongM": 3.8 }, "cavataria-14248": { "pand": "NL.IMBAG.Pand.0363100012114248", "start": [4.86317, 52.35116], "end": [4.863232, 52.351059], "lengthM": 12.01, "alongM": 2.4 }, "cedars-05128": { "pand": "NL.IMBAG.Pand.0363100012105128", "start": [4.844335, 52.351993], "end": [4.844204, 52.351958], "lengthM": 9.74, "alongM": -3.57 }, "chadni-chowk-17679": { "pand": "NL.IMBAG.Pand.0363100012117679", "start": [4.847862, 52.384403], "end": [4.847789, 52.384337], "lengthM": 8.87, "alongM": 1.16 }, "cham-so-good-58473": { "pand": "NL.IMBAG.Pand.0363100012158473", "start": [4.861511, 52.359486], "end": [4.861381, 52.359673], "lengthM": 22.61, "alongM": 5.87 }, "chateau-amsterdam-13565": { "pand": "NL.IMBAG.Pand.0363100012113565", "start": [4.92663, 52.386213], "end": [4.926564, 52.386392], "lengthM": 20.42, "alongM": 7.21 }, "chhiwat-bladi-lunch-grill-62478": { "pand": "NL.IMBAG.Pand.0363100012062478", "start": [4.799974, 52.351856], "end": [4.799722, 52.351805], "lengthM": 18.08, "alongM": 4.85 }, "china-supreme-99001": { "pand": "NL.IMBAG.Pand.0363100012099001", "start": [4.868437, 52.326135], "end": [4.868404, 52.326767], "lengthM": 70.36, "alongM": 28.9 }, "chuzo-king-77947": { "pand": "NL.IMBAG.Pand.0363100012077947", "start": [4.910862, 52.399101], "end": [4.910464, 52.399178], "lengthM": 28.41, "alongM": 19.79 }, "cinq-oriental-bistro-47188": { "pand": "NL.IMBAG.Pand.0363100012247188", "start": [4.853349, 52.34135], "end": [4.853279, 52.341575], "lengthM": 25.49, "alongM": 4.93 }, "city-noord-eethuis-84998": { "pand": "NL.IMBAG.Pand.0363100012084998", "start": [4.905802, 52.417219], "end": [4.905742, 52.417233], "lengthM": 4.37, "alongM": 2.13 }, "classico-37221": { "pand": "NL.IMBAG.Pand.0363100012237221", "start": [4.874356, 52.35691], "end": [4.874267, 52.356885], "lengthM": 6.67, "alongM": 3.64 }, "colima-71772": { "pand": "NL.IMBAG.Pand.0363100012171772", "start": [4.899181, 52.36135], "end": [4.898893, 52.361307], "lengthM": 20.19, "alongM": 2.11 }, "couscous-bar-61747": { "pand": "NL.IMBAG.Pand.0363100012161747", "start": [4.871283, 52.366891], "end": [4.871361, 52.366779], "lengthM": 13.55, "alongM": 2.83 }, "couscous-club-53618": { "pand": "NL.IMBAG.Pand.0363100012153618", "start": [4.894243, 52.35307], "end": [4.894167, 52.35306], "lengthM": 5.3, "alongM": 3.06 }, "ctaste-77277": { "pand": "NL.IMBAG.Pand.0363100012077277", "start": [4.906374, 52.354181], "end": [4.90633, 52.354241], "lengthM": 7.32, "alongM": 4.16 }, "cucina-casalinga-34703": { "pand": "NL.IMBAG.Pand.0363100012134703", "start": [4.858988, 52.344891], "end": [4.859026, 52.344784], "lengthM": 12.18, "alongM": 1.53 }, "cuddle-pub-79234": { "pand": "NL.IMBAG.Pand.0363100012179234", "start": [4.893911, 52.375353], "end": [4.894006, 52.375354], "lengthM": 6.47, "alongM": 2.34 }, "de-aardige-pers-58278": { "pand": "NL.IMBAG.Pand.0363100012158278", "start": [4.874416, 52.374178], "end": [4.874265, 52.374214], "lengthM": 11.04, "alongM": 7.82 }, "de-italiaan-66559": { "pand": "NL.IMBAG.Pand.0363100012166559", "start": [4.876494, 52.365453], "end": [4.87642, 52.365548], "lengthM": 11.71, "alongM": 7.34 }, "de-juwelier-77678": { "pand": "NL.IMBAG.Pand.0363100012177678", "start": [4.898217, 52.364268], "end": [4.898235, 52.364221], "lengthM": 5.37, "alongM": 2.2 }, "de-nieuwe-khl-80851": { "pand": "NL.IMBAG.Pand.0363100012080851", "start": [4.936355, 52.373872], "end": [4.936438, 52.374053], "lengthM": 20.92, "alongM": 13.57 }, "de-nieuwe-rai-93538": { "pand": "NL.IMBAG.Pand.0363100012093538", "start": [4.891307, 52.343924], "end": [4.891423, 52.343804], "lengthM": 15.52, "alongM": 3.02 }, "de-palmboom-71180": { "pand": "NL.IMBAG.Pand.0363100012171180", "start": [4.896727, 52.370106], "end": [4.89681, 52.370091], "lengthM": 5.89, "alongM": -1.36 }, "de-patchka-56486": { "pand": "NL.IMBAG.Pand.0363100012156486", "start": [4.891088, 52.355208], "end": [4.891152, 52.35522], "lengthM": 4.56, "alongM": 2.34 }, "de-pizzakamer-30670": { "pand": "NL.IMBAG.Pand.0363100012130670", "start": [4.894722, 52.352482], "end": [4.894517, 52.352455], "lengthM": 14.29, "alongM": 6.2 }, "desa-61346": { "pand": "NL.IMBAG.Pand.0363100012161346", "start": [4.891649, 52.353493], "end": [4.89181, 52.35302], "lengthM": 53.76, "alongM": 50.77 }, "di-luca-43829": { "pand": "NL.IMBAG.Pand.0363100012243829", "start": [4.921454, 52.384701], "end": [4.921543, 52.384418], "lengthM": 32.07, "alongM": 4.84 }, "dignita-93370": { "pand": "NL.IMBAG.Pand.0363100012093370", "start": [4.857231, 52.35179], "end": [4.85735, 52.351821], "lengthM": 8.81, "alongM": 4.6 }, "dionysos-taverna-36240": { "pand": "NL.IMBAG.Pand.0363100012136240", "start": [4.872385, 52.362157], "end": [4.87246, 52.362178], "lengthM": 5.62, "alongM": 4.02 }, "domenica-67762": { "pand": "NL.IMBAG.Pand.0363100012167762", "start": [4.887295, 52.380299], "end": [4.887384, 52.380103], "lengthM": 22.63, "alongM": 20.45 }, "dong-son-takeaway-restaurant-72773": { "pand": "NL.IMBAG.Pand.0363100012172773", "start": [4.881978, 52.373851], "end": [4.88221, 52.373913], "lengthM": 17.24, "alongM": 1.85 }, "dos-73278": { "pand": "NL.IMBAG.Pand.0363100012173278", "start": [4.881019, 52.380779], "end": [4.880805, 52.380829], "lengthM": 15.6, "alongM": 8.35 }, "eatmosfera-82121": { "pand": "NL.IMBAG.Pand.0363100012082121", "start": [4.935894, 52.363227], "end": [4.936031, 52.363229], "lengthM": 9.33, "alongM": 2.6 }, "eetcafe-koevoet-72933": { "pand": "NL.IMBAG.Pand.0363100012172933", "start": [4.885329, 52.379651], "end": [4.885252, 52.379636], "lengthM": 5.5, "alongM": 2.35 }, "eetcafe-t-pakhuis-75883": { "pand": "NL.IMBAG.Pand.0363100012175883", "start": [4.890693, 52.368168], "end": [4.890653, 52.368249], "lengthM": 9.42, "alongM": 5.73 }, "eetcafe-van-beeren-82699": { "pand": "NL.IMBAG.Pand.0363100012182699", "start": [4.90235, 52.372056], "end": [4.90226, 52.372107], "lengthM": 8.35, "alongM": 7.62 }, "eggs-benaddicted-72390": { "pand": "NL.IMBAG.Pand.0363100012172390", "start": [4.885071, 52.364332], "end": [4.884948, 52.364413], "lengthM": 12.31, "alongM": 9.83 }, "el-torado-grill-68110": { "pand": "NL.IMBAG.Pand.0363100012168110", "start": [4.89467, 52.366681], "end": [4.894742, 52.366659], "lengthM": 5.48, "alongM": 2.31 }, "ethiopisch-restaurant-addis-ababa-66610": { "pand": "NL.IMBAG.Pand.0363100012166610", "start": [4.864185, 52.359838], "end": [4.864281, 52.359675], "lengthM": 19.28, "alongM": 1.78 }, "fabian-78620": { "pand": "NL.IMBAG.Pand.0363100012178620", "start": [4.898717, 52.375002], "end": [4.898808, 52.374968], "lengthM": 7.26, "alongM": 1.11 }, "feduzzi-85026": { "pand": "NL.IMBAG.Pand.0363100012085026", "start": [4.891164, 52.345742], "end": [4.891152, 52.34566], "lengthM": 9.16, "alongM": 3.53 }, "fiaschetteria-pistoia-59698": { "pand": "NL.IMBAG.Pand.0363100012159698", "start": [4.893616, 52.355821], "end": [4.893683, 52.355695], "lengthM": 14.74, "alongM": 13.08 }, "fiaschetteria-pistoia-73112": { "pand": "NL.IMBAG.Pand.0363100012173112", "start": [4.884538, 52.380075], "end": [4.8846, 52.37992], "lengthM": 17.76, "alongM": 2.09 }, "fiko-80855": { "pand": "NL.IMBAG.Pand.0363100012080855", "start": [4.874267, 52.363885], "end": [4.873996, 52.364274], "lengthM": 47.05, "alongM": 18.51 }, "flore-68170": { "pand": "NL.IMBAG.Pand.0363100012168170", "start": [4.894053, 52.367579], "end": [4.894204, 52.367441], "lengthM": 18.48, "alongM": 21.02 }, "florentin-st-81813": { "pand": "NL.IMBAG.Pand.0363100012081813", "start": [4.897322, 52.356047], "end": [4.897559, 52.356118], "lengthM": 17.97, "alongM": 14.36 }, "flow-62418": { "pand": "NL.IMBAG.Pand.0363100012162418", "start": [4.889826, 52.357493], "end": [4.889914, 52.357488], "lengthM": 6.02, "alongM": 2.74 }, "fondue-fondue-53352": { "pand": "NL.IMBAG.Pand.0363100012153352", "start": [4.861302, 52.35905], "end": [4.861257, 52.359117], "lengthM": 8.06, "alongM": 5.36 }, "food-brothers-83027": { "pand": "NL.IMBAG.Pand.0363100012083027", "start": [4.912659, 52.350077], "end": [4.912776, 52.350129], "lengthM": 9.85, "alongM": 2.1 }, "fou-fow-ramen-73890": { "pand": "NL.IMBAG.Pand.0363100012173890", "start": [4.882302, 52.370297], "end": [4.882196, 52.370417], "lengthM": 15.18, "alongM": 1.86 }, "franggo-63278": { "pand": "NL.IMBAG.Pand.0363100012163278", "start": [4.897718, 52.356227], "end": [4.897881, 52.356276], "lengthM": 12.37, "alongM": 2.4 }, "fujitora-61426": { "pand": "NL.IMBAG.Pand.0363100012161426", "start": [4.896268, 52.356101], "end": [4.896189, 52.356079], "lengthM": 5.91, "alongM": 3.15 }, "fuku-ramen-63449": { "pand": "NL.IMBAG.Pand.0363100012063449", "start": [4.925761, 52.355172], "end": [4.925856, 52.355225], "lengthM": 8.76, "alongM": 4.38 }, "full-moon-garden-74474": { "pand": "NL.IMBAG.Pand.0363100012174474", "start": [4.8838897, 52.3646816], "end": [4.8837478, 52.3646165], "lengthM": 12.08, "alongM": 5.21 }, "gaja-korean-bbq-bar-67636": { "pand": "w240467636", "start": [4.9086458, 52.3757343], "end": [4.9086156, 52.3759372], "lengthM": 22.67, "alongM": 7.65 }, "gartine-75728": { "pand": "NL.IMBAG.Pand.0363100012175728", "start": [4.891419, 52.369219], "end": [4.89142, 52.369065], "lengthM": 17.14, "alongM": 1.81 }, "gebr-hartering-82661": { "pand": "NL.IMBAG.Pand.0363100012182661", "start": [4.907482, 52.37162], "end": [4.907566, 52.371655], "lengthM": 6.92, "alongM": 1.17 }, "golden-thali-50442": { "pand": "NL.IMBAG.Pand.0363100012150442", "start": [4.865717, 52.34681], "end": [4.865691, 52.34688], "lengthM": 7.99, "alongM": 2.56 }, "grieks-restaurant-plato-38635": { "pand": "NL.IMBAG.Pand.0363100012138635", "start": [4.813022, 52.374504], "end": [4.812873, 52.373942], "lengthM": 63.35, "alongM": 2.76 }, "hakata-senpachi-00201": { "pand": "NL.IMBAG.Pand.0363100012100201", "start": [4.889222, 52.344463], "end": [4.88937, 52.344455], "lengthM": 10.12, "alongM": 6.74 }, "hannekes-boom-38899": { "pand": "NL.IMBAG.Pand.0363100012238899", "start": [4.911693, 52.376243], "end": [4.911666, 52.376341], "lengthM": 11.06, "alongM": 6.4 }, "hanoi-old-quarter-restaurant-65114": { "pand": "NL.IMBAG.Pand.0363100012165114", "start": [4.889693, 52.370349], "end": [4.889388, 52.37029], "lengthM": 21.78, "alongM": 4.45 }, "hans-im-gluck-51814": { "pand": "NL.IMBAG.Pand.0363100012251814", "start": [4.897472, 52.366377], "end": [4.897594, 52.366388], "lengthM": 8.4, "alongM": 0.39 }, "hap-hmm-63575": { "pand": "NL.IMBAG.Pand.0363100012163575", "start": [4.87624, 52.363702], "end": [4.876155, 52.363679], "lengthM": 6.33, "alongM": 2.53 }, "hap-li-90676": { "pand": "NL.IMBAG.Pand.0363100012090676", "start": [4.848256, 52.384048], "end": [4.848338, 52.384013], "lengthM": 6.81, "alongM": 2.84 }, "harmani-63659": { "pand": "NL.IMBAG.Pand.0363100012163659", "start": [4.888577, 52.354971], "end": [4.888561, 52.354881], "lengthM": 10.07, "alongM": 7.17 }, "havzan-37053": { "pand": "NL.IMBAG.Pand.0363100012137053", "start": [4.829837, 52.379916], "end": [4.829713, 52.379935], "lengthM": 8.7, "alongM": 3.76 }, "hawaiian-poke-bowl-37272": { "pand": "NL.IMBAG.Pand.0363100012237272", "start": [4.890505, 52.355099], "end": [4.890764, 52.355148], "lengthM": 18.47, "alongM": 3.65 }, "hayran-61341": { "pand": "NL.IMBAG.Pand.0363100012161341", "start": [4.894542, 52.352648], "end": [4.894721, 52.352673], "lengthM": 12.51, "alongM": 11.09 }, "hinata-72121": { "pand": "NL.IMBAG.Pand.0363100012172121", "start": [4.885007, 52.378941], "end": [4.885055, 52.378842], "lengthM": 11.49, "alongM": 10.48 }, "hoi-tin-77906": { "pand": "NL.IMBAG.Pand.0363100012177906", "start": [4.900167, 52.373361], "end": [4.900165, 52.373464], "lengthM": 11.46, "alongM": 7.37 }, "hummus-bistro-d-a-73434": { "pand": "NL.IMBAG.Pand.0363100012173434", "start": [4.882639, 52.378401], "end": [4.882704, 52.378413], "lengthM": 4.62, "alongM": 2.37 }, "hunkar-restaurant-16023": { "pand": "NL.IMBAG.Pand.0363100012116023", "start": [4.800949, 52.378357], "end": [4.801082, 52.378373], "lengthM": 9.23, "alongM": 3.62 }, "ibericus-amsterdam-79660": { "pand": "NL.IMBAG.Pand.0363100012179660", "start": [4.890813, 52.380408], "end": [4.890913, 52.380516], "lengthM": 13.81, "alongM": 12.15 }, "il-delfino-blu-36816": { "pand": "NL.IMBAG.Pand.0363100012136816", "start": [4.797224, 52.351666], "end": [4.798126, 52.351849], "lengthM": 64.74, "alongM": 4.83 }, "il-primo-68332": { "pand": "NL.IMBAG.Pand.0363100012168332", "start": [4.889578, 52.366761], "end": [4.889782, 52.366681], "lengthM": 16.5, "alongM": 12.8 }, "il-sogno-08857": { "pand": "NL.IMBAG.Pand.0363100012108857", "start": [4.993877, 52.356233], "end": [4.994441, 52.355931], "lengthM": 51.04, "alongM": 6.43 }, "il-tramezzino-68426": { "pand": "NL.IMBAG.Pand.0363100012168426", "start": [4.891551, 52.380324], "end": [4.891474, 52.380344], "lengthM": 5.7, "alongM": 3.67 }, "impero-romano-52924": { "pand": "NL.IMBAG.Pand.0363100012152924", "start": [4.904512, 52.35678], "end": [4.904467, 52.356869], "lengthM": 10.37, "alongM": 2.8 }, "incanto-79461": { "pand": "NL.IMBAG.Pand.0363100012179461", "start": [4.893759, 52.366996], "end": [4.89393, 52.36695], "lengthM": 12.72, "alongM": 5.37 }, "indrapura-78846": { "pand": "NL.IMBAG.Pand.0363100012178846", "start": [4.897084, 52.365778], "end": [4.89696, 52.365761], "lengthM": 8.66, "alongM": 2.27 }, "insieme-71619": { "pand": "NL.IMBAG.Pand.0363100012071619", "start": [4.891314, 52.346855], "end": [4.891298, 52.346736], "lengthM": 13.29, "alongM": 4.05 }, "instock-amsterdam-69762": { "pand": "NL.IMBAG.Pand.0363100012169762", "start": [4.926264, 52.368471], "end": [4.926478, 52.368603], "lengthM": 20.69, "alongM": 24.12 }, "isshin-59354": { "pand": "NL.IMBAG.Pand.0363100012159354", "start": [4.888691, 52.357015], "end": [4.8887, 52.357068], "lengthM": 5.93, "alongM": 3.35 }, "italia-oggi-71755": { "pand": "NL.IMBAG.Pand.0363100012171755", "start": [4.90221, 52.37385], "end": [4.90228, 52.37382], "lengthM": 5.82, "alongM": 3.31 }, "jen-s-bing-81194": { "pand": "NL.IMBAG.Pand.0363100012181194", "start": [4.910655, 52.363879], "end": [4.910669, 52.36393], "lengthM": 5.75, "alongM": 2.25 }, "jinso-07340": { "pand": "NL.IMBAG.Pand.0363100012107340", "start": [4.944653, 52.312709], "end": [4.944772, 52.312676], "lengthM": 8.91, "alongM": 5.18 }, "john-dory-68453": { "pand": "NL.IMBAG.Pand.0363100012168453", "start": [4.89381, 52.362101], "end": [4.893898, 52.362089], "lengthM": 6.14, "alongM": 2.93 }, "joselito-tapas-79619": { "pand": "NL.IMBAG.Pand.0363100012179619", "start": [4.89471, 52.3788], "end": [4.894662, 52.378842], "lengthM": 5.7, "alongM": 1.62 }, "jun-93249": { "pand": "NL.IMBAG.Pand.0363100012093249", "start": [4.873286, 52.375834], "end": [4.873319, 52.375884], "lengthM": 6, "alongM": 1.93 }, "kaagman-kortekaas-69080": { "pand": "NL.IMBAG.Pand.0363100012169080", "start": [4.89257, 52.374701], "end": [4.892533, 52.374855], "lengthM": 17.32, "alongM": 13.21 }, "kafe-kontrast-36508": { "pand": "NL.IMBAG.Pand.0363100012236508", "start": [4.889831, 52.352887], "end": [4.889889, 52.352741], "lengthM": 16.72, "alongM": 11.32 }, "kamasutra-78550": { "pand": "NL.IMBAG.Pand.0363100012178550", "start": [4.898437, 52.375102], "end": [4.8985, 52.375081], "lengthM": 4.89, "alongM": 2.74 }, "kathmandu-kitchen-15728": { "pand": "NL.IMBAG.Pand.0363100012115728", "start": [4.854537, 52.369192], "end": [4.854728, 52.369219], "lengthM": 13.35, "alongM": 12.15 }, "kebaphan-69641": { "pand": "NL.IMBAG.Pand.0363100012069641", "start": [4.801629, 52.362587], "end": [4.80156, 52.362715], "lengthM": 15, "alongM": 0.48 }, "kebec-corner-13694": { "pand": "NL.IMBAG.Pand.0363100012113694", "start": [4.891612, 52.403731], "end": [4.891999, 52.403549], "lengthM": 33.22, "alongM": 29.22 }, "kerkzicht-29775": { "pand": "NL.IMBAG.Pand.0363100012129775", "start": [4.799742, 52.341403], "end": [4.799622, 52.34141], "lengthM": 8.21, "alongM": 3.97 }, "kilimanjaro-37317": { "pand": "NL.IMBAG.Pand.0363100012237317", "start": [4.918386, 52.356509], "end": [4.918325, 52.356591], "lengthM": 10.03, "alongM": 2.68 }, "kim-s-so-18480": { "pand": "NL.IMBAG.Pand.0363100012118480", "start": [4.924752, 52.361969], "end": [4.92438, 52.361889], "lengthM": 26.86, "alongM": 12.08 }, "klein-breda-78942": { "pand": "NL.IMBAG.Pand.0363100012178942", "start": [4.897516, 52.365626], "end": [4.897501, 52.365667], "lengthM": 4.67, "alongM": 3.06 }, "koeah-75819": { "pand": "NL.IMBAG.Pand.0363100012175819", "start": [4.890616, 52.374859], "end": [4.890821, 52.375028], "lengthM": 23.42, "alongM": 18.21 }, "kokohili-01213": { "pand": "NL.IMBAG.Pand.0363100012101213", "start": [4.884611, 52.324583], "end": [4.884617, 52.32447], "lengthM": 12.58, "alongM": 5.53 }, "kreeftenbar-12628": { "pand": "w460712628", "start": [4.8929028, 52.3405481], "end": [4.892813, 52.3398224], "lengthM": 80.98, "alongM": 81.12 }, "kruabuppha-87294": { "pand": "NL.IMBAG.Pand.0363100012087294", "start": [4.904232, 52.349573], "end": [4.904255, 52.349509], "lengthM": 7.29, "alongM": 4.67 }, "kyo-82963": { "pand": "NL.IMBAG.Pand.0363100012182963", "start": [4.901975, 52.372352], "end": [4.902026, 52.372321], "lengthM": 4.89, "alongM": 2.91 }, "la-brasa-67816": { "pand": "NL.IMBAG.Pand.0363100012167816", "start": [4.888877, 52.381969], "end": [4.888737, 52.381875], "lengthM": 14.15, "alongM": 13.21 }, "la-bruschetta-87323": { "pand": "NL.IMBAG.Pand.0363100012087323", "start": [4.994678, 52.359484], "end": [4.995056, 52.359286], "lengthM": 33.89, "alongM": 22.55 }, "la-cacerola-71888": { "pand": "NL.IMBAG.Pand.0363100012171888", "start": [4.888737, 52.361076], "end": [4.888722, 52.361034], "lengthM": 4.78, "alongM": 2.84 }, "la-cantina-79571": { "pand": "NL.IMBAG.Pand.0363100012079571", "start": [4.804113, 52.400301], "end": [4.804079, 52.400396], "lengthM": 10.82, "alongM": 8.58 }, "la-fucina-81789": { "pand": "w278381789", "start": [4.9360337, 52.3638576], "end": [4.9361219, 52.3638585], "lengthM": 6.01, "alongM": 2.94 }, "la-maschera-68857": { "pand": "NL.IMBAG.Pand.0363100012168857", "start": [4.881429, 52.377797], "end": [4.881407, 52.377831], "lengthM": 4.07, "alongM": 2.21 }, "la-oliva-pintxos-y-vinos-72953": { "pand": "NL.IMBAG.Pand.0363100012172953", "start": [4.882137, 52.376774], "end": [4.8822, 52.376663], "lengthM": 13.07, "alongM": 10.52 }, "la-paella-78816": { "pand": "NL.IMBAG.Pand.0363100012178816", "start": [4.898482, 52.375524], "end": [4.898438, 52.375492], "lengthM": 4.65, "alongM": 2.42 }, "la-perla-72878": { "pand": "NL.IMBAG.Pand.0363100012172878", "start": [4.881905, 52.376991], "end": [4.881855, 52.377072], "lengthM": 9.63, "alongM": 8.04 }, "la-piazza-65128": { "pand": "NL.IMBAG.Pand.0363100012165128", "start": [4.8916104, 52.3726618], "end": [4.8914159, 52.3726557], "lengthM": 13.26, "alongM": 2.69 }, "la-polpetta-31526": { "pand": "NL.IMBAG.Pand.0363100012131526", "start": [4.853964, 52.358278], "end": [4.85418, 52.358212], "lengthM": 16.45, "alongM": 1.62 }, "la-reinita-empanadas-73572": { "pand": "NL.IMBAG.Pand.0363100012173572", "start": [4.883296, 52.37862], "end": [4.883341, 52.378531], "lengthM": 10.37, "alongM": 8.87 }, "la-roma-81243": { "pand": "NL.IMBAG.Pand.0363100012181243", "start": [4.911897, 52.366061], "end": [4.911697, 52.36613], "lengthM": 15.64, "alongM": 13.59 }, "la-ruelle-54949": { "pand": "NL.IMBAG.Pand.0457100000054949", "start": [5.040367, 52.308292], "end": [5.040363, 52.308104], "lengthM": 20.92, "alongM": 3.24 }, "ladybird-fried-chicken-54143": { "pand": "NL.IMBAG.Pand.0363100012154143", "start": [4.893653, 52.354386], "end": [4.893468, 52.354358], "lengthM": 12.98, "alongM": 3.45 }, "le-4-stagioni-57247": { "pand": "NL.IMBAG.Pand.0363100012157247", "start": [4.875434, 52.35545], "end": [4.875509, 52.355625], "lengthM": 20.13, "alongM": 7.89 }, "le-sud-76570": { "pand": "NL.IMBAG.Pand.0363100012176570", "start": [4.886384, 52.383407], "end": [4.886214, 52.383288], "lengthM": 17.59, "alongM": 15.38 }, "lemoene-33308": { "pand": "NL.IMBAG.Pand.0363100012133308", "start": [4.840784, 52.359637], "end": [4.84116, 52.359642], "lengthM": 25.62, "alongM": 10.35 }, "leonardo-s-ravioli-bar-59331": { "pand": "NL.IMBAG.Pand.0363100012159331", "start": [4.893284, 52.354584], "end": [4.89348, 52.354617], "lengthM": 13.85, "alongM": 10.15 }, "les-zazous-79884": { "pand": "r3679884", "start": [4.9410815, 52.3765629], "end": [4.9417458, 52.3764269], "lengthM": 47.7, "alongM": 30.43 }, "leziz-71219": { "pand": "NL.IMBAG.Pand.0363100012071219", "start": [4.798499, 52.351569], "end": [4.798021, 52.351473], "lengthM": 34.27, "alongM": 13.28 }, "little-chinatown-asian-cuisine-19312": { "pand": "w1488019312", "start": [4.9512959, 52.3135851], "end": [4.9503583, 52.3132631], "lengthM": 73.29, "alongM": 19.68 }, "little-saigon-68107": { "pand": "NL.IMBAG.Pand.0363100012068107", "start": [4.925412, 52.387153], "end": [4.925488, 52.387124], "lengthM": 6.1, "alongM": 4.04 }, "lloyd-hotel-18149": { "pand": "NL.IMBAG.Pand.0363100012118149", "start": [4.934333, 52.37419], "end": [4.934631, 52.374146], "lengthM": 20.88, "alongM": 27.89 }, "lokaal-van-de-stad-40908": { "pand": "NL.IMBAG.Pand.0363100012140908", "start": [4.846136, 52.351807], "end": [4.846138, 52.351699], "lengthM": 12.02, "alongM": 11.09 }, "lombardo-s-77099": { "pand": "NL.IMBAG.Pand.0363100012177099", "start": [4.88861, 52.363568], "end": [4.888691, 52.363517], "lengthM": 7.91, "alongM": 6.06 }, "long-pura-70087": { "pand": "NL.IMBAG.Pand.0363100012170087", "start": [4.881155, 52.373653], "end": [4.881046, 52.373831], "lengthM": 21.15, "alongM": 0.84 }, "loulou-pizzabar-57281": { "pand": "NL.IMBAG.Pand.0363100012157281", "start": [4.907455, 52.355747], "end": [4.907725, 52.355808], "lengthM": 19.61, "alongM": 3.78 }, "lucca-due-80345": { "pand": "NL.IMBAG.Pand.0363100012180345", "start": [4.890056, 52.381133], "end": [4.890132, 52.381088], "lengthM": 7.2, "alongM": 1.95 }, "lucius-75671": { "pand": "NL.IMBAG.Pand.0363100012175671", "start": [4.889322, 52.370789], "end": [4.88931, 52.370727], "lengthM": 6.95, "alongM": 3.01 }, "lucky-house-73005": { "pand": "NL.IMBAG.Pand.0363100012173005", "start": [4.885253, 52.3814], "end": [4.885324, 52.381411], "lengthM": 4.99, "alongM": 2.17 }, "luna-73311": { "pand": "NL.IMBAG.Pand.0363100012173311", "start": [4.884449, 52.38032], "end": [4.884527, 52.380331], "lengthM": 5.45, "alongM": 2.65 }, "lupe-72083": { "pand": "NL.IMBAG.Pand.0363100012072083", "start": [4.857779, 52.381976], "end": [4.85767, 52.382038], "lengthM": 10.13, "alongM": 2.46 }, "made-s-warung-26789": { "pand": "NL.IMBAG.Pand.0363100012126789", "start": [4.863762, 52.351387], "end": [4.863666, 52.351362], "lengthM": 7.11, "alongM": 4.54 }, "maenaam-thai-75826": { "pand": "NL.IMBAG.Pand.0363100012175826", "start": [4.891103, 52.375235], "end": [4.891159, 52.375277], "lengthM": 6.03, "alongM": 1.77 }, "makachi-64043": { "pand": "NL.IMBAG.Pand.0363100012164043", "start": [4.890147, 52.355783], "end": [4.890377, 52.35577], "lengthM": 15.74, "alongM": 13.86 }, "mama-makan-43487": { "pand": "NL.IMBAG.Pand.0363100012243487", "start": [4.912115, 52.3616], "end": [4.912301, 52.361783], "lengthM": 23.98, "alongM": 21.33 }, "mamas-tapas-63129": { "pand": "NL.IMBAG.Pand.0363100012163129", "start": [4.873306, 52.374729], "end": [4.873468, 52.374772], "lengthM": 12.02, "alongM": 2.26 }, "mangia-pizza-centrum-75482": { "pand": "NL.IMBAG.Pand.0363100012175482", "start": [4.891505, 52.360974], "end": [4.891695, 52.360953], "lengthM": 13.15, "alongM": 3.02 }, "mangiancora-65866": { "pand": "NL.IMBAG.Pand.0363100012165866", "start": [4.891224, 52.351691], "end": [4.891227, 52.351744], "lengthM": 5.9, "alongM": 2.7 }, "maris-piper-brasserie-36608": { "pand": "NL.IMBAG.Pand.0363100012236608", "start": [4.888439, 52.355712], "end": [4.888274, 52.355722], "lengthM": 11.3, "alongM": 0.4 }, "marmaris-grill-pizza-73393": { "pand": "NL.IMBAG.Pand.0363100012073393", "start": [4.948723, 52.313194], "end": [4.948981, 52.312913], "lengthM": 35.88, "alongM": 22.58 }, "maydanoz-56807": { "pand": "NL.IMBAG.Pand.0363100012156807", "start": [4.887286, 52.352415], "end": [4.887374, 52.352427], "lengthM": 6.14, "alongM": 2.83 }, "mchi-42337": { "pand": "NL.IMBAG.Pand.0363100012142337", "start": [4.9977978, 52.3541433], "end": [4.9990139, 52.3534963], "lengthM": 109.76, "alongM": 9.31 }, "meghna-78969": { "pand": "NL.IMBAG.Pand.0363100012178969", "start": [4.897947, 52.364521], "end": [4.89793, 52.364567], "lengthM": 5.25, "alongM": 2.6 }, "men-impossible-69882": { "pand": "NL.IMBAG.Pand.0363100012169882", "start": [4.879929, 52.370712], "end": [4.879958, 52.37067], "lengthM": 5.07, "alongM": 2.94 }, "merza-45331": { "pand": "NL.IMBAG.Pand.0363100012145331", "start": [5.003099, 52.352398], "end": [5.002232, 52.351787], "lengthM": 90.06, "alongM": 87.15 }, "mesken-56710": { "pand": "NL.IMBAG.Pand.0363100012156710", "start": [4.936041, 52.363528], "end": [4.935764, 52.363525], "lengthM": 18.87, "alongM": 13.55 }, "middl-eat-67960": { "pand": "NL.IMBAG.Pand.0363100012167960", "start": [4.889943, 52.36662], "end": [4.89, 52.366597], "lengthM": 4.65, "alongM": 1.68 }, "miko-s-28387": { "pand": "w464728387", "start": [4.9639846, 52.3736345], "end": [4.9643906, 52.3739205], "lengthM": 42.16, "alongM": 27.8 }, "mima-09184": { "pand": "NL.IMBAG.Pand.0363100012109184", "start": [4.871243, 52.33787], "end": [4.870911, 52.337857], "lengthM": 22.67, "alongM": 2.71 }, "mirchi-63270": { "pand": "NL.IMBAG.Pand.0363100012163270", "start": [4.935217, 52.363513], "end": [4.935209, 52.363626], "lengthM": 12.58, "alongM": 8.61 }, "miri-mary-83742": { "pand": "NL.IMBAG.Pand.0363100012083742", "start": [4.895163, 52.351539], "end": [4.895346, 52.351574], "lengthM": 13.06, "alongM": 1.94 }, "moak-pancakes-19677": { "pand": "w277219677", "start": [4.8907204, 52.3565402], "end": [4.890712, 52.3564878], "lengthM": 5.86, "alongM": 4.26 }, "moche-67178": { "pand": "NL.IMBAG.Pand.0363100012167178", "start": [4.929092, 52.355285], "end": [4.929015, 52.355251], "lengthM": 6.47, "alongM": 3.68 }, "mogu-amsterdam-89620": { "pand": "NL.IMBAG.Pand.0363100012089620", "start": [4.854328, 52.381015], "end": [4.854412, 52.380967], "lengthM": 7.83, "alongM": 3.7 }, "momo-tibet-57116": { "pand": "NL.IMBAG.Pand.0363100012157116", "start": [4.902616, 52.355101], "end": [4.90255, 52.35508], "lengthM": 5.07, "alongM": 1.71 }, "mont-blanc-66374": { "pand": "NL.IMBAG.Pand.0363100012166374", "start": [4.898458, 52.35628], "end": [4.898379, 52.356257], "lengthM": 5.96, "alongM": 3.09 }, "moon-68473": { "pand": "w593068473", "start": [4.9018239, 52.3839369], "end": [4.9020599, 52.3837415], "lengthM": 27.03, "alongM": 16.87 }, "moshik-06274": { "pand": "w1487606274", "start": [4.9059951, 52.3764155], "end": [4.9060828, 52.3762416], "lengthM": 20.25, "alongM": 11.5 }, "mount-everest-05308": { "pand": "NL.IMBAG.Pand.0363100012105308", "start": [4.912647, 52.383799], "end": [4.912935, 52.383765], "lengthM": 19.97, "alongM": 15.05 }, "mr-gyoza-61236": { "pand": "NL.IMBAG.Pand.0363100012161236", "start": [4.865239, 52.361177], "end": [4.865305, 52.361068], "lengthM": 12.93, "alongM": 9.5 }, "mr-sushi-54293": { "pand": "NL.IMBAG.Pand.0457100000054293", "start": [5.041949, 52.307495], "end": [5.04224, 52.30755], "lengthM": 20.77, "alongM": 2.62 }, "muang-thai-66837": { "pand": "NL.IMBAG.Pand.0363100012166837", "start": [4.859084, 52.358549], "end": [4.859142, 52.358463], "lengthM": 10.35, "alongM": 2.42 }, "mudavim-58188": { "pand": "NL.IMBAG.Pand.0363100012158188", "start": [4.893363, 52.355227], "end": [4.893525, 52.355256], "lengthM": 11.5, "alongM": 2.8 }, "my-surinaamse-broodjes-36700": { "pand": "NL.IMBAG.Pand.0363100012236700", "start": [4.863338, 52.363518], "end": [4.863294, 52.363589], "lengthM": 8.45, "alongM": 2.22 }, "mythos-69645": { "pand": "NL.IMBAG.Pand.0363100012169645", "start": [4.884201, 52.36429], "end": [4.884244, 52.364261], "lengthM": 4.36, "alongM": 2.01 }, "naa-thai-63810": { "pand": "NL.IMBAG.Pand.0363100012163810", "start": [4.893745, 52.353977], "end": [4.89392, 52.354002], "lengthM": 12.24, "alongM": 8.2 }, "nap-amsterdam-83408": { "pand": "NL.IMBAG.Pand.0363100012083408", "start": [5.004378, 52.35237], "end": [5.003317, 52.352934], "lengthM": 95.73, "alongM": 91.77 }, "nara-nara-81960": { "pand": "NL.IMBAG.Pand.0363100012081960", "start": [4.928472, 52.362147], "end": [4.928259, 52.362099], "lengthM": 15.46, "alongM": 11.44 }, "nefis-etli-ekmek-59658": { "pand": "NL.IMBAG.Pand.0363100012159658", "start": [4.926301, 52.362294], "end": [4.926222, 52.362278], "lengthM": 5.67, "alongM": 3.16 }, "nikotin-19058": { "pand": "NL.IMBAG.Pand.0363100012119058", "start": [4.922388, 52.384015], "end": [4.922151, 52.383987], "lengthM": 16.43, "alongM": 13.96 }, "nk-thai-noodles-68178": { "pand": "NL.IMBAG.Pand.0363100012168178", "start": [4.893194, 52.359593], "end": [4.893301, 52.359586], "lengthM": 7.33, "alongM": 1.7 }, "nnea-pizza-66802": { "pand": "NL.IMBAG.Pand.0363100012166802", "start": [4.870444, 52.369415], "end": [4.870417, 52.369466], "lengthM": 5.97, "alongM": 3.95 }, "no-man-s-art-gallery-94050": { "pand": "NL.IMBAG.Pand.0363100012094050", "start": [4.855336, 52.382362], "end": [4.855331, 52.382472], "lengthM": 12.24, "alongM": 1.25 }, "noemi-37240": { "pand": "NL.IMBAG.Pand.0363100012237240", "start": [4.899659, 52.357308], "end": [4.899923, 52.357386], "lengthM": 19.97, "alongM": 16.76 }, "nom-nom-vietnamese-foodshop-73355": { "pand": "NL.IMBAG.Pand.0363100012073355", "start": [4.851124, 52.350744], "end": [4.85112, 52.350921], "lengthM": 19.7, "alongM": 18.48 }, "nonna-06423": { "pand": "NL.IMBAG.Pand.0363100012106423", "start": [4.863759, 52.362828], "end": [4.863585, 52.362785], "lengthM": 12.78, "alongM": -0.25 }, "northeast-kitchen-67017": { "pand": "NL.IMBAG.Pand.0363100012167017", "start": [4.890521, 52.356665], "end": [4.890169, 52.356684], "lengthM": 24.07, "alongM": 2.77 }, "nyonya-78393": { "pand": "NL.IMBAG.Pand.0363100012178393", "start": [4.898476, 52.371344], "end": [4.898659, 52.371293], "lengthM": 13.69, "alongM": 10.15 }, "o-bistro-68625": { "pand": "NL.IMBAG.Pand.0363100012168625", "start": [4.8826, 52.380208], "end": [4.882656, 52.380052], "lengthM": 17.77, "alongM": 16.66 }, "o-mai-vietnamees-restaurant-78850": { "pand": "NL.IMBAG.Pand.0363100012178850", "start": [4.897349, 52.365474], "end": [4.897562, 52.365508], "lengthM": 14.99, "alongM": 9.32 }, "o-sole-mio-68570": { "pand": "NL.IMBAG.Pand.0363100012168570", "start": [4.884051, 52.364395], "end": [4.884107, 52.364357], "lengthM": 5.69, "alongM": 2.16 }, "obalade-suya-55235": { "pand": "NL.IMBAG.Pand.0363100012155235", "start": [4.854178, 52.358213], "end": [4.85438, 52.358152], "lengthM": 15.34, "alongM": 11.2 }, "oceania-40557": { "pand": "NL.IMBAG.Pand.0363100012140557", "start": [4.891128, 52.345485], "end": [4.891116, 52.345398], "lengthM": 9.71, "alongM": 7.69 }, "ode-aan-de-amstel-40353": { "pand": "NL.IMBAG.Pand.0363100012240353", "start": [4.915036, 52.343335], "end": [4.914927, 52.343517], "lengthM": 21.57, "alongM": 10.02 }, "olijfje-65616": { "pand": "NL.IMBAG.Pand.0363100012165616", "start": [4.9061839, 52.3691185], "end": [4.905374, 52.368812], "lengthM": 64.85, "alongM": 54.74 }, "omahe-72216": { "pand": "NL.IMBAG.Pand.0363100012072216", "start": [4.886873, 52.349943], "end": [4.886873, 52.349875], "lengthM": 7.57, "alongM": 7.24 }, "omg-burger-79311": { "pand": "NL.IMBAG.Pand.0363100012179311", "start": [4.893786, 52.376135], "end": [4.893704, 52.376076], "lengthM": 8.62, "alongM": 6.83 }, "ons-dorpje-21431": { "pand": "NL.IMBAG.Pand.0363100012121431", "start": [4.8024, 52.358478], "end": [4.800629, 52.35812], "lengthM": 127.05, "alongM": 14.34 }, "oresti-s-taverna-62627": { "pand": "NL.IMBAG.Pand.0363100012162627", "start": [4.878418, 52.363483], "end": [4.878306, 52.363448], "lengthM": 8.57, "alongM": 4.22 }, "oriental-city-78751": { "pand": "NL.IMBAG.Pand.0363100012178751", "start": [4.896184, 52.37181], "end": [4.896428, 52.371721], "lengthM": 19.34, "alongM": 6.27 }, "osteria-bella-ciao-73586": { "pand": "NL.IMBAG.Pand.0363100012073586", "start": [4.8549627, 52.3451382], "end": [4.8561322, 52.3452935], "lengthM": 81.55, "alongM": 3.86 }, "otaru-91498": { "pand": "NL.IMBAG.Pand.0363100012091498", "start": [4.88891, 52.358358], "end": [4.888932, 52.358485], "lengthM": 14.21, "alongM": 4.1 }, "otemba-61722": { "pand": "NL.IMBAG.Pand.0363100012161722", "start": [4.899752, 52.357088], "end": [4.899815, 52.356947], "lengthM": 16.26, "alongM": 6.79 }, "otemba-ramen-36441": { "pand": "NL.IMBAG.Pand.0363100012236441", "start": [4.873108, 52.367615], "end": [4.873023, 52.367737], "lengthM": 14.76, "alongM": 0.66 }, "pad-thai-72000": { "pand": "NL.IMBAG.Pand.0363100012172000", "start": [4.900277, 52.373574], "end": [4.900277, 52.373534], "lengthM": 4.45, "alongM": 4.27 }, "paik-s-noodle-75231": { "pand": "NL.IMBAG.Pand.0363100012175231", "start": [4.892547, 52.368022], "end": [4.89236, 52.367938], "lengthM": 15.8, "alongM": 1.28 }, "palladio-70190": { "pand": "NL.IMBAG.Pand.0363100012170190", "start": [4.881135, 52.369909], "end": [4.88121, 52.369935], "lengthM": 5.87, "alongM": 2.62 }, "paloma-blanca-60566": { "pand": "NL.IMBAG.Pand.0363100012160566", "start": [4.865194, 52.361365], "end": [4.865058, 52.36133], "lengthM": 10.05, "alongM": 8.97 }, "pancakes-amsterdam-aan-t-ij-77894": { "pand": "NL.IMBAG.Pand.0363100012177894", "start": [4.900037, 52.380606], "end": [4.899934, 52.380507], "lengthM": 13.06, "alongM": 4.22 }, "pannenkoekerij-gansi-87577": { "pand": "NL.IMBAG.Pand.0363100012187577", "start": [4.971327, 52.323178], "end": [4.971423, 52.323194], "lengthM": 6.78, "alongM": 2.77 }, "papa-ali-mix-grill-82440": { "pand": "NL.IMBAG.Pand.0363100012182440", "start": [4.902957, 52.375628], "end": [4.902973, 52.375671], "lengthM": 4.91, "alongM": 2.53 }, "pasta-e-pizza-62433": { "pand": "NL.IMBAG.Pand.0363100012162433", "start": [4.89958, 52.357479], "end": [4.899604, 52.357425], "lengthM": 6.23, "alongM": 3.27 }, "pasta-paradijs-52857": { "pand": "NL.IMBAG.Pand.0363100012152857", "start": [4.85704, 52.351543], "end": [4.856964, 52.351525], "lengthM": 5.55, "alongM": 1.74 }, "pastai-60962": { "pand": "NL.IMBAG.Pand.0363100012160962", "start": [4.863883, 52.362666], "end": [4.863623, 52.362604], "lengthM": 19.01, "alongM": 1.89 }, "pastini-72218": { "pand": "NL.IMBAG.Pand.0363100012172218", "start": [4.884668, 52.366659], "end": [4.884595, 52.366633], "lengthM": 5.75, "alongM": 2.08 }, "pata-negra-71777": { "pand": "NL.IMBAG.Pand.0363100012171777", "start": [4.899147, 52.361443], "end": [4.898865, 52.361387], "lengthM": 20.19, "alongM": 3.96 }, "pepenero-64223": { "pand": "NL.IMBAG.Pand.0363100012064223", "start": [4.907721, 52.355706], "end": [4.907825, 52.355731], "lengthM": 7.61, "alongM": 7.52 }, "pepenero-cucina-pizza-99914": { "pand": "NL.IMBAG.Pand.0363100012099914", "start": [4.925529, 52.379545], "end": [4.925432, 52.379336], "lengthM": 24.17, "alongM": 4.26 }, "peperoncino-84094": { "pand": "NL.IMBAG.Pand.0363100012084094", "start": [4.894791, 52.345551], "end": [4.894764, 52.345634], "lengthM": 9.42, "alongM": 5.44 }, "perla-di-roma-48686": { "pand": "NL.IMBAG.Pand.0363100012148686", "start": [4.827569, 52.358599], "end": [4.827573, 52.358471], "lengthM": 14.24, "alongM": 17.64 }, "petit-caron-73912": { "pand": "NL.IMBAG.Pand.0363100012073912", "start": [4.88881, 52.35775], "end": [4.888819, 52.357806], "lengthM": 6.26, "alongM": 2.71 }, "pho-viet-76172": { "pand": "NL.IMBAG.Pand.0363100012176172", "start": [4.889008, 52.381723], "end": [4.889117, 52.381796], "lengthM": 11, "alongM": 0.79 }, "pica-pica-90102": { "pand": "NL.IMBAG.Pand.0363100012090102", "start": [4.913241, 52.357694], "end": [4.913512, 52.357762], "lengthM": 19.95, "alongM": 14.96 }, "picchino-53915": { "pand": "NL.IMBAG.Pand.0363100012253915", "start": [4.885047, 52.363321], "end": [4.884868, 52.363218], "lengthM": 16.73, "alongM": 15.76 }, "pide-dunyas-78723": { "pand": "NL.IMBAG.Pand.0363100012078723", "start": [4.85344, 52.364434], "end": [4.853639, 52.364436], "lengthM": 13.56, "alongM": -0.17 }, "piet-de-leeuw-80082": { "pand": "NL.IMBAG.Pand.0363100012180082", "start": [4.892087, 52.361499], "end": [4.892176, 52.361487], "lengthM": 6.21, "alongM": 3.36 }, "pizza-project-64561": { "pand": "NL.IMBAG.Pand.0363100012164561", "start": [4.861186, 52.361014], "end": [4.861111, 52.360996], "lengthM": 5.49, "alongM": 3.49 }, "pizza-project-bar-69760": { "pand": "NL.IMBAG.Pand.0363100012169760", "start": [4.925362, 52.367869], "end": [4.925491, 52.367869], "lengthM": 8.79, "alongM": 1.01 }, "pizza-taxi-da-paolo-seba-66100": { "pand": "NL.IMBAG.Pand.0363100012166100", "start": [4.892543, 52.35312], "end": [4.892629, 52.353131], "lengthM": 5.99, "alongM": 2.94 }, "pizzeria-steakhouse-ijburg-80574": { "pand": "NL.IMBAG.Pand.0363100012080574", "start": [5.007227, 52.352156], "end": [5.007323, 52.352186], "lengthM": 7.34, "alongM": 3.19 }, "plato-loco-19305": { "pand": "NL.IMBAG.Pand.0363100012119305", "start": [4.874056, 52.378024], "end": [4.874242, 52.37798], "lengthM": 13.58, "alongM": 1.09 }, "proper-indofood-75795": { "pand": "NL.IMBAG.Pand.0363100012175795", "start": [4.890945, 52.360889], "end": [4.890781, 52.360907], "lengthM": 11.35, "alongM": 2.03 }, "rainbowls-35465": { "pand": "NL.IMBAG.Pand.0363100012135465", "start": [4.888509, 52.35697], "end": [4.888681, 52.356961], "lengthM": 11.76, "alongM": 8.94 }, "ramen-city-37023": { "pand": "NL.IMBAG.Pand.0363100012237023", "start": [4.890037, 52.355888], "end": [4.890393, 52.355868], "lengthM": 24.35, "alongM": 22.55 }, "ramen-ism-78019": { "pand": "NL.IMBAG.Pand.0363100012178019", "start": [4.898939, 52.374923], "end": [4.899002, 52.374899], "lengthM": 5.05, "alongM": 3.68 }, "rangla-punjab-61813": { "pand": "NL.IMBAG.Pand.0363100012161813", "start": [4.865929, 52.360527], "end": [4.866005, 52.360544], "lengthM": 5.51, "alongM": 2.52 }, "rasoi-74500": { "pand": "NL.IMBAG.Pand.0363100012074500", "start": [4.895, 52.347424], "end": [4.895008, 52.347486], "lengthM": 6.92, "alongM": 4.35 }, "reijnders-68746": { "pand": "NL.IMBAG.Pand.0363100012168746", "start": [4.882841, 52.364626], "end": [4.882901, 52.364585], "lengthM": 6.12, "alongM": 3.66 }, "renato-s-osteria-32916": { "pand": "NL.IMBAG.Pand.0363100012132916", "start": [4.895216, 52.351481], "end": [4.8954, 52.351507], "lengthM": 12.87, "alongM": -0.29 }, "restaurant-212-71575": { "pand": "NL.IMBAG.Pand.0363100012171575", "start": [4.900185, 52.365796], "end": [4.900336, 52.365825], "lengthM": 10.78, "alongM": 7.61 }, "restaurant-asian-fantasy-14927": { "pand": "r20314927", "start": [4.9544945, 52.3152335], "end": [4.9547859, 52.315331], "lengthM": 22.64, "alongM": 19.33 }, "restaurant-bonjour-78788": { "pand": "NL.IMBAG.Pand.0363100012178788", "start": [4.8988, 52.363669], "end": [4.898744, 52.363657], "lengthM": 4.04, "alongM": 2.21 }, "restaurant-ja-36832": { "pand": "NL.IMBAG.Pand.0363100012236832", "start": [4.898197, 52.355731], "end": [4.898284, 52.35562], "lengthM": 13.7, "alongM": 10.67 }, "restaurant-klaproos-35403": { "pand": "NL.IMBAG.Pand.0363100012135403", "start": [4.912104, 52.393629], "end": [4.91218, 52.393702], "lengthM": 9.63, "alongM": 3.99 }, "restaurant-lastage-82260": { "pand": "NL.IMBAG.Pand.0363100012182260", "start": [4.902362, 52.375449], "end": [4.902518, 52.375381], "lengthM": 13.04, "alongM": 1.59 }, "restaurant-sallora-51279": { "pand": "NL.IMBAG.Pand.0363100012251279", "start": [4.805527, 52.357823], "end": [4.804878, 52.357693], "lengthM": 46.52, "alongM": 6.89 }, "restaurant-shiva-79404": { "pand": "NL.IMBAG.Pand.0363100012179404", "start": [4.893568, 52.365981], "end": [4.893497, 52.365991], "lengthM": 4.96, "alongM": 2.83 }, "ricardo-s-63107": { "pand": "NL.IMBAG.Pand.0363100012163107", "start": [4.933347, 52.364001], "end": [4.933414, 52.36378], "lengthM": 25.01, "alongM": 21.78 }, "rijnbar-80338": { "pand": "NL.IMBAG.Pand.0363100012080338", "start": [4.904721, 52.348867], "end": [4.904536, 52.348841], "lengthM": 12.93, "alongM": 12.89 }, "rijsel-36544": { "pand": "NL.IMBAG.Pand.0363100012236544", "start": [4.912999, 52.351673], "end": [4.912425, 52.351462], "lengthM": 45.61, "alongM": 13.22 }, "ristorante-papa-carlo-82585": { "pand": "NL.IMBAG.Pand.0363100012182585", "start": [4.899993, 52.371925], "end": [4.899961, 52.371891], "lengthM": 4.37, "alongM": 2.24 }, "ristorante-pizzeria-monte-verde-65953": { "pand": "NL.IMBAG.Pand.0363100012165953", "start": [4.88722, 52.354848], "end": [4.887229, 52.354729], "lengthM": 13.25, "alongM": 12.33 }, "ron-gastrobar-32011": { "pand": "NL.IMBAG.Pand.0363100012132011", "start": [4.856618, 52.352212], "end": [4.856747, 52.352082], "lengthM": 16.93, "alongM": 14.34 }, "roopram-roti-55550": { "pand": "NL.IMBAG.Pand.0363100012155550", "start": [4.92486, 52.361991], "end": [4.924752, 52.361969], "lengthM": 7.75, "alongM": 3.47 }, "rossi-sandwiches-31005": { "pand": "NL.IMBAG.Pand.0363100012131005", "start": [4.895564, 52.34518], "end": [4.895722, 52.345202], "lengthM": 11.04, "alongM": 1.08 }, "roum-cafe-61185": { "pand": "NL.IMBAG.Pand.0363100012161185", "start": [4.890261, 52.354068], "end": [4.890375, 52.354085], "lengthM": 7.99, "alongM": 3.75 }, "royal-fook-long-42162": { "pand": "NL.IMBAG.Pand.0363100012142162", "start": [4.809835, 52.34524], "end": [4.810187, 52.345311], "lengthM": 25.25, "alongM": 16.32 }, "royal98-53823": { "pand": "NL.IMBAG.Pand.0363100012253823", "start": [4.893061, 52.373546], "end": [4.893206, 52.373477], "lengthM": 12.51, "alongM": 7.78 }, "royalvis-traiteur-18311": { "pand": "NL.IMBAG.Pand.0363100012118311", "start": [4.909942, 52.389572], "end": [4.910025, 52.389687], "lengthM": 13.99, "alongM": 2.94 }, "rue-la-bastille-77670": { "pand": "NL.IMBAG.Pand.0363100012177670", "start": [4.887462, 52.382588], "end": [4.887602, 52.382682], "lengthM": 14.15, "alongM": 2.91 }, "rufus-restaurant-57012": { "pand": "NL.IMBAG.Pand.0363100012157012", "start": [4.883777, 52.352322], "end": [4.883628, 52.35235], "lengthM": 10.62, "alongM": 5.79 }, "sab-s-deli-36070": { "pand": "NL.IMBAG.Pand.0363100012136070", "start": [4.889835, 52.344436], "end": [4.889965, 52.344484], "lengthM": 10.34, "alongM": 4.99 }, "sababa-58581": { "pand": "NL.IMBAG.Pand.0363100012158581", "start": [4.888471, 52.354515], "end": [4.888345, 52.354489], "lengthM": 9.06, "alongM": 12.43 }, "saeed-s-curry-house-54207": { "pand": "NL.IMBAG.Pand.0363100012154207", "start": [4.931923, 52.363744], "end": [4.93193, 52.363597], "lengthM": 16.36, "alongM": 11.51 }, "sagardi-72053": { "pand": "NL.IMBAG.Pand.0363100012172053", "start": [4.888554, 52.369364], "end": [4.888676, 52.369394], "lengthM": 8.95, "alongM": 6.49 }, "sahan-92837": { "pand": "NL.IMBAG.Pand.0363100012092837", "start": [4.800224, 52.358386], "end": [4.800391, 52.35842], "lengthM": 11.99, "alongM": -3.01 }, "salento-latino-78584": { "pand": "NL.IMBAG.Pand.0363100012078584", "start": [4.8746862, 52.326071], "end": [4.8746989, 52.3258179], "lengthM": 28.17, "alongM": -3.42 }, "salvatorica-74729": { "pand": "NL.IMBAG.Pand.0363100012174729", "start": [4.878937, 52.377009], "end": [4.878835, 52.376842], "lengthM": 19.84, "alongM": 16.58 }, "sama-sebo-65990": { "pand": "NL.IMBAG.Pand.0363100012165990", "start": [4.883001, 52.360803], "end": [4.883131, 52.360624], "lengthM": 21.8, "alongM": 16.76 }, "samba-kitchen-59252": { "pand": "NL.IMBAG.Pand.0363100012159252", "start": [4.889562, 52.35272], "end": [4.889641, 52.35273], "lengthM": 5.5, "alongM": 2.56 }, "sapporo-ramen-sora-35936": { "pand": "NL.IMBAG.Pand.0363100012235936", "start": [4.888754, 52.352611], "end": [4.888676, 52.352829], "lengthM": 24.83, "alongM": 2.97 }, "scheltema-67522": { "pand": "NL.IMBAG.Pand.0363100012167522", "start": [4.890178, 52.371996], "end": [4.890406, 52.372066], "lengthM": 17.37, "alongM": 15.93 }, "schiller-78854": { "pand": "NL.IMBAG.Pand.0363100012178854", "start": [4.896907, 52.365753], "end": [4.89644, 52.365691], "lengthM": 32.55, "alongM": 23.16 }, "seafood-bistro-78815": { "pand": "NL.IMBAG.Pand.0363100012178815", "start": [4.898617, 52.375431], "end": [4.898438, 52.375492], "lengthM": 13.95, "alongM": 13.05 }, "seasons-restaurant-75049": { "pand": "NL.IMBAG.Pand.0363100012175049", "start": [4.88896, 52.377195], "end": [4.889036, 52.377168], "lengthM": 5.98, "alongM": 3.64 }, "semai-52074": { "pand": "NL.IMBAG.Pand.0363100012152074", "start": [4.911948, 52.393479], "end": [4.912104, 52.393629], "lengthM": 19.78, "alongM": 9.57 }, "semhar-74838": { "pand": "NL.IMBAG.Pand.0363100012174838", "start": [4.877361, 52.375502], "end": [4.87731, 52.37542], "lengthM": 9.76, "alongM": 8.39 }, "senayan-73612": { "pand": "NL.IMBAG.Pand.0363100012173612", "start": [4.884129, 52.372342], "end": [4.883966, 52.372346], "lengthM": 11.11, "alongM": 2.75 }, "seth-takeout-76929": { "pand": "NL.IMBAG.Pand.0363100012176929", "start": [4.888249, 52.369147], "end": [4.888241, 52.36911], "lengthM": 4.15, "alongM": 1.43 }, "sham-87688": { "pand": "NL.IMBAG.Pand.0363100012087688", "start": [4.9367736, 52.3697678], "end": [4.9368037, 52.3697064], "lengthM": 7.13, "alongM": 3.05 }, "sham-maza-80856": { "pand": "NL.IMBAG.Pand.0363100012080856", "start": [4.854844, 52.370685], "end": [4.854759, 52.370671], "lengthM": 5.99, "alongM": 3.45 }, "sherpa-39376": { "pand": "NL.IMBAG.Pand.0363100012239376", "start": [4.884895, 52.363084], "end": [4.884773, 52.363168], "lengthM": 12.51, "alongM": 10.86 }, "shiki-79220": { "pand": "NL.IMBAG.Pand.0363100012179220", "start": [4.893857, 52.374071], "end": [4.893889, 52.374134], "lengthM": 7.34, "alongM": 4.29 }, "sichuan-food-68478": { "pand": "NL.IMBAG.Pand.0363100012168478", "start": [4.890517, 52.366493], "end": [4.89059, 52.366483], "lengthM": 5.1, "alongM": 2.69 }, "silk-road-kebab-house-80959": { "pand": "NL.IMBAG.Pand.0363100012080959", "start": [4.939941, 52.361862], "end": [4.940272, 52.361909], "lengthM": 23.15, "alongM": 16.17 }, "sinne-35937": { "pand": "NL.IMBAG.Pand.0363100012235937", "start": [4.894089, 52.35305], "end": [4.894017, 52.35304], "lengthM": 5.03, "alongM": 3.01 }, "t-vliegertje-36397": { "pand": "NL.IMBAG.Pand.0363100012136397", "start": [4.891116, 52.345398], "end": [4.891104, 52.345311], "lengthM": 9.71, "alongM": 4.66 }, "vermeer-82718": { "pand": "NL.IMBAG.Pand.0363100012182718", "start": [4.900479, 52.376525], "end": [4.900418, 52.376507], "lengthM": 4.61, "alongM": 2.29 }, "vinkeles-74123": { "pand": "NL.IMBAG.Pand.0363100012174123", "start": [4.883347, 52.369328], "end": [4.883339, 52.369245], "lengthM": 9.25, "alongM": 6.79 } };
 
   // src/canalRecall/landmarkFrontData.ts
   var span = (xs, half) => xs.flatMap((x) => [x - half, x + half]);
@@ -1127,7 +1972,12 @@
     "massimo-janhanzen": MASSIMO_JAN_HANZEN,
     "massimo-ostade": MASSIMO_OSTADE
   };
-  var FRONT_LIST = Object.values(FRONTS);
+  var STOREFRONT_BY_SLUG = new Map(Object.entries(STOREFRONT_SPECS).flatMap(([slug, spec]) => {
+    const wall = STOREFRONT_WALLS[slug];
+    return spec && wall ? [[slug, compileStorefront(slug, spec, wall)]] : [];
+  }));
+  var STOREFRONT_FRONTS = [...STOREFRONT_BY_SLUG.values()];
+  var FRONT_LIST = [...Object.values(FRONTS), ...STOREFRONT_FRONTS];
   var FRONT_PART_IDS = new Set(FRONT_LIST.flatMap((f) => f.ids));
   var FRONT_OF = new Map(FRONT_LIST.flatMap((f) => f.ids.map((id) => [id, f])));
 
@@ -1159,9 +2009,15 @@
     kit: KITS.find((k) => k.name === f.name) ?? { name: f.name, tiers: [], stacks: [], roofs: [] }
   };
   var q = new URLSearchParams(location.search);
-  var name = q.get("name") ?? "waag";
+  var storefront = q.get("storefront");
+  if (storefront) {
+    const f = STOREFRONT_BY_SLUG.get(storefront);
+    SETUPS[storefront] = { centre: [(f.start[0] + f.end[0]) / 2, (f.start[1] + f.end[1]) / 2], ids: f.ids, kit: { name: f.name, tiers: [], stacks: [], roofs: [] } };
+  }
+  var name = storefront ?? q.get("name") ?? "waag";
   var setup = SETUPS[name];
-  var front = FRONTS[name];
+  var front = storefront ? STOREFRONT_BY_SLUG.get(storefront) : FRONTS[name];
+  var refBase = storefront ? "/tmp/storefronts/refs" : "/data/landmark-facades";
   var [clng, clat] = setup.centre;
   var kx = 111320 * Math.cos(clat * Math.PI / 180);
   var ky = 110540;
@@ -1178,7 +2034,7 @@
   }
   (async () => {
     const THREE = window.CanalRecallThree.THREE;
-    const meta = await (await fetch(`/data/landmark-facades/${name}.json`)).json();
+    const meta = await (await fetch(`${refBase}/${name}.json`)).json();
     const [tx, ty] = tileOf(clng, clat);
     const features = (await Promise.all([-1, 0, 1].flatMap((dx) => [-1, 0, 1].map((dy) => loadTile(tx + dx, ty + dy))))).flat();
     const local = (ring) => ring.map(([lng, lat]) => [(lng - clng) * kx, (lat - clat) * ky]);
@@ -1282,7 +2138,7 @@
     });
     const ref = document.createElement("img");
     Object.assign(ref.style, { position: "fixed", left: `${2 * W / 3}px`, top: "0", width: `${W / 3}px`, height: `${H}px`, objectFit: "contain", background: "#e9e4d4" });
-    ref.src = `/data/landmark-facades/${meta.image}`;
+    ref.src = `${refBase}/${meta.image}`;
     document.body.appendChild(ref);
     await ref.decode().catch(() => {
     });

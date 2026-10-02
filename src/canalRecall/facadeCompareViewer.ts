@@ -5,7 +5,7 @@
 import { KITS, kitGeometry, type Kit, type PartInput } from './landmarkKits.js';
 import { buildKitChunk } from './threeBuildingMesh.js';
 import { frontTriangles } from './landmarkFronts.js';
-import { FRONTS } from './landmarkFrontData.js';
+import { FRONTS, STOREFRONT_BY_SLUG } from './landmarkFrontData.js';
 
 type Setup = { centre: [number, number]; ids: string[]; kit: Kit };
 const SETUPS: Record<string, Setup> = {
@@ -36,7 +36,11 @@ for (const [key, f] of Object.entries(FRONTS)) if (!SETUPS[key]) SETUPS[key] = {
   centre: [(f.start[0] + f.end[0]) / 2, (f.start[1] + f.end[1]) / 2], ids: [...f.ids, ...(KITS.find(k => k.name === f.name) ? KIT_PART_IDS_OF(KITS.find(k => k.name === f.name)!) : [])],
   kit: KITS.find(k => k.name === f.name) ?? { name: f.name, tiers: [], stacks: [], roofs: [] },
 };
-const q = new URLSearchParams(location.search), name = q.get('name') ?? 'waag', setup = SETUPS[name], front = FRONTS[name];
+// `?storefront=<slug>`: a spec-built storefront, its reference crop served from tmp/storefronts/refs.
+const q = new URLSearchParams(location.search), storefront = q.get('storefront');
+if (storefront) { const f = STOREFRONT_BY_SLUG.get(storefront)!; SETUPS[storefront] = { centre: [(f.start[0] + f.end[0]) / 2, (f.start[1] + f.end[1]) / 2], ids: f.ids, kit: { name: f.name, tiers: [], stacks: [], roofs: [] } }; }
+const name = storefront ?? q.get('name') ?? 'waag', setup = SETUPS[name], front = storefront ? STOREFRONT_BY_SLUG.get(storefront) : FRONTS[name];
+const refBase = storefront ? '/tmp/storefronts/refs' : '/data/landmark-facades';
 const [clng, clat] = setup.centre, kx = 111_320 * Math.cos(clat * Math.PI / 180), ky = 110_540;
 const tileOf = (lng: number, lat: number) => { const n = 2 ** 14, r = lat * Math.PI / 180; return [Math.floor(((lng + 180) / 360) * n), Math.floor(((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * n)]; };
 async function loadTile(x: number, y: number): Promise<any[]> {
@@ -49,7 +53,7 @@ async function loadTile(x: number, y: number): Promise<any[]> {
 
 (async () => {
   const THREE = (window as any).CanalRecallThree.THREE;
-  const meta = await (await fetch(`/data/landmark-facades/${name}.json`)).json();
+  const meta = await (await fetch(`${refBase}/${name}.json`)).json();
   const [tx, ty] = tileOf(clng, clat);
   const features = (await Promise.all([-1, 0, 1].flatMap(dx => [-1, 0, 1].map(dy => loadTile(tx + dx, ty + dy))))).flat();
   const local = (ring: number[][]) => ring.map(([lng, lat]) => [(lng - clng) * kx, (lat - clat) * ky] as [number, number]);
@@ -134,7 +138,7 @@ async function loadTile(x: number, y: number): Promise<any[]> {
   // The panorama crop the front was measured from, shown flat as a reference, never as a texture.
   const ref = document.createElement('img');
   Object.assign(ref.style, { position: 'fixed', left: `${(2 * W) / 3}px`, top: '0', width: `${W / 3}px`, height: `${H}px`, objectFit: 'contain', background: '#e9e4d4' });
-  ref.src = `/data/landmark-facades/${meta.image}`; document.body.appendChild(ref);
+  ref.src = `${refBase}/${meta.image}`; document.body.appendChild(ref);
   await ref.decode().catch(() => {});
   (window as any).__info = { parts: parts.size };
   document.title = 'ready';

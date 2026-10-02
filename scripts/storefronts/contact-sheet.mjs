@@ -6,7 +6,8 @@ import path from 'node:path';
 import sharp from 'sharp';
 const [dir, outDir] = process.argv.slice(2);
 fs.mkdirSync(outDir, { recursive: true });
-const slugs = fs.readdirSync(dir).filter(f => f.endsWith('.json')).map(f => f.slice(0, -5)).sort();
+// Skip empty references (the wall was out of every panorama's view).
+const slugs = fs.readdirSync(dir).filter(f => f.endsWith('.json')).map(f => f.slice(0, -5)).filter(s => JSON.parse(fs.readFileSync(path.join(dir, `${s}.json`), 'utf8')).width > 20).sort();
 const W = 360, H = 260, PER = 16, COLS = 4;
 for (let s = 0; s * PER < slugs.length; s++) {
   const tiles = [];
