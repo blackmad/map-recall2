@@ -1058,6 +1058,60 @@
     ],
     windows: [{ xs: [0.64, 2.2, 3.8], rows: [[8.3, 9.9], [5.9, 7.5]], w: 1.1, hex: HOP.glass, frameHex: HOP.white }]
   };
+  var MAS = { black: "#1c1d1f", white: "#f2f0ea", green: "#5a9a3a", cream: "#efe9d6", glass: "#3a4048" };
+  function transoms(g0, g1) {
+    const n = Math.max(4, Math.round((g1 - g0) / 0.55)), pw = (g1 - g0) / n;
+    return Array.from({ length: n }, (_, i) => ({ x0: g0 + i * pw + 0.05, x1: g0 + (i + 1) * pw - 0.05, z0: 2.62, z1: 2.98, out0: 0.12, out1: 0.14, hex: MAS.glass }));
+  }
+  function massimoFront(base, x0, x1, door, signAt) {
+    const w = x1 - x0, d0 = door === "left" ? x0 + 0.15 : x1 - 1.05, g0 = door === "left" ? x0 + 1.2 : x0 + 0.2, g1 = door === "left" ? x1 - 0.2 : x1 - 1.2;
+    return {
+      name: "Massimo Gelato",
+      storefront: true,
+      roofline: "unmeasured",
+      ...base,
+      depthM: 0.2,
+      hex: "#7a4a3a",
+      outline: [[x0, 3.7], [x1, 3.7]],
+      boxes: [
+        { x0, x1, z0: 0, z1: 3.7, out1: 0.12, hex: MAS.black },
+        ...lettering(x0 + w * 0.18, x1 - w * 0.18, 3.18, 3.45, 0.12, MAS.white, 13),
+        // The transom row of small panes, then the big window and the door.
+        ...transoms(g0, g1),
+        { x0: g0, x1: g1, z0: 0.45, z1: 2.52, out0: 0.12, out1: 0.14, hex: MAS.glass },
+        ...lettering(g0 + (g1 - g0) * 0.36, g1 - (g1 - g0) * 0.36, 1.7, 1.85, 0.14, MAS.white, 4),
+        { x0: d0, x1: d0 + 0.9, z0: 0, z1: 2.5, out0: 0.12, out1: 0.13, hex: "#101112" },
+        // The round green sign on its bracket, sticking out from the frame.
+        { x0: signAt - 0.03, x1: signAt + 0.03, z0: 3.05, z1: 3.1, out0: 0.12, out1: 0.75, hex: MAS.black },
+        { x0: signAt - 0.06, x1: signAt + 0.06, z0: 2.55, z1: 3.05, out0: 0.25, out1: 0.75, hex: MAS.green },
+        { x0: signAt - 0.07, x1: signAt + 0.07, z0: 2.72, z1: 2.88, out0: 0.33, out1: 0.67, hex: MAS.cream }
+      ],
+      windows: []
+    };
+  }
+  var MASSIMO_PRETORIUS = massimoFront({ ids: ["w278207421"], start: [4.920966897299289, 52.35442420213683], end: [4.920863297299974, 52.354392402136085] }, 1.5, 7.3, "right", 1.55);
+  var MASSIMO_JAN_HANZEN = massimoFront({ ids: ["NL.IMBAG.Pand.0363100012236819"], start: [4.866620997185709, 52.368139002160575], end: [4.866450997187039, 52.368098002159414] }, 2.56, 6.1, "left", 6.25);
+  var MASSIMO_OSTADE = {
+    name: "Massimo Gelato",
+    storefront: true,
+    roofline: "unmeasured",
+    ids: ["NL.IMBAG.Pand.0363100012164859"],
+    start: [4.894535997381415, 52.35259500203181],
+    end: [4.894702997380635, 52.35261600203262],
+    depthM: 0.2,
+    hex: "#7a4a3a",
+    outline: [[0.9, 3.9], [11.6, 3.9]],
+    boxes: [
+      { x0: 0.9, x1: 11.6, z0: 0, z1: 3.9, out1: 0.1, hex: MAS.cream },
+      ...[[3.5, 5.4], [5.4, 7.2], [7.2, 9.1], [9.2, 11.4]].flatMap(([a, b]) => [
+        { x0: a + 0.1, x1: b - 0.1, z0: 0.4, z1: 2.8, out0: 0.1, out1: 0.12, hex: MAS.glass },
+        { x0: a, x1: b, z0: 2.9, z1: 3.75, out0: 0.1, out1: 1, hex: "#3f5a3a" }
+      ]),
+      { x0: 2.3, x1: 3.3, z0: 0, z1: 2.6, out0: 0.1, out1: 0.11, hex: MAS.cream },
+      { x0: 2.77, x1: 2.83, z0: 3.35, z1: 4.1, out0: 0.25, out1: 0.85, hex: MAS.green }
+    ],
+    windows: []
+  };
   var FRONTS = {
     bijenkorf: BIJENKORF,
     beurs: BEURS_BEURSPLEIN,
@@ -1068,7 +1122,10 @@
     "t-mandje": T_MANDJE,
     "de-jaren": DE_JAREN,
     winkel43: WINKEL_43,
-    hoppe: CAFE_HOPPE
+    hoppe: CAFE_HOPPE,
+    "massimo-pretorius": MASSIMO_PRETORIUS,
+    "massimo-janhanzen": MASSIMO_JAN_HANZEN,
+    "massimo-ostade": MASSIMO_OSTADE
   };
   var FRONT_LIST = Object.values(FRONTS);
   var FRONT_PART_IDS = new Set(FRONT_LIST.flatMap((f) => f.ids));
