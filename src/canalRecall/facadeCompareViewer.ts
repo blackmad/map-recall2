@@ -74,7 +74,8 @@ async function loadTile(x: number, y: number): Promise<any[]> {
     const [ax, ay] = local([meta.wall.startLngLat])[0], [bx, by] = local([meta.wall.endLngLat])[0];
     const b = meta.wall.outwardBearingDeg * Math.PI / 180, ox = Math.sin(b), oy = Math.cos(b), mx = (ax + bx) / 2, my = (ay + by) / 2;
     const len = Math.hypot(bx - ax, by - ay) || 1, half = len / 2 + 25, ux = (bx - ax) / len, uy = (by - ay) / len;
-    const inFront = (pts: [number, number][]) => pts.some(([x, y]) => { const out = (x - mx) * ox + (y - my) * oy, along = (x - mx) * ux + (y - my) * uy; return out > 1 && out < 70 && Math.abs(along) < half; });
+    // By the footprint's centre: a neighbour with one corner proud of the wall line (a bay, a stoop) is not across the street.
+    const inFront = (pts: [number, number][]) => { const x = pts.reduce((t, p) => t + p[0], 0) / pts.length, y = pts.reduce((t, p) => t + p[1], 0) / pts.length, out = (x - mx) * ox + (y - my) * oy, along = (x - mx) * ux + (y - my) * uy; return out > 2 && out < 70 && Math.abs(along) < half; };
     for (let i = context.length - 1; i >= 0; i--) if (inFront(context[i].pts)) context.splice(i, 1);
   }
   // Footprint parts that carry the front stop at the front's own body height.
