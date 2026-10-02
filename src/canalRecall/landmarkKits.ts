@@ -15,11 +15,11 @@
 
 import { fitRect, roofTriangles, type Rect, type RoofPlan } from './roofMesh.js';
 
-export type Mat = 'brick' | 'stone' | 'lead' | 'gold' | 'copper' | 'slate' | 'white' | 'tile';
+export type Mat = 'brick' | 'stone' | 'lead' | 'gold' | 'copper' | 'slate' | 'white' | 'tile' | 'blue';
 export type StageShape = 'square' | 'octagon';
 
 /** A part's own stage: the OSM footprint between its minHeight and height (or an override). */
-export type Tier = { id: string; shape: StageShape; mat: Mat; z0?: number; z1?: number };
+export type Tier = { id: string; shape: StageShape; mat: Mat; z0?: number; z1?: number; /** Gilt clock faces on the four sides. */ clocks?: boolean; /** A ring of slim columns around the drum. */ columns?: number };
 /** A frustum stacked on a part: widths are full widths in metres, 0 at an apex. */
 export type Stage = { shape: StageShape; w0: number; w1: number; h: number; mat: Mat };
 export type Stack = { onId: string; startZ?: number; stages: Stage[] };
@@ -27,16 +27,16 @@ export type KitRoof = { id: string; riseM: number; mat: 'slate' | 'tile' | 'lead
 export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[] };
 
 export const MAT_HEX: Record<Mat, string> = {
-  brick: '#9a5240', stone: '#cfc2a6', lead: '#4d535c', gold: '#d9b24c', copper: '#6aa896', slate: '#4a525d', white: '#efe9db', tile: '#b5543a',
+  brick: '#9a5240', blue: '#3f5f9a', stone: '#cfc2a6', lead: '#4d535c', gold: '#d9b24c', copper: '#6aa896', slate: '#4a525d', white: '#efe9db', tile: '#b5543a',
 };
 
 /** The imperial crown on the Westerkerk (a Maximilian crown), as a few gilded stages. */
 const CROWN: Stage[] = [
-  { shape: 'octagon', w0: 3.4, w1: 3.0, h: 1.1, mat: 'gold' },
-  { shape: 'octagon', w0: 3.0, w1: 3.0, h: 0.8, mat: 'copper' },
-  { shape: 'octagon', w0: 3.0, w1: 1.2, h: 1.6, mat: 'gold' },
-  { shape: 'octagon', w0: 1.1, w1: 1.1, h: 0.5, mat: 'gold' },
-  { shape: 'octagon', w0: 0.7, w1: 0, h: 1.3, mat: 'gold' },
+  { shape: 'octagon', w0: 5.0, w1: 4.5, h: 1.2, mat: 'gold' },
+  { shape: 'octagon', w0: 4.5, w1: 4.5, h: 1.1, mat: 'blue' },
+  { shape: 'octagon', w0: 4.5, w1: 2.0, h: 2.4, mat: 'gold' },
+  { shape: 'octagon', w0: 1.6, w1: 1.6, h: 1.0, mat: 'gold' },
+  { shape: 'octagon', w0: 0.9, w1: 0, h: 1.8, mat: 'gold' },
 ];
 
 export const KITS: Kit[] = [
@@ -45,7 +45,7 @@ export const KITS: Kit[] = [
     name: 'Westerkerk',
     tiers: [
       { id: 'w751083599', shape: 'square', mat: 'brick' },
-      { id: 'w751083598', shape: 'square', mat: 'stone' },
+      { id: 'w751083598', shape: 'square', mat: 'stone', clocks: true },
       { id: 'w751083596', shape: 'octagon', mat: 'stone' },
       { id: 'w751083597', shape: 'octagon', mat: 'lead' },
       { id: 'w751083595', shape: 'octagon', mat: 'lead' },
@@ -73,7 +73,7 @@ export const KITS: Kit[] = [
     name: 'Montelbaanstoren',
     tiers: [
       { id: 'w751647820', shape: 'square', mat: 'brick' },
-      { id: 'w751647819', shape: 'octagon', mat: 'white' },
+      { id: 'w751647819', shape: 'octagon', mat: 'white', clocks: true },
       { id: 'w751647818', shape: 'octagon', mat: 'white' },
       { id: 'w751647817', shape: 'octagon', mat: 'lead' },
     ],
@@ -97,7 +97,7 @@ export const KITS: Kit[] = [
   {
     // The cupola 51 m up: stone drum, copper dome, lantern, gilt ship weathervane.
     name: 'Royal Palace',
-    tiers: [{ id: 'w748659171', shape: 'octagon', mat: 'white', z1: 40 }],
+    tiers: [{ id: 'w748659171', shape: 'octagon', mat: 'white', z1: 40, columns: 8 }],
     stacks: [{ onId: 'w748659171', startZ: 40, stages: [
       { shape: 'octagon', w0: 9.6, w1: 8.8, h: 1.4, mat: 'copper' },
       { shape: 'octagon', w0: 8.8, w1: 6.6, h: 1.6, mat: 'copper' },
@@ -178,6 +178,27 @@ function stage(sink: TriSink, cx: number, cy: number, ang: number, shape: StageS
   if (top) for (let k = 1; k < n - 1; k++) sink.tri(top[0], top[k], top[k + 1], [0, 0], [1, 0], [1, 1], 'flat', hex, [0, 0, 1]);
 }
 
+/** Four gilt-ringed clock faces on the sides of a tier, as flat octagon fans just proud of the wall. */
+function clocks(sink: TriSink, cx: number, cy: number, ang: number, width: number, zc: number) {
+  const r = Math.min(width * 0.3, 2.3);
+  for (let k = 0; k < 4; k++) {
+    const a = ang + (k * Math.PI) / 2, dx = Math.cos(a), dy = Math.sin(a), tx = -dy, ty = dx;
+    const mx = cx + dx * (width / 2 + 0.55 + 0.06), my = cy + dy * (width / 2 + 0.55 + 0.06);
+    for (const [rad, mat, lift] of [[r, 'gold', 0], [r * 0.8, 'white', 0.04]] as const) {
+      const pts: Vec3[] = Array.from({ length: 8 }, (_, i) => { const t = (i * Math.PI) / 4 + Math.PI / 8; return [mx + dx * lift + tx * Math.cos(t) * rad, my + dy * lift + ty * Math.cos(t) * rad, zc + Math.sin(t) * rad] as Vec3; });
+      for (let i = 1; i < 7; i++) sink.tri(pts[0], pts[i], pts[i + 1], [0, 0], [1, 0], [1, 1], 'flat', MAT_HEX[mat], [dx, dy, 0]);
+    }
+  }
+}
+
+/** A ring of slim square columns around a drum. */
+function columns(sink: TriSink, cx: number, cy: number, ang: number, width: number, z0: number, z1: number, n: number) {
+  for (let k = 0; k < n; k++) {
+    const a = ang + (k * 2 * Math.PI) / n + Math.PI / n, rad = width / 2 + 0.1;
+    stage(sink, cx + Math.cos(a) * rad, cy + Math.sin(a) * rad, a, 'square', 0.7, 0.7, z0, z1, 'white');
+  }
+}
+
 /**
  * Triangles for every part of a kit that is present. `parts` are the OSM
  * footprints in metres; missing parts (a tile that has not loaded) are skipped.
@@ -185,13 +206,18 @@ function stage(sink: TriSink, cx: number, cy: number, ang: number, shape: StageS
 export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): KitPartGeometry[] {
   const out = new Map<string, TriSink>();
   const sinkFor = (id: string) => { let s = out.get(id); if (!s) out.set(id, s = new TriSink()); return s; };
-  const rectOf = (part: PartInput): Rect | null => fitRect(part.ring);
+  const rectOf = (part: PartInput): Rect | null => fitRect(part.ring, 200);
   for (const tier of kit.tiers) {
     const part = parts.get(tier.id), rect = part && rectOf(part);
     if (!part || !rect) continue;
     const width = Math.max(rect.len, rect.wid), ang = Math.atan2(rect.uy, rect.ux);
     const z0 = tier.z0 ?? part.minHeightM, z1 = tier.z1 ?? part.heightM;
-    stage(sinkFor(tier.id), rect.cx, rect.cy, tier.shape === 'square' ? ang : ang, tier.shape, tier.shape === 'square' ? width : width, tier.shape === 'square' ? width : width, z0, z1, tier.mat);
+    const sink = sinkFor(tier.id);
+    stage(sink, rect.cx, rect.cy, ang, tier.shape, width, width, z0, z1, tier.mat);
+    // A cornice ledge at the top of every tier but the last in its kit gives each stage a roofline.
+    if (tier.z1 === undefined) stage(sink, rect.cx, rect.cy, ang, tier.shape, width + 0.9, width + 0.9, z1 - 0.55, z1, tier.mat === 'brick' ? 'stone' : tier.mat);
+    if (tier.clocks) clocks(sink, rect.cx, rect.cy, ang, width, (z0 + z1) / 2 - 0.4);
+    if (tier.columns) columns(sink, rect.cx, rect.cy, ang, width, z0 + 1, z1 - 0.8, tier.columns);
   }
   for (const stack of kit.stacks) {
     const part = parts.get(stack.onId), rect = part && rectOf(part);

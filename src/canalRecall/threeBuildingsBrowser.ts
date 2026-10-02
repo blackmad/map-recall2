@@ -143,7 +143,7 @@ const roofHexFor = (look: BuildingLook, plan: RoofPlan) => { const set = ROOF_TO
 /** What stays after upload: counts only, never the typed arrays. */
 type ChunkInfo = { buildingCount: number; wallCount: number; quadCount: number; vertexCount: number; bytes: number };
 
-export type ThreeBuildingStats = { chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number };
+export type ThreeBuildingStats = { kitVertices: number; chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number };
 
 export class ThreeBuildings {
   readonly layer: any;
@@ -305,7 +305,7 @@ export class ThreeBuildings {
     }
     const info = this.renderer?.info?.render;
     return {
-      chunks: this.chunks.size, buildings, walls, quads, vertices,
+      kitVertices: this.chunks.get(KIT_KEY)?.info.vertexCount ?? 0, chunks: this.chunks.size, buildings, walls, quads, vertices,
       geometryMB: bytes / 1048576, textureMB: this.textureMB,
       drawCalls: info?.calls ?? 0, triangles: info?.triangles ?? 0, buildMs: this.lastBuildMs,
     };
