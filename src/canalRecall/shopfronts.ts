@@ -10,7 +10,23 @@
 
 import type { ShopKind } from './bayTextures.js';
 
-export type ShopfrontExtract = { version: 1; kinds: ShopKind[]; buildings: Record<string, number> };
+/**
+ * `colours`: a named business's own sign and awning colour, per building. `signatures`: the
+ * businesses the game labels on the map (or chains of 3+ branches), whose building gets a 3D
+ * awning and blade sign at their OSM point [lng, lat].
+ */
+export type ShopfrontExtract = { version: 1; kinds: ShopKind[]; buildings: Record<string, number>; colours?: Record<string, string>; signatures?: Record<string, [number, number]> };
+
+/** Sign colours for businesses with no colour of their own in OSM: deep shop-sign colours that read on brick. */
+export const SIGN_COLOURS = ['#1f4d3a', '#1c3a5e', '#7a1f2b', '#c9a227', '#2a6f6f', '#222222', '#8a3b12', '#4b2c5e', '#b8442c', '#2f5d8a', '#5a6b2a', '#d6c7a1'];
+
+/** A business's colour: its OSM colour if tagged, else one picked by its name (every branch of a chain alike). */
+export function businessColour(name: string, tagged?: string): string {
+  if (tagged && /^#[0-9a-f]{6}$/i.test(tagged)) return tagged.toLowerCase();
+  let h = 2166136261;
+  for (const c of name.trim().toLowerCase()) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); }
+  return SIGN_COLOURS[(h >>> 0) % SIGN_COLOURS.length];
+}
 
 /** The shopfront for an OSM POI's tags, or null when it is not a ground-floor business. */
 export function shopKindForTags(tags: Record<string, string>): ShopKind | null {
@@ -45,5 +61,6 @@ export function decorateShopfront<T extends GeoFeature>(feature: T): T {
   if (p.shopKind !== undefined || p.shopQuiet !== undefined) return feature;
   const index = extract.buildings[String(p.id ?? '')];
   const kind = index === undefined ? undefined : extract.kinds[index];
-  return { ...feature, properties: { ...p, ...(kind ? { shopKind: kind } : { shopQuiet: true }) } };
+  const id = String(p.id ?? ''), colour = extract.colours?.[id], at = extract.signatures?.[id];
+  return { ...feature, properties: { ...p, ...(kind ? { shopKind: kind } : { shopQuiet: true }), ...(colour ? { shopColour: colour } : {}), ...(at ? { shopSignature: at } : {}) } };
 }

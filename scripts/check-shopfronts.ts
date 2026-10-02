@@ -37,4 +37,10 @@ const chunk = buildFeatureChunk([feature], 'photo');
 const layers = new Set<number>(); for (let v = 0; v < chunk.vertexCount; v += 4) layers.add(chunk.layers[v]);
 assert.ok(layers.has(bayLayer('canal', 0, 'shopCafe')), 'café shopfront on the ground floor');
 assert.ok(![0, 1, 2, 3].some(style => layers.has(bayLayer('canal', style, 'groundDoor'))), 'no house door beside a narrow shopfront');
+// Signature storefronts: Massimo Gelato is a chain (5 branches), so every branch gets the same-colour 3D awning and sign.
+const massimo = ['NL.IMBAG.Pand.0363100012236819', 'NL.IMBAG.Pand.0363100012164859'];
+for (const id of massimo) assert.ok(extract.signatures[id], `Massimo Gelato ${id} has a signature storefront`);
+assert.equal(extract.colours[massimo[0]], extract.colours[massimo[1]], 'one chain, one colour');
+const signed = buildFeatureChunk([{ ...feature, properties: { ...feature.properties, shopColour: '#7a1f2b', shopSignature: [4.900036, 52.37] } }], 'photo');
+assert.ok(signed.vertexCount > chunk.vertexCount, 'a signature adds its awning and blade sign');
 console.log(`shopfronts: ok (${count} shop buildings)`);

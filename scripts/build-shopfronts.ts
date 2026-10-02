@@ -15,7 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
-import { shopKindForTags, type ShopfrontExtract } from '../src/canalRecall/shopfronts.ts';
+import { businessColour, shopKindForTags, type ShopfrontExtract } from '../src/canalRecall/shopfronts.ts';
 import { SHOP_KINDS, type ShopKind } from '../src/canalRecall/bayTextures.ts';
 
 const BBOX = '52.28,4.75,52.43,5.05';
@@ -33,7 +33,10 @@ async function fetchNodes(): Promise<Node[]> {
     try {
       const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'map-recall/1.0 (Canal Recall shopfronts)' }, body: new URLSearchParams({ data: QUERY }) });
       if (!response.ok) throw new Error(`Overpass ${response.status} from ${endpoint}`);
-      return (await response.json()).elements;
+      const json = await response.json();
+      fs.mkdirSync('tmp/shopfronts', { recursive: true });
+      fs.writeFileSync('tmp/shopfronts/overpass.json', JSON.stringify(json));
+      return json.elements;
     } catch (error) {
       last = error as Error;
       console.warn(`  ${last.message}; retrying`);
@@ -67,6 +70,17 @@ const contains = (ring: [number, number][], x: number, y: number) => { let insid
 const edgeDistance = (ring: [number, number][], x: number, y: number) => { let best = Infinity; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [ax, ay] = ring[j], [bx, by] = ring[i], dx = bx - ax, dy = by - ay, l = dx * dx + dy * dy || 1, t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l)); best = Math.min(best, Math.hypot(x - ax - t * dx, y - ay - t * dy)); } return best; };
 
 const nodes = await fetchNodes();
+// The businesses the game labels on the map (branded-pois local-food, with an orientation score).
+const labelled = (JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/branded-pois.json', 'utf8')) as any[])
+  .filter(p => p.kind === 'local-food' && Number(p.orientationScore) >= 5).map(p => ({ name: String(p.name).toLowerCase(), xy: local(p.center[1], p.center[0]), score: Number(p.orientationScore) }));
+const branches = new Map<string, number>();
+for (const node of nodes) { const name = node.tags?.name?.trim().toLowerCase(); if (name && shopKindForTags(node.tags)) branches.set(name, (branches.get(name) ?? 0) + 1); }
+/** How much a business deserves a signature storefront; > 0 qualifies. */
+const notability = (name: string, x: number, y: number) => {
+  const label = labelled.find(l => l.name === name && Math.hypot(l.xy[0] - x, l.xy[1] - y) < 30);
+  return (label ? label.score : 0) + ((branches.get(name) ?? 0) >= 3 ? 6 : 0);
+};
+const colours = new Map<string, string>(), signatures = new Map<string, { at: [number, number]; score: number }>();
 const assigned = new Map<string, ShopKind>(), points: Array<{ x: number; y: number; kind: ShopKind }> = [];
 let unplaced = 0, skipped = 0;
 for (const node of nodes) {
@@ -83,6 +97,12 @@ for (const node of nodes) {
   // A food or café use beats a generic window when one building carries several POIs.
   const held = assigned.get(host.id);
   if (!held || held === 'shopWindow' || held === 'groundShop') assigned.set(host.id, kind);
+  const name = node.tags.name?.trim();
+  if (name) {
+    if (!colours.has(host.id)) colours.set(host.id, businessColour(name, node.tags['brand:colour'] ?? node.tags.colour));
+    const score = notability(name.toLowerCase(), x, y);
+    if (score > 0 && score > (signatures.get(host.id)?.score ?? 0)) { signatures.set(host.id, { at: [Math.round(node.lon * 1e6) / 1e6, Math.round(node.lat * 1e6) / 1e6], score }); colours.set(host.id, businessColour(name, node.tags['brand:colour'] ?? node.tags.colour)); }
+  }
 }
 const direct = assigned.size;
 // Busy stretches: a building with no POI whose centre has 5+ businesses within 40 m gets its nearest one's kind.
@@ -98,11 +118,12 @@ for (const b of buildings) {
   assigned.set(b.id, around[0].kind); busy++;
 }
 const kinds = [...SHOP_KINDS];
-const out: ShopfrontExtract = { version: 1, kinds, buildings: Object.fromEntries([...assigned].map(([id, kind]) => [id, kinds.indexOf(kind)])) };
+const out: ShopfrontExtract = { version: 1, kinds, buildings: Object.fromEntries([...assigned].map(([id, kind]) => [id, kinds.indexOf(kind)])), colours: Object.fromEntries(colours), signatures: Object.fromEntries([...signatures].map(([id, s]) => [id, s.at])) };
 const text = JSON.stringify(out);
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, text);
 const byKind = Object.fromEntries(kinds.map(k => [k, [...assigned.values()].filter(v => v === k).length]));
 console.log(`${nodes.length} POIs (${skipped} not ground-floor businesses, ${unplaced} with no building within 8 m); ${direct} buildings carry a business, ${busy} more on busy stretches, of ${buildings.length} ground buildings; ${(text.length / 1024).toFixed(0)} KB`);
 console.log(byKind);
+console.log(`${colours.size} buildings in their business's own colour, ${signatures.size} signature storefronts (${labelled.length} labelled businesses, ${[...branches.values()].filter(n => n >= 3).length} chains of 3+)`);
 if (process.argv.includes('--publish')) { fs.writeFileSync(PUBLISHED, text); console.log(`published -> ${PUBLISHED}`); }
