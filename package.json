@@ -138,6 +138,8 @@
     "build:canal-neighborhoods": "esbuild src/canalRecall/neighborhoodState.ts --bundle --format=iife --global-name=CanalRecallNeighborhood --outfile=public/canal-drive/js/neighborhood-state.bundle.js --minify",
     "test:neighborhoods": "tsx scripts/check-neighborhood-transitions.ts",
     "check:canal": "tsx scripts/check-canal.ts",
+    "test:houseboats": "tsx scripts/check-houseboats.ts",
+    "build:houseboats": "tsx scripts/build-houseboats.ts",
     "test:landmark-fronts": "tsx src/canalRecall/facade/photoSilhouette.test.ts && tsx scripts/check-landmark-fronts.ts",
     "test:generic-facades": "tsx scripts/check-generic-facades.ts",
     "test:three-buildings": "tsx scripts/check-three-buildings.ts",
