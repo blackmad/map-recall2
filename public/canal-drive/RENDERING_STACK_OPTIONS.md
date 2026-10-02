@@ -55,3 +55,46 @@ All four are building-rendering limits, not basemap limits.
 - Highlighting by feature state (answer reveal) needs an id-to-mesh-range map.
 - Occlusion with MapLibre labels in a shared depth buffer.
 - Memory for a merged mesh across 9 z14 tiles.
+
+## Spike results (built 2026-10-02)
+
+Built as a standalone page, not wired into the game: `rendering-spike.html`
+(`npm run build:rendering-spike`, query `?look=cartoon|photo&mode=aligned|repeat
+&lat=&lng=&radius=&yaw=&pitch=&dist=&door=N`). Code: `src/canalRecall/wallBays.ts`
+(layout maths, `scripts/check-wall-bays.ts`), `bayTextures.ts` (canvas-drawn
+Amsterdam bays), `renderingSpike.ts` (three.js meshes from the z14 tiles).
+Screenshots in `public/canal-drive/rendering-spike/`.
+
+**Alignment works.** Each wall gets a whole number of bays across (about 5.2 m
+each, stretched at most a few percent) and a whole number of storeys up, with
+the ground floor separate and a front door in one bay per house (every second
+or third bay on a terrace). `repeat` mode (today's behaviour) cuts panes at
+wall ends and at the roofline on the same buildings; `aligned` never does.
+395 buildings around Rozengracht, 2 tiles.
+
+**Textures.** `photo` look: the repo's CC0 ambientCG `Bricks057` under drawn
+sash windows (six-over-six), stone sills, soldier-course lintels, shutters,
+fanlit doors and a plinth. `cartoon` look (asked for after "still drab"): flat
+warm wall colours, thick outlines, chunky cream-framed windows with sky-blue
+glass, teal/mustard/red/navy doors and shutters, wall colour baked into the
+texture so glass and doors keep their own colours. Everything is drawn here;
+no model or photograph is copied. Sketchfab and 3D Warehouse models were not
+used: their licences (per-asset CC-BY or a restrictive Warehouse licence) and
+file sizes make them poor to bundle, and a fitted per-wall texture is what the
+game needs anyway. No image generator was available in this session.
+
+**Costs and limits (not yet measured on a device).**
+- Cartoon look: 113 draw calls and about 70 MB of bay textures (6 wall x 4
+  accent colours x 3 kinds); needs an atlas or shader tint before it ships.
+- Roofs are flat. Gables, which the game teaches with, are not in this spike.
+- No highlighting, labels or basemap; no feature-state equivalent yet.
+- Headless software WebGL only: frame time, shimmer and memory on a phone are
+  the real test and are still to do.
+- Mesh build for 395 buildings is trivial; merged-per-tile for thousands is the
+  open measurement.
+
+**Next if we continue:** (1) mount it as a MapLibre custom layer behind the
+labels; (2) replace per-colour canvases with one atlas plus a shader tint;
+(3) gables from `gable.ts`; (4) per-building wall data (door side, shopfront)
+from the building-facts tiles; (5) shimmer measurement against the current
+extrusion layer at the four named locations.
