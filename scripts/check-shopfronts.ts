@@ -43,4 +43,6 @@ for (const id of massimo) assert.ok(extract.signatures[id], `Massimo Gelato ${id
 assert.equal(extract.colours[massimo[0]], extract.colours[massimo[1]], 'one chain, one colour');
 const signed = buildFeatureChunk([{ ...feature, properties: { ...feature.properties, shopColour: '#7a1f2b', shopSignature: [4.900036, 52.37] } }], 'photo');
 assert.ok(signed.vertexCount > chunk.vertexCount, 'a signature adds its awning and blade sign');
+const carried = buildFeatureChunk([{ ...feature, properties: { ...feature.properties, shopColour: '#7a1f2b', shopSignature: [4.900036, 52.37], frontCarrier: 'Massimo Gelato' } }], 'photo');
+assert.equal(carried.vertexCount, chunk.vertexCount, 'a hand-modelled front replaces the generated signature');
 console.log(`shopfronts: ok (${count} shop buildings)`);

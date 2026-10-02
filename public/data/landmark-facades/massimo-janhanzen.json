@@ -1,0 +1,91 @@
+{
+ "name": "massimo-janhanzen",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012236819"
+ ],
+ "image": "massimo-janhanzen.jpg",
+ "width": 622,
+ "height": 837,
+ "pixelsPerMetre": 50,
+ "wall": {
+  "startLngLat": [
+   4.866620997185709,
+   52.368139002160575
+  ],
+  "endLngLat": [
+   4.866450997187039,
+   52.368098002159414
+  ],
+  "lengthM": 12.444636051399227,
+  "heightM": 16.740000000000002,
+  "outwardBearingDeg": 338.1957543431893
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002060_pano_0000_006052",
+   "timestamp": "2021-03-25T12:46:10.498990Z",
+   "distanceM": 6,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74,
+   16.74
+  ],
+  "wallColour": "#5f5350"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

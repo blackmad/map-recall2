@@ -2,7 +2,7 @@
 // rectified Gemeente Amsterdam street panoramas (public/data/landmark-facades/*.jpg),
 // which are drawing references only: no pixels are used. x runs along the wall from
 // its start, z up from the pavement, both in metres.
-import { arch, type Front, type FrontBox } from './landmarkFronts.js';
+import { along, arch, lettering, stripedAwning, type Front, type FrontBox } from './landmarkFronts.js';
 
 const span = (xs: number[], half: number) => xs.flatMap(x => [x - half, x + half]);
 
@@ -193,7 +193,192 @@ export const TUSCHINSKI: Front = {
   ],
 };
 
-export const FRONTS: Record<string, Front> = { bijenkorf: BIJENKORF, beurs: BEURS_BEURSPLEIN, 'royal-palace': ROYAL_PALACE_DAM, concertgebouw: CONCERTGEBOUW, tuschinski: TUSCHINSKI };
+
+// --- Notable local businesses -------------------------------------------------
+// Hand-modelled from Gemeente Amsterdam panoramas (refs built with
+// `build-pano-facade.ts --near=<the POI's lng,lat>`): the storefronts people know them by.
+
+// Kema Vlees, butcher, Kinkerstraat 182: a red awning and red fascia with white lettering
+// under a band of glass blocks, in a buff-brick 1960s block (upper floors stay generic).
+const KEMA = { red: '#c8321f', white: '#f4efe6', glassBlock: '#cfd6d4', rail: '#2b2b2b', glass: '#3f4650' };
+export const KEMA_VLEES: Front = {
+  name: 'Kema Vlees', storefront: true, roofline: 'unmeasured',
+  ids: ['NL.IMBAG.Pand.0363100012233470'],
+  start: [4.867663997219131, 52.36610400213513], end: [4.867742997218478, 52.366125002135696],
+  depthM: 0.25, hex: '#d9c9a8',
+  outline: [[0, 5.9], [5.87, 5.9]],
+  boxes: [
+    { x0: 0, x1: 5.87, z0: 4.9, z1: 5.9, out1: 0.05, hex: KEMA.glassBlock },
+    { x0: 0, x1: 5.87, z0: 4.55, z1: 4.9, out1: 0.4, hex: KEMA.rail },
+    { x0: 0, x1: 5.87, z0: 3.9, z1: 4.55, out1: 0.3, hex: KEMA.red },
+    ...lettering(1.4, 5.6, 4.05, 4.4, 0.3, KEMA.white, 10),
+    { x0: 0.1, x1: 5.8, z0: 2.4, z1: 3.5, out0: 0, out1: 1.3, hex: KEMA.red },
+    ...lettering(3.6, 5.6, 2.55, 2.8, 1.3, KEMA.white, 4),
+    { x0: 0.2, x1: 5.7, z0: 0.2, z1: 2.4, out0: -0.05, out1: 0.05, hex: KEMA.glass },
+  ],
+  windows: [],
+};
+
+// 't Mandje, Zeedijk 63: the oldest gay bar in the city (1927). A narrow brick house with a
+// pale cornice, three window rows, stone pilasters and leaded-glass transoms over the bar front.
+const MAN = { brick: '#6b4535', stone: '#d8d2c4', lead: '#2c3134', glass: '#3e4248', door: '#2a2a2a' };
+const MAN_L = 3.96;
+export const T_MANDJE: Front = {
+  name: "'t Mandje", roofline: 'unmeasured',
+  ids: ['NL.IMBAG.Pand.0363100012171642'],
+  start: along([4.900973996976375, 52.37485000237052], [4.900941996977121, 52.374811002369846], 4.86, 0.9),
+  end: [4.900941996977121, 52.374811002369846],
+  depthM: 0.25, hex: MAN.brick, bodyTopM: 14.5,
+  outline: [[0, 14.5], [MAN_L, 14.5]],
+  boxes: [
+    { x0: 0, x1: MAN_L, z0: 12.8, z1: 14.5, out1: 0.35, hex: MAN.stone },
+    { x0: 0, x1: MAN_L, z0: 5.2, z1: 5.6, out1: 0.3, hex: MAN.stone },
+    ...[0, 1.25, 2.6, 3.76].map(x => ({ x0: x, x1: x + 0.2, z0: 0, z1: 5.2, out1: 0.2, hex: MAN.stone })),
+    // Leaded transoms, a dark diamond grid read as a dark band, and the bar window and door below.
+    { x0: 0.2, x1: 3.76, z0: 3.6, z1: 4.9, out0: -0.05, out1: 0.03, hex: MAN.lead },
+    { x0: 1.45, x1: 3.76, z0: 1.2, z1: 3.4, out0: -0.05, out1: 0.04, hex: MAN.glass },
+    { x0: 0.25, x1: 1.2, z0: 0, z1: 3.3, out0: -0.1, out1: 0, hex: MAN.door },
+    { x0: 0, x1: MAN_L, z0: 0, z1: 0.35, out1: 0.25, hex: MAN.stone },
+  ],
+  windows: [{ xs: [1, 2.4, 3.6], rows: [[10.6, 11.7], [8.3, 9.7], [5.9, 7.5]], w: 0.95, hex: MAN.glass, frameHex: '#efeae0' }],
+};
+
+// Café De Jaren, Nieuwe Doelenstraat: a former bank (1882) in dark brick with stone bands,
+// the arched "O&B" mosaic gable on the left bay, a parapet of panels, and the tall arched
+// ground-floor windows of the café.
+const JAR = { brick: '#5e3b33', stone: '#9a8f86', gold: '#d8c27a', cream: '#efe6c8', glass: '#3a3f45', door: '#2a2420' };
+const JAR_COLS = [6.9, 9.46, 12.0, 14.5];
+export const DE_JAREN: Front = {
+  name: 'Café de Jaren', roofline: 'unmeasured',
+  ids: ['NL.IMBAG.Pand.0363100012180413'],
+  start: [4.8954409971059025, 52.368129002255245], end: [4.895224997107816, 52.36804700225337],
+  depthM: 0.35, hex: JAR.brick, bodyTopM: 14.4,
+  outline: [[0, 14.4], [1.8, 14.4], [1.8, 15.6], [3.6, 17.2], [5.4, 15.6], [5.4, 14.4], [16.8, 14.4], [16.8, 15.4], [17.31, 15.4]],
+  boxes: [
+    // The O&B mosaic in its arch.
+    { x0: 2.2, x1: 5, z0: 12.9, z1: 14.8, out1: 0.08, hex: JAR.cream },
+    { x0: 2.7, x1: 4.5, z0: 13.4, z1: 14.3, out0: 0.08, out1: 0.12, hex: JAR.gold },
+    // Parapet panels and stone bands.
+    ...[7.2, 9.7, 12.2, 14.7].map(x => ({ x0: x - 0.9, x1: x + 0.9, z0: 12.8, z1: 14.1, out1: 0.12, hex: JAR.stone })),
+    { x0: 0, x1: 17.31, z0: 12, z1: 12.3, out1: 0.2, hex: JAR.stone }, { x0: 0, x1: 17.31, z0: 9.5, z1: 9.75, out1: 0.15, hex: JAR.stone },
+    { x0: 0, x1: 17.31, z0: 5.6, z1: 5.9, out1: 0.25, hex: JAR.stone },
+    // Café ground floor: two runs of tall windows under arches, the arched entrance, steps.
+    { x0: 6.3, x1: 10.2, z0: 1, z1: 5.3, out0: -0.1, out1: 0.02, hex: JAR.glass },
+    { x0: 11.3, x1: 15.4, z0: 1, z1: 5.3, out0: -0.1, out1: 0.02, hex: JAR.glass },
+    ...[6.3, 7.6, 8.9, 10.2, 11.3, 12.7, 14.1, 15.4].map(x => ({ x0: x - 0.12, x1: x + 0.12, z0: 1, z1: 5.3, out1: 0.08, hex: JAR.stone })),
+    { x0: 2.2, x1: 4, z0: 0.6, z1: 4.6, out0: -0.3, out1: -0.29, hex: JAR.door },
+    { x0: 1.6, x1: 4.6, z0: 0, z1: 0.6, out1: 0.9, hex: JAR.stone },
+    { x0: 0, x1: 17.31, z0: 0, z1: 0.9, out1: 0.12, hex: '#4a4440' },
+  ],
+  windows: [
+    { xs: [3.7], rows: [[9.6, 11.6], [6.4, 8.5]], w: 2.2, hex: JAR.glass, frameHex: '#e9e4da' },
+    { xs: JAR_COLS, rows: [[9.6, 11.6], [6.4, 8.5]], w: 1.3, hex: JAR.glass, frameHex: '#e9e4da' },
+  ],
+};
+
+// Winkel 43, Noordermarkt (the apple pie): a dark-grey neck gable over a green-and-white
+// striped awning with the green "Winkel" fascia and white-framed shop windows.
+const WIN = { grey: '#3c3d41', green: '#2f6b47', white: '#f1efe8', glass: '#3c4248', ledge: '#cfcac0' };
+export const WINKEL_43: Front = {
+  name: 'Winkel 43', roofline: 'unmeasured',
+  ids: ['NL.IMBAG.Pand.0363100012176675'],
+  start: [4.88628199693154, 52.37906400238474], end: [4.886261996930638, 52.379117002385456],
+  depthM: 0.25, hex: WIN.grey, bodyTopM: 9.1,
+  outline: [[0, 9.1], [0.35, 9.5], [1.7, 10.4], [2.05, 12.4], [4.0, 12.4], [4.35, 10.4], [5.7, 9.5], [6.05, 9.1]],
+  boxes: [
+    { x0: 0.6, x1: 5.45, z0: 8.7, z1: 9.1, out1: 0.45, hex: WIN.grey },
+    { x0: 0, x1: 6.05, z0: 4.4, z1: 4.6, out1: 0.15, hex: WIN.ledge },
+    ...stripedAwning(0, 6.05, 4.4, 1.6, WIN.green, WIN.white),
+    { x0: 1.4, x1: 4.65, z0: 3.25, z1: 3.75, out0: 1.3, out1: 1.36, hex: WIN.green },
+    ...lettering(2.1, 4.0, 3.38, 3.62, 1.36, WIN.white, 6),
+    { x0: 0.4, x1: 2.2, z0: 0.6, z1: 3.2, out0: -0.05, out1: 0.04, hex: WIN.glass },
+    { x0: 2.4, x1: 3.6, z0: 0, z1: 3.2, out0: -0.15, out1: -0.1, hex: '#262a2e' },
+    { x0: 3.8, x1: 5.65, z0: 0.6, z1: 3.2, out0: -0.05, out1: 0.04, hex: WIN.glass },
+    ...[0.3, 2.3, 3.7, 5.75].map(x => ({ x0: x - 0.1, x1: x + 0.1, z0: 0, z1: 3.3, out1: 0.08, hex: WIN.white })),
+  ],
+  windows: [
+    { xs: [3.0], rows: [[9.5, 10.5]], w: 0.9, hex: WIN.glass, frameHex: WIN.white },
+    { xs: [1.75, 2.7, 3.65], rows: [[7.1, 8.4]], w: 0.85, hex: WIN.glass, frameHex: WIN.white },
+    { xs: [1.1, 2.75, 4.4], rows: [[4.8, 6.4]], w: 1.0, hex: WIN.glass, frameHex: WIN.white },
+  ],
+};
+
+// Café Hoppe, Spui 18 (1670): a dark-painted bell gable with green neon "café HOPPE", red
+// "AMSTEL" letters, a cream fascia over the bar and a red-and-white striped awning.
+const HOP = { dark: '#2f3034', green: '#3ccf7a', red: '#c8321f', cream: '#ece4cc', white: '#f2efe8', glass: '#3a3f45' };
+const HOP_L = 4.9;
+export const CAFE_HOPPE: Front = {
+  name: 'Café Hoppe', roofline: 'unmeasured',
+  ids: ['NL.IMBAG.Pand.0363100012177199'],
+  start: [4.888688997110217, 52.36875300224259], end: along([4.888688997110217, 52.36875300224259], [4.888618997109015, 52.368830002243485], 9.8, HOP_L),
+  depthM: 0.25, hex: HOP.dark, bodyTopM: 10.4,
+  outline: [[0, 10.4], [0.5, 11.2], [1.0, 12.4], [1.5, 12.7], [3.4, 12.7], [3.9, 12.4], [4.4, 11.2], [4.9, 10.4]],
+  boxes: [
+    ...lettering(0.3, 4.6, 10.0, 10.6, 0.25, HOP.green, 9),
+    ...lettering(0.8, 3.7, 5.1, 5.7, 0.25, HOP.red, 6),
+    { x0: 0, x1: HOP_L, z0: 3.5, z1: 4.9, out1: 0.35, hex: HOP.cream },
+    { x0: 0.2, x1: HOP_L - 0.2, z0: 3.7, z1: 4.3, out0: 0.35, out1: 0.38, hex: HOP.glass },
+    ...stripedAwning(0, HOP_L, 3.4, 1.4, HOP.red, HOP.white, 0.35),
+    { x0: 0.3, x1: 3.6, z0: 0.4, z1: 2.9, out0: -0.05, out1: 0.04, hex: HOP.glass },
+    { x0: 3.8, x1: 4.6, z0: 0, z1: 2.9, out0: -0.1, out1: -0.05, hex: '#20262a' },
+  ],
+  windows: [{ xs: [0.64, 2.2, 3.8], rows: [[8.3, 9.9], [5.9, 7.5]], w: 1.1, hex: HOP.glass, frameHex: HOP.white }],
+};
+
+
+// Massimo Gelato: the current branding (Pretoriusstraat panorama, 2022, and the shop's own
+// signmaker photo found by web search): a black frame and fascia with white "MASSIMO GELATO"
+// letters, a row of small transom panes over one big window, a dark door at one end, and a
+// round green blade sign. `x0..x1` is the shop's span along the wall, `door` which end.
+const MAS = { black: '#1c1d1f', white: '#f2f0ea', green: '#5a9a3a', cream: '#efe9d6', glass: '#3a4048' };
+function transoms(g0: number, g1: number): FrontBox[] {
+  const n = Math.max(4, Math.round((g1 - g0) / 0.55)), pw = (g1 - g0) / n;
+  return Array.from({ length: n }, (_, i) => ({ x0: g0 + i * pw + 0.05, x1: g0 + (i + 1) * pw - 0.05, z0: 2.62, z1: 2.98, out0: 0.12, out1: 0.14, hex: MAS.glass }));
+}
+function massimoFront(base: Pick<Front, 'ids' | 'start' | 'end'>, x0: number, x1: number, door: 'left' | 'right', signAt: number): Front {
+  const w = x1 - x0, d0 = door === 'left' ? x0 + 0.15 : x1 - 1.05, g0 = door === 'left' ? x0 + 1.2 : x0 + 0.2, g1 = door === 'left' ? x1 - 0.2 : x1 - 1.2;
+  return {
+    name: 'Massimo Gelato', storefront: true, roofline: 'unmeasured', ...base,
+    depthM: 0.2, hex: '#7a4a3a', outline: [[x0, 3.7], [x1, 3.7]],
+    boxes: [
+      { x0, x1, z0: 0, z1: 3.7, out1: 0.12, hex: MAS.black },
+      ...lettering(x0 + w * 0.18, x1 - w * 0.18, 3.18, 3.45, 0.12, MAS.white, 13),
+      // The transom row of small panes, then the big window and the door.
+      ...transoms(g0, g1),
+      { x0: g0, x1: g1, z0: 0.45, z1: 2.52, out0: 0.12, out1: 0.14, hex: MAS.glass },
+      ...lettering(g0 + (g1 - g0) * 0.36, g1 - (g1 - g0) * 0.36, 1.7, 1.85, 0.14, MAS.white, 4),
+      { x0: d0, x1: d0 + 0.9, z0: 0, z1: 2.5, out0: 0.12, out1: 0.13, hex: '#101112' },
+      // The round green sign on its bracket, sticking out from the frame.
+      { x0: signAt - 0.03, x1: signAt + 0.03, z0: 3.05, z1: 3.1, out0: 0.12, out1: 0.75, hex: MAS.black },
+      { x0: signAt - 0.06, x1: signAt + 0.06, z0: 2.55, z1: 3.05, out0: 0.25, out1: 0.75, hex: MAS.green },
+      { x0: signAt - 0.07, x1: signAt + 0.07, z0: 2.72, z1: 2.88, out0: 0.33, out1: 0.67, hex: MAS.cream },
+    ],
+    windows: [],
+  };
+}
+export const MASSIMO_PRETORIUS = massimoFront({ ids: ['w278207421'], start: [4.920966897299289, 52.35442420213683], end: [4.920863297299974, 52.354392402136085] }, 1.5, 7.3, 'right', 1.55);
+export const MASSIMO_JAN_HANZEN = massimoFront({ ids: ['NL.IMBAG.Pand.0363100012236819'], start: [4.866620997185709, 52.368139002160575], end: [4.866450997187039, 52.368098002159414] }, 2.56, 6.1, 'left', 6.25);
+// Van Ostadestraat as its 2022 panorama shows it: white frames under four dark-green awnings,
+// the round green sign at the left end.
+export const MASSIMO_OSTADE: Front = {
+  name: 'Massimo Gelato', storefront: true, roofline: 'unmeasured',
+  ids: ['NL.IMBAG.Pand.0363100012164859'], start: [4.894535997381415, 52.35259500203181], end: [4.894702997380635, 52.35261600203262],
+  depthM: 0.2, hex: '#7a4a3a', outline: [[0.9, 3.9], [11.6, 3.9]],
+  boxes: [
+    { x0: 0.9, x1: 11.6, z0: 0, z1: 3.9, out1: 0.1, hex: MAS.cream },
+    ...[[3.5, 5.4], [5.4, 7.2], [7.2, 9.1], [9.2, 11.4]].flatMap(([a, b]): FrontBox[] => [
+      { x0: a + 0.1, x1: b - 0.1, z0: 0.4, z1: 2.8, out0: 0.1, out1: 0.12, hex: MAS.glass },
+      { x0: a, x1: b, z0: 2.9, z1: 3.75, out0: 0.1, out1: 1.0, hex: '#3f5a3a' },
+    ]),
+    { x0: 2.3, x1: 3.3, z0: 0, z1: 2.6, out0: 0.1, out1: 0.11, hex: MAS.cream },
+    { x0: 2.77, x1: 2.83, z0: 3.35, z1: 4.1, out0: 0.25, out1: 0.85, hex: MAS.green },
+  ],
+  windows: [],
+};
+
+export const FRONTS: Record<string, Front> = { bijenkorf: BIJENKORF, beurs: BEURS_BEURSPLEIN, 'royal-palace': ROYAL_PALACE_DAM, concertgebouw: CONCERTGEBOUW, tuschinski: TUSCHINSKI,
+  'kema-vlees': KEMA_VLEES, 't-mandje': T_MANDJE, 'de-jaren': DE_JAREN, winkel43: WINKEL_43, hoppe: CAFE_HOPPE,
+  'massimo-pretorius': MASSIMO_PRETORIUS, 'massimo-janhanzen': MASSIMO_JAN_HANZEN, 'massimo-ostade': MASSIMO_OSTADE };
 
 export const FRONT_LIST: readonly Front[] = Object.values(FRONTS);
 
@@ -212,5 +397,7 @@ export function decorateFront<T extends GeoFeature>(feature: T): T {
   if (!front || feature.properties.frontCarrier) return feature;
   const height = Number(feature.properties.height);
   const capped = front.bodyTopM != null && Number.isFinite(height) ? Math.min(height, front.bodyTopM) : height;
+  // A storefront leaves its building alone: generic upper storeys, own height and colour.
+  if (front.storefront) return { ...feature, properties: { ...feature.properties, frontCarrier: front.name } };
   return { ...feature, properties: { ...feature.properties, frontCarrier: front.name, height: capped, sideColour: front.hex, colour: front.hex } };
 }

@@ -34,6 +34,8 @@ const minStandoff = Number(arg("min-standoff", "4")), maxDist = Number(arg("max-
 const forcedWall = arg('wall');
 // --toward=lng,lat: only walls facing that point (a square, the street a landmark fronts on).
 const toward = arg('toward') ? arg('toward').split(',').map(Number) as [number, number] : null;
+// --near=lng,lat: only the walls within 8 m of a point (a shop's OSM pin), nearest first.
+const nearPt = arg('near') ? arg('near').split(',').map(Number) as [number, number] : null;
 if (!name || !ids.size) throw new Error('--name and --ids are required');
 
 type Rd = { x: number; y: number };
@@ -130,7 +132,13 @@ const centre = { x: walls.reduce((s, w) => s + w.mid.x, 0) / walls.length, y: wa
 const panos = await listPanos(centre);
 console.log(`${parts.size} parts, ${walls.length} exposed walls, ${panos.length} panoramas within ${radius} m`);
 const towardRd = toward ? lngLatToRd(toward) : null;
-const facing = (wall: Wall) => !towardRd || ((towardRd.x - wall.mid.x) * wall.nx + (towardRd.y - wall.mid.y) * wall.ny) / Math.hypot(towardRd.x - wall.mid.x, towardRd.y - wall.mid.y) > 0.6;
+const nearRd = nearPt ? lngLatToRd(nearPt) : null;
+const wallDist = (wall: Wall, p: Rd) => { const dx = wall.b.x - wall.a.x, dy = wall.b.y - wall.a.y, t = Math.max(0, Math.min(1, ((p.x - wall.a.x) * dx + (p.y - wall.a.y) * dy) / (wall.len * wall.len))); return Math.hypot(p.x - wall.a.x - dx * t, p.y - wall.a.y - dy * t); };
+const facing = (wall: Wall) => {
+  if (nearRd && wallDist(wall, nearRd) >= 8) return false;
+  if (!towardRd) return true;
+  return ((towardRd.x - wall.mid.x) * wall.nx + (towardRd.y - wall.mid.y) * wall.ny) / Math.hypot(towardRd.x - wall.mid.x, towardRd.y - wall.mid.y) > 0.6;
+};
 const ranked = walls.map((wall, index) => ({ wall, index })).filter(({ wall }) => facing(wall)).map(({ wall, index }) => {
   const c = wallCandidates(wall, panos), top = c.slice(0, 3);
   return { wall, index, c, value: top.length ? wall.len * (top.reduce((s, t) => s + t.score, 0) / top.length) * Math.min(1, c.length / 3) : 0 };
