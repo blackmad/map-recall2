@@ -50,7 +50,7 @@ export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal'
  */
 const PHOTO_WALLS = ['#b05a40', '#b05a40', '#a24d38', '#bd6a45', '#9a5846', '#8c5a48', '#c58b5e', '#d3b184', '#a8766a', '#7f6258', '#d9c5a4'];
 /** Wall colours for the cartoon look, widened beyond the spike's mostly-terracotta mix. */
-const CARTOON_WALLS = ['#e0694b', '#eba05d', '#f0c35a', '#f3e2bb', '#e8a99b', '#9fc09f', '#7fa7c6', '#cf7c52', '#bda5cf', '#e3856a', '#8fb8b0', '#f0b48a'];
+const CARTOON_WALLS = ['#e0694b', '#e0694b', '#cf7c52', '#eba05d', '#f0c35a', '#f3e2bb', '#e8a99b', '#d98a6a', '#9fc09f', '#7fa7c6', '#b9805a', '#f0b48a'];
 
 /** Everything the mesh builder needs from a feature for a bay look. */
 export function bayLookFor(id: string, year: number | null, heightM: number, look: Look) {
