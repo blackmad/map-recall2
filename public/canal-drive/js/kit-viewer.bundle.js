@@ -160,13 +160,14 @@
           dir(0, (v0 + v1) / 2, (z0 + z1) / 2 - R * 0.4)
         );
       }
-      for (const e of [-1, 1]) for (let i = 0; i < prof.length - 1; i++) {
+      for (const e of [-1, 1]) for (let i = 0; i < prof.length; i++) {
+        const a = prof[i], b = prof[(i + 1) % prof.length];
         tri(
-          world(e * L / 2, prof[i][0], prof[i][1]),
-          world(e * L / 2, prof[i + 1][0], prof[i + 1][1]),
+          world(e * L / 2, a[0], a[1]),
+          world(e * L / 2, b[0], b[1]),
           world(e * L / 2, 0, R * 0.4),
-          wallUv(prof[i][0], prof[i][1]),
-          wallUv(prof[i + 1][0], prof[i + 1][1]),
+          wallUv(a[0], a[1]),
+          wallUv(b[0], b[1]),
           wallUv(0, R * 0.4),
           "plate",
           dir(e, 0, 0)
@@ -334,6 +335,45 @@
         { shape: "octagon", w0: 1.9, w1: 0, h: 3.4, mat: "gold" }
       ] }],
       roofs: ["w748659181", "w748659182", "w748659172", "w748659173", "w748659174", "w748659175", "w748659183", "w748659170", "w748659180"].map((id) => ({ id, riseM: 5, mat: "lead" }))
+    },
+    {
+      // Two round corner towers with conical roofs, two turrets, and steep roofs on the main body.
+      name: "Waag",
+      tiers: ["w749066949", "w749066950", "w749066946", "w749066947"].map((id) => ({ id, shape: "octagon", mat: "brick" })),
+      stacks: [
+        ...["w749066949", "w749066950"].map((onId) => ({ onId, stages: [{ shape: "octagon", w0: 9, w1: 0.8, h: 10, mat: "slate" }] })),
+        ...["w749066946", "w749066947"].map((onId) => ({ onId, stages: [{ shape: "octagon", w0: 5.2, w1: 0.5, h: 5.5, mat: "slate" }] }))
+      ],
+      roofs: ["w749066938", "w749066939", "w749066942", "w749066948", "w749066940"].map((id) => ({ id, riseM: 6, mat: "slate" }))
+    },
+    {
+      // Berlage's Beurs: a brick clock tower with a pyramid cap, and long steep-roofed halls.
+      // The Beursplein hall's eaves sit on its gable row at 15.5 m (front in landmarkFrontData.ts), so its roof rises 11.5 m.
+      name: "Beurs van Berlage",
+      wall: { plain: true, hex: "#9a5240" },
+      tiers: [{ id: "w749918639", shape: "square", mat: "brick" }],
+      stacks: [{ onId: "w749918639", stages: [{ shape: "square", w0: 12.5, w1: 0.6, h: 11, mat: "slate" }] }],
+      // The hall roofs start on the gable row at 15.5 m: rise = part height - 15.5 (641 in the raw extract, 642/645 in the game tiles).
+      roofs: [
+        ...["w749918651", "w749918653", "w749918637", "w749918638"].map((id) => ({ id, riseM: 7, mat: "slate" })),
+        { id: "w749918641", riseM: 11.5, mat: "slate" },
+        { id: "w749918642", riseM: 9.5, mat: "slate" },
+        { id: "w749918645", riseM: 8.5, mat: "slate" }
+      ]
+    },
+    {
+      // Centraal's twin towers: square brick shafts with gilt dials (the west one a clock, the
+      // east one a wind dial), a stone band, an open lead lantern and a slim spire each.
+      name: "Centraal",
+      wall: { plain: true, hex: "#9a5a45" },
+      tiers: ["w752653568", "w752653567"].map((id) => ({ id, shape: "square", mat: "brick", z1: 27, clocks: true })),
+      stacks: ["w752653568", "w752653567"].map((onId) => ({ onId, startZ: 27, stages: [
+        { shape: "square", w0: 7.6, w1: 7.6, h: 1.2, mat: "stone" },
+        { shape: "octagon", w0: 5.2, w1: 4.8, h: 4.2, mat: "lead" },
+        { shape: "octagon", w0: 5.6, w1: 0.6, h: 4.6, mat: "lead" },
+        { shape: "octagon", w0: 0.6, w1: 0, h: 1.6, mat: "gold" }
+      ] })),
+      roofs: []
     }
   ];
   var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id)]));
@@ -475,6 +515,7 @@
     const v = parseInt(m[1], 16);
     return [v >> 16 & 255, v >> 8 & 255, v & 255];
   };
+  var LID_SHADE = 0.58 + 0.42 * 0.8;
   function buildKitChunk(parts, layers) {
     let tris = 0;
     for (const part of parts) tris += part.tris.length;
