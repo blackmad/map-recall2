@@ -1,0 +1,73 @@
+{
+ "name": "massimo-pretorius",
+ "buildingIds": [
+  "w278207421"
+ ],
+ "image": "massimo-pretorius.jpg",
+ "width": 395,
+ "height": 915,
+ "pixelsPerMetre": 50,
+ "wall": {
+  "startLngLat": [
+   4.920966897299289,
+   52.35442420213683
+  ],
+  "endLngLat": [
+   4.920863297299974,
+   52.354392402136085
+  ],
+  "lengthM": 7.895352078650643,
+  "heightM": 18.3,
+  "outwardBearingDeg": 333.7441062079849
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002591_pano_0000_005208",
+   "timestamp": "2022-06-13T08:35:46.541040Z",
+   "distanceM": 5,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   18.1,
+   18.2,
+   18.2,
+   18.24,
+   18.24,
+   18.2,
+   18.18,
+   18.14,
+   11.58,
+   11.58,
+   11.58,
+   11.84,
+   13.06,
+   13.14,
+   13.14,
+   13.14,
+   13.06,
+   13.06,
+   13.06,
+   17.96,
+   18.18,
+   18.26,
+   18.26,
+   18.3,
+   18.3,
+   18.3,
+   18.3,
+   18.3,
+   18.3,
+   18.3,
+   18.3,
+   18.3,
+   18.3
+  ],
+  "wallColour": "#6a6760"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

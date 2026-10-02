@@ -1,0 +1,87 @@
+{
+ "name": "massimo-ostade",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012164859"
+ ],
+ "image": "massimo-ostade.jpg",
+ "width": 581,
+ "height": 861,
+ "pixelsPerMetre": 50,
+ "wall": {
+  "startLngLat": [
+   4.894535997381415,
+   52.35259500203181
+  ],
+  "endLngLat": [
+   4.894702997380635,
+   52.35261600203262
+  ],
+  "lengthM": 11.615432103751242,
+  "heightM": 17.21,
+  "outwardBearingDeg": 168.78453226253964
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002410_pano_0008_000014",
+   "timestamp": "2022-01-11T09:21:01.823720Z",
+   "distanceM": 8,
+   "obliquityDeg": 15
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   13.98,
+   14,
+   14,
+   14.02,
+   14.02,
+   14.02,
+   14.38,
+   14.38,
+   14.38,
+   14.38,
+   14.38,
+   15.3,
+   15.34,
+   15.34,
+   15.34,
+   15.34,
+   15.32,
+   15.32,
+   14.1,
+   14.08,
+   14.08,
+   14.08,
+   14.08,
+   14.06,
+   14.06,
+   14.06,
+   14.08,
+   14.08,
+   14.08,
+   14.08,
+   14.08,
+   14.08,
+   14.08,
+   14.08,
+   14.08,
+   14.08,
+   14.08,
+   15.08,
+   15.2,
+   15.2,
+   15.2,
+   14.3,
+   14.3,
+   14.3,
+   14.42,
+   14.7,
+   14.7
+  ],
+  "wallColour": "#856247"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}
