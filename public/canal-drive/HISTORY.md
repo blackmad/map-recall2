@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## Untextured is flat colour only
+
+User (2026-10-02, a screenshot of brick, window grids and awnings): "untextured should be totally untextured or very flat".
+
+- **Before:** the Untextured look already drew every wall and roof on one layer. That layer was the procedural roof's flat cell, which still carries grain, so walls and roofs read slightly textured.
+- **Now:** a `flatColour` shader uniform (set for `untextured`) draws the vertex tint alone, with no cell texture at all.
+- **Live switch:** switching looks rebuilds every chunk, which took about 40 s on a loaded machine. A view caught mid-rebuild still shows the old look; booting in Untextured or waiting it out gives flat colour everywhere.
+- **Not changed:** storefront geometry (signs, awnings) stays, since it is shape rather than texture.
+
 ## Facade ornaments: cornices, door surrounds, iron balconies, Amsterdam School brick
 
 User (2026-10-02): "need more canal-house-y generators, more cornices, more amsterdam school style adornments, more white accents", with Kinkerstraat 321 as the reference.
