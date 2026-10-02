@@ -54,7 +54,7 @@ const PHOTO_WALLS = ['#b05a40', '#b05a40', '#a24d38', '#bd6a45', '#9a5846', '#8c
 /** Storybook: the natural palette, slightly warmed and softened, as an illustrator would paint it. */
 const STORYBOOK_WALLS = ['#c8664a', '#c8664a', '#b9583f', '#d98b5f', '#e0b36a', '#ead9b0', '#c9a08c', '#b87a5c', '#9bb09a', '#8aa4b8', '#d9b995'];
 /** Cartoon: a short sticker palette, saturated and similar in value, so the street reads as one bold design. */
-const CARTOON_WALLS = ['#ef5b3f', '#ef5b3f', '#f58a2e', '#f8c52f', '#2fa89f', '#3f86d6', '#f5ead2', '#e8688a'];
+const CARTOON_WALLS = ['#e8573d', '#e8573d', '#ee7f2c', '#f2b92e', '#f2b92e', '#2a9d8f', '#4672b0', '#f3e6c8', '#d96a4d'];
 
 /** Everything the mesh builder needs from a feature for a bay look. */
 export function bayLookFor(id: string, year: number | null, heightM: number, look: Look) {

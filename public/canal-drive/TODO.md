@@ -75,7 +75,7 @@ a hitch not yet measured. The ground floor repeats above 32 m except on
 towers. Facades are Amsterdam-only, and walls take a period palette colour.
 Check on a real device.
 
-**Three.js facade layer (now a setting: Building look).** Open: check Safari and a real phone (the user saw broken roofs in Safari photo mode, not reproduced in Chromium; ask whether Default look has roofs there); roofs are still MapLibre's flat lids and clash with the cartoon look; the 32-layer bay set drops attic and tall-first-floor bays; measure on a real
+**Three.js facade layer (now a setting: Building look).** Open: measure geometry cost now that roofs, cornices and shops add vertices (and consider a distance cutoff for cornice and chimney geometry); roof coverage is limited to near-rectangular footprints (L-shapes and courtyard blocks keep flat lids); check Safari and a real phone (the user saw broken roofs in Safari photo mode, not reproduced in Chromium; ask whether Default look has roofs there); roofs are still MapLibre's flat lids and clash with the cartoon look; the 32-layer bay set drops attic and tall-first-floor bays; measure on a real
 phone (heap is now below the pattern layer in software GL; geometry still
 42-63 MB: pack vertices, prune by distance); a shimmer metric that works (the
 current one is noisy and shows no win);
