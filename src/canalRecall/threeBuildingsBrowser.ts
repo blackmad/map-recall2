@@ -31,6 +31,12 @@ type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom
 type MaplibreLike = { MercatorCoordinate: { fromLngLat(lngLat: [number, number], altitude: number): { x: number; y: number; z: number; meterInMercatorCoordinateUnits(): number } } };
 
 const TILE_ZOOM = 14;
+/**
+ * Near detail (LOD tier 1): facade extras are built only for the 2 x 2 z16 tiles (~600 m)
+ * around the camera, as `extras:<z16 tile>` chunks; everything further has walls and roofs only.
+ */
+const DETAIL_ZOOM = 16;
+const EXTRAS_PREFIX = 'extras:';
 /** Facades show from this map zoom (the extrusion layer's own minzoom was 14). */
 export const MIN_ZOOM = 14;
 
@@ -119,9 +125,9 @@ export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: numb
 }
 
 
-const tileKeyOf = (polygons: number[][][][]): string => {
+const tileKeyOf = (polygons: number[][][][], zoom = TILE_ZOOM): string => {
   const [lng, lat] = polygons[0]?.[0]?.[0] ?? [0, 0];
-  const n = 2 ** TILE_ZOOM, rad = lat * Math.PI / 180;
+  const n = 2 ** zoom, rad = lat * Math.PI / 180;
   const x = Math.floor(((lng + 180) / 360) * n);
   const y = Math.floor(((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n);
   return `${x}/${y}`;
@@ -171,6 +177,7 @@ export class ThreeBuildings {
   private boatTiles = new Map<string, Houseboat[]>();
   private boatIds: ReadonlySet<string> = new Set();
   private lastFeatures: readonly Feature[] = [];
+  private detailTiles = new Set<string>();
 
   constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural') {
     this.look = look;
@@ -280,6 +287,10 @@ export class ThreeBuildings {
       let list = groups.get(key);
       if (!list) groups.set(key, list = []);
       list.push(feature);
+      if (this.detailTiles.size) {
+        const near = tileKeyOf(polygons, DETAIL_ZOOM);
+        if (this.detailTiles.has(near)) { const k = EXTRAS_PREFIX + near; let l = groups.get(k); if (!l) groups.set(k, l = []); l.push(feature); }
+      }
     }
     if (kitParts.length) groups.set(KIT_KEY, kitParts);
     // Houseboats ride along with the resident building tiles, one chunk per tile.
@@ -379,6 +390,20 @@ export class ThreeBuildings {
     return buildKitChunk(geometry, this.kitLayers());
   }
 
+  /**
+   * The camera's position for near detail: the 2 x 2 block of z16 tiles nearest it gets facade
+   * extras. Cheap to call every frame; regroups only when that block changes.
+   */
+  setDetailCentre(lng: number, lat: number): void {
+    const n = 2 ** DETAIL_ZOOM, rad = lat * Math.PI / 180;
+    const fx = ((lng + 180) / 360) * n, fy = ((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n;
+    const x = Math.floor(fx), y = Math.floor(fy), dx = fx - x < 0.5 ? -1 : 1, dy = fy - y < 0.5 ? -1 : 1;
+    const next = [`${x}/${y}`, `${x + dx}/${y}`, `${x}/${y + dy}`, `${x + dx}/${y + dy}`];
+    if (next.length === this.detailTiles.size && next.every(k => this.detailTiles.has(k))) return;
+    this.detailTiles = new Set(next);
+    this.setFeatures(this.lastFeatures);
+  }
+
   /** OSM houseboat footprints (Amsterdam extract); drawn by the houseboat generator in the resident tiles. */
   setHouseboats(boats: readonly Houseboat[]): void {
     this.boatTiles = houseboatsByTile(boats);
@@ -413,11 +438,11 @@ export class ThreeBuildings {
     if (worker) {
       // Off the main thread; a reply for an older generation (the tile changed again, or the look) is dropped.
       this.inflight.set(key, source);
-      worker.postMessage({ key, gen, look: this.look, features: source });
+      worker.postMessage({ key, gen, look: this.look, features: source, mode: key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls' });
       return;
     }
     const t0 = performance.now();
-    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, this.look);
+    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, this.look, key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls');
     this.install(key, source, chunk, performance.now() - t0);
   }
 
