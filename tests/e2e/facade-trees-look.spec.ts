@@ -37,13 +37,14 @@ async function parkAt(page: Page, at: readonly number[], face: readonly number[]
   }, { at, face, view });
 }
 
-for (const look of [{ name: 'old', facades: false, trees: false }, { name: 'new', facades: true, trees: true }]) {
+for (const look of [{ name: 'old', facades: false, trees: false, three: false }, { name: 'new', facades: true, trees: true, three: false }, { name: 'three', facades: true, trees: true, three: true }]) {
   test(`look: ${look.name}`, async ({ page }, testInfo) => {
     test.setTimeout(300_000);
-    await page.addInitScript(([facades, trees]) => {
+    await page.addInitScript(([facades, trees, three]) => {
       (window as any).__canalRecallFacades = facades;
       (window as any).__canalRecallTrees3d = trees;
-    }, [look.facades, look.trees]);
+      (window as any).__canalRecallBuildings3d = three;
+    }, [look.facades, look.trees, look.three]);
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
     mkdirSync(OUT, { recursive: true });
@@ -63,7 +64,7 @@ for (const look of [{ name: 'old', facades: false, trees: false }, { name: 'new'
       const features = vm.map.querySourceFeatures('osm-building-appearance');
       const withFacade = features.filter((f: any) => f.properties.facade).length;
       const withYear = features.filter((f: any) => Number.isFinite(f.properties.constructionYear)).length;
-      return { features: features.length, withFacade, withYear, trees: vm._treeCount ?? null, zoom: vm.map.getZoom(), facadeZoom: vm._facadeTileZoom };
+      return { features: features.length, withFacade, withYear, trees: vm._treeCount ?? null, three: vm._threeBuildings ? vm._threeBuildings.stats() : null, zoom: vm.map.getZoom(), facadeZoom: vm._facadeTileZoom };
     });
     console.log(look.name, testInfo.project.name, JSON.stringify(stats));
     expect(stats.features).toBeGreaterThan(0);
