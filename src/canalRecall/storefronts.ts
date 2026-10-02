@@ -49,6 +49,8 @@ export type StorefrontSpec = {
   fasciaH?: number;
   /** The sign's text (default `name`; '' for no lettering); `text2` a smaller second line under it. */
   text?: string;
+  /** Letter height on the fascia, metres (default: as tall as the board allows). */
+  textH?: number;
   /** Where along the wall the sign text sits [from, to] (default the whole fascia). */
   textAt?: [number, number];
   text2?: string;
@@ -181,7 +183,11 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
   if (!signText) { /* no lettering */ } else if (spec.text2) {
     text(signText, ta, tb, fz0 + 0.38, h - 0.13, signOut, letters);
     text(spec.text2, ta, tb, fz0 + 0.1, fz0 + 0.3, signOut, letters);
-  } else text(signText, ta, tb, fz0 + m, h - 0.05 - m, signOut, letters);
+  } else {
+    // Letters fill the board unless the sign is small script on a big board (Bistrot Neuf).
+    const mid = (fz0 + h - 0.05) / 2, half = spec.textH ? Math.min(spec.textH / 2, (h - 0.05 - fz0) / 2 - m) : (h - 0.05 - fz0) / 2 - m;
+    text(signText, ta, tb, mid - half, mid + half, signOut, letters);
+  }
   if (spec.logo) {
     const cx = logoAt === 'left' ? tx0 + pad + logoR : tx1 - pad - logoR, cz = (fz0 + h - 0.05) / 2;
     faces.push(disc(cx, cz, logoR, signOut + 0.01, spec.logo.ring ?? WHITE), disc(cx, cz, logoR * 0.78, signOut + 0.02, spec.logo.hex));
@@ -346,7 +352,7 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
     case 'dutch': {
       // A quarter-round blind: out and down from the wall, closed by the curve itself.
       const R = 1.0, prof: [number, number][] = [];
-      for (let i = 0; i <= 6; i++) { const t = (Math.PI / 2) * (i / 6); prof.push([OUT + R * Math.sin(t), aZ + 0.35 - R * (1 - Math.cos(t))]); }
+      for (let i = 0; i <= 6; i++) { const t = (Math.PI / 2) * (i / 6); prof.push([OUT + R * Math.sin(t), aZ - 0.02 - R * (1 - Math.cos(t))]); }
       extrusions.push({ x0: ax0, x1: ax1, profile: prof, hex: aHex });
       break;
     }

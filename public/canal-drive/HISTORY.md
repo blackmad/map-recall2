@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Storefronts: 145 measured, nulls recovered from other walls, evidence branch
+
+Two more batches respecced from measured crops (with yellow building-edge marks on the measure sheets, so misregistration shows while writing). User asked to use web search for nulls and to keep evidence: many nulls were the panorama tool's `--near` wall being a side wall; `build-alt-walls.sh` crops every other exposed wall of the building, `alt-sheet.mjs` lays them out, and `promote-wall.py` makes the right one the reference (27 recovered by eye, Kadijk and Parlotte via web search). Evidence lives on the orphan branch `storefront-evidence`: all crops (original and alternate walls), `candidates.tsv`, `decisions.tsv` (status and reason per business), registration checks and `web/*.md` notes with sources. Curved awnings no longer rise into the fascia. 315 storefronts built, 145 of them measured; the test floor is 280 because dropping a shop with no visible front is correct.
+
 ## Storefronts: second self-review — glass, whole buildings, shutters
 
 Self-review of the measured set: every window was the same flat slate panel pasted on its frame, the strongest placeholder signal on all 298. Shop windows are now frame stiles and rails proud of recessed glass with a pale diagonal reflection (`glassPane`), darker by default. User flagged Kerkzicht (a one-storey pavilion under a tile roof with a brick gable dormer, drawn as a three-storey brick block) and Leonardo's (a closed, graffitied roll-down shutter): `facade.topM` caps the building body, `facade.slabs` adds silhouettes behind or in front of the wall (the roof over the eaves, the dormer), and `graffiti` paints tags over closed shutters, placed by a hash of the shop.
