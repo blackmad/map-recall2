@@ -817,7 +817,28 @@ class VectorBasemap {
     if (!Facades || !this._completeCity || !this._completeCity.setFeatureDecorator) return;
     const api = window.CanalRecallThreeBuildings;
     const withRoofs = this._buildings3dEnabled && api && api.decorateRoof;
-    this._completeCity.setFeatureDecorator(withRoofs ? (feature) => api.decorateRoof(Facades.decorateFacade(feature)) : Facades.decorateFacade);
+    const decorate = withRoofs ? (feature) => api.decorateRoof(Facades.decorateFacade(feature)) : Facades.decorateFacade;
+    // Landmark buildings (churches, museums, Centraal…) keep their own form: no generic facade or roof.
+    if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
+    this._completeCity.setFeatureDecorator(api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds) : decorate);
+  }
+
+  /** Resolved landmark building ids, fetched once; re-decorates the resident city when they arrive. */
+  async _loadLandmarkBuildingIds() {
+    if (this._landmarkIdsRequested) return;
+    this._landmarkIdsRequested = true;
+    try {
+      const response = await fetch(this._extractFile('landmark-buildings.json'));
+      if (!response.ok) return;
+      const data = await response.json();
+      const ids = new Set();
+      for (const list of Object.values(data.buildings || {})) for (const id of list) ids.add(String(id));
+      if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
+      for (const id of ids) this._landmarkBuildingIds.add(id);
+      this._applyFeatureDecorator();
+    } catch (error) {
+      console.warn('Landmark building ids unavailable; generic facades may cover landmarks.', error);
+    }
   }
 
   /** The look the saved preference asks for, unless a URL look is in force. */
@@ -985,6 +1006,7 @@ class VectorBasemap {
       // same z14 grid; the decorator turns year + size into a facade key.
       this._completeCity.setTileEnricher(Facades.constructionYearEnricher(this._extractPath || '../data/extracts/amsterdam'));
       this._applyFeatureDecorator();
+      this._loadLandmarkBuildingIds();
     }
     let available = false;
     try {

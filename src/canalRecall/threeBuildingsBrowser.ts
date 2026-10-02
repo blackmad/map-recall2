@@ -14,7 +14,7 @@
 
 import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, paintProceduralLayers } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
-import { decorateRoof, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
+import { decorateRoof, exceptLandmarks, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import { bayTextures, type Look } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
@@ -126,7 +126,7 @@ const tileKeyOf = (polygons: number[][][][]): string => {
 
 export type BuildingLook = 'procedural' | Look;
 
-export { decorateRoof };
+export { decorateRoof, exceptLandmarks };
 
 /** Roof colours per look: pantile and slate (a look's own tones, picked by the plan's `tone`). */
 const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
