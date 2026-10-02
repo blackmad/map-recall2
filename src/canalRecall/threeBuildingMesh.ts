@@ -18,7 +18,7 @@ import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
 import earcut from 'earcut';
 import { ExtraSink, EXTRA_BUDGET, roofExtras, wallExtras } from './facadeExtras.js';
-import { fitRect, roofTriangles, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
+import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 
 export type MeshBuilding = {
   id: string;
@@ -381,18 +381,15 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     }
     let roof: RoofTri[] = cornice;
     if (b.roof) {
-      const outer = b.polygons[0]?.[0] ?? [];
-      const rect = fitRect(outer.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number]));
-      if (rect) roof = roofTriangles(rect, b.roof.plan, b.heightM, b.roof.dims);
-      if (!rect) roof = [];
+      roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal);
     }
     const walled = mode === 'walls';
-    const lid = walled && b.lid && (!b.roof || !roof.length) ? lidMesh(b, origin) : null;
+    const lid = walled && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
     // Walls mode carries the signature storefront; extras mode only the extras.
     const sign: SignTri[] = walled && b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [];
     if (extraSink) {
       // Roof extras on a flat roof only (a pitched roof has its own chimneys and dormers).
-      if (!b.roof) {
+      if (!b.roof || b.roof.plan.kind === 'parapet') {
         const outer = b.polygons[0]?.[0] ?? [];
         const rect = fitRect(outer.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number]), 40);
         if (rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
@@ -440,9 +437,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2, white: [number, number, number] = [255, 255, 255];
       for (const t of roof) {
         const shade = Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
-        const wall = t.part === 'plate' || t.part === 'dormerFace';
-        const layer = t.part === 'plate' ? (b.plainLayer ?? b.roof!.layers.plain) : t.part === 'dormerFace' ? b.roof!.layers.dormer : b.roof!.layers.slope;
-        const tint = wall ? [wr * jitter, wg * jitter, wb * jitter] : [rr, rg, rb];
+        const wall = t.part === 'plate' || t.part === 'dormerFace', flat = t.part === 'trim' || t.part === 'decal';
+        // Trim and decals (white stone, cornices, shutters) are flat colour on the lid's flat layer.
+        const layer = flat ? (b.lid?.flatLayer ?? b.roof!.layers.slope) : t.part === 'plate' ? (b.plainLayer ?? b.roof!.layers.plain) : t.part === 'dormerFace' ? b.roof!.layers.dormer : b.roof!.layers.slope;
+        const tint = t.hex ? parseHex(t.hex) : flat ? white : wall ? [wr * jitter, wg * jitter, wb * jitter] : [rr, rg, rb];
         for (let k = 0; k < 3; k++) {
           positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
           uvs[v * 2] = t.uv[k][0]; uvs[v * 2 + 1] = t.uv[k][1];

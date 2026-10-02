@@ -3,7 +3,7 @@
 
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
-import { fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
+import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
 import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
 import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
@@ -85,8 +85,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
     if (p.kitWall === 'flat') { building.bare = true; building.plainLayer = roofBase + 3; }
   }
   if (p.roofPlanned) {
-    const ring = localOuterRing(feature.geometry);
-    const plan = ring ? planRoof(id, String(p.facadeStyle ?? ''), Number(p.height), minHeightM, fitRect(ring)) : null;
+    // The decorator's own plan, recomputed from the same feature (pure), so the two agree.
+    const plan = roofPlanForFeature(feature);
     if (plan) {
       const dims = STYLE_DIMS[layout];
       building.roof = { plan, roofHex: roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
