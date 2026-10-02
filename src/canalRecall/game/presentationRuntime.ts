@@ -869,7 +869,7 @@ export class GamePresentationRuntime {
     ctx.textAlign = 'center';
     ctx.fillText(this.input.isMobile
       ? 'Left side: Steer    Right side: Gas/Brake    Double-tap: Drift'
-      : 'Arrow Keys / WASD - Drive    SPACE - Drift    TAB - Map    N - Sound    -/+ Zoom', cx, 298);
+      : 'Arrow Keys / WASD - Drive    SPACE - Drift    TAB - Map    -/+ Zoom', cx, 298);
 
     ctx.fillStyle = 'rgba(255,255,255,0.9)';
     ctx.font = 'bold 22px "Barlow Condensed", sans-serif';

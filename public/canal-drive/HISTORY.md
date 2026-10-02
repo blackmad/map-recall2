@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Sound permanently disabled
+
+Both apps are silent by decision. Map Recall `sounds` and Canal Recall `SoundManager` are inert stubs (no Web Audio), the mute/sound UI, `N` key and help text were removed, and `preferences.sound` is forced false. `check-canal-preferences.ts` fails if `AudioContext` reappears in the runtime sources.
+
 ## 2026-10-02 — Cuyperspassage rideable; keyboard rides at every reported spot; nightly sweeps
 
 - Centraal's cycle tunnel (Cuyperspassage) runs beneath a building footprint

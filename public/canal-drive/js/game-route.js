@@ -237,12 +237,8 @@ class GameRouteRuntime {
     this._savePreferences();
   }
 
-  _setSoundEnabled(enabled) {
-    if (enabled && !this.soundStarted) {
-      this.sound.init();
-      this.soundStarted = true;
-    }
-    this.sound.setEnabled(enabled);
+  _setSoundEnabled() {
+    this.sound.setEnabled(false);
   }
 
   _toggleDebug() {

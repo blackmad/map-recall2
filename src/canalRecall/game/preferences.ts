@@ -244,7 +244,7 @@ function fillPreferences(
     reducedMotion: parseBoolean(source.reducedMotion, base.reducedMotion),
     skipMastered: parseBoolean(source.skipMastered, base.skipMastered),
     gamey: parseBoolean(source.gamey, base.gamey),
-    sound: parseBoolean(source.sound, base.sound),
+    sound: false, // sound is permanently disabled
     zoom: parseZoom(source, zoom),
     zoomDefaultVersion: ZOOM_DEFAULT_VERSION,
     cameraTilt: clampTilt(source.cameraTilt, base.cameraTilt),
