@@ -369,6 +369,11 @@ export class ThreeBuildings {
       building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && hashShop(id) };
       plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
     }
+    if (p.kitWall) {
+      // A landmark kit's walls: its own stone or brick colour, bare or in a window grid.
+      building.wallHex = String(p.kitWallHex ?? building.wallHex);
+      building.plainWalls = p.kitWall === 'plain';
+    }
     if (p.roofPlanned) {
       const ring = localOuterRing(feature.geometry);
       const plan = ring ? planRoof(id, String(p.facadeStyle ?? ''), Number(p.height), minHeightM, fitRect(ring)) : null;

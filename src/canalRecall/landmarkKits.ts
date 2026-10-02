@@ -24,7 +24,9 @@ export type Tier = { id: string; shape: StageShape; mat: Mat; z0?: number; z1?: 
 export type Stage = { shape: StageShape; w0: number; w1: number; h: number; mat: Mat };
 export type Stack = { onId: string; startZ?: number; stages: Stage[] };
 export type KitRoof = { id: string; riseM: number; mat: 'slate' | 'tile' | 'lead' };
-export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[] };
+/** How a kit's roofed parts are walled: bare brick or stone, or a window grid in a facade style. */
+export type KitWall = { plain: true; hex: string } | { plain: false; style: 'canal' | 'school'; hex: string };
+export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; wall?: KitWall };
 
 export const MAT_HEX: Record<Mat, string> = {
   brick: '#9a5240', blue: '#3f5f9a', stone: '#cfc2a6', lead: '#4d535c', gold: '#d9b24c', copper: '#6aa896', slate: '#4a525d', white: '#efe9db', tile: '#b5543a',
@@ -43,6 +45,7 @@ export const KITS: Kit[] = [
   {
     // Tower 87 m: brick base, stone clock stage, octagonal stone and lead stages, lantern, crown.
     name: 'Westerkerk',
+    wall: { plain: true, hex: '#8a4b38' },
     tiers: [
       { id: 'w751083599', shape: 'square', mat: 'brick' },
       { id: 'w751083598', shape: 'square', mat: 'stone', clocks: true },
@@ -59,6 +62,7 @@ export const KITS: Kit[] = [
   {
     // The tower is 80 m; OSM stops at 30, so the octagonal stage, lantern and needle spire are stacked on.
     name: 'Zuiderkerk',
+    wall: { plain: true, hex: '#8a4b38' },
     tiers: [{ id: 'w749385556', shape: 'square', mat: 'brick' }],
     stacks: [{ onId: 'w749385556', stages: [
       { shape: 'octagon', w0: 9, w1: 7.4, h: 14, mat: 'stone' },
@@ -87,6 +91,7 @@ export const KITS: Kit[] = [
   {
     // A Greek cross: two naves crossing, a small turret and spire above the crossing.
     name: 'Noorderkerk',
+    wall: { plain: true, hex: '#8f5a40' },
     tiers: [
       { id: 'w749871263', shape: 'octagon', mat: 'white' },
       { id: 'w749871262', shape: 'octagon', mat: 'lead' },
@@ -97,6 +102,7 @@ export const KITS: Kit[] = [
   {
     // The cupola 51 m up: stone drum, copper dome, lantern, gilt ship weathervane.
     name: 'Royal Palace',
+    wall: { plain: false, style: 'canal', hex: '#cdc2a8' },
     tiers: [{ id: 'w748659171', shape: 'octagon', mat: 'white', z1: 40, columns: 8 }],
     stacks: [{ onId: 'w748659171', startZ: 40, stages: [
       { shape: 'octagon', w0: 9.6, w1: 8.8, h: 1.4, mat: 'copper' },
@@ -114,17 +120,18 @@ export const KITS: Kit[] = [
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */
 export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id)]));
 export const KIT_HIDE_IDS: readonly string[] = [...new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId)]))];
-const KIT_ROOF = new Map(KITS.flatMap(k => k.roofs.map(r => [r.id, r] as const)));
+const KIT_ROOF = new Map(KITS.flatMap(k => k.roofs.map(r => [r.id, { roof: r, wall: k.wall }] as const)));
 
 type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 
 /** Lower a kit roof host's plain wall to its eaves and stop the flat lid; other features pass through. */
 export function decorateKitRoof<T extends GeoFeature>(feature: T): T {
-  const roof = KIT_ROOF.get(String(feature.properties.id ?? ''));
-  if (!roof || feature.properties.kitRoof) return feature;
-  const height = Number(feature.properties.height);
+  const entry = KIT_ROOF.get(String(feature.properties.id ?? ''));
+  if (!entry || feature.properties.kitRoof) return feature;
+  const { roof, wall } = entry, height = Number(feature.properties.height);
   if (!Number.isFinite(height) || height - roof.riseM < 4) return feature;
-  return { ...feature, properties: { ...feature.properties, kitRoof: true, roofShape: 'pitched', roofEavesHeightM: height - roof.riseM } };
+  const walled = wall ? { facade: 'kit', facadeStyle: wall.plain ? 'school' : wall.style, kitWall: wall.plain ? 'plain' : 'grid', kitWallHex: wall.hex, sideColour: wall.hex } : {};
+  return { ...feature, properties: { ...feature.properties, kitRoof: true, roofShape: 'pitched', roofEavesHeightM: height - roof.riseM, ...walled } };
 }
 
 type Vec3 = [number, number, number];

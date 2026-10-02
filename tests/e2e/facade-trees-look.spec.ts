@@ -75,7 +75,7 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
             const bearing = (Math.atan2((face[0] - at[0]) * Math.cos(face[1] * Math.PI / 180), face[1] - at[1]) * 180) / Math.PI;
             map.jumpTo({ center: face as [number, number], zoom: 18.2, pitch: 68, bearing });
           }, { at: [...spot.at], face: [...spot.face] });
-          await page.waitForTimeout(3500);
+          await page.waitForTimeout(9000);
         }
         const file = `${OUT}/${spot.name}-${view}-${testInfo.project.name}-${look.name}.png`;
         await page.screenshot({ path: file });
