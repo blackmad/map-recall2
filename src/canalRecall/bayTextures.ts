@@ -15,8 +15,9 @@ export const GROUND_PX = 340;
 
 export type Look = 'photo' | 'storybook' | 'cartoon';
 export type Archetype = 'canal' | 'school' | 'modern';
-export type BayKind = 'plain' | 'groundDoor' | 'groundShop' | 'shopCafe' | 'shopWindow' | 'shopBar' | 'ground' | 'upper' | 'upperTall' | 'attic';
-export const SHOP_KINDS = ['groundShop', 'shopCafe', 'shopWindow', 'shopBar'] as const;
+export type BayKind = 'plain' | 'groundDoor' | 'groundShop' | 'shopCafe' | 'shopWindow' | 'shopBar' | 'shopDeli' | 'shopFlorist' | 'shopBike' | 'ground' | 'upper' | 'upperTall' | 'attic';
+export const SHOP_KINDS = ['groundShop', 'shopCafe', 'shopWindow', 'shopBar', 'shopDeli', 'shopFlorist', 'shopBike'] as const;
+export type ShopKind = (typeof SHOP_KINDS)[number];
 export type WindowShape = 'rect' | 'arch' | 'round';
 
 /** Everything that changes how a bay is drawn; colours are not part of it. */
@@ -234,17 +235,62 @@ function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): v
   const frame = cartoon ? '#fffaf0' : '#e4dfd2';
   const outline = () => { if (cartoon) { p.stroke(OUTLINE, p.lineW); ctx.lineJoin = 'round'; ctx.stroke(); } };
   if (kind === 'shopCafe') {
-    fascia(p, 24, 22, w - 48, 50);
-    for (const [x0, x1] of [[26, w / 2 - 8], [w / 2 + 8, w - 26]] as const) {
-      const ww = x1 - x0, top = 92, bottom = groundY - 8;
-      p.fill('ink', frame); ctx.beginPath(); ctx.moveTo(x0, bottom); ctx.lineTo(x0, top + ww / 2); ctx.arc(x0 + ww / 2, top + ww / 2, ww / 2, Math.PI, 0); ctx.lineTo(x1, bottom); ctx.closePath(); ctx.fill(); outline();
-      glassRect(p, x0 + 12, top + 14 + ww / 2 - 20, ww - 24, bottom - top - ww / 2 - 6, 10);
+    // Café / restaurant: a sign, a scalloped awning over a wide window, a terrace of small
+    // tables out front: the busiest ground floors in the city have to read as cafés at a glance.
+    fascia(p, 24, 16, w - 48, 44);
+    p.fill('ink', frame); p.rr(24, 100, w - 48, groundY - 108, cartoon ? 8 : 2); ctx.fill(); outline();
+    glassRect(p, 36, 112, w - 72, groundY - 196, 6);
+    p.fill('ink', frame); ctx.fillRect(w / 2 - 4, 112, 8, groundY - 196);
+    p.fill('accent', '#ffffff'); ctx.fillRect(10, 66, w - 20, 34);
+    ctx.beginPath(); for (let sx = 10; sx < w - 10; sx += 40) ctx.arc(sx + 20, 100, 20, 0, Math.PI); ctx.fill(); outline();
+    p.shade(() => { ctx.fillStyle = 'rgba(255,255,255,0.65)'; for (let sx = 10; sx < w - 10; sx += 80) ctx.fillRect(sx, 66, 40, 34); });
+    for (let cx = 60; cx < w - 40; cx += 110) {
+      p.fill('ink', cartoon ? '#3a2a20' : '#2c2a28'); ctx.fillRect(cx - 3, groundY - 52, 6, 44);
+      p.fill('accent', '#ffffff'); ctx.beginPath(); ctx.ellipse(cx, groundY - 54, 28, 8, 0, 0, Math.PI * 2); ctx.fill(); outline();
+      p.fill('ink', cartoon ? '#3a2a20' : '#2c2a28'); for (const dx of [-38, 30]) { ctx.fillRect(cx + dx, groundY - 40, 8, 32); ctx.fillRect(cx + dx - 4, groundY - 42, 16, 6); }
     }
   } else if (kind === 'shopWindow') {
     fascia(p, 18, 24, w - 36, 62);
     p.fill('ink', frame); p.rr(24, 102, w - 48, groundY - 110, cartoon ? 8 : 2); ctx.fill(); outline();
     glassRect(p, 36, 114, w - 72, groundY - 134, 6);
     p.fill('ink', frame); for (const mx of [w * 0.34, w * 0.67]) ctx.fillRect(mx - 4, 114, 8, groundY - 134);
+  } else if (kind === 'shopDeli') {
+    // Food shop (bakery, cheese, deli, greengrocer): striped awning, a wide window, crates of produce out front.
+    fascia(p, 24, 18, w - 48, 44);
+    p.fill('ink', frame); p.rr(24, 104, w - 48, groundY - 112, cartoon ? 8 : 2); ctx.fill(); outline();
+    glassRect(p, 36, 116, w - 72, groundY - 196, 6);
+    p.fill('accent', '#ffffff'); ctx.beginPath(); ctx.moveTo(14, 70); ctx.lineTo(w - 14, 70); ctx.lineTo(w - 4, 110); ctx.lineTo(4, 110); ctx.closePath(); ctx.fill(); outline();
+    p.shade(() => { ctx.fillStyle = 'rgba(255,255,255,0.6)'; for (let sx = 14; sx < w - 14; sx += 48) { ctx.beginPath(); ctx.moveTo(sx, 70); ctx.lineTo(sx + 24, 70); ctx.lineTo(sx + 28, 110); ctx.lineTo(sx + 4, 110); ctx.closePath(); ctx.fill(); } });
+    const produce = ['#e85a3c', '#f2b92e', '#7cb342', '#ee7f2c', '#c0392b', '#9ccc65'];
+    for (let i = 0, cx = 40; cx < w - 60; cx += 62, i++) {
+      p.fill('ink', cartoon ? '#a0703f' : '#7a5a3a'); ctx.fillRect(cx, groundY - 70, 52, 54);
+      p.shade(() => { ctx.fillStyle = produce[i % produce.length]; for (let k = 0; k < 6; k++) { ctx.beginPath(); ctx.arc(cx + 9 + (k % 3) * 17, groundY - 74 + Math.floor(k / 3) * 10, 8, 0, Math.PI * 2); ctx.fill(); } });
+    }
+  } else if (kind === 'shopFlorist') {
+    // Florist: a green fascia, a deep window, buckets of flowers stepping up in front.
+    fascia(p, 24, 22, w - 48, 52);
+    p.fill('ink', frame); p.rr(24, 92, w - 48, groundY - 100, cartoon ? 8 : 2); ctx.fill(); outline();
+    glassRect(p, 36, 104, w - 72, groundY - 124, 6);
+    const blooms = ['#e84a7f', '#f2b92e', '#ffffff', '#c04fd0', '#ff7a45', '#e8573d'];
+    for (let row = 0; row < 3; row++) for (let i = 0, cx = 30 + row * 14; cx < w - 40; cx += 44, i++) {
+      const by = groundY - 14 - row * 34;
+      p.fill('ink', cartoon ? '#3f6f5a' : '#33473d'); ctx.fillRect(cx, by - 26, 30, 26);
+      p.shade(() => { ctx.fillStyle = cartoon ? '#4caf50' : '#3f7d3a'; ctx.beginPath(); ctx.arc(cx + 15, by - 30, 17, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = blooms[(i + row * 2) % blooms.length]; for (let k = 0; k < 4; k++) { ctx.beginPath(); ctx.arc(cx + 6 + (k % 2) * 18, by - 38 + Math.floor(k / 2) * 10, 6, 0, Math.PI * 2); ctx.fill(); } });
+    }
+  } else if (kind === 'shopBike') {
+    // Bike shop: wide display window with bikes standing in it, bikes parked out front.
+    fascia(p, 18, 24, w - 36, 56);
+    p.fill('ink', frame); p.rr(24, 96, w - 48, groundY - 104, cartoon ? 8 : 2); ctx.fill(); outline();
+    glassRect(p, 36, 108, w - 72, groundY - 128, 6);
+    const bike = (bx: number, by: number, s: number) => {
+      ctx.beginPath(); ctx.arc(bx, by, 16 * s, 0, Math.PI * 2); ctx.arc(bx + 48 * s, by, 16 * s, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx + 18 * s, by - 26 * s); ctx.lineTo(bx + 40 * s, by - 26 * s); ctx.lineTo(bx + 48 * s, by); ctx.moveTo(bx + 18 * s, by - 26 * s); ctx.lineTo(bx + 24 * s, by); ctx.lineTo(bx + 40 * s, by - 26 * s); ctx.stroke();
+    };
+    p.stroke(cartoon ? OUTLINE : '#1c1c1c', 5);
+    for (let bx = 60; bx < w - 90; bx += 92) bike(bx, groundY - 70, 1);
+    p.stroke(cartoon ? '#2a9d8f' : '#2f3a40', 6);
+    for (let bx = 30; bx < w - 70; bx += 70) bike(bx, groundY - 18, 0.9);
   } else {
     // Brown café: dark wood below, small amber windows above, a hanging sign.
     p.fill('ink', cartoon ? '#5a3b2c' : '#3d2a20'); ctx.fillRect(16, 168, w - 32, groundY - 176);

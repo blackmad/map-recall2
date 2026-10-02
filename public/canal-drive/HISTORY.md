@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+## Shopfronts where the shops really are
+
+User request: detect commercial streets (Clercqstraat, Rozengracht), bias them to storefronts, and add shopfront designs. `scripts/build-shopfronts.ts` (`npm run build:shopfronts -- --publish`) places 11,611 OSM shop/café/restaurant/bar/pharmacy/bank nodes on the building that contains them (or the nearest footprint edge within 8 m; upper-floor `level` tags skipped): 8,530 buildings carry a business; 6,695 more sit on busy stretches (5+ businesses within 40 m) and copy their nearest neighbour's shopfront. Extract: `public/data/extracts/amsterdam/shopfronts.json` (509 KB). `shopfronts.ts` maps tags to a shopfront (`shopKindForTags`) and `decorateShopfront` stamps `shopKind` / `shopQuiet`, so the worker-side mesh builder needs only the feature; everything not in the extract is now quiet instead of a random third being shops. Coverage along streets: Haarlemmerstraat/-dijk, Kinkerstraat, Utrechtsestraat 100%, Ferdinand Bolstraat 92%, De Clercqstraat 44%, Rozengracht 32%, Van Breestraat 3%.
+
+Three new shopfront drawings (deli/bakery with striped awning and produce crates, florist with flower buckets, bike shop with bikes in the window and out front), and the café redrawn with a scalloped awning and terrace tables. The first in-game look showed nothing: a shopfront cell is one bay wide and narrow houses spent their other bay on the house door, so a shop read as one small dark pane. A shop building now gives its whole ground floor to the shopfront unless the wall has 3+ bays. Pinned by `test:shopfronts` (tags, Mook pancakes and Flowers & Powers on De Clercqstraat, no door on a narrow café).
+
 ## Kits: Oude Kerk, Nieuwe Kerk, NEMO
 
 The Oude Kerk (brick tower with clocks, lead octagon stages, open lantern and spire, steep roofs on the hall church and its ring of chapels), the Nieuwe Kerk (it has no resolved landmark ids; its parts were found by footprint area round the Dam: towering nave and transept roofs and the crossing flèche) and NEMO (walled in patinated copper). Kit walls gained `flat` for non-brick landmarks: the Photo look's plain cell carries brick coursing that read as window bands on copper. Still open for NEMO: its sloping roof terrace (OSM `roof:shape=skillion`) is a flat lid.

@@ -31,6 +31,8 @@ export type MeshBuilding = {
   accentHex?: string;
   /** A shopfront on the street-level bays (procedural cells; the bay looks choose their own layer). */
   shop?: boolean;
+  /** The ground floor is a shopfront (either look): it takes the whole frontage, no house door beside it. */
+  shopfront?: boolean;
   /** Texture layer for bare wall: gable faces, chimneys, cornices. */
   plainLayer?: number;
   /** Bare walls only (a church): every row uses the plain layer and there are no doors. */
@@ -229,6 +231,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       if (!layout) continue;
       walls++;
       if (b.plainWalls && b.plainLayer !== undefined) layout.doorBays.length = 0;
+      // A shop fills its ground floor; only a wide front keeps a separate door to the floors above.
+      if (b.shopfront && layout.bays < 3) layout.doorBays.length = 0;
       // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
       if (!b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
         const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;

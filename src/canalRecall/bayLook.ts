@@ -4,7 +4,7 @@
 // are a small fixed set so they fit one texture array and one draw per tile:
 // 8 building styles x 4 bay kinds = 32 layers.
 
-import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look } from './bayTextures.js';
+import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look, type ShopKind } from './bayTextures.js';
 import { hashSeed } from './wallBays.js';
 import type { FacadeStyle } from './genericFacades.js';
 
@@ -57,11 +57,16 @@ export const STORYBOOK_WALLS = ['#c8664a', '#c8664a', '#b9583f', '#d98b5f', '#e0
 export const CARTOON_WALLS = ['#e8573d', '#e8573d', '#ee7f2c', '#f2b92e', '#f2b92e', '#2a9d8f', '#4672b0', '#f3e6c8', '#d96a4d'];
 
 /** Everything the mesh builder needs from a feature for a bay look. */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look) {
+/**
+ * `shopfront`: from the shopfronts extract, the shopfront this building really has, or
+ * 'quiet' for none; undefined (no extract) keeps the old random third of shops.
+ */
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet') {
   const archetype = archetypeFor(id, year, heightM);
   const h = hashSeed(id), style = (h >>> 4) % BAY_STYLES[archetype].length;
-  const shop = (h >>> 13) % 3 === 0;
-  const shopKind = SHOP_KINDS[(h >>> 17) % SHOP_KINDS.length];
+  // Without the extract: a third of buildings, picking among the original four shopfronts.
+  const shop = shopfront ? shopfront !== 'quiet' : (h >>> 13) % 3 === 0;
+  const shopKind = shopfront && shopfront !== 'quiet' ? shopfront : SHOP_KINDS[(h >>> 17) % 4];
   const palette = paletteFor(id, archetype, look);
   const walls = look === 'photo' ? PHOTO_WALLS : archetype === 'modern' ? null : look === 'storybook' ? STORYBOOK_WALLS : CARTOON_WALLS;
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
