@@ -137,6 +137,8 @@
     "check:canal": "tsx scripts/check-canal.ts",
     "test:generic-facades": "tsx scripts/check-generic-facades.ts",
     "test:map-recall-trivia": "tsx scripts/check-map-recall-trivia.ts",
+    "test:neighborhood-gaps": "tsx scripts/check-neighborhood-gaps.ts",
+    "fill:neighborhood-gaps": "NODE_USE_ENV_PROXY=1 tsx scripts/fill-neighborhood-gaps.ts",
     "fetch:neighborhood-history": "tsx scripts/fetch-neighborhood-history.ts",
     "enrich:english": "tsx scripts/translate-extracts-to-english.ts",
     "enrich:utrecht-english": "tsx scripts/translate-extracts-to-english.ts --directory=public/data/extracts/utrecht --ollama",

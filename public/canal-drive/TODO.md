@@ -60,6 +60,21 @@ transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
 weather/time mood. Cold-open is superseded by review rides (see HISTORY,
 2026-09-30).
 
+**Neighbourhood trivia gaps (pipeline built 2026-10-02, data lane).**
+`npm run fill:neighborhood-gaps -- audit|offline|online|publish` fills missing
+description, history, name origin and photo for Amsterdam areas into
+`staging/gap-fill/` (report in `report.md`), then `publish` adds reviewed ones.
+Offline stages (alias siblings, street-name matches, street themes, text composed
+from what lies inside the outline) ran in the cloud container; the online stage
+(Wikidata, nl/en Wikipedia articles and mentions, Commons photos) needs
+`NODE_USE_ENV_PROXY=1` there and is rate-limited by Wikimedia on shared IPs
+(about 1 request per second; the script paces itself). Still to do: translation
+pass for Dutch candidates (write English into
+`scripts/data/neighborhood-gap-review.json`), review of low-confidence
+candidates, the duplicate Nieuwmarkt/Lastage outline, and the same pipeline for
+Utrecht, Rotterdam and Den Haag (they have boundaries only, no street-name
+register or landmark extracts to compose from).
+
 **Randstad trivia parity (in progress, data lane).** Utrecht, Rotterdam and
 Den Haag have no name origins, neighbourhood photos/history, and (Rotterdam,
 Den Haag) no street encyclopedia text. Same rules as Amsterdam: sourced only,
