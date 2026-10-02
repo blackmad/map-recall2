@@ -76,7 +76,7 @@ towers. Facades are Amsterdam-only, and walls take a period palette colour.
 Check on a real device.
 
 **Empty areas of the city (user report 2026-10-02, fix shipped, unconfirmed).**
-Tile streamer retries and timeouts now cover the likely cause (see HISTORY).
+Tile streamer retries, timeouts and the wider-view re-plan cover the likely causes (see HISTORY).
 Confirm on the user's device that Jordaan/Rozengracht loads; if a tile is still
 bare, log tile keys marked empty. Also unchecked on device: the facade zoom
 hysteresis (0.3) and the 48-image set's build cost.
