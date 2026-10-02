@@ -183,11 +183,13 @@ mkdir -p "$output_dir"
 # the data is published and the pipeline says it broke.
 find "$build_dir" -maxdepth 1 -type f -exec cp {} "$output_dir"/ \;
 
-# Borough postcards (Centrum, Noord, …) are Amsterdam-only Wikidata enrichment.
-# Run after publish so a SPARQL blip cannot block the rest of the extract, and
-# so the enricher reads the boundaries that just landed.
-if [[ "$city_id" == "amsterdam" ]]; then
-  node --import tsx scripts/enrich-amsterdam-neighborhoods.ts || {
+# Neighbourhood postcards (Wikidata match of boundaries.json). Run after publish
+# so a SPARQL blip cannot block the rest of the extract, and so the enricher
+# reads the boundaries that just landed. Cities configured in
+# scripts/lib/neighborhoodCities.ts; for non-Amsterdam cities the English ledes
+# come from the reviewed neighborhood-history.json already in the extract.
+if [[ "$city_id" =~ ^(amsterdam|utrecht|rotterdam|den-haag)$ ]]; then
+  node --import tsx scripts/enrich-amsterdam-neighborhoods.ts "--city=$city_id" || {
     echo "Warning: neighborhood enrichment failed; extract published without refreshed postcards." >&2
   }
 fi
