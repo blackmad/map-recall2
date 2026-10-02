@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Bare patches at ride start: re-plan when the view widens
+
+User report with screenshot (deploy confirmed live, JS is no-cache): large
+building-free areas beside a loaded block. Cause: `followCamera` re-planned
+only when the centre tile or half-zoom step changed, so tilting or turning the
+camera, which widens the visible ground, never requested the tiles it newly
+showed. The signature now includes the set of z14 tiles the view needs. Pinned
+in `check-building-tile-source.ts` (fails without the change). This, not the
+earlier retry fix, is the more likely cause of the report; the retry fix stays.
+
 ## 2026-10-02 — Calmer facade colours, pre-filtered windows
 
 User report (Windows, after the hysteresis fix): windows still shimmer, and the

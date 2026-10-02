@@ -180,6 +180,43 @@ try {
   }
 }
 
+// Named regression (user report 2026-10-02, bare patches at ride start): tilting
+// the camera widened the view without changing the centre tile or zoom, so the
+// newly visible tiles were never requested.
+{
+  const urls: string[] = [];
+  let spread = false;
+  const west = 4.8717, south = 52.3728;
+  const pitchMap = {
+    ...fakeMap,
+    getSource: () => ({ setData: () => {} }),
+    getBounds: () => spread
+      ? ({ getWest: () => west - 0.05, getEast: () => west + 0.05, getSouth: () => south - 0.03, getNorth: () => south + 0.06 })
+      : ({ getWest: () => west, getEast: () => west + 0.0001, getSouth: () => south, getNorth: () => south + 0.0001 }),
+  };
+  const pitchStreamer = new BuildingTileStreamer(pitchMap, 'buildings', '/test');
+  const savedFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = (async (input: RequestInfo | URL) => {
+      if (String(input).includes('index-z')) return Response.json({ zoom: 14, tileList: ['test'] });
+      urls.push(String(input));
+      return Response.json({ type: 'FeatureCollection', features: [] });
+    }) as typeof fetch;
+    await pitchStreamer.probe();
+    pitchStreamer.attach(() => {});
+    pitchStreamer.followCamera();
+    await new Promise(resolve => setTimeout(resolve, 50));
+    const before = new Set(urls).size;
+    spread = true; // same centre, same zoom: only the view got wider
+    pitchStreamer.followCamera();
+    await new Promise(resolve => setTimeout(resolve, 100));
+    assert.ok(new Set(urls).size > before, `a wider view requests its new tiles (${before} -> ${new Set(urls).size})`);
+  } finally {
+    pitchStreamer.dispose();
+    globalThis.fetch = savedFetch;
+  }
+}
+
 // --- incremental source updates ------------------------------------------
 // Named regression (2026-09-28): every tile arrival re-sent and deep-cloned the
 // whole resident set (~130 ms at 4× throttle). MapLibre now gets diffs; these
