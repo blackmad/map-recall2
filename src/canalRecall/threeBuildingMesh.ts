@@ -220,8 +220,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       const shadeTint = (): [number, number, number, number] => [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255];
       if (b.lid && b.plainLayer !== undefined) {
         // With the top owned here, the strip above the pattern (and any wall too short for a layout) is bare wall.
-        const z0 = layout ? top : base, u1 = Math.max(1, e.len / 5);
-        if (b.heightM > z0 + 0.01) quads.push({ e, u0: 0, u1, v1: 1, layer: b.plainLayer, accent, z0, z1: b.heightM, tint: shadeTint(), along0: 0, along1: 1 });
+        // The strip is solid wall colour, a shade darker like a cornice: the plain cell texture
+        // squeezed into 0.45 m read as a pale line between wall and roof (user report "roof gaps").
+        const z0 = layout ? top : base, u1 = Math.max(1, e.len / 5), t = shadeTint();
+        const tint: [number, number, number, number] = layout ? [t[0] * 0.82, t[1] * 0.82, t[2] * 0.82, t[3]] : t;
+        if (b.heightM > z0 + 0.01) quads.push({ e, u0: 0, u1, v1: 1, layer: layout ? b.lid.flatLayer : b.plainLayer, accent, z0, z1: b.heightM, tint, along0: 0, along1: 1 });
       }
       if (!layout) continue;
       walls++;
