@@ -1,0 +1,64 @@
+{
+ "name": "desa-61346-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012161346"
+ ],
+ "image": "desa-61346-w2.jpg",
+ "width": 232,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8918099973808244,
+   52.353020002029275
+  ],
+  "endLngLat": [
+   4.891892997380399,
+   52.3530320020297
+  ],
+  "lengthM": 5.810365555966022,
+  "heightM": 7,
+  "outwardBearingDeg": 167.10666971620117
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002223_pano_0000_000214",
+   "timestamp": "2021-07-08T10:48:13.495150Z",
+   "distanceM": 10,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.83,
+   5.1,
+   5.1,
+   4.8,
+   4.75,
+   4.75,
+   4.75,
+   6.28,
+   6.28,
+   6.28,
+   6.23,
+   6.23,
+   6.23,
+   7,
+   7
+  ],
+  "wallColour": "#f4f0d4"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

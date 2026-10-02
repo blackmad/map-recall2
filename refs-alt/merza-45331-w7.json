@@ -1,0 +1,77 @@
+{
+ "name": "merza-45331-w7",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012145331"
+ ],
+ "image": "merza-45331-w7.jpg",
+ "width": 364,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   5.002231997341061,
+   52.351787002306224
+  ],
+  "endLngLat": [
+   5.002325997342066,
+   52.35172900230558
+  ],
+  "lengthM": 9.091936062646818,
+  "heightM": 7,
+  "outwardBearingDeg": 220.84833239310706
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002311_pano_0005_000002",
+   "timestamp": "2021-09-15T11:53:45.707580Z",
+   "distanceM": 13,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#757068"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

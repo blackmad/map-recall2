@@ -1,0 +1,60 @@
+{
+ "name": "pepenero-cucina-pizza-99914-w10",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012099914"
+ ],
+ "image": "pepenero-cucina-pizza-99914-w10.jpg",
+ "width": 190,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.925567996866012,
+   52.37943000251396
+  ],
+  "endLngLat": [
+   4.925634996866171,
+   52.37941800251399
+  ],
+  "lengthM": 4.753432257206025,
+  "heightM": 7,
+  "outwardBearingDeg": 196.6782347880614
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002134_pano_0000_000374",
+   "timestamp": "2021-05-10T08:26:45.241430Z",
+   "distanceM": 16,
+   "obliquityDeg": 1
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#6c4f3e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

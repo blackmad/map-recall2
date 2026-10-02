@@ -1,0 +1,87 @@
+{
+ "name": "mudavim-58188-w1",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012158188"
+ ],
+ "image": "mudavim-58188-w1.jpg",
+ "width": 460,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.893503997336405,
+   52.355304002066546
+  ],
+  "endLngLat": [
+   4.893341997337314,
+   52.35527500206563
+  ],
+  "lengthM": 11.498676109029889,
+  "heightM": 7,
+  "outwardBearingDeg": 344.0083614605392
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002115_pano_0000_002453",
+   "timestamp": "2021-04-23T08:14:12.849650Z",
+   "distanceM": 26,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#534b48"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

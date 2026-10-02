@@ -1,0 +1,63 @@
+{
+ "name": "pizza-project-64561-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012164561"
+ ],
+ "image": "pizza-project-64561-w2.jpg",
+ "width": 219,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.861163997337118,
+   52.3609130020398
+  ],
+  "endLngLat": [
+   4.861238997336503,
+   52.36093100204031
+  ],
+  "lengthM": 5.487460858110793,
+  "heightM": 7,
+  "outwardBearingDeg": 159.0098628926985
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002788_pano_0000_001740",
+   "timestamp": "2022-09-02T10:01:31.001100Z",
+   "distanceM": 26,
+   "obliquityDeg": 37
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#5b4a41"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

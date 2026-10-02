@@ -1,0 +1,64 @@
+{
+ "name": "bridges-50983-w8",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012250983"
+ ],
+ "image": "bridges-50983-w8.jpg",
+ "width": 230,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.895376997057249,
+   52.37088700229494
+  ],
+  "endLngLat": [
+   4.895303997056942,
+   52.37091300229509
+  ],
+  "lengthM": 5.751985242114274,
+  "heightM": 7,
+  "outwardBearingDeg": 30.583580613089453
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002629_pano_0001_000655",
+   "timestamp": "2022-06-27T06:41:02.423920Z",
+   "distanceM": 26,
+   "obliquityDeg": 42
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#312d23"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

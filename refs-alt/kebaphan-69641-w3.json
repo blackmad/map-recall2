@@ -1,0 +1,63 @@
+{
+ "name": "kebaphan-69641-w3",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012069641"
+ ],
+ "image": "kebaphan-69641-w3.jpg",
+ "width": 215,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.801548997626478,
+   52.36257000184725
+  ],
+  "endLngLat": [
+   4.801623997625662,
+   52.362585001847755
+  ],
+  "lengthM": 5.374455207137282,
+  "heightM": 7,
+  "outwardBearingDeg": 162.3711672636946
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002837_pano_0011_000004",
+   "timestamp": "2022-12-07T12:26:08.491750Z",
+   "distanceM": 13,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.53,
+   6.53,
+   6.53,
+   6.25,
+   6.25,
+   6.25,
+   6.25,
+   6.23,
+   6.23,
+   6.23,
+   6.23,
+   6.23,
+   6.23,
+   6.23,
+   5.3,
+   6.43,
+   5.2,
+   4.28,
+   4.28,
+   6.43,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#81776a"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

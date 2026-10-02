@@ -1,0 +1,71 @@
+{
+ "name": "shiki-79220-w0",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012179220"
+ ],
+ "image": "shiki-79220-w0.jpg",
+ "width": 297,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.893835997002708,
+   52.37414400233739
+  ],
+  "endLngLat": [
+   4.893795997003894,
+   52.37408200233635
+  ],
+  "lengthM": 7.416791946319126,
+  "heightM": 7,
+  "outwardBearingDeg": 291.937265375258
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002628_pano_0000_000388",
+   "timestamp": "2022-06-27T06:20:58.976130Z",
+   "distanceM": 36,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#91712e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

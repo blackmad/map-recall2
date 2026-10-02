@@ -1,0 +1,63 @@
+{
+ "name": "billy-s-thai-restaurant-73820-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012173820"
+ ],
+ "image": "billy-s-thai-restaurant-73820-w2.jpg",
+ "width": 223,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.882196997142239,
+   52.3678940022091
+  ],
+  "endLngLat": [
+   4.882198997141338,
+   52.367944002209825
+  ],
+  "lengthM": 5.564946181526641,
+  "heightM": 7,
+  "outwardBearingDeg": 91.80184469510493
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002550_pano_0000_001057",
+   "timestamp": "2022-04-29T08:43:26.793150Z",
+   "distanceM": 4,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   6.85,
+   6.4,
+   6.4,
+   6.85,
+   6.85,
+   6.4,
+   6.4,
+   6.4,
+   6.4,
+   6.4,
+   6.4,
+   6.4,
+   6.85,
+   6.83,
+   6.83,
+   6.85,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#8d827c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

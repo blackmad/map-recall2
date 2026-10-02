@@ -1,0 +1,85 @@
+{
+ "name": "fiaschetteria-pistoia-59698-w1",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012159698"
+ ],
+ "image": "fiaschetteria-pistoia-59698-w1.jpg",
+ "width": 436,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.893744997328749,
+   52.35570600207295
+  ],
+  "endLngLat": [
+   4.893694997327236,
+   52.3557990020741
+  ],
+  "lengthM": 10.893917620749253,
+  "heightM": 7,
+  "outwardBearingDeg": 72.16910299863474
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002470_pano_0001_000474",
+   "timestamp": "2022-03-23T10:17:50.419260Z",
+   "distanceM": 9,
+   "obliquityDeg": 49
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.9,
+   6.83,
+   6.75,
+   6.55,
+   6.53,
+   6.18,
+   5.8,
+   5.8,
+   5.8,
+   5.95,
+   5.95
+  ],
+  "wallColour": "#6a5545"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

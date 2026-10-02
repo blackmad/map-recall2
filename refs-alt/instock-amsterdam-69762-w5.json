@@ -1,0 +1,57 @@
+{
+ "name": "instock-amsterdam-69762-w5",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012169762"
+ ],
+ "image": "instock-amsterdam-69762-w5.jpg",
+ "width": 163,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.92657799704988,
+   52.368665002358085
+  ],
+  "endLngLat": [
+   4.926619997049398,
+   52.36869100235858
+  ],
+  "lengthM": 4.068328316471918,
+  "heightM": 7,
+  "outwardBearingDeg": 135.0413746632148
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002049_pano_0000_001242",
+   "timestamp": "2021-03-19T08:49:52.111740Z",
+   "distanceM": 7,
+   "obliquityDeg": 16
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   5.4,
+   5.1,
+   5.1,
+   5.1,
+   5.1,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.78
+  ],
+  "wallColour": "#f7d5b2"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

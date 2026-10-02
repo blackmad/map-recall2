@@ -1,0 +1,59 @@
+{
+ "name": "mr-sushi-54293-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0457100000054293"
+ ],
+ "image": "mr-sushi-54293-w2.jpg",
+ "width": 180,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   5.0419259980412345,
+   52.3075330017672
+  ],
+  "endLngLat": [
+   5.0419489980417955,
+   52.30749500176673
+  ],
+  "lengthM": 4.509628579421429,
+  "heightM": 7,
+  "outwardBearingDeg": 249.91773192318755
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002874_pano_0014_000061",
+   "timestamp": "2022-12-19T09:46:18.595100Z",
+   "distanceM": 7,
+   "obliquityDeg": 12
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.58,
+   6.68,
+   6.68,
+   6.88,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#3c2f2a"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

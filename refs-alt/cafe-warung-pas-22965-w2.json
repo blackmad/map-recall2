@@ -1,0 +1,83 @@
+{
+ "name": "cafe-warung-pas-22965-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012122965"
+ ],
+ "image": "cafe-warung-pas-22965-w2.jpg",
+ "width": 424,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.912738996848518,
+   52.38113800250031
+  ],
+  "endLngLat": [
+   4.912778996850078,
+   52.38104600249906
+  ],
+  "lengthM": 10.592567253915355,
+  "heightM": 7,
+  "outwardBearingDeg": 259.9724918860677
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-001976_pano_0000_000000",
+   "timestamp": "2021-01-22T13:16:13.924200Z",
+   "distanceM": 28,
+   "obliquityDeg": 20
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#726e6a"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

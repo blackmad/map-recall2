@@ -1,0 +1,61 @@
+{
+ "name": "la-roma-81243-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012181243"
+ ],
+ "image": "la-roma-81243-w2.jpg",
+ "width": 201,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.911696997111313,
+   52.366130002276876
+  ],
+  "endLngLat": [
+   4.911659997112045,
+   52.36609100227619
+  ],
+  "lengthM": 5.0180577064290075,
+  "heightM": 7,
+  "outwardBearingDeg": 300.5220494889994
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002047_pano_0000_000270",
+   "timestamp": "2021-03-18T09:37:31.096980Z",
+   "distanceM": 8,
+   "obliquityDeg": 15
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#6b645c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

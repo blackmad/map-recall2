@@ -1,0 +1,42 @@
+{
+ "name": "restaurant-212-71575-w3",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012171575"
+ ],
+ "image": "restaurant-212-71575-w3.jpg",
+ "width": 0,
+ "height": 0,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.900287997134828,
+   52.3659210022387
+  ],
+  "endLngLat": [
+   4.900140997135628,
+   52.36589200223783
+  ],
+  "lengthM": 10.519449802268424,
+  "heightM": 7,
+  "outwardBearingDeg": 342.5223239147397
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-003022_pano_0001_000156",
+   "timestamp": "2023-04-03T09:13:25.341630Z",
+   "distanceM": 17,
+   "obliquityDeg": 42
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   0,
+   0
+  ],
+  "wallColour": "#9a8a78"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

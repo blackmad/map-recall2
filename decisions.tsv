@@ -1,12 +1,12 @@
 slug	name	kind	lng	lat	status	note
-bistro-de-la-mer-77684	Bistro de la Mer	restaurant	4.8982919	52.3641316	null	
+bistro-de-la-mer-77684	Bistro de la Mer	restaurant	4.8982919	52.3641316	measured	Wrong wall: the --near wall showed no shopfront; alternate wall bistro-de-la-mer-77684-w3 picked by eye.
 de-juwelier-77678	De Juwelier	restaurant	4.8982758	52.3642561	measured	
 ron-gastrobar-32011	Ron Gastrobar	restaurant	4.8567933	52.3521264	measured	
 sichuan-food-68478	Sichuan Food	restaurant	4.8905627	52.3665075	measured	
 vinkeles-74123	Vinkeles	restaurant	4.8834577	52.3692629	null	
 yamazato-77533	Yamazato	restaurant	4.8939215	52.3486474	no-reference	
 bougainville-65129	Bougainville	restaurant	4.8932522	52.3725106	null	
-bridges-50983	Bridges	restaurant	4.895255	52.3709275	null	
+bridges-50983	Bridges	restaurant	4.895255	52.3709275	measured	Wrong wall: the --near wall showed no shopfront; alternate wall bridges-50983-w9 picked by eye.
 flore-68170	Flore	restaurant	4.8943025	52.3674539	measured	
 restaurant-212-71575	Restaurant 212	restaurant	4.9002601	52.3658779	null	Plain canal house: tall windows over a stucco base with basement grilles; no shopfront, no signage.
 restaurant-lastage-82260	Restaurant Lastage	restaurant	4.9024018	52.3754586	measured	
@@ -19,11 +19,11 @@ brouwerij-troost-26831	Brouwerij Troost	pub	4.8910543	52.3505334	measured
 rijnbar-80338	Rijnbar	pub	4.9045505	52.3488042	measured	
 schiller-78854	Schiller	pub	4.896587	52.365674	measured	
 reijnders-68746	Reijnders	pub	4.8829038	52.3646163	measured	
-scheltema-67522	Scheltema	pub	4.8903683	52.3720832	null	
+scheltema-67522	Scheltema	pub	4.8903683	52.3720832	measured	Wrong wall: the --near wall showed no shopfront; alternate wall scheltema-67522-w2 picked by eye.
 t-vliegertje-36397	't Vliegertje	restaurant	4.8911265	52.3453554	measured	
 my-surinaamse-broodjes-36700	@my Surinaamse broodjes	restaurant	4.8632982	52.3635301	measured	
 a-sentimento-pizza-33537	A sentimento Pizza	restaurant	4.8783263	52.3825392	null	
-a-tavola-81149	A Tavola	restaurant	4.9122719	52.3702271	null	
+a-tavola-81149	A Tavola	restaurant	4.9122719	52.3702271	measured	Wrong wall: the --near wall showed no shopfront; alternate wall a-tavola-81149-w1 picked by eye.
 a-volo-72841	a Volo!	restaurant	4.8845468	52.3842507	measured	
 a-fushion-42477	A-Fushion	restaurant	4.8773263	52.3948216	measured	
 aaltje-54926	Aaltje	restaurant	5.0385134	52.3088348	measured	
@@ -48,7 +48,7 @@ attila-turkish-food-78174	Attila Turkish Food	restaurant	4.8407057	52.3781802	nu
 auberge-36577	Auberge	restaurant	4.8892642	52.3546441	measured	
 baibua-75627	Baibua	restaurant	4.8915025	52.3665156	measured	
 baires-40662	Baires	restaurant	4.869803	52.3689303	measured	
-baires-60490	Baires	restaurant	4.9252245	52.3597336	null	
+baires-60490	Baires	restaurant	4.9252245	52.3597336	measured	Wrong wall: the --near wall showed no shopfront; alternate wall baires-60490-w3 picked by eye.
 baked-59205	Baked	restaurant	4.8724191	52.3749811	null	
 bakers-roasters-33622	Bakers & Roasters	restaurant	4.8898583	52.3573232	measured	
 balraj-67821	Balraj	restaurant	4.8885301	52.3820036	measured	
@@ -57,12 +57,12 @@ bar-bistro-river-68038	Bar & Bistro River	restaurant	4.902249	52.3427302	measure
 bar-dancing-multipla-74176	Bar Dancing Multipla	restaurant	4.8437232	52.3420386	null	
 bar-karma-78156	Bar Karma	restaurant	4.8916546	52.4015677	measured	
 bar-pepe-23741	Bar Pepe	restaurant	4.8533006	52.3855444	no-reference	
-bar-ristorante-gallizia-64155	Bar Ristorante Gallizia	restaurant	4.9342332	52.3638576	null	Crop blurred and dominated by the neighbouring Lara hair salon; pin's shop unreadable.
+bar-ristorante-gallizia-64155	Bar Ristorante Gallizia	restaurant	4.9342332	52.3638576	measured	Crop blurred and dominated by the neighbouring Lara hair salon; pin's shop unreadable.
 barada-54271	Barada	restaurant	5.0431507	52.3080454	measured	
 bella-storia-trattoria-italiana-64646	Bella Storia Trattoria Italiana	restaurant	4.8741388	52.3837969	measured	
 beyoglu-26283	Beyoğlu	restaurant	4.913725	52.3572653	measured	
 beyrouth-36814	Beyrouth	restaurant	4.8752736	52.368212	measured	
-billy-s-thai-restaurant-73820	Billy's Thai Restaurant	restaurant	4.8821546	52.3678876	null	
+billy-s-thai-restaurant-73820	Billy's Thai Restaurant	restaurant	4.8821546	52.3678876	measured	Wrong wall: the --near wall showed no shopfront; alternate wall billy-s-thai-restaurant-73820-w2 picked by eye.
 bir-tat-37903	Bir Tat	restaurant	4.8483065	52.3786221	measured	
 bisous-52622	Bisous	restaurant	4.8878177	52.3547197	measured	
 bistro-amsterdam-74130	Bistro Amsterdam	restaurant	4.8833984	52.3737969	measured	
@@ -80,7 +80,7 @@ bouillon-d-amsterdam-75580	Bouillon d’Amsterdam	restaurant	4.8907098	52.374051
 brandon-76429	Brandon	pub	4.8864147	52.3754007	measured	
 brasserie-nenette-86764	Brasserie Nenette	restaurant	4.8927988	52.3424069	measured	
 bret-43513	Bret	restaurant	4.836764	52.3898525	measured	
-bromo-indah-70189	Bromo Indah	restaurant	4.8803566	52.3696718	null	
+bromo-indah-70189	Bromo Indah	restaurant	4.8803566	52.3696718	measured	Wrong wall: the --near wall showed no shopfront; alternate wall bromo-indah-70189-w3 picked by eye.
 brunchdale-51598	Brunchdale	restaurant	4.9042534	52.3963819	measured	
 brunchie-71533	Brunchie	restaurant	4.88551	52.36527	measured	
 brut-de-mer-57580	Brut de Mer	restaurant	4.8925499	52.3557827	measured	
@@ -129,71 +129,71 @@ chuzo-king-77947	Chuzo King	restaurant	4.9105623	52.3991113	null
 cinq-oriental-bistro-47188	CINQ Oriental Bistro	restaurant	4.8532672	52.3413856	measured	
 city-noord-eethuis-84998	City Noord Eethuis	restaurant	4.9057522	52.4171929	measured	
 classico-37221	Classico	restaurant	4.8743211	52.3568782	measured	
-colima-71772	Colima	restaurant	4.8991594	52.3613241	first-pass	
-couscous-bar-61747	Couscous Bar	restaurant	4.8713221	52.3668736	first-pass	
-couscous-club-53618	CousCous Club	restaurant	4.8942041	52.3530499	first-pass	
-ctaste-77277	ctaste	restaurant	4.9062854	52.3541976	first-pass	
-cucina-casalinga-34703	Cucina Casalinga	restaurant	4.8590476	52.3448849	first-pass	
+colima-71772	Colima	restaurant	4.8991594	52.3613241	measured	
+couscous-bar-61747	Couscous Bar	restaurant	4.8713221	52.3668736	measured	
+couscous-club-53618	CousCous Club	restaurant	4.8942041	52.3530499	measured	
+ctaste-77277	ctaste	restaurant	4.9062854	52.3541976	measured	
+cucina-casalinga-34703	Cucina Casalinga	restaurant	4.8590476	52.3448849	measured	At the pin the street shows a Kledingreparatie (tailor) with a yellow fascia; Cucina Casalinga itself is not visible. Modelled what the street shows.
 cuddle-pub-79234	Cuddle Pub	restaurant	4.893945	52.3753635	no-reference	
-de-aardige-pers-58278	De Aardige Pers	restaurant	4.8742942	52.3741803	first-pass	
-de-italiaan-66559	De Italiaan	restaurant	4.8763748	52.3654913	first-pass	
+de-aardige-pers-58278	De Aardige Pers	restaurant	4.8742942	52.3741803	measured	
+de-italiaan-66559	De Italiaan	restaurant	4.8763748	52.3654913	measured	
 de-nieuwe-khl-80851	De Nieuwe KHL	restaurant	4.9363092	52.3740065	null	
-de-nieuwe-rai-93538	De Nieuwe Rai	restaurant	4.8913423	52.3439053	first-pass	
-de-palmboom-71180	De Palmboom	restaurant	4.8967247	52.3701445	first-pass	
-de-patchka-56486	De Patchka	restaurant	4.8911077	52.3552405	first-pass	
-de-pizzakamer-30670	De Pizzakamer	restaurant	4.8946407	52.3524483	first-pass	
+de-nieuwe-rai-93538	De Nieuwe Rai	restaurant	4.8913423	52.3439053	measured	
+de-palmboom-71180	De Palmboom	restaurant	4.8967247	52.3701445	measured	
+de-patchka-56486	De Patchka	restaurant	4.8911077	52.3552405	measured	
+de-pizzakamer-30670	De Pizzakamer	restaurant	4.8946407	52.3524483	measured	
 de-plantage-70549	de Plantage	restaurant	4.912559	52.3665845	no-reference	
-desa-61346	Dèsa	restaurant	4.8918401	52.3530513	null	
-di-luca-43829	Di Luca	restaurant	4.9214887	52.3846608	first-pass	
-dignita-93370	Dignita	restaurant	4.8572641	52.3518479	first-pass	
-dionysos-taverna-36240	Dionysos Taverna	restaurant	4.872408	52.3622131	first-pass	
-domenica-67762	Domenica	restaurant	4.8874348	52.380132	null	
+desa-61346	Dèsa	restaurant	4.8918401	52.3530513	measured	Wrong wall: the --near wall showed no shopfront; alternate wall desa-61346-w2 picked by eye.
+di-luca-43829	Di Luca	restaurant	4.9214887	52.3846608	measured	
+dignita-93370	Dignita	restaurant	4.8572641	52.3518479	measured	
+dionysos-taverna-36240	Dionysos Taverna	restaurant	4.872408	52.3622131	measured	
+domenica-67762	Domenica	restaurant	4.8874348	52.380132	measured	Wrong wall: the --near wall showed no shopfront; alternate wall domenica-67762-w2 picked by eye.
 doner-baba-79578	Döner Baba	restaurant	4.9789369	52.3164311	no-reference	
-dong-son-takeaway-restaurant-72773	Dong Son Takeaway Restaurant	restaurant	4.8819925	52.3738723	first-pass	
-dos-73278	DOS	restaurant	4.880901	52.3808003	first-pass	
+dong-son-takeaway-restaurant-72773	Dong Son Takeaway Restaurant	restaurant	4.8819925	52.3738723	measured	
+dos-73278	DOS	restaurant	4.880901	52.3808003	measured	
 east57-66850	East57	restaurant	4.9183799	52.350072	no-reference	
-eatmosfera-82121	Eatmosfera	restaurant	4.9359311	52.3632541	first-pass	
-eetcafe-t-pakhuis-75883	Eetcafé 't Pakhuis	restaurant	4.8906317	52.3682105	first-pass	
-eetcafe-koevoet-72933	Eetcafe Koevoet	restaurant	4.8853084	52.3796209	first-pass	
-eetcafe-van-beeren-82699	Eetcafe van Beeren	restaurant	4.902218	52.3720695	first-pass	
-eggs-benaddicted-72390	Eggs Benaddicted	restaurant	4.8849504	52.364384	first-pass	
-el-torado-grill-68110	El Torado Grill	restaurant	4.8947159	52.3666908	first-pass	
-ethiopisch-restaurant-addis-ababa-66610	Ethiopisch restaurant Addis Ababa	restaurant	4.8642077	52.359826	first-pass	
-fabian-78620	Fabian	restaurant	4.8987428	52.3750087	first-pass	
-feduzzi-85026	Feduzzi	restaurant	4.891221	52.345707	first-pass	
-fiaschetteria-pistoia-73112	Fiaschetteria "Pistoia"	restaurant	4.8845848	52.3800627	first-pass	
-fiaschetteria-pistoia-59698	Fiaschetteria Pistoia	restaurant	4.8937038	52.3557149	null	
+eatmosfera-82121	Eatmosfera	restaurant	4.9359311	52.3632541	measured	
+eetcafe-t-pakhuis-75883	Eetcafé 't Pakhuis	restaurant	4.8906317	52.3682105	measured	
+eetcafe-koevoet-72933	Eetcafe Koevoet	restaurant	4.8853084	52.3796209	measured	
+eetcafe-van-beeren-82699	Eetcafe van Beeren	restaurant	4.902218	52.3720695	measured	
+eggs-benaddicted-72390	Eggs Benaddicted	restaurant	4.8849504	52.364384	measured	
+el-torado-grill-68110	El Torado Grill	restaurant	4.8947159	52.3666908	measured	
+ethiopisch-restaurant-addis-ababa-66610	Ethiopisch restaurant Addis Ababa	restaurant	4.8642077	52.359826	null	Crop shows La Fourni / scooter dealer and a canal-house door; no Ethiopian restaurant front at the pin. Candidate for web search.
+fabian-78620	Fabian	restaurant	4.8987428	52.3750087	measured	
+feduzzi-85026	Feduzzi	restaurant	4.891221	52.345707	measured	
+fiaschetteria-pistoia-73112	"Fiaschetteria ""Pistoia"""	restaurant	4.8845848	52.3800627	measured	
+fiaschetteria-pistoia-59698	Fiaschetteria Pistoia	restaurant	4.8937038	52.3557149	measured	Wrong wall: the --near wall showed no shopfront; alternate wall fiaschetteria-pistoia-59698-w2 picked by eye.
 fiko-80855	Fiko	restaurant	4.8741057	52.3640237	null	
 five-bells-65747	Five Bells	restaurant	4.8945522	52.3761452	no-reference	
 florentin-st-81813	Florentin St.	restaurant	4.8974868	52.3561344	null	
-flow-62418	Flow	restaurant	4.8898708	52.3575216	first-pass	
-fondue-fondue-53352	Fondue & Fondue	restaurant	4.8612419	52.359087	first-pass	
-food-brothers-83027	Food Brothers	restaurant	4.912677	52.350094	first-pass	
+flow-62418	Flow	restaurant	4.8898708	52.3575216	measured	
+fondue-fondue-53352	Fondue & Fondue	restaurant	4.8612419	52.359087	null	Crop is a black graffitied wall with a post box; no shopfront. Candidate for alt walls/web search.
+food-brothers-83027	Food Brothers	restaurant	4.912677	52.350094	measured	
 fou-fow-ramen-73890	Fou Fow Ramen	restaurant	4.8822664	52.3703042	no-reference	
-franggo-63278	Franggo	restaurant	4.8977325	52.3562579	first-pass	
+franggo-63278	Franggo	restaurant	4.8977325	52.3562579	null	Crop is a white wall edge and dark brick with one window; shopfront out of frame (left). Candidate for alt walls/web search.
 fruittuin-van-west-44379	Fruittuin van West	restaurant	4.7746888	52.3817489	no-reference	
-fujitora-61426	Fujitora	restaurant	4.896243	52.3560662	first-pass	
-fuku-ramen-63449	Fuku Ramen	restaurant	4.9257723	52.3552228	first-pass	
-full-moon-garden-74474	Full Moon Garden	restaurant	4.883854	52.3646327	first-pass	
-gaja-korean-bbq-bar-67636	Gaja Korean BBQ & Bar	restaurant	4.9085513	52.3757981	first-pass	
-gartine-75728	Gartine	restaurant	4.8915165	52.369203	first-pass	
-gebr-hartering-82661	Gebr. Hartering	restaurant	4.9074757	52.3716443	first-pass	
-golden-thali-50442	Golden Thali	restaurant	4.8656872	52.3468294	first-pass	
-grieks-restaurant-plato-38635	Grieks restaurant Plato	restaurant	4.8130357	52.3744775	null	
-hakata-senpachi-00201	Hakata Senpachi	restaurant	4.8893218	52.3444664	first-pass	
+fujitora-61426	Fujitora	restaurant	4.896243	52.3560662	measured	
+fuku-ramen-63449	Fuku Ramen	restaurant	4.9257723	52.3552228	measured	
+full-moon-garden-74474	Full Moon Garden	restaurant	4.883854	52.3646327	measured	
+gaja-korean-bbq-bar-67636	Gaja Korean BBQ & Bar	restaurant	4.9085513	52.3757981	measured	
+gartine-75728	Gartine	restaurant	4.8915165	52.369203	null	Crop is a blurred grey pillar and the neighbouring Cotton Club window; Gartine (an alley shop) is not visible. Candidate for web search.
+gebr-hartering-82661	Gebr. Hartering	restaurant	4.9074757	52.3716443	measured	
+golden-thali-50442	Golden Thali	restaurant	4.8656872	52.3468294	measured	
+grieks-restaurant-plato-38635	Grieks restaurant Plato	restaurant	4.8130357	52.3744775	measured	Wrong wall: the --near wall showed no shopfront; alternate wall grieks-restaurant-plato-38635-w2 picked by eye.
+hakata-senpachi-00201	Hakata Senpachi	restaurant	4.8893218	52.3444664	measured	
 hannekes-boom-38899	Hannekes Boom	restaurant	4.9116163	52.3762934	null	
 hanoi-old-quarter-restaurant-65114	Hanoi Old Quarter Restaurant	restaurant	4.8896426	52.3703139	null	
-hans-im-gluck-51814	Hans im Glück	restaurant	4.8974702	52.3664086	first-pass	
-hap-hmm-63575	Hap Hmm	restaurant	4.8762231	52.3636692	first-pass	
-hap-li-90676	Hap Li	restaurant	4.8482999	52.3840419	first-pass	
-harmani-63659	Harmani	restaurant	4.8885998	52.3549047	first-pass	
-havzan-37053	Havzan	restaurant	4.8297709	52.3798934	first-pass	
-hawaiian-poke-bowl-37272	Hawaiian Poké Bowl	restaurant	4.8905438	52.3551332	first-pass	
-hayran-61341	Hayran	restaurant	4.8946928	52.3526912	first-pass	
-hinata-72121	Hinata	restaurant	4.8850906	52.3788579	first-pass	
-hoi-tin-77906	Hoi Tin	restaurant	4.9001332	52.373427	first-pass	
+hans-im-gluck-51814	Hans im Glück	restaurant	4.8974702	52.3664086	measured	
+hap-hmm-63575	Hap Hmm	restaurant	4.8762231	52.3636692	null	Crop shows a residential front behind parked cars; no shopfront visible at the pin. Candidate for web search.
+hap-li-90676	Hap Li	restaurant	4.8482999	52.3840419	measured	
+harmani-63659	Harmani	restaurant	4.8885998	52.3549047	measured	
+havzan-37053	Havzan	restaurant	4.8297709	52.3798934	measured	
+hawaiian-poke-bowl-37272	Hawaiian Poké Bowl	restaurant	4.8905438	52.3551332	null	Crop shows Dunkin' Donuts and Baskin Robbins under market awnings; the poke bar is not identifiable. Candidate for web search.
+hayran-61341	Hayran	restaurant	4.8946928	52.3526912	measured	
+hinata-72121	Hinata	restaurant	4.8850906	52.3788579	null	Crop is a reflection in a 'Window Shopping' glass front; unreadable.
+hoi-tin-77906	Hoi Tin	restaurant	4.9001332	52.373427	measured	
 hoogendam-84746	Hoogendam	restaurant	4.8915498	52.3833961	no-reference	
-hummus-bistro-d-a-73434	Hummus Bistro D&A	restaurant	4.8826599	52.3784324	first-pass	
+hummus-bistro-d-a-73434	Hummus Bistro D&A	restaurant	4.8826599	52.3784324	measured	
 hunkar-restaurant-16023	Hunkar Restaurant	restaurant	4.8009831	52.3784195	first-pass	
 ibericus-amsterdam-79660	Ibericus Amsterdam	restaurant	4.8908642	52.3805158	first-pass	
 il-delfino-blu-36816	Il Delfino Blu	restaurant	4.7972765	52.3517069	null	
@@ -216,7 +216,7 @@ kaagman-kortekaas-69080	Kaagman & Kortekaas	restaurant	4.8924356	52.3748089	null
 kafe-kontrast-36508	Kafé Kontrast	restaurant	4.8899113	52.3527943	first-pass	
 kamasutra-78550	Kamasutra	restaurant	4.898485	52.3751045	first-pass	
 kathmandu-kitchen-15728	Kathmandu Kitchen	restaurant	4.854705	52.3692319	first-pass	
-kebaphan-69641	Kebaphan	restaurant	4.8015803	52.3625817	null	
+kebaphan-69641	Kebaphan	restaurant	4.8015803	52.3625817	measured	Wrong wall: the --near wall showed no shopfront; alternate wall kebaphan-69641-w3 picked by eye.
 kebec-corner-13694	Kebec Corner	restaurant	4.8919788	52.4035919	null	
 kerkzicht-29775	Kerkzicht	restaurant	4.7996803	52.3413829	measured	Whole building: one-storey pavilion, hipped tile roof, brick gable dormer; facade mode with topM 4.3. User flagged.
 kilimanjaro-37317	Kilimanjaro	restaurant	4.91832	52.3565171	first-pass	
@@ -224,7 +224,7 @@ kim-s-so-18480	Kim's So	restaurant	4.9246199	52.3618717	first-pass
 klein-breda-78942	Klein Breda	restaurant	4.8974539	52.3656457	first-pass	
 koeah-75819	Koeah	restaurant	4.8907497	52.3750021	first-pass	
 kokohili-01213	Kokohili	restaurant	4.8846736	52.3245345	first-pass	
-kreeftenbar-12628	Kreeftenbar	restaurant	4.8928516	52.3398193	null	
+kreeftenbar-12628	Kreeftenbar	restaurant	4.8928516	52.3398193	measured	Wrong wall: the --near wall showed no shopfront; alternate wall kreeftenbar-12628-w3 picked by eye.
 kruabuppha-87294	Kruabuppha	restaurant	4.904308	52.3495403	first-pass	
 kyo-82963	Kyo	restaurant	4.9020474	52.3723595	first-pass	
 la-brasa-67816	La Brasa	restaurant	4.8887657	52.3818704	first-pass	
@@ -240,8 +240,8 @@ la-perla-72878	La Perla	restaurant	4.881768	52.3770366	first-pass
 la-piazza-65128	La Piazza	restaurant	4.8915763	52.3725959	first-pass	
 la-polpetta-31526	La Polpetta	restaurant	4.854013	52.3583056	first-pass	
 la-reinita-empanadas-73572	La Reinita Empanadas	restaurant	4.883364	52.3785494	first-pass	
-la-roma-81243	La Roma	restaurant	4.9117009	52.3660967	null	
-la-ruelle-54949	La Ruelle	restaurant	5.0404012	52.3082626	null	
+la-roma-81243	La Roma	restaurant	4.9117009	52.3660967	measured	Wrong wall: the --near wall showed no shopfront; alternate wall la-roma-81243-w2 picked by eye.
+la-ruelle-54949	La Ruelle	restaurant	5.0404012	52.3082626	measured	Wrong wall: the --near wall showed no shopfront; alternate wall la-ruelle-54949-w2 picked by eye.
 ladybird-fried-chicken-54143	Ladybird Fried Chicken	restaurant	4.8936155	52.3543495	first-pass	
 le-4-stagioni-57247	Le 4 Stagioni	restaurant	4.8754197	52.3555256	first-pass	
 le-sud-76570	Le Sud	restaurant	4.8862642	52.3832875	null	Crop shows residential doors 17 and 19, a basement window and house windows; no shopfront on this wall. User flagged.
@@ -255,7 +255,7 @@ little-saigon-68107	Little Saigon	restaurant	4.9254829	52.3871539	first-pass
 lloyd-hotel-18149	Lloyd Hotel	restaurant	4.9347391	52.3741514	null	
 lokaal-van-de-stad-40908	Lokaal van de Stad	restaurant	4.8461606	52.3517075	first-pass	
 lombardo-s-77099	Lombardo's	restaurant	4.8887021	52.3635469	first-pass	
-long-pura-70087	Long Pura	restaurant	4.8811186	52.3736527	null	
+long-pura-70087	Long Pura	restaurant	4.8811186	52.3736527	measured	Wrong wall: the --near wall showed no shopfront; alternate wall long-pura-70087-w3 picked by eye.
 loulou-pizzabar-57281	Loulou Pizzabar	restaurant	4.9074831	52.3557985	first-pass	
 lucca-due-80345	Lucca Due	restaurant	4.8901177	52.3811468	first-pass	
 lucius-75671	Lucius	restaurant	4.8893827	52.3707574	first-pass	
@@ -275,7 +275,7 @@ maydanoz-56807	Maydanoz	restaurant	4.8873168	52.3524472	first-pass
 mchi-42337	Mchi	restaurant	4.9979505	52.3541234	null	
 meghna-78969	Meghna	restaurant	4.8978962	52.3645379	first-pass	
 men-impossible-69882	Men Impossible	restaurant	4.8799586	52.370691	first-pass	
-merza-45331	Merza	restaurant	5.0023206	52.3517745	null	
+merza-45331	Merza	restaurant	5.0023206	52.3517745	measured	Wrong wall: the --near wall showed no shopfront; alternate wall merza-45331-w9 picked by eye.
 mesken-56710	Mesken	restaurant	4.9358422	52.363524	first-pass	
 middl-eat-67960	Middl Eat	restaurant	4.8899888	52.3666351	first-pass	
 miko-s-28387	Miko's	restaurant	4.9642248	52.3738377	null	
@@ -290,7 +290,7 @@ mont-blanc-66374	Mont Blanc	restaurant	4.8984386	52.3562403	first-pass
 moon-68473	Moon	restaurant	4.9019965	52.3838264	null	
 mount-everest-05308	Mount Everest	restaurant	4.9128714	52.3837966	first-pass	
 mr-gyoza-61236	Mr. Gyoza	restaurant	4.8653234	52.3611051	first-pass	
-mr-sushi-54293	Mr. Sushi	restaurant	5.0419771	52.3075192	null	
+mr-sushi-54293	Mr. Sushi	restaurant	5.0419771	52.3075192	measured	Wrong wall: the --near wall showed no shopfront; alternate wall mr-sushi-54293-w2 picked by eye.
 muang-thai-66837	Muang Thai	restaurant	4.8591295	52.358537	first-pass	
 mudavim-58188	Müdavim	restaurant	4.8933911	52.3552579	null	
 mythos-69645	Mythos	restaurant	4.8842525	52.3642942	first-pass	
@@ -307,7 +307,7 @@ nom-nom-vietnamese-foodshop-73355	Nom Nom Vietnamese Foodshop	restaurant	4.85109
 nonna-06423	Nonna	restaurant	4.8637698	52.3628177	first-pass	
 northeast-kitchen-67017	NorthEast Kitchen	restaurant	4.8904758	52.3566343	first-pass	
 nyonya-78393	Nyonya	restaurant	4.8986226	52.371321	first-pass	
-o-bistro-68625	O Bistro	restaurant	4.8826861	52.3800663	null	
+o-bistro-68625	O Bistro	restaurant	4.8826861	52.3800663	measured	Wrong wall: the --near wall showed no shopfront; alternate wall o-bistro-68625-w6 picked by eye.
 o-mai-vietnamees-restaurant-78850	Ô MAI Vietnamees Restaurant	restaurant	4.8974734	52.365514	first-pass	
 o-sole-mio-68570	O' Sole Mio	restaurant	4.8841433	52.3644198	first-pass	
 obalade-suya-55235	Obalade Suya	restaurant	4.8543531	52.3582028	first-pass	
@@ -337,16 +337,16 @@ pastai-60962	Pastai	restaurant	4.8638711	52.3626378	first-pass
 pastini-72218	Pastini	restaurant	4.8846668	52.3666231	first-pass	
 pata-negra-71777	Pata Negra	restaurant	4.8991054	52.3614062	first-pass	
 pepenero-64223	PepeNero	restaurant	4.9078035	52.3557623	first-pass	
-pepenero-cucina-pizza-99914	PepeNero Cucina & Pizza	restaurant	4.9255773	52.3794968	null	
+pepenero-cucina-pizza-99914	PepeNero Cucina & Pizza	restaurant	4.9255773	52.3794968	measured	Wrong wall: the --near wall showed no shopfront; alternate wall pepenero-cucina-pizza-99914-w4 picked by eye.
 peperoncino-84094	Peperoncino	restaurant	4.8947588	52.3455969	first-pass	
-perla-di-roma-48686	Perla di Roma	restaurant	4.8276799	52.3584417	null	
+perla-di-roma-48686	Perla di Roma	restaurant	4.8276799	52.3584417	measured	Wrong wall: the --near wall showed no shopfront; alternate wall perla-di-roma-48686-w1 picked by eye.
 petit-caron-73912	Petit Caron	restaurant	4.8887663	52.3577771	first-pass	
 pho-viet-76172	Pho Viet	restaurant	4.8889965	52.381739	first-pass	
-pica-pica-90102	Pica Pica	restaurant	4.9134058	52.3578023	null	
+pica-pica-90102	Pica Pica	restaurant	4.9134058	52.3578023	measured	Wrong wall: the --near wall showed no shopfront; alternate wall pica-pica-90102-w1 picked by eye.
 picchino-53915	Picchino	restaurant	4.8849034	52.3632077	first-pass	
 pide-dunyas-78723	Pide Dünyası	restaurant	4.8534369	52.364456	first-pass	
 piet-de-leeuw-80082	Piet de Leeuw	restaurant	4.8921422	52.361512	first-pass	
-pizza-project-64561	Pizza Project	restaurant	4.8611643	52.360962	null	
+pizza-project-64561	Pizza Project	restaurant	4.8611643	52.360962	measured	Wrong wall: the --near wall showed no shopfront; alternate wall pizza-project-64561-w0 picked by eye.
 pizza-project-bar-69760	Pizza Project Bar	restaurant	4.9253769	52.3679133	first-pass	
 pizza-taxi-da-paolo-seba-66100	Pizza Taxi Da Paolo & Seba	restaurant	4.8925756	52.3531536	first-pass	
 pizzeria-steakhouse-ijburg-80574	Pizzeria Steakhouse IJburg	restaurant	5.0072542	52.3521864	first-pass	
@@ -376,18 +376,18 @@ roum-cafe-61185	Roum Cafe	restaurant	4.8903028	52.3541052	first-pass
 royal-fook-long-42162	Royal Fook Long	restaurant	4.8100429	52.3453224	first-pass	
 royal98-53823	Royal98	restaurant	4.8932024	52.3735434	first-pass	
 royalvis-traiteur-18311	Royalvis & Traiteur	restaurant	4.9099446	52.3896002	first-pass	
-rue-la-bastille-77670	Rue la Bastille	restaurant	4.8874638	52.3826224	null	
+rue-la-bastille-77670	Rue la Bastille	restaurant	4.8874638	52.3826224	measured	Wrong wall: the --near wall showed no shopfront; alternate wall rue-la-bastille-77670-w3 picked by eye.
 rufus-restaurant-57012	Rufus Restaurant	restaurant	4.8836858	52.3523175	first-pass	
 sab-s-deli-36070	Sab's Deli	restaurant	4.8898804	52.3444767	first-pass	
 sababa-58581	Sababa	restaurant	4.8883061	52.3544649	measured	Registration: building edge 1.1 m into crop; shift -1.1. The street front at the pin is Tabakshop Bell beside a covered passage; Sababa itself is not visible (likely inside the passage). Modelled what the street shows. User flagged.
 saeed-s-curry-house-54207	Saeed's Curry House	restaurant	4.931968	52.3636413	first-pass	
-sagardi-72053	Sagardi	restaurant	4.8886343	52.3693981	null	
+sagardi-72053	Sagardi	restaurant	4.8886343	52.3693981	measured	Wrong wall: the --near wall showed no shopfront; alternate wall sagardi-72053-w2 picked by eye.
 sahan-92837	Sahan	restaurant	4.8001675	52.3584044	first-pass	
 salento-latino-78584	Salento Latino	restaurant	4.8746776	52.3261016	first-pass	
 salvatorica-74729	Salvatorica	restaurant	4.8788892	52.3768609	first-pass	
 sama-sebo-65990	Sama Sebo	restaurant	4.8831414	52.3606764	first-pass	
 samba-kitchen-59252	Samba Kitchen	restaurant	4.8895895	52.3527522	first-pass	
-sapporo-ramen-sora-35936	Sapporo Ramen SORA	restaurant	4.8887136	52.3526329	null	
+sapporo-ramen-sora-35936	Sapporo Ramen SORA	restaurant	4.8887136	52.3526329	measured	Wrong wall: the --near wall showed no shopfront; alternate wall sapporo-ramen-sora-35936-w3 picked by eye.
 seafood-bistro-78815	Seafood Bistro	restaurant	4.8984293	52.3754657	first-pass	
 seasons-restaurant-75049	Seasons Restaurant	restaurant	4.8890188	52.3771918	first-pass	
 semai-52074	Semai	restaurant	4.9119863	52.393566	first-pass	

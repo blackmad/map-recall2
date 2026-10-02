@@ -1,0 +1,60 @@
+{
+ "name": "incanto-79461-w3",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012179461"
+ ],
+ "image": "incanto-79461-w3.jpg",
+ "width": 189,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.89392999713005,
+   52.36695000223345
+  ],
+  "endLngLat": [
+   4.893956997129299,
+   52.36698900223409
+  ],
+  "lengthM": 4.712937309508346,
+  "heightM": 7,
+  "outwardBearingDeg": 113.35652573769295
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002031_pano_0001_002046",
+   "timestamp": "2021-03-08T10:56:50.934160Z",
+   "distanceM": 20,
+   "obliquityDeg": 42
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#81995a"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

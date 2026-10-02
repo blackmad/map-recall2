@@ -1,0 +1,99 @@
+{
+ "name": "perla-di-roma-48686",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012148686"
+ ],
+ "image": "perla-di-roma-48686.jpg",
+ "width": 570,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.827568997537715,
+   52.35859900188965
+  ],
+  "endLngLat": [
+   4.827572997540096,
+   52.35847100188791
+  ],
+  "lengthM": 14.24459704304302,
+  "heightM": 7,
+  "outwardBearingDeg": 269.34631344008426
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002467_pano_0000_001984",
+   "timestamp": "2022-03-22T12:37:02.462130Z",
+   "distanceM": 17,
+   "obliquityDeg": 5
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 17.64,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.95,
+   4.88,
+   4.88,
+   4.88,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#7d7564"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

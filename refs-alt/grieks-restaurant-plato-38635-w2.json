@@ -1,0 +1,85 @@
+{
+ "name": "grieks-restaurant-plato-38635-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012138635"
+ ],
+ "image": "grieks-restaurant-plato-38635-w2.jpg",
+ "width": 441,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.813181997320605,
+   52.37448900205756
+  ],
+  "endLngLat": [
+   4.813021997321303,
+   52.374504002057165
+  ],
+  "lengthM": 11.02280396005975,
+  "heightM": 7,
+  "outwardBearingDeg": 9.162691564098054
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002525_pano_0005_000046",
+   "timestamp": "2022-04-19T11:23:40.606260Z",
+   "distanceM": 12,
+   "obliquityDeg": 11
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   5.03,
+   5.03,
+   5.03,
+   5.03,
+   5.03,
+   5.03,
+   5.03,
+   5.03,
+   5.03,
+   5.03,
+   5.03
+  ],
+  "wallColour": "#444047"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,80 @@
+{
+ "name": "instock-amsterdam-69762-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012169762"
+ ],
+ "image": "instock-amsterdam-69762-w2.jpg",
+ "width": 388,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.926492997051168,
+   52.3685940023568
+  ],
+  "endLngLat": [
+   4.926592997050021,
+   52.368656002357994
+  ],
+  "lengthM": 9.694039631167056,
+  "heightM": 7,
+  "outwardBearingDeg": 134.99741674598488
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002049_pano_0000_001240",
+   "timestamp": "2021-03-19T08:49:48.746740Z",
+   "distanceM": 6,
+   "obliquityDeg": 13
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   6.25,
+   6.25,
+   7,
+   7,
+   7,
+   7,
+   7,
+   3.38,
+   3.38,
+   3.35,
+   3.35,
+   3.35,
+   3.35,
+   3.35,
+   3.38,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.23,
+   6.23,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#fae4bd"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

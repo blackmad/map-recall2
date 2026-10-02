@@ -1,0 +1,57 @@
+{
+ "name": "sapporo-ramen-sora-35936-w3",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012235936"
+ ],
+ "image": "sapporo-ramen-sora-35936-w3.jpg",
+ "width": 164,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8886949973963905,
+   52.352604002013706
+  ],
+  "endLngLat": [
+   4.888753997396106,
+   52.352611002013994
+  ],
+  "lengthM": 4.094529273871847,
+  "heightM": 7,
+  "outwardBearingDeg": 169.42848465078612
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002410_pano_0003_000585",
+   "timestamp": "2022-01-11T08:51:22.636230Z",
+   "distanceM": 11,
+   "obliquityDeg": 8
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#353832"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

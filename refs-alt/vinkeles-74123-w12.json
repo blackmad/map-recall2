@@ -1,0 +1,65 @@
+{
+ "name": "vinkeles-74123-w12",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012174123"
+ ],
+ "image": "vinkeles-74123-w12.jpg",
+ "width": 241,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.883393997114864,
+   52.36924300223241
+  ],
+  "endLngLat": [
+   4.883388997115845,
+   52.369189002231614
+  ],
+  "lengthM": 6.017984780553331,
+  "heightM": 7,
+  "outwardBearingDeg": 273.64214865353915
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002989_pano_0011_000007",
+   "timestamp": "2023-03-06T10:11:56.394570Z",
+   "distanceM": 34,
+   "obliquityDeg": 1
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#242221"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

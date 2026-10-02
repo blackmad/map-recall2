@@ -1,0 +1,65 @@
+{
+ "name": "baked-59205-w3",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012159205"
+ ],
+ "image": "baked-59205-w3.jpg",
+ "width": 239,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.872419997041093,
+   52.37505900227981
+  ],
+  "endLngLat": [
+   4.8723399970417365,
+   52.375037002279214
+  ],
+  "lengthM": 5.972459979231535,
+  "heightM": 7,
+  "outwardBearingDeg": 336.21125296925106
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002055_pano_0000_001637",
+   "timestamp": "2021-03-22T11:45:52.936550Z",
+   "distanceM": 37,
+   "obliquityDeg": 21
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#3e3a38"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

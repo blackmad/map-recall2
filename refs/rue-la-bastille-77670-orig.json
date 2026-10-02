@@ -1,0 +1,99 @@
+{
+ "name": "rue-la-bastille-77670",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012177670"
+ ],
+ "image": "rue-la-bastille-77670.jpg",
+ "width": 566,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.887461996865536,
+   52.3825880024406
+  ],
+  "endLngLat": [
+   4.887601996863536,
+   52.38268200244246
+  ],
+  "lengthM": 14.150944812990573,
+  "heightM": 7,
+  "outwardBearingDeg": 132.74007288028088
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002037_pano_0000_001803",
+   "timestamp": "2021-03-11T09:01:00.049570Z",
+   "distanceM": 10,
+   "obliquityDeg": 1
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.91,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#5b5450"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

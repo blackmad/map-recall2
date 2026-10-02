@@ -1,0 +1,101 @@
+{
+ "name": "pica-pica-90102-w1",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012090102"
+ ],
+ "image": "pica-pica-90102-w1.jpg",
+ "width": 595,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.91351199725315,
+   52.35776200216232
+  ],
+  "endLngLat": [
+   4.9134299972511455,
+   52.35788600216384
+  ],
+  "lengthM": 14.884863066588597,
+  "heightM": 7,
+  "outwardBearingDeg": 68.33225502723343
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002137_pano_0000_003985",
+   "timestamp": "2021-05-12T08:47:42.311240Z",
+   "distanceM": 8,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.88
+  ],
+  "wallColour": "#a99d91"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,80 @@
+{
+ "name": "kaagman-kortekaas-69080-w4",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012169080"
+ ],
+ "image": "kaagman-kortekaas-69080-w4.jpg",
+ "width": 391,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.892487996993079,
+   52.374846002343276
+  ],
+  "endLngLat": [
+   4.892348996993769,
+   52.37482400234251
+  ],
+  "lengthM": 9.776951468488736,
+  "heightM": 7,
+  "outwardBearingDeg": 345.65987770279696
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002357_pano_0007_000038",
+   "timestamp": "2021-12-27T12:25:52.119060Z",
+   "distanceM": 40,
+   "obliquityDeg": 17
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#2d3a35"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

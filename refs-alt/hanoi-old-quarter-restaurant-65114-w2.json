@@ -1,0 +1,66 @@
+{
+ "name": "hanoi-old-quarter-restaurant-65114-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012165114"
+ ],
+ "image": "hanoi-old-quarter-restaurant-65114-w2.jpg",
+ "width": 245,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.889662997080403,
+   52.37029700226803
+  ],
+  "endLngLat": [
+   4.889692997079408,
+   52.37034900226888
+  ],
+  "lengthM": 6.135960830695403,
+  "heightM": 7,
+  "outwardBearingDeg": 109.8429098784456
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002306_pano_0002_001474",
+   "timestamp": "2021-09-09T12:15:21.742910Z",
+   "distanceM": 10,
+   "obliquityDeg": 1
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#222726"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,35 @@
+{
+ "name": "pannenkoekerij-gansi-87577-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012187577"
+ ],
+ "image": "pannenkoekerij-gansi-87577-w2.jpg",
+ "width": 0,
+ "height": 0,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.971300997770743,
+   52.32323600183709
+  ],
+  "endLngLat": [
+   4.971326997771647,
+   52.32317800183636
+  ],
+  "lengthM": 6.692351505938811,
+  "heightM": null,
+  "outwardBearingDeg": 254.9695204213806
+ },
+ "panoramas": [],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   0,
+   0
+  ],
+  "wallColour": "#9a8a78"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,84 @@
+{
+ "name": "a-tavola-81149-w1",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012181149"
+ ],
+ "image": "a-tavola-81149-w1.jpg",
+ "width": 433,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.912420997039385,
+   52.37021200233835
+  ],
+  "endLngLat": [
+   4.912281997038764,
+   52.3702590023386
+  ],
+  "lengthM": 10.814933214819249,
+  "heightM": 7,
+  "outwardBearingDeg": 29.29242714760443
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002541_pano_0001_001344",
+   "timestamp": "2022-04-25T07:42:36.132220Z",
+   "distanceM": 16,
+   "obliquityDeg": 9
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#afa897"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

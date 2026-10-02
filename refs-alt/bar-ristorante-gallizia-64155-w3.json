@@ -1,0 +1,62 @@
+{
+ "name": "bar-ristorante-gallizia-64155-w3",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012164155"
+ ],
+ "image": "bar-ristorante-gallizia-64155-w3.jpg",
+ "width": 213,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.934199997126022,
+   52.36382800230963
+  ],
+  "endLngLat": [
+   4.934277997125901,
+   52.36383200230991
+  ],
+  "lengthM": 5.3315303598059085,
+  "heightM": 7,
+  "outwardBearingDeg": 175.56961101253182
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002139_pano_0000_000945",
+   "timestamp": "2021-05-12T12:27:23.821930Z",
+   "distanceM": 11,
+   "obliquityDeg": 8
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#ada08c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,57 @@
+{
+ "name": "long-pura-70087-w3",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012170087"
+ ],
+ "image": "long-pura-70087-w3.jpg",
+ "width": 162,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.881099997042031,
+   52.373639002288364
+  ],
+  "endLngLat": [
+   4.881154997041632,
+   52.37365300228875
+  ],
+  "lengthM": 4.05647833227449,
+  "heightM": 7,
+  "outwardBearingDeg": 157.81793675002086
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002550_pano_0000_000015",
+   "timestamp": "2022-04-29T08:15:49.816780Z",
+   "distanceM": 9,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#757c6c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

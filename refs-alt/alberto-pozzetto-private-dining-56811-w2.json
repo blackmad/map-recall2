@@ -1,0 +1,61 @@
+{
+ "name": "alberto-pozzetto-private-dining-56811-w2",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012156811"
+ ],
+ "image": "alberto-pozzetto-private-dining-56811-w2.jpg",
+ "width": 197,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.892728997334631,
+   52.355514002067075
+  ],
+  "endLngLat": [
+   4.89279799733423,
+   52.355527002067475
+  ],
+  "lengthM": 4.918284976748201,
+  "heightM": 7,
+  "outwardBearingDeg": 163.28750890238803
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002470_pano_0001_000461",
+   "timestamp": "2022-03-23T10:17:39.924270Z",
+   "distanceM": 4,
+   "obliquityDeg": 44
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.95,
+   6.95,
+   6.88,
+   6.88,
+   6.88,
+   6.88,
+   6.73,
+   6.73,
+   6.53,
+   5.83,
+   5.18,
+   4.45,
+   4.38,
+   4.38,
+   4.38,
+   6.13,
+   6.13,
+   6.93,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#a8a99d"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}
