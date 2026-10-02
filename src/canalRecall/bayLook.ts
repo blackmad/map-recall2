@@ -58,7 +58,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const h = hashSeed(id), style = (h >>> 4) % BAY_STYLES[archetype].length;
   const shop = (h >>> 13) % 4 === 0;
   const palette = paletteFor(id, archetype, look);
-  const walls = look === 'photo' ? PHOTO_WALLS : archetype === 'canal' && look === 'cartoon' ? CARTOON_WALLS : null;
+  const walls = look === 'photo' ? PHOTO_WALLS : look === 'cartoon' && archetype !== 'modern' ? CARTOON_WALLS : null;
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
   return {
     archetype, layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: palette.accent,
