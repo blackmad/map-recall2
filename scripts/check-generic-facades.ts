@@ -30,6 +30,9 @@ for (let z = FACADE_MIN_TILE_ZOOM; z <= FACADE_MAX_TILE_ZOOM; z++) {
 }
 assert.equal(facadeTileZoom(14.2), FACADE_MIN_TILE_ZOOM);
 assert.equal(facadeTileZoom(18.9), 18);
+assert.equal(facadeTileZoom(17.9, 18), 18, 'hold the set just under the boundary');
+assert.equal(facadeTileZoom(19.2, 18), 18, 'and just over the next');
+assert.equal(facadeTileZoom(17.6, 18), 17, 'switch once clearly past');
 assert.equal(facadeTileZoom(FACADE_MAX_TILE_ZOOM + 1.1), null, 'past the range the plain walls return');
 
 // Images: 32 m tall, seamless bay width, opaque, with door pixels at the bottom.
