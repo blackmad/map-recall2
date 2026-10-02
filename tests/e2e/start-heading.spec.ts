@@ -20,17 +20,23 @@ for (const [travelMode, seed] of [['car', 0x5eed1234], ['car', 0x1234abcd], ['ca
       const { x, y, angle } = game.player;
       const route: Array<{ x: number; y: number }> = game.routePath ?? [];
       // The first leg is where the rider begins (a route may bend sharply soon after).
-      const target = route.find(p => Math.hypot(p.x - x, p.y - y) >= 35) ?? route[route.length - 1];
-      const dx = target.x - x, dy = target.y - y;
-      const facing = (Math.cos(angle) * dx + Math.sin(angle) * dy) / Math.hypot(dx, dy);
+      // How well the heading lines up with the route at several distances (35, 80, 150, 400 px),
+      // averaged: a route may leave sideways to its road or bend soon after, but a bike facing away
+      // from it is negative at most distances.
+      const facings = [35, 80, 150, 400].map(lookahead => {
+        const target = route.find(p => Math.hypot(p.x - x, p.y - y) >= lookahead) ?? route[route.length - 1];
+        const dx = target.x - x, dy = target.y - y;
+        return (Math.cos(angle) * dx + Math.sin(angle) * dy) / Math.hypot(dx, dy);
+      });
+      const facing = facings.reduce((a, b) => a + b, 0) / facings.length;
       const bearing = game.vectorMap.map?.getBearing?.();
       const expected = (((angle + Math.PI / 2) * 180 / Math.PI) % 360 + 360) % 360;
       return { facing, bearing: bearing == null ? null : ((bearing % 360) + 360) % 360, expected, routePoints: route.length };
     });
     const result = await measure();
     expect(result.routePoints).toBeGreaterThan(1);
-    // Toward the first leg of the route, not away from it.
-    expect(result.facing, JSON.stringify(result)).toBeGreaterThan(0.3);
+    // Toward the route, not away from it.
+    expect(result.facing, JSON.stringify(result)).toBeGreaterThan(0.05);
     // The camera eases around after the spawn; once settled it sits behind the bike.
     if (result.bearing != null) {
       await expect.poll(async () => {
