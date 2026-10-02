@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Roofs, gables, shopfronts, and a Storybook/Cartoon split
+
+User: the city looks too regular; photo and cartoon lack roofs, gables, mansards
+and street-level retail; the cartoon sat in an uncanny valley (pastel
+"Townscaper"). Built for every three.js look (`roofMesh.ts`, `roofCells.ts`):
+- Roofs: per-building plan from the footprint's fitted rectangle and facade
+  style. Gable (step, neck, bell, spout or plain plate on each short end),
+  pitched (plain triangular ends), mansard with dormers; pantile or slate; a
+  0.3 m eave overhang, chimneys on most ridges. Non-rectangular footprints
+  (coverage under 0.88 or a vertex over 1 m off the box) keep the flat lid. A
+  tile decorator lowers the plain wall to the eaves (`roofEavesHeightM`, which the
+  wall-top expression already honours) and stops the flat cap; it is applied only
+  while a three.js look is on, so Default is unchanged.
+- Retail: four shopfront types per archetype in the bay looks (awning, café,
+  display window under a fascia sign, brown café with a hanging sign) and two in
+  the procedural cells; about a third of buildings get one on the non-door bays.
+- Regularity: bay width, storey and ground-floor height vary per building; a
+  projecting cornice on flat-roofed period buildings.
+- Looks: Cartoon is now flat, bold, cel-shaded (3 light bands), saturated sticker
+  palette, thick outlines, bigger windows; Storybook is the softly painted,
+  natural-colour middle (thin outlines, muted palette); Photo keeps real brick and
+  a realistic brick palette.
+Landmarks are exempt: the 849 resolved landmark buildings (`landmark-buildings.json`: churches, museums, Centraal and the rest) get no generic facade and no roof, in every look including Default (`exceptLandmarks`; the ids load after the tile decorator is installed and re-decorate the resident city when they arrive).
+Depth was kept to what fits the memory budget: overhangs, chimneys, cornice,
+dormers and gable plates; no recessed windows or per-door stoops. Checked by
+four rounds of screenshot critique at Jordaan (desktop software GL, no
+basemap) and unit checks in `check-three-buildings.ts` (fit, plan odds,
+gable profiles stand above the slope, decorator lowers walls, measured roofs
+untouched).
+
 ## 2026-10-02 — Building look setting; photo and cartoon looks tuned
 
 Settings now has "Building look" (Default, Painted, Cartoon, Photo), saved with
