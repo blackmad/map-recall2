@@ -1,0 +1,211 @@
+{
+  "_about": "Reviewed English for scripts/fetch-neighborhood-history.ts --city=utrecht. Same format as neighborhood-history-review.json: {en} is the text shown (a translation of a Dutch source, or a cleaned English one); null drops a field whose sentences are not about the name or place; {from} is the start of the source text it was written against; {sourceField} borrows another field's article as the source. A nameOrigin that only lists what the streets are named after is dropped unless the neighbourhood's own name comes from that theme. Translated and reviewed 2026-10-01 under the street-name-origin policy: fix clear errors, add nothing unsourced.",
+  "Veldhuizen": {
+    "history": { "from": "Het middeleeuwse gerecht Veldhuizen", "en": "The medieval jurisdiction (gerecht) of Veldhuizen coincided with the Veldhuizen polder. Over time it merged with the jurisdictions of Rosweide and Reijerscop Lichtenberg, the latter a scatter of separate plots later also called Reijerscop Veldhuizen. In the sweeping municipal reorganisation of 1798, under the Batavian Republic, all three were joined to Harmelen." },
+    "nameOrigin": { "from": "It is also the name of a new neighbourhood", "en": "Named after the hamlet of Veldhuizen, close to which it was built." }
+  },
+  "Lombok-Oost": {
+    "description": { "from": "Lombok en Leidseweg is een subwijk", "en": "Lombok en Leidseweg is a subwijk of Utrecht's West district, made up of Lombok-West, Lombok-Oost and Leidseweg e.o. Lombok was built between 1886 and 1920 as a typical working-class neighbourhood." },
+    "history": { "from": "De eerste bebouwing in het gebied", "en": "The first buildings here were industry along the Vleutense Vaart and the Leidse Rijn: a few windmills and, from 1866, the Koninklijke Lood- en Zinkpletterijen lead and zinc works. Housing followed from 1886, the main streets for office staff and the side streets for factory workers, built around the industry and some orchards. Most of the industrial and farm buildings, such as the water tower on the Riouwstraat and the Bijgeval windmill, have since been demolished." },
+    "nameOrigin": { "from": "De straatnamen en de naam zelf", "en": "The name, like the street names, refers to islands, regions and VOC figures of the former Dutch East Indies, now Indonesia." }
+  },
+  "Lombok-West": {
+    "description": { "from": "Lombok en Leidseweg is een subwijk", "en": "Lombok en Leidseweg is a subwijk of Utrecht's West district, made up of Lombok-West, Lombok-Oost and Leidseweg e.o. Lombok was built between 1886 and 1920 as a typical working-class neighbourhood." },
+    "history": { "from": "De eerste bebouwing in het gebied", "en": "The first buildings here were industry along the Vleutense Vaart and the Leidse Rijn: a few windmills and, from 1866, the Koninklijke Lood- en Zinkpletterijen lead and zinc works. Housing followed from 1886, the main streets for office staff and the side streets for factory workers, built around the industry and some orchards. Most of the industrial and farm buildings, such as the water tower on the Riouwstraat and the Bijgeval windmill, have since been demolished." },
+    "nameOrigin": { "from": "De straatnamen en de naam zelf", "en": "The name, like the street names, refers to islands, regions and VOC figures of the former Dutch East Indies, now Indonesia." }
+  },
+  "Oog In Al": {
+    "description": { "from": "Oog in Al (, Utrecht dialect:)", "en": "Oog in Al is a residential area in the west of Utrecht. The Amsterdam–Rhine Canal, the Merwede Canal and the Leidse Rijn form its limits, making it a triangular man-made island. From the 12th century it was part of the 'Trechter Weide', Utrecht's communal meadow." },
+    "history": { "from": "Het gebied Oog in Al behoorde vanaf de 12e eeuw", "en": "The Vletsloot divided Utrecht's city meadow into the Lage Weide and the Hoge Weide, and Oog in Al grew up in the Hoge Weide. In 1381 the Oude Rijn canal was dug to link Utrecht and Leiden; the towing canal ran from the Leidseveer harbour along today's Billitonkade to the Oude Rijn at Harmelen, past Oog in Al along an old course of the Rhine." }
+  },
+  "Nobelstraat E.o.": {
+    "description": { "from": "De buurt Nobelstraat en omgeving", "en": "The Nobelstraat e.o. neighbourhood in Utrecht's Binnenstad has 36 municipal monuments, under 25 monument numbers." }
+  },
+  "Hooch Boulandt": {
+    "description": { "from": "Hooch Boulandt is een buurt", "en": "Hooch Boulandt is a neighbourhood in Utrecht's Binnenstad, built in the 1990s after the Academisch Ziekenhuis hospital moved to De Uithof in 1989." }
+  },
+  "Lange Elisabethstraat, Mariaplaats E.o.": {
+    "description": { "from": "De buurt Lange Elisabethstraat, Mariaplaats", "en": "The Lange Elisabethstraat, Mariaplaats e.o. neighbourhood in Utrecht's Binnenstad has 191 municipal monuments, under 128 monument numbers." }
+  },
+  "Wijk C": {
+    "description": { "from": "Wijk C is een volksbuurt", "en": "Wijk C is a working-class neighbourhood in the centre of Utrecht." },
+    "history": { "from": "Oude activiteiten in Wijk C", "en": "Activity in Wijk C goes back to the Middle Ages: for some decades around the year 1000 a large harbour complex lay here, north of the trading quarter of Stathe, and remains of medieval vessels have been found in and around it. Soon after Utrecht received city rights in 1122 the area lay within the walled city. Between 1573 and 1795 it formed a ward called Handvoetboog." },
+    "nameOrigin": null
+  },
+  "Kanaleneiland": {
+    "description": { "from": "Kanaleneiland (, Utrecht dialect:)", "en": "Kanaleneiland is a district in the south-west of Utrecht, beside the Amsterdam–Rhine Canal, divided into Kanaleneiland-Noord and Kanaleneiland-Zuid." },
+    "history": { "from": "De bouw van Kanaleneiland maakt deel uit", "en": "Kanaleneiland was part of Utrecht's large expansion in the 1950s. In 1954 the city took in parts of Oudenrijn, Zuilen, Maartensdijk, Houten, De Bilt and Jutphaas, doubling its area, and that year drew up a structure plan to 1970. It led to three large districts, Kanaleneiland, Overvecht and Hoograven, meant to ease the severe post-war housing shortage." },
+    "nameOrigin": null
+  },
+  "Dichterswijk": {
+    "_reason": "The source dates its start to 'the 1920s of the 19th century', which cannot be right; the date is left out rather than guessed.",
+    "description": { "from": "De Dichterswijk is een buurt", "en": "The Dichterswijk ('poets' district') is a neighbourhood in Utrecht's Zuidwest district, around the Croeselaan, bounded by the Graadt van Roggenweg, the Vondellaan and Balijelaan, the Kruisvaart and the Merwede Canal. Its later western part is also called Parkhaven. Architecturally it is very varied." }
+  },
+  "Rivierenwijk": {
+    "description": { "from": "De Rivierenwijk is een buurt", "en": "The Rivierenwijk is a neighbourhood in Utrecht's Zuidwest district." }
+  },
+  "Zuidwest": {
+    "description": { "from": "Zuidwest is een van de tien stadsdelen", "en": "Zuidwest is one of Utrecht's ten districts (wijken), with 40,967 inhabitants (2025). It includes the Veilinghaven, Park Transwijk and the furniture boulevard." }
+  },
+  "Lunetten": {
+    "nameOrigin": { "from": "De naam van de wijk verwijst", "en": "Named after the lunettes in the Beatrixpark: crescent-shaped defence works surrounded by water." }
+  },
+  "Oudwijk": {
+    "description": { "from": "Oudwijk is een buurt van de wijk Oost", "en": "Oudwijk is a neighbourhood of Utrecht's Oost district; with Buiten Wittevrouwen it forms the subwijk Oudwijk/Buiten Wittevrouwen." },
+    "nameOrigin": null
+  },
+  "Zuid": {
+    "description": { "from": "Zuid is een van de tien stadsdelen", "en": "Zuid is one of Utrecht's ten districts (wijken), with 28,754 inhabitants (2025)." }
+  },
+  "Bokkenbuurt": {
+    "description": { "from": "De Bokkenbuurt is een buurt", "en": "The Bokkenbuurt is a neighbourhood in Utrecht's Zuid district, centred on the Tolsteeg cemetery. It borders Tolsteeg to the west and Hoograven to the south, and the Waterlinieweg separates it from Lunetten." }
+  },
+  "Lange Nieuwstraat E.o.": {
+    "description": { "from": "De buurt Lange Nieuwstraat en omgeving", "en": "The Lange Nieuwstraat e.o. neighbourhood in Utrecht's Binnenstad has 127 municipal monuments, under 96 monument numbers." }
+  },
+  "Watervogelbuurt": {
+    "description": { "from": "De Watervogelbuurt is een buurt", "en": "The Watervogelbuurt is a neighbourhood in Utrecht's Oost district, south-east of the Tolsteegsingel, bounded by the Kromme Rijn, the Vaartsche Rijn and the Utrecht–Arnhem railway. It is crossed by the Gansstraat and the Albatrosstraat, and the Ledig Erf lies on its west side." }
+  },
+  "Sterrenwijk": {
+    "description": { "from": "De Sterrenwijk is een buurt", "en": "The Sterrenwijk is a neighbourhood in Utrecht's Oost district." },
+    "nameOrigin": { "from": "Veel straten in deze buurt dragen", "en": "The name means 'star district', and many of its streets bear the names of planets." }
+  },
+  "Schildersbuurt": {
+    "description": { "from": "De Schildersbuurt is een buurt", "en": "The Schildersbuurt is a neighbourhood in Utrecht's Oost district, a typical 1920s extension laid out in semi-open urban blocks, with a character all its own. It was built as a small residential area of mainly middle-class homes." }
+  },
+  "Rijnsweerd": {
+    "description": { "from": "Rijnsweerd is een deel van de wijk Oost", "en": "Rijnsweerd is part of Utrecht's Oost district, made up of Rijnsweerd-Noord and Rijnsweerd-Zuid, between the Schildersbuurt and the Wilhelminapark on one side and the De Uithof university campus on the other." },
+    "nameOrigin": { "from": "De buurt/subwijk is vernoemd naar", "en": "Named after the former house Rijnsweerd, which actually stood in neighbouring Galgenwaard to the west. Its streets are named after Greek and Latin writers." }
+  },
+  "Buiten Wittevrouwen": {
+    "description": { "from": "Buiten Wittevrouwen is een buurt", "en": "Buiten Wittevrouwen is a neighbourhood in Utrecht's Oost district." },
+    "history": { "from": "Buiten Wittevrouwen is gelegen aan de oostzijde", "en": "Buiten Wittevrouwen lies east of Utrecht's old centre. Around 1122 Utrecht received city rights and was ringed by a wall and moat, the former Stadsbuitengracht; for centuries the city lay almost entirely within it, reached through only a few gates. Along the roads leading out from the gates, small settlements grew up." }
+  },
+  "Wittevrouwen": {
+    "description": { "from": "Wittevrouwen is een buurt gelegen", "en": "Wittevrouwen is a neighbourhood in Utrecht's Noordoost district. In earlier centuries it was an outer jurisdiction within the city liberty, and from 1573 to 1795 a ward of that name, afterwards called Wijk I until 1898." },
+    "history": { "from": "De buurt is genoemd naar het klooster", "en": "In the Middle Ages the convent the neighbourhood is named after stood in the north-east of the walled city, near today's Ridderschapstraat. After Utrecht's government went over to the Reformation in 1580, the convent gradually came to an end." },
+    "nameOrigin": { "from": "De buurt is genoemd naar het klooster", "en": "Named after a convent of sisters living by the rule of St Norbert, known as the Wittevrouwenklooster ('White Women's Convent') after the colour of the nuns' habits." }
+  },
+  "Wilhelminapark E.o.": {
+    "description": { "from": "Het Wilhelminapark is een stadspark", "en": "The Wilhelminapark is a city park in Utrecht, one of the first parks in the Netherlands listed as a national monument. It lies in the middle of Utrecht-Oost, east of Oudwijk, and the neighbourhood around it is called the Wilhelminaparkbuurt." },
+    "history": { "from": "In de tweede helft van de 19e eeuw groeide", "en": "In the second half of the 19th century Utrecht's population grew fast, and the land east of the Maliebaan, long called Oudwijk or the Oudwijkerveld and mostly farmland and market gardens, was eyed for building. In 1887 the city bought the Het Hoogeland estate on its north side, by the Biltstraat, from the Ram family, and soon afterwards the Oudwijkerveld too." },
+    "nameOrigin": null
+  },
+  "Oost": {
+    "description": { "from": "Oost is een van de tien stadsdelen", "en": "Oost is one of Utrecht's ten districts (wijken), with 33,767 inhabitants (2025). It includes Stadion Galgenwaard, the Spoorwegmuseum, the Rietveld Schröder House, the Wilhelminapark and the provincial government building." }
+  },
+  "Breedstraat, Plompetorengracht E.o.": {
+    "description": { "from": "De buurt Breedstraat, Plompetorengracht", "en": "The Breedstraat, Plompetorengracht e.o. neighbourhood in Utrecht's Binnenstad has 94 municipal monuments, under 82 monument numbers." }
+  },
+  "Binnenstad": {
+    "description": { "from": "Binnenstad is een van de tien stadsdelen", "en": "Binnenstad is one of Utrecht's ten districts (wijken), with 20,628 inhabitants (2025). Besides the historic city centre and its many monuments, it includes Centraal Station, the Hoog Catharijne shopping centre and the Jaarbeurs." },
+    "history": { "from": "Het oude kerngebied van Utrecht", "en": "From about AD 50 Utrecht's core lay around today's Domplein, where military, religious, administrative and commercial power concentrated. In 1122 Utrecht received city rights, and a wall and moat were built around 132 hectares. Only in the 19th century did the city grow substantially beyond them, and most of the defences were demolished." }
+  },
+  "Staatsliedenbuurt": {
+    "description": { "from": "De Staatsliedenbuurt, voorheen Staatsliedenkwartier", "en": "The Staatsliedenbuurt ('statesmen's neighbourhood'), formerly the Staatsliedenkwartier, is a neighbourhood in Utrecht's Noordoost district." }
+  },
+  "Vogelenbuurt": {
+    "description": { "from": "De Vogelenbuurt (voorheen Vogelenwijk)", "en": "The Vogelenbuurt (formerly Vogelenwijk) is a neighbourhood in Utrecht's Noordoost district, beside the Griftpark. It is considered child-friendly and is a popular place to live." },
+    "history": { "from": "Het gebied van Vogelenbuurt, Tuinwijk en Tuindorp", "en": "In the Middle Ages the area of the Vogelenbuurt, Tuinwijk and Tuindorp was the Zeshoeven and Twaalfhoeven polders. The course of the old Vecht can still be traced in the Koekoeksvaart and the waterways of the Griftpark. The Veengracht was dug to drain the peat; important for carrying turf, it was called the 'Zwarte Water'." },
+    "nameOrigin": { "from": "De Vogelenbuurt dankt zijn naam", "en": "The name ('birds' neighbourhood') comes from its streets: almost every one is named after a bird." }
+  },
+  "Voordorp/voorveldsepolder": {
+    "description": { "from": "Voordorp is een buurt van de wijk", "en": "Voordorp is a neighbourhood of Utrecht's Noordoost district, built in the 1990s, the last large expansion of the city before Leidsche Rijn." },
+    "nameOrigin": null
+  },
+  "Tuindorp-Oost": {
+    "description": { "from": "Tuindorp-Oost is een buurt", "en": "Tuindorp-Oost is a neighbourhood in Utrecht's Noordoost district, built in the 1960s after the city annexed part of the Voorveldse polder in 1954." },
+    "nameOrigin": { "from": "Tuindorp-Oost is een buurt", "sourceField": "description", "en": "Named for its position east of Tuindorp, a 1930s neighbourhood. Like Tuindorp's, its streets are mostly named after professors and other scientists." }
+  },
+  "Poldergebied Overvecht": {
+    "description": { "from": "Poldergebied Overvecht is een buurt", "en": "Poldergebied Overvecht is a neighbourhood in Utrecht's Overvecht district, with 265 inhabitants in 2023." }
+  },
+  "Noordoost": {
+    "description": { "from": "Noordoost is een van de tien stadsdelen", "en": "Noordoost is one of Utrecht's ten districts (wijken), with 40,044 inhabitants (2025). It includes the Veeartsenijterrein, the Griftpark and the Voorveldse Polder." }
+  },
+  "Lauwerecht": { "nameOrigin": null },
+  "Votulast": {
+    "description": { "from": "Votulast is de verzamelnaam", "en": "Votulast is the collective name for several neighbourhoods in the south-west of Utrecht's Noordoost district." },
+    "nameOrigin": { "from": "De naam Votulast is gevormd", "en": "The name is made from the first two letters of its neighbourhoods: Vogelenwijk, Tuinwijk, Lauwerecht and Staatsliedenkwartier." }
+  },
+  "Pijlsweerd-Zuid": {
+    "description": { "from": "Pijlsweerd is een subwijk", "en": "Pijlsweerd is a subwijk of Utrecht's Noordwest district, made up of the 1e Daalsebuurt, Pijlsweerd-Noord and Pijlsweerd-Zuid." },
+    "nameOrigin": null
+  },
+  "Pijlsweerd-Noord": {
+    "description": { "from": "Pijlsweerd is een subwijk", "en": "Pijlsweerd is a subwijk of Utrecht's Noordwest district, made up of the 1e Daalsebuurt, Pijlsweerd-Noord and Pijlsweerd-Zuid." },
+    "nameOrigin": null
+  },
+  "Pijlsweerd": {
+    "description": { "from": "Pijlsweerd is een subwijk", "en": "Pijlsweerd is a subwijk of Utrecht's Noordwest district, made up of the 1e Daalsebuurt, Pijlsweerd-Noord and Pijlsweerd-Zuid." },
+    "nameOrigin": null
+  },
+  "2e Daalsebuurt e.o.": {
+    "description": { "from": "De 2e Daalsebuurt en omgeving", "en": "The 2e Daalsebuurt en omgeving is a neighbourhood in Utrecht's Noordwest district, with 3,900 inhabitants in 2023." },
+    "nameOrigin": { "from": "De buurt telde in 2023 3.900 inwoners", "en": "Named after the oldest road between Amsterdam and Utrecht, which ran through the neighbourhood where the 2e Daalsedijk is now." }
+  },
+  "Ondiep": {
+    "description": { "from": "Ondiep is a characteristic working-class", "en": "Ondiep is a working-class neighbourhood in Utrecht's Noordwest district, known for its close-knit community, built from 1915 on the shallow banks of the Vecht." },
+    "history": { "from": "Oorspronkelijk lag hier een kronkelend stuk", "en": "After the Vecht was straightened the area became a jurisdiction of the city liberty. Building began on a small scale in 1915; the layout and main streets came mostly in the 1920s, to a plan by H.P. Berlage and the Utrecht official L.P. Holsboer, including a striking pattern of main streets known as the Stemvork ('tuning fork')." },
+    "nameOrigin": { "from": "Oorspronkelijk lag hier een kronkelend stuk", "sourceField": "history", "en": "A winding stretch of the Vecht once ran here. When the river was straightened in the 14th century the old stretch silted up, which explains the name Ondiep, 'shallow'." }
+  },
+  "Julianapark E.o.": {
+    "description": { "from": "Julianapark en omgeving is een buurt", "en": "Julianapark en omgeving is a neighbourhood in Utrecht's Noordwest district, bounded by the Utrecht–Amsterdam railway, the Julianaparklaan, the Sweder van Zuylenweg, the Van Egmondkade, the Marnixlaan and the St.-Josephlaan." },
+    "nameOrigin": { "from": "De buurt telde in 2023 2.780 inwoners", "en": "Named after the Julianapark." }
+  },
+  "Elinkwijk E.o.": {
+    "description": { "from": "Elinkwijk en omgeving is een deel", "en": "Elinkwijk en omgeving is part of Utrecht's Noordwest district, between the Julianapark, the Utrecht–Amsterdam railway, the Amsterdam–Rhine Canal and the Amsterdamsestraatweg, with 4,230 inhabitants in 2023. Part of it is a protected townscape." },
+    "nameOrigin": null
+  },
+  "Schaakbuurt E.o.": {
+    "description": { "from": "De Schaakbuurt is een kleine buurt", "en": "The Schaakbuurt is a small neighbourhood in Utrecht's Noordwest district, north-east of the Burgemeester van Tuyllkade, bounded by the Stauntonlaan, the Zwanenvechtlaan and the Vecht." },
+    "nameOrigin": { "from": "Veel van de straten zijn vernoemd", "en": "The name means 'chess neighbourhood': many of its streets are named after chess terms, such as the Pionstraat, Rokadestraat and Paardesprongstraat, or after famous players such as Max Euwe." }
+  },
+  "Bedrijvengebied Overvecht": {
+    "description": { "from": "Bedrijventerrein Nieuw Overvecht", "en": "Bedrijventerrein Nieuw Overvecht (Bedrijvengebied Overvecht until 8 March 2012) is a business area in Utrecht's Overvecht district, with 85 inhabitants in 2023." }
+  },
+  "Noordwest": {
+    "description": { "from": "Noordwest is een van de tien stadsdelen", "en": "Noordwest is one of Utrecht's ten districts (wijken), with 45,048 inhabitants (2025), largely built around and oriented on the Amsterdamsestraatweg." }
+  },
+  "Overvecht": { "nameOrigin": null },
+  "Zuilen-Noord": {
+    "description": { "from": "Zuilen-Noord is een buurt", "en": "Zuilen-Noord is a neighbourhood in Utrecht's Noordwest district, bounded by the Zuilenselaan, the Amsterdamsestraatweg, the Van Heukelomlaan and the Vecht, with 3,775 inhabitants in 2023." },
+    "history": { "from": "Eind jaren dertig was de", "en": "By the late 1930s Utrecht still needed new housing and had no room left within its borders, so it built on land of the municipality of Zuilen. The Eigen Haard housing association's estate was finished in 1940, and the rest followed in later years. In 1954 the districts built up against Utrecht were annexed." },
+    "nameOrigin": null
+  },
+  "Queeckhovenplein E.o.": {
+    "description": { "from": "Queeckhovenplein en omgeving is een buurt", "en": "Queeckhovenplein en omgeving is a neighbourhood in Utrecht's Noordwest district, bounded by the Burgemeester Norbruislaan, the Prins Bernhardlaan and the Vecht, with 1,175 inhabitants in 2023." }
+  },
+  "West": {
+    "description": { "from": "West is een van de tien stadsdelen", "en": "West is one of Utrecht's ten districts (wijken), with 29,458 inhabitants (2025). It includes Lombok, the Rijksmunt building, Park Oog in Al and the Lage Weide business park." }
+  },
+  "Terwijde": {
+    "description": { "from": "Terwijde is een Vinex-locatie", "en": "Terwijde is a Vinex development in Utrecht's Leidsche Rijn district, split into Terwijde-West (4,943 inhabitants) and Terwijde-Oost (3,665) on 1 January 2018. The Utrecht Centraal–Woerden railway runs just south of it." },
+    "nameOrigin": { "from": "In het westen grenst Terwijde", "en": "Named after the Hof ter Weyde farm on the Hof ter Weydeweg." }
+  },
+  "Rijnenburg": {
+    "description": { "from": "Rijnenburg is een poldergebied", "en": "Rijnenburg is a polder in the municipality of Utrecht, just south-west of the Oudenrijn interchange, bounded by the A12 and A2 to the north and east, IJsselstein to the south and the Meerndijk to the west." },
+    "nameOrigin": { "from": "Het gebied is vernoemd naar het voormalige", "en": "Named after the former Rijnenburg Castle on the Nedereindseweg." }
+  },
+  "Leidsche Rijn": {
+    "description": { "from": "Leidsche Rijn (, Utrecht dialect:)", "en": "Leidsche Rijn is a new district of Utrecht west of the Amsterdam–Rhine Canal. When it was begun in the 1990s, and for decades after, it was the largest Vinex development in the Netherlands." },
+    "history": { "from": "Aan het begin van de jaartelling", "en": "At the beginning of the Common Era the main branch of the Rhine ran via today's Utrecht and Leiden to the North Sea. North-east of today's De Meern it split into a northern branch via Vleuten and a southern one via De Meern, which rejoined at Harmelen. Only fragments of both survive, but they left clear traces around Leidsche Rijn, Vleuten and De Meern." },
+    "nameOrigin": { "from": "The area is located west of the Amsterdam", "en": "Named after the Leidse Rijn canal, which runs through it." }
+  },
+  "Vleuten - De Meern": {
+    "description": { "from": "Vleuten-De Meern is een van de tien wijken", "en": "Vleuten-De Meern is one of Utrecht's ten districts (wijken), made up of Haarzuilens, Vleuten, De Meern and the Rijnenburg polder; with over 51,200 inhabitants in 2024 it is the city's most populous." },
+    "history": { "from": "In 1811 werden uit de toenmalige gerechten", "en": "In 1811 four municipalities were formed from the old jurisdictions here: Vleuten, Oudenrijn, Veldhuizen and Haarzuilens. From them the municipality of Vleuten-De Meern was created on 1 January 1954, and on 1 January 2001 Utrecht annexed it; its eastern part, roughly east of the villages of De Meern and Vleuten, now belongs to Leidsche Rijn." }
+  },
+  "Rijnvliet": { "_reason": "Matched an article about a hockey club.", "description": null },
+  "Strijkviertel": {
+    "_reason": "The article is about the Strijkviertel recreation lake, not the neighbourhood.",
+    "description": null,
+    "history": null,
+    "nameOrigin": null
+  },
+  "Papendorp": {
+    "description": { "from": "Bedrijvengebied Papendorp is een buurt", "en": "Bedrijvengebied Papendorp is a business district in Utrecht's Leidsche Rijn, whose urban design by Wissing Stedebouw won the Rietveld Prize in 2009. It is bounded by the Leidse Rijn, the Amsterdam–Rhine Canal, the A12, the Oudenrijn interchange and the A2." },
+    "history": { "from": "Van oorsprong is Papendorp een polder", "en": "Papendorp was originally a polder, reclaimed in the 12th century. Just outside Utrecht's city liberty, it was a jurisdiction until 1811, when it was merged with its neighbours into the municipality of Oudenrijn. In the mid-20th century the Amsterdam–Rhine Canal cut it in two, and Utrecht earmarked the eastern part for housing." },
+    "nameOrigin": null
+  }
+}
