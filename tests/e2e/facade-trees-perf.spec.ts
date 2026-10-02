@@ -17,6 +17,8 @@ const variants: Array<{ label: string; facades: boolean; trees: boolean }> = [
   { label: 'facades + trees', facades: true, trees: true },
   { label: 'old look (repeat)', facades: false, trees: false },
   { label: 'facades + trees (repeat)', facades: true, trees: true },
+  { label: 'facades only', facades: true, trees: false },
+  { label: 'trees only', facades: false, trees: true },
 ];
 
 const results: Sample[] = [];

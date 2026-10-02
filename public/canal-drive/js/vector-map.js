@@ -353,6 +353,9 @@ class VectorBasemap {
     this.map.addSource('amsterdam-trees', {
       type: 'geojson',
       data: { type: 'FeatureCollection', features: [] },
+      // Trees are small fixed shapes: cut tiles once at z16 and overscale,
+      // rather than re-tiling them at every zoom the camera passes.
+      maxzoom: 16,
       attribution: 'Trees © OpenStreetMap contributors'
     });
     const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
@@ -1325,7 +1328,8 @@ class VectorBasemap {
 
   setTreesVisible(visible) {
     this._treesVisible = !!visible;
-    if (visible) this._loadTrees();
+    // The old flat look never loaded tree data; keep it that way for A/B.
+    if (visible && this._treesLib()) this._loadTrees();
     if (!this.map) return;
     for (const id of ['tree-trunks', 'tree-crowns']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');

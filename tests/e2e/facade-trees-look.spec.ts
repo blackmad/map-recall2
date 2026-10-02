@@ -13,12 +13,12 @@ const OUT = process.env.LOOK_DIR || 'artifacts/facades-trees';
 
 /** Named spots: a lng/lat to stand on and a second point to face. */
 const SPOTS = [
-  // Keizersgracht west bank by the Leidsegracht: 17th-century canal houses.
-  { name: 'canal-belt-keizersgracht', at: [4.88525, 52.36585], face: [4.88640, 52.36800] },
-  // Churchilllaan, Rivierenbuurt: 1920s–30s Amsterdam School blocks (Plan Zuid).
-  { name: 'plan-zuid-churchilllaan', at: [4.89290, 52.34795], face: [4.89780, 52.34790] },
+  // Keizersgracht road along the canal, south of the Leidsegracht: 17th-century canal houses.
+  { name: 'canal-belt-keizersgracht', at: [4.884677, 52.366703], face: [4.889273, 52.364094] },
+  // Zaanstraat, Spaarndammerbuurt: 1910s–20s Amsterdam School blocks (Het Schip).
+  { name: 'amsterdam-school-zaanstraat', at: [4.878776, 52.387715], face: [4.874565, 52.389553] },
   // Burgemeester De Vlugtlaan, Slotermeer: 1950s post-war gallery flats.
-  { name: 'nieuw-west-de-vlugtlaan', at: [4.82100, 52.38530], face: [4.82700, 52.38440] },
+  { name: 'nieuw-west-de-vlugtlaan', at: [4.818892, 52.383833], face: [4.818847, 52.384367] },
 ] as const;
 
 async function parkAt(page: Page, at: readonly number[], face: readonly number[], view: 'chase' | 'cockpit') {
