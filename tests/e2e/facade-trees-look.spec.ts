@@ -19,6 +19,8 @@ const SPOTS = [
   { name: 'amsterdam-school-zaanstraat', at: [4.878776, 52.387715], face: [4.874565, 52.389553] },
   // Burgemeester De Vlugtlaan, Slotermeer: 1950s post-war gallery flats.
   { name: 'nieuw-west-de-vlugtlaan', at: [4.818892, 52.383833], face: [4.818847, 52.384367] },
+  // Rozengracht / Jordaan, the start of a user's race link: dense pitched-roof terraces.
+  { name: 'jordaan-rozengracht', at: [4.8531, 52.3740], face: [4.8599, 52.3613] },
 ] as const;
 
 async function parkAt(page: Page, at: readonly number[], face: readonly number[], view: 'chase' | 'cockpit') {
@@ -48,7 +50,7 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
     mkdirSync(OUT, { recursive: true });
-    for (const spot of SPOTS) {
+    for (const spot of SPOTS.filter(spot => !process.env.LOOK_SPOT || spot.name === process.env.LOOK_SPOT)) {
       for (const view of ['chase', 'cockpit'] as const) {
         await parkAt(page, spot.at, spot.face, view);
         // Streamed tiles, facts and trees land over a few seconds.
