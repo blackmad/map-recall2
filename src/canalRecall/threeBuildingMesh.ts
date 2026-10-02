@@ -31,6 +31,8 @@ export type MeshBuilding = {
   /** A bay look's own layers and accent colour; absent means the procedural cells. */
   layers?: { upper: number; ground: number; door: number };
   accentHex?: string;
+  /** Paint of a shop's ground floor (bay looks): tints the shop bays' painted surface instead of the wall colour. */
+  groundHex?: string;
   /** A shopfront on the street-level bays (procedural cells; the bay looks choose their own layer). */
   shop?: boolean;
   /** The ground floor is a shopfront (either look): it takes the whole frontage, no house door beside it. */
@@ -339,6 +341,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const extraSink = mode === 'extras' && b.extras ? new ExtraSink(EXTRA_BUDGET.building) : null;
     const cornice: RoofTri[] = [];
     const doorAllowed = doorWalls(bi);
+    const paintTint = b.groundHex && b.layers ? parseHex(b.groundHex) : null;
     for (const run of wallRuns(rings[bi], e => hiddenByNeighbour(e, b))) {
       const first = run[0].e;
       const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), top - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, scale, run.map(r => doorAllowed.has(r.e)));
@@ -368,9 +371,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
           cornice.push({ p: [A, D, C], uv: [[0, 0], [0, 0.1], [u1, 0.1]], part: 'plate', n: nn }, { p: [A, C, B], uv: [[0, 0], [u1, 0.1], [u1, 0]], part: 'plate', n: nn });
         }
         const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255];
+        const paint = paintTint ? [paintTint[0], paintTint[1], paintTint[2], tint[3]] as [number, number, number, number] : tint;
         // u counts bays along the whole run, so the bay grid carries on round a kink.
         for (const piece of edgeGroundPieces(layout, k, e.len)) {
-          quads.push({ e, u0: piece.a0 / bw, u1: piece.a1 / bw, v1: 1, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, tint, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
+          quads.push({ e, u0: piece.a0 / bw, u1: piece.a1 / bw, v1: 1, tint: piece.door || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
         }
         if (layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
       });

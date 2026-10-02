@@ -415,4 +415,18 @@ for (const c of [0.64, 1.4]) {
   const top = Math.max(...tris.flatMap(t => t.p.map(p => p[2])));
   assert.ok(Math.abs(top - (spec.eavesM + spec.riseM)) < 0.5, `ridges at ${top.toFixed(1)} m`);
 }
+
+{
+  // A shop's ground floor takes its paint colour (user 2026-10-02: "the white bit should go to the
+  // ground because that's the paint color of the bottom floor … different colors"); doors and upper floors keep the wall.
+  const shop: MeshBuilding = { ...house('paint', 0, 12, 12), layers: { upper: 1, ground: 2, door: 3 }, groundHex: '#2b2d2c' };
+  const c = buildChunk([shop], origin);
+  let ground = 0, other = 0;
+  for (let v = 0; v < c.vertexCount; v++) {
+    const rgb = [c.tints[v * 4], c.tints[v * 4 + 1], c.tints[v * 4 + 2]];
+    if (c.layers[v] === 2) { ground++; assert.deepEqual(rgb, [0x2b, 0x2d, 0x2c], 'shop bays wear the ground-floor paint'); }
+    else if (c.layers[v] === 1 || c.layers[v] === 3) { other++; assert.notDeepEqual(rgb, [0x2b, 0x2d, 0x2c], 'upper floors and doors keep the wall colour'); }
+  }
+  assert.ok(ground > 0 && other > 0);
+}
 console.log('three buildings: ok');
