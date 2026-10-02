@@ -808,6 +808,18 @@ class VectorBasemap {
     this._threeBuildings.setVisible(this._facadesActive() && this._buildings3dEnabled);
   }
 
+  /**
+   * Tile decorator: period facades, plus (in the three.js looks) real roofs, which
+   * lower the plain wall to the eaves. Changing it resends the resident tiles once.
+   */
+  _applyFeatureDecorator() {
+    const Facades = this._facadesLib();
+    if (!Facades || !this._completeCity || !this._completeCity.setFeatureDecorator) return;
+    const api = window.CanalRecallThreeBuildings;
+    const withRoofs = this._buildings3dEnabled && api && api.decorateRoof;
+    this._completeCity.setFeatureDecorator(withRoofs ? (feature) => api.decorateRoof(Facades.decorateFacade(feature)) : Facades.decorateFacade);
+  }
+
   /** The look the saved preference asks for, unless a URL look is in force. */
   setBuildingLookPreference(look) {
     if (this._buildingLookLocked) return;
@@ -823,6 +835,7 @@ class VectorBasemap {
     this._buildings3dLook = look;
     this._buildings3dEnabled = look !== 'default';
     if (!this.map || !this.map.getLayer('osm-colored-buildings')) return; // layers are created from these flags on load
+    this._applyFeatureDecorator();
     if (this._buildings3dEnabled) {
       this._addThreeBuildingsLayer();
       if (this._threeBuildings) this._threeBuildings.setLook(look);
@@ -971,7 +984,7 @@ class VectorBasemap {
       // Construction years ride in from the building-facts tiles cut on the
       // same z14 grid; the decorator turns year + size into a facade key.
       this._completeCity.setTileEnricher(Facades.constructionYearEnricher(this._extractPath || '../data/extracts/amsterdam'));
-      this._completeCity.setFeatureDecorator(Facades.decorateFacade);
+      this._applyFeatureDecorator();
     }
     let available = false;
     try {

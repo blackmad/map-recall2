@@ -22,8 +22,9 @@
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
 export const CELL_PX = 256;
-export type CellKind = 'upper' | 'ground' | 'door';
-export const CELL_KINDS: readonly CellKind[] = ['upper', 'ground', 'door'];
+export type CellKind = 'upper' | 'ground' | 'door' | 'plain';
+/** `plain` is bare wall (no openings): gable faces and blind ends. */
+export const CELL_KINDS: readonly CellKind[] = ['upper', 'ground', 'door', 'plain'];
 /** Two looks per style (bond, shutters, window heads), picked per building so a street is not one cell. */
 export const CELL_VARIANTS = 2;
 
@@ -302,6 +303,12 @@ export function paintCell(style: FacadeStyle, kind: CellKind, variant = 0): Uint
   const shutter = v1 ? hex('#8a2e28') : SHUTTER_COLOURS[0];
   const W = dims.bay;
 
+  if (kind === 'plain') {
+    if (style === 'canal' || style === 'c19' || style === 'school') paintBrick(cell, seed, { flemish: style === 'canal' && v1 });
+    else paintRender(cell, seed, style === 'tower' ? 0.75 : 0.6);
+    return cell.data;
+  }
+
   if (style === 'canal') {
     paintBrick(cell, seed, { flemish: v1 });
     const cols = [W * 0.3, W * 0.7];
@@ -420,12 +427,15 @@ export function paintAllCells(): Uint8ClampedArray {
  * an RG tint mask (R = wall tint weight, G = accent, unused here), the same
  * layout the bay looks use, so one shader serves every look.
  */
-export function paintProceduralLayers(): { layers: number; colour: Uint8Array; mask: Uint8Array } {
-  const all = paintAllCells(), pixels = CELL_PX * CELL_PX * CELL_LAYER_COUNT;
+export function paintProceduralLayers(extra: Uint8ClampedArray[] = []): { layers: number; colour: Uint8Array; mask: Uint8Array } {
+  const base = paintAllCells(), layerBytes = CELL_PX * CELL_PX * 4;
+  const all = new Uint8ClampedArray(base.length + extra.length * layerBytes);
+  all.set(base); extra.forEach((cell, i) => all.set(cell, base.length + i * layerBytes));
+  const total = CELL_LAYER_COUNT + extra.length, pixels = CELL_PX * CELL_PX * total;
   const colour = new Uint8Array(pixels * 4), mask = new Uint8Array(pixels * 2);
   for (let i = 0; i < pixels; i++) {
     colour[i * 4] = all[i * 4]; colour[i * 4 + 1] = all[i * 4 + 1]; colour[i * 4 + 2] = all[i * 4 + 2]; colour[i * 4 + 3] = 255;
     mask[i * 2] = all[i * 4 + 3]; mask[i * 2 + 1] = 0;
   }
-  return { layers: CELL_LAYER_COUNT, colour, mask };
+  return { layers: total, colour, mask };
 }
