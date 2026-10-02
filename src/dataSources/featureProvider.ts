@@ -8,6 +8,7 @@ import {
   type NeighborhoodHistoryEntry, type NeighborhoodPhoto, type StreetNameOrigin,
 } from '../mapRecall/trivia';
 import { extractCityFor, type ExtractCity } from '../mapRecall/cityExtracts';
+import { hintReferencesFrom, type HintReference } from '../mapRecall/locateHints';
 
 interface FeatureRequest {
   cityId: string;
@@ -47,6 +48,7 @@ const placesPromises = new Map<string, Promise<PlaceCandidate[]>>();
 const photoPlacePromises = new Map<string, Promise<PlaceCandidate[]>>();
 const areaPhotoPromises = new Map<string, Promise<Record<string, Array<{ title: string } & PlacePhoto>>>>();
 const placePhotoPromises = new Map<string, Promise<Record<string, PlacePhoto>>>();
+const hintReferencePromises = new Map<string, Promise<HintReference[]>>();
 
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}data/extracts/${path}`;
 
@@ -101,6 +103,23 @@ async function loadAreas(city: ExtractCity): Promise<AdministrativeArea[] | null
     if (!response.ok) throw new Error(`${city.name} boundaries failed (${response.status})`);
     return response.json();
   }));
+}
+
+/**
+ * Waters, landmarks, squares, parks and areas that "locate on map" hints may
+ * name (src/mapRecall/locateHints.ts). Empty outside the extract cities, where
+ * the hints fall back to bearings from the search centre.
+ */
+export async function fetchHintReferences(cityId: string, center?: [number, number]): Promise<HintReference[]> {
+  const city = extractCityFor(cityId, center);
+  if (!city) return [];
+  return cached(hintReferencePromises, city.id, async () => {
+    const [water, landmarks, squares, parks, areas] = await Promise.all([
+      ...['water', 'landmarks', 'squares', 'parks'].map((name) => optionalJson<Parameters<typeof hintReferencesFrom>[0]['water']>(`${city.id}/${name}.json`)),
+      loadAreas(city).catch(() => null),
+    ]);
+    return hintReferencesFrom({ water, landmarks, squares, parks, areas: areas as Parameters<typeof hintReferencesFrom>[0]['areas'] });
+  });
 }
 
 export async function fetchQuizAreas(cityId: string, center?: [number, number]): Promise<AdministrativeArea[] | null> {

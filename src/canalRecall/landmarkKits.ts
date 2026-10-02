@@ -29,7 +29,14 @@ export type KitRoof = { id: string; riseM: number; mat: 'slate' | 'tile' | 'lead
 export type KitWall = { plain: true; hex: string; flat?: boolean } | { plain: false; style: 'canal' | 'school'; hex: string };
 /** `hides`: further parts the kit's own geometry replaces (a dome's OSM bands under a modelled dome). */
 /** `body`: the landmark's remaining parts, walled in the kit's own style instead of a generic facade. */
-export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; wall?: KitWall; hides?: string[]; body?: string[] };
+/**
+ * A row of parallel halls under one footprint (a tram depot, a market): the footprint is cut
+ * into strips `widthM` wide across the axis of its longest wall, starting from `anchor`
+ * ([lng, lat], a corner where two halls meet), and each strip's stretch of the footprint gets
+ * its own pitched roof with gable ends, ridge along the axis, eaves at `eavesM`.
+ */
+export type KitHalls = { id: string; widthM: number; anchor: [number, number]; eavesM: number; riseM: number; mat: 'slate' | 'tile' | 'lead' };
+export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; halls?: KitHalls[]; wall?: KitWall; hides?: string[]; body?: string[] };
 
 export const MAT_HEX: Record<Mat, string> = {
   brick: '#9a5240', blue: '#3f5f9a', stone: '#cfc2a6', lead: '#4d535c', gold: '#d9b24c', copper: '#6aa896', slate: '#4a525d', white: '#efe9db', tile: '#b5543a',
@@ -284,12 +291,22 @@ export const KITS: Kit[] = [
     roofs: [],
     body: ['w1390692763', 'w1390692767', 'w1390692768', 'w1390692769', 'w1390692770', 'w1390692771', 'w1390692772', 'w1390692766', 'w1390692764', 'w1390692765'],
   },
+  {
+    // De Hallen, the 1902-05 Tollensstraat tram depot (user report 2026-10-02: one bare tan
+    // block). One BAG footprint over a row of brick sheds about 9.6 m wide, whose gable ends
+    // step back 6 m each along the Bellamyplein side (the footprint's 9.6 m / 6 m step edges).
+    name: 'De Hallen',
+    wall: { plain: false, style: 'school', hex: '#9a5844' },
+    tiers: [], stacks: [], roofs: [],
+    halls: [{ id: 'NL.IMBAG.Pand.0363100012236693', widthM: 9.62, anchor: [4.868004, 52.367613], eavesM: 7.2, riseM: 3.4, mat: 'slate' }],
+  },
 ];
 
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */
-export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.hides ?? [])]));
+export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? [])]));
 export const KIT_HIDE_IDS: readonly string[] = [...new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...(k.hides ?? [])]))];
 const KIT_ROOF = new Map(KITS.flatMap(k => k.roofs.map(r => [r.id, { roof: r, wall: k.wall }] as const)));
+const KIT_HALLS = new Map(KITS.flatMap(k => (k.halls ?? []).map(h => [h.id, { halls: h, wall: k.wall }] as const)));
 const KIT_BODY = new Map(KITS.flatMap(k => (k.wall ? (k.body ?? []).map(id => [id, k.wall!] as const) : [])));
 
 type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
@@ -299,6 +316,11 @@ export function decorateKitRoof<T extends GeoFeature>(feature: T): T {
   const body = KIT_BODY.get(String(feature.properties.id ?? ''));
   if (body && !feature.properties.kitWall) {
     return { ...feature, properties: { ...feature.properties, facade: 'kit', facadeStyle: body.plain ? 'school' : body.style, kitWall: body.plain ? (body.flat ? 'flat' : 'plain') : 'grid', kitWallHex: body.hex, sideColour: body.hex } };
+  }
+  const hall = KIT_HALLS.get(String(feature.properties.id ?? ''));
+  if (hall && !feature.properties.kitRoof) {
+    const wall = hall.wall, walled = wall ? { facade: 'kit', facadeStyle: wall.plain ? 'school' : wall.style, kitWall: wall.plain ? 'plain' : 'grid', kitWallHex: wall.hex, sideColour: wall.hex } : {};
+    return { ...feature, properties: { ...feature.properties, kitRoof: true, roofShape: 'gabled', roofEavesHeightM: hall.halls.eavesM, ...walled } };
   }
   const entry = KIT_ROOF.get(String(feature.properties.id ?? ''));
   if (!entry || feature.properties.kitRoof) return feature;
@@ -420,5 +442,58 @@ export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): Ki
       sink.out.push({ p: t.p, uv: t.uv, layer: slope ? 'slope' : 'plain', hex: slope ? hex : MAT_HEX.stone, n: t.n });
     }
   }
+  for (const spec of kit.halls ?? []) {
+    const part = parts.get(spec.id);
+    if (!part) continue;
+    const sink = sinkFor(spec.id), hex = MAT_HEX[spec.mat === 'tile' ? 'tile' : spec.mat === 'lead' ? 'lead' : 'slate'], gable = kit.wall?.hex ?? MAT_HEX.brick;
+    const plan: RoofPlan = { kind: 'pitched', gable: 'plain', riseM: spec.riseM, dormers: false, material: 'slate', tone: 0, seed: spec.id, chimney: false };
+    for (const rect of hallRects(part.ring, spec.widthM, toLocal(spec.anchor))) {
+      for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
+        const slope = t.part === 'slope';
+        sink.out.push({ p: t.p, uv: t.uv, layer: slope ? 'slope' : 'plain', hex: slope ? hex : gable, n: t.n });
+      }
+    }
+  }
   return [...out].map(([id, sink]) => ({ id, tris: sink.out }));
+}
+
+// Kit parts arrive in the three layer's local metres (ORIGIN in threeBuildingFeatures.ts).
+const KIT_ORIGIN = { lng: 4.9, lat: 52.37 };
+const toLocal = ([lng, lat]: [number, number]): Vec2 => [(lng - KIT_ORIGIN.lng) * 111_320 * Math.cos(KIT_ORIGIN.lat * Math.PI / 180), (lat - KIT_ORIGIN.lat) * 110_540];
+
+/**
+ * The halls under one footprint: the ring is cut into strips `widthM` wide across the
+ * direction of its longest edge, aligned so a strip line passes through `anchor`, and each
+ * strip's centre line, clipped to the ring, gives one hall rectangle (several where the
+ * footprint has a notch). Halls shorter than 4 m are dropped.
+ */
+export function hallRects(ring: readonly Vec2[], widthM: number, anchor: Vec2): Rect[] {
+  const pts = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : ring.slice();
+  if (pts.length < 3 || !(widthM > 1)) return [];
+  let ux = 1, uy = 0, best = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const [a, b] = [pts[i], pts[(i + 1) % pts.length]], len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+    if (len > best) { best = len; ux = (b[0] - a[0]) / len; uy = (b[1] - a[1]) / len; }
+  }
+  const vx = -uy, vy = ux;
+  const local = pts.map(([x, y]) => [(x - anchor[0]) * ux + (y - anchor[1]) * uy, (x - anchor[0]) * vx + (y - anchor[1]) * vy] as Vec2);
+  const vMin = Math.min(...local.map(p => p[1])), vMax = Math.max(...local.map(p => p[1]));
+  const out: Rect[] = [];
+  for (let k = Math.floor(vMin / widthM); k * widthM < vMax; k++) {
+    const v0 = Math.max(vMin, k * widthM), v1 = Math.min(vMax, (k + 1) * widthM), vc = (v0 + v1) / 2;
+    if (v1 - v0 < widthM * 0.4) continue;
+    const xs: number[] = [];
+    for (let i = 0; i < local.length; i++) {
+      const [a, b] = [local[i], local[(i + 1) % local.length]];
+      if ((a[1] > vc) !== (b[1] > vc)) xs.push(a[0] + ((vc - a[1]) / (b[1] - a[1])) * (b[0] - a[0]));
+    }
+    xs.sort((p, q) => p - q);
+    for (let i = 0; i + 1 < xs.length; i += 2) {
+      const u0 = xs[i], u1 = xs[i + 1];
+      if (u1 - u0 < 4) continue;
+      const cu = (u0 + u1) / 2;
+      out.push({ cx: anchor[0] + ux * cu + vx * vc, cy: anchor[1] + uy * cu + vy * vc, ux, uy, len: u1 - u0, wid: v1 - v0, coverage: 1, maxDev: 0 });
+    }
+  }
+  return out;
 }

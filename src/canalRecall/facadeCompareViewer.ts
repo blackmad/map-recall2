@@ -74,8 +74,13 @@ async function loadTile(x: number, y: number): Promise<any[]> {
     const [ax, ay] = local([meta.wall.startLngLat])[0], [bx, by] = local([meta.wall.endLngLat])[0];
     const b = meta.wall.outwardBearingDeg * Math.PI / 180, ox = Math.sin(b), oy = Math.cos(b), mx = (ax + bx) / 2, my = (ay + by) / 2;
     const len = Math.hypot(bx - ax, by - ay) || 1, half = len / 2 + 25, ux = (bx - ax) / len, uy = (by - ay) / len;
-    // By the footprint's centre: a neighbour with one corner proud of the wall line (a bay, a stoop) is not across the street.
-    const inFront = (pts: [number, number][]) => { const x = pts.reduce((t, p) => t + p[0], 0) / pts.length, y = pts.reduce((t, p) => t + p[1], 0) / pts.length, out = (x - mx) * ox + (y - my) * oy, along = (x - mx) * ux + (y - my) * uy; return out > 2 && out < 70 && Math.abs(along) < half; };
+    // In the view corridor: a building that covers any point between the wall and the camera
+    // (3-70 m out, along the wall's length) is across the street. Neighbours sharing the wall line,
+    // even with a bay or stoop a metre or two proud, cover none of those points.
+    const contains = (pts: [number, number][], x: number, y: number) => { let c = false; for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) { const [xi, yi] = pts[i], [xj, yj] = pts[j]; if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c; } return c; };
+    const corridor: [number, number][] = [];
+    for (let out = 3; out <= 70; out += 2) for (let al = -len / 2; al <= len / 2 + 1e-6; al += Math.max(1, len / 8)) corridor.push([mx + ox * out + ux * al, my + oy * out + uy * al]);
+    const inFront = (pts: [number, number][]) => corridor.some(([x, y]) => contains(pts, x, y));
     for (let i = context.length - 1; i >= 0; i--) if (inFront(context[i].pts)) context.splice(i, 1);
   }
   // Footprint parts that carry the front stop at the front's own body height.
@@ -99,7 +104,7 @@ async function loadTile(x: number, y: number): Promise<any[]> {
       for (const h of setup.kit.roofs) { const p = parts.get(h.id); if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, '#9a5240')); }
       const unused = [...parts.values()].filter(p => !setup.kit.tiers.some(t => t.id === p.id) && !setup.kit.roofs.some(h => h.id === p.id));
       // A storefront leaves its building alone: brick like the game's facades, not the shop's colour.
-      for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, storefront && front?.storefront ? '#8f5440' : front?.hex ?? '#9a5240'));
+      for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, storefront && front?.storefront ? front.carrierHex ?? '#8f5440' : front?.hex ?? '#9a5240'));
       const chunk = buildKitChunk(kitGeometry(setup.kit, parts), { plain: 0, flat: 0, slope: 0 });
       const geometry = new THREE.BufferGeometry(), pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);
       for (let i = 0; i < chunk.vertexCount; i++) {

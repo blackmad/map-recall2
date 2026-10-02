@@ -1154,6 +1154,7 @@ class GameRouteRuntime {
       const ways = await this.osmLoader.fetchRoads(lat, lng, OSM_FETCH_RADIUS, this.travelMode, this.cityId);
       if (stale()) return;
       if (this.vectorMap && this.vectorMap.setCycleTracks) this.vectorMap.setCycleTracks(this.travelMode === 'car' ? ways : []);
+      if (this.vectorMap && this.vectorMap.setStreetFronts) this.vectorMap.setStreetFronts(this.travelMode === 'car' ? ways : []);
 
       if (ways.length === 0) {
         this.loadingMessage = `No named ${networkNoun} found here.`;

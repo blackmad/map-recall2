@@ -23,6 +23,7 @@ import { frontKitGeometry, lookHex } from './landmarkFronts.js';
 import { decorateShopfront, setShopfronts } from './shopfronts.js';
 import { houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
+import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
 import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, ROOF_TONES, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
@@ -404,6 +405,35 @@ export class ThreeBuildings {
     this.setFeatures(this.lastFeatures);
   }
 
+  /**
+   * The routing ways of the current network ({ highway, nodes: [{ lat, lon }] }): front doors
+   * then go only on walls that face a street. Empty (boat and transit modes) keeps the old
+   * rule, a door on any outer wall. Rebuilds the resident building chunks.
+   */
+  setStreets(ways: ReadonlyArray<{ highway?: string; nodes?: ReadonlyArray<{ lat: number; lon: number }> }>): void {
+    const segs = streetSegments(ways.map(w => ({ highway: w.highway, points: (w.nodes ?? []).map(n => [n.lon, n.lat] as const) })), ORIGIN);
+    this.streets = segs.length ? new SegmentGrid(segs, 200) : null;
+    for (const [key, entry] of [...this.chunks]) if (key !== KIT_KEY && !key.startsWith(BOAT_PREFIX)) this.pending.push(() => this.rebuild(key, entry.source));
+    this.pump();
+  }
+
+  private streets: SegmentGrid | null = null;
+
+  /** The street segments within reach of a chunk's buildings, metres from ORIGIN, for the chunk builder. */
+  private streetsFor(source: readonly Feature[]): Float32Array | undefined {
+    if (!this.streets) return undefined;
+    const kx = 111_320 * Math.cos(ORIGIN.lat * Math.PI / 180), ky = 110_540;
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const f of source) for (const polygon of asPolygons(f.geometry)) for (const [lng, lat] of polygon[0] ?? []) {
+      const x = (lng - ORIGIN.lng) * kx, y = (lat - ORIGIN.lat) * ky;
+      if (x < minX) minX = x; if (x > maxX) maxX = x; if (y < minY) minY = y; if (y > maxY) maxY = y;
+    }
+    if (!(minX <= maxX)) return undefined;
+    const pad = FALLBACK_REACH_M, segs = this.streets.segs, out: number[] = [];
+    for (const i of this.streets.near(minX - pad, minY - pad, maxX + pad, maxY + pad)) out.push(segs[i * 4], segs[i * 4 + 1], segs[i * 4 + 2], segs[i * 4 + 3]);
+    return Float32Array.from(out);
+  }
+
   /** OSM houseboat footprints (Amsterdam extract); drawn by the houseboat generator in the resident tiles. */
   setHouseboats(boats: readonly Houseboat[]): void {
     this.boatTiles = houseboatsByTile(boats);
@@ -438,11 +468,11 @@ export class ThreeBuildings {
     if (worker) {
       // Off the main thread; a reply for an older generation (the tile changed again, or the look) is dropped.
       this.inflight.set(key, source);
-      worker.postMessage({ key, gen, look: this.look, features: source, mode: key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls' });
+      worker.postMessage({ key, gen, look: this.look, features: source, mode: key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls', streets: this.streetsFor(source) });
       return;
     }
     const t0 = performance.now();
-    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, this.look, key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls');
+    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, this.look, key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls', this.streetsFor(source));
     this.install(key, source, chunk, performance.now() - t0);
   }
 
@@ -492,6 +522,10 @@ export class ThreeBuildings {
     geometry.setAttribute('accent', release(new THREE.BufferAttribute(chunk.accents, 4, true)));
     geometry.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(chunk.vertexCount), 1, false));
     geometry.setIndex(release(new THREE.BufferAttribute(chunk.indices, 1)));
+    // three.js uploads a new mesh, then computes its bounding sphere to sort it.
+    // With `position` already freed that throws inside MapLibre's frame and the
+    // whole map flashes once per new chunk, so measure while the array exists.
+    geometry.computeBoundingSphere();
     const mesh = new THREE.Mesh(geometry, this.material);
     mesh.frustumCulled = false;
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
