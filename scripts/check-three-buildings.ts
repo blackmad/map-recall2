@@ -417,6 +417,32 @@ for (const c of [0.64, 1.4]) {
 }
 
 {
+  // Fatih mosque, Rozengracht 150 (user report 2026-10-02: "wtf happened to this building both in
+  // size and color", a 37 m green box): the nave stops at its eaves under one pitched roof, and
+  // two brick towers inside the front corners rise to about 40 m with slate caps.
+  const { readFileSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const { KITS: kits, decorateKitRoof: decorate, kitGeometry: geometry } = await import('../src/canalRecall/landmarkKits.ts');
+  const tile = JSON.parse(gunzipSync(readFileSync('public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz')).toString());
+  const id = 'NL.IMBAG.Pand.0363100012167944', f = tile.features.find((x: any) => x.properties.id === id);
+  assert.ok(f, 'Fatih footprint is in its tile');
+  const KO = { lng: 4.9, lat: 52.37 }, kkx = 111_320 * Math.cos(KO.lat * Math.PI / 180);
+  const toL = ([lng, lat]: number[]): [number, number] => [(lng - KO.lng) * kkx, (lat - KO.lat) * 110_540];
+  const ring: [number, number][] = f.geometry.coordinates[0].map(toL);
+  const kit = kits.find(k => k.name === 'Fatih')!, spec = kit.halls![0];
+  const decorated = decorate({ type: 'Feature', properties: { id, height: 37.31, sideColour: '#557260' }, geometry: null });
+  assert.equal(decorated.properties.roofEavesHeightM, 16, 'the nave walls stop at the eaves, not at tower height');
+  assert.equal(decorated.properties.sideColour, kit.wall!.hex, 'dark brick, not the palette green');
+  const inside = ([x, y]: [number, number]) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) if ((ring[i][1] > y) !== (ring[j][1] > y) && x < ((ring[j][0] - ring[i][0]) * (y - ring[i][1])) / (ring[j][1] - ring[i][1]) + ring[i][0]) c = !c; return c; };
+  for (const t of spec.towers!) assert.ok(inside(toL(t.at)), 'each tower stands on the footprint');
+  const tris = geometry(kit, new Map([[id, { id, ring, minHeightM: 0, heightM: 37.31 }]]))[0].tris;
+  const zs = tris.flatMap(t => t.p.map(p => p[2])), top = Math.max(...zs);
+  assert.ok(top > 39 && top < 43, `towers about 40 m with caps (${top.toFixed(1)})`);
+  const nave = tris.filter(t => t.layer === 'slope'), ridge = Math.max(...nave.flatMap(t => t.p.map(p => p[2])));
+  assert.ok(nave.length && Math.abs(ridge - (spec.eavesM + spec.riseM)) < 0.5, `nave ridge at ${ridge.toFixed(1)} m`);
+}
+
+{
   // A shop's ground floor takes its paint colour (user 2026-10-02: "the white bit should go to the
   // ground because that's the paint color of the bottom floor … different colors"); doors and upper floors keep the wall.
   const shop: MeshBuilding = { ...house('paint', 0, 12, 12), layers: { upper: 1, ground: 2, door: 3 }, groundHex: '#2b2d2c' };
