@@ -21,6 +21,8 @@ const SPOTS = [
   { name: 'nieuw-west-de-vlugtlaan', at: [4.818892, 52.383833], face: [4.818847, 52.384367] },
   // Rozengracht / Jordaan, the start of a user's race link: dense pitched-roof terraces.
   { name: 'jordaan-rozengracht', at: [4.8531, 52.3740], face: [4.8599, 52.3613] },
+  // Centraal Station: a landmark that must keep its own form.
+  { name: 'centraal', at: [4.9003, 52.3774], face: [4.9004, 52.3789] },
 ] as const;
 
 async function parkAt(page: Page, at: readonly number[], face: readonly number[], view: 'chase' | 'cockpit') {
