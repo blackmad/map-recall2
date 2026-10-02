@@ -195,6 +195,8 @@ export interface StreetFeature {
   /** Set when the stored extract is not English, so the translation pass can find it. */
   wikipediaExtractLang?: string;
   wikipediaUrl?: string;
+  /** Where `wikipediaExtract` really came from (an article, or data a description was composed from). */
+  wikipediaExtractSource?: { sourceUrl: string; sourceLabel: string };
   wikipediaImageUrl?: string;
   /** Human-reviewed, statement-provenance trivia joined by exact extract id. */
   localFacts?: Fact[];

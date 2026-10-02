@@ -32,6 +32,7 @@ interface TriviaBearing {
   history?: TriviaText;
   wikipediaExtract?: string;
   wikipediaUrl?: string;
+  wikipediaExtractSource?: { sourceUrl: string; sourceLabel: string };
   wikipediaImageUrl?: string;
 }
 
@@ -92,10 +93,15 @@ export function attachNeighborhoodTrivia<T extends TriviaBearing>(
     const entry = historyByName.get(feature.name);
     const photo = photoByName.get(feature.name)?.imageUrl;
     if (!entry && !photo) return feature;
+    // Only an article counts as "the Wikipedia page"; text composed from data links to its own source.
+    const articleUrl = [entry?.description, entry?.history, entry?.nameOrigin].find(text => text && text.kind !== 'derived')?.sourceUrl;
+    const description = entry?.description;
     return {
       ...feature,
-      wikipediaExtract: feature.wikipediaExtract || entry?.description?.en,
-      wikipediaUrl: feature.wikipediaUrl || entry?.description?.sourceUrl || entry?.history?.sourceUrl || entry?.nameOrigin?.sourceUrl,
+      wikipediaExtract: feature.wikipediaExtract || description?.en,
+      wikipediaUrl: feature.wikipediaUrl || (description && description.kind !== 'derived' ? description.sourceUrl : articleUrl),
+      wikipediaExtractSource: feature.wikipediaExtract || !description ? feature.wikipediaExtractSource
+        : { sourceUrl: description.sourceUrl, sourceLabel: label(description) },
       wikipediaImageUrl: feature.wikipediaImageUrl || photo,
       history: feature.history || asTrivia(entry?.history),
       nameOrigin: feature.nameOrigin || asTrivia(entry?.nameOrigin),
