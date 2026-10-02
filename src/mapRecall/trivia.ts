@@ -9,7 +9,12 @@ export interface StreetNameOrigin {
 }
 
 /** One entry of `neighborhood-history.json` (see scripts/fetch-neighborhood-history.ts). */
-export interface PublishedText { en: string; sourceUrl: string; lang: 'en' | 'nl'; original?: string }
+export interface PublishedText {
+  en: string; sourceUrl: string; lang: 'en' | 'nl'; original?: string;
+  /** Set for text composed from data rather than quoted from an article (see scripts/fill-neighborhood-gaps.ts). */
+  sourceLabel?: string;
+  kind?: 'wikipedia' | 'derived';
+}
 export interface NeighborhoodHistoryEntry {
   name: string;
   description?: PublishedText;
@@ -70,7 +75,7 @@ export function attachNameOrigins<T extends TriviaBearing>(features: readonly T[
   });
 }
 
-const label = (text: PublishedText) => text.lang === 'nl' ? 'Wikipedia (translated from Dutch)' : 'Wikipedia';
+const label = (text: PublishedText) => text.sourceLabel && text.kind === 'derived' ? text.sourceLabel : text.lang === 'nl' ? 'Wikipedia (translated from Dutch)' : 'Wikipedia';
 const asTrivia = (text: PublishedText | undefined): TriviaText | undefined =>
   text ? { text: text.en, sourceUrl: text.sourceUrl, sourceLabel: label(text) } : undefined;
 

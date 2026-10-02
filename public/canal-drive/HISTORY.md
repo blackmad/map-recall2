@@ -1,5 +1,21 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Neighbourhood gap-fill pipeline
+
+User asked what neighbourhoods still lacked naming and trivia (18 of 90 had
+nothing; Sportheldenbuurt was one), then for a pipeline to fill them from every
+source: more Wikipedia searches, POI extraction, "named for a street", photos.
+`src/mapRecall/neighborhoodGaps.ts` (pure, tested in
+`scripts/check-neighborhood-gaps.ts`) and `scripts/fill-neighborhood-gaps.ts`.
+Findings that shaped it: the area's article often exists only as "Name
+(Amsterdam)" behind a disambiguation page (Sportheldenbuurt is on
+Zeeburgereiland, its streets named after Dutch sports history in 2011);
+street-name matches need word-boundary rules (a street named for a person
+called Sluis is not Sluisbuurt) and never apply to districts; a theme shared by
+the streets explains the area's name only when the name points at it. Wikimedia
+rate-limits the shared cloud egress IP, so requests are paced at one a second.
+Text composed from data is labelled with its source, not "Wikipedia".
+
 ## 2026-10-02 — Per-wall facade rendering spike merged
 
 User asked for windows and doors that line up with buildings and more
