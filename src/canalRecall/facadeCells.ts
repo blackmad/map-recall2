@@ -414,3 +414,18 @@ export function paintAllCells(): Uint8ClampedArray {
   for (const style of FACADE_STYLES) for (let variant = 0; variant < CELL_VARIANTS; variant++) for (const kind of CELL_KINDS) out.set(paintCell(style, kind, variant), cellLayer(style, kind, variant) * layer);
   return out;
 }
+
+/**
+ * The procedural cells as the two arrays the shader samples: RGBA colour and
+ * an RG tint mask (R = wall tint weight, G = accent, unused here), the same
+ * layout the bay looks use, so one shader serves every look.
+ */
+export function paintProceduralLayers(): { layers: number; colour: Uint8Array; mask: Uint8Array } {
+  const all = paintAllCells(), pixels = CELL_PX * CELL_PX * CELL_LAYER_COUNT;
+  const colour = new Uint8Array(pixels * 4), mask = new Uint8Array(pixels * 2);
+  for (let i = 0; i < pixels; i++) {
+    colour[i * 4] = all[i * 4]; colour[i * 4 + 1] = all[i * 4 + 1]; colour[i * 4 + 2] = all[i * 4 + 2]; colour[i * 4 + 3] = 255;
+    mask[i * 2] = all[i * 4 + 3]; mask[i * 2 + 1] = 0;
+  }
+  return { layers: CELL_LAYER_COUNT, colour, mask };
+}

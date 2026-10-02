@@ -27,6 +27,17 @@ function canalRecallLookFlag(param, global, fallback) {
   return fallback;
 }
 
+// `?buildings3d=1` (procedural cells), `=cartoon` or `=photo` (the rendering
+// spike's bay drawings). window.__canalRecallBuildings3d takes the same values.
+function canalRecallBuildings3dLook() {
+  try {
+    const raw = typeof window.__canalRecallBuildings3d !== 'undefined' ? window.__canalRecallBuildings3d : new URLSearchParams(window.location.search).get('buildings3d');
+    if (raw === true || raw === '1' || raw === 'true' || raw === 'on' || raw === 'procedural') return 'procedural';
+    if (raw === 'cartoon' || raw === 'photo') return raw;
+  } catch (_) { /* no window */ }
+  return null;
+}
+
 class VectorBasemap {
   constructor(container) {
     this.container = container;
@@ -52,7 +63,8 @@ class VectorBasemap {
     // Spike (2026-10-02): facade walls as a three.js custom layer instead of the
     // fill-extrusion pattern. Off by default; `?buildings3d=1`. See
     // RENDERING_STACK_OPTIONS.md.
-    this._buildings3dEnabled = canalRecallLookFlag('buildings3d', '__canalRecallBuildings3d', false);
+    this._buildings3dLook = canalRecallBuildings3dLook();
+    this._buildings3dEnabled = !!this._buildings3dLook;
     this._threeBuildings = null;
     this._detailedBuildings = null;
     this._completeCity = null;
@@ -786,9 +798,15 @@ class VectorBasemap {
   _addThreeBuildingsLayer() {
     const api = window.CanalRecallThreeBuildings;
     if (!this._buildings3dEnabled || !this._facadesLib() || !api || !api.ThreeBuildings) return;
-    if (!this._threeBuildings) this._threeBuildings = new api.ThreeBuildings(this.map, window.maplibregl);
+    if (!this._threeBuildings) this._threeBuildings = new api.ThreeBuildings(this.map, window.maplibregl, this._buildings3dLook);
     if (!this.map.getLayer(this._threeBuildings.layer.id)) this.map.addLayer(this._threeBuildings.layer);
     this._threeBuildings.setVisible(this._facadesActive());
+  }
+
+  /** Switch the three.js wall look live: 'procedural' | 'cartoon' | 'photo'. Console: `canalRecallGame.vectorMap.setBuildingsLook('cartoon')`. */
+  setBuildingsLook(look) {
+    this._buildings3dLook = look;
+    return this._threeBuildings ? this._threeBuildings.setLook(look) : undefined;
   }
 
   _syncThreeBuildings(features) {
@@ -1109,7 +1127,7 @@ class VectorBasemap {
     if (!this.map || !this._poiLayerIds || typeof this.map.getLayersOrder !== 'function') return;
     const order = this.map.getLayersOrder();
     let topBuilding = -1;
-    order.forEach((id, index) => { if (/^osm-colored-building|^building-3d|detailed|signature/.test(id)) topBuilding = index; });
+    order.forEach((id, index) => { if (/^osm-colored-building|^building-3d|^three-building|detailed|signature/.test(id)) topBuilding = index; });
     if (topBuilding < 0) return;
     const buried = this._poiLayerIds.filter(id => { const index = order.indexOf(id); return index >= 0 && index < topBuilding; });
     for (const id of buried) this.map.moveLayer(id);

@@ -23,6 +23,9 @@ export type MeshBuilding = {
   minHeightM: number;
   style: FacadeStyle;
   wallHex: string;
+  /** A bay look's own layers and accent colour; absent means the procedural cells. */
+  layers?: { upper: number; ground: number; door: number };
+  accentHex?: string;
 };
 
 export type Origin = { lng: number; lat: number };
@@ -33,8 +36,10 @@ export type Chunk = {
   uvs: Float32Array;
   /** Texture-array layer, one byte per vertex. */
   layers: Uint8Array;
-  /** RGBA, alpha unused (kept for 4-byte alignment). */
+  /** RGB wall tint (colour x per-building tone); alpha is the directional shade. */
   tints: Uint8Array;
+  /** RGBA accent colour (door leaf, shutters, awnings) for the bay looks; white otherwise. */
+  accents: Uint8Array;
   indices: Uint32Array;
   ranges: VertexRange[];
   vertexCount: number;
@@ -145,7 +150,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     return !!others && others.some(o => o.top >= b.heightM && o.base <= b.minHeightM);
   };
 
-  type Quad = { e: Edge; u0: number; u1: number; v1: number; layer: number; z0: number; z1: number; tint: [number, number, number]; along0: number; along1: number };
+  type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number }> = [];
   let quadTotal = 0, wallTotal = 0;
   for (const { b, edges, top } of prepared) {
@@ -153,6 +158,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     const base = b.minHeightM;
     const [r, g, bl] = parseHex(b.wallHex);
     const variant = Math.floor(hash01(`${b.id}:look`) * CELL_VARIANTS);
+    const accent = parseHex(b.accentHex ?? '#ffffff');
     const jitter = 0.94 + hash01(`${b.id}:tone`) * 0.12;
     let walls = 0;
     for (const e of edges) {
@@ -160,13 +166,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       const layout = layoutWall(b.style, e.len, top - base, hash01(`${b.id}:${edgeKey(e.x0, e.y0)}`), base < 0.5);
       if (!layout) continue;
       walls++;
-      const shade = wallShade(e.nx, e.ny) * jitter;
-      const tint: [number, number, number] = [Math.min(255, r * shade), Math.min(255, g * shade), Math.min(255, bl * shade)];
+      const shade = wallShade(e.nx, e.ny);
+      const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), shade * 255];
       const groundTop = base + layout.groundM;
       for (const run of groundRuns(layout)) {
-        quads.push({ e, u0: 0, u1: run.to - run.from, v1: 1, layer: cellLayer(b.style, run.door ? 'door' : 'ground', variant), z0: base, z1: groundTop, tint, along0: run.from / layout.bays, along1: run.to / layout.bays });
+        quads.push({ e, u0: 0, u1: run.to - run.from, v1: 1, layer: b.layers ? (run.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, run.door ? 'door' : 'ground', variant), accent, z0: base, z1: groundTop, tint, along0: run.from / layout.bays, along1: run.to / layout.bays });
       }
-      if (layout.storeys > 0) quads.push({ e, u0: 0, u1: layout.bays, v1: layout.storeys, layer: cellLayer(b.style, 'upper', variant), z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
+      if (layout.storeys > 0) quads.push({ e, u0: 0, u1: layout.bays, v1: layout.storeys, layer: b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
     }
     quadsByBuilding.push({ b, quads, walls });
     quadTotal += quads.length; wallTotal += walls;
@@ -174,7 +180,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
 
   const vertexCount = quadTotal * 4;
   const positions = new Float32Array(vertexCount * 3), uvs = new Float32Array(vertexCount * 2);
-  const layers = new Uint8Array(vertexCount), tints = new Uint8Array(vertexCount * 4);
+  const layers = new Uint8Array(vertexCount), tints = new Uint8Array(vertexCount * 4), accents = new Uint8Array(vertexCount * 4);
   const indices = new Uint32Array(quadTotal * 6);
   const ranges: VertexRange[] = [];
   let v = 0, q = 0;
@@ -193,7 +199,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
         positions[v * 3] = x; positions[v * 3 + 1] = y; positions[v * 3 + 2] = z;
         uvs[v * 2] = u; uvs[v * 2 + 1] = vv;
         layers[v] = quad.layer;
-        tints[v * 4] = quad.tint[0]; tints[v * 4 + 1] = quad.tint[1]; tints[v * 4 + 2] = quad.tint[2]; tints[v * 4 + 3] = 255;
+        tints[v * 4] = quad.tint[0]; tints[v * 4 + 1] = quad.tint[1]; tints[v * 4 + 2] = quad.tint[2]; tints[v * 4 + 3] = quad.tint[3];
+        accents[v * 4] = quad.accent[0]; accents[v * 4 + 1] = quad.accent[1]; accents[v * 4 + 2] = quad.accent[2]; accents[v * 4 + 3] = 255;
         v++;
       }
       const i = v - 4;
@@ -202,5 +209,5 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     }
     ranges.push({ id: b.id, start, count: v - start });
   }
-  return { positions, uvs, layers, tints, indices, ranges, vertexCount, quadCount: quadTotal, wallCount: wallTotal, buildingCount: ranges.length };
+  return { positions, uvs, layers, tints, accents, indices, ranges, vertexCount, quadCount: quadTotal, wallCount: wallTotal, buildingCount: ranges.length };
 }

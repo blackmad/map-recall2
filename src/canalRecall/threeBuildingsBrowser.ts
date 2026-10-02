@@ -12,7 +12,9 @@
 // per style instead of one per style x colour, and walls laid out in whole bays
 // and storeys so openings line up with the building.
 
-import { CELL_LAYER_COUNT, CELL_PX, paintAllCells } from './facadeCells.js';
+import { CELL_PX, paintProceduralLayers } from './facadeCells.js';
+import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
+import { bayTextures, type Look } from './bayTextures.js';
 import { buildChunk, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
@@ -31,14 +33,17 @@ in vec3 position;
 in vec2 uv;
 in float layer;
 in vec4 tint;
+in vec4 accent;
 in float hidden;
 uniform mat4 projectionMatrix;
 uniform mat4 modelViewMatrix;
 out vec2 vUv;
 flat out float vLayer;
 out vec3 vTint;
+out vec3 vAccent;
+out float vShade;
 void main() {
-  vUv = uv; vLayer = layer; vTint = tint.rgb;
+  vUv = uv; vLayer = layer; vTint = tint.rgb; vAccent = accent.rgb; vShade = tint.a;
   gl_Position = hidden > 0.5 ? vec4(2.0, 2.0, 2.0, 1.0) : projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }`;
 
@@ -46,13 +51,19 @@ const FRAGMENT = /* glsl */ `
 precision highp float;
 precision highp sampler2DArray;
 uniform sampler2DArray cells;
+uniform sampler2DArray masks;
 in vec2 vUv;
 flat in float vLayer;
 in vec3 vTint;
+in vec3 vAccent;
+in float vShade;
 out vec4 fragColor;
 void main() {
-  vec4 t = texture(cells, vec3(vUv, vLayer));
-  fragColor = vec4(t.rgb * mix(vec3(1.0), vTint, t.a), 1.0);
+  vec3 p = vec3(vUv, vLayer);
+  vec3 c = texture(cells, p).rgb;
+  vec2 m = texture(masks, p).rg;
+  c *= mix(vec3(1.0), vTint, m.r) * mix(vec3(1.0), vAccent, m.g);
+  fragColor = vec4(c * vShade, 1.0);
 }`;
 
 const asPolygons = (geometry: unknown): number[][][][] => {
@@ -68,6 +79,8 @@ const tileKeyOf = (polygons: number[][][][]): string => {
   const y = Math.floor(((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n);
   return `${x}/${y}`;
 };
+
+export type BuildingLook = 'procedural' | Look;
 
 export type ThreeBuildingStats = { chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number };
 
@@ -88,8 +101,77 @@ export class ThreeBuildings {
   private lastBuildMs = 0;
   private transform: any = null;
 
-  constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike) {
+  private look: BuildingLook;
+  private textureSets = new Map<BuildingLook, Promise<{ colour: any; mask: any }>>();
+  private lookToken = 0;
+
+  constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural') {
+    this.look = look;
     this.layer = this.makeLayer();
+  }
+
+  getLook(): BuildingLook { return this.look; }
+
+  /** Switch the wall look at runtime: loads its textures, then rebuilds every chunk. */
+  async setLook(look: BuildingLook): Promise<void> {
+    if (look === this.look && this.material?.uniforms.cells.value) return;
+    const token = ++this.lookToken;
+    this.look = look;
+    if (!this.THREE) return; // onAdd will pick the look up
+    const set = await this.texturesFor(look);
+    if (token !== this.lookToken) return;
+    this.material.uniforms.cells.value = set.colour;
+    this.material.uniforms.masks.value = set.mask;
+    this.textureMB = (set.colour.image.data.byteLength + set.mask.image.data.byteLength) * 4 / 3 / 1048576;
+    for (const [key, entry] of [...this.chunks]) this.pending.push(() => this.rebuild(key, entry.source));
+    this.pump();
+  }
+
+  /** Build (once) the colour and tint-mask texture arrays for a look. */
+  private texturesFor(look: BuildingLook): Promise<{ colour: any; mask: any }> {
+    let set = this.textureSets.get(look);
+    if (!set) this.textureSets.set(look, set = this.buildTextures(look));
+    return set;
+  }
+
+  private async buildTextures(look: BuildingLook): Promise<{ colour: any; mask: any }> {
+    const THREE = this.THREE;
+    let layers: number, colour: Uint8Array, mask: Uint8Array;
+    if (look === 'procedural') ({ layers, colour, mask } = paintProceduralLayers());
+    else {
+      let brick: CanvasImageSource = document.createElement('canvas');
+      if (look === 'photo') {
+        const image = new Image();
+        image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
+        try { await image.decode(); brick = image; } catch { /* flat brick: the drawn detail still reads */ }
+      }
+      layers = BAY_LAYER_COUNT;
+      colour = new Uint8Array(CELL_PX * CELL_PX * 4 * layers); mask = new Uint8Array(CELL_PX * CELL_PX * 2 * layers);
+      const scratch = document.createElement('canvas'); scratch.width = scratch.height = CELL_PX;
+      const ctx = scratch.getContext('2d', { willReadFrequently: true })!;
+      for (const entry of BAY_ENTRIES) {
+        const { colour: c, mask: m } = bayTextures(bayVariant(entry), brick, look);
+        for (const [source, isMask] of [[c, false], [m, true]] as const) {
+          ctx.clearRect(0, 0, CELL_PX, CELL_PX);
+          ctx.drawImage(source, 0, 0, CELL_PX, CELL_PX);
+          const data = ctx.getImageData(0, 0, CELL_PX, CELL_PX).data;
+          // Canvas rows run down from the top; layer rows run up from the ground.
+          for (let y = 0; y < CELL_PX; y++) for (let x = 0; x < CELL_PX; x++) {
+            const from = ((CELL_PX - 1 - y) * CELL_PX + x) * 4, px = y * CELL_PX + x;
+            if (isMask) { mask[(entry.layer * CELL_PX * CELL_PX + px) * 2] = data[from]; mask[(entry.layer * CELL_PX * CELL_PX + px) * 2 + 1] = data[from + 1]; }
+            else { const to = (entry.layer * CELL_PX * CELL_PX + px) * 4; colour[to] = data[from]; colour[to + 1] = data[from + 1]; colour[to + 2] = data[from + 2]; colour[to + 3] = 255; }
+          }
+        }
+      }
+    }
+    const array = (data: Uint8Array, format: any) => {
+      const t = new THREE.DataArrayTexture(data, CELL_PX, CELL_PX, layers);
+      t.format = format; t.type = THREE.UnsignedByteType;
+      t.wrapS = t.wrapT = THREE.RepeatWrapping; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter;
+      t.generateMipmaps = true; t.anisotropy = this.renderer.capabilities.getMaxAnisotropy(); t.unpackAlignment = 1; t.needsUpdate = true;
+      return t;
+    };
+    return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat) };
   }
 
   setVisible(visible: boolean): void {
@@ -140,12 +222,12 @@ export class ThreeBuildings {
     let buildings = 0, walls = 0, quads = 0, vertices = 0, bytes = 0;
     for (const { chunk } of this.chunks.values()) {
       buildings += chunk.buildingCount; walls += chunk.wallCount; quads += chunk.quadCount; vertices += chunk.vertexCount;
-      bytes += chunk.positions.byteLength + chunk.uvs.byteLength + chunk.layers.byteLength + chunk.tints.byteLength + chunk.indices.byteLength + chunk.vertexCount;
+      bytes += chunk.positions.byteLength + chunk.uvs.byteLength + chunk.layers.byteLength + chunk.tints.byteLength + chunk.accents.byteLength + chunk.indices.byteLength + chunk.vertexCount;
     }
     const info = this.renderer?.info?.render;
     return {
       chunks: this.chunks.size, buildings, walls, quads, vertices,
-      geometryMB: bytes / 1048576, textureMB: (CELL_PX * CELL_PX * 4 * CELL_LAYER_COUNT * 4) / 3 / 1048576,
+      geometryMB: bytes / 1048576, textureMB: this.textureMB,
       drawCalls: info?.calls ?? 0, triangles: info?.triangles ?? 0, buildMs: this.lastBuildMs,
     };
   }
@@ -153,13 +235,15 @@ export class ThreeBuildings {
   dispose(): void {
     for (const key of [...this.chunks.keys()]) this.dropChunk(key);
     this.material?.dispose();
-    this.cellTexture?.dispose();
+    for (const set of this.textureSets.values()) void set.then(t => { t.colour.dispose(); t.mask.dispose(); });
   }
 
-  private cellTexture: any;
+  private textureMB = 0;
+
+  private ready = false;
 
   private pump(): void {
-    if (this.pumping || !this.pending.length || !this.THREE) return;
+    if (this.pumping || !this.pending.length || !this.THREE || !this.ready) return;
     this.pumping = true;
     // One chunk per task: a z14 tile is ~10-30 ms of layout and fill, so
     // spreading them keeps a tile arrival from stalling a frame.
@@ -177,8 +261,14 @@ export class ThreeBuildings {
     const minHeightM = Number(p.minHeight) || 0;
     const heightM = wallTopHeightM(p);
     if (!polygons.length || !Number.isFinite(heightM)) return null;
+    const id = String(p.id ?? '');
+    if (this.look !== 'procedural') {
+      const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
+      const bay = bayLookFor(id, year, Number(p.height) || heightM, this.look);
+      return { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers };
+    }
     return {
-      id: String(p.id ?? ''), polygons, heightM, minHeightM,
+      id, polygons, heightM, minHeightM,
       style: (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19',
       wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b',
     };
@@ -197,6 +287,7 @@ export class ThreeBuildings {
     geometry.setAttribute('uv', new THREE.BufferAttribute(chunk.uvs, 2));
     geometry.setAttribute('layer', new THREE.BufferAttribute(chunk.layers, 1, false));
     geometry.setAttribute('tint', new THREE.BufferAttribute(chunk.tints, 4, true));
+    geometry.setAttribute('accent', new THREE.BufferAttribute(chunk.accents, 4, true));
     geometry.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(chunk.vertexCount), 1, false));
     geometry.setIndex(new THREE.BufferAttribute(chunk.indices, 1));
     const mesh = new THREE.Mesh(geometry, this.material);
@@ -241,28 +332,24 @@ export class ThreeBuildings {
         owner.scene = new THREE.Scene();
         owner.renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         owner.renderer.autoClear = false;
-        const cells = paintAllCells();
-        const texture = new THREE.DataArrayTexture(new Uint8Array(cells.buffer, cells.byteOffset, cells.byteLength), CELL_PX, CELL_PX, CELL_LAYER_COUNT);
-        texture.format = THREE.RGBAFormat;
-        texture.type = THREE.UnsignedByteType;
-        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-        texture.minFilter = THREE.LinearMipmapLinearFilter;
-        texture.magFilter = THREE.LinearFilter;
-        texture.generateMipmaps = true;
-        texture.anisotropy = owner.renderer.capabilities.getMaxAnisotropy();
-        texture.needsUpdate = true;
-        owner.cellTexture = texture;
         owner.material = new THREE.RawShaderMaterial({
           glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
-          uniforms: { cells: { value: texture } }, side: THREE.FrontSide,
+          uniforms: { cells: { value: null }, masks: { value: null } }, side: THREE.FrontSide,
+        });
+        void owner.texturesFor(owner.look).then(set => {
+          owner.material.uniforms.cells.value = set.colour;
+          owner.material.uniforms.masks.value = set.mask;
+          owner.textureMB = (set.colour.image.data.byteLength + set.mask.image.data.byteLength) * 4 / 3 / 1048576;
+          owner.ready = true;
+          owner.pump();
+          owner.map.triggerRepaint();
         });
         const c = owner.maplibregl.MercatorCoordinate.fromLngLat([ORIGIN.lng, ORIGIN.lat], 0);
         const scale = c.meterInMercatorCoordinateUnits();
         owner.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(scale, -scale, scale));
-        owner.pump();
       },
       render(_gl: WebGL2RenderingContext, args: any) {
-        if (!owner.visible || !owner.scene || !owner.chunks.size || owner.map.getZoom() < MIN_ZOOM) return;
+        if (!owner.visible || !owner.ready || !owner.scene || !owner.chunks.size || owner.map.getZoom() < MIN_ZOOM) return;
         owner.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(owner.transform);
         owner.renderer.resetState();
         owner.renderer.render(owner.scene, owner.camera);
