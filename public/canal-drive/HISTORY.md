@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Generic period facades and stylised OSM trees (experiment, on by default)
+
+User request: "trees on top of OSM trees" and "a really generic building look
+… doors/windows … roughly based on year of construction and size".
+- Facades: MapLibre 5 can only texture extrusion walls with
+  `fill-extrusion-pattern`, which replaces the wall colour, so the colour is
+  baked into 20 images: six period styles (canal house before 1860,
+  19th century 1860–1914, Amsterdam School 1915–1944, post-war 1945–1984,
+  modern 1985 on, and tower: 30 m or taller, built 1950 or later), each in a
+  short slice of the palette. Construction year comes from the building-facts
+  tiles via a new tile enricher. Sheds and kiosks stay plain, as do measured or
+  OSM-tagged colours. A plain cornice strip stops the pattern reaching the roof.
+  MapLibre stores a pattern's pixel ratio as an integer (Uint16), so the images
+  are 8 px/m: zoom 15–19 each get a whole ratio, and the image set is swapped at
+  integer zooms. Above zoom 19 the walls are plain. A fractional ratio made the
+  layer silently vanish at cockpit zoom.
+- Trees: `trees.json` existed but was never loaded. Trees are now a four-sided
+  trunk plus a six-sided crown, as extrusions, near the route only, and none
+  within 3.2 m of the route line. Display only: physics never sees them.
+- Cost: on iPhone with 4× throttle, the difference stays within run-to-run noise
+  (median map render 10.6–11.4 ms in every variant). Headless WebGL is
+  software-rendered, so check on a real device. `?facades=0&trees3d=0` restores
+  the old look exactly.
+
 ## 2026-10-01 — "Building street network…" was the trivia download
 
 The user asked whether that loading step is real. It is the slowest one, but it

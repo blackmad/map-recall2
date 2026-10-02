@@ -66,6 +66,20 @@ Den Haag) no street encyclopedia text. Same rules as Amsterdam: sourced only,
 Dutch reviewed before it ships. Map Recall also still reads only the Amsterdam
 extract; other cities fall back to live OSM.
 
+**Facades/trees experiment follow-ups (merged 2026-10-02).** Tree data is
+thin: `build-osm-trees.ts` caps at 35,000 trees in file order, which leaves
+~380 in the canal belt (sort by distance from the centre, raise the cap, or
+tile it). Facades shimmer on steep walls in phone cockpit (no mipmaps; use a
+coarser image set at high pitch). Tiles rebuild at each integer zoom crossing,
+a hitch not yet measured. The ground floor repeats above 32 m except on
+towers. Facades are Amsterdam-only, and walls take a period palette colour.
+Check on a real device.
+
+**Keyboard ride flake.** One of six Sint Antoniessluis rides stalled at the
+Uilenburg quay end (turned 0.02 rad, so no steering key was held) while the
+machine ran other perf tests. Make the test driver robust to slow frames and
+save the trace whenever a ride fails, before calling it a game trap.
+
 **Map Recall follow-ups.** 14 OSM neighbourhoods have no article in either
 language (Rijnbuurt, Scheldebuurt, Westindische Buurt, Van Galenbuurt, …);
 a street-named one could borrow its street's register origin, labelled as such.
