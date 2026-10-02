@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import { FRONTS, STOREFRONT_BY_SLUG, STOREFRONT_FRONTS } from '../src/canalRecall/landmarkFrontData.ts';
 import { STOREFRONT_SPECS } from '../src/canalRecall/storefrontSpecs.ts';
+import { textPixels } from '../src/canalRecall/pixelFont.ts';
 import { STOREFRONT_WALLS } from '../src/canalRecall/storefrontWalls.generated.ts';
 import { frontTriangles } from '../src/canalRecall/landmarkFronts.ts';
 
@@ -44,8 +45,15 @@ for (const [name, front] of Object.entries(FRONTS)) {
 {
   const specs = Object.entries(STOREFRONT_SPECS), unplaced = specs.filter(([slug]) => !(slug in STOREFRONT_WALLS)).map(([slug]) => slug);
   const offWall = [...STOREFRONT_BY_SLUG].filter(([slug, f]) => f.boxes.some(b => b.x0 < -0.5 || b.x1 > STOREFRONT_WALLS[slug].lengthM + 0.5 || !(b.z1 > b.z0))).map(([slug]) => slug);
-  const ok = unplaced.length === 0 && offWall.length === 0 && STOREFRONT_FRONTS.length >= 290;
+  // Real lettering: a sign spells its name in the pixel font (Bojo's fascia, Troost's tiles).
+  const font = textPixels('AB').width === 11 && textPixels('BOJO').runs.length > 20;
+  const lettered = ['bojo-68561', 'brouwerij-troost-26831'].every(slug => STOREFRONT_BY_SLUG.get(slug)!.boxes.filter(b => b.face).length > 30);
+  // Registration: Bojo's photo is 1.0 m off its footprint wall; with its shift the shop fills its building.
+  const bojo = STOREFRONT_BY_SLUG.get('bojo-68561')!.outline, registered = bojo[0][0] === 0 && Math.abs(bojo[1][0] - STOREFRONT_WALLS['bojo-68561'].lengthM) < 1e-6;
+  // Whole facades: Buiten is a teal steel shed, so its spec is a full front that recolours the building, not a shop row.
+  const buiten = STOREFRONT_BY_SLUG.get('buiten-amsterdam-48608')!, facade = !buiten.storefront && buiten.hex === '#3f7f80' && Math.max(...buiten.outline.map(p => p[1])) > 6.5;
+  const ok = unplaced.length === 0 && offWall.length === 0 && STOREFRONT_FRONTS.length >= 280 && font && lettered && registered && facade;
   failed ||= !ok;
-  console.log(`${ok ? 'ok  ' : 'FAIL'} storefronts: ${STOREFRONT_FRONTS.length} built of ${specs.length} specs${unplaced.length ? `; no wall for ${unplaced.join(', ')}` : ''}${offWall.length ? `; off their wall: ${offWall.join(', ')}` : ''}`);
+  console.log(`${ok ? 'ok  ' : 'FAIL'} storefronts: ${STOREFRONT_FRONTS.length} built of ${specs.length} specs${unplaced.length ? `; no wall for ${unplaced.join(', ')}` : ''}${offWall.length ? `; off their wall: ${offWall.join(', ')}` : ''}${font && lettered ? '' : '; lettering missing'}${registered ? '' : '; Bojo not registered to its wall'}${facade ? '' : '; Buiten lost its whole facade'}`);
 }
 if (failed) process.exit(1);
