@@ -819,6 +819,21 @@ class VectorBasemap {
       if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
     }
     this._threeBuildings.setVisible(this._facadesActive() && this._buildings3dEnabled);
+    this._loadHouseboats();
+  }
+
+  /** OSM houseboats for the three.js houseboat generator; a city without the extract simply has none. */
+  async _loadHouseboats() {
+    if (this._houseboatsRequested || !this._threeBuildings || !this._threeBuildings.setHouseboats) return;
+    this._houseboatsRequested = true;
+    try {
+      const response = await fetch(this._extractFile('houseboats.json'));
+      if (!response.ok) return;
+      const payload = await response.json();
+      if (payload && Array.isArray(payload.boats)) this._threeBuildings.setHouseboats(payload.boats);
+    } catch (error) {
+      console.warn('Houseboats unavailable.', error);
+    }
   }
 
   /**
