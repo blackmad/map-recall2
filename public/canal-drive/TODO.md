@@ -76,7 +76,7 @@ towers. Facades are Amsterdam-only, and walls take a period palette colour.
 Check on a real device.
 
 **Empty areas of the city (user report 2026-10-02, fix shipped, unconfirmed).**
-Tile streamer retries and timeouts now cover the likely cause (see HISTORY).
+Tile streamer retries, timeouts and the wider-view re-plan cover the likely causes (see HISTORY).
 Confirm on the user's device that Jordaan/Rozengracht loads; if a tile is still
 bare, log tile keys marked empty. Also unchecked on device: the facade zoom
 hysteresis (0.3) and the 48-image set's build cost.
@@ -84,6 +84,15 @@ hysteresis (0.3) and the 48-image set's build cost.
 **Map Recall near-home follow-ups.** Home is only picked up when both apps share
 an origin; add a way to set home inside Map Recall, and a map picture of the
 ring. The ring can widen mid-game as reviews land.
+
+**Per-wall facade renderer (spike merged 2026-10-02, not in the game).**
+`rendering-spike.html` (see `RENDERING_STACK_OPTIONS.md`) renders buildings as
+three.js meshes with whole bays and storeys per wall, varied layouts and
+archetypes, and photo and cartoon looks. Next: mount it as a MapLibre custom
+layer behind the labels; atlas the bay textures; gables from `gable.ts`;
+highlighting for the answer reveal; measure frame time, hitch and shimmer on a
+phone against the extrusion layer at Rozengracht, Da Costakade, Centraal and
+Nassaukade. Decide by the numbers.
 
 **Keyboard ride flake.** One of six Sint Antoniessluis rides stalled at the
 Uilenburg quay end (turned 0.02 rad, so no steering key was held) while the
