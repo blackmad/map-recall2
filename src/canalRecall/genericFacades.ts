@@ -93,9 +93,32 @@ function stableIndex(id: string, length: number): number {
 
 export const facadeKey = (style: FacadeStyle, colour: ContextualBuildingColour) => `${style}-${colour}`;
 
-/** Every (style, colour) the city can ask for. */
+/** The eight wall colours a mapped colour can snap to. */
+export const FACADE_WALL_COLOURS: readonly ContextualBuildingColour[] = [
+  'priorBrickRed', 'priorBrickBrown', 'priorBrickDark', 'priorBrickBuff',
+  'priorPlaster', 'priorModernLight', 'priorModernGrey', 'priorCanalGreen',
+];
+
+const HEX = /^#?([0-9a-f]{6})$/i;
+const rgbOf = (hex: string) => { const n = parseInt(hex.replace('#', ''), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; };
+
+/** Closest of the eight wall colours to a mapped hex colour; null if not a 6-digit hex. */
+export function snapWallColour(hex: unknown): ContextualBuildingColour | null {
+  if (typeof hex !== 'string' || !HEX.test(hex.trim())) return null;
+  const [r, g, b] = rgbOf(hex.trim());
+  let best: ContextualBuildingColour | null = null, bestD = Infinity;
+  for (const colour of FACADE_WALL_COLOURS) {
+    const [cr, cg, cb] = rgbOf(CONTEXTUAL_BUILDING_COLOURS[colour]);
+    // Weighted RGB distance (redmean) tracks perceived difference better than plain RGB.
+    const mr = (r + cr) / 2, d = (2 + mr / 256) * (r - cr) ** 2 + 4 * (g - cg) ** 2 + (2 + (255 - mr) / 256) * (b - cb) ** 2;
+    if (d < bestD) { bestD = d; best = colour; }
+  }
+  return best;
+}
+
+/** Every (style, colour) the city can ask for: all styles in all eight wall colours. */
 export function allFacadeKeys(): Array<{ key: string; style: FacadeStyle; colour: ContextualBuildingColour }> {
-  return FACADE_STYLES.flatMap(style => FACADE_STYLE_COLOURS[style].map(colour => ({ key: facadeKey(style, colour), style, colour })));
+  return FACADE_STYLES.flatMap(style => FACADE_WALL_COLOURS.map(colour => ({ key: facadeKey(style, colour), style, colour })));
 }
 
 /** Approximate area of a lng/lat polygon's outer ring, in square metres. */
@@ -123,14 +146,19 @@ type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry:
 
 /**
  * The streamer's post-decoration hook: give a building a facade key, and the
- * period-plausible wall colour that key bakes in. Only buildings still on the
- * citywide identity prior are touched — a measured or OSM-tagged colour wins
- * and keeps the plain look — and only when the ground floor is not drawn as
+ * period-plausible wall colour that key bakes in. Buildings on the
+ * citywide identity prior get a period-plausible colour; ones with an OSM hex
+ * colour snap to the nearest wall colour. Measured colours keep the plain look — and only when the ground floor is not drawn as
  * its own layer (it would share walls with the pattern).
  */
 export function decorateFacade<T extends Feature>(feature: T): T {
   const p = feature.properties || {};
-  if (p.appearanceStyleSource !== 'citywide-identity-palette-v3-not-measured') return feature;
+  const prior = p.appearanceStyleSource === 'citywide-identity-palette-v3-not-measured';
+  // A building with its own OSM colour tag keeps that colour's family: the
+  // facade is baked in the closest of the eight wall colours.
+  const mapped = prior || p.appearanceStyleSource !== undefined ? null
+    : snapWallColour(p.sideColour ?? p.colour ?? p.color);
+  if (!prior && !mapped) return feature;
   if (p.groundAppearanceStyleSource !== undefined && p.groundAppearanceStyleSource !== 'wall-inherited-not-independently-measured') return feature;
   const heightM = Number(p.height), minHeightM = Number(p.minHeight) || 0;
   if (!Number.isFinite(heightM)) return feature;
@@ -138,7 +166,7 @@ export function decorateFacade<T extends Feature>(feature: T): T {
   const style = facadeStyleFor({ year, heightM, minHeightM, footprintM2: footprintAreaM2(feature.geometry) });
   if (!style) return feature;
   const colours = FACADE_STYLE_COLOURS[style];
-  const colour = colours[stableIndex(String(p.id ?? ''), colours.length)];
+  const colour = mapped ?? colours[stableIndex(String(p.id ?? ''), colours.length)];
   const hex = CONTEXTUAL_BUILDING_COLOURS[colour];
   return { ...feature, properties: { ...p, facade: facadeKey(style, colour), facadeStyle: style, sideColour: hex, groundColour: hex } };
 }
