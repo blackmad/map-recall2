@@ -27,6 +27,8 @@ export type MeshBuilding = {
   heightM: number;
   minHeightM: number;
   style: FacadeStyle;
+  /** The building's real period when the look lays it out as another style (facadeExtras: 19th-century dressing on a bay-look canal layout). */
+  period?: FacadeStyle;
   wallHex: string;
   /** A bay look's own layers and accent colour; absent means the procedural cells. */
   layers?: { upper: number; ground: number; door: number };
@@ -360,7 +362,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       run.forEach(({ e }, k) => {
         walls++;
         const s = layout.edgeStartM[k];
-        if (extraSink && !e.hole && e.len >= 2.5) wallExtras({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: e.len }, base, top, layout: edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5 }, extraSink);
+        if (extraSink && !e.hole && e.len >= 2.5) wallExtras({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: e.len }, base, top, layout: edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, streetSide: doorAllowed.has(e), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' }, extraSink);
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
