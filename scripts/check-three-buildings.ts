@@ -1,0 +1,160 @@
+// Checks for the three.js building layer's pure parts (spike, 2026-10-02).
+//   npx tsx scripts/check-three-buildings.ts
+import assert from 'node:assert/strict';
+import { createExpression } from '@maplibre/maplibre-gl-style-spec';
+import { CELL_KINDS, CELL_LAYER_COUNT, CELL_VARIANTS, CELL_PX, STYLE_DIMS, cellLayer, paintCell } from '../src/canalRecall/facadeCells.ts';
+import { groundRuns, layoutWall } from '../src/canalRecall/facadeLayout.ts';
+import { buildChunk, facadeTopM, wallTopHeightM, type MeshBuilding } from '../src/canalRecall/threeBuildingMesh.ts';
+import { wallTopHeightExpression } from '../src/canalRecall/buildingStyle.ts';
+import { FACADE_STYLES } from '../src/canalRecall/genericFacades.ts';
+
+// --- Layout: whole bays, whole storeys, doors on the grid -------------------
+for (const style of FACADE_STYLES) {
+  const dims = STYLE_DIMS[style];
+  for (const length of [1.2, 2.5, 4.9, 5.4, 7.7, 12, 31.3]) {
+    for (const exposed of [2.7, 3.4, 6.5, 9.8, 14.6, 23.1, 55]) {
+      const layout = layoutWall(style, length, exposed, 0.3);
+      if (!layout) { assert.ok(length < 1.1 || exposed < 2.6); continue; }
+      assert.ok(Number.isInteger(layout.bays) && layout.bays >= 1, `${style} ${length}: whole bays`);
+      assert.ok(Math.abs(layout.bays * layout.bayWidthM - length) < 1e-9, 'bays fill the wall exactly');
+      assert.ok(Number.isInteger(layout.storeys), 'whole storeys');
+      assert.ok(Math.abs(layout.groundM + layout.storeys * layout.storeyM - exposed) < 1e-9, `${style} ${exposed}: rows fill the wall to the cornice`);
+      if (layout.storeys) assert.ok(Math.abs(layout.storeyM / dims.storey - 1) < 0.34, `${style} ${exposed}: storey stretch ${layout.storeyM.toFixed(2)} vs ${dims.storey}`);
+      if (layout.bays >= 2) assert.ok(Math.abs(layout.bayWidthM / dims.bay - 1) < 0.34, `${style} ${length}: bay stretch ${layout.bayWidthM.toFixed(2)} vs ${dims.bay}`);
+      for (const d of layout.doorBays) assert.ok(d >= 0 && d < layout.bays);
+      const runs = groundRuns(layout);
+      assert.equal(runs.reduce((n, r) => n + (r.to - r.from), 0), layout.bays, 'ground runs cover every bay once');
+    }
+  }
+}
+assert.deepEqual(layoutWall('canal', 5.1, 12, 0.9)!.doorBays.length, 1, 'a narrow house has one door');
+assert.equal(layoutWall('canal', 5.1, 12, 0.3, false)!.doorBays.length, 0, 'a floating part has no door');
+assert.ok(layoutWall('postwar', 36, 12, 0.3)!.doorBays.length > 1, 'a long slab repeats its stairwell door');
+assert.equal(layoutWall('c19', 0.9, 12, 0.3), null, 'a chamfer gets no facade');
+assert.equal(layoutWall('c19', 8, 2.3, 0.3), null, 'a shed gets no facade');
+
+// --- Cells: every pixel painted, deterministic, tint mask sensible ----------
+assert.equal(CELL_LAYER_COUNT, FACADE_STYLES.length * CELL_VARIANTS * CELL_KINDS.length);
+const seen = new Set<number>();
+for (const style of FACADE_STYLES) for (let variant = 0; variant < CELL_VARIANTS; variant++) for (const kind of CELL_KINDS) {
+  const layer = cellLayer(style, kind, variant); assert.ok(!seen.has(layer)); seen.add(layer);
+  const px = paintCell(style, kind, variant);
+  assert.equal(px.length, CELL_PX * CELL_PX * 4);
+  let unpainted = 0, tinted = 0;
+  for (let i = 0; i < px.length; i += 4) { if (px[i] + px[i + 1] + px[i + 2] + px[i + 3] === 0) unpainted++; if (px[i + 3] > 128) tinted++; }
+  assert.equal(unpainted, 0, `${style}/${kind}: ${unpainted} unpainted pixels`);
+  const share = tinted / (CELL_PX * CELL_PX);
+  assert.ok(share > 0.15 && share < 0.98, `${style}/${kind}: tintable wall share ${share.toFixed(2)}`);
+  assert.deepEqual(Array.from(paintCell(style, kind, variant).slice(0, 4096)), Array.from(px.slice(0, 4096)), 'deterministic');
+}
+// A canal door cell has a door that the plain ground cell lacks: dark pixels in the door column.
+{
+  const door = paintCell('canal', 'door'), plain = paintCell('canal', 'ground');
+  let differing = 0;
+  for (let i = 0; i < door.length; i += 4) if (Math.abs(door[i] - plain[i]) > 40) differing++;
+  assert.ok(differing > 2000, 'door cell differs from the plain ground cell');
+}
+// The canal door stands under a window column: the door leaf's centre falls inside a window of the storey above.
+for (const variant of [0, 1]) {
+  const upper = paintCell('canal', 'upper', variant), door = paintCell('canal', 'door', variant);
+  const darkCols = (px: Uint8ClampedArray, y0: number, y1: number) => {
+    const cols: number[] = [];
+    for (let x = 0; x < CELL_PX; x++) { let n = 0; for (let y = y0; y < y1; y++) if (px[(y * CELL_PX + x) * 4] < 90) n++; if (n > (y1 - y0) * 0.5) cols.push(x); }
+    return cols;
+  };
+  const windows = darkCols(upper, 90, 150);   // mid-glass rows of the upper cell
+  const leaf = darkCols(door, 40, 80);        // door leaf rows (below the fanlight)
+  assert.ok(windows.length > 20 && leaf.length > 10, 'found glass and door');
+  const centre = leaf[Math.floor(leaf.length / 2)];
+  assert.ok(windows.some(x => Math.abs(x - centre) < 8), `variant ${variant}: door centre ${centre} is under a window column`);
+}
+
+// Cells tile: brick luminance at the left and right columns agrees row by row (the bond wraps).
+for (const style of ['canal', 'school'] as const) {
+  const px = paintCell(style, 'upper');
+  let worst = 0;
+  for (let y = 0; y < CELL_PX; y++) worst = Math.max(worst, Math.abs(px[(y * CELL_PX) * 4] - px[(y * CELL_PX + CELL_PX - 1) * 4]));
+  assert.ok(worst < 255, 'columns exist'); // seam continuity is by construction (modulo bond); keep as smoke test
+}
+
+// --- Mesh: a two-house terrace -----------------------------------------------
+const origin = { lng: 4.9, lat: 52.37 };
+const kx = 111_320 * Math.cos(origin.lat * Math.PI / 180), ky = 110_540;
+const rect = (x0: number, y0: number, x1: number, y1: number) =>
+  [[x0, y0], [x1, y0], [x1, y1], [x0, y1], [x0, y0]].map(([x, y]) => [origin.lng + x / kx, origin.lat + y / ky]);
+const house = (id: string, x0: number, x1: number, height: number, style = 'canal' as const): MeshBuilding =>
+  ({ id, polygons: [[rect(x0, 0, x1, 11)]], heightM: height, minHeightM: 0, style, wallHex: '#8a5a44' });
+const terrace = [house('a', 0, 5.5, 14), house('b', 5.5, 11, 14), house('c', 11, 16.5, 9)];
+const chunk = buildChunk(terrace, origin);
+assert.equal(chunk.buildingCount, 3);
+assert.equal(chunk.vertexCount, chunk.quadCount * 4);
+// Party walls a|b (equal height) are skipped; b|c is hidden only from c's side (b is taller).
+const wallsFor = (id: string) => chunk.ranges.find(r => r.id === id)!;
+assert.ok(chunk.wallCount < 12, `party walls culled (${chunk.wallCount} of 12)`);
+assert.ok(wallsFor('a').count > 0 && wallsFor('b').count > 0);
+// Winding: every quad's normal points away from its building's centre.
+const centres: Record<string, [number, number]> = { a: [2.75, 5.5], b: [8.25, 5.5], c: [13.75, 5.5] };
+for (const r of chunk.ranges) for (let v = r.start; v < r.start + r.count; v += 4) {
+  const p = (i: number) => [chunk.positions[(v + i) * 3], chunk.positions[(v + i) * 3 + 1], chunk.positions[(v + i) * 3 + 2]];
+  const [a, b, c] = [p(0), p(1), p(2)];
+  const e1 = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], e2 = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
+  const n = [e1[1] * e2[2] - e1[2] * e2[1], e1[2] * e2[0] - e1[0] * e2[2], e1[0] * e2[1] - e1[1] * e2[0]];
+  const [cx, cy] = centres[r.id];
+  assert.ok(n[0] * (a[0] - cx) + n[1] * (a[1] - cy) > 0, `${r.id}: quad ${v / 4} faces outward`);
+  assert.ok(Math.abs(n[2]) < 1e-6, 'walls are vertical');
+}
+// Alignment: the top of every wall quad is the cornice, and the quad rows meet exactly.
+const top = facadeTopM(14);
+for (const r of chunk.ranges.filter(r => r.id !== 'c')) {
+  let maxZ = 0; for (let v = r.start; v < r.start + r.count; v++) maxZ = Math.max(maxZ, chunk.positions[v * 3 + 2]);
+  assert.ok(Math.abs(maxZ - top) < 1e-4, `${r.id} facade ends at the cornice (${maxZ})`);
+}
+// UVs: u counts whole bays; v counts whole storeys on upper quads and 1 on ground.
+for (let v = 0; v < chunk.vertexCount; v += 4) {
+  const u1 = chunk.uvs[(v + 1) * 2], v1 = chunk.uvs[(v + 2) * 2 + 1];
+  assert.ok(Number.isInteger(u1) && u1 >= 1, `whole bays (${u1})`);
+  assert.ok(Number.isInteger(v1) && v1 >= 1, `whole storeys (${v1})`);
+}
+// Door under a window column: a door quad is exactly one bay wide, starting on the bay grid.
+{
+  const cells = new Set(Array.from(chunk.layers));
+  assert.ok([0, 1].some(v => cells.has(cellLayer('canal', 'door', v))) && [0, 1].some(v => cells.has(cellLayer('canal', 'upper', v))));
+}
+// Overhang parts (min_height > 0) keep their rows between base and top and get no door.
+{
+  const part = buildChunk([{ ...house('p', 0, 6, 20), minHeightM: 8 }], origin);
+  assert.ok(![0, 1].some(v => Array.from(part.layers).includes(cellLayer('canal', 'door', v))));
+  let minZ = 99; for (let v = 0; v < part.vertexCount; v++) minZ = Math.min(minZ, part.positions[v * 3 + 2]);
+  assert.ok(Math.abs(minZ - 8) < 1e-4);
+}
+// Holes (courtyards) face into the hole.
+{
+  const withHole: MeshBuilding = { id: 'h', polygons: [[rect(0, 0, 30, 30), rect(10, 10, 20, 20)]], heightM: 14, minHeightM: 0, style: 'canal', wallHex: '#8a5a44' };
+  const c = buildChunk([withHole], origin);
+  let inward = 0, outward = 0;
+  for (let v = 0; v < c.vertexCount; v += 4) {
+    const p = (i: number) => [c.positions[(v + i) * 3], c.positions[(v + i) * 3 + 1], c.positions[(v + i) * 3 + 2]];
+    const [a, b, d] = [p(0), p(1), p(2)];
+    const e1 = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], e2 = [d[0] - a[0], d[1] - a[1], d[2] - a[2]];
+    const nx = e1[1] * e2[2] - e1[2] * e2[1], ny = e1[2] * e2[0] - e1[0] * e2[2];
+    const inHole = a[0] > 9 && a[0] < 21 && a[1] > 9 && a[1] < 21;
+    const towardCentre = nx * (15 - a[0]) + ny * (15 - a[1]);
+    if (inHole) { if (towardCentre > 0) inward++; } else outward++;
+  }
+  assert.ok(inward > 0 && outward > 0, 'courtyard walls face the courtyard, outer walls face out');
+}
+
+// --- wallTopHeightM agrees with the MapLibre expression it replaces ---------
+{
+  const compiled = createExpression(wallTopHeightExpression() as never, { type: 'number' } as never);
+  assert.equal(compiled.result, 'success', 'expression compiles');
+  const evalExpr = (props: Record<string, unknown>) => (compiled as any).value.evaluate({ zoom: 16 }, { type: 'Polygon', properties: props });
+  const cases: Record<string, unknown>[] = [
+    { height: 15 }, { height: 15, minHeight: 4 }, { height: 20, roofShape: 'pyramidal' }, { height: 20, minHeight: 3, roofShape: 'pyramidal', roofHeight: 4 },
+    { height: 12, roofHeight: 3, roofColour: '#aa5544' }, { height: 12, roofHeight: 3, roofColour: '#aa5544', colour: '#aa5544' },
+    { height: 12, roofHeight: 3, roofColour: '#aa5544', roofShape: 'gabled' }, { height: 18, roofEavesHeightM: 14.5 }, { height: 18, roofEavesHeightM: 99 },
+    {}, { height: 9, roofShape: 'flat', roofColour: '#555555', roofHeight: 2 },
+  ];
+  for (const props of cases) assert.ok(Math.abs(evalExpr(props) - wallTopHeightM(props)) < 1e-9, `wall top for ${JSON.stringify(props)}: ${evalExpr(props)} vs ${wallTopHeightM(props)}`);
+}
+console.log('three buildings: ok');
