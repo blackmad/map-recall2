@@ -1,0 +1,184 @@
+{
+ "_about": "Reviewed decisions for scripts/fill-neighborhood-gaps.ts (Amsterdam). {approve:true} ships a candidate that needs review; {en} is the reviewed English of a Dutch candidate; null drops the field. Photos were judged by eye on a contact sheet 2026-10-02: kept when they show the area, dropped when generic or of another place.",
+ "Gouden Bocht": {
+  "description": {
+   "approve": true,
+   "en": "The Gouden Bocht ('Golden Bend') is the most prestigious part of the Herengracht in Amsterdam, between the Leidsestraat and the Vijzelstraat. This stretch is part of the so-called Fourth Expansion (Vierde Uitleg), the last part of the Expansion of Amsterdam. The richest Amsterdammers lived in the bend on either side of the Nieuwe Spiegelstraat."
+  },
+  "history": {
+   "approve": true,
+   "en": "Until 1663 the Herengracht ran as far as the present Leidsegracht. From that year the Amsterdam canal ring was extended. The land was expropriated and the Herengracht was lengthened. At the Nieuwe Spiegelstraat the Herengracht got a bend. Because the three canals were laid somewhat further apart here, the plots on the south side were deeper. The plots were sold between 1664 and 1668. The mayors encouraged the purchase of double plots."
+  },
+  "photo": null
+ },
+ "Sportheldenbuurt": {
+  "nameOrigin": {
+   "approve": true,
+   "en": "In 2011 the Oost borough announced that the streets in the neighbourhood would be named after people from Dutch sports history."
+  },
+  "description": {
+   "approve": true,
+   "en": "The Sportheldenbuurt is a residential neighbourhood on Zeeburgereiland on the east side of Amsterdam, in the Dutch province of North Holland, on the Buiten-IJ between the Zuiderzeeweg and the Zeeburgertunnel. The area is bounded by the IJburglaan, the Ringweg-Oost, the IJ and the Zuiderzeeweg."
+  },
+  "history": {
+   "approve": true,
+   "en": "The site was reclaimed in the early 20th century with dredged silt from the IJ and the Eastern Docklands. For a long time it was a remote area used as a military site with shooting ranges and the Schellingwoude naval seaplane base. In the 1980s the Oost sewage treatment plant was built on the former military site. In 2006 a new plant in the Western Docklands came into use to replace it."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Polder Meerzicht": {
+  "description": {
+   "approve": true,
+   "en": "Polder Meerzicht and the Meerzicht Islands are two areas on the north-western edge of the Amsterdam part of the Amsterdamse Bos."
+  }
+ },
+ "Sluisbuurt": {
+  "description": {
+   "approve": true,
+   "en": "The Sluisbuurt is a district, partly still under construction, on Zeeburgereiland in Amsterdam-Oost. The district lies by the Oranjesluizen, after which it is named, and the Binnen-IJ, and covers the area between the Zuiderzeeweg and the Schellingwouderbrug and the IJburglaan towards the Piet Heintunnel."
+  },
+  "history": {
+   "approve": true,
+   "en": "In November 2018 the municipality of Amsterdam decided to build the neighbourhood. About 5,500 homes are planned in a setting unusual for Amsterdam: residential blocks with tall residential towers between them. The municipality designated the location as an acceleration site, with the aim of quickly adding many homes during the housing shortage that followed the credit crisis."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Rijnbuurt": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Floradorp": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Hoofdweg e.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Van Galenbuurt": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Molenwijkpark": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Memeleiland": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "IJburg": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Nieuwmarktbuurt": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Nieuwmarkt/Lastage": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Borneo-eiland": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Prinses Irenebuurt e.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "VU-kwartier": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Buitenveldert": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Overtoomse Sluis": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Vondelparkbuurt": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "KNSM-eiland": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Scheldebuurt": {
+  "photo": null
+ },
+ "Westindische Buurt": {
+  "photo": null
+ },
+ "Helmersbuurt": {
+  "photo": null
+ },
+ "IJselbuurt": {
+  "photo": null
+ },
+ "Willemspark": {
+  "photo": null
+ },
+ "Stettineiland": {
+  "photo": null
+ },
+ "Narva-eiland": {
+  "photo": null
+ },
+ "Revaleiland": {
+  "photo": null
+ },
+ "Wiborgeiland": {
+  "photo": null
+ },
+ "Libau-eiland": {
+  "photo": null
+ },
+ "Karlskrona-eiland": {
+  "photo": null
+ },
+ "Slotervaart": {
+  "photo": null
+ },
+ "Valkenburg": {
+  "photo": null
+ },
+ "Weesperbuurt": {
+  "photo": null
+ },
+ "Gelderlandpleinbuurt": {
+  "photo": null
+ },
+ "Buitenveldert-West": {
+  "photo": null
+ },
+ "Van Lennepbuurt": {
+  "photo": null
+ },
+ "Oostelijk Havengebied": {
+  "photo": null
+ }
+}

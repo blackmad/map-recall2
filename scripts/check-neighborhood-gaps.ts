@@ -101,6 +101,7 @@ assert.equal(sentencesAbout(district, 'Oost'), undefined, 'a name too short to t
 const file = (over: Partial<CommonsFile>): CommonsFile => ({ title: 'File:A.jpg', url: 'u', width: 2000, height: 1200, mime: 'image/jpeg', license: 'CC BY-SA 4.0', ...over });
 const ranked = rankCommonsFiles([
   file({ title: 'File:Map_of_Sportheldenbuurt.png', mime: 'image/png' }),
+  file({ title: 'File:Areas.png', mime: 'image/png' }),
   file({ title: 'File:Logo.jpg' }),
   file({ title: 'File:Portrait.jpg', width: 900, height: 1400 }),
   file({ title: 'File:Sportheldenbuurt street.jpg' }),
@@ -117,6 +118,14 @@ assert.ok(!wikidataLooksRight('neighbourhood of Utrecht', 'Sportheldenbuurt', 'S
 assert.ok(!wikidataLooksRight('neighbourhood of Amsterdam', 'Rijnstraat', 'Gouden Bocht'));
 assert.equal(flat('Gouden Bocht'), 'goudenbocht');
 
+{
+  const { nameOriginSentences } = await import('./fill-neighborhood-gaps');
+  const sluis = 'De Sluisbuurt is een wijk op het Zeeburgereiland. De wijk ligt aan de Oranjesluizen, waarnaar de wijk vernoemd is. Zo werd de hoofdstraat vernoemd naar Rudi van Dantzig.';
+  assert.equal(nameOriginSentences(sluis, 'nl', 'Sluisbuurt'), 'De wijk ligt aan de Oranjesluizen, waarnaar de wijk vernoemd is.', 'the sentence about the area, not about a street in it');
+  assert.equal(nameOriginSentences('De leden treden op onder de naam PRO. De zetelverdeling was zo.', 'nl', 'Zuid'), undefined, 'a party name is not a place name');
+  assert.equal(nameOriginSentences('Het bedrijf kreeg de naam Werkspoor. Oostenburg is een eiland.', 'nl', 'Oostenburg'), undefined);
+  assert.match(nameOriginSentences('Dorp.\n\n== Naam ==\nDe naam komt van een boerderij.\n', 'nl', 'Dorp')!, /boerderij/, 'a naming section is taken whole');
+}
 console.log('Neighbourhood gap-fill checks passed.');
 
 // Choosing and publishing: the best shippable candidate per field, articles beat composed text.

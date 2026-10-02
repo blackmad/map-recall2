@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-01T20:44:01.339Z",
+ "generatedAt": "2026-10-02T11:23:26.674Z",
  "neighborhoods": [
   {
    "name": "Overhoeks",
@@ -31,13 +31,55 @@
    }
   },
   {
-   "name": "Rijnbuurt"
+   "name": "Rijnbuurt",
+   "nameOrigin": {
+    "en": "The name matches Rijnstraat, in the area. The river (Rhine) that rises in Switzerland and enters the Netherlands at Lobith.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004664/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Rijnbuurt is an area in Rivierenbuurt and Zuid, about 0.4 km². Streets here include President Kennedylaan, Vechtstraat, Uiterwaardenstraat, President Kennedyplantsoen and Waalstraat. Places inside it include Samen Spelen Samen Leven.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Scheldebuurt"
+   "name": "Scheldebuurt",
+   "nameOrigin": {
+    "en": "The name matches Scheldeplein, in the area. The river (Scheldt) that rises in France, enters the Netherlands beyond Antwerp and then flows into the sea through the Westerschelde.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004475/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Scheldebuurt is an area in Rijnbuurt and Zuid, about 0.8 km². Streets here include President Kennedylaan, Rooseveltlaan, Europaplein, Zuidelijke Wandelweg and Dintelstraat. Places inside it include Anne Frank, Lekstraatsynagoge and Maarten Lutherkerk. Green space: Merwedeplein.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Westindische Buurt"
+   "name": "Westindische Buurt",
+   "nameOrigin": {
+    "en": "Many streets here are named after the Dutch colonial world, such as Surinameplein, Corantijnstraat, Nickeriestraat and Paramaribostraat.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005065/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Westindische Buurt is a neighbourhood in De Baarsjes and West, about 0.3 km². Streets here include Hoofdweg, Arubastraat, Postjeskade, Surinameplein and Antillenstraat. Squares: Bonaireplein.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
    "name": "Betondorp",
@@ -133,10 +175,38 @@
    }
   },
   {
-   "name": "Hoofdweg e.o."
+   "name": "Hoofdweg e.o.",
+   "nameOrigin": {
+    "en": "The name matches Hoofdweg, in the area. The former municipality of Sloten gave the name for its function: a wide central main road (hoofdweg). After the annexation of 1921 the road was extended north to the Bos en Lommerplein.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003587/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Hoofdweg e.o. is a neighbourhood in De Baarsjes and West, about 0.4 km². Streets here include Postjesweg, Hoofdweg, Mercatorplein, Van Spilbergenstraat and Willem Schoutenstraat. Squares: Magalhaensplein.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
-   "name": "IJselbuurt"
+   "name": "IJselbuurt",
+   "nameOrigin": {
+    "en": "The name matches IJselstraat, in the area. The river IJssel, a branch of the Rhine, runs from Westervoort to the IJsselmeer.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003625/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "IJselbuurt is an area in Rivierenbuurt and Zuid, about 0.2 km². Streets here include Borssenburgplein, Meerhuizenplein, Meerhuizenstraat, Rijnstraat and IJselstraat.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
    "name": "Rivierenbuurt",
@@ -215,7 +285,21 @@
    }
   },
   {
-   "name": "Van Galenbuurt"
+   "name": "Van Galenbuurt",
+   "nameOrigin": {
+    "en": "The name matches Jan van Galenstraat, in the area. Fleet commander (1604-1653), killed in the Battle of Livorno against the English.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000003451/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Van Galenbuurt is a neighbourhood in De Baarsjes and West, about 0.2 km². Streets here include Hoofdweg, Jan van Galenstraat, John Franklinstraat, Mercatorstraat and Vespuccistraat. Places inside it include Jeruzalemkerk. Green space: Tuin van Jan.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
    "name": "Apollobuurt",
@@ -305,7 +389,14 @@
    }
   },
   {
-   "name": "Molenwijkpark"
+   "name": "Molenwijkpark",
+   "description": {
+    "en": "Molenwijkpark is a neighbourhood in Noord, about 0.3 km². Streets here include Stellingweg, Molenwijk, Molenaarsweg, Molenwijk tunnel Stellingweg and Bergmolen.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
    "name": "Stettineiland",
@@ -353,16 +444,72 @@
    }
   },
   {
-   "name": "Revaleiland"
+   "name": "Revaleiland",
+   "nameOrigin": {
+    "en": "Now Tallinn, the capital of Estonia. In the seventeenth century Amsterdam was the largest buyer of its rye, grain and timber.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003767128/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Revaleiland is a neighbourhood in Houthaven and West, about 0.03 km². Streets here include Revaleiland, Kolbergbrug and Wismarbrug.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Wiborgeiland"
+   "name": "Wiborgeiland",
+   "nameOrigin": {
+    "en": "A Baltic port (Vyborg), Swedish, Russian, Finnish and finally Russian again, which was important for the Amsterdam timber trade.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003767126/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Wiborgeiland is a neighbourhood in Houthaven and West, about 0.01 km². Streets here include Wiborgeiland, Helsingforsbrug and Kronstadtbrug.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Libau-eiland"
+   "name": "Libau-eiland",
+   "nameOrigin": {
+    "en": "The old German name for Liepāja, now a Latvian port, from which much timber used to be shipped to Amsterdam.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003767131/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Libau-eiland is a neighbourhood in Houthaven and West, about 0.01 km². Streets here include Libau-eiland and Stralsundbrug.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Karlskrona-eiland"
+   "name": "Karlskrona-eiland",
+   "nameOrigin": {
+    "en": "A Swedish port on the Baltic from which much potash, timber and iron used to be shipped to Amsterdam.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003767132/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Karlskrona-eiland is a neighbourhood in Houthaven and West, about 0.01 km². Streets here include Karlskrona-eiland and Lübeckbrug.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
    "name": "IJburg",
@@ -475,6 +622,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Oostenburg",
     "lang": "nl",
     "original": "Oostenburg is het meest oostelijk gelegen van de drie Oostelijke Eilanden in Amsterdam-Oost die in de tweede helft van de 17e eeuw langs het IJ werden aangeplempt. Oostenburg wordt aan westkant gescheiden van Wittenburg door de Wittenburgervaart en aan oostkant van de Czaar Peterbuurt door de deels gedempte Oostenburgervaart."
+   },
+   "nameOrigin": {
+    "en": "The name matches Oostenburgerpark, in the area. Oostenburg was the easternmost of the three islands (with Kattenburg and Wittenburg) brought within the city in the expansion of 1658. Laying out the streets and building began in 1664. At first there were three streets from the canal, named after their position Oostenburgervoorstraat, -middenstraat and -achterstraat (front, middle and back streets). In the first half of the twentieth century the Oostenburgerachterstraat was closed to public traffic for the expansion of the Werkspoor company, and it was abolished in 1957. The Oostenburgermiddenstraat was abolished in 1985; the Compagniestraat now runs there.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000001667/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
    }
   },
   {
@@ -553,6 +707,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Valkenburg_(Amsterdam)",
     "lang": "nl",
     "original": "De drie eilanden Uilenburg, Valkenburg en Rapenburg zijn ontstaan door vergravingen van buitendijks land bij de zogeheten Tweede vergroting van Amsterdam. Vanwege het belang van een goede verdediging en omdat er werd geklaagd over te weinig ruimte voor houtopslagplaatsen en scheepswerven, werd het aanvankelijke plan tot fortificatie en uitleg daterend uit 1585 gewijzigd en is de stad in 1593 aan de oostzijde opnieuw uitgelegd. In 1595 werden op Marken kleinere timmerwerven en houttuinen tot 750 m² uitgegeven; de erven waren bestemd voor het maken, ophalen en repareren van schuiten."
+   },
+   "nameOrigin": {
+    "en": "The name matches Valkenburgerstraat, in the area. The island of Valkenburg or Marken, which came within the city around 1600. The origin of the name Valkenburg is unknown; perhaps there was once a house with a gable stone or a shipyard of that name. A gable stone with Valkenburg is also found elsewhere (Nieuwendijk 62/68).",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005255/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
    }
   },
   {
@@ -645,6 +806,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Weesperbuurt",
     "lang": "nl",
     "original": "De Weesperbuurt was tot in de Tweede Wereldoorlog een onderdeel van de Jodenbuurt. Een groot deel van de bewoners werd gedeporteerd en vermoord. Na de oorlog werd een deel van de bebouwing gesloopt voor het sterk verbreden van de Weesperstraat."
+   },
+   "nameOrigin": {
+    "en": "The name matches Weesperplein, in the area. The street runs towards, and is therefore named after, the town of Weesp. At its end stood the Weesperpoort, and beyond it, outside the Singelgracht, the Weesperpoort station (demolished 1939). The buildings along the Weesperstraat were demolished between 1950 and 1960, after which it got its present width.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004834/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
    }
   },
   {
@@ -658,6 +826,13 @@
     "en": "The nucleus of the island was created in 1832 when the Oosterdok was dammed off from the IJ. It was expanded to its current size when the first railroad was constructed at the site in the 1870s. In the 1960s the main Amsterdam post office was built on the island, which was torn down in 2005.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Oosterdokseiland",
     "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The name matches Oosterdokskade, in the area. The Oosterdok was created by a closing dike on the east side of the city, completed in 1832. The quay on and along this dike was named Oosterdokskade and Oostelijke Handelskade.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004731/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
    }
   },
   {
@@ -673,6 +848,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwmarkt_(Amsterdam)",
     "lang": "nl",
     "original": "Sinds ca. 1425 ligt hier de Bijleveldschesluis tussen het water van de Geldersekade en de Kloveniersburgwal. De Sint Anthoniespoort (nu de Waag) werd gebouwd als onderdeel van de middeleeuwse stadsommuring in de jaren 1481-1494. Het plein ontstond in 1614 toen het water rondom de Sint Anthoniespoort overkluisd werd. Door de stadsuitbreiding (bouw van de Lastage) verschoof de stadsgrens verder naar de Montelbaanstoren en de Oude Schans. De Sint Anthoniespoort verloor zijn verdedigende functie en werd een waag."
+   },
+   "nameOrigin": {
+    "en": "The Nieuwmarktbuurt was long known as the Lastage, a name from 'lastaedse', ballast: in the 15th century it was where ships took on ballast. In the 16th century it grew into the city's industrial and harbour district.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwmarktbuurt",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia"
    }
   },
   {
@@ -861,10 +1043,24 @@
    }
   },
   {
-   "name": "VU-kwartier"
+   "name": "VU-kwartier",
+   "description": {
+    "en": "VU-kwartier is a neighbourhood in Zuidas and Zuid, about 0.5 km². Streets here include De Boelelaan, Amstelveenseweg, Gustav Mahlerlaan, Van der Boechorststraat and Parnassusweg. Places inside it include Vrije Universiteit Amsterdam, ACTA and Amstel Academie. Green space: Botanical Garden Zuidas.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Gelderlandpleinbuurt"
+   "name": "Gelderlandpleinbuurt",
+   "description": {
+    "en": "Gelderlandpleinbuurt is a neighbourhood in Buitenveldert and Zuid, about 0.5 km². Streets here include De Boelelaan, Buitenveldertselaan, Loevestein, Loowaard and Asingaborg. Places inside it include MFC Binnenhof. Bridges: Gwijde van Henegouwenbrug.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
    "name": "Schinkelbuurt",
@@ -931,6 +1127,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Buitenveldert_(tuinstad)",
     "lang": "nl",
     "original": "De naam is ontleend aan de gelijknamige buurtschap aan de Amstelveenseweg, ter hoogte van de Begraafplaats Buitenveldert. Kerkelijk was Buitenveldert lange tijd verbonden met Nieuwer-Amstel, dat in 1964 de naam Amstelveen kreeg."
+   },
+   "history": {
+    "en": "From the Middle Ages the 'Binnendijksche Buitenveldertse' polder in the rural Amstelland region was part of the Nieuwer-Amstel municipality. In 1921, the Buitenveldert polder was annexed by the city of Amsterdam. Since then, the Kalfjeslaan on the southside of Buitenveldert has been the city limit. As part of the Algemene Uitbreidingsplan ('General Expansion Plan') of 1935, the Buitenveldert polder became the site of a new suburb. It was the only suburb on the south side of the city; most other suburbs were planned on the west side.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Buitenveldert",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia"
    }
   },
   {
@@ -953,7 +1156,14 @@
    }
   },
   {
-   "name": "Buitenveldert-West"
+   "name": "Buitenveldert-West",
+   "description": {
+    "en": "Buitenveldert-West is an area of Amsterdam, about 3.5 km². Streets here include Buitenveldertselaan, Amstelveenseweg, Van Nijenrodeweg, De Boelelaan and Van Boshuizenstraat. Places inside it include Andrieskerk, Herdenkingsmonument and AMOS. Green space: Amsterdamse Bos, Gijsbrecht van Aemstelpark and 't Kleine Loopveld. Bridges: Brug 811, Gwijde van Henegouwenbrug and M. Justbrug.",
+    "sourceUrl": "https://www.openstreetmap.org/copyright",
+    "lang": "en",
+    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "kind": "derived"
+   }
   },
   {
    "name": "Van Lennepbuurt",
@@ -1057,6 +1267,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Vondelparkbuurt",
     "lang": "nl",
     "original": "Vondelparkbuurt is een gemeenschappelijke benaming voor drie buurten in Amsterdam-West. Het hele gebied maakte tot eind 19e eeuw deel uit van de gemeente Nieuwer-Amstel, totdat in 1896 alles tot Amsterdam behorend werd verklaard. In diezelfde periode en daarvoor werd de strook getransformeerd van industriegebied met molens tot woon-/winkelwijk."
+   },
+   "nameOrigin": {
+    "en": "The name matches Vondelpark, in the area. Joost van den Vondel (1587-1679), poet, who wrote 24 tragedies as well as poetry on heroes and heroic deeds. The part of the street that lay in the municipality of Nieuwer-Amstel before 1896 was first called Verlengde Vondelstraat. Led by C.P. van Eeghen, a group of Amsterdammers drew up a plan in 1864 for a park for riding and walking, which was then carried out to a design by L.D. Zocher. The first part opened in 1865. When a statue of Vondel was placed here in 1867, the park was named Vondelpark.",
+    "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000005318/",
+    "lang": "en",
+    "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
    }
   },
   {
@@ -1161,6 +1378,82 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Amsterdam-Noord",
     "lang": "nl",
     "original": "Amsterdam benoorden het IJ bestond aanvankelijk slechts uit een schiereilandje, de Volewijck, waarover de stad in 1393 zeggenschap kreeg (recht van ambachtsheerlijkheid). Tot 1795 was hier het galgenveld, waar de lijken van veroordeelden na de executie werden opgehangen, als afschrikwekkend voorbeeld. Boven Amsterdam lag Waterland, met dorpen als Buiksloot, Nieuwendam en Durgerdam. In 1629 werd de Buikslotermeer ten oosten van Buiksloot drooggemalen in de hoop op vruchtbare landbouwgrond, maar de poldergrond bleek alleen geschikt voor grasland."
+   }
+  },
+  {
+   "name": "Gouden Bocht",
+   "description": {
+    "en": "The Gouden Bocht ('Golden Bend') is the most prestigious part of the Herengracht in Amsterdam, between the Leidsestraat and the Vijzelstraat. This stretch is part of the so-called Fourth Expansion (Vierde Uitleg), the last part of the Expansion of Amsterdam. The richest Amsterdammers lived in the bend on either side of the Nieuwe Spiegelstraat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Gouden_Bocht_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "De Gouden Bocht is het meest prestigieuze deel van de Herengracht in Amsterdam, tussen de Leidsestraat en de Vijzelstraat. Dit gedeelte maakt deel uit van de zogenaamde Vierde Uitleg, het laatste deel van de Uitleg van Amsterdam. In de bocht aan weerszijden van de Nieuwe Spiegelstraat woonden de rijkste Amsterdammers."
+   },
+   "history": {
+    "en": "Until 1663 the Herengracht ran as far as the present Leidsegracht. From that year the Amsterdam canal ring was extended. The land was expropriated and the Herengracht was lengthened. At the Nieuwe Spiegelstraat the Herengracht got a bend. Because the three canals were laid somewhat further apart here, the plots on the south side were deeper. The plots were sold between 1664 and 1668. The mayors encouraged the purchase of double plots.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Gouden_Bocht_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Tot 1663 liep de Herengracht tot de huidige Leidsegracht. Vanaf dat jaar werd de Amsterdamse grachtengordel uitgebreid. De grond werd onteigend en de Herengracht werd verlengd. Ter hoogte van de Nieuwe Spiegelstraat kreeg de Herengracht een knik. Doordat de drie grachten hier wat verder uit elkaar werden gelegd, waren de kavels aan de zuidzijde dieper. De percelen zijn verkocht tussen 1664 en 1668. De burgemeesters bevorderden de aankoop van dubbele kavels."
+   }
+  },
+  {
+   "name": "Sportheldenbuurt",
+   "nameOrigin": {
+    "en": "In 2011 the Oost borough announced that the streets in the neighbourhood would be named after people from Dutch sports history.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sportheldenbuurt_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "In 2011 maakte Stadsdeel Oost bekend dat de straten in de buurt vernoemd zouden worden naar personen uit de Nederlandse sportgeschiedenis."
+   },
+   "description": {
+    "en": "The Sportheldenbuurt is a residential neighbourhood on Zeeburgereiland on the east side of Amsterdam, in the Dutch province of North Holland, on the Buiten-IJ between the Zuiderzeeweg and the Zeeburgertunnel. The area is bounded by the IJburglaan, the Ringweg-Oost, the IJ and the Zuiderzeeweg.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sportheldenbuurt_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "De Sportheldenbuurt is een woonbuurt op het Zeeburgereiland aan de oostkant van Amsterdam, in de Nederlandse provincie Noord-Holland, aan het Buiten-IJ tussen de Zuiderzeeweg en de Zeeburgertunnel. Het gebied wordt begrensd door de IJburglaan, de Ringweg-Oost, het IJ en de Zuiderzeeweg."
+   },
+   "history": {
+    "en": "The site was reclaimed in the early 20th century with dredged silt from the IJ and the Eastern Docklands. For a long time it was a remote area used as a military site with shooting ranges and the Schellingwoude naval seaplane base. In the 1980s the Oost sewage treatment plant was built on the former military site. In 2006 a new plant in the Western Docklands came into use to replace it.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sportheldenbuurt_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Het terrein werd begin 20e eeuw aangeplempt met baggerslib afkomstig uit het IJ en het Oostelijk Havengebied. Het was lang een afgelegen gebied dat in gebruik was als militair terrein met schietbanen en de watervliegtuigbasis Marinevliegkamp Schellingwoude. In de jaren tachtig werd de Rioolwaterzuiveringsinrichting Oost aanlegd op het voormalige militaire terrein. In 2006 is ter vervanging hiervan een nieuwe installatie in het Westelijk Havengebied in gebruik genomen."
+   }
+  },
+  {
+   "name": "Polder Meerzicht",
+   "description": {
+    "en": "Polder Meerzicht and the Meerzicht Islands are two areas on the north-western edge of the Amsterdam part of the Amsterdamse Bos.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Polder_Meerzicht",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Polder Meerzicht en Meerzichteilanden zijn twee gebieden aan de noordwestrand van het Amsterdamse deel van het Amsterdamse Bos."
+   }
+  },
+  {
+   "name": "Sluisbuurt",
+   "description": {
+    "en": "The Sluisbuurt is a district, partly still under construction, on Zeeburgereiland in Amsterdam-Oost. The district lies by the Oranjesluizen, after which it is named, and the Binnen-IJ, and covers the area between the Zuiderzeeweg and the Schellingwouderbrug and the IJburglaan towards the Piet Heintunnel.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sluisbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "De Sluisbuurt is een wijk, gedeeltelijk nog in aanbouw, op het Zeeburgereiland in Amsterdam-Oost. De wijk ligt aan de Oranjesluizen, waarnaar de wijk vernoemd is, en het binnen-IJ en omvat het gebied tussen de Zuiderzeeweg en Schellingwouderbrug en de IJburglaan richting Piet Heintunnel."
+   },
+   "history": {
+    "en": "In November 2018 the municipality of Amsterdam decided to build the neighbourhood. About 5,500 homes are planned in a setting unusual for Amsterdam: residential blocks with tall residential towers between them. The municipality designated the location as an acceleration site, with the aim of quickly adding many homes during the housing shortage that followed the credit crisis.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sluisbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "In november 2018 besloot de gemeente Amsterdam tot bouw van de buurt. Er komen circa 5.500 woningen in een voor Amsterdam ongebruikelijk woonmilieu bestaande uit woonblokken met daartussen hoge woontorens. De locatie is door de gemeente aangewezen als een versnellingslocatie, met als doel om hier snel veel woningen toe te kunnen voegen in de ontstane huizennood die volgde na de kredietcrisis."
    }
   }
  ]
