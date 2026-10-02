@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Storefronts: registration between photo and footprint
+
+User on Bojo: "you need to account for imperfect registration". A panorama's pose is off by up to a metre or so, so a reference crop of the BAG wall can start on the neighbour: Bojo's own left edge (the downpipe) is 1.0 m into its photo, and the shop was modelled 1 m too far right with a strip of bare building beside it. Specs now take `shift` (wall = photo + shift) applied to every photo-measured position (span, text, signs); spans clamp to the wall and ends within 0.6 m of a corner snap to it; all-fixed bay rows stretch to fill. All 48 measured storefronts were re-rendered against their photos: Bojo (-1.0 m) and Al Argentino (-1.3 m) were misregistered; the others matched. Also: fascia text keeps clear of blade signs and scales its margins to thin boards (Al Argentino's lettering had vanished), and the review viewer no longer drops a neighbour with one corner proud of the wall. Practice: when a building's own edge shows inside the crop, measure it and set `shift`. Pinned in `test:landmark-fronts`.
+
 ## Storefronts v2: a self-review, real lettering, and 48 rebuilt bay by bay
 
 User found the 300 storefronts "pretty meh" and asked for a self-review. Findings: specs were written from 360 px thumbnails at a few seconds each, so most fell back to the same defaults (split windows, centre door, one frame colour); the vocabulary could not express what makes a shop recognisable (lettering, curved awnings, carriage doors, two shops in one building, patterned bands); only ~12 were checked against their photos; the review viewer painted each whole building in the shop's frame colour; and 16 walls sat 0.2-1.0 m inside their own footprint, burying the shop (Brouwerij Troost, &samhoud). At the game's normal camera height ground floors are a thin strip, so signs and colour blocks are what can read at all.

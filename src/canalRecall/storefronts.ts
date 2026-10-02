@@ -22,8 +22,15 @@ export type StorefrontSpec = {
   name: string;
   /** Frame colour: window and door joinery. */
   frame: string;
-  /** Span along the wall in metres; default: up to 7 m of frontage centred on the pin. */
+  /** Span along the wall in metres, as measured on the reference photo; default: up to 7 m of frontage centred on the pin. */
   span?: [number, number];
+  /**
+   * Registration: where the photo's metres sit on the footprint wall (wall = photo + shift). A
+   * panorama's pose is off by up to a metre or so, which shows as the building's own edge (a
+   * downpipe, a neighbour's pilaster) inside the crop; Bojo's left edge is 1.0 m into its photo,
+   * so its shift is -1.0. Applies to `span`, `textAt` and `signs`.
+   */
+  shift?: number;
   /**
    * Bays left to right, space separated: W shop window, D shop door, C carriage (double) door,
    * d plain house door, P pilaster, B blank wall; `W:1.4` fixes a bay's width in metres.
@@ -107,7 +114,8 @@ const BAY_W: Record<string, number> = { D: 1.05, C: 1.8, d: 1.0, P: 0.35 };
 export function layoutBays(tokens: string[], x0: number, x1: number): Bay[] {
   const parsed = tokens.map(t => { const [k, w] = t.split(':'); return { k, w: w ? Number(w) : BAY_W[k] }; });
   const fixed = parsed.reduce((s, t) => s + (t.w ?? 0), 0), flex = parsed.filter(t => t.w == null).length;
-  const scale = fixed > x1 - x0 - 0.4 * flex ? (x1 - x0 - 0.4 * flex) / fixed : 1, share = flex ? (x1 - x0 - fixed * scale) / flex : 0;
+  // Fixed widths shrink to fit, and with nothing flexible they also stretch to fill: the span is the truth.
+  const scale = fixed > x1 - x0 - 0.4 * flex || (!flex && fixed > 0) ? (x1 - x0 - 0.4 * flex) / fixed : 1, share = flex ? (x1 - x0 - fixed * scale) / flex : 0;
   let x = x0;
   return parsed.map(t => { const w = t.w != null ? t.w * scale : share, b = { kind: t.k as Bay['kind'], x0: x, x1: x + w }; x += w; return b; });
 }
@@ -118,7 +126,11 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
   const GLASS = spec.glass ?? DARK_GLASS;
   const L = wall.lengthM, h = spec.heightM ?? 3.6;
   const half = Math.min(3.5, L / 2);
-  const [x0, x1] = spec.span ?? [Math.max(0, Math.min(L - 2 * half, wall.alongM - half)), Math.min(L, Math.max(2 * half, wall.alongM + half))];
+  // Photo metres to wall metres, then clamp to the wall and snap ends that registration error left
+  // just short of a corner (a 0.4 m sliver of plain building beside a shop is always wrong).
+  const sh = spec.shift ?? 0, SNAP = 0.6;
+  const [px0, px1] = spec.span ? [spec.span[0] + sh, spec.span[1] + sh] : [Math.max(0, Math.min(L - 2 * half, wall.alongM - half)), Math.min(L, Math.max(2 * half, wall.alongM + half))];
+  const x0 = Math.max(0, px0) < SNAP ? 0 : Math.max(0, px0), x1 = L - Math.min(L, px1) < SNAP ? L : Math.min(L, px1);
   const frame = spec.frame, wallHex = spec.wall ?? frame, plinth = spec.plinth ?? frame;
   const boxes: FrontBox[] = [], extrusions: FrontExtrusion[] = [], faces: FrontFace[] = [];
   const text = (s: string, a: number, b: number, z0: number, z1: number, out: number, hex: string, align?: 'left' | 'centre' | 'right') =>
@@ -136,12 +148,17 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
   if (fascia) boxes.push({ x0: x0 + 0.05, x1: x1 - 0.05, z0: fz0, z1: h - 0.05, out0: WALL, out1: OUT + 0.06, hex: fascia });
   const signOut = fascia ? OUT + 0.06 : WALL;
   const logoR = spec.logo ? fasciaH * 0.48 : 0, logoAt = spec.logo?.at ?? 'left';
-  const [tx0, tx1] = spec.textAt ?? [x0, x1];
-  const ta = tx0 + pad + (spec.logo && logoAt === 'left' ? 2 * logoR + 0.15 : 0), tb = tx1 - pad - (spec.logo && logoAt === 'right' ? 2 * logoR + 0.15 : 0);
+  const [tx0, tx1] = spec.textAt ? [Math.max(x0, spec.textAt[0] + sh), Math.min(x1, spec.textAt[1] + sh)] : [x0, x1];
+  // Keep the lettering clear of a logo roundel and of a blade sign hanging at either end.
+  const bladeAt = spec.sign && spec.sign !== 'none' ? (spec.signAt ?? ((spec.door ?? 'left') === 'right' ? 'left' : 'right')) : null;
+  const ta = tx0 + pad + (spec.logo && logoAt === 'left' ? 2 * logoR + 0.15 : 0) + (bladeAt === 'left' && tx0 <= x0 + 0.4 ? 0.35 : 0);
+  const tb = tx1 - pad - (spec.logo && logoAt === 'right' ? 2 * logoR + 0.15 : 0) - (bladeAt === 'right' && tx1 >= x1 - 0.4 ? 0.35 : 0);
+  // Margins scale with the board: a 0.35 m fascia still gets legible letters.
+  const m = Math.min(0.15, (h - 0.05 - fz0) * 0.18);
   if (!signText) { /* no lettering */ } else if (spec.text2) {
     text(signText, ta, tb, fz0 + 0.38, h - 0.13, signOut, letters);
     text(spec.text2, ta, tb, fz0 + 0.1, fz0 + 0.3, signOut, letters);
-  } else text(signText, ta, tb, fz0 + 0.13, h - 0.17, signOut, letters);
+  } else text(signText, ta, tb, fz0 + m, h - 0.05 - m, signOut, letters);
   if (spec.logo) {
     const cx = logoAt === 'left' ? tx0 + pad + logoR : tx1 - pad - logoR, cz = (fz0 + h - 0.05) / 2;
     faces.push(disc(cx, cz, logoR, signOut + 0.01, spec.logo.ring ?? WHITE), disc(cx, cz, logoR * 0.78, signOut + 0.02, spec.logo.hex));
@@ -222,7 +239,7 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
   }
 
   for (const sg of spec.signs ?? []) {
-    const [a, b] = sg.x, [z0, z1] = sg.z;
+    const [a, b] = [sg.x[0] + sh, sg.x[1] + sh], [z0, z1] = sg.z;
     // Signs stand in front of everything flat: the fascia board ends at OUT + 0.06.
     const so = OUT + 0.1;
     if (sg.board) boxes.push({ x0: a, x1: b, z0, z1, out0: WALL, out1: so, hex: sg.board });

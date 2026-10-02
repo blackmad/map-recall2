@@ -1181,7 +1181,7 @@
       return { k, w: w ? Number(w) : BAY_W[k] };
     });
     const fixed = parsed.reduce((s, t) => s + (t.w ?? 0), 0), flex = parsed.filter((t) => t.w == null).length;
-    const scale = fixed > x1 - x0 - 0.4 * flex ? (x1 - x0 - 0.4 * flex) / fixed : 1, share = flex ? (x1 - x0 - fixed * scale) / flex : 0;
+    const scale = fixed > x1 - x0 - 0.4 * flex || !flex && fixed > 0 ? (x1 - x0 - 0.4 * flex) / fixed : 1, share = flex ? (x1 - x0 - fixed * scale) / flex : 0;
     let x = x0;
     return parsed.map((t) => {
       const w = t.w != null ? t.w * scale : share, b = { kind: t.k, x0: x, x1: x + w };
@@ -1194,7 +1194,9 @@
     const GLASS2 = spec.glass ?? DARK_GLASS;
     const L = wall.lengthM, h = spec.heightM ?? 3.6;
     const half = Math.min(3.5, L / 2);
-    const [x0, x1] = spec.span ?? [Math.max(0, Math.min(L - 2 * half, wall.alongM - half)), Math.min(L, Math.max(2 * half, wall.alongM + half))];
+    const sh = spec.shift ?? 0, SNAP = 0.6;
+    const [px0, px1] = spec.span ? [spec.span[0] + sh, spec.span[1] + sh] : [Math.max(0, Math.min(L - 2 * half, wall.alongM - half)), Math.min(L, Math.max(2 * half, wall.alongM + half))];
+    const x0 = Math.max(0, px0) < SNAP ? 0 : Math.max(0, px0), x1 = L - Math.min(L, px1) < SNAP ? L : Math.min(L, px1);
     const frame = spec.frame, wallHex = spec.wall ?? frame, plinth = spec.plinth ?? frame;
     const boxes = [], extrusions = [], faces = [];
     const text = (s, a, b, z0, z1, out, hex2, align) => boxes.push(...textRects(s, a, b, z0, z1, align).map((r) => ({ ...r, out0: out, out1: out + 0.015, hex: hex2, face: true })));
@@ -1207,13 +1209,16 @@
     if (fascia) boxes.push({ x0: x0 + 0.05, x1: x1 - 0.05, z0: fz0, z1: h - 0.05, out0: WALL, out1: OUT + 0.06, hex: fascia });
     const signOut = fascia ? OUT + 0.06 : WALL;
     const logoR = spec.logo ? fasciaH * 0.48 : 0, logoAt = spec.logo?.at ?? "left";
-    const [tx0, tx1] = spec.textAt ?? [x0, x1];
-    const ta = tx0 + pad + (spec.logo && logoAt === "left" ? 2 * logoR + 0.15 : 0), tb = tx1 - pad - (spec.logo && logoAt === "right" ? 2 * logoR + 0.15 : 0);
+    const [tx0, tx1] = spec.textAt ? [Math.max(x0, spec.textAt[0] + sh), Math.min(x1, spec.textAt[1] + sh)] : [x0, x1];
+    const bladeAt = spec.sign && spec.sign !== "none" ? spec.signAt ?? ((spec.door ?? "left") === "right" ? "left" : "right") : null;
+    const ta = tx0 + pad + (spec.logo && logoAt === "left" ? 2 * logoR + 0.15 : 0) + (bladeAt === "left" && tx0 <= x0 + 0.4 ? 0.35 : 0);
+    const tb = tx1 - pad - (spec.logo && logoAt === "right" ? 2 * logoR + 0.15 : 0) - (bladeAt === "right" && tx1 >= x1 - 0.4 ? 0.35 : 0);
+    const m = Math.min(0.15, (h - 0.05 - fz0) * 0.18);
     if (!signText) {
     } else if (spec.text2) {
       text(signText, ta, tb, fz0 + 0.38, h - 0.13, signOut, letters);
       text(spec.text2, ta, tb, fz0 + 0.1, fz0 + 0.3, signOut, letters);
-    } else text(signText, ta, tb, fz0 + 0.13, h - 0.17, signOut, letters);
+    } else text(signText, ta, tb, fz0 + m, h - 0.05 - m, signOut, letters);
     if (spec.logo) {
       const cx2 = logoAt === "left" ? tx0 + pad + logoR : tx1 - pad - logoR, cz = (fz0 + h - 0.05) / 2;
       faces.push(disc(cx2, cz, logoR, signOut + 0.01, spec.logo.ring ?? WHITE2), disc(cx2, cz, logoR * 0.78, signOut + 0.02, spec.logo.hex));
@@ -1297,7 +1302,7 @@
       boxes.push({ x0: x - 0.03, x1: x + 0.03, z0: 2.1, z1: 2.16, out0: OUT, out1: 0.4, hex: INK }, { x0: x - 0.11, x1: x + 0.11, z0: 1.75, z1: 2.1, out0: 0.25, out1: 0.47, hex: LAMP }, { x0: x - 0.13, x1: x + 0.13, z0: 2.1, z1: 2.18, out0: 0.23, out1: 0.49, hex: INK });
     }
     for (const sg of spec.signs ?? []) {
-      const [a, b] = sg.x, [z0, z1] = sg.z;
+      const [a, b] = [sg.x[0] + sh, sg.x[1] + sh], [z0, z1] = sg.z;
       const so = OUT + 0.1;
       if (sg.board) boxes.push({ x0: a, x1: b, z0, z1, out0: WALL, out1: so, hex: sg.board });
       if (sg.tiles) {
@@ -1415,7 +1420,7 @@
     "abyssinia-49625": { name: "Abyssinia", frame: "#3a2a22", wall: "#3a2a22", plinth: "#1d1d1f", fascia: "#e9dcc4", fasciaH: 0.85, text: "ABYSSINIA", textAt: [0.6, 4.2], letters: "#4a3020", pattern: [{ kind: "zebra", a: "#e9dcc4", b: "#6a4a30", on: "fascia" }, { kind: "zebra", a: "#1d1d1f", b: "#f2efe8", on: "plinth" }], span: [0.3, 9], bays: "W:3.4 P W W:1.6 B:0.4 D:0.8", banner: { hex: "#2a1f1a", text: "AFRIKAANS ART-CAFE", letters: "#f2efe8" }, sign: "square", signHex: "#f2efe8", plants: true, heightM: 4.5 },
     "afhaalcentrum-terang-boelan-65034": { name: "Terang Boelan", frame: "#4a2a1c", wall: "#4a2a1c", doorHex: "#7a3a24", fascia: "#3a2a22", fasciaH: 0.35, text: "", span: [1.8, 6.6], bays: "W D:0.9", transom: true, awning: "flat", awningHex: "#6a6a68", signs: [{ text: "TERANG BOELAN", x: [2.3, 5], z: [1, 1.4], letters: "#f2f0ea" }], sign: "square", signHex: "#e3b020", signAt: "right", heightM: 4.2 },
     "akitsu-69827": { name: "Akitsu", frame: "#ecebe6", wall: "#ecebe6", fascia: "#ecebe6", fasciaH: 0.5, text: "", span: [0, 4.8], bays: "P:0.3 W P:0.3 W P:0.3", grid: [2, 2], heightM: 4 },
-    "al-argentino-65689": { name: "Al Argentino", frame: "#2a2c2e", wall: "#3a3c40", fascia: "#2a2c2e", fasciaH: 0.35, text: "AL ARGENTINO", letters: "#c8282a", span: [1.3, 4.3], bays: "W D:0.6 d:0.6", sign: "round", signHex: "#c8282a", signAt: "left", heightM: 2.9 },
+    "al-argentino-65689": { name: "Al Argentino", frame: "#2a2c2e", wall: "#3a3c40", fascia: "#2a2c2e", fasciaH: 0.35, text: "AL ARGENTINO", letters: "#c8282a", shift: -1.3, span: [1.3, 6.3], bays: "W D:0.6 d:0.6", sign: "round", signHex: "#c8282a", signAt: "left", heightM: 2.9 },
     "al-basha-47236": { name: "Al Basha", frame: "#2a2c2e", wall: "#ecebe6", fascia: "#ecebe6", fasciaH: 0.6, text: "", span: [3, 15.2], bays: "W:1.5 B:0.35 W:2.6 B:0.35 D:1.6 B:0.35 W:2.6 B:0.35 W", grid: [2, 1], signs: [{ text: "AL BASHA", x: [8, 9.9], z: [3.15, 3.5], letters: "#c8282a", board: "#f2efe8" }], plants: true, heightM: 4 },
     "alberto-pozzetto-private-dining-56811": null,
     "albina-10961": { name: "Albina", frame: "#3d454c", wall: "#3d454c", fascia: "#3d454c", fasciaH: 0.8, text: "", span: [0, 10.8], bays: "W:2.0 D:0.8 W:1.4 B:0.4 d:0.7 B:0.4 D:0.7 W:1.6 W", transom: true, grid: [2, 1], plants: true, heightM: 4.4 },
@@ -1460,7 +1465,7 @@
     // Sheet 03.
     "blue-pepper-56684": { name: "Blue Pepper", frame: "#2f4f7a", fascia: false, windows: "arched", door: "left" },
     "boeuf-53646": { name: "Boeuf", frame: DARK, fascia: false, windows: "split", door: "centre", plants: true, terrace: true },
-    "bojo-68561": { name: "Bojo", frame: "#2e2420", wall: "#2e2420", fascia: "#3a2c26", text: "INDONESIAN KITCHEN", letters: "#f2efe8", logo: { hex: "#c8282a" }, banner: { hex: "#e8c020", text: "INDONESISCHE SPECIALITEITEN", letters: "#2e2420" }, span: [1, 4.3], bays: "D W", heightM: 3.9 },
+    "bojo-68561": { name: "Bojo", frame: "#2e2420", wall: "#2e2420", fascia: "#3a2c26", text: "INDONESIAN KITCHEN", letters: "#f2efe8", banner: { hex: "#e8c020", text: "INDONESISCHE SPECIALITEITEN", letters: "#2e2420" }, shift: -1, span: [1, 5.3], bays: "D W", sign: "round", signHex: "#c8282a", signAt: "left", heightM: 3.9 },
     "bougainville-65129": null,
     "bouillon-d-amsterdam-75580": { name: "Bouillon", frame: "#8a4a22", fascia: false, windows: "arched", door: "none", heightM: 4.4, sign: "square", signHex: "#c9a227" },
     "brandon-76429": { name: "Brandon", frame: WHITE3, fascia: false, awning: "flat", awningHex: "#cfcac0", windows: "split", door: "centre", terrace: true },
@@ -2276,10 +2281,10 @@
       const [ax2, ay2] = local([meta.wall.startLngLat])[0], [bx2, by2] = local([meta.wall.endLngLat])[0];
       const b = meta.wall.outwardBearingDeg * Math.PI / 180, ox = Math.sin(b), oy = Math.cos(b), mx = (ax2 + bx2) / 2, my = (ay2 + by2) / 2;
       const len = Math.hypot(bx2 - ax2, by2 - ay2) || 1, half = len / 2 + 25, ux = (bx2 - ax2) / len, uy = (by2 - ay2) / len;
-      const inFront = (pts) => pts.some(([x, y]) => {
-        const out = (x - mx) * ox + (y - my) * oy, along2 = (x - mx) * ux + (y - my) * uy;
-        return out > 1 && out < 70 && Math.abs(along2) < half;
-      });
+      const inFront = (pts) => {
+        const x = pts.reduce((t, p) => t + p[0], 0) / pts.length, y = pts.reduce((t, p) => t + p[1], 0) / pts.length, out = (x - mx) * ox + (y - my) * oy, along2 = (x - mx) * ux + (y - my) * uy;
+        return out > 2 && out < 70 && Math.abs(along2) < half;
+      };
       for (let i = context.length - 1; i >= 0; i--) if (inFront(context[i].pts)) context.splice(i, 1);
     }
     if (front?.bodyTopM != null) {

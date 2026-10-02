@@ -48,8 +48,10 @@ for (const [name, front] of Object.entries(FRONTS)) {
   // Real lettering: a sign spells its name in the pixel font (Bojo's fascia, Troost's tiles).
   const font = textPixels('AB').width === 11 && textPixels('BOJO').runs.length > 20;
   const lettered = ['bojo-68561', 'brouwerij-troost-26831'].every(slug => STOREFRONT_BY_SLUG.get(slug)!.boxes.filter(b => b.face).length > 30);
-  const ok = unplaced.length === 0 && offWall.length === 0 && STOREFRONT_FRONTS.length >= 290 && font && lettered;
+  // Registration: Bojo's photo is 1.0 m off its footprint wall; with its shift the shop fills its building.
+  const bojo = STOREFRONT_BY_SLUG.get('bojo-68561')!.outline, registered = bojo[0][0] === 0 && Math.abs(bojo[1][0] - STOREFRONT_WALLS['bojo-68561'].lengthM) < 1e-6;
+  const ok = unplaced.length === 0 && offWall.length === 0 && STOREFRONT_FRONTS.length >= 290 && font && lettered && registered;
   failed ||= !ok;
-  console.log(`${ok ? 'ok  ' : 'FAIL'} storefronts: ${STOREFRONT_FRONTS.length} built of ${specs.length} specs${unplaced.length ? `; no wall for ${unplaced.join(', ')}` : ''}${offWall.length ? `; off their wall: ${offWall.join(', ')}` : ''}${font && lettered ? '' : '; lettering missing'}`);
+  console.log(`${ok ? 'ok  ' : 'FAIL'} storefronts: ${STOREFRONT_FRONTS.length} built of ${specs.length} specs${unplaced.length ? `; no wall for ${unplaced.join(', ')}` : ''}${offWall.length ? `; off their wall: ${offWall.join(', ')}` : ''}${font && lettered ? '' : '; lettering missing'}${registered ? '' : '; Bojo not registered to its wall'}`);
 }
 if (failed) process.exit(1);
