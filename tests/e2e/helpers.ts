@@ -24,6 +24,8 @@ export type OpenRouteOptions = {
   /** Jump straight into racing after the player spawns. */
   enterRacing?: boolean;
   playerTimeoutMs?: number;
+  /** Seed for Math.random, so different values give different routes. */
+  seed?: number;
 };
 
 /** Boot Canal Recall, set prefs via the hidden selects, and start a route. */
@@ -35,16 +37,17 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
     abortHeavyTiles = true,
     enterRacing = true,
     playerTimeoutMs = 90_000,
+    seed: seedValue = 0x5eed1234,
   } = options;
 
   if (seedRandom) {
-    await page.addInitScript(() => {
-      let seed = 0x5eed1234;
+    await page.addInitScript((initial: number) => {
+      let seed = initial;
       Math.random = () => {
         seed = (seed * 1664525 + 1013904223) >>> 0;
         return seed / 0x100000000;
       };
-    });
+    }, seedValue);
   }
   if (abortHeavyTiles) {
     await page.route(/3dbag|cesium3dtiles/i, (route) => route.abort());

@@ -82,6 +82,7 @@ const CHECKS = [
   'test:boat-navigability',
   'test:city-overview',
   'test:route-selection',
+  'test:start-heading',
   'test:route-ribbon',
   'test:play-delight',
   'test:canal-game-structure',
