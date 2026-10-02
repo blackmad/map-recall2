@@ -181,3 +181,21 @@ console.log('Neighbourhood gap-fill checks passed.');
   assert.ok(out && out.includes('jaren negentig') && !out.includes('aangeplempt'), 'dated prose sentence, not the description');
   assert.equal(historyFromBody(['Het is een eiland met veel water en groen.']), undefined);
 }
+
+{
+  const { rankAreaPhotos } = await import('../src/mapRecall/neighborhoodGaps');
+  const square: [number, number][][][] = [[[[52, 4], [52, 4.1], [52.1, 4.1], [52.1, 4], [52, 4]]]];
+  const file = (title: string, lat: number, lon: number, extra: Record<string, unknown> = {}) =>
+    ({ title, url: 'u', thumbUrl: 't', width: 1600, height: 1000, mime: 'image/jpeg', license: 'CC BY-SA 4.0', lat, lon, ...extra }) as import('../src/mapRecall/neighborhoodGaps').AreaPhotoFile;
+  const picked = rankAreaPhotos([
+    file('File:Canal view 1.jpg', 52.01, 4.01),
+    file('File:Canal view 2.jpg', 52.011, 4.011), // same title stem: dropped
+    file('File:Market square.jpg', 52.09, 4.09),
+    file('File:Outside.jpg', 53, 5), // outside the area
+    file('File:Tram line 5.jpg', 52.05, 4.05), // vehicle
+    file('File:Map of the area.jpg', 52.05, 4.05), // map
+    file('File:Portrait.jpg', 52.06, 4.06, { width: 800, height: 1200 }), // portrait orientation
+    file('File:Unlicensed.jpg', 52.07, 4.07, { license: undefined }),
+  ], square, 8);
+  assert.deepEqual(picked.map(f => f.title).sort(), ['File:Canal view 1.jpg', 'File:Market square.jpg']);
+}

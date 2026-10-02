@@ -452,3 +452,30 @@ export function historyFromBody(sentences: readonly string[], alreadyUsed = ''):
     .filter(s => s.length >= 40 && s.length <= 400 && HISTORY_CUE.test(s) && !used.includes(s));
   return hits.length ? hits.slice(0, 2).join(' ') : undefined;
 }
+
+export interface AreaPhotoFile extends CommonsFile { lat: number; lon: number }
+
+const JUNK_TITLE = /\b(logo|map|kaart|plattegrond|plan|diagram|flag|vlag|wapen|coat of arms|screenshot|poster|stamp|postzegel|scan|krant|brief|letter|portrait|portret|interior|interieur|menu|sticker|sign|bord|tram|bus|metro|ov-?chip|ticket)\b/i;
+
+/**
+ * Photographs taken inside an area, for the postcard: licensed landscape JPEGs, no maps, logos or
+ * vehicles, one per near-identical title, and spread across the area (each pick is the one farthest
+ * from those already chosen) so the strips show different corners instead of one street ten times.
+ */
+export function rankAreaPhotos(files: readonly AreaPhotoFile[], polygons: Polygons, max = 8): AreaPhotoFile[] {
+  const seen = new Set<string>();
+  const usable = files
+    .filter(f => f.mime === 'image/jpeg' && f.license && f.thumbUrl && f.width >= 700 && f.width >= f.height * 0.9 && !JUNK_TITLE.test(f.title) && pointInPolygons([f.lat, f.lon], polygons))
+    .sort((a, b) => b.width * b.height - a.width * a.height)
+    .filter(f => { const key = f.title.replace(/^File:/, '').replace(/[\d_\-. ()]+/g, '').replace(/jpe?g$/i, '').toLowerCase().slice(0, 18); if (seen.has(key)) return false; seen.add(key); return true; });
+  const picked: AreaPhotoFile[] = [];
+  while (usable.length && picked.length < max) {
+    let best = 0, bestScore = -1;
+    usable.forEach((f, index) => {
+      const score = picked.length ? Math.min(...picked.map(p => distanceKm([p.lat, p.lon], [f.lat, f.lon]))) : 1;
+      if (score > bestScore) { best = index; bestScore = score; }
+    });
+    picked.push(usable.splice(best, 1)[0]);
+  }
+  return picked;
+}
