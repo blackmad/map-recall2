@@ -66,6 +66,11 @@ void main() {
   fragColor = vec4(c * vShade, 1.0);
 }`;
 
+const infoOf = (chunk: Chunk): ChunkInfo => ({
+  buildingCount: chunk.buildingCount, wallCount: chunk.wallCount, quadCount: chunk.quadCount, vertexCount: chunk.vertexCount,
+  bytes: chunk.positions.byteLength + chunk.uvs.byteLength + chunk.layers.byteLength + chunk.tints.byteLength + chunk.accents.byteLength + chunk.indices.byteLength + chunk.vertexCount,
+});
+
 const asPolygons = (geometry: unknown): number[][][][] => {
   const g = geometry as { type?: string; coordinates?: unknown } | null;
   if (!g || !g.coordinates) return [];
@@ -82,6 +87,9 @@ const tileKeyOf = (polygons: number[][][][]): string => {
 
 export type BuildingLook = 'procedural' | Look;
 
+/** What stays after upload: counts only, never the typed arrays. */
+type ChunkInfo = { buildingCount: number; wallCount: number; quadCount: number; vertexCount: number; bytes: number };
+
 export type ThreeBuildingStats = { chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number };
 
 export class ThreeBuildings {
@@ -92,7 +100,7 @@ export class ThreeBuildings {
   private material: any;
   private renderer: any;
   private camera: any;
-  private readonly chunks = new Map<string, { source: Feature[]; mesh: any; chunk: Chunk; ranges: Map<string, { start: number; count: number }> }>();
+  private readonly chunks = new Map<string, { source: Feature[]; mesh: any; info: ChunkInfo; ranges: Map<string, { start: number; count: number }> }>();
   /** Ids hidden per reason (the answer building, signature models); a facade is hidden while any reason holds it. */
   private readonly hiddenBy = new Map<string, Set<string>>();
   private hidden = new Set<string>();
@@ -122,7 +130,7 @@ export class ThreeBuildings {
     if (token !== this.lookToken) return;
     this.material.uniforms.cells.value = set.colour;
     this.material.uniforms.masks.value = set.mask;
-    this.textureMB = (set.colour.image.data.byteLength + set.mask.image.data.byteLength) * 4 / 3 / 1048576;
+    this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
     for (const [key, entry] of [...this.chunks]) this.pending.push(() => this.rebuild(key, entry.source));
     this.pump();
   }
@@ -168,6 +176,9 @@ export class ThreeBuildings {
       const t = new THREE.DataArrayTexture(data, CELL_PX, CELL_PX, layers);
       t.format = format; t.type = THREE.UnsignedByteType;
       t.wrapS = t.wrapT = THREE.RepeatWrapping; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter;
+      t.userData = { bytes: data.byteLength };
+      // Once on the GPU the CPU copy is dead weight; a restored context rebuilds the set.
+      t.onUpdate = () => { t.image.data = null; };
       t.generateMipmaps = true; t.anisotropy = this.renderer.capabilities.getMaxAnisotropy(); t.unpackAlignment = 1; t.needsUpdate = true;
       return t;
     };
@@ -220,9 +231,8 @@ export class ThreeBuildings {
 
   stats(): ThreeBuildingStats {
     let buildings = 0, walls = 0, quads = 0, vertices = 0, bytes = 0;
-    for (const { chunk } of this.chunks.values()) {
-      buildings += chunk.buildingCount; walls += chunk.wallCount; quads += chunk.quadCount; vertices += chunk.vertexCount;
-      bytes += chunk.positions.byteLength + chunk.uvs.byteLength + chunk.layers.byteLength + chunk.tints.byteLength + chunk.accents.byteLength + chunk.indices.byteLength + chunk.vertexCount;
+    for (const { info } of this.chunks.values()) {
+      buildings += info.buildingCount; walls += info.wallCount; quads += info.quadCount; vertices += info.vertexCount; bytes += info.bytes;
     }
     const info = this.renderer?.info?.render;
     return {
@@ -280,19 +290,23 @@ export class ThreeBuildings {
     const buildings = source.map(f => this.toMeshBuilding(f)).filter((b): b is MeshBuilding => !!b);
     const chunk = buildChunk(buildings, ORIGIN);
     this.dropChunk(key);
-    if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, chunk, ranges: new Map() }); return; }
+    if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); return; }
     const THREE = this.THREE;
     const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute('position', new THREE.BufferAttribute(chunk.positions, 3));
-    geometry.setAttribute('uv', new THREE.BufferAttribute(chunk.uvs, 2));
-    geometry.setAttribute('layer', new THREE.BufferAttribute(chunk.layers, 1, false));
-    geometry.setAttribute('tint', new THREE.BufferAttribute(chunk.tints, 4, true));
-    geometry.setAttribute('accent', new THREE.BufferAttribute(chunk.accents, 4, true));
+    // The GPU holds the copy that draws; the CPU array is freed once uploaded
+    // (the `hidden` flags stay: they are rewritten when the answer changes).
+    // A lost context rebuilds from `source`, see onAdd.
+    const release = (attribute: any) => { attribute.onUpload(function (this: any) { this.array = null; }); return attribute; };
+    geometry.setAttribute('position', release(new THREE.BufferAttribute(chunk.positions, 3)));
+    geometry.setAttribute('uv', release(new THREE.BufferAttribute(chunk.uvs, 2)));
+    geometry.setAttribute('layer', release(new THREE.BufferAttribute(chunk.layers, 1, false)));
+    geometry.setAttribute('tint', release(new THREE.BufferAttribute(chunk.tints, 4, true)));
+    geometry.setAttribute('accent', release(new THREE.BufferAttribute(chunk.accents, 4, true)));
     geometry.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(chunk.vertexCount), 1, false));
-    geometry.setIndex(new THREE.BufferAttribute(chunk.indices, 1));
+    geometry.setIndex(release(new THREE.BufferAttribute(chunk.indices, 1)));
     const mesh = new THREE.Mesh(geometry, this.material);
     mesh.frustumCulled = false;
-    const entry = { source, mesh, chunk, ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
+    const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
     if (this.hidden.size) this.applyHidden(entry, this.hidden);
@@ -332,6 +346,15 @@ export class ThreeBuildings {
         owner.scene = new THREE.Scene();
         owner.renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
         owner.renderer.autoClear = false;
+        // CPU copies are freed after upload, so a restored context needs fresh meshes.
+        map.getCanvas().addEventListener('webglcontextrestored', () => {
+          owner.textureSets.clear();
+          void owner.texturesFor(owner.look).then(set => {
+            owner.material.uniforms.cells.value = set.colour; owner.material.uniforms.masks.value = set.mask;
+            for (const [key, entry] of [...owner.chunks]) owner.pending.push(() => owner.rebuild(key, entry.source));
+            owner.pump();
+          });
+        });
         owner.material = new THREE.RawShaderMaterial({
           glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
           uniforms: { cells: { value: null }, masks: { value: null } }, side: THREE.FrontSide,
@@ -339,7 +362,7 @@ export class ThreeBuildings {
         void owner.texturesFor(owner.look).then(set => {
           owner.material.uniforms.cells.value = set.colour;
           owner.material.uniforms.masks.value = set.mask;
-          owner.textureMB = (set.colour.image.data.byteLength + set.mask.image.data.byteLength) * 4 / 3 / 1048576;
+          owner.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
           owner.ready = true;
           owner.pump();
           owner.map.triggerRepaint();

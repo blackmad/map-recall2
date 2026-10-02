@@ -9,7 +9,7 @@ import { openRoute } from './helpers';
 // (cloud sandbox: add PW_OFFLINE_MAP=1 PW_CHROME=/opt/pw-browsers/chromium-1194/chrome-linux/chrome)
 // Per variant and named location it records
 //   shimmer  – mean absolute luminance change between consecutive screenshots of
-//              the same facades while the heading creeps by 0.1° a frame, i.e.
+//              the same facades while the heading creeps by 0.017° (0.0003 rad) a frame, i.e.
 //              what a slanted, slowly moving wall flickers by (lower is calmer);
 //   frame    – rAF deltas while riding forward, and MapLibre's own render time;
 //   memory   – JS heap and, for three, geometry and texture bytes;
@@ -55,11 +55,12 @@ for (const variant of VARIANTS) {
         await park(page, spot.at, spot.face, view);
         await page.waitForTimeout(800);
         await page.screenshot({ path: `${OUT}/${spot.name}-${view}-${variant.name}.png` });
-        // Shimmer: creep the heading and difference consecutive frames of a facade-heavy region.
+        // Shimmer: creep the heading by a fraction of a pixel a frame (0.0003 rad), so real content
+        // motion is tiny and what is left in the frame difference is aliasing flicker.
         const clip = { x: 360, y: 250, width: 720, height: 380 };
         const frames: Buffer[] = [];
         for (let i = 0; i < 8; i++) {
-          await page.evaluate(() => { const g = (window as any).canalRecallGame; g.player.angle += 0.0017; });
+          await page.evaluate(() => { const g = (window as any).canalRecallGame; g.player.angle += Number((window as any).__creep ?? 0.0003); });
           await page.waitForTimeout(200);
           frames.push(await page.screenshot({ clip }));
         }
@@ -88,7 +89,7 @@ for (const variant of VARIANTS) {
       for (let i = 0; i < 60; i++) { g.player.x += Math.cos(g.player.angle) * 2; g.player.y += Math.sin(g.player.angle) * 2; await new Promise(r => setTimeout(r, 100)); }
       stop = true; map._render = original;
       const pick = (v: number[], q: number) => [...v].sort((a, b) => a - b)[Math.min(v.length - 1, Math.floor(q * v.length))] ?? 0;
-      const heap = (performance as any).memory ? (performance as any).memory.usedJSHeapSize / 1048576 : null;
+      (w.gc || (() => {}))(); const heap = (performance as any).memory ? (performance as any).memory.usedJSHeapSize / 1048576 : null;
       const vm = w.canalRecallGame.vectorMap;
       return { frameMedian: pick(frames.slice(3), 0.5), frameP95: pick(frames.slice(3), 0.95), mapRenderMedian: pick(renders, 0.5), mapRenderP95: pick(renders, 0.95), heapMB: heap, three: vm._threeBuildings ? vm._threeBuildings.stats() : null };
     });
