@@ -15,9 +15,10 @@
 import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, paintProceduralLayers } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
 import { decorateRoof, exceptLandmarks, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
-import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
+import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { bayTextures, type Look } from './bayTextures.js';
-import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
+import { KITS, KIT_HIDE_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
+import { buildChunk, buildKitChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
 type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
@@ -70,7 +71,7 @@ void main() {
   fragColor = vec4(c * shade, 1.0);
 }`;
 
-const ROOF_LAYER_COUNT = 3;
+const ROOF_LAYER_COUNT = 4;
 const hashShop = (id: string) => { let h = 2166136261; for (const c of `${id}:shop`) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967296 < 0.3; };
 
 const infoOf = (chunk: Chunk): ChunkInfo => ({
@@ -126,7 +127,9 @@ const tileKeyOf = (polygons: number[][][][]): string => {
 
 export type BuildingLook = 'procedural' | Look;
 
-export { decorateRoof, exceptLandmarks };
+export { decorateRoof, exceptLandmarks, decorateKitRoof, KIT_HIDE_IDS };
+
+const KIT_KEY = '__kit';
 
 /** Roof colours per look: pantile and slate (a look's own tones, picked by the plan's `tone`). */
 const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
@@ -257,8 +260,10 @@ export class ThreeBuildings {
   /** The resident building set from the tile streamer; rebuilds only chunks whose features changed. */
   setFeatures(features: readonly Feature[]): void {
     const groups = new Map<string, Feature[]>();
+    const kitParts: Feature[] = [];
     for (const feature of features) {
       const p = feature.properties;
+      if (KIT_PART_IDS.has(String(p.id ?? ''))) kitParts.push(feature);
       if (typeof p.facade !== 'string' || !p.facadeStyle) continue;
       const polygons = asPolygons(feature.geometry);
       if (!polygons.length) continue;
@@ -267,6 +272,7 @@ export class ThreeBuildings {
       if (!list) groups.set(key, list = []);
       list.push(feature);
     }
+    if (kitParts.length) groups.set(KIT_KEY, kitParts);
     for (const key of [...this.chunks.keys()]) if (!groups.has(key)) this.dropChunk(key);
     for (const [key, list] of groups) {
       const held = this.chunks.get(key);
@@ -328,6 +334,22 @@ export class ThreeBuildings {
     }, 0);
   }
 
+  /** Landmark kits: build each kit from whichever of its OSM parts are resident. */
+  private buildKits(source: Feature[]): Chunk {
+    const kx = 111_320 * Math.cos(ORIGIN.lat * Math.PI / 180), ky = 110_540;
+    const parts = new Map<string, PartInput>();
+    for (const f of source) {
+      const polygons = asPolygons(f.geometry), outer = polygons[0]?.[0];
+      if (!outer) continue;
+      const id = String(f.properties.id);
+      parts.set(id, { id, ring: outer.map(([lng, lat]) => [(lng - ORIGIN.lng) * kx, (lat - ORIGIN.lat) * ky] as [number, number]), minHeightM: Number(f.properties.minHeight) || 0, heightM: Number(f.properties.height) });
+    }
+    const geometry: KitPartGeometry[] = KITS.flatMap(kit => kitGeometry(kit, parts));
+    const roofBase = this.look === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
+    const plain = this.look === 'procedural' ? cellLayer('canal', 'plain', 0) : bayLayer('canal', 0, 'plain');
+    return buildKitChunk(geometry, { plain, flat: roofBase + 3, slope: roofBase + 1 });
+  }
+
   private toMeshBuilding(feature: Feature): MeshBuilding | null {
     const p = feature.properties;
     const polygons = asPolygons(feature.geometry);
@@ -362,8 +384,7 @@ export class ThreeBuildings {
   private rebuild(key: string, source: Feature[]): void {
     if (!this.THREE) return;
     const t0 = performance.now();
-    const buildings = source.map(f => this.toMeshBuilding(f)).filter((b): b is MeshBuilding => !!b);
-    const chunk = buildChunk(buildings, ORIGIN);
+    const chunk = key === KIT_KEY ? this.buildKits(source) : buildChunk(source.map(f => this.toMeshBuilding(f)).filter((b): b is MeshBuilding => !!b), ORIGIN);
     this.dropChunk(key);
     if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); return; }
     const THREE = this.THREE;
