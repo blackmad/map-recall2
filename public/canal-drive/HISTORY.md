@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Shop ground floors painted to the pavement, in ten colours
+
+User (2026-10-02, café corner screenshot): "the white bit should go to the ground because that's the paint color of the bottom floor? also maybe we have it able to come in different colors?" The bay looks' shopfronts stopped at a frame 8 px above a 24 px dark brick plinth. Now a shop bay is one painted surface from fascia to pavement (`paintedGround` in `bayTextures.ts`, drawn on the wall tint channel, plinth dropped for shops), and its frames and muntins share that paint. The mesh tints shop bays with the building's `groundHex` (`GROUND_PAINTS` in `bayLook.ts`: per look, half white or cream, then black, dark green, oxblood, navy, grey); doors and upper floors keep the wall colour. Pinned in `test:three-buildings`. Shots: `kinkerstraat-shops` (photo) and `da-costa-akitsu-e` (cartoon) in `facade-trees-look.spec.ts`.
+
 ## De Hallen: a row of tram halls
 
 User report with screenshot (2026-10-02, "should do something with de hallen"): the old Tollensstraat tram depot drew as one bare tan block, because it is a landmark (BAG pand 0363100012236693) and landmarks skip the generic facades and roofs. New kit kind `halls` in `landmarkKits.ts`: `hallRects` cuts the footprint into strips 9.62 m wide across its longest wall, aligned to a corner of the stepped Bellamyplein front (whose edges measure 9.6 m across and 6 m back per step), and each strip's run of the footprint gets a pitched roof with brick gable ends, ridges along the halls, eaves 7.2 m, rise 3.4 m. The walls take the kit's brick window grid instead of bare tan. Pinned in `test:three-buildings` (at least 10 halls, each long and no wider than a hall, together covering 85-110% of the footprint; walls stop at the eaves; ridges at eaves + rise). Shot from the `de-hallen` spots in `facade-trees-look.spec.ts`. Not done: glass ridge lights, arched tram doors on the gable ends.

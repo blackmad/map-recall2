@@ -193,15 +193,25 @@ function doorAt(p: Painter, x: number, groundY: number, v: BayVariant): void {
   void v;
 }
 
+/**
+ * A shop's ground floor is one painted surface down to the pavement, as Amsterdam shopfronts
+ * are (user report 2026-10-02: the white surround stopped above a strip of brick). It is drawn
+ * flat white on the wall channel, so the mesh tints it with the building's ground-floor paint
+ * (`groundHex`: white, cream, black, dark green, ...); frames and muntins take the same paint.
+ */
+function paintedGround(p: Painter, w: number, h: number): void {
+  p.fill('wall', '#f6f3ec'); p.ctx.fillRect(0, 0, w, h);
+}
+
 function shopAt(p: Painter, w: number, groundY: number): void {
   const { ctx } = p, cartoon = p.cartoon, x = 36, top = 74, sw = w - 72, sh = groundY - top - 8;
   const line = () => { if (cartoon) { p.stroke(OUTLINE, p.lineW); ctx.lineJoin = 'round'; ctx.stroke(); } };
-  p.fill('ink', 'rgba(20,14,10,0.5)'); ctx.fillRect(x - 6, top - 6, sw + 12, sh + 12);
-  p.fill('ink', cartoon ? '#fffaf0' : '#e4dfd2'); p.rr(x, top, sw, sh, cartoon ? 10 : 2); ctx.fill(); line();
+  p.fill('ink', 'rgba(20,14,10,0.5)'); ctx.fillRect(x - 6, top - 6, sw + 12, sh + 6);
+  p.fill('wall', cartoon ? '#fffaf0' : '#e4dfd2'); p.rr(x, top, sw, sh, cartoon ? 10 : 2); ctx.fill(); line();
   p.shade(() => { const g = ctx.createLinearGradient(0, top, 0, top + sh); if (cartoon) { g.addColorStop(0, '#bdeaff'); g.addColorStop(1, '#7ec0e6'); } else { g.addColorStop(0, '#7e97a6'); g.addColorStop(1, '#27363f'); }
     ctx.fillStyle = g; p.rr(x + 12, top + 12, sw - 24, sh - 24, 6); ctx.fill(); });
   if (p.pass === 'mask') { ctx.fillStyle = '#000'; ctx.fillRect(x + 12, top + 12, sw - 24, sh - 24); }
-  p.fill('ink', cartoon ? '#fffaf0' : '#e4dfd2');
+  p.fill('wall', cartoon ? '#fffaf0' : '#e4dfd2');
   for (const mx of [x + sw * 0.36, x + sw * 0.7]) ctx.fillRect(mx - 4, top + 12, 8, sh - 24);
   // Awning: scalloped accent colour stripe over the shopfront.
   p.fill('accent', '#ffffff'); p.rr(x - 10, top - 44, sw + 20, 40, 6); ctx.fill(); line();
@@ -238,9 +248,9 @@ function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): v
     // Café / restaurant: a sign, a scalloped awning over a wide window, a terrace of small
     // tables out front: the busiest ground floors in the city have to read as cafés at a glance.
     fascia(p, 24, 16, w - 48, 44);
-    p.fill('ink', frame); p.rr(24, 100, w - 48, groundY - 108, cartoon ? 8 : 2); ctx.fill(); outline();
+    p.fill('wall', frame); p.rr(24, 100, w - 48, groundY - 108, cartoon ? 8 : 2); ctx.fill(); outline();
     glassRect(p, 36, 112, w - 72, groundY - 196, 6);
-    p.fill('ink', frame); ctx.fillRect(w / 2 - 4, 112, 8, groundY - 196);
+    p.fill('wall', frame); ctx.fillRect(w / 2 - 4, 112, 8, groundY - 196);
     p.fill('accent', '#ffffff'); ctx.fillRect(10, 66, w - 20, 34);
     ctx.beginPath(); for (let sx = 10; sx < w - 10; sx += 40) ctx.arc(sx + 20, 100, 20, 0, Math.PI); ctx.fill(); outline();
     p.shade(() => { ctx.fillStyle = 'rgba(255,255,255,0.65)'; for (let sx = 10; sx < w - 10; sx += 80) ctx.fillRect(sx, 66, 40, 34); });
@@ -251,13 +261,13 @@ function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): v
     }
   } else if (kind === 'shopWindow') {
     fascia(p, 18, 24, w - 36, 62);
-    p.fill('ink', frame); p.rr(24, 102, w - 48, groundY - 110, cartoon ? 8 : 2); ctx.fill(); outline();
+    p.fill('wall', frame); p.rr(24, 102, w - 48, groundY - 110, cartoon ? 8 : 2); ctx.fill(); outline();
     glassRect(p, 36, 114, w - 72, groundY - 134, 6);
-    p.fill('ink', frame); for (const mx of [w * 0.34, w * 0.67]) ctx.fillRect(mx - 4, 114, 8, groundY - 134);
+    p.fill('wall', frame); for (const mx of [w * 0.34, w * 0.67]) ctx.fillRect(mx - 4, 114, 8, groundY - 134);
   } else if (kind === 'shopDeli') {
     // Food shop (bakery, cheese, deli, greengrocer): striped awning, a wide window, crates of produce out front.
     fascia(p, 24, 18, w - 48, 44);
-    p.fill('ink', frame); p.rr(24, 104, w - 48, groundY - 112, cartoon ? 8 : 2); ctx.fill(); outline();
+    p.fill('wall', frame); p.rr(24, 104, w - 48, groundY - 112, cartoon ? 8 : 2); ctx.fill(); outline();
     glassRect(p, 36, 116, w - 72, groundY - 196, 6);
     p.fill('accent', '#ffffff'); ctx.beginPath(); ctx.moveTo(14, 70); ctx.lineTo(w - 14, 70); ctx.lineTo(w - 4, 110); ctx.lineTo(4, 110); ctx.closePath(); ctx.fill(); outline();
     p.shade(() => { ctx.fillStyle = 'rgba(255,255,255,0.6)'; for (let sx = 14; sx < w - 14; sx += 48) { ctx.beginPath(); ctx.moveTo(sx, 70); ctx.lineTo(sx + 24, 70); ctx.lineTo(sx + 28, 110); ctx.lineTo(sx + 4, 110); ctx.closePath(); ctx.fill(); } });
@@ -269,7 +279,7 @@ function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): v
   } else if (kind === 'shopFlorist') {
     // Florist: a green fascia, a deep window, buckets of flowers stepping up in front.
     fascia(p, 24, 22, w - 48, 52);
-    p.fill('ink', frame); p.rr(24, 92, w - 48, groundY - 100, cartoon ? 8 : 2); ctx.fill(); outline();
+    p.fill('wall', frame); p.rr(24, 92, w - 48, groundY - 100, cartoon ? 8 : 2); ctx.fill(); outline();
     glassRect(p, 36, 104, w - 72, groundY - 124, 6);
     const blooms = ['#e84a7f', '#f2b92e', '#ffffff', '#c04fd0', '#ff7a45', '#e8573d'];
     for (let row = 0; row < 3; row++) for (let i = 0, cx = 30 + row * 14; cx < w - 40; cx += 44, i++) {
@@ -281,7 +291,7 @@ function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): v
   } else if (kind === 'shopBike') {
     // Bike shop: wide display window with bikes standing in it, bikes parked out front.
     fascia(p, 18, 24, w - 36, 56);
-    p.fill('ink', frame); p.rr(24, 96, w - 48, groundY - 104, cartoon ? 8 : 2); ctx.fill(); outline();
+    p.fill('wall', frame); p.rr(24, 96, w - 48, groundY - 104, cartoon ? 8 : 2); ctx.fill(); outline();
     glassRect(p, 36, 108, w - 72, groundY - 128, 6);
     const bike = (bx: number, by: number, s: number) => {
       ctx.beginPath(); ctx.arc(bx, by, 16 * s, 0, Math.PI * 2); ctx.arc(bx + 48 * s, by, 16 * s, 0, Math.PI * 2); ctx.stroke();
@@ -296,7 +306,7 @@ function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): v
     p.fill('ink', cartoon ? '#5a3b2c' : '#3d2a20'); ctx.fillRect(16, 168, w - 32, groundY - 176);
     p.fill('ink', cartoon ? '#6d4a37' : '#4b3326'); for (let x = 30; x < w - 30; x += 70) ctx.fillRect(x, 182, 54, groundY - 200);
     for (const cx of [w * 0.28, w * 0.66]) {
-      p.fill('ink', frame); p.rr(cx - 62, 84, 124, 78, cartoon ? 8 : 2); ctx.fill(); outline();
+      p.fill('wall', frame); p.rr(cx - 62, 84, 124, 78, cartoon ? 8 : 2); ctx.fill(); outline();
       glassRect(p, cx - 52, 94, 104, 58, 4);
       p.shade(() => { ctx.fillStyle = cartoon ? 'rgba(255,200,120,0.45)' : 'rgba(255,180,90,0.30)'; ctx.fillRect(cx - 52, 94, 104, 58); });
     }
@@ -330,12 +340,12 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
   const ground = v.kind === 'groundDoor' || isShop || v.kind === 'ground';
   if (v.archetype === 'modern') {
     if (!ground) ribbon(p, w, v.kind === 'attic' ? 120 : 70, v.kind === 'attic' ? 90 : 140);
-    else if (isShop) { if (v.kind === 'groundShop') shopAt(p, w, h - 24); else shopVariantAt(p, w, h - 24, v.kind); }
+    else if (isShop) { paintedGround(p, w, h); if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else { windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: 'rect', archetype: 'modern' }); if (v.kind === 'groundDoor') doorAt(p, w * 0.62, h - 24, v); }
   } else if (v.kind === 'plain') {
     // wall only
   } else if (ground) {
-    if (isShop) { if (v.kind === 'groundShop') shopAt(p, w, h - 24); else shopVariantAt(p, w, h - 24, v.kind); }
+    if (isShop) { paintedGround(p, w, h); if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else if (v.kind === 'groundDoor') { doorAt(p, w * 0.14, h - 24, v); layoutWindows(p, { ...v, windows: 1 }, w * 1.28, 76, 150); }
     else layoutWindows(p, v, w, 70, 150);
     if (v.archetype === 'school') { p.fill('ink', p.cartoon ? '#fff1cf' : '#c9c1ae'); ctx.fillRect(0, h - 70, w, 8); }
@@ -352,7 +362,8 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
       for (let bx = w * 0.1; bx < w * 0.9; bx += 18) ctx.fillRect(bx, y + wh - 40, 4, 38);
     }
   }
-  if (ground) { p.shade(() => { ctx.fillStyle = p.cartoon ? 'rgba(40,24,24,0.30)' : 'rgba(40,36,34,0.78)'; ctx.fillRect(0, h - 24, w, 24); }); }
+  // A dark plinth under a house's ground floor; a shop's paint runs to the pavement instead.
+  if (ground && !isShop) { p.shade(() => { ctx.fillStyle = p.cartoon ? 'rgba(40,24,24,0.30)' : 'rgba(40,36,34,0.78)'; ctx.fillRect(0, h - 24, w, 24); }); }
 }
 
 /** One tileable bay in colour plus its tint mask, drawn once per variant and cached. */
