@@ -29,6 +29,8 @@ export type MeshBuilding = {
   accentHex?: string;
   /** A shopfront on the street-level bays (procedural cells; the bay looks choose their own layer). */
   shop?: boolean;
+  /** Texture layer for bare wall: gable faces, chimneys, cornices. */
+  plainLayer?: number;
   /** A real roof for this building; its walls already stop at the eaves. */
   roof?: { plan: RoofPlan; layers: { slope: number; plain: number; dormer: number }; roofHex: string; dims: RoofDims };
 };
@@ -158,6 +160,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     return !!others && others.some(o => o.top >= b.heightM && o.base <= b.minHeightM);
   };
 
+  const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
   type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: RoofTri[] }> = [];
   let quadTotal = 0, wallTotal = 0, roofTotal = 0;
@@ -172,11 +175,21 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     const accent = parseHex(b.accentHex ?? '#ffffff');
     const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2;
     let walls = 0;
+    const cornice: RoofTri[] = [];
     for (const e of edges) {
       if (hiddenByNeighbour(e, b)) continue;
       const layout = layoutWall(b.style, e.len, top - base, hash01(`${b.id}:${edgeKey(e.x0, e.y0)}`), base < 0.5, scale);
       if (!layout) continue;
       walls++;
+      // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
+      if (!b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
+        const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
+        const A: [number, number, number] = [e.x0, e.y0, z], B: [number, number, number] = [e.x1, e.y1, z];
+        const C: [number, number, number] = [e.x1 + nx, e.y1 + ny, z - drop], D: [number, number, number] = [e.x0 + nx, e.y0 + ny, z - drop];
+        const n: [number, number, number] = [e.nx * drop, e.ny * drop, out], l = Math.hypot(...n);
+        const nn: [number, number, number] = [n[0] / l, n[1] / l, n[2] / l], u1 = e.len / 5;
+        cornice.push({ p: [A, D, C], uv: [[0, 0], [0, 0.1], [u1, 0.1]], part: 'plate', n: nn }, { p: [A, C, B], uv: [[0, 0], [u1, 0.1], [u1, 0]], part: 'plate', n: nn });
+      }
       const shade = wallShade(e.nx, e.ny);
       const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), shade * 255];
       const groundTop = base + layout.groundM;
@@ -185,11 +198,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       }
       if (layout.storeys > 0) quads.push({ e, u0: 0, u1: layout.bays, v1: layout.storeys, layer: b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
     }
-    let roof: RoofTri[] = [];
+    let roof: RoofTri[] = cornice;
     if (b.roof) {
       const outer = b.polygons[0]?.[0] ?? [];
       const rect = fitRect(outer.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number]));
       if (rect) roof = roofTriangles(rect, b.roof.plan, b.heightM, b.roof.dims);
+      if (!rect) roof = [];
     }
     quadsByBuilding.push({ b, quads, walls, roof });
     quadTotal += quads.length; wallTotal += walls; roofTotal += roof.length;
@@ -224,13 +238,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       indices.set([i, i + 1, i + 2, i, i + 2, i + 3], q * 6);
       q++;
     }
-    if (b.roof) {
-      const [wr, wg, wb] = parseHex(b.wallHex), [rr, rg, rb] = parseHex(b.roof.roofHex);
+    if (roof.length) {
+      const [wr, wg, wb] = parseHex(b.wallHex), [rr, rg, rb] = parseHex(b.roof?.roofHex ?? b.wallHex);
       const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2, white: [number, number, number] = [255, 255, 255];
       for (const t of roof) {
         const shade = Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
         const wall = t.part === 'plate' || t.part === 'dormerFace';
-        const layer = t.part === 'plate' ? b.roof.layers.plain : t.part === 'dormerFace' ? b.roof.layers.dormer : b.roof.layers.slope;
+        const layer = t.part === 'plate' ? (b.plainLayer ?? b.roof!.layers.plain) : t.part === 'dormerFace' ? b.roof!.layers.dormer : b.roof!.layers.slope;
         const tint = wall ? [wr * jitter, wg * jitter, wb * jitter] : [rr, rg, rb];
         for (let k = 0; k < 3; k++) {
           positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];

@@ -57,6 +57,8 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
         await page.waitForTimeout(view === 'chase' ? 7000 : 3500);
         await parkAt(page, spot.at, spot.face, view);
         await page.waitForTimeout(800);
+        await page.waitForFunction(() => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return !t || t.stats().buildings > 3000; }, null, { timeout: 30_000 }).catch(() => {});
+        await page.waitForTimeout(1500);
         const file = `${OUT}/${spot.name}-${view}-${testInfo.project.name}-${look.name}.png`;
         await page.screenshot({ path: file });
       }
