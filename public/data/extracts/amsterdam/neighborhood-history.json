@@ -241,6 +241,20 @@
     "lang": "en",
     "sourceLabel": "Gemeente Amsterdam street-name register",
     "kind": "derived"
+   },
+   "description": {
+    "en": "The Hoofdweg is a street in Amsterdam-West running from the Surinameplein to the Bos en Lommerplein, lined mostly with Amsterdam School housing blocks.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Hoofdweg_(Amsterdam)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "The street got its name in 1919, when it still lay in the municipality of Sloten: it was simply the broad main road through the new districts Sloten planned west of the Kostverlorenvaart. Amsterdam annexed Sloten in 1921 and kept the name; the road was extended to the Bos en Lommerplein in 1948.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Hoofdweg_(Amsterdam)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
