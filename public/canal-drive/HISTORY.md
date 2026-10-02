@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Gap-fill missed articles that existed (Sporenburg, Narva-eiland, Floradorp…)
+
+Two causes, both fixed in `scripts/fill-neighborhood-gaps.ts`: (1) articles with no "Geschiedenis" heading were read as having no history, though many tell it in running prose — `historyFromBody` now picks dated sentences not already used as the description; (2) a request that failed after retries was treated as "nothing there" and the area was recorded as done — failed areas are now retried on the next run. Amsterdam history went 74 → 81 of 90. Utrecht/Rotterdam runs started before this fix: clear their `online-done.json` and rerun once they finish.
+
 ## Sound permanently disabled
 
 Both apps are silent by decision. Map Recall `sounds` and Canal Recall `SoundManager` are inert stubs (no Web Audio), the mute/sound UI, `N` key and help text were removed, and `preferences.sound` is forced false. `check-canal-preferences.ts` fails if `AudioContext` reappears in the runtime sources.

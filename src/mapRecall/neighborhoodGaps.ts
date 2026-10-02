@@ -436,3 +436,19 @@ export function mergeCandidates(previous: readonly Candidate[], found: readonly 
 }
 
 export const ONLINE_METHODS: ReadonlySet<Candidate['method']> = new Set(['wiki-article', 'wikidata-search', 'wiki-mention', 'district-article', 'commons-category', 'commons-geosearch']);
+
+const HISTORY_CUE = /\b(1[0-9]{3}|20[0-2][0-9])\b|\b\d{1,2}(?:e|de|st|nd|rd|th)[ -](?:eeuw|century)|\b(?:eeuw|century)\b|\bjaren (?:twintig|dertig|veertig|vijftig|zestig|zeventig|tachtig|negentig)\b|\b(?:19|20)\d0s\b/i;
+
+/**
+ * Many short articles (new districts, islands) have no "History" heading but tell the history in
+ * running prose ("laid out in the 19th century … redeveloped since the 1990s"). Sentences with a
+ * dated cue, skipping those already used as the description, make a short history.
+ * Returns undefined when there are fewer than one such sentence of useful length.
+ */
+export function historyFromBody(sentences: readonly string[], alreadyUsed = ''): string | undefined {
+  const used = alreadyUsed.replace(/\s+/g, ' ');
+  const hits = sentences
+    .map(s => s.trim())
+    .filter(s => s.length >= 40 && s.length <= 400 && HISTORY_CUE.test(s) && !used.includes(s));
+  return hits.length ? hits.slice(0, 2).join(' ') : undefined;
+}
