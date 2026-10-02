@@ -29,10 +29,10 @@
  * `scripts/data/neighborhood-gap-review.json`. Dutch candidates wait for the
  * translation pass, as with `fetch-neighborhood-history.ts`.
  */
-import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { cityNamePattern, extractCityById } from '../src/mapRecall/cityExtracts';
+import { readScrape, writeScrape } from './lib/scrapeStore';
 import { historyText, isDisambiguation, mentions, sections, sentencesOf, tidy, upToChars } from './fetch-neighborhood-history';
 import {
   FIELDS, aliasCandidates, aliasOf, auditCoverage, commonsAttribution, flat, missingFields, offlineCandidates,
@@ -155,18 +155,17 @@ async function slot() {
   if (start > now) await wait(start - now);
 }
 /**
- * Every successful response is kept on disk (staging/gap-fill/cache), so a restart or a rerun
- * asks Wikimedia for nothing it already answered. `--refresh` ignores the cache.
+ * Every successful response is kept in the durable scrape store (see `lib/scrapeStore.ts`),
+ * so a restart, a rerun or a new session asks Wikimedia for nothing it already answered.
+ * `--refresh` fetches again and overwrites the stored copy.
  */
-const cacheDir = path.join(stagingDir, 'cache');
 async function fetchJson(url: URL): Promise<any> {
-  const file = path.join(cacheDir, `${createHash('sha1').update(url.toString()).digest('hex')}.json`);
   if (!process.argv.includes('--refresh')) {
-    try { return JSON.parse(await readFile(file, 'utf8')); } catch { /* not cached yet */ }
+    const stored = await readScrape(url);
+    if (stored) return stored.body;
   }
   const fresh = await fetchJsonUncached(url);
-  await mkdir(cacheDir, { recursive: true });
-  await writeFile(file, JSON.stringify(fresh));
+  await writeScrape(url, fresh);
   return fresh;
 }
 async function fetchJsonUncached(url: URL): Promise<any> {

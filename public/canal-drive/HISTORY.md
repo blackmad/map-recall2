@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## Utrecht and Rotterdam neighbourhood text and photos
+
+Ran `fill-neighborhood-gaps.ts` online for both cities with the widened Wikimedia token (Utrecht 192 online candidates, Rotterdam 121; about 1,760 responses now in the scrape store). Translated all 111 Dutch fields by hand into `scripts/data/neighborhood-gap-review-utrecht.json` / `-rotterdam.json`: 73 approved, 38 set to `null` (district-article and monument-list dumps, articles about another place or a person with the same name, out-of-date plans, demographics, crime-policy text). Approved translations trim sentences whose antecedent was lost in extraction ("for that reason", "this road") rather than inventing context. Judged 141 `commons-geosearch` photos on contact sheets: approved 68 that show the area itself; rejected portraits, interiors, vehicles, logos, macro shots, and any file the geosearch handed to several areas unless its name places it in one. Published with `--accept offline` (which also ships the offline `inside-fact` lines built from already-translated landmark facts): Utrecht +222 fields, Rotterdam +75. `check-neighborhood-trivia-data.ts` passes.
+
+## Durable scrape store for Wikimedia fetches
+
+User: "make sure we are caching / building our own DB of everything we scrape". The gap-fill cache lived in git-ignored `staging/`, which dies with a cloud container, so every new session re-asked Wikimedia from scratch under a shared-IP rate limit. `scripts/lib/scrapeStore.ts` keeps every response as `{ url, fetchedAt, body }` at `<root>/<host>/<aa>/<sha1(url)>.json`; the root is `SCRAPE_STORE_DIR`, else the project's shared `/mnt/project-files/scrape-store` (outlives containers), else `.cache/scrape-store`. One file per response so parallel sessions never write the same file; keyed by URL only, never by the token. `fill-neighborhood-gaps.ts` reads and writes through it (`--refresh` refetches). Other fetchers (`fetch-area-photos.ts`, `cached-json-fetch.ts`) still use their own local caches.
+
 ## The world flashed once per streamed building chunk
 
 User (2026-10-02): "the whole world flashes periodically and I don't know why". Since `e75bccd` freed the facade layer's CPU geometry once uploaded, three.js uploaded each new chunk and only then computed its bounding sphere (for render-list sorting) from the freed `position` array. That threw inside the MapLibre custom layer, which aborts the whole map frame, so the world blanked once for every chunk that streamed in while riding. `install` now computes the bounding sphere before the array is released. Pinned in `tests/e2e/three-buildings-no-flash.spec.ts`, which fails on the old bundle and passes on the new one.
