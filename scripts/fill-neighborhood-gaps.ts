@@ -31,6 +31,7 @@
  */
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { cityNamePattern, extractCityById } from '../src/mapRecall/cityExtracts';
 import { historyText, isDisambiguation, mentions, nameSentences, sections, tidy, upToChars } from './fetch-neighborhood-history';
 import {
   FIELDS, aliasCandidates, aliasOf, auditCoverage, commonsAttribution, flat, missingFields, offlineCandidates,
@@ -38,9 +39,14 @@ import {
   type Boundary, type Candidate, type CommonsFile, type Field, type StreetOrigin, type StreetSegment,
 } from '../src/mapRecall/neighborhoodGaps';
 
-const directory = path.resolve('public/data/extracts/amsterdam');
+// `--city utrecht|rotterdam|den-haag|amsterdam` (default amsterdam).
+const cityArg = process.argv.includes('--city') ? process.argv[process.argv.indexOf('--city') + 1] : 'amsterdam';
+const city = extractCityById(cityArg);
+if (!city) throw new Error(`unknown city "${cityArg}" (amsterdam, utrecht, rotterdam, den-haag)`);
+const cityPattern = cityNamePattern(city);
+const directory = path.resolve(`public/data/extracts/${city.id}`);
 const stagingDir = path.join(directory, 'staging/gap-fill');
-const reviewPath = path.resolve('scripts/data/neighborhood-gap-review.json');
+const reviewPath = path.resolve(`scripts/data/neighborhood-gap-review${city.id === 'amsterdam' ? '' : `-${city.id}`}.json`);
 const headers = { 'User-Agent': 'MapQuestExtractBuilder/1.0 (https://github.com/blackmad/map-recall2)' };
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const readJson = async <T>(file: string): Promise<T> => JSON.parse(await readFile(file, 'utf8'));
@@ -51,9 +57,11 @@ interface HistoryEntry { name: string; description?: PublishedText; history?: Pu
 
 async function load() {
   const boundaries = (await readJson<Boundary[]>(path.join(directory, 'boundaries.json'))).filter(b => b.kind !== 'municipality');
-  const enriched = await readJson<Enriched[]>(path.join(directory, 'neighborhoods-enriched.json'));
-  const historyFile = await readJson<{ version: number; generatedAt: string; neighborhoods: HistoryEntry[] }>(path.join(directory, 'neighborhood-history.json'));
-  const origins = (await readJson<{ origins: StreetOrigin[] }>(path.join(directory, 'street-name-origins.json'))).origins;
+  // A city's trivia files may not exist yet: every area is then a gap, and `publish` creates them.
+  const optional = async <T>(file: string, fallback: T): Promise<T> => { try { return await readJson<T>(path.join(directory, file)); } catch { return fallback; } };
+  const enriched = await optional<Enriched[]>('neighborhoods-enriched.json', []);
+  const historyFile = await optional<{ version: number; generatedAt: string; neighborhoods: HistoryEntry[] }>('neighborhood-history.json', { version: 1, generatedAt: '', neighborhoods: [] });
+  const origins = (await optional<{ origins: StreetOrigin[] }>('street-name-origins.json', { origins: [] })).origins;
   const routing = await readJson<Array<{ name: string; center: [number, number] }>>(path.join(directory, 'streets-routing.json'));
   const segments: StreetSegment[] = routing.filter(s => s.name).map(s => ({ name: s.name, center: s.center }));
   const places: Array<{ name: string; type: string; center: [number, number] }> = [];
@@ -122,7 +130,7 @@ export function runOffline(data: Data): Candidate[] {
       const got = new Set(fromAlias.map(c => c.field));
       missing = missing.filter(f => !got.has(f));
     }
-    candidates.push(...offlineCandidates({ hood, all: data.boundaries, origins: data.origins, segments: data.segments, places: data.places, missing }));
+    candidates.push(...offlineCandidates({ hood, all: data.boundaries, origins: data.origins, segments: data.segments, places: data.places, missing, cityName: city.name }));
   }
   return candidates;
 }
@@ -166,12 +174,49 @@ export function streetNamingSection(text: string): string | undefined {
   return /(vernoemd|genoemd|naam|namen)/i.test(body) ? upToChars(body.replace(/\s+/g, ' '), 420) : undefined;
 }
 
-/** A Wikidata item for the area (Amsterdam, neighbourhood-like), with its wiki titles and image. */
-async function wikidataMatch(name: string): Promise<{ qid: string; en?: string; nl?: string; commonsCategory?: string; image?: string } | null> {
+interface WikidataMatch { qid: string; en?: string; nl?: string; commonsCategory?: string; image?: string }
+
+/**
+ * Every neighbourhood-like item in the city in one query, keyed by flattened name
+ * (its label and its Dutch article title without "(buurt)"). One request replaces
+ * several searches per area, and finds titles such as "Leidsche Rijn (wijk)".
+ */
+async function wikidataBulk(): Promise<Map<string, WikidataMatch>> {
+  const query = `SELECT ?item ?itemLabel ?image ?commons ?nl ?en WHERE {
+    VALUES ?type { wd:Q123705 wd:Q253019 wd:Q1529997 wd:Q3257686 wd:Q15715406 wd:Q15079751 wd:Q2983893 wd:Q3558970 wd:Q1115575 }
+    ?item wdt:P31 ?type .
+    { ?item wdt:P131 wd:${city.wikidata} } UNION { ?item wdt:P131/wdt:P131 wd:${city.wikidata} }
+    OPTIONAL { ?item wdt:P18 ?image }
+    OPTIONAL { ?item wdt:P373 ?commons }
+    OPTIONAL { ?a schema:about ?item; schema:isPartOf <https://nl.wikipedia.org/>; schema:name ?nl }
+    OPTIONAL { ?b schema:about ?item; schema:isPartOf <https://en.wikipedia.org/>; schema:name ?en }
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "nl,en". }
+  }`;
+  const url = new URL('https://query.wikidata.org/sparql');
+  url.search = new URLSearchParams({ format: 'json', query }).toString();
+  const data = await fetchJson(url).catch(() => null);
+  const index = new Map<string, WikidataMatch>();
+  const score = (m: WikidataMatch) => Number(!!m.nl) * 2 + Number(!!m.en) + Number(!!m.image);
+  for (const row of data?.results?.bindings ?? []) {
+    const match: WikidataMatch = {
+      qid: row.item.value.split('/').pop(), nl: row.nl?.value, en: row.en?.value, commonsCategory: row.commons?.value,
+      image: row.image ? decodeURIComponent(String(row.image.value).split('/').pop() ?? '') : undefined,
+    };
+    for (const key of new Set([flat(row.itemLabel?.value ?? ''), flat((row.nl?.value ?? '').replace(/\s*\([^)]*\)$/, ''))])) {
+      if (key.length < 3) continue;
+      const have = index.get(key);
+      if (!have || score(match) > score(have)) index.set(key, match);
+    }
+  }
+  return index;
+}
+
+/** A Wikidata item for the area (in this city, neighbourhood-like), with its wiki titles and image. */
+async function wikidataMatch(name: string): Promise<WikidataMatch | null> {
   for (const language of ['nl', 'en']) {
     const found = await fetchJson(api('www.wikidata.org', { action: 'wbsearchentities', search: name.split('/')[0], language, limit: '8', type: 'item' }));
     for (const hit of found.search || []) {
-      if (!wikidataLooksRight(hit.description, hit.label ?? '', name)) continue;
+      if (!wikidataLooksRight(hit.description, hit.label ?? '', name, cityPattern)) continue;
       const entity = (await fetchJson(api('www.wikidata.org', { action: 'wbgetentities', ids: hit.id, props: 'sitelinks|claims', sitefilter: 'enwiki|nlwiki' }))).entities?.[hit.id];
       const claim = (p: string) => entity?.claims?.[p]?.[0]?.mainsnak?.datavalue?.value;
       return { qid: hit.id, en: entity?.sitelinks?.enwiki?.title, nl: entity?.sitelinks?.nlwiki?.title, commonsCategory: claim('P373'), image: claim('P18') };
@@ -203,7 +248,7 @@ async function commonsPhoto(name: string, center: [number, number], category?: s
     const titles = (members.query?.categorymembers ?? []).map((m: any) => m.title as string);
     return titles.length ? rankCommonsFiles(await commonsFiles(titles), name)[0] : undefined;
   };
-  const categories = [category && `Category:${category}`, `Category:${name}`, `Category:${name} (Amsterdam)`].filter((c): c is string => !!c);
+  const categories = [category && `Category:${category}`, `Category:${name}`, `Category:${name} (${city.name})`].filter((c): c is string => !!c);
   for (const cat of categories) { const file = await tryCategory(cat).catch(() => undefined); if (file) return { file, method: 'commons-category' }; }
   const near = await fetchJson(api('commons.wikimedia.org', { action: 'query', list: 'geosearch', gscoord: `${center[0]}|${center[1]}`, gsradius: '400', gsnamespace: '6', gslimit: '40' }));
   const titles = (near.query?.geosearch ?? []).map((g: any) => g.title as string);
@@ -215,6 +260,8 @@ export async function runOnline(data: Data, only?: string): Promise<Candidate[]>
   const { rows } = coverageOf(data);
   const candidates: Candidate[] = [];
   const districtArticles = new Map<string, string | null>();
+  const bulk = await wikidataBulk();
+  console.log(`Wikidata: ${bulk.size} neighbourhood-like names in ${city.name}`);
   for (const hood of data.boundaries) {
     if (only && hood.name !== only) continue;
     const row = rows.find(r => r.name === hood.name)!;
@@ -222,20 +269,21 @@ export async function runOnline(data: Data, only?: string): Promise<Candidate[]>
     if (!missing.length) continue;
     process.stdout.write(`${hood.name}: `);
     const center = centroidOf(hood.geometry);
-    const match = await wikidataMatch(hood.name).catch(() => null);
+    const bulkMatch = bulk.get(flat(hood.name.split('/')[0].replace(/\s+e\.o\.$/i, ''))) ?? bulk.get(flat(hood.name.split('/')[1] ?? ''));
+    const match = bulkMatch ?? await wikidataMatch(hood.name).catch(() => null);
     const add = (c: Omit<Candidate, 'name'>) => { candidates.push({ name: hood.name, ...c }); process.stdout.write(`${c.field} `); };
     const wanted = (f: Field) => missing.includes(f) && !candidates.some(c => c.name === hood.name && c.field === f);
 
-    // The area's own articles: the Wikidata sitelink, then "<name> (Amsterdam)" and the bare name.
+    // The area's own articles: the Wikidata sitelink, then "<name> (City)" and the bare name.
     // Disambiguation pages and namesakes elsewhere are skipped.
     const titles: Array<['nl' | 'en', string]> = [];
-    for (const t of [match?.nl, `${hood.name} (Amsterdam)`, hood.name]) if (t && !titles.some(([l, x]) => l === 'nl' && x === t)) titles.push(['nl', t]);
-    if (match?.en) titles.push(['en', match.en], ['en', `${hood.name}, Amsterdam`]);
+    for (const t of [match?.nl, `${hood.name} (${city.name})`, hood.name]) if (t && !titles.some(([l, x]) => l === 'nl' && x === t)) titles.push(['nl', t]);
+    if (match?.en) titles.push(['en', match.en], ['en', `${hood.name}, ${city.name}`]);
     const seen = new Set<string>();
     for (const [lang, title] of titles) {
       if (!wanted('description') && !wanted('history') && !wanted('nameOrigin')) break;
       const text = await plainText(lang, title).catch(() => null);
-      if (!text || seen.has(text.slice(0, 80)) || isDisambiguation(text) || !/Amsterdam/.test(text.slice(0, 1500))) continue;
+      if (!text || seen.has(text.slice(0, 80)) || isDisambiguation(text) || !new RegExp(cityPattern).test(text.slice(0, 1500))) continue;
       const lede = sections(text).lede;
       if (!mentions(lede, hood.name)) continue;
       seen.add(text.slice(0, 80));
@@ -251,7 +299,7 @@ export async function runOnline(data: Data, only?: string): Promise<Candidate[]>
     // The Wikidata item for a place that has no article of its own may still name its image.
     // Sentences about the area in other articles, and its section in a district article.
     if (hood.kind !== 'suburb' && (wanted('description') || wanted('history') || wanted('nameOrigin'))) {
-      const search = await fetchJson(api('nl.wikipedia.org', { action: 'query', list: 'search', srsearch: `"${hood.name.split('/')[0]}" Amsterdam`, srlimit: '6', srprop: 'snippet' })).catch(() => null);
+      const search = await fetchJson(api('nl.wikipedia.org', { action: 'query', list: 'search', srsearch: `"${hood.name.split('/')[0]}" ${city.name}`, srlimit: '6', srprop: 'snippet' })).catch(() => null);
       for (const hit of (search?.query?.search ?? []) as Array<{ title: string }>) {
         if (!wanted('description') && !wanted('nameOrigin')) break;
         const text = await plainText('nl', hit.title).catch(() => null);
@@ -367,8 +415,25 @@ async function main() {
     console.log(`${found.length} new candidates → ${stagingDir}`);
     return;
   }
+  if (command === 'worksheet') {
+    // Dutch text that would ship if it had an English translation: the best candidate per field.
+    const candidates = await readJson<Candidate[]>(path.join(stagingDir, 'candidates.json'));
+    let review: ReviewFile = {};
+    try { review = await readJson<ReviewFile>(reviewPath); } catch { /* none yet */ }
+    const groups = new Map<string, Candidate[]>();
+    for (const c of candidates) if (c.field !== 'photo') groups.set(`${c.name}|${c.field}`, [...(groups.get(`${c.name}|${c.field}`) ?? []), c]);
+    const todo: Array<{ name: string; field: Field; text: string; sourceUrl: string; confidence: string }> = [];
+    for (const group of groups.values()) {
+      const best = [...group].sort(compareCandidates)[0];
+      const decision = typeof review[best.name] === 'object' ? (review[best.name] as Record<string, unknown>)[best.field] : undefined;
+      if (best.lang === 'nl' && best.text && decision === undefined) todo.push({ name: best.name, field: best.field, text: best.text, sourceUrl: best.sourceUrl, confidence: best.confidence });
+    }
+    await writeFile(path.join(stagingDir, 'to-translate.json'), `${JSON.stringify(todo, null, 1)}\n`);
+    console.log(`${todo.length} Dutch fields to translate → ${path.join(stagingDir, 'to-translate.json')}`);
+    return;
+  }
   if (command === 'publish') { await publish(data, process.argv.includes('--accept') && process.argv[process.argv.indexOf('--accept') + 1] === 'offline'); return; }
-  console.log('commands: audit | offline | online [--only "Name"] | publish [--accept offline]');
+  console.log('commands: audit | offline | online [--only "Name"] | worksheet | publish [--accept offline]  (add --city utrecht|rotterdam|den-haag)');
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) void main();
