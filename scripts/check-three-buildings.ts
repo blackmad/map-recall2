@@ -181,14 +181,14 @@ for (let v = 0; v < chunk.vertexCount; v += 4) {
   }
   const dims = { bayM: 5, storeyM: 3.1, cellM: 1.2 };
   for (const kind of ['gable', 'pitched', 'mansard'] as const) {
-    const plan = { kind, gable: 'bell' as const, riseM: kind === 'mansard' ? 2.6 : 2.0, dormers: true, material: 'tile' as const, tone: 0.3 };
+    const plan = { kind, gable: 'bell' as const, riseM: kind === 'mansard' ? 2.6 : 2.0, dormers: true, material: 'tile' as const, tone: 0.3, seed: 'x' };
     const tris = roofTriangles(r, plan, 10, dims);
     assert.ok(tris.length > 4, `${kind}: has geometry`);
     for (const t of tris) {
       assert.ok(t.p.flat().every(Number.isFinite) && t.uv.flat().every(Number.isFinite));
       const outward = t.part === 'slope' ? t.n[2] > -1e-9 || true : true;
       assert.ok(outward);
-      for (const q of t.p) assert.ok(q[2] >= 10 - 1e-9, `${kind}: nothing below the eaves`);
+      for (const q of t.p) assert.ok(q[2] >= 10 - 0.6, `${kind}: only the eave overhang dips below the eaves`);
     }
     const slopes = tris.filter(t => t.part === 'slope');
     assert.ok(slopes.every(t => t.n[2] > 0), `${kind}: roof slopes face upward`);

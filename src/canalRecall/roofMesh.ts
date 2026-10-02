@@ -23,6 +23,8 @@ export type RoofPlan = {
   material: 'tile' | 'slate';
   /** 0..1, picks the roof colour from the look's palette. */
   tone: number;
+  /** Per-building seed for small extras (chimney placement). */
+  seed: string;
 };
 
 export type Rect = { cx: number; cy: number; ux: number; uy: number; len: number; wid: number; coverage: number; /** Farthest any footprint vertex sits from the rectangle's border, metres. */ maxDev: number };
@@ -91,7 +93,7 @@ const pick = <T>(r: number, weights: Array<[T, number]>): T => {
  * building's facade style (canal, c19, school, postwar...), which sets the odds.
  */
 export function planRoof(id: string, style: string, heightM: number, minHeightM: number, rect: Rect | null): RoofPlan | null {
-  if (!rect || minHeightM > 0.5 || heightM < 6.5 || rect.wid < 3.6 || rect.len < 4.5 || rect.coverage < 0.9 || rect.maxDev > 0.55) return null;
+  if (!rect || minHeightM > 0.5 || heightM < 6.5 || rect.wid < 3.6 || rect.len < 4.5 || rect.coverage < 0.88 || rect.maxDev > 1.0) return null;
   if (style === 'modern' || style === 'tower') return null;
   const r = hash01(`${id}:roof`), narrow = rect.wid <= 8.5 && rect.len >= 1.25 * rect.wid;
   let kind: RoofKind | 'flat';
@@ -108,6 +110,7 @@ export function planRoof(id: string, style: string, heightM: number, minHeightM:
     dormers: kind === 'mansard' || (kind === 'pitched' && !narrow && hash01(`${id}:dorm`) < 0.45) || (kind === 'gable' && hash01(`${id}:dorm`) < 0.2),
     material: kind === 'mansard' ? 'slate' : hash01(`${id}:mat`) < 0.62 ? 'tile' : 'slate',
     tone: hash01(`${id}:tone2`),
+    seed: id,
   };
 }
 
@@ -192,6 +195,7 @@ export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: Roof
       tri(world(e * L / 2, prof[i][0], prof[i][1]), world(e * L / 2, prof[i + 1][0], prof[i + 1][1]), world(e * L / 2, 0, R * 0.4),
         wallUv(prof[i][0], prof[i][1]), wallUv(prof[i + 1][0], prof[i + 1][1]), wallUv(0, R * 0.4), 'plate', dir(e, 0, 0));
     }
+    for (const sgn of [-1, 1]) quad(world(-L / 2, sgn * W / 2, 0), world(L / 2, sgn * W / 2, 0), world(L / 2, sgn * (W / 2 + 0.28), -0.1), world(-L / 2, sgn * (W / 2 + 0.28), -0.1), [0, 0], [L / cell, 0], [L / cell, 0.3 / cell], [0, 0.3 / cell], 'slope', dir(0, sgn * 0.3, 1));
     if (plan.dormers) {
       const n = Math.min(4, Math.floor((L - 2) / 3.2));
       for (const s of [-1, 1]) for (let i = 0; i < n; i++) {
@@ -206,10 +210,22 @@ export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: Roof
   }
 
   // gable and pitched: two slopes about a ridge along u.
-  const sl = Math.hypot(W / 2, R);
+  // The slope runs on past the wall: a 0.3 m eave overhang that casts the shadow line a roof needs.
+  const ov = 0.3, drop = ov * (R / (W / 2)), sl = Math.hypot(W / 2 + ov, R + drop);
   for (const s of [-1, 1]) {
-    quad(world(-L / 2, s * W / 2, 0), world(L / 2, s * W / 2, 0), world(L / 2, 0, R), world(-L / 2, 0, R),
+    quad(world(-L / 2, s * (W / 2 + ov), -drop), world(L / 2, s * (W / 2 + ov), -drop), world(L / 2, 0, R), world(-L / 2, 0, R),
       [0, 0], [L / cell, 0], [L / cell, sl / cell], [0, sl / cell], 'slope', dir(0, s * R, W / 2));
+  }
+  // A chimney stack on most roofs with a ridge: brick box, a pale cap.
+  if (hash01(`${plan.seed}:chim`) < 0.62) {
+    const side = hash01(`${plan.seed}:chimside`) < 0.5 ? -1 : 1, cu = side * (L / 2 - 1.2), cv = (hash01(`${plan.seed}:chimv`) - 0.5) * W * 0.25;
+    const cw = 0.42, top = R + 1.15 + hash01(`${plan.seed}:chimh`) * 0.5, base = Math.max(0, R * (1 - Math.abs(cv) / (W / 2)) - 0.4);
+    const c = [[cu - cw, cv - cw], [cu + cw, cv - cw], [cu + cw, cv + cw], [cu - cw, cv + cw]] as Vec2[];
+    for (let i = 0; i < 4; i++) {
+      const [a, b] = [c[i], c[(i + 1) % 4]], mid: Vec2 = [(a[0] + b[0]) / 2 - cu, (a[1] + b[1]) / 2 - cv];
+      quad(world(a[0], a[1], base), world(b[0], b[1], base), world(b[0], b[1], top), world(a[0], a[1], top), [0, 0], [0.5, 0], [0.5, 1.2 / dims.storeyM * 2], [0, 1.2 / dims.storeyM * 2], 'plate', dir(mid[0], mid[1], 0));
+    }
+    quad(world(c[0][0], c[0][1], top), world(c[1][0], c[1][1], top), world(c[2][0], c[2][1], top), world(c[3][0], c[3][1], top), [0, 0], [1, 0], [1, 1], [0, 1], 'slope', dir(0, 0, 1));
   }
   for (const e of [-1, 1]) {
     if (plan.kind === 'pitched') {

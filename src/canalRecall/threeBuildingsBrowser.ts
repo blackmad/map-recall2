@@ -341,11 +341,11 @@ export class ThreeBuildings {
       const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
       const bay = bayLookFor(id, year, Number(p.height) || heightM, this.look);
       building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers };
-      plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout;
+      plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
     } else {
       layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
       building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && hashShop(id) };
-      plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT;
+      plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
     }
     if (p.roofPlanned) {
       const ring = localOuterRing(feature.geometry);
