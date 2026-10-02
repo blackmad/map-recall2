@@ -13,7 +13,7 @@ for (const slug of slugs) {
   const file = path.join(out, `${slug}.jpg`);
   if (fs.existsSync(file)) { done++; continue; }
   try {
-    await page.goto(`http://127.0.0.1:4388/canal-drive/facade-compare.html?storefront=${slug}&r=17&el=4`);
+    await page.goto(`http://127.0.0.1:4388/canal-drive/facade-compare.html?storefront=${slug}&el=4`);
     await page.waitForFunction(() => document.title === 'ready', null, { timeout: 40000 });
     await page.waitForTimeout(250);
     const shot = await page.screenshot({ clip: { x: 400, y: 0, width: 800, height: 380 } });
