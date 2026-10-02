@@ -34,9 +34,14 @@ export const MIN_FACADE_WALL_M = 2.6;
  * `min_height` overhang) is `exposedM`. `seed` (0..1) only chooses which end a
  * door goes at; `groundLevel` is false for a part that floats above the street.
  */
-export function layoutWall(style: FacadeStyle, lengthM: number, exposedM: number, seed: number, groundLevel = true): WallLayout | null {
+/** Per-building multipliers on the style's nominal bay width, storey and ground-floor height. */
+export type LayoutScale = { bay: number; storey: number; ground: number };
+const NO_SCALE: LayoutScale = { bay: 1, storey: 1, ground: 1 };
+
+export function layoutWall(style: FacadeStyle, lengthM: number, exposedM: number, seed: number, groundLevel = true, scale: LayoutScale = NO_SCALE): WallLayout | null {
   if (!(lengthM >= MIN_FACADE_EDGE_M) || !(exposedM >= MIN_FACADE_WALL_M)) return null;
-  const dims = STYLE_DIMS[style];
+  const nominal = STYLE_DIMS[style];
+  const dims = { ...nominal, bay: nominal.bay * scale.bay, storey: nominal.storey * scale.storey, ground: nominal.ground * scale.ground };
   const bays = Math.max(1, Math.round(lengthM / dims.bay));
   const bayWidthM = lengthM / bays;
   // Ground floor: nominal height, but never more than the wall allows, and a

@@ -25,7 +25,7 @@ export type RoofPlan = {
   tone: number;
 };
 
-export type Rect = { cx: number; cy: number; ux: number; uy: number; len: number; wid: number; coverage: number };
+export type Rect = { cx: number; cy: number; ux: number; uy: number; len: number; wid: number; coverage: number; /** Farthest any footprint vertex sits from the rectangle's border, metres. */ maxDev: number };
 type Vec3 = [number, number, number];
 type Vec2 = [number, number];
 
@@ -69,7 +69,15 @@ export function fitRect(points: readonly Vec2[]): Rect | null {
     [len, wid] = [wid, len];
     [cu, cv] = [cv, -cu];
   }
-  return { cx: cu * ux - cv * uy, cy: cu * uy + cv * ux, ux, uy, len, wid, coverage: polyArea / (len * wid) };
+  // How far each vertex is from the nearest side of the box: a slanted or notched footprint
+  // would leave a roof (and its gable plates) hanging off the walls.
+  const U = [ux, uy], V = [-uy, ux];
+  let maxDev = 0;
+  for (const [x, y] of pts) {
+    const du = x * U[0] + y * U[1] - cu, dv = x * V[0] + y * V[1] - cv;
+    maxDev = Math.max(maxDev, Math.min(len / 2 - Math.abs(du), wid / 2 - Math.abs(dv)) < 0 ? 0 : Math.min(len / 2 - Math.abs(du), wid / 2 - Math.abs(dv)));
+  }
+  return { cx: cu * ux - cv * uy, cy: cu * uy + cv * ux, ux, uy, len, wid, coverage: polyArea / (len * wid), maxDev };
 }
 
 const pick = <T>(r: number, weights: Array<[T, number]>): T => {
@@ -83,7 +91,7 @@ const pick = <T>(r: number, weights: Array<[T, number]>): T => {
  * building's facade style (canal, c19, school, postwar...), which sets the odds.
  */
 export function planRoof(id: string, style: string, heightM: number, minHeightM: number, rect: Rect | null): RoofPlan | null {
-  if (!rect || minHeightM > 0.5 || heightM < 6.5 || rect.wid < 3.6 || rect.len < 4.5 || rect.coverage < 0.86) return null;
+  if (!rect || minHeightM > 0.5 || heightM < 6.5 || rect.wid < 3.6 || rect.len < 4.5 || rect.coverage < 0.9 || rect.maxDev > 0.55) return null;
   if (style === 'modern' || style === 'tower') return null;
   const r = hash01(`${id}:roof`), narrow = rect.wid <= 8.5 && rect.len >= 1.25 * rect.wid;
   let kind: RoofKind | 'flat';

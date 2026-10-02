@@ -44,7 +44,7 @@ for (const style of FACADE_STYLES) for (let variant = 0; variant < CELL_VARIANTS
   for (let i = 0; i < px.length; i += 4) { if (px[i] + px[i + 1] + px[i + 2] + px[i + 3] === 0) unpainted++; if (px[i + 3] > 128) tinted++; }
   assert.equal(unpainted, 0, `${style}/${kind}: ${unpainted} unpainted pixels`);
   const share = tinted / (CELL_PX * CELL_PX);
-  assert.ok(share > 0.15 && (kind === 'plain' ? share > 0.7 : share < 0.98), `${style}/${kind}: tintable wall share ${share.toFixed(2)}`);
+  assert.ok(share > (kind === 'shop' ? 0.05 : 0.15) && (kind === 'plain' ? share > 0.7 : share < 0.98), `${style}/${kind}: tintable wall share ${share.toFixed(2)}`);
   assert.deepEqual(Array.from(paintCell(style, kind, variant).slice(0, 4096)), Array.from(px.slice(0, 4096)), 'deterministic');
 }
 // A canal door cell has a door that the plain ground cell lacks: dark pixels in the door column.

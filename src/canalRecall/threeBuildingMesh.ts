@@ -27,6 +27,8 @@ export type MeshBuilding = {
   /** A bay look's own layers and accent colour; absent means the procedural cells. */
   layers?: { upper: number; ground: number; door: number };
   accentHex?: string;
+  /** A shopfront on the street-level bays (procedural cells; the bay looks choose their own layer). */
+  shop?: boolean;
   /** A real roof for this building; its walls already stop at the eaves. */
   roof?: { plan: RoofPlan; layers: { slope: number; plain: number; dormer: number }; roofHex: string; dims: RoofDims };
 };
@@ -165,19 +167,21 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     const base = b.minHeightM;
     const [r, g, bl] = parseHex(b.wallHex);
     const variant = Math.floor(hash01(`${b.id}:look`) * CELL_VARIANTS);
+    // No two neighbours share a rhythm: bay width, storey and ground-floor height vary per building.
+    const scale = { bay: 0.88 + hash01(`${b.id}:bay`) * 0.3, storey: 0.93 + hash01(`${b.id}:storey`) * 0.16, ground: 0.92 + hash01(`${b.id}:ground`) * 0.2 };
     const accent = parseHex(b.accentHex ?? '#ffffff');
     const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2;
     let walls = 0;
     for (const e of edges) {
       if (hiddenByNeighbour(e, b)) continue;
-      const layout = layoutWall(b.style, e.len, top - base, hash01(`${b.id}:${edgeKey(e.x0, e.y0)}`), base < 0.5);
+      const layout = layoutWall(b.style, e.len, top - base, hash01(`${b.id}:${edgeKey(e.x0, e.y0)}`), base < 0.5, scale);
       if (!layout) continue;
       walls++;
       const shade = wallShade(e.nx, e.ny);
       const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), shade * 255];
       const groundTop = base + layout.groundM;
       for (const run of groundRuns(layout)) {
-        quads.push({ e, u0: 0, u1: run.to - run.from, v1: 1, layer: b.layers ? (run.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, run.door ? 'door' : 'ground', variant), accent, z0: base, z1: groundTop, tint, along0: run.from / layout.bays, along1: run.to / layout.bays });
+        quads.push({ e, u0: 0, u1: run.to - run.from, v1: 1, layer: b.layers ? (run.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, run.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, tint, along0: run.from / layout.bays, along1: run.to / layout.bays });
       }
       if (layout.storeys > 0) quads.push({ e, u0: 0, u1: layout.bays, v1: layout.storeys, layer: b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
     }
