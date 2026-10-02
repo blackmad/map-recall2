@@ -20,6 +20,7 @@ import { bayTextures, type Look } from './bayTextures.js';
 import { KITS, KIT_HIDE_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
 import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
 import { frontKitGeometry, lookHex } from './landmarkFronts.js';
+import { houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, ROOF_TONES, type BuildingLook };
@@ -129,6 +130,9 @@ const tileKeyOf = (polygons: number[][][][]): string => {
 export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, KIT_HIDE_IDS };
 
 const KIT_KEY = '__kit';
+const BOAT_PREFIX = 'boats:';
+/** Boat chunks build from the houseboat extract, not features: one shared empty source keeps them stable. */
+const NO_SOURCE: Feature[] = [];
 /** The chunk worker sits next to this bundle (three-buildings-worker.bundle.js). */
 const WORKER_URL = typeof document !== 'undefined' ? ((document.currentScript as HTMLScriptElement | null)?.src ?? '').replace(/three-buildings\.bundle\.js(\?.*)?$/, 'three-buildings-worker.bundle.js$1') : '';
 const KIT_HIDE_SET: ReadonlySet<string> = new Set(KIT_HIDE_IDS);
@@ -163,6 +167,9 @@ export class ThreeBuildings {
   private worker: Worker | null | undefined;
   private readonly gens = new Map<string, number>();
   private readonly inflight = new Map<string, Feature[]>();
+  private boatTiles = new Map<string, Houseboat[]>();
+  private boatIds: ReadonlySet<string> = new Set();
+  private lastFeatures: readonly Feature[] = [];
 
   constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural') {
     this.look = look;
@@ -263,8 +270,9 @@ export class ThreeBuildings {
       const p = feature.properties;
       const id = String(p.id ?? '');
       if (KIT_PART_IDS.has(id) || FRONT_PART_IDS.has(id)) kitParts.push(feature);
-      // Every building draws here (bare walls when it has no facade), except the parts a kit replaces.
-      if (KIT_HIDE_SET.has(id)) continue;
+      // Every building draws here (bare walls when it has no facade), except the parts a kit
+      // replaces and the few houseboats the tiles carry (the houseboat generator draws those).
+      if (KIT_HIDE_SET.has(id) || this.boatIds.has(id)) continue;
       const polygons = asPolygons(feature.geometry);
       if (!polygons.length) continue;
       const key = tileKeyOf(polygons);
@@ -273,6 +281,9 @@ export class ThreeBuildings {
       list.push(feature);
     }
     if (kitParts.length) groups.set(KIT_KEY, kitParts);
+    // Houseboats ride along with the resident building tiles, one chunk per tile.
+    for (const key of [...groups.keys()]) if (this.boatTiles.has(key)) groups.set(BOAT_PREFIX + key, NO_SOURCE);
+    this.lastFeatures = features;
     const same = (a: readonly Feature[] | undefined, b: readonly Feature[]) => !!a && a.length === b.length && a.every((f, i) => f === b[i]);
     for (const key of [...this.chunks.keys(), ...this.inflight.keys()]) if (!groups.has(key)) { this.dropChunk(key); this.inflight.delete(key); this.gens.set(key, (this.gens.get(key) ?? 0) + 1); }
     for (const [key, list] of groups) {
@@ -364,13 +375,37 @@ export class ThreeBuildings {
       // One range per id: a front shares its first carrier's range (a kit roof on the Beurs hall), so hiding the answer hides both.
       if (held) held.tris.push(...g.tris); else geometry.push(g);
     }
+    return buildKitChunk(geometry, this.kitLayers());
+  }
+
+  /** OSM houseboat footprints (Amsterdam extract); drawn by the houseboat generator in the resident tiles. */
+  setHouseboats(boats: readonly Houseboat[]): void {
+    this.boatTiles = houseboatsByTile(boats);
+    this.boatIds = new Set(boats.map(b => b.id));
+    for (const key of [...this.chunks.keys()]) if (key.startsWith(BOAT_PREFIX)) this.dropChunk(key);
+    this.setFeatures(this.lastFeatures);
+  }
+
+  private buildBoats(tile: string): Chunk {
+    const look = this.look;
+    const geometry = (this.boatTiles.get(tile) ?? []).map(b => houseboatGeometry(b, ORIGIN)).filter((g): g is KitPartGeometry => !!g)
+      .map(g => ({ ...g, tris: g.tris.map(t => ({ ...t, hex: lookHex(t.hex, look) })) }));
+    return buildKitChunk(geometry, this.kitLayers());
+  }
+
+  private kitLayers() {
     const roofBase = this.look === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
     const plain = this.look === 'procedural' ? cellLayer('canal', 'plain', 0) : bayLayer('canal', 0, 'plain');
-    return buildKitChunk(geometry, { plain, flat: roofBase + 3, slope: roofBase + 1 });
+    return { plain, flat: roofBase + 3, slope: roofBase + 1 };
   }
 
   private rebuild(key: string, source: Feature[]): void {
     if (!this.THREE) return;
+    if (key.startsWith(BOAT_PREFIX)) {
+      const t0 = performance.now(), chunk = this.buildBoats(key.slice(BOAT_PREFIX.length));
+      this.install(key, source, chunk, performance.now() - t0);
+      return;
+    }
     const worker = key === KIT_KEY ? null : this.chunkWorker();
     const gen = (this.gens.get(key) ?? 0) + 1;
     this.gens.set(key, gen);
