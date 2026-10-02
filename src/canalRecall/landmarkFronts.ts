@@ -34,11 +34,22 @@ export type Front = {
    * behind a pediment or row of gables and hides them.
    */
   bodyTopM?: number;
+  /**
+   * How the roofline can be checked against the reference photo: 'full' (default), 'front-only'
+   * when roofs or towers behind the front show above it in the photo (only a front taller than
+   * the photo is an error), or 'unmeasured' when the photo does not reach the top.
+   */
+  roofline?: 'full' | 'front-only' | 'unmeasured';
   /** Thickness of the slab in front of the footprint wall, metres. */
   depthM: number;
   hex: string;
   boxes: FrontBox[];
   windows: FrontWindows[];
+  /**
+   * Further profiled slabs standing forward of the wall (a risalit with its pediment): each
+   * runs from z = 0 up to its own roofline, between `out0` and `out1` metres out.
+   */
+  slabs?: { outline: [number, number][]; out0: number; out1: number; hex: string }[];
 };
 
 /** Points along an arch springing at (x0, z) to (x1, z) and rising `rise` metres. */
@@ -71,17 +82,21 @@ export function frontTriangles(front: Front, toWorld: (along: number, up: number
     quad([x0, z0, out0], [x1, z0, out0], [x1, z0, out1], [x0, z0, out1], hex, [0, -1, 0]);
   };
 
-  // The profiled slab: x-monotone, so a vertical strip per outline segment covers it.
-  const d = front.depthM, o = front.outline;
-  for (let i = 1; i < o.length; i++) {
-    const [xa, za] = o[i - 1], [xb, zb] = o[i];
-    if (xb <= xa) continue;
-    quad([xa, 0, d], [xb, 0, d], [xb, zb, d], [xa, za, d], front.hex, [0, 0, 1]);
-    quad([xa, za, d], [xb, zb, d], [xb, zb, 0], [xa, za, 0], front.hex, [-(zb - za), xb - xa, 0]);
-  }
-  const [xs, zs] = o[0], [xe, ze] = o[o.length - 1];
-  quad([xs, 0, 0], [xs, 0, d], [xs, zs, d], [xs, zs, 0], front.hex, [-1, 0, 0]);
-  quad([xe, 0, d], [xe, 0, 0], [xe, ze, 0], [xe, ze, d], front.hex, [1, 0, 0]);
+  // A profiled slab is x-monotone, so a vertical strip per outline segment covers it.
+  const slab = (o: [number, number][], o0: number, o1: number, hex: string) => {
+    for (let i = 1; i < o.length; i++) {
+      const [xa, za] = o[i - 1], [xb, zb] = o[i];
+      if (xb <= xa) continue;
+      quad([xa, 0, o1], [xb, 0, o1], [xb, zb, o1], [xa, za, o1], hex, [0, 0, 1]);
+      quad([xa, za, o1], [xb, zb, o1], [xb, zb, o0], [xa, za, o0], hex, [-(zb - za), xb - xa, 0]);
+    }
+    const [xs, zs] = o[0], [xe, ze] = o[o.length - 1];
+    quad([xs, 0, o0], [xs, 0, o1], [xs, zs, o1], [xs, zs, o0], hex, [-1, 0, 0]);
+    quad([xe, 0, o1], [xe, 0, o0], [xe, ze, o0], [xe, ze, o1], hex, [1, 0, 0]);
+  };
+  const d = front.depthM;
+  slab(front.outline, 0, d, front.hex);
+  for (const extra of front.slabs ?? []) slab(extra.outline, extra.out0 + d, extra.out1 + d, extra.hex);
 
   for (const b of front.boxes) box({ ...b, out0: (b.out0 ?? 0) + d, out1: b.out1 + d });
   for (const grid of front.windows) for (const cx of grid.xs) for (const [z0, z1] of grid.rows) {

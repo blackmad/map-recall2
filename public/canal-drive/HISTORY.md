@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Fronts: Royal Palace, Concertgebouw, Tuschinski
+
+Three more measured fronts in `landmarkFrontData.ts`, in the game in the three.js looks. The panorama builder gained `--toward=lng,lat` (only walls facing a square or street) and joins collinear edges of several parts into one wall, so a front drawn as many OSM parts is found as one. Fronts can carry extra forward `slabs`: OSM often maps a risalit or portico as its own part standing metres in front of the wall (the palace's w748659170, 5 m; the Concertgebouw's portico w754269610, 4.3 m), and the rectified photo shows such a part 18-40% too wide because it is nearer the camera, so its features are mapped from photo metres onto the OSM part. `photoSilhouette` now finds sky per pixel by colour (white overcast or blue): the old top-band threshold called the whole palace sky when its pediment reached the crop. `check-landmark-fronts` takes a per-front `roofline` mode: `full`, `front-only` (roofs behind or a forward part drawn at OSM width: only a front taller than the photo is an error), or `unmeasured` (Tuschinski's fused reference stops below its tower crowns).
+
 ## Building clicks and covered passages under the three.js looks
 
 Hiding MapLibre's building layers broke two queries that read them: clicking a building (details card) and the covered-passage check (Cuyperspassage under Centraal's shed). The wall layer now stays laid out but draws at opacity 0 (MapLibre's fill-extrusion draw returns early at 0, so nothing is drawn twice); roofs and ground floors stay hidden. Under a three.js look the building over the rider is hidden in the three layer (a 28% beige fade over beige ground still hid the corridor; slab share now 0.00). Remaining duplicate: MapLibre still lays out that layer's buckets in its worker; porting picking and the cover check onto the three side would let it go.

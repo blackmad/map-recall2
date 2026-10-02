@@ -23,14 +23,19 @@ for (const [name, front] of Object.entries(FRONTS)) {
   // as taller buildings behind (the Beurs hall roofs at either end).
   const errors: number[] = [];
   const { sampleM, topsM } = meta.silhouette;
+  const mode = front.roofline ?? 'full';
   topsM.forEach((measured: number, i: number) => {
-    const modelled = outlineAt(front.outline, i * sampleM);
-    if (modelled != null && measured < modelled + 3) errors.push(Math.abs(measured - modelled));
+    // The photo cannot show more than its own height: a pediment above the crop is not an error.
+    const tops = [front.outline, ...(front.slabs ?? []).map(sl => sl.outline)].map(o => outlineAt(o, i * sampleM)).filter((v): v is number => v != null);
+    const raw = tops.length ? Math.max(...tops) : null, modelled = raw == null ? null : Math.min(raw, meta.height / meta.pixelsPerMetre);
+    if (modelled == null || measured >= modelled + 3) return;
+    // Front-only: what shows above the front in the photo is roof or tower behind it.
+    errors.push(mode === 'front-only' ? Math.max(0, modelled - measured) : Math.abs(measured - modelled));
   });
   errors.sort((a, b) => a - b);
-  const median = errors[errors.length >> 1], p90 = errors[Math.floor(errors.length * 0.9)], coverage = errors.length / topsM.length;
-  const ok = finite && median < 0.6 && p90 < 1.5 && coverage > 0.6;
+  const median = errors[errors.length >> 1] ?? 0, p90 = errors[Math.floor(errors.length * 0.9)] ?? 0, coverage = errors.length / topsM.length;
+  const ok = finite && (mode === 'unmeasured' || (median < 0.6 && p90 < 1.5 && coverage > 0.6));
   failed ||= !ok;
-  console.log(`${ok ? 'ok  ' : 'FAIL'} ${name}: ${tris.length} triangles, roofline error median ${median.toFixed(2)} m, p90 ${p90.toFixed(2)} m over ${(coverage * 100).toFixed(0)}% of the wall`);
+  console.log(`${ok ? 'ok  ' : 'FAIL'} ${name}: ${tris.length} triangles, ${mode === 'unmeasured' ? 'roofline not measurable from its reference' : `${mode} roofline error median ${median.toFixed(2)} m, p90 ${p90.toFixed(2)} m over ${(coverage * 100).toFixed(0)}% of the wall`}`);
 }
 if (failed) process.exit(1);
