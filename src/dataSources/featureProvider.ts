@@ -45,6 +45,7 @@ const historyPromises = new Map<string, Promise<{ neighborhoods?: NeighborhoodHi
 const photosPromises = new Map<string, Promise<NeighborhoodPhoto[] | null>>();
 const placesPromises = new Map<string, Promise<PlaceCandidate[]>>();
 const photoPlacePromises = new Map<string, Promise<PlaceCandidate[]>>();
+const areaPhotoPromises = new Map<string, Promise<Record<string, Array<{ title: string } & PlacePhoto>>>>();
 const placePhotoPromises = new Map<string, Promise<Record<string, PlacePhoto>>>();
 
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}data/extracts/${path}`;
@@ -187,9 +188,14 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
         const files = await Promise.all(['landmarks', 'parks', 'squares'].map((name) => optionalJson<Array<{ name: string; center: [number, number]; prominenceScore?: number }>>(`${city.id}/${name}.json`)));
         return files.flatMap((file) => file ?? []).filter((place) => placePhotos[place.name]).map((place) => ({ name: place.name, center: place.center, kind: 'landmark', score: 1000 + (place.prominenceScore || 0) }));
       });
+      const areaPhotos = await cached(areaPhotoPromises, city.id, () => optionalJson<{ areas: Record<string, Array<{ title: string } & PlacePhoto>> }>(`${city.id}/area-photos.json`).then((file) => file?.areas ?? {}));
       const withPlaces = withChoices.map((feature) => ({
         ...feature,
-        areaPhotos: notablePlacesIn(feature.areaGeometry, photoPlaces, [feature.name, ...feature.distractors], 6, 6).map((place) => ({ name: place.name, photo: placePhotos[place.name] })),
+        // Photographs of the places in the area first (they have names worth showing), then others taken inside it.
+        areaPhotos: [
+          ...notablePlacesIn(feature.areaGeometry, photoPlaces, [feature.name, ...feature.distractors], 6, 6).map((place) => ({ name: place.name, photo: placePhotos[place.name] })),
+          ...(areaPhotos[feature.name] ?? []).map(({ title, ...photo }) => ({ name: title, photo })),
+        ].filter((entry, index, all) => all.findIndex((other) => other.photo.imageUrl === entry.photo.imageUrl) === index).slice(0, 8),
         notablePlaces: notablePlacesIn(feature.areaGeometry, places, [feature.name, ...feature.distractors])
           .map((place) => placePhotos[place.name] ? { ...place, photo: placePhotos[place.name] } : place),
       }));
