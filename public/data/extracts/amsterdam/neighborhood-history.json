@@ -548,6 +548,20 @@
     "lang": "en",
     "sourceLabel": "Gemeente Amsterdam street-name register",
     "kind": "derived"
+   },
+   "description": {
+    "en": "Revaleiland is one of seven artificial islands raised in the 2010s in the Houthavens, Amsterdam's old timber harbour, which was dug in 1876. The islands are named after Baltic ports, partly by their German names from before 1945, and are linked by fifteen bridges that carry Baltic names too. Reval is the old German name of Tallinn.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Houthavens_(Amsterdam)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Revaleiland was raised in the Houthaven shortly after 2010; the harbour itself dates from 1876 and was Amsterdam's first dug harbour, built to store timber.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Hotel_Boat_%26_Co",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -557,6 +571,20 @@
     "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003767126/",
     "lang": "en",
     "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Wiborgeiland is one of seven artificial islands raised in the 2010s in the Houthavens, Amsterdam's old timber harbour, which was dug in 1876. The islands are named after Baltic ports, partly by their German names from before 1945, and are linked by fifteen bridges that carry Baltic names too. Wiborg is Vyborg, now in Russia.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Houthavens_(Amsterdam)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Housing association Ymere built an apartment complex with an integrated artwork, De Spreeuwen ('the starlings'), on the artificial Wiborgeiland, as part of the new Houthavens district.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_spreeuwen",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
   },
@@ -568,6 +596,20 @@
     "lang": "en",
     "sourceLabel": "Gemeente Amsterdam street-name register",
     "kind": "derived"
+   },
+   "description": {
+    "en": "Libau-eiland is one of seven artificial islands raised in the 2010s in the Houthavens, Amsterdam's old timber harbour, which was dug in 1876. The islands are named after Baltic ports, partly by their German names from before 1945, and are linked by fifteen bridges that carry Baltic names too. Libau is the old German name of Liepāja in Latvia.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Houthavens_(Amsterdam)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "A road bridge over the Stralsundgracht links Memeleiland and Libau-eiland in the Houthavens district, laid out in the 2010s.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Stralsundbrug",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -577,6 +619,20 @@
     "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300003767132/",
     "lang": "en",
     "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Karlskrona-eiland is one of seven artificial islands raised in the 2010s in the Houthavens, Amsterdam's old timber harbour, which was dug in 1876. The islands are named after Baltic ports, partly by their German names from before 1945, and are linked by fifteen bridges that carry Baltic names too. Karlskrona is the Swedish naval port.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Houthavens_(Amsterdam)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "In 2019–2020 a lift bridge was moved to a new spot between the Pontsteiger and Karlskrona-eiland and named Gevlebrug (bridge 2430).",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Brug_276",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
   },
