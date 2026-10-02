@@ -32,6 +32,8 @@ export type MeshBuilding = {
   shop?: boolean;
   /** Texture layer for bare wall: gable faces, chimneys, cornices. */
   plainLayer?: number;
+  /** Bare walls only (a church): every row uses the plain layer and there are no doors. */
+  plainWalls?: boolean;
   /** A real roof for this building; its walls already stop at the eaves. */
   roof?: { plan: RoofPlan; layers: { slope: number; plain: number; dormer: number }; roofHex: string; dims: RoofDims };
 };
@@ -182,6 +184,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       const layout = layoutWall(b.style, e.len, top - base, hash01(`${b.id}:${edgeKey(e.x0, e.y0)}`), base < 0.5, scale);
       if (!layout) continue;
       walls++;
+      if (b.plainWalls && b.plainLayer !== undefined) layout.doorBays.length = 0;
       // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
       if (!b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
         const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
@@ -195,9 +198,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), shade * 255];
       const groundTop = base + layout.groundM;
       for (const run of groundRuns(layout)) {
-        quads.push({ e, u0: 0, u1: run.to - run.from, v1: 1, layer: b.layers ? (run.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, run.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, tint, along0: run.from / layout.bays, along1: run.to / layout.bays });
+        quads.push({ e, u0: 0, u1: run.to - run.from, v1: 1, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (run.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, run.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, tint, along0: run.from / layout.bays, along1: run.to / layout.bays });
       }
-      if (layout.storeys > 0) quads.push({ e, u0: 0, u1: layout.bays, v1: layout.storeys, layer: b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
+      if (layout.storeys > 0) quads.push({ e, u0: 0, u1: layout.bays, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
     }
     let roof: RoofTri[] = cornice;
     if (b.roof) {
