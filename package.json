@@ -140,6 +140,7 @@
     "check:canal": "tsx scripts/check-canal.ts",
     "test:shopfronts": "tsx scripts/check-shopfronts.ts",
     "build:shopfronts": "tsx scripts/build-shopfronts.ts",
+    "test:facade-extras": "tsx scripts/check-facade-extras.ts",
     "test:houseboats": "tsx scripts/check-houseboats.ts",
     "build:houseboats": "tsx scripts/build-houseboats.ts",
     "test:landmark-fronts": "tsx src/canalRecall/facade/photoSilhouette.test.ts && tsx scripts/check-landmark-fronts.ts",

@@ -2191,6 +2191,8 @@ class VectorBasemap {
     this._clearancePitchRequested = pitch;
     const appliedPitch = Math.min(pitch, this._clearancePitch);
     this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
+    // Near detail (facade extras) follows the rider.
+    if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(lon, lat);
     this._syncFacadeZoom(mapZoom);
     this._updateRiderCover(subject, pitch > 0 && !detached && introFlat === 0);
     this._liftPoiMarkers(appliedPitch, lat);
