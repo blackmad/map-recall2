@@ -40,6 +40,17 @@ assert.equal(hood.wikipediaImageUrl, 'https://upload.wikimedia.org/k.jpg');
 assert.equal(hood.nameOrigin?.sourceLabel, 'Wikipedia (translated from Dutch)');
 assert.equal(other.nameOrigin, undefined, 'only neighbourhood features take neighbourhood trivia');
 
+// A Wikipedia description links to its article and says so; the line never names Wikipedia for composed text.
+const [article] = attachNeighborhoodTrivia([{ name: 'Kattenburg', type: 'neighborhood' as const }], history, []);
+assert.equal(article.wikipediaUrl, 'https://nl.wikipedia.org/wiki/Kattenburg', 'links to the article');
+assert.deepEqual(article.wikipediaExtractSource, { sourceUrl: 'https://nl.wikipedia.org/wiki/Kattenburg', sourceLabel: 'Wikipedia (translated from Dutch)' });
+const [composed] = attachNeighborhoodTrivia([{ name: 'VU-kwartier', type: 'neighborhood' as const }], [{
+  name: 'VU-kwartier',
+  description: { en: 'VU-kwartier is a neighbourhood in Zuidas and Zuid, about 0.5 km².', sourceUrl: 'https://www.openstreetmap.org/copyright', lang: 'en', sourceLabel: 'OpenStreetMap and Gemeente Amsterdam data', kind: 'derived' },
+}], []);
+assert.equal(composed.wikipediaUrl, undefined, 'composed text has no Wikipedia page to link');
+assert.deepEqual(composed.wikipediaExtractSource, { sourceUrl: 'https://www.openstreetmap.org/copyright', sourceLabel: 'OpenStreetMap and Gemeente Amsterdam data' });
+
 // Text composed from data says where it came from, not "Wikipedia".
 const [derived] = attachNeighborhoodTrivia([{ name: 'Sportheldenbuurt', type: 'neighborhood' as const }], [{
   name: 'Sportheldenbuurt',
