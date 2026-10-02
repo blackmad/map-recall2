@@ -12,10 +12,13 @@
 // per style instead of one per style x colour, and walls laid out in whole bays
 // and storeys so openings line up with the building.
 
-import { CELL_PX, paintProceduralLayers } from './facadeCells.js';
-import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
+import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, paintProceduralLayers } from './facadeCells.js';
+import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
+import { decorateRoof, exceptLandmarks, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
+import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { bayTextures, type Look } from './bayTextures.js';
-import { buildChunk, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
+import { KITS, KIT_HIDE_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
+import { buildChunk, buildKitChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
 type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
@@ -52,6 +55,7 @@ precision highp float;
 precision highp sampler2DArray;
 uniform sampler2DArray cells;
 uniform sampler2DArray masks;
+uniform float bands;
 in vec2 vUv;
 flat in float vLayer;
 in vec3 vTint;
@@ -63,8 +67,12 @@ void main() {
   vec3 c = texture(cells, p).rgb;
   vec2 m = texture(masks, p).rg;
   c *= mix(vec3(1.0), vTint, m.r) * mix(vec3(1.0), vAccent, m.g);
-  fragColor = vec4(c * vShade, 1.0);
+  float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
+  fragColor = vec4(c * shade, 1.0);
 }`;
+
+const ROOF_LAYER_COUNT = 4;
+const hashShop = (id: string) => { let h = 2166136261; for (const c of `${id}:shop`) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967296 < 0.3; };
 
 const infoOf = (chunk: Chunk): ChunkInfo => ({
   buildingCount: chunk.buildingCount, wallCount: chunk.wallCount, quadCount: chunk.quadCount, vertexCount: chunk.vertexCount,
@@ -119,10 +127,23 @@ const tileKeyOf = (polygons: number[][][][]): string => {
 
 export type BuildingLook = 'procedural' | Look;
 
+export { decorateRoof, exceptLandmarks, decorateKitRoof, KIT_HIDE_IDS };
+
+const KIT_KEY = '__kit';
+
+/** Roof colours per look: pantile and slate (a look's own tones, picked by the plan's `tone`). */
+export const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
+  procedural: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
+  photo: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
+  storybook: { tile: ['#b9553a', '#a94a33', '#c46a45'], slate: ['#556070', '#4a5666', '#657282'] },
+  cartoon: { tile: ['#e85a3c', '#f08a2b', '#d94a3a'], slate: ['#3f5f8f', '#2f4a78', '#4f7bb0'] },
+};
+const roofHexFor = (look: BuildingLook, plan: RoofPlan) => { const set = ROOF_TONES[look][plan.material]; return set[Math.min(set.length - 1, Math.floor(plan.tone * set.length))]; };
+
 /** What stays after upload: counts only, never the typed arrays. */
 type ChunkInfo = { buildingCount: number; wallCount: number; quadCount: number; vertexCount: number; bytes: number };
 
-export type ThreeBuildingStats = { chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number };
+export type ThreeBuildingStats = { kitVertices: number; chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number };
 
 export class ThreeBuildings {
   readonly layer: any;
@@ -162,6 +183,7 @@ export class ThreeBuildings {
     if (token !== this.lookToken) return;
     this.material.uniforms.cells.value = set.colour;
     this.material.uniforms.masks.value = set.mask;
+    this.material.uniforms.bands.value = look === 'cartoon' ? 3 : 0;
     this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
     for (const [key, entry] of [...this.chunks]) this.pending.push(() => this.rebuild(key, entry.source));
     this.pump();
@@ -177,7 +199,7 @@ export class ThreeBuildings {
   private async buildTextures(look: BuildingLook): Promise<{ colour: any; mask: any }> {
     const THREE = this.THREE;
     let layers: number, colour: Uint8Array, mask: Uint8Array;
-    if (look === 'procedural') ({ layers, colour, mask } = paintProceduralLayers());
+    if (look === 'procedural') ({ layers, colour, mask } = paintProceduralLayers(paintRoofLayers(false)));
     else {
       let brick: CanvasImageSource = document.createElement('canvas');
       if (look === 'photo') {
@@ -185,7 +207,7 @@ export class ThreeBuildings {
         image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
         try { await image.decode(); brick = image; } catch { /* flat brick: the drawn detail still reads */ }
       }
-      layers = BAY_LAYER_COUNT;
+      layers = BAY_LAYER_COUNT + ROOF_LAYER_COUNT;
       colour = new Uint8Array(CELL_PX * CELL_PX * 4 * layers); mask = new Uint8Array(CELL_PX * CELL_PX * 2 * layers);
       const scratch = document.createElement('canvas'); scratch.width = scratch.height = CELL_PX;
       const ctx = scratch.getContext('2d', { willReadFrequently: true })!;
@@ -204,7 +226,18 @@ export class ThreeBuildings {
         }
       }
     }
-    if (look !== 'procedural') calmBayLayers(colour, mask, layers, look);
+    if (look !== 'procedural') {
+      // Roof cells sit after the bays; the bays are softened, the roofs are drawn as intended.
+      paintRoofLayers(look === 'cartoon').forEach((cell, i) => {
+        const layer = BAY_LAYER_COUNT + i;
+        for (let px = 0; px < CELL_PX * CELL_PX; px++) {
+          const at = (layer * CELL_PX * CELL_PX + px) * 4;
+          colour[at] = cell[px * 4]; colour[at + 1] = cell[px * 4 + 1]; colour[at + 2] = cell[px * 4 + 2]; colour[at + 3] = 255;
+          mask[(layer * CELL_PX * CELL_PX + px) * 2] = cell[px * 4 + 3];
+        }
+      });
+      calmBayLayers(colour, mask, BAY_LAYER_COUNT, look);
+    }
     const array = (data: Uint8Array, format: any) => {
       const t = new THREE.DataArrayTexture(data, CELL_PX, CELL_PX, layers);
       t.format = format; t.type = THREE.UnsignedByteType;
@@ -227,8 +260,10 @@ export class ThreeBuildings {
   /** The resident building set from the tile streamer; rebuilds only chunks whose features changed. */
   setFeatures(features: readonly Feature[]): void {
     const groups = new Map<string, Feature[]>();
+    const kitParts: Feature[] = [];
     for (const feature of features) {
       const p = feature.properties;
+      if (KIT_PART_IDS.has(String(p.id ?? ''))) kitParts.push(feature);
       if (typeof p.facade !== 'string' || !p.facadeStyle) continue;
       const polygons = asPolygons(feature.geometry);
       if (!polygons.length) continue;
@@ -237,6 +272,7 @@ export class ThreeBuildings {
       if (!list) groups.set(key, list = []);
       list.push(feature);
     }
+    if (kitParts.length) groups.set(KIT_KEY, kitParts);
     for (const key of [...this.chunks.keys()]) if (!groups.has(key)) this.dropChunk(key);
     for (const [key, list] of groups) {
       const held = this.chunks.get(key);
@@ -269,7 +305,7 @@ export class ThreeBuildings {
     }
     const info = this.renderer?.info?.render;
     return {
-      chunks: this.chunks.size, buildings, walls, quads, vertices,
+      kitVertices: this.chunks.get(KIT_KEY)?.info.vertexCount ?? 0, chunks: this.chunks.size, buildings, walls, quads, vertices,
       geometryMB: bytes / 1048576, textureMB: this.textureMB,
       drawCalls: info?.calls ?? 0, triangles: info?.triangles ?? 0, buildMs: this.lastBuildMs,
     };
@@ -298,6 +334,22 @@ export class ThreeBuildings {
     }, 0);
   }
 
+  /** Landmark kits: build each kit from whichever of its OSM parts are resident. */
+  private buildKits(source: Feature[]): Chunk {
+    const kx = 111_320 * Math.cos(ORIGIN.lat * Math.PI / 180), ky = 110_540;
+    const parts = new Map<string, PartInput>();
+    for (const f of source) {
+      const polygons = asPolygons(f.geometry), outer = polygons[0]?.[0];
+      if (!outer) continue;
+      const id = String(f.properties.id);
+      parts.set(id, { id, ring: outer.map(([lng, lat]) => [(lng - ORIGIN.lng) * kx, (lat - ORIGIN.lat) * ky] as [number, number]), minHeightM: Number(f.properties.minHeight) || 0, heightM: Number(f.properties.height) });
+    }
+    const geometry: KitPartGeometry[] = KITS.flatMap(kit => kitGeometry(kit, parts));
+    const roofBase = this.look === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
+    const plain = this.look === 'procedural' ? cellLayer('canal', 'plain', 0) : bayLayer('canal', 0, 'plain');
+    return buildKitChunk(geometry, { plain, flat: roofBase + 3, slope: roofBase + 1 });
+  }
+
   private toMeshBuilding(feature: Feature): MeshBuilding | null {
     const p = feature.properties;
     const polygons = asPolygons(feature.geometry);
@@ -305,23 +357,39 @@ export class ThreeBuildings {
     const heightM = wallTopHeightM(p);
     if (!polygons.length || !Number.isFinite(heightM)) return null;
     const id = String(p.id ?? '');
+    let building: MeshBuilding;
+    let plain: number, roofBase: number, layout: FacadeStyle;
     if (this.look !== 'procedural') {
       const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
       const bay = bayLookFor(id, year, Number(p.height) || heightM, this.look);
-      return { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers };
+      building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers };
+      plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
+    } else {
+      layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
+      building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && hashShop(id) };
+      plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
     }
-    return {
-      id, polygons, heightM, minHeightM,
-      style: (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19',
-      wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b',
-    };
+    if (p.kitWall) {
+      // A landmark kit's walls: its own stone or brick colour, bare or in a window grid.
+      building.wallHex = String(p.kitWallHex ?? building.wallHex);
+      building.plainWalls = p.kitWall === 'plain';
+    }
+    if (p.roofPlanned) {
+      const ring = localOuterRing(feature.geometry);
+      const plan = ring ? planRoof(id, String(p.facadeStyle ?? ''), Number(p.height), minHeightM, fitRect(ring)) : null;
+      if (plan) {
+        const dims = STYLE_DIMS[layout];
+        building.roof = { plan, roofHex: roofHexFor(this.look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
+          layers: { slope: roofBase + (plan.material === 'tile' ? 0 : 1), plain, dormer: roofBase + 2 } };
+      }
+    }
+    return building;
   }
 
   private rebuild(key: string, source: Feature[]): void {
     if (!this.THREE) return;
     const t0 = performance.now();
-    const buildings = source.map(f => this.toMeshBuilding(f)).filter((b): b is MeshBuilding => !!b);
-    const chunk = buildChunk(buildings, ORIGIN);
+    const chunk = key === KIT_KEY ? this.buildKits(source) : buildChunk(source.map(f => this.toMeshBuilding(f)).filter((b): b is MeshBuilding => !!b), ORIGIN);
     this.dropChunk(key);
     if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); return; }
     const THREE = this.THREE;
@@ -390,7 +458,7 @@ export class ThreeBuildings {
         });
         owner.material = new THREE.RawShaderMaterial({
           glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
-          uniforms: { cells: { value: null }, masks: { value: null } }, side: THREE.FrontSide,
+          uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 } }, side: THREE.FrontSide,
         });
         void owner.texturesFor(owner.look).then(set => {
           owner.material.uniforms.cells.value = set.colour;

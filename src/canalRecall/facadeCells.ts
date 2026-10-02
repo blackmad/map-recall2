@@ -22,8 +22,9 @@
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
 export const CELL_PX = 256;
-export type CellKind = 'upper' | 'ground' | 'door';
-export const CELL_KINDS: readonly CellKind[] = ['upper', 'ground', 'door'];
+export type CellKind = 'upper' | 'ground' | 'door' | 'plain' | 'shop';
+/** `plain` is bare wall (no openings): gable faces and blind ends. */
+export const CELL_KINDS: readonly CellKind[] = ['upper', 'ground', 'door', 'plain', 'shop'];
 /** Two looks per style (bond, shutters, window heads), picked per building so a street is not one cell. */
 export const CELL_VARIANTS = 2;
 
@@ -266,6 +267,32 @@ function paintDoor(cell: Cell, o: DoorOptions) {
   }
 }
 
+/**
+ * A shopfront across a whole ground-floor bay. Two looks: a striped awning over
+ * one big window, and a dark fascia sign over a window with a wood stall riser.
+ */
+function paintShopfront(cell: Cell, W: number, H: number, dark: boolean) {
+  const frame = hex('#ece8dd'), wood = hex('#3f2c22');
+  cell.rect(0, 0, W, 0.4, scaleRgb(STONE, 0.9));
+  const x0 = 0.3, x1 = W - 0.3;
+  if (!dark) {
+    cell.rect(x0 - 0.08, 0.55, x1 - x0 + 0.16, 2.0, frame);
+    paintGlass(cell, x0, 0.62, x1 - x0, 1.86, 9);
+    cell.rect(x0 + (x1 - x0) / 2 - 0.03, 0.62, 0.06, 1.86, frame);
+    // Striped awning, slightly proud of the wall: red and cream.
+    const stripes = Math.max(6, Math.round(W / 0.34)), sw = (x1 - x0 + 0.3) / stripes;
+    for (let i = 0; i < stripes; i++) cell.rect(x0 - 0.15 + i * sw, 2.55, sw, 0.5, i % 2 ? hex('#efe9da') : hex('#a83a32'));
+    cell.rect(x0 - 0.15, 2.5, x1 - x0 + 0.3, 0.06, scaleRgb(hex('#a83a32'), 0.6));
+  } else {
+    cell.rect(0.15, H - 0.95, W - 0.3, 0.6, hex('#2f4a3a'));
+    for (let i = 0; i < 7; i++) cell.rect(0.55 + i * ((W - 1.1) / 7), H - 0.78, (W - 1.1) / 7 - 0.1, 0.26, hex('#e9e1c9'));
+    cell.rect(x0 - 0.08, 0.55, x1 - x0 + 0.16, H - 1.7, frame);
+    cell.rect(x0, 0.55, x1 - x0, 0.55, wood);
+    paintGlass(cell, x0, 1.14, x1 - x0, H - 2.4, 9);
+    for (const f of [1 / 3, 2 / 3]) cell.rect(x0 + (x1 - x0) * f - 0.03, 1.14, 0.06, H - 2.4, frame);
+  }
+}
+
 /** Street-level weathering: wall luminance falls ~12% over the bottom 0.7 m (splash, grime), ground cells only. */
 function grime(cell: Cell, kind: CellKind): Uint8ClampedArray {
   if (kind === 'upper') return cell.data;
@@ -301,6 +328,19 @@ export function paintCell(style: FacadeStyle, kind: CellKind, variant = 0): Uint
   const doorColour = DOOR_COLOURS[(FACADE_STYLES.indexOf(style) + (v1 ? 2 : 0)) % DOOR_COLOURS.length];
   const shutter = v1 ? hex('#8a2e28') : SHUTTER_COLOURS[0];
   const W = dims.bay;
+
+  if (kind === 'shop') {
+    if (style === 'canal' || style === 'c19' || style === 'school') paintBrick(cell, seed);
+    else paintRender(cell, seed, style === 'tower' ? 0.75 : 0.6);
+    paintShopfront(cell, W, height, v1);
+    return grime(cell, 'ground');
+  }
+
+  if (kind === 'plain') {
+    if (style === 'canal' || style === 'c19' || style === 'school') paintBrick(cell, seed, { flemish: style === 'canal' && v1 });
+    else paintRender(cell, seed, style === 'tower' ? 0.75 : 0.6);
+    return cell.data;
+  }
 
   if (style === 'canal') {
     paintBrick(cell, seed, { flemish: v1 });
@@ -420,12 +460,15 @@ export function paintAllCells(): Uint8ClampedArray {
  * an RG tint mask (R = wall tint weight, G = accent, unused here), the same
  * layout the bay looks use, so one shader serves every look.
  */
-export function paintProceduralLayers(): { layers: number; colour: Uint8Array; mask: Uint8Array } {
-  const all = paintAllCells(), pixels = CELL_PX * CELL_PX * CELL_LAYER_COUNT;
+export function paintProceduralLayers(extra: Uint8ClampedArray[] = []): { layers: number; colour: Uint8Array; mask: Uint8Array } {
+  const base = paintAllCells(), layerBytes = CELL_PX * CELL_PX * 4;
+  const all = new Uint8ClampedArray(base.length + extra.length * layerBytes);
+  all.set(base); extra.forEach((cell, i) => all.set(cell, base.length + i * layerBytes));
+  const total = CELL_LAYER_COUNT + extra.length, pixels = CELL_PX * CELL_PX * total;
   const colour = new Uint8Array(pixels * 4), mask = new Uint8Array(pixels * 2);
   for (let i = 0; i < pixels; i++) {
     colour[i * 4] = all[i * 4]; colour[i * 4 + 1] = all[i * 4 + 1]; colour[i * 4 + 2] = all[i * 4 + 2]; colour[i * 4 + 3] = 255;
     mask[i * 2] = all[i * 4 + 3]; mask[i * 2 + 1] = 0;
   }
-  return { layers: CELL_LAYER_COUNT, colour, mask };
+  return { layers: total, colour, mask };
 }

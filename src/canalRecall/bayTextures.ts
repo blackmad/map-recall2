@@ -13,9 +13,10 @@ export const BAY_PX = 520;
 export const STOREY_PX = 310;
 export const GROUND_PX = 340;
 
-export type Look = 'photo' | 'cartoon';
+export type Look = 'photo' | 'storybook' | 'cartoon';
 export type Archetype = 'canal' | 'school' | 'modern';
-export type BayKind = 'plain' | 'groundDoor' | 'groundShop' | 'ground' | 'upper' | 'upperTall' | 'attic';
+export type BayKind = 'plain' | 'groundDoor' | 'groundShop' | 'shopCafe' | 'shopWindow' | 'shopBar' | 'ground' | 'upper' | 'upperTall' | 'attic';
+export const SHOP_KINDS = ['groundShop', 'shopCafe', 'shopWindow', 'shopBar'] as const;
 export type WindowShape = 'rect' | 'arch' | 'round';
 
 /** Everything that changes how a bay is drawn; colours are not part of it. */
@@ -45,8 +46,14 @@ export function buildingStyle(seed: string, archetype: Archetype): Omit<BayVaria
   };
 }
 
-const PALETTES: Record<Look, Record<Archetype, { walls: string[]; accents: string[] }>> = {
+export const PALETTES: Record<Look, Record<Archetype, { walls: string[]; accents: string[] }>> = {
   cartoon: {
+    canal: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
+      accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
+    school: { walls: ['#9c5a42', '#8a4b3a', '#a8664c', '#7a4a40'], accents: ['#2c4a7c', '#2a8c8c', '#e0a526'] },
+    modern: { walls: ['#f4efe6', '#dcdcd6', '#e9d9c0', '#b9c4cc', '#f0c9a9'], accents: ['#2a8c8c', '#d9453d', '#2c4a7c', '#e0a526'] },
+  },
+  storybook: {
     canal: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
       accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
     school: { walls: ['#9c5a42', '#8a4b3a', '#a8664c', '#7a4a40'], accents: ['#2c4a7c', '#2a8c8c', '#e0a526'] },
@@ -80,7 +87,12 @@ const cache = new Map<string, { colour: HTMLCanvasElement; mask: HTMLCanvasEleme
 
 class Painter {
   constructor(readonly ctx: CanvasRenderingContext2D, readonly pass: Pass, readonly look: Look) {}
-  get cartoon() { return this.look === 'cartoon'; }
+  /** Both illustrated looks draw outlined, flat-filled shapes; `toon` is the bolder of the two. */
+  get cartoon() { return this.look !== 'photo'; }
+  get toon() { return this.look === 'cartoon'; }
+  get lineW() { return this.toon ? 9 : 3.5; }
+  get glass(): [string, string] { return this.toon ? ['#a9e0f7', '#5aa8d8'] : ['#a3bccb', '#6a8799']; }
+  get stone() { return this.toon ? '#fff1cf' : '#e6dbc3'; }
   /** Fill with a role-aware colour: `wall`/`accent` become mask channels; `ink` is untinted. */
   fill(role: 'wall' | 'accent' | 'ink', colour: string | CanvasGradient): void {
     this.ctx.fillStyle = this.pass === 'mask' ? (role === 'wall' ? '#ff0000' : role === 'accent' ? '#00ff00' : '#000000')
@@ -102,7 +114,8 @@ function wall(p: Painter, w: number, h: number, brick: CanvasImageSource, archet
   if (p.pass === 'mask') { p.fill('wall', ''); ctx.fillRect(0, 0, w, h); return; }
   if (p.cartoon || archetype === 'modern') {
     ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
-    ctx.strokeStyle = archetype === 'modern' ? 'rgba(0,0,0,0.05)' : 'rgba(60,30,20,0.10)'; ctx.lineWidth = 2;
+    if (p.toon && archetype !== 'modern') return; // cartoon walls are flat colour
+    ctx.strokeStyle = archetype === 'modern' ? 'rgba(0,0,0,0.05)' : 'rgba(60,30,20,0.16)'; ctx.lineWidth = 2;
     if (archetype === 'modern') { for (let x = 130; x < w; x += 130) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); } return; }
     for (let row = 0, y = 6; y < h; y += 14, row++) {
       ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
@@ -115,7 +128,7 @@ function wall(p: Painter, w: number, h: number, brick: CanvasImageSource, archet
 }
 
 function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: BayVariant): void {
-  const { ctx } = p, cartoon = p.cartoon, line = cartoon ? 6 : 0;
+  const { ctx } = p, cartoon = p.cartoon, line = cartoon ? p.lineW : 0;
   const shape = v.shape;
   const topR = shape === 'arch' ? w / 2 : shape === 'round' ? 18 : 6;
   const outline = () => { if (cartoon) { p.stroke(OUTLINE, line); ctx.lineJoin = 'round'; ctx.stroke(); } };
@@ -128,7 +141,7 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   }
   // Reveal shadow, then lintel (soldier course or cream block) and sill.
   p.fill('ink', 'rgba(20,14,10,0.55)'); ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
-  const stone = cartoon ? '#fff1cf' : '#cfc8b8';
+  const stone = cartoon ? p.stone : '#cfc8b8';
   if (v.archetype !== 'modern') {
     p.fill('ink', stone);
     if (shape === 'arch') { ctx.beginPath(); ctx.ellipse(x + w / 2, y + 2, w / 2 + 12, 30, 0, Math.PI, 0); ctx.fill(); if (cartoon) outline(); }
@@ -145,7 +158,7 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   const m = cartoon ? 12 : 9;
   p.shade(() => {
     const g = ctx.createLinearGradient(0, y, 0, y + h);
-    if (cartoon) { g.addColorStop(0, '#a9e0f7'); g.addColorStop(1, '#5aa8d8'); } else { g.addColorStop(0, '#6f8796'); g.addColorStop(0.55, '#2f4350'); g.addColorStop(1, '#1d2a33'); }
+    if (cartoon) { g.addColorStop(0, p.glass[0]); g.addColorStop(1, p.glass[1]); } else { g.addColorStop(0, '#6f8796'); g.addColorStop(0.55, '#2f4350'); g.addColorStop(1, '#1d2a33'); }
     ctx.fillStyle = g;
     if (shape === 'arch') { ctx.beginPath(); ctx.moveTo(x + m, y + h - m); ctx.lineTo(x + m, y + w / 2); ctx.arc(x + w / 2, y + w / 2, w / 2 - m, Math.PI, 0); ctx.lineTo(x + w - m, y + h - m); ctx.closePath(); ctx.fill(); }
     else { p.rr(x + m, y + m, w - 2 * m, h - 2 * m, 5); ctx.fill(); }
@@ -153,7 +166,7 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   if (p.pass === 'mask') { ctx.fillStyle = '#000'; ctx.fillRect(x + m, y + m, w - 2 * m, h - 2 * m); }
   // Muntins: a cross in cartoon, six-over-six sashes in photo.
   p.fill(v.paintedFrames ? 'accent' : 'ink', frameColour);
-  if (cartoon) { ctx.fillRect(x + w / 2 - 4, y + m, 8, h - 2 * m); ctx.fillRect(x + m, y + h * 0.42, w - 2 * m, 8); }
+  if (p.toon) { ctx.fillRect(x + w / 2 - 4, y + m, 8, h - 2 * m); ctx.fillRect(x + m, y + h * 0.42, w - 2 * m, 8); }
   else {
     ctx.fillRect(x + m, y + h / 2 - 3, w - 2 * m, 6);
     for (let c = 1; c < 3; c++) ctx.fillRect(x + m + ((w - 2 * m) * c) / 3 - 1.5, y + m, 3, h - 2 * m);
@@ -164,7 +177,7 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
 
 function doorAt(p: Painter, x: number, groundY: number, v: BayVariant): void {
   const { ctx } = p, cartoon = p.cartoon, w = 118, h = 226, top = groundY - h;
-  const line = () => { if (cartoon) { p.stroke(OUTLINE, 6); ctx.lineJoin = 'round'; ctx.stroke(); } };
+  const line = () => { if (cartoon) { p.stroke(OUTLINE, p.lineW); ctx.lineJoin = 'round'; ctx.stroke(); } };
   p.fill('ink', 'rgba(20,14,10,0.55)'); ctx.fillRect(x - 5, top - 5, w + 10, h + 5);
   p.fill('ink', cartoon ? '#fff1cf' : '#d9d4c7'); p.rr(x - 14, top - 40, w + 28, h + 40, cartoon ? 14 : 3); ctx.fill(); line();
   p.fill('accent', '#ffffff'); p.rr(x, top, w, h, cartoon ? 12 : 2); ctx.fill(); line();
@@ -181,7 +194,7 @@ function doorAt(p: Painter, x: number, groundY: number, v: BayVariant): void {
 
 function shopAt(p: Painter, w: number, groundY: number): void {
   const { ctx } = p, cartoon = p.cartoon, x = 36, top = 74, sw = w - 72, sh = groundY - top - 8;
-  const line = () => { if (cartoon) { p.stroke(OUTLINE, 6); ctx.lineJoin = 'round'; ctx.stroke(); } };
+  const line = () => { if (cartoon) { p.stroke(OUTLINE, p.lineW); ctx.lineJoin = 'round'; ctx.stroke(); } };
   p.fill('ink', 'rgba(20,14,10,0.5)'); ctx.fillRect(x - 6, top - 6, sw + 12, sh + 12);
   p.fill('ink', cartoon ? '#fffaf0' : '#e4dfd2'); p.rr(x, top, sw, sh, cartoon ? 10 : 2); ctx.fill(); line();
   p.shade(() => { const g = ctx.createLinearGradient(0, top, 0, top + sh); if (cartoon) { g.addColorStop(0, '#bdeaff'); g.addColorStop(1, '#7ec0e6'); } else { g.addColorStop(0, '#7e97a6'); g.addColorStop(1, '#27363f'); }
@@ -192,6 +205,58 @@ function shopAt(p: Painter, w: number, groundY: number): void {
   // Awning: scalloped accent colour stripe over the shopfront.
   p.fill('accent', '#ffffff'); p.rr(x - 10, top - 44, sw + 20, 40, 6); ctx.fill(); line();
   p.shade(() => { ctx.fillStyle = 'rgba(255,255,255,0.55)'; for (let sx = x; sx < x + sw; sx += 60) ctx.fillRect(sx, top - 40, 30, 32); });
+}
+
+/** A pane of glass: gradient in the colour pass, a hole in the tint mask. */
+function glassRect(p: Painter, x: number, y: number, w: number, h: number, r = 6): void {
+  const { ctx } = p;
+  p.shade(() => {
+    const g = ctx.createLinearGradient(0, y, 0, y + h);
+    if (p.cartoon) { g.addColorStop(0, p.glass[0]); g.addColorStop(1, p.glass[1]); } else { g.addColorStop(0, '#7e97a6'); g.addColorStop(1, '#27363f'); }
+    ctx.fillStyle = g; p.rr(x, y, w, h, r); ctx.fill();
+  });
+  if (p.pass === 'mask') { ctx.fillStyle = '#000'; p.rr(x, y, w, h, r); ctx.fill(); }
+}
+
+/** Fascia sign: an accent-coloured board with pale blocks standing in for lettering. */
+function fascia(p: Painter, x: number, y: number, w: number, h: number): void {
+  const { ctx } = p;
+  p.fill('accent', '#ffffff'); p.rr(x, y, w, h, p.cartoon ? 8 : 2); ctx.fill();
+  if (p.cartoon) { p.stroke(OUTLINE, p.lineW); ctx.stroke(); }
+  p.fill('ink', p.cartoon ? '#fffaf0' : '#e8e2d2');
+  const letters = 7;
+  for (let i = 0; i < letters; i++) ctx.fillRect(x + w * 0.16 + (i * w * 0.68) / letters, y + h * 0.3, (w * 0.68) / letters - 6, h * 0.4);
+}
+
+/** The other shopfronts: a café, a display window under a sign, a brown café. */
+function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): void {
+  const { ctx } = p, cartoon = p.cartoon;
+  const frame = cartoon ? '#fffaf0' : '#e4dfd2';
+  const outline = () => { if (cartoon) { p.stroke(OUTLINE, p.lineW); ctx.lineJoin = 'round'; ctx.stroke(); } };
+  if (kind === 'shopCafe') {
+    fascia(p, 24, 22, w - 48, 50);
+    for (const [x0, x1] of [[26, w / 2 - 8], [w / 2 + 8, w - 26]] as const) {
+      const ww = x1 - x0, top = 92, bottom = groundY - 8;
+      p.fill('ink', frame); ctx.beginPath(); ctx.moveTo(x0, bottom); ctx.lineTo(x0, top + ww / 2); ctx.arc(x0 + ww / 2, top + ww / 2, ww / 2, Math.PI, 0); ctx.lineTo(x1, bottom); ctx.closePath(); ctx.fill(); outline();
+      glassRect(p, x0 + 12, top + 14 + ww / 2 - 20, ww - 24, bottom - top - ww / 2 - 6, 10);
+    }
+  } else if (kind === 'shopWindow') {
+    fascia(p, 18, 24, w - 36, 62);
+    p.fill('ink', frame); p.rr(24, 102, w - 48, groundY - 110, cartoon ? 8 : 2); ctx.fill(); outline();
+    glassRect(p, 36, 114, w - 72, groundY - 134, 6);
+    p.fill('ink', frame); for (const mx of [w * 0.34, w * 0.67]) ctx.fillRect(mx - 4, 114, 8, groundY - 134);
+  } else {
+    // Brown café: dark wood below, small amber windows above, a hanging sign.
+    p.fill('ink', cartoon ? '#5a3b2c' : '#3d2a20'); ctx.fillRect(16, 168, w - 32, groundY - 176);
+    p.fill('ink', cartoon ? '#6d4a37' : '#4b3326'); for (let x = 30; x < w - 30; x += 70) ctx.fillRect(x, 182, 54, groundY - 200);
+    for (const cx of [w * 0.28, w * 0.66]) {
+      p.fill('ink', frame); p.rr(cx - 62, 84, 124, 78, cartoon ? 8 : 2); ctx.fill(); outline();
+      glassRect(p, cx - 52, 94, 104, 58, 4);
+      p.shade(() => { ctx.fillStyle = cartoon ? 'rgba(255,200,120,0.45)' : 'rgba(255,180,90,0.30)'; ctx.fillRect(cx - 52, 94, 104, 58); });
+    }
+    p.stroke(OUTLINE, 5); ctx.beginPath(); ctx.moveTo(w - 30, 58); ctx.lineTo(w - 96, 58); ctx.stroke();
+    p.fill('accent', '#ffffff'); ctx.beginPath(); ctx.arc(w - 84, 92, 28, 0, Math.PI * 2); ctx.fill(); outline();
+  }
 }
 
 function ribbon(p: Painter, w: number, y: number, h: number): void {
@@ -208,22 +273,23 @@ function ribbon(p: Painter, w: number, y: number, h: number): void {
 }
 
 function layoutWindows(p: Painter, v: BayVariant, w: number, y: number, h: number): void {
-  const ww = v.windows === 1 ? 150 : v.windows === 2 ? 112 : 82;
+  const ww = (v.windows === 1 ? 150 : v.windows === 2 ? 112 : 82) * (p.toon ? 1.12 : 1);
   for (let i = 0; i < v.windows; i++) windowAt(p, ((i + 0.5) / v.windows) * w - ww / 2, y, ww, h, v);
 }
 
 function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImageSource): void {
   const { ctx } = p;
   wall(p, w, h, brick, v.archetype);
-  const ground = v.kind === 'groundDoor' || v.kind === 'groundShop' || v.kind === 'ground';
+  const isShop = (SHOP_KINDS as readonly string[]).includes(v.kind);
+  const ground = v.kind === 'groundDoor' || isShop || v.kind === 'ground';
   if (v.archetype === 'modern') {
     if (!ground) ribbon(p, w, v.kind === 'attic' ? 120 : 70, v.kind === 'attic' ? 90 : 140);
-    else if (v.kind === 'groundShop') shopAt(p, w, h - 24);
+    else if (isShop) { if (v.kind === 'groundShop') shopAt(p, w, h - 24); else shopVariantAt(p, w, h - 24, v.kind); }
     else { windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: 'rect', archetype: 'modern' }); if (v.kind === 'groundDoor') doorAt(p, w * 0.62, h - 24, v); }
   } else if (v.kind === 'plain') {
     // wall only
   } else if (ground) {
-    if (v.kind === 'groundShop') { shopAt(p, w, h - 24); }
+    if (isShop) { if (v.kind === 'groundShop') shopAt(p, w, h - 24); else shopVariantAt(p, w, h - 24, v.kind); }
     else if (v.kind === 'groundDoor') { doorAt(p, w * 0.14, h - 24, v); layoutWindows(p, { ...v, windows: 1 }, w * 1.28, 76, 150); }
     else layoutWindows(p, v, w, 70, 150);
     if (v.archetype === 'school') { p.fill('ink', p.cartoon ? '#fff1cf' : '#c9c1ae'); ctx.fillRect(0, h - 70, w, 8); }

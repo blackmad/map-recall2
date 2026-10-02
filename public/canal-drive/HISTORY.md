@@ -13,6 +13,142 @@ dots from the start, since they sit inside the drawn area. Pinpoint shows them
 only after the guess, because before it they would reveal where the area is.
 Labels go best first; one that would overlap a better one hides until the
 player zooms in. Six of the 91 areas have no places.
+## Landmark fronts: low-poly reconstructions instead of photo textures
+
+The user judged the photo-textured fronts awful (white sky baked into a rectangle, a photo pasted on a blank box, unlit against the shaded city), and asked for our own low-poly reconstructions instead. Panorama crops are now drawing references only. `src/canalRecall/landmarkFronts.ts` models the one street wall that makes a landmark recognisable as boxes on the wall plane: a slab cut to a measured roofline (arches via `arch()`), projecting cornices and pilasters, framed window panes with sills, shopfronts, and an optional `bodyTopM` that lowers the OSM part behind the front (OSM gives one height per part, so a flat-topped prism otherwise hides a pediment or a gable row). Data: `landmarkFrontData.ts`, with the Bijenkorf (five bays, deep cornice, attic, arched pediment) and the Beurs van Berlage's Beursplein hall wall (13 window columns, six small gables; that hall's roof rise is now 11.5 m so its eaves meet the gables). `facadeCompareViewer.ts` now shows plain prism / reconstruction / flat reference photo. `photoSilhouette.ts` measures each reference's roofline and wall colour (stored in the facade JSON; the builder writes it, `scripts/pano-facades/add-silhouette.ts` backfills), and `npm run test:landmark-fronts` (in `check:canal`) fails if a modelled roofline drifts from it: Bijenkorf median 0.23 m / p90 0.65 m, Beurs 0.25 / 0.67 m. Colours sampled from the photo came out too dark (shaded north-west walls), so fronts use lighter palette colours. Not in the game yet.
+
+## 2026-10-02 — The ride starts facing along the route
+
+User report with screenshot: the bike started pointing away from the route, with
+the blue line running off behind it. A road's tangent has two opposite directions
+and the extract stores one arbitrarily; `_setupRace` used it unchanged. The
+camera bearing follows the player's heading, so the camera was "behind" a bike
+that faced the wrong way. `startHeading` (in `routeSelection.ts`, unit-checked
+by `check-start-heading.ts`) now picks the direction toward the planned route,
+looking at 60, 150 and 400 px out and trusting the clearest, because a route
+that turns at the first junction reads sideways from one distance; with no route
+it uses the finish, and only a route exactly square to the road keeps the road's
+own angle. `start-heading.spec.ts` starts six real rides (four bike seeds, two
+boat) and checks they face along the route and the camera settles behind them;
+with the fix switched off (`START_HEADING_OFF=1`) all four bike seeds fail.
+Seed 1234abcd was a route leaving almost sideways to its road (signal -0.15):
+an earlier cutoff left it arbitrary, which is why a weak signal now still decides.
+Boat rides happened to face right with or without the fix on those two seeds.
+## Beurs van Berlage added to the comparison
+
+"Sherlocked" was the Beurs van Berlage. Panorama facade from the Beursplein-side hall wall (parts w7499186xx, one panorama at 7 m), plus an experimental kit (brick tower with pyramid cap, steep roofs on the halls). The real Damrak front with the tower still needs its wall chosen by hand (`--wall`), and the photo's top edge shows sky because the hall is lower than the tower parts.
+
+## Facade photo vs low-poly kit: first comparison
+
+`facade-compare.html?name=waag|bijenkorf` draws three viewports from one camera: plain OSM prism, prism plus a panorama photo on the street wall, and a hand-modelled kit (experimental kits live in `facadeCompareViewer.ts`, not in `KITS`, so the game is unchanged). Screenshots: `public/data/landmark-facades/compare-*.png`. Result: for the Bijenkorf (flat stone front) the photo is dramatically better and a kit adds nothing recognisable; for the Waag the kit (conical roofs on round towers) reads instantly while the photo covers only the gate section. So: photo for flat fronts, kit for silhouettes. Findings on the builder: use ONE best panorama (median fusion of oblique captures ghosts because the wall is not planar); the panorama list API caps at 500 unordered results, so the script now follows all pages; the Anne Frank canal front is only covered from about 60-70 m across the water and the result is unusable, and the rear (Westermarkt) wall is too close (4-7 m) and badly projected. Wikimedia Commons answered 429 (shared-IP rate limit), to retry. The first "Bijenkorf" footprint guess was the Industrieele Groote Club (Dam 27); the real one is the w7512357xx parts on Damrak/Beursstraat.
+
+## Panorama facade textures (spike)
+
+`scripts/pano-facades/build-pano-facade.ts` builds a photographic elevation of a building's best street-facing wall from Gemeente Amsterdam panoramas: it ranks exposed footprint edges by panorama coverage, rectifies up to five captures with `rectifyFacade` (world-aligned camera) and fuses them with a per-pixel median, which removes cars and people. Output goes to `public/data/landmark-facades/<name>.jpg` plus a JSON record (wall endpoints, panorama ids, attribution). First run on the "Anne Frank House" ids gave a clean 18 m elevation, but the ids resolve to the museum's modern extension (brick + glass entrance), not the canal house, so the right BAG parts still need choosing. The 8000 px image 404s for some panoramas; the script falls back to 4000/2000. Windows show glass reflections smeared by the median; the licence (publisher says open data) is still to be confirmed before shipping textures.
+
+
+## 2026-10-02 — Neighbourhood gap-fill pipeline
+
+User asked what neighbourhoods still lacked naming and trivia (18 of 90 had
+nothing; Sportheldenbuurt was one), then for a pipeline to fill them from every
+source: more Wikipedia searches, POI extraction, "named for a street", photos.
+`src/mapRecall/neighborhoodGaps.ts` (pure, tested in
+`scripts/check-neighborhood-gaps.ts`) and `scripts/fill-neighborhood-gaps.ts`.
+Findings that shaped it: the area's article often exists only as "Name
+(Amsterdam)" behind a disambiguation page (Sportheldenbuurt is on
+Zeeburgereiland, its streets named after Dutch sports history in 2011);
+street-name matches need word-boundary rules (a street named for a person
+called Sluis is not Sluisbuurt) and never apply to districts; a theme shared by
+the streets explains the area's name only when the name points at it. Wikimedia
+rate-limits the shared cloud egress IP, so requests are paced at one a second.
+Text composed from data is labelled with its source, not "Wikipedia".
+
+## 2026-10-02 — Neighbourhood trivia filled for Amsterdam and Den Haag
+
+Ran `fill-neighborhood-gaps` online for both. Amsterdam: descriptions 72 to 90 of
+90, photos 52 to 70, name origins 53 to 70, histories 44 to 48. Den Haag had no
+trivia files; now 21 of 23 descriptions, 12 photos, 10 histories, 5 name origins.
+Reviewed by hand: Dutch text translated into the per-city review files
+(`scripts/data/neighborhood-gap-review*.json`); photos judged on a contact sheet,
+and rejected when they showed another place (Delft's Vrijenban, a plantation
+house in Suriname, the Zaandammerplein for the Houthaven islands), a diagram, or
+nothing of the area. Lessons: a Commons category of the same name can belong to
+another city (Willemspark), so a category must sit under one naming the city;
+only JPEG photographs count (a coloured area map passed as a PNG); Dutch
+"de naam" matches election results, so name origins need an explicit naming
+phrase and the area's own name in the same sentence; the Baltic-named islands
+(Reval, Wiborg, ...) are in Houthaven, not IJburg. `check-neighborhood-trivia-data.ts`
+now guards every city's published trivia. Map Recall reads each extract city
+(`cityExtracts.ts`); Utrecht and Rotterdam run next.
+## 2026-10-02 — Building assets gallery
+
+`building-gallery.html` (served at `/building-gallery.html` on the canalrecall site,
+`/canal-drive/building-gallery.html` in dev; not linked from the app) shows every
+custom building asset: facade cells per look tinted as the shader does, shopfronts,
+roof/dormer/flat textures, 3D roof and gable thumbnails, palettes, and live landmark
+kits (iframes of `kit-viewer.html`). Built by `npm run build:building-gallery` from the
+same modules the game uses, so it cannot drift. Storybook is only built as a CI check,
+not deployed, and has none of these assets.
+
+## 2026-10-02 — Landmark kits: our own low-poly towers, spires, domes and roofs
+
+User: could we generate low-poly models for major POIs? The 13 signature GLBs are
+3D Warehouse downloads (unresolved licence, 10-12k triangles each) and stay
+demo-only. Images were unreachable from this sandbox (Sketchfab, 3D Warehouse,
+Wikimedia all blocked; web search is text only), so the kits come from memory of
+the buildings, good to a few metres and not surveys. Nothing is copied.
+- How: OSM already models these buildings as stacked parts (the Westerkerk tower
+  is five prisms from 40 to 82 m), so heights are right and the shape is what is
+  missing. A kit (`landmarkKits.ts`) says, per OSM part id, what a part really is
+  (square or octagonal stage, material), what to stack on it (lantern, spire,
+  dome, crown, finial) and which parts carry a pitched roof, all generated from
+  the part's own footprint so position and orientation stay as accurate as the
+  data. Tower tiers get cornice ledges and gilt clock faces; the Palace drum gets
+  columns. Roofed parts are lowered to their eaves and walled in bare brick
+  (churches) or a sandstone window grid (Palace).
+- Kits so far (Photo/Storybook/Cartoon/Painted looks; Default unchanged):
+  Westerkerk (brick/stone/lead tower, imperial crown, nave roofs), Zuiderkerk
+  (80 m: stone octagon, lantern, needle spire), Montelbaanstoren (white clock
+  stages, lead spire), Noorderkerk (Greek-cross roofs, turret), Royal Palace
+  (copper dome on a columned drum, lantern, gilt top, leaded roofs).
+- Landmarks otherwise stay exempt from generic facades and roofs.
+- Tools: `npm run build:kit-viewer` and `public/canal-drive/kit-viewer.html?kit=
+  Westerkerk&az=30&el=15&r=170&y=42` render a kit from its real OSM parts with grey
+  context, which is how the shapes were iterated; the look spec has `k-*` spots and
+  `LOOK_FREE=1` for a free camera. In-game checks at all five spots, desktop
+  software GL, no basemap.
+- Pitfall found: `fitRect` rejected 16-vertex octagon footprints (a missing stage
+  in the Westerkerk tower); the kit path now allows any vertex count.
+
+## 2026-10-02 — Roofs, gables, shopfronts, and a Storybook/Cartoon split
+
+User: the city looks too regular; photo and cartoon lack roofs, gables, mansards
+and street-level retail; the cartoon sat in an uncanny valley (pastel
+"Townscaper"). Built for every three.js look (`roofMesh.ts`, `roofCells.ts`):
+- Roofs: per-building plan from the footprint's fitted rectangle and facade
+  style. Gable (step, neck, bell, spout or plain plate on each short end),
+  pitched (plain triangular ends), mansard with dormers; pantile or slate; a
+  0.3 m eave overhang, chimneys on most ridges. Non-rectangular footprints
+  (coverage under 0.88 or a vertex over 1 m off the box) keep the flat lid. A
+  tile decorator lowers the plain wall to the eaves (`roofEavesHeightM`, which the
+  wall-top expression already honours) and stops the flat cap; it is applied only
+  while a three.js look is on, so Default is unchanged.
+- Retail: four shopfront types per archetype in the bay looks (awning, café,
+  display window under a fascia sign, brown café with a hanging sign) and two in
+  the procedural cells; about a third of buildings get one on the non-door bays.
+- Regularity: bay width, storey and ground-floor height vary per building; a
+  projecting cornice on flat-roofed period buildings.
+- Looks: Cartoon is now flat, bold, cel-shaded (3 light bands), saturated sticker
+  palette, thick outlines, bigger windows; Storybook is the softly painted,
+  natural-colour middle (thin outlines, muted palette); Photo keeps real brick and
+  a realistic brick palette.
+Landmarks are exempt: the 849 resolved landmark buildings (`landmark-buildings.json`: churches, museums, Centraal and the rest) get no generic facade and no roof, in every look including Default (`exceptLandmarks`; the ids load after the tile decorator is installed and re-decorate the resident city when they arrive).
+Depth was kept to what fits the memory budget: overhangs, chimneys, cornice,
+dormers and gable plates; no recessed windows or per-door stoops. Checked by
+four rounds of screenshot critique at Jordaan (desktop software GL, no
+basemap) and unit checks in `check-three-buildings.ts` (fit, plan odds,
+gable profiles stand above the slope, decorator lowers walls, measured roofs
+untouched).
 
 ## 2026-10-02 — Building look setting; photo and cartoon looks tuned
 
