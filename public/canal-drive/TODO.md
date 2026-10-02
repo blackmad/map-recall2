@@ -984,3 +984,5 @@ Not milestones — standing obligations with live guards.
 - Audit route topology at docks, broad water polygons, bridges, and split OSM
   fragments.
 - Tune neighborhood postcard scale and long-name typography on mobile.
+
+- P2: Panorama facade textures: pick correct Anne Frank House (Prinsengracht 263) parts, add Bijenkorf/Waag/Sherlocked, apply the JPEG to the landmark wall in the three layer, confirm licence/attribution. Script: `scripts/pano-facades/build-pano-facade.ts`.

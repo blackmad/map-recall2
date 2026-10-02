@@ -1,0 +1,60 @@
+{
+ "name": "anne-frank-house",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012169587",
+  "NL.IMBAG.Pand.0363100012169585",
+  "NL.IMBAG.Pand.0363100012169583"
+ ],
+ "image": "anne-frank-house.jpg",
+ "width": 1106,
+ "height": 1118,
+ "pixelsPerMetre": 60,
+ "wall": {
+  "startLngLat": [
+   4.883983997005499,
+   52.37525600232143
+  ],
+  "endLngLat": [
+   4.883852997008433,
+   52.37511100231888
+  ],
+  "lengthM": 18.43556204550332,
+  "heightM": 18.63,
+  "outwardBearingDeg": 299.3374190085553
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002990_pano_0014_000246",
+   "timestamp": "2023-03-06T11:34:24.212360Z",
+   "distanceM": 4,
+   "obliquityDeg": 3
+  },
+  {
+   "id": "TMX7316010203-002961_pano_0000_000124",
+   "timestamp": "2023-02-06T10:43:16.917330Z",
+   "distanceM": 5,
+   "obliquityDeg": 29
+  },
+  {
+   "id": "TMX7316010203-002045_pano_0001_000559",
+   "timestamp": "2021-03-17T11:45:35.179550Z",
+   "distanceM": 6,
+   "obliquityDeg": 27
+  },
+  {
+   "id": "TMX7316010203-003027_pano_0000_000026",
+   "timestamp": "2023-04-11T09:08:31.096220Z",
+   "distanceM": 7,
+   "obliquityDeg": 45
+  },
+  {
+   "id": "TMX7316010203-002990_pano_0014_000241",
+   "timestamp": "2023-03-06T11:34:11.387710Z",
+   "distanceM": 7,
+   "obliquityDeg": 50
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

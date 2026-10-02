@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Panorama facade textures (spike)
+
+`scripts/pano-facades/build-pano-facade.ts` builds a photographic elevation of a building's best street-facing wall from Gemeente Amsterdam panoramas: it ranks exposed footprint edges by panorama coverage, rectifies up to five captures with `rectifyFacade` (world-aligned camera) and fuses them with a per-pixel median, which removes cars and people. Output goes to `public/data/landmark-facades/<name>.jpg` plus a JSON record (wall endpoints, panorama ids, attribution). First run on the "Anne Frank House" ids gave a clean 18 m elevation, but the ids resolve to the museum's modern extension (brick + glass entrance), not the canal house, so the right BAG parts still need choosing. The 8000 px image 404s for some panoramas; the script falls back to 4000/2000. Windows show glass reflections smeared by the median; the licence (publisher says open data) is still to be confirmed before shipping textures.
+
 ## 2026-10-02 — Building assets gallery
 
 `building-gallery.html` (served at `/building-gallery.html` on the canalrecall site,
