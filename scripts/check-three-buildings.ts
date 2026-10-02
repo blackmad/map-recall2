@@ -224,4 +224,43 @@ for (let v = 0; v < chunk.vertexCount; v += 4) {
   const measured = { type: 'Feature' as const, properties: { id: 'm', height: 14, facade: 'canal-priorBrickRed', facadeStyle: 'canal', roofEavesHeightM: 11.2 }, geometry: { type: 'Polygon', coordinates: [ring] } };
   assert.equal(decorateRoof(measured), measured, 'a measured roof is never overridden');
 }
+// --- Landmark kits -----------------------------------------------------------
+{
+  const { KITS, KIT_HIDE_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry } = await import('../src/canalRecall/landmarkKits.ts');
+  const square = (cx: number, cy: number, w: number, d = w): Array<[number, number]> => [[cx - w / 2, cy - d / 2], [cx + w / 2, cy - d / 2], [cx + w / 2, cy + d / 2], [cx - w / 2, cy + d / 2], [cx - w / 2, cy - d / 2]];
+  assert.equal(new Set(KITS.map(k => k.name)).size, KITS.length, 'kit names are unique');
+  const owners = new Map<string, string>();
+  for (const kit of KITS) for (const id of [...kit.tiers.map(t => t.id), ...kit.roofs.map(r => r.id)]) { assert.ok(!owners.has(id), `${id} belongs to one kit`); owners.set(id, kit.name); }
+  for (const id of KIT_HIDE_IDS) assert.ok(KIT_PART_IDS.has(id));
+  for (const kit of KITS) {
+    assert.deepEqual(kitGeometry(kit, new Map()), [], `${kit.name}: nothing to draw until its parts load`);
+    // Synthetic parts: a tier is a 10 m square from its own minHeight to height; a roof host a 12 x 30 nave.
+    const parts = new Map<string, { id: string; ring: Array<[number, number]>; minHeightM: number; heightM: number }>();
+    let z = 0;
+    for (const tier of kit.tiers) { parts.set(tier.id, { id: tier.id, ring: square(0, 0, 10), minHeightM: z, heightM: z + 10 }); z += 10; }
+    for (const stack of kit.stacks) if (!parts.has(stack.onId)) parts.set(stack.onId, { id: stack.onId, ring: square(0, 0, 10), minHeightM: 0, heightM: 30 });
+    for (const roof of kit.roofs) parts.set(roof.id, { id: roof.id, ring: square(40, 0, 12, 30), minHeightM: 0, heightM: 20 });
+    const geometry = kitGeometry(kit, parts);
+    assert.ok(geometry.length > 0 && geometry.every(g => g.tris.length > 0), `${kit.name}: builds geometry`);
+    for (const g of geometry) for (const t of g.tris) {
+      assert.ok(t.p.flat().every(Number.isFinite) && t.uv.flat().every(Number.isFinite) && t.n.every(Number.isFinite), `${kit.name}: finite`);
+      assert.ok(Math.abs(Math.hypot(...t.n) - 1) < 1e-6, `${kit.name}: unit normals`);
+    }
+    // Stacks climb: the highest vertex of a stacked part is above its host's own top.
+    for (const stack of kit.stacks) {
+      const host = parts.get(stack.onId)!, tris = geometry.find(g => g.id === stack.onId)!.tris;
+      const top = Math.max(...tris.flatMap(t => t.p.map(q => q[2])));
+      assert.ok(top >= (stack.startZ ?? host.heightM) + stack.stages.reduce((n, s) => n + s.h, 0) - 1e-6, `${kit.name}: the stack reaches its full height`);
+    }
+  }
+  // Roof hosts are lowered to their eaves and walled; non-kit features pass through untouched.
+  const nave = KITS[0].roofs[0], feature = { type: 'Feature' as const, properties: { id: nave.id, height: 33 }, geometry: null };
+  const decorated = decorateKitRoof(feature);
+  assert.equal(decorated.properties.roofEavesHeightM, 33 - nave.riseM);
+  assert.equal(decorated.properties.kitWall, 'plain', 'a church is walled in bare brick');
+  assert.equal(wallTopHeightM(decorated.properties), 33 - nave.riseM);
+  assert.equal(decorateKitRoof(decorated), decorated, 'idempotent');
+  const other = { type: 'Feature' as const, properties: { id: 'w1', height: 20 }, geometry: null };
+  assert.equal(decorateKitRoof(other), other);
+}
 console.log('three buildings: ok');
