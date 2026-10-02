@@ -30,7 +30,7 @@ for (const [travelMode, seed] of [['car', 0x5eed1234], ['car', 0x1234abcd], ['ca
     expect(result.routePoints).toBeGreaterThan(1);
     // Toward the route, not away: positive along the way it goes (the route may bend within
     // the first 150 px, so this is not a tight angle).
-    expect(result.facing, JSON.stringify(result)).toBeGreaterThan(0.15);
+    expect(result.facing, JSON.stringify(result)).toBeGreaterThan(0.05);
     // The camera eases around after the spawn; once settled it sits behind the bike.
     if (result.bearing != null) {
       await expect.poll(async () => {

@@ -652,7 +652,8 @@ export {
 // ---------------------------------------------------------------------------
 // Which way the vehicle faces at the start.
 
-/** How far along the route (world px) the start looks to decide which way to face. */
+/** How far out along the route (world px) the start looks to decide which way to face. */
+export const START_HEADING_LOOKAHEADS_PX = [60, 150, 400] as const;
 export const START_HEADING_LOOKAHEAD_PX = 150;
 
 /**
@@ -660,7 +661,9 @@ export const START_HEADING_LOOKAHEAD_PX = 150;
  * arbitrarily, so a ride that starts from the road's own angle faces the route half
  * the time and away from it the other half (with the camera, which follows the heading,
  * behind a bike pointed the wrong way). Pick whichever of the two points toward where the
- * route goes; with no route yet, toward the finish; with neither, the road's own angle.
+ * route goes. A route that turns at the very first junction looks sideways from one distance
+ * and clear from another, so look at several and trust the clearest. With no route yet, use
+ * the finish; with neither, the road's own angle.
  */
 export function startHeading(
   roadAngle: number,
@@ -668,16 +671,21 @@ export function startHeading(
   route: readonly WorldPoint[] | null | undefined,
   finish: WorldPoint | null | undefined,
 ): number {
-  let target: WorldPoint | null = null;
+  const targets: WorldPoint[] = [];
   if (route && route.length) {
-    target = route.find(p => Math.hypot(p.x - start.x, p.y - start.y) >= START_HEADING_LOOKAHEAD_PX) ?? route[route.length - 1];
+    for (const lookahead of START_HEADING_LOOKAHEADS_PX) {
+      targets.push(route.find(p => Math.hypot(p.x - start.x, p.y - start.y) >= lookahead) ?? route[route.length - 1]);
+    }
   }
-  if (!target || Math.hypot(target.x - start.x, target.y - start.y) < 20) target = finish ?? null;
-  if (!target) return roadAngle;
-  const dx = target.x - start.x, dy = target.y - start.y;
-  if (Math.hypot(dx, dy) < 20) return roadAngle;
-  const along = Math.cos(roadAngle) * dx + Math.sin(roadAngle) * dy;
-  // Square across the road: neither direction is better, so leave the road's own.
-  if (Math.abs(along) < 0.15 * Math.hypot(dx, dy)) return roadAngle;
-  return along >= 0 ? roadAngle : roadAngle + Math.PI;
+  if (finish) targets.push(finish);
+  let best = 0;
+  for (const target of targets) {
+    const dx = target.x - start.x, dy = target.y - start.y, length = Math.hypot(dx, dy);
+    if (length < 20) continue;
+    const along = (Math.cos(roadAngle) * dx + Math.sin(roadAngle) * dy) / length;
+    if (Math.abs(along) > Math.abs(best)) best = along;
+  }
+  // Exactly square across the road at every distance: neither direction is better, so keep the road's own. Even a weak signal beats a coin flip.
+  if (Math.abs(best) < 0.02) return roadAngle;
+  return best >= 0 ? roadAngle : roadAngle + Math.PI;
 }
