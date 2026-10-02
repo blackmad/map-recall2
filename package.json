@@ -207,6 +207,7 @@
     "build:canal-city-overview": "esbuild src/canalRecall/game/cityOverview.ts --bundle --format=iife --global-name=CanalRecallOverview --outfile=public/canal-drive/js/city-overview.bundle.js --minify",
     "build:canal-route-selection": "esbuild src/canalRecall/game/routeSelection.ts --bundle --format=iife --global-name=CanalRecallRoute --outfile=public/canal-drive/js/route-selection.bundle.js --minify",
     "test:route-selection": "tsx scripts/check-route-selection.ts",
+    "test:start-heading": "tsx scripts/check-start-heading.ts",
     "build:canal-game-presentation": "esbuild src/canalRecall/game/presentationRuntime.ts --bundle --format=iife --outfile=public/canal-drive/js/game-presentation.bundle.js",
     "test:route-ribbon": "tsx scripts/check-route-ribbon.ts",
     "test:play-delight": "tsx scripts/check-play-delight.ts",
