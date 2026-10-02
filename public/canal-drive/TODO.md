@@ -83,6 +83,18 @@ look at the photo look; gables and roofs are still MapLibre's; decide whether
 it replaces the pattern layer or stays opt-in. Two layout modules now exist
 (`wallBays.ts`, `facadeLayout.ts`): keep one.
 
+**Landmark kits: more landmarks, and a phone check.** Five are done (see HISTORY).
+Next, by recognisability: Oude Kerk (spire), Munttoren, Centraal (two towers and
+central pavilions, long facade), Rijksmuseum (towers, central arch), Beurs van
+Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera. Each needs its
+OSM part ids first (look at the stacked parts near the landmark's coordinate; the
+resolved ids in `landmark-buildings.json` are sometimes the wrong piece: Westerkerk's
+is a 10 x 2 m fragment). Add a kit to `KITS`, view it with the kit viewer, then
+shoot it in game. Open: kit geometry cost (about 100-700 triangles each) is not
+measured on a phone; palace columns and tower openings are crude; church windows
+are bare brick; the highlight for a kit landmark falls back to the plain yellow
+prism.
+
 **Empty areas of the city (user report 2026-10-02, fix shipped, unconfirmed).**
 Tile streamer retries, timeouts and the wider-view re-plan cover the likely causes (see HISTORY).
 Confirm on the user's device that Jordaan/Rozengracht loads; if a tile is still
