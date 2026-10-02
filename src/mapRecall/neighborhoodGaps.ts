@@ -219,6 +219,8 @@ export interface OfflineInput {
   segments: readonly StreetSegment[];
   places: ReadonlyArray<{ name: string; type: string; center: LatLng }>;
   missing: readonly Field[];
+  /** Used in composed text; Amsterdam when omitted. */
+  cityName?: string;
 }
 
 const KIND_WORD: Record<string, string> = { neighbourhood: 'neighbourhood', neighborhood: 'neighbourhood', quarter: 'area', suburb: 'district', locality: 'area', city_block: 'block' };
@@ -228,7 +230,7 @@ export const list = (items: readonly string[]) => items.length <= 1 ? items.join
 
 /** Street-name and inside-the-boundary candidates for one area. */
 export function offlineCandidates(input: OfflineInput): Candidate[] {
-  const { hood, all, origins, segments, places, missing } = input;
+  const { hood, all, origins, segments, places, missing, cityName = 'Amsterdam' } = input;
   const out: Candidate[] = [];
   const inside = streetsInside(hood, segments);
 
@@ -270,7 +272,7 @@ export function offlineCandidates(input: OfflineInput): Candidate[] {
     const inPlaces = places.filter(p => pointInPolygons(p.center, hood.geometry));
     const named = (type: string) => inPlaces.filter(p => p.type === type).map(p => p.name).slice(0, 3);
     const parts: string[] = [];
-    parts.push(`${hood.name} is ${/^[aeiou]/.test(kind) ? 'an' : 'a'} ${kind}${where.length ? ` in ${list(where)}` : ' of Amsterdam'}${area > 0 ? `, about ${area < 0.1 ? area.toFixed(2) : area.toFixed(1)} km²` : ''}.`);
+    parts.push(`${hood.name} is ${/^[aeiou]/.test(kind) ? 'an' : 'a'} ${kind}${where.length ? ` in ${list(where)}` : ` of ${cityName}`}${area > 0 ? `, about ${area < 0.1 ? area.toFixed(2) : area.toFixed(1)} km²` : ''}.`);
     if (streets.length) parts.push(`Streets here include ${list(streets)}.`);
     // A theme that does not explain the area's name still tells what its streets have in common.
     if (themeSentence && !(theme?.nameHint?.test(flat(hood.name)))) parts.push(themeSentence);
@@ -375,9 +377,9 @@ export const commonsAttribution = (f: CommonsFile) =>
   `Wikimedia Commons: ${f.title.replace(/^File:/, '')}${f.artist ? ` (${f.artist.replace(/<[^>]+>/g, '').trim()}${f.license ? `, ${f.license}` : ''})` : f.license ? ` (${f.license})` : ''}`;
 
 /** Dutch Wikipedia / Wikidata hits that are really this place. */
-export function wikidataLooksRight(description: string | undefined, label: string, name: string): boolean {
+export function wikidataLooksRight(description: string | undefined, label: string, name: string, cityPattern = 'Amsterdam'): boolean {
   if (!description) return false;
-  if (!/amsterdam/i.test(description)) return false;
+  if (!new RegExp(cityPattern, 'i').test(description)) return false;
   if (!/(buurt|wijk|neighbou?rhood|district|quarter|eiland|island|park|polder|kwartier|dorp)/i.test(description)) return false;
   return flat(label).includes(stemOf(name)) || stemOf(name).includes(flat(label).replace(/(buurt|wijk|eiland)$/, ''));
 }
