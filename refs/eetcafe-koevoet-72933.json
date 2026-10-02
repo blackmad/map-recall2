@@ -1,0 +1,64 @@
+{
+ "name": "eetcafe-koevoet-72933",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012172933"
+ ],
+ "image": "eetcafe-koevoet-72933.jpg",
+ "width": 220,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8853289969232305,
+   52.37965100239021
+  ],
+  "endLngLat": [
+   4.885251996923684,
+   52.37963600238973
+  ],
+  "lengthM": 5.502179915768285,
+  "heightM": 7,
+  "outwardBearingDeg": 342.7389831538212
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002619_pano_0037_000032",
+   "timestamp": "2022-06-22T09:11:38.328810Z",
+   "distanceM": 5,
+   "obliquityDeg": 22
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.35,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.6,
+   6.6,
+   6.6,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#665b59"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

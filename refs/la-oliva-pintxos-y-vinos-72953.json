@@ -1,0 +1,94 @@
+{
+ "name": "la-oliva-pintxos-y-vinos-72953",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012172953"
+ ],
+ "image": "la-oliva-pintxos-y-vinos-72953.jpg",
+ "width": 523,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.882136996982875,
+   52.37677400233744
+  ],
+  "endLngLat": [
+   4.8821999969847125,
+   52.37666300233603
+  ],
+  "lengthM": 13.074351654186191,
+  "heightM": 7,
+  "outwardBearingDeg": 251.24454240216377
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002043_pano_0000_003334",
+   "timestamp": "2021-03-17T10:11:35.203200Z",
+   "distanceM": 3,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 10.52,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#60514e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

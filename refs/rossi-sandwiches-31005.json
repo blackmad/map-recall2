@@ -1,0 +1,86 @@
+{
+ "name": "rossi-sandwiches-31005",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012131005"
+ ],
+ "image": "rossi-sandwiches-31005.jpg",
+ "width": 442,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.89556399750846,
+   52.345180001932185
+  ],
+  "endLngLat": [
+   4.895721997507672,
+   52.34520200193297
+  ],
+  "lengthM": 11.041361841217734,
+  "heightM": 7,
+  "outwardBearingDeg": 167.57985588418478
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002477_pano_0002_000446",
+   "timestamp": "2022-03-24T10:40:40.357780Z",
+   "distanceM": 27,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.08,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#93927f"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

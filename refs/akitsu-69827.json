@@ -1,0 +1,61 @@
+{
+ "name": "akitsu-69827",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012169827"
+ ],
+ "image": "akitsu-69827.jpg",
+ "width": 192,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.875212997084696,
+   52.372192002247765
+  ],
+  "endLngLat": [
+   4.875278997084229,
+   52.37220700224821
+  ],
+  "lengthM": 4.794571241584461,
+  "heightM": 7,
+  "outwardBearingDeg": 160.03366539453168
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002553_pano_0000_000342",
+   "timestamp": "2022-05-02T06:43:15.808300Z",
+   "distanceM": 9,
+   "obliquityDeg": 8
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.2,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#797f7b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,62 @@
+{
+ "name": "lucky-house-73005",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012173005"
+ ],
+ "image": "lucky-house-73005.jpg",
+ "width": 199,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.885252996891937,
+   52.3814000024157
+  ],
+  "endLngLat": [
+   4.885323996891573,
+   52.38141100241611
+  ],
+  "lengthM": 4.986741166978699,
+  "heightM": 7,
+  "outwardBearingDeg": 166.18924617279436
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002037_pano_0000_001412",
+   "timestamp": "2021-03-11T08:48:44.845240Z",
+   "distanceM": 6,
+   "obliquityDeg": 17
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.17,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#aaaeaa"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

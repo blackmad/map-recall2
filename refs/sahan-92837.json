@@ -1,0 +1,90 @@
+{
+ "name": "sahan-92837",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012092837"
+ ],
+ "image": "sahan-92837.jpg",
+ "width": 480,
+ "height": 253,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8002239977163965,
+   52.35838600178517
+  ],
+  "endLngLat": [
+   4.800390997714542,
+   52.358420001786264
+  ],
+  "lengthM": 11.989035135714794,
+  "heightM": 6.32,
+  "outwardBearingDeg": 162.07049656143772
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002529_pano_0000_001288",
+   "timestamp": "2022-04-21T07:06:31.465770Z",
+   "distanceM": 11,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": -3.01,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   5.78,
+   6.15,
+   6.15,
+   6.15,
+   6.15,
+   6.15,
+   6.23,
+   6.23,
+   6.3,
+   6.3,
+   6.3,
+   6.15,
+   5.95,
+   5.73,
+   5.7,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.97,
+   4.97,
+   4.97,
+   4.97,
+   4.97,
+   4.97,
+   4.97,
+   4.97,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   4.95,
+   6.33,
+   6.33,
+   6.33,
+   6.33
+  ],
+  "wallColour": "#fde8cf"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

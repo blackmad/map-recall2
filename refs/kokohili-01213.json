@@ -1,0 +1,92 @@
+{
+ "name": "kokohili-01213",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012101213"
+ ],
+ "image": "kokohili-01213.jpg",
+ "width": 503,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.88461099790017,
+   52.324583001622784
+  ],
+  "endLngLat": [
+   4.884616997902119,
+   52.32447000162133
+  ],
+  "lengthM": 12.579553013256893,
+  "heightM": 7,
+  "outwardBearingDeg": 268.53380180860484
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002916_pano_0001_000031",
+   "timestamp": "2023-01-05T09:20:26.088070Z",
+   "distanceM": 20,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 5.53,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#363230"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

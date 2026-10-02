@@ -1,0 +1,84 @@
+{
+ "name": "la-reinita-empanadas-73572",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012173572"
+ ],
+ "image": "la-reinita-empanadas-73572.jpg",
+ "width": 415,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.883295996946707,
+   52.37862000236831
+  ],
+  "endLngLat": [
+   4.883340996948198,
+   52.378531002367154
+  ],
+  "lengthM": 10.365882861528318,
+  "heightM": 7,
+  "outwardBearingDeg": 253.20499714476676
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002043_pano_0000_001116",
+   "timestamp": "2021-03-17T09:04:19.143590Z",
+   "distanceM": 9,
+   "obliquityDeg": 8
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 8.87,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#191015"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

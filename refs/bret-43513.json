@@ -1,0 +1,91 @@
+{
+ "name": "bret-43513",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012243513"
+ ],
+ "image": "bret-43513.jpg",
+ "width": 485,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.836682996902708,
+   52.3897920023672
+  ],
+  "endLngLat": [
+   4.836860996901876,
+   52.38979300236788
+  ],
+  "lengthM": 12.1178066993723,
+  "heightM": 7,
+  "outwardBearingDeg": 179.9091298889225
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002498_pano_0009_000644",
+   "timestamp": "2022-04-08T09:56:49.318990Z",
+   "distanceM": 16,
+   "obliquityDeg": 13
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 5.58,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#422a26"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

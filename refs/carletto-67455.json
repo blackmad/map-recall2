@@ -1,0 +1,66 @@
+{
+ "name": "carletto-67455",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012167455"
+ ],
+ "image": "carletto-67455.jpg",
+ "width": 239,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.891796997334503,
+   52.355654002066125
+  ],
+  "endLngLat": [
+   4.891713997335013,
+   52.35563700206563
+  ],
+  "lengthM": 5.962521996950836,
+  "heightM": 7,
+  "outwardBearingDeg": 341.8959705072203
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002913_pano_0005_000014",
+   "timestamp": "2023-01-03T10:23:09.071770Z",
+   "distanceM": 6,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.18,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#423734"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

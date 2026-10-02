@@ -1,0 +1,94 @@
+{
+ "name": "ladybird-fried-chicken-54143",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012154143"
+ ],
+ "image": "ladybird-fried-chicken-54143.jpg",
+ "width": 519,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.893652997352167,
+   52.354386002054135
+  ],
+  "endLngLat": [
+   4.893467997353118,
+   52.35435800205316
+  ],
+  "lengthM": 12.983189180843597,
+  "heightM": 7,
+  "outwardBearingDeg": 346.5061281427807
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002115_pano_0000_002208",
+   "timestamp": "2021-04-23T08:06:26.968540Z",
+   "distanceM": 12,
+   "obliquityDeg": 10
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.45,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#77685f"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

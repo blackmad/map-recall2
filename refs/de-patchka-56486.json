@@ -1,0 +1,60 @@
+{
+ "name": "de-patchka-56486",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012156486"
+ ],
+ "image": "de-patchka-56486.jpg",
+ "width": 182,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.891087997344165,
+   52.35520800205764
+  ],
+  "endLngLat": [
+   4.89115199734379,
+   52.35522000205801
+  ],
+  "lengthM": 4.560023705664873,
+  "heightM": 7,
+  "outwardBearingDeg": 163.3663808453564
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002453_pano_0000_000423",
+   "timestamp": "2022-03-21T07:34:55.324450Z",
+   "distanceM": 10,
+   "obliquityDeg": 11
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.34,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   6.6,
+   6.1,
+   6.1,
+   6.1,
+   6.1,
+   6.1,
+   5.68,
+   5.68,
+   5.68,
+   6,
+   6,
+   6,
+   6,
+   6.35,
+   7,
+   7
+  ],
+  "wallColour": "#817a73"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

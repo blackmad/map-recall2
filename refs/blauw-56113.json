@@ -1,0 +1,86 @@
+{
+ "name": "blauw-56113",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012156113"
+ ],
+ "image": "blauw-56113.jpg",
+ "width": 437,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.855754997495595,
+   52.353414001917216
+  ],
+  "endLngLat": [
+   4.855720997493987,
+   52.35351000191842
+  ],
+  "lengthM": 10.929763450207492,
+  "heightM": 7,
+  "outwardBearingDeg": 78.18416181788785
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002815_pano_0003_000213",
+   "timestamp": "2022-10-05T07:41:41.116740Z",
+   "distanceM": 9,
+   "obliquityDeg": 9
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.8,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#5a4d47"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

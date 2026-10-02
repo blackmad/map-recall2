@@ -1,0 +1,76 @@
+{
+ "name": "cafe-de-klos-72453",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012172453"
+ ],
+ "image": "cafe-de-klos-72453.jpg",
+ "width": 339,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.885610997178185,
+   52.36537300218412
+  ],
+  "endLngLat": [
+   4.885698997178918,
+   52.36531900218363
+  ],
+  "lengthM": 8.486847201296463,
+  "heightM": 7,
+  "outwardBearingDeg": 225.4655721571316
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002937_pano_0007_000065",
+   "timestamp": "2023-01-16T10:13:42.276460Z",
+   "distanceM": 5,
+   "obliquityDeg": 17
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.14,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#35332f"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,80 @@
+{
+ "name": "bistrot-des-alpes-82275",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012182275"
+ ],
+ "image": "bistrot-des-alpes-82275.jpg",
+ "width": 376,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.90135499720242,
+   52.361944002185005
+  ],
+  "endLngLat": [
+   4.901486997201718,
+   52.36196900218577
+  ],
+  "lengthM": 9.411923826245033,
+  "heightM": 7,
+  "outwardBearingDeg": 163.19388201523657
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002364_pano_0004_000564",
+   "timestamp": "2021-12-29T12:05:43.774010Z",
+   "distanceM": 3,
+   "obliquityDeg": 0
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.43,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#423b37"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

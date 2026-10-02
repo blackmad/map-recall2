@@ -1,0 +1,69 @@
+{
+ "name": "classico-37221",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012237221"
+ ],
+ "image": "classico-37221.jpg",
+ "width": 267,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.874355997362695,
+   52.35691000202778
+  ],
+  "endLngLat": [
+   4.874266997363435,
+   52.35688500202714
+  ],
+  "lengthM": 6.670766262741878,
+  "heightM": 7,
+  "outwardBearingDeg": 335.7608331995032
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002119_pano_0000_001092",
+   "timestamp": "2021-04-28T07:40:12.889170Z",
+   "distanceM": 7,
+   "obliquityDeg": 9
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.64,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   6.85,
+   6.85,
+   6.43,
+   6.43,
+   6.43,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.13,
+   6.13,
+   6.1,
+   6.1,
+   6.1,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#797280"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

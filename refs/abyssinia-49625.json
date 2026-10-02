@@ -1,0 +1,85 @@
+{
+ "name": "abyssinia-49625",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012149625"
+ ],
+ "image": "abyssinia-49625.jpg",
+ "width": 425,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.865333997330689,
+   52.36041100204687
+  ],
+  "endLngLat": [
+   4.865276997329282,
+   52.36050000204792
+  ],
+  "lengthM": 10.63664963549469,
+  "heightM": 7,
+  "outwardBearingDeg": 69.0024214021521
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002787_pano_0000_001131",
+   "timestamp": "2022-09-02T08:38:04.282310Z",
+   "distanceM": 8,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.49,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#907e78"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

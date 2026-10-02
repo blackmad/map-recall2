@@ -1,0 +1,92 @@
+{
+ "name": "mirchi-63270",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012163270"
+ ],
+ "image": "mirchi-63270.jpg",
+ "width": 503,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.935216997130643,
+   52.36351300230794
+  ],
+  "endLngLat": [
+   4.935208997128743,
+   52.36362600230956
+  ],
+  "lengthM": 12.584783750641696,
+  "heightM": 7,
+  "outwardBearingDeg": 87.87563658786917
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002017_pano_0000_000940",
+   "timestamp": "2021-02-18T12:58:41.420640Z",
+   "distanceM": 24,
+   "obliquityDeg": 10
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 8.61,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#6f6a56"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

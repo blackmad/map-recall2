@@ -1,0 +1,63 @@
+{
+ "name": "meghna-78969",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012178969"
+ ],
+ "image": "meghna-78969.jpg",
+ "width": 210,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.897946997164207,
+   52.36452100221126
+  ],
+  "endLngLat": [
+   4.897929997163434,
+   52.36456700221187
+  ],
+  "lengthM": 5.247558996457731,
+  "heightM": 7,
+  "outwardBearingDeg": 77.63897847048975
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002966_pano_0003_000068",
+   "timestamp": "2023-02-13T08:48:42.626860Z",
+   "distanceM": 4,
+   "obliquityDeg": 19
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.6,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#3c3a33"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

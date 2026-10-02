@@ -1,0 +1,95 @@
+{
+ "name": "ristorante-pizzeria-monte-verde-65953",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012165953"
+ ],
+ "image": "ristorante-pizzeria-monte-verde-65953.jpg",
+ "width": 530,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.887219997360778,
+   52.35484800204039
+  ],
+  "endLngLat": [
+   4.8872289973628575,
+   52.35472900203876
+  ],
+  "lengthM": 13.254756303829026,
+  "heightM": 7,
+  "outwardBearingDeg": 267.9652267906989
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002456_pano_0000_000072",
+   "timestamp": "2022-03-21T08:48:39.792390Z",
+   "distanceM": 12,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 12.33,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   6.85,
+   6.2,
+   6.18,
+   6.18,
+   6.18,
+   6.2,
+   6.38,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.18,
+   6,
+   6,
+   6,
+   6,
+   6,
+   6.1,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   5.98,
+   5.98,
+   5.98,
+   6.03,
+   6.9,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4e4c4b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

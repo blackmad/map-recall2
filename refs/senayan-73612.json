@@ -1,0 +1,86 @@
+{
+ "name": "senayan-73612",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012173612"
+ ],
+ "image": "senayan-73612.jpg",
+ "width": 444,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.884128997057425,
+   52.37234200227958
+  ],
+  "endLngLat": [
+   4.883965997057771,
+   52.372346002279095
+  ],
+  "lengthM": 11.109446402843565,
+  "heightM": 7,
+  "outwardBearingDeg": 1.5120373944593553
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002951_pano_0017_000461",
+   "timestamp": "2023-01-30T11:40:30.174510Z",
+   "distanceM": 4,
+   "obliquityDeg": 5
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.75,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#737476"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

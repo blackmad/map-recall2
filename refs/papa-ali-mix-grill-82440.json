@@ -1,0 +1,62 @@
+{
+ "name": "papa-ali-mix-grill-82440",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012182440"
+ ],
+ "image": "papa-ali-mix-grill-82440.jpg",
+ "width": 196,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.902956996959226,
+   52.375628002388204
+  ],
+  "endLngLat": [
+   4.902972996958442,
+   52.375671002388884
+  ],
+  "lengthM": 4.906915155779767,
+  "heightM": 7,
+  "outwardBearingDeg": 103.2118291984217
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002927_pano_0001_000006",
+   "timestamp": "2023-01-11T13:31:31.662220Z",
+   "distanceM": 6,
+   "obliquityDeg": 12
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.53,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4a4644"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

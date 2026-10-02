@@ -1,0 +1,61 @@
+{
+ "name": "hummus-bistro-d-a-73434",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012173434"
+ ],
+ "image": "hummus-bistro-d-a-73434.jpg",
+ "width": 185,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8826389969522905,
+   52.37840100236291
+  ],
+  "endLngLat": [
+   4.8827039969519115,
+   52.3784130023633
+  ],
+  "lengthM": 4.622994931558385,
+  "heightM": 7,
+  "outwardBearingDeg": 163.61187673296206
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002938_pano_0006_000011",
+   "timestamp": "2023-01-16T10:52:00.169440Z",
+   "distanceM": 7,
+   "obliquityDeg": 11
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.37,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4e4d4f"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

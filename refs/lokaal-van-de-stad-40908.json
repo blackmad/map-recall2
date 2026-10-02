@@ -1,0 +1,90 @@
+{
+ "name": "lokaal-van-de-stad-40908",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012140908"
+ ],
+ "image": "lokaal-van-de-stad-40908.jpg",
+ "width": 481,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.846135997568087,
+   52.35180700186225
+  ],
+  "endLngLat": [
+   4.846137997570064,
+   52.35169900186078
+  ],
+  "lengthM": 12.017428749009266,
+  "heightM": 7,
+  "outwardBearingDeg": 269.77802060402115
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002478_pano_0003_001442",
+   "timestamp": "2022-03-24T12:33:21.043280Z",
+   "distanceM": 7,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 11.09,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#6d655e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

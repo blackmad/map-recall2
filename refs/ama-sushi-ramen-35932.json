@@ -1,0 +1,65 @@
+{
+ "name": "ama-sushi-ramen-35932",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012235932"
+ ],
+ "image": "ama-sushi-ramen-35932.jpg",
+ "width": 229,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.901569997321885,
+   52.35507700208828
+  ],
+  "endLngLat": [
+   4.901644997321324,
+   52.35510000208883
+  ],
+  "lengthM": 5.71462181077243,
+  "heightM": 7,
+  "outwardBearingDeg": 153.78019807925625
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002410_pano_0003_000398",
+   "timestamp": "2022-01-11T08:48:53.487720Z",
+   "distanceM": 6,
+   "obliquityDeg": 15
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.22,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#757674"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

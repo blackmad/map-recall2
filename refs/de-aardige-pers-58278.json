@@ -1,0 +1,86 @@
+{
+ "name": "de-aardige-pers-58278",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012158278"
+ ],
+ "image": "de-aardige-pers-58278.jpg",
+ "width": 441,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.874415997051095,
+   52.3741780022738
+  ],
+  "endLngLat": [
+   4.87426499705089,
+   52.37421400227381
+  ],
+  "lengthM": 11.035500706901606,
+  "heightM": 7,
+  "outwardBearingDeg": 21.688240001248914
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002025_pano_0000_001686",
+   "timestamp": "2021-02-22T13:15:52.377030Z",
+   "distanceM": 8,
+   "obliquityDeg": 1
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 7.82,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#54535b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

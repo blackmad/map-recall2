@@ -1,0 +1,101 @@
+{
+ "name": "buiten-amsterdam-48608",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012248608"
+ ],
+ "image": "buiten-amsterdam-48608.jpg",
+ "width": 590,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.821365997329404,
+   52.37148200204613
+  ],
+  "endLngLat": [
+   4.8211509973309425,
+   52.37146600204509
+  ],
+  "lengthM": 14.74994455600131,
+  "heightM": 7,
+  "outwardBearingDeg": 353.5151935328905
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002506_pano_0002_000019",
+   "timestamp": "2022-04-12T06:41:55.015980Z",
+   "distanceM": 18,
+   "obliquityDeg": 54
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 8.12,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.48,
+   6.48,
+   6.48,
+   6.53,
+   6.53,
+   6.53,
+   6.7,
+   6.75,
+   6.75,
+   6.83,
+   6.83,
+   6.83,
+   6.83,
+   6.83,
+   6.13,
+   5.98,
+   5.98,
+   6.13,
+   6.48,
+   6.48,
+   6.48,
+   6.28,
+   6.28,
+   6.28,
+   6.35,
+   6.38,
+   6.38,
+   6.43,
+   6.38,
+   6.55,
+   6.68,
+   6.7,
+   6.73,
+   6.78,
+   6.78,
+   6.78,
+   6.78,
+   6.78,
+   6.58,
+   6.5,
+   6.5,
+   6.5,
+   6.33,
+   6.28,
+   6.2,
+   6.2,
+   6.2,
+   6.15,
+   6.08,
+   5.98,
+   5.93,
+   5.88,
+   5.88,
+   5.8,
+   5.73,
+   5.68,
+   5.55,
+   5.5,
+   5.5,
+   5.5
+  ],
+  "wallColour": "#5d7573"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

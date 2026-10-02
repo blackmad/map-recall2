@@ -1,0 +1,83 @@
+{
+ "name": "hakata-senpachi-00201",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012100201"
+ ],
+ "image": "hakata-senpachi-00201.jpg",
+ "width": 405,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.889221997538134,
+   52.34446300190286
+  ],
+  "endLngLat": [
+   4.889369997537854,
+   52.34445500190321
+  ],
+  "lengthM": 10.124547221438428,
+  "heightM": 7,
+  "outwardBearingDeg": 185.57672779694906
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002477_pano_0002_001139",
+   "timestamp": "2022-03-24T10:54:33.727770Z",
+   "distanceM": 12,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 6.74,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6,
+   6,
+   6,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.9,
+   6.9,
+   6.9,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#be9e83"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

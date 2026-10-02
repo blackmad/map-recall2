@@ -1,0 +1,75 @@
+{
+ "name": "kerkzicht-29775",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012129775"
+ ],
+ "image": "kerkzicht-29775.jpg",
+ "width": 329,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.799741998044902,
+   52.341403001557346
+  ],
+  "endLngLat": [
+   4.7996219980456685,
+   52.341410001557
+  ],
+  "lengthM": 8.214895484324899,
+  "heightM": 7,
+  "outwardBearingDeg": 5.904816628738388
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002030_pano_0007_000140",
+   "timestamp": "2021-02-26T09:40:51.911750Z",
+   "distanceM": 6,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.97,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.15,
+   6.15,
+   6.15,
+   6.13,
+   6.13,
+   5.85,
+   5.75,
+   5.4,
+   5.4,
+   5.4,
+   5.5,
+   6.6,
+   6.68,
+   6.8,
+   6.9,
+   6.98,
+   7,
+   7,
+   7,
+   6.98,
+   6.88,
+   6.8,
+   6.7,
+   6.63,
+   5.5,
+   5.48,
+   5.38,
+   5.38,
+   5.33,
+   5.33,
+   5.3,
+   5.3,
+   5.3,
+   5.3
+  ],
+  "wallColour": "#5b5154"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

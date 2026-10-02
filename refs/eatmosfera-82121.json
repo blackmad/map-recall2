@@ -1,0 +1,79 @@
+{
+ "name": "eatmosfera-82121",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012082121"
+ ],
+ "image": "eatmosfera-82121.jpg",
+ "width": 373,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.935893997135019,
+   52.363227002305706
+  ],
+  "endLngLat": [
+   4.936030997134896,
+   52.36322900230612
+  ],
+  "lengthM": 9.33444920146816,
+  "heightM": 7,
+  "outwardBearingDeg": 178.99066655140837
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002909_pano_0001_000036",
+   "timestamp": "2023-01-02T10:40:32.193460Z",
+   "distanceM": 9,
+   "obliquityDeg": 15
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.6,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#705f54"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,94 @@
+{
+ "name": "restaurant-lastage-82260",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012182260"
+ ],
+ "image": "restaurant-lastage-82260.jpg",
+ "width": 522,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.902361996963389,
+   52.3754490023837
+  ],
+  "endLngLat": [
+   4.9025179969643204,
+   52.375381002383186
+  ],
+  "lengthM": 13.04205179088731,
+  "heightM": 7,
+  "outwardBearingDeg": 215.84283564350062
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-003000_pano_0004_000058",
+   "timestamp": "2023-03-20T07:36:01.823020Z",
+   "distanceM": 16,
+   "obliquityDeg": 33
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.59,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#403834"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

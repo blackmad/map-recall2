@@ -1,0 +1,90 @@
+{
+ "name": "cavataria-14248",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012114248"
+ ],
+ "image": "cavataria-14248.jpg",
+ "width": 480,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.863169997506411,
+   52.35116000191112
+  ],
+  "endLngLat": [
+   4.863231997507995,
+   52.35105900190994
+  ],
+  "lengthM": 12.005530362348455,
+  "heightM": 7,
+  "outwardBearingDeg": 246.89122169717723
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002796_pano_0006_000087",
+   "timestamp": "2022-09-05T09:51:16.068800Z",
+   "distanceM": 10,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.4,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#55504b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

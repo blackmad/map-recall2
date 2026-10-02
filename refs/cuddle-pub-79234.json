@@ -1,0 +1,36 @@
+{
+ "name": "cuddle-pub-79234",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012179234"
+ ],
+ "image": "cuddle-pub-79234.jpg",
+ "width": 0,
+ "height": 0,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.893910996981064,
+   52.37535300235528
+  ],
+  "endLngLat": [
+   4.894005996980849,
+   52.375354002355614
+  ],
+  "lengthM": 6.470148666004504,
+  "heightM": null,
+  "outwardBearingDeg": 179.40460864637953
+ },
+ "panoramas": [],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.34,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   0,
+   0
+  ],
+  "wallColour": "#9a8a78"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

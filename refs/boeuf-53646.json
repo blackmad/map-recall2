@@ -1,0 +1,90 @@
+{
+ "name": "boeuf-53646",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012153646"
+ ],
+ "image": "boeuf-53646.jpg",
+ "width": 483,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.888543997334571,
+   52.356128002062526
+  ],
+  "endLngLat": [
+   4.888561997332614,
+   52.35623600206411
+  ],
+  "lengthM": 12.07905874741302,
+  "heightM": 7,
+  "outwardBearingDeg": 96.2209185867506
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002225_pano_0000_000426",
+   "timestamp": "2021-07-09T07:44:32.451610Z",
+   "distanceM": 9,
+   "obliquityDeg": 16
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 7.33,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.93,
+   6.95,
+   6.95,
+   6.95,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.95,
+   6.95,
+   6.95,
+   7,
+   7,
+   7,
+   6.95,
+   6.95,
+   6.95,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.85,
+   6.85,
+   6.85,
+   6.85
+  ],
+  "wallColour": "#55483b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

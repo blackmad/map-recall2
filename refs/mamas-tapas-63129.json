@@ -1,0 +1,90 @@
+{
+ "name": "mamas-tapas-63129",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012163129"
+ ],
+ "image": "mamas-tapas-63129.jpg",
+ "width": 481,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.87330599704441,
+   52.37472900227803
+  ],
+  "endLngLat": [
+   4.873467997043144,
+   52.3747720022792
+  ],
+  "lengthM": 12.024643429436974,
+  "heightM": 7,
+  "outwardBearingDeg": 156.9601893567501
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002025_pano_0000_001717",
+   "timestamp": "2021-02-22T13:16:29.191770Z",
+   "distanceM": 23,
+   "obliquityDeg": 25
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.26,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.75,
+   6.75,
+   6.75,
+   6.83,
+   6.83,
+   6.83,
+   6.58,
+   6,
+   6,
+   6,
+   6.33,
+   7,
+   7,
+   7,
+   7,
+   6.95,
+   6.95,
+   6.95,
+   6.98,
+   6.98,
+   6.98,
+   6.1,
+   6.1,
+   6.1,
+   6.13,
+   6.15,
+   6.18,
+   6.23,
+   6.23,
+   6.8,
+   6.8,
+   6.8,
+   6.4,
+   6.4,
+   6.4,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#837471"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

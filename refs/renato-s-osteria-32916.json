@@ -1,0 +1,94 @@
+{
+ "name": "renato-s-osteria-32916",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012132916"
+ ],
+ "image": "renato-s-osteria-32916.jpg",
+ "width": 515,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.895215997399255,
+   52.35148100201837
+  ],
+  "endLngLat": [
+   4.895399997398349,
+   52.3515070020193
+  ],
+  "lengthM": 12.865993687896012,
+  "heightM": 7,
+  "outwardBearingDeg": 167.3948832774688
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002469_pano_0000_003020",
+   "timestamp": "2022-03-23T08:29:36.252000Z",
+   "distanceM": 9,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": -0.29,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   6.78,
+   6.48,
+   6.48,
+   5.83,
+   5.83,
+   5.43,
+   5.43,
+   6.58,
+   6.58,
+   5.43,
+   5.1,
+   5.1,
+   5.1,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.95,
+   6.78,
+   6.25,
+   6.25,
+   6.25,
+   6.25,
+   6.25,
+   6.15,
+   5.98,
+   5.78,
+   5.85,
+   5.78,
+   5.43,
+   5.28,
+   5.43,
+   5.43,
+   5.75,
+   5.75,
+   5.75,
+   5.78,
+   6.45,
+   6.45,
+   6.45,
+   6.25,
+   6.05,
+   5.78,
+   5.28,
+   5.28,
+   4.88
+  ],
+  "wallColour": "#efdbb6"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

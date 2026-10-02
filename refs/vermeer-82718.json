@@ -1,0 +1,60 @@
+{
+ "name": "vermeer-82718",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012182718"
+ ],
+ "image": "vermeer-82718.jpg",
+ "width": 184,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.9004789969476805,
+   52.37652500239353
+  ],
+  "endLngLat": [
+   4.900417996948107,
+   52.37650700239306
+  ],
+  "lengthM": 4.61141319579058,
+  "heightM": 7,
+  "outwardBearingDeg": 334.6434346168305
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002031_pano_0000_000321",
+   "timestamp": "2021-03-08T09:12:35.672430Z",
+   "distanceM": 8,
+   "obliquityDeg": 5
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.29,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#5a5048"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

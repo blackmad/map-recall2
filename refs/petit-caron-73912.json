@@ -1,0 +1,67 @@
+{
+ "name": "petit-caron-73912",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012073912"
+ ],
+ "image": "petit-caron-73912.jpg",
+ "width": 250,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.888809997305188,
+   52.35775000208619
+  ],
+  "endLngLat": [
+   4.888818997304173,
+   52.357806002087
+  ],
+  "lengthM": 6.260950778769265,
+  "heightM": 7,
+  "outwardBearingDeg": 96.013772383983
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002225_pano_0000_000390",
+   "timestamp": "2021-07-09T07:43:51.042010Z",
+   "distanceM": 6,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.71,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.78,
+   6.78,
+   6.78,
+   6.78,
+   6.73,
+   6.73,
+   6.73,
+   5.93,
+   6.75,
+   6.75,
+   6.4,
+   6.3,
+   6.4,
+   6.4,
+   6.75,
+   6.78,
+   6.78,
+   6.78,
+   6.75,
+   4.95,
+   4.65,
+   4.65,
+   4.65,
+   6.73,
+   6.75,
+   6.75
+  ],
+  "wallColour": "#fdfefc"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,96 @@
+{
+ "name": "couscous-bar-61747",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012161747"
+ ],
+ "image": "couscous-bar-61747.jpg",
+ "width": 542,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.871282997192807,
+   52.36689100215853
+  ],
+  "endLngLat": [
+   4.871360997194582,
+   52.366779002157195
+  ],
+  "lengthM": 13.546900481294616,
+  "heightM": 7,
+  "outwardBearingDeg": 247.3187882363108
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002553_pano_0000_002961",
+   "timestamp": "2022-05-02T07:29:35.141900Z",
+   "distanceM": 11,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.83,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#504435"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

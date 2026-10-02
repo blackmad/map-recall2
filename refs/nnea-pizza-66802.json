@@ -1,0 +1,66 @@
+{
+ "name": "nnea-pizza-66802",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012166802"
+ ],
+ "image": "nnea-pizza-66802.jpg",
+ "width": 239,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.870443997149773,
+   52.36941500219177
+  ],
+  "endLngLat": [
+   4.8704169971489355,
+   52.36946600219242
+  ],
+  "lengthM": 5.965056340114838,
+  "heightM": 7,
+  "outwardBearingDeg": 72.45343894316204
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002373_pano_0011_000018",
+   "timestamp": "2021-12-31T10:16:12.845220Z",
+   "distanceM": 10,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.95,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#382f29"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

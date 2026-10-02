@@ -1,0 +1,66 @@
+{
+ "name": "maenaam-thai-75826",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012175826"
+ ],
+ "image": "maenaam-thai-75826.jpg",
+ "width": 241,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.891102996989151,
+   52.37523500234447
+  ],
+  "endLngLat": [
+   4.8911589969882785,
+   52.37527700234526
+  ],
+  "lengthM": 6.031637509627008,
+  "heightM": 7,
+  "outwardBearingDeg": 129.60757813907924
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002357_pano_0008_000052",
+   "timestamp": "2021-12-27T12:27:43.273040Z",
+   "distanceM": 10,
+   "obliquityDeg": 11
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.77,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#2f2829"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

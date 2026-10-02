@@ -1,0 +1,80 @@
+{
+ "name": "eetcafe-t-pakhuis-75883",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012175883"
+ ],
+ "image": "eetcafe-t-pakhuis-75883.jpg",
+ "width": 377,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.890692997115851,
+   52.36816800224063
+  ],
+  "endLngLat": [
+   4.890652997114505,
+   52.36824900224167
+  ],
+  "lengthM": 9.415264036833378,
+  "heightM": 7,
+  "outwardBearingDeg": 73.37533368711024
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002359_pano_0002_000147",
+   "timestamp": "2021-12-29T09:09:47.499810Z",
+   "distanceM": 3,
+   "obliquityDeg": 20
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 5.73,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.78,
+   6.78,
+   6.78,
+   6.78,
+   7,
+   7,
+   7,
+   6.8,
+   6.78,
+   6.78,
+   6.78,
+   6.95,
+   7,
+   7,
+   7,
+   6.93,
+   6.93,
+   6.93,
+   6.93,
+   6.8,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.33,
+   6.33,
+   6.33,
+   6.33,
+   6.65,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#494a47"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,64 @@
+{
+ "name": "samba-kitchen-59252",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012159252"
+ ],
+ "image": "samba-kitchen-59252.jpg",
+ "width": 220,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.889561997392007,
+   52.352720002018046
+  ],
+  "endLngLat": [
+   4.88964099739162,
+   52.35273000201843
+  ],
+  "lengthM": 5.496190921386706,
+  "heightM": 7,
+  "outwardBearingDeg": 168.7136310739852
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002223_pano_0000_000321",
+   "timestamp": "2021-07-08T10:50:33.304510Z",
+   "distanceM": 10,
+   "obliquityDeg": 5
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.56,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#938775"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

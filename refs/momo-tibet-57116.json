@@ -1,0 +1,62 @@
+{
+ "name": "momo-tibet-57116",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012157116"
+ ],
+ "image": "momo-tibet-57116.jpg",
+ "width": 203,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.902615997319264,
+   52.35510100209181
+  ],
+  "endLngLat": [
+   4.902549997319767,
+   52.35508000209131
+  ],
+  "lengthM": 5.0672990279463015,
+  "heightM": 7,
+  "outwardBearingDeg": 332.9244892896121
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002912_pano_0005_000262",
+   "timestamp": "2023-01-03T09:22:55.159960Z",
+   "distanceM": 11,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.71,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#3a302e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

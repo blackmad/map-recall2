@@ -1,0 +1,66 @@
+{
+ "name": "mont-blanc-66374",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012166374"
+ ],
+ "image": "mont-blanc-66374.jpg",
+ "width": 238,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.898457997307665,
+   52.356280002095666
+  ],
+  "endLngLat": [
+   4.898378997308245,
+   52.3562570020951
+  ],
+  "lengthM": 5.9594024011740085,
+  "heightM": 7,
+  "outwardBearingDeg": 334.9554709754211
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002945_pano_0003_000025",
+   "timestamp": "2023-01-23T09:33:09.089020Z",
+   "distanceM": 5,
+   "obliquityDeg": 15
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.09,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#2d2926"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

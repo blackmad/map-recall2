@@ -1,0 +1,97 @@
+{
+ "name": "restaurant-ja-36832",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012236832"
+ ],
+ "image": "restaurant-ja-36832.jpg",
+ "width": 548,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.898196997317855,
+   52.355731002087126
+  ],
+  "endLngLat": [
+   4.898283997319601,
+   52.355620002085836
+  ],
+  "lengthM": 13.699025956852735,
+  "heightM": 7,
+  "outwardBearingDeg": 244.7499154336553
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002469_pano_0000_000976",
+   "timestamp": "2022-03-23T07:46:45.101780Z",
+   "distanceM": 13,
+   "obliquityDeg": 9
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 10.67,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#503e39"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

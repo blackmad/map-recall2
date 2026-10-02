@@ -1,0 +1,77 @@
+{
+ "name": "fuku-ramen-63449",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012063449"
+ ],
+ "image": "fuku-ramen-63449.jpg",
+ "width": 350,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.9257609972804595,
+   52.35517200216126
+  ],
+  "endLngLat": [
+   4.925855997279449,
+   52.35522500216228
+  ],
+  "lengthM": 8.755778955802752,
+  "heightM": 7,
+  "outwardBearingDeg": 138.02662585781525
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002591_pano_0000_005504",
+   "timestamp": "2022-06-13T08:41:48.063810Z",
+   "distanceM": 6,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.38,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.93,
+   6.85,
+   6.78,
+   5.78,
+   5.78,
+   5.78,
+   5.78
+  ],
+  "wallColour": "#9a857a"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

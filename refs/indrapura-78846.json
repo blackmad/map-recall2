@@ -1,0 +1,77 @@
+{
+ "name": "indrapura-78846",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012178846"
+ ],
+ "image": "indrapura-78846.jpg",
+ "width": 346,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.897083997143897,
+   52.36577800222659
+  ],
+  "endLngLat": [
+   4.896959997144458,
+   52.36576100222595
+  ],
+  "lengthM": 8.655041107328394,
+  "heightM": 7,
+  "outwardBearingDeg": 347.7639426871165
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002310_pano_0001_001015",
+   "timestamp": "2021-09-15T09:13:25.677450Z",
+   "distanceM": 9,
+   "obliquityDeg": 13
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.27,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4f483c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

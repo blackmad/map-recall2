@@ -1,0 +1,70 @@
+{
+ "name": "rasoi-74500",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012074500"
+ ],
+ "image": "rasoi-74500.jpg",
+ "width": 277,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.894999997470738,
+   52.34742400196139
+  ],
+  "endLngLat": [
+   4.895007997469635,
+   52.34748600196228
+  ],
+  "lengthM": 6.91993904865991,
+  "heightM": 7,
+  "outwardBearingDeg": 94.90720592175728
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002225_pano_0001_000828",
+   "timestamp": "2021-07-09T08:09:35.868540Z",
+   "distanceM": 11,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.35,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#c7c5b7"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

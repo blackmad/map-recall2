@@ -1,0 +1,62 @@
+{
+ "name": "sichuan-food-68478",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012168478"
+ ],
+ "image": "sichuan-food-68478.jpg",
+ "width": 204,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.890516997146007,
+   52.366493002215975
+  ],
+  "endLngLat": [
+   4.890589997146011,
+   52.36648300221607
+  ],
+  "lengthM": 5.095032720692862,
+  "heightM": 7,
+  "outwardBearingDeg": 193.00655192933758
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002542_pano_0002_000054",
+   "timestamp": "2022-04-25T09:39:07.403590Z",
+   "distanceM": 5,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.69,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#524940"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

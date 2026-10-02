@@ -1,0 +1,71 @@
+{
+ "name": "pizzeria-steakhouse-ijburg-80574",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012080574"
+ ],
+ "image": "pizzeria-steakhouse-ijburg-80574.jpg",
+ "width": 294,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   5.007226997341759,
+   52.35215600232239
+  ],
+  "endLngLat": [
+   5.007322997341429,
+   52.35218600232303
+  ],
+  "lengthM": 7.343193027308728,
+  "heightM": 7,
+  "outwardBearingDeg": 153.26345390940128
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002580_pano_0008_002105",
+   "timestamp": "2022-05-13T12:07:29.203410Z",
+   "distanceM": 15,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.19,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#3e3c31"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

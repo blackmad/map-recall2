@@ -1,0 +1,82 @@
+{
+ "name": "aneka-rasa-71504",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012171504"
+ ],
+ "image": "aneka-rasa-71504.jpg",
+ "width": 400,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8988459969638285,
+   52.37577900237737
+  ],
+  "endLngLat": [
+   4.89874999696521,
+   52.37571100237607
+  ],
+  "lengthM": 9.999037891730683,
+  "heightM": 7,
+  "outwardBearingDeg": 311.97262130900623
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002629_pano_0001_000066",
+   "timestamp": "2022-06-27T06:28:44.578260Z",
+   "distanceM": 4,
+   "obliquityDeg": 10
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.36,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4a403e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

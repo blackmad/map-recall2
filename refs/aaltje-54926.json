@@ -1,0 +1,74 @@
+{
+ "name": "aaltje-54926",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0457100000054926"
+ ],
+ "image": "aaltje-54926.jpg",
+ "width": 321,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   5.0384469980189435,
+   52.30882000177854
+  ],
+  "endLngLat": [
+   5.0385609980193315,
+   52.308802001778496
+  ],
+  "lengthM": 8.02846203651589,
+  "heightM": 7,
+  "outwardBearingDeg": 194.72085235970877
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002431_pano_0006_000002",
+   "timestamp": "2022-01-20T09:02:12.249320Z",
+   "distanceM": 4,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.97,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#7e7f78"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

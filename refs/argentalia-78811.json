@@ -1,0 +1,90 @@
+{
+ "name": "argentalia-78811",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012178811"
+ ],
+ "image": "argentalia-78811.jpg",
+ "width": 475,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.898598996967402,
+   52.375603002374
+  ],
+  "endLngLat": [
+   4.898481996969019,
+   52.375524002372465
+  ],
+  "lengthM": 11.863452636680588,
+  "heightM": 7,
+  "outwardBearingDeg": 312.5709622402167
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002629_pano_0001_000071",
+   "timestamp": "2022-06-27T06:28:48.428210Z",
+   "distanceM": 4,
+   "obliquityDeg": 16
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 0.5,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#453f3c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

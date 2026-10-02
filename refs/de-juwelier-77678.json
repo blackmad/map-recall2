@@ -1,0 +1,64 @@
+{
+ "name": "de-juwelier-77678",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012177678"
+ ],
+ "image": "de-juwelier-77678.jpg",
+ "width": 215,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.898216997168089,
+   52.36426800220848
+  ],
+  "endLngLat": [
+   4.898234997168879,
+   52.36422100220786
+  ],
+  "lengthM": 5.371276567868492,
+  "heightM": 7,
+  "outwardBearingDeg": 257.1918947322457
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002537_pano_0000_000495",
+   "timestamp": "2022-04-22T08:08:22.326990Z",
+   "distanceM": 5,
+   "obliquityDeg": 15
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.2,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.7,
+   6.45,
+   6.45,
+   6.45
+  ],
+  "wallColour": "#53402b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

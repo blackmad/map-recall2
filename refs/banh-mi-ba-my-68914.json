@@ -1,0 +1,64 @@
+{
+ "name": "banh-mi-ba-my-68914",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012168914"
+ ],
+ "image": "banh-mi-ba-my-68914.jpg",
+ "width": 218,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.875498997087793,
+   52.37197400224559
+  ],
+  "endLngLat": [
+   4.875423997088323,
+   52.37195700224509
+  ],
+  "lengthM": 5.446643162523909,
+  "heightM": 7,
+  "outwardBearingDeg": 340.0834690476184
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002369_pano_0004_000102",
+   "timestamp": "2021-12-30T12:37:53.214260Z",
+   "distanceM": 8,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.31,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#43322e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

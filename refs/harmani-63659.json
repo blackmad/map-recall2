@@ -1,0 +1,82 @@
+{
+ "name": "harmani-63659",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012163659"
+ ],
+ "image": "harmani-63659.jpg",
+ "width": 403,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.888576997354928,
+   52.354971002046405
+  ],
+  "endLngLat": [
+   4.888560997356561,
+   52.3548810020451
+  ],
+  "lengthM": 10.07302733263462,
+  "heightM": 7,
+  "outwardBearingDeg": 276.6065840936997
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002403_pano_0000_000167",
+   "timestamp": "2022-01-10T07:59:34.955780Z",
+   "distanceM": 7,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 7.17,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#2e2828"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

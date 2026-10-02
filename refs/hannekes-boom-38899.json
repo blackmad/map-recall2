@@ -1,0 +1,86 @@
+{
+ "name": "hannekes-boom-38899",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012238899"
+ ],
+ "image": "hannekes-boom-38899.jpg",
+ "width": 442,
+ "height": 213,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.911692996935341,
+   52.37624300242454
+  ],
+  "endLngLat": [
+   4.9116659969336665,
+   52.376341002425896
+  ],
+  "lengthM": 11.05795405470132,
+  "heightM": 5.33,
+  "outwardBearingDeg": 80.80510553964103
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002307_pano_0001_000509",
+   "timestamp": "2021-09-14T07:38:35.119970Z",
+   "distanceM": 7,
+   "obliquityDeg": 8
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 6.4,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33,
+   5.33
+  ],
+  "wallColour": "#9a8a78"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

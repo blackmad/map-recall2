@@ -1,0 +1,99 @@
+{
+ "name": "de-pizzakamer-30670",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012130670"
+ ],
+ "image": "de-pizzakamer-30670.jpg",
+ "width": 571,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.894721997382937,
+   52.35248200203081
+  ],
+  "endLngLat": [
+   4.894516997383915,
+   52.3524550020298
+  ],
+  "lengthM": 14.286468213955327,
+  "heightM": 7,
+  "outwardBearingDeg": 348.25060873401696
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002115_pano_0000_004798",
+   "timestamp": "2021-04-23T09:13:20.146270Z",
+   "distanceM": 5,
+   "obliquityDeg": 9
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 6.2,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.98,
+   6.98,
+   6.98,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#695d50"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

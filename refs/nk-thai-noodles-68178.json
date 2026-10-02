@@ -1,0 +1,71 @@
+{
+ "name": "nk-thai-noodles-68178",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012168178"
+ ],
+ "image": "nk-thai-noodles-68178.jpg",
+ "width": 293,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.893193997261664,
+   52.359593002126076
+  ],
+  "endLngLat": [
+   4.893300997261531,
+   52.35958600212632
+  ],
+  "lengthM": 7.3304376657219,
+  "heightM": 7,
+  "outwardBearingDeg": 186.4896578178505
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002306_pano_0002_000078",
+   "timestamp": "2021-09-09T11:34:05.550770Z",
+   "distanceM": 7,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.7,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   5.3,
+   5.3,
+   5.3,
+   5.8,
+   6.65,
+   6.65,
+   6.65,
+   6.65,
+   6.65,
+   6.65,
+   7,
+   7,
+   7,
+   7,
+   7,
+   5.33,
+   5.33,
+   5.33,
+   6.28,
+   6.28,
+   6.3,
+   6.3,
+   6.48,
+   6.5,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#c89981"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

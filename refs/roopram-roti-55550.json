@@ -1,0 +1,73 @@
+{
+ "name": "roopram-roti-55550",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012155550"
+ ],
+ "image": "roopram-roti-55550.jpg",
+ "width": 310,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.924859997165497,
+   52.36199100225625
+  ],
+  "endLngLat": [
+   4.924751997165989,
+   52.36196900225561
+  ],
+  "lengthM": 7.753217233776615,
+  "heightM": 7,
+  "outwardBearingDeg": 341.961314787194
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002138_pano_0000_003671",
+   "timestamp": "2021-05-12T11:37:25.269460Z",
+   "distanceM": 12,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.47,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#544a42"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

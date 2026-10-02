@@ -1,0 +1,62 @@
+{
+ "name": "sinne-35937",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012235937"
+ ],
+ "image": "sinne-35937.jpg",
+ "width": 201,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.894088997374541,
+   52.35305000203679
+  ],
+  "endLngLat": [
+   4.894016997374894,
+   52.35304000203642
+  ],
+  "lengthM": 5.030036711292612,
+  "heightM": 7,
+  "outwardBearingDeg": 347.61020909423183
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002223_pano_0000_000839",
+   "timestamp": "2021-07-08T11:03:11.021480Z",
+   "distanceM": 7,
+   "obliquityDeg": 1
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.01,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.85,
+   6.85,
+   6.85,
+   7,
+   7,
+   7,
+   6.75,
+   6.75,
+   6.75,
+   6.75
+  ],
+  "wallColour": "#4c4e49"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

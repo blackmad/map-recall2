@@ -1,0 +1,43 @@
+{
+ "name": "john-dory-68453",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012168453"
+ ],
+ "image": "john-dory-68453.jpg",
+ "width": 0,
+ "height": 0,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.893809997215984,
+   52.362101002163655
+  ],
+  "endLngLat": [
+   4.8938979972159915,
+   52.362089002163756
+  ],
+  "lengthM": 6.1412073748951475,
+  "heightM": 7,
+  "outwardBearingDeg": 192.94720185386967
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-003045_pano_0008_000190",
+   "timestamp": "2023-04-17T06:47:21.206280Z",
+   "distanceM": 3,
+   "obliquityDeg": 28
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.93,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   0,
+   0
+  ],
+  "wallColour": "#9a8a78"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

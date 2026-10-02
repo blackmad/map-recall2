@@ -1,0 +1,66 @@
+{
+ "name": "flow-62418",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012162418"
+ ],
+ "image": "flow-62418.jpg",
+ "width": 241,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.889825997307093,
+   52.35749300208578
+  ],
+  "endLngLat": [
+   4.889913997306955,
+   52.35748800208599
+  ],
+  "lengthM": 6.020687439025991,
+  "heightM": 7,
+  "outwardBearingDeg": 185.6949823838498
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002455_pano_0001_000818",
+   "timestamp": "2022-03-21T08:32:31.430530Z",
+   "distanceM": 10,
+   "obliquityDeg": 12
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.74,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.9,
+   6.9,
+   6.9,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#ddc298"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,94 @@
+{
+ "name": "pancakes-amsterdam-aan-t-ij-77894",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012177894"
+ ],
+ "image": "pancakes-amsterdam-aan-t-ij-77894.jpg",
+ "width": 522,
+ "height": 219,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.900036996876238,
+   52.38060600245231
+  ],
+  "endLngLat": [
+   4.899933996878167,
+   52.380507002450514
+  ],
+  "lengthM": 13.058381214913721,
+  "heightM": 5.470000000000001,
+  "outwardBearingDeg": 301.1909832520461
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002856_pano_0006_000113",
+   "timestamp": "2022-12-14T11:55:34.356970Z",
+   "distanceM": 39,
+   "obliquityDeg": 43
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.22,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   2.4,
+   3.68,
+   3.55,
+   3.68,
+   3.68,
+   3.55,
+   3.55,
+   3.7,
+   3.7,
+   3.73,
+   4.53,
+   4.7,
+   4.7,
+   4.7,
+   4.53,
+   3.65,
+   3.65,
+   3.6,
+   3.5,
+   3.5,
+   3.48,
+   3.48,
+   3.48,
+   3.48,
+   3.48,
+   3.68,
+   3.75,
+   3.75,
+   3.68,
+   3.68,
+   3.68,
+   3.68,
+   3.93,
+   3.93,
+   3.93,
+   3.7,
+   3.63,
+   3.63,
+   3.7,
+   3.63,
+   3.63,
+   3.6,
+   3.6,
+   3.6,
+   3.48,
+   3.48,
+   3.45,
+   3.45,
+   3.45,
+   3.48,
+   3.48,
+   3.58,
+   3.48
+  ],
+  "wallColour": "#9a8a78"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

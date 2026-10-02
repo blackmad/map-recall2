@@ -1,0 +1,94 @@
+{
+ "name": "miri-mary-83742",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012083742"
+ ],
+ "image": "miri-mary-83742.jpg",
+ "width": 522,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.89516299739837,
+   52.35153900201902
+  ],
+  "endLngLat": [
+   4.895345997397308,
+   52.351574002020065
+  ],
+  "lengthM": 13.062399107049206,
+  "heightM": 7,
+  "outwardBearingDeg": 167.0165905349919
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002410_pano_0010_000125",
+   "timestamp": "2022-01-11T09:26:40.285370Z",
+   "distanceM": 16,
+   "obliquityDeg": 5
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.94,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4a4440"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

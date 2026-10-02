@@ -1,0 +1,81 @@
+{
+ "name": "cedars-05128",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012105128"
+ ],
+ "image": "cedars-05128.jpg",
+ "width": 390,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.844334997573269,
+   52.35199300185856
+  ],
+  "endLngLat": [
+   4.844203997574546,
+   52.351958001857625
+  ],
+  "lengthM": 9.73797135168937,
+  "heightM": 7,
+  "outwardBearingDeg": 337.6501101222064
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-001960_pano_0000_000263",
+   "timestamp": "2021-01-15T12:50:12.547220Z",
+   "distanceM": 15,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": -3.57,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#575b5b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

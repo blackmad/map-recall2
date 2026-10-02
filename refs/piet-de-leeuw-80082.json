@@ -1,0 +1,67 @@
+{
+ "name": "piet-de-leeuw-80082",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012180082"
+ ],
+ "image": "piet-de-leeuw-80082.jpg",
+ "width": 248,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.892086997230684,
+   52.36149900214964
+  ],
+  "endLngLat": [
+   4.892175997230682,
+   52.361487002149744
+  ],
+  "lengthM": 6.207793382027475,
+  "heightM": 7,
+  "outwardBearingDeg": 192.8117080524373
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002545_pano_0000_000916",
+   "timestamp": "2022-04-26T08:26:30.062940Z",
+   "distanceM": 6,
+   "obliquityDeg": 16
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.36,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#5c6468"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

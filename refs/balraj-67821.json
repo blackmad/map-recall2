@@ -1,0 +1,73 @@
+{
+ "name": "balraj-67821",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012167821"
+ ],
+ "image": "balraj-67821.jpg",
+ "width": 308,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.888447996873229,
+   52.38203900243575
+  ],
+  "endLngLat": [
+   4.888530996873891,
+   52.381992002435325
+  ],
+  "lengthM": 7.699577289288203,
+  "heightM": 7,
+  "outwardBearingDeg": 223.17488707692473
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002620_pano_0005_000040",
+   "timestamp": "2022-06-22T10:13:52.914150Z",
+   "distanceM": 6,
+   "obliquityDeg": 14
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 6.78,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.88,
+   6.88,
+   6.88,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#605d58"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

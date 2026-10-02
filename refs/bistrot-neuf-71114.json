@@ -1,0 +1,87 @@
+{
+ "name": "bistrot-neuf-71114",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012171114"
+ ],
+ "image": "bistrot-neuf-71114.jpg",
+ "width": 453,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.89387799691005,
+   52.379346002413804
+  ],
+  "endLngLat": [
+   4.8937529969091065,
+   52.37941300241439
+  ],
+  "lengthM": 11.314449264474378,
+  "heightM": 7,
+  "outwardBearingDeg": 43.08064934828292
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002310_pano_0000_001653",
+   "timestamp": "2021-09-15T08:12:12.558550Z",
+   "distanceM": 6,
+   "obliquityDeg": 0
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 7.82,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#58504c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

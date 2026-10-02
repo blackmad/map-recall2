@@ -1,0 +1,58 @@
+{
+ "name": "a-volo-72841",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012172841"
+ ],
+ "image": "a-volo-72841.jpg",
+ "width": 164,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.884504996842265,
+   52.384252002455376
+  ],
+  "endLngLat": [
+   4.884548996842614,
+   52.384227002455155
+  ],
+  "lengthM": 4.087974063085913,
+  "heightM": 7,
+  "outwardBearingDeg": 223.2760022846819
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002310_pano_0000_002138",
+   "timestamp": "2021-09-15T08:27:36.048440Z",
+   "distanceM": 4,
+   "obliquityDeg": 29
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.18,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#7a747b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

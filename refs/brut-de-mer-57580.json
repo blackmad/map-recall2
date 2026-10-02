@@ -1,0 +1,64 @@
+{
+ "name": "brut-de-mer-57580",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012157580"
+ ],
+ "image": "brut-de-mer-57580.jpg",
+ "width": 215,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.892579997329845,
+   52.355807002070726
+  ],
+  "endLngLat": [
+   4.892504997330296,
+   52.35579200207028
+  ],
+  "lengthM": 5.375181460719928,
+  "heightM": 7,
+  "outwardBearingDeg": 342.30182825846714
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002115_pano_0000_003090",
+   "timestamp": "2021-04-23T08:32:29.760840Z",
+   "distanceM": 7,
+   "obliquityDeg": 11
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.79,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#6b7067"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

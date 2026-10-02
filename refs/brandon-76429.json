@@ -1,0 +1,85 @@
+{
+ "name": "brandon-76429",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012176429"
+ ],
+ "image": "brandon-76429.jpg",
+ "width": 426,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.886386996997079,
+   52.37539700233141
+  ],
+  "endLngLat": [
+   4.886523996997574,
+   52.37535100233119
+  ],
+  "lengthM": 10.64101393838168,
+  "heightM": 7,
+  "outwardBearingDeg": 209.14598857235822
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002988_pano_0028_000486",
+   "timestamp": "2023-03-06T09:34:38.139750Z",
+   "distanceM": 4,
+   "obliquityDeg": 12
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.46,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.9,
+   6.85,
+   6.85,
+   6.85,
+   6.85,
+   6.85,
+   6.85,
+   6.85,
+   6.83,
+   6.83,
+   6.85,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.9,
+   6.88,
+   7,
+   6.33,
+   6.28,
+   6.33,
+   6.33
+  ],
+  "wallColour": "#717364"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

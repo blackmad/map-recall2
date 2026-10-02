@@ -1,0 +1,68 @@
+{
+ "name": "moche-67178",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012167178"
+ ],
+ "image": "moche-67178.jpg",
+ "width": 259,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.929091997274832,
+   52.355285002172366
+  ],
+  "endLngLat": [
+   4.9290149972754875,
+   52.35525100217166
+  ],
+  "lengthM": 6.467598922859584,
+  "heightM": 7,
+  "outwardBearingDeg": 324.5649573444695
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002143_pano_0000_001938",
+   "timestamp": "2021-05-31T08:02:34.057790Z",
+   "distanceM": 9,
+   "obliquityDeg": 1
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.68,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4d4750"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

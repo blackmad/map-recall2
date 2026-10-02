@@ -1,0 +1,78 @@
+{
+ "name": "sababa-58581",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012158581"
+ ],
+ "image": "sababa-58581.jpg",
+ "width": 362,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8884709973632665,
+   52.35451500203969
+  ],
+  "endLngLat": [
+   4.888344997364066,
+   52.35448900203893
+  ],
+  "lengthM": 9.05857682037882,
+  "heightM": 7,
+  "outwardBearingDeg": 342.5145927628889
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002470_pano_0000_001072",
+   "timestamp": "2022-03-23T09:37:24.349780Z",
+   "distanceM": 4,
+   "obliquityDeg": 33
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 12.43,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   6.28,
+   6.28,
+   6.28,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#798d9e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

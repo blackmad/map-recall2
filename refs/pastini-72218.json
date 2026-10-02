@@ -1,0 +1,65 @@
+{
+ "name": "pastini-72218",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012172218"
+ ],
+ "image": "pastini-72218.jpg",
+ "width": 230,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.884667997157714,
+   52.36665900219946
+  ],
+  "endLngLat": [
+   4.884594997158372,
+   52.36663300219885
+  ],
+  "lengthM": 5.752398122753315,
+  "heightM": 7,
+  "outwardBearingDeg": 330.2049991366808
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002970_pano_0007_000383",
+   "timestamp": "2023-02-13T11:37:32.965380Z",
+   "distanceM": 4,
+   "obliquityDeg": 10
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.08,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   2.75,
+   6.03,
+   6.03,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.98
+  ],
+  "wallColour": "#6c6962"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,83 @@
+{
+ "name": "lupe-72083",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012072083"
+ ],
+ "image": "lupe-72083.jpg",
+ "width": 405,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.857778996962911,
+   52.38197600232965
+  ],
+  "endLngLat": [
+   4.857669996962159,
+   52.38203800233017
+  ],
+  "lengthM": 10.132469883880434,
+  "heightM": 7,
+  "outwardBearingDeg": 43.327179044788295
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002058_pano_0000_001648",
+   "timestamp": "2021-03-24T10:52:08.504850Z",
+   "distanceM": 13,
+   "obliquityDeg": 12
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.46,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#3e3332"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

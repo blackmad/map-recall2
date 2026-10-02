@@ -1,0 +1,69 @@
+{
+ "name": "barada-54271",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0457100000054271"
+ ],
+ "image": "barada-54271.jpg",
+ "width": 270,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   5.043214998035857,
+   52.308030001775926
+  ],
+  "endLngLat": [
+   5.0431729980350335,
+   52.30808500177659
+  ],
+  "lengthM": 6.756711888423663,
+  "heightM": 7,
+  "outwardBearingDeg": 65.18866516958411
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002598_pano_0004_000049",
+   "timestamp": "2022-06-14T11:48:28.096960Z",
+   "distanceM": 8,
+   "obliquityDeg": 15
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.41,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.73,
+   6.4,
+   6.4,
+   6.4,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#69554c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

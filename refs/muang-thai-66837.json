@@ -1,0 +1,83 @@
+{
+ "name": "muang-thai-66837",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012166837"
+ ],
+ "image": "muang-thai-66837.jpg",
+ "width": 414,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.859083997388317,
+   52.35854900199967
+  ],
+  "endLngLat": [
+   4.859141997389655,
+   52.35846300199867
+  ],
+  "lengthM": 10.352477365860418,
+  "heightM": 7,
+  "outwardBearingDeg": 247.98098719104183
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002789_pano_0000_000199",
+   "timestamp": "2022-09-02T10:23:39.469660Z",
+   "distanceM": 14,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.42,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#8f9391"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

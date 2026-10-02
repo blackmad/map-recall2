@@ -1,0 +1,78 @@
+{
+ "name": "sagardi-72053",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012172053"
+ ],
+ "image": "sagardi-72053.jpg",
+ "width": 358,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8885539970996605,
+   52.36936400225097
+  ],
+  "endLngLat": [
+   4.888675997098832,
+   52.369394002251795
+  ],
+  "lengthM": 8.954343335951876,
+  "heightM": 7,
+  "outwardBearingDeg": 158.50722427361325
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002538_pano_0000_001447",
+   "timestamp": "2022-04-22T10:19:48.257980Z",
+   "distanceM": 14,
+   "obliquityDeg": 25
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 6.49,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.93,
+   6.93,
+   6.93,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#c88377"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

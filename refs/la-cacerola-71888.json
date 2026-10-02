@@ -1,0 +1,61 @@
+{
+ "name": "la-cacerola-71888",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012171888"
+ ],
+ "image": "la-cacerola-71888.jpg",
+ "width": 191,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.888736997246483,
+   52.361076002132975
+  ],
+  "endLngLat": [
+   4.8887219972472655,
+   52.361034002132335
+  ],
+  "lengthM": 4.783548683720611,
+  "heightM": 7,
+  "outwardBearingDeg": 281.3361841415218
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002537_pano_0002_000217",
+   "timestamp": "2022-04-22T09:25:30.629810Z",
+   "distanceM": 4,
+   "obliquityDeg": 22
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.84,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.95,
+   6.95,
+   6.95,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#574f49"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

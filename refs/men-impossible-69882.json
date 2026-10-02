@@ -1,0 +1,62 @@
+{
+ "name": "men-impossible-69882",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012169882"
+ ],
+ "image": "men-impossible-69882.jpg",
+ "width": 203,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8799289970978785,
+   52.37071200224215
+  ],
+  "endLngLat": [
+   4.879957997098554,
+   52.37067000224164
+  ],
+  "lengthM": 5.073369563306933,
+  "heightM": 7,
+  "outwardBearingDeg": 247.49067598676288
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002550_pano_0000_000704",
+   "timestamp": "2022-04-29T08:33:14.543100Z",
+   "distanceM": 4,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.94,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   6.93,
+   6.43,
+   6.43,
+   6.43,
+   6.98,
+   6.98,
+   7,
+   6.98,
+   6.98,
+   6.98,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#7f5b51"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

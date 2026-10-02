@@ -1,0 +1,91 @@
+{
+ "name": "eggs-benaddicted-72390",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012172390"
+ ],
+ "image": "eggs-benaddicted-72390.jpg",
+ "width": 492,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.885070997198167,
+   52.36433200216751
+  ],
+  "endLngLat": [
+   4.88494799719705,
+   52.36441300216826
+  ],
+  "lengthM": 12.305110293146784,
+  "heightM": 7,
+  "outwardBearingDeg": 47.48663456484161
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002979_pano_0002_000015",
+   "timestamp": "2023-02-20T11:08:45.095270Z",
+   "distanceM": 4,
+   "obliquityDeg": 22
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 9.83,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#685c53"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

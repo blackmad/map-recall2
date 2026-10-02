@@ -1,0 +1,95 @@
+{
+ "name": "kathmandu-kitchen-15728",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012115728"
+ ],
+ "image": "kathmandu-kitchen-15728.jpg",
+ "width": 534,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.854536997211358,
+   52.3691920021339
+  ],
+  "endLngLat": [
+   4.854727997210097,
+   52.369219002134955
+  ],
+  "lengthM": 13.350689303977608,
+  "heightM": 7,
+  "outwardBearingDeg": 164.5911353673456
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002024_pano_0000_000575",
+   "timestamp": "2021-02-22T11:11:48.537920Z",
+   "distanceM": 8,
+   "obliquityDeg": 15
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 12.15,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#6f4d46"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

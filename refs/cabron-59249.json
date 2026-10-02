@@ -1,0 +1,66 @@
+{
+ "name": "cabron-59249",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012159249"
+ ],
+ "image": "cabron-59249.jpg",
+ "width": 241,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.894910997324929,
+   52.35576300207739
+  ],
+  "endLngLat": [
+   4.894827997325462,
+   52.35574400207686
+  ],
+  "lengthM": 6.036792518598802,
+  "heightM": 7,
+  "outwardBearingDeg": 339.89009261075466
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002115_pano_0000_002431",
+   "timestamp": "2021-04-23T08:13:04.875230Z",
+   "distanceM": 8,
+   "obliquityDeg": 10
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.24,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#69544d"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

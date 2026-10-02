@@ -1,0 +1,65 @@
+{
+ "name": "nefis-etli-ekmek-59658",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012159658"
+ ],
+ "image": "nefis-etli-ekmek-59658.jpg",
+ "width": 227,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.926300997158822,
+   52.36229400226479
+  ],
+  "endLngLat": [
+   4.926221997159176,
+   52.36227800226434
+  ],
+  "lengthM": 5.668055184761085,
+  "heightM": 7,
+  "outwardBearingDeg": 342.0588601840812
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002138_pano_0000_003691",
+   "timestamp": "2021-05-12T11:38:12.124210Z",
+   "distanceM": 11,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.16,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4f4c3c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

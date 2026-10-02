@@ -1,0 +1,61 @@
+{
+ "name": "bisous-52622",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012152622"
+ ],
+ "image": "bisous-52622.jpg",
+ "width": 189,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.88777799736189,
+   52.35469900204007
+  ],
+  "endLngLat": [
+   4.887846997361773,
+   52.35469500204024
+  ],
+  "lengthM": 4.72188726347673,
+  "heightM": 7,
+  "outwardBearingDeg": 185.803202187834
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002912_pano_0012_000173",
+   "timestamp": "2023-01-03T09:58:44.170110Z",
+   "distanceM": 5,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.48,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#757976"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

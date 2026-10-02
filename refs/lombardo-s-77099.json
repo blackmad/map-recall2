@@ -1,0 +1,74 @@
+{
+ "name": "lombardo-s-77099",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012177099"
+ ],
+ "image": "lombardo-s-77099.jpg",
+ "width": 317,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.888609997202599,
+   52.363568002168016
+  ],
+  "endLngLat": [
+   4.888690997203301,
+   52.363517002167555
+  ],
+  "lengthM": 7.9146107772474075,
+  "heightM": 7,
+  "outwardBearingDeg": 226.1990059308337
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002542_pano_0000_003424",
+   "timestamp": "2022-04-25T09:12:25.581810Z",
+   "distanceM": 7,
+   "obliquityDeg": 25
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 6.06,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#434143"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

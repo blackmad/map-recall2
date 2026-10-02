@@ -1,0 +1,78 @@
+{
+ "name": "chadni-chowk-17679",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012117679"
+ ],
+ "image": "chadni-chowk-17679.jpg",
+ "width": 355,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.847861996955892,
+   52.38440300232949
+  ],
+  "endLngLat": [
+   4.8477889969574255,
+   52.384337002328266
+  ],
+  "lengthM": 8.867320054003763,
+  "heightM": 7,
+  "outwardBearingDeg": 305.84387495663145
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002627_pano_0004_000101",
+   "timestamp": "2022-06-24T10:50:25.604850Z",
+   "distanceM": 13,
+   "obliquityDeg": 12
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.16,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#413833"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

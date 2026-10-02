@@ -1,0 +1,98 @@
+{
+ "name": "cafe-maurits-18332",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012118332"
+ ],
+ "image": "cafe-maurits-18332.jpg",
+ "width": 561,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.850373997567086,
+   52.35079100186292
+  ],
+  "endLngLat": [
+   4.850371997564788,
+   52.35091700186464
+  ],
+  "lengthM": 14.020090092980773,
+  "heightM": 7,
+  "outwardBearingDeg": 89.8674640679277
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002478_pano_0001_000227",
+   "timestamp": "2022-03-24T11:53:07.722110Z",
+   "distanceM": 7,
+   "obliquityDeg": 1
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 11.21,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.43
+  ],
+  "wallColour": "#564a49"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

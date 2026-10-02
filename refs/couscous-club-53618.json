@@ -1,0 +1,63 @@
+{
+ "name": "couscous-club-53618",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012153618"
+ ],
+ "image": "couscous-club-53618.jpg",
+ "width": 212,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8942429973738095,
+   52.35307000203755
+  ],
+  "endLngLat": [
+   4.894166997374173,
+   52.35306000203717
+  ],
+  "lengthM": 5.296150625775583,
+  "heightM": 7,
+  "outwardBearingDeg": 348.2622592376395
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002469_pano_0000_001975",
+   "timestamp": "2022-03-23T08:06:55.007580Z",
+   "distanceM": 7,
+   "obliquityDeg": 15
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.06,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.85,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#58554d"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

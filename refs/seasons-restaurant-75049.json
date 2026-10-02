@@ -1,0 +1,66 @@
+{
+ "name": "seasons-restaurant-75049",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012175049"
+ ],
+ "image": "seasons-restaurant-75049.jpg",
+ "width": 239,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.888959996958906,
+   52.37719500236614
+  ],
+  "endLngLat": [
+   4.889035996959217,
+   52.377168002366
+  ],
+  "lengthM": 5.983907840565241,
+  "heightM": 7,
+  "outwardBearingDeg": 210.52910604630955
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-003006_pano_0000_000624",
+   "timestamp": "2023-03-20T10:53:20.278110Z",
+   "distanceM": 4,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.64,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4f4844"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

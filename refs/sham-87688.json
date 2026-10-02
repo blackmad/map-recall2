@@ -1,0 +1,71 @@
+{
+ "name": "sham-87688",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012087688"
+ ],
+ "image": "sham-87688.jpg",
+ "width": 285,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.936773597024135,
+   52.369767802403665
+  ],
+  "endLngLat": [
+   4.936803697025156,
+   52.36970640240285
+  ],
+  "lengthM": 7.132634970368737,
+  "heightM": 7,
+  "outwardBearingDeg": 253.65329137387243
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-001983_pano_0001_001730",
+   "timestamp": "2021-01-26T11:49:43.656720Z",
+   "distanceM": 32,
+   "obliquityDeg": 10
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.05,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.95,
+   6.95,
+   6.93,
+   6.9,
+   6.85,
+   6.75,
+   6.33,
+   6.33,
+   6.33,
+   6.33,
+   6.33,
+   6.35,
+   6.35,
+   6.35,
+   6.35,
+   6.73,
+   6.85,
+   6.88,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#302e2c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

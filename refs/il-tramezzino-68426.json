@@ -1,0 +1,65 @@
+{
+ "name": "il-tramezzino-68426",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012168426"
+ ],
+ "image": "il-tramezzino-68426.jpg",
+ "width": 228,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.891550996897337,
+   52.380324002420636
+  ],
+  "endLngLat": [
+   4.8914739968971395,
+   52.38034400242068
+  ],
+  "lengthM": 5.69557995099173,
+  "heightM": 7,
+  "outwardBearingDeg": 23.3905542452693
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002859_pano_0000_000135",
+   "timestamp": "2022-12-15T08:30:06.196370Z",
+   "distanceM": 5,
+   "obliquityDeg": 17
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.67,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#3b2e28"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

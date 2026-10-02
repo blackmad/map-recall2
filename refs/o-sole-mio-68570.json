@@ -1,0 +1,65 @@
+{
+ "name": "o-sole-mio-68570",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012168570"
+ ],
+ "image": "o-sole-mio-68570.jpg",
+ "width": 228,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.884050997199778,
+   52.364395002165104
+  ],
+  "endLngLat": [
+   4.884106997200305,
+   52.36435700216474
+  ],
+  "lengthM": 5.694392132075195,
+  "heightM": 7,
+  "outwardBearingDeg": 228.34259597588434
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002537_pano_0001_002499",
+   "timestamp": "2022-04-22T09:12:08.735160Z",
+   "distanceM": 4,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.16,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.8,
+   6.9,
+   6.9,
+   7,
+   7,
+   7,
+   7,
+   6.7,
+   6.7,
+   6.7,
+   6.75,
+   6.75,
+   6.75,
+   6.7,
+   6.7,
+   6.7,
+   6.7,
+   7,
+   7,
+   6.7,
+   6.7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#615955"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

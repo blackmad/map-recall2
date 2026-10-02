@@ -1,0 +1,36 @@
+{
+ "name": "caffe-italia-77743",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012177743"
+ ],
+ "image": "caffe-italia-77743.jpg",
+ "width": 0,
+ "height": 0,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.897113996988168,
+   52.374590002354424
+  ],
+  "endLngLat": [
+   4.897066996988861,
+   52.37455600235378
+  ],
+  "lengthM": 4.955320741330372,
+  "heightM": null,
+  "outwardBearingDeg": 310.6200945849083
+ },
+ "panoramas": [],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.13,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   0,
+   0
+  ],
+  "wallColour": "#9a8a78"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

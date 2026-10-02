@@ -1,0 +1,73 @@
+{
+ "name": "beyrouth-36814",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012236814"
+ ],
+ "image": "beyrouth-36814.jpg",
+ "width": 310,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.875232997156926,
+   52.36819100219032
+  ],
+  "endLngLat": [
+   4.875337997156121,
+   52.36821800219106
+  ],
+  "lengthM": 7.756698339661755,
+  "heightM": 7,
+  "outwardBearingDeg": 157.6180902628647
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002059_pano_0000_000729",
+   "timestamp": "2021-03-24T12:37:27.500170Z",
+   "distanceM": 13,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.45,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.8,
+   6.8,
+   6.8,
+   6.8,
+   7,
+   7,
+   7,
+   6.78,
+   6.78,
+   6.78,
+   6.8,
+   7,
+   7,
+   7,
+   6.8,
+   6.8,
+   6.8,
+   6.8
+  ],
+  "wallColour": "#d2a387"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

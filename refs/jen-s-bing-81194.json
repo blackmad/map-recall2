@@ -1,0 +1,65 @@
+{
+ "name": "jen-s-bing-81194",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012181194"
+ ],
+ "image": "jen-s-bing-81194.jpg",
+ "width": 230,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.910654997151974,
+   52.36387900224124
+  ],
+  "endLngLat": [
+   4.910668997151068,
+   52.36393000224203
+  ],
+  "lengthM": 5.754103249739476,
+  "heightM": 7,
+  "outwardBearingDeg": 99.91609184251587
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002047_pano_0000_001390",
+   "timestamp": "2021-03-18T10:03:37.878070Z",
+   "distanceM": 12,
+   "obliquityDeg": 12
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.25,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#493e33"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

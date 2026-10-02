@@ -1,0 +1,83 @@
+{
+ "name": "sab-s-deli-36070",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012136070"
+ ],
+ "image": "sab-s-deli-36070.jpg",
+ "width": 414,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.889834997536872,
+   52.34443600190439
+  ],
+  "endLngLat": [
+   4.889964997535665,
+   52.34448400190545
+  ],
+  "lengthM": 10.344114452868382,
+  "heightM": 7,
+  "outwardBearingDeg": 149.13276207162653
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002477_pano_0002_001129",
+   "timestamp": "2022-03-24T10:54:26.202780Z",
+   "distanceM": 11,
+   "obliquityDeg": 5
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.99,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   5.75,
+   5.75,
+   5.5,
+   5.75,
+   5.75,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#cea885"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

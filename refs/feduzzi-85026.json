@@ -1,0 +1,79 @@
+{
+ "name": "feduzzi-85026",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012085026"
+ ],
+ "image": "feduzzi-85026.jpg",
+ "width": 366,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.89116399751029,
+   52.34574200192642
+  ],
+  "endLngLat": [
+   4.891151997511761,
+   52.34566000192525
+  ],
+  "lengthM": 9.160304210738984,
+  "heightM": 7,
+  "outwardBearingDeg": 275.51350426395925
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002114_pano_0000_004754",
+   "timestamp": "2021-04-22T10:58:15.912870Z",
+   "distanceM": 14,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.53,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#373430"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

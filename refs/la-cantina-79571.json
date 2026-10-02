@@ -1,0 +1,85 @@
+{
+ "name": "la-cantina-79571",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012079571"
+ ],
+ "image": "la-cantina-79571.jpg",
+ "width": 433,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8041129968758005,
+   52.40030100239511
+  ],
+  "endLngLat": [
+   4.804078996874149,
+   52.400396002396384
+  ],
+  "lengthM": 10.820643840418503,
+  "heightM": 7,
+  "outwardBearingDeg": 73.45560899454097
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002383_pano_0017_000002",
+   "timestamp": "2022-01-03T12:48:02.998970Z",
+   "distanceM": 37,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 8.58,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.9,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#6c7374"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

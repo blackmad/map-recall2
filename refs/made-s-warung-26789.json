@@ -1,0 +1,70 @@
+{
+ "name": "made-s-warung-26789",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012126789"
+ ],
+ "image": "made-s-warung-26789.jpg",
+ "width": 284,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.863761997500006,
+   52.351387001916216
+  ],
+  "endLngLat": [
+   4.86366599750083,
+   52.35136200191555
+  ],
+  "lengthM": 7.107737140954171,
+  "heightM": 7,
+  "outwardBearingDeg": 337.37512159667637
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002412_pano_0016_000002",
+   "timestamp": "2022-01-11T11:41:26.153150Z",
+   "distanceM": 14,
+   "obliquityDeg": 5
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.54,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.7,
+   6.7,
+   6.7,
+   6.6,
+   6.6,
+   7,
+   6.8,
+   6.8,
+   7,
+   6.8,
+   6.58,
+   6.58,
+   7,
+   6.78,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#594c46"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

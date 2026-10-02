@@ -1,0 +1,103 @@
+{
+ "name": "al-basha-47236",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012147236"
+ ],
+ "image": "al-basha-47236.jpg",
+ "width": 606,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8196839972140015,
+   52.378038002132726
+  ],
+  "endLngLat": [
+   4.819738997211163,
+   52.37817000213482
+  ],
+  "lengthM": 15.157080644544925,
+  "heightM": 7,
+  "outwardBearingDeg": 104.75381498574637
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002071_pano_0000_000164",
+   "timestamp": "2021-03-31T07:45:42.126060Z",
+   "distanceM": 16,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.25,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   3.8,
+   3.8,
+   3.8,
+   3.8,
+   3.8,
+   4.75,
+   4.75,
+   4.75,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   5.13,
+   5.13,
+   5.13,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   5.13,
+   5.13,
+   5.13,
+   5.13,
+   5.13,
+   5.13,
+   5.13,
+   5.13,
+   5.13,
+   5.13,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9
+  ],
+  "wallColour": "#eee7c6"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

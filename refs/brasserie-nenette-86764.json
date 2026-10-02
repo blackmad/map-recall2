@@ -1,0 +1,97 @@
+{
+ "name": "brasserie-nenette-86764",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012086764"
+ ],
+ "image": "brasserie-nenette-86764.jpg",
+ "width": 554,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8927649975640515,
+   52.34241800188579
+  ],
+  "endLngLat": [
+   4.892868997565635,
+   52.342311001884646
+  ],
+  "lengthM": 13.8552398759675,
+  "heightM": 7,
+  "outwardBearingDeg": 239.73464366543192
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002114_pano_0000_003554",
+   "timestamp": "2021-04-22T10:27:52.326650Z",
+   "distanceM": 10,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.24,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.13,
+   6.95,
+   6.95,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#554d3e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

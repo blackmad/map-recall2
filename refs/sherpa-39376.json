@@ -1,0 +1,92 @@
+{
+ "name": "sherpa-39376",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012239376"
+ ],
+ "image": "sherpa-39376.jpg",
+ "width": 500,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.88489499722088,
+   52.363084002149165
+  ],
+  "endLngLat": [
+   4.884772997219711,
+   52.36316800214997
+  ],
+  "lengthM": 12.506438862384186,
+  "heightM": 7,
+  "outwardBearingDeg": 48.52342077143129
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002537_pano_0002_000035",
+   "timestamp": "2022-04-22T09:19:24.152260Z",
+   "distanceM": 4,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 10.86,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   5.28,
+   6.23,
+   6.23,
+   6.23,
+   6.23,
+   6.23,
+   6.23,
+   6.2,
+   6.2,
+   6.2,
+   6.2,
+   6.2,
+   6.2,
+   6.2,
+   6.4,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#666464"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

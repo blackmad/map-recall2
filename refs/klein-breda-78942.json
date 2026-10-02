@@ -1,0 +1,61 @@
+{
+ "name": "klein-breda-78942",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012178942"
+ ],
+ "image": "klein-breda-78942.jpg",
+ "width": 187,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.897515997145664,
+   52.36562600222577
+  ],
+  "endLngLat": [
+   4.897500997144974,
+   52.36566700222631
+  ],
+  "lengthM": 4.674891417966217,
+  "heightM": 7,
+  "outwardBearingDeg": 77.76353157956959
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002542_pano_0000_001882",
+   "timestamp": "2022-04-25T08:42:21.896830Z",
+   "distanceM": 8,
+   "obliquityDeg": 9
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.06,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#192023"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,92 @@
+{
+ "name": "royal98-53823",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012253823"
+ ],
+ "image": "royal98-53823.jpg",
+ "width": 500,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.893060997014978,
+   52.373546002326165
+  ],
+  "endLngLat": [
+   4.893205997015894,
+   52.37347700232563
+  ],
+  "lengthM": 12.507836554887671,
+  "heightM": 7,
+  "outwardBearingDeg": 218.25550705000896
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002357_pano_0006_000010",
+   "timestamp": "2021-12-27T12:24:37.224950Z",
+   "distanceM": 29,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 7.78,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#313030"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,71 @@
+{
+ "name": "ctaste-77277",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012077277"
+ ],
+ "image": "ctaste-77277.jpg",
+ "width": 293,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.9063739973276626,
+   52.35418100209024
+  ],
+  "endLngLat": [
+   4.90632999732671,
+   52.35424100209096
+  ],
+  "lengthM": 7.318053656876937,
+  "heightM": 7,
+  "outwardBearingDeg": 66.19859262715539
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002800_pano_0026_000031",
+   "timestamp": "2022-09-06T09:44:21.061250Z",
+   "distanceM": 7,
+   "obliquityDeg": 37
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.16,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   3.28,
+   3.33,
+   3.33,
+   3.35,
+   3.4,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.43,
+   3.63,
+   3.63,
+   3.63,
+   3.63,
+   3.63,
+   3.63,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#898583"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

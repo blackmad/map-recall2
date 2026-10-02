@@ -1,0 +1,90 @@
+{
+ "name": "cafe-caron-05340",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012105340"
+ ],
+ "image": "cafe-caron-05340.jpg",
+ "width": 483,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8887849973133015,
+   52.3572950020797
+  ],
+  "endLngLat": [
+   4.888802997311344,
+   52.35740300208128
+  ],
+  "lengthM": 12.079058184705415,
+  "heightM": 7,
+  "outwardBearingDeg": 96.22057755347907
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002225_pano_0000_000399",
+   "timestamp": "2021-07-09T07:44:02.311750Z",
+   "distanceM": 4,
+   "obliquityDeg": 11
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 9.35,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.78,
+   6.78,
+   6.78,
+   6.78,
+   6.73,
+   3.45,
+   3.45,
+   3.45,
+   3.45,
+   3.68,
+   3.68,
+   3.68,
+   3.68,
+   3.93,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#938671"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

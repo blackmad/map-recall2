@@ -1,0 +1,93 @@
+{
+ "name": "bakers-roasters-33622",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012233622"
+ ],
+ "image": "bakers-roasters-33622.jpg",
+ "width": 512,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.889910997309312,
+   52.357355002084105
+  ],
+  "endLngLat": [
+   4.889723997309618,
+   52.35736500208366
+  ],
+  "lengthM": 12.787759885102144,
+  "heightM": 7,
+  "outwardBearingDeg": 5.384760540790296
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002115_pano_0000_002707",
+   "timestamp": "2021-04-23T08:21:05.391420Z",
+   "distanceM": 5,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.27,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   7,
+   7,
+   7,
+   6.93,
+   6.03,
+   6.03,
+   6.03,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#685f4f"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

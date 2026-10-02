@@ -1,0 +1,92 @@
+{
+ "name": "blue-dragon-82246",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012082246"
+ ],
+ "image": "blue-dragon-82246.jpg",
+ "width": 503,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.891044997303949,
+   52.357495002089664
+  ],
+  "endLngLat": [
+   4.891099997305715,
+   52.357387002088316
+  ],
+  "lengthM": 12.587245045135461,
+  "heightM": 7,
+  "outwardBearingDeg": 253.07453441855145
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002115_pano_0000_001788",
+   "timestamp": "2021-04-23T07:55:31.064020Z",
+   "distanceM": 21,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 11.77,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#533f3d"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

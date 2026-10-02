@@ -1,0 +1,73 @@
+{
+ "name": "mogu-amsterdam-89620",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012089620"
+ ],
+ "image": "mogu-amsterdam-89620.jpg",
+ "width": 313,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.854327996993536,
+   52.38101500230335
+  ],
+  "endLngLat": [
+   4.8544119969941075,
+   52.38096700230295
+  ],
+  "lengthM": 7.825304928829686,
+  "heightM": 7,
+  "outwardBearingDeg": 223.46055366578938
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002850_pano_0019_000157",
+   "timestamp": "2022-12-12T12:46:52.204110Z",
+   "distanceM": 6,
+   "obliquityDeg": 22
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.7,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#634f4b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

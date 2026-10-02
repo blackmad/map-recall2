@@ -1,0 +1,77 @@
+{
+ "name": "dignita-93370",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012093370"
+ ],
+ "image": "dignita-93370.jpg",
+ "width": 352,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.857230997518978,
+   52.35179000189988
+  ],
+  "endLngLat": [
+   4.857349997517917,
+   52.35182100190071
+  ],
+  "lengthM": 8.811015493892867,
+  "heightM": 7,
+  "outwardBearingDeg": 157.5930729329391
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002412_pano_0010_000039",
+   "timestamp": "2022-01-11T11:30:01.884580Z",
+   "distanceM": 5,
+   "obliquityDeg": 9
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.6,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   5.65,
+   5.65,
+   5.65,
+   5.68,
+   7,
+   7,
+   7,
+   5.68,
+   5.68,
+   5.68,
+   5.68,
+   7,
+   7,
+   7,
+   6.28,
+   6.28,
+   6.28,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   5.73
+  ],
+  "wallColour": "#62544c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

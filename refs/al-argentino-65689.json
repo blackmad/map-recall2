@@ -1,0 +1,62 @@
+{
+ "name": "al-argentino-65689",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012165689"
+ ],
+ "image": "al-argentino-65689.jpg",
+ "width": 201,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.900873996962099,
+   52.37566900238221
+  ],
+  "endLngLat": [
+   4.900915996962678,
+   52.375632002381806
+  ],
+  "lengthM": 5.01279815471441,
+  "heightM": 7,
+  "outwardBearingDeg": 235.59599917541837
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002629_pano_0001_000221",
+   "timestamp": "2022-06-27T06:32:03.202110Z",
+   "distanceM": 2,
+   "obliquityDeg": 9
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.45,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   6.63,
+   6.63,
+   6.63,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4e494d"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

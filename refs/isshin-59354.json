@@ -1,0 +1,66 @@
+{
+ "name": "isshin-59354",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012159354"
+ ],
+ "image": "isshin-59354.jpg",
+ "width": 237,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.888690997318499,
+   52.35701500207546
+  ],
+  "endLngLat": [
+   4.888699997317539,
+   52.35706800207623
+  ],
+  "lengthM": 5.9288494562658,
+  "heightM": 7,
+  "outwardBearingDeg": 96.32985357443994
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002225_pano_0000_000406",
+   "timestamp": "2021-07-09T07:44:08.496690Z",
+   "distanceM": 6,
+   "obliquityDeg": 13
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.35,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.95,
+   6.95,
+   6.95,
+   6.95,
+   6.95,
+   6.95,
+   6.95,
+   6.75,
+   6.75,
+   6.75,
+   6.75,
+   6.75,
+   6.75,
+   6.75,
+   6.73,
+   6.5,
+   6.1,
+   5.73,
+   5.6,
+   5.38,
+   5.38,
+   4.1,
+   4.1,
+   4.1,
+   4.1
+  ],
+  "wallColour": "#655f5c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

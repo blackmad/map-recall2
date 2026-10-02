@@ -1,0 +1,102 @@
+{
+ "name": "o-mai-vietnamees-restaurant-78850",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012178850"
+ ],
+ "image": "o-mai-vietnamees-restaurant-78850.jpg",
+ "width": 600,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8973489971486925,
+   52.36547400222305
+  ],
+  "endLngLat": [
+   4.897561997147647,
+   52.36550800222421
+  ],
+  "lengthM": 14.992949567047107,
+  "heightM": 7,
+  "outwardBearingDeg": 165.77230808682475
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002958_pano_0001_000078",
+   "timestamp": "2023-02-06T08:58:52.067560Z",
+   "distanceM": 26,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 9.32,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#baaa8c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,67 @@
+{
+ "name": "pasta-e-pizza-62433",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012162433"
+ ],
+ "image": "pasta-e-pizza-62433.jpg",
+ "width": 249,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.899579997284228,
+   52.35747900211606
+  ],
+  "endLngLat": [
+   4.89960399728512,
+   52.35742500211537
+  ],
+  "lengthM": 6.226808141286968,
+  "heightM": 7,
+  "outwardBearingDeg": 255.1627651969273
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002112_pano_0001_001948",
+   "timestamp": "2021-04-21T12:48:12.573920Z",
+   "distanceM": 6,
+   "obliquityDeg": 0
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.27,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.65,
+   6.65,
+   6.65,
+   6.65,
+   7,
+   7,
+   7,
+   6.68,
+   6.68,
+   6.68,
+   6.7,
+   6.7
+  ],
+  "wallColour": "#927e76"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

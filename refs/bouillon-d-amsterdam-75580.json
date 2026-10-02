@@ -1,0 +1,87 @@
+{
+ "name": "bouillon-d-amsterdam-75580",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012175580"
+ ],
+ "image": "bouillon-d-amsterdam-75580.jpg",
+ "width": 446,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.890708997012111,
+   52.37399600232511
+  ],
+  "endLngLat": [
+   4.890783997010357,
+   52.37408500232665
+  ],
+  "lengthM": 11.14217325006349,
+  "heightM": 7,
+  "outwardBearingDeg": 117.7711431873006
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002310_pano_0001_000174",
+   "timestamp": "2021-09-15T08:48:57.970990Z",
+   "distanceM": 9,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 5.49,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#372e2a"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

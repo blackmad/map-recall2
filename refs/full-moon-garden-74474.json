@@ -1,0 +1,90 @@
+{
+ "name": "full-moon-garden-74474",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012174474"
+ ],
+ "image": "full-moon-garden-74474.jpg",
+ "width": 483,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.883889697195099,
+   52.364681602168666
+  ],
+  "endLngLat": [
+   4.883747797196646,
+   52.36461650216727
+  ],
+  "lengthM": 12.078243620203153,
+  "heightM": 7,
+  "outwardBearingDeg": 323.5491729054941
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002361_pano_0007_000102",
+   "timestamp": "2021-12-29T10:08:59.170080Z",
+   "distanceM": 5,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 5.21,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#3f3c39"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

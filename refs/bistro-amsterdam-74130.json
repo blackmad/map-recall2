@@ -1,0 +1,62 @@
+{
+ "name": "bistro-amsterdam-74130",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012174130"
+ ],
+ "image": "bistro-amsterdam-74130.jpg",
+ "width": 201,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.883376997032774,
+   52.37382300229858
+  ],
+  "endLngLat": [
+   4.883372997033592,
+   52.37377800229791
+  ],
+  "lengthM": 5.01436093540139,
+  "heightM": 7,
+  "outwardBearingDeg": 273.5123567348275
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002951_pano_0015_000165",
+   "timestamp": "2023-01-30T11:20:16.254900Z",
+   "distanceM": 4,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.82,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#3a3a3a"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

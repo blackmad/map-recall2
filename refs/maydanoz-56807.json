@@ -1,0 +1,67 @@
+{
+ "name": "maydanoz-56807",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012156807"
+ ],
+ "image": "maydanoz-56807.jpg",
+ "width": 246,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.887285997403598,
+   52.35241500200664
+  ],
+  "endLngLat": [
+   4.887373997403142,
+   52.35242700200708
+  ],
+  "lengthM": 6.1424840774496285,
+  "heightM": 7,
+  "outwardBearingDeg": 167.8406216163528
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002410_pano_0003_000605",
+   "timestamp": "2022-01-11T08:51:34.121130Z",
+   "distanceM": 10,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.83,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#46403a"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

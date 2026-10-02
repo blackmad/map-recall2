@@ -1,0 +1,72 @@
+{
+ "name": "pepenero-64223",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012064223"
+ ],
+ "image": "pepenero-64223.jpg",
+ "width": 304,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.907720997298681,
+   52.35570600211582
+  ],
+  "endLngLat": [
+   4.907824997298055,
+   52.355731002116485
+  ],
+  "lengthM": 7.6116668405316075,
+  "heightM": 7,
+  "outwardBearingDeg": 158.9441342439875
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002544_pano_0000_000634",
+   "timestamp": "2022-04-26T06:50:27.748930Z",
+   "distanceM": 11,
+   "obliquityDeg": 11
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 7.52,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#857065"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

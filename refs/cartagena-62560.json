@@ -1,0 +1,58 @@
+{
+ "name": "cartagena-62560",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012162560"
+ ],
+ "image": "cartagena-62560.jpg",
+ "width": 161,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.865919997232884,
+   52.3656800021232
+  ],
+  "endLngLat": [
+   4.865974997232454,
+   52.36569300212358
+  ],
+  "lengthM": 4.015694119017458,
+  "heightM": 7,
+  "outwardBearingDeg": 159.29961439798637
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002553_pano_0000_000633",
+   "timestamp": "2022-05-02T06:48:29.495870Z",
+   "distanceM": 8,
+   "obliquityDeg": 8
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.97,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.8,
+   6.8,
+   6.8,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#d6b395"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

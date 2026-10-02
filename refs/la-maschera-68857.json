@@ -1,0 +1,58 @@
+{
+ "name": "la-maschera-68857",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012168857"
+ ],
+ "image": "la-maschera-68857.jpg",
+ "width": 163,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.881428996966254,
+   52.37779700235003
+  ],
+  "endLngLat": [
+   4.881406996965699,
+   52.377831002350455
+  ],
+  "lengthM": 4.068846583875238,
+  "heightM": 7,
+  "outwardBearingDeg": 68.79680106766637
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002549_pano_0000_003987",
+   "timestamp": "2022-04-29T08:06:36.301390Z",
+   "distanceM": 4,
+   "obliquityDeg": 27
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.21,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#494747"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

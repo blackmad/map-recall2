@@ -1,0 +1,94 @@
+{
+ "name": "mr-gyoza-61236",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012161236"
+ ],
+ "image": "mr-gyoza-61236.jpg",
+ "width": 517,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8652389973171335,
+   52.3611770020573
+  ],
+  "endLngLat": [
+   4.865304997318873,
+   52.361068002055994
+  ],
+  "lengthM": 12.934425533413524,
+  "heightM": 7,
+  "outwardBearingDeg": 250.07284178461722
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002921_pano_0010_000005",
+   "timestamp": "2023-01-10T10:18:37.634960Z",
+   "distanceM": 13,
+   "obliquityDeg": 0
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 9.5,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#55433b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

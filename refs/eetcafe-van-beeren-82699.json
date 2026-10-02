@@ -1,0 +1,75 @@
+{
+ "name": "eetcafe-van-beeren-82699",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012182699"
+ ],
+ "image": "eetcafe-van-beeren-82699.jpg",
+ "width": 334,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.902349997023142,
+   52.372056002334034
+  ],
+  "endLngLat": [
+   4.902259997022406,
+   52.372107002334495
+  ],
+  "lengthM": 8.352667747692944,
+  "heightM": 7,
+  "outwardBearingDeg": 42.96696611774047
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002031_pano_0000_001769",
+   "timestamp": "2021-03-08T10:00:14.178040Z",
+   "distanceM": 4,
+   "obliquityDeg": 14
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 7.62,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   5.88,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4e4847"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

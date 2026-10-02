@@ -1,0 +1,77 @@
+{
+ "name": "camino-taqueria-36027",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012236027"
+ ],
+ "image": "camino-taqueria-36027.jpg",
+ "width": 353,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.871181997190092,
+   52.36705900216058
+  ],
+  "endLngLat": [
+   4.871298997189098,
+   52.36709300216146
+  ],
+  "lengthM": 8.8211848190082,
+  "heightM": 7,
+  "outwardBearingDeg": 155.01283606025504
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002921_pano_0014_000480",
+   "timestamp": "2023-01-10T10:46:17.015020Z",
+   "distanceM": 6,
+   "obliquityDeg": 17
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 6.62,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#645d5a"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,64 @@
+{
+ "name": "rangla-punjab-61813",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012161813"
+ ],
+ "image": "rangla-punjab-61813.jpg",
+ "width": 220,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.865928997326432,
+   52.36052700205049
+  ],
+  "endLngLat": [
+   4.86600499732585,
+   52.360544002050986
+  ],
+  "lengthM": 5.511810390159921,
+  "heightM": 7,
+  "outwardBearingDeg": 160.3416548608866
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002788_pano_0000_001584",
+   "timestamp": "2022-09-02T09:58:28.046890Z",
+   "distanceM": 8,
+   "obliquityDeg": 8
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.52,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   6.98,
+   6.93,
+   6.93,
+   6.9,
+   6.93,
+   6.93,
+   6.95,
+   7,
+   7,
+   7,
+   6.8,
+   6.8,
+   6.8,
+   6.8,
+   6.8,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#907a6d"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

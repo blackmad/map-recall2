@@ -1,0 +1,62 @@
+{
+ "name": "bella-storia-trattoria-italiana-64646",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012164646"
+ ],
+ "image": "bella-storia-trattoria-italiana-64646.jpg",
+ "width": 199,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.874123996877632,
+   52.383766002412976
+  ],
+  "endLngLat": [
+   4.874174996876906,
+   52.38379800241362
+  ],
+  "lengthM": 4.973322912157401,
+  "heightM": 7,
+  "outwardBearingDeg": 134.6868468839375
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002367_pano_0005_000084",
+   "timestamp": "2021-12-30T10:27:50.218810Z",
+   "distanceM": 8,
+   "obliquityDeg": 13
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.16,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#473631"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

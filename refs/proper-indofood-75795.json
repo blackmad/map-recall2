@@ -1,0 +1,87 @@
+{
+ "name": "proper-indofood-75795",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012175795"
+ ],
+ "image": "proper-indofood-75795.jpg",
+ "width": 454,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.890944997244248,
+   52.36088900213735
+  ],
+  "endLngLat": [
+   4.890780997244334,
+   52.36090700213708
+  ],
+  "lengthM": 11.349614425084447,
+  "heightM": 7,
+  "outwardBearingDeg": 10.556125478350111
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002537_pano_0002_000249",
+   "timestamp": "2022-04-22T09:25:54.949660Z",
+   "distanceM": 5,
+   "obliquityDeg": 16
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.03,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   6.95,
+   6.85,
+   6.85,
+   6.8,
+   6.8,
+   6.8,
+   6.85,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.85,
+   6.6,
+   6.6,
+   6.63,
+   6.63,
+   6.9,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#515558"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

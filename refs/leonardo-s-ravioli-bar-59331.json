@@ -1,0 +1,97 @@
+{
+ "name": "leonardo-s-ravioli-bar-59331",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012159331"
+ ],
+ "image": "leonardo-s-ravioli-bar-59331.jpg",
+ "width": 554,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.893283997349603,
+   52.35458400205576
+  ],
+  "endLngLat": [
+   4.893479997348538,
+   52.35461700205683
+  ],
+  "lengthM": 13.848827487688473,
+  "heightM": 7,
+  "outwardBearingDeg": 165.16366587587402
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002410_pano_0007_000364",
+   "timestamp": "2022-01-11T09:17:30.415790Z",
+   "distanceM": 15,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 10.15,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#968c7d"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

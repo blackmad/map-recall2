@@ -1,0 +1,74 @@
+{
+ "name": "casa-peru-68820",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012168820"
+ ],
+ "image": "casa-peru-68820.jpg",
+ "width": 322,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.882893997165534,
+   52.36648700219122
+  ],
+  "endLngLat": [
+   4.882951997166503,
+   52.366424002190506
+  ],
+  "lengthM": 8.046241684370921,
+  "heightM": 7,
+  "outwardBearingDeg": 240.99477911569755
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002952_pano_0002_000004",
+   "timestamp": "2023-01-30T12:20:44.784200Z",
+   "distanceM": 3,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 8.08,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.95,
+   6.98,
+   6.98,
+   6.98,
+   6.98,
+   6.95,
+   6.95,
+   6.95,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.68,
+   6.68,
+   6.68,
+   6.7,
+   6.7,
+   6.73,
+   6.73,
+   6.73,
+   6.73,
+   6.73,
+   6.75,
+   6.78,
+   6.8,
+   6.8,
+   6.83,
+   6.85,
+   6.88,
+   6.88,
+   6.88
+  ],
+  "wallColour": "#4f4746"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

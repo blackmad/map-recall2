@@ -1,0 +1,71 @@
+{
+ "name": "fabian-78620",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012178620"
+ ],
+ "image": "fabian-78620.jpg",
+ "width": 290,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8987169969778135,
+   52.37500200236558
+  ],
+  "endLngLat": [
+   4.8988079969782445,
+   52.37496800236537
+  ],
+  "lengthM": 7.2603276242757255,
+  "heightM": 7,
+  "outwardBearingDeg": 211.51146921193103
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002031_pano_0000_000445",
+   "timestamp": "2021-03-08T09:17:24.039980Z",
+   "distanceM": 3,
+   "obliquityDeg": 38
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.11,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.95,
+   6.95,
+   6.95,
+   6.95,
+   6.95,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.85,
+   6.83,
+   6.83,
+   6.8,
+   6.78,
+   6.78,
+   6.73
+  ],
+  "wallColour": "#4d4642"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

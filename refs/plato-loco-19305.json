@@ -1,0 +1,96 @@
+{
+ "name": "plato-loco-19305",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012119305"
+ ],
+ "image": "plato-loco-19305.jpg",
+ "width": 543,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.87405599698235,
+   52.378024002328495
+  ],
+  "endLngLat": [
+   4.874241996982609,
+   52.377980002328485
+  ],
+  "lengthM": 13.578524632774432,
+  "heightM": 7,
+  "outwardBearingDeg": 201.5394277881529
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002055_pano_0000_001569",
+   "timestamp": "2021-03-22T11:44:51.482110Z",
+   "distanceM": 7,
+   "obliquityDeg": 11
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.09,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   6.85,
+   6.63,
+   6.48,
+   6.38,
+   6.38,
+   6.38,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#66574e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

@@ -1,0 +1,62 @@
+{
+ "name": "ramen-ism-78019",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012178019"
+ ],
+ "image": "ramen-ism-78019.jpg",
+ "width": 202,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.898938996978796,
+   52.37492300236513
+  ],
+  "endLngLat": [
+   4.899001996979104,
+   52.37489900236497
+  ],
+  "lengthM": 5.053334748677156,
+  "heightM": 7,
+  "outwardBearingDeg": 211.71548805132196
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002031_pano_0000_000442",
+   "timestamp": "2021-03-08T09:17:19.874900Z",
+   "distanceM": 2,
+   "obliquityDeg": 14
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.68,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.23,
+   6.23,
+   6.23
+  ],
+  "wallColour": "#564e43"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

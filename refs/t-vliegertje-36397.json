@@ -1,0 +1,81 @@
+{
+ "name": "t-vliegertje-36397",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012136397"
+ ],
+ "image": "t-vliegertje-36397.jpg",
+ "width": 389,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.89111599751645,
+   52.345398001921545
+  ],
+  "endLngLat": [
+   4.891103997518007,
+   52.34531100192031
+  ],
+  "lengthM": 9.714535323253097,
+  "heightM": 7,
+  "outwardBearingDeg": 275.22067913526166
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002114_pano_0000_004746",
+   "timestamp": "2021-04-22T10:58:00.557960Z",
+   "distanceM": 13,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.66,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#393532"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

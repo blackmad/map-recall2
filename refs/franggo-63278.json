@@ -1,0 +1,92 @@
+{
+ "name": "franggo-63278",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012163278"
+ ],
+ "image": "franggo-63278.jpg",
+ "width": 495,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.8977179973102585,
+   52.35622700209263
+  ],
+  "endLngLat": [
+   4.897880997309032,
+   52.35627600209383
+  ],
+  "lengthM": 12.370746037890124,
+  "heightM": 7,
+  "outwardBearingDeg": 154.23723507391298
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002470_pano_0001_000200",
+   "timestamp": "2022-03-23T09:58:43.316310Z",
+   "distanceM": 11,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.4,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#373536"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

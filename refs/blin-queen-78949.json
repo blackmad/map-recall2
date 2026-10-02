@@ -1,0 +1,62 @@
+{
+ "name": "blin-queen-78949",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012178949"
+ ],
+ "image": "blin-queen-78949.jpg",
+ "width": 202,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.896884997122863,
+   52.36699500224347
+  ],
+  "endLngLat": [
+   4.896810997123088,
+   52.366991002243175
+  ],
+  "lengthM": 5.059721984984509,
+  "heightM": 7,
+  "outwardBearingDeg": 355.34129355580956
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002865_pano_0002_000234",
+   "timestamp": "2022-12-15T11:11:56.999620Z",
+   "distanceM": 5,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.37,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#6e625b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

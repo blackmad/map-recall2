@@ -1,0 +1,95 @@
+{
+ "name": "insieme-71619",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012071619"
+ ],
+ "image": "insieme-71619.jpg",
+ "width": 531,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.891313997490377,
+   52.346855001942195
+  ],
+  "endLngLat": [
+   4.891297997492505,
+   52.346736001940506
+  ],
+  "lengthM": 13.285354786760916,
+  "heightM": 7,
+  "outwardBearingDeg": 275.22037384525214
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002114_pano_0000_004778",
+   "timestamp": "2021-04-22T10:59:06.882530Z",
+   "distanceM": 10,
+   "obliquityDeg": 12
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 4.05,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#493635"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

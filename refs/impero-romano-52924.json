@@ -1,0 +1,84 @@
+{
+ "name": "impero-romano-52924",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012152924"
+ ],
+ "image": "impero-romano-52924.jpg",
+ "width": 415,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.9045119972862095,
+   52.35678000212129
+  ],
+  "endLngLat": [
+   4.904466997284751,
+   52.356869002122416
+  ],
+  "lengthM": 10.366279533671042,
+  "heightM": 7,
+  "outwardBearingDeg": 74.40050898392701
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002913_pano_0007_000292",
+   "timestamp": "2023-01-03T10:42:55.221070Z",
+   "distanceM": 9,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.8,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#493f3a"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

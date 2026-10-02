@@ -1,0 +1,94 @@
+{
+ "name": "casa-nostra-52357",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012152357"
+ ],
+ "image": "casa-nostra-52357.jpg",
+ "width": 516,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.903098997310294,
+   52.35555900209974
+  ],
+  "endLngLat": [
+   4.903011997308681,
+   52.35566200210093
+  ],
+  "lengthM": 12.902282065945688,
+  "heightM": 7,
+  "outwardBearingDeg": 63.035589828613695
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002470_pano_0002_000051",
+   "timestamp": "2022-03-23T10:28:37.915690Z",
+   "distanceM": 23,
+   "obliquityDeg": 3
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.66,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#696c66"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

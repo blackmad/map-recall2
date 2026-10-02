@@ -1,0 +1,89 @@
+{
+ "name": "de-italiaan-66559",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012166559"
+ ],
+ "image": "de-italiaan-66559.jpg",
+ "width": 468,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.876493997202449,
+   52.36545300215541
+  ],
+  "endLngLat": [
+   4.876419997200964,
+   52.365548002156515
+  ],
+  "lengthM": 11.710428119083033,
+  "heightM": 7,
+  "outwardBearingDeg": 64.94362439739342
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002553_pano_0000_001881",
+   "timestamp": "2022-05-02T07:11:51.700100Z",
+   "distanceM": 5,
+   "obliquityDeg": 15
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 7.34,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.9,
+   6.93,
+   6.93,
+   6.93,
+   6.8,
+   6.78,
+   6.78,
+   6.78,
+   6.78,
+   5.9,
+   5.9,
+   5.9,
+   6.78,
+   6.78,
+   6.88,
+   6.93,
+   6.93,
+   6.93,
+   6.93,
+   6.9,
+   6.9,
+   6.9,
+   6.88,
+   6.88,
+   6.03,
+   5.78,
+   5.78,
+   5.58,
+   5.58,
+   6.35,
+   6.83,
+   6.95,
+   7,
+   6.95,
+   6.83,
+   6.95,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#615c54"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

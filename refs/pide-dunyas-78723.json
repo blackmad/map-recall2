@@ -1,0 +1,96 @@
+{
+ "name": "pide-dunyas-78723",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012078723"
+ ],
+ "image": "pide-dunyas-78723.jpg",
+ "width": 542,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.853439997303429,
+   52.36443400206274
+  ],
+  "endLngLat": [
+   4.853638997302569,
+   52.36443600206345
+  ],
+  "lengthM": 13.556434141689515,
+  "heightM": 7,
+  "outwardBearingDeg": 179.48133268017136
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002228_pano_0005_000126",
+   "timestamp": "2021-07-12T08:35:03.614580Z",
+   "distanceM": 11,
+   "obliquityDeg": 11
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": -0.17,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#696b70"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

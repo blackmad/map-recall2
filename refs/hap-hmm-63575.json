@@ -1,0 +1,67 @@
+{
+ "name": "hap-hmm-63575",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012163575"
+ ],
+ "image": "hap-hmm-63575.jpg",
+ "width": 253,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.876239997234719,
+   52.36370200212967
+  ],
+  "endLngLat": [
+   4.8761549972353935,
+   52.36367900212906
+  ],
+  "lengthM": 6.3301050108237655,
+  "heightM": 7,
+  "outwardBearingDeg": 337.67776875924557
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002377_pano_0001_000059",
+   "timestamp": "2022-01-03T08:47:49.494930Z",
+   "distanceM": 8,
+   "obliquityDeg": 0
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.53,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#4a3e38"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

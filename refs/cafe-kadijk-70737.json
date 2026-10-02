@@ -1,0 +1,84 @@
+{
+ "name": "cafe-kadijk-70737",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012170737"
+ ],
+ "image": "cafe-kadijk-70737.jpg",
+ "width": 416,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.912057997041687,
+   52.37010900233573
+  ],
+  "endLngLat": [
+   4.912190997042298,
+   52.37006300233547
+  ],
+  "lengthM": 10.403960482829222,
+  "heightM": 7,
+  "outwardBearingDeg": 209.84432186525154
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002934_pano_0007_000016",
+   "timestamp": "2023-01-13T11:30:03.988550Z",
+   "distanceM": 4,
+   "obliquityDeg": 30
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.63,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.93,
+   6.7,
+   6.7,
+   6.7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#93938e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

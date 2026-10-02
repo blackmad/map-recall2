@@ -1,0 +1,61 @@
+{
+ "name": "la-paella-78816",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012178816"
+ ],
+ "image": "la-paella-78816.jpg",
+ "width": 186,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.898481996969019,
+   52.375524002372465
+  ],
+  "endLngLat": [
+   4.898437996969667,
+   52.375492002371864
+  ],
+  "lengthM": 4.653457856119108,
+  "heightM": 7,
+  "outwardBearingDeg": 310.46780222641183
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002629_pano_0001_000073",
+   "timestamp": "2022-06-27T06:28:49.938200Z",
+   "distanceM": 3,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.42,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#494540"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

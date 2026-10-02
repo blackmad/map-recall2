@@ -1,0 +1,72 @@
+{
+ "name": "cafe-diner-t-weesperplein-54930",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0457100000054930"
+ ],
+ "image": "cafe-diner-t-weesperplein-54930.jpg",
+ "width": 298,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   5.04093999802956,
+   52.308278001775484
+  ],
+  "endLngLat": [
+   5.0408309980293575,
+   52.30828300177537
+  ],
+  "lengthM": 7.454533534177525,
+  "heightM": 7,
+  "outwardBearingDeg": 4.553501495570401
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002601_pano_0000_001798",
+   "timestamp": "2022-06-15T08:17:06.016900Z",
+   "distanceM": 3,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 3.81,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   5.13,
+   5.13,
+   5.13,
+   5.13,
+   6.43,
+   6.43,
+   6.43,
+   6.4,
+   6.4,
+   6.4,
+   6.4,
+   6.38,
+   6.38,
+   6.38,
+   6.38,
+   6.38,
+   6.38,
+   6.38,
+   6.48,
+   6.98,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#96a0a2"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

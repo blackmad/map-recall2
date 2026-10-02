@@ -1,0 +1,82 @@
+{
+ "name": "paloma-blanca-60566",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012160566"
+ ],
+ "image": "paloma-blanca-60566.jpg",
+ "width": 402,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.865193997313884,
+   52.36136500205979
+  ],
+  "endLngLat": [
+   4.865057997315013,
+   52.36133000205884
+  ],
+  "lengthM": 10.049323995658437,
+  "heightM": 7,
+  "outwardBearingDeg": 337.61258581319
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002787_pano_0000_003181",
+   "timestamp": "2022-09-02T09:19:53.903460Z",
+   "distanceM": 12,
+   "obliquityDeg": 5
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 8.97,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#a1a39c"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

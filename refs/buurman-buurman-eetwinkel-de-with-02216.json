@@ -1,0 +1,98 @@
+{
+ "name": "buurman-buurman-eetwinkel-de-with-02216",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012102216"
+ ],
+ "image": "buurman-buurman-eetwinkel-de-with-02216.jpg",
+ "width": 560,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.859268997200936,
+   52.36875700214417
+  ],
+  "endLngLat": [
+   4.859473997199978,
+   52.36876700214501
+  ],
+  "lengthM": 14.006189382821535,
+  "heightM": 7,
+  "outwardBearingDeg": 175.8608969218826
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002554_pano_0000_000978",
+   "timestamp": "2022-05-02T08:11:07.553790Z",
+   "distanceM": 6,
+   "obliquityDeg": 7
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 2.36,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   6.08,
+   6.08,
+   5.38,
+   5.38,
+   5.38,
+   5.68,
+   5.68,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.83,
+   6.83,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   6.98,
+   6.98,
+   6.38,
+   6.38,
+   6.38,
+   6.38,
+   6.38,
+   7,
+   7,
+   7,
+   5.25,
+   5.25,
+   5.25,
+   6.35,
+   6.9,
+   6.9,
+   6.9,
+   5.95,
+   5.95,
+   5.95,
+   6.03,
+   6.85,
+   6.85,
+   6.85,
+   5.88,
+   5.88,
+   5.88
+  ],
+  "wallColour": "#b79d82"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

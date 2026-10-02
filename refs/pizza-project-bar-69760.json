@@ -1,0 +1,77 @@
+{
+ "name": "pizza-project-bar-69760",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012169760"
+ ],
+ "image": "pizza-project-bar-69760.jpg",
+ "width": 351,
+ "height": 280,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.925361997064603,
+   52.3678690023429
+  ],
+  "endLngLat": [
+   4.925490997064482,
+   52.367869002343284
+  ],
+  "lengthM": 8.785956869947222,
+  "heightM": 7,
+  "outwardBearingDeg": 180.36505442988275
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002625_pano_0005_000081",
+   "timestamp": "2022-06-24T07:01:38.209220Z",
+   "distanceM": 17,
+   "obliquityDeg": 34
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "nearAlongM": 1.01,
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7,
+   7
+  ],
+  "wallColour": "#746555"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}
