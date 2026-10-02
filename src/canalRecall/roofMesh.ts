@@ -296,3 +296,13 @@ export function decorateRoof<T extends GeoFeature>(feature: T): T {
   if (!plan) return feature;
   return { ...feature, properties: { ...p, roofPlanned: true, roofShape: plan.kind, roofEavesHeightM: Number(p.height) - plan.riseM } };
 }
+
+/**
+ * Landmarks keep their own form: churches, museums, Centraal. Wrap a tile
+ * decorator so any building in `ids` (the resolved landmark buildings) is
+ * passed through untouched, with no generic facade or roof. `ids` is read at
+ * call time, so it can fill in after the decorator is installed.
+ */
+export function exceptLandmarks<T extends GeoFeature>(decorate: (feature: T) => T, ids: ReadonlySet<string>): (feature: T) => T {
+  return (feature: T) => (ids.size && ids.has(String(feature.properties.id ?? '')) ? feature : decorate(feature));
+}

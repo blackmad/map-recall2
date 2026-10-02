@@ -22,6 +22,7 @@ and street-level retail; the cartoon sat in an uncanny valley (pastel
   palette, thick outlines, bigger windows; Storybook is the softly painted,
   natural-colour middle (thin outlines, muted palette); Photo keeps real brick and
   a realistic brick palette.
+Landmarks are exempt: the 849 resolved landmark buildings (`landmark-buildings.json`: churches, museums, Centraal and the rest) get no generic facade and no roof, in every look including Default (`exceptLandmarks`; the ids load after the tile decorator is installed and re-decorate the resident city when they arrive).
 Depth was kept to what fits the memory budget: overhangs, chimneys, cornice,
 dormers and gable plates; no recessed windows or per-door stoops. Checked by
 four rounds of screenshot critique at Jordaan (desktop software GL, no

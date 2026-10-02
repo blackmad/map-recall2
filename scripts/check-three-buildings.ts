@@ -208,6 +208,19 @@ for (let v = 0; v < chunk.vertexCount; v += 4) {
     assert.equal(decorateRoof(out), out, 'idempotent');
   }
   assert.ok(decorated > 30 && decorated < 60, `most but not all houses get a roof (${decorated}/60)`);
+  // Landmarks (churches, museums, Centraal) keep their own form: the wrapped decorator leaves them alone.
+  {
+    const { exceptLandmarks } = await import('../src/canalRecall/roofMesh.ts');
+    const ids = new Set<string>();
+    const wrapped = exceptLandmarks(decorateRoof, ids);
+    const house = (id: string) => ({ type: 'Feature' as const, properties: { id, height: 14, minHeight: 0, facade: 'canal-priorBrickRed', facadeStyle: 'canal' }, geometry: { type: 'Polygon', coordinates: [ring] } });
+    let roofed = ''; for (let i = 0; i < 40 && !roofed; i++) if (decorateRoof(house(`k${i}`)) !== house(`k${i}`) && decorateRoof(house(`k${i}`)).properties.roofPlanned) roofed = `k${i}`;
+    assert.ok(roofed, 'found a house that gets a roof');
+    assert.ok(wrapped(house(roofed)).properties.roofPlanned, 'before the landmark list loads it decorates');
+    ids.add(roofed);
+    const f = house(roofed);
+    assert.equal(wrapped(f), f, 'a landmark building is returned untouched, and the list is read at call time');
+  }
   const measured = { type: 'Feature' as const, properties: { id: 'm', height: 14, facade: 'canal-priorBrickRed', facadeStyle: 'canal', roofEavesHeightM: 11.2 }, geometry: { type: 'Polygon', coordinates: [ring] } };
   assert.equal(decorateRoof(measured), measured, 'a measured roof is never overridden');
 }
