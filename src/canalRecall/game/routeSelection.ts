@@ -652,18 +652,23 @@ export {
 // ---------------------------------------------------------------------------
 // Which way the vehicle faces at the start.
 
-/** How far out along the route (world px) the start looks to decide which way to face. */
-export const START_HEADING_LOOKAHEADS_PX = [60, 150, 400] as const;
-export const START_HEADING_LOOKAHEAD_PX = 150;
+/**
+ * How far out along the route (world px) the start looks, nearest first. The first leg is where
+ * the rider actually begins, so the nearest distance that gives a clear direction decides; a
+ * farther one only decides when every nearer one is ambiguous.
+ */
+export const START_HEADING_LOOKAHEADS_PX = [35, 80, 150, 400] as const;
+/** A direction counts as clear when the route leaves at least this close to along the road. */
+export const START_HEADING_CLEAR = 0.35;
 
 /**
  * A road's tangent has two opposite directions and the extract stores one of them
  * arbitrarily, so a ride that starts from the road's own angle faces the route half
  * the time and away from it the other half (with the camera, which follows the heading,
  * behind a bike pointed the wrong way). Pick whichever of the two points toward where the
- * route goes. A route that turns at the very first junction looks sideways from one distance
- * and clear from another, so look at several and trust the clearest. With no route yet, use
- * the finish; with neither, the road's own angle.
+ * route goes first. A route that turns at the first junction reads differently at different
+ * distances, so the nearest clear reading wins; with only weak readings, the strongest;
+ * with no route yet, the finish; with neither, the road's own angle.
  */
 export function startHeading(
   roadAngle: number,
@@ -683,9 +688,11 @@ export function startHeading(
     const dx = target.x - start.x, dy = target.y - start.y, length = Math.hypot(dx, dy);
     if (length < 20) continue;
     const along = (Math.cos(roadAngle) * dx + Math.sin(roadAngle) * dy) / length;
+    if (Math.abs(along) >= START_HEADING_CLEAR) { best = along; break; }
     if (Math.abs(along) > Math.abs(best)) best = along;
   }
-  // Exactly square across the road at every distance: neither direction is better, so keep the road's own. Even a weak signal beats a coin flip.
+  // Exactly square across the road at every distance: neither direction is better, so keep the
+  // road's own. Even a weak signal beats a coin flip.
   if (Math.abs(best) < 0.02) return roadAngle;
   return best >= 0 ? roadAngle : roadAngle + Math.PI;
 }

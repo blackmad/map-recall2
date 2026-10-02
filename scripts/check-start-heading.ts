@@ -33,4 +33,15 @@ assert.ok(same(startHeading(0, start, turning, { x: 85, y: 900 }), 0));
 // slightly better direction rather than the arbitrary one.
 const sideways = route([-3, 100], [-6, 300]);
 assert.ok(same(startHeading(0, start, sideways, null), Math.PI), 'a weak signal still decides');
+// Real routes from start-heading.spec.ts (positions relative to the start, y down).
+const deg = (d: number) => (d * Math.PI) / 180;
+// Seed 5eed1234: the first leg runs north about 56 px, then bends west toward a far destination.
+const northThenWest = route([5, -39], [-13, -56], [-13, -56], [-38, -31], [-49, -13], [-97, -13], [-140, -9], [-210, 55], [-278, 13], [-513, -209], [-6632, -5634]);
+assert.ok(same(startHeading(deg(97), start, northThenWest, { x: -6632, y: -5634 }), deg(277)), 'faces north, where the route begins');
+assert.ok(same(startHeading(deg(277), start, northThenWest, { x: -6632, y: -5634 }), deg(277)));
+// Seed 1234abcd: the first leg runs south about 35 px, then curves east; the road is diagonal.
+// A far lookahead (east) must not outvote the first leg.
+const southThenEast = route([4, -6], [-14, 23], [-13, 34], [128, 112], [136, 135], [172, 189], [209, 278], [630, 230], [996, 752], [1064, 771]);
+assert.ok(same(startHeading(deg(-57), start, southThenEast, { x: 1064, y: 771 }), deg(123)), 'faces down-left, along the first leg');
+assert.ok(same(startHeading(deg(123), start, southThenEast, { x: 1064, y: 771 }), deg(123)));
 console.log('Start heading checks passed.');
