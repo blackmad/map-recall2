@@ -12,11 +12,15 @@ their facades by id range. Textures are mipmapped, anisotropic texture arrays
 sampled with a wall/accent tint mask: the procedural Amsterdam cells
 (`facadeCells.ts`) or the rendering spike's bays (`bayLook.ts` over
 `bayTextures.ts`, 32 curated layers). Off by default.
-Measured (headless software GL, desktop, 5 spots, chase view; not a phone):
-frame-difference "shimmer" 4-32% lower than the pattern layer at every spot,
-MapLibre render p95 20 to 14.5 ms, but JS heap +160 MB and 37-63 MB of walls
-geometry plus 12-16 MB of textures. The shimmer metric includes camera motion,
-so treat it as direction only. Cartoon verified by eye at three spots; photo
+Measured (headless software GL, desktop, 5 spots, chase view, not a phone):
+after freeing the CPU copies of geometry and textures, JS heap after a forced
+GC is 298 MB against 396 MB for the pattern layer (the first run's +160 MB was
+those copies); MapLibre render p95 13 ms against 284 ms (single run, likely the
+pattern layer's per-zoom re-layout, not isolated); walls geometry 42 MB plus
+18 MB of textures. Shimmer is NOT shown to be better: with a sub-pixel camera
+creep the frame-difference metric is mixed (two spots worse, two better, one
+level) and noisy even at near-zero motion; an earlier "4-32% lower" figure was
+camera motion. Needs a better metric. Cartoon verified by eye at three spots; photo
 not yet.
 
 ## 2026-10-02 — Per-wall facade rendering spike merged
