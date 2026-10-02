@@ -13,6 +13,7 @@ const BIJ_BAYS = [3.1, 8.1, 13.2, 18.1, 22.9];
 const BIJ_SHOPS: [number, number][] = [[1.1, 4.9], [6.25, 10], [11.4, 15], [16.4, 20], [21.3, 24.9]];
 export const BIJENKORF: Front = {
   name: 'Bijenkorf',
+  ids: ['w751235773', 'w751235775', 'w751235776', 'w751128373'],
   start: [4.893856597014285, 52.37348990232792], end: [4.893608397018061, 52.37330680232445],
   depthM: 0.4, hex: BIJ.stone, bodyTopM: 23.6,
   outline: [[0, 23.6], [4.75, 23.6], [4.75, 29.3], ...arch(5.4, 21.1, 29.3, 3.2, 10), [21.25, 29.3], [21.25, 23.6], [26.45, 23.6]],
@@ -57,6 +58,8 @@ const BEURS_COLS = Array.from({ length: 13 }, (_, i) => 1.3 + i * 3.47);
 const BEURS_GABLES = [2.7, 10.2, 17.5, 24.7, 31.7, 38.7];
 export const BEURS_BEURSPLEIN: Front = {
   name: 'Beurs van Berlage',
+  // The game tiles split the Beursplein hall into 642 and 645; the raw extract has it as 641.
+  ids: ['w749918642', 'w749918645', 'w749918641'],
   start: [4.895897096981563, 52.37509780235795], end: [4.895497396988156, 52.37477130235189],
   depthM: 0.3, hex: BEURS.brick,
   outline: [[0, 15.4], ...BEURS_GABLES.flatMap(c => [[c - 2.1, 15.4], [c - 0.5, 17.2], [c + 0.5, 17.2], [c + 2.1, 15.4]] as [number, number][]), [45.4, 15.4]],
@@ -73,3 +76,23 @@ export const BEURS_BEURSPLEIN: Front = {
 };
 
 export const FRONTS: Record<string, Front> = { bijenkorf: BIJENKORF, beurs: BEURS_BEURSPLEIN };
+
+export const FRONT_LIST: readonly Front[] = Object.values(FRONTS);
+
+/** Footprint parts that carry a front: routed to the landmark-kit mesh, which draws the front with them. */
+export const FRONT_PART_IDS: ReadonlySet<string> = new Set(FRONT_LIST.flatMap(f => f.ids));
+const FRONT_OF = new Map(FRONT_LIST.flatMap(f => f.ids.map(id => [id, f] as const)));
+
+type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
+
+/**
+ * A front's carrying parts stop at the front's body height and take its wall colour, so the
+ * plain prism behind a pediment or gable row neither hides it nor clashes with it.
+ */
+export function decorateFront<T extends GeoFeature>(feature: T): T {
+  const front = FRONT_OF.get(String(feature.properties.id ?? ''));
+  if (!front || feature.properties.frontCarrier) return feature;
+  const height = Number(feature.properties.height);
+  const capped = front.bodyTopM != null && Number.isFinite(height) ? Math.min(height, front.bodyTopM) : height;
+  return { ...feature, properties: { ...feature.properties, frontCarrier: front.name, height: capped, sideColour: front.hex, colour: front.hex } };
+}

@@ -539,7 +539,11 @@ class VectorBasemap {
     if (!this._pyramidalRoofs) {
       this._pyramidalRoofs = new api.PyramidalRoofs(this.map, maplibregl);
     }
-    this._pyramidalRoofs.setFeatures(features || []);
+    this._pyramidFeatures = features || [];
+    // In the three.js looks a landmark kit draws its own cones (the Waag's towers): no second cone.
+    const kitApi = window.CanalRecallThreeBuildings;
+    const kitIds = this._buildings3dEnabled && kitApi && kitApi.KIT_HIDE_IDS ? new Set(kitApi.KIT_HIDE_IDS) : null;
+    this._pyramidalRoofs.setFeatures(kitIds ? this._pyramidFeatures.filter(f => !kitIds.has(String(f.properties && f.properties.id))) : this._pyramidFeatures);
   }
 
   // The basemap keeps only the buildings the extract does not carry. Its ids
@@ -841,7 +845,10 @@ class VectorBasemap {
     if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
     const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds) : decorate;
     // Landmark kits (spires, domes, pitched roofs on naves) lower their roofed parts to the eaves.
-    this._completeCity.setFeatureDecorator(this._buildings3dEnabled && api && api.decorateKitRoof ? (feature) => api.decorateKitRoof(base(feature)) : base);
+    // Measured landmark fronts cap and colour the parts behind them (landmarkFrontData.ts).
+    this._completeCity.setFeatureDecorator(this._buildings3dEnabled && api && api.decorateKitRoof
+      ? (feature) => api.decorateFront(api.decorateKitRoof(base(feature)))
+      : base);
   }
 
   /** Resolved landmark building ids, fetched once; re-decorates the resident city when they arrive. */
@@ -884,6 +891,7 @@ class VectorBasemap {
     if (!this.map || !this.map.getLayer('osm-colored-buildings')) return; // layers are created from these flags on load
     this._applyFeatureDecorator();
     this._refreshColoredBuildingFilter();
+    if (this._pyramidFeatures) this._syncPyramidalRoofs(this._pyramidFeatures);
     if (this._buildings3dEnabled) {
       this._addThreeBuildingsLayer();
       if (this._threeBuildings) this._threeBuildings.setLook(look);

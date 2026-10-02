@@ -18,6 +18,8 @@ import { decorateRoof, exceptLandmarks, fitRect, localOuterRing, planRoof, type 
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { bayTextures, type Look } from './bayTextures.js';
 import { KITS, KIT_HIDE_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
+import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
+import { frontKitGeometry, lookHex } from './landmarkFronts.js';
 import { buildChunk, buildKitChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
@@ -127,7 +129,7 @@ const tileKeyOf = (polygons: number[][][][]): string => {
 
 export type BuildingLook = 'procedural' | Look;
 
-export { decorateRoof, exceptLandmarks, decorateKitRoof, KIT_HIDE_IDS };
+export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, KIT_HIDE_IDS };
 
 const KIT_KEY = '__kit';
 const FLAT_ROOF_GREYS = ['#8f8a83', '#9a958c', '#85817c', '#a09789'];
@@ -264,7 +266,7 @@ export class ThreeBuildings {
     const kitParts: Feature[] = [];
     for (const feature of features) {
       const p = feature.properties;
-      if (KIT_PART_IDS.has(String(p.id ?? ''))) kitParts.push(feature);
+      if (KIT_PART_IDS.has(String(p.id ?? '')) || FRONT_PART_IDS.has(String(p.id ?? ''))) kitParts.push(feature);
       if (typeof p.facade !== 'string' || !p.facadeStyle) continue;
       const polygons = asPolygons(feature.geometry);
       if (!polygons.length) continue;
@@ -345,7 +347,15 @@ export class ThreeBuildings {
       const id = String(f.properties.id);
       parts.set(id, { id, ring: outer.map(([lng, lat]) => [(lng - ORIGIN.lng) * kx, (lat - ORIGIN.lat) * ky] as [number, number]), minHeightM: Number(f.properties.minHeight) || 0, heightM: Number(f.properties.height) });
     }
-    const geometry: KitPartGeometry[] = KITS.flatMap(kit => kitGeometry(kit, parts));
+    const look = this.look;
+    // Kits and fronts are authored in natural colours; each look recolours them like its neighbours.
+    const geometry: KitPartGeometry[] = KITS.flatMap(kit => kitGeometry(kit, parts)).map(g => ({ ...g, tris: g.tris.map(t => ({ ...t, hex: lookHex(t.hex, look) })) }));
+    for (const front of FRONT_LIST) {
+      if (!front.ids.some(id => parts.has(id))) continue;
+      const g = frontKitGeometry(front, ORIGIN, look), held = geometry.find(x => x.id === g.id);
+      // One range per id: a front shares its first carrier's range (a kit roof on the Beurs hall), so hiding the answer hides both.
+      if (held) held.tris.push(...g.tris); else geometry.push(g);
+    }
     const roofBase = this.look === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
     const plain = this.look === 'procedural' ? cellLayer('canal', 'plain', 0) : bayLayer('canal', 0, 'plain');
     return buildKitChunk(geometry, { plain, flat: roofBase + 3, slope: roofBase + 1 });
