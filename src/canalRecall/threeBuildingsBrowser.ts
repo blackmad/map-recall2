@@ -130,6 +130,7 @@ export type BuildingLook = 'procedural' | Look;
 export { decorateRoof, exceptLandmarks, decorateKitRoof, KIT_HIDE_IDS };
 
 const KIT_KEY = '__kit';
+const FLAT_ROOF_GREYS = ['#8f8a83', '#9a958c', '#85817c', '#a09789'];
 
 /** Roof colours per look: pantile and slate (a look's own tones, picked by the plan's `tone`). */
 export const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
@@ -369,6 +370,10 @@ export class ThreeBuildings {
       building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && hashShop(id) };
       plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
     }
+    // The mesh owns the top: walls to full height and, for a flat roof, a lid in the mapped roof
+    // colour (or a neutral bitumen/gravel grey when the roof colour just repeats the wall's).
+    const mapped = typeof p.roofColour === 'string' && p.roofColour !== p.colour ? p.roofColour : null;
+    building.lid = { hex: mapped ?? FLAT_ROOF_GREYS[lookVariant(id) % FLAT_ROOF_GREYS.length], flatLayer: roofBase + 3 };
     if (p.kitWall) {
       // A landmark kit's walls: its own stone or brick colour, bare or in a window grid.
       building.wallHex = String(p.kitWallHex ?? building.wallHex);

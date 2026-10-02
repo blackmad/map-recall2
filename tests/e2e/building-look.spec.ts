@@ -15,7 +15,10 @@ test('building look switches live and the URL look wins over the preference', as
   const read = () => page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
     const pattern = map.getLayer('osm-colored-building-facades') ? map.getLayoutProperty('osm-colored-building-facades', 'visibility') : 'absent';
-    return { look: vm._buildings3dLook, pattern, three: vm._threeBuildings ? vm._threeBuildings.stats().chunks : 0, base: JSON.stringify(map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-base')).includes('"has","facade"') };
+    return { look: vm._buildings3dLook, pattern, three: vm._threeBuildings ? vm._threeBuildings.stats().chunks : 0, base: JSON.stringify(map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-base')).includes('"has","facade"'),
+      // Three looks own whole buildings: no MapLibre lid or wall band to hang in the air (user report 2026-10-02).
+      lidOff: JSON.stringify(map.getFilter('osm-colored-building-roofs')).includes('["!",["has","facade"]]'),
+      wallCollapsed: JSON.stringify(map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-height')).includes('"has","facade"') };
   });
 
   const first = await read();
@@ -23,7 +26,7 @@ test('building look switches live and the URL look wins over the preference', as
 
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.setBuildingLookPreference('cartoon'));
   await expect.poll(async () => (await read()).three, { timeout: 60_000 }).toBeGreaterThan(0);
-  expect(await read()).toMatchObject({ look: 'cartoon', pattern: 'none', base: true });
+  expect(await read()).toMatchObject({ look: 'cartoon', pattern: 'none', base: true, lidOff: true, wallCollapsed: true });
 
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.setBuildingLookPreference('photo'));
   await expect.poll(async () => (await read()).look).toBe('photo');
@@ -32,7 +35,7 @@ test('building look switches live and the URL look wins over the preference', as
 
   await page.evaluate(() => (window as any).canalRecallGame.vectorMap.setBuildingLookPreference('default'));
   await expect.poll(async () => (await read()).pattern).toBe('visible');
-  expect(await read()).toMatchObject({ look: 'default', three: 0, base: true });
+  expect(await read()).toMatchObject({ look: 'default', three: 0, base: true, lidOff: false, wallCollapsed: false });
 });
 
 test('a URL look is not overridden by the saved preference', async ({ page }) => {

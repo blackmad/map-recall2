@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Three.js looks own whole buildings: no more hanging roof slabs
+
+User reports with screenshots (Da Costakade, then roofs "hang there when switching display modes"): in the three.js looks the walls came from the three mesh but every building's top came from MapLibre: the plain wall layer shrunk to a 0.45 m cornice band whose top face was the roof, plus the `osm-colored-building-roofs` lid 0.4 m above it. Two renderers, so whenever the mesh rebuilt (a look switch, a tile) the band and lid hung in the air, and where heights disagreed the slabs overhung the walls. The user's call: drop the slab layer. Now, while a three look is visible, the mesh draws walls to full height (a bare strip above the pattern rows), an earcut lid over every flat footprint (courtyards stay open) on the flat layer in the mapped roof colour or a neutral grey, and MapLibre's wall collapses to a footprint on the ground (`_wallTopExpression`) and its lid filter drops facade buildings. The highlighted answer keeps its plain yellow MapLibre prism. Pinned by `test:three-buildings` (lid area = footprint minus courtyard, faces up, walls reach the top) and `building-look.spec.ts` (`lidOff`, `wallCollapsed`).
+
 ## 2026-10-02 — Cuyperspassage rideable; keyboard rides at every reported spot; nightly sweeps
 
 - Centraal's cycle tunnel (Cuyperspassage) runs beneath a building footprint

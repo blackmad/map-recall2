@@ -763,7 +763,9 @@ class VectorBasemap {
     if (id === 'osm-colored-building-ground-floors') return ['all', ['has', 'groundColour'], ['!=', ['get', 'groundAppearanceStyleSource'], 'wall-inherited-not-independently-measured']];
     if (id !== 'osm-colored-building-roofs') return null;
     const helpers = window.CanalRecallBuildings;
-    return helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'];
+    const flat = helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'];
+    // The three.js mesh draws its own lids; a MapLibre lid would hang in the air while it rebuilds.
+    return this._threeOwnsTops() ? ['all', flat, ['!', ['has', 'facade']]] : flat;
   }
 
   _facadesLib() {
@@ -790,10 +792,27 @@ class VectorBasemap {
     const ground = ['case', this._coloredBuildingBaseFilter('osm-colored-building-ground-floors'), groundTop, minHeight];
     const Facades = this._facadesLib();
     if (!Facades || !this._facadesActive()) return ground;
+    // The three.js mesh draws these buildings whole, top included: the plain wall collapses to nothing.
+    if (this._threeOwnsTops()) return ['case', this._threeDrawnExpression(), minHeight, ground];
     return ['case',
       ['all', ['has', 'facade'], ['!', ['boolean', ['feature-state', 'highlighted'], false]]],
       ['max', minHeight, ['-', wallTop, Facades.FACADE_CORNICE_M]],
       ground];
+  }
+
+  /** Buildings the three.js layer draws whole: every facade building except the highlighted answer. */
+  _threeDrawnExpression() {
+    return ['all', ['has', 'facade'], ['!', ['boolean', ['feature-state', 'highlighted'], false]]];
+  }
+
+  /** The plain wall's top: collapsed onto its base (a footprint on the ground) where three.js draws the building. */
+  _wallTopExpression(minHeight, wallTop) {
+    return this._threeOwnsTops() ? ['case', this._threeDrawnExpression(), minHeight, wallTop] : wallTop;
+  }
+
+  /** Whether the visible three.js layer draws whole buildings (walls, cornice band and flat lid). */
+  _threeOwnsTops() {
+    return !!this._threeBuildings && this._buildings3dEnabled && this._facadesActive();
   }
 
   /** The three.js facade layer, when `?buildings3d=1` and the bundle is present. */
@@ -932,7 +951,9 @@ class VectorBasemap {
     const groundTop = ['min', wallTop, ['+', minHeight, ['coalesce', ['get', 'groundFloorHeightM'], 3.2]]];
     if (this.map.getLayer('osm-colored-buildings')) {
       this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', this._wallBaseExpression(groundTop, minHeight, wallTop));
+      this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-height', this._wallTopExpression(minHeight, wallTop));
     }
+    this._refreshColoredBuildingFilter(); // the lid layer's filter depends on who owns the tops
   }
 
   /**
