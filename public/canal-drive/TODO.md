@@ -999,3 +999,8 @@ Not milestones — standing obligations with live guards.
 - Audit route topology at docks, broad water polygons, bridges, and split OSM
   fragments.
 - Tune neighborhood postcard scale and long-name typography on mobile.
+
+- P2: Panorama facade textures: pick correct Anne Frank House (Prinsengracht 263) parts, add Bijenkorf/Waag/Sherlocked, apply the JPEG to the landmark wall in the three layer, confirm licence/attribution. Script: `scripts/pano-facades/build-pano-facade.ts`.
+
+- P2: Anne Frank House facade needs a source other than panoramas (Commons photos once the rate limit clears, with per-image licence/attribution); Sherlocked is not in the landmark data (which building was meant?).
+- P2: Apply panorama JPEGs to landmark walls in the three layer (needs per-wall UV mapping) and ship Waag kit via KITS if kept.
