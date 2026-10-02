@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Building tiles no longer stay empty after one failed fetch
+
+User report: a whole tile of Jordaan/Rozengracht never loaded. The streamer put
+any failed fetch (5xx, dropped connection, a throw while applying side data,
+an abort that surfaced under another name) in its permanent `empty` set. Now:
+404 and unparseable bodies stay empty; 429/5xx, network errors and 20 s
+timeouts retry with backoff (4 tries); our own camera aborts are never
+failures; a bad enricher no longer costs the tile; an aborted fetch's cleanup
+no longer unregisters its replacement. Pinned in `check-building-tile-source.ts`.
+Cause is inferred from code, not seen in a browser.
+
 ## 2026-10-02 — Facades for OSM-coloured buildings; zoom hysteresis; Map Recall near-home scope
 
 - Plain blocks around Centraal were buildings with their own OSM colour tag
