@@ -26,7 +26,9 @@ export type Stack = { onId: string; startZ?: number; stages: Stage[] };
 export type KitRoof = { id: string; riseM: number; mat: 'slate' | 'tile' | 'lead' };
 /** How a kit's roofed parts are walled: bare brick or stone, or a window grid in a facade style. */
 export type KitWall = { plain: true; hex: string } | { plain: false; style: 'canal' | 'school'; hex: string };
-export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; wall?: KitWall };
+/** `hides`: further parts the kit's own geometry replaces (a dome's OSM bands under a modelled dome). */
+/** `body`: the landmark's remaining parts, walled in the kit's own style instead of a generic facade. */
+export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; wall?: KitWall; hides?: string[]; body?: string[] };
 
 export const MAT_HEX: Record<Mat, string> = {
   brick: '#9a5240', blue: '#3f5f9a', stone: '#cfc2a6', lead: '#4d535c', gold: '#d9b24c', copper: '#6aa896', slate: '#4a525d', white: '#efe9db', tile: '#b5543a',
@@ -136,17 +138,120 @@ export const KITS: Kit[] = [
     roofs: [...['w749918651', 'w749918653', 'w749918637', 'w749918638'].map(id => ({ id, riseM: 7, mat: 'slate' as const })),
       { id: 'w749918641', riseM: 11.5, mat: 'slate' }, { id: 'w749918642', riseM: 9.5, mat: 'slate' }, { id: 'w749918645', riseM: 8.5, mat: 'slate' }],
   },
+  {
+    // Centraal's twin towers: square brick shafts with gilt dials (the west one a clock, the
+    // east one a wind dial), a stone band, an open lead lantern and a slim spire each.
+    name: 'Centraal',
+    wall: { plain: true, hex: '#9a5a45' },
+    tiers: ['w752653568', 'w752653567'].map(id => ({ id, shape: 'square' as const, mat: 'brick' as const, z1: 27, clocks: true })),
+    stacks: ['w752653568', 'w752653567'].map(onId => ({ onId, startZ: 27, stages: [
+      { shape: 'square' as const, w0: 7.6, w1: 7.6, h: 1.2, mat: 'stone' as const },
+      { shape: 'octagon' as const, w0: 5.2, w1: 4.8, h: 4.2, mat: 'lead' as const },
+      { shape: 'octagon' as const, w0: 5.6, w1: 0.6, h: 4.6, mat: 'lead' as const },
+      { shape: 'octagon' as const, w0: 0.6, w1: 0, h: 1.6, mat: 'gold' as const },
+    ] })),
+    roofs: [],
+    body: ['w451533147', 'w451533145', 'w1239767708', 'w424523117', 'w451533149', 'w506192827', 'w752653562', 'w752653565', 'w752653571', 'w752653572', 'w752738611', 'w1239767712', 'w1239767716', 'w1239767717', 'w1239767718', 'w1239767719', 'w1239767720', 'w1239767721', 'w1239767722', 'w1239767723', 'w1239767724', 'w1239767725', 'w1239767726', 'w1240155430', 'w1240155433', 'w1240155434', 'w752286896', 'w752286897', 'w752286898', 'w752328419', 'w752328422', 'w752653574', 'w1239767701', 'w1239767703', 'w1239767706', 'w1239767709', 'w589499178', 'w752328416', 'w752328417', 'w752328418', 'w752328420', 'w752653566', 'w752653570', 'w752653573', 'w752738610', 'w1239767711', 'w1239767713', 'w1239767714', 'w1239767715', 'w1240155431', 'w1240155435', 'w1240314141', 'w1240314142', 'w752328423', 'w752328424', 'w752328425', 'w752328426', 'w752653575', 'w1239767702'],
+  },
+  {
+    // Rijksmuseum: two central towers with steep slate spires over the gate, four corner
+    // turrets with spires, steep roofs on the main wings. Cuypers' red brick.
+    name: 'Rijksmuseum',
+    wall: { plain: false, style: 'school', hex: '#9a4f3c' },
+    tiers: [
+      ...['w749429998', 'w749429999'].map(id => ({ id, shape: 'square' as const, mat: 'brick' as const, z1: 38 })),
+      ...['w749805757', 'w749805758', 'w749805760', 'w749805761'].map(id => ({ id, shape: 'square' as const, mat: 'brick' as const, z1: 33 })),
+    ],
+    stacks: [
+      ...['w749429998', 'w749429999'].map(onId => ({ onId, startZ: 38, stages: [
+        { shape: 'square' as const, w0: 13.4, w1: 13.4, h: 1.1, mat: 'stone' as const },
+        { shape: 'square' as const, w0: 12.4, w1: 0.6, h: 14, mat: 'slate' as const },
+        { shape: 'octagon' as const, w0: 0.6, w1: 0, h: 1.4, mat: 'gold' as const },
+      ] })),
+      ...['w749805757', 'w749805758', 'w749805760', 'w749805761'].map(onId => ({ onId, startZ: 33, stages: [
+        { shape: 'square' as const, w0: 7.4, w1: 7.4, h: 0.8, mat: 'stone' as const },
+        { shape: 'square' as const, w0: 6.8, w1: 0.4, h: 8.4, mat: 'slate' as const },
+        { shape: 'octagon' as const, w0: 0.4, w1: 0, h: 1, mat: 'gold' as const },
+      ] })),
+    ],
+    roofs: ['w749430000', 'w749430001', 'w749429988'].map(id => ({ id, riseM: 8, mat: 'slate' as const })),
+    body: ['NL.IMBAG.Pand.0363100012235882', 'w431070791', 'w431070942', 'w517791046', 'w749429987', 'w749429989', 'w749429991', 'w749429992', 'w749429993', 'w749429994', 'w749429995', 'w749429996', 'w749429997', 'w749805753', 'w749805756', 'w749805759', 'w749805762', 'w749429990', 'w749805754', 'w749805755', 'w749805763', 'w749805764', 'NL.IMBAG.Pand.0363100012229949', 'NL.IMBAG.Pand.0363100012157857', 'NL.IMBAG.Pand.0363100012194197', 'NL.IMBAG.Pand.0363100012236686'],
+  },
+  {
+    // Sint-Nicolaasbasiliek: twin west towers with octagonal lanterns and small domes, and the
+    // crossing dome on its drum with a lantern. Dark brick, lead and copper.
+    name: 'Sint-Nicolaas',
+    wall: { plain: true, hex: '#7a4636' },
+    tiers: [
+      ...['w645534930', 'w645534931'].map(id => ({ id, shape: 'square' as const, mat: 'brick' as const, z1: 43 })),
+      { id: 'w749289632', shape: 'octagon', mat: 'brick', z0: 24, z1: 39, columns: 8 },
+    ],
+    stacks: [
+      ...['w645534930', 'w645534931'].map(onId => ({ onId, startZ: 43, stages: [
+        { shape: 'octagon' as const, w0: 5.6, w1: 5.4, h: 6, mat: 'brick' as const },
+        { shape: 'octagon' as const, w0: 6.2, w1: 2.2, h: 3.4, mat: 'copper' as const },
+        { shape: 'octagon' as const, w0: 1.4, w1: 0, h: 2.2, mat: 'copper' as const },
+        { shape: 'octagon' as const, w0: 0.4, w1: 0, h: 1.2, mat: 'gold' as const },
+      ] })),
+      { onId: 'w749289632', startZ: 39, stages: [
+        { shape: 'octagon', w0: 13.6, w1: 11.4, h: 4, mat: 'copper' },
+        { shape: 'octagon', w0: 11.4, w1: 6.4, h: 4.4, mat: 'copper' },
+        { shape: 'octagon', w0: 6.4, w1: 2.6, h: 2.6, mat: 'copper' },
+        { shape: 'octagon', w0: 2.4, w1: 2.2, h: 3.4, mat: 'white' },
+        { shape: 'octagon', w0: 2.8, w1: 0, h: 2.4, mat: 'copper' },
+        { shape: 'octagon', w0: 0.5, w1: 0, h: 1, mat: 'gold' },
+      ] },
+    ],
+    roofs: [{ id: 'w749289633', riseM: 8, mat: 'slate' }, { id: 'w749289634', riseM: 8, mat: 'slate' }],
+    hides: ['w750217062', 'w750591090'],
+    body: ['w750217059', 'w750217060', 'w750217061', 'w750217063', 'w750217064', 'w750591088'],
+  },
+  {
+    // Munttoren: an octagonal brick and stone tower with clocks on the old Regulierspoort
+    // base, an open lantern and Hendrick de Keyser's spire.
+    name: 'Munttoren',
+    tiers: [
+      { id: 'w751698384', shape: 'octagon', mat: 'brick', z1: 14, clocks: true },
+      { id: 'w751698383', shape: 'octagon', mat: 'white', z0: 14, z1: 19 },
+      { id: 'w751698382', shape: 'octagon', mat: 'lead', z0: 19, z1: 23 },
+    ],
+    stacks: [{ onId: 'w751698382', stages: [
+      { shape: 'octagon', w0: 3.8, w1: 3.4, h: 3, mat: 'white' },
+      { shape: 'octagon', w0: 3.6, w1: 0.3, h: 7.5, mat: 'lead' },
+      { shape: 'octagon', w0: 0.5, w1: 0, h: 1.2, mat: 'gold' },
+    ] }],
+    roofs: [],
+  },
+  {
+    // De Krijtberg (Sint-Franciscus Xaveriuskerk): two slender neo-Gothic towers with tall
+    // slate spires on the Singel front, a steep nave roof behind.
+    name: 'Krijtberg',
+    wall: { plain: true, hex: '#7a4a3a' },
+    tiers: ['w751905304', 'w751905305'].map(id => ({ id, shape: 'octagon' as const, mat: 'brick' as const, z1: 33 })),
+    stacks: ['w751905304', 'w751905305'].map(onId => ({ onId, startZ: 33, stages: [
+      { shape: 'octagon' as const, w0: 4.6, w1: 4.6, h: 0.8, mat: 'stone' as const },
+      { shape: 'octagon' as const, w0: 4.2, w1: 0.3, h: 15, mat: 'slate' as const },
+      { shape: 'octagon' as const, w0: 0.4, w1: 0, h: 1.8, mat: 'gold' as const },
+    ] })),
+    roofs: [{ id: 'w751713223', riseM: 10, mat: 'slate' }, { id: 'w751713221', riseM: 10, mat: 'slate' }],
+    body: ['w751713218', 'w751713219', 'w751713220', 'w751713222', 'w751905303', 'w751979070'],
+  },
 ];
 
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */
-export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id)]));
-export const KIT_HIDE_IDS: readonly string[] = [...new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId)]))];
+export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.hides ?? [])]));
+export const KIT_HIDE_IDS: readonly string[] = [...new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...(k.hides ?? [])]))];
 const KIT_ROOF = new Map(KITS.flatMap(k => k.roofs.map(r => [r.id, { roof: r, wall: k.wall }] as const)));
+const KIT_BODY = new Map(KITS.flatMap(k => (k.wall ? (k.body ?? []).map(id => [id, k.wall!] as const) : [])));
 
 type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 
 /** Lower a kit roof host's plain wall to its eaves and stop the flat lid; other features pass through. */
 export function decorateKitRoof<T extends GeoFeature>(feature: T): T {
+  const body = KIT_BODY.get(String(feature.properties.id ?? ''));
+  if (body && !feature.properties.kitWall) {
+    return { ...feature, properties: { ...feature.properties, facade: 'kit', facadeStyle: body.plain ? 'school' : body.style, kitWall: body.plain ? 'plain' : 'grid', kitWallHex: body.hex, sideColour: body.hex } };
+  }
   const entry = KIT_ROOF.get(String(feature.properties.id ?? ''));
   if (!entry || feature.properties.kitRoof) return feature;
   const { roof, wall } = entry, height = Number(feature.properties.height);
