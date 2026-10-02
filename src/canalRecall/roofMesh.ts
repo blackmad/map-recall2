@@ -44,9 +44,9 @@ export function hash01(text: string): number {
 }
 
 /** Smallest-area oriented rectangle over the footprint's own edge directions. */
-export function fitRect(points: readonly Vec2[]): Rect | null {
+export function fitRect(points: readonly Vec2[], maxVertices = 14): Rect | null {
   const pts = points.length > 1 && points[0][0] === points[points.length - 1][0] && points[0][1] === points[points.length - 1][1] ? points.slice(0, -1) : points;
-  if (pts.length < 4 || pts.length > 14) return null;
+  if (pts.length < 4 || pts.length > maxVertices) return null;
   let area2 = 0;
   for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) area2 += pts[j][0] * pts[i][1] - pts[i][0] * pts[j][1];
   const polyArea = Math.abs(area2) / 2;

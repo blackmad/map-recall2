@@ -23,12 +23,12 @@ const SPOTS = [
   { name: 'jordaan-rozengracht', at: [4.8531, 52.3740], face: [4.8599, 52.3613] },
   // Centraal Station: a landmark that must keep its own form.
   { name: 'centraal', at: [4.9003, 52.3774], face: [4.9004, 52.3789] },
-  // Landmark kits: stand south or west of each and look at it.
-  { name: 'k-westerkerk', at: [4.8849, 52.3733], face: [4.8836, 52.3744] },
-  { name: 'k-zuiderkerk', at: [4.8995, 52.3691], face: [4.8996, 52.3701] },
-  { name: 'k-montelbaan', at: [4.9030, 52.3712], face: [4.9056, 52.3720] },
-  { name: 'k-noorderkerk', at: [4.8868, 52.3787], face: [4.8862, 52.3795] },
-  { name: 'k-palace', at: [4.8921, 52.3722], face: [4.8918, 52.3732] },
+  // Landmark kits: stand ~55 m from each tower and look straight at it.
+  { name: 'k-westerkerk', at: [4.88421, 52.37417], face: [4.88351, 52.37452] },
+  { name: 'k-zuiderkerk', at: [4.89899, 52.36985], face: [4.89949, 52.37020] },
+  { name: 'k-montelbaan', at: [4.90610, 52.37165], face: [4.90566, 52.37203] },
+  { name: 'k-noorderkerk', at: [4.88585, 52.37925], face: [4.88642, 52.37966] },
+  { name: 'k-palace', at: [4.89105, 52.37230], face: [4.89166, 52.37314] },
 ] as const;
 
 async function parkAt(page: Page, at: readonly number[], face: readonly number[], view: 'chase' | 'cockpit') {

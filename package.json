@@ -10,6 +10,7 @@
     "build:canal-study-roofs": "esbuild src/canalRecall/studyRoofsBrowser.ts --bundle --format=iife --global-name=CanalRecallStudyRoofs --outfile=public/canal-drive/js/study-roofs.bundle.js --minify",
     "build:canal-study-facades": "esbuild src/canalRecall/studyFacadesBrowser.ts --bundle --format=iife --global-name=CanalRecallStudyFacades --outfile=public/canal-drive/js/study-facades.bundle.js --minify",
     "build:canal-three-buildings": "esbuild src/canalRecall/threeBuildingsBrowser.ts --bundle --format=iife --global-name=CanalRecallThreeBuildings --outfile=public/canal-drive/js/three-buildings.bundle.js --minify",
+    "build:kit-viewer": "esbuild src/canalRecall/landmarkKitsViewer.ts --bundle --format=iife --outfile=public/canal-drive/js/kit-viewer.bundle.js",
     "build:canal-study-trees": "esbuild src/canalRecall/studyTreesBrowser.ts --bundle --format=iife --global-name=CanalRecallStudyTrees --outfile=public/canal-drive/js/study-trees.bundle.js --minify",
     "build:canal-study-public-realm": "esbuild src/canalRecall/studyPublicRealmBrowser.ts --bundle --format=iife --global-name=CanalRecallStudyPublicRealm --outfile=public/canal-drive/js/study-public-realm.bundle.js --minify",
     "build:canal-buildings": "esbuild src/canalRecall/buildingStyle.ts --bundle --format=iife --global-name=CanalRecallBuildings --outfile=public/canal-drive/js/building-style.bundle.js --minify",
