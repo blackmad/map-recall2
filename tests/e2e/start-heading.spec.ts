@@ -19,7 +19,8 @@ for (const [travelMode, seed] of [['car', 0x5eed1234], ['car', 0x1234abcd], ['ca
       const game = (window as any).canalRecallGame;
       const { x, y, angle } = game.player;
       const route: Array<{ x: number; y: number }> = game.routePath ?? [];
-      const target = route.find(p => Math.hypot(p.x - x, p.y - y) >= 150) ?? route[route.length - 1];
+      // The first leg is where the rider begins (a route may bend sharply soon after).
+      const target = route.find(p => Math.hypot(p.x - x, p.y - y) >= 35) ?? route[route.length - 1];
       const dx = target.x - x, dy = target.y - y;
       const facing = (Math.cos(angle) * dx + Math.sin(angle) * dy) / Math.hypot(dx, dy);
       const bearing = game.vectorMap.map?.getBearing?.();
@@ -28,9 +29,8 @@ for (const [travelMode, seed] of [['car', 0x5eed1234], ['car', 0x1234abcd], ['ca
     });
     const result = await measure();
     expect(result.routePoints).toBeGreaterThan(1);
-    // Toward the route, not away: positive along the way it goes (the route may bend within
-    // the first 150 px, so this is not a tight angle).
-    expect(result.facing, JSON.stringify(result)).toBeGreaterThan(0.05);
+    // Toward the first leg of the route, not away from it.
+    expect(result.facing, JSON.stringify(result)).toBeGreaterThan(0.3);
     // The camera eases around after the spawn; once settled it sits behind the bike.
     if (result.bearing != null) {
       await expect.poll(async () => {
