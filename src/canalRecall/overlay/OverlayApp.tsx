@@ -229,11 +229,11 @@ const VIEW: Choice<CanalPreferences['viewMode']>[] = [
 ];
 
 const BUILDING_LOOK: Choice<CanalPreferences['buildingLook']>[] = [
-  { value: 'default', title: 'Default', hint: 'Plain period facades' },
+  { value: 'photo', title: 'Photo', hint: 'Brick and sash windows' },
   { value: 'procedural', title: 'Painted', hint: 'Fitted windows and doors' },
   { value: 'storybook', title: 'Storybook', hint: 'Softly painted, natural colours' },
   { value: 'cartoon', title: 'Cartoon', hint: 'Flat, bold, cel-shaded' },
-  { value: 'photo', title: 'Photo', hint: 'Brick and sash windows' },
+  { value: 'untextured', title: 'Untextured', hint: 'Plain colours, lightest on the phone' },
 ];
 
 const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
