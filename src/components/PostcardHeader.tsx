@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const WIDTH = 640;
-const HEIGHT = 300;
+const HEIGHT = 400;
 const FONT_FAMILY = 'Archivo Black';
 let fontsPromise: Promise<unknown> | null = null;
 
