@@ -14,38 +14,83 @@ import { openRoute } from './helpers';
 // under 10 px (about 3 m) of movement in 4 s. It also fails when a question is
 // pending but its card is not visible for over a second.
 //
-//   KEYBOARD_RIDE=lat,lng[;lat,lng…]  bridges to ride over (default below)
+//   KEYBOARD_RIDE=lat,lng[;lat,lng…]  bridges to ride over (default below);
+//                 lat,lng,lat,lng rides from one point to the other
+//   KEYBOARD_RIDE_GREP=regex          only the named rides that match
 
 type Point = { x: number; y: number };
+type LatLng = [number, number];
+/**
+ * `at`: a bridge or seam; the ride runs ~120 m along the nearest road's axis
+ * on each side of it, in both directions. `from`/`to`: a reported route,
+ * ridden as the game's router plans it (one direction per entry).
+ */
+type Ride = { name: string; at?: LatLng; from?: LatLng; to?: LatLng };
 
-const DEFAULT_BRIDGES: Array<{ name: string; at: [number, number] }> = [
+// Every place a "stuck" or "really hard" report named (HISTORY.md), so the
+// real keyboard-and-quiz path is exercised wherever a rider got into trouble.
+const DEFAULT_RIDES: Ride[] = [
   { name: 'Sint Antoniessluis', at: [52.36968, 4.90115] },
   { name: 'Westeinde over the Singelgracht', at: [52.35895, 4.89815] },
   { name: 'Koepelkerk fork', at: [52.3780, 4.8935] },
+  // 2026-10-01 "driving through this tunnel in centraal is really hard": the
+  // Cuyperspassage cycle tunnel under Amsterdam Centraal, both ways, and on to
+  // the IJ-side cycle path east.
+  { name: 'Cuyperspassage north to De Ruijterkade', from: [52.37890, 4.89790], to: [52.38067, 4.89817] },
+  { name: 'Cuyperspassage south from De Ruijterkade', from: [52.38067, 4.89817], to: [52.37890, 4.89790] },
+  { name: 'Cuyperspassage to the IJ side east', from: [52.37890, 4.89790], to: [52.37960, 4.90060] },
+  { name: 'Zanddwarsstraat end to Sint Antoniessluis', from: [52.37009, 4.89927], to: [52.36940, 4.90230] },
+  { name: 'Nieuwezijds Armsteeg to Nieuwendijk', from: [52.37702, 4.89530], to: [52.37708, 4.89660] },
+  { name: 'Bullebakssluis, Marnixstraat into Westerkade', from: [52.3745, 4.8766], to: [52.37396, 4.8769] },
+  { name: 'Solitudobrug', at: [52.340602, 4.925079] },
+  { name: 'Melkwegbrug', at: [52.364876, 4.881568] },
+  { name: 'Bosch van Drakesteinpad seam', at: [52.376205, 4.789186] },
+  { name: 'Burgemeester Fockstraat bridge', at: [52.377326, 4.831227] },
+  { name: 'Liesdelsluis', at: [52.374773, 4.899287] },
+  { name: 'Karel van het Revebrug', at: [52.358868, 4.817654] },
+  { name: 'Nannie van Wehlstraat bridge', at: [52.380608, 4.810128] },
 ];
-const bridges = process.env.KEYBOARD_RIDE
-  ? process.env.KEYBOARD_RIDE.split(';').map((p, i) => ({ name: `probe ${i + 1}`, at: p.split(',').map(Number) as [number, number] }))
-  : DEFAULT_BRIDGES;
+const rides: Ride[] = process.env.KEYBOARD_RIDE
+  ? process.env.KEYBOARD_RIDE.split(';').map((p, i) => {
+    const n = p.split(',').map(Number);
+    return n.length >= 4
+      ? { name: `probe ${i + 1}`, from: [n[0], n[1]] as LatLng, to: [n[2], n[3]] as LatLng }
+      : { name: `probe ${i + 1}`, at: [n[0], n[1]] as LatLng };
+  })
+  : DEFAULT_RIDES;
+const filter = process.env.KEYBOARD_RIDE_GREP ? new RegExp(process.env.KEYBOARD_RIDE_GREP, 'i') : null;
+// Bridge rides go both ways; route rides as written.
+const legs = rides.filter(r => !filter || filter.test(r.name)).flatMap(r => r.at
+  ? [{ ...r, reverse: false }, { ...r, name: `${r.name} (back)`, reverse: true }]
+  : [{ ...r, reverse: false }]);
 
 const TICK_MS = 80;
 const RIDE_SECONDS = 60;
 const STUCK_SECONDS = 4;
 
-async function placeBefore(page: Page, at: [number, number]) {
-  return page.evaluate(([lat, lng]) => {
+async function placeBefore(page: Page, ride: Ride & { reverse: boolean }) {
+  return page.evaluate((ride) => {
     const game = (window as any).canalRecallGame;
     const loader = game.osmLoader;
     const perLat = 111320 * 3, perLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180) * 3;
-    const bridge = {
+    const toXY = ([lat, lng]: [number, number]) => ({
       x: loader._lastOffsetX + (lng - loader._lastCenterLng) * perLng,
       y: loader._lastOffsetY - (lat - loader._lastCenterLat) * perLat,
-    };
-    const road = game.track.getNearestRoad(bridge.x, bridge.y);
-    if (!road) return null;
+    });
     const snap = (p: { x: number; y: number }) => { const r = game.track.getNearestRoad(p.x, p.y); return r ? { x: r.x, y: r.y } : p; };
-    const dir = { x: Math.cos(road.angle), y: Math.sin(road.angle) };
-    const from = snap({ x: road.x - dir.x * 360, y: road.y - dir.y * 360 });
-    const to = snap({ x: road.x + dir.x * 360, y: road.y + dir.y * 360 });
+    let from: { x: number; y: number }, to: { x: number; y: number };
+    if (ride.at) {
+      const bridge = toXY(ride.at);
+      const road = game.track.getNearestRoad(bridge.x, bridge.y);
+      if (!road) return null;
+      const dir = { x: Math.cos(road.angle), y: Math.sin(road.angle) };
+      from = snap({ x: road.x - dir.x * 360, y: road.y - dir.y * 360 });
+      to = snap({ x: road.x + dir.x * 360, y: road.y + dir.y * 360 });
+      if (ride.reverse) [from, to] = [to, from];
+    } else {
+      from = snap(toXY(ride.from!));
+      to = snap(toXY(ride.to!));
+    }
     const path = game.track.findRoute(from, to);
     if (!path || path.length < 2) return null;
     const player = game.player;
@@ -55,16 +100,41 @@ async function placeBefore(page: Page, at: [number, number]) {
     game._lastBridgeQuizAt = -Infinity;
     game._quizzedCrossings?.clear?.();
     if (typeof game._reclaimKeyboardFocus === 'function') game._reclaimKeyboardFocus();
+    // Count the frames the road guard had to act: how hard the ride was,
+    // not only whether it finished.
+    // The bundle's exports are getters, so wrap by replacing the global.
+    const w = window as any;
+    if (!w.CanalRecallCar.__counted) {
+      const original = w.CanalRecallCar.constrainCarToRoad;
+      w.CanalRecallCar = {
+        ...w.CanalRecallCar,
+        __counted: true,
+        constrainCarToRoad: (...args: unknown[]) => {
+          const result = original(...args);
+          const g = w.__keyboardRideGuard;
+          g.frames++;
+          if (result !== 'on-road') {
+            g.edge++;
+            const p = args[0] as { x: number; y: number };
+            if (g.where.length < 2000) g.where.push([Math.round(p.x), Math.round(p.y), result[0]]);
+          }
+          if (result === 'rolled-back') g.rolledBack++;
+          if (result === 'unwedged') g.unwedged++;
+          return result;
+        },
+      };
+    }
+    w.__keyboardRideGuard = { frames: 0, edge: 0, rolledBack: 0, unwedged: 0, where: [] };
     return { path: path.map((p: Point) => ({ x: p.x, y: p.y })), to };
-  }, at);
+  }, ride);
 }
 
-for (const bridge of bridges) {
-  test(`rides over ${bridge.name} on the keyboard, quiz on`, async ({ page }, testInfo) => {
+for (const bridge of legs) {
+  test(`rides ${bridge.name} on the keyboard, quiz on`, async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'desktop', 'keyboard input; desktop only');
     test.setTimeout(240_000);
     await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
-    const plan = await placeBefore(page, bridge.at);
+    const plan = await placeBefore(page, bridge);
     expect(plan, 'a route over the bridge').toBeTruthy();
     const { path, to } = plan!;
 
@@ -168,7 +238,26 @@ for (const bridge of bridges) {
     }
     await releaseAll();
     if (failure || !arrived) await page.screenshot({ path: testInfo.outputPath('keyboard-ride.png') });
-    console.log(`${bridge.name}: arrived=${arrived} answered=${answered} (wrong ${answeredWrong})${failure ? ' FAIL ' + failure : ''}`);
+    const guard = await page.evaluate(() => {
+      const w = window as any;
+      const g = w.__keyboardRideGuard;
+      const loader = w.canalRecallGame.osmLoader;
+      const perLat = 111320 * 3, perLng = 111320 * Math.cos(loader._lastCenterLat * Math.PI / 180) * 3;
+      // Where the guard acted, as lat,lng rounded to ~1 m, with frame counts.
+      const cells = new Map<string, number>();
+      for (const [x, y, kind] of g.where) {
+        const lat = (loader._lastCenterLat - (y - loader._lastOffsetY) / perLat).toFixed(5);
+        const lng = (loader._lastCenterLng + (x - loader._lastOffsetX) / perLng).toFixed(5);
+        const key = `${lat},${lng} ${kind}`;
+        cells.set(key, (cells.get(key) || 0) + 1);
+      }
+      return { ...g, where: [...cells.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8) };
+    });
+    if (process.env.KEYBOARD_RIDE_TRACE) console.log(JSON.stringify(guard.where));
+    const seconds = (Date.now() - started) / 1000;
+    console.log(`${bridge.name}: arrived=${arrived} in ${seconds.toFixed(1)} s, answered=${answered} (wrong ${answeredWrong}), `
+      + `guard edge frames ${guard.edge}/${guard.frames} (rolled back ${guard.rolledBack}, unwedged ${guard.unwedged})${failure ? ' FAIL ' + failure : ''}`);
+    testInfo.annotations.push({ type: 'keyboard-ride', description: JSON.stringify({ name: bridge.name, arrived, seconds, answered, guard: { frames: guard.frames, edge: guard.edge, rolledBack: guard.rolledBack, unwedged: guard.unwedged, hotspots: guard.where }, failure }) });
     expect(failure, failure).toBe('');
     expect(arrived, 'reached the far side of the bridge').toBe(true);
   });
