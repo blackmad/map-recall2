@@ -46,7 +46,7 @@ export function buildingStyle(seed: string, archetype: Archetype): Omit<BayVaria
   };
 }
 
-const PALETTES: Record<Look, Record<Archetype, { walls: string[]; accents: string[] }>> = {
+export const PALETTES: Record<Look, Record<Archetype, { walls: string[]; accents: string[] }>> = {
   cartoon: {
     canal: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
       accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
