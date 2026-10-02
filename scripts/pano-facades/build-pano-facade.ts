@@ -1,5 +1,6 @@
 /**
- * Photographic facade textures from the City of Amsterdam's street panoramas.
+ * Rectified facade references from the City of Amsterdam's street panoramas. They are
+ * drawing references for low-poly fronts (src/canalRecall/landmarkFrontData.ts), not textures.
  *
  *   NODE_USE_ENV_PROXY=1 npx tsx scripts/pano-facades/build-pano-facade.ts \
  *     --name=anne-frank-house --ids=NL.IMBAG.Pand.0363100012169587,... [--wall=N]
@@ -22,6 +23,7 @@ import jpeg from 'jpeg-js';
 import { AMSTERDAM_WORLD_ALIGNED, rectifyFacade, type FacadePlane } from '../../src/canalRecall/facade/rectify.ts';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
 import { lensFor } from '../da-costa-block/neighbourhood-core.ts';
+import { photoSilhouette } from '../../src/canalRecall/facade/photoSilhouette.ts';
 
 const arg = (name: string, fallback = '') => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3) ?? fallback;
 const name = arg('name'), ids = new Set(arg('ids').split(',').filter(Boolean));
@@ -152,6 +154,8 @@ await fs.writeFile(path.join(outDir, `${name}.json`), JSON.stringify({
   wall: { startLngLat: [startLng, startLat], endLngLat: [endLng, endLat], lengthM: wall.len, heightM: plane.topZ - plane.baseZ, outwardBearingDeg: (Math.atan2(wall.nx, wall.ny) * 180 / Math.PI + 360) % 360 },
   panoramas: picks.map(p => ({ id: p.pano.pano_id, timestamp: p.pano.timestamp, distanceM: Math.round(p.d), obliquityDeg: Math.round(p.obliquity) })),
   fusion: 'per-pixel median across panoramas',
+  // Measured roofline and wall colour: the reference a low-poly front is checked against.
+  silhouette: photoSilhouette({ width: dims.width, height: dims.height, data: fused }, ppm),
   attribution: 'Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)',
   licenceNote: 'Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping.',
 }, null, 1));

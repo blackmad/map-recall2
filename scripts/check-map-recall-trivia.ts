@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   attachNameOrigins, attachNeighborhoodTrivia, descriptionWithoutOrigin, nearestAreaNames, originKindFor,
-  type NeighborhoodHistoryEntry, type StreetNameOrigin,
+  notablePlacesIn, placeCandidates, type NeighborhoodHistoryEntry, type StreetNameOrigin,
 } from '../src/mapRecall/trivia';
 import { applyReview, isDisambiguation, mentions, sentencesOf, tidy } from './fetch-neighborhood-history';
 
@@ -62,6 +62,19 @@ assert.equal(descriptionWithoutOrigin('A short one.', 'Named after something els
 assert.deepEqual(nearestAreaNames([
   { name: 'Far', center: [52.40, 4.90] }, { name: 'Near', center: [52.371, 4.90] }, { name: 'Self', center: [52.37, 4.90] },
 ], { name: 'Self', center: [52.37, 4.90] }, 2), ['Near', 'Far']);
+
+// Clue places: inside the area, best first, one shop or hotel of a kind, and never
+// one naming an offered answer (it would give the question away).
+const square: [number, number][][][] = [[[[52.0, 4.0], [52.0, 4.1], [52.1, 4.1], [52.1, 4.0], [52.0, 4.0]]]];
+const candidates = placeCandidates(
+  [{ name: 'Waag', center: [52.05, 4.05], type: 'landmark', prominenceScore: 10 }, { name: 'Canal Ring Area', center: [52.05, 4.05] }],
+  { categories: ['lodging', 'food'], pois: [
+    ['Hotel A', 4.05, 52.05, 0, 90], ['Hotel B', 4.05, 52.05, 0, 80], ['Hotel C', 4.05, 52.05, 0, 70],
+    ['Jordaan Café', 4.05, 52.05, 1, 95], ['Outside', 4.5, 52.5, 1, 99], ['Bakery', 4.06, 52.06, 1, 10],
+  ] },
+);
+assert.deepEqual(notablePlacesIn(square, candidates, ['Kattenburg', 'Jordaan']).map((place) => place.name), ['Waag', 'Hotel A', 'Bakery']);
+assert.deepEqual(notablePlacesIn(undefined, candidates, []), []);
 
 // Fetcher text handling: IPA and "lit." survive as one sentence.
 const lede = tidy("The Staatsliedenbuurt (pronounced [ˈstaːtslidə(m)ˌbyːrt]; lit. 'Neighborhood of the Statesmen')\nis a neighborhood. == References ==");

@@ -20,16 +20,6 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 *Anything that makes the game teach something false, or traps the rider,
 belongs here before anything below it.*
 
-**Centraal Station cycle tunnel is hard to ride (user report 2026-10-01).**
-In progress on the driving lane (worktree branch): pin it as a named
-keyboard-ride location, find why (corridor, graph gap, excluded tunnel ways,
-camera under the roof), and fix it generally.
-
-**Keyboard rides for every reported spot; nightly sweep.** `keyboard-ride.spec.ts`
-rides with real key presses and the quiz on; it found the shoulder wedge the
-physics probes could not see. In progress on the driving lane: every bridge the
-user has reported, plus a nightly run of rides, harness and full bridge sweep.
-
 **Bridges: one sweep artefact left; extend the sweep to non-bridge seams.**
 After the union guard and the union-aware shoulder (see HISTORY, 2026-10-01),
 the full sweep (`BRIDGE_SWEEP_ALL=1`) drives 3,006 crossings with 2,875
@@ -37,8 +27,6 @@ arrivals and 0 traps. Its only wedges (14 frames in 2 drives) are Burgemeester
 Fockstraat (`routing_11260` F, `routing_13031` R). The sweep starts inside the
 Menno ter Braakstraat cul-de-sac, which raw OSM joins to Burgemeester van
 Tienhovengracht only by footway + steps (excluded on purpose). Next:
-- Make the sweep's snap skip geometric cul-de-sacs, then make the full sweep
-  part of a nightly or pre-release check.
 - Seams are not only at bridges: run the same "step toward any road is kept"
   probe across ordinary junctions where a path ends a few metres from a street.
 
@@ -129,10 +117,14 @@ highlighting for the answer reveal; measure frame time, hitch and shimmer on a
 phone against the extrusion layer at Rozengracht, Da Costakade, Centraal and
 Nassaukade. Decide by the numbers.
 
-**Keyboard ride flake.** One of six Sint Antoniessluis rides stalled at the
-Uilenburg quay end (turned 0.02 rad, so no steering key was held) while the
-machine ran other perf tests. Make the test driver robust to slow frames and
-save the trace whenever a ride fails, before calling it a game trap.
+**Westeinde reverse ride leans on the guard.** It arrives, but the road guard
+acted on 698 of 1,536 frames (the forward ride: 0 of 698). Find where (the
+ride's hotspots, `KEYBOARD_RIDE_TRACE=1`) and whether the rider feels it.
+
+**Map Recall: overlapping areas as rival answers.** The area list holds both
+quarters and buurten, so Guess Name can offer Nieuwmarktbuurt and
+Nieuwmarkt/Lastage together, though they cover the same streets. Choices
+should skip an area that overlaps the answer by more than about half.
 
 **Map Recall follow-ups.** 14 OSM neighbourhoods have no article in either
 language (Rijnbuurt, Scheldebuurt, Westindische Buurt, Van Galenbuurt, …);
@@ -1000,7 +992,7 @@ Not milestones — standing obligations with live guards.
   fragments.
 - Tune neighborhood postcard scale and long-name typography on mobile.
 
-- P2: Panorama facade textures: pick correct Anne Frank House (Prinsengracht 263) parts, add Bijenkorf/Waag/Sherlocked, apply the JPEG to the landmark wall in the three layer, confirm licence/attribution. Script: `scripts/pano-facades/build-pano-facade.ts`.
+- P2: Low-poly landmark fronts (`landmarkFronts.ts`, data in `landmarkFrontData.ts`; Bijenkorf and Beurs hall wall done in the viewer only). Next: render fronts in the game's three layer next to `KITS` (and cap the carrying part at `bodyTopM`); model the Beurs Damrak front with its clock tower (build its reference with `--wall`); Anne Frank House needs a usable reference (no close panorama of the canal front; try Mapillary, token from the user via env var `MAPILLARY_TOKEN`, never committed); then Centraal, Rijksmuseum. Photo textures are dropped: the user judged them awful and panoramas stay drawing references only.
 
 - P2: Anne Frank House facade needs a source other than panoramas (Commons photos once the rate limit clears, with per-image licence/attribution); Sherlocked is not in the landmark data (which building was meant?).
 - P2: Apply panorama JPEGs to landmark walls in the three layer (needs per-wall UV mapping) and ship Waag kit via KITS if kept.

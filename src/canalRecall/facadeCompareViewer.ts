@@ -1,8 +1,11 @@
-// Side-by-side of three ways to draw a landmark: the plain OSM prism, the prism with a
-// panorama facade photo on its street wall, and a low-poly modelled kit.
-// `?name=waag` or `?name=bijenkorf`; the photo comes from public/data/landmark-facades.
+// Side-by-side for landmark reconstruction: the plain OSM prism, the low-poly
+// reconstruction (kit plus measured front, flat colours), and the rectified street
+// panorama it was measured from, shown flat as a reference only.
+// `?name=waag|bijenkorf|beurs`; the reference comes from public/data/landmark-facades.
 import { kitGeometry, type Kit, type PartInput } from './landmarkKits.js';
 import { buildKitChunk } from './threeBuildingMesh.js';
+import { frontTriangles } from './landmarkFronts.js';
+import { FRONTS } from './landmarkFrontData.js';
 
 type Setup = { centre: [number, number]; ids: string[]; kit: Kit; roofHosts: { id: string; riseM: number }[] };
 const SETUPS: Record<string, Setup> = {
@@ -24,12 +27,8 @@ const SETUPS: Record<string, Setup> = {
   bijenkorf: {
     centre: [4.8939, 52.37335],
     ids: 'w751128384,w751235773,w751235774,w751235775,w751235776,w751128373,NL.IMBAG.Pand.0363100012179183'.split(','),
-    // A stone-faced block: the parts become stone prisms with a cornice ledge at the roofline.
-    kit: {
-      name: 'Bijenkorf',
-      tiers: 'w751128384,w751235773,w751235774,w751235775,w751235776,w751128373,NL.IMBAG.Pand.0363100012179183'.split(',').map(id => ({ id, shape: 'square' as const, mat: 'stone' as const })),
-      stacks: [], roofs: [],
-    },
+    // Plain prisms in the front's stone; the front (landmarkFrontData.ts) carries the detail.
+    kit: { name: 'Bijenkorf', tiers: [], stacks: [], roofs: [] },
     roofHosts: [],
   },
 };
@@ -43,12 +42,13 @@ SETUPS.beurs = {
     name: 'Beurs',
     tiers: [{ id: 'w749918639', shape: 'square', mat: 'brick' }],
     stacks: [{ onId: 'w749918639', stages: [{ shape: 'square', w0: 12.5, w1: 0.6, h: 11, mat: 'slate' }] }],
-    roofs: ['w749918641', 'w749918651', 'w749918653', 'w749918637', 'w749918638'].map(id => ({ id, riseM: 7, mat: 'slate' as const })),
+    // The Beursplein hall's eaves sit on the gable row at 15.5 m, so its roof rises 11.5 m.
+    roofs: ['w749918641', 'w749918651', 'w749918653', 'w749918637', 'w749918638'].map(id => ({ id, riseM: id === 'w749918641' ? 11.5 : 7, mat: 'slate' as const })),
   },
-  roofHosts: ['w749918641', 'w749918651', 'w749918653', 'w749918637', 'w749918638'].map(id => ({ id, riseM: 7 })),
+  roofHosts: ['w749918641', 'w749918651', 'w749918653', 'w749918637', 'w749918638'].map(id => ({ id, riseM: id === 'w749918641' ? 11.5 : 7 })),
 };
 
-const q = new URLSearchParams(location.search), name = q.get('name') ?? 'waag', setup = SETUPS[name];
+const q = new URLSearchParams(location.search), name = q.get('name') ?? 'waag', setup = SETUPS[name], front = FRONTS[name];
 const [clng, clat] = setup.centre, kx = 111_320 * Math.cos(clat * Math.PI / 180), ky = 110_540;
 const tileOf = (lng: number, lat: number) => { const n = 2 ** 14, r = lat * Math.PI / 180; return [Math.floor(((lng + 180) / 360) * n), Math.floor(((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * n)]; };
 async function loadTile(x: number, y: number): Promise<any[]> {
@@ -77,6 +77,20 @@ async function loadTile(x: number, y: number): Promise<any[]> {
     g.rotateX(-Math.PI / 2); g.translate(0, z0, 0);
     return new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color }));
   };
+  // Buildings across the street from the photographed wall stand between it and the camera; leave them out.
+  {
+    const [ax, ay] = local([meta.wall.startLngLat])[0], [bx, by] = local([meta.wall.endLngLat])[0];
+    const b = meta.wall.outwardBearingDeg * Math.PI / 180, ox = Math.sin(b), oy = Math.cos(b), mx = (ax + bx) / 2, my = (ay + by) / 2;
+    const len = Math.hypot(bx - ax, by - ay) || 1, half = len / 2 + 25, ux = (bx - ax) / len, uy = (by - ay) / len;
+    const inFront = (pts: [number, number][]) => pts.some(([x, y]) => { const out = (x - mx) * ox + (y - my) * oy, along = (x - mx) * ux + (y - my) * uy; return out > 1 && out < 70 && Math.abs(along) < half; });
+    for (let i = context.length - 1; i >= 0; i--) if (inFront(context[i].pts)) context.splice(i, 1);
+  }
+  // Footprint parts that carry the front stop at the front's own body height.
+  if (front?.bodyTopM != null) {
+    const [ax, ay] = local([front.start])[0], [bx, by] = local([front.end])[0], len = Math.hypot(bx - ax, by - ay);
+    const offLine = ([x, y]: [number, number]) => Math.abs((x - ax) * (by - ay) - (y - ay) * (bx - ax)) / len;
+    for (const p of parts.values()) if (p.ring.filter(pt => offLine(pt) < 0.5).length >= 2) p.heightM = Math.min(p.heightM, front.bodyTopM);
+  }
   const lights = (scene: any) => {
     scene.background = new THREE.Color('#e9e4d4');
     scene.add(new THREE.HemisphereLight(0xffffff, 0x998f80, 1.6));
@@ -85,26 +99,13 @@ async function loadTile(x: number, y: number): Promise<any[]> {
     ground.position.y = -0.05; scene.add(ground);
     for (const c of context) scene.add(prism(c.pts, c.min, Math.max(c.min + 1, c.h), '#b9b2a4'));
   };
-  const sceneFor = (variant: 'plain' | 'photo' | 'kit', texture: any) => {
+  const sceneFor = (variant: 'plain' | 'kit') => {
     const scene = new THREE.Scene(); lights(scene);
     if (variant === 'plain') for (const p of parts.values()) scene.add(prism(p.ring, p.minHeightM, p.heightM, '#d9c24a'));
-    if (variant === 'photo') {
-      for (const p of parts.values()) scene.add(prism(p.ring, p.minHeightM, p.heightM, '#9a8a78'));
-      const [ax, ay] = local([meta.wall.startLngLat])[0], [bx, by] = local([meta.wall.endLngLat])[0];
-      const bearing = meta.wall.outwardBearingDeg * Math.PI / 180, nx = Math.sin(bearing) * 0.06, ny = Math.cos(bearing) * 0.06;
-      const buildingH = meta.wall.heightM - 1.5, visible = buildingH / meta.wall.heightM;
-      const quad = new THREE.BufferGeometry();
-      // three: x east, y up, z south = -north.
-      const pos = [ax + nx, 0, -(ay + ny), bx + nx, 0, -(by + ny), bx + nx, buildingH, -(by + ny), ax + nx, buildingH, -(ay + ny)];
-      quad.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-      quad.setAttribute('uv', new THREE.Float32BufferAttribute([0, 0, 1, 0, 1, visible, 0, visible], 2));
-      quad.setIndex([0, 1, 2, 0, 2, 3]); quad.computeVertexNormals();
-      scene.add(new THREE.Mesh(quad, new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide })));
-    }
     if (variant === 'kit') {
       for (const h of setup.roofHosts) { const p = parts.get(h.id); if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, '#9a5240')); }
       const unused = [...parts.values()].filter(p => !setup.kit.tiers.some(t => t.id === p.id) && !setup.roofHosts.some(h => h.id === p.id));
-      for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, '#9a5240'));
+      for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, front?.hex ?? '#9a5240'));
       const chunk = buildKitChunk(kitGeometry(setup.kit, parts), { plain: 0, flat: 0, slope: 0 });
       const geometry = new THREE.BufferGeometry(), pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);
       for (let i = 0; i < chunk.vertexCount; i++) {
@@ -113,10 +114,22 @@ async function loadTile(x: number, y: number): Promise<any[]> {
       }
       geometry.setAttribute('position', new THREE.BufferAttribute(pos, 3)); geometry.setAttribute('color', new THREE.BufferAttribute(col, 3));
       scene.add(new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide })));
+      if (front) {
+        // Wall frame to three: along the wall, up, and out along its outward normal (three z is south).
+        const [fax, fay] = local([front.start])[0], [fbx, fby] = local([front.end])[0], len = Math.hypot(fbx - fax, fby - fay);
+        const ux = (fbx - fax) / len, uy = (fby - fay) / len, ox = uy, oy = -ux;
+        const tris = frontTriangles(front, (along, up, out) => [fax + ux * along + ox * out, fay + uy * along + oy * out, up]);
+        const fp = new Float32Array(tris.length * 9), fc = new Float32Array(tris.length * 9), c = new THREE.Color();
+        tris.forEach((t, i) => t.p.forEach(([x, y, z], k) => {
+          fp.set([x, z, -y], i * 9 + k * 3); c.set(t.hex); fc.set([c.r, c.g, c.b], i * 9 + k * 3);
+        }));
+        const fg = new THREE.BufferGeometry();
+        fg.setAttribute('position', new THREE.BufferAttribute(fp, 3)); fg.setAttribute('color', new THREE.BufferAttribute(fc, 3)); fg.computeVertexNormals();
+        scene.add(new THREE.Mesh(fg, new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide })));
+      }
     }
     return scene;
   };
-  const texture = await new Promise<any>(resolve => new THREE.TextureLoader().load(`/data/landmark-facades/${meta.image}`, (t: any) => { t.colorSpace = THREE.SRGBColorSpace; resolve(t); }));
   const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
   const W = innerWidth, H = innerHeight; renderer.setSize(W, H); renderer.setScissorTest(true);
   document.body.style.margin = '0'; document.body.appendChild(renderer.domElement);
@@ -126,10 +139,15 @@ async function loadTile(x: number, y: number): Promise<any[]> {
   const cam = new THREE.PerspectiveCamera(32, (W / 3) / H, 1, 2000), a = bearing + az, focusY = buildingH * 0.42;
   cam.position.set(mid[0] + Math.sin(a) * Math.cos(el) * dist, focusY + Math.sin(el) * dist, -(mid[1] + Math.cos(a) * Math.cos(el) * dist));
   cam.lookAt(mid[0], focusY, -mid[1]);
-  (['plain', 'photo', 'kit'] as const).forEach((variant, i) => {
+  (['plain', 'kit'] as const).forEach((variant, i) => {
     renderer.setViewport(i * W / 3, 0, W / 3, H); renderer.setScissor(i * W / 3, 0, W / 3, H);
-    renderer.render(sceneFor(variant, texture), cam);
+    renderer.render(sceneFor(variant), cam);
   });
+  // The panorama crop the front was measured from, shown flat as a reference, never as a texture.
+  const ref = document.createElement('img');
+  Object.assign(ref.style, { position: 'fixed', left: `${(2 * W) / 3}px`, top: '0', width: `${W / 3}px`, height: `${H}px`, objectFit: 'contain', background: '#e9e4d4' });
+  ref.src = `/data/landmark-facades/${meta.image}`; document.body.appendChild(ref);
+  await ref.decode().catch(() => {});
   (window as any).__info = { parts: parts.size };
   document.title = 'ready';
 })();

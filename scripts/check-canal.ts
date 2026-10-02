@@ -76,6 +76,7 @@ const CHECKS = [
   'test:landmark-notice',
   'test:drive-by-trigger',
   'test:landmark-buildings',
+  'test:landmark-fronts',
   'test:teaching-surface',
   'test:recall-rules',
   'test:boat-navigability',

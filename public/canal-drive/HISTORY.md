@@ -1,5 +1,46 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Cuyperspassage rideable; keyboard rides at every reported spot; nightly sweeps
+
+- Centraal's cycle tunnel (Cuyperspassage) runs beneath a building footprint
+  that starts at ground level, so in chase view the slab covered 98% of the
+  rider's screen box. While such a footprint contains the rider, building
+  extrusions drop to 0.28 opacity, with enter/leave hysteresis
+  (`src/canalRecall/coveredPassage.ts`). The opt-in three.js facade layer is
+  not dimmed yet.
+- A stall at the edge is now judged on net movement since it began
+  (`trackEdgeStall`, within 3 px). The per-frame test reset whenever the
+  shoulder shuffled the bike about 1 px, so at the Melkwegbrug dead end the
+  heading ease kept cancelling the arrows.
+- `keyboard-ride.spec.ts` rides every reported spot in both directions
+  (`KEYBOARD_RIDE_ALL=1`; a core set on every push), aims along the route,
+  and prints the whole trail and route whenever a ride fails. The trail
+  settled the Sint Antoniessluis "flake": the bike was circling the route's
+  end, 25 px from it, while the test waited within 40 px of a separately
+  snapped target. Arrival now counts at either.
+- The bridge sweep's start and end snap skips every node pruned as a
+  cul-de-sac. `scripts/nightly-driving.sh` and the `nightly-driving`
+  workflow (02:30 daily, about 1 h) run the keyboard rides, the driving
+  harness and the full bridge sweep, with a summary in
+  `artifacts/nightly-driving/<date>/`.
+
+## 2026-10-02 — Map Recall: a neighbourhood's best-known places as clues
+
+User request: "a few very notable POIs in that neighborhood (retail is fine) to
+help understand it". `notablePlacesIn` (src/mapRecall/trivia.ts) picks up to
+five places inside the area polygon: encyclopedia landmarks first (minus
+regions such as "Canal Ring Area"), then the ranked orientation POIs. It
+allows two landmarks of a kind but one of any other kind, so the clues aren't
+two bike shops. A place whose name contains an offered answer is never shown:
+"Jordaan Café" would give away or mislead. Guess Name shows them as labelled
+dots from the start, since they sit inside the drawn area. Pinpoint shows them
+only after the guess, because before it they would reveal where the area is.
+Labels go best first; one that would overlap a better one hides until the
+player zooms in. Six of the 91 areas have no places.
+## Landmark fronts: low-poly reconstructions instead of photo textures
+
+The user judged the photo-textured fronts awful (white sky baked into a rectangle, a photo pasted on a blank box, unlit against the shaded city), and asked for our own low-poly reconstructions instead. Panorama crops are now drawing references only. `src/canalRecall/landmarkFronts.ts` models the one street wall that makes a landmark recognisable as boxes on the wall plane: a slab cut to a measured roofline (arches via `arch()`), projecting cornices and pilasters, framed window panes with sills, shopfronts, and an optional `bodyTopM` that lowers the OSM part behind the front (OSM gives one height per part, so a flat-topped prism otherwise hides a pediment or a gable row). Data: `landmarkFrontData.ts`, with the Bijenkorf (five bays, deep cornice, attic, arched pediment) and the Beurs van Berlage's Beursplein hall wall (13 window columns, six small gables; that hall's roof rise is now 11.5 m so its eaves meet the gables). `facadeCompareViewer.ts` now shows plain prism / reconstruction / flat reference photo. `photoSilhouette.ts` measures each reference's roofline and wall colour (stored in the facade JSON; the builder writes it, `scripts/pano-facades/add-silhouette.ts` backfills), and `npm run test:landmark-fronts` (in `check:canal`) fails if a modelled roofline drifts from it: Bijenkorf median 0.23 m / p90 0.65 m, Beurs 0.25 / 0.67 m. Colours sampled from the photo came out too dark (shaded north-west walls), so fronts use lighter palette colours. Not in the game yet.
+
 ## 2026-10-02 — The ride starts facing along the route
 
 User report with screenshot: the bike started pointing away from the route, with

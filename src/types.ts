@@ -203,6 +203,8 @@ export interface StreetFeature {
   nameOrigin?: TriviaText;
   /** A neighbourhood's history, from its Wikipedia article. */
   history?: TriviaText;
+  /** A neighbourhood's best-known places (src/mapRecall/trivia.ts notablePlacesIn). */
+  notablePlaces?: Array<{ name: string; center: [number, number]; kind: string }>;
   highway?: string;
   neighborhood?: string;
   neighborhoodDistractors?: string[];
