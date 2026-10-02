@@ -510,20 +510,40 @@
     return { positions, uvs, layers: layerArr, tints, accents, indices, ranges, vertexCount, quadCount: Math.ceil(tris / 2), wallCount: 0, buildingCount: ranges.length };
   }
 
-  // src/canalRecall/landmarkKitsViewer.ts
-  var CENTRES = {
-    Westerkerk: [4.88361, 52.37439],
-    Zuiderkerk: [4.89955, 52.3702],
-    Montelbaanstoren: [4.90557, 52.37205],
-    Noorderkerk: [4.88619, 52.37956],
-    "Royal Palace": [4.89182, 52.37326]
+  // src/canalRecall/facadeCompareViewer.ts
+  var SETUPS = {
+    waag: {
+      centre: [4.9003, 52.37264],
+      ids: "w749066938,w749066939,w749066940,w749066942,w749066943,w749066944,w749066945,w749066946,w749066947,w749066948,w749066949,w749066950".split(","),
+      // Two round corner towers with conical roofs, two turrets, and steep roofs on the main body.
+      kit: {
+        name: "Waag",
+        tiers: ["w749066949", "w749066950", "w749066946", "w749066947"].map((id) => ({ id, shape: "octagon", mat: "brick" })),
+        stacks: [
+          ...["w749066949", "w749066950"].map((onId) => ({ onId, stages: [{ shape: "octagon", w0: 9, w1: 0.8, h: 10, mat: "slate" }] })),
+          ...["w749066946", "w749066947"].map((onId) => ({ onId, stages: [{ shape: "octagon", w0: 5.2, w1: 0.5, h: 5.5, mat: "slate" }] }))
+        ],
+        roofs: ["w749066938", "w749066939", "w749066942", "w749066948", "w749066940"].map((id) => ({ id, riseM: 6, mat: "slate" }))
+      },
+      roofHosts: ["w749066938", "w749066939", "w749066942", "w749066948", "w749066940"].map((id) => ({ id, riseM: 6 }))
+    },
+    bijenkorf: {
+      centre: [4.8939, 52.37335],
+      ids: "w751128384,w751235773,w751235774,w751235775,w751235776,w751128373,NL.IMBAG.Pand.0363100012179183".split(","),
+      // A stone-faced block: the parts become stone prisms with a cornice ledge at the roofline.
+      kit: {
+        name: "Bijenkorf",
+        tiers: "w751128384,w751235773,w751235774,w751235775,w751235776,w751128373,NL.IMBAG.Pand.0363100012179183".split(",").map((id) => ({ id, shape: "square", mat: "stone" })),
+        stacks: [],
+        roofs: []
+      },
+      roofHosts: []
+    }
   };
   var q = new URLSearchParams(location.search);
-  var kitName = q.get("kit") ?? "Westerkerk";
-  var az = Number(q.get("az") ?? 30);
-  var el = Number(q.get("el") ?? 18);
-  var zoom = Number(q.get("d") ?? 1);
-  var [clng, clat] = CENTRES[kitName];
+  var name = q.get("name") ?? "waag";
+  var setup = SETUPS[name];
+  var [clng, clat] = setup.centre;
   var kx = 111320 * Math.cos(clat * Math.PI / 180);
   var ky = 110540;
   var tileOf = (lng, lat) => {
@@ -539,71 +559,95 @@
   }
   (async () => {
     const THREE = window.CanalRecallThree.THREE;
+    const meta = await (await fetch(`/data/landmark-facades/${name}.json`)).json();
     const [tx, ty] = tileOf(clng, clat);
     const features = (await Promise.all([-1, 0, 1].flatMap((dx) => [-1, 0, 1].map((dy) => loadTile(tx + dx, ty + dy))))).flat();
     const local = (ring) => ring.map(([lng, lat]) => [(lng - clng) * kx, (lat - clat) * ky]);
-    const kit = KITS.find((k) => k.name === kitName);
-    const mine = /* @__PURE__ */ new Set([...kit.tiers.map((t) => t.id), ...kit.stacks.map((s) => s.onId), ...kit.roofs.map((r) => r.id)]);
-    const parts = /* @__PURE__ */ new Map(), context = [];
+    const mine = new Set(setup.ids), parts = /* @__PURE__ */ new Map(), context = [];
     for (const f of features) {
-      const g = f.geometry, ring = g.type === "Polygon" ? g.coordinates[0] : g.coordinates[0][0], id = String(f.properties.id);
-      const pts = local(ring);
+      const g = f.geometry, ring = g.type === "Polygon" ? g.coordinates[0] : g.coordinates[0][0], id = String(f.properties.id), pts = local(ring);
       if (mine.has(id)) parts.set(id, { id, ring: pts, minHeightM: Number(f.properties.minHeight) || 0, heightM: Number(f.properties.height) });
-      else if (Math.hypot(pts[0][0], pts[0][1]) < 70) context.push({ pts, h: Number(f.properties.height) || 8, min: Number(f.properties.minHeight) || 0 });
+      else if (Math.hypot(pts[0][0], pts[0][1]) < 80) context.push({ pts, h: Number(f.properties.height) || 8, min: Number(f.properties.minHeight) || 0 });
     }
-    const chunk = buildKitChunk(kitGeometry(kit, parts), { plain: 0, flat: 0, slope: 0 });
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color("#e9e4d4");
-    scene.add(new THREE.HemisphereLight(16777215, 10063744, 1.6));
-    const sun = new THREE.DirectionalLight(16773853, 1.8);
-    sun.position.set(-40, 80, 60);
-    scene.add(sun);
-    const geometry = new THREE.BufferGeometry();
-    const pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);
-    for (let i = 0; i < chunk.vertexCount; i++) {
-      pos[i * 3] = chunk.positions[i * 3];
-      pos[i * 3 + 1] = chunk.positions[i * 3 + 2];
-      pos[i * 3 + 2] = -chunk.positions[i * 3 + 1];
-      const s = chunk.tints[i * 4 + 3] / 255;
-      for (let c = 0; c < 3; c++) col[i * 3 + c] = chunk.tints[i * 4 + c] / 255 * s;
-    }
-    geometry.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-    geometry.setAttribute("color", new THREE.BufferAttribute(col, 3));
-    const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide }));
-    scene.add(mesh);
-    for (const c of context) {
-      const shape = new THREE.Shape(c.pts.map(([x, y]) => new THREE.Vector2(x, y)));
-      const g = new THREE.ExtrudeGeometry(shape, { depth: Math.max(1, c.h - c.min), bevelEnabled: false });
+    const prism = (pts, z0, z1, color) => {
+      const shape = new THREE.Shape(pts.map(([x, y]) => new THREE.Vector2(x, y)));
+      const g = new THREE.ExtrudeGeometry(shape, { depth: Math.max(0.5, z1 - z0), bevelEnabled: false });
       g.rotateX(-Math.PI / 2);
-      g.translate(0, c.min, 0);
-      scene.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: "#b9b2a4" })));
-    }
-    for (const roof of kit.roofs) {
-      const part = parts.get(roof.id);
-      if (!part) continue;
-      const shape = new THREE.Shape(part.ring.map(([x, y]) => new THREE.Vector2(x, y)));
-      const g = new THREE.ExtrudeGeometry(shape, { depth: Math.max(0.5, part.heightM - roof.riseM - part.minHeightM), bevelEnabled: false });
-      g.rotateX(-Math.PI / 2);
-      g.translate(0, part.minHeightM, 0);
-      scene.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: kit.wall?.hex ?? "#9a5240" })));
-    }
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(500, 500).rotateX(-Math.PI / 2), new THREE.MeshLambertMaterial({ color: "#ddd7c6" }));
-    ground.position.y = -0.05;
-    scene.add(ground);
-    let top = 0;
-    for (const p of parts.values()) top = Math.max(top, p.heightM);
+      g.translate(0, z0, 0);
+      return new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color }));
+    };
+    const lights = (scene) => {
+      scene.background = new THREE.Color("#e9e4d4");
+      scene.add(new THREE.HemisphereLight(16777215, 10063744, 1.6));
+      const sun = new THREE.DirectionalLight(16773853, 1.8);
+      sun.position.set(-40, 80, 60);
+      scene.add(sun);
+      const ground = new THREE.Mesh(new THREE.PlaneGeometry(500, 500).rotateX(-Math.PI / 2), new THREE.MeshLambertMaterial({ color: "#ddd7c6" }));
+      ground.position.y = -0.05;
+      scene.add(ground);
+      for (const c of context) scene.add(prism(c.pts, c.min, Math.max(c.min + 1, c.h), "#b9b2a4"));
+    };
+    const sceneFor = (variant, texture2) => {
+      const scene = new THREE.Scene();
+      lights(scene);
+      if (variant === "plain") for (const p of parts.values()) scene.add(prism(p.ring, p.minHeightM, p.heightM, "#d9c24a"));
+      if (variant === "photo") {
+        for (const p of parts.values()) scene.add(prism(p.ring, p.minHeightM, p.heightM, "#9a8a78"));
+        const [ax2, ay2] = local([meta.wall.startLngLat])[0], [bx2, by2] = local([meta.wall.endLngLat])[0];
+        const bearing2 = meta.wall.outwardBearingDeg * Math.PI / 180, nx = Math.sin(bearing2) * 0.06, ny = Math.cos(bearing2) * 0.06;
+        const buildingH2 = meta.wall.heightM - 1.5, visible = buildingH2 / meta.wall.heightM;
+        const quad = new THREE.BufferGeometry();
+        const pos = [ax2 + nx, 0, -(ay2 + ny), bx2 + nx, 0, -(by2 + ny), bx2 + nx, buildingH2, -(by2 + ny), ax2 + nx, buildingH2, -(ay2 + ny)];
+        quad.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+        quad.setAttribute("uv", new THREE.Float32BufferAttribute([0, 0, 1, 0, 1, visible, 0, visible], 2));
+        quad.setIndex([0, 1, 2, 0, 2, 3]);
+        quad.computeVertexNormals();
+        scene.add(new THREE.Mesh(quad, new THREE.MeshBasicMaterial({ map: texture2, side: THREE.DoubleSide })));
+      }
+      if (variant === "kit") {
+        for (const h of setup.roofHosts) {
+          const p = parts.get(h.id);
+          if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, "#9a5240"));
+        }
+        const unused = [...parts.values()].filter((p) => !setup.kit.tiers.some((t) => t.id === p.id) && !setup.roofHosts.some((h) => h.id === p.id));
+        for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, "#9a5240"));
+        const chunk = buildKitChunk(kitGeometry(setup.kit, parts), { plain: 0, flat: 0, slope: 0 });
+        const geometry = new THREE.BufferGeometry(), pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);
+        for (let i = 0; i < chunk.vertexCount; i++) {
+          pos[i * 3] = chunk.positions[i * 3];
+          pos[i * 3 + 1] = chunk.positions[i * 3 + 2];
+          pos[i * 3 + 2] = -chunk.positions[i * 3 + 1];
+          const s = chunk.tints[i * 4 + 3] / 255;
+          for (let c = 0; c < 3; c++) col[i * 3 + c] = chunk.tints[i * 4 + c] / 255 * s;
+        }
+        geometry.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+        geometry.setAttribute("color", new THREE.BufferAttribute(col, 3));
+        scene.add(new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide })));
+      }
+      return scene;
+    };
+    const texture = await new Promise((resolve) => new THREE.TextureLoader().load(`/data/landmark-facades/${meta.image}`, (t) => {
+      t.colorSpace = THREE.SRGBColorSpace;
+      resolve(t);
+    }));
     const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-    renderer.setSize(innerWidth, innerHeight);
+    const W = innerWidth, H = innerHeight;
+    renderer.setSize(W, H);
+    renderer.setScissorTest(true);
     document.body.style.margin = "0";
     document.body.appendChild(renderer.domElement);
-    const camera = new THREE.PerspectiveCamera(35, innerWidth / innerHeight, 1, 2e3);
-    const [cx, cz] = [...parts.values()].reduce((a2, p) => [a2[0] + p.ring[0][0] / parts.size, a2[1] - p.ring[0][1] / parts.size], [0, 0]);
-    const dist = (Number(q.get("r") ?? 0) || Math.max(60, top * 1.7)) / zoom, a = az * Math.PI / 180, e = el * Math.PI / 180;
-    const focusY = Number(q.get("y") ?? top * 0.45);
-    camera.position.set(cx + Math.sin(a) * Math.cos(e) * dist, focusY + Math.sin(e) * dist, cz - Math.cos(a) * Math.cos(e) * dist);
-    camera.lookAt(cx, focusY, cz);
-    renderer.render(scene, camera);
-    window.__kitInfo = { parts: parts.size, tris: chunk.vertexCount / 3, top };
+    const [ax, ay] = local([meta.wall.startLngLat])[0], [bx, by] = local([meta.wall.endLngLat])[0];
+    const mid = [(ax + bx) / 2, (ay + by) / 2], bearing = meta.wall.outwardBearingDeg * Math.PI / 180, buildingH = meta.wall.heightM - 1.5;
+    const dist = Number(q.get("r") ?? 0) || Math.max(55, buildingH * 2.2), az = Number(q.get("az") ?? 0) * Math.PI / 180, el = Number(q.get("el") ?? 12) * Math.PI / 180;
+    const cam = new THREE.PerspectiveCamera(32, W / 3 / H, 1, 2e3), a = bearing + az, focusY = buildingH * 0.42;
+    cam.position.set(mid[0] + Math.sin(a) * Math.cos(el) * dist, focusY + Math.sin(el) * dist, -(mid[1] + Math.cos(a) * Math.cos(el) * dist));
+    cam.lookAt(mid[0], focusY, -mid[1]);
+    ["plain", "photo", "kit"].forEach((variant, i) => {
+      renderer.setViewport(i * W / 3, 0, W / 3, H);
+      renderer.setScissor(i * W / 3, 0, W / 3, H);
+      renderer.render(sceneFor(variant, texture), cam);
+    });
+    window.__info = { parts: parts.size };
     document.title = "ready";
   })();
 })();

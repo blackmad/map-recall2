@@ -1,0 +1,45 @@
+{
+ "name": "waag",
+ "buildingIds": [
+  "w749066938",
+  "w749066939",
+  "w749066940",
+  "w749066942",
+  "w749066943",
+  "w749066944",
+  "w749066945",
+  "w749066946",
+  "w749066947",
+  "w749066948",
+  "w749066949",
+  "w749066950"
+ ],
+ "image": "waag.jpg",
+ "width": 712,
+ "height": 743,
+ "pixelsPerMetre": 45,
+ "wall": {
+  "startLngLat": [
+   4.900445397014165,
+   52.37276150233832
+  ],
+  "endLngLat": [
+   4.900341197012117,
+   52.37288860233984
+  ],
+  "lengthM": 15.822347080102785,
+  "heightM": 16.5,
+  "outwardBearingDeg": 63.738341320530935
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002927_pano_0005_000021",
+   "timestamp": "2023-01-11T13:39:27.468290Z",
+   "distanceM": 29,
+   "obliquityDeg": 21
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}
