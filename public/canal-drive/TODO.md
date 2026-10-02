@@ -76,8 +76,9 @@ towers. Facades are Amsterdam-only, and walls take a period palette colour.
 Check on a real device.
 
 **Three.js facade layer (spike, `?buildings3d=`).** Open: measure on a real
-phone (heap +160 MB, geometry 37-63 MB: drop the CPU copies after upload, pack
-vertices, prune by distance); a shimmer metric that excludes camera motion;
+phone (heap is now below the pattern layer in software GL; geometry still
+42-63 MB: pack vertices, prune by distance); a shimmer metric that works (the
+current one is noisy and shows no win);
 look at the photo look; gables and roofs are still MapLibre's; decide whether
 it replaces the pattern layer or stays opt-in. Two layout modules now exist
 (`wallBays.ts`, `facadeLayout.ts`): keep one.
