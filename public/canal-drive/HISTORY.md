@@ -3,6 +3,9 @@
 ## Map Recall difficulty: place clues are easy/medium only
 
 User: the neighbourhood's best-known places should only show on easy and medium. Map Recall had no difficulty, so Settings gets Easy/Medium/Hard (URL `difficulty=`, default medium). `placeCluesEnabled` (src/mapRecall/trivia.ts) is the single rule; hard drops the dots in Guess Name and the after-guess dots in Pinpoint. Nothing else changes with difficulty yet.
+## Building clicks and covered passages under the three.js looks
+
+Hiding MapLibre's building layers broke two queries that read them: clicking a building (details card) and the covered-passage check (Cuyperspassage under Centraal's shed). The wall layer now stays laid out but draws at opacity 0 (MapLibre's fill-extrusion draw returns early at 0, so nothing is drawn twice); roofs and ground floors stay hidden. Under a three.js look the building over the rider is hidden in the three layer (a 28% beige fade over beige ground still hid the corridor; slab share now 0.00). Remaining duplicate: MapLibre still lays out that layer's buckets in its worker; porting picking and the cover check onto the three side would let it go.
 
 ## Photo is the default look; Untextured replaces Default; mansard ends closed
 

@@ -68,8 +68,11 @@ test('the rider can see the Cuyperspassage under Centraal\'s train shed', async 
   await page.waitForTimeout(2500);
   const open = await page.evaluate(() => {
     const vm = (window as any).canalRecallGame.vectorMap;
-    return { covered: vm.riderCovered, opacity: vm.map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity') };
+    const three = vm._threeOwnsTops?.();
+    return { covered: vm.riderCovered, three, opacity: vm.map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity'), hidden: three ? [...vm._threeBuildings.hidden] : [] };
   });
   expect(open.covered, 'out in the open the buildings come back').toBe(false);
-  expect(typeof open.opacity === 'number' && open.opacity < 0.5, 'opacity restored').toBe(false);
+  // The default (Photo) look draws buildings in three.js: the covering building is hidden while covered, then back.
+  if (open.three) expect(open.hidden, 'the shed is back').not.toContain('w451533149');
+  else expect(typeof open.opacity === 'number' && open.opacity < 0.5, 'opacity restored').toBe(false);
 });
