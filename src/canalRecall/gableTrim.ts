@@ -72,7 +72,7 @@ export function gableAccents(s: RoofSink, g: GableTrimInput): void {
       const [x0, y0] = prof[i], [x1, y1] = prof[i + 1];
       if (Math.abs(x1 - x0) > 1e-4 || Math.abs(y1 - y0) < 0.3) continue;
       const hi = Math.max(y0, y1), lo = Math.min(y0, y1), inward = x0 < 0 ? 1 : -1;
-      for (let k = 0, z = hi - 0.02; z - 0.24 > lo + 0.02 && k < 3; k++, z -= 0.27) {
+      for (let k = 0, z = hi - 0.02; z - 0.24 > lo + 0.02 && k < 2; k++, z -= 0.27) {
         const w = k % 2 === 0 ? 0.36 : 0.22;
         rectDecal(s, f, e, inward > 0 ? x0 : x0 - w, inward > 0 ? x0 + w : x0, z - 0.24, z, trimHex);
       }
