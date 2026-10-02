@@ -140,9 +140,9 @@ async function main() {
     kits.append(tile(frame, kit.name, `${kit.tiers.length} tiers, ${kit.stacks.length} stacks, ${kit.roofs.length} roofs`));
   }
   const compare = section('Low-poly landmark reconstructions', 'Left to right: plain OSM prism, low-poly reconstruction (kit plus a measured front, flat colours, no textures), and the street panorama it was measured from, shown only as a reference. Panoramas: Gemeente Amsterdam.');
-  for (const [name, view] of [['waag', 'r=95&el=14&az=-35'], ['bijenkorf', 'r=90&el=16&az=-35'], ['beurs', 'r=75&el=8&az=-25']]) {
+  for (const [name, view] of [['waag', 'r=95&el=14&az=-35'], ['bijenkorf', 'r=90&el=16&az=-35'], ['beurs', 'r=75&el=8&az=-25'], ['royal-palace', 'r=130&el=12&az=-25'], ['concertgebouw', 'r=110&el=12&az=-25'], ['tuschinski', 'r=70&el=12&az=-20']]) {
     const frame = el('iframe', { src: `facade-compare.html?name=${name}&${view}`, width: 900, height: 330, loading: 'lazy' } as any);
-    compare.append(tile(frame, name === 'waag' ? 'Waag' : name === 'beurs' ? 'Beurs van Berlage' : 'Bijenkorf'));
+    compare.append(tile(frame, ({ waag: 'Waag', beurs: 'Beurs van Berlage', bijenkorf: 'Bijenkorf', 'royal-palace': 'Royal Palace', concertgebouw: 'Concertgebouw', tuschinski: 'Tuschinski' } as Record<string, string>)[name] ?? name));
   }
   document.title = 'Building assets';
 }

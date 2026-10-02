@@ -11,7 +11,7 @@
  * The same pass samples the facade's typical colour, so the footprint's other
  * walls can be tinted to match the photo instead of standing out as a grey box.
  */
-import { skyline, type Strip } from './skyline.ts';
+import type { Strip } from './skyline.ts';
 import { rejectSpikes } from './elevationRoofline.ts';
 
 export interface PhotoSilhouette {
@@ -33,8 +33,23 @@ function smooth(values: number[], radius: number): number[] {
 
 export function photoSilhouette(strip: Strip, pixelsPerMetre: number, { sampleM = 0.25 } = {}): PhotoSilhouette {
   const { width, height, data } = strip;
-  const rows = skyline(strip, { runLength: Math.max(4, Math.round(pixelsPerMetre * 0.15)) });
-  const topSky = (x: number) => { const i = x * 4; return 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2] > 170; };
+  // Sky by colour, per pixel: overcast white (bright, unsaturated) or blue. `skyline()` derives
+  // its threshold from the top band, which fails when the building reaches the top edge (the
+  // Royal Palace's pediment) or the sky is blue (the Concertgebouw): everything read as sky.
+  const isSky = (i: number) => {
+    const r = data[i], g = data[i + 1], b = data[i + 2], luma = 0.299 * r + 0.587 * g + 0.114 * b;
+    return (luma > 185 && Math.max(r, g, b) - Math.min(r, g, b) < 40) || (b > r + 20 && b > g + 4 && luma > 110);
+  };
+  const runLength = Math.max(4, Math.round(pixelsPerMetre * 0.15));
+  const rows: Array<number | null> = Array.from({ length: width }, (_, x) => {
+    let run = 0;
+    for (let y = 0; y < height; y++) {
+      if (isSky((y * width + x) * 4)) { run = 0; continue; }
+      if (++run >= runLength) return y - runLength + 1;
+    }
+    return null;
+  });
+  const topSky = (x: number) => isSky(x * 4);
   // A null column is either all sky (a gap) or all building (the photo stops below the roof).
   const fullHeightM = height / pixelsPerMetre;
   const columnTopM = rows.map((row, x) => (row == null ? (topSky(x) ? 0 : fullHeightM) : (height - row) / pixelsPerMetre));

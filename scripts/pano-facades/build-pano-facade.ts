@@ -32,6 +32,8 @@ const after = arg('timestamp-after', '2021-01-01'), outDir = path.resolve(arg('o
 const maxObl = Number(arg("max-obl", "50"));
 const minStandoff = Number(arg("min-standoff", "4")), maxDist = Number(arg("max-dist", "45"));
 const forcedWall = arg('wall');
+// --toward=lng,lat: only walls facing that point (a square, the street a landmark fronts on).
+const toward = arg('toward') ? arg('toward').split(',').map(Number) as [number, number] : null;
 if (!name || !ids.size) throw new Error('--name and --ids are required');
 
 type Rd = { x: number; y: number };
@@ -65,10 +67,26 @@ function wallsOf(parts: Map<string, { ring: number[][]; height: number }>): Wall
   }
   const key = (p: Rd) => `${Math.round(p.x * 5)},${Math.round(p.y * 5)}`;
   const reversed = new Set(edges.map(e => `${key(e.b)}>${key(e.a)}`));
-  return edges.filter(e => !reversed.has(`${key(e.a)}>${key(e.b)}`)).map(e => {
+  const walls = edges.filter(e => !reversed.has(`${key(e.a)}>${key(e.b)}`)).map(e => {
     const dx = e.b.x - e.a.x, dy = e.b.y - e.a.y, len = Math.hypot(dx, dy);
     return { a: e.a, b: e.b, len, nx: dy / len, ny: -dx / len, heightM: e.height, mid: { x: (e.a.x + e.b.x) / 2, y: (e.a.y + e.b.y) / 2 } };
-  }).filter(w => w.len >= 4);
+  }).filter(w => w.len >= 0.5);
+  // A front drawn as several parts is several short edges in a line: join runs that share a
+  // direction (within 6 degrees) and a line (within 1 m) and touch (within 1.5 m) into one wall.
+  const merged: Wall[] = [];
+  for (const w of [...walls].sort((p, q) => q.len - p.len)) {
+    const host = merged.find(m => m.nx * w.nx + m.ny * w.ny > Math.cos(6 * Math.PI / 180)
+      && Math.abs((w.mid.x - m.mid.x) * m.nx + (w.mid.y - m.mid.y) * m.ny) < 1
+      && [w.a, w.b].some(p => [m.a, m.b].some(q => Math.hypot(p.x - q.x, p.y - q.y) < 1.5)));
+    if (!host) { merged.push({ ...w }); continue; }
+    const ux = -host.ny, uy = host.nx, along = (p: Rd) => (p.x - host.mid.x) * ux + (p.y - host.mid.y) * uy;
+    const pts = [host.a, host.b, w.a, w.b].sort((p, q) => along(p) - along(q));
+    host.a = pts[0]; host.b = pts[3];
+    host.len = Math.hypot(host.b.x - host.a.x, host.b.y - host.a.y);
+    host.heightM = Math.max(host.heightM, w.heightM);
+    host.mid = { x: (host.a.x + host.b.x) / 2, y: (host.a.y + host.b.y) / 2 };
+  }
+  return merged.filter(w => w.len >= 4);
 }
 
 async function listPanos(centre: Rd) {
@@ -111,7 +129,9 @@ const walls = wallsOf(parts);
 const centre = { x: walls.reduce((s, w) => s + w.mid.x, 0) / walls.length, y: walls.reduce((s, w) => s + w.mid.y, 0) / walls.length };
 const panos = await listPanos(centre);
 console.log(`${parts.size} parts, ${walls.length} exposed walls, ${panos.length} panoramas within ${radius} m`);
-const ranked = walls.map((wall, index) => {
+const towardRd = toward ? lngLatToRd(toward) : null;
+const facing = (wall: Wall) => !towardRd || ((towardRd.x - wall.mid.x) * wall.nx + (towardRd.y - wall.mid.y) * wall.ny) / Math.hypot(towardRd.x - wall.mid.x, towardRd.y - wall.mid.y) > 0.6;
+const ranked = walls.map((wall, index) => ({ wall, index })).filter(({ wall }) => facing(wall)).map(({ wall, index }) => {
   const c = wallCandidates(wall, panos), top = c.slice(0, 3);
   return { wall, index, c, value: top.length ? wall.len * (top.reduce((s, t) => s + t.score, 0) / top.length) * Math.min(1, c.length / 3) : 0 };
 }).sort((a, b) => b.value - a.value);
