@@ -71,7 +71,26 @@ for (const variant of VARIANTS) {
           diffs.push(sum / a.length);
         }
         const mean = diffs.reduce((x, y) => x + y, 0) / diffs.length;
-        results.push({ variant: variant.name, spot: spot.name, view, shimmer: Number(mean.toFixed(3)) });
+        // Aliasing error: a static frame at 1x against the same frame rendered at 3x and
+        // downscaled. No camera motion, no tile loads: only what 1x sampling gets wrong.
+        const grab = (ratio: number) => page.evaluate(async (ratio) => {
+          const map = (window as any).canalRecallGame.vectorMap.map;
+          map.setPixelRatio(ratio);
+          await new Promise(r => setTimeout(r, 1500));
+          return await new Promise<string>(resolve => {
+            map.once('render', () => map.getCanvas().toBlob((blob: Blob) => { const reader = new FileReader(); reader.onload = () => resolve(String(reader.result)); reader.readAsDataURL(blob); }));
+            map.triggerRepaint();
+          });
+        }, ratio);
+        const decode = (url: string) => Buffer.from(url.split(',')[1], 'base64');
+        const one = decode(await grab(1)), three = decode(await grab(3));
+        await page.evaluate(() => (window as any).canalRecallGame.vectorMap.map.setPixelRatio(1));
+        const meta = await sharp(one).metadata(), w = meta.width!, h = meta.height!;
+        const region = { left: Math.round(w * 0.25), top: Math.round(h * 0.28), width: Math.round(w * 0.5), height: Math.round(h * 0.42) };
+        const a = await sharp(one).extract(region).greyscale().raw().toBuffer();
+        const b = await sharp(three).resize(w, h, { kernel: 'lanczos3' }).extract(region).greyscale().raw().toBuffer();
+        let alias = 0; for (let p = 0; p < a.length; p++) alias += Math.abs(a[p] - b[p]);
+        results.push({ variant: variant.name, spot: spot.name, view, shimmer: Number(mean.toFixed(3)), aliasing: Number((alias / a.length).toFixed(3)) });
       }
     }
     // Frame cost while riding (software GL: relative, not absolute).
