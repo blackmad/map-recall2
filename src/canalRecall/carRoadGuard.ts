@@ -179,3 +179,44 @@ export function constrainCarToRoad(
   car.speed *= 0.97;
   return 'soft-edge';
 }
+
+export interface EdgeStallState {
+  frames: number;
+  anchorX: number;
+  anchorY: number;
+}
+
+/** Net movement (px) under which a bike held against an edge counts as stalled. */
+export const EDGE_STALL_RADIUS = 3;
+
+/**
+ * Frames the rider has been held against the road edge with the steering
+ * held, judged on net movement from where the stall began rather than on each
+ * frame's step. On the shoulder the outward step and the inward pull can
+ * alternate, so the bike shuffles ~0.5–1 px a frame and goes nowhere; a
+ * per-frame "moved < 0.5 px" test reset the count every few frames and the
+ * heading ease kept cancelling the arrows (keyboard ride, 2026-10-02: off the
+ * dead-end south end of the Melkwegbrug, up and right held, the bike stood
+ * still for good). Mutates and returns `state.frames`.
+ */
+export function trackEdgeStall(
+  state: EdgeStallState,
+  guard: RoadGuardResult,
+  steerInput: number,
+  x: number,
+  y: number,
+  radius = EDGE_STALL_RADIUS,
+): number {
+  const steering = Math.abs(steerInput) > 0.5;
+  // A stall starts at the edge, but the bike can cross back onto the asphalt
+  // by a fraction of a pixel on alternate frames while going nowhere; inside
+  // the radius those frames keep counting.
+  if (steering && state.frames > 0 && Math.hypot(x - state.anchorX, y - state.anchorY) <= radius) {
+    state.frames++;
+    return state.frames;
+  }
+  state.anchorX = x;
+  state.anchorY = y;
+  state.frames = steering && guard !== 'on-road' ? 1 : 0;
+  return state.frames;
+}

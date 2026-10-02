@@ -171,6 +171,13 @@ export {
   FootprintGrid,
 };
 export type { Ring };
+// Riding under a building (Cuyperspassage): which extrusion covers the rider.
+export {
+  coveringBuilding,
+  initialCoverState,
+  updateCoverState,
+  COVERED_BUILDING_OPACITY,
+} from './coveredPassage.js';
 
 type AppearanceFeature = {
   type: string;
