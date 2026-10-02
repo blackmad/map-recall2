@@ -1,4 +1,4 @@
-import { AdministrativeArea, FeatureCategory, LoadingProgress, LocationScope, StreetFeature } from '../types';
+import { AdministrativeArea, FeatureCategory, LoadingProgress, LocationScope, PlacePhoto, StreetFeature } from '../types';
 import { calculateHaversineDistanceMeters } from '../utils/geo';
 import { fetchCategorySpecificOSMFeatures } from '../utils/osm';
 import { attachLocalFacts } from '../mapRecall/localFacts';
@@ -44,6 +44,7 @@ const originsPromises = new Map<string, Promise<{ origins?: StreetNameOrigin[] }
 const historyPromises = new Map<string, Promise<{ neighborhoods?: NeighborhoodHistoryEntry[] } | null>>();
 const photosPromises = new Map<string, Promise<NeighborhoodPhoto[] | null>>();
 const placesPromises = new Map<string, Promise<PlaceCandidate[]>>();
+const placePhotoPromises = new Map<string, Promise<Record<string, PlacePhoto>>>();
 
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}data/extracts/${path}`;
 
@@ -179,7 +180,12 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
         optionalJson<Parameters<typeof placeCandidates>[1]>(`${city.id}/orientation-pois.json`),
       ]).then(([landmarks, orientation]) => placeCandidates(landmarks, orientation)));
       // Clue places never carry a name the question offers (src/mapRecall/trivia.ts).
-      const withPlaces = withChoices.map((feature) => ({ ...feature, notablePlaces: notablePlacesIn(feature.areaGeometry, places, [feature.name, ...feature.distractors]) }));
+      const placePhotos = await cached(placePhotoPromises, city.id, () => optionalJson<{ places: Record<string, PlacePhoto> }>(`${city.id}/place-photos.json`).then((file) => file?.places ?? {}));
+      const withPlaces = withChoices.map((feature) => ({
+        ...feature,
+        notablePlaces: notablePlacesIn(feature.areaGeometry, places, [feature.name, ...feature.distractors])
+          .map((place) => placePhotos[place.name] ? { ...place, photo: placePhotos[place.name] } : place),
+      }));
       const withTrivia = attachNeighborhoodTrivia(withPlaces, historyFile?.neighborhoods, photosFile);
       const selectedArea = amsterdamAreas?.find(({ id }) => id === request.areaId);
       const allFeatures = [...enriched, ...withTrivia];

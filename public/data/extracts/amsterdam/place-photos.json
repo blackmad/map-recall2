@@ -1,0 +1,951 @@
+{
+ "version": 1,
+ "generatedAt": "2026-10-02T15:10:01.741Z",
+ "places": {
+  "Concertgebouw": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Concertgebouw_in_Amsterdam_April_2015.jpg/500px-Concertgebouw_in_Amsterdam_April_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Concertgebouw in Amsterdam April 2015.jpg (yisris, CC BY 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AConcertgebouw_in_Amsterdam_April_2015.jpg"
+  },
+  "Science Park Amsterdam": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Amsterdam_science_park.jpg/500px-Amsterdam_science_park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam science park.jpg (Jvhertum, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_science_park.jpg"
+  },
+  "Red Light District": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Amsterdam_%28189%29.jpg/500px-Amsterdam_%28189%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam (189).jpg (LeDeuxAlpe at English Wikipedia, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_(189).jpg"
+  },
+  "Central Station": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Amsterdam_Centraal_-_panoramio_-_Nikolai_Karaneschev_%281%29.jpg/500px-Amsterdam_Centraal_-_panoramio_-_Nikolai_Karaneschev_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam Centraal - panoramio - Nikolai Karaneschev (1).jpg (Nikolai Karaneschev, CC BY 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_Centraal_-_panoramio_-_Nikolai_Karaneschev_(1).jpg"
+  },
+  "Anne Frank House": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/AnneFrankMuseum.jpg/500px-AnneFrankMuseum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: AnneFrankMuseum.jpg (Massimo Catarinella, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAnneFrankMuseum.jpg"
+  },
+  "AFAS Live": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/AFAS_Live.jpg/500px-AFAS_Live.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: AFAS Live.jpg (AFASLive Amsterdam, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAFAS_Live.jpg"
+  },
+  "Canal Ring Area of Amsterdam": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Amsterdam_airphoto.jpg/500px-Amsterdam_airphoto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam airphoto.jpg (Amsterdam Municipal Department for the Preservation and Restoration of Historic Buildings and Sites (bMA). The author is BMZ (Bureau Monumentenzorg). Original uploader was Siebrand at nl.wikipedia\n\nLater version(s) were uploaded by Eriksw at nl.wikipedia., Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_airphoto.jpg"
+  },
+  "Artis": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/NL-Artis-ingang.jpg/500px-NL-Artis-ingang.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: NL-Artis-ingang.jpg (Dejonkheer, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANL-Artis-ingang.jpg"
+  },
+  "Amsterdam University College": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Amsterdam_university_college.jpg/500px-Amsterdam_university_college.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam university college.jpg (Jvhertum, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_university_college.jpg"
+  },
+  "Amsterdamse Hogeschool voor de Kunsten": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Amsterdamse_Hogeschool_voor_de_Kunsten.jpg/500px-Amsterdamse_Hogeschool_voor_de_Kunsten.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdamse Hogeschool voor de Kunsten.jpg (Com AHK, CC BY 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdamse_Hogeschool_voor_de_Kunsten.jpg"
+  },
+  "Co-kathedrale Basiliek van Sint Nicolaas": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Amsterdam_St_Nicolaaskerk_1900.jpg/500px-Amsterdam_St_Nicolaaskerk_1900.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam St Nicolaaskerk 1900.jpg (Unknown authorUnknown author, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_St_Nicolaaskerk_1900.jpg"
+  },
+  "Homomonument": {
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Homomonument-overview2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "imageAttribution": "Wikimedia Commons: Homomonument-overview2.jpg (BoBink, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHomomonument-overview2.jpg"
+  },
+  "Begijnhof": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Begijnhof_Amsterdam_April_2014.jpg/500px-Begijnhof_Amsterdam_April_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Begijnhof Amsterdam April 2014.jpg (acediscovery, CC BY 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABegijnhof_Amsterdam_April_2014.jpg"
+  },
+  "Berlage's Stock Market": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Overzicht_klokkentoren_met_uurwerk%2C_aan_de_Beurspleinzijde_de_hoofdingang_met_bordestrap_-_Amsterdam_-_20408819_-_RCE.jpg/500px-Overzicht_klokkentoren_met_uurwerk%2C_aan_de_Beurspleinzijde_de_hoofdingang_met_bordestrap_-_Amsterdam_-_20408819_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht klokkentoren met uurwerk, aan de Beurspleinzijde de hoofdingang met bordestrap - Amsterdam - 20408819 - RCE.jpg (Sergé Technau, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_klokkentoren_met_uurwerk%2C_aan_de_Beurspleinzijde_de_hoofdingang_met_bordestrap_-_Amsterdam_-_20408819_-_RCE.jpg"
+  },
+  "De Balie": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/2021_Kleine-Gartmanplantsoen_10%2C_Asd.jpg/500px-2021_Kleine-Gartmanplantsoen_10%2C_Asd.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2021 Kleine-Gartmanplantsoen 10, Asd.jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Kleine-Gartmanplantsoen_10%2C_Asd.jpg"
+  },
+  "Bimhuis": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/66/Bimhuis_%C2%A9_Francesca_Patella.jpg/500px-Bimhuis_%C2%A9_Francesca_Patella.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Bimhuis © Francesca Patella.jpg (Francesca Patella, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABimhuis_%C2%A9_Francesca_Patella.jpg"
+  },
+  "Artis Bibliotheek": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Artis_Bibliotheek.jpg/500px-Artis_Bibliotheek.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Artis Bibliotheek.jpg (Monique Kooijmans, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AArtis_Bibliotheek.jpg"
+  },
+  "Zeeburgia": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Logo_Zeeburgia.jpeg/500px-Logo_Zeeburgia.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Logo Zeeburgia.jpeg (Zeeburgia, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALogo_Zeeburgia.jpeg"
+  },
+  "Mint Tower": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Munttoren_in_Amsterdam_2015.jpg/500px-Munttoren_in_Amsterdam_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Munttoren in Amsterdam 2015.jpg (Guilhem Vellut, CC BY 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMunttoren_in_Amsterdam_2015.jpg"
+  },
+  "Amsterdam Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Ingang_Amsterdam_Museum.jpg/500px-Ingang_Amsterdam_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Ingang Amsterdam Museum.jpg (Maarten Jansen, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AIngang_Amsterdam_Museum.jpg"
+  },
+  "Vlaams Cultuurhuis de Brakke Grond": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Brakke_grond.jpg/500px-Brakke_grond.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Brakke grond.jpg (Jvhertum, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABrakke_grond.jpg"
+  },
+  "De Kleine Komedie": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Klein-komedie.jpg/500px-Klein-komedie.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Klein-komedie.jpg (Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKlein-komedie.jpg"
+  },
+  "H'ART Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Hermitage_Amsterdam_-_Ingang.JPG/500px-Hermitage_Amsterdam_-_Ingang.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Hermitage Amsterdam - Ingang.JPG (Fentener van Vlissingen, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHermitage_Amsterdam_-_Ingang.JPG"
+  },
+  "Eye Filmmuseum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/EYE_Filmmuseum.jpg/500px-EYE_Filmmuseum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: EYE Filmmuseum.jpg (Jvhertum, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AEYE_Filmmuseum.jpg"
+  },
+  "DeLaMar": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/DeLaMar_Theater.JPG/500px-DeLaMar_Theater.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: DeLaMar Theater.JPG (Trijnstel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADeLaMar_Theater.JPG"
+  },
+  "International Institute of Social History": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Internationaal_Instituut_Voor_Sociale_Geschiedenis%2C_Cruquiusweg.JPG/500px-Internationaal_Instituut_Voor_Sociale_Geschiedenis%2C_Cruquiusweg.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Internationaal Instituut Voor Sociale Geschiedenis, Cruquiusweg.JPG (Alf van Beem, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AInternationaal_Instituut_Voor_Sociale_Geschiedenis%2C_Cruquiusweg.JPG"
+  },
+  "Decembermoorden": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Monument_Decembermoorden.JPG/500px-Monument_Decembermoorden.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Monument Decembermoorden.JPG (Pvt pauline, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMonument_Decembermoorden.JPG"
+  },
+  "Internationaal Theater Amsterdam": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Stadsschouwburg_amsterdam.jpg/500px-Stadsschouwburg_amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Stadsschouwburg amsterdam.jpg (Jvhertum, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AStadsschouwburg_amsterdam.jpg"
+  },
+  "Montelbaanstoren": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Oudeschans.jpg/500px-Oudeschans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Oudeschans.jpg (S Sepp, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOudeschans.jpg"
+  },
+  "Heineken Experience": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Former_Heineken_Brewery_in_Amsterdam.jpg/500px-Former_Heineken_Brewery_in_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Former Heineken Brewery in Amsterdam.jpg (User:Mtcv, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFormer_Heineken_Brewery_in_Amsterdam.jpg"
+  },
+  "Ziggo Dome": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Ziggo_Dome.JPG/500px-Ziggo_Dome.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Ziggo Dome.JPG (Shirley de Jong, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AZiggo_Dome.JPG"
+  },
+  "Melkweg": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Melkweg.jpg/500px-Melkweg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Melkweg.jpg (Elekes Andor, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMelkweg.jpg"
+  },
+  "Rijksmuseum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Amsterdam_-_Rijksmuseum.jpg/500px-Amsterdam_-_Rijksmuseum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam - Rijksmuseum.jpg (User:Voytikof, CC BY-SA 2.5)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_-_Rijksmuseum.jpg"
+  },
+  "Nederlandse Film en Televisie Academie": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Nederlandse_Filmacademie_%2814668750312%29.jpg/500px-Nederlandse_Filmacademie_%2814668750312%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Nederlandse Filmacademie (14668750312).jpg (FaceMePLS from The Hague, The Netherlands, CC BY 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANederlandse_Filmacademie_(14668750312).jpg"
+  },
+  "Moco Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Moco_Museum_Amsterdam_2159.jpg/500px-Moco_Museum_Amsterdam_2159.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Moco Museum Amsterdam 2159.jpg (C messier, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMoco_Museum_Amsterdam_2159.jpg"
+  },
+  "Haarlemmerpoort": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Haarlemmerpoort_augustus2005.jpg/500px-Haarlemmerpoort_augustus2005.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Haarlemmerpoort augustus2005.jpg (Michiel1972 at Dutch Wikipedia, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHaarlemmerpoort_augustus2005.jpg"
+  },
+  "Museum Het Schip": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Amsterdam_Het_Schip_006.JPG/500px-Amsterdam_Het_Schip_006.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam Het Schip 006.JPG (Janericloebe, CC BY 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_Het_Schip_006.JPG"
+  },
+  "Museum Van Loon": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Amsterdam_-_Museum_Van_Loon_-_Gardens.jpg/500px-Amsterdam_-_Museum_Van_Loon_-_Gardens.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam - Museum Van Loon - Gardens.jpg (Jean-Christophe BENOIST, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_-_Museum_Van_Loon_-_Gardens.jpg"
+  },
+  "Micropia": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Micropia_Museum_Amsterdam_4.jpg/500px-Micropia_Museum_Amsterdam_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Micropia Museum Amsterdam 4.jpg (Eric de Redelijkheid, CC BY-SA 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMicropia_Museum_Amsterdam_4.jpg"
+  },
+  "Filmhallen": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/De_Hallen_3.JPG/500px-De_Hallen_3.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: De Hallen 3.JPG (Marion Golsteijn, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADe_Hallen_3.JPG"
+  },
+  "Badhuistheater": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Openluchtconcert_Badhuistheater.jpg/500px-Openluchtconcert_Badhuistheater.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Openluchtconcert Badhuistheater.jpg (Salieblad2, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOpenluchtconcert_Badhuistheater.jpg"
+  },
+  "Westergasfabriek": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Westerpark_westergasfabriek.jpg/500px-Westerpark_westergasfabriek.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Westerpark westergasfabriek.jpg (No machine-readable author provided. Arch assumed (based on copyright claims)., Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWesterpark_westergasfabriek.jpg"
+  },
+  "Muziekgebouw": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Muziekgebouw_aan_%27t_IJ.jpg/500px-Muziekgebouw_aan_%27t_IJ.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Muziekgebouw aan 't IJ.jpg (Building by 3XN; photo by Flickr user Metro Centric, CC BY 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMuziekgebouw_aan_'t_IJ.jpg"
+  },
+  "Fo Guang Shan He Hua Tempel": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Amsterdam_%2816032323736%29.jpg/500px-Amsterdam_%2816032323736%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam (16032323736).jpg (Shadowgate from Novara, ITALY, CC BY 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_(16032323736).jpg"
+  },
+  "Plaquette 7 mei 1945": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Amsterdam_shooting%2C_May_7_1945.jpg/500px-Amsterdam_shooting%2C_May_7_1945.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam shooting, May 7 1945.jpg (Krijn Taconis (1918-1979), Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_shooting%2C_May_7_1945.jpg"
+  },
+  "Christelijke Gereformeerde Kerk - Amstelkerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Overzicht_op_de_achterzijde_van_houten_kerk_-_Amsterdam_-_20408272_-_RCE.jpg/500px-Overzicht_op_de_achterzijde_van_houten_kerk_-_Amsterdam_-_20408272_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht op de achterzijde van houten kerk - Amsterdam - 20408272 - RCE.jpg (Sergé Technau, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_op_de_achterzijde_van_houten_kerk_-_Amsterdam_-_20408272_-_RCE.jpg"
+  },
+  "Hollandsche Schouwburg": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ee/Hollandse_Schouwburg_%28Amsterdam%29.JPG/500px-Hollandse_Schouwburg_%28Amsterdam%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Hollandse Schouwburg (Amsterdam).JPG (P.H. Louw, CC BY 2.5)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHollandse_Schouwburg_(Amsterdam).JPG"
+  },
+  "Madame Tussauds Amsterdam": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Madame_Tussaud._Amsterdam.JPG/500px-Madame_Tussaud._Amsterdam.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Madame Tussaud. Amsterdam.JPG (Rafael Piriz Montenegro, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMadame_Tussaud._Amsterdam.JPG"
+  },
+  "Blauwe Moskee": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Walls_of_Babylon_Slotervaart.JPG/500px-Walls_of_Babylon_Slotervaart.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Walls of Babylon Slotervaart.JPG (Arch, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWalls_of_Babylon_Slotervaart.JPG"
+  },
+  "The Amsterdam Dungeon": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Nzkapel12.jpg/500px-Nzkapel12.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Nzkapel12.jpg (Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANzkapel12.jpg"
+  },
+  "Afrikahuis": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Afrikahuis%2C_Van_Ostadestraat.jpg/500px-Afrikahuis%2C_Van_Ostadestraat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Afrikahuis, Van Ostadestraat.jpg (Alf van Beem, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAfrikahuis%2C_Van_Ostadestraat.jpg"
+  },
+  "Royal Palace": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Amsterdam_Royal_Palace_7299.jpg/500px-Amsterdam_Royal_Palace_7299.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam Royal Palace 7299.jpg (C messier, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_Royal_Palace_7299.jpg"
+  },
+  "Academie van Bouwkunst": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Academie_van_Bouwkunst_Amsterdam_1.jpg/500px-Academie_van_Bouwkunst_Amsterdam_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Academie van Bouwkunst Amsterdam 1.jpg (Vincent Steenberg, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAcademie_van_Bouwkunst_Amsterdam_1.jpg"
+  },
+  "Begijnhofkapel": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Ingang_Begijnhofkapel_%28Amsterdam%29_P1020924.JPG/500px-Ingang_Begijnhofkapel_%28Amsterdam%29_P1020924.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Ingang Begijnhofkapel (Amsterdam) P1020924.JPG (G.Lanting, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AIngang_Begijnhofkapel_(Amsterdam)_P1020924.JPG"
+  },
+  "Embassy of the Free Mind": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Huis_met_de_hoofden.jpg/500px-Huis_met_de_hoofden.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Huis met de hoofden.jpg (Sander Petrus, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHuis_met_de_hoofden.jpg"
+  },
+  "Royal Theater Carré": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Theater_carre.jpg/500px-Theater_carre.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Theater carre.jpg (S Sepp, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATheater_carre.jpg"
+  },
+  "Academie voor Theater en Dans": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Academie_voor_Theater_en_Dans.jpg/500px-Academie_voor_Theater_en_Dans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Academie voor Theater en Dans.jpg (Academie voor Theater en Dans, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAcademie_voor_Theater_en_Dans.jpg"
+  },
+  "Equestrian statue of Queen Wilhelmina": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Rokin_Langebrugsteeg_1.jpg/500px-Rokin_Langebrugsteeg_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Rokin Langebrugsteeg 1.jpg (Jvhertum, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARokin_Langebrugsteeg_1.jpg"
+  },
+  "Haarlemmermeerstation": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Haarlemmermeerstation.jpg/500px-Haarlemmermeerstation.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Haarlemmermeerstation.jpg (Nikolas Tzimoulis, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHaarlemmermeerstation.jpg"
+  },
+  "Amsterdam": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Replica_VOC-schip_Amsterdam.jpg/500px-Replica_VOC-schip_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Replica VOC-schip Amsterdam.jpg (Eddo Hartmann, CC BY 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AReplica_VOC-schip_Amsterdam.jpg"
+  },
+  "Amsterdam Tulip Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Tulpenuseum_Prinsegracht_112.JPG/500px-Tulpenuseum_Prinsegracht_112.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Tulpenuseum Prinsegracht 112.JPG (Pvt pauline, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATulpenuseum_Prinsegracht_112.JPG"
+  },
+  "Vondelpark Open Air Theater": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Amsterdam-Vondelpark-2004.JPG/500px-Amsterdam-Vondelpark-2004.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam-Vondelpark-2004.JPG (Sybren, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam-Vondelpark-2004.JPG"
+  },
+  "Old Church": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Amsterdam-508-Oude_Kerk-2010-gje.jpg/500px-Amsterdam-508-Oude_Kerk-2010-gje.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam-508-Oude Kerk-2010-gje.jpg (Gerd Eichmann, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam-508-Oude_Kerk-2010-gje.jpg"
+  },
+  "Dutch National Opera & Ballet": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Stopera_2063.jpg/500px-Stopera_2063.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Stopera 2063.jpg (C messier, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AStopera_2063.jpg"
+  },
+  "Museum Vrolik": {
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Amsterdam_vrolik_3953.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "imageAttribution": "Wikimedia Commons: Amsterdam vrolik 3953.jpg (Rode raaf, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_vrolik_3953.jpg"
+  },
+  "Theater Amsterdam": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Theater_Amsterdam%2C_Danzigerkade.jpg/500px-Theater_Amsterdam%2C_Danzigerkade.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Theater Amsterdam, Danzigerkade.jpg (Dqfn13, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATheater_Amsterdam%2C_Danzigerkade.jpg"
+  },
+  "The National Maritime Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Het_scheepvaartmuseum1_Amsterdam.jpg/500px-Het_scheepvaartmuseum1_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Het scheepvaartmuseum1 Amsterdam.jpg (Gouwenaar, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHet_scheepvaartmuseum1_Amsterdam.jpg"
+  },
+  "Mor Sharbil": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Overzicht_kerk_met_apsis_en_aangebouwde_lage_klokkentoren%2C_gezien_vanaf_het_kruispunt_-_Amsterdam_-_20409434_-_RCE.jpg/500px-Overzicht_kerk_met_apsis_en_aangebouwde_lage_klokkentoren%2C_gezien_vanaf_het_kruispunt_-_Amsterdam_-_20409434_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht kerk met apsis en aangebouwde lage klokkentoren, gezien vanaf het kruispunt - Amsterdam - 20409434 - RCE.jpg (Sergé Technau, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_kerk_met_apsis_en_aangebouwde_lage_klokkentoren%2C_gezien_vanaf_het_kruispunt_-_Amsterdam_-_20409434_-_RCE.jpg"
+  },
+  "Gemeenlandshuis": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Gemeenlandshuis-Diemen.JPG/500px-Gemeenlandshuis-Diemen.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Gemeenlandshuis-Diemen.JPG (Marcel mulder, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGemeenlandshuis-Diemen.JPG"
+  },
+  "ACTA": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Zuidas_VU_16.jpg/500px-Zuidas_VU_16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Zuidas VU 16.jpg (MrAronymous, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AZuidas_VU_16.jpg"
+  },
+  "Jewish Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Mikwe1.jpg/500px-Mikwe1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Mikwe1.jpg (bureau Monumenten &amp; Archeologie (bMA), Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMikwe1.jpg"
+  },
+  "Arcam": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/2022_Arcam-gebouw%2C_Asd_%281%29.jpg/500px-2022_Arcam-gebouw%2C_Asd_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2022 Arcam-gebouw, Asd (1).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2022_Arcam-gebouw%2C_Asd_(1).jpg"
+  },
+  "Kriterion": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Kriterion2.jpg/500px-Kriterion2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Kriterion2.jpg (Picasdre, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKriterion2.jpg"
+  },
+  "Filmhuis Cavia": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/FilmhuisCavia_%281%29.JPG/500px-FilmhuisCavia_%281%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: FilmhuisCavia (1).JPG (Milliped, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFilmhuisCavia_(1).JPG"
+  },
+  "Pathé City": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/City_Theater%2C_Kleine-Gartmanplantsoen_foto_8.JPG/500px-City_Theater%2C_Kleine-Gartmanplantsoen_foto_8.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: City Theater, Kleine-Gartmanplantsoen foto 8.JPG (Alf van Beem, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ACity_Theater%2C_Kleine-Gartmanplantsoen_foto_8.JPG"
+  },
+  "Huis De Pinto": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Pinto5.jpg/500px-Pinto5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Pinto5.jpg (bureau Monumenten &amp; Archeologie (bMA), Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APinto5.jpg"
+  },
+  "Auschwitz Memorial": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Auschwitz_monument_amsterdam.JPG/500px-Auschwitz_monument_amsterdam.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Auschwitz monument amsterdam.JPG (Arthena, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAuschwitz_monument_amsterdam.JPG"
+  },
+  "Huis aan 3 grachten": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Huis_aan_de_drie_grachten.jpg/500px-Huis_aan_de_drie_grachten.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Huis aan de drie grachten.jpg (Jvhertum, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHuis_aan_de_drie_grachten.jpg"
+  },
+  "Faralda NDSM Crane Hotel Amsterdam": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Crane_Hotel_Faralda%2C_Amsterdam_%2819%29.jpg/500px-Crane_Hotel_Faralda%2C_Amsterdam_%2819%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Crane Hotel Faralda, Amsterdam (19).jpg (1971markus, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ACrane_Hotel_Faralda%2C_Amsterdam_(19).jpg"
+  },
+  "Noorderkerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Noorderkerk_%28Amsterdam%29-msu-8759-.jpg/500px-Noorderkerk_%28Amsterdam%29-msu-8759-.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Noorderkerk (Amsterdam)-msu-8759-.jpg (Matthias Süßen, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANoorderkerk_(Amsterdam)-msu-8759-.jpg"
+  },
+  "Gerrit Rietveld Academie": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Rietveldacademie.jpg/500px-Rietveldacademie.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Rietveldacademie.jpg (bureau Monumenten &amp; Archeologie (bMA), Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARietveldacademie.jpg"
+  },
+  "National Monument": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Overzicht_voorzijde_-_Amsterdam_-_20357041_-_RCE.jpg/500px-Overzicht_voorzijde_-_Amsterdam_-_20357041_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht voorzijde - Amsterdam - 20357041 - RCE.jpg (A. J. van der Wal, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_voorzijde_-_Amsterdam_-_20357041_-_RCE.jpg"
+  },
+  "Waag": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Amsterdam_-_Waag.jpg/500px-Amsterdam_-_Waag.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam - Waag.jpg (Patrick Verdier, Copyrighted free use)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_-_Waag.jpg"
+  },
+  "Rozenoord": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Fusilladeplaats_Rozenoord_01.JPG/500px-Fusilladeplaats_Rozenoord_01.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Fusilladeplaats Rozenoord 01.JPG (Facknaake, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFusilladeplaats_Rozenoord_01.JPG"
+  },
+  "Ketelhuis": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Westerpark_Amsterdam_Ketelhuis.jpg/500px-Westerpark_Amsterdam_Ketelhuis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Westerpark Amsterdam Ketelhuis.jpg (arch, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWesterpark_Amsterdam_Ketelhuis.jpg"
+  },
+  "Cinecenter": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Cinecenter_Lijnbaansgracht_foto_5.jpg/500px-Cinecenter_Lijnbaansgracht_foto_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Cinecenter Lijnbaansgracht foto 5.jpg (Alf van Beem, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ACinecenter_Lijnbaansgracht_foto_5.jpg"
+  },
+  "Oost-Indisch Huis": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Oih1.jpg/500px-Oih1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Oih1.jpg (bureau Monumenten &amp; Archeologie (bMA), Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOih1.jpg"
+  },
+  "Westermoskee": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Westermoskee_-_Amsterdam_%2826579109769%29.jpg/500px-Westermoskee_-_Amsterdam_%2826579109769%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Westermoskee - Amsterdam (26579109769).jpg (FaceMePLS from The Hague, The Netherlands, CC BY 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWestermoskee_-_Amsterdam_(26579109769).jpg"
+  },
+  "New Church": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Amsterdam_Nieuwe_Kerk_1697.jpg/500px-Amsterdam_Nieuwe_Kerk_1697.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam Nieuwe Kerk 1697.jpg (C messier, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_Nieuwe_Kerk_1697.jpg"
+  },
+  "Nemo": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Amsterdam_vue_Nemo.JPG/500px-Amsterdam_vue_Nemo.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam vue Nemo.JPG (Velvet, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_vue_Nemo.JPG"
+  },
+  "The Shipping House": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Amsterdam_Scheepvaarthuis_002.JPG/500px-Amsterdam_Scheepvaarthuis_002.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam Scheepvaarthuis 002.JPG (Janericloebe, CC BY 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_Scheepvaarthuis_002.JPG"
+  },
+  "Anne Frank": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Anne_Frank%2C_Merwedeplein_Amsterdam.JPG/500px-Anne_Frank%2C_Merwedeplein_Amsterdam.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Anne Frank, Merwedeplein Amsterdam.JPG (Gus Maussen, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAnne_Frank%2C_Merwedeplein_Amsterdam.JPG"
+  },
+  "Andrieskerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Andrieskerk_ingang.jpg/500px-Andrieskerk_ingang.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Andrieskerk ingang.jpg (BonstraGeert, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAndrieskerk_ingang.jpg"
+  },
+  "Living by Numbers": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/HIV-AIDSmonument_De_Ruijterkade_%282%29.jpg/500px-HIV-AIDSmonument_De_Ruijterkade_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: HIV-AIDSmonument De Ruijterkade (2).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHIV-AIDSmonument_De_Ruijterkade_(2).jpg"
+  },
+  "Tobacco Theater": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/TOBACCO_Theater_Amsterdam.jpg/500px-TOBACCO_Theater_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: TOBACCO Theater Amsterdam.jpg (Kawouter1895, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATOBACCO_Theater_Amsterdam.jpg"
+  },
+  "Fort bij Uitermeer": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/38504-Fort_bij_Uitermeer.jpg/500px-38504-Fort_bij_Uitermeer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 38504-Fort bij Uitermeer.jpg (Johan Bakker, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A38504-Fort_bij_Uitermeer.jpg"
+  },
+  "Warmoesstraat": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Amsterdam_little_street%2C_Warmoesstraat%2C_3_January_2003.jpg/500px-Amsterdam_little_street%2C_Warmoesstraat%2C_3_January_2003.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam little street, Warmoesstraat, 3 January 2003.jpg (No machine-readable author provided. Cainebogdan assumed (based on copyright claims)., Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_little_street%2C_Warmoesstraat%2C_3_January_2003.jpg"
+  },
+  "Amsterdam Memorial to the Canadian Liberators": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Monument_voor_de_Canadese_militairen.JPG/500px-Monument_voor_de_Canadese_militairen.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Monument voor de Canadese militairen.JPG (Kunkun, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMonument_voor_de_Canadese_militairen.JPG"
+  },
+  "Shadow quay": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Schaduwkade_Amsterdam_%2814623506697%29.jpg/500px-Schaduwkade_Amsterdam_%2814623506697%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Schaduwkade Amsterdam (14623506697).jpg (FaceMePLS from The Hague, The Netherlands, CC BY 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASchaduwkade_Amsterdam_(14623506697).jpg"
+  },
+  "Huis van de wijk Lydia": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Amsterdam_Huize_Lydia_001.JPG/500px-Amsterdam_Huize_Lydia_001.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam Huize Lydia 001.JPG (Janericloebe, CC BY 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_Huize_Lydia_001.JPG"
+  },
+  "Allard Pierson Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Allard_Pierson_Museum_ambient_light_01.jpg/500px-Allard_Pierson_Museum_ambient_light_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Allard Pierson Museum ambient light 01.jpg (Hnapel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAllard_Pierson_Museum_ambient_light_01.jpg"
+  },
+  "Willet-Holthuysen": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Willet-holthuysen-front.jpg/500px-Willet-holthuysen-front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Willet-holthuysen-front.jpg (Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWillet-holthuysen-front.jpg"
+  },
+  "Dutch Resistance Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Gebouw_Plancius.jpg/500px-Gebouw_Plancius.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Gebouw Plancius.jpg (Jvhertum, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGebouw_Plancius.jpg"
+  },
+  "Djame Masdjied Taibah": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Taibah_Jama_Masjid_mosque_Amsterdam.jpg/500px-Taibah_Jama_Masjid_mosque_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Taibah Jama Masjid mosque Amsterdam.jpg (Oyoyoy, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATaibah_Jama_Masjid_mosque_Amsterdam.jpg"
+  },
+  "Buchenwald Memorial": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Monument_Buchenwald.JPG/500px-Monument_Buchenwald.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Monument Buchenwald.JPG (Marion Golsteijn, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMonument_Buchenwald.JPG"
+  },
+  "Dutch East Indian Company": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Oih1.jpg/500px-Oih1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Oih1.jpg (bureau Monumenten &amp; Archeologie (bMA), Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOih1.jpg"
+  },
+  "Muiderpoort": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Muiderpoort_amsterdam_6.jpg/500px-Muiderpoort_amsterdam_6.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Muiderpoort amsterdam 6.jpg (Jvhertum, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMuiderpoort_amsterdam_6.jpg"
+  },
+  "Petruskerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Petruskerksloterdijk.jpg/500px-Petruskerksloterdijk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Petruskerksloterdijk.jpg (tp://www.bmz.amsterdam.nl, Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APetruskerksloterdijk.jpg"
+  },
+  "Ikeda Friendship and Peace Center": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Sint-Lucaskerk_%28Osdorp%29.jpg/500px-Sint-Lucaskerk_%28Osdorp%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Sint-Lucaskerk (Osdorp).jpg (Eriksw, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASint-Lucaskerk_(Osdorp).jpg"
+  },
+  "Heilige Nikolaas van Myrakerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Tichelkerk_in_de_Tichelstraat.jpg/500px-Tichelkerk_in_de_Tichelstraat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Tichelkerk in de Tichelstraat.jpg (Alf van Beem, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATichelkerk_in_de_Tichelstraat.jpg"
+  },
+  "Rasphuispoort": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Rasphuis_Heiligeweg_Amsterdam_001.jpg/500px-Rasphuis_Heiligeweg_Amsterdam_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Rasphuis Heiligeweg Amsterdam 001.jpg (anonymous, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARasphuis_Heiligeweg_Amsterdam_001.jpg"
+  },
+  "De Nieuwe Stad": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/2024_De_Nieuwe_Stad%2C_Asd-ZO_%28A%29.jpg/500px-2024_De_Nieuwe_Stad%2C_Asd-ZO_%28A%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2024 De Nieuwe Stad, Asd-ZO (A).jpg (Ceescamel, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2024_De_Nieuwe_Stad%2C_Asd-ZO_(A).jpg"
+  },
+  "Moskee El-Hijra": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/El_Hijra.JPG/500px-El_Hijra.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: El Hijra.JPG (Marion Golsteijn, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AEl_Hijra.JPG"
+  },
+  "Het Nieuwe Verbond": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/OLV_van_Lourdeskerk.JPG/500px-OLV_van_Lourdeskerk.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: OLV van Lourdeskerk.JPG (Marion Golsteijn, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOLV_van_Lourdeskerk.JPG"
+  },
+  "Torenfort aan de Ossenmarkt": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Torenfort_-_Weesp_-_20303845_-_RCE.jpg/500px-Torenfort_-_Weesp_-_20303845_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Torenfort - Weesp - 20303845 - RCE.jpg (Gerard Dukker, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATorenfort_-_Weesp_-_20303845_-_RCE.jpg"
+  },
+  "Lekstraatsynagoge": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Amsterdam_Synagoge_LekstraatDSC_4016.jpg/500px-Amsterdam_Synagoge_LekstraatDSC_4016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam Synagoge LekstraatDSC 4016.jpg (Alice Schippers, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_Synagoge_LekstraatDSC_4016.jpg"
+  },
+  "HvA": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Raampl1.jpg/500px-Raampl1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Raampl1.jpg (bureau Monumenten &amp; Archeologie (bMA), Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARaampl1.jpg"
+  },
+  "Jeruzalemkerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Jeruzalemkerk.jpg/500px-Jeruzalemkerk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Jeruzalemkerk.jpg (Marcel mulder, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AJeruzalemkerk.jpg"
+  },
+  "Collectie Six": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/JanSix.jpg/500px-JanSix.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: JanSix.jpg (Rembrandt, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AJanSix.jpg"
+  },
+  "Voormalige Schouwburgpoort": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Schouwbrug_van_campen1.jpg/500px-Schouwbrug_van_campen1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Schouwbrug van campen1.jpg (Salomon Savery (1594-c.1678), a printmaker and publisher, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASchouwbrug_van_campen1.jpg"
+  },
+  "Oosterparkkerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Oosterpark_4-5%2C_Amsterdam.jpg/500px-Oosterpark_4-5%2C_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Oosterpark 4-5, Amsterdam.jpg (Dqfn13, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOosterpark_4-5%2C_Amsterdam.jpg"
+  },
+  "Oudemanhuispoort": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/2008_04_29_Oudemanhuispoort.jpg/500px-2008_04_29_Oudemanhuispoort.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2008 04 29 Oudemanhuispoort.jpg (Takeaway, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2008_04_29_Oudemanhuispoort.jpg"
+  },
+  "NACO-house": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Het_NACO-huisje_van_Stadsherstel_%281%29.jpg/500px-Het_NACO-huisje_van_Stadsherstel_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Het NACO-huisje van Stadsherstel (1).jpg (Eriksw, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHet_NACO-huisje_van_Stadsherstel_(1).jpg"
+  },
+  "Torture Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Amsterdam_Torture_Museum_2013.jpg/500px-Amsterdam_Torture_Museum_2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam Torture Museum 2013.jpg (PersianDutchNetwork, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_Torture_Museum_2013.jpg"
+  },
+  "W139": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/W139_%28cropped%29.jpg/500px-W139_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: W139 (cropped).jpg (Piecesofuk, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AW139_(cropped).jpg"
+  },
+  "Maarten Lutherkerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Buitenkant_van_de_Maarten_Lutherkerk.jpg/500px-Buitenkant_van_de_Maarten_Lutherkerk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Buitenkant van de Maarten Lutherkerk.jpg (Pim Meulensteen, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABuitenkant_van_de_Maarten_Lutherkerk.jpg"
+  },
+  "Vondelmonument": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Joost_van_den_Vondel_-monument.JPG/500px-Joost_van_den_Vondel_-monument.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Joost van den Vondel -monument.JPG (Hullernuc, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AJoost_van_den_Vondel_-monument.JPG"
+  },
+  "Olympiahuis": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Noordelijk_Olympisch_huisje.jpg/500px-Noordelijk_Olympisch_huisje.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Noordelijk Olympisch huisje.jpg (Vincent Steenberg at nl.wikipedia, CC BY-SA 2.5)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANoordelijk_Olympisch_huisje.jpg"
+  },
+  "Multatuli Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/2022_Korsjespoortsteeg_20%2C_Asd-Multatulimuseum_%282%29.jpg/500px-2022_Korsjespoortsteeg_20%2C_Asd-Multatulimuseum_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2022 Korsjespoortsteeg 20, Asd-Multatulimuseum (2).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2022_Korsjespoortsteeg_20%2C_Asd-Multatulimuseum_(2).jpg"
+  },
+  "Max Euwe Centrum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Opening_Max_Euwe_centrum_door_mevrouw_Euwe_Bergman_%2C_weduwe_van_de_in_1981_overl%2C_Bestanddeelnr_933-8088.jpg/500px-Opening_Max_Euwe_centrum_door_mevrouw_Euwe_Bergman_%2C_weduwe_van_de_in_1981_overl%2C_Bestanddeelnr_933-8088.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Opening Max Euwe centrum door mevrouw Euwe Bergman , weduwe van de in 1981 overl, Bestanddeelnr 933-8088.jpg (Roland Gerrits / Anefo, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOpening_Max_Euwe_centrum_door_mevrouw_Euwe_Bergman_%2C_weduwe_van_de_in_1981_overl%2C_Bestanddeelnr_933-8088.jpg"
+  },
+  "Funerary museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Tot_Zover_1.jpg/500px-Tot_Zover_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Tot Zover 1.jpg (Marion Golstejn, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATot_Zover_1.jpg"
+  },
+  "Ravensbrück memorial": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Amsterdam_-_Vrouwen_van_Ravensbr%C3%BCck_-_1.jpg/500px-Amsterdam_-_Vrouwen_van_Ravensbr%C3%BCck_-_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam - Vrouwen van Ravensbrück - 1.jpg (Wagner De Cunto, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_-_Vrouwen_van_Ravensbr%C3%BCck_-_1.jpg"
+  },
+  "Samen Spelen Samen Leven": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Markt_voor_Joden_%2801%29.jpg/500px-Markt_voor_Joden_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Markt voor Joden (01).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMarkt_voor_Joden_(01).jpg"
+  },
+  "Thomaskerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Overzicht_van_de_zuidgevel_-_Amsterdam_-_20419017_-_RCE.jpg/500px-Overzicht_van_de_zuidgevel_-_Amsterdam_-_20419017_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht van de zuidgevel - Amsterdam - 20419017 - RCE.jpg (Bert van As, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_van_de_zuidgevel_-_Amsterdam_-_20419017_-_RCE.jpg"
+  },
+  "Kunstenaarsverzet": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/2022_Monument_kunstenaarsverzet_1940-1945%2C_Asd_%2803%29.jpg/500px-2022_Monument_kunstenaarsverzet_1940-1945%2C_Asd_%2803%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2022 Monument kunstenaarsverzet 1940-1945, Asd (03).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2022_Monument_kunstenaarsverzet_1940-1945%2C_Asd_(03).jpg"
+  },
+  "Sarphatimonument": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Sarphati_monument.JPG/500px-Sarphati_monument.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Sarphati monument.JPG (SanderK, CC BY-SA 2.5)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASarphati_monument.JPG"
+  },
+  "Koningskerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Overzicht_kerkgebouw_-_Amsterdam_-_20320631_-_RCE.jpg/500px-Overzicht_kerkgebouw_-_Amsterdam_-_20320631_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht kerkgebouw - Amsterdam - 20320631 - RCE.jpg (A. J. van der Wal, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_kerkgebouw_-_Amsterdam_-_20320631_-_RCE.jpg"
+  },
+  "Hofkerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Overzicht_westgevel_met_ingangsportaal_-_Amsterdam_-_20409083_-_RCE.jpg/500px-Overzicht_westgevel_met_ingangsportaal_-_Amsterdam_-_20409083_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht westgevel met ingangsportaal - Amsterdam - 20409083 - RCE.jpg (Sergé Technau, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_westgevel_met_ingangsportaal_-_Amsterdam_-_20409083_-_RCE.jpg"
+  },
+  "Meerpadkerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Westgevel_met_omlijste_ingang_en_een_frontonvormige_gevelbekroning%2C_en_zuidgevel_-_Amsterdam_-_20409473_-_RCE.jpg/500px-Westgevel_met_omlijste_ingang_en_een_frontonvormige_gevelbekroning%2C_en_zuidgevel_-_Amsterdam_-_20409473_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Westgevel met omlijste ingang en een frontonvormige gevelbekroning, en zuidgevel - Amsterdam - 20409473 - RCE.jpg (Sergé Technau, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWestgevel_met_omlijste_ingang_en_een_frontonvormige_gevelbekroning%2C_en_zuidgevel_-_Amsterdam_-_20409473_-_RCE.jpg"
+  },
+  "Bijzondere Collecties": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Bijzondere_Collecties_OTM.jpg/500px-Bijzondere_Collecties_OTM.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Bijzondere Collecties OTM.jpg (Marikevanroon20, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABijzondere_Collecties_OTM.jpg"
+  },
+  "Groote Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/IMG_Groote_Museum.jpg/500px-IMG_Groote_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: IMG Groote Museum.jpg (MattB, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AIMG_Groote_Museum.jpg"
+  },
+  "Zigeunermonument - Hel en Vuur": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Zigeunermonument_Hel_en_vuur_Amsterdam01.jpg/500px-Zigeunermonument_Hel_en_vuur_Amsterdam01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Zigeunermonument Hel en vuur Amsterdam01.jpg (Beeldhouwster Heleen Levano (Utrecht, 1941), Fotograaf Marius van Koulil (Breda, 1959), CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AZigeunermonument_Hel_en_vuur_Amsterdam01.jpg"
+  },
+  "Annick van Hardeveld": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/2021_Monument_Annick_van_Hardeveld.jpg/500px-2021_Monument_Annick_van_Hardeveld.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2021 Monument Annick van Hardeveld.jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Monument_Annick_van_Hardeveld.jpg"
+  },
+  "Monument voor Damslachtoffers 7 mei 1945": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Damslachtoffers%2C_algemene_tekst_%281%29.jpg/500px-Damslachtoffers%2C_algemene_tekst_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Damslachtoffers, algemene tekst (1).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADamslachtoffers%2C_algemene_tekst_(1).jpg"
+  },
+  "Anton de Kom": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/2020_Monument_Anton_de_Kom_%289%29.jpg/500px-2020_Monument_Anton_de_Kom_%289%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2020 Monument Anton de Kom (9).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2020_Monument_Anton_de_Kom_(9).jpg"
+  },
+  "Monument Walraven van Hall": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Walraven_van_Hall%2C_achteraanzicht.jpg/500px-Walraven_van_Hall%2C_achteraanzicht.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Walraven van Hall, achteraanzicht.jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWalraven_van_Hall%2C_achteraanzicht.jpg"
+  },
+  "This is Holland": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Thisisholland-002.jpg/500px-Thisisholland-002.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Thisisholland-002.jpg (shamsterdam, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AThisisholland-002.jpg"
+  },
+  "Nassaukerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Nassaukerk_bij_water.jpg/500px-Nassaukerk_bij_water.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Nassaukerk bij water.jpg (Paul Berendsen, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANassaukerk_bij_water.jpg"
+  },
+  "Waterdraagster": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Waterdraagster_1.JPG/500px-Waterdraagster_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Waterdraagster 1.JPG (Marion Golsteijn, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWaterdraagster_1.JPG"
+  },
+  "Monument Haarlemmerweg": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/2020_Monument_aan_de_Haarlemmerweg_%283%29.jpg/500px-2020_Monument_aan_de_Haarlemmerweg_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2020 Monument aan de Haarlemmerweg (3).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2020_Monument_aan_de_Haarlemmerweg_(3).jpg"
+  },
+  "De hongerwinter": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Monument_aan_de_Oosterkerk_%28Amsterdam%29.jpg/500px-Monument_aan_de_Oosterkerk_%28Amsterdam%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Monument aan de Oosterkerk (Amsterdam).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMonument_aan_de_Oosterkerk_(Amsterdam).jpg"
+  },
+  "Herdenkingsmonument": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Herdenkingsmonument_%281%29.jpg/500px-Herdenkingsmonument_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Herdenkingsmonument (1).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHerdenkingsmonument_(1).jpg"
+  },
+  "Theo Thijssen Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Voorgevel_-_Amsterdam_-_20018893_-_RCE.jpg/500px-Voorgevel_-_Amsterdam_-_20018893_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Voorgevel - Amsterdam - 20018893 - RCE.jpg (Han van Gool, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AVoorgevel_-_Amsterdam_-_20018893_-_RCE.jpg"
+  },
+  "Middenstip Stadion De Meer": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/2020_Esplanade_de_Meer%2C_middenstip_%282%29.jpg/500px-2020_Esplanade_de_Meer%2C_middenstip_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2020 Esplanade de Meer, middenstip (2).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2020_Esplanade_de_Meer%2C_middenstip_(2).jpg"
+  },
+  "Van Eesteren Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/VAN_EESTEREN_PAVILJOEN.jpg/500px-VAN_EESTEREN_PAVILJOEN.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: VAN EESTEREN PAVILJOEN.jpg (Eriksw, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AVAN_EESTEREN_PAVILJOEN.jpg"
+  },
+  "National Holocaust Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/2024_NHM%2C_Plantage_Middenlaan_27%2C_Asd_%281%29.jpg/500px-2024_NHM%2C_Plantage_Middenlaan_27%2C_Asd_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2024 NHM, Plantage Middenlaan 27, Asd (1).jpg (Ceescamel, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2024_NHM%2C_Plantage_Middenlaan_27%2C_Asd_(1).jpg"
+  },
+  "Compagnietheater": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Compagnie_theater.jpg/500px-Compagnie_theater.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Compagnie theater.jpg (M.Minderhoud, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ACompagnie_theater.jpg"
+  },
+  "Amsterdam Public Library Oosterdok": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/BibliotheekOBA_2.jpg/500px-BibliotheekOBA_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: BibliotheekOBA 2.jpg (Ceinturion, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABibliotheekOBA_2.jpg"
+  },
+  "Portugese Synagoge": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/EsnogaAmsterdam.jpg/500px-EsnogaAmsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: EsnogaAmsterdam.jpg (Massimo Catarinella, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AEsnogaAmsterdam.jpg"
+  },
+  "Pathé de Munt": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/PatheDeMunt2009.jpg/500px-PatheDeMunt2009.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: PatheDeMunt2009.jpg (Erik Joling, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APatheDeMunt2009.jpg"
+  },
+  "Pathé Arena": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Pathe_Arena.jpg/500px-Pathe_Arena.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Pathe Arena.jpg (Fa2fabian, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APathe_Arena.jpg"
+  },
+  "Bellevue": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Theater_Bellevue_Amsterdam_-_voorgevel.jpg/500px-Theater_Bellevue_Amsterdam_-_voorgevel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Theater Bellevue Amsterdam - voorgevel.jpg (Ciell, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ATheater_Bellevue_Amsterdam_-_voorgevel.jpg"
+  },
+  "Meervaart Theater": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Meervaart_voorkant.jpg/500px-Meervaart_voorkant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Meervaart voorkant.jpg (Meervaart, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMeervaart_voorkant.jpg"
+  },
+  "West India House": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/West-Indisch_Huis.jpg/500px-West-Indisch_Huis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: West-Indisch Huis.jpg (S Sepp, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWest-Indisch_Huis.jpg"
+  },
+  "Royal Tropical Institute": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/KIT_of_Tropenmuseum.JPG/500px-KIT_of_Tropenmuseum.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: KIT of Tropenmuseum.JPG (Marcelmulder68, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKIT_of_Tropenmuseum.JPG"
+  },
+  "Posthoornkerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Posthoorn.jpg/500px-Posthoorn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Posthoorn.jpg (bureau Monumenten &amp; Archeologie (bMA), Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APosthoorn.jpg"
+  },
+  "Vrijburg": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/2023_Diepenbrockstraat_46%2C_Asd_%2801%29.jpg/500px-2023_Diepenbrockstraat_46%2C_Asd_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2023 Diepenbrockstraat 46, Asd (01).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Diepenbrockstraat_46%2C_Asd_(01).jpg"
+  },
+  "Dominicuskerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Domic4.jpg/500px-Domic4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Domic4.jpg (bureau Monumenten &amp; Archeologie (bMA), Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADomic4.jpg"
+  },
+  "West Indian Warehouse": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Pakhuiswic.JPG/500px-Pakhuiswic.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Pakhuiswic.JPG (Iijjccoo, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APakhuiswic.JPG"
+  },
+  "De Ark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Voorzijde_met_de_luidtoren_-_Amsterdam_-_20382354_-_RCE.jpg/500px-Voorzijde_met_de_luidtoren_-_Amsterdam_-_20382354_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Voorzijde met de luidtoren - Amsterdam - 20382354 - RCE.jpg (A. J. van der Wal, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AVoorzijde_met_de_luidtoren_-_Amsterdam_-_20382354_-_RCE.jpg"
+  },
+  "Willem de Zwijgerkerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Olympiaweg%2C_Willem_de_Zwijgerkerk.jpg/500px-Olympiaweg%2C_Willem_de_Zwijgerkerk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Olympiaweg, Willem de Zwijgerkerk.jpg (Alf van Beem, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOlympiaweg%2C_Willem_de_Zwijgerkerk.jpg"
+  },
+  "Oude Lutherse Kerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Oude_Lutherse_Kerk.jpg/500px-Oude_Lutherse_Kerk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Oude Lutherse Kerk.jpg (Joost Witteveen, CC BY 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOude_Lutherse_Kerk.jpg"
+  },
+  "Nationaal monument Slavernijverleden": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Slavernij_monument_oosterpark.jpg/500px-Slavernij_monument_oosterpark.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Slavernij monument oosterpark.jpg (Arthena, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASlavernij_monument_oosterpark.jpg"
+  },
+  "Pianola Museum": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Pianola_Museum_1.JPG/500px-Pianola_Museum_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Pianola Museum 1.JPG (Ymnes, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APianola_Museum_1.JPG"
+  },
+  "Koningin Emma": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Monument_Koningin_Emma.JPG/500px-Monument_Koningin_Emma.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Monument Koningin Emma.JPG (Marcelmulder68, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMonument_Koningin_Emma.JPG"
+  },
+  "Elthetokerk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Stadsarchief_Amsterdam%2C_Afb_OSIM00004001397.jpg/500px-Stadsarchief_Amsterdam%2C_Afb_OSIM00004001397.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Stadsarchief Amsterdam, Afb OSIM00004001397.jpg (Unknown authorUnknown author, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AStadsarchief_Amsterdam%2C_Afb_OSIM00004001397.jpg"
+  },
+  "Fusillade": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Gevallen.hoornblazer.jpg/500px-Gevallen.hoornblazer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Gevallen.hoornblazer.jpg (J.M. Luijt, CC BY 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGevallen.hoornblazer.jpg"
+  },
+  "Raw Aron Schuster Synagoge": {
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Amsterdamrawaronschustersynagoge.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "imageAttribution": "Wikimedia Commons: Amsterdamrawaronschustersynagoge.jpg (Fnorp at Dutch Wikipedia, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdamrawaronschustersynagoge.jpg"
+  },
+  "Luther Museum Amsterdam": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Etsplaat_Wittenberg_Amsterdam.jpg/500px-Etsplaat_Wittenberg_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Etsplaat Wittenberg Amsterdam.jpg (Geertvanwesemael, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AEtsplaat_Wittenberg_Amsterdam.jpg"
+  },
+  "Onze Lieve Vrouwe Kapel": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Kapel_O._L._Vrouwe_Gasthuis%2C_Amsterdam.JPG/500px-Kapel_O._L._Vrouwe_Gasthuis%2C_Amsterdam.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Kapel O. L. Vrouwe Gasthuis, Amsterdam.JPG (Dqfn13, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKapel_O._L._Vrouwe_Gasthuis%2C_Amsterdam.JPG"
+  },
+  "Westerwijk": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Westerwijk%2C_overzicht.jpg/500px-Westerwijk%2C_overzicht.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Westerwijk, overzicht.jpg (Paul Berendsen, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWesterwijk%2C_overzicht.jpg"
+  },
+  "LJG": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Kop_Zuidas_41.jpg/500px-Kop_Zuidas_41.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Kop Zuidas 41.jpg (MrAronymous, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKop_Zuidas_41.jpg"
+  },
+  "Museum of the Canals": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Herengracht_386.jpg/500px-Herengracht_386.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Herengracht 386.jpg (Evert100, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHerengracht_386.jpg"
+  },
+  "Spanjemonument": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Spanje_monument_groot.jpg/500px-Spanje_monument_groot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Spanje monument groot.jpg (Eddy Roos, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASpanje_monument_groot.jpg"
+  },
+  "1936-1939 No Pasaran": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Spanje_monument_groot.jpg/500px-Spanje_monument_groot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Spanje monument groot.jpg (Eddy Roos, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASpanje_monument_groot.jpg"
+  },
+  "OT301": {
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/12/Overtoom_301%2C_entrance.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "imageAttribution": "Wikimedia Commons: Overtoom 301, entrance.jpg (daniel zimmel from bonn, germany, CC BY-SA 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOvertoom_301%2C_entrance.jpg"
+  },
+  "Boom Chicago": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Rozentheater.JPG/500px-Rozentheater.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Rozentheater.JPG (Marcel mulder, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARozentheater.JPG"
+  },
+  "De Boom die alles zag": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/De_boom_die_alles_zag.jpg/500px-De_boom_die_alles_zag.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: De boom die alles zag.jpg (User:Willem_90, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADe_boom_die_alles_zag.jpg"
+  },
+  "Electric Ladyland": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Electric_Ladyland_museum_entrance_2016.jpg/500px-Electric_Ladyland_museum_entrance_2016.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Electric Ladyland museum entrance 2016.jpg (Robin Sheat -- Eythian, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AElectric_Ladyland_museum_entrance_2016.jpg"
+  }
+ }
+}

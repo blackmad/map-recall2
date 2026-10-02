@@ -105,3 +105,15 @@ test('hard difficulty hides the place clues; easy and medium keep them', async (
   await page.goto('/?city=amsterdam&mode=guess_name&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=5&difficulty=medium');
   await expect(page.locator('.notable-place-label').first()).toBeVisible({ timeout: 30_000 });
 });
+
+test('a neighbourhood answer lists its places, with credited photos', async ({ page }) => {
+  await quietExternalRequests(page);
+  await page.goto('/?city=amsterdam&mode=pinpoint&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=10');
+  await expect(page.locator('#target-feature-name')).toBeVisible();
+  const rounds = await skipUntil(page, '[data-testid="answer-place-photos"]');
+  expect(rounds, 'a neighbourhood answer with place photos within ten rounds').toBeGreaterThan(0);
+  const photos = page.locator('[data-testid="answer-place-photos"] a');
+  expect(await photos.count()).toBeLessThanOrEqual(3);
+  await expect(photos.first()).toHaveAttribute('href', /commons\.wikimedia\.org/);
+  await expect(photos.first()).toHaveAttribute('title', /·/);
+});
