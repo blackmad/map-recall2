@@ -149,6 +149,37 @@ class GameRouteRuntime {
     if (persist) this._savePreferences();
   }
 
+  /**
+   * B: the next building look (Default, Painted, Storybook, Cartoon, Photo), saved with the other
+   * settings. A key press is explicit, so it also replaces a look set by the URL.
+   */
+  _cycleBuildingLook() {
+    const Prefs = window.CanalRecallPreferences;
+    const vm = this.vectorMap;
+    if (!Prefs || !Prefs.nextBuildingLook || !vm || typeof vm.setBuildingLook !== 'function') return;
+    const next = Prefs.nextBuildingLook(typeof vm.buildingLook === 'function' ? vm.buildingLook() : 'default');
+    vm.setBuildingLook(next);
+    this._overlay.store.patchPrefs({ buildingLook: next }, this._overlayZoom());
+    this._savePreferences();
+    this._flashLookLabel('Buildings: ' + ((Prefs.BUILDING_LOOK_LABELS && Prefs.BUILDING_LOOK_LABELS[next]) || next));
+  }
+
+  /** A brief label near the bottom of the screen; no keyboard player should have to guess what changed. */
+  _flashLookLabel(text) {
+    let label = document.getElementById('canal-look-label');
+    if (!label) {
+      label = document.createElement('div');
+      label.id = 'canal-look-label';
+      label.setAttribute('role', 'status');
+      label.style.cssText = 'position:fixed;left:50%;bottom:72px;transform:translateX(-50%);z-index:30;padding:8px 16px;border-radius:999px;background:rgba(20,24,28,.88);color:#fff;font:600 14px system-ui,sans-serif;pointer-events:none;transition:opacity .25s';
+      document.body.appendChild(label);
+    }
+    label.textContent = text;
+    label.style.opacity = '1';
+    clearTimeout(this._lookLabelTimer);
+    this._lookLabelTimer = setTimeout(() => { label.style.opacity = '0'; }, 1600);
+  }
+
   _syncLiveSettings() {
     const current = this._prefs();
     this._overlay.store.replacePrefs({
