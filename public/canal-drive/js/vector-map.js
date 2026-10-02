@@ -63,8 +63,10 @@ class VectorBasemap {
     // Spike (2026-10-02): facade walls as a three.js custom layer instead of the
     // fill-extrusion pattern. Off by default; `?buildings3d=1`. See
     // RENDERING_STACK_OPTIONS.md.
-    this._buildings3dLook = canalRecallBuildings3dLook();
-    this._buildings3dEnabled = !!this._buildings3dLook;
+    this._buildingLookLocked = !!canalRecallBuildings3dLook(); // a URL/global look beats the saved preference
+    this._buildings3dLook = canalRecallBuildings3dLook() || 'default';
+    this._buildings3dEnabled = this._buildings3dLook !== 'default';
+    this._tileFeatures = [];
     this._threeBuildings = null;
     this._detailedBuildings = null;
     this._completeCity = null;
@@ -799,8 +801,46 @@ class VectorBasemap {
     const api = window.CanalRecallThreeBuildings;
     if (!this._buildings3dEnabled || !this._facadesLib() || !api || !api.ThreeBuildings) return;
     if (!this._threeBuildings) this._threeBuildings = new api.ThreeBuildings(this.map, window.maplibregl, this._buildings3dLook);
-    if (!this.map.getLayer(this._threeBuildings.layer.id)) this.map.addLayer(this._threeBuildings.layer);
-    this._threeBuildings.setVisible(this._facadesActive());
+    if (!this.map.getLayer(this._threeBuildings.layer.id)) {
+      this.map.addLayer(this._threeBuildings.layer, this.map.getLayer('osm-colored-building-roofs') ? 'osm-colored-building-roofs' : undefined);
+      if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
+    }
+    this._threeBuildings.setVisible(this._facadesActive() && this._buildings3dEnabled);
+  }
+
+  /** The look the saved preference asks for, unless a URL look is in force. */
+  setBuildingLookPreference(look) {
+    if (this._buildingLookLocked) return;
+    this.setBuildingLook(look);
+  }
+
+  /**
+   * Live switch: 'default' (the stock pattern layer), 'procedural', 'cartoon'
+   * or 'photo'. Both layers exist side by side once used; only one is visible.
+   */
+  setBuildingLook(look) {
+    if (!['default', 'procedural', 'cartoon', 'photo'].includes(look) || look === this._buildings3dLook) return;
+    this._buildings3dLook = look;
+    this._buildings3dEnabled = look !== 'default';
+    if (!this.map || !this.map.getLayer('osm-colored-buildings')) return; // layers are created from these flags on load
+    if (this._buildings3dEnabled) {
+      this._addThreeBuildingsLayer();
+      if (this._threeBuildings) this._threeBuildings.setLook(look);
+    } else {
+      if (this._threeBuildings) this._threeBuildings.setFeatures([]); // free the wall meshes
+      this._ensurePatternLayer();
+    }
+    this._facadeStateApplied = undefined;
+    this._applyFacadeState();
+  }
+
+  /** Create the stock pattern layer late, when the session started on a three.js look. */
+  _ensurePatternLayer() {
+    if (this.map.getLayer('osm-colored-building-facades')) return;
+    const helpers = window.CanalRecallBuildings;
+    const wallTop = helpers && helpers.wallTopHeightExpression ? helpers.wallTopHeightExpression() : ['coalesce', ['get', 'height'], 5];
+    const spec = this._facadeLayerSpec(['coalesce', ['get', 'minHeight'], 0], wallTop);
+    if (spec) this.map.addLayer(spec, this.map.getLayer('osm-colored-building-roofs') ? 'osm-colored-building-roofs' : undefined);
   }
 
   /** Switch the three.js wall look live: 'procedural' | 'cartoon' | 'photo'. Console: `canalRecallGame.vectorMap.setBuildingsLook('cartoon')`. */
@@ -810,7 +850,8 @@ class VectorBasemap {
   }
 
   _syncThreeBuildings(features) {
-    if (this._threeBuildings) this._threeBuildings.setFeatures(features);
+    this._tileFeatures = features;
+    if (this._threeBuildings && this._buildings3dEnabled) this._threeBuildings.setFeatures(features);
   }
 
   _facadeLayerSpec(minHeight, wallTop) {
@@ -839,12 +880,15 @@ class VectorBasemap {
   /** Show/hide the pattern layer and keep the plain wall base in step. */
   _applyFacadeState() {
     if (!this.map) return;
-    if (!this._threeBuildings && !this.map.getLayer('osm-colored-building-facades')) return;
+    const hasPattern = !!this.map.getLayer('osm-colored-building-facades');
+    if (!this._threeBuildings && !hasPattern) return;
     const active = this._facadesActive();
-    if (this._facadeStateApplied === active) return;
-    this._facadeStateApplied = active;
-    if (this._threeBuildings) this._threeBuildings.setVisible(active);
-    else this.map.setLayoutProperty('osm-colored-building-facades', 'visibility', active ? 'visible' : 'none');
+    const three = !!this._threeBuildings && this._buildings3dEnabled;
+    const key = `${active}|${three}`;
+    if (this._facadeStateApplied === key) return;
+    this._facadeStateApplied = key;
+    if (this._threeBuildings) this._threeBuildings.setVisible(active && three);
+    if (hasPattern) this.map.setLayoutProperty('osm-colored-building-facades', 'visibility', active && !three ? 'visible' : 'none');
     const helpers = window.CanalRecallBuildings;
     const wallTop = helpers && helpers.wallTopHeightExpression ? helpers.wallTopHeightExpression() : ['coalesce', ['get', 'height'], 5];
     const minHeight = ['coalesce', ['get', 'minHeight'], 0];
@@ -967,7 +1011,12 @@ class VectorBasemap {
         this._cameraClearanceRequest.center, this._cameraClearanceRequest.view,
         this._cameraClearanceRequest.subject,
       );
-    }, (features) => { this._syncPyramidalRoofs(features); this._syncThreeBuildings(features); });
+    }, (features) => {
+      this._syncPyramidalRoofs(features);
+      // The streamer sends tiles to MapLibre after this callback, so an error here
+      // would leave buildings without roofs. Never let the wall layer throw into it.
+      try { this._syncThreeBuildings(features); } catch (error) { console.warn('three.js facade layer: feature sync failed', error); }
+    });
     // Loading may already have aimed at the route start before the probe
     // finished; apply that aim now so tiles stream under the overlay.
     this._applyPendingAim();
