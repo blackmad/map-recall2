@@ -84,7 +84,7 @@ a hitch not yet measured. The ground floor repeats above 32 m except on
 towers. Facades are Amsterdam-only, and walls take a period palette colour.
 Check on a real device.
 
-**Three.js facade layer (now a setting: Building look).** Open: measure geometry cost now that roofs, cornices and shops add vertices (and consider a distance cutoff for cornice and chimney geometry); roof coverage is limited to near-rectangular footprints (L-shapes and courtyard blocks keep flat lids); check Safari and a real phone (the user saw broken roofs in Safari photo mode, not reproduced in Chromium; ask whether Default look has roofs there); flat lids now come from the three.js mesh in a neutral grey or the mapped roof colour, not per look yet; buildings without a facade (no palette prior and no OSM colour, e.g. r3674348 by Bilderdijkpark) now draw as bare three.js walls but still deserve a generic facade; measure GPU frame time on a real phone now that the three layer draws every building (chunk builds are in a worker); the 32-layer bay set drops attic and tall-first-floor bays; measure on a real
+**Three.js facade layer (now a setting: Building look).** Open: measure geometry cost now that roofs, cornices and shops add vertices (and consider a distance cutoff for cornice and chimney geometry); roof coverage now uses the largest inscribed rectangle plus one wing (2026-10-02), so truly round or courtyard footprints still keep a lid or a parapet, and rows of narrow hipped/mansardHip houses read as separate roofs rather than one; roofs added 35-42% walls-chunk triangles (canal belt 492k to 665k), unmeasured on a phone; check Safari and a real phone (the user saw broken roofs in Safari photo mode, not reproduced in Chromium; ask whether Default look has roofs there); flat lids now come from the three.js mesh in a neutral grey or the mapped roof colour, not per look yet; buildings without a facade (no palette prior and no OSM colour, e.g. r3674348 by Bilderdijkpark) now draw as bare three.js walls but still deserve a generic facade; measure GPU frame time on a real phone now that the three layer draws every building (chunk builds are in a worker); the 32-layer bay set drops attic and tall-first-floor bays; measure on a real
 phone (heap is now below the pattern layer in software GL; geometry still
 42-63 MB: pack vertices, prune by distance); a shimmer metric that works (the
 current one is noisy and shows no win);
@@ -131,6 +131,15 @@ ride's hotspots, `KEYBOARD_RIDE_TRACE=1`) and whether the rider feels it.
 quarters and buurten, so Guess Name can offer Nieuwmarktbuurt and
 Nieuwmarkt/Lastage together, though they cover the same streets. Choices
 should skip an area that overlaps the answer by more than about half.
+
+**Map Recall locate hints: data gaps.** Hints now name places
+(`src/mapRecall/locateHints.ts`), ranked by Wikidata sitelinks. 96 linked
+waters were never given sitelinks, among them Prinsengracht, Keizersgracht,
+Singelgracht and Brouwersgracht, so they rank as obscure as Koningsbergengracht
+(Narva-eiland's hint names that rather than Houthaven); Singel's link points at
+Muntsluis. Fetch their sitelinks into the extract. Betondorp, Floradorp and
+Molenwijkpark have only a district to name and fall back to bearings; Utrecht,
+Rotterdam and Den Haag hints are unchecked.
 
 **Map Recall follow-ups.** 14 OSM neighbourhoods have no article in either
 language (Rijnbuurt, Scheldebuurt, Westindische Buurt, Van Galenbuurt, …);

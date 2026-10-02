@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';
 import { createExpression } from '@maplibre/maplibre-gl-style-spec';
 import { CELL_KINDS, CELL_LAYER_COUNT, CELL_VARIANTS, CELL_PX, STYLE_DIMS, cellLayer, paintCell } from '../src/canalRecall/facadeCells.ts';
 import { groundRuns, layoutWall } from '../src/canalRecall/facadeLayout.ts';
-import { buildChunk, facadeTopM, wallTopHeightM, type MeshBuilding } from '../src/canalRecall/threeBuildingMesh.ts';
+import { buildChunk, facadeTopM, wallRuns, wallTopHeightM, type MeshBuilding } from '../src/canalRecall/threeBuildingMesh.ts';
+import { edgeGroundPieces, layoutRun } from '../src/canalRecall/facadeLayout.ts';
 import { wallTopHeightExpression } from '../src/canalRecall/buildingStyle.ts';
 import { FACADE_STYLES } from '../src/canalRecall/genericFacades.ts';
 
@@ -277,7 +278,7 @@ for (const c of [0.64, 1.4]) {
   const square = (cx: number, cy: number, w: number, d = w): Array<[number, number]> => [[cx - w / 2, cy - d / 2], [cx + w / 2, cy - d / 2], [cx + w / 2, cy + d / 2], [cx - w / 2, cy + d / 2], [cx - w / 2, cy - d / 2]];
   assert.equal(new Set(KITS.map(k => k.name)).size, KITS.length, 'kit names are unique');
   const owners = new Map<string, string>();
-  for (const kit of KITS) for (const id of [...kit.tiers.map(t => t.id), ...kit.roofs.map(r => r.id)]) { assert.ok(!owners.has(id), `${id} belongs to one kit`); owners.set(id, kit.name); }
+  for (const kit of KITS) for (const id of [...kit.tiers.map(t => t.id), ...kit.roofs.map(r => r.id), ...(kit.halls ?? []).map(h => h.id)]) { assert.ok(!owners.has(id), `${id} belongs to one kit`); owners.set(id, kit.name); }
   for (const id of KIT_HIDE_IDS) assert.ok(KIT_PART_IDS.has(id));
   for (const kit of KITS) {
     assert.deepEqual(kitGeometry(kit, new Map()), [], `${kit.name}: nothing to draw until its parts load`);
@@ -287,9 +288,10 @@ for (const c of [0.64, 1.4]) {
     for (const tier of kit.tiers) { parts.set(tier.id, { id: tier.id, ring: square(0, 0, 10), minHeightM: z, heightM: z + 10 }); z += 10; }
     for (const stack of kit.stacks) if (!parts.has(stack.onId)) parts.set(stack.onId, { id: stack.onId, ring: square(0, 0, 10), minHeightM: 0, heightM: 30 });
     for (const roof of kit.roofs) parts.set(roof.id, { id: roof.id, ring: square(40, 0, 12, 30), minHeightM: 0, heightM: 20 });
+    for (const hall of kit.halls ?? []) parts.set(hall.id, { id: hall.id, ring: square(0, 80, 40, 60), minHeightM: 0, heightM: 10 });
     const geometry = kitGeometry(kit, parts);
     // A body-only kit (NEMO: just its walls recoloured) builds no geometry of its own.
-    const bodyOnly = !kit.tiers.length && !kit.stacks.length && !kit.roofs.length;
+    const bodyOnly = !kit.tiers.length && !kit.stacks.length && !kit.roofs.length && !kit.halls?.length;
     assert.ok(bodyOnly ? geometry.length === 0 && (kit.body?.length ?? 0) > 0 : geometry.length > 0 && geometry.every(g => g.tris.length > 0), `${kit.name}: builds geometry`);
     for (const g of geometry) for (const t of g.tris) {
       assert.ok(t.p.flat().every(Number.isFinite) && t.uv.flat().every(Number.isFinite) && t.n.every(Number.isFinite), `${kit.name}: finite`);
@@ -311,5 +313,132 @@ for (const c of [0.64, 1.4]) {
   assert.equal(decorateKitRoof(decorated), decorated, 'idempotent');
   const other = { type: 'Feature' as const, properties: { id: 'w1', height: 20 }, geometry: null };
   assert.equal(decorateKitRoof(other), other);
+}
+
+// --- Street side, runs, stoops (user report 2026-10-02, Da Costakade by Akitsu) --------
+// Pinned spot: the curved block and corner café east of Akitsu (4.8752, 52.3722), shot by
+// `LOOK_SHOTS=1 LOOK_SPOT=da-costa-akitsu LOOK_FREE=1 LOOK_ZOOM=19.3 … facade-trees-look`.
+{
+  const doorLayers = new Set([0, 1].map(v => cellLayer('canal', 'door', v)));
+  /** Door quads as [minX, maxX, minY, maxY] in metres from origin. */
+  const doorQuads = (c: ReturnType<typeof buildChunk>, id: string) => {
+    const r = c.ranges.find(x => x.id === id)!, out: number[][] = [];
+    for (let v = r.start; v < r.start + r.count; v++) {
+      if (!doorLayers.has(c.layers[v]) || (v - r.start) % 4) continue;
+      const xs = [0, 1, 2, 3].map(k => c.positions[(v + k) * 3]), ys = [0, 1, 2, 3].map(k => c.positions[(v + k) * 3 + 1]);
+      out.push([Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)]);
+    }
+    return out;
+  };
+  // A house with a street 6 m in front (south) and another house's back 19 m behind it, across gardens.
+  const front = house('front', 0, 6, 12), behind: MeshBuilding = { ...house('behind', 0, 6, 12), polygons: [[rect(0, 30, 6, 41)]] };
+  const street = new Float32Array([-50, -6, 50, -6]);
+  const withStreet = buildChunk([front, behind], origin, 'walls', street);
+  const doors = doorQuads(withStreet, 'front');
+  assert.ok(doors.length >= 1, 'the street wall keeps its door');
+  assert.ok(doors.every(([, , y0, y1]) => Math.abs(y0) < 0.01 && Math.abs(y1) < 0.01), `doors only on the street wall: ${JSON.stringify(doors)}`);
+  // No streets known (boat mode): any outer wall may carry a door, as before.
+  const sides = new Set(doorQuads(buildChunk([front, behind], origin), 'front').map(([x0, x1, y0, y1]) => `${Math.round(x1 - x0) ? 'h' : 'v'}${Math.round((y0 + y1) / 2)}${Math.round((x0 + x1) / 2)}`));
+  assert.ok(sides.size > 1, 'without streets, doors spread over the outer walls');
+  // A courtyard wall never carries a door.
+  const block: MeshBuilding = { ...house('court', 0, 30, 12), polygons: [[rect(0, 0, 30, 30), rect(10, 10, 20, 20).reverse()]] };
+  for (const [x0, x1, y0, y1] of doorQuads(buildChunk([block], origin), 'court')) assert.ok(!(x0 > 9.9 && x1 < 20.1 && y0 > 9.9 && y1 < 20.1), 'no door in the courtyard');
+  // Same house, street to the east instead: the door moves to the east wall.
+  const east = doorQuads(buildChunk([front], origin, 'walls', new Float32Array([12, -50, 12, 50])), 'front');
+  assert.ok(east.length && east.every(([x0, x1]) => Math.abs(x0 - 6) < 0.01 && Math.abs(x1 - 6) < 0.01), 'door follows the street');
+}
+{
+  // A curved frontage (a quarter ring in 12 segments) is one run with one bay width.
+  const arc = (r: number, n: number) => Array.from({ length: n + 1 }, (_, i) => { const a = (i / n) * Math.PI / 2; return [r * Math.cos(a), r * Math.sin(a)]; });
+  const outer = arc(40, 12), inner = arc(28, 12).reverse();
+  const ring = [...outer, ...inner, outer[0]].map(([x, y]) => [origin.lng + x / kx, origin.lat + y / ky]);
+  const curved: MeshBuilding = { id: 'curve', polygons: [[ring]], heightM: 15, minHeightM: 0, style: 'school', wallHex: '#8a5a44' };
+  const c = buildChunk([curved], origin);
+  const upper = new Set([0, 1].map(v => cellLayer('school', 'upper', v)));
+  const perMetre: number[] = [];
+  for (let v = 0; v < c.vertexCount; v += 4) {
+    if (!upper.has(c.layers[v])) continue;
+    const len = Math.hypot(c.positions[(v + 1) * 3] - c.positions[v * 3], c.positions[(v + 1) * 3 + 1] - c.positions[v * 3 + 1]);
+    if (len > 9) continue; // the two straight end walls
+    perMetre.push((c.uvs[(v + 1) * 2] - c.uvs[v * 2]) / len);
+  }
+  assert.ok(perMetre.length >= 24, `curved segments found (${perMetre.length})`);
+  // Two arcs (outer and inner), each with its own grid; within an arc every segment agrees.
+  const groups = [...new Set(perMetre.map(x => x.toFixed(4)))];
+  assert.ok(groups.length <= 2, `one bay width per curved wall, got ${groups.join(', ')}`);
+  // Runs: the ring's 12 + 12 arc edges collapse into 2 runs plus the 2 straight ends.
+  const pts = ring.map(([lng, lat]) => [(lng - origin.lng) * kx, (lat - origin.lat) * ky]);
+  const edges = pts.slice(0, -1).map(([x0, y0], i) => { const [x1, y1] = pts[i + 1], len = Math.hypot(x1 - x0, y1 - y0); return { x0, y0, x1, y1, len, nx: (y1 - y0) / len, ny: -(x1 - x0) / len, hole: false }; });
+  assert.equal(wallRuns([edges], () => false).length, 4, 'two arcs and two ends');
+  // A run's doors sit on a bay that lies mostly on one edge, and an edge the street rule forbids gets none.
+  const run = layoutRun('postwar', [6, 6, 6], 12, 0.4, true, undefined, [false, true, false])!;
+  for (const b of run.doorBays) { const mid = (b + 0.5) * run.bayWidthM; assert.ok(mid > 6 && mid < 12, `door bay ${b} on the allowed edge`); }
+  assert.deepEqual(edgeGroundPieces(run, 1, 6).reduce((n, p) => n + (p.a1 - p.a0), 0).toFixed(6), (6).toFixed(6), 'ground pieces cover the edge');
+}
+{
+  // A narrow shop has no house door, so no stoop climbs to its shop window (the café corner).
+  const STONE = [0xcf, 0xc6, 0xb4];
+  const lowStone = (c: ReturnType<typeof buildChunk>) => { for (let v = 0; v < c.vertexCount; v++) if (c.positions[v * 3 + 2] < 0.6 && STONE.every((x, k) => c.tints[v * 4 + k] === x)) return true; return false; };
+  let houses = 0, shops = 0;
+  for (let i = 0; i < 40; i++) {
+    const h = { ...house(`s${i}`, 0, 5.5, 12), extras: true, lid: { hex: '#777777', flatLayer: 0 } };
+    if (lowStone(buildChunk([h], origin, 'extras'))) houses++;
+    if (lowStone(buildChunk([{ ...h, shopfront: true }], origin, 'extras'))) shops++;
+  }
+  assert.ok(houses > 5, `stoops exist on houses (${houses})`);
+  assert.equal(shops, 0, 'no stoop in front of a narrow shop');
+}
+
+{
+  // De Hallen (user report 2026-10-02: one bare tan block): its one BAG footprint becomes a row
+  // of ~9.6 m tram halls, ridges along the long wall, gable ends on the stepped Bellamyplein side.
+  const { readFileSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const { hallRects, KITS: kits, decorateKitRoof: decorate, kitGeometry: geometry } = await import('../src/canalRecall/landmarkKits.ts');
+  const tile = JSON.parse(gunzipSync(readFileSync('public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz')).toString());
+  const id = 'NL.IMBAG.Pand.0363100012236693', f = tile.features.find((x: any) => x.properties.id === id);
+  assert.ok(f, 'De Hallen footprint is in its tile');
+  const KO = { lng: 4.9, lat: 52.37 }, kkx = 111_320 * Math.cos(KO.lat * Math.PI / 180);
+  const ring: [number, number][] = f.geometry.coordinates[0].map(([lng, lat]: number[]) => [(lng - KO.lng) * kkx, (lat - KO.lat) * 110_540]);
+  const kit = kits.find(k => k.name === 'De Hallen')!, spec = kit.halls![0];
+  const anchor: [number, number] = [(spec.anchor[0] - KO.lng) * kkx, (spec.anchor[1] - KO.lat) * 110_540];
+  const halls = hallRects(ring, spec.widthM, anchor);
+  assert.ok(halls.length >= 10, `a row of halls (${halls.length})`);
+  assert.ok(halls.every(h => h.wid <= spec.widthM + 1e-6 && h.len > h.wid), 'each hall is a long narrow shed');
+  let area2 = 0; for (let i = 0; i + 1 < ring.length; i++) area2 += ring[i][0] * ring[i + 1][1] - ring[i + 1][0] * ring[i][1];
+  const covered = halls.reduce((a, h) => a + h.len * h.wid, 0) / Math.abs(area2 / 2);
+  assert.ok(covered > 0.85 && covered < 1.1, `halls cover the footprint (${covered.toFixed(2)})`);
+  const decorated = decorate({ type: 'Feature', properties: { id, height: 9.61 }, geometry: null });
+  assert.equal(decorated.properties.roofEavesHeightM, spec.eavesM, 'walls stop at the hall eaves');
+  assert.equal(decorated.properties.kitWall, 'grid', 'brick walls with windows, not bare tan');
+  const tris = geometry(kit, new Map([[id, { id, ring, minHeightM: 0, heightM: 9.61 }]]))[0].tris;
+  const top = Math.max(...tris.flatMap(t => t.p.map(p => p[2])));
+  assert.ok(Math.abs(top - (spec.eavesM + spec.riseM)) < 0.5, `ridges at ${top.toFixed(1)} m`);
+}
+
+{
+  // A shop's ground floor takes its paint colour (user 2026-10-02: "the white bit should go to the
+  // ground because that's the paint color of the bottom floor … different colors"); doors and upper floors keep the wall.
+  const shop: MeshBuilding = { ...house('paint', 0, 12, 12), layers: { upper: 1, ground: 2, door: 3 }, groundHex: '#2b2d2c' };
+  const c = buildChunk([shop], origin);
+  let ground = 0, other = 0;
+  for (let v = 0; v < c.vertexCount; v++) {
+    const rgb = [c.tints[v * 4], c.tints[v * 4 + 1], c.tints[v * 4 + 2]];
+    if (c.layers[v] === 2) { ground++; assert.deepEqual(rgb, [0x2b, 0x2d, 0x2c], 'shop bays wear the ground-floor paint'); }
+    else if (c.layers[v] === 1 || c.layers[v] === 3) { other++; assert.notDeepEqual(rgb, [0x2b, 0x2d, 0x2c], 'upper floors and doors keep the wall colour'); }
+  }
+  assert.ok(ground > 0 && other > 0);
+}
+
+{
+  // Bay archetypes follow the facade periods: a 1890 Jordaan block is 19th century, a 1965 slab is modern, not canal houses.
+  const { archetypeFor } = await import('../src/canalRecall/bayTextures.ts');
+  const { BAY_LAYER_COUNT, BAY_STYLES } = await import('../src/canalRecall/bayLook.ts');
+  assert.equal(archetypeFor('x', 1650, 15), 'canal');
+  assert.equal(archetypeFor('x', 1890, 15), 'c19');
+  assert.equal(archetypeFor('x', 1925, 15), 'school');
+  assert.equal(archetypeFor('x', 1965, 15), 'modern');
+  assert.ok(BAY_STYLES.canal.every(s => s.shape === 'rect'), 'canal houses have flat lintels; arched hoods are 19th century');
+  assert.ok(BAY_LAYER_COUNT < 200, 'bay layers fit the byte layer index with room for roofs');
 }
 console.log('three buildings: ok');

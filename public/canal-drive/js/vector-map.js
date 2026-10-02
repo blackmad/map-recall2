@@ -216,6 +216,12 @@ class VectorBasemap {
     if (source && this._cycleTracks) source.setData(this._cycleTracks);
   }
 
+  /** The routing ways again, for the three.js layer: front doors go only on walls facing a street. */
+  setStreetFronts(ways) {
+    this._streetFrontWays = ways || [];
+    if (this._threeBuildings && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this._streetFrontWays);
+  }
+
   _ensureStreetOverlayLayers() {
     if (this.map.getSource('active-street') || !window.CanalRecallStreets) return;
     const empty = { type: 'FeatureCollection', features: [] };
@@ -815,7 +821,10 @@ class VectorBasemap {
   _addThreeBuildingsLayer() {
     const api = window.CanalRecallThreeBuildings;
     if (!this._buildings3dEnabled || !this._facadesLib() || !api || !api.ThreeBuildings) return;
-    if (!this._threeBuildings) this._threeBuildings = new api.ThreeBuildings(this.map, window.maplibregl, this._buildings3dLook);
+    if (!this._threeBuildings) {
+      this._threeBuildings = new api.ThreeBuildings(this.map, window.maplibregl, this._buildings3dLook);
+      if (this._streetFrontWays && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this._streetFrontWays);
+    }
     if (!this.map.getLayer(this._threeBuildings.layer.id)) {
       this.map.addLayer(this._threeBuildings.layer, this.map.getLayer('osm-colored-building-roofs') ? 'osm-colored-building-roofs' : undefined);
       if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
