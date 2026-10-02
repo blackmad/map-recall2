@@ -25,8 +25,10 @@ import { lensFor } from '../da-costa-block/neighbourhood-core.ts';
 
 const arg = (name: string, fallback = '') => process.argv.find(a => a.startsWith(`--${name}=`))?.slice(name.length + 3) ?? fallback;
 const name = arg('name'), ids = new Set(arg('ids').split(',').filter(Boolean));
-const radius = Number(arg('radius', '55')), ppm = Number(arg('ppm', '60')), maxPanos = Number(arg('max-panos', '5'));
+const radius = Number(arg('radius', '55')), ppm = Number(arg('ppm', '60')), maxPanos = Number(arg('max-panos', '1'));
 const after = arg('timestamp-after', '2021-01-01'), outDir = path.resolve(arg('out', 'public/data/landmark-facades'));
+const maxObl = Number(arg("max-obl", "50"));
+const minStandoff = Number(arg("min-standoff", "4")), maxDist = Number(arg("max-dist", "45"));
 const forcedWall = arg('wall');
 if (!name || !ids.size) throw new Error('--name and --ids are required');
 
@@ -69,19 +71,25 @@ function wallsOf(parts: Map<string, { ring: number[][]; height: number }>): Wall
 
 async function listPanos(centre: Rd) {
   const [lng, lat] = rdToLngLat(centre);
-  const url = `https://api.data.amsterdam.nl/panorama/panoramas/?near=${lng},${lat}&radius=${radius}&srid=4326&page_size=500&timestamp_after=${after}`;
-  const response = await fetch(url, { headers: { 'User-Agent': 'MapRecall-PanoFacades/1.0' } });
-  if (!response.ok) throw new Error(`panorama list ${response.status}`);
-  const json: any = await response.json();
-  return (json._embedded?.panoramas ?? []) as any[];
+  let url: string | null = `https://api.data.amsterdam.nl/panorama/panoramas/?near=${lng},${lat}&radius=${radius}&srid=4326&page_size=500&timestamp_after=${after}`;
+  const all: any[] = [];
+  // The API caps a page at 500 and returns them unordered, so follow every page.
+  for (let page = 0; url && page < 20; page++) {
+    const response = await fetch(url, { headers: { 'User-Agent': 'MapRecall-PanoFacades/1.0' } });
+    if (!response.ok) throw new Error(`panorama list ${response.status}`);
+    const json: any = await response.json();
+    all.push(...(json._embedded?.panoramas ?? []));
+    url = json._links?.next?.href ?? null;
+  }
+  return all;
 }
 
 const wallCandidates = (wall: Wall, panos: any[]) => panos.flatMap(pano => {
   const rd = lngLatToRd([pano.geometry.coordinates[0], pano.geometry.coordinates[1]]);
   const vx = rd.x - wall.mid.x, vy = rd.y - wall.mid.y, d = Math.hypot(vx, vy), standoff = vx * wall.nx + vy * wall.ny;
-  if (standoff < 4 || d > 45) return [];
+  if (standoff < minStandoff || d > maxDist) return [];
   const obliquity = Math.acos(standoff / d) * 180 / Math.PI;
-  if (obliquity > 50) return [];
+  if (obliquity > maxObl) return [];
   return [{ pano, rd, d, standoff, obliquity, score: Math.cos(obliquity * Math.PI / 180) / d }];
 }).sort((a, b) => b.score - a.score);
 
@@ -111,7 +119,7 @@ if (!chosen || !chosen.c.length) throw new Error('no wall has a panorama looking
 
 // Spread the picks: different positions, so occluders differ between captures.
 const picks: typeof chosen.c = [];
-for (const c of chosen.c) if (picks.length < maxPanos && picks.every(p => Math.hypot(p.rd.x - c.rd.x, p.rd.y - c.rd.y) > 2.5)) picks.push(c);
+for (const c of chosen.c) if (picks.length < maxPanos && lensFor(c.pano, undefined) && picks.every(p => Math.hypot(p.rd.x - c.rd.x, p.rd.y - c.rd.y) > 2.5)) picks.push(c);
 const wall = chosen.wall;
 const poses = picks.map(p => lensFor(p.pano, undefined)!).filter(Boolean);
 const baseZ = poses.reduce((s, l) => s + (l.pose.z - 2.44), 0) / poses.length;
