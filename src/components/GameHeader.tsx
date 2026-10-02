@@ -5,8 +5,6 @@ import {
   MapPin,
   Eye,
   Settings,
-  Volume2,
-  VolumeX,
   MoreVertical,
   X,
   EyeOff,
@@ -36,8 +34,6 @@ interface GameHeaderProps {
   totalScore: number;
   onOpenSettings: () => void;
   onOpenDebugPlaces?: () => void;
-  isMuted: boolean;
-  onToggleMute: () => void;
   blindMapMode: boolean;
   onToggleBlindMap: () => void;
   onLocateUser?: () => void;
@@ -81,8 +77,6 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   totalScore,
   onOpenSettings,
   onOpenDebugPlaces,
-  isMuted,
-  onToggleMute,
   blindMapMode,
   onToggleBlindMap,
   onLocateUser,
@@ -300,18 +294,6 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
                 <EyeOff className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">No Labels</span>
               </button>
-            )}
-
-            {/* Quick Mute Toggle */}
-            {!startOpen && (
-            <button
-              id="header-sound-btn"
-              onClick={onToggleMute}
-              title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
-              className="enamel-chip hidden sm:block p-1.5 cursor-pointer"
-            >
-              {isMuted ? <VolumeX className="w-3.5 h-3.5 text-white/70" /> : <Volume2 className="w-3.5 h-3.5 text-white" />}
-            </button>
             )}
 
             {/* All Options Overflow Menu Button */}
