@@ -1,5 +1,24 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Three.js facade layer in the game (spike, opt-in)
+
+`?buildings3d=1|cartoon|photo` (or `vectorMap.setBuildingsLook('cartoon')`)
+replaces only the fill-extrusion facade pattern layer with a three.js custom
+layer inside MapLibre's GL context (`threeBuildingsBrowser.ts`); roofs,
+cornices, ground colour and POI/label layers stay MapLibre's. Walls are laid
+out in whole bays and storeys (`facadeLayout.ts`), doors stand under a window
+column, party walls are culled, and the answer and signature buildings hide
+their facades by id range. Textures are mipmapped, anisotropic texture arrays
+sampled with a wall/accent tint mask: the procedural Amsterdam cells
+(`facadeCells.ts`) or the rendering spike's bays (`bayLook.ts` over
+`bayTextures.ts`, 32 curated layers). Off by default.
+Measured (headless software GL, desktop, 5 spots, chase view; not a phone):
+frame-difference "shimmer" 4-32% lower than the pattern layer at every spot,
+MapLibre render p95 20 to 14.5 ms, but JS heap +160 MB and 37-63 MB of walls
+geometry plus 12-16 MB of textures. The shimmer metric includes camera motion,
+so treat it as direction only. Cartoon verified by eye at three spots; photo
+not yet.
+
 ## 2026-10-02 — Per-wall facade rendering spike merged
 
 User asked for windows and doors that line up with buildings and more
