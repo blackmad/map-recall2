@@ -193,9 +193,12 @@ export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: Roof
       quad(world(-L / 2, v0, z0), world(L / 2, v0, z0), world(L / 2, v1, z1), world(-L / 2, v1, z1),
         [0, 0], [L / cell, 0], [L / cell, sl / cell], [0, sl / cell], 'slope', dir(0, (v0 + v1) / 2, (z0 + z1) / 2 - R * 0.4));
     }
-    for (const e of [-1, 1]) for (let i = 0; i < prof.length - 1; i++) {
-      tri(world(e * L / 2, prof[i][0], prof[i][1]), world(e * L / 2, prof[i + 1][0], prof[i + 1][1]), world(e * L / 2, 0, R * 0.4),
-        wallUv(prof[i][0], prof[i][1]), wallUv(prof[i + 1][0], prof[i + 1][1]), wallUv(0, R * 0.4), 'plate', dir(e, 0, 0));
+    // The end wall is a fan about an inner point, closed along the eaves too: without the
+    // eaves edge a triangle was missing and every mansard end showed a hole (user report 2026-10-02).
+    for (const e of [-1, 1]) for (let i = 0; i < prof.length; i++) {
+      const a = prof[i], b = prof[(i + 1) % prof.length];
+      tri(world(e * L / 2, a[0], a[1]), world(e * L / 2, b[0], b[1]), world(e * L / 2, 0, R * 0.4),
+        wallUv(a[0], a[1]), wallUv(b[0], b[1]), wallUv(0, R * 0.4), 'plate', dir(e, 0, 0));
     }
     for (const sgn of [-1, 1]) quad(world(-L / 2, sgn * W / 2, 0), world(L / 2, sgn * W / 2, 0), world(L / 2, sgn * (W / 2 + 0.28), -0.1), world(-L / 2, sgn * (W / 2 + 0.28), -0.1), [0, 0], [L / cell, 0], [L / cell, 0.3 / cell], [0, 0.3 / cell], 'slope', dir(0, sgn * 0.3, 1));
     if (plan.dormers) {

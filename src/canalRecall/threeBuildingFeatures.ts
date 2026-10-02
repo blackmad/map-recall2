@@ -9,7 +9,10 @@ import type { Look } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
-export type BuildingLook = 'procedural' | Look;
+/** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes. */
+export type BuildingLook = 'procedural' | 'untextured' | Look;
+/** The texture set a look draws from. */
+export const cellSetOf = (look: BuildingLook): 'procedural' | Look => (look === 'untextured' ? 'procedural' : look);
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 /** One fixed origin for the whole city: float32 metres stay sub-millimetre within 10 km. */
 export const ORIGIN = { lng: 4.9, lat: 52.37 };
@@ -29,6 +32,7 @@ const FLAT_ROOF_GREYS = ['#8f8a83', '#9a958c', '#85817c', '#a09789'];
 /** Roof colours per look: pantile and slate (a look's own tones, picked by the plan's `tone`). */
 export const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
   procedural: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
+  untextured: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
   photo: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
   storybook: { tile: ['#b9553a', '#a94a33', '#c46a45'], slate: ['#556070', '#4a5666', '#657282'] },
   cartoon: { tile: ['#e85a3c', '#f08a2b', '#d94a3a'], slate: ['#3f5f8f', '#2f4a78', '#4f7bb0'] },
@@ -44,9 +48,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
   const id = String(p.id ?? '');
   let building: MeshBuilding;
   let plain: number, roofBase: number, layout: FacadeStyle;
-  if (look !== 'procedural') {
+  if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
-    const bay = bayLookFor(id, year, Number(p.height) || heightM, look);
+    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look);
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers };
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
   } else {
@@ -77,6 +81,12 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
       building.roof = { plan, roofHex: roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
         layers: { slope: roofBase + (plan.material === 'tile' ? 0 : 1), plain, dormer: roofBase + 2 } };
     }
+  }
+  if (look === 'untextured') {
+    // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.
+    const flat = roofBase + 3;
+    building.bare = true; building.plainLayer = flat;
+    if (building.roof) building.roof = { ...building.roof, layers: { slope: flat, plain: flat, dormer: flat } };
   }
   return building;
 }

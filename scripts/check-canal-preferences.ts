@@ -173,9 +173,13 @@ const memory = () => {
   const seen: string[] = [look];
   for (let i = 0; i < BUILDING_LOOKS.length; i++) { look = nextBuildingLook(look); seen.push(look); }
   assert.deepEqual(seen, [...BUILDING_LOOKS, BUILDING_LOOKS[0]], 'one full turn visits every look in order and returns to the start');
-  assert.equal(nextBuildingLook('photo'), 'default', 'wraps from the last look');
-  assert.equal(nextBuildingLook('nonsense'), 'default', 'an unknown look starts again at the first');
-  assert.equal(nextBuildingLook(undefined), 'default');
+  assert.equal(nextBuildingLook('untextured'), 'photo', 'wraps from the last look');
+  assert.equal(nextBuildingLook('nonsense'), 'photo', 'an unknown look starts again at the first');
+  assert.equal(nextBuildingLook(undefined), 'photo');
+  // The retired 'default' pattern look is not offered; a saved one reads as Photo, the new default.
+  assert.ok(!(BUILDING_LOOKS as readonly string[]).includes('default'));
+  assert.equal(parsePreferences({ buildingLook: 'default' }, zoom).buildingLook, 'photo');
+  assert.equal(parsePreferences({}, zoom).buildingLook, 'photo');
   for (const look of BUILDING_LOOKS) assert.ok(BUILDING_LOOK_LABELS[look], `${look} has a label`);
 }
 

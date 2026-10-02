@@ -96,7 +96,7 @@ export function frontTriangles(front: Front, toWorld: (along: number, up: number
 
 // --- Game adapter -----------------------------------------------------------
 
-export type FrontLook = 'procedural' | 'photo' | 'storybook' | 'cartoon';
+export type FrontLook = 'procedural' | 'untextured' | 'photo' | 'storybook' | 'cartoon';
 
 const toHsl = (hex: string): [number, number, number] => {
   const n = parseInt(hex.replace('#', ''), 16), r = (n >> 16 & 255) / 255, g = (n >> 8 & 255) / 255, b = (n & 255) / 255;
@@ -118,7 +118,7 @@ const fromHsl = ([h, s, l]: [number, number, number]) => {
  * landmark sits in each look like its neighbours do without per-look authoring.
  */
 export function lookHex(hex: string, look: FrontLook): string {
-  if (look === 'photo' || look === 'procedural') return hex;
+  if (look === 'photo' || look === 'procedural' || look === 'untextured') return hex;
   const [h, s, l] = toHsl(hex);
   if (look === 'storybook') return fromHsl([(h + 360 - 4) % 360, Math.min(1, s * 1.15), Math.min(0.9, l + 0.03)]);
   // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
