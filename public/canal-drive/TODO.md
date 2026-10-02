@@ -992,7 +992,7 @@ Not milestones — standing obligations with live guards.
   fragments.
 - Tune neighborhood postcard scale and long-name typography on mobile.
 
-- P2: Low-poly landmark fronts (`landmarkFronts.ts`, data in `landmarkFrontData.ts`; Bijenkorf and Beurs hall wall done in the viewer only). Next: render fronts in the game's three layer next to `KITS` (and cap the carrying part at `bodyTopM`); model the Beurs Damrak front with its clock tower (build its reference with `--wall`); Anne Frank House needs a usable reference (no close panorama of the canal front; try Mapillary, token from the user via env var `MAPILLARY_TOKEN`, never committed); then Centraal, Rijksmuseum. Photo textures are dropped: the user judged them awful and panoramas stay drawing references only.
+- P2: Low-poly landmark fronts are in the game (three.js looks): Bijenkorf, Beurs hall wall; Waag and Beurs kits in `KITS`. Next fronts/kits: Centraal, Concertgebouw, Rijksmuseum, Sint-Nicolaas, Krijtberg, Munttoren, Royal Palace front, Stadsschouwburg, Carré, Tuschinski (panorama references built with `build-pano-facade.ts --ppm=30`); the Beurs Damrak front and clock tower detail; Anne Frank House needs a reference (Mapillary token via env `MAPILLARY_TOKEN`, never committed). Front ids must be the game tiles' ids: the Beurs hall is 641 in the raw extract but 642/645 in game tiles.
 
 - P2: Anne Frank House facade needs a source other than panoramas (Commons photos once the rate limit clears, with per-image licence/attribution); Sherlocked is not in the landmark data (which building was meant?).
 - P2: Apply panorama JPEGs to landmark walls in the three layer (needs per-wall UV mapping) and ship Waag kit via KITS if kept.
