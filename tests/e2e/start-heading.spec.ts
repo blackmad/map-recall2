@@ -22,7 +22,11 @@ for (const [travelMode, seed] of rides) {
         Object.defineProperty(window, 'CanalRecallRoute', { configurable: true, get: () => routeApi, set: (value) => { routeApi = { ...value, startHeading: undefined }; } });
       });
     }
+    // An exception in the heading code during ride setup would stop the player spawning at all.
+    const headingErrors: string[] = [];
+    page.on('pageerror', error => { if (/startHeading|routeSelection|_setupRace/i.test(`${error.message} ${error.stack ?? ''}`)) headingErrors.push(error.message); });
     await openRoute(page, { travelMode, viewMode: 'chase', seed });
+    expect(headingErrors, 'heading code threw while setting up the ride').toEqual([]);
     const measure = () => page.evaluate(() => {
       const game = (window as any).canalRecallGame;
       const { x, y, angle } = game.player;
