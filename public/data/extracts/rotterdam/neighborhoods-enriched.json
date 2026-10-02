@@ -38,7 +38,9 @@
   {
     "name": "Beverwaard",
     "wikidataId": "Q2609444",
-    "wikipediaExtract": "Beverwaard is a neighborhood of Rotterdam, Netherlands.\n\n"
+    "wikipediaExtract": "Beverwaard is a neighborhood of Rotterdam, Netherlands.\n\n",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/A_Erasmusbridge_look-alike_pedestrian_footbridge_at_Rotterdam_with_inclined_pylon_and_buisy_traffic_at_A15_motorway_-_panoramio.jpg/500px-A_Erasmusbridge_look-alike_pedestrian_footbridge_at_Rotterdam_with_inclined_pylon_and_buisy_traffic_at_A15_motorway_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: A Erasmusbridge look-alike pedestrian footbridge at Rotterdam with inclined pylon and buisy traffic at A15 motorway - panoramio.jpg (Henk Monster, CC BY 3.0)"
   },
   {
     "name": "De Veranda",
@@ -126,7 +128,9 @@
   {
     "name": "Dijkzigt",
     "wikidataId": "Q3063935",
-    "wikipediaExtract": "Dijkzigt is a neighborhood of Rotterdam, Netherlands.\n\n"
+    "wikipediaExtract": "Dijkzigt is a neighborhood of Rotterdam, Netherlands.\n\n",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Rochussenstraat.JPG/500px-Rochussenstraat.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Rochussenstraat.JPG (Mw007 at Dutch Wikipedia, CC BY-SA 3.0)"
   },
   {
     "name": "Nieuwe Westen",
@@ -145,7 +149,9 @@
   {
     "name": "CS-Kwartier",
     "wikidataId": "Q1978385",
-    "wikipediaExtract": "C.S. kwartier is the central neighborhood of Rotterdam, Netherlands, immediately surrounding Rotterdam Centraal Station. The neighborhood has access to a major harbor in Rotterdam, and is also called the Central District of Rotterdam. \n\n"
+    "wikipediaExtract": "C.S. kwartier is the central neighborhood of Rotterdam, Netherlands, immediately surrounding Rotterdam Centraal Station. The neighborhood has access to a major harbor in Rotterdam, and is also called the Central District of Rotterdam. \n\n",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/006_Rotterdam_city_view.JPG/500px-006_Rotterdam_city_view.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: 006 Rotterdam city view.JPG (Natubico, CC BY-SA 3.0)"
   },
   {
     "name": "Provenierswijk",
@@ -170,7 +176,9 @@
   },
   {
     "name": "Oud-Crooswijk",
-    "wikidataId": "Q125167935"
+    "wikidataId": "Q125167935",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Spiegelnisserbrug_-_Crooswijk_-_Rotterdam_-_Metal_railing.jpg/500px-Spiegelnisserbrug_-_Crooswijk_-_Rotterdam_-_Metal_railing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Spiegelnisserbrug - Crooswijk - Rotterdam - Metal railing.jpg (AgainErick, CC BY-SA 3.0)"
   },
   {
     "name": "Rubroek",
@@ -185,7 +193,9 @@
   },
   {
     "name": "Nieuw-Crooswijk",
-    "wikidataId": "Q125168055"
+    "wikidataId": "Q125168055",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Bankje_Kerkhoflaan_Nieuw-Crooswijk-2.jpg/500px-Bankje_Kerkhoflaan_Nieuw-Crooswijk-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Bankje Kerkhoflaan Nieuw-Crooswijk-2.jpg (Timelezz, CC BY-SA 4.0)"
   },
   {
     "name": "De Esch",
@@ -210,7 +220,9 @@
   },
   {
     "name": "Hoogkwartier",
-    "wikidataId": "Q134006278"
+    "wikidataId": "Q134006278",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Rotterdam%2C_monument_voor_een_ezel_foto7_2016-02-28_17.16%2B.jpg/500px-Rotterdam%2C_monument_voor_een_ezel_foto7_2016-02-28_17.16%2B.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Rotterdam, monument voor een ezel foto7 2016-02-28 17.16+.jpg (Michielverbeek, CC BY-SA 4.0)"
   },
   {
     "name": "Burgen"
@@ -302,7 +314,9 @@
   {
     "name": "Molièrebuurt",
     "wikidataId": "Q2658886",
-    "wikipediaExtract": "The Molièrebuurt is the south-western part of the Lombardijen wijk in Rotterdam's IJsselmonde district, bounded by the Spinozaweg, the Pascalweg, the Maeterlinckweg and the Vaanweg and Victor Hugoweg."
+    "wikipediaExtract": "The Molièrebuurt is the south-western part of the Lombardijen wijk in Rotterdam's IJsselmonde district, bounded by the Spinozaweg, the Pascalweg, the Maeterlinckweg and the Vaanweg and Victor Hugoweg.",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Baroeg.jpg/500px-Baroeg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Baroeg.jpg (Emvee, CC BY-SA 3.0)"
   },
   {
     "name": "Landbouwbuurt"
@@ -392,12 +406,16 @@
     "wikipediaExtract": "Charlois (Dutch pronunciation: [ˈɕaːrloːs]) is a neighbourhood of the Dutch city of Rotterdam. It is located on the south bank of the Nieuwe Maas.\n\nCharlois used to be a separate municipality until 1895, when it became part of Rotterdam."
   },
   {
-    "name": "Kleinpolder-West"
+    "name": "Kleinpolder-West",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Rotterdam_-_2013_-_panoramio_%2818%29.jpg/500px-Rotterdam_-_2013_-_panoramio_%2818%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Rotterdam - 2013 - panoramio (18).jpg (StevenL, CC BY-SA 3.0)"
   },
   {
     "name": "Oud-Charlois",
     "wikidataId": "Q2132507",
-    "wikipediaExtract": "Oud-Charlois is a neighborhood of Rotterdam, Netherlands. It features a charming village center with authentic houses and streets. As of 2025, the population of Oud-Charlois is 13,860."
+    "wikipediaExtract": "Oud-Charlois is a neighborhood of Rotterdam, Netherlands. It features a charming village center with authentic houses and streets. As of 2025, the population of Oud-Charlois is 13,860.",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Rotterdam_Oude_kerk_Charlois_seen_from_the_northeast.jpg/500px-Rotterdam_Oude_kerk_Charlois_seen_from_the_northeast.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Rotterdam Oude kerk Charlois seen from the northeast.jpg (Ymblanter, CC BY-SA 4.0)"
   },
   {
     "name": "Wielewaal",
@@ -454,7 +472,9 @@
   },
   {
     "name": "Kralingen-Oost",
-    "wikidataId": "Q125167685"
+    "wikidataId": "Q125167685",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Lambertbrug_-_Kralingen-Oost_-_Kralingen-Crooswijk_-_Rotterdam_-_Balustrade_-_southside.jpg/500px-Lambertbrug_-_Kralingen-Oost_-_Kralingen-Crooswijk_-_Rotterdam_-_Balustrade_-_southside.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Lambertbrug - Kralingen-Oost - Kralingen-Crooswijk - Rotterdam - Balustrade - southside.jpg (AgainErick, CC BY-SA 4.0)"
   },
   {
     "name": "Kop van Zuid",
@@ -473,7 +493,9 @@
   {
     "name": "Hillesluis",
     "wikidataId": "Q2658020",
-    "wikipediaExtract": "Hillesluis is a neighborhood of Rotterdam, Netherlands, located in the Feijenoord district. It was built in the early 19th century. The neighborhood is composed of a majority of minorities, and also is considered to be predominantly resource-poor.\n\n"
+    "wikipediaExtract": "Hillesluis is a neighborhood of Rotterdam, Netherlands, located in the Feijenoord district. It was built in the early 19th century. The neighborhood is composed of a majority of minorities, and also is considered to be predominantly resource-poor.\n\n",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Rotterdam-Feijenoord%2C_de_Essalam_moskee_foto5_2015-08-01_15.44.jpg/500px-Rotterdam-Feijenoord%2C_de_Essalam_moskee_foto5_2015-08-01_15.44.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Rotterdam-Feijenoord, de Essalam moskee foto5 2015-08-01 15.44.jpg (Michielverbeek, CC BY-SA 4.0)"
   },
   {
     "name": "Kop van Zuid-Entrepot",
@@ -493,7 +515,9 @@
   },
   {
     "name": "110-Morgen",
-    "wikipediaExtract": "110-Morgen, or Honderd en Tien Morgen, is a wijk in Rotterdam's Hillegersberg-Schiebroek district, in the De Honderdtien Morgen polder north of the village centre of Hillegersberg. The polder, about 85 hectares, was drained in 1772."
+    "wikipediaExtract": "110-Morgen, or Honderd en Tien Morgen, is a wijk in Rotterdam's Hillegersberg-Schiebroek district, in the De Honderdtien Morgen polder north of the village centre of Hillegersberg. The polder, about 85 hectares, was drained in 1772.",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/2024_Minervalaan%2C_Rotterdam_vanaf_Achillesstraat_naar_het_oosten.jpg/500px-2024_Minervalaan%2C_Rotterdam_vanaf_Achillesstraat_naar_het_oosten.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: 2024 Minervalaan, Rotterdam vanaf Achillesstraat naar het oosten.jpg (Marcel Douwe Dekker, CC BY-SA 4.0)"
   },
   {
     "name": "Hillegersberg",
@@ -529,12 +553,16 @@
   {
     "name": "Kleinpolder",
     "wikidataId": "Q2640749",
-    "wikipediaExtract": "Kleinpolder (Dutch pronunciation: [klɛimˈpɔldər]) is a neighborhood of Rotterdam, Netherlands.\nKleinpolderplein (Kleinpolder square), is  home to a 2012 sculpture garden, constructed underneath one of the busiest interchanges in the Netherlands."
+    "wikipediaExtract": "Kleinpolder (Dutch pronunciation: [klɛimˈpɔldər]) is a neighborhood of Rotterdam, Netherlands.\nKleinpolderplein (Kleinpolder square), is  home to a 2012 sculpture garden, constructed underneath one of the busiest interchanges in the Netherlands.",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Kleinpoldertunnel_-_Kleinpolder_-_Overschie_-_Rotterdam_-_View_of_the_tunnel_from_the_baanwegviaduct_in_the_west_-_2022_-_p2.jpg/500px-Kleinpoldertunnel_-_Kleinpolder_-_Overschie_-_Rotterdam_-_View_of_the_tunnel_from_the_baanwegviaduct_in_the_west_-_2022_-_p2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Kleinpoldertunnel - Kleinpolder - Overschie - Rotterdam - View of the tunnel from the baanwegviaduct in the west - 2022 - p2.jpg (AgainErick, CC BY-SA 4.0)"
   },
   {
     "name": "Overschie",
     "wikidataId": "Q110688104",
-    "wikipediaExtract": "Overschie is a wijk and district of Rotterdam, with 19,745 inhabitants on 1 January 2023 and an area of 15.8 km²."
+    "wikipediaExtract": "Overschie is a wijk and district of Rotterdam, with 19,745 inhabitants on 1 January 2023 and an area of 15.8 km².",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Rotterdam_Overschie_A13.jpg/500px-Rotterdam_Overschie_A13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Rotterdam Overschie A13.jpg (M.Minderhoud, CC BY-SA 3.0)"
   },
   {
     "name": "Heijplaat",
@@ -576,7 +604,9 @@
     "wikipediaExtract": "Oosterflank is a neighborhood of Rotterdam, Netherlands. It has a neighborhood council and a metro station."
   },
   {
-    "name": "Schollevaar"
+    "name": "Schollevaar",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Panoramio_-_henkiedenkie_-_Capelle_Schollevaar_-_Capelle_aan_de_IJssel_-_2008.jpg/500px-Panoramio_-_henkiedenkie_-_Capelle_Schollevaar_-_Capelle_aan_de_IJssel_-_2008.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Panoramio - henkiedenkie - Capelle Schollevaar - Capelle aan de IJssel - 2008.jpg (henkiedenkie, CC BY-SA 3.0)"
   },
   {
     "name": "Kralingse Veer",
@@ -601,7 +631,9 @@
     "name": "Veld van Klanken"
   },
   {
-    "name": "Hof van Eden"
+    "name": "Hof van Eden",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Buildings_-_panoramio_%282%29.jpg/500px-Buildings_-_panoramio_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Buildings - panoramio (2).jpg (michiel1972, CC BY-SA 3.0)"
   },
   {
     "name": "Tiengemeten Midden"
@@ -663,6 +695,18 @@
     "wikipediaExtract": "Noord (English: Rotterdam-North) is a borough of Rotterdam. The municipal portion is formed by the Delfshavense Schie, the Highway 20 (A20), the Rotte and the rails. The borough had 51,796 inhabitants in 2017."
   },
   {
-    "name": "Laurenskwartier"
+    "name": "Laurenskwartier",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Japans_restaurant_Sumo_aan_de_Binnenrotte_-_panoramio.jpg/500px-Japans_restaurant_Sumo_aan_de_Binnenrotte_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Japans restaurant Sumo aan de Binnenrotte - panoramio.jpg (Peter Dorsman, CC BY 3.0)"
+  },
+  {
+    "name": "Maasvlakte 2",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/2e_Maasvlakte_%2816076975580%29.jpg/500px-2e_Maasvlakte_%2816076975580%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: 2e Maasvlakte (16076975580).jpg (FaceMePLS from The Hague, The Netherlands, CC BY 2.0)"
+  },
+  {
+    "name": "Zuidpolder",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Zuidpolder_Rotterdams_platteland_Natuurmonumenten_sign%2C_Berkel_en_Rodenrijs_%282020%29_02.jpg/500px-Zuidpolder_Rotterdams_platteland_Natuurmonumenten_sign%2C_Berkel_en_Rodenrijs_%282020%29_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Zuidpolder Rotterdams platteland Natuurmonumenten sign, Berkel en Rodenrijs (2020) 02.jpg (Donald Trung Quoc Don (Chữ Hán: 徵國單) - Wikimedia Commons - © CC BY-SA 4.0 International.(Want to use this image?)Original publication 📤: --Donald Trung 『徵國單』 (No Fake News 💬) (WikiProject Numismatics 💴) (Articles 📚) 21:41, 11 January 2021 (UTC), CC BY-SA 4.0)"
   }
 ]

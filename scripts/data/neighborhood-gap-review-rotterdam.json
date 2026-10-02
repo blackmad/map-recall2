@@ -1,0 +1,431 @@
+{
+ "_about": "Reviewed decisions for scripts/fill-neighborhood-gaps.ts --city rotterdam. Dutch translated 2026-10-02; null rejects category/list dumps, articles about another place or person, out-of-date plans, and demographic or political text. Photos judged by eye on a contact sheet.",
+ "Wilhelminapier": {
+  "history": {
+   "approve": true,
+   "en": "Wilhelminaplein metro station opened near the Wilhelminapier in 1997. Since 2001 the new Luxor Theater has stood on the Wilhelminapier."
+  }
+ },
+ "Spangen": {
+  "history": {
+   "approve": true,
+   "en": "In the middle of Spangen stands the oldest football stadium in the Netherlands, Sparta's Het Kasteel, from 1916."
+  }
+ },
+ "Middelland": {
+  "history": {
+   "approve": true,
+   "en": "Middelland was laid out to a plan of 1887 by Gerrit de Jongh, who wanted to give it more allure than the neighbouring Oude Westen. Its landmarks include the cathedral of Saints Laurentius and Elisabeth and the 65-metre GEB building of 1931, for a long time the tallest office building in the Netherlands."
+  }
+ },
+ "Nieuwe Westen": {
+  "history": {
+   "approve": true,
+   "en": "A well-known spot in the neighbourhood is the Mathenesserplein, built between 1927 and 1929 to a design by Jo van den Broek. The word 'opzoomeren' (residents tidying up their own street together) was born in the late 1980s in the Opzoomerstraat in Het Nieuwe Westen and was taken up by many cities elsewhere."
+  }
+ },
+ "Bergpolder": {
+  "history": null
+ },
+ "Liskwartier": {
+  "history": {
+   "approve": true,
+   "en": "Building in the Liskwartier began shortly after a boundary change with the municipality of Hillegersberg in 1903. The Schiebroekselaan, Rodenrijselaan and Bergselaan were laid out after 1906, and the neighbourhood was complete around 1940."
+  }
+ },
+ "Blijdorp": {
+  "history": {
+   "approve": true,
+   "en": "Blijdorp was built between 1931 and 1940 in the Blijdorpse polder, after which it is named."
+  }
+ },
+ "Blijdorpse Polder": {
+  "history": {
+   "approve": true,
+   "en": "In this period the towns of Delft, Rotterdam and Schiedam quarrelled over the waterways and their tolls, and the various Schie canals were dug between 1150 and 1389, creating more polders in the area. Digging the Rotterdamse Schie in 1344 created two polders: the Blijdorpse polder and the Bergpolder, then known as the Blydorpsche Polder and the Bergsche Polder."
+  }
+ },
+ "Oud-IJsselmonde": {
+  "history": {
+   "approve": true,
+   "en": "Before there was any settlement at IJsselmonde, a fortification was built around 1064 at the mouth of the Hollandse IJssel on the orders of Bishop William I of Utrecht. The first known mention of a settlement called IJsselmonde is in a charter of 1072, though it was probably not yet a real village and its land flooded regularly."
+  }
+ },
+ "Feijenoord": {
+  "history": null
+ },
+ "Tarwewijk": {
+  "history": null
+ },
+ "Zuidplein": {
+  "description": {
+   "approve": true,
+   "en": "Winkelcentrum Zuidplein is a large covered shopping centre in Rotterdam-Zuid. The shops are not at street level but about six metres above it, connected to the hall of Zuidplein metro station and to footbridges over the busy roads around it."
+  },
+  "history": {
+   "approve": true,
+   "en": "At street level there is a two-storey car park with about 1,400 spaces, a guarded bicycle park, storage and a bus station. The covered Zuidplein shopping centre is one of the main works of the Rotterdam architect Hermanus Dirk Bakker (1915-1988) and was a very modern concept for its time."
+  }
+ },
+ "Carnisse": {
+  "history": null,
+  "photo": null
+ },
+ "Prinsenland": {
+  "history": {
+   "approve": true,
+   "en": "The north of the neighbourhood was built in the 1960s, together with Het Lage Land. The rest was completed in several phases in the 1990s."
+  }
+ },
+ "Kop van Zuid": {
+  "history": {
+   "approve": true,
+   "en": "Since 3 March 2010 the Wilhelminapier and Zuidkade neighbourhoods have belonged to the Feijenoord borough. The Maastoren has stood here since 2010; when completed it was the tallest building in the Benelux."
+  }
+ },
+ "Noordereiland": {
+  "history": {
+   "approve": true,
+   "en": "In 1600 the Noordereiland did not yet exist: it was a sandbank on the bank of the Maas where criminals were hanged on the Admiralty gallows. The island owes its name to the Noorderhaven (now the Koningshaven), dug between 1872 and 1874 under the direction of C.B. van der Tak."
+  }
+ },
+ "Molenlaankwartier": {
+  "history": null,
+  "nameOrigin": {
+   "approve": true,
+   "en": "The streets north of the Molenlaan named after birds date from before 1940. After the war, streets were named first after well-known foreign classical composers, in the 1950s, and then after Dutch composers, in the 1960s."
+  }
+ },
+ "Hillegersberg-Schiebroek": {
+  "history": {
+   "approve": true,
+   "en": "The district council of Hillegersberg-Schiebroek became a borough council in 1983, which in 2014 was turned into an area committee of the city."
+  }
+ },
+ "Kleiwegkwartier": {
+  "history": {
+   "approve": true,
+   "en": "Farms, businesses and houses lined the Kleiweg until the 1930s, when the fields between the railway and the Bergse Achterplas were built over. A tram depot from 1923 in the neighbourhood houses the Rotterdam Public Transport Museum, where museum trams and metro cars are also maintained."
+  }
+ },
+ "Schiebroek": {
+  "history": {
+   "approve": true,
+   "en": "The surrounding land was brought into cultivation around 1300. In 1590 Schiebroek became an ambacht, a local jurisdiction within the bailiwick of Schieland."
+  }
+ },
+ "Prins Alexander": {
+  "history": {
+   "approve": true,
+   "en": "In the 1950s farmers had to leave the area. On 24 November 1961 construction began on its first neighbourhood, Het Lage Land, named after the polder of the same name."
+  }
+ },
+ "Oude Noorden": {
+  "history": {
+   "approve": true,
+   "en": "Until the 19th century the area now called the Oude Noorden belonged to the manor of Blommersdijk."
+  }
+ },
+ "Schieveense polder": {
+  "description": {
+   "approve": true,
+   "en": "Polder Schieveen (or the Schieveense polder) is a polder and former water board in the former municipality of Overschie, now part of Rotterdam."
+  }
+ },
+ "De Valkenier": {
+  "description": null,
+  "photo": null
+ },
+ "Motorstraatgebied": {
+  "description": null,
+  "photo": null
+ },
+ "De Veranda": {
+  "history": {
+   "approve": true,
+   "en": "At the end of December 2023 the city council approved the plan for a third city bridge across the Maas in Rotterdam."
+  }
+ },
+ "Groenenhagen-Tuinenhoven": {
+  "history": null,
+  "photo": null
+ },
+ "Sportdorp": {
+  "history": {
+   "approve": true,
+   "en": "Building was finished around 1942, after which people who had lost their homes, many from the same neighbourhood in the stricken Rotterdam-West, were housed here."
+  }
+ },
+ "Hordijkerveld": {
+  "history": null
+ },
+ "CS-Kwartier": {
+  "history": {
+   "approve": true,
+   "en": "A large part of the area remained unbuilt until the 1980s."
+  }
+ },
+ "Provenierswijk": {
+  "history": {
+   "approve": true,
+   "en": "Rotterdam's inner city was already cramped, because until about 1850 the city had tried to stay within its original limits. From 1870 the port grew enormously, helped by the digging of the Nieuwe Waterweg; trade and industry took off and drew many people from outside the city."
+  }
+ },
+ "Agniesebuurt": {
+  "history": {
+   "approve": true,
+   "en": "A few houses already stood in this area between the Rotte and the Rotterdamse Schie in the 18th century, but between 1850 and 1940 the whole polder was built over."
+  }
+ },
+ "Nieuw-Crooswijk": {
+  "description": {
+   "approve": true,
+   "en": "Crooswijk is a district with three neighbourhoods: Oud-Crooswijk, Nieuw-Crooswijk and Rubroek."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Maasvlakte 2": {
+  "description": {
+   "approve": true,
+   "en": "Maasvlakte 2 (popularly the Tweede Maasvlakte) is the extension of the port of Rotterdam west of the first Maasvlakte. This new land of 2,000 hectares, built in the sea, made the port 20% larger; with it the port of Rotterdam covers 12,000 hectares in all."
+  },
+  "history": {
+   "approve": true,
+   "en": "Maasvlakte 2 is the latest step in the growth of the port of Rotterdam, which has kept moving west towards the North Sea: the Botlek was built in the mid-20th century, Europoort in the 1960s and the first Maasvlakte in the 1970s. Between 1962 and 2003 Rotterdam was the largest port in the world."
+  }
+ },
+ "Burgen": {
+  "description": null,
+  "photo": null
+ },
+ "Horsten": {
+  "description": null,
+  "photo": null
+ },
+ "Steinen": {
+  "description": null,
+  "photo": null
+ },
+ "Velden": {
+  "description": null,
+  "photo": null
+ },
+ "Kampen": {
+  "description": null
+ },
+ "Hoeken": {
+  "description": null,
+  "photo": null
+ },
+ "Zuidpolder": {
+  "description": null,
+  "photo": {
+   "approve": true
+  }
+ },
+ "Groot-IJsselmonde": {
+  "history": null
+ },
+ "Kreekhuizen": {
+  "history": {
+   "approve": true,
+   "en": "Since 2018 Trainingscomplex 1908, with practice pitches for the first team of the professional club Feyenoord, has occupied the former ground of the football club RVV Hillesluis on the Sportlaan."
+  }
+ },
+ "De Vaan": {
+  "description": null,
+  "nameOrigin": {
+   "approve": true,
+   "en": "The name matches the Vaanweg, which is named after a former farm, De Vaan, on the Dordtsestraatweg."
+  },
+  "photo": null
+ },
+ "Homerusbuurt": {
+  "history": {
+   "approve": true,
+   "en": "In the eastern part of the neighbourhood, known as complex 207, seven blocks of flats were demolished from March 2007 and the last five by around August 2008, to make way for 194 family houses with their own garden or roof terrace."
+  }
+ },
+ "Dalenbuurt": {
+  "description": {
+   "approve": true,
+   "en": "In the early 1990s parts of the Beukendaal, Berkendaal, Eikendaal, Frankendaal, Iependaal and Olmendaal were demolished and replaced by new housing: the 'Nieuwe Dalenbuurt'."
+  },
+  "photo": null
+ },
+ "Zenobuurt": {
+  "history": {
+   "approve": true,
+   "en": "On the corner of the Molenvliet and the Spinozaweg stands a striking building, De Zonnetrap, from 1980."
+  }
+ },
+ "Smeetsland": {
+  "history": null
+ },
+ "Bloemhof": {
+  "history": {
+   "approve": true,
+   "en": "In the early 20th century Bloemhof was a neighbourhood for workers from Zeeland and North Brabant who moved to Rotterdam to work in its growing port. In the 1960s and 1970s many Turkish and Moroccan port workers came to live in Bloemhof once their families had joined them."
+  }
+ },
+ "Wielewaal": {
+  "history": null,
+  "photo": null
+ },
+ "Het Lage Land": {
+  "description": {
+   "approve": true,
+   "en": "Het Lage Land is a neighbourhood of Rotterdam in the Prins Alexander borough."
+  },
+  "nameOrigin": {
+   "approve": true,
+   "en": "The neighbourhood takes its name from the polder that was created by drainage around 1860."
+  }
+ },
+ "110-Morgen": {
+  "history": {
+   "approve": true,
+   "en": "The 110-Morgen neighbourhood was laid out in the 1950s. Its northern part belongs to the larger Vinex development De Limieten and was built in 1998-1999."
+  }
+ },
+ "Kleinpolder-Oost": {
+  "description": {
+   "approve": true,
+   "en": "In the 1950s a roundabout was built north of the canal to serve the new neighbourhoods of Kleinpolder-West and Kleinpolder-Oost in Overschie."
+  },
+  "photo": null
+ },
+ "Landzicht": {
+  "history": null
+ },
+ "Oosterflank": {
+  "history": {
+   "approve": true,
+   "en": "Oosterflank was built in the 1980s, a mix of family houses and mostly low-rise apartment blocks built at high density."
+  }
+ },
+ "Schollevaar": {
+  "description": null,
+  "photo": {
+   "approve": true
+  }
+ },
+ "Veld van Klanken": {
+  "description": null
+ },
+ "Hof van Eden": {
+  "description": null,
+  "photo": {
+   "approve": true
+  }
+ },
+ "Ruiven": {
+  "photo": null
+ },
+ "Het Zuiderhof": {
+  "photo": null
+ },
+ "De Vlieger": {
+  "photo": null
+ },
+ "Buurt Negen": {
+  "photo": null
+ },
+ "Beverwaard": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Zomerland": {
+  "photo": null
+ },
+ "Oud-Mathenesse": {
+  "photo": null
+ },
+ "Oud-Crooswijk": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Hoogkwartier": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Lo's": {
+  "photo": null
+ },
+ "Voordes/Rodes": {
+  "photo": null
+ },
+ "Pascalkwartier": {
+  "photo": null
+ },
+ "Karl Marxbuurt": {
+  "photo": null
+ },
+ "Molièrebuurt": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Landbouwbuurt": {
+  "photo": null
+ },
+ "Tweebosbuurt": {
+  "photo": null
+ },
+ "Oud-Charlois": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Kleinpolder-West": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Kralingen-Oost": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Kop van Zuid-Entrepot": {
+  "photo": null
+ },
+ "Hillesluis": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Terbregge": {
+  "photo": null
+ },
+ "Kleinpolder": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Capelle-West": {
+  "photo": null
+ },
+ "Kralingse Veer": {
+  "photo": null
+ },
+ "Rivium": {
+  "photo": null
+ },
+ "Fascinatio": {
+  "photo": null
+ },
+ "Tiengemeten Midden": {
+  "photo": null
+ },
+ "Laurenskwartier": {
+  "photo": {
+   "approve": true
+  }
+ }
+}
