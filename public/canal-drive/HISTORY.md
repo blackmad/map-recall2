@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Building look setting; photo and cartoon looks tuned
+
+Settings now has "Building look" (Default, Painted, Cartoon, Photo), saved with
+the other preferences and applied live (`vectorMap.setBuildingLookPreference`);
+a `?buildings3d=` URL look beats the saved choice. Both wall layers coexist
+once used; only one is visible, and switching to Default frees the wall meshes.
+User report (Safari, photo look): roofs broken and far too noisy. Not
+reproduced in Chromium (roofs correct at the same Rozengracht start), so Safari
+itself is untested; one real hazard fixed: the streamer calls the wall layer's
+sync before sending tiles to MapLibre, so a throw there would drop roofs, and
+it is now wrapped. Noise: the bay drawings are softened when packed (brick
+pulled toward its mean, photo brick lifted, black glass lifted) and the photo
+look has its own real brick palette; cartoon has a warm terracotta/ochre/cream
+palette with occasional blue and green. Four rounds of screenshot critique at
+Jordaan/Rozengracht (desktop software GL, no basemap). Pinned in
+`building-look.spec.ts` (live switch both ways, URL beats preference).
+
 ## 2026-10-02 — Three.js facade layer in the game (spike, opt-in)
 
 `?buildings3d=1|cartoon|photo` (or `vectorMap.setBuildingsLook('cartoon')`)
