@@ -15,13 +15,15 @@ sampled with a wall/accent tint mask: the procedural Amsterdam cells
 Measured (headless software GL, desktop, 5 spots, chase view, not a phone):
 after freeing the CPU copies of geometry and textures, JS heap after a forced
 GC is 298 MB against 396 MB for the pattern layer (the first run's +160 MB was
-those copies); MapLibre render p95 13 ms against 284 ms (single run, likely the
-pattern layer's per-zoom re-layout, not isolated); walls geometry 42 MB plus
-18 MB of textures. Shimmer is NOT shown to be better: with a sub-pixel camera
-creep the frame-difference metric is mixed (two spots worse, two better, one
-level) and noisy even at near-zero motion; an earlier "4-32% lower" figure was
-camera motion. Needs a better metric. Cartoon verified by eye at three spots; photo
-not yet.
+those copies); MapLibre render p95 22 ms against 23 ms (an earlier 13 vs 284 was a one-off
+tail, retracted); walls geometry 42-57 MB plus 16-18 MB of textures. Shimmer
+and aliasing are NOT shown to be better: a sub-pixel-creep frame difference
+was mixed and noisy, and a 1x-vs-3x supersampled aliasing error was mixed too
+(two spots better, three worse or level; the metric also counts label, tree and
+line-width differences). The real gains are lower heap, whole-bay/storey
+alignment and the new looks; the shimmer motivation is unproven and needs a
+phone eye-test or a cleaner metric. Cartoon and photo verified by eye at three spots (desktop,
+no basemap).
 
 ## 2026-10-02 — Per-wall facade rendering spike merged
 
