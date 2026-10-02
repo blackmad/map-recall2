@@ -2,7 +2,7 @@
 // SOUND MANAGER — permanently disabled
 // ============================================================
 // The product has no audio. This inert stub keeps call sites working but never
-// creates an AudioContext. Do not re-enable without an explicit product decision.
+// touches Web Audio. Do not re-enable without an explicit product decision.
 class SoundManager {
   constructor() { this.muted = true; }
   init() {}
