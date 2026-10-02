@@ -1,0 +1,279 @@
+{
+ "version": 1,
+ "generatedAt": "2026-10-01T21:11:28.891Z",
+ "neighborhoods": [
+  {
+   "name": "Zuiderpark",
+   "description": {
+    "en": "The Zuiderpark is a city park in The Hague and also one of its wijken. It is part of the Escamp district and borders Moerwijk, Morgenstond, Leyenburg and Rustenburg-Oostbroek.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zuiderpark_(Den_Haag)",
+    "lang": "nl",
+    "original": "Zuiderpark is een stadspark in Den Haag en vormt tevens een van de wijken van de stad. De wijk is onderdeel van stadsdeel Escamp en grenst aan de wijken Moerwijk, Morgenstond, Leyenburg en Rustenburg en Oostbroek."
+   },
+   "history": {
+    "en": "The park was laid out between the wars as a relief-work project. Its design goes back to 1908, when H.P. Berlage drew up his expansion plan for The Hague; work began in 1923 and it opened officially in 1936. Pieter Westbroek, head of the municipal parks department, and the garden architect D.F. Tersteeg changed much of the design. It became a protected townscape in 2011, and is the first Dutch example of a people's park (volkspark).",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zuiderpark_(Den_Haag)",
+    "lang": "nl",
+    "original": "Het park werd in het interbellum aangelegd als een werkverschaffingsproject. Het ontwerp dateert uit 1908, toen architect H.P. Berlage het Plan tot uitbreiding van 's-Gravenhage maakte. Met de aanleg werd begonnen in 1923, de officiële opening was in 1936. Pieter Westbroek, directeur van de Gemeentelijke Plantsoenendienst (en tevens verantwoordelijk voor het Westbroekpark) en tuinarchitect D.F. Tersteeg veranderden veel aan het ontwerp. In 2011 kreeg het Zuiderpark de status van beschermd stadsgezicht. Het is het eerste Nederlandse voorbeeld van een volkspark."
+   }
+  },
+  {
+   "name": "Willemspark",
+   "description": {
+    "en": "The Willemspark is a neighbourhood in the Centrum district of The Hague. It has 1,393 inhabitants (as of 1 January 2013) and covers 34.6 hectares.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Willemspark",
+    "lang": "en"
+   },
+   "history": {
+    "en": "In the 17th century The Hague was ringed by its canals, and on the seaward side the town ended at the Mauritskade and the Scheveningse Veer. Beyond it lay dunes all the way to Scheveningen, with grazing cows and a few vegetable gardens. The Javastraat already existed, then called the Laan van Schuddegeest. In 1831 the Frederikskazerne barracks on the Denneweg was taken into use by 400 grenadiers.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Willemspark_(Den_Haag)",
+    "lang": "nl",
+    "original": "In de 17de eeuw was Den Haag omringd door de Haagse grachtengordel. Aan de zeekant eindigde de stad bij de Mauritskade en het Scheveningse Veer. Bij het Noordeinde kon men dit deel van de singel over, eerst met een veerboot, later via een ophaalbrug. Buiten de stad was alles duinlandschap tot aan Scheveningen: er graasden koeien en er waren wat moestuinen. De Javastraat bestond al, hoewel die toen nog de Laan van Schuddegeest heette. In 1831 werd de Frederikskazerne in gebruik genomen door 400 grenadiers. Deze lag aan de Denneweg, maar later werd dit deel van de straat Frederikstraat genoemd."
+   },
+   "nameOrigin": {
+    "en": "The name means 'William's Park'.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Willemspark",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Delftse Hout"
+  },
+  {
+   "name": "Vrijenban"
+  },
+  {
+   "name": "Haagsche Tuin"
+  },
+  {
+   "name": "Leidschenveen-Ypenburg",
+   "description": {
+    "en": "Leidschenveen-Ypenburg is a Vinex-location and district of The Hague, located in the southeast. It is geographically connected to the main body of the city by only a narrow corridor. It consists of four quarters: Hoornwijk and Ypenburg on the southwest of the A12 motorway and parallel railway to Utrecht, and Forepark and Leidschenveen on the northeast.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Leidschenveen-Ypenburg",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Until 1992 Ypenburg was a military airfield known as Ypenburg Airport. It was the site of the Battle for The Hague on 10 May 1940, at the beginning of World War II. German forces took over the airfield via an airborne landing, with the goal of apprehending Dutch government officials and the Queen. This failed however and Dutch forces recaptured the airfield. The Netherlands eventually surrendered to Germany however, and the Luftwaffe made no use of the airfield during the remainder of the war.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Leidschenveen-Ypenburg",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Scheveningen",
+   "description": {
+    "en": "Scheveningen is one of the eight districts of The Hague, Netherlands, as well as a subdistrict (wijk) of that city. Scheveningen is a modern seaside resort with a long, sandy beach, an esplanade, a pier, and a lighthouse. The beach is popular for water sports such as windsurfing and kiteboarding. The harbour is used for both fishing and tourism.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scheveningen",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The earliest reference to the name Sceveninghe goes back to around 1280. The first inhabitants may have been Anglo-Saxons. Other historians favour a Scandinavian origin. Fishing was the main source of food and income. The Battle of Scheveningen was fought between English and Dutch fleets off the coast of the village on 10 August 1653. Thousands of people gathered on the shore to watch. In 1660 Montagu's flagship picked up the English king at Scheveningen in order to accomplish the Restoration. A road to neighbouring The Hague was constructed in 1663 (current name: Scheveningseweg).",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scheveningen",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The earliest record of the name, as Sceveninghe, dates from around 1280.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scheveningen",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Haagse Hout",
+   "description": {
+    "en": "Haagse Hout (lit. 'Woods of The Hague') is one of the eight districts of The Hague. This area was originally called Die Haghe Houte, which later became the current Haagse Hout. The district has 50,693 residents as of 1 January 2026. It is located in the north-east of the city, bordering Wassenaar to the north and Leidschendam-Voorburg to the east.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Haagse_Hout",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The name means 'Woods of The Hague'. The wood divides the district into Benoordenhout and Bezuidenhout, 'north of the wood' and 'south of the wood'.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Haagse_Hout",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Groente- en Fruitmarkt",
+   "description": {
+    "en": "The Groente- en Fruitmarkt ('fruit and vegetable market') is a wijk of The Hague with a single neighbourhood of the same name. It borders Laakkwartier en Spoorwijk, Moerwijk, Transvaalkwartier and the Schilderswijk.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Groente-_en_Fruitmarkt",
+    "lang": "nl",
+    "original": "De wijk Groente- en Fruitmarkt valt onder het stadsdeel Centrum van Den Haag en heeft slechts één buurt, die ook Groente- en Fruitmarkt heet. De wijk grenst aan de wijken Laakkwartier en Spoorwijk, Moerwijk, Transvaalkwartier en Schilderswijk."
+   }
+  },
+  {
+   "name": "Laak",
+   "description": {
+    "en": "Laak is district of The Hague, Netherlands. With a population of 48,862 and an area of 4.3 square kilometres (1.7 sq mi), it is the smallest and least populous of the city's eight districts. The district is officially divided into three neighbourhoods: Laakkwartier, Spoorwijk and Binckhorst. The Hague University of Applied Sciences can be found in Laak.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Laak%2C_The_Hague",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The Amsterdam–The Hague–Rotterdam railway was built through this polder, with a station where Hollands Spoor stands today, then on the edge of The Hague on Rijswijk land. The Hague acquired the area from Rijswijk in 1843 for an annual, unindexed payment of 400 guilders, which is still paid.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Laak_(stadsdeel_van_Den_Haag)",
+    "lang": "nl",
+    "original": "In dit poldergebied dat nu Laak heet en naar het daar gelegen veenriviertje De Laak is genoemd, werd de spoorlijn Amsterdam–Den Haag–Rotterdam aangelegd, met een station op de plaats van het huidige station Hollands Spoor, dat lag aan de rand van Den Haag, op Rijswijks grondgebied. De gemeente Den Haag kreeg het gebied in 1843 van de gemeente Rijswijk, tegen een jaarlijkse (niet geïndexeerde) vergoeding van 400 gulden, die nog altijd betaald wordt."
+   },
+   "nameOrigin": {
+    "en": "Named after De Laak, a small peat river that runs through the area.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Laak_(stadsdeel_van_Den_Haag)",
+    "lang": "nl",
+    "original": "In dit poldergebied dat nu Laak heet en naar het daar gelegen veenriviertje De Laak is genoemd, werd de spoorlijn Amsterdam–Den Haag–Rotterdam aangelegd, met een station op de plaats van het huidige station Hollands Spoor, dat lag aan de rand van Den Haag, op Rijswijks grondgebied. De gemeente Den Haag kreeg het gebied in 1843 van de gemeente Rijswijk, tegen een jaarlijkse (niet geïndexeerde) vergoeding van 400 gulden, die nog altijd betaald wordt."
+   }
+  },
+  {
+   "name": "Segbroek",
+   "description": {
+    "en": "Segbroek is one of eight districts of The Hague in the Netherlands. The district was established by the city in 1988. It has a total area of 7.19 square kilometres (2.78 sq mi) and a population of 62,828 as of 1 January 2026. Segbroek is divided into five neighbourhoods: Bomen- en Bloemenbuurt, Regentessekwartier, Valkenboskwartier, Vogelwijk and Vruchtenbuurt.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Segbroek",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "Named after the old Segbroek polder, which vanished under the city's rapid expansion from the end of the 19th century into the 20th.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Segbroek",
+    "lang": "nl",
+    "original": "Segbroek is een stadsdeel van Den Haag, genoemd naar de oude Segbroekpolder. Historisch wordt het gehele gebied in het door de Laan van Meerdervoort en de Sportlaan in westelijke richting omsloten stadsgebied aangeduide met de naam van de oude Segbreekpolder, die sedert het einde van de 19e eeuw en daarna in de 20e eeuw in stormachtig tempo onder de nieuwe stadsuitbreidingen verdween."
+   }
+  },
+  {
+   "name": "Rustenburg"
+  },
+  {
+   "name": "Centrum",
+   "description": {
+    "en": "The City Center of The Hague (Dutch: Centrum) is the oldest and, with a population of 110,237 inhabitants (as of 1 January 2026), the second largest of The Hague's eight districts, consisting of nine neighbourhoods. Two railways stations can be found in the city center: Den Haag Centraal and Den Haag Hollands Spoor.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/The_Hague_Center",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Rustenburg en Oostbroek",
+   "description": {
+    "en": "Rustenburg-Oostbroek (informally Rustenburg en Oostbroek) is a wijk in The Hague's Escamp district, bounded by the Soestdijksekade, the De La Reyweg and the Loosduinsekade, with about 19,000 inhabitants.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rustenburg-Oostbroek",
+    "lang": "nl",
+    "original": "Rustenburg-Oostbroek (informeel ook wel Rustenburg en Oostbroek) is een wijk in het Haagse stadsdeel Escamp. De wijk wordt begrensd door de Soestdijksekade, de De La Reyweg en Loosduinsekade, en heeft ruim 19.066 inwoners. De wijk grenst aan de wijken Zuiderpark, Leyenburg, Valkenboskwartier en Heesterbuurt en Transvaalkwartier."
+   },
+   "history": {
+    "en": "The area was part of the Oost-Eskamppolder in the former municipality of Loosduinen, and until the 1920s it was pasture and market gardens. The Hague annexed it in a boundary change with Loosduinen in 1902, and the wijk was built between 1920 and 1940.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rustenburg-Oostbroek",
+    "lang": "nl",
+    "original": "De wijk Rustenburg-Oostbroek maakte deel uit van de voormalige Oost-Eskamppolder die weer onderdeel was van de later opgeheven gemeente Loosduinen. De Oost-Eskamppolder is tot in de jaren twintig van de 20ste eeuw gebruikt als weideland en tuinbouwgebied. De belangrijkste bebouwing bestond toentertijd uit de buitenplaats Rustenburg en de boerderij Oostbroek, vandaar de naam van de wijk. Bij een grenswijziging met Loosduinen in 1902 werd het gebied door de gemeente Den Haag geannexeerd. De wijk Rustenburg en Oostbroek is gebouwd tussen 1920 en 1940."
+   },
+   "nameOrigin": {
+    "en": "Named after the two main buildings that stood here before it was built up: the Rustenburg country house and the Oostbroek farm.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rustenburg-Oostbroek",
+    "lang": "nl",
+    "original": "De belangrijkste bebouwing bestond toentertijd uit de buitenplaats Rustenburg en de boerderij Oostbroek, vandaar de naam van de wijk."
+   }
+  },
+  {
+   "name": "Transvaalkwartier",
+   "description": {
+    "en": "The Transvaalkwartier is a wijk south-west of the centre of The Hague, built between 1900 and 1935. The Haagse Markt, which gives the neighbourhood an international feel, moved here in 1938.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Transvaalkwartier",
+    "lang": "nl",
+    "original": "Het Transvaalkwartier is een wijk in Den Haag. De wijk ligt ten zuidwesten van het centrum en wordt begrensd door de Loosduinsekade, Monstersestraat, De Heemstraat, Hoefkade, Dierenselaan, Zuiderpark en de De La Reyweg. De wijk is tussen 1900 en 1935 gebouwd. De Haagse Markt, die de buurt een internationale uitstraling geeft, werd hierheen verplaatst in 1938."
+   },
+   "history": {
+    "en": "Before 1895 two notable buildings stood here: Westerbeek Castle, from about 1430 and demolished in 1794, and the Engelenburg country house, first recorded in 1570. Before large-scale housebuilding the area was farmland between ditches and canals, reached by the Loosduinseweg and its towing canal. The street plan was approved in 1898.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Transvaalkwartier",
+    "lang": "nl",
+    "original": "Voor 1895 stonden in het gebied van het huidige Transvaal twee markante gebouwen: Kasteel Westerbeek uit circa 1430, gesloopt in 1794 (hoek De La Reyweg/Bothastraat), en de buitenplaats Engelenburg, die voor het eerst vermeld wordt in 1570. Voordat hier grootschalige woningbouw plaatsvond, was het een landelijk gebied met boerderijen tussen sloten en vaarten, dat ontsloten werd via de Loosduinseweg en haar trekvaart. Langs een sloot tussen de Beeklaan en de Moerweg liep de De La Reykade, die aansloot op eenzelfde Loosduinschekade. In 1898 werd het stratenplan van de wijk goedgekeurd."
+   }
+  },
+  {
+   "name": "Oostbroek-Zuid"
+  },
+  {
+   "name": "Oostbroek-Noord"
+  },
+  {
+   "name": "Leyenburg",
+   "description": {
+    "en": "Leyenburg is a wijk in the south-west of The Hague, in the Escamp district, and home to the Leyweg site of the HagaZiekenhuis hospital.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Leyenburg",
+    "lang": "nl",
+    "original": "Leyenburg is een wijk in Den Haag. In deze wijk is ook het HagaZiekenhuis, locatie Leyweg gevestigd. Leyenburg ligt in het zuidwesten van Den Haag en ligt in het stadsdeel Escamp. De wijk wordt begrensd door de Vreeswijkstraat (naast het Zuiderpark), de Zuidwoldestraat, Dedemsvaartweg, Escamplaan en de Leyweg, de Loosduinsekade (Loosduinsevaart) en de Soestdijksekade (Laakkanaal)."
+   },
+   "history": {
+    "en": "Leyenburg was laid out on land of the former municipality of Loosduinen. In 1916 a small military police barracks was built on the medieval Leyweg at its western edge; it survives in its original state, with the police stables behind it. The Hague annexed Loosduinen in 1923, and the Laakkanaal, dug afterwards between the Laakhaven and the Loosduinsevaart, forms the wijk's northern edge.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Leyenburg",
+    "lang": "nl",
+    "original": "De wijk Leyenburg is aangelegd op het gebied van de voormalige gemeente Loosduinen. In 1916 werd aan de westgrens van de wijk, de uit de middeleeuwen daterende Leyweg, een kleine marechausseekazerne gebouwd. Deze is in oorspronkelijke staat bewaard gebleven, met erachter nog de stallen voor de politiepaarden. In 2009 is de kazerne een gemeentelijk monument geworden. In 1923 werd Loosduinen door Den Haag geannexeerd. Na de annexatie werd het Laakkanaal gegraven als waterverbinding tussen de Laakhaven en de Loosduinsevaart. Dit verbindingskanaal vormt de noordelijke grens van de wijk."
+   },
+   "nameOrigin": {
+    "en": "Named after the Leyenburg country house, demolished in 1985.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Leyenburg",
+    "lang": "nl",
+    "original": "Leyenburg is genoemd naar de buitenplaats Leyenburg die in 1985 is afgebroken."
+   }
+  },
+  {
+   "name": "Loosduinen",
+   "description": {
+    "en": "Loosduinen is a former village in the Netherlands that was a municipality unto itself until 1923, when it was annexed by The Hague and subsequently became a district of the city. Within the district there is also a neighbourhood (Dutch:wijk) called 'Loosduinen'. It has its own dialect, the Loosduinen dialect, which is very similar to The Hague dialect.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Loosduinen",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The area of modern-day Loosduinen has been inhabited for at least 4,500 years. Archaeologists have found many traces of previous civilisations during excavations. For example, traces of Romans and Cananefates have been found around the beginning of our era. The origin of the name Loosduinen, however, cannot be traced back in either objects that have been found during excavations and in literature. Nonetheless, it is quite certain that it is an ancient name, since it has been used in the past to name a very old geographical area.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Loosduinen",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The origin of the name cannot be traced in archaeological finds or in the literature, though it is certainly an ancient name for a very old area.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Loosduinen",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Morgenstond",
+   "description": {
+    "en": "Morgenstond is a wijk in the south of The Hague, in the Escamp district, built in the early 1950s. It borders Bouwlust and Vrederust to the west, Leyenburg and Houtwijk to the north, Moerwijk and the Zuiderpark to the east and Wateringse Veld to the south.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Morgenstond",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Willem Dudok's 1949 structure plan for Greater The Hague divided the south-west of the city into four residential districts: Morgenstond, Bouwlust, Berestein and Vrederust. The province of South Holland wanted green space kept between them and the Westland, so Berestein was only half built and absorbed into Bouwlust. For Morgenstond, Dudok built on a 1935 draft expansion plan for the Escamppolder, Madepolder and Ockenburgh.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Morgenstond",
+    "lang": "nl",
+    "original": "In het structuurplan voor Groot 's-Gravenhage uit 1949 van stadsplanner Willem Dudok werd zuidwest Den Haag verdeeld in vier woonwijken: Morgenstond, Bouwlust, Berestein en Vrederust. De provincie Zuid-Holland vond dat er tussen de woonwijken en het Westland ruimte voor groen moesten blijven. De bouw van Berestein - zoals Dudok het in z'n hoofd had - ging niet door. Berestein is maar voor de helft uitgevoerd en bij Bouwlust getrokken. Met Morgenstond borduurde Dudok in 1949 voort op het 'Ontwerp-Uitbreidingsplan 's-Gravenhage Escamppolder, Madepolder, Ockenburgh'. Een plan uit 1935."
+   },
+   "nameOrigin": {
+    "en": "The name means 'morning' or 'dawn'. Most of its streets are named after places in Drenthe and Overijssel.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Morgenstond",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Moerwijk",
+   "description": {
+    "en": "Moerwijk is a wijk of The Hague in the Escamp district. It was built shortly before and after the Second World War to an urban design by Willem Dudok.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Moerwijk",
+    "lang": "nl",
+    "original": "Moerwijk is een Haagse wijk, onderdeel van stadsdeel Escamp. De wijk grenst aan de wijken Wateringse Veld, Morgenstond, Zuiderpark, Groente- en Fruitmarkt en Laakkwartier en Spoorwijk. Moerwijk is gebouwd kort voor en na de Tweede Wereldoorlog. Het stedenbouwkundig ontwerp werd verzorgd door Willem Dudok. Moerwijk is vernoemd naar de historische naam moer dat betekent drassig land, moeras of veenbodem."
+   },
+   "nameOrigin": {
+    "en": "Named after the old word 'moer', meaning marshy land, bog or peat soil.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Moerwijk",
+    "lang": "nl",
+    "original": "Moerwijk is vernoemd naar de historische naam moer dat betekent drassig land, moeras of veenbodem."
+   }
+  },
+  {
+   "name": "Escamp",
+   "description": {
+    "en": "Escamp is a district of The Hague, Netherlands, built largely after the Second World War, on the 15th century Eskamppolders. With the addition of the Vinex neighbourhood Wateringse Veld, Escamp is the most populous district of the city; as of 1 January 2026, it had 132,579 inhabitants. The district features one railway station: Den Haag Moerwijk.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Escamp",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Wateringse Veld",
+   "description": {
+    "en": "Wateringse Veld is a residential area in The Hague and one of its three Vinex sites: between 1996 and 2012, 7,500 homes were built on the former Wateringse Veld polders. It is part of the Escamp district and borders Bouwlust en Vrederust, Morgenstond and Rijswijk.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Wateringse_Veld",
+    "lang": "nl",
+    "original": "Wateringse Veld is een woonwijk in de gemeente Den Haag. Tussen 1996 en 2012 werden er in de vroegere Wateringse Veldpolders 7500 woningen gebouwd. Wateringse Veld is een van de drie Haagse Vinex-locaties. Het behoort tot het stadsdeel Escamp in de voormalige Eskamppolder en grenst aan de wijken Bouwlust en Vrederust en Morgenstond en aan Rijswijk."
+   }
+  }
+ ]
+}
