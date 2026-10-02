@@ -71,6 +71,38 @@ const infoOf = (chunk: Chunk): ChunkInfo => ({
   bytes: chunk.positions.byteLength + chunk.uvs.byteLength + chunk.layers.byteLength + chunk.tints.byteLength + chunk.accents.byteLength + chunk.indices.byteLength + chunk.vertexCount,
 });
 
+/**
+ * The bay drawings are drawn crisp for a standalone page; seen as whole streets
+ * at game scale they read as noise. Soften them where it costs nothing a player
+ * learns from: wall texture is pulled toward its mean (brick reads as colour,
+ * not speckle) and the darkest glass is lifted so windows stop being black
+ * holes. Frames, doors and stone keep their contrast, so the facade rhythm stays.
+ */
+export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: number, look: Look): void {
+  const px = CELL_PX * CELL_PX;
+  const wallPull = look === 'photo' ? 0.7 : 0.35, glassLift = look === 'photo' ? 0.5 : 0.25;
+  for (let layer = 0; layer < layers; layer++) {
+    // Mean wall colour of this layer (mask.r is the wall tint weight).
+    let sum = [0, 0, 0], n = 0;
+    for (let i = 0; i < px; i++) {
+      if (mask[(layer * px + i) * 2] > 200) { for (let c = 0; c < 3; c++) sum[c] += colour[(layer * px + i) * 4 + c]; n++; }
+    }
+    const mean = n ? sum.map(v => v / n) : [200, 200, 200];
+    // Brick photos are dark; the tint multiplies them again. Lift wall pixels so the layer's mean is ~0.88 and the tint colour is what you see.
+    const meanLum = (mean[0] + mean[1] + mean[2]) / 3;
+    const lift = look === 'photo' && meanLum > 0 ? Math.min(2.4, 225 / meanLum) : 1;
+    for (let i = 0; i < px; i++) {
+      const at = (layer * px + i) * 4, wall = mask[(layer * px + i) * 2] / 255, accent = mask[(layer * px + i) * 2 + 1];
+      if (wall > 0.5) {
+        for (let c = 0; c < 3; c++) colour[at + c] = Math.min(255, (colour[at + c] + (mean[c] - colour[at + c]) * wallPull * wall) * (1 + (lift - 1) * wall));
+      } else if (accent < 128) {
+        const lum = (colour[at] + colour[at + 1] + colour[at + 2]) / 3;
+        if (lum < 90) { const k = glassLift * (1 - lum / 90); for (let c = 0; c < 3; c++) colour[at + c] += (150 - colour[at + c]) * k; }
+      }
+    }
+  }
+}
+
 const asPolygons = (geometry: unknown): number[][][][] => {
   const g = geometry as { type?: string; coordinates?: unknown } | null;
   if (!g || !g.coordinates) return [];
@@ -172,6 +204,7 @@ export class ThreeBuildings {
         }
       }
     }
+    if (look !== 'procedural') calmBayLayers(colour, mask, layers, look);
     const array = (data: Uint8Array, format: any) => {
       const t = new THREE.DataArrayTexture(data, CELL_PX, CELL_PX, layers);
       t.format = format; t.type = THREE.UnsignedByteType;
