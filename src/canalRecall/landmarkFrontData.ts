@@ -407,6 +407,6 @@ export function decorateFront<T extends GeoFeature>(feature: T): T {
   const height = Number(feature.properties.height);
   const capped = front.bodyTopM != null && Number.isFinite(height) ? Math.min(height, front.bodyTopM) : height;
   // A storefront leaves its building alone: generic upper storeys, own height and colour.
-  if (front.storefront) return { ...feature, properties: { ...feature.properties, frontCarrier: front.name } };
+  if (front.storefront) return { ...feature, properties: { ...feature.properties, frontCarrier: front.name, ...(front.carrierHex ? { colour: front.carrierHex, sideColour: front.carrierHex } : {}) } };
   return { ...feature, properties: { ...feature.properties, frontCarrier: front.name, height: capped, sideColour: front.hex, colour: front.hex } };
 }

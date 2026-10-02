@@ -33,12 +33,14 @@ export type StorefrontSpec = {
   shift?: number;
   /**
    * Bays left to right, space separated: W shop window, D shop door, C carriage (double) door,
-   * d plain house door, P pilaster, B blank wall; `W:1.4` fixes a bay's width in metres.
+   * d plain house door, P pilaster, B blank wall, O open passage; `W:1.4` fixes a bay's width in metres.
    * Default from `door`: left 'D W', right 'W D', centre 'W D W', none 'W'.
    */
   bays?: string;
   /** Ground-floor wall around the openings (stucco, tiles, painted brick); default the frame colour. */
   wall?: string;
+  /** Pilasters (`P` bays); default the frame colour, stucco ones take the wall's. */
+  pilaster?: string;
   /** Low wall under the shop windows; default the frame colour. */
   plinth?: string;
   /** Fascia board colour (`false`: no board, letters straight on the wall); default the frame colour. */
@@ -111,6 +113,8 @@ export type StorefrontSpec = {
   shutters?: string;
   /** Roll-down shutters drawn over the glazing (closed snack bars, traiteurs); a string sets their colour. */
   rollers?: boolean | string;
+  /** Repaint the building itself (its generic upper storeys stay): cream stucco, painted brick. */
+  buildingHex?: string;
   /** Glass colour: a lit warm interior ('#5a4a38') reads very differently from a dark reflection. */
   glass?: string;
   /** Storefront height, metres (default 3.6). */
@@ -126,7 +130,7 @@ const luma = (hex: string) => { const n = parseInt(hex.slice(1), 16); return 0.2
 const DARK_GLASS = '#3c4854', DOOR = '#15171a', WHITE = '#f2f0ea', INK = '#1d1d1f', CHAIR = '#6b5444', LAMP = '#f3d58a';
 const contrast = (hex: string) => (luma(hex) < 120 ? WHITE : INK);
 
-type Bay = { kind: 'W' | 'D' | 'C' | 'd' | 'P' | 'B'; x0: number; x1: number };
+type Bay = { kind: 'W' | 'D' | 'C' | 'd' | 'P' | 'B' | 'O'; x0: number; x1: number };
 const BAY_W: Record<string, number> = { D: 1.05, C: 1.8, d: 1.0, P: 0.35 };
 
 /** Lay bays across [x0, x1]: doors and pilasters keep their widths, windows and blanks share the rest. */
@@ -213,7 +217,8 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
   for (const bay of bays) {
     const { x0: a, x1: b } = bay, w = b - a;
     switch (bay.kind) {
-      case 'P': boxes.push({ x0: a, x1: b, z0: 0, z1: openTop, out0: WALL, out1: OUT + 0.08, hex: frame }); break;
+      case 'O': boxes.push({ x0: a, x1: b, z0: 0, z1: openTop, out0: WALL, out1: WALL + 0.004, hex: '#26272a', face: true }); break;
+      case 'P': boxes.push({ x0: a, x1: b, z0: 0, z1: openTop, out0: WALL, out1: OUT + 0.08, hex: spec.pilaster ?? frame }); break;
       case 'W': {
         // Frame stiles and rails proud of recessed glass, a panelled stall riser, mullions, transom lights.
         const g0 = a + 0.1, g1 = b - 0.1;
@@ -380,5 +385,5 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
     const reg = (o: [number, number][]) => o.map(([x, z]) => [Math.min(L, Math.max(0, x + sh)), z] as [number, number]);
     return { ...base, hex: f.hex, outline, bodyTopM: f.topM, slabs: (f.slabs ?? []).map(sl => ({ ...sl, outline: reg(sl.outline) })), boxes: [...ribs, ...(spec.bays === 'none' ? kept.slice(1) : kept)], windows: (f.windows ?? []).map(w => ({ ...w, xs: w.xs.map(x => x + sh), hex: GLASS })) };
   }
-  return { ...base, storefront: true, hex: wallHex, outline: [[x0, 0.01], [x1, 0.01]], boxes: kept, windows: [] };
+  return { ...base, storefront: true, carrierHex: spec.buildingHex, hex: wallHex, outline: [[x0, 0.01], [x1, 0.01]], boxes: kept, windows: [] };
 }

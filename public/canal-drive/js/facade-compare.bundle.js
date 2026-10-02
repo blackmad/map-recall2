@@ -1257,8 +1257,11 @@
     for (const bay of bays) {
       const { x0: a, x1: b } = bay, w = b - a;
       switch (bay.kind) {
+        case "O":
+          boxes.push({ x0: a, x1: b, z0: 0, z1: openTop, out0: WALL, out1: WALL + 4e-3, hex: "#26272a", face: true });
+          break;
         case "P":
-          boxes.push({ x0: a, x1: b, z0: 0, z1: openTop, out0: WALL, out1: OUT + 0.08, hex: frame });
+          boxes.push({ x0: a, x1: b, z0: 0, z1: openTop, out0: WALL, out1: OUT + 0.08, hex: spec.pilaster ?? frame });
           break;
         case "W": {
           const g0 = a + 0.1, g1 = b - 0.1;
@@ -1431,7 +1434,7 @@
       const reg = (o) => o.map(([x, z]) => [Math.min(L, Math.max(0, x + sh)), z]);
       return { ...base, hex: f.hex, outline, bodyTopM: f.topM, slabs: (f.slabs ?? []).map((sl) => ({ ...sl, outline: reg(sl.outline) })), boxes: [...ribs, ...spec.bays === "none" ? kept.slice(1) : kept], windows: (f.windows ?? []).map((w) => ({ ...w, xs: w.xs.map((x) => x + sh), hex: GLASS2 })) };
     }
-    return { ...base, storefront: true, hex: wallHex, outline: [[x0, 0.01], [x1, 0.01]], boxes: kept, windows: [] };
+    return { ...base, storefront: true, carrierHex: spec.buildingHex, hex: wallHex, outline: [[x0, 0.01], [x1, 0.01]], boxes: kept, windows: [] };
   }
 
   // src/canalRecall/storefrontSpecs.ts
@@ -1666,7 +1669,7 @@
     "la-ruelle-54949": null,
     "ladybird-fried-chicken-54143": { name: "Ladybird", frame: "#7a2a1c", fascia: false, awning: "flat", awningHex: "#e8e6e0", windows: "big", door: "right", terrace: true },
     "le-4-stagioni-57247": { name: "Le 4 Stagioni", frame: "#3a3d40", fascia: false, windows: "split", door: "centre", terrace: true },
-    "le-sud-76570": { name: "Le Sud", frame: "#2a2a28", fascia: false, windows: "big", door: "left" },
+    "le-sud-76570": null,
     "lemoene-33308": null,
     "leonardo-s-ravioli-bar-59331": { name: "Leonardo's", frame: "#1d1d1f", wall: "#1d1d1f", fascia: "#1d1d1f", fasciaH: 0.3, text: "", span: [2.7, 10.7], bays: "B:1.3 W B:0.9", rollers: "#c8ccd0", graffiti: ["#e8a030", "#1d1d1f", "#f2efe8", "#d87820"], heightM: 3.6 },
     "les-zazous-79884": null,
@@ -1811,7 +1814,7 @@
     "rue-la-bastille-77670": null,
     "rufus-restaurant-57012": { name: "Rufus", frame: "#1f1f1f", fascia: "#1f1f1f", windows: "big", door: "right", terrace: true },
     "sab-s-deli-36070": { name: "Sab's", frame: "#3a2a22", fascia: false, awning: "flat", awningHex: "#1f4d3a", windows: "split", door: "centre", terrace: true, plants: true },
-    "sababa-58581": { name: "Sababa", frame: "#e8e2d4", fascia: "#c8282a", windows: "split", door: "left" },
+    "sababa-58581": { name: "Sababa", frame: "#6a6c6a", pilaster: "#e8dfc8", doorHex: "#6a6c6a", wall: "#e8dfc8", plinth: "#e8dfc8", buildingHex: "#e8dfc8", fascia: false, text: "", shift: -1.1, span: [1.1, 9.1], bays: "P:0.4 W:0.8 C:0.9 W:0.8 P:0.6 d:1.3 P:0.6 O:2.2 P:0.4", signs: [{ text: "TABAKSHOP BELL", x: [1.5, 3.4], z: [3, 3.3], letters: "#f2f0ea", board: "#5a5a58" }, { text: "BELL & BEL", x: [3.4, 4.4], z: [2.9, 3.6], letters: "#f2f0ea", board: "#c8282a" }], heightM: 3.9 },
     "saeed-s-curry-house-54207": { name: "Saeed's", frame: "#5a1a14", fascia: false, awning: "striped", awningHex: "#c8282a", windows: "big", door: "right" },
     "sagardi-72053": null,
     "sahan-92837": { name: "Sahan", frame: "#2a2c2e", fascia: "#e8e6e0", letters: "#2a2c2e", awning: "canopy", awningHex: "#3a3d40", windows: "split", door: "centre", terrace: true, plants: true },
@@ -2311,10 +2314,17 @@
       const [ax2, ay2] = local([meta.wall.startLngLat])[0], [bx2, by2] = local([meta.wall.endLngLat])[0];
       const b = meta.wall.outwardBearingDeg * Math.PI / 180, ox = Math.sin(b), oy = Math.cos(b), mx = (ax2 + bx2) / 2, my = (ay2 + by2) / 2;
       const len = Math.hypot(bx2 - ax2, by2 - ay2) || 1, half = len / 2 + 25, ux = (bx2 - ax2) / len, uy = (by2 - ay2) / len;
-      const inFront = (pts) => {
-        const x = pts.reduce((t, p) => t + p[0], 0) / pts.length, y = pts.reduce((t, p) => t + p[1], 0) / pts.length, out = (x - mx) * ox + (y - my) * oy, along2 = (x - mx) * ux + (y - my) * uy;
-        return out > 2 && out < 70 && Math.abs(along2) < half;
+      const contains = (pts, x, y) => {
+        let c = false;
+        for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+          const [xi, yi] = pts[i], [xj, yj] = pts[j];
+          if (yi > y !== yj > y && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c;
+        }
+        return c;
       };
+      const corridor = [];
+      for (let out = 3; out <= 70; out += 2) for (let al = -len / 2; al <= len / 2 + 1e-6; al += Math.max(1, len / 8)) corridor.push([mx + ox * out + ux * al, my + oy * out + uy * al]);
+      const inFront = (pts) => corridor.some(([x, y]) => contains(pts, x, y));
       for (let i = context.length - 1; i >= 0; i--) if (inFront(context[i].pts)) context.splice(i, 1);
     }
     if (front?.bodyTopM != null) {
@@ -2343,7 +2353,7 @@
           if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, "#9a5240"));
         }
         const unused = [...parts.values()].filter((p) => !setup.kit.tiers.some((t) => t.id === p.id) && !setup.kit.roofs.some((h) => h.id === p.id));
-        for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, storefront && front?.storefront ? "#8f5440" : front?.hex ?? "#9a5240"));
+        for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, storefront && front?.storefront ? front.carrierHex ?? "#8f5440" : front?.hex ?? "#9a5240"));
         const chunk = buildKitChunk(kitGeometry(setup.kit, parts), { plain: 0, flat: 0, slope: 0 });
         const geometry = new THREE.BufferGeometry(), pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);
         for (let i = 0; i < chunk.vertexCount; i++) {
