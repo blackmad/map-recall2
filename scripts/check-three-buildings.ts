@@ -278,7 +278,7 @@ for (const c of [0.64, 1.4]) {
   const square = (cx: number, cy: number, w: number, d = w): Array<[number, number]> => [[cx - w / 2, cy - d / 2], [cx + w / 2, cy - d / 2], [cx + w / 2, cy + d / 2], [cx - w / 2, cy + d / 2], [cx - w / 2, cy - d / 2]];
   assert.equal(new Set(KITS.map(k => k.name)).size, KITS.length, 'kit names are unique');
   const owners = new Map<string, string>();
-  for (const kit of KITS) for (const id of [...kit.tiers.map(t => t.id), ...kit.roofs.map(r => r.id)]) { assert.ok(!owners.has(id), `${id} belongs to one kit`); owners.set(id, kit.name); }
+  for (const kit of KITS) for (const id of [...kit.tiers.map(t => t.id), ...kit.roofs.map(r => r.id), ...(kit.halls ?? []).map(h => h.id)]) { assert.ok(!owners.has(id), `${id} belongs to one kit`); owners.set(id, kit.name); }
   for (const id of KIT_HIDE_IDS) assert.ok(KIT_PART_IDS.has(id));
   for (const kit of KITS) {
     assert.deepEqual(kitGeometry(kit, new Map()), [], `${kit.name}: nothing to draw until its parts load`);
@@ -288,9 +288,10 @@ for (const c of [0.64, 1.4]) {
     for (const tier of kit.tiers) { parts.set(tier.id, { id: tier.id, ring: square(0, 0, 10), minHeightM: z, heightM: z + 10 }); z += 10; }
     for (const stack of kit.stacks) if (!parts.has(stack.onId)) parts.set(stack.onId, { id: stack.onId, ring: square(0, 0, 10), minHeightM: 0, heightM: 30 });
     for (const roof of kit.roofs) parts.set(roof.id, { id: roof.id, ring: square(40, 0, 12, 30), minHeightM: 0, heightM: 20 });
+    for (const hall of kit.halls ?? []) parts.set(hall.id, { id: hall.id, ring: square(0, 80, 40, 60), minHeightM: 0, heightM: 10 });
     const geometry = kitGeometry(kit, parts);
     // A body-only kit (NEMO: just its walls recoloured) builds no geometry of its own.
-    const bodyOnly = !kit.tiers.length && !kit.stacks.length && !kit.roofs.length;
+    const bodyOnly = !kit.tiers.length && !kit.stacks.length && !kit.roofs.length && !kit.halls?.length;
     assert.ok(bodyOnly ? geometry.length === 0 && (kit.body?.length ?? 0) > 0 : geometry.length > 0 && geometry.every(g => g.tris.length > 0), `${kit.name}: builds geometry`);
     for (const g of geometry) for (const t of g.tris) {
       assert.ok(t.p.flat().every(Number.isFinite) && t.uv.flat().every(Number.isFinite) && t.n.every(Number.isFinite), `${kit.name}: finite`);
@@ -386,5 +387,32 @@ for (const c of [0.64, 1.4]) {
   }
   assert.ok(houses > 5, `stoops exist on houses (${houses})`);
   assert.equal(shops, 0, 'no stoop in front of a narrow shop');
+}
+
+{
+  // De Hallen (user report 2026-10-02: one bare tan block): its one BAG footprint becomes a row
+  // of ~9.6 m tram halls, ridges along the long wall, gable ends on the stepped Bellamyplein side.
+  const { readFileSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const { hallRects, KITS: kits, decorateKitRoof: decorate, kitGeometry: geometry } = await import('../src/canalRecall/landmarkKits.ts');
+  const tile = JSON.parse(gunzipSync(readFileSync('public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz')).toString());
+  const id = 'NL.IMBAG.Pand.0363100012236693', f = tile.features.find((x: any) => x.properties.id === id);
+  assert.ok(f, 'De Hallen footprint is in its tile');
+  const KO = { lng: 4.9, lat: 52.37 }, kkx = 111_320 * Math.cos(KO.lat * Math.PI / 180);
+  const ring: [number, number][] = f.geometry.coordinates[0].map(([lng, lat]: number[]) => [(lng - KO.lng) * kkx, (lat - KO.lat) * 110_540]);
+  const kit = kits.find(k => k.name === 'De Hallen')!, spec = kit.halls![0];
+  const anchor: [number, number] = [(spec.anchor[0] - KO.lng) * kkx, (spec.anchor[1] - KO.lat) * 110_540];
+  const halls = hallRects(ring, spec.widthM, anchor);
+  assert.ok(halls.length >= 10, `a row of halls (${halls.length})`);
+  assert.ok(halls.every(h => h.wid <= spec.widthM + 1e-6 && h.len > h.wid), 'each hall is a long narrow shed');
+  let area2 = 0; for (let i = 0; i + 1 < ring.length; i++) area2 += ring[i][0] * ring[i + 1][1] - ring[i + 1][0] * ring[i][1];
+  const covered = halls.reduce((a, h) => a + h.len * h.wid, 0) / Math.abs(area2 / 2);
+  assert.ok(covered > 0.85 && covered < 1.1, `halls cover the footprint (${covered.toFixed(2)})`);
+  const decorated = decorate({ type: 'Feature', properties: { id, height: 9.61 }, geometry: null });
+  assert.equal(decorated.properties.roofEavesHeightM, spec.eavesM, 'walls stop at the hall eaves');
+  assert.equal(decorated.properties.kitWall, 'grid', 'brick walls with windows, not bare tan');
+  const tris = geometry(kit, new Map([[id, { id, ring, minHeightM: 0, heightM: 9.61 }]]))[0].tris;
+  const top = Math.max(...tris.flatMap(t => t.p.map(p => p[2])));
+  assert.ok(Math.abs(top - (spec.eavesM + spec.riseM)) < 0.5, `ridges at ${top.toFixed(1)} m`);
 }
 console.log('three buildings: ok');
