@@ -35,6 +35,8 @@ const forcedWall = arg('wall');
 // --toward=lng,lat: only walls facing that point (a square, the street a landmark fronts on).
 const toward = arg('toward') ? arg('toward').split(',').map(Number) as [number, number] : null;
 // --near=lng,lat: only the walls within 8 m of a point (a shop's OSM pin), nearest first.
+// --top=M: crop the plane to the lowest M metres (shopfronts: the ground floors only).
+const topCap = Number(arg('top', '0')) || Infinity;
 const nearPt = arg('near') ? arg('near').split(',').map(Number) as [number, number] : null;
 if (!name || !ids.size) throw new Error('--name and --ids are required');
 
@@ -153,7 +155,7 @@ for (const c of chosen.c) if (picks.length < maxPanos && lensFor(c.pano, undefin
 const wall = chosen.wall;
 const poses = picks.map(p => lensFor(p.pano, undefined)!).filter(Boolean);
 const baseZ = poses.reduce((s, l) => s + (l.pose.z - 2.44), 0) / poses.length;
-const plane: FacadePlane = { start: wall.a, end: wall.b, baseZ, topZ: baseZ + wall.heightM + 1.5 };
+const plane: FacadePlane = { start: wall.a, end: wall.b, baseZ, topZ: baseZ + Math.min(wall.heightM + 1.5, topCap) };
 console.log(`chosen wall ${chosen.index}: ${wall.len.toFixed(1)} m x ${(plane.topZ - plane.baseZ).toFixed(1)} m, ${picks.length} panoramas`);
 
 const crops: Uint8ClampedArray[] = []; let dims = { width: 0, height: 0 };
@@ -182,6 +184,8 @@ await fs.writeFile(path.join(outDir, `${name}.json`), JSON.stringify({
   wall: { startLngLat: [startLng, startLat], endLngLat: [endLng, endLat], lengthM: wall.len, heightM: plane.topZ - plane.baseZ, outwardBearingDeg: (Math.atan2(wall.nx, wall.ny) * 180 / Math.PI + 360) % 360 },
   panoramas: picks.map(p => ({ id: p.pano.pano_id, timestamp: p.pano.timestamp, distanceM: Math.round(p.d), obliquityDeg: Math.round(p.obliquity) })),
   fusion: 'per-pixel median across panoramas',
+  // Where the --near point (a POI pin) falls along the wall, metres from its start.
+  ...(nearRd ? { nearAlongM: Math.round((((nearRd.x - wall.a.x) * (wall.b.x - wall.a.x) + (nearRd.y - wall.a.y) * (wall.b.y - wall.a.y)) / wall.len) * 100) / 100 } : {}),
   // Measured roofline and wall colour: the reference a low-poly front is checked against.
   silhouette: photoSilhouette({ width: dims.width, height: dims.height, data: fused }, ppm),
   attribution: 'Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)',

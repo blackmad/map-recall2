@@ -93,6 +93,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
         layers: { slope: roofBase + (plan.material === 'tile' ? 0 : 1), plain, dormer: roofBase + 2 } };
     }
   }
+  // Facade extras for every faced building; the plain and Untextured looks stay light.
+  building.extras = !building.bare && look !== 'untextured';
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.
     const flat = roofBase + 3;
@@ -104,6 +106,6 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
 
 
 /** A chunk for a group of streamed features in one look. */
-export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook): Chunk {
-  return buildChunk(features.map(f => meshBuildingFor(f, look)).filter((b): b is MeshBuilding => !!b), ORIGIN);
+export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' = 'walls'): Chunk {
+  return buildChunk(features.map(f => meshBuildingFor(f, look)).filter((b): b is MeshBuilding => !!b), ORIGIN, mode);
 }
