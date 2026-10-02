@@ -648,3 +648,36 @@ export {
   pointInGeocodeViewbox,
   resolveGpsOrigin,
 } from './gpsOrigin.ts';
+
+// ---------------------------------------------------------------------------
+// Which way the vehicle faces at the start.
+
+/** How far along the route (world px) the start looks to decide which way to face. */
+export const START_HEADING_LOOKAHEAD_PX = 150;
+
+/**
+ * A road's tangent has two opposite directions and the extract stores one of them
+ * arbitrarily, so a ride that starts from the road's own angle faces the route half
+ * the time and away from it the other half (with the camera, which follows the heading,
+ * behind a bike pointed the wrong way). Pick whichever of the two points toward where the
+ * route goes; with no route yet, toward the finish; with neither, the road's own angle.
+ */
+export function startHeading(
+  roadAngle: number,
+  start: WorldPoint,
+  route: readonly WorldPoint[] | null | undefined,
+  finish: WorldPoint | null | undefined,
+): number {
+  let target: WorldPoint | null = null;
+  if (route && route.length) {
+    target = route.find(p => Math.hypot(p.x - start.x, p.y - start.y) >= START_HEADING_LOOKAHEAD_PX) ?? route[route.length - 1];
+  }
+  if (!target || Math.hypot(target.x - start.x, target.y - start.y) < 20) target = finish ?? null;
+  if (!target) return roadAngle;
+  const dx = target.x - start.x, dy = target.y - start.y;
+  if (Math.hypot(dx, dy) < 20) return roadAngle;
+  const along = Math.cos(roadAngle) * dx + Math.sin(roadAngle) * dy;
+  // Square across the road: neither direction is better, so leave the road's own.
+  if (Math.abs(along) < 0.15 * Math.hypot(dx, dy)) return roadAngle;
+  return along >= 0 ? roadAngle : roadAngle + Math.PI;
+}
