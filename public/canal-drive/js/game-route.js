@@ -991,9 +991,14 @@ class GameRouteRuntime {
     // No heading yet: this is the call that produces one. The explicit null is
     // what `check-road-name-heading.ts` accepts in place of `player.angle`.
     const startInfo = this.track.getNearestRoad(this.track.startPoint.x, this.track.startPoint.y, null);
-    const startAngle = startInfo ? startInfo.angle : 0;
     const startX = this.track.startPoint.x;
     const startY = this.track.startPoint.y;
+    // The road's tangent points either way along it; face the way the route goes, so the
+    // bike starts pointing down its line and the camera (which follows the heading) is behind it.
+    const roadAngle = startInfo ? startInfo.angle : 0;
+    const startAngle = window.CanalRecallRoute && window.CanalRecallRoute.startHeading
+      ? window.CanalRecallRoute.startHeading(roadAngle, { x: startX, y: startY }, this.routePath, this.track.finishPoint)
+      : roadAngle;
 
     // Player at start
     this.player = new PlayerCar(startX, startY, startAngle);

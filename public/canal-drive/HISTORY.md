@@ -4,6 +4,23 @@
 
 The user judged the photo-textured fronts awful (white sky baked into a rectangle, a photo pasted on a blank box, unlit against the shaded city), and asked for our own low-poly reconstructions instead. Panorama crops are now drawing references only. `src/canalRecall/landmarkFronts.ts` models the one street wall that makes a landmark recognisable as boxes on the wall plane: a slab cut to a measured roofline (arches via `arch()`), projecting cornices and pilasters, framed window panes with sills, shopfronts, and an optional `bodyTopM` that lowers the OSM part behind the front (OSM gives one height per part, so a flat-topped prism otherwise hides a pediment or a gable row). Data: `landmarkFrontData.ts`, with the Bijenkorf (five bays, deep cornice, attic, arched pediment) and the Beurs van Berlage's Beursplein hall wall (13 window columns, six small gables; that hall's roof rise is now 11.5 m so its eaves meet the gables). `facadeCompareViewer.ts` now shows plain prism / reconstruction / flat reference photo. `photoSilhouette.ts` measures each reference's roofline and wall colour (stored in the facade JSON; the builder writes it, `scripts/pano-facades/add-silhouette.ts` backfills), and `npm run test:landmark-fronts` (in `check:canal`) fails if a modelled roofline drifts from it: Bijenkorf median 0.23 m / p90 0.65 m, Beurs 0.25 / 0.67 m. Colours sampled from the photo came out too dark (shaded north-west walls), so fronts use lighter palette colours. Not in the game yet.
 
+## 2026-10-02 — The ride starts facing along the route
+
+User report with screenshot: the bike started pointing away from the route, with
+the blue line running off behind it. A road's tangent has two opposite directions
+and the extract stores one arbitrarily; `_setupRace` used it unchanged. The
+camera bearing follows the player's heading, so the camera was "behind" a bike
+that faced the wrong way. `startHeading` (in `routeSelection.ts`, unit-checked
+by `check-start-heading.ts`) now picks the direction toward the planned route,
+looking at 60, 150 and 400 px out and trusting the clearest, because a route
+that turns at the first junction reads sideways from one distance; with no route
+it uses the finish, and only a route exactly square to the road keeps the road's
+own angle. `start-heading.spec.ts` starts six real rides (four bike seeds, two
+boat) and checks they face along the route and the camera settles behind them;
+with the fix switched off (`START_HEADING_OFF=1`) all four bike seeds fail.
+Seed 1234abcd was a route leaving almost sideways to its road (signal -0.15):
+an earlier cutoff left it arbitrary, which is why a weak signal now still decides.
+Boat rides happened to face right with or without the fix on those two seeds.
 ## Beurs van Berlage added to the comparison
 
 "Sherlocked" was the Beurs van Berlage. Panorama facade from the Beursplein-side hall wall (parts w7499186xx, one panorama at 7 m), plus an experimental kit (brick tower with pyramid cap, steep roofs on the halls). The real Damrak front with the tower still needs its wall chosen by hand (`--wall`), and the photo's top edge shows sky because the hall is lower than the tower parts.
