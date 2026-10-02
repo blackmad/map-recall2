@@ -134,7 +134,6 @@ export default function App() {
   const [blindMapMode, setBlindMapMode] = useState<boolean>(() => urlParams.get('labels') !== 'on'); // Label-less by default
   const [tileStyle, setTileStyle] = useState<TileStyle>(() => validValue(urlParams.get('map'), ['voyager', 'light_nolabels', 'osm', 'dark'] as const, 'light_nolabels'));
   const [unit, setUnit] = useState<DistanceUnit>(() => validValue(urlParams.get('unit'), ['metric', 'imperial'] as const, 'metric'));
-  const [isMuted, setIsMuted] = useState<boolean>(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isDebugPlacesOpen, setIsDebugPlacesOpen] = useState<boolean>(false);
   const [showSearchBoundary, setShowSearchBoundary] = useState<boolean>(true);
@@ -815,12 +814,6 @@ export default function App() {
     }
   };
 
-  const handleToggleMute = () => {
-    const next = !isMuted;
-    setIsMuted(next);
-    sounds.setMuted(next);
-  };
-
   return (
     <div className="flex flex-col w-screen h-screen overflow-hidden bg-[#f4efe5] text-white font-sans select-none">
       {/* Top App Header (Strict Single Line) */}
@@ -842,8 +835,6 @@ export default function App() {
         totalScore={totalScore}
         onOpenSettings={() => setIsSettingsOpen(true)}
         onOpenDebugPlaces={() => setIsDebugPlacesOpen(true)}
-        isMuted={isMuted}
-        onToggleMute={handleToggleMute}
         blindMapMode={blindMapMode}
         onToggleBlindMap={() => setBlindMapMode((prev) => !prev)}
         onLocateUser={() => detectUserLocation(true, locationScope)}
@@ -1154,8 +1145,6 @@ export default function App() {
         onChangeTileStyle={(s) => setTileStyle(s)}
         unit={unit}
         onChangeUnit={(u) => setUnit(u)}
-        isMuted={isMuted}
-        onToggleMute={handleToggleMute}
         roundsPerGame={roundsPerGame}
         onChangeRounds={(r) => {
           setRoundsPerGame(r);

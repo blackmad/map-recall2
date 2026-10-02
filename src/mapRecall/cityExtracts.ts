@@ -12,6 +12,8 @@ export interface ExtractCity {
   /** Other names the city appears under in articles. */
   aliases: string[];
   wikidata: string;
+  /** Other Wikidata items its neighbourhoods are "located in" (Rotterdam's hang under the municipality item). */
+  wikidataAnchors?: string[];
   /** Rough box around the municipality: lat/lng min and max. */
   bbox: { minLat: number; maxLat: number; minLng: number; maxLng: number };
 }
@@ -20,7 +22,7 @@ export const EXTRACT_CITIES: readonly ExtractCity[] = [
   // Amsterdam keeps the box the game has always used (it reaches Diemen and Amstelveen).
   { id: 'amsterdam', name: 'Amsterdam', aliases: [], wikidata: 'Q9899', bbox: { minLat: 52.27, maxLat: 52.45, minLng: 4.70, maxLng: 5.11 } },
   { id: 'utrecht', name: 'Utrecht', aliases: [], wikidata: 'Q803', bbox: { minLat: 52.02, maxLat: 52.15, minLng: 4.96, maxLng: 5.20 } },
-  { id: 'rotterdam', name: 'Rotterdam', aliases: [], wikidata: 'Q647', bbox: { minLat: 51.83, maxLat: 52.00, minLng: 3.93, maxLng: 4.61 } },
+  { id: 'rotterdam', name: 'Rotterdam', aliases: [], wikidata: 'Q647', wikidataAnchors: ['Q2680952'], bbox: { minLat: 51.83, maxLat: 52.00, minLng: 3.93, maxLng: 4.61 } },
   { id: 'den-haag', name: 'Den Haag', aliases: ["'s-Gravenhage", 'The Hague', 'Den Haag'], wikidata: 'Q36600', bbox: { minLat: 52.01, maxLat: 52.14, minLng: 4.18, maxLng: 4.43 } },
 ];
 

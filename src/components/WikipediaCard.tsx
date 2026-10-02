@@ -22,6 +22,12 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
   const origin: TriviaText | undefined = feature.nameOrigin;
   const description = trivia ? undefined : descriptionWithoutOrigin(feature.wikipediaExtract, origin?.text);
   const history = feature.history;
+  // The line under the description names where it really came from and links there: the article for
+  // Wikipedia text, the data's own source for text composed from the map.
+  const extractSource = feature.wikipediaExtractSource;
+  const descriptionSource = extractSource
+    ? { href: extractSource.sourceUrl, label: extractSource.sourceLabel === 'Wikipedia' ? 'From Wikipedia' : extractSource.sourceLabel }
+    : { href: feature.wikipediaUrl, label: feature.wikipediaUrl?.includes('nl.wikipedia') ? 'Wikipedia (translated from Dutch)' : 'From Wikipedia' };
   if (!origin && !trivia && !description && !history && !feature.wikipediaImageUrl) return null;
   return <div className="answer-detail-card flex gap-3 p-3 text-left" data-testid="answer-trivia">
     {feature.wikipediaImageUrl && <img src={feature.wikipediaImageUrl} referrerPolicy="no-referrer" alt="" className="h-12 w-16 flex-none rounded-md object-cover sm:h-16 sm:w-20" />}
@@ -34,7 +40,7 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
       </p>}
       {description && <p className="text-xs leading-relaxed text-white">
         <span className={origin || history ? 'line-clamp-2' : 'line-clamp-3'}>“{description}”</span>
-        <Source href={feature.wikipediaUrl}>{feature.wikipediaUrl?.includes('nl.wikipedia') ? 'Wikipedia (translated from Dutch)' : 'From Wikipedia'}</Source>
+        <Source href={descriptionSource.href}>{descriptionSource.label}</Source>
       </p>}
       {!description && !trivia && !origin && feature.wikipediaUrl && <Source href={feature.wikipediaUrl}>View photo on Wikipedia</Source>}
       {history && <details open className="text-xs leading-relaxed text-white" data-testid="answer-history">

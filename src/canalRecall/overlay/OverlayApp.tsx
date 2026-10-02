@@ -323,7 +323,6 @@ function RideOptions({
         <ToggleTile id={id('gamey-features', 'live-gamey')} checked={prefs.gamey} onChange={gamey => set({ gamey })} title="Scores" hint="Points, streaks and ribbons" />
       </ToggleGroup>
       <ToggleGroup label="Comfort & detail">
-        <ToggleTile id={id('sound-enabled', 'live-sound')} checked={prefs.sound} onChange={sound => set({ sound })} title="Sound" />
         <ToggleTile id={id('reduced-motion', 'live-reduced-motion')} checked={prefs.reducedMotion} onChange={reducedMotion => set({ reducedMotion })} title="Less motion" />
         <ToggleTile id={id('trees-enabled', 'live-trees')} checked={prefs.trees} onChange={trees => set({ trees })} title="Trees in 3D" hidden />
       </ToggleGroup>

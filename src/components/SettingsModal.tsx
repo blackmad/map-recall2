@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { TileStyle, DistanceUnit, FeatureCategory, FEATURE_CATEGORIES, City, LocationScope, AdministrativeArea } from '../types';
-import { X, Map, EyeOff, Ruler, Volume2, Layers, Filter, Compass, HardDrive, Trash2 } from 'lucide-react';
+import { X, Map, EyeOff, Ruler, Layers, Filter, Compass, HardDrive, Trash2 } from 'lucide-react';
 import { getCacheStorageStats, clearAllFeatureCache } from '../utils/featureCache';
 
 interface SettingsModalProps {
@@ -15,8 +15,6 @@ interface SettingsModalProps {
   onChangeTileStyle: (style: TileStyle) => void;
   unit: DistanceUnit;
   onChangeUnit: (unit: DistanceUnit) => void;
-  isMuted: boolean;
-  onToggleMute: () => void;
   roundsPerGame: number;
   onChangeRounds: (rounds: number) => void;
   locationScope: LocationScope;
@@ -40,8 +38,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onChangeTileStyle,
   unit,
   onChangeUnit,
-  isMuted,
-  onToggleMute,
   roundsPerGame,
   onChangeRounds,
   locationScope,
@@ -380,29 +376,6 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 Imperial
               </button>
             </div>
-          </div>
-
-          {/* Sound FX */}
-          <div className="flex items-center justify-between enamel-chip p-3.5">
-            <div className="space-y-0.5">
-              <div className="font-semibold text-white flex items-center gap-2">
-                <Volume2 className="w-4 h-4 text-[#8a4a18]" />
-                <span>Sound Effects</span>
-              </div>
-              <p className="text-xs text-white/60">Audio chimes on bullseyes & placements</p>
-            </div>
-            <button
-              onClick={onToggleMute}
-              className={`w-12 h-6 rounded-full transition-colors relative flex items-center p-1 cursor-pointer flex-shrink-0 ${
-                !isMuted ? 'bg-[#b4682c]' : 'bg-white/20'
-              }`}
-            >
-              <div
-                className={`w-4 h-4 rounded-full bg-[#fbf8f2] shadow transition-transform ${
-                  !isMuted ? 'translate-x-6' : 'translate-x-0'
-                }`}
-              />
-            </button>
           </div>
 
           {/* Rounds per Game */}
