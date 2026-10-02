@@ -35,7 +35,13 @@ export type KitWall = { plain: true; hex: string; flat?: boolean } | { plain: fa
  * ([lng, lat], a corner where two halls meet), and each strip's stretch of the footprint gets
  * its own pitched roof with gable ends, ridge along the axis, eaves at `eavesM`.
  */
-export type KitHalls = { id: string; widthM: number; anchor: [number, number]; eavesM: number; riseM: number; mat: 'slate' | 'tile' | 'lead' };
+export type KitHalls = { id: string; widthM: number; anchor: [number, number]; eavesM: number; riseM: number; mat: 'slate' | 'tile' | 'lead'; towers?: KitTower[] };
+/**
+ * A square tower standing on a hall host's footprint at `at` ([lng, lat], its centre), walled
+ * in the kit's own brick up to `z1`, with a stone cornice and a pyramid cap `capM` tall. For a
+ * church whose towers are not separate OSM parts (one BAG footprint for the whole building).
+ */
+export type KitTower = { at: [number, number]; widthM: number; z1: number; capM: number; cap: 'slate' | 'lead' };
 export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; halls?: KitHalls[]; wall?: KitWall; hides?: string[]; body?: string[] };
 
 export const MAT_HEX: Record<Mat, string> = {
@@ -300,6 +306,22 @@ export const KITS: Kit[] = [
     tiers: [], stacks: [], roofs: [],
     halls: [{ id: 'NL.IMBAG.Pand.0363100012236693', widthM: 9.62, anchor: [4.868004, 52.367613], eavesM: 7.2, riseM: 3.4, mat: 'slate' }],
   },
+  {
+    // Fatih mosque, Rozengracht 150: H.W. Valk's 1929 Sint-Ignatiuskerk (user report 2026-10-02:
+    // a 37 m green box). One BAG footprint whose BAG height is the towers', so the whole block
+    // stood at tower height in a hash-picked colour. Dark brown brick nave with its gable to the
+    // street between twin square towers, 40 m with their slate pyramid caps (Commons photo
+    // "Fatihmosquewesterkerkamsterdam.jpg"; nl.wikipedia: "dubbeltorenfront van 40 meter").
+    // The towers stand inside the front corners (Rozengracht runs along the footprint's 30.6 m
+    // south front, bearing 68 degrees).
+    name: 'Fatih',
+    wall: { plain: true, hex: '#6a3a2e' },
+    tiers: [], stacks: [], roofs: [],
+    halls: [{ id: 'NL.IMBAG.Pand.0363100012167944', widthM: 30.6, anchor: [4.878429, 52.372973], eavesM: 16, riseM: 9, mat: 'slate', towers: [
+      { at: [4.878461, 52.373017], widthM: 7.5, z1: 31, capM: 8.5, cap: 'slate' },
+      { at: [4.878772, 52.373095], widthM: 7.5, z1: 31, capM: 8.5, cap: 'slate' },
+    ] }],
+  },
 ];
 
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */
@@ -355,7 +377,7 @@ class TriSink {
 }
 
 /** A frustum (or pyramid, when w1 is 0) with a 4 or 8 sided base about (cx, cy), turned by `ang`. */
-function stage(sink: TriSink, cx: number, cy: number, ang: number, shape: StageShape, w0: number, w1: number, z0: number, z1: number, mat: Mat) {
+function stage(sink: TriSink, cx: number, cy: number, ang: number, shape: StageShape, w0: number, w1: number, z0: number, z1: number, mat: Mat, hexOverride?: string) {
   const n = shape === 'square' ? 4 : 8;
   // Full width is the distance across flats, so a square of width w is w x w.
   const radius = (w: number) => (shape === 'square' ? (w / 2) * Math.SQRT2 : w / 2 / Math.cos(Math.PI / 8));
@@ -365,7 +387,7 @@ function stage(sink: TriSink, cx: number, cy: number, ang: number, shape: StageS
     return [cx + Math.cos(a) * radius(w), cy + Math.sin(a) * radius(w), z] as Vec3;
   });
   const bottom = ring(w0, z0), top = w1 > 0 ? ring(w1, z1) : null, apex: Vec3 = [cx, cy, z1];
-  const layer = layerFor(mat), hex = MAT_HEX[mat];
+  const layer = layerFor(mat), hex = hexOverride ?? MAT_HEX[mat];
   let run = 0;
   for (let k = 0; k < n; k++) {
     const b0 = bottom[k], b1 = bottom[(k + 1) % n];
@@ -452,6 +474,15 @@ export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): Ki
         const slope = t.part === 'slope';
         sink.out.push({ p: t.p, uv: t.uv, layer: slope ? 'slope' : 'plain', hex: slope ? hex : gable, n: t.n });
       }
+    }
+    // Towers line up with the halls' axis (the footprint's longest edge).
+    const axis = hallRects(part.ring, spec.widthM, toLocal(spec.anchor))[0], ang = axis ? Math.atan2(axis.uy, axis.ux) : 0;
+    for (const tower of spec.towers ?? []) {
+      const [cx, cy] = toLocal(tower.at), w = tower.widthM;
+      stage(sink, cx, cy, ang, 'square', w, w, part.minHeightM, tower.z1, 'brick', gable);
+      stage(sink, cx, cy, ang, 'square', w + 0.8, w + 0.8, tower.z1 - 0.6, tower.z1, 'stone');
+      stage(sink, cx, cy, ang, 'square', w + 1.2, 0, tower.z1, tower.z1 + tower.capM, tower.cap);
+      stage(sink, cx, cy, ang, 'octagon', 0.35, 0, tower.z1 + tower.capM, tower.z1 + tower.capM + 1.6, 'gold');
     }
   }
   return [...out].map(([id, sink]) => ({ id, tris: sink.out }));
