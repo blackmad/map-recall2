@@ -41,7 +41,7 @@ export const CardGallery: React.FC = () => {
     feature.name.toLowerCase().includes(filter.toLowerCase()) && (!onlyGaps || gaps(feature).length)), [features, filter, onlyGaps]);
   const complete = (features ?? []).filter((feature) => !gaps(feature).length).length;
 
-  return <div className="min-h-screen bg-[#f4efe5] p-4 text-[#2b2118]" data-testid="card-gallery">
+  return <div className="fixed inset-0 overflow-y-auto bg-[#f4efe5] p-4 text-[#2b2118]" data-testid="card-gallery">
     <header className="mx-auto mb-4 flex max-w-6xl flex-wrap items-center gap-3">
       <h1 className="mr-auto text-xl font-black uppercase tracking-wide">Neighbourhood cards · {city.name}</h1>
       {CARD_CITIES.map((id) => <a key={id} href={`?gallery=cards&city=${id}`} className={`rounded-lg px-2.5 py-1 text-xs font-bold ${id === cityId ? 'bg-[#8a4a18] text-white' : 'bg-white/70'}`}>{CITIES.find((c) => c.id === id)?.name ?? id}</a>)}
