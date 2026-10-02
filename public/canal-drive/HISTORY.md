@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Cuyperspassage rideable; keyboard rides at every reported spot; nightly sweeps
+
+- Centraal's cycle tunnel (Cuyperspassage) runs beneath a building footprint
+  that starts at ground level, so in chase view the slab covered 98% of the
+  rider's screen box. While such a footprint contains the rider, building
+  extrusions drop to 0.28 opacity, with enter/leave hysteresis
+  (`src/canalRecall/coveredPassage.ts`). The opt-in three.js facade layer is
+  not dimmed yet.
+- A stall at the edge is now judged on net movement since it began
+  (`trackEdgeStall`, within 3 px). The per-frame test reset whenever the
+  shoulder shuffled the bike about 1 px, so at the Melkwegbrug dead end the
+  heading ease kept cancelling the arrows.
+- `keyboard-ride.spec.ts` rides every reported spot in both directions
+  (`KEYBOARD_RIDE_ALL=1`; a core set on every push), aims along the route,
+  and prints the whole trail and route whenever a ride fails. The trail
+  settled the Sint Antoniessluis "flake": the bike was circling the route's
+  end, 25 px from it, while the test waited within 40 px of a separately
+  snapped target. Arrival now counts at either.
+- The bridge sweep's start and end snap skips every node pruned as a
+  cul-de-sac. `scripts/nightly-driving.sh` and the `nightly-driving`
+  workflow (02:30 daily, about 1 h) run the keyboard rides, the driving
+  harness and the full bridge sweep, with a summary in
+  `artifacts/nightly-driving/<date>/`.
+
 ## 2026-10-02 — Map Recall: a neighbourhood's best-known places as clues
 
 User request: "a few very notable POIs in that neighborhood (retail is fine) to

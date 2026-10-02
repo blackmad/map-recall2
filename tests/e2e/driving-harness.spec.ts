@@ -371,7 +371,8 @@ function installHarness(): void {
 }
 
 test('driving harness: planned routes can actually be driven', async ({ page }) => {
-  test.setTimeout(300_000);
+  // HARNESS_TIMEOUT_MS: a loaded machine (other worktrees running) needs longer.
+  test.setTimeout(Number(process.env.HARNESS_TIMEOUT_MS || 300_000));
   await openCarRoute(page);
   await page.evaluate(installHarness);
   // HARNESS_PAIRS='[[[lat,lng],[lat,lng]],…]' re-drives failures from an

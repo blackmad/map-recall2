@@ -2114,6 +2114,7 @@ class VectorBasemap {
     const appliedPitch = Math.min(pitch, this._clearancePitch);
     this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
     this._syncFacadeZoom(mapZoom);
+    this._updateRiderCover(subject, pitch > 0 && !detached && introFlat === 0);
     this._liftPoiMarkers(appliedPitch, lat);
     this._lastCameraZoom = camera.zoom;
     // Building tiles follow the driving camera, not the style's Damrak default.
@@ -2135,6 +2136,61 @@ class VectorBasemap {
     camera.projector = pitch > 0 || introFlat > 0
       ? (worldX, worldY) => this.projectWorld(worldX, worldY, loader, canvas)
       : null;
+  }
+
+  /**
+   * Under a building (the Cuyperspassage beneath Centraal's train shed), the
+   * extrusion hid the corridor, the route line and the kerbs; the rider saw
+   * only the bike's x-ray on a beige slab (user report 2026-10-01). While a
+   * ground-based footprint contains the rider, every building extrusion goes
+   * see-through, and comes back once the rider is out. The decision and its
+   * hysteresis live in `src/canalRecall/coveredPassage.ts`.
+   */
+  _updateRiderCover(rider, active) {
+    const helpers = window.CanalRecallBuildings;
+    if (!helpers || typeof helpers.coveringBuilding !== 'function' || !this.map) return;
+    const now = performance.now() / 1000;
+    if (!this._riderCover) this._riderCover = helpers.initialCoverState();
+    let coveredNow = false;
+    if (active) {
+      // A rendered-features query per frame is wasted work; 8 a second is
+      // plenty against the enter/leave holds.
+      if (this._riderCoverCheckedAt != null && now - this._riderCoverCheckedAt < 0.12) {
+        coveredNow = !!this._riderCoverRaw;
+      } else {
+        this._riderCoverCheckedAt = now;
+        try {
+          const point = this.map.project(rider);
+          const layers = (this.map.getStyle().layers || [])
+            .filter(layer => layer.type === 'fill-extrusion' && !layer.id.startsWith('active-landmark'))
+            .map(layer => layer.id);
+          const features = layers.length ? this.map.queryRenderedFeatures([point.x, point.y], { layers }) : [];
+          coveredNow = !!helpers.coveringBuilding(features, rider);
+        } catch (_) { coveredNow = false; }
+        this._riderCoverRaw = coveredNow;
+      }
+    }
+    const next = helpers.updateCoverState(this._riderCover, coveredNow, now);
+    const changed = next.covered !== this._riderCover.covered;
+    this._riderCover = next;
+    if (changed) this._applyRiderCover(next.covered, helpers.COVERED_BUILDING_OPACITY ?? 0.28);
+  }
+
+  _applyRiderCover(covered, opacity) {
+    if (covered) {
+      this._riderCoverOpacity = new Map();
+      for (const layer of this.map.getStyle().layers || []) {
+        if (layer.type !== 'fill-extrusion' || layer.id.startsWith('active-landmark')) continue;
+        this._riderCoverOpacity.set(layer.id, this.map.getPaintProperty(layer.id, 'fill-extrusion-opacity'));
+        try { this.map.setPaintProperty(layer.id, 'fill-extrusion-opacity', opacity); } catch (_) {}
+      }
+    } else if (this._riderCoverOpacity) {
+      for (const [id, value] of this._riderCoverOpacity) {
+        try { this.map.setPaintProperty(id, 'fill-extrusion-opacity', value); } catch (_) {}
+      }
+      this._riderCoverOpacity = null;
+    }
+    this.riderCovered = covered;
   }
 
   _pointInRing(point, ring) {
