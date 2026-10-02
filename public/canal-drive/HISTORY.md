@@ -17,6 +17,18 @@ with the fix switched off (`START_HEADING_OFF=1`) all four bike seeds fail.
 Seed 1234abcd was a route leaving almost sideways to its road (signal -0.15):
 an earlier cutoff left it arbitrary, which is why a weak signal now still decides.
 Boat rides happened to face right with or without the fix on those two seeds.
+## Beurs van Berlage added to the comparison
+
+"Sherlocked" was the Beurs van Berlage. Panorama facade from the Beursplein-side hall wall (parts w7499186xx, one panorama at 7 m), plus an experimental kit (brick tower with pyramid cap, steep roofs on the halls). The real Damrak front with the tower still needs its wall chosen by hand (`--wall`), and the photo's top edge shows sky because the hall is lower than the tower parts.
+
+## Facade photo vs low-poly kit: first comparison
+
+`facade-compare.html?name=waag|bijenkorf` draws three viewports from one camera: plain OSM prism, prism plus a panorama photo on the street wall, and a hand-modelled kit (experimental kits live in `facadeCompareViewer.ts`, not in `KITS`, so the game is unchanged). Screenshots: `public/data/landmark-facades/compare-*.png`. Result: for the Bijenkorf (flat stone front) the photo is dramatically better and a kit adds nothing recognisable; for the Waag the kit (conical roofs on round towers) reads instantly while the photo covers only the gate section. So: photo for flat fronts, kit for silhouettes. Findings on the builder: use ONE best panorama (median fusion of oblique captures ghosts because the wall is not planar); the panorama list API caps at 500 unordered results, so the script now follows all pages; the Anne Frank canal front is only covered from about 60-70 m across the water and the result is unusable, and the rear (Westermarkt) wall is too close (4-7 m) and badly projected. Wikimedia Commons answered 429 (shared-IP rate limit), to retry. The first "Bijenkorf" footprint guess was the Industrieele Groote Club (Dam 27); the real one is the w7512357xx parts on Damrak/Beursstraat.
+
+## Panorama facade textures (spike)
+
+`scripts/pano-facades/build-pano-facade.ts` builds a photographic elevation of a building's best street-facing wall from Gemeente Amsterdam panoramas: it ranks exposed footprint edges by panorama coverage, rectifies up to five captures with `rectifyFacade` (world-aligned camera) and fuses them with a per-pixel median, which removes cars and people. Output goes to `public/data/landmark-facades/<name>.jpg` plus a JSON record (wall endpoints, panorama ids, attribution). First run on the "Anne Frank House" ids gave a clean 18 m elevation, but the ids resolve to the museum's modern extension (brick + glass entrance), not the canal house, so the right BAG parts still need choosing. The 8000 px image 404s for some panoramas; the script falls back to 4000/2000. Windows show glass reflections smeared by the median; the licence (publisher says open data) is still to be confirmed before shipping textures.
+
 
 ## 2026-10-02 — Neighbourhood gap-fill pipeline
 

@@ -1,0 +1,40 @@
+{
+ "name": "bijenkorf",
+ "buildingIds": [
+  "w751128384",
+  "w751235773",
+  "w751235774",
+  "w751235775",
+  "w751235776",
+  "w751128373",
+  "NL.IMBAG.Pand.0363100012179183"
+ ],
+ "image": "bijenkorf.jpg",
+ "width": 1059,
+ "height": 1340,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.893856597014285,
+   52.37348990232792
+  ],
+  "endLngLat": [
+   4.893608397018061,
+   52.37330680232445
+  ],
+  "lengthM": 26.471465053993423,
+  "heightM": 33.5,
+  "outwardBearingDeg": 310.07112243323513
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002031_pano_0003_000029",
+   "timestamp": "2021-03-08T11:11:24.036730Z",
+   "distanceM": 8,
+   "obliquityDeg": 9
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}
