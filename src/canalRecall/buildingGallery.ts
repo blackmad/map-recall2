@@ -80,7 +80,7 @@ async function main() {
       }
       calmBayLayers(colourArr, maskArr, 1, look);
       cells.set(`${entry.layer}`, { colour: colourArr, mask: maskArr });
-      const arche = entry.archetype as 'canal' | 'school' | 'modern';
+      const arche = entry.archetype as 'canal' | 'c19' | 'school' | 'modern';
       const wallHex = (look === 'cartoon' || look === 'storybook' ? walls[look] : PHOTO_WALLS)[(entry.layer * 3) % walls[look].length];
       const v = bayVariant(entry);
       const detail = `${v.windows}w ${v.shape}${v.shutters ? ' shutters' : ''}${v.paintedFrames ? ' painted' : ''}`;
@@ -100,7 +100,7 @@ async function main() {
   pal.append(swatches(PHOTO_WALLS, 'Photo walls'), swatches(STORYBOOK_WALLS, 'Storybook walls'), swatches(CARTOON_WALLS, 'Cartoon walls'));
   for (const look of ['procedural', 'photo', 'storybook', 'cartoon'] as const) pal.append(swatches([...ROOF_TONES[look].tile, ...ROOF_TONES[look].slate], `Roofs, ${look}`));
   pal.append(swatches(Object.values(MAT_HEX), `Landmark materials (${Object.keys(MAT_HEX).join(', ')})`));
-  for (const look of ['photo', 'storybook', 'cartoon'] as const) for (const arche of ['canal', 'school', 'modern'] as const) pal.append(swatches(PALETTES[look][arche].accents, `${look} accents, ${arche}`));
+  for (const look of ['photo', 'storybook', 'cartoon'] as const) for (const arche of ['canal', 'c19', 'school', 'modern'] as const) pal.append(swatches(PALETTES[look][arche].accents, `${look} accents, ${arche}`));
   void BAY_STYLES;
 
   // 5. Roof and gable 3D thumbnails.
