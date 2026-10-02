@@ -28,6 +28,8 @@ import { LoadingProgressModal } from './components/LoadingProgressModal';
 import { useAuth } from './AuthContext';
 import { loadLocalReviewStates, recordReview, syncProgress } from './progressRepository';
 import { ReviewState, selectReviewFeatures } from './spacedRepetition';
+import { readSharedHome, scopeToHome } from './mapRecall/homeScope';
+import { getFeatureKey } from './utils/featureIdentity';
 
 const SettingsModal = lazy(() => import('./components/SettingsModal').then(({ SettingsModal }) => ({ default: SettingsModal })));
 const DebugPlacesModal = lazy(() => import('./components/DebugPlacesModal').then(({ DebugPlacesModal }) => ({ default: DebugPlacesModal })));
@@ -92,6 +94,14 @@ const distanceToQuizFeature = (point: [number, number], feature: StreetFeature) 
 export default function App() {
   const { user, configured: isCloudConfigured, signOutUser } = useAuth();
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  // Home is shared with Canal Recall through its localStorage keys.
+  const sharedHome = useMemo(() => readSharedHome(typeof localStorage === 'undefined' ? null : localStorage), []);
+  const [nearHome, setNearHome] = useState<boolean>(() => {
+    try { return localStorage.getItem('mapRecall.nearHome.v1') === '1'; } catch { return false; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem('mapRecall.nearHome.v1', nearHome ? '1' : '0'); } catch { /* storage unavailable */ }
+  }, [nearHome]);
   const [reviewStates, setReviewStates] = useState<ReviewState[]>(loadLocalReviewStates);
   // Config state - Label-less base map by default
   const initialCityId = requestedCityId === 'my_location' && !hasUsableBookmarkedLocation
@@ -332,8 +342,14 @@ export default function App() {
 
   // Features selected for current game session
   const featuresForGame: StreetFeature[] = useMemo(() => {
-    return selectReviewFeatures(filteredCityFeatures, reviewStates, gameMode, Math.min(roundsPerGame, filteredCityFeatures.length), Date.now(), gameSeed);
-  }, [filteredCityFeatures, reviewStates, gameMode, roundsPerGame, gameSeed]);
+    let pool = filteredCityFeatures;
+    if (nearHome && sharedHome) {
+      const learned = new Set(reviewStates.filter(state => state.mode === gameMode).map(state => state.featureKey));
+      const scoped = scopeToHome(pool, sharedHome, learned, Math.max(roundsPerGame * 2, 10)).features;
+      if (scoped.length) pool = scoped;
+    }
+    return selectReviewFeatures(pool, reviewStates, gameMode, Math.min(roundsPerGame, pool.length), Date.now(), gameSeed);
+  }, [filteredCityFeatures, reviewStates, gameMode, roundsPerGame, gameSeed, nearHome, sharedHome]);
 
   const currentFeature: StreetFeature | null =
     featuresForGame[currentRoundIndex] || featuresForGame[0] || null;
@@ -1025,6 +1041,22 @@ export default function App() {
                 <p className="text-xs text-white/55 leading-relaxed">
                   Pinpoint places a named spot or area. Guess Name names the highlight.
                 </p>
+                {sharedHome && (
+                  <label className="flex items-start gap-2 pt-1 text-xs text-white/75 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={nearHome}
+                      onChange={(event) => setNearHome(event.target.checked)}
+                      className="mt-0.5"
+                    />
+                    <span>
+                      <span className="font-semibold">Start near home</span>
+                      <span className="block text-white/55">
+                        {sharedHome.address}: begins within 1 km and widens as you learn what is nearby.
+                      </span>
+                    </span>
+                  </label>
+                )}
               </div>
             </div>
 

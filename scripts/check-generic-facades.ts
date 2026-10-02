@@ -2,7 +2,7 @@
 //   npx tsx scripts/check-generic-facades.ts
 import assert from 'node:assert/strict';
 import {
-  FACADE_MAX_TILE_ZOOM, FACADE_MIN_TILE_ZOOM, FACADE_PATTERN_HEIGHT_M, FACADE_PIXELS_PER_M, allFacadeKeys,
+  FACADE_MAX_TILE_ZOOM, FACADE_MIN_TILE_ZOOM, FACADE_PATTERN_HEIGHT_M, FACADE_PIXELS_PER_M, allFacadeKeys, snapWallColour,
   decorateFacade, facadePixelRatio, facadeStyleFor, facadeTileZoom, footprintAreaM2, rasterizeFacade,
 } from '../src/canalRecall/genericFacades.ts';
 import { thinTreesNearRoute, treeFeatures, treesInBounds } from '../src/canalRecall/stylisedTrees.ts';
@@ -33,7 +33,7 @@ assert.equal(facadeTileZoom(18.9), 18);
 assert.equal(facadeTileZoom(FACADE_MAX_TILE_ZOOM + 1.1), null, 'past the range the plain walls return');
 
 // Images: 32 m tall, seamless bay width, opaque, with door pixels at the bottom.
-assert.equal(allFacadeKeys().length, 20);
+assert.equal(allFacadeKeys().length, 48);
 for (const { style, colour, key } of allFacadeKeys()) {
   const image = rasterizeFacade(style, '#a4523b', 52.37);
   assert.equal(image.height, FACADE_PATTERN_HEIGHT_M * FACADE_PIXELS_PER_M, key);
@@ -54,6 +54,13 @@ const decorated = decorateFacade({ type: 'Feature', properties: { ...base }, geo
 assert.match(String(decorated.properties.facade), /^canal-prior/);
 const measured = decorateFacade({ type: 'Feature', properties: { ...base, appearanceStyleSource: 'procedural-prior-not-measured' }, geometry: square });
 assert.equal(measured.properties.facade, undefined);
+
+// OSM-tagged colours snap to the nearest wall colour and still get a facade.
+assert.equal(snapWallColour('#ffffff'), 'priorPlaster');
+assert.equal(snapWallColour('#b03020'), 'priorBrickRed');
+assert.equal(snapWallColour('red'), null);
+const tagged = decorateFacade({ type: 'Feature', properties: { id: 'x', height: 12, minHeight: 0, constructionYear: 1895, colour: '#b03020' }, geometry: square });
+assert.equal(tagged.properties.facade, 'c19-priorBrickRed');
 
 // Trees: two parts each; thinned off the route corridor.
 const trees = [
