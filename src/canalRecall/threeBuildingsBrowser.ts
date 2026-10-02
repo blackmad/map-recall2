@@ -12,10 +12,12 @@
 // per style instead of one per style x colour, and walls laid out in whole bays
 // and storeys so openings line up with the building.
 
-import { CELL_PX, paintProceduralLayers } from './facadeCells.js';
+import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, paintProceduralLayers } from './facadeCells.js';
+import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
+import { decorateRoof, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLookFor, bayVariant } from './bayLook.js';
 import { bayTextures, type Look } from './bayTextures.js';
-import { buildChunk, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
+import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
 type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
@@ -65,6 +67,8 @@ void main() {
   c *= mix(vec3(1.0), vTint, m.r) * mix(vec3(1.0), vAccent, m.g);
   fragColor = vec4(c * vShade, 1.0);
 }`;
+
+const ROOF_LAYER_COUNT = 3;
 
 const infoOf = (chunk: Chunk): ChunkInfo => ({
   buildingCount: chunk.buildingCount, wallCount: chunk.wallCount, quadCount: chunk.quadCount, vertexCount: chunk.vertexCount,
@@ -118,6 +122,16 @@ const tileKeyOf = (polygons: number[][][][]): string => {
 };
 
 export type BuildingLook = 'procedural' | Look;
+
+export { decorateRoof };
+
+/** Roof colours per look: pantile and slate (a look's own tones, picked by the plan's `tone`). */
+const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
+  procedural: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
+  photo: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
+  cartoon: { tile: ['#d9573e', '#e8823a', '#c94a3a'], slate: ['#4a5d78', '#3c4a66', '#5b6f8a'] },
+};
+const roofHexFor = (look: BuildingLook, plan: RoofPlan) => { const set = ROOF_TONES[look][plan.material]; return set[Math.min(set.length - 1, Math.floor(plan.tone * set.length))]; };
 
 /** What stays after upload: counts only, never the typed arrays. */
 type ChunkInfo = { buildingCount: number; wallCount: number; quadCount: number; vertexCount: number; bytes: number };
@@ -177,7 +191,7 @@ export class ThreeBuildings {
   private async buildTextures(look: BuildingLook): Promise<{ colour: any; mask: any }> {
     const THREE = this.THREE;
     let layers: number, colour: Uint8Array, mask: Uint8Array;
-    if (look === 'procedural') ({ layers, colour, mask } = paintProceduralLayers());
+    if (look === 'procedural') ({ layers, colour, mask } = paintProceduralLayers(paintRoofLayers(false)));
     else {
       let brick: CanvasImageSource = document.createElement('canvas');
       if (look === 'photo') {
@@ -185,7 +199,7 @@ export class ThreeBuildings {
         image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
         try { await image.decode(); brick = image; } catch { /* flat brick: the drawn detail still reads */ }
       }
-      layers = BAY_LAYER_COUNT;
+      layers = BAY_LAYER_COUNT + ROOF_LAYER_COUNT;
       colour = new Uint8Array(CELL_PX * CELL_PX * 4 * layers); mask = new Uint8Array(CELL_PX * CELL_PX * 2 * layers);
       const scratch = document.createElement('canvas'); scratch.width = scratch.height = CELL_PX;
       const ctx = scratch.getContext('2d', { willReadFrequently: true })!;
@@ -204,7 +218,18 @@ export class ThreeBuildings {
         }
       }
     }
-    if (look !== 'procedural') calmBayLayers(colour, mask, layers, look);
+    if (look !== 'procedural') {
+      // Roof cells sit after the bays; the bays are softened, the roofs are drawn as intended.
+      paintRoofLayers(look === 'cartoon').forEach((cell, i) => {
+        const layer = BAY_LAYER_COUNT + i;
+        for (let px = 0; px < CELL_PX * CELL_PX; px++) {
+          const at = (layer * CELL_PX * CELL_PX + px) * 4;
+          colour[at] = cell[px * 4]; colour[at + 1] = cell[px * 4 + 1]; colour[at + 2] = cell[px * 4 + 2]; colour[at + 3] = 255;
+          mask[(layer * CELL_PX * CELL_PX + px) * 2] = cell[px * 4 + 3];
+        }
+      });
+      calmBayLayers(colour, mask, BAY_LAYER_COUNT, look);
+    }
     const array = (data: Uint8Array, format: any) => {
       const t = new THREE.DataArrayTexture(data, CELL_PX, CELL_PX, layers);
       t.format = format; t.type = THREE.UnsignedByteType;
@@ -305,16 +330,28 @@ export class ThreeBuildings {
     const heightM = wallTopHeightM(p);
     if (!polygons.length || !Number.isFinite(heightM)) return null;
     const id = String(p.id ?? '');
+    let building: MeshBuilding;
+    let plain: number, roofBase: number, layout: FacadeStyle;
     if (this.look !== 'procedural') {
       const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
       const bay = bayLookFor(id, year, Number(p.height) || heightM, this.look);
-      return { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers };
+      building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers };
+      plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout;
+    } else {
+      layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
+      building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b' };
+      plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT;
     }
-    return {
-      id, polygons, heightM, minHeightM,
-      style: (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19',
-      wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b',
-    };
+    if (p.roofPlanned) {
+      const ring = localOuterRing(feature.geometry);
+      const plan = ring ? planRoof(id, String(p.facadeStyle ?? ''), Number(p.height), minHeightM, fitRect(ring)) : null;
+      if (plan) {
+        const dims = STYLE_DIMS[layout];
+        building.roof = { plan, roofHex: roofHexFor(this.look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
+          layers: { slope: roofBase + (plan.material === 'tile' ? 0 : 1), plain, dormer: roofBase + 2 } };
+      }
+    }
+    return building;
   }
 
   private rebuild(key: string, source: Feature[]): void {

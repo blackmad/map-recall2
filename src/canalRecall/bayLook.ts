@@ -8,7 +8,7 @@ import { archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant
 import { hashSeed } from './wallBays.js';
 import type { FacadeStyle } from './genericFacades.js';
 
-export const BAY_KINDS = ['upper', 'ground', 'groundDoor', 'groundShop'] as const satisfies readonly BayKind[];
+export const BAY_KINDS = ['upper', 'ground', 'groundDoor', 'groundShop', 'plain'] as const satisfies readonly BayKind[];
 type BayStyle = Omit<BayVariant, 'kind' | 'archetype'>;
 
 /** Curated building styles per archetype (window count, head shape, shutters, painted frames). */
@@ -63,5 +63,6 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   return {
     archetype, layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: palette.accent,
     layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop ? 'groundShop' : 'ground'), door: bayLayer(archetype, style, 'groundDoor') },
+    plain: bayLayer(archetype, style, 'plain'),
   };
 }
