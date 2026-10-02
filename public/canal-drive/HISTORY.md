@@ -8,6 +8,41 @@ Ran `fill-neighborhood-gaps.ts` online for both cities with the widened Wikimedi
 
 User: "make sure we are caching / building our own DB of everything we scrape". The gap-fill cache lived in git-ignored `staging/`, which dies with a cloud container, so every new session re-asked Wikimedia from scratch under a shared-IP rate limit. `scripts/lib/scrapeStore.ts` keeps every response as `{ url, fetchedAt, body }` at `<root>/<host>/<aa>/<sha1(url)>.json`; the root is `SCRAPE_STORE_DIR`, else the project's shared `/mnt/project-files/scrape-store` (outlives containers), else `.cache/scrape-store`. One file per response so parallel sessions never write the same file; keyed by URL only, never by the token. `fill-neighborhood-gaps.ts` reads and writes through it (`--refresh` refetches). Other fetchers (`fetch-area-photos.ts`, `cached-json-fetch.ts`) still use their own local caches.
 
+## Facade ornaments: cornices, door surrounds, iron balconies, Amsterdam School brick
+
+User (2026-10-02): "need more canal-house-y generators, more cornices, more amsterdam school style adornments, more white accents", with Kinkerstraat 321 as the reference.
+
+- **New components:** `facadeOrnaments.ts` adds 27 ornament components, for 75 in all.
+  - kroonlijst on consoles
+  - console and corbel cornices
+  - door surrounds and portiek entrances with stairs
+  - iron Juliet balconies on stone slabs, stacked on one window axis
+  - sills, lintels and stucco hoods; white frames
+  - string courses and floor ledges about 0.06 m proud
+  - pilasters and brick fins
+  - oriels and rusticated plinths
+  - cornice vases and Amsterdam School corner sculpture
+- **Alignment:** `facadeOpenings.ts` reads window and door positions off the bay painters, so the 3D dressing lines up with the painted openings.
+- **Choice:** every choice is a deterministic hash roll. Exclusive groups per wall (crown, door frame, window head, balcony, ...) mean two crowns never stack.
+- **Period:** ornament follows the building's real `facadeStyle` (`MeshBuilding.period`), while street furniture also follows the layout style.
+- **Placement:** hoists and door items go only on street walls (`streetSide`).
+- **Budget:** triangles per wall and per building (`EXTRA_BUDGET`). Extras cost about 3.2x more than before: about 219 triangles per building on the Keizersgracht detail area, against 70. Lower `EXTRA_BUDGET.building` if phones struggle.
+- **Open:** white reads light grey under the 0.55 minimum flat shade. Kinked walls re-grid per edge, so dressing can drift from the painted windows there.
+
+## Fatih mosque: nave and twin towers instead of a 37 m green box
+
+User (2026-10-02): "wtf happened to this building both in size and color … I think it's fatih … is the building really that big in OSM?"
+
+- **Cause:** the footprint is right (BAG, about 1,360 m²). Its BAG height of 37.3 m is the towers', though, and the landmark had no kit, so the whole church extruded to tower height. It also wore the unmeasured identity palette's green (`citywide-identity-palette-v3-not-measured`).
+- **Fix:** a `Fatih` hall kit:
+  - dark brown brick
+  - the nave walls stop at 16 m eaves under one pitched slate roof
+  - two 7.5 m square brick towers stand inside the Rozengracht front corners, to 31 m, with slate pyramid caps to about 41 m
+- **Sources:** the Commons photo `Fatihmosquewesterkerkamsterdam.jpg` and nl.wikipedia ("dubbeltorenfront van 40 meter").
+- **New kit field:** hall kits gain `towers`.
+- **Pinned:** in `test:three-buildings` against the real tile.
+- **Same risk elsewhere:** other kit-less landmarks with a tower-height BAG value can show the same full-height block.
+
 ## The world flashed once per streamed building chunk
 
 User (2026-10-02): "the whole world flashes periodically and I don't know why". Since `e75bccd` freed the facade layer's CPU geometry once uploaded, three.js uploaded each new chunk and only then computed its bounding sphere (for render-list sorting) from the freed `position` array. That threw inside the MapLibre custom layer, which aborts the whole map frame, so the world blanked once for every chunk that streamed in while riding. `install` now computes the bounding sphere before the array is released. Pinned in `tests/e2e/three-buildings-no-flash.spec.ts`, which fails on the old bundle and passes on the new one.

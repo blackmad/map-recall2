@@ -56,6 +56,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p));
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
+    if ((FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) && p.facadeStyle !== bay.layout) building.period = p.facadeStyle as FacadeStyle;
   } else {
     layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
     building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && (shopfrontOf(p) ? shopfrontOf(p) !== 'quiet' : hashShop(id)) };
