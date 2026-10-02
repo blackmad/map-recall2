@@ -54,10 +54,18 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
   if (!origin && !trivia && !description && !history && !feature.wikipediaImageUrl) return null;
   // Neighbourhoods open with a postcard cut from their own photographs and those of the places in them.
   const postcardPhotos = feature.type === 'neighborhood'
-    ? [feature.wikipediaImageUrl, ...(feature.areaPhotos ?? []).map((place) => place.photo.imageUrl)].filter((url): url is string => !!url).slice(0, 5)
+    ? [feature.wikipediaImageUrl, ...(feature.areaPhotos ?? []).map((place) => place.photo.imageUrl)].filter((url): url is string => !!url).slice(0, 8)
     : [];
   return <div className="answer-detail-card flex flex-col gap-2 p-3 text-left" data-testid="answer-trivia">
     {postcardPhotos.length >= 2 && <PostcardHeader name={feature.name} cityName={CITIES.find((city) => city.id === feature.cityId)?.name} photos={postcardPhotos} />}
+    {postcardPhotos.length >= 2 && (feature.areaPhotos?.length ?? 0) > 0 && <details className="text-[11px] leading-snug text-white/70" data-testid="postcard-credits">
+      <summary className="cursor-pointer font-bold">Postcard photo credits</summary>
+      <ul className="mt-1 space-y-0.5">
+        {feature.areaPhotos!.slice(0, 8).map((entry) => <li key={entry.photo.imageUrl}>
+          <a href={entry.photo.sourceUrl} target="_blank" rel="noreferrer" className="font-bold hover:text-white">{entry.name}</a> · {entry.photo.imageAttribution}
+        </li>)}
+      </ul>
+    </details>}
     <div className="flex gap-3">
     {feature.wikipediaImageUrl && postcardPhotos.length < 2 && <img src={feature.wikipediaImageUrl} referrerPolicy="no-referrer" alt="" className="h-12 w-16 flex-none rounded-md object-cover sm:h-16 sm:w-20" />}
     <div className="min-w-0 space-y-1.5">
