@@ -78,6 +78,7 @@ const CHECKS = [
   'test:landmark-buildings',
   'test:landmark-fronts',
   'test:houseboats',
+  'test:shopfronts',
   'test:teaching-surface',
   'test:recall-rules',
   'test:boat-navigability',

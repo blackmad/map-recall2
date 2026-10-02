@@ -5,12 +5,15 @@ import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
 import { fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
-import type { Look } from './bayTextures.js';
+import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes. */
 export type BuildingLook = 'procedural' | 'untextured' | Look;
+/** The shopfront the decorator stamped (`shopKind`, or `shopQuiet` for none); undefined without the extract. */
+const shopfrontOf = (p: Record<string, unknown>): ShopKind | 'quiet' | undefined =>
+  typeof p.shopKind === 'string' ? p.shopKind as ShopKind : p.shopQuiet ? 'quiet' : undefined;
 /** The texture set a look draws from. */
 export const cellSetOf = (look: BuildingLook): 'procedural' | Look => (look === 'untextured' ? 'procedural' : look);
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
@@ -50,14 +53,20 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
   let plain: number, roofBase: number, layout: FacadeStyle;
   if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
-    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look);
+    const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p));
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers };
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
   } else {
     layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
-    building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && hashShop(id) };
+    building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && (shopfrontOf(p) ? shopfrontOf(p) !== 'quiet' : hashShop(id)) };
     plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
   }
+  const front = shopfrontOf(p);
+  building.shopfront = front ? front !== 'quiet' : false;
+  // A named business's own colour goes on its sign and awning (the cells' accent), and a
+  // labelled business gets its signature storefront.
+  if (building.shopfront && typeof p.shopColour === 'string') building.accentHex = p.shopColour;
+  if (building.shopfront && Array.isArray(p.shopSignature)) building.signature = { at: p.shopSignature as [number, number], hex: typeof p.shopColour === 'string' ? p.shopColour : '#1f4d3a' };
   if (typeof p.facade !== 'string' || !p.facadeStyle) {
     // No facade (a shed, a landmark part, a building with no style or colour): bare walls in its mapped colour.
     building.bare = true;
@@ -71,7 +80,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
   if (p.kitWall) {
     // A landmark kit's walls: its own stone or brick colour, bare or in a window grid.
     building.wallHex = String(p.kitWallHex ?? building.wallHex);
-    building.plainWalls = p.kitWall === 'plain';
+    building.plainWalls = p.kitWall === 'plain' || p.kitWall === 'flat';
+    if (p.kitWall === 'flat') { building.bare = true; building.plainLayer = roofBase + 3; }
   }
   if (p.roofPlanned) {
     const ring = localOuterRing(feature.geometry);
