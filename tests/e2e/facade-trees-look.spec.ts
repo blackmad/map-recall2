@@ -64,7 +64,7 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
       const features = vm.map.querySourceFeatures('osm-building-appearance');
       const withFacade = features.filter((f: any) => f.properties.facade).length;
       const withYear = features.filter((f: any) => Number.isFinite(f.properties.constructionYear)).length;
-      return { features: features.length, withFacade, withYear, trees: vm._treeCount ?? null, three: vm._threeBuildings ? vm._threeBuildings.stats() : null, zoom: vm.map.getZoom(), facadeZoom: vm._facadeTileZoom };
+      return { features: features.length, withFacade, withYear, trees: vm._treeCount ?? null, three: vm._threeBuildings ? vm._threeBuildings.stats() : null, zoom: vm.map.getZoom(), plainBase: JSON.stringify(vm.map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-base')).slice(0, 300), active: vm._facadesActive(), order: vm.map.getLayersOrder().filter((id: string) => /building|three|poi-lab/.test(id)), facadeZoom: vm._facadeTileZoom };
     });
     console.log(look.name, testInfo.project.name, JSON.stringify(stats));
     expect(stats.features).toBeGreaterThan(0);
