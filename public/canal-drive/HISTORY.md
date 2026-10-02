@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Roofs: eight gables, nine roof kinds, white stone, and the build year
+
+User (2026-10-02): "need more canal-house-y generators, more cornices… more white accents, more roof shapes", then "do you think it's at all possible to correlate the canal house builder more to the year the house was built?", answered "sounds great, keep going". The real-vs-game sheet (`/mnt/project-files/house-design/real-vs-game/`) showed flat grey lids where Kinkerstraat and the canal belt have gables and mansards.
+
+- **Missing roofs:** most Oud-West lids were OSM-tagged roofs, not untagged ones. On the Kinkerstraat tile, 1,460 buildings carry `roof:shape` (mostly `quadruple_saltbox`), and the decorator skipped them. `decorateRoof` now draws those tags. It keeps the tag in `roofShapeTag`, never overrides a measured eaves height, and leaves shapes it can't draw (skillion, dome) alone.
+- **Gables:** step, neck, bell, spout and plain are joined by clock, raised neck (white claws and pediment) and cornice front (lijstgevel: a flat top with a deep white cornice, the roof hipped behind it). White stone comes from `gableTrim.ts`: edging bands, step quoins, stone courses, crowns, copings, and warehouse shutters.
+- **Roof kinds:** gable, pitched and mansard gain `mansardHip` (the c19 row house, with street dormers and a white eaves cornice), `hipped`, `halfHipped`, `school`, `sawtooth` and `parapet`, plus a corner turret on cut-corner c19 blocks.
+- **Footprints:** a non-rectangular footprint gets its largest inscribed rectangle, plus a wing when one fits (`roofFootprint.ts`). Accents are off for landmark kits.
+- **Year:** gable weights follow the BAG original build year, using these periods:
+  - step 1600–1665
+  - neck 1640–1790
+  - bell 1660–1790
+  - raised neck 1640–1720
+  - clock 1650–1750
+  - cornice 1700 onwards
+  - a 1875–1915 revival window for step and neck
+
+  A gable outside its period keeps 0.15 of its weight. Year 1905 counts as unknown: 460 of the 6,303 buildings on the canal-belt tile say exactly 1905, which looks like a filler value. Measured shares: a 1620 house is 53% step, a 1760 house is 56% cornice or bell. The BAG year dates the building body, not a later new front, so this steers a street; it does not reproduce it.
+- **Cost:** walls-chunk triangles rise 35–42% (canal belt 492k → 665k). Shaped gables cost the most, 150–270 triangles each. Simplifying the rear gable is the next saving if needed.
+- **Checks:** `test:roof-shapes` (in `check:canal`) covers closed, outward geometry for every kind and gable, OSM tags, the year rules, and decorator/mesh plan agreement on two real tiles.
+
 ## Bay drawings: a 19th-century family, no upper-floor shutters, white trim
 
 From the user's Da Costakade screenshots (2026-10-02, "looks New England"): the Photo/Storybook/Cartoon bays had three families (canal, school, modern), so 1860-1914 and post-war buildings drew as canal houses, with arched keystone hoods and dark shutters on every floor. Now `archetypeFor` follows the facade periods (canal before 1860, `c19` to 1914, school to 1944, modern after; unknown years still hash, weighted to c19 and canal). The new `c19` family has segmental-arched windows under stucco hoods and white string courses at every floor and sill; canal houses have flat lintels only, a pale cornice line under each floor, and shutters only beside ground-floor windows. 68 bay layers (was 53), so the bay texture array grows by about a quarter. Pinned in `test:three-buildings`.
