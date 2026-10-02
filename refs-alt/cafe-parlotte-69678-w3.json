@@ -1,0 +1,64 @@
+{
+ "name": "cafe-parlotte-69678-w3",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012169678"
+ ],
+ "image": "cafe-parlotte-69678-w3.jpg",
+ "width": 225,
+ "height": 225,
+ "pixelsPerMetre": 40,
+ "wall": {
+  "startLngLat": [
+   4.881719996957626,
+   52.378234002357395
+  ],
+  "endLngLat": [
+   4.881798996957154,
+   52.378249002357876
+  ],
+  "lengthM": 5.632258522651808,
+  "heightM": 5.629999999999999,
+  "outwardBearingDeg": 163.16252162009596
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002938_pano_0006_000023",
+   "timestamp": "2023-01-16T10:52:10.384310Z",
+   "distanceM": 7,
+   "obliquityDeg": 4
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.53,
+   5.53,
+   5.53,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63,
+   5.63
+  ],
+  "wallColour": "#9a8a78"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

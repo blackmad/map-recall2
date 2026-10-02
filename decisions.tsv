@@ -94,12 +94,12 @@ cafe-brasserie-helden-48810	Cafe Brasserie Helden	restaurant	4.8399121	52.390669
 cafe-carbon-72095	Café Carbòn	restaurant	4.8572197	52.346165	measured	
 cafe-caron-05340	Café Caron	restaurant	4.8887752	52.3573801	measured	
 cafe-de-klos-72453	Café De Klos	restaurant	4.8856662	52.3653542	measured	
-cafe-kadijk-70737	Cafe Kadijk	restaurant	4.9121073	52.3701143	null	Crop is a white stucco side wall with one red house door; the cafe's front is presumably round the corner.
+cafe-kadijk-70737	Cafe Kadijk	restaurant	4.9121073	52.3701143	measured	Wrong wall: --near picked a side wall. Web search (I amsterdam) puts the cafe on Kadijksplein; wall 2 shows it. See web/cafe-kadijk-70737.md.
 cafe-luxembourg-71813	Café Luxembourg	restaurant	4.8887034	52.3686609	measured	
 cafe-maurits-18332	Cafe Maurits	restaurant	4.850327	52.3508915	measured	
 cafe-maxwell-21409	Café Maxwell	restaurant	4.9186525	52.3568021	no-reference	
 cafe-modern-00305	Café Modern	restaurant	4.9090476	52.3864765	measured	
-cafe-parlotte-69678	Café Parlotte	restaurant	4.8817584	52.3782562	null	Crop is a close, blurred zoom of a wide opening; unreadable.
+cafe-parlotte-69678	Café Parlotte	restaurant	4.8817584	52.3782562	measured	Wrong wall: --near picked the long west wall. Web search: Westerstraat 182; wall 3 (south) shows it. See web/cafe-parlotte-69678.md.
 cafe-piazza-82586	Cafe Piazza	restaurant	4.9000321	52.3719346	measured	Registration: building 2.0-4.0 m in a 4.7 m crop; shift -2.0, span filled to the footprint.
 cafe-warung-pas-22965	Café Warung Pas	restaurant	4.9128268	52.3811001	null	
 cafe-diner-t-weesperplein-54930	Café-Diner 't Weesperplein	restaurant	5.0408807	52.3082511	measured	

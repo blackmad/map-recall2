@@ -1,0 +1,15 @@
+(node:4759) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4784) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4795) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4795) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+1 parts, 4 exposed walls, 241 panoramas within 55 m
+  wall 0: 28.8 m, normal -107°, 62 panos, value 0.877
+  wall 3: 5.6 m, normal 163°, 80 panos, value 0.773
+  wall 1: 28.8 m, normal 73°, 20 panos, value 0.658
+chosen wall 0: 28.8 m x 5.6 m, 1 panoramas
+  TMX7316010203-002549_pano_0000_003998 2022-04-29 d=33 m obl=3° missing=0%
+wrote /home/user/map-recall2/tmp/storefronts/refs/cafe-parlotte-69678.jpg (1152x225, 42 KB)

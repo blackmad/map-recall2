@@ -1,0 +1,16 @@
+(node:4572) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4598) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4610) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4610) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+1 parts, 4 exposed walls, 258 panoramas within 55 m
+  wall 0: 10.4 m, normal -150°, 22 panos, value 2.026
+  wall 2: 5.4 m, normal -47°, 65 panos, value 0.436
+  wall 1: 9.3 m, normal 31°, 63 panos, value 0.337
+  wall 3: 5.2 m, normal 119°, 31 panos, value 0.275
+chosen wall 0: 10.4 m x 7.0 m, 1 panoramas
+  TMX7316010203-002934_pano_0007_000016 2023-01-13 d=4 m obl=30° missing=0%
+wrote /home/user/map-recall2/tmp/storefronts/refs/cafe-kadijk-70737.jpg (416x280, 33 KB)
