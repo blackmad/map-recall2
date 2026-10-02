@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## The world flashed once per streamed building chunk
+
+User (2026-10-02): "the whole world flashes periodically and I don't know why". Since `e75bccd` freed the facade layer's CPU geometry once uploaded, three.js uploaded each new chunk and only then computed its bounding sphere (for render-list sorting) from the freed `position` array. That threw inside the MapLibre custom layer, which aborts the whole map frame, so the world blanked once for every chunk that streamed in while riding. `install` now computes the bounding sphere before the array is released. Pinned in `tests/e2e/three-buildings-no-flash.spec.ts`, which fails on the old bundle and passes on the new one.
+
 ## Roofs: eight gables, nine roof kinds, white stone, and the build year
 
 User (2026-10-02): "need more canal-house-y generators, more cornices… more white accents, more roof shapes", then "do you think it's at all possible to correlate the canal house builder more to the year the house was built?", answered "sounds great, keep going". The real-vs-game sheet (`/mnt/project-files/house-design/real-vs-game/`) showed flat grey lids where Kinkerstraat and the canal belt have gables and mansards.
