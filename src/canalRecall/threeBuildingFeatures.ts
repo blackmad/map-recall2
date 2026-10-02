@@ -106,6 +106,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
 
 
 /** A chunk for a group of streamed features in one look. */
-export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' = 'walls'): Chunk {
-  return buildChunk(features.map(f => meshBuildingFor(f, look)).filter((b): b is MeshBuilding => !!b), ORIGIN, mode);
+/** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
+export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' = 'walls', streets?: Float32Array): Chunk {
+  return buildChunk(features.map(f => meshBuildingFor(f, look)).filter((b): b is MeshBuilding => !!b), ORIGIN, mode, streets);
 }

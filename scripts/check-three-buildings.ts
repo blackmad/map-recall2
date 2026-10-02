@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';
 import { createExpression } from '@maplibre/maplibre-gl-style-spec';
 import { CELL_KINDS, CELL_LAYER_COUNT, CELL_VARIANTS, CELL_PX, STYLE_DIMS, cellLayer, paintCell } from '../src/canalRecall/facadeCells.ts';
 import { groundRuns, layoutWall } from '../src/canalRecall/facadeLayout.ts';
-import { buildChunk, facadeTopM, wallTopHeightM, type MeshBuilding } from '../src/canalRecall/threeBuildingMesh.ts';
+import { buildChunk, facadeTopM, wallRuns, wallTopHeightM, type MeshBuilding } from '../src/canalRecall/threeBuildingMesh.ts';
+import { edgeGroundPieces, layoutRun } from '../src/canalRecall/facadeLayout.ts';
 import { wallTopHeightExpression } from '../src/canalRecall/buildingStyle.ts';
 import { FACADE_STYLES } from '../src/canalRecall/genericFacades.ts';
 
@@ -311,5 +312,79 @@ for (const c of [0.64, 1.4]) {
   assert.equal(decorateKitRoof(decorated), decorated, 'idempotent');
   const other = { type: 'Feature' as const, properties: { id: 'w1', height: 20 }, geometry: null };
   assert.equal(decorateKitRoof(other), other);
+}
+
+// --- Street side, runs, stoops (user report 2026-10-02, Da Costakade by Akitsu) --------
+// Pinned spot: the curved block and corner café east of Akitsu (4.8752, 52.3722), shot by
+// `LOOK_SHOTS=1 LOOK_SPOT=da-costa-akitsu LOOK_FREE=1 LOOK_ZOOM=19.3 … facade-trees-look`.
+{
+  const doorLayers = new Set([0, 1].map(v => cellLayer('canal', 'door', v)));
+  /** Door quads as [minX, maxX, minY, maxY] in metres from origin. */
+  const doorQuads = (c: ReturnType<typeof buildChunk>, id: string) => {
+    const r = c.ranges.find(x => x.id === id)!, out: number[][] = [];
+    for (let v = r.start; v < r.start + r.count; v++) {
+      if (!doorLayers.has(c.layers[v]) || (v - r.start) % 4) continue;
+      const xs = [0, 1, 2, 3].map(k => c.positions[(v + k) * 3]), ys = [0, 1, 2, 3].map(k => c.positions[(v + k) * 3 + 1]);
+      out.push([Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)]);
+    }
+    return out;
+  };
+  // A house with a street 6 m in front (south) and another house's back 19 m behind it, across gardens.
+  const front = house('front', 0, 6, 12), behind: MeshBuilding = { ...house('behind', 0, 6, 12), polygons: [[rect(0, 30, 6, 41)]] };
+  const street = new Float32Array([-50, -6, 50, -6]);
+  const withStreet = buildChunk([front, behind], origin, 'walls', street);
+  const doors = doorQuads(withStreet, 'front');
+  assert.ok(doors.length >= 1, 'the street wall keeps its door');
+  assert.ok(doors.every(([, , y0, y1]) => Math.abs(y0) < 0.01 && Math.abs(y1) < 0.01), `doors only on the street wall: ${JSON.stringify(doors)}`);
+  // No streets known (boat mode): any outer wall may carry a door, as before.
+  const sides = new Set(doorQuads(buildChunk([front, behind], origin), 'front').map(([x0, x1, y0, y1]) => `${Math.round(x1 - x0) ? 'h' : 'v'}${Math.round((y0 + y1) / 2)}${Math.round((x0 + x1) / 2)}`));
+  assert.ok(sides.size > 1, 'without streets, doors spread over the outer walls');
+  // A courtyard wall never carries a door.
+  const block: MeshBuilding = { ...house('court', 0, 30, 12), polygons: [[rect(0, 0, 30, 30), rect(10, 10, 20, 20).reverse()]] };
+  for (const [x0, x1, y0, y1] of doorQuads(buildChunk([block], origin), 'court')) assert.ok(!(x0 > 9.9 && x1 < 20.1 && y0 > 9.9 && y1 < 20.1), 'no door in the courtyard');
+  // Same house, street to the east instead: the door moves to the east wall.
+  const east = doorQuads(buildChunk([front], origin, 'walls', new Float32Array([12, -50, 12, 50])), 'front');
+  assert.ok(east.length && east.every(([x0, x1]) => Math.abs(x0 - 6) < 0.01 && Math.abs(x1 - 6) < 0.01), 'door follows the street');
+}
+{
+  // A curved frontage (a quarter ring in 12 segments) is one run with one bay width.
+  const arc = (r: number, n: number) => Array.from({ length: n + 1 }, (_, i) => { const a = (i / n) * Math.PI / 2; return [r * Math.cos(a), r * Math.sin(a)]; });
+  const outer = arc(40, 12), inner = arc(28, 12).reverse();
+  const ring = [...outer, ...inner, outer[0]].map(([x, y]) => [origin.lng + x / kx, origin.lat + y / ky]);
+  const curved: MeshBuilding = { id: 'curve', polygons: [[ring]], heightM: 15, minHeightM: 0, style: 'school', wallHex: '#8a5a44' };
+  const c = buildChunk([curved], origin);
+  const upper = new Set([0, 1].map(v => cellLayer('school', 'upper', v)));
+  const perMetre: number[] = [];
+  for (let v = 0; v < c.vertexCount; v += 4) {
+    if (!upper.has(c.layers[v])) continue;
+    const len = Math.hypot(c.positions[(v + 1) * 3] - c.positions[v * 3], c.positions[(v + 1) * 3 + 1] - c.positions[v * 3 + 1]);
+    if (len > 9) continue; // the two straight end walls
+    perMetre.push((c.uvs[(v + 1) * 2] - c.uvs[v * 2]) / len);
+  }
+  assert.ok(perMetre.length >= 24, `curved segments found (${perMetre.length})`);
+  // Two arcs (outer and inner), each with its own grid; within an arc every segment agrees.
+  const groups = [...new Set(perMetre.map(x => x.toFixed(4)))];
+  assert.ok(groups.length <= 2, `one bay width per curved wall, got ${groups.join(', ')}`);
+  // Runs: the ring's 12 + 12 arc edges collapse into 2 runs plus the 2 straight ends.
+  const pts = ring.map(([lng, lat]) => [(lng - origin.lng) * kx, (lat - origin.lat) * ky]);
+  const edges = pts.slice(0, -1).map(([x0, y0], i) => { const [x1, y1] = pts[i + 1], len = Math.hypot(x1 - x0, y1 - y0); return { x0, y0, x1, y1, len, nx: (y1 - y0) / len, ny: -(x1 - x0) / len, hole: false }; });
+  assert.equal(wallRuns([edges], () => false).length, 4, 'two arcs and two ends');
+  // A run's doors sit on a bay that lies mostly on one edge, and an edge the street rule forbids gets none.
+  const run = layoutRun('postwar', [6, 6, 6], 12, 0.4, true, undefined, [false, true, false])!;
+  for (const b of run.doorBays) { const mid = (b + 0.5) * run.bayWidthM; assert.ok(mid > 6 && mid < 12, `door bay ${b} on the allowed edge`); }
+  assert.deepEqual(edgeGroundPieces(run, 1, 6).reduce((n, p) => n + (p.a1 - p.a0), 0).toFixed(6), (6).toFixed(6), 'ground pieces cover the edge');
+}
+{
+  // A narrow shop has no house door, so no stoop climbs to its shop window (the café corner).
+  const STONE = [0xcf, 0xc6, 0xb4];
+  const lowStone = (c: ReturnType<typeof buildChunk>) => { for (let v = 0; v < c.vertexCount; v++) if (c.positions[v * 3 + 2] < 0.6 && STONE.every((x, k) => c.tints[v * 4 + k] === x)) return true; return false; };
+  let houses = 0, shops = 0;
+  for (let i = 0; i < 40; i++) {
+    const h = { ...house(`s${i}`, 0, 5.5, 12), extras: true, lid: { hex: '#777777', flatLayer: 0 } };
+    if (lowStone(buildChunk([h], origin, 'extras'))) houses++;
+    if (lowStone(buildChunk([{ ...h, shopfront: true }], origin, 'extras'))) shops++;
+  }
+  assert.ok(houses > 5, `stoops exist on houses (${houses})`);
+  assert.equal(shops, 0, 'no stoop in front of a narrow shop');
 }
 console.log('three buildings: ok');
