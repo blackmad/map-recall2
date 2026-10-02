@@ -822,7 +822,7 @@ class VectorBasemap {
   _syncFacadeZoom(mapZoom) {
     const Facades = this._facadesLib();
     if (!Facades || !this._facadeImages || !this.map.getLayer('osm-colored-building-facades')) return;
-    const tileZoom = Facades.facadeTileZoom(mapZoom);
+    const tileZoom = Facades.facadeTileZoom(mapZoom, this._facadeTileZoom);
     // Past the pattern's zoom range the plain walls come back.
     const outOfZoom = tileZoom === null;
     if (outOfZoom !== !!this._facadesOutOfZoom) { this._facadesOutOfZoom = outOfZoom; this._applyFacadeState(); }

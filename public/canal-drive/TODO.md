@@ -75,6 +75,17 @@ a hitch not yet measured. The ground floor repeats above 32 m except on
 towers. Facades are Amsterdam-only, and walls take a period palette colour.
 Check on a real device.
 
+**Empty areas of the city (user report 2026-10-02, not reproduced).** Large
+stretches around Rozengracht/Jordaan show no buildings at all, roofs included.
+The z14 building tiles exist for that area, so suspect tile loading/eviction or
+a layer filter, not data. Needs a real-browser repro (basemap tiles are not
+reachable from the cloud container). Also unchecked on device: the facade
+zoom hysteresis (0.3) and the 48-image set's build cost.
+
+**Map Recall near-home follow-ups.** Home is only picked up when both apps share
+an origin; add a way to set home inside Map Recall, and a map picture of the
+ring. The ring can widen mid-game as reviews land.
+
 **Keyboard ride flake.** One of six Sint Antoniessluis rides stalled at the
 Uilenburg quay end (turned 0.02 rad, so no steering key was held) while the
 machine ran other perf tests. Make the test driver robust to slow frames and

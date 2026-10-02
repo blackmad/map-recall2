@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Facades for OSM-coloured buildings; zoom hysteresis; Map Recall near-home scope
+
+- Plain blocks around Centraal were buildings with their own OSM colour tag
+  (about 2% of the city, about half of the tall buildings there). The first
+  rule skipped them so a mapped colour was never overwritten. They now get a
+  facade in the closest of the eight wall colours (`snapWallColour`, redmean
+  distance), so red stays red and white stays pale. Only 6-digit hex colours
+  snap; named colours still stay plain. The image set is now every style in
+  every wall colour: 48 images instead of 20 (build time not yet measured on a
+  device).
+- Facade jitter: the image set swapped at every integer zoom, and the chase
+  camera's zoom wanders across one. `facadeTileZoom(zoom, current)` now holds
+  the current set until the zoom is 0.3 past the boundary.
+- Nieuwmarktbuurt showed "Lastage" text because the Dutch source article is
+  about the Lastage, the area's old name. The English now says so; the Dutch
+  original and sources are unchanged.
+- Map Recall: History in the answer card opens by default. New "Start near
+  home" option reads the home saved by Canal Recall (`canalRecall.preferences.v1`
+  plus its geocode cache), keeps quiz features within 1 km, and widens by
+  750 m once 60% of those inside are learned (`src/mapRecall/homeScope.ts`).
+  It only appears when a home is saved on the same origin.
+
 ## 2026-10-02 — Generic period facades and stylised OSM trees (experiment, on by default)
 
 User request: "trees on top of OSM trees" and "a really generic building look

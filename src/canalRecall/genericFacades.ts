@@ -235,14 +235,21 @@ export function facadePixelRatio(tileZoom: number): number {
   return imageHeight / displayHeight;
 }
 
+/** Zoom distance past an integer boundary before the image set changes. */
+export const FACADE_ZOOM_HYSTERESIS = 0.3;
+
 /** Facades are drawn from this zoom; below it the image set stays at 15. */
 export const FACADE_MIN_TILE_ZOOM = 15;
 /** The highest tile zoom with a whole-number pixel ratio (see above). */
 export const FACADE_MAX_TILE_ZOOM = 16 + Math.log2(FACADE_PIXELS_PER_M);
 /** The image set for a map zoom, or null above the supported range, where
  *  the plain walls return. */
-export function facadeTileZoom(mapZoom: number): number | null {
-  const tileZoom = Math.floor(mapZoom);
+export function facadeTileZoom(mapZoom: number, current: number | null = null): number | null {
+  // The chase camera's zoom wanders around an integer while the rider moves;
+  // swapping the image set (a tile re-layout) on every crossing made facades
+  // flip back and forth. Hold the current set until the zoom is clearly past it.
+  const held = current !== null && mapZoom >= current - FACADE_ZOOM_HYSTERESIS && mapZoom < current + 1 + FACADE_ZOOM_HYSTERESIS;
+  const tileZoom = held ? current : Math.floor(mapZoom);
   if (tileZoom > FACADE_MAX_TILE_ZOOM) return null;
   return Math.max(FACADE_MIN_TILE_ZOOM, tileZoom);
 }

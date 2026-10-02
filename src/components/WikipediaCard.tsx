@@ -37,7 +37,7 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
         <Source href={feature.wikipediaUrl}>{feature.wikipediaUrl?.includes('nl.wikipedia') ? 'Wikipedia (translated from Dutch)' : 'From Wikipedia'}</Source>
       </p>}
       {!description && !trivia && !origin && feature.wikipediaUrl && <Source href={feature.wikipediaUrl}>View photo on Wikipedia</Source>}
-      {history && <details className="text-xs leading-relaxed text-white" data-testid="answer-history">
+      {history && <details open className="text-xs leading-relaxed text-white" data-testid="answer-history">
         <summary className="cursor-pointer font-bold text-white/80">History</summary>
         <p className="mt-1">{history.text}</p>
         <Source href={history.sourceUrl}>{history.sourceLabel}</Source>
