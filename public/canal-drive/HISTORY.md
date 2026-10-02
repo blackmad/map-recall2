@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Storefronts: every built storefront now measured (302)
+
+The remaining 148 first-pass specs were respecced from measured crops, so all 302 built storefronts now come from a full-size crop with a metre ruler and building-edge marks. Where the front at a business's pin is plainly a different, current business (a new tenant, a neighbour the pin lands on), the model shows what the street shows and `decisions.tsv` on `storefront-evidence` says so. Another ~25 became `null` with a reason (scaffolding, side walls, blur); those are web-search candidates.
+
 ## Storefronts: 145 measured, nulls recovered from other walls, evidence branch
 
 Two more batches respecced from measured crops (with yellow building-edge marks on the measure sheets, so misregistration shows while writing). User asked to use web search for nulls and to keep evidence: many nulls were the panorama tool's `--near` wall being a side wall; `build-alt-walls.sh` crops every other exposed wall of the building, `alt-sheet.mjs` lays them out, and `promote-wall.py` makes the right one the reference (27 recovered by eye, Kadijk and Parlotte via web search). Evidence lives on the orphan branch `storefront-evidence`: all crops (original and alternate walls), `candidates.tsv`, `decisions.tsv` (status and reason per business), registration checks and `web/*.md` notes with sources. Curved awnings no longer rise into the fascia. 315 storefronts built, 145 of them measured; the test floor is 280 because dropping a shop with no visible front is correct.
