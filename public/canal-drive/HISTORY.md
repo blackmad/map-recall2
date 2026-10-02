@@ -3,6 +3,9 @@
 ## Gap-fill missed articles that existed (Sporenburg, Narva-eiland, Floradorp…)
 
 Two causes, both fixed in `scripts/fill-neighborhood-gaps.ts`: (1) articles with no "Geschiedenis" heading were read as having no history, though many tell it in running prose — `historyFromBody` now picks dated sentences not already used as the description; (2) a request that failed after retries was treated as "nothing there" and the area was recorded as done — failed areas are now retried on the next run. Amsterdam history went 74 → 81 of 90. Utrecht/Rotterdam runs started before this fix: clear their `online-done.json` and rerun once they finish.
+## Houseboats from OSM footprints
+
+User request: OSM maps ~3,000 houseboats (`building=houseboat`) but the building tiles carried 55. `scripts/build-houseboats.ts` (`npm run build:houseboats -- --publish`) pulls them from Overpass into `public/data/extracts/amsterdam/houseboats.json` (3,083 boats, 924 KB: id, ring, levels, roof shape, name). `src/canalRecall/houseboats.ts` turns each footprint into a low-poly boat, ~123 triangles: a rectangle is an ark (dark pontoon, cabin with window bands and a door, open deck at one end, flat roof or a low gable for ~22% and for OSM gabled/hipped roofs, 2 storeys where tagged or for ~12%); a traced outline (>8 vertices, 1,039 boats) is a barge whose outline becomes the hull, with a low cabin amidships and a wheelhouse at the squarer stern end. Colours come from hull/cabin/roof palettes by id hash and are recoloured per look. The three layer builds one chunk per resident z14 tile (`boats:<tile>`), and skips the houseboat ids the building tiles carry so none draws twice. Pinned by `test:houseboats` (in `check:canal`).
 
 ## Sound permanently disabled
 
