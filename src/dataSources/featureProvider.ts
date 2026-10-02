@@ -44,6 +44,7 @@ const originsPromises = new Map<string, Promise<{ origins?: StreetNameOrigin[] }
 const historyPromises = new Map<string, Promise<{ neighborhoods?: NeighborhoodHistoryEntry[] } | null>>();
 const photosPromises = new Map<string, Promise<NeighborhoodPhoto[] | null>>();
 const placesPromises = new Map<string, Promise<PlaceCandidate[]>>();
+const photoPlacePromises = new Map<string, Promise<PlaceCandidate[]>>();
 const placePhotoPromises = new Map<string, Promise<Record<string, PlacePhoto>>>();
 
 const assetUrl = (path: string) => `${import.meta.env.BASE_URL}data/extracts/${path}`;
@@ -181,8 +182,14 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
       ]).then(([landmarks, orientation]) => placeCandidates(landmarks, orientation)));
       // Clue places never carry a name the question offers (src/mapRecall/trivia.ts).
       const placePhotos = await cached(placePhotoPromises, city.id, () => optionalJson<{ places: Record<string, PlacePhoto> }>(`${city.id}/place-photos.json`).then((file) => file?.places ?? {}));
+      // Every landmark, park and square with a photograph, not just the five clue places: the postcard wants several.
+      const photoPlaces = await cached(photoPlacePromises, city.id, async () => {
+        const files = await Promise.all(['landmarks', 'parks', 'squares'].map((name) => optionalJson<Array<{ name: string; center: [number, number]; prominenceScore?: number }>>(`${city.id}/${name}.json`)));
+        return files.flatMap((file) => file ?? []).filter((place) => placePhotos[place.name]).map((place) => ({ name: place.name, center: place.center, kind: 'landmark', score: 1000 + (place.prominenceScore || 0) }));
+      });
       const withPlaces = withChoices.map((feature) => ({
         ...feature,
+        areaPhotos: notablePlacesIn(feature.areaGeometry, photoPlaces, [feature.name, ...feature.distractors], 6, 6).map((place) => ({ name: place.name, photo: placePhotos[place.name] })),
         notablePlaces: notablePlacesIn(feature.areaGeometry, places, [feature.name, ...feature.distractors])
           .map((place) => placePhotos[place.name] ? { ...place, photo: placePhotos[place.name] } : place),
       }));

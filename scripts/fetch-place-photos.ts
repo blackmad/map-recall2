@@ -3,7 +3,7 @@
  *
  *   NODE_USE_ENV_PROXY=1 npx tsx scripts/fetch-place-photos.ts --city amsterdam [--refresh]
  *
- * Reads <city>/landmarks.json (the `wikipedia: "nl:Title"` field), asks the article's page image
+ * Reads <city>/landmarks.json, parks.json and squares.json (the `wikipedia: "nl:Title"` field), asks the article's page image
  * (pageimages, batches of 50), then Commons for its licence and author (batches of 40). Only
  * photographs (JPEG) with a known licence ship; output is public/data/extracts/<city>/place-photos.json,
  * keyed by landmark name. Responses are cached under staging/place-photos/cache, so reruns are free.
@@ -41,8 +41,12 @@ async function getJson(url: URL): Promise<any> {
 }
 
 interface Landmark { name: string; wikipedia?: string }
-const landmarks = JSON.parse(await readFile(path.join(directory, 'landmarks.json'), 'utf8')) as Landmark[] | { features: Landmark[] };
-const items = (Array.isArray(landmarks) ? landmarks : landmarks.features).filter(l => l.wikipedia && /^(nl|en):/.test(l.wikipedia));
+const readPlaces = async (file: string): Promise<Landmark[]> => {
+  try { const data = JSON.parse(await readFile(path.join(directory, file), 'utf8')) as Landmark[] | { features: Landmark[] }; return Array.isArray(data) ? data : data.features; } catch { return []; }
+};
+// Landmarks, parks and squares: everything an area card can call a notable place.
+const items = [...await readPlaces('landmarks.json'), ...await readPlaces('parks.json'), ...await readPlaces('squares.json')]
+  .filter((l, index, all) => l.wikipedia && /^(nl|en):/.test(l.wikipedia) && all.findIndex(o => o.name === l.name) === index);
 
 // 1. article → lead image file name
 const fileOf = new Map<string, string>(); // landmark name -> "File:…"
