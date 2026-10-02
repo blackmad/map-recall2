@@ -93,3 +93,15 @@ test('place names appear on the blind map after a guess and go with the next que
   await expect(page.locator('#target-feature-name')).toBeVisible();
   await expect(page.locator('.reveal-labels')).toHaveCount(0);
 });
+
+test('hard difficulty hides the place clues; easy and medium keep them', async ({ page }) => {
+  await quietExternalRequests(page);
+  await page.goto('/?city=amsterdam&mode=guess_name&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=5&difficulty=hard');
+  const choices = page.locator('[id^="guess-option-"]');
+  await expect(choices).toHaveCount(4, { timeout: 30_000 });
+  await page.waitForTimeout(1500);
+  await expect(page.locator('.notable-place-label')).toHaveCount(0);
+  // Same game on medium shows them.
+  await page.goto('/?city=amsterdam&mode=guess_name&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=5&difficulty=medium');
+  await expect(page.locator('.notable-place-label').first()).toBeVisible({ timeout: 30_000 });
+});

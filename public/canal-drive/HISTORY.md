@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Map Recall difficulty: place clues are easy/medium only
+
+User: the neighbourhood's best-known places should only show on easy and medium. Map Recall had no difficulty, so Settings gets Easy/Medium/Hard (URL `difficulty=`, default medium). `placeCluesEnabled` (src/mapRecall/trivia.ts) is the single rule; hard drops the dots in Guess Name and the after-guess dots in Pinpoint. Nothing else changes with difficulty yet.
+
 ## Photo is the default look; Untextured replaces Default; mansard ends closed
 
 User request: drop the "Default" look (the MapLibre fill-extrusion pattern layer) from the settings and the B cycle, add "Untextured", and make Photo the default. Looks are now Photo, Painted, Storybook, Cartoon, Untextured; a saved `default` reads as Photo. Untextured is a three.js look on the procedural texture set where every wall and roof face uses the flat layer (bare walls in the building's colour, roof shapes kept): the plainest and cheapest look. The pattern layer survives only as `?buildings3d=off`. Startup bug found on the way: MapLibre's building layers stayed visible under the three.js look when the three layer arrived after the first facade-state pass, or after a detail sync turned them back on; one `_syncMaplibreBuildingVisibility()` now decides them everywhere.

@@ -21,6 +21,8 @@ interface MapComponentProps {
   isRoundComplete: boolean;
   distanceErrorMeters?: number;
   blindMapMode: boolean;
+  /** Landmark and shop clues inside a neighbourhood (easy and medium only). */
+  showPlaceClues?: boolean;
   tileStyle: TileStyle;
   allRoundResults?: Array<{
     feature: StreetFeature;
@@ -73,6 +75,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
   isRoundComplete,
   distanceErrorMeters,
   blindMapMode,
+  showPlaceClues = true,
   tileStyle,
   allRoundResults,
   isGameOver,
@@ -231,7 +234,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     notablePlacesRef.current?.remove();
     notablePlacesRef.current = null;
     const places = currentFeature?.type === 'neighborhood' ? currentFeature.notablePlaces : undefined;
-    if (!places?.length || isGameOver || (gameMode !== 'guess_name' && !isRoundComplete)) return;
+    if (!showPlaceClues || !places?.length || isGameOver || (gameMode !== 'guess_name' && !isRoundComplete)) return;
     const group = L.layerGroup();
     const markers = places.map((place) => L.circleMarker(place.center, { radius: 5, color: '#fff', weight: 2, fillColor: '#8a4a18', fillOpacity: 1, className: 'notable-place' })
       .bindTooltip(place.name, { permanent: true, direction: 'top', offset: [0, -6], className: 'notable-place-label' })
@@ -254,7 +257,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     const frame = requestAnimationFrame(declutter);
     map.on('zoomend', declutter);
     return () => { cancelAnimationFrame(frame); map.off('zoomend', declutter); };
-  }, [currentFeature, gameMode, isRoundComplete, isGameOver]);
+  }, [currentFeature, gameMode, isRoundComplete, isGameOver, showPlaceClues]);
 
   // Both location-based modes use a dropped pin. Keep this list in sync with
   // the crosshair cursor below so a map that looks clickable is clickable.
