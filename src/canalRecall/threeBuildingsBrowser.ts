@@ -54,6 +54,7 @@ precision highp float;
 precision highp sampler2DArray;
 uniform sampler2DArray cells;
 uniform sampler2DArray masks;
+uniform float bands;
 in vec2 vUv;
 flat in float vLayer;
 in vec3 vTint;
@@ -65,10 +66,12 @@ void main() {
   vec3 c = texture(cells, p).rgb;
   vec2 m = texture(masks, p).rg;
   c *= mix(vec3(1.0), vTint, m.r) * mix(vec3(1.0), vAccent, m.g);
-  fragColor = vec4(c * vShade, 1.0);
+  float shade = bands > 0.5 ? floor(vShade * bands + 0.5) / bands : vShade;
+  fragColor = vec4(c * shade, 1.0);
 }`;
 
 const ROOF_LAYER_COUNT = 3;
+const hashShop = (id: string) => { let h = 2166136261; for (const c of `${id}:shop`) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967296 < 0.3; };
 
 const infoOf = (chunk: Chunk): ChunkInfo => ({
   buildingCount: chunk.buildingCount, wallCount: chunk.wallCount, quadCount: chunk.quadCount, vertexCount: chunk.vertexCount,
@@ -129,7 +132,8 @@ export { decorateRoof };
 const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
   procedural: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
   photo: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
-  cartoon: { tile: ['#d9573e', '#e8823a', '#c94a3a'], slate: ['#4a5d78', '#3c4a66', '#5b6f8a'] },
+  storybook: { tile: ['#b9553a', '#a94a33', '#c46a45'], slate: ['#556070', '#4a5666', '#657282'] },
+  cartoon: { tile: ['#e85a3c', '#f08a2b', '#d94a3a'], slate: ['#3f5f8f', '#2f4a78', '#4f7bb0'] },
 };
 const roofHexFor = (look: BuildingLook, plan: RoofPlan) => { const set = ROOF_TONES[look][plan.material]; return set[Math.min(set.length - 1, Math.floor(plan.tone * set.length))]; };
 
@@ -176,6 +180,7 @@ export class ThreeBuildings {
     if (token !== this.lookToken) return;
     this.material.uniforms.cells.value = set.colour;
     this.material.uniforms.masks.value = set.mask;
+    this.material.uniforms.bands.value = look === 'cartoon' ? 3 : 0;
     this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
     for (const [key, entry] of [...this.chunks]) this.pending.push(() => this.rebuild(key, entry.source));
     this.pump();
@@ -339,7 +344,7 @@ export class ThreeBuildings {
       plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout;
     } else {
       layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
-      building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b' };
+      building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && hashShop(id) };
       plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT;
     }
     if (p.roofPlanned) {
@@ -427,7 +432,7 @@ export class ThreeBuildings {
         });
         owner.material = new THREE.RawShaderMaterial({
           glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
-          uniforms: { cells: { value: null }, masks: { value: null } }, side: THREE.FrontSide,
+          uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 } }, side: THREE.FrontSide,
         });
         void owner.texturesFor(owner.look).then(set => {
           owner.material.uniforms.cells.value = set.colour;

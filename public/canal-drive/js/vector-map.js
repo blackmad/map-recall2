@@ -33,7 +33,7 @@ function canalRecallBuildings3dLook() {
   try {
     const raw = typeof window.__canalRecallBuildings3d !== 'undefined' ? window.__canalRecallBuildings3d : new URLSearchParams(window.location.search).get('buildings3d');
     if (raw === true || raw === '1' || raw === 'true' || raw === 'on' || raw === 'procedural') return 'procedural';
-    if (raw === 'cartoon' || raw === 'photo') return raw;
+    if (raw === 'cartoon' || raw === 'photo' || raw === 'storybook') return raw;
   } catch (_) { /* no window */ }
   return null;
 }
@@ -831,7 +831,7 @@ class VectorBasemap {
    * or 'photo'. Both layers exist side by side once used; only one is visible.
    */
   setBuildingLook(look) {
-    if (!['default', 'procedural', 'cartoon', 'photo'].includes(look) || look === this._buildings3dLook) return;
+    if (!['default', 'procedural', 'storybook', 'cartoon', 'photo'].includes(look) || look === this._buildings3dLook) return;
     this._buildings3dLook = look;
     this._buildings3dEnabled = look !== 'default';
     if (!this.map || !this.map.getLayer('osm-colored-buildings')) return; // layers are created from these flags on load
