@@ -99,6 +99,8 @@ class GameRouteRuntime {
     this.camera.reducedMotion = prefs.reducedMotion;
     this.travelMode = prefs.travelMode;
     this.cityId = prefs.cityId || (window.CanalRecallPreferences && window.CanalRecallPreferences.DEFAULT_CITY_ID) || 'amsterdam';
+    // Warm the cache with this city's start files while the setup screen is up.
+    if (typeof this._prefetchCityExtracts === 'function') this._prefetchCityExtracts();
     this.controlMode = prefs.controlMode;
     if (this.player) this.player.controlMode = this.controlMode;
     this.viewMode = prefs.viewMode;

@@ -138,6 +138,8 @@ export interface LandmarkHost extends GameCoreHost {
   _seenLandmarkNames: Set<string>;
   /** Encyclopedia cards already shown this drive, keyed like landmark ids. */
   _seenStreetKnowledge: Set<string>;
+  /** City whose start files were prefetched on the setup screen. */
+  _prefetchedCityId?: string;
 
   /** Generated trivia by feature id, from the published `facts.json`. Empty
    *  when the file is absent, in which case cards fall back to the lede. */

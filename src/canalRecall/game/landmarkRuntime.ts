@@ -77,6 +77,12 @@ async function readJson<T>(response: Response, fallback: T): Promise<T> {
 
 export interface GameLandmarkRuntime extends LandmarkHost {}
 
+/** Files the ride start waits for, in the order `_loadLandmarks` reads them. */
+export const START_EXTRACTS = [
+  'landmarks.json', 'boundaries.json', 'neighborhoods-enriched.json',
+  'bridges.json', 'bridge-crossings.json', 'streets.json', 'water.json',
+] as const;
+
 export class GameLandmarkRuntime {
   // ---- Clicking a building ----
 
@@ -267,6 +273,24 @@ export class GameLandmarkRuntime {
 
   // ---- Loading the extract ----
 
+  /**
+   * Warm the HTTP cache with the files the ride start waits for, while the
+   * player is still on the setup screen. They are the same for every ride in
+   * a city and served with max-age=3600, so the start then reads them from
+   * cache: "Building street network…" spent 2.7 s on a 4 Mbps link fetching
+   * them (2026-10-01). Low priority, once per city, failures ignored.
+   */
+  _prefetchCityExtracts(this: LandmarkHost): void {
+    const Prefs = window.CanalRecallPreferences;
+    const cityId = this.cityId || (Prefs && Prefs.DEFAULT_CITY_ID) || 'amsterdam';
+    if (this._prefetchedCityId === cityId || typeof fetch !== 'function') return;
+    this._prefetchedCityId = cityId;
+    const city = Prefs && Prefs.cityById ? Prefs.cityById(cityId) : { extractPath: '../data/extracts/amsterdam' };
+    for (const name of START_EXTRACTS) {
+      fetch(new URL(`${city.extractPath}/${name}`, window.location.href), { priority: 'low' } as RequestInit).catch(() => {});
+    }
+  }
+
   async _loadLandmarks(
     this: LandmarkHost,
     centerLat: number,
@@ -283,46 +307,29 @@ export class GameLandmarkRuntime {
       const factBase = new URL(`${city.extractPath}/`, base).href;
       if (this._buildingFacts) this._buildingFacts.setBase(factBase);
       else this._buildingFacts = new BuildingFactStore(factBase);
+      // Only what the start needs is awaited (START_EXTRACTS): the places,
+      // areas and bridges the first seconds use, and every street and water
+      // name, which must reach the spoiler list before any label is drawn.
       const [
         landmarkResponse, boundaryResponse, neighborhoodEnrichedResponse,
-        bridgeResponse, crossingResponse, streetKnowledgeResponse, streetResponse,
-        waterResponse, brandedPoiResponse,
-        factResponse, landmarkBuildingResponse,
-      ] = await Promise.all([
-        fetch(url('landmarks.json')),
-        fetch(url('boundaries.json')),
-        fetch(url('neighborhoods-enriched.json')),
-        fetch(url('bridges.json')),
-        fetch(url('bridge-crossings.json')),
-        fetch(url('street-knowledge.json')),
-        fetch(url('streets.json')),
-        fetch(url('water.json')),
-        fetch(url('branded-pois.json')),
-        // Generated trivia. Absent until a batch has been reviewed and
-        // published, and the cards fall back to the Wikipedia lede when it is.
-        fetch(url('facts.json')).catch(() => new Response('null', { status: 404 })),
-        // Which streamed building each landmark is, resolved at extract time.
-        fetch(url('landmark-buildings.json')).catch(() => new Response('null', { status: 404 })),
-      ]);
+        bridgeResponse, crossingResponse, streetResponse, waterResponse,
+      ] = await Promise.all(START_EXTRACTS.map((name) => fetch(url(name))));
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
 
       const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex,
-        streetKnowledge, streetFeatures, waterFeatures, brandedPois, factsFile, landmarkBuildings] =
+        streetFeatures, waterFeatures] =
         await Promise.all([
           landmarkResponse.json() as Promise<LandmarkFeature[]>,
           boundaryResponse.json() as Promise<BoundaryFeature[]>,
           readJson<NeighborhoodEnrichment[]>(neighborhoodEnrichedResponse, []),
           readJson<BridgeFeature[]>(bridgeResponse, []),
           readJson<BridgeCrossingIndex>(crossingResponse, { bridges: {} }),
-          readJson<StreetKnowledgeEntry[]>(streetKnowledgeResponse, []),
           readJson<StreetKnowledgeEntry[]>(streetResponse, []),
           readJson<StreetKnowledgeEntry[]>(waterResponse, []),
-          readJson<unknown[]>(brandedPoiResponse, []),
-          readJson<FactsFile | null>(factResponse, null),
-          readJson<{ buildings?: Record<string, string[]> } | null>(landmarkBuildingResponse, null),
         ]);
+      const streetKnowledge: StreetKnowledgeEntry[] = [];
 
-      this._facts = buildFactIndex(factsFile);
+      this._facts = buildFactIndex(null);
       this._factRotation = loadRotationState(
         typeof localStorage === 'undefined' ? null : localStorage);
 
@@ -337,14 +344,32 @@ export class GameLandmarkRuntime {
       const deferredJson = <T>(name: string) => fetch(url(name))
         .then(response => readJson<T | null>(response, null))
         .catch(() => null);
+      // Likewise the reviewed trivia (2 MB of facts), the encyclopedia
+      // ledes, brand dots and landmark-building links: no card or label needs
+      // them in the first seconds, so they merge in when they arrive. Cards
+      // fall back to the Wikipedia lede until the facts are in.
       void Promise.all([
         deferredJson<{ origins?: StreetNameOrigin[] }>('street-name-origins.json'),
         deferredJson<BridgeRegisterFile>('bridge-register.json'),
-      ]).then(([originsFile, bridgeRegister]) => {
-        if (!originsFile?.origins?.length && !bridgeRegister?.bridges) return;
+        deferredJson<StreetKnowledgeEntry[]>('street-knowledge.json'),
+        deferredJson<FactsFile>('facts.json'),
+        deferredJson<unknown[]>('branded-pois.json'),
+        deferredJson<{ buildings?: Record<string, string[]> }>('landmark-buildings.json'),
+      ]).then(([originsFile, bridgeRegister, encyclopedia, factsFile, brandedPois, landmarkBuildings]) => {
+        // Another load replaced this one: its own merge will run.
         if (this.streetKnowledge !== knowledge) return;
-        this.streetKnowledge = buildRouteKnowledgeIndex(
-          streetKnowledge, streetFeatures, waterFeatures, normalise, originsFile?.origins ?? [], bridgeRegister?.bridges ?? {});
+        if (factsFile) this._facts = buildFactIndex(factsFile);
+        if (originsFile?.origins?.length || bridgeRegister?.bridges || encyclopedia?.length) {
+          this.streetKnowledge = buildRouteKnowledgeIndex(
+            encyclopedia ?? [], streetFeatures, waterFeatures, normalise, originsFile?.origins ?? [], bridgeRegister?.bridges ?? {});
+        }
+        if (brandedPois) this.vectorMap.setBrandedPois(brandedPois);
+        // With the resolved file, a landmark it does not list has no building
+        // (a tree, a statue) and keeps its dot; without it, the map guesses.
+        // The highlight reads buildingIds when it draws, so late is fine.
+        if (landmarkBuildings?.buildings && this.landmarks === landmarks) {
+          for (const landmark of landmarks) landmark.buildingIds = landmarkBuildings.buildings[landmark.id] ?? [];
+        }
       });
       // Everything the game can ask about, so no orientation label says it
       // first. Stops join in transit mode, where a stop name is the answer.
@@ -354,7 +379,6 @@ export class GameLandmarkRuntime {
         ...streetFeatures, ...waterFeatures, ...bridgeFeatures, ...transitStops,
       ].map(item => (item as { name?: string }).name || '').filter(Boolean));
       this.vectorMap.setPlaces(features, boundaries);
-      this.vectorMap.setBrandedPois(brandedPois);
 
       const metersPerDegreeLat = 111320;
       const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
@@ -370,11 +394,7 @@ export class GameLandmarkRuntime {
           ? toWorld([lat, lng])
           : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false)
       ));
-      // With the resolved file, a landmark it does not list has no building (a
-      // tree, a statue) and keeps its dot; without it, the map guesses.
-      if (landmarkBuildings?.buildings) {
-        for (const landmark of this.landmarks) landmark.buildingIds = landmarkBuildings.buildings[landmark.id] ?? [];
-      }
+      const landmarks = this.landmarks;
 
       // Photos are fetched as the player approaches, not up front. Preloading
       // the 50 most prominent landmarks in the city meant 229 landmarks had a
