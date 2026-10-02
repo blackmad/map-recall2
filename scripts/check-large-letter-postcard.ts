@@ -126,6 +126,11 @@ const stub = (text: string, font: string) => {
   assert.deepEqual(splitNameForTwoLines('Sloterdijk-Centrum'), ['Sloterdijk', 'Centrum']);
   assert.deepEqual(splitNameForTwoLines('De Pijp West'), ['De Pijp', 'West']);
   assert.deepEqual(splitNameForTwoLines('DE PIJP'), ['DE', 'PIJP']);
+  // Dutch compounds break at the compound boundary, never mid-syllable (APOL-/LOBUURT was the bug).
+  assert.deepEqual(splitNameForTwoLines('Apollobuurt'), ['Apollo-', 'buurt']);
+  assert.deepEqual(splitNameForTwoLines('Spaarndammerbuurt'), ['Spaarndammer-', 'buurt']);
+  assert.deepEqual(splitNameForTwoLines('Duivelseiland'), ['Duivels-', 'eiland']);
+  assert.deepEqual(splitNameForTwoLines('Slotervaart'), ['Sloter-', 'vaart']);
   const gracht = splitNameForTwoLines('GRACHTENGORDEL');
   assert.equal(gracht[0], 'GRACHTEN-');
   assert.equal(gracht[1], 'GORDEL');

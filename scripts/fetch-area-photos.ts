@@ -46,6 +46,8 @@ const only = process.argv.includes('--only') ? process.argv[process.argv.indexOf
 const out: Record<string, Array<{ title: string; imageUrl: string; imageAttribution: string; sourceUrl: string }>> = {};
 try { Object.assign(out, JSON.parse(await readFile(path.join(directory, 'area-photos.json'), 'utf8')).areas); } catch { /* first run */ }
 
+const save = () => writeFile(path.join(directory, 'area-photos.json'), `${JSON.stringify({ version: 1, generatedAt: new Date().toISOString(), areas: out }, null, 1)}\n`);
+let fetched = 0;
 for (const area of areas) {
   if (only && area.name !== only) continue;
   if (out[area.name] && !process.argv.includes('--refresh')) continue;
@@ -74,7 +76,8 @@ for (const area of areas) {
       imageUrl: f.thumbUrl!, imageAttribution: commonsAttribution(f), sourceUrl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(f.title.replace(/ /g, '_'))}`,
     }));
     console.log(`${area.name}: ${files.length} nearby, ${out[area.name].length} kept`);
+    if (++fetched % 5 === 0) await save(); // a run that dies keeps what it found
   } catch (error) { console.log(`${area.name}: failed (${(error as Error).message}); retry next run`); }
 }
-await writeFile(path.join(directory, 'area-photos.json'), `${JSON.stringify({ version: 1, generatedAt: new Date().toISOString(), areas: out }, null, 1)}\n`);
+await save();
 console.log(`${cityId}: ${Object.values(out).filter(photos => photos.length).length}/${areas.length} areas have photos`);
