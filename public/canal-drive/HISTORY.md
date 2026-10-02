@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## Trivia card: compact header, "more" as a link, sized to its content
+
+User (2026-10-02), on the Prinsengracht street card: "bad layout".
+
+- **Was:** every bare card was 480 px wide whatever it held. "+ MORE" was a copper pill beside STREET, so it read as a second tag. The name sat 2 px under the chips, and the plate had 7 px of air on top and nearly 30 px below.
+- **Now:** `measureLandmarkCard` puts the category chip and the name on one row when they fit, and drops the name below the chips when they do not. "MORE ›" is copper text at the row's right end, with no pill. The body wraps at a 400 px measure. The card is as wide as its widest line, with a 220 px floor and the old width as the ceiling. Padding is even on all sides.
+- **Renderer:** the layout now carries every vertical position (`headerTop`, `nameBaseline`, `bodyBaseline`, `lineStep`), so `renderer.drawLandmarkCard` can no longer drift from the measured height.
+- **Checks:** the Prinsengracht case is pinned in `scripts/check-notice-cards.ts`. Storybook has `StreetOriginCard` and `PortraitStreetOriginCard`.
+
 ## Facade ornaments: cornices, door surrounds, iron balconies, Amsterdam School brick
 
 User (2026-10-02): "need more canal-house-y generators, more cornices, more amsterdam school style adornments, more white accents", with Kinkerstraat 321 as the reference.
