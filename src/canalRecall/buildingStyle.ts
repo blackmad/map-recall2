@@ -332,3 +332,8 @@ export function coloredBuildingLayerFilter(
   if (!clauses.length) return null;
   return clauses.length === 1 ? clauses[0] : ['all', ...clauses];
 }
+
+// Generic facades and stylised trees ride on this bundle (window.CanalRecallBuildings)
+// so the experiment needs no new <script> tag; see genericFacades.ts / stylisedTrees.ts.
+export * as Facades from './genericFacades.js';
+export * as Trees from './stylisedTrees.js';

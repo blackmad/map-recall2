@@ -11,6 +11,21 @@ const CLEARANCE_MAX_DROP = 10;
 // overview is now a flat map and the city grows in from zoom 15, where the
 // budget covers the view; the 10% zoom floor sits right at 15.
 const BUILDING_FADE_IN = ['interpolate', ['linear'], ['zoom'], 15, 0, 15.6, 1];
+// Experiment (2026-10-01): generic period facades on the streamed city and
+// stylised 3D trees at OSM tree positions. Both default on; `?facades=0` /
+// `?trees3d=0` (or window.__canalRecallFacades / __canalRecallTrees3d = false
+// before load) bring back the old flat look for A/B comparison.
+const GENERIC_FACADES_DEFAULT = true;
+const STYLISED_TREES_DEFAULT = true;
+function canalRecallLookFlag(param, global, fallback) {
+  try {
+    if (typeof window !== 'undefined' && typeof window[global] === 'boolean') return window[global];
+    const value = new URLSearchParams(window.location.search).get(param);
+    if (value === '0' || value === 'false' || value === 'off') return false;
+    if (value === '1' || value === 'true' || value === 'on') return true;
+  } catch (_) { /* no window */ }
+  return fallback;
+}
 
 class VectorBasemap {
   constructor(container) {
@@ -28,6 +43,12 @@ class VectorBasemap {
     // Stash corridor paint until `load` so addSource does not throw and kill boot.
     this._pendingTransitNetwork = null;
     this._treesVisible = false;
+    this._facadesEnabled = canalRecallLookFlag('facades', '__canalRecallFacades', GENERIC_FACADES_DEFAULT);
+    this._trees3dEnabled = canalRecallLookFlag('trees3d', '__canalRecallTrees3d', STYLISED_TREES_DEFAULT);
+    this._rawTrees = null;
+    this._treeRoute = null;
+    this._facadeImages = null;
+    this._facadeTileZoom = null;
     this._detailedBuildings = null;
     this._completeCity = null;
     this._detailedBuildingsVisible = false;
@@ -322,6 +343,11 @@ class VectorBasemap {
     return 0;
   }
 
+  _treesLib() {
+    const lib = window.CanalRecallBuildings;
+    return this._trees3dEnabled && lib && lib.Trees ? lib.Trees : null;
+  }
+
   _ensureTreeLayers() {
     if (this.map.getSource('amsterdam-trees')) return;
     this.map.addSource('amsterdam-trees', {
@@ -330,6 +356,11 @@ class VectorBasemap {
       attribution: 'Trees © OpenStreetMap contributors'
     });
     const before = this.map.getLayer('building-3d') ? 'building-3d' : undefined;
+    const Trees = this._treesLib();
+    if (Trees) {
+      for (const layer of Trees.treeLayers('amsterdam-trees', this.theme, this._treesVisible)) this.map.addLayer(layer, before);
+      return;
+    }
     const shared = { 'circle-pitch-alignment': 'map', 'circle-pitch-scale': 'map' };
     this.map.addLayer({
       id: 'tree-trunks', type: 'circle', source: 'amsterdam-trees', minzoom: 15,
@@ -395,11 +426,13 @@ class VectorBasemap {
       id: 'osm-colored-buildings', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       paint: {
         'fill-extrusion-color': ['case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['coalesce', ['get', 'sideColour'], ['get', 'colour']]],
-        'fill-extrusion-base': ['case', this._coloredBuildingBaseFilter('osm-colored-building-ground-floors'), GROUND_TOP, MIN_HEIGHT],
+        'fill-extrusion-base': this._wallBaseExpression(GROUND_TOP, MIN_HEIGHT, WALL_TOP),
         'fill-extrusion-height': WALL_TOP,
         'fill-extrusion-opacity': BUILDING_FADE_IN
       }
     });
+    const facadeLayer = this._facadeLayerSpec(MIN_HEIGHT, WALL_TOP);
+    if (facadeLayer) this.map.addLayer(facadeLayer);
     this.map.addLayer({
       id: 'osm-colored-building-roofs', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       filter: flatRoofFilter,
@@ -703,17 +736,106 @@ class VectorBasemap {
   // with `null`, capped every building in the city, and the lid z-fought the
   // roof under it. Both layers therefore always go through one composer.
   _coloredBuildingBaseFilter(id) {
+    if (id === 'osm-colored-building-facades') return ['has', 'facade'];
     if (id === 'osm-colored-building-ground-floors') return ['all', ['has', 'groundColour'], ['!=', ['get', 'groundAppearanceStyleSource'], 'wall-inherited-not-independently-measured']];
     if (id !== 'osm-colored-building-roofs') return null;
     const helpers = window.CanalRecallBuildings;
     return helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'];
   }
 
+  _facadesLib() {
+    const lib = window.CanalRecallBuildings;
+    return this._facadesEnabled && lib && lib.Facades ? lib.Facades : null;
+  }
+
+  /** Facades draw only in the clean theme (a pattern bakes in its colours),
+   *  and never under measured-colours-only review or detailed/photoreal 3D. */
+  _facadesActive() {
+    return !!this._facadesLib() && this.theme === 'clean' && !this._measuredColoursOnly && !this._facadesHiddenByDetail
+      && !this._facadesOutOfZoom;
+  }
+
+  /**
+   * The plain wall layer's base. With facades on, a patterned building's plain
+   * wall shrinks to a cornice band above the pattern layer — its top face is
+   * then the roof, and the pattern's own top face (which samples the facade
+   * image) is hidden inside it. A highlighted building drops back to a plain
+   * full-height yellow wall while the pattern layer collapses (feature-state,
+   * so highlighting never re-lays out tiles).
+   */
+  _wallBaseExpression(groundTop, minHeight, wallTop) {
+    const ground = ['case', this._coloredBuildingBaseFilter('osm-colored-building-ground-floors'), groundTop, minHeight];
+    const Facades = this._facadesLib();
+    if (!Facades || !this._facadesActive()) return ground;
+    return ['case',
+      ['all', ['has', 'facade'], ['!', ['boolean', ['feature-state', 'highlighted'], false]]],
+      ['max', minHeight, ['-', wallTop, Facades.FACADE_CORNICE_M]],
+      ground];
+  }
+
+  _facadeLayerSpec(minHeight, wallTop) {
+    const Facades = this._facadesLib();
+    if (!Facades) return null;
+    const tileZoom = this._facadeTileZoom || Facades.facadeTileZoom(this.map.getZoom()) || Facades.FACADE_MAX_TILE_ZOOM;
+    this._facadeTileZoom = tileZoom;
+    if (!this._facadeImages) this._facadeImages = new Facades.FacadeImageSet(this.map, 52.37);
+    this._facadeImages.ensure(tileZoom);
+    return {
+      id: 'osm-colored-building-facades', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
+      filter: ['has', 'facade'],
+      layout: { visibility: this._facadesActive() ? 'visible' : 'none' },
+      paint: {
+        'fill-extrusion-pattern': Facades.facadePatternExpression(tileZoom),
+        'fill-extrusion-base': minHeight,
+        'fill-extrusion-height': ['case', ['boolean', ['feature-state', 'highlighted'], false], minHeight,
+          ['max', minHeight, ['-', wallTop, Facades.FACADE_CORNICE_M]]],
+        'fill-extrusion-opacity': BUILDING_FADE_IN
+      }
+    };
+  }
+
+  /** Show/hide the pattern layer and keep the plain wall base in step. */
+  _applyFacadeState() {
+    if (!this.map || !this.map.getLayer('osm-colored-building-facades')) return;
+    const active = this._facadesActive();
+    if (this._facadeStateApplied === active) return;
+    this._facadeStateApplied = active;
+    this.map.setLayoutProperty('osm-colored-building-facades', 'visibility', active ? 'visible' : 'none');
+    const helpers = window.CanalRecallBuildings;
+    const wallTop = helpers && helpers.wallTopHeightExpression ? helpers.wallTopHeightExpression() : ['coalesce', ['get', 'height'], 5];
+    const minHeight = ['coalesce', ['get', 'minHeight'], 0];
+    const groundTop = ['min', wallTop, ['+', minHeight, ['coalesce', ['get', 'groundFloorHeightM'], 3.2]]];
+    if (this.map.getLayer('osm-colored-buildings')) {
+      this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', this._wallBaseExpression(groundTop, minHeight, wallTop));
+    }
+  }
+
+  /**
+   * A pattern's size in metres halves at every integer tile zoom, so the
+   * images are re-registered per zoom with a pixel ratio that keeps a storey
+   * a storey. Swapping the expression re-lays out the building tiles, which
+   * happens only when the integer zoom changes.
+   */
+  _syncFacadeZoom(mapZoom) {
+    const Facades = this._facadesLib();
+    if (!Facades || !this._facadeImages || !this.map.getLayer('osm-colored-building-facades')) return;
+    const tileZoom = Facades.facadeTileZoom(mapZoom);
+    // Past the pattern's zoom range the plain walls come back.
+    const outOfZoom = tileZoom === null;
+    if (outOfZoom !== !!this._facadesOutOfZoom) { this._facadesOutOfZoom = outOfZoom; this._applyFacadeState(); }
+    if (outOfZoom || tileZoom === this._facadeTileZoom) return;
+    this._facadeTileZoom = tileZoom;
+    this._facadeImages.ensure(tileZoom);
+    this.map.setPaintProperty('osm-colored-building-facades', 'fill-extrusion-pattern', Facades.facadePatternExpression(tileZoom));
+    clearTimeout(this._facadePruneTimer);
+    this._facadePruneTimer = setTimeout(() => { if (this._facadeImages) this._facadeImages.prune(this._facadeTileZoom); }, 4000);
+  }
+
   _refreshColoredBuildingFilter() {
     if (!this.map) return;
     const hide = this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds();
     const helpers = window.CanalRecallBuildings;
-    for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
+    for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-facades', 'osm-colored-building-roofs']) {
       if (!this.map.getLayer(id)) continue;
       const original = this._coloredBuildingBaseFilter(id);
       const measured = ['==', ['get', 'sideColourSource'], 'measured-accepted'];
@@ -755,6 +877,13 @@ class VectorBasemap {
     this._completeCity = new runtime.BuildingTileStreamer(
       this.map, 'osm-building-appearance', this._extractPath || '../data/extracts/amsterdam'
     );
+    const Facades = this._facadesLib();
+    if (Facades && this._completeCity.setTileEnricher && this._completeCity.setFeatureDecorator) {
+      // Construction years ride in from the building-facts tiles cut on the
+      // same z14 grid; the decorator turns year + size into a facade key.
+      this._completeCity.setTileEnricher(Facades.constructionYearEnricher(this._extractPath || '../data/extracts/amsterdam'));
+      this._completeCity.setFeatureDecorator(Facades.decorateFacade);
+    }
     let available = false;
     try {
       available = await this._completeCity.probe();
@@ -850,7 +979,7 @@ class VectorBasemap {
    * before anything has been highlighted, so nothing is lost with it.
    */
   _recreateBuildingSourceWithStableIds() {
-    const layers = ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']
+    const layers = ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-facades', 'osm-colored-building-roofs']
       .map(id => this.map.getLayer(id) && this.map.getStyle().layers.find(layer => layer.id === id))
       .filter(Boolean)
       .map(layer => JSON.parse(JSON.stringify(layer)));
@@ -894,8 +1023,10 @@ class VectorBasemap {
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', themeColor
     ]);
     this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-height', height);
-    this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', ['case', this._coloredBuildingBaseFilter('osm-colored-building-ground-floors'), groundTop, minHeight]);
+    this._facadeStateApplied = null;
+    this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', this._wallBaseExpression(groundTop, minHeight, height));
     this._refreshColoredBuildingFilter();
+    this._applyFacadeState();
     this.map.setPaintProperty('osm-colored-building-roofs', 'fill-extrusion-color', [
       'case', ['boolean', ['feature-state', 'highlighted'], false], '#FFD21F', ['to-color', ['get', 'roofColour'], '#B09999']
     ]);
@@ -1149,14 +1280,52 @@ class VectorBasemap {
     if (!this.map) return;
     const source = this.map.getSource('amsterdam-trees');
     if (!source) return;
+    const Trees = this._treesLib();
+    if (Trees) {
+      source.setData({ type: 'FeatureCollection', features: Trees.treeFeatures(this._pendingTrees) });
+      return;
+    }
     source.setData({
       type: 'FeatureCollection',
       features: this._pendingTrees.map(tree => ({ type: 'Feature', properties: { id: tree.id, species: tree.species || '' }, geometry: { type: 'Point', coordinates: [tree.lng, tree.lat] } }))
     });
   }
 
+  /** The extract's OSM trees, fetched once the first time trees are shown. */
+  _loadTrees() {
+    if (this._rawTrees || this._treesLoading || !this.map) return;
+    this._treesLoading = true;
+    fetch(this._extractFile('trees.json'))
+      .then(response => response.ok ? response.json() : [])
+      .then(trees => { this._rawTrees = Array.isArray(trees) ? trees : []; this._refreshTreeData(); })
+      .catch(() => { this._rawTrees = []; })
+      .finally(() => { this._treesLoading = false; });
+  }
+
+  /** Trees around the current route (the extract spans the whole region),
+   *  minus any whose crown would overhang the route corridor. */
+  _refreshTreeData() {
+    if (!this._rawTrees || !this.map || !this.map.getSource('amsterdam-trees')) return;
+    const Trees = this._treesLib();
+    let subset = this._rawTrees;
+    const route = this._treeRoute;
+    if (Trees) {
+      if (route && route.length > 1) {
+        let west = Infinity, south = Infinity, east = -Infinity, north = -Infinity;
+        for (const [lng, lat] of route) { west = Math.min(west, lng); east = Math.max(east, lng); south = Math.min(south, lat); north = Math.max(north, lat); }
+        subset = Trees.thinTreesNearRoute(Trees.treesInBounds(subset, west - 0.02, south - 0.012, east + 0.02, north + 0.012), route);
+      } else {
+        const centre = this.map.getCenter();
+        subset = Trees.treesInBounds(subset, centre.lng - 0.03, centre.lat - 0.018, centre.lng + 0.03, centre.lat + 0.018);
+      }
+    }
+    this._treeCount = subset.length;
+    this.setTrees(subset);
+  }
+
   setTreesVisible(visible) {
     this._treesVisible = !!visible;
+    if (visible) this._loadTrees();
     if (!this.map) return;
     for (const id of ['tree-trunks', 'tree-crowns']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');
@@ -1239,6 +1408,7 @@ class VectorBasemap {
   setMeasuredColoursOnly(enabled) {
     this._measuredColoursOnly = !!enabled;
     this._refreshColoredBuildingFilter();
+    this._applyFacadeState();
     this._syncDetailedBuildingLayers();
   }
 
@@ -1259,6 +1429,8 @@ class VectorBasemap {
     for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google) ? 'none' : 'visible');
     }
+    this._facadesHiddenByDetail = detailed || google;
+    this._applyFacadeState();
     // Signature models are the LoD1 replacement for a handful of landmarks.
     // Hide them under photoreal/3DBAG the same way the extrusions hide, so two
     // representations of Centraal never occupy the same air.
@@ -1418,6 +1590,12 @@ class VectorBasemap {
 
   setRoute(routePath, loader, visible) {
     if (!this.map || !loader || !this.map.getSource('navigation-route')) return;
+    // Trees are thinned against the route whether or not its line is drawn.
+    if (routePath && routePath.length > 1 && routePath !== this._treeRouteRef) {
+      this._treeRouteRef = routePath;
+      this._treeRoute = routePath.map(point => this.worldToLngLat(point.x, point.y, loader));
+      this._refreshTreeData();
+    }
     const visibility = visible ? 'visible' : 'none';
     for (const id of ['navigation-route-casing', 'navigation-route-line']) {
       if (this.map.getLayer(id) && this.map.getLayoutProperty(id, 'visibility') !== visibility) this.map.setLayoutProperty(id, 'visibility', visibility);
@@ -1792,6 +1970,7 @@ class VectorBasemap {
     this._clearancePitchRequested = pitch;
     const appliedPitch = Math.min(pitch, this._clearancePitch);
     this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
+    this._syncFacadeZoom(mapZoom);
     this._liftPoiMarkers(appliedPitch, lat);
     this._lastCameraZoom = camera.zoom;
     // Building tiles follow the driving camera, not the style's Damrak default.
@@ -2120,10 +2299,15 @@ class VectorBasemap {
         ? window.CanalRecallBuildings.buildingOpacity(this.theme)
         : (this.theme === 'cyberpunk' ? 0.98 : 0.9));
       const treeColors = this.theme === 'cyberpunk' ? ['#6A167A', '#FF2DAA'] : this.theme === 'psx' ? ['#4A4335', '#646B45'] : ['#315D31', '#4F8A48'];
-      if (this.map.getLayer('tree-crowns')) {
+      const Trees = this._treesLib();
+      if (Trees && this.map.getLayer('tree-crowns')) {
+        this.map.setPaintProperty('tree-crowns', 'fill-extrusion-color', Trees.treeCrownColour(this.theme));
+        this.map.setPaintProperty('tree-trunks', 'fill-extrusion-color', Trees.treePalette(this.theme).trunk);
+      } else if (this.map.getLayer('tree-crowns')) {
         this.map.setPaintProperty('tree-crowns', 'circle-stroke-color', treeColors[0]);
         this.map.setPaintProperty('tree-crowns', 'circle-color', treeColors[1]);
       }
+      this._applyFacadeState();
     } catch (_) {}
   }
 }
