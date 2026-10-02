@@ -25,7 +25,7 @@ import {
   BuildingTileCache, BUILDING_TILE_ZOOM, buildingForLandmark, planTiles, planSourceDiff, tileUrl,
   type BuildingFeature, type Bounds, type LandmarkBuildingQuery
 } from './buildingTileSource.js';
-import { tileFor, tileKey } from './slippyTiles.js';
+import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior } from './cityAppearancePalette.js';
 
 type GeoJsonSource = {
@@ -258,7 +258,11 @@ export class BuildingTileStreamer {
     const centre = this.map.getCenter();
     const tile = tileFor(centre.lng, centre.lat, this.zoom);
     const zoomBucket = Math.round(this.map.getZoom() * 2) / 2;
-    const signature = `${tileKey(tile)}@${zoomBucket}`;
+    // The tiles the view needs, not just the centre: tilting or turning the
+    // camera widens the visible ground without moving the centre tile or the
+    // zoom bucket, and those tiles used to stay unrequested (bare patches).
+    const needed = tilesCovering(this.bounds(), this.zoom, 0).map(tileKey).join(',');
+    const signature = `${tileKey(tile)}@${zoomBucket}|${needed}`;
     if (signature === this.lastFollowSignature) return;
     this.lastFollowSignature = signature;
     this.update();
