@@ -92,6 +92,9 @@ async function readGzippedGeoJson(response: Response): Promise<{ features?: Buil
   return JSON.parse(text) as { features?: BuildingFeature[] };
 }
 
+/** See `BuildingTileStreamer.setTileEnricher`. */
+export type TileEnricher = (tile: { z: number; x: number; y: number }, signal: AbortSignal) => Promise<((features: BuildingFeature[]) => void) | undefined | void>;
+
 export class BuildingTileStreamer {
   private readonly cache = new BuildingTileCache();
   /** Tiles that returned nothing. Remembered so a gap is not refetched forever. */
@@ -181,6 +184,22 @@ export class BuildingTileStreamer {
 
   setAppearancePriors(priors:ReadonlyMap<string,BuildingAppearancePrior>):void{this.appearancePriors=new Map(priors);this.decorated=new WeakMap();this.published=null;if(this.cache.size)this.flush();}
 
+  /** Per-tile side data (e.g. construction years) fetched alongside each
+   *  building tile; the returned function stamps it onto that tile's copies
+   *  before they are adopted. Set before the first tile loads. */
+  private tileEnricher?: TileEnricher;
+  setTileEnricher(enricher: TileEnricher | undefined): void { this.tileEnricher = enricher; }
+
+  /** A presentation step after `decorateBuildingFeature` (generic facades).
+   *  Changing it restyles and resends the resident set once. */
+  private featureDecorator?: (feature: BuildingFeature) => BuildingFeature;
+  setFeatureDecorator(decorator: ((feature: BuildingFeature) => BuildingFeature) | undefined): void {
+    this.featureDecorator = decorator;
+    this.decorated = new WeakMap();
+    this.published = null;
+    if (this.cache.size) this.flush();
+  }
+
   /** Tile → feature array MapLibre currently holds; null forces a full send. */
   private published: Map<string, BuildingFeature[]> | null = null;
   private countsDirty = true;
@@ -197,6 +216,7 @@ export class BuildingTileStreamer {
     let out = this.decorated.get(feature);
     if (!out) {
       out = decorateBuildingFeature(feature, this.appearancePriors);
+      if (this.featureDecorator) out = this.featureDecorator(out);
       this.decorated.set(feature, out);
     }
     return out;
@@ -302,6 +322,11 @@ export class BuildingTileStreamer {
     const controller = new AbortController();
     this.controllers.set(key, controller);
     this.inFlight++;
+    // Side data starts in parallel with the tile; its failure is swallowed so
+    // a missing facts tile never costs the buildings themselves.
+    const enrichment = this.tileEnricher
+      ? this.tileEnricher(tile, controller.signal).catch(() => undefined)
+      : undefined;
     try {
       const response = await fetch(tileUrl(tile, this.baseUrl), { signal: controller.signal });
       if (!response.ok) {
@@ -323,6 +348,11 @@ export class BuildingTileStreamer {
       // Redundant nested copies (OSM outline + parts, BAG pand under an OSM way)
       // share walls and z-fight, so they are dropped; see `buildingNesting.ts`.
       const features = dropNestedDuplicates(copies);
+      if (enrichment) {
+        const apply = await enrichment;
+        if (controller.signal.aborted || this.disposed) return;
+        if (apply) apply(features);
+      }
       this.cache.adopt(key, features);
       this.firstTileLanded = true;
       if (!this.disposed) this.scheduleFlush();
