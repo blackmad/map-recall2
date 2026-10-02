@@ -16,6 +16,7 @@ import { groundRuns, layoutWall } from './facadeLayout.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
 import earcut from 'earcut';
+import { ExtraSink, EXTRA_BUDGET, roofExtras, wallExtras } from './facadeExtras.js';
 import { fitRect, roofTriangles, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 
 export type MeshBuilding = {
@@ -38,6 +39,8 @@ export type MeshBuilding = {
    * awning in the business's colour, on the wall nearest its OSM point ([lng, lat]).
    */
   signature?: { at: [number, number]; hex: string };
+  /** Draw the facade extras (hoist beams, stoops, balconies, bikes, roof terraces): facadeExtras.ts. */
+  extras?: boolean;
   /** Texture layer for bare wall: gable faces, chimneys, cornices. */
   plainLayer?: number;
   /** Bare walls only (a church): every row uses the plain layer and there are no doors. */
@@ -235,7 +238,11 @@ const edgeKey = (x: number, y: number) => `${Math.round(x * 10)},${Math.round(y 
  * belt's edges) are skipped: nobody sees them, and they are about half the
  * vertices of a naive mesh.
  */
-export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): Chunk {
+/**
+ * `mode: 'extras'` builds only the facade extras (facadeExtras.ts) of these buildings: they are a
+ * separate, near-camera chunk, too many triangles to draw across the whole resident city.
+ */
+export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' = 'walls'): Chunk {
   type Prepared = { b: MeshBuilding; edges: Edge[]; top: number };
   const prepared: Prepared[] = [];
   const shared = new Map<string, { top: number; base: number }[]>();
@@ -273,6 +280,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     const accent = parseHex(b.accentHex ?? '#ffffff');
     const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2;
     let walls = 0;
+    const extraSink = mode === 'extras' && b.extras ? new ExtraSink(EXTRA_BUDGET.building) : null;
     const cornice: RoofTri[] = [];
     for (const e of edges) {
       if (hiddenByNeighbour(e, b)) continue;
@@ -284,6 +292,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       }
       if (!layout) continue;
       walls++;
+      if (extraSink && !e.hole && e.len >= 2.5) wallExtras({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: e.len }, base, top, layout, wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5 }, extraSink);
       if (b.plainWalls && b.plainLayer !== undefined) layout.doorBays.length = 0;
       // A shop fills its ground floor; only a wide front keeps a separate door to the floors above.
       if (b.shopfront && layout.bays < 3) layout.doorBays.length = 0;
@@ -311,8 +320,20 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       if (rect) roof = roofTriangles(rect, b.roof.plan, b.heightM, b.roof.dims);
       if (!rect) roof = [];
     }
-    const lid = b.lid && (!b.roof || !roof.length) ? lidMesh(b, origin) : null;
-    const sign = b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [];
+    const walled = mode === 'walls';
+    const lid = walled && b.lid && (!b.roof || !roof.length) ? lidMesh(b, origin) : null;
+    // Walls mode carries the signature storefront; extras mode only the extras.
+    const sign: SignTri[] = walled && b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [];
+    if (extraSink) {
+      // Roof extras on a flat roof only (a pitched roof has its own chimneys and dormers).
+      if (!b.roof) {
+        const outer = b.polygons[0]?.[0] ?? [];
+        const rect = fitRect(outer.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number]), 40);
+        if (rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
+      }
+      sign.push(...extraSink.tris);
+    }
+    if (!walled) { quads.length = 0; roof = []; }
     signTotal += sign.length;
     quadsByBuilding.push({ b, quads, walls, roof, lid, sign });
     quadTotal += quads.length; wallTotal += walls; roofTotal += roof.length;
