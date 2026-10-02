@@ -1,0 +1,60 @@
+{
+ "name": "t-mandje",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012171642"
+ ],
+ "image": "t-mandje.jpg",
+ "width": 243,
+ "height": 749,
+ "pixelsPerMetre": 50,
+ "wall": {
+  "startLngLat": [
+   4.900973996976375,
+   52.37485000237052
+  ],
+  "endLngLat": [
+   4.900941996977121,
+   52.374811002369846
+  ],
+  "lengthM": 4.855782843922872,
+  "heightM": 14.98,
+  "outwardBearingDeg": 297.0491126498798
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002031_pano_0000_000264",
+   "timestamp": "2021-03-08T09:10:41.923610Z",
+   "distanceM": 4,
+   "obliquityDeg": 6
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   11.06,
+   11.1,
+   11.1,
+   11.1,
+   14.42,
+   14.42,
+   14.42,
+   14.4,
+   14.38,
+   14.36,
+   14.36,
+   14.36,
+   14.36,
+   14.32,
+   14.3,
+   14.26,
+   14.24,
+   14.24,
+   14.24,
+   14.22
+  ],
+  "wallColour": "#695c5e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

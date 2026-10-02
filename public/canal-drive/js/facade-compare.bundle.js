@@ -360,11 +360,159 @@
         { id: "w749918642", riseM: 9.5, mat: "slate" },
         { id: "w749918645", riseM: 8.5, mat: "slate" }
       ]
+    },
+    {
+      // Centraal's twin towers: square brick shafts with gilt dials (the west one a clock, the
+      // east one a wind dial), a stone band, an open lead lantern and a slim spire each.
+      name: "Centraal",
+      wall: { plain: true, hex: "#9a5a45" },
+      tiers: ["w752653568", "w752653567"].map((id) => ({ id, shape: "square", mat: "brick", z1: 27, clocks: true })),
+      stacks: ["w752653568", "w752653567"].map((onId) => ({ onId, startZ: 27, stages: [
+        { shape: "square", w0: 7.6, w1: 7.6, h: 1.2, mat: "stone" },
+        { shape: "octagon", w0: 5.2, w1: 4.8, h: 4.2, mat: "lead" },
+        { shape: "octagon", w0: 5.6, w1: 0.6, h: 4.6, mat: "lead" },
+        { shape: "octagon", w0: 0.6, w1: 0, h: 1.6, mat: "gold" }
+      ] })),
+      roofs: [],
+      body: ["w451533147", "w451533145", "w1239767708", "w424523117", "w451533149", "w506192827", "w752653562", "w752653565", "w752653571", "w752653572", "w752738611", "w1239767712", "w1239767716", "w1239767717", "w1239767718", "w1239767719", "w1239767720", "w1239767721", "w1239767722", "w1239767723", "w1239767724", "w1239767725", "w1239767726", "w1240155430", "w1240155433", "w1240155434", "w752286896", "w752286897", "w752286898", "w752328419", "w752328422", "w752653574", "w1239767701", "w1239767703", "w1239767706", "w1239767709", "w589499178", "w752328416", "w752328417", "w752328418", "w752328420", "w752653566", "w752653570", "w752653573", "w752738610", "w1239767711", "w1239767713", "w1239767714", "w1239767715", "w1240155431", "w1240155435", "w1240314141", "w1240314142", "w752328423", "w752328424", "w752328425", "w752328426", "w752653575", "w1239767702"]
+    },
+    {
+      // Rijksmuseum: two central towers with steep slate spires over the gate, four corner
+      // turrets with spires, steep roofs on the main wings. Cuypers' red brick.
+      name: "Rijksmuseum",
+      wall: { plain: false, style: "school", hex: "#9a4f3c" },
+      tiers: [
+        ...["w749429998", "w749429999"].map((id) => ({ id, shape: "square", mat: "brick", z1: 38 })),
+        ...["w749805757", "w749805758", "w749805760", "w749805761"].map((id) => ({ id, shape: "square", mat: "brick", z1: 33 }))
+      ],
+      stacks: [
+        ...["w749429998", "w749429999"].map((onId) => ({ onId, startZ: 38, stages: [
+          { shape: "square", w0: 13.4, w1: 13.4, h: 1.1, mat: "stone" },
+          { shape: "square", w0: 12.4, w1: 0.6, h: 14, mat: "slate" },
+          { shape: "octagon", w0: 0.6, w1: 0, h: 1.4, mat: "gold" }
+        ] })),
+        ...["w749805757", "w749805758", "w749805760", "w749805761"].map((onId) => ({ onId, startZ: 33, stages: [
+          { shape: "square", w0: 7.4, w1: 7.4, h: 0.8, mat: "stone" },
+          { shape: "square", w0: 6.8, w1: 0.4, h: 8.4, mat: "slate" },
+          { shape: "octagon", w0: 0.4, w1: 0, h: 1, mat: "gold" }
+        ] }))
+      ],
+      roofs: ["w749430000", "w749430001", "w749429988"].map((id) => ({ id, riseM: 8, mat: "slate" })),
+      body: ["NL.IMBAG.Pand.0363100012235882", "w431070791", "w431070942", "w517791046", "w749429987", "w749429989", "w749429991", "w749429992", "w749429993", "w749429994", "w749429995", "w749429996", "w749429997", "w749805753", "w749805756", "w749805759", "w749805762", "w749429990", "w749805754", "w749805755", "w749805763", "w749805764", "NL.IMBAG.Pand.0363100012229949", "NL.IMBAG.Pand.0363100012157857", "NL.IMBAG.Pand.0363100012194197", "NL.IMBAG.Pand.0363100012236686"]
+    },
+    {
+      // Sint-Nicolaasbasiliek: twin west towers with octagonal lanterns and small domes, and the
+      // crossing dome on its drum with a lantern. Dark brick, lead and copper.
+      name: "Sint-Nicolaas",
+      wall: { plain: true, hex: "#7a4636" },
+      tiers: [
+        ...["w645534930", "w645534931"].map((id) => ({ id, shape: "square", mat: "brick", z1: 43 })),
+        { id: "w749289632", shape: "octagon", mat: "brick", z0: 24, z1: 39, columns: 8 }
+      ],
+      stacks: [
+        ...["w645534930", "w645534931"].map((onId) => ({ onId, startZ: 43, stages: [
+          { shape: "octagon", w0: 5.6, w1: 5.4, h: 6, mat: "brick" },
+          { shape: "octagon", w0: 6.2, w1: 2.2, h: 3.4, mat: "copper" },
+          { shape: "octagon", w0: 1.4, w1: 0, h: 2.2, mat: "copper" },
+          { shape: "octagon", w0: 0.4, w1: 0, h: 1.2, mat: "gold" }
+        ] })),
+        { onId: "w749289632", startZ: 39, stages: [
+          { shape: "octagon", w0: 13.6, w1: 11.4, h: 4, mat: "copper" },
+          { shape: "octagon", w0: 11.4, w1: 6.4, h: 4.4, mat: "copper" },
+          { shape: "octagon", w0: 6.4, w1: 2.6, h: 2.6, mat: "copper" },
+          { shape: "octagon", w0: 2.4, w1: 2.2, h: 3.4, mat: "white" },
+          { shape: "octagon", w0: 2.8, w1: 0, h: 2.4, mat: "copper" },
+          { shape: "octagon", w0: 0.5, w1: 0, h: 1, mat: "gold" }
+        ] }
+      ],
+      roofs: [{ id: "w749289633", riseM: 8, mat: "slate" }, { id: "w749289634", riseM: 8, mat: "slate" }],
+      hides: ["w750217062", "w750591090"],
+      body: ["w750217059", "w750217060", "w750217061", "w750217063", "w750217064", "w750591088"]
+    },
+    {
+      // Munttoren: an octagonal brick and stone tower with clocks on the old Regulierspoort
+      // base, an open lantern and Hendrick de Keyser's spire.
+      name: "Munttoren",
+      tiers: [
+        { id: "w751698384", shape: "octagon", mat: "brick", z1: 14, clocks: true },
+        { id: "w751698383", shape: "octagon", mat: "white", z0: 14, z1: 19 },
+        { id: "w751698382", shape: "octagon", mat: "lead", z0: 19, z1: 23 }
+      ],
+      stacks: [{ onId: "w751698382", stages: [
+        { shape: "octagon", w0: 3.8, w1: 3.4, h: 3, mat: "white" },
+        { shape: "octagon", w0: 3.6, w1: 0.3, h: 7.5, mat: "lead" },
+        { shape: "octagon", w0: 0.5, w1: 0, h: 1.2, mat: "gold" }
+      ] }],
+      roofs: []
+    },
+    {
+      // De Krijtberg (Sint-Franciscus Xaveriuskerk): two slender neo-Gothic towers with tall
+      // slate spires on the Singel front, a steep nave roof behind.
+      name: "Krijtberg",
+      wall: { plain: true, hex: "#7a4a3a" },
+      tiers: ["w751905304", "w751905305"].map((id) => ({ id, shape: "octagon", mat: "brick", z1: 33 })),
+      stacks: ["w751905304", "w751905305"].map((onId) => ({ onId, startZ: 33, stages: [
+        { shape: "octagon", w0: 4.6, w1: 4.6, h: 0.8, mat: "stone" },
+        { shape: "octagon", w0: 4.2, w1: 0.3, h: 15, mat: "slate" },
+        { shape: "octagon", w0: 0.4, w1: 0, h: 1.8, mat: "gold" }
+      ] })),
+      roofs: [{ id: "w751713223", riseM: 10, mat: "slate" }, { id: "w751713221", riseM: 10, mat: "slate" }],
+      body: ["w751713218", "w751713219", "w751713220", "w751713222", "w751905303", "w751979070"]
+    },
+    {
+      // Oude Kerk: the brick tower base with clocks, then octagonal lead stages, an open
+      // lantern and the spire; steep roofs over the hall church and its chapels.
+      name: "Oude Kerk",
+      wall: { plain: true, hex: "#8a5a44" },
+      tiers: [
+        { id: "w747868982", shape: "square", mat: "brick", clocks: true },
+        { id: "w747868971", shape: "octagon", mat: "lead" }
+      ],
+      stacks: [{ onId: "w747868971", stages: [
+        { shape: "octagon", w0: 6, w1: 5.4, h: 5, mat: "lead" },
+        { shape: "octagon", w0: 4.6, w1: 4.2, h: 4, mat: "white" },
+        { shape: "octagon", w0: 4.4, w1: 0.3, h: 8.5, mat: "lead" },
+        { shape: "octagon", w0: 0.5, w1: 0, h: 1.2, mat: "gold" }
+      ] }],
+      roofs: [
+        ...["w747868974", "w747868975"].map((id) => ({ id, riseM: 9, mat: "slate" })),
+        ...["w747868972", "w747868973", "w747868976", "w747868977", "w747868978", "w747868979", "w747868980", "w747868981", "w747868984"].map((id) => ({ id, riseM: 5.5, mat: "slate" }))
+      ],
+      hides: ["w747868970"]
+    },
+    {
+      // Nieuwe Kerk on the Dam: towering nave and transept roofs (the tower was never built)
+      // with a slim lead flèche over the crossing; lower aisle and chapel roofs.
+      name: "Nieuwe Kerk",
+      wall: { plain: true, hex: "#8f5d48" },
+      tiers: [],
+      stacks: [{ onId: "w747911439", startZ: 34, stages: [
+        { shape: "octagon", w0: 2.6, w1: 2.2, h: 3.2, mat: "lead" },
+        { shape: "octagon", w0: 2.4, w1: 0, h: 8, mat: "lead" },
+        { shape: "octagon", w0: 0.4, w1: 0, h: 1, mat: "gold" }
+      ] }],
+      roofs: [
+        { id: "w747911441", riseM: 14, mat: "slate" },
+        { id: "w747911439", riseM: 14, mat: "slate" },
+        { id: "w747911438", riseM: 5, mat: "slate" },
+        ...["w747911436", "w747911437", "w747924626"].map((id) => ({ id, riseM: 6, mat: "slate" }))
+      ]
+    },
+    {
+      // NEMO: Renzo Piano's copper-green ship rising out of the IJ tunnel mouth; its colour is
+      // the recognisable part, so the whole building is walled in patinated copper.
+      name: "NEMO",
+      wall: { plain: true, hex: "#4f9a82", flat: true },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      body: ["w1390692763", "w1390692767", "w1390692768", "w1390692769", "w1390692770", "w1390692771", "w1390692772", "w1390692766", "w1390692764", "w1390692765"]
     }
   ];
-  var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id)]));
-  var KIT_HIDE_IDS = [...new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId)]))];
+  var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...k.hides ?? []]));
+  var KIT_HIDE_IDS = [...new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.hides ?? []]))];
   var KIT_ROOF = new Map(KITS.flatMap((k) => k.roofs.map((r) => [r.id, { roof: r, wall: k.wall }])));
+  var KIT_BODY = new Map(KITS.flatMap((k) => k.wall ? (k.body ?? []).map((id) => [id, k.wall]) : []));
   var sub2 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
   var cross2 = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
   var dot2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
@@ -582,6 +730,19 @@
     }
     return tris;
   }
+  function lettering(x0, x1, z0, z1, out, hex2, n) {
+    const step = (x1 - x0) / n;
+    return Array.from({ length: n }, (_, i) => ({ x0: x0 + i * step + step * 0.12, x1: x0 + (i + 1) * step - step * 0.12, z0, z1, out0: out, out1: out + 0.04, hex: hex2 }));
+  }
+  function stripedAwning(x0, x1, z, depth, a, b, stripeM = 0.45) {
+    const out = [];
+    for (let x = x0, i = 0; x < x1 - 1e-6; x += stripeM, i++) out.push({ x0: x, x1: Math.min(x1, x + stripeM), z0: z - 0.35, z1: z, out0: 0, out1: depth, hex: i % 2 ? b : a });
+    return out;
+  }
+  function along(start, end, lengthM, t) {
+    const k = t / lengthM;
+    return [start[0] + (end[0] - start[0]) * k, start[1] + (end[1] - start[1]) * k];
+  }
 
   // src/canalRecall/landmarkFrontData.ts
   var span = (xs, half) => xs.flatMap((x) => [x - half, x + half]);
@@ -766,7 +927,149 @@
       { xs: [6.8, 8], rows: [[8.2, 10.4], [11, 13.4]], w: 0.9, hex: TU.glass, frameHex: TU.gold }
     ]
   };
-  var FRONTS = { bijenkorf: BIJENKORF, beurs: BEURS_BEURSPLEIN, "royal-palace": ROYAL_PALACE_DAM, concertgebouw: CONCERTGEBOUW, tuschinski: TUSCHINSKI };
+  var KEMA = { red: "#c8321f", white: "#f4efe6", glassBlock: "#cfd6d4", rail: "#2b2b2b", glass: "#3f4650" };
+  var KEMA_VLEES = {
+    name: "Kema Vlees",
+    storefront: true,
+    roofline: "unmeasured",
+    ids: ["NL.IMBAG.Pand.0363100012233470"],
+    start: [4.867663997219131, 52.36610400213513],
+    end: [4.867742997218478, 52.366125002135696],
+    depthM: 0.25,
+    hex: "#d9c9a8",
+    outline: [[0, 5.9], [5.87, 5.9]],
+    boxes: [
+      { x0: 0, x1: 5.87, z0: 4.9, z1: 5.9, out1: 0.05, hex: KEMA.glassBlock },
+      { x0: 0, x1: 5.87, z0: 4.55, z1: 4.9, out1: 0.4, hex: KEMA.rail },
+      { x0: 0, x1: 5.87, z0: 3.9, z1: 4.55, out1: 0.3, hex: KEMA.red },
+      ...lettering(1.4, 5.6, 4.05, 4.4, 0.3, KEMA.white, 10),
+      { x0: 0.1, x1: 5.8, z0: 2.4, z1: 3.5, out0: 0, out1: 1.3, hex: KEMA.red },
+      ...lettering(3.6, 5.6, 2.55, 2.8, 1.3, KEMA.white, 4),
+      { x0: 0.2, x1: 5.7, z0: 0.2, z1: 2.4, out0: -0.05, out1: 0.05, hex: KEMA.glass }
+    ],
+    windows: []
+  };
+  var MAN = { brick: "#6b4535", stone: "#d8d2c4", lead: "#2c3134", glass: "#3e4248", door: "#2a2a2a" };
+  var MAN_L = 3.96;
+  var T_MANDJE = {
+    name: "'t Mandje",
+    roofline: "unmeasured",
+    ids: ["NL.IMBAG.Pand.0363100012171642"],
+    start: along([4.900973996976375, 52.37485000237052], [4.900941996977121, 52.374811002369846], 4.86, 0.9),
+    end: [4.900941996977121, 52.374811002369846],
+    depthM: 0.25,
+    hex: MAN.brick,
+    bodyTopM: 14.5,
+    outline: [[0, 14.5], [MAN_L, 14.5]],
+    boxes: [
+      { x0: 0, x1: MAN_L, z0: 12.8, z1: 14.5, out1: 0.35, hex: MAN.stone },
+      { x0: 0, x1: MAN_L, z0: 5.2, z1: 5.6, out1: 0.3, hex: MAN.stone },
+      ...[0, 1.25, 2.6, 3.76].map((x) => ({ x0: x, x1: x + 0.2, z0: 0, z1: 5.2, out1: 0.2, hex: MAN.stone })),
+      // Leaded transoms, a dark diamond grid read as a dark band, and the bar window and door below.
+      { x0: 0.2, x1: 3.76, z0: 3.6, z1: 4.9, out0: -0.05, out1: 0.03, hex: MAN.lead },
+      { x0: 1.45, x1: 3.76, z0: 1.2, z1: 3.4, out0: -0.05, out1: 0.04, hex: MAN.glass },
+      { x0: 0.25, x1: 1.2, z0: 0, z1: 3.3, out0: -0.1, out1: 0, hex: MAN.door },
+      { x0: 0, x1: MAN_L, z0: 0, z1: 0.35, out1: 0.25, hex: MAN.stone }
+    ],
+    windows: [{ xs: [1, 2.4, 3.6], rows: [[10.6, 11.7], [8.3, 9.7], [5.9, 7.5]], w: 0.95, hex: MAN.glass, frameHex: "#efeae0" }]
+  };
+  var JAR = { brick: "#5e3b33", stone: "#9a8f86", gold: "#d8c27a", cream: "#efe6c8", glass: "#3a3f45", door: "#2a2420" };
+  var JAR_COLS = [6.9, 9.46, 12, 14.5];
+  var DE_JAREN = {
+    name: "Caf\xE9 de Jaren",
+    roofline: "unmeasured",
+    ids: ["NL.IMBAG.Pand.0363100012180413"],
+    start: [4.8954409971059025, 52.368129002255245],
+    end: [4.895224997107816, 52.36804700225337],
+    depthM: 0.35,
+    hex: JAR.brick,
+    bodyTopM: 14.4,
+    outline: [[0, 14.4], [1.8, 14.4], [1.8, 15.6], [3.6, 17.2], [5.4, 15.6], [5.4, 14.4], [16.8, 14.4], [16.8, 15.4], [17.31, 15.4]],
+    boxes: [
+      // The O&B mosaic in its arch.
+      { x0: 2.2, x1: 5, z0: 12.9, z1: 14.8, out1: 0.08, hex: JAR.cream },
+      { x0: 2.7, x1: 4.5, z0: 13.4, z1: 14.3, out0: 0.08, out1: 0.12, hex: JAR.gold },
+      // Parapet panels and stone bands.
+      ...[7.2, 9.7, 12.2, 14.7].map((x) => ({ x0: x - 0.9, x1: x + 0.9, z0: 12.8, z1: 14.1, out1: 0.12, hex: JAR.stone })),
+      { x0: 0, x1: 17.31, z0: 12, z1: 12.3, out1: 0.2, hex: JAR.stone },
+      { x0: 0, x1: 17.31, z0: 9.5, z1: 9.75, out1: 0.15, hex: JAR.stone },
+      { x0: 0, x1: 17.31, z0: 5.6, z1: 5.9, out1: 0.25, hex: JAR.stone },
+      // Café ground floor: two runs of tall windows under arches, the arched entrance, steps.
+      { x0: 6.3, x1: 10.2, z0: 1, z1: 5.3, out0: -0.1, out1: 0.02, hex: JAR.glass },
+      { x0: 11.3, x1: 15.4, z0: 1, z1: 5.3, out0: -0.1, out1: 0.02, hex: JAR.glass },
+      ...[6.3, 7.6, 8.9, 10.2, 11.3, 12.7, 14.1, 15.4].map((x) => ({ x0: x - 0.12, x1: x + 0.12, z0: 1, z1: 5.3, out1: 0.08, hex: JAR.stone })),
+      { x0: 2.2, x1: 4, z0: 0.6, z1: 4.6, out0: -0.3, out1: -0.29, hex: JAR.door },
+      { x0: 1.6, x1: 4.6, z0: 0, z1: 0.6, out1: 0.9, hex: JAR.stone },
+      { x0: 0, x1: 17.31, z0: 0, z1: 0.9, out1: 0.12, hex: "#4a4440" }
+    ],
+    windows: [
+      { xs: [3.7], rows: [[9.6, 11.6], [6.4, 8.5]], w: 2.2, hex: JAR.glass, frameHex: "#e9e4da" },
+      { xs: JAR_COLS, rows: [[9.6, 11.6], [6.4, 8.5]], w: 1.3, hex: JAR.glass, frameHex: "#e9e4da" }
+    ]
+  };
+  var WIN = { grey: "#3c3d41", green: "#2f6b47", white: "#f1efe8", glass: "#3c4248", ledge: "#cfcac0" };
+  var WINKEL_43 = {
+    name: "Winkel 43",
+    roofline: "unmeasured",
+    ids: ["NL.IMBAG.Pand.0363100012176675"],
+    start: [4.88628199693154, 52.37906400238474],
+    end: [4.886261996930638, 52.379117002385456],
+    depthM: 0.25,
+    hex: WIN.grey,
+    bodyTopM: 9.1,
+    outline: [[0, 9.1], [0.35, 9.5], [1.7, 10.4], [2.05, 12.4], [4, 12.4], [4.35, 10.4], [5.7, 9.5], [6.05, 9.1]],
+    boxes: [
+      { x0: 0.6, x1: 5.45, z0: 8.7, z1: 9.1, out1: 0.45, hex: WIN.grey },
+      { x0: 0, x1: 6.05, z0: 4.4, z1: 4.6, out1: 0.15, hex: WIN.ledge },
+      ...stripedAwning(0, 6.05, 4.4, 1.6, WIN.green, WIN.white),
+      { x0: 1.4, x1: 4.65, z0: 3.25, z1: 3.75, out0: 1.3, out1: 1.36, hex: WIN.green },
+      ...lettering(2.1, 4, 3.38, 3.62, 1.36, WIN.white, 6),
+      { x0: 0.4, x1: 2.2, z0: 0.6, z1: 3.2, out0: -0.05, out1: 0.04, hex: WIN.glass },
+      { x0: 2.4, x1: 3.6, z0: 0, z1: 3.2, out0: -0.15, out1: -0.1, hex: "#262a2e" },
+      { x0: 3.8, x1: 5.65, z0: 0.6, z1: 3.2, out0: -0.05, out1: 0.04, hex: WIN.glass },
+      ...[0.3, 2.3, 3.7, 5.75].map((x) => ({ x0: x - 0.1, x1: x + 0.1, z0: 0, z1: 3.3, out1: 0.08, hex: WIN.white }))
+    ],
+    windows: [
+      { xs: [3], rows: [[9.5, 10.5]], w: 0.9, hex: WIN.glass, frameHex: WIN.white },
+      { xs: [1.75, 2.7, 3.65], rows: [[7.1, 8.4]], w: 0.85, hex: WIN.glass, frameHex: WIN.white },
+      { xs: [1.1, 2.75, 4.4], rows: [[4.8, 6.4]], w: 1, hex: WIN.glass, frameHex: WIN.white }
+    ]
+  };
+  var HOP = { dark: "#2f3034", green: "#3ccf7a", red: "#c8321f", cream: "#ece4cc", white: "#f2efe8", glass: "#3a3f45" };
+  var HOP_L = 4.9;
+  var CAFE_HOPPE = {
+    name: "Caf\xE9 Hoppe",
+    roofline: "unmeasured",
+    ids: ["NL.IMBAG.Pand.0363100012177199"],
+    start: [4.888688997110217, 52.36875300224259],
+    end: along([4.888688997110217, 52.36875300224259], [4.888618997109015, 52.368830002243485], 9.8, HOP_L),
+    depthM: 0.25,
+    hex: HOP.dark,
+    bodyTopM: 10.4,
+    outline: [[0, 10.4], [0.5, 11.2], [1, 12.4], [1.5, 12.7], [3.4, 12.7], [3.9, 12.4], [4.4, 11.2], [4.9, 10.4]],
+    boxes: [
+      ...lettering(0.3, 4.6, 10, 10.6, 0.25, HOP.green, 9),
+      ...lettering(0.8, 3.7, 5.1, 5.7, 0.25, HOP.red, 6),
+      { x0: 0, x1: HOP_L, z0: 3.5, z1: 4.9, out1: 0.35, hex: HOP.cream },
+      { x0: 0.2, x1: HOP_L - 0.2, z0: 3.7, z1: 4.3, out0: 0.35, out1: 0.38, hex: HOP.glass },
+      ...stripedAwning(0, HOP_L, 3.4, 1.4, HOP.red, HOP.white, 0.35),
+      { x0: 0.3, x1: 3.6, z0: 0.4, z1: 2.9, out0: -0.05, out1: 0.04, hex: HOP.glass },
+      { x0: 3.8, x1: 4.6, z0: 0, z1: 2.9, out0: -0.1, out1: -0.05, hex: "#20262a" }
+    ],
+    windows: [{ xs: [0.64, 2.2, 3.8], rows: [[8.3, 9.9], [5.9, 7.5]], w: 1.1, hex: HOP.glass, frameHex: HOP.white }]
+  };
+  var FRONTS = {
+    bijenkorf: BIJENKORF,
+    beurs: BEURS_BEURSPLEIN,
+    "royal-palace": ROYAL_PALACE_DAM,
+    concertgebouw: CONCERTGEBOUW,
+    tuschinski: TUSCHINSKI,
+    "kema-vlees": KEMA_VLEES,
+    "t-mandje": T_MANDJE,
+    "de-jaren": DE_JAREN,
+    winkel43: WINKEL_43,
+    hoppe: CAFE_HOPPE
+  };
   var FRONT_LIST = Object.values(FRONTS);
   var FRONT_PART_IDS = new Set(FRONT_LIST.flatMap((f) => f.ids));
   var FRONT_OF = new Map(FRONT_LIST.flatMap((f) => f.ids.map((id) => [id, f])));
@@ -840,8 +1143,8 @@
       const b = meta.wall.outwardBearingDeg * Math.PI / 180, ox = Math.sin(b), oy = Math.cos(b), mx = (ax2 + bx2) / 2, my = (ay2 + by2) / 2;
       const len = Math.hypot(bx2 - ax2, by2 - ay2) || 1, half = len / 2 + 25, ux = (bx2 - ax2) / len, uy = (by2 - ay2) / len;
       const inFront = (pts) => pts.some(([x, y]) => {
-        const out = (x - mx) * ox + (y - my) * oy, along = (x - mx) * ux + (y - my) * uy;
-        return out > 1 && out < 70 && Math.abs(along) < half;
+        const out = (x - mx) * ox + (y - my) * oy, along2 = (x - mx) * ux + (y - my) * uy;
+        return out > 1 && out < 70 && Math.abs(along2) < half;
       });
       for (let i = context.length - 1; i >= 0; i--) if (inFront(context[i].pts)) context.splice(i, 1);
     }
@@ -887,7 +1190,7 @@
         if (front) {
           const [fax, fay] = local([front.start])[0], [fbx, fby] = local([front.end])[0], len = Math.hypot(fbx - fax, fby - fay);
           const ux = (fbx - fax) / len, uy = (fby - fay) / len, ox = uy, oy = -ux;
-          const tris = frontTriangles(front, (along, up, out) => [fax + ux * along + ox * out, fay + uy * along + oy * out, up]);
+          const tris = frontTriangles(front, (along2, up, out) => [fax + ux * along2 + ox * out, fay + uy * along2 + oy * out, up]);
           const fp = new Float32Array(tris.length * 9), fc = new Float32Array(tris.length * 9), c = new THREE.Color();
           tris.forEach((t, i) => t.p.forEach(([x, y, z], k) => {
             fp.set([x, z, -y], i * 9 + k * 3);

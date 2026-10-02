@@ -40,6 +40,11 @@ export type Front = {
    * the photo is an error), or 'unmeasured' when the photo does not reach the top.
    */
   roofline?: 'full' | 'front-only' | 'unmeasured';
+  /**
+   * A shopfront only: the ground floor of a building whose upper storeys stay generic, so the
+   * carrying part keeps its own height and colour (Kema Vlees under a plain flat block).
+   */
+  storefront?: boolean;
   /** Thickness of the slab in front of the footprint wall, metres. */
   depthM: number;
   hex: string;
@@ -161,4 +166,23 @@ export function frontKitGeometry(front: Front, origin: { lng: number; lat: numbe
     return [{ p: [a, b, c] as [[number, number, number], [number, number, number], [number, number, number]], uv: [[0, 0], [1, 0], [1, 1]] as [[number, number], [number, number], [number, number]], layer: 'flat' as const, hex, n: [n[0] / l, n[1] / l, n[2] / l] as [number, number, number] }];
   });
   return { id: front.ids[0], tris };
+}
+
+/** A sign's name as pale letter blocks: n blocks across x0..x1 (lettering read at a distance, not text). */
+export function lettering(x0: number, x1: number, z0: number, z1: number, out: number, hex: string, n: number): FrontBox[] {
+  const step = (x1 - x0) / n;
+  return Array.from({ length: n }, (_, i) => ({ x0: x0 + i * step + step * 0.12, x1: x0 + (i + 1) * step - step * 0.12, z0, z1, out0: out, out1: out + 0.04, hex }));
+}
+
+/** An awning in alternating stripes, sloping down and out from the wall. */
+export function stripedAwning(x0: number, x1: number, z: number, depth: number, a: string, b: string, stripeM = 0.45): FrontBox[] {
+  const out: FrontBox[] = [];
+  for (let x = x0, i = 0; x < x1 - 1e-6; x += stripeM, i++) out.push({ x0: x, x1: Math.min(x1, x + stripeM), z0: z - 0.35, z1: z, out0: 0, out1: depth, hex: i % 2 ? b : a });
+  return out;
+}
+
+/** The point `t` metres along a wall from its start, for cutting a front to one shop's width. */
+export function along(start: [number, number], end: [number, number], lengthM: number, t: number): [number, number] {
+  const k = t / lengthM;
+  return [start[0] + (end[0] - start[0]) * k, start[1] + (end[1] - start[1]) * k];
 }
