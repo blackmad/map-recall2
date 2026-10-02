@@ -30,7 +30,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import {
-  indexRecords, nameKey, originDutch, recordFor, registerKind,
+  dutchHash, indexRecords, nameKey, originDutch, recordFor, registerKind,
   type RegisterRecord, type StagedCityOrigin,
 } from './lib/cityStreetNameOrigins.ts';
 
@@ -114,6 +114,10 @@ const partition = async (file: string) => {
 const previous: StagedCityOrigins | null = JSON.parse(await readFile(stagingFile, 'utf8').catch(() => 'null'));
 const kept = new Map((previous?.origins ?? []).filter((origin) => origin.en || origin.refused)
   .map((origin) => [`${origin.name}\u0000${origin.nl}`, origin]));
+// The committed cache (written by publish-city-street-name-origins.ts) keeps
+// translations across a fresh checkout, where staging/ does not exist.
+const cached = new Map((JSON.parse(await readFile(path.resolve(`scripts/data/street-name-origin-translations.${cityArg}.json`), 'utf8').catch(() => '[]')) as
+  Array<{ name: string; hash: string; en: string; enSource: string }>).map((entry) => [`${entry.name}\u0000${entry.hash}`, entry]));
 
 const origins = new Map<string, StagedCityOrigin>();
 const ambiguous = new Set<string>();
@@ -134,9 +138,9 @@ for (const [file, kind] of [['streets-routing.json', 'street'], ['streets.json',
     const key = `${kind}\u0000${name}`;
     if (origins.has(key)) continue;
     const staged: StagedCityOrigin = { name, kind, recordId: choice.record.id, sourceUrl: choice.record.sourceUrl, nl };
-    const old = kept.get(`${name}\u0000${nl}`);
+    const old = kept.get(`${name}\u0000${nl}`) ?? cached.get(`${name}\u0000${dutchHash(nl)}`);
     if (old?.en) { staged.en = old.en; staged.enSource = old.enSource; }
-    else if (old?.refused) staged.refused = old.refused;
+    else if (old && 'refused' in old && old.refused) staged.refused = old.refused;
     origins.set(key, staged);
   }
   report.push(`  ${file}: ${explained} of ${centers.size} names explained (${((explained / Math.max(1, centers.size)) * 100).toFixed(1)}%)`);
