@@ -1,0 +1,65 @@
+{
+ "name": "winkel43",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012176675"
+ ],
+ "image": "winkel43.jpg",
+ "width": 303,
+ "height": 621,
+ "pixelsPerMetre": 50,
+ "wall": {
+  "startLngLat": [
+   4.88628199693154,
+   52.37906400238474
+  ],
+  "endLngLat": [
+   4.886261996930638,
+   52.379117002385456
+  ],
+  "lengthM": 6.052289176138362,
+  "heightM": 12.41,
+  "outwardBearingDeg": 77.39263277268748
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002043_pano_0000_001067",
+   "timestamp": "2021-03-17T09:03:01.134300Z",
+   "distanceM": 4,
+   "obliquityDeg": 1
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   9.56,
+   9.7,
+   9.7,
+   9.86,
+   10.2,
+   10.68,
+   11.3,
+   12.28,
+   12.42,
+   12.42,
+   12.42,
+   12.42,
+   12.42,
+   12.32,
+   11.78,
+   11.06,
+   10.54,
+   10.06,
+   9.7,
+   9.7,
+   9.7,
+   10.06,
+   11.24,
+   11.32,
+   11.32
+  ],
+  "wallColour": "#5e575b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}

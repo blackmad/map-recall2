@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## Massimo Gelato, with web search for frontage
+
+User sent the current Massimo Gelato shopfront (signmaker's photo); web search confirmed the branches (Jan Hanzenstraat 15, Van Ostadestraat 147, Pretoriusstraat 89, Marathonweg 10, Gelderlandplein). `massimoFront()` in `landmarkFrontData.ts` is the reusable current branding (black frame and fascia, white "MASSIMO GELATO" lettering, transom panes, big window, door, round green blade sign), measured off the Pretoriusstraat panorama (2022), which matches the photo; placed on Pretoriusstraat and Jan Hanzenstraat (the 2021 panorama there predates the rebrand; the photo's "Gelato makes us happy" glass identified which of the two shops is Massimo). Van Ostadestraat is modelled as its 2022 panorama shows it (white frames, four dark-green awnings). A hand-modelled front now replaces the generated signature awning on its building (pinned in `test:shopfronts`). Practice from here: when a panorama is old or ambiguous, use web search for the business's current frontage; the images are reference only.
+
+## Hand-modelled storefronts for notable local businesses
+
+User direction: notable POIs get manual storefront work, like the landmarks. Same `Front` machinery, references from panoramas with the builder's new `--near=<POI lng,lat>` (only walls within 8 m of the pin). New in `landmarkFronts.ts`: `storefront` fronts (only the ground floor; the building keeps its own height and colour), `lettering` (a sign's name as pale letter blocks), `stripedAwning`, and `along` (cut a front to one shop's width). First five, in the game: Kema Vlees (Kinkerstraat 182: red fascia and awning under a glass-block band), 't Mandje (Zeedijk 63: pilasters, leaded transoms, pale cornice), Café de Jaren (former bank: O&B mosaic gable, parapet panels, arched café windows), Winkel 43 (dark neck gable, green-and-white striped awning, green "Winkel" fascia) and Café Hoppe (dark bell gable, green neon lettering, red "AMSTEL", cream fascia, red-and-white awning). Massimo Gelato (Jan Hanzenstraat) was left out: its panorama shows two small shops in the building and which one is Massimo is not clear. Picking rule going forward: places people know by their front (cafés, bars, food shops of local fame) and hotels; most top-scored restaurants are inside hotels, so the hotel facade is the thing to model.
+
 ## Card gallery page
 
 `/?gallery=cards[&city=utrecht|rotterdam|den-haag]` (src/CardGallery.tsx, switched in src/main.tsx) renders every neighbourhood's real answer card from the loaded extracts, flags what each lacks (description, history, name, photo, postcard), filters by name and can show only cards with gaps. A review tool, not linked from the game. Test: tests/e2e/card-gallery.spec.ts.

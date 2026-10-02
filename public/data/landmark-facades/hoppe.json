@@ -1,0 +1,80 @@
+{
+ "name": "hoppe",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012177199"
+ ],
+ "image": "hoppe.jpg",
+ "width": 490,
+ "height": 636,
+ "pixelsPerMetre": 50,
+ "wall": {
+  "startLngLat": [
+   4.888688997110217,
+   52.36875300224259
+  ],
+  "endLngLat": [
+   4.888618997109015,
+   52.368830002243485
+  ],
+  "lengthM": 9.804592894249991,
+  "heightM": 12.72,
+  "outwardBearingDeg": 61.41580094596708
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002306_pano_0002_001767",
+   "timestamp": "2021-09-09T12:21:59.516650Z",
+   "distanceM": 11,
+   "obliquityDeg": 14
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   10.84,
+   11.04,
+   11.04,
+   11.04,
+   11.48,
+   12.34,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   11.92,
+   11.24,
+   11.04,
+   11.04,
+   10.92,
+   10.92,
+   11.16,
+   11.28,
+   11.4,
+   11.44,
+   11.44,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72,
+   12.72
+  ],
+  "wallColour": "#272c2b"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}
