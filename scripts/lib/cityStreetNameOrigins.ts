@@ -16,7 +16,7 @@
  *    point lies near the extract's own street, or none at all.
  */
 import { createHash } from 'node:crypto';
-import { trimToSentence } from './translation.ts';
+import { droppedProperNames, trimToSentence } from './translation.ts';
 import { nameKey } from './streetNameOrigins.ts';
 
 export { nameKey };
@@ -130,12 +130,82 @@ export function dutchHash(nl: string): string {
 const REPAIRS: ReadonlyArray<[RegExp, RegExp, string]> = [
   [/gedempt|demping|dempen/i, /\b(?:embanked|muted|silenced|suppressed|dampened)\b/g, 'filled in'],
   [/gedempt|demping|dempen/i, /\b(partially|entirely|completely) dammed\b/g, '$1 filled in'],
+  // "Industriestad in het Verenigd Koninkrijk" (Coventrystraat, Glasgowstraat).
+  [/industriestad/i, /\bIndustrial [Ee]state\b/g, 'Industrial city'],
+  [/industriestad/i, /\bindustrial estate\b/g, 'industrial city'],
+  // An ambacht is a manor (a medieval jurisdiction), not a craft (Heer Bokelweg).
+  [/\bambacht/i, /\bcraft\b/g, 'manor'],
+  // "(of René Descartes)": Dutch "of" is "or".
+  [/\(of\s/, /\(of\s/g, '(or '],
+  // A harbour that was gegraven was dug, not dredged (Dokstraat).
+  [/gegraven/i, /\bdredged\b/g, 'dug'],
+  // "Verbastering van Brittenburg" is a corruption of the name, not a remnant.
+  [/verbastering/i, /^Remnant of\b/, 'A corruption of'],
+  // The vlinderbloemfamilie is the pea family (Goudenregenstraat: laburnum).
+  [/vlinderbloem/i, /\b(?:the )?family of crucifers\b|\bcrucifer family\b|\bbutterfly[- ]flower family\b/g, 'pea family'],
 ];
+
+/** "Naar de Dalton-H.B.S." came back "To the Dalton-H.B.S.": a register entry
+ *  opening with "Naar" means "named after". */
+const NAAR_OPENING = /^Naar\s/;
 
 export function repairCityOriginTranslation(nl: string, en: string): string {
   let out = en;
   for (const [trigger, wrong, right] of REPAIRS) if (trigger.test(nl)) out = out.replace(wrong, right);
+  if (NAAR_OPENING.test(nl)) out = out.replace(/^To (?:the )?/, (match) => (match.includes('the') ? 'Named after the ' : 'Named after '));
+  // Dutch "of" is "or": "Renatus Cartesius (of René Descartes)" kept "of".
+  // Only a phrase that appears verbatim in the Dutch is touched, so an
+  // English "Castle of Haaften" is never rewritten.
+  for (const match of nl.matchAll(/(\S+) of (\S+)/g)) {
+    const phrase = match[0];
+    if (out.includes(phrase)) out = out.split(phrase).join(`${match[1]} or ${match[2]}`);
+  }
   return out;
+}
+
+/**
+ * A Dutch common noun the model passed through untranslated at the start of
+ * the text: "Roofvogel." came back "Roofvogel.", "Herkauwer uit de orde der
+ * evenhoevigen" came back "Herkauwer from the order of even-toed ungulates".
+ * Only a first word that is not part of the street's own name, is followed in
+ * the Dutch by a lowercase word (so it opens a phrase rather than a personal
+ * name like "Renatus Cartesius") and carries no comma ("Anna, prinses van
+ * Saksen") counts.
+ */
+/** Words spelled the same in Dutch and English, measured on the Rotterdam run. */
+const SHARED_WORDS = new Set(['plant', 'polder', 'water', 'insect', 'sport', 'opera', 'film', 'model', 'hotel', 'park', 'fort', 'dam']);
+/** A personal name runs on: "Miguel de Cervantes", "Karel van der Heijden", "Frederik (Freek) van Leeuwen". */
+const NAME_PARTICLE = /^(?:de|da|del|di|van|von|den|der|ter|ten|te|le|la|du|'t|op)$/;
+
+export function keptDutchOpening(nl: string, en: string, name: string): string | null {
+  if (en.trim() === nl.trim()) {
+    // "Plant." and "Sport." are the same in both languages.
+    const words = nl.trim().replace(/[.!?]$/, '').split(/\s+/);
+    return words.every((w) => SHARED_WORDS.has(w.toLocaleLowerCase('nl'))) ? null : words[0];
+  }
+  const [first, second] = nl.trim().split(/\s+/);
+  if (!first || /[,;:(]/.test(first)) return null;
+  const word = first.replace(/[.!?]$/, '');
+  if (word.length < 5 || SHARED_WORDS.has(word.toLocaleLowerCase('nl'))) return null;
+  if (name.toLocaleLowerCase('nl').includes(word.toLocaleLowerCase('nl'))) return null;
+  if (second && (second[0] !== second[0].toLocaleLowerCase('nl') || second.startsWith('(') || NAME_PARTICLE.test(second))) return null;
+  return en.trim().split(/\s+/)[0].replace(/[.!?]$/, '') === word ? word : null;
+}
+
+/** Words common in Dutch prose and rare in English: a sign the model echoed the source. */
+const DUTCH_MARKERS = /\b(?:het|een|werd|zijn|naar|deze|vernoemd|genoemd|straat|tussen|gelegen|waar|aan|van de|der)\b/gi;
+
+/** Why a model translation must not be published, or null. */
+export function refusalReason(nl: string, en: string, name: string): string | null {
+  if (!en.trim()) return 'empty translation';
+  if (en.length > nl.length * 2 + 80) return 'translation much longer than the source';
+  const dutchHits = (en.match(DUTCH_MARKERS) || []).length;
+  if (dutchHits >= 4 && dutchHits / en.split(/\s+/).length > 0.08) return 'translation still reads as Dutch';
+  const kept = keptDutchOpening(nl, en, name);
+  if (kept) return `translation kept the Dutch word ${kept}`;
+  const dropped = droppedProperNames(nl, en, [name]);
+  if (dropped.length) return `translation lost the name: ${dropped.join(', ')}`;
+  return null;
 }
 
 /** Group records by matching key. */
