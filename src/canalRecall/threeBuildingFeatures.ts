@@ -63,6 +63,10 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
   }
   const front = shopfrontOf(p);
   building.shopfront = front ? front !== 'quiet' : false;
+  // A named business's own colour goes on its sign and awning (the cells' accent), and a
+  // labelled business gets its signature storefront.
+  if (building.shopfront && typeof p.shopColour === 'string') building.accentHex = p.shopColour;
+  if (building.shopfront && Array.isArray(p.shopSignature)) building.signature = { at: p.shopSignature as [number, number], hex: typeof p.shopColour === 'string' ? p.shopColour : '#1f4d3a' };
   if (typeof p.facade !== 'string' || !p.facadeStyle) {
     // No facade (a shed, a landmark part, a building with no style or colour): bare walls in its mapped colour.
     building.bare = true;

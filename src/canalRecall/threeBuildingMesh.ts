@@ -33,6 +33,11 @@ export type MeshBuilding = {
   shop?: boolean;
   /** The ground floor is a shopfront (either look): it takes the whole frontage, no house door beside it. */
   shopfront?: boolean;
+  /**
+   * A signature storefront for a business the map labels: a projecting blade sign and a 3D
+   * awning in the business's colour, on the wall nearest its OSM point ([lng, lat]).
+   */
+  signature?: { at: [number, number]; hex: string };
   /** Texture layer for bare wall: gable faces, chimneys, cornices. */
   plainLayer?: number;
   /** Bare walls only (a church): every row uses the plain layer and there are no doors. */
@@ -174,6 +179,54 @@ function lidMesh(b: MeshBuilding, origin: Origin): LidMesh | null {
   return index.length ? { xy, index } : null;
 }
 
+type SignTri = { p: [number, number, number][]; hex: string; n: [number, number, number] };
+
+/** Box faces (no bottom unless asked) with outward normals; frame: x along the wall, y outward, z up. */
+function boxTris(e: { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number }, a0: number, a1: number, o0: number, o1: number, z0: number, z1: number, hex: string, out: SignTri[], bottom = false) {
+  const P = (a: number, o: number, z: number): [number, number, number] => [e.x0 + e.ux * a + e.nx * o, e.y0 + e.uy * a + e.ny * o, z];
+  const face = (q: [number, number, number][], n: [number, number, number]) => {
+    const [A, B, C, D] = q, cr = (u: number[], w: number[]) => [u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]];
+    const c = cr([B[0] - A[0], B[1] - A[1], B[2] - A[2]], [C[0] - A[0], C[1] - A[1], C[2] - A[2]]);
+    const flip = c[0] * n[0] + c[1] * n[1] + c[2] * n[2] < 0;
+    out.push({ p: flip ? [A, C, B] : [A, B, C], hex, n }, { p: flip ? [A, D, C] : [A, C, D], hex, n });
+  };
+  const N = (a: number, o: number, z: number): [number, number, number] => [e.ux * a + e.nx * o, e.uy * a + e.ny * o, z];
+  face([P(a0, o1, z0), P(a1, o1, z0), P(a1, o1, z1), P(a0, o1, z1)], N(0, 1, 0));
+  face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o0, z1), P(a0, o0, z1)], N(0, -1, 0));
+  face([P(a0, o0, z0), P(a0, o1, z0), P(a0, o1, z1), P(a0, o0, z1)], N(-1, 0, 0));
+  face([P(a1, o0, z0), P(a1, o1, z0), P(a1, o1, z1), P(a1, o0, z1)], N(1, 0, 0));
+  face([P(a0, o0, z1), P(a1, o0, z1), P(a1, o1, z1), P(a0, o1, z1)], [0, 0, 1]);
+  if (bottom) face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o1, z0), P(a0, o1, z0)], [0, 0, -1]);
+}
+
+/**
+ * A signature storefront on the wall nearest the business's point: an awning slab over the
+ * ground floor across the frontage, and a blade sign sticking out from the wall above it,
+ * both in the business's colour (the sign framed in dark iron), so the label on the map and
+ * the building on the street match.
+ */
+function signatureTris(sig: { at: [number, number]; hex: string }, edges: readonly Edge[], base: number, origin: Origin): SignTri[] {
+  const kx = mPerDegLng(origin.lat), px = (sig.at[0] - origin.lng) * kx, py = (sig.at[1] - origin.lat) * M_PER_DEG_LAT;
+  let best: Edge | null = null, bestD = Infinity;
+  for (const e of edges) {
+    if (e.hole || e.len < 2.5) continue;
+    const dx = e.x1 - e.x0, dy = e.y1 - e.y0, t = Math.max(0, Math.min(1, ((px - e.x0) * dx + (py - e.y0) * dy) / (e.len * e.len)));
+    const d = Math.hypot(px - e.x0 - dx * t, py - e.y0 - dy * t);
+    if (d < bestD) { bestD = d; best = e; }
+  }
+  if (!best) return [];
+  const e = { x0: best.x0, y0: best.y0, ux: (best.x1 - best.x0) / best.len, uy: (best.y1 - best.y0) / best.len, nx: best.nx, ny: best.ny };
+  const out: SignTri[] = [], L = best.len, z = base;
+  // Awning: the frontage less 0.4 m each side, 1.2 m deep, sloping band at 2.8-3.3 m.
+  boxTris(e, 0.4, L - 0.4, 0.05, 1.25, z + 2.8, z + 3.25, sig.hex, out, true);
+  // Blade sign near the end of the frontage closest to the point: iron bracket and a 0.9 m board.
+  const along = Math.max(0.6, Math.min(L - 0.6, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
+  const at = along < L / 2 ? 0.6 : L - 0.6;
+  boxTris(e, at - 0.04, at + 0.04, 0.05, 1.2, z + 4.3, z + 4.38, '#2a2a2a', out, true);
+  boxTris(e, at - 0.07, at + 0.07, 0.25, 1.15, z + 3.45, z + 4.3, sig.hex, out, true);
+  return out;
+}
+
 const edgeKey = (x: number, y: number) => `${Math.round(x * 10)},${Math.round(y * 10)}`;
 
 /**
@@ -206,7 +259,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
 
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
   type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
-  const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: RoofTri[]; lid: LidMesh | null }> = [];
+  const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: RoofTri[]; lid: LidMesh | null; sign: SignTri[] }> = [];
+  let signTotal = 0;
   let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
   const kxLocal = mPerDegLng(origin.lat);
   for (const { b, edges, top } of prepared) {
@@ -258,19 +312,21 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       if (!rect) roof = [];
     }
     const lid = b.lid && (!b.roof || !roof.length) ? lidMesh(b, origin) : null;
-    quadsByBuilding.push({ b, quads, walls, roof, lid });
+    const sign = b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [];
+    signTotal += sign.length;
+    quadsByBuilding.push({ b, quads, walls, roof, lid, sign });
     quadTotal += quads.length; wallTotal += walls; roofTotal += roof.length;
     if (lid) { lidVerts += lid.xy.length / 2; lidIndices += lid.index.length; }
   }
 
-  const vertexCount = quadTotal * 4 + roofTotal * 3 + lidVerts;
+  const vertexCount = quadTotal * 4 + roofTotal * 3 + lidVerts + signTotal * 3;
   const positions = new Float32Array(vertexCount * 3), uvs = new Float32Array(vertexCount * 2);
   const layers = new Uint8Array(vertexCount), tints = new Uint8Array(vertexCount * 4), accents = new Uint8Array(vertexCount * 4);
-  const indices = new Uint32Array(quadTotal * 6 + roofTotal * 3 + lidIndices);
+  const indices = new Uint32Array(quadTotal * 6 + roofTotal * 3 + lidIndices + signTotal * 3);
   const ranges: VertexRange[] = [];
   let v = 0, q = 0, ti = quadTotal * 6;
-  for (const { b, quads, roof, lid } of quadsByBuilding) {
-    if (!quads.length && !roof.length && !lid) continue;
+  for (const { b, quads, roof, lid, sign } of quadsByBuilding) {
+    if (!quads.length && !roof.length && !lid && !sign.length) continue;
     const start = v;
     for (const quad of quads) {
       const { e } = quad;
@@ -323,6 +379,18 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
         v++;
       }
       for (const k of lid.index) indices[ti++] = base + k;
+    }
+    for (const t of sign) {
+      // Signature storefront boxes: flat colour on the flat layer, shaded by facing.
+      const shade = Math.max(0.55, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
+      const [sr, sg, sb] = parseHex(t.hex);
+      for (const q of t.p) {
+        positions[v * 3] = q[0]; positions[v * 3 + 1] = q[1]; positions[v * 3 + 2] = q[2];
+        uvs[v * 2] = 0.5; uvs[v * 2 + 1] = 0.5; layers[v] = b.lid!.flatLayer;
+        tints[v * 4] = sr; tints[v * 4 + 1] = sg; tints[v * 4 + 2] = sb; tints[v * 4 + 3] = shade * 255;
+        accents[v * 4] = accents[v * 4 + 1] = accents[v * 4 + 2] = accents[v * 4 + 3] = 255;
+        indices[ti++] = v; v++;
+      }
     }
     ranges.push({ id: b.id, start, count: v - start });
   }
