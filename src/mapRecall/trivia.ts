@@ -227,3 +227,11 @@ export function placeCandidates(
   }
   return out;
 }
+
+export type MapDifficulty = 'easy' | 'medium' | 'hard';
+export const MAP_DIFFICULTIES: readonly MapDifficulty[] = ['easy', 'medium', 'hard'];
+
+/** Landmark and shop clues inside a neighbourhood help on easy and medium; hard drops them. */
+export function placeCluesEnabled(difficulty: MapDifficulty): boolean {
+  return difficulty !== 'hard';
+}
