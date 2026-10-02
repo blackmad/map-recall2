@@ -50,8 +50,10 @@ for (const [name, front] of Object.entries(FRONTS)) {
   const lettered = ['bojo-68561', 'brouwerij-troost-26831'].every(slug => STOREFRONT_BY_SLUG.get(slug)!.boxes.filter(b => b.face).length > 30);
   // Registration: Bojo's photo is 1.0 m off its footprint wall; with its shift the shop fills its building.
   const bojo = STOREFRONT_BY_SLUG.get('bojo-68561')!.outline, registered = bojo[0][0] === 0 && Math.abs(bojo[1][0] - STOREFRONT_WALLS['bojo-68561'].lengthM) < 1e-6;
-  const ok = unplaced.length === 0 && offWall.length === 0 && STOREFRONT_FRONTS.length >= 290 && font && lettered && registered;
+  // Whole facades: Buiten is a teal steel shed, so its spec is a full front that recolours the building, not a shop row.
+  const buiten = STOREFRONT_BY_SLUG.get('buiten-amsterdam-48608')!, facade = !buiten.storefront && buiten.hex === '#3f7f80' && Math.max(...buiten.outline.map(p => p[1])) > 6.5;
+  const ok = unplaced.length === 0 && offWall.length === 0 && STOREFRONT_FRONTS.length >= 290 && font && lettered && registered && facade;
   failed ||= !ok;
-  console.log(`${ok ? 'ok  ' : 'FAIL'} storefronts: ${STOREFRONT_FRONTS.length} built of ${specs.length} specs${unplaced.length ? `; no wall for ${unplaced.join(', ')}` : ''}${offWall.length ? `; off their wall: ${offWall.join(', ')}` : ''}${font && lettered ? '' : '; lettering missing'}${registered ? '' : '; Bojo not registered to its wall'}`);
+  console.log(`${ok ? 'ok  ' : 'FAIL'} storefronts: ${STOREFRONT_FRONTS.length} built of ${specs.length} specs${unplaced.length ? `; no wall for ${unplaced.join(', ')}` : ''}${offWall.length ? `; off their wall: ${offWall.join(', ')}` : ''}${font && lettered ? '' : '; lettering missing'}${registered ? '' : '; Bojo not registered to its wall'}${facade ? '' : '; Buiten lost its whole facade'}`);
 }
 if (failed) process.exit(1);

@@ -59,7 +59,7 @@ export type StorefrontSpec = {
   /** Pattern over the fascia and plinth: zebra stripes (Abyssinia), checker tiles. */
   pattern?: StorefrontPattern | StorefrontPattern[];
   /** 'dutch' a curved quarter-round blind; 'tiled' a pan-tile hood. */
-  awning?: 'none' | 'flat' | 'striped' | 'scalloped' | 'canopy' | 'tiled' | 'dutch';
+  awning?: 'none' | 'flat' | 'striped' | 'scalloped' | 'canopy' | 'tiled' | 'dutch' | 'box';
   awningHex?: string;
   /** Lettering on the awning's front drop (flat and dutch awnings). */
   awningText?: { text: string; letters: string };
@@ -67,6 +67,14 @@ export type StorefrontSpec = {
   awningHex2?: string;
   /** Awning over these bay indices only (default the whole span). */
   awningOver?: [number, number];
+  /** Separate awnings along the front, each over [from, to] photo metres with its own lettering (Bullewijck's red boxes). */
+  awningSegments?: { x: [number, number]; text?: string }[];
+  /**
+   * The whole facade, not just the ground floor (Buiten's teal steel shed): the front's silhouette
+   * [along, up] across the wall, its colour (the game paints the whole building in it), vertical
+   * cladding ribs, and window grids. With `bays: 'none'` there is no shop row at all.
+   */
+  facade?: { outline: [number, number][]; hex: string; ribs?: string; windows?: { xs: number[]; rows: [number, number][]; w: number; frameHex?: string }[] };
   /** 'big' one sheet, 'split' mullioned bays, 'panes' small-paned (old café), 'arched' arched heads. */
   windows?: 'big' | 'split' | 'panes' | 'arched';
   /** Explicit pane grid [columns, rows] per shop window (overrides `windows`' mullions). */
@@ -173,7 +181,7 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
 
   // Bays.
   const door = spec.door ?? 'left';
-  const tokens = (spec.bays ?? (door === 'left' ? 'D W' : door === 'right' ? 'W D' : door === 'centre' ? 'W D W' : 'W')).trim().split(/\s+/);
+  const tokens = (spec.bays === 'none' ? '' : spec.bays ?? (door === 'left' ? 'D W' : door === 'right' ? 'W D' : door === 'centre' ? 'W D W' : 'W')).trim().split(/\s+/).filter(Boolean);
   const bays = layoutBays(tokens, x0 + 0.1, x1 - 0.1);
   const style = spec.windows ?? 'big', gBot = 0.5, doorTop = Math.min(2.45, openTop - 0.1);
   const glassTop = spec.transom ? openTop - 0.5 : openTop;
@@ -277,13 +285,17 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
     for (let z = gBot + 0.25; z < glassTop - 0.35; z += 0.25) boxes.push({ x0: a, x1: b, z0: z, z1: z + 0.04, out0: OUT + 0.12, out1: OUT + 0.14, hex: '#3a3f48' });
   }
 
-  // Awnings, over the whole span or the bays named.
-  const aHex = spec.awningHex ?? frame, aZ = openTop + 0.05;
-  const [ax0, ax1] = spec.awningOver ? [bays[spec.awningOver[0]].x0 - 0.05, bays[spec.awningOver[1]].x1 + 0.05] : [x0 + 0.1, x1 - 0.1];
-  switch (spec.awning ?? 'none') {
+  // Awnings: over the whole span, the bays named, or in separate lettered segments.
+  const aHex = spec.awningHex ?? frame, aZ = openTop + 0.05, aLetters = spec.awningText?.letters ?? contrast(aHex);
+  const awningAt = (ax0: number, ax1: number, label?: string) => { switch (spec.awning ?? 'none') {
     case 'flat':
       extrusions.push({ x0: ax0, x1: ax1, profile: [[OUT, aZ], [1.5, aZ - 0.5], [1.5, aZ - 0.75]], hex: aHex });
-      if (spec.awningText) boxes.push(...textRects(spec.awningText.text, ax0 + 0.2, ax1 - 0.2, aZ - 0.72, aZ - 0.53).map(r => ({ ...r, out0: 1.5, out1: 1.515, hex: spec.awningText!.letters, face: true })));
+      if (label) boxes.push(...textRects(label, ax0 + 0.2, ax1 - 0.2, aZ - 0.72, aZ - 0.53).map(r => ({ ...r, out0: 1.5, out1: 1.515, hex: aLetters, face: true })));
+      break;
+    case 'box':
+      // A shallow box with a lettered front face, level with the wall line above the glass.
+      extrusions.push({ x0: ax0, x1: ax1, profile: [[OUT, aZ + 0.3], [1.0, aZ + 0.3], [1.0, aZ - 0.05], [OUT, aZ - 0.05]], hex: aHex });
+      if (label) boxes.push(...textRects(label, ax0 + 0.25, ax1 - 0.25, aZ + 0.02, aZ + 0.23).map(r => ({ ...r, out0: 1.0, out1: 1.015, hex: aLetters, face: true })));
       break;
     case 'striped': boxes.push(...stripedAwning(ax0, ax1, aZ, 1.4, aHex, spec.awningHex2 ?? WHITE).map(b => ({ ...b, out0: OUT }))); break;
     case 'scalloped': {
@@ -304,7 +316,9 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
       boxes.push({ x0: ax0 - 0.25, x1: ax1 + 0.25, z0: aZ - 0.72, z1: aZ - 0.6, out0: 1.1, out1: 1.2, hex: '#9a1f22' });
       break;
     }
-  }
+  } };
+  if (spec.awningSegments) for (const seg of spec.awningSegments) awningAt(Math.max(x0, seg.x[0] + sh), Math.min(x1, seg.x[1] + sh), seg.text);
+  else awningAt(...(spec.awningOver ? [bays[spec.awningOver[0]].x0 - 0.05, bays[spec.awningOver[1]].x1 + 0.05] as const : [x0 + 0.1, x1 - 0.1] as const), spec.awningText?.text);
   // Projecting sign at the end away from the door.
   const sAt = (spec.signAt ?? (door === 'right' ? 'left' : 'right')) === 'left' ? x0 + 0.25 : x1 - 0.25, sHex = spec.signHex ?? (fascia ?? frame);
   switch (spec.sign ?? 'none') {
@@ -318,10 +332,18 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
     for (const dx of [-0.5, 0.5]) boxes.push({ x0: x + dx - 0.16, x1: x + dx + 0.16, z0: 0.4, z1: 0.45, out0: 1.42, out1: 1.74, hex: CHAIR }, { x0: x + dx - 0.14, x1: x + dx - 0.1, z0: 0, z1: 0.4, out0: 1.5, out1: 1.66, hex: CHAIR }, { x0: x + dx + 0.1, x1: x + dx + 0.14, z0: 0, z1: 0.4, out0: 1.5, out1: 1.66, hex: CHAIR }, { x0: x + dx - 0.16, x1: x + dx + 0.16, z0: 0.45, z1: 0.8, out0: 1.7, out1: 1.74, hex: CHAIR });
   }
   if (spec.plants) for (let x = x0 + 0.3; x < x1 - 0.6; x += 2.2) boxes.push({ x0: x, x1: x + 0.5, z0: 0, z1: 0.5, out0: 0.25, out1: 0.75, hex: '#4a3b30' }, { x0: x - 0.05, x1: x + 0.55, z0: 0.5, z1: 1.05, out0: 0.2, out1: 0.8, hex: '#3f7a3a' });
-  return {
-    name: spec.name, storefront: true, roofline: 'unmeasured', ids: [wall.pand],
-    start: wall.start, end: wall.end, depthM: 0.05 + (wall.outM ?? 0), hex: wallHex, outline: [[x0, 0.01], [x1, 0.01]],
-    // Drop parts squeezed to nothing (a fanlight over a door in a low storefront).
-    boxes: boxes.filter(b => b.z1 - b.z0 > 0.02 && b.x1 - b.x0 > 0.02), extrusions, faces, windows: [],
-  };
+  // Drop parts squeezed to nothing (a fanlight over a door in a low storefront).
+  const kept = boxes.filter(b => b.z1 - b.z0 > 0.02 && b.x1 - b.x0 > 0.02);
+  const base = { name: spec.name, roofline: 'unmeasured' as const, ids: [wall.pand], start: wall.start, end: wall.end, depthM: 0.05 + (wall.outM ?? 0), extrusions, faces };
+  if (spec.facade) {
+    // A whole facade: the silhouette slab in the facade colour, cladding ribs, window grids, then the shop row (if any) on it.
+    const f = spec.facade, outline = f.outline.map(([x, z]) => [Math.min(L, Math.max(0, x + sh)), z] as [number, number]);
+    const ribs: FrontBox[] = [];
+    if (f.ribs) for (let x = outline[0][0] + 0.15; x < outline[outline.length - 1][0] - 0.1; x += 0.35) {
+      let top = 0; for (let i = 1; i < outline.length; i++) { const [xa, za] = outline[i - 1], [xb, zb] = outline[i]; if (x >= xa && x <= xb && xb > xa) top = za + ((zb - za) * (x - xa)) / (xb - xa); }
+      if (top > 0.3) ribs.push({ x0: x, x1: x + 0.06, z0: 0.05, z1: top - 0.05, out0: 0, out1: 0.04, hex: f.ribs });
+    }
+    return { ...base, hex: f.hex, outline, boxes: [...ribs, ...(spec.bays === 'none' ? kept.slice(1) : kept)], windows: (f.windows ?? []).map(w => ({ ...w, xs: w.xs.map(x => x + sh), hex: GLASS })) };
+  }
+  return { ...base, storefront: true, hex: wallHex, outline: [[x0, 0.01], [x1, 0.01]], boxes: kept, windows: [] };
 }

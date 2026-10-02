@@ -1231,7 +1231,7 @@
       openTop = bz0 - 0.06;
     }
     const door = spec.door ?? "left";
-    const tokens = (spec.bays ?? (door === "left" ? "D W" : door === "right" ? "W D" : door === "centre" ? "W D W" : "W")).trim().split(/\s+/);
+    const tokens = (spec.bays === "none" ? "" : spec.bays ?? (door === "left" ? "D W" : door === "right" ? "W D" : door === "centre" ? "W D W" : "W")).trim().split(/\s+/).filter(Boolean);
     const bays = layoutBays(tokens, x0 + 0.1, x1 - 0.1);
     const style = spec.windows ?? "big", gBot = 0.5, doorTop = Math.min(2.45, openTop - 0.1);
     const glassTop = spec.transom ? openTop - 0.5 : openTop;
@@ -1336,39 +1336,46 @@
       boxes.push({ x0: a - 0.05, x1: b + 0.05, z0: glassTop - 0.3, z1: glassTop, out0: OUT, out1: OUT + 0.22, hex: "#8a8c8e" }, { x0: a, x1: b, z0: gBot, z1: glassTop - 0.3, out0: OUT + 0.1, out1: OUT + 0.12, hex: rHex });
       for (let z = gBot + 0.25; z < glassTop - 0.35; z += 0.25) boxes.push({ x0: a, x1: b, z0: z, z1: z + 0.04, out0: OUT + 0.12, out1: OUT + 0.14, hex: "#3a3f48" });
     }
-    const aHex = spec.awningHex ?? frame, aZ = openTop + 0.05;
-    const [ax0, ax1] = spec.awningOver ? [bays[spec.awningOver[0]].x0 - 0.05, bays[spec.awningOver[1]].x1 + 0.05] : [x0 + 0.1, x1 - 0.1];
-    switch (spec.awning ?? "none") {
-      case "flat":
-        extrusions.push({ x0: ax0, x1: ax1, profile: [[OUT, aZ], [1.5, aZ - 0.5], [1.5, aZ - 0.75]], hex: aHex });
-        if (spec.awningText) boxes.push(...textRects(spec.awningText.text, ax0 + 0.2, ax1 - 0.2, aZ - 0.72, aZ - 0.53).map((r) => ({ ...r, out0: 1.5, out1: 1.515, hex: spec.awningText.letters, face: true })));
-        break;
-      case "striped":
-        boxes.push(...stripedAwning(ax0, ax1, aZ, 1.4, aHex, spec.awningHex2 ?? WHITE2).map((b) => ({ ...b, out0: OUT })));
-        break;
-      case "scalloped": {
-        extrusions.push({ x0: ax0, x1: ax1, profile: [[OUT, aZ], [1.3, aZ - 0.35]], hex: aHex });
-        for (let x = ax0; x < ax1 - 0.35; x += 0.5) faces.push({ points: [[x + 0.02, aZ - 0.35], [x + 0.48, aZ - 0.35], [x + 0.25, aZ - 0.6]], out: 1.3, hex: aHex });
-        break;
-      }
-      case "canopy":
-        extrusions.push({ x0: ax0 - 0.2, x1: ax1 + 0.2, profile: [[OUT, aZ], [2.2, aZ - 0.05], [2.2, aZ - 0.2], [OUT, aZ - 0.15]], hex: aHex });
-        break;
-      case "dutch": {
-        const R = 1, prof = [];
-        for (let i = 0; i <= 6; i++) {
-          const t = Math.PI / 2 * (i / 6);
-          prof.push([OUT + R * Math.sin(t), aZ + 0.35 - R * (1 - Math.cos(t))]);
+    const aHex = spec.awningHex ?? frame, aZ = openTop + 0.05, aLetters = spec.awningText?.letters ?? contrast(aHex);
+    const awningAt = (ax0, ax1, label) => {
+      switch (spec.awning ?? "none") {
+        case "flat":
+          extrusions.push({ x0: ax0, x1: ax1, profile: [[OUT, aZ], [1.5, aZ - 0.5], [1.5, aZ - 0.75]], hex: aHex });
+          if (label) boxes.push(...textRects(label, ax0 + 0.2, ax1 - 0.2, aZ - 0.72, aZ - 0.53).map((r) => ({ ...r, out0: 1.5, out1: 1.515, hex: aLetters, face: true })));
+          break;
+        case "box":
+          extrusions.push({ x0: ax0, x1: ax1, profile: [[OUT, aZ + 0.3], [1, aZ + 0.3], [1, aZ - 0.05], [OUT, aZ - 0.05]], hex: aHex });
+          if (label) boxes.push(...textRects(label, ax0 + 0.25, ax1 - 0.25, aZ + 0.02, aZ + 0.23).map((r) => ({ ...r, out0: 1, out1: 1.015, hex: aLetters, face: true })));
+          break;
+        case "striped":
+          boxes.push(...stripedAwning(ax0, ax1, aZ, 1.4, aHex, spec.awningHex2 ?? WHITE2).map((b) => ({ ...b, out0: OUT })));
+          break;
+        case "scalloped": {
+          extrusions.push({ x0: ax0, x1: ax1, profile: [[OUT, aZ], [1.3, aZ - 0.35]], hex: aHex });
+          for (let x = ax0; x < ax1 - 0.35; x += 0.5) faces.push({ points: [[x + 0.02, aZ - 0.35], [x + 0.48, aZ - 0.35], [x + 0.25, aZ - 0.6]], out: 1.3, hex: aHex });
+          break;
         }
-        extrusions.push({ x0: ax0, x1: ax1, profile: prof, hex: aHex });
-        break;
+        case "canopy":
+          extrusions.push({ x0: ax0 - 0.2, x1: ax1 + 0.2, profile: [[OUT, aZ], [2.2, aZ - 0.05], [2.2, aZ - 0.2], [OUT, aZ - 0.15]], hex: aHex });
+          break;
+        case "dutch": {
+          const R = 1, prof = [];
+          for (let i = 0; i <= 6; i++) {
+            const t = Math.PI / 2 * (i / 6);
+            prof.push([OUT + R * Math.sin(t), aZ + 0.35 - R * (1 - Math.cos(t))]);
+          }
+          extrusions.push({ x0: ax0, x1: ax1, profile: prof, hex: aHex });
+          break;
+        }
+        case "tiled": {
+          for (let k = 0; k < 3; k++) boxes.push({ x0: ax0 - 0.15, x1: ax1 + 0.15, z0: aZ - 0.2 - k * 0.18, z1: aZ - k * 0.18, out0: OUT + k * 0.35, out1: OUT + (k + 1) * 0.35, hex: aHex });
+          boxes.push({ x0: ax0 - 0.25, x1: ax1 + 0.25, z0: aZ - 0.72, z1: aZ - 0.6, out0: 1.1, out1: 1.2, hex: "#9a1f22" });
+          break;
+        }
       }
-      case "tiled": {
-        for (let k = 0; k < 3; k++) boxes.push({ x0: ax0 - 0.15, x1: ax1 + 0.15, z0: aZ - 0.2 - k * 0.18, z1: aZ - k * 0.18, out0: OUT + k * 0.35, out1: OUT + (k + 1) * 0.35, hex: aHex });
-        boxes.push({ x0: ax0 - 0.25, x1: ax1 + 0.25, z0: aZ - 0.72, z1: aZ - 0.6, out0: 1.1, out1: 1.2, hex: "#9a1f22" });
-        break;
-      }
-    }
+    };
+    if (spec.awningSegments) for (const seg of spec.awningSegments) awningAt(Math.max(x0, seg.x[0] + sh), Math.min(x1, seg.x[1] + sh), seg.text);
+    else awningAt(...spec.awningOver ? [bays[spec.awningOver[0]].x0 - 0.05, bays[spec.awningOver[1]].x1 + 0.05] : [x0 + 0.1, x1 - 0.1], spec.awningText?.text);
     const sAt = (spec.signAt ?? (door === "right" ? "left" : "right")) === "left" ? x0 + 0.25 : x1 - 0.25, sHex = spec.signHex ?? (fascia ?? frame);
     switch (spec.sign ?? "none") {
       case "round":
@@ -1386,22 +1393,22 @@
       for (const dx of [-0.5, 0.5]) boxes.push({ x0: x + dx - 0.16, x1: x + dx + 0.16, z0: 0.4, z1: 0.45, out0: 1.42, out1: 1.74, hex: CHAIR }, { x0: x + dx - 0.14, x1: x + dx - 0.1, z0: 0, z1: 0.4, out0: 1.5, out1: 1.66, hex: CHAIR }, { x0: x + dx + 0.1, x1: x + dx + 0.14, z0: 0, z1: 0.4, out0: 1.5, out1: 1.66, hex: CHAIR }, { x0: x + dx - 0.16, x1: x + dx + 0.16, z0: 0.45, z1: 0.8, out0: 1.7, out1: 1.74, hex: CHAIR });
     }
     if (spec.plants) for (let x = x0 + 0.3; x < x1 - 0.6; x += 2.2) boxes.push({ x0: x, x1: x + 0.5, z0: 0, z1: 0.5, out0: 0.25, out1: 0.75, hex: "#4a3b30" }, { x0: x - 0.05, x1: x + 0.55, z0: 0.5, z1: 1.05, out0: 0.2, out1: 0.8, hex: "#3f7a3a" });
-    return {
-      name: spec.name,
-      storefront: true,
-      roofline: "unmeasured",
-      ids: [wall.pand],
-      start: wall.start,
-      end: wall.end,
-      depthM: 0.05 + (wall.outM ?? 0),
-      hex: wallHex,
-      outline: [[x0, 0.01], [x1, 0.01]],
-      // Drop parts squeezed to nothing (a fanlight over a door in a low storefront).
-      boxes: boxes.filter((b) => b.z1 - b.z0 > 0.02 && b.x1 - b.x0 > 0.02),
-      extrusions,
-      faces,
-      windows: []
-    };
+    const kept = boxes.filter((b) => b.z1 - b.z0 > 0.02 && b.x1 - b.x0 > 0.02);
+    const base = { name: spec.name, roofline: "unmeasured", ids: [wall.pand], start: wall.start, end: wall.end, depthM: 0.05 + (wall.outM ?? 0), extrusions, faces };
+    if (spec.facade) {
+      const f = spec.facade, outline = f.outline.map(([x, z]) => [Math.min(L, Math.max(0, x + sh)), z]);
+      const ribs = [];
+      if (f.ribs) for (let x = outline[0][0] + 0.15; x < outline[outline.length - 1][0] - 0.1; x += 0.35) {
+        let top = 0;
+        for (let i = 1; i < outline.length; i++) {
+          const [xa, za] = outline[i - 1], [xb, zb] = outline[i];
+          if (x >= xa && x <= xb && xb > xa) top = za + (zb - za) * (x - xa) / (xb - xa);
+        }
+        if (top > 0.3) ribs.push({ x0: x, x1: x + 0.06, z0: 0.05, z1: top - 0.05, out0: 0, out1: 0.04, hex: f.ribs });
+      }
+      return { ...base, hex: f.hex, outline, boxes: [...ribs, ...spec.bays === "none" ? kept.slice(1) : kept], windows: (f.windows ?? []).map((w) => ({ ...w, xs: w.xs.map((x) => x + sh), hex: GLASS2 })) };
+    }
+    return { ...base, storefront: true, hex: wallHex, outline: [[x0, 0.01], [x1, 0.01]], boxes: kept, windows: [] };
   }
 
   // src/canalRecall/storefrontSpecs.ts
@@ -1480,8 +1487,8 @@
     "brut-de-mer-57580": { name: "Brut de Mer", frame: WHITE3, fascia: "#2b3a55", windows: "panes", door: "centre", plants: true },
     "buffet-van-odette-76062": { name: "Buffet van Odette", frame: WHITE3, fascia: false, awning: "canopy", awningHex: "#e8e4dc", windows: "split", door: "left", terrace: true },
     // Sheet 04.
-    "buiten-amsterdam-48608": { name: "Buiten", frame: "#2f6f7a", fascia: false, windows: "panes", door: "centre", plants: true, heightM: 4.2 },
-    "bullewijck-par-hasard-01986": { name: "Bullewijck", frame: "#3a2a26", fascia: "#b02a2a", windows: "split", door: "centre", terrace: true },
+    "buiten-amsterdam-48608": { name: "Buiten", frame: "#2f6464", fascia: false, text: "", span: [0, 14.7], bays: "none", facade: { outline: [[0, 5.1], [2.3, 5.1], [2.3, 5.3], [8.4, 6.9], [14.2, 5.3], [14.7, 5.3]], hex: "#3f7f80", ribs: "#356c6d", windows: [{ xs: [5.65, 7.4, 9.2, 10.9], rows: [[1.2, 1.9], [2, 2.7], [3.1, 3.75], [3.8, 4.45], [4.5, 5.1]], w: 1.5, frameHex: "#2f6464" }] }, plants: true },
+    "bullewijck-par-hasard-01986": { name: "Bullewijck", frame: "#2a2c2e", wall: "#8a8580", plinth: "#8a8580", fascia: false, text: "", span: [0, 19.8], bays: "W:4.0 C:2.6 W W W", grid: [3, 1], awning: "box", awningHex: "#b8282a", awningText: { text: "", letters: "#f2f0ea" }, awningSegments: [{ x: [0, 1.4] }, { x: [6.7, 11.6], text: "KOFFIE LUNCH BORREL" }, { x: [11.7, 16.6], text: "BULLEWIJCK" }, { x: [16.7, 19.8], text: "EEN BEETJE" }], signs: [{ text: "BULLEWIJCK", x: [2.4, 7.9], z: [4.15, 4.85], letters: "#7a4a32" }], facade: { outline: [[0, 7.4], [19.8, 7.4]], hex: "#8a8580", windows: [{ xs: [1.7, 5.3, 8.9, 12.6, 16.2], rows: [[5.4, 6.6]], w: 3, frameHex: "#5a5c5e" }] }, terrace: true, plants: true, heightM: 4.2 },
     "buurman-buurman-eetwinkel-de-with-02216": { name: "Buurman & Buurman", frame: "#eeece6", wall: "#3a3f45", plinth: "#3a3f45", fascia: "#e6e3dc", fasciaH: 0.22, text: "", span: [0, 9], bays: "W:1.4 B:0.8 D:0.9 B:0.65 W:2.25 B:0.6 W:2.3", grid: [1, 1], transom: true, heightM: 4 },
     "cabron-59249": { name: "Cabron", frame: "#5fa58a", fascia: "#5fa58a", windows: "split", door: "centre" },
     "cafe-carbon-72095": { name: "Carbon", frame: DARK, fascia: false, awning: "flat", awningHex: "#2a2c2e", windows: "split", door: "centre", terrace: true },
@@ -2313,7 +2320,7 @@
           if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, "#9a5240"));
         }
         const unused = [...parts.values()].filter((p) => !setup.kit.tiers.some((t) => t.id === p.id) && !setup.kit.roofs.some((h) => h.id === p.id));
-        for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, storefront ? "#8f5440" : front?.hex ?? "#9a5240"));
+        for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, storefront && front?.storefront ? "#8f5440" : front?.hex ?? "#9a5240"));
         const chunk = buildKitChunk(kitGeometry(setup.kit, parts), { plain: 0, flat: 0, slope: 0 });
         const geometry = new THREE.BufferGeometry(), pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);
         for (let i = 0; i < chunk.vertexCount; i++) {
@@ -2330,7 +2337,7 @@
           const [fax, fay] = local([front.start])[0], [fbx, fby] = local([front.end])[0], len = Math.hypot(fbx - fax, fby - fay);
           const ux = (fbx - fax) / len, uy = (fby - fay) / len, ox = uy, oy = -ux;
           const upper = [];
-          if (storefront) for (let z = 4.4; z + 1.6 < meta.wall.heightM - 0.5; z += 3) for (let x = 0.9; x + 0.9 < len; x += 1.9) upper.push({ x0: x - 0.5, x1: x + 0.5, z0: z - 0.1, z1: z + 1.7, out1: 0.03, hex: "#e8e2d4" }, { x0: x - 0.4, x1: x + 0.4, z0: z, z1: z + 1.6, out1: 0.05, hex: "#3d4650" });
+          if (storefront && front.storefront) for (let z = 4.4; z + 1.6 < meta.wall.heightM - 0.5; z += 3) for (let x = 0.9; x + 0.9 < len; x += 1.9) upper.push({ x0: x - 0.5, x1: x + 0.5, z0: z - 0.1, z1: z + 1.7, out1: 0.03, hex: "#e8e2d4" }, { x0: x - 0.4, x1: x + 0.4, z0: z, z1: z + 1.6, out1: 0.05, hex: "#3d4650" });
           const tris = frontTriangles(storefront ? { ...front, boxes: [...upper, ...front.boxes] } : front, (along2, up, out) => [fax + ux * along2 + ox * out, fay + uy * along2 + oy * out, up]);
           const fp = new Float32Array(tris.length * 9), fc = new Float32Array(tris.length * 9), c = new THREE.Color();
           tris.forEach((t, i) => t.p.forEach(([x, y, z], k) => {

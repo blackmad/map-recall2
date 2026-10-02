@@ -99,7 +99,7 @@ async function loadTile(x: number, y: number): Promise<any[]> {
       for (const h of setup.kit.roofs) { const p = parts.get(h.id); if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, '#9a5240')); }
       const unused = [...parts.values()].filter(p => !setup.kit.tiers.some(t => t.id === p.id) && !setup.kit.roofs.some(h => h.id === p.id));
       // A storefront leaves its building alone: brick like the game's facades, not the shop's colour.
-      for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, storefront ? '#8f5440' : front?.hex ?? '#9a5240'));
+      for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, storefront && front?.storefront ? '#8f5440' : front?.hex ?? '#9a5240'));
       const chunk = buildKitChunk(kitGeometry(setup.kit, parts), { plain: 0, flat: 0, slope: 0 });
       const geometry = new THREE.BufferGeometry(), pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);
       for (let i = 0; i < chunk.vertexCount; i++) {
@@ -114,7 +114,7 @@ async function loadTile(x: number, y: number): Promise<any[]> {
         const ux = (fbx - fax) / len, uy = (fby - fay) / len, ox = uy, oy = -ux;
         // Storefronts: the generic upper floors the game draws above them, so the shop is judged in context.
         const upper: FrontBox[] = [];
-        if (storefront) for (let z = 4.4; z + 1.6 < meta.wall.heightM - 0.5; z += 3) for (let x = 0.9; x + 0.9 < len; x += 1.9) upper.push({ x0: x - 0.5, x1: x + 0.5, z0: z - 0.1, z1: z + 1.7, out1: 0.03, hex: '#e8e2d4' }, { x0: x - 0.4, x1: x + 0.4, z0: z, z1: z + 1.6, out1: 0.05, hex: '#3d4650' });
+        if (storefront && front.storefront) for (let z = 4.4; z + 1.6 < meta.wall.heightM - 0.5; z += 3) for (let x = 0.9; x + 0.9 < len; x += 1.9) upper.push({ x0: x - 0.5, x1: x + 0.5, z0: z - 0.1, z1: z + 1.7, out1: 0.03, hex: '#e8e2d4' }, { x0: x - 0.4, x1: x + 0.4, z0: z, z1: z + 1.6, out1: 0.05, hex: '#3d4650' });
         const tris = frontTriangles(storefront ? { ...front, boxes: [...upper, ...front.boxes] } : front, (along, up, out) => [fax + ux * along + ox * out, fay + uy * along + oy * out, up]);
         const fp = new Float32Array(tris.length * 9), fc = new Float32Array(tris.length * 9), c = new THREE.Color();
         tris.forEach((t, i) => t.p.forEach(([x, y, z], k) => {
