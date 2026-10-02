@@ -2,34 +2,24 @@
 // reconstruction (kit plus measured front, flat colours), and the rectified street
 // panorama it was measured from, shown flat as a reference only.
 // `?name=waag|bijenkorf|beurs`; the reference comes from public/data/landmark-facades.
-import { kitGeometry, type Kit, type PartInput } from './landmarkKits.js';
+import { KITS, kitGeometry, type Kit, type PartInput } from './landmarkKits.js';
 import { buildKitChunk } from './threeBuildingMesh.js';
 import { frontTriangles } from './landmarkFronts.js';
 import { FRONTS } from './landmarkFrontData.js';
 
-type Setup = { centre: [number, number]; ids: string[]; kit: Kit; roofHosts: { id: string; riseM: number }[] };
+type Setup = { centre: [number, number]; ids: string[]; kit: Kit };
 const SETUPS: Record<string, Setup> = {
   waag: {
     centre: [4.9003, 52.37264],
     ids: 'w749066938,w749066939,w749066940,w749066942,w749066943,w749066944,w749066945,w749066946,w749066947,w749066948,w749066949,w749066950'.split(','),
     // Two round corner towers with conical roofs, two turrets, and steep roofs on the main body.
-    kit: {
-      name: 'Waag',
-      tiers: ['w749066949', 'w749066950', 'w749066946', 'w749066947'].map(id => ({ id, shape: 'octagon' as const, mat: 'brick' as const })),
-      stacks: [
-        ...['w749066949', 'w749066950'].map(onId => ({ onId, stages: [{ shape: 'octagon' as const, w0: 9, w1: 0.8, h: 10, mat: 'slate' as const }] })),
-        ...['w749066946', 'w749066947'].map(onId => ({ onId, stages: [{ shape: 'octagon' as const, w0: 5.2, w1: 0.5, h: 5.5, mat: 'slate' as const }] })),
-      ],
-      roofs: ['w749066938', 'w749066939', 'w749066942', 'w749066948', 'w749066940'].map(id => ({ id, riseM: 6, mat: 'slate' as const })),
-    },
-    roofHosts: ['w749066938', 'w749066939', 'w749066942', 'w749066948', 'w749066940'].map(id => ({ id, riseM: 6 })),
+    kit: KITS.find(k => k.name === 'Waag')!,
   },
   bijenkorf: {
     centre: [4.8939, 52.37335],
     ids: 'w751128384,w751235773,w751235774,w751235775,w751235776,w751128373,NL.IMBAG.Pand.0363100012179183'.split(','),
     // Plain prisms in the front's stone; the front (landmarkFrontData.ts) carries the detail.
     kit: { name: 'Bijenkorf', tiers: [], stacks: [], roofs: [] },
-    roofHosts: [],
   },
 };
 
@@ -37,15 +27,7 @@ const BEURS_IDS = 'w749918639,w749918641,w749918651,w749918653,w749918637,w74991
 SETUPS.beurs = {
   centre: [4.8961, 52.37527],
   ids: BEURS_IDS,
-  // Berlage's Beurs: a brick clock tower with a pyramid cap, and long steep-roofed halls.
-  kit: {
-    name: 'Beurs',
-    tiers: [{ id: 'w749918639', shape: 'square', mat: 'brick' }],
-    stacks: [{ onId: 'w749918639', stages: [{ shape: 'square', w0: 12.5, w1: 0.6, h: 11, mat: 'slate' }] }],
-    // The Beursplein hall's eaves sit on the gable row at 15.5 m, so its roof rises 11.5 m.
-    roofs: ['w749918641', 'w749918651', 'w749918653', 'w749918637', 'w749918638'].map(id => ({ id, riseM: id === 'w749918641' ? 11.5 : 7, mat: 'slate' as const })),
-  },
-  roofHosts: ['w749918641', 'w749918651', 'w749918653', 'w749918637', 'w749918638'].map(id => ({ id, riseM: id === 'w749918641' ? 11.5 : 7 })),
+  kit: KITS.find(k => k.name === 'Beurs van Berlage')!,
 };
 
 const q = new URLSearchParams(location.search), name = q.get('name') ?? 'waag', setup = SETUPS[name], front = FRONTS[name];
@@ -103,8 +85,8 @@ async function loadTile(x: number, y: number): Promise<any[]> {
     const scene = new THREE.Scene(); lights(scene);
     if (variant === 'plain') for (const p of parts.values()) scene.add(prism(p.ring, p.minHeightM, p.heightM, '#d9c24a'));
     if (variant === 'kit') {
-      for (const h of setup.roofHosts) { const p = parts.get(h.id); if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, '#9a5240')); }
-      const unused = [...parts.values()].filter(p => !setup.kit.tiers.some(t => t.id === p.id) && !setup.roofHosts.some(h => h.id === p.id));
+      for (const h of setup.kit.roofs) { const p = parts.get(h.id); if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, '#9a5240')); }
+      const unused = [...parts.values()].filter(p => !setup.kit.tiers.some(t => t.id === p.id) && !setup.kit.roofs.some(h => h.id === p.id));
       for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, front?.hex ?? '#9a5240'));
       const chunk = buildKitChunk(kitGeometry(setup.kit, parts), { plain: 0, flat: 0, slope: 0 });
       const geometry = new THREE.BufferGeometry(), pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);

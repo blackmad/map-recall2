@@ -539,7 +539,11 @@ class VectorBasemap {
     if (!this._pyramidalRoofs) {
       this._pyramidalRoofs = new api.PyramidalRoofs(this.map, maplibregl);
     }
-    this._pyramidalRoofs.setFeatures(features || []);
+    this._pyramidFeatures = features || [];
+    // In the three.js looks a landmark kit draws its own cones (the Waag's towers): no second cone.
+    const kitApi = window.CanalRecallThreeBuildings;
+    const kitIds = this._buildings3dEnabled && kitApi && kitApi.KIT_HIDE_IDS ? new Set(kitApi.KIT_HIDE_IDS) : null;
+    this._pyramidalRoofs.setFeatures(kitIds ? this._pyramidFeatures.filter(f => !kitIds.has(String(f.properties && f.properties.id))) : this._pyramidFeatures);
   }
 
   // The basemap keeps only the buildings the extract does not carry. Its ids
@@ -796,6 +800,15 @@ class VectorBasemap {
       ground];
   }
 
+  /**
+   * Whether the visible three.js layer draws the whole city: every building, its walls, lids and the
+   * yellow answer. MapLibre's building layers are then switched off, so the two renderers never
+   * disagree (slabs hanging in mid-air while the mesh rebuilt, user reports 2026-10-02).
+   */
+  _threeOwnsTops() {
+    return !!this._threeBuildings && this._buildings3dEnabled && this._facadesActive();
+  }
+
   /** The three.js facade layer, when `?buildings3d=1` and the bundle is present. */
   _addThreeBuildingsLayer() {
     const api = window.CanalRecallThreeBuildings;
@@ -822,7 +835,10 @@ class VectorBasemap {
     if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
     const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds) : decorate;
     // Landmark kits (spires, domes, pitched roofs on naves) lower their roofed parts to the eaves.
-    this._completeCity.setFeatureDecorator(this._buildings3dEnabled && api && api.decorateKitRoof ? (feature) => api.decorateKitRoof(base(feature)) : base);
+    // Measured landmark fronts cap and colour the parts behind them (landmarkFrontData.ts).
+    this._completeCity.setFeatureDecorator(this._buildings3dEnabled && api && api.decorateKitRoof
+      ? (feature) => api.decorateFront(api.decorateKitRoof(base(feature)))
+      : base);
   }
 
   /** Resolved landmark building ids, fetched once; re-decorates the resident city when they arrive. */
@@ -865,6 +881,7 @@ class VectorBasemap {
     if (!this.map || !this.map.getLayer('osm-colored-buildings')) return; // layers are created from these flags on load
     this._applyFeatureDecorator();
     this._refreshColoredBuildingFilter();
+    if (this._pyramidFeatures) this._syncPyramidalRoofs(this._pyramidFeatures);
     if (this._buildings3dEnabled) {
       this._addThreeBuildingsLayer();
       if (this._threeBuildings) this._threeBuildings.setLook(look);
@@ -937,6 +954,10 @@ class VectorBasemap {
     const groundTop = ['min', wallTop, ['+', minHeight, ['coalesce', ['get', 'groundFloorHeightM'], 3.2]]];
     if (this.map.getLayer('osm-colored-buildings')) {
       this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', this._wallBaseExpression(groundTop, minHeight, wallTop));
+    }
+    const owned = this._threeOwnsTops();
+    for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
+      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', owned ? 'none' : 'visible');
     }
   }
 
@@ -1880,7 +1901,7 @@ class VectorBasemap {
     }
     this._highlightedBuildings = [];
     this._highlightedBuilding = null;
-    if (this._threeBuildings) this._threeBuildings.setHidden('answer', []);
+    if (this._threeBuildings) this._threeBuildings.setHighlighted([]);
     if (this._kitAnswerIds && this._kitAnswerIds.size) { this._kitAnswerIds = new Set(); if (this._buildings3dEnabled) this._refreshColoredBuildingFilter(); }
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
@@ -1908,7 +1929,7 @@ class VectorBasemap {
         } catch (_) {}
       }
       this._highlightedBuilding = this._highlightedBuildings[0] || null;
-      if (this._threeBuildings) this._threeBuildings.setHidden('answer', this._highlightedBuildings.map(target => target.id));
+      if (this._threeBuildings) this._threeBuildings.setHighlighted(this._highlightedBuildings.map(target => target.id));
       this._kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
       if (this._buildings3dEnabled) this._refreshColoredBuildingFilter();
     }

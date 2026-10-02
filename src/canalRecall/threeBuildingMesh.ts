@@ -15,6 +15,7 @@ import { CELL_VARIANTS, cellLayer } from './facadeCells.js';
 import { groundRuns, layoutWall } from './facadeLayout.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
+import earcut from 'earcut';
 import { fitRect, roofTriangles, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 
 export type MeshBuilding = {
@@ -34,6 +35,15 @@ export type MeshBuilding = {
   plainLayer?: number;
   /** Bare walls only (a church): every row uses the plain layer and there are no doors. */
   plainWalls?: boolean;
+  /** No facade at all (a shed, a landmark part, a building with no style): one plain quad per wall. */
+  bare?: boolean;
+  /**
+   * The mesh owns this building's top: walls run to the full height (no MapLibre
+   * cornice band) and a flat roof gets a lid in this colour on the flat layer.
+   * Without it, MapLibre drew band and lid as separate extrusions that hung in
+   * mid-air whenever the walls were rebuilt (user report 2026-10-02).
+   */
+  lid?: { hex: string; flatLayer: number };
   /** A real roof for this building; its walls already stop at the eaves. */
   roof?: { plan: RoofPlan; layers: { slope: number; plain: number; dormer: number }; roofHex: string; dims: RoofDims };
 };
@@ -134,6 +144,34 @@ function ringEdges(ring: number[][], origin: Origin, hole: boolean): Edge[] {
   return edges;
 }
 
+type LidMesh = { xy: number[]; index: number[] };
+/** An upward face's shade under the fixed light (matches the roof shading formula for n = up). */
+const LID_SHADE = 0.58 + 0.42 * 0.8;
+
+/** A flat lid over every polygon (courtyards kept open) at the wall top, as shared vertices plus earcut indices facing up. */
+function lidMesh(b: MeshBuilding, origin: Origin): LidMesh | null {
+  const kx = mPerDegLng(origin.lat), xy: number[] = [], index: number[] = [];
+  for (const polygon of b.polygons) {
+    const flat: number[] = [], holes: number[] = [];
+    for (const [i, ring] of polygon.entries()) {
+      const pts = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : ring;
+      if (pts.length < 3) { if (i === 0) break; continue; }
+      if (i > 0) holes.push(flat.length / 2);
+      for (const [lng, lat] of pts) flat.push((lng - origin.lng) * kx, (lat - origin.lat) * M_PER_DEG_LAT);
+    }
+    if (flat.length < 6) continue;
+    const offset = xy.length / 2, tri = earcut(flat, holes.length ? holes : undefined, 2);
+    for (let i = 0; i < tri.length; i += 3) {
+      const [a, c, d] = [tri[i], tri[i + 1], tri[i + 2]];
+      const cross = (flat[c * 2] - flat[a * 2]) * (flat[d * 2 + 1] - flat[a * 2 + 1]) - (flat[c * 2 + 1] - flat[a * 2 + 1]) * (flat[d * 2] - flat[a * 2]);
+      // Counter-clockwise from above, so the face points up.
+      if (cross >= 0) index.push(offset + a, offset + c, offset + d); else index.push(offset + a, offset + d, offset + c);
+    }
+    xy.push(...flat);
+  }
+  return index.length ? { xy, index } : null;
+}
+
 const edgeKey = (x: number, y: number) => `${Math.round(x * 10)},${Math.round(y * 10)}`;
 
 /**
@@ -147,7 +185,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
   const prepared: Prepared[] = [];
   const shared = new Map<string, { top: number; base: number }[]>();
   for (const b of buildings) {
-    const top = facadeTopM(b.heightM);
+    // A lidded building owns its top, so its facade rows run to the full height (no band to leave room for).
+    const top = b.lid ? b.heightM : facadeTopM(b.heightM);
     const edges: Edge[] = [];
     for (const polygon of b.polygons) polygon.forEach((ring, i) => edges.push(...ringEdges(ring, origin, i > 0)));
     prepared.push({ b, edges, top });
@@ -165,8 +204,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
 
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
   type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
-  const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: RoofTri[] }> = [];
-  let quadTotal = 0, wallTotal = 0, roofTotal = 0;
+  const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: RoofTri[]; lid: LidMesh | null }> = [];
+  let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
   const kxLocal = mPerDegLng(origin.lat);
   for (const { b, edges, top } of prepared) {
     const quads: Quad[] = [];
@@ -181,7 +220,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     const cornice: RoofTri[] = [];
     for (const e of edges) {
       if (hiddenByNeighbour(e, b)) continue;
-      const layout = layoutWall(b.style, e.len, top - base, hash01(`${b.id}:${edgeKey(e.x0, e.y0)}`), base < 0.5, scale);
+      const layout = b.bare ? null : layoutWall(b.style, e.len, top - base, hash01(`${b.id}:${edgeKey(e.x0, e.y0)}`), base < 0.5, scale);
+      const shadeTint = (): [number, number, number, number] => [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255];
+      // With the top owned here, a wall too short for a layout (a corner chamfer) is still walled, in bare wall.
+      if (!layout && b.lid && b.plainLayer !== undefined && b.heightM > base + 0.01) {
+        quads.push({ e, u0: 0, u1: Math.max(1, e.len / 5), v1: 1, layer: b.plainLayer, accent, z0: base, z1: b.heightM, tint: shadeTint(), along0: 0, along1: 1 });
+      }
       if (!layout) continue;
       walls++;
       if (b.plainWalls && b.plainLayer !== undefined) layout.doorBays.length = 0;
@@ -209,18 +253,20 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       if (rect) roof = roofTriangles(rect, b.roof.plan, b.heightM, b.roof.dims);
       if (!rect) roof = [];
     }
-    quadsByBuilding.push({ b, quads, walls, roof });
+    const lid = b.lid && (!b.roof || !roof.length) ? lidMesh(b, origin) : null;
+    quadsByBuilding.push({ b, quads, walls, roof, lid });
     quadTotal += quads.length; wallTotal += walls; roofTotal += roof.length;
+    if (lid) { lidVerts += lid.xy.length / 2; lidIndices += lid.index.length; }
   }
 
-  const vertexCount = quadTotal * 4 + roofTotal * 3;
+  const vertexCount = quadTotal * 4 + roofTotal * 3 + lidVerts;
   const positions = new Float32Array(vertexCount * 3), uvs = new Float32Array(vertexCount * 2);
   const layers = new Uint8Array(vertexCount), tints = new Uint8Array(vertexCount * 4), accents = new Uint8Array(vertexCount * 4);
-  const indices = new Uint32Array(quadTotal * 6 + roofTotal * 3);
+  const indices = new Uint32Array(quadTotal * 6 + roofTotal * 3 + lidIndices);
   const ranges: VertexRange[] = [];
   let v = 0, q = 0, ti = quadTotal * 6;
-  for (const { b, quads, roof } of quadsByBuilding) {
-    if (!quads.length && !roof.length) continue;
+  for (const { b, quads, roof, lid } of quadsByBuilding) {
+    if (!quads.length && !roof.length && !lid) continue;
     const start = v;
     for (const quad of quads) {
       const { e } = quad;
@@ -260,6 +306,19 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
           indices[ti++] = v; v++;
         }
       }
+    }
+    if (lid) {
+      // Indexed: earcut shares the ring's vertices, a third of the cost of loose triangles.
+      const [lr, lg, lb] = parseHex(b.lid!.hex), base = v, z = b.heightM;
+      for (let k = 0; k < lid.xy.length; k += 2) {
+        positions[v * 3] = lid.xy[k]; positions[v * 3 + 1] = lid.xy[k + 1]; positions[v * 3 + 2] = z;
+        uvs[v * 2] = lid.xy[k] / 4; uvs[v * 2 + 1] = lid.xy[k + 1] / 4;
+        layers[v] = b.lid!.flatLayer;
+        tints[v * 4] = lr; tints[v * 4 + 1] = lg; tints[v * 4 + 2] = lb; tints[v * 4 + 3] = LID_SHADE * 255;
+        accents[v * 4] = accents[v * 4 + 1] = accents[v * 4 + 2] = accents[v * 4 + 3] = 255;
+        v++;
+      }
+      for (const k of lid.index) indices[ti++] = base + k;
     }
     ranges.push({ id: b.id, start, count: v - start });
   }
