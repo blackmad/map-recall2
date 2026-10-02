@@ -963,9 +963,16 @@ class VectorBasemap {
    */
   _syncMaplibreBuildingVisibility() {
     if (!this.map) return;
-    const off = !!this._facadesHiddenByDetail || this._threeOwnsTops();
+    const detail = !!this._facadesHiddenByDetail, three = this._threeOwnsTops();
     for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
+      // The wall layer stays laid out under three.js, drawn at opacity 0 (MapLibre skips the draw):
+      // building clicks and the covered-passage check query it, and a hidden layer answers nothing.
+      const off = detail || (three && id !== 'osm-colored-buildings');
       if (this.map.getLayer(id) && this.map.getLayoutProperty(id, 'visibility') !== (off ? 'none' : 'visible')) this.map.setLayoutProperty(id, 'visibility', off ? 'none' : 'visible');
+    }
+    if (this.map.getLayer('osm-colored-buildings') && this._wallsGhosted !== three) {
+      this._wallsGhosted = three;
+      this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity', three ? 0 : BUILDING_FADE_IN);
     }
   }
 
@@ -2220,7 +2227,9 @@ class VectorBasemap {
             .filter(layer => layer.type === 'fill-extrusion' && !layer.id.startsWith('active-landmark'))
             .map(layer => layer.id);
           const features = layers.length ? this.map.queryRenderedFeatures([point.x, point.y], { layers }) : [];
-          coveredNow = !!helpers.coveringBuilding(features, rider);
+          const cover = helpers.coveringBuilding(features, rider);
+          coveredNow = !!cover;
+          if (cover) this._riderCoverId = String(cover.properties && cover.properties.id != null ? cover.properties.id : cover.id);
         } catch (_) { coveredNow = false; }
         this._riderCoverRaw = coveredNow;
       }
@@ -2232,10 +2241,14 @@ class VectorBasemap {
   }
 
   _applyRiderCover(covered, opacity) {
+    // In the three.js looks the three layer is what the rider sees: the building over the rider
+    // goes (a faded beige slab over beige ground still hid the corridor), the rest stay solid.
+    if (this._threeBuildings) this._threeBuildings.setHidden('cover', covered && this._threeOwnsTops() && this._riderCoverId ? [this._riderCoverId] : []);
     if (covered) {
       this._riderCoverOpacity = new Map();
       for (const layer of this.map.getStyle().layers || []) {
         if (layer.type !== 'fill-extrusion' || layer.id.startsWith('active-landmark')) continue;
+        if (layer.id === 'osm-colored-buildings' && this._wallsGhosted) continue;
         this._riderCoverOpacity.set(layer.id, this.map.getPaintProperty(layer.id, 'fill-extrusion-opacity'));
         try { this.map.setPaintProperty(layer.id, 'fill-extrusion-opacity', opacity); } catch (_) {}
       }

@@ -17,7 +17,8 @@ test('building look switches live between the three.js looks and the retired pat
     const pattern = map.getLayer('osm-colored-building-facades') ? map.getLayoutProperty('osm-colored-building-facades', 'visibility') : 'absent';
     return { look: vm._buildings3dLook, pattern, three: vm._threeBuildings ? vm._threeBuildings.stats().chunks : 0,
       // Three looks draw the whole city: MapLibre's building layers are off, so no slab can hang in the air (user reports 2026-10-02).
-      maplibreBuildings: ['osm-colored-buildings', 'osm-colored-building-roofs'].map(id => map.getLayoutProperty(id, 'visibility') ?? 'visible').join(',') };
+      // The wall layer stays queryable (clicks, covered passages) but draws at opacity 0.
+      maplibreBuildings: [map.getPaintProperty('osm-colored-buildings', 'fill-extrusion-opacity') === 0 ? 'none' : 'visible', map.getLayoutProperty('osm-colored-building-roofs', 'visibility') ?? 'visible'].join(',') };
   });
 
   // Photo is the default look (user request 2026-10-02).
