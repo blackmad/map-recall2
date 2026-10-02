@@ -95,10 +95,16 @@ async function readGzippedGeoJson(response: Response): Promise<{ features?: Buil
 /** See `BuildingTileStreamer.setTileEnricher`. */
 export type TileEnricher = (tile: { z: number; x: number; y: number }, signal: AbortSignal) => Promise<((features: BuildingFeature[]) => void) | undefined | void>;
 
+/** A tile that has not arrived by now is retried rather than waited on. */
+const BUILDING_TILE_TIMEOUT_MS = 20_000;
+const BUILDING_TILE_MAX_RETRIES = 4;
+
 export class BuildingTileStreamer {
   private readonly cache = new BuildingTileCache();
   /** Tiles that returned nothing. Remembered so a gap is not refetched forever. */
   private readonly empty = new Set<string>();
+  /** Transient failures per tile (network, 5xx, timeout), retried with backoff. */
+  private readonly failures = new Map<string, number>();
   /** In-flight fetches, keyed so a camera jump can abort the ones we no longer want. */
   private readonly controllers = new Map<string, AbortController>();
   /** Nearest-first remaining work for the current plan. */
@@ -322,17 +328,22 @@ export class BuildingTileStreamer {
     const controller = new AbortController();
     this.controllers.set(key, controller);
     this.inFlight++;
+    // A stalled request must not hold the single-slot pipe forever.
+    let timedOut = false;
+    const timeout = setTimeout(() => { timedOut = true; controller.abort(); }, BUILDING_TILE_TIMEOUT_MS);
     // Side data starts in parallel with the tile; its failure is swallowed so
     // a missing facts tile never costs the buildings themselves.
     const enrichment = this.tileEnricher
       ? this.tileEnricher(tile, controller.signal).catch(() => undefined)
       : undefined;
+    let retry = false;
     try {
       const response = await fetch(tileUrl(tile, this.baseUrl), { signal: controller.signal });
       if (!response.ok) {
-        // Most of the 382 tiles cover water, parks or the edge of the
-        // region. A missing one is ordinary, not an error worth retrying.
-        this.empty.add(key);
+        // 404 is ordinary: most of the 382 tiles cover water, parks or the edge
+        // of the region. Server trouble is not, and must not blank a city tile.
+        if (response.status >= 500 || response.status === 429 || response.status === 408) retry = true;
+        else this.empty.add(key);
         return;
       }
       const collection = await readGzippedGeoJson(response);
@@ -351,19 +362,38 @@ export class BuildingTileStreamer {
       if (enrichment) {
         const apply = await enrichment;
         if (controller.signal.aborted || this.disposed) return;
-        if (apply) apply(features);
+        // Side data is optional: a bad enricher must not cost the buildings.
+        try { if (apply) apply(features); } catch (error) { console.warn('Building tile enrichment failed', key, error); }
       }
       this.cache.adopt(key, features);
+      this.failures.delete(key);
       this.firstTileLanded = true;
       if (!this.disposed) this.scheduleFlush();
     } catch (error) {
-      if ((error as Error)?.name === 'AbortError') return;
-      this.empty.add(key);
+      // Our own abort (camera moved on) is not a failure, whatever name the
+      // browser gives it; a timeout is, and is retried.
+      if (this.disposed) return;
+      if (controller.signal.aborted && !timedOut) return;
+      // A fetch that rejects is the network; a parse error is the host handing
+      // back a page for a tile that does not exist.
+      if (timedOut || error instanceof TypeError) retry = true;
+      else this.empty.add(key);
     } finally {
-      this.controllers.delete(key);
+      clearTimeout(timeout);
+      // Only remove our own controller: an aborted fetch's cleanup must not
+      // unregister the replacement fetch for the same tile.
+      if (this.controllers.get(key) === controller) this.controllers.delete(key);
       this.inFlight = Math.max(0, this.inFlight - 1);
+      if (retry) this.scheduleRetry(key);
       this.pump();
     }
+  }
+
+  private scheduleRetry(key: string): void {
+    const attempts = (this.failures.get(key) ?? 0) + 1;
+    this.failures.set(key, attempts);
+    if (attempts > BUILDING_TILE_MAX_RETRIES) { this.empty.add(key); return; }
+    setTimeout(() => { if (!this.disposed) this.update(); }, 1000 * 2 ** (attempts - 1));
   }
 
   /** Ask for a flush on the next animation frame; repeated calls coalesce. */

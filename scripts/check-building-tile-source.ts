@@ -152,6 +152,34 @@ try {
   globalThis.fetch = originalFetch;
 }
 
+// Named regression (user report 2026-10-02, Rozengracht/Jordaan): a whole city
+// tile never appeared. One failed fetch put it in the permanent "empty" set.
+// A 5xx or a dropped connection must be retried; only a missing tile is empty.
+{
+  let attempts = 0, wrote = 0;
+  const retryMap = { ...fakeMap, getSource: () => ({ setData: () => { wrote++; } }) };
+  const retryStreamer = new BuildingTileStreamer(retryMap, 'buildings', '/test');
+  const savedFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = (async (input: RequestInfo | URL) => {
+      if (String(input).includes('index-z')) return Response.json({ zoom: 14, tileList: ['test'] });
+      attempts++;
+      if (attempts === 1) return new Response('busy', { status: 503 });
+      if (attempts === 2) throw new TypeError('Failed to fetch');
+      return Response.json({ type: 'FeatureCollection', features: [raw] });
+    }) as typeof fetch;
+    assert.equal(await retryStreamer.probe(), true);
+    retryStreamer.attach(() => {});
+    retryStreamer.followCamera();
+    for (let turn = 0; turn < 60 && !wrote; turn++) await new Promise(resolve => setTimeout(resolve, 100));
+    assert.ok(attempts >= 3, `a 503 then a network error are retried (attempts ${attempts})`);
+    assert.ok(wrote > 0, 'the tile loads once the server recovers');
+  } finally {
+    retryStreamer.dispose();
+    globalThis.fetch = savedFetch;
+  }
+}
+
 // --- incremental source updates ------------------------------------------
 // Named regression (2026-09-28): every tile arrival re-sent and deep-cloned the
 // whole resident set (~130 ms at 4× throttle). MapLibre now gets diffs; these

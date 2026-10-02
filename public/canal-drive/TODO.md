@@ -75,12 +75,11 @@ a hitch not yet measured. The ground floor repeats above 32 m except on
 towers. Facades are Amsterdam-only, and walls take a period palette colour.
 Check on a real device.
 
-**Empty areas of the city (user report 2026-10-02, not reproduced).** Large
-stretches around Rozengracht/Jordaan show no buildings at all, roofs included.
-The z14 building tiles exist for that area, so suspect tile loading/eviction or
-a layer filter, not data. Needs a real-browser repro (basemap tiles are not
-reachable from the cloud container). Also unchecked on device: the facade
-zoom hysteresis (0.3) and the 48-image set's build cost.
+**Empty areas of the city (user report 2026-10-02, fix shipped, unconfirmed).**
+Tile streamer retries and timeouts now cover the likely cause (see HISTORY).
+Confirm on the user's device that Jordaan/Rozengracht loads; if a tile is still
+bare, log tile keys marked empty. Also unchecked on device: the facade zoom
+hysteresis (0.3) and the 48-image set's build cost.
 
 **Map Recall near-home follow-ups.** Home is only picked up when both apps share
 an origin; add a way to set home inside Map Recall, and a map picture of the
