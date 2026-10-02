@@ -53,6 +53,21 @@ test('Amsterdam uses the local extract and never contacts Overpass', async ({ pa
   expect(overpassRequests).toBe(0);
 });
 
+// Utrecht, Rotterdam and Den Haag have hosted extracts too (their centres, from manifest.json).
+for (const [name, lat, lon] of [['Utrecht', 52.0907, 5.1214], ['Rotterdam', 51.9225, 4.4792], ['Den Haag', 52.0705, 4.3007]] as const) {
+  test(`${name} plays from its local extract and never contacts Overpass`, async ({ page }) => {
+    let overpassRequests = 0;
+    await page.route(/overpass/i, (route) => {
+      overpassRequests += 1;
+      return route.abort();
+    });
+    await quietExternalRequests(page);
+    await page.goto(`/?city=my_location&lat=${lat}&lon=${lon}&place=${encodeURIComponent(name)}&mode=pinpoint&category=streets&radius=4500&rounds=5`);
+    await expect(page.locator('#target-feature-name')).toBeVisible();
+    expect(overpassRequests).toBe(0);
+  });
+}
+
 test('the prompted feature remains the revealed feature', async ({ page }) => {
   await quietExternalRequests(page);
   await page.goto(quizUrl);
