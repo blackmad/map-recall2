@@ -17,7 +17,13 @@ export type FrontBox = {
   /** Height above the wall's base, metres. */ z0: number; z1: number;
   /** Out from the wall plane (negative is recessed), metres. */ out0?: number; out1: number;
   hex: string;
+  /** Only the outward face (2 triangles): lettering and other flat decals on a surface. */
+  face?: boolean;
 };
+/** A side profile [out, up] swept along the wall from x0 to x1, with flat end caps: awnings, hoods, cornices. */
+export type FrontExtrusion = { x0: number; x1: number; profile: [number, number][]; hex: string };
+/** A flat convex polygon [along, up] facing out at `out` metres: roundels, arches, signs. */
+export type FrontFace = { points: [number, number][]; out: number; hex: string };
 /** A repeating window grid: one pane per (column, row), recessed into the wall with a sill. */
 export type FrontWindows = { xs: number[]; rows: [number, number][]; w: number; hex: string; frameHex?: string };
 export type Front = {
@@ -49,6 +55,8 @@ export type Front = {
   depthM: number;
   hex: string;
   boxes: FrontBox[];
+  extrusions?: FrontExtrusion[];
+  faces?: FrontFace[];
   windows: FrontWindows[];
   /**
    * Further profiled slabs standing forward of the wall (a risalit with its pediment): each
@@ -78,9 +86,10 @@ export function frontTriangles(front: Front, toWorld: (along: number, up: number
     const [pa, pb, pc, pd] = [a, b, c, d].map(([x, z, y]) => toWorld(x, z, y));
     tris.push({ p: [pa, pb, pc], hex, hint }, { p: [pa, pc, pd], hex, hint });
   };
-  const box = ({ x0, x1, z0, z1, out0 = 0, out1, hex }: FrontBox) => {
+  const box = ({ x0, x1, z0, z1, out0 = 0, out1, hex, face }: FrontBox) => {
     // Front, two sides, top and underside; the back sits against the wall.
     quad([x0, z0, out1], [x1, z0, out1], [x1, z1, out1], [x0, z1, out1], hex, [0, 0, 1]);
+    if (face) return;
     quad([x0, z0, out0], [x0, z0, out1], [x0, z1, out1], [x0, z1, out0], hex, [-1, 0, 0]);
     quad([x1, z0, out1], [x1, z0, out0], [x1, z1, out0], [x1, z1, out1], hex, [1, 0, 0]);
     quad([x0, z1, out1], [x1, z1, out1], [x1, z1, out0], [x0, z1, out0], hex, [0, 1, 0]);
@@ -104,6 +113,24 @@ export function frontTriangles(front: Front, toWorld: (along: number, up: number
   for (const extra of front.slabs ?? []) slab(extra.outline, extra.out0 + d, extra.out1 + d, extra.hex);
 
   for (const b of front.boxes) box({ ...b, out0: (b.out0 ?? 0) + d, out1: b.out1 + d });
+  for (const e of front.extrusions ?? []) {
+    const pr = e.profile;
+    for (let i = 1; i < pr.length; i++) {
+      const [oa, za] = pr[i - 1], [ob, zb] = pr[i];
+      // The strip's outward side: the profile's left normal, rotated to face away from the wall.
+      quad([e.x0, za, oa + d], [e.x1, za, oa + d], [e.x1, zb, ob + d], [e.x0, zb, ob + d], e.hex, [0, ob - oa, -(zb - za)]);
+      quad([e.x0, za, oa + d], [e.x0, zb, ob + d], [e.x1, zb, ob + d], [e.x1, za, oa + d], e.hex, [0, -(ob - oa), zb - za]);
+    }
+    // End caps: fan from the first profile point.
+    for (const [x, sgn] of [[e.x0, -1], [e.x1, 1]] as const) for (let i = 2; i < pr.length; i++) {
+      const [a, b, c] = [pr[0], pr[i - 1], pr[i]].map(([o, z]) => toWorld(x, z, o + d));
+      tris.push({ p: [a, b, c], hex: e.hex, hint: [sgn, 0, 0] });
+    }
+  }
+  for (const f of front.faces ?? []) for (let i = 2; i < f.points.length; i++) {
+    const [a, b, c] = [f.points[0], f.points[i - 1], f.points[i]].map(([x, z]) => toWorld(x, z, f.out + d));
+    tris.push({ p: [a, b, c], hex: f.hex, hint: [0, 0, 1] });
+  }
   for (const grid of front.windows) for (const cx of grid.xs) for (const [z0, z1] of grid.rows) {
     const x0 = cx - grid.w / 2, x1 = cx + grid.w / 2;
     // A pane just proud of the slab face, a lighter frame round it and a sill below.

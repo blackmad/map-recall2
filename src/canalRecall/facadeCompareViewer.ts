@@ -4,7 +4,7 @@
 // `?name=waag|bijenkorf|beurs`; the reference comes from public/data/landmark-facades.
 import { KITS, kitGeometry, type Kit, type PartInput } from './landmarkKits.js';
 import { buildKitChunk } from './threeBuildingMesh.js';
-import { frontTriangles } from './landmarkFronts.js';
+import { type FrontBox, frontTriangles } from './landmarkFronts.js';
 import { FRONTS, STOREFRONT_BY_SLUG } from './landmarkFrontData.js';
 
 type Setup = { centre: [number, number]; ids: string[]; kit: Kit };
@@ -74,7 +74,8 @@ async function loadTile(x: number, y: number): Promise<any[]> {
     const [ax, ay] = local([meta.wall.startLngLat])[0], [bx, by] = local([meta.wall.endLngLat])[0];
     const b = meta.wall.outwardBearingDeg * Math.PI / 180, ox = Math.sin(b), oy = Math.cos(b), mx = (ax + bx) / 2, my = (ay + by) / 2;
     const len = Math.hypot(bx - ax, by - ay) || 1, half = len / 2 + 25, ux = (bx - ax) / len, uy = (by - ay) / len;
-    const inFront = (pts: [number, number][]) => pts.some(([x, y]) => { const out = (x - mx) * ox + (y - my) * oy, along = (x - mx) * ux + (y - my) * uy; return out > 1 && out < 70 && Math.abs(along) < half; });
+    // By the footprint's centre: a neighbour with one corner proud of the wall line (a bay, a stoop) is not across the street.
+    const inFront = (pts: [number, number][]) => { const x = pts.reduce((t, p) => t + p[0], 0) / pts.length, y = pts.reduce((t, p) => t + p[1], 0) / pts.length, out = (x - mx) * ox + (y - my) * oy, along = (x - mx) * ux + (y - my) * uy; return out > 2 && out < 70 && Math.abs(along) < half; };
     for (let i = context.length - 1; i >= 0; i--) if (inFront(context[i].pts)) context.splice(i, 1);
   }
   // Footprint parts that carry the front stop at the front's own body height.
@@ -97,7 +98,8 @@ async function loadTile(x: number, y: number): Promise<any[]> {
     if (variant === 'kit') {
       for (const h of setup.kit.roofs) { const p = parts.get(h.id); if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, '#9a5240')); }
       const unused = [...parts.values()].filter(p => !setup.kit.tiers.some(t => t.id === p.id) && !setup.kit.roofs.some(h => h.id === p.id));
-      for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, front?.hex ?? '#9a5240'));
+      // A storefront leaves its building alone: brick like the game's facades, not the shop's colour.
+      for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, storefront && front?.storefront ? '#8f5440' : front?.hex ?? '#9a5240'));
       const chunk = buildKitChunk(kitGeometry(setup.kit, parts), { plain: 0, flat: 0, slope: 0 });
       const geometry = new THREE.BufferGeometry(), pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);
       for (let i = 0; i < chunk.vertexCount; i++) {
@@ -110,7 +112,10 @@ async function loadTile(x: number, y: number): Promise<any[]> {
         // Wall frame to three: along the wall, up, and out along its outward normal (three z is south).
         const [fax, fay] = local([front.start])[0], [fbx, fby] = local([front.end])[0], len = Math.hypot(fbx - fax, fby - fay);
         const ux = (fbx - fax) / len, uy = (fby - fay) / len, ox = uy, oy = -ux;
-        const tris = frontTriangles(front, (along, up, out) => [fax + ux * along + ox * out, fay + uy * along + oy * out, up]);
+        // Storefronts: the generic upper floors the game draws above them, so the shop is judged in context.
+        const upper: FrontBox[] = [];
+        if (storefront && front.storefront) for (let z = 4.4; z + 1.6 < meta.wall.heightM - 0.5; z += 3) for (let x = 0.9; x + 0.9 < len; x += 1.9) upper.push({ x0: x - 0.5, x1: x + 0.5, z0: z - 0.1, z1: z + 1.7, out1: 0.03, hex: '#e8e2d4' }, { x0: x - 0.4, x1: x + 0.4, z0: z, z1: z + 1.6, out1: 0.05, hex: '#3d4650' });
+        const tris = frontTriangles(storefront ? { ...front, boxes: [...upper, ...front.boxes] } : front, (along, up, out) => [fax + ux * along + ox * out, fay + uy * along + oy * out, up]);
         const fp = new Float32Array(tris.length * 9), fc = new Float32Array(tris.length * 9), c = new THREE.Color();
         tris.forEach((t, i) => t.p.forEach(([x, y, z], k) => {
           fp.set([x, z, -y], i * 9 + k * 3); c.set(t.hex); fc.set([c.r, c.g, c.b], i * 9 + k * 3);
@@ -128,9 +133,16 @@ async function loadTile(x: number, y: number): Promise<any[]> {
   const [ax, ay] = local([meta.wall.startLngLat])[0], [bx, by] = local([meta.wall.endLngLat])[0];
   const mid = [(ax + bx) / 2, (ay + by) / 2], bearing = meta.wall.outwardBearingDeg * Math.PI / 180, buildingH = meta.wall.heightM - 1.5;
   const dist = Number(q.get('r') ?? 0) || Math.max(55, buildingH * 2.2), az = Number(q.get('az') ?? 0) * Math.PI / 180, el = Number(q.get('el') ?? 12) * Math.PI / 180;
-  const cam = new THREE.PerspectiveCamera(32, (W / 3) / H, 1, 2000), a = bearing + az, focusY = buildingH * 0.42;
-  cam.position.set(mid[0] + Math.sin(a) * Math.cos(el) * dist, focusY + Math.sin(el) * dist, -(mid[1] + Math.cos(a) * Math.cos(el) * dist));
-  cam.lookAt(mid[0], focusY, -mid[1]);
+  const cam = new THREE.PerspectiveCamera(32, (W / 3) / H, 0.5, 2000), a = bearing + az;
+  let focus = mid, focusY = buildingH * 0.42, d = dist;
+  if (storefront && front) {
+    // Frame the storefront itself: centred on its span, far enough back to fit it and the floor above.
+    const [fx0, fx1] = [front.outline[0][0], front.outline[front.outline.length - 1][0]], t = (fx0 + fx1) / 2 / Math.hypot(bx - ax, by - ay);
+    focus = [ax + (bx - ax) * t, ay + (by - ay) * t]; focusY = 3.2;
+    d = Number(q.get('r') ?? 0) || Math.max(9, (fx1 - fx0 + 2.5) * 1.75, 7 * 1.75);
+  }
+  cam.position.set(focus[0] + Math.sin(a) * Math.cos(el) * d, focusY + Math.sin(el) * d, -(focus[1] + Math.cos(a) * Math.cos(el) * d));
+  cam.lookAt(focus[0], focusY, -focus[1]);
   (['plain', 'kit'] as const).forEach((variant, i) => {
     renderer.setViewport(i * W / 3, 0, W / 3, H); renderer.setScissor(i * W / 3, 0, W / 3, H);
     renderer.render(sceneFor(variant), cam);
