@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Card gallery page
+
+`/?gallery=cards[&city=utrecht|rotterdam|den-haag]` (src/CardGallery.tsx, switched in src/main.tsx) renders every neighbourhood's real answer card from the loaded extracts, flags what each lacks (description, history, name, photo, postcard), filters by name and can show only cards with gaps. A review tool, not linked from the game. Test: tests/e2e/card-gallery.spec.ts.
+
 ## Kits: Centraal, Rijksmuseum, Sint-Nicolaas, Munttoren, Krijtberg
 
 Five more landmark kits in `KITS`, found by sorting each landmark's parts by height: Centraal's twin towers (w752653568/567: brick shafts with gilt dials, stone band, lead lantern and spire), the Rijksmuseum (two gate towers and four corner turrets with steep slate spires, pitched wing roofs), Sint-Nicolaas (twin west towers with lanterns and copper domes, the crossing dome on its colonnaded drum), the Munttoren (octagonal stages, clocks, open lantern, De Keyser spire) and the Krijtberg (two slender towers with 15 m spires, steep nave roof). Kits gained `hides` (OSM parts the kit's own geometry replaces, such as the Nicolaas dome bands) and `body` (the landmark's other parts, walled in the kit's style: landmarks skip the generic facades, so the Rijksmuseum's wings were bare tan walls).
