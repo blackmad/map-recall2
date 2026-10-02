@@ -17,6 +17,7 @@ import { openRoute } from './helpers';
 //   KEYBOARD_RIDE=lat,lng[;lat,lng…]  bridges to ride over (default below);
 //                 lat,lng,lat,lng rides from one point to the other
 //   KEYBOARD_RIDE_GREP=regex          only the named rides that match
+//   KEYBOARD_RIDE_ALL=1               every named spot, not only the core set
 
 type Point = { x: number; y: number };
 type LatLng = [number, number];
@@ -25,25 +26,29 @@ type LatLng = [number, number];
  * on each side of it, in both directions. `from`/`to`: a reported route,
  * ridden as the game's router plans it (one direction per entry).
  */
-type Ride = { name: string; at?: LatLng; from?: LatLng; to?: LatLng };
+type Ride = { name: string; at?: LatLng; from?: LatLng; to?: LatLng; legs?: 'both' | 'back'; core?: boolean };
 
 // Every place a "stuck" or "really hard" report named (HISTORY.md), so the
 // real keyboard-and-quiz path is exercised wherever a rider got into trouble.
 const DEFAULT_RIDES: Ride[] = [
-  { name: 'Sint Antoniessluis', at: [52.36968, 4.90115] },
-  { name: 'Westeinde over the Singelgracht', at: [52.35895, 4.89815] },
-  { name: 'Koepelkerk fork', at: [52.3780, 4.8935] },
+  { name: 'Sint Antoniessluis', at: [52.36968, 4.90115], core: true },
+  { name: 'Westeinde over the Singelgracht', at: [52.35895, 4.89815], core: true },
+  { name: 'Koepelkerk fork', at: [52.3780, 4.8935], core: true },
   // 2026-10-01 "driving through this tunnel in centraal is really hard": the
   // Cuyperspassage cycle tunnel under Amsterdam Centraal, both ways, and on to
   // the IJ-side cycle path east.
-  { name: 'Cuyperspassage north to De Ruijterkade', from: [52.37890, 4.89790], to: [52.38067, 4.89817] },
+  { name: 'Cuyperspassage north to De Ruijterkade', from: [52.37890, 4.89790], to: [52.38067, 4.89817], core: true },
   { name: 'Cuyperspassage south from De Ruijterkade', from: [52.38067, 4.89817], to: [52.37890, 4.89790] },
   { name: 'Cuyperspassage to the IJ side east', from: [52.37890, 4.89790], to: [52.37960, 4.90060] },
   { name: 'Zanddwarsstraat end to Sint Antoniessluis', from: [52.37009, 4.89927], to: [52.36940, 4.90230] },
   { name: 'Nieuwezijds Armsteeg to Nieuwendijk', from: [52.37702, 4.89530], to: [52.37708, 4.89660] },
   { name: 'Bullebakssluis, Marnixstraat into Westerkade', from: [52.3745, 4.8766], to: [52.37396, 4.8769] },
   { name: 'Solitudobrug', at: [52.340602, 4.925079] },
-  { name: 'Melkwegbrug', at: [52.364876, 4.881568] },
+  // A footbridge whose south end is a dead end in the extract. Ridden from
+  // the north, the bike reaches the end nose-first; up and right held there
+  // stood still for good until the edge stall was judged on net movement
+  // (2026-10-02). (Southbound the axis ride wanders off to Leidsegracht.)
+  { name: 'Melkwegbrug', at: [52.364876, 4.881568], legs: 'back', core: true },
   { name: 'Bosch van Drakesteinpad seam', at: [52.376205, 4.789186] },
   { name: 'Burgemeester Fockstraat bridge', at: [52.377326, 4.831227] },
   { name: 'Liesdelsluis', at: [52.374773, 4.899287] },
@@ -59,9 +64,15 @@ const rides: Ride[] = process.env.KEYBOARD_RIDE
   })
   : DEFAULT_RIDES;
 const filter = process.env.KEYBOARD_RIDE_GREP ? new RegExp(process.env.KEYBOARD_RIDE_GREP, 'i') : null;
+// The full set takes ~15 min of real time; the every-push e2e run rides the
+// core spots and the nightly run (scripts/nightly-driving.sh) rides them all.
+const everySpot = process.env.KEYBOARD_RIDE_ALL === '1' || Boolean(filter) || Boolean(process.env.KEYBOARD_RIDE);
 // Bridge rides go both ways; route rides as written.
-const legs = rides.filter(r => !filter || filter.test(r.name)).flatMap(r => r.at
-  ? [{ ...r, reverse: false }, { ...r, name: `${r.name} (back)`, reverse: true }]
+const legs = rides.filter(r => (everySpot || r.core) && (!filter || filter.test(r.name))).flatMap(r => r.at
+  ? [
+    ...(r.legs === 'back' ? [] : [{ ...r, reverse: false }]),
+    { ...r, name: `${r.name} (back)`, reverse: true },
+  ]
   : [{ ...r, reverse: false }]);
 
 const TICK_MS = 80;
@@ -137,6 +148,7 @@ for (const bridge of legs) {
     const plan = await placeBefore(page, bridge);
     expect(plan, 'a route over the bridge').toBeTruthy();
     const { path, to } = plan!;
+    const routePx = path.slice(1).reduce((sum, p, i) => sum + Math.hypot(p.x - path[i].x, p.y - path[i].y), 0);
 
     const held = new Set<string>();
     const hold = async (key: string, down: boolean) => {
@@ -146,6 +158,7 @@ for (const bridge of legs) {
     const releaseAll = async () => { for (const key of [...held]) await hold(key, false); };
 
     let index = 0;
+    let progress: { t: number; x: number; y: number } | null = null;
     let answered = 0, answeredWrong = 0;
     let hiddenQuestionSeconds = 0;
     let lastAnswered = '';
@@ -161,7 +174,7 @@ for (const bridge of legs) {
         const visible = getComputedStyle(prompt).display !== 'none';
         const input = document.getElementById('canal-answer') as HTMLInputElement | null;
         return {
-          x: game.player.x, y: game.player.y, angle: game.player.angle, speed: game.player.speed,
+          x: game.player.x, y: game.player.y, angle: game.player.angle, speed: game.player.speed, stall: game._edgeStallFrames || 0, steerIn: game.player.steerInput,
           question: game.quizPromptName || '', visible,
           choices: (game._choiceOrder || []) as string[],
           typing: !!input && getComputedStyle(input).display !== 'none',
@@ -202,16 +215,29 @@ for (const bridge of legs) {
 
       if (Math.hypot(to.x - s.x, to.y - s.y) < 40) { arrived = true; break; }
 
-      // Follow the planned route: the nearest vertex ahead, aimed 90 px on.
-      let nearest = index, best = Infinity;
-      for (let i = index; i < Math.min(path.length, index + 20); i++) {
-        const d = Math.hypot(path[i].x - s.x, path[i].y - s.y);
-        if (d < best) { best = d; nearest = i; }
+      // Follow the planned route: from the bike's place on it, aim 90 px on.
+      // Held up for a second (a corner cut into a kerb), aim 30 px on, as a
+      // rider would hug the line round the corner; it is the arrows' effect
+      // that is under test, not the aim.
+      if (!progress || Math.hypot(s.x - progress.x, s.y - progress.y) > 10) progress = { t, x: s.x, y: s.y };
+      const lookahead = t - progress.t > 1 ? 30 : 90;
+      let nearest = index, best = Infinity, along = 0;
+      for (let i = index; i < Math.min(path.length - 1, index + 20); i++) {
+        const a = path[i], b = path[i + 1];
+        const len = Math.hypot(b.x - a.x, b.y - a.y) || 1;
+        const u = Math.max(0, Math.min(1, ((s.x - a.x) * (b.x - a.x) + (s.y - a.y) * (b.y - a.y)) / (len * len)));
+        const d = Math.hypot(a.x + (b.x - a.x) * u - s.x, a.y + (b.y - a.y) * u - s.y);
+        if (d < best) { best = d; nearest = i; along = u * len; }
       }
       index = nearest;
-      let target = index, ahead = 0;
-      while (target < path.length - 1 && ahead < 90) { ahead += Math.hypot(path[target + 1].x - path[target].x, path[target + 1].y - path[target].y); target++; }
-      let error = Math.atan2(path[target].y - s.y, path[target].x - s.x) - s.angle;
+      let aim = path[path.length - 1];
+      for (let i = index, left = lookahead + along; i < path.length - 1; i++) {
+        const a = path[i], b = path[i + 1];
+        const len = Math.hypot(b.x - a.x, b.y - a.y);
+        if (left <= len) { aim = { x: a.x + (b.x - a.x) * left / (len || 1), y: a.y + (b.y - a.y) * left / (len || 1) }; break; }
+        left -= len;
+      }
+      let error = Math.atan2(aim.y - s.y, aim.x - s.x) - s.angle;
       error = Math.atan2(Math.sin(error), Math.cos(error));
       const cruise = Math.abs(error) > 0.5 ? 50 : 140;
       const throttle = s.speed < cruise;
@@ -220,7 +246,7 @@ for (const bridge of legs) {
       await hold('ArrowRight', error > 0.08);
 
       const steer = error < -0.08 ? -1 : error > 0.08 ? 1 : 0;
-      history.push({ t, x: s.x, y: s.y, angle: s.angle, throttle, steer, speed: s.speed });
+      history.push({ t, x: s.x, y: s.y, angle: s.angle, throttle, steer, speed: s.speed, stall: s.stall, steerIn: s.steerIn } as any);
       while (history.length && t - history[0].t > STUCK_SECONDS) history.shift();
       const span = history.length ? t - history[0].t : 0;
       if (span >= STUCK_SECONDS - 0.2 && history.every(h => h.throttle)) {
@@ -230,7 +256,7 @@ for (const bridge of legs) {
         const turned = Math.abs(Math.atan2(Math.sin(s.angle - history[0].angle), Math.cos(s.angle - history[0].angle)));
         if (moved < 10 && turned < 0.3) {
           failure = `stuck: throttle held ${span.toFixed(1)} s, moved ${moved.toFixed(1)} px, turned ${turned.toFixed(2)} rad`;
-          console.log(JSON.stringify(history.filter((_, i) => i % 5 === 0).map(h => ({ x: Math.round(h.x), y: Math.round(h.y), a: +h.angle.toFixed(2), v: Math.round(h.speed), steer: h.steer }))));
+          console.log(JSON.stringify(history.filter((_, i) => i % 5 === 0).map(h => ({ x: Math.round(h.x), y: Math.round(h.y), a: +h.angle.toFixed(2), v: Math.round(h.speed), steer: h.steer, stall: (h as any).stall, si: (h as any).steerIn }))));
           break;
         }
       }
@@ -255,7 +281,7 @@ for (const bridge of legs) {
     });
     if (process.env.KEYBOARD_RIDE_TRACE) console.log(JSON.stringify(guard.where));
     const seconds = (Date.now() - started) / 1000;
-    console.log(`${bridge.name}: arrived=${arrived} in ${seconds.toFixed(1)} s, answered=${answered} (wrong ${answeredWrong}), `
+    console.log(`${bridge.name}: route ${Math.round(routePx / 3)} m, arrived=${arrived} in ${seconds.toFixed(1)} s, answered=${answered} (wrong ${answeredWrong}), `
       + `guard edge frames ${guard.edge}/${guard.frames} (rolled back ${guard.rolledBack}, unwedged ${guard.unwedged})${failure ? ' FAIL ' + failure : ''}`);
     testInfo.annotations.push({ type: 'keyboard-ride', description: JSON.stringify({ name: bridge.name, arrived, seconds, answered, guard: { frames: guard.frames, edge: guard.edge, rolledBack: guard.rolledBack, unwedged: guard.unwedged, hotspots: guard.where }, failure }) });
     expect(failure, failure).toBe('');

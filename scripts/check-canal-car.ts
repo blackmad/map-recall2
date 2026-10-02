@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { constrainCarToRoad, type CarKinematics, type RoadContact } from '../src/canalRecall/carRoadGuard';
+import { constrainCarToRoad, trackEdgeStall, type CarKinematics, type RoadContact } from '../src/canalRecall/carRoadGuard';
+import { coveringBuilding, initialCoverState, updateCoverState } from '../src/canalRecall/coveredPassage';
 
 const options = { edgeTolerance: 12 };
 const road = (overrides: Partial<RoadContact> = {}): RoadContact => ({
@@ -116,6 +117,52 @@ const metersBetween = (a: [number, number], b: [number, number]): number => {
   const longitudeScale = latitudeScale * Math.cos((a[0] + b[0]) / 2 * Math.PI / 180);
   return Math.hypot((a[0] - b[0]) * latitudeScale, (a[1] - b[1]) * longitudeScale);
 };
+{
+  // Named regression (keyboard ride, 2026-10-02, the dead-end south end of
+  // the Melkwegbrug): on the shoulder the bike shuffled 0.5-1 px a frame,
+  // alternating soft-edge and on-road, and went nowhere. A per-frame
+  // "moved < 0.5 px" stall test reset every few frames, so the heading ease
+  // kept cancelling the held arrows. Judged on net movement it builds up.
+  const state = { frames: 0, anchorX: 0, anchorY: 0 };
+  let frames = 0;
+  for (let i = 0; i < 30; i++) {
+    const x = 100 + (i % 2) * 0.9, y = 50 - (i % 3) * 0.6;
+    frames = trackEdgeStall(state, i % 3 === 2 ? 'on-road' : 'soft-edge', 1, x, y);
+  }
+  assert.ok(frames > 12, `a shuffling bike held at the edge counts as stalled (${frames} frames)`);
+  // Gliding along the kerb is not a stall, nor is riding without steering.
+  const glide = { frames: 0, anchorX: 0, anchorY: 0 };
+  for (let i = 0; i < 30; i++) frames = trackEdgeStall(glide, 'soft-edge', 1, i * 1.5, 0);
+  assert.ok(frames <= 3, `a bike sliding along the kerb is not stalled (${frames})`);
+  const straight = { frames: 0, anchorX: 0, anchorY: 0 };
+  for (let i = 0; i < 30; i++) frames = trackEdgeStall(straight, 'soft-edge', 0, 0, 0);
+  assert.equal(frames, 0, 'no steering held, no stall');
+}
+
+{
+  // Named regression (user report 2026-10-01, the Cuyperspassage under
+  // Amsterdam Centraal): a ground-based footprint over the rider hides the
+  // corridor, so it must be recognised; one floating above (min height 5 m),
+  // or one the rider is only behind, must not.
+  const shed = { properties: { id: 'w451533149', minHeight: 0, height: 9 }, geometry: { type: 'Polygon', coordinates: [[[4.8975, 52.3790], [4.9010, 52.3790], [4.9010, 52.3805], [4.8975, 52.3805], [4.8975, 52.3790]]] } };
+  const deck = { properties: { minHeight: 5, height: 7 }, geometry: shed.geometry };
+  const passage: [number, number] = [4.89862, 52.3797];
+  assert.equal(coveringBuilding([shed], passage), shed, 'the train shed covers the rider in the passage');
+  assert.equal(coveringBuilding([deck], passage), null, 'a raised deck is drawn floating, not over the rider');
+  assert.equal(coveringBuilding([shed], [4.8950, 52.3797]), null, 'a building merely in view does not count');
+  let cover = initialCoverState();
+  cover = updateCoverState(cover, true, 0);
+  assert.equal(cover.covered, false, 'not on the first reading');
+  cover = updateCoverState(cover, true, 0.25);
+  assert.equal(cover.covered, true, 'covered after the enter hold');
+  cover = updateCoverState(cover, false, 0.3);
+  cover = updateCoverState(cover, true, 0.4);
+  cover = updateCoverState(cover, false, 0.5);
+  assert.equal(cover.covered, true, 'a flicker at the footprint edge does not bring the buildings back');
+  cover = updateCoverState(cover, false, 1.1);
+  assert.equal(cover.covered, false, 'out for the leave hold, they return');
+}
+
 const daCosta = pointsFor('Da Costakade');
 assert.ok(daCosta.length > 0, 'full routing data includes Da Costakade');
 for (const crossing of ['De Clercqstraat', 'Potgieterstraat', 'Kinkerstraat', 'Jacob van Lennepstraat']) {
