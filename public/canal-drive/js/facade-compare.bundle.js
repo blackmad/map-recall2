@@ -540,6 +540,19 @@
       roofHosts: []
     }
   };
+  var BEURS_IDS = "w749918639,w749918641,w749918651,w749918653,w749918637,w749918638,w749931382,w749931383,w749918652".split(",");
+  SETUPS.beurs = {
+    centre: [4.8961, 52.37527],
+    ids: BEURS_IDS,
+    // Berlage's Beurs: a brick clock tower with a pyramid cap, and long steep-roofed halls.
+    kit: {
+      name: "Beurs",
+      tiers: [{ id: "w749918639", shape: "square", mat: "brick" }],
+      stacks: [{ onId: "w749918639", stages: [{ shape: "square", w0: 12.5, w1: 0.6, h: 11, mat: "slate" }] }],
+      roofs: ["w749918641", "w749918651", "w749918653", "w749918637", "w749918638"].map((id) => ({ id, riseM: 7, mat: "slate" }))
+    },
+    roofHosts: ["w749918641", "w749918651", "w749918653", "w749918637", "w749918638"].map((id) => ({ id, riseM: 7 }))
+  };
   var q = new URLSearchParams(location.search);
   var name = q.get("name") ?? "waag";
   var setup = SETUPS[name];
