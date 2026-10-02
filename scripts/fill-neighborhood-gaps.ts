@@ -36,7 +36,7 @@ import { cityNamePattern, extractCityById } from '../src/mapRecall/cityExtracts'
 import { historyText, isDisambiguation, mentions, sections, sentencesOf, tidy, upToChars } from './fetch-neighborhood-history';
 import {
   FIELDS, aliasCandidates, aliasOf, auditCoverage, commonsAttribution, flat, missingFields, offlineCandidates,
-  rankCommonsFiles, sentencesAbout, stemOf, wikidataLooksRight, centroidOf, compareCandidates, mergeCandidates, replaceableBy, ONLINE_METHODS,
+  rankCommonsFiles, historyFromBody, sentencesAbout, stemOf, wikidataLooksRight, centroidOf, compareCandidates, mergeCandidates, replaceableBy, ONLINE_METHODS,
   type Boundary, type Candidate, type CommonsFile, type FactFeature, type Field, type StreetOrigin, type StreetSegment,
 } from '../src/mapRecall/neighborhoodGaps';
 
@@ -332,6 +332,10 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
     const center = centroidOf(hood.geometry);
     const bulkMatch = bulk.get(flat(hood.name.split('/')[0].replace(/\s+e\.o\.$/i, ''))) ?? bulk.get(flat(hood.name.split('/')[1] ?? ''));
     const match = bulkMatch ?? await wikidataMatch(hood.name).catch(() => null);
+    // A request that failed (rate limit, network) is not an answer: the area is retried on the next run
+    // instead of being recorded as "nothing to find". Only a successful miss counts as a miss.
+    let failed = false;
+    const lenient = <T,>(promise: Promise<T>): Promise<T | null> => promise.catch(() => { failed = true; return null; });
     const add = (c: Omit<Candidate, 'name'>) => { candidates.push({ name: hood.name, ...c }); log += `${c.field} `; };
     const wanted = (f: Field) => missing.includes(f) && !candidates.some(c => c.name === hood.name && c.field === f);
 
@@ -343,7 +347,7 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
     const seen = new Set<string>();
     for (const [lang, title] of titles) {
       if (!wanted('description') && !wanted('history') && !wanted('nameOrigin')) break;
-      const text = await plainText(lang, title).catch(() => null);
+      const text = await lenient(plainText(lang, title));
       if (!text || seen.has(text.slice(0, 80)) || isDisambiguation(text) || !new RegExp(cityPattern).test(text.slice(0, 1500))) continue;
       const lede = sections(text).lede;
       if (!mentions(lede, hood.name)) continue;
@@ -351,7 +355,7 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
       const base = { lang, sourceUrl: articleUrl(lang, title), sourceLabel: 'Wikipedia', method: 'wiki-article' as const, confidence: 'high' as const, needsReview: lang === 'nl' };
       const description = upToChars(tidy(lede), 420);
       if (description && wanted('description')) add({ field: 'description', text: description, ...base });
-      const history = historyText(text);
+      const history = historyText(text) ?? historyFromBody(sentencesOf(tidy(text.replace(/\n={2,}[^=\n]+={2,}\n/g, '\n'))), description);
       if (history && wanted('history')) add({ field: 'history', text: history, ...base });
       const origin = nameOriginSentences(text, lang, hood.name) ?? streetNamingSection(text);
       if (origin && wanted('nameOrigin')) add({ field: 'nameOrigin', text: origin, ...base });
@@ -364,7 +368,7 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
       const search = await fetchJson(api('nl.wikipedia.org', { action: 'query', list: 'search', srsearch: `"${hood.name.split('/')[0]}" ${city.name}`, srlimit: '6', srprop: 'snippet' })).catch(() => null);
       for (const hit of (search?.query?.search ?? []) as Array<{ title: string }>) {
         if (!wanted('description') && !wanted('nameOrigin')) break;
-        const text = await plainText('nl', hit.title).catch(() => null);
+        const text = await lenient(plainText('nl', hit.title));
         if (!text) continue;
         const sentence = sentencesAbout(text, hood.name);
         if (sentence && wanted('description')) add({ field: 'description', text: sentence, lang: 'nl', sourceUrl: articleUrl('nl', hit.title), sourceLabel: 'Wikipedia', method: 'wiki-mention', confidence: 'low', needsReview: true, note: `sentence from "${hit.title}"` });
@@ -383,8 +387,8 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
       if (photo) add({ field: 'photo', imageUrl: photo.file.thumbUrl ?? photo.file.url, imageAttribution: commonsAttribution(photo.file), sourceUrl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(photo.file.title.replace(/ /g, '_'))}`, sourceLabel: 'Wikimedia Commons', method: photo.method, confidence: photo.method === 'commons-category' ? 'medium' : 'low', needsReview: photo.method === 'commons-geosearch' });
     }
     void districtArticles;
-    console.log(log);
-    finished.add(hood.name);
+    console.log(failed ? `${log}(some requests failed; will retry next run)` : log);
+    if (!failed) finished.add(hood.name);
     // Save as we go: a run over a whole city takes hours and the network can drop.
     if (checkpoint && ++done % 5 === 0) { await checkpoint(candidates); await saveDone(); }
   };

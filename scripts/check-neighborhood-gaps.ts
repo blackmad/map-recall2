@@ -169,3 +169,15 @@ console.log('Neighbourhood gap-fill checks passed.');
   assert.equal(mergeCandidates([composed, article], [{ ...article, text: 'New.' }]).length, 2);
   console.log('Neighbourhood publish checks passed.');
 }
+
+{
+  const { historyFromBody } = await import('../src/mapRecall/neighborhoodGaps');
+  const spor = [
+    'Sporenburg is een kunstmatig schiereiland dat in de 19e eeuw is aangeplempt in het Oostelijk Havengebied van Amsterdam.',
+    'Het schiereiland ligt in oost-westelijke richting en wordt aan drie kanten door water omgeven.',
+    'Sinds de jaren negentig van de twintigste eeuw is het gebied herontwikkeld tot een woonwijk.',
+  ];
+  const out = historyFromBody(spor, spor[0]);
+  assert.ok(out && out.includes('jaren negentig') && !out.includes('aangeplempt'), 'dated prose sentence, not the description');
+  assert.equal(historyFromBody(['Het is een eiland met veel water en groen.']), undefined);
+}
