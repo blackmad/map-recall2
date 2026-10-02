@@ -85,14 +85,17 @@ export class ExtraSink {
   }
   /**
    * A thin proud plate (a frame, a glazing bar, a band a few centimetres out): its front and top
-   * only, four triangles. Its sides would be slivers a few pixels wide at street distance.
+   * only, four triangles. Its sides would be slivers a few pixels wide at street distance. The top
+   * runs back `depth` from the front (default: to the wall, a solid ledge); a railing standing
+   * free of the wall passes its own thickness.
    */
-  strip(f: WallFrame, a0: number, a1: number, out: number, z0: number, z1: number, hex: string): boolean {
+  strip(f: WallFrame, a0: number, a1: number, out: number, z0: number, z1: number, hex: string, depth = out): boolean {
     if (this.mark?.failed || !this.fits(4)) return false;
     this.boxes++;
     const P = (a: number, o: number, z: number): V3 => [f.x0 + f.ux * a + f.nx * o, f.y0 + f.uy * a + f.ny * o, z];
     this.face([P(a0, out, z0), P(a1, out, z0), P(a1, out, z1), P(a0, out, z1)], [f.nx, f.ny, 0], hex);
-    this.face([P(a0, 0, z1), P(a1, 0, z1), P(a1, out, z1), P(a0, out, z1)], [0, 0, 1], hex);
+    const back = Math.max(0, out - depth);
+    this.face([P(a0, back, z1), P(a1, back, z1), P(a1, out, z1), P(a0, out, z1)], [0, 0, 1], hex);
     return true;
   }
   /** A sloped quad (a hood or a canopy): from (a0..a1, o0, zWall) at the wall to (o1, zOut) outside. */

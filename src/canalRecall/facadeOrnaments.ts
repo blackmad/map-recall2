@@ -173,9 +173,9 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
       const a0 = w.x - w.hw - 0.12, a1 = w.x + w.hw + 0.12, z = w.z0 - 0.02;
       s.box(c.f, a0, a1, 0, 0.42, z - 0.1, z, STONE, true);
       for (const x of [a0 + 0.14, a1 - 0.14]) s.strip(c.f, x - 0.07, x + 0.07, 0.3, z - 0.32, z - 0.1, STONE);
-      s.strip(c.f, a0, a1, 0.4, z + 0.86, z + 0.92, IRON);
-      s.strip(c.f, a0, a1, 0.4, z + 0.1, z + 0.14, IRON);
-      for (let i = 0; i < 4; i++) { const x = a0 + 0.1 + ((a1 - a0 - 0.2) * i) / 3; s.strip(c.f, x - 0.02, x + 0.02, 0.4, z, z + 0.9, IRON); }
+      s.strip(c.f, a0, a1, 0.4, z + 0.86, z + 0.92, IRON, 0.04);
+      s.strip(c.f, a0, a1, 0.4, z + 0.1, z + 0.14, IRON, 0.03);
+      for (let i = 0; i < 4; i++) { const x = a0 + 0.1 + ((a1 - a0 - 0.2) * i) / 3; s.strip(c.f, x - 0.02, x + 0.02, 0.4, z, z + 0.9, IRON, 0.03); }
     }
   } },
   // --- Windows ---------------------------------------------------------------------------------
@@ -277,8 +277,8 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     const body = shadeHex(c.wallHex, 0.88);
     for (const [hw, o] of [[1.3, 0.35], [1.05, 0.65], [0.7, 0.85]] as const) s.box(c.f, x - hw, x + hw, 0, o, z0, z1, body, true);
     // Glass on each step's face, where the step stands out past the next one.
-    for (const [a0, a1, o] of [[x - 1.22, x - 1.1, 0.35], [x - 0.95, x - 0.8, 0.65], [x - 0.62, x + 0.62, 0.85], [x + 0.8, x + 0.95, 0.65], [x + 1.1, x + 1.22, 0.35]] as const) s.strip(c.f, a0, a1, o + 0.01, glassZ0, glassZ1, '#4d5f6b');
-    s.strip(c.f, x - 0.6, x + 0.6, 0.88, glassZ0 + (glassZ1 - glassZ0) * 0.68, glassZ0 + (glassZ1 - glassZ0) * 0.72, frame);
+    for (const [a0, a1, o] of [[x - 1.22, x - 1.1, 0.35], [x - 0.95, x - 0.8, 0.65], [x - 0.62, x + 0.62, 0.85], [x + 0.8, x + 0.95, 0.65], [x + 1.1, x + 1.22, 0.35]] as const) s.strip(c.f, a0, a1, o + 0.01, glassZ0, glassZ1, '#4d5f6b', 0.01);
+    s.strip(c.f, x - 0.6, x + 0.6, 0.88, glassZ0 + (glassZ1 - glassZ0) * 0.68, glassZ0 + (glassZ1 - glassZ0) * 0.72, frame, 0.03);
     s.box(c.f, x - 1.38, x + 1.38, 0, 0.95, z1, z1 + 0.14, c.style === 'school' ? '#4f7a6a' : STONE, true);
   } },
   // --- Ground floor -------------------------------------------------------------------------
@@ -332,7 +332,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     const L = c.f.len, w = 1.6, a0 = r < 0.5 ? 0 : L - w, brick = shadeHex(c.wallHex, 0.86);
     s.box(c.f, a0, a0 + w, 0, 0.4, storeyZ(c, 0), c.top + 2.0, brick, true, true);
     s.box(c.f, a0 - 0.05, a0 + w + 0.05, -0.05, 0.48, c.top + 2.0, c.top + 2.15, CREAM, true, true);
-    s.strip(c.f, a0 + w / 2 - 0.2, a0 + w / 2 + 0.2, 0.42, storeyZ(c, 1), c.top + 1.6, '#4d5f6b');
+    s.strip(c.f, a0 + w / 2 - 0.2, a0 + w / 2 + 0.2, 0.42, storeyZ(c, 1), c.top + 1.6, '#4d5f6b', 0.02);
   } },
 ];
 

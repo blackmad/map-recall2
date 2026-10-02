@@ -47,10 +47,10 @@ function roofBox(c: RoofContext, s: ExtraSink, u0: number, u1: number, v0: numbe
 
 const STREET_FURNITURE: readonly WallComponent[] = [
   // --- Canal houses --------------------------------------------------------------
-  { id: 'hoist-beam', group: 'hoist', styles: ['canal'], p: 0.55, build: (c, s) => {
+  { id: 'hoist-beam', group: 'hoist', street: true, styles: ['canal'], p: 0.55, build: (c, s) => {
     const x = c.f.len / 2; s.box(c.f, x - 0.1, x + 0.1, 0, 0.95, c.top - 0.55, c.top - 0.35, WOOD, true);
     s.box(c.f, x - 0.02, x + 0.02, 0.85, 0.9, c.top - 0.9, c.top - 0.55, IRON); } },
-  { id: 'hoist-hood', group: 'hoist', styles: ['canal'], p: 0.2, build: (c, s) => {
+  { id: 'hoist-hood', group: 'hoist', street: true, styles: ['canal'], p: 0.2, build: (c, s) => {
     const x = c.f.len / 2; s.box(c.f, x - 0.1, x + 0.1, 0, 1.0, c.top - 0.6, c.top - 0.42, WOOD, true);
     s.slope(c.f, x - 0.35, x + 0.35, 0, 1.1, c.top - 0.05, c.top - 0.4, WOOD); } },
   { id: 'stoop', group: 'stoop', styles: ['canal'], p: 0.5, build: (c, s) => {
@@ -97,8 +97,8 @@ const STREET_FURNITURE: readonly WallComponent[] = [
     // An openwork railing (top rail, foot rail, bars) rather than a solid plate, which read as a black box.
     for (const x of windowXs(c).slice(0, 4)) {
       s.box(c.f, x - 0.6, x + 0.6, 0, 0.35, z, z + 0.06, STONE, true);
-      s.strip(c.f, x - 0.6, x + 0.6, 0.34, z + 0.88, z + 0.94, IRON); s.strip(c.f, x - 0.6, x + 0.6, 0.34, z + 0.14, z + 0.18, IRON);
-      for (const dx of [-0.5, -0.17, 0.17, 0.5]) s.strip(c.f, x + dx - 0.02, x + dx + 0.02, 0.34, z + 0.06, z + 0.9, IRON);
+      s.strip(c.f, x - 0.6, x + 0.6, 0.34, z + 0.88, z + 0.94, IRON, 0.04); s.strip(c.f, x - 0.6, x + 0.6, 0.34, z + 0.14, z + 0.18, IRON, 0.03);
+      for (const dx of [-0.5, -0.17, 0.17, 0.5]) s.strip(c.f, x + dx - 0.02, x + dx + 0.02, 0.34, z + 0.06, z + 0.9, IRON, 0.03);
     } } },
   { id: 'bay-window', group: 'oriel', styles: ['c19', 'school'], p: 0.2, build: (c, s) => {
     if (c.layout.storeys < 1 || c.f.len < 5) return; const x = c.f.len / 2, z0 = storeyZ(c, 0), z1 = z0 + c.layout.storeyM * Math.min(2, c.layout.storeys) - 0.2;
@@ -209,9 +209,12 @@ export function wallExtras(c: ExtraContext, sink: ExtraSink): string[] {
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + (street ? EXTRA_BUDGET.wall : EXTRA_BUDGET.sideWall)));
   for (const comp of WALL_COMPONENTS) {
-    if (!comp.styles.includes(period) || (comp.street && !street) || (comp.group && groups.has(comp.group))) continue;
+    // Ornaments follow the building's period; street furniture (a stoop, a hoist beam) also its
+    // layout style, so a 19th-century house laid out as a canal house keeps its stoop.
+    const as = comp.styles.includes(period) ? period : !ATOMIC.has(comp.id) && comp.styles.includes(c.style) ? c.style : null;
+    if (!as || (comp.street && !street) || (comp.group && groups.has(comp.group))) continue;
     const roll = comp.wide || WIDE.has(comp.id) ? hash01(`${c.id}:${comp.id}`) : hash01(`${c.id}:${c.wallKey}:${comp.id}`);
-    if (roll >= chanceFor(comp.p, period)) continue;
+    if (roll >= chanceFor(comp.p, as)) continue;
     const before = sink.tris.length, atomic = comp.atomic ?? ATOMIC.has(comp.id);
     if (atomic) sink.begin();
     comp.build(c, sink, hash01(`${c.id}:${comp.id}:v`));
