@@ -510,6 +510,117 @@
     return { positions, uvs, layers: layerArr, tints, accents, indices, ranges, vertexCount, quadCount: Math.ceil(tris / 2), wallCount: 0, buildingCount: ranges.length };
   }
 
+  // src/canalRecall/landmarkFronts.ts
+  function arch(x0, x1, z, rise, segments = 8) {
+    const r = ((x1 - x0) ** 2 / 4 + rise ** 2) / (2 * rise), cx = (x0 + x1) / 2, cz = z + rise - r;
+    const half = Math.asin((x1 - x0) / 2 / r);
+    return Array.from({ length: segments + 1 }, (_, i) => {
+      const a = -half + 2 * half * i / segments;
+      return [cx + r * Math.sin(a), cz + r * Math.cos(a)];
+    });
+  }
+  function frontTriangles(front2, toWorld) {
+    const tris = [];
+    const quad = (a, b, c, d2, hex2) => {
+      const [pa, pb, pc, pd] = [a, b, c, d2].map(([x, z, y]) => toWorld(x, z, y));
+      tris.push({ p: [pa, pb, pc], hex: hex2 }, { p: [pa, pc, pd], hex: hex2 });
+    };
+    const box = ({ x0, x1, z0, z1, out0 = 0, out1, hex: hex2 }) => {
+      quad([x0, z0, out1], [x1, z0, out1], [x1, z1, out1], [x0, z1, out1], hex2);
+      quad([x0, z0, out0], [x0, z0, out1], [x0, z1, out1], [x0, z1, out0], hex2);
+      quad([x1, z0, out1], [x1, z0, out0], [x1, z1, out0], [x1, z1, out1], hex2);
+      quad([x0, z1, out1], [x1, z1, out1], [x1, z1, out0], [x0, z1, out0], hex2);
+      quad([x0, z0, out0], [x1, z0, out0], [x1, z0, out1], [x0, z0, out1], hex2);
+    };
+    const d = front2.depthM, o = front2.outline;
+    for (let i = 1; i < o.length; i++) {
+      const [xa, za] = o[i - 1], [xb, zb] = o[i];
+      if (xb <= xa) continue;
+      quad([xa, 0, d], [xb, 0, d], [xb, zb, d], [xa, za, d], front2.hex);
+      quad([xa, za, d], [xb, zb, d], [xb, zb, 0], [xa, za, 0], front2.hex);
+    }
+    const [xs, zs] = o[0], [xe, ze] = o[o.length - 1];
+    quad([xs, 0, 0], [xs, 0, d], [xs, zs, d], [xs, zs, 0], front2.hex);
+    quad([xe, 0, d], [xe, 0, 0], [xe, ze, 0], [xe, ze, d], front2.hex);
+    for (const b of front2.boxes) box({ ...b, out0: (b.out0 ?? 0) + d, out1: b.out1 + d });
+    for (const grid of front2.windows) for (const cx of grid.xs) for (const [z0, z1] of grid.rows) {
+      const x0 = cx - grid.w / 2, x1 = cx + grid.w / 2;
+      box({ x0: x0 - 0.12, x1: x1 + 0.12, z0: z0 - 0.12, z1: z1 + 0.12, out0: d, out1: d + 0.04, hex: grid.frameHex ?? "#d8d0c0" });
+      box({ x0, x1, z0, z1, out0: d, out1: d + 0.07, hex: grid.hex });
+      box({ x0: x0 - 0.2, x1: x1 + 0.2, z0: z0 - 0.3, z1: z0 - 0.12, out0: d, out1: d + 0.25, hex: front2.hex });
+    }
+    return tris;
+  }
+
+  // src/canalRecall/landmarkFrontData.ts
+  var span = (xs, half) => xs.flatMap((x) => [x - half, x + half]);
+  var BIJ = { stone: "#b39a88", pier: "#cbb6a3", cornice: "#c2ab98", glass: "#4b5561", iron: "#56625c", bronze: "#5a3a30" };
+  var BIJ_BAYS = [3.1, 8.1, 13.2, 18.1, 22.9];
+  var BIJ_SHOPS = [[1.1, 4.9], [6.25, 10], [11.4, 15], [16.4, 20], [21.3, 24.9]];
+  var BIJENKORF = {
+    name: "Bijenkorf",
+    start: [4.893856597014285, 52.37348990232792],
+    end: [4.893608397018061, 52.37330680232445],
+    depthM: 0.4,
+    hex: BIJ.stone,
+    bodyTopM: 23.6,
+    outline: [[0, 23.6], [4.75, 23.6], [4.75, 29.3], ...arch(5.4, 21.1, 29.3, 3.2, 10), [21.25, 29.3], [21.25, 23.6], [26.45, 23.6]],
+    boxes: [
+      // The attic storey and pediment stand on the body as a block 8 m deep.
+      { x0: 4.75, x1: 21.25, z0: 23.2, z1: 29.3, out0: -8.4, out1: 0, hex: BIJ.stone },
+      // Ground floor: shopfronts between stone piers, a fascia above.
+      ...BIJ_SHOPS.flatMap(([x0, x1]) => [
+        { x0: x0 - 0.15, x1: x1 + 0.15, z0: 0.9, z1: 5.05, out0: -0.05, out1: 0.03, hex: BIJ.bronze },
+        { x0, x1, z0: 1.05, z1: 4.9, out0: -0.05, out1: 0.06, hex: BIJ.glass }
+      ]),
+      { x0: 0, x1: 26.45, z0: 5.7, z1: 6.8, out1: 0.45, hex: BIJ.cornice },
+      // Stone pilasters through the three main storeys.
+      ...[0.55, 5.4, 10.6, 15.8, 20.9, 25.9].map((x) => ({ x0: x - 0.55, x1: x + 0.55, z0: 6.8, z1: 18.6, out1: 0.3, hex: BIJ.pier })),
+      // Main cornice: frieze, corona, and the deep overhang over the centre.
+      { x0: 0, x1: 26.45, z0: 18.6, z1: 19.6, out1: 0.4, hex: BIJ.cornice },
+      { x0: 0, x1: 26.45, z0: 19.6, z1: 20.7, out1: 0.9, hex: BIJ.cornice },
+      { x0: 3, x1: 23.3, z0: 20.7, z1: 22, out1: 1.5, hex: BIJ.pier },
+      // Attic: piers between three bays, balustrades on the low wings.
+      ...[5.3, 10.9, 15.6, 20.7].map((x) => ({ x0: x - 0.55, x1: x + 0.55, z0: 22, z1: 26.3, out1: 0.35, hex: BIJ.pier })),
+      { x0: 0.2, x1: 4.75, z0: 22, z1: 23.3, out1: 0.25, hex: BIJ.pier },
+      { x0: 21.25, x1: 26.2, z0: 22, z1: 23.3, out1: 0.25, hex: BIJ.pier },
+      // Upper cornice under the pediment, flaring out.
+      { x0: 4.1, x1: 22.3, z0: 26.3, z1: 27.6, out1: 0.6, hex: BIJ.cornice },
+      { x0: 3.25, x1: 23.1, z0: 27.6, z1: 29.3, out1: 1.1, hex: BIJ.pier },
+      { x0: 11.6, x1: 14.8, z0: 26.3, z1: 28.6, out1: 0.75, hex: BIJ.pier },
+      // Balconies on the centre bay.
+      { x0: 11.4, x1: 15, z0: 6.5, z1: 7.3, out1: 0.9, hex: BIJ.iron },
+      { x0: 11.6, x1: 14.8, z0: 10.2, z1: 10.8, out1: 0.8, hex: BIJ.iron },
+      { x0: 11.6, x1: 14.8, z0: 14.1, z1: 14.6, out1: 0.8, hex: BIJ.iron }
+    ],
+    windows: [
+      { xs: span(BIJ_BAYS, 0.68), rows: [[7.4, 9.6], [10.9, 13.2], [14.7, 16.3]], w: 1.05, hex: BIJ.glass },
+      { xs: span([8.1, 13.2, 18.1], 0.6), rows: [[22.6, 24]], w: 0.95, hex: BIJ.glass }
+    ]
+  };
+  var BEURS = { brick: "#9a5240", stone: "#d4c8b2", glass: "#45474a" };
+  var BEURS_COLS = Array.from({ length: 13 }, (_, i) => 1.3 + i * 3.47);
+  var BEURS_GABLES = [2.7, 10.2, 17.5, 24.7, 31.7, 38.7];
+  var BEURS_BEURSPLEIN = {
+    name: "Beurs van Berlage",
+    start: [4.895897096981563, 52.37509780235795],
+    end: [4.895497396988156, 52.37477130235189],
+    depthM: 0.3,
+    hex: BEURS.brick,
+    outline: [[0, 15.4], ...BEURS_GABLES.flatMap((c) => [[c - 2.1, 15.4], [c - 0.5, 17.2], [c + 0.5, 17.2], [c + 2.1, 15.4]]), [45.4, 15.4]],
+    boxes: [
+      { x0: 0, x1: 45.4, z0: 14.6, z1: 15.5, out1: 0.3, hex: BEURS.stone },
+      { x0: 0, x1: 45.4, z0: 2.9, z1: 3.2, out1: 0.15, hex: BEURS.stone },
+      ...BEURS_GABLES.map((c) => ({ x0: c - 2.25, x1: c + 2.25, z0: 15.4, z1: 15.7, out1: 0.25, hex: BEURS.stone }))
+    ],
+    windows: [
+      { xs: BEURS_COLS, rows: [[11, 13], [7.7, 9.7], [4.2, 5.8]], w: 1.9, hex: BEURS.glass, frameHex: BEURS.stone },
+      { xs: BEURS_COLS, rows: [[0.8, 1.8]], w: 1.5, hex: BEURS.glass, frameHex: BEURS.stone },
+      { xs: BEURS_GABLES, rows: [[15.9, 16.7]], w: 0.5, hex: BEURS.glass, frameHex: BEURS.stone }
+    ]
+  };
+  var FRONTS = { bijenkorf: BIJENKORF, beurs: BEURS_BEURSPLEIN };
+
   // src/canalRecall/facadeCompareViewer.ts
   var SETUPS = {
     waag: {
@@ -530,13 +641,8 @@
     bijenkorf: {
       centre: [4.8939, 52.37335],
       ids: "w751128384,w751235773,w751235774,w751235775,w751235776,w751128373,NL.IMBAG.Pand.0363100012179183".split(","),
-      // A stone-faced block: the parts become stone prisms with a cornice ledge at the roofline.
-      kit: {
-        name: "Bijenkorf",
-        tiers: "w751128384,w751235773,w751235774,w751235775,w751235776,w751128373,NL.IMBAG.Pand.0363100012179183".split(",").map((id) => ({ id, shape: "square", mat: "stone" })),
-        stacks: [],
-        roofs: []
-      },
+      // Plain prisms in the front's stone; the front (landmarkFrontData.ts) carries the detail.
+      kit: { name: "Bijenkorf", tiers: [], stacks: [], roofs: [] },
       roofHosts: []
     }
   };
@@ -549,13 +655,15 @@
       name: "Beurs",
       tiers: [{ id: "w749918639", shape: "square", mat: "brick" }],
       stacks: [{ onId: "w749918639", stages: [{ shape: "square", w0: 12.5, w1: 0.6, h: 11, mat: "slate" }] }],
-      roofs: ["w749918641", "w749918651", "w749918653", "w749918637", "w749918638"].map((id) => ({ id, riseM: 7, mat: "slate" }))
+      // The Beursplein hall's eaves sit on the gable row at 15.5 m, so its roof rises 11.5 m.
+      roofs: ["w749918641", "w749918651", "w749918653", "w749918637", "w749918638"].map((id) => ({ id, riseM: id === "w749918641" ? 11.5 : 7, mat: "slate" }))
     },
-    roofHosts: ["w749918641", "w749918651", "w749918653", "w749918637", "w749918638"].map((id) => ({ id, riseM: 7 }))
+    roofHosts: ["w749918641", "w749918651", "w749918653", "w749918637", "w749918638"].map((id) => ({ id, riseM: id === "w749918641" ? 11.5 : 7 }))
   };
   var q = new URLSearchParams(location.search);
   var name = q.get("name") ?? "waag";
   var setup = SETUPS[name];
+  var front = FRONTS[name];
   var [clng, clat] = setup.centre;
   var kx = 111320 * Math.cos(clat * Math.PI / 180);
   var ky = 110540;
@@ -589,6 +697,21 @@
       g.translate(0, z0, 0);
       return new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color }));
     };
+    {
+      const [ax2, ay2] = local([meta.wall.startLngLat])[0], [bx2, by2] = local([meta.wall.endLngLat])[0];
+      const b = meta.wall.outwardBearingDeg * Math.PI / 180, ox = Math.sin(b), oy = Math.cos(b), mx = (ax2 + bx2) / 2, my = (ay2 + by2) / 2;
+      const len = Math.hypot(bx2 - ax2, by2 - ay2) || 1, half = len / 2 + 25, ux = (bx2 - ax2) / len, uy = (by2 - ay2) / len;
+      const inFront = (pts) => pts.some(([x, y]) => {
+        const out = (x - mx) * ox + (y - my) * oy, along = (x - mx) * ux + (y - my) * uy;
+        return out > 1 && out < 70 && Math.abs(along) < half;
+      });
+      for (let i = context.length - 1; i >= 0; i--) if (inFront(context[i].pts)) context.splice(i, 1);
+    }
+    if (front?.bodyTopM != null) {
+      const [ax2, ay2] = local([front.start])[0], [bx2, by2] = local([front.end])[0], len = Math.hypot(bx2 - ax2, by2 - ay2);
+      const offLine = ([x, y]) => Math.abs((x - ax2) * (by2 - ay2) - (y - ay2) * (bx2 - ax2)) / len;
+      for (const p of parts.values()) if (p.ring.filter((pt) => offLine(pt) < 0.5).length >= 2) p.heightM = Math.min(p.heightM, front.bodyTopM);
+    }
     const lights = (scene) => {
       scene.background = new THREE.Color("#e9e4d4");
       scene.add(new THREE.HemisphereLight(16777215, 10063744, 1.6));
@@ -600,30 +723,17 @@
       scene.add(ground);
       for (const c of context) scene.add(prism(c.pts, c.min, Math.max(c.min + 1, c.h), "#b9b2a4"));
     };
-    const sceneFor = (variant, texture2) => {
+    const sceneFor = (variant) => {
       const scene = new THREE.Scene();
       lights(scene);
       if (variant === "plain") for (const p of parts.values()) scene.add(prism(p.ring, p.minHeightM, p.heightM, "#d9c24a"));
-      if (variant === "photo") {
-        for (const p of parts.values()) scene.add(prism(p.ring, p.minHeightM, p.heightM, "#9a8a78"));
-        const [ax2, ay2] = local([meta.wall.startLngLat])[0], [bx2, by2] = local([meta.wall.endLngLat])[0];
-        const bearing2 = meta.wall.outwardBearingDeg * Math.PI / 180, nx = Math.sin(bearing2) * 0.06, ny = Math.cos(bearing2) * 0.06;
-        const buildingH2 = meta.wall.heightM - 1.5, visible = buildingH2 / meta.wall.heightM;
-        const quad = new THREE.BufferGeometry();
-        const pos = [ax2 + nx, 0, -(ay2 + ny), bx2 + nx, 0, -(by2 + ny), bx2 + nx, buildingH2, -(by2 + ny), ax2 + nx, buildingH2, -(ay2 + ny)];
-        quad.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
-        quad.setAttribute("uv", new THREE.Float32BufferAttribute([0, 0, 1, 0, 1, visible, 0, visible], 2));
-        quad.setIndex([0, 1, 2, 0, 2, 3]);
-        quad.computeVertexNormals();
-        scene.add(new THREE.Mesh(quad, new THREE.MeshBasicMaterial({ map: texture2, side: THREE.DoubleSide })));
-      }
       if (variant === "kit") {
         for (const h of setup.roofHosts) {
           const p = parts.get(h.id);
           if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, "#9a5240"));
         }
         const unused = [...parts.values()].filter((p) => !setup.kit.tiers.some((t) => t.id === p.id) && !setup.roofHosts.some((h) => h.id === p.id));
-        for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, "#9a5240"));
+        for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, front?.hex ?? "#9a5240"));
         const chunk = buildKitChunk(kitGeometry(setup.kit, parts), { plain: 0, flat: 0, slope: 0 });
         const geometry = new THREE.BufferGeometry(), pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);
         for (let i = 0; i < chunk.vertexCount; i++) {
@@ -636,13 +746,25 @@
         geometry.setAttribute("position", new THREE.BufferAttribute(pos, 3));
         geometry.setAttribute("color", new THREE.BufferAttribute(col, 3));
         scene.add(new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide })));
+        if (front) {
+          const [fax, fay] = local([front.start])[0], [fbx, fby] = local([front.end])[0], len = Math.hypot(fbx - fax, fby - fay);
+          const ux = (fbx - fax) / len, uy = (fby - fay) / len, ox = uy, oy = -ux;
+          const tris = frontTriangles(front, (along, up, out) => [fax + ux * along + ox * out, fay + uy * along + oy * out, up]);
+          const fp = new Float32Array(tris.length * 9), fc = new Float32Array(tris.length * 9), c = new THREE.Color();
+          tris.forEach((t, i) => t.p.forEach(([x, y, z], k) => {
+            fp.set([x, z, -y], i * 9 + k * 3);
+            c.set(t.hex);
+            fc.set([c.r, c.g, c.b], i * 9 + k * 3);
+          }));
+          const fg = new THREE.BufferGeometry();
+          fg.setAttribute("position", new THREE.BufferAttribute(fp, 3));
+          fg.setAttribute("color", new THREE.BufferAttribute(fc, 3));
+          fg.computeVertexNormals();
+          scene.add(new THREE.Mesh(fg, new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide })));
+        }
       }
       return scene;
     };
-    const texture = await new Promise((resolve) => new THREE.TextureLoader().load(`/data/landmark-facades/${meta.image}`, (t) => {
-      t.colorSpace = THREE.SRGBColorSpace;
-      resolve(t);
-    }));
     const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
     const W = innerWidth, H = innerHeight;
     renderer.setSize(W, H);
@@ -655,10 +777,16 @@
     const cam = new THREE.PerspectiveCamera(32, W / 3 / H, 1, 2e3), a = bearing + az, focusY = buildingH * 0.42;
     cam.position.set(mid[0] + Math.sin(a) * Math.cos(el) * dist, focusY + Math.sin(el) * dist, -(mid[1] + Math.cos(a) * Math.cos(el) * dist));
     cam.lookAt(mid[0], focusY, -mid[1]);
-    ["plain", "photo", "kit"].forEach((variant, i) => {
+    ["plain", "kit"].forEach((variant, i) => {
       renderer.setViewport(i * W / 3, 0, W / 3, H);
       renderer.setScissor(i * W / 3, 0, W / 3, H);
-      renderer.render(sceneFor(variant, texture), cam);
+      renderer.render(sceneFor(variant), cam);
+    });
+    const ref = document.createElement("img");
+    Object.assign(ref.style, { position: "fixed", left: `${2 * W / 3}px`, top: "0", width: `${W / 3}px`, height: `${H}px`, objectFit: "contain", background: "#e9e4d4" });
+    ref.src = `/data/landmark-facades/${meta.image}`;
+    document.body.appendChild(ref);
+    await ref.decode().catch(() => {
     });
     window.__info = { parts: parts.size };
     document.title = "ready";
