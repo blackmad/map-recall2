@@ -33,7 +33,9 @@ function canalRecallBuildings3dLook() {
   try {
     const raw = typeof window.__canalRecallBuildings3d !== 'undefined' ? window.__canalRecallBuildings3d : new URLSearchParams(window.location.search).get('buildings3d');
     if (raw === true || raw === '1' || raw === 'true' || raw === 'on' || raw === 'procedural') return 'procedural';
-    if (raw === 'cartoon' || raw === 'photo' || raw === 'storybook') return raw;
+    if (raw === 'cartoon' || raw === 'photo' || raw === 'storybook' || raw === 'untextured') return raw;
+    // The retired MapLibre pattern layer, kept as a URL escape hatch only.
+    if (raw === 'off' || raw === 'default') return 'default';
   } catch (_) { /* no window */ }
   return null;
 }
@@ -64,7 +66,7 @@ class VectorBasemap {
     // fill-extrusion pattern. Off by default; `?buildings3d=1`. See
     // RENDERING_STACK_OPTIONS.md.
     this._buildingLookLocked = !!canalRecallBuildings3dLook(); // a URL/global look beats the saved preference
-    this._buildings3dLook = canalRecallBuildings3dLook() || 'default';
+    this._buildings3dLook = canalRecallBuildings3dLook() || 'photo';
     this._buildings3dEnabled = this._buildings3dLook !== 'default';
     this._tileFeatures = [];
     this._threeBuildings = null;
@@ -819,6 +821,10 @@ class VectorBasemap {
       if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
     }
     this._threeBuildings.setVisible(this._facadesActive() && this._buildings3dEnabled);
+    // The layer may arrive after the first facade-state pass: re-apply so MapLibre's buildings switch off.
+    this._facadeStateApplied = undefined;
+    this._applyFacadeState();
+    this._syncMaplibreBuildingVisibility();
     this._loadHouseboats();
   }
 
@@ -876,7 +882,7 @@ class VectorBasemap {
 
   /** The building look now in force: 'default', 'procedural', 'storybook', 'cartoon' or 'photo'. */
   buildingLook() {
-    return this._buildings3dLook || 'default';
+    return this._buildings3dLook || 'photo';
   }
 
   /** The look the saved preference asks for, unless a URL look is in force. */
@@ -890,7 +896,7 @@ class VectorBasemap {
    * or 'photo'. Both layers exist side by side once used; only one is visible.
    */
   setBuildingLook(look) {
-    if (!['default', 'procedural', 'storybook', 'cartoon', 'photo'].includes(look) || look === this._buildings3dLook) return;
+    if (!['default', 'procedural', 'storybook', 'cartoon', 'photo', 'untextured'].includes(look) || look === this._buildings3dLook) return;
     this._buildings3dLook = look;
     this._buildings3dEnabled = look !== 'default';
     if (!this.map || !this.map.getLayer('osm-colored-buildings')) return; // layers are created from these flags on load
@@ -951,9 +957,22 @@ class VectorBasemap {
     };
   }
 
+  /**
+   * MapLibre's own building layers show only when nothing else draws the city: they hide under
+   * 3DBAG or Google photoreal, and whenever the three.js layer draws every building.
+   */
+  _syncMaplibreBuildingVisibility() {
+    if (!this.map) return;
+    const off = !!this._facadesHiddenByDetail || this._threeOwnsTops();
+    for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
+      if (this.map.getLayer(id) && this.map.getLayoutProperty(id, 'visibility') !== (off ? 'none' : 'visible')) this.map.setLayoutProperty(id, 'visibility', off ? 'none' : 'visible');
+    }
+  }
+
   /** Show/hide the pattern layer and keep the plain wall base in step. */
   _applyFacadeState() {
     if (!this.map) return;
+    this._syncMaplibreBuildingVisibility();
     const hasPattern = !!this.map.getLayer('osm-colored-building-facades');
     if (!this._threeBuildings && !hasPattern) return;
     const active = this._facadesActive();
@@ -970,10 +989,7 @@ class VectorBasemap {
     if (this.map.getLayer('osm-colored-buildings')) {
       this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', this._wallBaseExpression(groundTop, minHeight, wallTop));
     }
-    const owned = this._threeOwnsTops();
-    for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
-      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', owned ? 'none' : 'visible');
-    }
+    this._syncMaplibreBuildingVisibility();
   }
 
   /**
@@ -1605,11 +1621,9 @@ class VectorBasemap {
     if (this.map.getLayer('building-3d')) {
       this.map.setLayoutProperty('building-3d', 'visibility', hideBasemap ? 'none' : 'visible');
     }
-    for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
-      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', (detailed || google) ? 'none' : 'visible');
-    }
     this._facadesHiddenByDetail = detailed || google;
     this._applyFacadeState();
+    this._syncMaplibreBuildingVisibility();
     // Signature models are the LoD1 replacement for a handful of landmarks.
     // Hide them under photoreal/3DBAG the same way the extrusions hide, so two
     // representations of Centraal never occupy the same air.

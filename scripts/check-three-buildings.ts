@@ -230,6 +230,17 @@ for (const c of [0.64, 1.4]) {
     assert.ok(slopes.every(t => t.n[2] > 0), `${kind}: roof slopes face upward`);
     const plates = tris.filter(t => t.part === 'plate');
     assert.ok(plates.length > 0 && plates.every(t => Math.abs(t.n[2]) < 0.99 || t.n[2] > 0.99), `${kind}: plates are vertical or coping`);
+    // Each end wall is closed: the outward-facing plates in the end plane cover the whole profile
+    // (a mansard end once missed its eaves triangle and showed a hole everywhere, user report 2026-10-02).
+    const shoelace = (pts: Array<[number, number]>) => Math.abs(pts.reduce((sum, [x0, y0], i) => { const [x1, y1] = pts[(i + 1) % pts.length]; return sum + x0 * y1 - x1 * y0; }, 0)) / 2;
+    const W = r.wid, R = plan.riseM, k = Math.min(1.0, W * 0.16), h1 = R * 0.88;
+    const expected = kind === 'pitched' ? W * R / 2 : kind === 'mansard' ? shoelace([[-W / 2, 0], [-W / 2 + k, h1], [0, R], [W / 2 - k, h1], [W / 2, 0]]) : shoelace(gableProfile('bell', W, R));
+    for (const e of [-1, 1]) {
+      const along = (q: number[]) => (q[0] - r.cx) * r.ux + (q[1] - r.cy) * r.uy;
+      const end = plates.filter(t => t.p.every(q => Math.abs(along(q) - e * r.len / 2) < 1e-6) && (t.n[0] * r.ux + t.n[1] * r.uy) * e > 0.99);
+      const area = end.reduce((sum, t) => { const [a, b, c] = t.p; const u = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], v = [c[0] - a[0], c[1] - a[1], c[2] - a[2]]; return sum + Math.hypot(u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]) / 2; }, 0);
+      assert.ok(Math.abs(area - expected) < 0.01, `${kind}: end wall ${e} is closed (${area.toFixed(2)} of ${expected.toFixed(2)} m²)`);
+    }
   }
   // The decorator lowers the plain wall to the eaves and stops the flat lid.
   const ring = rectPts(5.5, 13).map(([x, y]) => [4.9 + x / 68_000, 52.37 + y / 110_540]);

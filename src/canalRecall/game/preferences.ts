@@ -166,7 +166,7 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     controlMode: 'relative',
     viewMode: 'north',
     themeMode: 'clean',
-    buildingLook: 'default',
+    buildingLook: 'photo',
     routePattern: 'surprise',
     homeAddress: '',
     trees: true,

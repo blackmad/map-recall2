@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+## Photo is the default look; Untextured replaces Default; mansard ends closed
+
+User request: drop the "Default" look (the MapLibre fill-extrusion pattern layer) from the settings and the B cycle, add "Untextured", and make Photo the default. Looks are now Photo, Painted, Storybook, Cartoon, Untextured; a saved `default` reads as Photo. Untextured is a three.js look on the procedural texture set where every wall and roof face uses the flat layer (bare walls in the building's colour, roof shapes kept): the plainest and cheapest look. The pattern layer survives only as `?buildings3d=off`. Startup bug found on the way: MapLibre's building layers stayed visible under the three.js look when the three layer arrived after the first facade-state pass, or after a detail sync turned them back on; one `_syncMaplibreBuildingVisibility()` now decides them everywhere.
+
+Mansard roofs (user report "this roof shape is just broken everywhere"): the end wall was a triangle fan about an inner point that skipped the eaves edge, so every mansard end had a triangular hole. The fan now closes; `test:three-buildings` checks each end wall's area against its profile for gable, pitched and mansard (the old code failed at 8.29 of 11.15 m²).
+
 ## Gap-fill missed articles that existed (Sporenburg, Narva-eiland, Floradorp…)
 
 Two causes, both fixed in `scripts/fill-neighborhood-gaps.ts`: (1) articles with no "Geschiedenis" heading were read as having no history, though many tell it in running prose — `historyFromBody` now picks dated sentences not already used as the description; (2) a request that failed after retries was treated as "nothing there" and the area was recorded as done — failed areas are now retried on the next run. Amsterdam history went 74 → 81 of 90. Utrecht/Rotterdam runs started before this fix: clear their `online-done.json` and rerun once they finish.

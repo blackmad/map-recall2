@@ -19,15 +19,17 @@ export type ControlMode = typeof CONTROL_MODES[number];
 export const VIEW_MODES = ['north', 'heading', 'chase', 'cockpit'] as const;
 export type ViewMode = typeof VIEW_MODES[number];
 
-export const BUILDING_LOOKS = ['default', 'procedural', 'storybook', 'cartoon', 'photo'] as const;
+// Photo is the default; Untextured is the plain, cheapest look. The old MapLibre pattern layer
+// ('default') is no longer offered (user request 2026-10-02); a saved 'default' reads as Photo.
+export const BUILDING_LOOKS = ['photo', 'procedural', 'storybook', 'cartoon', 'untextured'] as const;
 export type BuildingLookMode = typeof BUILDING_LOOKS[number];
 
 /** Names as the settings panel shows them. */
 export const BUILDING_LOOK_LABELS: Record<BuildingLookMode, string> = {
-  default: 'Default', procedural: 'Painted', storybook: 'Storybook', cartoon: 'Cartoon', photo: 'Photo',
+  photo: 'Photo', procedural: 'Painted', storybook: 'Storybook', cartoon: 'Cartoon', untextured: 'Untextured',
 };
 
-/** The look after `current` in settings order, wrapping round; anything unknown starts again at Default. */
+/** The look after `current` in settings order, wrapping round; anything unknown starts again at Photo. */
 export function nextBuildingLook(current: string | null | undefined): BuildingLookMode {
   const index = BUILDING_LOOKS.indexOf(current as BuildingLookMode);
   return BUILDING_LOOKS[(index + 1) % BUILDING_LOOKS.length];
