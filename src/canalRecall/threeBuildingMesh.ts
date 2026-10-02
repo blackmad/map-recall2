@@ -15,6 +15,7 @@ import { CELL_VARIANTS, cellLayer } from './facadeCells.js';
 import { groundRuns, layoutWall } from './facadeLayout.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
+import earcut from 'earcut';
 import { fitRect, roofTriangles, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 
 export type MeshBuilding = {
@@ -34,6 +35,13 @@ export type MeshBuilding = {
   plainLayer?: number;
   /** Bare walls only (a church): every row uses the plain layer and there are no doors. */
   plainWalls?: boolean;
+  /**
+   * The mesh owns this building's top: walls run to the full height (no MapLibre
+   * cornice band) and a flat roof gets a lid in this colour on the flat layer.
+   * Without it, MapLibre drew band and lid as separate extrusions that hung in
+   * mid-air whenever the walls were rebuilt (user report 2026-10-02).
+   */
+  lid?: { hex: string; flatLayer: number };
   /** A real roof for this building; its walls already stop at the eaves. */
   roof?: { plan: RoofPlan; layers: { slope: number; plain: number; dormer: number }; roofHex: string; dims: RoofDims };
 };
@@ -134,6 +142,33 @@ function ringEdges(ring: number[][], origin: Origin, hole: boolean): Edge[] {
   return edges;
 }
 
+/** Marks a flat-roof lid triangle among a building's roof triangles. */
+const LID_PART = 'lid' as RoofTri['part'];
+
+/** A flat lid over every polygon (holes kept open) at the wall top. */
+function lidTriangles(b: MeshBuilding, origin: Origin): RoofTri[] {
+  const kx = mPerDegLng(origin.lat), out: RoofTri[] = [];
+  for (const polygon of b.polygons) {
+    const flat: number[] = [], holes: number[] = [];
+    for (const [i, ring] of polygon.entries()) {
+      const pts = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : ring;
+      if (pts.length < 3) { if (i === 0) break; continue; }
+      if (i > 0) holes.push(flat.length / 2);
+      for (const [lng, lat] of pts) flat.push((lng - origin.lng) * kx, (lat - origin.lat) * M_PER_DEG_LAT);
+    }
+    if (flat.length < 6) continue;
+    const index = earcut(flat, holes.length ? holes : undefined, 2), z = b.heightM;
+    for (let i = 0; i < index.length; i += 3) {
+      const v = [index[i], index[i + 1], index[i + 2]].map(k => [flat[k * 2], flat[k * 2 + 1], z] as [number, number, number]);
+      // Counter-clockwise from above, so the face points up.
+      const cross = (v[1][0] - v[0][0]) * (v[2][1] - v[0][1]) - (v[1][1] - v[0][1]) * (v[2][0] - v[0][0]);
+      if (cross < 0) v.reverse();
+      out.push({ p: [v[0], v[1], v[2]], uv: [[v[0][0] / 4, v[0][1] / 4], [v[1][0] / 4, v[1][1] / 4], [v[2][0] / 4, v[2][1] / 4]], part: LID_PART, n: [0, 0, 1] });
+    }
+  }
+  return out;
+}
+
 const edgeKey = (x: number, y: number) => `${Math.round(x * 10)},${Math.round(y * 10)}`;
 
 /**
@@ -182,6 +217,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     for (const e of edges) {
       if (hiddenByNeighbour(e, b)) continue;
       const layout = layoutWall(b.style, e.len, top - base, hash01(`${b.id}:${edgeKey(e.x0, e.y0)}`), base < 0.5, scale);
+      const shadeTint = (): [number, number, number, number] => [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255];
+      if (b.lid && b.plainLayer !== undefined) {
+        // With the top owned here, the strip above the pattern (and any wall too short for a layout) is bare wall.
+        const z0 = layout ? top : base, u1 = Math.max(1, e.len / 5);
+        if (b.heightM > z0 + 0.01) quads.push({ e, u0: 0, u1, v1: 1, layer: b.plainLayer, accent, z0, z1: b.heightM, tint: shadeTint(), along0: 0, along1: 1 });
+      }
       if (!layout) continue;
       walls++;
       if (b.plainWalls && b.plainLayer !== undefined) layout.doorBays.length = 0;
@@ -209,6 +250,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       if (rect) roof = roofTriangles(rect, b.roof.plan, b.heightM, b.roof.dims);
       if (!rect) roof = [];
     }
+    if (b.lid && (!b.roof || !roof.length)) roof = [...roof, ...lidTriangles(b, origin)];
     quadsByBuilding.push({ b, quads, walls, roof });
     quadTotal += quads.length; wallTotal += walls; roofTotal += roof.length;
   }
@@ -247,9 +289,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
       const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2, white: [number, number, number] = [255, 255, 255];
       for (const t of roof) {
         const shade = Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
-        const wall = t.part === 'plate' || t.part === 'dormerFace';
-        const layer = t.part === 'plate' ? (b.plainLayer ?? b.roof!.layers.plain) : t.part === 'dormerFace' ? b.roof!.layers.dormer : b.roof!.layers.slope;
-        const tint = wall ? [wr * jitter, wg * jitter, wb * jitter] : [rr, rg, rb];
+        const wall = t.part === 'plate' || t.part === 'dormerFace', lid = t.part === LID_PART;
+        const layer = lid ? b.lid!.flatLayer : t.part === 'plate' ? (b.plainLayer ?? b.roof!.layers.plain) : t.part === 'dormerFace' ? b.roof!.layers.dormer : b.roof!.layers.slope;
+        const tint = lid ? parseHex(b.lid!.hex) : wall ? [wr * jitter, wg * jitter, wb * jitter] : [rr, rg, rb];
         for (let k = 0; k < 3; k++) {
           positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
           uvs[v * 2] = t.uv[k][0]; uvs[v * 2 + 1] = t.uv[k][1];
