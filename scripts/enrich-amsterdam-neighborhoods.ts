@@ -1,6 +1,19 @@
+/**
+ * Neighbourhood postcards: match a city's OSM neighbourhood boundaries to
+ * Wikidata for a photograph and the English Wikipedia lede.
+ *
+ *   npx tsx scripts/enrich-amsterdam-neighborhoods.ts [--city=amsterdam|utrecht|rotterdam|den-haag]
+ *
+ * Per-city settings live in scripts/lib/neighborhoodCities.ts. For cities
+ * other than Amsterdam a Dutch-only lede is not shipped; the reviewed English
+ * description from neighborhood-history.json fills it instead (run
+ * fetch-neighborhood-history.ts --city=… --publish first, then this again).
+ */
+import { existsSync } from 'node:fs';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { commonsFileTitle, resolveCommonsThumbnails } from './resolve-commons-thumbnails';
+import { neighborhoodCityFromArgs } from './lib/neighborhoodCities';
 
 interface Boundary {
   id: number;
@@ -27,7 +40,8 @@ interface NeighborhoodEnriched {
   imageAttribution?: string;
 }
 
-const directory = path.resolve('public/data/extracts/amsterdam');
+const city = neighborhoodCityFromArgs();
+const directory = path.resolve(city.directory);
 
 /** Municipal boundary diagrams from Wikipedia are not postcard photographs. */
 function isLocatorMapImage(url: string): boolean {
@@ -54,20 +68,30 @@ async function fetchJson(url: string | URL, init?: RequestInit, attempts = 4): P
 }
 
 // Step 1: Bulk-fetch all Amsterdam neighborhood entities via SPARQL
-const sparql = `SELECT ?item ?itemLabel ?itemDescription ?image ?articleTitle WHERE {
-  VALUES ?type { wd:Q123705 wd:Q253019 wd:Q1529997 wd:Q3257686 wd:Q15715406 wd:Q15079751 }
+const placement = city.transitive
+  ? `VALUES ?municipality { ${city.municipalityQids.map((qid) => `wd:${qid}`).join(' ')} }
+  ?item wdt:P131/wdt:P131* ?municipality .`
+  : `?item wdt:P131 wd:${city.municipalityQids[0]} .`;
+// English labels can differ from the Dutch name OSM uses ("Cool district" for
+// Cool, "C.S. kwartier"), so cities that opt in index the Dutch label too.
+const dutchLabel = city.indexDutchLabels
+  ? `OPTIONAL { ?item rdfs:label ?nlLabel FILTER(LANG(?nlLabel) = 'nl') }`
+  : '';
+const sparql = `SELECT ?item ?itemLabel ?itemDescription ?image ?articleTitle${city.indexDutchLabels ? ' ?nlLabel' : ''} WHERE {
+  VALUES ?type { ${city.types.map((qid) => `wd:${qid}`).join(' ')} }
   ?item wdt:P31 ?type .
-  ?item wdt:P131 wd:Q9899 .
+  ${placement}
   OPTIONAL { ?item wdt:P18 ?image }
   OPTIONAL {
     ?article schema:about ?item ;
              schema:isPartOf <https://en.wikipedia.org/> ;
              schema:name ?articleTitle .
   }
+  ${dutchLabel}
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,nl" }
 }`;
 
-console.log('Querying Wikidata SPARQL for Amsterdam neighborhoods...');
+console.log(`Querying Wikidata SPARQL for ${city.name} neighborhoods...`);
 const sparqlUrl = new URL('https://query.wikidata.org/sparql');
 sparqlUrl.search = new URLSearchParams({ format: 'json', query: sparql }).toString();
 const sparqlData = await fetchJson(sparqlUrl);
@@ -76,16 +100,20 @@ const bindings = sparqlData.results.bindings as Record<string, { value: string }
 const wikidataIndex = new Map<string, WikidataNeighborhood>();
 for (const row of bindings) {
   const qid = row.item.value.split('/').pop()!;
-  const label = row.itemLabel?.value || '';
-  const existing = wikidataIndex.get(label.toLowerCase());
-  if (existing) continue;
-  wikidataIndex.set(label.toLowerCase(), {
-    qid,
-    label,
-    description: row.itemDescription?.value,
-    imageUrl: row.image?.value,
-    articleTitle: row.articleTitle?.value,
-  });
+  // "Centrum (Rotterdam)" → "Centrum" where the city opts in.
+  const clean = (raw: string) => city.stripLabelQualifier ? raw.replace(/\s*\([^)]*\)$/, '') : raw;
+  const labels = [row.itemLabel?.value || '', ...(row.nlLabel?.value ? [row.nlLabel.value] : [])].map(clean);
+  for (const label of labels) {
+    const existing = wikidataIndex.get(label.toLowerCase());
+    if (existing) continue;
+    wikidataIndex.set(label.toLowerCase(), {
+      qid,
+      label,
+      description: row.itemDescription?.value,
+      imageUrl: row.image?.value,
+      articleTitle: row.articleTitle?.value,
+    });
+  }
 }
 console.log(`Found ${wikidataIndex.size} unique Wikidata neighborhood entities`);
 
@@ -102,23 +130,13 @@ console.log(`Matching ${neighborhoods.length} local neighborhoods, quarters, and
 const normalize = (s: string) => s.toLowerCase().replace(/-/g, ' ').replace(/buurt$/, '').replace(/eiland$/, '').trim();
 
 /** OSM district names that do not match Wikidata’s preferred label. */
-const NAME_ALIASES: Record<string, readonly string[]> = {
-  // Borough is labelled Amsterdam-Centrum (Q478282); OSM boundary is Centrum.
-  Centrum: ['Amsterdam-Centrum', 'Amsterdam Centrum'],
-  Noord: ['Amsterdam-Noord', 'Amsterdam Noord'],
-  Oost: ['Amsterdam-Oost', 'Amsterdam Oost'],
-  West: ['Amsterdam-West', 'Amsterdam West'],
-  Zuid: ['Amsterdam-Zuid', 'Amsterdam Zuid'],
-  'Nieuw-West': ['Amsterdam Nieuw-West', 'Amsterdam-Nieuw-West'],
-  Zuidoost: ['Amsterdam-Zuidoost', 'Amsterdam Zuidoost'],
-};
+const NAME_ALIASES = city.aliases;
 
 function findMatch(name: string): WikidataNeighborhood | undefined {
   const candidates = [
     name,
     ...(NAME_ALIASES[name] || []),
-    `Amsterdam-${name}`,
-    `Amsterdam ${name}`,
+    ...city.labelPrefixes.flatMap((prefix) => [`${prefix}-${name}`, `${prefix} ${name}`]),
   ];
   for (const candidate of candidates) {
     const exact = wikidataIndex.get(candidate.toLowerCase());
@@ -235,7 +253,7 @@ if (missingExtract.length > 0) {
           if (nlTitle !== page.title) continue;
           const entry = missingExtract.find((r) => r.wikidataId === qid);
           if (entry && !entry.wikipediaExtract) {
-            entry.wikipediaExtract = page.extract;
+            if (city.dutchExtractFallback) entry.wikipediaExtract = page.extract;
             if (!entry.imageUrl && page.thumbnail?.source) {
               const photo = acceptPhotoUrl(page.thumbnail.source);
               if (photo) {
@@ -248,6 +266,21 @@ if (missingExtract.length > 0) {
       }
     }
   }
+}
+
+// Cities that do not ship unreviewed Dutch: the reviewed English description
+// from neighborhood-history.json (fetch-neighborhood-history.ts --publish)
+// stands in for a missing English lede.
+const historyPath = path.join(directory, 'neighborhood-history.json');
+if (!city.dutchExtractFallback && existsSync(historyPath)) {
+  const history = JSON.parse(await readFile(historyPath, 'utf8')) as { neighborhoods: Array<{ name: string; description?: { en: string } }> };
+  const byName = new Map(history.neighborhoods.map((entry) => [entry.name, entry]));
+  let filled = 0;
+  for (const entry of results) {
+    const description = byName.get(entry.name)?.description;
+    if (!entry.wikipediaExtract && description?.en) { entry.wikipediaExtract = description.en; filled++; }
+  }
+  console.log(`Filled ${filled} ledes from the reviewed neighborhood-history.json`);
 }
 
 // Wikidata gives Special:FilePath URLs, which 302-redirect to
