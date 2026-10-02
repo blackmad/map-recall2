@@ -51,6 +51,8 @@ export type Front = {
    * carrying part keeps its own height and colour (Kema Vlees under a plain flat block).
    */
   storefront?: boolean;
+  /** Storefront mode only: repaint the carrier building in this colour (cream stucco, painted brick) and keep its generic storeys. */
+  carrierHex?: string;
   /** Thickness of the slab in front of the footprint wall, metres. */
   depthM: number;
   hex: string;
