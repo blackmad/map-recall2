@@ -30,6 +30,8 @@ const SPOTS = [
   { name: 'de-hallen-s', at: [4.8700, 52.3655], face: [4.8688, 52.3667] },
   // Kinkerstraat shops by De Hallen: painted shopfront ground floors (user report 2026-10-02).
   { name: 'kinkerstraat-shops', at: [4.8688, 52.3652], face: [4.8693, 52.3660] },
+  // Fatih mosque, Rozengracht 150 (user report 2026-10-02: a 37 m green box): twin towers over a nave.
+  { name: 'fatih', at: [4.87790, 52.37275], face: [4.87862, 52.37305] },
   // Centraal Station: a landmark that must keep its own form.
   { name: 'centraal', at: [4.9003, 52.3774], face: [4.9004, 52.3789] },
   // Landmark kits: stand ~55 m from each tower and look straight at it.
@@ -70,7 +72,7 @@ async function parkAt(page: Page, at: readonly number[], face: readonly number[]
   }, { at, face, view });
 }
 
-for (const look of [{ name: 'old', facades: false, trees: false, three: false as boolean | string }, { name: 'new', facades: true, trees: true, three: false }, { name: 'three', facades: true, trees: true, three: true }, { name: 'storybook', facades: true, trees: true, three: 'storybook' }, { name: 'cartoon', facades: true, trees: true, three: 'cartoon' }, { name: 'photo', facades: true, trees: true, three: 'photo' }]) {
+for (const look of [{ name: 'old', facades: false, trees: false, three: false as boolean | string }, { name: 'new', facades: true, trees: true, three: false }, { name: 'three', facades: true, trees: true, three: true }, { name: 'storybook', facades: true, trees: true, three: 'storybook' }, { name: 'cartoon', facades: true, trees: true, three: 'cartoon' }, { name: 'photo', facades: true, trees: true, three: 'photo' }, { name: 'untextured', facades: true, trees: true, three: 'untextured' }]) {
   test(`look: ${look.name}`, async ({ page }, testInfo) => {
     test.setTimeout(300_000);
     await page.addInitScript(([facades, trees, three]) => {
