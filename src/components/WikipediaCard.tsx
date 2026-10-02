@@ -13,6 +13,27 @@ const Chip: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 );
 
 /**
+ * "Around here": the neighbourhood's best-known places. Those with a Commons photograph show it
+ * (up to three, each credited and linked); the rest are listed by name. Shown after the answer,
+ * so it can name places freely; the clue dots on the map are what difficulty gates.
+ */
+const PlacesHere: React.FC<{ places?: StreetFeature['notablePlaces'] }> = ({ places }) => {
+  if (!places?.length) return null;
+  const withPhoto = places.filter((place) => place.photo).slice(0, 3);
+  const rest = places.filter((place) => !withPhoto.includes(place));
+  return <div className="space-y-1" data-testid="answer-places">
+    <div className="text-[10px] font-black uppercase tracking-wide text-[#8a4a18]">Around here</div>
+    {withPhoto.length > 0 && <div className="grid grid-cols-3 gap-1.5" data-testid="answer-place-photos">
+      {withPhoto.map((place) => <a key={place.name} href={place.photo!.sourceUrl} target="_blank" rel="noreferrer" title={`${place.name} · ${place.photo!.imageAttribution}`} className="block min-w-0">
+        <img src={place.photo!.imageUrl} referrerPolicy="no-referrer" loading="lazy" alt="" className="h-14 w-full rounded-md object-cover sm:h-16" />
+        <span className="mt-0.5 block truncate text-[10px] font-bold text-white/80">{place.name}</span>
+      </a>)}
+    </div>}
+    {rest.length > 0 && <p className="text-[11px] leading-snug text-white/80">{withPhoto.length ? 'Also: ' : ''}{rest.map((place) => place.name).join(' · ')}</p>}
+  </div>;
+};
+
+/**
  * What the answer teaches beyond its position: why it is called this, a
  * reviewed fact or the encyclopedia lede, and (for neighbourhoods) a short
  * history. Every line names and links its source.
@@ -48,6 +69,7 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
         <p className="mt-1">{history.text}</p>
         <Source href={history.sourceUrl}>{history.sourceLabel}</Source>
       </details>}
+      <PlacesHere places={feature.notablePlaces} />
     </div>
   </div>;
 };

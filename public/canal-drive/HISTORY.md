@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Map Recall card: "Around here" with place photos
+
+The answer card for a neighbourhood now lists its best-known places (`notablePlaces`, same picks as the map clues) and shows up to three with a Commons lead photograph, credited and linked. Photos come from `scripts/fetch-place-photos.ts` (landmark `wikipedia` field -> pageimages -> Commons licence/author; JPEG, landscape, licensed only) into `<city>/place-photos.json`; Amsterdam has 189 of 304 landmarks with an article. Shown after the answer for every difficulty; only the clue dots on the map are gated by difficulty. The unused large-letter postcard compositor (`src/canalRecall/largeLetterPostcard.ts`) is the candidate for a "Greetings from X" header on this card.
+
 ## Map Recall difficulty: place clues are easy/medium only
 
 User: the neighbourhood's best-known places should only show on easy and medium. Map Recall had no difficulty, so Settings gets Easy/Medium/Hard (URL `difficulty=`, default medium). `placeCluesEnabled` (src/mapRecall/trivia.ts) is the single rule; hard drops the dots in Guess Name and the after-guess dots in Pinpoint. Nothing else changes with difficulty yet.
