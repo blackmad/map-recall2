@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Per-wall facade rendering spike merged
+
+User asked for windows and doors that line up with buildings and more
+Amsterdam-looking textures, then "cartoony" and "more diverse". MapLibre's
+pattern layer cannot fit a texture to each wall, so the spike builds three.js
+meshes with whole bays and storeys per wall (`wallBays.ts`), canvas-drawn bays
+in two looks with a shader tint mask (`bayTextures.ts`), on a standalone page.
+Merged as an unlinked page; the game is unchanged. See
+`RENDERING_STACK_OPTIONS.md` for options, results and costs.
+
+## 2026-10-02 — Bare patches at ride start: re-plan when the view widens
+
+User report with screenshot (deploy confirmed live, JS is no-cache): large
+building-free areas beside a loaded block. Cause: `followCamera` re-planned
+only when the centre tile or half-zoom step changed, so tilting or turning the
+camera, which widens the visible ground, never requested the tiles it newly
+showed. The signature now includes the set of z14 tiles the view needs. Pinned
+in `check-building-tile-source.ts` (fails without the change). This, not the
+earlier retry fix, is the more likely cause of the report; the retry fix stays.
+
 ## 2026-10-02 — Calmer facade colours, pre-filtered windows
 
 User report (Windows, after the hysteresis fix): windows still shimmer, and the

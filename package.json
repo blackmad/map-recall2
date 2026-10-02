@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build:canal-car": "esbuild src/canalRecall/carRoadGuard.ts --bundle --format=iife --global-name=CanalRecallCar --outfile=public/canal-drive/js/car-road-guard.bundle.js --minify",
+    "build:rendering-spike": "esbuild src/canalRecall/renderingSpike.ts --bundle --format=iife --outfile=public/canal-drive/js/rendering-spike.bundle.js",
     "build:canal-building-tiles": "esbuild src/canalRecall/buildingTilesBrowser.ts --bundle --format=iife --global-name=CanalRecallBuildingTiles --outfile=public/canal-drive/js/building-tiles.bundle.js --minify",
     "build:canal-study-roofs": "esbuild src/canalRecall/studyRoofsBrowser.ts --bundle --format=iife --global-name=CanalRecallStudyRoofs --outfile=public/canal-drive/js/study-roofs.bundle.js --minify",
     "build:canal-study-facades": "esbuild src/canalRecall/studyFacadesBrowser.ts --bundle --format=iife --global-name=CanalRecallStudyFacades --outfile=public/canal-drive/js/study-facades.bundle.js --minify",
