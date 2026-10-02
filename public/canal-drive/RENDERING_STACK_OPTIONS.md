@@ -63,7 +63,7 @@ Built as a standalone page, not wired into the game: `rendering-spike.html`
 &lat=&lng=&radius=&yaw=&pitch=&dist=&door=N`). Code: `src/canalRecall/wallBays.ts`
 (layout maths, `scripts/check-wall-bays.ts`), `bayTextures.ts` (canvas-drawn
 Amsterdam bays), `renderingSpike.ts` (three.js meshes from the z14 tiles).
-Screenshots in `public/canal-drive/rendering-spike/`.
+Screenshots in `docs/rendering-spike/` (kept out of `public/` so they do not deploy).
 
 **Alignment works.** Each wall gets a whole number of bays across (about 5.2 m
 each, stretched at most a few percent) and a whole number of storeys up, with
