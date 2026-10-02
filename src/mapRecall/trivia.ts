@@ -138,3 +138,81 @@ export function nearestAreaNames(
     .map((area) => area.name))]
     .slice(0, count);
 }
+
+/** A well-known place inside a neighbourhood, shown as a clue or after the answer. */
+export interface NotablePlace { name: string; center: [number, number]; kind: string }
+
+/** One candidate: an encyclopedia landmark or a ranked orientation POI. */
+export interface PlaceCandidate { name: string; center: [number, number]; kind: string; score: number }
+
+function inRing([lat, lon]: [number, number], ring: [number, number][]): boolean {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [yi, xi] = ring[i];
+    const [yj, xj] = ring[j];
+    if ((yi > lat) !== (yj > lat) && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+}
+const inArea = (point: [number, number], polygons: [number, number][][][]) =>
+  polygons.some((polygon) => inRing(point, polygon[0]) && !polygon.slice(1).some((hole) => inRing(point, hole)));
+
+const flatName = (text: string) => text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+
+/**
+ * The best-known places inside an area: highest score first, at most
+ * `perKind` landmarks of a kind and one of any other kind, and never one whose name
+ * contains a name the question offers. "De Pijp metro station" inside De Pijp
+ * gives the answer away, and "Jordaan café" inside De Pijp would mislead.
+ */
+export function notablePlacesIn(
+  polygons: [number, number][][][] | undefined,
+  candidates: readonly PlaceCandidate[],
+  forbiddenNames: readonly string[],
+  count = 5,
+  perKind = 2,
+): NotablePlace[] {
+  if (!polygons?.length) return [];
+  // "Prinses Irenebuurt e.o." → "prinsesirene"; a bare "buurt" would match too much.
+  const forbidden = forbiddenNames
+    .map((name) => flatName(name.replace(/\s+e\.o\.$/i, '').split('/')[0]).replace(/(buurt|eiland|kwartier|park|wijk)$/, ''))
+    .filter((name) => name.length >= 4);
+  const lat = polygons.flat(2).map((point) => point[0]);
+  const lon = polygons.flat(2).map((point) => point[1]);
+  const [minLat, maxLat, minLon, maxLon] = [Math.min(...lat), Math.max(...lat), Math.min(...lon), Math.max(...lon)];
+  const seen = new Set<string>();
+  const perKindCount = new Map<string, number>();
+  const out: NotablePlace[] = [];
+  for (const place of [...candidates].sort((a, b) => b.score - a.score)) {
+    if (out.length >= count) break;
+    const [y, x] = place.center;
+    if (y < minLat || y > maxLat || x < minLon || x > maxLon) continue;
+    const flat = flatName(place.name);
+    if (!flat || seen.has(flat) || forbidden.some((name) => flat.includes(name))) continue;
+    // Two landmarks can both teach; a second bike shop says nothing new.
+    if ((perKindCount.get(place.kind) || 0) >= (place.score >= 1000 ? perKind : 1)) continue;
+    if (!inArea(place.center, polygons)) continue;
+    seen.add(flat);
+    perKindCount.set(place.kind, (perKindCount.get(place.kind) || 0) + 1);
+    out.push({ name: place.name, center: place.center, kind: place.kind });
+  }
+  return out;
+}
+
+/** Encyclopedia landmarks outrank every orientation POI; POIs keep their rank. */
+export function placeCandidates(
+  landmarks: ReadonlyArray<{ name: string; center: [number, number]; type?: string; prominenceScore?: number }> | null | undefined,
+  orientation: { categories?: string[]; pois?: Array<[string, number, number, number, number, number?]> } | null | undefined,
+): PlaceCandidate[] {
+  const out: PlaceCandidate[] = [];
+  for (const landmark of landmarks || []) {
+    // "Canal Ring Area of Amsterdam" is a region, not a place to point at.
+    if (/\b(area|district|quarter|neighbou?rhood)\b/i.test(landmark?.name || '')) continue;
+    if (landmark?.name && landmark.center) out.push({ name: landmark.name, center: landmark.center, kind: landmark.type || 'landmark', score: 1000 + (landmark.prominenceScore || 0) });
+  }
+  const categories = orientation?.categories || [];
+  for (const [name, lon, lat, category, rank] of orientation?.pois || []) {
+    if (name) out.push({ name, center: [lat, lon], kind: categories[category] || 'place', score: rank });
+  }
+  return out;
+}

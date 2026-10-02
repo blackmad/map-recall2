@@ -34,12 +34,42 @@ test('neighborhoods start from the setup rail and answers explain the name', asy
   await expect(page.locator('[data-testid="answer-name-origin"]')).toContainText(/Wikipedia/);
 });
 
+test('pinpoint neighbourhoods show their places only after the guess', async ({ page }) => {
+  await quietExternalRequests(page);
+  await page.goto('/?city=amsterdam&mode=pinpoint&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=10');
+  await expect(page.locator('#target-feature-name')).toBeVisible();
+  await expect(page.locator('.notable-place-label')).toHaveCount(0);
+  const rounds = await skipUntil(page, '.notable-place-label');
+  expect(rounds, 'a neighbourhood with places within ten rounds').toBeGreaterThan(0);
+  await page.locator('#next-round-btn').click();
+  await expect(page.locator('#target-feature-name')).toBeVisible();
+  await expect(page.locator('.notable-place-label')).toHaveCount(0);
+});
+
 test('guess-name neighborhoods offer nearby areas as choices', async ({ page }) => {
   await quietExternalRequests(page);
   await page.goto('/?city=amsterdam&mode=guess_name&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=5');
   const choices = page.locator('[id^="guess-option-"]');
   await expect(choices).toHaveCount(4, { timeout: 30_000 });
   await expect(page.getByText('Which neighborhood is this?')).toBeVisible();
+  // Its best-known places are clues, and none names an offered answer.
+  const labels = page.locator('.notable-place-label');
+  await expect(labels.first()).toBeVisible({ timeout: 30_000 });
+  const placeNames = (await labels.allTextContents()).map((name) => name.toLowerCase());
+  await expect(page.locator('.leaflet-zoom-anim')).toHaveCount(0);
+  await page.waitForTimeout(400);
+  // Visible labels never overlap: a lower-ranked one hides until zoomed in.
+  const boxes = await page.locator('.notable-place-label').evaluateAll((elements) => elements
+    .filter((element) => getComputedStyle(element).visibility !== 'hidden')
+    .map((element) => element.getBoundingClientRect().toJSON() as { left: number; right: number; top: number; bottom: number }));
+  for (let i = 0; i < boxes.length; i++) for (let j = 0; j < i; j++) {
+    const [a, b] = [boxes[i], boxes[j]];
+    expect(a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top, 'visible place labels overlap').toBe(false);
+  }
+  for (const choice of await choices.allTextContents()) {
+    const core = choice.trim().toLowerCase().replace(/\s+e\.o\.$/, '').replace(/(buurt|eiland|kwartier|park|wijk)$/, '');
+    if (core.length >= 4) expect(placeNames.some((name) => name.replace(/[^a-z0-9]/g, '').includes(core.replace(/[^a-z0-9]/g, '')))).toBe(false);
+  }
   await page.screenshot({ path: test.info().outputPath('guess-neighborhood.png') });
 });
 
