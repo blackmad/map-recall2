@@ -369,7 +369,7 @@ export function rankCommonsFiles(files: readonly CommonsFile[], name: string): C
     return s;
   };
   return files
-    .filter(f => /^image\/(jpeg|png)$/i.test(f.mime) && f.width >= 800 && !NOT_A_PHOTO.test(f.title) && (!f.license || FREE_LICENCE.test(f.license)))
+    .filter(f => /^image\/jpeg$/i.test(f.mime) && f.width >= 800 && !NOT_A_PHOTO.test(f.title) && (!f.license || FREE_LICENCE.test(f.license)))
     .sort((a, b) => score(b) - score(a));
 }
 

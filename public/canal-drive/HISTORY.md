@@ -16,6 +16,24 @@ the streets explains the area's name only when the name points at it. Wikimedia
 rate-limits the shared cloud egress IP, so requests are paced at one a second.
 Text composed from data is labelled with its source, not "Wikipedia".
 
+## 2026-10-02 — Neighbourhood trivia filled for Amsterdam and Den Haag
+
+Ran `fill-neighborhood-gaps` online for both. Amsterdam: descriptions 72 to 90 of
+90, photos 52 to 70, name origins 53 to 70, histories 44 to 48. Den Haag had no
+trivia files; now 21 of 23 descriptions, 12 photos, 10 histories, 5 name origins.
+Reviewed by hand: Dutch text translated into the per-city review files
+(`scripts/data/neighborhood-gap-review*.json`); photos judged on a contact sheet,
+and rejected when they showed another place (Delft's Vrijenban, a plantation
+house in Suriname, the Zaandammerplein for the Houthaven islands), a diagram, or
+nothing of the area. Lessons: a Commons category of the same name can belong to
+another city (Willemspark), so a category must sit under one naming the city;
+only JPEG photographs count (a coloured area map passed as a PNG); Dutch
+"de naam" matches election results, so name origins need an explicit naming
+phrase and the area's own name in the same sentence; the Baltic-named islands
+(Reval, Wiborg, ...) are in Houthaven, not IJburg. `check-neighborhood-trivia-data.ts`
+now guards every city's published trivia. Map Recall reads each extract city
+(`cityExtracts.ts`); Utrecht and Rotterdam run next.
+
 ## 2026-10-02 — Per-wall facade rendering spike merged
 
 User asked for windows and doors that line up with buildings and more

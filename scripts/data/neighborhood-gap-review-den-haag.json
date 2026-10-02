@@ -1,0 +1,223 @@
+{
+ "_about": "Reviewed decisions for scripts/fill-neighborhood-gaps.ts --city den-haag. Photos judged by eye on a contact sheet 2026-10-02; rejected when they show another place (Delft, Suriname), a diagram, or nothing of the area.",
+ "Zuiderpark": {
+  "description": {
+   "approve": true,
+   "en": "Zuiderpark is a city park in The Hague and also one of the city's districts. The district is part of the Escamp borough and borders the districts Moerwijk, Morgenstond, Leyenburg and Rustenburg en Oostbroek."
+  },
+  "history": {
+   "approve": true,
+   "en": "The park was laid out between the wars as a make-work project. The design dates from 1908, when the architect H.P. Berlage drew up the Plan for the extension of 's-Gravenhage. Construction began in 1923 and the official opening was in 1936. Pieter Westbroek, director of the municipal parks department (also responsible for the Westbroekpark), and the garden architect D.F. Tersteeg changed much of the design. In 2011 the Zuiderpark was given protected cityscape status. It is the first Dutch example of a people's park (volkspark)."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Willemspark": {
+  "description": {
+   "approve": true,
+   "en": "The Willemspark is a district and neighbourhood in the centre of The Hague. The land was bought in 1840 by King Willem II. In 1855 his son, Willem III, sold it to the municipality of The Hague. The part of Willemspark around the Frederikstraat came about largely between 1870 and 1900. The Willemspark district borders the districts Centrum, Zeeheldenkwartier, Archipelbuurt and Benoordenhout."
+  },
+  "history": {
+   "approve": true,
+   "en": "In the 17th century The Hague was surrounded by the canal ring (grachtengordel). On the sea side the city ended at the Mauritskade and the Scheveningse Veer. At the Noordeinde this part of the moat could be crossed, first by ferry and later by drawbridge. Outside the city everything was dune landscape as far as Scheveningen: cows grazed there and there were a few vegetable gardens. The Javastraat already existed, though it was then still called the Laan van Schuddegeest. In 1831 the Frederikskazerne was taken into use by 400 grenadiers. It stood on the Denneweg, but later this part of the street was called Frederikstraat."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Leidschenveen-Ypenburg": {
+  "description": {
+   "approve": true,
+   "en": "Leidschenveen-Ypenburg is a borough of The Hague. Before the municipal reorganisation of 1 January 2002, Leidschenveen, including the Forepark business park along the A4 and A12 motorways, belonged to the municipality of Leidschendam."
+  }
+ },
+ "Scheveningen": {
+  "description": {
+   "approve": true,
+   "en": "Scheveningen is a borough of The Hague. It was formerly an independent fishing village that later became a seaside resort and district of The Hague. The original core of Scheveningen is in Scheveningen-Dorp, but little remains of the earlier buildings from before the great clearance and the subsequent new construction in the borough."
+  },
+  "nameOrigin": {
+   "approve": true,
+   "en": "Historical writing gives no certainty about the age of Scheveningen. Name research is said to have shown, as with other Dutch places ending in the suffix '-ingen', that its origin lies in the 10th or 11th century. The name first appears in a count's register compiled partly around 1284."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Haagse Hout": {
+  "description": {
+   "approve": true,
+   "en": "Haagse Hout has been a borough of The Hague since 1988. The old name for this area was 'Die Haghe Houte', hence the present name Haagse Hout. In 2022 the borough had 48,072 inhabitants. It consists of four districts: Mariahoeve en Marlot, Bezuidenhout, Haagse Bos and Benoordenhout. The Haagse Bos is by far the largest green area."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Groente- en Fruitmarkt": {
+  "description": {
+   "approve": true,
+   "en": "The Groente- en Fruitmarkt district is part of the Centrum borough of The Hague and has only one neighbourhood, which is also called Groente- en Fruitmarkt. The district borders the districts Laakkwartier en Spoorwijk, Moerwijk, Transvaalkwartier and Schilderswijk."
+  },
+  "photo": null
+ },
+ "Laak": {
+  "description": {
+   "approve": true,
+   "en": "Laak has been a borough of The Hague since 1988. At 4.27 km² it is the smallest of The Hague's boroughs. In 2017, 42,405 people lived there. The districts Laakkwartier en Spoorwijk and Binckhorst belong to this borough."
+  },
+  "history": {
+   "approve": true,
+   "en": "In this polder area, now called Laak after the small peat river De Laak that lay there, the Amsterdam–The Hague–Rotterdam railway was built, with a station on the site of today's Hollands Spoor station, which lay on the edge of The Hague, on the territory of Rijswijk. The municipality of The Hague received the area in 1843 from the municipality of Rijswijk, in exchange for a yearly (non-indexed) payment of 400 guilders, which is still being paid."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Segbroek": {
+  "description": {
+   "approve": true,
+   "en": "Segbroek is a borough of The Hague, named after the old Segbroek polder. Segbroek as a borough was created in 1988. In 1988 the old name Segbroek was revived for the former districts numbered 12 and 14 of The Hague, known as the Bomen- en Bloemenbuurt and Bohemen (the latter has since belonged to the Loosduinen borough)."
+  },
+  "nameOrigin": {
+   "approve": true,
+   "en": "Segbroek is a borough of The Hague, named after the old Segbroek polder. Historically the whole urban area enclosed to the west by the Laan van Meerdervoort and the Sportlaan went by the name of the old Segbroek polder, which disappeared at a rapid pace under the new city extensions from the end of the 19th century and into the 20th."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Rustenburg": {
+  "description": {
+   "approve": true,
+   "en": "Rustenburg is a former country estate in The Hague."
+  },
+  "history": {
+   "approve": true,
+   "en": "In 1847 King Willem II bought the estate, and his widow Anna Paulowna lived there until her death. Although Anna Paulowna was not well off, in 1859 she refused to sell a piece of woodland to the municipality, which wanted to lay out a park behind the Zeestraat. After her death the Zeeheldenkwartier was laid out there. Her daughter Sophie sold the estate after her mother's death to Adriaan Goekoop, who in turn sold it in 1905 to the Dutch State."
+  },
+  "photo": null
+ },
+ "Centrum": {
+  "description": {
+   "approve": true,
+   "en": "Centrum is the district that forms the heart of The Hague. It is also the oldest part of The Hague as a city. Here are, among other things, the Binnenhof with the Ridderzaal, the city hall and Noordeinde Palace. The district lies in the borough of the same name, Centrum. The number of inhabitants rose by 10% between 2013 and 2019, from 17,995 to 19,855. On 1 January 2021 the district had 20,804 inhabitants."
+  },
+  "photo": null
+ },
+ "Rustenburg en Oostbroek": {
+  "description": {
+   "approve": true,
+   "en": "Rustenburg-Oostbroek (informally also Rustenburg en Oostbroek) is a district in the Escamp borough of The Hague. The district is bounded by the Soestdijksekade, the De La Reyweg and the Loosduinsekade, and has more than 19,066 inhabitants. It borders the districts Zuiderpark, Leyenburg, Valkenboskwartier and Heesterbuurt and Transvaalkwartier."
+  },
+  "history": {
+   "approve": true,
+   "en": "The Rustenburg-Oostbroek district was part of the former Oost-Eskamppolder, which in turn belonged to the later dissolved municipality of Loosduinen. Until the 1920s the Oost-Eskamppolder was used as meadow and market-garden land. The main buildings at that time were the country house Rustenburg and the farm Oostbroek, hence the name of the district. In a boundary change with Loosduinen in 1902 the area was annexed by the municipality of The Hague. The district of Rustenburg en Oostbroek was built between 1920 and 1940."
+  },
+  "nameOrigin": {
+   "approve": true,
+   "en": "The main buildings at that time were the country house Rustenburg and the farm Oostbroek, hence the name of the district."
+  },
+  "photo": null
+ },
+ "Transvaalkwartier": {
+  "description": {
+   "approve": true,
+   "en": "The Transvaalkwartier is a district in The Hague. It lies south-west of the centre and is bounded by the Loosduinsekade, Monstersestraat, De Heemstraat, Hoefkade, Dierenselaan, Zuiderpark and the De La Reyweg. The district was built between 1900 and 1935. The Haagse Markt, which gives the neighbourhood its international character, was moved here in 1938."
+  },
+  "history": {
+   "approve": true,
+   "en": "Before 1895 two striking buildings stood in the area of today's Transvaal: Westerbeek Castle from around 1430, demolished in 1794 (corner of De La Reyweg and Bothastraat), and the country house Engelenburg, first mentioned in 1570. Before large-scale housing was built here it was a rural area of farms between ditches and canals, reached by the Loosduinseweg and its towing canal. Along a ditch between the Beeklaan and the Moerweg ran the De La Reykade, which joined a similar Loosduinsche kade. In 1898 the district's street plan was approved."
+  },
+  "photo": null
+ },
+ "Leyenburg": {
+  "description": {
+   "approve": true,
+   "en": "Leyenburg is a district in The Hague. The HagaZiekenhuis hospital, Leyweg site, is also located in this district. Leyenburg lies in the south-west of The Hague, in the Escamp borough. The district is bounded by the Vreeswijkstraat (next to the Zuiderpark), the Zuidwoldestraat, Dedemsvaartweg, Escamplaan and the Leyweg, the Loosduinsekade (Loosduinsevaart) and the Soestdijksekade (Laakkanaal)."
+  },
+  "history": {
+   "approve": true,
+   "en": "The Leyenburg district was laid out on the territory of the former municipality of Loosduinen. In 1916 a small military police barracks was built on the western edge of the district, along the medieval Leyweg. It has been preserved in its original state, with the stables for the police horses still behind it. In 2009 the barracks became a municipal monument. In 1923 Loosduinen was annexed by The Hague. After the annexation the Laakkanaal was dug as a waterway between the Laakhaven and the Loosduinsevaart. This connecting canal forms the northern boundary of the district."
+  },
+  "nameOrigin": {
+   "approve": true,
+   "en": "Leyenburg is named after the country house Leyenburg, which was demolished in 1985."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Loosduinen": {
+  "description": {
+   "approve": true,
+   "en": "The district of Loosduinen is part of the borough of the same name, Loosduinen, in The Hague. It borders the districts Morgenstond, Bouwlust en Vrederust, Kraayenstein, Kijkduin en Ockenburgh, Waldeck, Vruchtenbuurt and Leyenburg. The core (the neighbourhood Kom van Loosduinen) is found around the Loosduinse Hoofdstraat and the Oude Haagweg and dates from before the annexation."
+  },
+  "history": {
+   "approve": true,
+   "en": "The village of Loosduinen, like The Hague, arose on a beach ridge. There, at the end of the twelfth century, Count Floris III had a so-called villa, that is a farm, built. The later Count Dirk VII married Aleid of Cleves in this farm. Around 1230 Floris IV founded a Cistercian nunnery in Loosduinen, of which the present Abdijkerk, Willem-III-straat 40, is a remnant. In 1249 his son Count Willem II of Holland had a chapel built in Eikenduinen in memory of his late father."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Morgenstond": {
+  "description": {
+   "approve": true,
+   "en": "Morgenstond is a post-war district of The Hague in the Escamp borough, built in the 1950s. The district borders the districts Wateringse Veld, Bouwlust en Vrederust, Loosduinen, Leyenburg, Zuiderpark and Moerwijk. The boundary is formed by the Erasmusweg, Dedemsvaartweg, Zuidwoldestraat, Vreeswijkstraat and Loevesteinlaan."
+  },
+  "history": {
+   "approve": true,
+   "en": "In the 1949 structure plan for Greater 's-Gravenhage by the city planner Willem Dudok, south-west The Hague was divided into four residential districts: Morgenstond, Bouwlust, Berestein and Vrederust. The province of South Holland held that green space had to remain between the residential districts and the Westland. The construction of Berestein, as Dudok had in mind, did not go ahead. Berestein was built for only half and was added to Bouwlust. With Morgenstond, in 1949 Dudok built on the 'Draft extension plan 's-Gravenhage Escamppolder, Madepolder, Ockenburgh', a plan from 1935."
+  },
+  "photo": null
+ },
+ "Moerwijk": {
+  "description": {
+   "approve": true,
+   "en": "Moerwijk is a district of The Hague, part of the Escamp borough. The district borders the districts Wateringse Veld, Morgenstond, Zuiderpark, Groente- en Fruitmarkt and Laakkwartier en Spoorwijk. Moerwijk was built shortly before and after the Second World War. The urban design was by Willem Dudok. Moerwijk is named after the historical word 'moer', which means swampy land, bog or peat soil."
+  },
+  "nameOrigin": {
+   "approve": true,
+   "en": "Moerwijk is named after the historical word 'moer', which means swampy land, bog or peat soil."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Escamp": {
+  "description": {
+   "approve": true,
+   "en": "Escamp is a borough of The Hague, largely located on the Eskamp polders from the 15th century. Escamp was largely built after the Second World War. Excavations show that the area is among the oldest inhabited parts of The Hague. The Escamp borough was formed in 1986, after the city council decided to divide The Hague into seven boroughs."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Wateringse Veld": {
+  "description": {
+   "approve": true,
+   "en": "Wateringse Veld is a residential district in the municipality of The Hague. Between 1996 and 2012, 7,500 homes were built in the former Wateringse Veld polders. Wateringse Veld is one of The Hague's three Vinex locations. It belongs to the Escamp borough, in the former Eskamp polder, and borders the districts Bouwlust en Vrederust and Morgenstond and Rijswijk."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Oostbroek-Zuid": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Delftse Hout": {
+  "photo": null
+ },
+ "Vrijenban": {
+  "photo": null
+ },
+ "Haagsche Tuin": {
+  "photo": null
+ },
+ "Oostbroek-Noord": {
+  "photo": null
+ }
+}
