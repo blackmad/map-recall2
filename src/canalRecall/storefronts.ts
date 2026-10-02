@@ -74,7 +74,15 @@ export type StorefrontSpec = {
    * [along, up] across the wall, its colour (the game paints the whole building in it), vertical
    * cladding ribs, and window grids. With `bays: 'none'` there is no shop row at all.
    */
-  facade?: { outline: [number, number][]; hex: string; ribs?: string; windows?: { xs: number[]; rows: [number, number][]; w: number; frameHex?: string }[] };
+  facade?: {
+    outline: [number, number][]; hex: string; ribs?: string; windows?: { xs: number[]; rows: [number, number][]; w: number; frameHex?: string }[];
+    /** Cap the building's body here (Kerkzicht is one storey under a tile roof, not the three the footprint height implies). */
+    topM?: number;
+    /** More silhouettes in front of or behind the wall plane: a tile roof seen over the eaves, a gable dormer. */
+    slabs?: { outline: [number, number][]; hex: string; out0: number; out1: number }[];
+  };
+  /** Graffiti over closed roll-down shutters, in these colours (Amsterdam's shutters are rarely clean). */
+  graffiti?: string[];
   /** 'big' one sheet, 'split' mullioned bays, 'panes' small-paned (old café), 'arched' arched heads. */
   windows?: 'big' | 'split' | 'panes' | 'arched';
   /** Explicit pane grid [columns, rows] per shop window (overrides `windows`' mullions). */
@@ -111,8 +119,11 @@ export type StorefrontSpec = {
 
 export type StorefrontPattern = { kind: 'zebra' | 'tiles'; a: string; b: string; on?: 'fascia' | 'plinth' | 'both' };
 
+/** Blend two #rrggbb colours: t = 0 is a, 1 is b. */
+export const mixHex = (a: string, b: string, t: number) => '#' + [0, 2, 4].map(i => Math.round(parseInt(a.slice(1 + i, 3 + i), 16) * (1 - t) + parseInt(b.slice(1 + i, 3 + i), 16) * t).toString(16).padStart(2, '0')).join('');
+
 const luma = (hex: string) => { const n = parseInt(hex.slice(1), 16); return 0.299 * (n >> 16 & 255) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255); };
-const DARK_GLASS = '#4b5a68', DOOR = '#15171a', WHITE = '#f2f0ea', INK = '#1d1d1f', CHAIR = '#6b5444', LAMP = '#f3d58a';
+const DARK_GLASS = '#3c4854', DOOR = '#15171a', WHITE = '#f2f0ea', INK = '#1d1d1f', CHAIR = '#6b5444', LAMP = '#f3d58a';
 const contrast = (hex: string) => (luma(hex) < 120 ? WHITE : INK);
 
 type Bay = { kind: 'W' | 'D' | 'C' | 'd' | 'P' | 'B'; x0: number; x1: number };
@@ -187,6 +198,14 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
   const glassTop = spec.transom ? openTop - 0.5 : openTop;
   const doorHex = spec.doorHex ?? frame;
   const glazed: [number, number][] = [];
+  // Glass sits recessed behind its frame and carries a pale diagonal reflection, so it reads as
+  // glass rather than a painted panel even in flat light.
+  const REC = OUT - 0.045, SHEEN = mixHex(GLASS, '#c8d4de', 0.3);
+  const glassPane = (g0: number, g1: number, z0: number, z1: number, out: number) => {
+    boxes.push({ x0: g0, x1: g1, z0, z1, out0: WALL, out1: out, hex: GLASS });
+    const w = g1 - g0, hh = z1 - z0;
+    if (w > 0.4 && hh > 0.6) faces.push({ points: [[g0 + 0.55 * w, z1 - 0.04], [g0 + 0.8 * w, z1 - 0.04], [g0 + 0.38 * w, z0 + 0.3 * hh], [g0 + 0.13 * w, z0 + 0.3 * hh]], out: out + 0.002, hex: SHEEN });
+  };
   const paneGrid = (a: number, b: number, z0: number, z1: number, cols: number, rows: number, out: number) => {
     for (let i = 1; i < cols; i++) { const x = a + ((b - a) * i) / cols; boxes.push({ x0: x - 0.035, x1: x + 0.035, z0, z1, out0: out, out1: out + 0.03, hex: frame }); }
     for (let j = 1; j < rows; j++) { const z = z0 + ((z1 - z0) * j) / rows; boxes.push({ x0: a, x1: b, z0: z - 0.035, z1: z + 0.035, out0: out, out1: out + 0.03, hex: frame }); }
@@ -196,19 +215,23 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
     switch (bay.kind) {
       case 'P': boxes.push({ x0: a, x1: b, z0: 0, z1: openTop, out0: WALL, out1: OUT + 0.08, hex: frame }); break;
       case 'W': {
-        // Frame surround, stall riser, glass, mullions, optional transom lights.
-        boxes.push({ x0: a, x1: b, z0: 0, z1: openTop, out0: WALL, out1: OUT, hex: frame });
-        boxes.push({ x0: a + 0.08, x1: b - 0.08, z0: 0.06, z1: gBot - 0.06, out0: OUT, out1: OUT + 0.03, hex: plinth });
+        // Frame stiles and rails proud of recessed glass, a panelled stall riser, mullions, transom lights.
         const g0 = a + 0.1, g1 = b - 0.1;
+        boxes.push({ x0: a, x1: g0, z0: 0, z1: openTop, out0: WALL, out1: OUT, hex: frame }, { x0: g1, x1: b, z0: 0, z1: openTop, out0: WALL, out1: OUT, hex: frame });
+        boxes.push({ x0: g0, x1: g1, z0: 0, z1: gBot, out0: WALL, out1: OUT, hex: frame }, { x0: g0, x1: g1, z0: glassTop, z1: Math.min(openTop, glassTop + 0.08), out0: WALL, out1: OUT, hex: frame });
+        if (openTop - glassTop > 0.1) boxes.push({ x0: g0, x1: g1, z0: openTop - 0.08, z1: openTop, out0: WALL, out1: OUT, hex: frame });
+        boxes.push({ x0: a + 0.08, x1: b - 0.08, z0: 0.06, z1: gBot - 0.06, out0: OUT, out1: OUT + 0.03, hex: plinth });
         if (style === 'arched') {
-          boxes.push({ x0: g0, x1: g1, z0: gBot, z1: glassTop - 0.35, out0: OUT, out1: OUT + 0.01, hex: GLASS });
-          faces.push({ points: [[g0, glassTop - 0.35], ...arch(g1, g0, glassTop - 0.35, 0.35, 6).map(([x, z]) => [x, z] as [number, number])], out: OUT + 0.01, hex: GLASS });
-        } else boxes.push({ x0: g0, x1: g1, z0: gBot, z1: glassTop, out0: OUT, out1: OUT + 0.01, hex: GLASS });
+          glassPane(g0, g1, gBot, glassTop - 0.35, REC);
+          boxes.push({ x0: g0, x1: g1, z0: glassTop - 0.35, z1: glassTop, out0: WALL, out1: OUT, hex: frame });
+          faces.push({ points: [[g0, glassTop - 0.35], ...arch(g1, g0, glassTop - 0.35, 0.3, 6).map(([x, z]) => [x, z] as [number, number])], out: OUT + 0.005, hex: GLASS });
+        } else glassPane(g0, g1, gBot, glassTop, REC);
         const [cols, rows] = spec.grid ?? (style === 'big' || style === 'arched' ? [1, 1] : style === 'split' ? [Math.max(1, Math.round(w / 1.4)), 1] : [Math.max(2, Math.round(w / 0.7)), 2]);
-        paneGrid(g0, g1, gBot, style === 'arched' ? glassTop - 0.35 : glassTop, cols, rows, OUT + 0.01);
+        paneGrid(g0, g1, gBot, style === 'arched' ? glassTop - 0.35 : glassTop, cols, rows, REC);
         if (spec.transom) {
           const n = Math.max(2, Math.round(w / 0.55)), pw = (g1 - g0) / n;
-          for (let i = 0; i < n; i++) boxes.push({ x0: g0 + i * pw + 0.04, x1: g0 + (i + 1) * pw - 0.04, z0: glassTop + 0.08, z1: openTop - 0.08, out0: OUT, out1: OUT + 0.01, hex: GLASS });
+          for (let i = 0; i < n; i++) boxes.push({ x0: g0 + i * pw + 0.04, x1: g0 + (i + 1) * pw - 0.04, z0: glassTop + 0.08, z1: openTop - 0.08, out0: WALL, out1: REC, hex: GLASS });
+          for (let i = 1; i < n; i++) boxes.push({ x0: g0 + i * pw - 0.04, x1: g0 + i * pw + 0.04, z0: glassTop + 0.08, z1: openTop - 0.08, out0: WALL, out1: OUT, hex: frame });
         }
         glazed.push([g0, g1]);
         break;
@@ -217,7 +240,7 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
         const shop = bay.kind === 'D', top = shop ? doorTop : Math.min(doorTop, 2.3);
         if (shop) boxes.push({ x0: a, x1: b, z0: 0, z1: openTop, out0: WALL, out1: OUT, hex: frame });
         boxes.push({ x0: a + 0.08, x1: b - 0.08, z0: 0, z1: top, out0: shop ? OUT - 0.04 : WALL - 0.02, out1: shop ? OUT + 0.01 : WALL + 0.03, hex: shop ? doorHex : (spec.doorHex ?? INK) });
-        if (shop) boxes.push({ x0: a + 0.22, x1: b - 0.22, z0: 1.0, z1: top - 0.18, out0: OUT, out1: OUT + 0.02, hex: GLASS });
+        if (shop) glassPane(a + 0.22, b - 0.22, 1.0, top - 0.18, OUT + 0.02);
         // Fanlight over the door.
         if (top < openTop - 0.3) boxes.push({ x0: a + 0.12, x1: b - 0.12, z0: top + 0.08, z1: (shop ? openTop : top + 0.5) - 0.08, out0: shop ? OUT : WALL, out1: (shop ? OUT : WALL) + 0.01, hex: GLASS });
         break;
@@ -283,6 +306,17 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
     const rHex = typeof spec.rollers === 'string' ? spec.rollers : '#5a6270';
     boxes.push({ x0: a - 0.05, x1: b + 0.05, z0: glassTop - 0.3, z1: glassTop, out0: OUT, out1: OUT + 0.22, hex: '#8a8c8e' }, { x0: a, x1: b, z0: gBot, z1: glassTop - 0.3, out0: OUT + 0.1, out1: OUT + 0.12, hex: rHex });
     for (let z = gBot + 0.25; z < glassTop - 0.35; z += 0.25) boxes.push({ x0: a, x1: b, z0: z, z1: z + 0.04, out0: OUT + 0.12, out1: OUT + 0.14, hex: '#3a3f48' });
+    // Tags and throw-ups: overlapping slanted blobs, placed by a hash of the shop so they stay put.
+    if (spec.graffiti?.length) {
+      let seed = 0; for (const c of spec.name) seed = (seed * 31 + c.charCodeAt(0)) >>> 0;
+      const rnd = () => ((seed = (seed * 1103515245 + 12345) >>> 0) / 2 ** 32);
+      const top = glassTop - 0.35, n = Math.max(4, Math.round((b - a) * 1.6));
+      for (let i = 0; i < n; i++) {
+        const cx = a + 0.2 + rnd() * (b - a - 0.4), cz = gBot + 0.2 + rnd() * (top - gBot - 0.4), rx = 0.25 + rnd() * 0.6, rz = 0.15 + rnd() * 0.4, k = rnd() * 0.3;
+        const pts: [number, number][] = [[cx - rx, cz - rz * 0.6], [cx + rx * 0.7, cz - rz], [cx + rx, cz + rz * 0.5], [cx - rx * 0.6 + k, cz + rz]];
+        faces.push({ points: pts.map(([x, z]) => [Math.min(b, Math.max(a, x)), Math.min(top, Math.max(gBot, z))] as [number, number]), out: OUT + 0.141 + i * 0.001, hex: spec.graffiti[i % spec.graffiti.length] });
+      }
+    }
   }
 
   // Awnings: over the whole span, the bays named, or in separate lettered segments.
@@ -343,7 +377,8 @@ export function compileStorefront(_slug: string, spec: StorefrontSpec, wall: Sto
       let top = 0; for (let i = 1; i < outline.length; i++) { const [xa, za] = outline[i - 1], [xb, zb] = outline[i]; if (x >= xa && x <= xb && xb > xa) top = za + ((zb - za) * (x - xa)) / (xb - xa); }
       if (top > 0.3) ribs.push({ x0: x, x1: x + 0.06, z0: 0.05, z1: top - 0.05, out0: 0, out1: 0.04, hex: f.ribs });
     }
-    return { ...base, hex: f.hex, outline, boxes: [...ribs, ...(spec.bays === 'none' ? kept.slice(1) : kept)], windows: (f.windows ?? []).map(w => ({ ...w, xs: w.xs.map(x => x + sh), hex: GLASS })) };
+    const reg = (o: [number, number][]) => o.map(([x, z]) => [Math.min(L, Math.max(0, x + sh)), z] as [number, number]);
+    return { ...base, hex: f.hex, outline, bodyTopM: f.topM, slabs: (f.slabs ?? []).map(sl => ({ ...sl, outline: reg(sl.outline) })), boxes: [...ribs, ...(spec.bays === 'none' ? kept.slice(1) : kept)], windows: (f.windows ?? []).map(w => ({ ...w, xs: w.xs.map(x => x + sh), hex: GLASS })) };
   }
   return { ...base, storefront: true, hex: wallHex, outline: [[x0, 0.01], [x1, 0.01]], boxes: kept, windows: [] };
 }

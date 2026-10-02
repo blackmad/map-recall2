@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Storefronts: second self-review — glass, whole buildings, shutters
+
+Self-review of the measured set: every window was the same flat slate panel pasted on its frame, the strongest placeholder signal on all 298. Shop windows are now frame stiles and rails proud of recessed glass with a pale diagonal reflection (`glassPane`), darker by default. User flagged Kerkzicht (a one-storey pavilion under a tile roof with a brick gable dormer, drawn as a three-storey brick block) and Leonardo's (a closed, graffitied roll-down shutter): `facade.topM` caps the building body, `facade.slabs` adds silhouettes behind or in front of the wall (the roof over the eaves, the dormer), and `graffiti` paints tags over closed shutters, placed by a hash of the shop.
+
 ## Storefronts: registration between photo and footprint
 
 User on Bojo: "you need to account for imperfect registration". A panorama's pose is off by up to a metre or so, so a reference crop of the BAG wall can start on the neighbour: Bojo's own left edge (the downpipe) is 1.0 m into its photo, and the shop was modelled 1 m too far right with a strip of bare building beside it. Specs now take `shift` (wall = photo + shift) applied to every photo-measured position (span, text, signs); spans clamp to the wall and ends within 0.6 m of a corner snap to it; all-fixed bay rows stretch to fill. All 48 measured storefronts were re-rendered against their photos: Bojo (-1.0 m) and Al Argentino (-1.3 m) were misregistered; the others matched. Also: fascia text keeps clear of blade signs and scales its margins to thin boards (Al Argentino's lettering had vanished), and the review viewer no longer drops a neighbour with one corner proud of the wall. Practice: when a building's own edge shows inside the crop, measure it and set `shift`. Pinned in `test:landmark-fronts`.
