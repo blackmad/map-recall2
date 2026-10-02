@@ -23,6 +23,7 @@ const SETUPS: Record<string, Setup> = {
   },
 };
 
+const KIT_PART_IDS_OF = (k: Kit) => [...k.tiers.map(t => t.id), ...k.stacks.map(t => t.onId), ...k.roofs.map(r => r.id)];
 const BEURS_IDS = 'w749918639,w749918641,w749918651,w749918653,w749918637,w749918638,w749931382,w749931383,w749918652'.split(',');
 SETUPS.beurs = {
   centre: [4.8961, 52.37527],
@@ -30,6 +31,11 @@ SETUPS.beurs = {
   kit: KITS.find(k => k.name === 'Beurs van Berlage')!,
 };
 
+// Any other front: centred on its wall, its carrying parts, and the kit of the same name if there is one.
+for (const [key, f] of Object.entries(FRONTS)) if (!SETUPS[key]) SETUPS[key] = {
+  centre: [(f.start[0] + f.end[0]) / 2, (f.start[1] + f.end[1]) / 2], ids: [...f.ids, ...(KITS.find(k => k.name === f.name) ? KIT_PART_IDS_OF(KITS.find(k => k.name === f.name)!) : [])],
+  kit: KITS.find(k => k.name === f.name) ?? { name: f.name, tiers: [], stacks: [], roofs: [] },
+};
 const q = new URLSearchParams(location.search), name = q.get('name') ?? 'waag', setup = SETUPS[name], front = FRONTS[name];
 const [clng, clat] = setup.centre, kx = 111_320 * Math.cos(clat * Math.PI / 180), ky = 110_540;
 const tileOf = (lng: number, lat: number) => { const n = 2 ** 14, r = lat * Math.PI / 180; return [Math.floor(((lng + 180) / 360) * n), Math.floor(((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * n)]; };

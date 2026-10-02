@@ -120,8 +120,8 @@
   var dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
   function roofTriangles(rect, plan, h0, dims) {
     const out = [];
-    const { cx, cy, ux, uy, len: L, wid: W } = rect;
-    const world = (u, v, z) => [cx + u * ux - v * uy, cy + u * uy + v * ux, h0 + z];
+    const { cx: cx2, cy, ux, uy, len: L, wid: W } = rect;
+    const world = (u, v, z) => [cx2 + u * ux - v * uy, cy + u * uy + v * ux, h0 + z];
     const dir = (u, v, z) => [u * ux - v * uy, u * uy + v * ux, z];
     const tri = (a, b, c, ua, ub, uc, part, hint) => {
       let n = cross(sub(b, a), sub(c, a));
@@ -160,13 +160,14 @@
           dir(0, (v0 + v1) / 2, (z0 + z1) / 2 - R * 0.4)
         );
       }
-      for (const e of [-1, 1]) for (let i = 0; i < prof.length - 1; i++) {
+      for (const e of [-1, 1]) for (let i = 0; i < prof.length; i++) {
+        const a = prof[i], b = prof[(i + 1) % prof.length];
         tri(
-          world(e * L / 2, prof[i][0], prof[i][1]),
-          world(e * L / 2, prof[i + 1][0], prof[i + 1][1]),
+          world(e * L / 2, a[0], a[1]),
+          world(e * L / 2, b[0], b[1]),
           world(e * L / 2, 0, R * 0.4),
-          wallUv(prof[i][0], prof[i][1]),
-          wallUv(prof[i + 1][0], prof[i + 1][1]),
+          wallUv(a[0], a[1]),
+          wallUv(b[0], b[1]),
           wallUv(0, R * 0.4),
           "plate",
           dir(e, 0, 0)
@@ -384,15 +385,15 @@
       this.out.push({ p: [a, B, C], uv: [ua, UB, UC], layer, hex: hex2, n: [n[0] / l, n[1] / l, n[2] / l] });
     }
   };
-  function stage(sink, cx, cy, ang, shape, w0, w1, z0, z1, mat) {
+  function stage(sink, cx2, cy, ang, shape, w0, w1, z0, z1, mat) {
     const n = shape === "square" ? 4 : 8;
     const radius = (w) => shape === "square" ? w / 2 * Math.SQRT2 : w / 2 / Math.cos(Math.PI / 8);
     const off = shape === "square" ? Math.PI / 4 : Math.PI / 8;
     const ring = (w, z) => Array.from({ length: n }, (_, k) => {
       const a = ang + off + k * 2 * Math.PI / n;
-      return [cx + Math.cos(a) * radius(w), cy + Math.sin(a) * radius(w), z];
+      return [cx2 + Math.cos(a) * radius(w), cy + Math.sin(a) * radius(w), z];
     });
-    const bottom = ring(w0, z0), top = w1 > 0 ? ring(w1, z1) : null, apex = [cx, cy, z1];
+    const bottom = ring(w0, z0), top = w1 > 0 ? ring(w1, z1) : null, apex = [cx2, cy, z1];
     const layer = layerFor(mat), hex2 = MAT_HEX[mat];
     let run = 0;
     for (let k = 0; k < n; k++) {
@@ -409,11 +410,11 @@
     }
     if (top) for (let k = 1; k < n - 1; k++) sink.tri(top[0], top[k], top[k + 1], [0, 0], [1, 0], [1, 1], "flat", hex2, [0, 0, 1]);
   }
-  function clocks(sink, cx, cy, ang, width, zc) {
+  function clocks(sink, cx2, cy, ang, width, zc) {
     const r = Math.min(width * 0.3, 2.3);
     for (let k = 0; k < 4; k++) {
       const a = ang + k * Math.PI / 2, dx = Math.cos(a), dy = Math.sin(a), tx = -dy, ty = dx;
-      const mx = cx + dx * (width / 2 + 0.55 + 0.06), my = cy + dy * (width / 2 + 0.55 + 0.06);
+      const mx = cx2 + dx * (width / 2 + 0.55 + 0.06), my = cy + dy * (width / 2 + 0.55 + 0.06);
       for (const [rad, mat, lift] of [[r, "gold", 0], [r * 0.8, "white", 0.04]]) {
         const pts = Array.from({ length: 8 }, (_, i) => {
           const t = i * Math.PI / 4 + Math.PI / 8;
@@ -423,10 +424,10 @@
       }
     }
   }
-  function columns(sink, cx, cy, ang, width, z0, z1, n) {
+  function columns(sink, cx2, cy, ang, width, z0, z1, n) {
     for (let k = 0; k < n; k++) {
       const a = ang + k * 2 * Math.PI / n + Math.PI / n, rad = width / 2 + 0.1;
-      stage(sink, cx + Math.cos(a) * rad, cy + Math.sin(a) * rad, a, "square", 0.7, 0.7, z0, z1, "white");
+      stage(sink, cx2 + Math.cos(a) * rad, cy + Math.sin(a) * rad, a, "square", 0.7, 0.7, z0, z1, "white");
     }
   }
   function kitGeometry(kit, parts) {
@@ -500,6 +501,7 @@
     const v = parseInt(m[1], 16);
     return [v >> 16 & 255, v >> 8 & 255, v & 255];
   };
+  var LID_SHADE = 0.58 + 0.42 * 0.8;
   function buildKitChunk(parts, layers) {
     let tris = 0;
     for (const part of parts) tris += part.tris.length;
@@ -537,11 +539,11 @@
 
   // src/canalRecall/landmarkFronts.ts
   function arch(x0, x1, z, rise, segments = 8) {
-    const r = ((x1 - x0) ** 2 / 4 + rise ** 2) / (2 * rise), cx = (x0 + x1) / 2, cz = z + rise - r;
+    const r = ((x1 - x0) ** 2 / 4 + rise ** 2) / (2 * rise), cx2 = (x0 + x1) / 2, cz = z + rise - r;
     const half = Math.asin((x1 - x0) / 2 / r);
     return Array.from({ length: segments + 1 }, (_, i) => {
       const a = -half + 2 * half * i / segments;
-      return [cx + r * Math.sin(a), cz + r * Math.cos(a)];
+      return [cx2 + r * Math.sin(a), cz + r * Math.cos(a)];
     });
   }
   function frontTriangles(front2, toWorld) {
@@ -557,19 +559,23 @@
       quad([x0, z1, out1], [x1, z1, out1], [x1, z1, out0], [x0, z1, out0], hex2, [0, 1, 0]);
       quad([x0, z0, out0], [x1, z0, out0], [x1, z0, out1], [x0, z0, out1], hex2, [0, -1, 0]);
     };
-    const d = front2.depthM, o = front2.outline;
-    for (let i = 1; i < o.length; i++) {
-      const [xa, za] = o[i - 1], [xb, zb] = o[i];
-      if (xb <= xa) continue;
-      quad([xa, 0, d], [xb, 0, d], [xb, zb, d], [xa, za, d], front2.hex, [0, 0, 1]);
-      quad([xa, za, d], [xb, zb, d], [xb, zb, 0], [xa, za, 0], front2.hex, [-(zb - za), xb - xa, 0]);
-    }
-    const [xs, zs] = o[0], [xe, ze] = o[o.length - 1];
-    quad([xs, 0, 0], [xs, 0, d], [xs, zs, d], [xs, zs, 0], front2.hex, [-1, 0, 0]);
-    quad([xe, 0, d], [xe, 0, 0], [xe, ze, 0], [xe, ze, d], front2.hex, [1, 0, 0]);
+    const slab = (o, o0, o1, hex2) => {
+      for (let i = 1; i < o.length; i++) {
+        const [xa, za] = o[i - 1], [xb, zb] = o[i];
+        if (xb <= xa) continue;
+        quad([xa, 0, o1], [xb, 0, o1], [xb, zb, o1], [xa, za, o1], hex2, [0, 0, 1]);
+        quad([xa, za, o1], [xb, zb, o1], [xb, zb, o0], [xa, za, o0], hex2, [-(zb - za), xb - xa, 0]);
+      }
+      const [xs, zs] = o[0], [xe, ze] = o[o.length - 1];
+      quad([xs, 0, o0], [xs, 0, o1], [xs, zs, o1], [xs, zs, o0], hex2, [-1, 0, 0]);
+      quad([xe, 0, o1], [xe, 0, o0], [xe, ze, o0], [xe, ze, o1], hex2, [1, 0, 0]);
+    };
+    const d = front2.depthM;
+    slab(front2.outline, 0, d, front2.hex);
+    for (const extra of front2.slabs ?? []) slab(extra.outline, extra.out0 + d, extra.out1 + d, extra.hex);
     for (const b of front2.boxes) box({ ...b, out0: (b.out0 ?? 0) + d, out1: b.out1 + d });
-    for (const grid of front2.windows) for (const cx of grid.xs) for (const [z0, z1] of grid.rows) {
-      const x0 = cx - grid.w / 2, x1 = cx + grid.w / 2;
+    for (const grid of front2.windows) for (const cx2 of grid.xs) for (const [z0, z1] of grid.rows) {
+      const x0 = cx2 - grid.w / 2, x1 = cx2 + grid.w / 2;
       box({ x0: x0 - 0.12, x1: x1 + 0.12, z0: z0 - 0.12, z1: z1 + 0.12, out0: d, out1: d + 0.04, hex: grid.frameHex ?? "#d8d0c0" });
       box({ x0, x1, z0, z1, out0: d, out1: d + 0.07, hex: grid.hex });
       box({ x0: x0 - 0.2, x1: x1 + 0.2, z0: z0 - 0.3, z1: z0 - 0.12, out0: d, out1: d + 0.25, hex: front2.hex });
@@ -647,7 +653,120 @@
       { xs: BEURS_GABLES, rows: [[15.9, 16.7]], w: 0.5, hex: BEURS.glass, frameHex: BEURS.stone }
     ]
   };
-  var FRONTS = { bijenkorf: BIJENKORF, beurs: BEURS_BEURSPLEIN };
+  var PAL = { stone: "#a39a8b", pier: "#b3aa9a", cornice: "#bdb4a3", glass: "#3e4248", frame: "#d6d1c4", dark: "#2c2a28" };
+  var PAL_WING = [3.6, 8.2, 11.6, 15, 18.4, 52, 55.4, 58.6, 62, 66];
+  var PAL_OUT = 5;
+  var rx = (x) => 22 + (x - 21.8) * 25.2 / 29.8;
+  var PAL_CENTRE = [24.8, 28.8, 32.8, 36.6, 40.6, 44.6, 48.4].map(rx);
+  var ROYAL_PALACE_DAM = {
+    name: "Royal Palace",
+    ids: ["w748659172", "w748659181"],
+    // The photo's skyline is the wings' slate roofs (the kit's) and the pediment, cut by the crop.
+    roofline: "front-only",
+    start: [4.891730097030566, 52.37283230231148],
+    end: [4.891761497019604, 52.37344440232049],
+    depthM: 0.4,
+    hex: PAL.stone,
+    outline: [[0, 26.9], [68.1, 26.9]],
+    slabs: [{ outline: [[22, 30.7], [34.6, 36.2], [47.2, 30.7]], out0: 0, out1: PAL_OUT + 0.3, hex: PAL.stone }],
+    boxes: [
+      // Risalit: pilasters and its own cornices, on its front face.
+      ...[21.8, 26, 30.2, 34.2, 38.2, 42.2, 46.4, 50.6].map((x) => ({ x0: rx(x) - 0.15, x1: rx(x) + 0.65, z0: 5.1, z1: 29.5, out0: PAL_OUT + 0.3, out1: PAL_OUT + 0.6, hex: PAL.pier })),
+      { x0: 21.6, x1: 47.6, z0: 16.6, z1: 18.1, out0: PAL_OUT + 0.3, out1: PAL_OUT + 0.9, hex: PAL.cornice },
+      { x0: 21.6, x1: 47.6, z0: 29.4, z1: 30.8, out0: PAL_OUT + 0.3, out1: PAL_OUT + 1.1, hex: PAL.cornice },
+      { x0: 22, x1: 47.2, z0: 0, z1: 5.1, out0: PAL_OUT + 0.3, out1: PAL_OUT + 0.5, hex: PAL.pier },
+      // The seven entrance arches (dark openings) in the risalit's ground floor.
+      ...PAL_CENTRE.map((x) => ({ x0: x - 0.7, x1: x + 0.7, z0: 0, z1: 3.6, out0: PAL_OUT + 0.5, out1: PAL_OUT + 0.55, hex: PAL.dark })),
+      // Wings: rusticated ground floor, cornices.
+      { x0: 0, x1: 22, z0: 0, z1: 5.1, out1: 0.3, hex: PAL.pier },
+      { x0: 47.2, x1: 68.1, z0: 0, z1: 5.1, out1: 0.3, hex: PAL.pier },
+      { x0: 0, x1: 22, z0: 15.1, z1: 15.7, out1: 0.5, hex: PAL.cornice },
+      { x0: 47.2, x1: 68.1, z0: 15.1, z1: 15.7, out1: 0.5, hex: PAL.cornice },
+      { x0: 0, x1: 22, z0: 25.7, z1: 26.9, out1: 0.9, hex: PAL.cornice },
+      { x0: 47.2, x1: 68.1, z0: 25.7, z1: 26.9, out1: 0.9, hex: PAL.cornice }
+    ],
+    windows: [
+      { xs: PAL_WING, rows: [[1.7, 3.9], [5.9, 9.9], [12.1, 13.7], [16.1, 20], [21.1, 23.1]], w: 1.5, hex: PAL.glass, frameHex: PAL.frame }
+    ]
+  };
+  ROYAL_PALACE_DAM.boxes.push(...PAL_CENTRE.flatMap((x) => [[5.9, 9.9], [12.1, 13.7], [18.7, 22.3], [24.3, 26.1]].flatMap(([z0, z1]) => [
+    { x0: x - 0.75, x1: x + 0.75, z0: z0 - 0.12, z1: z1 + 0.12, out0: PAL_OUT + 0.3, out1: PAL_OUT + 0.34, hex: PAL.frame },
+    { x0: x - 0.63, x1: x + 0.63, z0, z1, out0: PAL_OUT + 0.3, out1: PAL_OUT + 0.37, hex: PAL.glass }
+  ])));
+  var CG = { stone: "#e6dfcd", loggia: "#8f877a", brick: "#a85a45", glass: "#3f4650", gold: "#c9a54a", iron: "#3c3f42", slate: "#4d535c" };
+  var CG_OUT = 4.3;
+  var cx = (x) => 17.5 + (x - 17.6) * 17.1 / 24;
+  var CONCERTGEBOUW = {
+    name: "Concertgebouw",
+    ids: ["w754269603", "w754269608", "w754269609", "w754269610"],
+    // The portico is drawn at its OSM width, narrower than the photo shows it: only check the model is never taller.
+    roofline: "front-only",
+    start: [4.8796525973590095, 52.35617990203481],
+    end: [4.879354197352111, 52.356617502039974],
+    depthM: 0.4,
+    hex: CG.stone,
+    // Corner pavilions rise above the wings with small pediments; the wings are lower between.
+    outline: [[0, 17.1], [5.4, 17.1], [5.8, 19.2], [8.6, 21], [11.4, 19.2], [11.8, 17.1], [42.2, 17.1], [42.6, 19.6], [45.6, 22.2], [48.6, 19.6], [49, 17.1], [52.5, 17.1]],
+    slabs: [{ outline: [[17.5, 26.5], [34.6, 26.5]], out0: 0, out1: CG_OUT, hex: CG.stone }],
+    boxes: [
+      // Brick panels on the wings between stone bands.
+      ...[[1, 16.8], [35.4, 51.6]].flatMap(([x0, x1]) => [
+        { x0, x1, z0: 7.5, z1: 13.4, out0: -0.05, out1: 0.04, hex: CG.brick },
+        { x0, x1, z0: 1.2, z1: 5.6, out0: -0.05, out1: 0.04, hex: CG.brick }
+      ]),
+      { x0: 0, x1: 17.5, z0: 14.7, z1: 17.1, out1: 0.7, hex: CG.stone },
+      { x0: 34.6, x1: 52.5, z0: 14.7, z1: 17.1, out1: 0.7, hex: CG.stone },
+      // Pavilion lanterns: small slate caps on the corner pavilions.
+      { x0: 7.4, x1: 9.8, z0: 20, z1: 22.6, out0: -3, out1: -0.4, hex: CG.slate },
+      { x0: 44.2, x1: 47, z0: 21.4, z1: 24.6, out0: -3, out1: -0.4, hex: CG.slate },
+      // The portico face: a shaded loggia, columns in front of it, entablature with gilt lettering, canopy.
+      { x0: cx(18), x1: cx(41.2), z0: 9.5, z1: 21.2, out0: CG_OUT - 0.05, out1: CG_OUT + 0.02, hex: CG.loggia },
+      ...[18.6, 21.6, 24.6, 27.6, 30.6, 33.6, 36.6, 39.6].map((x) => ({ x0: cx(x) - 0.35, x1: cx(x) + 0.35, z0: 9.5, z1: 21.2, out0: CG_OUT, out1: CG_OUT + 0.9, hex: CG.stone })),
+      { x0: 17.5, x1: 34.6, z0: 21.2, z1: 26.5, out0: CG_OUT, out1: CG_OUT + 1, hex: CG.stone },
+      { x0: cx(22), x1: cx(37.2), z0: 22.2, z1: 23.1, out0: CG_OUT + 1, out1: CG_OUT + 1.06, hex: CG.gold },
+      { x0: 16.9, x1: 35.2, z0: 6.9, z1: 7.6, out0: CG_OUT, out1: CG_OUT + 2.6, hex: CG.iron },
+      ...[24.4, 28, 31.6, 35.2].map((x) => ({ x0: cx(x) - 0.95, x1: cx(x) + 0.95, z0: 0, z1: 5.3, out0: CG_OUT - 0.05, out1: CG_OUT + 0.05, hex: CG.glass }))
+    ],
+    windows: [
+      { xs: [2.6, 8.6, 14.2, 38, 45.6, 50.6], rows: [[8.9, 12.6], [1.7, 4.9]], w: 1.3, hex: CG.glass, frameHex: CG.stone }
+    ]
+  };
+  var TU = { stone: "#8a8188", dark: "#5f5961", gold: "#b08a4a", teal: "#4f6f73", glass: "#3b3f46", door: "#7a2c2a" };
+  var TUSCHINSKI = {
+    name: "Tuschinski",
+    ids: ["NL.IMBAG.Pand.0363100012168188"],
+    // The fused reference stops below the tower crowns and ghosts their edges.
+    roofline: "unmeasured",
+    start: [4.894810997136038, 52.366501002229796],
+    end: [4.894616997135511, 52.36655500222995],
+    depthM: 0.4,
+    hex: TU.stone,
+    outline: [[0, 20], [0.6, 23], [4.2, 23], [4.2, 21], [10.2, 21], [10.2, 23], [13.9, 23], [14.5, 20]],
+    boxes: [
+      // Towers stand forward, crowned with stepped merlons.
+      { x0: 0.6, x1: 4.2, z0: 0, z1: 23, out1: 0.6, hex: TU.stone },
+      { x0: 10.2, x1: 13.9, z0: 0, z1: 23, out1: 0.6, hex: TU.stone },
+      ...[0.8, 2, 3.2, 10.4, 11.6, 12.8].map((x) => ({ x0: x, x1: x + 0.8, z0: 23, z1: 24.2, out1: 0.6, hex: TU.stone })),
+      // Stepped crowns, each stage narrower, capped in copper green.
+      ...[[0.6, 4.2], [10.2, 13.9]].flatMap(([x0, x1]) => [
+        { x0: x0 + 0.4, x1: x1 - 0.4, z0: 24.2, z1: 25.6, out0: -2.5, out1: 0.3, hex: TU.stone },
+        { x0: x0 + 0.8, x1: x1 - 0.8, z0: 25.6, z1: 26.8, out0: -2, out1: 0, hex: TU.gold },
+        { x0: x0 + 1.2, x1: x1 - 1.2, z0: 26.8, z1: 28.4, out0: -1.6, out1: -0.3, hex: TU.teal }
+      ]),
+      // The ornamented band under the parapet and the recessed arch with its oriel.
+      { x0: 4.2, x1: 10.2, z0: 16.2, z1: 19.6, out1: 0.3, hex: TU.teal },
+      { x0: 4.2, x1: 10.2, z0: 19.6, z1: 21, out1: 0.4, hex: TU.gold },
+      { x0: 5.4, x1: 9.4, z0: 5.4, z1: 15, out0: -0.3, out1: -0.29, hex: TU.dark },
+      { x0: 6.2, x1: 8.6, z0: 7.4, z1: 14.2, out0: -0.3, out1: 0.5, hex: TU.stone },
+      { x0: 4.6, x1: 9.8, z0: 4.2, z1: 5.2, out1: 1.6, hex: TU.gold },
+      { x0: 5.2, x1: 9.4, z0: 0, z1: 4.2, out0: -0.05, out1: 0.05, hex: TU.door }
+    ],
+    windows: [
+      { xs: [2.4, 12], rows: [[3, 6], [8, 11], [13, 16], [18, 21]], w: 0.6, hex: TU.glass, frameHex: TU.gold },
+      { xs: [6.8, 8], rows: [[8.2, 10.4], [11, 13.4]], w: 0.9, hex: TU.glass, frameHex: TU.gold }
+    ]
+  };
+  var FRONTS = { bijenkorf: BIJENKORF, beurs: BEURS_BEURSPLEIN, "royal-palace": ROYAL_PALACE_DAM, concertgebouw: CONCERTGEBOUW, tuschinski: TUSCHINSKI };
   var FRONT_LIST = Object.values(FRONTS);
   var FRONT_PART_IDS = new Set(FRONT_LIST.flatMap((f) => f.ids));
   var FRONT_OF = new Map(FRONT_LIST.flatMap((f) => f.ids.map((id) => [id, f])));
@@ -667,11 +786,17 @@
       kit: { name: "Bijenkorf", tiers: [], stacks: [], roofs: [] }
     }
   };
+  var KIT_PART_IDS_OF = (k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((t) => t.onId), ...k.roofs.map((r) => r.id)];
   var BEURS_IDS = "w749918639,w749918641,w749918651,w749918653,w749918637,w749918638,w749931382,w749931383,w749918652".split(",");
   SETUPS.beurs = {
     centre: [4.8961, 52.37527],
     ids: BEURS_IDS,
     kit: KITS.find((k) => k.name === "Beurs van Berlage")
+  };
+  for (const [key, f] of Object.entries(FRONTS)) if (!SETUPS[key]) SETUPS[key] = {
+    centre: [(f.start[0] + f.end[0]) / 2, (f.start[1] + f.end[1]) / 2],
+    ids: [...f.ids, ...KITS.find((k) => k.name === f.name) ? KIT_PART_IDS_OF(KITS.find((k) => k.name === f.name)) : []],
+    kit: KITS.find((k) => k.name === f.name) ?? { name: f.name, tiers: [], stacks: [], roofs: [] }
   };
   var q = new URLSearchParams(location.search);
   var name = q.get("name") ?? "waag";

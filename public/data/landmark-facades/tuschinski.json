@@ -1,0 +1,111 @@
+{
+ "name": "tuschinski",
+ "buildingIds": [
+  "NL.IMBAG.Pand.0363100012168188"
+ ],
+ "image": "tuschinski.jpg",
+ "width": 363,
+ "height": 584,
+ "pixelsPerMetre": 25,
+ "wall": {
+  "startLngLat": [
+   4.894810997136038,
+   52.366501002229796
+  ],
+  "endLngLat": [
+   4.894616997135511,
+   52.36655500222995
+  ],
+  "lengthM": 14.515304034843808,
+  "heightM": 23.37,
+  "outwardBearingDeg": 24.64806327941062
+ },
+ "panoramas": [
+  {
+   "id": "TMX7316010203-002631_pano_0000_000209",
+   "timestamp": "2022-06-27T07:46:42.877130Z",
+   "distanceM": 5,
+   "obliquityDeg": 16
+  },
+  {
+   "id": "TMX7316010203-002623_pano_0003_000278",
+   "timestamp": "2022-06-23T09:48:37.504790Z",
+   "distanceM": 6,
+   "obliquityDeg": 14
+  },
+  {
+   "id": "TMX7316010203-002031_pano_0001_002036",
+   "timestamp": "2021-03-08T10:56:41.604160Z",
+   "distanceM": 8,
+   "obliquityDeg": 2
+  }
+ ],
+ "fusion": "per-pixel median across panoramas",
+ "silhouette": {
+  "sampleM": 0.25,
+  "topsM": [
+   12.24,
+   12.68,
+   12.68,
+   21.44,
+   21.44,
+   21.44,
+   20.88,
+   20.88,
+   20.8,
+   20.8,
+   20.88,
+   21.12,
+   21.12,
+   21.36,
+   21.36,
+   21.36,
+   20.68,
+   20.68,
+   20.04,
+   19.32,
+   19.16,
+   19.16,
+   19.12,
+   19.12,
+   19.16,
+   19.12,
+   19.12,
+   19.16,
+   19.32,
+   19.32,
+   19.32,
+   19.2,
+   19.2,
+   19.2,
+   19.6,
+   19.6,
+   19.6,
+   19.6,
+   19.64,
+   19.64,
+   20.36,
+   21.28,
+   21.28,
+   21.28,
+   21.28,
+   21.2,
+   21.2,
+   21,
+   21,
+   21,
+   21,
+   21.12,
+   21.16,
+   21.48,
+   21.48,
+   21.16,
+   14.44,
+   14.44,
+   14.24
+  ],
+  "wallColour": "#6d6a6e"
+ },
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (open data; faces and number plates blurred by the publisher)",
+ "licenceNote": "Verify at https://data.amsterdam.nl/uitleg-gebruik before shipping."
+}
