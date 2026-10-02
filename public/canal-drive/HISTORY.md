@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Per-wall facade rendering spike merged
+
+User asked for windows and doors that line up with buildings and more
+Amsterdam-looking textures, then "cartoony" and "more diverse". MapLibre's
+pattern layer cannot fit a texture to each wall, so the spike builds three.js
+meshes with whole bays and storeys per wall (`wallBays.ts`), canvas-drawn bays
+in two looks with a shader tint mask (`bayTextures.ts`), on a standalone page.
+Merged as an unlinked page; the game is unchanged. See
+`RENDERING_STACK_OPTIONS.md` for options, results and costs.
+
 ## 2026-10-02 — Bare patches at ride start: re-plan when the view widens
 
 User report with screenshot (deploy confirmed live, JS is no-cache): large
