@@ -767,9 +767,7 @@ class VectorBasemap {
     if (id === 'osm-colored-building-ground-floors') return ['all', ['has', 'groundColour'], ['!=', ['get', 'groundAppearanceStyleSource'], 'wall-inherited-not-independently-measured']];
     if (id !== 'osm-colored-building-roofs') return null;
     const helpers = window.CanalRecallBuildings;
-    const flat = helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'];
-    // The three.js mesh draws its own lids; a MapLibre lid would hang in the air while it rebuilds.
-    return this._threeOwnsTops() ? ['all', flat, ['!', ['has', 'facade']]] : flat;
+    return helpers && helpers.flatRoofFilter ? helpers.flatRoofFilter() : ['has', 'roofColour'];
   }
 
   _facadesLib() {
@@ -796,25 +794,17 @@ class VectorBasemap {
     const ground = ['case', this._coloredBuildingBaseFilter('osm-colored-building-ground-floors'), groundTop, minHeight];
     const Facades = this._facadesLib();
     if (!Facades || !this._facadesActive()) return ground;
-    // The three.js mesh draws these buildings whole, top included: the plain wall collapses to nothing.
-    if (this._threeOwnsTops()) return ['case', this._threeDrawnExpression(), minHeight, ground];
     return ['case',
       ['all', ['has', 'facade'], ['!', ['boolean', ['feature-state', 'highlighted'], false]]],
       ['max', minHeight, ['-', wallTop, Facades.FACADE_CORNICE_M]],
       ground];
   }
 
-  /** Buildings the three.js layer draws whole: every facade building except the highlighted answer. */
-  _threeDrawnExpression() {
-    return ['all', ['has', 'facade'], ['!', ['boolean', ['feature-state', 'highlighted'], false]]];
-  }
-
-  /** The plain wall's top: collapsed onto its base (a footprint on the ground) where three.js draws the building. */
-  _wallTopExpression(minHeight, wallTop) {
-    return this._threeOwnsTops() ? ['case', this._threeDrawnExpression(), minHeight, wallTop] : wallTop;
-  }
-
-  /** Whether the visible three.js layer draws whole buildings (walls, cornice band and flat lid). */
+  /**
+   * Whether the visible three.js layer draws the whole city: every building, its walls, lids and the
+   * yellow answer. MapLibre's building layers are then switched off, so the two renderers never
+   * disagree (slabs hanging in mid-air while the mesh rebuilt, user reports 2026-10-02).
+   */
   _threeOwnsTops() {
     return !!this._threeBuildings && this._buildings3dEnabled && this._facadesActive();
   }
@@ -964,9 +954,11 @@ class VectorBasemap {
     const groundTop = ['min', wallTop, ['+', minHeight, ['coalesce', ['get', 'groundFloorHeightM'], 3.2]]];
     if (this.map.getLayer('osm-colored-buildings')) {
       this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-base', this._wallBaseExpression(groundTop, minHeight, wallTop));
-      this.map.setPaintProperty('osm-colored-buildings', 'fill-extrusion-height', this._wallTopExpression(minHeight, wallTop));
     }
-    this._refreshColoredBuildingFilter(); // the lid layer's filter depends on who owns the tops
+    const owned = this._threeOwnsTops();
+    for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-roofs']) {
+      if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', owned ? 'none' : 'visible');
+    }
   }
 
   /**
@@ -1909,7 +1901,7 @@ class VectorBasemap {
     }
     this._highlightedBuildings = [];
     this._highlightedBuilding = null;
-    if (this._threeBuildings) this._threeBuildings.setHidden('answer', []);
+    if (this._threeBuildings) this._threeBuildings.setHighlighted([]);
     if (this._kitAnswerIds && this._kitAnswerIds.size) { this._kitAnswerIds = new Set(); if (this._buildings3dEnabled) this._refreshColoredBuildingFilter(); }
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
@@ -1937,7 +1929,7 @@ class VectorBasemap {
         } catch (_) {}
       }
       this._highlightedBuilding = this._highlightedBuildings[0] || null;
-      if (this._threeBuildings) this._threeBuildings.setHidden('answer', this._highlightedBuildings.map(target => target.id));
+      if (this._threeBuildings) this._threeBuildings.setHighlighted(this._highlightedBuildings.map(target => target.id));
       this._kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
       if (this._buildings3dEnabled) this._refreshColoredBuildingFilter();
     }
