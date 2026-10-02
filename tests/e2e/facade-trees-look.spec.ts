@@ -23,6 +23,12 @@ const SPOTS = [
   { name: 'jordaan-rozengracht', at: [4.8531, 52.3740], face: [4.8599, 52.3613] },
   // Centraal Station: a landmark that must keep its own form.
   { name: 'centraal', at: [4.9003, 52.3774], face: [4.9004, 52.3789] },
+  // Landmark kits: stand ~55 m from each tower and look straight at it.
+  { name: 'k-westerkerk', at: [4.88421, 52.37417], face: [4.88351, 52.37452] },
+  { name: 'k-zuiderkerk', at: [4.89899, 52.36985], face: [4.89949, 52.37020] },
+  { name: 'k-montelbaan', at: [4.90610, 52.37165], face: [4.90566, 52.37203] },
+  { name: 'k-noorderkerk', at: [4.88585, 52.37925], face: [4.88642, 52.37966] },
+  { name: 'k-palace', at: [4.89105, 52.37230], face: [4.89166, 52.37314] },
 ] as const;
 
 async function parkAt(page: Page, at: readonly number[], face: readonly number[], view: 'chase' | 'cockpit') {
@@ -59,8 +65,18 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
         await page.waitForTimeout(view === 'chase' ? 7000 : 3500);
         await parkAt(page, spot.at, spot.face, view);
         await page.waitForTimeout(800);
-        await page.waitForFunction(() => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return !t || t.stats().buildings > 3000; }, null, { timeout: 30_000 }).catch(() => {});
+        await page.waitForFunction(() => { const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings; if (t && t.stats().buildings <= 3000) { const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-6, c.lat] }); } return !t || t.stats().buildings > 3000; }, null, { timeout: 75_000, polling: 1000 }).catch(() => {});
         await page.waitForTimeout(1500);
+        if (process.env.LOOK_FREE) {
+          // Free camera: stop the game steering the map, then look straight at the target.
+          await page.evaluate(({ at, face }) => {
+            const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+            vm.sync = () => {}; map.stop();
+            const bearing = (Math.atan2((face[0] - at[0]) * Math.cos(face[1] * Math.PI / 180), face[1] - at[1]) * 180) / Math.PI;
+            map.jumpTo({ center: face as [number, number], zoom: 18.2, pitch: 68, bearing });
+          }, { at: [...spot.at], face: [...spot.face] });
+          await page.waitForTimeout(9000);
+        }
         const file = `${OUT}/${spot.name}-${view}-${testInfo.project.name}-${look.name}.png`;
         await page.screenshot({ path: file });
       }

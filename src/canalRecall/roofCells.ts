@@ -9,8 +9,8 @@
 
 import { CELL_PX } from './facadeCells.js';
 
-export type RoofCellKind = 'tile' | 'slate' | 'dormer';
-export const ROOF_CELL_KINDS: readonly RoofCellKind[] = ['tile', 'slate', 'dormer'];
+export type RoofCellKind = 'tile' | 'slate' | 'dormer' | 'flat';
+export const ROOF_CELL_KINDS: readonly RoofCellKind[] = ['tile', 'slate', 'dormer', 'flat'];
 export const ROOF_CELL_M = 1.2;
 
 function hash2(a: number, b: number, seed: number): number {
@@ -26,7 +26,10 @@ export function paintRoofCell(kind: RoofCellKind, toon: boolean): Uint8ClampedAr
     const c = rgb ?? [v, v, v];
     data[i] = c[0]; data[i + 1] = c[1]; data[i + 2] = c[2]; data[i + 3] = a;
   };
-  if (kind === 'tile') {
+  if (kind === 'flat') {
+    // Plain painted or metal surface: near-flat luminance with faint mottling, fully tintable.
+    for (let y = 0; y < CELL_PX; y++) for (let x = 0; x < CELL_PX; x++) put(x, y, Math.round((toon ? 0.96 : 0.9 + (hash2(x >> 3, y >> 3, 3) - 0.5) * 0.08) * 255), 255);
+  } else if (kind === 'tile') {
     const rows = 8, cols = 5, rowH = CELL_PX / rows, colW = CELL_PX / cols;
     for (let y = 0; y < CELL_PX; y++) for (let x = 0; x < CELL_PX; x++) {
       const row = Math.floor(y / rowH), fy = (y % rowH) / rowH;
