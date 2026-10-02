@@ -33,6 +33,107 @@ phrase and the area's own name in the same sentence; the Baltic-named islands
 (Reval, Wiborg, ...) are in Houthaven, not IJburg. `check-neighborhood-trivia-data.ts`
 now guards every city's published trivia. Map Recall reads each extract city
 (`cityExtracts.ts`); Utrecht and Rotterdam run next.
+## 2026-10-02 — Landmark kits: our own low-poly towers, spires, domes and roofs
+
+User: could we generate low-poly models for major POIs? The 13 signature GLBs are
+3D Warehouse downloads (unresolved licence, 10-12k triangles each) and stay
+demo-only. Images were unreachable from this sandbox (Sketchfab, 3D Warehouse,
+Wikimedia all blocked; web search is text only), so the kits come from memory of
+the buildings, good to a few metres and not surveys. Nothing is copied.
+- How: OSM already models these buildings as stacked parts (the Westerkerk tower
+  is five prisms from 40 to 82 m), so heights are right and the shape is what is
+  missing. A kit (`landmarkKits.ts`) says, per OSM part id, what a part really is
+  (square or octagonal stage, material), what to stack on it (lantern, spire,
+  dome, crown, finial) and which parts carry a pitched roof, all generated from
+  the part's own footprint so position and orientation stay as accurate as the
+  data. Tower tiers get cornice ledges and gilt clock faces; the Palace drum gets
+  columns. Roofed parts are lowered to their eaves and walled in bare brick
+  (churches) or a sandstone window grid (Palace).
+- Kits so far (Photo/Storybook/Cartoon/Painted looks; Default unchanged):
+  Westerkerk (brick/stone/lead tower, imperial crown, nave roofs), Zuiderkerk
+  (80 m: stone octagon, lantern, needle spire), Montelbaanstoren (white clock
+  stages, lead spire), Noorderkerk (Greek-cross roofs, turret), Royal Palace
+  (copper dome on a columned drum, lantern, gilt top, leaded roofs).
+- Landmarks otherwise stay exempt from generic facades and roofs.
+- Tools: `npm run build:kit-viewer` and `public/canal-drive/kit-viewer.html?kit=
+  Westerkerk&az=30&el=15&r=170&y=42` render a kit from its real OSM parts with grey
+  context, which is how the shapes were iterated; the look spec has `k-*` spots and
+  `LOOK_FREE=1` for a free camera. In-game checks at all five spots, desktop
+  software GL, no basemap.
+- Pitfall found: `fitRect` rejected 16-vertex octagon footprints (a missing stage
+  in the Westerkerk tower); the kit path now allows any vertex count.
+
+## 2026-10-02 — Roofs, gables, shopfronts, and a Storybook/Cartoon split
+
+User: the city looks too regular; photo and cartoon lack roofs, gables, mansards
+and street-level retail; the cartoon sat in an uncanny valley (pastel
+"Townscaper"). Built for every three.js look (`roofMesh.ts`, `roofCells.ts`):
+- Roofs: per-building plan from the footprint's fitted rectangle and facade
+  style. Gable (step, neck, bell, spout or plain plate on each short end),
+  pitched (plain triangular ends), mansard with dormers; pantile or slate; a
+  0.3 m eave overhang, chimneys on most ridges. Non-rectangular footprints
+  (coverage under 0.88 or a vertex over 1 m off the box) keep the flat lid. A
+  tile decorator lowers the plain wall to the eaves (`roofEavesHeightM`, which the
+  wall-top expression already honours) and stops the flat cap; it is applied only
+  while a three.js look is on, so Default is unchanged.
+- Retail: four shopfront types per archetype in the bay looks (awning, café,
+  display window under a fascia sign, brown café with a hanging sign) and two in
+  the procedural cells; about a third of buildings get one on the non-door bays.
+- Regularity: bay width, storey and ground-floor height vary per building; a
+  projecting cornice on flat-roofed period buildings.
+- Looks: Cartoon is now flat, bold, cel-shaded (3 light bands), saturated sticker
+  palette, thick outlines, bigger windows; Storybook is the softly painted,
+  natural-colour middle (thin outlines, muted palette); Photo keeps real brick and
+  a realistic brick palette.
+Landmarks are exempt: the 849 resolved landmark buildings (`landmark-buildings.json`: churches, museums, Centraal and the rest) get no generic facade and no roof, in every look including Default (`exceptLandmarks`; the ids load after the tile decorator is installed and re-decorate the resident city when they arrive).
+Depth was kept to what fits the memory budget: overhangs, chimneys, cornice,
+dormers and gable plates; no recessed windows or per-door stoops. Checked by
+four rounds of screenshot critique at Jordaan (desktop software GL, no
+basemap) and unit checks in `check-three-buildings.ts` (fit, plan odds,
+gable profiles stand above the slope, decorator lowers walls, measured roofs
+untouched).
+
+## 2026-10-02 — Building look setting; photo and cartoon looks tuned
+
+Settings now has "Building look" (Default, Painted, Cartoon, Photo), saved with
+the other preferences and applied live (`vectorMap.setBuildingLookPreference`);
+a `?buildings3d=` URL look beats the saved choice. Both wall layers coexist
+once used; only one is visible, and switching to Default frees the wall meshes.
+User report (Safari, photo look): roofs broken and far too noisy. Not
+reproduced in Chromium (roofs correct at the same Rozengracht start), so Safari
+itself is untested; one real hazard fixed: the streamer calls the wall layer's
+sync before sending tiles to MapLibre, so a throw there would drop roofs, and
+it is now wrapped. Noise: the bay drawings are softened when packed (brick
+pulled toward its mean, photo brick lifted, black glass lifted) and the photo
+look has its own real brick palette; cartoon has a warm terracotta/ochre/cream
+palette with occasional blue and green. Four rounds of screenshot critique at
+Jordaan/Rozengracht (desktop software GL, no basemap). Pinned in
+`building-look.spec.ts` (live switch both ways, URL beats preference).
+
+## 2026-10-02 — Three.js facade layer in the game (spike, opt-in)
+
+`?buildings3d=1|cartoon|photo` (or `vectorMap.setBuildingsLook('cartoon')`)
+replaces only the fill-extrusion facade pattern layer with a three.js custom
+layer inside MapLibre's GL context (`threeBuildingsBrowser.ts`); roofs,
+cornices, ground colour and POI/label layers stay MapLibre's. Walls are laid
+out in whole bays and storeys (`facadeLayout.ts`), doors stand under a window
+column, party walls are culled, and the answer and signature buildings hide
+their facades by id range. Textures are mipmapped, anisotropic texture arrays
+sampled with a wall/accent tint mask: the procedural Amsterdam cells
+(`facadeCells.ts`) or the rendering spike's bays (`bayLook.ts` over
+`bayTextures.ts`, 32 curated layers). Off by default.
+Measured (headless software GL, desktop, 5 spots, chase view, not a phone):
+after freeing the CPU copies of geometry and textures, JS heap after a forced
+GC is 298 MB against 396 MB for the pattern layer (the first run's +160 MB was
+those copies); MapLibre render p95 22 ms against 23 ms (an earlier 13 vs 284 was a one-off
+tail, retracted); walls geometry 42-57 MB plus 16-18 MB of textures. Shimmer
+and aliasing are NOT shown to be better: a sub-pixel-creep frame difference
+was mixed and noisy, and a 1x-vs-3x supersampled aliasing error was mixed too
+(two spots better, three worse or level; the metric also counts label, tree and
+line-width differences). The real gains are lower heap, whole-bay/storey
+alignment and the new looks; the shimmer motivation is unproven and needs a
+phone eye-test or a cleaner metric. Cartoon and photo verified by eye at three spots (desktop,
+no basemap).
 
 ## 2026-10-02 — Per-wall facade rendering spike merged
 

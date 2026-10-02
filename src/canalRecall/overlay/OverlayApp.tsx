@@ -228,6 +228,14 @@ const VIEW: Choice<CanalPreferences['viewMode']>[] = [
   { value: 'cockpit', title: 'Cockpit', hint: 'Low 3D, over the bumper' },
 ];
 
+const BUILDING_LOOK: Choice<CanalPreferences['buildingLook']>[] = [
+  { value: 'default', title: 'Default', hint: 'Plain period facades' },
+  { value: 'procedural', title: 'Painted', hint: 'Fitted windows and doors' },
+  { value: 'storybook', title: 'Storybook', hint: 'Softly painted, natural colours' },
+  { value: 'cartoon', title: 'Cartoon', hint: 'Flat, bold, cel-shaded' },
+  { value: 'photo', title: 'Photo', hint: 'Brick and sash windows' },
+];
+
 const ROUTE: Choice<CanalPreferences['routePattern']>[] = [
   { value: 'surprise', title: 'Surprise', hint: 'Landmark to landmark' },
   { value: 'home', title: 'Home', hint: 'Nearby first, expands as you learn' },
@@ -287,6 +295,13 @@ function RideOptions({
       ) : null}
       <RangeRow label="Zoom" id={id('camera-zoom', 'live-zoom')} min="0.1" max="1.3" step="0.05"
         value={prefs.zoom} onChange={zoom => set({ zoom })} />
+      <ChoiceRow
+        label="Building look"
+        name={name('building-look')}
+        value={prefs.buildingLook}
+        onChange={value => set({ buildingLook: value })}
+        options={BUILDING_LOOK}
+      />
       <ChoiceRow
         label="Controls"
         name={name('controls')}

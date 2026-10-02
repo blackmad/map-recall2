@@ -17,6 +17,7 @@ export {
   THEME_MODES,
   TRAVEL_MODES,
   VIEW_MODES,
+  BUILDING_LOOKS,
   isBoat,
   isCar,
   isTransit,
@@ -27,6 +28,7 @@ export {
   type ThemeMode,
   type TravelMode,
   type ViewMode,
+  type BuildingLookMode,
 } from './modes.ts';
 import {
   ANSWER_MODES,
@@ -37,6 +39,7 @@ import {
   THEME_MODES,
   TRAVEL_MODES,
   VIEW_MODES,
+  BUILDING_LOOKS,
   type AnswerMode,
   type ControlMode,
   type RouteDifficulty,
@@ -44,6 +47,7 @@ import {
   type ThemeMode,
   type TravelMode,
   type ViewMode,
+  type BuildingLookMode,
 } from './modes.ts';
 export {
   travelProfile,
@@ -115,6 +119,8 @@ export interface CanalPreferences {
   controlMode: ControlMode;
   viewMode: ViewMode;
   themeMode: ThemeMode;
+  /** Wall look for the streamed city: `default` is the stock pattern layer. */
+  buildingLook: BuildingLookMode;
   routePattern: RoutePattern;
   homeAddress: string;
   line: boolean;
@@ -156,6 +162,7 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     controlMode: 'relative',
     viewMode: 'north',
     themeMode: 'clean',
+    buildingLook: 'default',
     routePattern: 'surprise',
     homeAddress: '',
     trees: true,
@@ -220,6 +227,7 @@ function fillPreferences(
     // Map style, Detailed 3D and Photoreal were retired from settings
     // (2026-09-28); a value stored before then is ignored.
     themeMode: base.themeMode,
+    buildingLook: parseMode(BUILDING_LOOKS, source.buildingLook, base.buildingLook),
     routePattern: parseMode(ROUTE_PATTERNS, source.routePattern, base.routePattern),
     homeAddress: typeof source.homeAddress === 'string' ? source.homeAddress : base.homeAddress,
     line: parseBoolean(source.line, base.line),

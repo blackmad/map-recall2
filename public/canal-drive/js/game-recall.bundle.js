@@ -310,6 +310,7 @@
       controlMode: "relative",
       viewMode: "north",
       themeMode: "clean",
+      buildingLook: "default",
       routePattern: "surprise",
       homeAddress: "",
       trees: true,
