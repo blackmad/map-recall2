@@ -165,10 +165,10 @@ function inRing([lat, lon]: [number, number], ring: [number, number][]): boolean
   }
   return inside;
 }
-const inArea = (point: [number, number], polygons: [number, number][][][]) =>
+export const inArea = (point: [number, number], polygons: [number, number][][][]) =>
   polygons.some((polygon) => inRing(point, polygon[0]) && !polygon.slice(1).some((hole) => inRing(point, hole)));
 
-const flatName = (text: string) => text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
+export const flatName = (text: string) => text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
 
 /**
  * The best-known places inside an area: highest score first, at most

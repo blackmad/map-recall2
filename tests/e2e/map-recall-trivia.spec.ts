@@ -125,3 +125,18 @@ test('a neighbourhood with photos opens its card with a painted postcard', async
   expect(rounds, 'a neighbourhood with a postcard within ten rounds').toBeGreaterThan(0);
   await expect(page.locator('[data-testid="answer-postcard"]')).toHaveAttribute('data-painted', 'yes', { timeout: 15_000 });
 });
+
+test('neighbourhood map hints name places, not only compass bearings', async ({ page }) => {
+  // User report 2026-10-02: Weesperbuurt's hints were "eastern half", "southeast quadrant", "1.09 km".
+  await quietExternalRequests(page);
+  await page.goto('/?city=amsterdam&mode=pinpoint&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=10');
+  const name = (await page.locator('#target-feature-name').textContent())!.trim();
+  await page.locator('#hint-toggle-btn').click();
+  const reveal = page.getByText(/Reveal a more precise hint/);
+  while (await reveal.isVisible().catch(() => false)) await reveal.click();
+  const hints = await page.getByTestId('locate-hint').allTextContents();
+  expect(hints.length).toBeGreaterThanOrEqual(3);
+  expect(hints.join(' ')).toMatch(/district|along|runs through|borders|inside|just \w+ of/);
+  for (const hint of hints) expect(hint.toLowerCase()).not.toContain(name.toLowerCase().replace(/buurt$/, ''));
+  await page.screenshot({ path: test.info().outputPath('neighbourhood-hints.png') });
+});
