@@ -89,6 +89,7 @@ const CHECKS = [
   'test:canal-streets',
   'test:neighborhoods',
   'test:map-recall-trivia',
+  'test:generic-facades',
   'test:bridge-crossings',
   'test:bridge-distractors',
   'test:bridge-railways',
