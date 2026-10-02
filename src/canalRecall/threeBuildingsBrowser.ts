@@ -20,15 +20,14 @@ import { bayTextures, type Look } from './bayTextures.js';
 import { KITS, KIT_HIDE_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
 import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
 import { frontKitGeometry, lookHex } from './landmarkFronts.js';
-import { buildChunk, buildKitChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
+import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
+import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
+export { ORIGIN, ROOF_TONES, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
-type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number };
 type MaplibreLike = { MercatorCoordinate: { fromLngLat(lngLat: [number, number], altitude: number): { x: number; y: number; z: number; meterInMercatorCoordinateUnits(): number } } };
 
-/** One fixed origin for the whole city: float32 metres stay sub-millimetre within 10 km. */
-export const ORIGIN = { lng: 4.9, lat: 52.37 };
 const TILE_ZOOM = 14;
 /** Facades show from this map zoom (the extrusion layer's own minzoom was 14). */
 export const MIN_ZOOM = 14;
@@ -47,9 +46,12 @@ flat out float vLayer;
 out vec3 vTint;
 out vec3 vAccent;
 out float vShade;
+flat out float vHighlight;
 void main() {
   vUv = uv; vLayer = layer; vTint = tint.rgb; vAccent = accent.rgb; vShade = tint.a;
-  gl_Position = hidden > 0.5 ? vec4(2.0, 2.0, 2.0, 1.0) : projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  // hidden: 0 drawn, 1 hidden, 2 the highlighted answer (drawn plain yellow).
+  vHighlight = hidden > 1.5 ? 1.0 : 0.0;
+  gl_Position = hidden > 0.5 && hidden < 1.5 ? vec4(2.0, 2.0, 2.0, 1.0) : projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }`;
 
 const FRAGMENT = /* glsl */ `
@@ -63,8 +65,10 @@ flat in float vLayer;
 in vec3 vTint;
 in vec3 vAccent;
 in float vShade;
+flat in float vHighlight;
 out vec4 fragColor;
 void main() {
+  if (vHighlight > 0.5) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, 1.0); return; }
   vec3 p = vec3(vUv, vLayer);
   vec3 c = texture(cells, p).rgb;
   vec2 m = texture(masks, p).rg;
@@ -74,7 +78,6 @@ void main() {
 }`;
 
 const ROOF_LAYER_COUNT = 4;
-const hashShop = (id: string) => { let h = 2166136261; for (const c of `${id}:shop`) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967296 < 0.3; };
 
 const infoOf = (chunk: Chunk): ChunkInfo => ({
   buildingCount: chunk.buildingCount, wallCount: chunk.wallCount, quadCount: chunk.quadCount, vertexCount: chunk.vertexCount,
@@ -113,11 +116,6 @@ export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: numb
   }
 }
 
-const asPolygons = (geometry: unknown): number[][][][] => {
-  const g = geometry as { type?: string; coordinates?: unknown } | null;
-  if (!g || !g.coordinates) return [];
-  return g.type === 'Polygon' ? [g.coordinates as number[][][]] : g.type === 'MultiPolygon' ? g.coordinates as number[][][][] : [];
-};
 
 const tileKeyOf = (polygons: number[][][][]): string => {
   const [lng, lat] = polygons[0]?.[0]?.[0] ?? [0, 0];
@@ -127,21 +125,14 @@ const tileKeyOf = (polygons: number[][][][]): string => {
   return `${x}/${y}`;
 };
 
-export type BuildingLook = 'procedural' | Look;
 
 export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, KIT_HIDE_IDS };
 
 const KIT_KEY = '__kit';
-const FLAT_ROOF_GREYS = ['#8f8a83', '#9a958c', '#85817c', '#a09789'];
+/** The chunk worker sits next to this bundle (three-buildings-worker.bundle.js). */
+const WORKER_URL = typeof document !== 'undefined' ? ((document.currentScript as HTMLScriptElement | null)?.src ?? '').replace(/three-buildings\.bundle\.js(\?.*)?$/, 'three-buildings-worker.bundle.js$1') : '';
+const KIT_HIDE_SET: ReadonlySet<string> = new Set(KIT_HIDE_IDS);
 
-/** Roof colours per look: pantile and slate (a look's own tones, picked by the plan's `tone`). */
-export const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] }> = {
-  procedural: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
-  photo: { tile: ['#b5543a', '#a8482f', '#c0603f', '#9c4a35'], slate: ['#4b525c', '#3f464f', '#5a6068'] },
-  storybook: { tile: ['#b9553a', '#a94a33', '#c46a45'], slate: ['#556070', '#4a5666', '#657282'] },
-  cartoon: { tile: ['#e85a3c', '#f08a2b', '#d94a3a'], slate: ['#3f5f8f', '#2f4a78', '#4f7bb0'] },
-};
-const roofHexFor = (look: BuildingLook, plan: RoofPlan) => { const set = ROOF_TONES[look][plan.material]; return set[Math.min(set.length - 1, Math.floor(plan.tone * set.length))]; };
 
 /** What stays after upload: counts only, never the typed arrays. */
 type ChunkInfo = { buildingCount: number; wallCount: number; quadCount: number; vertexCount: number; bytes: number };
@@ -160,6 +151,7 @@ export class ThreeBuildings {
   /** Ids hidden per reason (the answer building, signature models); a facade is hidden while any reason holds it. */
   private readonly hiddenBy = new Map<string, Set<string>>();
   private hidden = new Set<string>();
+  private highlighted = new Set<string>();
   private pending: Array<() => void> = [];
   private pumping = false;
   private lastBuildMs = 0;
@@ -168,6 +160,9 @@ export class ThreeBuildings {
   private look: BuildingLook;
   private textureSets = new Map<BuildingLook, Promise<{ colour: any; mask: any }>>();
   private lookToken = 0;
+  private worker: Worker | null | undefined;
+  private readonly gens = new Map<string, number>();
+  private readonly inflight = new Map<string, Feature[]>();
 
   constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural') {
     this.look = look;
@@ -266,8 +261,10 @@ export class ThreeBuildings {
     const kitParts: Feature[] = [];
     for (const feature of features) {
       const p = feature.properties;
-      if (KIT_PART_IDS.has(String(p.id ?? '')) || FRONT_PART_IDS.has(String(p.id ?? ''))) kitParts.push(feature);
-      if (typeof p.facade !== 'string' || !p.facadeStyle) continue;
+      const id = String(p.id ?? '');
+      if (KIT_PART_IDS.has(id) || FRONT_PART_IDS.has(id)) kitParts.push(feature);
+      // Every building draws here (bare walls when it has no facade), except the parts a kit replaces.
+      if (KIT_HIDE_SET.has(id)) continue;
       const polygons = asPolygons(feature.geometry);
       if (!polygons.length) continue;
       const key = tileKeyOf(polygons);
@@ -276,10 +273,11 @@ export class ThreeBuildings {
       list.push(feature);
     }
     if (kitParts.length) groups.set(KIT_KEY, kitParts);
-    for (const key of [...this.chunks.keys()]) if (!groups.has(key)) this.dropChunk(key);
+    const same = (a: readonly Feature[] | undefined, b: readonly Feature[]) => !!a && a.length === b.length && a.every((f, i) => f === b[i]);
+    for (const key of [...this.chunks.keys(), ...this.inflight.keys()]) if (!groups.has(key)) { this.dropChunk(key); this.inflight.delete(key); this.gens.set(key, (this.gens.get(key) ?? 0) + 1); }
     for (const [key, list] of groups) {
-      const held = this.chunks.get(key);
-      if (held && held.source.length === list.length && held.source.every((f, i) => f === list[i])) continue;
+      const flying = this.inflight.get(key);
+      if (flying ? same(flying, list) : same(this.chunks.get(key)?.source, list)) continue;
       this.pending.push(() => this.rebuild(key, list));
     }
     this.pump();
@@ -290,6 +288,16 @@ export class ThreeBuildings {
    * as a plain yellow extrusion instead, and signature-landmark models replace
    * their OSM footprint. Only the ids whose state changed touch the GPU.
    */
+  /** The answer building(s): drawn plain yellow in place, so MapLibre need not draw a stand-in prism. */
+  setHighlighted(ids: Iterable<string | number>): void {
+    const next = new Set([...ids].map(String));
+    const changed = new Set<string>([...next, ...this.highlighted].filter(id => next.has(id) !== this.highlighted.has(id)));
+    this.highlighted = next;
+    if (!changed.size) return;
+    for (const entry of this.chunks.values()) this.applyHidden(entry, changed);
+    this.map.triggerRepaint();
+  }
+
   setHidden(reason: string, ids: Iterable<string | number>): void {
     this.hiddenBy.set(reason, new Set([...ids].map(String)));
     const next = new Set<string>();
@@ -361,50 +369,53 @@ export class ThreeBuildings {
     return buildKitChunk(geometry, { plain, flat: roofBase + 3, slope: roofBase + 1 });
   }
 
-  private toMeshBuilding(feature: Feature): MeshBuilding | null {
-    const p = feature.properties;
-    const polygons = asPolygons(feature.geometry);
-    const minHeightM = Number(p.minHeight) || 0;
-    const heightM = wallTopHeightM(p);
-    if (!polygons.length || !Number.isFinite(heightM)) return null;
-    const id = String(p.id ?? '');
-    let building: MeshBuilding;
-    let plain: number, roofBase: number, layout: FacadeStyle;
-    if (this.look !== 'procedural') {
-      const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
-      const bay = bayLookFor(id, year, Number(p.height) || heightM, this.look);
-      building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers };
-      plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
-    } else {
-      layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
-      building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && hashShop(id) };
-      plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
-    }
-    // The mesh owns the top: walls to full height and, for a flat roof, a lid in the mapped roof
-    // colour (or a neutral bitumen/gravel grey when the roof colour just repeats the wall's).
-    const mapped = typeof p.roofColour === 'string' && p.roofColour !== p.colour ? p.roofColour : null;
-    building.lid = { hex: mapped ?? FLAT_ROOF_GREYS[lookVariant(id) % FLAT_ROOF_GREYS.length], flatLayer: roofBase + 3 };
-    if (p.kitWall) {
-      // A landmark kit's walls: its own stone or brick colour, bare or in a window grid.
-      building.wallHex = String(p.kitWallHex ?? building.wallHex);
-      building.plainWalls = p.kitWall === 'plain';
-    }
-    if (p.roofPlanned) {
-      const ring = localOuterRing(feature.geometry);
-      const plan = ring ? planRoof(id, String(p.facadeStyle ?? ''), Number(p.height), minHeightM, fitRect(ring)) : null;
-      if (plan) {
-        const dims = STYLE_DIMS[layout];
-        building.roof = { plan, roofHex: roofHexFor(this.look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
-          layers: { slope: roofBase + (plan.material === 'tile' ? 0 : 1), plain, dormer: roofBase + 2 } };
-      }
-    }
-    return building;
-  }
-
   private rebuild(key: string, source: Feature[]): void {
     if (!this.THREE) return;
+    const worker = key === KIT_KEY ? null : this.chunkWorker();
+    const gen = (this.gens.get(key) ?? 0) + 1;
+    this.gens.set(key, gen);
+    if (worker) {
+      // Off the main thread; a reply for an older generation (the tile changed again, or the look) is dropped.
+      this.inflight.set(key, source);
+      worker.postMessage({ key, gen, look: this.look, features: source });
+      return;
+    }
     const t0 = performance.now();
-    const chunk = key === KIT_KEY ? this.buildKits(source) : buildChunk(source.map(f => this.toMeshBuilding(f)).filter((b): b is MeshBuilding => !!b), ORIGIN);
+    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, this.look);
+    this.install(key, source, chunk, performance.now() - t0);
+  }
+
+  /** The chunk worker, started on first use; null where workers are unavailable (then chunks build inline). */
+  private chunkWorker(): Worker | null {
+    if (this.worker !== undefined) return this.worker;
+    this.worker = null;
+    if (typeof Worker === 'undefined' || !WORKER_URL) return null;
+    try {
+      const worker = new Worker(WORKER_URL);
+      worker.onmessage = (event: MessageEvent<{ key: string; gen: number; chunk: Chunk; ms: number }>) => {
+        const { key, gen, chunk, ms } = event.data, source = this.inflight.get(key);
+        if (this.gens.get(key) !== gen || !source) return;
+        this.inflight.delete(key);
+        this.install(key, source, chunk, ms);
+      };
+      worker.onerror = (error) => {
+        // Fall back to inline builds for good, and redo whatever was in flight.
+        console.warn('three.js building worker failed; building chunks inline', error);
+        this.worker = null; worker.terminate();
+        for (const [key, source] of this.inflight) this.pending.push(() => this.rebuild(key, source));
+        this.inflight.clear();
+        this.pump();
+      };
+      this.worker = worker;
+    } catch (error) {
+      console.warn('three.js building worker unavailable; building chunks inline', error);
+    }
+    return this.worker;
+  }
+
+  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number): void {
+    if (!this.THREE) return;
+    const t0 = performance.now() - buildMs;
     this.dropChunk(key);
     if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); return; }
     const THREE = this.THREE;
@@ -425,7 +436,7 @@ export class ThreeBuildings {
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
-    if (this.hidden.size) this.applyHidden(entry, this.hidden);
+    if (this.hidden.size || this.highlighted.size) this.applyHidden(entry, new Set([...this.hidden, ...this.highlighted]));
     this.lastBuildMs = performance.now() - t0;
     this.map.triggerRepaint();
   }
@@ -437,7 +448,7 @@ export class ThreeBuildings {
     for (const id of ids) {
       const range = entry.ranges.get(id);
       if (!range) continue;
-      attribute.array.fill(this.hidden.has(id) ? 1 : 0, range.start, range.start + range.count);
+      attribute.array.fill(this.hidden.has(id) ? 1 : this.highlighted.has(id) ? 2 : 0, range.start, range.start + range.count);
       touched = true;
     }
     if (touched) attribute.needsUpdate = true;
