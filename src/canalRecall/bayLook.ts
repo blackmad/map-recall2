@@ -4,11 +4,12 @@
 // are a small fixed set so they fit one texture array and one draw per tile:
 // 8 building styles x 4 bay kinds = 32 layers.
 
-import { archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look } from './bayTextures.js';
+import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look } from './bayTextures.js';
 import { hashSeed } from './wallBays.js';
 import type { FacadeStyle } from './genericFacades.js';
 
-export const BAY_KINDS = ['upper', 'ground', 'groundDoor', 'groundShop'] as const satisfies readonly BayKind[];
+export const BAY_KINDS = ['upper', 'ground', 'groundDoor', ...SHOP_KINDS, 'plain'] as const satisfies readonly BayKind[];
+const isShopKind = (kind: string) => (SHOP_KINDS as readonly string[]).includes(kind);
 type BayStyle = Omit<BayVariant, 'kind' | 'archetype'>;
 
 /** Curated building styles per archetype (window count, head shape, shutters, painted frames). */
@@ -31,13 +32,14 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
 const ARCHETYPES = Object.keys(BAY_STYLES) as Archetype[];
 
 type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[number]; layer: number };
+// Shopfronts do not depend on the building's window style, so they exist once per archetype.
 export const BAY_ENTRIES: readonly Entry[] = ARCHETYPES.flatMap(archetype =>
-  BAY_STYLES[archetype].flatMap((_, style) => BAY_KINDS.map(kind => ({ archetype, style, kind, layer: 0 })))).map((e, layer) => ({ ...e, layer }));
+  BAY_STYLES[archetype].flatMap((_, style) => BAY_KINDS.filter(kind => !isShopKind(kind) || style === 0).map(kind => ({ archetype, style, kind, layer: 0 })))).map((e, layer) => ({ ...e, layer }));
 export const BAY_LAYER_COUNT = BAY_ENTRIES.length;
 
 export const bayVariant = (e: Entry): BayVariant => ({ archetype: e.archetype, kind: e.kind, ...BAY_STYLES[e.archetype][e.style] });
 export const bayLayer = (archetype: Archetype, style: number, kind: (typeof BAY_KINDS)[number]): number =>
-  BAY_ENTRIES.find(e => e.archetype === archetype && e.style === style && e.kind === kind)!.layer;
+  BAY_ENTRIES.find(e => e.archetype === archetype && e.style === (isShopKind(kind) ? 0 : style) && e.kind === kind)!.layer;
 
 /** The layout style (cell dimensions) each archetype uses. */
 export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal', school: 'school', modern: 'modern' };
@@ -49,19 +51,23 @@ export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal'
  * the dark brick photo came out as one chocolate wall.
  */
 const PHOTO_WALLS = ['#b05a40', '#b05a40', '#a24d38', '#bd6a45', '#9a5846', '#8c5a48', '#c58b5e', '#d3b184', '#a8766a', '#7f6258', '#d9c5a4'];
-/** Wall colours for the cartoon look, widened beyond the spike's mostly-terracotta mix. */
-const CARTOON_WALLS = ['#e0694b', '#e0694b', '#cf7c52', '#eba05d', '#f0c35a', '#f3e2bb', '#e8a99b', '#d98a6a', '#9fc09f', '#7fa7c6', '#b9805a', '#f0b48a'];
+/** Storybook: the natural palette, slightly warmed and softened, as an illustrator would paint it. */
+const STORYBOOK_WALLS = ['#c8664a', '#c8664a', '#b9583f', '#d98b5f', '#e0b36a', '#ead9b0', '#c9a08c', '#b87a5c', '#9bb09a', '#8aa4b8', '#d9b995'];
+/** Cartoon: a short sticker palette, saturated and similar in value, so the street reads as one bold design. */
+const CARTOON_WALLS = ['#e8573d', '#e8573d', '#ee7f2c', '#f2b92e', '#f2b92e', '#2a9d8f', '#4672b0', '#f3e6c8', '#d96a4d'];
 
 /** Everything the mesh builder needs from a feature for a bay look. */
 export function bayLookFor(id: string, year: number | null, heightM: number, look: Look) {
   const archetype = archetypeFor(id, year, heightM);
   const h = hashSeed(id), style = (h >>> 4) % BAY_STYLES[archetype].length;
-  const shop = (h >>> 13) % 4 === 0;
+  const shop = (h >>> 13) % 3 === 0;
+  const shopKind = SHOP_KINDS[(h >>> 17) % SHOP_KINDS.length];
   const palette = paletteFor(id, archetype, look);
-  const walls = look === 'photo' ? PHOTO_WALLS : look === 'cartoon' && archetype !== 'modern' ? CARTOON_WALLS : null;
+  const walls = look === 'photo' ? PHOTO_WALLS : archetype === 'modern' ? null : look === 'storybook' ? STORYBOOK_WALLS : CARTOON_WALLS;
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
   return {
     archetype, layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: palette.accent,
-    layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop ? 'groundShop' : 'ground'), door: bayLayer(archetype, style, 'groundDoor') },
+    layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop ? shopKind : 'ground'), door: bayLayer(archetype, style, 'groundDoor') },
+    plain: bayLayer(archetype, style, 'plain'),
   };
 }

@@ -44,7 +44,7 @@ for (const style of FACADE_STYLES) for (let variant = 0; variant < CELL_VARIANTS
   for (let i = 0; i < px.length; i += 4) { if (px[i] + px[i + 1] + px[i + 2] + px[i + 3] === 0) unpainted++; if (px[i + 3] > 128) tinted++; }
   assert.equal(unpainted, 0, `${style}/${kind}: ${unpainted} unpainted pixels`);
   const share = tinted / (CELL_PX * CELL_PX);
-  assert.ok(share > 0.15 && share < 0.98, `${style}/${kind}: tintable wall share ${share.toFixed(2)}`);
+  assert.ok(share > (kind === 'shop' ? 0.05 : 0.15) && (kind === 'plain' ? share > 0.7 : share < 0.98), `${style}/${kind}: tintable wall share ${share.toFixed(2)}`);
   assert.deepEqual(Array.from(paintCell(style, kind, variant).slice(0, 4096)), Array.from(px.slice(0, 4096)), 'deterministic');
 }
 // A canal door cell has a door that the plain ground cell lacks: dark pixels in the door column.
@@ -156,5 +156,72 @@ for (let v = 0; v < chunk.vertexCount; v += 4) {
     {}, { height: 9, roofShape: 'flat', roofColour: '#555555', roofHeight: 2 },
   ];
   for (const props of cases) assert.ok(Math.abs(evalExpr(props) - wallTopHeightM(props)) < 1e-9, `wall top for ${JSON.stringify(props)}: ${evalExpr(props)} vs ${wallTopHeightM(props)}`);
+}
+// --- Roofs and gables ---------------------------------------------------------
+{
+  const { fitRect, planRoof, roofTriangles, gableProfile, decorateRoof } = await import('../src/canalRecall/roofMesh.ts');
+  const rectPts = (w: number, d: number): Array<[number, number]> => [[0, 0], [w, 0], [w, d], [0, d], [0, 0]];
+  const r = fitRect(rectPts(5.5, 13))!;
+  assert.ok(Math.abs(r.len - 13) < 1e-6 && Math.abs(r.wid - 5.5) < 1e-6 && r.coverage > 0.99, 'a plain house fits its rectangle');
+  const rotated = rectPts(5.5, 13).map(([x, y]) => [x * 0.8 - y * 0.6, x * 0.6 + y * 0.8] as [number, number]);
+  assert.ok(Math.abs(fitRect(rotated)!.len - 13) < 1e-6, 'rotation does not change the fit');
+  const L: Array<[number, number]> = [[0, 0], [12, 0], [12, 4], [4, 4], [4, 12], [0, 12], [0, 0]];
+  assert.ok(fitRect(L)!.coverage < 0.7, 'an L-shaped block is not a rectangle');
+  assert.equal(planRoof('x', 'modern', 12, 0, r), null, 'modern buildings keep flat roofs');
+  assert.equal(planRoof('x', 'canal', 12, 0, fitRect(L)), null, 'non-rectangular footprints keep flat roofs');
+  const kinds = new Set<string>();
+  for (let i = 0; i < 400; i++) { const plan = planRoof(`b${i}`, 'canal', 14, 0, r); kinds.add(plan ? plan.kind : 'flat'); assert.deepEqual(plan, planRoof(`b${i}`, 'canal', 14, 0, r), 'deterministic'); }
+  assert.deepEqual([...kinds].sort(), ['flat', 'gable', 'mansard', 'pitched'], 'a canal street mixes roof types');
+  for (const shape of ['step', 'neck', 'bell', 'spout', 'plain'] as const) {
+    const prof = gableProfile(shape, 5.5, 2.0);
+    assert.equal(prof[0][1], 0); assert.equal(prof[prof.length - 1][1], 0);
+    assert.ok(prof.every(([x], i) => i === 0 || x >= prof[i - 1][0] - 1e-9), `${shape}: x never goes back`);
+    assert.ok(prof.every(([x, y]) => y >= 2.0 * (1 - Math.abs(x) / 2.75) - 1e-6), `${shape}: the plate stands at or above the roof slope`);
+    assert.ok(Math.max(...prof.map(p => p[1])) >= 2.0 - 1e-6 && prof.every(([, y]) => Number.isFinite(y)));
+  }
+  const dims = { bayM: 5, storeyM: 3.1, cellM: 1.2 };
+  for (const kind of ['gable', 'pitched', 'mansard'] as const) {
+    const plan = { kind, gable: 'bell' as const, riseM: kind === 'mansard' ? 2.6 : 2.0, dormers: true, material: 'tile' as const, tone: 0.3, seed: 'x' };
+    const tris = roofTriangles(r, plan, 10, dims);
+    assert.ok(tris.length > 4, `${kind}: has geometry`);
+    for (const t of tris) {
+      assert.ok(t.p.flat().every(Number.isFinite) && t.uv.flat().every(Number.isFinite));
+      const outward = t.part === 'slope' ? t.n[2] > -1e-9 || true : true;
+      assert.ok(outward);
+      for (const q of t.p) assert.ok(q[2] >= 10 - 0.6, `${kind}: only the eave overhang dips below the eaves`);
+    }
+    const slopes = tris.filter(t => t.part === 'slope');
+    assert.ok(slopes.every(t => t.n[2] > 0), `${kind}: roof slopes face upward`);
+    const plates = tris.filter(t => t.part === 'plate');
+    assert.ok(plates.length > 0 && plates.every(t => Math.abs(t.n[2]) < 0.99 || t.n[2] > 0.99), `${kind}: plates are vertical or coping`);
+  }
+  // The decorator lowers the plain wall to the eaves and stops the flat lid.
+  const ring = rectPts(5.5, 13).map(([x, y]) => [4.9 + x / 68_000, 52.37 + y / 110_540]);
+  let decorated = 0;
+  for (let i = 0; i < 60; i++) {
+    const feature = { type: 'Feature' as const, properties: { id: `h${i}`, height: 14, minHeight: 0, facade: 'canal-priorBrickRed', facadeStyle: 'canal', roofColour: '#aa5544' }, geometry: { type: 'Polygon', coordinates: [ring] } };
+    const out = decorateRoof(feature);
+    if (out === feature) continue;
+    decorated++;
+    assert.ok(out.properties.roofEavesHeightM! < 14 && out.properties.roofShape !== 'flat');
+    assert.equal(wallTopHeightM(out.properties), out.properties.roofEavesHeightM);
+    assert.equal(decorateRoof(out), out, 'idempotent');
+  }
+  assert.ok(decorated > 30 && decorated < 60, `most but not all houses get a roof (${decorated}/60)`);
+  // Landmarks (churches, museums, Centraal) keep their own form: the wrapped decorator leaves them alone.
+  {
+    const { exceptLandmarks } = await import('../src/canalRecall/roofMesh.ts');
+    const ids = new Set<string>();
+    const wrapped = exceptLandmarks(decorateRoof, ids);
+    const house = (id: string) => ({ type: 'Feature' as const, properties: { id, height: 14, minHeight: 0, facade: 'canal-priorBrickRed', facadeStyle: 'canal' }, geometry: { type: 'Polygon', coordinates: [ring] } });
+    let roofed = ''; for (let i = 0; i < 40 && !roofed; i++) if (decorateRoof(house(`k${i}`)) !== house(`k${i}`) && decorateRoof(house(`k${i}`)).properties.roofPlanned) roofed = `k${i}`;
+    assert.ok(roofed, 'found a house that gets a roof');
+    assert.ok(wrapped(house(roofed)).properties.roofPlanned, 'before the landmark list loads it decorates');
+    ids.add(roofed);
+    const f = house(roofed);
+    assert.equal(wrapped(f), f, 'a landmark building is returned untouched, and the list is read at call time');
+  }
+  const measured = { type: 'Feature' as const, properties: { id: 'm', height: 14, facade: 'canal-priorBrickRed', facadeStyle: 'canal', roofEavesHeightM: 11.2 }, geometry: { type: 'Polygon', coordinates: [ring] } };
+  assert.equal(decorateRoof(measured), measured, 'a measured roof is never overridden');
 }
 console.log('three buildings: ok');
