@@ -22,7 +22,8 @@ export type StorefrontSpec = {
   fascia?: string | false;
   /** Lettering colour; default light on dark frames, dark on light ones. */
   letters?: string;
-  awning?: 'none' | 'flat' | 'striped' | 'scalloped' | 'canopy';
+  /** 'tiled' a sloped pan-tile hood (Chinese restaurants). */
+  awning?: 'none' | 'flat' | 'striped' | 'scalloped' | 'canopy' | 'tiled';
   awningHex?: string;
   /** Second stripe colour for a striped awning (default white). */
   awningHex2?: string;
@@ -38,12 +39,16 @@ export type StorefrontSpec = {
   terrace?: boolean;
   /** Planters or flower boxes along the front. */
   plants?: boolean;
+  /** Hinged shutters beside each window, in this colour. */
+  shutters?: string;
+  /** Roll-down shutters drawn over the glazing (closed snack bars, traiteurs); a string sets their colour. */
+  rollers?: boolean | string;
   /** Storefront height, metres (default 3.6). */
   heightM?: number;
 };
 
 const luma = (hex: string) => { const n = parseInt(hex.slice(1), 16); return 0.299 * (n >> 16 & 255) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255); };
-const GLASS = '#3a4048', DOOR = '#15171a', WHITE = '#f2f0ea', INK = '#1d1d1f';
+const GLASS = '#4b5a68', DOOR = '#15171a', WHITE = '#f2f0ea', INK = '#1d1d1f', CHAIR = '#6b5444';
 
 export function compileStorefront(slug: string, spec: StorefrontSpec, wall: StorefrontWall): Front {
   const L = wall.lengthM, h = spec.heightM ?? 3.6;
@@ -66,7 +71,12 @@ export function compileStorefront(slug: string, spec: StorefrontSpec, wall: Stor
   const glassSpans: [number, number][] = door === 'none' ? [[x0 + 0.2, x1 - 0.2]]
     : door === 'centre' ? [[x0 + 0.2, dx0 - 0.15], [dx0 + dw + 0.15, x1 - 0.2]]
     : door === 'left' ? [[dx0 + dw + 0.15, x1 - 0.2]] : [[x0 + 0.2, dx0 - 0.15]];
-  if (door !== 'none') boxes.push({ x0: dx0, x1: dx0 + dw, z0: 0, z1: Math.min(2.5, fz0 - 0.2), out0: out - 0.02, out1: out + 0.01, hex: DOOR });
+  if (door !== 'none') {
+    const dTop = Math.min(2.5, fz0 - 0.2);
+    boxes.push({ x0: dx0, x1: dx0 + dw, z0: 0, z1: dTop, out0: out - 0.02, out1: out + 0.01, hex: DOOR });
+    // Glazed upper door panel, so the door reads as a shop door rather than a dark slot.
+    boxes.push({ x0: dx0 + 0.15, x1: dx0 + dw - 0.15, z0: 1.1, z1: dTop - 0.2, out0: out, out1: out + 0.015, hex: GLASS });
+  }
   const gTop = spec.transom ? fz0 - 0.55 : fz0 - 0.15, gBot = 0.45;
   for (const [a, b] of glassSpans) {
     if (b - a < 0.4) continue;
@@ -74,6 +84,8 @@ export function compileStorefront(slug: string, spec: StorefrontSpec, wall: Stor
       const n = Math.max(2, Math.round((b - a) / 0.55)), pw = (b - a) / n;
       for (let i = 0; i < n; i++) boxes.push({ x0: a + i * pw + 0.05, x1: a + (i + 1) * pw - 0.05, z0: gTop + 0.1, z1: fz0 - 0.1, out0: out, out1: out + 0.02, hex: GLASS });
     }
+    // Shutters folded back at both ends of each run of glass.
+    if (spec.shutters) for (const sx of [a, b - 0.32]) boxes.push({ x0: sx, x1: sx + 0.32, z0: gBot, z1: gTop, out0: out + 0.03, out1: out + 0.07, hex: spec.shutters });
     const style = spec.windows ?? 'big';
     const bays = style === 'big' ? 1 : Math.max(2, Math.round((b - a) / (style === 'panes' ? 0.9 : 1.6)));
     const bw = (b - a) / bays;
@@ -83,6 +95,13 @@ export function compileStorefront(slug: string, spec: StorefrontSpec, wall: Stor
       if (style === 'arched') boxes.push({ x0: g0 + bw * 0.15, x1: g1 - bw * 0.15, z0: gTop - 0.35, z1: gTop, out0: out, out1: out + 0.02, hex: GLASS });
       if (style === 'panes') boxes.push({ x0: g0, x1: g1, z0: (gBot + gTop) / 2 - 0.03, z1: (gBot + gTop) / 2 + 0.03, out0: out + 0.02, out1: out + 0.04, hex: frame });
     }
+  }
+  // Roll-down shutters: a box over each run of glass and the slatted shutter drawn down over it.
+  if (spec.rollers) for (const [a, b] of glassSpans) {
+    if (b - a < 0.4) continue;
+    const rHex = typeof spec.rollers === 'string' ? spec.rollers : '#5a6270';
+    boxes.push({ x0: a - 0.05, x1: b + 0.05, z0: gTop - 0.3, z1: gTop, out0: out, out1: out + 0.22, hex: '#8a8c8e' }, { x0: a, x1: b, z0: gBot, z1: gTop - 0.3, out0: out + 0.1, out1: out + 0.12, hex: rHex });
+    for (let z = gBot + 0.25; z < gTop - 0.35; z += 0.25) boxes.push({ x0: a, x1: b, z0: z, z1: z + 0.04, out0: out + 0.12, out1: out + 0.14, hex: '#3a3f48' });
   }
   // Stall riser under the glass.
   boxes.push({ x0, x1, z0: 0, z1: gBot, out0: out, out1: out + 0.05, hex: frame });
@@ -94,6 +113,12 @@ export function compileStorefront(slug: string, spec: StorefrontSpec, wall: Stor
     case 'scalloped': {
       boxes.push({ x0: x0 + 0.1, x1: x1 - 0.1, z0: aZ - 0.3, z1: aZ, out0: out, out1: 1.3, hex: aHex });
       for (let x = x0 + 0.1; x < x1 - 0.35; x += 0.5) boxes.push({ x0: x + 0.05, x1: x + 0.4, z0: aZ - 0.5, z1: aZ - 0.3, out0: 1.25, out1: 1.3, hex: aHex });
+      break;
+    }
+    case 'tiled': {
+      // A hood sloping out in three steps, with ridge-coloured eaves.
+      for (let k = 0; k < 3; k++) boxes.push({ x0: x0 - 0.15, x1: x1 + 0.15, z0: aZ - 0.2 - k * 0.18, z1: aZ - k * 0.18, out0: out + k * 0.35, out1: out + (k + 1) * 0.35, hex: aHex });
+      boxes.push({ x0: x0 - 0.25, x1: x1 + 0.25, z0: aZ - 0.72, z1: aZ - 0.6, out0: 1.1, out1: 1.2, hex: '#9a1f22' });
       break;
     }
     case 'canopy': boxes.push({ x0: x0 - 0.2, x1: x1 + 0.2, z0: aZ - 0.15, z1: aZ, out0: out, out1: 2.2, hex: aHex }); break;
@@ -108,7 +133,7 @@ export function compileStorefront(slug: string, spec: StorefrontSpec, wall: Stor
   // Pavement life.
   if (spec.terrace) for (let x = x0 + 0.8; x < x1 - 0.5; x += 1.6) {
     boxes.push({ x0: x - 0.03, x1: x + 0.03, z0: 0, z1: 0.72, out0: 1.55, out1: 1.61, hex: INK }, { x0: x - 0.3, x1: x + 0.3, z0: 0.72, z1: 0.76, out0: 1.28, out1: 1.88, hex: aHex });
-    for (const dx of [-0.5, 0.5]) boxes.push({ x0: x + dx - 0.18, x1: x + dx + 0.18, z0: 0, z1: 0.45, out0: 1.42, out1: 1.74, hex: INK }, { x0: x + dx - 0.18, x1: x + dx + 0.18, z0: 0.45, z1: 0.85, out0: 1.68, out1: 1.74, hex: INK });
+    for (const dx of [-0.5, 0.5]) boxes.push({ x0: x + dx - 0.16, x1: x + dx + 0.16, z0: 0.4, z1: 0.45, out0: 1.42, out1: 1.74, hex: CHAIR }, { x0: x + dx - 0.14, x1: x + dx - 0.1, z0: 0, z1: 0.4, out0: 1.5, out1: 1.66, hex: CHAIR }, { x0: x + dx + 0.1, x1: x + dx + 0.14, z0: 0, z1: 0.4, out0: 1.5, out1: 1.66, hex: CHAIR }, { x0: x + dx - 0.16, x1: x + dx + 0.16, z0: 0.45, z1: 0.8, out0: 1.7, out1: 1.74, hex: CHAIR });
   }
   if (spec.plants) for (let x = x0 + 0.3; x < x1 - 0.6; x += 2.2) boxes.push({ x0: x, x1: x + 0.5, z0: 0, z1: 0.5, out0: 0.25, out1: 0.75, hex: '#4a3b30' }, { x0: x - 0.05, x1: x + 0.55, z0: 0.5, z1: 1.05, out0: 0.2, out1: 0.8, hex: '#3f7a3a' });
   return {

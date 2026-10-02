@@ -4,7 +4,9 @@
  * JSON by scripts/pano-facades/add-silhouette.ts), and the geometry must be finite.
  */
 import fs from 'node:fs';
-import { FRONTS } from '../src/canalRecall/landmarkFrontData.ts';
+import { FRONTS, STOREFRONT_BY_SLUG, STOREFRONT_FRONTS } from '../src/canalRecall/landmarkFrontData.ts';
+import { STOREFRONT_SPECS } from '../src/canalRecall/storefrontSpecs.ts';
+import { STOREFRONT_WALLS } from '../src/canalRecall/storefrontWalls.generated.ts';
 import { frontTriangles } from '../src/canalRecall/landmarkFronts.ts';
 
 const outlineAt = (outline: [number, number][], x: number) => {
@@ -37,5 +39,13 @@ for (const [name, front] of Object.entries(FRONTS)) {
   const ok = finite && (mode === 'unmeasured' || (median < 0.6 && p90 < 1.5 && coverage > 0.6));
   failed ||= !ok;
   console.log(`${ok ? 'ok  ' : 'FAIL'} ${name}: ${tris.length} triangles, ${mode === 'unmeasured' ? 'roofline not measurable from its reference' : `${mode} roofline error median ${median.toFixed(2)} m, p90 ${p90.toFixed(2)} m over ${(coverage * 100).toFixed(0)}% of the wall`}`);
+}
+// Spec-built storefronts: every spec names a measured wall, and its boxes stay on that wall's frontage.
+{
+  const specs = Object.entries(STOREFRONT_SPECS), unplaced = specs.filter(([slug]) => !(slug in STOREFRONT_WALLS)).map(([slug]) => slug);
+  const offWall = [...STOREFRONT_BY_SLUG].filter(([slug, f]) => f.boxes.some(b => b.x0 < -0.5 || b.x1 > STOREFRONT_WALLS[slug].lengthM + 0.5 || !(b.z1 > b.z0))).map(([slug]) => slug);
+  const ok = unplaced.length === 0 && offWall.length === 0 && STOREFRONT_FRONTS.length >= 290;
+  failed ||= !ok;
+  console.log(`${ok ? 'ok  ' : 'FAIL'} storefronts: ${STOREFRONT_FRONTS.length} built of ${specs.length} specs${unplaced.length ? `; no wall for ${unplaced.join(', ')}` : ''}${offWall.length ? `; off their wall: ${offWall.join(', ')}` : ''}`);
 }
 if (failed) process.exit(1);
