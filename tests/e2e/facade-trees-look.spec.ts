@@ -67,6 +67,16 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
         await page.waitForTimeout(800);
         await page.waitForFunction(() => { const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings; if (t && t.stats().buildings <= 3000) { const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-6, c.lat] }); } return !t || t.stats().buildings > 3000; }, null, { timeout: 75_000, polling: 1000 }).catch(() => {});
         await page.waitForTimeout(1500);
+        if (process.env.LOOK_FREE) {
+          // Free camera: stop the game steering the map, then look straight at the target.
+          await page.evaluate(({ at, face }) => {
+            const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
+            vm.sync = () => {}; map.stop();
+            const bearing = (Math.atan2((face[0] - at[0]) * Math.cos(face[1] * Math.PI / 180), face[1] - at[1]) * 180) / Math.PI;
+            map.jumpTo({ center: face as [number, number], zoom: 18.2, pitch: 68, bearing });
+          }, { at: [...spot.at], face: [...spot.face] });
+          await page.waitForTimeout(3500);
+        }
         const file = `${OUT}/${spot.name}-${view}-${testInfo.project.name}-${look.name}.png`;
         await page.screenshot({ path: file });
       }
