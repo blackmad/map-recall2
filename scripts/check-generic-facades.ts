@@ -2,7 +2,7 @@
 //   npx tsx scripts/check-generic-facades.ts
 import assert from 'node:assert/strict';
 import {
-  FACADE_MAX_TILE_ZOOM, FACADE_MIN_TILE_ZOOM, FACADE_PATTERN_HEIGHT_M, FACADE_PIXELS_PER_M, allFacadeKeys, snapWallColour,
+  FACADE_MAX_TILE_ZOOM, FACADE_MIN_TILE_ZOOM, FACADE_PATTERN_HEIGHT_M, FACADE_PIXELS_PER_M, allFacadeKeys, snapWallColour, mutedWallHex,
   decorateFacade, facadePixelRatio, facadeStyleFor, facadeTileZoom, footprintAreaM2, rasterizeFacade,
 } from '../src/canalRecall/genericFacades.ts';
 import { thinTreesNearRoute, treeFeatures, treesInBounds } from '../src/canalRecall/stylisedTrees.ts';
@@ -36,7 +36,9 @@ assert.equal(facadeTileZoom(17.6, 18), 17, 'switch once clearly past');
 assert.equal(facadeTileZoom(FACADE_MAX_TILE_ZOOM + 1.1), null, 'past the range the plain walls return');
 
 // Images: 32 m tall, seamless bay width, opaque, with door pixels at the bottom.
+const rgbSpread = (hex: string) => { const v = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)); return Math.max(...v) - Math.min(...v); };
 assert.equal(allFacadeKeys().length, 48);
+assert.ok(rgbSpread(mutedWallHex("#a4523b")) < rgbSpread("#a4523b"), "walls are calmer than the palette");
 for (const { style, colour, key } of allFacadeKeys()) {
   const image = rasterizeFacade(style, '#a4523b', 52.37);
   assert.equal(image.height, FACADE_PATTERN_HEIGHT_M * FACADE_PIXELS_PER_M, key);

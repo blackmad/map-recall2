@@ -58,8 +58,8 @@ export const FACADE_IMAGE_PREFIX = 'gf';
 
 /** The palette slice each period draws from. Plausible, not observed. */
 export const FACADE_STYLE_COLOURS: Record<FacadeStyle, readonly ContextualBuildingColour[]> = {
-  canal: ['priorBrickRed', 'priorBrickBrown', 'priorBrickDark', 'priorPlaster', 'priorCanalGreen'],
-  c19: ['priorBrickRed', 'priorBrickBrown', 'priorBrickBuff', 'priorPlaster'],
+  canal: ['priorBrickRed', 'priorBrickBrown', 'priorBrickDark', 'priorPlaster'],
+  c19: ['priorBrickRed', 'priorBrickBrown', 'priorPlaster'],
   school: ['priorBrickRed', 'priorBrickBrown', 'priorBrickDark'],
   postwar: ['priorBrickBuff', 'priorBrickRed', 'priorModernGrey'],
   modern: ['priorModernLight', 'priorModernGrey', 'priorBrickBuff'],
@@ -168,7 +168,7 @@ export function decorateFacade<T extends Feature>(feature: T): T {
   const colours = FACADE_STYLE_COLOURS[style];
   const colour = mapped ?? colours[stableIndex(String(p.id ?? ''), colours.length)];
   const hex = CONTEXTUAL_BUILDING_COLOURS[colour];
-  return { ...feature, properties: { ...p, facade: facadeKey(style, colour), facadeStyle: style, sideColour: hex, groundColour: hex } };
+  return { ...feature, properties: { ...p, facade: facadeKey(style, colour), facadeStyle: style, sideColour: mutedWallHex(hex), groundColour: mutedWallHex(hex) } };
 }
 
 // ---------------------------------------------------------------------------
@@ -262,6 +262,14 @@ export function facadePatternExpression(tileZoom: number): unknown[] {
 
 type Rgb = [number, number, number];
 const hexRgb = (hex: string): Rgb => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16)) as Rgb;
+/** How far facade walls are pulled toward grey: the palette reads loud when a whole street wears it. */
+export const FACADE_WALL_MUTE = 0.4;
+/** A wall colour calmed for facades; also the colour of the plain cap above them. */
+export function mutedWallHex(hex: string, amount = FACADE_WALL_MUTE): string {
+  const [r, g, b] = hexRgb(hex), grey = 0.299 * r + 0.587 * g + 0.114 * b;
+  const mix = (v: number) => Math.round(v + (grey - v) * amount).toString(16).padStart(2, '0');
+  return `#${mix(r)}${mix(g)}${mix(b)}`;
+}
 const shade = (rgb: Rgb, k: number): Rgb => rgb.map(v => Math.max(0, Math.min(255, Math.round(k >= 1 ? v + (255 - v) * (k - 1) : v * k)))) as Rgb;
 
 /** Rectangles in wall metres: x from the bay's left edge, y up from the ground. */
@@ -326,8 +334,11 @@ const STYLE_SPECS: Record<FacadeStyle, StyleSpec> = {
 
 export function facadeRects(style: FacadeStyle, wallHex: string): { bay: number; rects: Rect[]; wall: Rgb } {
   const spec = STYLE_SPECS[style];
-  const wall = hexRgb(wallHex);
-  const frame = hexRgb(spec.frame), glass = hexRgb(spec.glass), sky = shade(hexRgb(spec.glass), 1.28), door = hexRgb(spec.doorColour);
+  const wall = hexRgb(mutedWallHex(wallHex));
+  // Glass sits a third of the way back to the wall: full-contrast one-pixel
+  // windows crawl as the camera moves, and a softer window crawls less.
+  const soften = (rgb: Rgb): Rgb => rgb.map((v, i) => Math.round(v + (wall[i] - v) * 0.3)) as Rgb;
+  const frame = hexRgb(spec.frame), glass = soften(hexRgb(spec.glass)), sky = soften(shade(hexRgb(spec.glass), 1.28)), door = hexRgb(spec.doorColour);
   const rects: Rect[] = [];
   const opening = (o: Opening, floorY: number) => {
     const y = floorY + o.sill, f = spec.frameW;
@@ -385,7 +396,21 @@ export function rasterizeFacade(style: FacadeStyle, wallHex: string, latitude: n
     const y1 = height - Math.round(r.y * sy), y0 = Math.min(y1 - 1, height - Math.round((r.y + r.h) * sy));
     fill(x0, y0, x1, y1, r.c);
   }
-  return { width, height, data };
+  // MapLibre does not mipmap pattern images, so edges alias into shimmer when
+  // the wall is seen at a slant. Pre-filter instead: a [1 2 1] blur across the
+  // bay (wrapping, so it still tiles) and up the wall.
+  const blurred = new Uint8ClampedArray(data.length), pass = new Uint8ClampedArray(data.length);
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) for (let c = 0; c < 3; c++) {
+    const at = (xx: number) => data[(y * width + (xx + width) % width) * 4 + c];
+    pass[(y * width + x) * 4 + c] = (at(x - 1) + 2 * at(x) + at(x + 1)) / 4;
+    pass[(y * width + x) * 4 + 3] = 255;
+  }
+  for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) for (let c = 0; c < 3; c++) {
+    const at = (yy: number) => pass[(Math.min(height - 1, Math.max(0, yy)) * width + x) * 4 + c];
+    blurred[(y * width + x) * 4 + c] = (at(y - 1) + 2 * at(y) + at(y + 1)) / 4;
+    blurred[(y * width + x) * 4 + 3] = 255;
+  }
+  return { width, height, data: blurred };
 }
 
 type ImageMap = {

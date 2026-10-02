@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Calmer facade colours, pre-filtered windows
+
+User report (Windows, after the hysteresis fix): windows still shimmer, and the
+colours are loud and chaotic. Pattern images are not mipmapped, so one-pixel
+high-contrast windows crawl at a slant. Facade images are now pre-filtered with
+a [1 2 1] blur (wrapping across the bay so it still tiles), glass sits 30% back
+toward the wall colour, wall colours are pulled 40% toward grey
+(`FACADE_WALL_MUTE`, also applied to the plain cap above), and the period
+palettes lose the canal green and the buff in 19th-century blocks. Judged by
+reasoning and the unit check only; needs the user's eye on a real screen, and
+the amounts are the first thing to tune.
+
 ## 2026-10-02 — Building tiles no longer stay empty after one failed fetch
 
 User report: a whole tile of Jordaan/Rozengracht never loaded. The streamer put
