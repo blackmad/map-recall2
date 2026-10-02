@@ -134,7 +134,7 @@ class GameRouteRuntime {
     this.showMiniMap = prefs.minimap;
     this.routeDifficulty = prefs.difficulty;
     this.routePattern = prefs.routePattern;
-    if (typeof this.vectorMap.setBuildingLookPreference === 'function') this.vectorMap.setBuildingLookPreference(prefs.buildingLook || 'default');
+    if (typeof this.vectorMap.setBuildingLookPreference === 'function') this.vectorMap.setBuildingLookPreference(prefs.buildingLook || 'photo');
     this.vectorMap.setTreesVisible(prefs.trees && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setDetailedBuildingsVisible(prefs.detailed3d && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setGoogleTilesEnabled(!!prefs.googleTiles && !prefs.measuredColoursOnly);
@@ -157,7 +157,7 @@ class GameRouteRuntime {
     const Prefs = window.CanalRecallPreferences;
     const vm = this.vectorMap;
     if (!Prefs || !Prefs.nextBuildingLook || !vm || typeof vm.setBuildingLook !== 'function') return;
-    const next = Prefs.nextBuildingLook(typeof vm.buildingLook === 'function' ? vm.buildingLook() : 'default');
+    const next = Prefs.nextBuildingLook(typeof vm.buildingLook === 'function' ? vm.buildingLook() : 'photo');
     vm.setBuildingLook(next);
     this._overlay.store.patchPrefs({ buildingLook: next }, this._overlayZoom());
     this._savePreferences();

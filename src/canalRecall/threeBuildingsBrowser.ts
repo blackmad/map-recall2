@@ -22,7 +22,7 @@ import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.j
 import { frontKitGeometry, lookHex } from './landmarkFronts.js';
 import { houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
-import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
+import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, ROOF_TONES, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
 
@@ -184,7 +184,7 @@ export class ThreeBuildings {
     const token = ++this.lookToken;
     this.look = look;
     if (!this.THREE) return; // onAdd will pick the look up
-    const set = await this.texturesFor(look);
+    const set = await this.texturesFor(cellSetOf(look));
     if (token !== this.lookToken) return;
     this.material.uniforms.cells.value = set.colour;
     this.material.uniforms.masks.value = set.mask;
@@ -195,13 +195,13 @@ export class ThreeBuildings {
   }
 
   /** Build (once) the colour and tint-mask texture arrays for a look. */
-  private texturesFor(look: BuildingLook): Promise<{ colour: any; mask: any }> {
+  private texturesFor(look: 'procedural' | Look): Promise<{ colour: any; mask: any }> {
     let set = this.textureSets.get(look);
     if (!set) this.textureSets.set(look, set = this.buildTextures(look));
     return set;
   }
 
-  private async buildTextures(look: BuildingLook): Promise<{ colour: any; mask: any }> {
+  private async buildTextures(look: 'procedural' | Look): Promise<{ colour: any; mask: any }> {
     const THREE = this.THREE;
     let layers: number, colour: Uint8Array, mask: Uint8Array;
     if (look === 'procedural') ({ layers, colour, mask } = paintProceduralLayers(paintRoofLayers(false)));
@@ -394,8 +394,8 @@ export class ThreeBuildings {
   }
 
   private kitLayers() {
-    const roofBase = this.look === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
-    const plain = this.look === 'procedural' ? cellLayer('canal', 'plain', 0) : bayLayer('canal', 0, 'plain');
+    const cells = cellSetOf(this.look), roofBase = cells === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
+    const plain = this.look === 'untextured' ? roofBase + 3 : cells === 'procedural' ? cellLayer('canal', 'plain', 0) : bayLayer('canal', 0, 'plain');
     return { plain, flat: roofBase + 3, slope: roofBase + 1 };
   }
 
@@ -511,7 +511,7 @@ export class ThreeBuildings {
         // CPU copies are freed after upload, so a restored context needs fresh meshes.
         map.getCanvas().addEventListener('webglcontextrestored', () => {
           owner.textureSets.clear();
-          void owner.texturesFor(owner.look).then(set => {
+          void owner.texturesFor(cellSetOf(owner.look)).then(set => {
             owner.material.uniforms.cells.value = set.colour; owner.material.uniforms.masks.value = set.mask;
             for (const [key, entry] of [...owner.chunks]) owner.pending.push(() => owner.rebuild(key, entry.source));
             owner.pump();
@@ -521,7 +521,7 @@ export class ThreeBuildings {
           glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
           uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 } }, side: THREE.FrontSide,
         });
-        void owner.texturesFor(owner.look).then(set => {
+        void owner.texturesFor(cellSetOf(owner.look)).then(set => {
           owner.material.uniforms.cells.value = set.colour;
           owner.material.uniforms.masks.value = set.mask;
           owner.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
