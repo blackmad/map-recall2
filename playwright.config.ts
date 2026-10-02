@@ -5,6 +5,8 @@ const localChrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrom
 // Worktrees each run a dev server, and `reuseExistingServer` will silently test
 // whichever checkout already owns the port. Give each session its own:
 // `PW_PORT=4388 npx playwright test …`.
+// Linux/cloud runs: PW_CHROME=/opt/pw-browsers/chromium/chrome (software GL flags added).
+const chrome = process.env.PW_CHROME || (existsSync(localChrome) ? localChrome : undefined);
 const port = process.env.PW_PORT || '4173';
 
 export default defineConfig({
@@ -22,7 +24,7 @@ export default defineConfig({
     baseURL: `http://127.0.0.1:${port}`,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
-    launchOptions: existsSync(localChrome) ? { executablePath: localChrome } : undefined,
+    launchOptions: chrome ? { executablePath: chrome, args: process.env.PW_CHROME ? ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--js-flags=--expose-gc'] : [] } : undefined,
   },
   projects: [
     { name: 'desktop', use: { ...devices['Desktop Chrome'], browserName: 'chromium', viewport: { width: 1440, height: 900 } } },

@@ -1,3 +1,4 @@
+import { resolve } from 'node:path';
 import { expect, type Page } from '@playwright/test';
 
 declare global {
@@ -48,6 +49,7 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
   if (abortHeavyTiles) {
     await page.route(/3dbag|cesium3dtiles/i, (route) => route.abort());
   }
+  if (process.env.PW_OFFLINE_MAP) await serveMapLibreOffline(page);
 
   await page.goto('/canal-drive/');
   await expect.poll(() => page.evaluate(() => Boolean(window.canalRecallGame))).toBe(true);
@@ -62,4 +64,20 @@ export async function openRoute(page: Page, options: OpenRouteOptions = {}): Pro
   if (enterRacing) {
     await page.evaluate(() => { window.canalRecallGame.state = 4; });
   }
+}
+
+/**
+ * Sandboxes without internet (cloud sessions) cannot reach unpkg or the
+ * basemap host. `PW_OFFLINE_MAP=1` serves the installed maplibre-gl and a
+ * background-only style instead: the streamed building tiles, trees and route
+ * layers still draw (they come from the local extract), the basemap does not.
+ */
+export async function serveMapLibreOffline(page: Page): Promise<void> {
+  const dist = resolve(process.cwd(), 'node_modules/maplibre-gl/dist');
+  await page.route(/unpkg\.com\/maplibre-gl@5\/dist\/maplibre-gl\.js/, route => route.fulfill({ path: resolve(dist, 'maplibre-gl.js'), contentType: 'application/javascript' }));
+  await page.route(/unpkg\.com\/maplibre-gl@5\/dist\/maplibre-gl\.css/, route => route.fulfill({ path: resolve(dist, 'maplibre-gl.css'), contentType: 'text/css' }));
+  await page.route(/tiles\.openfreemap\.org/, route => route.fulfill({
+    contentType: 'application/json',
+    body: JSON.stringify({ version: 8, name: 'offline', sources: {}, layers: [{ id: 'background', type: 'background', paint: { 'background-color': '#ece6d6' } }] }),
+  }));
 }

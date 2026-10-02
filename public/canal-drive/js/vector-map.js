@@ -27,6 +27,17 @@ function canalRecallLookFlag(param, global, fallback) {
   return fallback;
 }
 
+// `?buildings3d=1` (procedural cells), `=cartoon` or `=photo` (the rendering
+// spike's bay drawings). window.__canalRecallBuildings3d takes the same values.
+function canalRecallBuildings3dLook() {
+  try {
+    const raw = typeof window.__canalRecallBuildings3d !== 'undefined' ? window.__canalRecallBuildings3d : new URLSearchParams(window.location.search).get('buildings3d');
+    if (raw === true || raw === '1' || raw === 'true' || raw === 'on' || raw === 'procedural') return 'procedural';
+    if (raw === 'cartoon' || raw === 'photo') return raw;
+  } catch (_) { /* no window */ }
+  return null;
+}
+
 class VectorBasemap {
   constructor(container) {
     this.container = container;
@@ -49,6 +60,12 @@ class VectorBasemap {
     this._treeRoute = null;
     this._facadeImages = null;
     this._facadeTileZoom = null;
+    // Spike (2026-10-02): facade walls as a three.js custom layer instead of the
+    // fill-extrusion pattern. Off by default; `?buildings3d=1`. See
+    // RENDERING_STACK_OPTIONS.md.
+    this._buildings3dLook = canalRecallBuildings3dLook();
+    this._buildings3dEnabled = !!this._buildings3dLook;
+    this._threeBuildings = null;
     this._detailedBuildings = null;
     this._completeCity = null;
     this._detailedBuildingsVisible = false;
@@ -436,6 +453,7 @@ class VectorBasemap {
     });
     const facadeLayer = this._facadeLayerSpec(MIN_HEIGHT, WALL_TOP);
     if (facadeLayer) this.map.addLayer(facadeLayer);
+    else this._addThreeBuildingsLayer();
     this.map.addLayer({
       id: 'osm-colored-building-roofs', type: 'fill-extrusion', source: 'osm-building-appearance', minzoom: 14,
       filter: flatRoofFilter,
@@ -776,9 +794,30 @@ class VectorBasemap {
       ground];
   }
 
+  /** The three.js facade layer, when `?buildings3d=1` and the bundle is present. */
+  _addThreeBuildingsLayer() {
+    const api = window.CanalRecallThreeBuildings;
+    if (!this._buildings3dEnabled || !this._facadesLib() || !api || !api.ThreeBuildings) return;
+    if (!this._threeBuildings) this._threeBuildings = new api.ThreeBuildings(this.map, window.maplibregl, this._buildings3dLook);
+    if (!this.map.getLayer(this._threeBuildings.layer.id)) this.map.addLayer(this._threeBuildings.layer);
+    this._threeBuildings.setVisible(this._facadesActive());
+  }
+
+  /** Switch the three.js wall look live: 'procedural' | 'cartoon' | 'photo'. Console: `canalRecallGame.vectorMap.setBuildingsLook('cartoon')`. */
+  setBuildingsLook(look) {
+    this._buildings3dLook = look;
+    return this._threeBuildings ? this._threeBuildings.setLook(look) : undefined;
+  }
+
+  _syncThreeBuildings(features) {
+    if (this._threeBuildings) this._threeBuildings.setFeatures(features);
+  }
+
   _facadeLayerSpec(minHeight, wallTop) {
     const Facades = this._facadesLib();
     if (!Facades) return null;
+    // Three mode draws walls itself: no pattern layer, and no 48 pattern images.
+    if (this._buildings3dEnabled && window.CanalRecallThreeBuildings) return null;
     const tileZoom = this._facadeTileZoom || Facades.facadeTileZoom(this.map.getZoom()) || Facades.FACADE_MAX_TILE_ZOOM;
     this._facadeTileZoom = tileZoom;
     if (!this._facadeImages) this._facadeImages = new Facades.FacadeImageSet(this.map, 52.37);
@@ -799,11 +838,13 @@ class VectorBasemap {
 
   /** Show/hide the pattern layer and keep the plain wall base in step. */
   _applyFacadeState() {
-    if (!this.map || !this.map.getLayer('osm-colored-building-facades')) return;
+    if (!this.map) return;
+    if (!this._threeBuildings && !this.map.getLayer('osm-colored-building-facades')) return;
     const active = this._facadesActive();
     if (this._facadeStateApplied === active) return;
     this._facadeStateApplied = active;
-    this.map.setLayoutProperty('osm-colored-building-facades', 'visibility', active ? 'visible' : 'none');
+    if (this._threeBuildings) this._threeBuildings.setVisible(active);
+    else this.map.setLayoutProperty('osm-colored-building-facades', 'visibility', active ? 'visible' : 'none');
     const helpers = window.CanalRecallBuildings;
     const wallTop = helpers && helpers.wallTopHeightExpression ? helpers.wallTopHeightExpression() : ['coalesce', ['get', 'height'], 5];
     const minHeight = ['coalesce', ['get', 'minHeight'], 0];
@@ -837,6 +878,7 @@ class VectorBasemap {
   _refreshColoredBuildingFilter() {
     if (!this.map) return;
     const hide = this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds();
+    if (this._threeBuildings) this._threeBuildings.setHidden('signature', hide);
     const helpers = window.CanalRecallBuildings;
     for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-facades', 'osm-colored-building-roofs']) {
       if (!this.map.getLayer(id)) continue;
@@ -925,7 +967,7 @@ class VectorBasemap {
         this._cameraClearanceRequest.center, this._cameraClearanceRequest.view,
         this._cameraClearanceRequest.subject,
       );
-    }, (features) => this._syncPyramidalRoofs(features));
+    }, (features) => { this._syncPyramidalRoofs(features); this._syncThreeBuildings(features); });
     // Loading may already have aimed at the route start before the probe
     // finished; apply that aim now so tiles stream under the overlay.
     this._applyPendingAim();
@@ -1085,7 +1127,7 @@ class VectorBasemap {
     if (!this.map || !this._poiLayerIds || typeof this.map.getLayersOrder !== 'function') return;
     const order = this.map.getLayersOrder();
     let topBuilding = -1;
-    order.forEach((id, index) => { if (/^osm-colored-building|^building-3d|detailed|signature/.test(id)) topBuilding = index; });
+    order.forEach((id, index) => { if (/^osm-colored-building|^building-3d|^three-building|detailed|signature/.test(id)) topBuilding = index; });
     if (topBuilding < 0) return;
     const buried = this._poiLayerIds.filter(id => { const index = order.indexOf(id); return index >= 0 && index < topBuilding; });
     for (const id of buried) this.map.moveLayer(id);
@@ -1741,6 +1783,7 @@ class VectorBasemap {
     }
     this._highlightedBuildings = [];
     this._highlightedBuilding = null;
+    if (this._threeBuildings) this._threeBuildings.setHidden('answer', []);
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
     if (this._signatureLandmarks) this._signatureLandmarks.setActiveLandmark(detailed ? null : landmark);
@@ -1767,6 +1810,7 @@ class VectorBasemap {
         } catch (_) {}
       }
       this._highlightedBuilding = this._highlightedBuildings[0] || null;
+      if (this._threeBuildings) this._threeBuildings.setHidden('answer', this._highlightedBuildings.map(target => target.id));
     }
     // Never fabricate an extrusion from an OSM footprint. If no renderer can
     // identify the actual building, a point acknowledges the selection without
