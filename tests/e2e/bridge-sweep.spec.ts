@@ -88,6 +88,27 @@ test('the bike crosses every bridge in both directions without wedging', async (
       +(loader._lastCenterLng + (x - loader._lastOffsetX) / perLng).toFixed(6),
     ];
     const { allNodes } = game.track._routingGraph();
+    // Cul-de-sacs: peel dead-end tips until none are left; every node peeled
+    // hangs off the network on a branch with no way through. A sweep start
+    // in one (Menno ter Braakstraat, whose only onward link in raw OSM is a
+    // footway with steps) had the driver nose into its end and wedge, which
+    // is the driver, not the bridge (TODO P0, 2026-10-01).
+    const degree = new Map<any, number>();
+    for (const node of allNodes) degree.set(node, new Set(node.edges.map((e: any) => e.node)).size);
+    const culDeSac = new Set<any>();
+    const tips = allNodes.filter((node: any) => degree.get(node)! < 2);
+    while (tips.length) {
+      const tip = tips.pop();
+      if (culDeSac.has(tip)) continue;
+      culDeSac.add(tip);
+      for (const edge of tip.edges) {
+        const next = edge.node;
+        if (culDeSac.has(next)) continue;
+        const left = degree.get(next)! - 1;
+        degree.set(next, left);
+        if (left < 2) tips.push(next);
+      }
+    }
     const CELL = 120;
     const grid = new Map<string, any[]>();
     for (const node of allNodes) {
@@ -99,9 +120,9 @@ test('the bike crosses every bridge in both directions without wedging', async (
       const cx = Math.floor(p.x / CELL), cy = Math.floor(p.y / CELL);
       for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
         for (const node of grid.get(`${cx + dx},${cy + dy}`) ?? []) {
-          // Not the tip of a dead-end stub: a rider does not start a crossing
-          // facing the end of a cul-de-sac, and the driver cannot three-point turn.
-          if (node.edges.length < 2) continue;
+          // Not in a cul-de-sac: a rider does not start a crossing facing the
+          // end of one, and the driver cannot three-point turn.
+          if (culDeSac.has(node)) continue;
           const d = Math.hypot(node.x - p.x, node.y - p.y);
           if (d < bestDistance) { bestDistance = d; best = node; }
         }
@@ -160,6 +181,7 @@ test('the bike crosses every bridge in both directions without wedging', async (
     const failures: any[] = [];
     let driven = 0, skipped = 0, arrivedCount = 0, wedgeCount = 0;
     const skipReasons = { noSnap: 0, noRoute: 0, missesDeck: 0 };
+    const culDeSacNodes = culDeSac.size;
     const skippedAt: Array<[string, string, number, number]> = [];
     for (const bridge of bridges) {
       const pts = bridge.path.map(toWorld);
@@ -296,7 +318,7 @@ test('the bike crosses every bridge in both directions without wedging', async (
       }
     }
     game.state = 4;
-    return { bridges: bridges.length, driven, skipped, skipReasons, skippedAt, arrived: arrivedCount, wedges: wedgeCount, traps: trapCount, failures };
+    return { bridges: bridges.length, culDeSacNodes, driven, skipped, skipReasons, skippedAt, arrived: arrivedCount, wedges: wedgeCount, traps: trapCount, failures };
   }, { limit, onlyIds, near });
   if (process.env.BRIDGE_SWEEP_OUT) writeFileSync(process.env.BRIDGE_SWEEP_OUT, JSON.stringify(report, null, 1));
   console.log(JSON.stringify({ ...report, skippedAt: undefined, failures: report.failures.length }));

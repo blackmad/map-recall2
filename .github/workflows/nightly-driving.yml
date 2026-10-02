@@ -1,0 +1,42 @@
+name: Nightly driving sweeps
+
+# The long driving checks: keyboard rides over every reported spot, the
+# driving harness (desktop + iPhone) and the full bridge sweep. Too slow for
+# every push (~1 h together); run nightly and on demand. Same steps locally:
+# `PW_PORT=4403 scripts/nightly-driving.sh`.
+on:
+  schedule:
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nightly-driving
+  cancel-in-progress: false
+
+jobs:
+  driving:
+    name: keyboard rides, harness, bridge sweep
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: bash scripts/nightly-driving.sh
+        env:
+          PW_PORT: '4173'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-driving
+          path: |
+            artifacts/nightly-driving/
+            test-results/
+          retention-days: 30
