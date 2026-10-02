@@ -31,7 +31,7 @@ test('neighborhoods start from the setup rail and answers explain the name', asy
   await expect(page.locator('#game-mode-switcher button')).toHaveCount(2);
   const rounds = await skipUntil(page, '[data-testid="answer-name-origin"]');
   expect(rounds, 'a neighbourhood answer with a name origin within ten rounds').toBeGreaterThan(0);
-  await expect(page.locator('[data-testid="answer-name-origin"]')).toContainText(/Wikipedia/);
+  await expect(page.locator('[data-testid="answer-name-origin"]')).toContainText(/Wikipedia|street-name register/);
 });
 
 test('pinpoint neighbourhoods show their places only after the guess', async ({ page }) => {

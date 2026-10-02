@@ -40,6 +40,13 @@ assert.equal(hood.wikipediaImageUrl, 'https://upload.wikimedia.org/k.jpg');
 assert.equal(hood.nameOrigin?.sourceLabel, 'Wikipedia (translated from Dutch)');
 assert.equal(other.nameOrigin, undefined, 'only neighbourhood features take neighbourhood trivia');
 
+// Text composed from data says where it came from, not "Wikipedia".
+const [derived] = attachNeighborhoodTrivia([{ name: 'Sportheldenbuurt', type: 'neighborhood' as const }], [{
+  name: 'Sportheldenbuurt',
+  nameOrigin: { en: 'Many streets here are named after sportspeople.', sourceUrl: 'https://api.data.amsterdam.nl/v1/bag/openbareruimtes/', lang: 'en', sourceLabel: 'Gemeente Amsterdam street-name register', kind: 'derived' },
+}], []);
+assert.equal(derived.nameOrigin?.sourceLabel, 'Gemeente Amsterdam street-name register');
+
 // No duplicate sentence when the lede already explains the name.
 assert.equal(
   descriptionWithoutOrigin('Borneo-eiland is a peninsula. It takes its name from the Borneokade, named in 1917 after the island of Borneo.', 'Named after the Borneokade, which in 1917 was named after the island of Borneo.'),

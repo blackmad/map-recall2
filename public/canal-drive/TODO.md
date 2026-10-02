@@ -60,6 +60,21 @@ transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
 weather/time mood. Cold-open is superseded by review rides (see HISTORY,
 2026-09-30).
 
+**Neighbourhood trivia gaps (pipeline built 2026-10-02, data lane).**
+`npm run fill:neighborhood-gaps -- audit|offline|online|publish` fills missing
+description, history, name origin and photo for Amsterdam areas into
+`staging/gap-fill/` (report in `report.md`), then `publish` adds reviewed ones.
+Offline stages (alias siblings, street-name matches, street themes, text composed
+from what lies inside the outline) ran in the cloud container; the online stage
+(Wikidata, nl/en Wikipedia articles and mentions, Commons photos) needs
+`NODE_USE_ENV_PROXY=1` there and is rate-limited by Wikimedia on shared IPs
+(about 1 request per second; the script paces itself). Still to do: translation
+pass for Dutch candidates (write English into
+`scripts/data/neighborhood-gap-review.json`), review of low-confidence
+candidates, the duplicate Nieuwmarkt/Lastage outline, and the same pipeline for
+Utrecht, Rotterdam and Den Haag (they have boundaries only, no street-name
+register or landmark extracts to compose from).
+
 **Randstad trivia parity (in progress, data lane).** Utrecht, Rotterdam and
 Den Haag have no name origins, neighbourhood photos/history, and (Rotterdam,
 Den Haag) no street encyclopedia text. Same rules as Amsterdam: sourced only,
@@ -75,13 +90,25 @@ a hitch not yet measured. The ground floor repeats above 32 m except on
 towers. Facades are Amsterdam-only, and walls take a period palette colour.
 Check on a real device.
 
-**Three.js facade layer (now a setting: Building look).** Open: check Safari and a real phone (the user saw broken roofs in Safari photo mode, not reproduced in Chromium; ask whether Default look has roofs there); roofs are still MapLibre's flat lids and clash with the cartoon look; the 32-layer bay set drops attic and tall-first-floor bays; measure on a real
+**Three.js facade layer (now a setting: Building look).** Open: measure geometry cost now that roofs, cornices and shops add vertices (and consider a distance cutoff for cornice and chimney geometry); roof coverage is limited to near-rectangular footprints (L-shapes and courtyard blocks keep flat lids); check Safari and a real phone (the user saw broken roofs in Safari photo mode, not reproduced in Chromium; ask whether Default look has roofs there); roofs are still MapLibre's flat lids and clash with the cartoon look; the 32-layer bay set drops attic and tall-first-floor bays; measure on a real
 phone (heap is now below the pattern layer in software GL; geometry still
 42-63 MB: pack vertices, prune by distance); a shimmer metric that works (the
 current one is noisy and shows no win);
 look at the photo look; gables and roofs are still MapLibre's; decide whether
 it replaces the pattern layer or stays opt-in. Two layout modules now exist
 (`wallBays.ts`, `facadeLayout.ts`): keep one.
+
+**Landmark kits: more landmarks, and a phone check.** Five are done (see HISTORY).
+Next, by recognisability: Oude Kerk (spire), Munttoren, Centraal (two towers and
+central pavilions, long facade), Rijksmuseum (towers, central arch), Beurs van
+Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera. Each needs its
+OSM part ids first (look at the stacked parts near the landmark's coordinate; the
+resolved ids in `landmark-buildings.json` are sometimes the wrong piece: Westerkerk's
+is a 10 x 2 m fragment). Add a kit to `KITS`, view it with the kit viewer, then
+shoot it in game. Open: kit geometry cost (about 100-700 triangles each) is not
+measured on a phone; palace columns and tower openings are crude; church windows
+are bare brick; the highlight for a kit landmark falls back to the plain yellow
+prism.
 
 **Empty areas of the city (user report 2026-10-02, fix shipped, unconfirmed).**
 Tile streamer retries, timeouts and the wider-view re-plan cover the likely causes (see HISTORY).
@@ -977,3 +1004,8 @@ Not milestones — standing obligations with live guards.
 - Audit route topology at docks, broad water polygons, bridges, and split OSM
   fragments.
 - Tune neighborhood postcard scale and long-name typography on mobile.
+
+- P2: Low-poly landmark fronts (`landmarkFronts.ts`, data in `landmarkFrontData.ts`; Bijenkorf and Beurs hall wall done in the viewer only). Next: render fronts in the game's three layer next to `KITS` (and cap the carrying part at `bodyTopM`); model the Beurs Damrak front with its clock tower (build its reference with `--wall`); Anne Frank House needs a usable reference (no close panorama of the canal front; try Mapillary, token from the user via env var `MAPILLARY_TOKEN`, never committed); then Centraal, Rijksmuseum. Photo textures are dropped: the user judged them awful and panoramas stay drawing references only.
+
+- P2: Anne Frank House facade needs a source other than panoramas (Commons photos once the rate limit clears, with per-image licence/attribution); Sherlocked is not in the landmark data (which building was meant?).
+- P2: Apply panorama JPEGs to landmark walls in the three layer (needs per-wall UV mapping) and ship Waag kit via KITS if kept.

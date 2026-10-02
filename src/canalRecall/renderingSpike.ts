@@ -30,6 +30,7 @@ const local = ([lng, lat]: number[]): [number, number] => [(lng - lng0) * kx, (l
 
 const ROOFS: Record<Look, string[]> = {
   cartoon: ['#b5574a', '#7f93a3', '#6b7785', '#a8786a', '#8a6f9c'],
+  storybook: ['#b5574a', '#7f93a3', '#6b7785', '#a8786a'],
   photo: ['#8d5a48', '#7c8080', '#9a8f80', '#6e6a68'],
 };
 
