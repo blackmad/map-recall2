@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Building assets</title>
+<style>
+:root{--bg:#f4f1e8;--ink:#2b2622;--mut:#6d655b;--card:#fffdf8;--line:#ddd5c4}
+@media (prefers-color-scheme:dark){:root{--bg:#1f1c18;--ink:#eee8da;--mut:#a39a8a;--card:#2a2621;--line:#3b362e}}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header,main{max-width:1180px;margin:0 auto;padding:0 16px}header{padding-top:28px}
+h1{margin:0 0 4px;font-size:26px}h2{margin:40px 0 4px;font-size:19px;border-bottom:1px solid var(--line);padding-bottom:6px}h3{margin:14px 0 6px;font-size:14px}h3 small{color:var(--mut);font-weight:400}
+.note,header p{color:var(--mut);margin:4px 0 14px;max-width:70ch}
+.grid{display:flex;flex-wrap:wrap;gap:12px}.group{width:100%}.cells{display:flex;flex-wrap:wrap;gap:10px}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px;font-size:12px}
+figure canvas,figure img,figure iframe{display:block;border-radius:6px;max-width:100%;background:#ddd}figure iframe{border:0}
+figcaption{margin-top:6px;color:var(--mut);max-width:300px}figcaption b{color:var(--ink)}
+.sw{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12px;width:100%}.sw .row{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}.sw span{width:32px;height:22px;border-radius:4px;border:1px solid rgba(0,0,0,.15)}
+</style></head><body>
+<header><h1>Building assets</h1><p>Every custom facade, roof, shopfront, palette and landmark kit used by the Painted, Storybook, Cartoon and Photo building looks. Generated live from the same code the game runs. Not linked from the app.</p></header>
+<main></main>
+<script src="js/three.bundle.js"></script><script src="js/building-gallery.bundle.js"></script>
+</body></html>
