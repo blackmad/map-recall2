@@ -142,7 +142,7 @@ const riseFor = (kind: RoofKind, wid: number): number =>
  * building's facade style (canal, c19, school, postwar...), which sets the odds;
  * `tag` an OSM roof shape to honour (gabled, hipped, quadruple_saltbox...).
  */
-export function planRoof(id: string, style: string, heightM: number, minHeightM: number, rect: Rect | null, tag?: string): RoofPlan | null {
+export function planRoof(id: string, style: string, heightM: number, minHeightM: number, rect: Rect | null, tag?: string, year?: number | null): RoofPlan | null {
   if (!rect || minHeightM > 0.5 || heightM < 6.5 || rect.wid < 3.6 || rect.len < 4.5 || rect.coverage < 0.88 || rect.maxDev > 1.0) return null;
   if (style === 'modern' || style === 'tower') return null;
   const r = hash01(`${id}:roof`), narrow = rect.wid <= 8.5 && rect.len >= 1.25 * rect.wid;
@@ -168,9 +168,10 @@ export function planRoof(id: string, style: string, heightM: number, minHeightM:
   const riseM = riseFor(kind, rect.wid);
   if (heightM - riseM < 4.5) return null;
   const g = hash01(`${id}:gable`);
-  let gable: GableShape = style === 'c19'
-    ? pick(g, [['step', 0.26], ['neck', 0.2], ['raisedNeck', 0.1], ['cornice', 0.14], ['clock', 0.06], ['bell', 0.08], ['spout', 0.08], ['plain', 0.08]] as Array<[GableShape, number]>)
-    : pick(g, [['step', 0.15], ['neck', 0.13], ['raisedNeck', 0.13], ['bell', 0.12], ['clock', 0.12], ['spout', 0.08], ['cornice', 0.17], ['plain', 0.1]] as Array<[GableShape, number]>);
+  const styleWeights: Array<[GableShape, number]> = style === 'c19'
+    ? [['step', 0.26], ['neck', 0.2], ['raisedNeck', 0.1], ['cornice', 0.14], ['clock', 0.06], ['bell', 0.08], ['spout', 0.08], ['plain', 0.08]]
+    : [['step', 0.15], ['neck', 0.13], ['raisedNeck', 0.13], ['bell', 0.12], ['clock', 0.12], ['spout', 0.08], ['cornice', 0.17], ['plain', 0.1]];
+  let gable: GableShape = pick(g, gableWeightsForYear(styleWeights, year));
   // A deep narrow canal building is often a warehouse: a spout gable with shutters.
   if (style === 'canal' && rect.len >= 2.6 * rect.wid && hash01(`${id}:warehouse`) < 0.15) gable = 'spout';
   const accents = style === 'canal' || style === 'c19' || style === 'school';
@@ -187,6 +188,34 @@ export function planRoof(id: string, style: string, heightM: number, minHeightM:
   return plan;
 }
 
+/**
+ * When each gable was built (BAG year): step ~1600–1665, neck ~1640–1790, bell
+ * ~1660–1790, raised neck ~1640–1720, clock ~1650–1750, cornice front from
+ * 1700, plus the neo-renaissance revival of step and neck gables in the late
+ * 19th century (Oud-West, Kinkerstraat). Spout gables are warehouses at any
+ * date (planRoof forces them on warehouse-shaped plots).
+ */
+export const GABLE_PERIODS: Partial<Record<GableShape, Array<[number, number]>>> = {
+  step: [[1600, 1665], [1875, 1915]], neck: [[1640, 1790], [1875, 1915]], bell: [[1660, 1790]], raisedNeck: [[1640, 1720]],
+  clock: [[1650, 1750]], cornice: [[1700, 3000]],
+};
+/** Outside its period a gable keeps this share of its weight. */
+export const GABLE_OFF_PERIOD = 0.15;
+/**
+ * The style's gable weights reweighted by construction year: in-period shapes
+ * keep their weight, the rest drop to GABLE_OFF_PERIOD of it; a plain gable is
+ * rare on a dated street front (0.3) and a spout belongs to warehouses (0.15).
+ * Unknown years and 1905 (the BAG placeholder) change nothing.
+ */
+export function gableWeightsForYear(weights: Array<[GableShape, number]>, year: number | null | undefined): Array<[GableShape, number]> {
+  if (year === null || year === undefined || !Number.isFinite(year) || year === 1905) return weights;
+  return weights.map(([shape, w]) => {
+    const periods = GABLE_PERIODS[shape];
+    const k = shape === 'plain' ? 0.3 : shape === 'spout' ? GABLE_OFF_PERIOD : periods!.some(([a, b]) => year >= a && year <= b) ? 1 : GABLE_OFF_PERIOD;
+    return [shape, w * k];
+  });
+}
+
 /** Parapet odds and heights for flat-roofed periods. */
 const PARAPET: Record<string, { p: number; h: [number, number]; hex: string }> = {
   school: { p: 0.85, h: [0.8, 1.0], hex: TRIM_WHITE },
@@ -200,7 +229,7 @@ const PARAPET: Record<string, { p: number; h: [number, number]; hex: string }> =
  * for the plain flat lid. Rectangles get `planRoof`; other footprints roof their
  * main inscribed rectangle and a wing (over a lid), and flat periods a parapet.
  */
-export function planBuildingRoof(id: string, style: string, heightM: number, minHeightM: number, ring: readonly Vec2[], tag?: string): RoofPlan | null {
+export function planBuildingRoof(id: string, style: string, heightM: number, minHeightM: number, ring: readonly Vec2[], tag?: string, year?: number | null): RoofPlan | null {
   if (minHeightM > 0.5 || heightM < 6.5) return null;
   const pts = openRing(ring);
   if (pts.length < 4) return null;
@@ -208,7 +237,7 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
   const simple = !!rect && rect.coverage >= 0.88 && rect.maxDev <= 1.0;
   const tagged = tag && TAGGED[tag] ? tag : undefined;
   if (simple) {
-    const plan = planRoof(id, style, heightM, minHeightM, rect, tagged);
+    const plan = planRoof(id, style, heightM, minHeightM, rect, tagged, year);
     if (plan) {
       const out: RoofPlan = { ...plan, pieces: [{ rect: rect!, plan }] };
       // A cut corner on a 19th-century block: a small turret with a spire.
@@ -222,7 +251,7 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
     const frame = fitRect(pts, 40);
     const ins = frame ? inscribedRects(pts, frame) : null;
     if (ins && ins.mainShare >= 0.5 && ins.main.len * ins.main.wid >= 24) {
-      const plan = planRoof(id, style, heightM, minHeightM, ins.main, tagged);
+      const plan = planRoof(id, style, heightM, minHeightM, ins.main, tagged, year);
       if (plan && plan.kind !== 'sawtooth') {
         const pieces: RoofPlan['pieces'] = [{ rect: ins.main, plan }];
         if (ins.second) {
@@ -668,7 +697,8 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
   const height = Number(p.height), minHeight = Number(p.minHeight) || 0;
   if (!Number.isFinite(height)) return null;
   const tag = typeof p.roofShapeTag === 'string' ? p.roofShapeTag : typeof p.roofShape === 'string' && !p.roofPlanned ? p.roofShape : undefined;
-  return planBuildingRoof(String(p.id ?? ''), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined);
+  const year = p.constructionYear === null || p.constructionYear === undefined ? null : Number(p.constructionYear);
+  return planBuildingRoof(String(p.id ?? ''), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined, Number.isFinite(year) ? year : null);
 }
 
 /**

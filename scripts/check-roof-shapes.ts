@@ -226,6 +226,28 @@ for (const shape of GABLE_SHAPES) for (const [W, R] of [[5.5, 2.0], [4, 1.6], [8
   for (const want of ['L c19:mansardHip+wing', 'chamfer c19:hipped+turret', 'U postwar:parapet', 'modern block:parapet']) assert.ok([...seen].some(s => s.startsWith(want.split('+')[0]) && (!want.includes('+') || s.includes(want.split('+')[1]))), `${want} is built (${[...seen].join(', ')})`);
 }
 
+// --- Gables follow the construction year ---------------------------------------------
+{
+  const share = (year: number | null, style = 'canal') => {
+    const c: Record<string, number> = {};
+    let n = 0;
+    for (let i = 0; i < 3000; i++) { const p = planRoof(`y${i}`, style, 15, 0, fitRect(rectPts(6, 14))!, undefined, year); if (p?.kind === 'gable') { c[p.gable] = (c[p.gable] ?? 0) + 1; n++; } }
+    return (shape: string) => (c[shape] ?? 0) / n;
+  };
+  const s1620 = share(1620), s1760 = share(1760), unknown = share(null), placeholder = share(1905);
+  assert.ok(s1620('step') > 0.45 && GABLE_SHAPES.every(g => g === 'step' || s1620(g) < s1620('step')), `a 1620 house is mostly a step gable (${(s1620('step') * 100).toFixed(0)}%)`);
+  assert.ok(s1760('cornice') + s1760('bell') > 0.5, `a 1760 house is mostly a cornice front or a bell gable (${((s1760('cornice') + s1760('bell')) * 100).toFixed(0)}%)`);
+  assert.ok(s1760('step') > 0 && s1760('step') < 0.12 && s1620('cornice') > 0 && s1620('cornice') < 0.12, 'out-of-period gables keep a small share');
+  assert.ok(GABLE_SHAPES.every(g => Math.abs(unknown(g) - placeholder(g)) < 1e-9), 'year 1905 is no information');
+  // Decorator and mesh read the same year from the feature.
+  const ring = rectPts(6, 14).map(([x, y]) => [4.9 + x / 68_000, 52.37 + y / 110_540]);
+  for (let i = 0; i < 30; i++) {
+    const f = { type: 'Feature' as const, properties: { id: `yr${i}`, height: 15, minHeight: 0, facade: 'canal-priorBrickRed', facadeStyle: 'canal', constructionYear: 1625 }, geometry: { type: 'Polygon', coordinates: [ring] } };
+    const d = decorateRoof(f);
+    if (d.properties.roofPlanned) assert.deepEqual(meshBuildingFor(d, 'photo')!.roof!.plan, roofPlanForFeature(d));
+  }
+}
+
 // --- OSM roof shapes ---------------------------------------------------------------
 {
   const ring = rectPts(6, 14).map(([x, y]) => [4.9 + x / 68_000, 52.37 + y / 110_540]);
