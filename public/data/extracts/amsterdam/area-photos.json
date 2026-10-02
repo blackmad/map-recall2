@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-02T17:57:08.988Z",
+ "generatedAt": "2026-10-02T18:00:00.931Z",
  "areas": {
   "Jordaan": [
    {
@@ -2107,6 +2107,256 @@
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Amsterdam_-_panoramio_%28152%29.jpg/500px-Amsterdam_-_panoramio_%28152%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "imageAttribution": "Wikimedia Commons: Amsterdam - panoramio (152).jpg (Patrick Nouhailler's…, CC BY-SA 3.0)",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_-_panoramio_(152).jpg"
+   }
+  ],
+  "Sporenburg": [
+   {
+    "title": "Amsterdam - The Whale (30002839570)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Amsterdam_-_The_Whale_%2830002839570%29.jpg/500px-Amsterdam_-_The_Whale_%2830002839570%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Amsterdam - The Whale (30002839570).jpg (Fred Romero from Paris, France, CC BY 2.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_-_The_Whale_(30002839570).jpg"
+   },
+   {
+    "title": "2023 Amsterdam, KNSM-eiland, Piraeus (43)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/2023_Amsterdam%2C_KNSM-eiland%2C_Piraeus_%2843%29.jpg/500px-2023_Amsterdam%2C_KNSM-eiland%2C_Piraeus_%2843%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: 2023 Amsterdam, KNSM-eiland, Piraeus (43).jpg (Kleon3, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Amsterdam%2C_KNSM-eiland%2C_Piraeus_(43).jpg"
+   },
+   {
+    "title": "Rangeerderstraat",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Rangeerderstraat.jpg/500px-Rangeerderstraat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Rangeerderstraat.jpg (Ainali, CC BY-SA 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARangeerderstraat.jpg"
+   },
+   {
+    "title": "Java-eiland , Eastern Docklands , Amsterdam , Netherlands - panoramio (43)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Java-eiland_%2C_Eastern_Docklands_%2C_Amsterdam_%2C_Netherlands_-_panoramio_%2843%29.jpg/500px-Java-eiland_%2C_Eastern_Docklands_%2C_Amsterdam_%2C_Netherlands_-_panoramio_%2843%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Java-eiland , Eastern Docklands , Amsterdam , Netherlands - panoramio (43).jpg (Patrick Nouhailler's…, CC BY-SA 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AJava-eiland_%2C_Eastern_Docklands_%2C_Amsterdam_%2C_Netherlands_-_panoramio_(43).jpg"
+   },
+   {
+    "title": "Woolwich, former Police Court",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Woolwich%2C_former_Police_Court.jpg/500px-Woolwich%2C_former_Police_Court.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Woolwich, former Police Court.jpg (Public domain)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWoolwich%2C_former_Police_Court.jpg"
+   },
+   {
+    "title": "Keesje Brijdeplantsoen mei 2020",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Keesje_Brijdeplantsoen_mei_2020.jpg/500px-Keesje_Brijdeplantsoen_mei_2020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Keesje Brijdeplantsoen mei 2020.jpg (Ricloo, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKeesje_Brijdeplantsoen_mei_2020.jpg"
+   },
+   {
+    "title": "2023 Amsterdam, Oostelijk Havengebied, Verbindingsdam (2)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/2023_Amsterdam%2C_Oostelijk_Havengebied%2C_Verbindingsdam_%282%29.jpg/500px-2023_Amsterdam%2C_Oostelijk_Havengebied%2C_Verbindingsdam_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: 2023 Amsterdam, Oostelijk Havengebied, Verbindingsdam (2).jpg (Kleon3, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Amsterdam%2C_Oostelijk_Havengebied%2C_Verbindingsdam_(2).jpg"
+   },
+   {
+    "title": "Bufferstraat",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Bufferstraat.jpg/500px-Bufferstraat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Bufferstraat.jpg (Ainali, CC BY-SA 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABufferstraat.jpg"
+   }
+  ],
+  "Java-eiland": [
+   {
+    "title": "Sail Amsterdam - Javakade - View West on Tall Ship Amerigo Vespucci II",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Sail_Amsterdam_-_Javakade_-_View_West_on_Tall_Ship_Amerigo_Vespucci_II.jpg/500px-Sail_Amsterdam_-_Javakade_-_View_West_on_Tall_Ship_Amerigo_Vespucci_II.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Sail Amsterdam - Javakade - View West on Tall Ship Amerigo Vespucci II.jpg (Txllxt TxllxT, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASail_Amsterdam_-_Javakade_-_View_West_on_Tall_Ship_Amerigo_Vespucci_II.jpg"
+   },
+   {
+    "title": "IMO 5375008 KAPITAN BORCHARDT (04)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/IMO_5375008_KAPITAN_BORCHARDT_%2804%29.JPG/500px-IMO_5375008_KAPITAN_BORCHARDT_%2804%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: IMO 5375008 KAPITAN BORCHARDT (04).JPG (S.J. de Waard, CC BY-SA 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AIMO_5375008_KAPITAN_BORCHARDT_(04).JPG"
+   },
+   {
+    "title": "Sail Amsterdam 700 IJhaven",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Sail_Amsterdam_700_IJhaven.jpg/500px-Sail_Amsterdam_700_IJhaven.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Sail Amsterdam 700 IJhaven.jpg (Erik Joling, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASail_Amsterdam_700_IJhaven.jpg"
+   },
+   {
+    "title": "Kruzenshtern (20619228950)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Kruzenshtern_%2820619228950%29.jpg/500px-Kruzenshtern_%2820619228950%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Kruzenshtern (20619228950).jpg (Rob Oo from NL, CC BY 2.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKruzenshtern_(20619228950).jpg"
+   },
+   {
+    "title": "De UK213 bij Sail Amsterdam 2015 (02)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/De_UK213_bij_Sail_Amsterdam_2015_%2802%29.JPG/500px-De_UK213_bij_Sail_Amsterdam_2015_%2802%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: De UK213 bij Sail Amsterdam 2015 (02).JPG (S.J. de Waard, CC BY-SA 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADe_UK213_bij_Sail_Amsterdam_2015_(02).JPG"
+   },
+   {
+    "title": "2023 Amsterdam, Oostelijk Havengebied, Jan Schaeferbrug",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/2023_Amsterdam%2C_Oostelijk_Havengebied%2C_Jan_Schaeferbrug.jpg/500px-2023_Amsterdam%2C_Oostelijk_Havengebied%2C_Jan_Schaeferbrug.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: 2023 Amsterdam, Oostelijk Havengebied, Jan Schaeferbrug.jpg (Kleon3, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2023_Amsterdam%2C_Oostelijk_Havengebied%2C_Jan_Schaeferbrug.jpg"
+   },
+   {
+    "title": "High Light (235097077)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/High_Light_%28235097077%29.jpeg/500px-High_Light_%28235097077%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: High Light (235097077).jpeg (Ralf Gehrke, CC BY-SA 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHigh_Light_(235097077).jpeg"
+   },
+   {
+    "title": "Sedov 20150820 164150",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Sedov_20150820_164150.jpg/500px-Sedov_20150820_164150.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Sedov 20150820 164150.jpg (Rob Oo from NL, CC BY 2.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASedov_20150820_164150.jpg"
+   }
+  ],
+  "Kinkerbuurt": [
+   {
+    "title": "Large excavation of the building-project De Hallen, Amsterdam-West - Grote bouwput van De Hallen in de Kinkerbuurt, Amsterdam Oud-West",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Large_excavation_of_the_building-project_De_Hallen%2C_Amsterdam-West_-_Grote_bouwput_van_De_Hallen_in_de_Kinkerbuurt%2C_Amsterdam_Oud-West.jpg/500px-Large_excavation_of_the_building-project_De_Hallen%2C_Amsterdam-West_-_Grote_bouwput_van_De_Hallen_in_de_Kinkerbuurt%2C_Amsterdam_Oud-West.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Large excavation of the building-project De Hallen, Amsterdam-West - Grote bouwput van De Hallen in de Kinkerbuurt, Amsterdam Oud-West.jpg (Fons Heijnsbroek, CC0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ALarge_excavation_of_the_building-project_De_Hallen%2C_Amsterdam-West_-_Grote_bouwput_van_De_Hallen_in_de_Kinkerbuurt%2C_Amsterdam_Oud-West.jpg"
+   },
+   {
+    "title": "Drawbridge catenary disconnect (37442235001)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Drawbridge_catenary_disconnect_%2837442235001%29.jpg/500px-Drawbridge_catenary_disconnect_%2837442235001%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Drawbridge catenary disconnect (37442235001).jpg (Billie Grace Ward from New York, USA, CC BY 2.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADrawbridge_catenary_disconnect_(37442235001).jpg"
+   },
+   {
+    "title": "11-21-1947 03294 Juf speelt piano (5335188033)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/11-21-1947_03294_Juf_speelt_piano_%285335188033%29.jpg/500px-11-21-1947_03294_Juf_speelt_piano_%285335188033%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: 11-21-1947 03294 Juf speelt piano (5335188033).jpg (IISG, CC BY-SA 2.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A11-21-1947_03294_Juf_speelt_piano_(5335188033).jpg"
+   },
+   {
+    "title": "Brug 23 30SEP2020-1",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Brug_23_30SEP2020-1.jpg/500px-Brug_23_30SEP2020-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Brug 23 30SEP2020-1.jpg (Milliped, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABrug_23_30SEP2020-1.jpg"
+   },
+   {
+    "title": "Nissan Leaf aan Amsterdamse laadpaal",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Nissan_Leaf_aan_Amsterdamse_laadpaal.jpg/500px-Nissan_Leaf_aan_Amsterdamse_laadpaal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Nissan Leaf aan Amsterdamse laadpaal.jpg (Bontenbal, CC BY-SA 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANissan_Leaf_aan_Amsterdamse_laadpaal.jpg"
+   },
+   {
+    "title": "Remco de Ridder",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Remco_de_Ridder.jpg/500px-Remco_de_Ridder.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Remco de Ridder.jpg (Remco de Ridder, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARemco_de_Ridder.jpg"
+   },
+   {
+    "title": "08-09-1951 09741 Na een stortbui (4212440821)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/08-09-1951_09741_Na_een_stortbui_%284212440821%29.jpg/500px-08-09-1951_09741_Na_een_stortbui_%284212440821%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: 08-09-1951 09741 Na een stortbui (4212440821).jpg (IISG, CC BY-SA 2.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A08-09-1951_09741_Na_een_stortbui_(4212440821).jpg"
+   },
+   {
+    "title": "Woman cycling on quiet street in Amsterdam",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Woman_cycling_on_quiet_street_in_Amsterdam.jpg/500px-Woman_cycling_on_quiet_street_in_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Woman cycling on quiet street in Amsterdam.jpg (Andrej Shadura, CC BY 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWoman_cycling_on_quiet_street_in_Amsterdam.jpg"
+   }
+  ],
+  "Frederik Hendrikbuurt": [
+   {
+    "title": "Construction-Singelgracht-Garage-May-2023",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Construction-Singelgracht-Garage-May-2023.jpg/500px-Construction-Singelgracht-Garage-May-2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Construction-Singelgracht-Garage-May-2023.jpg (Acediscovery, CC BY 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AConstruction-Singelgracht-Garage-May-2023.jpg"
+   },
+   {
+    "title": "Hoek Van Houweningenstraat-Derde Hugo de Grootstraat Amsterdam",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Hoek_Van_Houweningenstraat-Derde_Hugo_de_Grootstraat_Amsterdam.jpg/500px-Hoek_Van_Houweningenstraat-Derde_Hugo_de_Grootstraat_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Hoek Van Houweningenstraat-Derde Hugo de Grootstraat Amsterdam.jpg (Picasdre, CC BY-SA 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHoek_Van_Houweningenstraat-Derde_Hugo_de_Grootstraat_Amsterdam.jpg"
+   },
+   {
+    "title": "Van Hallbrug 360 - Mapillary (j5Tc0x-g8YqAchlnMx6ucQ)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Van_Hallbrug_360_-_Mapillary_%28j5Tc0x-g8YqAchlnMx6ucQ%29.jpg/500px-Van_Hallbrug_360_-_Mapillary_%28j5Tc0x-g8YqAchlnMx6ucQ%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Van Hallbrug 360 - Mapillary (j5Tc0x-g8YqAchlnMx6ucQ).jpg (amsterdam @ Mapillary.com, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AVan_Hallbrug_360_-_Mapillary_(j5Tc0x-g8YqAchlnMx6ucQ).jpg"
+   },
+   {
+    "title": "Stolpersteine Nassaukade Amsterdam",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Stolpersteine_Nassaukade_Amsterdam.jpg/500px-Stolpersteine_Nassaukade_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Stolpersteine Nassaukade Amsterdam.jpg (acediscovery, CC BY 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AStolpersteine_Nassaukade_Amsterdam.jpg"
+   },
+   {
+    "title": "WLM - Minke Wagenaar - 124 2466",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/WLM_-_Minke_Wagenaar_-_124_2466.jpg/500px-WLM_-_Minke_Wagenaar_-_124_2466.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: WLM - Minke Wagenaar - 124 2466.jpg (Minke Wagenaar from Amsterdam, NL, CC BY-SA 2.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWLM_-_Minke_Wagenaar_-_124_2466.jpg"
+   },
+   {
+    "title": "Fagelstraat, Nassaukade, Amsterdam - panoramio",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Fagelstraat%2C_Nassaukade%2C_Amsterdam_-_panoramio.jpg/500px-Fagelstraat%2C_Nassaukade%2C_Amsterdam_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Fagelstraat, Nassaukade, Amsterdam - panoramio.jpg (archengigi, CC BY 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFagelstraat%2C_Nassaukade%2C_Amsterdam_-_panoramio.jpg"
+   },
+   {
+    "title": "Outdoor-exercise-equipment-van-Oldenbarneveldtplein",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Outdoor-exercise-equipment-van-Oldenbarneveldtplein.jpg/500px-Outdoor-exercise-equipment-van-Oldenbarneveldtplein.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Outdoor-exercise-equipment-van-Oldenbarneveldtplein.jpg (Acediscovery, CC BY 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOutdoor-exercise-equipment-van-Oldenbarneveldtplein.jpg"
+   },
+   {
+    "title": "Beltbrug2",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Beltbrug2.jpg/500px-Beltbrug2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Beltbrug2.jpg (User:Arthena, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABeltbrug2.jpg"
+   }
+  ],
+  "Da Costabuurt": [
+   {
+    "title": "Da-Costagracht Canal Amsterdam",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Da-Costagracht_Canal_Amsterdam.jpg/500px-Da-Costagracht_Canal_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Da-Costagracht Canal Amsterdam.jpg (acediscovery, CC BY 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADa-Costagracht_Canal_Amsterdam.jpg"
+   },
+   {
+    "title": "Hugo de Grootgracht 2020",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Hugo_de_Grootgracht_2020.jpg/500px-Hugo_de_Grootgracht_2020.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Hugo de Grootgracht 2020.jpg (Jan Ainali, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHugo_de_Grootgracht_2020.jpg"
+   },
+   {
+    "title": "Da Costakade",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Da_Costakade.jpg/500px-Da_Costakade.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Da Costakade.jpg (Ainali, CC BY-SA 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADa_Costakade.jpg"
+   },
+   {
+    "title": "Parkeergarage aan de Appeltjesmarkt versierd voor de gay pride",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Parkeergarage_aan_de_Appeltjesmarkt_versierd_voor_de_gay_pride.jpg/500px-Parkeergarage_aan_de_Appeltjesmarkt_versierd_voor_de_gay_pride.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Parkeergarage aan de Appeltjesmarkt versierd voor de gay pride.jpg (Milliped, CC BY-SA 4.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AParkeergarage_aan_de_Appeltjesmarkt_versierd_voor_de_gay_pride.jpg"
+   },
+   {
+    "title": "08-14-1951 09749 Eerste schooldag (6330795003)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/08-14-1951_09749_Eerste_schooldag_%286330795003%29.jpg/500px-08-14-1951_09749_Eerste_schooldag_%286330795003%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: 08-14-1951 09749 Eerste schooldag (6330795003).jpg (IISG, CC BY-SA 2.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A08-14-1951_09749_Eerste_schooldag_(6330795003).jpg"
+   },
+   {
+    "title": "Da Costabuurt, Amsterdam, Netherlands - panoramio",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Da_Costabuurt%2C_Amsterdam%2C_Netherlands_-_panoramio.jpg/500px-Da_Costabuurt%2C_Amsterdam%2C_Netherlands_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Da Costabuurt, Amsterdam, Netherlands - panoramio.jpg (kapustka jan, CC BY 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADa_Costabuurt%2C_Amsterdam%2C_Netherlands_-_panoramio.jpg"
+   },
+   {
+    "title": "Elisabeth Wolffstraat",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Elisabeth_Wolffstraat.jpg/500px-Elisabeth_Wolffstraat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Elisabeth Wolffstraat.jpg (Ainali, CC BY-SA 3.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AElisabeth_Wolffstraat.jpg"
+   },
+   {
+    "title": "Happyhappyjoyjoy restaurant (Amsterdam, The Netherlands 2017) (34245643231)",
+    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Happyhappyjoyjoy_restaurant_%28Amsterdam%2C_The_Netherlands_2017%29_%2834245643231%29.jpg/500px-Happyhappyjoyjoy_restaurant_%28Amsterdam%2C_The_Netherlands_2017%29_%2834245643231%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "imageAttribution": "Wikimedia Commons: Happyhappyjoyjoy restaurant (Amsterdam, The Netherlands 2017) (34245643231).jpg (Paul Arps from The Netherlands, CC BY 2.0)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHappyhappyjoyjoy_restaurant_(Amsterdam%2C_The_Netherlands_2017)_(34245643231).jpg"
    }
   ]
  }
