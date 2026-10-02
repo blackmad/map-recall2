@@ -862,6 +862,11 @@ class VectorBasemap {
     }
   }
 
+  /** The building look now in force: 'default', 'procedural', 'storybook', 'cartoon' or 'photo'. */
+  buildingLook() {
+    return this._buildings3dLook || 'default';
+  }
+
   /** The look the saved preference asks for, unless a URL look is in force. */
   setBuildingLookPreference(look) {
     if (this._buildingLookLocked) return;

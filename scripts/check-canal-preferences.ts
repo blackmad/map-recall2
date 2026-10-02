@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import {
+  BUILDING_LOOKS,
+  BUILDING_LOOK_LABELS,
   PREFERENCES_STORAGE_KEY,
+  nextBuildingLook,
   ZOOM_DEFAULT_VERSION,
   applyDifficulty,
   coercePreferences,
@@ -160,6 +163,18 @@ const memory = () => {
   assert.equal(parsePreferences({ cityId: 'den-haag' }, zoom).cityId, 'den-haag');
   assert.equal(parsePreferences({ cityId: 'paris' }, zoom).cityId, 'amsterdam');
   assert.equal(parsePreferences({}, zoom).cityId, 'amsterdam');
+}
+
+// B cycles the building look in settings order and wraps; every look has a label.
+{
+  let look: string = BUILDING_LOOKS[0];
+  const seen: string[] = [look];
+  for (let i = 0; i < BUILDING_LOOKS.length; i++) { look = nextBuildingLook(look); seen.push(look); }
+  assert.deepEqual(seen, [...BUILDING_LOOKS, BUILDING_LOOKS[0]], 'one full turn visits every look in order and returns to the start');
+  assert.equal(nextBuildingLook('photo'), 'default', 'wraps from the last look');
+  assert.equal(nextBuildingLook('nonsense'), 'default', 'an unknown look starts again at the first');
+  assert.equal(nextBuildingLook(undefined), 'default');
+  for (const look of BUILDING_LOOKS) assert.ok(BUILDING_LOOK_LABELS[look], `${look} has a label`);
 }
 
 console.log('canal preferences: checks passed');
