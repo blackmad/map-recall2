@@ -233,7 +233,8 @@ async function wikidataBulk(): Promise<Map<string, WikidataMatch>> {
   const query = `SELECT ?item ?itemLabel ?image ?commons ?nl ?en WHERE {
     VALUES ?type { wd:Q123705 wd:Q253019 wd:Q1529997 wd:Q3257686 wd:Q15715406 wd:Q15079751 wd:Q2983893 wd:Q3558970 wd:Q1115575 }
     ?item wdt:P31 ?type .
-    { ?item wdt:P131 wd:${city.wikidata} } UNION { ?item wdt:P131/wdt:P131 wd:${city.wikidata} }
+    VALUES ?root { ${[city.wikidata, ...(city.wikidataAnchors ?? [])].map(q => `wd:${q}`).join(' ')} }
+    ?item wdt:P131|wdt:P131/wdt:P131|wdt:P131/wdt:P131/wdt:P131 ?root .
     OPTIONAL { ?item wdt:P18 ?image }
     OPTIONAL { ?item wdt:P373 ?commons }
     OPTIONAL { ?a schema:about ?item; schema:isPartOf <https://nl.wikipedia.org/>; schema:name ?nl }
@@ -316,7 +317,14 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
   const districtArticles = new Map<string, string | null>();
   const bulk = await wikidataBulk();
   console.log(`Wikidata: ${bulk.size} neighbourhood-like names in ${city.name}`);
-  const todo = data.boundaries.filter(hood => (!only || hood.name === only) && missingFields(rows.find(r => r.name === hood.name)!).length);
+  // Resume: areas finished on an earlier run (found something or not) are skipped, so a run that dies
+  // halfway costs only what was left. `--refresh` starts over.
+  const doneFile = path.join(stagingDir, 'online-done.json');
+  let finished = new Set<string>();
+  if (!process.argv.includes('--refresh')) { try { finished = new Set(await readJson<string[]>(doneFile)); } catch { /* first run */ } }
+  const saveDone = async () => { await mkdir(stagingDir, { recursive: true }); await writeFile(doneFile, JSON.stringify([...finished])); };
+  const todo = data.boundaries.filter(hood => (!only || hood.name === only) && !finished.has(hood.name) && missingFields(rows.find(r => r.name === hood.name)!).length);
+  if (finished.size) console.log(`Resuming: ${finished.size} areas already done, ${todo.length} to go`);
   const processHood = async (hood: Boundary) => {
     const missing = missingFields(rows.find(r => r.name === hood.name)!);
     let log = `${hood.name}: `;
@@ -375,8 +383,9 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
     }
     void districtArticles;
     console.log(log);
+    finished.add(hood.name);
     // Save as we go: a run over a whole city takes hours and the network can drop.
-    if (checkpoint && ++done % 5 === 0) await checkpoint(candidates);
+    if (checkpoint && ++done % 5 === 0) { await checkpoint(candidates); await saveDone(); }
   };
   // Three areas at a time: each needs many sequential requests, mostly waiting on latency.
   let next = 0;
@@ -386,6 +395,7 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
       try { await processHood(hood); } catch (error) { console.log(`${hood.name}: failed (${(error as Error).message})`); }
     }
   }));
+  await saveDone();
   return candidates;
 }
 
