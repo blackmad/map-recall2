@@ -522,6 +522,10 @@ export class ThreeBuildings {
     geometry.setAttribute('accent', release(new THREE.BufferAttribute(chunk.accents, 4, true)));
     geometry.setAttribute('hidden', new THREE.BufferAttribute(new Uint8Array(chunk.vertexCount), 1, false));
     geometry.setIndex(release(new THREE.BufferAttribute(chunk.indices, 1)));
+    // three.js uploads a new mesh, then computes its bounding sphere to sort it.
+    // With `position` already freed that throws inside MapLibre's frame and the
+    // whole map flashes once per new chunk, so measure while the array exists.
+    geometry.computeBoundingSphere();
     const mesh = new THREE.Mesh(geometry, this.material);
     mesh.frustumCulled = false;
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
