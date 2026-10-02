@@ -132,6 +132,15 @@ quarters and buurten, so Guess Name can offer Nieuwmarktbuurt and
 Nieuwmarkt/Lastage together, though they cover the same streets. Choices
 should skip an area that overlaps the answer by more than about half.
 
+**Map Recall locate hints: data gaps.** Hints now name places
+(`src/mapRecall/locateHints.ts`), ranked by Wikidata sitelinks. 96 linked
+waters were never given sitelinks, among them Prinsengracht, Keizersgracht,
+Singelgracht and Brouwersgracht, so they rank as obscure as Koningsbergengracht
+(Narva-eiland's hint names that rather than Houthaven); Singel's link points at
+Muntsluis. Fetch their sitelinks into the extract. Betondorp, Floradorp and
+Molenwijkpark have only a district to name and fall back to bearings; Utrecht,
+Rotterdam and Den Haag hints are unchecked.
+
 **Map Recall follow-ups.** 14 OSM neighbourhoods have no article in either
 language (Rijnbuurt, Scheldebuurt, Westindische Buurt, Van Galenbuurt, …);
 a street-named one could borrow its street's register origin, labelled as such.
