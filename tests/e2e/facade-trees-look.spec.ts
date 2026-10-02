@@ -25,6 +25,9 @@ const SPOTS = [
   { name: 'da-costa-akitsu', at: [4.8740, 52.3716], face: [4.875215, 52.372219] },
   { name: 'da-costa-akitsu-n', at: [4.8752, 52.3730], face: [4.875215, 52.372219] },
   { name: 'da-costa-akitsu-e', at: [4.8765, 52.3722], face: [4.875215, 52.372219] },
+  // De Hallen, the old tram depot (user report 2026-10-02): a row of hall roofs over one footprint.
+  { name: 'de-hallen', at: [4.8668, 52.3684], face: [4.8683, 52.3673] },
+  { name: 'de-hallen-s', at: [4.8700, 52.3655], face: [4.8688, 52.3667] },
   // Centraal Station: a landmark that must keep its own form.
   { name: 'centraal', at: [4.9003, 52.3774], face: [4.9004, 52.3789] },
   // Landmark kits: stand ~55 m from each tower and look straight at it.

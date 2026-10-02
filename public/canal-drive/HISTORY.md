@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## De Hallen: a row of tram halls
+
+User report with screenshot (2026-10-02, "should do something with de hallen"): the old Tollensstraat tram depot drew as one bare tan block, because it is a landmark (BAG pand 0363100012236693) and landmarks skip the generic facades and roofs. New kit kind `halls` in `landmarkKits.ts`: `hallRects` cuts the footprint into strips 9.62 m wide across its longest wall, aligned to a corner of the stepped Bellamyplein front (whose edges measure 9.6 m across and 6 m back per step), and each strip's run of the footprint gets a pitched roof with brick gable ends, ridges along the halls, eaves 7.2 m, rise 3.4 m. The walls take the kit's brick window grid instead of bare tan. Pinned in `test:three-buildings` (at least 10 halls, each long and no wider than a hall, together covering 85-110% of the footprint; walls stop at the eaves; ridges at eaves + rise). Shot from the `de-hallen` spots in `facade-trees-look.spec.ts`. Not done: glass ridge lights, arched tram doors on the gable ends.
+
 ## Doors on the street side; one bay grid along curved walls
 
 User reports with screenshots (Da Costakade by Akitsu, 2026-10-02): "doors should only be on street-side", stoops in front of a café's shop windows, and a curved block whose window spacing jumped at every kink ("wtf happening here"). Three fixes in the three.js building layer:
