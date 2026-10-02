@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-02T05:24:16.984Z",
+ "generatedAt": "2026-10-02T19:13:22.303Z",
  "neighborhoods": [
   {
    "name": "Veldhuizen",
@@ -70,7 +70,21 @@
    "name": "Laan Van Nieuw-Guinea, Spinozaweg E.o."
   },
   {
-   "name": "Lombok, Leidseweg"
+   "name": "Lombok, Leidseweg",
+   "description": {
+    "en": "Houtzaagmolen De Ster (landmark here): To catch wind, the municipality knotted poplar trees at a height of about 4.5 meters in March 1999.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Houtzaagmolen_De_Ster",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Jan Pieterszoon Coenbrug (bridge here): A test load of 4100 kg was applied during a trial on January 5, 1898.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Jan_Pieterszoon_Coenbrug",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Oog In Al",
@@ -87,7 +101,14 @@
    }
   },
   {
-   "name": "Halve Maan-Noord"
+   "name": "Halve Maan-Noord",
+   "history": {
+    "en": "Pniëlkerk (landmark here): Architects Piet Dingemans and Sjoerd Wouda designed this structure between 1954 and 1955.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Pni%C3%ABlkerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Nobelstraat E.o.",
@@ -96,6 +117,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Lijst_van_gemeentelijke_monumenten_in_Utrecht_(stad)%2FBinnenstad%2FNobelstraat_e.o.",
     "lang": "nl",
     "original": "De buurt Nobelstraat en omgeving in de wijk Binnenstad van Utrecht kent de volgende 36 gemeentelijke monumenten beschreven in 25 regels (monumentnummers). Hieronder een overzicht."
+   },
+   "history": {
+    "en": "Stadsschouwburg Utrecht (landmark here): A gas explosion in 1880 severely damaged the roof, stage, and decorations.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Stadsschouwburg_Utrecht",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -105,16 +133,52 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Hooch_Boulandt",
     "lang": "nl",
     "original": "Hooch Boulandt is een buurt in het stadsdeel Binnenstad in de stad Utrecht, de hoofdstad van de provincie Utrecht. De buurt werd in de jaren '90 van de twintigste eeuw gebouwd, nadat in 1989 het Academisch Ziekenhuis was verhuisd naar De Uithof."
+   },
+   "history": {
+    "en": "In the 17th century the area was part of Mayor Hendrick Moreelse's extension plan for the city, which was never carried out. In 1997 the Sint-Martinusbrug, a footbridge designed by the architect Wiek Röling, opened so that residents can cross the city moat to the shops in the Twijnstraat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Hooch_Boulandt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Het gebied was in de zeventiende eeuw onderdeel van het nooit uitgevoerde uitbreidingsplan van burgemeester Hendrick Moreelse. Om die reden werd in 1997 de Sint-Martinusbrug, een loopbrug ontworpen door architect Wiek Röling, in gebruik genomen, zodat bewoners de singel kunnen oversteken naar het winkelgebied in de Twijnstraat."
    }
   },
   {
    "name": "Bleekstraat E.o."
   },
   {
-   "name": "Domplein, Neude, Janskerkhof"
+   "name": "Domplein, Neude, Janskerkhof",
+   "description": {
+    "en": "Abdij van St. Paulus (landmark here): Today only a transept wall survives, integrated into the row of houses lining Hofpoort Street.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/St._Paul%27s_Abbey,_Utrecht",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Abdij van St. Paulus (landmark here): Most of the nave was demolished in 1707, followed by the choir in 1804.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/St._Paul%27s_Abbey,_Utrecht",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Springweg E.o., Geertebuurt"
+   "name": "Springweg E.o., Geertebuurt",
+   "description": {
+    "en": "Andreasklooster (landmark here): A radical renovation in 1983 demolished most of the structure while saving the facade and garden.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Andreasklooster_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Mathematician Laurens Praalder was buried within the Geertekerk on April 24, 1793.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Geertekerk",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Lange Elisabethstraat, Mariaplaats E.o.",
@@ -123,6 +187,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Lijst_van_gemeentelijke_monumenten_in_Utrecht_(stad)%2FBinnenstad%2FLange_Elisabethstraat%2C_Mariaplaats_e.o.",
     "lang": "nl",
     "original": "De buurt Lange Elisabethstraat, Mariaplaats en omgeving in de wijk Binnenstad van Utrecht kent de volgende 191 gemeentelijke monumenten beschreven in 128 regels (monumentnummers)."
+   },
+   "history": {
+    "en": "Buurkerk (landmark here): A council chapel was later added to the structure for formal meetings.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Buurkerk",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -138,19 +209,71 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Wijk_C",
     "lang": "nl",
     "original": "Oude activiteiten in Wijk C dateren uit de middeleeuwen. Rond het jaar 1000 bevond zich hier enkele tientallen jaren een groot havencomplex ten noorden van de handelswijk Stathe. In en rond Wijk C zijn diverse archeologische vondsten gedaan van middeleeuwse vaartuigen. Na het verkrijgen van stadsrechten in 1122 kwam het gebied van het huidige Wijk C al spoedig binnen de omwalde/ommuurde stad Utrecht te liggen. Tussen 1573 en 1795 vormde deze buurt een wijk die Handvoetboog heette."
+   },
+   "nameOrigin": {
+    "en": "At that time the city's districts were named after companies of the civic guard: each district inside the city wall had its own guard company made up of citizens.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Wijk_C",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "In die tijd waren wijken vernoemd naar schuttersvendels en iedere wijk binnen de stadswal/stadsmuur kende daarin een eigen stedelijke schutterij die uit burgers bestond."
    }
   },
   {
-   "name": "Welgelegen, Den Hommel"
+   "name": "Welgelegen, Den Hommel",
+   "description": {
+    "en": "De Meernbrug (bridge here): De Meernbrug was originally a Galecopper bridge moved from the A12 motorway.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Meernbrug",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "De Meernbrug (bridge here): A narrower predecessor called the Oudenrijnsebrug stood here until 1974.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Meernbrug",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Transwijk-Noord"
+   "name": "Transwijk-Noord",
+   "description": {
+    "en": "Administratively Transwijk consists of the neighbourhoods Transwijk-Noord and Transwijk-Zuid and the Merwedekanaalzone, where Utrecht's street-prostitution zone was until 2021.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Transwijk",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Administratief gezien bestaat Transwijk uit de buurten Transwijk-Noord en -Zuid, de Merwedekanaalzone (te onderscheiden van het Bedrijventerrein Kanaleneiland-Zuid) waarin zich tot 2021 de Utrechtse tippelzone bevond."
+   }
   },
   {
-   "name": "Kanaleneiland-Noord"
+   "name": "Kanaleneiland-Noord",
+   "description": {
+    "en": "Thorough renewal plans exist for much of Kanaleneiland-Noord. Kanaleneiland-Noord and Kanaleneiland-Zuid are separated by the Churchilllaan.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kanaleneiland",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Voor een groot deel van Kanaleneiland-Noord bestaan grondige vernieuwingsplannen. Ook op de as tussen de Prins Clausbrug en het grootwinkelcentrum zijn aanzienlijke veranderingen gepland (As van Kanaleneiland). == Buurten, verkeer en openbaar vervoer == Buurten zijn Kanaleneiland-Noord en -Zuid, gescheiden door de Churchilllaan."
+   }
   },
   {
-   "name": "Transwijk-Zuid"
+   "name": "Transwijk-Zuid",
+   "description": {
+    "en": "Mobach Keramiek (landmark here): A museum at the original site opens its doors to the public only once every year.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Mobach_Keramiek",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Mobach Keramiek (landmark here): The historic factory building on Kanaalweg was constructed in 1913 and is now a national monument.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Mobach_Keramiek",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Kanaleneiland",
@@ -167,7 +290,21 @@
    }
   },
   {
-   "name": "Kanaleneiland-Zuid"
+   "name": "Kanaleneiland-Zuid",
+   "description": {
+    "en": "Wederkomst des Herenkerk (landmark here): Today, this building serves as a place of worship for the Martinus parish community.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Wederkomst_des_Herenkerk",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Triumfatorkerk (landmark here): The Seventh-day Adventist Church bought the church in 2017.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Triumfatorkerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Dichterswijk",
@@ -176,22 +313,92 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Dichterswijk",
     "lang": "nl",
     "original": "De Dichterswijk is een buurt in de wijk Zuidwest van de stad Utrecht. De buurt ligt rond de Croeselaan, en wordt begrensd door de Graadt van Roggenweg, Vondellaan/Balijelaan, Kruisvaart en het Merwedekanaal. Met de bouw van de Dichterswijk is in de jaren 20 van de 19e eeuw begonnen. Het later gebouwde Dichterswijk-West wordt ook wel Parkhaven genoemd. Architectonisch is de wijk zeer divers."
+   },
+   "history": {
+    "en": "Alida de Vries (landmark here): Five stones were placed at the former Central Jewish Orphanage on Nieuwegracht on that same day.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Lijst_van_Stolpersteine_in_Utrecht_(gemeente)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
-   "name": "Hoog Catharijne, Ns, Jaarbeurs"
+   "name": "Hoog Catharijne, Ns, Jaarbeurs",
+   "description": {
+    "en": "De Inktpot (landmark here): A common misconception claims the German SS used it as headquarters during World War II.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Inktpot",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "De Inktpot (landmark here): ProRail has used the site as its headquarters since 1995.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Inktpot",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Binnenstad City- En Winkelgebied"
+   "name": "Binnenstad City- En Winkelgebied",
+   "description": {
+    "en": "Abdij van St. Paulus (landmark here): Today only a transept wall survives, integrated into the row of houses lining Hofpoort Street.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/St._Paul%27s_Abbey,_Utrecht",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Abdij van St. Paulus (landmark here): Most of the nave was demolished in 1707, followed by the choir in 1804.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/St._Paul%27s_Abbey,_Utrecht",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Bedrijvengebied Kanaleneiland-Zuid"
+   "name": "Bedrijvengebied Kanaleneiland-Zuid",
+   "description": {
+    "en": "Galecopperbrug (bridge here): During renovations, steel connections between the bridge and road surface faced extra pressure from joint transitions.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Galecopperbrug",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Galecopperbrug (bridge here): The first section opened in 1971, while the second part was completed five years later in 1976.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Galecopperbrug",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Transwijk, Bedr.geb. Kanaleneiland"
+   "name": "Transwijk, Bedr.geb. Kanaleneiland",
+   "description": {
+    "en": "Mobach Keramiek (landmark here): A museum at the original site opens its doors to the public only once every year.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Mobach_Keramiek",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Mobach Keramiek (landmark here): The historic factory building on Kanaalweg was constructed in 1913 and is now a national monument.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Mobach_Keramiek",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Nieuw Hoograven-Zuid"
+   "name": "Nieuw Hoograven-Zuid",
+   "history": {
+    "en": "Motion Church (landmark here): The Dutch Reformed Church held its final service at the site in 2018.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Marcuskerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Oud Hoograven-Noord"
@@ -206,10 +413,32 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Rivierenwijk_(Utrecht)",
     "lang": "nl",
     "original": "De Rivierenwijk is een buurt in de wijk Zuidwest in Utrecht, de hoofdstad van de Nederlandse provincie Utrecht."
+   },
+   "history": {
+    "en": "At the end of the 19th century the only buildings stood along the Vaartsche Rijn: factories and workers' housing. Since 1 September 2008 the former New Apostolic Church on the Berkelstraat has been home to twenty-nine students.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rivierenwijk_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Eind 19e eeuw was er alleen bebouwing langs de Vaartsche Rijn in de vorm van fabrieken en arbeiderswoningen. Sinds 1 september 2008 wordt de voormalige Nieuw-Apostolische Kerk op de Berkelstraat bewoond door negenentwintig studenten."
    }
   },
   {
-   "name": "Dichterswijk, Rivierenwijk"
+   "name": "Dichterswijk, Rivierenwijk",
+   "description": {
+    "en": "The first Stolperstein in Utrecht honored Josephina Joosten-Groen, not Alida de Vries.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Lijst_van_Stolpersteine_in_Utrecht_(gemeente)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Alida de Vries (landmark here): Five stones were placed at the former Central Jewish Orphanage on Nieuwegracht on that same day.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Lijst_van_Stolpersteine_in_Utrecht_(gemeente)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Zuidwest",
@@ -218,19 +447,54 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Zuidwest_(Utrecht)",
     "lang": "nl",
     "original": "Zuidwest is een van de tien stadsdelen (volgens de gemeentelijke indeling: wijken) van de gemeente Utrecht. Het stadsdeel heeft 40.967 inwoners (2025). Onder andere de Veilinghaven, Park Transwijk en de woonboulevard liggen in Zuidwest."
+   },
+   "history": {
+    "en": "Alida de Vries (landmark here): Five stones were placed at the former Central Jewish Orphanage on Nieuwegracht on that same day.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Lijst_van_Stolpersteine_in_Utrecht_(gemeente)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
-   "name": "Oud Hoograven, Tolsteeg"
+   "name": "Oud Hoograven, Tolsteeg",
+   "description": {
+    "en": "Oranjebrug (bridge here): Until at least 1989, a dedicated cottage for the bridge warden stood on the eastern headland of the structure.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oranjebrug_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Tolsteeg, Rotsoord"
+   "name": "Tolsteeg, Rotsoord",
+   "description": {
+    "en": "Oranjebrug (bridge here): Until at least 1989, a dedicated cottage for the bridge warden stood on the eastern headland of the structure.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oranjebrug_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Nieuw Hoograven-Noord"
   },
   {
-   "name": "Lunetten-Zuid"
+   "name": "Lunetten-Zuid",
+   "description": {
+    "en": "Nieuwe Houtenseweg (bridge here): Railway operator ProRail commissioned the project while Rijkswaterstaat later took over ownership.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Viaduct_Nieuwe_Houtenseweg",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Nieuwe Houtenseweg (bridge here): A new car bridge was installed in 2012 to free the original structure for trains only.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Viaduct_Nieuwe_Houtenseweg",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Lunetten-Noord"
@@ -255,7 +519,21 @@
    }
   },
   {
-   "name": "Nieuwegracht-Oost"
+   "name": "Nieuwegracht-Oost",
+   "description": {
+    "en": "Lepelenburg (park here): The Kol banking family lived there for a century as the city's largest private residence.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Lepelenburg",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Six houses for poor widows were founded in 1621 on the grounds of Klein Lepelenburg.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Lepelenburg",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Oudwijk",
@@ -264,6 +542,14 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Oudwijk_(Utrecht)",
     "lang": "nl",
     "original": "Oudwijk is een buurt van de wijk Oost in Utrecht, de hoofdstad van de Nederlandse provincie Utrecht. Samen met de buurt Buiten Wittevrouwen vormt het de subwijk Oudwijk/Buiten Wittevrouwen."
+   },
+   "history": {
+    "en": "In 1131 Machteld, burgravine of Utrecht, founded the abbey of Saint Stephen here for about twenty women of noble birth. The Benedictine convent was closed after the Reformation and largely demolished in 1584, after which the site became a country estate.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oudwijk_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "In 1131 werd hier de St. Stevensabdij door Machteld, burggravin van Utrecht, voor een twintigtal dames van adellijke afkomst gesticht. Het Benedictinessenklooster werd na de Reformatie gesloten en in 1584 grotendeels afgebroken, waarna het een buitenplaats werd."
    }
   },
   {
@@ -273,6 +559,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Zuid_(Utrecht)",
     "lang": "nl",
     "original": "Zuid is een van de tien stadsdelen (volgens de gemeentelijke indeling: wijken) van de gemeente Utrecht. Het stadsdeel heeft 28.754 inwoners (2025)."
+   },
+   "history": {
+    "en": "Motion Church (landmark here): The Dutch Reformed Church held its final service at the site in 2018.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Marcuskerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -285,10 +578,25 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Bokkenbuurt",
     "lang": "nl",
     "original": "De Bokkenbuurt is een buurt in de stad Utrecht in de Nederlandse provincie Utrecht. De buurt maakt deel uit van de wijk Zuid. Belangrijk onderdeel van de buurt is de Begraafplaats Tolsteeg. De Bokkenbuurt grenst in het westen aan de buurt Tolsteeg en in het zuiden aan Hoograven; van de wijk Lunetten wordt de Bokkenbuurt gescheiden door de Waterlinieweg, en aan de overkant van de Spoorlijn Amsterdam - Elten (ri."
+   },
+   "history": {
+    "en": "Until September 1974 there was a level crossing on the Houtensepad from the Watervogelbuurt to the Bokkenbuurt.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Bokkenbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Er was tot september 1974 een spoorwegovergang naar de Bokkenbuurt in het Houtensepad vanuit de Watervogelbuurt."
    }
   },
   {
-   "name": "Nieuw Hoograven, Bokkenbuurt"
+   "name": "Nieuw Hoograven, Bokkenbuurt",
+   "history": {
+    "en": "Motion Church (landmark here): The Dutch Reformed Church held its final service at the site in 2018.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Marcuskerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Lange Nieuwstraat E.o.",
@@ -297,6 +605,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Lijst_van_gemeentelijke_monumenten_in_Utrecht_(stad)%2FBinnenstad%2FLange_Nieuwstraat_e.o.",
     "lang": "nl",
     "original": "De buurt Lange Nieuwstraat en omgeving in de wijk Binnenstad van Utrecht kent de volgende 127 gemeentelijke monumenten beschreven in 96 regels (monumentnummers)."
+   },
+   "history": {
+    "en": "Centraal Museum (landmark here): In 1980, the museum expanded by acquiring the collection of the Van Baaren Museum.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Centraal_Museum",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -306,6 +621,14 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Watervogelbuurt_(Utrecht)",
     "lang": "nl",
     "original": "De Watervogelbuurt is een buurt in de wijk Oost in Utrecht, de hoofdstad van de Nederlandse provincie Utrecht. De buurt ligt ten zuidoosten van de Tolsteegsingel en wordt verder begrensd door de Kromme Rijn, de Vaartsche Rijn en de spoorlijn Utrecht-Arnhem. De buurt wordt doorsneden door de Gansstraat (oost-west) en de Albatrosstraat (noord-zuid). In het westen van het gebied ligt het Ledig Erf."
+   },
+   "history": {
+    "en": "During the 19th century the area around the Oosterkade along the Vaartsche Rijn was built up further, leaving dense blocks with many alleys inside closed urban blocks. In the 1920s the Watervogelbuurt was built east of the Albatrosstraat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Watervogelbuurt_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "In de loop van de negentiende eeuw is het gebied rond de Oosterkade langs de Vaartsche Rijn verder verstedelijkt met als gevolg een hoge bebouwingsdichtheid en vele stegen binnen een gesloten stedelijk bouwblok. In de jaren twintig is ten oosten van de Albatrosstraat de Watervogelbuurt gebouwd."
    }
   },
   {
@@ -324,6 +647,14 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Sterrenwijk_(Utrecht)",
     "lang": "nl",
     "original": "Veel straten in deze buurt dragen de naam van een planeet."
+   },
+   "history": {
+    "en": "The neighbourhood began as social housing built under the Housing Act at the start of the 20th century, on the Abstederdijk. In the 1980s a new Sterrenwijk was built on the Venuslaan. Its streets are named after stars, planets and astronomical terms, such as the Marsstraat, Orionstraat, Zenithstraat and Meridiaanstraat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sterrenwijk_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "In Sterrenwijk liggen de volgende straten: Marsstraat Poolsterhof Neptunusstraat Orionstraat Pegasushof Eclipshof Mercuriushof Zenithstraat Jupiterstraat Keerkringplein Meteoorhof Equatorplein Saturnusstraat Meridiaanstraat Komeetstraat Venuslaan De buurt was oorspronkelijk een woningwetwijk uit het begin van de 20e eeuw, gelegen aan de Abstederdijk. In de jaren tachtig is aan de Venuslaan een nieuwe Sterrenwijk gebouwd."
    }
   },
   {
@@ -345,13 +676,56 @@
    }
   },
   {
-   "name": "Galgenwaard E.o."
+   "name": "Galgenwaard E.o.",
+   "description": {
+    "en": "Galgenwaard en Kromhoutkazerne is a neighbourhood in the Oost district of Utrecht. The Stadion Galgenwaard stands here. The Galgenwaard already existed in the Middle Ages, when it lay within the city's liberty as part of the outer jurisdiction of Abstede. The abbey of Saint Servatius once owned the whole of the Galgenwaard.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Galgenwaard",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Galgenwaard en Kromhoutkazerne is een buurt in de wijk Oost van Utrecht, de hoofdstad van de Nederlandse provincie Utrecht. Het Stadion Galgenwaard is hier gelegen. Al in de middeleeuwen bestond de Galgenwaard. Destijds lag het in de stadsvrijheid en maakte deel uit van het buitengerecht Abstede. De Sint-Servaasabdij had in het verleden de gehele Galgenwaard in haar bezit."
+   },
+   "history": {
+    "en": "Founded in 1998, it became the first university college established anywhere in the Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/University_College_Utrecht",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Maarschalkerweerd, Mereveld"
+   "name": "Maarschalkerweerd, Mereveld",
+   "description": {
+    "en": "Amelisweerd (park here): Several hiking routes wind through the estate grounds.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Amelisweerd",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "The estate later split into three parts, creating today's Oud-Amelisweerd and Nieuw-Amelisweerd.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Amelisweerd",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Abstede, Gansstraat"
+   "name": "Abstede, Gansstraat",
+   "description": {
+    "en": "De Vrouwenbibliotheek (landmark here): Men were initially barred but gained access in 1990.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Vrouwenbibliotheek_Utrecht",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "De Vrouwenbibliotheek (landmark here): From 1995 to 2002, the library operated within the Multicultural Emancipation Center on Wittevrouwenkade.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Vrouwenbibliotheek_Utrecht",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Schildersbuurt",
@@ -360,10 +734,25 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Schildersbuurt_(Utrecht)",
     "lang": "nl",
     "original": "De Schildersbuurt is een buurt in de wijk Oost in Utrecht, de hoofdstad van de Nederlandse provincie Utrecht. De buurt is een typische uitbreidingswijk uit de jaren twintig van de twintigste eeuw opgezet volgens de kenmerken van een halfopen stedelijk blok. De buurt heeft binnen de wijk een totaal eigen karakter. Het gehele gebied werd tot een kleine woonwijk bestemd met vooral veel middenstandswoningen."
+   },
+   "history": {
+    "en": "On the Minstroom, along the Rembrandtkade and the Albert Neuhuysstraat, Utrecht's first blocks of flats were built in the 1920s, in a sober variant of the Amsterdam School. On the Prins Hendriklaan stands probably the best-known house in Utrecht: the Rietveld Schröder House of 1924.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Schildersbuurt_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Zo werden aan de Minstroom, langs de Rembrandtkade en de Albert Neuhuysstraat al in de jaren twintig de eerste Utrechtse flatwoningen gerealiseerd in een sobere variant van de Amsterdamse School. Langs de Prins Hendriklaan ligt waarschijnlijk het bekendste woonhuis van Utrecht: het Rietveld-Schröderhuis uit 1924."
    }
   },
   {
-   "name": "De Uithof - Utrecht Science Park"
+   "name": "De Uithof - Utrecht Science Park",
+   "history": {
+    "en": "De Uithof / Utrecht Science Park (landmark here): The Dutch government bought this 300-hectare plot for the university in 1958.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Utrecht_Science_Park",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   }
   },
   {
    "name": "Rijnsweerd",
@@ -378,13 +767,48 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Rijnsweerd",
     "lang": "nl",
     "original": "De buurt/subwijk is vernoemd naar het voormalige huis Rijnsweerd, dat zich echter in de westelijker gelegen buurt/subwijk Galgenwaard bevond. De straten zijn vernoemd naar Griekse en Latijnse schrijvers."
+   },
+   "history": {
+    "en": "In 1929-1930, a straight road and tram line were cut through the fort, dividing it into two halves.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fort_de_Bilt",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
-   "name": "Nw Engeland, Th. À Kempisplantsoen E.o."
+   "name": "Nw Engeland, Th. À Kempisplantsoen E.o.",
+   "description": {
+    "en": "Goudse lijn (bridge here): Utrecht Centraal serves as a hub for lines heading to Amsterdam, Zwolle, Arnhem and Eindhoven.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Utrecht%E2%80%93Rotterdam_railway",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Gerardus Majellakerk (landmark here): A generous donation by Frans van Seumeren funded the bell tower added in 1954.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Gerardus_Majellakerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Oudwijk, Buiten Wittevrouwen"
+   "name": "Oudwijk, Buiten Wittevrouwen",
+   "description": {
+    "en": "Holy Trinity Church (landmark here): Anglican bishop Herbert Bury laid the first stone on November 9, 1911.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Holy_Trinity_Church_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Joods Monument Utrecht (landmark here): The monument was unveiled on October 29, 2015 by Mayor Jan van Zanen.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Joods_monument_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Buiten Wittevrouwen",
@@ -438,7 +862,21 @@
    }
   },
   {
-   "name": "Wilhelminapark, Rijnsweerd"
+   "name": "Wilhelminapark, Rijnsweerd",
+   "description": {
+    "en": "De Uithof / Utrecht Science Park (landmark here): Most university faculties reside here, excluding Law, Humanities, and University College Utrecht.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Utrecht_Science_Park",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "De Uithof / Utrecht Science Park (landmark here): The Dutch government bought this 300-hectare plot for the university in 1958.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Utrecht_Science_Park",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   }
   },
   {
    "name": "Oost",
@@ -447,10 +885,32 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Oost_(Utrecht)",
     "lang": "nl",
     "original": "Oost is een van de tien stadsdelen (volgens de gemeentelijke indeling: wijken) van de gemeente Utrecht. Het stadsdeel heeft 33.767 inwoners (2025). Onder andere Stadion Galgenwaard, het Spoorwegmuseum, het Rietveld Schröderhuis, het Wilhelminapark en het Provinciehuis liggen in Oost."
+   },
+   "history": {
+    "en": "De Uithof / Utrecht Science Park (landmark here): The Dutch government bought this 300-hectare plot for the university in 1958.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Utrecht_Science_Park",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
-   "name": "Tuinwijk-Oost"
+   "name": "Tuinwijk-Oost",
+   "history": {
+    "en": "Griftpark (park here): Soil rehabilitation took place between 1993 and 2002 before landscaping resumed.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Griftpark",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Administratively Tuinwijk consists of two neighbourhoods: in 2008 Tuinwijk-West had 2,440 residents and Tuinwijk-Oost 2,530.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Tuinwijk_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Administratief bestaat het uit twee buurten: Tuinwijk-West telde in 2008 2440 inwoners en Tuinwijk-Oost 2530."
+   }
   },
   {
    "name": "Breedstraat, Plompetorengracht E.o.",
@@ -459,6 +919,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Lijst_van_gemeentelijke_monumenten_in_Utrecht_(stad)%2FBinnenstad%2FBreedstraat%2C_Plompetorengracht_e.o.",
     "lang": "nl",
     "original": "De buurt Breedstraat, Plompetorengracht en omgeving in de wijk Binnenstad van Utrecht kent de volgende 94 gemeentelijke monumenten in 82 regels (monumentnummers)."
+   },
+   "history": {
+    "en": "Theologische Universiteit Utrecht (landmark here): The institution began as a Theological School in 1854 before becoming a college in 1939.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Theological_University_of_the_Reformed_Churches",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -477,7 +944,21 @@
    }
   },
   {
-   "name": "Binnenstad Woongebied"
+   "name": "Binnenstad Woongebied",
+   "description": {
+    "en": "Andreasklooster (landmark here): A radical renovation in 1983 demolished most of the structure while saving the facade and garden.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Andreasklooster_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Centraal Museum (landmark here): In 1980, the museum expanded by acquiring the collection of the Van Baaren Museum.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Centraal_Museum",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   }
   },
   {
    "name": "Staatsliedenbuurt",
@@ -486,10 +967,26 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Staatsliedenbuurt_(Utrecht)",
     "lang": "nl",
     "original": "De Staatsliedenbuurt, voorheen Staatsliedenkwartier, is een buurt in de wijk Noordoost in Utrecht, de hoofdstad van de Nederlandse provincie Utrecht."
+   },
+   "history": {
+    "en": "The neighbourhood was built in the 1950s as an addition to the prewar Tuinwijk. Its layout is recognisably stamp-and-strip planning: open blocks, shared green spaces and 1950s walk-up flats of three or four storeys, sometimes with a pitched roof and often with distinctive brick detailing, alongside two-storey houses with pitched roofs.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Staatsliedenbuurt_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "De bouw van de buurt vond plaats in de jaren vijftig als aanvulling op het vooroorlogse Tuinwijk. In de Staatsliedenbuurt is de stempel- en strokenverkaveling herkenbaar: open bouwblokken, gemeenschappelijke groene ruimtes, jaren vijftig portiekflats van gemiddeld drie of vier lagen hoog - soms met kap en vaak met een bijzondere detaillering (in baksteen) van de gevel -, maar ook laagbouw in twee lagen met een kap."
    }
   },
   {
-   "name": "Tuinwijk-West"
+   "name": "Tuinwijk-West",
+   "description": {
+    "en": "Administratively Tuinwijk consists of two neighbourhoods: in 2008 Tuinwijk-West had 2,440 residents and Tuinwijk-Oost 2,530.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Tuinwijk_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Administratief bestaat het uit twee buurten: Tuinwijk-West telde in 2008 2440 inwoners en Tuinwijk-Oost 2530."
+   }
   },
   {
    "name": "Vogelenbuurt",
@@ -519,6 +1016,22 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Voordorp_(Utrecht)",
     "lang": "nl",
     "original": "Voordorp is een buurt van de wijk 'Noordoost' in Utrecht, de hoofdstad van de Nederlandse provincie Utrecht. De buurt werd gebouwd in de jaren negentig en was de laatste grotere stadsuitbreiding voor de bouw van Leidsche Rijn."
+   },
+   "history": {
+    "en": "It is a compact neighbourhood of about 1,600 homes with a mix of residents: young families, older people, tenants and owners. The cattle market closed in 2008 and was demolished.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Voordorp_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Het is een compacte buurt van rond de 1600 woningen met een diversiteit aan bewoners: jonge gezinnen, ouderen, huurders en kopers. De veemarkt is in 2008 gesloten en gesloopt."
+   },
+   "nameOrigin": {
+    "en": "Eighteen streets in Voordorp are named after internationally known freedom fighters, among them David Ben-Gurion, Steve Biko, Simón Bolívar, Kartini, Tomáš Masaryk, Andrei Sakharov, Pablo Neruda, Che Guevara, Chico Mendes and Archbishop Romero.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Voordorp_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "In Voordorp zijn achttien straten vernoemd naar internationaal bekende vrijheidsstrijders: David Ben Goerion, Steve Biko, Simón Bolívar, Habib Bourguiba, Pedro Luis Brión, Raden Adjeng Kartini, Samora Machel, Pál Maléter, Tomáš Masaryk, Andrej Sacharov, Pablo Neruda, Agostinho Neto, Kemal Atatürk, Che Guevara, Chico Mendes, Aartsbisschop Romero, Augusto César Sandino en Tula."
    }
   },
   {
@@ -537,31 +1050,151 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Tuindorp-Oost",
     "lang": "nl",
     "original": "Tuindorp-Oost is een buurt in de wijk 'Noord-Oost' van de stad Utrecht, de hoofdstad van de Nederlandse provincie Utrecht. De buurt/subwijk werd in de jaren 60 gebouwd, nadat de gemeente Utrecht in 1954 een deel van de Voorveldse polder had geannexeerd. De naamgeving van de buurt is ontleend aan de ligging; de buurt ligt ten oosten van de jaren 30-buurt Tuindorp."
+   },
+   "history": {
+    "en": "The footpath in the park De Groene Kop is named after Hans Lubach (1935-2015), a local resident who worked for years to have the park redesigned and the path laid.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Tuindorp-Oost",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Kouwer Willem Molengraaff Jean Charles Naber Herman Theodorus Obbink Gerrit Trooster Willem Vogelzang Henricus Weve Cornelis Winkler Hendrik Zwaardemaker Het wandelpad in park De Groene Kop is genoemd naar Hans Lubach (1935-2015), die zich als buurtbewoner jarenlang heeft ingezet voor de herinrichting van het park en de aanleg van het wandelpad."
    }
   },
   {
-   "name": "Zeeheldenbuurt, Hengeveldstraat E.o."
+   "name": "Zeeheldenbuurt, Hengeveldstraat E.o.",
+   "description": {
+    "en": "Biltsche Grift (waterway here): From 1873 to the 1920s, a bulge in the canal served as an open-air public bathing resort.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Biltsche_Grift",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Biltsche Grift (waterway here): A now abolished water board in the area was named after this waterway.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Biltsche_Grift",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Wittevrouwen, Zeeheldenbuurt"
+   "name": "Wittevrouwen, Zeeheldenbuurt",
+   "description": {
+    "en": "Nieuwe Kerk (landmark here): A nearby community hall named De Klopper hosted youth activities during the 1950s and 1960s.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Kerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Biltsche Grift (waterway here): A now abolished water board in the area was named after this waterway.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Biltsche_Grift",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Tuindorp, Van Lieflandlaan-West"
+   "name": "Tuindorp, Van Lieflandlaan-West",
+   "description": {
+    "en": "Pauluskerk (landmark here): A roof fin sits atop the structure, adding a distinct vertical element.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Willem_de_Zwijgerkerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Pauluskerk (landmark here): Declining attendance led to the church closing in 1991 before a Catholic parish took it over two years later.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Willem_de_Zwijgerkerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Tuindorp, Voordorp"
+   "name": "Tuindorp, Voordorp",
+   "description": {
+    "en": "Pauluskerk (landmark here): A roof fin sits atop the structure, adding a distinct vertical element.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Willem_de_Zwijgerkerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "During the 2017 KNVB Cup, Hercules led FC Groningen 1–0 before ultimately losing 2–1.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/USV_Hercules",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Donaudreef, Wolgadreef E.o."
+   "name": "Donaudreef, Wolgadreef E.o.",
+   "description": {
+    "en": "Johanneskerk (landmark here): Windows were designed to stop reaching the ground, preventing outside distractions and dramatic lighting.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Johanneskerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Johanneskerk (landmark here): Construction started in 1965, with the church officially opening its doors just one year later in 1966.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Johanneskerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Taagdreef, wolgadreef"
+   "name": "Taagdreef, wolgadreef",
+   "description": {
+    "en": "Park de Watertoren (park here): Children can play in a dedicated splash pool alongside several ponds and water features.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Park_de_Watertoren",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Johanneskerk (landmark here): Construction started in 1965, with the church officially opening its doors just one year later in 1966.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Johanneskerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Taagdreef, Rubicondreef E.o."
+   "name": "Taagdreef, Rubicondreef E.o.",
+   "description": {
+    "en": "Park de Watertoren (park here): Children can play in a dedicated splash pool alongside several ponds and water features.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Park_de_Watertoren",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Omar-al-Faroukmoskee (landmark here): Declining parish numbers led to the sale of the building in December 1982.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Omar-al-Faroukmoskee",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Neckardreef E.o."
+   "name": "Neckardreef E.o.",
+   "description": {
+    "en": "Sint-Rafaëlkerk (landmark here): Architect Johannes Dresmé from Driebergen designed this church.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Rafa%C3%ABlkerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Sint-Rafaëlkerk (landmark here): Cardinal Alfrink consecrated the building on July 30, 1967.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Rafa%C3%ABlkerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Zambesidreef E.o."
@@ -570,7 +1203,21 @@
    "name": "Tigrisdreef E.o."
   },
   {
-   "name": "Vechtzoom-Noord, Klopvaart"
+   "name": "Vechtzoom-Noord, Klopvaart",
+   "description": {
+    "en": "The Waterliniepad hiking trail passes directly by this fort.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fort_aan_de_Klop",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "A European project called Crossing the Lines began in 2004 to support restoration efforts.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fort_aan_de_Klop",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Poldergebied Overvecht",
@@ -579,10 +1226,31 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Poldergebied_Overvecht",
     "lang": "nl",
     "original": "Poldergebied Overvecht is een buurt in de wijk Overvecht in Utrecht. In 2023 telde het 265 inwoners."
+   },
+   "history": {
+    "en": "Construction of this fortress took place between 1818 and 1821.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fort_Blauwkapel",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
-   "name": "Zambesidreef, Tigrisdreef"
+   "name": "Zambesidreef, Tigrisdreef",
+   "description": {
+    "en": "Fort Blauwkapel (landmark here): The waiting house measures 30 meters long and 20 meters wide with three vaulted rooms inside.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fort_Blauwkapel",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Construction of this fortress took place between 1818 and 1821.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fort_Blauwkapel",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Noordoost",
@@ -591,6 +1259,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Noordoost_(Utrecht)",
     "lang": "nl",
     "original": "Noordoost is een van de tien stadsdelen (volgens de gemeentelijke indeling: wijken) van de gemeente Utrecht. Het stadsdeel heeft 40.044 inwoners (2025). Onder andere het Veeartsenijterrein, het Griftpark en de Voorveldse Polder liggen in Noordoost."
+   },
+   "history": {
+    "en": "During the 2017 KNVB Cup, Hercules led FC Groningen 1–0 before ultimately losing 2–1.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/USV_Hercules",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -599,6 +1274,14 @@
     "en": "Lauwerecht is a former municipality in the Dutch province of Utrecht. It was located northwest of the city of Utrecht and existed from 1818 to 1823. It is now part of Utrecht.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Lauwerecht",
     "lang": "en"
+   },
+   "history": {
+    "en": "In the 16th and 17th centuries clay tobacco pipes were made in Lauwerecht. On 1 January 1818 Lauwerecht was split off from the municipality of Utrecht as a municipality of its own.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Lauwerecht",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "In de 16e en 17e eeuw werden er stenen tabakspijpen in de Lauwerecht vervaardigd. Per 1 januari 1818 werd de gemeente Lauwerecht losgemaakt van de gemeente Utrecht."
    }
   },
   {
@@ -614,6 +1297,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Votulast",
     "lang": "nl",
     "original": "De naam Votulast is gevormd uit de eerste twee letters van de verschillende buurten: Vogelenwijk Tuinwijk Lauwerecht en Staatsliedenkwartier."
+   },
+   "history": {
+    "en": "Griftpark (park here): Soil rehabilitation took place between 1993 and 2002 before landscaping resumed.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Griftpark",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -623,6 +1313,14 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Pijlsweerd-Zuid",
     "lang": "nl",
     "original": "Pijlsweerd is een subwijk in de wijk Utrecht-Noordwest in Utrecht, in de Nederlandse provincie Utrecht. Ze bestaat uit de buurten 1e Daalsebuurt, Pijlsweerd-Noord en Pijlsweerd-Zuid. Tot 1940 werd de naam als Pijlsweert gespeld."
+   },
+   "history": {
+    "en": "Pijlsweerd was built up as part of the city in the 20th century. From 1926 to 2009 the Herberhold battery factory (De Witte Kat) stood in Pijlsweerd.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Pijlsweerd-Zuid",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Daar stond van 1926 tot 2009 de Batterijenfabriek Herberhold (De Witte Kat). In de twintigste eeuw kreeg Pijlsweerd stedelijke bebouwing."
    }
   },
   {
@@ -632,6 +1330,14 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Pijlsweerd-Noord",
     "lang": "nl",
     "original": "Pijlsweerd is een subwijk in de wijk Utrecht-Noordwest in Utrecht, in de Nederlandse provincie Utrecht. Ze bestaat uit de buurten 1e Daalsebuurt, Pijlsweerd-Noord en Pijlsweerd-Zuid. Tot 1940 werd de naam als Pijlsweert gespeld."
+   },
+   "history": {
+    "en": "Pijlsweerd was built up as part of the city in the 20th century. From 1926 to 2009 the Herberhold battery factory (De Witte Kat) stood in Pijlsweerd.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Pijlsweerd-Noord",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Daar stond van 1926 tot 2009 de Batterijenfabriek Herberhold (De Witte Kat). In de twintigste eeuw kreeg Pijlsweerd stedelijke bebouwing."
    }
   },
   {
@@ -641,19 +1347,69 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Pijlsweerd",
     "lang": "nl",
     "original": "Pijlsweerd is een subwijk in de wijk Utrecht-Noordwest in Utrecht, in de Nederlandse provincie Utrecht. Ze bestaat uit de buurten 1e Daalsebuurt, Pijlsweerd-Noord en Pijlsweerd-Zuid. Tot 1940 werd de naam als Pijlsweert gespeld."
+   },
+   "history": {
+    "en": "Pijlsweerd was built up as part of the city in the 20th century. From 1926 to 2009 the Herberhold battery factory (De Witte Kat) stood in Pijlsweerd.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Pijlsweerd",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Daar stond van 1926 tot 2009 de Batterijenfabriek Herberhold (De Witte Kat). In de twintigste eeuw kreeg Pijlsweerd stedelijke bebouwing."
    }
   },
   {
-   "name": "Egelantierstraat, Mariendaalstraat E.o."
+   "name": "Egelantierstraat, Mariendaalstraat E.o.",
+   "history": {
+    "en": "Sultan Ahmet (landmark here): In 1978, the Pentecostal church Samuel purchased the structure.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Noorderkerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Zamenhofdreef, Neckardreef"
+   "name": "Zamenhofdreef, Neckardreef",
+   "description": {
+    "en": "Loevenhoutsedijk (street here): Summer heat once caused the bridge to get stuck, leading to water spraying on the deck for cooling around 2000.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rode_brug_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Sint-Rafaëlkerk (landmark here): Cardinal Alfrink consecrated the building on July 30, 1967.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Rafa%C3%ABlkerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Zamenhofdreef E.o."
+   "name": "Zamenhofdreef E.o.",
+   "description": {
+    "en": "Loevenhoutsedijk (street here): Summer heat once caused the bridge to get stuck, leading to water spraying on the deck for cooling around 2000.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rode_brug_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Loevenhoutsedijk (street here): Police officers from a nearby station had to intervene when cars could not pass on this narrow structure.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rode_brug_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Ondiep, 2e Daalsebuurt"
+   "name": "Ondiep, 2e Daalsebuurt",
+   "history": {
+    "en": "Sultan Ahmet (landmark here): In 1978, the Pentecostal church Samuel purchased the structure.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Noorderkerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Nijenoord, Hoogstraat E.o."
@@ -697,7 +1453,21 @@
    "name": "Vechtzoom-Zuid"
   },
   {
-   "name": "Geuzenwijk, De Driehoek"
+   "name": "Geuzenwijk, De Driehoek",
+   "description": {
+    "en": "Marnixbrug (bridge here): In 2020, artist Janno Hahn designed new lettering added to the structure.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Marnixbrug",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Marnixbrug (bridge here): Construction took place between 1965 and 1967 alongside the new Overvecht district.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Marnixbrug",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Julianapark E.o.",
@@ -724,7 +1494,21 @@
    }
   },
   {
-   "name": "Schepenbuurt, Cartesiusweg E.o."
+   "name": "Schepenbuurt, Cartesiusweg E.o.",
+   "description": {
+    "en": "KidZcity (landmark here): Children up to age 12 can climb, slide, run, and jump inside the park.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/KidZcity",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "KidZcity (landmark here): A large fire broke out on April 18, 2008, though no visitors were injured.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/KidZcity",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Schaakbuurt E.o.",
@@ -739,6 +1523,14 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Schaakbuurt",
     "lang": "nl",
     "original": "Veel van de straten zijn vernoemd naar aan het schaakspel gerelateerde zaken, waaronder de Pionstraat, de Rokadestraat, de Simultaanstraat, de Schaakstraat, en de Paardesprongstraat, of naar beroemde schakers, zoals de Dr. Max Euwestraat."
+   },
+   "history": {
+    "en": "After the factories closed, the neighbourhood, by then mostly walk-up flats in social rented housing, grew poorer from the 1980s onwards and drew more and more residents with social problems. By the end of the century its safety problems were the worst in the city of Utrecht.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Schaakbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "In de nasleep van de fabriekssluitingen verarmde de buurt, die toen voornamelijk uit portieketageflats in de sociale huursector bestond, vanaf de jaren tachtig en kwamen er steeds meer mensen met sociale problemen te wonen. Tegen het eind van de eeuw waren de veiligheidsproblemen uitgegroeid tot de grootste van de stad Utrecht."
    }
   },
   {
@@ -757,10 +1549,31 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Noordwest_(Utrecht)",
     "lang": "nl",
     "original": "Noordwest is een van de tien stadsdelen (volgens de gemeentelijke indeling: wijken) van de gemeente Utrecht. Het stadsdeel heeft 45.048 inwoners (2025). Noordwest is grotendeels gelegen rond en min of meer georiënteerd op de Amsterdamsestraatweg."
+   },
+   "history": {
+    "en": "Opstandingskerk (landmark here): A Dutch Reformed congregation now worships within these walls.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Opstandingskerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
-   "name": "Vechtzoom, Klopvaart"
+   "name": "Vechtzoom, Klopvaart",
+   "description": {
+    "en": "The Waterliniepad hiking trail passes directly by this fort.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fort_aan_de_Klop",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "A European project called Crossing the Lines began in 2004 to support restoration efforts.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fort_aan_de_Klop",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Overvecht",
@@ -773,6 +1586,14 @@
     "en": "The Municipal Reformation of 1954 led to the absorption of the Maartensdijk, Achttienhoven and Westbroek municipalities, expanding Utrecht's borders by 800 hectares and allowing for the construction of a new city district. Based on designs by urban planners Wissing and Hanekroot, development largely took place in the 1960s, with Coen de Ranitz – then secondary mayor of Utrecht – ceremonially initiating construction on 30 March 1961.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Overvecht",
     "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "Every street name in Overvecht ends in -dreef. The main through roads are named after famous scholars (Einsteindreef, Zamenhofdreef), and the cross streets between them after rivers (Theemsdreef, Moezeldreef).",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Overvecht_(wijk)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Alle straatnamen in Overvecht eindigen op -dreef. De grote doorgaande wegen zijn vernoemd naar bekende geleerden (Einsteindreef, Zamenhofdreef etc.). De wegen die de kruisverbindingen vormen tussen deze wegen, zijn vernoemd naar rivieren (Theemsdreef, Moezeldreef etc.)."
    }
   },
   {
@@ -791,10 +1612,38 @@
    }
   },
   {
-   "name": "Zuilen-Noord En -Oost"
+   "name": "Zuilen-Noord En -Oost",
+   "description": {
+    "en": "Marnixbrug (bridge here): In 2020, artist Janno Hahn designed new lettering added to the structure.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Marnixbrug",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Opstandingskerk (landmark here): A Dutch Reformed congregation now worships within these walls.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Opstandingskerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Zuilen West"
+   "name": "Zuilen West",
+   "description": {
+    "en": "St. Jacobuskerk (landmark here): Best Life Church held its first service here on November 5, 2017, just weeks after the Catholic closure.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Jacobuskerk_(Zuilen)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "St. Jacobuskerk (landmark here): The St. Jacobuskerk became Zuilen's third Catholic church after Ludgerus and Salvator churches opened in 1933.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Jacobuskerk_(Zuilen)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Queeckhovenplein E.o.",
@@ -806,19 +1655,82 @@
    }
   },
   {
-   "name": "Prins Bernhardplein E.o., Demkagebied"
+   "name": "Prins Bernhardplein E.o., Demkagebied",
+   "description": {
+    "en": "St. Jacobuskerk (landmark here): Best Life Church held its first service here on November 5, 2017, just weeks after the Catholic closure.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Jacobuskerk_(Zuilen)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "St. Jacobuskerk (landmark here): The St. Jacobuskerk became Zuilen's third Catholic church after Ludgerus and Salvator churches opened in 1933.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sint-Jacobuskerk_(Zuilen)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Halve Maan-Zuid"
+   "name": "Halve Maan-Zuid",
+   "description": {
+    "en": "Leidse Rijn (waterway here): The waterway ends in Harmelen where it joins the Oude Rijn to flow toward Katwijk aan Zee.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Leidse_Rijn",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Mattheuskerk (landmark here): Originally Dutch Reformed, it became Christian Reformed in 1996.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Matthe%C3%BCskerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Oog in Al, Welgelegen"
+   "name": "Oog in Al, Welgelegen",
+   "description": {
+    "en": "Leidse Rijn (waterway here): The waterway ends in Harmelen where it joins the Oude Rijn to flow toward Katwijk aan Zee.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Leidse_Rijn",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Mattheuskerk (landmark here): Originally Dutch Reformed, it became Christian Reformed in 1996.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Matthe%C3%BCskerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Nieuw Engeland, Schepenbuurt"
+   "name": "Nieuw Engeland, Schepenbuurt",
+   "description": {
+    "en": "KidZcity (landmark here): Children up to age 12 can climb, slide, run, and jump inside the park.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/KidZcity",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Gerardus Majellakerk (landmark here): A generous donation by Frans van Seumeren funded the bell tower added in 1954.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Gerardus_Majellakerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Bedrijvengebied Lage Weide"
+   "name": "Bedrijvengebied Lage Weide",
+   "description": {
+    "en": "Werkspoorbrug (bridge here): Trains heading to Amsterdam use a different bridge while returning ones cross this one.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Werkspoorbrug_(Amsterdam-Rijnkanaal)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "West",
@@ -827,16 +1739,69 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/West_(Utrecht)",
     "lang": "nl",
     "original": "West is een van de tien stadsdelen (volgens de gemeentelijke indeling: wijken) van de gemeente Utrecht. Het stadsdeel heeft 29.458 inwoners (2025). Onder andere de wijk Lombok, het Rijksmuntgebouw, Park Oog in Al en bedrijventerrein Lage Weide liggen in West."
+   },
+   "history": {
+    "en": "Gerardus Majellakerk (landmark here): A generous donation by Frans van Seumeren funded the bell tower added in 1954.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Gerardus_Majellakerk_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
-   "name": "Parkwijk, Langerak"
+   "name": "Parkwijk, Langerak",
+   "history": {
+    "en": "Amaliapark gained national monument status in 2010 after years of existence.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Amaliapark_(Utrecht)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Leidsche Rijn Centrum E.o."
+   "name": "Leidsche Rijn Centrum E.o.",
+   "description": {
+    "en": "Leidsche Rijn Centrum is a neighbourhood still under construction for shopping, living and working in the Leidsche Rijn district of Utrecht. It rises around the roof of the Leidsche Rijn tunnel, the Berlijnplein; east of the tunnel more than 130 shops and 762 apartments have been built, and 9,000 m² of office space is to follow.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Leidsche_Rijn_Centrum",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Leidsche Rijn Centrum is een buurt in aanbouw, voor winkelen, wonen en werken in de wijk Leidsche Rijn in de gemeente Utrecht. De subwijk verrijst rondom het dak van de Leidsche Rijntunnel, het Berlijnplein, ten oosten van de tunnel zijn er ruim 130 winkels en 762 appartementen gerealiseerd en er komt 9000 m² aan kantoorruimte."
+   },
+   "history": {
+    "en": "On 16 May 2018 the shopping centre was officially opened by Mayor Jan van Zanen.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Leidsche_Rijn_Centrum",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Deze torens, die een hoogte zullen hebben van 80, 100 en 140 meter zullen naar verwachting in 2025 klaar zijn. Op 16 mei 2018 is het winkelcentrum officieel geopend door Burgemeester Jan van Zanen."
+   }
   },
   {
-   "name": "Terwijde-West"
+   "name": "Terwijde-West",
+   "history": {
+    "en": "Ridderhofstad Den Engh (landmark here): The castle was demolished in 1898 and its stones were sold off.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Den_Engh",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "description": {
+    "en": "Terwijde is split administratively into two neighbourhoods: Terwijde-West, with 4,943 residents, and Terwijde-Oost, with 3,665, on 1 January 2018. The streets of Terwijde-West are named after European composers.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Terwijde",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Terwijde is administratief gesplitst in twee buurten, namelijk Terwijde-West met 4.943 en Terwijde-Oost met 3.665 inwoners op 1 januari 2018. Het pomphuis aan de rand van dit park is ontworpen door de architect John Bosch. == Straten in Terwijde == De straten in Terwijde zijn vernoemd naar Europese componisten (Terwijde-West) en Amerikaanse musici (Terwijde-Oost). == Fotogalerij =="
+   },
+   "nameOrigin": {
+    "en": "The streets of Terwijde-West are named after European composers; those of Terwijde-Oost after American musicians.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Terwijde",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "De straten in Terwijde zijn vernoemd naar Europese componisten (Terwijde-West) en Amerikaanse musici (Terwijde-Oost)."
+   }
   },
   {
    "name": "Bedrijvengebied De Wetering"
@@ -847,13 +1812,44 @@
     "en": "Het Zand is a hamlet in the Dutch province of Utrecht, in the municipality of Utrecht.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Het_Zand%2C_Utrecht",
     "lang": "en"
+   },
+   "history": {
+    "en": "According to the plan, Het Zand was to be finished in 2014 with 4,300 homes.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Het_Zand_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Volgens de planning moet Het Zand gereed zijn in 2014, en zal dan 4300 woningen tellen."
    }
   },
   {
-   "name": "Terwijde-Oost"
+   "name": "Terwijde-Oost",
+   "description": {
+    "en": "Utrecht Leidsche Rijn station is a stop on the Utrecht–Rotterdam railway serving the Parkwijk and Terwijde-Oost neighbourhoods.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Station_Utrecht_Leidsche_Rijn",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Station Utrecht Leidsche Rijn is een Randstadspoorhalte aan de spoorlijn Utrecht - Rotterdam, ten behoeve van de Utrechtse wijken Parkwijk en Terwijde-Oost in Leidsche Rijn."
+   },
+   "nameOrigin": {
+    "en": "The streets of Terwijde-Oost are named after American musicians; those of Terwijde-West after European composers.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Terwijde",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "De straten in Terwijde zijn vernoemd naar Europese componisten (Terwijde-West) en Amerikaanse musici (Terwijde-Oost)."
+   }
   },
   {
-   "name": "Terwijde. De Wetering"
+   "name": "Terwijde. De Wetering",
+   "history": {
+    "en": "Ridderhofstad Den Engh (landmark here): The castle was demolished in 1898 and its stones were sold off.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Den_Engh",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Terwijde",
@@ -868,6 +1864,14 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Terwijde",
     "lang": "nl",
     "original": "In het westen grenst Terwijde aan het dorp Vleuten, in het noordoosten aan een bedrijvengebied langs de autosnelweg A2 met de naam De Wetering. Terwijde is genoemd naar de boerderij Hof ter Weyde aan de Hof ter Weydeweg 30."
+   },
+   "history": {
+    "en": "Terwijde's first residents arrived in June 2003. The Terwijde shopping centre opened in November 2014.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Terwijde",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "De eerste bewoners van Terwijde kwamen in juni 2003 aan. In november 2014 werd het Winkelcentrum Terwijde geopend."
    }
   },
   {
@@ -883,6 +1887,14 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Rijnenburg_(polder)",
     "lang": "nl",
     "original": "Het gebied is vernoemd naar het voormalige Kasteel Rijnenburg aan de Nedereindseweg. Het eerste deel, tot aan de Leidse Rijn in De Meern, draagt de naam Lange Vliet."
+   },
+   "history": {
+    "en": "Until 2000 the southern part of this polder, including the Nedereindseweg, belonged to the municipality of Nieuwegein. In the municipal reorganisation of 1 January 2001 the two parts were joined as the neighbourhood of Rijnenburg in Utrecht's Vleuten-De Meern district.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rijnenburg_(polder)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Tot en met het jaar 2000 lag het zuidelijk deel van dit poldergebied, waaronder de Nedereindseweg, in de gemeente Nieuwegein. Bij de gemeentelijke herindeling op 1 januari 2001 zijn de beide delen samengevoegd tot de buurt Rijnenburg binnen de Utrechtse wijk Vleuten-De Meern."
    }
   },
   {
@@ -905,7 +1917,21 @@
    }
   },
   {
-   "name": "Leidsche Rijn-Zuid"
+   "name": "Leidsche Rijn-Zuid",
+   "description": {
+    "en": "Recreatieplas Strijkviertel (waterway here): During the 1970s and 1980s, the area received both legal and illegal waste deposits.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Recreatieplas_Strijkviertel",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Recreatieplas Strijkviertel (waterway here): Sand mining operations that created the site began in 1937 under Rijkswaterstaat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Recreatieplas_Strijkviertel",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
    "name": "Vleuten - De Meern",
@@ -923,10 +1949,32 @@
    }
   },
   {
-   "name": "Rijnvliet"
+   "name": "Rijnvliet",
+   "description": {
+    "en": "Recreatieplas Strijkviertel (waterway here): During the 1970s and 1980s, the area received both legal and illegal waste deposits.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Recreatieplas_Strijkviertel",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "history": {
+    "en": "Recreatieplas Strijkviertel (waterway here): Sand mining operations that created the site began in 1937 under Rijkswaterstaat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Recreatieplas_Strijkviertel",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   }
   },
   {
-   "name": "Strijkviertel"
+   "name": "Strijkviertel",
+   "description": {
+    "en": "The Strijkviertelplas, officially Recreatieplas Strijkviertel, is a recreational lake in Utrecht, named after a road nearby. The site covers 20.6 hectares, of which 12.7 are water: a lake about 750 metres long and 175 metres wide.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Recreatieplas_Strijkviertel",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "De Strijkviertelplas, officiële naam Recreatieplas Strijkviertel, is een recreatieplas in de stad Utrecht. De naam Strijkviertel is die van een hier nabijgelegen weg. == Beschrijving == Het terrein omvat 20,6 ha, waarvan 12,7 ha water (ongeveer 750 meter lang en ongeveer 175 meter breed)."
+   }
   },
   {
    "name": "Papendorp",
@@ -941,6 +1989,14 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Papendorp_(Utrecht)",
     "lang": "nl",
     "original": "Van oorsprong is Papendorp een polder. Dit gebied is in de 12e eeuw ontgonnen. Het lag net buiten de Stadsvrijheid van Utrecht en was een gerecht tot 1811, toen het met enkele aangrenzende gerechten samengevoegd werd tot de gemeente Oudenrijn. In het midden van de twintigste eeuw werd Papendorp door de aanleg van het Amsterdam-Rijnkanaal in tweeën gedeeld. De gemeente Utrecht had ten behoeve van woningbouw het oog laten vallen op het deel van Papendorp aan de oostzijde van dit kanaal."
+   },
+   "nameOrigin": {
+    "en": "Several roads in the Papendorp business park are named after famous cartographers, among them Mercator and Ortelius.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Papendorp_(Utrecht)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia",
+    "kind": "wikipedia",
+    "original": "Enkele wegen in het Bedrijvengebied Papendorp zijn vernoemd naar beroemde cartografen, onder wie Mercator en Ortelius."
    }
   }
  ]
