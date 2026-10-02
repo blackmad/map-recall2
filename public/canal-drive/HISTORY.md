@@ -1,5 +1,35 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — Landmark kits: our own low-poly towers, spires, domes and roofs
+
+User: could we generate low-poly models for major POIs? The 13 signature GLBs are
+3D Warehouse downloads (unresolved licence, 10-12k triangles each) and stay
+demo-only. Images were unreachable from this sandbox (Sketchfab, 3D Warehouse,
+Wikimedia all blocked; web search is text only), so the kits come from memory of
+the buildings, good to a few metres and not surveys. Nothing is copied.
+- How: OSM already models these buildings as stacked parts (the Westerkerk tower
+  is five prisms from 40 to 82 m), so heights are right and the shape is what is
+  missing. A kit (`landmarkKits.ts`) says, per OSM part id, what a part really is
+  (square or octagonal stage, material), what to stack on it (lantern, spire,
+  dome, crown, finial) and which parts carry a pitched roof, all generated from
+  the part's own footprint so position and orientation stay as accurate as the
+  data. Tower tiers get cornice ledges and gilt clock faces; the Palace drum gets
+  columns. Roofed parts are lowered to their eaves and walled in bare brick
+  (churches) or a sandstone window grid (Palace).
+- Kits so far (Photo/Storybook/Cartoon/Painted looks; Default unchanged):
+  Westerkerk (brick/stone/lead tower, imperial crown, nave roofs), Zuiderkerk
+  (80 m: stone octagon, lantern, needle spire), Montelbaanstoren (white clock
+  stages, lead spire), Noorderkerk (Greek-cross roofs, turret), Royal Palace
+  (copper dome on a columned drum, lantern, gilt top, leaded roofs).
+- Landmarks otherwise stay exempt from generic facades and roofs.
+- Tools: `npm run build:kit-viewer` and `public/canal-drive/kit-viewer.html?kit=
+  Westerkerk&az=30&el=15&r=170&y=42` render a kit from its real OSM parts with grey
+  context, which is how the shapes were iterated; the look spec has `k-*` spots and
+  `LOOK_FREE=1` for a free camera. In-game checks at all five spots, desktop
+  software GL, no basemap.
+- Pitfall found: `fitRect` rejected 16-vertex octagon footprints (a missing stage
+  in the Westerkerk tower); the kit path now allows any vertex count.
+
 ## 2026-10-02 — Roofs, gables, shopfronts, and a Storybook/Cartoon split
 
 User: the city looks too regular; photo and cartoon lack roofs, gables, mansards

@@ -25,6 +25,8 @@ export type RoofPlan = {
   tone: number;
   /** Per-building seed for small extras (chimney placement). */
   seed: string;
+  /** Set false for churches and other roofs that should not grow a chimney. */
+  chimney?: boolean;
 };
 
 export type Rect = { cx: number; cy: number; ux: number; uy: number; len: number; wid: number; coverage: number; /** Farthest any footprint vertex sits from the rectangle's border, metres. */ maxDev: number };
@@ -42,9 +44,9 @@ export function hash01(text: string): number {
 }
 
 /** Smallest-area oriented rectangle over the footprint's own edge directions. */
-export function fitRect(points: readonly Vec2[]): Rect | null {
+export function fitRect(points: readonly Vec2[], maxVertices = 14): Rect | null {
   const pts = points.length > 1 && points[0][0] === points[points.length - 1][0] && points[0][1] === points[points.length - 1][1] ? points.slice(0, -1) : points;
-  if (pts.length < 4 || pts.length > 14) return null;
+  if (pts.length < 4 || pts.length > maxVertices) return null;
   let area2 = 0;
   for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) area2 += pts[j][0] * pts[i][1] - pts[i][0] * pts[j][1];
   const polyArea = Math.abs(area2) / 2;
@@ -217,7 +219,7 @@ export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: Roof
       [0, 0], [L / cell, 0], [L / cell, sl / cell], [0, sl / cell], 'slope', dir(0, s * R, W / 2));
   }
   // A chimney stack on most roofs with a ridge: brick box, a pale cap.
-  if (hash01(`${plan.seed}:chim`) < 0.62) {
+  if (plan.chimney !== false && hash01(`${plan.seed}:chim`) < 0.62) {
     const side = hash01(`${plan.seed}:chimside`) < 0.5 ? -1 : 1, cu = side * (L / 2 - 1.2), cv = (hash01(`${plan.seed}:chimv`) - 0.5) * W * 0.25;
     const cw = 0.42, top = R + 1.15 + hash01(`${plan.seed}:chimh`) * 0.5, base = Math.max(0, R * (1 - Math.abs(cv) / (W / 2)) - 0.4);
     const c = [[cu - cw, cv - cw], [cu + cw, cv - cw], [cu + cw, cv + cw], [cu - cw, cv + cw]] as Vec2[];

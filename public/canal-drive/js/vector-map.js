@@ -820,7 +820,9 @@ class VectorBasemap {
     const decorate = withRoofs ? (feature) => api.decorateRoof(Facades.decorateFacade(feature)) : Facades.decorateFacade;
     // Landmark buildings (churches, museums, Centraal…) keep their own form: no generic facade or roof.
     if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
-    this._completeCity.setFeatureDecorator(api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds) : decorate);
+    const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds) : decorate;
+    // Landmark kits (spires, domes, pitched roofs on naves) lower their roofed parts to the eaves.
+    this._completeCity.setFeatureDecorator(this._buildings3dEnabled && api && api.decorateKitRoof ? (feature) => api.decorateKitRoof(base(feature)) : base);
   }
 
   /** Resolved landmark building ids, fetched once; re-decorates the resident city when they arrive. */
@@ -857,6 +859,7 @@ class VectorBasemap {
     this._buildings3dEnabled = look !== 'default';
     if (!this.map || !this.map.getLayer('osm-colored-buildings')) return; // layers are created from these flags on load
     this._applyFeatureDecorator();
+    this._refreshColoredBuildingFilter();
     if (this._buildings3dEnabled) {
       this._addThreeBuildingsLayer();
       if (this._threeBuildings) this._threeBuildings.setLook(look);
@@ -955,8 +958,13 @@ class VectorBasemap {
 
   _refreshColoredBuildingFilter() {
     if (!this.map) return;
-    const hide = this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds();
-    if (this._threeBuildings) this._threeBuildings.setHidden('signature', hide);
+    const signatureHide = this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds();
+    if (this._threeBuildings) this._threeBuildings.setHidden('signature', signatureHide);
+    // Landmark kits draw their own towers: the plain prisms they replace go, except the answer building,
+    // which keeps its yellow prism so a landmark question still lights up.
+    const kitApi = window.CanalRecallThreeBuildings;
+    const kitHide = this._buildings3dEnabled && kitApi && kitApi.KIT_HIDE_IDS ? kitApi.KIT_HIDE_IDS.filter(id => !(this._kitAnswerIds && this._kitAnswerIds.has(id))) : [];
+    const hide = kitHide.length ? [...signatureHide, ...kitHide] : signatureHide;
     const helpers = window.CanalRecallBuildings;
     for (const id of ['osm-colored-building-ground-floors', 'osm-colored-buildings', 'osm-colored-building-facades', 'osm-colored-building-roofs']) {
       if (!this.map.getLayer(id)) continue;
@@ -1868,6 +1876,7 @@ class VectorBasemap {
     this._highlightedBuildings = [];
     this._highlightedBuilding = null;
     if (this._threeBuildings) this._threeBuildings.setHidden('answer', []);
+    if (this._kitAnswerIds && this._kitAnswerIds.size) { this._kitAnswerIds = new Set(); if (this._buildings3dEnabled) this._refreshColoredBuildingFilter(); }
     const detailed = !!(this._detailedBuildingsVisible && this._detailedBuildings && this._detailedBuildings.ready);
     if (this._detailedBuildings) this._detailedBuildings.setActiveLandmark(detailed ? landmark : null);
     if (this._signatureLandmarks) this._signatureLandmarks.setActiveLandmark(detailed ? null : landmark);
@@ -1895,6 +1904,8 @@ class VectorBasemap {
       }
       this._highlightedBuilding = this._highlightedBuildings[0] || null;
       if (this._threeBuildings) this._threeBuildings.setHidden('answer', this._highlightedBuildings.map(target => target.id));
+      this._kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
+      if (this._buildings3dEnabled) this._refreshColoredBuildingFilter();
     }
     // Never fabricate an extrusion from an OSM footprint. If no renderer can
     // identify the actual building, a point acknowledges the selection without
