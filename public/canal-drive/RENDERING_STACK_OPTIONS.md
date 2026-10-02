@@ -98,3 +98,25 @@ labels; (2) replace per-colour canvases with one atlas plus a shader tint;
 (3) gables from `gable.ts`; (4) per-building wall data (door side, shopfront)
 from the building-facts tiles; (5) shimmer measurement against the current
 extrusion layer at the four named locations.
+
+## Variety pass (2026-10-02, later)
+
+Both looks now share one layout description with real variety: one, two or
+three windows per bay; rectangular, arched or round-topped windows; a taller
+first floor with a French-window balustrade and small attic windows on canal
+houses; ground floors that are a door, plain windows or a shopfront with an
+awning; shutters on some; painted frames on some. Three archetypes: canal
+brick, Amsterdam School (dark brick, pale floor bands, paired windows) and
+modern (ribbon windows over a spandrel). Archetype comes from construction year
+when a tile carries it (these tiles do not), else a seeded mix of about 60%
+canal, 20% school and 20% modern; any building 28 m or taller is modern.
+
+Wall and accent colours (door leaf, shutters, awning, painted frames) are no
+longer baked into the texture. Each bay is drawn twice, colour and tint mask
+(R wall, G accent), and a small shader multiplies per-vertex wall and accent
+colours through the mask: 234 meshes for 394 buildings, instead of one canvas
+per colour combination (over a thousand).
+
+Preview: a self-contained page (about 0.8 MB, data inlined) was published as a
+private artifact. Rebuild it from the esbuild `--minify` bundle plus
+`window.__SPIKE_EMBED = { features, brickUrl, lat, lng }`.

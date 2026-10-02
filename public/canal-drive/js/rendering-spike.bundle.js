@@ -27429,304 +27429,455 @@ void main() {
   var BAY_PX = 520;
   var STOREY_PX = 310;
   var GROUND_PX = 340;
-  var WOODWORK = ["#f1ede2", "#f1ede2", "#f1ede2", "#e8e2d0", "#2f4a3c"];
-  var DOORS = ["#243a2f", "#1f2a3a", "#3a1f1c", "#222222", "#2f4a3c"];
-  var CARTOON_WALLS = ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2"];
-  var CARTOON_ACCENTS = ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c"];
-  var OUTLINE = "#3b2a2a";
-  function bayStyleFor(seed, look2 = "photo") {
+  var variantKey = (v, look2) => `${look2}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}`;
+  function buildingStyle(seed, archetype) {
     const h = hashSeed(seed);
-    if (look2 === "cartoon") {
-      const accent = (h >>> 4) % CARTOON_ACCENTS.length;
-      return {
-        frame: "#fffaf0",
-        door: CARTOON_ACCENTS[accent],
-        shutters: accent % 2 === 0,
-        arch: false,
-        wall: CARTOON_WALLS[h % CARTOON_WALLS.length],
-        accent: CARTOON_ACCENTS[accent]
-      };
-    }
+    const windows = archetype === "modern" ? 1 : [2, 2, 3, 1][h % 4];
+    const shape = archetype === "canal" ? ["rect", "rect", "rect", "arch", "round"][(h >>> 3) % 5] : "rect";
     return {
-      wall: "#ffffff",
-      accent: "#ffffff",
-      frame: WOODWORK[h % WOODWORK.length],
-      door: DOORS[(h >>> 4) % DOORS.length],
-      shutters: (h >>> 8) % 5 === 0,
-      arch: (h >>> 11) % 4 === 0
+      archetype,
+      windows,
+      shape,
+      shutters: archetype === "canal" && (h >>> 8) % 4 === 0,
+      paintedFrames: (h >>> 10) % 5 === 0,
+      shop: (h >>> 13) % 4 === 0
     };
   }
+  var PALETTES = {
+    cartoon: {
+      canal: {
+        walls: ["#d9674a", "#e58a5c", "#eab85f", "#f0dfb8", "#e5a396", "#9dbb9b", "#7ea3c2", "#c9714a", "#f2c14e", "#b9a1c9"],
+        accents: ["#2a8c8c", "#e0a526", "#d9453d", "#2c4a7c", "#7a3b6e", "#2f6b45", "#4aa3d9"]
+      },
+      school: { walls: ["#9c5a42", "#8a4b3a", "#a8664c", "#7a4a40"], accents: ["#2c4a7c", "#2a8c8c", "#e0a526"] },
+      modern: { walls: ["#f4efe6", "#dcdcd6", "#e9d9c0", "#b9c4cc", "#f0c9a9"], accents: ["#2a8c8c", "#d9453d", "#2c4a7c", "#e0a526"] }
+    },
+    photo: {
+      canal: {
+        walls: ["#ffffff", "#f2d9c8", "#d9b9a4", "#e6c9b0", "#c9a38c", "#f0e4d2", "#ffd9b0", "#e8c0b0", "#d0c8c0"],
+        accents: ["#243a2f", "#1f2a3a", "#3a1f1c", "#222222", "#2f4a3c", "#6b2b2b", "#2c3e50"]
+      },
+      school: { walls: ["#b89080", "#a88070", "#9c7868"], accents: ["#1f2a3a", "#243a2f", "#3a1f1c"] },
+      modern: { walls: ["#f2f2ee", "#d8d8d2", "#e8dcc8", "#c8d0d4"], accents: ["#2c3e50", "#6b2b2b", "#243a2f"] }
+    }
+  };
+  function paletteFor(seed, archetype, look2) {
+    const h = hashSeed(seed), p = PALETTES[look2][archetype];
+    return { wall: p.walls[h % p.walls.length], accent: p.accents[(h >>> 5) % p.accents.length] };
+  }
+  function archetypeFor(seed, year, heightM) {
+    if (year !== null && year > 1700 && year < 2100) return year >= 1985 ? "modern" : year >= 1915 && year < 1945 ? "school" : "canal";
+    if (heightM >= 28) return "modern";
+    const r = (hashSeed(seed + ":a") >>> 3) % 100;
+    return r < 14 ? "modern" : r < 32 ? "school" : "canal";
+  }
+  var OUTLINE = "#3b2a2a";
   var cache = /* @__PURE__ */ new Map();
-  function drawBrick(ctx, brick, w, h) {
-    const tile = 105;
-    for (let y = 0; y < h; y += tile) for (let x = 0; x < w; x += tile) ctx.drawImage(brick, x, y, tile, tile);
-  }
-  function window2d(ctx, x, y, w, h, style) {
-    const frame = 9;
-    ctx.fillStyle = "rgba(20,14,10,0.55)";
-    ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
-    ctx.fillStyle = "#c9b496";
-    if (style.arch) {
-      ctx.beginPath();
-      ctx.ellipse(x + w / 2, y, w / 2 + 6, 22, 0, Math.PI, 0);
-      ctx.fill();
-    } else {
-      ctx.fillRect(x - 8, y - 26, w + 16, 22);
-      ctx.strokeStyle = "rgba(80,58,44,0.8)";
+  var Painter = class {
+    constructor(ctx, pass, look2) {
+      this.ctx = ctx;
+      this.pass = pass;
+      this.look = look2;
+    }
+    get cartoon() {
+      return this.look === "cartoon";
+    }
+    /** Fill with a role-aware colour: `wall`/`accent` become mask channels; `ink` is untinted. */
+    fill(role, colour) {
+      this.ctx.fillStyle = this.pass === "mask" ? role === "wall" ? "#ff0000" : role === "accent" ? "#00ff00" : "#000000" : role === "accent" ? "#ffffff" : colour;
+    }
+    stroke(colour, width) {
+      this.ctx.strokeStyle = this.pass === "mask" ? "#000000" : colour;
+      this.ctx.lineWidth = width;
+    }
+    /** Shading that only exists in the colour pass. */
+    shade(fn) {
+      if (this.pass === "colour") fn();
+    }
+    rr(x, y, w, h, r) {
+      const c = this.ctx;
+      c.beginPath();
+      c.moveTo(x + r, y);
+      c.arcTo(x + w, y, x + w, y + h, r);
+      c.arcTo(x + w, y + h, x, y + h, r);
+      c.arcTo(x, y + h, x, y, r);
+      c.arcTo(x, y, x + w, y, r);
+      c.closePath();
+    }
+  };
+  function wall(p, w, h, brick, archetype) {
+    const { ctx } = p;
+    if (p.pass === "mask") {
+      p.fill("wall", "");
+      ctx.fillRect(0, 0, w, h);
+      return;
+    }
+    if (p.cartoon || archetype === "modern") {
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, w, h);
+      ctx.strokeStyle = archetype === "modern" ? "rgba(0,0,0,0.05)" : "rgba(60,30,20,0.10)";
       ctx.lineWidth = 2;
-      for (let bx = x - 8; bx < x + w + 8; bx += 10) {
-        ctx.beginPath();
-        ctx.moveTo(bx, y - 26);
-        ctx.lineTo(bx, y - 4);
-        ctx.stroke();
-      }
-    }
-    ctx.fillStyle = "#cfcabd";
-    ctx.fillRect(x - 7, y + h + 1, w + 14, 8);
-    ctx.fillStyle = "rgba(0,0,0,0.25)";
-    ctx.fillRect(x - 7, y + h + 9, w + 14, 3);
-    ctx.fillStyle = style.frame;
-    ctx.fillRect(x, y, w, h);
-    const gx = x + frame, gy = y + frame, gw = w - 2 * frame, gh = h - 2 * frame;
-    const glass = ctx.createLinearGradient(0, gy, 0, gy + gh);
-    glass.addColorStop(0, "#6f8796");
-    glass.addColorStop(0.55, "#2f4350");
-    glass.addColorStop(1, "#1d2a33");
-    ctx.fillStyle = glass;
-    ctx.fillRect(gx, gy, gw, gh);
-    ctx.fillStyle = style.frame;
-    const rail = 6;
-    ctx.fillRect(gx, gy + gh / 2 - rail / 2, gw, rail);
-    for (let c = 1; c < 3; c++) ctx.fillRect(gx + gw * c / 3 - 1.5, gy, 3, gh);
-    for (const half of [0, 1]) ctx.fillRect(gx, gy + gh / 4 + half * (gh / 2) - 1.5, gw, 3);
-    if (style.shutters) {
-      ctx.fillStyle = "#2f4a3c";
-      ctx.fillRect(x - w * 0.42, y - 2, w * 0.4, h + 4);
-      ctx.fillRect(x + w * 1.02, y - 2, w * 0.4, h + 4);
-      ctx.fillStyle = "rgba(0,0,0,0.25)";
-      for (let sy = y + 6; sy < y + h; sy += 9) {
-        ctx.fillRect(x - w * 0.42, sy, w * 0.4, 2);
-        ctx.fillRect(x + w * 1.02, sy, w * 0.4, 2);
-      }
-    }
-  }
-  function door2d(ctx, x, groundY, style) {
-    const w = 112, h = 232, top = groundY - h;
-    ctx.fillStyle = "rgba(20,14,10,0.55)";
-    ctx.fillRect(x - 5, top - 5, w + 10, h + 5);
-    ctx.fillStyle = "#d9d4c7";
-    ctx.fillRect(x - 12, top - 34, w + 24, 26);
-    ctx.fillStyle = style.door;
-    ctx.fillRect(x, top, w, h);
-    const fan = 46;
-    ctx.fillStyle = "#1d2a33";
-    ctx.fillRect(x + 8, top + 8, w - 16, fan);
-    ctx.strokeStyle = style.frame;
-    ctx.lineWidth = 3;
-    for (let i = 0; i <= 4; i++) {
-      ctx.beginPath();
-      ctx.moveTo(x + w / 2, top + 8 + fan);
-      ctx.lineTo(x + 8 + (w - 16) * i / 4, top + 8);
-      ctx.stroke();
-    }
-    ctx.strokeStyle = "rgba(0,0,0,0.35)";
-    ctx.lineWidth = 3;
-    ctx.strokeRect(x + 14, top + fan + 22, w - 28, 62);
-    ctx.strokeRect(x + 14, top + fan + 100, w - 28, 62);
-    ctx.fillStyle = "#c9a24a";
-    ctx.fillRect(x + w - 24, top + h * 0.55, 8, 8);
-    ctx.fillStyle = "#bdb8ab";
-    ctx.fillRect(x - 14, groundY - 8, w + 28, 8);
-    ctx.fillStyle = "#a9a496";
-    ctx.fillRect(x - 24, groundY, w + 48, 10);
-  }
-  function roundRect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.arcTo(x + w, y, x + w, y + h, r);
-    ctx.arcTo(x + w, y + h, x, y + h, r);
-    ctx.arcTo(x, y + h, x, y, r);
-    ctx.arcTo(x, y, x + w, y, r);
-    ctx.closePath();
-  }
-  function cartoonWindow(ctx, x, y, w, h, style) {
-    ctx.lineJoin = "round";
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = OUTLINE;
-    if (style.shutters) {
-      ctx.fillStyle = style.accent;
-      for (const sx of [x - w * 0.46, x + w * 1.06]) {
-        roundRect(ctx, sx, y + 4, w * 0.4, h - 8, 6);
-        ctx.fill();
-        ctx.stroke();
-        ctx.lineWidth = 3;
-        for (let ly = y + 20; ly < y + h - 14; ly += 16) {
+      if (archetype === "modern") {
+        for (let x = 130; x < w; x += 130) {
           ctx.beginPath();
-          ctx.moveTo(sx + 6, ly);
-          ctx.lineTo(sx + w * 0.4 - 6, ly);
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, h);
           ctx.stroke();
         }
-        ctx.lineWidth = 6;
+        return;
+      }
+      for (let row = 0, y = 6; y < h; y += 14, row++) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+        for (let x = row % 2 * 24; x < w; x += 48) {
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x, y + 14);
+          ctx.stroke();
+        }
+      }
+      return;
+    }
+    for (let y = 0; y < h; y += 105) for (let x = 0; x < w; x += 105) ctx.drawImage(brick, x, y, 105, 105);
+    if (archetype === "school") {
+      ctx.fillStyle = "rgba(0,0,0,0.22)";
+      ctx.fillRect(0, 0, w, h);
+    }
+  }
+  function windowAt(p, x, y, w, h, v) {
+    const { ctx } = p, cartoon = p.cartoon, line = cartoon ? 6 : 0;
+    const shape = v.shape;
+    const topR = shape === "arch" ? w / 2 : shape === "round" ? 18 : 6;
+    const outline = () => {
+      if (cartoon) {
+        p.stroke(OUTLINE, line);
+        ctx.lineJoin = "round";
+        ctx.stroke();
+      }
+    };
+    const shutterColour = "#ffffff";
+    if (v.shutters && v.archetype === "canal") {
+      for (const sx of [x - w * 0.46, x + w * 1.06]) {
+        p.fill("accent", shutterColour);
+        p.rr(sx, y + 4, w * 0.4, h - 8, 5);
+        ctx.fill();
+        outline();
+        p.shade(() => {
+          ctx.strokeStyle = "rgba(0,0,0,0.30)";
+          ctx.lineWidth = 2;
+          for (let ly = y + 18; ly < y + h - 12; ly += 15) {
+            ctx.beginPath();
+            ctx.moveTo(sx + 5, ly);
+            ctx.lineTo(sx + w * 0.4 - 5, ly);
+            ctx.stroke();
+          }
+        });
       }
     }
-    ctx.fillStyle = "#fff1cf";
-    roundRect(ctx, x - 14, y - 34, w + 28, 28, 8);
+    p.fill("ink", "rgba(20,14,10,0.55)");
+    ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
+    const stone = cartoon ? "#fff1cf" : "#cfc8b8";
+    if (v.archetype !== "modern") {
+      p.fill("ink", stone);
+      if (shape === "arch") {
+        ctx.beginPath();
+        ctx.ellipse(x + w / 2, y + 2, w / 2 + 12, 30, 0, Math.PI, 0);
+        ctx.fill();
+        if (cartoon) outline();
+      } else {
+        p.rr(x - 12, y - 32, w + 24, 26, cartoon ? 8 : 2);
+        ctx.fill();
+        outline();
+        p.shade(() => {
+          if (!cartoon) {
+            ctx.strokeStyle = "rgba(80,58,44,0.7)";
+            ctx.lineWidth = 2;
+            for (let bx = x - 10; bx < x + w + 12; bx += 10) {
+              ctx.beginPath();
+              ctx.moveTo(bx, y - 32);
+              ctx.lineTo(bx, y - 6);
+              ctx.stroke();
+            }
+          }
+        });
+      }
+      p.fill("ink", stone);
+      p.rr(x - 10, y + h + 2, w + 20, 12, cartoon ? 6 : 1);
+      ctx.fill();
+      outline();
+    }
+    const frameColour = v.paintedFrames ? "#ffffff" : cartoon ? "#fffaf0" : "#f1ede2";
+    p.fill(v.paintedFrames ? "accent" : "ink", frameColour);
+    if (shape === "arch") {
+      ctx.beginPath();
+      ctx.moveTo(x, y + h);
+      ctx.lineTo(x, y + w / 2);
+      ctx.arc(x + w / 2, y + w / 2, w / 2, Math.PI, 0);
+      ctx.lineTo(x + w, y + h);
+      ctx.closePath();
+    } else if (shape === "round") {
+      p.rr(x, y, w, h, Math.min(w / 2, 28));
+    } else p.rr(x, y, w, h, topR);
     ctx.fill();
-    ctx.stroke();
-    roundRect(ctx, x - 12, y + h + 2, w + 24, 14, 6);
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = style.frame;
-    roundRect(ctx, x, y, w, h, 10);
-    ctx.fill();
-    ctx.stroke();
-    const g = ctx.createLinearGradient(0, y, 0, y + h);
-    g.addColorStop(0, "#a9e0f7");
-    g.addColorStop(1, "#5aa8d8");
-    ctx.fillStyle = g;
-    roundRect(ctx, x + 12, y + 12, w - 24, h - 24, 6);
-    ctx.fill();
-    ctx.lineWidth = 4;
-    ctx.stroke();
-    ctx.fillStyle = style.frame;
-    ctx.fillRect(x + w / 2 - 4, y + 12, 8, h - 24);
-    ctx.fillRect(x + 12, y + h * 0.42, w - 24, 8);
-    ctx.fillStyle = "rgba(255,255,255,0.75)";
-    ctx.beginPath();
-    ctx.moveTo(x + 20, y + 20);
-    ctx.lineTo(x + 36, y + 20);
-    ctx.lineTo(x + 20, y + 52);
-    ctx.closePath();
-    ctx.fill();
+    outline();
+    const m = cartoon ? 12 : 9;
+    p.shade(() => {
+      const g = ctx.createLinearGradient(0, y, 0, y + h);
+      if (cartoon) {
+        g.addColorStop(0, "#a9e0f7");
+        g.addColorStop(1, "#5aa8d8");
+      } else {
+        g.addColorStop(0, "#6f8796");
+        g.addColorStop(0.55, "#2f4350");
+        g.addColorStop(1, "#1d2a33");
+      }
+      ctx.fillStyle = g;
+      if (shape === "arch") {
+        ctx.beginPath();
+        ctx.moveTo(x + m, y + h - m);
+        ctx.lineTo(x + m, y + w / 2);
+        ctx.arc(x + w / 2, y + w / 2, w / 2 - m, Math.PI, 0);
+        ctx.lineTo(x + w - m, y + h - m);
+        ctx.closePath();
+        ctx.fill();
+      } else {
+        p.rr(x + m, y + m, w - 2 * m, h - 2 * m, 5);
+        ctx.fill();
+      }
+    });
+    if (p.pass === "mask") {
+      ctx.fillStyle = "#000";
+      ctx.fillRect(x + m, y + m, w - 2 * m, h - 2 * m);
+    }
+    p.fill(v.paintedFrames ? "accent" : "ink", frameColour);
+    if (cartoon) {
+      ctx.fillRect(x + w / 2 - 4, y + m, 8, h - 2 * m);
+      ctx.fillRect(x + m, y + h * 0.42, w - 2 * m, 8);
+    } else {
+      ctx.fillRect(x + m, y + h / 2 - 3, w - 2 * m, 6);
+      for (let c = 1; c < 3; c++) ctx.fillRect(x + m + (w - 2 * m) * c / 3 - 1.5, y + m, 3, h - 2 * m);
+      for (const half of [0, 1]) ctx.fillRect(x + m, y + h / 4 + half * (h / 2) - 1.5, w - 2 * m, 3);
+    }
+    p.shade(() => {
+      if (cartoon) {
+        ctx.fillStyle = "rgba(255,255,255,0.75)";
+        ctx.beginPath();
+        ctx.moveTo(x + 20, y + h * 0.1 + 14);
+        ctx.lineTo(x + 36, y + h * 0.1 + 14);
+        ctx.lineTo(x + 20, y + h * 0.1 + 46);
+        ctx.closePath();
+        ctx.fill();
+      }
+    });
   }
-  function cartoonDoor(ctx, x, groundY, style) {
-    const w = 118, h = 226, top = groundY - h;
-    ctx.lineJoin = "round";
-    ctx.lineWidth = 6;
-    ctx.strokeStyle = OUTLINE;
-    ctx.fillStyle = "#fff1cf";
-    roundRect(ctx, x - 14, top - 40, w + 28, h + 40, 14);
+  function doorAt(p, x, groundY, v) {
+    const { ctx } = p, cartoon = p.cartoon, w = 118, h = 226, top = groundY - h;
+    const line = () => {
+      if (cartoon) {
+        p.stroke(OUTLINE, 6);
+        ctx.lineJoin = "round";
+        ctx.stroke();
+      }
+    };
+    p.fill("ink", "rgba(20,14,10,0.55)");
+    ctx.fillRect(x - 5, top - 5, w + 10, h + 5);
+    p.fill("ink", cartoon ? "#fff1cf" : "#d9d4c7");
+    p.rr(x - 14, top - 40, w + 28, h + 40, cartoon ? 14 : 3);
     ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = style.accent;
-    roundRect(ctx, x, top, w, h, 12);
+    line();
+    p.fill("accent", "#ffffff");
+    p.rr(x, top, w, h, cartoon ? 12 : 2);
     ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = "#a9e0f7";
+    line();
+    p.fill("ink", cartoon ? "#a9e0f7" : "#1d2a33");
     ctx.beginPath();
     ctx.arc(x + w / 2, top + 52, 38, Math.PI, 0);
     ctx.lineTo(x + w / 2 + 38, top + 66);
     ctx.lineTo(x + w / 2 - 38, top + 66);
     ctx.closePath();
     ctx.fill();
-    ctx.stroke();
-    ctx.lineWidth = 3;
-    for (let i = 1; i < 4; i++) {
+    line();
+    p.stroke(cartoon ? OUTLINE : "#f1ede2", 3);
+    if (p.pass === "colour") for (let i = 1; i < 4; i++) {
       ctx.beginPath();
       ctx.moveTo(x + w / 2, top + 66);
       ctx.lineTo(x + w / 2 - 38 + 76 * i / 4, top + 20);
       ctx.stroke();
     }
-    ctx.lineWidth = 5;
-    ctx.strokeStyle = "rgba(59,42,42,0.55)";
-    roundRect(ctx, x + 16, top + 86, w - 32, 56, 8);
-    ctx.stroke();
-    roundRect(ctx, x + 16, top + 152, w - 32, 56, 8);
-    ctx.stroke();
-    ctx.fillStyle = "#ffd166";
-    ctx.beginPath();
-    ctx.arc(x + w - 22, top + h * 0.55, 8, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.strokeStyle = OUTLINE;
-    ctx.lineWidth = 6;
-    ctx.fillStyle = "#fff1cf";
-    roundRect(ctx, x - 26, groundY - 16, w + 52, 16, 6);
-    ctx.fill();
-    ctx.stroke();
-  }
-  function cartoonBay(kind, style, w, h) {
-    const canvas = document.createElement("canvas");
-    canvas.width = w;
-    canvas.height = h;
-    const ctx = canvas.getContext("2d");
-    ctx.fillStyle = style.wall;
-    ctx.fillRect(0, 0, w, h);
-    ctx.strokeStyle = "rgba(60,30,20,0.10)";
-    ctx.lineWidth = 2;
-    for (let row = 0, y = 6; y < h; y += 14, row++) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(w, y);
+    p.shade(() => {
+      ctx.strokeStyle = "rgba(0,0,0,0.35)";
+      ctx.lineWidth = 4;
+      p.rr(x + 16, top + 86, w - 32, 56, 6);
       ctx.stroke();
-      for (let x = row % 2 * 24; x < w; x += 48) {
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(x, y + 14);
+      p.rr(x + 16, top + 152, w - 32, 56, 6);
+      ctx.stroke();
+      ctx.fillStyle = "#ffd166";
+      ctx.beginPath();
+      ctx.arc(x + w - 22, top + h * 0.55, 7, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    p.fill("ink", cartoon ? "#fff1cf" : "#bdb8ab");
+    p.rr(x - 26, groundY - 16, w + 52, 16, cartoon ? 6 : 1);
+    ctx.fill();
+    line();
+    void v;
+  }
+  function shopAt(p, w, groundY) {
+    const { ctx } = p, cartoon = p.cartoon, x = 36, top = 74, sw = w - 72, sh = groundY - top - 8;
+    const line = () => {
+      if (cartoon) {
+        p.stroke(OUTLINE, 6);
+        ctx.lineJoin = "round";
         ctx.stroke();
       }
+    };
+    p.fill("ink", "rgba(20,14,10,0.5)");
+    ctx.fillRect(x - 6, top - 6, sw + 12, sh + 12);
+    p.fill("ink", cartoon ? "#fffaf0" : "#e4dfd2");
+    p.rr(x, top, sw, sh, cartoon ? 10 : 2);
+    ctx.fill();
+    line();
+    p.shade(() => {
+      const g = ctx.createLinearGradient(0, top, 0, top + sh);
+      if (cartoon) {
+        g.addColorStop(0, "#bdeaff");
+        g.addColorStop(1, "#7ec0e6");
+      } else {
+        g.addColorStop(0, "#7e97a6");
+        g.addColorStop(1, "#27363f");
+      }
+      ctx.fillStyle = g;
+      p.rr(x + 12, top + 12, sw - 24, sh - 24, 6);
+      ctx.fill();
+    });
+    if (p.pass === "mask") {
+      ctx.fillStyle = "#000";
+      ctx.fillRect(x + 12, top + 12, sw - 24, sh - 24);
     }
-    if (kind === "upper") {
-      cartoonWindow(ctx, w * 0.22 - 58, 66, 116, 186, style);
-      cartoonWindow(ctx, w * 0.78 - 58, 66, 116, 186, style);
-    } else if (kind === "groundDoor") {
-      cartoonDoor(ctx, w * 0.18, h - 20, style);
-      cartoonWindow(ctx, w * 0.64, 76, 126, 150, style);
-    } else if (kind === "groundWindow") {
-      cartoonWindow(ctx, w * 0.2 - 18, 66, 136, 164, style);
-      cartoonWindow(ctx, w * 0.62, 66, 136, 164, style);
-    }
-    if (kind !== "upper") {
-      ctx.fillStyle = "rgba(40,24,24,0.30)";
-      ctx.fillRect(0, h - 20, w, 20);
-    }
-    return canvas;
+    p.fill("ink", cartoon ? "#fffaf0" : "#e4dfd2");
+    for (const mx of [x + sw * 0.36, x + sw * 0.7]) ctx.fillRect(mx - 4, top + 12, 8, sh - 24);
+    p.fill("accent", "#ffffff");
+    p.rr(x - 10, top - 44, sw + 20, 40, 6);
+    ctx.fill();
+    line();
+    p.shade(() => {
+      ctx.fillStyle = "rgba(255,255,255,0.55)";
+      for (let sx = x; sx < x + sw; sx += 60) ctx.fillRect(sx, top - 40, 30, 32);
+    });
   }
-  function bayTexture(kind, style, brick, look2 = "photo") {
-    const key = `${look2}|${kind}|${style.wall}|${style.frame}|${style.door}|${style.shutters}|${style.arch}`;
-    const hit = cache.get(key);
+  function ribbon(p, w, y, h) {
+    const { ctx } = p, cartoon = p.cartoon;
+    p.fill("ink", cartoon ? "#fffaf0" : "#cfd3d4");
+    ctx.fillRect(14, y - 8, w - 28, h + 16);
+    if (cartoon) {
+      p.stroke(OUTLINE, 6);
+      ctx.strokeRect(14, y - 8, w - 28, h + 16);
+    }
+    p.shade(() => {
+      const g = ctx.createLinearGradient(0, y, 0, y + h);
+      if (cartoon) {
+        g.addColorStop(0, "#a9e0f7");
+        g.addColorStop(1, "#5aa8d8");
+      } else {
+        g.addColorStop(0, "#8fa6b4");
+        g.addColorStop(1, "#2d3d48");
+      }
+      ctx.fillStyle = g;
+      ctx.fillRect(24, y, w - 48, h);
+    });
+    if (p.pass === "mask") {
+      ctx.fillStyle = "#000";
+      ctx.fillRect(24, y, w - 48, h);
+    }
+    p.fill("ink", cartoon ? "#fffaf0" : "#cfd3d4");
+    for (let mx = 24 + (w - 48) / 4; mx < w - 30; mx += (w - 48) / 4) ctx.fillRect(mx - 3, y, 6, h);
+    p.fill("accent", "#ffffff");
+    ctx.fillRect(14, y + h + 10, w - 28, 44);
+  }
+  function layoutWindows(p, v, w, y, h) {
+    const ww = v.windows === 1 ? 150 : v.windows === 2 ? 112 : 82;
+    for (let i = 0; i < v.windows; i++) windowAt(p, (i + 0.5) / v.windows * w - ww / 2, y, ww, h, v);
+  }
+  function draw(p, v, w, h, brick) {
+    const { ctx } = p;
+    wall(p, w, h, brick, v.archetype);
+    const ground = v.kind === "groundDoor" || v.kind === "groundShop" || v.kind === "ground";
+    if (v.archetype === "modern") {
+      if (!ground) ribbon(p, w, v.kind === "attic" ? 120 : 70, v.kind === "attic" ? 90 : 140);
+      else if (v.kind === "groundShop") shopAt(p, w, h - 24);
+      else {
+        windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: "rect", archetype: "modern" });
+        if (v.kind === "groundDoor") doorAt(p, w * 0.62, h - 24, v);
+      }
+    } else if (v.kind === "plain") {
+    } else if (ground) {
+      if (v.kind === "groundShop") {
+        shopAt(p, w, h - 24);
+      } else if (v.kind === "groundDoor") {
+        doorAt(p, w * 0.14, h - 24, v);
+        layoutWindows(p, { ...v, windows: 1 }, w * 1.28, 76, 150);
+      } else layoutWindows(p, v, w, 70, 150);
+      if (v.archetype === "school") {
+        p.fill("ink", p.cartoon ? "#fff1cf" : "#c9c1ae");
+        ctx.fillRect(0, h - 70, w, 8);
+      }
+    } else {
+      const [y, wh] = v.kind === "upperTall" ? [26, 250] : v.kind === "attic" ? [96, 118] : [62, 188];
+      if (v.archetype === "school") {
+        p.fill("ink", p.cartoon ? "#fff1cf" : "#c9c1ae");
+        ctx.fillRect(0, 0, w, 16);
+        ctx.fillRect(0, h - 10, w, 10);
+        for (const cx of [0.3, 0.7]) {
+          windowAt(p, w * cx - 38, y + 6, 76, wh - 8, { ...v, shape: "rect", shutters: false });
+        }
+      } else layoutWindows(p, v, w, y, wh);
+      if (v.kind === "upperTall" && v.archetype === "canal") {
+        p.fill("ink", p.cartoon ? "#fffaf0" : "#2b2b2b");
+        ctx.fillRect(w * 0.1, y + wh - 40, w * 0.8, 6);
+        for (let bx = w * 0.1; bx < w * 0.9; bx += 18) ctx.fillRect(bx, y + wh - 40, 4, 38);
+      }
+    }
+    if (ground) {
+      p.shade(() => {
+        ctx.fillStyle = p.cartoon ? "rgba(40,24,24,0.30)" : "rgba(40,36,34,0.78)";
+        ctx.fillRect(0, h - 24, w, 24);
+      });
+    }
+  }
+  function bayTextures(v, brick, look2) {
+    const key = variantKey(v, look2), hit = cache.get(key);
     if (hit) return hit;
-    const w = BAY_PX, h = kind === "upper" ? STOREY_PX : GROUND_PX;
-    if (look2 === "cartoon") {
-      const c = cartoonBay(kind, style, w, h);
-      cache.set(key, c);
-      return c;
-    }
-    const canvas = document.createElement("canvas");
-    canvas.width = w;
-    canvas.height = h;
-    const ctx = canvas.getContext("2d");
-    drawBrick(ctx, brick, w, h);
-    if (kind === "upper") {
-      window2d(ctx, w * 0.22 - 55, 60, 110, 188, style);
-      window2d(ctx, w * 0.78 - 55, 60, 110, 188, style);
-    } else if (kind === "groundDoor") {
-      door2d(ctx, w * 0.2, h - 24, style);
-      window2d(ctx, w * 0.66, 70, 120, 150, style);
-    } else if (kind === "groundWindow") {
-      window2d(ctx, w * 0.2 - 15, 60, 130, 160, style);
-      window2d(ctx, w * 0.62, 60, 130, 160, style);
-    }
-    if (kind !== "upper") {
-      ctx.fillStyle = "rgba(40,36,34,0.78)";
-      ctx.fillRect(0, h - 24, w, 24);
-    }
-    cache.set(key, canvas);
-    return canvas;
+    const w = BAY_PX, h = v.kind === "upper" || v.kind === "upperTall" || v.kind === "attic" || v.kind === "plain" ? STOREY_PX : GROUND_PX;
+    const make = (pass) => {
+      const canvas = document.createElement("canvas");
+      canvas.width = w;
+      canvas.height = h;
+      draw(new Painter(canvas.getContext("2d"), pass, look2), v, w, h, brick);
+      return canvas;
+    };
+    const out = { colour: make("colour"), mask: make("mask") };
+    cache.set(key, out);
+    return out;
   }
 
   // src/canalRecall/renderingSpike.ts
+  var embed = window.__SPIKE_EMBED;
   var q = new URLSearchParams(location.search);
-  var num = (key, fallback) => Number.isFinite(Number(q.get(key))) && q.get(key) !== null ? Number(q.get(key)) : fallback;
-  var lat0 = num("lat", 52.3742);
-  var lng0 = num("lng", 4.8817);
+  var num = (key, fallback) => q.get(key) !== null && Number.isFinite(Number(q.get(key))) ? Number(q.get(key)) : fallback;
+  var lat0 = embed?.lat ?? num("lat", 52.3742);
+  var lng0 = embed?.lng ?? num("lng", 4.8817);
   var radius = num("radius", 160);
   var look = q.get("look") === "photo" ? "photo" : "cartoon";
   var mode = q.get("mode") === "repeat" ? "repeat" : "aligned";
   var kx = 111320 * Math.cos(lat0 * Math.PI / 180);
   var ky = 110540;
   var local = ([lng, lat]) => [(lng - lng0) * kx, (lat - lat0) * ky];
-  var WALL_TINTS = ["#ffffff", "#f2d9c8", "#d9b9a4", "#e6c9b0", "#c9a38c", "#f0e4d2"];
-  var ROOF_TINTS = look === "cartoon" ? ["#b5574a", "#7f93a3", "#6b7785", "#a8786a"] : ["#8d5a48", "#7c8080", "#9a8f80", "#6e6a68"];
+  var ROOFS = {
+    cartoon: ["#b5574a", "#7f93a3", "#6b7785", "#a8786a", "#8a6f9c"],
+    photo: ["#8d5a48", "#7c8080", "#9a8f80", "#6e6a68"]
+  };
   async function loadTile(z, x, y) {
     const response = await fetch(`/data/extracts/amsterdam/building-tiles/${z}/${x}/${y}.geojson.gz`);
     if (!response.ok) return [];
@@ -27737,145 +27888,303 @@ void main() {
   }
   async function loadBrick() {
     const image = new Image();
-    image.src = "/canal-drive/materials/ambientcg/Bricks057/colour.jpg";
+    image.src = embed?.brickUrl ?? "/canal-drive/materials/ambientcg/Bricks057/colour.jpg";
     await image.decode();
     return image;
   }
-  var doors = [];
-  var buckets = /* @__PURE__ */ new Map();
-  function bucketFor(kind, seed) {
-    const st = bayStyleFor(seed, look);
-    const key = `${kind}|${st.wall}|${st.frame}|${st.door}|${st.shutters}|${st.arch}`;
-    let entry = buckets.get(key);
-    if (!entry) {
-      entry = { kind, seed, bucket: { positions: [], uvs: [], colours: [], index: [] } };
-      buckets.set(key, entry);
-    }
-    return entry.bucket;
-  }
-  function quad(b, a, c, y0, y1, u0, u1, v0, v1, tint) {
+  var emptyBucket = () => ({ positions: [], uvs: [], wall: [], accent: [], colours: [], index: [] });
+  function quad(b, a, c, y0, y1, u0, u1, v0, v1, wall2, accent) {
     const base = b.positions.length / 3;
     b.positions.push(a.x, y0, a.z, c.x, y0, c.z, c.x, y1, c.z, a.x, y1, a.z);
     b.uvs.push(u0, v0, u1, v0, u1, v1, u0, v1);
-    for (let i = 0; i < 4; i++) b.colours.push(tint.r, tint.g, tint.b);
+    for (let i = 0; i < 4; i++) {
+      b.wall.push(wall2.r, wall2.g, wall2.b);
+      b.accent.push(accent.r, accent.g, accent.b);
+    }
     b.index.push(base, base + 1, base + 2, base, base + 2, base + 3);
   }
-  function addBuilding(feature, roofs) {
-    const p = feature.properties, id = String(p.id ?? Math.random());
-    const height = Number(p.height), minHeight = Number(p.minHeight) || 0;
-    if (!Number.isFinite(height) || height - minHeight < 2) return;
-    const polygons = feature.geometry.type === "Polygon" ? [feature.geometry.coordinates] : feature.geometry.type === "MultiPolygon" ? feature.geometry.coordinates : [];
-    const tint = new Color(look === "cartoon" ? "#ffffff" : WALL_TINTS[hashSeed(id) % WALL_TINTS.length]);
-    const roofTint = new Color(ROOF_TINTS[hashSeed(id + "r") % ROOF_TINTS.length]);
-    for (const polygon of polygons) {
-      let ring = polygon[0].map(local);
-      if (ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1]) ring.pop();
-      if (ring.length < 3) continue;
-      let area2 = 0;
-      for (let i = 0; i < ring.length; i++) {
-        const [x1, y1] = ring[i], [x2, y2] = ring[(i + 1) % ring.length];
-        area2 += x1 * y2 - x2 * y1;
+  function wallMaterial(map, mask) {
+    const material = new MeshLambertMaterial({ map, side: DoubleSide });
+    material.onBeforeCompile = (shader) => {
+      shader.uniforms.tintMask = { value: mask };
+      shader.vertexShader = shader.vertexShader.replace("#include <common>", "#include <common>\nattribute vec3 aWall;\nattribute vec3 aAccent;\nvarying vec3 vWall;\nvarying vec3 vAccent;").replace("#include <begin_vertex>", "#include <begin_vertex>\nvWall = aWall; vAccent = aAccent;");
+      shader.fragmentShader = shader.fragmentShader.replace("#include <common>", "#include <common>\nuniform sampler2D tintMask;\nvarying vec3 vWall;\nvarying vec3 vAccent;").replace("#include <map_fragment>", "#include <map_fragment>\nvec4 tm = texture2D(tintMask, vMapUv);\ndiffuseColor.rgb *= mix(vec3(1.0), vWall, tm.r);\ndiffuseColor.rgb *= mix(vec3(1.0), vAccent, tm.g);");
+    };
+    return material;
+  }
+  function buildWorld(features, brick, renderer) {
+    const group = new Group();
+    const buckets = /* @__PURE__ */ new Map();
+    const roofs = emptyBucket();
+    const doors = [];
+    const archetypeCount = { canal: 0, school: 0, modern: 0 };
+    const bucketFor = (variant) => {
+      const key = variantKey(variant, look);
+      let entry = buckets.get(key);
+      if (!entry) {
+        entry = { variant, bucket: emptyBucket() };
+        buckets.set(key, entry);
       }
-      if (area2 < 0) ring = ring.reverse();
-      for (let i = 0; i < ring.length; i++) {
-        const [ax, ay] = ring[i], [bx, by] = ring[(i + 1) % ring.length];
-        const length = Math.hypot(bx - ax, by - ay);
-        if (length < 0.3) continue;
-        const a = new Vector3(ax, 0, -ay), c = new Vector3(bx, 0, -by);
-        const rise = height - minHeight;
-        const plan = planWall(length, height, minHeight, `${id}:${i}`);
-        const seed = id;
-        if (mode === "repeat" || plan.plain) {
-          const kind = plan.plain ? "plain" : "upper";
-          quad(bucketFor(kind, seed), a, c, minHeight, height, 0, length / TARGET_BAY_M, 0, rise / TARGET_STOREY_M, tint);
-          continue;
+      return entry.bucket;
+    };
+    let count = 0;
+    for (const feature of features) {
+      const ring0 = feature.geometry.type === "Polygon" ? feature.geometry.coordinates[0] : feature.geometry.type === "MultiPolygon" ? feature.geometry.coordinates[0][0] : null;
+      if (!ring0) continue;
+      const [cx, cy] = local(ring0[0]);
+      if (Math.hypot(cx, cy) > radius) continue;
+      const p = feature.properties, id = String(p.id ?? Math.random());
+      const height = Number(p.height), minHeight = Number(p.minHeight) || 0;
+      if (!Number.isFinite(height) || height - minHeight < 2) continue;
+      count++;
+      const year = Number.isFinite(Number(p.constructionYear)) && p.constructionYear != null ? Number(p.constructionYear) : null;
+      const archetype = archetypeFor(id, year, height);
+      archetypeCount[archetype]++;
+      const style = buildingStyle(id, archetype);
+      const palette = paletteFor(id, archetype, look);
+      const wallColour = new Color(palette.wall), accentColour = new Color(palette.accent);
+      const roofColour = new Color(ROOFS[look][hashSeed(id + "r") % ROOFS[look].length]);
+      const attic = (hashSeed(id + ":attic") & 1) === 1;
+      const polygons = feature.geometry.type === "Polygon" ? [feature.geometry.coordinates] : feature.geometry.coordinates;
+      const variantOf = (kind) => ({ archetype, kind, windows: style.windows, shape: style.shape, shutters: style.shutters, paintedFrames: style.paintedFrames });
+      for (const polygon of polygons) {
+        let ring = polygon[0].map(local);
+        if (ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1]) ring.pop();
+        if (ring.length < 3) continue;
+        let area2 = 0;
+        for (let i = 0; i < ring.length; i++) {
+          const [x1, y1] = ring[i], [x2, y2] = ring[(i + 1) % ring.length];
+          area2 += x1 * y2 - x2 * y1;
         }
-        const lerp2 = (t) => new Vector3().lerpVectors(a, c, t);
-        for (let bay = 0; bay < plan.bays; bay++) {
-          const from = lerp2(bay / plan.bays), to = lerp2((bay + 1) / plan.bays);
-          const kind = plan.doorBays.includes(bay) ? "groundDoor" : "groundWindow";
-          quad(bucketFor(kind, seed), from, to, minHeight, minHeight + plan.groundHeightM, 0, 1, 0, 1, tint);
-          if (kind === "groundDoor" && minHeight === 0) {
-            const dx = (bx - ax) / length, dy = (by - ay) / length;
-            const mid = lerp2((bay + 0.25) / plan.bays);
-            doors.push({ x: mid.x, z: mid.z, nx: dy, nz: dx, y: 1.2 });
+        if (area2 < 0) ring = ring.reverse();
+        for (let i = 0; i < ring.length; i++) {
+          const [ax, ay] = ring[i], [bx, by] = ring[(i + 1) % ring.length];
+          const length = Math.hypot(bx - ax, by - ay);
+          if (length < 0.3) continue;
+          const a = new Vector3(ax, 0, -ay), c = new Vector3(bx, 0, -by);
+          const plan = planWall(length, height, minHeight, `${id}:${i}`);
+          if (mode === "repeat" || plan.plain) {
+            quad(bucketFor(variantOf(plan.plain ? "plain" : "upper")), a, c, minHeight, height, 0, length / TARGET_BAY_M, 0, (height - minHeight) / TARGET_STOREY_M, wallColour, accentColour);
+            continue;
           }
-          if (plan.storeys > 0) quad(bucketFor("upper", seed), from, to, minHeight + plan.groundHeightM, height, 0, 1, 0, plan.storeys, tint);
+          const lerp2 = (t) => new Vector3().lerpVectors(a, c, t);
+          for (let bay = 0; bay < plan.bays; bay++) {
+            const from = lerp2(bay / plan.bays), to = lerp2((bay + 1) / plan.bays);
+            const door = plan.doorBays.includes(bay);
+            const kind = door ? "groundDoor" : style.shop ? "groundShop" : "ground";
+            quad(bucketFor(variantOf(kind)), from, to, minHeight, minHeight + plan.groundHeightM, 0, 1, 0, 1, wallColour, accentColour);
+            if (door && minHeight === 0) {
+              const mid = lerp2((bay + 0.25) / plan.bays);
+              doors.push({ x: mid.x, z: mid.z, nx: (by - ay) / length, nz: (bx - ax) / length });
+            }
+            for (let s = 0; s < plan.storeys; s++) {
+              const rich = archetype === "canal" && plan.storeys >= 3;
+              const upper = rich && s === 0 ? "upperTall" : rich && attic && s === plan.storeys - 1 ? "attic" : "upper";
+              const y0 = minHeight + plan.groundHeightM + s * plan.storeyHeightM;
+              quad(bucketFor(variantOf(upper)), from, to, y0, y0 + plan.storeyHeightM, 0, 1, 0, 1, wallColour, accentColour);
+            }
+          }
         }
+        const tris = ShapeUtils.triangulateShape(ring.map(([x, y]) => new Vector2(x, y)), []);
+        const base = roofs.positions.length / 3;
+        for (const [x, y] of ring) {
+          roofs.positions.push(x, height, -y);
+          roofs.uvs.push(0, 0);
+          roofs.colours.push(roofColour.r, roofColour.g, roofColour.b);
+        }
+        for (const t of tris) roofs.index.push(base + t[0], base + t[2], base + t[1]);
       }
-      const shape = ring.map(([x, y]) => new Vector2(x, y));
-      const tris = ShapeUtils.triangulateShape(shape, []);
-      const base = roofs.positions.length / 3;
-      for (const [x, y] of ring) {
-        roofs.positions.push(x, height, -y);
-        roofs.uvs.push(0, 0);
-        roofs.colours.push(roofTint.r, roofTint.g, roofTint.b);
-      }
-      for (const t of tris) roofs.index.push(base + t[0], base + t[2], base + t[1]);
     }
+    const geometry = (b) => {
+      const g = new BufferGeometry();
+      g.setAttribute("position", new Float32BufferAttribute(b.positions, 3));
+      g.setAttribute("uv", new Float32BufferAttribute(b.uvs, 2));
+      if (b.wall.length) {
+        g.setAttribute("aWall", new Float32BufferAttribute(b.wall, 3));
+        g.setAttribute("aAccent", new Float32BufferAttribute(b.accent, 3));
+      }
+      if (b.colours.length) g.setAttribute("color", new Float32BufferAttribute(b.colours, 3));
+      g.setIndex(b.index);
+      g.computeVertexNormals();
+      return g;
+    };
+    const anisotropy = renderer.capabilities.getMaxAnisotropy();
+    const prepare = (canvas, srgb) => {
+      const t = new CanvasTexture(canvas);
+      t.colorSpace = srgb ? SRGBColorSpace : NoColorSpace;
+      t.wrapS = t.wrapT = RepeatWrapping;
+      t.anisotropy = anisotropy;
+      t.generateMipmaps = true;
+      t.minFilter = LinearMipmapLinearFilter;
+      return t;
+    };
+    for (const { variant, bucket } of buckets.values()) {
+      const { colour, mask } = bayTextures(variant, brick, look);
+      group.add(new Mesh(geometry(bucket), wallMaterial(prepare(colour, true), prepare(mask, false))));
+    }
+    group.add(new Mesh(geometry(roofs), new MeshLambertMaterial({ vertexColors: true, side: DoubleSide })));
+    window.__spikeDoors = doors;
+    return { group, stats: { buildings: count, meshes: buckets.size + 1, doors: doors.length, ...archetypeCount } };
   }
   async function main() {
     const renderer = new WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-    renderer.setPixelRatio(1);
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     renderer.setSize(innerWidth, innerHeight);
     renderer.outputColorSpace = SRGBColorSpace;
     document.body.style.margin = "0";
     document.body.appendChild(renderer.domElement);
     const scene = new Scene();
-    scene.background = new Color(look === "cartoon" ? "#bfe3f5" : "#d9e6ee");
-    scene.add(new HemisphereLight("#ffffff", "#e6dccb", look === "cartoon" ? 2.2 : 1.5));
+    const hemi = new HemisphereLight("#ffffff", "#e6dccb", 2.2);
     const sun = new DirectionalLight("#fff4e0", 1.6);
     sun.position.set(-80, 120, 60);
-    scene.add(sun);
-    const ground = new Mesh(new PlaneGeometry(4e3, 4e3).rotateX(-Math.PI / 2), new MeshLambertMaterial({ color: look === "cartoon" ? "#f6efe0" : "#efeadf" }));
+    const ground = new Mesh(new PlaneGeometry(4e3, 4e3).rotateX(-Math.PI / 2), new MeshLambertMaterial({ color: "#f6efe0" }));
     ground.position.y = -0.05;
-    scene.add(ground);
-    const dLat = radius / ky, dLng = radius / kx;
-    const tiles = tilesCovering({ west: lng0 - dLng, east: lng0 + dLng, south: lat0 - dLat, north: lat0 + dLat }, 14, 0);
+    scene.add(hemi, sun, ground);
+    let features;
+    if (embed) features = embed.features;
+    else {
+      const dLat = radius / ky, dLng = radius / kx;
+      const tiles = tilesCovering({ west: lng0 - dLng, east: lng0 + dLng, south: lat0 - dLat, north: lat0 + dLat }, 14, 0);
+      features = (await Promise.all(tiles.map((t) => loadTile(t.z, t.x, t.y)))).flat();
+    }
     const brick = await loadBrick();
-    const all = (await Promise.all(tiles.map((t) => loadTile(t.z, t.x, t.y)))).flat();
-    const roofs = { positions: [], uvs: [], colours: [], index: [] };
-    let count = 0;
-    for (const feature of all) {
-      const ring = feature.geometry.type === "Polygon" ? feature.geometry.coordinates[0] : feature.geometry.type === "MultiPolygon" ? feature.geometry.coordinates[0][0] : null;
-      if (!ring) continue;
-      const [x, y] = local(ring[0]);
-      if (Math.hypot(x, y) > radius) continue;
-      addBuilding(feature, roofs);
-      count++;
-    }
-    const make = (b, material) => {
-      const g = new BufferGeometry();
-      g.setAttribute("position", new Float32BufferAttribute(b.positions, 3));
-      g.setAttribute("uv", new Float32BufferAttribute(b.uvs, 2));
-      g.setAttribute("color", new Float32BufferAttribute(b.colours, 3));
-      g.setIndex(b.index);
-      g.computeVertexNormals();
-      scene.add(new Mesh(g, material));
-    };
-    for (const { kind, seed, bucket } of buckets.values()) {
-      const texture = new CanvasTexture(bayTexture(kind, bayStyleFor(seed, look), brick, look));
-      texture.colorSpace = SRGBColorSpace;
-      texture.wrapS = texture.wrapT = RepeatWrapping;
-      texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-      texture.generateMipmaps = true;
-      texture.minFilter = LinearMipmapLinearFilter;
-      make(bucket, new MeshLambertMaterial({ map: texture, vertexColors: true, side: DoubleSide }));
-    }
-    make(roofs, new MeshLambertMaterial({ vertexColors: true, side: DoubleSide }));
     const camera = new PerspectiveCamera(num("fov", 42), innerWidth / innerHeight, 1, 5e3);
-    const yaw = num("yaw", 20) * Math.PI / 180, pitch = num("pitch", 28) * Math.PI / 180, dist = num("dist", 70);
-    const tx = num("tx", 0), tz = num("tz", 0), ty = num("ty", 6);
-    camera.position.set(tx + Math.sin(yaw) * Math.cos(pitch) * dist, ty + Math.sin(pitch) * dist, tz + Math.cos(yaw) * Math.cos(pitch) * dist);
-    const doorIndex = q.get("door");
-    if (doorIndex !== null && doors.length) {
-      const d = doors[Math.min(doors.length - 1, Number(doorIndex))];
-      const back = num("back", 9);
-      camera.position.set(d.x + d.nx * back, 2.2, d.z + d.nz * back);
-      camera.lookAt(d.x, 3.2, d.z);
-    } else camera.lookAt(tx, ty, tz);
-    renderer.render(scene, camera);
-    window.__spike = { ready: true, mode, look, buildings: count, meshes: buckets.size + 1, tiles: tiles.length, doors: doors.length };
+    const view = { yaw: num("yaw", 20), pitch: num("pitch", 28), dist: num("dist", 70), tx: num("tx", 0), ty: num("ty", 6), tz: num("tz", 0) };
+    let door = null;
+    const place = () => {
+      if (door) {
+        camera.position.set(door.x + door.nx * num("back", 9), 2.2, door.z + door.nz * num("back", 9));
+        camera.lookAt(door.x, 3.2, door.z);
+        return;
+      }
+      const yaw = view.yaw * Math.PI / 180, pitch = view.pitch * Math.PI / 180;
+      camera.position.set(view.tx + Math.sin(yaw) * Math.cos(pitch) * view.dist, view.ty + Math.sin(pitch) * view.dist, view.tz + Math.cos(yaw) * Math.cos(pitch) * view.dist);
+      camera.lookAt(view.tx, view.ty, view.tz);
+    };
+    let world = null;
+    const stats = document.createElement("div");
+    const rebuild = () => {
+      if (world) {
+        scene.remove(world.group);
+        world.group.traverse((o) => {
+          o.geometry?.dispose();
+        });
+      }
+      scene.background = new Color(look === "cartoon" ? "#bfe3f5" : "#d9e6ee");
+      ground.material.color.set(look === "cartoon" ? "#f6efe0" : "#efeadf");
+      hemi.intensity = look === "cartoon" ? 2.2 : 1.5;
+      world = buildWorld(features, brick, renderer);
+      scene.add(world.group);
+      const doorIndex = q.get("door");
+      door = doorIndex !== null && window.__spikeDoors.length ? window.__spikeDoors[Math.min(window.__spikeDoors.length - 1, Number(doorIndex))] : null;
+      stats.textContent = `${world.stats.buildings} buildings \xB7 ${world.stats.meshes} meshes \xB7 canal ${world.stats.canal} / school ${world.stats.school} / modern ${world.stats.modern}`;
+      place();
+      renderer.render(scene, camera);
+      window.__spike = { ready: true, mode, look, doors: world.stats.doors, ...world.stats };
+    };
+    rebuild();
+    if (q.get("ui") !== "0") {
+      const bar = document.createElement("div");
+      bar.style.cssText = "position:fixed;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;font:13px system-ui,sans-serif;max-width:calc(100vw - 24px)";
+      const button = (label, on) => {
+        const b = document.createElement("button");
+        b.textContent = label;
+        b.style.cssText = "padding:7px 12px;border-radius:8px;border:1px solid #0003;background:#fffe;color:#1f2328;cursor:pointer;font:inherit";
+        b.onclick = on;
+        bar.appendChild(b);
+        return b;
+      };
+      const refresh = () => {
+        lookButton.textContent = `Look: ${look}`;
+        modeButton.textContent = `Windows: ${mode === "aligned" ? "fitted to walls" : "repeating (today)"}`;
+      };
+      const lookButton = button("", () => {
+        look = look === "cartoon" ? "photo" : "cartoon";
+        refresh();
+        rebuild();
+      });
+      const modeButton = button("", () => {
+        mode = mode === "aligned" ? "repeat" : "aligned";
+        refresh();
+        rebuild();
+      });
+      button("Street level", () => {
+        Object.assign(view, { yaw: -75, pitch: 4, dist: 34, ty: 5, tx: 0, tz: 0 });
+        door = null;
+        place();
+        renderer.render(scene, camera);
+      });
+      button("Overview", () => {
+        Object.assign(view, { yaw: 20, pitch: 28, dist: 70, ty: 6, tx: 0, tz: 0 });
+        door = null;
+        place();
+        renderer.render(scene, camera);
+      });
+      button("Zoom +", () => {
+        door = null;
+        view.dist = Math.max(8, view.dist * 0.75);
+        place();
+        renderer.render(scene, camera);
+      });
+      button("Zoom \u2212", () => {
+        door = null;
+        view.dist = Math.min(400, view.dist / 0.75);
+        place();
+        renderer.render(scene, camera);
+      });
+      stats.style.cssText = "padding:6px 10px;border-radius:8px;background:#fffe;color:#1f2328;font-size:12px";
+      bar.appendChild(stats);
+      const hint = document.createElement("div");
+      hint.textContent = "Drag to orbit \xB7 scroll or Zoom to move closer \xB7 shift-drag to pan";
+      hint.style.cssText = "padding:6px 10px;border-radius:8px;background:#fffe;color:#1f2328;font-size:12px";
+      bar.appendChild(hint);
+      refresh();
+      document.body.appendChild(bar);
+    }
+    let drag = null;
+    const canvas = renderer.domElement;
+    canvas.style.touchAction = "none";
+    canvas.addEventListener("pointerdown", (e) => {
+      drag = { x: e.clientX, y: e.clientY, pan: e.shiftKey || e.button === 2 };
+      door = null;
+      canvas.setPointerCapture(e.pointerId);
+    });
+    canvas.addEventListener("pointerup", () => {
+      drag = null;
+    });
+    canvas.addEventListener("contextmenu", (e) => e.preventDefault());
+    canvas.addEventListener("pointermove", (e) => {
+      if (!drag) return;
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      drag.x = e.clientX;
+      drag.y = e.clientY;
+      if (drag.pan) {
+        const yaw = view.yaw * Math.PI / 180, s = view.dist * 15e-4;
+        view.tx -= Math.cos(yaw) * dx * s;
+        view.tz += Math.sin(yaw) * dx * s;
+        view.tx -= Math.sin(yaw) * dy * s;
+        view.tz -= Math.cos(yaw) * dy * s;
+      } else {
+        view.yaw -= dx * 0.3;
+        view.pitch = Math.max(1, Math.min(85, view.pitch + dy * 0.25));
+      }
+      place();
+      renderer.render(scene, camera);
+    });
+    canvas.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      door = null;
+      view.dist = Math.max(8, Math.min(400, view.dist * Math.exp(e.deltaY * 1e-3)));
+      place();
+      renderer.render(scene, camera);
+    }, { passive: false });
+    addEventListener("resize", () => {
+      renderer.setSize(innerWidth, innerHeight);
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      place();
+      renderer.render(scene, camera);
+    });
   }
   main().catch((error2) => {
     window.__spike = { ready: false, error: String(error2) };
