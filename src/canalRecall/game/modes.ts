@@ -19,6 +19,9 @@ export type ControlMode = typeof CONTROL_MODES[number];
 export const VIEW_MODES = ['north', 'heading', 'chase', 'cockpit'] as const;
 export type ViewMode = typeof VIEW_MODES[number];
 
+export const BUILDING_LOOKS = ['default', 'procedural', 'storybook', 'cartoon', 'photo'] as const;
+export type BuildingLookMode = typeof BUILDING_LOOKS[number];
+
 export const THEME_MODES = ['clean', '8bit', '16bit', 'psx', 'cyberpunk'] as const;
 export type ThemeMode = typeof THEME_MODES[number];
 

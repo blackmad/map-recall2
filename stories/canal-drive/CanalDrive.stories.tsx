@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
+type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
@@ -33,7 +33,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
     // Storybook viewport addon resizes the iframe after load.
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
     const setupStories = new Set([
-      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'knowledge',
+      'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'knowledge',
       'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge',
     ]);
     if (setupStories.has(scenario)) doc.body.classList.add('storybook-setup');
@@ -60,6 +60,7 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
       });
     }
     if (scenario === 'advanced' && overlay) overlay.store.setAdvancedOpen(true);
+    if (scenario === 'advanced-cartoon' && overlay) { patchPrefs({ buildingLook: 'cartoon' }); overlay.store.setAdvancedOpen(true); }
     if ((scenario === 'knowledge' || scenario === 'touch-knowledge') && win) {
       const now = Date.now();
       const names = [
@@ -387,6 +388,11 @@ export const BikeFromHome: Story = { args: { scenario: 'bike-home' } };
 export const BikeFromHere: Story = { args: { scenario: 'bike-here' } };
 export const TransitBriefing: Story = { args: { scenario: 'transit' } };
 export const AdvancedOptions: Story = { args: { scenario: 'advanced' } };
+export const AdvancedOptionsCartoonLook: Story = { args: { scenario: 'advanced-cartoon' } };
+export const AdvancedOptionsCartoonLookPhone: Story = {
+  args: { scenario: 'advanced-cartoon' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
 export const KnowledgeReview: Story = { args: { scenario: 'knowledge' } };
 export const Mobile: Story = {
   args: { scenario: 'default' },
