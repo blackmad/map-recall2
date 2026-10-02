@@ -523,28 +523,57 @@ function softHyphenBreak(token: string): [string, string] | null {
       return [`${token.slice(0, a.length)}-`, token.slice(a.length)];
     }
   }
-  // Vowel-boundary soft hyphen near mid (keeps both sides ≥3 letters).
-  if (upper.length < 8) return null;
-  const vowels = new Set('AEIOUYÀÁÂÃÄÅÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜ');
-  const mid = Math.floor(upper.length / 2);
-  let best = -1;
-  let bestDist = Infinity;
+  const best = dutchBreak(upper);
+  if (best < 0) return null;
+  return [`${token.slice(0, best)}-`, token.slice(best)];
+}
+
+/** Dutch place-name heads that end compounds: Apollo|buurt, Zuider|park, Sloter|vaart. */
+const COMPOUND_TAILS = [
+  'BUURT', 'WIJK', 'EILAND', 'KWARTIER', 'PLEIN', 'PARK', 'DORP', 'GRACHT', 'STRAAT', 'HAVEN', 'POLDER', 'HOF', 'LAAN', 'WEG',
+  'KADE', 'BRUG', 'DAM', 'BOS', 'BERG', 'VELD', 'MEER', 'BURG', 'DIJK', 'ZICHT', 'GEBIED', 'STAD', 'KERK', 'MARKT', 'POORT',
+  'ZIJDE', 'HOEK', 'BOCHT', 'TUIN', 'HOEVE', 'HOEVEN', 'VAART', 'WEIDE', 'OORD', 'STEEG', 'SINGEL', 'SLUIS', 'WERF', 'STEIN',
+  'WATER', 'EIND', 'HUIZEN', 'HEUVEL', 'WEST', 'OOST', 'NOORD', 'ZUID', 'DORP', 'TERREIN', 'STRAND', 'BAAI', 'BAAN', 'VELDEN', 'LAND',
+];
+const DUTCH_VOWELS = new Set('AEIOUYÀÁÂÃÄÅÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜ');
+/** Letter pairs that are one sound in Dutch and must not be split: CH, SCH, NG, SJ, IJ, and the vowel digraphs. */
+const DUTCH_DIGRAPHS = new Set(['CH', 'SJ', 'NG', 'IJ', 'AA', 'EE', 'OO', 'UU', 'AU', 'EU', 'UI', 'OE', 'EI', 'OU', 'IE', 'AI', 'OI', 'PH', 'TH']);
+
+/**
+ * The best index to break a long one-word name, or -1. A compound boundary (the longest known
+ * tail, such as BUURT or EILAND) is worth three letters of balance, so APOLLOBUURT breaks
+ * APOLLO-/BUURT and never APOL-/LOBUURT. Failing that, a Dutch syllable boundary: before a
+ * single consonant between vowels, between two consonants, never inside a digraph or CH/SCH/NG.
+ * Each side keeps at least three letters.
+ */
+export function dutchBreak(upper: string): number {
+  if (upper.length < 8) return -1;
+  const mid = upper.length / 2;
+  const candidates: Array<{ at: number; cost: number }> = [];
+  for (const tail of COMPOUND_TAILS) {
+    const at = upper.length - tail.length;
+    if (upper.endsWith(tail) && at >= 3 && tail.length >= 3) candidates.push({ at, cost: Math.abs(at - mid) - 3 });
+  }
+  // A compound inside the head too: SPAARNDAMMER|BUURT is found above; ZUIDERZEE|... via tails at the start.
+  for (const head of ['NOORDER', 'ZUIDER', 'OOSTER', 'WESTER', 'OUDE', 'NIEUWE', 'GROTE', 'KLEINE', 'SINT', 'PRINS', 'PRINSES', 'KONING', 'KONINGIN', 'BOVEN', 'BENEDEN', 'MIDDEN']) {
+    if (upper.startsWith(head) && upper.length - head.length >= 3) candidates.push({ at: head.length, cost: Math.abs(head.length - mid) - 3 });
+  }
   for (let i = 3; i <= upper.length - 3; i++) {
     const left = upper[i - 1];
     const right = upper[i];
-    // Break after a vowel before a consonant, or between double consonants.
-    const ok =
-      (vowels.has(left) && !vowels.has(right))
-      || (!vowels.has(left) && !vowels.has(right) && left === right);
-    if (!ok) continue;
-    const dist = Math.abs(i - mid);
-    if (dist < bestDist) {
-      bestDist = dist;
-      best = i;
-    }
+    const pair = left + right;
+    if (DUTCH_DIGRAPHS.has(pair) || /SCH$/.test(upper.slice(0, i + 1)) && /^(SCH)/.test(upper.slice(i - 2))) continue;
+    const leftVowel = DUTCH_VOWELS.has(left);
+    const rightVowel = DUTCH_VOWELS.has(right);
+    const next = upper[i + 1];
+    // V|CV: break before a single consonant that is followed by a vowel.
+    const beforeSingleConsonant = leftVowel && !rightVowel && next !== undefined && DUTCH_VOWELS.has(next);
+    // VC|CV or doubled consonant: break between two consonants.
+    const betweenConsonants = !leftVowel && !rightVowel && !DUTCH_DIGRAPHS.has(right + (next ?? '')) && !(left === 'S' && right === 'C');
+    if (beforeSingleConsonant || betweenConsonants) candidates.push({ at: i, cost: Math.abs(i - mid) });
   }
-  if (best < 0) return null;
-  return [`${token.slice(0, best)}-`, token.slice(best)];
+  const best = candidates.sort((a, b) => a.cost - b.cost)[0];
+  return best ? best.at : -1;
 }
 
 /** Prefer a natural break on space or hyphen; else soft-hyphen; else bisect. */
