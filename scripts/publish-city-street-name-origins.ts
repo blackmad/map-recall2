@@ -22,7 +22,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { trimToSentence } from './lib/translation.ts';
-import { dutchHash, repairCityOriginTranslation, type StagedCityOrigin } from './lib/cityStreetNameOrigins.ts';
+import { dutchHash, refusalReason, repairCityOriginTranslation, type StagedCityOrigin } from './lib/cityStreetNameOrigins.ts';
 
 const city = process.argv.find((arg) => arg.startsWith('--city='))?.slice('--city='.length);
 if (!city) throw new Error('--city=<id> is required');
@@ -46,6 +46,7 @@ interface PublishedOrigin { name: string; kind: 'street' | 'water' | 'bridge'; e
 const origins: PublishedOrigin[] = [];
 const problems: string[] = [];
 let corrected = 0, untranslated = 0, refused = 0;
+const refusedNow: string[] = [];
 for (const origin of staged.origins) {
   const key = `${origin.kind}:${origin.name}`;
   if (review.withheld[key] || review.withheld[origin.name]) continue;
@@ -59,6 +60,10 @@ for (const origin of staged.origins) {
   if (origin.refused) { refused++; continue; }
   if (!origin.en) { untranslated++; continue; }
   const en = trimToSentence(repairCityOriginTranslation(origin.nl, origin.en), 700);
+  // The guard runs again at publish, so a check added after an entry was
+  // translated (the kept-Dutch-word test) still applies to it.
+  const late = refusalReason(origin.nl, origin.en, origin.name);
+  if (late) { refused++; refusedNow.push(`${origin.name}: ${late}`); continue; }
   origins.push({ name: origin.name, kind: origin.kind, en, sourceUrl: origin.sourceUrl, enSource: origin.enSource ?? 'unknown' });
 }
 for (const name of Object.keys(review.corrections)) {
@@ -74,6 +79,7 @@ if (!dryRun) {
   await writeFile(path.resolve(`scripts/data/street-name-origin-translations.${city}.json`), `${JSON.stringify(cache, null, 0).replace(/\},\{/g, '},\n{')}\n`);
 }
 for (const problem of problems) process.stdout.write(`  ! ${problem}\n`);
+if (process.argv.includes('--verbose')) for (const line of refusedNow) process.stdout.write(`  refused at publish: ${line}\n`);
 process.stdout.write(`${dryRun ? 'DRY RUN — would publish' : 'published'} ${origins.length} origins → ${path.relative(process.cwd(), path.join(directory, 'street-name-origins.json'))}`
   + ` (${(JSON.stringify(output).length / 1024).toFixed(0)} KB); ${corrected} hand corrections, ${refused} refused by the guard, ${untranslated} not yet translated,`
   + ` ${Object.keys(review.withheld).length} withheld, spot-checked ${review.spotChecked.length}\n`);

@@ -7,7 +7,7 @@
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import {
-  dutchSentences, originDutch, recordFor, registerKind, repairCityOriginTranslation, type RegisterRecord,
+  dutchSentences, keptDutchOpening, originDutch, recordFor, registerKind, repairCityOriginTranslation, type RegisterRecord,
 } from './lib/cityStreetNameOrigins.ts';
 
 let passed = 0;
@@ -44,6 +44,31 @@ check('a filled-in canal is not "embanked"', () => {
   assert.equal(repairCityOriginTranslation('In 1897 werd de Reserveboezem geheel gedempt.', 'In 1897 the Reserveboezem was entirely embanked.'),
     'In 1897 the Reserveboezem was entirely filled in.');
   assert.equal(repairCityOriginTranslation('De dijk werd verhoogd.', 'The dike was embanked.'), 'The dike was embanked.', 'only when the Dutch says gedempt');
+});
+
+// Named regressions from the Rotterdam spot-check (2026-10-02).
+check('spot-check repairs: of/or, Naar, industriestad, ambacht, gegraven', () => {
+  assert.equal(repairCityOriginTranslation('Renatus Cartesius (of René Descartes), 1596-1650.', 'Renatus Cartesius (of René Descartes), 1596–1650.'),
+    'Renatus Cartesius (or René Descartes), 1596–1650.');
+  assert.equal(repairCityOriginTranslation('Geuneburg of Geuneborgh, oude naam van Schipborg.', 'Geuneburg of Geuneborgh, former name of Schipborg.'),
+    'Geuneburg or Geuneborgh, former name of Schipborg.');
+  assert.equal(repairCityOriginTranslation('Voormalig slot, ook wel Slot van Haaften genaamd.', 'Former castle, also known as Castle of Haaften.'),
+    'Former castle, also known as Castle of Haaften.', 'an English "of" is left alone');
+  assert.equal(repairCityOriginTranslation('Naar de Dalton-H.B.S., die daar gevestigd was.', 'To the Dalton-H.B.S., which was housed there.'),
+    'Named after the Dalton-H.B.S., which was housed there.');
+  assert.equal(repairCityOriginTranslation('Industriestad in het Verenigd Koninkrijk.', 'Industrial Estate in the United Kingdom.'), 'Industrial city in the United Kingdom.');
+  assert.equal(repairCityOriginTranslation('Het ambacht Rotterdam behoorde aan een Bokel.', 'The craft Rotterdam belonged to a Bokel.'), 'The manor Rotterdam belonged to a Bokel.');
+  assert.equal(repairCityOriginTranslation('De haven werd in 1881 gegraven.', 'The harbour was dredged in 1881.'), 'The harbour was dug in 1881.');
+});
+
+check('an untranslated Dutch opening word is caught, names and shared words are not', () => {
+  assert.equal(keptDutchOpening('Roofvogel.', 'Roofvogel.', 'Buizerdstraat'), 'Roofvogel');
+  assert.equal(keptDutchOpening('Herkauwer uit de orde der evenhoevigen.', 'Herkauwer from the order of even-toed ungulates.', 'Antilopestraat'), 'Herkauwer');
+  assert.equal(keptDutchOpening('Havenstad in Finland.', 'Havenstad in Finland.', 'Helsinkipad'), 'Havenstad');
+  assert.equal(keptDutchOpening('Plant.', 'Plant.', 'Cymbelkruid'), null);
+  assert.equal(keptDutchOpening('Miguel de Cervantes, 1547-1616, Spaans schrijver.', 'Miguel de Cervantes, 1547-1616, Spanish writer.', 'Cervantesstraat'), null);
+  assert.equal(keptDutchOpening('Anna, prinses van Saksen.', 'Anna, princess of Saxony.', 'Anna van Saksenhof'), null);
+  assert.equal(keptDutchOpening('Geuneburg of Geuneborgh, oude naam.', 'Geuneburg or Geuneborgh, former name.', 'Geuneburg'), null);
 });
 
 for (const city of ['rotterdam']) {

@@ -18,8 +18,8 @@
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { cleanTranslatorOutput, droppedProperNames, protectNames } from './lib/translation.ts';
-import type { StagedCityOrigin } from './lib/cityStreetNameOrigins.ts';
+import { cleanTranslatorOutput, protectNames } from './lib/translation.ts';
+import { refusalReason, type StagedCityOrigin } from './lib/cityStreetNameOrigins.ts';
 
 const argument = (name: string) => process.argv.find((arg) => arg.startsWith(`--${name}=`))?.slice(name.length + 3);
 const city = argument('city');
@@ -32,19 +32,6 @@ const stagingFile = path.resolve(`public/data/extracts/${city}/staging/street-na
 const SYSTEM = 'You translate Dutch street-name explanations from a municipal register into plain British English. '
   + 'Translate faithfully: add nothing, omit nothing, do not explain. Keep every proper name, street name, place name '
   + 'and invented capitalised word exactly as written. Output only the translation, as one paragraph.';
-
-/** Words common in Dutch prose and rare in English: a sign the model echoed the source. */
-const DUTCH_MARKERS = /\b(?:het|een|werd|zijn|naar|deze|vernoemd|genoemd|straat|tussen|gelegen|waar|aan|van de|der)\b/gi;
-
-export function refusalReason(nl: string, en: string, name: string): string | null {
-  if (!en.trim()) return 'empty translation';
-  if (en.length > nl.length * 2 + 80) return 'translation much longer than the source';
-  const dutchHits = (en.match(DUTCH_MARKERS) || []).length;
-  if (dutchHits >= 4 && dutchHits / en.split(/\s+/).length > 0.08) return 'translation still reads as Dutch';
-  const dropped = droppedProperNames(nl, en, [name]);
-  if (dropped.length) return `translation lost the name: ${dropped.join(', ')}`;
-  return null;
-}
 
 async function translate(text: string): Promise<string> {
   for (let attempt = 0; attempt < 3; attempt++) {
