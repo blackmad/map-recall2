@@ -9,6 +9,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
   // A named bridge with no origin: the city's bridge register alone.
   | 'landmark-card-bridge-register' | 'landmark-card-bridge-register-touch'
+  // A street's name origin, the most common card while driving.
+  | 'landmark-card-street' | 'landmark-card-street-touch'
   // Phone states. `touch-*` force the compact layout on a pointer device,
   // which is the only way to see the d-pad and the portrait card stack in the
   // workbench; the viewport addon alone just makes a small desktop window.
@@ -178,6 +180,17 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           photo.onload = () => { game._landmarkImages.set('theater', photo); game._renderFinish(); };
           photo.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#41603f"/><rect y="200" width="400" height="100" fill="#6d8a70"/><circle cx="200" cy="120" r="70" fill="#8fb08a"/></svg>')}`;
           game._renderFinish();
+          return;
+        }
+        if (scenario.startsWith('landmark-card-street')) {
+          const origin = "After 'the princely title', meaning that of the Princes of Orange. The canal is one "
+            + 'of the three main canals, and the plainest in the character of its buildings. Its houses '
+            + 'were built for merchants and artisans rather than the richest families of the Golden Age.';
+          game._landmarkNotice = { id: 'street-knowledge:prinsengracht', name: 'Prinsengracht', type: 'street', extractLang: 'en', detail: origin, longDetail: origin };
+          game._landmarkNoticeAlpha = 1;
+          game.currentNeighborhood = 'Grachtengordel';
+          game._syncHudLayout?.();
+          game._renderLandmarkNotice();
           return;
         }
         if (scenario.startsWith('landmark-card-bridge') || scenario.startsWith('landmark-card-building')) {
@@ -425,6 +438,12 @@ export const LandmarkPanelMobile: Story = {
 };
 /** A correctly named bridge tells why it is called that (no photo). */
 export const BridgeOriginCard: Story = { args: { scenario: 'landmark-card-bridge' } };
+/** A street's name origin: chip, name and "more" share one compact header. */
+export const StreetOriginCard: Story = { args: { scenario: 'landmark-card-street' } };
+export const PortraitStreetOriginCard: Story = {
+  args: { scenario: 'landmark-card-street-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
 /** A clicked ordinary building: year, period, type, listing and size. */
 export const BuildingFactsCard: Story = { args: { scenario: 'landmark-card-building' } };
 /** A named bridge the register describes but no origin explains. */
