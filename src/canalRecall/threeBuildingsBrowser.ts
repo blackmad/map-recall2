@@ -88,10 +88,13 @@ export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: numb
       if (mask[(layer * px + i) * 2] > 200) { for (let c = 0; c < 3; c++) sum[c] += colour[(layer * px + i) * 4 + c]; n++; }
     }
     const mean = n ? sum.map(v => v / n) : [200, 200, 200];
+    // Brick photos are dark; the tint multiplies them again. Lift wall pixels so the layer's mean is ~0.88 and the tint colour is what you see.
+    const meanLum = (mean[0] + mean[1] + mean[2]) / 3;
+    const lift = look === 'photo' && meanLum > 0 ? Math.min(2.4, 225 / meanLum) : 1;
     for (let i = 0; i < px; i++) {
       const at = (layer * px + i) * 4, wall = mask[(layer * px + i) * 2] / 255, accent = mask[(layer * px + i) * 2 + 1];
       if (wall > 0.5) {
-        for (let c = 0; c < 3; c++) colour[at + c] = colour[at + c] + (mean[c] - colour[at + c]) * wallPull * wall;
+        for (let c = 0; c < 3; c++) colour[at + c] = Math.min(255, (colour[at + c] + (mean[c] - colour[at + c]) * wallPull * wall) * (1 + (lift - 1) * wall));
       } else if (accent < 128) {
         const lum = (colour[at] + colour[at + 1] + colour[at + 2]) / 3;
         if (lum < 90) { const k = glassLift * (1 - lum / 90); for (let c = 0; c < 3; c++) colour[at + c] += (150 - colour[at + c]) * k; }
