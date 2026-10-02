@@ -1,0 +1,1252 @@
+{
+ "version": 1,
+ "generatedAt": "2026-10-01T21:14:53.394Z",
+ "neighborhoods": [
+  {
+   "name": "Wilhelminapier",
+   "description": {
+    "en": "The Wilhelminapier is a high-density urban area on the Kop van Zuid, administratively part of Feijenoord since 3 March 2010 (before that, Rotterdam Centrum). The long, narrow strip runs along the Nieuwe Maas at the foot of the Erasmus Bridge and since the turn of the century has been defined by high-rise buildings.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Wilhelminapier",
+    "lang": "nl",
+    "original": "De Wilhelminapier is een hoogstedelijk gebied op de Kop van Zuid in Rotterdam. Bestuurlijk valt het sinds 3 maart 2010 onder de deelgemeente Feijenoord (daarvoor onder Rotterdam Centrum). Het langwerpig gebied is gelegen langs de Nieuwe Maas aan de voet van de Erasmusbrug en wordt sinds de eeuwwisseling gekenmerkt door hoogbouw en moderne voorzieningen."
+   }
+  },
+  {
+   "name": "Witte Dorp",
+   "description": {
+    "en": "Witte Dorp is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Witte_Dorp",
+    "lang": "en"
+   },
+   "history": {
+    "en": "In the 13th century the area belonged to the manor of Mathenesse, and until the 1920s a polder lay between Rotterdam and Schiedam. The first part was built on in 1922: the architect J.J.P. Oud, who had proved himself in Spangen, designed a kind of temporary village to give disadvantaged families a healthy place to live, with small white workers' houses on a symmetrical street plan.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Witte_Dorp_(Rotterdam)",
+    "lang": "nl",
+    "original": "In de dertiende eeuw behoorde dit gebied bij het ambacht Mathenesse. Tot de jaren twintig van de twintigste eeuw lag er tussen Rotterdam en Schiedam een polder. Het eerste stukje werd in 1922 bebouwd. Architect J.J.P. Oud, die zichzelf bewezen had in zijn werk voor de wijk Spangen, ontwierp een soort nooddorp, bedoeld om achterstandsgezinnen een gezonde leefomgeving te bieden. Een vergelijkbaar project was de Kiefhoek in Rotterdam-Zuid. In een symmetrisch stratenplan kwamen kleine, witte arbeiderswoningen. Het geheel kreeg al snel de naam het Witte Dorp."
+   },
+   "nameOrigin": {
+    "en": "Named for J.J.P. Oud's small white workers' houses of 1922: the estate was soon known as the Witte Dorp, the 'White Village'.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Witte_Dorp_(Rotterdam)",
+    "lang": "nl",
+    "original": "In de dertiende eeuw behoorde dit gebied bij het ambacht Mathenesse. Tot de jaren twintig van de twintigste eeuw lag er tussen Rotterdam en Schiedam een polder. Het eerste stukje werd in 1922 bebouwd. Architect J.J.P. Oud, die zichzelf bewezen had in zijn werk voor de wijk Spangen, ontwierp een soort nooddorp, bedoeld om achterstandsgezinnen een gezonde leefomgeving te bieden. Een vergelijkbaar project was de Kiefhoek in Rotterdam-Zuid. In een symmetrisch stratenplan kwamen kleine, witte arbeiderswoningen. Het geheel kreeg al snel de naam het Witte Dorp."
+   }
+  },
+  {
+   "name": "Ruiven",
+   "description": {
+    "en": "Ruiven is a wijk of Delft, along the A13 motorway, bordering Wippolder and Schieweg. It is mainly business land: the Rotterdamseweg-Zuid and Technopolis business parks and the Ackersdijk neighbourhood.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Ruiven",
+    "lang": "nl",
+    "original": "Ruiven is een wijk in de gemeente Delft, in de Nederlandse provincie Zuid-Holland. De wijk is gelegen langs de rijksweg A13 en grenst aan de wijken Wippolder en Schieweg. Ruiven biedt voornamelijk ruimte aan bedrijven. De wijk bestaat uit de buurten Bedrijventerrein Rotterdamseweg-Zuid, Bedrijventerrein Technopolis en Ackersdijk. De naam stamt af van ruw veen, de aard van de bodemgesteldheid in de middeleeuwen."
+   },
+   "nameOrigin": {
+    "en": "The name comes from 'ruw veen', rough peat, the nature of the soil in the Middle Ages.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Ruiven",
+    "lang": "nl",
+    "original": "De naam stamt af van ruw veen, de aard van de bodemgesteldheid in de middeleeuwen."
+   }
+  },
+  {
+   "name": "Het Zuiderhof"
+  },
+  {
+   "name": "De Valkenier"
+  },
+  {
+   "name": "De Vlieger"
+  },
+  {
+   "name": "Buurt Negen"
+  },
+  {
+   "name": "Reyeroord",
+   "description": {
+    "en": "Reyeroord is a post-war neighbourhood of Rotterdam in the IJsselmonde borough, west of the A16, north of the A15 and east of Hordijkerveld, with which it shares the Oeverloos park.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Reyeroord",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Beverwaard",
+   "description": {
+    "en": "Beverwaard is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Beverwaard",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The Beverwaard is one of the longest-inhabited parts of the Netherlands: archaeological finds show people lived here in the Mesolithic, and in Roman times, when ditches were dug that largely survive in the wijk as canals. The land was reclaimed between the 10th and 12th centuries and diked before 1300, a sign of permanent settlement.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Beverwaard",
+    "lang": "nl",
+    "original": "Het gebied waar de Beverwaard ligt is een van de oudst bewoonde gebieden van Nederland. Uit archeologische vondsten wordt geconcludeerd dat dit gebied al in het Mesolithicum werd bewoond door mensen. Ook in de Romeinse tijd was er al bewoning. Er zijn namelijk naast aardewerk en bot ook gegraven slootjes uit die tijd ontdekt, die overigens nog steeds veelal aanwezig zijn in de wijk (in de vorm van singels). In de 10e tot 12e eeuw is het gebied ontgonnen. Voor 1300 werd het gebied bedijkt, wat duidt op vaste bewoning."
+   }
+  },
+  {
+   "name": "De Veranda",
+   "description": {
+    "en": "De Veranda is a neighbourhood of Rotterdam, a relatively new development compared with older neighbours such as Oud-IJsselmonde.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/De_Veranda",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Groenenhagen-Tuinenhoven",
+   "description": {
+    "en": "Groenenhagen-Tuinenhoven is a Rotterdam wijk in two parts, Groenenhagen and Tuinenhoven, in the IJsselmonde district, mostly built in the 1960s. It lies west of the A16, east of the Adriaan Volkerlaan and north of the Groeninx van Zoelenlaan, with a neighbourhood shopping centre on the Prinsenplein.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Groenenhagen-Tuinenhoven",
+    "lang": "nl",
+    "original": "Groenenhagen-Tuinenhoven is een Rotterdamse wijk bestaande uit twee delen, Groenenhagen en Tuinenhoven in het stadsdeel IJsselmonde. De wijk is voor het overgrote deel gebouwd in de 60’ er jaren van de vorige eeuw. Groenenhagen-Tuinenhoven ligt ten westen van de A16, ten oosten van de Adriaan Volkerlaan en ten noorden van de Groeninx van Zoelenlaan. Op het Prinsenplein is een buurtwinkelcentrum."
+   }
+  },
+  {
+   "name": "Zomerland",
+   "description": {
+    "en": "Zomerland is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zomerland",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The name ('summer land') recalls that in earlier times the land was under water in winter and dry in summer.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zomerland",
+    "lang": "nl",
+    "original": "De naam Zomerland heeft ermee te maken dat in vroegere tijden het land 's winters onder water stond en zomers droogviel."
+   }
+  },
+  {
+   "name": "Sportdorp",
+   "description": {
+    "en": "Sportdorp is a neighbourhood of the Groot-IJsselmonde wijk in Rotterdam's IJsselmonde district.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sportdorp_(Rotterdam)",
+    "lang": "nl",
+    "original": "Sportdorp is een buurt in de Rotterdamse wijk Groot-IJsselmonde in het stadsdeel IJsselmonde. De straatnamen in het westelijke deel van de buurt zijn gebaseerd op allerlei takken van sport, bijvoorbeeld Discusstraat, Arresleestraat en Floretstraat en hier komt ook de naam van de wijk vandaan."
+   },
+   "nameOrigin": {
+    "en": "Named after its streets: in the western part they are named after sports, such as the Discusstraat, Arresleestraat and Floretstraat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sportdorp_(Rotterdam)",
+    "lang": "nl",
+    "original": "De straatnamen in het westelijke deel van de buurt zijn gebaseerd op allerlei takken van sport, bijvoorbeeld Discusstraat, Arresleestraat en Floretstraat en hier komt ook de naam van de wijk vandaan."
+   }
+  },
+  {
+   "name": "Hordijkerveld",
+   "description": {
+    "en": "Hordijkerveld is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hordijkerveld",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Tussendijken",
+   "description": {
+    "en": "Bospolder-Tussendijken is a wijk of Rotterdam in the Delfshaven district.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Tussendijken",
+    "lang": "nl",
+    "original": "Bospolder-Tussendijken is een wijk in Rotterdam, in het stadsdeel Delfshaven."
+   },
+   "history": {
+    "en": "Bospolder-Tussendijken was built up from 1910, when the Schiedamseweg was laid out from the Aelbrechtskolk in historic Delfshaven. Much of Tussendijken was social housing designed by J.J.P. Oud, and the wijk was complete by about 1930. On 31 March 1943 an Allied bombing of Rotterdam-West hit its western part, killing at least 417 people; it was rebuilt in the 1950s.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Tussendijken",
+    "lang": "nl",
+    "original": "Bospolder-Tussendijken is bebouwd vanaf 1910. In dat jaar is de Schiedamseweg aangelegd vanaf de Aelbrechtskolk in historisch Delfshaven. Een aanzienlijk deel van Tussendijken werd bebouwd met sociale woningbouw, ontworpen door architect J.J.P. Oud. Rond 1930 was de aanleg van de wijk voltooid. Op 31 maart 1943 werd het westelijk deel van de wijk getroffen door een geallieerd bombardement op Rotterdam-West waarbij minstens 417 doden vielen. In de jaren vijftig is de wijk herbouwd. Aan de Jan Kruijffstraat stond tussen 1930 en 1973 de Sint-Antonius-Abtkerk."
+   }
+  },
+  {
+   "name": "Spangen",
+   "description": {
+    "en": "Spangen is a neighbourhood in the west of Rotterdam with about 10,000 inhabitants, reached from the centre over the Mathenesserbrug across the Delfshavense Schie. Its design is world-famous among architects and urban planners.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Spangen",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Bospolder",
+   "description": {
+    "en": "Bospolder-Tussendijken is a wijk of Rotterdam in the Delfshaven district.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Bospolder_(Rotterdam)",
+    "lang": "nl",
+    "original": "Bospolder-Tussendijken is een wijk in Rotterdam, in het stadsdeel Delfshaven."
+   },
+   "history": {
+    "en": "Bospolder-Tussendijken was built up from 1910, when the Schiedamseweg was laid out from the Aelbrechtskolk in historic Delfshaven. Much of Tussendijken was social housing designed by J.J.P. Oud, and the wijk was complete by about 1930. On 31 March 1943 an Allied bombing of Rotterdam-West hit its western part, killing at least 417 people; it was rebuilt in the 1950s.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Bospolder_(Rotterdam)",
+    "lang": "nl",
+    "original": "Bospolder-Tussendijken is bebouwd vanaf 1910. In dat jaar is de Schiedamseweg aangelegd vanaf de Aelbrechtskolk in historisch Delfshaven. Een aanzienlijk deel van Tussendijken werd bebouwd met sociale woningbouw, ontworpen door architect J.J.P. Oud. Rond 1930 was de aanleg van de wijk voltooid. Op 31 maart 1943 werd het westelijk deel van de wijk getroffen door een geallieerd bombardement op Rotterdam-West waarbij minstens 417 doden vielen. In de jaren vijftig is de wijk herbouwd. Aan de Jan Kruijffstraat stond tussen 1930 en 1973 de Sint-Antonius-Abtkerk."
+   }
+  },
+  {
+   "name": "Oud-Mathenesse",
+   "description": {
+    "en": "Oud-Mathenesse is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oud-Mathenesse",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The manor of Mathenesse is mentioned as early as 1276, held by Dirk Bokel, whose grandson called himself Dirc van Mathenesse. In 1339 he moved into a castle whose keep still stands in the centre of Schiedam, beside the Stadskantoor on the Broersvest. Mathenesse became a municipality in 1795; merged into Schiedam and Kethel en Spaland for five years from 1811, Oud- en Nieuw-Mathenesse was independent again from 1 April 1817 to 1 January 1868.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oud-Mathenesse",
+    "lang": "nl",
+    "original": "Het ambacht Mathenesse wordt al genoemd in documenten uit 1276. De ambachtsheer was Dirk Bokel. Diens kleinzoon noemde zich Dirc van Mathenesse. In 1339 betrok deze een kasteel, waarvan de restanten van de donjon nog altijd te zien zijn in het centrum van Schiedam, naast het Stadskantoor aan de Broersvest. In de Franse tijd, in 1795, werd Mathenesse een gemeente. In 1811 werd deze voor 5 jaar opgeheven en bij Schiedam en Kethel en Spaland gevoegd. Van 1 april 1817 tot 1 januari 1868 was Oud- en Nieuw-Mathenesse weer een zelfstandige gemeente."
+   }
+  },
+  {
+   "name": "Nieuw-Mathenesse",
+   "description": {
+    "en": "Nieuw-Mathenesse is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nieuw-Mathenesse",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The Gusto shipyard stood on the Schiedam side of Nieuw-Mathenesse from 1905 to 1978; the rest of the area around the Nieuw Mathenesserstraat was developed in the 1950s. The first Rotterdam harbour dug here was the Keilehaven in 1910, followed by the Koushaven in 1911 and the Lekhaven and IJselhaven in 1912. The Vierhavensstraat, the area's main road, is named after these four harbours, which were lined with industry and general-cargo firms.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuw-Mathenesse",
+    "lang": "nl",
+    "original": "Aan de Schiedamse kant van Nieuw-Mathenesse was de Gusto-werf van 1905 tot 1978 gevestigd. De rest van het gebied rond de Nieuw Mathenesserstraat is in de jaren vijftig tot ontwikkeling gebracht. De eerste Rotterdamse haven die in Nieuw-Mathenesse werd gegraven was de Keilehaven, gegraven in 1910, gevolgd door de Koushaven in 1911 en de Lekhaven en de IJselhaven, gegraven in 1912. Aan deze vier havens dankt de Vierhavensstraat, de belangrijkste ontsluitingsweg van het gebied, zijn naam. Aan deze havens waren industriële bedrijven en stukgoed-overslag bedrijven gevestigd."
+   }
+  },
+  {
+   "name": "Delfshaven",
+   "description": {
+    "en": "Delfshaven is a wijk of Rotterdam in the Delfshaven district.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Delfshaven_(wijk)",
+    "lang": "nl",
+    "original": "Delfshaven is een wijk in Rotterdam, in de bestuurlijke entiteit Delfshaven-Schiemond van de deelgemeente Delfshaven."
+   },
+   "history": {
+    "en": "The oldest part is historic Delfshaven around the Voorhaven and Achterhaven. By 1900 the Havenstraat, part of Schieland's Hoge Zeedijk, and the parallel Schoonderloostraat, on land of the former municipality of Schoonderloo, were also built up. Before the war building reached the Pieter de Hoochweg; the last part was finished in 1950, closed off by the Centraal Belastingkantoor tax office on the Puntegaalstraat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Delfshaven_(wijk)",
+    "lang": "nl",
+    "original": "Het oudste deel van de wijk wordt gevormd door historisch Delfshaven bij de Voor- en de Achterhaven. De Havenstraat (deel van Schielands Hoge Zeedijk) en de parallel gelegen Schoonderloostraat (op het grondgebied van de voormalige gemeente Schoonderloo) waren in 1900 ook bebouwd. Voor de oorlog was het gebied bebouwd tot aan de Pieter de Hoochweg. Het laatste deel van de wijk is in 1950 gereedgekomen met het Centraal Belastingkantoor aan de Puntegaalstraat (in Rotterdam bekend als Plukmekaalstraat) als beeldbepalende afsluiting van de wijk."
+   }
+  },
+  {
+   "name": "Oude Westen",
+   "description": {
+    "en": "The Oude Westen ('Old West') is a neighbourhood next to Rotterdam's city centre. It grew up in the late 19th century on land then belonging to the municipality of Delfshaven, which placed few demands on developers, so it filled with speculative building.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oude_Westen",
+    "lang": "en"
+   },
+   "history": {
+    "en": "In 1886 the annexation of Delfshaven made the Oude Westen part of Rotterdam. Rotterdam took a more structured approach to expansion than Delfshaven had, which among other things gave the wijk paved roads and sewers.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oude_Westen",
+    "lang": "nl",
+    "original": "De wijk is ontstaan aan het eind van de 19e eeuw toen het grootste deel van het grondgebied van de wijk toebehoorde aan de toenmalige gemeente Delfshaven. Delfshaven legde grondexploitanten weinig eisen op, waardoor een wijk gevuld raakte met speculantenbouw. In 1886 werd het Oude Westen door de annexatie van Delfshaven een deel van Rotterdam-West. De gemeente Rotterdam hanteerde een structurelere aanpak met betrekking tot stadsuitbreiding dan Delfshaven, wat er onder meer voor zorgde dat de wijk verharde wegen kreeg en riolering."
+   }
+  },
+  {
+   "name": "Middelland",
+   "description": {
+    "en": "Middelland is a pre-war wijk in the west of Rotterdam, in the Delfshaven district, with about 11,000 inhabitants. It is bounded by the Centraal Station railway yards to the north, the Henegouwerlaan and 's-Gravendijkwal to the east, the Rochussenstraat to the south and the Heemraadssingel to the west.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Middelland",
+    "lang": "nl",
+    "original": "Middelland is een vooroorlogse wijk in het westen van Rotterdam met zo'n 11.000 inwoners en maakt deel uit van het stadsdeel Delfshaven. De wijk wordt in het noorden begrensd door de emplacementen van het Centraal Station, in het oosten door de Henegouwerlaan en de 's-Gravendijkwal, in het zuiden door de Rochussenstraat en in het westen door de Heemraadssingel."
+   }
+  },
+  {
+   "name": "Dijkzigt",
+   "description": {
+    "en": "Dijkzigt is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Dijkzigt",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Dijkzigt lies in the former Land van Hoboken, a green oasis in the city until 1924. Today it is mainly museums, educational institutions and offices; its largest complex is the Erasmus MC hospital.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Dijkzigt_(wijk)",
+    "lang": "nl",
+    "original": "De wijk Dijkzigt ligt in het vroegere Land van Hoboken, dat tot 1924 als een groene oase in de stad Rotterdam lag. De naam Dijkzigt komt van de 'Villa Dijkzigt' van de familie van Hoboken. In deze villa aan de Westzeedijk is tegenwoordig het Natuurhistorisch Museum Rotterdam gevestigd. In de wijk Dijkzigt zijn voornamelijk musea, onderwijsinstellingen en kantoren gevestigd. Het grootste complex in de wijk is het Erasmus MC, dat momenteel vernieuwd wordt."
+   },
+   "nameOrigin": {
+    "en": "Named after Villa Dijkzigt, the Van Hoboken family's house on the Westzeedijk, which now houses the Natuurhistorisch Museum Rotterdam.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Dijkzigt_(wijk)",
+    "lang": "nl",
+    "original": "De wijk Dijkzigt ligt in het vroegere Land van Hoboken, dat tot 1924 als een groene oase in de stad Rotterdam lag. De naam Dijkzigt komt van de 'Villa Dijkzigt' van de familie van Hoboken. In deze villa aan de Westzeedijk is tegenwoordig het Natuurhistorisch Museum Rotterdam gevestigd. In de wijk Dijkzigt zijn voornamelijk musea, onderwijsinstellingen en kantoren gevestigd. Het grootste complex in de wijk is het Erasmus MC, dat momenteel vernieuwd wordt."
+   }
+  },
+  {
+   "name": "Nieuwe Westen",
+   "description": {
+    "en": "Nieuwe Westen is a pre-war neighbourhood in the west of Rotterdam, located between the Heemraadssingel and the Delfshavense Schie in the Delfshaven district. Nieuwe Westen borders the neighbourhoods of Spangen and Middelland. Nieuwe Westen was built around 1900 as part of an urban development plan by Gerrit de Jongh.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nieuwe_Westen",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Bergpolder",
+   "description": {
+    "en": "Bergpolder is a neighbourhood in Rotterdam-Noord with 8,205 inhabitants (2021). Since 5 November 2014 it has been part of the protected townscape Blijdorp/Bergpolder.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bergpolder",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The neighborhood was laid out between 1930 and 1935 and named after the polder of the same name.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bergpolder",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "CS-Kwartier",
+   "description": {
+    "en": "The CS-kwartier is a wijk in the centre of Rotterdam, bounded by the Centraal Station railway yards to the north, the Hofplein to the east, the Weena to the south and the Henegouwerlaan to the west. It is made up of large complexes around the Stationsplein, such as Centraal Station, the Groothandelsgebouw and the Delftse Poort building.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/CS-kwartier",
+    "lang": "nl",
+    "original": "Het CS-kwartier is een wijk in het centrum van Rotterdam, in het stadsdeel Rotterdam Centrum. De wijk wordt begrensd door het emplacement van het Centraal Station in het noorden, het Hofplein in het oosten, het Weena in het zuiden en de Henegouwerlaan in het westen. Het CS-kwartier bestaat uit grootschalige complexen rond het Stationsplein zoals het Centraal Station, het Groothandelsgebouw en Gebouw Delftse Poort."
+   }
+  },
+  {
+   "name": "Provenierswijk",
+   "description": {
+    "en": "Provenierswijk is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Provenierswijk",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "Named after the Proveniershuis, which stood on the Schiekade and was demolished in 1898.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Provenierswijk",
+    "lang": "nl",
+    "original": "De Provenierswijk dankt haar naam aan het Proveniershuis, dat aan de Schiekade stond en in 1898 werd gesloopt."
+   }
+  },
+  {
+   "name": "Agniesebuurt",
+   "description": {
+    "en": "Agniesebuurt is a neighborhood in Rotterdam, Netherlands in Rotterdam-Noord. Agniesebuurt is located next to Rotterdam Centraal station and the Coolsingel.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Agniesebuurt",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "Named after the Agniesestraat at its centre, itself named after Agniese, the only daughter of Dieric Bokel.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Agniesebuurt",
+    "lang": "nl",
+    "original": "De Agniesebuurt is vernoemd naar de in het midden gelegen Agniesestraat. De naam Agniese is afkomstig van Agniese, de enige dochter van Dieric Bokel."
+   }
+  },
+  {
+   "name": "Liskwartier",
+   "description": {
+    "en": "Liskwartier is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Liskwartier",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Oud-Crooswijk"
+  },
+  {
+   "name": "Rubroek",
+   "description": {
+    "en": "Rubroek is a neighborhood in the Dutch city of Rotterdam. The neighborhood is located near Crooswijk in the Kralingen-Crooswijk district.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rubroek",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The Rubroek polder, made up of Achter- or Oud-Rubroek and Voor-Rubroek or Vorenbroek, was run for water-board purposes by manorial lords or mill keepers, appointed by the city of Rotterdam from the mid-16th century. Achter-Rubroek fell under Hillegersberg, Voor-Rubroek under Rotterdam.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rubroek_(Rotterdam)",
+    "lang": "nl",
+    "original": "De naam Rubroek komt voor het eerst voor in 1283, in een akte over het ambacht Rubroke. Later wordt ook van Ruychbroek en Ruychpolder gesproken. Het begrip rubroek kan verklaard worden als woest en ruig, nog niet ontgonnen moerasland. De polder Rubroek, bestaande uit Achter- of Oud-Rubroek en uit Voor-Rubroek of Vorenbroek, werd vroeger voor wat betreft de waterschapszaken bestuurd door ambachtsheren of molenbewaarders; deze werden al in het midden van de 16de eeuw door de stad Rotterdam aangesteld. Achter- of Oud-Rubroek viel onder Hillegersberg, Voor-Rubroek onder Rotterdam."
+   },
+   "nameOrigin": {
+    "en": "The name first appears in 1283, in a deed about the manor of Rubroke; later forms are Ruychbroek and Ruychpolder. It can be read as wild, rough marshland not yet reclaimed.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rubroek_(Rotterdam)",
+    "lang": "nl",
+    "original": "De naam Rubroek komt voor het eerst voor in 1283, in een akte over het ambacht Rubroke. Later wordt ook van Ruychbroek en Ruychpolder gesproken. Het begrip rubroek kan verklaard worden als woest en ruig, nog niet ontgonnen moerasland. De polder Rubroek, bestaande uit Achter- of Oud-Rubroek en uit Voor-Rubroek of Vorenbroek, werd vroeger voor wat betreft de waterschapszaken bestuurd door ambachtsheren of molenbewaarders; deze werden al in het midden van de 16de eeuw door de stad Rotterdam aangesteld. Achter- of Oud-Rubroek viel onder Hillegersberg, Voor-Rubroek onder Rotterdam."
+   }
+  },
+  {
+   "name": "Kralingen-West"
+  },
+  {
+   "name": "Nieuw-Crooswijk"
+  },
+  {
+   "name": "De Esch",
+   "description": {
+    "en": "De Esch is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/De_Esch",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Beyond the Honingerdijk, which protected Kralingen from the Maas, a water tower holding a million litres of drinking water, the largest in the Netherlands, was built in 1875 to a design by the city architect C.B. van der Tak. Piped clean water was an important weapon against cholera and other infectious diseases.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Esch_(Rotterdam)",
+    "lang": "nl",
+    "original": "Voorbij de Honingerdijk, die Kralingen beschermde tegen de Maas in het verlengde van de Oostzeedijk, bouwde men in 1875 naar een ontwerp van stadsarchitect C.B. van der Tak een watertoren met een reservoir van 1 miljoen liter drinkwater, het grootste in Nederland. De aanleg van een buizenstelsel waardoor zuiver water kon worden getransporteerd, was een belangrijk middel in de strijd tegen cholera en andere besmettelijke ziekten."
+   }
+  },
+  {
+   "name": "Blijdorp",
+   "description": {
+    "en": "Blijdorp is a neighbourhood in northern Rotterdam and is part of the borough Noord. The neighbourhood has around 9500 inhabitants.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Blijdorp_(district)",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Blijdorpse Polder",
+   "description": {
+    "en": "The Blijdorpse polder, after which the Blijdorp wijk and the Diergaarde Blijdorp zoo are named, lies in the north of Rotterdam. Today's wijk is bounded by the Delfshavense Schie to the west, the Schie-Schiekanaal to the north and the Rotterdam–Utrecht and Rotterdam–Schiedam railways to the east and south.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Blijdorpse_polder",
+    "lang": "nl",
+    "original": "De Blijdorpse polder, waarnaar de wijk Blijdorp en de Diergaarde Blijdorp zijn genoemd, ligt in het noorden van Rotterdam. De huidige wijk Blijdorpse polder wordt begrensd door de Delfshavense Schie in het westen, het Schie-Schiekanaal in het noorden, de spoorlijn Rotterdam-Utrecht in het oosten en de spoorlijn Rotterdam-Schiedam in het zuiden."
+   }
+  },
+  {
+   "name": "Hoogkwartier"
+  },
+  {
+   "name": "Burgen"
+  },
+  {
+   "name": "Horsten"
+  },
+  {
+   "name": "Steinen"
+  },
+  {
+   "name": "Lo's"
+  },
+  {
+   "name": "Velden"
+  },
+  {
+   "name": "Zuidwijk",
+   "description": {
+    "en": "Zuidwijk is a residential wijk in the south of Rotterdam's Charlois district, built in the 1950s. Its main road and shopping street is the Slinge.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zuidwijk_(Rotterdam)",
+    "lang": "nl",
+    "original": "Zuidwijk is een 20ste-eeuwse woonwijk in het zuiden van het Rotterdamse stadsdeel Charlois. De wijk wordt begrensd door de Zuiderparkweg in het westen, de Oldegaarde in het noorden, de Vaanweg in het oosten en het Havenspoorpad op het oude tracée van de havenspoorlijn in het zuiden. De belangrijkste verkeersader en tevens winkelstraat is de Slinge. De wijk is in de jaren 50 van de 20e eeuw gebouwd."
+   },
+   "history": {
+    "en": "Zuidwijk was built in the Charlois polder and partly in the Smeetsland polder, which held the manor of Lombardijen, a single farm with 21 morgen of land. Three polder roads disappeared: the Korperweg entirely and much of the Smitshoekseweg and Charloise Lagedijk. Four buildings survive on a vanished stretch of the Charloise Lagedijk, among them the former farms de Beukhoeve and de Kapel.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zuidwijk_(Rotterdam)",
+    "lang": "nl",
+    "original": "De wijk is gebouwd in de polder Charlois en voor een kleiner deel in de polder Smeetsland, met de heerlijkheid Lombardijen, die uit één boerderij bestond met 21 morgen land. Het was een leen van het Huis Wassenaar en Huis Zuidwijk, dat nog in Wassenaar bestaat als huis en landgoed. Drie polderwegen moesten wijken: de Korperweg in zijn geheel en grote delen van de Smitshoekseweg en de Charloise Lagedijk. Behouden zijn 4 panden aan een verdwenen deel van de Charloise Lagedijk, waaronder de voormalige boerderijen de Beukhoeve en de Kapel."
+   }
+  },
+  {
+   "name": "Kampen"
+  },
+  {
+   "name": "Voordes/Rodes"
+  },
+  {
+   "name": "Hoeken"
+  },
+  {
+   "name": "Pascalkwartier"
+  },
+  {
+   "name": "De Vaan"
+  },
+  {
+   "name": "Groot-IJsselmonde",
+   "description": {
+    "en": "Groot-IJsselmonde is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Groot-IJsselmonde",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Kreekhuizen",
+   "description": {
+    "en": "Kreekhuizen is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kreekhuizen",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Homerusbuurt",
+   "description": {
+    "en": "Homerusbuurt is a neighborhood of Rotterdam, Netherlands. It is situated closely to Lombardijen station. The neighborhood is bounded by the railroad on the east, Spinozaweg on the north, Sophocles-straat on the south and shopping facilities on the west. Homerusbuurt is a part of a group of neighborhoods called Lombardijen that are organized around Spinoza Park.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Homerusbuurt",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "Named after the Greek poet Homer.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Homerusbuurt",
+    "lang": "nl",
+    "original": "De Homerusbuurt ontleent zijn naam aan de Griekse dichter Homerus. In het oostelijk deel van de buurt, in het gebied bekend onder de naam complex 207, zijn vanaf maart 2007 zeven flats gesloopt en rond augustus 2008 is de sloop van overige vijf flat afgerond."
+   }
+  },
+  {
+   "name": "Dalenbuurt"
+  },
+  {
+   "name": "Lombardijen",
+   "description": {
+    "en": "Lombardijen is a neighborhood of Rotterdam, Netherlands. It consists of a group of sub-neighborhoods that are organized around Spinoza Park in the western end of the Ijsselmonde borough. Constituent neighborhoods include Homerusbuurt, Molierebuurt, Karlmarxbuurt, and Platostraat.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lombardijen",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Lombardijen was an area of population expansion in the post-war period and is thus populated with dense housing developments.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Lombardijen",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The name may be connected with the Italian region of Lombardy.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Lombardijen",
+    "lang": "nl",
+    "original": "De naam Lombardijen kan te maken hebben met de Italiaanse regio Lombardije."
+   }
+  },
+  {
+   "name": "Zenobuurt",
+   "description": {
+    "en": "The Zenobuurt is the north-eastern part of the Lombardijen wijk in Rotterdam's IJsselmonde district, bounded by the Spinozaweg, the Molenvliet, the Aristotelesstraat and the Rotterdam–Dordrecht railway.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zenobuurt",
+    "lang": "nl",
+    "original": "De Zenobuurt is een onderdeel van de Rotterdamse wijk Lombardijen in het stadsdeel IJsselmonde. De Zenobuurt ligt in het noordoostelijk deel van Lombardijen en wordt begrensd door de Spinozaweg in het zuiden, de Molenvliet in het westen, de Aristotelesstraat in het noorden en de spoorlijn Rotterdam - Dordrecht in het oosten."
+   },
+   "nameOrigin": {
+    "en": "Its streets are named after philosophers, among them Zeno, Aristotle, Socrates, Plato, Epicurus, Diogenes and Pythagoras.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Zenobuurt",
+    "lang": "nl",
+    "original": "De straatnamen in de Zenobuurt zijn genoemd naar filosofen: Aristotelesstraat Socratesstraat Kritostraat Gorgiashof en Gorgiasstraat Hippiashof Platostraat Zenostraat Aesopusplaats Augustinusstraat Plotinusstraat Epicurusstraat Diogenesstraat Pythagorasweg"
+   }
+  },
+  {
+   "name": "Smeetsland",
+   "description": {
+    "en": "Smeetsland is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Smeetsland",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Karl Marxbuurt",
+   "description": {
+    "en": "The Karl Marxbuurt is the north-western part of the Lombardijen wijk in Rotterdam's IJsselmonde district, mostly four-storey blocks of flats.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Karl_Marxbuurt",
+    "lang": "nl",
+    "original": "De Karl Marxbuurt is een onderdeel van de Rotterdamse wijk Lombardijen in het stadsdeel IJsselmonde. De Karl Marxbuurt ligt in het noordwestelijk deel van Lombardijen en wordt begrensd door de Smeetslandsedijk in het noordwesten, de Ogierssingel in het westen en de Spinozaweg in het zuiden. De wijk bestaat voornamelijk uit flatwoningen van vier etages (inclusief de begane grond)."
+   },
+   "nameOrigin": {
+    "en": "Its streets are named after philosophers from Germany (Fichte, Kant, Hegel, Marx, Nietzsche, Schopenhauer), the Netherlands (Bolland, Bierens de Haan, Hemsterhuis, Ovink, Heymans), France (Bergson, Descartes), Denmark (Kierkegaard) and England (Mill).",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Karl_Marxbuurt",
+    "lang": "nl",
+    "original": "De straten in de Karl Marxbuurt zijn vernoemd naar filosofen uit: Duitsland: Gottlieb Fichte, Immanuel Kant, Georg Hegel, Karl Marx, Friedrich Nietzsche, Arthur Schopenhauer Nederland: Gerardus Bolland, Johannes Diderik Bierens de Haan, Tiberius Hemsterhuis, Bernard Ovink, Gerard Heymans Frankrijk: Henri Bergson, Cartesius (de Latijnse naam van René Descartes) Denemarken: Søren Kierkegaard Engeland: Stuart Mill"
+   }
+  },
+  {
+   "name": "Molièrebuurt",
+   "description": {
+    "en": "The Molièrebuurt is the south-western part of the Lombardijen wijk in Rotterdam's IJsselmonde district, bounded by the Spinozaweg, the Pascalweg, the Maeterlinckweg and the Vaanweg and Victor Hugoweg.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Moli%C3%A8rebuurt",
+    "lang": "nl",
+    "original": "De Molièrebuurt is een onderdeel van de Rotterdamse wijk Lombardijen in het stadsdeel IJsselmonde. De Molièrebuurt ligt in het zuidwestelijke deel van Lombardijen en wordt begrensd door de Spinozaweg in het noorden, de Pascalweg in het noordoosten, de Maeterlinckweg in het zuiden en de Vaanweg / Victor Hugoweg in het westen."
+   }
+  },
+  {
+   "name": "Landbouwbuurt"
+  },
+  {
+   "name": "Vreewijk",
+   "description": {
+    "en": "Vreewijk is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Vreewijk",
+    "lang": "en"
+   },
+   "history": {
+    "en": "In 1913 K.P. van der Mandele, J. Mees and L.J.C.J. van Ravesteyn founded the Eerste Rotterdamse Tuindorp company, to build and run garden villages 'especially for the less well-off classes'. The street plan follows the ditches and drains of the former polder: the canal along the Langegeer was a broad ditch called the Vliet, and the Leede was a main drain.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Vreewijk_(Rotterdam)",
+    "lang": "nl",
+    "original": "In 1913 werd de NV Eerste Rotterdamse Tuindorp opgericht door K.P. van der Mandele, J. Mees en L.J.C.J. van Ravesteyn. Het doel van deze NV was \"het stichten en exploiteren van een of meer tuindorpen, bijzonderlijk ten behoeve van de minder gegoede bevolkingsklasse\". Het stratenplan van de wijk is gebaseerd op het oorspronkelijke sloten- en greppelpatroon van de voormalige polder; de singel langs de Langegeer was een brede sloot, genaamd de Vliet, en de Leede was een hoofdsloot."
+   }
+  },
+  {
+   "name": "Oud-IJsselmonde",
+   "description": {
+    "en": "Oud IJsselmonde is a neighbourhood (‘buurt’) in Rotterdam, the Netherlands, with a population of 6,120 in 2024. Oud IJsselmonde comprises the former ‘dike village’ IJsselmonde.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oud-IJsselmonde",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "IJsselmonde",
+   "description": {
+    "en": "IJsselmonde is a borough in the southeastern corner of the city of Rotterdam, Netherlands. As of 2023 it has 61,920 inhabitants. The name IJsselmonde is also used to denote the island in the Rhine–Meuse–Scheldt delta bordered by the Nieuwe Maas to the north, the Oude Maas to the south, and the Noord to the east. The borough is in the island.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/IJsselmonde%2C_Rotterdam",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The name appears as Islemunda as early as 1072, but traces of fishing, hunting and farming go back to about 2500 BC and are attributed to the Vlaardingen culture.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/IJsselmonde_(stadsdeel)",
+    "lang": "nl",
+    "original": "Al in 1072 komt de naam Islemunda voor, maar er zijn sporen gevonden van vissen, jagen en landbouw vanaf ongeveer 2500 v.Chr. Deze sporen worden gerekend tot de Vlaardingencultuur. In 1382 wordt IJsselmonde genoemd: \"Ic Clays van Cats ridder, doe kondich allen den ghenen die dese lettre sullen zien en horen dat ic Pieter Heykins sone die dese lettere hout verlien hebbe viftien gaerden lants die legghen t’Yselmonde tussen Janne Vere Betten soen en Ghenekijns lande\"."
+   },
+   "nameOrigin": {
+    "en": "The name, also used for the island the borough lies on, refers to the island's position at the mouth of the Hollandse IJssel.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/IJsselmonde%2C_Rotterdam",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Tweebosbuurt"
+  },
+  {
+   "name": "Bloemhof",
+   "description": {
+    "en": "Bloemhof is a neighbourhood in Rotterdam, Netherlands. In 2009 Eberhard van der Laan, the Minister of Housing, referred to the neighbourhood as the fourth worst in his \"40 problem neighbourhoods\" list. Since 2009 the security index of the neighbourhood has increased significantly.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Bloemhof%2C_Rotterdam",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Afrikaanderwijk",
+   "description": {
+    "en": "Afrikaanderwijk is a neighborhood of Rotterdam, Netherlands. It lies in the Feijenoord district of the city, and is traditionally a working-class neighborhood. The neighborhood was one of the first in the Netherlands to have a majority of residents with a foreign background, primarily consisting of Turks, Moroccans, Surinamese, and Antilleans.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Afrikaanderwijk",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The neighborhood came into existence around the year 1900 when docks were built in Rotterdam-Zuid, and is one of the residential areas that quickly sprang up to house dockworkers. The name comes from the pattern of street names in the neighborhood, which are based on South African geography in general (e.g., the Bloemfonteinstraat and the Pretorialaan) and on Afrikaner leaders from the Second Boer War (e.g., the Paul Krugerstraat). From 1908 to 1917, the soccer club Feyenoord used the Afrikaanderplein in the center of their neighborhood as their home.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Afrikaanderwijk",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The name comes from the pattern of street names in the neighborhood, which are based on South African geography in general (e.g., the Bloemfonteinstraat and the Pretorialaan) and on Afrikaner leaders from the Second Boer War (e.g., the Paul Krugerstraat).",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Afrikaanderwijk",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Katendrecht",
+   "description": {
+    "en": "Katendrecht is a neighbourhood of Rotterdam, on the south bank of the Nieuwe Maas. It is located between the Rijnhaven and the Maashaven. Katendrecht was a separate municipality from 1817 to 1874, when it merged with Charlois. The neighbourhood covers an area of 1,18 km² with 4,760 inhabitants.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Katendrecht",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The name Katendrecht first appears as a fiefdom that belonged to the lord of Putten in the year 1199. In 1375 the Albrecht of Bavaria ordered the country to be re-dyked after the fiefdom overflowed in the two preceding years as a result of dike breaches. In 1410 Jacob van Putten, lord of Putten, gave a permit to embed a part of the floodplain. This country is later known as Jacob Potsland or Oud-Katendrecht. The part that is re-dammed after a dike breach in 1463 is referred to as Nieuw-Katendrecht or Meester Arend van der Woudensland.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Katendrecht",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The name Katendrecht first appears as a fiefdom that belonged to the lord of Putten in the year 1199.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Katendrecht",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Feijenoord",
+   "description": {
+    "en": "Feijenoord is a borough of Rotterdam in the Netherlands, south of the Nieuwe Maas. Feyenoord football club was formed there, but now play in the neighbouring township of IJsselmonde. It was a centre of shipbuilding in the nineteenth century, principally at the Fijenoord yard.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Feijenoord_(neighbourhood)",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "Fijenoord or Feijenoord used to be called simply 'de Noord'. 'Noord' grew out of 'oord' with the n of the article attached, and means, among other things, land outside the dike. A mid-17th-century map in the Rotterdam city archive marks the island as Fyen Noort; Feijenoord was once a small island in the river.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Feijenoord_(wijk)",
+    "lang": "nl",
+    "original": "Fijenoord of Feijenoord werd vroeger meestal 'de Noord' genoemd. Het woord 'noord' (noort) is ontstaan doordat in het verleden in het woord ‘oort’ de ‘n’ van het verbogen lidwoord terecht is gekomen. Noord kwam daardoor vroeger veel voor naast oord. Het betekent onder meer: buitendijkse grond, uiterland. Deze gronden werden vroeger dus ‘oorden’ of ‘noorden’ genoemd. Op een kopie van een plattegrond uit het midden van de 17e eeuw – aanwezig in het stadsarchief van Rotterdam – staat het eiland Feijenoord genoteerd als Fyen Noort. Feijenoord was vroeger een eilandje in de rivier."
+   }
+  },
+  {
+   "name": "Tarwewijk",
+   "description": {
+    "en": "The Tarwewijk lies in the north-east of Rotterdam's Charlois district: mostly walk-up flats and small family houses, with a few shops and several schools. It was built between 1900 and 1930 to house workers in the fast-growing port, and is bounded to the north, along the Brielselaan, by the Maashaven.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Tarwewijk",
+    "lang": "nl",
+    "original": "De Tarwewijk ligt in het noordoosten van het Rotterdamse stadsdeel Charlois. In de wijk staan voornamelijk woonhuizen in de vorm van portiekwoningen en kleine eengezinswoningen. Er zijn enkele winkels en verschillende scholen. De Tarwewijk is tussen 1900 en 1930 gebouwd ter huisvesting van de arbeiders in de snel groeiende haven. Aan de noordzijde (bij de Brielselaan) wordt de wijk begrensd door de Maashaven."
+   }
+  },
+  {
+   "name": "Zuidplein"
+  },
+  {
+   "name": "Carnisse",
+   "description": {
+    "en": "Carnisserbuurt is a neighborhood of Rotterdam, Netherlands. As of 2025, it has a population of 11,285.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carnisserbuurt",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Schiemond",
+   "description": {
+    "en": "Schiemond is a post-war neighbourhood in the west of Rotterdam with about 3,500 inhabitants, bounded by the Schiemond harbour to the east, the Nieuwe Maas to the south, the IJselhaven and Pelgrimsstraat to the west and the Westzeedijk to the north.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Schiemond",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Schiemond was built in the 1980s on former port land that had held the Wilton-Fijenoord shipyard and the firm of R.S. Stokvis en Zonen.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Schiemond_(wijk)",
+    "lang": "nl",
+    "original": "Schiemond is gebouwd in de jaren tachtig van de twintigste eeuw op vrijgekomen haventerreinen, waar de werf van Wilton-Fijenoord en de firma R.S. Stokvis en Zonen gevestigd waren. In 2008 werd Schiemond uitgeroepen tot meest kindonvriendelijke wijk van Nederland. Als oorzaken werden onder andere jeugdcriminaliteit, jeugdwerkloosheid, tienermoeders en armoede onder kinderen gegeven. Op 5 mei 2012 werd Anthony Fernandes wegens een drugsruzie doodgeschoten om de hoek van zijn ouderlijk huis in Rotterdam-Schiemond. Hij werd hierbij geraakt door zeker 13 kogels."
+   }
+  },
+  {
+   "name": "Charlois",
+   "description": {
+    "en": "Charlois is a neighbourhood of the Dutch city of Rotterdam. It is located on the south bank of the Nieuwe Maas. Charlois used to be a separate municipality until 1895, when it became part of Rotterdam.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Charlois",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Charlois used to have an airport. Waalhaven airport as it was called, was opened in 1920 as the second civilian airport in the Netherlands after Schiphol. The airport was destroyed in 1940 by the Dutch army so it could not be used by invading German Wehrmacht during World War II.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Charlois",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Kleinpolder-West"
+  },
+  {
+   "name": "Oud-Charlois",
+   "description": {
+    "en": "Oud-Charlois is a neighborhood of Rotterdam, Netherlands. It features a charming village center with authentic houses and streets. As of 2025, the population of Oud-Charlois is 13,860.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oud-Charlois",
+    "lang": "en"
+   },
+   "history": {
+    "en": "In 1460 Charles the Bold ordered the Rijerwaert polder to be diked. Approving its transfer to four landowners on 14 April 1462, he set two conditions: that the diked land 'shall henceforth be called the land of Charolois', after the county of Charolais he came from, and that a church dedicated to St Clement be founded. The village of Charlois grew up around that church.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oud-Charlois",
+    "lang": "nl",
+    "original": "In 1460 gaf Karel de Stoute opdracht de polder Rijerwaert te bedijken. Toen hij op 14 april 1462 de akte van overdracht van de polder Rijerwaert aan vier grondheren goedkeurde, verbond hij daar twee voorwaarden aan, dat: de ingedijkte grond \"voortaen heten sal 't land van Charolois\" (naar het graafschap Charolais waar hij vandaan kwam); er een kerk gesticht werd \"die genaempt sal wesen Sinte Clemenskercke.\" (dus gewijd aan Sint-Clemens). Bij de Sint-Clemenskerk, ontwikkelde zich het dorp Charlois."
+   },
+   "nameOrigin": {
+    "en": "Named after the county of Charolais, home of Charles the Bold, who had the polder diked and decreed in 1462 that it 'shall henceforth be called the land of Charolois'.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oud-Charlois",
+    "lang": "nl",
+    "original": "In 1460 gaf Karel de Stoute opdracht de polder Rijerwaert te bedijken. Toen hij op 14 april 1462 de akte van overdracht van de polder Rijerwaert aan vier grondheren goedkeurde, verbond hij daar twee voorwaarden aan, dat: de ingedijkte grond \"voortaen heten sal 't land van Charolois\" (naar het graafschap Charolais waar hij vandaan kwam); er een kerk gesticht werd \"die genaempt sal wesen Sinte Clemenskercke.\" (dus gewijd aan Sint-Clemens). Bij de Sint-Clemenskerk, ontwikkelde zich het dorp Charlois."
+   }
+  },
+  {
+   "name": "Wielewaal",
+   "description": {
+    "en": "Wielewaal is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Wielewaal",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The name refers to the nearby lakes Waal and Wiel, formed by dike breaches in the Middle Ages, and is also a pun on the bird of the same name, the golden oriole.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Wielewaal_(Rotterdam)",
+    "lang": "nl",
+    "original": "De naam Wielewaal verwijst naar de nabijgelegen plassen Waal en Wiel, die in de middeleeuwen ontstaan zijn bij dijkdoorbraken, en is tegelijk een woordspeling die associaties oproept met de gelijknamige vogel."
+   }
+  },
+  {
+   "name": "Pendrecht",
+   "description": {
+    "en": "Pendrecht is a neighborhood in Rotterdam, Netherlands. In 2009 Eberhard van der Laan, the Minister of Housing, referred to the neighborhood as the second worst in his \"40 problem neighbourhoods\" list.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pendrecht",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The manor of Pendrecht, south of today's wijk, was almost deserted by the end of the 18th century (18 inhabitants in 1795) and in the French period was joined to Rhoon. After the war Rotterdam was desperately short of housing: the bombing of 14 May 1940 had destroyed 25,000 homes and left 80,000 people homeless, and rapid population growth was expected, so new wijken had to be built.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Pendrecht",
+    "lang": "nl",
+    "original": "Pendrecht is genoemd naar een ambacht op het eiland IJsselmonde, ten zuiden van de huidige wijk. Het ambacht Pendrecht was tegen het eind van de achttiende eeuw bijna ontvolkt geraakt (18 inwoners in 1795) en werd in de Franse tijd bij Rhoon gevoegd. Na de oorlog was er een groot gebrek aan woonruimte in Rotterdam. Bij het bombardement op 14 mei 1940 gingen 25.000 woningen verloren en werden 80.000 mensen dakloos. Tevens had men de verwachting dat de bevolking explosief zou gaan groeien. De opgave was dus nieuwe wijken te bouwen met genoeg woningen voor de toekomst."
+   },
+   "nameOrigin": {
+    "en": "Named after a manor on the island of IJsselmonde, south of the present wijk. Its streets are named after places in Zeeland, South Holland and West Brabant hit by the North Sea flood of 1 February 1953.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Pendrecht",
+    "lang": "nl",
+    "original": "Straatnamen zijn vernoemd naar plaatsen in Zeeland, Zuid-Holland en West-Brabant, die door de watersnoodramp van 1 februari 1953 getroffen werden. Pendrecht is genoemd naar een ambacht op het eiland IJsselmonde, ten zuiden van de huidige wijk."
+   }
+  },
+  {
+   "name": "Zevenkamp",
+   "description": {
+    "en": "Zevenkamp is a neighbourhood in the borough Prins Alexander, Rotterdam.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zevenkamp",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The City of Rotterdam, Netherlands acquired the about 540 acres in 1978, in a land exchange with Capelle aan den IJssel and Zevenhuizen. Until then, the area was a rural polder.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zevenkamp",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Nesselande",
+   "description": {
+    "en": "Nesselande is a neighbourhood of Rotterdam, South Holland, the Netherlands and is a new extension on the east side of the city. It is part of the borough of Prins Alexander, formerly Zevenhuizen-Moerkapelle. Nesselande consists of three development areas: Tuinstad, Badplaats and Waterwijk.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nesselande",
+    "lang": "en"
+   },
+   "history": {
+    "en": "In 1995 the then municipalities of Nieuwerkerk aan den IJssel and Zevenhuizen-Moerkapelle transferred land, including the hamlet of Groeneweg, to Rotterdam for a Vinex development with the working name Achtkamp. Building of the wijk, finally named Nesselande, began in 2000; until then the area was meadowland.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Nesselande",
+    "lang": "nl",
+    "original": "In 1995 hebben de (toenmalige) gemeenten Nieuwerkerk aan den IJssel en Zevenhuizen-Moerkapelle grondgebied, waaronder de buurtschap Groeneweg, overgedragen aan Rotterdam voor de ontwikkeling van een Vinex-locatie met de werknaam Achtkamp. De bouw van de wijk, met de definitieve naam Nesselande, is gestart in 2000. In dat jaar heeft Rotterdam het geannexeerd, daarvoor was het gebied omringd door weilanden en behoorde het tot de gemeente Zevenhuizen."
+   },
+   "nameOrigin": {
+    "en": "The name is a coinage referring to a nes (a spit of land), possibly chosen because of the nearby Zevenhuizerplas lake.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Nesselande",
+    "lang": "nl",
+    "original": "De naam is een neologisme dat verwijst naar een nes (landtong) en mogelijk is gekozen vanwege de nabijheid van de Zevenhuizerplas."
+   }
+  },
+  {
+   "name": "Ommoord",
+   "description": {
+    "en": "Ommoord is a neighbourhood in the borough Prins Alexander, part of the municipality of Rotterdam, South Holland, the Netherlands. Ommoord is surrounded by the neighbourhoods Zevenkamp, Het Lage Land and Terbregge. It has around 25,000 inhabitants across 12,500 households. Ommoord shares postal codes 3068 (south of metro line) and 3069 (north of metro line) with Zevenkamp.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Ommoord",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Housing went up here from 1965, on land with a long history. In the first half of the 19th century the area north-east of Rotterdam was mostly lakes left by digging peat for fuel; the first plans to drain them were made in 1843, but workable ones came only in 1859.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Ommoord",
+    "lang": "nl",
+    "original": "Het gebied waar vanaf 1965 een woonwijk verrees, heeft een lange voorgeschiedenis. De naam Ommoord is waarschijnlijk ontstaan uit Ouwe Moor, = oud moeras. In 1300 is er al sprake van het Ouwemoorse Meertje. In de eerste helft van de 19e eeuw bestond het gebied ten noordoosten van Rotterdam grotendeels uit veenplassen die door het afgraven van het veen ten behoeve van turf waren ontstaan. In 1843 werden de eerste plannen gemaakt voor droogmaking, maar het duurde tot 1859 voor er bruikbare plannen op tafel kwamen."
+   },
+   "nameOrigin": {
+    "en": "The name probably comes from Ouwe Moor, 'old marsh'; the Ouwemoorse Meertje is mentioned as early as 1300.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Ommoord",
+    "lang": "nl",
+    "original": "Het gebied waar vanaf 1965 een woonwijk verrees, heeft een lange voorgeschiedenis. De naam Ommoord is waarschijnlijk ontstaan uit Ouwe Moor, = oud moeras. In 1300 is er al sprake van het Ouwemoorse Meertje. In de eerste helft van de 19e eeuw bestond het gebied ten noordoosten van Rotterdam grotendeels uit veenplassen die door het afgraven van het veen ten behoeve van turf waren ontstaan. In 1843 werden de eerste plannen gemaakt voor droogmaking, maar het duurde tot 1859 voor er bruikbare plannen op tafel kwamen."
+   }
+  },
+  {
+   "name": "Kralingse Bos",
+   "description": {
+    "en": "The Kralingse Bos is a wood in Rotterdam, in Kralingen.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kralingse_Bos",
+    "lang": "nl",
+    "original": "Het Kralingse Bos is een bos in de gemeente Rotterdam, in de wijk Kralingen."
+   },
+   "history": {
+    "en": "In the early 20th century G.J. de Jongh, director of public works, designed a wood or city park along the Noorderplas, as the Kralingse Plas was then called; its original name was the Kralinger Hout. The council adopted the plan in 1911. The polders were to be raised with dredgings from digging the Waalhaven, and because the First World War delayed the harbour, the plans were slow to get going.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kralingse_Bos",
+    "lang": "nl",
+    "original": "De directeur Gemeentewerken, G.J. de Jongh, ontwerpt in het begin van de 20e eeuw een plan voor een bos of stadspark langs de Noorderplas, zoals de Kralingse Plas in die tijd wordt genoemd. De oorspronkelijke naam van het park is de Kralinger Hout. In 1911 wordt het plan door de gemeenteraad aangenomen. Men zal de polders ophogen met slib en baggerspecie die men over zal hebben van het graven van de Waalhaven. Doordat de aanleg van de haven door de Eerste Wereldoorlog vertraging oploopt, duurt het even voordat de plannen van de grond komen."
+   }
+  },
+  {
+   "name": "Het Lage Land",
+   "history": {
+    "en": "The wijk was built in the early 1960s, laid out very spaciously at 45 homes per hectare. Some infilling followed, but it remains spacious with much low-rise housing. Its first residents came mostly from Kralingen and Delfshaven.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Het_Lage_Land",
+    "lang": "nl",
+    "original": "De wijk ontstond in het begin van de jaren zestig. De wijk werd zeer ruim opgezet (45 huizen per ha). Later heeft er enige verdichting plaatsgevonden. Toch blijft het een zeer ruime wijk met veel laagbouw. In de beginjaren werd het Lage Land vooral bewoond door oud-inwoners van de wijken Kralingen en Delfshaven."
+   }
+  },
+  {
+   "name": "Prinsenland",
+   "description": {
+    "en": "Prinsenland is a neighborhood of Rotterdam, Netherlands. The north of the neighborhood was built in the 1960s, at the same time as the adjacent neighborhood Het Lage Land. The rest of the neighborhood was built in several stages in the 1990s. It consists of many different types of housing (flats, apartments, row-houses) surrounding the urban park Prinsenpark.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Prinsenland",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Kralingen-Oost"
+  },
+  {
+   "name": "Kop van Zuid",
+   "description": {
+    "en": "Kop van Zuid is a neighbourhood of Rotterdam on the south bank of the Nieuwe Maas, opposite the city centre. The district is relatively young and includes the Wilhelminapier.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kop_van_Zuid",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Noordereiland",
+   "description": {
+    "en": "Noordereiland is a neighborhood of Rotterdam, Netherlands. The Noordereiland owes its name to the Noorderhaven (nowadays Koningshaven) which, under the leadership of C.B. van der Tak was dug between 1872 and 1874. By digging the Noorderhaven, the Noordereiland was separated from the former island of Fijenoord and is now an island between the central parts of the North and South side of the city.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Noordereiland",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "Named after the Noorderhaven (today's Koningshaven), dug between 1872 and 1874 under C.B. van der Tak, which cut the island off from the former island of Fijenoord.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Noordereiland",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Hillesluis",
+   "description": {
+    "en": "Hillesluis is a neighbourhood of Rotterdam in the Feijenoord district.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hillesluis",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Hillesluis was built to meet demand for cheap labour in the Port of Rotterdam, and most of its first residents were dockworkers from Zeeland and North Brabant. After the Second World War it grew more diverse as workers from Turkey and Morocco moved in.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hillesluis",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Kop van Zuid-Entrepot"
+  },
+  {
+   "name": "Terbregge",
+   "description": {
+    "en": "Terbregge is a neighborhood of Rotterdam, Netherlands. Terbregge has a typical Dutch landscape with windmills, canals and cycling routes that lead through the Lage Bergse Bos and the Rotte countryside.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Terbregge",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The district grew from the hamlet of Terbregge, built around a bridge over the Rotte in the 13th century and known to have existed in 1524. The windmill De Vier Winden stands in the old part on the Rotte. Today the district is best known for the adjacent Terbregseplein motorway junction, where the A16 meets the A20.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Terbregge",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Molenlaankwartier",
+   "description": {
+    "en": "The Molenlaankwartier is part of Rotterdam's Hillegersberg-Schiebroek district, in the Boterdorpse polder. A green wijk crossed by canals, it was developed from the 1920s on both sides of the Molenlaan in Hillegersberg, a road already on a 17th-century map.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Molenlaankwartier",
+    "lang": "nl",
+    "original": "Het Molenlaankwartier maakt deel uit van het Rotterdamse stadsdeel Hillegersberg-Schiebroek en is gelegen in de Boterdorpse polder. Het is een groene wijk, doorsneden door singels, die vanaf de jaren twintig in ontwikkeling is gekomen aan weerszijden van de Molenlaan in Hillegersberg, een weg die al op een zeventiende-eeuwse kaart voorkomt. Er is een klein winkelcentrum aan de Van Beethovensingel."
+   }
+  },
+  {
+   "name": "110-Morgen",
+   "description": {
+    "en": "110-Morgen, or Honderd en Tien Morgen, is a wijk in Rotterdam's Hillegersberg-Schiebroek district, in the De Honderdtien Morgen polder north of the village centre of Hillegersberg. The polder, about 85 hectares, was drained in 1772.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/110-Morgen",
+    "lang": "nl",
+    "original": "110-Morgen of Honderd en Tien Morgen is een wijk in het Rotterdamse stadsdeel Hillegersberg-Schiebroek. De wijk ligt in de polder De Honderdtien Morgen aan de noordzijde van de dorpskern van Hillegersberg. Honderdentienmorgen is een polder van ca. 85 ha, die in 1772 is drooggemaakt. De naam refereert aan de oppervlakte van de polder."
+   },
+   "nameOrigin": {
+    "en": "The name refers to the polder's area, 110 morgen. Its streets are named after Greek and Roman gods and heroes.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/110-Morgen",
+    "lang": "nl",
+    "original": "De naam refereert aan de oppervlakte van de polder. De straten in de wijk zijn vernoemd naar Griekse en Romeinse goden en helden."
+   }
+  },
+  {
+   "name": "Hillegersberg",
+   "description": {
+    "en": "Hillegersberg is a neighbourhood of Rotterdam, Netherlands. Primarily a green residential area with lakes, canals and parks, it was incorporated into the city of Rotterdam in 1941. Settlement around its Hillegonda church was first established here in 990.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hillegersberg",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Hillegersberg was named after Hildegard van Vlaanderen, wife of Count Dirk II of Holland and West Friesland (920-988). The village was founded on a hill, form by a ridge of sand known locally as a donk or morre. Local flint finds here indicate pre-historic occupation and later discoveries of Roman pottery, medals as well as a bust of Emperor Hadrian show subsequent early activity in the area. According to legend, this ridge was formed by sand dropped from the apron of the mythical giant Hillegonda.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hillegersberg",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "Hillegersberg was named after Hildegard van Vlaanderen, wife of Count Dirk II of Holland and West Friesland (920-988).",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hillegersberg",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Hillegersberg-Schiebroek",
+   "description": {
+    "en": "Hillegersberg-Schiebroek is a borough in northern Rotterdam with 40,846 inhabitants (January 2008). Hillegersberg and Schiebroek were independent until Rotterdam annexed them on 1 August 1941.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hillegersberg-Schiebroek",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Kleiwegkwartier",
+   "description": {
+    "en": "Kleiwegkwartier is a neighbourhood quarter in Rotterdam, Netherlands. It is in the southern part of Hillegersberg with origins dating from the early 1600s.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kleiwegkwartier",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The area owes its name to the Kleiweg, the main road that runs centrally through its neighbourhood.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kleiwegkwartier",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Schiebroek",
+   "description": {
+    "en": "Schiebroek is a former village in the province of South Holland, Netherlands. It is now a neighbourhood of Rotterdam, and part of the borough of Hillegersberg-Schiebroek. Schiebroek was a separate municipality between 1817 and 1941, when it became part of Rotterdam.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Schiebroek",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Kleinpolder-Oost"
+  },
+  {
+   "name": "Kleinpolder",
+   "description": {
+    "en": "Kleinpolder is a neighborhood of Rotterdam, Netherlands. Kleinpolderplein (Kleinpolder square), is home to a 2012 sculpture garden, constructed underneath one of the busiest interchanges in the Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kleinpolder",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The bombing of 14 May 1940 destroyed 25,000 homes in Rotterdam and left 80,000 people homeless. Rotterdam annexed Overschie in 1941, and in 1947 the planner Lotte Stam-Beese of the city development department began designing Kleinpolder on the 'neighbourhood unit' idea, to house workers from the Spaanse Polder industrial estate.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kleinpolder",
+    "lang": "nl",
+    "original": "Bij het bombardement op Rotterdam van 14 mei 1940 waren 25.000 woningen verloren gegaan en werden 80.000 mensen dakloos. In 1941 werd de gemeente Overschie door Rotterdam geannexeerd. In 1947 begon de stedenbouwkundige Lotte Stam-Beese van de Dienst Stadsontwikkeling met het ontwerp van de wijk. De structuur van de wijk was gebaseerd op de zogenaamde 'wijkgedachte'. De wijk Kleinpolder was bedoeld voor de huisvesting van arbeiders van het industriegebied de Spaanse Polder."
+   }
+  },
+  {
+   "name": "Overschie",
+   "description": {
+    "en": "Overschie is a wijk and district of Rotterdam, with 19,745 inhabitants on 1 January 2023 and an area of 15.8 km².",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Overschie_(stadsdeel)",
+    "lang": "nl",
+    "original": "Overschie is een wijk en stadsdeel van de gemeente Rotterdam. Overschie telde op 1 januari 2023 19.745 inwoners en heeft een oppervlakte van 15,80 km²."
+   },
+   "history": {
+    "en": "Overschie is a former municipality. Four waters all known simply as the Schie meet here: the Delfshavense, Delftse, Rotterdamse and Schiedamse Schie. The Schie became an important transport route in the 13th century, when Schieland's Hoge Zeedijk was built between Vlaardingen and Gouda, creating harbours at the Schie and the Rotte.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Overschie_(stadsdeel)",
+    "lang": "nl",
+    "original": "Overschie is een voormalige gemeente in Zuid-Holland. De naam Overschie wordt reeds in de tiende eeuw genoemd ('Ouwer Schie'), toen het dorp een kleine nederzetting in een groot moerasgebied was. In Overschie komen de vier wateren bij elkaar die alle vier kortweg met Schie worden aangeduid: De Delfshavense Schie, de Delftse Schie, de Rotterdamse Schie en de Schiedamse Schie. De Schie werd een belangrijke transportroute in de dertiende eeuw, toen de Schielands Hoge Zeedijk werd aangelegd tussen Vlaardingen en Gouda, waarbij twee havens werden gecreëerd bij de Schie en de Rotte."
+   },
+   "nameOrigin": {
+    "en": "The name is recorded as early as the tenth century, as 'Ouwer Schie', when the village was a small settlement in a great marsh.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Overschie_(stadsdeel)",
+    "lang": "nl",
+    "original": "De naam Overschie wordt reeds in de tiende eeuw genoemd ('Ouwer Schie'), toen het dorp een kleine nederzetting in een groot moerasgebied was."
+   }
+  },
+  {
+   "name": "Heijplaat",
+   "description": {
+    "en": "Heijplaat is a neighborhood of Rotterdam, Netherlands. Based on garden village design principles, the planning of the area was started in 1913 using funds from the 1902 Housing Act.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Heijplaat",
+    "lang": "en"
+   },
+   "history": {
+    "en": "Heijplaat began as housing for workers of the Rotterdamsche Droogdok Maatschappij (RDM), which started repairing and building ships here in 1904; it lay far outside Rotterdam and was hard for workers to reach. In 1914 the Bouwmaatschappij Heyplaat company was founded to build a then-modern garden village.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Heijplaat",
+    "lang": "nl",
+    "original": "Heijplaat is ontstaan als woonwijk voor arbeiders van de toenmalige Rotterdamsche Droogdok Maatschappij (RDM) die in 1904 hier begon met onderhoud en bouw van schepen. Heijplaat ligt relatief ver buiten Rotterdam en was dus ook moeilijk bereikbaar voor de werknemers. De naam verwijst naar de nabijgelegen, en inmiddels verdwenen, buurtschap De Heij. In 1914 werd de NV Bouwmaatschappij Heyplaat opgericht, die opdracht gaf tot het bouwen van een toentertijd moderne wijk in de vorm van een tuindorp. Het tuindorp werd ontworpen en ontwikkeld door Architectenbureau van H.A.J."
+   },
+   "nameOrigin": {
+    "en": "Named after the nearby, now vanished hamlet of De Heij.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Heijplaat",
+    "lang": "nl",
+    "original": "De naam verwijst naar de nabijgelegen, en inmiddels verdwenen, buurtschap De Heij. Vanaf juli 2015 is Aqualiner verdergegaan onder de naam Waterbus als lijn 18, hierbij is de route iets gewijzigd met een extra aanlegplaats bij Katendrecht."
+   }
+  },
+  {
+   "name": "Landzicht",
+   "description": {
+    "en": "Landzicht is a small wijk of semi-permanent houses in Rotterdam's Overschie district, built in 1941 to ease the housing shortage after the bombing of Rotterdam and then called Nooddorp ('emergency village'). It lies between Overschie and Rotterdam Airport: five streets with 200 single-storey homes.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Landzicht_(Overschie)",
+    "lang": "nl",
+    "original": "Landzicht is een kleine wijk met semi-permanente woningen in het Rotterdamse stadsdeel Overschie. De wijk is gebouwd in 1941 om de woningnood na het bombardement op Rotterdam te verminderen en werd toen Nooddorp genoemd. Landzicht is gelegen tussen Overschie en de luchthaven Rotterdam Airport en omvat 5 straten met in totaal 200 woningen met één woonlaag."
+   }
+  },
+  {
+   "name": "Zestienhoven",
+   "description": {
+    "en": "Zestienhoven is a neighborhood of Rotterdam, Netherlands and is part of the borough Overschie. Zestienhoven is the largest district in Overschie, but is sparsely populated. The Polder Zestienhoven is within the district, east of the urban area of Overschie. On the east side is the neighborhood Schiebroek and on the north side Rotterdam The Hague Airport.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zestienhoven_(district)",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "'s-Gravenland",
+   "description": {
+    "en": "'s-Gravenland is a wijk in Rotterdam's Prins Alexander district, bordering Prinsenland to the north and the Capelle aan den IJssel wijken of Fascinatio to the south and Schenkel to the east. Confusingly, it does not border Capelle's own wijk of the same name.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/'s-Gravenland_(Rotterdam)",
+    "lang": "nl",
+    "original": "'s-Gravenland is een wijk in het stadsdeel Prins Alexander van de gemeente Rotterdam, in de Nederlandse provincie Zuid-Holland. De wijk grenst in het noorden aan de wijk Prinsenland. In het zuiden grenst de wijk aan de Capelse wijk Fascinatio en in het oosten aan de Capelse wijk Schenkel. Verwarrend genoeg grenst 's-Gravenland niet aan de gelijknamige Capelse wijk 's-Gravenland."
+   }
+  },
+  {
+   "name": "Capelle-West",
+   "description": {
+    "en": "Capelle-West is a residential wijk in the west of Capelle aan den IJssel, bordering 's-Gravenland, Fascinatio and Rotterdam's Kralingseveer, along the Abram van Rijckelvorselweg, the Algeraweg and the Hollandse IJssel.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Capelle-West",
+    "lang": "nl",
+    "original": "Capelle-West is een woonwijk in het westen van Capelle aan den IJssel, in de Nederlandse provincie Zuid-Holland. De woonwijk grenst aan de wijken 's-Gravenland, Fascinatio en aan de Rotterdamse wijk Kralingseveer, en is gelegen aan de Abram van Rijckelvorselweg, de Algeraweg en de rivier de Hollandse IJssel."
+   },
+   "history": {
+    "en": "Capelle-West is one of the original centres of Capelle aan den IJssel, with three residential areas: the Kleine Zeeheldenbuurt and De Loedt, the centre of West, and the Redenbuurt. The Kleine Zeeheldenbuurt dates from around 1900, with narrow streets and many terraced houses; De Loedt mixes grassland, orchards and former farms.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Capelle-West",
+    "lang": "nl",
+    "original": "Capelle-West is een van de oorspronkelijke kernen van Capelle aan den IJssel. Deze wijk bestaat uit drie woonbuurten - de Kleine Zeeheldenbuurt en De Loedt, het centrum van West en de Redenbuurt. De Kleine Zeeheldenbuurt dateert van rond de eeuwwisseling van de 19e naar de 20e eeuw met smalle straten, traditioneel veel rijtjeswoningen en onvoldoende parkeermogelijkheid. De Loedt kenmerkt zich door gemengd gebruik, grasland en boomgaarden, een open verkaveling en een verzameling van voormalige boerderijen."
+   }
+  },
+  {
+   "name": "Oosterflank",
+   "description": {
+    "en": "Oosterflank is a neighborhood of Rotterdam, Netherlands. It has a neighborhood council and a metro station.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oosterflank",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Schollevaar"
+  },
+  {
+   "name": "Kralingse Veer",
+   "description": {
+    "en": "Kralingseveer, also spelled Kralingse Veer, was annexed by Rotterdam from Capelle aan den IJssel in 1941 and is now a small wijk in the Prins Alexander district in the east of the city. Since a land exchange with Capelle in 1978 it no longer borders the rest of Rotterdam directly.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kralingse_Veer",
+    "lang": "nl",
+    "original": "Kralingseveer, ook gespeld als Kralingse Veer, is in 1941 door Rotterdam geannexeerd van Capelle aan den IJssel en is sindsdien een kleine wijk in het stadsdeel Prins Alexander in het oosten van de gemeente Rotterdam. Sinds 1978 grenst het door een grondruil met Capelle aan den IJssel niet meer rechtstreeks aan Rotterdam."
+   },
+   "history": {
+    "en": "The ferry from Kralingen to IJsselmonde is named in a charter of 1333 but is probably much older. Over time an inn, the ferryman's house and stabling for horses grew up around it, and fishers settled here, among other things for salmon.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kralingse_Veer",
+    "lang": "nl",
+    "original": "De naam Kralingseveer herinnert aan het overzetveer van Kralingen naar IJsselmonde. Dit veer wordt in een oorkonde uit 1333 genoemd, maar is waarschijnlijk veel ouder. Het zou best kunnen dat het veer een schakel vormde in een heerweg van het Romeinse Rijk. Rond het veer ontstond in de loop van de tijd een herberg, de woning van de veerman, een stalling voor paarden en vestigden zich er vissers die (onder andere) visten op zalm."
+   },
+   "nameOrigin": {
+    "en": "The name recalls the ferry (veer) from Kralingen to IJsselmonde, mentioned in a charter of 1333.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kralingse_Veer",
+    "lang": "nl",
+    "original": "De naam Kralingseveer herinnert aan het overzetveer van Kralingen naar IJsselmonde."
+   }
+  },
+  {
+   "name": "Prins Alexander",
+   "description": {
+    "en": "Prins Alexander is a borough in the northeast of Rotterdam, Netherlands. As of 2023, it had 96,452 inhabitants, making it the most populated borough in the city. Prins Alexander has 7 neighbourhoods: Het Lage Land Kralingseveer Nesselande Ommoord Oosterflank Prinsenland Zevenkamp",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Prins_Alexander",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The polder was named after Prince Alexander of the Netherlands (1851-1884).",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Prins_Alexander",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Rivium",
+   "description": {
+    "en": "The Rivium is a 31.7-hectare wijk in Capelle aan den IJssel.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rivium",
+    "lang": "nl",
+    "original": "Het Rivium is een wijk met een oppervlakte van 31,7 hectare in de gemeente Capelle aan den IJssel, in de Nederlandse provincie Zuid-Holland."
+   },
+   "history": {
+    "en": "Until 1978 the business park's land belonged to Rotterdam, and it was polluted with harbour silt from the river. A land exchange between Rotterdam, Capelle aan den IJssel and Zevenhuizen, in which today's Zevenkamp went to Rotterdam, brought it to Capelle. After the soil was cleaned, the Rivium business park was built, with the Fascinatio housing area to the north.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rivium",
+    "lang": "nl",
+    "original": "Het gebied waar het bedrijventerrein ligt behoorde tot 1978 tot de gemeente Rotterdam en was verontreinigd met havenslib uit de rivier waar de naam naar verwijst. Door een grondruil tussen de gemeenten Rotterdam, Capelle aan den IJssel en Zevenhuizen waarbij het grondgebied van de huidige wijk Zevenkamp werd overgedragen aan Rotterdam, kwam dit gebied bij de gemeente Capelle aan den IJssel. Na reiniging van de grond, waarover de politiek zich veel zorgen heeft gemaakt, verrees in dit gebied het bedrijventerrein Rivium en ten noorden daarvan de woonwijk Fascinatio."
+   },
+   "nameOrigin": {
+    "en": "The name refers to the river, whose harbour silt once polluted the site.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rivium",
+    "lang": "nl",
+    "original": "Het gebied waar het bedrijventerrein ligt behoorde tot 1978 tot de gemeente Rotterdam en was verontreinigd met havenslib uit de rivier waar de naam naar verwijst."
+   }
+  },
+  {
+   "name": "Fascinatio",
+   "description": {
+    "en": "Fascinatio is a wijk in Capelle aan den IJssel.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fascinatio",
+    "lang": "nl",
+    "original": "Fascinatio is een wijk in de gemeente Capelle aan den IJssel, in de Nederlandse provincie Zuid-Holland."
+   },
+   "history": {
+    "en": "Fascinatio is Capelle aan den IJssel's newest wijk, developed for extra housing and a modern live-work environment, with a mix of homes, offices and amenities. It dates from 2001 and had about 3,000 inhabitants on 1 January 2018.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Fascinatio",
+    "lang": "nl",
+    "original": "Fascinatio is de jongste wijk van Capelle aan den IJssel. De wijk werd ontwikkeld om te voorzien in extra woonruimte en een moderne woon-werkomgeving. De gemeente had weinig uitbreidingsmogelijkheden binnen de bestaande bebouwing, dus er werd gekozen voor een nieuw stedelijk gebied met een mix van woningen, kantoren en voorzieningen. Het initiatief kwam vanuit de gemeente in samenwerking met projectontwikkelaars en woningcorporaties. De wijk bestaat sinds 2001 en telde op 1 januari 2018 circa 3.000 inwoners."
+   }
+  },
+  {
+   "name": "Veld van Klanken"
+  },
+  {
+   "name": "Hof van Eden"
+  },
+  {
+   "name": "Tiengemeten Midden"
+  },
+  {
+   "name": "Scheepvaartkwartier",
+   "description": {
+    "en": "The Scheepvaartkwartier or Nieuwe Werk is a neighborhood located on the banks of the Nieuwe Maas river in Rotterdam, the Netherlands. The Scheepvaartkwartier is among the top 20 wealthiest neighborhoods in the Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scheepvaartkwartier",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The Scheepvaartkwartier was designed as a systematically planned city district around 1840 by the city architect W.N. Rose. This new urban area was named the Nieuwe Werk and was subdivided with the Veerhaven as its most prominent feature. Originally, the Westerhaven was also part of this area, but it was filled in and eliminated in 1910. The neighborhood attracted several wealthy Rotterdam residents, such as coal merchant D.G. van Beuningen and banker Marten Mees.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Scheepvaartkwartier",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Cool",
+   "description": {
+    "en": "Cool is a neighborhood of Rotterdam, Netherlands in the Centrum borough. It is enclosed by the Weena in the north, the Mauritsweg and Eendrachtsweg in the west, Vasteland in the south and the Coolsingel and Schiedamse Vest in the east.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cool%2C_Rotterdam",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The name Cool is first mentioned in 1280. In 1816, the independent municipality of Cool was annexed by the city of Rotterdam. During the Rotterdam Blitz in 1940, much of the district was destroyed, but some streets survived—including Oude Binnenweg and Witte de Withstraat.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cool%2C_Rotterdam",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The name Cool is first mentioned in 1280.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Cool%2C_Rotterdam",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Struisenburg",
+   "description": {
+    "en": "Struisenburg is a neighborhood of Rotterdam, Netherlands.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Struisenburg",
+    "lang": "en"
+   },
+   "history": {
+    "en": "In 1589 the Admiralty of the Maze, one of the colleges then running the Holland navy, bought land east of Rotterdam, where Michiel de Ruyter's flagship De Zeven Provinciën was built in 1665. In the 19th century the navy gave up the land between the Oostzeedijk and the Nieuwe Maas piece by piece, and in 1858 the railway to Utrecht was laid along the river.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Struisenburg",
+    "lang": "nl",
+    "original": "De naam Struisenburg komt van een oude buitenplaats, waar ooit molen de Struisvogel stond. In 1589 kocht de Admiraliteyt op de Maze (een van de admiraliteitscolleges die in die tijd belast waren met het bestuur van de Hollandse zeemacht) een terrein ten oosten van de stad Rotterdam. Hier werd in 1665 het admiraalsschip van Michiel de Ruyter, de Zeven Provinciën gebouwd. Het gebied tussen de Oostzeedijk en de Nieuwe Maas werd in de negentiende eeuw in delen onttrokken aan de Marine. Langs de Nieuwe Maas werd in 1858 de spoorlijn naar Utrecht aangelegd."
+   },
+   "nameOrigin": {
+    "en": "Named after an old country house where the windmill De Struisvogel ('the ostrich') once stood.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Struisenburg",
+    "lang": "nl",
+    "original": "De naam Struisenburg komt van een oude buitenplaats, waar ooit molen de Struisvogel stond."
+   }
+  },
+  {
+   "name": "Kralingen-Crooswijk",
+   "description": {
+    "en": "Kralingen-Crooswijk is a township of the city of Rotterdam, Netherlands. It is located at the immediate east of the city's centre. As of 2005 it has about 52,379 inhabitants and has a territory of about 1,286 ha. It consists of the two boroughs Kralingen and Crooswijk, the former being a village itself until it was incorporated in the city of Rotterdam in the late 19th century.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kralingen-Crooswijk",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Centrum",
+   "description": {
+    "en": "Rotterdam Centrum (English: Rotterdam Center/ Center of Rotterdam) is a borough of Rotterdam. It was established on March 3, 2010. The center has 33,983 inhabitants (as of January 1, 2017).",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rotterdam_Centrum",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Oude Noorden",
+   "description": {
+    "en": "Oude Noorden (Old North) is an area of north Rotterdam, Netherlands and is part of the borough Noord. It has approximately 18,000 inhabitants. The district has much pre World War I and World War II architecture still in existence. It has a vibrant though somewhat discreet artistic community.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Oude_Noorden",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Stadsdriehoek",
+   "description": {
+    "en": "Stadsdriehoek is a neighborhood at the center of Rotterdam, Netherlands. The name Stadsdriehoek (\"City Triangle\") refers to the historical triangular form of the city of Rotterdam, which was bordered by the Coolsingel and the Schiedamsevest to the west, the Goudsevest to the northeast, and by the Nieuwe Maas to the south.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stadsdriehoek",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The triangular form of the city of Rotterdam dates back to the Late Middle Ages. At that time, the Blaak formed the southern border of the city. In the 16th century, the \"Waterstad\" was established, extending the city to the Nieuwe Maas. This new area lay outside the levee and was an area for maritime and business activities. With this, the present-day form of the Stadsdriehoek was completed. Almost none of the historical buildings in the neighborhood were spared from the Rotterdam Blitz on May 14, 1940.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stadsdriehoek",
+    "lang": "en"
+   },
+   "nameOrigin": {
+    "en": "The name Stadsdriehoek (\"City Triangle\") refers to the historical triangular form of the city of Rotterdam, which was bordered by the Coolsingel and the Schiedamsevest to the west, the Goudsevest to the northeast, and by the Nieuwe Maas to the south.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Stadsdriehoek",
+    "lang": "en"
+   }
+  },
+  {
+   "name": "Noord",
+   "description": {
+    "en": "Noord (English: Rotterdam-North) is a borough of Rotterdam. The municipal portion is formed by the Delfshavense Schie, the Highway 20 (A20), the Rotte and the rails. The borough had 51,796 inhabitants in 2017.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Noord%2C_Rotterdam",
+    "lang": "en"
+   },
+   "history": {
+    "en": "The oldest part of Rotterdam-Noord laid out as housing is the Oude Noorden, built from 1870 on land that until the 19th century belonged to the manor of Blommersdijk, to relieve the overcrowded inner city. Much architecture from before the two world wars survives. Until about 1150 the Blijdorpse polder was mostly peat, largely uninhabited and partly outside the dikes, and often flooded.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Rotterdam-Noord",
+    "lang": "nl",
+    "original": "Het oudste deel van Rotterdam-Noord dat als woonwijk voor Rotterdam is opgezet is het Oude Noorden, dat in 1870 werd gebouwd. Het Oude Noorden behoorde tot de negentiende eeuw tot de ambachtsheerlijkheid Blommersdijk. Het is een typische woonwijk die bestemd was om de overvolle binnenstad van Rotterdam te ontlasten. Van dit district bestaat er nog steeds veel architectuur van nog voor de Eerste en Tweede Wereldoorlog. De Blijdorpse polder was tot 1150 veelal een veenachtige gebied en was grotendeels onbewoond en deels nog buitendijks, waardoor regelmatig overstromingen plaatsvonden."
+   }
+  },
+  {
+   "name": "Laurenskwartier"
+  }
+ ]
+}
