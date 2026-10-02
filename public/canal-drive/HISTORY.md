@@ -1,5 +1,23 @@
 # Canal Recall — what is built
 
+## 2026-10-02 — The ride starts facing along the route
+
+User report with screenshot: the bike started pointing away from the route, with
+the blue line running off behind it. A road's tangent has two opposite directions
+and the extract stores one arbitrarily; `_setupRace` used it unchanged. The
+camera bearing follows the player's heading, so the camera was "behind" a bike
+that faced the wrong way. `startHeading` (in `routeSelection.ts`, unit-checked
+by `check-start-heading.ts`) now picks the direction toward the planned route,
+looking at 60, 150 and 400 px out and trusting the clearest, because a route
+that turns at the first junction reads sideways from one distance; with no route
+it uses the finish, and only a route exactly square to the road keeps the road's
+own angle. `start-heading.spec.ts` starts six real rides (four bike seeds, two
+boat) and checks they face along the route and the camera settles behind them;
+with the fix switched off (`START_HEADING_OFF=1`) all four bike seeds fail.
+Seed 1234abcd was a route leaving almost sideways to its road (signal -0.15):
+an earlier cutoff left it arbitrary, which is why a weak signal now still decides.
+Boat rides happened to face right with or without the fix on those two seeds.
+
 ## 2026-10-02 — Neighbourhood gap-fill pipeline
 
 User asked what neighbourhoods still lacked naming and trivia (18 of 90 had
