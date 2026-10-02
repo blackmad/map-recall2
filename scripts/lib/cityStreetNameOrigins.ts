@@ -15,6 +15,7 @@
  *    the same street name in an annexed village): the one whose register
  *    point lies near the extract's own street, or none at all.
  */
+import { createHash } from 'node:crypto';
 import { trimToSentence } from './translation.ts';
 import { nameKey } from './streetNameOrigins.ts';
 
@@ -114,6 +115,27 @@ export function recordFor(
   const nearTexts = new Set(near.map((record) => record.nlFull));
   if (nearTexts.size === 1) return { record: near[0], reason: 'nearest' };
   return { record: null, reason: 'ambiguous' };
+}
+
+/** Short stable key for a Dutch text, for the committed translation cache. */
+export function dutchHash(nl: string): string {
+  return createHash('sha1').update(nl).digest('hex').slice(0, 12);
+}
+
+/**
+ * Repairs for what the local model reliably gets wrong in these registers,
+ * found in the Rotterdam spot-check. `gedempt` is a canal filled in, not
+ * "embanked" or "dammed" — the same mistake the Amsterdam pass guards against.
+ */
+const REPAIRS: ReadonlyArray<[RegExp, RegExp, string]> = [
+  [/gedempt|demping|dempen/i, /\b(?:embanked|muted|silenced|suppressed|dampened)\b/g, 'filled in'],
+  [/gedempt|demping|dempen/i, /\b(partially|entirely|completely) dammed\b/g, '$1 filled in'],
+];
+
+export function repairCityOriginTranslation(nl: string, en: string): string {
+  let out = en;
+  for (const [trigger, wrong, right] of REPAIRS) if (trigger.test(nl)) out = out.replace(wrong, right);
+  return out;
 }
 
 /** Group records by matching key. */
