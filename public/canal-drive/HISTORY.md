@@ -33,6 +33,16 @@ phrase and the area's own name in the same sentence; the Baltic-named islands
 (Reval, Wiborg, ...) are in Houthaven, not IJburg. `check-neighborhood-trivia-data.ts`
 now guards every city's published trivia. Map Recall reads each extract city
 (`cityExtracts.ts`); Utrecht and Rotterdam run next.
+## 2026-10-02 — Building assets gallery
+
+`building-gallery.html` (served at `/building-gallery.html` on the canalrecall site,
+`/canal-drive/building-gallery.html` in dev; not linked from the app) shows every
+custom building asset: facade cells per look tinted as the shader does, shopfronts,
+roof/dormer/flat textures, 3D roof and gable thumbnails, palettes, and live landmark
+kits (iframes of `kit-viewer.html`). Built by `npm run build:building-gallery` from the
+same modules the game uses, so it cannot drift. Storybook is only built as a CI check,
+not deployed, and has none of these assets.
+
 ## 2026-10-02 — Landmark kits: our own low-poly towers, spires, domes and roofs
 
 User: could we generate low-poly models for major POIs? The 13 signature GLBs are
