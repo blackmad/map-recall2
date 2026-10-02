@@ -826,6 +826,22 @@ class VectorBasemap {
     this._applyFacadeState();
     this._syncMaplibreBuildingVisibility();
     this._loadHouseboats();
+    this._loadShopfronts();
+  }
+
+  /** Where the city's shops, cafés and bars really are (shopfronts extract); re-decorates the resident tiles. */
+  async _loadShopfronts() {
+    const api = window.CanalRecallThreeBuildings;
+    if (this._shopfrontsRequested || !api || !api.setShopfronts) return;
+    this._shopfrontsRequested = true;
+    try {
+      const response = await fetch(this._extractFile('shopfronts.json'));
+      if (!response.ok) return;
+      api.setShopfronts(await response.json());
+      this._applyFeatureDecorator();
+    } catch (error) {
+      console.warn('Shopfronts unavailable; ground floors keep random shops.', error);
+    }
   }
 
   /** OSM houseboats for the three.js houseboat generator; a city without the extract simply has none. */
@@ -858,7 +874,7 @@ class VectorBasemap {
     // Landmark kits (spires, domes, pitched roofs on naves) lower their roofed parts to the eaves.
     // Measured landmark fronts cap and colour the parts behind them (landmarkFrontData.ts).
     this._completeCity.setFeatureDecorator(this._buildings3dEnabled && api && api.decorateKitRoof
-      ? (feature) => api.decorateFront(api.decorateKitRoof(base(feature)))
+      ? (feature) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(feature))))
       : base);
   }
 

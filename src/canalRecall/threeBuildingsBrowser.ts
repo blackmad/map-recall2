@@ -20,6 +20,7 @@ import { bayTextures, type Look } from './bayTextures.js';
 import { KITS, KIT_HIDE_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
 import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
 import { frontKitGeometry, lookHex } from './landmarkFronts.js';
+import { decorateShopfront, setShopfronts } from './shopfronts.js';
 import { houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
@@ -127,7 +128,7 @@ const tileKeyOf = (polygons: number[][][][]): string => {
 };
 
 
-export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, KIT_HIDE_IDS };
+export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS };
 
 const KIT_KEY = '__kit';
 const BOAT_PREFIX = 'boats:';
