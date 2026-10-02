@@ -29,6 +29,7 @@ import { useAuth } from './AuthContext';
 import { loadLocalReviewStates, recordReview, syncProgress } from './progressRepository';
 import { ReviewState, selectReviewFeatures } from './spacedRepetition';
 import { readSharedHome, scopeToHome } from './mapRecall/homeScope';
+import { MAP_DIFFICULTIES, placeCluesEnabled, type MapDifficulty } from './mapRecall/trivia';
 import { getFeatureKey } from './utils/featureIdentity';
 
 const SettingsModal = lazy(() => import('./components/SettingsModal').then(({ SettingsModal }) => ({ default: SettingsModal })));
@@ -133,6 +134,7 @@ export default function App() {
   const [roundsPerGame, setRoundsPerGame] = useState<number>(() => Math.round(numberParam('rounds', 5, 1, 50)));
   const [blindMapMode, setBlindMapMode] = useState<boolean>(() => urlParams.get('labels') !== 'on'); // Label-less by default
   const [tileStyle, setTileStyle] = useState<TileStyle>(() => validValue(urlParams.get('map'), ['voyager', 'light_nolabels', 'osm', 'dark'] as const, 'light_nolabels'));
+  const [difficulty, setDifficulty] = useState<MapDifficulty>(() => validValue(urlParams.get('difficulty'), MAP_DIFFICULTIES, 'medium'));
   const [unit, setUnit] = useState<DistanceUnit>(() => validValue(urlParams.get('unit'), ['metric', 'imperial'] as const, 'metric'));
   const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false);
   const [isDebugPlacesOpen, setIsDebugPlacesOpen] = useState<boolean>(false);
@@ -190,6 +192,7 @@ export default function App() {
     params.set('map', tileStyle);
     params.set('labels', blindMapMode ? 'off' : 'on');
     params.set('unit', unit);
+    params.set('difficulty', difficulty);
     if (selectedAdministrativeAreaId) params.set('area', String(selectedAdministrativeAreaId));
     if (currentCityId === 'my_location' && customLocationCity) {
       params.set('lat', customLocationCity.center[0].toFixed(6));
@@ -198,7 +201,7 @@ export default function App() {
     }
     const nextUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
     window.history.replaceState(null, '', nextUrl);
-  }, [currentCityId, gameMode, selectedCategory, linkedFeaturesOnly, roundsPerGame, locationScope, searchRadiusMeters, tileStyle, blindMapMode, unit, selectedAdministrativeAreaId, customLocationCity]);
+  }, [currentCityId, gameMode, selectedCategory, linkedFeaturesOnly, roundsPerGame, locationScope, searchRadiusMeters, tileStyle, blindMapMode, unit, difficulty, selectedAdministrativeAreaId, customLocationCity]);
 
   // Combine custom location city with predefined cities, applying dynamically fetched OSM features
   const allCities: City[] = useMemo(() => {
@@ -896,6 +899,7 @@ export default function App() {
           isRoundComplete={isRoundComplete}
           distanceErrorMeters={currentDistanceError}
           blindMapMode={blindMapMode}
+          showPlaceClues={placeCluesEnabled(difficulty)}
           tileStyle={tileStyle}
           allRoundResults={roundResults}
           isGameOver={isGameOver}
@@ -1145,6 +1149,8 @@ export default function App() {
         onChangeTileStyle={(s) => setTileStyle(s)}
         unit={unit}
         onChangeUnit={(u) => setUnit(u)}
+        difficulty={difficulty}
+        onChangeDifficulty={setDifficulty}
         roundsPerGame={roundsPerGame}
         onChangeRounds={(r) => {
           setRoundsPerGame(r);

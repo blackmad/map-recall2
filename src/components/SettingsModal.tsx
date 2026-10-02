@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react';
+import { MAP_DIFFICULTIES, type MapDifficulty } from '../mapRecall/trivia';
 import { TileStyle, DistanceUnit, FeatureCategory, FEATURE_CATEGORIES, City, LocationScope, AdministrativeArea } from '../types';
 import { X, Map, EyeOff, Ruler, Layers, Filter, Compass, HardDrive, Trash2 } from 'lucide-react';
 import { getCacheStorageStats, clearAllFeatureCache } from '../utils/featureCache';
@@ -15,6 +16,8 @@ interface SettingsModalProps {
   onChangeTileStyle: (style: TileStyle) => void;
   unit: DistanceUnit;
   onChangeUnit: (unit: DistanceUnit) => void;
+  difficulty: MapDifficulty;
+  onChangeDifficulty: (difficulty: MapDifficulty) => void;
   roundsPerGame: number;
   onChangeRounds: (rounds: number) => void;
   locationScope: LocationScope;
@@ -38,6 +41,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onChangeTileStyle,
   unit,
   onChangeUnit,
+  difficulty,
+  onChangeDifficulty,
   roundsPerGame,
   onChangeRounds,
   locationScope,
@@ -375,6 +380,28 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               >
                 Imperial
               </button>
+            </div>
+          </div>
+
+          {/* Difficulty */}
+          <div className="flex items-center justify-between enamel-chip p-3.5">
+            <div className="space-y-0.5">
+              <div className="font-semibold text-white">Difficulty</div>
+              <p className="text-xs text-white/60">Hard hides the landmark and shop clues inside a neighbourhood</p>
+            </div>
+            <div className="enamel-chip flex p-1">
+              {MAP_DIFFICULTIES.map((level) => (
+                <button
+                  key={level}
+                  data-testid={`difficulty-${level}`}
+                  onClick={() => onChangeDifficulty(level)}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold capitalize transition cursor-pointer ${
+                    difficulty === level ? 'enamel-chip active text-white' : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {level}
+                </button>
+              ))}
             </div>
           </div>
 

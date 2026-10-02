@@ -2,9 +2,14 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   attachNameOrigins, attachNeighborhoodTrivia, descriptionWithoutOrigin, nearestAreaNames, originKindFor,
-  notablePlacesIn, placeCandidates, type NeighborhoodHistoryEntry, type StreetNameOrigin,
+  notablePlacesIn, placeCandidates, placeCluesEnabled, type NeighborhoodHistoryEntry, type StreetNameOrigin,
 } from '../src/mapRecall/trivia';
 import { applyReview, isDisambiguation, mentions, sentencesOf, tidy } from './fetch-neighborhood-history';
+
+// Place clues are an easy/medium aid.
+assert.equal(placeCluesEnabled('easy'), true);
+assert.equal(placeCluesEnabled('medium'), true);
+assert.equal(placeCluesEnabled('hard'), false);
 
 // Kinds: a canal never takes a street's origin.
 assert.equal(originKindFor('canal'), 'water');
