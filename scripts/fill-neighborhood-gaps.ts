@@ -29,6 +29,7 @@
  * `scripts/data/neighborhood-gap-review.json`. Dutch candidates wait for the
  * translation pass, as with `fetch-neighborhood-history.ts`.
  */
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { cityNamePattern, extractCityById } from '../src/mapRecall/cityExtracts';
@@ -47,7 +48,10 @@ const cityPattern = cityNamePattern(city);
 const directory = path.resolve(`public/data/extracts/${city.id}`);
 const stagingDir = path.join(directory, 'staging/gap-fill');
 const reviewPath = path.resolve(`scripts/data/neighborhood-gap-review${city.id === 'amsterdam' ? '' : `-${city.id}`}.json`);
-const headers = { 'User-Agent': 'MapQuestExtractBuilder/1.0 (https://github.com/blackmad/map-recall2)' };
+// A personal Wikimedia API token (WIKIMEDIA_TOKEN) lifts the anonymous rate limit; it is sent only to Wikimedia hosts.
+const baseHeaders: Record<string, string> = { 'User-Agent': 'MapQuestExtractBuilder/1.0 (https://github.com/blackmad/map-recall2)' };
+const headersFor = (url: URL): Record<string, string> =>
+  process.env.WIKIMEDIA_TOKEN && /(^|\.)(wikipedia|wikidata|wikimedia)\.org$/.test(url.hostname) ? { ...baseHeaders, Authorization: `Bearer ${process.env.WIKIMEDIA_TOKEN}` } : baseHeaders;
 const wait = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 const readJson = async <T>(file: string): Promise<T> => JSON.parse(await readFile(file, 'utf8'));
 
@@ -138,21 +142,43 @@ export function runOffline(data: Data): Candidate[] {
 // ---------------------------------------------------------------------------
 // Online
 
-/** One request at a time, 0.6 s apart, honouring Retry-After: Wikimedia rate-limits shared egress IPs hard. */
-let lastRequest = 0;
+/**
+ * Requests start at least 250 ms apart across all workers, and every worker pauses together
+ * when Wikimedia answers 429 (it limits shared egress IPs hard) for as long as Retry-After says.
+ */
+let nextStart = 0, pauseUntil = 0;
+async function slot() {
+  const now = Date.now();
+  const start = Math.max(now, nextStart, pauseUntil);
+  nextStart = start + 250;
+  if (start > now) await wait(start - now);
+}
+/**
+ * Every successful response is kept on disk (staging/gap-fill/cache), so a restart or a rerun
+ * asks Wikimedia for nothing it already answered. `--refresh` ignores the cache.
+ */
+const cacheDir = path.join(stagingDir, 'cache');
 async function fetchJson(url: URL): Promise<any> {
+  const file = path.join(cacheDir, `${createHash('sha1').update(url.toString()).digest('hex')}.json`);
+  if (!process.argv.includes('--refresh')) {
+    try { return JSON.parse(await readFile(file, 'utf8')); } catch { /* not cached yet */ }
+  }
+  const fresh = await fetchJsonUncached(url);
+  await mkdir(cacheDir, { recursive: true });
+  await writeFile(file, JSON.stringify(fresh));
+  return fresh;
+}
+async function fetchJsonUncached(url: URL): Promise<any> {
   for (let attempt = 0; attempt < 8; attempt++) {
-    const gap = Date.now() - lastRequest;
-    if (gap < 600) await wait(600 - gap);
-    lastRequest = Date.now();
-    const response = await fetch(url, { headers });
+    await slot();
+    const response = await fetch(url, { headers: headersFor(url) });
     if (response.ok) {
       const body = await response.text();
       try { return JSON.parse(body); } catch { throw new Error(`not JSON from ${url.hostname}: ${body.slice(0, 80)}`); }
     }
     if (response.status !== 429 && response.status < 500) throw new Error(`HTTP ${response.status} ${url.hostname}`);
     const retryAfter = Number(response.headers.get('retry-after')) || 0;
-    await wait(Math.max(retryAfter * 1000, 2000 * 2 ** Math.min(attempt, 4)));
+    pauseUntil = Math.max(pauseUntil, Date.now() + Math.max(retryAfter * 1000, 2000 * 2 ** Math.min(attempt, 4)));
   }
   throw new Error(`gave up on ${url.hostname}`);
 }
@@ -290,16 +316,14 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
   const districtArticles = new Map<string, string | null>();
   const bulk = await wikidataBulk();
   console.log(`Wikidata: ${bulk.size} neighbourhood-like names in ${city.name}`);
-  for (const hood of data.boundaries) {
-    if (only && hood.name !== only) continue;
-    const row = rows.find(r => r.name === hood.name)!;
-    const missing = missingFields(row);
-    if (!missing.length) continue;
-    process.stdout.write(`${hood.name}: `);
+  const todo = data.boundaries.filter(hood => (!only || hood.name === only) && missingFields(rows.find(r => r.name === hood.name)!).length);
+  const processHood = async (hood: Boundary) => {
+    const missing = missingFields(rows.find(r => r.name === hood.name)!);
+    let log = `${hood.name}: `;
     const center = centroidOf(hood.geometry);
     const bulkMatch = bulk.get(flat(hood.name.split('/')[0].replace(/\s+e\.o\.$/i, ''))) ?? bulk.get(flat(hood.name.split('/')[1] ?? ''));
     const match = bulkMatch ?? await wikidataMatch(hood.name).catch(() => null);
-    const add = (c: Omit<Candidate, 'name'>) => { candidates.push({ name: hood.name, ...c }); process.stdout.write(`${c.field} `); };
+    const add = (c: Omit<Candidate, 'name'>) => { candidates.push({ name: hood.name, ...c }); log += `${c.field} `; };
     const wanted = (f: Field) => missing.includes(f) && !candidates.some(c => c.name === hood.name && c.field === f);
 
     // The area's own articles: the Wikidata sitelink, then "<name> (City)" and the bare name.
@@ -350,10 +374,18 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
       if (photo) add({ field: 'photo', imageUrl: photo.file.thumbUrl ?? photo.file.url, imageAttribution: commonsAttribution(photo.file), sourceUrl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(photo.file.title.replace(/ /g, '_'))}`, sourceLabel: 'Wikimedia Commons', method: photo.method, confidence: photo.method === 'commons-category' ? 'medium' : 'low', needsReview: photo.method === 'commons-geosearch' });
     }
     void districtArticles;
-    process.stdout.write('\n');
+    console.log(log);
     // Save as we go: a run over a whole city takes hours and the network can drop.
     if (checkpoint && ++done % 5 === 0) await checkpoint(candidates);
-  }
+  };
+  // Three areas at a time: each needs many sequential requests, mostly waiting on latency.
+  let next = 0;
+  await Promise.all(Array.from({ length: 3 }, async () => {
+    while (next < todo.length) {
+      const hood = todo[next++];
+      try { await processHood(hood); } catch (error) { console.log(`${hood.name}: failed (${(error as Error).message})`); }
+    }
+  }));
   return candidates;
 }
 
