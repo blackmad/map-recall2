@@ -21,6 +21,10 @@ const SPOTS = [
   { name: 'nieuw-west-de-vlugtlaan', at: [4.818892, 52.383833], face: [4.818847, 52.384367] },
   // Rozengracht / Jordaan, the start of a user's race link: dense pitched-roof terraces.
   { name: 'jordaan-rozengracht', at: [4.8531, 52.3740], face: [4.8599, 52.3613] },
+  // Akitsu, Da Costabuurt (user screenshots 2026-10-02): raised doors, doors on back walls, broken rhythm on a curved block.
+  { name: 'da-costa-akitsu', at: [4.8740, 52.3716], face: [4.875215, 52.372219] },
+  { name: 'da-costa-akitsu-n', at: [4.8752, 52.3730], face: [4.875215, 52.372219] },
+  { name: 'da-costa-akitsu-e', at: [4.8765, 52.3722], face: [4.875215, 52.372219] },
   // Centraal Station: a landmark that must keep its own form.
   { name: 'centraal', at: [4.9003, 52.3774], face: [4.9004, 52.3789] },
   // Landmark kits: stand ~55 m from each tower and look straight at it.
@@ -58,7 +62,7 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
     await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false, enterRacing: false });
     await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 90_000 });
     mkdirSync(OUT, { recursive: true });
-    for (const spot of SPOTS.filter(spot => !process.env.LOOK_SPOT || spot.name === process.env.LOOK_SPOT)) {
+    for (const spot of SPOTS.filter(spot => !process.env.LOOK_SPOT || spot.name.startsWith(process.env.LOOK_SPOT))) {
       for (const view of ['chase', 'cockpit'] as const) {
         await parkAt(page, spot.at, spot.face, view);
         // Streamed tiles, facts and trees land over a few seconds.
@@ -69,12 +73,12 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
         await page.waitForTimeout(1500);
         if (process.env.LOOK_FREE) {
           // Free camera: stop the game steering the map, then look straight at the target.
-          await page.evaluate(({ at, face }) => {
+          await page.evaluate(({ at, face, zoom }) => {
             const vm = (window as any).canalRecallGame.vectorMap, map = vm.map;
             vm.sync = () => {}; map.stop();
             const bearing = (Math.atan2((face[0] - at[0]) * Math.cos(face[1] * Math.PI / 180), face[1] - at[1]) * 180) / Math.PI;
-            map.jumpTo({ center: face as [number, number], zoom: 18.2, pitch: 68, bearing });
-          }, { at: [...spot.at], face: [...spot.face] });
+            map.jumpTo({ center: face as [number, number], zoom, pitch: 68, bearing });
+          }, { at: [...spot.at], face: [...spot.face], zoom: Number(process.env.LOOK_ZOOM) || 18.2 });
           await page.waitForTimeout(9000);
         }
         const file = `${OUT}/${spot.name}-${view}-${testInfo.project.name}-${look.name}.png`;
