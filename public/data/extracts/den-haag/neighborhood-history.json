@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-02T11:23:28.905Z",
+ "generatedAt": "2026-10-02T14:09:32.265Z",
  "neighborhoods": [
   {
    "name": "Zuiderpark",
@@ -41,14 +41,7 @@
    }
   },
   {
-   "name": "Haagsche Tuin",
-   "description": {
-    "en": "Haagsche Tuin is a neighbourhood in Leyenburg and Escamp, about 0.01 km². Streets here include Florence Nightingaleweg.",
-    "sourceUrl": "https://www.openstreetmap.org/copyright",
-    "lang": "en",
-    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
-    "kind": "derived"
-   }
+   "name": "Haagsche Tuin"
   },
   {
    "name": "Leidschenveen-Ypenburg",
@@ -85,6 +78,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "De geschiedschrijving verschaft geen uitsluitsel over de ouderdom van Scheveningen. Naamkundig onderzoek zou hebben aangetoond, net als bij andere Nederlandse plaatsen die eindigen op het suffix (achtervoegsel) '-ingen', dat de oorsprong ervan in de 10e of 11e eeuw ligt. De bewuste naam komt voor het eerst voor in een grafelijk register dat deels is opgesteld omstreeks 1284."
+   },
+   "history": {
+    "en": "AFAS Circustheater (landmark here): The venue transformed from a circus to a concert hall in 1964 as public interest waned.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Circustheater",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -96,6 +96,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "Haagse Hout is sinds 1988 een stadsdeel van Den Haag. De oude benaming voor dit gebied was 'Die Haghe Houte', vandaar de huidige naam Haagse Hout. Het stadsdeel telde in 2022 48.072 inwoners. Het stadsdeel bestaat uit vier wijken: Mariahoeve en Marlot Bezuidenhout Haagse Bos Benoordenhout Het Haagse Bos is veruit het grootste groengebied."
+   },
+   "history": {
+    "en": "CBG Centrum voor familiegeschiedenis (landmark here): The foundation was established on May 15, 1945 to unite archive collections.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/CBG_Centrum_voor_familiegeschiedenis",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -145,6 +152,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "Segbroek is een stadsdeel van Den Haag, genoemd naar de oude Segbroekpolder. Historisch wordt het gehele gebied in het door de Laan van Meerdervoort en de Sportlaan in westelijke richting omsloten stadsgebied aangeduide met de naam van de oude Segbreekpolder, die sedert het einde van de 19e eeuw en daarna in de 20e eeuw in stormachtig tempo onder de nieuwe stadsuitbreidingen verdween."
+   },
+   "history": {
+    "en": "Heilige Familiekerk (landmark here): Construction of the church took place between 1921 and 1922.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Heilige_Familiekerk_(Den_Haag)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -175,6 +189,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "Centrum is de wijk die het hart van Den Haag vormt. Het is ook het oudste deel van Den Haag als stad. Hier bevinden zich onder meer het Binnenhof met de Ridderzaal, het stadhuis en Paleis Noordeinde. De wijk ligt in het gelijknamige Stadsdeel Centrum. Het aantal inwoners is tussen 2013 en 2019 met 10% gestegen van 17.995 tot 19.855. Op 1 januari 2021 telde de wijk 20.804 inwoners."
+   },
+   "history": {
+    "en": "'Bevrijdingsmonument Irene' (landmark here): A messenger daily raised and lowered the flag while the monument stood near the old town hall.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Irenemonument",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -224,22 +245,15 @@
    }
   },
   {
-   "name": "Oostbroek-Zuid",
-   "description": {
-    "en": "Oostbroek-Zuid is a neighbourhood in Rustenburg en Oostbroek and Escamp, about 0.4 km². Streets here include Soestdijksekade, Nunspeetlaan, Schaarsbergenstraat, De la Reyweg and Soestdijkseplein. Bridges: Soestdijksekade, Golden Earringbrug and Pim Fortuynbrug.",
-    "sourceUrl": "https://www.openstreetmap.org/copyright",
-    "lang": "en",
-    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
-    "kind": "derived"
-   }
+   "name": "Oostbroek-Zuid"
   },
   {
    "name": "Oostbroek-Noord",
-   "description": {
-    "en": "Oostbroek-Noord is a neighbourhood in Rustenburg en Oostbroek and Escamp, about 0.2 km². Streets here include Lunterenstraat, Apeldoornselaan, Voorthuizenstraat, Hoenderloostraat and Loosduinsekade. Places inside it include Make art worthy, Bewonersorganisatie Rustenburg Oostbroek and Johan Maasbach Wereldzending - Capitol.",
-    "sourceUrl": "https://www.openstreetmap.org/copyright",
+   "history": {
+    "en": "Make art worthy (landmark here): Neighborhood protests against demolition helped save the building for conversion into apartments.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Valkenboskerk",
     "lang": "en",
-    "sourceLabel": "OpenStreetMap and Gemeente Amsterdam data",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
   },
@@ -336,6 +350,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "Escamp is een stadsdeel van Den Haag, grotendeels gelegen op de Eskamppolders uit de 15e eeuw. Escamp werd grotendeels gebouwd na de Tweede Wereldoorlog. Uit opgravingen blijkt dat het gebied tot de oudst bewoonde streken van Den Haag behoort. Het stadsdeel Escamp werd in 1986 gevormd na het besluit van de gemeenteraad om Den Haag op te delen in zeven stadsdelen."
+   },
+   "history": {
+    "en": "Emmauskerk (landmark here): In 1995, three other parishes merged with this church to form the Emmaus parish due to declining attendance.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Emmauskerk_(Den_Haag)",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -347,6 +368,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "Wateringse Veld is een woonwijk in de gemeente Den Haag. Tussen 1996 en 2012 werden er in de vroegere Wateringse Veldpolders 7500 woningen gebouwd. Wateringse Veld is een van de drie Haagse Vinex-locaties. Het behoort tot het stadsdeel Escamp in de voormalige Eskamppolder en grenst aan de wijken Bouwlust en Vrederust en Morgenstond en aan Rijswijk."
+   },
+   "history": {
+    "en": "Mijlpalen van het Wateringse Veld (landmark here): Archaeologists uncovered these Roman road markers during a 1997 excavation for a new residential area.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Mijlpalen_van_het_Wateringse_Veld",
+    "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   }
  ]

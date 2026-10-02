@@ -37,7 +37,7 @@ import { historyText, isDisambiguation, mentions, sections, sentencesOf, tidy, u
 import {
   FIELDS, aliasCandidates, aliasOf, auditCoverage, commonsAttribution, flat, missingFields, offlineCandidates,
   rankCommonsFiles, sentencesAbout, stemOf, wikidataLooksRight, centroidOf, compareCandidates, mergeCandidates, replaceableBy, ONLINE_METHODS,
-  type Boundary, type Candidate, type CommonsFile, type Field, type StreetOrigin, type StreetSegment,
+  type Boundary, type Candidate, type CommonsFile, type FactFeature, type Field, type StreetOrigin, type StreetSegment,
 } from '../src/mapRecall/neighborhoodGaps';
 
 // `--city utrecht|rotterdam|den-haag|amsterdam` (default amsterdam).
@@ -68,11 +68,12 @@ async function load() {
   const origins = (await optional<{ origins: StreetOrigin[] }>('street-name-origins.json', { origins: [] })).origins;
   const routing = await readJson<Array<{ name: string; center: [number, number] }>>(path.join(directory, 'streets-routing.json'));
   const segments: StreetSegment[] = routing.filter(s => s.name).map(s => ({ name: s.name, center: s.center }));
-  const places: Array<{ name: string; type: string; center: [number, number] }> = [];
-  for (const file of ['landmarks.json', 'squares.json', 'parks.json', 'bridges.json']) {
-    for (const item of await readJson<Array<{ name: string; type: string; center: [number, number] }>>(path.join(directory, file))) places.push({ name: item.name, type: item.type, center: item.center });
+  const places: Array<{ id?: string; name: string; type: string; center: [number, number] }> = [];
+  for (const file of ['landmarks.json', 'squares.json', 'parks.json', 'bridges.json', 'streets.json', 'water.json']) {
+    for (const item of await optional<Array<{ id: string; name: string; type: string; center: [number, number] }>>(file, [])) places.push({ id: item.id, name: item.name, type: item.type, center: item.center });
   }
-  return { boundaries, enriched, historyFile, origins, segments, places };
+  const facts = (await optional<{ features: FactFeature[] }>('facts.json', { features: [] })).features;
+  return { boundaries, enriched, historyFile, origins, segments, places, facts };
 }
 
 type Data = Awaited<ReturnType<typeof load>>;
@@ -134,7 +135,7 @@ export function runOffline(data: Data): Candidate[] {
       const got = new Set(fromAlias.map(c => c.field));
       missing = missing.filter(f => !got.has(f));
     }
-    candidates.push(...offlineCandidates({ hood, all: data.boundaries, origins: data.origins, segments: data.segments, places: data.places, missing, cityName: city.name }));
+    candidates.push(...offlineCandidates({ hood, all: data.boundaries, origins: data.origins, segments: data.segments, places: data.places, facts: data.facts, missing, cityName: city.name }));
   }
   return candidates;
 }
@@ -233,7 +234,8 @@ async function wikidataBulk(): Promise<Map<string, WikidataMatch>> {
   const query = `SELECT ?item ?itemLabel ?image ?commons ?nl ?en WHERE {
     VALUES ?type { wd:Q123705 wd:Q253019 wd:Q1529997 wd:Q3257686 wd:Q15715406 wd:Q15079751 wd:Q2983893 wd:Q3558970 wd:Q1115575 }
     ?item wdt:P31 ?type .
-    { ?item wdt:P131 wd:${city.wikidata} } UNION { ?item wdt:P131/wdt:P131 wd:${city.wikidata} }
+    VALUES ?root { ${[city.wikidata, ...(city.wikidataAnchors ?? [])].map(q => `wd:${q}`).join(' ')} }
+    ?item wdt:P131|wdt:P131/wdt:P131|wdt:P131/wdt:P131/wdt:P131 ?root .
     OPTIONAL { ?item wdt:P18 ?image }
     OPTIONAL { ?item wdt:P373 ?commons }
     OPTIONAL { ?a schema:about ?item; schema:isPartOf <https://nl.wikipedia.org/>; schema:name ?nl }
@@ -316,7 +318,14 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
   const districtArticles = new Map<string, string | null>();
   const bulk = await wikidataBulk();
   console.log(`Wikidata: ${bulk.size} neighbourhood-like names in ${city.name}`);
-  const todo = data.boundaries.filter(hood => (!only || hood.name === only) && missingFields(rows.find(r => r.name === hood.name)!).length);
+  // Resume: areas finished on an earlier run (found something or not) are skipped, so a run that dies
+  // halfway costs only what was left. `--refresh` starts over.
+  const doneFile = path.join(stagingDir, 'online-done.json');
+  let finished = new Set<string>();
+  if (!process.argv.includes('--refresh')) { try { finished = new Set(await readJson<string[]>(doneFile)); } catch { /* first run */ } }
+  const saveDone = async () => { await mkdir(stagingDir, { recursive: true }); await writeFile(doneFile, JSON.stringify([...finished])); };
+  const todo = data.boundaries.filter(hood => (!only || hood.name === only) && !finished.has(hood.name) && missingFields(rows.find(r => r.name === hood.name)!).length);
+  if (finished.size) console.log(`Resuming: ${finished.size} areas already done, ${todo.length} to go`);
   const processHood = async (hood: Boundary) => {
     const missing = missingFields(rows.find(r => r.name === hood.name)!);
     let log = `${hood.name}: `;
@@ -375,8 +384,9 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
     }
     void districtArticles;
     console.log(log);
+    finished.add(hood.name);
     // Save as we go: a run over a whole city takes hours and the network can drop.
-    if (checkpoint && ++done % 5 === 0) await checkpoint(candidates);
+    if (checkpoint && ++done % 5 === 0) { await checkpoint(candidates); await saveDone(); }
   };
   // Three areas at a time: each needs many sequential requests, mostly waiting on latency.
   let next = 0;
@@ -386,6 +396,7 @@ export async function runOnline(data: Data, only?: string, checkpoint?: (found: 
       try { await processHood(hood); } catch (error) { console.log(`${hood.name}: failed (${(error as Error).message})`); }
     }
   }));
+  await saveDone();
   return candidates;
 }
 
@@ -400,7 +411,7 @@ export function publishable(candidates: readonly Candidate[], review: ReviewFile
   const ok = (c: Candidate): (Candidate & { final: string | undefined }) | null => {
     const decision = typeof review[c.name] === 'object' ? (review[c.name] as Record<string, { approve?: boolean; en?: string } | null | undefined>)[c.field] : undefined;
     if (decision === null) return null; // explicitly dropped
-    const offline = c.method === 'alias' || c.method === 'street-name' || c.method === 'street-theme' || c.method === 'inside-boundary';
+    const offline = c.method === 'alias' || c.method === 'street-name' || c.method === 'street-theme' || c.method === 'inside-boundary' || c.method === 'inside-fact';
     const approved = decision?.approve === true || (acceptOffline && offline && c.lang !== 'nl');
     if (c.needsReview && !approved) return null;
     if (c.lang === 'nl' && !decision?.en) return null; // Dutch ships only with a reviewed English
@@ -477,6 +488,16 @@ async function main() {
     await writeFile(path.join(stagingDir, 'candidates.json'), `${JSON.stringify(merged, null, 1)}\n`);
     await writeReport(data, merged, 'Gap-fill candidates (offline + online)');
     console.log(`${found.length} new candidates → ${stagingDir}`);
+    return;
+  }
+  if (command === 'prune') {
+    // Remove descriptions composed from street lists (published before they were judged not to be trivia).
+    let removed = 0;
+    for (const entry of data.historyFile.neighborhoods) {
+      if (entry.description?.kind === 'derived' && entry.description.sourceLabel === 'OpenStreetMap and Gemeente Amsterdam data') { delete entry.description; removed++; }
+    }
+    await writeFile(path.join(directory, 'neighborhood-history.json'), `${JSON.stringify({ ...data.historyFile, generatedAt: new Date().toISOString() }, null, 1)}\n`);
+    console.log(`removed ${removed} street-list descriptions from ${city.id}`);
     return;
   }
   if (command === 'worksheet') {

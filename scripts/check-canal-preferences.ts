@@ -33,6 +33,8 @@ const memory = () => {
   assert.equal(prefs.arrow, true);
   assert.equal(prefs.gamey, true);
   assert.equal(prefs.sound, false);
+  // Sound is permanently disabled: even an explicit saved `true` must not enable it.
+  assert.equal(parsePreferences(JSON.stringify({ sound: true }), zoom).sound, false);
   assert.equal(prefs.zoom, 0.65);
   assert.equal(prefs.cameraTilt, 0);
 }
@@ -178,3 +180,13 @@ const memory = () => {
 }
 
 console.log('canal preferences: checks passed');
+
+// Sound is permanently disabled: nothing under src/ or the legacy runtime may construct an AudioContext.
+{
+  const { execSync } = await import('node:child_process');
+  const hits = execSync(
+    "grep -rlE 'AudioContext' src public/canal-drive/js/sound.js public/canal-drive/js/game.js public/canal-drive/js/game-route.js || true",
+    { encoding: 'utf8' },
+  ).trim();
+  assert.equal(hits, '', `AudioContext must not appear: ${hits}`);
+}

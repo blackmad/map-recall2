@@ -61,11 +61,28 @@ assert.match(nameOrigin!.text!, /named after sportspeople, such as/);
 assert.equal(streetsMatchingStem('sluis', [{ name: 'Mary van der Sluisstraat', kind: 'street', en: 'x' }]).length, 0, 'a surname inside a street name is not a match');
 assert.equal(offlineCandidates({ hood: square('Zuid', 'suburb', 52.3, 4.9, 0.05), all: [], origins: [{ name: 'Zuid-Hollandstraat', kind: 'street', en: 'x' }], segments: [{ name: 'Zuid-Hollandstraat', center: [52.31, 4.91] }], places: [], missing: ['nameOrigin'] }).length, 0, 'districts never match a street');
 assert.equal(nameOrigin!.needsReview, true);
-const description = candidates.find(c => c.field === 'description');
-assert.match(description!.text!, /Sportheldenbuurt is a neighbourhood in Zeeburg, about/);
+// A street list is not trivia: with no fact about anything inside, there is no description at all.
+assert.ok(!candidates.some(c => c.field === 'description'), 'no composed street-list description');
 assert.equal(candidates.filter(c => c.field === 'nameOrigin').length, 1);
-assert.match(description!.text!, /Streets here include/);
-assert.match(description!.text!, /Green space: Sportpark/);
+// With a reviewed fact about a place inside, that fact is the description, sourced to its own article.
+const park = { id: 'p1', name: 'Sportpark Middenmeer', type: 'park', center: [52.374, 4.964] as [number, number] };
+const bridge = { id: 'b1', name: 'Zuiderbrug', type: 'bridge', center: [52.375, 4.965] as [number, number] };
+const elsewhere = { id: 'x1', name: 'Faraway Tower', type: 'landmark', center: [52.5, 5.1] as [number, number] };
+const facts = [
+  { id: 'x1', name: 'Faraway Tower', collection: 'landmarks', facts: [{ text: 'Faraway Tower was built entirely without nails, which was a marvel in its day.', kind: 'surprise', sourceUrl: 'https://nl.wikipedia.org/wiki/Faraway', sourceLanguage: 'nl' }] },
+  { id: 'b1', name: 'Zuiderbrug', collection: 'bridges', facts: [
+    { text: 'The bridge opened in 1912 and was the first in the city to carry a tram line.', kind: 'history', sourceUrl: 'https://nl.wikipedia.org/wiki/Zuiderbrug', sourceLanguage: 'nl' },
+    { text: 'Short.', kind: 'surprise', sourceUrl: 'u' }] },
+  { id: 'p1', name: 'Sportpark Middenmeer', collection: 'parks', facts: [{ text: 'Sportpark Middenmeer was laid out on land reclaimed from the Watergraafsmeer polder in the 1930s.', kind: 'culture', sourceUrl: 'https://nl.wikipedia.org/wiki/Sportpark_Middenmeer', sourceLanguage: 'nl' }] },
+];
+const withFacts = offlineCandidates({ hood, all, origins, segments, places: [park, bridge, elsewhere], facts, missing: ['description', 'history'] });
+const fromFact = withFacts.find(c => c.field === 'description');
+assert.equal(fromFact?.method, 'inside-fact');
+assert.match(fromFact!.text!, /^Sportpark Middenmeer was laid out on land reclaimed/);
+assert.equal(fromFact!.sourceUrl, 'https://nl.wikipedia.org/wiki/Sportpark_Middenmeer', 'links to that place\'s article');
+assert.equal(fromFact!.sourceLabel, 'Wikipedia (translated from Dutch)');
+assert.equal(withFacts.find(c => c.field === 'history')?.text, 'Zuiderbrug (bridge here): The bridge opened in 1912 and was the first in the city to carry a tram line.', 'a history fact names its place when the sentence does not');
+assert.ok(!withFacts.some(c => /Faraway/.test(c.text ?? '')), 'a place outside the boundary is never used');
 assert.ok(!candidates.some(c => c.field === 'photo'), 'offline never invents a photo');
 
 // A street that gives the area its name wins over a theme.

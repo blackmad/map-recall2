@@ -32,7 +32,7 @@ export interface Candidate {
   sourceUrl: string;
   sourceLabel: string;
   /** How it was found, for the report and for choosing between candidates. */
-  method: 'alias' | 'street-name' | 'street-theme' | 'inside-boundary' | 'wiki-article' | 'wikidata-search' | 'wiki-mention' | 'district-article' | 'commons-category' | 'commons-geosearch';
+  method: 'alias' | 'street-name' | 'street-theme' | 'inside-boundary' | 'inside-fact' | 'wiki-article' | 'wikidata-search' | 'wiki-mention' | 'district-article' | 'commons-category' | 'commons-geosearch';
   confidence: 'high' | 'medium' | 'low';
   /** True when a person (or the translation pass) must read it before it ships. */
   needsReview: boolean;
@@ -217,7 +217,9 @@ export interface OfflineInput {
   all: readonly Boundary[];
   origins: readonly StreetOrigin[];
   segments: readonly StreetSegment[];
-  places: ReadonlyArray<{ name: string; type: string; center: LatLng }>;
+  places: ReadonlyArray<{ id?: string; name: string; type: string; center: LatLng }>;
+  /** Reviewed Wikipedia facts per feature (`facts.json`), for trivia about what lies inside the area. */
+  facts?: readonly FactFeature[];
   missing: readonly Field[];
   /** Used in composed text; Amsterdam when omitted. */
   cityName?: string;
@@ -230,7 +232,7 @@ export const list = (items: readonly string[]) => items.length <= 1 ? items.join
 
 /** Street-name and inside-the-boundary candidates for one area. */
 export function offlineCandidates(input: OfflineInput): Candidate[] {
-  const { hood, all, origins, segments, places, missing, cityName = 'Amsterdam' } = input;
+  const { hood, origins, segments, places, missing, facts = [] } = input;
   const out: Candidate[] = [];
   const inside = streetsInside(hood, segments);
 
@@ -263,36 +265,57 @@ export function offlineCandidates(input: OfflineInput): Candidate[] {
     }
   }
 
-  if (missing.includes('description')) {
-    const { district, quarter } = parentsOf(hood, all);
-    const area = areaKm2(hood.geometry);
-    const kind = KIND_WORD[hood.kind] ?? 'area';
-    const where = [quarter, district].filter((p, i, a): p is string => !!p && a.indexOf(p) === i && p !== hood.name);
-    const streets = inside.slice(0, 5);
-    const inPlaces = places.filter(p => pointInPolygons(p.center, hood.geometry));
-    const named = (type: string) => inPlaces.filter(p => p.type === type).map(p => p.name).slice(0, 3);
-    const parts: string[] = [];
-    parts.push(`${hood.name} is ${/^[aeiou]/.test(kind) ? 'an' : 'a'} ${kind}${where.length ? ` in ${list(where)}` : ` of ${cityName}`}${area > 0 ? `, about ${area < 0.1 ? area.toFixed(2) : area.toFixed(1)} km²` : ''}.`);
-    if (streets.length) parts.push(`Streets here include ${list(streets)}.`);
-    // A theme that does not explain the area's name still tells what its streets have in common.
-    if (themeSentence && !(theme?.nameHint?.test(flat(hood.name)))) parts.push(themeSentence);
-    const landmarks = [...named('landmark'), ...named('museum'), ...named('university')].slice(0, 3);
-    if (landmarks.length) parts.push(`Places inside it include ${list(landmarks)}.`);
-    const squares = named('square'), parks = named('park'), bridges = named('bridge');
-    if (squares.length) parts.push(`Squares: ${list(squares)}.`);
-    if (parks.length) parts.push(`Green space: ${list(parks)}.`);
-    if (bridges.length) parts.push(`Bridges: ${list(bridges)}.`);
-    // A bare "X is a neighbourhood in Y" is a fact worth giving only when something else backs it.
-    if (parts.length >= 2 || where.length) {
-      out.push({
-        name: hood.name, field: 'description', lang: 'en', text: parts.join(' '),
-        sourceUrl: 'https://www.openstreetmap.org/copyright', sourceLabel: 'OpenStreetMap and Gemeente Amsterdam data',
-        method: 'inside-boundary', confidence: parts.length >= 3 ? 'medium' : 'low', needsReview: false,
-        note: `${inside.length} streets and ${inPlaces.length} places inside`,
+  // Trivia from what lies inside the area: the best reviewed Wikipedia fact about a landmark, park,
+  // square, bridge, canal or street there. A list of street names is not trivia, so none is composed.
+  if (missing.includes('description') || missing.includes('history')) {
+    const inPlaces = places.filter(p => p.id && pointInPolygons(p.center, hood.geometry));
+    for (const field of ['description', 'history'] as const) {
+      if (!missing.includes(field)) continue;
+      const pick = insideFact(inPlaces, facts, field === 'history' ? ['history'] : ['surprise', 'culture', 'people', 'design']);
+      if (pick) out.push({
+        name: hood.name, field, lang: 'en', text: pick.text,
+        sourceUrl: pick.sourceUrl, sourceLabel: pick.sourceLabel, method: 'inside-fact',
+        confidence: 'medium', needsReview: false,
+        note: `${pick.feature} (${pick.collection}), fact kind ${pick.kind}; ${inPlaces.length} places inside`,
       });
     }
   }
   return out;
+}
+
+export interface FactFeature {
+  id: string;
+  name: string;
+  collection: string;
+  facts: ReadonlyArray<{ text: string; kind: string; sourceUrl: string; sourceLanguage?: string }>;
+}
+
+const COLLECTION_WORD: Record<string, string> = { landmarks: 'landmark', parks: 'park', squares: 'square', bridges: 'bridge', water: 'waterway', streets: 'street' };
+
+/**
+ * The best fact about something inside an area, from the first of `kinds` that has one: landmarks and
+ * parks before bridges and streets, a sentence of reading length, and the feature named so it makes
+ * sense out of context. The source is that feature's own Wikipedia article.
+ */
+export function insideFact(
+  places: ReadonlyArray<{ id?: string; name: string }>,
+  facts: readonly FactFeature[],
+  kinds: readonly string[],
+): { text: string; sourceUrl: string; sourceLabel: string; feature: string; collection: string; kind: string } | null {
+  const ids = new Set(places.map(p => p.id));
+  const rank: Record<string, number> = { landmarks: 0, parks: 1, squares: 2, water: 3, bridges: 4, streets: 5 };
+  const inside = facts.filter(f => ids.has(f.id) && f.facts.length).sort((a, b) => (rank[a.collection] ?? 9) - (rank[b.collection] ?? 9) || a.name.localeCompare(b.name));
+  for (const kind of kinds) {
+    for (const feature of inside) {
+      const fact = feature.facts.find(f => f.kind === kind && f.text.length >= 50 && f.text.length <= 260);
+      if (!fact) continue;
+      const first = flat(feature.name.split(/[ ,(-]/)[0]);
+      // "The tower…" says nothing out of context: name the place unless the sentence already does.
+      const text = first.length >= 4 && flat(fact.text).includes(first) ? fact.text : `${feature.name} (${COLLECTION_WORD[feature.collection] ?? 'place'} here): ${fact.text}`;
+      return { text, sourceUrl: fact.sourceUrl, sourceLabel: fact.sourceLanguage === 'nl' ? 'Wikipedia (translated from Dutch)' : 'Wikipedia', feature: feature.name, collection: feature.collection, kind };
+    }
+  }
+  return null;
 }
 
 /** Copy missing fields from the area this one is an alias of. */
@@ -391,7 +414,7 @@ const CONFIDENCE_RANK = { high: 3, medium: 2, low: 1 } as const;
 /** Quoted from an article beats composed from data; composed from data beats a stray sentence. */
 const METHOD_RANK: Record<Candidate['method'], number> = {
   alias: 6, 'wiki-article': 6, 'wikidata-search': 5, 'street-name': 4, 'district-article': 4, 'street-theme': 3,
-  'commons-category': 3, 'inside-boundary': 2, 'wiki-mention': 2, 'commons-geosearch': 1,
+  'commons-category': 3, 'inside-fact': 3, 'inside-boundary': 2, 'wiki-mention': 2, 'commons-geosearch': 1,
 };
 
 /** Best first: confidence, then method, then English over Dutch (no translation needed). */
