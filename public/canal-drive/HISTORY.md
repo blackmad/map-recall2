@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Kits: Oude Kerk, Nieuwe Kerk, NEMO
+
+The Oude Kerk (brick tower with clocks, lead octagon stages, open lantern and spire, steep roofs on the hall church and its ring of chapels), the Nieuwe Kerk (it has no resolved landmark ids; its parts were found by footprint area round the Dam: towering nave and transept roofs and the crossing flèche) and NEMO (walled in patinated copper). Kit walls gained `flat` for non-brick landmarks: the Photo look's plain cell carries brick coursing that read as window bands on copper. Still open for NEMO: its sloping roof terrace (OSM `roof:shape=skillion`) is a flat lid.
+
 ## Kits: Centraal, Rijksmuseum, Sint-Nicolaas, Munttoren, Krijtberg
 
 Five more landmark kits in `KITS`, found by sorting each landmark's parts by height: Centraal's twin towers (w752653568/567: brick shafts with gilt dials, stone band, lead lantern and spire), the Rijksmuseum (two gate towers and four corner turrets with steep slate spires, pitched wing roofs), Sint-Nicolaas (twin west towers with lanterns and copper domes, the crossing dome on its colonnaded drum), the Munttoren (octagonal stages, clocks, open lantern, De Keyser spire) and the Krijtberg (two slender towers with 15 m spires, steep nave roof). Kits gained `hides` (OSM parts the kit's own geometry replaces, such as the Nicolaas dome bands) and `body` (the landmark's other parts, walled in the kit's style: landmarks skip the generic facades, so the Rijksmuseum's wings were bare tan walls).

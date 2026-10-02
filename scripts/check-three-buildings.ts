@@ -288,7 +288,9 @@ for (const c of [0.64, 1.4]) {
     for (const stack of kit.stacks) if (!parts.has(stack.onId)) parts.set(stack.onId, { id: stack.onId, ring: square(0, 0, 10), minHeightM: 0, heightM: 30 });
     for (const roof of kit.roofs) parts.set(roof.id, { id: roof.id, ring: square(40, 0, 12, 30), minHeightM: 0, heightM: 20 });
     const geometry = kitGeometry(kit, parts);
-    assert.ok(geometry.length > 0 && geometry.every(g => g.tris.length > 0), `${kit.name}: builds geometry`);
+    // A body-only kit (NEMO: just its walls recoloured) builds no geometry of its own.
+    const bodyOnly = !kit.tiers.length && !kit.stacks.length && !kit.roofs.length;
+    assert.ok(bodyOnly ? geometry.length === 0 && (kit.body?.length ?? 0) > 0 : geometry.length > 0 && geometry.every(g => g.tris.length > 0), `${kit.name}: builds geometry`);
     for (const g of geometry) for (const t of g.tris) {
       assert.ok(t.p.flat().every(Number.isFinite) && t.uv.flat().every(Number.isFinite) && t.n.every(Number.isFinite), `${kit.name}: finite`);
       assert.ok(Math.abs(Math.hypot(...t.n) - 1) < 1e-6, `${kit.name}: unit normals`);
