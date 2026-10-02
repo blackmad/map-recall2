@@ -23,6 +23,12 @@ const SPOTS = [
   { name: 'jordaan-rozengracht', at: [4.8531, 52.3740], face: [4.8599, 52.3613] },
   // Centraal Station: a landmark that must keep its own form.
   { name: 'centraal', at: [4.9003, 52.3774], face: [4.9004, 52.3789] },
+  // Landmark kits: stand south or west of each and look at it.
+  { name: 'k-westerkerk', at: [4.8849, 52.3733], face: [4.8836, 52.3744] },
+  { name: 'k-zuiderkerk', at: [4.8995, 52.3691], face: [4.8996, 52.3701] },
+  { name: 'k-montelbaan', at: [4.9030, 52.3712], face: [4.9056, 52.3720] },
+  { name: 'k-noorderkerk', at: [4.8868, 52.3787], face: [4.8862, 52.3795] },
+  { name: 'k-palace', at: [4.8921, 52.3722], face: [4.8918, 52.3732] },
 ] as const;
 
 async function parkAt(page: Page, at: readonly number[], face: readonly number[], view: 'chase' | 'cockpit') {

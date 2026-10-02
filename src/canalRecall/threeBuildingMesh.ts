@@ -14,6 +14,7 @@
 import { CELL_VARIANTS, cellLayer } from './facadeCells.js';
 import { groundRuns, layoutWall } from './facadeLayout.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
+import type { KitPartGeometry } from './landmarkKits.js';
 import { fitRect, roofTriangles, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 
 export type MeshBuilding = {
@@ -260,4 +261,37 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     ranges.push({ id: b.id, start, count: v - start });
   }
   return { positions, uvs, layers, tints, accents, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length };
+}
+
+/**
+ * A chunk for landmark kits: pre-built triangles per part, with the layer chosen
+ * by material kind (bare wall, flat colour, roof tiles) and the colour per
+ * triangle. One range per part id, so a part can be hidden with the answer.
+ */
+export function buildKitChunk(parts: readonly KitPartGeometry[], layers: { plain: number; flat: number; slope: number }): Chunk {
+  let tris = 0;
+  for (const part of parts) tris += part.tris.length;
+  const vertexCount = tris * 3;
+  const positions = new Float32Array(vertexCount * 3), uvs = new Float32Array(vertexCount * 2);
+  const layerArr = new Uint8Array(vertexCount), tints = new Uint8Array(vertexCount * 4), accents = new Uint8Array(vertexCount * 4).fill(255);
+  const indices = new Uint32Array(vertexCount);
+  const ranges: VertexRange[] = [];
+  let v = 0;
+  for (const part of parts) {
+    if (!part.tris.length) continue;
+    const start = v;
+    for (const t of part.tris) {
+      const [r, g, b] = parseHex(t.hex);
+      const shade = Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
+      for (let k = 0; k < 3; k++) {
+        positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
+        uvs[v * 2] = t.uv[k][0]; uvs[v * 2 + 1] = t.uv[k][1];
+        layerArr[v] = layers[t.layer];
+        tints[v * 4] = r; tints[v * 4 + 1] = g; tints[v * 4 + 2] = b; tints[v * 4 + 3] = shade * 255;
+        indices[v] = v; v++;
+      }
+    }
+    ranges.push({ id: part.id, start, count: v - start });
+  }
+  return { positions, uvs, layers: layerArr, tints, accents, indices, ranges, vertexCount, quadCount: Math.ceil(tris / 2), wallCount: 0, buildingCount: ranges.length };
 }
