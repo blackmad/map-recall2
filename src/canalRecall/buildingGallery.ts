@@ -139,8 +139,8 @@ async function main() {
     const frame = el('iframe', { src: `kit-viewer.html?kit=${encodeURIComponent(kit.name)}&${views[kit.name]}`, width: 440, height: 330, loading: 'lazy' } as any);
     kits.append(tile(frame, kit.name, `${kit.tiers.length} tiers, ${kit.stacks.length} stacks, ${kit.roofs.length} roofs`));
   }
-  const compare = section('Facade photo vs kit', 'Left to right: plain OSM prism, prism with a street-panorama photo on its front wall, hand-modelled kit. Photos: Gemeente Amsterdam panoramas (licence to be confirmed).');
-  for (const [name, view] of [['waag', 'r=95&el=14&az=-35'], ['bijenkorf', 'r=75&el=8'], ['beurs', 'r=75&el=8&az=-25']]) {
+  const compare = section('Low-poly landmark reconstructions', 'Left to right: plain OSM prism, low-poly reconstruction (kit plus a measured front, flat colours, no textures), and the street panorama it was measured from, shown only as a reference. Panoramas: Gemeente Amsterdam.');
+  for (const [name, view] of [['waag', 'r=95&el=14&az=-35'], ['bijenkorf', 'r=90&el=16&az=-35'], ['beurs', 'r=75&el=8&az=-25']]) {
     const frame = el('iframe', { src: `facade-compare.html?name=${name}&${view}`, width: 900, height: 330, loading: 'lazy' } as any);
     compare.append(tile(frame, name === 'waag' ? 'Waag' : name === 'beurs' ? 'Beurs van Berlage' : 'Bijenkorf'));
   }

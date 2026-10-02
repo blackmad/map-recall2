@@ -524,9 +524,12 @@ class Game {
         guardOpts,
       );
       this._blockedCarFrames = guard === 'rolled-back' ? this._blockedCarFrames + 1 : 0;
-      const stalled = guard !== 'on-road' && Math.abs(this.player.steerInput) > 0.5
-        && Math.hypot(this.player.x - previousPlayerPosition.x, this.player.y - previousPlayerPosition.y) < 0.5;
-      this._edgeStallFrames = stalled ? (this._edgeStallFrames || 0) + 1 : 0;
+      // Judged on net movement since the stall began: on the shoulder the bike
+      // can shuffle ~1 px a frame and go nowhere (Melkwegbrug's dead end).
+      if (!this._edgeStall) this._edgeStall = { frames: 0, anchorX: 0, anchorY: 0 };
+      this._edgeStallFrames = CanalRecallCar.trackEdgeStall(
+        this._edgeStall, guard, this.player.steerInput, this.player.x, this.player.y,
+      );
     } else if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
       this._blockedBoatFrames++;
       // Do not let a fast frame step carry the boat across a quay. The old
