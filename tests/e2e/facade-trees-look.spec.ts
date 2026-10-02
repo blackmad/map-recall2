@@ -37,7 +37,7 @@ async function parkAt(page: Page, at: readonly number[], face: readonly number[]
   }, { at, face, view });
 }
 
-for (const look of [{ name: 'old', facades: false, trees: false, three: false }, { name: 'new', facades: true, trees: true, three: false }, { name: 'three', facades: true, trees: true, three: true }]) {
+for (const look of [{ name: 'old', facades: false, trees: false, three: false as boolean | string }, { name: 'new', facades: true, trees: true, three: false }, { name: 'three', facades: true, trees: true, three: true }, { name: 'cartoon', facades: true, trees: true, three: 'cartoon' }, { name: 'photo', facades: true, trees: true, three: 'photo' }]) {
   test(`look: ${look.name}`, async ({ page }, testInfo) => {
     test.setTimeout(300_000);
     await page.addInitScript(([facades, trees, three]) => {
