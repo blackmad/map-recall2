@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-02T15:10:01.741Z",
+ "generatedAt": "2026-10-02T15:19:03.934Z",
  "places": {
   "Concertgebouw": {
    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Concertgebouw_in_Amsterdam_April_2015.jpg/500px-Concertgebouw_in_Amsterdam_April_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -926,6 +926,376 @@
    "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Spanje_monument_groot.jpg/500px-Spanje_monument_groot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "imageAttribution": "Wikimedia Commons: Spanje monument groot.jpg (Eddy Roos, CC BY-SA 4.0)",
    "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASpanje_monument_groot.jpg"
+  },
+  "Amsterdamse Bos": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Amsterdamse-bos-heuvel.jpg/500px-Amsterdamse-bos-heuvel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdamse-bos-heuvel.jpg (Shirley de Jong, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdamse-bos-heuvel.jpg"
+  },
+  "Amstelpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Amstelpark_amsteltrein2.jpg/500px-Amstelpark_amsteltrein2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amstelpark amsteltrein2.jpg (Arthena, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmstelpark_amsteltrein2.jpg"
+  },
+  "Beatrixpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Beatrixpark1.JPG/500px-Beatrixpark1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Beatrixpark1.JPG (Arthena, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABeatrixpark1.JPG"
+  },
+  "Flevopark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Flevopark.JPG/500px-Flevopark.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Flevopark.JPG (Nicolo Machiavelli at Dutch Wikipedia, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFlevopark.JPG"
+  },
+  "Erasmuspark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Erasmuspark7.jpg/500px-Erasmuspark7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Erasmuspark7.jpg (user:Arthena, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AErasmuspark7.jpg"
+  },
+  "Diemerpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Diemerzeedijk.jpg/500px-Diemerzeedijk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Diemerzeedijk.jpg (Ronald, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADiemerzeedijk.jpg"
+  },
+  "Gaasperpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Gaasperpark1.jpg/500px-Gaasperpark1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Gaasperpark1.jpg (Arthena, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGaasperpark1.jpg"
+  },
+  "Gerbrandypark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Gerbrandypark%2C_Pierenbad_%282%29.jpg/500px-Gerbrandypark%2C_Pierenbad_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Gerbrandypark, Pierenbad (2).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGerbrandypark%2C_Pierenbad_(2).jpg"
+  },
+  "Vondelpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Amsterdam%2C_Vondelpark%2C_at_the_pond-2.jpg/500px-Amsterdam%2C_Vondelpark%2C_at_the_pond-2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam, Vondelpark, at the pond-2.jpg (Dguendel, CC BY 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam%2C_Vondelpark%2C_at_the_pond-2.jpg"
+  },
+  "Bijlmerweide": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Bijlmerweide2011dec.JPG/500px-Bijlmerweide2011dec.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Bijlmerweide2011dec.JPG (Richardkw, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABijlmerweide2011dec.JPG"
+  },
+  "Gijsbrecht van Aemstelpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Overzicht_park%2C_met_voetgangersbrug_over_water_-_Amsterdam_-_20535202_-_RCE.jpg/500px-Overzicht_park%2C_met_voetgangersbrug_over_water_-_Amsterdam_-_20535202_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht park, met voetgangersbrug over water - Amsterdam - 20535202 - RCE.jpg (Chris Booms, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_park%2C_met_voetgangersbrug_over_water_-_Amsterdam_-_20535202_-_RCE.jpg"
+  },
+  "'t Kleine Loopveld": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Kleine_Loopveld_Amsterdam_Netherlands.jpg/500px-Kleine_Loopveld_Amsterdam_Netherlands.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Kleine Loopveld Amsterdam Netherlands.jpg (DennisM, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKleine_Loopveld_Amsterdam_Netherlands.jpg"
+  },
+  "Botanical Garden Zuidas": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Toegangspoort_foto_Elsbeth_Tijssen.jpg/500px-Toegangspoort_foto_Elsbeth_Tijssen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Toegangspoort foto Elsbeth Tijssen.jpg (STProducties, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AToegangspoort_foto_Elsbeth_Tijssen.jpg"
+  },
+  "De Krommert": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Cornelis_Gerardus_Leenheer%2C_Afb_010118000325.jpg/500px-Cornelis_Gerardus_Leenheer%2C_Afb_010118000325.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Cornelis Gerardus Leenheer, Afb 010118000325.jpg (Leenheer, Cornelis G. (1869-1942), Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ACornelis_Gerardus_Leenheer%2C_Afb_010118000325.jpg"
+  },
+  "Bellamyplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/2021_Bellamyplein_18-40%2C_Asd_%281%29.jpg/500px-2021_Bellamyplein_18-40%2C_Asd_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2021 Bellamyplein 18-40, Asd (1).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Bellamyplein_18-40%2C_Asd_(1).jpg"
+  },
+  "Deutzenhofje": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Poortgebouw_deutzen.jpg/500px-Poortgebouw_deutzen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Poortgebouw deutzen.jpg (bureau Monumenten &amp; Archeologie (bMA), Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APoortgebouw_deutzen.jpg"
+  },
+  "Hortus Botanicus": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/HortusBrugOost.jpg/500px-HortusBrugOost.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: HortusBrugOost.jpg (Zxempire, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHortusBrugOost.jpg"
+  },
+  "Domela Nieuwenhuisplantsoen": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/2019_Domela_Nieuwenhuisplantsoen_%282%29.jpg/500px-2019_Domela_Nieuwenhuisplantsoen_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2019 Domela Nieuwenhuisplantsoen (2).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2019_Domela_Nieuwenhuisplantsoen_(2).jpg"
+  },
+  "Sloterpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Brug_677.2.jpg/500px-Brug_677.2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Brug 677.2.jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABrug_677.2.jpg"
+  },
+  "Oosterpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Oosterpark7.JPG/500px-Oosterpark7.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Oosterpark7.JPG (S Sepp, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOosterpark7.JPG"
+  },
+  "Westerpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Overzicht_Westerpark_met_eenden_en_fonteinen_-_Amsterdam_-_20536573_-_RCE.jpg/500px-Overzicht_Westerpark_met_eenden_en_fonteinen_-_Amsterdam_-_20536573_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht Westerpark met eenden en fonteinen - Amsterdam - 20536573 - RCE.jpg (Bert van As, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_Westerpark_met_eenden_en_fonteinen_-_Amsterdam_-_20536573_-_RCE.jpg"
+  },
+  "Rembrandtpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Rembrandtpark.JPG/500px-Rembrandtpark.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Rembrandtpark.JPG (Mark Ahsmann, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ARembrandtpark.JPG"
+  },
+  "Sarphatipark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Sarphatipark2.JPG/500px-Sarphatipark2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Sarphatipark2.JPG (No machine-readable author provided. SanderK assumed (based on copyright claims)., CC BY-SA 2.5)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASarphatipark2.JPG"
+  },
+  "Constantiahofje": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Constantiahofje.jpg/500px-Constantiahofje.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Constantiahofje.jpg (Eibert Draisma, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AConstantiahofje.jpg"
+  },
+  "Nelson Mandelapark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Overzicht_vanaf_uitzichttoren_Nelson_Mandelapark.jpg/500px-Overzicht_vanaf_uitzichttoren_Nelson_Mandelapark.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht vanaf uitzichttoren Nelson Mandelapark.jpg (Richardkiwi, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_vanaf_uitzichttoren_Nelson_Mandelapark.jpg"
+  },
+  "Lange Bretten": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/De_Lange_Bretten.JPG/500px-De_Lange_Bretten.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: De Lange Bretten.JPG (Marion Golsteijn, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADe_Lange_Bretten.JPG"
+  },
+  "Geuzenbos": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Geuzenbos3.jpg/500px-Geuzenbos3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Geuzenbos3.jpg (User:Arthena, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGeuzenbos3.jpg"
+  },
+  "Lutkemeerpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/2021_Lutkemeerpark_%2802%29.jpg/500px-2021_Lutkemeerpark_%2802%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2021 Lutkemeerpark (02).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Lutkemeerpark_(02).jpg"
+  },
+  "Professor Joop van Stigtpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/2021_Professor_Joop_van_Stigtpark%2C_Asd_%282%29.jpg/500px-2021_Professor_Joop_van_Stigtpark%2C_Asd_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2021 Professor Joop van Stigtpark, Asd (2).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Professor_Joop_van_Stigtpark%2C_Asd_(2).jpg"
+  },
+  "Wertheimpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Wertheimpark.jpg/500px-Wertheimpark.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Wertheimpark.jpg (Jvhertum, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWertheimpark.jpg"
+  },
+  "Frederik Hendrikplantsoen": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/2024_Frederik_Hendrikplantsoen-noordelijk_deel%2C_Asd_%28C%29.jpg/500px-2024_Frederik_Hendrikplantsoen-noordelijk_deel%2C_Asd_%28C%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2024 Frederik Hendrikplantsoen-noordelijk deel, Asd (C).jpg (Ceescamel, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2024_Frederik_Hendrikplantsoen-noordelijk_deel%2C_Asd_(C).jpg"
+  },
+  "Theo van Goghpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/2020_Theo_van_Goghpark_%284%29.jpg/500px-2020_Theo_van_Goghpark_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2020 Theo van Goghpark (4).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2020_Theo_van_Goghpark_(4).jpg"
+  },
+  "Siegerpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/2022_Brug_Siegerpark-Schumpeterstraat%2C_Asd_%285%29.jpg/500px-2022_Brug_Siegerpark-Schumpeterstraat%2C_Asd_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2022 Brug Siegerpark-Schumpeterstraat, Asd (5).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2022_Brug_Siegerpark-Schumpeterstraat%2C_Asd_(5).jpg"
+  },
+  "Hoeckelingsdam": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Hoeckelingsdam.jpg/500px-Hoeckelingsdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Hoeckelingsdam.jpg (Milliped, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHoeckelingsdam.jpg"
+  },
+  "Staalmanpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/2021_Staalmanpark%2C_Asd-overzicht_%282%29.jpg/500px-2021_Staalmanpark%2C_Asd-overzicht_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2021 Staalmanpark, Asd-overzicht (2).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Staalmanpark%2C_Asd-overzicht_(2).jpg"
+  },
+  "Houthavenpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Ventilatietorens_Spaarndammertunnel_%2810%29.jpg/500px-Ventilatietorens_Spaarndammertunnel_%2810%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Ventilatietorens Spaarndammertunnel (10).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AVentilatietorens_Spaarndammertunnel_(10).jpg"
+  },
+  "Heemtuin Sloterpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/2022_Heemtuin_Sloterpark%2C_Asd-infobord.jpg/500px-2022_Heemtuin_Sloterpark%2C_Asd-infobord.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2022 Heemtuin Sloterpark, Asd-infobord.jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2022_Heemtuin_Sloterpark%2C_Asd-infobord.jpg"
+  },
+  "Hortusplantsoen": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Hortusplantsoen.jpg/500px-Hortusplantsoen.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Hortusplantsoen.jpg (Jvhertum, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AHortusplantsoen.jpg"
+  },
+  "Park Somerlust": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/2021_Park_Somerlust%2C_Asd_%281%29.jpg/500px-2021_Park_Somerlust%2C_Asd_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2021 Park Somerlust, Asd (1).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Park_Somerlust%2C_Asd_(1).jpg"
+  },
+  "Mien Ruysplantsoen": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Mien_Ruysplantsoen_%283%29.jpg/500px-Mien_Ruysplantsoen_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Mien Ruysplantsoen (3).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMien_Ruysplantsoen_(3).jpg"
+  },
+  "Veroneseplantsoen": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/Veroneseplantsoen_%282%29.jpg/500px-Veroneseplantsoen_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Veroneseplantsoen (2).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AVeroneseplantsoen_(2).jpg"
+  },
+  "Wachterliedplantsoen": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Wachterliedplantsoen_%28speeltuin%29.jpg/500px-Wachterliedplantsoen_%28speeltuin%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Wachterliedplantsoen (speeltuin).jpg (Paul Be., CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWachterliedplantsoen_(speeltuin).jpg"
+  },
+  "Hollandse Tuin": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Artis_Hollandse_Tuin_5.jpg/500px-Artis_Hollandse_Tuin_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Artis Hollandse Tuin 5.jpg (Zxempire, CC BY-SA 3.0 nl)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AArtis_Hollandse_Tuin_5.jpg"
+  },
+  "Martin Luther Kingpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/MLK-park_%28north%29_in_Amsterdam_2.jpg/500px-MLK-park_%28north%29_in_Amsterdam_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: MLK-park (north) in Amsterdam 2.jpg (Arthena, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMLK-park_(north)_in_Amsterdam_2.jpg"
+  },
+  "Park Frankendael": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Frankendael%2C_Amsterdam%2C_Voorzijde.jpg/500px-Frankendael%2C_Amsterdam%2C_Voorzijde.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Frankendael, Amsterdam, Voorzijde.jpg (Mschapink, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFrankendael%2C_Amsterdam%2C_Voorzijde.jpg"
+  },
+  "Eendrachtspark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Eendrachtspark5.jpg/500px-Eendrachtspark5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Eendrachtspark5.jpg (user:Arthena, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AEendrachtspark5.jpg"
+  },
+  "Park de Schinkeleilanden": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Park_Schinkeleilanden_Amsterdam_1.jpg/500px-Park_Schinkeleilanden_Amsterdam_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Park Schinkeleilanden Amsterdam 1.jpg (Vincent Steenberg, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3APark_Schinkeleilanden_Amsterdam_1.jpg"
+  },
+  "Piet Wiedijkpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/2020_Piet_Wiedijkpark%2C_doorkijk_%281%29.jpg/500px-2020_Piet_Wiedijkpark%2C_doorkijk_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2020 Piet Wiedijkpark, doorkijk (1).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2020_Piet_Wiedijkpark%2C_doorkijk_(1).jpg"
+  },
+  "Stadspark Osdorp": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Muziekpodium_Stadspark_Osdorp.jpg/500px-Muziekpodium_Stadspark_Osdorp.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Muziekpodium Stadspark Osdorp.jpg (Paul Berendsen, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMuziekpodium_Stadspark_Osdorp.jpg"
+  },
+  "Darwinplantsoen": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Overzicht_wandelpad_in_rechte_lijn_-_Amsterdam_-_20535210_-_RCE.jpg/500px-Overzicht_wandelpad_in_rechte_lijn_-_Amsterdam_-_20535210_-_RCE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Overzicht wandelpad in rechte lijn - Amsterdam - 20535210 - RCE.jpg (Bert van As, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AOverzicht_wandelpad_in_rechte_lijn_-_Amsterdam_-_20535210_-_RCE.jpg"
+  },
+  "Bilderdijkpark": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Bilderdijkpark%2C_Amsterdam.jpg/500px-Bilderdijkpark%2C_Amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Bilderdijkpark, Amsterdam.jpg (Kaz Alting, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ABilderdijkpark%2C_Amsterdam.jpg"
+  },
+  "Natuurpark Vrije Geer": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Natuurpark_Vrije_Geer%2C_overzicht_%285%29.jpg/500px-Natuurpark_Vrije_Geer%2C_overzicht_%285%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Natuurpark Vrije Geer, overzicht (5).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANatuurpark_Vrije_Geer%2C_overzicht_(5).jpg"
+  },
+  "Monument Rozenoord": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Monument_Rozenoord_%2801%29.jpg/500px-Monument_Rozenoord_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Monument Rozenoord (01).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AMonument_Rozenoord_(01).jpg"
+  },
+  "Flower Market": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Amsterdam_%2816033009226%29.jpg/500px-Amsterdam_%2816033009226%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam (16033009226).jpg (Shadowgate from Novara, ITALY, CC BY 2.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_(16033009226).jpg"
+  },
+  "Dam Square": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Amsterdam_-_Dak_van_de_Stad_%2814%29.jpg/500px-Amsterdam_-_Dak_van_de_Stad_%2814%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam - Dak van de Stad (14).jpg (Sneeuwvlakte, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_-_Dak_van_de_Stad_(14).jpg"
+  },
+  "New Market": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Waag1.jpg/500px-Waag1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Waag1.jpg (bureau Monumenten &amp; Archeologie (bMA), Attribution)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWaag1.jpg"
+  },
+  "Dappermarkt": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Dappermarkt.jpg/500px-Dappermarkt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Dappermarkt.jpg (Erik Joling, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADappermarkt.jpg"
+  },
+  "Leidseplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/2019_Amsterdam%2C_Leidseplein_%282%29.jpg/500px-2019_Amsterdam%2C_Leidseplein_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2019 Amsterdam, Leidseplein (2).jpg (Kleon3, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2019_Amsterdam%2C_Leidseplein_(2).jpg"
+  },
+  "Albert Cuyp market": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Albert_Cuyp_markt%2C_foto8.JPG/500px-Albert_Cuyp_markt%2C_foto8.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Albert Cuyp markt, foto8.JPG (Alf van Beem, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAlbert_Cuyp_markt%2C_foto8.JPG"
+  },
+  "Rembrandt Square": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/NieuwRembrandtplein.JPG/500px-NieuwRembrandtplein.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: NieuwRembrandtplein.JPG (Marion Golsteijn, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ANieuwRembrandtplein.JPG"
+  },
+  "Spui": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Spui%2C_Amsterdam2.jpg/500px-Spui%2C_Amsterdam2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Spui, Amsterdam2.jpg (Bouzinac, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASpui%2C_Amsterdam2.jpg"
+  },
+  "Geertje Wielemaplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/2020_Geertje_Wielemaplein_1_%281%29.jpg/500px-2020_Geertje_Wielemaplein_1_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2020 Geertje Wielemaplein 1 (1).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2020_Geertje_Wielemaplein_1_(1).jpg"
+  },
+  "Weesperplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Weesperplein_amsterdam.jpg/500px-Weesperplein_amsterdam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Weesperplein amsterdam.jpg (M.Minderhoud, CC BY-SA 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWeesperplein_amsterdam.jpg"
+  },
+  "Rhijnspoorplein": {
+   "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Weesperpoortstation1920.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "imageAttribution": "Wikimedia Commons: Weesperpoortstation1920.jpg (Original uploader was Michiel1972 at nl.wikipedia, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AWeesperpoortstation1920.jpg"
+  },
+  "Prinses Amaliaplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/2020_Prinses_Amaliaplein%2C_Amsterdam_%281%29.jpg/500px-2020_Prinses_Amaliaplein%2C_Amsterdam_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2020 Prinses Amaliaplein, Amsterdam (1).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2020_Prinses_Amaliaplein%2C_Amsterdam_(1).jpg"
+  },
+  "Meidoornplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/2024_Meidoornplein%2C_Asd-overzicht_%28B%29.jpg/500px-2024_Meidoornplein%2C_Asd-overzicht_%28B%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2024 Meidoornplein, Asd-overzicht (B).jpg (Ceescamel, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2024_Meidoornplein%2C_Asd-overzicht_(B).jpg"
+  },
+  "Jac. P. Thijsseplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/2021_Jac._P._Thijsseplein_1-39%2C_Asd.jpg/500px-2021_Jac._P._Thijsseplein_1-39%2C_Asd.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2021 Jac. P. Thijsseplein 1-39, Asd.jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2021_Jac._P._Thijsseplein_1-39%2C_Asd.jpg"
+  },
+  "Zuidplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Zuidplein_Amsterdam_Netherlands.jpg/500px-Zuidplein_Amsterdam_Netherlands.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Zuidplein Amsterdam Netherlands.jpg (DennisM, CC0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AZuidplein_Amsterdam_Netherlands.jpg"
+  },
+  "Solebayplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Zeeslagenkaart%2C_overzicht_%282%29.jpg/500px-Zeeslagenkaart%2C_overzicht_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Zeeslagenkaart, overzicht (2).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AZeeslagenkaart%2C_overzicht_(2).jpg"
+  },
+  "Krugerplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Amsterdam_-_Krugerplein.JPG/500px-Amsterdam_-_Krugerplein.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Amsterdam - Krugerplein.JPG (A. Bakker, CC BY 3.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AAmsterdam_-_Krugerplein.JPG"
+  },
+  "Zuiderkerkhof": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/2020_Zuiderkerkhof_%282%29.jpg/500px-2020_Zuiderkerkhof_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: 2020 Zuiderkerkhof (2).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3A2020_Zuiderkerkhof_(2).jpg"
+  },
+  "Bijlmermonument": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/El_Al_Flight_1862_memorial_04-04-2018a.jpg/500px-El_Al_Flight_1862_memorial_04-04-2018a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: El Al Flight 1862 memorial 04-04-2018a.jpg (Oyoyoy, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AEl_Al_Flight_1862_memorial_04-04-2018a.jpg"
+  },
+  "Frederiksplein": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Frederiksplein_in_2018_%283%29.jpg/500px-Frederiksplein_in_2018_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Frederiksplein in 2018 (3).jpg (Ceescamel, CC BY-SA 4.0)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AFrederiksplein_in_2018_(3).jpg"
+  },
+  "Kleine-Gartmanplantsoen": {
+   "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Kleine_Gartmanplantsoen_foto_4.jpg/500px-Kleine_Gartmanplantsoen_foto_4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "imageAttribution": "Wikimedia Commons: Kleine Gartmanplantsoen foto 4.jpg (Alf van Beem, Public domain)",
+   "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AKleine_Gartmanplantsoen_foto_4.jpg"
   },
   "OT301": {
    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/12/Overtoom_301%2C_entrance.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",

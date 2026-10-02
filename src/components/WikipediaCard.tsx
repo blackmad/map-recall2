@@ -3,6 +3,8 @@ import { StreetFeature, TriviaText } from '../types';
 import { FACT_KIND_LABELS } from '../canalRecall/facts/factTypes';
 import { triviaForRound } from '../mapRecall/localFacts';
 import { descriptionWithoutOrigin } from '../mapRecall/trivia';
+import { CITIES } from '../data/cities';
+import { PostcardHeader } from './PostcardHeader';
 
 const Source: React.FC<{ href?: string; children: React.ReactNode }> = ({ href, children }) => href
   ? <a href={href} target="_blank" rel="noreferrer" className="mt-0.5 inline-block text-[11px] font-bold text-white/60 hover:text-white">{children} ↗</a>
@@ -17,9 +19,9 @@ const Chip: React.FC<{ children: React.ReactNode }> = ({ children }) => (
  * (up to three, each credited and linked); the rest are listed by name. Shown after the answer,
  * so it can name places freely; the clue dots on the map are what difficulty gates.
  */
-const PlacesHere: React.FC<{ places?: StreetFeature['notablePlaces'] }> = ({ places }) => {
+const PlacesHere: React.FC<{ places?: StreetFeature['notablePlaces']; showPhotos?: boolean }> = ({ places, showPhotos = true }) => {
   if (!places?.length) return null;
-  const withPhoto = places.filter((place) => place.photo).slice(0, 3);
+  const withPhoto = showPhotos ? places.filter((place) => place.photo).slice(0, 3) : [];
   const rest = places.filter((place) => !withPhoto.includes(place));
   return <div className="space-y-1" data-testid="answer-places">
     <div className="text-[10px] font-black uppercase tracking-wide text-[#8a4a18]">Around here</div>
@@ -50,8 +52,14 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
     ? { href: extractSource.sourceUrl, label: extractSource.sourceLabel === 'Wikipedia' ? 'From Wikipedia' : extractSource.sourceLabel }
     : { href: feature.wikipediaUrl, label: feature.wikipediaUrl?.includes('nl.wikipedia') ? 'Wikipedia (translated from Dutch)' : 'From Wikipedia' };
   if (!origin && !trivia && !description && !history && !feature.wikipediaImageUrl) return null;
-  return <div className="answer-detail-card flex gap-3 p-3 text-left" data-testid="answer-trivia">
-    {feature.wikipediaImageUrl && <img src={feature.wikipediaImageUrl} referrerPolicy="no-referrer" alt="" className="h-12 w-16 flex-none rounded-md object-cover sm:h-16 sm:w-20" />}
+  // Neighbourhoods open with a postcard cut from their own photographs and those of the places in them.
+  const postcardPhotos = feature.type === 'neighborhood'
+    ? [feature.wikipediaImageUrl, ...(feature.areaPhotos ?? []).map((place) => place.photo.imageUrl)].filter((url): url is string => !!url).slice(0, 5)
+    : [];
+  return <div className="answer-detail-card flex flex-col gap-2 p-3 text-left" data-testid="answer-trivia">
+    {postcardPhotos.length >= 2 && <PostcardHeader name={feature.name} cityName={CITIES.find((city) => city.id === feature.cityId)?.name} photos={postcardPhotos} />}
+    <div className="flex gap-3">
+    {feature.wikipediaImageUrl && postcardPhotos.length < 2 && <img src={feature.wikipediaImageUrl} referrerPolicy="no-referrer" alt="" className="h-12 w-16 flex-none rounded-md object-cover sm:h-16 sm:w-20" />}
     <div className="min-w-0 space-y-1.5">
       {origin && <p className="text-xs leading-relaxed text-white" data-testid="answer-name-origin">
         <Chip>Name</Chip>{origin.text}{' '}<Source href={origin.sourceUrl}>{origin.sourceLabel}</Source>
@@ -69,7 +77,8 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
         <p className="mt-1">{history.text}</p>
         <Source href={history.sourceUrl}>{history.sourceLabel}</Source>
       </details>}
-      <PlacesHere places={feature.notablePlaces} />
+      <PlacesHere places={feature.notablePlaces} showPhotos={postcardPhotos.length < 2} />
+    </div>
     </div>
   </div>;
 };

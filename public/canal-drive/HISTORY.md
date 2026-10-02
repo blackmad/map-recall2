@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## "Greetings from X" postcard on the Map Recall card
+
+The large-letter postcard compositor (src/canalRecall/largeLetterPostcard.ts, previously only in Storybook) now heads a neighbourhood's answer card via `PostcardHeader` (lazy-loaded canvas, Archivo Black). Its letters are cut from the area's own photograph plus photographs of landmarks, parks and squares inside it (`feature.areaPhotos`, up to five, from `<city>/place-photos.json`; `fetch-place-photos.ts` now covers parks and squares too). It needs two or more photographs; otherwise the card keeps its thumbnail. If the images fail to load it stays hidden. When the postcard shows, the "Around here" photo strip and the thumbnail are dropped and the places are listed by name.
+
 ## Map Recall card: "Around here" with place photos
 
 The answer card for a neighbourhood now lists its best-known places (`notablePlaces`, same picks as the map clues) and shows up to three with a Commons lead photograph, credited and linked. Photos come from `scripts/fetch-place-photos.ts` (landmark `wikipedia` field -> pageimages -> Commons licence/author; JPEG, landscape, licensed only) into `<city>/place-photos.json`; Amsterdam has 189 of 304 landmarks with an article. Shown after the answer for every difficulty; only the clue dots on the map are gated by difficulty. The unused large-letter postcard compositor (`src/canalRecall/largeLetterPostcard.ts`) is the candidate for a "Greetings from X" header on this card.

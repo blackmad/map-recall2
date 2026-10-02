@@ -206,6 +206,8 @@ export interface StreetFeature {
   /** A neighbourhood's history, from its Wikipedia article. */
   history?: TriviaText;
   /** A neighbourhood's best-known places (src/mapRecall/trivia.ts notablePlacesIn). */
+  /** Photographs of places inside a neighbourhood, best first (fetch-place-photos.ts), for the postcard. */
+  areaPhotos?: Array<{ name: string; photo: PlacePhoto }>;
   notablePlaces?: Array<{ name: string; center: [number, number]; kind: string; photo?: PlacePhoto }>;
   highway?: string;
   neighborhood?: string;
