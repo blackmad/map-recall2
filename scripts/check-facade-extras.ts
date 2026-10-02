@@ -100,6 +100,14 @@ assert.ok(maxSide <= EXTRA_BUDGET.sideWall, `side wall budget holds (${maxSide})
 const unseen = WALL_COMPONENTS.map(c => c.id).filter(id => !seen.has(id));
 assert.deepEqual(unseen, [], `every wall component appears in a 3000-wall sample`);
 
+// A 19th-century house laid out as a canal house (the bay looks) gets 19th-century ornament and keeps canal furniture.
+{
+  const got = new Set<string>();
+  for (let i = 0; i < 400; i++) for (const id of wallExtras(wall('canal', `p${i}`, { period: 'c19' }), new ExtraSink(EXTRA_BUDGET.building))) got.add(id);
+  for (const id of ['iron-balconies', 'stucco-hoods', 'console-cornice', 'stoop', 'hoist-beam']) assert.ok(got.has(id), `c19 period on a canal layout gets ${id}`);
+  assert.ok(!got.has('warehouse-shutters'), 'but not canal-only ornament');
+}
+
 // Walls mode carries no extras; extras mode carries only extras, within the building budget.
 const origin = { lng: 4.9, lat: 52.37 }, kx = 111_320 * Math.cos(origin.lat * Math.PI / 180), ky = 110_540;
 const ring = [[0, 0], [10, 0], [10, 12], [0, 12], [0, 0]].map(([x, y]) => [origin.lng + x / kx, origin.lat + y / ky]);
