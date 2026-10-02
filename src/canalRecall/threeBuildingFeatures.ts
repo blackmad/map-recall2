@@ -71,7 +71,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
   if (p.kitWall) {
     // A landmark kit's walls: its own stone or brick colour, bare or in a window grid.
     building.wallHex = String(p.kitWallHex ?? building.wallHex);
-    building.plainWalls = p.kitWall === 'plain';
+    building.plainWalls = p.kitWall === 'plain' || p.kitWall === 'flat';
+    if (p.kitWall === 'flat') { building.bare = true; building.plainLayer = roofBase + 3; }
   }
   if (p.roofPlanned) {
     const ring = localOuterRing(feature.geometry);
