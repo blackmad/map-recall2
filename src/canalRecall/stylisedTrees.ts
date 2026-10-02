@@ -2,8 +2,8 @@
 //
 // `trees.json` (natural=tree nodes and sampled tree_rows, one per ~8 m cell)
 // was drawn only as flat circles, and nothing loaded it. Here each tree is
-// three small fill-extrusions in the same flat-coloured idiom as the
-// buildings: a four-sided trunk, a wide hexagonal crown and a narrower cap.
+// two small fill-extrusions in the same flat-coloured idiom as the
+// buildings: a four-sided trunk and a hexagonal crown (optionally a cap).
 // Fill-extrusion is the cheapest thing that stands up at the chase (48°) and
 // cockpit (84°) pitches: no models, no textures, one draw per layer, and it
 // depth-sorts against the buildings for free. Trees are presentation only —
@@ -42,13 +42,13 @@ export function ringAround(lng: number, lat: number, radiusM: number, sides: num
   return ring;
 }
 
-/** Deterministic size for one tree: crowns 1.9–2.6 m wide, 6–9 m tall. */
+/** Deterministic size for one tree: crown radius 1.9–2.6 m, 6–8.8 m tall. */
 export function treeShape(id: string): { crownR: number; crownBase: number; crownTop: number; capR: number; capTop: number; shade: number; rotation: number } {
   const h = hash(id);
   const u = (shift: number) => ((h >>> shift) & 0xff) / 255;
   const crownR = 1.9 + 0.7 * u(0);
   const crownBase = 2.6 + 0.6 * u(8);
-  const crownTop = crownBase + 2.6 + 1.6 * u(16);
+  const crownTop = crownBase + 3.4 + 1.8 * u(16);
   return {
     crownR, crownBase, crownTop,
     capR: crownR * 0.62,
@@ -61,8 +61,10 @@ export function treeShape(id: string): { crownR: number; crownBase: number; crow
 export const TREE_TRUNK_RADIUS_M = 0.28;
 export const TREE_TRUNK_TOP_M = 3.0;
 
-/** Three extrusion features per tree. */
-export function treeFeatures(trees: readonly OsmTree[]): TreeFeature[] {
+/** Two extrusion features per tree (trunk, crown); `caps` adds a narrower
+ *  tier on top — a nicer silhouette, measured as not worth its third polygon
+ *  on a throttled phone, so off by default. */
+export function treeFeatures(trees: readonly OsmTree[], options: { caps?: boolean } = {}): TreeFeature[] {
   const out: TreeFeature[] = [];
   for (const tree of trees) {
     if (!Number.isFinite(tree.lat) || !Number.isFinite(tree.lng)) continue;
@@ -71,7 +73,7 @@ export function treeFeatures(trees: readonly OsmTree[]): TreeFeature[] {
       geometry: { type: 'Polygon', coordinates: [ringAround(tree.lng, tree.lat, TREE_TRUNK_RADIUS_M, 4, s.rotation)] } });
     out.push({ type: 'Feature', properties: { id: tree.id, part: 'crown', base: s.crownBase, height: s.crownTop, shade: s.shade },
       geometry: { type: 'Polygon', coordinates: [ringAround(tree.lng, tree.lat, s.crownR, 6, s.rotation)] } });
-    out.push({ type: 'Feature', properties: { id: tree.id, part: 'cap', base: s.crownTop, height: s.capTop, shade: s.shade },
+    if (options.caps) out.push({ type: 'Feature', properties: { id: tree.id, part: 'cap', base: s.crownTop, height: s.capTop, shade: s.shade },
       geometry: { type: 'Polygon', coordinates: [ringAround(tree.lng, tree.lat, s.capR, 6, s.rotation + Math.PI / 6)] } });
   }
   return out;
