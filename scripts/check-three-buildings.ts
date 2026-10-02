@@ -144,6 +144,42 @@ for (let v = 0; v < chunk.vertexCount; v += 4) {
   assert.ok(inward > 0 && outward > 0, 'courtyard walls face the courtyard, outer walls face out');
 }
 
+// A lidded building owns its top (no MapLibre band or lid to hang in the air): walls reach the full
+// height, and the lid covers the footprint minus the courtyard, facing up, at the wall top.
+{
+  const lidded: MeshBuilding = { id: 'l', polygons: [[rect(0, 0, 30, 30), rect(10, 10, 20, 20)]], heightM: 14, minHeightM: 0, style: 'canal', wallHex: '#8a5a44', plainLayer: 3, lid: { hex: '#8f8a83', flatLayer: 7 } };
+  const c = buildChunk([lidded], origin);
+  let lidArea = 0, maxWallZ = 0;
+  for (let t = 0; t < c.indices.length; t += 3) {
+    const [i, j, k] = [c.indices[t], c.indices[t + 1], c.indices[t + 2]];
+    const P = (v: number) => [c.positions[v * 3], c.positions[v * 3 + 1], c.positions[v * 3 + 2]];
+    const [a, b, d] = [P(i), P(j), P(k)];
+    const horizontal = a[2] === b[2] && b[2] === d[2];
+    if (!horizontal) { maxWallZ = Math.max(maxWallZ, a[2], b[2], d[2]); continue; }
+    assert.equal(c.layers[i], 7, 'lid is on the flat layer');
+    assert.ok(a[2] === 14, 'lid sits at the wall top');
+    const cross = (b[0] - a[0]) * (d[1] - a[1]) - (b[1] - a[1]) * (d[0] - a[0]);
+    assert.ok(cross > 0, 'lid faces up');
+    lidArea += cross / 2;
+  }
+  assert.ok(Math.abs(lidArea - 800) < 1, `lid covers the footprint minus the courtyard (${lidArea.toFixed(1)} m²)`);
+  assert.ok(Math.abs(maxWallZ - 14) < 1e-4, `walls reach the full height (${maxWallZ})`);
+}
+
+// A corner chamfer too short for a window layout still gets a full-height wall (user report
+// "doesn't meet at corner", 2026-10-02): no gap between the two street walls.
+for (const c of [0.64, 1.4]) {
+  const pts = [[0, 0], [12, 0], [12, 12 - c], [12 - c, 12], [0, 12]];
+  const ring = [...pts, pts[0]].map(([x, y]) => [origin.lng + x / kx, origin.lat + y / ky]);
+  const ch = buildChunk([{ id: 'k', polygons: [[ring]], heightM: 14, minHeightM: 0, style: 'c19', wallHex: '#c9a040', plainLayer: 3, lid: { hex: '#888888', flatLayer: 7 } }], origin);
+  let lowest = 99, highest = 0;
+  for (let v = 0; v < ch.vertexCount; v++) {
+    const x = ch.positions[v * 3], y = ch.positions[v * 3 + 1], z = ch.positions[v * 3 + 2];
+    if (Math.abs(x + y - (24 - c)) < 0.05 && x > 11.9 - c && x < 12.1) { lowest = Math.min(lowest, z); highest = Math.max(highest, z); }
+  }
+  assert.ok(lowest === 0 && highest === 14, `chamfer ${c} m is walled from 0 to 14 (${lowest}-${highest})`);
+}
+
 // --- wallTopHeightM agrees with the MapLibre expression it replaces ---------
 {
   const compiled = createExpression(wallTopHeightExpression() as never, { type: 'number' } as never);

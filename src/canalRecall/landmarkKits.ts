@@ -115,6 +115,27 @@ export const KITS: Kit[] = [
     roofs: ['w748659181', 'w748659182', 'w748659172', 'w748659173', 'w748659174', 'w748659175', 'w748659183', 'w748659170', 'w748659180']
       .map(id => ({ id, riseM: 5, mat: 'lead' as const })),
   },
+  {
+    // Two round corner towers with conical roofs, two turrets, and steep roofs on the main body.
+    name: 'Waag',
+    tiers: ['w749066949', 'w749066950', 'w749066946', 'w749066947'].map(id => ({ id, shape: 'octagon' as const, mat: 'brick' as const })),
+    stacks: [
+      ...['w749066949', 'w749066950'].map(onId => ({ onId, stages: [{ shape: 'octagon' as const, w0: 9, w1: 0.8, h: 10, mat: 'slate' as const }] })),
+      ...['w749066946', 'w749066947'].map(onId => ({ onId, stages: [{ shape: 'octagon' as const, w0: 5.2, w1: 0.5, h: 5.5, mat: 'slate' as const }] })),
+    ],
+    roofs: ['w749066938', 'w749066939', 'w749066942', 'w749066948', 'w749066940'].map(id => ({ id, riseM: 6, mat: 'slate' as const })),
+  },
+  {
+    // Berlage's Beurs: a brick clock tower with a pyramid cap, and long steep-roofed halls.
+    // The Beursplein hall's eaves sit on its gable row at 15.5 m (front in landmarkFrontData.ts), so its roof rises 11.5 m.
+    name: 'Beurs van Berlage',
+    wall: { plain: true, hex: '#9a5240' },
+    tiers: [{ id: 'w749918639', shape: 'square', mat: 'brick' }],
+    stacks: [{ onId: 'w749918639', stages: [{ shape: 'square', w0: 12.5, w1: 0.6, h: 11, mat: 'slate' }] }],
+    // The hall roofs start on the gable row at 15.5 m: rise = part height - 15.5 (641 in the raw extract, 642/645 in the game tiles).
+    roofs: [...['w749918651', 'w749918653', 'w749918637', 'w749918638'].map(id => ({ id, riseM: 7, mat: 'slate' as const })),
+      { id: 'w749918641', riseM: 11.5, mat: 'slate' }, { id: 'w749918642', riseM: 9.5, mat: 'slate' }, { id: 'w749918645', riseM: 8.5, mat: 'slate' }],
+  },
 ];
 
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */

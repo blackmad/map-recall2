@@ -334,6 +334,31 @@
         { shape: "octagon", w0: 1.9, w1: 0, h: 3.4, mat: "gold" }
       ] }],
       roofs: ["w748659181", "w748659182", "w748659172", "w748659173", "w748659174", "w748659175", "w748659183", "w748659170", "w748659180"].map((id) => ({ id, riseM: 5, mat: "lead" }))
+    },
+    {
+      // Two round corner towers with conical roofs, two turrets, and steep roofs on the main body.
+      name: "Waag",
+      tiers: ["w749066949", "w749066950", "w749066946", "w749066947"].map((id) => ({ id, shape: "octagon", mat: "brick" })),
+      stacks: [
+        ...["w749066949", "w749066950"].map((onId) => ({ onId, stages: [{ shape: "octagon", w0: 9, w1: 0.8, h: 10, mat: "slate" }] })),
+        ...["w749066946", "w749066947"].map((onId) => ({ onId, stages: [{ shape: "octagon", w0: 5.2, w1: 0.5, h: 5.5, mat: "slate" }] }))
+      ],
+      roofs: ["w749066938", "w749066939", "w749066942", "w749066948", "w749066940"].map((id) => ({ id, riseM: 6, mat: "slate" }))
+    },
+    {
+      // Berlage's Beurs: a brick clock tower with a pyramid cap, and long steep-roofed halls.
+      // The Beursplein hall's eaves sit on its gable row at 15.5 m (front in landmarkFrontData.ts), so its roof rises 11.5 m.
+      name: "Beurs van Berlage",
+      wall: { plain: true, hex: "#9a5240" },
+      tiers: [{ id: "w749918639", shape: "square", mat: "brick" }],
+      stacks: [{ onId: "w749918639", stages: [{ shape: "square", w0: 12.5, w1: 0.6, h: 11, mat: "slate" }] }],
+      // The hall roofs start on the gable row at 15.5 m: rise = part height - 15.5 (641 in the raw extract, 642/645 in the game tiles).
+      roofs: [
+        ...["w749918651", "w749918653", "w749918637", "w749918638"].map((id) => ({ id, riseM: 7, mat: "slate" })),
+        { id: "w749918641", riseM: 11.5, mat: "slate" },
+        { id: "w749918642", riseM: 9.5, mat: "slate" },
+        { id: "w749918645", riseM: 8.5, mat: "slate" }
+      ]
     }
   ];
   var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id)]));
@@ -521,27 +546,27 @@
   }
   function frontTriangles(front2, toWorld) {
     const tris = [];
-    const quad = (a, b, c, d2, hex2) => {
+    const quad = (a, b, c, d2, hex2, hint) => {
       const [pa, pb, pc, pd] = [a, b, c, d2].map(([x, z, y]) => toWorld(x, z, y));
-      tris.push({ p: [pa, pb, pc], hex: hex2 }, { p: [pa, pc, pd], hex: hex2 });
+      tris.push({ p: [pa, pb, pc], hex: hex2, hint }, { p: [pa, pc, pd], hex: hex2, hint });
     };
     const box = ({ x0, x1, z0, z1, out0 = 0, out1, hex: hex2 }) => {
-      quad([x0, z0, out1], [x1, z0, out1], [x1, z1, out1], [x0, z1, out1], hex2);
-      quad([x0, z0, out0], [x0, z0, out1], [x0, z1, out1], [x0, z1, out0], hex2);
-      quad([x1, z0, out1], [x1, z0, out0], [x1, z1, out0], [x1, z1, out1], hex2);
-      quad([x0, z1, out1], [x1, z1, out1], [x1, z1, out0], [x0, z1, out0], hex2);
-      quad([x0, z0, out0], [x1, z0, out0], [x1, z0, out1], [x0, z0, out1], hex2);
+      quad([x0, z0, out1], [x1, z0, out1], [x1, z1, out1], [x0, z1, out1], hex2, [0, 0, 1]);
+      quad([x0, z0, out0], [x0, z0, out1], [x0, z1, out1], [x0, z1, out0], hex2, [-1, 0, 0]);
+      quad([x1, z0, out1], [x1, z0, out0], [x1, z1, out0], [x1, z1, out1], hex2, [1, 0, 0]);
+      quad([x0, z1, out1], [x1, z1, out1], [x1, z1, out0], [x0, z1, out0], hex2, [0, 1, 0]);
+      quad([x0, z0, out0], [x1, z0, out0], [x1, z0, out1], [x0, z0, out1], hex2, [0, -1, 0]);
     };
     const d = front2.depthM, o = front2.outline;
     for (let i = 1; i < o.length; i++) {
       const [xa, za] = o[i - 1], [xb, zb] = o[i];
       if (xb <= xa) continue;
-      quad([xa, 0, d], [xb, 0, d], [xb, zb, d], [xa, za, d], front2.hex);
-      quad([xa, za, d], [xb, zb, d], [xb, zb, 0], [xa, za, 0], front2.hex);
+      quad([xa, 0, d], [xb, 0, d], [xb, zb, d], [xa, za, d], front2.hex, [0, 0, 1]);
+      quad([xa, za, d], [xb, zb, d], [xb, zb, 0], [xa, za, 0], front2.hex, [-(zb - za), xb - xa, 0]);
     }
     const [xs, zs] = o[0], [xe, ze] = o[o.length - 1];
-    quad([xs, 0, 0], [xs, 0, d], [xs, zs, d], [xs, zs, 0], front2.hex);
-    quad([xe, 0, d], [xe, 0, 0], [xe, ze, 0], [xe, ze, d], front2.hex);
+    quad([xs, 0, 0], [xs, 0, d], [xs, zs, d], [xs, zs, 0], front2.hex, [-1, 0, 0]);
+    quad([xe, 0, d], [xe, 0, 0], [xe, ze, 0], [xe, ze, d], front2.hex, [1, 0, 0]);
     for (const b of front2.boxes) box({ ...b, out0: (b.out0 ?? 0) + d, out1: b.out1 + d });
     for (const grid of front2.windows) for (const cx of grid.xs) for (const [z0, z1] of grid.rows) {
       const x0 = cx - grid.w / 2, x1 = cx + grid.w / 2;
@@ -559,6 +584,7 @@
   var BIJ_SHOPS = [[1.1, 4.9], [6.25, 10], [11.4, 15], [16.4, 20], [21.3, 24.9]];
   var BIJENKORF = {
     name: "Bijenkorf",
+    ids: ["w751235773", "w751235775", "w751235776", "w751128373"],
     start: [4.893856597014285, 52.37348990232792],
     end: [4.893608397018061, 52.37330680232445],
     depthM: 0.4,
@@ -603,6 +629,8 @@
   var BEURS_GABLES = [2.7, 10.2, 17.5, 24.7, 31.7, 38.7];
   var BEURS_BEURSPLEIN = {
     name: "Beurs van Berlage",
+    // The game tiles split the Beursplein hall into 642 and 645; the raw extract has it as 641.
+    ids: ["w749918642", "w749918645", "w749918641"],
     start: [4.895897096981563, 52.37509780235795],
     end: [4.895497396988156, 52.37477130235189],
     depthM: 0.3,
@@ -620,6 +648,9 @@
     ]
   };
   var FRONTS = { bijenkorf: BIJENKORF, beurs: BEURS_BEURSPLEIN };
+  var FRONT_LIST = Object.values(FRONTS);
+  var FRONT_PART_IDS = new Set(FRONT_LIST.flatMap((f) => f.ids));
+  var FRONT_OF = new Map(FRONT_LIST.flatMap((f) => f.ids.map((id) => [id, f])));
 
   // src/canalRecall/facadeCompareViewer.ts
   var SETUPS = {
@@ -627,38 +658,20 @@
       centre: [4.9003, 52.37264],
       ids: "w749066938,w749066939,w749066940,w749066942,w749066943,w749066944,w749066945,w749066946,w749066947,w749066948,w749066949,w749066950".split(","),
       // Two round corner towers with conical roofs, two turrets, and steep roofs on the main body.
-      kit: {
-        name: "Waag",
-        tiers: ["w749066949", "w749066950", "w749066946", "w749066947"].map((id) => ({ id, shape: "octagon", mat: "brick" })),
-        stacks: [
-          ...["w749066949", "w749066950"].map((onId) => ({ onId, stages: [{ shape: "octagon", w0: 9, w1: 0.8, h: 10, mat: "slate" }] })),
-          ...["w749066946", "w749066947"].map((onId) => ({ onId, stages: [{ shape: "octagon", w0: 5.2, w1: 0.5, h: 5.5, mat: "slate" }] }))
-        ],
-        roofs: ["w749066938", "w749066939", "w749066942", "w749066948", "w749066940"].map((id) => ({ id, riseM: 6, mat: "slate" }))
-      },
-      roofHosts: ["w749066938", "w749066939", "w749066942", "w749066948", "w749066940"].map((id) => ({ id, riseM: 6 }))
+      kit: KITS.find((k) => k.name === "Waag")
     },
     bijenkorf: {
       centre: [4.8939, 52.37335],
       ids: "w751128384,w751235773,w751235774,w751235775,w751235776,w751128373,NL.IMBAG.Pand.0363100012179183".split(","),
       // Plain prisms in the front's stone; the front (landmarkFrontData.ts) carries the detail.
-      kit: { name: "Bijenkorf", tiers: [], stacks: [], roofs: [] },
-      roofHosts: []
+      kit: { name: "Bijenkorf", tiers: [], stacks: [], roofs: [] }
     }
   };
   var BEURS_IDS = "w749918639,w749918641,w749918651,w749918653,w749918637,w749918638,w749931382,w749931383,w749918652".split(",");
   SETUPS.beurs = {
     centre: [4.8961, 52.37527],
     ids: BEURS_IDS,
-    // Berlage's Beurs: a brick clock tower with a pyramid cap, and long steep-roofed halls.
-    kit: {
-      name: "Beurs",
-      tiers: [{ id: "w749918639", shape: "square", mat: "brick" }],
-      stacks: [{ onId: "w749918639", stages: [{ shape: "square", w0: 12.5, w1: 0.6, h: 11, mat: "slate" }] }],
-      // The Beursplein hall's eaves sit on the gable row at 15.5 m, so its roof rises 11.5 m.
-      roofs: ["w749918641", "w749918651", "w749918653", "w749918637", "w749918638"].map((id) => ({ id, riseM: id === "w749918641" ? 11.5 : 7, mat: "slate" }))
-    },
-    roofHosts: ["w749918641", "w749918651", "w749918653", "w749918637", "w749918638"].map((id) => ({ id, riseM: id === "w749918641" ? 11.5 : 7 }))
+    kit: KITS.find((k) => k.name === "Beurs van Berlage")
   };
   var q = new URLSearchParams(location.search);
   var name = q.get("name") ?? "waag";
@@ -728,11 +741,11 @@
       lights(scene);
       if (variant === "plain") for (const p of parts.values()) scene.add(prism(p.ring, p.minHeightM, p.heightM, "#d9c24a"));
       if (variant === "kit") {
-        for (const h of setup.roofHosts) {
+        for (const h of setup.kit.roofs) {
           const p = parts.get(h.id);
           if (p) scene.add(prism(p.ring, p.minHeightM, p.heightM - h.riseM, "#9a5240"));
         }
-        const unused = [...parts.values()].filter((p) => !setup.kit.tiers.some((t) => t.id === p.id) && !setup.roofHosts.some((h) => h.id === p.id));
+        const unused = [...parts.values()].filter((p) => !setup.kit.tiers.some((t) => t.id === p.id) && !setup.kit.roofs.some((h) => h.id === p.id));
         for (const p of unused) scene.add(prism(p.ring, p.minHeightM, p.heightM, front?.hex ?? "#9a5240"));
         const chunk = buildKitChunk(kitGeometry(setup.kit, parts), { plain: 0, flat: 0, slope: 0 });
         const geometry = new THREE.BufferGeometry(), pos = new Float32Array(chunk.vertexCount * 3), col = new Float32Array(chunk.vertexCount * 3);
