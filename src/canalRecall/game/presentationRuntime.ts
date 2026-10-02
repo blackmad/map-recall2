@@ -745,7 +745,7 @@ export class GamePresentationRuntime {
     const surface = window.CanalRecallUi.hudSurface;
     // Bare text over the map was unreadable on white streets; this is the same
     // navy plate as every other readout, sized to the line.
-    const text = '?  help   ·   G  settings   ·   M  map   ·   O  north   ·   D  labels   ·   P  pause';
+    const text = '?  help   ·   G  settings   ·   M  map   ·   O  north   ·   D  labels   ·   B  buildings   ·   P  pause';
     ctx.save();
     ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
     ctx.font = `600 11px ${surface.fontMono}`;

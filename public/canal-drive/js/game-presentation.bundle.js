@@ -1142,7 +1142,7 @@
       const ctx = this.ctx;
       const rect = this._hudRects().controlsHint;
       const surface = window.CanalRecallUi.hudSurface;
-      const text = "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   D  labels   \xB7   P  pause";
+      const text = "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   D  labels   \xB7   B  buildings   \xB7   P  pause";
       ctx.save();
       ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
       ctx.font = `600 11px ${surface.fontMono}`;

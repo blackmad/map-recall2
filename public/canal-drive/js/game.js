@@ -384,6 +384,7 @@ class Game {
     }
     if (this.input.wasPressed('KeyN')) { this._setSoundEnabled(this.sound.muted); this._savePreferences(); }
     if (this.input.wasPressed('KeyD')) this.vectorMap.toggleLabels();
+    if (this.input.wasPressed('KeyB')) this._cycleBuildingLook();
     if (this.input.wasPressed('KeyW')) this._openLandmarkArticle();
     this._handleChoiceShortcut();
     if (this.input.wasPressed('Backquote')) this._toggleDebug();
