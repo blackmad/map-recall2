@@ -264,6 +264,7 @@
     {
       // Tower 87 m: brick base, stone clock stage, octagonal stone and lead stages, lantern, crown.
       name: "Westerkerk",
+      wall: { plain: true, hex: "#8a4b38" },
       tiers: [
         { id: "w751083599", shape: "square", mat: "brick" },
         { id: "w751083598", shape: "square", mat: "stone", clocks: true },
@@ -282,6 +283,7 @@
     {
       // The tower is 80 m; OSM stops at 30, so the octagonal stage, lantern and needle spire are stacked on.
       name: "Zuiderkerk",
+      wall: { plain: true, hex: "#8a4b38" },
       tiers: [{ id: "w749385556", shape: "square", mat: "brick" }],
       stacks: [{ onId: "w749385556", stages: [
         { shape: "octagon", w0: 9, w1: 7.4, h: 14, mat: "stone" },
@@ -310,6 +312,7 @@
     {
       // A Greek cross: two naves crossing, a small turret and spire above the crossing.
       name: "Noorderkerk",
+      wall: { plain: true, hex: "#8f5a40" },
       tiers: [
         { id: "w749871263", shape: "octagon", mat: "white" },
         { id: "w749871262", shape: "octagon", mat: "lead" }
@@ -320,6 +323,7 @@
     {
       // The cupola 51 m up: stone drum, copper dome, lantern, gilt ship weathervane.
       name: "Royal Palace",
+      wall: { plain: false, style: "canal", hex: "#cdc2a8" },
       tiers: [{ id: "w748659171", shape: "octagon", mat: "white", z1: 40, columns: 8 }],
       stacks: [{ onId: "w748659171", startZ: 40, stages: [
         { shape: "octagon", w0: 9.6, w1: 8.8, h: 1.4, mat: "copper" },
@@ -334,7 +338,7 @@
   ];
   var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id)]));
   var KIT_HIDE_IDS = [...new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId)]))];
-  var KIT_ROOF = new Map(KITS.flatMap((k) => k.roofs.map((r) => [r.id, r])));
+  var KIT_ROOF = new Map(KITS.flatMap((k) => k.roofs.map((r) => [r.id, { roof: r, wall: k.wall }])));
   var sub2 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
   var cross2 = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
   var dot2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
@@ -573,6 +577,15 @@
       g.rotateX(-Math.PI / 2);
       g.translate(0, c.min, 0);
       scene.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: "#b9b2a4" })));
+    }
+    for (const roof of kit.roofs) {
+      const part = parts.get(roof.id);
+      if (!part) continue;
+      const shape = new THREE.Shape(part.ring.map(([x, y]) => new THREE.Vector2(x, y)));
+      const g = new THREE.ExtrudeGeometry(shape, { depth: Math.max(0.5, part.heightM - roof.riseM - part.minHeightM), bevelEnabled: false });
+      g.rotateX(-Math.PI / 2);
+      g.translate(0, part.minHeightM, 0);
+      scene.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: kit.wall?.hex ?? "#9a5240" })));
     }
     const ground = new THREE.Mesh(new THREE.PlaneGeometry(500, 500).rotateX(-Math.PI / 2), new THREE.MeshLambertMaterial({ color: "#ddd7c6" }));
     ground.position.y = -0.05;

@@ -57,6 +57,14 @@ async function loadTile(x: number, y: number): Promise<any[]> {
     g.rotateX(-Math.PI / 2); g.translate(0, c.min, 0);
     scene.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: '#b9b2a4' })));
   }
+  // Roof hosts: in the game their walls come from the plain building layer; here draw them to the eaves.
+  for (const roof of kit.roofs) {
+    const part = parts.get(roof.id); if (!part) continue;
+    const shape = new THREE.Shape(part.ring.map(([x, y]: [number, number]) => new THREE.Vector2(x, y)));
+    const g = new THREE.ExtrudeGeometry(shape, { depth: Math.max(0.5, part.heightM - roof.riseM - part.minHeightM), bevelEnabled: false });
+    g.rotateX(-Math.PI / 2); g.translate(0, part.minHeightM, 0);
+    scene.add(new THREE.Mesh(g, new THREE.MeshLambertMaterial({ color: kit.wall?.hex ?? '#9a5240' })));
+  }
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(500, 500).rotateX(-Math.PI / 2), new THREE.MeshLambertMaterial({ color: '#ddd7c6' }));
   ground.position.y = -0.05; scene.add(ground);
   let top = 0; for (const p of parts.values()) top = Math.max(top, p.heightM);
