@@ -2,7 +2,7 @@
 // looks (the per-bay drawing lives in `bayTextures.ts`, from the standalone
 // rendering spike). The spike builds one mesh per variant; here the variants
 // are a small fixed set so they fit one texture array and one draw per tile:
-// 8 building styles x 4 bay kinds = 32 layers.
+// 10 building styles x 4 bay kinds, plus 7 shopfronts per archetype = 68 layers.
 
 import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look, type ShopKind } from './bayTextures.js';
 import { hashSeed } from './wallBays.js';
@@ -14,11 +14,17 @@ type BayStyle = Omit<BayVariant, 'kind' | 'archetype'>;
 
 /** Curated building styles per archetype (window count, head shape, shutters, painted frames). */
 export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
+  // Canal houses: tall white-framed sashes under flat lintels; shutters only beside ground-floor windows.
   canal: [
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
     { windows: 2, shape: 'rect', shutters: true, paintedFrames: false },
     { windows: 3, shape: 'rect', shutters: false, paintedFrames: true },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: true },
+  ],
+  // 1860-1914: segmental-arched windows under stucco hoods, string courses at every floor.
+  c19: [
     { windows: 2, shape: 'arch', shutters: false, paintedFrames: false },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
   ],
   school: [
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
@@ -42,7 +48,7 @@ export const bayLayer = (archetype: Archetype, style: number, kind: (typeof BAY_
   BAY_ENTRIES.find(e => e.archetype === archetype && e.style === (isShopKind(kind) ? 0 : style) && e.kind === kind)!.layer;
 
 /** The layout style (cell dimensions) each archetype uses. */
-export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal', school: 'school', modern: 'modern' };
+export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal', c19: 'c19', school: 'school', modern: 'modern' };
 
 /**
  * Wall colours for the photo look: the real Amsterdam range (red and orange

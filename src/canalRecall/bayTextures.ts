@@ -14,7 +14,8 @@ export const STOREY_PX = 310;
 export const GROUND_PX = 340;
 
 export type Look = 'photo' | 'storybook' | 'cartoon';
-export type Archetype = 'canal' | 'school' | 'modern';
+/** Bay drawing families: canal house (before 1860), 19th century (1860-1914), Amsterdam School (1915-44), modern (1945 on, ribbon windows). */
+export type Archetype = 'canal' | 'c19' | 'school' | 'modern';
 export type BayKind = 'plain' | 'groundDoor' | 'groundShop' | 'shopCafe' | 'shopWindow' | 'shopBar' | 'shopDeli' | 'shopFlorist' | 'shopBike' | 'ground' | 'upper' | 'upperTall' | 'attic';
 export const SHOP_KINDS = ['groundShop', 'shopCafe', 'shopWindow', 'shopBar', 'shopDeli', 'shopFlorist', 'shopBike'] as const;
 export type ShopKind = (typeof SHOP_KINDS)[number];
@@ -51,17 +52,23 @@ export const PALETTES: Record<Look, Record<Archetype, { walls: string[]; accents
   cartoon: {
     canal: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
       accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
+    c19: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
+      accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
     school: { walls: ['#9c5a42', '#8a4b3a', '#a8664c', '#7a4a40'], accents: ['#2c4a7c', '#2a8c8c', '#e0a526'] },
     modern: { walls: ['#f4efe6', '#dcdcd6', '#e9d9c0', '#b9c4cc', '#f0c9a9'], accents: ['#2a8c8c', '#d9453d', '#2c4a7c', '#e0a526'] },
   },
   storybook: {
     canal: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
       accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
+    c19: { walls: ['#d9674a', '#e58a5c', '#eab85f', '#f0dfb8', '#e5a396', '#9dbb9b', '#7ea3c2', '#c9714a', '#f2c14e', '#b9a1c9'],
+      accents: ['#2a8c8c', '#e0a526', '#d9453d', '#2c4a7c', '#7a3b6e', '#2f6b45', '#4aa3d9'] },
     school: { walls: ['#9c5a42', '#8a4b3a', '#a8664c', '#7a4a40'], accents: ['#2c4a7c', '#2a8c8c', '#e0a526'] },
     modern: { walls: ['#f4efe6', '#dcdcd6', '#e9d9c0', '#b9c4cc', '#f0c9a9'], accents: ['#2a8c8c', '#d9453d', '#2c4a7c', '#e0a526'] },
   },
   photo: {
     canal: { walls: ['#ffffff', '#f2d9c8', '#d9b9a4', '#e6c9b0', '#c9a38c', '#f0e4d2', '#ffd9b0', '#e8c0b0', '#d0c8c0'],
+      accents: ['#243a2f', '#1f2a3a', '#3a1f1c', '#222222', '#2f4a3c', '#6b2b2b', '#2c3e50'] },
+    c19: { walls: ['#ffffff', '#f2d9c8', '#d9b9a4', '#e6c9b0', '#c9a38c', '#f0e4d2', '#ffd9b0', '#e8c0b0', '#d0c8c0'],
       accents: ['#243a2f', '#1f2a3a', '#3a1f1c', '#222222', '#2f4a3c', '#6b2b2b', '#2c3e50'] },
     school: { walls: ['#b89080', '#a88070', '#9c7868'], accents: ['#1f2a3a', '#243a2f', '#3a1f1c'] },
     modern: { walls: ['#f2f2ee', '#d8d8d2', '#e8dcc8', '#c8d0d4'], accents: ['#2c3e50', '#6b2b2b', '#243a2f'] },
@@ -76,10 +83,11 @@ export function paletteFor(seed: string, archetype: Archetype, look: Look): { wa
 
 /** Period by construction year when known; otherwise a seeded mix weighted to the canal belt. */
 export function archetypeFor(seed: string, year: number | null, heightM: number): Archetype {
-  if (year !== null && year > 1700 && year < 2100) return year >= 1985 ? 'modern' : year >= 1915 && year < 1945 ? 'school' : 'canal';
+  // The same periods as `facadeStyleFor`: 1860-1914 and post-war blocks no longer draw as canal houses.
+  if (year !== null && year > 1500 && year < 2100) return year < 1860 ? 'canal' : year < 1915 ? 'c19' : year < 1945 ? 'school' : 'modern';
   if (heightM >= 28) return 'modern';
   const r = (hashSeed(seed + ':a') >>> 3) % 100;
-  return r < 14 ? 'modern' : r < 32 ? 'school' : 'canal';
+  return r < 14 ? 'modern' : r < 30 ? 'school' : r < 62 ? 'c19' : 'canal';
 }
 
 type Pass = 'colour' | 'mask';
@@ -134,7 +142,8 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   const topR = shape === 'arch' ? w / 2 : shape === 'round' ? 18 : 6;
   const outline = () => { if (cartoon) { p.stroke(OUTLINE, line); ctx.lineJoin = 'round'; ctx.stroke(); } };
   const shutterColour = '#ffffff';
-  if (v.shutters && v.archetype === 'canal') {
+  // Shutters belong to a canal house's ground floor; on every storey they read as New England (user screenshots 2026-10-02).
+  if (v.shutters && v.archetype === 'canal' && (v.kind === 'ground' || v.kind === 'groundDoor')) {
     for (const sx of [x - w * 0.46, x + w * 1.06]) {
       p.fill('accent', shutterColour); p.rr(sx, y + 4, w * 0.4, h - 8, 5); ctx.fill(); outline();
       p.shade(() => { ctx.strokeStyle = 'rgba(0,0,0,0.30)'; ctx.lineWidth = 2; for (let ly = y + 18; ly < y + h - 12; ly += 15) { ctx.beginPath(); ctx.moveTo(sx + 5, ly); ctx.lineTo(sx + w * 0.4 - 5, ly); ctx.stroke(); } });
@@ -349,6 +358,7 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
     else if (v.kind === 'groundDoor') { doorAt(p, w * 0.14, h - 24, v); layoutWindows(p, { ...v, windows: 1 }, w * 1.28, 76, 150); }
     else layoutWindows(p, v, w, 70, 150);
     if (v.archetype === 'school') { p.fill('ink', p.cartoon ? '#fff1cf' : '#c9c1ae'); ctx.fillRect(0, h - 70, w, 8); }
+    if (v.archetype === 'c19') { p.fill('ink', p.stone); ctx.fillRect(0, 0, w, 12); }
   } else {
     const [y, wh] = v.kind === 'upperTall' ? [26, 250] : v.kind === 'attic' ? [96, 118] : [62, 188];
     if (v.archetype === 'school') {
@@ -356,6 +366,14 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
       p.fill('ink', p.cartoon ? '#fff1cf' : '#c9c1ae'); ctx.fillRect(0, 0, w, 16); ctx.fillRect(0, h - 10, w, 10);
       for (const cx of [0.3, 0.7]) { windowAt(p, w * cx - 38, y + 6, 76, wh - 8, { ...v, shape: 'rect', shutters: false }); }
     } else layoutWindows(p, v, w, y, wh);
+    if (v.archetype === 'c19') {
+      // White stucco string course at the floor line and a sill band: the 19th-century street's horizontal lines.
+      p.fill('ink', p.stone); ctx.fillRect(0, h - 12, w, 12); ctx.fillRect(0, y + wh + 4, w, 7);
+      if (p.cartoon) { p.stroke(OUTLINE, p.lineW * 0.5); ctx.strokeRect(0, h - 12, w, 12); }
+    } else if (v.archetype === 'canal' && v.kind !== 'attic') {
+      // A pale cornice line under each canal-house floor, the white trim the streets show.
+      p.fill('ink', p.stone); ctx.fillRect(0, h - 7, w, 7);
+    }
     if (v.kind === 'upperTall' && v.archetype === 'canal') {
       // French-window balustrade across the bay.
       p.fill('ink', p.cartoon ? '#fffaf0' : '#2b2b2b'); ctx.fillRect(w * 0.1, y + wh - 40, w * 0.8, 6);

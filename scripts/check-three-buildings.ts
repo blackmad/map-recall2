@@ -429,4 +429,16 @@ for (const c of [0.64, 1.4]) {
   }
   assert.ok(ground > 0 && other > 0);
 }
+
+{
+  // Bay archetypes follow the facade periods: a 1890 Jordaan block is 19th century, a 1965 slab is modern, not canal houses.
+  const { archetypeFor } = await import('../src/canalRecall/bayTextures.ts');
+  const { BAY_LAYER_COUNT, BAY_STYLES } = await import('../src/canalRecall/bayLook.ts');
+  assert.equal(archetypeFor('x', 1650, 15), 'canal');
+  assert.equal(archetypeFor('x', 1890, 15), 'c19');
+  assert.equal(archetypeFor('x', 1925, 15), 'school');
+  assert.equal(archetypeFor('x', 1965, 15), 'modern');
+  assert.ok(BAY_STYLES.canal.every(s => s.shape === 'rect'), 'canal houses have flat lintels; arched hoods are 19th century');
+  assert.ok(BAY_LAYER_COUNT < 200, 'bay layers fit the byte layer index with room for roofs');
+}
 console.log('three buildings: ok');

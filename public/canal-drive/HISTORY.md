@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Bay drawings: a 19th-century family, no upper-floor shutters, white trim
+
+From the user's Da Costakade screenshots (2026-10-02, "looks New England"): the Photo/Storybook/Cartoon bays had three families (canal, school, modern), so 1860-1914 and post-war buildings drew as canal houses, with arched keystone hoods and dark shutters on every floor. Now `archetypeFor` follows the facade periods (canal before 1860, `c19` to 1914, school to 1944, modern after; unknown years still hash, weighted to c19 and canal). The new `c19` family has segmental-arched windows under stucco hoods and white string courses at every floor and sill; canal houses have flat lintels only, a pale cornice line under each floor, and shutters only beside ground-floor windows. 68 bay layers (was 53), so the bay texture array grows by about a quarter. Pinned in `test:three-buildings`.
+
 ## Shop ground floors painted to the pavement, in ten colours
 
 User (2026-10-02, café corner screenshot): "the white bit should go to the ground because that's the paint color of the bottom floor? also maybe we have it able to come in different colors?" The bay looks' shopfronts stopped at a frame 8 px above a 24 px dark brick plinth. Now a shop bay is one painted surface from fascia to pavement (`paintedGround` in `bayTextures.ts`, drawn on the wall tint channel, plinth dropped for shops), and its frames and muntins share that paint. The mesh tints shop bays with the building's `groundHex` (`GROUND_PAINTS` in `bayLook.ts`: per look, half white or cream, then black, dark green, oxblood, navy, grey); doors and upper floors keep the wall colour. Pinned in `test:three-buildings`. Shots: `kinkerstraat-shops` (photo) and `da-costa-akitsu-e` (cartoon) in `facade-trees-look.spec.ts`.
