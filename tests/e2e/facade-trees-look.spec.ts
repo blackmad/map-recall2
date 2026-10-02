@@ -65,7 +65,7 @@ for (const look of [{ name: 'old', facades: false, trees: false, three: false as
         await page.waitForTimeout(view === 'chase' ? 7000 : 3500);
         await parkAt(page, spot.at, spot.face, view);
         await page.waitForTimeout(800);
-        await page.waitForFunction(() => { const t = (window as any).canalRecallGame.vectorMap._threeBuildings; return !t || t.stats().buildings > 3000; }, null, { timeout: 30_000 }).catch(() => {});
+        await page.waitForFunction(() => { const vm = (window as any).canalRecallGame.vectorMap, t = vm._threeBuildings; if (t && t.stats().buildings <= 3000) { const c = vm.map.getCenter(); vm.map.jumpTo({ center: [c.lng + 1e-6, c.lat] }); } return !t || t.stats().buildings > 3000; }, null, { timeout: 75_000, polling: 1000 }).catch(() => {});
         await page.waitForTimeout(1500);
         const file = `${OUT}/${spot.name}-${view}-${testInfo.project.name}-${look.name}.png`;
         await page.screenshot({ path: file });
