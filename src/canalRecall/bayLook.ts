@@ -42,12 +42,24 @@ export const bayLayer = (archetype: Archetype, style: number, kind: (typeof BAY_
 /** The layout style (cell dimensions) each archetype uses. */
 export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal', school: 'school', modern: 'modern' };
 
+/**
+ * Wall colours for the photo look: the real Amsterdam range (red and orange
+ * brick, grey-brown, buff, a little limewash), with weights so reds dominate
+ * the way they do on the streets. The spike's palette was pastel, which over
+ * the dark brick photo came out as one chocolate wall.
+ */
+const PHOTO_WALLS = ['#b05a40', '#b05a40', '#a24d38', '#bd6a45', '#9a5846', '#8c5a48', '#c58b5e', '#d3b184', '#a8766a', '#7f6258', '#d9c5a4'];
+/** Wall colours for the cartoon look, widened beyond the spike's mostly-terracotta mix. */
+const CARTOON_WALLS = ['#e0694b', '#eba05d', '#f0c35a', '#f3e2bb', '#e8a99b', '#9fc09f', '#7fa7c6', '#cf7c52', '#bda5cf', '#e3856a', '#8fb8b0', '#f0b48a'];
+
 /** Everything the mesh builder needs from a feature for a bay look. */
 export function bayLookFor(id: string, year: number | null, heightM: number, look: Look) {
   const archetype = archetypeFor(id, year, heightM);
   const h = hashSeed(id), style = (h >>> 4) % BAY_STYLES[archetype].length;
   const shop = (h >>> 13) % 4 === 0;
   const palette = paletteFor(id, archetype, look);
+  const walls = look === 'photo' ? PHOTO_WALLS : archetype === 'canal' && look === 'cartoon' ? CARTOON_WALLS : null;
+  if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
   return {
     archetype, layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: palette.accent,
     layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop ? 'groundShop' : 'ground'), door: bayLayer(archetype, style, 'groundDoor') },

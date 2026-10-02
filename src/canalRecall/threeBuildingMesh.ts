@@ -159,7 +159,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin): 
     const [r, g, bl] = parseHex(b.wallHex);
     const variant = Math.floor(hash01(`${b.id}:look`) * CELL_VARIANTS);
     const accent = parseHex(b.accentHex ?? '#ffffff');
-    const jitter = 0.94 + hash01(`${b.id}:tone`) * 0.12;
+    const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2;
     let walls = 0;
     for (const e of edges) {
       if (hiddenByNeighbour(e, b)) continue;
