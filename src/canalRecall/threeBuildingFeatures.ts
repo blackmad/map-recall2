@@ -8,6 +8,7 @@ import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
 import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
+import { SUPERMARKET_CHAINS } from './shopfronts.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes. */
 export type BuildingLook = 'procedural' | 'untextured' | Look;
@@ -69,6 +70,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
   if (building.shopfront && typeof p.shopColour === 'string') building.accentHex = p.shopColour;
   // A hand-modelled front (frontCarrier) replaces the generated signature.
   if (building.shopfront && Array.isArray(p.shopSignature) && !p.frontCarrier) building.signature = { at: p.shopSignature as [number, number], hex: typeof p.shopColour === 'string' ? p.shopColour : '#1f4d3a' };
+  // A chain supermarket: its own fascia, logo panel and brand word (shopfronts.ts SUPERMARKET_CHAINS).
+  const chain = Array.isArray(p.shopChain) ? p.shopChain as [string, number, number] : null;
+  if (building.shopfront && chain && SUPERMARKET_CHAINS[chain[0]] && !p.frontCarrier) building.chain = { at: [chain[1], chain[2]], look: SUPERMARKET_CHAINS[chain[0]] };
   if (typeof p.facade !== 'string' || !p.facadeStyle) {
     // No facade (a shed, a landmark part, a building with no style or colour): bare walls in its mapped colour.
     building.bare = true;
