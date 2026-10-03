@@ -1,0 +1,80 @@
+[
+  {
+    "id": "micropia-ledenlokalen",
+    "name": "ARTIS Micropia / Ledenlokalen",
+    "landmarkId": "extract_landmarks_1369065076",
+    "modelUrl": "./models/micropia-ledenlokalen.glb",
+    "suppressOsmIds": [
+      "w57857205",
+      "NL.IMBAG.Pand.0363100012170549"
+    ],
+    "footprint": {
+      "centre": [
+        4.91252702449228,
+        52.36671446028425
+      ],
+      "headingDegrees": 29.62256147607775,
+      "lengthMetres": 78.36566837716668,
+      "widthMetres": 30.10354919257424
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 269.37743852392225,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.9124796703067215,
+        52.3667230808103
+      ],
+      "northOffsetDegrees": 119,
+      "source": "Current 2021-updated BAG contour including both end pavilions and the built rear conservatory; stale 2014 OSM hall outline is suppressed. Published native origin retained."
+    },
+    "attribution": {
+      "title": "ARTIS Micropia / Ledenlokalen",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.rappange.nl/projecten/ledenlokalen-artis-micropia/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
+    }
+  },
+  {
+    "id": "artis-entrance",
+    "name": "ARTIS entrance gate and kiosks",
+    "landmarkId": "extract_landmarks_2001162595",
+    "modelUrl": "./models/artis-entrance.glb",
+    "suppressOsmIds": [
+      "w269020382",
+      "NL.IMBAG.Pand.0363100012181131",
+      "w269020400",
+      "NL.IMBAG.Pand.0363100012181128"
+    ],
+    "footprint": {
+      "centre": [
+        4.912695619709629,
+        52.36720632230263
+      ],
+      "headingDegrees": 28.93815525735573,
+      "lengthMetres": 20.421311223951083,
+      "widthMetres": 3.0659945811082725
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 270.06184474264427,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.912695619709629,
+        52.36720632230263
+      ],
+      "northOffsetDegrees": 119,
+      "source": "Mapped individual OSM/BAG contours, native model +X bearing 209 degrees; street front +Z bearing 299 degrees."
+    },
+    "attribution": {
+      "title": "ARTIS entrance gate and kiosks",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.monumenten.nl/monument/4103",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
+    }
+  }
+]
