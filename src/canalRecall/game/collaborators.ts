@@ -219,7 +219,7 @@ export interface VectorMap {
   /** Point building/tile fetches at the active city's extract root. */
   setExtractRoot?(path: string): void;
   sync(camera: Camera, loader: OsmLoader, canvas: HTMLCanvasElement): void;
-  setPlayerBike(player: unknown, loader: OsmLoader, visible: boolean): void;
+  setPlayerBike(player: unknown, loader: OsmLoader, visible: boolean, zoomScale?: number): void;
   setPlayerBoat(player: unknown, loader: OsmLoader, visible: boolean): void;
   setPlayerTransit?(player: unknown, loader: OsmLoader, visible: boolean, underground?: boolean): void;
   isPlayerBikeReady(): boolean;

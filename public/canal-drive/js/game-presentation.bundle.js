@@ -378,6 +378,16 @@
     };
   }
 
+  // src/canalRecall/game/vehicleZoomScale.ts
+  var VEHICLE_ZOOM_EXPONENT = 0.5;
+  var VEHICLE_ZOOM_MIN_SCALE = 0.6;
+  var VEHICLE_ZOOM_MAX_SCALE = 2.2;
+  function vehicleZoomScale(zoom, defaultZoom) {
+    if (!(zoom > 0) || !(defaultZoom > 0)) return 1;
+    const scale = (defaultZoom / zoom) ** VEHICLE_ZOOM_EXPONENT;
+    return Math.max(VEHICLE_ZOOM_MIN_SCALE, Math.min(VEHICLE_ZOOM_MAX_SCALE, scale));
+  }
+
   // src/canalRecall/game/coldOpenReview.ts
   var COLD_OPEN_ENABLED = false;
 
@@ -981,7 +991,12 @@
       const byBoat = isBoat(this.travelMode);
       const byTransit = isTransit(this.travelMode);
       const showBike = !byBoat && !byTransit;
-      this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike);
+      this.vectorMap.setPlayerBike(
+        player,
+        this.osmLoader,
+        pitched && showBike,
+        vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom)
+      );
       this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
       if (typeof this.vectorMap.setPlayerTransit === "function") {
         let underground = false;
@@ -1223,7 +1238,11 @@
       this.hud.paperCard(ctx, plate, { radius: 9 });
       ctx.fillStyle = surface.inkMuted;
       ctx.textAlign = "center";
-      ctx.fillText(text, plate.x + plate.width / 2, plate.y + 15);
+      ctx.textBaseline = "alphabetic";
+      const ink = ctx.measureText(text);
+      const ascent = ink.actualBoundingBoxAscent || 8;
+      const descent = ink.actualBoundingBoxDescent || 2;
+      ctx.fillText(text, plate.x + plate.width / 2, plate.y + plate.height / 2 + (ascent - descent) / 2);
       ctx.restore();
     }
     // ---- Menu ----
