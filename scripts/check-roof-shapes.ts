@@ -236,6 +236,9 @@ for (const shape of GABLE_SHAPES) for (const [W, R] of [[5.5, 2.0], [4, 1.6], [8
   assert.equal(classifyGable('Klokgevel met vazen.'), 'bell');
   assert.equal(classifyGable('Pakhuis met tuitgevel.'), 'spout');
   assert.equal(classifyGable('Pand vanwege de zandstenen attiek.'), 'cornice');
+  assert.equal(classifyGable('Pand met gevel (XVIII) onder klokvormige top met rollagen.'), 'bell', 'register no. 5114');
+  assert.equal(classifyGable('Pand met gevel onder rechte klossenlijst (XIX A).'), 'cornice', 'register no. 836');
+  assert.equal(classifyGable('Pand met gevel, risaliet vormend, onder rechte lijst waarop gebogen fronton (1776).'), 'cornice', 'register no. 2791');
   assert.equal(classifyGable('Woonhuis, gepleisterd.'), null);
   const rect = fitRect(rectPts(6, 14))!;
   for (const shape of GABLE_SHAPES) for (let i = 0; i < 50; i++) {
