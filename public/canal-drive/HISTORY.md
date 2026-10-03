@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## Enter rides on without a reload; the bike follows zoom halfway
+
+User (2026-10-03): "why does hitting enter at the end of route reload the whole game? shouldn't we be loaded enough to just have a new destination?"
+
+- **Cause:** every ride went through `_onLocationSelected`, which re-fetched and re-parsed the whole city extract, re-projected it around the new pair's midpoint, reloaded every landmark file, built a new `RoadNetwork` (and so a new routing graph), then waited up to ~5 s for the map to settle behind the loading screen. Measured in the cloud browser: 15.5 s from Enter to riding.
+- **Now:** the first load remembers its network (`_loadedWorld`: city, mode, projection centre, segments, track). A later ride in the same city and mode keeps that projection, moves the track's ends (`setEndpoints`; the graph and grid stay cached) and starts the start flight straight from the finish card, with no loading screen: 0.2-0.3 s. Transit still reloads, because its legs rewrite the track's finish. The ride's best-time key and share link are still named by the pair's midpoint, so they match a fresh load. Pinned in `next-route.spec.ts` (racing in the same call, same track, player at the new start).
+- **Bike size:** the chase bike is a world-space piece, so zooming in made it fill the street (user screenshot, Marnixstraat). `vehicleZoomScale.ts` gives back half of the zoom, `(defaultZoom / zoom)^0.5` clamped to 0.6-2.2: at 150% it reads 1.5x rather than 2.3x, at 40% it stays visible, and at the window's default zoom nothing changes.
+- **Keyboard hint plate:** the line sat low in its plate (fixed alphabetic offset); it now centres on the measured ink.
+
 ## Map Recall: folded answer card and a layered postcard
 
 User (2026-10-02, with a screenshot of Nieuwmarktbuurt): the postcard "pops in too late" and the answer card "takes up too much of my screen so I don't get confirmation of where the hood was". Cause of the delay: `PostcardHeader` composed the large-letter postcard at reveal, after a dynamic import of the compositor, the Archivo Black outline font and `Promise.all` over up to eight Commons thumbnails, so the slowest photo gated it, then drew the warped letters (70-240 ms a paint here). Measured over seeded rounds: 1.3-12 s from Confirm to postcard, 1.3-3 s even with every photo on local disk.

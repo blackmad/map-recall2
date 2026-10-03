@@ -1750,8 +1750,9 @@ class VectorBasemap {
     ]) this[alias] = list.find(layer => layer.areaId === active) || list[0] || null;
   }
 
-  setPlayerBike(player, loader, visible) {
+  setPlayerBike(player, loader, visible, zoomScale = 1) {
     if (!this._playerBike || !player || !loader) return;
+    this._playerBike.zoomScale = zoomScale;
     this._playerBike.update(
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
       player.steerInput || 0, player.distancePx || 0

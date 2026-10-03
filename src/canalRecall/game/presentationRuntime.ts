@@ -33,6 +33,7 @@ import {
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan } from './introFlight';
+import { vehicleZoomScale } from './vehicleZoomScale';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
@@ -487,7 +488,8 @@ export class GamePresentationRuntime {
     const byBoat = isBoat(this.travelMode);
     const byTransit = isTransit(this.travelMode);
     const showBike = !byBoat && !byTransit;
-    this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike);
+    this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike,
+      vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom));
     this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
     if (typeof this.vectorMap.setPlayerTransit === 'function') {
       let underground = false;
@@ -754,7 +756,13 @@ export class GamePresentationRuntime {
     this.hud.paperCard(ctx, plate, { radius: 9 });
     ctx.fillStyle = surface.inkMuted;
     ctx.textAlign = 'center';
-    ctx.fillText(text, plate.x + plate.width / 2, plate.y + 15);
+    // Centre the ink, not a guessed baseline: a fixed alphabetic offset sat
+    // the line low in the plate (user report 2026-10-03).
+    ctx.textBaseline = 'alphabetic';
+    const ink = ctx.measureText(text);
+    const ascent = ink.actualBoundingBoxAscent || 8;
+    const descent = ink.actualBoundingBoxDescent || 2;
+    ctx.fillText(text, plate.x + plate.width / 2, plate.y + plate.height / 2 + (ascent - descent) / 2);
     ctx.restore();
   }
 
