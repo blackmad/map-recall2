@@ -63,6 +63,31 @@ function getFeatureColors(type: string) {
   }
 }
 
+/**
+ * How much of the map's bottom edge the answer card covers, so the revealed answer is fitted above it.
+ * The card is in the DOM by the time the reveal effect runs; the old fixed estimate (42% of the
+ * map) remains for when it is not.
+ */
+function fitAboveResultCard(map: L.Map, bounds: L.LatLngBounds) {
+  map.fitBounds(bounds, {
+    paddingTopLeft: [70, 90],
+    paddingBottomRight: [70, resultCardPaddingPx(map)],
+    maxZoom: 16,
+    animate: true,
+  });
+}
+
+function resultCardPaddingPx(map: L.Map): number {
+  const mapHeight = map.getSize().y;
+  const card = document.querySelector<HTMLElement>('[data-result-card]');
+  if (!card?.offsetHeight) return Math.min(440, Math.max(240, Math.round(mapHeight * 0.42)));
+  // The card scrolls inside a height-capped holder; what covers the map is the holder (the card's own
+  // box is transformed while it slides in, the holder's is not).
+  const holder = card.parentElement ?? card;
+  const covered = map.getContainer().getBoundingClientRect().bottom - holder.getBoundingClientRect().top;
+  return Math.round(Math.min(mapHeight * 0.6, covered + 16));
+}
+
 export const MapComponent: React.FC<MapComponentProps> = ({
   cityCenter,
   defaultZoom,
@@ -92,6 +117,8 @@ export const MapComponent: React.FC<MapComponentProps> = ({
   const tileLayerRef = useRef<L.TileLayer | null>(null);
   const layersGroupRef = useRef<L.LayerGroup | null>(null);
   const boundaryGroupRef = useRef<L.LayerGroup | null>(null);
+  /** What the reveal fitted, so it can be fitted again when the answer card grows or shrinks. */
+  const revealBoundsRef = useRef<L.LatLngBounds | null>(null);
 
   // Initialize Map and Resize Observer
   useEffect(() => {
@@ -330,6 +357,7 @@ export const MapComponent: React.FC<MapComponentProps> = ({
     if (!map || !group) return;
 
     group.clearLayers();
+    revealBoundsRef.current = null;
 
     // 1. GAME OVER SUMMARY: Render all round traces
     if (isGameOver && allRoundResults && allRoundResults.length > 0) {
@@ -485,13 +513,8 @@ export const MapComponent: React.FC<MapComponentProps> = ({
         const revealBounds = polylinesToRender
           ? L.polyline(polylinesToRender).getBounds()
           : L.latLngBounds([currentFeature.center]);
-        const resultCardPadding = Math.min(440, Math.max(240, Math.round(map.getSize().y * 0.42)));
-        map.fitBounds(revealBounds, {
-          paddingTopLeft: [70, 90],
-          paddingBottomRight: [70, resultCardPadding],
-          maxZoom: 16,
-          animate: true,
-        });
+        revealBoundsRef.current = revealBounds;
+        fitAboveResultCard(map, revealBounds);
       }
     }
 
@@ -586,17 +609,29 @@ export const MapComponent: React.FC<MapComponentProps> = ({
           : L.latLngBounds([currentFeature.center]);
         revealBounds.extend(currentFeature.center);
         if (userPinnedLocation) revealBounds.extend(userPinnedLocation);
-        const viewportHeight = map.getSize().y;
-        const resultCardPadding = Math.min(440, Math.max(240, Math.round(viewportHeight * 0.42)));
-        map.fitBounds(revealBounds, {
-          paddingTopLeft: [70, 90],
-          paddingBottomRight: [70, resultCardPadding],
-          maxZoom: 16,
-          animate: true,
-        });
+        revealBoundsRef.current = revealBounds;
+        fitAboveResultCard(map, revealBounds);
       }
     }
   }, [gameMode, currentFeature, userPinnedLocation, isRoundComplete, distanceErrorMeters, isGameOver, allRoundResults, userLocation]);
+
+  // Opening or folding the answer card changes how much map it covers: keep the answer in view above it.
+  useEffect(() => {
+    const map = mapInstanceRef.current;
+    const card = document.querySelector<HTMLElement>('[data-result-card]');
+    if (!map || !isRoundComplete || isGameOver || !card || typeof ResizeObserver === 'undefined') return;
+    const holder = card.parentElement ?? card;
+    let lastHeight = holder.offsetHeight;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const observer = new ResizeObserver(() => {
+      if (Math.abs(holder.offsetHeight - lastHeight) < 24) return;
+      lastHeight = holder.offsetHeight;
+      clearTimeout(timer);
+      timer = setTimeout(() => { if (revealBoundsRef.current) fitAboveResultCard(map, revealBoundsRef.current); }, 120);
+    });
+    observer.observe(holder);
+    return () => { observer.disconnect(); clearTimeout(timer); };
+  }, [isRoundComplete, isGameOver, currentFeature]);
 
   const handleLocateClick = () => {
     if (onLocateUser) {

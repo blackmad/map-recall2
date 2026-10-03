@@ -1,5 +1,13 @@
 # Canal Recall — what is built
 
+## Map Recall: folded answer card and a layered postcard
+
+User (2026-10-02, with a screenshot of Nieuwmarktbuurt): the postcard "pops in too late" and the answer card "takes up too much of my screen so I don't get confirmation of where the hood was". Cause of the delay: `PostcardHeader` composed the large-letter postcard at reveal, after a dynamic import of the compositor, the Archivo Black outline font and `Promise.all` over up to eight Commons thumbnails, so the slowest photo gated it, then drew the warped letters (70-240 ms a paint here). Measured over seeded rounds: 1.3-12 s from Confirm to postcard, 1.3-3 s even with every photo on local disk.
+
+A first cut baked every postcard to WebP (66 for Amsterdam, 3.7 MB). The user preferred the photos to stay dynamic and suggested treating the letters as transparent windows the browser fills itself, prepared during the guess. That is what shipped: `drawLargeLetterPostcard(..., { photoWindows: true })` paints the card with transparent letter faces (outlines kept, later faces over earlier outlines as before), and `largeLetterPhotoWindows` gives each letter's face path, photo box, crop focus and colour filter, so `PostcardHeader` lays plain `<img>`s behind the canvas (`object-position` = the canvas's focus crop, `clip-path: path()` = the letter). `src/mapRecall/livePostcard.ts` composes the frame and requests the photos when the round starts (`usePreparePostcard` in both overlays), repaints once when the first photo (the faded backdrop) arrives, and caches the last few rounds. The frame shows at reveal whatever the network does; letters fill in as their photos load. No baked files.
+
+The answer card now opens folded (`AnswerDetails`): a postcard thumbnail, the opening line (name origin, reviewed fact, lede or history) and "More", which opens the full card; it folds again each round. The overlay holder is capped at 55dvh on desktop, and `MapComponent` fits the revealed answer above the card's measured height instead of a fixed 42% guess, refitting when the card opens or folds. Pinned in `test:postcard-images` (window geometry, photo rotation, teaser) and `map-recall-trivia.spec.ts` (folded card under 40% of the viewport, the answer's label above it, the postcard present with no photograph loaded, every window filled when they do). Storybook: Map Recall/Answer card.
+
 ## Neighbourhood cards lead with a local fact
 
 User (2026-10-02): "Buitenveldbuurt is the current Jewish neighborhood right? How can we get that in the trivia card (more generally …)". The area is Buitenveldert; en.wikipedia's lede calls it "the modern Jewish quarter of Amsterdam".

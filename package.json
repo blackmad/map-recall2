@@ -50,6 +50,7 @@
     "test:road-name-heading": "tsx scripts/check-road-name-heading.ts",
     "test:notice-cards": "tsx scripts/check-notice-cards.ts",
     "test:large-letter-postcard": "tsx scripts/check-large-letter-postcard.ts",
+    "test:postcard-images": "tsx scripts/check-postcard-images.ts",
     "test:large-letter-craft": "tsx scripts/check-large-letter-craft.ts",
     "render:large-letter-craft": "tsx scripts/render-large-letter-craft.ts",
     "test:bottom-hud": "node --experimental-strip-types scripts/check-bottom-hud-layout.ts",
