@@ -1,0 +1,31 @@
+{
+  "id": "silodam",
+  "name": "Silodam",
+  "landmarkId": "silodam",
+  "modelUrl": "./models/silodam.glb",
+  "suppressOsmIds": [
+    "w57864184",
+    "w1038324509",
+    "w1038324510",
+    "w1038324511"
+  ],
+  "footprint": {
+    "centre": [
+      4.8905845781125485,
+      52.39274079370824
+    ],
+    "headingDegrees": 164.76785231590262,
+    "lengthMetres": 65.91515774263391,
+    "widthMetres": 40.43657598726371
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "Silodam",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.mvrdv.com/projects/163/silodam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly reconstruction of the colourful ten-storey harbour block, using architectural photographs for silhouette and OpenStreetMap for measured footprint. No imported geometry or photo textures."
+  }
+}

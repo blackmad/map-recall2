@@ -28,12 +28,47 @@ export function buildCulturalLandmark(id:string,w:number,d:number,b:BuildingTool
   let ex=w*.27,rx=w*.23,rz=d*.36;ellipse(ex,0,0,rx,rz,6.5,'stone');let dome=new T.SphereGeometry(1,24,6,0,Math.PI*2,0,Math.PI/2);dome.scale(rx,3.7,rz);add(dome,'slate',ex,6.5,0);box(ex-w*.07,6.6,0,w*.2,5.4,d*.18,'stone',-.22);ellipse(ex,0,d*.25,rx*.92,rz*.49,4.2,'glass');
   for(let i=0;i<16;i++){let a=i*Math.PI*2/16;box(ex+rx*Math.cos(a),.4,rz*Math.sin(a),.15,5.8,.15,'frame');}sign('VAN GOGH',cx,12.4,rd/2+.15,.14,'dark');
  }else if(id==='stedelijk-museum'){
-  // Historic brick courtyard museum behind the raised smooth white bathtub.
-  grid(0,0,-d*.25,w*.9,16,d*.39,'brick',5.6);grid(-w*.38,0,d*.02,w*.14,14,d*.38,'brick');grid(w*.38,0,d*.02,w*.14,14,d*.38,'brick');
-  prism(0,16,-d*.25,w*.91,d*.4,5,'slate');for(let x of [-w*.38,0,w*.38]){box(x,15,-d*.25,8,6,10,'brick');hip(x,21,-d*.25,9,11,6,'slate');}
-  let length=w*.79,depth=d*.42,z=d*.23;
-  // Rounded cross-section: narrow underside, broad lip, flat recessed roof.
-  let shape=new T.Shape();shape.moveTo(-length/2,0);shape.quadraticCurveTo(-length*.54,3,-length*.49,7.5);shape.quadraticCurveTo(-length*.47,10.3,-length*.39,10.7);shape.lineTo(length*.39,10.7);shape.quadraticCurveTo(length*.52,10.3,length*.5,7.5);shape.quadraticCurveTo(length*.54,3,length/2,0);shape.closePath();add(new T.ExtrudeGeometry(shape,{depth,bevelEnabled:false,curveSegments:5}),'white',0,7,z-depth/2);box(0,17.5,z,length*.78,.12,depth*.85,'slate');box(0,6.6,z,length*1.19,.55,depth*1.32,'white');box(0,0,z,length*.65,6.6,depth*.7,'glass');for(let x of [-length*.46,length*.46])box(x,0,z,1.2,7.3,depth*.62,'white');sign('STEDELIJK',0,4.4,z+depth*.37,.22,'dark');
+  // Weissman's brick museum remains visible behind the new Museumplein wing.
+  grid(0,0,-d*.29,w*.87,15.2,d*.33,'brick',5.8);
+  for(let x of [-w*.36,w*.36]){
+   grid(x,0,-d*.005,w*.15,14.8,d*.39,'brick',4);
+   gableRoof(x,14.8,-d*.005,w*.16,d*.41,4.8,'slate');
+  }
+  gableRoof(0,15.2,-d*.29,w*.88,d*.34,5,'slate');
+  for(let x of [-w*.33,0,w*.33]){
+   box(x,13.5,-d*.33,10,7.2,11,'brick');
+   for(let y of [14,17.5,20.3])box(x,y,-d*.33,10.6,.3,11.6,'stone');
+   hip(x,20.7,-d*.33,11,12,6,'slate');
+   box(x,26.7,-d*.33,2.1,1.8,2.1,'stone');
+   hip(x,28.5,-d*.33,2.7,2.7,1.4,'slate');
+  }
+  for(let y of [1.1,4.8,8.5,12.2,14.8])box(0,y,-d*.123,w*.88,.26,.26,'stone');
+  // A tapered rounded rectangular shell: broad rim above a narrow underside.
+  // The oversized canopy is at the TOP, its uninterrupted white edge defines
+  // the building. The earlier block placed this canopy beneath the bathtub.
+  const length=w*.71,depth=d*.37,z=d*.215;
+  function outline(width:number,deep:number,r:number){
+   const out:number[][]=[];
+   for(const [cx,cz,start] of [[width/2-r,deep/2-r,0],[-width/2+r,deep/2-r,90],[-width/2+r,-deep/2+r,180],[width/2-r,-deep/2+r,270]])
+    for(let i=0;i<=5;i++){let angle=(start+i*90/5)*Math.PI/180;out.push([cx+r*Math.cos(angle),cz+r*Math.sin(angle)]);}
+   return out;
+  }
+  const levels=[{y:5.4,w:length*.82,d:depth*.67,r:4},{y:6.2,w:length*.87,d:depth*.75,r:5},{y:8.7,w:length*.95,d:depth*.9,r:6},{y:15.7,w:length,d:depth,r:6}];
+  const rings=levels.map(l=>outline(l.w,l.d,l.r));const positions:number[]=[];
+  function tri(a:number[],b:number[],c:number[]){positions.push(...a,...b,...c);}
+  for(let j=0;j<rings.length-1;j++)for(let i=0;i<rings[j].length;i++){
+   const n=(i+1)%rings[j].length,p=(k:number,l:number)=>[rings[k][l][0],levels[k].y,rings[k][l][1]+z];
+   tri(p(j,i),p(j+1,i),p(j+1,n));tri(p(j,i),p(j+1,n),p(j,n));
+  }
+  for(const j of [0,rings.length-1])for(let i=0;i<rings[j].length;i++)tri([0,levels[j].y,z],[rings[j][i][0],levels[j].y,rings[j][i][1]+z],[rings[j][(i+1)%rings[j].length][0],levels[j].y,rings[j][(i+1)%rings[j].length][1]+z]);
+  const shell=new T.BufferGeometry();shell.setAttribute('position',new T.Float32BufferAttribute(positions,3));shell.computeVertexNormals();add(shell,'white');
+  box(0,15.7,z+.8,length*1.29,.65,depth*1.28,'white');
+  box(0,16.35,z,length*.78,.12,depth*.73,'slate');
+  for(let x of [-length*.23,length*.23])box(x,16.47,z,length*.24,.8,depth*.32,'glass');
+  box(0,0,z,length*.73,5.4,depth*.68,'glass');
+  for(let x=-length*.34;x<=length*.34;x+=4.6)box(x,0,z+depth*.35,.12,5.5,.18,'frame');
+  for(let x of [-length*.56,length*.56])box(x,0,z+depth*.43,.35,15.7,.35,'frame');
+  sign('STEDELIJK',0,3.5,z+depth*.36,.22,'white');
  }else if(id==='oba-oosterdok'){
   // Rotate authored façade to the short side of this north/south plot.
   grid(0,0,0,w*.92,31,d*.92,'stone',5);
