@@ -9,6 +9,7 @@ const CARD_CITIES = EXTRACT_CITIES.map(({ id }) => id as string);
 /** What a card still lacks, so the gallery doubles as a coverage review. */
 function gaps(feature: StreetFeature): string[] {
   const out: string[] = [];
+  if (!feature.localFact) out.push('local fact');
   if (!feature.wikipediaExtract) out.push('description');
   if (!feature.history) out.push('history');
   if (!feature.nameOrigin) out.push('name');

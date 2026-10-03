@@ -2,11 +2,16 @@
  * Gather "local knowledge" candidates for neighbourhood cards into a review
  * sheet: every distinctive sentence of the area's English and Dutch articles
  * (all sections, not only lede and History), and clusters of OpenStreetMap places
- * inside its outline (synagogues, kosher shops, markets, breweries…). Nothing is published;
- * a reviewer picks one fact per area and words it, citing candidate ids, into
- * `scripts/data/area-fact-review.json` (see `src/mapRecall/areaFacts.ts`).
+ * inside its outline (synagogues, kosher shops, markets, breweries…). Mining
+ * publishes nothing: a reviewer picks one fact per area and words it, citing
+ * candidate sentences, into `scripts/data/area-fact-review.json` (see
+ * `src/mapRecall/areaFacts.ts`). `publish` then copies the picks a person
+ * approved (`approve: true`) into `neighborhood-history.json` as `localFact`,
+ * the card's lead line, after checking every cited sentence is still in its
+ * article.
  *
  *   npm run mine:area-facts -- [--only "Buitenveldert,De Pijp"] [--city amsterdam]
+ *   npm run mine:area-facts -- publish [--city amsterdam]
  *
  * Every response goes through the durable scrape store, so reruns are offline.
  */
@@ -14,7 +19,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { cityNamePattern, extractCityById } from '../src/mapRecall/cityExtracts';
 import { pointInPolygons, type Boundary } from '../src/mapRecall/neighborhoodGaps';
-import { classifyOsm, placeClusters, sentenceCandidates, type ArticleSource, type PlaceItem } from '../src/mapRecall/areaFacts';
+import { classifyOsm, placeClusters, publishableFact, sentenceCandidates, type ArticleSource, type PlaceItem, type ReviewedFact } from '../src/mapRecall/areaFacts';
 import { cachedJson } from './lib/cachedFetch';
 import { coreName, isDisambiguation, mentions, sections, sentencesOf, tidy } from './fetch-neighborhood-history';
 
@@ -119,4 +124,39 @@ async function main() {
   console.log(`${sheet.length} areas → ${file}`);
 }
 
-void main();
+const reviewPath = path.resolve(`scripts/data/area-fact-review${city.id === 'amsterdam' ? '' : `-${city.id}`}.json`);
+
+async function publish() {
+  const review: Record<string, ReviewedFact | string | null> = JSON.parse(await readFile(reviewPath, 'utf8'));
+  // Cited articles come back from the scrape store; compared as the miner saw them (tidied).
+  const texts = new Map<string, string>();
+  for (const entry of Object.values(review)) {
+    if (!entry || typeof entry === 'string') continue;
+    for (const cite of entry.cites ?? []) {
+      if (texts.has(cite.sourceUrl)) continue;
+      const url = new URL(cite.sourceUrl);
+      const p = await page(url.hostname.startsWith('nl.') ? 'nl' : 'en', decodeURIComponent(url.pathname.replace('/wiki/', '')).replace(/_/g, ' '));
+      if (p) texts.set(cite.sourceUrl, tidy(p.text));
+    }
+  }
+  const historyPath = path.join(directory, 'neighborhood-history.json');
+  const history: { version: number; generatedAt: string; neighborhoods: Array<{ name: string; localFact?: unknown }> } =
+    JSON.parse(await readFile(historyPath, 'utf8').catch(() => '{"version":1,"generatedAt":"","neighborhoods":[]}'));
+  const byName = new Map(history.neighborhoods.map(e => [e.name, e]));
+  let shipped = 0;
+  for (const [name, entry] of Object.entries(review)) {
+    if (name.startsWith('_')) continue;
+    const target = byName.get(name);
+    if (!entry || typeof entry === 'string') { if (target) delete target.localFact; continue; }
+    const { fact, problem } = publishableFact(entry, url => texts.get(url));
+    if (!fact) { if (problem !== 'not approved') console.log(`  ! ${name}: ${problem}`); continue; }
+    if (target) target.localFact = fact;
+    else { const created = { name, localFact: fact }; history.neighborhoods.push(created); byName.set(name, created); }
+    shipped++;
+  }
+  history.generatedAt = new Date().toISOString();
+  await writeFile(historyPath, `${JSON.stringify(history, null, 1)}\n`);
+  console.log(`${shipped} local facts → ${historyPath}`);
+}
+
+void (process.argv[2] === 'publish' ? publish() : main());
