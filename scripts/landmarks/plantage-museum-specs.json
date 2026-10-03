@@ -1,0 +1,79 @@
+[
+  {
+    "id": "national-holocaust-museum",
+    "name": "National Holocaust Museum",
+    "landmarkId": "extract_landmarks_1327496450",
+    "modelUrl": "./models/national-holocaust-museum.glb",
+    "suppressOsmIds": [
+      "r3604241",
+      "NL.IMBAG.Pand.0363100012165551",
+      "NL.IMBAG.Pand.0363100012247157"
+    ],
+    "footprint": {
+      "centre": [
+        4.911270057976236,
+        52.366984398405435
+      ],
+      "headingDegrees": 29.778712634106,
+      "lengthMetres": 46.683565196739146,
+      "widthMetres": 44.31436936593857
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 179.221287365894,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.911270057976236,
+        52.366984398405435
+      ],
+      "northOffsetDegrees": 29,
+      "source": "Current PDOK BAG polygon contours; surveyed plan retains courtyard holes and explicitly identified contextual nursery."
+    },
+    "attribution": {
+      "title": "National Holocaust Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.winhov.com/en/projects/national-holocaust-museum/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
+    }
+  },
+  {
+    "id": "hollandsche-schouwburg",
+    "name": "Hollandsche Schouwburg",
+    "landmarkId": "extract_landmarks_1588171596",
+    "modelUrl": "./models/hollandsche-schouwburg.glb",
+    "suppressOsmIds": [
+      "w269009084",
+      "NL.IMBAG.Pand.0363100012180950"
+    ],
+    "footprint": {
+      "centre": [
+        4.911038960823893,
+        52.36635690328413
+      ],
+      "headingDegrees": 29.417858823710475,
+      "lengthMetres": 34.30706097325767,
+      "widthMetres": 15.904390015706582
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -0.4178588237104748,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.911038960823893,
+        52.36635690328413
+      ],
+      "northOffsetDegrees": 209,
+      "source": "Current PDOK BAG polygon contours; surveyed plan retains courtyard holes and explicitly identified contextual nursery."
+    },
+    "attribution": {
+      "title": "Hollandsche Schouwburg",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.winhov.com/en/projects/national-holocaust-museum/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
+    }
+  }
+]
