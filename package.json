@@ -56,6 +56,7 @@
     "test:bottom-hud": "node --experimental-strip-types scripts/check-bottom-hud-layout.ts",
     "test:compass": "node --experimental-strip-types scripts/check-compass.ts",
     "test:intro-flight": "node --experimental-strip-types scripts/check-intro-flight.ts",
+    "test:trackpad-twist": "node --experimental-strip-types scripts/check-trackpad-twist.ts",
     "test:cycle-track": "tsx scripts/check-cycle-track.ts",
     "test:bike-access": "tsx scripts/check-bike-access.ts",
     "test:canal-answer-path": "esbuild scripts/check-canal-answer-path.ts --bundle --platform=node --format=cjs | node",
