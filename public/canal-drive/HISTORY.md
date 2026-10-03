@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Smaller churches, depot and courtyard museums: 45 models (2026-10-04)
+
+Buiksloterkerk, English Reformed Church and De Papegaai now use their measured
+plans and sourced heights. De Papegaai keeps its 4.18 m Kalverstraat frontage
+and hidden rear hall. De Hallen retains six depot roofs, transverse passage and
+courtyard, with Filmhallen and OBA De Hallen sharing the complex's model.
+Huis Bartolotti has its single broad Renaissance gable facing Herengracht.
+
+H'ART / Amstelhof and Amsterdam Museum / Burgerweeshuis preserve their actual
+courtyard polygons and street entrances. Their generic parents in current tiles
+use BAG identities, which are suppressed alongside the OSM relations. Amsterdam
+Museum's planar window infill preserves detail while reducing its GLB below the
+500 KB budget. All seven additions were reviewed in the gallery and active game,
+including correct frontage, neighboring buildings and normal roof depth.
+The asset checker now verifies manifest byte/triangle counts against decoded
+files, detecting stale metadata during concurrent model work.
+
 ## Cinema palaces, Gothic churches and nearby loading: 38 models (2026-10-04)
 
 Pathé Tuschinski and Pathé City now use original meshes aligned to their street
