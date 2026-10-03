@@ -253,6 +253,20 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
 ## P2 — Weight and reach
 
+**New-build stand-ins in the building tiles.** 3,671 OSM footprints started
+2015+ now fill holes the 3DBAG `v20250903` snapshot leaves (see HISTORY,
+2026-10-03). They are tier 4 with estimated heights: 1,995 kiosk/shed-sized at
+3.2 m, 369 from measured neighbours, 64 from OSM height or storeys, and 1,243
+at a 9.5 m default because nothing nearby was measured. Next: rebuild
+`build:lod1-city` on a newer 3DBAG so measured panden replace them
+(`npm run fill:new-build-gaps` then finds 0), and rerun the fill after each OSM
+refresh in between.
+
+**Fix BR020's name in OSM.** The game shows Vinyl Rocks through the local
+rename list (see HISTORY, 2026-10-03), but OSM node 12876814546 still says
+"Br020". Once someone edits it upstream, the next POI build prints the entry
+as unused; then delete it from `src/canalRecall/poiRenames.ts`.
+
 **Municipal trivia beyond street names.** Monument status, architect, years
 and function now reach clicked buildings (see HISTORY, 2026-09-30). Still open:
 - the register's public descriptions (`redengevendeOmschrijvingPubliek`,
