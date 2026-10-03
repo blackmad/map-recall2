@@ -110,7 +110,7 @@ const CROWN: Stage[] = [
   { shape: 'octagon', w0: 0.9, w1: 0, h: 1.8, mat: 'gold' },
 ];
 
-const HAND_KITS: Kit[] = [
+export const HAND_KITS: Kit[] = [
   {
     // Tower 87 m: brick base, stone clock stage, octagonal stone and lead stages, lantern, crown.
     name: 'Westerkerk',
@@ -548,7 +548,7 @@ const HAND_KITS: Kit[] = [
   },
 ];
 
-const kitIds = (k: Kit) => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? []), ...(k.forms ?? []).map(f => f.on), ...(k.body ?? [])];
+export const kitIds = (k: Kit) => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? []), ...(k.forms ?? []).map(f => f.on), ...(k.body ?? [])];
 /** Every footprint a hand-modelled kit claims (the worship staging script leaves these to their kit). */
 export const HAND_KIT_IDS: ReadonlySet<string> = new Set(HAND_KITS.flatMap(kitIds));
 const HAND_IDS = HAND_KIT_IDS;
