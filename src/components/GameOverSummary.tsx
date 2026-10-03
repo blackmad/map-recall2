@@ -131,7 +131,7 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
         >
           <div
             id="game-over-modal"
-            className="app-dialog w-full max-w-lg p-4 sm:p-6 my-auto space-y-4 max-h-[88vh] overflow-y-auto"
+            className="app-dialog w-full max-w-lg p-4 sm:p-6 my-auto space-y-4 max-h-[88dvh] overflow-y-auto"
           >
             {/* Header Ribbon */}
             <div className="text-center space-y-1">
