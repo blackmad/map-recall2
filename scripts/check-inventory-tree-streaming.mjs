@@ -34,5 +34,8 @@ layer.rebuild();assert.equal(layer.debugTrees,4);assert.ok(layer.meshes.length<=
 assert.ok(layer.meshes.some(m=>m.geometry.type==='ConeGeometry'));
 assert.ok(layer.meshes.every(m=>m.instanceColor&&m.material.flatShading));
 for(const mesh of layer.meshes)assert.ok([...mesh.instanceMatrix.array].every(Number.isFinite));
+const geometries=[...layer.geometries.values()],materials=[...layer.materials.values()];
+layer.rebuild();assert.deepEqual([...layer.geometries.values()],geometries,'rebuild reuses shared GPU geometry');assert.deepEqual([...layer.materials.values()],materials,'rebuild reuses shader materials');
+assert.equal(layer.geometries.size,3);assert.equal(layer.materials.size,2);
 layer.clear();assert.equal(layer.meshes.length,0);
 console.log('Passed: city changes and toggle abort in-flight tiles, preserve fallback, and render mixed species in bounded instanced draws.');
