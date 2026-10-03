@@ -105,9 +105,8 @@ const harness = `<!DOCTYPE html>
 (async () => {
   const LL = window.CanalRecallLargeLetter;
   const GALLERY = ${galleryJson};
-  await document.fonts.load('400 64px "Archivo Black"');
-  await document.fonts.load('400 32px "Pacifico"');
-  const otFont = await LL.loadLargeLetterFont('/public/canal-drive/fonts/ArchivoBlack-Regular.ttf');
+  await LL.ensureLargeLetterWebFonts('/public/canal-drive/fonts/');
+  const otFont = await LL.loadLargeLetterFont('/public/canal-drive/fonts/Anton-Regular.ttf');
   async function load(src) {
     const img = new Image();
     img.src = src;

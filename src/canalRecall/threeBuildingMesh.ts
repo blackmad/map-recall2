@@ -16,6 +16,8 @@ import { edgeGroundPieces, edgeLayout, layoutRun } from './facadeLayout.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetDistance } from './streetFronts.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
+import type { ChainLook } from './shopfronts.js';
+import { wordRuns } from './blockLetters.js';
 import earcut from 'earcut';
 import { ExtraSink, EXTRA_BUDGET, roofExtras, wallExtras } from './facadeExtras.js';
 import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
@@ -44,6 +46,8 @@ export type MeshBuilding = {
    * awning in the business's colour, on the wall nearest its OSM point ([lng, lat]).
    */
   signature?: { at: [number, number]; hex: string };
+  /** A supermarket chain's own shopfront (fascia, logo panel, brand word) at its OSM point; replaces the signature. */
+  chain?: { at: [number, number]; look: ChainLook };
   /** Draw the facade extras (hoist beams, stoops, balconies, bikes, roof terraces): facadeExtras.ts. */
   extras?: boolean;
   /** Texture layer for bare wall: gable faces, chimneys, cornices. */
@@ -187,17 +191,21 @@ function lidMesh(b: MeshBuilding, origin: Origin): LidMesh | null {
   return index.length ? { xy, index } : null;
 }
 
-type SignTri = { p: [number, number, number][]; hex: string; n: [number, number, number] };
+/** `lit`: lit signage (a chain's fascia and lettering), barely dimmed on a wall facing away from the sun. */
+type SignTri = { p: [number, number, number][]; hex: string; n: [number, number, number]; lit?: boolean };
+
+/** One flat quad (corners in order) as two triangles wound to face `n`. */
+function faceTris(q: [number, number, number][], n: [number, number, number], hex: string, out: SignTri[]) {
+  const [A, B, C, D] = q, cr = (u: number[], w: number[]) => [u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]];
+  const c = cr([B[0] - A[0], B[1] - A[1], B[2] - A[2]], [C[0] - A[0], C[1] - A[1], C[2] - A[2]]);
+  const flip = c[0] * n[0] + c[1] * n[1] + c[2] * n[2] < 0;
+  out.push({ p: flip ? [A, C, B] : [A, B, C], hex, n }, { p: flip ? [A, D, C] : [A, C, D], hex, n });
+}
 
 /** Box faces (no bottom unless asked) with outward normals; frame: x along the wall, y outward, z up. */
 function boxTris(e: { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number }, a0: number, a1: number, o0: number, o1: number, z0: number, z1: number, hex: string, out: SignTri[], bottom = false) {
   const P = (a: number, o: number, z: number): [number, number, number] => [e.x0 + e.ux * a + e.nx * o, e.y0 + e.uy * a + e.ny * o, z];
-  const face = (q: [number, number, number][], n: [number, number, number]) => {
-    const [A, B, C, D] = q, cr = (u: number[], w: number[]) => [u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]];
-    const c = cr([B[0] - A[0], B[1] - A[1], B[2] - A[2]], [C[0] - A[0], C[1] - A[1], C[2] - A[2]]);
-    const flip = c[0] * n[0] + c[1] * n[1] + c[2] * n[2] < 0;
-    out.push({ p: flip ? [A, C, B] : [A, B, C], hex, n }, { p: flip ? [A, D, C] : [A, C, D], hex, n });
-  };
+  const face = (q: [number, number, number][], n: [number, number, number]) => faceTris(q, n, hex, out);
   const N = (a: number, o: number, z: number): [number, number, number] => [e.ux * a + e.nx * o, e.uy * a + e.ny * o, z];
   face([P(a0, o1, z0), P(a1, o1, z0), P(a1, o1, z1), P(a0, o1, z1)], N(0, 1, 0));
   face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o0, z1), P(a0, o0, z1)], N(0, -1, 0));
@@ -232,6 +240,52 @@ function signatureTris(sig: { at: [number, number]; hex: string }, edges: readon
   const at = along < L / 2 ? 0.6 : L - 0.6;
   boxTris(e, at - 0.04, at + 0.04, 0.05, 1.2, z + 4.3, z + 4.38, '#2a2a2a', out, true);
   boxTris(e, at - 0.07, at + 0.07, 0.25, 1.15, z + 3.45, z + 4.3, sig.hex, out, true);
+  return out;
+}
+
+/**
+ * A supermarket chain's shopfront on the street wall nearest its OSM point: a fascia board in
+ * the chain's colour across the frontage (at most 24 m of a long block) just under the first
+ * floor, a square logo panel with its inner mark at the end nearest the entrance point, and the
+ * brand word in blocky capitals on the board. Walls run CCW with the outward normal on the
+ * right of travel, so increasing distance along the wall reads left to right from the street.
+ */
+export function chainFrontTris(chain: NonNullable<MeshBuilding['chain']>, candidates: readonly Edge[], base: number, groundM: number, origin: Origin): SignTri[] {
+  const kx = mPerDegLng(origin.lat), px = (chain.at[0] - origin.lng) * kx, py = (chain.at[1] - origin.lat) * M_PER_DEG_LAT;
+  let best: Edge | null = null, bestD = Infinity;
+  for (const e of candidates) {
+    if (e.hole || e.len < 2.5) continue;
+    const dx = e.x1 - e.x0, dy = e.y1 - e.y0, t = Math.max(0, Math.min(1, ((px - e.x0) * dx + (py - e.y0) * dy) / (e.len * e.len)));
+    const d = Math.hypot(px - e.x0 - dx * t, py - e.y0 - dy * t);
+    if (d < bestD) { bestD = d; best = e; }
+  }
+  if (!best) return [];
+  const e = { x0: best.x0, y0: best.y0, ux: (best.x1 - best.x0) / best.len, uy: (best.y1 - best.y0) / best.len, nx: best.nx, ny: best.ny };
+  const L = best.len, look = chain.look, out: SignTri[] = [];
+  const along = Math.max(0, Math.min(L, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
+  const half = Math.min((L - 0.6) / 2, 12), s0 = Math.max(0.3, Math.min(L - 0.3 - 2 * half, along - half)), s1 = s0 + 2 * half;
+  const top = base + Math.max(2.6, groundM) - 0.05, bottom = top - 0.7;
+  boxTris(e, s0, s1, 0.02, 0.2, bottom, top, look.fascia, out, true);
+  // Logo panel at the end of the board nearer the entrance, standing proud of it.
+  const logoW = Math.min(1.0, (s1 - s0) * 0.3), atStart = along - s0 < s1 - along;
+  const l0 = atStart ? s0 + 0.15 : s1 - 0.15 - logoW, l1 = l0 + logoW;
+  const lc = (l0 + l1) / 2, zc = top - 0.35, m = logoW * 0.27;
+  boxTris(e, l0, l1, 0.2, 0.3, zc - logoW / 2, zc + logoW / 2, look.logo, out, true);
+  boxTris(e, lc - m, lc + m, 0.3, 0.32, zc - m, zc + m, look.mark, out);
+  // The brand word, centred on the rest of the board, as flat quads just in front of it.
+  const free0 = atStart ? l1 + 0.2 : s0 + 0.2, free1 = atStart ? s1 - 0.2 : l0 - 0.2;
+  const { runs, width } = wordRuns(look.word);
+  const cell = Math.min(0.065, (free1 - free0) / Math.max(1, width));
+  if (cell >= 0.035 && runs.length) {
+    const w0 = (free0 + free1) / 2 - (width * cell) / 2, zMid = (top + bottom) / 2, o = 0.205;
+    const n: [number, number, number] = [e.nx, e.ny, 0];
+    const P = (a: number, z: number): [number, number, number] => [e.x0 + e.ux * a + e.nx * o, e.y0 + e.uy * a + e.ny * o, z];
+    for (const r of runs) {
+      const a0 = w0 + r.c0 * cell, a1 = w0 + r.c1 * cell, z1 = zMid + (3.5 - r.row) * cell, z0 = z1 - cell;
+      faceTris([P(a0, z0), P(a1, z0), P(a1, z1), P(a0, z1)], n, look.letters, out);
+    }
+  }
+  for (const t of out) t.lit = true;
   return out;
 }
 
@@ -344,6 +398,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const cornice: RoofTri[] = [];
     const doorAllowed = doorWalls(bi);
     const paintTint = b.groundHex && b.layers ? parseHex(b.groundHex) : null;
+    let groundSeen = Infinity;
     for (const run of wallRuns(rings[bi], e => hiddenByNeighbour(e, b))) {
       const first = run[0].e;
       const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), top - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, scale, run.map(r => doorAllowed.has(r.e)));
@@ -359,6 +414,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // A shop fills its ground floor; only a wide front keeps a separate door to the floors above.
       if (b.shopfront && layout.bays < 3) layout.doorBays.length = 0;
       const bw = layout.bayWidthM, groundTop = base + layout.groundM;
+      groundSeen = Math.min(groundSeen, layout.groundM);
       run.forEach(({ e }, k) => {
         walls++;
         const s = layout.edgeStartM[k];
@@ -389,6 +445,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const lid = walled && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
     // Walls mode carries the signature storefront; extras mode only the extras.
     const sign: SignTri[] = walled && b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [];
+    // A chain supermarket's fascia goes on a street wall (else any exposed wall) nearest its point.
+    if (walled && b.chain && b.lid) {
+      const exposed = edges.filter(e => !e.hole && !hiddenByNeighbour(e, b));
+      const street = exposed.filter(e => doorAllowed.has(e));
+      sign.push(...chainFrontTris(b.chain, street.length ? street : exposed.length ? exposed : edges, b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin));
+    }
     if (extraSink) {
       // Roof extras on a flat roof only (a pitched roof has its own chimneys and dormers).
       if (!b.roof || b.roof.plan.kind === 'parapet') {
@@ -469,7 +531,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     }
     for (const t of sign) {
       // Signature storefront boxes: flat colour on the flat layer, shaded by facing.
-      const shade = Math.max(0.55, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
+      const shade = Math.max(t.lit ? 0.9 : 0.55, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
       const [sr, sg, sb] = parseHex(t.hex);
       for (const q of t.p) {
         positions[v * 3] = q[0]; positions[v * 3 + 1] = q[1]; positions[v * 3 + 2] = q[2];

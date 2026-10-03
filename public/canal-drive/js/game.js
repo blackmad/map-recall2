@@ -310,11 +310,11 @@ class Game {
     // A phone shows a narrower strip of city than a 1280 px window, so the
     // default zoom would frame far less of the route. Scale it to keep roughly
     // the same span of Amsterdam on screen.
-    if (!this._zoomTouchedByPlayer) {
-      this.camera.zoom = clamp(
-        CAMERA_ZOOM_INITIAL * (viewport.width / 1280),
-        this.camera.minZoom, this.camera.maxZoom);
-    }
+    // The chase bike is sized for this zoom; see vehicleZoomScale.ts.
+    this._defaultZoom = clamp(
+      CAMERA_ZOOM_INITIAL * (viewport.width / 1280),
+      this.camera.minZoom, this.camera.maxZoom);
+    if (!this._zoomTouchedByPlayer) this.camera.zoom = this._defaultZoom;
   }
 
   _loop(timestamp) {

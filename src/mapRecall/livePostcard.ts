@@ -15,7 +15,6 @@ import type { LargeLetterPhotoWindows } from '../canalRecall/largeLetterPostcard
 
 const WIDTH = 640;
 const HEIGHT = 400;
-const FONT_FAMILY = 'Archivo Black';
 
 export interface PreparedPostcard {
   width: number;
@@ -24,19 +23,18 @@ export interface PreparedPostcard {
   windows: LargeLetterPhotoWindows;
   /** The card with transparent letter faces; repainted once when the backdrop photograph arrives. */
   frame: HTMLCanvasElement;
+  /** The SVG `<filter>` the letter photographs' CSS filter references (windows.filter). */
+  paintFilterSvg: string;
+  /** Print grain for an `overlay` layer over the whole card (shared by every postcard). */
+  grain: HTMLCanvasElement;
   /** Called after each repaint of `frame`; returns an unsubscribe. */
   onRepaint(listener: () => void): () => void;
 }
 
-const prepared = new Map<string, Promise<PreparedPostcard | null>>();
-let fontsPromise: Promise<unknown> | null = null;
+let grainCanvas: HTMLCanvasElement | null = null;
 
-/** The Archivo Black webfont (index.html links it) and Pacifico for the greeting where a page declares it. */
-function loadWebFonts(): Promise<unknown> {
-  fontsPromise ??= Promise.all([`400 64px "${FONT_FAMILY}"`, '400 32px "Pacifico"']
-    .map((font) => document.fonts?.load(font).catch(() => undefined)));
-  return fontsPromise;
-}
+const prepared = new Map<string, Promise<PreparedPostcard | null>>();
+
 
 function loadImage(src: string): Promise<HTMLImageElement | null> {
   return new Promise((resolve) => {
@@ -69,8 +67,9 @@ export function preparePostcard(name: string, cityName: string | undefined, phot
 async function compose(name: string, cityName: string | undefined, photos: readonly string[]): Promise<PreparedPostcard | null> {
   const backdrop = photos.length ? loadImage(photos[0]) : Promise.resolve(null);
   for (const url of photos.slice(1)) void loadImage(url);
-  const [postcard] = await Promise.all([import('../canalRecall/largeLetterPostcard'), loadWebFonts()]);
-  const font = await postcard.loadLargeLetterFont(`${import.meta.env.BASE_URL}canal-drive/fonts/ArchivoBlack-Regular.ttf`);
+  const fonts = `${import.meta.env.BASE_URL}canal-drive/fonts/`;
+  const postcard = await import('../canalRecall/largeLetterPostcard');
+  const [font] = await Promise.all([postcard.loadLargeLetterFont(`${fonts}Anton-Regular.ttf`), postcard.ensureLargeLetterWebFonts(fonts)]);
   const frame = document.createElement('canvas');
   const ctx = frame.getContext('2d');
   if (!ctx) return null;
@@ -97,6 +96,15 @@ async function compose(name: string, cityName: string | undefined, photos: reado
     photos,
     windows: postcard.largeLetterPhotoWindows(layout, photos.length, font),
     frame,
+    paintFilterSvg: postcard.POSTCARD_PAINT_FILTER_SVG,
+    grain: grainCanvas ??= (() => {
+      const canvas = document.createElement('canvas');
+      canvas.width = WIDTH;
+      canvas.height = HEIGHT;
+      const grainCtx = canvas.getContext('2d');
+      if (grainCtx) postcard.drawLargeLetterPrintGrain(grainCtx, WIDTH, HEIGHT);
+      return canvas;
+    })(),
     onRepaint(listener) { listeners.add(listener); return () => listeners.delete(listener); },
   };
 }
