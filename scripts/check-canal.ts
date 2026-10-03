@@ -81,6 +81,7 @@ const CHECKS = [
   'test:facade-extras',
   'test:shopfronts',
   'test:new-build-gaps',
+  'test:poi-renames',
   'test:roof-shapes',
   'test:teaching-surface',
   'test:recall-rules',

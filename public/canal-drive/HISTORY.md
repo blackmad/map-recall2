@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Local renames for businesses OSM has not caught up with
+
+User (2026-10-03): "BR020 changed its name to vinyl rocks - has it not been updated in OSM yet?" It has not: OSM node 12876814546 is still `name=Br020` (last edited 2025-05-31), and our POI files already matched OSM, so a fresh pull would change nothing. The user chose both fixes on a decision card: a local rename now, and an OSM edit upstream. `src/canalRecall/poiRenames.ts` lists each rename with the OSM name it replaces and its spot. `build-amsterdam-extract.ts` (local-food names) and `build-orientation-pois.ts` pass names through it, and each prints any entry that matched nothing, which means OSM has caught up. `scripts/apply-poi-renames.ts` patched the published `branded-pois.json` and `orientation-pois.json` without a new pull. Pinned in `test:poi-renames`, part of `check:canal`.
+
 ## New-build gaps filled from OSM footprints
 
 User (2026-10-03): "mr blou I love you has no building, any idea why?" Mr Blou I Love You (OSM node 9039944077, Elandsgracht 150) is a 10 m² kiosk, pand 0363100012571031 built in 2023, next to an 11 m² kiosk from 2021. The building tiles are 3DBAG `v20250903`, which reconstructs panden from an AHN survey flown before both existed, and the 3DBAG API holds nothing at that point; our OSM layer only adds building:parts and a few footprints, so neither kiosk drew.

@@ -237,11 +237,10 @@ at a 9.5 m default because nothing nearby was measured. Next: rebuild
 (`npm run fill:new-build-gaps` then finds 0), and rerun the fill after each OSM
 refresh in between.
 
-**Renamed businesses OSM has not caught up with.** BR020 (OSM node
-12876814546) is now Vinyl Rocks per the user (2026-10-03), but OSM
-still says "Br020" (last edited 2025-05-31), so a fresh POI pull does not
-change it. Waiting on a choice: edit OSM upstream, or keep a small local
-rename list applied by the POI builders.
+**Fix BR020's name in OSM.** The game shows Vinyl Rocks through the local
+rename list (see HISTORY, 2026-10-03), but OSM node 12876814546 still says
+"Br020". Once someone edits it upstream, the next POI build prints the entry
+as unused; then delete it from `src/canalRecall/poiRenames.ts`.
 
 **Municipal trivia beyond street names.** Monument status, architect, years
 and function now reach clicked buildings (see HISTORY, 2026-09-30). Still open:
