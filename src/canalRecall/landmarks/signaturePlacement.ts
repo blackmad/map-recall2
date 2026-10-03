@@ -72,6 +72,7 @@ export interface SignatureModelSpec {
   readonly surveyed?: SurveyedAnchor;
   /** Stable id for this placement, used in the manifest and in tests. */
   readonly id: string;
+  readonly assetKind?: 'building' | 'memorial';
   /** Human name, shown in the attribution panel. */
   readonly name: string;
   /** The landmark extract entry this model represents, so the existing card,

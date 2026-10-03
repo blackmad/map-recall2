@@ -1,5 +1,5 @@
 import * as T from 'three';
-type Colour='brick'|'stone'|'slate'|'white'|'gold'|'glass'|'dark'|'frame'|'red'|'blue';
+type Colour='brick'|'stone'|'slate'|'white'|'gold'|'glass'|'dark'|'frame'|'red'|'blue'|'pink';
 export interface BuildingTools {
  add(g:T.BufferGeometry,c:Colour,x?:number,y?:number,z?:number,angle?:number):void;
  box(x:number,y:number,z:number,w:number,h:number,d:number,c:Colour,angle?:number):void;

@@ -1,5 +1,7 @@
 import {chromium} from '@playwright/test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const expectedParkFeatures=JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/park-landscape.geojson','utf8')).features.length;
 const browser=await chromium.launch({headless:true});
 try{
  const page=await browser.newPage({viewport:{width:1400,height:900}}),errors=[];
@@ -7,7 +9,8 @@ try{
  await page.goto('http://127.0.0.1:5196/canal-drive/');
  await page.waitForFunction(()=>window.canalRecallGame?.vectorMap?._inventoryTrees?.ready,{timeout:60000});
  await page.locator('#route-card').evaluate(f=>f.requestSubmit());
- await page.waitForFunction(()=>window.canalRecallGame?.player?.x,{timeout:60000});
+ await page.waitForFunction(()=>window.canalRecallGame?.player?.x&&canalRecallGame.state===4,{timeout:60000});
+ await page.waitForFunction(count=>canalRecallGame.vectorMap._parkLandscape.debugFeatures===count,expectedParkFeatures,{timeout:60000});
  await page.evaluate(()=>canalRecallGame.vectorMap.setTreesVisible(true));
  await page.waitForFunction(()=>canalRecallGame.vectorMap._inventoryTrees.debugTrees>10,{timeout:60000});
  console.log(await page.evaluate(()=>{const v=canalRecallGame.vectorMap;return{player:canalRecallGame.player.x,trees:v._inventoryTrees.debugTrees,draws:v._inventoryTrees.debugDraws,oldTrees:v.map.getLayoutProperty('tree-crowns','visibility'),parkFeatures:v._parkLandscape.debugFeatures};}));

@@ -3873,6 +3873,287 @@
       "triangles": 16832,
       "bytes": 211516,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "homomonument": {
+      "id": "homomonument",
+      "name": "Homomonument",
+      "assetKind": "memorial",
+      "landmarkId": "extract_landmarks_7630368",
+      "modelUrl": "./models/homomonument.glb",
+      "suppressOsmIds": [
+        "w37737807"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8846925,
+          52.37443243333333
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 34.72792283999182,
+        "widthMetres": 35.405961999833835
+      },
+      "surveyed": {
+        "anchor": [
+          4.8846925,
+          52.37443243333333
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Three extreme vertices of the mapped whole-monument perimeter; local east/south metres"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Homomonument",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.iamsterdam.com/en/whats-on/calendar/attractions-and-sights/sights/homomonument",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Geometric interpretation of mapped outline, not a measured stonework survey. Individual triangle heights and stair treads approximate; no surrounding ground or host buildings replaced."
+      },
+      "bounds": {
+        "min": [
+          -14.733881950378418,
+          -2.3841858265427618e-8,
+          -19.97089385986328
+        ],
+        "max": [
+          19.994041442871094,
+          0.6000000238418579,
+          15.43506908416748
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8846925,
+          52.37443243333333
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 35.40596294403076,
+        "heightMetres": 0.6000000476837162,
+        "depthMetres": 34.72792339324951,
+        "depthCoverage": 0.980849592320426
+      },
+      "triangles": 96,
+      "bytes": 3608,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "micropia-ledenlokalen": {
+      "id": "micropia-ledenlokalen",
+      "name": "ARTIS Micropia / Ledenlokalen",
+      "landmarkId": "extract_landmarks_1369065076",
+      "modelUrl": "./models/micropia-ledenlokalen.glb",
+      "suppressOsmIds": [
+        "w57857205",
+        "NL.IMBAG.Pand.0363100012170549"
+      ],
+      "footprint": {
+        "centre": [
+          4.91252702449228,
+          52.36671446028425
+        ],
+        "headingDegrees": 29.62256147607775,
+        "lengthMetres": 78.36566837716668,
+        "widthMetres": 30.10354919257424
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 269.37743852392225,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.9124796703067215,
+          52.3667230808103
+        ],
+        "northOffsetDegrees": 119,
+        "source": "Current 2021-updated BAG contour including both end pavilions and the built rear conservatory; stale 2014 OSM hall outline is suppressed. Published native origin retained."
+      },
+      "attribution": {
+        "title": "ARTIS Micropia / Ledenlokalen",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.rappange.nl/projecten/ledenlokalen-artis-micropia/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
+      },
+      "bounds": {
+        "min": [
+          -40.046016693115234,
+          -1.9073486612342094e-7,
+          -18.844310760498047
+        ],
+        "max": [
+          38.51071548461914,
+          14.449999809265137,
+          12.37813663482666
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9124796703067215,
+          52.3667230808103
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 209,
+        "facadeBearingDegrees": 299,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 78.55673217773438,
+        "heightMetres": 14.450000000000003,
+        "depthMetres": 31.222447395324707,
+        "depthCoverage": 1.0371683151243334
+      },
+      "triangles": 12837,
+      "bytes": 157472,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "artis-entrance": {
+      "id": "artis-entrance",
+      "name": "ARTIS entrance gate and kiosks",
+      "landmarkId": "extract_landmarks_2001162595",
+      "modelUrl": "./models/artis-entrance.glb",
+      "suppressOsmIds": [
+        "w269020382",
+        "NL.IMBAG.Pand.0363100012181131",
+        "w269020400",
+        "NL.IMBAG.Pand.0363100012181128"
+      ],
+      "footprint": {
+        "centre": [
+          4.912695619709629,
+          52.36720632230263
+        ],
+        "headingDegrees": 28.93815525735573,
+        "lengthMetres": 20.421311223951083,
+        "widthMetres": 3.0659945811082725
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 270.06184474264427,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.912695619709629,
+          52.36720632230263
+        ],
+        "northOffsetDegrees": 119,
+        "source": "Mapped individual OSM/BAG contours, native model +X bearing 209 degrees; street front +Z bearing 299 degrees."
+      },
+      "attribution": {
+        "title": "ARTIS entrance gate and kiosks",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.monumenten.nl/monument/4103",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
+      },
+      "bounds": {
+        "min": [
+          -13.731766700744629,
+          -9.536743306171047e-8,
+          -1.6697379350662231
+        ],
+        "max": [
+          13.659893989562988,
+          5.550000190734863,
+          2.0792887210845947
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.912695619709629,
+          52.36720632230263
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 209,
+        "facadeBearingDegrees": 299,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 27.391660690307617,
+        "heightMetres": 5.550000286102296,
+        "depthMetres": 3.749026656150818,
+        "depthCoverage": 1.2227766739221202
+      },
+      "triangles": 1882,
+      "bytes": 33996,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "hortus-greenhouses": {
+      "id": "hortus-greenhouses",
+      "name": "Hortus Botanicus — greenhouses and orangery",
+      "landmarkId": "hortus-botanicus",
+      "modelUrl": "./models/hortus-greenhouses.glb",
+      "suppressOsmIds": [
+        "w57863706",
+        "NL.IMBAG.Pand.0363100012181028",
+        "w57863916",
+        "NL.IMBAG.Pand.0363100012164942",
+        "w57856456",
+        "NL.IMBAG.Pand.0363100012182570"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.907562825146495,
+          52.36667455153043
+        ],
+        "headingDegrees": 115.67678459307069,
+        "lengthMetres": 135.42441302242912,
+        "widthMetres": 65.33673807094493
+      },
+      "surveyed": {
+        "anchor": [
+          4.907562825146495,
+          52.36667455153043
+        ],
+        "northOffsetDegrees": 0
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 74.3,
+      "attribution": {
+        "title": "Hortus Botanicus — greenhouses and orangery",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.dehortus.nl/en/garden-and-greenhouses/climate-house/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction of three separate surveyed buildings with no garden parcel fill: the 1911 Palm House circular dome/perpendicular wings, 2025 Climate House ETFE canopy and retained external steel cable skeleton, and historic orangery. Actual OpenStreetMap building outlines; official Hortus aerial photography and ZJA 2025 architect plan/section references. Heights and ornamental details approximate."
+      },
+      "bounds": {
+        "min": [
+          -74.05695343017578,
+          -1.9073486612342094e-7,
+          -48.26625061035156
+        ],
+        "max": [
+          58.9463996887207,
+          14.086104393005371,
+          55.87484359741211
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.907562825146495,
+          52.36667455153043
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 189.97678459307076,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 133.00335311889648,
+        "heightMetres": 14.086104583740237,
+        "depthMetres": 104.14109420776367,
+        "depthCoverage": 1.5939132757849588
+      },
+      "triangles": 15640,
+      "bytes": 212864,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

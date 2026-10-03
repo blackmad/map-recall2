@@ -1,0 +1,40 @@
+[
+  {
+    "id": "homomonument",
+    "name": "Homomonument",
+    "assetKind": "memorial",
+    "landmarkId": "extract_landmarks_7630368",
+    "modelUrl": "./models/homomonument.glb",
+    "suppressOsmIds": [
+      "w37737807"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8846925,
+        52.37443243333333
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 34.72792283999182,
+      "widthMetres": 35.405961999833835
+    },
+    "surveyed": {
+      "anchor": [
+        4.8846925,
+        52.37443243333333
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Three extreme vertices of the mapped whole-monument perimeter; local east/south metres"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "Homomonument",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.iamsterdam.com/en/whats-on/calendar/attractions-and-sights/sights/homomonument",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Geometric interpretation of mapped outline, not a measured stonework survey. Individual triangle heights and stair treads approximate; no surrounding ground or host buildings replaced."
+    }
+  }
+]

@@ -26,11 +26,14 @@ import {buildHallenHouseLandmark} from './hallen-house-builders';
 import {buildHistoricMuseumLandmark} from './historic-museum-builders';
 import {buildPlantageMuseumLandmark} from './plantage-museum-builders';
 import {buildJewishQuarterLandmark} from './jewish-quarter-builders';
+import {buildMemorialLandmark} from './memorial-builders';
+import {buildArtisEntryLandmark} from './artis-entry-builders';
+import {buildHortusLandmark} from './hortus-builders';
 import hospitals from './hospital-footprints.json';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 const out=path.resolve('public/canal-drive/models');
-const palette={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a'};
+const palette={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295'};
 type Colour=keyof typeof palette;
 let parts: {g:T.BufferGeometry,c:Colour}[]=[];
 function add(g:T.BufferGeometry,c:Colour,x=0,y=0,z=0,angle=0){g.rotateY(angle);g.translate(x,y,z);parts.push({g,c});}
@@ -124,6 +127,9 @@ for(const spec of MANUAL_LANDMARKS){
     else if(historicMuseumIds.has(id))buildHistoricMuseumLandmark(id,w,d,helpers);
     else if(plantageMuseumIds.has(id))buildPlantageMuseumLandmark(id,w,d,helpers);
     else if(jewishQuarterIds.has(id))buildJewishQuarterLandmark(id,w,d,helpers);
+    else if(id==='homomonument')buildMemorialLandmark(id,w,d,helpers);
+    else if(id==='micropia-ledenlokalen'||id==='artis-entrance')buildArtisEntryLandmark(id,w,d,helpers);
+    else if(id==='hortus-greenhouses')buildHortusLandmark(id,w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   manifest.models[id]=await save(id);

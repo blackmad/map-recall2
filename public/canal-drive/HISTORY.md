@@ -1,5 +1,43 @@
 # Canal Recall — what is built
 
+## ARTIS and Hortus architecture: 53 original landmarks (2026-10-04)
+
+Micropia/Ledenlokalen now includes the current BAG frontage, historic end
+pavilions, central dark addition and glazed rear conservatory. Street and
+garden-side game captures retain Artisplein and the separate Groote Museum.
+The ARTIS entrance has both mapped kiosks, eagle piers and open iron gates.
+Hortus retains its three separate buildings: the Palm House dome and wings,
+2025 Climate House canopy with exterior supports, and orangery. Redundant
+roof diagonal cables were removed after reviewing their density in the game.
+All three additions passed compressed-asset and life-size checks, then gallery
+and active-game reviews; exact identities preserve gardens and neighbors.
+
+Wertheimpark, Frankendael, both mapped Martin Luther Kingpark sections and
+Rembrandtplein add 618 actual landscape details. Westermarkt adds one exact
+sett-paved pedestrian polygon, including its five structure holes and the notch
+excluding Westerkerk. All previous 5,139 features remain unchanged; the overlay
+now contains 5,758 features. Source identity, delivery, toggles and three paving
+themes were checked. The existing game smoke now waits for active play and
+asserts the complete generated feature count reached the live layer.
+
+## Homomonument and botanical grounds: 50 original landmarks (2026-10-04)
+
+Homomonument now uses three pink granite triangles and connecting strips at
+its mapped extreme corner positions, with a raised northern platform and
+stepped waterside triangle. Heights and stonework details are approximate.
+The 96-triangle, 3.6 KB mesh is reviewed at life size in the gallery and active
+game; it preserves Westerkerk and all nearby buildings and highlights for the
+existing Homomonument teaching record. Memorial assets have their own small
+geometry minimum instead of padding simple stonework to a building's triangle
+count.
+
+ARTIS and Hortus now add 510 actual mapped landscape features: paths, gardens,
+water, lawns, woods, scrub, playgrounds and benches. Their complete boundaries
+are not filled green; building pads and open courts keep their existing ground.
+All 4,629 prior park features remain identical by source ID and geometry. The
+park review picker includes both grounds; source identity and browser delivery,
+toggle and map-error checks passed.
+
 ## Synagogue complexes and Plantage memorial museums: 49 models (2026-10-04)
 
 The Jewish Museum's four-synagogue complex and Portuguese Synagogue retain
