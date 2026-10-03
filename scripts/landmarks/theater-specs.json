@@ -1,0 +1,86 @@
+[
+  {
+    "id": "felix-meritis",
+    "name": "Felix Meritis",
+    "landmarkId": "extract_landmarks_2044416411",
+    "modelUrl": "./models/felix-meritis.glb",
+    "suppressOsmIds": [
+      "w30044304"
+    ],
+    "footprint": {
+      "centre": [
+        4.883664696612664,
+        52.36999669819762
+      ],
+      "headingDegrees": 93.27205563832936,
+      "lengthMetres": 86.01825038403021,
+      "widthMetres": 22.923712728591294
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Felix Meritis",
+      "author": "Map Recall",
+      "sourceUrl": "https://felixmeritis.nl/over-felix-meritis/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  },
+  {
+    "id": "kleine-komedie",
+    "name": "De Kleine Komedie",
+    "landmarkId": "extract_landmarks_916929647",
+    "modelUrl": "./models/kleine-komedie.glb",
+    "suppressOsmIds": [
+      "w267116750"
+    ],
+    "footprint": {
+      "centre": [
+        4.896025822037456,
+        52.36678815648692
+      ],
+      "headingDegrees": 174.06110855527527,
+      "lengthMetres": 33.76302592451122,
+      "widthMetres": 24.22524092603205
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 270,
+    "attribution": {
+      "title": "De Kleine Komedie",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.dekleinekomedie.nl/over-de-kleine-komedie-q9t1",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  },
+  {
+    "id": "de-balie",
+    "name": "De Balie",
+    "landmarkId": "extract_landmarks_1675243450",
+    "modelUrl": "./models/de-balie.glb",
+    "suppressOsmIds": [
+      "w114538342"
+    ],
+    "footprint": {
+      "centre": [
+        4.882893998003039,
+        52.3630001538405
+      ],
+      "headingDegrees": 60.2484903518546,
+      "lengthMetres": 44.743762978920266,
+      "widthMetres": 33.664517593624694
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "De Balie",
+      "author": "Map Recall",
+      "sourceUrl": "https://debalie.nl/geschiedenis/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  }
+]
