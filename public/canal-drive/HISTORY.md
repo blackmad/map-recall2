@@ -20,6 +20,15 @@ The extrusions were facade extras, each now slimmer:
   - Vertical fins went from 0.45 to 0.22 m.
 - **Check:** `check-facade-extras.ts` now asserts that nothing above the ground floor of a canal, c19 or school front sticks out more than 0.6 m. Thin hoist beams and flagpoles are exempt.
 
+## Local renames for businesses OSM has not caught up with
+
+User (2026-10-03): "BR020 changed its name to vinyl rocks - has it not been updated in OSM yet?" It has not: OSM node 12876814546 is still `name=Br020` (last edited 2025-05-31), and our POI files already matched OSM, so a fresh pull would change nothing. The user chose both fixes on a decision card: a local rename now, and an OSM edit upstream. `src/canalRecall/poiRenames.ts` lists each rename with the OSM name it replaces and its spot. `build-amsterdam-extract.ts` (local-food names) and `build-orientation-pois.ts` pass names through it, and each prints any entry that matched nothing, which means OSM has caught up. `scripts/apply-poi-renames.ts` patched the published `branded-pois.json` and `orientation-pois.json` without a new pull. Pinned in `test:poi-renames`, part of `check:canal`.
+
+## New-build gaps filled from OSM footprints
+
+User (2026-10-03): "mr blou I love you has no building, any idea why?" Mr Blou I Love You (OSM node 9039944077, Elandsgracht 150) is a 10 m² kiosk, pand 0363100012571031 built in 2023, next to an 11 m² kiosk from 2021. The building tiles are 3DBAG `v20250903`, which reconstructs panden from an AHN survey flown before both existed, and the 3DBAG API holds nothing at that point; our OSM layer only adds building:parts and a few footprints, so neither kiosk drew.
+
+The same hole exists wherever Amsterdam has built since the survey. `scripts/fill-new-build-gaps.ts` (rules in `src/canalRecall/newBuildGaps.ts`) takes every OSM building with a `start_date` from 2015 on (26,022, one Overpass answer kept in the scrape store) and adds it as tier 4 when its BAG/OSM id is not in the tiles, under 30% of its interior is covered by a ground-reaching footprint, and no hand-mapped tier-2 part touches it (those panden are suppressed on purpose: Overhoeks's 32-storey tower outline was the case that showed it). Heights: OSM `height`, else storeys × 3.1 m, else 3.2 m under 25 m², else the median of measured panden within 35 m, else 9.5 m. 3,671 fills went into 165 tiles (+77 KB gzipped); a rerun finds 0, so it is idempotent. Pinned in `test:new-build-gaps` (rules on a synthetic block, and Mr Blou standing in a small building), which is part of `check:canal`.
 ## Trivia cards stay up, the Houseboat Museum lights its boat, postcards are paced
 
 David (2026-10-03), three requests about the drive-by cards:
