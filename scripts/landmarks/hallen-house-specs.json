@@ -1,0 +1,81 @@
+[
+  {
+    "id": "de-hallen",
+    "name": "De Hallen / Foodhallen / Filmhallen",
+    "landmarkId": "extract_landmarks_564717297",
+    "relatedLandmarkIds": [
+      "extract_landmarks_935859030",
+      "extract_landmarks_1004895807"
+    ],
+    "modelUrl": "./models/de-hallen.glb",
+    "suppressOsmIds": [
+      "w94517266"
+    ],
+    "footprint": {
+      "centre": [
+        4.868094135610376,
+        52.36705123990049
+      ],
+      "headingDegrees": 156.4336677813015,
+      "lengthMetres": 138.92102637771075,
+      "widthMetres": 102.3948245125872
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.00366778130149,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.868094135610376,
+        52.36705123990049
+      ],
+      "northOffsetDegrees": 66.4336677813015,
+      "source": "Actual OSM polygon contours in local east/south metres; courtyard recesses and double-house split preserved."
+    },
+    "attribution": {
+      "title": "De Hallen / Foodhallen / Filmhallen",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.dehallen-amsterdam.nl/historie",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
+    }
+  },
+  {
+    "id": "huis-bartolotti",
+    "name": "Huis Bartolotti",
+    "landmarkId": "extract_landmarks_1450151185",
+    "modelUrl": "./models/huis-bartolotti.glb",
+    "suppressOsmIds": [
+      "w174193863",
+      "w266616315"
+    ],
+    "footprint": {
+      "centre": [
+        4.886722670237744,
+        52.37412259415594
+      ],
+      "headingDegrees": 106.44208897821662,
+      "lengthMetres": 31.771102166533325,
+      "widthMetres": 22.603326969147606
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -6.442088978216617,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.886722670237744,
+        52.37412259415594
+      ],
+      "northOffsetDegrees": -80,
+      "source": "Actual OSM polygon contours in local east/south metres; courtyard recesses and double-house split preserved."
+    },
+    "attribution": {
+      "title": "Huis Bartolotti",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.hendrickdekeyser.nl/de-huizen/huis-bartolotti",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
+    }
+  }
+]
