@@ -56,6 +56,7 @@ export class SignatureLandmarks {
     this.manageBasemapFilter = options.manageBasemapFilter !== false;
     this.getBasemapBaseFilter = options.getBasemapBaseFilter || null;
     this.loadVisibleOnly = options.loadVisibleOnly === true;
+    this.depthBiasEnabled = options.depthBiasEnabled !== false;
     this._pending = new Map();
     this._failed = new Set();
     this._generation = 0;
@@ -75,6 +76,16 @@ export class SignatureLandmarks {
     // A hidden model must give its extrusion back, or the Dam has a hole in it.
     this._applySuppression();
     if (this.enabled) this._requestModels();
+    this.map.triggerRepaint();
+  }
+
+  /** Hosts drawing the complete city already remove basemap geometry. The
+   * legacy offset otherwise pulls intersecting roof faces through one another. */
+  setDepthBiasEnabled(enabled) {
+    const next = !!enabled;
+    if (this.depthBiasEnabled === next) return;
+    this.depthBiasEnabled = next;
+    this._applySuppression();
     this.map.triggerRepaint();
   }
 
@@ -140,7 +151,7 @@ export class SignatureLandmarks {
    */
   _applySuppression() {
     this._applyBasemapFilter();
-    const bias = this.enabled && this.suppressing ? -1 : 0;
+    const bias = this.enabled && this.suppressing && this.depthBiasEnabled ? -1 : 0;
     for (const entry of this._entries || []) {
       if (entry.depthBias === bias) continue;
       entry.depthBias = bias;

@@ -1005,5 +1005,173 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
     }
+  },
+  {
+    "id": "tuschinski",
+    "name": "Pathé Tuschinski",
+    "landmarkId": "extract_landmarks_1697896624",
+    "modelUrl": "./models/tuschinski.glb",
+    "suppressOsmIds": [
+      "w267116768"
+    ],
+    "footprint": {
+      "centre": [
+        4.89452384707487,
+        52.366265889625566
+      ],
+      "headingDegrees": 22.491832353133248,
+      "lengthMetres": 64.08757870689,
+      "widthMetres": 36.59157632446773
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 3.5081676468667524,
+    "attribution": {
+      "title": "Pathé Tuschinski",
+      "author": "Map Recall",
+      "sourceUrl": "https://pers.pathe.nl/koninklijk-theater-tuschinski/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    },
+    "surveyed": {
+      "anchor": [
+        4.89452384707487,
+        52.366265889625566
+      ],
+      "northOffsetDegrees": 0,
+      "source": "OSM w267116768 outline and repository measured Reguliersbreestraat front; local east/south metres"
+    },
+    "spatialSuppression": false
+  },
+  {
+    "id": "pathe-city",
+    "name": "Pathé City",
+    "landmarkId": "extract_landmarks_798381271",
+    "modelUrl": "./models/pathe-city.glb",
+    "suppressOsmIds": [
+      "w267565634"
+    ],
+    "footprint": {
+      "centre": [
+        4.88399306215679,
+        52.36346037602056
+      ],
+      "headingDegrees": 139.45829105802886,
+      "lengthMetres": 37.33397539170063,
+      "widthMetres": 36.529338631103656
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Pathé City",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.pathe.nl/en/cinemas/pathe-city",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    },
+    "spatialSuppression": false
+  },
+  {
+    "id": "oude-kerk",
+    "name": "Oude Kerk",
+    "landmarkId": "extract_landmarks_1522513904",
+    "modelUrl": "./models/oude-kerk.glb",
+    "suppressOsmIds": [
+      "w57857592",
+      "w747868970",
+      "w747868971",
+      "w747868972",
+      "w747868973",
+      "w747868974",
+      "w747868975",
+      "w747868976",
+      "w747868977",
+      "w747868978",
+      "w747868979",
+      "w747868980",
+      "w747868981",
+      "w747868982",
+      "w747868984"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.898072331391026,
+        52.374357755718066
+      ],
+      "headingDegrees": 86.48218640835745,
+      "lengthMetres": 81.97608859440939,
+      "widthMetres": 63.9732853832862
+    },
+    "surveyed": {
+      "anchor": [
+        4.89807215,
+        52.37436065
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Oude Kerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.oudekerk.nl/nu-te-zien/evenementen/bezoek-oudekerkstoren/39591",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
+    }
+  },
+  {
+    "id": "nieuwe-kerk",
+    "name": "Nieuwe Kerk",
+    "landmarkId": "extract_landmarks_239964759",
+    "modelUrl": "./models/nieuwe-kerk.glb",
+    "suppressOsmIds": [
+      "w220749328",
+      "w747911436",
+      "w747911437",
+      "w747911438",
+      "w747911439",
+      "w747911440",
+      "w747911441",
+      "w747924617",
+      "w747924618",
+      "w747924619",
+      "w747924620",
+      "w747924621",
+      "w747924622",
+      "w747924623",
+      "w747924624",
+      "w747924625",
+      "w747924626"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.89174203315766,
+        52.373932974434126
+      ],
+      "headingDegrees": 51.267866875012544,
+      "lengthMetres": 94.47997996878692,
+      "widthMetres": 62.97060523555761
+    },
+    "surveyed": {
+      "anchor": [
+        4.89174605,
+        52.37393705
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Nieuwe Kerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.nieuwekerk.nl/de-nieuwe-kerk/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
+    }
   }
 ]

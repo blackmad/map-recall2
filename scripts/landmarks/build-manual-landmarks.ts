@@ -19,6 +19,8 @@ import {buildCivicLandmark} from './civic-builders';
 import {buildAmsterdamSchoolLandmark} from './amsterdam-school-builders';
 import {buildRetailCinemaLandmark} from './retail-cinema-builders';
 import {buildIndustrialTheaterLandmark} from './industrial-theater-builders';
+import {buildCinemaPalaceLandmark} from './cinema-palace-builders';
+import {buildHistoricChurchLandmark} from './historic-church-builders';
 import hospitals from './hospital-footprints.json';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
@@ -86,6 +88,8 @@ const civicIds=new Set(['amstelkerk','he-hua-temple','haarlemmerpoort']);
 const amsterdamSchoolIds=new Set(['het-schip','scheepvaarthuis']);
 const retailCinemaIds=new Set(['rialto','kriterion','de-bijenkorf']);
 const industrialTheaterIds=new Set(['gashouder','stadsschouwburg']);
+const cinemaPalaceIds=new Set(['tuschinski','pathe-city']);
+const historicChurchIds=new Set(['oude-kerk','nieuwe-kerk']);
 for(const spec of MANUAL_LANDMARKS){
   const id=spec.id;
   if(process.argv.includes('--only')&&!process.argv.includes(id))continue;
@@ -103,6 +107,8 @@ for(const spec of MANUAL_LANDMARKS){
     else if(amsterdamSchoolIds.has(id))buildAmsterdamSchoolLandmark(id,w,d,helpers);
     else if(retailCinemaIds.has(id))buildRetailCinemaLandmark(id,w,d,helpers);
     else if(industrialTheaterIds.has(id))buildIndustrialTheaterLandmark(id,w,d,helpers);
+    else if(cinemaPalaceIds.has(id))buildCinemaPalaceLandmark(id,w,d,helpers);
+    else if(historicChurchIds.has(id))buildHistoricChurchLandmark(id,w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   manifest.models[id]=await save(id);

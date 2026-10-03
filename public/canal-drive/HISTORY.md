@@ -1,5 +1,26 @@
 # Canal Recall — what is built
 
+## Cinema palaces, Gothic churches and nearby loading: 38 models (2026-10-04)
+
+Pathé Tuschinski and Pathé City now use original meshes aligned to their street
+frontages. Oude Kerk replaces its former imported GLB with an original complete
+church plan, chapel roofs and a 67 m clock/lantern tower. Nieuwe Kerk retains its
+cross plan and apsidal chapels without inventing a completed west tower.
+All 38 models pass placement, geometry and compression checks.
+
+The game now downloads nearby landmark models with at most two requests in
+flight. Unloaded and failed models retain their generic buildings. Disabling the
+layer pauses new requests, and removal invalidates late callbacks and disposes
+resources. The standalone demo retains eager loading. The full-game regression
+delays the Embassy GLB, checks both linked teaching records, exact suppression,
+neighbor retention and settings toggles during active play.
+
+The legacy polygon depth offset made internal church roof faces show through.
+The game now disables that offset when its complete-city layer already hides
+basemap buildings. Both church roofs were compared before and after in active
+play. The standalone imported-model demo retains its old bias because its source
+IDs do not suppress every basemap remainder.
+
 ## Rijksmuseum: the wings are flat grey in the source, not a texture that failed
 
 User (2026-10-03): "any idea why rijksmuseum glb has texture issues?" A render

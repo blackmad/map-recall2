@@ -62,17 +62,17 @@ mirror of UiGoku’s Sketchfab “Gvb metro 51”. Treat as a temporary stand-in
 
 **PROTOTYPE — the licence question below is open and unresolved.**
 
-The legacy signature catalogue includes twelve imported buildings, all from
-3D Warehouse and used under the 3D Warehouse General Model License (https://3dwarehouse.sketchup.com/tos/).
+The legacy source catalogue includes imported buildings from
+3D Warehouse, used under the 3D Warehouse General Model License (https://3dwarehouse.sketchup.com/tos/).
 
-Eight are the City of Amsterdam's own survey models, uploaded in a single batch
+Eight of the original imports were the City of Amsterdam's own survey models, uploaded in a single batch
 on 2007-05-08 for Google's Earth 3D-buildings programme, back when Google owned
 SketchUp. That origin explains what they contain: each is built on a Google
 Earth snapshot, which the export still carries.
 
 - **Westerkerk** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/11e419e09f0c9a7e270fcd68188626b2
 - **Stadhuis (City hall)** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/5995fd7a0e7fa47d99c802e874695f6b
-- **Oude Kerk (Old Church)** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/5ec8bf3fa426e5d622fc8389905f949e
+- **Oude Kerk (Old Church), retired import** — replaced by an original project mesh; historic source: City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/5ec8bf3fa426e5d622fc8389905f949e
 - **National Monument on the Dam** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/80385c387986217491e131c17526634a
 - **NEMO** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/a2a1d7c7726cb7e065a54e9dd3ee74f
 - **Rijksmuseum** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/a57b8c559152b7851aeb638739e9b807
@@ -127,13 +127,14 @@ the project. Silodam, Embassy of the Free Mind / Huis met de Hoofden,
 The Movies, DeLaMar, Magna Plaza, Felix Meritis, De Kleine Komedie, De Balie,
 Anne Frank House, Rembrandt House, Moco Museum, Museum Van Loon, Amstelkerk,
 He Hua Temple, Haarlemmerpoort, Museum Het Schip, Scheepvaarthuis, Rialto,
-Kriterion, De Bijenkorf, Gashouder and Stadsschouwburg use the
+Kriterion, De Bijenkorf, Gashouder, Stadsschouwburg, Tuschinski, Pathé City,
+Oude Kerk and Nieuwe Kerk use the
 same original modelling workflow in
 `scripts/landmarks/build-manual-landmarks.ts`. The live game loads these
 flat-colour replacements; the older imported catalogue remains available in
 the signature-model demo. No reference photograph pixels or downloaded
-model geometry are included. The current Centraal GLB replaces the former
-3D Warehouse asset.
+model geometry are included. The current Centraal and Oude Kerk GLBs replace their former
+3D Warehouse assets.
 
 Hospital footprints and landmark placement coordinates derive from
 OpenStreetMap contributors, [ODbL](https://www.openstreetmap.org/copyright).

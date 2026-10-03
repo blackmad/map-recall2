@@ -122,11 +122,12 @@ Silodam, Embassy of the Free Mind/Huis met de Hoofden, The Movies, DeLaMar and
 Magna Plaza, Felix Meritis, De Kleine Komedie, De Balie, Anne Frank House,
 Rembrandt House, Moco Museum, Museum Van Loon, Amstelkerk, He Hua Temple,
 Haarlemmerpoort, Museum Het Schip, Scheepvaarthuis, Rialto, Kriterion,
-De Bijenkorf, Gashouder and Stadsschouwburg (34 models). The live replacements retain measured footprint alignment and
+De Bijenkorf, Gashouder, Stadsschouwburg, Tuschinski, Pathé City, Oude Kerk and
+Nieuwe Kerk (38 models). The live replacements retain measured footprint alignment and
 hide generic building geometry only after the GLB has loaded. Review meshes at
 `manual-landmarks.html`; inspect actual map placement before marking additions
-complete. Next candidates: Pathé Tuschinski, Pathé City, Filmhallen,
-Huis Bartolotti and the remaining churches. Exact building IDs preserve neighbors and courtyards
+complete. Next candidates: De Hallen/Filmhallen, Huis Bartolotti, Buiksloterkerk,
+English Reformed Church and De Papegaai. Exact building IDs preserve neighbors and courtyards
 around narrow house museums and irregular complexes. Squares/intersections require a public-space treatment rather than
 a generic building model.
 Open for cinemas: the large pre-1945 ones (Pathé City 24 m and 1,222 m², Studio/K 3,494 m², LAB111) still wear canal-house
