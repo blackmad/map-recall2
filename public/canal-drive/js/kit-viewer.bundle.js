@@ -602,6 +602,998 @@
     return s.out;
   }
 
+  // src/canalRecall/landmarkForms.ts
+  var closed = (ring) => ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1];
+  var signedArea2 = (pts) => {
+    let a = 0;
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) a += pts[j][0] * pts[i][1] - pts[i][0] * pts[j][1];
+    return a / 2;
+  };
+  function cleanRing(ring) {
+    const raw = closed(ring) ? ring.slice(0, -1) : ring.slice();
+    const pts = [];
+    for (const p of raw) if (!pts.length || Math.hypot(p[0] - pts[pts.length - 1][0], p[1] - pts[pts.length - 1][1]) > 0.05) pts.push([p[0], p[1]]);
+    while (pts.length > 2 && Math.hypot(pts[0][0] - pts[pts.length - 1][0], pts[0][1] - pts[pts.length - 1][1]) <= 0.05) pts.pop();
+    return signedArea2(pts) < 0 ? pts.reverse() : pts;
+  }
+  function clipHalf(pts, p, dir) {
+    const side = (q2) => (q2[0] - p[0]) * dir[0] + (q2[1] - p[1]) * dir[1];
+    const out = [];
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i], b = pts[(i + 1) % pts.length], sa = side(a), sb = side(b);
+      if (sa >= 0) out.push(a);
+      if (sa >= 0 !== sb >= 0) {
+        const t = sa / (sa - sb);
+        out.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]);
+      }
+    }
+    return out;
+  }
+  function offsetRing(pts, d) {
+    if (!d) return pts.slice();
+    const n = pts.length;
+    return pts.map((p, i) => {
+      const a = pts[(i + n - 1) % n], b = pts[(i + 1) % n];
+      const e0 = [p[0] - a[0], p[1] - a[1]], e1 = [b[0] - p[0], b[1] - p[1]];
+      const l0 = Math.hypot(e0[0], e0[1]) || 1, l1 = Math.hypot(e1[0], e1[1]) || 1;
+      const n0 = [e0[1] / l0, -e0[0] / l0], n1 = [e1[1] / l1, -e1[0] / l1];
+      const mx = n0[0] + n1[0], my = n0[1] + n1[1], dotN = 1 + n0[0] * n1[0] + n0[1] * n1[1];
+      if (dotN < 1e-6) return [p[0] + n0[0] * d, p[1] + n0[1] * d];
+      let k = d / dotN;
+      const len = Math.hypot(mx * k, my * k);
+      if (len > Math.abs(d) * 2.5) k *= Math.abs(d) * 2.5 / len;
+      return [p[0] + mx * k, p[1] + my * k];
+    });
+  }
+  function earcut(pts) {
+    const idx = pts.map((_, i) => i), tris = [];
+    const cross3 = (a, b, c) => (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]);
+    const inside = (p, a, b, c) => cross3(a, b, p) > 1e-9 && cross3(b, c, p) > 1e-9 && cross3(c, a, p) > 1e-9;
+    let guard = pts.length * pts.length + 10;
+    while (idx.length > 3 && guard-- > 0) {
+      let clipped = false;
+      for (let k = 0; k < idx.length; k++) {
+        const i0 = idx[(k + idx.length - 1) % idx.length], i1 = idx[k], i2 = idx[(k + 1) % idx.length];
+        const a = pts[i0], b = pts[i1], c = pts[i2];
+        const turn = cross3(a, b, c);
+        if (turn <= 1e-9) {
+          if (Math.abs(turn) <= 1e-9) {
+            idx.splice(k, 1);
+            clipped = true;
+            break;
+          }
+          continue;
+        }
+        if (idx.some((j) => j !== i0 && j !== i1 && j !== i2 && inside(pts[j], a, b, c))) continue;
+        tris.push([i0, i1, i2]);
+        idx.splice(k, 1);
+        clipped = true;
+        break;
+      }
+      if (!clipped) break;
+    }
+    for (let k = 1; k + 1 < idx.length; k++) tris.push([idx[0], idx[k], idx[k + 1]]);
+    return tris;
+  }
+  var sub2 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  var crossV = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  function tri(out, a, b, c, ua, ub, uc, layer, hex2, hint) {
+    let n = crossV(sub2(b, a), sub2(c, a)), B = b, C = c, UB = ub, UC = uc;
+    if (n[0] * hint[0] + n[1] * hint[1] + n[2] * hint[2] < 0) {
+      B = c;
+      C = b;
+      UB = uc;
+      UC = ub;
+      n = [-n[0], -n[1], -n[2]];
+    }
+    const l = Math.hypot(n[0], n[1], n[2]);
+    if (l < 1e-9) return;
+    out.push({ p: [a, B, C], uv: [ua, UB, UC], layer, hex: hex2, n: [n[0] / l, n[1] / l, n[2] / l] });
+  }
+  function formTriangles(form, ring, toLocal2) {
+    let pts = cleanRing(ring);
+    if (form.half) {
+      const b = form.half.keepBearingDeg * Math.PI / 180;
+      pts = cleanRing(clipHalf(pts, toLocal2(form.half.through), [Math.cos(b), Math.sin(b)]));
+    }
+    if (pts.length < 3 || Math.abs(signedArea2(pts)) < 1) return [];
+    pts = offsetRing(pts, form.outsetM ?? 0);
+    const out = [], layer = form.plain ? "plain" : "flat";
+    let zAt = (_p) => form.z1;
+    if (form.z1High !== void 0) {
+      const hb = (form.highBearingDeg ?? 0) * Math.PI / 180, hx = Math.cos(hb), hy = Math.sin(hb);
+      const s = pts.map((p) => p[0] * hx + p[1] * hy), lo = Math.min(...s), span = Math.max(...s) - lo || 1, zHigh = form.z1High;
+      zAt = (p) => form.z1 + (zHigh - form.z1) * (p[0] * hx + p[1] * hy - lo) / span;
+    }
+    const zLow = (p) => form.tiltBottom ? form.z0 + zAt(p) - form.z1 : form.z0;
+    let run = 0;
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i], b = pts[(i + 1) % pts.length], side = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      const u0 = run / 5, u1 = (run + side) / 5;
+      run += side;
+      const za = zAt(a), zb = zAt(b);
+      const hint = [b[1] - a[1], -(b[0] - a[0]), 0];
+      if (!(hint[0] || hint[1])) continue;
+      const fa = zLow(a), fb = zLow(b);
+      tri(out, [a[0], a[1], fa], [b[0], b[1], fb], [b[0], b[1], zb], [u0, fa / 3.1], [u1, fb / 3.1], [u1, zb / 3.1], layer, form.hex, hint);
+      tri(out, [a[0], a[1], fa], [b[0], b[1], zb], [a[0], a[1], za], [u0, fa / 3.1], [u1, zb / 3.1], [u0, za / 3.1], layer, form.hex, hint);
+    }
+    const lid = form.lidHex ?? form.hex;
+    for (const [i, j, k] of earcut(pts)) {
+      tri(out, [pts[i][0], pts[i][1], zAt(pts[i])], [pts[j][0], pts[j][1], zAt(pts[j])], [pts[k][0], pts[k][1], zAt(pts[k])], [0, 0], [1, 0], [1, 1], "flat", lid, [0, 0, 1]);
+      if (form.z0 > 0.5) tri(out, [pts[i][0], pts[i][1], zLow(pts[i])], [pts[j][0], pts[j][1], zLow(pts[j])], [pts[k][0], pts[k][1], zLow(pts[k])], [0, 0], [1, 0], [1, 1], "flat", form.hex, [0, 0, -1]);
+    }
+    return out;
+  }
+
+  // src/canalRecall/museumKits.ts
+  var VGM_STONE = "#c3bcae";
+  var NEMO_COPPER = "#4f9a82";
+  var STEDELIJK_WHITE = "#efeee9";
+  var EYE_WHITE = "#f1f1ee";
+  var GLASS = "#5d6c74";
+  var MUSEUM_KITS = [
+    {
+      // Van Gogh Museum, Rietveld building (1973): light grey stone blocks on a glazed ground floor,
+      // the black-framed glass stair tower towards Museumplein and a green glass block beside it
+      // (Commons "Van Gogh Museum Amsterdam.jpg", "Van Gogh Museum, Kurokawa wing.jpg"). OSM's
+      // part heights sit about 3 m under the 3D BAG roofs (main block 21 m, stair tower 24 m, green
+      // block 19.5 m above the street; its ground there is the sunken court, 2.4 m lower), so the
+      // three tall parts are drawn at the measured heights and the low wings keep their own.
+      //
+      // Kurokawa wing (1999): an ellipse cut in half. The southern half is the exhibition drum, a
+      // granite wall under a titanium roof whose brim tilts up to the south (3D BAG: roof 12 m at
+      // the cut, 15 m at the rim); the northern half, once the sunken court, is the 2015 glass
+      // entrance hall (roof 4-10 m).
+      name: "Van Gogh Museum",
+      wall: { plain: true, hex: VGM_STONE, flat: true },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      body: ["w754324679", "w754324680", "w754324681", "w754324682"],
+      hides: ["w754324683", "w754324684", "w754324685", "w1230401241", "w1230401242"],
+      forms: [
+        { on: "w754324684", z0: 0, z1: 21, hex: VGM_STONE },
+        { on: "w754324685", z0: 0, z1: 24, hex: "#40464c" },
+        { on: "w754324683", z0: 0, z1: 19.5, hex: "#7d9a92" },
+        // The drum and its brim, both tilted up to the south (the cut runs at 22 degrees).
+        { on: "w1230401242", z0: 0, z1: 12, z1High: 14.2, highBearingDeg: -68, hex: "#a9a8a2" },
+        { on: "w1230401242", z0: 11.4, z1: 12.2, z1High: 14.9, highBearingDeg: -68, outsetM: 1.4, hex: "#cdd1d5", tiltBottom: true },
+        { on: "w1230401241", z0: 0, z1: 5, z1High: 9.5, highBearingDeg: 112, hex: "#8ea7b1" }
+      ]
+    },
+    {
+      // Stedelijk Museum: A.W. Weissman's 1895 building in red brick with stone bands, steep slate
+      // roofs, four corner pavilions with pointed roofs and the front tower with its lantern
+      // (Commons "Amsterdam - Paulus Potterstraat 13 Stedelijk.JPG"). OSM stops the walls at 14 m;
+      // 3D BAG has the roofs climbing from 16 to 25 m and the tower lantern at 31 m.
+      //
+      // The 2012 Benthem Crouwel wing ("de badkuip", Commons "Amsterdam - Stedelijk Museum -
+      // Benthem Crouwel Wing 2012 - ICE Perspective.jpg", "Stedelijk Museum Amsterdam 2017.jpg"):
+      // a smooth white tub lifted on a glass ground floor, under a thin flat roof that runs out as a
+      // canopy over the Museumplein entrance. OSM maps the tub (w754299890, 92 x 19 m) inside the
+      // canopy's outline (w754299892, 100 x 41 m); 3D BAG puts the roof at 17.6 m. Behind the tub,
+      // up to the old building, a 15 m block.
+      name: "Stedelijk",
+      wall: { plain: false, style: "school", hex: "#a0503c" },
+      tiers: [
+        { id: "w754299889", shape: "square", mat: "brick", z1: 21 },
+        ...["w754299894", "w754299895", "w754299896", "w754299897"].map((id) => ({ id, shape: "square", mat: "brick", z1: 14 }))
+      ],
+      stacks: [
+        { onId: "w754299889", startZ: 21, stages: [
+          { shape: "square", w0: 14.2, w1: 14.2, h: 0.8, mat: "stone" },
+          { shape: "square", w0: 13.6, w1: 3.2, h: 4.6, mat: "slate" },
+          { shape: "octagon", w0: 2.8, w1: 2.6, h: 1.8, mat: "white" },
+          { shape: "octagon", w0: 2.8, w1: 0, h: 1.9, mat: "lead" }
+        ] },
+        ...["w754299894", "w754299895", "w754299896", "w754299897"].map((onId) => ({ onId, startZ: 14, stages: [
+          { shape: "square", w0: 11.8, w1: 11.8, h: 0.6, mat: "stone" },
+          { shape: "square", w0: 11.4, w1: 0.8, h: 8.4, mat: "slate" },
+          { shape: "octagon", w0: 0.6, w1: 0, h: 1, mat: "gold" }
+        ] }))
+      ],
+      roofs: [],
+      halls: [
+        {
+          id: "w754299893",
+          widthM: 0,
+          anchor: [4.879729, 52.35806],
+          eavesM: 14,
+          riseM: 9,
+          mat: "slate",
+          wings: [{ at: [4.879729, 52.35806], lenM: 95.5, widM: 33.7, bearingDeg: 23.5, riseM: 9, roof: "hipped" }]
+        },
+        {
+          id: "w754299898",
+          widthM: 0,
+          anchor: [4.879741, 52.358045],
+          eavesM: 14,
+          riseM: 9,
+          mat: "slate",
+          wings: [{ at: [4.879741, 52.358045], lenM: 50, widM: 30.4, bearingDeg: 113.5, riseM: 9, roof: "hipped" }]
+        }
+      ],
+      body: ["w754299888"],
+      hides: ["w754299890", "w754299892"],
+      forms: [
+        // Glass ground floor, the white tub on it, the block behind it, and the canopy over all.
+        { on: "w754299890", z0: 0, z1: 4.6, outsetM: -0.8, hex: GLASS },
+        { on: "w754299890", z0: 4.6, z1: 16.8, hex: STEDELIJK_WHITE },
+        { on: "w754299892", z0: 0, z1: 15, hex: "#d9d6cf", half: { through: [4.879802, 52.357814], keepBearingDeg: 113.7 } },
+        { on: "w754299892", z0: 16.8, z1: 17.6, hex: STEDELIJK_WHITE }
+      ]
+    },
+    {
+      // Eye Filmmuseum (Delugan Meissl, 2012): a white faceted wedge that climbs from the west to a
+      // flat-topped prow over the IJ, over a long glazed band (Commons "Amsterdam Eye filmmuseum at
+      // the IJ - panoramio.jpg"). 3D BAG: the prow's roof 24.5 m, the western facets 3-19 m.
+      name: "Eye Filmmuseum",
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      hides: ["NL.IMBAG.Pand.0363100012237838"],
+      forms: [
+        { on: "NL.IMBAG.Pand.0363100012237838", z0: 0, z1: 4.2, outsetM: -2, hex: GLASS },
+        { on: "NL.IMBAG.Pand.0363100012237838", z0: 4.2, z1: 5, z1High: 21, highBearingDeg: 0, hex: EYE_WHITE, half: { through: [4.90123, 52.38428], keepBearingDeg: 180 } },
+        { on: "NL.IMBAG.Pand.0363100012237838", z0: 4.2, z1: 24.5, hex: EYE_WHITE, half: { through: [4.90123, 52.38428], keepBearingDeg: 0 } }
+      ]
+    },
+    {
+      // NEMO's roof (Renzo Piano, 1997): the copper-green ship's deck is a public square that climbs
+      // north from the Oosterdok end towards the prow over the IJ tunnel (3D BAG: the hall's roof
+      // rises 12-22 m, the prow's 24-31.5 m). OSM gives the hall and its side strips one flat height
+      // each, so the deck stood as a flat box between 24 m fins; these forms tilt them. The walls
+      // keep the NEMO kit's patinated copper.
+      name: "NEMO deck",
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      hides: ["w1390692772", "w1390692771", "w1390692768", "w1390692765"],
+      forms: [
+        { on: "w1390692772", z0: 0, z1: 12, z1High: 22, highBearingDeg: 90, hex: NEMO_COPPER },
+        { on: "w1390692771", z0: 0, z1: 13, z1High: 23.7, highBearingDeg: 90, hex: NEMO_COPPER },
+        { on: "w1390692768", z0: 0, z1: 13, z1High: 23.8, highBearingDeg: 90, hex: NEMO_COPPER },
+        { on: "w1390692765", z0: 0, z1: 24, z1High: 31.5, highBearingDeg: 90, hex: NEMO_COPPER }
+      ]
+    },
+    {
+      // Pathé Tuschinski (Hijman Louis de Jong, 1921): a grey-brown glazed-stone front between two
+      // square towers, each under a green copper dome with a lantern (Commons "Tuschinski
+      // front.jpg", "Amsterdam - Reguliersbreestraat - View West on Tuschinski Theatre 1921.jpg").
+      // One BAG footprint: 3D BAG puts the flat roofs at 19 m, the auditorium and foyer roofs at
+      // 22 m, the stage house at the back at 25 m, and the domes from 23.5 m to their lanterns at
+      // 33.5 m (the west tower; the east one reads 38 m, its finial). The towers stand inside the
+      // corners of the 14.6 m street front.
+      name: "Tuschinski",
+      wall: { plain: true, hex: "#6d665e" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012168188",
+        widthM: 0,
+        anchor: [4.894841, 52.366302],
+        eavesM: 19,
+        riseM: 3,
+        mat: "slate",
+        wings: [
+          { at: [4.894505, 52.366213], lenM: 30, widM: 26, bearingDeg: 63.4, riseM: 3, roof: "hipped" },
+          { at: [4.894657, 52.36646], lenM: 16, widM: 14, bearingDeg: 63.4, riseM: 3, roof: "hipped" }
+        ],
+        towers: [
+          // The street front (landmarkFrontData.ts TUSCHINSKI) draws the towers and their stepped
+          // crowns to 28.4 m; the domes rise out of those crowns, 1.2 m behind the front's face.
+          { at: [4.894772, 52.3665], widthM: 3, z1: 26.8, capM: 5.1, cap: "copper", capShape: "dome", capHex: "#4f8a76", bearingDeg: 63.4 },
+          { at: [4.894643, 52.366536], widthM: 3, z1: 26.8, capM: 5.1, cap: "copper", capShape: "dome", capHex: "#4f8a76", bearingDeg: 63.4 },
+          // The stage house across the back.
+          { at: [4.894405, 52.366062], widthM: 26, lenM: 10, z1: 24.2, capM: 0.8, cap: "slate", capShape: "slant", highBearingDeg: 153.4, bearingDeg: 153.4 }
+        ]
+      }]
+    },
+    {
+      // Het Scheepvaartmuseum, 's Lands Zeemagazijn (Daniel Stalpaert, 1656): a square block of pale
+      // sandstone round a courtyard, rows of windows, hipped slate roofs with dormers on all four
+      // wings (Commons "Het Scheepvaartmuseum, Amsterdam.jpg"). 3D BAG: eaves 17 m, ridges 22.8 m.
+      // The courtyard (OSM w269078550, a 9 m box) is roofed in glass at the eaves since 2011.
+      name: "Scheepvaartmuseum",
+      wall: { plain: false, style: "canal", hex: "#d8d2c2" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "r3604837",
+        widthM: 0,
+        anchor: [4.914188, 52.371798],
+        eavesM: 17,
+        riseM: 5.8,
+        mat: "slate",
+        wings: [
+          { at: [4.91467, 52.371864], lenM: 64.7, widM: 17.9, bearingDeg: 28.1, riseM: 5.8, roof: "hipped" },
+          { at: [4.914969, 52.37152], lenM: 64.7, widM: 10.4, bearingDeg: 28.1, riseM: 5.8, roof: "hipped" },
+          { at: [4.914502, 52.371607], lenM: 57.3, widM: 17.8, bearingDeg: 118.1, riseM: 5.8, roof: "hipped" },
+          { at: [4.91511, 52.371807], lenM: 57.3, widM: 17.9, bearingDeg: 118.1, riseM: 5.8, roof: "hipped" },
+          // The pedimented centre bay on each side (the footprint's 2.6-3.1 m projections): a gable
+          // facing out of the main roof.
+          { at: [4.914627, 52.371911], lenM: 12.2, widM: 15.2, bearingDeg: 118.1, riseM: 4.5 },
+          { at: [4.914981, 52.371504], lenM: 12.2, widM: 17.1, bearingDeg: 118.1, riseM: 4.5 },
+          { at: [4.914433, 52.371583], lenM: 12.2, widM: 12.6, bearingDeg: 28.1, riseM: 4.5 },
+          { at: [4.915182, 52.371828], lenM: 12.2, widM: 12.5, bearingDeg: 28.1, riseM: 4.5 }
+        ]
+      }],
+      hides: ["w269078550"],
+      forms: [{ on: "w269078550", z0: 16.6, z1: 17.4, hex: "#9fb3bc" }]
+    },
+    {
+      // H'ART Museum, the Amstelhof (1683): a severe dark brown brick block of three storeys round a
+      // large courtyard, its 102 m front on the Amstel, steep slate hipped roofs with chimneys
+      // (Commons "Amsterdam Amstelhof seen from Blauwbrug.jpg"). 3D BAG: eaves 10 m, roofs to 14.5 m.
+      // The Amstel and back wings are 9.3 m deep, the north and south wings 23 m (two piles), and a
+      // lower 8 m annex stands on the east side.
+      name: "H'ART Museum",
+      wall: { plain: false, style: "canal", hex: "#6e4535" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012165553",
+        widthM: 0,
+        anchor: [4.902126, 52.365736],
+        eavesM: 10,
+        riseM: 4.5,
+        mat: "slate",
+        wings: [
+          { at: [4.902414, 52.365307], lenM: 102.1, widM: 9.3, bearingDeg: 107.2, riseM: 4.5, roof: "hipped" },
+          { at: [4.90325, 52.365466], lenM: 102.1, widM: 9.3, bearingDeg: 107.2, riseM: 4.5, roof: "hipped" },
+          { at: [4.90266, 52.365729], lenM: 68.8, widM: 22.9, bearingDeg: 17.2, riseM: 4.5, roof: "hipped" },
+          { at: [4.903004, 52.365044], lenM: 68.8, widM: 22.8, bearingDeg: 17.2, riseM: 4.5, roof: "hipped" },
+          { at: [4.903374, 52.365489], lenM: 38.8, widM: 8.1, bearingDeg: 107.2, riseM: 3, roof: "hipped" }
+        ]
+      }]
+    }
+  ];
+
+  // src/canalRecall/worshipKits.ts
+  var ESNOGA_BRICK = "#7a4a3a";
+  var ESNOGA_STONE = "#e6dfcf";
+  var WORSHIP_KITS = [
+    {
+      // Portuguese Synagogue (Esnoga), Mr. Visserplein: Elias Bouman's 1675 brick box. Commons
+      // "EsnogaAmsterdam.jpg" and "De Portuguese Synagoge te Amsterdam - Amsterdam - 20013903 -
+      // RCE.jpg": dark brick walls between giant pilaster-buttresses, a lower row of tall
+      // round-headed windows and an upper row of square ones, a white stone cornice and balustrade,
+      // and the roof hidden behind it. The low ring of service buildings around it are separate
+      // footprints. One BAG footprint (1675, 21.9 m tile height) carries the box with its 1.1 m
+      // buttresses, 37 x 27.9 m on an axis of 151 degrees, and two small 8 m annexes on the east.
+      // 3D BAG: roof slopes from 18.7 to 23.7 m (hipped, behind the balustrade), a few flat bits at
+      // 21 m. Scaled off the RCE photo (cornice 19 m): arched windows 6.2-13.2 m, square ones
+      // 14.6-17.6 m, two between each pair of buttresses; balustrade to 20.2 m.
+      name: "Portuguese Synagogue",
+      wall: { plain: true, hex: ESNOGA_BRICK },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012170255",
+        widthM: 0,
+        anchor: [4.905322, 52.367546],
+        eavesM: 19.2,
+        riseM: 4.4,
+        mat: "slate",
+        wings: [{ at: [4.905322, 52.367546], lenM: 37, widM: 27.9, bearingDeg: 151, riseM: 4.4, roof: "hipped" }],
+        windows: {
+          glassHex: "#3c454d",
+          rows: [
+            { z0: 6.2, z1: 13.2, widthM: 2.1, bayM: 4.9, head: "round" },
+            { z0: 14.6, z1: 17.6, widthM: 1.9, bayM: 4.9, head: "flat" }
+          ]
+        }
+      }],
+      // The stone cornice and balustrade round the top of the walls.
+      forms: [{ on: "NL.IMBAG.Pand.0363100012170255", z0: 18.7, z1: 20.2, outsetM: 0.35, hex: ESNOGA_STONE }]
+    },
+    {
+      // Hofkerk (H.H. Martelaren van Gorcumkerk), Linnaeusstraat: J.T.J. Cuypers and Jan Stuyt's
+      // 1927-29 brick church. Commons "Overzicht westgevel met ingangsportaal - Amsterdam - 20409083 -
+      // RCE.jpg" (the west front), "H.H. Martelaren van Gorcum kerk.JPG" (the south side) and
+      // "... kerk 3.JPG" (the tower): a square west tower with paired belfry arches and a narrow
+      // tiled pyramid, the nave's big gable between three pointed portals, a small clock turret,
+      // one sweeping glazed-tile roof over nave and aisles, a square crossing tower under a tiled
+      // pyramid, and a lower transept and choir. No dome. One BAG footprint (1929, tile height
+      // 32.1 m: the whole church stood as a 32 m box). 3D BAG: nave slopes 5.4-19.8 m, transept
+      // 6-13.9 m, choir 8-15 m, crossing tower pyramid 22.3-29.3 m, the west tower's flat top
+      // 25.7-26.1 m (ridge 32.1 m with its cap and cross), the clock turret's pyramid 11.2-16.7 m.
+      name: "Hofkerk",
+      wall: { plain: true, hex: "#8f5038" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012123068",
+        widthM: 0,
+        anchor: [4.933645, 52.353062],
+        eavesM: 8,
+        riseM: 11.8,
+        mat: "tile",
+        roofHex: "#9a8150",
+        wings: [
+          { at: [4.933645, 52.353062], lenM: 37.4, widM: 21, bearingDeg: 0, riseM: 11.8 },
+          { at: [4.93399, 52.353055], lenM: 43, widM: 12, bearingDeg: 90, riseM: 5.9 },
+          { at: [4.93412, 52.35306], lenM: 10, widM: 12, bearingDeg: 0, riseM: 7, roof: "hipped" }
+        ],
+        towers: [
+          // West tower: walls to the 26 m flat top, a narrow tiled pyramid and cross (32.1 m).
+          { at: [4.933435, 52.353172], widthM: 8.5, z1: 26, capM: 4.5, capWidthM: 4.2, cap: "tile", bearingDeg: 0 },
+          // Crossing tower under its tiled pyramid (29.3 m, cross 30.9 m).
+          { at: [4.93397, 52.353062], widthM: 10, z1: 21.5, capM: 7.8, cap: "tile", bearingDeg: 0 },
+          // Clock turret at the south west, turned with the angled block it stands in.
+          { at: [4.933603, 52.352865], widthM: 5, z1: 11.2, capM: 5.5, cap: "tile", bearingDeg: 44 }
+        ],
+        windows: {
+          glassHex: "#3a434c",
+          rows: [
+            // The west front's three pointed portals, the middle one widest (photo: 3 m and 2.4 m).
+            { z0: 0.3, z1: 5.6, widthM: 2.8, bayM: 6.2, head: "pointed", at: [4.93337, 52.35305], count: 3 },
+            // Aisle windows: small pointed lights in a row under the eaves.
+            { z0: 2.6, z1: 5.8, widthM: 0.8, bayM: 2.2, head: "pointed" }
+          ],
+          // Paired belfry arches near the west tower's top.
+          towerRows: [{ z0: 21.4, z1: 24.6, widthM: 1.4, bayM: 1.9, head: "round", count: 2 }]
+        }
+      }]
+    },
+    {
+      // Gerardus Majellakerk, Amsterdam-Oost (OSM way 45037862): a 1926 central church. Commons "Gerardus Majellakerk -
+      // Amsterdam - 20307934 - RCE.jpg", "2022 Gerardus Majellakerk, Asd.jpg" and "Gerardus
+      // Majellakerk Amsterdam (Oostzijde).jpg": dark brown brick, a broad octagonal drum ringed with
+      // round-arched windows under a steep slate cone with a gilt ball and cross, four short arms with
+      // slate gable roofs, round chapels with conical caps in the angles, and a narthex with a round
+      // window at the west end. One BAG footprint (tile height 41.5 m: the whole church stood as a
+      // 41 m block of flats with house windows). 3D BAG: the cone's facets rise from 23-28 m to
+      // 41.3 m round (4.938523, 52.359805); the arms' slopes run 13.3 to 18.8-19.8 m (long arm,
+      // axis 13 degrees) and 13.3 to 19.1-21.2 m (cross arm); chapels 10.5-13.9 m, apses 8-11.4 m.
+      // The footprint is 69 m along the axis and 40 m across at the drum.
+      name: "Gerardus Majellakerk",
+      wall: { plain: true, hex: "#6e4a3c" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012136492",
+        widthM: 0,
+        anchor: [4.938523, 52.359805],
+        eavesM: 13.3,
+        riseM: 6,
+        mat: "slate",
+        wings: [
+          { at: [4.938523, 52.359805], lenM: 56, widM: 20, bearingDeg: 13.3, riseM: 6 },
+          { at: [4.938523, 52.359805], lenM: 40, widM: 14, bearingDeg: 103.3, riseM: 6 }
+        ],
+        towers: [
+          // The drum (24 m across, walls to 25.5 m) under its slate cone to 41.3 m.
+          { at: [4.938523, 52.359805], widthM: 24, z1: 25.5, capM: 15.8, cap: "slate", shape: "octagon", bearingDeg: 13.3 }
+        ],
+        windows: {
+          glassHex: "#3a434c",
+          frameHex: "#e3dccb",
+          rows: [{ z0: 4, z1: 10.5, widthM: 1.5, bayM: 4.2, head: "round" }],
+          // The narthex's round window over the west porch.
+          roses: [{ at: [4.93802, 52.359705], z: 9.5, radiusM: 2 }]
+        }
+      }]
+    },
+    {
+      // Westermoskee (Ayasofya Camii), Piri Reisplein: Marc Breitman and Nada Breitman-Jakov's 2015
+      // mosque in the Ottoman manner (before this kit it stood as a glass-fronted
+      // box). Commons "Westermoskee Aya Sofya (Amsterdam, The Netherlands 2017).jpg" and
+      // "Westermoskee - Amsterdam (26579109769).jpg": a two-storey body of banded brown and buff
+      // brick with round-headed upper windows, a chamfered square drum with a ring of arched windows,
+      // a big zinc dome with a gilt finial, half-domes and a white colonnade, and one slender brick
+      // minaret with two white balconies and a silver spike. One BAG footprint (2015, tile 21.5 m).
+      // 3D BAG: the dome's facets reach 26.4 m round (4.86064, 52.36620); lower roofs and half-domes
+      // 10.5-24 m; the minaret is the small polygon at the east corner (4.86094, 52.366252), where the
+      // point cloud catches only 26.5-32.6 m of it. Its height, about 40 m, is read off the second
+      // photo against the 26 m dome, not measured.
+      name: "Westermoskee",
+      wall: { plain: true, hex: "#7b4636" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012241498",
+        widthM: 0,
+        anchor: [4.86064, 52.3662],
+        eavesM: 10.6,
+        riseM: 0,
+        mat: "lead",
+        towers: [
+          // The drum (22 m across, walls to 18 m) under the zinc dome to 26.4 m.
+          { at: [4.86064, 52.3662], widthM: 22, z1: 18, capM: 8.4, cap: "lead", capShape: "dome", capHex: "#9aa3a8", shape: "octagon", bearingDeg: -37.5 },
+          // The minaret: brick shaft, two white balconies, a silver spike.
+          { at: [4.86094, 52.366252], widthM: 3, z1: 34, capM: 7, cap: "lead", capShape: "spire", capHex: "#c9ced2", shape: "octagon", bearingDeg: -37.5, wallHex: "#6b3a30" },
+          ...[20.5, 30].map((z) => ({ at: [4.86094, 52.366252], widthM: 4.4, z0: z, z1: z + 1.3, capM: 0.3, cap: "white", capShape: "dome", shape: "octagon", mat: "white", wallHex: "#ece8de", bearingDeg: -37.5, finial: false }))
+        ],
+        windows: {
+          glassHex: "#3a434c",
+          frameHex: "#ece8de",
+          rows: [
+            { z0: 0.6, z1: 3.6, widthM: 1.2, bayM: 3, head: "flat" },
+            { z0: 5.2, z1: 8.6, widthM: 1.3, bayM: 3, head: "round" }
+          ]
+        }
+      }]
+    },
+    {
+      // Dominicuskerk (Sint-Dominicus), Spuistraat 12: P.J.H. Cuypers' 1884-86 neo-Gothic basilica
+      // (it stood as two beige boxes, 28 and 15 m). Commons "Overzicht van de zuidgevel in de
+      // spuistraat - Amsterdam - 20424399 - RCE.jpg" and "WLM - andrevanb - amsterdam, dominicuskerk
+      // (1).jpg": grey-brown brick with buff bands, tall pointed traceried windows in the aisles and
+      // the clerestory, balustrades and pinnacles along both, a steep roof behind, and at the front
+      // corner a slender stair turret with an octagonal belfry and a slate spire. OSM maps the nave
+      // (w749287654, 28 m), the whole church as the aisles' part (w749287651, 15 m) and the turret
+      // (w749287652). 3D BAG (pand 0363100012171033): nave roof 20.5-25.6 m, aisle roofs 10.4-12.7
+      // m, the turret's belfry top flat at 28.5 m; the spire above it (8 m) is scaled off the photo.
+      name: "Dominicuskerk",
+      wall: { plain: true, hex: "#6f5e52" },
+      tiers: [{ id: "w749287652", shape: "octagon", mat: "brick", z1: 28.5 }],
+      stacks: [{ onId: "w749287652", startZ: 28.5, stages: [
+        { shape: "octagon", w0: 5.4, w1: 5.4, h: 0.5, mat: "stone" },
+        { shape: "octagon", w0: 4.4, w1: 0.3, h: 8, mat: "slate" },
+        { shape: "octagon", w0: 0.4, w1: 0, h: 1.4, mat: "gold" }
+      ] }],
+      roofs: [],
+      halls: [
+        {
+          id: "w749287654",
+          widthM: 0,
+          anchor: [4.893274, 52.376958],
+          fit: true,
+          eavesM: 20.6,
+          riseM: 5,
+          mat: "slate",
+          windows: { glassHex: "#3a434c", frameHex: "#cbb98f", rows: [{ z0: 13, z1: 19.4, widthM: 1.6, bayM: 5, head: "pointed" }] }
+        },
+        {
+          id: "w749287651",
+          widthM: 0,
+          anchor: [4.893274, 52.376958],
+          fit: true,
+          eavesM: 10.4,
+          riseM: 2.3,
+          mat: "slate",
+          windows: { glassHex: "#3a434c", frameHex: "#cbb98f", rows: [{ z0: 2.8, z1: 9.4, widthM: 1.8, bayM: 5, head: "pointed" }] }
+        }
+      ]
+    }
+  ];
+
+  // src/canalRecall/worshipBuildingData.ts
+  var WORSHIP_BUILDINGS = [
+    ["NL.IMBAG.Pand.0305100000001042", "c", "w", 6.1, 0, "e"],
+    // Anna s Hoeve, 1910, 6.1 m, 501 m2
+    ["NL.IMBAG.Pand.0358100021571530", "c", "h", 5.8, 6.7, "o"],
+    // Petrus en Pauluskerk, 1860, 10.5 m, 244 m2
+    ["NL.IMBAG.Pand.0362100001054286", "c", "w", 25.8, 0, "e"],
+    // Kruiskerk, 1950, 25.8 m, 822 m2
+    ["NL.IMBAG.Pand.0362100001055799", "c", "w", 15.5, 0, "o"],
+    // Sint Urbanuskerk, 1875, 15.5 m, 1418 m2
+    ["NL.IMBAG.Pand.0362100001056666", "c", "w", 11.8, 0, "e"],
+    // Dorpskerk, 1920, 11.8 m, 414 m2
+    ["NL.IMBAG.Pand.0362100001056682", "c", "w", 20.9, 0, "e"],
+    // Sint-Annakerk, 1928, 20.9 m, 867 m2
+    ["NL.IMBAG.Pand.0362100001059417", "c", "b", 4.5, 0, "m"],
+    // Nieuw Apostolische Kerk, 1966, 4.5 m, 203 m2
+    ["NL.IMBAG.Pand.0362100001059917", "s", "b", 7.2, 0, "m"],
+    // Sjoel Amstelveen, 1971, 7.2 m, 1091 m2
+    ["NL.IMBAG.Pand.0362100001060156", "c", "b", 8.2, 0, "m"],
+    // Titus Brandsmakerk, 1969, 8.2 m, 1231 m2
+    ["NL.IMBAG.Pand.0362100001077847", "c", "w", 13.8, 0, "e"],
+    // Pauluskerk, 1939, 13.8 m, 927 m2
+    ["NL.IMBAG.Pand.0362100001082159", "c", "b", 12.6, 0, "m"],
+    // (unnamed), 1963, 12.6 m, 501 m2
+    ["NL.IMBAG.Pand.0363100012062993", "c", "w", 11.1, 0, "e"],
+    // (unnamed), 1955, 11.1 m, 1209 m2
+    ["NL.IMBAG.Pand.0363100012066059", "c", "w", 11.2, 0, "e"],
+    // Mor Sharbil, 1958, 11.2 m, 1050 m2
+    ["NL.IMBAG.Pand.0363100012067458", "c", "w", 10.1, 0, "e"],
+    // De Nieuwe Augustinus, 1934, 10.1 m, 882 m2
+    ["NL.IMBAG.Pand.0363100012069508", "c", "b", 17.9, 0, "m"],
+    // (unnamed), 1997, 17.9 m, 451 m2
+    ["NL.IMBAG.Pand.0363100012072736", "c", "w", 11.1, 0, "e"],
+    // Bethelkerk, 1958, 11.1 m, 423 m2
+    ["NL.IMBAG.Pand.0363100012073895", "s", "b", 3.9, 0, "m"],
+    // (unnamed), 1992, 3.9 m, 381 m2
+    ["NL.IMBAG.Pand.0363100012074574", "s", "w", 17.1, 0, "e"],
+    // Raw Aron Schuster Synagoge, 1928, 17.1 m, 588 m2
+    ["NL.IMBAG.Pand.0363100012078085", "c", "b", 16.1, 0, "m"],
+    // De Ontmoeting, 1964, 16.1 m, 629 m2
+    ["NL.IMBAG.Pand.0363100012080392", "m", "b", 6.2, 0, "m"],
+    // Rabitha Al Islamia, 1965, 6.2 m, 1342 m2
+    ["NL.IMBAG.Pand.0363100012082170", "c", "h", 10.4, 14, "e"],
+    // Parkkerk, 1924, 20.2 m, 744 m2
+    ["NL.IMBAG.Pand.0363100012083695", "t", "w", 9.6, 0, "e"],
+    // (unnamed), 1927, 9.6 m, 239 m2
+    ["NL.IMBAG.Pand.0363100012088135", "c", "w", 9.9, 0, "e"],
+    // Christus Koningkerk, 1958, 9.9 m, 2465 m2
+    ["NL.IMBAG.Pand.0363100012089044", "c", "w", 13.3, 0, "e"],
+    // Maranathakerk, 1955, 13.3 m, 824 m2
+    ["NL.IMBAG.Pand.0363100012097084", "c", "h", 10, 9, "e"],
+    // Elthetokerk, 1914, 16.3 m, 323 m2
+    ["NL.IMBAG.Pand.0363100012097194", "c", "h", 6.7, 4.7, "o"],
+    // Schellingwouderkerk, 1866, 10 m, 148 m2
+    ["NL.IMBAG.Pand.0363100012097854", "c", "w", 13, 0, "e"],
+    // (unnamed), 1914, 13 m, 498 m2
+    ["NL.IMBAG.Pand.0363100012097989", "m", "w", 8.5, 0, "e"],
+    // Haci Bayram Camii Osdorp, 1931, 8.5 m, 560 m2
+    ["NL.IMBAG.Pand.0363100012098124", "c", "b", 6.9, 0, "m"],
+    // (unnamed), 1969, 6.9 m, 500 m2
+    ["NL.IMBAG.Pand.0363100012098251", "c", "w", 16.4, 0, "e"],
+    // De Bron, 1939, 16.4 m, 943 m2
+    ["NL.IMBAG.Pand.0363100012098714", "c", "h", 6.1, 13.5, "e"],
+    // Willem de Zwijgerkerk, 1931, 15.6 m, 739 m2
+    ["NL.IMBAG.Pand.0363100012099552", "c", "b", 9, 0, "m"],
+    // (unnamed), 1966, 9 m, 1399 m2
+    ["NL.IMBAG.Pand.0363100012100328", "t", "b", 4.2, 0, "m"],
+    // (unnamed), 1985, 4.2 m, 318 m2
+    ["NL.IMBAG.Pand.0363100012101255", "c", "b", 5.7, 0, "m"],
+    // (unnamed), 2001, 5.7 m, 1593 m2
+    ["NL.IMBAG.Pand.0363100012102877", "c", "b", 9.5, 0, "m"],
+    // Herdenkingskerk, 1964, 9.5 m, 575 m2
+    ["NL.IMBAG.Pand.0363100012103534", "c", "w", 20.5, 0, "e"],
+    // Augustinuskerk, 1935, 20.5 m, 1359 m2
+    ["NL.IMBAG.Pand.0363100012108972", "m", "w", 11.3, 0, "e"],
+    // Moskee an-Nour, 1921, 11.3 m, 280 m2
+    ["NL.IMBAG.Pand.0363100012109328", "c", "b", 5.4, 0, "m"],
+    // Gunung Batu, 1972, 5.4 m, 243 m2
+    ["NL.IMBAG.Pand.0363100012117241", "c", "h", 5, 7.1, "e"],
+    // (unnamed), 1914, 10 m, 748 m2
+    ["NL.IMBAG.Pand.0363100012117919", "c", "w", 15.4, 0, "e"],
+    // (unnamed), 1927, 15.4 m, 1706 m2
+    ["NL.IMBAG.Pand.0363100012119483", "m", "b", 3.9, 0, "m"],
+    // Emir Sultan Moskee, 1968, 3.9 m, 510 m2
+    ["NL.IMBAG.Pand.0363100012119680", "c", "b", 19.8, 0, "e"],
+    // Boomkerk, 1911, 19.8 m, 1256 m2
+    ["NL.IMBAG.Pand.0363100012120748", "c", "b", 8.6, 0, "m"],
+    // (unnamed), 1971, 8.6 m, 746 m2
+    ["NL.IMBAG.Pand.0363100012120986", "c", "h", 8.5, 10.3, "o"],
+    // Augustinuskerk, 1888, 15.7 m, 626 m2
+    ["NL.IMBAG.Pand.0363100012123194", "c", "b", 9.1, 0, "m"],
+    // CGK & NGK - De Bron, 1967, 9.1 m, 623 m2
+    ["NL.IMBAG.Pand.0363100012124248", "c", "b", 5, 0, "m"],
+    // Vergadering van Gelovigen, 1968, 5 m, 244 m2
+    ["NL.IMBAG.Pand.0363100012124586", "t", "b", 7.9, 0, "m"],
+    // Ikeda Centrum voor Vriendschap en Vrede, 1965, 7.9 m, 1269 m2
+    ["NL.IMBAG.Pand.0363100012125533", "m", "b", 9.5, 0, "m"],
+    // Djame Masdjied Taibah, 1984, 9.5 m, 1268 m2
+    ["NL.IMBAG.Pand.0363100012126000", "c", "b", 12.4, 0, "m"],
+    // (unnamed), 1985, 12.4 m, 612 m2
+    ["NL.IMBAG.Pand.0363100012128901", "m", "b", 7.4, 0, "m"],
+    // Islamitisch Centrum Quba, 1990, 7.4 m, 1140 m2
+    ["NL.IMBAG.Pand.0363100012128930", "m", "b", 3.8, 0, "m"],
+    // Al Houda Moskee, 1974, 3.8 m, 651 m2
+    ["NL.IMBAG.Pand.0363100012129592", "c", "w", 14.7, 0, "e"],
+    // Sint-Josephkerk, 1953, 14.7 m, 1406 m2
+    ["NL.IMBAG.Pand.0363100012130941", "m", "h", 6, 6.5, "e"],
+    // Kuba Camii Moskee, 1955, 10.5 m, 199 m2
+    ["NL.IMBAG.Pand.0363100012132809", "c", "w", 16.5, 0, "e"],
+    // (unnamed), 1923, 16.5 m, 1567 m2
+    ["NL.IMBAG.Pand.0363100012134386", "c", "b", 4.6, 0, "m"],
+    // Weerenkapel, 1969, 4.6 m, 406 m2
+    ["NL.IMBAG.Pand.0363100012135926", "c", "w", 14.4, 0, "e"],
+    // Maarten Lutherkerk, 1937, 14.4 m, 458 m2
+    ["NL.IMBAG.Pand.0363100012136224", "m", "b", 10.6, 0, "m"],
+    // El Ouma, 1992, 10.6 m, 833 m2
+    ["NL.IMBAG.Pand.0363100012137097", "m", "w", 6.4, 0, "e"],
+    // El Tawheed, 1914, 6.4 m, 595 m2
+    ["NL.IMBAG.Pand.0363100012137751", "c", "w", 10.2, 0, "e"],
+    // (unnamed), 1952, 10.2 m, 670 m2
+    ["NL.IMBAG.Pand.0363100012137946", "c", "h", 8.2, 6.8, "o"],
+    // Sloterkerk, 1861, 13 m, 333 m2
+    ["NL.IMBAG.Pand.0363100012140916", "s", "h", 8.2, 6.8, "o"],
+    // Gerard Dou Synagogue, 1892, 12.9 m, 208 m2
+    ["NL.IMBAG.Pand.0363100012142532", "m", "h", 8.4, 6, "o"],
+    // (unnamed), 1896, 12.6 m, 149 m2
+    ["NL.IMBAG.Pand.0363100012143236", "m", "w", 11.3, 0, "e"],
+    // Moskee El-Hijra, 1956, 11.3 m, 786 m2
+    ["NL.IMBAG.Pand.0363100012144206", "c", "h", 6.5, 6.5, "o"],
+    // Nieuwendammerkerk, 1849, 11 m, 246 m2
+    ["NL.IMBAG.Pand.0363100012146056", "s", "b", 7.6, 0, "m"],
+    // Joods Cultureel Centrum, 1967, 7.6 m, 1255 m2
+    ["NL.IMBAG.Pand.0363100012148521", "c", "w", 17.7, 0, "e"],
+    // (unnamed), 1927, 17.7 m, 405 m2
+    ["NL.IMBAG.Pand.0363100012153991", "t", "b", 5.9, 0, "m"],
+    // (unnamed), 2003, 5.9 m, 103 m2
+    ["NL.IMBAG.Pand.0363100012155663", "c", "b", 10.5, 0, "m"],
+    // (unnamed), 2010, 10.5 m, 362 m2
+    ["NL.IMBAG.Pand.0363100012160472", "c", "w", 14.5, 0, "o"],
+    // (unnamed), 1609, 14.5 m, 387 m2
+    ["NL.IMBAG.Pand.0363100012161518", "c", "h", 7.2, 6.7, "o"],
+    // Sint-Gertrudiskerk, 1894, 11.9 m, 289 m2
+    ["NL.IMBAG.Pand.0363100012161733", "c", "b", 11.8, 0, "m"],
+    // (unnamed), 1975, 11.8 m, 262 m2
+    ["NL.IMBAG.Pand.0363100012162454", "c", "h", 6.3, 6.3, "e"],
+    // (unnamed), 1927, 10.7 m, 208 m2
+    ["NL.IMBAG.Pand.0363100012162810", "c", "h", 5, 2.7, "e"],
+    // Meerpadkerk, 1924, 6.9 m, 99 m2
+    ["NL.IMBAG.Pand.0363100012163298", "c", "h", 6.2, 7.6, "o"],
+    // Petruskerk, 1850, 11.6 m, 311 m2
+    ["NL.IMBAG.Pand.0363100012163469", "c", "h", 5, 6.7, "e"],
+    // Sacramentskerk, 1939, 9.7 m, 904 m2
+    ["NL.IMBAG.Pand.0363100012165085", "c", "w", 16.5, 0, "o"],
+    // Oude Lutherse Kerk, 1885, 16.5 m, 1434 m2
+    ["NL.IMBAG.Pand.0363100012165936", "c", "h", 8.8, 9.1, "e"],
+    // Pancratiuskerk, 1901, 15.2 m, 486 m2
+    ["NL.IMBAG.Pand.0363100012166358", "c", "h", 10.1, 14, "e"],
+    // Sint-Agneskerk, 1914, 19.9 m, 1377 m2
+    ["NL.IMBAG.Pand.0363100012167089", "c", "h", 5, 4.6, "e"],
+    // Witte Kerk, 1933, 8.2 m, 126 m2
+    ["NL.IMBAG.Pand.0363100012167695", "c", "w", 13.4, 0, "o"],
+    // (unnamed), 1630, 13.4 m, 915 m2
+    ["NL.IMBAG.Pand.0363100012167890", "c", "h", 5, 3.1, "o"],
+    // Simon de Looier, 1894, 7.2 m, 322 m2
+    ["NL.IMBAG.Pand.0363100012168060", "c", "w", 13.3, 0, "o"],
+    // Begijnhofkapel, 1671, 13.3 m, 524 m2
+    ["NL.IMBAG.Pand.0363100012168141", "c", "w", 11.6, 0, "o"],
+    // Engelse kerk, 1665, 11.6 m, 477 m2
+    ["NL.IMBAG.Pand.0363100012169397", "c", "w", 15.2, 0, "e"],
+    // Heilige Nikolaas van Myrakerk, 1912, 15.2 m, 977 m2
+    ["NL.IMBAG.Pand.0363100012171741", "c", "w", 14.3, 0, "o"],
+    // Singelkerk, 1639, 14.3 m, 786 m2
+    ["NL.IMBAG.Pand.0363100012171989", "c", "b", 13.9, 0, "m"],
+    // (unnamed), 1969, 13.9 m, 488 m2
+    ["NL.IMBAG.Pand.0363100012176840", "c", "w", 11.7, 0, "e"],
+    // (unnamed), 1907, 11.7 m, 102 m2
+    ["NL.IMBAG.Pand.0363100012177272", "c", "h", 13, 8.1, "o"],
+    // Keizersgrachtkerk, 1888, 18.7 m, 416 m2
+    ["NL.IMBAG.Pand.0363100012177887", "c", "h", 7.2, 13.4, "o"],
+    // Sint Olofskapel, 1440, 16.6 m, 555 m2
+    ["NL.IMBAG.Pand.0363100012177921", "t", "b", 12.5, 0, "m"],
+    // Fo Guang Shan He Hua Tempel, 2000, 12.5 m, 326 m2
+    ["NL.IMBAG.Pand.0363100012179330", "c", "h", 13.8, 8.2, "o"],
+    // Nieuwe Waalse Kerk, 1856, 19.6 m, 423 m2
+    ["NL.IMBAG.Pand.0363100012180211", "c", "h", 10.1, 6.4, "o"],
+    // Agnietenkapel (UvA), 1470, 14.6 m, 249 m2
+    ["NL.IMBAG.Pand.0363100012181889", "s", "h", 10.2, 6.4, "o"],
+    // Uilenburger Synagoge, 1766, 14.6 m, 253 m2
+    ["NL.IMBAG.Pand.0363100012208081", "c", "h", 7.8, 9.5, "e"],
+    // (unnamed), 1921, 14.5 m, 347 m2
+    ["NL.IMBAG.Pand.0363100012233557", "c", "b", 18.5, 0, "m"],
+    // Vincentiuskerk, 1990, 18.5 m, 1744 m2
+    ["NL.IMBAG.Pand.0363100012235970", "c", "h", 5, 7.1, "o"],
+    // (unnamed), 1899, 10 m, 382 m2
+    ["NL.IMBAG.Pand.0363100012237290", "m", "h", 7.8, 10.8, "e"],
+    // Masjid Al-Karam, 1904, 15.3 m, 364 m2
+    ["NL.IMBAG.Pand.0363100012237328", "c", "w", 15.4, 0, "e"],
+    // (unnamed), 1926, 15.4 m, 931 m2
+    ["NL.IMBAG.Pand.0363100012237810", "m", "w", 18.2, 0, "o"],
+    // Blauwe Moskee, 18.2 m, 1352 m2
+    ["NL.IMBAG.Pand.0363100012239394", "c", "b", 4.7, 0, "m"],
+    // Koninkrijkszaal, 2010, 4.7 m, 308 m2
+    ["NL.IMBAG.Pand.0363100012240297", "c", "b", 8, 0, "m"],
+    // Wi Eegi Kerki, 2013, 8 m, 910 m2
+    ["NL.IMBAG.Pand.0363100012241744", "s", "b", 16.7, 0, "m"],
+    // LJG, 2010, 16.7 m, 978 m2
+    ["NL.IMBAG.Pand.0363100012241807", "m", "b", 7.4, 0, "m"],
+    // Moskee Taqwa, 2014, 7.4 m, 483 m2
+    ["NL.IMBAG.Pand.0363100012246231", "c", "h", 9.8, 7.8, "o"],
+    // Gerardus Majellakerk, 15.3 m, 241 m2
+    ["NL.IMBAG.Pand.0363100012253747", "c", "w", 17.2, 0, "o"],
+    // De Papegaai, 17.2 m, 667 m2
+    ["NL.IMBAG.Pand.0384100000004250", "c", "w", 13.6, 0, "e"],
+    // Sint-Petrus -Bandenkerk, 1910, 13.6 m, 581 m2
+    ["NL.IMBAG.Pand.0384100000004631", "c", "w", 8.8, 0, "e"],
+    // (unnamed), 1937, 8.8 m, 714 m2
+    ["NL.IMBAG.Pand.0393100000000191", "c", "w", 8.8, 0, "e"],
+    // (unnamed), 1924, 8.8 m, 379 m2
+    ["NL.IMBAG.Pand.0394100000209235", "c", "w", 11.3, 0, "e"],
+    // Pelgrimskerk, 1950, 11.3 m, 1122 m2
+    ["NL.IMBAG.Pand.0394100000209852", "c", "w", 10.8, 0, "e"],
+    // HH. Engelbewaarders, 1958, 10.8 m, 856 m2
+    ["NL.IMBAG.Pand.0394100001031599", "c", "w", 17.4, 0, "e"],
+    // Onze Lieve Vrouw Geboorte, 1929, 17.4 m, 480 m2
+    ["NL.IMBAG.Pand.0437100000001261", "c", "w", 16.8, 0, "o"],
+    // Amstelkerk, 1774, 16.8 m, 449 m2
+    ["NL.IMBAG.Pand.0437100000002950", "c", "b", 11.5, 0, "m"],
+    // Elimkerk, 1970, 11.5 m, 508 m2
+    ["NL.IMBAG.Pand.0437100000004199", "c", "h", 6.2, 7.3, "e"],
+    // De Kleine Kerk, 1925, 11.3 m, 252 m2
+    ["NL.IMBAG.Pand.0437100000004530", "c", "b", 6.6, 0, "m"],
+    // El Ministerio El Encuentro, 1982, 6.6 m, 1495 m2
+    ["NL.IMBAG.Pand.0457100000054845", "c", "w", 21.9, 0, "o"],
+    // Laurenskerk, 1462, 21.9 m, 1320 m2
+    ["NL.IMBAG.Pand.0457100000054855", "s", "h", 5.5, 5.9, "o"],
+    // Synagoge Masorti Nederland, 1840, 9.7 m, 111 m2
+    ["NL.IMBAG.Pand.0457100000059177", "c", "w", 12.4, 0, "e"],
+    // Van Houtenkerk, 1905, 12.4 m, 468 m2
+    ["NL.IMBAG.Pand.0457100000065023", "m", "b", 8, 0, "m"],
+    // Assoenat Moskee, 2017, 8 m, 553 m2
+    ["NL.IMBAG.Pand.0479100000005285", "m", "b", 5.5, 0, "m"],
+    // Essalam Moskee, 1980, 5.5 m, 119 m2
+    ["w1428145947", "c", "b", 3, 0, "m"],
+    // Koninkrijkszaal van Jehovah s Getuigen, 1998, 3 m, 106 m2
+    ["w1428145953", "c", "b", 9, 0, "m"],
+    // Koninkrijkszaal van Jehovah s Getuigen, 1998, 9 m, 328 m2
+    ["w1435276700", "c", "b", 3, 0, "m"],
+    // De Nieuwe Stad, 1992, 3 m, 520 m2
+    ["w1435276702", "c", "b", 3, 0, "m"],
+    // De Nieuwe Stad, 1992, 3 m, 193 m2
+    ["w1435276703", "c", "b", 9, 0, "m"],
+    // De Nieuwe Stad, 1992, 9 m, 592 m2
+    ["w1465800049", "c", "h", 10.3, 4.7, "o"],
+    // Sint Urbanus, 1820, 15 m, 81 m2
+    ["w1465800050", "c", "w", 6, 0, "o"],
+    // Sint Urbanus, 1820, 6 m, 80 m2
+    ["w1465800052", "c", "w", 6, 0, "o"],
+    // Sint Urbanus, 1820, 6 m, 63 m2
+    ["w1465800053", "c", "h", 10.3, 4.7, "o"],
+    // Sint Urbanus, 1820, 15 m, 295 m2
+    ["w1465800056", "c", "b", 3, 0, "o"],
+    // Sint Urbanus, 1820, 3 m, 35 m2
+    ["w1465800058", "c", "h", 10.2, 4.8, "o"],
+    // Sint Urbanus, 1820, 15 m, 227 m2
+    ["w174987150", "c", "w", 15, 0, "o"],
+    // (unnamed), 1380, 15 m, 596 m2
+    ["w276686506", "c", "h", 5.1, 3.9, "o"],
+    // Avontuur, 9 m, 182 m2
+    ["w282293967", "c", "w", 3, 0, "o"],
+    // Koninkrijkszaal van Jehovah s Getuigen, 3 m, 112 m2
+    ["w282293972", "c", "b", 11.9, 0, "m"],
+    // Koninkrijkszaal van Jehovah s Getuigen, 1998, 11.9 m, 337 m2
+    ["w314261187", "c", "w", 9, 0, "o"],
+    // Augustanahof, 9 m, 475 m2
+    ["w330159868", "c", "h", 5, 4, "o"],
+    // Calvariekerk, 9 m, 497 m2
+    ["w57858486", "c", "h", 5, 7.7, "e"],
+    // (unnamed), 1957, 12.7 m, 659 m2
+    ["w57860431", "c", "b", 35, 0, "m"],
+    // Kerk van Ransdorp, 1985, 35 m, 349 m2
+    ["w747868957", "c", "b", 7, 0, "o"],
+    // Old Church, 1300, 7 m, 13 m2
+    ["w747868958", "c", "b", 10, 0, "o"],
+    // Old Church, 1300, 10 m, 13 m2
+    ["w747868959", "c", "b", 9, 0, "o"],
+    // Old Church, 1300, 9 m, 28 m2
+    ["w747868960", "c", "b", 10, 0, "o"],
+    // Oude Kerk, 1300, 10 m, 39 m2
+    ["w747868962", "c", "b", 15, 0, "o"],
+    // Oude Kerk, 1300, 15 m, 38 m2
+    ["w747868963", "c", "b", 15, 0, "o"],
+    // Oude Kerk, 1300, 15 m, 38 m2
+    ["w747868964", "c", "b", 15, 0, "o"],
+    // Oude Kerk, 1300, 15 m, 37 m2
+    ["w747868965", "c", "b", 15, 0, "o"],
+    // Oude Kerk, 1300, 15 m, 37 m2
+    ["w747868966", "c", "b", 15, 0, "o"],
+    // Oude Kerk, 1300, 15 m, 38 m2
+    ["w747868968", "c", "b", 17, 0, "o"],
+    // Old Church, 1300, 17 m, 13 m2
+    ["w747868969", "c", "b", 17, 0, "o"],
+    // Old Church, 1300, 17 m, 15 m2
+    ["w747868985", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 60 m2
+    ["w747868986", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 59 m2
+    ["w747868987", "c", "h", 15, 8, "o"],
+    // Oude Kerk, 1300, 23 m, 220 m2
+    ["w747868988", "c", "h", 15, 8, "o"],
+    // Oude Kerk, 1300, 23 m, 199 m2
+    ["w747868989", "c", "h", 15, 8, "o"],
+    // Oude Kerk, 1300, 23 m, 116 m2
+    ["w747868990", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 105 m2
+    ["w747868991", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 105 m2
+    ["w747868992", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 62 m2
+    ["w747868993", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 63 m2
+    ["w747868994", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 100 m2
+    ["w747868995", "c", "h", 15, 8, "o"],
+    // Oude Kerk, 1300, 23 m, 697 m2
+    ["w747911435", "c", "h", 14.6, 4.4, "o"],
+    // (unnamed), 1380, 19 m, 102 m2
+    ["w747911440", "c", "b", 34, 0, "o"],
+    // (unnamed), 1380, 34 m, 151 m2
+    ["w747924617", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 39 m2
+    ["w747924618", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 36 m2
+    ["w747924619", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 34 m2
+    ["w747924621", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 46 m2
+    ["w747924622", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 49 m2
+    ["w747924623", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 44 m2
+    ["w747924624", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 48 m2
+    ["w747924625", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 52 m2
+    ["w748997142", "c", "h", 6.4, 3.6, "o"],
+    // (unnamed), 10 m, 118 m2
+    ["w748997143", "c", "b", 34, 0, "o"],
+    // New Church, 1380, 34 m, 5 m2
+    ["w748997144", "c", "b", 34, 0, "o"],
+    // New Church, 1380, 34 m, 5 m2
+    ["w749242499", "c", "b", 6, 0, "o"],
+    // Old Church, 1300, 6 m, 7 m2
+    ["w749242500", "c", "b", 7, 0, "o"],
+    // Old Church, 1300, 7 m, 19 m2
+    ["w749242501", "c", "b", 7, 0, "o"],
+    // Oude Kerk, 1300, 7 m, 32 m2
+    ["w749287964", "c", "w", 5, 0, "o"],
+    // Westerkerk, 5 m, 295 m2
+    ["w749356521", "c", "b", 19, 0, "o"],
+    // Waalse kerk, 1496, 19 m, 73 m2
+    ["w749356522", "c", "h", 9.3, 3.7, "o"],
+    // Waalse kerk, 1496, 13 m, 232 m2
+    ["w749356523", "c", "h", 13.4, 5.6, "o"],
+    // Waalse kerk, 1496, 19 m, 401 m2
+    ["w749386975", "c", "b", 4.5, 0, "o"],
+    // Walloon Church, 1496, 4.5 m, 13 m2
+    ["w749386976", "c", "h", 9.7, 3.3, "o"],
+    // Waalse kerk, 1496, 13 m, 206 m2
+    ["w749871267", "c", "w", 4, 0, "o"],
+    // Noorderkerk, 1622, 4 m, 93 m2
+    ["w750036045", "c", "h", 8.1, 9.9, "o"],
+    // Posthoornkerk, 1673, 18 m, 390 m2
+    ["w750036046", "c", "b", 26, 0, "o"],
+    // Posthoornkerk, 1673, 26 m, 49 m2
+    ["w750036047", "c", "b", 54, 0, "o"],
+    // Posthoornkerk, 1673, 54 m, 32 m2
+    ["w750036048", "c", "b", 54, 0, "o"],
+    // Posthoornkerk, 1673, 54 m, 33 m2
+    ["w750036049", "c", "b", 26, 0, "o"],
+    // Posthoornkerk, 1673, 26 m, 136 m2
+    ["w750036050", "c", "b", 26, 0, "o"],
+    // Posthoornkerk, 1673, 26 m, 117 m2
+    ["w750036051", "c", "h", 21.5, 4.5, "o"],
+    // Posthoornkerk, 1673, 26 m, 297 m2
+    ["w750093275", "c", "h", 11.9, 4.1, "o"],
+    // Posthoornkerk, 1673, 16 m, 186 m2
+    ["w750093276", "c", "b", 23, 0, "o"],
+    // Posthoornkerk, 1673, 23 m, 47 m2
+    ["w750093277", "c", "b", 23, 0, "o"],
+    // Posthoornkerk, 1673, 23 m, 47 m2
+    ["w750093278", "c", "b", 26, 0, "o"],
+    // Posthoornkerk, 1673, 26 m, 68 m2
+    ["w995323510", "c", "b", 49, 0, "e"],
+    // Vredeskerk, 1925, 49 m, 48 m2
+    ["w995323511", "c", "b", 40, 0, "e"],
+    // Vredeskerk, 1925, 40 m, 45 m2
+    ["w995323512", "c", "b", 40, 0, "e"]
+    // Vredeskerk, 1925, 40 m, 45 m2
+  ];
+
+  // src/canalRecall/worshipBuildings.ts
+  var WORSHIP_WALL = { o: "#7a4535", e: "#83503d", m: "#9b7a62" };
+  var FIT_COVERAGE = 0.78;
+  var FIT_MAX_DEV_M = 6;
+  var round1 = (v) => Math.round(v * 10) / 10;
+  function worshipWindows(eavesM) {
+    const z0 = Math.max(1.5, eavesM * 0.22), z1 = Math.min(eavesM - 1, z0 + 9);
+    if (z1 - z0 < 2.5) return [];
+    const widthM = Math.min(1.8, Math.max(0.9, (z1 - z0) / 3.2));
+    return [{ z0: round1(z0), z1: round1(z1), widthM: round1(widthM), bayM: round1(Math.max(3.2, widthM * 2.6)), head: "round" }];
+  }
+  var KIND_NAME = { c: "church", m: "mosque", s: "synagogue", t: "temple" };
+  function worshipKit([id, kind, mode, eavesM, riseM, era]) {
+    const name = `Generic ${KIND_NAME[kind]} ${id}`, hex2 = WORSHIP_WALL[era];
+    const rows = worshipWindows(eavesM);
+    if (mode === "b" || mode === "w" && !rows.length) return { name, wall: { plain: true, hex: hex2 }, tiers: [], stacks: [], roofs: [], body: [id] };
+    return {
+      name,
+      wall: { plain: true, hex: hex2 },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === "h", eavesM, riseM, mat: era === "o" ? "slate" : "tile", windows: rows.length ? { rows, glassHex: "#3a434c" } : void 0 }]
+    };
+  }
+  var GENERIC_WORSHIP_KITS = WORSHIP_BUILDINGS.map(worshipKit);
+
   // src/canalRecall/landmarkKits.ts
   var MAT_HEX = {
     brick: "#9a5240",
@@ -621,7 +1613,7 @@
     { shape: "octagon", w0: 1.6, w1: 1.6, h: 1, mat: "gold" },
     { shape: "octagon", w0: 0.9, w1: 0, h: 1.8, mat: "gold" }
   ];
-  var KITS = [
+  var HAND_KITS = [
     {
       // Tower 87 m: brick base, stone clock stage, octagonal stone and lead stages, lantern, crown.
       name: "Westerkerk",
@@ -871,6 +1863,10 @@
       roofs: [],
       body: ["w1390692763", "w1390692767", "w1390692768", "w1390692769", "w1390692770", "w1390692771", "w1390692772", "w1390692766", "w1390692764", "w1390692765"]
     },
+    // Museums and cinemas: the Van Gogh Museum, the Stedelijk, Eye, Tuschinski, the Maritime Museum, H'ART (museumKits.ts).
+    ...MUSEUM_KITS,
+    // Places of worship modelled by hand (worshipKits.ts), and the generic treatment for the rest (worshipBuildings.ts).
+    ...WORSHIP_KITS,
     {
       // De Hallen, the 1902-05 Tollensstraat tram depot (user report 2026-10-02: one bare tan
       // block). One BAG footprint over a row of brick sheds about 9.6 m wide, whose gable ends
@@ -895,10 +1891,44 @@
       tiers: [],
       stacks: [],
       roofs: [],
-      halls: [{ id: "NL.IMBAG.Pand.0363100012167944", widthM: 30.6, anchor: [4.878429, 52.372973], eavesM: 16, riseM: 9, mat: "slate", towers: [
-        { at: [4.878461, 52.373017], widthM: 7.5, z1: 31, capM: 8.5, cap: "slate" },
-        { at: [4.878772, 52.373095], widthM: 7.5, z1: 31, capM: 8.5, cap: "slate" }
-      ] }]
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012167944",
+        widthM: 30.6,
+        anchor: [4.878429, 52.372973],
+        eavesM: 16,
+        riseM: 9,
+        mat: "slate",
+        towers: [
+          { at: [4.878461, 52.373017], widthM: 7.5, z1: 31, capM: 8.5, cap: "slate" },
+          { at: [4.878772, 52.373095], widthM: 7.5, z1: 31, capM: 8.5, cap: "slate" }
+        ],
+        // Openings read off Commons "Fatih moskee, Amsterdam 69.jpg" (the front, scaled by its 4.5 m
+        // door arches) and "Fatihmosquewesterkerkamsterdam.jpg" (the towers): three pointed door
+        // arches, four round-headed windows over them, a 3.6 m rose with star tracery in the gable,
+        // paired windows up each tower and a row of five belfry arches under the cornice. The photos
+        // show round heads, not pointed ones, everywhere but the doors. The nave's long walls stand
+        // behind 10-16 m neighbours; their tall windows are a guess from the plan, not a photo.
+        windows: {
+          glassHex: "#46505a",
+          frameHex: "#c9bda4",
+          // `at` points sit on the front wall: its middle, and in front of each tower.
+          rows: [
+            { z0: 0.3, z1: 4.6, widthM: 2.6, bayM: 3.1, head: "pointed", at: [4.8786371, 52.3730248], count: 3 },
+            { z0: 7.7, z1: 10.9, widthM: 1, bayM: 1.9, head: "round", at: [4.8786371, 52.3730248], count: 4 },
+            ...[[4.8784814, 52.372986], [4.8787927, 52.3730635]].flatMap((at) => [
+              { z0: 5.6, z1: 8.4, widthM: 0.85, bayM: 1.3, head: "flat", at, count: 2 },
+              { z0: 9.6, z1: 12.2, widthM: 0.85, bayM: 1.3, head: "flat", at, count: 2 },
+              { z0: 13.6, z1: 15.6, widthM: 0.85, bayM: 1.3, head: "round", at, count: 2 }
+            ]),
+            { z0: 6, z1: 13.5, widthM: 1.5, bayM: 4.5, head: "round" }
+          ],
+          roses: [{ at: [4.8786371, 52.3730248], z: 16, radiusM: 1.8 }],
+          towerRows: [
+            { z0: 18, z1: 20.8, widthM: 0.85, bayM: 1.3, head: "round", count: 2 },
+            { z0: 27.4, z1: 29.8, widthM: 0.75, bayM: 1.3, head: "round", count: 5 }
+          ]
+        }
+      }]
     },
     {
       // Obrechtkerk, Jacob Obrechtstraat: Jos Cuypers and Jan Stuyt's 1908-11 neo-Romanesque cross
@@ -1042,22 +2072,77 @@
           { at: [4.842958, 52.377514], widthM: 7, lenM: 12.5, z1: 37.5, capM: 10.5, cap: "slate", capShape: "slant", highBearingDeg: 2, bearingDeg: 2 }
         ]
       }]
+    },
+    {
+      // Koninklijk Theater Carré, Amstel 115-125: the 1887 circus building (user 2026-10-03:
+      // "Carre looks awful in that shot", one bare 28 m brick slab). One BAG footprint, 58 x 37 m on
+      // an axis of 17 degrees, its 37 m front on the Amstel at the west end with an 8 m central
+      // risalit standing 1.9 m proud. Commons "Carre_Theatre_2038.jpg" and "Overzicht op Carré gezien
+      // vanaf de overzijde van de Amstel - 20408841 - RCE.jpg" (straight on, scaled by the 37 m
+      // front): a cream stuccoed neo-Renaissance front, a grey stone ground storey of round arches
+      // to 4.5 m, three rows of windows (5-8 m, 9-11.5 m, 14.5-16.5 m), the cornice at 19 m and a
+      // pediment over the risalit to 21.5 m. Behind it the whole block sits under one pale zinc
+      // cloister dome (Commons "Theater Carre - Amsterdam - 20015613 - RCE.jpg" and "Amsterdam - Amstel -
+      // Hoge Sluis - View North towards Carré Theatre.jpg" show its curved sides from the south west)
+      // with a flat top and the CARRÉ sign box; BAG 28.3 m is the box's top. The front's
+      // ends are pilastered bays, not raised pavilions. The 8.7 m strip on the north (Bridge Hotel)
+      // side and its round stair turret keep the eaves under low hipped roofs and the flat lid.
+      name: "Carr\xE9",
+      wall: { plain: true, hex: "#e2d8c2", flat: true },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012165489",
+        widthM: 0,
+        anchor: [4.903937, 52.362186],
+        eavesM: 19,
+        riseM: 8,
+        mat: "lead",
+        roofHex: "#98a299",
+        wings: [
+          { at: [4.904268, 52.362423], lenM: 58.3, widM: 37.1, bearingDeg: 17, riseM: 8, roof: "dome", insetM: 13 },
+          { at: [4.903873, 52.362349], lenM: 6, widM: 8, bearingDeg: 17, riseM: 2.5 },
+          { at: [4.904316, 52.362648], lenM: 31.4, widM: 8.7, bearingDeg: 17, riseM: 1.5, roof: "hipped" },
+          { at: [4.904043, 52.362572], lenM: 9.1, widM: 3.4, bearingDeg: 17, riseM: 1, roof: "hipped" }
+        ],
+        towers: [
+          // The CARRÉ sign box on the dome's flat top, behind the pediment: 8.4 m across the front.
+          { at: [4.904079, 52.362387], widthM: 3.5, lenM: 8.4, z0: 26.6, z1: 28, capM: 0.3, cap: "lead", capShape: "slant", highBearingDeg: 17, bearingDeg: 17, mat: "white", wallHex: "#ece6da" },
+          // The round stair turret at the back (south east) corner: a low zinc cap, a guess (no photo shows it).
+          { at: [4.904677, 52.362304], widthM: 7.6, shape: "octagon", z0: 18.4, z1: 19, capM: 1.6, cap: "lead", capShape: "dome", capHex: "#98a299", mat: "white", wallHex: "#e2d8c2", bearingDeg: 17 }
+        ],
+        windows: {
+          glassHex: "#3b4148",
+          plinth: { z1: 4.6, hex: "#8c877d" },
+          rows: [
+            { z0: 0.4, z1: 3.9, widthM: 2.2, bayM: 3.7, head: "round" },
+            { z0: 5.2, z1: 8, widthM: 1.4, bayM: 3.7, head: "flat" },
+            { z0: 9.3, z1: 11.6, widthM: 1.4, bayM: 3.7, head: "flat" },
+            { z0: 14.6, z1: 16.3, widthM: 1.4, bayM: 3.7, head: "flat" }
+          ]
+        }
+      }]
     }
   ];
-  var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? []]));
+  var kitIds = (k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f) => f.on), ...k.body ?? []];
+  var HAND_KIT_IDS = new Set(HAND_KITS.flatMap(kitIds));
+  var HAND_IDS = HAND_KIT_IDS;
+  var KITS = [...HAND_KITS, ...GENERIC_WORSHIP_KITS.filter((k) => kitIds(k).every((id) => !HAND_IDS.has(id)))];
+  var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f) => f.on)]));
   var KIT_HIDE_IDS = [...new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.hides ?? []]))];
   var KIT_MODELLED_IDS = /* @__PURE__ */ new Set([...KIT_PART_IDS, ...KITS.flatMap((k) => k.body ?? [])]);
   var KIT_ROOF = new Map(KITS.flatMap((k) => k.roofs.map((r) => [r.id, { roof: r, wall: k.wall }])));
   var KIT_HALLS = new Map(KITS.flatMap((k) => (k.halls ?? []).map((h) => [h.id, { halls: h, wall: k.wall }])));
   var KIT_BODY = new Map(KITS.flatMap((k) => k.wall ? (k.body ?? []).map((id) => [id, k.wall]) : []));
-  var sub2 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  var sub3 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
   var cross2 = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
   var dot2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
   var layerFor = (mat) => mat === "brick" ? "plain" : "flat";
   var TriSink = class {
     out = [];
     tri(a, b, c, ua, ub, uc, layer, hex2, hint) {
-      let n = cross2(sub2(b, a), sub2(c, a)), B = b, C = c, UB = ub, UC = uc;
+      let n = cross2(sub3(b, a), sub3(c, a)), B = b, C = c, UB = ub, UC = uc;
       if (dot2(n, hint) < 0) {
         B = c;
         C = b;
@@ -1149,7 +2234,7 @@
     }
     stage(sink, cx, cy, ang, shape, w, w, z0, t.z1, body, hex2);
     if (shape === "square") stage(sink, cx, cy, ang, "square", w + 0.8, w + 0.8, t.z1 - 0.6, t.z1, "stone");
-    if (capShape === "pyramid") stage(sink, cx, cy, ang, "square", w + 1.2, 0, t.z1, t.z1 + t.capM, t.cap, t.capHex);
+    if (capShape === "pyramid") stage(sink, cx, cy, ang, shape, t.capWidthM ?? w + 1.2, 0, t.z1, t.z1 + t.capM, t.cap, t.capHex);
     else {
       let z = t.z1;
       const base = shape === "square" ? w + 0.5 : w;
@@ -1158,7 +2243,139 @@
         z += h * t.capM;
       }
     }
-    stage(sink, cx, cy, ang, "octagon", 0.35, 0, t.z1 + t.capM, t.z1 + t.capM + 1.6, "gold");
+    if (t.finial !== false) stage(sink, cx, cy, ang, "octagon", 0.35, 0, t.z1 + t.capM, t.z1 + t.capM + 1.6, "gold");
+  }
+  function cloisterDome(sink, rect, z0, rise, inset, hex2) {
+    const { cx, cy, ux, uy } = rect, vx = -uy, vy = ux;
+    const ring = (d, z) => [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([i, j]) => [cx + ux * i * (rect.len / 2 - d) + vx * j * (rect.wid / 2 - d), cy + uy * i * (rect.len / 2 - d) + vy * j * (rect.wid / 2 - d), z]);
+    const steps = [0, 22, 45, 67, 90].map((deg) => deg * Math.PI / 180);
+    let lower = ring(0, z0);
+    for (let s = 1; s < steps.length; s++) {
+      const upper = ring(inset * (1 - Math.cos(steps[s])), z0 + rise * Math.sin(steps[s]));
+      for (let k = 0; k < 4; k++) {
+        const k1 = (k + 1) % 4, mx = (lower[k][0] + lower[k1][0]) / 2 - cx, my = (lower[k][1] + lower[k1][1]) / 2 - cy;
+        const hint = [mx, my, Math.hypot(mx, my) * 0.3];
+        const side = Math.hypot(lower[k1][0] - lower[k][0], lower[k1][1] - lower[k][1]);
+        const v0 = (s - 1) * 1.6, v1 = s * 1.6;
+        sink.tri(lower[k], lower[k1], upper[k1], [0, v0], [side / 5, v0], [side / 5, v1], "slope", hex2, hint);
+        sink.tri(lower[k], upper[k1], upper[k], [0, v0], [side / 5, v1], [0, v1], "slope", hex2, hint);
+      }
+      lower = upper;
+    }
+    sink.tri(lower[0], lower[1], lower[2], [0, 0], [1, 0], [1, 1], "slope", hex2, [0, 0, 1]);
+    sink.tri(lower[0], lower[2], lower[3], [0, 0], [1, 1], [0, 1], "slope", hex2, [0, 0, 1]);
+  }
+  var GLASS_HEX = "#2c333b";
+  var OFF = { plinth: 0.04, frame: 0.07, glass: 0.1, tracery: 0.13 };
+  function openingOutline(s0, s1, z0, z1, head) {
+    const w = s1 - s0, mid = (s0 + s1) / 2;
+    if (head === "flat" || z1 - z0 < w) return [[s0, z0], [s1, z0], [s1, z1], [s0, z1]];
+    if (head === "round") {
+      const r = w / 2, zb2 = z1 - r, arc = [];
+      for (let k = 0; k <= 4; k++) {
+        const a = k * Math.PI / 4;
+        arc.push([mid + Math.cos(a) * r, zb2 + Math.sin(a) * r]);
+      }
+      return [[s0, z0], [s1, z0], ...arc];
+    }
+    const zb = z1 - 0.8 * w, shoulder = zb + 0.5 * (z1 - zb);
+    return [[s0, z0], [s1, z0], [s1, zb], [s1 - 0.12 * w, shoulder], [mid, z1], [s0 + 0.12 * w, shoulder], [s0, zb]];
+  }
+  function wallPolygon(sink, o, t, n, off, pts, hex2) {
+    const at = ([s, z]) => [o[0] + t[0] * s + n[0] * off, o[1] + t[1] * s + n[1] * off, z];
+    const hint = [n[0], n[1], 0];
+    for (let k = 1; k + 1 < pts.length; k++) sink.tri(at(pts[0]), at(pts[k]), at(pts[k + 1]), [0, 0], [1, 0], [1, 1], "flat", hex2, hint);
+  }
+  function opening(sink, o, t, n, s, row, glass, frame) {
+    const head = row.head ?? "round", w = row.widthM;
+    if (frame) wallPolygon(sink, o, t, n, OFF.frame, openingOutline(s - w / 2 - 0.18, s + w / 2 + 0.18, row.z0 - 0.15, row.z1 + 0.18, head), frame);
+    wallPolygon(sink, o, t, n, OFF.glass, openingOutline(s - w / 2, s + w / 2, row.z0, row.z1, head), glass);
+  }
+  function roseWindow(sink, o, t, n, s, rose, glass, stone) {
+    const disc = (r2, k = 12) => Array.from({ length: k }, (_, i) => [s + Math.cos(i * 2 * Math.PI / k) * r2, rose.z + Math.sin(i * 2 * Math.PI / k) * r2]);
+    const r = rose.radiusM;
+    wallPolygon(sink, o, t, n, OFF.frame, disc(r + 0.3), stone);
+    wallPolygon(sink, o, t, n, OFF.glass, disc(r), glass);
+    for (let i = 0; i < 3; i++) {
+      const a = i * Math.PI / 3, ca = Math.cos(a), sa = Math.sin(a), px = -sa * 0.09, pz = ca * 0.09;
+      wallPolygon(sink, o, t, n, OFF.tracery, [[s - ca * r + px, rose.z - sa * r + pz], [s - ca * r - px, rose.z - sa * r - pz], [s + ca * r - px, rose.z + sa * r - pz], [s + ca * r + px, rose.z + sa * r + pz]], stone);
+    }
+    wallPolygon(sink, o, t, n, OFF.tracery, disc(r * 0.26, 8), stone);
+  }
+  function wallEdges(ring) {
+    const pts = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : ring.slice();
+    let area2 = 0;
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) area2 += pts[j][0] * pts[i][1] - pts[i][0] * pts[j][1];
+    const sign = area2 >= 0 ? 1 : -1;
+    return pts.map((a, i) => {
+      const b = pts[(i + 1) % pts.length], len = Math.hypot(b[0] - a[0], b[1] - a[1]), t = len ? [(b[0] - a[0]) / len, (b[1] - a[1]) / len] : [1, 0];
+      return { o: a, t, n: [t[1] * sign, -t[0] * sign], len };
+    });
+  }
+  function nearestEdge(edges, p) {
+    let best = { edge: 0, s: 0, d: Infinity };
+    edges.forEach((e, i) => {
+      const s = (p[0] - e.o[0]) * e.t[0] + (p[1] - e.o[1]) * e.t[1], c = Math.max(0, Math.min(e.len, s));
+      const d = Math.hypot(e.o[0] + e.t[0] * c - p[0], e.o[1] + e.t[1] * c - p[1]);
+      if (d < best.d) best = { edge: i, s, d };
+    });
+    return best;
+  }
+  function kitWindows(sink, ring, spec, win, towerAng) {
+    const edges = wallEdges(ring), glass = win.glassHex ?? GLASS_HEX, stone = win.frameHex ?? MAT_HEX.stone;
+    if (win.plinth) {
+      for (const e of edges) if (e.len >= 0.2) wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, 0], [e.len, 0], [e.len, win.plinth.z1], [0, win.plinth.z1]], win.plinth.hex);
+    }
+    const inTower = (p) => (spec.towers ?? []).some((t) => {
+      const [cx, cy] = toLocal(t.at), a = towerAng(t), dx = p[0] - cx, dy = p[1] - cy;
+      return Math.abs(dx * Math.cos(a) + dy * Math.sin(a)) < t.widthM / 2 + 0.4 && Math.abs(-dx * Math.sin(a) + dy * Math.cos(a)) < (t.lenM ?? t.widthM) / 2 + 0.4;
+    });
+    const placed = win.rows.filter((r) => r.at).map((r) => ({ row: r, ...nearestEdge(edges, toLocal(r.at)) }));
+    const claimed = /* @__PURE__ */ new Set();
+    const plane = (edge) => {
+      const a = edges[edge];
+      let out = 0;
+      edges.forEach((e, i) => {
+        const along = e.t[0] * a.t[0] + e.t[1] * a.t[1], off = (e.o[0] - a.o[0]) * a.n[0] + (e.o[1] - a.o[1]) * a.n[1];
+        if (along > 0.995 && Math.abs(off) < 0.4) {
+          claimed.add(i);
+          out = Math.max(out, off);
+        }
+      });
+      return { ...a, o: [a.o[0] + a.n[0] * out, a.o[1] + a.n[1] * out] };
+    };
+    for (const { row, edge, s } of placed) {
+      const e = plane(edge), n = row.count ?? 1;
+      for (let k = 0; k < n; k++) opening(sink, e.o, e.t, e.n, s + (k - (n - 1) / 2) * row.bayM, row, glass, win.frameHex);
+    }
+    for (const row of win.rows) {
+      if (row.at || row.z1 > spec.eavesM) continue;
+      edges.forEach((e, i) => {
+        if (claimed.has(i) || e.len < row.widthM + 1) return;
+        const n = Math.max(1, Math.floor(e.len / row.bayM));
+        for (let k = 0; k < n; k++) {
+          const s = (k + 0.5) * e.len / n;
+          if (!inTower([e.o[0] + e.t[0] * s + e.n[0] * 0.5, e.o[1] + e.t[1] * s + e.n[1] * 0.5])) opening(sink, e.o, e.t, e.n, s, row, glass, win.frameHex);
+        }
+      });
+    }
+    for (const rose of win.roses ?? []) {
+      const { edge, s } = nearestEdge(edges, toLocal(rose.at)), e = plane(edge);
+      roseWindow(sink, e.o, e.t, e.n, s, rose, glass, stone);
+    }
+    for (const t of spec.towers ?? []) {
+      if ((t.shape ?? "square") !== "square" || t.lenM !== void 0 || t.capShape === "slant") continue;
+      const [cx, cy] = toLocal(t.at), a = towerAng(t), half = t.widthM / 2;
+      for (let f = 0; f < 4; f++) {
+        const na = a + f * Math.PI / 2, n = [Math.cos(na), Math.sin(na)], tt = [-n[1], n[0]];
+        const o = [cx + n[0] * half - tt[0] * half, cy + n[1] * half - tt[1] * half];
+        for (const row of win.towerRows ?? []) {
+          if (row.z1 > t.z1 - 0.6 || row.z0 < (t.z0 ?? 0)) continue;
+          const count = row.count ?? Math.max(1, Math.floor(t.widthM / row.bayM));
+          for (let k = 0; k < count; k++) opening(sink, o, tt, n, half + (k - (count - 1) / 2) * row.bayM, row, glass, win.frameHex);
+        }
+      }
+    }
   }
   function kitGeometry(kit, parts) {
     const out = /* @__PURE__ */ new Map();
@@ -1205,7 +2422,7 @@
     for (const spec of kit.halls ?? []) {
       const part = parts.get(spec.id);
       if (!part) continue;
-      const sink = sinkFor(spec.id), hex2 = MAT_HEX[spec.mat === "tile" ? "tile" : spec.mat === "lead" ? "lead" : "slate"], gable = kit.wall?.hex ?? MAT_HEX.brick;
+      const sink = sinkFor(spec.id), hex2 = spec.roofHex ?? MAT_HEX[spec.mat === "tile" ? "tile" : spec.mat === "lead" ? "lead" : "slate"], gable = kit.wall?.hex ?? MAT_HEX.brick;
       const plan = { kind: "pitched", gable: "plain", riseM: spec.riseM, dormers: false, material: "slate", tone: 0, seed: spec.id, chimney: false };
       for (const rect of hallRects(part.ring, spec.widthM, toLocal(spec.anchor))) {
         for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
@@ -1213,9 +2430,22 @@
           sink.out.push({ p: t.p, uv: t.uv, layer: slope ? "slope" : "plain", hex: slope ? hex2 : gable, n: t.n });
         }
       }
+      if (spec.fit) {
+        const rect = fitRect(part.ring, 200);
+        if (rect && rect.coverage >= FIT_COVERAGE && rect.maxDev <= FIT_MAX_DEV_M && spec.riseM > 0) {
+          for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
+            const slope = t.part === "slope";
+            sink.out.push({ p: t.p, uv: t.uv, layer: slope ? "slope" : "plain", hex: slope ? hex2 : gable, n: t.n });
+          }
+        }
+      }
       for (const wing of spec.wings ?? []) {
         const [cx, cy] = toLocal(wing.at), b = wing.bearingDeg * Math.PI / 180;
         const rect = { cx, cy, ux: Math.cos(b), uy: Math.sin(b), len: wing.lenM, wid: wing.widM, coverage: 1, maxDev: 0 };
+        if (wing.roof === "dome") {
+          cloisterDome(sink, rect, spec.eavesM, wing.riseM, wing.insetM ?? Math.min(wing.lenM, wing.widM) * 0.35, hex2);
+          continue;
+        }
         const wingPlan = { ...plan, kind: wing.roof === "hipped" ? "hipped" : "pitched", riseM: wing.riseM };
         for (const t of roofTriangles(rect, wingPlan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
           const slope = t.part === "slope";
@@ -1223,7 +2453,13 @@
         }
       }
       const axis = hallRects(part.ring, spec.widthM, toLocal(spec.anchor))[0], ang = axis ? Math.atan2(axis.uy, axis.ux) : 0;
-      for (const tower of spec.towers ?? []) towerParts(sink, tower, toLocal(tower.at), tower.bearingDeg === void 0 ? ang : tower.bearingDeg * Math.PI / 180, part.minHeightM, gable);
+      const towerAng = (tower) => tower.bearingDeg === void 0 ? ang : tower.bearingDeg * Math.PI / 180;
+      for (const tower of spec.towers ?? []) towerParts(sink, tower, toLocal(tower.at), towerAng(tower), part.minHeightM, gable);
+      if (spec.windows) kitWindows(sink, part.ring, spec, spec.windows, towerAng);
+    }
+    for (const form of kit.forms ?? []) {
+      const part = parts.get(form.on);
+      if (part) sinkFor(form.on).out.push(...formTriangles(form, part.ring, toLocal));
     }
     return [...out].map(([id, sink]) => ({ id, tris: sink.out }));
   }
@@ -1466,19 +2702,19 @@
     { id: "kroonlijst", styles: CANAL, p: { canal: 0.6, c19: 0.15 }, wide: true, street: true, group: "crown", build: (c, s, r) => {
       if (c.roofKind === "gable") return;
       const t = c.top, hex2 = r < 0.75 ? WHITE2 : CREAM2;
-      s.box(c.f, 0, c.f.len, 0, 0.3, t - 0.5, t - 0.34, hex2, true);
-      s.box(c.f, 0, c.f.len, 0, 0.55, t - 0.34, t - 0.12, hex2, true);
-      s.box(c.f, 0, c.f.len, 0, 0.68, t - 0.12, t, hex2, true);
-      for (const x of pierXs(c).slice(0, 6)) s.box(c.f, Math.max(0, x - 0.11), Math.min(c.f.len, x + 0.11), 0.05, 0.4, t - 0.88, t - 0.5, hex2);
+      s.box(c.f, 0, c.f.len, 0, 0.16, t - 0.4, t - 0.28, hex2, true);
+      s.box(c.f, 0, c.f.len, 0, 0.3, t - 0.28, t - 0.1, hex2, true);
+      s.box(c.f, 0, c.f.len, 0, 0.4, t - 0.1, t, hex2, true);
+      for (const x of pierXs(c).slice(0, 6)) s.box(c.f, Math.max(0, x - 0.09), Math.min(c.f.len, x + 0.09), 0.04, 0.26, t - 0.7, t - 0.4, hex2);
     } },
     { id: "console-cornice", styles: ["c19", "canal"], p: { c19: 0.4, canal: 0.12 }, wide: true, street: true, group: "crown", build: (c, s) => {
       if (c.roofKind === "gable") return;
       const t = c.top;
-      s.strip(c.f, 0, c.f.len, 0.04, t - 0.62, t - 0.32, CREAM2);
-      s.box(c.f, 0, c.f.len, 0, 0.55, t - 0.32, t - 0.12, CREAM2, true);
-      s.box(c.f, 0, c.f.len, 0, 0.66, t - 0.12, t, WHITE2, true);
+      s.strip(c.f, 0, c.f.len, 0.04, t - 0.52, t - 0.26, CREAM2);
+      s.box(c.f, 0, c.f.len, 0, 0.28, t - 0.26, t - 0.1, CREAM2, true);
+      s.box(c.f, 0, c.f.len, 0, 0.38, t - 0.1, t, WHITE2, true);
       const piers = pierXs(c), ends = piers.length > 2 ? [piers[0], piers[Math.floor(piers.length / 2)], piers[piers.length - 1]] : piers;
-      for (const x of ends) for (const dx of [-0.16, 0.08]) s.box(c.f, Math.max(0, x + dx), Math.min(c.f.len, x + dx + 0.08), 0.04, 0.45, t - 0.62, t - 0.32, CREAM2);
+      for (const x of ends) for (const dx of [-0.14, 0.07]) s.box(c.f, Math.max(0, x + dx), Math.min(c.f.len, x + dx + 0.07), 0.04, 0.26, t - 0.52, t - 0.26, CREAM2);
     } },
     { id: "corbel-roofline", styles: ["school"], p: 0.45, wide: true, street: true, group: "crown", build: (c, s) => {
       const t = c.top, brick = shadeHex(c.wallHex, 0.82);
@@ -1520,7 +2756,8 @@
       const d = doorSpan(c);
       if (!d || !c.groundLevel) return;
       const l = d.x - d.hw - 0.05, rr = d.x + d.hw + 0.05, top = c.base + c.layout.groundM - 0.15;
-      s.strip(c.f, l, rr, 0.02, c.base, top - 0.25, "#2a2522");
+      s.strip(c.f, l, rr, 0.02, c.base, top - 0.25, "#5b4c42");
+      s.strip(c.f, d.x - d.hw + 0.12, d.x + d.hw - 0.12, 0.03, c.base + 0.8, top - 0.45, ["#2c4f33", "#1f3550", "#7a1f2b", "#3a3f45"][Math.floor(hash012(`${c.id}:pd`) * 4)]);
       s.box(c.f, l - 0.22, l, 0, 0.14, c.base, top, STONE2);
       s.box(c.f, rr, rr + 0.22, 0, 0.14, c.base, top, STONE2);
       s.box(c.f, l - 0.26, rr + 0.26, 0, 0.18, top - 0.3, top + 0.12, STONE2, true);
@@ -1717,7 +2954,7 @@
   var GREEN = "#3f7a3a";
   var DARKGREEN = "#2c4f33";
   var CONCRETE = "#b9b5ac";
-  var GLASS = "#5d6f7c";
+  var GLASS2 = "#5d6f7c";
   var FLOWERS = ["#e84a7f", "#f2b92e", "#ffffff", "#c04fd0", "#ff7a45", "#e8573d"];
   var SHUTTERS = ["#2c4f33", "#1f3550", "#7a1f2b", "#2a2a2a", "#3f6f5a"];
   var pickOf2 = (list, r) => list[Math.floor(r * list.length) % list.length];
@@ -1765,7 +3002,8 @@
       if (!c.groundLevel) return;
       const xs = windowXs(c);
       const x = xs[xs.length - 1];
-      s.box(c.f, x - 0.6, x + 0.6, 0.6, 0.65, c.base, c.base + 0.75, IRON2);
+      s.strip(c.f, x - 0.6, x + 0.6, 0.62, c.base + 0.72, c.base + 0.76, IRON2, 0.03);
+      for (const dx of [-0.6, -0.3, 0, 0.3, 0.6]) s.strip(c.f, x + dx - 0.015, x + dx + 0.015, 0.62, c.base, c.base + 0.74, IRON2, 0.03);
     } },
     { id: "wall-anchors", styles: ["canal"], p: 0.5, build: (c, s) => {
       for (let k = 0; k < Math.min(3, c.layout.storeys); k++) for (const x of [0.5, c.f.len - 0.5]) {
@@ -1810,13 +3048,13 @@
       }
     } },
     { id: "geveltuin", styles: ["canal", "c19", "school"], p: 0.3, build: (c, s, r) => {
-      if (!c.groundLevel) return;
+      if (!c.groundLevel || c.shopfront) return;
       const d = doorX(c);
-      for (let x = 0.3; x < Math.min(c.f.len - 0.3, 8); x += 0.55) {
-        if (d != null && Math.abs(x - d) < 0.7) continue;
-        const h = 0.8 + hash012(`${c.id}:${x}`) * 1.4;
-        s.box(c.f, x - 0.08, x + 0.08, 0.05, 0.3, c.base, c.base + h, GREEN);
-        if (hash012(`${c.id}:f${x}`) < 0.5) s.box(c.f, x - 0.12, x + 0.12, 0.05, 0.33, c.base + h - 0.4, c.base + h, pickOf2(["#e84a7f", "#f2b92e", "#c04fd0", "#ffffff"], r + x));
+      for (let x = 0.45; x < Math.min(c.f.len - 0.45, 6); x += 0.9) {
+        if (d != null && Math.abs(x - d) < 0.9) continue;
+        const h = 0.4 + hash012(`${c.id}:${x}`) * 0.6;
+        s.box(c.f, x - 0.32, x + 0.32, 0.02, 0.28, c.base, c.base + h, hash012(`${c.id}:g${x}`) < 0.5 ? GREEN : DARKGREEN);
+        if (hash012(`${c.id}:f${x}`) < 0.4) s.box(c.f, x - 0.2, x + 0.2, 0.05, 0.3, c.base + h, c.base + h + 0.12, pickOf2(["#e84a7f", "#f2b92e", "#c04fd0", "#ffffff"], r + x));
       }
     } },
     { id: "climbing-ivy", styles: ALL, p: 0.08, build: (c, s) => {
@@ -1839,13 +3077,13 @@
       if (c.layout.storeys < 1 || c.f.len < 5) return;
       const x = c.f.len / 2, z0 = storeyZ2(c, 0), z1 = z0 + c.layout.storeyM * Math.min(2, c.layout.storeys) - 0.2;
       s.box(c.f, x - 1.3, x + 1.3, 0, 0.8, z0, z1, c.wallHex, true);
-      s.box(c.f, x - 1.1, x + 1.1, 0.8, 0.82, z0 + 0.5, z1 - 0.4, GLASS);
+      s.box(c.f, x - 1.1, x + 1.1, 0.8, 0.82, z0 + 0.5, z1 - 0.4, GLASS2);
       s.box(c.f, x - 1.4, x + 1.4, 0, 0.9, z1, z1 + 0.15, STONE3);
     } },
     { id: "cornice-brackets", group: "crown", styles: ["c19", "canal"], p: 0.35, build: (c, s) => {
       const z = c.top - 0.15;
-      s.box(c.f, 0, c.f.len, 0, 0.45, z - 0.15, z + 0.1, STONE3, true);
-      for (let x = 0.4; x < c.f.len - 0.2; x += 1.1) s.box(c.f, x - 0.08, x + 0.08, 0, 0.35, z - 0.55, z - 0.15, STONE3);
+      s.box(c.f, 0, c.f.len, 0, 0.3, z - 0.1, z + 0.1, STONE3, true);
+      for (let x = 0.4; x < c.f.len - 0.2; x += 1.1) s.box(c.f, x - 0.06, x + 0.06, 0, 0.24, z - 0.42, z - 0.1, STONE3);
     } },
     { id: "door-canopy", group: "door-frame", styles: ["c19", "school", "postwar"], p: 0.25, build: (c, s) => {
       const x = doorX(c);
@@ -1874,7 +3112,7 @@
     } },
     { id: "stair-glass", styles: ["school", "postwar", "modern"], p: 0.3, build: (c, s) => {
       const x = doorX(c) ?? c.f.len / 2;
-      s.box(c.f, x - 0.5, x + 0.5, 0, 0.06, c.base + c.layout.groundM + 0.3, c.top - 0.6, GLASS);
+      s.box(c.f, x - 0.5, x + 0.5, 0, 0.06, c.base + c.layout.groundM + 0.3, c.top - 0.6, GLASS2);
     } },
     { id: "window-grilles", styles: ["school", "c19"], p: 0.15, build: (c, s) => {
       const d = doorX(c);
@@ -1932,10 +3170,12 @@
       if (!c.groundLevel) return;
       const n = 1 + Math.floor(r * 4), x0 = hash012(`${c.wallKey}:bx`) * Math.max(0, c.f.len - n * 0.7);
       for (let k = 0; k < n; k++) {
-        const x = x0 + k * 0.7, hex2 = pickOf2(["#1d1d1f", "#2f5d8a", "#7a1f2b", "#3f6f5a", "#c9a227"], hash012(`${c.wallKey}:bc${k}`));
-        s.box(c.f, x - 0.03, x + 0.03, 0.15, 1.9, c.base + 0.3, c.base + 0.6, hex2);
-        s.box(c.f, x - 0.02, x + 0.02, 0.15, 0.25, c.base, c.base + 0.95, hex2);
-        s.box(c.f, x - 0.02, x + 0.02, 1.75, 1.85, c.base, c.base + 0.9, hex2);
+        const x = x0 + k * 0.7, hex2 = pickOf2(["#1d1d1f", "#2f3d4a", "#4a1f25", "#2c3f36"], hash012(`${c.wallKey}:bc${k}`));
+        for (const v of [0.2, 1.25]) s.box(c.f, x - 0.015, x + 0.015, v, v + 0.62, c.base + 0.02, c.base + 0.64, "#202224");
+        s.box(c.f, x - 0.025, x + 0.025, 0.5, 1, c.base + 0.55, c.base + 0.6, hex2);
+        s.box(c.f, x - 0.025, x + 0.025, 0.95, 1.02, c.base + 0.3, c.base + 0.95, hex2);
+        s.box(c.f, x - 0.06, x + 0.06, 0.42, 0.62, c.base + 0.88, c.base + 0.94, "#141414");
+        s.box(c.f, x - 0.25, x + 0.25, 1.05, 1.1, c.base + 0.98, c.base + 1.02, hex2);
       }
     } },
     { id: "bike-racks", styles: ["school", "postwar", "modern"], p: 0.2, build: (c, s) => {
@@ -1952,8 +3192,9 @@
       const x = doorX(c);
       if (x == null) return;
       const z = c.base + 2.3;
-      s.box(c.f, x + 0.6, x + 0.64, 0, 0.3, z + 0.3, z + 0.34, IRON2);
-      s.box(c.f, x + 0.52, x + 0.72, 0.2, 0.4, z, z + 0.3, "#f3d58a");
+      s.box(c.f, x + 0.6, x + 0.63, 0, 0.22, z + 0.26, z + 0.29, IRON2);
+      s.box(c.f, x + 0.56, x + 0.67, 0.14, 0.25, z, z + 0.24, IRON2);
+      s.box(c.f, x + 0.575, x + 0.655, 0.13, 0.26, z + 0.04, z + 0.2, "#e8c878");
     } },
     { id: "house-flag", styles: ["canal", "c19"], p: 0.06, build: (c, s, r) => {
       const z = storeyZ2(c, 0) + 0.5;
@@ -1978,7 +3219,7 @@
       const { len, wid } = c.rect;
       if (len < 8 || wid < 6) return;
       roofBox(c, s, -len * 0.3, len * 0.3, -wid * 0.1, wid * 0.35, c.z, c.z + 2.6, "#5d6064");
-      roofBox(c, s, -len * 0.3, len * 0.3, -wid * 0.12, -wid * 0.1, c.z + 0.3, c.z + 2.2, GLASS);
+      roofBox(c, s, -len * 0.3, len * 0.3, -wid * 0.12, -wid * 0.1, c.z + 0.3, c.z + 2.2, GLASS2);
     } },
     { id: "ac-units", styles: ["postwar", "modern", "tower", "school"], p: 0.35, build: (c, s) => {
       for (let k = 0; k < 3; k++) {
@@ -1989,7 +3230,7 @@
     { id: "skylights", styles: ALL, p: 0.3, build: (c, s) => {
       for (let k = 0; k < 2; k++) {
         const u = (hash012(`${c.id}:sk${k}`) - 0.5) * c.rect.len * 0.6;
-        roofBox(c, s, u - 0.6, u + 0.6, -0.5, 0.5, c.z, c.z + 0.35, GLASS);
+        roofBox(c, s, u - 0.6, u + 0.6, -0.5, 0.5, c.z, c.z + 0.35, GLASS2);
       }
     } },
     { id: "solar-panels", styles: ["c19", "school", "postwar", "modern"], p: 0.25, build: (c, s) => {
