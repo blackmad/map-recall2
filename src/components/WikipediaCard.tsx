@@ -3,8 +3,8 @@ import { StreetFeature, TriviaText } from '../types';
 import { FACT_KIND_LABELS } from '../canalRecall/facts/factTypes';
 import { triviaForRound } from '../mapRecall/localFacts';
 import { descriptionWithoutOrigin } from '../mapRecall/trivia';
-import { CITIES } from '../data/cities';
 import { PostcardHeader } from './PostcardHeader';
+import { postcardCityName, postcardPhotosFor } from '../mapRecall/postcardPhotos';
 
 const Source: React.FC<{ href?: string; children: React.ReactNode }> = ({ href, children }) => href
   ? <a href={href} target="_blank" rel="noreferrer" className="mt-0.5 inline-block text-[11px] font-bold text-white/60 hover:text-white">{children} ↗</a>
@@ -55,11 +55,9 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
     : { href: feature.wikipediaUrl, label: feature.wikipediaUrl?.includes('nl.wikipedia') ? 'Wikipedia (translated from Dutch)' : 'From Wikipedia' };
   if (!localFact && !origin && !trivia && !description && !history && !feature.wikipediaImageUrl) return null;
   // Neighbourhoods open with a postcard cut from their own photographs and those of the places in them.
-  const postcardPhotos = feature.type === 'neighborhood'
-    ? [feature.wikipediaImageUrl, ...(feature.areaPhotos ?? []).map((place) => place.photo.imageUrl)].filter((url): url is string => !!url).slice(0, 8)
-    : [];
+  const postcardPhotos = postcardPhotosFor(feature);
   return <div className="answer-detail-card flex flex-col gap-2 p-3 text-left" data-testid="answer-trivia">
-    {postcardPhotos.length >= 2 && <PostcardHeader name={feature.name} cityName={CITIES.find((city) => city.id === feature.cityId)?.name} photos={postcardPhotos} />}
+    {postcardPhotos.length >= 2 && <PostcardHeader name={feature.name} cityName={postcardCityName(feature.cityId)} photos={postcardPhotos} />}
     {postcardPhotos.length >= 2 && (feature.areaPhotos?.length ?? 0) > 0 && <details className="text-[11px] leading-snug text-white/70" data-testid="postcard-credits">
       <summary className="cursor-pointer font-bold">Postcard photo credits</summary>
       <ul className="mt-1 space-y-0.5">

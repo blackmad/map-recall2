@@ -1,77 +1,108 @@
-import React, { useEffect, useRef, useState } from 'react';
-
-const WIDTH = 640;
-const HEIGHT = 400;
-const FONT_FAMILY = 'Archivo Black';
-let fontsPromise: Promise<unknown> | null = null;
-
-/** The Archivo Black webfont (index.html links it); the outline TTF lets the compositor trace the letters. */
-function loadFonts(): Promise<unknown> {
-  fontsPromise ??= document.fonts?.load(`400 64px "${FONT_FAMILY}"`).catch(() => undefined) ?? Promise.resolve();
-  return fontsPromise;
-}
-
-function loadImage(src: string): Promise<HTMLImageElement | null> {
-  return new Promise((resolve) => {
-    const image = new Image();
-    image.referrerPolicy = 'no-referrer';
-    image.onload = () => resolve(image);
-    image.onerror = () => resolve(null);
-    image.src = src;
-  });
-}
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { preparePostcard, type PreparedPostcard } from '../mapRecall/livePostcard';
 
 /**
- * "Greetings from <neighbourhood>": the large-letter postcard (src/canalRecall/largeLetterPostcard.ts)
- * with the area's photographs cut into the letters. Painted on a canvas, so it is loaded on demand;
- * if no photograph loads it renders nothing and the card keeps its small thumbnail.
+ * "Greetings from <neighbourhood>": the large-letter postcard with the area's photographs in its
+ * letters (src/mapRecall/livePostcard.ts). The card is a canvas with transparent letter faces over
+ * plain images, so it appears as soon as its frame is ready (prepared during the guess) and each
+ * letter fills in when its photograph loads. Scales to its container's width; renders nothing when
+ * the compositor cannot load, and the answer card keeps its thumbnail.
  */
-export const PostcardHeader: React.FC<{ name: string; cityName?: string; photos: string[] }> = ({ name, cityName, photos }) => {
+export const PostcardHeader: React.FC<{
+  name: string;
+  cityName?: string;
+  photos: string[];
+  className?: string;
+  /** The folded answer card's small copy. */
+  thumbnail?: boolean;
+}> = ({ name, cityName, photos, className, thumbnail = false }) => {
+  const [card, setCard] = useState<PreparedPostcard | null>(null);
+  const [scale, setScale] = useState(0);
+  const [loaded, setLoaded] = useState(0);
+  const holderRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [painted, setPainted] = useState(false);
-  const key = `${name}|${photos.join('|')}`;
+  const key = `${name}|${cityName ?? ''}|${photos.join('|')}`;
 
   useEffect(() => {
     let cancelled = false;
-    setPainted(false);
-    (async () => {
-      const [postcard, , loaded] = await Promise.all([
-        import('../canalRecall/largeLetterPostcard'),
-        loadFonts(),
-        Promise.all(photos.map(loadImage)),
-      ]);
-      const images = loaded.filter((image): image is HTMLImageElement => !!image);
-      const canvas = canvasRef.current;
-      if (cancelled || !canvas || !images.length) return;
-      let font: Awaited<ReturnType<typeof postcard.loadLargeLetterFont>> | undefined;
-      try { font = await postcard.loadLargeLetterFont(`${import.meta.env.BASE_URL}canal-drive/fonts/ArchivoBlack-Regular.ttf`); } catch { /* fillText still paints */ }
-      if (cancelled) return;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-      const measure = (text: string, fontSpec: string) => { ctx.font = fontSpec; return ctx.measureText(text).width; };
-      const layout = postcard.measureLargeLetterPostcard(
-        { name, cityName, imageCount: images.length, width: WIDTH, height: HEIGHT },
-        measure,
-        font ? { font, pathWarp: true } : undefined,
-      );
-      canvas.width = layout.width;
-      canvas.height = layout.height;
-      ctx.clearRect(0, 0, layout.width, layout.height);
-      postcard.drawLargeLetterPostcard(ctx, layout, images, font ? { font } : undefined);
-      if (!cancelled) setPainted(true);
-    })().catch(() => { /* no postcard: the thumbnail stays */ });
+    setCard(null);
+    setLoaded(0);
+    void preparePostcard(name, cityName, photos).then((prepared) => { if (!cancelled) setCard(prepared); });
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key]);
 
-  return <canvas
-    ref={canvasRef}
-    width={WIDTH}
-    height={HEIGHT}
-    data-testid="answer-postcard"
-    data-painted={painted ? 'yes' : 'no'}
+  // Copy the shared frame into this card's own canvas, and again when it is repainted.
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!card || !canvas) return;
+    const copy = () => {
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(card.frame, 0, 0);
+    };
+    copy();
+    return card.onRepaint(copy);
+  }, [card]);
+
+  useLayoutEffect(() => {
+    const holder = holderRef.current;
+    if (!holder || !card) return;
+    const fit = () => setScale(holder.clientWidth / card.width);
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(holder);
+    return () => observer.disconnect();
+  }, [card]);
+
+  if (!card) return null;
+  const { windows, width, height } = card;
+  const { clip } = windows;
+  return <div
+    ref={holderRef}
+    data-testid={thumbnail ? 'answer-postcard-thumbnail' : 'answer-postcard'}
+    data-painted="yes"
+    data-photos={`${loaded}/${windows.windows.length}`}
     role="img"
     aria-label={`Greetings from ${name}`}
-    className={painted ? 'w-full rounded-lg shadow-md' : 'hidden'}
-  />;
+    className={`relative overflow-hidden ${className ?? (thumbnail ? 'rounded-md shadow-sm' : 'w-full rounded-lg shadow-md')}`}
+    style={{ aspectRatio: `${width} / ${height}` }}
+  >
+    <div className="absolute left-0 top-0 origin-top-left" style={{ width, height, transform: `scale(${scale})`, visibility: scale ? 'visible' : 'hidden' }}>
+      <div
+        className="absolute inset-0"
+        style={{ background: windows.fallbackFill, clipPath: `inset(${clip.y}px ${width - clip.x - clip.width}px ${height - clip.y - clip.height}px ${clip.x}px)` }}
+      >
+        <div className="absolute left-0 top-0 origin-top-left" style={{ width, height, transform: `matrix(${windows.matrix.join(',')})` }}>
+          {windows.windows.map((window, index) => {
+            const src = card.photos[window.imageIndex];
+            if (!src) return null;
+            return <img
+              key={index}
+              src={src}
+              alt=""
+              referrerPolicy="no-referrer"
+              decoding="async"
+              draggable={false}
+              onLoad={(event) => { event.currentTarget.style.opacity = '1'; setLoaded((count) => count + 1); }}
+              className="absolute max-w-none select-none transition-opacity duration-300"
+              style={{
+                left: window.box.x,
+                top: window.box.y,
+                width: window.box.width,
+                height: window.box.height,
+                objectFit: 'cover',
+                objectPosition: `${window.focusX * 100}% ${window.focusY * 100}%`,
+                clipPath: `path('${window.d}')`,
+                filter: windows.filter,
+                opacity: 0,
+              }}
+            />;
+          })}
+        </div>
+      </div>
+      <canvas ref={canvasRef} width={width} height={height} className="absolute inset-0" style={{ width, height }} />
+    </div>
+  </div>;
 };

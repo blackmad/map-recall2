@@ -13,3 +13,4 @@ test('the gallery shows a card for every neighbourhood and flags gaps', async ({
   await expect.poll(async () => await page.getByTestId('gallery-card').count()).toBeLessThan(5);
   await expect(page.getByTestId('gallery-card').first().getByTestId('answer-trivia')).toBeVisible();
 });
+
