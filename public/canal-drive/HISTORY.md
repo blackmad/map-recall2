@@ -25,6 +25,66 @@ User (2026-10-02), on the Prinsengracht street card: "bad layout".
 - **Now:** `measureLandmarkCard` puts the category chip and the name on one row when they fit, and drops the name below the chips when they do not. "MORE ›" is copper text at the row's right end, with no pill. The body wraps at a 400 px measure. The card is as wide as its widest line, with a 220 px floor and the old width as the ceiling. Padding is even on all sides.
 - **Renderer:** the layout now carries every vertical position (`headerTop`, `nameBaseline`, `bodyBaseline`, `lineStep`), so `renderer.drawLandmarkCard` can no longer drift from the measured height.
 - **Checks:** the Prinsengracht case is pinned in `scripts/check-notice-cards.ts`. Storybook has `StreetOriginCard` and `PortraitStreetOriginCard`.
+## Listed buildings draw the gable the monuments register names
+
+User (2026-10-02): "do you think it's at all possible to correlate the canal house builder more to the year the house was built?", then "start on wall colors, then gables".
+
+- **Source:** the national monuments register (RCE, CC0) describes each rijksmonument's front in Dutch, for example:
+  - "Pand met trapgevel"
+  - "onder rechte lijst"
+  - "klokvormige top"
+- **Fetch:** `scripts/fetch-monument-gables.ts` queries the register's SPARQL endpoint in ranges of monument number. OFFSET paging timed out past the third page, and joining on the municipality repeated every row about 20 times. Raw responses are cached in `/mnt/project-files/scrape-store/rce-monuments/amsterdam-by-number/`.
+- **Classify:** `monumentGables.ts` takes the first gable phrase in each description.
+- **Match:** the monument's point is placed in its building footprint, and the result goes to `monument-gables.json` (179 KB).
+- **Coverage:** 7,672 Amsterdam monuments; 5,377 name a gable; 4,326 buildings matched:
+  - cornice 2,299
+  - neck 1,283
+  - bell 911
+  - plain 575
+  - step 144
+  - spout 35
+  - raised neck 1
+- **In game:** `vector-map.js` loads the file and tags `monumentGable` before roofs are planned. `planRoof` then draws that gable whatever the style, OSM tag or year.
+- **Measured:** in one Herengracht view, 574 buildings were tagged and 488 drew the named gable. The rest are footprints too irregular for a gable roof.
+- **Pinned:** in `test:roof-shapes`, using register numbers 836, 2791 and 5114.
+- **Open:** the first-phrase rule can pick up a rear or side gable where a description starts there. "verhoogde halsgevel" is rare in the register's wording, so raised necks are still mostly guessed. Landmark buildings keep their own form.
+
+## Wall colours by period
+
+From the real-vs-game sheet (2026-10-02: "one brick palette" everywhere), and the user's "start on wall colors, then gables".
+
+- **Before:** every bay-look building drew its wall from one hash-picked brick palette, whatever its age. Post-war blocks in Photo came out red brick too.
+- **Now:** `PERIOD_WALLS` (in `bayLook.ts`) gives each archetype its own range, still hash-picked and still unmeasured:
+  - **Canal houses:** deep red-brown brick, about a quarter painted near-black, dark green or grey, and a little white stucco.
+  - **1860–1914 rows:** red and orange brick, with buff and cream stucco.
+  - **Amsterdam School:** dark purple-brown and orange brick.
+  - **Post-war and modern:** buff, grey and concrete.
+  - **Storybook and Cartoon:** each look's own palette is split the same way by period.
+- **Pinned:** `test:three-buildings` checks that canal houses are darker than 19th-century rows, that some are painted dark, and that post-war blocks are not red.
+- **Gallery:** `building-gallery.html` shows every period palette.
+
+## Untextured is flat colour only
+
+User (2026-10-02, a screenshot of brick, window grids and awnings): "untextured should be totally untextured or very flat".
+
+- **Before:** the Untextured look already drew every wall and roof on one layer. That layer was the procedural roof's flat cell, which still carries grain, so walls and roofs read slightly textured.
+- **Now:** a `flatColour` shader uniform (set for `untextured`) draws the vertex tint alone, with no cell texture at all.
+- **Live switch:** switching looks rebuilds every chunk, which took about 40 s on a loaded machine. A view caught mid-rebuild still shows the old look; booting in Untextured or waiting it out gives flat colour everywhere.
+- **Not changed:** storefront geometry (signs, awnings) stays, since it is shape rather than texture.
+
+## Utrecht and Rotterdam neighbourhood text and photos
+
+Ran `fill-neighborhood-gaps.ts` online for both cities with the widened Wikimedia token (Utrecht 192 online candidates, Rotterdam 121; about 1,760 responses now in the scrape store). Translated all 111 Dutch fields by hand into `scripts/data/neighborhood-gap-review-utrecht.json` / `-rotterdam.json`: 73 approved, 38 set to `null` (district-article and monument-list dumps, articles about another place or a person with the same name, out-of-date plans, demographics, crime-policy text). Approved translations trim sentences whose antecedent was lost in extraction ("for that reason", "this road") rather than inventing context. Judged 141 `commons-geosearch` photos on contact sheets: approved 68 that show the area itself; rejected portraits, interiors, vehicles, logos, macro shots, and any file the geosearch handed to several areas unless its name places it in one. Published with `--accept offline` (which also ships the offline `inside-fact` lines built from already-translated landmark facts): Utrecht +222 fields, Rotterdam +75. `check-neighborhood-trivia-data.ts` passes.
+
+## Durable scrape store for Wikimedia fetches
+
+User: "make sure we are caching / building our own DB of everything we scrape". The gap-fill cache lived in git-ignored `staging/`, which dies with a cloud container, so every new session re-asked Wikimedia from scratch under a shared-IP rate limit. `scripts/lib/scrapeStore.ts` keeps every response as `{ url, fetchedAt, body }` at `<root>/<host>/<aa>/<sha1(url)>.json`; the root is `SCRAPE_STORE_DIR`, else the project's shared `/mnt/project-files/scrape-store` (outlives containers), else `.cache/scrape-store`. One file per response so parallel sessions never write the same file; keyed by URL only, never by the token. `fill-neighborhood-gaps.ts` reads and writes through it (`--refresh` refetches). Other fetchers (`fetch-area-photos.ts`, `cached-json-fetch.ts`) still use their own local caches.
+
+## Area photos for all four cities, and our own Commons DB
+
+User: "take over fetching ... make sure we are caching / building our own DB of everything we scrape". `scripts/fetch-area-photos.ts` now fills postcards for Amsterdam, Den Haag, Utrecht and Rotterdam. Three faults explained the empty Amsterdam areas (Grachtengordel, De Pijp, Staatsliedenbuurt and Apollobuurt had 0 photos): the action API reports rate limits and `cirrussearch-too-busy-error` as HTTP 200 with an error body, which was saved as "no photos" and then skipped forever; geosearch returns only the 200 files nearest one point, so a single centroid query covered a corner of large areas and none of a horseshoe (the Grachtengordel's centroid is in the old town); and anonymous requests from the cloud's shared IP were throttled outright (the Wikimedia token now covers commons.wikimedia.org). Now: error bodies are retried or reported, never stored; `areaSearchPoints` searches a grid of cells about 1 km wide whose centres lie inside the area; areas with fewer than 40 candidates also consider files within 150 m of the boundary (small islands, flagged `nearby: true`); and Anefo press portraits and Mapillary dashcam frames are dropped as not views of the place.
+
+Everything read is kept twice. Raw responses go to the shared scrape store (`scripts/lib/scrapeStore.ts`, `/mnt/project-files/scrape-store`). The parts we use go into two tables, `/mnt/project-files/commons-db/{geosearch,files}.jsonl` (`src/mapRecall/commonsStore.ts`): 1,248 geosearch queries with all hits, 26.9k files with URLs, size and licence/credit/description metadata, 74 MB, too large for git. `--offline` rebuilds every city's `area-photos.json` from the tables with no network and gives the same answer (hits keep the API's nearest-first order because candidate lists are capped by it). The first run's raw responses sit in `commons-db/responses/` keyed only by URL hash (from before the scrape store), as an archive. Measured in the card gallery: postcards for every Amsterdam and Den Haag card, all but one in Utrecht, and all but 15 in Rotterdam (Ommoord and Zevenkamp, where Commons has almost nothing geotagged). The gallery page itself crashed for every city but Amsterdam because it took names and centres from the game's `CITIES`; it now uses `EXTRACT_CITIES`.
 
 ## Facade ornaments: cornices, door surrounds, iron balconies, Amsterdam School brick
 

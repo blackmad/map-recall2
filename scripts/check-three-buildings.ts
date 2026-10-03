@@ -467,4 +467,17 @@ for (const c of [0.64, 1.4]) {
   assert.ok(BAY_STYLES.canal.every(s => s.shape === 'rect'), 'canal houses have flat lintels; arched hoods are 19th century');
   assert.ok(BAY_LAYER_COUNT < 200, 'bay layers fit the byte layer index with room for roofs');
 }
+{
+  // Wall colours follow the period (user 2026-10-02, real-vs-game sheet: "one brick palette"): canal houses
+  // run darker than 19th-century rows, and post-war blocks are buff and grey, not red brick.
+  const { bayLookFor } = await import('../src/canalRecall/bayLook.ts');
+  const lum = (hex: string) => { const n = parseInt(hex.slice(1), 16); return 0.2126 * (n >> 16) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255); };
+  const red = (hex: string) => { const n = parseInt(hex.slice(1), 16); return (n >> 16) - (n & 255); };
+  const walls = (year: number) => Array.from({ length: 400 }, (_, i) => bayLookFor(`w${i}`, year, 12, 'photo').wallHex);
+  const mean = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / xs.length;
+  const canal = walls(1680), c19 = walls(1895), modern = walls(1965);
+  assert.ok(mean(canal.map(lum)) + 15 < mean(c19.map(lum)), 'canal houses darker than 19th-century rows');
+  assert.ok(canal.filter(h => lum(h) < 60).length > 40, 'some canal houses painted near-black or dark green');
+  assert.ok(mean(modern.map(red)) < mean(c19.map(red)) - 30, 'post-war blocks buff and grey, not red brick');
+}
 console.log('three buildings: ok');
