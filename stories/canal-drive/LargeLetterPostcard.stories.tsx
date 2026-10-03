@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   drawLargeLetterPostcard,
   drawWordArtOverlay,
+  ensureLargeLetterWebFonts,
   loadLargeLetterFont,
   measureLargeLetterPostcard,
   type LargeLetterPostcardProps,
@@ -76,8 +77,7 @@ function LargeLetterHost({
     let cancelled = false;
     (async () => {
       try {
-        await document.fonts.load('400 64px "Archivo Black"');
-        await document.fonts.load('400 32px "Pacifico"');
+        await ensureLargeLetterWebFonts('/canal-drive/fonts/');
       } catch {
         // System fallbacks still paint.
       }
@@ -100,7 +100,7 @@ function LargeLetterHost({
       if (cancelled) return;
       let otFont = null;
       try {
-        otFont = await loadLargeLetterFont('/canal-drive/fonts/ArchivoBlack-Regular.ttf');
+        otFont = await loadLargeLetterFont('/canal-drive/fonts/Anton-Regular.ttf');
       } catch {
         // fillText + CircleType tilt still works without outlines.
       }

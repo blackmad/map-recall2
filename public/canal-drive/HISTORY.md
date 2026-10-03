@@ -27,6 +27,38 @@ User (2026-10-03), screenshots at Da Costakade: "these overhangs look a little h
   - Colours come from each chain's Commons logo. Dirk's red is from memory, and Ekoplaza's green is a guess at its fascia.
 - **Street rhythm:** a study and a pure prototype (`streetEnsembles.ts`). The plan is in TODO under "Street ensembles".
 
+## Large-letter postcard: the Spoon Graphics recipe
+
+User (2026-10-03, with the Spoon Graphics tutorial "How To Create a Vintage Style Large Letter Postcard Design"): revisit the postcard against it. Audit: `/mnt/project-files/map-recall/postcard-design-audit.md`; before/after renders in `/mnt/project-files/map-recall/postcard-recipe/`. Changes, step by step against the recipe:
+
+- **Typeface.** Anton (self-hosted, OFL) instead of Archivo Black, standing in for Futura Condensed Extra Bold. The layout still works in Archivo cap units (`LARGE_LETTER_FONT_EM_SCALE` draws Anton at 0.8 of the layout size). Because the face is tall by itself, the vertical face pull is capped at 1.3 (it was up to 2.7) and the horizontal squeeze stops at 0.85. Names of up to nine letters stay on one line even with a space (DE PIJP, like FLORIDA), and word spaces are half width. Tracking is +0.012 em, not the recipe's -50, because Anton's sidebearings are slim and faces overlapped.
+- **Rims.** Two offset rims (light inside, blue outside, dark hairline edge) sit behind the face, replacing the black die-cut drawn over it.
+- **Extrusion.** Each glyph's outline is flattened, and every edge facing the extrusion direction becomes a facet. Down-facing facets are orange and side facets blue, as in Illustrator's Extrude & Bevel at 1°/1° with no shading. The block is outlined once in a dark line, so there are no seams. A 45° halftone screen is burned into the orange (Color Burn 30%). The recipe's block is parallel, not converging; the earlier audit line that said otherwise was wrong. Without the outline font, the banded shelf is still used.
+- **Backdrop.** 60% instead of 16%, with a lighter veil, as the recipe lays the scene at 70%.
+- **Photos.** The layered card's letter photos get an SVG paint filter: brush wobble, soft blur plus unsharp mask, and an 8-tone posterise. A colour boost follows, standing in for Oil Paint and Match Color.
+- **Print grain.** A Gaussian-noise and linen layer blends with `overlay` over the whole layered card. This puts back the texture on the letter photos that the windows change had dropped.
+- **Script.** Pacifico is self-hosted and registered via `ensureLargeLetterWebFonts`; the game had been showing a serif fallback.
+
+Photo windows now replay the block's paint order on the mask: a later line's extrusion, or a neighbour's rims, closes that part of an earlier window. Paint is 56-107 ms a card, and the grain takes 19 ms once. Regressions: `test:large-letter-postcard` and `test:large-letter-craft` (DE PIJP on one line, the two-line contract moved to OVERTOOMSE VELD, face pull ≤1.3).
+
+## Map Recall: folded answer card and a layered postcard
+
+User (2026-10-02, with a screenshot of Nieuwmarktbuurt): the postcard "pops in too late" and the answer card "takes up too much of my screen so I don't get confirmation of where the hood was". Cause of the delay: `PostcardHeader` composed the large-letter postcard at reveal, after a dynamic import of the compositor, the Archivo Black outline font and `Promise.all` over up to eight Commons thumbnails, so the slowest photo gated it, then drew the warped letters (70-240 ms a paint here). Measured over seeded rounds: 1.3-12 s from Confirm to postcard, 1.3-3 s even with every photo on local disk.
+
+A first cut baked every postcard to WebP (66 for Amsterdam, 3.7 MB). The user preferred the photos to stay dynamic and suggested treating the letters as transparent windows the browser fills itself, prepared during the guess. That is what shipped: `drawLargeLetterPostcard(..., { photoWindows: true })` paints the card with transparent letter faces (outlines kept, later faces over earlier outlines as before), and `largeLetterPhotoWindows` gives each letter's face path, photo box, crop focus and colour filter, so `PostcardHeader` lays plain `<img>`s behind the canvas (`object-position` = the canvas's focus crop, `clip-path: path()` = the letter). `src/mapRecall/livePostcard.ts` composes the frame and requests the photos when the round starts (`usePreparePostcard` in both overlays), repaints once when the first photo (the faded backdrop) arrives, and caches the last few rounds. The frame shows at reveal whatever the network does; letters fill in as their photos load. No baked files.
+
+The answer card now opens folded (`AnswerDetails`): a postcard thumbnail, the opening line (name origin, reviewed fact, lede or history) and "More", which opens the full card; it folds again each round. The overlay holder is capped at 55dvh on desktop, and `MapComponent` fits the revealed answer above the card's measured height instead of a fixed 42% guess, refitting when the card opens or folds. Pinned in `test:postcard-images` (window geometry, photo rotation, teaser) and `map-recall-trivia.spec.ts` (folded card under 40% of the viewport, the answer's label above it, the postcard present with no photograph loaded, every window filled when they do). Storybook: Map Recall/Answer card.
+
+## Neighbourhood cards lead with a local fact
+
+User (2026-10-02): "Buitenveldbuurt is the current Jewish neighborhood right? How can we get that in the trivia card (more generally …)". The area is Buitenveldert; en.wikipedia's lede calls it "the modern Jewish quarter of Amsterdam".
+
+- **Why it was missed:** Buitenveldert has no Wikidata match in our extract, so `fetch-neighborhood-history.ts` never read the English article, and the pipeline reads only ledes, History sections and naming sentences. The Dutch article's facts sit under "Bewoners", "Onderwijs" and "Winkelgebieden".
+- **Miner:** `scripts/mine-area-facts.ts` + `src/mapRecall/areaFacts.ts` find both articles (Wikidata, title guesses, nl search, langlinks), score every sentence for local signals, and filter resident statistics, origin shares, crime/policing and planning text before anything reaches the sheet. OSM places inside each outline are clustered (Overpass via maps.mail.ru, since overpass-api.de resets through the cloud proxy) and only corroborate a sentence, never stand alone. Everything goes through the scrape store.
+- **Picks:** a Claude session words one fact per area from cited sentences only; `publish` refuses an unapproved pick, a cited sentence no longer in its article, or a number the citations do not state. Pinned in `test:map-recall-trivia` with Buitenveldert as the named regression.
+- **Card:** the user chose the lead line (decision card, 2026-10-03): `localFact` renders first with a Local chip; the description clamps to two lines beside it.
+- **Published:** 57 of 89 Amsterdam areas, all approved by the user 2026-10-03 ("Push?" after the review page); every citation check passed. 32 areas stay `null` (14 have no article). Rivierenbuurt (1941 Jewish market), Zuidoost (Surinamese community) and Staatsliedenbuurt (squatting) were flagged on the review page and shipped as written.
+
 ## Kit-less landmarks: house-sized old ones get a period facade, big ones period brick
 
 User (2026-10-03), after Fatih rendered as a 37 m green box: "More? Landmarks?"
