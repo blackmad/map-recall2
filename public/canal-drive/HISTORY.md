@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## Rijksmuseum: the wings are flat grey in the source, not a texture that failed
+
+User (2026-10-03): "any idea why rijksmuseum glb has texture issues?" A render
+shows the gate and pavilions photo-textured while the long wings sit flat
+grey-white. Nothing fails to load:
+
+- All 29 images decode as WebP (213×276 … 509×512), every textured primitive
+  carries `TEXCOORD_0`, `droppedAttributes` is empty, and every material is
+  double-sided and non-metallic. There is no missing image, missing UV set or
+  dropped attribute to blame.
+- Weighting the model's triangles by surface area, `RM-dak1` is **65% of the
+  whole model**; of that, 53% is vertical (wall) and 29% horizontal (roof). Its
+  only texture, `img_01`, is a plain grey slate strip, 121×300. `RM-situ` (the
+  terrace and passage interior) adds another 15%. Every material that carries
+  real facade photography — `RM-gevel1/2/6…`, `RM-toren2/3`, `RM-entree`,
+  `RM-kapel1` — totals under a fifth of the surface between them.
+- `RM-dak1` is the author's "dak" (roof) material, assigned to the wings' walls
+  as well as their roofs, so a straight-on elevation is one flat grey mass. The
+  build script (`build-signature-landmark.ts`) only flips metallic/double-sided
+  and darkens unpainted faces; it never reassigns a material, so the source's
+  choice survives intact.
+
+Two caveats found on the way, neither the cause: `EXT_texture_webp` is in
+`extensionsRequired`, so any glTF reader without WebP-texture support drops
+every texture and shows the ~0.5 `baseColorFactor` instead; and this build used
+`--texture=512`, half the 1024 default, so even the textured gate is softer than
+it could be.
+
+Making the wings read as brick means re-texturing them from a facade photo,
+which is a UV remap (the model's UVs are per-material), not a resolution bump.
+The 2.7 MB source `.glb` is not in the repo, so that is a rebuild, not a patch.
+
 ## Cinemas, retail and performance venues: 34 original models (2026-10-04)
 
 Rialto and Kriterion now have their narrow street fronts and lower screening
