@@ -776,4 +776,161 @@ for (const c of [0.64, 1.4]) {
   assert.ok(canal.filter(h => lum(h) < 60).length > 40, 'some canal houses painted near-black or dark green');
   assert.ok(mean(modern.map(red)) < mean(c19.map(red)) - 30, 'post-war blocks buff and grey, not red brick');
 }
+{
+  // Places of worship (2026-10-03, "temples mosques and churches"; user, on a church in house
+  // windows: "why does it have windows???"). Hand-modelled kits on their real tiles against the
+  // 3D BAG heights and photos they were modelled from (worshipKits.ts), then the generic rule for
+  // every other worship building (worshipBuildings.ts, worshipBuildingData.ts).
+  const { readFileSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const { KITS: kits, KIT_MODELLED_IDS: modelled, HAND_KIT_IDS: handIds, decorateKitRoof: decorate, kitGeometry: geometry } = await import('../src/canalRecall/landmarkKits.ts');
+  const { exceptLandmarks } = await import('../src/canalRecall/roofMesh.ts');
+  const { planWorship, worshipWindows, WORSHIP_WALL } = await import('../src/canalRecall/worshipBuildings.ts');
+  const { WORSHIP_BUILDINGS } = await import('../src/canalRecall/worshipBuildingData.ts');
+  const KO = { lng: 4.9, lat: 52.37 }, kkx = 111_320 * Math.cos(KO.lat * Math.PI / 180);
+  const toL = ([lng, lat]: number[]): [number, number] => [(lng - KO.lng) * kkx, (lat - KO.lat) * 110_540];
+  const inside = (ring: [number, number][], [x, y]: [number, number]) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) if ((ring[i][1] > y) !== (ring[j][1] > y) && x < ((ring[j][0] - ring[i][0]) * (y - ring[i][1])) / (ring[j][1] - ring[i][1]) + ring[i][0]) c = !c; return c; };
+  const tiles = new Map<string, any[]>();
+  const featureOf = (tile: string, id: string) => {
+    if (!tiles.has(tile)) tiles.set(tile, JSON.parse(gunzipSync(readFileSync(`public/data/extracts/amsterdam/building-tiles/14/${tile}.geojson.gz`)).toString()).features);
+    const f = tiles.get(tile)!.find((x: any) => x.properties.id === id);
+    assert.ok(f, `${id} is in tile ${tile}`);
+    return f;
+  };
+  const outer = (f: any): [number, number][] => (f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates[0][0] : f.geometry.coordinates[0]).map(toL);
+  const partOf = (tile: string, id: string) => { const f = featureOf(tile, id); return { id, ring: outer(f), minHeightM: Number(f.properties.minHeight) || 0, heightM: Number(f.properties.height) }; };
+  const near = (got: number, want: number, tol: number, what: string) => assert.ok(Math.abs(got - want) <= tol, `${what}: ${got.toFixed(1)} m, expected ${want} +/- ${tol}`);
+  const GLASS = (hex: string) => hex === '#3a434c' || hex === '#3c454d' || hex === '#2c333b';
+  /** Build a kit from its tile: its triangles, highest point, highest roof slope, highest non-gilt point, glass count. */
+  const build = (name: string, tile: string) => {
+    const kit = kits.find(k => k.name === name);
+    assert.ok(kit, `${name} kit exists`);
+    const ids = new Set([...kit!.tiers.map(t => t.id), ...kit!.stacks.map(s => s.onId), ...(kit!.halls ?? []).map(h => h.id), ...(kit!.forms ?? []).map(f => f.on)]);
+    const parts = new Map([...ids].map(id => [id, partOf(tile, id)] as const));
+    const tris = geometry(kit!, parts).flatMap(g => g.tris);
+    const z = (ts: typeof tris) => Math.max(...ts.flatMap(t => t.p.map(p => p[2])));
+    return { kit: kit!, parts, tris, top: z(tris), ridge: z(tris.filter(t => t.layer === 'slope')), solid: z(tris.filter(t => t.hex !== '#d9b24c')), glass: tris.filter(t => GLASS(t.hex)).length };
+  };
+  const walls = (name: string, id: string, bagHeight: number, eaves: number, hex: string) => {
+    const d = decorate({ type: 'Feature', properties: { id, height: bagHeight, sideColour: '#557260' }, geometry: null });
+    assert.equal(d.properties.roofEavesHeightM, eaves, `${name}: walls stop at the eaves (${eaves} m), not at the tile height`);
+    assert.equal(d.properties.kitWall, 'plain', `${name}: plain walls, no house windows`);
+    assert.equal(d.properties.sideColour, hex, `${name}: its own brick`);
+  };
+
+  {
+    // Portuguese Synagogue: a brick box with arched and square windows, cornice and balustrade at
+    // 18.7-20.2 m, a hipped roof behind it to 23.6 m (3D BAG 18.7-23.7). It was a block of flats.
+    const s = build('Portuguese Synagogue', '8415/5384');
+    walls('Portuguese Synagogue', 'NL.IMBAG.Pand.0363100012170255', 21.94, 19.2, '#7a4a3a');
+    near(s.ridge, 23.6, 0.3, 'Esnoga roof ridge');
+    near(s.top, 23.6, 0.3, 'Esnoga highest point');
+    assert.ok(s.glass > 40, `Esnoga: two rows of windows round the box (${s.glass} glass triangles)`);
+    const parapet = s.tris.filter(t => t.hex === '#e6dfcf');
+    near(Math.max(...parapet.flatMap(t => t.p.map(p => p[2]))), 20.2, 0.01, 'Esnoga balustrade top');
+  }
+  {
+    // Hofkerk (Martelaren van Gorcum): west tower to 26 m with a narrow tiled cap and cross (32.1 m,
+    // the BAG height), crossing tower pyramid 29.3 m, nave ridge 19.8 m. Not a dome, whatever it is called.
+    const h = build('Hofkerk', '8416/5385');
+    walls('Hofkerk', 'NL.IMBAG.Pand.0363100012123068', 32.05, 8, '#8f5038');
+    near(h.top, 32.1, 0.3, 'Hofkerk west tower with its cross');
+    near(h.ridge, 19.8, 0.2, 'Hofkerk nave ridge');
+    const ring = h.parts.get('NL.IMBAG.Pand.0363100012123068')!.ring;
+    for (const t of h.kit.halls![0].towers!) assert.ok(inside(ring, toL(t.at)), 'Hofkerk: each tower stands on the footprint');
+    const crossing = h.kit.halls![0].towers![1];
+    near(crossing.z1 + crossing.capM, 29.3, 0.1, 'Hofkerk crossing pyramid (3D BAG 29.3)');
+    assert.ok(h.glass > 30, 'Hofkerk: portals, aisle lights and belfry arches');
+  }
+  {
+    // Gerardus Majellakerk: the octagonal drum's slate cone to 41.3 m (3D BAG), four arms ridged at
+    // 19.3 m (18.8-21.2). It was a 41 m block of flats with house windows.
+    const g = build('Gerardus Majellakerk', '8416/5385');
+    walls('Gerardus Majellakerk', 'NL.IMBAG.Pand.0363100012136492', 41.48, 13.3, '#6e4a3c');
+    near(g.solid, 41.3, 0.2, 'Gerardus Majella cone apex');
+    near(g.ridge, 19.3, 1, 'Gerardus Majella arm ridges');
+    const cone = g.tris.filter(t => t.hex === '#4a525d' && t.layer === 'flat');
+    assert.ok(cone.length >= 8, 'the cone is an octagonal slate pyramid');
+  }
+  {
+    // Westermoskee: zinc dome to 26.4 m over a 10.6 m banded-brick body, one minaret near 40 m with
+    // two white balconies. It was a glass-fronted box.
+    const w = build('Westermoskee', '8413/5384');
+    walls('Westermoskee', 'NL.IMBAG.Pand.0363100012241498', 21.53, 10.6, '#7b4636');
+    const dome = w.tris.filter(t => t.hex === '#9aa3a8');
+    near(Math.max(...dome.flatMap(t => t.p.map(p => p[2]))), 26.4, 0.1, 'Westermoskee dome top');
+    near(w.solid, 41, 0.1, 'Westermoskee minaret spike');
+    assert.equal(w.tris.filter(t => t.layer === 'slope').length, 0, 'no pitched roof on a mosque');
+    const ring = w.parts.get('NL.IMBAG.Pand.0363100012241498')!.ring;
+    for (const t of w.kit.halls![0].towers!) assert.ok(inside(ring, toL(t.at)), 'Westermoskee: drum and minaret stand on the footprint');
+  }
+  {
+    // Dominicuskerk: nave eaves 20.6, ridge 25.6 (3D BAG), aisles from 10.4 m, the corner turret's
+    // belfry flat at 28.5 m and its slate spire above. It was two beige boxes.
+    const d = build('Dominicuskerk', '8414/5383');
+    walls('Dominicuskerk nave', 'w749287654', 28, 20.6, '#6f5e52');
+    walls('Dominicuskerk aisles', 'w749287651', 15, 10.4, '#6f5e52');
+    near(d.ridge, 25.6, 0.3, 'Dominicuskerk nave ridge');
+    near(d.solid, 37, 0.1, 'Dominicuskerk turret spire');
+    assert.ok(d.glass > 30, 'Dominicuskerk: aisle and clerestory windows');
+  }
+
+  // The generic rule. Plans: a tower, a modern building and a small chapel part stay plain bodies;
+  // an older plain rectangle gets a steep roof with the tile height at 70% of its rise (BAG), or
+  // at its ridge (an OSM part); an odd plan keeps its height with windows.
+  const rect = (len: number, wid: number, coverage = 0.95, maxDev = 1) => ({ len, wid, coverage, maxDev });
+  assert.equal(planWorship({ heightM: 49, year: 1925, areaM2: 48, rect: rect(7, 7) }).mode, 'b', 'a tower part is a plain body');
+  assert.equal(planWorship({ heightM: 12, year: 1975, areaM2: 600, rect: rect(30, 20) }).mode, 'b', 'a modern church is a plain body');
+  assert.equal(planWorship({ heightM: 7, year: 1300, areaM2: 13, rect: rect(4, 3) }).mode, 'b', 'a small chapel part is a plain body');
+  assert.equal(planWorship({ heightM: 20.5, year: 1935, areaM2: 1359, rect: rect(48, 46, 0.62, 15.5) }).mode, 'w', 'a cross plan keeps its height');
+  const hall = planWorship({ heightM: 15.7, year: 1888, areaM2: 626, rect: rect(42, 19, 0.81, 5.3) });
+  assert.equal(hall.mode, 'h');
+  near(hall.eavesM + 0.7 * hall.riseM, 15.7, 0.1, 'BAG tile height sits 70% up the roof');
+  const part = planWorship({ heightM: 23, year: 1300, areaM2: 697, rect: rect(40, 18), osmPart: true, roofHeightM: 8 });
+  assert.deepEqual([part.mode, part.eavesM, part.riseM], ['h', 15, 8], 'an OSM part keeps its mapped roof height, ridge at its height');
+  assert.equal(worshipWindows(4).length, 0, 'no windows on a wall too low for them');
+  const tall = worshipWindows(22)[0];
+  assert.ok(tall.head === 'round' && tall.z1 - tall.z0 <= 9 && tall.z1 <= 21, 'tall round-headed windows, capped at 9 m');
+
+  // The published list: unique, never a hand-modelled footprint, every entry walled plain and
+  // passed over by the landmark fallback (no period house front, no bare palette box).
+  const ids = WORSHIP_BUILDINGS.map(e => e[0]);
+  assert.equal(new Set(ids).size, ids.length, 'worship ids are unique');
+  assert.ok(ids.length > 150, `the generic rule covers the city's worship buildings (${ids.length})`);
+  for (const id of ids) {
+    assert.ok(!handIds.has(id), `${id}: a hand kit owns it, not the generic rule`);
+    assert.ok(modelled.has(id), `${id}: the landmark fallback leaves it to its kit`);
+  }
+  const houseFront = (f: any) => ({ ...f, properties: { ...f.properties, facade: 'canal-priorBrickRed', facadeStyle: 'canal', roofPlanned: true } });
+  const wrapped = exceptLandmarks(houseFront, new Set(['NL.IMBAG.Pand.0363100012168141']), modelled);
+  {
+    // The Engelse Kerk in the Begijnhof (a landmark under 26 m, built 1665) took the period house front.
+    const f = featureOf('8414/5384', 'NL.IMBAG.Pand.0363100012168141');
+    const out = decorate(wrapped({ ...f, properties: { ...f.properties, constructionYear: 1665 } }));
+    assert.notEqual(out.properties.facadeStyle, 'canal', 'Engelse Kerk: no canal-house front');
+    assert.equal(out.properties.kitWall, 'plain');
+    assert.equal(out.properties.sideColour, WORSHIP_WALL.o, 'Engelse Kerk: old brick');
+  }
+  {
+    // An old roofed hall on its tile: plain walls to the planned eaves, a fitted roof, tall windows.
+    const entry = WORSHIP_BUILDINGS.find(e => e[0] === 'NL.IMBAG.Pand.0363100012120986')!;
+    assert.equal(entry[2], 'h', 'Augustinuskerk (1888) is a roofed hall');
+    const kit = kits.find(k => k.halls?.[0]?.id === entry[0])!;
+    const p = partOf('8416/5382', entry[0]);
+    const tris = geometry(kit, new Map([[entry[0], p]])).flatMap(g => g.tris);
+    const ridge = Math.max(...tris.filter(t => t.layer === 'slope').flatMap(t => t.p.map(q => q[2])));
+    near(ridge, entry[3] + entry[4], 0.05, 'Augustinuskerk roof ridge');
+    assert.ok(tris.filter(t => GLASS(t.hex)).length > 10, 'Augustinuskerk: tall windows');
+    assert.equal(decorate({ type: 'Feature', properties: { id: entry[0], height: p.heightM }, geometry: null }).properties.roofEavesHeightM, entry[3]);
+  }
+  {
+    // A tower part stays a plain body at its own height; an ordinary house is never touched.
+    const tower = decorate({ type: 'Feature', properties: { id: 'w995323510', height: 49 }, geometry: null });
+    assert.equal(tower.properties.kitWall, 'plain', 'Vredeskerk tower: plain brick');
+    assert.equal(tower.properties.roofEavesHeightM, undefined, 'and its own height');
+    const house = { type: 'Feature' as const, properties: { id: 'NL.IMBAG.Pand.0363100012072136', height: 18.97, facade: 'canal-priorBrickRed', facadeStyle: 'canal' }, geometry: null };
+    assert.equal(decorate(house), house, 'an ordinary house passes through the kit decorator');
+    assert.ok(!modelled.has(house.properties.id), 'and is not in any kit');
+  }
+}
 console.log('three buildings: ok');

@@ -16,6 +16,8 @@
 import { fitRect, roofTriangles, type Rect, type RoofPlan } from './roofMesh.js';
 import { formTriangles, type KitForm } from './landmarkForms.js';
 import { MUSEUM_KITS } from './museumKits.js';
+import { WORSHIP_KITS } from './worshipKits.js';
+import { FIT_COVERAGE, FIT_MAX_DEV_M, GENERIC_WORSHIP_KITS } from './worshipBuildings.js';
 
 export type Mat = 'brick' | 'stone' | 'lead' | 'gold' | 'copper' | 'slate' | 'white' | 'tile' | 'blue';
 export type StageShape = 'square' | 'octagon';
@@ -43,6 +45,12 @@ export type KitHalls = {
   windows?: KitWindows;
   /** A roof colour other than the material's own (Carré's pale zinc). */
   roofHex?: string;
+  /**
+   * One pitched roof over the footprint's own best-fit rectangle, ridge along its long side, at
+   * `eavesM` rising `riseM` (the generic place-of-worship nave, worshipBuildings.ts). Skipped when
+   * the rectangle covers the footprint poorly, so an odd plan keeps its flat lid at the eaves.
+   */
+  fit?: boolean;
 };
 /**
  * A row of window openings, `z0` (sill) to `z1` (top of the head), `widthM` wide, `bayM` apart,
@@ -82,6 +90,10 @@ export type KitTower = {
   at: [number, number]; widthM: number; z1: number; capM: number; cap: Mat;
   lenM?: number; bearingDeg?: number; z0?: number; shape?: StageShape; mat?: Mat; wallHex?: string;
   capShape?: 'pyramid' | 'spire' | 'dome' | 'slant'; capHex?: string; highBearingDeg?: number;
+  /** A pyramid cap narrower than the tower (set back behind a parapet, the Hofkerk's west tower); default the cornice's width. */
+  capWidthM?: number;
+  /** `false`: no gilt finial on the cap (a minaret's balcony ring, which is a short wide tower of its own). */
+  finial?: boolean;
 };
 export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; halls?: KitHalls[]; wall?: KitWall; hides?: string[]; body?: string[]; /** Hand-modelled volumes (landmarkForms.ts). */ forms?: KitForm[] };
 
@@ -98,7 +110,7 @@ const CROWN: Stage[] = [
   { shape: 'octagon', w0: 0.9, w1: 0, h: 1.8, mat: 'gold' },
 ];
 
-export const KITS: Kit[] = [
+const HAND_KITS: Kit[] = [
   {
     // Tower 87 m: brick base, stone clock stage, octagonal stone and lead stages, lantern, crown.
     name: 'Westerkerk',
@@ -343,6 +355,8 @@ export const KITS: Kit[] = [
   },
   // Museums and cinemas: the Van Gogh Museum, the Stedelijk, Eye, Tuschinski, the Maritime Museum, H'ART (museumKits.ts).
   ...MUSEUM_KITS,
+  // Places of worship modelled by hand (worshipKits.ts), and the generic treatment for the rest (worshipBuildings.ts).
+  ...WORSHIP_KITS,
   {
     // De Hallen, the 1902-05 Tollensstraat tram depot (user report 2026-10-02: one bare tan
     // block). One BAG footprint over a row of brick sheds about 9.6 m wide, whose gable ends
@@ -534,6 +548,13 @@ export const KITS: Kit[] = [
   },
 ];
 
+const kitIds = (k: Kit) => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? []), ...(k.forms ?? []).map(f => f.on), ...(k.body ?? [])];
+/** Every footprint a hand-modelled kit claims (the worship staging script leaves these to their kit). */
+export const HAND_KIT_IDS: ReadonlySet<string> = new Set(HAND_KITS.flatMap(kitIds));
+const HAND_IDS = HAND_KIT_IDS;
+/** Every kit: the hand-modelled ones, then the generic worship treatment for footprints none of them claims. */
+export const KITS: Kit[] = [...HAND_KITS, ...GENERIC_WORSHIP_KITS.filter(k => kitIds(k).every(id => !HAND_IDS.has(id)))];
+
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */
 export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? []), ...(k.forms ?? []).map(f => f.on)]));
 export const KIT_HIDE_IDS: readonly string[] = [...new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...(k.hides ?? [])]))];
@@ -677,13 +698,14 @@ function towerParts(sink: TriSink, t: KitTower, [cx, cy]: Vec2, ang: number, bas
   }
   stage(sink, cx, cy, ang, shape, w, w, z0, t.z1, body, hex);
   if (shape === 'square') stage(sink, cx, cy, ang, 'square', w + 0.8, w + 0.8, t.z1 - 0.6, t.z1, 'stone');
-  if (capShape === 'pyramid') stage(sink, cx, cy, ang, 'square', w + 1.2, 0, t.z1, t.z1 + t.capM, t.cap, t.capHex);
+  // An octagonal tower takes an octagonal pyramid (the Gerardus Majellakerk's drum and its slate cone).
+  if (capShape === 'pyramid') stage(sink, cx, cy, ang, shape, t.capWidthM ?? w + 1.2, 0, t.z1, t.z1 + t.capM, t.cap, t.capHex);
   else {
     let z = t.z1;
     const base = shape === 'square' ? w + 0.5 : w;
     for (const [r0, r1, h] of CAP_PROFILES[capShape]) { stage(sink, cx, cy, ang, 'octagon', base * r0, base * r1, z, z + h * t.capM, t.cap, t.capHex); z += h * t.capM; }
   }
-  stage(sink, cx, cy, ang, 'octagon', 0.35, 0, t.z1 + t.capM, t.z1 + t.capM + 1.6, 'gold');
+  if (t.finial !== false) stage(sink, cx, cy, ang, 'octagon', 0.35, 0, t.z1 + t.capM, t.z1 + t.capM + 1.6, 'gold');
 }
 
 /**
@@ -888,6 +910,15 @@ export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): Ki
       for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
         const slope = t.part === 'slope';
         sink.out.push({ p: t.p, uv: t.uv, layer: slope ? 'slope' : 'plain', hex: slope ? hex : gable, n: t.n });
+      }
+    }
+    if (spec.fit) {
+      const rect = fitRect(part.ring, 200);
+      if (rect && rect.coverage >= FIT_COVERAGE && rect.maxDev <= FIT_MAX_DEV_M && spec.riseM > 0) {
+        for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
+          const slope = t.part === 'slope';
+          sink.out.push({ p: t.p, uv: t.uv, layer: slope ? 'slope' : 'plain', hex: slope ? hex : gable, n: t.n });
+        }
       }
     }
     for (const wing of spec.wings ?? []) {
