@@ -11,11 +11,12 @@ import type { GableShape } from './roofMesh.js';
 // Longer phrases first, so "verhoogde halsgevel" is not read as a plain neck gable.
 const WORDS: Array<[RegExp, GableShape]> = [
   [/verhoogde\s+halsgevel/i, 'raisedNeck'],
-  [/trapgevel|trappengevel|trapgeveltje/i, 'step'],
-  [/halsgevel/i, 'neck'],
-  [/klokgevel/i, 'bell'],
-  [/tuitgevel/i, 'spout'],
-  [/lijstgevel|rechte\s+(?:kroon)?lijst|kroonlijst|attiek|rechte\s+daklijst/i, 'cornice'],
+  [/trapgevel|trappengevel|trapgeveltje|trapvormige\s+top|getrapte\s+top/i, 'step'],
+  [/halsgevel|halsvormige\s+top/i, 'neck'],
+  [/klokgevel|klokvormige\s+top|klokvormig\s+beëindigd/i, 'bell'],
+  [/tuitgevel|tuitvormige\s+top/i, 'spout'],
+  // "onder rechte lijst", "rechte klossenlijst", "lijstgevel", "kroonlijst", "attiek": a flat cornice front.
+  [/lijstgevel|rechte\s+\w*lijst|kroonlijst|klossenlijst|attiek/i, 'cornice'],
   [/puntgevel|topgevel/i, 'plain'],
 ];
 

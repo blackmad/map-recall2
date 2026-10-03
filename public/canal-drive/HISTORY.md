@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## Listed buildings draw the gable the monuments register names
+
+User (2026-10-02): "do you think it's at all possible to correlate the canal house builder more to the year the house was built?", then "start on wall colors, then gables".
+
+- **Source:** the national monuments register (RCE, CC0) describes each rijksmonument's front in Dutch, for example:
+  - "Pand met trapgevel"
+  - "onder rechte lijst"
+  - "klokvormige top"
+- **Fetch:** `scripts/fetch-monument-gables.ts` queries the register's SPARQL endpoint in ranges of monument number. OFFSET paging timed out past the third page, and joining on the municipality repeated every row about 20 times. Raw responses are cached in `/mnt/project-files/scrape-store/rce-monuments/amsterdam-by-number/`.
+- **Classify:** `monumentGables.ts` takes the first gable phrase in each description.
+- **Match:** the monument's point is placed in its building footprint, and the result goes to `monument-gables.json` (179 KB).
+- **Coverage:** 7,672 Amsterdam monuments; 5,377 name a gable; 4,326 buildings matched:
+  - cornice 2,299
+  - neck 1,283
+  - bell 911
+  - plain 575
+  - step 144
+  - spout 35
+  - raised neck 1
+- **In game:** `vector-map.js` loads the file and tags `monumentGable` before roofs are planned. `planRoof` then draws that gable whatever the style, OSM tag or year.
+- **Measured:** in one Herengracht view, 574 buildings were tagged and 488 drew the named gable. The rest are footprints too irregular for a gable roof.
+- **Pinned:** in `test:roof-shapes`, using register numbers 836, 2791 and 5114.
+- **Open:** the first-phrase rule can pick up a rear or side gable where a description starts there. "verhoogde halsgevel" is rare in the register's wording, so raised necks are still mostly guessed. Landmark buildings keep their own form.
+
 ## Wall colours by period
 
 From the real-vs-game sheet (2026-10-02: "one brick palette" everywhere), and the user's "start on wall colors, then gables".

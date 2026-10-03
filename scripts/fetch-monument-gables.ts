@@ -14,49 +14,54 @@ import { gunzipSync } from 'node:zlib';
 import { classifyGable } from '../src/canalRecall/monumentGables.ts';
 
 const ENDPOINT = 'https://api.linkeddata.cultureelerfgoed.nl/datasets/rce/cho/sparql';
-const STORE = '/mnt/project-files/scrape-store/rce-monuments/amsterdam-distinct';
+const STORE = '/mnt/project-files/scrape-store/rce-monuments/amsterdam-by-number';
 const STAGING = '/mnt/project-files/house-design/monument-gables.staging.json';
 const EXTRACT = 'public/data/extracts/amsterdam/monument-gables.json';
 const TILES = 'public/data/extracts/amsterdam/building-tiles/14';
-const PAGE = 2000;
 
 // Each monument joins to many parcels, so the municipality is a FILTER EXISTS rather than a
 // join (a join repeated every row ~20 times); DISTINCT leaves two rows per monument (two points).
-const query = (offset: number) => `
+// Pages are ranges of monument numbers: OFFSET paging timed out (504) past the third page.
+const query = ([from, to]: readonly [number, number]) => `
 PREFIX ceo: <https://linkeddata.cultureelerfgoed.nl/def/ceo#>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 SELECT DISTINCT ?nr ?wkt ?txt WHERE {
-  ?m a ceo:Rijksmonument ; ceo:rijksmonumentnummer ?nr ; ceo:heeftGeometrie/geo:asWKT ?wkt ; ceo:heeftOmschrijving/ceo:omschrijving ?txt .
+  ?m a ceo:Rijksmonument ; ceo:rijksmonumentnummer ?nr .
+  FILTER(xsd:integer(?nr) >= ${from} && xsd:integer(?nr) < ${to})
   FILTER EXISTS { ?m ceo:heeftBasisregistratieRelatie/ceo:gemeentenaam "Amsterdam" }
-} ORDER BY ?nr LIMIT ${PAGE} OFFSET ${offset}`;
+  ?m ceo:heeftGeometrie/geo:asWKT ?wkt ; ceo:heeftOmschrijving/ceo:omschrijving ?txt .
+}`;
+const RANGES: ReadonlyArray<readonly [number, number]> = [
+  ...Array.from({ length: 8 }, (_, k) => [k * 1500, (k + 1) * 1500] as const),
+  [12000, 30000], [30000, 100000], [100000, 300000], [300000, 600000],
+];
 
 type Row = { nr: string; wkt: string; txt: string };
 
 async function pages(): Promise<Row[]> {
   mkdirSync(STORE, { recursive: true });
   const rows: Row[] = [];
-  for (let page = 0; ; page++) {
-    const file = `${STORE}/page-${String(page).padStart(3, '0')}.json`;
+  for (const range of RANGES) {
+    const file = `${STORE}/nr-${range[0]}-${range[1]}.json`;
     let body: any;
     if (existsSync(file)) body = JSON.parse(readFileSync(file, 'utf8'));
     else {
-      const url = `${ENDPOINT}?query=${encodeURIComponent(query(page * PAGE))}`;
-      // The endpoint times out (504) now and then on deep pages: retry with backoff.
+      const url = `${ENDPOINT}?query=${encodeURIComponent(query(range))}`;
+      // The endpoint times out (504) now and then: retry with backoff.
       let res: Response | null = null;
       for (let attempt = 0; attempt < 5; attempt++) {
         res = await fetch(url, { headers: { Accept: 'application/sparql-results+json' } });
         if (res.ok) break;
-        console.log(`page ${page}: HTTP ${res.status}, retrying`);
+        console.log(`numbers ${range.join('-')}: HTTP ${res.status}, retrying`);
         await new Promise(r => setTimeout(r, 5000 * 2 ** attempt));
       }
-      if (!res || !res.ok) throw new Error(`register page ${page}: HTTP ${res?.status}`);
+      if (!res || !res.ok) throw new Error(`register numbers ${range.join('-')}: HTTP ${res?.status}`);
       body = await res.json();
       writeFileSync(file, JSON.stringify(body));
-      console.log(`fetched page ${page}: ${body.results.bindings.length} rows`);
+      console.log(`fetched numbers ${range.join('-')}: ${body.results.bindings.length} rows`);
     }
-    const got = body.results.bindings.map((b: any) => ({ nr: b.nr.value, wkt: b.wkt.value, txt: b.txt.value }));
-    rows.push(...got);
-    if (got.length < PAGE) break;
+    rows.push(...body.results.bindings.map((b: any) => ({ nr: b.nr.value, wkt: b.wkt.value, txt: b.txt.value })));
   }
   return rows;
 }
