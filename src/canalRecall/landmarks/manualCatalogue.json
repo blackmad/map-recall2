@@ -234,5 +234,151 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
     }
+  },
+  {
+    "id": "silodam",
+    "name": "Silodam",
+    "landmarkId": "silodam",
+    "modelUrl": "./models/silodam.glb",
+    "suppressOsmIds": [
+      "w57864184",
+      "w1038324509",
+      "w1038324510",
+      "w1038324511"
+    ],
+    "footprint": {
+      "centre": [
+        4.8905845781125485,
+        52.39274079370824
+      ],
+      "headingDegrees": 164.76785231590262,
+      "lengthMetres": 65.91515774263391,
+      "widthMetres": 40.43657598726371
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Silodam",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.mvrdv.com/projects/163/silodam",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction of the colourful ten-storey harbour block, using architectural photographs for silhouette and OpenStreetMap for measured footprint. No imported geometry or photo textures."
+    }
+  },
+  {
+    "id": "embassy-free-mind",
+    "name": "Embassy of the Free Mind",
+    "landmarkId": "extract_landmarks_740511540",
+    "relatedLandmarkIds": [
+      "extract_landmarks_554373448"
+    ],
+    "modelUrl": "./models/embassy-free-mind.glb",
+    "suppressOsmIds": [
+      "w266604553"
+    ],
+    "footprint": {
+      "centre": [
+        4.887456462723575,
+        52.37638237926428
+      ],
+      "headingDegrees": 119.43055315122695,
+      "lengthMetres": 19.34692195663892,
+      "widthMetres": 17.000397123090277
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 270,
+    "attribution": {
+      "title": "Embassy of the Free Mind",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.embassyofthefreemind.com/house-with-the-heads",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  },
+  {
+    "id": "the-movies",
+    "name": "The Movies",
+    "landmarkId": "extract_landmarks_1215417346",
+    "modelUrl": "./models/the-movies.glb",
+    "suppressOsmIds": [
+      "w266597659"
+    ],
+    "footprint": {
+      "centre": [
+        4.88449931907834,
+        52.38388108169651
+      ],
+      "headingDegrees": 42.500973669600626,
+      "lengthMetres": 37.318300814398086,
+      "widthMetres": 17.236152679607894
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "The Movies",
+      "author": "Map Recall",
+      "sourceUrl": "https://themovies.nl/special/the-movies-renoveert-2/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  },
+  {
+    "id": "delamar",
+    "name": "DeLaMar",
+    "landmarkId": "extract_landmarks_984169544",
+    "modelUrl": "./models/delamar.glb",
+    "suppressOsmIds": [
+      "w267565782"
+    ],
+    "footprint": {
+      "centre": [
+        4.880400054157671,
+        52.36434979965863
+      ],
+      "headingDegrees": 37.39619010728296,
+      "lengthMetres": 64.0719941600419,
+      "widthMetres": 57.92999384246876
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "DeLaMar",
+      "author": "Map Recall",
+      "sourceUrl": "https://delamar.nl/en/business/about-us/history/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  },
+  {
+    "id": "magna-plaza",
+    "name": "Magna Plaza",
+    "landmarkId": "magna-plaza",
+    "modelUrl": "./models/magna-plaza.glb",
+    "suppressOsmIds": [
+      "w57861220"
+    ],
+    "footprint": {
+      "centre": [
+        4.890243858773726,
+        52.373625430653085
+      ],
+      "headingDegrees": 19.41044315188728,
+      "lengthMetres": 80.34979895320416,
+      "widthMetres": 36.56344566440207
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Magna Plaza",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.magnaplaza.nl/the-story-behind-magna-plaza/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
   }
 ]

@@ -129,6 +129,7 @@ class VectorBasemap {
       this._ensureStreetOverlayLayers();
       this._ensureTransitOverlayLayers();
       this._ensureTreeLayers();
+      if (window.CanalRecallParks) this._parkLandscape = new window.CanalRecallParks.ParkLandscape(this.map, this._extractPath, this.theme);
       this._ensureBuildingAppearanceLayers();
       this._ensurePlaceLayers();
       this._ensureOwnPoiLayers();
@@ -173,6 +174,11 @@ class VectorBasemap {
         if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
       this.ready = true;
+      if (window.CanalRecallInventoryTrees && this._trees3dEnabled) {
+        this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility());
+        this._inventoryTrees.setEnabled(this._treesVisible);
+        this._inventoryTrees.load(this._extractPath);
+      }
       // Theme setup can run before the asynchronous style load. Reapply it
       // now so OSM building colours replace Liberty's uniform gray default.
       this.applyTheme(this.theme);
@@ -188,6 +194,9 @@ class VectorBasemap {
   setExtractRoot(path) {
     if (!path || path === this._extractPath) return;
     this._extractPath = path;
+    if (this._parkLandscape) this._parkLandscape.load(path);
+    this._rawTrees = null;
+    if (this._inventoryTrees) this._inventoryTrees.load(path);
     if (this.map && this.map.getSource('own-pois')) this._loadOwnPois();
     // Drop the previous city's tile streamer so the next probe uses the new root.
     if (this._completeCity && typeof this._completeCity.dispose === 'function') {
@@ -1564,6 +1573,7 @@ class VectorBasemap {
    *  minus any whose crown would overhang the route corridor. */
   _refreshTreeData() {
     if (!this._rawTrees || !this.map || !this.map.getSource('amsterdam-trees')) return;
+    if (this._inventoryTrees?.ready) return;
     const Trees = this._treesLib();
     let subset = this._rawTrees;
     const route = this._treeRoute;
@@ -1586,9 +1596,19 @@ class VectorBasemap {
     // The old flat look never loaded tree data; keep it that way for A/B.
     if (visible && this._treesLib()) this._loadTrees();
     if (!this.map) return;
+    if (this._inventoryTrees) this._inventoryTrees.setEnabled(visible);
+    this._syncTreeVisibility();
+  }
+
+  _syncTreeVisibility() {
+    if (!this.map) return;
+    const attribution = document.getElementById('municipal-tree-attribution');
+    if (attribution) attribution.hidden = !this._inventoryTrees?.ready || !this._treesVisible;
+    const visible = this._treesVisible && !this._inventoryTrees?.ready;
     for (const id of ['tree-trunks', 'tree-crowns']) {
       if (this.map.getLayer(id)) this.map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');
     }
+    this._updateStudyAreaResidency();
   }
 
   setDetailedBuildingsVisible(visible) {
@@ -1747,7 +1767,9 @@ class VectorBasemap {
     for (const layer of layers) {
       if (typeof layer.setTileBudget === 'function') layer.setTileBudget(6);
       const buildingDetail = this._studyRoofAreas.includes(layer) || this._studyFacadeAreas.includes(layer);
-      const enabled = Boolean(active && layer.areaId === active && !(this._measuredColoursOnly && buildingDetail));
+      const treeDetail = this._studyTreeAreas.includes(layer);
+      const enabled = Boolean(active && layer.areaId === active && !(this._measuredColoursOnly && buildingDetail)
+        && !(treeDetail && this._inventoryTrees?.ready && this._inventoryTrees?.enabled));
       // Resident streamers already update and evict on moveend. Re-enabling an
       // active layer here clears every mesh on every camera sync, even when the
       // viewport and selected area have not changed.
@@ -2598,6 +2620,7 @@ class VectorBasemap {
         for (const layer of this.map.getStyle().layers || []) {
           if (layer.id.startsWith('active-landmark') || layer.id.startsWith('active-street') || layer.id.startsWith('learned-street') || layer.id.startsWith('navigation-route') || layer.id.startsWith('transit-network') || layer.id.startsWith('osm-colored-building') || layer.id.startsWith('tree-') || layer.id.startsWith('poi-') || layer.id.startsWith('neighborhood-')) continue;
           const identity = `${layer.id} ${layer['source-layer'] || ''}`.toLowerCase();
+          if (layer.id.startsWith('park-landscape-')) continue;
           const isWater = /water|ocean|river|canal/.test(identity);
           const isRoad = /road|street|transportation|bridge|tunnel|path/.test(identity);
           const isBuilding = /building/.test(identity);
@@ -2636,5 +2659,7 @@ class VectorBasemap {
       }
       this._applyFacadeState();
     } catch (_) {}
+    if (this._parkLandscape) this._parkLandscape.setTheme(this.theme);
+    if (this._inventoryTrees) this._inventoryTrees.setTheme(this.theme);
   }
 }

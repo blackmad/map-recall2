@@ -26,6 +26,11 @@ const shareThree = {
 
 const targets = [
   {
+    entry: 'public/canal-drive/js/inventory-trees-source.js',
+    out: 'public/canal-drive/js/inventory-trees.bundle.js',
+    globalName: 'CanalRecallInventoryTrees',
+  },
+  {
     entry: 'public/canal-drive/js/facade-recipe-source.js',
     out: 'public/canal-drive/js/facade-recipe.bundle.js',
     globalName: 'CanalRecallRecipe',
