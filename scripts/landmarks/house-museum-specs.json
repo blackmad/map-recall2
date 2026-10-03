@@ -1,0 +1,142 @@
+[
+  {
+    "id": "anne-frank-house",
+    "name": "Anne Frank House",
+    "landmarkId": "extract_landmarks_614625734",
+    "modelUrl": "./models/anne-frank-house.glb",
+    "suppressOsmIds": [
+      "w266616469"
+    ],
+    "footprint": {
+      "centre": [
+        4.884199790545408,
+        52.37526883046758
+      ],
+      "headingDegrees": 209.51208512104333,
+      "lengthMetres": 5.7829377506704365,
+      "widthMetres": 24.06129202854212
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Anne Frank House",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.annefrank.org/en/anne-frank/front-section/prinsengracht-263/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
+    },
+    "surveyed": {
+      "anchor": [
+        4.884199790545408,
+        52.37526883046758
+      ],
+      "northOffsetDegrees": 119.51208512104333
+    }
+  },
+  {
+    "id": "rembrandt-house",
+    "name": "Rembrandt House",
+    "landmarkId": "extract_landmarks_25101431",
+    "modelUrl": "./models/rembrandt-house.glb",
+    "suppressOsmIds": [
+      "w268782575"
+    ],
+    "footprint": {
+      "centre": [
+        4.9012522,
+        52.369299500000004
+      ],
+      "headingDegrees": 304.19839036962065,
+      "lengthMetres": 16.397795731819166,
+      "widthMetres": 17.55161456163473
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Rembrandt House",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.rembrandthuis.nl/en/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
+    },
+    "surveyed": {
+      "anchor": [
+        4.9012522,
+        52.369299500000004
+      ],
+      "northOffsetDegrees": 214.19839036962065
+    }
+  },
+  {
+    "id": "moco-museum",
+    "name": "Moco Museum",
+    "landmarkId": "extract_landmarks_1523176628",
+    "modelUrl": "./models/moco-museum.glb",
+    "suppressOsmIds": [
+      "w277108702"
+    ],
+    "footprint": {
+      "centre": [
+        4.881916866090669,
+        52.35869759396733
+      ],
+      "headingDegrees": 149.38748131134253,
+      "lengthMetres": 22.562529441173467,
+      "widthMetres": 15.58665338562756
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Moco Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.mocomuseum.com/amsterdam/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
+    },
+    "surveyed": {
+      "anchor": [
+        4.881916866090669,
+        52.35869759396733
+      ],
+      "northOffsetDegrees": 59.387481311342526
+    }
+  },
+  {
+    "id": "museum-van-loon",
+    "name": "Museum Van Loon",
+    "landmarkId": "extract_landmarks_211818595",
+    "modelUrl": "./models/museum-van-loon.glb",
+    "suppressOsmIds": [
+      "w268283622"
+    ],
+    "footprint": {
+      "centre": [
+        4.893349043681814,
+        52.36338835201399
+      ],
+      "headingDegrees": 282.3449814578558,
+      "lengthMetres": 14.896446612910355,
+      "widthMetres": 22.823605180965057
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Museum Van Loon",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.museumvanloon.nl/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
+    },
+    "surveyed": {
+      "anchor": [
+        4.893349043681814,
+        52.36338835201399
+      ],
+      "northOffsetDegrees": 192.3449814578558
+    }
+  }
+]
