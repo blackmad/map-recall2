@@ -233,8 +233,9 @@ function signatureTris(sig: { at: [number, number]; hex: string }, edges: readon
   if (!best) return [];
   const e = { x0: best.x0, y0: best.y0, ux: (best.x1 - best.x0) / best.len, uy: (best.y1 - best.y0) / best.len, nx: best.nx, ny: best.ny };
   const out: SignTri[] = [], L = best.len, z = base;
-  // Awning: the frontage less 0.4 m each side, 1.2 m deep, sloping band at 2.8-3.3 m.
-  boxTris(e, 0.4, L - 0.4, 0.05, 1.25, z + 2.8, z + 3.25, sig.hex, out, true);
+  // Awning: the frontage less 0.4 m each side, 0.9 m deep, a thin band at 3.0-3.2 m. A 1.2 m deep,
+  // 0.45 m thick slab read as a heavy black box on dark brands (user 2026-10-03).
+  boxTris(e, 0.4, L - 0.4, 0.05, 0.95, z + 3.0, z + 3.2, sig.hex, out, true);
   // Blade sign near the end of the frontage closest to the point: iron bracket and a 0.9 m board.
   const along = Math.max(0.6, Math.min(L - 0.6, (px - e.x0) * e.ux + (py - e.y0) * e.uy));
   const at = along < L / 2 ? 0.6 : L - 0.6;

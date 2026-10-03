@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## Facade extrusions slimmed: ivy, oriels, bay windows, canopies, balconies, awnings
+
+User (2026-10-03, Nassaukade screenshot): "what are these awful imposing extrusions on our canal house grammar?"
+
+The extrusions were facade extras, each now slimmer:
+
+- **Dark green slabs (ivy):** these were 2.2 m wide and up to 10 m tall. Ivy now grows as thin ragged fingers to just above the ground floor, only on school, postwar and modern walls.
+- **Grey boxes (oriels and bay windows):** these stood out 0.8–0.95 m and were faced in dark glass over two storeys.
+  - The oriel now stands 0.5 m out.
+  - The bay window is now one storey, 0.45 m out, with light framed panes.
+- **Black slabs (door canopies and shop awnings):**
+  - The door canopy went from 0.9 to 0.5 m deep.
+  - The signature-shop awning went from 1.2 m deep and 0.45 m thick to 0.9 m deep and 0.2 m thick.
+- **Other projections:**
+  - Amsterdam School brick balconies went from 1 m to 0.5 m deep and from three storeys to two.
+  - Glass balconies went from 1.3 to 0.9 m.
+  - Entrance slabs went from 1.8 to 1.0 m.
+  - Vertical fins went from 0.45 to 0.22 m.
+- **Check:** `check-facade-extras.ts` now asserts that nothing above the ground floor of a canal, c19 or school front sticks out more than 0.6 m. Thin hoist beams and flagpoles are exempt.
+
 ## Trivia cards stay up, the Houseboat Museum lights its boat, postcards are paced
 
 David (2026-10-03), three requests about the drive-by cards:
