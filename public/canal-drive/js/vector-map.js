@@ -158,6 +158,8 @@ class VectorBasemap {
       if (signature?.SignatureLandmarks && manualModels) {
         this._signatureLandmarks = new signature.SignatureLandmarks(this.map, maplibregl, {
           models: manualModels,
+          loadVisibleOnly: true,
+          depthBiasEnabled: !this._completeCityHasBuildings,
           manageBasemapFilter: false,
           onModelShown: () => {
             this._syncDetailedBuildingLayers();
@@ -1717,6 +1719,7 @@ class VectorBasemap {
     // Hide them under photoreal/3DBAG the same way the extrusions hide, so two
     // representations of Centraal never occupy the same air.
     if (this._signatureLandmarks) {
+      this._signatureLandmarks.setDepthBiasEnabled(!hideBasemap);
       this._signatureLandmarks.setEnabled(!detailed && !google && !this._measuredColoursOnly);
       this._refreshBuildingSuppression();
     }

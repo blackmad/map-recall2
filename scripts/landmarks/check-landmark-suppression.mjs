@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const catalogue = JSON.parse(fs.readFileSync('src/canalRecall/landmarks/manualCatalogue.json', 'utf8'));
-const exactIds = ['embassy-free-mind', 'anne-frank-house', 'rembrandt-house', 'moco-museum', 'museum-van-loon', 'het-schip', 'scheepvaarthuis', 'rialto', 'kriterion', 'de-bijenkorf', 'gashouder', 'stadsschouwburg'];
+const exactIds = ['embassy-free-mind', 'anne-frank-house', 'rembrandt-house', 'moco-museum', 'museum-van-loon', 'het-schip', 'scheepvaarthuis', 'rialto', 'kriterion', 'de-bijenkorf', 'gashouder', 'stadsschouwburg', 'tuschinski', 'pathe-city', 'oude-kerk', 'nieuwe-kerk'];
 for (const id of exactIds) {
   const spec = catalogue.find(spec => spec.id === id);
   assert.ok(spec, id);
@@ -28,6 +28,19 @@ try {
   layer.suppressing = false;
   assert.deepEqual(layer.shownFootprints(), []);
   assert.deepEqual(layer.shownSuppressOsmIds(), []);
+  const material = {}, group = {traverse: visit => visit({isMesh: true, material})};
+  Object.assign(layer, {enabled: true, suppressing: true, depthBiasEnabled: true,
+    manageBasemapFilter: false, map: {triggerRepaint() {}}, _entries: [{spec: exact, group}]});
+  layer._applySuppression();
+  assert.equal(material.polygonOffset, true, 'standalone basemap fallback retains its legacy bias');
+  assert.equal(material.polygonOffsetFactor, -32);
+  layer.setDepthBiasEnabled(false);
+  assert.equal(material.polygonOffset, false, 'complete-city host draws overlapping roofs with normal depth');
+  assert.equal(material.polygonOffsetFactor, 0);
+  assert.equal(material.polygonOffsetUnits, 0);
+  assert.ok(layer.shownSuppressOsmIds().includes(exact.suppressOsmIds[0]));
+  layer.setDepthBiasEnabled(true);
+  assert.equal(material.polygonOffset, true, 'fallback can restore its bias');
 } finally {
   delete globalThis.window;
 }

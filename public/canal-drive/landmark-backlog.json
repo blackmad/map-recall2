@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 36,
-    "catalogue-model": 13,
+    "manual-model": 40,
+    "catalogue-model": 12,
     "procedural-kit": 19,
-    "pending": 215
+    "pending": 212
   },
   "destinations": [
     {
@@ -651,7 +651,8 @@
       "type": "cinema",
       "queueRank": 56,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "tuschinski"
     },
     {
       "id": "lm-extract_landmarks_944681607",
@@ -976,7 +977,7 @@
       "type": "museum",
       "queueRank": 85,
       "origin": "POI Destinations",
-      "status": "catalogue-model",
+      "status": "manual-model",
       "modelId": "oude-kerk"
     },
     {
@@ -1101,7 +1102,8 @@
       "type": "cinema",
       "queueRank": 96,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "pathe-city"
     },
     {
       "id": "lm-extract_landmarks_1851884741",
@@ -1328,7 +1330,8 @@
       "type": "museum",
       "queueRank": 116,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "nieuwe-kerk"
     },
     {
       "id": "lm-extract_landmarks_769225968",
