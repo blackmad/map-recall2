@@ -13,7 +13,7 @@
 // Everything lines up with the painted openings (facadeOpenings.ts) and the wall's bay grid,
 // is drawn as flat-coloured boxes and strips, and is atomic (all of a cornice or none of it).
 
-import { BOX_TRIS, type ExtraContext, type ExtraSink, type WallComponent } from './facadeExtraCore.js';
+import { BOX_TRIS, hash01, type ExtraContext, type ExtraSink, type WallComponent } from './facadeExtraCore.js';
 import { bayLookOpenings, proceduralOpenings, type OpeningRow, type Openings } from './facadeOpenings.js';
 import type { FacadeStyle } from './genericFacades.js';
 
@@ -89,20 +89,21 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     // Not under a stepped or neck gable: that front ends in its gable (roofMesh.ts).
     if (c.roofKind === 'gable') return;
     const t = c.top, hex = r < 0.75 ? WHITE : CREAM;
-    s.box(c.f, 0, c.f.len, 0, 0.3, t - 0.5, t - 0.34, hex, true);
-    s.box(c.f, 0, c.f.len, 0, 0.55, t - 0.34, t - 0.12, hex, true);
-    s.box(c.f, 0, c.f.len, 0, 0.68, t - 0.12, t, hex, true);
-    for (const x of pierXs(c).slice(0, 6)) s.box(c.f, Math.max(0, x - 0.11), Math.min(c.f.len, x + 0.11), 0.05, 0.4, t - 0.88, t - 0.5, hex);
+    // Slimmed 2026-10-03 (user: "these overhangs look a little heavy / too wide"): 0.68 m out to 0.4 m.
+    s.box(c.f, 0, c.f.len, 0, 0.16, t - 0.4, t - 0.28, hex, true);
+    s.box(c.f, 0, c.f.len, 0, 0.3, t - 0.28, t - 0.1, hex, true);
+    s.box(c.f, 0, c.f.len, 0, 0.4, t - 0.1, t, hex, true);
+    for (const x of pierXs(c).slice(0, 6)) s.box(c.f, Math.max(0, x - 0.09), Math.min(c.f.len, x + 0.09), 0.04, 0.26, t - 0.7, t - 0.4, hex);
   } },
   { id: 'console-cornice', styles: ['c19', 'canal'], p: { c19: 0.4, canal: 0.12 }, wide: true, street: true, group: 'crown', build: (c, s) => {
     // Late 19th century: a cream cornice on paired consoles, with a plain frieze strip.
     if (c.roofKind === 'gable') return;
     const t = c.top;
-    s.strip(c.f, 0, c.f.len, 0.04, t - 0.62, t - 0.32, CREAM);
-    s.box(c.f, 0, c.f.len, 0, 0.55, t - 0.32, t - 0.12, CREAM, true);
-    s.box(c.f, 0, c.f.len, 0, 0.66, t - 0.12, t, WHITE, true);
+    s.strip(c.f, 0, c.f.len, 0.04, t - 0.52, t - 0.26, CREAM);
+    s.box(c.f, 0, c.f.len, 0, 0.28, t - 0.26, t - 0.1, CREAM, true);
+    s.box(c.f, 0, c.f.len, 0, 0.38, t - 0.1, t, WHITE, true);
     const piers = pierXs(c), ends = piers.length > 2 ? [piers[0], piers[Math.floor(piers.length / 2)], piers[piers.length - 1]] : piers;
-    for (const x of ends) for (const dx of [-0.16, 0.08]) s.box(c.f, Math.max(0, x + dx), Math.min(c.f.len, x + dx + 0.08), 0.04, 0.45, t - 0.62, t - 0.32, CREAM);
+    for (const x of ends) for (const dx of [-0.14, 0.07]) s.box(c.f, Math.max(0, x + dx), Math.min(c.f.len, x + dx + 0.07), 0.04, 0.26, t - 0.52, t - 0.26, CREAM);
   } },
   { id: 'corbel-roofline', styles: ['school'], p: 0.45, wide: true, street: true, group: 'crown', build: (c, s) => {
     // Amsterdam School: brick courses corbelled out step by step under a cream coping.
@@ -143,7 +144,9 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     // upper-floor door: a dark recess, a stone arch surround and the stair climbing out of it.
     const d = doorSpan(c); if (!d || !c.groundLevel) return;
     const l = d.x - d.hw - 0.05, rr = d.x + d.hw + 0.05, top = c.base + c.layout.groundM - 0.15;
-    s.strip(c.f, l, rr, 0.02, c.base, top - 0.25, '#2a2522');
+    // A warm-shadow recess with the painted door at its back; a near-black strip read as a void (user 2026-10-03).
+    s.strip(c.f, l, rr, 0.02, c.base, top - 0.25, '#5b4c42');
+    s.strip(c.f, d.x - d.hw + 0.12, d.x + d.hw - 0.12, 0.03, c.base + 0.8, top - 0.45, ['#2c4f33', '#1f3550', '#7a1f2b', '#3a3f45'][Math.floor(hash01(`${c.id}:pd`) * 4)]);
     s.box(c.f, l - 0.22, l, 0, 0.14, c.base, top, STONE);
     s.box(c.f, rr, rr + 0.22, 0, 0.14, c.base, top, STONE);
     s.box(c.f, l - 0.26, rr + 0.26, 0, 0.18, top - 0.3, top + 0.12, STONE, true);
