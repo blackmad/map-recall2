@@ -1,0 +1,86 @@
+[
+  {
+    "id": "jewish-museum",
+    "name": "Jewish Museum \u2014 four synagogues",
+    "landmarkId": "extract_landmarks_273619808",
+    "modelUrl": "./models/jewish-museum.glb",
+    "suppressOsmIds": [
+      "w57857987",
+      "NL.IMBAG.Pand.0363100012182037",
+      "w268783367",
+      "NL.IMBAG.Pand.0363100012182038"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.903832029030724,
+        52.367121119501086
+      ],
+      "headingDegrees": 152.62263086955193,
+      "lengthMetres": 49.95563109474972,
+      "widthMetres": 41.556824510722855
+    },
+    "surveyed": {
+      "anchor": [
+        4.903832029030724,
+        52.367121119501086
+      ],
+      "northOffsetDegrees": 242.62263086955193
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.00000000000003,
+    "attribution": {
+      "title": "Jewish Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://jck.nl/en/location/jewish-museum",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
+    }
+  },
+  {
+    "id": "portuguese-synagogue",
+    "name": "Portuguese Synagogue \u2014 Esnoga",
+    "landmarkId": "extract_landmarks_1311905515",
+    "modelUrl": "./models/portuguese-synagogue.glb",
+    "suppressOsmIds": [
+      "w57861363",
+      "NL.IMBAG.Pand.0363100012170255",
+      "w268783311",
+      "NL.IMBAG.Pand.0363100012170258",
+      "w268783350",
+      "NL.IMBAG.Pand.0363100012170254",
+      "w268783384",
+      "NL.IMBAG.Pand.0363100012170253",
+      "w268783415",
+      "NL.IMBAG.Pand.0363100012181882"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.905113942222338,
+        52.36760831616318
+      ],
+      "headingDegrees": 119.70503311355918,
+      "lengthMetres": 80.01812229172724,
+      "widthMetres": 43.48098484850878
+    },
+    "surveyed": {
+      "anchor": [
+        4.905113942222338,
+        52.36760831616318
+      ],
+      "northOffsetDegrees": 28.672090322555675
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 204.29496688644082,
+    "attribution": {
+      "title": "Portuguese Synagogue",
+      "author": "Map Recall",
+      "sourceUrl": "https://jck.nl/en/press/beeldmateriaal/portuguese-synagogue",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
+    }
+  }
+]
