@@ -1,0 +1,76 @@
+/** Rebuild from the cached OSM extract: node scripts/build-park-landscape.mjs. */
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+
+const source = process.argv[2] || '.cache/osm-source/Amsterdam.osm.pbf';
+const work = fs.mkdtempSync(path.join(os.tmpdir(), 'amsterdam-parks-'));
+const run = args => execFileSync('osmium', args, {stdio: 'inherit'});
+run(['extract', source, '-b', '4.75,52.28,5.03,52.44', '-o', `${work}/area.pbf`]);
+run(['tags-filter', `${work}/area.pbf`, 'wr/leisure=park', 'wr/landuse=grass,forest,meadow',
+  'wr/natural=wood,water,scrub,grassland', 'wr/leisure=garden,playground',
+  'wr/highway=footway,path,pedestrian,cycleway', 'n/amenity=bench', '-o', `${work}/detail.pbf`]);
+run(['export', `${work}/detail.pbf`, '-u', 'type_id', '-o', `${work}/detail.geojson`]);
+const raw = JSON.parse(fs.readFileSync(`${work}/detail.geojson`, 'utf8')).features;
+const names = ['Vondelpark', 'Oosterpark', 'Sarphatipark', 'Westerpark', 'Erasmuspark',
+  'Rembrandtpark', 'Beatrixpark', 'Flevopark', 'Noorderpark', 'Amstelpark', 'Gaasperpark'];
+const polygons = g => g.type === 'MultiPolygon' ? g.coordinates : g.type === 'Polygon' ? [g.coordinates] : [];
+function ringArea(r) {
+  return Math.abs(r.reduce((a, p, i) => {const q = r[(i + 1) % r.length]; return a + p[0] * q[1] - q[0] * p[1];}, 0));
+}
+function inRing([x, y], ring) {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const a = ring[i], b = ring[j];
+    if ((a[1] > y) !== (b[1] > y) && x < (b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+  }
+  return inside;
+}
+const parks = names.flatMap(name => {
+  const matches = raw.filter(f => f.properties.leisure === 'park' && f.properties.name === name && polygons(f.geometry).length);
+  // Several parks have duplicate relation/way boundaries. Keep the largest boundary.
+  matches.sort((a,b) => polygons(b.geometry).reduce((s,p)=>s+ringArea(p[0]),0) - polygons(a.geometry).reduce((s,p)=>s+ringArea(p[0]),0));
+  return matches.slice(0,1);
+});
+const contains = (park, p) => polygons(park.geometry).some(poly => inRing(p, poly[0]) && !poly.slice(1).some(h => inRing(p,h)));
+const features = [], counts = {};
+function emit(id, geometry, role, park, extra = {}) {
+  features.push({type:'Feature', id, geometry, properties:{role, park:park.properties.name, ...extra}});
+  counts[role] = (counts[role] || 0) + 1;
+}
+for (const park of parks) {
+  emit(park.id, park.geometry, 'park', park);
+  for (const f of raw) {
+    const p = f.properties, g = f.geometry;
+    if (f === park || p.leisure === 'park') continue;
+    const role = p.natural === 'water' ? 'water' : p.natural === 'wood' || p.landuse === 'forest' ? 'wood'
+      : p.natural === 'scrub' ? 'scrub' : p.leisure === 'garden' ? 'garden'
+      : p.leisure === 'playground' ? 'playground' : ['grass','meadow'].includes(p.landuse) || p.natural === 'grassland' ? 'lawn' : null;
+    if (role && polygons(g).length) {
+      const inside = polygons(g).filter(poly => poly[0].every(v => contains(park,v)));
+      if (inside.length) emit(`${park.id}-${f.id}`, {type:'MultiPolygon', coordinates:inside}, role, park);
+    }
+    if (g.type === 'LineString' && ['footway','path','pedestrian','cycleway'].includes(p.highway) && p.area !== 'yes' && !p.tunnel) {
+      let segment = [], n = 0;
+      const flush = () => {if (segment.length > 1) emit(`${park.id}-${f.id}-${n++}`, {type:'LineString',coordinates:segment}, 'path', park,
+        {width: Math.min(6, Math.max(1, Number.parseFloat(p.width) || (p.highway === 'cycleway' ? 3 : 2.2))), paved:['asphalt','paving_stones','concrete'].includes(p.surface)}); segment = [];};
+      for (const v of g.coordinates) {if (contains(park,v)) segment.push(v); else flush();} flush();
+    }
+    if (g.type === 'Point' && p.amenity === 'bench' && contains(park,g.coordinates)) {
+      const [lng,lat] = g.coordinates, bearing = Number.parseFloat(p.direction);
+      const angle = (Number.isFinite(bearing) ? bearing : 0) * Math.PI / 180;
+      const ring = (depth, offset) => [...[[-.85,-depth/2],[.85,-depth/2],[.85,depth/2],[-.85,depth/2],[-.85,-depth/2]]].map(([x,y]) => {
+        y += offset;
+        return [lng + (x*Math.cos(angle)-y*Math.sin(angle))/(111320*Math.cos(lat*Math.PI/180)),lat+(x*Math.sin(angle)+y*Math.cos(angle))/111320];
+      });
+      emit(`${park.id}-${f.id}-seat`, {type:'Polygon',coordinates:[ring(.5,0)]}, 'bench', park, {base:.4,height:.54});
+      emit(`${park.id}-${f.id}-back`, {type:'Polygon',coordinates:[ring(.12,-.24)]}, 'bench', park, {base:.45,height:.95});
+    }
+  }
+}
+const result = {type:'FeatureCollection', attribution:'© OpenStreetMap contributors, ODbL',
+  source:'Cached Amsterdam OSM extract; mapped geometry only. No synthetic water, paths or trees.', features};
+const out = 'public/data/extracts/amsterdam/park-landscape.geojson';
+fs.writeFileSync(out,JSON.stringify(result));
+console.log(JSON.stringify({parks:parks.map(f=>f.properties.name),counts,bytes:fs.statSync(out).size},null,2));

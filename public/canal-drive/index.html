@@ -1260,7 +1260,7 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
     <button id="canal-no-idea" type="button">No idea — tell me <span class="canal-choice-key">0</span></button>
   </form>
 </div>
-<div id="map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> · © CARTO</div>
+<div id="map-attribution">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OSM</a> · © CARTO<span id="municipal-tree-attribution" hidden> · Trees © <a href="https://maps.amsterdam.nl/bomen/" target="_blank" rel="noopener">Gemeente Amsterdam</a></span></div>
 
 <!-- Constants & Utilities (no dependencies) -->
 <script src="js/constants.js"></script>
@@ -1308,10 +1308,12 @@ input[type="range"] { width: 100%; height: 24px; accent-color: var(--accent); ba
 <script src="js/study-roofs.bundle.js"></script>
 <script src="js/study-facades.bundle.js"></script>
 <script src="js/study-trees.bundle.js"></script>
+<script src="js/inventory-trees.bundle.js"></script>
 <script src="js/three-buildings.bundle.js"></script>
 <script src="js/study-public-realm.bundle.js"></script>
 <script type="module" src="js/google-tiles.bundle.js"></script>
 <script src="js/player-vehicles.bundle.js"></script>
+<script src="js/park-landscape.js"></script>
 <script src="js/vector-map.js"></script>
 
 <!-- Game (depends on everything above) -->

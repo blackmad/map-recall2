@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amsterdam park landscape review</title>
+<link href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css" rel="stylesheet">
+<style>
+  body{margin:0;background:#ebe7dd;color:#35434c;font:14px system-ui}#map{position:absolute;inset:0}
+  aside{position:absolute;top:20px;left:20px;max-width:340px;padding:18px;background:#faf8f1ee;border:1px solid #cec9bb;border-radius:8px;box-shadow:0 3px 12px #0002}
+  h1{margin:0 0 10px;font-size:19px}p{line-height:1.5;margin:10px 0}select{width:100%;padding:8px;border:1px solid #aaa;border-radius:4px;background:#fff;font:inherit}
+  label{display:block;margin:10px 0}a{color:#336a88}#status{font-variant-numeric:tabular-nums}
+</style>
+<div id="map"></div>
+<aside><h1>Amsterdam parks</h1>
+<select id="park" aria-label="Park"></select>
+<label><input id="grounds" type="checkbox" checked> Mapped lawns, ponds, paths and benches</label>
+<label><input id="trees" type="checkbox" checked> Municipal trees with varied crowns</label>
+<p>Tree positions and height classes come from the municipal inventory. Crown forms are approximate species priors.</p>
+<p id="status">Loading nearby trees…</p>
+<a href="manual-landmarks.html">Landmark models →</a></aside>
+<script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+<script src="js/three.bundle.js"></script>
+<script src="js/park-landscape.js"></script>
+<script src="js/inventory-trees.bundle.js"></script>
+<script>
+const parks=[['Vondelpark',4.8688,52.3581],['Oosterpark',4.9202,52.3606],['Sarphatipark',4.8957,52.3544],['Westerpark',4.8755,52.3861],['Erasmuspark',4.8492,52.3751],['Rembrandtpark',4.843,52.362],['Beatrixpark',4.8837,52.3416],['Flevopark',4.95,52.3615],['Noorderpark',4.921,52.3947],['Amstelpark',4.895,52.3295],['Gaasperpark',4.985,52.3105]];
+const picker=document.querySelector('#park');parks.forEach((p,i)=>picker.add(new Option(p[0],i)));
+const map=new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/liberty',center:parks[0].slice(1),zoom:17,pitch:58,bearing:-25,attributionControl:{customAttribution:'Trees © <a href="https://maps.amsterdam.nl/bomen/">Gemeente Amsterdam</a>'}});
+const errors=[];map.on('error',e=>errors.push(e.error.message));window.parkReview={map,errors};
+picker.onchange=()=>{const p=parks[+picker.value];map.jumpTo({center:p.slice(1),zoom:p[0]==='Sarphatipark'?18:17});};
+map.on('load',()=>{
+  for(const l of map.getStyle().layers)if(l.type==='symbol')map.setLayoutProperty(l.id,'visibility','none');
+  const grounds=new CanalRecallParks.ParkLandscape(map,'../data/extracts/amsterdam','clean');
+  const trees=new CanalRecallInventoryTrees.InventoryTrees(map,maplibregl);trees.setEnabled(true);trees.load('../data/extracts/amsterdam');
+  Object.assign(window.parkReview,{grounds,trees,loaded:true});
+  document.querySelector('#grounds').onchange=e=>{for(const l of map.getStyle().layers)if(l.id.startsWith('park-landscape-'))map.setLayoutProperty(l.id,'visibility',e.target.checked?'visible':'none');};
+  document.querySelector('#trees').onchange=e=>trees.setEnabled(e.target.checked);
+  setInterval(()=>{document.querySelector('#status').textContent=`${(trees.debugTrees||0).toLocaleString()} nearby trees · ${trees.debugTiles||0} tiles · ${trees.meshes.length} shared draws`;},500);
+});
+</script>
+</html>

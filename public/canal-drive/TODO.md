@@ -83,10 +83,16 @@ Den Haag) no street encyclopedia text. Same rules as Amsterdam: sourced only,
 Dutch reviewed before it ships. Map Recall also still reads only the Amsterdam
 extract; other cities fall back to live OSM.
 
-**Facades/trees experiment follow-ups (merged 2026-10-02).** Tree data is
-thin: `build-osm-trees.ts` caps at 35,000 trees in file order, which leaves
-~380 in the canal belt (sort by distance from the centre, raise the cap, or
-tile it). Facades shimmer on steep walls in phone cockpit (no mipmaps; use a
+**Municipal trees and park landscape (2026-10-03).** Amsterdam now streams
+302,404 standing municipal trees in 430 z15 tiles (5.22 MB compressed in total).
+Species/cultivar priors, height classes and explicit pruning records drive
+varied crowns, conifers, trunks and branch forks. Positions are inventory
+locations; crown width/shape remain approximations. Eleven parks have mapped
+lawns, woodland, ponds, paths and benches. Review at `park-landscape.html`.
+Open: real-device Safari/phone performance and more verified cultivar priors.
+Other cities retain the OSM tree fallback.
+
+**Facades experiment follow-ups (merged 2026-10-02).** Facades shimmer on steep walls in phone cockpit (no mipmaps; use a
 coarser image set at high pitch). Tiles rebuild at each integer zoom crossing,
 a hitch not yet measured. The ground floor repeats above 32 m except on
 towers. Facades are Amsterdam-only, and walls take a period palette colour.
@@ -101,6 +107,25 @@ it replaces the pattern layer or stays opt-in. Two layout modules now exist
 (`wallBays.ts`, `facadeLayout.ts`): keep one.
 
 **Landmark kits: more landmarks, and a phone check.** Thirteen are done (see HISTORY), Carré and Fatih with windows (opt-in `windows` on halls), and seven museums and cinemas (`museumKits.ts`).
+
+**Original landmark model queue (2026-10-03).** `landmark-backlog.json` tracks
+the actual POI Destinations pool plus explicitly requested additions. Refresh
+with `node --import tsx scripts/landmarks/build-poi-backlog.ts`; it applies the
+same teachable-content gate, four-kilometre radius and prominence ordering as
+the game. Existing procedural kits and imported gallery references are marked
+separately from original models. Arcam's architecture guide is the discovery
+source for further notable buildings.
+
+Original models now cover Centraal, Muziekgebouw/Bimhuis, both OLVGs, Van Gogh,
+Stedelijk, OBA Oosterdok, A’DAM Tower, Pontsteiger, REM, Paradiso, Melkweg,
+Silodam, Embassy of the Free Mind/Huis met de Hoofden, The Movies, DeLaMar and
+Magna Plaza. The live replacements retain measured footprint alignment and
+hide generic building geometry only after the GLB has loaded. Review meshes at
+`manual-landmarks.html`; inspect actual map placement before marking additions
+complete. Next candidates: Anne Frank House, Rembrandt House, Felix Meritis,
+De Kleine Komedie, De Balie, Internationaal Theater Amsterdam, Moco and Museum
+Van Loon. Squares/intersections require a public-space treatment rather than
+a generic building model.
 Open for cinemas: the large pre-1945 ones (Pathé City 24 m and 1,222 m², Studio/K 3,494 m², LAB111) still wear canal-house
 facades. Proposed: a cinema landmark part over about 800 m² or 20 m gets a plain wall with no windows or gables, optionally with a
 signage band. This needs cinema ids passed through `exceptLandmarks` in vector-map.js. Also still bare: Amsterdam Museum, Madame Tussauds,
