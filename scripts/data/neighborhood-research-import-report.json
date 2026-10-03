@@ -1,0 +1,102 @@
+{
+  "importEntries": 37,
+  "mappedEntries": 18,
+  "policy": "Two concise fixed facts plus one rotating fact per answer. Retain existing cited origin/history and add the old local lead to the rotating pool. No demographic percentages, rankings, superlatives or merged-area assumptions without evidence.",
+  "unmapped": [
+    {
+      "id": "GA01-02",
+      "name": "Burgwallen-Oude Zijde",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GA01-04",
+      "name": "Haarlemmerbuurt",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GA01-05",
+      "name": "Grachtengordel-West",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GA02-01",
+      "name": "Grachtengordel-Zuid",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GA02-02",
+      "name": "De Weteringschans",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GA02-03",
+      "name": "Weesperbuurt / Plantage",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GE04-01",
+      "name": "Bos en Lommer",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GF08-01",
+      "name": "Osdorp",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GF07-01",
+      "name": "Geuzenveld",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GF07-02",
+      "name": "Slotermeer",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GM14-01",
+      "name": "Dapperbuurt",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GM14-02",
+      "name": "Transvaalbuurt",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GM15-01",
+      "name": "Indische Buurt",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GM16-01",
+      "name": "Watergraafsmeer",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GN18-01",
+      "name": "Buiksloterham (NDSM)",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GN19-01",
+      "name": "Tuindorp Oostzaan",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GT22-01",
+      "name": "Bijlmermeer",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GT24-01",
+      "name": "Gaasperdam (Holendrecht / Reigersbos)",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    },
+    {
+      "id": "GS25-02",
+      "name": "Aetsveld",
+      "reason": "No matching quiz boundary; retain as an unsourced candidate until boundaries and statement citations are available."
+    }
+  ]
+}

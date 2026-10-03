@@ -136,9 +136,11 @@ class Game {
     // Arcade layer (streaks/points/ribbons); aids and difficulty stay independent.
     this.gameyFeatures = true;
     this._debugMode = false;
+    this._debugLinkBounds = null;
     this._recenterBtnBounds = null;
     this._landmarkNotice = null;
     this._landmarkCardBounds = null;
+    this._landmarkCloseBounds = null;
     this._landmarkNoticeHold = { kind: 'timed', seconds: 0 }; // see game/landmarkNotice.ts
     this._landmarkNoticeSource = null;
     this._landmarkNoticeState = { elapsed: 0, fadeRemaining: null };
@@ -199,12 +201,17 @@ class Game {
     this._setupCameraGestures();
 
     this.canvas.addEventListener('click', (e) => {
+      const rect = this.canvas.getBoundingClientRect();
+      const scaleX = CANVAS_W / rect.width;
+      const scaleY = CANVAS_H / rect.height;
+      const x = (e.clientX - rect.left) * scaleX;
+      const y = (e.clientY - rect.top) * scaleY;
+      // The debug overlay's tool links are canvas pixels, not DOM anchors.
+      if (this._debugMode && this._debugLinkBounds) {
+        const link = this._debugLinkBounds.find(b => x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h);
+        if (link) { window.open(link.href, '_blank'); return; }
+      }
       if (this.state === GameState.MENU) {
-        const rect = this.canvas.getBoundingClientRect();
-        const scaleX = CANVAS_W / rect.width;
-        const scaleY = CANVAS_H / rect.height;
-        const x = (e.clientX - rect.left) * scaleX;
-        const y = (e.clientY - rect.top) * scaleY;
         if (this._alanLinkBounds) {
           const b = this._alanLinkBounds;
           if (x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h) {
@@ -220,32 +227,15 @@ class Game {
       }
     });
     this.canvas.addEventListener('mousemove', (e) => {
-      if (this.state === GameState.MENU) {
-        const rect = this.canvas.getBoundingClientRect();
-        const scaleX = CANVAS_W / rect.width;
-        const scaleY = CANVAS_H / rect.height;
-        const x = (e.clientX - rect.left) * scaleX;
-        const y = (e.clientY - rect.top) * scaleY;
-        let hovering = false;
-        if (this._alanLinkBounds) {
-          const b = this._alanLinkBounds;
-          if (x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h) hovering = true;
-        }
-        if (this._githubLinkBounds) {
-          const b = this._githubLinkBounds;
-          if (x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h) hovering = true;
-        }
-        this.canvas.style.cursor = hovering ? 'pointer' : 'default';
-      } else if (this._landmarkCardBounds) {
-        const rect = this.canvas.getBoundingClientRect();
-        const b = this._landmarkCardBounds;
-        const x = (e.clientX - rect.left) * CANVAS_W / rect.width;
-        const y = (e.clientY - rect.top) * CANVAS_H / rect.height;
-        const over = x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h;
-        this.canvas.style.cursor = over ? 'pointer' : 'default';
-      } else {
-        this.canvas.style.cursor = 'default';
-      }
+      const rect = this.canvas.getBoundingClientRect();
+      const x = (e.clientX - rect.left) * CANVAS_W / rect.width;
+      const y = (e.clientY - rect.top) * CANVAS_H / rect.height;
+      const hit = (b) => !!b && x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h;
+      let hovering = false;
+      if (this._debugMode && (this._debugLinkBounds || []).some(hit)) hovering = true;
+      else if (this.state === GameState.MENU) hovering = hit(this._alanLinkBounds) || hit(this._githubLinkBounds);
+      else if (this._landmarkCardBounds) hovering = hit(this._landmarkCardBounds);
+      this.canvas.style.cursor = hovering ? 'pointer' : 'default';
     });
 
     requestAnimationFrame(t => this._loop(t));
@@ -321,11 +311,11 @@ class Game {
     // A phone shows a narrower strip of city than a 1280 px window, so the
     // default zoom would frame far less of the route. Scale it to keep roughly
     // the same span of Amsterdam on screen.
-    if (!this._zoomTouchedByPlayer) {
-      this.camera.zoom = clamp(
-        CAMERA_ZOOM_INITIAL * (viewport.width / 1280),
-        this.camera.minZoom, this.camera.maxZoom);
-    }
+    // The chase bike is sized for this zoom; see vehicleZoomScale.ts.
+    this._defaultZoom = clamp(
+      CAMERA_ZOOM_INITIAL * (viewport.width / 1280),
+      this.camera.minZoom, this.camera.maxZoom);
+    if (!this._zoomTouchedByPlayer) this.camera.zoom = this._defaultZoom;
   }
 
   _loop(timestamp) {

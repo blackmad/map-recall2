@@ -378,6 +378,16 @@
     };
   }
 
+  // src/canalRecall/game/vehicleZoomScale.ts
+  var VEHICLE_ZOOM_EXPONENT = 0.5;
+  var VEHICLE_ZOOM_MIN_SCALE = 0.6;
+  var VEHICLE_ZOOM_MAX_SCALE = 2.2;
+  function vehicleZoomScale(zoom, defaultZoom) {
+    if (!(zoom > 0) || !(defaultZoom > 0)) return 1;
+    const scale = (defaultZoom / zoom) ** VEHICLE_ZOOM_EXPONENT;
+    return Math.max(VEHICLE_ZOOM_MIN_SCALE, Math.min(VEHICLE_ZOOM_MAX_SCALE, scale));
+  }
+
   // src/canalRecall/game/coldOpenReview.ts
   var COLD_OPEN_ENABLED = false;
 
@@ -523,6 +533,36 @@
   var REVIEW_STOP_LABEL = "the mystery street";
   function isReviewStop(poi) {
     return !!poi && typeof poi.reviewStop === "string";
+  }
+
+  // src/canalRecall/game/trackpadTwist.ts
+  var TWIST_DEADZONE_DEG = 6;
+  var WHEEL_TWIST_DEG_PER_PX = 0.25;
+  var WHEEL_PINCH_GRACE_MS = 250;
+  function startTwist() {
+    return { engaged: false, applied: 0 };
+  }
+  function twistStep(state, rotationDeg) {
+    if (!Number.isFinite(rotationDeg)) return 0;
+    if (!state.engaged) {
+      if (Math.abs(rotationDeg) < TWIST_DEADZONE_DEG) return 0;
+      state.engaged = true;
+      state.applied = rotationDeg;
+      return 0;
+    }
+    const delta = rotationDeg - state.applied;
+    state.applied = rotationDeg;
+    return delta;
+  }
+  function wheelTwistDegrees(event) {
+    if (!event.altKey || event.ctrlKey) return null;
+    const scale = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 400 : 1;
+    const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    return delta * scale * WHEEL_TWIST_DEG_PER_PX;
+  }
+  function bearingAfterTwist(bearingDeg, clockwiseDeg) {
+    const next = bearingDeg - clockwiseDeg;
+    return ((next + 180) % 360 + 360) % 360 - 180;
   }
 
   // src/canalRecall/game/presentationRuntime.ts
@@ -714,15 +754,57 @@
           if (input) input.value = String(this.camera.zoom);
         }
       };
+      const twistable = () => this.state !== GameState.MENU && (this.viewMode === "chase" || this.viewMode === "cockpit");
+      let persistTwistTimer = 0;
+      const twist = (clockwiseDeg) => {
+        if (!clockwiseDeg) return;
+        const cam = this.camera;
+        const before = Number.isFinite(cam.bearingOffset) ? cam.bearingOffset * 180 / Math.PI : 0;
+        const after = bearingAfterTwist(before, clockwiseDeg);
+        cam.bearingOffset = after * Math.PI / 180;
+        if (cam.detached) cam.rotation -= clockwiseDeg * Math.PI / 180;
+        window.clearTimeout(persistTwistTimer);
+        persistTwistTimer = window.setTimeout(() => this._nudgeCameraBearing?.(0), 300);
+      };
+      let lastCtrlWheel = -Infinity;
       this.canvas.addEventListener("wheel", (event) => {
         if (this.state === GameState.MENU) return;
         event.preventDefault();
+        const twistDeg = wheelTwistDegrees(event);
+        if (twistDeg !== null) {
+          if (twistable()) twist(twistDeg);
+          return;
+        }
         if (event.ctrlKey) {
+          lastCtrlWheel = performance.now();
           this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * Math.exp(-event.deltaY * 2e-3)));
           this._zoomTouchedByPlayer = true;
         } else this.camera.pan(event.deltaX, event.deltaY);
         syncZoom();
       }, { passive: false });
+      let twistState = startTwist();
+      let gestureScale = 1;
+      this.canvas.addEventListener("gesturestart", (event) => {
+        event.preventDefault();
+        twistState = startTwist();
+        gestureScale = 1;
+      });
+      this.canvas.addEventListener("gesturechange", (event) => {
+        event.preventDefault();
+        const gesture = event;
+        if (twistable()) twist(twistStep(twistState, gesture.rotation));
+        const scale = Number.isFinite(gesture.scale) && gesture.scale > 0 ? gesture.scale : 1;
+        const wheelZooming = performance.now() - lastCtrlWheel < WHEEL_PINCH_GRACE_MS;
+        if (this.state !== GameState.MENU && livePinch.size < 2 && !wheelZooming && scale !== gestureScale) {
+          this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * scale / gestureScale));
+          this._zoomTouchedByPlayer = true;
+          syncZoom();
+        }
+        gestureScale = scale;
+      });
+      this.canvas.addEventListener("gestureend", (event) => {
+        event.preventDefault();
+      });
       this.canvas.addEventListener("touchstart", (event) => {
         for (const touch of event.changedTouches) {
           const point = this._eventPoint(touch);
@@ -774,6 +856,10 @@
       });
       this.canvas.addEventListener("pointerdown", (event) => {
         if (event.button !== 0 || this.state === GameState.MENU || livePinch.size >= 2 || window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) return;
+        if (this._debugMode && this._debugLinkBounds) {
+          const point = this._eventPoint(event);
+          if (this._debugLinkBounds.some((b) => point.x >= b.x && point.x <= b.x + b.w && point.y >= b.y && point.y <= b.y + b.h)) return;
+        }
         dragging = true;
         moved = false;
         detachedBeforeDrag = !!this.camera.detached;
@@ -798,6 +884,7 @@
           if (finish) this._runFinishAction(finish.id);
           else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
           else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this.camera.resetPan();
+          else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
           else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
           else this._inspectBuildingAt(event.clientX, event.clientY);
         }
@@ -909,7 +996,12 @@
       const byBoat = isBoat(this.travelMode);
       const byTransit = isTransit(this.travelMode);
       const showBike = !byBoat && !byTransit;
-      this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike);
+      this.vectorMap.setPlayerBike(
+        player,
+        this.osmLoader,
+        pitched && showBike,
+        vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom)
+      );
       this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
       if (typeof this.vectorMap.setPlayerTransit === "function") {
         let underground = false;
@@ -1151,7 +1243,11 @@
       this.hud.paperCard(ctx, plate, { radius: 9 });
       ctx.fillStyle = surface.inkMuted;
       ctx.textAlign = "center";
-      ctx.fillText(text, plate.x + plate.width / 2, plate.y + 15);
+      ctx.textBaseline = "alphabetic";
+      const ink = ctx.measureText(text);
+      const ascent = ink.actualBoundingBoxAscent || 8;
+      const descent = ink.actualBoundingBoxDescent || 2;
+      ctx.fillText(text, plate.x + plate.width / 2, plate.y + plate.height / 2 + (ascent - descent) / 2);
       ctx.restore();
     }
     // ---- Menu ----

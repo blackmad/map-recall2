@@ -99,6 +99,32 @@ test('a tree keeps its dot; a resolved landmark lights its own building', async 
   expect(result.hallState.highlighted).toEqual(result.hallState.ids);
 });
 
+// Named regression (user report 2026-10-03, "houseboat museum doesn't light up
+// yellow when the trivia comes up"). The museum is a barge, so no building way
+// joins to it; it now lights the drawn houseboat it is aboard.
+test('the Houseboat Museum lights its houseboat, not a dot', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'map lookup; one project is enough');
+  test.setTimeout(200000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
+  await expect.poll(() => page.evaluate(() => {
+    const map = (window as any).canalRecallGame.vectorMap;
+    return !!(map._buildings3dEnabled && map._threeBuildings?.boatForLandmark && map._threeBuildings.boatForLandmark([4.882602, 52.3701526], 'museum'));
+  }), { timeout: 60000 }).toBe(true);
+  const result = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame, map = game.vectorMap;
+    const museum = game.landmarks.find((l: any) => l.name === 'Houseboat Museum');
+    map.setActiveLandmark(museum);
+    const lit = [...map._threeBuildings.highlighted];
+    const dots = map.map.getSource('active-landmark')._data?.features?.length
+      ?? map.map.getSource('active-landmark').serialize().data.features.length;
+    map.setActiveLandmark(null);
+    return { lit, dots, after: [...map._threeBuildings.highlighted] };
+  });
+  expect(result.lit).toEqual(['w174999382']);
+  expect(result.dots).toBe(0);
+  expect(result.after).toEqual([]);
+});
+
 // Named regression (2026-09-30): clicking a building that is no landmark said
 // "No building details — This building has no name in the map data." for
 // nearly every building. It now says what the register knows: the year and

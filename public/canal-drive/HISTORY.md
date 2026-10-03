@@ -9,6 +9,118 @@ User (2026-10-03): "BR020 changed its name to vinyl rocks - has it not been upda
 User (2026-10-03): "mr blou I love you has no building, any idea why?" Mr Blou I Love You (OSM node 9039944077, Elandsgracht 150) is a 10 m² kiosk, pand 0363100012571031 built in 2023, next to an 11 m² kiosk from 2021. The building tiles are 3DBAG `v20250903`, which reconstructs panden from an AHN survey flown before both existed, and the 3DBAG API holds nothing at that point; our OSM layer only adds building:parts and a few footprints, so neither kiosk drew.
 
 The same hole exists wherever Amsterdam has built since the survey. `scripts/fill-new-build-gaps.ts` (rules in `src/canalRecall/newBuildGaps.ts`) takes every OSM building with a `start_date` from 2015 on (26,022, one Overpass answer kept in the scrape store) and adds it as tier 4 when its BAG/OSM id is not in the tiles, under 30% of its interior is covered by a ground-reaching footprint, and no hand-mapped tier-2 part touches it (those panden are suppressed on purpose: Overhoeks's 32-storey tower outline was the case that showed it). Heights: OSM `height`, else storeys × 3.1 m, else 3.2 m under 25 m², else the median of measured panden within 35 m, else 9.5 m. 3,671 fills went into 165 tiles (+77 KB gzipped); a rerun finds 0, so it is idempotent. Pinned in `test:new-build-gaps` (rules on a synthetic block, and Mr Blou standing in a small building), which is part of `check:canal`.
+## Trivia cards stay up, the Houseboat Museum lights its boat, postcards are paced
+
+David (2026-10-03), three requests about the drive-by cards:
+
+- **"Leave the trivia cards onscreen longer, maybe honestly until I x them out or something else replaces them."** Drive-by cards were held only while the rider was within 480 px (minimum 6 s), and clicked and street cards for 8 s, so a card often faded mid-sentence. Every landmark, street and clicked card is now `sticky`: it stays until the player taps the close "×" (`measureLandmarkCard` reserves it at the header's right end, beside MORE; a 40 px corner takes the tap) or another card replaces it. `mayReplaceNotice` now blocks only the arrival card; a drive-by may take the slot after 6 s on a street or drive-by card and after 20 s on a clicked one (`CLICK_PREEMPT_AFTER_SECONDS`), and the 15 s drive-by gap still paces them. Quizzes and new routes still clear the card. Pinned in `test:drive-by-trigger`, `test:notice-cards` and `landmark-panel.spec.ts`.
+- **"Houseboat museum doesn't light up yellow when the trivia comes up."** The museum is the Hendrika Maria, a barge; `landmark-buildings.json` joins landmarks to building ways, so it had no building, and its locator dot sat under the three.js boat. `boatForLandmark` (`houseboats.ts`) now finds the drawn houseboat a landmark is aboard: the point inside a boat outline or within 3 m of it, and only for kinds of place a boat can be (museum, hotel, café…), because Kraan 2868, a crane on the quay, stands 3.9 m from a boat. `setActiveLandmark` lights that boat (value 2 in the boat chunk, like a building) and drops the dot when the 3D layer is showing. Named regression in `test:houseboats` (museum → `w174999382`, crane → none) and `landmark-highlight.spec.ts`. The map spec cannot load tiles in the cloud sessions; the vector-map wiring was checked there with a stubbed map.
+- **"Use the 'welcome to' neighborhood cards occasionally, when we don't have trivia, the first few times in a new hood."** The postcard opened on every neighbourhood change, and only if nothing owned the band at that instant, so a quiz at the boundary spent the entry. `postcardPacing.ts` now decides: the first three entries to a neighbourhood (counted per city in localStorage) always get it; later entries only when no trivia card opened in the last 45 s and no postcard in the last 120 s; and 90 s inside one neighbourhood with no trivia brings its postcard back (at most every 180 s). A worthwhile postcard waits for the band to be free while the rider is still in that neighbourhood. Pinned in `test:postcard-pacing`, which also covers `raceTime` restarting at 0 between rides (the drive-by gap had the same bug: a gap measured against the last ride's time held cards back).
+
+## Places of worship: five hand kits and a generic church rule for 198 more
+
+User (2026-10-03): "Then temples mosques and churches", after "why does it have windows???" on a church and Fatih as "a 37 m green box".
+
+- **Measured:** Overpass found 175 worship building ways and 95 nodes (cached in the scrape store); they match 300 tile footprints.
+  - Nodes are only reported, so a prayer room inside flats is never restyled.
+  - Before this change, 198 of them were drawn wrong: 91 as generic house fronts, 81 as landmark period house fronts, and 26 as bare boxes.
+- **Hand kits** (`worshipKits.ts`, heights from 3D BAG, photos cited in each kit):
+  - Portuguese Synagogue
+  - Hofkerk: a cross plan with a west tower and a crossing tower. It has no dome; the photos and 3D BAG disagree with the old hint that it did.
+  - Gerardus Majellakerk
+  - Westermoskee: the drum and zinc dome, and one minaret of about 40 m, read from a photo.
+  - Dominicuskerk: it was a 37 m beige block.
+- **Generic rule** (`worshipBuildings.ts`, data from `npm run build:worship-buildings`, which stages first and publishes with `--publish`). Walls are plain brick in an era colour, and there are never house windows, canal gables or shop glass.
+  - A plain rectangle built before 1960 gets a steep roof and tall round-headed windows (50 buildings).
+  - An older odd plan keeps its lid but gets plain walls and arched windows (54).
+  - Towers and post-1960 buildings get plain walls (94).
+- **Known gaps:**
+  - The Engelse Kerk still reads as a warehouse under a flat lid.
+  - The Fo Guang Shan temple needs a tiered Chinese roof shape.
+  - Only the Vredeskerk's tower parts are in the tiles.
+
+## Museums and cinemas: seven landmarks modelled from 3D BAG heights
+
+User (2026-10-03): "Work on museums, movie theaters and grocery stores".
+
+- **Measured before:**
+  - Of 21 cinemas, 9 old ones wore canal-house facades. Tuschinski, Pathé City and LAB111 were among them.
+  - Modern multiplexes stood as bare boxes, which reads right for blank walls.
+  - Of 56 museums, about 35 small canal-house museums take the period facade correctly.
+  - The big ones were wrong:
+    - Van Gogh was about 3 m too low and a bare box.
+    - The Stedelijk was 28 m house fronts.
+    - H'ART, a whole courtyard block, wore a canal-house front.
+    - The Scheepvaartmuseum had a flat lid.
+    - NEMO had a flat copper top.
+- **Now kits** (`museumKits.ts`, with sources in each comment):
+  - **Van Gogh:** the Rietveld block, the stair tower and the Kurokawa drum under a tilted titanium brim.
+  - **Stedelijk:** the old building's tower, pavilions and hall roofs, plus the white 2012 "bathtub" on a glass ground floor under its canopy.
+  - **Eye:** a faceted roof rising to its 24.5 m prow.
+  - **NEMO:** its sloping copper deck.
+  - **Tuschinski:** copper domes on the measured street front's towers, with slate halls.
+  - **Scheepvaartmuseum:** four hipped wings with gabled projections and a courtyard glass roof.
+  - **H'ART (Amstelhof):** hipped wings round the courtyard.
+- **New typed helper:** `landmarkForms.ts` extrudes a part's footprint with a sloped lid, a mitred outset for brims and canopies, a half-clip and a tilted underside.
+- **Guesses:** the Van Gogh part roles and a 2.4 m ground correction; the depth of the Stedelijk canopy; Eye's facet split; Tuschinski's dome size. All colours are read from photos.
+
+## Stray facade objects, slimmer cornices, Carré, Fatih windows, chain supermarkets
+
+User (2026-10-03), screenshots at Da Costakade: "these overhangs look a little heavy / too wide", "what's these random artifacts in front of buildings?", "not sure what these are", "bad mix", and of a hand-modelled church "why does it have windows???". Earlier: "Carre looks awful in that shot?", "Work on museums, movie theaters and grocery stores".
+
+- **Stray objects were facade extras** (`facadeExtras.ts`, `facadeOrnaments.ts`), each redrawn and pinned in `check-facade-extras.ts`:
+  - The dark slab by the stoops was the light-well railing, drawn as one solid iron plate. It is now openwork bars.
+  - The green posts were facade-garden stalks up to 2.2 m tall. They are now low clumps (at most 1.15 m), never in front of a shop window.
+  - The yellow box was a 20 cm door lantern. It is now a small black lantern on a bracket.
+  - The yellow bar sticking out was a parked bike drawn as one coloured tube. Bikes now have wheels, frame, saddle and bars, in dark colours.
+  - The black doorway was the portiek recess. It is now a warm shadow with a painted door.
+- **Cornices:** the kroonlijst went from 0.68 m to 0.4 m deep, the console cornice from 0.66 m to 0.38 m, and the bracket cornice from 0.45 m to 0.3 m. Checked to be at most 0.42 m.
+- **Kit parts never take a house facade.** The landmark wrapper used to check the landmark list first. The Beurs van Berlage is not on that list, so its kit-roofed halls got house windows under the kit roofs, and the two fought.
+- **Carré:** hand-modelled from Commons photos and the BAG footprint:
+  - cream stucco to a 19 m cornice over a grey stone ground storey;
+  - round arches and three window rows;
+  - a pediment to 21.5 m;
+  - a zinc cloister dome to 27 m with a sign box at the BAG 28.3 m.
+- **Windows on kit walls:** opt in with `windows` on a kit's halls; other kits are unchanged and are checked to draw no glass. Fatih has a 3.6 m rose window, door arches, tower windows and belfry arches, and round-headed nave windows.
+  - Its windows are round-headed, following the photos, not pointed.
+  - Cost: Fatih goes from 70 to 1,114 triangles, Carré from 166 to 816.
+- **Chain supermarkets:** `npm run build:supermarkets` runs Overpass through the maps.mail.ru mirror and caches the results in the scrape store.
+  - It matched 258 of 270 ground-floor chain stores to 245 buildings: AH 126, Jumbo 25, Lidl 17, Spar 18, Vomar 15, Dirk 15, Ekoplaza 16, Aldi 6, DekaMarkt 4, Plus 3. The 12 unmatched stand 10–48 m from any footprint in the tiles.
+  - They get large glazing, a fascia in the chain colour and a logo panel on the street wall nearest the store.
+  - The brand word is drawn in a 5×7 block font (`blockLetters.ts`).
+  - Colours come from each chain's Commons logo. Dirk's red is from memory, and Ekoplaza's green is a guess at its fascia.
+- **Street rhythm:** a study and a pure prototype (`streetEnsembles.ts`). The plan is in TODO under "Street ensembles".
+
+## Enter rides on without a reload; the bike follows zoom halfway
+
+User (2026-10-03): "why does hitting enter at the end of route reload the whole game? shouldn't we be loaded enough to just have a new destination?"
+
+- **Cause:** every ride went through `_onLocationSelected`, which re-fetched and re-parsed the whole city extract, re-projected it around the new pair's midpoint, reloaded every landmark file, built a new `RoadNetwork` (and so a new routing graph), then waited up to ~5 s for the map to settle behind the loading screen. Measured in the cloud browser: 15.5 s from Enter to riding.
+- **Now:** the first load remembers its network (`_loadedWorld`: city, mode, projection centre, segments, track). A later ride in the same city and mode keeps that projection, moves the track's ends (`setEndpoints`; the graph and grid stay cached) and starts the start flight straight from the finish card, with no loading screen: 0.2-0.3 s. Transit still reloads, because its legs rewrite the track's finish. The ride's best-time key and share link are still named by the pair's midpoint, so they match a fresh load. Pinned in `next-route.spec.ts` (racing in the same call, same track, player at the new start).
+- **Bike size:** the chase bike is a world-space piece, so zooming in made it fill the street (user screenshot, Marnixstraat). `vehicleZoomScale.ts` gives back half of the zoom, `(defaultZoom / zoom)^0.5` clamped to 0.6-2.2: at 150% it reads 1.5x rather than 2.3x, at 40% it stays visible, and at the window's default zoom nothing changes.
+- **Keyboard hint plate:** the line sat low in its plate (fixed alphabetic offset); it now centres on the measured ink.
+
+## Houseboats: lighter, cuter, more like Amsterdam's
+
+User (2026-10-03, screenshot at Nassaukade): the canal boats "look a little dark and could be cuter / look more like amsterdam canal boats". Cause: every boat drew from one dark palette (hulls #24-#3b, half the cabins and all roofs near-black), and the kit shading (0.58-1 times the flat cell's 0.9) takes walls down another third, so from the chase camera boats read as black slabs. `src/canalRecall/houseboats.ts` now splits the palettes by kind: arks sit on grey concrete pontoons with painted timber cabins (cream, sky blue, sage, mint, ochre, barn red, timber, a few deep greens), white-framed windows, a bright door, a flat roof with a white fascia (often sedum green), a gable, or the arched barrel roof common on woonarken (~23%), a stove pipe, and potted plants on the deck. Barges keep dark steel hulls, which is true to life, with a pale gunwale stripe and a deck that sweeps up towards the bow, varnished or painted cabins, pots on the cabin roof, a stove pipe and a Dutch flag on a stern staff when the stern has room. Triangle budget held: 199 a boat on average over the 3,083-boat extract (`test:houseboats` caps 200; arks ~148, barges ~300), with hidden pot and pipe lids dropped to fit. Before/after renders were made with a standalone viewer that mimics `buildKitChunk` shading (tmp/, not committed).
+
+## Two-finger twist spins the 3D camera
+
+User (2026-10-03): "I want to be able to spin the camera with a two-finger twist gesture on my trackpad." Only Safari reports a trackpad rotation (`gesturestart`/`gesturechange` with `rotation`, also fired by iOS Safari for a two-finger touch); Chrome and Firefox expose no twist at all, as a gesture or as a wheel delta, so those get Option/Alt + two-finger scroll instead. Both orbit chase/cockpit through the existing `camera.bearingOffset` (the same one Shift + [ / ] nudges) and persist through `_nudgeCameraBearing` once the gesture settles; the 2D views ignore it, as they ignore the keys. A twist engages only past a 6° dead zone and then tracks the fingers without a jump, so a pinch's wobble never turns the view. The Safari gestures are also swallowed so the page itself cannot zoom, and their `scale` zooms the map unless a touch pinch or ctrl+wheel is already doing it. Logic in `src/canalRecall/game/trackpadTwist.ts`, pinned in `test:trackpad-twist` and `tests/e2e/trackpad-twist.spec.ts` (synthetic Safari events: wobble ignored, a clockwise twist turns north clockwise on screen, Alt+scroll turns it, the bearing persists).
+
+## Large-letter postcard: the Spoon Graphics recipe
+
+User (2026-10-03, with the Spoon Graphics tutorial "How To Create a Vintage Style Large Letter Postcard Design"): revisit the postcard against it. Audit: `/mnt/project-files/map-recall/postcard-design-audit.md`; before/after renders in `/mnt/project-files/map-recall/postcard-recipe/`. Changes, step by step against the recipe:
+
+- **Typeface.** Anton (self-hosted, OFL) instead of Archivo Black, standing in for Futura Condensed Extra Bold. The layout still works in Archivo cap units (`LARGE_LETTER_FONT_EM_SCALE` draws Anton at 0.8 of the layout size). Because the face is tall by itself, the vertical face pull is capped at 1.3 (it was up to 2.7) and the horizontal squeeze stops at 0.85. Names of up to nine letters stay on one line even with a space (DE PIJP, like FLORIDA), and word spaces are half width. Tracking is +0.012 em, not the recipe's -50, because Anton's sidebearings are slim and faces overlapped.
+- **Rims.** Two offset rims (light inside, blue outside, dark hairline edge) sit behind the face, replacing the black die-cut drawn over it.
+- **Extrusion.** Each glyph's outline is flattened, and every edge facing the extrusion direction becomes a facet. Down-facing facets are orange and side facets blue, as in Illustrator's Extrude & Bevel at 1°/1° with no shading. The block is outlined once in a dark line, so there are no seams. A 45° halftone screen is burned into the orange (Color Burn 30%). The recipe's block is parallel, not converging; the earlier audit line that said otherwise was wrong. Without the outline font, the banded shelf is still used.
+- **Backdrop.** 60% instead of 16%, with a lighter veil, as the recipe lays the scene at 70%.
+- **Photos.** The layered card's letter photos get an SVG paint filter: brush wobble, soft blur plus unsharp mask, and an 8-tone posterise. A colour boost follows, standing in for Oil Paint and Match Color.
+- **Print grain.** A Gaussian-noise and linen layer blends with `overlay` over the whole layered card. This puts back the texture on the letter photos that the windows change had dropped.
+- **Script.** Pacifico is self-hosted and registered via `ensureLargeLetterWebFonts`; the game had been showing a serif fallback.
+
+Photo windows now replay the block's paint order on the mask: a later line's extrusion, or a neighbour's rims, closes that part of an earlier window. Paint is 56-107 ms a card, and the grain takes 19 ms once. Regressions: `test:large-letter-postcard` and `test:large-letter-craft` (DE PIJP on one line, the two-line contract moved to OVERTOOMSE VELD, face pull ≤1.3).
 
 ## Map Recall: folded answer card and a layered postcard
 

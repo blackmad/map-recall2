@@ -103,6 +103,8 @@ class Vehicle3D {
     this._scene = null;
     this._modelRoot = null;
     this.altitudeM = 0.22;
+    /** Set per frame by the game for the camera zoom; see vehicleZoomScale.ts. */
+    this.zoomScale = 1;
     this.layer = this._makeLayer();
     map.addLayer(this.layer);
     // Buildings and other 3D layers are added after the vehicles. Keep the
@@ -273,7 +275,7 @@ class Vehicle3D {
       },
       render(_gl, args) {
         if (!owner.ready || !owner.visible || !owner.lngLat || !owner._modelRoot) return;
-        owner._modelRoot.scale.setScalar(owner.options.gameScale * owner.viewportScale());
+        owner._modelRoot.scale.setScalar(owner.options.gameScale * owner.viewportScale() * (owner.zoomScale || 1));
         owner._pose(owner._modelRoot);
         const coordinate = owner.maplibregl.MercatorCoordinate.fromLngLat(
           owner.lngLat,

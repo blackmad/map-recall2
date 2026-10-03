@@ -11,12 +11,14 @@
 import { coverCrop, type TextMeasurer } from './noticeCards.ts';
 import {
   baselinePathOffset,
+  recipeColors,
   resolvePostcardStyle,
   type PostcardStyle,
   type PostcardStyleId,
 } from './largeLetterPostcardStyles.ts';
 import {
   LARGE_LETTER_FONT_CSS,
+  LARGE_LETTER_FONT_EM_SCALE,
   pathCommandsToPath2D,
   pathCommandsToSvgD,
   warpPathCommands,
@@ -31,6 +33,7 @@ export {
   getLoadedLargeLetterFont,
   LARGE_LETTER_FONT_URL,
   LARGE_LETTER_FONT_CSS,
+  ensureLargeLetterWebFonts,
   pathCommandsToSvgD,
   type OtFont,
 } from './largeLetterGlyphPaths.ts';
@@ -53,19 +56,21 @@ const NAME_MIN = 72;
 /** Stretch advances to fill the band — shapes stay inside advances (no overlap). */
 const MAX_HORIZONTAL_STRETCH = 1.7;
 /** Allow horizontal squeeze so Archivo Black can stay TALL. */
-const MIN_HORIZONTAL_SCALE = 0.68;
+const MIN_HORIZONTAL_SCALE = 0.85;
 /** Prefer fill stretch, but height wins — mild compression is OK. */
-const PREFERRED_MIN_STRETCH = 0.84;
+const PREFERRED_MIN_STRETCH = 0.95;
 /** Long unbroken tokens prefer a hyphenated two-line break. */
-const LONG_NAME_CHARS = 9;
-/** Ultra-black display face — thick stems for photo windows (Monterey weight). */
+const LONG_NAME_CHARS = 12;
+/** Condensed extra-bold display face: tall stems for photo windows. */
 const NAME_FONT_FAMILY = LARGE_LETTER_FONT_CSS;
 const GREETING_FONT_FAMILY = '"Pacifico", "Segoe Script", "Brush Script MT", cursive';
 /**
- * Near-zero / slight negative tracking: authentic linen cards sit letters
- * tight with a hair of outline air — never stacked/overlapping faces.
+ * Tight tracking so neighbouring rims touch. The recipe's -50 suits Futura's wide sidebearings;
+ * Anton's are slim, so it gets a hair of positive tracking instead of overlapping faces.
  */
-const TRACKING_EM = -0.038;
+const TRACKING_EM = 0.012 * LARGE_LETTER_FONT_EM_SCALE;
+/** Names up to this many letters stay on one line even with a space (DE PIJP, like FLORIDA). */
+const ONE_LINE_MAX_CHARS = 9;
 
 /** Desired billboard bulk before fit-to-frame (layout may shrink to stay on-card). */
 const DESIRED_PAINT_SCALE_X = 1.0;
@@ -77,7 +82,7 @@ const FRAME_SAFE_PAD = 6;
 /** Target painted face height as a fraction of card height (linen billboard). */
 const TARGET_FACE_HEIGHT_FRAC = 0.74;
 /** Soft-clip extrusion into caption zone so faces can stay tall. */
-const MAX_FACE_PULL_Y = 2.7;
+const MAX_FACE_PULL_Y = 1.3;
 /** Paper margin — authentic linen is a hairline, not a mat. */
 const BORDER_INSET = 4;
 /** Hard clearance from paper clip to letter ink tops (px). */
@@ -472,7 +477,7 @@ export interface LargeLetterPostcardLayout {
 type CanvasCtx = CanvasRenderingContext2D | OffscreenCanvasRenderingContext2D;
 
 function nameFontAt(size: number): string {
-  return `800 ${size}px ${NAME_FONT_FAMILY}`;
+  return `400 ${size * LARGE_LETTER_FONT_EM_SCALE}px ${NAME_FONT_FAMILY}`;
 }
 
 function greetingFontAt(size: number): string {
@@ -606,12 +611,17 @@ export function splitNameForTwoLines(raw: string): [string, string] {
   return [name.slice(0, mid).trim(), name.slice(mid).trim()];
 }
 
+/** A word space at half its width: the classic cards butt words together (SAN FRANCISCO). */
+function charAdvance(char: string, font: string, measure: TextMeasurer): number {
+  return measure(char, font) * (char === ' ' ? 0.5 : 1);
+}
+
 function measureLineWidth(text: string, font: string, fontSize: number, measure: TextMeasurer): number {
   if (!text) return 0;
   const gap = trackingPx(fontSize);
   let w = 0;
   for (let i = 0; i < text.length; i++) {
-    w += measure(text[i], font);
+    w += charAdvance(text[i], font, measure);
     if (i < text.length - 1) w += gap;
   }
   return w;
@@ -657,7 +667,8 @@ function fitName(
 ): { lines: string[]; fontSize: number; horizontalScale: number } {
   const hasBreak = /[\s-]/.test(display);
   const isLong = display.replace(/[\s-]/g, '').length >= LONG_NAME_CHARS;
-  const pair = (hasBreak || isLong) ? splitNameForTwoLines(display) : null;
+  const short = display.replace(/[\s-]/g, '').length <= ONE_LINE_MAX_CHARS;
+  const pair = ((hasBreak && !short) || isLong) ? splitNameForTwoLines(display) : null;
 
   // Spaced / long names: try two-line billboard first (DE PIJP, GRACHTEN-GORDEL).
   if (pair && pair[0] && pair[1]) {
@@ -717,7 +728,7 @@ function layoutGlyphs(
   const n = Math.max(1, text.length);
   for (let i = 0; i < text.length; i++) {
     const char = text[i];
-    const rawW = measure(char, font);
+    const rawW = charAdvance(char, font, measure);
     const width = rawW * horizontalScale;
     const t = text.length === 1 ? 0.5 : i / (n - 1);
     const baseline = flatBaseline
@@ -902,8 +913,8 @@ export function measureLargeLetterPostcard(
       - style.extrusionSteps * Math.abs(extrusionDy) * 0.12,
   );
   const facePullY = Math.min(
-    lineCount > 1 ? 1.4 : MAX_FACE_PULL_Y,
-    Math.max(1.35, targetFaceH / Math.max(1, naturalFaceH)),
+    lineCount > 1 ? 1.15 : MAX_FACE_PULL_Y,
+    Math.max(1, targetFaceH / Math.max(1, naturalFaceH)),
   );
   const facePullX = 1;
 
@@ -1427,7 +1438,7 @@ function glyphFaceCommands(
   if (!font || g.char === ' ' || g.char === '-') return null;
   const sx = g.scaleX ?? layout.horizontalScale;
   const sy = layout.facePullY;
-  const raw = font.getPath(g.char, 0, 0, layout.nameFontSize);
+  const raw = font.getPath(g.char, 0, 0, layout.nameFontSize * LARGE_LETTER_FONT_EM_SCALE);
   const placed: PathCmd[] = raw.commands.map((c) => {
     const map = (x: number, y: number) => ({
       x: g.x + offsetX + x * sx,
@@ -1580,7 +1591,7 @@ function drawFadedBackground(
   const crop = coverCrop(nw, nh, w, h);
   ctx.save();
   ctx.globalAlpha = style.backdropAlpha;
-  ctx.filter = 'saturate(0.52) contrast(0.86) brightness(1.06)';
+  ctx.filter = 'saturate(0.9) contrast(0.95) brightness(1.04)';
   ctx.drawImage(image, crop.sx, crop.sy, crop.sw, crop.sh, 0, 0, w, h);
   ctx.filter = 'none';
   const veil = ctx.createLinearGradient(0, 0, 0, h);
@@ -1638,7 +1649,222 @@ function drawGlyphExtrusion(
   paintGlyphFill(ctx, layout, g, dx * 0.35, dy * 0.35);
 }
 
+// --- Spoon Graphics recipe: faceted extrusion, two rims, halftone -------------
+// Illustrator's Extrude & Bevel (1°, 1°, deep, no shading) gives a parallel block whose
+// down-facing facets are coloured red/orange and side facets blue, outlined in a darker line;
+// two offset paths (light, then coloured) sit between the photo face and the block; a halftone
+// screen is burned into the orange. Drawn from the glyph outline, so it needs the outline font.
+
+type Pt = { x: number; y: number };
+
+/** Glyph contours as polylines (curves split into `steps` segments). */
+function flattenContours(cmds: PathCmd[], steps = 6): Pt[][] {
+  const contours: Pt[][] = [];
+  let cur: Pt[] = [];
+  let last: Pt = { x: 0, y: 0 };
+  for (const c of cmds) {
+    if (c.type === 'M') {
+      if (cur.length > 2) contours.push(cur);
+      last = { x: c.x!, y: c.y! };
+      cur = [last];
+    } else if (c.type === 'L') {
+      last = { x: c.x!, y: c.y! };
+      cur.push(last);
+    } else if (c.type === 'Q' || c.type === 'C') {
+      const p0 = last;
+      for (let i = 1; i <= steps; i++) {
+        const t = i / steps;
+        const u = 1 - t;
+        const p = c.type === 'Q'
+          ? { x: u * u * p0.x + 2 * u * t * c.x1! + t * t * c.x!, y: u * u * p0.y + 2 * u * t * c.y1! + t * t * c.y! }
+          : {
+            x: u * u * u * p0.x + 3 * u * u * t * c.x1! + 3 * u * t * t * c.x2! + t * t * t * c.x!,
+            y: u * u * u * p0.y + 3 * u * u * t * c.y1! + 3 * u * t * t * c.y2! + t * t * t * c.y!,
+          };
+        cur.push(p);
+      }
+      last = { x: c.x!, y: c.y! };
+    } else if (c.type === 'Z') {
+      if (cur.length > 2) contours.push(cur);
+      cur = [];
+    }
+  }
+  if (cur.length > 2) contours.push(cur);
+  return contours;
+}
+
+function contourArea(pts: Pt[]): number {
+  let a = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const p = pts[i];
+    const q = pts[(i + 1) % pts.length];
+    a += p.x * q.y - q.x * p.y;
+  }
+  return a / 2;
+}
+
+/** Rim widths (inner light, outer coloured) for a layout. */
+function recipeRims(layout: LargeLetterPostcardLayout): { light: number; color: number; edge: number } {
+  const light = Math.max(1.6, layout.outlineWidth * 0.5);
+  const color = Math.max(1.6, layout.outlineWidth * 0.55);
+  return { light, color, edge: 1.3 };
+}
+
+interface Facet { quad: Path2D; bottom: boolean; depth: number }
+
+/** The visible side facets of a glyph's extrusion, far to near, and the back silhouette. */
+function glyphFacets(layout: LargeLetterPostcardLayout, g: GlyphLayout): { back: Path2D; facets: Facet[] } | null {
+  const cmds = glyphFaceCommands(layout, g, 0, 0, paintOtFont);
+  if (!cmds) return null;
+  const D = { x: layout.extrusionSteps * layout.extrusionDx, y: layout.extrusionSteps * layout.extrusionDy };
+  const len = Math.hypot(D.x, D.y) || 1;
+  const contours = flattenContours(cmds);
+  if (!contours.length) return null;
+  // With the nonzero rule the solid lies on the same side of every edge; the largest contour says which.
+  const outer = contours.reduce((a, b) => (Math.abs(contourArea(b)) > Math.abs(contourArea(a)) ? b : a));
+  const sign = contourArea(outer) > 0 ? 1 : -1;
+  const facets: Facet[] = [];
+  for (const pts of contours) {
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i];
+      const b = pts[(i + 1) % pts.length];
+      const ex = b.x - a.x;
+      const ey = b.y - a.y;
+      const el = Math.hypot(ex, ey);
+      if (el < 1e-3) continue;
+      // Outward normal of the solid (y down: positive area → interior on the (-ey, ex) side).
+      const nx = (sign * ey) / el;
+      const ny = (-sign * ex) / el;
+      if (nx * D.x + ny * D.y <= 1e-6) continue; // faces away: hidden behind the block
+      const quad = new Path2D();
+      quad.moveTo(a.x, a.y);
+      quad.lineTo(b.x, b.y);
+      quad.lineTo(b.x + D.x, b.y + D.y);
+      quad.lineTo(a.x + D.x, a.y + D.y);
+      quad.closePath();
+      facets.push({
+        quad,
+        bottom: ny > Math.abs(nx) * 0.75,
+        depth: (((a.x + b.x) / 2) * D.x + ((a.y + b.y) / 2) * D.y) / len,
+      });
+    }
+  }
+  // A facet further along the extrusion direction is nearer the viewer: paint it later.
+  facets.sort((p, q) => p.depth - q.depth);
+  const back = pathCommandsToPath2D(glyphFaceCommands(layout, g, D.x, D.y, paintOtFont)!);
+  return { back, facets };
+}
+
+let halftoneTile: { canvas: CanvasImageSource } | null = null;
+/** A 45° dot screen (the recipe's 5 px halftone), as a repeating tile. */
+function halftonePattern(ctx: CanvasCtx): CanvasPattern | null {
+  if (!halftoneTile) {
+    const cell = 7;
+    const tile = makeLayer(cell, cell);
+    tile.ctx.fillStyle = '#5a1a00';
+    for (const [x, y] of [[0, 0], [cell, 0], [0, cell], [cell, cell], [cell / 2, cell / 2]]) {
+      tile.ctx.beginPath();
+      tile.ctx.arc(x, y, 1.9, 0, Math.PI * 2);
+      tile.ctx.fill();
+    }
+    halftoneTile = { canvas: tile.canvas };
+  }
+  return ctx.createPattern(halftoneTile.canvas, 'repeat');
+}
+
+/**
+ * The faceted block behind one glyph. `mask` paints its whole footprint in the current fill
+ * (for punching photo windows). Returns false without the outline font (old banded shelf instead).
+ */
+function drawGlyphFacetExtrusion(ctx: CanvasCtx, layout: LargeLetterPostcardLayout, g: GlyphLayout, mask = false): boolean {
+  if (g.char === ' ' || g.char === '-') return true;
+  const geometry = glyphFacets(layout, g);
+  if (!geometry) return false;
+  const { back, facets } = geometry;
+  const colors = recipeColors(layout.style);
+  const rims = recipeRims(layout);
+  // The block is extruded from the outer rim, so every piece is dilated by the rims' width.
+  const grow = (rims.light + rims.color) * 2;
+  ctx.save();
+  ctx.lineJoin = 'round';
+  const pass = (width: number, color: (f: Facet | null) => string) => {
+    ctx.lineWidth = width;
+    ctx.fillStyle = ctx.strokeStyle = color(null);
+    ctx.fill(back);
+    ctx.stroke(back);
+    for (const f of facets) {
+      ctx.fillStyle = ctx.strokeStyle = color(f);
+      ctx.fill(f.quad);
+      ctx.stroke(f.quad);
+    }
+  };
+  if (mask) {
+    const fill = String(ctx.fillStyle);
+    pass(grow + rims.edge * 2, () => fill);
+    ctx.restore();
+    return true;
+  }
+  // Dark line around the whole block, then the colours inside it (no seams between facets).
+  pass(grow + rims.edge * 2, () => colors.extrusionEdge);
+  pass(grow, (f) => (f?.bottom ? colors.extrusionBottom : colors.extrusionSide));
+  // Halftone burned into the orange facets (Color Burn 30%).
+  const bottoms = facets.filter((f) => f.bottom);
+  const pattern = bottoms.length ? halftonePattern(ctx) : null;
+  if (pattern) {
+    const region = new Path2D();
+    for (const f of bottoms) region.addPath(f.quad);
+    ctx.save();
+    ctx.clip(region);
+    ctx.globalCompositeOperation = 'color-burn';
+    ctx.globalAlpha = 0.3;
+    ctx.fillStyle = pattern;
+    ctx.fill(region);
+    ctx.restore();
+  }
+  ctx.restore();
+  return true;
+}
+
+/** The two offset rims (coloured outside, light inside) and a hairline edge, behind the face. */
+function drawGlyphRims(ctx: CanvasCtx, layout: LargeLetterPostcardLayout, g: GlyphLayout, mask = false): void {
+  if (g.char === ' ' || g.char === '-') return;
+  const colors = recipeColors(layout.style);
+  const rims = recipeRims(layout);
+  ctx.save();
+  ctx.lineJoin = 'round';
+  const ring = (width: number, color?: string) => {
+    if (color) ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    paintGlyphStroke(ctx, layout, g);
+  };
+  if (mask) {
+    ctx.strokeStyle = String(ctx.fillStyle);
+    ring((rims.light + rims.color + rims.edge) * 2);
+  } else {
+    ring((rims.light + rims.color + rims.edge) * 2, colors.extrusionEdge);
+    ring((rims.light + rims.color) * 2, colors.rimColor);
+    ring(rims.light * 2, colors.rimLight);
+  }
+  ctx.restore();
+}
+
 const GLYPH_PHOTO_FILTER = 'saturate(1.78) contrast(1.4) brightness(1.12)';
+/**
+ * The layered card's letter photographs, closer to the recipe's Unsharp Mask + Oil Paint + Match
+ * Color: a painted SVG filter (POSTCARD_PAINT_FILTER_SVG, referenced by id) then a colour boost.
+ */
+export const POSTCARD_PAINT_FILTER_ID = 'large-letter-paint';
+export const POSTCARD_PAINT_FILTER_SVG = `<filter id="${POSTCARD_PAINT_FILTER_ID}" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB">`
+  // A slight brush wobble, softened, then sharpened back (unsharp mask): paint, not pixels.
+  + '<feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="2" seed="7" result="t"/>'
+  + '<feDisplacementMap in="SourceGraphic" in2="t" scale="2.6" xChannelSelector="R" yChannelSelector="G" result="d"/>'
+  + '<feGaussianBlur in="d" stdDeviation="0.45" result="b"/>'
+  + '<feConvolveMatrix in="b" order="3" kernelMatrix="0 -0.5 0 -0.5 3 -0.5 0 -0.5 0" preserveAlpha="true" result="s"/>'
+  // A few flat tones per channel, like a litho print.
+  + '<feComponentTransfer in="s"><feFuncR type="discrete" tableValues="0 .14 .28 .42 .56 .7 .84 1"/>'
+  + '<feFuncG type="discrete" tableValues="0 .14 .28 .42 .56 .7 .84 1"/><feFuncB type="discrete" tableValues="0 .14 .28 .42 .56 .7 .84 1"/></feComponentTransfer>'
+  + '</filter>';
+const LAYERED_PHOTO_FILTER = `url(#${POSTCARD_PAINT_FILTER_ID}) saturate(1.6) contrast(1.2) brightness(1.08)`;
 
 /** The box a letter's photograph is cover-cropped into. */
 function glyphPhotoBox(layout: LargeLetterPostcardLayout, g: GlyphLayout): { x: number; y: number; w: number; h: number } {
@@ -1766,12 +1992,20 @@ function drawPerspectiveLetterBlock(
 
   for (const line of lines) {
     const ordered = shelfRight ? line : [...line].reverse();
-    for (const { g } of ordered) drawGlyphExtrusion(block.ctx, layout, g);
+    // With the outline font: the recipe's faceted block and rims; without, the banded shelf.
+    let recipe = true;
+    for (const { g } of ordered) {
+      if (!drawGlyphFacetExtrusion(block.ctx, layout, g)) {
+        recipe = false;
+        drawGlyphExtrusion(block.ctx, layout, g);
+      }
+    }
     for (const { g, i } of ordered) {
       const focusX = letterGlyphs.length <= 1 ? 0.5 : i / Math.max(1, letterGlyphs.length - 1);
       const focusY = 0.35 + (i % 3) * 0.12;
+      if (recipe) drawGlyphRims(block.ctx, layout, g);
       drawGlyphPhoto(block.ctx, layout, g, imgFor(i), focusX, focusY);
-      drawGlyphOutlines(block.ctx, layout, g);
+      if (!recipe) drawGlyphOutlines(block.ctx, layout, g);
     }
   }
 
@@ -2193,15 +2427,40 @@ export function drawLargeLetterPostcard(
   }
 }
 
+/**
+ * The recipe's last step for a layered card: 10% monochrome Gaussian noise on 50% grey plus the
+ * linen weave, for an `overlay` layer over everything (photo windows included, which the canvas
+ * frame cannot texture because the photographs sit beneath it). Deterministic.
+ */
+export function drawLargeLetterPrintGrain(ctx: CanvasCtx, width: number, height: number): void {
+  const image = ctx.createImageData(width, height);
+  let seed = 0x2f6aa6;
+  const random = () => {
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    return (seed + 1) / 4294967297;
+  };
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const gauss = Math.sqrt(-2 * Math.log(random())) * Math.cos(2 * Math.PI * random());
+      const weave = (y % 3 === 0 ? -7 : 0) + (x % 3 === 0 ? -5 : 0);
+      const v = Math.max(0, Math.min(255, 128 + gauss * 25.5 + weave));
+      const k = (y * width + x) * 4;
+      image.data[k] = image.data[k + 1] = image.data[k + 2] = v;
+      image.data[k + 3] = 255;
+    }
+  }
+  ctx.putImageData(image, 0, 0);
+}
+
 /** Glyphs in the order the letter block paints them: line by line, each line from the shelf side. */
-function blockPaintOrder(layout: LargeLetterPostcardLayout): Array<{ g: GlyphLayout; i: number }> {
+function blockPaintOrder(layout: LargeLetterPostcardLayout): Array<{ g: GlyphLayout; i: number; line: number }> {
   const letterGlyphs = layout.glyphs.filter((g) => g.char !== ' ' && g.char !== '-');
   const lineYs = layout.nameBaselineYs.length
     ? layout.nameBaselineYs
     : [...new Set(letterGlyphs.map((g) => g.baselineY))];
   const lineTol = layout.nameFontSize * 0.45;
-  return lineYs.flatMap((y) => {
-    const line = letterGlyphs.map((g, i) => ({ g, i })).filter(({ g }) => Math.abs(g.baselineY - y) < lineTol);
+  return lineYs.flatMap((y, lineIndex) => {
+    const line = letterGlyphs.map((g, i) => ({ g, i, line: lineIndex })).filter(({ g }) => Math.abs(g.baselineY - y) < lineTol);
     return layout.extrusionDx >= 0 ? line : [...line].reverse();
   });
 }
@@ -2211,15 +2470,26 @@ function cutPhotoWindows(ctx: CanvasCtx, layout: LargeLetterPostcardLayout): voi
   const holes = makeLayer(layout.width, layout.height);
   holes.ctx.fillStyle = '#000';
   holes.ctx.strokeStyle = '#000';
-  // Same order as the block: a later face covers an earlier outline, and each outline stays opaque.
-  for (const { g } of blockPaintOrder(layout)) {
+  // Replay the block's paint order on a mask: whatever the block paints over an earlier face (a
+  // later line's extrusion, a neighbour's rims or outline) closes that part of its window.
+  let currentLine = -1;
+  const order = blockPaintOrder(layout);
+  order.forEach(({ g, line }) => {
+    if (line !== currentLine) {
+      currentLine = line;
+      holes.ctx.globalCompositeOperation = 'destination-out';
+      for (const next of order) if (next.line === line) drawGlyphFacetExtrusion(holes.ctx, layout, next.g, true);
+    }
+    holes.ctx.globalCompositeOperation = 'destination-out';
+    if (glyphFaceCommands(layout, g, 0, 0, paintOtFont)) drawGlyphRims(holes.ctx, layout, g, true);
+    else {
+      holes.ctx.lineJoin = 'round';
+      holes.ctx.lineWidth = Math.max(3.2, layout.outlineWidth * 1.15);
+      paintGlyphStroke(holes.ctx, layout, g);
+    }
     holes.ctx.globalCompositeOperation = 'source-over';
     paintGlyphFill(holes.ctx, layout, g);
-    holes.ctx.globalCompositeOperation = 'destination-out';
-    holes.ctx.lineJoin = 'round';
-    holes.ctx.lineWidth = Math.max(3.2, layout.outlineWidth * 1.15);
-    paintGlyphStroke(holes.ctx, layout, g);
-  }
+  });
   ctx.save();
   ctx.globalCompositeOperation = 'destination-out';
   ctx.translate(layout.paintPivotX, layout.paintPivotY);
@@ -2295,7 +2565,7 @@ export function largeLetterPhotoWindows(
     matrix: [a, b, c, d, px - (a * px + c * py), py - (b * px + d * py)],
     clip: { x: inset, y: inset, width: layout.width - Math.max(2, inset * 2), height: layout.height - Math.max(2, inset * 2) },
     windows,
-    filter: GLYPH_PHOTO_FILTER,
+    filter: LAYERED_PHOTO_FILTER,
     fallbackFill: layout.fallbackFill,
   };
 }

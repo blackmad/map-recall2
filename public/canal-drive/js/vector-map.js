@@ -152,9 +152,20 @@ class VectorBasemap {
         };
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
-      // Signature landmark GLBs are built and demoable, but disabled in the
-      // live game: thirteen meshopt models were too expensive on the shared
-      // MapLibre/Three canvas (see TODO item 22).
+      const signature = window.CanalRecallSignature3D;
+      const manualModels = window.CanalRecallSignatureLandmarks?.MANUAL_LANDMARKS;
+      if (signature?.SignatureLandmarks && manualModels) {
+        this._signatureLandmarks = new signature.SignatureLandmarks(this.map, maplibregl, {
+          models: manualModels,
+          manageBasemapFilter: false,
+          onModelShown: () => {
+            this._syncDetailedBuildingLayers();
+            this._raisePoiLayers();
+            this.setActiveLandmark(this._activeLandmark);
+          },
+        });
+        this._signatureLandmarks.setEnabled(!this._detailedBuildingsVisible && !this._measuredColoursOnly);
+      }
       if (window.CanalRecallVehicles) {
         const { PlayerBike3D, PlayerBoat3D, PlayerTransit3D } = window.CanalRecallVehicles;
         if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl);
@@ -1750,8 +1761,9 @@ class VectorBasemap {
     ]) this[alias] = list.find(layer => layer.areaId === active) || list[0] || null;
   }
 
-  setPlayerBike(player, loader, visible) {
+  setPlayerBike(player, loader, visible, zoomScale = 1) {
     if (!this._playerBike || !player || !loader) return;
+    this._playerBike.zoomScale = zoomScale;
     this._playerBike.update(
       this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
       player.steerInput || 0, player.distancePx || 0
@@ -2003,6 +2015,14 @@ class VectorBasemap {
       const id = this._completeCity.buildingForLandmark({ lng: landmark.lngLat[0], lat: landmark.lngLat[1] });
       if (id) targets = [{ source: 'osm-building-appearance', id }];
     }
+    // A landmark that is a boat (the Houseboat Museum) has no building way, so
+    // the join above finds nothing for it; light the drawn houseboat it is
+    // aboard instead (user report 2026-10-03).
+    let boatId = null;
+    if (!targets.length && landmark && Array.isArray(landmark.lngLat) && this._buildings3dEnabled && this._facadesActive()
+      && this._threeBuildings && typeof this._threeBuildings.boatForLandmark === 'function') {
+      boatId = this._threeBuildings.boatForLandmark(landmark.lngLat, landmark.type);
+    }
     if (!detailed) {
       for (const target of targets) {
         try {
@@ -2011,7 +2031,7 @@ class VectorBasemap {
         } catch (_) {}
       }
       this._highlightedBuilding = this._highlightedBuildings[0] || null;
-      if (this._threeBuildings) this._threeBuildings.setHighlighted(this._highlightedBuildings.map(target => target.id));
+      if (this._threeBuildings) this._threeBuildings.setHighlighted(boatId ? [boatId] : this._highlightedBuildings.map(target => target.id));
       this._kitAnswerIds = new Set(this._highlightedBuildings.map(target => String(target.id)));
       if (this._buildings3dEnabled) this._refreshColoredBuildingFilter();
     }
@@ -2029,7 +2049,7 @@ class VectorBasemap {
     // yellow building").
     const modelLit = !detailed && !!(this._signatureLandmarks && this._signatureLandmarks.highlights
       && this._signatureLandmarks.highlights(landmark));
-    const point = landmark && !this._highlightedBuilding && !modelLit && landmark.lngLat
+    const point = landmark && !this._highlightedBuilding && !modelLit && !(boatId && !detailed) && landmark.lngLat
       ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: landmark.lngLat } }]
       : [];
     source.setData({ type: 'FeatureCollection', features: point });

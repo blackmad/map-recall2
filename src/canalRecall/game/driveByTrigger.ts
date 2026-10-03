@@ -11,8 +11,9 @@
 // Now the trigger looks ahead along where the rider is going — the route line
 // when they are on it, the heading otherwise — for a few seconds of travel,
 // and a landmark about to be passed may replace a street card or an earlier
-// drive-by card that has had a few seconds on screen. A clicked card is never
-// replaced: the player asked for it.
+// drive-by card that has had a few seconds on screen. Cards stay up until the
+// player closes them or one of these replaces them (2026-10-03); a clicked
+// card, which the player asked for, holds the slot longer first.
 
 import type { WorldPoint } from './worldTypes';
 import type { NoticeHold } from './landmarkNotice';
@@ -122,14 +123,23 @@ export function pickDriveBy<T extends WorldPoint>(candidates: readonly T[], path
   return chosen;
 }
 
-/** Whether a drive-by landmark may replace the card currently up. */
+/** Seconds a card the player clicked open keeps the slot before a landmark
+ *  being driven past may take it. Cards no longer time out (user request
+ *  2026-10-03, "until I x them out or something else replaces them"), so a
+ *  clicked card left up would otherwise stop every drive-by card for the rest
+ *  of the ride; it gets longer than a card that opened by itself. */
+export const CLICK_PREEMPT_AFTER_SECONDS = 20;
+
+/** Whether a drive-by landmark may replace the card currently up. Only the
+ *  arrival card on the finish screen is never replaced. */
 export function mayReplaceNotice(source: NoticeSource | null, hold: NoticeHold | null, elapsed: number): boolean {
   if (!source || !hold) return true;
-  if (source === 'click' || source === 'arrival' || hold.kind === 'sticky') return false;
-  return elapsed >= PREEMPT_AFTER_SECONDS;
+  if (source === 'arrival') return false;
+  return elapsed >= (source === 'click' ? CLICK_PREEMPT_AFTER_SECONDS : PREEMPT_AFTER_SECONDS);
 }
 
 /** Whether enough time has passed since the last drive-by card for another. */
 export function driveByGapElapsed(lastShownAt: number | null | undefined, now: number): boolean {
-  return lastShownAt == null || now - lastShownAt >= DRIVE_BY_MIN_GAP_SECONDS;
+  // A time later than now is from an earlier ride (`raceTime` restarts at 0).
+  return lastShownAt == null || lastShownAt > now || now - lastShownAt >= DRIVE_BY_MIN_GAP_SECONDS;
 }
