@@ -9,7 +9,8 @@ const work = fs.mkdtempSync(path.join(os.tmpdir(), 'amsterdam-parks-'));
 const run = args => execFileSync('osmium', args, {stdio: 'inherit'});
 run(['extract', source, '-b', '4.75,52.28,5.03,52.44', '-o', `${work}/area.pbf`]);
 run(['tags-filter', `${work}/area.pbf`, 'wr/leisure=park', 'wr/landuse=grass,forest,meadow',
-  'wr/natural=wood,water,scrub,grassland', 'wr/leisure=garden,playground',
+  'wr/natural=wood,water,scrub,grassland,shrubbery', 'wr/landuse=flowerbed',
+  'wr/leisure=garden,playground', 'wr/tourism=zoo',
   'wr/highway=footway,path,pedestrian,cycleway', 'n/amenity=bench', '-o', `${work}/detail.pbf`]);
 run(['export', `${work}/detail.pbf`, '-u', 'type_id', '-o', `${work}/detail.geojson`]);
 const raw = JSON.parse(fs.readFileSync(`${work}/detail.geojson`, 'utf8')).features;
@@ -33,6 +34,13 @@ const parks = names.flatMap(name => {
   matches.sort((a,b) => polygons(b.geometry).reduce((s,p)=>s+ringArea(p[0]),0) - polygons(a.geometry).reduce((s,p)=>s+ringArea(p[0]),0));
   return matches.slice(0,1);
 });
+const botanicalNames=['Hortus Botanicus','Artis'];
+for(const name of botanicalNames){
+  const boundary=raw.find(f=>f.properties.name===name&&polygons(f.geometry).length
+    &&(name==='Artis'?f.properties.tourism==='zoo':f.properties['garden:type']==='botanical'));
+  if(!boundary)throw Error(`Missing mapped botanical/zoo boundary: ${name}`);
+  parks.push(boundary);
+}
 const contains = (park, p) => polygons(park.geometry).some(poly => inRing(p, poly[0]) && !poly.slice(1).some(h => inRing(p,h)));
 const features = [], counts = {};
 function emit(id, geometry, role, park, extra = {}) {
@@ -40,12 +48,16 @@ function emit(id, geometry, role, park, extra = {}) {
   counts[role] = (counts[role] || 0) + 1;
 }
 for (const park of parks) {
-  emit(park.id, park.geometry, 'park', park);
+  const botanical=botanicalNames.includes(park.properties.name);
+  // A zoo/garden boundary includes halls, enclosures and paved courts. Keep
+  // their existing basemap surfaces; colour only explicitly mapped interiors.
+  if(!botanical)emit(park.id, park.geometry, 'park', park);
   for (const f of raw) {
     const p = f.properties, g = f.geometry;
     if (f === park || p.leisure === 'park') continue;
     const role = p.natural === 'water' ? 'water' : p.natural === 'wood' || p.landuse === 'forest' ? 'wood'
       : p.natural === 'scrub' ? 'scrub' : p.leisure === 'garden' ? 'garden'
+      : botanical&&p.natural==='shrubbery'?'scrub':botanical&&p.landuse==='flowerbed'?'garden'
       : p.leisure === 'playground' ? 'playground' : ['grass','meadow'].includes(p.landuse) || p.natural === 'grassland' ? 'lawn' : null;
     if (role && polygons(g).length) {
       const inside = polygons(g).filter(poly => poly[0].every(v => contains(park,v)));
@@ -70,7 +82,8 @@ for (const park of parks) {
   }
 }
 const result = {type:'FeatureCollection', attribution:'© OpenStreetMap contributors, ODbL',
-  source:'Cached Amsterdam OSM extract; mapped geometry only. No synthetic water, paths or trees.', features};
+  source:'Cached Amsterdam OSM extract; mapped geometry only. No synthetic water, paths or trees.',
+  botanicalGrounds:parks.filter(f=>botanicalNames.includes(f.properties.name)).map(f=>({id:f.id,name:f.properties.name,baseFill:false})),features};
 const out = 'public/data/extracts/amsterdam/park-landscape.geojson';
 fs.writeFileSync(out,JSON.stringify(result));
 console.log(JSON.stringify({parks:parks.map(f=>f.properties.name),counts,bytes:fs.statSync(out).size},null,2));
