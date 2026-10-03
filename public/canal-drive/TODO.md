@@ -112,19 +112,19 @@ it replaces the pattern layer or stays opt-in. Two layout modules now exist
 the actual POI Destinations pool plus explicitly requested additions. Refresh
 with `node --import tsx scripts/landmarks/build-poi-backlog.ts`; it applies the
 same teachable-content gate, four-kilometre radius and prominence ordering as
-the game. Existing procedural kits and imported gallery references are marked
+the game. Browse/filter the queue at `landmark-queue.html`. Existing procedural kits and imported gallery references are marked
 separately from original models. Arcam's architecture guide is the discovery
 source for further notable buildings.
 
 Original models now cover Centraal, Muziekgebouw/Bimhuis, both OLVGs, Van Gogh,
 Stedelijk, OBA Oosterdok, A’DAM Tower, Pontsteiger, REM, Paradiso, Melkweg,
 Silodam, Embassy of the Free Mind/Huis met de Hoofden, The Movies, DeLaMar and
-Magna Plaza. The live replacements retain measured footprint alignment and
+Magna Plaza, Felix Meritis, De Kleine Komedie, De Balie, Anne Frank House,
+Rembrandt House, Moco Museum and Museum Van Loon. The live replacements retain measured footprint alignment and
 hide generic building geometry only after the GLB has loaded. Review meshes at
 `manual-landmarks.html`; inspect actual map placement before marking additions
-complete. Next candidates: Anne Frank House, Rembrandt House, Felix Meritis,
-De Kleine Komedie, De Balie, Internationaal Theater Amsterdam, Moco and Museum
-Van Loon. Squares/intersections require a public-space treatment rather than
+complete. Next candidates: Internationaal Theater Amsterdam, Museum Het Schip,
+Scheepvaarthuis, Amstelkerk, He Hua Temple and Haarlemmerpoort. Squares/intersections require a public-space treatment rather than
 a generic building model.
 Open for cinemas: the large pre-1945 ones (Pathé City 24 m and 1,222 m², Studio/K 3,494 m², LAB111) still wear canal-house
 facades. Proposed: a cinema landmark part over about 800 m² or 20 m gets a plain wall with no windows or gables, optionally with a

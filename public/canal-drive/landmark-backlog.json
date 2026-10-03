@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 18,
-    "pending": 229,
+    "manual-model": 25,
     "catalogue-model": 13,
-    "procedural-kit": 19
+    "procedural-kit": 19,
+    "pending": 222
   },
   "destinations": [
     {
@@ -44,7 +44,8 @@
       "lng": 4.8840669,
       "queueRank": 2,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "anne-frank-house"
     },
     {
       "id": "rijksmuseum",
@@ -102,7 +103,8 @@
       "lng": 4.9012497,
       "queueRank": 8,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "rembrandt-house"
     },
     {
       "id": "hart",
@@ -278,7 +280,8 @@
       "type": "landmark",
       "queueRank": 24,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "de-balie"
     },
     {
       "id": "lm-extract_landmarks_1651446989",
@@ -346,7 +349,8 @@
       "type": "landmark",
       "queueRank": 30,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "kleine-komedie"
     },
     {
       "id": "lm-extract_landmarks_681957397",
@@ -392,7 +396,8 @@
       "type": "landmark",
       "queueRank": 34,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "felix-meritis"
     },
     {
       "id": "lm-extract_landmarks_1981243123",
@@ -507,7 +512,8 @@
       "type": "museum",
       "queueRank": 44,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "moco-museum"
     },
     {
       "id": "lm-extract_landmarks_498862002",
@@ -562,7 +568,8 @@
       "type": "museum",
       "queueRank": 49,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "museum-van-loon"
     },
     {
       "id": "lm-extract_landmarks_1369065076",

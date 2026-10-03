@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amsterdam landmark queue</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;background:#ebe7dd;color:#35434c;font:14px system-ui}main{max-width:1160px;margin:auto;padding:28px 20px}
+  h1{font-size:25px;margin:0 0 8px}p{line-height:1.6;max-width:760px;margin:8px 0}a{color:#336a88}nav{display:flex;flex-wrap:wrap;gap:18px;margin:20px 0}
+  .filters{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:16px;background:#faf8f1;border:1px solid #d5d0c4;border-radius:8px}
+  input[type=search],select{padding:9px;border:1px solid #b5b3aa;border-radius:4px;background:white;color:inherit;font:inherit}input[type=search]{flex:1;min-width:220px}
+  #count{margin:18px 0;font-variant-numeric:tabular-nums}.table-wrap{overflow:auto;background:#faf8f1;border:1px solid #d5d0c4;border-radius:8px}table{border-collapse:collapse;width:100%;text-align:left}
+  th{padding:13px 15px;background:#f2eee4;color:#687176;font-size:12px}td{padding:13px 15px;border-top:1px solid #e5e0d5}td:first-child{color:#81867f;font-variant-numeric:tabular-nums}td:nth-child(2){font-weight:600;min-width:210px}
+  .status{white-space:nowrap;color:#617269;font-size:12px}.pending{color:#986233}.catalogue-model{color:#786b92}.links{display:flex;gap:14px;white-space:nowrap}.requested{font-size:11px;color:#986233;margin-left:8px;font-weight:400}
+  @media(max-width:600px){main{padding:20px 12px}td,th{padding:12px 10px}table th:first-child,table td:first-child{display:none}}
+</style>
+<main><h1>Amsterdam landmark queue</h1>
+<p>Work through the game’s POI Destinations and requested additions. Existing authored kits and original models have their own status; imported reference models still need review.</p>
+<nav><a href="manual-landmarks.html">Landmark models</a><a href="park-landscape.html">Park views</a><a href="tree-models.html">Tree models</a><a href="https://arcam.nl/architectuur-gids/">Arcam architecture guide ↗</a></nav>
+<div class="filters"><input id="search" type="search" placeholder="Find a place" aria-label="Find a place">
+<select id="status" aria-label="Model status"><option value="pending">Needs a model</option value="all">All destinations</option value="manual-model">Original model</option><option value="procedural-kit">Existing kit</option><option value="catalogue-model">Reference model</option><option value="landscape">Park landscape</option></select>
+<label><input id="requested" type="checkbox"> Requested additions</label></div>
+<p id="count" role="status">Loading destinations…</p>
+<div class="table-wrap"><table><thead><tr><th>Queue</th><th>Place</th><th>Status</th><th>Review</th></tr></thead><tbody id="rows"></tbody></table></div>
+</main>
+<script>
+const labels={'pending':'Needs a model','manual-model':'Original model','procedural-kit':'Existing kit','catalogue-model':'Reference model','landscape':'Park landscape'};
+const controls=['search','status','requested'].map(id=>document.getElementById(id));let destinations=[];
+function render(){
+  const text=controls[0].value.toLocaleLowerCase(),status=controls[1].value,requested=controls[2].checked;
+  const shown=destinations.filter(p=>(status==='all'||p.status===status)&&(!requested||p.requested)&&`${p.name} ${p.type||''}`.toLocaleLowerCase().includes(text));
+  document.getElementById('count').textContent=`${shown.length} shown · ${destinations.length} destinations and requested additions`;
+  const body=document.getElementById('rows');body.replaceChildren();
+  for(const p of shown){const row=document.createElement('tr');
+    const cell=value=>{const td=document.createElement('td');td.textContent=value;row.append(td);return td;};
+    cell(p.queueRank);const name=cell(p.name);if(p.requested){const tag=document.createElement('span');tag.className='requested';tag.textContent='requested';name.append(tag);}
+    cell(labels[p.status]||p.status).className=`status ${p.status}`;
+    const links=cell('');links.className='links';
+    const link=(label,url)=>{const a=document.createElement('a');a.textContent=label;a.href=url;links.append(a);};
+    if(p.modelId)link('Model',`signature-landmark-demo.html?only=${encodeURIComponent(p.modelId)}`);
+    if(Number.isFinite(p.lat)&&Number.isFinite(p.lng))link('Map ↗',`https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lng}#map=19/${p.lat}/${p.lng}`);
+    body.append(row);
+  }
+}
+controls.forEach(c=>c.addEventListener('input',render));
+fetch('landmark-backlog.json').then(r=>{if(!r.ok)throw Error('Queue unavailable');return r.json();}).then(data=>{destinations=data.destinations;render();}).catch(e=>document.getElementById('count').textContent=e.message);
+</script>
+</html>

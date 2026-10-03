@@ -196,7 +196,11 @@ class VectorBasemap {
     this._extractPath = path;
     if (this._parkLandscape) this._parkLandscape.load(path);
     this._rawTrees = null;
+    this._treeLoadSerial = (this._treeLoadSerial || 0) + 1;
+    this._treesLoading = false;
+    this.setTrees([]);
     if (this._inventoryTrees) this._inventoryTrees.load(path);
+    if (this._treesVisible && this._treesLib()) this._loadTrees();
     if (this.map && this.map.getSource('own-pois')) this._loadOwnPois();
     // Drop the previous city's tile streamer so the next probe uses the new root.
     if (this._completeCity && typeof this._completeCity.dispose === 'function') {
@@ -1562,11 +1566,12 @@ class VectorBasemap {
   _loadTrees() {
     if (this._rawTrees || this._treesLoading || !this.map) return;
     this._treesLoading = true;
+    const serial = this._treeLoadSerial = (this._treeLoadSerial || 0) + 1;
     fetch(this._extractFile('trees.json'))
       .then(response => response.ok ? response.json() : [])
-      .then(trees => { this._rawTrees = Array.isArray(trees) ? trees : []; this._refreshTreeData(); })
-      .catch(() => { this._rawTrees = []; })
-      .finally(() => { this._treesLoading = false; });
+      .then(trees => { if (serial !== this._treeLoadSerial) return; this._rawTrees = Array.isArray(trees) ? trees : []; this._refreshTreeData(); })
+      .catch(() => { if (serial === this._treeLoadSerial) this._rawTrees = []; })
+      .finally(() => { if (serial === this._treeLoadSerial) this._treesLoading = false; });
   }
 
   /** Trees around the current route (the extract spans the whole region),
