@@ -1039,8 +1039,8 @@
         "depthMetres": 75.61303329467773,
         "depthCoverage": 0.9215502036512634
       },
-      "triangles": 6228,
-      "bytes": 84700,
+      "triangles": 6540,
+      "bytes": 88184,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "adam-tower": {
@@ -1346,8 +1346,8 @@
         "depthMetres": 20.65145778656006,
         "depthCoverage": 1.0019406392701775
       },
-      "triangles": 3412,
-      "bytes": 44048,
+      "triangles": 3592,
+      "bytes": 46060,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "melkweg": {
@@ -1405,8 +1405,8 @@
         "depthMetres": 36.01011276245117,
         "depthCoverage": 1.0118158476921648
       },
-      "triangles": 2828,
-      "bytes": 41976,
+      "triangles": 2996,
+      "bytes": 36176,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "silodam": {
@@ -1706,8 +1706,449 @@
         "depthMetres": 39.052175521850586,
         "depthCoverage": 1.068066064678131
       },
-      "triangles": 22172,
-      "bytes": 235320,
+      "triangles": 22532,
+      "bytes": 239100,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "felix-meritis": {
+      "id": "felix-meritis",
+      "name": "Felix Meritis",
+      "landmarkId": "extract_landmarks_2044416411",
+      "modelUrl": "./models/felix-meritis.glb",
+      "suppressOsmIds": [
+        "w30044304"
+      ],
+      "footprint": {
+        "centre": [
+          4.883664696612664,
+          52.36999669819762
+        ],
+        "headingDegrees": 93.27205563832936,
+        "lengthMetres": 86.01825038403021,
+        "widthMetres": 22.923712728591294
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Felix Meritis",
+        "author": "Map Recall",
+        "sourceUrl": "https://felixmeritis.nl/over-felix-meritis/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      },
+      "bounds": {
+        "min": [
+          -43.009124755859375,
+          0,
+          -11.9618558883667
+        ],
+        "max": [
+          44.32412338256836,
+          29.600000381469727,
+          11.9618558883667
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.883664696612664,
+          52.36999669819762
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 93.27205563832933,
+        "facadeBearingDegrees": 183.27205563832933,
+        "scale": 0.9849427591160564
+      },
+      "extent": {
+        "widthMetres": 87.33324813842773,
+        "heightMetres": 29.600000381469727,
+        "depthMetres": 23.9237117767334,
+        "depthCoverage": 1.0436229096037688
+      },
+      "triangles": 3460,
+      "bytes": 43712,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kleine-komedie": {
+      "id": "kleine-komedie",
+      "name": "De Kleine Komedie",
+      "landmarkId": "extract_landmarks_916929647",
+      "modelUrl": "./models/kleine-komedie.glb",
+      "suppressOsmIds": [
+        "w267116750"
+      ],
+      "footprint": {
+        "centre": [
+          4.896025822037456,
+          52.36678815648692
+        ],
+        "headingDegrees": 174.06110855527527,
+        "lengthMetres": 33.76302592451122,
+        "widthMetres": 24.22524092603205
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 270,
+      "attribution": {
+        "title": "De Kleine Komedie",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.dekleinekomedie.nl/over-de-kleine-komedie-q9t1",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      },
+      "bounds": {
+        "min": [
+          -16.37506675720215,
+          0,
+          -12.312620162963867
+        ],
+        "max": [
+          18.291513442993164,
+          18.5,
+          12.312620162963867
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.896027591416243,
+          52.36678826887563
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 354.06110855527527,
+        "facadeBearingDegrees": 84.06110855527527,
+        "scale": 0.9739358693454567
+      },
+      "extent": {
+        "widthMetres": 34.66658020019531,
+        "heightMetres": 18.5,
+        "depthMetres": 24.625240325927734,
+        "depthCoverage": 1.0165116789185717
+      },
+      "triangles": 3320,
+      "bytes": 46884,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "de-balie": {
+      "id": "de-balie",
+      "name": "De Balie",
+      "landmarkId": "extract_landmarks_1675243450",
+      "modelUrl": "./models/de-balie.glb",
+      "suppressOsmIds": [
+        "w114538342"
+      ],
+      "footprint": {
+        "centre": [
+          4.882893998003039,
+          52.3630001538405
+        ],
+        "headingDegrees": 60.2484903518546,
+        "lengthMetres": 44.743762978920266,
+        "widthMetres": 33.664517593624694
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "De Balie",
+        "author": "Map Recall",
+        "sourceUrl": "https://debalie.nl/geschiedenis/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      },
+      "bounds": {
+        "min": [
+          -21.477006912231445,
+          -9.536743306171047e-8,
+          -16.832258224487305
+        ],
+        "max": [
+          23.456880569458008,
+          17,
+          16.832258224487305
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.882894517916297,
+          52.36299959838481
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 60.24849035185457,
+        "facadeBearingDegrees": 150.24849035185457,
+        "scale": 0.9957687947020684
+      },
+      "extent": {
+        "widthMetres": 44.93388748168945,
+        "heightMetres": 17.000000095367433,
+        "depthMetres": 33.66451644897461,
+        "depthCoverage": 0.9999999659983221
+      },
+      "triangles": 3688,
+      "bytes": 47764,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "anne-frank-house": {
+      "id": "anne-frank-house",
+      "name": "Anne Frank House",
+      "landmarkId": "extract_landmarks_614625734",
+      "modelUrl": "./models/anne-frank-house.glb",
+      "suppressOsmIds": [
+        "w266616469"
+      ],
+      "footprint": {
+        "centre": [
+          4.884199790545408,
+          52.37526883046758
+        ],
+        "headingDegrees": 209.51208512104333,
+        "lengthMetres": 5.7829377506704365,
+        "widthMetres": 24.06129202854212
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Anne Frank House",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.annefrank.org/en/anne-frank/front-section/prinsengracht-263/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
+      },
+      "surveyed": {
+        "anchor": [
+          4.884199790545408,
+          52.37526883046758
+        ],
+        "northOffsetDegrees": 119.51208512104333
+      },
+      "bounds": {
+        "min": [
+          -2.9514689445495605,
+          -9.536743306171047e-8,
+          -12.230646133422852
+        ],
+        "max": [
+          2.9514689445495605,
+          17.899999618530273,
+          12.875645637512207
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.884199790545408,
+          52.37526883046758
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 209.51208512104336,
+        "facadeBearingDegrees": 299.51208512104336,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 25.10629177093506,
+        "heightMetres": 17.899999713897706,
+        "depthMetres": 5.902937889099121,
+        "depthCoverage": 0.2453292151600548
+      },
+      "triangles": 1684,
+      "bytes": 29424,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "rembrandt-house": {
+      "id": "rembrandt-house",
+      "name": "Rembrandt House",
+      "landmarkId": "extract_landmarks_25101431",
+      "modelUrl": "./models/rembrandt-house.glb",
+      "suppressOsmIds": [
+        "w268782575"
+      ],
+      "footprint": {
+        "centre": [
+          4.9012522,
+          52.369299500000004
+        ],
+        "headingDegrees": 304.19839036962065,
+        "lengthMetres": 16.397795731819166,
+        "widthMetres": 17.55161456163473
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Rembrandt House",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.rembrandthuis.nl/en/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
+      },
+      "surveyed": {
+        "anchor": [
+          4.9012522,
+          52.369299500000004
+        ],
+        "northOffsetDegrees": 214.19839036962065
+      },
+      "bounds": {
+        "min": [
+          -8.233898162841797,
+          0,
+          -8.77580738067627
+        ],
+        "max": [
+          8.233898162841797,
+          24.5,
+          10.845807075500488
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9012522,
+          52.369299500000004
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 304.1983903696207,
+        "facadeBearingDegrees": 34.198390369620654,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 19.621614456176758,
+        "heightMetres": 24.5,
+        "depthMetres": 16.467796325683594,
+        "depthCoverage": 0.9382496560561326
+      },
+      "triangles": 3324,
+      "bytes": 50412,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "moco-museum": {
+      "id": "moco-museum",
+      "name": "Moco Museum",
+      "landmarkId": "extract_landmarks_1523176628",
+      "modelUrl": "./models/moco-museum.glb",
+      "suppressOsmIds": [
+        "w277108702"
+      ],
+      "footprint": {
+        "centre": [
+          4.881916866090669,
+          52.35869759396733
+        ],
+        "headingDegrees": 149.38748131134253,
+        "lengthMetres": 22.562529441173467,
+        "widthMetres": 15.58665338562756
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Moco Museum",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.mocomuseum.com/amsterdam/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
+      },
+      "surveyed": {
+        "anchor": [
+          4.881916866090669,
+          52.35869759396733
+        ],
+        "northOffsetDegrees": 59.387481311342526
+      },
+      "bounds": {
+        "min": [
+          -11.281264305114746,
+          -4.7683716530855236e-8,
+          -7.7933268547058105
+        ],
+        "max": [
+          11.281264305114746,
+          22.899999618530273,
+          10.9495267868042
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.881916866090669,
+          52.35869759396733
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 149.38748131134253,
+        "facadeBearingDegrees": 239.38748131134253,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 22.562528610229492,
+        "heightMetres": 22.89999966621399,
+        "depthMetres": 18.74285364151001,
+        "depthCoverage": 1.2024937732170768
+      },
+      "triangles": 4122,
+      "bytes": 59016,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "museum-van-loon": {
+      "id": "museum-van-loon",
+      "name": "Museum Van Loon",
+      "landmarkId": "extract_landmarks_211818595",
+      "modelUrl": "./models/museum-van-loon.glb",
+      "suppressOsmIds": [
+        "w268283622"
+      ],
+      "footprint": {
+        "centre": [
+          4.893349043681814,
+          52.36338835201399
+        ],
+        "headingDegrees": 282.3449814578558,
+        "lengthMetres": 14.896446612910355,
+        "widthMetres": 22.823605180965057
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Museum Van Loon",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.museumvanloon.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour reconstruction guided by museum photographs and OpenStreetMap building geometry. Historic building only; adjoining museum extensions and neighboring houses retain their own geometry."
+      },
+      "surveyed": {
+        "anchor": [
+          4.893349043681814,
+          52.36338835201399
+        ],
+        "northOffsetDegrees": 192.3449814578558
+      },
+      "bounds": {
+        "min": [
+          -7.4732232093811035,
+          -1.9073486612342094e-7,
+          -12.241802215576172
+        ],
+        "max": [
+          7.4732232093811035,
+          19.200000762939453,
+          13.571802139282227
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.893349043681814,
+          52.36338835201399
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 282.34498145785574,
+        "facadeBearingDegrees": 12.344981457855795,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 25.8136043548584,
+        "heightMetres": 19.20000095367432,
+        "depthMetres": 14.946446418762207,
+        "depthCoverage": 0.6548679010285186
+      },
+      "triangles": 3554,
+      "bytes": 53904,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

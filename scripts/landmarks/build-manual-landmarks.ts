@@ -13,6 +13,8 @@ await MeshoptEncoder.ready;
 import {buildCulturalLandmark} from './cultural-builders';
 import {buildSilodam} from './silodam-builder';
 import {buildVenueLandmark} from './venue-builders';
+import {buildTheaterLandmark} from './theater-builders';
+import {buildHouseMuseumLandmark} from './house-museum-builders';
 import hospitals from './hospital-footprints.json';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
@@ -33,6 +35,17 @@ function arch(x:number,y:number,z:number,w:number,h:number,c:Colour){let s=new T
 function window(x:number,y:number,z:number,w:number,h:number){arch(x,y-.18,z,w+.45,h+.4,'stone');arch(x,y,z+.17,w,h,'dark');box(x,y+.2,z+.36,.13,h-.35,.12,'stone');box(x,y+h*.56,z+.36,w,.14,.12,'stone');box(x,y-.25,z,w+.7,.22,.65,'stone');}
 function clock(x:number,y:number,z:number,wind=false){add(new T.CylinderGeometry(2.55,2.55,.2,16).rotateX(Math.PI/2),'gold',x,y,z);add(new T.CylinderGeometry(2.2,2.2,.23,16).rotateX(Math.PI/2),'white',x,y,z+.13);for(let i=0;i<12;i++){let a=i*Math.PI/6;box(x+1.9*Math.sin(a),y+1.9*Math.cos(a)-.13,z+.31,.14,.3,.08,'dark',-a);}box(x,y-.12,z+.4,.2,1.65,.1,'dark');box(x+.5,y-.13,z+.41,1.25,.2,.1,'dark');if(wind)box(x,y-2.3,z+.46,4.8,.12,.12,'gold');}
 const letters:Record<string,string[]>={A:['01110','10001','10001','11111','10001','10001','10001'],B:['11110','10001','10001','11110','10001','10001','11110'],C:['01111','10000','10000','10000','10000','10000','01111'],D:['11110','10001','10001','10001','10001','10001','11110'],E:['11111','10000','10000','11110','10000','10000','11111'],G:['01111','10000','10000','10111','10001','10001','01111'],H:['10001','10001','10001','11111','10001','10001','10001'],I:['111','010','010','010','010','010','111'],L:['10000','10000','10000','10000','10000','10000','11111'],M:['10001','11011','10101','10101','10001','10001','10001'],N:['10001','11001','10101','10011','10001','10001','10001'],O:['01110','10001','10001','10001','10001','10001','01110'],R:['11110','10001','10001','11110','10100','10010','10001'],S:['01111','10000','10000','01110','00001','00001','11110'],T:['11111','00100','00100','00100','00100','00100','00100'],U:['10001','10001','10001','10001','10001','10001','01110'],V:['10001','10001','10001','10001','10001','01010','00100'],W:['10001','10001','10001','10101','10101','11011','10001']};
+Object.assign(letters,{
+ F:['11111','10000','10000','11110','10000','10000','10000'],J:['00111','00010','00010','00010','10010','10010','01100'],
+ K:['10001','10010','10100','11000','10100','10010','10001'],P:['11110','10001','10001','11110','10000','10000','10000'],
+ Q:['01110','10001','10001','10001','10101','10010','01101'],X:['10001','10001','01010','00100','01010','10001','10001'],
+ Y:['10001','10001','01010','00100','00100','00100','00100'],Z:['11111','00001','00010','00100','01000','10000','11111'],
+ '0':['01110','10001','10011','10101','11001','10001','01110'],'1':['00100','01100','00100','00100','00100','00100','01110'],
+ '2':['01110','10001','00001','00010','00100','01000','11111'],'3':['11110','00001','00001','01110','00001','00001','11110'],
+ '4':['00010','00110','01010','10010','11111','00010','00010'],'5':['11111','10000','10000','11110','00001','00001','11110'],
+ '6':['01110','10000','10000','11110','10001','10001','01110'],'7':['11111','00001','00010','00100','01000','01000','01000'],
+ '8':['01110','10001','10001','01110','10001','10001','01110'],'9':['01110','10001','10001','01111','00001','00001','01110'],
+});
 function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour='white'){let width=[...text].reduce((n,ch)=>n+(letters[ch]?.[0].length??3)+1,0)*pixel;let u=-width/2;for(let ch of text){let rows=letters[ch];if(rows)for(let j=0;j<7;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1')box(x+u+k*pixel,y+(6-j)*pixel,z,pixel*.85,pixel*.85,.08,c);u+=((rows?.[0].length??3)+1)*pixel;}}
 function station(){box(0,0,0,244,1,31,'stone');box(0,1,0,244,15.7,29,'brick');gableRoof(0,16.7,0,244,29,6.3,'slate');for(let z of [-14.65,14.65]){for(let y of [1,6.6,12.5,16])box(0,y,z,244,.4,.6,'stone');for(let x=-117;x<=117;x+=5.85){for(let y of [1.9,8.1])window(x,y,z>0?14.72:-15.1,2.5,y<3?3.7:3.4);box(x-2.8,1,z,.5,15.7,.65,'stone');}}
  // Central entrance pavilion, paired clock / wind-dial towers, steep roof and crest.
@@ -60,4 +73,26 @@ function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=
  let p=coord([4.91615,52.35875]);sign('OLVG',p.x+18,9,p.y+6,.25,'blue');let angle=-24*Math.PI/180;box(p.x,0,p.y,33,12,8,'glass',angle);for(let u=-15;u<=15;u+=5)box(p.x+u*Math.cos(angle),0,p.y-u*Math.sin(angle),.9,13,8.5,'stone',angle);box(p.x,12.7,p.y,34,.6,9,'stone',angle);}
 }
 async function save(id:string){let doc=new Document();let buffer=doc.createBuffer();let scene=doc.createScene(id);doc.getRoot().setDefaultScene(scene);let mesh=doc.createMesh(id);let all:number[]=[];for(let c of Object.keys(palette) as Colour[]){let geos=parts.filter(p=>p.c===c).map(p=>p.g.index?p.g.toNonIndexed():p.g);if(!geos.length)continue;let positions=Float32Array.from(geos.flatMap(g=>Array.from(g.getAttribute('position').array)));let normals=Float32Array.from(geos.flatMap(g=>Array.from(g.getAttribute('normal').array)));for (const value of positions) all.push(value);let rgb=new T.Color(palette[c]);let material=doc.createMaterial(c).setBaseColorFactor([rgb.r,rgb.g,rgb.b,1]).setMetallicFactor(0).setRoughnessFactor(.9).setDoubleSided(true);mesh.addPrimitive(doc.createPrimitive().setAttribute('POSITION',doc.createAccessor().setType('VEC3').setArray(positions).setBuffer(buffer)).setAttribute('NORMAL',doc.createAccessor().setType('VEC3').setArray(normals).setBuffer(buffer)).setMaterial(material));}scene.addChild(doc.createNode(id).setMesh(mesh));await doc.transform(weld(),dedup(),prune());let dest=path.join(out,`${id}.glb`);await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium'}));await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.encoder':MeshoptEncoder}).write(dest,doc);let bounds={min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};for(let i=0;i<all.length;i++) {let a=i%3;bounds.min[a]=Math.min(bounds.min[a],all[i]);bounds.max[a]=Math.max(bounds.max[a],all[i]);}let spec=MANUAL_LANDMARKS.find(s=>s.id===id)!;let placement=placementFor(spec,bounds as any);let triangles=doc.getRoot().listMeshes().flatMap(m=>m.listPrimitives()).reduce((s,p)=>s+(p.getIndices()?.getCount()??p.getAttribute('POSITION')!.getCount())/3,0);console.log(id,triangles,fs.statSync(dest).size,bounds);return {...spec,bounds,placement,extent:spec.footprint?scaledExtent(bounds as any,1,spec.footprint):null,triangles,bytes:fs.statSync(dest).size,generatedBy:'scripts/landmarks/build-manual-landmarks.ts'};}
-let manifest=JSON.parse(fs.readFileSync(path.join(out,'signature-landmarks.json'),'utf8'));for(let spec of MANUAL_LANDMARKS){const id=spec.id;if(process.argv.includes('--only')&&!process.argv.includes(id))continue;parts=[];if(id==='centraal-station')station();else if(id==='muziekgebouw-bimhuis')music();else if(id.startsWith('olvg-'))hospital(id);else if(id==='silodam')buildSilodam(spec.footprint!.lengthMetres,spec.footprint!.widthMetres,{add,box,prism,gableRoof,hip,window,clock,sign});else if(['embassy-free-mind','the-movies','delamar','magna-plaza'].includes(id))buildVenueLandmark(id,spec.footprint!.lengthMetres,spec.footprint!.widthMetres,{add,box,prism,gableRoof,hip,window,clock,sign});else buildCulturalLandmark(id,spec.footprint!.lengthMetres,spec.footprint!.widthMetres,{add,box,prism,gableRoof,hip,window,clock,sign});manifest.models[id]=await save(id);}fs.writeFileSync(path.join(out,'signature-landmarks.json'),JSON.stringify(manifest,null,2)+'\n');
+const manifest=JSON.parse(fs.readFileSync(path.join(out,'signature-landmarks.json'),'utf8'));
+const helpers={add,box,prism,gableRoof,hip,window,clock,sign};
+const venueIds=new Set(['embassy-free-mind','the-movies','delamar','magna-plaza']);
+const theaterIds=new Set(['felix-meritis','kleine-komedie','de-balie']);
+const houseMuseumIds=new Set(['anne-frank-house','rembrandt-house','moco-museum','museum-van-loon']);
+for(const spec of MANUAL_LANDMARKS){
+  const id=spec.id;
+  if(process.argv.includes('--only')&&!process.argv.includes(id))continue;
+  parts=[];
+  if(id==='centraal-station')station();
+  else if(id==='muziekgebouw-bimhuis')music();
+  else if(id.startsWith('olvg-'))hospital(id);
+  else {
+    const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
+    if(id==='silodam')buildSilodam(w,d,helpers);
+    else if(venueIds.has(id))buildVenueLandmark(id,w,d,helpers);
+    else if(theaterIds.has(id))buildTheaterLandmark(id,w,d,helpers);
+    else if(houseMuseumIds.has(id))buildHouseMuseumLandmark(id,w,d,helpers);
+    else buildCulturalLandmark(id,w,d,helpers);
+  }
+  manifest.models[id]=await save(id);
+}
+fs.writeFileSync(path.join(out,'signature-landmarks.json'),JSON.stringify(manifest,null,2)+'\n');
