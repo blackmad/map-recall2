@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+## Museums and cinemas: seven landmarks modelled from 3D BAG heights
+
+User (2026-10-03): "Work on museums, movie theaters and grocery stores".
+
+- **Measured before:**
+  - Of 21 cinemas, 9 old ones wore canal-house facades. Tuschinski, Pathé City and LAB111 were among them.
+  - Modern multiplexes stood as bare boxes, which reads right for blank walls.
+  - Of 56 museums, about 35 small canal-house museums take the period facade correctly.
+  - The big ones were wrong:
+    - Van Gogh was about 3 m too low and a bare box.
+    - The Stedelijk was 28 m house fronts.
+    - H'ART, a whole courtyard block, wore a canal-house front.
+    - The Scheepvaartmuseum had a flat lid.
+    - NEMO had a flat copper top.
+- **Now kits** (`museumKits.ts`, with sources in each comment):
+  - **Van Gogh:** the Rietveld block, the stair tower and the Kurokawa drum under a tilted titanium brim.
+  - **Stedelijk:** the old building's tower, pavilions and hall roofs, plus the white 2012 "bathtub" on a glass ground floor under its canopy.
+  - **Eye:** a faceted roof rising to its 24.5 m prow.
+  - **NEMO:** its sloping copper deck.
+  - **Tuschinski:** copper domes on the measured street front's towers, with slate halls.
+  - **Scheepvaartmuseum:** four hipped wings with gabled projections and a courtyard glass roof.
+  - **H'ART (Amstelhof):** hipped wings round the courtyard.
+- **New typed helper:** `landmarkForms.ts` extrudes a part's footprint with a sloped lid, a mitred outset for brims and canopies, a half-clip and a tilted underside.
+- **Guesses:** the Van Gogh part roles and a 2.4 m ground correction; the depth of the Stedelijk canopy; Eye's facet split; Tuschinski's dome size. All colours are read from photos.
+
 ## Stray facade objects, slimmer cornices, Carré, Fatih windows, chain supermarkets
 
 User (2026-10-03), screenshots at Da Costakade: "these overhangs look a little heavy / too wide", "what's these random artifacts in front of buildings?", "not sure what these are", "bad mix", and of a hand-modelled church "why does it have windows???". Earlier: "Carre looks awful in that shot?", "Work on museums, movie theaters and grocery stores".

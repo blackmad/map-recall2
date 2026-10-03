@@ -100,7 +100,11 @@ look at the photo look; gables and roofs are still MapLibre's; decide whether
 it replaces the pattern layer or stays opt-in. Two layout modules now exist
 (`wallBays.ts`, `facadeLayout.ts`): keep one.
 
-**Landmark kits: more landmarks, and a phone check.** Thirteen are done (see HISTORY), Carré and Fatih with windows (opt-in `windows` on halls); museum and cinema kits in progress.
+**Landmark kits: more landmarks, and a phone check.** Thirteen are done (see HISTORY), Carré and Fatih with windows (opt-in `windows` on halls), and seven museums and cinemas (`museumKits.ts`).
+Open for cinemas: the large pre-1945 ones (Pathé City 24 m and 1,222 m², Studio/K 3,494 m², LAB111) still wear canal-house
+facades. Proposed: a cinema landmark part over about 800 m² or 20 m gets a plain wall with no windows or gables, optionally with a
+signage band. This needs cinema ids passed through `exceptLandmarks` in vector-map.js. Also still bare: Amsterdam Museum, Madame Tussauds,
+Jewish Museum, Hollandsche Schouwburg, National Holocaust Museum.
 Next, by recognisability: Oude Kerk (spire), Munttoren, Centraal (two towers and
 central pavilions, long facade), Rijksmuseum (towers, central arch), Beurs van
 Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera, Hofkerk
