@@ -20,6 +20,9 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // cannot reach them and Storybook is where they get reviewed.
   | 'knowledge' | 'touch-knowledge'
   | 'touch-prompt' | 'touch-settings' | 'finish-touch' | 'finish-calm-bare-touch'
+  // Every optional block at once: photo, ribbon, first-time gains, guest
+  // tease and a personal best (user report 2026-10-02: ran off the screen).
+  | 'finish-full' | 'finish-full-touch'
   | 'landmark-panel-touch'
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch';
 
@@ -166,6 +169,12 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
             axes: [{ label: 'Recall', score: 0.5 }, { label: 'Unaided', score: 0 }, { label: 'Efficiency', score: 1 }],
           };
           game._shareUrl = 'x'; game._copiedTimer = 0; game._raceKey = null;
+          if (scenario.startsWith('finish-full')) {
+            game.quizCorrect = 4; game.quizAttempts = 5; game.quizPoints = 370; game.quizBestStreak = 3;
+            game._explorationRouteGain = { newNames: 2, newNeighborhoods: 0, newLandmarks: 1 };
+            game._raceKey = 'story-full';
+            win.localStorage.setItem('satb_bestTimes', JSON.stringify({ 'story-full': { time: 200 } }));
+          }
           game.landmarks = [{
             id: 'theater', name: 'Vondelpark Open Air Theater', type: 'landmark',
             longDetail: 'The Vondelpark Open Air Theatre in Amsterdam has staged free performances every summer since 1865, when the park itself was still new, and it remains one of the oldest open-air stages in the Netherlands.',
@@ -417,6 +426,12 @@ export const TransitBriefingPhone: Story = {
 };
 export const LiveHud: Story = { args: { scenario: 'hud' } };
 export const FinishCard: Story = { args: { scenario: 'finish' } };
+/** Every block at once; the card must still fit a laptop screen. */
+export const FinishCardFull: Story = { args: { scenario: 'finish-full' } };
+export const FinishCardFullPhone: Story = {
+  args: { scenario: 'finish-full-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
 export const FinishCardCalmMode: Story = { args: { scenario: 'finish-calm' } };
 /** Calm finish with no landmark photo — typography-only arrival. */
 export const FinishCardCalmBare: Story = { args: { scenario: 'finish-calm-bare' } };

@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Arrival card fits the window
+
+User (2026-10-02), on the De Dolphijn arrival card on a laptop: "ideally fits on screen". With a photo, a ribbon, first-time gains, a sign-in tease and a personal best, the card was taller than the window, so the Next route and Share actions were cut off.
+
+- **Density levels:** `_renderFinish` builds the card at up to four densities and uses the first that fits.
+  - Spacing gets tighter at each level.
+  - The personal best moves into the footer line.
+  - The blurb and the story get shorter, and the photo gets smaller.
+  - At the tightest level the encyclopedia blurb is dropped.
+  - Only if the tightest level still overflows is the card scaled down, and the touch hit boxes are scaled with it.
+- **Story lines:** they now wrap to the card. On a phone, "You made it to … · 2 new names, 1 landmark" ran past the right edge, and a cut never leaves half a sentence.
+- **Phone:**
+  - The card stops above the settings and help buttons.
+  - On short screens, Route setup and Share sit side by side, so every button keeps a 44 px target.
+  - Ribbon axis labels drop their percentage when the column is too narrow.
+- **Checks:** `tests/e2e/finish-card-fit.spec.ts` checks a full card at 1440x700 and 1280x600. Storybook has `FinishCardFull` and `FinishCardFullPhone`.
+
 ## Trivia card: compact header, "more" as a link, sized to its content
 
 User (2026-10-02), on the Prinsengracht street card: "bad layout".
