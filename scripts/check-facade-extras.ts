@@ -29,7 +29,7 @@ assert.deepEqual(proceduralOpenings('c19').upper.axes, [0.5], 'one tall c19 wind
 assert.ok(proceduralOpenings('school').ribbon, 'procedural School windows are ribbons');
 
 // Every wall component, on every style it claims.
-const DOOR_ITEMS = ['stoop', 'stoop-railing', 'double-stoop', 'gable-stone', 'door-pediment', 'door-canopy', 'door-lantern', 'entrance-slab', 'door-surround', 'brick-door-arch', 'portiek'];
+const DOOR_ITEMS = ['stoop', 'double-stoop', 'gable-stone', 'door-pediment', 'door-canopy', 'door-lantern', 'entrance-slab', 'door-surround', 'brick-door-arch', 'portiek'];
 for (const comp of WALL_COMPONENTS) {
   const live = comp.styles.filter(st => chanceFor(comp.p, st) > 0);
   assert.ok(live.length > 0, `${comp.id} is used by at least one style`);
@@ -77,6 +77,15 @@ for (const comp of WALL_COMPONENTS) {
     const c = wall(style), sink = new ExtraSink(9999); comp.build(c, sink, 0.4);
     const out = Math.max(0, ...sink.tris.flatMap(t => t.p.filter(p => p[2] > c.base + c.layout.groundM + 0.05).map(p => -p[1])));
     assert.ok(out <= 0.6, `${comp.id} on a ${style} front sticks out ${out.toFixed(2)} m above the ground floor`);
+  }
+}
+// User report 2026-10-03 ("bunch of weird artifacts here too"): no pickets on the pavement.
+{
+  const ids = new Set(WALL_COMPONENTS.map(c => c.id));
+  for (const gone of ['parked-bikes', 'bike-racks', 'stoop-railing']) assert.ok(!ids.has(gone), `${gone} is not drawn per facade`);
+  for (const id of ['basement-well', 'bench', 'geveltuin']) {
+    const sink = new ExtraSink(9999); WALL_COMPONENTS.find(c => c.id === id)!.build(wall('canal', 'h1', { shopfront: true }), sink, 0.4);
+    assert.equal(sink.tris.length, 0, `${id} never stands in front of a shop window`);
   }
 }
 for (const comp of ROOF_COMPONENTS) {
