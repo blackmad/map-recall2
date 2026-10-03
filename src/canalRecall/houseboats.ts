@@ -230,3 +230,43 @@ export function houseboatsByTile(boats: readonly Houseboat[]): Map<string, House
   }
   return out;
 }
+
+/** Landmark types that can be aboard a boat. A crane, statue or memorial on
+ *  the quay beside a moored boat is not the boat (Kraan 2868 stands 4 m from
+ *  one). */
+const ABOARD_TYPES = new Set(['museum', 'hotel', 'restaurant', 'cafe', 'bar', 'gallery', 'theatre', 'attraction']);
+/** m — a landmark point this close to a hull's outline is on that boat. The
+ *  Houseboat Museum's OSM node sits 1.8 m outside the Hendrika Maria's traced
+ *  outline; the nearest quay-side landmark is 3.9 m from its boat. */
+export const ABOARD_TOLERANCE_M = 3;
+
+/**
+ * The houseboat a landmark is, for a landmark with no building of its own:
+ * the Houseboat Museum is a barge, so `landmark-buildings.json` (a join on
+ * building ways) has nothing for it and the card lit nothing (user report
+ * 2026-10-03, "houseboat museum doesn't light up yellow"). The point must lie
+ * inside a boat's outline or within `ABOARD_TOLERANCE_M` of it, and the
+ * landmark must be a kind of place a boat can be.
+ */
+export function boatForLandmark(boats: readonly Houseboat[], lngLat: readonly [number, number], type: string | undefined): string | null {
+  if (!type || !ABOARD_TYPES.has(type)) return null;
+  const [lng, lat] = lngLat;
+  const mx = 111320 * Math.cos(lat * Math.PI / 180), my = 110540;
+  let best: string | null = null, bestDistance = ABOARD_TOLERANCE_M;
+  for (const boat of boats) {
+    const ring = boat.ring;
+    if (Math.abs((ring[0][0] - lng) * mx) > 200 || Math.abs((ring[0][1] - lat) * my) > 200) continue;
+    let inside = false, nearest = Infinity;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const ax = (ring[j][0] - lng) * mx, ay = (ring[j][1] - lat) * my;
+      const bx = (ring[i][0] - lng) * mx, by = (ring[i][1] - lat) * my;
+      if ((ay > 0) !== (by > 0) && 0 < ax + (bx - ax) * (0 - ay) / (by - ay)) inside = !inside;
+      const dx = bx - ax, dy = by - ay;
+      const t = Math.max(0, Math.min(1, -(ax * dx + ay * dy) / (dx * dx + dy * dy || 1)));
+      nearest = Math.min(nearest, Math.hypot(ax + t * dx, ay + t * dy));
+    }
+    if (inside) return boat.id;
+    if (nearest <= bestDistance) { best = boat.id; bestDistance = nearest; }
+  }
+  return best;
+}

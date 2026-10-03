@@ -77,6 +77,34 @@ test('the drawn card is a hit target, and clicking it opens the panel', async ({
   expect(await page.evaluate(() => (window as any).canalRecallGame._landmarkCardBounds)).toBeNull();
 });
 
+// Named request (David, 2026-10-03, "leave the trivia cards onscreen longer,
+// maybe honestly until I x them out or something else replaces them"). Cards
+// no longer time out, so every card carries a close "×" in its corner.
+test('the × closes the card, and the card stays until then', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', 'canvas hit-testing needs a true layout viewport');
+  await driving(page);
+  const held = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    game._showLandmarkNotice(game._landmarkNotice, { kind: 'sticky' }, 'drive-by');
+    game.player = game.player || { x: 0, y: 0 };
+    for (let i = 0; i < 600; i++) game._updateLandmarks(0.1); // a minute, far from it
+    game._renderLandmarkNotice();
+    return { up: !!game._landmarkNotice, close: game._landmarkCloseBounds };
+  });
+  expect(held.up).toBe(true);
+  expect(held.close).not.toBeNull();
+  const box = (await page.locator('canvas').first().boundingBox())!;
+  const logical = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    return { w: game.viewport.width, h: game.viewport.height };
+  });
+  await page.mouse.click(
+    box.x + (held.close.x + held.close.w / 2) * (box.width / logical.w),
+    box.y + (held.close.y + held.close.h / 2) * (box.height / logical.h));
+  expect(await page.evaluate(() => (window as any).canalRecallGame._landmarkNotice)).toBeNull();
+  await expect(page.locator('#landmark-panel')).toBeHidden();
+});
+
 test("the panel holds the whole extract, not the card's two lines", async ({ page }) => {
   await driving(page);
   await page.evaluate(() => (window as any).canalRecallGame._expandLandmarkNotice());

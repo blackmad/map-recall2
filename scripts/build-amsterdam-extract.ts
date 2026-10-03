@@ -2,6 +2,7 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { FeatureCategory, FeatureType, StreetFeature } from '../src/types.ts';
 import { pickNearestDistractors } from '../src/canalRecall/bridgeDistractors.ts';
+import { renamedPoi, unusedPoiRenames } from '../src/canalRecall/poiRenames.ts';
 import { isBikeRoutingHighway, isBicycleRestricted } from '../src/canalRecall/routing/bikeAccess.ts';
 import { findMunicipality, hasAreaGeometry } from './lib/municipality.ts';
 
@@ -296,7 +297,7 @@ for (const item of source.features) {
     if (name.length >= 3 && !tags.brand && !tags['brand:wikidata']) {
       localFoodCandidates.push({
         id: String(tags['@id'] || `local-food-${localFoodCandidates.length}`),
-        name, kind: 'local-food', amenity: tags.amenity, center: featureCenter,
+        name: renamedPoi(name, featureCenter[1], featureCenter[0]), kind: 'local-food', amenity: tags.amenity, center: featureCenter,
         // Completeness is a decent source-independent proxy for whether a
         // venue is established and recognizable. Restaurant names lead, then
         // useful identity/details break ties within a crowded block.
@@ -491,6 +492,7 @@ const publishedBrandedPois = [
 ];
 await writeFile(path.join(outputDirectory, 'branded-pois.json'), JSON.stringify(publishedBrandedPois));
 process.stdout.write(`Orientation POIs: ${majorChains.map(({ name, count }) => `${name} (${count})`).join(', ') || 'no Albert Heijn'}; ${localFoodPois.length} local food venues\n`);
+for (const r of unusedPoiRenames()) process.stdout.write(`  rename ${r.from} -> ${r.to} (${r.osm}) matched nothing: OSM has caught up, remove it from poiRenames.ts\n`);
 // Build a connected street subgraph: keep only streets reachable from the
 // highest-scored street so car-mode routing never hits disconnected segments.
 function selectConnectedStreets(

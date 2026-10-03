@@ -21,6 +21,7 @@ import { promisify } from 'node:util';
 import { gunzipSync } from 'node:zlib';
 import { BuildingGrid, pointInRing, ringCentroid, tileIdsDrawing, type OsmBuilding, type Ring } from './lib/landmarkBuildings.ts';
 import { classifyPoi, heightBand, POI_CATEGORIES, rankPoi, type HeightBand, type PoiCategory } from '../src/canalRecall/poiCatalog.ts';
+import { renamedPoi, unusedPoiRenames } from '../src/canalRecall/poiRenames.ts';
 
 const run = promisify(execFile);
 const directory = path.resolve('public/data/extracts/amsterdam');
@@ -135,7 +136,7 @@ for await (const raw of createInterface({ input: createReadStream(placesSeq) }))
   // Parks and markets are outdoors: their label stays on the ground.
   const outdoors = poiClass.category === 'leisure' || poiClass.category === 'market';
   pois.push({
-    name: tags.name, lng: Math.round(lng * 1e6) / 1e6, lat: Math.round(lat * 1e6) / 1e6,
+    name: renamedPoi(tags.name, lng, lat), lng: Math.round(lng * 1e6) / 1e6, lat: Math.round(lat * 1e6) / 1e6,
     category: poiClass.category,
     rank: rankPoi(tags, poiClass, geometry.type !== 'Point'),
     band: outdoors ? 'ground' : heightBand(heightAt(lng, lat)),
@@ -159,6 +160,7 @@ for (const poi of kept) { byCategory[poi.category] = (byCategory[poi.category] |
 await writeFile(path.join(directory, 'staging/orientation-pois.json'),
   `${JSON.stringify({ generated: new Date().toISOString().slice(0, 10), byCategory, byBand, dropped, pois: kept }, null, 1)}\n`);
 process.stdout.write(`${kept.length} POIs; dropped ${JSON.stringify(dropped)}\n  by category ${JSON.stringify(byCategory)}\n  by band ${JSON.stringify(byBand)}\n`);
+for (const r of unusedPoiRenames()) process.stdout.write(`  rename ${r.from} -> ${r.to} (${r.osm}) matched nothing: OSM has caught up, remove it from poiRenames.ts\n`);
 
 if (process.argv.includes('--publish')) {
   const bands: HeightBand[] = ['ground', 'low', 'mid', 'high'];
