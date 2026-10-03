@@ -161,6 +161,8 @@ var CanalRecallInventoryTrees = (() => {
       this.pending = /* @__PURE__ */ new Map();
       this.meshes = [];
       this.theme = "clean";
+      this.geometries = /* @__PURE__ */ new Map();
+      this.materials = /* @__PURE__ */ new Map();
       this.scene = new THREE.Scene();
       this.scene.add(new THREE.HemisphereLight(16777215, 5398600, 2.15));
       const sun = new THREE.DirectionalLight(16773333, 1.7);
@@ -176,6 +178,15 @@ var CanalRecallInventoryTrees = (() => {
           this.camera = new THREE.Camera();
           this.renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
           this.renderer.autoClear = false;
+        },
+        onRemove: () => {
+          this.clear();
+          map.off("moveend", this.move);
+          for (const geometry of this.geometries.values()) geometry.dispose();
+          for (const material of this.materials.values()) material.dispose();
+          this.geometries.clear();
+          this.materials.clear();
+          this.renderer?.dispose();
         },
         render: (_gl, args) => {
           if (!this.enabled || !this.ready || map.getZoom() < MIN_ZOOM || !this.meshes.length) return;
@@ -235,8 +246,6 @@ var CanalRecallInventoryTrees = (() => {
     disposeMeshes() {
       for (const m of this.meshes) {
         this.scene.remove(m);
-        m.geometry.dispose();
-        m.material.dispose();
         m.dispose?.();
       }
       this.meshes = [];
@@ -328,8 +337,14 @@ var CanalRecallInventoryTrees = (() => {
       const dummy = new THREE.Object3D();
       for (const [key, items] of groups) {
         const wood = key === "wood", cone = key.startsWith("cone-");
-        const g = wood ? new THREE.CylinderGeometry(0.22, 0.28, 1, 7).rotateX(Math.PI / 2) : cone ? new THREE.ConeGeometry(1, 2, 8).rotateX(Math.PI / 2) : new THREE.IcosahedronGeometry(1, this.map.getZoom() >= 18 ? 1 : 0);
-        const m = new THREE.InstancedMesh(g, new THREE.MeshStandardMaterial({ color: "#ffffff", roughness: 0.93, flatShading: true }), items.length);
+        const geometryKey = wood ? "wood" : cone ? "cone" : this.map.getZoom() >= 18 ? "faceted-detail" : "faceted";
+        if (!this.geometries.has(geometryKey)) this.geometries.set(
+          geometryKey,
+          wood ? new THREE.CylinderGeometry(0.22, 0.28, 1, 7).rotateX(Math.PI / 2) : cone ? new THREE.ConeGeometry(1, 2, 8).rotateX(Math.PI / 2) : new THREE.IcosahedronGeometry(1, this.map.getZoom() >= 18 ? 1 : 0)
+        );
+        const materialKey = wood ? "wood" : "foliage";
+        if (!this.materials.has(materialKey)) this.materials.set(materialKey, new THREE.MeshStandardMaterial({ color: "#ffffff", roughness: 0.93, flatShading: true }));
+        const m = new THREE.InstancedMesh(this.geometries.get(geometryKey), this.materials.get(materialKey), items.length);
         m.userData.wood = wood;
         items.forEach((v, j) => {
           dummy.position.set(...v.p);

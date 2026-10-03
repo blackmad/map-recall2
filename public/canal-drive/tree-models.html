@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amsterdam tree models</title>
+<style>
+:root{--bg:#ebe7dd;--card:#f7f4ec;--ink:#303b43;--mut:#6d6a63;--line:#d4cfc3;--link:#2f5d8a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}header{padding:24px 28px 8px;max-width:1000px}h1{font-size:24px;margin:0 0 8px}p{margin:8px 0;color:var(--mut)}a{color:var(--link);text-underline-offset:3px}main{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr));gap:16px;padding:16px 28px 40px}article{border:1px solid var(--line);border-radius:10px;background:var(--card);overflow:hidden}h2{font-size:17px;margin:12px 16px 0}.species{margin:2px 16px;font-size:13px;font-style:italic;min-height:20px}.view{width:100%;height:260px;display:block}.meta{margin:0;padding:10px 16px 14px;border-top:1px solid var(--line);font-size:13px}.controls{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:16px}input[type=range]{width:180px;accent-color:var(--link)}#status{font-size:13px}noscript{display:block;padding:24px}
+</style>
+</head>
+<body>
+<header><h1>Amsterdam tree models</h1>
+<p>The municipal inventory selects the tree’s species, height class and recorded management. These fourteen crown forms use the same geometry as the game. Summer foliage, branch shapes and crown widths are authored approximations.</p>
+<p>All examples below are scaled to <strong>15 metres</strong> for comparison. The game uses each tree’s recorded height class instead.</p>
+<div class="controls"><label for="angle">Turn the trees</label><input id="angle" type="range" min="0" max="360" value="0"><a href="park-landscape.html">See them in Amsterdam parks →</a></div>
+<p id="status" role="status">Preparing models…</p></header>
+<main></main><noscript>This model review needs JavaScript.</noscript>
+<script src="js/three.bundle.js"></script><script src="js/inventory-trees.bundle.js"></script>
+<script type="module">
+import {treeTypology} from './da-costa-block/tree-typology.js';
+const {THREE:T}=window.CanalRecallThree;
+const examples=[
+ ['Rounded','Platanus hispanica','Boom'],['Domed','Aesculus hippocastanum','Boom'],['Irregular spreading','Quercus robur','Boom'],['Airy oval','Fraxinus excelsior','Boom'],['Upright oval','Betula pendula','Boom'],['Pyramidal',"Pyrus calleryana 'Chanticleer'",'Boom'],['Columnar',"Populus nigra 'Italica'",'Boom'],['Evergreen cone','Picea abies','Boom'],['Deciduous cone','Metasequoia glyptostroboides','Boom'],['Weeping',"Salix x sepulcralis 'Chrysocoma'",'Boom'],['Vase',"Prunus serrulata 'Kanzan'",'Boom'],['Pollarded','Salix alba','Knotboom'],['Candelabra pruned','Platanus hispanica','Gekandelaberde boom'],['Trained flat','Tilia cordata','Leiboom']
+];
+const renderer=new T.WebGLRenderer({antialias:true});renderer.setClearColor('#ebe7dd');renderer.setPixelRatio(1);
+const projection={MercatorCoordinate:{fromLngLat:([lng,lat])=>({x:lng,y:lat,z:0,meterInMercatorCoordinateUnits:()=>1})}};
+const bounds={getWest:()=>4.8,getEast:()=>5,getSouth:()=>52.3,getNorth:()=>52.4};
+const camera=new T.PerspectiveCamera(38,1,.1,100);camera.up.set(0,0,1);camera.position.set(21,-29,18);camera.lookAt(0,0,7.3);
+const entries=[];window.treeReview={entries,errors:[],contexts:1,done:false};
+for(const [label,species,type] of examples){
+ const tree={id:`review-${label}`,lng:4.9,lat:52.37,species,type,height:15,heightClass:'Comparison height',position:[0,0]};
+ const proxy=treeTypology(tree);
+ const map={addLayer(){},on(){},triggerRepaint(){},getZoom:()=>17,getBounds:()=>bounds};
+ const trees=new CanalRecallInventoryTrees.InventoryTrees(map,projection);trees.tiles.set('example',[tree]);trees.rebuild();
+ const ground=new T.Mesh(new T.CylinderGeometry(5.2,5.2,.16,24).rotateX(Math.PI/2),new T.MeshStandardMaterial({color:'#c8d0a9',roughness:1}));ground.position.z=-.08;trees.scene.add(ground);
+ const card=document.createElement('article'),heading=document.createElement('h2'),name=document.createElement('p'),canvas=document.createElement('canvas'),meta=document.createElement('p'),link=document.createElement('a');
+ heading.textContent=label;name.className='species';name.textContent=species;canvas.className='view';canvas.setAttribute('role','img');canvas.setAttribute('aria-label',`${label} crown, ${species}, 15 metre comparison model`);
+ meta.className='meta';link.href=proxy.provenance.reference||'https://maps.amsterdam.nl/bomen/';link.target='_blank';link.rel='noopener';link.textContent=type==='Boom'?'Species reference ↗':`Inventory management: ${type} ↗`;meta.append(link);
+ card.append(heading,name,canvas,meta);document.querySelector('main').append(card);entries.push({label,species,proxy,canvas,trees});
+}
+function render(){
+ const angle=+document.querySelector('#angle').value*Math.PI/180;
+ for(const entry of entries){
+  const w=Math.max(1,entry.canvas.clientWidth),h=260,dpr=Math.min(devicePixelRatio||1,2);entry.canvas.width=Math.round(w*dpr);entry.canvas.height=Math.round(h*dpr);
+  renderer.setSize(entry.canvas.width,entry.canvas.height,false);camera.aspect=w/h;camera.updateProjectionMatrix();entry.trees.scene.rotation.z=angle;renderer.render(entry.trees.scene,camera);entry.canvas.getContext('2d').drawImage(renderer.domElement,0,0);
+ }
+ document.querySelector('#status').textContent=`${entries.length} crown forms · one shared WebGL canvas · normalized comparison height`;
+ window.treeReview.done=true;
+}
+document.querySelector('#angle').addEventListener('input',render);window.addEventListener('resize',render);render();
+</script>
+</body>
+</html>
