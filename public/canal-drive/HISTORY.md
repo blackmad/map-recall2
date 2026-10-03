@@ -1,5 +1,27 @@
 # Canal Recall — what is built
 
+## Places of worship: five hand kits and a generic church rule for 198 more
+
+User (2026-10-03): "Then temples mosques and churches", after "why does it have windows???" on a church and Fatih as "a 37 m green box".
+
+- **Measured:** Overpass found 175 worship building ways and 95 nodes (cached in the scrape store); they match 300 tile footprints.
+  - Nodes are only reported, so a prayer room inside flats is never restyled.
+  - Before this change, 198 of them were drawn wrong: 91 as generic house fronts, 81 as landmark period house fronts, and 26 as bare boxes.
+- **Hand kits** (`worshipKits.ts`, heights from 3D BAG, photos cited in each kit):
+  - Portuguese Synagogue
+  - Hofkerk: a cross plan with a west tower and a crossing tower. It has no dome; the photos and 3D BAG disagree with the old hint that it did.
+  - Gerardus Majellakerk
+  - Westermoskee: the drum and zinc dome, and one minaret of about 40 m, read from a photo.
+  - Dominicuskerk: it was a 37 m beige block.
+- **Generic rule** (`worshipBuildings.ts`, data from `npm run build:worship-buildings`, which stages first and publishes with `--publish`). Walls are plain brick in an era colour, and there are never house windows, canal gables or shop glass.
+  - A plain rectangle built before 1960 gets a steep roof and tall round-headed windows (50 buildings).
+  - An older odd plan keeps its lid but gets plain walls and arched windows (54).
+  - Towers and post-1960 buildings get plain walls (94).
+- **Known gaps:**
+  - The Engelse Kerk still reads as a warehouse under a flat lid.
+  - The Fo Guang Shan temple needs a tiered Chinese roof shape.
+  - Only the Vredeskerk's tower parts are in the tiles.
+
 ## Museums and cinemas: seven landmarks modelled from 3D BAG heights
 
 User (2026-10-03): "Work on museums, movie theaters and grocery stores".
