@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Large-letter postcard: the Spoon Graphics recipe
+
+User (2026-10-03, with the Spoon Graphics tutorial "How To Create a Vintage Style Large Letter Postcard Design"): revisit the postcard against it. Audit: `/mnt/project-files/map-recall/postcard-design-audit.md`; before/after renders in `/mnt/project-files/map-recall/postcard-recipe/`. Changes, step by step against the recipe:
+
+- **Typeface.** Anton (self-hosted, OFL) instead of Archivo Black, standing in for Futura Condensed Extra Bold. The layout still works in Archivo cap units (`LARGE_LETTER_FONT_EM_SCALE` draws Anton at 0.8 of the layout size). Because the face is tall by itself, the vertical face pull is capped at 1.3 (it was up to 2.7) and the horizontal squeeze stops at 0.85. Names of up to nine letters stay on one line even with a space (DE PIJP, like FLORIDA), and word spaces are half width. Tracking is +0.012 em, not the recipe's -50, because Anton's sidebearings are slim and faces overlapped.
+- **Rims.** Two offset rims (light inside, blue outside, dark hairline edge) sit behind the face, replacing the black die-cut drawn over it.
+- **Extrusion.** Each glyph's outline is flattened, and every edge facing the extrusion direction becomes a facet. Down-facing facets are orange and side facets blue, as in Illustrator's Extrude & Bevel at 1°/1° with no shading. The block is outlined once in a dark line, so there are no seams. A 45° halftone screen is burned into the orange (Color Burn 30%). The recipe's block is parallel, not converging; the earlier audit line that said otherwise was wrong. Without the outline font, the banded shelf is still used.
+- **Backdrop.** 60% instead of 16%, with a lighter veil, as the recipe lays the scene at 70%.
+- **Photos.** The layered card's letter photos get an SVG paint filter: brush wobble, soft blur plus unsharp mask, and an 8-tone posterise. A colour boost follows, standing in for Oil Paint and Match Color.
+- **Print grain.** A Gaussian-noise and linen layer blends with `overlay` over the whole layered card. This puts back the texture on the letter photos that the windows change had dropped.
+- **Script.** Pacifico is self-hosted and registered via `ensureLargeLetterWebFonts`; the game had been showing a serif fallback.
+
+Photo windows now replay the block's paint order on the mask: a later line's extrusion, or a neighbour's rims, closes that part of an earlier window. Paint is 56-107 ms a card, and the grain takes 19 ms once. Regressions: `test:large-letter-postcard` and `test:large-letter-craft` (DE PIJP on one line, the two-line contract moved to OVERTOOMSE VELD, face pull ≤1.3).
+
 ## Map Recall: folded answer card and a layered postcard
 
 User (2026-10-02, with a screenshot of Nieuwmarktbuurt): the postcard "pops in too late" and the answer card "takes up too much of my screen so I don't get confirmation of where the hood was". Cause of the delay: `PostcardHeader` composed the large-letter postcard at reveal, after a dynamic import of the compositor, the Archivo Black outline font and `Promise.all` over up to eight Commons thumbnails, so the slowest photo gated it, then drew the warped letters (70-240 ms a paint here). Measured over seeded rounds: 1.3-12 s from Confirm to postcard, 1.3-3 s even with every photo on local disk.
