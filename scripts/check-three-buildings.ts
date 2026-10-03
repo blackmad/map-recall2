@@ -933,4 +933,62 @@ for (const c of [0.64, 1.4]) {
     assert.ok(!modelled.has(house.properties.id), 'and is not in any kit');
   }
 }
+{
+  // Public buildings (2026-10-03, "keep going balancing hand models with new category treatments"):
+  // big cinemas and theatres get plain walls (no windows, no gable), schools a classroom-window
+  // grid in their era's brick, by publicBuildings.ts and the list scripts/build-public-buildings.ts wrote.
+  const { PUBLIC_BUILDINGS } = await import('../src/canalRecall/publicBuildingData.ts');
+  const { planPublic, schoolWindows, publicKit, PUBLIC_WALL } = await import('../src/canalRecall/publicBuildings.ts');
+  const { KITS: kits, KIT_MODELLED_IDS: modelled, HAND_KIT_IDS: handIds, decorateKitRoof: decorate } = await import('../src/canalRecall/landmarkKits.ts');
+  const entry = (id: string) => PUBLIC_BUILDINGS.find(e => e[0] === id);
+  const rect = (len: number, wid: number, coverage = 0.95, maxDev = 0.5) => ({ len, wid, coverage, maxDev });
+  // Rules.
+  assert.equal(planPublic({ kind: 'c', heightM: 24, year: 1935, areaM2: 1222, rect: rect(40, 30) })?.mode, 'p', 'a big old cinema is plain walls');
+  assert.equal(planPublic({ kind: 'c', heightM: 12, year: 1910, areaM2: 400, rect: rect(20, 20) }), null, 'a small cinema in an old building stays a house');
+  assert.equal(planPublic({ kind: 'c', heightM: 22, year: 1910, areaM2: 400, rect: rect(20, 20) })?.mode, 'p', 'a tall one does not');
+  assert.equal(planPublic({ kind: 'c', heightM: 46, year: 2012, areaM2: 322, rect: rect(20, 16) }), null, 'a tower holding a stage is left alone');
+  assert.equal(planPublic({ kind: 's', heightM: 14, year: 1925, areaM2: 1500, rect: rect(60, 22), roofShape: 'flat' })?.mode, 'f', 'a flat-roofed school stays flat');
+  assert.equal(planPublic({ kind: 's', heightM: 14, year: 1925, areaM2: 1500, rect: rect(60, 15) })?.mode, 'h', 'a pre-1930 school on a plain rectangle gets a pitched roof');
+  assert.equal(planPublic({ kind: 's', heightM: 9, year: 1965, areaM2: 1500, rect: rect(60, 15) })?.mode, 'f', 'a post-war school is a flat slab');
+  assert.equal(planPublic({ kind: 's', heightM: 9, year: null, areaM2: 1500, rect: rect(60, 15) }), null, 'an undated school keeps the generic rules');
+  assert.equal(planPublic({ kind: 's', heightM: 9, year: 2012, areaM2: 1500, rect: rect(60, 15) }), null, 'a new school keeps the generic rules');
+  assert.equal(planPublic({ kind: 's', heightM: 9, year: 1965, areaM2: 20000, rect: rect(160, 120) }), null, 'a campus is left alone');
+  assert.equal(planPublic({ kind: 's', heightM: 9, year: 1965, areaM2: 120, rect: rect(12, 10) }), null, 'a schoolhouse-sized building stays a house');
+  const post = schoolWindows(8.4, 'e'), pre = schoolWindows(22, 'o');
+  assert.equal(post.length, 2, 'two storeys of classroom windows on 8.4 m');
+  assert.equal(pre.length, 5, 'five storeys on 22 m');
+  for (const r of [...post, ...pre]) assert.ok(r.head === 'flat' && r.z1 - r.z0 >= 1.2, 'flat-headed classroom windows');
+  assert.ok(Math.max(...pre.map(r => r.z1)) <= 22 - 0.3, 'the top row clears the eaves');
+  // The published list.
+  const ids = PUBLIC_BUILDINGS.map(e => e[0]);
+  assert.equal(new Set(ids).size, ids.length, 'public ids are unique');
+  assert.ok(PUBLIC_BUILDINGS.filter(e => e[1] === 's').length > 200, 'the generic rule covers the city\'s schools');
+  assert.ok(PUBLIC_BUILDINGS.filter(e => e[1] === 'c').length > 30, 'and its big cinemas and theatres');
+  for (const id of ids) {
+    assert.ok(!handIds.has(id), `${id}: a hand kit owns it, not the generic rule`);
+    assert.ok(modelled.has(id), `${id}: the landmark fallback leaves it to its kit`);
+  }
+  // Real buildings.
+  for (const [id, why] of [['NL.IMBAG.Pand.0363100012174390', 'Pathé City (1935, 24 m, 1,222 m2)'], ['NL.IMBAG.Pand.0363100012237077', 'LAB111 (1928)'], ['r3699016', 'Studio/K (1910, 3,494 m2)']] as const) {
+    const e = entry(id);
+    assert.ok(e && e[1] === 'c' && e[2] === 'p', `${why}: plain cinema walls`);
+    const out = decorate({ type: 'Feature', properties: { id, height: 20, facade: 'canal-priorBrickRed', facadeStyle: 'canal' }, geometry: null });
+    assert.equal(out.properties.kitWall, 'plain', `${why}: plain, no house facade`);
+    assert.equal(out.properties.roofEavesHeightM, undefined, `${why}: no gable, its own height`);
+    assert.equal(out.properties.sideColour, PUBLIC_WALL.c[e![5]]);
+    assert.equal(publicKit(e!).halls, undefined, `${why}: no windows`);
+  }
+  for (const [id, mode, era, why] of [['NL.IMBAG.Pand.0363100012237203', 'f', 'o', 'Montessori Lyceum (1912)'], ['NL.IMBAG.Pand.0363100012076543', 'f', 'o', 'Fons Vitae Lyceum (1926)'], ['NL.IMBAG.Pand.0363100012112357', 'f', 'e', 'Slotermeerschool (1955)'], ['NL.IMBAG.Pand.0363100012129398', 'f', 'e', 'Spinoza Lyceum (1957)']] as const) {
+    const e = entry(id);
+    assert.ok(e && e[1] === 's' && e[2] === mode && e[5] === era, `${why}: school ${mode} ${era}`);
+    const kit = publicKit(e!), rows = kit.halls![0].windows!.rows;
+    assert.equal(kit.wall && kit.wall.plain && kit.wall.hex, PUBLIC_WALL.s[era], `${why}: era brick`);
+    assert.ok(rows.length >= 2 && rows.every(r => r.head === 'flat'), `${why}: classroom windows`);
+    const out = decorate({ type: 'Feature', properties: { id, height: e![3], facade: 'canal-priorBrickRed', facadeStyle: 'canal' }, geometry: null });
+    assert.equal(out.properties.kitWall, 'plain', `${why}: no house facade`);
+  }
+  assert.ok(kits.some(k => k.halls?.[0]?.id === 'NL.IMBAG.Pand.0363100012237203'), 'the school kits are in KITS');
+  // Left alone: an ordinary canal house, the Concertgebouw (a concert hall with a monumental front), Frascati's block of houses.
+  for (const id of ['NL.IMBAG.Pand.0363100012072136', 'w754269611', 'NL.IMBAG.Pand.0363100012168465']) assert.ok(!entry(id), `${id} keeps its own rules`);
+}
 console.log('three buildings: ok');
