@@ -140,6 +140,7 @@ class Game {
     this._recenterBtnBounds = null;
     this._landmarkNotice = null;
     this._landmarkCardBounds = null;
+    this._landmarkCloseBounds = null;
     this._landmarkNoticeHold = { kind: 'timed', seconds: 0 }; // see game/landmarkNotice.ts
     this._landmarkNoticeSource = null;
     this._landmarkNoticeState = { elapsed: 0, fadeRemaining: null };

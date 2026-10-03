@@ -987,7 +987,10 @@ panels; desktop and phone at each story's own viewport) against committed
 screenshots (2.3 MB), stable across repeated and parallel runs. Still open:
 - the five desktop briefing screens, left out because their photo backdrop
   makes each baseline 1.5 MB;
-- baselines are darwin-only, so a Linux CI would need its own set.
+- baselines are darwin-only, so a Linux CI would need its own set;
+- the landmark-card baselines (`landmark-card*`, and HUD states showing a
+  card) predate the close "×" added 2026-10-03 and need re-recording on a Mac
+  (`--update-snapshots`); the cloud sessions run Linux and cannot.
 
 
 ---

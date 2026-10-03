@@ -25,3 +25,17 @@ const perBoat = tris / (boats.length - failed);
 assert.ok(perBoat < 200, `triangle budget per boat (${perBoat.toFixed(0)})`);
 assert.equal([...houseboatsByTile(boats).values()].reduce((n, list) => n + list.length, 0), boats.length, 'every boat lands in one tile');
 console.log(`houseboats: ok (${boats.length} boats, ${failed} without geometry, ${perBoat.toFixed(0)} triangles each)`);
+
+// A landmark aboard a boat lights that boat (user report 2026-10-03,
+// "houseboat museum doesn't light up yellow when the trivia comes up"); one
+// on the quay beside a boat does not.
+{
+  const { boatForLandmark } = await import('../src/canalRecall/houseboats.ts');
+  const museum: [number, number] = [4.882602, 52.3701526]; // Houseboat Museum, Prinsengracht
+  assert.equal(boatForLandmark(boats, museum, 'museum'), 'w174999382', 'Houseboat Museum lights the Hendrika Maria');
+  assert.equal(boatForLandmark(boats, museum, 'landmark'), null, 'only kinds of place a boat can be');
+  const lm = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/landmarks.json', 'utf8'));
+  const kraan = (lm.landmarks ?? lm).find((l: { name: string }) => l.name === 'Kraan 2868');
+  if (kraan) assert.equal(boatForLandmark(boats, [kraan.center[1], kraan.center[0]], 'museum'), null, 'a crane 4 m from a boat is on the quay');
+  console.log('houseboats: Houseboat Museum lights its boat');
+}

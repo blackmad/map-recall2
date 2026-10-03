@@ -75,6 +75,7 @@ const CHECKS = [
   'test:landmark-data',
   'test:landmark-notice',
   'test:drive-by-trigger',
+  'test:postcard-pacing',
   'test:landmark-buildings',
   'test:landmark-fronts',
   'test:houseboats',

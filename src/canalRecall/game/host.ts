@@ -132,6 +132,8 @@ export interface LandmarkHost extends GameCoreHost {
   /** Where the card was last drawn, so a click on it can open the expanded
    *  panel. Null whenever no card is on screen. */
   _landmarkCardBounds: LinkBounds | null;
+  /** The close "×" corner of that card; a tap there puts the card away. */
+  _landmarkCloseBounds?: LinkBounds | null;
   _landmarkImages: Map<string, HTMLImageElement>;
   _landmarkImageRequests: Set<string>;
   _seenLandmarks: Set<string>;
@@ -155,6 +157,15 @@ export interface LandmarkHost extends GameCoreHost {
   _neighborhoodCandidateTimer: number;
   _previousNeighborhood: string;
   _visitedNeighborhoods: Set<string>;
+  /** Postcard pacing (see `postcardPacing.ts`): the neighbourhood whose
+   *  postcard waits for the band to be free, when the rider entered the
+   *  current one, when a trivia card and a postcard last opened, and entries
+   *  per neighbourhood remembered across rides. */
+  _postcardPending?: string | null;
+  _neighborhoodEnteredAt?: number;
+  _lastTriviaAt?: number | null;
+  _lastPostcardAt?: number | null;
+  _neighborhoodEntries?: { cityId: string; counts: Map<string, number> };
   _neighborhoodImages: Map<string, HTMLImageElement>;
   _neighborhoodLetterArt: Map<string, unknown>;
   _neighborhoodImageRequests: Set<string>;
@@ -400,6 +411,8 @@ export interface PresentationHost extends GameCoreHost {
   _githubLinkBounds: LinkBounds | null;
   _recenterBtnBounds: LinkBounds | null;
   _landmarkCardBounds: LinkBounds | null;
+  _landmarkCloseBounds?: LinkBounds | null;
+  _clearLandmarkNotice(): void;
   _runFinishAction(id: 'again' | 'route' | 'copy'): void;
   _expandLandmarkNotice(): void;
   _inspectBuildingAt(clientX: number, clientY: number): void;
