@@ -196,6 +196,52 @@ console.log('Neighbourhood gap-fill checks passed.');
     file('File:Map of the area.jpg', 52.05, 4.05), // map
     file('File:Portrait.jpg', 52.06, 4.06, { width: 800, height: 1200 }), // portrait orientation
     file('File:Unlicensed.jpg', 52.07, 4.07, { license: undefined }),
+    file('File:03-22-1947 01334 Frits Sieger (4995611876).jpg', 52.03, 4.03), // Anefo press portrait
+    file('File:Mapillary (MOhnWRiMH9YywAA) (amsterdam) 2016-08-17.jpg', 52.04, 4.08), // dashcam frame
   ], square, 8);
   assert.deepEqual(picked.map(f => f.title).sort(), ['File:Canal view 1.jpg', 'File:Market square.jpg']);
+}
+
+{
+  // Area photo search points: a horseshoe like the Grachtengordel has its centroid outside it.
+  const { areaSearchPoints, pointInPolygons: inside } = await import('../src/mapRecall/neighborhoodGaps');
+  const small: [number, number][][][] = [[[[52, 4], [52, 4.005], [52.005, 4.005], [52.005, 4], [52, 4]]]];
+  const one = areaSearchPoints(small);
+  assert.equal(one.length, 1, 'a small compact area is one search');
+  assert.ok(one[0].radiusM >= 300 && one[0].radiusM < 1000);
+  // A U shape 3 km across: no point may sit in the empty middle, and both arms are searched.
+  const u: [number, number][][][] = [[[[52, 4], [52, 4.045], [52.027, 4.045], [52.027, 4.03], [52.009, 4.03], [52.009, 4.015], [52.027, 4.015], [52.027, 4], [52, 4]]]];
+  const points = areaSearchPoints(u);
+  assert.ok(points.length >= 3, `U shape searched from ${points.length} points`);
+  assert.ok(points.every(p => inside([p.lat, p.lon], u)), 'every search point lies inside the area');
+  assert.ok(points.some(p => p.lon < 4.015) && points.some(p => p.lon > 4.03), 'both arms are searched');
+}
+
+{
+  // Commons store: round trip, stable order, and API error bodies recognised.
+  const { CommonsStore, apiError } = await import('../src/mapRecall/commonsStore');
+  const store = new CommonsStore();
+  store.addGeo({ lat: 52.1, lon: 4.2, radiusM: 500, namespace: 6, limit: 200, fetchedAt: 't', hits: [{ pageid: 9, title: 'File:B.jpg', lat: 52.1, lon: 4.2 }, { pageid: 3, title: 'File:A.jpg', lat: 52.1, lon: 4.2 }] });
+  store.addImageInfoPage({ pageid: 3, title: 'File:A.jpg', imageinfo: [{ url: 'u', thumburl: 't', thumbwidth: 480, width: 1600, height: 1000, mime: 'image/jpeg', extmetadata: { LicenseShortName: { value: 'CC BY-SA 4.0' }, Artist: { value: '<a>Me</a>' }, Unkept: { value: 'x' } } }] }, 't');
+  assert.equal(store.addImageInfoPage({ pageid: 4, title: 'File:Gone.jpg' }, 't'), undefined, 'a page without imageinfo is not stored');
+  const text = store.serialise();
+  const again = CommonsStore.parse(text.geo, text.files);
+  assert.deepEqual(again.serialise(), text, 'serialisation is stable');
+  assert.deepEqual(again.getGeo({ lat: 52.1, lon: 4.2, radiusM: 500, namespace: 6, limit: 200 })!.hits.map(h => h.pageid), [9, 3], 'hits keep nearest-first order');
+  assert.deepEqual(again.files.get(3)!.meta, { LicenseShortName: 'CC BY-SA 4.0', Artist: '<a>Me</a>' });
+  assert.equal(apiError({ query: {} }), undefined);
+  assert.equal(apiError({ error: { code: 'ratelimited', info: 'slow down' } })!.retryable, true);
+  assert.equal(apiError({ error: { code: 'badvalue' } })!.retryable, false);
+}
+
+{
+  // Small islands with nothing geotagged inside may use photos taken from just outside.
+  const { distanceToPolygonsKm, rankAreaPhotos } = await import('../src/mapRecall/neighborhoodGaps');
+  const island: [number, number][][][] = [[[[52, 4], [52, 4.002], [52.001, 4.002], [52.001, 4], [52, 4]]]];
+  assert.equal(distanceToPolygonsKm([52.0005, 4.001], island), 0);
+  const d = distanceToPolygonsKm([52.002, 4.001], island);
+  assert.ok(d > 0.1 && d < 0.12, `about 110 m north of the island, got ${d}`);
+  const shore = { title: 'File:View of the island.jpg', url: 'u', thumbUrl: 't', width: 1600, height: 1000, mime: 'image/jpeg', license: 'CC0', lat: 52.002, lon: 4.001 };
+  assert.equal(rankAreaPhotos([shore], island).length, 0, 'outside is excluded by default');
+  assert.equal(rankAreaPhotos([shore], island, 8, 0.15).length, 1, 'within the slack it is allowed');
 }

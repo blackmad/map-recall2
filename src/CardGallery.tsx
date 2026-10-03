@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { CITIES } from './data/cities';
+import { EXTRACT_CITIES } from './mapRecall/cityExtracts';
 import { fetchQuizFeatures } from './dataSources/featureProvider';
 import { WikipediaCard } from './components/WikipediaCard';
 import type { StreetFeature } from './types';
 
-const CARD_CITIES = ['amsterdam', 'utrecht', 'rotterdam', 'den-haag'];
+const CARD_CITIES = EXTRACT_CITIES.map(({ id }) => id as string);
 
 /** What a card still lacks, so the gallery doubles as a coverage review. */
 function gaps(feature: StreetFeature): string[] {
@@ -24,7 +24,9 @@ function gaps(feature: StreetFeature): string[] {
 export const CardGallery: React.FC = () => {
   const params = new URLSearchParams(window.location.search);
   const cityId = CARD_CITIES.includes(params.get('city') ?? '') ? params.get('city')! : 'amsterdam';
-  const city = CITIES.find(({ id }) => id === cityId)!;
+  // Only Amsterdam is a game city (CITIES); every extract city has a name and box, which is all this needs.
+  const extract = EXTRACT_CITIES.find(({ id }) => id === cityId)!;
+  const city = { name: extract.name, center: [(extract.bbox.minLat + extract.bbox.maxLat) / 2, (extract.bbox.minLng + extract.bbox.maxLng) / 2] as [number, number] };
   const [features, setFeatures] = useState<StreetFeature[] | null>(null);
   const [error, setError] = useState('');
   const [filter, setFilter] = useState('');
@@ -44,7 +46,7 @@ export const CardGallery: React.FC = () => {
   return <div className="fixed inset-0 overflow-y-auto bg-[#f4efe5] p-4 text-[#2b2118]" data-testid="card-gallery">
     <header className="mx-auto mb-4 flex max-w-6xl flex-wrap items-center gap-3">
       <h1 className="mr-auto text-xl font-black uppercase tracking-wide">Neighbourhood cards · {city.name}</h1>
-      {CARD_CITIES.map((id) => <a key={id} href={`?gallery=cards&city=${id}`} className={`rounded-lg px-2.5 py-1 text-xs font-bold ${id === cityId ? 'bg-[#8a4a18] text-white' : 'bg-white/70'}`}>{CITIES.find((c) => c.id === id)?.name ?? id}</a>)}
+      {CARD_CITIES.map((id) => <a key={id} href={`?gallery=cards&city=${id}`} className={`rounded-lg px-2.5 py-1 text-xs font-bold ${id === cityId ? 'bg-[#8a4a18] text-white' : 'bg-white/70'}`}>{EXTRACT_CITIES.find((c) => c.id === id)?.name ?? id}</a>)}
       <input value={filter} onChange={(event) => setFilter(event.target.value)} placeholder="Filter by name" style={{ background: "#fff", color: "#2b2118" }} className="rounded-lg border border-black/20 px-2 py-1 text-sm" />
       <label className="flex items-center gap-1.5 text-xs font-bold"><input type="checkbox" checked={onlyGaps} onChange={(event) => setOnlyGaps(event.target.checked)} />Only cards with gaps</label>
       {features && <span className="text-xs font-bold text-[#8a4a18]">{complete}/{features.length} complete · showing {shown.length}</span>}

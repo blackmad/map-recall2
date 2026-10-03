@@ -63,6 +63,35 @@ export const STORYBOOK_WALLS = ['#c8664a', '#c8664a', '#b9583f', '#d98b5f', '#e0
 export const CARTOON_WALLS = ['#e8573d', '#e8573d', '#ee7f2c', '#f2b92e', '#f2b92e', '#2a9d8f', '#4672b0', '#f3e6c8', '#d96a4d'];
 
 /**
+ * Wall colours by period (user 2026-10-02, from the real-vs-game sheet: "one brick palette"
+ * everywhere). Unmeasured, so still hash-picked per building, but from the range each period
+ * really has: canal houses in deep red-brown brick, often painted near-black, dark green or
+ * grey, a few in white stucco; 1860-1914 rows in red and orange brick with buff and cream
+ * stucco; Amsterdam School in dark purple-brown and orange brick; post-war and modern blocks in
+ * buff, grey and concrete. null keeps the archetype palette (`paletteFor`).
+ */
+export const PERIOD_WALLS: Record<Look, Record<Archetype, readonly string[] | null>> = {
+  photo: {
+    canal: ['#7a3b2c', '#7a3b2c', '#6b3428', '#8c4632', '#9a5846', '#b05a40', '#4a2e26', '#2e2a27', '#3e4a40', '#5d605a', '#e4ddcd'],
+    c19: ['#b05a40', '#b05a40', '#bd6a45', '#a24d38', '#c58b5e', '#d3b184', '#e2d5ba', '#e2d5ba', '#d9c5a4', '#9a5846'],
+    school: ['#8c4a38', '#7a4535', '#9a5240', '#6e3d33', '#a85a3c', '#5e3a32', '#b0603f'],
+    modern: ['#c9b79a', '#b9ad9a', '#a8a49c', '#d3c6ad', '#8f8a82', '#bfb3a0', '#9c7a62', '#b05a40'],
+  },
+  storybook: {
+    canal: ['#b9583f', '#9a4a38', '#7a4a3c', '#4a5048', '#3f4a5a', '#ead9b0', '#c8664a'],
+    c19: ['#c8664a', '#d98b5f', '#e0b36a', '#ead9b0', '#d9b995', '#c9a08c', '#c8664a'],
+    school: ['#a8553f', '#9a5a48', '#b87a5c', '#c8664a', '#8a4e40'],
+    modern: null,
+  },
+  cartoon: {
+    canal: ['#d9453d', '#a8433a', '#3b3b4a', '#2a9d8f', '#4672b0', '#fffaf0', '#e8573d'],
+    c19: ['#e8573d', '#ee7f2c', '#f2b92e', '#f3e6c8', '#d96a4d', '#f2b92e'],
+    school: ['#d96a4d', '#e8573d', '#b9583f', '#ee7f2c'],
+    modern: null,
+  },
+};
+
+/**
  * Ground-floor paint for shopfronts, per look, weighted the way Amsterdam streets are: mostly
  * white and cream, then the dark greens, blacks, oxbloods and navies of older shopfronts.
  */
@@ -84,7 +113,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const shop = shopfront ? shopfront !== 'quiet' : (h >>> 13) % 3 === 0;
   const shopKind = shopfront && shopfront !== 'quiet' ? shopfront : SHOP_KINDS[(h >>> 17) % 4];
   const palette = paletteFor(id, archetype, look);
-  const walls = look === 'photo' ? PHOTO_WALLS : archetype === 'modern' ? null : look === 'storybook' ? STORYBOOK_WALLS : CARTOON_WALLS;
+  const walls = PERIOD_WALLS[look][archetype];
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
   // A shop's ground floor is painted, and the paint is its own colour, not the brick's.
   const paints = GROUND_PAINTS[look];
