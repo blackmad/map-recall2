@@ -1,6 +1,6 @@
 import fs from 'node:fs';import assert from 'node:assert/strict';import{chromium}from'@playwright/test';
 const data=JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/park-landscape.geojson'));
-const positions=[['Wertheimpark',4.9089,52.3678,19],['Park Frankendael',4.9300,52.3505,17],['Martin Luther Kingpark',4.9073,52.3392,17],['Rembrandtplein',4.8967,52.3666,19]];
+const positions=[['Wertheimpark',4.9089,52.3678,19],['Park Frankendael',4.9300,52.3505,17],['Martin Luther Kingpark',4.9073,52.3392,17],['Rembrandtplein',4.8966,52.3660,19]];
 for(const [name]of positions){const subset=data.features.filter(f=>f.properties.park===name);assert.ok(subset.length>20);assert.ok(subset.some(f=>f.properties.role==='path'));for(const f of subset)assert.match(f.id,/^a\d+(?:-[anw]\d+(?:-\d+|-seat|-back)?)?$/);}
 assert.equal(data.features.filter(f=>f.properties.park==='Martin Luther Kingpark'&&f.properties.role==='park').length,2,'both mapped sections retained');
 assert.ok(!data.features.some(f=>f.properties.park==='Rembrandtplein'&&f.properties.role==='park'),'keep plaza paving intact');

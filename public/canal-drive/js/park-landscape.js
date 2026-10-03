@@ -9,7 +9,7 @@
         attribution:'Park landscape © OpenStreetMap contributors (ODbL)'});
       const before = map.getStyle().layers.find(l => l.type === 'fill-extrusion' || l.id.startsWith('tree-'))?.id;
       map.addLayer({id:'park-landscape-ground',type:'fill',source:'park-landscape',minzoom:13,
-        filter:['in',['get','role'],['literal',['park','lawn','wood','scrub','garden','playground','water']]],
+        filter:['in',['get','role'],['literal',['park','lawn','wood','scrub','garden','playground','water','paved-area']]],
         paint:{'fill-opacity':1}},before);
       map.addLayer({id:'park-landscape-path-edge',type:'line',source:'park-landscape',minzoom:15,
         filter:['==',['get','role'],'path'],layout:{'line-cap':'round','line-join':'round'},
@@ -44,7 +44,8 @@
         : theme === 'psx' ? ['#899477','#91a17b','#657c61','#728265','#aa9479','#526e83','#b6ad94','#7a8069']
         : ['#a9bd89','#b5c991','#72956b','#8fa775','#c0ad89','#80b8c3','#e0d2b2','#94a67b'];
       this.map.setPaintProperty('park-landscape-ground','fill-color',['match',['get','role'],
-        'park',p[0],'lawn',p[1],'wood',p[2],'scrub',p[3],'garden',p[3],'playground',p[4],'water',p[5],p[0]]);
+        'park',p[0],'lawn',p[1],'wood',p[2],'scrub',p[3],'garden',p[3],'playground',p[4],'water',p[5],
+        'paved-area',theme==='cyberpunk'?'#3b4054':theme==='psx'?'#aaa596':'#bcb8ab',p[0]]);
       this.map.setPaintProperty('park-landscape-path','line-color',p[6]);
       this.map.setPaintProperty('park-landscape-path-edge','line-color',p[7]);
       this.map.setPaintProperty('park-landscape-benches','fill-extrusion-color',theme === 'cyberpunk' ? '#9e7499' : '#81684e');

@@ -86,10 +86,17 @@ for (const park of parks) {
     }
   }
 }
+// Exact mapped pedestrian paving, including all five source exclusion holes.
+// Its concave outer boundary leaves Westerkerk and surrounding roads outside.
+const paved=raw.find(f=>f.id==='a26263809'&&f.properties.highway==='pedestrian'
+  &&f.properties.surface==='sett'&&polygons(f.geometry).length);
+if(!paved)throw Error('Missing mapped Westermarkt paving relation r13131904');
+emit(paved.id,paved.geometry,'paved-area',paved,{surface:'sett',sourceOsmId:'r13131904'});
 const result = {type:'FeatureCollection', attribution:'© OpenStreetMap contributors, ODbL',
   source:'Cached Amsterdam OSM extract; mapped geometry only. No synthetic water, paths or trees.',
   botanicalGrounds:parks.filter(f=>botanicalNames.includes(f.properties.name)).map(f=>({id:f.id,name:f.properties.name,baseFill:false})),features};
 result.squares=[{id:square.id,name:square.properties.name,baseFill:false}];
+result.pavedSquares=[{id:paved.id,name:paved.properties.name,sourceOsmId:'r13131904',surface:'sett'}];
 const out = 'public/data/extracts/amsterdam/park-landscape.geojson';
 fs.writeFileSync(out,JSON.stringify(result));
 console.log(JSON.stringify({parks:parks.map(f=>f.properties.name),counts,bytes:fs.statSync(out).size},null,2));
