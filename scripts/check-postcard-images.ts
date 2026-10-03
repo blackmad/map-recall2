@@ -26,7 +26,7 @@ const photo = (imageUrl: string): { name: string; photo: PlacePhoto } => ({
 
 // --- Photo windows match what the canvas used to paint into each letter -----
 {
-  const buffer = readFileSync('public/canal-drive/fonts/ArchivoBlack-Regular.ttf');
+  const buffer = readFileSync('public/canal-drive/fonts/Anton-Regular.ttf');
   const font = opentype.parse(buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength)) as unknown as OtFont;
   const stub = (text: string, spec: string) => text.length * Number(/(\d+(?:\.\d+)?)px/.exec(spec)?.[1] ?? 12) * 0.62;
   for (const name of ['Nieuwmarktbuurt', 'Jordaan', 'Oud-West']) {

@@ -100,7 +100,8 @@ const MIN_FACE_FILL_FRAC = 0.50;
   assert.ok(card.facePullX === 1, 'facePullX must stay 1 — no fatten-past-advance overlap');
   assert.ok(card.borderInset <= 8,
     `borderInset ${card.borderInset} too thick (linen hairline ≤8)`);
-  assert.ok(card.facePullY >= 1.15 && card.facePullY <= 3.0, `facePullY ${card.facePullY} out of range`);
+  // The condensed face (Anton) is tall by itself; the pull is only a small comfort stretch now.
+  assert.ok(card.facePullY >= 1 && card.facePullY <= 1.3, `facePullY ${card.facePullY} out of range`);
   // Effective billboard mass after vertical pull.
   const faceH = card.nameFontSize * card.facePullY * card.paintScaleY;
   assert.ok(
@@ -162,14 +163,15 @@ const MIN_FACE_FILL_FRAC = 0.50;
 }
 
 {
-  // OUD WEST two-line: crest clear + no mid-word shelf seam (draw-order contract).
+  // Two-line stack: crest clear + no mid-word shelf seam (draw-order contract). This was OUD WEST;
+  // with the condensed face short names stay on one line, so a longer two-word name carries it.
   const card = measureLargeLetterPostcard({
-    name: 'Oud-West',
+    name: 'Overtoomse Veld',
     cityName: 'Amsterdam',
     style: 'desert-warm',
     imageCount: 7,
   }, stub);
-  assert.ok(card.nameLines.length === 2, 'Oud-West should split to two lines');
+  assert.ok(card.nameLines.length === 2, 'Overtoomse Veld should split to two lines');
   const painted = measurePaintedLetterBounds(card);
   const faces = measurePaintedFaceBounds(card);
   const gSize = Number(/(\d+)px/.exec(card.greetingFont)?.[1] ?? 20);

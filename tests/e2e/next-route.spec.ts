@@ -13,13 +13,30 @@ test('Enter on the finish card rides on from the arrival', async ({ page }, test
     return { from: game.routeFrom?.id, to: game.routeTo?.id };
   });
   expect(before.to).toBeTruthy();
-  await page.evaluate(() => {
+  // Riding on reuses the city already in memory (user report 2026-10-03, "why
+  // does hitting enter at the end of route reload the whole game?"): no
+  // loading screen, the same routing network, racing again in the same call.
+  const rideOn = await page.evaluate(() => {
     const game = (window as any).canalRecallGame;
+    const track = game.track;
     game.state = 5; // FINISHED
+    const t0 = performance.now();
     game._runFinishAction('again');
+    return {
+      ms: performance.now() - t0,
+      state: game.state,
+      sameTrack: game.track === track,
+      from: game.routeFrom?.id,
+      to: game.routeTo?.id,
+      start: game.track.startPoint,
+      player: { x: game.player.x, y: game.player.y },
+    };
   });
-  await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame.routeFrom?.id), { timeout: 60000 }).toBe(before.to);
-  const after = await page.evaluate(() => ({ to: (window as any).canalRecallGame.routeTo?.id }));
-  expect(after.to).not.toBe(before.to);
-  expect(after.to).not.toBe(before.from);
+  expect(rideOn.state).toBe(4); // RACING, never LOADING (2)
+  expect(rideOn.sameTrack).toBe(true);
+  expect(rideOn.from).toBe(before.to);
+  expect(rideOn.to).not.toBe(before.to);
+  expect(rideOn.to).not.toBe(before.from);
+  expect(Math.hypot(rideOn.player.x - rideOn.start.x, rideOn.player.y - rideOn.start.y)).toBeLessThan(1);
+  console.log(`ride on took ${rideOn.ms.toFixed(0)} ms`);
 });
