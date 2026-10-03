@@ -152,9 +152,20 @@ class VectorBasemap {
         };
         this._detailedBuildings.setEnabled(this._detailedBuildingsVisible);
       }
-      // Signature landmark GLBs are built and demoable, but disabled in the
-      // live game: thirteen meshopt models were too expensive on the shared
-      // MapLibre/Three canvas (see TODO item 22).
+      const signature = window.CanalRecallSignature3D;
+      const manualModels = window.CanalRecallSignatureLandmarks?.MANUAL_LANDMARKS;
+      if (signature?.SignatureLandmarks && manualModels) {
+        this._signatureLandmarks = new signature.SignatureLandmarks(this.map, maplibregl, {
+          models: manualModels,
+          manageBasemapFilter: false,
+          onModelShown: () => {
+            this._syncDetailedBuildingLayers();
+            this._raisePoiLayers();
+            this.setActiveLandmark(this._activeLandmark);
+          },
+        });
+        this._signatureLandmarks.setEnabled(!this._detailedBuildingsVisible && !this._measuredColoursOnly);
+      }
       if (window.CanalRecallVehicles) {
         const { PlayerBike3D, PlayerBoat3D, PlayerTransit3D } = window.CanalRecallVehicles;
         if (PlayerBike3D) this._playerBike = new PlayerBike3D(this.map, maplibregl);

@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {attachNeighborhoodStories, neighborhoodFactForRound, type NeighborhoodStoriesFile} from './neighborhoodStories';
+import {answerTeaser} from './answerSummary';
+const fact=(text:string)=>({text,sourceUrl:'https://example.org/evidence',sourceLabel:'Source',evidence:'Recorded supporting passage',verification:'grounded' as const,reviewedAt:'2026-10-03'});
+const file:NeighborhoodStoriesFile={version:1,cityId:'amsterdam',entries:[{areaName:'Jordaan',topFacts:[fact('Fixed fact'),fact('Second fact')],rotatingFacts:[fact('Fixed fact'),fact('Rotate A'),fact('Rotate A'),fact('Rotate B'),{...fact('Unsourced'),sourceUrl:''}]}]};
+const features=[{name:'Jordaan',type:'neighborhood' as const,cityId:'amsterdam'},{name:'Jordaan',type:'neighborhood' as const,cityId:'utrecht'},{name:'Jordaan café',type:'neighborhood' as const,cityId:'amsterdam'},{name:'Jordaan',type:'street' as const,cityId:'amsterdam'}];
+const result=attachNeighborhoodStories(features,file);
+assert.equal(result[0].neighborhoodTopFacts?.length,2);
+assert.deepEqual(result[0].neighborhoodRotatingFacts?.map(f=>f.text),['Rotate A','Rotate B']);
+for(const other of result.slice(1))assert.equal(other.neighborhoodTopFacts,undefined);
+assert.equal(neighborhoodFactForRound(result[0].neighborhoodRotatingFacts,42,1)?.text,neighborhoodFactForRound(result[0].neighborhoodRotatingFacts,42,1)?.text);
+assert.ok(new Set(Array.from({length:20},(_,i)=>neighborhoodFactForRound(result[0].neighborhoodRotatingFacts,i,1)?.text)).size>1);
+assert.equal(answerTeaser({...result[0],localFact:{text:'Older lead',sourceUrl:'',sourceLabel:''}}),'Fixed fact');
+assert.deepEqual(attachNeighborhoodStories(features,null),features);
+console.log('Neighborhood stories: exact area/city matching, provenance, deduplication, seeded rotation and compact lead passed.');

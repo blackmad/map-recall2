@@ -1,0 +1,662 @@
+{
+  "version": 1,
+  "cityId": "amsterdam",
+  "entries": [
+    {
+      "areaName": "Jordaan",
+      "importId": "GA01-01",
+      "importName": "Jordaan",
+      "topFacts": [
+        {
+          "text": "Construction of the Jordaan began in 1612; its streets follow older ditches and paths.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Jordaan",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Construction of the Jordaan began in 1612, when it was called Het Nieuwe Werck (The New Work). The streets and canals were built according to the old ditches and paths, which explains its unusual orientation compared to the rest of the city. In the 19th century, six of the Jordaan's canals were filled in, including the Rozengracht. The neighbourhood was traditionally a leftwing stronghold, with a stormy history. Heavy riots broke out in 1835, 1886, 1917 and 1934. The February strike of 1941 started with meetings on Noordermarkt square. The Jordaan had a lively music scene in the 20th century.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Many streets and canals are named after flowers and trees.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Jordaan",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The most common theory on the origin of the name posits derivation from the French word jardin (meaning garden); indeed, most streets and canals in the Jordaan are named after trees and flowers.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "Six canals were filled in during the 19th century, including the Rozengracht.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Jordaan",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Construction of the Jordaan began in 1612, when it was called Het Nieuwe Werck (The New Work). The streets and canals were built according to the old ditches and paths, which explains its unusual orientation compared to the rest of the city. In the 19th century, six of the Jordaan's canals were filled in, including the Rozengracht. The neighbourhood was traditionally a leftwing stronghold, with a stormy history. Heavy riots broke out in 1835, 1886, 1917 and 1934. The February strike of 1941 started with meetings on Noordermarkt square. The Jordaan had a lively music scene in the 20th century.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "On summer Sundays some of the Jordaan's hofjes, courtyards built by wealthy Amsterdammers to house elderly women, open for free concerts. The oldest surviving one is the Sint Andrieshofje (1614) on the Egelantiersgracht.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Jordaan",
+          "sourceLabel": "English and Dutch Wikipedia",
+          "evidence": "On summer Sundays some of the Jordaan's hofjes, courtyards built by wealthy Amsterdammers to house elderly women, open for free concerts. The oldest surviving one is the Sint Andrieshofje (1614) on the Egelantiersgracht.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Nieuwmarkt/Lastage",
+      "importId": "GA01-03",
+      "importName": "Nieuwmarkt / Lastage",
+      "topFacts": [
+        {
+          "text": "The Waag at the centre of Nieuwmarkt began as a medieval city gate.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwmarkt_(Amsterdam)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "De Nieuwmarkt is een plein in het centrum van Amsterdam, tussen de Geldersekade en de Kloveniersburgwal. Het grenst in het noorden aan de Zeedijk en in het zuiden aan de Sint Antoniesbreestraat en vormt het middelpunt van de Nieuwmarktbuurt. Centraal staat de Waag, oorspronkelijk een 15e-eeuwse stadspoort. De gebouwen rondom het plein zijn bijna alle aangewezen als rijksmonument of gemeentelijk monument.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The square is part of Amsterdam’s Chinatown.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Nieuwmarkt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The Nieuwmarkt, dominated by the Waag, a medieval city gate later turned weighing house, is considered part of Amsterdam's Chinatown.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "Nieuwmarkt square was created in 1614 by covering the water around the old gate.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwmarkt_(Amsterdam)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Sinds ca. 1425 ligt hier de Bijleveldschesluis tussen het water van de Geldersekade en de Kloveniersburgwal. De Sint Anthoniespoort (nu de Waag) werd gebouwd als onderdeel van de middeleeuwse stadsommuring in de jaren 1481-1494. Het plein ontstond in 1614 toen het water rondom de Sint Anthoniespoort overkluisd werd. Door de stadsuitbreiding (bouw van de Lastage) verschoof de stadsgrens verder naar de Montelbaanstoren en de Oude Schans. De Sint Anthoniespoort verloor zijn verdedigende functie en werd een waag.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "De Pijp",
+      "importId": "GK13-01",
+      "importName": "De Pijp",
+      "topFacts": [
+        {
+          "text": "A neighbourhood south of the centre, with roots in Amsterdam’s 19th-century expansion.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/De_Pijp",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The older section of De Pijp (nowadays called Oude Pijp) was built cheaply in the 19th century to accommodate a rapidly expanding population. The original plan was idealistic. In the spirit of Sarphati the young city engineer Van Niftrik submitted plans in 1866 for a full-scale expansion belt in the polder area along the edge of Amsterdam, where De Pijp (then called Neighborhood YY), a beautiful new centre, would be built.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The Albert Cuyp Market is one of its best-known meeting places.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/De_Pijp",
+          "sourceLabel": "Wikipedia (translated from Dutch)",
+          "evidence": "The Albert Cuypmarkt on the Albert Cuypstraat is the largest daily market in the Netherlands, held Monday to Saturday.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "Most streets here are named after Dutch painters, including Jan Steen and Frans Hals.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/De_Pijp",
+          "sourceLabel": "Wikipedia",
+          "evidence": "De Pijp (English: The Pipe) is a neighbourhood of Amsterdam, Netherlands. It is located directly south of Amsterdam's city centre and it is part of the borough Amsterdam-Zuid, in a part of the city known as the Old South (Oud Zuid). It is served by De Pijp metro station. Most streets in De Pijp are named after Dutch painters, like Jan Steen, Frans Hals, Ruysdael and Vincent van Gogh.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Van Niftrik’s original 1866 plan imagined a grand new urban centre here.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/De_Pijp",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The older section of De Pijp (nowadays called Oude Pijp) was built cheaply in the 19th century to accommodate a rapidly expanding population. The original plan was idealistic. In the spirit of Sarphati the young city engineer Van Niftrik submitted plans in 1866 for a full-scale expansion belt in the polder area along the edge of Amsterdam, where De Pijp (then called Neighborhood YY), a beautiful new centre, would be built.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Rivierenbuurt",
+      "importId": "GK13-02",
+      "importName": "Rivierenbuurt",
+      "topFacts": [
+        {
+          "text": "The name means “Rivers Neighbourhood”; many streets are named after Dutch rivers.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Rivierenbuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The Dutch word Rivierenbuurt translates as 'Rivers Neighbourhood'; most streets in the area are named after rivers in the Netherlands.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The neighbourhood lies between the Amstel, Boerenwetering and Amstelkanaal.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Rivierenbuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Rivierenbuurt is a neighbourhood of Amsterdam, Netherlands. The neighbourhood is situated in the eastern part of the Amsterdam borough of Amsterdam-Zuid, bordered by the river Amstel to the east, the Boerenwetering canal in the west, the Amstelkanaal in the north and the A10 motorway in the south. In 2013, the Rivierenbuurt had approximately 28,400 residents.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "In the 1920s, a partnership of 71 builders constructed 1,739 homes here.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Rivierenbuurt_(Amsterdam)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "De Dienst der Publieke Werken van de gemeente Amsterdam gaf in 1921 een flinke lap onteigende grond ten noordoosten van het Victorieplein in erfpacht uit aan Amstels Bouwvereniging, waarin 71 bouwondernemingen samenwerkten. Hier bouwden zij uiteindelijk 1739 kleine en gebrekkige middenstandswoningen met een huur tussen de 11 en 20 gulden per week. In 1925 werden de woningen voltooid, maar 16 bouwparticipanten konden meteen al hun verplichtingen niet nakomen, en de gemeente kocht daarop hun bezit.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Many middle-class Jewish families moved here, seeing it as a step up from the working-class Jodenbuurt. On 3 November 1941 the German occupiers turned the playground on the Gaaspstraat into a market where Jews were required to shop.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Rivierenbuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Many middle-class Jewish families moved here, seeing it as a step up from the working-class Jodenbuurt. On 3 November 1941 the German occupiers turned the playground on the Gaaspstraat into a market where Jews were required to shop.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Apollobuurt",
+      "importId": "GK11-01",
+      "importName": "Apollobuurt",
+      "topFacts": [
+        {
+          "text": "Spacious streets from Berlage’s Plan Zuid, largely built in the 1920s and 1930s.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Apollobuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Het merendeel van de gebouwen in de wijk dateert uit de jaren '20 en '30 van de 20e eeuw en is opgetrokken in de stijl van de Amsterdamse school. De wijk maakt in zijn geheel deel uit van het Plan Zuid van Berlage. De populaire benaming gedurende het interbellum was Nieuw-Zuid, in Jiddische kringen Joods-Zuid.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Beethovenstraat is the neighbourhood’s main shopping street.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Apollobuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Apollobuurt is a neighborhood of Amsterdam, Netherlands. It is part of the borough of Amsterdam-Zuid. The neighborhood is characterized by a spacious and luxurious design. The streets are named after Greek legends, painters and composers. The main east–west streets are Apollolaan and Stadionweg, the main shopping street is Beethovenstraat.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "John Lennon and Yoko Ono held their 1969 Bed-In for Peace at the Amsterdam Hilton here.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Apollobuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "John Lennon and Yoko Ono held their 1969 Bed-In for Peace at the Amsterdam Hilton, in this neighbourhood.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "John Lennon and Yoko Ono held their 1969 Bed-In for Peace at the Amsterdam Hilton, in this neighbourhood.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Apollobuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "John Lennon and Yoko Ono held their 1969 Bed-In for Peace at the Amsterdam Hilton, in this neighbourhood.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Stadionbuurt",
+      "importId": "GK11-02",
+      "importName": "Stadionbuurt",
+      "topFacts": [
+        {
+          "text": "The name refers to Harry Elte’s old national stadium, rather than the later Olympic Stadium.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Stadionbuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "De buurt is vernoemd naar het nationale stadion van Harry Elte en niet naar het Olympisch Stadion van Jan Wils.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Its housing plan included more than 1,750 homes to help relieve Amsterdam’s housing shortage.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Stadionbuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Het uitgebreide plan voor de Stadionbuurt met ruim 1750 woningen was een van de ambitieuze pogingen van Arie Keppler, directeur van de Gemeentelijke Woningdienst Amsterdam, om de toenmalige woningnood te bestrijden onder door de gemeente geregisseerde condities. In deze periode won het idee terrein dat huizen en stratenwanden in een samenhangend ontwerp dienden te worden opgenomen. Duitse stedenbouwkundigen met hun zogenoemde 'einheitliche Blockfront' waren zeer invloedrijk voor deze stroming, en Keppler was hiervan een enthousiast propagandist.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": []
+    },
+    {
+      "areaName": "Museumkwartier",
+      "importId": "GK11-03",
+      "importName": "Museumkwartier",
+      "topFacts": [
+        {
+          "text": "A neighbourhood centred on Amsterdam’s major museums and cultural institutions.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Museumkwartier",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The neighbourhood takes its name from the major museums at Museumplein: the Rijksmuseum, the Stedelijk Museum and the Van Gogh Museum.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Its houses include many Art Nouveau details.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Museumkwartier_(Amsterdam)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "In 1874 werd de Onteigeningswet aangenomen voor de bouw van het Rijksmuseum en een deftige woonwijk. Met de aanleg van de woningen werd gewacht tot de Koninklijke Waskaarsenfabriek, gelegen tussen de latere Pieter de Hoochstraat en de Nicolaas Maesstraat, in 1906 sloot. Het stratenpatroon ontstond vanaf 1902 en was gebaseerd op ontwerpen van Pierre Cuypers uit 1891. Vanaf 1907 werd het Museumkwartier bebouwd. De mooiste straat is volgens velen de Jan Luijkenstraat. De huizen worden hier gekenmerkt door vele jugendstil-elementen.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "The street layout draws on designs by Pierre Cuypers from 1891.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Museumkwartier_(Amsterdam)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "In 1874 werd de Onteigeningswet aangenomen voor de bouw van het Rijksmuseum en een deftige woonwijk. Met de aanleg van de woningen werd gewacht tot de Koninklijke Waskaarsenfabriek, gelegen tussen de latere Pieter de Hoochstraat en de Nicolaas Maesstraat, in 1906 sloot. Het stratenpatroon ontstond vanaf 1902 en was gebaseerd op ontwerpen van Pierre Cuypers uit 1891. Vanaf 1907 werd het Museumkwartier bebouwd. De mooiste straat is volgens velen de Jan Luijkenstraat. De huizen worden hier gekenmerkt door vele jugendstil-elementen.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Willemspark",
+      "importId": "GK11-04",
+      "importName": "Willemspark",
+      "topFacts": [
+        {
+          "text": "Planned as a villa district around ponds continuing into the Vondelpark.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Willemspark_(Amsterdam)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Het Willemspark werd in 1881 door J.G. van Niftrik gepland als villapark rondom vijvers die doorlopen in het Vondelpark. Pas vanaf 1902 werd de villawijk tussen Vondelpark en Koninginneweg aangelegd en vernoemd naar Koning Willem III. Beroemd is vooral de centrale zichtas van het Emmaplein. Aan het einde van de 19de eeuw was het terrein rondom de Van Eeghenstraat, langs het Vondelpark, in handen van de N.V. De bouwonderneming Willemspark.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Its villa neighbourhood between Vondelpark and Koninginneweg was laid out from 1902.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Willemspark_(Amsterdam)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Het Willemspark werd in 1881 door J.G. van Niftrik gepland als villapark rondom vijvers die doorlopen in het Vondelpark. Pas vanaf 1902 werd de villawijk tussen Vondelpark en Koninginneweg aangelegd en vernoemd naar Koning Willem III. Beroemd is vooral de centrale zichtas van het Emmaplein. Aan het einde van de 19de eeuw was het terrein rondom de Van Eeghenstraat, langs het Vondelpark, in handen van de N.V. De bouwonderneming Willemspark.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": []
+    },
+    {
+      "areaName": "Buitenveldert",
+      "importId": "GK12-01",
+      "importName": "Buitenveldert",
+      "topFacts": [
+        {
+          "text": "A post-war garden suburb south of the city, planned as a garden suburb.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Buitenveldert_(tuinstad)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Buitenveldert is een naoorlogse tuinstad in het stadsdeel Zuid van de gemeente Amsterdam, in de provincie Noord-Holland. In de huidige gemeentelijke gebiedsindeling bestaat het woongebied uit de wijken Buitenveldert-West en Buitenveldert-Oost. Gebieden die historisch tot Buitenveldert werden gerekend, waaronder delen rond de Vrije Universiteit en de Zuidas, behoren tegenwoordig tot de afzonderlijke wijk Zuidas.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Jewish schools, synagogues and kosher shops are part of the area’s community life.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Buitenveldert",
+          "sourceLabel": "English and Dutch Wikipedia",
+          "evidence": "Buitenveldert is Amsterdam's modern Jewish quarter: synagogues, Jewish schools, kosher shops and care homes gather around the Kastelenstraat. Chief Rabbi Aron Schuster opened its first synagogue in 1965.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "The name comes from an older hamlet on the Amstelveenseweg.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Buitenveldert_(tuinstad)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "De naam is ontleend aan de gelijknamige buurtschap aan de Amstelveenseweg, ter hoogte van de Begraafplaats Buitenveldert. Kerkelijk was Buitenveldert lange tijd verbonden met Nieuwer-Amstel, dat in 1964 de naam Amstelveen kreeg.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The polder was annexed by Amsterdam in 1921, before becoming part of the 1935 expansion plan.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Buitenveldert",
+          "sourceLabel": "Wikipedia",
+          "evidence": "From the Middle Ages the 'Binnendijksche Buitenveldertse' polder in the rural Amstelland region was part of the Nieuwer-Amstel municipality. In 1921, the Buitenveldert polder was annexed by the city of Amsterdam. Since then, the Kalfjeslaan on the southside of Buitenveldert has been the city limit. As part of the Algemene Uitbreidingsplan ('General Expansion Plan') of 1935, the Buitenveldert polder became the site of a new suburb. It was the only suburb on the south side of the city; most other suburbs were planned on the west side.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Zuidas",
+      "importId": "GK12-02",
+      "importName": "Zuidas",
+      "topFacts": [
+        {
+          "text": "Amsterdam’s “South Axis”: a business district and residential neighbourhood along the A10.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Zuidas",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The Zuidas (literally South Axis in Dutch) is a business district and residential neighbourhood in Amsterdam, Netherlands, in the borough of Amsterdam-Zuid. Also known as the \"Financial Mile,\" it lies along the southern sector of the A10 ring road, between Oud-Zuid and the Rivierenbuurt to the north and the garden suburb of Buitenveldert to the south.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The area is also known as the “Financial Mile”.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Zuidas",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The Zuidas (literally South Axis in Dutch) is a business district and residential neighbourhood in Amsterdam, Netherlands, in the borough of Amsterdam-Zuid. Also known as the \"Financial Mile,\" it lies along the southern sector of the A10 ring road, between Oud-Zuid and the Rivierenbuurt to the north and the garden suburb of Buitenveldert to the south.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "The World Trade Center opened here in 1985; the city adopted its Zuidas masterplan in 1998.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Zuidas",
+          "sourceLabel": "Wikipedia",
+          "evidence": "De Nederlandse Middenstandsbank opende in 1974 een hoofdkantoor in het gebied; in 1985 volgde het World Trade Center. Vanaf het begin van de jaren negentig onderzocht de gemeente de ontwikkeling van een goed bereikbare kantorenlocatie tussen Schiphol en Amsterdam-Zuidoost. De keuze van ABN AMRO om hier een nieuw hoofdkantoor te bouwen, dat tussen 1996 en 1999 verrees, werkte als katalysator voor de verdere ontwikkeling. Eind 1997 wees het Rijk Zuidas aan als een van de Nieuwe Sleutelprojecten. In januari 1998 stelde de Amsterdamse gemeenteraad het Masterplan Zuidas vast.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Zuidas is known as the 'Financial Mile'. The Amsterdamsche Football Club, founded in 1895 and one of the oldest football clubs in the Netherlands, plays here at Sportpark Goed Genoeg.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Zuidas",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Zuidas is known as the 'Financial Mile'. The Amsterdamsche Football Club, founded in 1895 and one of the oldest football clubs in the Netherlands, plays here at Sportpark Goed Genoeg.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Spaarndammerbuurt",
+      "importId": "GE03-01",
+      "importName": "Spaarndammerbuurt",
+      "topFacts": [
+        {
+          "text": "Known for Michel de Klerk’s Amsterdam School workers’ housing at Het Schip.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Spaarndammerbuurt",
+          "sourceLabel": "Wikipedia (translated from Dutch)",
+          "evidence": "Its best-known buildings are Michel de Klerk's Amsterdam School workers' housing by the Spaarndammerplantsoen. The former post office in the complex has been Museum Het Schip since 2001.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The neighbourhood’s name comes via Spaarndammerstraat from the village of Spaarndam.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Spaarndammerbuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "De buurt ontleent zijn naam aan de Spaarndammerstraat die op zijn beurt op 20 november 1878 is vernoemd naar de plaats Spaarndam ten noordoosten van Haarlem evenals de Spaarndammerdijk en het Spaarndammerplantsoen die de noordelijke en oostelijke begrenzing vormen.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "The former post office in the Het Schip complex became a museum in 2001.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Spaarndammerbuurt",
+          "sourceLabel": "Wikipedia (translated from Dutch)",
+          "evidence": "Its best-known buildings are Michel de Klerk's Amsterdam School workers' housing by the Spaarndammerplantsoen. The former post office in the complex has been Museum Het Schip since 2001.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Houthaven",
+      "importId": "GE03-02",
+      "importName": "Houthavens",
+      "topFacts": [
+        {
+          "text": "A former timber port on the IJ, now redeveloped as a residential neighbourhood.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Houthaven",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The Houthaven was dug out in 1876, together with the North Sea Canal. It was the first port in Amsterdam to be dug out (the earlier ones using existing waters). Its purpose was to tranship and store lumber. As lumber was increasingly transported by road, parts of the port were filled up with sand to be used for other purposes in 1945. The Minervahaven remained in use for lumber transhipment and wood processing industry was located there but port-related activities decreased strongly over time. The area is currently being redeveloped.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The name literally means “timber port”.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Houthaven",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Houthaven means 'timber port': it was dug in 1876 to tranship and store timber.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "Dug in 1876, it was Amsterdam’s first harbour excavated rather than formed from existing water.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Houthaven",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The Houthaven was dug out in 1876, together with the North Sea Canal. It was the first port in Amsterdam to be dug out (the earlier ones using existing waters). Its purpose was to tranship and store lumber. As lumber was increasingly transported by road, parts of the port were filled up with sand to be used for other purposes in 1945. The Minervahaven remained in use for lumber transhipment and wood processing industry was located there but port-related activities decreased strongly over time. The area is currently being redeveloped.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The Houthaven was the first port in Amsterdam to be dug out rather than made from existing water. An apartment building by MVRDV from 2002 stands on stilts in the water here.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Houthaven",
+          "sourceLabel": "English and Dutch Wikipedia",
+          "evidence": "The Houthaven was the first port in Amsterdam to be dug out rather than made from existing water. An apartment building by MVRDV from 2002 stands on stilts in the water here.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "De Baarsjes",
+      "importId": "GE05-01",
+      "importName": "De Baarsjes",
+      "topFacts": [
+        {
+          "text": "A district developed from the 1920s around tram routes to the centre.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/De_Baarsjes",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Built during the first half of the 20th century along a tram line that brought commuters to the city centre, De Baarsjes was formulated by the architect Hendrik Petrus Berlage who designed the main square Mercatorplein. In 1990, De Baarsjes became a borough (Dutch: stadsdeel) of Amsterdam. As it was mostly built before World War II, it was all built to last so when it came to urban renewal in the 1990s, most buildings were renovated and not razed to the ground. Facades were cleaned, suspicious bars and bordellos were closed and ambitious plans to deal with crime and safety were undertaken.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Berlage designed its central square, Mercatorplein.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/De_Baarsjes",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Built during the first half of the 20th century along a tram line that brought commuters to the city centre, De Baarsjes was formulated by the architect Hendrik Petrus Berlage who designed the main square Mercatorplein. In 1990, De Baarsjes became a borough (Dutch: stadsdeel) of Amsterdam. As it was mostly built before World War II, it was all built to last so when it came to urban renewal in the 1990s, most buildings were renovated and not razed to the ground. Facades were cleaned, suspicious bars and bordellos were closed and ambitious plans to deal with crime and safety were undertaken.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "The name traces back to an inn called De Drie Baarsjes — “The Three Little Perches”.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/De_Baarsjes",
+          "sourceLabel": "Wikipedia",
+          "evidence": "The name comes from the former hamlet De Baarsjes (The Little Perches) that was formed in the 17th century, which in turn derived its name from an inn called De Drie Baarsjes (The Three Little Perches) situated on the eastern border of the present-day district.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The Mercatorplein was designed by Berlage himself and is the only square of his in Amsterdam that survives complete.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/De_Baarsjes_(wijk)",
+          "sourceLabel": "Wikipedia (translated from Dutch)",
+          "evidence": "The Mercatorplein was designed by Berlage himself and is the only square of his in Amsterdam that survives complete.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Oostelijk Havengebied",
+      "importId": "GM15-02",
+      "importName": "Oostelijk Havengebied",
+      "topFacts": [
+        {
+          "text": "The Eastern Docklands grew from Amsterdam’s late-19th-century port expansion.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Oostelijk_Havengebied_(Amsterdam)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Het Oostelijk Havengebied is een woonwijk in de Nederlandse stad Amsterdam. Het is tevens een van de vijftien wijken binnen het stadsdeel Amsterdam-Oost. Eind negentiende eeuw werd dit gebied, gelegen aan de zuidzijde van het IJ en dicht bij de Zuiderzee, bestemd voor de uitbreiding van de haven van Amsterdam.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Today the former harbour area is a residential district on the south side of the IJ.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Oostelijk_Havengebied_(Amsterdam)",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Het Oostelijk Havengebied is een woonwijk in de Nederlandse stad Amsterdam. Het is tevens een van de vijftien wijken binnen het stadsdeel Amsterdam-Oost. Eind negentiende eeuw werd dit gebied, gelegen aan de zuidzijde van het IJ en dicht bij de Zuiderzee, bestemd voor de uitbreiding van de haven van Amsterdam.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "Loods 6 (1922), the only harbour shed preserved in full, now houses more than a hundred artists.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Oostelijk_Havengebied",
+          "sourceLabel": "Wikipedia (translated from Dutch)",
+          "evidence": "Loods 6 (1922), the only harbour shed preserved in full, now houses more than a hundred artists.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Tuindorp Nieuwendam",
+      "importId": "GN20-01",
+      "importName": "Tuindorp Nieuwendam",
+      "topFacts": [
+        {
+          "text": "A garden village developed in the 1920s.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Tuindorp_Nieuwendam",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Tuindorp Nieuwendam is a neighborhood of Amsterdam, Netherlands. The neighborhood is a 'garden village' and was developed in the 1920s.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Its architecture uses a rural variant of the Amsterdam School.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Tuindorp_Nieuwendam",
+          "sourceLabel": "Wikipedia (translated from Dutch)",
+          "evidence": "Its houses are a high point of the rural variant of the Amsterdam School, and it was considered one of the most beautiful garden villages of its day.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "The name links the garden village to the older dyke village of Nieuwendam.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Tuindorp_Nieuwendam",
+          "sourceLabel": "Wikipedia",
+          "evidence": "De Amsterdamse wijk Tuindorp Nieuwendam (3418 inwoners in 2012) ontleent zijn naam aan het gelijknamige dijkdorp.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Kinkerbuurt",
+      "importId": "GE05-02",
+      "importName": "Oud-West (Kinkerbuurt)",
+      "topFacts": [
+        {
+          "text": "Named after the poet and lawyer Johannes Kinker.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Kinkerbuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Kinkerstraat, the area's main shopping street, was named after Dutch poet and lawyer Johannes Kinker.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "An early-20th-century district whose streets commemorate writers and poets.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Kinkerbuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "De Kinkerbuurt werd begin 20e eeuw aangelegd, naar een ontwerp van de aannemer-architect Nicolaas Redeker Bisdom, grotendeels op in 1896 geannexeerd grondgebied van Nieuwer-Amstel. Zoals in andere wijken in Amsterdam-West en -Oost werd er snel en goedkoop gebouwd, de zogenaamde revolutiebouw. De straten werden genoemd naar schrijvers en dichters, waarvan Johannes Kinker nu nog vooral bekend is door zijn straatnaam. In het midden van wat nu de Kinkerbuurt is werd in 1902 de Remise Tollensstraat door de Gemeentetram Amsterdam in gebruik genomen.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "The city tram opened the Tollensstraat depot in 1902.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Kinkerbuurt",
+          "sourceLabel": "Wikipedia",
+          "evidence": "De Kinkerbuurt werd begin 20e eeuw aangelegd, naar een ontwerp van de aannemer-architect Nicolaas Redeker Bisdom, grotendeels op in 1896 geannexeerd grondgebied van Nieuwer-Amstel. Zoals in andere wijken in Amsterdam-West en -Oost werd er snel en goedkoop gebouwd, de zogenaamde revolutiebouw. De straten werden genoemd naar schrijvers en dichters, waarvan Johannes Kinker nu nog vooral bekend is door zijn straatnaam. In het midden van wat nu de Kinkerbuurt is werd in 1902 de Remise Tollensstraat door de Gemeentetram Amsterdam in gebruik genomen.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Oostelijke Eilanden",
+      "importId": "GA02-04",
+      "importName": "Oostelijke Eilanden / Kadijken",
+      "topFacts": [
+        {
+          "text": "Amsterdam’s Eastern Islands were created for shipbuilding and maritime trade.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Oostelijke_Eilanden",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Van oudsher waren op de Oostelijke Eilanden vanwege de gunstige ligging ten opzichte van het IJ veel scheepswerven en toeleveringsbedrijven, maar ook tientallen chirurgijns en apothekers hadden zich er gevestigd. De Admiraliteit van Amsterdam had zijn plek op Kattenburg, hier is nog het Marine Etablissement Amsterdam. De Vereenigde Oostindische Compagnie had zijn pakhuis en werven op Oostenburg. Het markantste gebouw is 's Lands Zeemagazijn, waar sinds 1973 het Nederlands Scheepvaartmuseum is gevestigd.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The islands are Kattenburg, Wittenburg and Oostenburg.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Oostelijke_Eilanden",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Oostelijke Eilanden (lit. Eastern Islands), also known as Oostelijke Eilanden en Kadijken (Eastern Islands and Quays), is a neighbourhood in the centre of Amsterdam, Netherlands, consisting of Kattenburg, Wittenburg and Oostenburg.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "The Dutch East India Company had its warehouse and shipyards on Oostenburg.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Oostelijke_Eilanden",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Van oudsher waren op de Oostelijke Eilanden vanwege de gunstige ligging ten opzichte van het IJ veel scheepswerven en toeleveringsbedrijven, maar ook tientallen chirurgijns en apothekers hadden zich er gevestigd. De Admiraliteit van Amsterdam had zijn plek op Kattenburg, hier is nog het Marine Etablissement Amsterdam. De Vereenigde Oostindische Compagnie had zijn pakhuis en werven op Oostenburg. Het markantste gebouw is 's Lands Zeemagazijn, waar sinds 1973 het Nederlands Scheepvaartmuseum is gevestigd.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The people of Kattenburg were known as a rowdy bunch, the 'Bijltjes', named after their main carpentry tool.",
+          "sourceUrl": "https://nl.wikipedia.org/wiki/Oostelijke_Eilanden",
+          "sourceLabel": "Wikipedia (translated from Dutch)",
+          "evidence": "The people of Kattenburg were known as a rowdy bunch, the 'Bijltjes', named after their main carpentry tool.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    },
+    {
+      "areaName": "Weesp",
+      "importId": "GS25-01",
+      "importName": "Weesp (Centrum)",
+      "topFacts": [
+        {
+          "text": "Weesp is a historic town on the Vecht, part of Amsterdam since March 2022.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Weesp",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Weesp is a city and an urban area in the municipality of Amsterdam in the province of North Holland, Netherlands. It had a population of 20,445 in 2021. It lies on the river Vecht and next to the Amsterdam–Rhine Canal in an area called the Vechtstreek. The former municipality of Weesp merged with Amsterdam on 24 March 2022.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "The river Vecht shaped the town’s trade and defensive history.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Weesp",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Until the early Middle Ages the region around Weesp was an uninhabited peat bog. Weesp (Wesopa in Latin documents) was granted city rights in 1355 and celebrated its 650th anniversary as a city in 2005. From the late Middle Ages, the river Vecht was a defensive line for the County of Holland and it remained a military defensive line until the Second World War. Weesp was strongly fortified, more than its size would justify; for most of its history it had a few thousand inhabitants. The defensive lines consisted of inundation zones, which would be flooded in wartime (the Hollandic Water Line).",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ],
+      "rotatingFacts": [
+        {
+          "text": "Weesp received city rights in 1355.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Weesp",
+          "sourceLabel": "Wikipedia",
+          "evidence": "Until the early Middle Ages the region around Weesp was an uninhabited peat bog. Weesp (Wesopa in Latin documents) was granted city rights in 1355 and celebrated its 650th anniversary as a city in 2005. From the late Middle Ages, the river Vecht was a defensive line for the County of Holland and it remained a military defensive line until the Second World War. Weesp was strongly fortified, more than its size would justify; for most of its history it had a few thousand inhabitants. The defensive lines consisted of inundation zones, which would be flooded in wartime (the Hollandic Water Line).",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        },
+        {
+          "text": "Its cocoa made Weesp known worldwide as the 'cacaostad' (cocoa town), and the first Dutch porcelain was made here in 1759.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Weesp",
+          "sourceLabel": "English and Dutch Wikipedia",
+          "evidence": "Its cocoa made Weesp known worldwide as the 'cacaostad' (cocoa town), and the first Dutch porcelain was made here in 1759.",
+          "verification": "grounded",
+          "reviewedAt": "2026-10-03"
+        }
+      ]
+    }
+  ]
+}

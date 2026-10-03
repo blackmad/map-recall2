@@ -49,51 +49,71 @@
       }
     },
     "centraal-station": {
-      "name": "Centraal station",
+      "id": "centraal-station",
+      "name": "Amsterdam Centraal — Cuypersgebouw",
       "landmarkId": "extract_landmarks_332626598",
       "modelUrl": "./models/centraal-station.glb",
+      "suppressOsmIds": [
+        "w332626598"
+      ],
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 210.6533,
+      "footprint": {
+        "centre": [
+          4.899750668752946,
+          52.37855998792934
+        ],
+        "headingDegrees": 120.65330083236796,
+        "lengthMetres": 244.34798071019168,
+        "widthMetres": 30.916412054875813
+      },
+      "surveyed": {
+        "anchor": [
+          4.899750668752946,
+          52.37855998792934
+        ],
+        "northOffsetDegrees": 30.65330083236796,
+        "source": "OSM Cuypersgebouw footprint centre and long-axis bearing"
+      },
+      "attribution": {
+        "title": "Amsterdam Centraal",
+        "author": "Map Recall",
+        "sourceUrl": "https://sketchfab.com/3d-models/centraal-station-amsterdam-582a09c29440490da209c26cc9dcc147",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate."
+      },
       "bounds": {
         "min": [
-          -330.99652421559216,
-          -0.01393385274053019,
-          -291.8818965629415
+          -124.5,
+          0,
+          -16
         ],
         "max": [
-          330.99659862965376,
-          34.82559213118486,
-          291.6426057454553
+          124.5,
+          36.5,
+          18.950000762939453
         ]
       },
       "placement": {
         "anchor": [
-          4.9000903650085235,
-          52.378838075868146
+          4.899750668752946,
+          52.37855998792934
         ],
         "altitudeMetres": 0,
-        "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 307.6533008323679,
+        "modelRotationDegrees": 120.65330083236796,
+        "facadeBearingDegrees": 331.30660083236796,
         "scale": 1
       },
       "extent": {
-        "widthMetres": 661.9931228452459,
-        "heightMetres": 34.83952598392539,
-        "depthMetres": 583.5245023083968,
-        "depthCoverage": 18.874263328896518
+        "widthMetres": 249,
+        "heightMetres": 36.5,
+        "depthMetres": 34.95000076293945,
+        "depthCoverage": 1.1304675555787045
       },
-      "triangles": 6588,
-      "bytes": 531984,
-      "sourceBytes": 2160976,
-      "sourceTriangles": 7560,
-      "droppedAttributes": [],
-      "maxTextureSize": 512,
-      "attribution": {
-        "title": "Centraal station",
-        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
-        "sourceUrl": "https://3dwarehouse.sketchup.com/model/6e8629eaefa7ab9f4e5ba763a187284e",
-        "licence": "3D Warehouse General Model License",
-        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
-        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
-      }
+      "triangles": 29036,
+      "bytes": 304500,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "de-beurs-van-berlage": {
       "name": "De Beurs van Berlage (Stock Exchange)",
@@ -727,6 +747,183 @@
         "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
         "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
       }
+    },
+    "muziekgebouw-bimhuis": {
+      "id": "muziekgebouw-bimhuis",
+      "name": "Muziekgebouw aan ’t IJ / Bimhuis",
+      "landmarkId": "extract_landmarks_1912967098",
+      "relatedLandmarkIds": [
+        "extract_landmarks_1651446989"
+      ],
+      "modelUrl": "./models/muziekgebouw-bimhuis.glb",
+      "suppressOsmIds": [
+        "w755464127",
+        "w755464129",
+        "w755464130",
+        "w755464132",
+        "w755504271",
+        "w755504272",
+        "w755504273",
+        "w755504274",
+        "w755504275",
+        "w755464126",
+        "w755464128"
+      ],
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 196,
+      "surveyed": {
+        "anchor": [
+          4.91313365,
+          52.37829585
+        ],
+        "northOffsetDegrees": 15.8,
+        "source": "OSM main auditorium w755464132 rectangle centre / bearing"
+      },
+      "attribution": {
+        "title": "Muziekgebouw and Bimhuis",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.studiocarchitecten.nl/en/bimhuis",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate."
+      },
+      "bounds": {
+        "min": [
+          -38.5,
+          -1.907348590179936e-8,
+          -24
+        ],
+        "max": [
+          38.5,
+          21.5,
+          42
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91313365,
+          52.37829585
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 105.80000000000001,
+        "facadeBearingDegrees": 196,
+        "scale": 1
+      },
+      "extent": null,
+      "triangles": 2400,
+      "bytes": 34808,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "olvg-west": {
+      "id": "olvg-west",
+      "name": "OLVG West",
+      "landmarkId": "olvg-west",
+      "modelUrl": "./models/olvg-west.glb",
+      "suppressOsmIds": [
+        "w274704704",
+        "w274704714",
+        "w1837609",
+        "w12206467",
+        "w1488945488"
+      ],
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.8397,
+          52.37115
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM building rings; local east/south metres"
+      },
+      "attribution": {
+        "title": "OLVG West",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.olvg.nl/over-olvg/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate."
+      },
+      "bounds": {
+        "min": [
+          -101.96223449707031,
+          0,
+          -108.28498077392578
+        ],
+        "max": [
+          88.85843658447266,
+          32.95000076293945,
+          118.68679809570312
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8397,
+          52.37115
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": null,
+      "triangles": 16975,
+      "bytes": 238104,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "olvg-oost": {
+      "id": "olvg-oost",
+      "name": "OLVG Oost",
+      "landmarkId": "olvg-oost",
+      "modelUrl": "./models/olvg-oost.glb",
+      "suppressOsmIds": [
+        "w44451612",
+        "w278102390"
+      ],
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.9153,
+          52.3582
+        ],
+        "northOffsetDegrees": 0,
+        "source": "OSM building rings; local east/south metres"
+      },
+      "attribution": {
+        "title": "OLVG Oost",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.olvg.nl/over-olvg/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate."
+      },
+      "bounds": {
+        "min": [
+          -127.53434753417969,
+          0,
+          -90.67596435546875
+        ],
+        "max": [
+          130.65489196777344,
+          19.040000915527344,
+          101.70785522460938
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9153,
+          52.3582
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": null,
+      "triangles": 22930,
+      "bytes": 322736,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

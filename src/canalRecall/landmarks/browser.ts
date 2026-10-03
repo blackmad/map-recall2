@@ -34,3 +34,5 @@ export { SIGNATURE_MODELS, signatureModel, suppressedOsmIds } from './signatureM
 // Main's basemap suppression, re-exported so the signature layer can hide the
 // extrusions it replaces with the same mechanism the rest of the game uses.
 export { basemapBuildingFilter, encodeBasemapBuildingId } from '../buildingStyle';
+
+export { MANUAL_LANDMARKS } from './manualModels';

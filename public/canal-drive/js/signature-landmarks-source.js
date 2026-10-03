@@ -83,7 +83,7 @@ export class SignatureLandmarks {
    *  "why do I get both the yellow dot and the yellow building?"). */
   highlights(landmark) {
     if (!this.enabled || !landmark || !landmark.id) return false;
-    return (this._entries || []).some(entry => entry.spec.landmarkId === landmark.id);
+    return (this._entries || []).some(entry => (entry.spec.landmarkId === landmark.id || (entry.spec.relatedLandmarkIds || []).includes(landmark.id)));
   }
 
   /** Mirrors the extrusion layer's highlight onto the models, so a landmark
@@ -91,7 +91,7 @@ export class SignatureLandmarks {
   setActiveLandmark(landmark) {
     this.activeLandmarkId = landmark && landmark.id ? landmark.id : null;
     for (const entry of this._entries || []) {
-      const highlighted = entry.spec.landmarkId === this.activeLandmarkId;
+      const highlighted = (entry.spec.landmarkId === this.activeLandmarkId || (entry.spec.relatedLandmarkIds || []).includes(this.activeLandmarkId));
       if (entry.highlighted === highlighted) continue;
       entry.highlighted = highlighted;
       entry.group.traverse(child => {
@@ -243,6 +243,11 @@ export class SignatureLandmarks {
       render(_gl, args) {
         if (!owner.enabled || !owner._entries.length) return;
         for (const entry of owner._entries) {
+          // Shared WebGL canvas: distant landmarks should cost no render calls.
+          const bounds = owner.map.getBounds();
+          const [lng, lat] = entry.placement.anchor;
+          if (lng < bounds.getWest() - 0.004 || lng > bounds.getEast() + 0.004 ||
+              lat < bounds.getSouth() - 0.002 || lat > bounds.getNorth() + 0.002) continue;
           camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(entry.transform);
           renderer.resetState();
           renderer.render(entry.scene, camera);
