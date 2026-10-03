@@ -54,6 +54,21 @@ transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
 weather/time mood. Cold-open is superseded by review rides (see HISTORY,
 2026-09-30).
 
+**Local-knowledge facts for neighbourhood cards (samples shown 2026-10-03, awaiting go).**
+User ask: cards should carry what a local would say, e.g. Buitenveldert is
+Amsterdam's modern Jewish quarter (en.wikipedia lede). The current pipeline
+misses it because Buitenveldert has no Wikidata match (English article never
+read) and only lede/History/naming sentences are used. `npm run
+mine:area-facts -- [--only "A,B"]` now scores every sentence of both articles
+(found via Wikidata, title guesses, nl search and langlinks) and clusters OSM
+places inside the outline (Overpass via maps.mail.ru; overpass-api.de resets
+from the cloud proxy), all through the scrape store. Twelve cited draft picks
+are in `scripts/data/area-fact-review.json`; sample page
+https://claude.ai/artifact/WWrkvAP4jaGyzv5XQWiqAW. Open: user approval of
+rules and card placement (lead line), mining all 91 Amsterdam areas, a
+`publish` step that checks cites still match, the card UI field, the A.J.-style
+initials sentence split in `sentencesOf`, then Utrecht/Rotterdam/Den Haag.
+
 **Neighbourhood trivia gaps (pipeline built 2026-10-02, data lane).**
 `npm run fill:neighborhood-gaps -- audit|offline|online|publish` fills missing
 description, history, name origin and photo for Amsterdam areas into

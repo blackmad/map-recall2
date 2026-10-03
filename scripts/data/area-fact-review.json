@@ -1,0 +1,265 @@
+{
+ "_about": "Draft local-knowledge facts for neighbourhood cards (scripts/mine-area-facts.ts). Per area: {en} is the fact shown; {cites} are the candidate sentences it rests on, each with its source and opening words so a re-mine that changed the source is reported; {places} are OpenStreetMap clusters used only as corroboration; {needsReview:true} marks a pick that touches the content rules. Picked by a Claude session 2026-10-03 from the sample sheet; nothing here is published until a person approves it.",
+ "Buitenveldert": {
+  "en": "Buitenveldert is Amsterdam's modern Jewish quarter. Since the garden suburb was built, synagogues, Jewish schools (Rosj Pina, Maimonides, Cheider), kosher shops and care homes have gathered around the Kastelenstraat; Chief Rabbi Aron Schuster opened its first synagogue in 1965.",
+  "cites": [
+   {
+    "id": "s1",
+    "from": "It is considered the modern Jewish quarter of Amsterdam with",
+    "lang": "en",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Buitenveldert",
+    "text": "It is considered the modern Jewish quarter of Amsterdam with its synagogue, Jewish schools, nursing homes, shops and restaurants."
+   },
+   {
+    "id": "s4",
+    "from": "Opperrabbijn Aron Schuster opende in 1965 de eerste synagoge",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Buitenveldert_(tuinstad)",
+    "text": "Opperrabbijn Aron Schuster opende in 1965 de eerste synagoge in de nieuwe wijk."
+   },
+   {
+    "id": "s9",
+    "from": "Ernststraat, winkelcentrum Rooswijck langs de Buitenvelderts",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Buitenveldert_(tuinstad)",
+    "text": "Ernststraat, winkelcentrum Rooswijck langs de Buitenveldertselaan en de winkels rond de Kastelenstraat, die tevens hét centrum vormt van de Joodse gemeenschap in de wijk (zie hieronder)."
+   },
+   {
+    "id": "s17",
+    "from": "Aan de Joodse gemeenschap gelieerde scholen zijn de basissch",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Buitenveldert_(tuinstad)",
+    "text": "Aan de Joodse gemeenschap gelieerde scholen zijn de basisschool Rosj Pina en de scholen Maimonides en het Cheider."
+   }
+  ],
+  "places": [
+   {
+    "category": "Jewish school",
+    "count": 3,
+    "names": [
+     "Cheider",
+     "Maimonides",
+     "Rosj Pina"
+    ]
+   },
+   {
+    "category": "kosher shop or restaurant",
+    "count": 2,
+    "names": [
+     "Meat Me Kosher",
+     "David's Nasjville"
+    ]
+   }
+  ]
+ },
+ "De Pijp": {
+  "en": "The Albert Cuypmarkt on the Albert Cuypstraat is the largest daily market in the Netherlands, held Monday to Saturday.",
+  "cites": [
+   {
+    "id": "s6",
+    "from": "De grootste dagmarkt van Nederland, de Albert Cuypmarkt, wor",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Pijp",
+    "text": "De grootste dagmarkt van Nederland, de Albert Cuypmarkt, wordt van maandag tot en met zaterdag (behalve feestdagen) en viermaal per jaar op een zondag gehouden in de Albert Cuypstraat."
+   }
+  ]
+ },
+ "Jordaan": {
+  "en": "On summer Sundays some of the Jordaan's hofjes, courtyards built by wealthy Amsterdammers to house elderly women, open for free concerts. The oldest surviving one is the Sint Andrieshofje (1614) on the Egelantiersgracht.",
+  "cites": [
+   {
+    "id": "s5",
+    "from": "During the summer some of these yards are opened on Sundays ",
+    "lang": "en",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jordaan",
+    "text": "During the summer some of these yards are opened on Sundays during free concerts known as hofjesconcerten."
+   },
+   {
+    "id": "s10",
+    "from": "Het oudste bewaard gebleven hofje is het Sint Andrieshofje (",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Jordaan_(Amsterdam)",
+    "text": "Het oudste bewaard gebleven hofje is het Sint Andrieshofje (1614) aan de Egelantiersgracht 105."
+   }
+  ]
+ },
+ "Spaarndammerbuurt": {
+  "en": "Its best-known buildings are Michel de Klerk's Amsterdam School workers' housing by the Spaarndammerplantsoen. The former post office in the complex has been Museum Het Schip since 2001.",
+  "cites": [
+   {
+    "id": "s1",
+    "from": "De beroemdste gebouwen in de Spaarndammerbuurt zijn de door ",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Spaarndammerbuurt",
+    "text": "De beroemdste gebouwen in de Spaarndammerbuurt zijn de door Michel de Klerk ontworpen arbeiderswoningen in de stijl van de Amsterdamse School, gelegen bij het Spaarndammerplantsoen."
+   },
+   {
+    "id": "s5",
+    "from": "Nadat het postkantoor in 2000 zijn deuren had gesloten, is h",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Spaarndammerbuurt",
+    "text": "Nadat het postkantoor in 2000 zijn deuren had gesloten, is hier sinds 2001 het Museum Het Schip gevestigd."
+   }
+  ]
+ },
+ "Betondorp": {
+  "en": "Johan Cruyff was born and raised in Betondorp, across the road from Ajax's De Meer stadium, which opened in 1934. The writer Gerard Reve also grew up here, in the Ploegstraat.",
+  "cites": [
+   {
+    "id": "s4",
+    "from": "Footballer Johan Cruyff was born and raised in Betondorp.",
+    "lang": "en",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Betondorp",
+    "text": "Footballer Johan Cruyff was born and raised in Betondorp."
+   },
+   {
+    "id": "s2",
+    "from": "In his teens he joined Ajax, his hometown club that had thei",
+    "lang": "en",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Betondorp",
+    "text": "In his teens he joined Ajax, his hometown club that had their stadium and training ground right across from where he grew up."
+   },
+   {
+    "id": "s7",
+    "from": "In 1934 werd tegenover Betondorp het Stadion De Meer van voe",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Betondorp",
+    "text": "In 1934 werd tegenover Betondorp het Stadion De Meer van voetbalclub Ajax geopend."
+   },
+   {
+    "id": "s1",
+    "from": "Another famous Betondorp native was Gerard van het Reve, and",
+    "lang": "en",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Betondorp",
+    "text": "Another famous Betondorp native was Gerard van het Reve, and he lived with his older brother Karel van het Reve and their parents in the Ploegstraat (the family lived in three different houses in de Ploegstraat) in Betondorp between 1924 and 1938."
+   }
+  ]
+ },
+ "Diamantbuurt": {
+  "en": "Many diamond cutters once lived here. At one end of the Diamantstraat stands the Asscher diamond works, where the Cullinan, the largest diamond in the world, was cut.",
+  "cites": [
+   {
+    "id": "s2",
+    "from": "Veel diamantslijpers woonden vroeger in de Diamantbuurt.",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Diamantbuurt_(Amsterdam)",
+    "text": "Veel diamantslijpers woonden vroeger in de Diamantbuurt."
+   },
+   {
+    "id": "s4",
+    "from": "Aan het ene uiteinde van de Diamantstraat staat het monument",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Diamantbuurt_(Amsterdam)",
+    "text": "Aan het ene uiteinde van de Diamantstraat staat het monumentale gebouw van Diamantslijperij Asscher, waar ooit de grootste diamant ter wereld (Cullinan) werd geslepen."
+   }
+  ]
+ },
+ "Staatsliedenbuurt": {
+  "en": "It was once nicknamed the 'brass buttons neighbourhood' for the many tram conductors and other uniformed workers housed here. In the 1980s it became a squatters' stronghold centred on the squat café De Rioolrat.",
+  "cites": [
+   {
+    "id": "s2",
+    "from": "De buurt stond ook wel bekend als de 'koperen knopenbuurt', ",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Staatsliedenbuurt_(Amsterdam)",
+    "text": "De buurt stond ook wel bekend als de 'koperen knopenbuurt', vanwege de grote groep tramconducteurs, agenten en andere geüniformeerde beroepsbeoefenaars die in de buurt een woning kregen toegewezen."
+   },
+   {
+    "id": "s1",
+    "from": "In de jaren tachtig van de 20e eeuw werd de Staatsliedenbuur",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Staatsliedenbuurt_(Amsterdam)",
+    "text": "In de jaren tachtig van de 20e eeuw werd de Staatsliedenbuurt bekend als een krakersbolwerk, met kraakcafé De Rioolrat als centrum."
+   }
+  ],
+  "needsReview": true
+ },
+ "Apollobuurt": {
+  "en": "John Lennon and Yoko Ono held their 1969 Bed-In for Peace at the Amsterdam Hilton, in this neighbourhood.",
+  "cites": [
+   {
+    "id": "s2",
+    "from": "The Amsterdam Hilton Hotel is located in this district where",
+    "lang": "en",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apollobuurt",
+    "text": "The Amsterdam Hilton Hotel is located in this district where John Lennon and Yoko Ono had their \"Bed-In\" for Peace in 1969 and the artist Herman Brood jumped to his death in 2001."
+   }
+  ]
+ },
+ "De Baarsjes": {
+  "en": "The Mercatorplein was designed by Berlage himself and is the only square of his in Amsterdam that survives complete.",
+  "cites": [
+   {
+    "id": "s2",
+    "from": "Dit plein en de bebouwing was van de hand van de architect B",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Baarsjes_(wijk)",
+    "text": "Dit plein en de bebouwing was van de hand van de architect Berlage zelf en is zijn enige compleet behouden plein in Amsterdam."
+   }
+  ]
+ },
+ "Uilenburg": {
+  "en": "The Uilenburger Synagogue, built in 1766 for Ashkenazi Jews, is still in use. In 1879 the Boas diamond works opened here, then the largest in Amsterdam and Europe.",
+  "cites": [
+   {
+    "id": "s3",
+    "from": "In 1766 werd de nog steeds in gebruik zijnde Uilenburger Syn",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Uilenburg_(Amsterdam)",
+    "text": "In 1766 werd de nog steeds in gebruik zijnde Uilenburger Synagoge gebouwd voor de Asjkenazische joden."
+   },
+   {
+    "id": "s2",
+    "from": "In 1879 verscheen in de zuidoosthoek van Uilenburg het fabri",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Uilenburg_(Amsterdam)",
+    "text": "In 1879 verscheen in de zuidoosthoek van Uilenburg het fabriekscomplex van Diamantslijperij Boas, met een door stoom aangedreven diamantslijperij van architect-werktuigbouwkundige J.W."
+   },
+   {
+    "id": "s7",
+    "from": "Destijds was het de grootste diamantslijperij van Amsterdam ",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Uilenburg_(Amsterdam)",
+    "text": "Destijds was het de grootste diamantslijperij van Amsterdam en Europa, en volgens sommige bronnen zelfs de grootste ter wereld."
+   }
+  ]
+ },
+ "Plantage": {
+  "en": "Artis, opened in 1838, is the oldest zoo in the Netherlands. The nearby Hortus Botanicus, opened in 1682, is one of the oldest botanical gardens in the world.",
+  "cites": [
+   {
+    "id": "s8",
+    "from": "The royal zoological society Natura Artis Magistra opened th",
+    "lang": "en",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Plantage",
+    "text": "The royal zoological society Natura Artis Magistra opened the Artis zoo in 1838, making it the oldest zoo in the Netherlands."
+   },
+   {
+    "id": "s7",
+    "from": "In 1682, Hortus Botanicus, one of the oldest botanical garde",
+    "lang": "en",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Plantage",
+    "text": "In 1682, Hortus Botanicus, one of the oldest botanical gardens in the world, opened its doors across from the Wertheimpark, currently the only public park in the Centrum district of Amsterdam."
+   }
+  ]
+ },
+ "Java-eiland": {
+  "en": "Four small canals cross the island, lined with post-modern canal houses by different architects and spanned by bridges designed by the artists Guy Rombouts and Monica Droste.",
+  "cites": [
+   {
+    "id": "s2",
+    "from": "Java-eiland wordt doorsneden door vier grachtjes met postmod",
+    "lang": "nl",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Java-eiland",
+    "text": "Java-eiland wordt doorsneden door vier grachtjes met postmodernistische grachtenhuizen van verschillende architecten en fiets- en loopbruggetjes."
+   },
+   {
+    "id": "s8",
+    "from": "Notable architecture includes four small canals with post-mo",
+    "lang": "en",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Java-eiland",
+    "text": "Notable architecture includes four small canals with post-modernist canal houses from various architects, cycle and pedestrian bridges by Guy Rombouts and Monica Droste, and at the Azartplein two building by the Swiss architectural firm Diener & Diener."
+   }
+  ]
+ }
+}
