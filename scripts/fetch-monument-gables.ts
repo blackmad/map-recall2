@@ -41,8 +41,15 @@ async function pages(): Promise<Row[]> {
     if (existsSync(file)) body = JSON.parse(readFileSync(file, 'utf8'));
     else {
       const url = `${ENDPOINT}?query=${encodeURIComponent(query(page * PAGE))}`;
-      const res = await fetch(url, { headers: { Accept: 'application/sparql-results+json' } });
-      if (!res.ok) throw new Error(`register page ${page}: HTTP ${res.status}`);
+      // The endpoint times out (504) now and then on deep pages: retry with backoff.
+      let res: Response | null = null;
+      for (let attempt = 0; attempt < 5; attempt++) {
+        res = await fetch(url, { headers: { Accept: 'application/sparql-results+json' } });
+        if (res.ok) break;
+        console.log(`page ${page}: HTTP ${res.status}, retrying`);
+        await new Promise(r => setTimeout(r, 5000 * 2 ** attempt));
+      }
+      if (!res || !res.ok) throw new Error(`register page ${page}: HTTP ${res?.status}`);
       body = await res.json();
       writeFileSync(file, JSON.stringify(body));
       console.log(`fetched page ${page}: ${body.results.bindings.length} rows`);
