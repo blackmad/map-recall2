@@ -1,0 +1,80 @@
+[
+  {
+    "id": "gashouder",
+    "name": "Gashouder",
+    "landmarkId": "gashouder",
+    "modelUrl": "./models/gashouder.glb",
+    "suppressOsmIds": [
+      "w57865152",
+      "w1488057568",
+      "w1488057569",
+      "w1488057570",
+      "w1488057571",
+      "w1488057572",
+      "w1488057573"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.868872884498755,
+        52.386820591571
+      ],
+      "headingDegrees": 77.7474623915898,
+      "lengthMetres": 74.73646232909658,
+      "widthMetres": 65.55857175817337
+    },
+    "surveyed": {
+      "anchor": [
+        4.868872884498755,
+        52.386820591571
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Gashouder",
+      "author": "Map Recall",
+      "sourceUrl": "https://gashouder.nl/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
+    }
+  },
+  {
+    "id": "stadsschouwburg",
+    "name": "Stadsschouwburg Amsterdam",
+    "landmarkId": "extract_landmarks_1939633952",
+    "modelUrl": "./models/stadsschouwburg.glb",
+    "suppressOsmIds": [
+      "w57863115"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.881898232685734,
+        52.36435694049734
+      ],
+      "headingDegrees": 52.40783486526533,
+      "lengthMetres": 54.077617043745775,
+      "widthMetres": 104.27101523772704
+    },
+    "surveyed": {
+      "anchor": [
+        4.881898232685734,
+        52.36435694049734
+      ],
+      "northOffsetDegrees": -37.59216513473467
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Stadsschouwburg Amsterdam",
+      "author": "Map Recall",
+      "sourceUrl": "https://ita.nl/nl/stadsschouwburg-amsterdam/geschiedenis-van-het-huis",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
+    }
+  }
+]
