@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Public buildings: big cinemas and theatres get plain walls, schools get classroom windows
+
+User (2026-10-03): "Keep going balancing hand models with new category treatments."
+
+- **Built by** `npm run build:public-buildings`: it queries Overpass for cinema, theatre, school, fire station, police, hospital, town hall, university and college, and caches the answers in the scrape store. It stages first and publishes with `--publish` into `publicBuildingData.ts`, which `publicBuildings.ts` reads.
+- **Cinemas and theatres:** 46 footprints of 800 m² or more, or at least 20 m tall, get plain walls with no windows and no gables. Before this, Pathé City, LAB111 and Studio/K wore canal-house fronts.
+  - Small ones stay houses: Rialto is 286 m² and Kriterion 456 m².
+  - Hand exclusions: Concertgebouw, Stadsschouwburg, Muziekgebouw, Stopera, Frascati and Het Sieraad.
+  - The signage band is not done, so they read as plain brick boxes.
+- **Schools:** 283 footprints from 1850 to 1994 get the school look:
+  - one flat-headed classroom row per storey, with no doors or stoops;
+  - era brick before 1960 (stone frames and a plinth) and buff concrete after it;
+  - a pitched roof only on a plain pre-1930 rectangle, otherwise a flat lid.
+  - Cost: about 118k triangles in all, with a median of 150–600 per school.
+  - Pinned: Montessori Lyceum, Fons Vitae, Slotermeerschool, Spinoza Lyceum.
+- **Matched but untreated:** fire stations, police stations, hospitals and civic offices.
+
 ## Facade extrusions slimmed: ivy, oriels, bay windows, canopies, balconies, awnings
 
 User (2026-10-03, Nassaukade screenshot): "what are these awful imposing extrusions on our canal house grammar?"

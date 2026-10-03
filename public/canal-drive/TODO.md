@@ -145,6 +145,8 @@ prism.
 
 **Places of worship: the rest (after 2026-10-03 kits and generic rule, see HISTORY).** Engelse Kerk kit: a brick west tower with a slate spire and a white nave with tall arched windows. 3D BAG puts the nave roof at 6.7–15.9 m and the aisle at 5.2–10.1 m; photos are already cached in `/mnt/project-files/house-design/worship/`. Fo Guang Shan kit, which needs a tiered-eave roof shape: roofs at 11.4–14.1 m, 7.5–8.2 m and 5.5 m. The Fo Guang Shan camera preset is off. Taibah, the Amstelkerk and the Augustinuskerk have not been checked against 3D BAG. The Vredeskerk has only its tower parts in the tiles.
 
+**Public buildings, next (after 2026-10-03, see HISTORY).** These are matched in staging but untreated: fire stations (19), police (23), hospitals (54) and civic offices (92). Red fire-station doors need a glass colour per window row in `KitWindows`. Big cinemas and theatres need a signage band, because plain brick boxes read as bare. The pitched-or-flat roof call on pre-1930 schools is a guess wherever the tile `roofShape` is missing.
+
 **Street ensembles: one builder's terrace drawn as one (user 2026-10-03: "fix up the overall rhythm of major commercial streets like rozengracht, kinkerstraat, Jan Pieter Heijestraat").**
 Study and prototype done (`src/canalRecall/streetEnsembles.ts`, `npx tsx scripts/check-street-ensembles.ts`; findings,
 strips and photos in `/mnt/project-files/house-design/street-rhythm/`). Measured: terrace streets (Kinkerstraat, JP Heijestraat,
