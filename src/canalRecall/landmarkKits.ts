@@ -18,6 +18,7 @@ import { formTriangles, type KitForm } from './landmarkForms.js';
 import { MUSEUM_KITS } from './museumKits.js';
 import { WORSHIP_KITS } from './worshipKits.js';
 import { FIT_COVERAGE, FIT_MAX_DEV_M, GENERIC_WORSHIP_KITS } from './worshipBuildings.js';
+import { GENERIC_PUBLIC_KITS } from './publicBuildings.js';
 
 export type Mat = 'brick' | 'stone' | 'lead' | 'gold' | 'copper' | 'slate' | 'white' | 'tile' | 'blue';
 export type StageShape = 'square' | 'octagon';
@@ -110,7 +111,7 @@ const CROWN: Stage[] = [
   { shape: 'octagon', w0: 0.9, w1: 0, h: 1.8, mat: 'gold' },
 ];
 
-const HAND_KITS: Kit[] = [
+export const HAND_KITS: Kit[] = [
   {
     // Tower 87 m: brick base, stone clock stage, octagonal stone and lead stages, lantern, crown.
     name: 'Westerkerk',
@@ -548,12 +549,12 @@ const HAND_KITS: Kit[] = [
   },
 ];
 
-const kitIds = (k: Kit) => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? []), ...(k.forms ?? []).map(f => f.on), ...(k.body ?? [])];
+export const kitIds = (k: Kit) => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? []), ...(k.forms ?? []).map(f => f.on), ...(k.body ?? [])];
 /** Every footprint a hand-modelled kit claims (the worship staging script leaves these to their kit). */
 export const HAND_KIT_IDS: ReadonlySet<string> = new Set(HAND_KITS.flatMap(kitIds));
 const HAND_IDS = HAND_KIT_IDS;
 /** Every kit: the hand-modelled ones, then the generic worship treatment for footprints none of them claims. */
-export const KITS: Kit[] = [...HAND_KITS, ...GENERIC_WORSHIP_KITS.filter(k => kitIds(k).every(id => !HAND_IDS.has(id)))];
+export const KITS: Kit[] = [...HAND_KITS, ...[...GENERIC_WORSHIP_KITS, ...GENERIC_PUBLIC_KITS].filter(k => kitIds(k).every(id => !HAND_IDS.has(id)))];
 
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */
 export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? []), ...(k.forms ?? []).map(f => f.on)]));

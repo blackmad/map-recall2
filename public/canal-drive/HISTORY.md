@@ -20,6 +20,41 @@ late inventory responses reviving a removed layer. Nine verified species rules
 corrected 1,398 trees previously using a rounded fallback. Lifecycle, full-inventory,
 TypeScript and mobile viewport checks passed.
 
+## Landmark gallery and house playground
+
+User (2026-10-03): "Remind me is there a good place to see a gallery of all the custom models and play with the generators?"
+
+- **`landmark-gallery.html`** shows all 35 hand kits (not the generic worship or public kits).
+  - Each kit is built from its real footprints with the game's own kit geometry, decorators, chunk builders and facade shader.
+  - The camera frame comes from `kit-locations.json`, which `scripts/build-kit-locations.ts --publish` writes. It replaces the old hard-coded table: the kit viewer knew 5 kits and crashed on the rest.
+  - Controls: a look picker, a name filter, drag to orbit and pinch to zoom, and `?kit=` deep links.
+  - Triangle counts: 62,666 over all 35 kits.
+- **`house-playground.html`** has two modes:
+  - **Generator:** pick style, year, number of houses, width, depth, storeys, look, gable, roof, shopfront, chain, signature and extras, with a seed, a re-roll and a shareable link. It runs through the game's real decorators, roof planner, chunk builder and shader.
+  - **Real building:** look up a building by id or coordinates, click it, and inspect its decorated properties.
+  - Differences from the game are listed on the page: no basemap, and doors are not tied to a street graph.
+- Both pages are linked from `building-gallery.html`.
+- **Fixes found through the gallery:**
+  - The modern-archetype `plain` cell drew ribbon windows. Tall kit hosts got that archetype, so church walls showed windows (the Westerkerk nave).
+  - Landmark kit walls no longer take facade extras.
+
+## Public buildings: big cinemas and theatres get plain walls, schools get classroom windows
+
+User (2026-10-03): "Keep going balancing hand models with new category treatments."
+
+- **Built by** `npm run build:public-buildings`: it queries Overpass for cinema, theatre, school, fire station, police, hospital, town hall, university and college, and caches the answers in the scrape store. It stages first and publishes with `--publish` into `publicBuildingData.ts`, which `publicBuildings.ts` reads.
+- **Cinemas and theatres:** 46 footprints of 800 m² or more, or at least 20 m tall, get plain walls with no windows and no gables. Before this, Pathé City, LAB111 and Studio/K wore canal-house fronts.
+  - Small ones stay houses: Rialto is 286 m² and Kriterion 456 m².
+  - Hand exclusions: Concertgebouw, Stadsschouwburg, Muziekgebouw, Stopera, Frascati and Het Sieraad.
+  - The signage band is not done, so they read as plain brick boxes.
+- **Schools:** 283 footprints from 1850 to 1994 get the school look:
+  - one flat-headed classroom row per storey, with no doors or stoops;
+  - era brick before 1960 (stone frames and a plinth) and buff concrete after it;
+  - a pitched roof only on a plain pre-1930 rectangle, otherwise a flat lid.
+  - Cost: about 118k triangles in all, with a median of 150–600 per school.
+  - Pinned: Montessori Lyceum, Fons Vitae, Slotermeerschool, Spinoza Lyceum.
+- **Matched but untreated:** fire stations, police stations, hospitals and civic offices.
+
 ## Original landmark catalogue: 29 models (2026-10-04)
 
 The flat-colour catalogue now includes Amstelkerk, He Hua Temple, Haarlemmerpoort,
