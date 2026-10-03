@@ -8,6 +8,80 @@ David (2026-10-03), three requests about the drive-by cards:
 - **"Houseboat museum doesn't light up yellow when the trivia comes up."** The museum is the Hendrika Maria, a barge; `landmark-buildings.json` joins landmarks to building ways, so it had no building, and its locator dot sat under the three.js boat. `boatForLandmark` (`houseboats.ts`) now finds the drawn houseboat a landmark is aboard: the point inside a boat outline or within 3 m of it, and only for kinds of place a boat can be (museum, hotel, café…), because Kraan 2868, a crane on the quay, stands 3.9 m from a boat. `setActiveLandmark` lights that boat (value 2 in the boat chunk, like a building) and drops the dot when the 3D layer is showing. Named regression in `test:houseboats` (museum → `w174999382`, crane → none) and `landmark-highlight.spec.ts`. The map spec cannot load tiles in the cloud sessions; the vector-map wiring was checked there with a stubbed map.
 - **"Use the 'welcome to' neighborhood cards occasionally, when we don't have trivia, the first few times in a new hood."** The postcard opened on every neighbourhood change, and only if nothing owned the band at that instant, so a quiz at the boundary spent the entry. `postcardPacing.ts` now decides: the first three entries to a neighbourhood (counted per city in localStorage) always get it; later entries only when no trivia card opened in the last 45 s and no postcard in the last 120 s; and 90 s inside one neighbourhood with no trivia brings its postcard back (at most every 180 s). A worthwhile postcard waits for the band to be free while the rider is still in that neighbourhood. Pinned in `test:postcard-pacing`, which also covers `raceTime` restarting at 0 between rides (the drive-by gap had the same bug: a gap measured against the last ride's time held cards back).
 
+## Places of worship: five hand kits and a generic church rule for 198 more
+
+User (2026-10-03): "Then temples mosques and churches", after "why does it have windows???" on a church and Fatih as "a 37 m green box".
+
+- **Measured:** Overpass found 175 worship building ways and 95 nodes (cached in the scrape store); they match 300 tile footprints.
+  - Nodes are only reported, so a prayer room inside flats is never restyled.
+  - Before this change, 198 of them were drawn wrong: 91 as generic house fronts, 81 as landmark period house fronts, and 26 as bare boxes.
+- **Hand kits** (`worshipKits.ts`, heights from 3D BAG, photos cited in each kit):
+  - Portuguese Synagogue
+  - Hofkerk: a cross plan with a west tower and a crossing tower. It has no dome; the photos and 3D BAG disagree with the old hint that it did.
+  - Gerardus Majellakerk
+  - Westermoskee: the drum and zinc dome, and one minaret of about 40 m, read from a photo.
+  - Dominicuskerk: it was a 37 m beige block.
+- **Generic rule** (`worshipBuildings.ts`, data from `npm run build:worship-buildings`, which stages first and publishes with `--publish`). Walls are plain brick in an era colour, and there are never house windows, canal gables or shop glass.
+  - A plain rectangle built before 1960 gets a steep roof and tall round-headed windows (50 buildings).
+  - An older odd plan keeps its lid but gets plain walls and arched windows (54).
+  - Towers and post-1960 buildings get plain walls (94).
+- **Known gaps:**
+  - The Engelse Kerk still reads as a warehouse under a flat lid.
+  - The Fo Guang Shan temple needs a tiered Chinese roof shape.
+  - Only the Vredeskerk's tower parts are in the tiles.
+
+## Museums and cinemas: seven landmarks modelled from 3D BAG heights
+
+User (2026-10-03): "Work on museums, movie theaters and grocery stores".
+
+- **Measured before:**
+  - Of 21 cinemas, 9 old ones wore canal-house facades. Tuschinski, Pathé City and LAB111 were among them.
+  - Modern multiplexes stood as bare boxes, which reads right for blank walls.
+  - Of 56 museums, about 35 small canal-house museums take the period facade correctly.
+  - The big ones were wrong:
+    - Van Gogh was about 3 m too low and a bare box.
+    - The Stedelijk was 28 m house fronts.
+    - H'ART, a whole courtyard block, wore a canal-house front.
+    - The Scheepvaartmuseum had a flat lid.
+    - NEMO had a flat copper top.
+- **Now kits** (`museumKits.ts`, with sources in each comment):
+  - **Van Gogh:** the Rietveld block, the stair tower and the Kurokawa drum under a tilted titanium brim.
+  - **Stedelijk:** the old building's tower, pavilions and hall roofs, plus the white 2012 "bathtub" on a glass ground floor under its canopy.
+  - **Eye:** a faceted roof rising to its 24.5 m prow.
+  - **NEMO:** its sloping copper deck.
+  - **Tuschinski:** copper domes on the measured street front's towers, with slate halls.
+  - **Scheepvaartmuseum:** four hipped wings with gabled projections and a courtyard glass roof.
+  - **H'ART (Amstelhof):** hipped wings round the courtyard.
+- **New typed helper:** `landmarkForms.ts` extrudes a part's footprint with a sloped lid, a mitred outset for brims and canopies, a half-clip and a tilted underside.
+- **Guesses:** the Van Gogh part roles and a 2.4 m ground correction; the depth of the Stedelijk canopy; Eye's facet split; Tuschinski's dome size. All colours are read from photos.
+
+## Stray facade objects, slimmer cornices, Carré, Fatih windows, chain supermarkets
+
+User (2026-10-03), screenshots at Da Costakade: "these overhangs look a little heavy / too wide", "what's these random artifacts in front of buildings?", "not sure what these are", "bad mix", and of a hand-modelled church "why does it have windows???". Earlier: "Carre looks awful in that shot?", "Work on museums, movie theaters and grocery stores".
+
+- **Stray objects were facade extras** (`facadeExtras.ts`, `facadeOrnaments.ts`), each redrawn and pinned in `check-facade-extras.ts`:
+  - The dark slab by the stoops was the light-well railing, drawn as one solid iron plate. It is now openwork bars.
+  - The green posts were facade-garden stalks up to 2.2 m tall. They are now low clumps (at most 1.15 m), never in front of a shop window.
+  - The yellow box was a 20 cm door lantern. It is now a small black lantern on a bracket.
+  - The yellow bar sticking out was a parked bike drawn as one coloured tube. Bikes now have wheels, frame, saddle and bars, in dark colours.
+  - The black doorway was the portiek recess. It is now a warm shadow with a painted door.
+- **Cornices:** the kroonlijst went from 0.68 m to 0.4 m deep, the console cornice from 0.66 m to 0.38 m, and the bracket cornice from 0.45 m to 0.3 m. Checked to be at most 0.42 m.
+- **Kit parts never take a house facade.** The landmark wrapper used to check the landmark list first. The Beurs van Berlage is not on that list, so its kit-roofed halls got house windows under the kit roofs, and the two fought.
+- **Carré:** hand-modelled from Commons photos and the BAG footprint:
+  - cream stucco to a 19 m cornice over a grey stone ground storey;
+  - round arches and three window rows;
+  - a pediment to 21.5 m;
+  - a zinc cloister dome to 27 m with a sign box at the BAG 28.3 m.
+- **Windows on kit walls:** opt in with `windows` on a kit's halls; other kits are unchanged and are checked to draw no glass. Fatih has a 3.6 m rose window, door arches, tower windows and belfry arches, and round-headed nave windows.
+  - Its windows are round-headed, following the photos, not pointed.
+  - Cost: Fatih goes from 70 to 1,114 triangles, Carré from 166 to 816.
+- **Chain supermarkets:** `npm run build:supermarkets` runs Overpass through the maps.mail.ru mirror and caches the results in the scrape store.
+  - It matched 258 of 270 ground-floor chain stores to 245 buildings: AH 126, Jumbo 25, Lidl 17, Spar 18, Vomar 15, Dirk 15, Ekoplaza 16, Aldi 6, DekaMarkt 4, Plus 3. The 12 unmatched stand 10–48 m from any footprint in the tiles.
+  - They get large glazing, a fascia in the chain colour and a logo panel on the street wall nearest the store.
+  - The brand word is drawn in a 5×7 block font (`blockLetters.ts`).
+  - Colours come from each chain's Commons logo. Dirk's red is from memory, and Ekoplaza's green is a guess at its fascia.
+- **Street rhythm:** a study and a pure prototype (`streetEnsembles.ts`). The plan is in TODO under "Street ensembles".
+
 ## Enter rides on without a reload; the bike follows zoom halfway
 
 User (2026-10-03): "why does hitting enter at the end of route reload the whole game? shouldn't we be loaded enough to just have a new destination?"

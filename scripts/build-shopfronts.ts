@@ -119,6 +119,9 @@ for (const b of buildings) {
 }
 const kinds = [...SHOP_KINDS];
 const out: ShopfrontExtract = { version: 1, kinds, buildings: Object.fromEntries([...assigned].map(([id, kind]) => [id, kinds.indexOf(kind)])), colours: Object.fromEntries(colours), signatures: Object.fromEntries([...signatures].map(([id, s]) => [id, s.at])) };
+// Chain supermarkets come from scripts/build-supermarkets.ts; a rebuild keeps the published ones.
+const publishedChains = fs.existsSync(PUBLISHED) ? (JSON.parse(fs.readFileSync(PUBLISHED, 'utf8')) as ShopfrontExtract).chains : undefined;
+if (publishedChains) { out.chains = publishedChains; for (const id of Object.keys(publishedChains)) if (out.buildings[id] === undefined || kinds[out.buildings[id]] === 'groundShop') out.buildings[id] = kinds.indexOf('shopWindow'); }
 const text = JSON.stringify(out);
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, text);
