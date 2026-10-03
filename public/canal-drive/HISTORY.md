@@ -3,6 +3,19 @@
 ## Two-finger twist spins the 3D camera
 
 User (2026-10-03): "I want to be able to spin the camera with a two-finger twist gesture on my trackpad." Only Safari reports a trackpad rotation (`gesturestart`/`gesturechange` with `rotation`, also fired by iOS Safari for a two-finger touch); Chrome and Firefox expose no twist at all, as a gesture or as a wheel delta, so those get Option/Alt + two-finger scroll instead. Both orbit chase/cockpit through the existing `camera.bearingOffset` (the same one Shift + [ / ] nudges) and persist through `_nudgeCameraBearing` once the gesture settles; the 2D views ignore it, as they ignore the keys. A twist engages only past a 6° dead zone and then tracks the fingers without a jump, so a pinch's wobble never turns the view. The Safari gestures are also swallowed so the page itself cannot zoom, and their `scale` zooms the map unless a touch pinch or ctrl+wheel is already doing it. Logic in `src/canalRecall/game/trackpadTwist.ts`, pinned in `test:trackpad-twist` and `tests/e2e/trackpad-twist.spec.ts` (synthetic Safari events: wobble ignored, a clockwise twist turns north clockwise on screen, Alt+scroll turns it, the bearing persists).
+## Large-letter postcard: the Spoon Graphics recipe
+
+User (2026-10-03, with the Spoon Graphics tutorial "How To Create a Vintage Style Large Letter Postcard Design"): revisit the postcard against it. Audit: `/mnt/project-files/map-recall/postcard-design-audit.md`; before/after renders in `/mnt/project-files/map-recall/postcard-recipe/`. Changes, step by step against the recipe:
+
+- **Typeface.** Anton (self-hosted, OFL) instead of Archivo Black, standing in for Futura Condensed Extra Bold. The layout still works in Archivo cap units (`LARGE_LETTER_FONT_EM_SCALE` draws Anton at 0.8 of the layout size). Because the face is tall by itself, the vertical face pull is capped at 1.3 (it was up to 2.7) and the horizontal squeeze stops at 0.85. Names of up to nine letters stay on one line even with a space (DE PIJP, like FLORIDA), and word spaces are half width. Tracking is +0.012 em, not the recipe's -50, because Anton's sidebearings are slim and faces overlapped.
+- **Rims.** Two offset rims (light inside, blue outside, dark hairline edge) sit behind the face, replacing the black die-cut drawn over it.
+- **Extrusion.** Each glyph's outline is flattened, and every edge facing the extrusion direction becomes a facet. Down-facing facets are orange and side facets blue, as in Illustrator's Extrude & Bevel at 1°/1° with no shading. The block is outlined once in a dark line, so there are no seams. A 45° halftone screen is burned into the orange (Color Burn 30%). The recipe's block is parallel, not converging; the earlier audit line that said otherwise was wrong. Without the outline font, the banded shelf is still used.
+- **Backdrop.** 60% instead of 16%, with a lighter veil, as the recipe lays the scene at 70%.
+- **Photos.** The layered card's letter photos get an SVG paint filter: brush wobble, soft blur plus unsharp mask, and an 8-tone posterise. A colour boost follows, standing in for Oil Paint and Match Color.
+- **Print grain.** A Gaussian-noise and linen layer blends with `overlay` over the whole layered card. This puts back the texture on the letter photos that the windows change had dropped.
+- **Script.** Pacifico is self-hosted and registered via `ensureLargeLetterWebFonts`; the game had been showing a serif fallback.
+
+Photo windows now replay the block's paint order on the mask: a later line's extrusion, or a neighbour's rims, closes that part of an earlier window. Paint is 56-107 ms a card, and the grain takes 19 ms once. Regressions: `test:large-letter-postcard` and `test:large-letter-craft` (DE PIJP on one line, the two-line contract moved to OVERTOOMSE VELD, face pull ≤1.3).
 
 ## Map Recall: folded answer card and a layered postcard
 
