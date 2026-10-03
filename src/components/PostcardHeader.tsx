@@ -1,6 +1,19 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { preparePostcard, type PreparedPostcard } from '../mapRecall/livePostcard';
 
+/** The painted-photo SVG filter the letter photographs reference by id, added to the page once. */
+function ensurePaintFilter(filterSvg: string): void {
+  if (typeof document === 'undefined' || document.getElementById('large-letter-paint-defs')) return;
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.id = 'large-letter-paint-defs';
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('width', '0');
+  svg.setAttribute('height', '0');
+  svg.style.position = 'absolute';
+  svg.innerHTML = `<defs>${filterSvg}</defs>`;
+  document.body.appendChild(svg);
+}
+
 /**
  * "Greetings from <neighbourhood>": the large-letter postcard with the area's photographs in its
  * letters (src/mapRecall/livePostcard.ts). The card is a canvas with transparent letter faces over
@@ -21,6 +34,7 @@ export const PostcardHeader: React.FC<{
   const [loaded, setLoaded] = useState(0);
   const holderRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const grainRef = useRef<HTMLCanvasElement>(null);
   const key = `${name}|${cityName ?? ''}|${photos.join('|')}`;
 
   useEffect(() => {
@@ -43,6 +57,8 @@ export const PostcardHeader: React.FC<{
       ctx.drawImage(card.frame, 0, 0);
     };
     copy();
+    ensurePaintFilter(card.paintFilterSvg);
+    grainRef.current?.getContext('2d')?.drawImage(card.grain, 0, 0);
     return card.onRepaint(copy);
   }, [card]);
 
@@ -103,6 +119,8 @@ export const PostcardHeader: React.FC<{
         </div>
       </div>
       <canvas ref={canvasRef} width={width} height={height} className="absolute inset-0" style={{ width, height }} />
+      {/* Print grain over everything, photographs included (the recipe's overlay noise). */}
+      <canvas ref={grainRef} width={width} height={height} aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ width, height, mixBlendMode: 'overlay', opacity: 0.35 }} />
     </div>
   </div>;
 };

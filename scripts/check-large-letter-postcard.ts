@@ -95,7 +95,8 @@ const stub = (text: string, font: string) => {
   assert.equal(card.caption, 'Amsterdam · Noord-Holland');
   assert.equal(card.greeting, 'Groeten uit');
   assert.equal(card.imageStripCount, 1);
-  assert.deepEqual(card.nameLines, ['DE', 'PIJP']);
+  // A short two-word name stays on one line in the condensed face, like FLORIDA (2026-10-03).
+  assert.deepEqual(card.nameLines, ['DE PIJP']);
 }
 
 // --- Short name keeps a large size; long name shrinks ----------------------
@@ -138,10 +139,11 @@ const stub = (text: string, font: string) => {
   assert.ok(a.replace(/-$/, '').length >= 4 && b.length >= 4);
 }
 
-// --- Spaced short names prefer two-line billboard ---------------------------
+// --- Spaced short names stay on one line; longer spaced names stack ---------
 {
   const card = measureLargeLetterPostcard({ name: 'De Pijp' }, stub);
-  assert.deepEqual(card.nameLines, ['DE', 'PIJP']);
+  assert.deepEqual(card.nameLines, ['DE PIJP']);
+  assert.deepEqual(measureLargeLetterPostcard({ name: 'Overtoomse Veld' }, stub).nameLines, ['OVERTOOMSE', 'VELD']);
   assert.ok(card.glyphs.filter((g) => g.char !== ' ').length >= 6);
 }
 
