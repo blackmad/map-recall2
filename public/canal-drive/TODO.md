@@ -92,10 +92,12 @@ look at the photo look; gables and roofs are still MapLibre's; decide whether
 it replaces the pattern layer or stays opt-in. Two layout modules now exist
 (`wallBays.ts`, `facadeLayout.ts`): keep one.
 
-**Landmark kits: more landmarks, and a phone check.** Five are done (see HISTORY).
+**Landmark kits: more landmarks, and a phone check.** Twelve are done (see HISTORY).
 Next, by recognisability: Oude Kerk (spire), Munttoren, Centraal (two towers and
 central pavilions, long facade), Rijksmuseum (towers, central arch), Beurs van
-Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera. Each needs its
+Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera, Hofkerk
+(dome), Dominicuskerk, Carré and Vredeskerk (the big kit-less ones still stand as
+bare period-brick boxes; see HISTORY "Kit-less landmarks"). Each needs its
 OSM part ids first (look at the stacked parts near the landmark's coordinate; the
 resolved ids in `landmark-buildings.json` are sometimes the wrong piece: Westerkerk's
 is a 10 x 2 m fragment). Add a kit to `KITS`, view it with the kit viewer, then
