@@ -348,7 +348,8 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
   const isShop = (SHOP_KINDS as readonly string[]).includes(v.kind);
   const ground = v.kind === 'groundDoor' || isShop || v.kind === 'ground';
   if (v.archetype === 'modern') {
-    if (!ground) ribbon(p, w, v.kind === 'attic' ? 120 : 70, v.kind === 'attic' ? 90 : 140);
+    // Bare wall stays bare: a kit's walls and gable faces use this layer (it drew ribbon windows on tall churches).
+    if (v.kind === 'plain') { /* wall only */ } else if (!ground) ribbon(p, w, v.kind === 'attic' ? 120 : 70, v.kind === 'attic' ? 90 : 140);
     else if (isShop) { paintedGround(p, w, h); if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else { windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: 'rect', archetype: 'modern' }); if (v.kind === 'groundDoor') doorAt(p, w * 0.62, h - 24, v); }
   } else if (v.kind === 'plain') {

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>House playground</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--bg:#f4f1e8;--ink:#2b2622;--mut:#6d655b;--card:#fffdf8;--line:#ddd5c4;--accent:#9a4a2e;--field:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#1f1c18;--ink:#eee8da;--mut:#a39a8a;--card:#2a2621;--line:#3b362e;--accent:#e09a78;--field:#1f1c18}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+.app{display:grid;grid-template-columns:340px 1fr;height:100vh;height:100dvh}
+aside{overflow:auto;padding:14px 16px 24px;border-right:1px solid var(--line);background:var(--card)}
+h1{margin:0 0 2px;font-size:21px}
+aside p.lead{margin:2px 0 8px;color:var(--mut);font-size:13px}
+nav a{color:var(--accent);margin-right:12px;font-size:13px}
+.tabs{display:flex;gap:6px;margin:12px 0 8px}
+.tabs button{flex:1;font:inherit;padding:7px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);cursor:pointer}
+.tabs button[aria-selected=true]{background:var(--accent);color:#fff;border-color:var(--accent)}
+fieldset{border:1px solid var(--line);border-radius:10px;margin:0 0 10px;padding:8px 10px 10px}
+legend{padding:0 6px;color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.row{display:grid;grid-template-columns:96px 1fr;gap:6px 8px;align-items:center;margin:5px 0}
+.row label{color:var(--mut);font-size:13px}
+.row .pair{display:flex;gap:6px;align-items:center;min-width:0}
+select,input[type=number],input[type=text],input[type=search]{font:inherit;width:100%;min-width:0;padding:5px 7px;border:1px solid var(--line);border-radius:7px;background:var(--field);color:var(--ink)}
+input[type=range]{width:100%;min-width:0}
+.pair input[type=number]{width:74px;flex:none}
+button.act{font:inherit;padding:6px 12px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);cursor:pointer}
+button.act.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.check{display:flex;gap:6px;align-items:center;margin:5px 0;color:var(--ink)}
+.notes{color:#a4501f;font-size:12px;margin:6px 0}
+@media (prefers-color-scheme:dark){.notes{color:#f0a070}}
+.houses{font-size:12px;color:var(--mut);margin:6px 0}
+.houses code{display:block;white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);border-radius:6px;padding:4px 6px;margin:3px 0}
+.stage{position:relative;min-width:0;min-height:0}
+#view{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab;background:#e9e4d4}
+.hud{position:absolute;left:10px;bottom:10px;right:10px;display:flex;gap:8px;flex-wrap:wrap;pointer-events:none}
+.hud span{background:rgba(255,253,248,.9);color:#2b2622;border-radius:999px;padding:3px 10px;font-size:12px}
+.hud button{pointer-events:auto;font:inherit;font-size:12px;border:1px solid rgba(0,0,0,.2);border-radius:999px;background:rgba(255,253,248,.92);padding:3px 10px;color:#2b2622;cursor:pointer}
+.tab[hidden]{display:none}
+.diff{color:var(--mut);font-size:12px;margin-top:10px}
+.diff summary{cursor:pointer;color:var(--ink)}
+@media (max-width:760px){
+  .app{display:flex;flex-direction:column;height:auto}
+  .stage{order:-1;flex:none;position:sticky;top:0;z-index:5;height:50vh;height:50svh;border-bottom:1px solid var(--line)}
+  aside{border-right:0;overflow:visible;padding:12px 16px 40px}
+  .row{grid-template-columns:88px 1fr}
+}
+</style></head><body>
+<div class="app">
+<aside>
+  <h1>House playground</h1>
+  <p class="lead">Build a house or short terrace with the game's own generic facade, roof, shopfront and extras code, or load a real building. Not linked from the app.</p>
+  <nav><a href="building-gallery.html">Building assets</a><a href="landmark-gallery.html">Landmark gallery</a></nav>
+  <div class="tabs" role="tablist"><button id="tab-gen" role="tab" aria-selected="true" type="button">Generator</button><button id="tab-real" role="tab" aria-selected="false" type="button">Real building</button></div>
+
+  <fieldset><legend>Look</legend>
+    <div class="row"><label for="look">Look</label><select id="look"></select></div>
+    <label class="check"><input type="checkbox" id="extras" checked> Facade extras (hoist beams, stoops, balconies, bikes)</label>
+  </fieldset>
+
+  <div class="tab" id="gen">
+    <fieldset><legend>Period and age</legend>
+      <div class="row"><label for="style">Style</label><select id="style"></select></div>
+      <div class="row"><label for="year">Year</label><div class="pair"><input type="range" id="yearR" min="1500" max="2024" step="1"><input type="number" id="year" min="1500" max="2024"></div></div>
+    </fieldset>
+    <fieldset><legend>Size (per house)</legend>
+      <div class="row"><label for="houses">Houses</label><div class="pair"><input type="range" id="housesR" min="1" max="8" step="1"><input type="number" id="houses" min="1" max="8"></div></div>
+      <div class="row"><label for="width">Width (m)</label><div class="pair"><input type="range" id="widthR" min="3" max="24" step="0.2"><input type="number" id="width" min="3" max="24" step="0.2"></div></div>
+      <div class="row"><label for="depth">Depth (m)</label><div class="pair"><input type="range" id="depthR" min="5" max="40" step="0.5"><input type="number" id="depth" min="5" max="40" step="0.5"></div></div>
+      <div class="row"><label for="storeys">Storeys</label><div class="pair"><input type="range" id="storeysR" min="1" max="16" step="1"><input type="number" id="storeys" min="1" max="16"></div></div>
+      <div class="row"><label for="height">Height (m)</label><div class="pair"><input type="range" id="heightR" min="4" max="60" step="0.1"><input type="number" id="height" min="4" max="60" step="0.1"></div></div>
+      <div class="diff" style="margin:2px 0 0">Height is the building height the game reads (roof included); a pitched roof takes its rise out of it.</div>
+    </fieldset>
+    <fieldset><legend>Roof</legend>
+      <div class="row"><label for="roof">Roof kind</label><select id="roof"></select></div>
+      <div class="row"><label for="gable">Gable</label><select id="gable"></select></div>
+    </fieldset>
+    <fieldset><legend>Ground floor</legend>
+      <div class="row"><label for="shop">Shopfront</label><select id="shop"></select></div>
+      <div class="row"><label for="chain">Supermarket</label><select id="chain"></select></div>
+      <div class="row"><label for="shopsOn">Shops on</label><select id="shopsOn"><option value="first">first house</option><option value="alternate">every other house</option><option value="all">every house</option></select></div>
+      <label class="check"><input type="checkbox" id="named"> Named business (blade sign and awning)</label>
+    </fieldset>
+    <fieldset><legend>Seed</legend>
+      <div class="row"><label for="seed">Seed</label><div class="pair"><input type="number" id="seed" min="0" step="1"><button class="act primary" id="reroll" type="button">Re-roll</button></div></div>
+      <div class="row"><label></label><button class="act" id="copy" type="button">Copy link to this house</button></div>
+    </fieldset>
+    <div class="notes" id="notes" role="status"></div>
+    <div class="houses" id="houses-info"></div>
+  </div>
+
+  <div class="tab" id="real" hidden>
+    <fieldset><legend>Find a building</legend>
+      <div class="row"><label for="bid">Building id</label><div class="pair"><input type="text" id="bid" placeholder="w754269603 or 0363100012120986"><button class="act" id="find" type="button">Find</button></div></div>
+      <div class="row"><label for="ll">Latitude, longitude</label><div class="pair"><input type="text" id="ll" placeholder="52.3743, 4.8836"><button class="act" id="go" type="button">Go</button></div></div>
+      <div class="row"><label for="place">Place</label><select id="place"></select></div>
+      <div class="row"><label for="radius">Radius (m)</label><div class="pair"><input type="range" id="radius" min="20" max="140" step="5" value="60"></div></div>
+      <div class="diff" style="margin:2px 0 0">Or click a building in the view. Finding an id reads up to 295 small fact tiles (2.4 MB in all) the first time.</div>
+    </fieldset>
+    <div class="notes" id="real-notes" role="status"></div>
+    <div class="houses" id="real-info"></div>
+  </div>
+
+  <details class="diff"><summary>How close is this to the game?</summary>
+    <p>Same: the decoration chain (citywide priors, generic facade, monument gables, roof planner, shopfront and landmark steps), the chunk builders (walls, roofs, facade extras), the facade shader and texture arrays for each look.</p>
+    <p>Different: no MapLibre basemap (a flat ground and street strip), no street graph (the generator gives the terrace one street in front, real buildings put doors on any outer wall), chunks built on the main thread, and the camera is a free orbit instead of the game's chase view.</p>
+  </details>
+</aside>
+<section class="stage"><canvas id="view" aria-label="3D view"></canvas>
+  <div class="hud"><span id="tris">Starting...</span><button id="reset" type="button">Reset view</button></div></section>
+</div>
+<script src="js/three.bundle.js"></script><script src="js/house-playground.bundle.js"></script>
+</body></html>

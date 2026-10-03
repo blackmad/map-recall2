@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Landmark kits</title>
+<link rel="icon" href="data:,">
+<style>
+:root{--bg:#f4f1e8;--ink:#2b2622;--mut:#6d655b;--card:#fffdf8;--line:#ddd5c4;--accent:#9a4a2e}
+@media (prefers-color-scheme:dark){:root{--bg:#1f1c18;--ink:#eee8da;--mut:#a39a8a;--card:#2a2621;--line:#3b362e;--accent:#e09a78}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+body.lock{overflow:hidden}
+header,main{max-width:1280px;margin:0 auto;padding:0 16px}header{padding-top:24px}
+h1{margin:0 0 4px;font-size:26px}
+header p{color:var(--mut);margin:4px 0 12px;max-width:75ch}
+nav a{color:var(--accent);margin-right:14px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0 4px}
+.bar label{color:var(--mut);font-size:13px}.bar select,.bar input,.bar button{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.bar input{width:12em;max-width:100%}.bar button{cursor:pointer}.bar button:disabled{opacity:.5}
+#status{color:var(--mut);font-size:13px;margin:4px 0 12px;min-height:1.4em}
+.kits{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;padding-bottom:40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px;min-width:0}
+.card[hidden]{display:none}
+.view{position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#e9e4d4}
+.view canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+.msg{position:absolute;left:8px;bottom:8px;right:8px;font-size:12px;color:#5a5348;background:rgba(255,253,248,.85);padding:2px 8px;border-radius:6px;pointer-events:none}
+.msg[hidden]{display:none}
+.expand,.close{position:absolute;top:8px;right:8px;font:inherit;font-size:12px;padding:3px 10px;border-radius:999px;border:1px solid rgba(0,0,0,.2);background:rgba(255,253,248,.92);color:#2b2622;cursor:pointer}
+.close{display:none}
+.meta{display:flex;justify-content:space-between;gap:8px;padding:6px 2px 0;align-items:baseline}
+.meta b{overflow-wrap:anywhere}.tris{color:var(--mut);font-size:12px;white-space:nowrap}
+.info{color:var(--mut);font-size:12px;padding:0 2px}
+.card.big{position:fixed;inset:0;z-index:20;border-radius:0;display:flex;flex-direction:column;padding:8px}
+.card.big .view{flex:1;aspect-ratio:auto}.card.big canvas{touch-action:none}
+.card.big .expand{display:none}.card.big .close{display:block}
+@media (max-width:560px){.kits{grid-template-columns:1fr}h1{font-size:22px}}
+</style></head><body>
+<header><h1>Landmark kits</h1>
+<p>Every hand-modelled landmark, built live from its real OSM footprints with the game's own kit geometry, decoration chain and facade shader, over grey context. Cards build as they scroll into view. Not linked from the app.</p>
+<nav><a href="building-gallery.html">Building assets</a><a href="house-playground.html">House playground</a></nav>
+<div class="bar"><label for="look">Look</label><select id="look"></select><input id="filter" type="search" placeholder="Filter by name" aria-label="Filter kits"><button id="measure" type="button">Measure every kit</button></div>
+<div id="status" role="status">Starting...</div></header>
+<main></main>
+<script src="js/three.bundle.js"></script><script src="js/landmark-gallery.bundle.js"></script>
+</body></html>
