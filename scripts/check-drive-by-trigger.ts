@@ -4,7 +4,7 @@
 
 import assert from 'node:assert/strict';
 import {
-  DRIVE_BY_MIN_GAP_SECONDS, DRIVE_BY_RADIUS, PREEMPT_AFTER_SECONDS, approachAlong, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy,
+  CLICK_PREEMPT_AFTER_SECONDS, DRIVE_BY_MIN_GAP_SECONDS, DRIVE_BY_RADIUS, PREEMPT_AFTER_SECONDS, approachAlong, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy,
 } from '../src/canalRecall/game/driveByTrigger';
 
 const checks: string[] = [];
@@ -57,14 +57,15 @@ check('the landmark reached first wins, not the nearest centre', () => {
   assert.equal(pickDriveBy([nearButLater, soon], pathAhead(east, null))?.id, 'soon');
 });
 
-check('a landmark may replace a street card after a few seconds, never a clicked one', () => {
-  const timed = { kind: 'timed' as const, seconds: 8 };
-  assert.equal(mayReplaceNotice('street', timed, 1), false);
-  assert.equal(mayReplaceNotice('street', timed, PREEMPT_AFTER_SECONDS), true);
-  assert.equal(mayReplaceNotice('drive-by', { kind: 'proximity', anchor: { x: 0, y: 0 } }, 3), false);
-  assert.equal(mayReplaceNotice('drive-by', { kind: 'proximity', anchor: { x: 0, y: 0 } }, PREEMPT_AFTER_SECONDS), true);
-  assert.equal(mayReplaceNotice('click', timed, 7), false);
-  assert.equal(mayReplaceNotice('arrival', { kind: 'sticky' }, 60), false);
+check('cards stay until closed or replaced: a landmark replaces a street card after a few seconds, a clicked one later, never the arrival card', () => {
+  const sticky = { kind: 'sticky' as const };
+  assert.equal(mayReplaceNotice('street', sticky, 1), false);
+  assert.equal(mayReplaceNotice('street', sticky, PREEMPT_AFTER_SECONDS), true);
+  assert.equal(mayReplaceNotice('drive-by', sticky, 3), false);
+  assert.equal(mayReplaceNotice('drive-by', sticky, PREEMPT_AFTER_SECONDS), true);
+  assert.equal(mayReplaceNotice('click', sticky, PREEMPT_AFTER_SECONDS + 1), false);
+  assert.equal(mayReplaceNotice('click', sticky, CLICK_PREEMPT_AFTER_SECONDS), true);
+  assert.equal(mayReplaceNotice('arrival', sticky, 600), false);
   assert.equal(mayReplaceNotice(null, null, 0), true);
 });
 

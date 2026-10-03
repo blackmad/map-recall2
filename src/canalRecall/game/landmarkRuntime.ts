@@ -47,6 +47,7 @@ import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teach
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import type { BridgeRegisterFile } from '../bridgeRegister';
+import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import {
   buildCorridorStreetIndex,
@@ -56,7 +57,6 @@ import {
 
 /** Seconds a clicked card stays up. A drive-by card is held by proximity
  *  instead — see `landmarkNotice.ts`. */
-const CLICKED_NOTICE_SECONDS = 8;
 /** px — how far a click may be from a landmark's marker and still select it. */
 const CLICK_SELECT_RADIUS = 120;
 /** px — a click this close to a landmark's marker means the landmark, even
@@ -120,7 +120,7 @@ export class GameLandmarkRuntime {
       if (!building) return;
       nearest = this._cardForClickedBuilding(building);
     }
-    this._showLandmarkNotice(nearest, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS }, 'click');
+    this._showLandmarkNotice(nearest, { kind: 'sticky' }, 'click');
     this.vectorMap.setActiveLandmark(nearest);
   }
 
@@ -139,6 +139,7 @@ export class GameLandmarkRuntime {
     this._landmarkNoticeHold = hold;
     this._landmarkNoticeSource = source;
     this._landmarkNoticeState = openNotice();
+    if (source !== 'arrival') this._lastTriviaAt = this.raceTime;
     // Start transparent so the card fades in, and so a new card never inherits
     // the alpha the previous one happened to be at.
     this._landmarkNoticeAlpha = 0;
@@ -189,6 +190,7 @@ export class GameLandmarkRuntime {
     this._landmarkNoticeState = openNotice();
     this._landmarkNoticeAlpha = 0;
     this._landmarkCardBounds = null;
+    this._landmarkCloseBounds = null;
   }
 
   /**
@@ -268,7 +270,7 @@ export class GameLandmarkRuntime {
       imageUrl: entry.wikipediaImageUrl || '',
       wikipediaUrl: entry.wikipediaUrl || '',
       extractLang: entry.wikipediaExtractLang || 'en',
-    }, { kind: 'timed', seconds: CLICKED_NOTICE_SECONDS }, 'street');
+    }, { kind: 'sticky' }, 'street');
   }
 
   // ---- Loading the extract ----
@@ -472,13 +474,36 @@ export class GameLandmarkRuntime {
     // Arriving somewhere is worth a postcard the first time too. Previously an
     // empty `_previousNeighborhood` swallowed the opening entry, so the card
     // for the neighborhood the route starts in never appeared at all.
+    //
+    // Whether the entry is worth a postcard is `postcardPacing`'s call: always
+    // for the first few entries, otherwise only after a stretch without
+    // trivia. A worthwhile postcard waits for the band to be free rather than
+    // being lost to a quiz that happened to be open at the boundary.
     if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
       this._previousNeighborhood = this.currentNeighborhood;
-      if (canShowDriveByCard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
-        if (hood) this._ensureNeighborhoodImage(hood);
-        this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
-        this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
+      this._neighborhoodEnteredAt = this.raceTime;
+      const cityId = this.cityId || 'amsterdam';
+      if (this._neighborhoodEntries?.cityId !== cityId) {
+        this._neighborhoodEntries = { cityId, counts: loadEntryCounts(typeof localStorage === 'undefined' ? null : localStorage, cityId) };
       }
+      const priorEntries = recordEntry(typeof localStorage === 'undefined' ? null : localStorage,
+        cityId, this._neighborhoodEntries.counts, this.currentNeighborhood);
+      this._postcardPending = postcardOnEntry({
+        now: this.raceTime, priorEntries, lastTriviaAt: this._lastTriviaAt ?? null, lastPostcardAt: this._lastPostcardAt ?? null,
+      }) ? this.currentNeighborhood : null;
+    } else if (this.currentNeighborhood && !this._postcardPending && postcardForLull({
+      now: this.raceTime, enteredAt: this._neighborhoodEnteredAt ?? 0,
+      lastTriviaAt: this._lastTriviaAt ?? null, lastPostcardAt: this._lastPostcardAt ?? null,
+    })) {
+      this._postcardPending = this.currentNeighborhood;
+    }
+    if (this._postcardPending && this._postcardPending === this.currentNeighborhood
+      && canShowDriveByCard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      this._postcardPending = null;
+      this._lastPostcardAt = this.raceTime;
+      if (hood) this._ensureNeighborhoodImage(hood);
+      this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
+      this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
     }
 
     const routePath = this.routePath;
@@ -513,9 +538,10 @@ export class GameLandmarkRuntime {
     if (nearest && nearest.id !== this._landmarkNotice?.id) {
       this._seenLandmarks.add(nearest.id);
       this._seenLandmarkNames.add(nearest.name);
-      // Held while the player is still near it, rather than for a fixed six
-      // seconds that expired while they were still approaching.
-      this._showLandmarkNotice(nearest, { kind: 'proximity', anchor: { x: nearest.x, y: nearest.y } }, 'drive-by');
+      // Held until the player closes it or another card takes the slot: it
+      // used to fade once the rider was 480 px past, often mid-sentence (user
+      // request 2026-10-03, "leave the trivia cards onscreen longer").
+      this._showLandmarkNotice(nearest, { kind: 'sticky' }, 'drive-by');
       this._lastDriveByAt = this.raceTime;
       this.vectorMap.setActiveLandmark(nearest);
     }
@@ -566,6 +592,7 @@ export class GameLandmarkRuntime {
     // it is actually on screen. A stale rectangle would keep swallowing clicks
     // over open map after the card faded out.
     this._landmarkCardBounds = null;
+    this._landmarkCloseBounds = null;
     if (!lm) return;
     if (!canShowTeachingCard(this._teachingGate())) return;
     const ctx = this.ctx;
@@ -615,6 +642,7 @@ export class GameLandmarkRuntime {
     this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
     ctx.restore();
     this._landmarkCardBounds = { x: cardX, y: cardY, w: card.width, h: card.height };
+    this._landmarkCloseBounds = { x: cardX + card.closeHit.x, y: cardY + card.closeHit.y, w: card.closeHit.width, h: card.closeHit.height };
   }
 
   /**

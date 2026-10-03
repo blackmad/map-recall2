@@ -414,6 +414,23 @@ class Renderer {
     }
     ctx.fillText(card.displayName.toUpperCase(), x + card.nameX, nameBaseline);
 
+    // The close "×": cards stay up until closed or replaced (user request
+    // 2026-10-03), so the way to put one away is drawn on every card.
+    if (card.close) {
+      const c = card.close, inset = 3.5;
+      ctx.save();
+      ctx.strokeStyle = surface.inkMuted;
+      ctx.lineWidth = 1.75;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(x + c.x + inset, y + c.y + inset);
+      ctx.lineTo(x + c.x + c.width - inset, y + c.y + c.height - inset);
+      ctx.moveTo(x + c.x + c.width - inset, y + c.y + inset);
+      ctx.lineTo(x + c.x + inset, y + c.y + c.height - inset);
+      ctx.stroke();
+      ctx.restore();
+    }
+
     ctx.fillStyle = surface.inkMuted;
     ctx.font = `500 11px ${surface.fontUi}`;
     let textY = y + card.bodyBaseline;
