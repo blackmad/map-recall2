@@ -1501,6 +1501,7 @@
         "licenceUrl": "./LICENSE",
         "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
       },
+      "spatialSuppression": false,
       "bounds": {
         "min": [
           -9.479991912841797,
@@ -1921,6 +1922,7 @@
         ],
         "northOffsetDegrees": 119.51208512104333
       },
+      "spatialSuppression": false,
       "bounds": {
         "min": [
           -2.9514689445495605,
@@ -1987,6 +1989,7 @@
         ],
         "northOffsetDegrees": 214.19839036962065
       },
+      "spatialSuppression": false,
       "bounds": {
         "min": [
           -8.233898162841797,
@@ -2053,6 +2056,7 @@
         ],
         "northOffsetDegrees": 59.387481311342526
       },
+      "spatialSuppression": false,
       "bounds": {
         "min": [
           -11.281264305114746,
@@ -2119,6 +2123,7 @@
         ],
         "northOffsetDegrees": 192.3449814578558
       },
+      "spatialSuppression": false,
       "bounds": {
         "min": [
           -7.4732232093811035,
@@ -2499,6 +2504,362 @@
       },
       "triangles": 26317,
       "bytes": 379924,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "rialto": {
+      "id": "rialto",
+      "name": "Rialto",
+      "landmarkId": "extract_landmarks_1428677427",
+      "modelUrl": "./models/rialto.glb",
+      "suppressOsmIds": [
+        "w277244583"
+      ],
+      "footprint": {
+        "centre": [
+          4.89396640278434,
+          52.35291910893182
+        ],
+        "headingDegrees": 167.64151226366334,
+        "lengthMetres": 24.608901125734388,
+        "widthMetres": 12.087697796837961
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 180,
+      "attribution": {
+        "title": "Rialto",
+        "author": "Map Recall",
+        "sourceUrl": "https://depijp.rialtofilm.nl/en/information/about-rialto",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      },
+      "surveyed": {
+        "anchor": [
+          4.89396640278434,
+          52.35291910893182
+        ],
+        "northOffsetDegrees": 257.64151226366334,
+        "source": "OSM building w277244583 footprint, short north-facing Ceintuurbaan facade"
+      },
+      "spatialSuppression": false,
+      "bounds": {
+        "min": [
+          -12.304450988769531,
+          1.9073486612342094e-7,
+          -6.168848991394043
+        ],
+        "max": [
+          13.664450645446777,
+          16.299999237060547,
+          6.168848991394043
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89396640278434,
+          52.35291910893182
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 347.64151226366334,
+        "facadeBearingDegrees": 347.64151226366334,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 25.96890163421631,
+        "heightMetres": 16.29999904632568,
+        "depthMetres": 12.337697982788086,
+        "depthCoverage": 1.0206822002131393
+      },
+      "triangles": 1248,
+      "bytes": 25020,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "kriterion": {
+      "id": "kriterion",
+      "name": "Kriterion",
+      "landmarkId": "extract_landmarks_1605152135",
+      "modelUrl": "./models/kriterion.glb",
+      "suppressOsmIds": [
+        "w268999077"
+      ],
+      "footprint": {
+        "centre": [
+          4.910484137908315,
+          52.36263900277887
+        ],
+        "headingDegrees": 161.44363710419276,
+        "lengthMetres": 45.2242965083953,
+        "widthMetres": 30.547694670912293
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 270,
+      "attribution": {
+        "title": "Kriterion",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.stichtingkriterion.nl/geschiedenis",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      },
+      "surveyed": {
+        "anchor": [
+          4.910484137908315,
+          52.36263900277887
+        ],
+        "northOffsetDegrees": 251.44363710419276,
+        "source": "OSM building w268999077 polygon, east-facing Roetersstraat street house"
+      },
+      "spatialSuppression": false,
+      "bounds": {
+        "min": [
+          -22.612171173095703,
+          -4.7683716530855236e-8,
+          -15.273883819580078
+        ],
+        "max": [
+          22.612171173095703,
+          20.5,
+          15.3838472366333
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.910484137908315,
+          52.36263900277887
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 341.4436371041927,
+        "facadeBearingDegrees": 71.44363710419276,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 45.224342346191406,
+        "heightMetres": 20.500000047683717,
+        "depthMetres": 30.65773105621338,
+        "depthCoverage": 1.0036021174915652
+      },
+      "triangles": 2513,
+      "bytes": 36656,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "de-bijenkorf": {
+      "id": "de-bijenkorf",
+      "name": "De Bijenkorf",
+      "landmarkId": "de-bijenkorf",
+      "modelUrl": "./models/de-bijenkorf.glb",
+      "suppressOsmIds": [
+        "w23582490",
+        "w751128372",
+        "w751128373",
+        "w751128376",
+        "w751128377",
+        "w751128378",
+        "w751128379",
+        "w751128380",
+        "w751128381",
+        "w751128382",
+        "w751128383",
+        "w751128384",
+        "w751128385",
+        "w751235773",
+        "w751235774",
+        "w751235775",
+        "w751235776",
+        "w751235777",
+        "w751235778",
+        "w751235779",
+        "w751235780"
+      ],
+      "footprint": {
+        "centre": [
+          4.894352481530528,
+          52.373581327421924
+        ],
+        "headingDegrees": 39.69686744069807,
+        "lengthMetres": 111.74151268014535,
+        "widthMetres": 39.11553890323157
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 270,
+      "attribution": {
+        "title": "De Bijenkorf",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.cultureelerfgoeddebijenkorf.nl/architectuur/bouwfasesamsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      },
+      "spatialSuppression": false,
+      "bounds": {
+        "min": [
+          -55.87075424194336,
+          0,
+          -19.8327693939209
+        ],
+        "max": [
+          57.33343505859375,
+          48,
+          21.67276954650879
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.894352481530528,
+          52.373581327421924
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 219.69686744069804,
+        "facadeBearingDegrees": 309.69686744069804,
+        "scale": 0.987079306610212
+      },
+      "extent": {
+        "widthMetres": 113.20418930053711,
+        "heightMetres": 48,
+        "depthMetres": 41.50553894042969,
+        "depthCoverage": 1.0611010382117136
+      },
+      "triangles": 16648,
+      "bytes": 206632,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "gashouder": {
+      "id": "gashouder",
+      "name": "Gashouder",
+      "landmarkId": "gashouder",
+      "modelUrl": "./models/gashouder.glb",
+      "suppressOsmIds": [
+        "w57865152",
+        "w1488057568",
+        "w1488057569",
+        "w1488057570",
+        "w1488057571",
+        "w1488057572",
+        "w1488057573"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.868872884498755,
+          52.386820591571
+        ],
+        "headingDegrees": 77.7474623915898,
+        "lengthMetres": 74.73646232909658,
+        "widthMetres": 65.55857175817337
+      },
+      "surveyed": {
+        "anchor": [
+          4.868872884498755,
+          52.386820591571
+        ],
+        "northOffsetDegrees": 0
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Gashouder",
+        "author": "Map Recall",
+        "sourceUrl": "https://gashouder.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
+      },
+      "bounds": {
+        "min": [
+          -37.50273513793945,
+          -9.536743306171047e-8,
+          -34.290496826171875
+        ],
+        "max": [
+          38.25785446166992,
+          16.200000762939453,
+          36.09037780761719
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.868872884498755,
+          52.386820591571
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 167.7474623915898,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 75.76058959960938,
+        "heightMetres": 16.200000858306886,
+        "depthMetres": 70.38087463378906,
+        "depthCoverage": 1.0735571679841314
+      },
+      "triangles": 10044,
+      "bytes": 106628,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "stadsschouwburg": {
+      "id": "stadsschouwburg",
+      "name": "Stadsschouwburg Amsterdam",
+      "landmarkId": "extract_landmarks_1939633952",
+      "modelUrl": "./models/stadsschouwburg.glb",
+      "suppressOsmIds": [
+        "w57863115"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.881898232685734,
+          52.36435694049734
+        ],
+        "headingDegrees": 52.40783486526533,
+        "lengthMetres": 54.077617043745775,
+        "widthMetres": 104.27101523772704
+      },
+      "surveyed": {
+        "anchor": [
+          4.881898232685734,
+          52.36435694049734
+        ],
+        "northOffsetDegrees": -37.59216513473467
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Stadsschouwburg Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://ita.nl/nl/stadsschouwburg-amsterdam/geschiedenis-van-het-huis",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using museum and venue photographs for architectural silhouette and OpenStreetMap polygons for placement. Includes the full mapped venue footprint; dimensions and roof ornament are approximate."
+      },
+      "bounds": {
+        "min": [
+          -26.88364601135254,
+          -1.9073486612342094e-7,
+          -51.893428802490234
+        ],
+        "max": [
+          27.088218688964844,
+          37.20000076293945,
+          54.73550796508789
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.881898232685734,
+          52.36435694049734
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 52.40783486526533,
+        "facadeBearingDegrees": 142.40783486526533,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 106.62893676757812,
+        "heightMetres": 37.20000095367432,
+        "depthMetres": 53.97186470031738,
+        "depthCoverage": 0.5176113858416661
+      },
+      "triangles": 7734,
+      "bytes": 94676,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

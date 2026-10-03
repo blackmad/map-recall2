@@ -126,7 +126,8 @@ OBA Oosterdok, REM-eiland, Paradiso and Melkweg are original project meshes gene
 the project. Silodam, Embassy of the Free Mind / Huis met de Hoofden,
 The Movies, DeLaMar, Magna Plaza, Felix Meritis, De Kleine Komedie, De Balie,
 Anne Frank House, Rembrandt House, Moco Museum, Museum Van Loon, Amstelkerk,
-He Hua Temple, Haarlemmerpoort, Museum Het Schip and Scheepvaarthuis use the
+He Hua Temple, Haarlemmerpoort, Museum Het Schip, Scheepvaarthuis, Rialto,
+Kriterion, De Bijenkorf, Gashouder and Stadsschouwburg use the
 same original modelling workflow in
 `scripts/landmarks/build-manual-landmarks.ts`. The live game loads these
 flat-colour replacements; the older imported catalogue remains available in

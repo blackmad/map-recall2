@@ -28,7 +28,8 @@
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
-    }
+    },
+    "spatialSuppression": false
   },
   {
     "id": "the-movies",

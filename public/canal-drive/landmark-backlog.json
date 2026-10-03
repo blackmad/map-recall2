@@ -2,7 +2,7 @@
   "version": 1,
   "cityId": "amsterdam",
   "generatedBy": "scripts/landmarks/build-poi-backlog.ts",
-  "rules": "Same teachable-card gate, 4 km city-centre radius, name deduplication and prominence order as game-route.js. Requested additions may lie outside this pool.",
+  "rules": "Same teachable-card gate, 4 km city-centre radius, name deduplication and prominence order as game-route.js. Requested additions and completed original assets may lie outside this pool; their origin records this.",
   "statusMeaning": {
     "manual-model": "Original flat-colour GLB placed in the live game",
     "procedural-kit": "Existing authored procedural landmark geometry",
@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 29,
+    "manual-model": 36,
     "catalogue-model": 13,
     "procedural-kit": 19,
-    "pending": 218
+    "pending": 215
   },
   "destinations": [
     {
@@ -419,7 +419,8 @@
       "type": "landmark",
       "queueRank": 36,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "stadsschouwburg"
     },
     {
       "id": "lm-extract_landmarks_1027016792",
@@ -1010,7 +1011,8 @@
       "type": "cinema",
       "queueRank": 88,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "rialto"
     },
     {
       "id": "lm-extract_landmarks_961954901",
@@ -1076,7 +1078,8 @@
       "type": "cinema",
       "queueRank": 94,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "kriterion"
     },
     {
       "id": "lm-extract_landmarks_2115483451",
@@ -3129,6 +3132,46 @@
       "status": "manual-model",
       "modelId": "paradiso",
       "requested": true
+    },
+    {
+      "id": "magna-plaza",
+      "name": "Magna Plaza",
+      "lat": 52.373625430653085,
+      "lng": 4.890243858773726,
+      "queueRank": 280,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "magna-plaza"
+    },
+    {
+      "id": "scheepvaarthuis",
+      "name": "Scheepvaarthuis",
+      "lat": 52.37432204329201,
+      "lng": 4.903908332712785,
+      "queueRank": 281,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "scheepvaarthuis"
+    },
+    {
+      "id": "de-bijenkorf",
+      "name": "De Bijenkorf",
+      "lat": 52.373581327421924,
+      "lng": 4.894352481530528,
+      "queueRank": 282,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "de-bijenkorf"
+    },
+    {
+      "id": "gashouder",
+      "name": "Gashouder",
+      "lat": 52.386820591571,
+      "lng": 4.868872884498755,
+      "queueRank": 283,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "gashouder"
     }
   ]
 }

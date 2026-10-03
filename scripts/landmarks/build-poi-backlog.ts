@@ -49,9 +49,19 @@ for(const name of requests){
     lat:spec?.surveyed?.anchor[1]||spec?.footprint?.centre[1]||null,lng:spec?.surveyed?.anchor[0]||spec?.footprint?.centre[0]||null,
     queueRank:destinations.length+1,origin:'User requested',...coverage({id:spec?.landmarkId||'',name}),requested:true} as any);
 }
+// Keep every completed original asset reviewable even when the teaching gate
+// excludes its POI. Its origin distinguishes it from selectable game destinations.
+for (const spec of MANUAL_LANDMARKS) {
+  if (destinations.some(p => (p as any).modelId === spec.id)) continue;
+  destinations.push({id:spec.id,name:spec.name,
+    lat:spec.surveyed?.anchor[1]??spec.footprint?.centre[1]??null,
+    lng:spec.surveyed?.anchor[0]??spec.footprint?.centre[0]??null,
+    queueRank:destinations.length+1,origin:'Landmark catalogue',
+    status:'manual-model',modelId:spec.id} as any);
+}
 const counts=destinations.reduce((a:any,p)=>{a[p.status]=(a[p.status]||0)+1;return a;},{});
 fs.writeFileSync('public/canal-drive/landmark-backlog.json',JSON.stringify({version:1,cityId:'amsterdam',
-  generatedBy:'scripts/landmarks/build-poi-backlog.ts',rules:'Same teachable-card gate, 4 km city-centre radius, name deduplication and prominence order as game-route.js. Requested additions may lie outside this pool.',
+  generatedBy:'scripts/landmarks/build-poi-backlog.ts',rules:'Same teachable-card gate, 4 km city-centre radius, name deduplication and prominence order as game-route.js. Requested additions and completed original assets may lie outside this pool; their origin records this.',
   statusMeaning:{'manual-model':'Original flat-colour GLB placed in the live game','procedural-kit':'Existing authored procedural landmark geometry','catalogue-model':'Imported reference model in the development gallery; review live-game/licence status before calling complete','pending':'Needs a distinctive building or place treatment','landscape':'A park or outdoor place; landscape pass instead of a single building'},
   discoverySources:[{title:'Arcam architecture guide',url:'https://arcam.nl/architectuur-gids/'},{title:'Amsterdam architectural styles',url:'https://www.iamsterdam.com/en/see-and-do/attractions-and-sights/amsterdams-architectural-style'}],counts,destinations},null,2)+'\n');
 console.log(JSON.stringify({destinations:destinations.length,counts,next:destinations.filter(p=>p.status==='pending').slice(0,35).map(p=>p.name)},null,2));
