@@ -154,6 +154,17 @@ Stump records are excluded. Crown silhouettes, branch forks, foliage and bark
 colours are original approximate models; they are not surveyed crowns.
 Species/cultivar references are embedded in `da-costa-block/tree-typology.js`.
 
+The same streamed tiles supplement that inventory with explicit OpenStreetMap
+`natural=tree` nodes inside the Amsterdam municipality boundary (relation 47811).
+Every supplemental trunk is more than 12 metres from the municipal inventory;
+no `tree_row` positions are sampled. OSM node identities, species/genus and
+recorded metre heights are preserved, with `osm-n` IDs and `source: osm`.
+These records are © OpenStreetMap contributors under
+[ODbL](https://www.openstreetmap.org/copyright). Municipal and OSM counts,
+licences, deduplication rules and height provenance are recorded separately in
+the tile index. OSM trees without a valid recorded height use an authored
+9-metre display fallback, not a measured height.
+
 Park boundaries, lawns, woodland, ponds, paths and bench locations derive from
 OpenStreetMap contributors under [ODbL](https://www.openstreetmap.org/copyright).
 `scripts/build-park-landscape.mjs` rebuilds the eleven-park overlay from the

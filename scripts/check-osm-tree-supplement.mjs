@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {buildOsmSupplement,osmHeight,treeMetres} from './osm-tree-supplement.mjs';
+const boundary={id:'a95623',geometry:{type:'MultiPolygon',coordinates:[[[[4.8,52.3],[5,52.3],[5,52.4],[4.8,52.4],[4.8,52.3]],[[4.95,52.35],[4.96,52.35],[4.96,52.36],[4.95,52.36],[4.95,52.35]]]]}};
+const node=(id,coords,tags={})=>({id,geometry:{type:'Point',coordinates:coords},properties:{natural:'tree',...tags}});
+const municipal=[{id:'ams-1',lng:4.9,lat:52.35}];
+const nodes=[node('n1',[4.9+11.9/67900,52.35]),node('n2',[4.9+12.1/67900,52.35],{species:'Catalpa bignonioides',height:'13 m'}),node('n3',[4.7,52.35]),node('n4',[4.955,52.355]),node('n5',[4.91,52.35],{natural:'tree_row'}),{id:'w6',geometry:{type:'LineString',coordinates:[[4.91,52.35],[4.92,52.35]]},properties:{natural:'tree_row'}},node('n2',[4.91,52.35])];
+const {trees,report}=buildOsmSupplement(municipal,{nodes,boundary});assert.equal(trees.length,1);assert.equal(trees[0].id,'osm-n2');assert.equal(trees[0].height,13);assert.equal(trees[0].species,'Catalpa bignonioides');assert.equal(report.treeRowsAdded,0);assert.equal(report.nearMunicipal,1);
+assert.deepEqual(treeMetres([4.9,52.35]),[4.9*67900,52.35*111320]);
+assert.equal(osmHeight('7,5'),7.5);assert.equal(osmHeight('11m'),11);assert.equal(osmHeight('20 ft'),null);assert.equal(osmHeight('0'),null);assert.equal(osmHeight('100'),null);assert.equal(osmHeight('12-15'),null);
+console.log('Explicit OSM supplement: boundary holes, 12 m municipal priority, recorded heights, IDs and no row sampling passed.');

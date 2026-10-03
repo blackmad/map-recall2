@@ -76,7 +76,7 @@ export function treeTypology(tree){
   // Do not substitute a species' potential adult height for this inventory record.
   const height=validHeight?tree.height:9;
   const heightClassKnown=/\d/.test(String(tree.heightClass||''));
-  const heightSource=validHeight&&heightClassKnown?'inventory-height-class-proxy':'authored-height-fallback';
+  const heightSource=validHeight&&tree.source==='osm'?'osm-recorded-height':validHeight&&heightClassKnown?'inventory-height-class-proxy':'authored-height-fallback';
   const h=height,baseRadius=Math.max(1.3,h*.22),variation=.96+numberSeed(tree.id)*.04;
   const r=baseRadius*variation;
   const lobe=(dx,y,dz,sx,sy,sz,tone)=>({offset:[dx,y,dz],scale:[sx,sy,sz],tone});
@@ -100,7 +100,7 @@ export function treeTypology(tree){
   return {version:TREE_TYPOLOGY_VERSION,id:tree.id,position:[...tree.position],height,archetype,lobes,
     trunkHeight:h*(managed?.78:.60),trunkWidth:Math.min(.52,Math.max(.14,h*.023)),
     foliage,bark,crownGeometry:archetype.startsWith('conical-')?'cone':'faceted',rotation:numberSeed(tree.id)*Math.PI*2,
-    provenance:{position:'municipal inventory',height:heightSource,heightClass:tree.heightClass??null,
+    provenance:{position:tree.source==='osm'?'explicit OSM tree node':'municipal inventory',height:heightSource,heightClass:tree.heightClass??null,
       crownBasis:managed?'explicit-inventory-management':rule?.[2]||'authored-fallback',reference:managed?null:rule?.[3]||null,
       species:tree.species??null,type:tree.type??null,measuredCrown:false,
       note:'Shape, width, clearance and summer foliage are authored priors. Not freely growing does not imply pollarding; age, pruning and actual crown extent are unverified.'}};

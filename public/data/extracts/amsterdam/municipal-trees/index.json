@@ -6,9 +6,33 @@
   "apiUrl": "https://api.data.amsterdam.nl/v1/bomen/stamgegevens/?_pageSize=5000&_fields=id,geometrie,soortnaam,soortnaamKort,boomhoogteklasseActueel,jaarVanAanleg,standplaats,typeObject",
   "documentationUrl": "https://api.data.amsterdam.nl/v1/docs/datasets/bomen.html",
   "licence": "Openbaar, tenzij anders aangegeven / behoudens uitzonderingen",
-  "retrievedAt": "2026-10-03T21:54:22.955Z",
+  "retrievedAt": "2026-10-03T23:24:25.567Z",
   "heightMeaning": "Midpoint of recorded height class; open-ended classes use threshold + 3 m. Crown shape is an authored species prior, not a surveyed crown.",
-  "trees": 302404,
+  "sources": {
+    "municipal": {
+      "trees": 302404,
+      "licence": "Openbaar, tenzij anders aangegeven / behoudens uitzonderingen",
+      "idPrefix": "ams-"
+    },
+    "osm": {
+      "trees": 9140,
+      "licence": "ODbL",
+      "sourceUrl": "https://www.openstreetmap.org/copyright",
+      "idPrefix": "osm-n",
+      "positionMeaning": "Explicit natural=tree nodes only; no sampled tree rows",
+      "heightMeaning": "Recorded OSM height in metres, when parseable; otherwise authored height fallback",
+      "boundary": "r47811",
+      "boundaryArea": "a95623",
+      "explicitNodesInside": 45680,
+      "nearMunicipal": 36540,
+      "added": 9140,
+      "dedupMetres": 12,
+      "treeRowsAdded": 0,
+      "species": 141,
+      "recordedHeights": 79
+    }
+  },
+  "trees": 311544,
   "rejected": 24,
   "stumps": 23785,
   "tiles": [
@@ -21,8 +45,8 @@
     {
       "key": "15/16814/10763",
       "url": "tiles/15-16814-10763.json.gz",
-      "trees": 33,
-      "bytes": 613
+      "trees": 54,
+      "bytes": 875
     },
     {
       "key": "15/16814/10764",
@@ -33,8 +57,8 @@
     {
       "key": "15/16815/10759",
       "url": "tiles/15-16815-10759.json.gz",
-      "trees": 5,
-      "bytes": 246
+      "trees": 7,
+      "bytes": 312
     },
     {
       "key": "15/16815/10760",
@@ -49,34 +73,40 @@
       "bytes": 558
     },
     {
+      "key": "15/16815/10762",
+      "url": "tiles/15-16815-10762.json.gz",
+      "trees": 2,
+      "bytes": 191
+    },
+    {
       "key": "15/16815/10763",
       "url": "tiles/15-16815-10763.json.gz",
-      "trees": 14,
-      "bytes": 370
+      "trees": 96,
+      "bytes": 1331
     },
     {
       "key": "15/16815/10764",
       "url": "tiles/15-16815-10764.json.gz",
-      "trees": 47,
-      "bytes": 750
+      "trees": 49,
+      "bytes": 809
     },
     {
       "key": "15/16816/10762",
       "url": "tiles/15-16816-10762.json.gz",
-      "trees": 64,
-      "bytes": 1205
+      "trees": 71,
+      "bytes": 1344
     },
     {
       "key": "15/16816/10763",
       "url": "tiles/15-16816-10763.json.gz",
-      "trees": 11,
-      "bytes": 468
+      "trees": 71,
+      "bytes": 1286
     },
     {
       "key": "15/16816/10764",
       "url": "tiles/15-16816-10764.json.gz",
-      "trees": 39,
-      "bytes": 729
+      "trees": 62,
+      "bytes": 1056
     },
     {
       "key": "15/16816/10765",
@@ -93,38 +123,38 @@
     {
       "key": "15/16817/10762",
       "url": "tiles/15-16817-10762.json.gz",
-      "trees": 4,
-      "bytes": 246
+      "trees": 59,
+      "bytes": 969
     },
     {
       "key": "15/16817/10763",
       "url": "tiles/15-16817-10763.json.gz",
-      "trees": 1,
-      "bytes": 212
+      "trees": 76,
+      "bytes": 1236
     },
     {
       "key": "15/16817/10764",
       "url": "tiles/15-16817-10764.json.gz",
-      "trees": 45,
-      "bytes": 989
+      "trees": 60,
+      "bytes": 1224
     },
     {
       "key": "15/16817/10765",
       "url": "tiles/15-16817-10765.json.gz",
-      "trees": 316,
-      "bytes": 4532
+      "trees": 318,
+      "bytes": 4595
     },
     {
       "key": "15/16817/10766",
       "url": "tiles/15-16817-10766.json.gz",
-      "trees": 189,
-      "bytes": 3161
+      "trees": 192,
+      "bytes": 3242
     },
     {
       "key": "15/16817/10767",
       "url": "tiles/15-16817-10767.json.gz",
-      "trees": 165,
-      "bytes": 2744
+      "trees": 166,
+      "bytes": 2791
     },
     {
       "key": "15/16817/10768",
@@ -135,20 +165,26 @@
     {
       "key": "15/16817/10769",
       "url": "tiles/15-16817-10769.json.gz",
-      "trees": 35,
-      "bytes": 881
+      "trees": 40,
+      "bytes": 987
     },
     {
       "key": "15/16817/10770",
       "url": "tiles/15-16817-10770.json.gz",
-      "trees": 332,
-      "bytes": 5036
+      "trees": 337,
+      "bytes": 5136
     },
     {
       "key": "15/16817/10771",
       "url": "tiles/15-16817-10771.json.gz",
-      "trees": 79,
-      "bytes": 1491
+      "trees": 91,
+      "bytes": 1683
+    },
+    {
+      "key": "15/16818/10762",
+      "url": "tiles/15-16818-10762.json.gz",
+      "trees": 2,
+      "bytes": 191
     },
     {
       "key": "15/16818/10764",
@@ -159,26 +195,26 @@
     {
       "key": "15/16818/10765",
       "url": "tiles/15-16818-10765.json.gz",
-      "trees": 210,
-      "bytes": 3344
+      "trees": 219,
+      "bytes": 3505
     },
     {
       "key": "15/16818/10766",
       "url": "tiles/15-16818-10766.json.gz",
-      "trees": 1370,
-      "bytes": 17911
+      "trees": 1371,
+      "bytes": 17959
     },
     {
       "key": "15/16818/10767",
       "url": "tiles/15-16818-10767.json.gz",
-      "trees": 2055,
-      "bytes": 27544
+      "trees": 2074,
+      "bytes": 27813
     },
     {
       "key": "15/16818/10768",
       "url": "tiles/15-16818-10768.json.gz",
-      "trees": 433,
-      "bytes": 7256
+      "trees": 436,
+      "bytes": 7339
     },
     {
       "key": "15/16818/10769",
@@ -189,14 +225,14 @@
     {
       "key": "15/16818/10770",
       "url": "tiles/15-16818-10770.json.gz",
-      "trees": 726,
-      "bytes": 11252
+      "trees": 729,
+      "bytes": 11323
     },
     {
       "key": "15/16818/10771",
       "url": "tiles/15-16818-10771.json.gz",
-      "trees": 1168,
-      "bytes": 20099
+      "trees": 1171,
+      "bytes": 20176
     },
     {
       "key": "15/16818/10772",
@@ -207,14 +243,14 @@
     {
       "key": "15/16819/10761",
       "url": "tiles/15-16819-10761.json.gz",
-      "trees": 2,
-      "bytes": 215
+      "trees": 7,
+      "bytes": 315
     },
     {
       "key": "15/16819/10763",
       "url": "tiles/15-16819-10763.json.gz",
-      "trees": 2,
-      "bytes": 202
+      "trees": 5,
+      "bytes": 281
     },
     {
       "key": "15/16819/10764",
@@ -225,20 +261,20 @@
     {
       "key": "15/16819/10765",
       "url": "tiles/15-16819-10765.json.gz",
-      "trees": 325,
-      "bytes": 5212
+      "trees": 328,
+      "bytes": 5297
     },
     {
       "key": "15/16819/10766",
       "url": "tiles/15-16819-10766.json.gz",
-      "trees": 746,
-      "bytes": 11848
+      "trees": 747,
+      "bytes": 11894
     },
     {
       "key": "15/16819/10767",
       "url": "tiles/15-16819-10767.json.gz",
-      "trees": 1528,
-      "bytes": 22348
+      "trees": 1537,
+      "bytes": 22503
     },
     {
       "key": "15/16819/10768",
@@ -249,14 +285,14 @@
     {
       "key": "15/16819/10769",
       "url": "tiles/15-16819-10769.json.gz",
-      "trees": 212,
-      "bytes": 3598
+      "trees": 222,
+      "bytes": 3764
     },
     {
       "key": "15/16819/10770",
       "url": "tiles/15-16819-10770.json.gz",
-      "trees": 1447,
-      "bytes": 23422
+      "trees": 1452,
+      "bytes": 23527
     },
     {
       "key": "15/16819/10771",
@@ -267,8 +303,8 @@
     {
       "key": "15/16819/10772",
       "url": "tiles/15-16819-10772.json.gz",
-      "trees": 919,
-      "bytes": 15155
+      "trees": 920,
+      "bytes": 15205
     },
     {
       "key": "15/16820/10760",
@@ -277,28 +313,34 @@
       "bytes": 207
     },
     {
+      "key": "15/16820/10761",
+      "url": "tiles/15-16820-10761.json.gz",
+      "trees": 29,
+      "bytes": 523
+    },
+    {
       "key": "15/16820/10762",
       "url": "tiles/15-16820-10762.json.gz",
-      "trees": 1,
-      "bytes": 207
+      "trees": 12,
+      "bytes": 413
     },
     {
       "key": "15/16820/10763",
       "url": "tiles/15-16820-10763.json.gz",
-      "trees": 37,
-      "bytes": 723
+      "trees": 54,
+      "bytes": 979
     },
     {
       "key": "15/16820/10764",
       "url": "tiles/15-16820-10764.json.gz",
-      "trees": 230,
-      "bytes": 3729
+      "trees": 234,
+      "bytes": 3837
     },
     {
       "key": "15/16820/10765",
       "url": "tiles/15-16820-10765.json.gz",
-      "trees": 364,
-      "bytes": 5305
+      "trees": 369,
+      "bytes": 5410
     },
     {
       "key": "15/16820/10766",
@@ -309,32 +351,32 @@
     {
       "key": "15/16820/10767",
       "url": "tiles/15-16820-10767.json.gz",
-      "trees": 1431,
-      "bytes": 23772
+      "trees": 1484,
+      "bytes": 24502
     },
     {
       "key": "15/16820/10768",
       "url": "tiles/15-16820-10768.json.gz",
-      "trees": 1660,
-      "bytes": 23334
+      "trees": 1663,
+      "bytes": 23415
     },
     {
       "key": "15/16820/10769",
       "url": "tiles/15-16820-10769.json.gz",
-      "trees": 1505,
-      "bytes": 21911
+      "trees": 1506,
+      "bytes": 21957
     },
     {
       "key": "15/16820/10770",
       "url": "tiles/15-16820-10770.json.gz",
-      "trees": 1405,
-      "bytes": 23818
+      "trees": 1411,
+      "bytes": 23935
     },
     {
       "key": "15/16820/10771",
       "url": "tiles/15-16820-10771.json.gz",
-      "trees": 1437,
-      "bytes": 24541
+      "trees": 1459,
+      "bytes": 24848
     },
     {
       "key": "15/16820/10772",
@@ -345,8 +387,8 @@
     {
       "key": "15/16820/10773",
       "url": "tiles/15-16820-10773.json.gz",
-      "trees": 720,
-      "bytes": 12184
+      "trees": 721,
+      "bytes": 12228
     },
     {
       "key": "15/16820/10774",
@@ -355,28 +397,34 @@
       "bytes": 1843
     },
     {
+      "key": "15/16821/10761",
+      "url": "tiles/15-16821-10761.json.gz",
+      "trees": 5,
+      "bytes": 229
+    },
+    {
       "key": "15/16821/10762",
       "url": "tiles/15-16821-10762.json.gz",
-      "trees": 2,
-      "bytes": 207
+      "trees": 12,
+      "bytes": 374
     },
     {
       "key": "15/16821/10763",
       "url": "tiles/15-16821-10763.json.gz",
-      "trees": 3,
-      "bytes": 265
+      "trees": 11,
+      "bytes": 404
     },
     {
       "key": "15/16821/10764",
       "url": "tiles/15-16821-10764.json.gz",
-      "trees": 42,
-      "bytes": 1067
+      "trees": 61,
+      "bytes": 1321
     },
     {
       "key": "15/16821/10765",
       "url": "tiles/15-16821-10765.json.gz",
-      "trees": 326,
-      "bytes": 5069
+      "trees": 328,
+      "bytes": 5134
     },
     {
       "key": "15/16821/10766",
@@ -387,38 +435,38 @@
     {
       "key": "15/16821/10767",
       "url": "tiles/15-16821-10767.json.gz",
-      "trees": 1754,
-      "bytes": 30030
+      "trees": 1756,
+      "bytes": 30101
     },
     {
       "key": "15/16821/10768",
       "url": "tiles/15-16821-10768.json.gz",
-      "trees": 1161,
-      "bytes": 19219
+      "trees": 1162,
+      "bytes": 19266
     },
     {
       "key": "15/16821/10769",
       "url": "tiles/15-16821-10769.json.gz",
-      "trees": 1132,
-      "bytes": 18614
+      "trees": 1172,
+      "bytes": 19183
     },
     {
       "key": "15/16821/10770",
       "url": "tiles/15-16821-10770.json.gz",
-      "trees": 1018,
-      "bytes": 18101
+      "trees": 1059,
+      "bytes": 18693
     },
     {
       "key": "15/16821/10771",
       "url": "tiles/15-16821-10771.json.gz",
-      "trees": 1526,
-      "bytes": 27052
+      "trees": 1597,
+      "bytes": 27981
     },
     {
       "key": "15/16821/10772",
       "url": "tiles/15-16821-10772.json.gz",
-      "trees": 2107,
-      "bytes": 31306
+      "trees": 2112,
+      "bytes": 31421
     },
     {
       "key": "15/16821/10773",
@@ -441,8 +489,8 @@
     {
       "key": "15/16822/10765",
       "url": "tiles/15-16822-10765.json.gz",
-      "trees": 101,
-      "bytes": 1913
+      "trees": 108,
+      "bytes": 2050
     },
     {
       "key": "15/16822/10766",
@@ -459,38 +507,38 @@
     {
       "key": "15/16822/10768",
       "url": "tiles/15-16822-10768.json.gz",
-      "trees": 1509,
-      "bytes": 25806
+      "trees": 1533,
+      "bytes": 26128
     },
     {
       "key": "15/16822/10769",
       "url": "tiles/15-16822-10769.json.gz",
-      "trees": 534,
-      "bytes": 8869
+      "trees": 539,
+      "bytes": 8969
     },
     {
       "key": "15/16822/10770",
       "url": "tiles/15-16822-10770.json.gz",
-      "trees": 1047,
-      "bytes": 17995
+      "trees": 1064,
+      "bytes": 18259
     },
     {
       "key": "15/16822/10771",
       "url": "tiles/15-16822-10771.json.gz",
-      "trees": 1666,
-      "bytes": 27867
+      "trees": 1677,
+      "bytes": 28038
     },
     {
       "key": "15/16822/10772",
       "url": "tiles/15-16822-10772.json.gz",
-      "trees": 1927,
-      "bytes": 30023
+      "trees": 1952,
+      "bytes": 30364
     },
     {
       "key": "15/16822/10773",
       "url": "tiles/15-16822-10773.json.gz",
-      "trees": 517,
-      "bytes": 9088
+      "trees": 518,
+      "bytes": 9130
     },
     {
       "key": "15/16822/10774",
@@ -535,28 +583,40 @@
       "bytes": 1056
     },
     {
+      "key": "15/16823/10761",
+      "url": "tiles/15-16823-10761.json.gz",
+      "trees": 103,
+      "bytes": 1367
+    },
+    {
+      "key": "15/16823/10762",
+      "url": "tiles/15-16823-10762.json.gz",
+      "trees": 211,
+      "bytes": 2669
+    },
+    {
       "key": "15/16823/10763",
       "url": "tiles/15-16823-10763.json.gz",
-      "trees": 1,
-      "bytes": 205
+      "trees": 96,
+      "bytes": 1390
     },
     {
       "key": "15/16823/10764",
       "url": "tiles/15-16823-10764.json.gz",
-      "trees": 1,
-      "bytes": 205
+      "trees": 84,
+      "bytes": 1132
     },
     {
       "key": "15/16823/10765",
       "url": "tiles/15-16823-10765.json.gz",
-      "trees": 318,
-      "bytes": 4196
+      "trees": 402,
+      "bytes": 5236
     },
     {
       "key": "15/16823/10766",
       "url": "tiles/15-16823-10766.json.gz",
-      "trees": 2154,
-      "bytes": 31511
+      "trees": 2165,
+      "bytes": 31674
     },
     {
       "key": "15/16823/10767",
@@ -573,14 +633,14 @@
     {
       "key": "15/16823/10769",
       "url": "tiles/15-16823-10769.json.gz",
-      "trees": 1691,
-      "bytes": 26273
+      "trees": 1697,
+      "bytes": 26390
     },
     {
       "key": "15/16823/10770",
       "url": "tiles/15-16823-10770.json.gz",
-      "trees": 1610,
-      "bytes": 26186
+      "trees": 1614,
+      "bytes": 26290
     },
     {
       "key": "15/16823/10771",
@@ -591,8 +651,8 @@
     {
       "key": "15/16823/10772",
       "url": "tiles/15-16823-10772.json.gz",
-      "trees": 959,
-      "bytes": 15666
+      "trees": 970,
+      "bytes": 15858
     },
     {
       "key": "15/16823/10773",
@@ -651,20 +711,20 @@
     {
       "key": "15/16824/10763",
       "url": "tiles/15-16824-10763.json.gz",
-      "trees": 4,
-      "bytes": 303
+      "trees": 207,
+      "bytes": 2791
     },
     {
       "key": "15/16824/10764",
       "url": "tiles/15-16824-10764.json.gz",
-      "trees": 3,
-      "bytes": 310
+      "trees": 480,
+      "bytes": 6001
     },
     {
       "key": "15/16824/10765",
       "url": "tiles/15-16824-10765.json.gz",
-      "trees": 398,
-      "bytes": 6402
+      "trees": 450,
+      "bytes": 7130
     },
     {
       "key": "15/16824/10766",
@@ -675,26 +735,26 @@
     {
       "key": "15/16824/10767",
       "url": "tiles/15-16824-10767.json.gz",
-      "trees": 1319,
-      "bytes": 22974
+      "trees": 1323,
+      "bytes": 23059
     },
     {
       "key": "15/16824/10768",
       "url": "tiles/15-16824-10768.json.gz",
-      "trees": 948,
-      "bytes": 16067
+      "trees": 959,
+      "bytes": 16243
     },
     {
       "key": "15/16824/10769",
       "url": "tiles/15-16824-10769.json.gz",
-      "trees": 1629,
-      "bytes": 26431
+      "trees": 1671,
+      "bytes": 26954
     },
     {
       "key": "15/16824/10770",
       "url": "tiles/15-16824-10770.json.gz",
-      "trees": 1145,
-      "bytes": 19305
+      "trees": 1147,
+      "bytes": 19364
     },
     {
       "key": "15/16824/10771",
@@ -705,8 +765,8 @@
     {
       "key": "15/16824/10772",
       "url": "tiles/15-16824-10772.json.gz",
-      "trees": 849,
-      "bytes": 15004
+      "trees": 871,
+      "bytes": 15325
     },
     {
       "key": "15/16824/10773",
@@ -759,26 +819,26 @@
     {
       "key": "15/16825/10762",
       "url": "tiles/15-16825-10762.json.gz",
-      "trees": 1,
-      "bytes": 201
+      "trees": 45,
+      "bytes": 776
     },
     {
       "key": "15/16825/10763",
       "url": "tiles/15-16825-10763.json.gz",
-      "trees": 17,
-      "bytes": 566
+      "trees": 110,
+      "bytes": 1751
     },
     {
       "key": "15/16825/10764",
       "url": "tiles/15-16825-10764.json.gz",
-      "trees": 36,
-      "bytes": 647
+      "trees": 299,
+      "bytes": 3924
     },
     {
       "key": "15/16825/10765",
       "url": "tiles/15-16825-10765.json.gz",
-      "trees": 623,
-      "bytes": 9439
+      "trees": 652,
+      "bytes": 9852
     },
     {
       "key": "15/16825/10766",
@@ -789,8 +849,8 @@
     {
       "key": "15/16825/10767",
       "url": "tiles/15-16825-10767.json.gz",
-      "trees": 1557,
-      "bytes": 27545
+      "trees": 1568,
+      "bytes": 27722
     },
     {
       "key": "15/16825/10768",
@@ -801,26 +861,26 @@
     {
       "key": "15/16825/10769",
       "url": "tiles/15-16825-10769.json.gz",
-      "trees": 1872,
-      "bytes": 31169
+      "trees": 1876,
+      "bytes": 31271
     },
     {
       "key": "15/16825/10770",
       "url": "tiles/15-16825-10770.json.gz",
-      "trees": 1279,
-      "bytes": 22253
+      "trees": 1298,
+      "bytes": 22593
     },
     {
       "key": "15/16825/10771",
       "url": "tiles/15-16825-10771.json.gz",
-      "trees": 1179,
-      "bytes": 21356
+      "trees": 1191,
+      "bytes": 21578
     },
     {
       "key": "15/16825/10772",
       "url": "tiles/15-16825-10772.json.gz",
-      "trees": 1772,
-      "bytes": 30848
+      "trees": 1776,
+      "bytes": 30963
     },
     {
       "key": "15/16825/10773",
@@ -831,8 +891,8 @@
     {
       "key": "15/16825/10774",
       "url": "tiles/15-16825-10774.json.gz",
-      "trees": 1725,
-      "bytes": 24895
+      "trees": 1746,
+      "bytes": 25180
     },
     {
       "key": "15/16825/10775",
@@ -849,8 +909,8 @@
     {
       "key": "15/16826/10759",
       "url": "tiles/15-16826-10759.json.gz",
-      "trees": 15,
-      "bytes": 454
+      "trees": 16,
+      "bytes": 492
     },
     {
       "key": "15/16826/10760",
@@ -861,26 +921,32 @@
     {
       "key": "15/16826/10761",
       "url": "tiles/15-16826-10761.json.gz",
-      "trees": 178,
-      "bytes": 2559
+      "trees": 187,
+      "bytes": 2722
     },
     {
       "key": "15/16826/10762",
       "url": "tiles/15-16826-10762.json.gz",
-      "trees": 7,
-      "bytes": 328
+      "trees": 9,
+      "bytes": 396
     },
     {
       "key": "15/16826/10763",
       "url": "tiles/15-16826-10763.json.gz",
-      "trees": 15,
-      "bytes": 467
+      "trees": 79,
+      "bytes": 1292
+    },
+    {
+      "key": "15/16826/10764",
+      "url": "tiles/15-16826-10764.json.gz",
+      "trees": 56,
+      "bytes": 852
     },
     {
       "key": "15/16826/10765",
       "url": "tiles/15-16826-10765.json.gz",
-      "trees": 1109,
-      "bytes": 17593
+      "trees": 1423,
+      "bytes": 21370
     },
     {
       "key": "15/16826/10766",
@@ -891,26 +957,26 @@
     {
       "key": "15/16826/10767",
       "url": "tiles/15-16826-10767.json.gz",
-      "trees": 944,
-      "bytes": 16770
+      "trees": 946,
+      "bytes": 16831
     },
     {
       "key": "15/16826/10768",
       "url": "tiles/15-16826-10768.json.gz",
-      "trees": 1098,
-      "bytes": 20133
+      "trees": 1101,
+      "bytes": 20218
     },
     {
       "key": "15/16826/10769",
       "url": "tiles/15-16826-10769.json.gz",
-      "trees": 896,
-      "bytes": 15575
+      "trees": 911,
+      "bytes": 15826
     },
     {
       "key": "15/16826/10770",
       "url": "tiles/15-16826-10770.json.gz",
-      "trees": 2434,
-      "bytes": 44630
+      "trees": 2454,
+      "bytes": 44944
     },
     {
       "key": "15/16826/10771",
@@ -921,20 +987,20 @@
     {
       "key": "15/16826/10772",
       "url": "tiles/15-16826-10772.json.gz",
-      "trees": 1462,
-      "bytes": 26023
+      "trees": 1463,
+      "bytes": 26075
     },
     {
       "key": "15/16826/10773",
       "url": "tiles/15-16826-10773.json.gz",
-      "trees": 513,
-      "bytes": 9275
+      "trees": 515,
+      "bytes": 9331
     },
     {
       "key": "15/16826/10774",
       "url": "tiles/15-16826-10774.json.gz",
-      "trees": 1564,
-      "bytes": 28856
+      "trees": 1571,
+      "bytes": 28984
     },
     {
       "key": "15/16826/10775",
@@ -957,26 +1023,32 @@
     {
       "key": "15/16827/10761",
       "url": "tiles/15-16827-10761.json.gz",
-      "trees": 744,
-      "bytes": 12756
+      "trees": 749,
+      "bytes": 12859
     },
     {
       "key": "15/16827/10762",
       "url": "tiles/15-16827-10762.json.gz",
-      "trees": 472,
-      "bytes": 7586
+      "trees": 474,
+      "bytes": 7649
+    },
+    {
+      "key": "15/16827/10763",
+      "url": "tiles/15-16827-10763.json.gz",
+      "trees": 8,
+      "bytes": 262
     },
     {
       "key": "15/16827/10764",
       "url": "tiles/15-16827-10764.json.gz",
-      "trees": 38,
-      "bytes": 791
+      "trees": 197,
+      "bytes": 2817
     },
     {
       "key": "15/16827/10765",
       "url": "tiles/15-16827-10765.json.gz",
-      "trees": 1148,
-      "bytes": 20372
+      "trees": 1179,
+      "bytes": 20826
     },
     {
       "key": "15/16827/10766",
@@ -987,50 +1059,50 @@
     {
       "key": "15/16827/10767",
       "url": "tiles/15-16827-10767.json.gz",
-      "trees": 1100,
-      "bytes": 21292
+      "trees": 1102,
+      "bytes": 21362
     },
     {
       "key": "15/16827/10768",
       "url": "tiles/15-16827-10768.json.gz",
-      "trees": 967,
-      "bytes": 18165
+      "trees": 969,
+      "bytes": 18231
     },
     {
       "key": "15/16827/10769",
       "url": "tiles/15-16827-10769.json.gz",
-      "trees": 1028,
-      "bytes": 18758
+      "trees": 1040,
+      "bytes": 18961
     },
     {
       "key": "15/16827/10770",
       "url": "tiles/15-16827-10770.json.gz",
-      "trees": 2254,
-      "bytes": 43052
+      "trees": 2257,
+      "bytes": 43129
     },
     {
       "key": "15/16827/10771",
       "url": "tiles/15-16827-10771.json.gz",
-      "trees": 1419,
-      "bytes": 25034
+      "trees": 1420,
+      "bytes": 25084
     },
     {
       "key": "15/16827/10772",
       "url": "tiles/15-16827-10772.json.gz",
-      "trees": 1300,
-      "bytes": 23425
+      "trees": 1301,
+      "bytes": 23468
     },
     {
       "key": "15/16827/10773",
       "url": "tiles/15-16827-10773.json.gz",
-      "trees": 966,
-      "bytes": 16590
+      "trees": 972,
+      "bytes": 16708
     },
     {
       "key": "15/16827/10774",
       "url": "tiles/15-16827-10774.json.gz",
-      "trees": 2071,
-      "bytes": 37348
+      "trees": 2121,
+      "bytes": 38031
     },
     {
       "key": "15/16827/10775",
@@ -1065,74 +1137,74 @@
     {
       "key": "15/16828/10763",
       "url": "tiles/15-16828-10763.json.gz",
-      "trees": 177,
-      "bytes": 3064
+      "trees": 182,
+      "bytes": 3170
     },
     {
       "key": "15/16828/10764",
       "url": "tiles/15-16828-10764.json.gz",
-      "trees": 16,
-      "bytes": 557
+      "trees": 23,
+      "bytes": 689
     },
     {
       "key": "15/16828/10765",
       "url": "tiles/15-16828-10765.json.gz",
-      "trees": 649,
-      "bytes": 11898
+      "trees": 652,
+      "bytes": 11971
     },
     {
       "key": "15/16828/10766",
       "url": "tiles/15-16828-10766.json.gz",
-      "trees": 1112,
-      "bytes": 22458
+      "trees": 1114,
+      "bytes": 22526
     },
     {
       "key": "15/16828/10767",
       "url": "tiles/15-16828-10767.json.gz",
-      "trees": 692,
-      "bytes": 13238
+      "trees": 693,
+      "bytes": 13288
     },
     {
       "key": "15/16828/10768",
       "url": "tiles/15-16828-10768.json.gz",
-      "trees": 653,
-      "bytes": 11258
+      "trees": 685,
+      "bytes": 11679
     },
     {
       "key": "15/16828/10769",
       "url": "tiles/15-16828-10769.json.gz",
-      "trees": 652,
-      "bytes": 12121
+      "trees": 700,
+      "bytes": 12770
     },
     {
       "key": "15/16828/10770",
       "url": "tiles/15-16828-10770.json.gz",
-      "trees": 1213,
-      "bytes": 22592
+      "trees": 1241,
+      "bytes": 23047
     },
     {
       "key": "15/16828/10771",
       "url": "tiles/15-16828-10771.json.gz",
-      "trees": 1186,
-      "bytes": 21938
+      "trees": 1195,
+      "bytes": 22115
     },
     {
       "key": "15/16828/10772",
       "url": "tiles/15-16828-10772.json.gz",
-      "trees": 2667,
-      "bytes": 51794
+      "trees": 2672,
+      "bytes": 51901
     },
     {
       "key": "15/16828/10773",
       "url": "tiles/15-16828-10773.json.gz",
-      "trees": 1168,
-      "bytes": 20346
+      "trees": 1177,
+      "bytes": 20529
     },
     {
       "key": "15/16828/10774",
       "url": "tiles/15-16828-10774.json.gz",
-      "trees": 2013,
-      "bytes": 36620
+      "trees": 2028,
+      "bytes": 36878
     },
     {
       "key": "15/16828/10775",
@@ -1155,20 +1227,20 @@
     {
       "key": "15/16829/10760",
       "url": "tiles/15-16829-10760.json.gz",
-      "trees": 248,
-      "bytes": 4555
+      "trees": 269,
+      "bytes": 4847
     },
     {
       "key": "15/16829/10761",
       "url": "tiles/15-16829-10761.json.gz",
-      "trees": 1341,
-      "bytes": 24203
+      "trees": 1353,
+      "bytes": 24409
     },
     {
       "key": "15/16829/10762",
       "url": "tiles/15-16829-10762.json.gz",
-      "trees": 1388,
-      "bytes": 25734
+      "trees": 1390,
+      "bytes": 25795
     },
     {
       "key": "15/16829/10763",
@@ -1179,8 +1251,8 @@
     {
       "key": "15/16829/10764",
       "url": "tiles/15-16829-10764.json.gz",
-      "trees": 207,
-      "bytes": 3468
+      "trees": 210,
+      "bytes": 3545
     },
     {
       "key": "15/16829/10765",
@@ -1191,50 +1263,50 @@
     {
       "key": "15/16829/10766",
       "url": "tiles/15-16829-10766.json.gz",
-      "trees": 316,
-      "bytes": 5829
+      "trees": 332,
+      "bytes": 6057
     },
     {
       "key": "15/16829/10767",
       "url": "tiles/15-16829-10767.json.gz",
-      "trees": 467,
-      "bytes": 8251
+      "trees": 498,
+      "bytes": 8692
     },
     {
       "key": "15/16829/10768",
       "url": "tiles/15-16829-10768.json.gz",
-      "trees": 577,
-      "bytes": 9817
+      "trees": 592,
+      "bytes": 10048
     },
     {
       "key": "15/16829/10769",
       "url": "tiles/15-16829-10769.json.gz",
-      "trees": 630,
-      "bytes": 11346
+      "trees": 659,
+      "bytes": 11729
     },
     {
       "key": "15/16829/10770",
       "url": "tiles/15-16829-10770.json.gz",
-      "trees": 1082,
-      "bytes": 20247
+      "trees": 1089,
+      "bytes": 20394
     },
     {
       "key": "15/16829/10771",
       "url": "tiles/15-16829-10771.json.gz",
-      "trees": 1561,
-      "bytes": 29452
+      "trees": 1573,
+      "bytes": 29661
     },
     {
       "key": "15/16829/10772",
       "url": "tiles/15-16829-10772.json.gz",
-      "trees": 1408,
-      "bytes": 26182
+      "trees": 1505,
+      "bytes": 27414
     },
     {
       "key": "15/16829/10773",
       "url": "tiles/15-16829-10773.json.gz",
-      "trees": 1254,
-      "bytes": 22634
+      "trees": 1485,
+      "bytes": 25547
     },
     {
       "key": "15/16829/10774",
@@ -1245,8 +1317,8 @@
     {
       "key": "15/16829/10775",
       "url": "tiles/15-16829-10775.json.gz",
-      "trees": 3118,
-      "bytes": 55627
+      "trees": 3132,
+      "bytes": 55883
     },
     {
       "key": "15/16829/10776",
@@ -1257,8 +1329,8 @@
     {
       "key": "15/16830/10760",
       "url": "tiles/15-16830-10760.json.gz",
-      "trees": 30,
-      "bytes": 771
+      "trees": 74,
+      "bytes": 1312
     },
     {
       "key": "15/16830/10761",
@@ -1269,14 +1341,14 @@
     {
       "key": "15/16830/10762",
       "url": "tiles/15-16830-10762.json.gz",
-      "trees": 407,
-      "bytes": 7618
+      "trees": 408,
+      "bytes": 7659
     },
     {
       "key": "15/16830/10763",
       "url": "tiles/15-16830-10763.json.gz",
-      "trees": 1121,
-      "bytes": 19993
+      "trees": 1123,
+      "bytes": 20057
     },
     {
       "key": "15/16830/10764",
@@ -1287,68 +1359,68 @@
     {
       "key": "15/16830/10765",
       "url": "tiles/15-16830-10765.json.gz",
-      "trees": 711,
-      "bytes": 11866
+      "trees": 726,
+      "bytes": 12094
     },
     {
       "key": "15/16830/10766",
       "url": "tiles/15-16830-10766.json.gz",
-      "trees": 1222,
-      "bytes": 21451
+      "trees": 1446,
+      "bytes": 24236
     },
     {
       "key": "15/16830/10767",
       "url": "tiles/15-16830-10767.json.gz",
-      "trees": 157,
-      "bytes": 3345
+      "trees": 175,
+      "bytes": 3621
     },
     {
       "key": "15/16830/10768",
       "url": "tiles/15-16830-10768.json.gz",
-      "trees": 692,
-      "bytes": 12701
+      "trees": 706,
+      "bytes": 12928
     },
     {
       "key": "15/16830/10769",
       "url": "tiles/15-16830-10769.json.gz",
-      "trees": 901,
-      "bytes": 17228
+      "trees": 916,
+      "bytes": 17476
     },
     {
       "key": "15/16830/10770",
       "url": "tiles/15-16830-10770.json.gz",
-      "trees": 1009,
-      "bytes": 18160
+      "trees": 1014,
+      "bytes": 18263
     },
     {
       "key": "15/16830/10771",
       "url": "tiles/15-16830-10771.json.gz",
-      "trees": 1130,
-      "bytes": 22103
+      "trees": 1134,
+      "bytes": 22194
     },
     {
       "key": "15/16830/10772",
       "url": "tiles/15-16830-10772.json.gz",
-      "trees": 1518,
-      "bytes": 29144
+      "trees": 1572,
+      "bytes": 29853
     },
     {
       "key": "15/16830/10773",
       "url": "tiles/15-16830-10773.json.gz",
-      "trees": 1906,
-      "bytes": 34758
+      "trees": 2078,
+      "bytes": 36871
     },
     {
       "key": "15/16830/10774",
       "url": "tiles/15-16830-10774.json.gz",
-      "trees": 482,
-      "bytes": 8214
+      "trees": 489,
+      "bytes": 8345
     },
     {
       "key": "15/16830/10775",
       "url": "tiles/15-16830-10775.json.gz",
-      "trees": 52,
-      "bytes": 1171
+      "trees": 59,
+      "bytes": 1307
     },
     {
       "key": "15/16830/10776",
@@ -1365,8 +1437,8 @@
     {
       "key": "15/16831/10762",
       "url": "tiles/15-16831-10762.json.gz",
-      "trees": 1611,
-      "bytes": 29128
+      "trees": 1618,
+      "bytes": 29255
     },
     {
       "key": "15/16831/10763",
@@ -1383,38 +1455,38 @@
     {
       "key": "15/16831/10765",
       "url": "tiles/15-16831-10765.json.gz",
-      "trees": 1737,
-      "bytes": 31664
+      "trees": 1742,
+      "bytes": 31773
     },
     {
       "key": "15/16831/10766",
       "url": "tiles/15-16831-10766.json.gz",
-      "trees": 1275,
-      "bytes": 23023
+      "trees": 1277,
+      "bytes": 23092
     },
     {
       "key": "15/16831/10767",
       "url": "tiles/15-16831-10767.json.gz",
-      "trees": 260,
-      "bytes": 5101
+      "trees": 262,
+      "bytes": 5166
     },
     {
       "key": "15/16831/10768",
       "url": "tiles/15-16831-10768.json.gz",
-      "trees": 915,
-      "bytes": 17214
+      "trees": 937,
+      "bytes": 17561
     },
     {
       "key": "15/16831/10769",
       "url": "tiles/15-16831-10769.json.gz",
-      "trees": 733,
-      "bytes": 15020
+      "trees": 1085,
+      "bytes": 19487
     },
     {
       "key": "15/16831/10770",
       "url": "tiles/15-16831-10770.json.gz",
-      "trees": 1499,
-      "bytes": 28297
+      "trees": 1500,
+      "bytes": 28344
     },
     {
       "key": "15/16831/10771",
@@ -1425,20 +1497,20 @@
     {
       "key": "15/16831/10772",
       "url": "tiles/15-16831-10772.json.gz",
-      "trees": 1132,
-      "bytes": 21141
+      "trees": 1215,
+      "bytes": 22269
     },
     {
       "key": "15/16831/10773",
       "url": "tiles/15-16831-10773.json.gz",
-      "trees": 1013,
-      "bytes": 16451
+      "trees": 1030,
+      "bytes": 16815
     },
     {
       "key": "15/16831/10774",
       "url": "tiles/15-16831-10774.json.gz",
-      "trees": 597,
-      "bytes": 9537
+      "trees": 603,
+      "bytes": 9651
     },
     {
       "key": "15/16831/10775",
@@ -1467,14 +1539,14 @@
     {
       "key": "15/16832/10764",
       "url": "tiles/15-16832-10764.json.gz",
-      "trees": 1999,
-      "bytes": 30353
+      "trees": 2025,
+      "bytes": 30738
     },
     {
       "key": "15/16832/10765",
       "url": "tiles/15-16832-10765.json.gz",
-      "trees": 2500,
-      "bytes": 43422
+      "trees": 2517,
+      "bytes": 43689
     },
     {
       "key": "15/16832/10766",
@@ -1503,26 +1575,26 @@
     {
       "key": "15/16832/10770",
       "url": "tiles/15-16832-10770.json.gz",
-      "trees": 1553,
-      "bytes": 30573
+      "trees": 1555,
+      "bytes": 30641
     },
     {
       "key": "15/16832/10771",
       "url": "tiles/15-16832-10771.json.gz",
-      "trees": 2035,
-      "bytes": 38045
+      "trees": 2203,
+      "bytes": 40044
     },
     {
       "key": "15/16832/10772",
       "url": "tiles/15-16832-10772.json.gz",
-      "trees": 2441,
-      "bytes": 43773
+      "trees": 2617,
+      "bytes": 46081
     },
     {
       "key": "15/16832/10773",
       "url": "tiles/15-16832-10773.json.gz",
-      "trees": 1358,
-      "bytes": 22564
+      "trees": 1380,
+      "bytes": 22893
     },
     {
       "key": "15/16832/10774",
@@ -1551,8 +1623,8 @@
     {
       "key": "15/16833/10762",
       "url": "tiles/15-16833-10762.json.gz",
-      "trees": 389,
-      "bytes": 5971
+      "trees": 391,
+      "bytes": 6030
     },
     {
       "key": "15/16833/10763",
@@ -1563,14 +1635,14 @@
     {
       "key": "15/16833/10764",
       "url": "tiles/15-16833-10764.json.gz",
-      "trees": 1618,
-      "bytes": 27390
+      "trees": 1653,
+      "bytes": 27879
     },
     {
       "key": "15/16833/10765",
       "url": "tiles/15-16833-10765.json.gz",
-      "trees": 1787,
-      "bytes": 32905
+      "trees": 1789,
+      "bytes": 32964
     },
     {
       "key": "15/16833/10766",
@@ -1593,8 +1665,8 @@
     {
       "key": "15/16833/10769",
       "url": "tiles/15-16833-10769.json.gz",
-      "trees": 1139,
-      "bytes": 19291
+      "trees": 1143,
+      "bytes": 19392
     },
     {
       "key": "15/16833/10770",
@@ -1611,14 +1683,14 @@
     {
       "key": "15/16833/10772",
       "url": "tiles/15-16833-10772.json.gz",
-      "trees": 3477,
-      "bytes": 65886
+      "trees": 3519,
+      "bytes": 66455
     },
     {
       "key": "15/16833/10773",
       "url": "tiles/15-16833-10773.json.gz",
-      "trees": 1453,
-      "bytes": 25306
+      "trees": 1484,
+      "bytes": 25730
     },
     {
       "key": "15/16833/10774",
@@ -1641,8 +1713,8 @@
     {
       "key": "15/16833/10777",
       "url": "tiles/15-16833-10777.json.gz",
-      "trees": 317,
-      "bytes": 4961
+      "trees": 324,
+      "bytes": 5090
     },
     {
       "key": "15/16833/10778",
@@ -1663,28 +1735,34 @@
       "bytes": 248
     },
     {
+      "key": "15/16834/10760",
+      "url": "tiles/15-16834-10760.json.gz",
+      "trees": 10,
+      "bytes": 280
+    },
+    {
       "key": "15/16834/10761",
       "url": "tiles/15-16834-10761.json.gz",
-      "trees": 59,
-      "bytes": 1237
+      "trees": 84,
+      "bytes": 1585
     },
     {
       "key": "15/16834/10762",
       "url": "tiles/15-16834-10762.json.gz",
-      "trees": 36,
-      "bytes": 963
+      "trees": 46,
+      "bytes": 1116
     },
     {
       "key": "15/16834/10763",
       "url": "tiles/15-16834-10763.json.gz",
-      "trees": 393,
-      "bytes": 6954
+      "trees": 404,
+      "bytes": 7136
     },
     {
       "key": "15/16834/10764",
       "url": "tiles/15-16834-10764.json.gz",
-      "trees": 2232,
-      "bytes": 40947
+      "trees": 2259,
+      "bytes": 41328
     },
     {
       "key": "15/16834/10765",
@@ -1713,32 +1791,32 @@
     {
       "key": "15/16834/10769",
       "url": "tiles/15-16834-10769.json.gz",
-      "trees": 1429,
-      "bytes": 25438
+      "trees": 1433,
+      "bytes": 25538
     },
     {
       "key": "15/16834/10770",
       "url": "tiles/15-16834-10770.json.gz",
-      "trees": 779,
-      "bytes": 14711
+      "trees": 1055,
+      "bytes": 18149
     },
     {
       "key": "15/16834/10771",
       "url": "tiles/15-16834-10771.json.gz",
-      "trees": 1566,
-      "bytes": 26337
+      "trees": 1695,
+      "bytes": 27950
     },
     {
       "key": "15/16834/10772",
       "url": "tiles/15-16834-10772.json.gz",
-      "trees": 3098,
-      "bytes": 48405
+      "trees": 3178,
+      "bytes": 49479
     },
     {
       "key": "15/16834/10773",
       "url": "tiles/15-16834-10773.json.gz",
-      "trees": 519,
-      "bytes": 9757
+      "trees": 578,
+      "bytes": 10500
     },
     {
       "key": "15/16834/10774",
@@ -1749,44 +1827,44 @@
     {
       "key": "15/16834/10775",
       "url": "tiles/15-16834-10775.json.gz",
-      "trees": 1164,
-      "bytes": 17907
+      "trees": 1167,
+      "bytes": 17992
     },
     {
       "key": "15/16834/10776",
       "url": "tiles/15-16834-10776.json.gz",
-      "trees": 1608,
-      "bytes": 25928
+      "trees": 1613,
+      "bytes": 26049
     },
     {
       "key": "15/16834/10777",
       "url": "tiles/15-16834-10777.json.gz",
-      "trees": 634,
-      "bytes": 10993
+      "trees": 635,
+      "bytes": 11037
     },
     {
       "key": "15/16834/10778",
       "url": "tiles/15-16834-10778.json.gz",
-      "trees": 585,
-      "bytes": 9533
+      "trees": 678,
+      "bytes": 10757
     },
     {
       "key": "15/16834/10779",
       "url": "tiles/15-16834-10779.json.gz",
-      "trees": 475,
-      "bytes": 7689
+      "trees": 550,
+      "bytes": 8715
     },
     {
       "key": "15/16834/10780",
       "url": "tiles/15-16834-10780.json.gz",
-      "trees": 513,
-      "bytes": 7686
+      "trees": 555,
+      "bytes": 8251
     },
     {
       "key": "15/16834/10781",
       "url": "tiles/15-16834-10781.json.gz",
-      "trees": 58,
-      "bytes": 931
+      "trees": 62,
+      "bytes": 1018
     },
     {
       "key": "15/16835/10761",
@@ -1797,38 +1875,38 @@
     {
       "key": "15/16835/10762",
       "url": "tiles/15-16835-10762.json.gz",
-      "trees": 3,
-      "bytes": 338
+      "trees": 4,
+      "bytes": 383
     },
     {
       "key": "15/16835/10763",
       "url": "tiles/15-16835-10763.json.gz",
-      "trees": 24,
-      "bytes": 814
+      "trees": 27,
+      "bytes": 897
     },
     {
       "key": "15/16835/10764",
       "url": "tiles/15-16835-10764.json.gz",
-      "trees": 612,
-      "bytes": 11131
+      "trees": 633,
+      "bytes": 11446
     },
     {
       "key": "15/16835/10765",
       "url": "tiles/15-16835-10765.json.gz",
-      "trees": 1582,
-      "bytes": 28034
+      "trees": 1589,
+      "bytes": 28163
     },
     {
       "key": "15/16835/10766",
       "url": "tiles/15-16835-10766.json.gz",
-      "trees": 1149,
-      "bytes": 19880
+      "trees": 1212,
+      "bytes": 20666
     },
     {
       "key": "15/16835/10767",
       "url": "tiles/15-16835-10767.json.gz",
-      "trees": 109,
-      "bytes": 2150
+      "trees": 120,
+      "bytes": 2322
     },
     {
       "key": "15/16835/10768",
@@ -1839,56 +1917,56 @@
     {
       "key": "15/16835/10769",
       "url": "tiles/15-16835-10769.json.gz",
-      "trees": 459,
-      "bytes": 8194
+      "trees": 465,
+      "bytes": 8308
     },
     {
       "key": "15/16835/10770",
       "url": "tiles/15-16835-10770.json.gz",
-      "trees": 617,
-      "bytes": 10885
+      "trees": 838,
+      "bytes": 13639
     },
     {
       "key": "15/16835/10771",
       "url": "tiles/15-16835-10771.json.gz",
-      "trees": 35,
-      "bytes": 985
+      "trees": 177,
+      "bytes": 2741
     },
     {
       "key": "15/16835/10772",
       "url": "tiles/15-16835-10772.json.gz",
-      "trees": 304,
-      "bytes": 5258
+      "trees": 385,
+      "bytes": 6254
     },
     {
       "key": "15/16835/10775",
       "url": "tiles/15-16835-10775.json.gz",
-      "trees": 851,
-      "bytes": 14322
+      "trees": 888,
+      "bytes": 14845
     },
     {
       "key": "15/16835/10776",
       "url": "tiles/15-16835-10776.json.gz",
-      "trees": 1432,
-      "bytes": 23413
+      "trees": 1545,
+      "bytes": 24860
     },
     {
       "key": "15/16835/10777",
       "url": "tiles/15-16835-10777.json.gz",
-      "trees": 2212,
-      "bytes": 36439
+      "trees": 2224,
+      "bytes": 36645
     },
     {
       "key": "15/16835/10778",
       "url": "tiles/15-16835-10778.json.gz",
-      "trees": 1699,
-      "bytes": 28563
+      "trees": 1700,
+      "bytes": 28616
     },
     {
       "key": "15/16835/10779",
       "url": "tiles/15-16835-10779.json.gz",
-      "trees": 1260,
-      "bytes": 22332
+      "trees": 1397,
+      "bytes": 24103
     },
     {
       "key": "15/16835/10780",
@@ -1899,8 +1977,8 @@
     {
       "key": "15/16835/10781",
       "url": "tiles/15-16835-10781.json.gz",
-      "trees": 270,
-      "bytes": 4068
+      "trees": 272,
+      "bytes": 4130
     },
     {
       "key": "15/16835/10782",
@@ -1915,6 +1993,12 @@
       "bytes": 309
     },
     {
+      "key": "15/16836/10761",
+      "url": "tiles/15-16836-10761.json.gz",
+      "trees": 1,
+      "bytes": 171
+    },
+    {
       "key": "15/16836/10762",
       "url": "tiles/15-16836-10762.json.gz",
       "trees": 7,
@@ -1923,8 +2007,8 @@
     {
       "key": "15/16836/10763",
       "url": "tiles/15-16836-10763.json.gz",
-      "trees": 33,
-      "bytes": 1025
+      "trees": 35,
+      "bytes": 1085
     },
     {
       "key": "15/16836/10764",
@@ -1941,20 +2025,20 @@
     {
       "key": "15/16836/10766",
       "url": "tiles/15-16836-10766.json.gz",
-      "trees": 618,
-      "bytes": 10322
+      "trees": 622,
+      "bytes": 10413
     },
     {
       "key": "15/16836/10767",
       "url": "tiles/15-16836-10767.json.gz",
-      "trees": 262,
-      "bytes": 4691
+      "trees": 264,
+      "bytes": 4754
     },
     {
       "key": "15/16836/10768",
       "url": "tiles/15-16836-10768.json.gz",
-      "trees": 529,
-      "bytes": 7916
+      "trees": 549,
+      "bytes": 8177
     },
     {
       "key": "15/16836/10769",
@@ -1965,44 +2049,44 @@
     {
       "key": "15/16836/10770",
       "url": "tiles/15-16836-10770.json.gz",
-      "trees": 307,
-      "bytes": 5496
+      "trees": 326,
+      "bytes": 5766
     },
     {
       "key": "15/16836/10771",
       "url": "tiles/15-16836-10771.json.gz",
-      "trees": 14,
-      "bytes": 369
+      "trees": 92,
+      "bytes": 1256
     },
     {
       "key": "15/16836/10774",
       "url": "tiles/15-16836-10774.json.gz",
-      "trees": 69,
-      "bytes": 1496
+      "trees": 73,
+      "bytes": 1586
     },
     {
       "key": "15/16836/10775",
       "url": "tiles/15-16836-10775.json.gz",
-      "trees": 1664,
-      "bytes": 28269
+      "trees": 1697,
+      "bytes": 28775
     },
     {
       "key": "15/16836/10776",
       "url": "tiles/15-16836-10776.json.gz",
-      "trees": 2368,
-      "bytes": 38044
+      "trees": 2372,
+      "bytes": 38163
     },
     {
       "key": "15/16836/10777",
       "url": "tiles/15-16836-10777.json.gz",
-      "trees": 1667,
-      "bytes": 29004
+      "trees": 1739,
+      "bytes": 30006
     },
     {
       "key": "15/16836/10778",
       "url": "tiles/15-16836-10778.json.gz",
-      "trees": 2141,
-      "bytes": 34801
+      "trees": 2163,
+      "bytes": 35106
     },
     {
       "key": "15/16836/10779",
@@ -2047,28 +2131,34 @@
       "bytes": 208
     },
     {
+      "key": "15/16837/10764",
+      "url": "tiles/15-16837-10764.json.gz",
+      "trees": 3,
+      "bytes": 218
+    },
+    {
       "key": "15/16837/10765",
       "url": "tiles/15-16837-10765.json.gz",
-      "trees": 5,
-      "bytes": 266
+      "trees": 6,
+      "bytes": 324
     },
     {
       "key": "15/16837/10766",
       "url": "tiles/15-16837-10766.json.gz",
-      "trees": 18,
-      "bytes": 522
+      "trees": 24,
+      "bytes": 619
     },
     {
       "key": "15/16837/10767",
       "url": "tiles/15-16837-10767.json.gz",
-      "trees": 82,
-      "bytes": 1818
+      "trees": 224,
+      "bytes": 3501
     },
     {
       "key": "15/16837/10768",
       "url": "tiles/15-16837-10768.json.gz",
-      "trees": 11,
-      "bytes": 394
+      "trees": 13,
+      "bytes": 454
     },
     {
       "key": "15/16837/10769",
@@ -2079,26 +2169,26 @@
     {
       "key": "15/16837/10770",
       "url": "tiles/15-16837-10770.json.gz",
-      "trees": 454,
-      "bytes": 7894
+      "trees": 455,
+      "bytes": 7941
     },
     {
       "key": "15/16837/10771",
       "url": "tiles/15-16837-10771.json.gz",
-      "trees": 153,
-      "bytes": 2291
+      "trees": 154,
+      "bytes": 2342
     },
     {
       "key": "15/16837/10774",
       "url": "tiles/15-16837-10774.json.gz",
-      "trees": 505,
-      "bytes": 8519
+      "trees": 509,
+      "bytes": 8612
     },
     {
       "key": "15/16837/10775",
       "url": "tiles/15-16837-10775.json.gz",
-      "trees": 2195,
-      "bytes": 37452
+      "trees": 2244,
+      "bytes": 38164
     },
     {
       "key": "15/16837/10776",
@@ -2109,14 +2199,14 @@
     {
       "key": "15/16837/10777",
       "url": "tiles/15-16837-10777.json.gz",
-      "trees": 1775,
-      "bytes": 29083
+      "trees": 1951,
+      "bytes": 31175
     },
     {
       "key": "15/16837/10778",
       "url": "tiles/15-16837-10778.json.gz",
-      "trees": 775,
-      "bytes": 13991
+      "trees": 778,
+      "bytes": 14061
     },
     {
       "key": "15/16837/10779",
@@ -2127,44 +2217,44 @@
     {
       "key": "15/16837/10780",
       "url": "tiles/15-16837-10780.json.gz",
-      "trees": 1167,
-      "bytes": 19197
+      "trees": 1170,
+      "bytes": 19279
     },
     {
       "key": "15/16838/10760",
       "url": "tiles/15-16838-10760.json.gz",
-      "trees": 7,
-      "bytes": 401
+      "trees": 8,
+      "bytes": 455
     },
     {
       "key": "15/16838/10763",
       "url": "tiles/15-16838-10763.json.gz",
-      "trees": 1,
-      "bytes": 195
+      "trees": 4,
+      "bytes": 279
     },
     {
       "key": "15/16838/10764",
       "url": "tiles/15-16838-10764.json.gz",
-      "trees": 9,
-      "bytes": 433
+      "trees": 13,
+      "bytes": 526
     },
     {
       "key": "15/16838/10765",
       "url": "tiles/15-16838-10765.json.gz",
-      "trees": 107,
-      "bytes": 2474
+      "trees": 111,
+      "bytes": 2569
     },
     {
       "key": "15/16838/10766",
       "url": "tiles/15-16838-10766.json.gz",
-      "trees": 1,
-      "bytes": 209
+      "trees": 2,
+      "bytes": 269
     },
     {
       "key": "15/16838/10767",
       "url": "tiles/15-16838-10767.json.gz",
-      "trees": 19,
-      "bytes": 826
+      "trees": 268,
+      "bytes": 3804
     },
     {
       "key": "15/16838/10769",
@@ -2181,8 +2271,8 @@
     {
       "key": "15/16838/10771",
       "url": "tiles/15-16838-10771.json.gz",
-      "trees": 333,
-      "bytes": 5849
+      "trees": 335,
+      "bytes": 5910
     },
     {
       "key": "15/16838/10772",
@@ -2193,8 +2283,8 @@
     {
       "key": "15/16838/10775",
       "url": "tiles/15-16838-10775.json.gz",
-      "trees": 654,
-      "bytes": 11002
+      "trees": 660,
+      "bytes": 11122
     },
     {
       "key": "15/16838/10776",
@@ -2205,14 +2295,14 @@
     {
       "key": "15/16838/10777",
       "url": "tiles/15-16838-10777.json.gz",
-      "trees": 260,
-      "bytes": 4615
+      "trees": 596,
+      "bytes": 8627
     },
     {
       "key": "15/16838/10778",
       "url": "tiles/15-16838-10778.json.gz",
-      "trees": 35,
-      "bytes": 799
+      "trees": 43,
+      "bytes": 946
     },
     {
       "key": "15/16838/10779",
@@ -2223,14 +2313,26 @@
     {
       "key": "15/16838/10780",
       "url": "tiles/15-16838-10780.json.gz",
-      "trees": 689,
-      "bytes": 12043
+      "trees": 692,
+      "bytes": 12117
+    },
+    {
+      "key": "15/16839/10760",
+      "url": "tiles/15-16839-10760.json.gz",
+      "trees": 2,
+      "bytes": 194
     },
     {
       "key": "15/16839/10762",
       "url": "tiles/15-16839-10762.json.gz",
-      "trees": 12,
-      "bytes": 422
+      "trees": 13,
+      "bytes": 463
+    },
+    {
+      "key": "15/16839/10763",
+      "url": "tiles/15-16839-10763.json.gz",
+      "trees": 2,
+      "bytes": 192
     },
     {
       "key": "15/16839/10764",
@@ -2247,14 +2349,14 @@
     {
       "key": "15/16839/10766",
       "url": "tiles/15-16839-10766.json.gz",
-      "trees": 12,
-      "bytes": 500
+      "trees": 108,
+      "bytes": 1802
     },
     {
       "key": "15/16839/10767",
       "url": "tiles/15-16839-10767.json.gz",
-      "trees": 4,
-      "bytes": 280
+      "trees": 5,
+      "bytes": 339
     },
     {
       "key": "15/16839/10770",
@@ -2265,14 +2367,20 @@
     {
       "key": "15/16839/10771",
       "url": "tiles/15-16839-10771.json.gz",
-      "trees": 985,
-      "bytes": 15704
+      "trees": 1002,
+      "bytes": 15966
     },
     {
       "key": "15/16839/10772",
       "url": "tiles/15-16839-10772.json.gz",
       "trees": 668,
       "bytes": 10001
+    },
+    {
+      "key": "15/16839/10776",
+      "url": "tiles/15-16839-10776.json.gz",
+      "trees": 1,
+      "bytes": 171
     },
     {
       "key": "15/16839/10777",
@@ -2283,8 +2391,8 @@
     {
       "key": "15/16839/10778",
       "url": "tiles/15-16839-10778.json.gz",
-      "trees": 74,
-      "bytes": 1588
+      "trees": 75,
+      "bytes": 1634
     },
     {
       "key": "15/16839/10779",
@@ -2295,8 +2403,8 @@
     {
       "key": "15/16840/10761",
       "url": "tiles/15-16840-10761.json.gz",
-      "trees": 3,
-      "bytes": 274
+      "trees": 4,
+      "bytes": 322
     },
     {
       "key": "15/16840/10762",
@@ -2313,8 +2421,14 @@
     {
       "key": "15/16840/10766",
       "url": "tiles/15-16840-10766.json.gz",
-      "trees": 6,
-      "bytes": 329
+      "trees": 17,
+      "bytes": 510
+    },
+    {
+      "key": "15/16840/10768",
+      "url": "tiles/15-16840-10768.json.gz",
+      "trees": 58,
+      "bytes": 805
     },
     {
       "key": "15/16840/10771",
@@ -2337,8 +2451,8 @@
     {
       "key": "15/16840/10775",
       "url": "tiles/15-16840-10775.json.gz",
-      "trees": 17,
-      "bytes": 514
+      "trees": 18,
+      "bytes": 555
     },
     {
       "key": "15/16840/10776",
@@ -2357,6 +2471,12 @@
       "url": "tiles/15-16840-10778.json.gz",
       "trees": 865,
       "bytes": 14575
+    },
+    {
+      "key": "15/16841/10761",
+      "url": "tiles/15-16841-10761.json.gz",
+      "trees": 5,
+      "bytes": 229
     },
     {
       "key": "15/16841/10762",
@@ -2403,8 +2523,8 @@
     {
       "key": "15/16841/10779",
       "url": "tiles/15-16841-10779.json.gz",
-      "trees": 179,
-      "bytes": 2709
+      "trees": 194,
+      "bytes": 2939
     },
     {
       "key": "15/16841/10780",
@@ -2439,20 +2559,20 @@
     {
       "key": "15/16842/10776",
       "url": "tiles/15-16842-10776.json.gz",
-      "trees": 742,
-      "bytes": 11178
+      "trees": 745,
+      "bytes": 11252
     },
     {
       "key": "15/16842/10777",
       "url": "tiles/15-16842-10777.json.gz",
-      "trees": 1115,
-      "bytes": 19722
+      "trees": 1119,
+      "bytes": 19811
     },
     {
       "key": "15/16842/10778",
       "url": "tiles/15-16842-10778.json.gz",
-      "trees": 924,
-      "bytes": 16335
+      "trees": 925,
+      "bytes": 16384
     },
     {
       "key": "15/16842/10779",
@@ -2469,8 +2589,8 @@
     {
       "key": "15/16843/10762",
       "url": "tiles/15-16843-10762.json.gz",
-      "trees": 2,
-      "bytes": 268
+      "trees": 30,
+      "bytes": 630
     },
     {
       "key": "15/16843/10775",
@@ -2539,6 +2659,12 @@
       "bytes": 6689
     },
     {
+      "key": "15/16844/10780",
+      "url": "tiles/15-16844-10780.json.gz",
+      "trees": 1,
+      "bytes": 169
+    },
+    {
       "key": "15/16845/10769",
       "url": "tiles/15-16845-10769.json.gz",
       "trees": 3,
@@ -2559,8 +2685,8 @@
     {
       "key": "15/16845/10779",
       "url": "tiles/15-16845-10779.json.gz",
-      "trees": 30,
-      "bytes": 833
+      "trees": 37,
+      "bytes": 957
     },
     {
       "key": "15/16845/10780",
@@ -2575,22 +2701,64 @@
       "bytes": 723
     },
     {
+      "key": "15/16846/10776",
+      "url": "tiles/15-16846-10776.json.gz",
+      "trees": 2,
+      "bytes": 191
+    },
+    {
       "key": "15/16846/10779",
       "url": "tiles/15-16846-10779.json.gz",
-      "trees": 16,
-      "bytes": 645
+      "trees": 19,
+      "bytes": 721
     },
     {
       "key": "15/16846/10780",
       "url": "tiles/15-16846-10780.json.gz",
-      "trees": 79,
-      "bytes": 1695
+      "trees": 92,
+      "bytes": 1890
+    },
+    {
+      "key": "15/16846/10781",
+      "url": "tiles/15-16846-10781.json.gz",
+      "trees": 2,
+      "bytes": 191
+    },
+    {
+      "key": "15/16847/10778",
+      "url": "tiles/15-16847-10778.json.gz",
+      "trees": 3,
+      "bytes": 209
     },
     {
       "key": "15/16847/10779",
       "url": "tiles/15-16847-10779.json.gz",
+      "trees": 9,
+      "bytes": 380
+    },
+    {
+      "key": "15/16847/10780",
+      "url": "tiles/15-16847-10780.json.gz",
+      "trees": 5,
+      "bytes": 236
+    },
+    {
+      "key": "15/16847/10781",
+      "url": "tiles/15-16847-10781.json.gz",
+      "trees": 4,
+      "bytes": 227
+    },
+    {
+      "key": "15/16848/10777",
+      "url": "tiles/15-16848-10777.json.gz",
       "trees": 1,
-      "bytes": 213
+      "bytes": 172
+    },
+    {
+      "key": "15/16848/10781",
+      "url": "tiles/15-16848-10781.json.gz",
+      "trees": 1,
+      "bytes": 171
     }
   ]
 }

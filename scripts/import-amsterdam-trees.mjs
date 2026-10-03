@@ -4,6 +4,7 @@ import path from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {gzipSync} from 'node:zlib';
 import proj4 from 'proj4';
+import {buildOsmSupplement,sourceFiles} from './osm-tree-supplement.mjs';
 
 const cache = '.cache/municipal-trees';
 const output = 'public/data/extracts/amsterdam/municipal-trees';
@@ -48,6 +49,13 @@ while (next) {
   if (next && !next.startsWith('https://api.data.amsterdam.nl/v1/bomen/stamgegevens/')) throw Error('Unexpected pagination host.');
   page++;
 }
+const municipalTrees=[...tiles.values()].flat();
+const supplement=buildOsmSupplement(municipalTrees,sourceFiles());
+for(const tree of supplement.trees){
+  const x=Math.floor((tree.lng+180)/360*32768),y=Math.floor((1-Math.asinh(Math.tan(tree.lat*Math.PI/180))/Math.PI)/2*32768),key=`15/${x}/${y}`;
+  if(!tiles.has(key))tiles.set(key,[]);
+  tiles.get(key).push(tree);
+}
 const list = [];
 for (const [key,trees] of tiles) {
   const file = `${key.replaceAll('/','-')}.json.gz`, bytes = gzipSync(JSON.stringify({version:1,key,trees}));
@@ -58,6 +66,8 @@ const index={version:1,zoom:15,source:'Gemeente Amsterdam, GISIB municipal tree 
   apiUrl:endpoint,documentationUrl:'https://api.data.amsterdam.nl/v1/docs/datasets/bomen.html',
   licence:'Openbaar, tenzij anders aangegeven / behoudens uitzonderingen',retrievedAt:new Date().toISOString(),
   heightMeaning:'Midpoint of recorded height class; open-ended classes use threshold + 3 m. Crown shape is an authored species prior, not a surveyed crown.',
+  sources:{municipal:{trees:municipalTrees.length,licence:'Openbaar, tenzij anders aangegeven / behoudens uitzonderingen',idPrefix:'ams-'},
+    osm:{trees:supplement.trees.length,licence:'ODbL',sourceUrl:'https://www.openstreetmap.org/copyright',idPrefix:'osm-n',positionMeaning:'Explicit natural=tree nodes only; no sampled tree rows',heightMeaning:'Recorded OSM height in metres, when parseable; otherwise authored height fallback',...supplement.report}},
   trees:list.reduce((s,t)=>s+t.trees,0),rejected,stumps,tiles:list.sort((a,b)=>a.key.localeCompare(b.key))};
 fs.writeFileSync(`${output}/index.json`,JSON.stringify(index,null,2)+'\n');
 console.log(JSON.stringify({trees:index.trees,tiles:list.length,rejected,stumps,bytes:list.reduce((s,t)=>s+t.bytes,0)},null,2));
