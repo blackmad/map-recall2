@@ -2,6 +2,14 @@
 export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  [/^tilia europaea 'zwarte linde'$/,'domed','cultivar-prior',nursery('tilia-europaea-zwarte-linde')],
+  [/^ulmus 'rebona'$/,'upright-oval','cultivar-prior','https://resista-ulmen.com/en/varieties/rebona/'],
+  [/^ulmus minor 'sarniensis'$/,'pyramidal','cultivar-prior',nursery('ulmus-minor-sarniensis')],
+  [/^prunus avium$/,'domed','species-prior',nursery('prunus-avium')],
+  [/^acer pseudoplatanus 'negenia'$/,'pyramidal','cultivar-prior',nursery('acer-pseudoplatanus-negenia')],
+  [/^tilia tomentosa$/,'domed','species-prior',nursery('tilia-tomentosa')],
+  [/^corylus colurna$/,'pyramidal','species-prior',nursery('corylus-colurna')],
+  [/^acer campestre 'elsrijk'$/,'upright-oval','cultivar-prior',nursery('acer-campestre-elsrijk')],
   [/^taxodium distichum$/,'conical-deciduous','species-prior',nursery('taxodium-distichum')],
   [/^larix decidua$/,'conical-deciduous','species-prior',nursery('larix-decidua')],
   [/^larix kaempferi$/,'conical-deciduous','species-prior',nursery('larix-kaempferi')],
@@ -96,7 +104,7 @@ export function treeTypology(tree){
   else lobes=[lobe(0,h*.76,0,r,h*.24,r*.88,0),lobe(-r*.48,h*.72,r*.25,r*.65,h*.18,r*.67,1),lobe(r*.44,h*.70,-r*.23,r*.66,h*.22,r*.65,2)];
   // These summer colours are art direction, not observations from the inventory.
   const foliage=archetype==='conical-evergreen'||/^(?:pinus|taxus)\b/.test(species)?'#496955':species.startsWith('salix')?'#88a06c':species.startsWith('betula')?'#91ad6e':species.startsWith('fagus')?'#587b51':species.startsWith('quercus')?'#648357':species.startsWith('robinia')?'#94a965':species.startsWith('tilia')?'#789655':'#78945a';
-  const bark=species.startsWith('betula')?'#d8d9c5':species.startsWith('platanus')?'#aaa68a':species.startsWith('fagus')?'#8a8b80':species.startsWith('metasequoia')?'#935d47':'#665741';
+  const bark=species.startsWith('betula')?'#d8d9c5':species.startsWith('platanus')?'#aaa68a':species==='prunus avium'?'#8a5544':species==='corylus colurna'||species.startsWith('fagus')?'#8a8b80':species.startsWith('metasequoia')?'#935d47':'#665741';
   return {version:TREE_TYPOLOGY_VERSION,id:tree.id,position:[...tree.position],height,archetype,lobes,
     trunkHeight:h*(managed?.78:.60),trunkWidth:Math.min(.52,Math.max(.14,h*.023)),
     foliage,bark,crownGeometry:archetype.startsWith('conical-')?'cone':'faceted',rotation:numberSeed(tree.id)*Math.PI*2,
