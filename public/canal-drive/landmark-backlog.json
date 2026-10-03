@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 49,
+    "manual-model": 53,
     "catalogue-model": 12,
     "procedural-kit": 18,
-    "pending": 205
+    "pending": 201
   },
   "destinations": [
     {
@@ -35,7 +35,8 @@
       "queueRank": 1,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "centraal-station"
+      "modelId": "centraal-station",
+      "treatment": "building"
     },
     {
       "id": "anne-frank",
@@ -45,7 +46,8 @@
       "queueRank": 2,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "anne-frank-house"
+      "modelId": "anne-frank-house",
+      "treatment": "building"
     },
     {
       "id": "rijksmuseum",
@@ -55,7 +57,8 @@
       "queueRank": 3,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "rijksmuseum"
+      "modelId": "rijksmuseum",
+      "treatment": "building"
     },
     {
       "id": "maritime",
@@ -65,7 +68,8 @@
       "queueRank": 4,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Scheepvaartmuseum"
+      "kitName": "Scheepvaartmuseum",
+      "treatment": "building"
     },
     {
       "id": "nemo",
@@ -75,7 +79,8 @@
       "queueRank": 5,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "nemo"
+      "modelId": "nemo",
+      "treatment": "building"
     },
     {
       "id": "palace",
@@ -85,7 +90,8 @@
       "queueRank": 6,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "palace-on-the-dam"
+      "modelId": "palace-on-the-dam",
+      "treatment": "building"
     },
     {
       "id": "red-light",
@@ -94,7 +100,9 @@
       "lng": 4.8956406,
       "queueRank": 7,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "area",
+      "taskNote": "Treat the streets and canals as an area; individual buildings have their own queue entries."
     },
     {
       "id": "rembrandt",
@@ -104,7 +112,8 @@
       "queueRank": 8,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "rembrandt-house"
+      "modelId": "rembrandt-house",
+      "treatment": "building"
     },
     {
       "id": "hart",
@@ -114,7 +123,8 @@
       "queueRank": 9,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "H'ART Museum"
+      "kitName": "H'ART Museum",
+      "treatment": "building"
     },
     {
       "id": "westerkerk",
@@ -124,7 +134,8 @@
       "queueRank": 10,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "westerkerk"
+      "modelId": "westerkerk",
+      "treatment": "building"
     },
     {
       "id": "mint",
@@ -134,7 +145,8 @@
       "queueRank": 11,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "munttoren-amsterdam"
+      "modelId": "munttoren-amsterdam",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_626684803",
@@ -146,7 +158,8 @@
       "queueRank": 12,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "concertgebouw"
+      "modelId": "concertgebouw",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_600078703",
@@ -157,7 +170,9 @@
       "type": "university",
       "queueRank": 13,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "complex",
+      "taskNote": "Identify the represented campus or historic building before replacing its geometry."
     },
     {
       "id": "lm-extract_landmarks_11127803",
@@ -168,7 +183,9 @@
       "type": "landmark",
       "queueRank": 14,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "area",
+      "taskNote": "Treat the canal ensemble; there is no single building to replace."
     },
     {
       "id": "lm-extract_landmarks_2001162595",
@@ -179,7 +196,9 @@
       "type": "landmark",
       "queueRank": 15,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "complex",
+      "taskNote": "Preserve the zoo grounds, paths and mapped trees; model entrance and museum buildings individually."
     },
     {
       "id": "lm-extract_landmarks_1383482004",
@@ -190,7 +209,8 @@
       "type": "university",
       "queueRank": 16,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1988238017",
@@ -201,7 +221,8 @@
       "type": "landmark",
       "queueRank": 17,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1617200654",
@@ -212,7 +233,9 @@
       "type": "university",
       "queueRank": 18,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "complex",
+      "taskNote": "Identify the represented campus or historic building before replacing its geometry."
     },
     {
       "id": "lm-extract_landmarks_855923099",
@@ -223,7 +246,8 @@
       "type": "landmark",
       "queueRank": 19,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1272308587",
@@ -235,7 +259,8 @@
       "queueRank": 20,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Sint-Nicolaas"
+      "kitName": "Sint-Nicolaas",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_7630368",
@@ -246,7 +271,9 @@
       "type": "landmark",
       "queueRank": 21,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "memorial",
+      "taskNote": "Model the three mapped pink granite triangles and waterside steps."
     },
     {
       "id": "lm-extract_landmarks_1490092282",
@@ -257,7 +284,9 @@
       "type": "landmark",
       "queueRank": 22,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "complex",
+      "taskNote": "Preserve the open court; English Reformed Church is already modeled separately."
     },
     {
       "id": "lm-extract_landmarks_1104215352",
@@ -269,7 +298,8 @@
       "queueRank": 23,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "de-beurs-van-berlage"
+      "modelId": "de-beurs-van-berlage",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1675243450",
@@ -281,7 +311,8 @@
       "queueRank": 24,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "de-balie"
+      "modelId": "de-balie",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1651446989",
@@ -293,7 +324,8 @@
       "queueRank": 25,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "muziekgebouw-bimhuis"
+      "modelId": "muziekgebouw-bimhuis",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1124317571",
@@ -304,7 +336,8 @@
       "type": "library",
       "queueRank": 26,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_150139570",
@@ -316,7 +349,8 @@
       "queueRank": 27,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Krijtberg"
+      "kitName": "Krijtberg",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2083029836",
@@ -328,7 +362,8 @@
       "queueRank": 28,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "amsterdam-museum"
+      "modelId": "amsterdam-museum",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_9366648",
@@ -339,7 +374,8 @@
       "type": "landmark",
       "queueRank": 29,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_916929647",
@@ -351,7 +387,8 @@
       "queueRank": 30,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "kleine-komedie"
+      "modelId": "kleine-komedie",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_681957397",
@@ -363,7 +400,8 @@
       "queueRank": 31,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Eye Filmmuseum"
+      "kitName": "Eye Filmmuseum",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_984169544",
@@ -375,7 +413,8 @@
       "queueRank": 32,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "delamar"
+      "modelId": "delamar",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_742782013",
@@ -386,7 +425,8 @@
       "type": "library",
       "queueRank": 33,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2044416411",
@@ -398,7 +438,8 @@
       "queueRank": 34,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "felix-meritis"
+      "modelId": "felix-meritis",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1981243123",
@@ -409,7 +450,8 @@
       "type": "landmark",
       "queueRank": 35,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1939633952",
@@ -421,7 +463,8 @@
       "queueRank": 36,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "stadsschouwburg"
+      "modelId": "stadsschouwburg",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1027016792",
@@ -433,7 +476,8 @@
       "queueRank": 37,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "montelbaanstoren-amsterdam"
+      "modelId": "montelbaanstoren-amsterdam",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_914627337",
@@ -445,7 +489,8 @@
       "queueRank": 38,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "heineken-experience-amsterdam"
+      "modelId": "heineken-experience-amsterdam",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1586263374",
@@ -458,7 +503,8 @@
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "melkweg",
-      "requested": true
+      "requested": true,
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1601841225",
@@ -470,7 +516,8 @@
       "queueRank": 40,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "de-papegaai"
+      "modelId": "de-papegaai",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_554373448",
@@ -482,7 +529,8 @@
       "queueRank": 41,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "embassy-free-mind"
+      "modelId": "embassy-free-mind",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1149389771",
@@ -493,7 +541,8 @@
       "type": "university",
       "queueRank": 42,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1198118755",
@@ -505,7 +554,8 @@
       "queueRank": 43,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "buiksloterkerk"
+      "modelId": "buiksloterkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1523176628",
@@ -517,7 +567,8 @@
       "queueRank": 44,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "moco-museum"
+      "modelId": "moco-museum",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_498862002",
@@ -529,7 +580,8 @@
       "queueRank": 45,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "haarlemmerpoort"
+      "modelId": "haarlemmerpoort",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1187067601",
@@ -541,7 +593,8 @@
       "queueRank": 46,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "english-reformed-church"
+      "modelId": "english-reformed-church",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_975578776",
@@ -553,7 +606,8 @@
       "queueRank": 47,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "het-schip"
+      "modelId": "het-schip",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_741048430",
@@ -564,7 +618,8 @@
       "type": "museum",
       "queueRank": 48,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_211818595",
@@ -576,7 +631,8 @@
       "queueRank": 49,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "museum-van-loon"
+      "modelId": "museum-van-loon",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1369065076",
@@ -587,7 +643,8 @@
       "type": "museum",
       "queueRank": 50,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_935859030",
@@ -599,7 +656,8 @@
       "queueRank": 51,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "de-hallen"
+      "modelId": "de-hallen",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1884008891",
@@ -610,7 +668,8 @@
       "type": "landmark",
       "queueRank": 52,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1117288073",
@@ -621,7 +680,9 @@
       "type": "landmark",
       "queueRank": 53,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "complex",
+      "taskNote": "Preserve the industrial campus; Gashouder is already modeled separately."
     },
     {
       "id": "lm-extract_landmarks_1912967098",
@@ -633,7 +694,8 @@
       "queueRank": 54,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "muziekgebouw-bimhuis"
+      "modelId": "muziekgebouw-bimhuis",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2070637412",
@@ -645,7 +707,8 @@
       "queueRank": 55,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "van-gogh-museum"
+      "modelId": "van-gogh-museum",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1697896624",
@@ -657,7 +720,8 @@
       "queueRank": 56,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "tuschinski"
+      "modelId": "tuschinski",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_944681607",
@@ -669,7 +733,8 @@
       "queueRank": 57,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "he-hua-temple"
+      "modelId": "he-hua-temple",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1862244163",
@@ -680,7 +745,8 @@
       "type": "landmark",
       "queueRank": 58,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1450151185",
@@ -692,7 +758,8 @@
       "queueRank": 59,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "huis-bartolotti"
+      "modelId": "huis-bartolotti",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_903098984",
@@ -703,7 +770,9 @@
       "type": "landmark",
       "queueRank": 60,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "memorial",
+      "taskNote": "Use a small mapped wall plaque rather than replacing the host building."
     },
     {
       "id": "lm-extract_landmarks_444968372",
@@ -715,7 +784,8 @@
       "queueRank": 61,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "amstelkerk"
+      "modelId": "amstelkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1588171596",
@@ -726,7 +796,9 @@
       "type": "museum",
       "queueRank": 62,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "hollandsche-schouwburg",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1227471359",
@@ -737,7 +809,8 @@
       "type": "museum",
       "queueRank": 63,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1198863663",
@@ -748,7 +821,8 @@
       "type": "landmark",
       "queueRank": 64,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1448512409",
@@ -759,7 +833,8 @@
       "type": "landmark",
       "queueRank": 65,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1604899229",
@@ -770,7 +845,8 @@
       "type": "landmark",
       "queueRank": 66,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1225009678",
@@ -781,7 +857,8 @@
       "type": "university",
       "queueRank": 67,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_889547307",
@@ -792,7 +869,9 @@
       "type": "landmark",
       "queueRank": 68,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "memorial",
+      "taskNote": "Author the sculpture at its mapped position; retain the surrounding park."
     },
     {
       "id": "lm-extract_landmarks_643362629",
@@ -803,7 +882,8 @@
       "type": "landmark",
       "queueRank": 69,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_740511540",
@@ -816,7 +896,8 @@
       "origin": "POI Destinations",
       "status": "manual-model",
       "modelId": "embassy-free-mind",
-      "requested": true
+      "requested": true,
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1137362739",
@@ -828,7 +909,8 @@
       "queueRank": 71,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Carré"
+      "kitName": "Carré",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1054259843",
@@ -840,7 +922,8 @@
       "queueRank": 72,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "De Duif"
+      "kitName": "De Duif",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_968719411",
@@ -851,7 +934,8 @@
       "type": "university",
       "queueRank": 73,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1386134518",
@@ -862,7 +946,9 @@
       "type": "landmark",
       "queueRank": 74,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "memorial",
+      "taskNote": "Author the horse, rider and pedestal at the mapped position."
     },
     {
       "id": "lm-extract_landmarks_1993361519",
@@ -873,7 +959,8 @@
       "type": "landmark",
       "queueRank": 75,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_549496794",
@@ -884,7 +971,9 @@
       "type": "landmark",
       "queueRank": 76,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "area",
+      "taskNote": "City-wide identity; choose a specific mapped place before authoring geometry."
     },
     {
       "id": "lm-extract_landmarks_1695083526",
@@ -895,7 +984,8 @@
       "type": "university",
       "queueRank": 77,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_736156087",
@@ -906,7 +996,8 @@
       "type": "landmark",
       "queueRank": 78,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1875254501",
@@ -917,7 +1008,8 @@
       "type": "museum",
       "queueRank": 79,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_339731654",
@@ -928,7 +1020,8 @@
       "type": "museum",
       "queueRank": 80,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_301593654",
@@ -939,7 +1032,8 @@
       "type": "museum",
       "queueRank": 81,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_800803152",
@@ -950,7 +1044,9 @@
       "type": "landmark",
       "queueRank": 82,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "memorial",
+      "taskNote": "Model the mapped monument and landscaped setting."
     },
     {
       "id": "lm-extract_landmarks_1098130181",
@@ -961,7 +1057,9 @@
       "type": "landmark",
       "queueRank": 83,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "memorial",
+      "taskNote": "Author the statue and plinth at the mapped position."
     },
     {
       "id": "lm-extract_landmarks_1467127381",
@@ -972,7 +1070,8 @@
       "type": "landmark",
       "queueRank": 84,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1522513904",
@@ -984,7 +1083,8 @@
       "queueRank": 85,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "oude-kerk"
+      "modelId": "oude-kerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1919682395",
@@ -996,7 +1096,8 @@
       "queueRank": 86,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "stadhuis"
+      "modelId": "stadhuis",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_707691223",
@@ -1007,7 +1108,8 @@
       "type": "landmark",
       "queueRank": 87,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1428677427",
@@ -1019,7 +1121,8 @@
       "queueRank": 88,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "rialto"
+      "modelId": "rialto",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_961954901",
@@ -1030,7 +1133,8 @@
       "type": "museum",
       "queueRank": 89,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_204772388",
@@ -1041,7 +1145,8 @@
       "type": "museum",
       "queueRank": 90,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1613749874",
@@ -1052,7 +1157,8 @@
       "type": "landmark",
       "queueRank": 91,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_273619808",
@@ -1063,7 +1169,9 @@
       "type": "museum",
       "queueRank": 92,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "jewish-museum",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2001179186",
@@ -1074,7 +1182,8 @@
       "type": "museum",
       "queueRank": 93,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1605152135",
@@ -1086,7 +1195,8 @@
       "queueRank": 94,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "kriterion"
+      "modelId": "kriterion",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2115483451",
@@ -1097,7 +1207,8 @@
       "type": "cinema",
       "queueRank": 95,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_798381271",
@@ -1109,7 +1220,8 @@
       "queueRank": 96,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "pathe-city"
+      "modelId": "pathe-city",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1851884741",
@@ -1120,7 +1232,8 @@
       "type": "landmark",
       "queueRank": 97,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_560548170",
@@ -1131,7 +1244,8 @@
       "type": "landmark",
       "queueRank": 98,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_856768624",
@@ -1142,7 +1256,9 @@
       "type": "landmark",
       "queueRank": 99,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "memorial",
+      "taskNote": "Preserve the ground-level memorial and surrounding park."
     },
     {
       "id": "lm-extract_landmarks_1614063354",
@@ -1153,7 +1269,8 @@
       "type": "landmark",
       "queueRank": 100,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1759004236",
@@ -1164,7 +1281,8 @@
       "type": "landmark",
       "queueRank": 101,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_433737872",
@@ -1176,7 +1294,8 @@
       "queueRank": 102,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Noorderkerk"
+      "kitName": "Noorderkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_684653190",
@@ -1188,7 +1307,8 @@
       "queueRank": 103,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Zuiderkerk"
+      "kitName": "Zuiderkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_720777797",
@@ -1200,7 +1320,8 @@
       "queueRank": 104,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "national-monument-on-the-dam"
+      "modelId": "national-monument-on-the-dam",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1988696513",
@@ -1211,7 +1332,8 @@
       "type": "landmark",
       "queueRank": 105,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_238467800",
@@ -1222,7 +1344,8 @@
       "type": "museum",
       "queueRank": 106,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_933328743",
@@ -1233,7 +1356,8 @@
       "type": "landmark",
       "queueRank": 107,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1875747488",
@@ -1245,7 +1369,8 @@
       "queueRank": 108,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Waag"
+      "kitName": "Waag",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_754896207",
@@ -1256,7 +1381,8 @@
       "type": "museum",
       "queueRank": 109,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2037503288",
@@ -1267,7 +1393,8 @@
       "type": "cinema",
       "queueRank": 110,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2066573666",
@@ -1278,7 +1405,8 @@
       "type": "cinema",
       "queueRank": 111,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1215417346",
@@ -1290,7 +1418,8 @@
       "queueRank": 112,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "the-movies"
+      "modelId": "the-movies",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1570040251",
@@ -1301,7 +1430,8 @@
       "type": "landmark",
       "queueRank": 113,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1925449487",
@@ -1313,7 +1443,8 @@
       "queueRank": 114,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Oosterkerk"
+      "kitName": "Oosterkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1632187034",
@@ -1325,7 +1456,8 @@
       "queueRank": 115,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Westermoskee"
+      "kitName": "Westermoskee",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_239964759",
@@ -1337,7 +1469,8 @@
       "queueRank": 116,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "nieuwe-kerk"
+      "modelId": "nieuwe-kerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_769225968",
@@ -1348,7 +1481,8 @@
       "type": "landmark",
       "queueRank": 117,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1875483593",
@@ -1360,7 +1494,8 @@
       "queueRank": 118,
       "origin": "POI Destinations",
       "status": "catalogue-model",
-      "modelId": "nemo"
+      "modelId": "nemo",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1219441645",
@@ -1371,7 +1506,8 @@
       "type": "landmark",
       "queueRank": 119,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_95134534",
@@ -1382,7 +1518,8 @@
       "type": "landmark",
       "queueRank": 120,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_454055879",
@@ -1393,7 +1530,9 @@
       "type": "landmark",
       "queueRank": 121,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "area",
+      "taskNote": "Street ensemble; He Hua Temple is already modeled separately."
     },
     {
       "id": "lm-extract_landmarks_264245976",
@@ -1404,7 +1543,8 @@
       "type": "landmark",
       "queueRank": 122,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1698086177",
@@ -1415,7 +1555,8 @@
       "type": "landmark",
       "queueRank": 123,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1701367153",
@@ -1426,7 +1567,8 @@
       "type": "landmark",
       "queueRank": 124,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_421921642",
@@ -1437,7 +1579,8 @@
       "type": "landmark",
       "queueRank": 125,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1627616501",
@@ -1448,7 +1591,8 @@
       "type": "landmark",
       "queueRank": 126,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1774408670",
@@ -1459,7 +1603,8 @@
       "type": "landmark",
       "queueRank": 127,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1683945502",
@@ -1470,7 +1615,8 @@
       "type": "landmark",
       "queueRank": 128,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_363043796",
@@ -1481,7 +1627,8 @@
       "type": "landmark",
       "queueRank": 129,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_366321397",
@@ -1492,7 +1639,8 @@
       "type": "landmark",
       "queueRank": 130,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_240585875",
@@ -1503,7 +1651,8 @@
       "type": "landmark",
       "queueRank": 131,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_275245540",
@@ -1514,7 +1663,8 @@
       "type": "museum",
       "queueRank": 132,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_56521997",
@@ -1525,7 +1675,8 @@
       "type": "landmark",
       "queueRank": 133,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1791250152",
@@ -1536,7 +1687,8 @@
       "type": "museum",
       "queueRank": 134,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_175435208",
@@ -1547,7 +1699,8 @@
       "type": "museum",
       "queueRank": 135,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1164156962",
@@ -1558,7 +1711,8 @@
       "type": "museum",
       "queueRank": 136,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_223836351",
@@ -1569,7 +1723,8 @@
       "type": "landmark",
       "queueRank": 137,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_154293883",
@@ -1580,7 +1735,8 @@
       "type": "museum",
       "queueRank": 138,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_435355441",
@@ -1591,7 +1747,8 @@
       "type": "museum",
       "queueRank": 139,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_784457716",
@@ -1603,7 +1760,8 @@
       "queueRank": 140,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Mozes en Aäronkerk"
+      "kitName": "Mozes en Aäronkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1226660136",
@@ -1614,7 +1772,8 @@
       "type": "landmark",
       "queueRank": 141,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1800555343",
@@ -1625,7 +1784,8 @@
       "type": "landmark",
       "queueRank": 142,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_760984505",
@@ -1636,7 +1796,8 @@
       "type": "landmark",
       "queueRank": 143,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_736359928",
@@ -1647,7 +1808,8 @@
       "type": "landmark",
       "queueRank": 144,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1639856562",
@@ -1658,7 +1820,8 @@
       "type": "landmark",
       "queueRank": 145,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_800494636",
@@ -1669,7 +1832,8 @@
       "type": "landmark",
       "queueRank": 146,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_2003244540",
@@ -1680,7 +1844,8 @@
       "type": "landmark",
       "queueRank": 147,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_746878126",
@@ -1691,7 +1856,8 @@
       "type": "landmark",
       "queueRank": 148,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1958595244",
@@ -1702,7 +1868,8 @@
       "type": "landmark",
       "queueRank": 149,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_953524097",
@@ -1713,7 +1880,8 @@
       "type": "landmark",
       "queueRank": 150,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_564717297",
@@ -1725,7 +1893,8 @@
       "queueRank": 151,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "de-hallen"
+      "modelId": "de-hallen",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_945535287",
@@ -1737,7 +1906,8 @@
       "queueRank": 152,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Opstandingskerk"
+      "kitName": "Opstandingskerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1901312371",
@@ -1748,7 +1918,8 @@
       "type": "landmark",
       "queueRank": 153,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_665340356",
@@ -1759,7 +1930,8 @@
       "type": "landmark",
       "queueRank": 154,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1719479765",
@@ -1771,7 +1943,8 @@
       "queueRank": 155,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "stedelijk-museum"
+      "modelId": "stedelijk-museum",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2017340658",
@@ -1782,7 +1955,8 @@
       "type": "landmark",
       "queueRank": 156,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1828911806",
@@ -1793,7 +1967,8 @@
       "type": "landmark",
       "queueRank": 157,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_25099441",
@@ -1804,7 +1979,8 @@
       "type": "landmark",
       "queueRank": 158,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_2134910296",
@@ -1815,7 +1991,8 @@
       "type": "museum",
       "queueRank": 159,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1974741421",
@@ -1826,7 +2003,8 @@
       "type": "landmark",
       "queueRank": 160,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_604950476",
@@ -1837,7 +2015,8 @@
       "type": "landmark",
       "queueRank": 161,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1606629595",
@@ -1848,7 +2027,8 @@
       "type": "landmark",
       "queueRank": 162,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_2099326007",
@@ -1859,7 +2039,8 @@
       "type": "landmark",
       "queueRank": 163,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1122909064",
@@ -1870,7 +2051,8 @@
       "type": "landmark",
       "queueRank": 164,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_767085118",
@@ -1881,7 +2063,8 @@
       "type": "landmark",
       "queueRank": 165,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1769455774",
@@ -1892,7 +2075,8 @@
       "type": "landmark",
       "queueRank": 166,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_417591223",
@@ -1903,7 +2087,8 @@
       "type": "museum",
       "queueRank": 167,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1875699888",
@@ -1914,7 +2099,8 @@
       "type": "landmark",
       "queueRank": 168,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_404188843",
@@ -1925,7 +2111,8 @@
       "type": "landmark",
       "queueRank": 169,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1159979789",
@@ -1936,7 +2123,8 @@
       "type": "landmark",
       "queueRank": 170,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_202176253",
@@ -1947,7 +2135,8 @@
       "type": "landmark",
       "queueRank": 171,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1917401076",
@@ -1959,7 +2148,8 @@
       "queueRank": 172,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Obrechtkerk"
+      "kitName": "Obrechtkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1273422573",
@@ -1970,7 +2160,8 @@
       "type": "museum",
       "queueRank": 173,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1145162580",
@@ -1981,7 +2172,8 @@
       "type": "museum",
       "queueRank": 174,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1989090735",
@@ -1992,7 +2184,8 @@
       "type": "landmark",
       "queueRank": 175,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_35124042",
@@ -2003,7 +2196,8 @@
       "type": "landmark",
       "queueRank": 176,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1291547717",
@@ -2014,7 +2208,8 @@
       "type": "landmark",
       "queueRank": 177,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1230133891",
@@ -2025,7 +2220,8 @@
       "type": "landmark",
       "queueRank": 178,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_741771335",
@@ -2036,7 +2232,8 @@
       "type": "landmark",
       "queueRank": 179,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_251933681",
@@ -2047,7 +2244,8 @@
       "type": "landmark",
       "queueRank": 180,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1865435867",
@@ -2058,7 +2256,8 @@
       "type": "landmark",
       "queueRank": 181,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_37868198",
@@ -2069,7 +2268,8 @@
       "type": "landmark",
       "queueRank": 182,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_174768079",
@@ -2080,7 +2280,8 @@
       "type": "landmark",
       "queueRank": 183,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_879972030",
@@ -2091,7 +2292,8 @@
       "type": "landmark",
       "queueRank": 184,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_529083075",
@@ -2102,7 +2304,8 @@
       "type": "landmark",
       "queueRank": 185,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1219850417",
@@ -2113,7 +2316,8 @@
       "type": "landmark",
       "queueRank": 186,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1448080990",
@@ -2125,7 +2329,8 @@
       "queueRank": 187,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Hofkerk"
+      "kitName": "Hofkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_306477447",
@@ -2136,7 +2341,8 @@
       "type": "landmark",
       "queueRank": 188,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1566771183",
@@ -2147,7 +2353,8 @@
       "type": "landmark",
       "queueRank": 189,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_897347854",
@@ -2158,7 +2365,8 @@
       "type": "museum",
       "queueRank": 190,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1504170605",
@@ -2169,7 +2377,8 @@
       "type": "landmark",
       "queueRank": 191,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_630735672",
@@ -2180,7 +2389,8 @@
       "type": "landmark",
       "queueRank": 192,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1194428339",
@@ -2191,7 +2401,8 @@
       "type": "museum",
       "queueRank": 193,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_402613958",
@@ -2202,7 +2413,8 @@
       "type": "museum",
       "queueRank": 194,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1963830588",
@@ -2213,7 +2425,8 @@
       "type": "landmark",
       "queueRank": 195,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1655376729",
@@ -2224,7 +2437,8 @@
       "type": "landmark",
       "queueRank": 196,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_2147399332",
@@ -2235,7 +2449,8 @@
       "type": "landmark",
       "queueRank": 197,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_155371643",
@@ -2246,7 +2461,8 @@
       "type": "landmark",
       "queueRank": 198,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1194604327",
@@ -2257,7 +2473,8 @@
       "type": "landmark",
       "queueRank": 199,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_2141455457",
@@ -2268,7 +2485,8 @@
       "type": "landmark",
       "queueRank": 200,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1851417932",
@@ -2279,7 +2497,8 @@
       "type": "landmark",
       "queueRank": 201,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1101340298",
@@ -2290,7 +2509,8 @@
       "type": "landmark",
       "queueRank": 202,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1363105980",
@@ -2301,7 +2521,8 @@
       "type": "landmark",
       "queueRank": 203,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1336248768",
@@ -2312,7 +2533,8 @@
       "type": "landmark",
       "queueRank": 204,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1241141311",
@@ -2323,7 +2545,8 @@
       "type": "landmark",
       "queueRank": 205,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1912579424",
@@ -2334,7 +2557,8 @@
       "type": "landmark",
       "queueRank": 206,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1196280692",
@@ -2345,7 +2569,8 @@
       "type": "landmark",
       "queueRank": 207,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1742509310",
@@ -2356,7 +2581,8 @@
       "type": "library",
       "queueRank": 208,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1824871810",
@@ -2367,7 +2593,8 @@
       "type": "museum",
       "queueRank": 209,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1713342225",
@@ -2378,7 +2605,8 @@
       "type": "landmark",
       "queueRank": 210,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_2034905768",
@@ -2389,7 +2617,8 @@
       "type": "museum",
       "queueRank": 211,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1327496450",
@@ -2400,7 +2629,9 @@
       "type": "museum",
       "queueRank": 212,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "national-holocaust-museum",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1455669716",
@@ -2411,7 +2642,8 @@
       "type": "landmark",
       "queueRank": 213,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_751632752",
@@ -2423,7 +2655,8 @@
       "queueRank": 214,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "oba-oosterdok"
+      "modelId": "oba-oosterdok",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1311905515",
@@ -2434,7 +2667,9 @@
       "type": "landmark",
       "queueRank": 215,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "portuguese-synagogue",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_257271103",
@@ -2445,7 +2680,8 @@
       "type": "cinema",
       "queueRank": 216,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_374802612",
@@ -2456,7 +2692,8 @@
       "type": "landmark",
       "queueRank": 217,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_941219842",
@@ -2467,7 +2704,8 @@
       "type": "museum",
       "queueRank": 218,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1635482107",
@@ -2478,7 +2716,8 @@
       "type": "landmark",
       "queueRank": 219,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_322904136",
@@ -2489,7 +2728,8 @@
       "type": "landmark",
       "queueRank": 220,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1726437395",
@@ -2500,7 +2740,8 @@
       "type": "library",
       "queueRank": 221,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1709488528",
@@ -2511,7 +2752,8 @@
       "type": "library",
       "queueRank": 222,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_801855734",
@@ -2522,7 +2764,8 @@
       "type": "library",
       "queueRank": 223,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_845955",
@@ -2533,7 +2776,8 @@
       "type": "library",
       "queueRank": 224,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_149588563",
@@ -2544,7 +2788,8 @@
       "type": "library",
       "queueRank": 225,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1660060322",
@@ -2555,7 +2800,8 @@
       "type": "library",
       "queueRank": 226,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1004895807",
@@ -2567,7 +2813,8 @@
       "queueRank": 227,
       "origin": "POI Destinations",
       "status": "manual-model",
-      "modelId": "de-hallen"
+      "modelId": "de-hallen",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2090706815",
@@ -2578,7 +2825,8 @@
       "type": "library",
       "queueRank": 228,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_780437483",
@@ -2589,7 +2837,8 @@
       "type": "library",
       "queueRank": 229,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_880030623",
@@ -2600,7 +2849,8 @@
       "type": "library",
       "queueRank": 230,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_132707368",
@@ -2611,7 +2861,8 @@
       "type": "library",
       "queueRank": 231,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_862375982",
@@ -2622,7 +2873,8 @@
       "type": "library",
       "queueRank": 232,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1399359542",
@@ -2633,7 +2885,8 @@
       "type": "landmark",
       "queueRank": 233,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1447049474",
@@ -2644,7 +2897,8 @@
       "type": "landmark",
       "queueRank": 234,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_452804039",
@@ -2655,7 +2909,8 @@
       "type": "landmark",
       "queueRank": 235,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_994708838",
@@ -2666,7 +2921,8 @@
       "type": "landmark",
       "queueRank": 236,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1351046417",
@@ -2677,7 +2933,8 @@
       "type": "landmark",
       "queueRank": 237,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_77247220",
@@ -2688,7 +2945,8 @@
       "type": "landmark",
       "queueRank": 238,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_213091641",
@@ -2699,7 +2957,8 @@
       "type": "landmark",
       "queueRank": 239,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_563908011",
@@ -2710,7 +2969,8 @@
       "type": "landmark",
       "queueRank": 240,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1569842434",
@@ -2722,7 +2982,8 @@
       "queueRank": 241,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Dominicuskerk"
+      "kitName": "Dominicuskerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_76787173",
@@ -2733,7 +2994,8 @@
       "type": "landmark",
       "queueRank": 242,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1347119904",
@@ -2744,7 +3006,8 @@
       "type": "landmark",
       "queueRank": 243,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1997051448",
@@ -2756,7 +3019,8 @@
       "queueRank": 244,
       "origin": "POI Destinations",
       "status": "procedural-kit",
-      "kitName": "Fatih"
+      "kitName": "Fatih",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1463154066",
@@ -2767,7 +3031,8 @@
       "type": "landmark",
       "queueRank": 245,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1333703767",
@@ -2778,7 +3043,8 @@
       "type": "landmark",
       "queueRank": 246,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_660242980",
@@ -2789,7 +3055,8 @@
       "type": "museum",
       "queueRank": 247,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_373035281",
@@ -2800,7 +3067,8 @@
       "type": "landmark",
       "queueRank": 248,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_746892406",
@@ -2811,7 +3079,8 @@
       "type": "landmark",
       "queueRank": 249,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_718756081",
@@ -2822,7 +3091,8 @@
       "type": "landmark",
       "queueRank": 250,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_2047457033",
@@ -2833,7 +3103,8 @@
       "type": "landmark",
       "queueRank": 251,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1055638541",
@@ -2844,7 +3115,8 @@
       "type": "landmark",
       "queueRank": 252,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1915737675",
@@ -2855,7 +3127,8 @@
       "type": "landmark",
       "queueRank": 253,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1897367071",
@@ -2866,7 +3139,8 @@
       "type": "landmark",
       "queueRank": 254,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_634569928",
@@ -2877,7 +3151,8 @@
       "type": "landmark",
       "queueRank": 255,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_247891283",
@@ -2888,7 +3163,8 @@
       "type": "landmark",
       "queueRank": 256,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_86609524",
@@ -2899,7 +3175,8 @@
       "type": "landmark",
       "queueRank": 257,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_414346521",
@@ -2910,7 +3187,8 @@
       "type": "landmark",
       "queueRank": 258,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_218084814",
@@ -2921,7 +3199,8 @@
       "type": "museum",
       "queueRank": 259,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_169465728",
@@ -2932,7 +3211,8 @@
       "type": "landmark",
       "queueRank": 260,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1692446303",
@@ -2943,7 +3223,8 @@
       "type": "landmark",
       "queueRank": 261,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1294795881",
@@ -2954,7 +3235,8 @@
       "type": "landmark",
       "queueRank": 262,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1627709377",
@@ -2965,7 +3247,8 @@
       "type": "landmark",
       "queueRank": 263,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_1741145753",
@@ -2976,7 +3259,8 @@
       "type": "landmark",
       "queueRank": 264,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_728505227",
@@ -2987,7 +3271,8 @@
       "type": "landmark",
       "queueRank": 265,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_369277545",
@@ -2998,7 +3283,8 @@
       "type": "landmark",
       "queueRank": 266,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_82936853",
@@ -3009,7 +3295,8 @@
       "type": "museum",
       "queueRank": 267,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1186428295",
@@ -3020,7 +3307,8 @@
       "type": "landmark",
       "queueRank": 268,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_923643636",
@@ -3031,7 +3319,8 @@
       "type": "landmark",
       "queueRank": 269,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_915035378",
@@ -3042,7 +3331,8 @@
       "type": "museum",
       "queueRank": 270,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1299755268",
@@ -3053,7 +3343,8 @@
       "type": "landmark",
       "queueRank": 271,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "lm-extract_landmarks_331298783",
@@ -3064,7 +3355,8 @@
       "type": "landmark",
       "queueRank": 272,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "pending",
+      "treatment": "review"
     },
     {
       "id": "silodam",
@@ -3075,7 +3367,8 @@
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "silodam",
-      "requested": true
+      "requested": true,
+      "treatment": "building"
     },
     {
       "id": "olvg-west",
@@ -3086,7 +3379,8 @@
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "olvg-west",
-      "requested": true
+      "requested": true,
+      "treatment": "building"
     },
     {
       "id": "olvg-oost",
@@ -3097,7 +3391,8 @@
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "olvg-oost",
-      "requested": true
+      "requested": true,
+      "treatment": "building"
     },
     {
       "id": "adam-tower",
@@ -3108,7 +3403,8 @@
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "adam-tower",
-      "requested": true
+      "requested": true,
+      "treatment": "building"
     },
     {
       "id": "pontsteiger",
@@ -3119,7 +3415,8 @@
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "pontsteiger",
-      "requested": true
+      "requested": true,
+      "treatment": "building"
     },
     {
       "id": "rem-eiland",
@@ -3130,7 +3427,8 @@
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "rem-eiland",
-      "requested": true
+      "requested": true,
+      "treatment": "building"
     },
     {
       "id": "paradiso",
@@ -3141,7 +3439,8 @@
       "origin": "User requested",
       "status": "manual-model",
       "modelId": "paradiso",
-      "requested": true
+      "requested": true,
+      "treatment": "building"
     },
     {
       "id": "magna-plaza",
@@ -3151,7 +3450,8 @@
       "queueRank": 280,
       "origin": "Landmark catalogue",
       "status": "manual-model",
-      "modelId": "magna-plaza"
+      "modelId": "magna-plaza",
+      "treatment": "building"
     },
     {
       "id": "scheepvaarthuis",
@@ -3161,7 +3461,8 @@
       "queueRank": 281,
       "origin": "Landmark catalogue",
       "status": "manual-model",
-      "modelId": "scheepvaarthuis"
+      "modelId": "scheepvaarthuis",
+      "treatment": "building"
     },
     {
       "id": "de-bijenkorf",
@@ -3171,7 +3472,8 @@
       "queueRank": 282,
       "origin": "Landmark catalogue",
       "status": "manual-model",
-      "modelId": "de-bijenkorf"
+      "modelId": "de-bijenkorf",
+      "treatment": "building"
     },
     {
       "id": "gashouder",
@@ -3181,7 +3483,8 @@
       "queueRank": 283,
       "origin": "Landmark catalogue",
       "status": "manual-model",
-      "modelId": "gashouder"
+      "modelId": "gashouder",
+      "treatment": "building"
     },
     {
       "id": "hart-museum",
@@ -3191,7 +3494,8 @@
       "queueRank": 284,
       "origin": "Landmark catalogue",
       "status": "manual-model",
-      "modelId": "hart-museum"
+      "modelId": "hart-museum",
+      "treatment": "building"
     }
   ]
 }

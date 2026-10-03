@@ -114,7 +114,8 @@ with `node --import tsx scripts/landmarks/build-poi-backlog.ts`; it applies the
 same teachable-content gate, four-kilometre radius and prominence ordering as
 the game. Browse/filter the queue at `landmark-queue.html`. Existing procedural kits and imported gallery references are marked
 separately from original models. Arcam's architecture guide is the discovery
-source for further notable buildings.
+source for further notable buildings. The queue also distinguishes districts,
+complexes and memorials; check the mapped site before choosing a building model.
 
 Original models now cover Centraal, Muziekgebouw/Bimhuis, both OLVGs, Van Gogh,
 Stedelijk, OBA Oosterdok, A’DAM Tower, Pontsteiger, REM, Paradiso, Melkweg,
@@ -124,17 +125,18 @@ Rembrandt House, Moco Museum, Museum Van Loon, Amstelkerk, He Hua Temple,
 Haarlemmerpoort, Museum Het Schip, Scheepvaarthuis, Rialto, Kriterion,
 De Bijenkorf, Gashouder, Stadsschouwburg, Tuschinski, Pathé City, Oude Kerk and
 Nieuwe Kerk, Buiksloterkerk, English Reformed Church, De Papegaai, De Hallen,
-Huis Bartolotti, H’ART Museum and Amsterdam Museum (45 models). The live replacements retain measured footprint alignment and
+Huis Bartolotti, H’ART Museum, Amsterdam Museum, Jewish Museum, Portuguese
+Synagogue, Hollandsche Schouwburg and National Holocaust Museum (49 models). The live replacements retain measured footprint alignment and
 hide generic building geometry only after the GLB has loaded. Review meshes at
 `manual-landmarks.html`; inspect actual map placement before marking additions
-complete. Next candidates: Jewish Museum, Portuguese Synagogue, Hollandsche
-Schouwburg and National Holocaust Museum. Exact building IDs preserve neighbors and courtyards
+complete. Next batches: ARTIS entrance/Ledenlokalen and Micropia, plus Hortus
+Palm House and current Climate House. Exact building IDs preserve neighbors and courtyards
 around narrow house museums and irregular complexes. Squares/intersections require a public-space treatment rather than
 a generic building model.
 Large cinemas and theatres now have the public-building category treatment;
 Pathé City and Tuschinski also have original models. Studio/K and LAB111 still
 need individual recognition details. Remaining museum models include Madame
-Tussauds, Jewish Museum, Hollandsche Schouwburg and National Holocaust Museum.
+Tussauds, Micropia, Foam, Huis Marseille and Ons’ Lieve Heer op Solder.
 Further kit refinements: Munttoren, Rijksmuseum (towers, central arch), Beurs van
 Berlage (clock tower), NEMO (green ship prow), Stopera, Hofkerk
 (dome), Dominicuskerk and Vredeskerk (the big kit-less ones still stand as

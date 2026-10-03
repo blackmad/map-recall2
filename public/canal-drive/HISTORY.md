@@ -1,5 +1,29 @@
 # Canal Recall — what is built
 
+## Synagogue complexes and Plantage memorial museums: 49 models (2026-10-04)
+
+The Jewish Museum's four-synagogue complex and Portuguese Synagogue retain
+individual halls, low perimeter wings and open courts. Opposite-bearing live
+views confirmed Esnoga's surrounding canal houses are preserved neighbors.
+Hollandsche Schouwburg keeps the former auditorium as an open memorial court.
+The National Holocaust Museum uses its current pale perforated entrance and
+restored school, with the rear garden left open according to the architect's
+site plan rather than extruding the whole cadastral outline. Nursery context
+is explicitly modeled where an older OSM parent includes it.
+
+All four original meshes passed geometry, actual-file manifest, life-size
+placement, compression and exact-identity suppression checks, then gallery
+and active-game reviews. The work queue now describes area, complex and
+memorial tasks alongside buildings.
+
+The tree inventory now includes 9,140 actual OSM trunks within Amsterdam's
+boundary and at least 12 m from municipal trunks. All 302,404 municipal records
+remain unchanged: 311,544 total trees in 454 streamed tiles, with only 126,687
+additional compressed bytes. Artis and Hortus mobile checks verified restored
+coverage, including Hortus's two named specimens. Eight additional exact,
+source-backed species/cultivar rules improve 13,540 formerly generic crowns
+without changing positions, heights or explicit pruning overrides.
+
 ## Smaller churches, depot and courtyard museums: 45 models (2026-10-04)
 
 Buiksloterkerk, English Reformed Church and De Papegaai now use their measured

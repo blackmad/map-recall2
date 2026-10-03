@@ -57,7 +57,7 @@
   },
   {
     "id": "adam-tower",
-    "name": "A’DAM Tower",
+    "name": "A\u2019DAM Tower",
     "landmarkId": "adam-tower",
     "modelUrl": "./models/adam-tower.glb",
     "suppressOsmIds": [
@@ -75,7 +75,7 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 90,
     "attribution": {
-      "title": "A’DAM Tower",
+      "title": "A\u2019DAM Tower",
       "author": "Map Recall",
       "sourceUrl": "https://adamtoren.nl/",
       "licence": "Original project asset",
@@ -1008,7 +1008,7 @@
   },
   {
     "id": "tuschinski",
-    "name": "Pathé Tuschinski",
+    "name": "Path\u00e9 Tuschinski",
     "landmarkId": "extract_landmarks_1697896624",
     "modelUrl": "./models/tuschinski.glb",
     "suppressOsmIds": [
@@ -1026,7 +1026,7 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 3.5081676468667524,
     "attribution": {
-      "title": "Pathé Tuschinski",
+      "title": "Path\u00e9 Tuschinski",
       "author": "Map Recall",
       "sourceUrl": "https://pers.pathe.nl/koninklijk-theater-tuschinski/",
       "licence": "Original project asset",
@@ -1045,7 +1045,7 @@
   },
   {
     "id": "pathe-city",
-    "name": "Pathé City",
+    "name": "Path\u00e9 City",
     "landmarkId": "extract_landmarks_798381271",
     "modelUrl": "./models/pathe-city.glb",
     "suppressOsmIds": [
@@ -1063,7 +1063,7 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 90,
     "attribution": {
-      "title": "Pathé City",
+      "title": "Path\u00e9 City",
       "author": "Map Recall",
       "sourceUrl": "https://www.pathe.nl/en/cinemas/pathe-city",
       "licence": "Original project asset",
@@ -1367,7 +1367,7 @@
   },
   {
     "id": "hart-museum",
-    "name": "H'ART Museum — Amstelhof",
+    "name": "H'ART Museum \u2014 Amstelhof",
     "landmarkId": "extract_landmarks_352379234",
     "modelUrl": "./models/hart-museum.glb",
     "suppressOsmIds": [
@@ -1394,7 +1394,7 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 90,
     "attribution": {
-      "title": "H'ART Museum — Amstelhof",
+      "title": "H'ART Museum \u2014 Amstelhof",
       "author": "Map Recall",
       "sourceUrl": "https://www.hartmuseum.nl/en/",
       "licence": "Original project asset",
@@ -1404,7 +1404,7 @@
   },
   {
     "id": "amsterdam-museum",
-    "name": "Amsterdam Museum — Burgerweeshuis",
+    "name": "Amsterdam Museum \u2014 Burgerweeshuis",
     "landmarkId": "extract_landmarks_2083029836",
     "modelUrl": "./models/amsterdam-museum.glb",
     "suppressOsmIds": [
@@ -1431,12 +1431,173 @@
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 9.997883487715825,
     "attribution": {
-      "title": "Amsterdam Museum — Burgerweeshuis",
+      "title": "Amsterdam Museum \u2014 Burgerweeshuis",
       "author": "Map Recall",
       "sourceUrl": "https://www.amsterdammuseum.nl/en/het-nieuwe-amsterdam-museum",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
+    }
+  },
+  {
+    "id": "national-holocaust-museum",
+    "name": "National Holocaust Museum",
+    "landmarkId": "extract_landmarks_1327496450",
+    "modelUrl": "./models/national-holocaust-museum.glb",
+    "suppressOsmIds": [
+      "r3604241",
+      "NL.IMBAG.Pand.0363100012165551",
+      "NL.IMBAG.Pand.0363100012247157"
+    ],
+    "footprint": {
+      "centre": [
+        4.911270057976236,
+        52.366984398405435
+      ],
+      "headingDegrees": 29.778712634106,
+      "lengthMetres": 46.683565196739146,
+      "widthMetres": 44.31436936593857
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 179.221287365894,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.911270057976236,
+        52.366984398405435
+      ],
+      "northOffsetDegrees": 29,
+      "source": "Current PDOK BAG polygon contours; surveyed plan retains courtyard holes and explicitly identified contextual nursery."
+    },
+    "attribution": {
+      "title": "National Holocaust Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.winhov.com/en/projects/national-holocaust-museum/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
+    }
+  },
+  {
+    "id": "hollandsche-schouwburg",
+    "name": "Hollandsche Schouwburg",
+    "landmarkId": "extract_landmarks_1588171596",
+    "modelUrl": "./models/hollandsche-schouwburg.glb",
+    "suppressOsmIds": [
+      "w269009084",
+      "NL.IMBAG.Pand.0363100012180950"
+    ],
+    "footprint": {
+      "centre": [
+        4.911038960823893,
+        52.36635690328413
+      ],
+      "headingDegrees": 29.417858823710475,
+      "lengthMetres": 34.30706097325767,
+      "widthMetres": 15.904390015706582
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -0.4178588237104748,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.911038960823893,
+        52.36635690328413
+      ],
+      "northOffsetDegrees": 209,
+      "source": "Current PDOK BAG polygon contours; surveyed plan retains courtyard holes and explicitly identified contextual nursery."
+    },
+    "attribution": {
+      "title": "Hollandsche Schouwburg",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.winhov.com/en/projects/national-holocaust-museum/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by Office Winhov and museum official imagery; current BAG contours fetched 2026-10-04, no imported meshes/textures."
+    }
+  },
+  {
+    "id": "jewish-museum",
+    "name": "Jewish Museum \u2014 four synagogues",
+    "landmarkId": "extract_landmarks_273619808",
+    "modelUrl": "./models/jewish-museum.glb",
+    "suppressOsmIds": [
+      "w57857987",
+      "NL.IMBAG.Pand.0363100012182037",
+      "w268783367",
+      "NL.IMBAG.Pand.0363100012182038"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.903832029030724,
+        52.367121119501086
+      ],
+      "headingDegrees": 152.62263086955193,
+      "lengthMetres": 49.95563109474972,
+      "widthMetres": 41.556824510722855
+    },
+    "surveyed": {
+      "anchor": [
+        4.903832029030724,
+        52.367121119501086
+      ],
+      "northOffsetDegrees": 242.62263086955193
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.00000000000003,
+    "attribution": {
+      "title": "Jewish Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://jck.nl/en/location/jewish-museum",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
+    }
+  },
+  {
+    "id": "portuguese-synagogue",
+    "name": "Portuguese Synagogue \u2014 Esnoga",
+    "landmarkId": "extract_landmarks_1311905515",
+    "modelUrl": "./models/portuguese-synagogue.glb",
+    "suppressOsmIds": [
+      "w57861363",
+      "NL.IMBAG.Pand.0363100012170255",
+      "w268783311",
+      "NL.IMBAG.Pand.0363100012170258",
+      "w268783350",
+      "NL.IMBAG.Pand.0363100012170254",
+      "w268783384",
+      "NL.IMBAG.Pand.0363100012170253",
+      "w268783415",
+      "NL.IMBAG.Pand.0363100012181882"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.905113942222338,
+        52.36760831616318
+      ],
+      "headingDegrees": 119.70503311355918,
+      "lengthMetres": 80.01812229172724,
+      "widthMetres": 43.48098484850878
+    },
+    "surveyed": {
+      "anchor": [
+        4.905113942222338,
+        52.36760831616318
+      ],
+      "northOffsetDegrees": 28.672090322555675
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 204.29496688644082,
+    "attribution": {
+      "title": "Portuguese Synagogue",
+      "author": "Map Recall",
+      "sourceUrl": "https://jck.nl/en/press/beeldmateriaal/portuguese-synagogue",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
     }
   }
 ]
