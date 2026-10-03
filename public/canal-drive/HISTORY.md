@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+## Cinemas, retail and performance venues: 34 original models (2026-10-04)
+
+Rialto and Kriterion now have their narrow street fronts and lower screening
+rooms; Kriterion retains its irregular mapped auditorium outline. De Bijenkorf
+uses the complete department-store footprint and its 20 mapped building parts,
+with the main roof and unequal rooftop pavilions at their mapped heights.
+Gashouder retains the circular hall and projecting annexes. Stadsschouwburg /
+Internationaal Theater Amsterdam combines the Leidseplein façade and twin spires
+with the rear stage complex. All five use original texture-free geometry.
+
+The review queue now includes every completed original asset, even those absent
+from the teachable POI Destinations pool, and labels these as catalogue additions.
+The Embassy of the Free Mind also opts out of broad rectangle suppression, keeping
+its neighboring canal houses. The catalogue now has 34 original models.
+
+The municipal tree review fixed crowns disappearing at exact viewport edges and
+late inventory responses reviving a removed layer. Nine verified species rules
+corrected 1,398 trees previously using a rounded fallback. Lifecycle, full-inventory,
+TypeScript and mobile viewport checks passed.
+
 ## Original landmark catalogue: 29 models (2026-10-04)
 
 The flat-colour catalogue now includes Amstelkerk, He Hua Temple, Haarlemmerpoort,
