@@ -2,7 +2,7 @@
 // looks (the per-bay drawing lives in `bayTextures.ts`, from the standalone
 // rendering spike). The spike builds one mesh per variant; here the variants
 // are a small fixed set so they fit one texture array and one draw per tile:
-// 8 building styles x 4 bay kinds = 32 layers.
+// 10 building styles x 4 bay kinds, plus 7 shopfronts per archetype = 68 layers.
 
 import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look, type ShopKind } from './bayTextures.js';
 import { hashSeed } from './wallBays.js';
@@ -14,11 +14,17 @@ type BayStyle = Omit<BayVariant, 'kind' | 'archetype'>;
 
 /** Curated building styles per archetype (window count, head shape, shutters, painted frames). */
 export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
+  // Canal houses: tall white-framed sashes under flat lintels; shutters only beside ground-floor windows.
   canal: [
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
     { windows: 2, shape: 'rect', shutters: true, paintedFrames: false },
     { windows: 3, shape: 'rect', shutters: false, paintedFrames: true },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: true },
+  ],
+  // 1860-1914: segmental-arched windows under stucco hoods, string courses at every floor.
+  c19: [
     { windows: 2, shape: 'arch', shutters: false, paintedFrames: false },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
   ],
   school: [
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
@@ -42,7 +48,7 @@ export const bayLayer = (archetype: Archetype, style: number, kind: (typeof BAY_
   BAY_ENTRIES.find(e => e.archetype === archetype && e.style === (isShopKind(kind) ? 0 : style) && e.kind === kind)!.layer;
 
 /** The layout style (cell dimensions) each archetype uses. */
-export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal', school: 'school', modern: 'modern' };
+export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal', c19: 'c19', school: 'school', modern: 'modern' };
 
 /**
  * Wall colours for the photo look: the real Amsterdam range (red and orange
@@ -56,6 +62,45 @@ export const STORYBOOK_WALLS = ['#c8664a', '#c8664a', '#b9583f', '#d98b5f', '#e0
 /** Cartoon: a short sticker palette, saturated and similar in value, so the street reads as one bold design. */
 export const CARTOON_WALLS = ['#e8573d', '#e8573d', '#ee7f2c', '#f2b92e', '#f2b92e', '#2a9d8f', '#4672b0', '#f3e6c8', '#d96a4d'];
 
+/**
+ * Wall colours by period (user 2026-10-02, from the real-vs-game sheet: "one brick palette"
+ * everywhere). Unmeasured, so still hash-picked per building, but from the range each period
+ * really has: canal houses in deep red-brown brick, often painted near-black, dark green or
+ * grey, a few in white stucco; 1860-1914 rows in red and orange brick with buff and cream
+ * stucco; Amsterdam School in dark purple-brown and orange brick; post-war and modern blocks in
+ * buff, grey and concrete. null keeps the archetype palette (`paletteFor`).
+ */
+export const PERIOD_WALLS: Record<Look, Record<Archetype, readonly string[] | null>> = {
+  photo: {
+    canal: ['#7a3b2c', '#7a3b2c', '#6b3428', '#8c4632', '#9a5846', '#b05a40', '#4a2e26', '#2e2a27', '#3e4a40', '#5d605a', '#e4ddcd'],
+    c19: ['#b05a40', '#b05a40', '#bd6a45', '#a24d38', '#c58b5e', '#d3b184', '#e2d5ba', '#e2d5ba', '#d9c5a4', '#9a5846'],
+    school: ['#8c4a38', '#7a4535', '#9a5240', '#6e3d33', '#a85a3c', '#5e3a32', '#b0603f'],
+    modern: ['#c9b79a', '#b9ad9a', '#a8a49c', '#d3c6ad', '#8f8a82', '#bfb3a0', '#9c7a62', '#b05a40'],
+  },
+  storybook: {
+    canal: ['#b9583f', '#9a4a38', '#7a4a3c', '#4a5048', '#3f4a5a', '#ead9b0', '#c8664a'],
+    c19: ['#c8664a', '#d98b5f', '#e0b36a', '#ead9b0', '#d9b995', '#c9a08c', '#c8664a'],
+    school: ['#a8553f', '#9a5a48', '#b87a5c', '#c8664a', '#8a4e40'],
+    modern: null,
+  },
+  cartoon: {
+    canal: ['#d9453d', '#a8433a', '#3b3b4a', '#2a9d8f', '#4672b0', '#fffaf0', '#e8573d'],
+    c19: ['#e8573d', '#ee7f2c', '#f2b92e', '#f3e6c8', '#d96a4d', '#f2b92e'],
+    school: ['#d96a4d', '#e8573d', '#b9583f', '#ee7f2c'],
+    modern: null,
+  },
+};
+
+/**
+ * Ground-floor paint for shopfronts, per look, weighted the way Amsterdam streets are: mostly
+ * white and cream, then the dark greens, blacks, oxbloods and navies of older shopfronts.
+ */
+export const GROUND_PAINTS: Record<Look, readonly string[]> = {
+  photo: ['#f1eee6', '#f1eee6', '#f1eee6', '#e8dfc9', '#e8dfc9', '#2b2d2c', '#2f4a3a', '#5a2a26', '#25344a', '#8b8f8c'],
+  storybook: ['#f6f1e4', '#f6f1e4', '#f6f1e4', '#efe2c2', '#efe2c2', '#3a3d3c', '#3f6a52', '#8a3b33', '#3a527a', '#a3a8a4'],
+  cartoon: ['#fffaf0', '#fffaf0', '#fffaf0', '#ffe9b8', '#ffe9b8', '#3b3b4a', '#2a9d8f', '#d9453d', '#4672b0', '#f2b92e'],
+};
+
 /** Everything the mesh builder needs from a feature for a bay look. */
 /**
  * `shopfront`: from the shopfronts extract, the shopfront this building really has, or
@@ -68,10 +113,13 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const shop = shopfront ? shopfront !== 'quiet' : (h >>> 13) % 3 === 0;
   const shopKind = shopfront && shopfront !== 'quiet' ? shopfront : SHOP_KINDS[(h >>> 17) % 4];
   const palette = paletteFor(id, archetype, look);
-  const walls = look === 'photo' ? PHOTO_WALLS : archetype === 'modern' ? null : look === 'storybook' ? STORYBOOK_WALLS : CARTOON_WALLS;
+  const walls = PERIOD_WALLS[look][archetype];
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
+  // A shop's ground floor is painted, and the paint is its own colour, not the brick's.
+  const paints = GROUND_PAINTS[look];
   return {
     archetype, layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: palette.accent,
+    groundHex: shop ? paints[(h >>> 21) % paints.length] : undefined,
     layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop ? shopKind : 'ground'), door: bayLayer(archetype, style, 'groundDoor') },
     plain: bayLayer(archetype, style, 'plain'),
   };

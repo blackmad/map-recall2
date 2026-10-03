@@ -2,17 +2,34 @@
 //
 // MapLibre extrusions are prisms, so every building ends in a flat lid. This
 // module decides, per building, whether it gets a real roof and builds it:
-//   gable   – ridge along the long axis, a shaped gable (step, neck, bell, spout
-//             or plain) standing on each short end: the Amsterdam canal house
-//   pitched – the same slopes with plain triangular ends: a terrace or a block
-//   mansard – steep lower slope, shallow top, dormers on the steep faces
-// The plan (`planRoof`) is pure and deterministic from the building id and its
-// footprint, so it can run in the tile decorator (to lower the plain wall to the
-// eaves) and again in the mesh builder (to build the geometry) and agree.
-// Buildings whose footprint is not close to a rectangle keep the flat lid.
+//   gable      – ridge along the long axis, a shaped gable on each short end: the canal
+//                house. Shapes: step, neck, raised neck with white claws, bell, clock,
+//                spout (warehouse, with shutters), plain, and the flat-topped cornice
+//                front (lijstgevel) with a deep white cornice and the roof hipped behind it
+//   pitched    – the same slopes with plain triangular ends: a terrace or a block
+//   mansard    – steep lower slope, shallow top, dormers on the steep faces
+//   mansardHip – a mansard on all four sides with a flat top: the 19th-century row
+//                house, dormers to the street and a white eaves cornice
+//   hipped     – four slopes (schilddak): villas and 19th-century blocks
+//   halfHipped – gable ends clipped by a small hip (wolfdak)
+//   school     – steep Amsterdam School tile roof: deep eaves, softened hip corners, a dormer band
+//   sawtooth   – north-light sheds on big low industrial footprints
+//   parapet    – flat roof behind a parapet with a coping: post-war and modern blocks
+// plus a small corner turret with a spire where a 19th-century block has a cut corner.
+// The plan (`planBuildingRoof`) is pure and deterministic from the building id
+// and its footprint, so it runs in the tile decorator (to lower the plain wall to
+// the eaves) and again in the mesh builder (to build the geometry) and agrees.
+// Footprints that are not close to a rectangle roof their largest inscribed
+// rectangle (and a wing) over a flat lid, or keep the flat lid.
 
-export type RoofKind = 'gable' | 'pitched' | 'mansard';
-export type GableShape = 'step' | 'neck' | 'bell' | 'spout' | 'plain';
+import { RoofSink, type V2, type V3 } from './roofSink.js';
+import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, signedArea } from './roofFootprint.js';
+import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
+
+export type RoofKind = 'gable' | 'pitched' | 'mansard' | 'mansardHip' | 'hipped' | 'halfHipped' | 'school' | 'sawtooth' | 'parapet';
+export type GableShape = 'step' | 'neck' | 'bell' | 'spout' | 'plain' | 'clock' | 'raisedNeck' | 'cornice';
+export const GABLE_SHAPES: readonly GableShape[] = ['step', 'neck', 'bell', 'spout', 'plain', 'clock', 'raisedNeck', 'cornice'];
+export const ROOF_KINDS: readonly RoofKind[] = ['gable', 'pitched', 'mansard', 'mansardHip', 'hipped', 'halfHipped', 'school', 'sawtooth', 'parapet'];
 
 export type RoofPlan = {
   kind: RoofKind;
@@ -27,14 +44,32 @@ export type RoofPlan = {
   seed: string;
   /** Set false for churches and other roofs that should not grow a chimney. */
   chimney?: boolean;
+  /** White stone and paint: copings, gable edging, cornices, barge boards, dormer cheeks. Off for landmarks. */
+  accents?: boolean;
+  /** The accent colour (white sandstone, cream, aluminium...). */
+  trimHex?: string;
+  /** Painted loading-door shutters in a spout gable. */
+  shutters?: boolean;
+  shutterHex?: string;
+  /** Roofed rectangles in the footprint frame (`localOuterRing`), when the roof does not cover the whole outline's box. */
+  pieces?: Array<{ rect: Rect; plan: RoofPlan }>;
+  /** Draw the flat lid at the eaves as well (around pieces, or inside a parapet). */
+  keepLid?: boolean;
+  /** Parapet height above the lid, metres (kind 'parapet'). */
+  parapetM?: number;
+  /** A corner turret: centre and radius in the footprint frame. */
+  turret?: { x: number; y: number; r: number };
 };
 
 export type Rect = { cx: number; cy: number; ux: number; uy: number; len: number; wid: number; coverage: number; /** Farthest any footprint vertex sits from the rectangle's border, metres. */ maxDev: number };
-type Vec3 = [number, number, number];
 type Vec2 = [number, number];
 
-export type RoofPart = 'slope' | 'plate' | 'dormerFace' | 'dormerSide';
-export type RoofTri = { p: [Vec3, Vec3, Vec3]; uv: [Vec2, Vec2, Vec2]; part: RoofPart; n: Vec3 };
+/** slope/plate/dormer: textured as before; trim: flat-coloured closed solid; decal: flat-coloured one-sided paint just proud of a surface. */
+export type RoofPart = 'slope' | 'plate' | 'dormerFace' | 'dormerSide' | 'trim' | 'decal';
+export type RoofTri = { p: [V3, V3, V3]; uv: [V2, V2, V2]; part: RoofPart; n: V3; /** Flat colour for trim and decals (or a tint override). */ hex?: string };
+
+export const TRIM_WHITE = '#efebe2';
+const TRIM_CREAM = '#e6dcc5';
 
 export function hash01(text: string): number {
   let h = 2166136261;
@@ -90,39 +125,200 @@ const pick = <T>(r: number, weights: Array<[T, number]>): T => {
   return weights[weights.length - 1][0];
 };
 
+/** OSM `roof:shape` values the planner honours, and the kinds they allow. */
+const TAGGED: Record<string, RoofKind[]> = {
+  gabled: ['gable', 'pitched'], double_saltbox: ['gable', 'pitched', 'mansard'], saltbox: ['pitched'],
+  hipped: ['hipped'], quadruple_saltbox: ['mansardHip', 'hipped'], 'half-hipped': ['halfHipped'],
+  mansard: ['mansardHip', 'mansard'], gambrel: ['mansard'],
+};
+export const honouredRoofTag = (tag: unknown): boolean => typeof tag === 'string' && tag in TAGGED;
+
+const riseFor = (kind: RoofKind, wid: number): number =>
+  kind === 'mansard' ? 2.6 : kind === 'mansardHip' ? 3.0 : kind === 'school' ? Math.max(2.8, Math.min(6.5, wid * 0.5))
+    : kind === 'hipped' ? Math.max(1.6, Math.min(4.2, wid * 0.33)) : kind === 'sawtooth' ? 2.4 : Math.max(1.6, Math.min(4.6, wid * 0.36));
+
 /**
- * The roof for one building, or null to keep the flat lid. `style` is the
- * building's facade style (canal, c19, school, postwar...), which sets the odds.
+ * The roof for one rectangle, or null to keep the flat lid. `style` is the
+ * building's facade style (canal, c19, school, postwar...), which sets the odds;
+ * `tag` an OSM roof shape to honour (gabled, hipped, quadruple_saltbox...).
  */
-export function planRoof(id: string, style: string, heightM: number, minHeightM: number, rect: Rect | null): RoofPlan | null {
+export function planRoof(id: string, style: string, heightM: number, minHeightM: number, rect: Rect | null, tag?: string, year?: number | null, measured?: GableShape | null): RoofPlan | null {
   if (!rect || minHeightM > 0.5 || heightM < 6.5 || rect.wid < 3.6 || rect.len < 4.5 || rect.coverage < 0.88 || rect.maxDev > 1.0) return null;
+  // A gable the monuments register names (monumentGables.ts) outranks the style's odds and any OSM tag.
+  if (measured) { tag = undefined; if (style !== 'canal' && style !== 'c19' && style !== 'school') style = 'canal'; }
   if (style === 'modern' || style === 'tower') return null;
   const r = hash01(`${id}:roof`), narrow = rect.wid <= 8.5 && rect.len >= 1.25 * rect.wid;
+  const area = rect.len * rect.wid;
+  const industrial = (style === 'c19' || style === 'school' || style === 'postwar') && area >= 350 && rect.wid >= 14 && heightM <= 12;
+  const villa = (style === 'c19' || style === 'school') && !narrow && rect.len <= 1.5 * rect.wid && area <= 260 && heightM <= 14;
   let kind: RoofKind | 'flat';
-  if (style === 'school') kind = pick(r, [['pitched', 0.55], ['mansard', 0.1], ['flat', 0.35]]);
-  else if (style === 'postwar') kind = heightM <= 14 ? pick(r, [['pitched', 0.25], ['flat', 0.75]]) : 'flat';
-  else kind = narrow ? pick(r, [['gable', 0.45], ['pitched', 0.2], ['mansard', 0.2], ['flat', 0.15]]) : pick(r, [['pitched', 0.4], ['mansard', 0.3], ['flat', 0.3]]);
+  const allowed = tag ? TAGGED[tag] : undefined;
+  if (measured) kind = 'gable';
+  else if (allowed) {
+    // A mapped roof shape: only its kinds, picked with the style's taste where there is a choice.
+    kind = allowed.length === 1 ? allowed[0] : allowed.includes('gable') && !narrow ? 'pitched'
+      : pick(r, allowed.map(k => [k, k === 'gable' ? (style === 'canal' || style === 'c19' ? 0.5 : 0.1) : 1 / allowed.length] as [RoofKind, number]));
+  } else if (industrial) kind = pick(r, [['sawtooth', 0.55], ['pitched', 0.15], ['flat', 0.3]]);
+  else if (style === 'school') kind = narrow ? pick(r, [['pitched', 0.3], ['school', 0.3], ['mansard', 0.08], ['flat', 0.32]]) : pick(r, [['school', 0.45], ['pitched', 0.15], ['hipped', 0.08], ['mansard', 0.05], ['flat', 0.27]]);
+  else if (style === 'postwar') kind = heightM <= 14 ? pick(r, [['pitched', 0.2], ['hipped', 0.06], ['flat', 0.74]]) : 'flat';
+  else if (style === 'canal') kind = narrow ? pick(r, [['gable', 0.45], ['pitched', 0.2], ['mansard', 0.2], ['flat', 0.15]]) : pick(r, [['pitched', 0.25], ['mansard', 0.25], ['hipped', 0.2], ['flat', 0.3]]);
+  else if (villa) kind = pick(r, [['hipped', 0.45], ['halfHipped', 0.25], ['mansardHip', 0.15], ['flat', 0.15]]);
+  else kind = narrow ? pick(r, [['gable', 0.32], ['mansardHip', 0.3], ['pitched', 0.1], ['mansard', 0.08], ['halfHipped', 0.05], ['flat', 0.15]])
+    : pick(r, [['mansardHip', 0.25], ['hipped', 0.18], ['mansard', 0.2], ['pitched', 0.12], ['halfHipped', 0.07], ['flat', 0.18]]);
   if (kind === 'flat') return null;
-  if (kind === 'mansard' && rect.wid < 5.2) kind = 'pitched';
-  const riseM = kind === 'mansard' ? 2.6 : Math.max(1.6, Math.min(4.6, rect.wid * 0.36));
+  if ((kind === 'mansard' || kind === 'mansardHip') && rect.wid < 5.2) kind = 'pitched';
+  if ((kind === 'school' && rect.wid < 6) || (kind === 'halfHipped' && rect.wid < 5)) kind = 'pitched';
+  const riseM = riseFor(kind, rect.wid);
   if (heightM - riseM < 4.5) return null;
-  const gable = pick(hash01(`${id}:gable`), [['step', 0.3], ['neck', 0.22], ['bell', 0.22], ['spout', 0.12], ['plain', 0.14]] as Array<[GableShape, number]>);
-  return {
+  const g = hash01(`${id}:gable`);
+  const styleWeights: Array<[GableShape, number]> = style === 'c19'
+    ? [['step', 0.26], ['neck', 0.2], ['raisedNeck', 0.1], ['cornice', 0.14], ['clock', 0.06], ['bell', 0.08], ['spout', 0.08], ['plain', 0.08]]
+    : [['step', 0.15], ['neck', 0.13], ['raisedNeck', 0.13], ['bell', 0.12], ['clock', 0.12], ['spout', 0.08], ['cornice', 0.17], ['plain', 0.1]];
+  let gable: GableShape = measured ?? pick(g, gableWeightsForYear(styleWeights, year));
+  // A deep narrow canal building is often a warehouse: a spout gable with shutters.
+  if (!measured && style === 'canal' && rect.len >= 2.6 * rect.wid && hash01(`${id}:warehouse`) < 0.15) gable = 'spout';
+  const accents = style === 'canal' || style === 'c19' || style === 'school';
+  const plan: RoofPlan = {
     kind, gable, riseM,
-    dormers: kind === 'mansard' || (kind === 'pitched' && !narrow && hash01(`${id}:dorm`) < 0.45) || (kind === 'gable' && hash01(`${id}:dorm`) < 0.2),
-    material: kind === 'mansard' ? 'slate' : hash01(`${id}:mat`) < 0.62 ? 'tile' : 'slate',
+    dormers: kind === 'mansard' || kind === 'mansardHip' || kind === 'school' || ((kind === 'pitched' || kind === 'hipped') && !narrow && hash01(`${id}:dorm`) < 0.45) || (kind === 'gable' && hash01(`${id}:dorm`) < 0.2),
+    material: kind === 'mansard' || kind === 'mansardHip' || kind === 'sawtooth' ? 'slate' : kind === 'school' ? 'tile' : hash01(`${id}:mat`) < 0.62 ? 'tile' : 'slate',
     tone: hash01(`${id}:tone2`),
     seed: id,
   };
+  if (kind === 'sawtooth') plan.chimney = false;
+  if (accents) { plan.accents = true; plan.trimHex = hash01(`${id}:trim`) < 0.8 ? TRIM_WHITE : TRIM_CREAM; }
+  if (kind === 'gable' && gable === 'spout') { plan.shutters = true; plan.shutterHex = pick(hash01(`${id}:shut`), [['#2f4a3a', 0.5], ['#6e2620', 0.3], ['#253129', 0.2]]); }
+  return plan;
 }
 
-/** Height of a gable plate above the eaves at fraction `t` (0 centre, 1 edge) of half-width. */
+/**
+ * When each gable was built (BAG year): step ~1600–1665, neck ~1640–1790, bell
+ * ~1660–1790, raised neck ~1640–1720, clock ~1650–1750, cornice front from
+ * 1700, plus the neo-renaissance revival of step and neck gables in the late
+ * 19th century (Oud-West, Kinkerstraat). Spout gables are warehouses at any
+ * date (planRoof forces them on warehouse-shaped plots).
+ */
+export const GABLE_PERIODS: Partial<Record<GableShape, Array<[number, number]>>> = {
+  step: [[1600, 1665], [1875, 1915]], neck: [[1640, 1790], [1875, 1915]], bell: [[1660, 1790]], raisedNeck: [[1640, 1720]],
+  clock: [[1650, 1750]], cornice: [[1700, 3000]],
+};
+/** Outside its period a gable keeps this share of its weight. */
+export const GABLE_OFF_PERIOD = 0.15;
+/**
+ * The style's gable weights reweighted by construction year: in-period shapes
+ * keep their weight, the rest drop to GABLE_OFF_PERIOD of it; a plain gable is
+ * rare on a dated street front (0.3) and a spout belongs to warehouses (0.15).
+ * Unknown years and 1905 (the BAG placeholder) change nothing.
+ */
+export function gableWeightsForYear(weights: Array<[GableShape, number]>, year: number | null | undefined): Array<[GableShape, number]> {
+  if (year === null || year === undefined || !Number.isFinite(year) || year === 1905) return weights;
+  return weights.map(([shape, w]) => {
+    const periods = GABLE_PERIODS[shape];
+    const k = shape === 'plain' ? 0.3 : shape === 'spout' ? GABLE_OFF_PERIOD : periods!.some(([a, b]) => year >= a && year <= b) ? 1 : GABLE_OFF_PERIOD;
+    return [shape, w * k];
+  });
+}
+
+/** Parapet odds and heights for flat-roofed periods. */
+const PARAPET: Record<string, { p: number; h: [number, number]; hex: string }> = {
+  school: { p: 0.85, h: [0.8, 1.0], hex: TRIM_WHITE },
+  postwar: { p: 0.75, h: [0.5, 0.8], hex: '#d9d5cc' },
+  modern: { p: 0.7, h: [0.6, 1.0], hex: '#c9ccce' },
+  tower: { p: 0.55, h: [0.9, 1.3], hex: '#c9ccce' },
+};
+
+/**
+ * The roof for a building from its footprint ring (metres, any frame), or null
+ * for the plain flat lid. Rectangles get `planRoof`; other footprints roof their
+ * main inscribed rectangle and a wing (over a lid), and flat periods a parapet.
+ */
+export function planBuildingRoof(id: string, style: string, heightM: number, minHeightM: number, ring: readonly Vec2[], tag?: string, year?: number | null, measured?: GableShape | null): RoofPlan | null {
+  if (minHeightM > 0.5 || heightM < 6.5) return null;
+  const pts = openRing(ring);
+  if (pts.length < 4) return null;
+  const rect = fitRect(pts);
+  const simple = !!rect && rect.coverage >= 0.88 && rect.maxDev <= 1.0;
+  const tagged = tag && TAGGED[tag] ? tag : undefined;
+  if (simple) {
+    const plan = planRoof(id, style, heightM, minHeightM, rect, tagged, year, measured);
+    if (plan) {
+      const out: RoofPlan = { ...plan, pieces: [{ rect: rect!, plan }] };
+      // A cut corner on a 19th-century block: a small turret with a spire.
+      if (style === 'c19' && plan.kind !== 'gable' && plan.kind !== 'sawtooth' && rect!.len * rect!.wid >= 90 && hash01(`${id}:turret`) < 0.6) {
+        const ch = findChamfer(pts, rect!);
+        if (ch) out.turret = { x: ch.x, y: ch.y, r: Math.max(1.1, Math.min(1.9, ch.len * 0.42)) };
+      }
+      return out;
+    }
+  } else if (style === 'canal' || style === 'c19' || style === 'school' || tagged) {
+    const frame = fitRect(pts, 40);
+    const ins = frame ? inscribedRects(pts, frame) : null;
+    if (ins && ins.mainShare >= 0.5 && ins.main.len * ins.main.wid >= 24) {
+      const plan = planRoof(id, style, heightM, minHeightM, ins.main, tagged, year, measured);
+      if (plan && plan.kind !== 'sawtooth') {
+        const pieces: RoofPlan['pieces'] = [{ rect: ins.main, plan }];
+        if (ins.second) {
+          const w = ins.second, wingKind: RoofKind = plan.kind === 'hipped' || plan.kind === 'school' && w.wid >= 6 ? plan.kind : 'pitched';
+          const riseM = Math.min(plan.riseM, riseFor(wingKind, w.wid));
+          if (heightM - riseM >= 4.5) pieces.push({ rect: w, plan: { ...plan, kind: wingKind, gable: 'plain', riseM, dormers: false, seed: `${id}:wing`, chimney: false, shutters: undefined } });
+        }
+        return { ...plan, pieces, keepLid: true };
+      }
+    }
+  }
+  if (tagged) return null;
+  const par = PARAPET[style];
+  if (par && hash01(`${id}:parapet`) < par.p && parapetRingOk(pts, 0.25, 40)) {
+    const parapetM = par.h[0] + (par.h[1] - par.h[0]) * hash01(`${id}:parapetH`);
+    if (heightM - parapetM < 4) return null;
+    return { kind: 'parapet', gable: 'plain', riseM: parapetM, dormers: false, material: 'slate', tone: hash01(`${id}:tone2`), seed: id, chimney: false, accents: true, trimHex: par.hex, parapetM, keepLid: true };
+  }
+  return null;
+}
+
+/** Height of the flat top of a cornice front (lijstgevel) above the eaves. */
+export const corniceHeight = (roofRiseM: number) => roofRiseM * 0.5 + 0.3;
+
+/** The raised neck gable's claw arcs (left, then right), for the white claw pieces. */
+function raisedNeckDims(widthM: number, R: number) {
+  const half = widthM / 2, neck = half * 0.4, s0 = Math.max(0.9, R * 0.6 + 0.2), topN = R * 1.45 + 0.9, top = topN + neck * 0.6;
+  let rc = Math.min(half - neck - 0.12, (topN - s0) * 0.45);
+  if (rc < 0.3) rc = 0;
+  const arc: Vec2[] = [];
+  for (let i = 0; i <= 3 && rc > 0; i++) { const t = (i / 3) * Math.PI / 2; arc.push([-neck - rc * Math.cos(t), s0 + rc * Math.sin(t)]); }
+  return { half, neck, s0, topN, top, rc, arc };
+}
+export function clawArcs(widthM: number, roofRiseM: number): Vec2[][] {
+  const { arc } = raisedNeckDims(widthM, roofRiseM);
+  return arc.length ? [arc, arc.map(([x, y]) => [-x, y] as Vec2).reverse()] : [];
+}
+
+/** Where the white crown of a raised neck (its pediment) or a clock gable (its arch) begins. */
+function crownBaseOf(shape: GableShape, widthM: number, R: number): number | undefined {
+  if (shape === 'raisedNeck') return raisedNeckDims(widthM, R).topN;
+  if (shape === 'clock') return clockDims(widthM, R).nt;
+  return undefined;
+}
+function clockDims(widthM: number, R: number) {
+  const half = widthM / 2, neck = half * 0.46, slopeAtNeck = R * (1 - 0.46);
+  const sh = Math.max(slopeAtNeck + 0.3, R * 0.75), nt = Math.max(sh + 0.5, R * 1.35 + 0.7);
+  return { neck, sh, nt, top: nt + neck * 0.6 };
+}
+
+/** A gable plate's outline above the eaves: x across (−W/2..W/2, never going back), y up. */
 export function gableProfile(shape: GableShape, widthM: number, roofRiseM: number): Vec2[] {
   const half = widthM / 2, pts: Vec2[] = [];
   const slope = (x: number) => roofRiseM * (1 - Math.abs(x) / half);
   const add = (x: number, y: number) => pts.push([x, Math.max(y, slope(x) + 0.04)]);
-  const N = 24;
+  const mirror = (left: Vec2[]): Vec2[] => {
+    const right = left.slice(0, -1).reverse().map(([x, y]) => [-x, y] as Vec2);
+    const all = [...left, ...right];
+    all[0] = [all[0][0], 0]; all[all.length - 1] = [all[all.length - 1][0], 0];
+    return dedupe(all);
+  };
+  const N = 10;
   if (shape === 'plain') { add(-half, 0); add(0, roofRiseM); add(half, 0); pts[0][1] = 0; pts[2][1] = 0; return pts; }
+  if (shape === 'cornice') { const hc = corniceHeight(roofRiseM); return [[-half, 0], [-half, hc], [half, hc], [half, 0]]; }
   if (shape === 'step') {
     // Stairs up to a flat crown: `steps` treads each side, risers vertical.
     const top = roofRiseM * 1.18 + 0.55, steps = 3, w = half / (steps + 0.6);
@@ -140,19 +336,34 @@ export function gableProfile(shape: GableShape, widthM: number, roofRiseM: numbe
   if (shape === 'neck') {
     const top = roofRiseM * 1.45 + 0.7, neck = half * 0.42, shoulder = roofRiseM * 0.62;
     add(-half, 0);
-    for (let i = 1; i <= 8; i++) { const t = i / 8, x = -half + (half - neck) * t; add(x, 0.15 + (shoulder - 0.15) * Math.pow(t, 1.7)); }
+    for (let i = 1; i <= 4; i++) { const t = i / 4, x = -half + (half - neck) * t; add(x, 0.15 + (shoulder - 0.15) * Math.pow(t, 1.7)); }
     add(-neck, top); add(neck, top);
-    for (let i = 8; i >= 1; i--) { const t = i / 8, x = half - (half - neck) * t; add(x, 0.15 + (shoulder - 0.15) * Math.pow(t, 1.7)); }
+    for (let i = 4; i >= 1; i--) { const t = i / 4, x = half - (half - neck) * t; add(x, 0.15 + (shoulder - 0.15) * Math.pow(t, 1.7)); }
     add(half, 0);
     pts[0][1] = 0; pts[pts.length - 1][1] = 0;
     return dedupe(pts);
+  }
+  if (shape === 'raisedNeck') {
+    // Verhoogde halsgevel: a short upright, a level shoulder, white claws against a tall neck, a pediment.
+    const d = raisedNeckDims(widthM, roofRiseM);
+    add(-half, 0); add(-half, d.s0);
+    if (d.arc.length) { if (d.arc[0][0] > -half + 0.01) add(d.arc[0][0], d.s0); for (const [x, y] of d.arc) add(x, y); } else add(-d.neck, d.s0);
+    add(-d.neck, d.topN); add(0, d.top);
+    return mirror(pts);
+  }
+  if (shape === 'clock') {
+    // Klokgevel: S-curved shoulders up to an upright neck, closed by an arch.
+    const { neck, sh, nt, top } = clockDims(widthM, roofRiseM);
+    for (let i = 0; i <= 4; i++) { const t = i / 4; add(-half + (half - neck) * t, sh * (3 * t * t - 2 * t * t * t)); }
+    for (let i = 0; i <= 3; i++) { const a = Math.PI - (i / 3) * (Math.PI / 2); add(neck * Math.cos(a), nt + (top - nt) * Math.sin(a)); }
+    return mirror(pts);
   }
   const bell = shape === 'bell', top = roofRiseM * (bell ? 1.3 : 1.55) + (bell ? 0.6 : 0.9);
   for (let i = 0; i <= N; i++) {
     const x = -half + (widthM * i) / N, t = Math.abs(x) / half;
     let f: number;
     if (bell) f = t < 0.18 ? 1 : 0.12 + 0.88 * (0.5 + 0.5 * Math.cos(Math.PI * Math.pow((t - 0.18) / 0.82, 0.85)));
-    else { const tt = t < 0.26 ? 0 : (t - 0.26) / 0.74; f = t < 0.26 ? 1 : 0.1 + 0.9 * (1 - Math.pow(tt, 0.6)) * (1 - 0.0 * tt); }
+    else { const tt = t < 0.26 ? 0 : (t - 0.26) / 0.74; f = t < 0.26 ? 1 : 0.1 + 0.9 * (1 - Math.pow(tt, 0.6)); }
     add(x, top * f);
   }
   pts[0][1] = 0; pts[pts.length - 1][1] = 0;
@@ -160,109 +371,313 @@ export function gableProfile(shape: GableShape, widthM: number, roofRiseM: numbe
 }
 const dedupe = (pts: Vec2[]): Vec2[] => pts.filter((p, i) => i === 0 || p[0] !== pts[i - 1][0] || p[1] !== pts[i - 1][1]);
 
-const sub = (a: Vec3, b: Vec3): Vec3 => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
-const cross = (a: Vec3, b: Vec3): Vec3 => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
-const dot = (a: Vec3, b: Vec3) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
-
 export type RoofDims = { bayM: number; storeyM: number; cellM: number };
 
-/** Roof geometry for one building, in the same metre frame as the rect. `h0` is the eaves height. */
-export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDims): RoofTri[] {
-  const out: RoofTri[] = [];
-  const { cx, cy, ux, uy, len: L, wid: W } = rect;
-  const world = (u: number, v: number, z: number): Vec3 => [cx + u * ux - v * uy, cy + u * uy + v * ux, h0 + z];
-  const dir = (u: number, v: number, z: number): Vec3 => [u * ux - v * uy, u * uy + v * ux, z];
-  const tri = (a: Vec3, b: Vec3, c: Vec3, ua: Vec2, ub: Vec2, uc: Vec2, part: RoofPart, hint: Vec3) => {
-    let n = cross(sub(b, a), sub(c, a));
-    let B = b, C = c, UB = ub, UC = uc;
-    if (dot(n, hint) < 0) { B = c; C = b; UB = uc; UC = ub; n = [-n[0], -n[1], -n[2]]; }
-    const l = Math.hypot(n[0], n[1], n[2]) || 1;
-    out.push({ p: [a, B, C], uv: [ua, UB, UC], part, n: [n[0] / l, n[1] / l, n[2] / l] });
-  };
-  const quad = (a: Vec3, b: Vec3, c: Vec3, d: Vec3, ua: Vec2, ub: Vec2, uc: Vec2, ud: Vec2, part: RoofPart, hint: Vec3) => {
-    tri(a, b, c, ua, ub, uc, part, hint); tri(a, c, d, ua, uc, ud, part, hint);
-  };
-  const R = plan.riseM, cell = dims.cellM;
-  const wallUv = (v: number, y: number): Vec2 => [v / dims.bayM, y / dims.storeyM];
+// --- builders ------------------------------------------------------------------
 
-  if (plan.kind === 'mansard') {
-    const k = Math.min(1.0, W * 0.16), h1 = R * 0.88, top = R - h1;
-    const prof: Vec2[] = [[-W / 2, 0], [-W / 2 + k, h1], [0, h1 + top], [W / 2 - k, h1], [W / 2, 0]];
-    for (let i = 0; i < prof.length - 1; i++) {
-      const [v0, z0] = prof[i], [v1, z1] = prof[i + 1], sl = Math.hypot(v1 - v0, z1 - z0);
-      quad(world(-L / 2, v0, z0), world(L / 2, v0, z0), world(L / 2, v1, z1), world(-L / 2, v1, z1),
-        [0, 0], [L / cell, 0], [L / cell, sl / cell], [0, sl / cell], 'slope', dir(0, (v0 + v1) / 2, (z0 + z1) / 2 - R * 0.4));
+/** A gable plate as a slab `t` deep behind the end plane: front, back, top (coping) and risers. */
+function gableSlab(s: RoofSink, prof: readonly Vec2[], e: number, L: number, topPart: 'plate' | 'trim', topHex?: string, t = 0.32): void {
+  const f = e * L / 2, b = e * (L / 2 - t), st = s.dims.storeyM;
+  for (let i = 0; i < prof.length - 1; i++) {
+    const [x0, y0] = prof[i], [x1, y1] = prof[i + 1];
+    if (Math.abs(x1 - x0) > 1e-4) {
+      s.quad([f, x0, 0], [f, x1, 0], [f, x1, y1], [f, x0, y0], s.wallUv(x0, 0), s.wallUv(x1, 0), s.wallUv(x1, y1), s.wallUv(x0, y0), 'plate', [e, 0, 0]);
+      s.quad([b, x0, 0], [b, x1, 0], [b, x1, y1], [b, x0, y0], s.wallUv(x0, 0), s.wallUv(x1, 0), s.wallUv(x1, y1), s.wallUv(x0, y0), 'plate', [-e, 0, 0]);
+      s.quad([f, x0, y0], [f, x1, y1], [b, x1, y1], [b, x0, y0], [0, 0], [1, 0], [1, 1], [0, 1], topPart, [0, 0, 1], topPart === 'trim' ? topHex : undefined);
+    } else {
+      // A riser: its side faces the opposite way to the step it climbs.
+      const hi = Math.max(y0, y1), lo = Math.min(y0, y1), faceV = y1 > y0 ? -1 : 1;
+      s.quad([f, x0, lo], [b, x0, lo], [b, x0, hi], [f, x0, hi], [0, lo / st], [0.1, lo / st], [0.1, hi / st], [0, hi / st], 'plate', [0, faceV, 0]);
     }
-    // The end wall is a fan about an inner point, closed along the eaves too: without the
-    // eaves edge a triangle was missing and every mansard end showed a hole (user report 2026-10-02).
-    for (const e of [-1, 1]) for (let i = 0; i < prof.length; i++) {
-      const a = prof[i], b = prof[(i + 1) % prof.length];
-      tri(world(e * L / 2, a[0], a[1]), world(e * L / 2, b[0], b[1]), world(e * L / 2, 0, R * 0.4),
-        wallUv(a[0], a[1]), wallUv(b[0], b[1]), wallUv(0, R * 0.4), 'plate', dir(e, 0, 0));
+  }
+}
+
+type DormerSpec = { axis: 'u' | 'v'; side: number; c: number; pf: number; dw: number; hd: number; surf: (a: number) => number; band?: boolean };
+
+/**
+ * One dormer standing on a roof face: window face, cheeks (white with accents)
+ * and a small pitched cap with a pediment, or a flat top for a dormer band. Its
+ * back sits where the roof has risen over it, so it is closed against the roof.
+ */
+function dormer(s: RoofSink, d: DormerSpec, plan: RoofPlan): boolean {
+  const P = (a: number, b: number, z: number): V3 => (d.axis === 'v' ? [b, d.side * a, z] : [d.side * a, b, z]);
+  const n: V3 = d.axis === 'v' ? [0, d.side, 0] : [d.side, 0, 0];
+  const tan = (sg: number): V3 => (d.axis === 'v' ? [sg, 0, 0] : [0, sg, 0]);
+  const zf = d.surf(d.pf), zb = zf - 0.15, ph = d.band ? 0 : Math.min(0.5, d.dw * 0.4);
+  let hd = d.hd, pb = -1;
+  for (; hd >= 0.75; hd -= 0.1) {
+    const need = zb + hd + ph + 0.06;
+    for (let a = d.pf - 0.2; a >= 0; a -= 0.05) if (d.surf(a) >= need) { pb = a; break; }
+    if (pb >= 0) break;
+  }
+  if (pb < 0) return false;
+  const zt = zb + hd, b0 = d.c - d.dw / 2, b1 = d.c + d.dw / 2, accents = !!plan.accents, trim = plan.trimHex ?? TRIM_WHITE;
+  const rep = d.band ? Math.max(1, Math.round(d.dw / 1.5)) : 1;
+  s.quad(P(d.pf, b0, zb), P(d.pf, b1, zb), P(d.pf, b1, zt), P(d.pf, b0, zt), [0, 0], [rep, 0], [rep, 1], [0, 1], 'dormerFace', n);
+  for (const [b, sg] of [[b0, -1], [b1, 1]] as const) s.quad(P(d.pf, b, zb), P(pb, b, zb), P(pb, b, zt), P(d.pf, b, zt), [0, 0], [1, 0], [1, 1], [0, 1], accents ? 'trim' : 'dormerSide', tan(sg), accents ? trim : undefined);
+  if (d.band) {
+    s.quad(P(d.pf, b0, zt), P(d.pf, b1, zt), P(pb, b1, zt), P(pb, b0, zt), [0, 0], [1, 0], [1, 1], [0, 1], 'dormerSide', [0, 0, 1]);
+    if (accents) s.quad(P(d.pf + 0.012, b0, zt - 0.14), P(d.pf + 0.012, b1, zt - 0.14), P(d.pf + 0.012, b1, zt), P(d.pf + 0.012, b0, zt), [0, 0], [0, 0], [0, 0], [0, 0], 'decal', n, trim);
+  } else {
+    s.tri(P(d.pf, b0, zt), P(d.pf, b1, zt), P(d.pf, d.c, zt + ph), [0, 0], [0, 0], [0, 0], accents ? 'trim' : 'plate', n, accents ? trim : undefined);
+    for (const sg of [-1, 1]) {
+      const b = sg < 0 ? b0 : b1;
+      s.slopeTri(P(d.pf, b, zt), P(pb, b, zt), P(pb, d.c, zt + ph), [...tan(sg).slice(0, 2), 0.8] as V3, 'dormerSide');
+      s.slopeTri(P(d.pf, b, zt), P(pb, d.c, zt + ph), P(d.pf, d.c, zt + ph), [...tan(sg).slice(0, 2), 0.8] as V3, 'dormerSide');
     }
-    for (const sgn of [-1, 1]) quad(world(-L / 2, sgn * W / 2, 0), world(L / 2, sgn * W / 2, 0), world(L / 2, sgn * (W / 2 + 0.28), -0.1), world(-L / 2, sgn * (W / 2 + 0.28), -0.1), [0, 0], [L / cell, 0], [L / cell, 0.3 / cell], [0, 0.3 / cell], 'slope', dir(0, sgn * 0.3, 1));
-    if (plan.dormers) {
-      const n = Math.min(4, Math.floor((L - 2) / 3.2));
-      for (const s of [-1, 1]) for (let i = 0; i < n; i++) {
-        const uc = -L / 2 + ((i + 0.5) * L) / n, dw = 1.05, u0 = uc - dw / 2, u1 = uc + dw / 2;
-        const vf = s * (W / 2 - k * 0.5), vb = s * (W / 2 - k), zb = h1 * 0.5 - 0.1, zt = zb + 1.35;
-        quad(world(u0, vf, zb), world(u1, vf, zb), world(u1, vf, zt), world(u0, vf, zt), [0, 0], [1, 0], [1, 1], [0, 1], 'dormerFace', dir(0, s, 0));
-        for (const [u, sgn] of [[u0, -1], [u1, 1]] as const) quad(world(u, vf, zb), world(u, vb, zb), world(u, vb, zt), world(u, vf, zt), [0, 0], [1, 0], [1, 1], [0, 1], 'dormerSide', dir(sgn, 0, 0));
-        quad(world(u0, vf, zt), world(u1, vf, zt), world(u1, vb, zt + 0.28), world(u0, vb, zt + 0.28), [0, 0], [1, 0], [1, 1], [0, 1], 'dormerSide', dir(0, 0, 1));
+  }
+  return true;
+}
+
+/** A chimney stack: brick box on the roof at one end, a pale cap. `surf(u, v)` is the roof height there. */
+function chimney(s: RoofSink, plan: RoofPlan, L: number, W: number, R: number, surf: (u: number, v: number) => number): void {
+  if (plan.chimney === false || hash01(`${plan.seed}:chim`) >= 0.62) return;
+  const side = hash01(`${plan.seed}:chimside`) < 0.5 ? -1 : 1, cu = side * (L / 2 - 1.2), cv = (hash01(`${plan.seed}:chimv`) - 0.5) * W * 0.25;
+  const cw = 0.42, top = R + 1.15 + hash01(`${plan.seed}:chimh`) * 0.5;
+  const c = [[cu - cw, cv - cw], [cu + cw, cv - cw], [cu + cw, cv + cw], [cu - cw, cv + cw]] as Vec2[];
+  const base = Math.max(-0.3, Math.min(...c.map(([u, v]) => surf(u, v))) - 0.4), st = s.dims.storeyM;
+  for (let i = 0; i < 4; i++) {
+    const [a, b] = [c[i], c[(i + 1) % 4]];
+    s.quad([a[0], a[1], base], [b[0], b[1], base], [b[0], b[1], top], [a[0], a[1], top], [0, 0], [0.5, 0], [0.5, 1.2 / st * 2], [0, 1.2 / st * 2], 'plate', [(a[0] + b[0]) / 2 - cu, (a[1] + b[1]) / 2 - cv, 0]);
+  }
+  s.quad([c[0][0], c[0][1], top], [c[1][0], c[1][1], top], [c[2][0], c[2][1], top], [c[3][0], c[3][1], top], [0, 0], [1, 0], [1, 1], [0, 1], 'slope', [0, 0, 1]);
+}
+
+/** A thin white board hanging under an eave edge from a to b (local), facing `out`. */
+function fascia(s: RoofSink, a: V3, b: V3, out: V3, hex: string, h = 0.16): void {
+  s.quad(a, b, [b[0], b[1], b[2] - h], [a[0], a[1], a[2] - h], [0, 0], [0, 0], [0, 0], [0, 0], 'decal', out, hex);
+}
+
+function buildMansard(s: RoofSink, plan: RoofPlan, L: number, W: number, R: number): void {
+  const k = Math.min(1.0, W * 0.16), h1 = R * 0.88, trim = plan.trimHex ?? TRIM_WHITE;
+  const prof: Vec2[] = [[-W / 2, 0], [-W / 2 + k, h1], [0, R], [W / 2 - k, h1], [W / 2, 0]];
+  for (let i = 0; i < prof.length - 1; i++) {
+    const [v0, z0] = prof[i], [v1, z1] = prof[i + 1];
+    s.slopePoly([[-L / 2, v0, z0], [L / 2, v0, z0], [L / 2, v1, z1], [-L / 2, v1, z1]], [0, (v0 + v1) / 2, (z0 + z1) / 2 - R * 0.4]);
+  }
+  // The end wall is a fan about an inner point, closed along the eaves too: without the
+  // eaves edge a triangle was missing and every mansard end showed a hole (user report 2026-10-02).
+  for (const e of [-1, 1]) for (let i = 0; i < prof.length; i++) {
+    const a = prof[i], b = prof[(i + 1) % prof.length];
+    s.tri([e * L / 2, a[0], a[1]], [e * L / 2, b[0], b[1]], [e * L / 2, 0, R * 0.4], s.wallUv(a[0], a[1]), s.wallUv(b[0], b[1]), s.wallUv(0, R * 0.4), 'plate', [e, 0, 0]);
+  }
+  for (const sg of [-1, 1]) {
+    s.quad([-L / 2, sg * W / 2, 0], [L / 2, sg * W / 2, 0], [L / 2, sg * (W / 2 + 0.28), -0.1], [-L / 2, sg * (W / 2 + 0.28), -0.1], [0, 0], [L / s.dims.cellM, 0], [L / s.dims.cellM, 0.25], [0, 0.25], plan.accents ? 'trim' : 'slope', [0, sg * 0.3, 1], plan.accents ? trim : undefined);
+    if (plan.accents) fascia(s, [-L / 2, sg * (W / 2 + 0.28), -0.1], [L / 2, sg * (W / 2 + 0.28), -0.1], [0, sg, 0], trim, 0.22);
+  }
+  if (plan.dormers) {
+    const n = Math.min(3, Math.floor((L - 2) / 3.6));
+    const surf = (a: number) => (a >= W / 2 - k ? h1 * (W / 2 - a) / k : h1 + (R - h1) * (1 - a / (W / 2 - k)));
+    for (const sd of [-1, 1]) for (let i = 0; i < n; i++) dormer(s, { axis: 'v', side: sd, c: -L / 2 + ((i + 0.5) * L) / n, pf: W / 2 - k * 0.5, dw: 1.05, hd: 1.25, surf }, plan);
+  }
+}
+
+/** Mansard on all four sides: steep slate band to a flat top, dormers to the street ends, a white eaves cornice. */
+function buildMansardHip(s: RoofSink, plan: RoofPlan, L: number, W: number, R: number): void {
+  const k = Math.min(1.1, W * 0.17), trim = plan.trimHex ?? TRIM_WHITE, ov = 0.3, lip = -0.12;
+  const o: Vec2[] = [[-L / 2, -W / 2], [L / 2, -W / 2], [L / 2, W / 2], [-L / 2, W / 2]];
+  const inn: Vec2[] = [[-L / 2 + k, -W / 2 + k], [L / 2 - k, -W / 2 + k], [L / 2 - k, W / 2 - k], [-L / 2 + k, W / 2 - k]];
+  for (let i = 0; i < 4; i++) {
+    const j = (i + 1) % 4, mid: V3 = [(o[i][0] + o[j][0]) / 2, (o[i][1] + o[j][1]) / 2, 0];
+    s.slopePoly([[o[i][0], o[i][1], 0], [o[j][0], o[j][1], 0], [inn[j][0], inn[j][1], R], [inn[i][0], inn[i][1], R]], [mid[0], mid[1], 0.5]);
+  }
+  s.slopePoly(inn.map(([u, v]) => [u, v, R] as V3), [0, 0, 1]);
+  // The eaves cornice: a white ledge all round with its fascia.
+  const ex: Vec2[] = [[-L / 2 - ov, -W / 2 - ov], [L / 2 + ov, -W / 2 - ov], [L / 2 + ov, W / 2 + ov], [-L / 2 - ov, W / 2 + ov]];
+  for (let i = 0; i < 4; i++) {
+    const j = (i + 1) % 4, out: V3 = [(ex[i][0] + ex[j][0]) / 2, (ex[i][1] + ex[j][1]) / 2, 0];
+    const part = plan.accents ? 'trim' : 'slope', hex = plan.accents ? trim : undefined;
+    s.quad([o[i][0], o[i][1], 0], [o[j][0], o[j][1], 0], [ex[j][0], ex[j][1], lip], [ex[i][0], ex[i][1], lip], [0, 0], [1, 0], [1, 0.25], [0, 0.25], part, [out[0] * 0.05, out[1] * 0.05, 1], hex);
+    if (plan.accents) fascia(s, [ex[i][0], ex[i][1], lip], [ex[j][0], ex[j][1], lip], [out[0], out[1], 0], trim, 0.26);
+  }
+  if (!plan.dormers) return;
+  // Dormers on the short ends (the street front of a row house); on the long sides only when they are not party walls.
+  const nE = W >= 7.5 ? 2 : 1, dwE = Math.min(1.3, (W - 2 * k) / nE - 0.5);
+  const surfU = (a: number) => (a >= L / 2 - k ? R * (L / 2 - a) / k : R);
+  if (dwE >= 0.7) for (const e of [-1, 1]) for (let i = 0; i < nE; i++) dormer(s, { axis: 'u', side: e, c: nE === 1 ? 0 : (i - 0.5) * (W / 2), pf: L / 2 - k * 0.35, dw: dwE, hd: 1.2, surf: surfU }, plan);
+  const narrow = W <= 8.5 && L >= 1.25 * W;
+  if (!narrow) {
+    const n = Math.min(4, Math.floor((L - 2 * k - 1) / 3));
+    const surfV = (a: number) => (a >= W / 2 - k ? R * (W / 2 - a) / k : R);
+    for (const sd of [-1, 1]) for (let i = 0; i < n; i++) dormer(s, { axis: 'v', side: sd, c: -(L / 2 - k) + ((i + 0.5) * (L - 2 * k)) / n, pf: W / 2 - k * 0.35, dw: 1.2, hd: 1.2, surf: surfV }, plan);
+  }
+}
+
+/** Four slopes to a ridge (a pyramid on a square), optionally with softened corners. */
+function buildHipped(s: RoofSink, plan: RoofPlan, L: number, W: number, R: number, ov: number, rc: number): void {
+  const drop = ov * (R / (W / 2)), E = W / 2 + ov, Ue = L / 2 + ov, a = Math.max(0, L / 2 - W / 2);
+  const apex = (su: number): V3 => [su * a, 0, R], trim = plan.trimHex ?? TRIM_WHITE;
+  rc = Math.min(rc, ov * 2.2);
+  for (const sv of [-1, 1]) s.slopePoly([[-Ue + rc, sv * E, -drop], [Ue - rc, sv * E, -drop], apex(1), apex(-1)], [0, sv, 1]);
+  for (const su of [-1, 1]) {
+    s.slopeTri([su * Ue, -E + rc, -drop], [su * Ue, E - rc, -drop], apex(su), [su, 0, 1]);
+    if (rc > 0) for (const sv of [-1, 1]) {
+      const cu = su * (Ue - rc), cv = sv * (E - rc), arc: V3[] = [];
+      for (let i = 0; i <= 3; i++) { const f = (i / 3) * Math.PI / 2; arc.push([cu + su * rc * Math.sin(f), cv + sv * rc * Math.cos(f), -drop]); }
+      for (let i = 0; i < 3; i++) s.slopeTri(arc[i], arc[i + 1], apex(su), [su, sv, 1.4]);
+    }
+  }
+  if (plan.accents) {
+    for (const sv of [-1, 1]) fascia(s, [-Ue + rc, sv * E, -drop], [Ue - rc, sv * E, -drop], [0, sv, 0], trim);
+    for (const su of [-1, 1]) fascia(s, [su * Ue, -E + rc, -drop], [su * Ue, E - rc, -drop], [su, 0, 0], trim);
+  }
+  const surfV = (v: number) => R * (1 - Math.abs(v) / (W / 2));
+  const surf = (u: number, v: number) => Math.min(surfV(v), Math.abs(u) > a ? R * (1 - (Math.abs(u) - a) / (W / 2)) : R);
+  if (plan.kind === 'school') {
+    // A dormer band along each long slope, as wide as the hip lets it be.
+    const pf = (W / 2) * 0.7, need = surfV(pf) - 0.15 + 1.3 + 0.06, reach = a + (W / 2) * (1 - need / R) - 0.4;
+    const dw = Math.min(L * 0.7, 2 * reach);
+    if (dw >= 2) for (const sd of [-1, 1]) dormer(s, { axis: 'v', side: sd, c: 0, pf, dw, hd: 1.3, surf: (q: number) => surfV(q), band: true }, plan);
+  } else if (plan.dormers) {
+    const n = Math.min(3, Math.floor((2 * a + 1) / 3.2));
+    for (const sd of [-1, 1]) for (let i = 0; i < n; i++) dormer(s, { axis: 'v', side: sd, c: n === 1 ? 0 : -a + ((i + 0.5) * 2 * a) / n, pf: (W / 2) * 0.72, dw: 1.05, hd: 1.3, surf: (q: number) => surfV(q) }, plan);
+  }
+  chimney(s, plan, L, W, R, surf);
+}
+
+/** Long slopes with ends clipped at `zc` by a small hip; the ends below `zc` are gable plates (or a cornice front's slab). */
+function halfHipSlopes(s: RoofSink, L: number, W: number, R: number, zc: number, ov: number): void {
+  const drop = ov * (R / (W / 2)), E = W / 2 + ov, vc = (W / 2) * (1 - zc / R), d = vc;
+  for (const sv of [-1, 1]) s.slopePoly([[-L / 2, sv * E, -drop], [L / 2, sv * E, -drop], [L / 2, sv * vc, zc], [L / 2 - d, 0, R], [-L / 2 + d, 0, R], [-L / 2, sv * vc, zc]], [0, sv, 1]);
+  for (const su of [-1, 1]) s.slopeTri([su * L / 2, -vc, zc], [su * L / 2, vc, zc], [su * (L / 2 - d), 0, R], [su, 0, 1]);
+}
+
+function buildSawtooth(s: RoofSink, plan: RoofPlan, L: number, W: number, R: number): void {
+  const n = Math.max(2, Math.round(L / 7)), p = L / n;
+  for (let k = 0; k < n; k++) {
+    const u0 = -L / 2 + k * p, u1 = u0 + p;
+    s.slopePoly([[u0, -W / 2, 0], [u0, W / 2, 0], [u1, W / 2, R], [u1, -W / 2, R]], [-R, 0, p]);
+    const rep = Math.max(1, Math.round(W / 1.6));
+    s.quad([u1, -W / 2, 0], [u1, W / 2, 0], [u1, W / 2, R], [u1, -W / 2, R], [0, 0], [rep, 0], [rep, 1], [0, 1], 'dormerFace', [1, 0, 0]);
+    for (const sv of [-1, 1]) s.tri([u0, sv * W / 2, 0], [u1, sv * W / 2, 0], [u1, sv * W / 2, R], s.wallUv(u0, 0), s.wallUv(u1, 0), s.wallUv(u1, R), 'plate', [0, sv, 0]);
+  }
+  void plan;
+}
+
+/** A corner turret: an octagonal oriel from a storey below the eaves, a white band, a slate spire. */
+function buildTurret(s: RoofSink, tu: number, tv: number, r: number, R: number, trim: string): void {
+  const zb = -3.0, zt = R + 0.6, band = 0.35, hs = 2.6 + r * 1.2, k = 8, st = s.dims.storeyM;
+  const ring: Vec2[] = [];
+  for (let i = 0; i < k; i++) { const a = ((i + 0.5) / k) * Math.PI * 2; ring.push([tu + r * Math.cos(a), tv + r * Math.sin(a)]); }
+  const arc = 2 * Math.PI * r / k;
+  for (let i = 0; i < k; i++) {
+    const [a, b] = [ring[i], ring[(i + 1) % k]], out: V3 = [(a[0] + b[0]) / 2 - tu, (a[1] + b[1]) / 2 - tv, 0];
+    s.quad([a[0], a[1], zb], [b[0], b[1], zb], [b[0], b[1], zt - band], [a[0], a[1], zt - band], s.wallUv(i * arc, 0), s.wallUv((i + 1) * arc, 0), s.wallUv((i + 1) * arc, zt - band - zb), s.wallUv(i * arc, zt - band - zb), 'plate', out);
+    s.quad([a[0], a[1], zt - band], [b[0], b[1], zt - band], [b[0], b[1], zt], [a[0], a[1], zt], [0, 0], [0, 0], [0, 0], [0, 0], 'trim', out, trim);
+    s.slopeTri([a[0], a[1], zt], [b[0], b[1], zt], [tu, tv, zt + hs], [out[0], out[1], 0.4], 'slope', '#545b63');
+  }
+  s.flatPoly(ring.map(([u, v]) => [u, v, zb] as V3), 'trim', [0, 0, -1], trim);
+  void st;
+}
+
+/** Roof geometry for one rectangle, in the same metre frame as the rect. `h0` is the eaves height. */
+export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDims): RoofTri[] {
+  const s = new RoofSink(rect, h0, dims);
+  const { len: L, wid: W } = rect, R = plan.riseM, trim = plan.trimHex ?? TRIM_WHITE, accents = !!plan.accents;
+  if (plan.kind === 'mansard') { buildMansard(s, plan, L, W, R); return s.out; }
+  if (plan.kind === 'mansardHip') { buildMansardHip(s, plan, L, W, R); chimney(s, plan, L, W, R, () => R); return s.out; }
+  if (plan.kind === 'hipped') { buildHipped(s, plan, L, W, R, 0.3, 0); return s.out; }
+  if (plan.kind === 'school') { buildHipped(s, plan, L, W, R, 0.45, Math.min(0.9, W * 0.12)); return s.out; }
+  if (plan.kind === 'sawtooth') { buildSawtooth(s, plan, L, W, R); return s.out; }
+  if (plan.kind === 'parapet') return s.out;
+
+  const ov = 0.3, drop = ov * (R / (W / 2));
+  const surfV = (v: number) => R * (1 - Math.abs(v) / (W / 2));
+  const cornice = plan.kind === 'gable' && plan.gable === 'cornice';
+  if (plan.kind === 'halfHipped' || cornice) {
+    const zc = cornice ? corniceHeight(R) : R * 0.55, vc = (W / 2) * (1 - zc / R);
+    halfHipSlopes(s, L, W, R, zc, ov);
+    for (const e of [-1, 1]) {
+      const f = e * L / 2;
+      if (cornice) {
+        const prof = gableProfile('cornice', W, R);
+        gableSlab(s, prof, e, L, accents ? 'trim' : 'plate', trim);
+        if (accents) gableAccents(s, { shape: 'cornice', prof, f, e, W, R, trimHex: trim, shutterHex: '', shutters: false });
+      } else {
+        s.quad([f, -W / 2, 0], [f, W / 2, 0], [f, vc, zc], [f, -vc, zc], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(vc, zc), s.wallUv(-vc, zc), 'plate', [e, 0, 0]);
+        if (accents) vergeBoards(s, f, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
       }
     }
-    return out;
+    const d = vc;
+    chimney(s, plan, L, W, R, (u, v) => Math.min(surfV(v), Math.abs(u) > L / 2 - d ? zc + (R - zc) * (L / 2 - Math.abs(u)) / d : R));
+    if (accents) for (const sv of [-1, 1]) fascia(s, [-L / 2, sv * (W / 2 + ov), -drop], [L / 2, sv * (W / 2 + ov), -drop], [0, sv, 0], trim);
+    return s.out;
   }
 
   // gable and pitched: two slopes about a ridge along u.
   // The slope runs on past the wall: a 0.3 m eave overhang that casts the shadow line a roof needs.
-  const ov = 0.3, drop = ov * (R / (W / 2)), sl = Math.hypot(W / 2 + ov, R + drop);
-  for (const s of [-1, 1]) {
-    quad(world(-L / 2, s * (W / 2 + ov), -drop), world(L / 2, s * (W / 2 + ov), -drop), world(L / 2, 0, R), world(-L / 2, 0, R),
-      [0, 0], [L / cell, 0], [L / cell, sl / cell], [0, sl / cell], 'slope', dir(0, s * R, W / 2));
-  }
-  // A chimney stack on most roofs with a ridge: brick box, a pale cap.
-  if (plan.chimney !== false && hash01(`${plan.seed}:chim`) < 0.62) {
-    const side = hash01(`${plan.seed}:chimside`) < 0.5 ? -1 : 1, cu = side * (L / 2 - 1.2), cv = (hash01(`${plan.seed}:chimv`) - 0.5) * W * 0.25;
-    const cw = 0.42, top = R + 1.15 + hash01(`${plan.seed}:chimh`) * 0.5, base = Math.max(0, R * (1 - Math.abs(cv) / (W / 2)) - 0.4);
-    const c = [[cu - cw, cv - cw], [cu + cw, cv - cw], [cu + cw, cv + cw], [cu - cw, cv + cw]] as Vec2[];
-    for (let i = 0; i < 4; i++) {
-      const [a, b] = [c[i], c[(i + 1) % 4]], mid: Vec2 = [(a[0] + b[0]) / 2 - cu, (a[1] + b[1]) / 2 - cv];
-      quad(world(a[0], a[1], base), world(b[0], b[1], base), world(b[0], b[1], top), world(a[0], a[1], top), [0, 0], [0.5, 0], [0.5, 1.2 / dims.storeyM * 2], [0, 1.2 / dims.storeyM * 2], 'plate', dir(mid[0], mid[1], 0));
-    }
-    quad(world(c[0][0], c[0][1], top), world(c[1][0], c[1][1], top), world(c[2][0], c[2][1], top), world(c[3][0], c[3][1], top), [0, 0], [1, 0], [1, 1], [0, 1], 'slope', dir(0, 0, 1));
-  }
+  for (const sv of [-1, 1]) s.slopePoly([[-L / 2, sv * (W / 2 + ov), -drop], [L / 2, sv * (W / 2 + ov), -drop], [L / 2, 0, R], [-L / 2, 0, R]], [0, sv * R, W / 2]);
+  if (accents) for (const sv of [-1, 1]) fascia(s, [-L / 2, sv * (W / 2 + ov), -drop], [L / 2, sv * (W / 2 + ov), -drop], [0, sv, 0], trim);
+  chimney(s, plan, L, W, R, (_u, v) => surfV(v));
   for (const e of [-1, 1]) {
+    const f = e * L / 2;
     if (plan.kind === 'pitched') {
-      tri(world(e * L / 2, -W / 2, 0), world(e * L / 2, W / 2, 0), world(e * L / 2, 0, R), wallUv(-W / 2, 0), wallUv(W / 2, 0), wallUv(0, R), 'plate', dir(e, 0, 0));
+      s.tri([f, -W / 2, 0], [f, W / 2, 0], [f, 0, R], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(0, R), 'plate', [e, 0, 0]);
+      if (accents) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
       continue;
     }
-    const prof = gableProfile(plan.gable, W, R), t = 0.32, f = e * L / 2, b = e * (L / 2 - t);
-    for (let i = 0; i < prof.length - 1; i++) {
-      const [x0, y0] = prof[i], [x1, y1] = prof[i + 1];
-      if (Math.abs(x1 - x0) > 1e-4) {
-        quad(world(f, x0, 0), world(f, x1, 0), world(f, x1, y1), world(f, x0, y0), wallUv(x0, 0), wallUv(x1, 0), wallUv(x1, y1), wallUv(x0, y0), 'plate', dir(e, 0, 0));
-        quad(world(b, x0, 0), world(b, x1, 0), world(b, x1, y1), world(b, x0, y0), wallUv(x0, 0), wallUv(x1, 0), wallUv(x1, y1), wallUv(x0, y0), 'plate', dir(-e, 0, 0));
-        quad(world(f, x0, y0), world(f, x1, y1), world(b, x1, y1), world(b, x0, y0), [0, 0], [1, 0], [1, 1], [0, 1], 'plate', dir(0, 0, 1));
-      } else {
-        // A riser: its side faces the opposite way to the step it climbs.
-        const hi = Math.max(y0, y1), lo = Math.min(y0, y1), faceV = y1 > y0 ? -1 : 1;
-        quad(world(f, x0, lo), world(b, x0, lo), world(b, x0, hi), world(f, x0, hi), [0, lo / dims.storeyM], [0.1, lo / dims.storeyM], [0.1, hi / dims.storeyM], [0, hi / dims.storeyM], 'plate', dir(0, faceV, 0));
-      }
-    }
+    const prof = gableProfile(plan.gable, W, R);
+    gableSlab(s, prof, e, L, accents && plan.gable !== 'plain' ? 'trim' : 'plate', trim);
+    if (accents) gableAccents(s, { shape: plan.gable, prof, f, e, W, R, trimHex: trim, shutterHex: plan.shutterHex ?? '#2f4a3a', shutters: !!plan.shutters, claws: plan.gable === 'raisedNeck' ? clawArcs(W, R) : undefined, crownBase: crownBaseOf(plan.gable, W, R) });
   }
   if (plan.dormers) {
     const n = Math.min(3, Math.floor((L - 2) / 3.4));
-    for (const s of [-1, 1]) for (let i = 0; i < n; i++) {
-      const uc = -L / 2 + ((i + 0.5) * L) / n, dw = 1.05, u0 = uc - dw / 2, u1 = uc + dw / 2;
-      const vf = s * W * 0.27, slopeAt = R * (1 - 0.54), zb = slopeAt - 0.2, zt = zb + 1.35, vb = s * W * 0.05;
-      quad(world(u0, vf, zb), world(u1, vf, zb), world(u1, vf, zt), world(u0, vf, zt), [0, 0], [1, 0], [1, 1], [0, 1], 'dormerFace', dir(0, s, 0));
-      for (const [u, sgn] of [[u0, -1], [u1, 1]] as const) quad(world(u, vf, zb), world(u, vb, zb), world(u, vb, zt), world(u, vf, zt), [0, 0], [1, 0], [1, 1], [0, 1], 'dormerSide', dir(sgn, 0, 0));
-      quad(world(u0, vf, zt), world(u1, vf, zt), world(u1, vb, zt + 0.3), world(u0, vb, zt + 0.3), [0, 0], [1, 0], [1, 1], [0, 1], 'dormerSide', dir(0, 0, 1));
-    }
+    for (const sd of [-1, 1]) for (let i = 0; i < n; i++) dormer(s, { axis: 'v', side: sd, c: -L / 2 + ((i + 0.5) * L) / n, pf: (W / 2) * 0.72, dw: 1.05, hd: 1.35, surf: surfV }, plan);
+  }
+  return s.out;
+}
+
+/** A parapet round a footprint ring (mesh frame): outer and inner faces, a coping band and top. */
+export function parapetTriangles(ring: readonly Vec2[], h0: number, hp: number, dims: RoofDims, trimHex: string, t = 0.25): RoofTri[] {
+  const pts = openRing(ring), inner = insetRing(pts, t);
+  if (!inner) return [];
+  const s = new RoofSink({ cx: 0, cy: 0, ux: 1, uy: 0, len: 1, wid: 1, coverage: 1, maxDev: 0 }, h0, dims);
+  const ccw = signedArea(pts) > 0, band = Math.min(0.16, hp * 0.3);
+  let along = 0;
+  for (let i = 0; i < pts.length; i++) {
+    const j = (i + 1) % pts.length, a = pts[i], b = pts[j], a2 = inner[i], b2 = inner[j];
+    const dx = b[0] - a[0], dy = b[1] - a[1], l = Math.hypot(dx, dy);
+    const out: V3 = ccw ? [dy / l, -dx / l, 0] : [-dy / l, dx / l, 0];
+    const zb = hp - band;
+    s.quad([a[0], a[1], 0], [b[0], b[1], 0], [b[0], b[1], zb], [a[0], a[1], zb], s.wallUv(along, 0), s.wallUv(along + l, 0), s.wallUv(along + l, zb), s.wallUv(along, zb), 'plate', out);
+    s.quad([a[0], a[1], zb], [b[0], b[1], zb], [b[0], b[1], hp], [a[0], a[1], hp], [0, 0], [0, 0], [0, 0], [0, 0], 'trim', out, trimHex);
+    s.quad([a2[0], a2[1], 0], [b2[0], b2[1], 0], [b2[0], b2[1], hp], [a2[0], a2[1], hp], s.wallUv(along, 0), s.wallUv(along + l, 0), s.wallUv(along + l, hp), s.wallUv(along, hp), 'plate', [-out[0], -out[1], 0]);
+    s.quad([a[0], a[1], hp], [b[0], b[1], hp], [b2[0], b2[1], hp], [a2[0], a2[1], hp], [0, 0], [0, 0], [0, 0], [0, 0], 'trim', [0, 0, 1], trimHex);
+    along += l;
+  }
+  return s.out;
+}
+
+/**
+ * The whole roof of a building in the mesh frame: `outer` is its outer ring in
+ * lng/lat, `origin` and `kx` (metres per degree of longitude there) the mesh
+ * frame. A plan's pieces and turret live in the footprint frame of
+ * `localOuterRing` (metres about the ring's first vertex) and are carried over.
+ */
+export function roofTrianglesForOutline(outer: readonly number[][], origin: { lng: number; lat: number }, plan: RoofPlan, h0: number, dims: RoofDims, kx: number): RoofTri[] {
+  if (outer.length < 4) return [];
+  const toMesh = ([lng, lat]: readonly number[]): Vec2 => [(lng - origin.lng) * kx, (lat - origin.lat) * M_PER_DEG_LAT];
+  const mesh = outer.map(toMesh);
+  if (plan.kind === 'parapet') return parapetTriangles(mesh, h0, plan.parapetM ?? plan.riseM, dims, plan.trimHex ?? TRIM_WHITE);
+  if (!plan.pieces) { const rect = fitRect(mesh); return rect ? roofTriangles(rect, plan, h0, dims) : []; }
+  const [lng0, lat0] = outer[0], sx = kx / (111_320 * Math.cos(lat0 * Math.PI / 180)), [x0, y0] = mesh[0];
+  const at = (x: number, y: number): Vec2 => [x0 + x * sx, y0 + y];
+  void lng0;
+  const mapRect = (r: Rect): Rect => {
+    const [cx, cy] = at(r.cx, r.cy), ax = r.ux * sx, ay = r.uy, al = Math.hypot(ax, ay), bl = Math.hypot(r.uy * sx, r.ux);
+    return { ...r, cx, cy, ux: ax / al, uy: ay / al, len: r.len * al, wid: r.wid * bl };
+  };
+  const out: RoofTri[] = [];
+  for (const piece of plan.pieces) out.push(...roofTriangles(mapRect(piece.rect), piece.plan, h0, dims));
+  if (plan.turret) {
+    const main = mapRect(plan.pieces[0].rect), [tx, ty] = at(plan.turret.x, plan.turret.y);
+    const s = new RoofSink(main, h0, dims), du = tx - main.cx, dv = ty - main.cy;
+    buildTurret(s, du * main.ux + dv * main.uy, -du * main.uy + dv * main.ux, plan.turret.r, plan.riseM, plan.trimHex ?? TRIM_WHITE);
+    out.push(...s.out);
   }
   return out;
 }
+void outlineBand;
 
 type GeoFeature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
 const M_PER_DEG_LAT = 110_540;
@@ -284,22 +699,31 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
   if (!ring) return null;
   const height = Number(p.height), minHeight = Number(p.minHeight) || 0;
   if (!Number.isFinite(height)) return null;
-  return planRoof(String(p.id ?? ''), String(p.facadeStyle ?? ''), height, minHeight, fitRect(ring));
+  const tag = typeof p.roofShapeTag === 'string' ? p.roofShapeTag : typeof p.roofShape === 'string' && !p.roofPlanned ? p.roofShape : undefined;
+  const year = p.constructionYear === null || p.constructionYear === undefined ? null : Number(p.constructionYear);
+  const measured = typeof p.monumentGable === 'string' && (GABLE_SHAPES as readonly string[]).includes(p.monumentGable) ? p.monumentGable as GableShape : null;
+  return planBuildingRoof(String(p.id ?? ''), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined, Number.isFinite(year) ? year : null, measured);
 }
 
 /**
  * Tile decorator for the three.js looks: buildings that get a real roof have
  * their plain wall lowered to the eaves (`roofEavesHeightM`, which the wall-top
  * expression already honours) and stop drawing the flat lid (a shaped
- * `roofShape`). Measured roofs and anything without a facade are left alone.
+ * `roofShape`). A mapped OSM `roofShape` we can draw (gabled, hipped,
+ * quadruple_saltbox...) picks the kind and is kept as `roofShapeTag`.
+ * Measured eaves and anything without a facade are left alone.
  */
 export function decorateRoof<T extends GeoFeature>(feature: T): T {
   const p = feature.properties;
   if (!p.facade || p.roofPlanned) return feature;
-  if (Number(p.roofEavesHeightM) > 0 || (p.roofShape !== undefined && p.roofShape !== null && p.roofShape !== '' && p.roofShape !== 'flat')) return feature;
+  // A measured eaves height is never overridden; an OSM roof shape we can draw is honoured, others left alone.
+  const tagged = p.roofShape !== undefined && p.roofShape !== null && p.roofShape !== '' && p.roofShape !== 'flat';
+  if (Number(p.roofEavesHeightM) > 0 || (tagged && !honouredRoofTag(p.roofShape) && !p.monumentGable)) return feature;
   const plan = roofPlanForFeature(feature);
   if (!plan) return feature;
-  return { ...feature, properties: { ...p, roofPlanned: true, roofShape: plan.kind, roofEavesHeightM: Number(p.height) - plan.riseM } };
+  const props: Record<string, unknown> = { ...p, roofPlanned: true, roofShape: plan.kind, roofEavesHeightM: Number(p.height) - plan.riseM };
+  if (tagged) props.roofShapeTag = p.roofShape;
+  return { ...feature, properties: props as T['properties'] };
 }
 
 /**
@@ -307,7 +731,29 @@ export function decorateRoof<T extends GeoFeature>(feature: T): T {
  * decorator so any building in `ids` (the resolved landmark buildings) is
  * passed through untouched, with no generic facade or roof. `ids` is read at
  * call time, so it can fill in after the decorator is installed.
+ *
+ * Unless a kit models it (`modelled`), a landmark used to stand as one bare box in the
+ * unmeasured identity palette (user 2026-10-03, after Fatih's 37 m green block: "More?
+ * Landmarks?"). Now an old landmark the size of a house (built before 1945, at most
+ * 26 m: Felix Meritis, a canal-house museum) takes the generic period facade and roof,
+ * and a larger one keeps its bare form in period brick or concrete instead of a palette guess.
+ * `listed`: landmark buildings in the monuments register (monument-gables.json), counted as old.
  */
-export function exceptLandmarks<T extends GeoFeature>(decorate: (feature: T) => T, ids: ReadonlySet<string>): (feature: T) => T {
-  return (feature: T) => (ids.size && ids.has(String(feature.properties.id ?? '')) ? feature : decorate(feature));
+export const OLD_LANDMARK_MAX_M = 26;
+const UNMODELLED_OLD_WALL = '#7a4535', UNMODELLED_NEW_WALL = '#b9ad9a';
+export function exceptLandmarks<T extends GeoFeature>(decorate: (feature: T) => T, ids: ReadonlySet<string>, modelled: ReadonlySet<string> = new Set(), listed: ReadonlySet<string> = new Set()): (feature: T) => T {
+  return (feature: T) => {
+    const id = String(feature.properties.id ?? '');
+    if (!ids.size || !ids.has(id)) return decorate(feature);
+    if (modelled.has(id)) return feature;
+    const p = feature.properties, height = Number(p.height), year = Number(p.constructionYear);
+    const dated = p.constructionYear !== null && p.constructionYear !== undefined && Number.isFinite(year);
+    if (dated && year < 1945 && height <= OLD_LANDMARK_MAX_M) return decorate(feature);
+    // Not the generic facade for the big ones: tried 2026-10-03, Carré and the Oosterkerk read as nine-storey flats.
+    // A listed landmark is old whatever BAG says: its year is often a restoration (Carré, the Oosterkerk).
+    const old = (dated && year < 1945) || listed.has(id);
+    const guessed = typeof p.appearanceStyleSource === 'string' && p.appearanceStyleSource.includes('not-measured');
+    const wall = old ? UNMODELLED_OLD_WALL : UNMODELLED_NEW_WALL;
+    return guessed ? { ...feature, properties: { ...p, sideColour: wall, groundColour: wall } } : feature;
+  };
 }

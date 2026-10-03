@@ -8,6 +8,199 @@ A first cut baked every postcard to WebP (66 for Amsterdam, 3.7 MB). The user pr
 
 The answer card now opens folded (`AnswerDetails`): a postcard thumbnail, the opening line (name origin, reviewed fact, lede or history) and "More", which opens the full card; it folds again each round. The overlay holder is capped at 55dvh on desktop, and `MapComponent` fits the revealed answer above the card's measured height instead of a fixed 42% guess, refitting when the card opens or folds. Pinned in `test:postcard-images` (window geometry, photo rotation, teaser) and `map-recall-trivia.spec.ts` (folded card under 40% of the viewport, the answer's label above it, the postcard present with no photograph loaded, every window filled when they do). Storybook: Map Recall/Answer card.
 
+## Kit-less landmarks: house-sized old ones get a period facade, big ones period brick
+
+User (2026-10-03), after Fatih rendered as a 37 m green box: "More? Landmarks?"
+
+- **Before:** every landmark building a kit did not model stood as one bare box at its BAG height, in the citywide identity palette when no colour was measured. That palette could make a church green.
+- **Now (`exceptLandmarks` in `roofMesh.ts`):**
+  - Kit-modelled parts and bodies (`KIT_MODELLED_IDS`) still pass through untouched.
+  - An old landmark the size of a house (built before 1945 and at most 26 m) takes the generic period facade and roof. Felix Meritis now reads as a Keizersgracht building with a pediment roof. Measured over the 977 landmark parts: 263 kit, 339 period facade, 375 bare.
+  - A larger one keeps its bare form, but a palette-guessed colour becomes period brick `#7a4535` (old) or concrete `#b9ad9a` (1945 on). Measured colours are kept.
+  - A listed landmark counts as old whatever BAG says. BAG often dates a restoration: the Westerkerk east end says 1990 and Mozes en Aäron says 1969. `fetch-monument-gables.ts` now writes `listedLandmarks` (483 parts, a whole landmark counts when any part holds a register point).
+- **Tried and dropped:** giving the big ones the generic facade too. Carré and the Oosterkerk read as nine-storey flats.
+- **Hand-modelled churches** (kits with sources, real-tile checks): Obrechtkerk, Oosterkerk, De Duif, Opstandingskerk, Mozes en Aäronkerk and the Westerkerk east-end sliver. Kits gained explicit wings, slab and round towers, and spire, dome and slanted caps. Guesses: Opstandingskerk's slab sits at the south end; the Obrechtkerk towers are placed from the footprint.
+
+## Arrival card fits the window
+
+User (2026-10-02), on the De Dolphijn arrival card on a laptop: "ideally fits on screen". With a photo, a ribbon, first-time gains, a sign-in tease and a personal best, the card was taller than the window, so the Next route and Share actions were cut off.
+
+- **Density levels:** `_renderFinish` builds the card at up to four densities and uses the first that fits.
+  - Spacing gets tighter at each level.
+  - The personal best moves into the footer line.
+  - The blurb and the story get shorter, and the photo gets smaller.
+  - At the tightest level the encyclopedia blurb is dropped.
+  - Only if the tightest level still overflows is the card scaled down, and the touch hit boxes are scaled with it.
+- **Story lines:** they now wrap to the card. On a phone, "You made it to … · 2 new names, 1 landmark" ran past the right edge, and a cut never leaves half a sentence.
+- **Phone:**
+  - The card stops above the settings and help buttons.
+  - On short screens, Route setup and Share sit side by side, so every button keeps a 44 px target.
+  - Ribbon axis labels drop their percentage when the column is too narrow.
+- **Checks:** `tests/e2e/finish-card-fit.spec.ts` checks a full card at 1440x700 and 1280x600. Storybook has `FinishCardFull` and `FinishCardFullPhone`.
+
+## Trivia card: compact header, "more" as a link, sized to its content
+
+User (2026-10-02), on the Prinsengracht street card: "bad layout".
+
+- **Was:** every bare card was 480 px wide whatever it held. "+ MORE" was a copper pill beside STREET, so it read as a second tag. The name sat 2 px under the chips, and the plate had 7 px of air on top and nearly 30 px below.
+- **Now:** `measureLandmarkCard` puts the category chip and the name on one row when they fit, and drops the name below the chips when they do not. "MORE ›" is copper text at the row's right end, with no pill. The body wraps at a 400 px measure. The card is as wide as its widest line, with a 220 px floor and the old width as the ceiling. Padding is even on all sides.
+- **Renderer:** the layout now carries every vertical position (`headerTop`, `nameBaseline`, `bodyBaseline`, `lineStep`), so `renderer.drawLandmarkCard` can no longer drift from the measured height.
+- **Checks:** the Prinsengracht case is pinned in `scripts/check-notice-cards.ts`. Storybook has `StreetOriginCard` and `PortraitStreetOriginCard`.
+## Map Recall bottom card fits above iPhone Safari's toolbar
+
+User (2026-10-02, iPhone Safari screenshot): "Mobile needs some display fixes at the bottom. Also can't scroll to the bottom of the trivia card."
+
+- **Cause:** the Map Recall shell was Tailwind `h-screen` (100vh). iOS sizes 100vh to the large viewport (toolbar hidden), so the bottom card's "No idea" / "Place a pin first" row and the end of every scroll area were laid out under the toolbar, where no touch can reach. `#root` was already 100dvh; the shell now fills it (`h-full w-full`). Modal caps moved from `vh` to `dvh` for the same reason.
+- **Trivia card:** on phones `.quiz-result-card` had its own `max-height: 58dvh; overflow-y: auto` inside the overlay wrapper's 42dvh scroller. The inner scroller was taller than its parent, so scrolling the outer one never reached the card's last lines. The wrapper is now the only scroll area (`overscroll-contain` so the page does not rubber-band).
+- **Regression:** `tests/e2e/map-recall-phone-chrome.spec.ts` shrinks `#root` by a 90 px "toolbar" the way Safari's dynamic viewport does and requires both buttons and the scrolled-to-end answer card to sit above it. Both tests fail on the old code. Not yet checked on a real iPhone.
+## Listed buildings draw the gable the monuments register names
+
+User (2026-10-02): "do you think it's at all possible to correlate the canal house builder more to the year the house was built?", then "start on wall colors, then gables".
+
+- **Source:** the national monuments register (RCE, CC0) describes each rijksmonument's front in Dutch, for example:
+  - "Pand met trapgevel"
+  - "onder rechte lijst"
+  - "klokvormige top"
+- **Fetch:** `scripts/fetch-monument-gables.ts` queries the register's SPARQL endpoint in ranges of monument number. OFFSET paging timed out past the third page, and joining on the municipality repeated every row about 20 times. Raw responses are cached in `/mnt/project-files/scrape-store/rce-monuments/amsterdam-by-number/`.
+- **Classify:** `monumentGables.ts` takes the first gable phrase in each description.
+- **Match:** the monument's point is placed in its building footprint, and the result goes to `monument-gables.json` (179 KB).
+- **Coverage:** 7,672 Amsterdam monuments; 5,377 name a gable; 4,326 buildings matched:
+  - cornice 2,299
+  - neck 1,283
+  - bell 911
+  - plain 575
+  - step 144
+  - spout 35
+  - raised neck 1
+- **In game:** `vector-map.js` loads the file and tags `monumentGable` before roofs are planned. `planRoof` then draws that gable whatever the style, OSM tag or year.
+- **Measured:** in one Herengracht view, 574 buildings were tagged and 488 drew the named gable. The rest are footprints too irregular for a gable roof.
+- **Pinned:** in `test:roof-shapes`, using register numbers 836, 2791 and 5114.
+- **Open:** the first-phrase rule can pick up a rear or side gable where a description starts there. "verhoogde halsgevel" is rare in the register's wording, so raised necks are still mostly guessed. Landmark buildings keep their own form.
+
+## Wall colours by period
+
+From the real-vs-game sheet (2026-10-02: "one brick palette" everywhere), and the user's "start on wall colors, then gables".
+
+- **Before:** every bay-look building drew its wall from one hash-picked brick palette, whatever its age. Post-war blocks in Photo came out red brick too.
+- **Now:** `PERIOD_WALLS` (in `bayLook.ts`) gives each archetype its own range, still hash-picked and still unmeasured:
+  - **Canal houses:** deep red-brown brick, about a quarter painted near-black, dark green or grey, and a little white stucco.
+  - **1860–1914 rows:** red and orange brick, with buff and cream stucco.
+  - **Amsterdam School:** dark purple-brown and orange brick.
+  - **Post-war and modern:** buff, grey and concrete.
+  - **Storybook and Cartoon:** each look's own palette is split the same way by period.
+- **Pinned:** `test:three-buildings` checks that canal houses are darker than 19th-century rows, that some are painted dark, and that post-war blocks are not red.
+- **Gallery:** `building-gallery.html` shows every period palette.
+
+## Untextured is flat colour only
+
+User (2026-10-02, a screenshot of brick, window grids and awnings): "untextured should be totally untextured or very flat".
+
+- **Before:** the Untextured look already drew every wall and roof on one layer. That layer was the procedural roof's flat cell, which still carries grain, so walls and roofs read slightly textured.
+- **Now:** a `flatColour` shader uniform (set for `untextured`) draws the vertex tint alone, with no cell texture at all.
+- **Live switch:** switching looks rebuilds every chunk, which took about 40 s on a loaded machine. A view caught mid-rebuild still shows the old look; booting in Untextured or waiting it out gives flat colour everywhere.
+- **Not changed:** storefront geometry (signs, awnings) stays, since it is shape rather than texture.
+
+## Utrecht and Rotterdam neighbourhood text and photos
+
+Ran `fill-neighborhood-gaps.ts` online for both cities with the widened Wikimedia token (Utrecht 192 online candidates, Rotterdam 121; about 1,760 responses now in the scrape store). Translated all 111 Dutch fields by hand into `scripts/data/neighborhood-gap-review-utrecht.json` / `-rotterdam.json`: 73 approved, 38 set to `null` (district-article and monument-list dumps, articles about another place or a person with the same name, out-of-date plans, demographics, crime-policy text). Approved translations trim sentences whose antecedent was lost in extraction ("for that reason", "this road") rather than inventing context. Judged 141 `commons-geosearch` photos on contact sheets: approved 68 that show the area itself; rejected portraits, interiors, vehicles, logos, macro shots, and any file the geosearch handed to several areas unless its name places it in one. Published with `--accept offline` (which also ships the offline `inside-fact` lines built from already-translated landmark facts): Utrecht +222 fields, Rotterdam +75. `check-neighborhood-trivia-data.ts` passes.
+
+## Durable scrape store for Wikimedia fetches
+
+User: "make sure we are caching / building our own DB of everything we scrape". The gap-fill cache lived in git-ignored `staging/`, which dies with a cloud container, so every new session re-asked Wikimedia from scratch under a shared-IP rate limit. `scripts/lib/scrapeStore.ts` keeps every response as `{ url, fetchedAt, body }` at `<root>/<host>/<aa>/<sha1(url)>.json`; the root is `SCRAPE_STORE_DIR`, else the project's shared `/mnt/project-files/scrape-store` (outlives containers), else `.cache/scrape-store`. One file per response so parallel sessions never write the same file; keyed by URL only, never by the token. `fill-neighborhood-gaps.ts` reads and writes through it (`--refresh` refetches). Other fetchers (`fetch-area-photos.ts`, `cached-json-fetch.ts`) still use their own local caches.
+
+## Area photos for all four cities, and our own Commons DB
+
+User: "take over fetching ... make sure we are caching / building our own DB of everything we scrape". `scripts/fetch-area-photos.ts` now fills postcards for Amsterdam, Den Haag, Utrecht and Rotterdam. Three faults explained the empty Amsterdam areas (Grachtengordel, De Pijp, Staatsliedenbuurt and Apollobuurt had 0 photos): the action API reports rate limits and `cirrussearch-too-busy-error` as HTTP 200 with an error body, which was saved as "no photos" and then skipped forever; geosearch returns only the 200 files nearest one point, so a single centroid query covered a corner of large areas and none of a horseshoe (the Grachtengordel's centroid is in the old town); and anonymous requests from the cloud's shared IP were throttled outright (the Wikimedia token now covers commons.wikimedia.org). Now: error bodies are retried or reported, never stored; `areaSearchPoints` searches a grid of cells about 1 km wide whose centres lie inside the area; areas with fewer than 40 candidates also consider files within 150 m of the boundary (small islands, flagged `nearby: true`); and Anefo press portraits and Mapillary dashcam frames are dropped as not views of the place.
+
+Everything read is kept twice. Raw responses go to the shared scrape store (`scripts/lib/scrapeStore.ts`, `/mnt/project-files/scrape-store`). The parts we use go into two tables, `/mnt/project-files/commons-db/{geosearch,files}.jsonl` (`src/mapRecall/commonsStore.ts`): 1,248 geosearch queries with all hits, 26.9k files with URLs, size and licence/credit/description metadata, 74 MB, too large for git. `--offline` rebuilds every city's `area-photos.json` from the tables with no network and gives the same answer (hits keep the API's nearest-first order because candidate lists are capped by it). The first run's raw responses sit in `commons-db/responses/` keyed only by URL hash (from before the scrape store), as an archive. Measured in the card gallery: postcards for every Amsterdam and Den Haag card, all but one in Utrecht, and all but 15 in Rotterdam (Ommoord and Zevenkamp, where Commons has almost nothing geotagged). The gallery page itself crashed for every city but Amsterdam because it took names and centres from the game's `CITIES`; it now uses `EXTRACT_CITIES`.
+
+## Facade ornaments: cornices, door surrounds, iron balconies, Amsterdam School brick
+
+User (2026-10-02): "need more canal-house-y generators, more cornices, more amsterdam school style adornments, more white accents", with Kinkerstraat 321 as the reference.
+
+- **New components:** `facadeOrnaments.ts` adds 27 ornament components, for 75 in all.
+  - kroonlijst on consoles
+  - console and corbel cornices
+  - door surrounds and portiek entrances with stairs
+  - iron Juliet balconies on stone slabs, stacked on one window axis
+  - sills, lintels and stucco hoods; white frames
+  - string courses and floor ledges about 0.06 m proud
+  - pilasters and brick fins
+  - oriels and rusticated plinths
+  - cornice vases and Amsterdam School corner sculpture
+- **Alignment:** `facadeOpenings.ts` reads window and door positions off the bay painters, so the 3D dressing lines up with the painted openings.
+- **Choice:** every choice is a deterministic hash roll. Exclusive groups per wall (crown, door frame, window head, balcony, ...) mean two crowns never stack.
+- **Period:** ornament follows the building's real `facadeStyle` (`MeshBuilding.period`), while street furniture also follows the layout style.
+- **Placement:** hoists and door items go only on street walls (`streetSide`).
+- **Budget:** triangles per wall and per building (`EXTRA_BUDGET`). Extras cost about 3.2x more than before: about 219 triangles per building on the Keizersgracht detail area, against 70. Lower `EXTRA_BUDGET.building` if phones struggle.
+- **Open:** white reads light grey under the 0.55 minimum flat shade. Kinked walls re-grid per edge, so dressing can drift from the painted windows there.
+
+## Fatih mosque: nave and twin towers instead of a 37 m green box
+
+User (2026-10-02): "wtf happened to this building both in size and color … I think it's fatih … is the building really that big in OSM?"
+
+- **Cause:** the footprint is right (BAG, about 1,360 m²). Its BAG height of 37.3 m is the towers', though, and the landmark had no kit, so the whole church extruded to tower height. It also wore the unmeasured identity palette's green (`citywide-identity-palette-v3-not-measured`).
+- **Fix:** a `Fatih` hall kit:
+  - dark brown brick
+  - the nave walls stop at 16 m eaves under one pitched slate roof
+  - two 7.5 m square brick towers stand inside the Rozengracht front corners, to 31 m, with slate pyramid caps to about 41 m
+- **Sources:** the Commons photo `Fatihmosquewesterkerkamsterdam.jpg` and nl.wikipedia ("dubbeltorenfront van 40 meter").
+- **New kit field:** hall kits gain `towers`.
+- **Pinned:** in `test:three-buildings` against the real tile.
+- **Same risk elsewhere:** other kit-less landmarks with a tower-height BAG value can show the same full-height block.
+
+## The world flashed once per streamed building chunk
+
+User (2026-10-02): "the whole world flashes periodically and I don't know why". Since `e75bccd` freed the facade layer's CPU geometry once uploaded, three.js uploaded each new chunk and only then computed its bounding sphere (for render-list sorting) from the freed `position` array. That threw inside the MapLibre custom layer, which aborts the whole map frame, so the world blanked once for every chunk that streamed in while riding. `install` now computes the bounding sphere before the array is released. Pinned in `tests/e2e/three-buildings-no-flash.spec.ts`, which fails on the old bundle and passes on the new one.
+
+## Roofs: eight gables, nine roof kinds, white stone, and the build year
+
+User (2026-10-02): "need more canal-house-y generators, more cornices… more white accents, more roof shapes", then "do you think it's at all possible to correlate the canal house builder more to the year the house was built?", answered "sounds great, keep going". The real-vs-game sheet (`/mnt/project-files/house-design/real-vs-game/`) showed flat grey lids where Kinkerstraat and the canal belt have gables and mansards.
+
+- **Missing roofs:** most Oud-West lids were OSM-tagged roofs, not untagged ones. On the Kinkerstraat tile, 1,460 buildings carry `roof:shape` (mostly `quadruple_saltbox`), and the decorator skipped them. `decorateRoof` now draws those tags. It keeps the tag in `roofShapeTag`, never overrides a measured eaves height, and leaves shapes it can't draw (skillion, dome) alone.
+- **Gables:** step, neck, bell, spout and plain are joined by clock, raised neck (white claws and pediment) and cornice front (lijstgevel: a flat top with a deep white cornice, the roof hipped behind it). White stone comes from `gableTrim.ts`: edging bands, step quoins, stone courses, crowns, copings, and warehouse shutters.
+- **Roof kinds:** gable, pitched and mansard gain `mansardHip` (the c19 row house, with street dormers and a white eaves cornice), `hipped`, `halfHipped`, `school`, `sawtooth` and `parapet`, plus a corner turret on cut-corner c19 blocks.
+- **Footprints:** a non-rectangular footprint gets its largest inscribed rectangle, plus a wing when one fits (`roofFootprint.ts`). Accents are off for landmark kits.
+- **Year:** gable weights follow the BAG original build year, using these periods:
+  - step 1600–1665
+  - neck 1640–1790
+  - bell 1660–1790
+  - raised neck 1640–1720
+  - clock 1650–1750
+  - cornice 1700 onwards
+  - a 1875–1915 revival window for step and neck
+
+  A gable outside its period keeps 0.15 of its weight. Year 1905 counts as unknown: 460 of the 6,303 buildings on the canal-belt tile say exactly 1905, which looks like a filler value. Measured shares: a 1620 house is 53% step, a 1760 house is 56% cornice or bell. The BAG year dates the building body, not a later new front, so this steers a street; it does not reproduce it.
+- **Cost:** walls-chunk triangles rise 35–42% (canal belt 492k → 665k). Shaped gables cost the most, 150–270 triangles each. Simplifying the rear gable is the next saving if needed.
+- **Checks:** `test:roof-shapes` (in `check:canal`) covers closed, outward geometry for every kind and gable, OSM tags, the year rules, and decorator/mesh plan agreement on two real tiles.
+
+## Bay drawings: a 19th-century family, no upper-floor shutters, white trim
+
+From the user's Da Costakade screenshots (2026-10-02, "looks New England"): the Photo/Storybook/Cartoon bays had three families (canal, school, modern), so 1860-1914 and post-war buildings drew as canal houses, with arched keystone hoods and dark shutters on every floor. Now `archetypeFor` follows the facade periods (canal before 1860, `c19` to 1914, school to 1944, modern after; unknown years still hash, weighted to c19 and canal). The new `c19` family has segmental-arched windows under stucco hoods and white string courses at every floor and sill; canal houses have flat lintels only, a pale cornice line under each floor, and shutters only beside ground-floor windows. 68 bay layers (was 53), so the bay texture array grows by about a quarter. Pinned in `test:three-buildings`.
+
+## Shop ground floors painted to the pavement, in ten colours
+
+User (2026-10-02, café corner screenshot): "the white bit should go to the ground because that's the paint color of the bottom floor? also maybe we have it able to come in different colors?" The bay looks' shopfronts stopped at a frame 8 px above a 24 px dark brick plinth. Now a shop bay is one painted surface from fascia to pavement (`paintedGround` in `bayTextures.ts`, drawn on the wall tint channel, plinth dropped for shops), and its frames and muntins share that paint. The mesh tints shop bays with the building's `groundHex` (`GROUND_PAINTS` in `bayLook.ts`: per look, half white or cream, then black, dark green, oxblood, navy, grey); doors and upper floors keep the wall colour. Pinned in `test:three-buildings`. Shots: `kinkerstraat-shops` (photo) and `da-costa-akitsu-e` (cartoon) in `facade-trees-look.spec.ts`.
+
+## De Hallen: a row of tram halls
+
+User report with screenshot (2026-10-02, "should do something with de hallen"): the old Tollensstraat tram depot drew as one bare tan block, because it is a landmark (BAG pand 0363100012236693) and landmarks skip the generic facades and roofs. New kit kind `halls` in `landmarkKits.ts`: `hallRects` cuts the footprint into strips 9.62 m wide across its longest wall, aligned to a corner of the stepped Bellamyplein front (whose edges measure 9.6 m across and 6 m back per step), and each strip's run of the footprint gets a pitched roof with brick gable ends, ridges along the halls, eaves 7.2 m, rise 3.4 m. The walls take the kit's brick window grid instead of bare tan. Pinned in `test:three-buildings` (at least 10 halls, each long and no wider than a hall, together covering 85-110% of the footprint; walls stop at the eaves; ridges at eaves + rise). Shot from the `de-hallen` spots in `facade-trees-look.spec.ts`. Not done: glass ridge lights, arched tram doors on the gable ends.
+
+## Doors on the street side; one bay grid along curved walls
+
+User reports with screenshots (Da Costakade by Akitsu, 2026-10-02): "doors should only be on street-side", stoops in front of a café's shop windows, and a curved block whose window spacing jumped at every kink ("wtf happening here"). Three fixes in the three.js building layer:
+- Street side (`streetFronts.ts`): the game hands the routing ways to the layer (`vectorMap.setStreetFronts`, then `ThreeBuildings.setStreets`), and each chunk gets the street segments within 70 m. A wall may carry a door when a ray straight out from it (three rays, at a quarter, half and three quarters along) meets a street within 32 m before it meets another building; a back wall sees the neighbour's back wall across the gardens first. Courtyard walls never get one. A house that sees no street gets one door, on its wall nearest a street within 70 m. Service alleys, motor roads and paths do not count. Boat and transit modes pass no streets and keep the old rule, a door on any outer wall.
+- Runs (`wallRuns`, `layoutRun`): consecutive exposed edges that meet end to end and turn by under 25 degrees are laid out as one facade, with one bay width and the bay grid carried round each kink (u counts bays along the whole run). A door goes on a bay that lies at least half on one edge, and only on an edge the street rule allows.
+- Stoops: the narrow-shop and plain-wall door removal now runs before the facade extras, so stoops, pediments and gable stones no longer hang on a door that was removed.
+Pinned in `test:three-buildings` (street wall keeps the door, a street to the east moves it, no courtyard doors, a quarter-ring frontage has one bay width per arc, no stoop in front of a narrow shop). Shots: `LOOK_SHOTS=1 LOOK_SPOT=da-costa-akitsu LOOK_FREE=1 LOOK_ZOOM=19.3 npx playwright test facade-trees-look --grep "look: photo"` (desktop, software GL, no basemap). Not checked on a phone.
+
+## Storefronts: every built storefront now measured (302)
+
+The remaining 148 first-pass specs were respecced from measured crops, so all 302 built storefronts now come from a full-size crop with a metre ruler and building-edge marks. Where the front at a business's pin is plainly a different, current business (a new tenant, a neighbour the pin lands on), the model shows what the street shows and `decisions.tsv` on `storefront-evidence` says so. Another ~25 became `null` with a reason (scaffolding, side walls, blur); those are web-search candidates.
+## Map Recall: locate hints that name places
+
+User: the neighbourhood hints ("eastern half of the search area", "southeast quadrant", "1.09 km southeast of the search center") are bad; give POI-based hints. `buildLocateHints` (src/mapRecall/locateHints.ts) now goes broad to specific from the extract's own data: the district it is in, the river or canal it lies on or near, the quarter it belongs to, the area it borders (with a bearing), a well-known place just outside, and the best-known places inside. Weesperbuurt now reads: in the Centrum district; lies along the Amstel; borders Plantage, just southwest of it; the H'ART Museum and the Royal Theater Carré are inside it. Streets and places get the same treatment (a museum is its centre, not its building outline). Fame is Wikidata sitelinks, with measured floors per kind; the water nearest the answer's edge is scored by sqrt(fame) times shared edge, so the Amstel through Weesperbuurt beats the Singelgracht along its rim. No hint names the answer or shares a distinctive word with it (Weesperplein for Weesperbuurt, De Pijp for Nieuwe Pijp). Bearings from the search centre only fill in when fewer than three hints name something, and are the whole list outside the extract cities. Pinned in `test:locate-hints` (part of `check:canal`) and an e2e in `map-recall-trivia.spec.ts`.
+
 ## Storefronts: 145 measured, nulls recovered from other walls, evidence branch
 
 Two more batches respecced from measured crops (with yellow building-edge marks on the measure sheets, so misregistration shows while writing). User asked to use web search for nulls and to keep evidence: many nulls were the panorama tool's `--near` wall being a side wall; `build-alt-walls.sh` crops every other exposed wall of the building, `alt-sheet.mjs` lays them out, and `promote-wall.py` makes the right one the reference (27 recovered by eye, Kadijk and Parlotte via web search). Evidence lives on the orphan branch `storefront-evidence`: all crops (original and alternate walls), `candidates.tsv`, `decisions.tsv` (status and reason per business), registration checks and `web/*.md` notes with sources. Curved awnings no longer rise into the fascia. 315 storefronts built, 145 of them measured; the test floor is 280 because dropping a shop with no visible front is correct.

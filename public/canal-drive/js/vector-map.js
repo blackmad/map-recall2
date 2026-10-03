@@ -216,6 +216,12 @@ class VectorBasemap {
     if (source && this._cycleTracks) source.setData(this._cycleTracks);
   }
 
+  /** The routing ways again, for the three.js layer: front doors go only on walls facing a street. */
+  setStreetFronts(ways) {
+    this._streetFrontWays = ways || [];
+    if (this._threeBuildings && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this._streetFrontWays);
+  }
+
   _ensureStreetOverlayLayers() {
     if (this.map.getSource('active-street') || !window.CanalRecallStreets) return;
     const empty = { type: 'FeatureCollection', features: [] };
@@ -815,7 +821,10 @@ class VectorBasemap {
   _addThreeBuildingsLayer() {
     const api = window.CanalRecallThreeBuildings;
     if (!this._buildings3dEnabled || !this._facadesLib() || !api || !api.ThreeBuildings) return;
-    if (!this._threeBuildings) this._threeBuildings = new api.ThreeBuildings(this.map, window.maplibregl, this._buildings3dLook);
+    if (!this._threeBuildings) {
+      this._threeBuildings = new api.ThreeBuildings(this.map, window.maplibregl, this._buildings3dLook);
+      if (this._streetFrontWays && this._threeBuildings.setStreets) this._threeBuildings.setStreets(this._streetFrontWays);
+    }
     if (!this.map.getLayer(this._threeBuildings.layer.id)) {
       this.map.addLayer(this._threeBuildings.layer, this.map.getLayer('osm-colored-building-roofs') ? 'osm-colored-building-roofs' : undefined);
       if (this._tileFeatures.length) this._threeBuildings.setFeatures(this._tileFeatures);
@@ -867,15 +876,35 @@ class VectorBasemap {
     if (!Facades || !this._completeCity || !this._completeCity.setFeatureDecorator) return;
     const api = window.CanalRecallThreeBuildings;
     const withRoofs = this._buildings3dEnabled && api && api.decorateRoof;
-    const decorate = withRoofs ? (feature) => api.decorateRoof(Facades.decorateFacade(feature)) : Facades.decorateFacade;
+    // Listed buildings whose register description names their gable (monument-gables.json) draw that gable.
+    const gables = this._monumentGables;
+    const named = gables && gables.size && api.withMonumentGable ? (feature) => api.withMonumentGable(feature, gables) : (feature) => feature;
+    const decorate = withRoofs ? (feature) => api.decorateRoof(named(Facades.decorateFacade(feature))) : Facades.decorateFacade;
     // Landmark buildings (churches, museums, Centraal…) keep their own form: no generic facade or roof.
     if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
-    const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds) : decorate;
+    const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds, this._listedLandmarks) : decorate;
     // Landmark kits (spires, domes, pitched roofs on naves) lower their roofed parts to the eaves.
     // Measured landmark fronts cap and colour the parts behind them (landmarkFrontData.ts).
     this._completeCity.setFeatureDecorator(this._buildings3dEnabled && api && api.decorateKitRoof
       ? (feature) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(feature))))
       : base);
+  }
+
+  /** Gables of listed buildings from the monuments register, fetched once; re-decorates when they arrive. */
+  async _loadMonumentGables() {
+    if (this._monumentGablesRequested) return;
+    this._monumentGablesRequested = true;
+    try {
+      const response = await fetch(this._extractFile('monument-gables.json'));
+      if (!response.ok) return;
+      const data = await response.json();
+      this._monumentGables = new Map(Object.entries(data.buildings || {}));
+      // Listed landmarks count as old even when BAG dates a restoration (landmark fallback, roofMesh.ts).
+      this._listedLandmarks = new Set(data.listedLandmarks || []);
+      this._applyFeatureDecorator();
+    } catch (error) {
+      console.warn('Monument gables unavailable; listed buildings get period gables.', error);
+    }
   }
 
   /** Resolved landmark building ids, fetched once; re-decorates the resident city when they arrive. */
@@ -1095,6 +1124,7 @@ class VectorBasemap {
       this._completeCity.setTileEnricher(Facades.constructionYearEnricher(this._extractPath || '../data/extracts/amsterdam'));
       this._applyFeatureDecorator();
       this._loadLandmarkBuildingIds();
+      this._loadMonumentGables();
     }
     let available = false;
     try {

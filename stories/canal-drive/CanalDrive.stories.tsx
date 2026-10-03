@@ -9,6 +9,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
   // A named bridge with no origin: the city's bridge register alone.
   | 'landmark-card-bridge-register' | 'landmark-card-bridge-register-touch'
+  // A street's name origin, the most common card while driving.
+  | 'landmark-card-street' | 'landmark-card-street-touch'
   // Phone states. `touch-*` force the compact layout on a pointer device,
   // which is the only way to see the d-pad and the portrait card stack in the
   // workbench; the viewport addon alone just makes a small desktop window.
@@ -18,6 +20,9 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // cannot reach them and Storybook is where they get reviewed.
   | 'knowledge' | 'touch-knowledge'
   | 'touch-prompt' | 'touch-settings' | 'finish-touch' | 'finish-calm-bare-touch'
+  // Every optional block at once: photo, ribbon, first-time gains, guest
+  // tease and a personal best (user report 2026-10-02: ran off the screen).
+  | 'finish-full' | 'finish-full-touch'
   | 'landmark-panel-touch'
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch';
 
@@ -164,6 +169,12 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
             axes: [{ label: 'Recall', score: 0.5 }, { label: 'Unaided', score: 0 }, { label: 'Efficiency', score: 1 }],
           };
           game._shareUrl = 'x'; game._copiedTimer = 0; game._raceKey = null;
+          if (scenario.startsWith('finish-full')) {
+            game.quizCorrect = 4; game.quizAttempts = 5; game.quizPoints = 370; game.quizBestStreak = 3;
+            game._explorationRouteGain = { newNames: 2, newNeighborhoods: 0, newLandmarks: 1 };
+            game._raceKey = 'story-full';
+            win.localStorage.setItem('satb_bestTimes', JSON.stringify({ 'story-full': { time: 200 } }));
+          }
           game.landmarks = [{
             id: 'theater', name: 'Vondelpark Open Air Theater', type: 'landmark',
             longDetail: 'The Vondelpark Open Air Theatre in Amsterdam has staged free performances every summer since 1865, when the park itself was still new, and it remains one of the oldest open-air stages in the Netherlands.',
@@ -178,6 +189,17 @@ function CanalDriveFrame({ scenario = 'default' }: { scenario?: Scenario }) {
           photo.onload = () => { game._landmarkImages.set('theater', photo); game._renderFinish(); };
           photo.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="#41603f"/><rect y="200" width="400" height="100" fill="#6d8a70"/><circle cx="200" cy="120" r="70" fill="#8fb08a"/></svg>')}`;
           game._renderFinish();
+          return;
+        }
+        if (scenario.startsWith('landmark-card-street')) {
+          const origin = "After 'the princely title', meaning that of the Princes of Orange. The canal is one "
+            + 'of the three main canals, and the plainest in the character of its buildings. Its houses '
+            + 'were built for merchants and artisans rather than the richest families of the Golden Age.';
+          game._landmarkNotice = { id: 'street-knowledge:prinsengracht', name: 'Prinsengracht', type: 'street', extractLang: 'en', detail: origin, longDetail: origin };
+          game._landmarkNoticeAlpha = 1;
+          game.currentNeighborhood = 'Grachtengordel';
+          game._syncHudLayout?.();
+          game._renderLandmarkNotice();
           return;
         }
         if (scenario.startsWith('landmark-card-bridge') || scenario.startsWith('landmark-card-building')) {
@@ -404,6 +426,12 @@ export const TransitBriefingPhone: Story = {
 };
 export const LiveHud: Story = { args: { scenario: 'hud' } };
 export const FinishCard: Story = { args: { scenario: 'finish' } };
+/** Every block at once; the card must still fit a laptop screen. */
+export const FinishCardFull: Story = { args: { scenario: 'finish-full' } };
+export const FinishCardFullPhone: Story = {
+  args: { scenario: 'finish-full-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
 export const FinishCardCalmMode: Story = { args: { scenario: 'finish-calm' } };
 /** Calm finish with no landmark photo — typography-only arrival. */
 export const FinishCardCalmBare: Story = { args: { scenario: 'finish-calm-bare' } };
@@ -425,6 +453,12 @@ export const LandmarkPanelMobile: Story = {
 };
 /** A correctly named bridge tells why it is called that (no photo). */
 export const BridgeOriginCard: Story = { args: { scenario: 'landmark-card-bridge' } };
+/** A street's name origin: chip, name and "more" share one compact header. */
+export const StreetOriginCard: Story = { args: { scenario: 'landmark-card-street' } };
+export const PortraitStreetOriginCard: Story = {
+  args: { scenario: 'landmark-card-street-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
 /** A clicked ordinary building: year, period, type, listing and size. */
 export const BuildingFactsCard: Story = { args: { scenario: 'landmark-card-building' } };
 /** A named bridge the register describes but no origin explains. */

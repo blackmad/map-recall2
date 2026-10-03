@@ -378,7 +378,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
         >
           <div
             id="header-overflow-panel"
-            className="app-dialog w-full max-w-sm p-4 sm:p-5 space-y-4 max-h-[92vh] overflow-y-auto"
+            className="app-dialog w-full max-w-sm p-4 sm:p-5 space-y-4 max-h-[92dvh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Drawer Header */}

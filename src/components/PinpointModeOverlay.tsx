@@ -10,6 +10,8 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { AnswerDetails, usePreparePostcard } from './AnswerDetails';
+import { fetchHintReferences } from '../dataSources/featureProvider';
+import { buildLocateHints } from '../mapRecall/locateHints';
 
 interface PinpointModeOverlayProps {
   currentFeature: StreetFeature;
@@ -77,7 +79,19 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
 
   const scoreResult = isRoundComplete ? calculatePinpointScore(distanceErrorMeters) : null;
   const badge = getFeatureTypeBadge(currentFeature.type);
-  const spatialHints = useMemo(() => {
+  // Hints that name places come first; bearings from the search centre fill in
+  // when the extract has too little nearby to name (src/mapRecall/locateHints.ts).
+  const [placeHints, setPlaceHints] = useState<{ featureId: string; hints: string[] } | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    fetchHintReferences(currentFeature.cityId, currentFeature.center)
+      .then((references) => {
+        if (!cancelled) setPlaceHints({ featureId: currentFeature.id, hints: buildLocateHints(currentFeature, references).map((hint) => hint.text) });
+      })
+      .catch(() => undefined);
+    return () => { cancelled = true; };
+  }, [currentFeature]);
+  const bearingHints = useMemo(() => {
     const [centerLat, centerLon] = searchCenter;
     const [targetLat, targetLon] = currentFeature.center;
     const northSouth = targetLat >= centerLat ? 'north' : 'south';
@@ -95,6 +109,11 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
       `About ${formatDistance(distance, unit)} ${direction} of the search center.`,
     ];
   }, [currentFeature.center, searchCenter, unit]);
+  const spatialHints = useMemo(() => {
+    const named = placeHints?.featureId === currentFeature.id ? placeHints.hints : [];
+    const needed = Math.max(0, 3 - named.length);
+    return [...named, ...bearingHints.slice(bearingHints.length - needed)];
+  }, [placeHints, currentFeature.id, bearingHints]);
 
   usePreparePostcard(currentFeature);
 
@@ -116,7 +135,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   return (
     <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
       {/* UNIFIED BOTTOM CARD: QUESTION + CLUES + PIN STATUS + SUBMIT CTA */}
-      <div className="pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] sm:max-h-[55dvh] overflow-y-auto">
+      <div className={`pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] ${isRoundComplete ? 'sm:max-h-[55dvh]' : 'sm:max-h-full'} overflow-y-auto overscroll-contain`}>
         {!isRoundComplete ? (
           /* ACTIVE QUESTION & ACTION CARD */
           <div
@@ -181,6 +200,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   {spatialHints.slice(0, revealedClueIndex).map((clue, idx) => (
                     <li
                       key={idx}
+                      data-testid="locate-hint"
                       className="enamel-tile p-2 text-white text-xs flex items-start gap-2"
                     >
                       <span className="w-4 h-4 rounded-full bg-[#b4682c]/15 text-[#8a4a18] font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">

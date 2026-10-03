@@ -6,10 +6,10 @@
 import { CELL_KINDS, CELL_PX, CELL_VARIANTS, paintCell, STYLE_DIMS } from './facadeCells.js';
 import { FACADE_STYLES, FACADE_STYLE_COLOURS, mutedWallHex } from './genericFacades.js';
 import { CONTEXTUAL_BUILDING_COLOURS } from './cityAppearancePalette.js';
-import { BAY_ENTRIES, BAY_STYLES, CARTOON_WALLS, PHOTO_WALLS, STORYBOOK_WALLS, bayVariant } from './bayLook.js';
+import { BAY_ENTRIES, BAY_STYLES, CARTOON_WALLS, PERIOD_WALLS, PHOTO_WALLS, STORYBOOK_WALLS, bayVariant } from './bayLook.js';
 import { PALETTES, bayTextures, type Look } from './bayTextures.js';
 import { ROOF_CELL_KINDS, paintRoofCell } from './roofCells.js';
-import { fitRect, gableProfile, roofTriangles, type GableShape, type RoofPlan } from './roofMesh.js';
+import { GABLE_SHAPES, fitRect, gableProfile, roofTriangles, type RoofPlan } from './roofMesh.js';
 import { KITS, MAT_HEX } from './landmarkKits.js';
 import { ROOF_TONES, calmBayLayers } from './threeBuildingsBrowser.js';
 
@@ -80,7 +80,7 @@ async function main() {
       }
       calmBayLayers(colourArr, maskArr, 1, look);
       cells.set(`${entry.layer}`, { colour: colourArr, mask: maskArr });
-      const arche = entry.archetype as 'canal' | 'school' | 'modern';
+      const arche = entry.archetype as 'canal' | 'c19' | 'school' | 'modern';
       const wallHex = (look === 'cartoon' || look === 'storybook' ? walls[look] : PHOTO_WALLS)[(entry.layer * 3) % walls[look].length];
       const v = bayVariant(entry);
       const detail = `${v.windows}w ${v.shape}${v.shutters ? ' shutters' : ''}${v.paintedFrames ? ' painted' : ''}`;
@@ -98,27 +98,28 @@ async function main() {
   // 4. Palettes.
   const pal = section('Palettes', 'Wall colours per look, and the roof tones. Photo reds dominate; cartoon is a short sticker palette.');
   pal.append(swatches(PHOTO_WALLS, 'Photo walls'), swatches(STORYBOOK_WALLS, 'Storybook walls'), swatches(CARTOON_WALLS, 'Cartoon walls'));
+  for (const look of ['photo', 'storybook', 'cartoon'] as const) for (const [period, hexes] of Object.entries(PERIOD_WALLS[look])) if (hexes) pal.append(swatches([...hexes], `${look} walls, ${period}`));
   for (const look of ['procedural', 'photo', 'storybook', 'cartoon'] as const) pal.append(swatches([...ROOF_TONES[look].tile, ...ROOF_TONES[look].slate], `Roofs, ${look}`));
   pal.append(swatches(Object.values(MAT_HEX), `Landmark materials (${Object.keys(MAT_HEX).join(', ')})`));
-  for (const look of ['photo', 'storybook', 'cartoon'] as const) for (const arche of ['canal', 'school', 'modern'] as const) pal.append(swatches(PALETTES[look][arche].accents, `${look} accents, ${arche}`));
+  for (const look of ['photo', 'storybook', 'cartoon'] as const) for (const arche of ['canal', 'c19', 'school', 'modern'] as const) pal.append(swatches(PALETTES[look][arche].accents, `${look} accents, ${arche}`));
   void BAY_STYLES;
 
   // 5. Roof and gable 3D thumbnails.
-  const roofs = section('Roofs and gables in 3D', 'Pitched, mansard with dormers, and the five Amsterdam gable shapes, on a 5.5 x 13 m footprint.');
+  const roofs = section('Roofs and gables in 3D', 'Every roof kind and Amsterdam gable shape (roofMesh.ts), white accents on, on a 5.5 x 13 m footprint (wider kinds on 10 x 16 m).');
   const THREE = (window as any).CanalRecallThree?.THREE;
   if (THREE) {
     const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true }); renderer.setSize(300, 230);
-    const rect = fitRect([[0, 0], [5.5, 0], [5.5, 13], [0, 13], [0, 0]])!;
-    const shot = (plan: RoofPlan, label: string, azimuth: number) => {
+    const narrowRect = fitRect([[0, 0], [5.5, 0], [5.5, 13], [0, 13], [0, 0]])!, wideRect = fitRect([[0, 0], [10, 0], [10, 16], [0, 16], [0, 0]])!;
+    const shot = (plan: RoofPlan, label: string, azimuth: number, rect = narrowRect) => {
       const scene = new THREE.Scene(); scene.background = new THREE.Color('#ece7d8');
       scene.add(new THREE.HemisphereLight(0xffffff, 0x998f80, 1.7)); const sun = new THREE.DirectionalLight(0xfff2dd, 1.8); sun.position.set(-20, 40, 30); scene.add(sun);
       const h0 = 10, tris = roofTriangles(rect, plan, h0, { bayM: 5, storeyM: 3.1, cellM: 1.2 });
       const pos: number[] = [], col: number[] = [];
-      const colourFor = (part: string) => hex(part === 'slope' || part === 'dormerSide' ? (plan.material === 'tile' ? '#b5543a' : '#4a525d') : '#c9b99a');
-      for (const t of tris) for (let k = 0; k < 3; k++) { pos.push(t.p[k][0], t.p[k][2], -t.p[k][1]); const s = 0.6 + 0.4 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8), c = colourFor(t.part); col.push(c[0] / 255 * s, c[1] / 255 * s, c[2] / 255 * s); }
+      const colourFor = (t: { part: string; hex?: string }) => hex(t.hex ?? (t.part === 'slope' || t.part === 'dormerSide' ? (plan.material === 'tile' ? '#b5543a' : '#4a525d') : t.part === 'dormerFace' ? '#3b4650' : t.part === 'trim' || t.part === 'decal' ? '#efebe2' : '#c9b99a'));
+      for (const t of tris) for (let k = 0; k < 3; k++) { pos.push(t.p[k][0], t.p[k][2], -t.p[k][1]); const s = 0.6 + 0.4 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8), c = colourFor(t); col.push(c[0] / 255 * s, c[1] / 255 * s, c[2] / 255 * s); }
       const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
       scene.add(new THREE.Mesh(g, new THREE.MeshBasicMaterial({ vertexColors: true, side: THREE.DoubleSide })));
-      const body = new THREE.Mesh(new THREE.BoxGeometry(5.5, h0, 13), new THREE.MeshLambertMaterial({ color: '#a8604a' })); body.position.set(rect.cx, h0 / 2, -rect.cy); body.rotation.y = Math.atan2(rect.uy, rect.ux) * 0 ; scene.add(body);
+      const body = new THREE.Mesh(new THREE.BoxGeometry(rect.wid, h0, rect.len), new THREE.MeshLambertMaterial({ color: '#a8604a' })); body.position.set(rect.cx, h0 / 2, -rect.cy); body.rotation.y = Math.atan2(rect.uy, rect.ux) * 0 ; scene.add(body);
       const cam = new THREE.PerspectiveCamera(36, 300 / 230, 1, 200), a = azimuth * Math.PI / 180;
       cam.position.set(rect.cx + Math.sin(a) * 30, 13, -rect.cy - Math.cos(a) * 30); cam.lookAt(rect.cx, 8.6, -rect.cy);
       renderer.render(scene, cam);
@@ -128,7 +129,12 @@ async function main() {
     shot({ ...base, kind: 'pitched', gable: 'plain', riseM: 2.2 }, 'pitched, tile', 35);
     shot({ ...base, kind: 'pitched', gable: 'plain', riseM: 2.2, dormers: true, material: 'slate', chimney: true, seed: 'c' }, 'pitched, slate, dormers, chimney', 35);
     shot({ ...base, kind: 'mansard', gable: 'plain', riseM: 2.6, dormers: true, material: 'slate' }, 'mansard with dormers', 35);
-    for (const gable of ['step', 'neck', 'bell', 'spout', 'plain'] as GableShape[]) shot({ ...base, kind: 'gable', gable, riseM: 2.0 }, `gable: ${gable}`, 25);
+    for (const gable of GABLE_SHAPES) shot({ ...base, kind: 'gable', gable, riseM: 2.0, accents: true, shutters: gable === 'spout', shutterHex: '#2f4a3a' }, `gable: ${gable}`, 25);
+    shot({ ...base, kind: 'mansardHip', gable: 'plain', riseM: 3.0, dormers: true, material: 'slate', accents: true }, 'mansardHip: c19 row, street dormers', 25, wideRect);
+    shot({ ...base, kind: 'hipped', gable: 'plain', riseM: 3.2, dormers: true, accents: true, chimney: true }, 'hipped (schilddak)', 35, wideRect);
+    shot({ ...base, kind: 'halfHipped', gable: 'plain', riseM: 3.4, accents: true }, 'half-hipped (wolfdak)', 35, wideRect);
+    shot({ ...base, kind: 'school', gable: 'plain', riseM: 5.0, dormers: true, accents: true }, 'Amsterdam School: steep, dormer band', 35, wideRect);
+    shot({ ...base, kind: 'sawtooth', gable: 'plain', riseM: 2.4, material: 'slate' }, 'sawtooth sheds', 35, wideRect);
     void gableProfile;
   }
 
