@@ -602,6 +602,357 @@
     return s.out;
   }
 
+  // src/canalRecall/landmarkForms.ts
+  var closed = (ring) => ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1];
+  var signedArea2 = (pts) => {
+    let a = 0;
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) a += pts[j][0] * pts[i][1] - pts[i][0] * pts[j][1];
+    return a / 2;
+  };
+  function cleanRing(ring) {
+    const raw = closed(ring) ? ring.slice(0, -1) : ring.slice();
+    const pts = [];
+    for (const p of raw) if (!pts.length || Math.hypot(p[0] - pts[pts.length - 1][0], p[1] - pts[pts.length - 1][1]) > 0.05) pts.push([p[0], p[1]]);
+    while (pts.length > 2 && Math.hypot(pts[0][0] - pts[pts.length - 1][0], pts[0][1] - pts[pts.length - 1][1]) <= 0.05) pts.pop();
+    return signedArea2(pts) < 0 ? pts.reverse() : pts;
+  }
+  function clipHalf(pts, p, dir) {
+    const side = (q2) => (q2[0] - p[0]) * dir[0] + (q2[1] - p[1]) * dir[1];
+    const out = [];
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i], b = pts[(i + 1) % pts.length], sa = side(a), sb = side(b);
+      if (sa >= 0) out.push(a);
+      if (sa >= 0 !== sb >= 0) {
+        const t = sa / (sa - sb);
+        out.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]);
+      }
+    }
+    return out;
+  }
+  function offsetRing(pts, d) {
+    if (!d) return pts.slice();
+    const n = pts.length;
+    return pts.map((p, i) => {
+      const a = pts[(i + n - 1) % n], b = pts[(i + 1) % n];
+      const e0 = [p[0] - a[0], p[1] - a[1]], e1 = [b[0] - p[0], b[1] - p[1]];
+      const l0 = Math.hypot(e0[0], e0[1]) || 1, l1 = Math.hypot(e1[0], e1[1]) || 1;
+      const n0 = [e0[1] / l0, -e0[0] / l0], n1 = [e1[1] / l1, -e1[0] / l1];
+      const mx = n0[0] + n1[0], my = n0[1] + n1[1], dotN = 1 + n0[0] * n1[0] + n0[1] * n1[1];
+      if (dotN < 1e-6) return [p[0] + n0[0] * d, p[1] + n0[1] * d];
+      let k = d / dotN;
+      const len = Math.hypot(mx * k, my * k);
+      if (len > Math.abs(d) * 2.5) k *= Math.abs(d) * 2.5 / len;
+      return [p[0] + mx * k, p[1] + my * k];
+    });
+  }
+  function earcut(pts) {
+    const idx = pts.map((_, i) => i), tris = [];
+    const cross3 = (a, b, c) => (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]);
+    const inside = (p, a, b, c) => cross3(a, b, p) > 1e-9 && cross3(b, c, p) > 1e-9 && cross3(c, a, p) > 1e-9;
+    let guard = pts.length * pts.length + 10;
+    while (idx.length > 3 && guard-- > 0) {
+      let clipped = false;
+      for (let k = 0; k < idx.length; k++) {
+        const i0 = idx[(k + idx.length - 1) % idx.length], i1 = idx[k], i2 = idx[(k + 1) % idx.length];
+        const a = pts[i0], b = pts[i1], c = pts[i2];
+        const turn = cross3(a, b, c);
+        if (turn <= 1e-9) {
+          if (Math.abs(turn) <= 1e-9) {
+            idx.splice(k, 1);
+            clipped = true;
+            break;
+          }
+          continue;
+        }
+        if (idx.some((j) => j !== i0 && j !== i1 && j !== i2 && inside(pts[j], a, b, c))) continue;
+        tris.push([i0, i1, i2]);
+        idx.splice(k, 1);
+        clipped = true;
+        break;
+      }
+      if (!clipped) break;
+    }
+    for (let k = 1; k + 1 < idx.length; k++) tris.push([idx[0], idx[k], idx[k + 1]]);
+    return tris;
+  }
+  var sub2 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  var crossV = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  function tri(out, a, b, c, ua, ub, uc, layer, hex2, hint) {
+    let n = crossV(sub2(b, a), sub2(c, a)), B = b, C = c, UB = ub, UC = uc;
+    if (n[0] * hint[0] + n[1] * hint[1] + n[2] * hint[2] < 0) {
+      B = c;
+      C = b;
+      UB = uc;
+      UC = ub;
+      n = [-n[0], -n[1], -n[2]];
+    }
+    const l = Math.hypot(n[0], n[1], n[2]);
+    if (l < 1e-9) return;
+    out.push({ p: [a, B, C], uv: [ua, UB, UC], layer, hex: hex2, n: [n[0] / l, n[1] / l, n[2] / l] });
+  }
+  function formTriangles(form, ring, toLocal2) {
+    let pts = cleanRing(ring);
+    if (form.half) {
+      const b = form.half.keepBearingDeg * Math.PI / 180;
+      pts = cleanRing(clipHalf(pts, toLocal2(form.half.through), [Math.cos(b), Math.sin(b)]));
+    }
+    if (pts.length < 3 || Math.abs(signedArea2(pts)) < 1) return [];
+    pts = offsetRing(pts, form.outsetM ?? 0);
+    const out = [], layer = form.plain ? "plain" : "flat";
+    let zAt = (_p) => form.z1;
+    if (form.z1High !== void 0) {
+      const hb = (form.highBearingDeg ?? 0) * Math.PI / 180, hx = Math.cos(hb), hy = Math.sin(hb);
+      const s = pts.map((p) => p[0] * hx + p[1] * hy), lo = Math.min(...s), span = Math.max(...s) - lo || 1, zHigh = form.z1High;
+      zAt = (p) => form.z1 + (zHigh - form.z1) * (p[0] * hx + p[1] * hy - lo) / span;
+    }
+    const zLow = (p) => form.tiltBottom ? form.z0 + zAt(p) - form.z1 : form.z0;
+    let run = 0;
+    for (let i = 0; i < pts.length; i++) {
+      const a = pts[i], b = pts[(i + 1) % pts.length], side = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      const u0 = run / 5, u1 = (run + side) / 5;
+      run += side;
+      const za = zAt(a), zb = zAt(b);
+      const hint = [b[1] - a[1], -(b[0] - a[0]), 0];
+      if (!(hint[0] || hint[1])) continue;
+      const fa = zLow(a), fb = zLow(b);
+      tri(out, [a[0], a[1], fa], [b[0], b[1], fb], [b[0], b[1], zb], [u0, fa / 3.1], [u1, fb / 3.1], [u1, zb / 3.1], layer, form.hex, hint);
+      tri(out, [a[0], a[1], fa], [b[0], b[1], zb], [a[0], a[1], za], [u0, fa / 3.1], [u1, zb / 3.1], [u0, za / 3.1], layer, form.hex, hint);
+    }
+    const lid = form.lidHex ?? form.hex;
+    for (const [i, j, k] of earcut(pts)) {
+      tri(out, [pts[i][0], pts[i][1], zAt(pts[i])], [pts[j][0], pts[j][1], zAt(pts[j])], [pts[k][0], pts[k][1], zAt(pts[k])], [0, 0], [1, 0], [1, 1], "flat", lid, [0, 0, 1]);
+      if (form.z0 > 0.5) tri(out, [pts[i][0], pts[i][1], zLow(pts[i])], [pts[j][0], pts[j][1], zLow(pts[j])], [pts[k][0], pts[k][1], zLow(pts[k])], [0, 0], [1, 0], [1, 1], "flat", form.hex, [0, 0, -1]);
+    }
+    return out;
+  }
+
+  // src/canalRecall/museumKits.ts
+  var VGM_STONE = "#c3bcae";
+  var NEMO_COPPER = "#4f9a82";
+  var STEDELIJK_WHITE = "#efeee9";
+  var EYE_WHITE = "#f1f1ee";
+  var GLASS = "#5d6c74";
+  var MUSEUM_KITS = [
+    {
+      // Van Gogh Museum, Rietveld building (1973): light grey stone blocks on a glazed ground floor,
+      // the black-framed glass stair tower towards Museumplein and a green glass block beside it
+      // (Commons "Van Gogh Museum Amsterdam.jpg", "Van Gogh Museum, Kurokawa wing.jpg"). OSM's
+      // part heights sit about 3 m under the 3D BAG roofs (main block 21 m, stair tower 24 m, green
+      // block 19.5 m above the street; its ground there is the sunken court, 2.4 m lower), so the
+      // three tall parts are drawn at the measured heights and the low wings keep their own.
+      //
+      // Kurokawa wing (1999): an ellipse cut in half. The southern half is the exhibition drum, a
+      // granite wall under a titanium roof whose brim tilts up to the south (3D BAG: roof 12 m at
+      // the cut, 15 m at the rim); the northern half, once the sunken court, is the 2015 glass
+      // entrance hall (roof 4-10 m).
+      name: "Van Gogh Museum",
+      wall: { plain: true, hex: VGM_STONE, flat: true },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      body: ["w754324679", "w754324680", "w754324681", "w754324682"],
+      hides: ["w754324683", "w754324684", "w754324685", "w1230401241", "w1230401242"],
+      forms: [
+        { on: "w754324684", z0: 0, z1: 21, hex: VGM_STONE },
+        { on: "w754324685", z0: 0, z1: 24, hex: "#40464c" },
+        { on: "w754324683", z0: 0, z1: 19.5, hex: "#7d9a92" },
+        // The drum and its brim, both tilted up to the south (the cut runs at 22 degrees).
+        { on: "w1230401242", z0: 0, z1: 12, z1High: 14.2, highBearingDeg: -68, hex: "#a9a8a2" },
+        { on: "w1230401242", z0: 11.4, z1: 12.2, z1High: 14.9, highBearingDeg: -68, outsetM: 1.4, hex: "#cdd1d5", tiltBottom: true },
+        { on: "w1230401241", z0: 0, z1: 5, z1High: 9.5, highBearingDeg: 112, hex: "#8ea7b1" }
+      ]
+    },
+    {
+      // Stedelijk Museum: A.W. Weissman's 1895 building in red brick with stone bands, steep slate
+      // roofs, four corner pavilions with pointed roofs and the front tower with its lantern
+      // (Commons "Amsterdam - Paulus Potterstraat 13 Stedelijk.JPG"). OSM stops the walls at 14 m;
+      // 3D BAG has the roofs climbing from 16 to 25 m and the tower lantern at 31 m.
+      //
+      // The 2012 Benthem Crouwel wing ("de badkuip", Commons "Amsterdam - Stedelijk Museum -
+      // Benthem Crouwel Wing 2012 - ICE Perspective.jpg", "Stedelijk Museum Amsterdam 2017.jpg"):
+      // a smooth white tub lifted on a glass ground floor, under a thin flat roof that runs out as a
+      // canopy over the Museumplein entrance. OSM maps the tub (w754299890, 92 x 19 m) inside the
+      // canopy's outline (w754299892, 100 x 41 m); 3D BAG puts the roof at 17.6 m. Behind the tub,
+      // up to the old building, a 15 m block.
+      name: "Stedelijk",
+      wall: { plain: false, style: "school", hex: "#a0503c" },
+      tiers: [
+        { id: "w754299889", shape: "square", mat: "brick", z1: 21 },
+        ...["w754299894", "w754299895", "w754299896", "w754299897"].map((id) => ({ id, shape: "square", mat: "brick", z1: 14 }))
+      ],
+      stacks: [
+        { onId: "w754299889", startZ: 21, stages: [
+          { shape: "square", w0: 14.2, w1: 14.2, h: 0.8, mat: "stone" },
+          { shape: "square", w0: 13.6, w1: 3.2, h: 4.6, mat: "slate" },
+          { shape: "octagon", w0: 2.8, w1: 2.6, h: 1.8, mat: "white" },
+          { shape: "octagon", w0: 2.8, w1: 0, h: 1.9, mat: "lead" }
+        ] },
+        ...["w754299894", "w754299895", "w754299896", "w754299897"].map((onId) => ({ onId, startZ: 14, stages: [
+          { shape: "square", w0: 11.8, w1: 11.8, h: 0.6, mat: "stone" },
+          { shape: "square", w0: 11.4, w1: 0.8, h: 8.4, mat: "slate" },
+          { shape: "octagon", w0: 0.6, w1: 0, h: 1, mat: "gold" }
+        ] }))
+      ],
+      roofs: [],
+      halls: [
+        {
+          id: "w754299893",
+          widthM: 0,
+          anchor: [4.879729, 52.35806],
+          eavesM: 14,
+          riseM: 9,
+          mat: "slate",
+          wings: [{ at: [4.879729, 52.35806], lenM: 95.5, widM: 33.7, bearingDeg: 23.5, riseM: 9, roof: "hipped" }]
+        },
+        {
+          id: "w754299898",
+          widthM: 0,
+          anchor: [4.879741, 52.358045],
+          eavesM: 14,
+          riseM: 9,
+          mat: "slate",
+          wings: [{ at: [4.879741, 52.358045], lenM: 50, widM: 30.4, bearingDeg: 113.5, riseM: 9, roof: "hipped" }]
+        }
+      ],
+      body: ["w754299888"],
+      hides: ["w754299890", "w754299892"],
+      forms: [
+        // Glass ground floor, the white tub on it, the block behind it, and the canopy over all.
+        { on: "w754299890", z0: 0, z1: 4.6, outsetM: -0.8, hex: GLASS },
+        { on: "w754299890", z0: 4.6, z1: 16.8, hex: STEDELIJK_WHITE },
+        { on: "w754299892", z0: 0, z1: 15, hex: "#d9d6cf", half: { through: [4.879802, 52.357814], keepBearingDeg: 113.7 } },
+        { on: "w754299892", z0: 16.8, z1: 17.6, hex: STEDELIJK_WHITE }
+      ]
+    },
+    {
+      // Eye Filmmuseum (Delugan Meissl, 2012): a white faceted wedge that climbs from the west to a
+      // flat-topped prow over the IJ, over a long glazed band (Commons "Amsterdam Eye filmmuseum at
+      // the IJ - panoramio.jpg"). 3D BAG: the prow's roof 24.5 m, the western facets 3-19 m.
+      name: "Eye Filmmuseum",
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      hides: ["NL.IMBAG.Pand.0363100012237838"],
+      forms: [
+        { on: "NL.IMBAG.Pand.0363100012237838", z0: 0, z1: 4.2, outsetM: -2, hex: GLASS },
+        { on: "NL.IMBAG.Pand.0363100012237838", z0: 4.2, z1: 5, z1High: 21, highBearingDeg: 0, hex: EYE_WHITE, half: { through: [4.90123, 52.38428], keepBearingDeg: 180 } },
+        { on: "NL.IMBAG.Pand.0363100012237838", z0: 4.2, z1: 24.5, hex: EYE_WHITE, half: { through: [4.90123, 52.38428], keepBearingDeg: 0 } }
+      ]
+    },
+    {
+      // NEMO's roof (Renzo Piano, 1997): the copper-green ship's deck is a public square that climbs
+      // north from the Oosterdok end towards the prow over the IJ tunnel (3D BAG: the hall's roof
+      // rises 12-22 m, the prow's 24-31.5 m). OSM gives the hall and its side strips one flat height
+      // each, so the deck stood as a flat box between 24 m fins; these forms tilt them. The walls
+      // keep the NEMO kit's patinated copper.
+      name: "NEMO deck",
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      hides: ["w1390692772", "w1390692771", "w1390692768", "w1390692765"],
+      forms: [
+        { on: "w1390692772", z0: 0, z1: 12, z1High: 22, highBearingDeg: 90, hex: NEMO_COPPER },
+        { on: "w1390692771", z0: 0, z1: 13, z1High: 23.7, highBearingDeg: 90, hex: NEMO_COPPER },
+        { on: "w1390692768", z0: 0, z1: 13, z1High: 23.8, highBearingDeg: 90, hex: NEMO_COPPER },
+        { on: "w1390692765", z0: 0, z1: 24, z1High: 31.5, highBearingDeg: 90, hex: NEMO_COPPER }
+      ]
+    },
+    {
+      // Pathé Tuschinski (Hijman Louis de Jong, 1921): a grey-brown glazed-stone front between two
+      // square towers, each under a green copper dome with a lantern (Commons "Tuschinski
+      // front.jpg", "Amsterdam - Reguliersbreestraat - View West on Tuschinski Theatre 1921.jpg").
+      // One BAG footprint: 3D BAG puts the flat roofs at 19 m, the auditorium and foyer roofs at
+      // 22 m, the stage house at the back at 25 m, and the domes from 23.5 m to their lanterns at
+      // 33.5 m (the west tower; the east one reads 38 m, its finial). The towers stand inside the
+      // corners of the 14.6 m street front.
+      name: "Tuschinski",
+      wall: { plain: true, hex: "#6d665e" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012168188",
+        widthM: 0,
+        anchor: [4.894841, 52.366302],
+        eavesM: 19,
+        riseM: 3,
+        mat: "slate",
+        wings: [
+          { at: [4.894505, 52.366213], lenM: 30, widM: 26, bearingDeg: 63.4, riseM: 3, roof: "hipped" },
+          { at: [4.894657, 52.36646], lenM: 16, widM: 14, bearingDeg: 63.4, riseM: 3, roof: "hipped" }
+        ],
+        towers: [
+          // The street front (landmarkFrontData.ts TUSCHINSKI) draws the towers and their stepped
+          // crowns to 28.4 m; the domes rise out of those crowns, 1.2 m behind the front's face.
+          { at: [4.894772, 52.3665], widthM: 3, z1: 26.8, capM: 5.1, cap: "copper", capShape: "dome", capHex: "#4f8a76", bearingDeg: 63.4 },
+          { at: [4.894643, 52.366536], widthM: 3, z1: 26.8, capM: 5.1, cap: "copper", capShape: "dome", capHex: "#4f8a76", bearingDeg: 63.4 },
+          // The stage house across the back.
+          { at: [4.894405, 52.366062], widthM: 26, lenM: 10, z1: 24.2, capM: 0.8, cap: "slate", capShape: "slant", highBearingDeg: 153.4, bearingDeg: 153.4 }
+        ]
+      }]
+    },
+    {
+      // Het Scheepvaartmuseum, 's Lands Zeemagazijn (Daniel Stalpaert, 1656): a square block of pale
+      // sandstone round a courtyard, rows of windows, hipped slate roofs with dormers on all four
+      // wings (Commons "Het Scheepvaartmuseum, Amsterdam.jpg"). 3D BAG: eaves 17 m, ridges 22.8 m.
+      // The courtyard (OSM w269078550, a 9 m box) is roofed in glass at the eaves since 2011.
+      name: "Scheepvaartmuseum",
+      wall: { plain: false, style: "canal", hex: "#d8d2c2" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "r3604837",
+        widthM: 0,
+        anchor: [4.914188, 52.371798],
+        eavesM: 17,
+        riseM: 5.8,
+        mat: "slate",
+        wings: [
+          { at: [4.91467, 52.371864], lenM: 64.7, widM: 17.9, bearingDeg: 28.1, riseM: 5.8, roof: "hipped" },
+          { at: [4.914969, 52.37152], lenM: 64.7, widM: 10.4, bearingDeg: 28.1, riseM: 5.8, roof: "hipped" },
+          { at: [4.914502, 52.371607], lenM: 57.3, widM: 17.8, bearingDeg: 118.1, riseM: 5.8, roof: "hipped" },
+          { at: [4.91511, 52.371807], lenM: 57.3, widM: 17.9, bearingDeg: 118.1, riseM: 5.8, roof: "hipped" },
+          // The pedimented centre bay on each side (the footprint's 2.6-3.1 m projections): a gable
+          // facing out of the main roof.
+          { at: [4.914627, 52.371911], lenM: 12.2, widM: 15.2, bearingDeg: 118.1, riseM: 4.5 },
+          { at: [4.914981, 52.371504], lenM: 12.2, widM: 17.1, bearingDeg: 118.1, riseM: 4.5 },
+          { at: [4.914433, 52.371583], lenM: 12.2, widM: 12.6, bearingDeg: 28.1, riseM: 4.5 },
+          { at: [4.915182, 52.371828], lenM: 12.2, widM: 12.5, bearingDeg: 28.1, riseM: 4.5 }
+        ]
+      }],
+      hides: ["w269078550"],
+      forms: [{ on: "w269078550", z0: 16.6, z1: 17.4, hex: "#9fb3bc" }]
+    },
+    {
+      // H'ART Museum, the Amstelhof (1683): a severe dark brown brick block of three storeys round a
+      // large courtyard, its 102 m front on the Amstel, steep slate hipped roofs with chimneys
+      // (Commons "Amsterdam Amstelhof seen from Blauwbrug.jpg"). 3D BAG: eaves 10 m, roofs to 14.5 m.
+      // The Amstel and back wings are 9.3 m deep, the north and south wings 23 m (two piles), and a
+      // lower 8 m annex stands on the east side.
+      name: "H'ART Museum",
+      wall: { plain: false, style: "canal", hex: "#6e4535" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012165553",
+        widthM: 0,
+        anchor: [4.902126, 52.365736],
+        eavesM: 10,
+        riseM: 4.5,
+        mat: "slate",
+        wings: [
+          { at: [4.902414, 52.365307], lenM: 102.1, widM: 9.3, bearingDeg: 107.2, riseM: 4.5, roof: "hipped" },
+          { at: [4.90325, 52.365466], lenM: 102.1, widM: 9.3, bearingDeg: 107.2, riseM: 4.5, roof: "hipped" },
+          { at: [4.90266, 52.365729], lenM: 68.8, widM: 22.9, bearingDeg: 17.2, riseM: 4.5, roof: "hipped" },
+          { at: [4.903004, 52.365044], lenM: 68.8, widM: 22.8, bearingDeg: 17.2, riseM: 4.5, roof: "hipped" },
+          { at: [4.903374, 52.365489], lenM: 38.8, widM: 8.1, bearingDeg: 107.2, riseM: 3, roof: "hipped" }
+        ]
+      }]
+    }
+  ];
+
   // src/canalRecall/landmarkKits.ts
   var MAT_HEX = {
     brick: "#9a5240",
@@ -871,6 +1222,8 @@
       roofs: [],
       body: ["w1390692763", "w1390692767", "w1390692768", "w1390692769", "w1390692770", "w1390692771", "w1390692772", "w1390692766", "w1390692764", "w1390692765"]
     },
+    // Museums and cinemas: the Van Gogh Museum, the Stedelijk, Eye, Tuschinski, the Maritime Museum, H'ART (museumKits.ts).
+    ...MUSEUM_KITS,
     {
       // De Hallen, the 1902-05 Tollensstraat tram depot (user report 2026-10-02: one bare tan
       // block). One BAG footprint over a row of brick sheds about 9.6 m wide, whose gable ends
@@ -1129,20 +1482,20 @@
       }]
     }
   ];
-  var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? []]));
+  var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f) => f.on)]));
   var KIT_HIDE_IDS = [...new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.hides ?? []]))];
   var KIT_MODELLED_IDS = /* @__PURE__ */ new Set([...KIT_PART_IDS, ...KITS.flatMap((k) => k.body ?? [])]);
   var KIT_ROOF = new Map(KITS.flatMap((k) => k.roofs.map((r) => [r.id, { roof: r, wall: k.wall }])));
   var KIT_HALLS = new Map(KITS.flatMap((k) => (k.halls ?? []).map((h) => [h.id, { halls: h, wall: k.wall }])));
   var KIT_BODY = new Map(KITS.flatMap((k) => k.wall ? (k.body ?? []).map((id) => [id, k.wall]) : []));
-  var sub2 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  var sub3 = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
   var cross2 = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
   var dot2 = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
   var layerFor = (mat) => mat === "brick" ? "plain" : "flat";
   var TriSink = class {
     out = [];
     tri(a, b, c, ua, ub, uc, layer, hex2, hint) {
-      let n = cross2(sub2(b, a), sub2(c, a)), B = b, C = c, UB = ub, UC = uc;
+      let n = cross2(sub3(b, a), sub3(c, a)), B = b, C = c, UB = ub, UC = uc;
       if (dot2(n, hint) < 0) {
         B = c;
         C = b;
@@ -1447,6 +1800,10 @@
       const towerAng = (tower) => tower.bearingDeg === void 0 ? ang : tower.bearingDeg * Math.PI / 180;
       for (const tower of spec.towers ?? []) towerParts(sink, tower, toLocal(tower.at), towerAng(tower), part.minHeightM, gable);
       if (spec.windows) kitWindows(sink, part.ring, spec, spec.windows, towerAng);
+    }
+    for (const form of kit.forms ?? []) {
+      const part = parts.get(form.on);
+      if (part) sinkFor(form.on).out.push(...formTriangles(form, part.ring, toLocal));
     }
     return [...out].map(([id, sink]) => ({ id, tris: sink.out }));
   }
@@ -1941,7 +2298,7 @@
   var GREEN = "#3f7a3a";
   var DARKGREEN = "#2c4f33";
   var CONCRETE = "#b9b5ac";
-  var GLASS = "#5d6f7c";
+  var GLASS2 = "#5d6f7c";
   var FLOWERS = ["#e84a7f", "#f2b92e", "#ffffff", "#c04fd0", "#ff7a45", "#e8573d"];
   var SHUTTERS = ["#2c4f33", "#1f3550", "#7a1f2b", "#2a2a2a", "#3f6f5a"];
   var pickOf2 = (list, r) => list[Math.floor(r * list.length) % list.length];
@@ -2064,7 +2421,7 @@
       if (c.layout.storeys < 1 || c.f.len < 5) return;
       const x = c.f.len / 2, z0 = storeyZ2(c, 0), z1 = z0 + c.layout.storeyM * Math.min(2, c.layout.storeys) - 0.2;
       s.box(c.f, x - 1.3, x + 1.3, 0, 0.8, z0, z1, c.wallHex, true);
-      s.box(c.f, x - 1.1, x + 1.1, 0.8, 0.82, z0 + 0.5, z1 - 0.4, GLASS);
+      s.box(c.f, x - 1.1, x + 1.1, 0.8, 0.82, z0 + 0.5, z1 - 0.4, GLASS2);
       s.box(c.f, x - 1.4, x + 1.4, 0, 0.9, z1, z1 + 0.15, STONE3);
     } },
     { id: "cornice-brackets", group: "crown", styles: ["c19", "canal"], p: 0.35, build: (c, s) => {
@@ -2099,7 +2456,7 @@
     } },
     { id: "stair-glass", styles: ["school", "postwar", "modern"], p: 0.3, build: (c, s) => {
       const x = doorX(c) ?? c.f.len / 2;
-      s.box(c.f, x - 0.5, x + 0.5, 0, 0.06, c.base + c.layout.groundM + 0.3, c.top - 0.6, GLASS);
+      s.box(c.f, x - 0.5, x + 0.5, 0, 0.06, c.base + c.layout.groundM + 0.3, c.top - 0.6, GLASS2);
     } },
     { id: "window-grilles", styles: ["school", "c19"], p: 0.15, build: (c, s) => {
       const d = doorX(c);
@@ -2206,7 +2563,7 @@
       const { len, wid } = c.rect;
       if (len < 8 || wid < 6) return;
       roofBox(c, s, -len * 0.3, len * 0.3, -wid * 0.1, wid * 0.35, c.z, c.z + 2.6, "#5d6064");
-      roofBox(c, s, -len * 0.3, len * 0.3, -wid * 0.12, -wid * 0.1, c.z + 0.3, c.z + 2.2, GLASS);
+      roofBox(c, s, -len * 0.3, len * 0.3, -wid * 0.12, -wid * 0.1, c.z + 0.3, c.z + 2.2, GLASS2);
     } },
     { id: "ac-units", styles: ["postwar", "modern", "tower", "school"], p: 0.35, build: (c, s) => {
       for (let k = 0; k < 3; k++) {
@@ -2217,7 +2574,7 @@
     { id: "skylights", styles: ALL, p: 0.3, build: (c, s) => {
       for (let k = 0; k < 2; k++) {
         const u = (hash012(`${c.id}:sk${k}`) - 0.5) * c.rect.len * 0.6;
-        roofBox(c, s, u - 0.6, u + 0.6, -0.5, 0.5, c.z, c.z + 0.35, GLASS);
+        roofBox(c, s, u - 0.6, u + 0.6, -0.5, 0.5, c.z, c.z + 0.35, GLASS2);
       }
     } },
     { id: "solar-panels", styles: ["c19", "school", "postwar", "modern"], p: 0.25, build: (c, s) => {
