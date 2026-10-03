@@ -4,7 +4,8 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import zlib from 'node:zlib';
-import { shopKindForTags, setShopfronts, decorateShopfront } from '../src/canalRecall/shopfronts.ts';
+import { shopKindForTags, setShopfronts, decorateShopfront, chainForTags, SUPERMARKET_CHAINS } from '../src/canalRecall/shopfronts.ts';
+import { wordRuns } from '../src/canalRecall/blockLetters.ts';
 import { buildFeatureChunk } from '../src/canalRecall/threeBuildingFeatures.ts';
 import { bayLayer } from '../src/canalRecall/bayLook.ts';
 
@@ -45,4 +46,44 @@ const signed = buildFeatureChunk([{ ...feature, properties: { ...feature.propert
 assert.ok(signed.vertexCount > chunk.vertexCount, 'a signature adds its awning and blade sign');
 const carried = buildFeatureChunk([{ ...feature, properties: { ...feature.properties, shopColour: '#7a1f2b', shopSignature: [4.900036, 52.37], frontCarrier: 'Massimo Gelato' } }], 'photo');
 assert.equal(carried.vertexCount, chunk.vertexCount, 'a hand-modelled front replaces the generated signature');
-console.log(`shopfronts: ok (${count} shop buildings)`);
+
+// Supermarket chains: OSM tags map to the chain, independents to none.
+assert.equal(chainForTags({ shop: 'supermarket', brand: 'Albert Heijn', 'brand:wikidata': 'Q1653985' }), 'ah');
+assert.equal(chainForTags({ shop: 'convenience', brand: 'Albert Heijn to go', 'brand:wikidata': 'Q77971185' }), 'ah');
+assert.equal(chainForTags({ shop: 'convenience', brand: 'SPAR city', 'brand:wikidata': 'Q124630664' }), 'spar');
+assert.equal(chainForTags({ shop: 'supermarket', name: 'Jumbo' }), 'jumbo');
+assert.equal(chainForTags({ shop: 'supermarket', name: 'Tanger Markt Osdorp' }), null);
+assert.equal(chainForTags({ shop: 'convenience', brand: 'Shell Select' }), null);
+assert.equal(chainForTags({ amenity: 'cafe', name: 'Jumbo' }), null);
+assert.equal(wordRuns('AH').width, 11);
+const chainCount = Object.keys(extract.chains ?? {}).length;
+assert.ok(chainCount > 200, `most of the city's ~270 chain supermarkets are on a building (${chainCount})`);
+// Named stores, by BAG building: each gets its chain's shop window, fascia colour and 3D fascia.
+const featureAt = (id: string, lng: number, lat: number) => JSON.parse(zlib.gunzipSync(fs.readFileSync(`public/data/extracts/amsterdam/building-tiles/14/${tileOf(lng, lat)}.geojson.gz`)).toString()).features.find((f: any) => f.properties.id === id);
+const hexRgb = (hex: string) => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+const hasTint = (c: { tints: Uint8Array; vertexCount: number }, hex: string) => { const [r, g, b] = hexRgb(hex); for (let v = 0; v < c.vertexCount; v++) if (c.tints[v * 4] === r && c.tints[v * 4 + 1] === g && c.tints[v * 4 + 2] === b) return true; return false; };
+for (const [label, id, lng, lat, chain] of [
+  ['Albert Heijn, Nieuwmarkt 18', 'NL.IMBAG.Pand.0363100012182858', 4.89973, 52.372688, 'ah'],
+  ['Jumbo, Westerstraat 98-102', 'NL.IMBAG.Pand.0363100012173580', 4.883807, 52.378644, 'jumbo'],
+  ['Lidl, Alberdingk Thijmstraat 21', 'NL.IMBAG.Pand.0363100012086892', 4.876657, 52.364107, 'lidl'],
+  ['Dirk, Bilderdijkstraat 126', 'NL.IMBAG.Pand.0363100012156286', 4.871218, 52.368213, 'dirk'],
+] as const) {
+  const raw = featureAt(id, lng, lat);
+  assert.ok(raw, `${label}: building in its tile`);
+  const decorated = decorateShopfront(raw);
+  assert.equal(decorated.properties.shopChain?.[0], chain, `${label}: chain`);
+  assert.equal(decorated.properties.shopKind, 'shopWindow', `${label}: shop window`);
+  assert.equal(decorated.properties.shopColour, SUPERMARKET_CHAINS[chain].fascia, `${label}: fascia colour`);
+  const plain = buildFeatureChunk([raw], 'photo'), branded = buildFeatureChunk([decorated], 'photo');
+  assert.ok(branded.vertexCount > plain.vertexCount + 100, `${label}: fascia, logo and word add geometry`);
+  for (const hex of [SUPERMARKET_CHAINS[chain].fascia, SUPERMARKET_CHAINS[chain].logo]) assert.ok(hasTint(branded, hex), `${label}: ${hex} on the front`);
+}
+// A block whose ground floor also has a café keeps the café front; the chain still gets its fascia.
+const mixed = decorateShopfront(featureAt('NL.IMBAG.Pand.0363100012169214', 4.897888, 52.365416));
+assert.equal(mixed.properties.shopChain?.[0], 'ah');
+assert.equal(mixed.properties.shopKind, 'shopCafe', 'mixed block keeps its café front');
+// A hand-modelled front replaces the chain fascia, as it does the signature.
+const chainHouse = { ...feature, properties: { ...feature.properties, shopKind: 'shopWindow', shopColour: '#00a0e2', shopChain: ['ah', 4.900036, 52.37] } };
+assert.ok(buildFeatureChunk([chainHouse], 'photo').vertexCount > chunk.vertexCount, 'chain fascia on a 5 m house');
+assert.equal(buildFeatureChunk([{ ...chainHouse, properties: { ...chainHouse.properties, frontCarrier: 'x' } }], 'photo').vertexCount, chunk.vertexCount);
+console.log(`shopfronts: ok (${count} shop buildings, ${chainCount} chain supermarkets)`);

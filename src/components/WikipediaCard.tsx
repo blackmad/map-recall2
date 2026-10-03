@@ -1,6 +1,7 @@
 import React from 'react';
 import { StreetFeature, TriviaText } from '../types';
 import { FACT_KIND_LABELS } from '../canalRecall/facts/factTypes';
+import { neighborhoodFactForRound } from '../mapRecall/neighborhoodStories';
 import { triviaForRound } from '../mapRecall/localFacts';
 import { descriptionWithoutOrigin } from '../mapRecall/trivia';
 import { PostcardHeader } from './PostcardHeader';
@@ -42,18 +43,21 @@ const PlacesHere: React.FC<{ places?: StreetFeature['notablePlaces']; showPhotos
  * names and links its source.
  */
 export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number; roundIndex?: number }> = ({ feature, factSeed = 0, roundIndex = 0 }) => {
-  const trivia = triviaForRound(feature.localFacts, factSeed, roundIndex);
-  const origin: TriviaText | undefined = feature.nameOrigin;
-  const description = trivia ? undefined : descriptionWithoutOrigin(feature.wikipediaExtract, origin?.text);
-  const history = feature.history;
-  const localFact = feature.localFact;
+  const topFacts = feature.neighborhoodTopFacts;
+  const storyFact = neighborhoodFactForRound(feature.neighborhoodRotatingFacts, factSeed, roundIndex);
+  const hasStory = !!topFacts?.length;
+  const trivia = hasStory ? null : triviaForRound(feature.localFacts, factSeed, roundIndex);
+  const origin: TriviaText | undefined = hasStory ? undefined : feature.nameOrigin;
+  const description = trivia || hasStory ? undefined : descriptionWithoutOrigin(feature.wikipediaExtract, origin?.text);
+  const history = hasStory ? undefined : feature.history;
+  const localFact = hasStory ? undefined : feature.localFact;
   // The line under the description names where it really came from and links there: the article for
   // Wikipedia text, the data's own source for text composed from the map.
   const extractSource = feature.wikipediaExtractSource;
   const descriptionSource = extractSource
     ? { href: extractSource.sourceUrl, label: extractSource.sourceLabel === 'Wikipedia' ? 'From Wikipedia' : extractSource.sourceLabel }
     : { href: feature.wikipediaUrl, label: feature.wikipediaUrl?.includes('nl.wikipedia') ? 'Wikipedia (translated from Dutch)' : 'From Wikipedia' };
-  if (!localFact && !origin && !trivia && !description && !history && !feature.wikipediaImageUrl) return null;
+  if (!hasStory && !localFact && !origin && !trivia && !description && !history && !feature.wikipediaImageUrl) return null;
   // Neighbourhoods open with a postcard cut from their own photographs and those of the places in them.
   const postcardPhotos = postcardPhotosFor(feature);
   return <div className="answer-detail-card flex flex-col gap-2 p-3 text-left" data-testid="answer-trivia">
@@ -69,6 +73,16 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
     <div className="flex gap-3">
     {feature.wikipediaImageUrl && postcardPhotos.length < 2 && <img src={feature.wikipediaImageUrl} referrerPolicy="no-referrer" alt="" className="h-12 w-16 flex-none rounded-md object-cover sm:h-16 sm:w-20" />}
     <div className="min-w-0 space-y-1.5">
+      {topFacts?.map((fact, i) => <p key={fact.text} className="text-xs font-semibold leading-relaxed text-white" data-testid="answer-top-fact">
+        {i === 0 && <Chip>About here</Chip>}{fact.text}{' '}<Source href={fact.sourceUrl}>{fact.sourceLabel}</Source>
+      </p>)}
+      {storyFact && <p className="text-xs leading-relaxed text-white" data-testid="answer-rotating-fact">
+        <Chip>Did you know</Chip>{storyFact.text}{' '}<Source href={storyFact.sourceUrl}>{storyFact.sourceLabel}</Source>
+      </p>}
+      {hasStory && (feature.nameOrigin || feature.history) && <details className="text-xs leading-relaxed text-white" data-testid="answer-story-background">
+        <summary className="cursor-pointer font-bold text-white/80">Name and history</summary>
+        {[feature.nameOrigin, feature.history].filter(Boolean).map(fact => <p key={fact!.text} className="mt-1">{fact!.text}{' '}<Source href={fact!.sourceUrl}>{fact!.sourceLabel}</Source></p>)}
+      </details>}
       {localFact && <p className="text-xs font-semibold leading-relaxed text-white" data-testid="answer-local-fact">
         <Chip>Local</Chip>{localFact.text}{' '}<Source href={localFact.sourceUrl}>{localFact.sourceLabel}</Source>
       </p>}

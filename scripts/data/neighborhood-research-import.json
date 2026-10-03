@@ -1,0 +1,598 @@
+[
+  {
+    "id": "GA01-01",
+    "stadsdeel": "Centrum",
+    "neighborhood": "Jordaan",
+    "etymology": "Highly debated; likely derived from the French 'le jardin' (the garden) introduced by Huguenot refugees, or from the Jordan River.",
+    "history": "Constructed in the 17th century as a dense working-class district outside the wealthy canal ring. Notorious for severe poverty and radical labor strikes, including the deadly 1886 Palingoproer (Eel Riot).",
+    "current_tone": "Highly gentrified, quaint, expensive, and incredibly popular with affluent young professionals and tourists.",
+    "top_facts": [
+      "Originally built outside the prime canal ring to house laborers and artisans.",
+      "Streets and canals are predominantly named after flowers and trees."
+    ],
+    "rotating_facts": [
+      "The 1886 Eel Riot started here when police attempted to stop a cruel folk game.",
+      "Rembrandt van Rijn spent his final, impoverished years in this neighborhood.",
+      "The Anne Frank House is located right on the eastern border of the Jordaan."
+    ]
+  },
+  {
+    "id": "GA01-02",
+    "stadsdeel": "Centrum",
+    "neighborhood": "Burgwallen-Oude Zijde",
+    "etymology": "Translates to 'Old Side of the Fortified Walls', referring to the eastern half of the medieval city.",
+    "history": "The oldest part of Amsterdam, heavily associated with sailors, maritime trade, and historic prostitution due to its direct proximity to the ancient port.",
+    "current_tone": "Chaotic, tourist-heavy, and synonymous globally with the Red Light District.",
+    "top_facts": [
+      "Home to De Wallen, Amsterdam's most famous and scrutinized Red Light District.",
+      "Features the Oude Kerk (Old Church), the absolute oldest building in Amsterdam."
+    ],
+    "rotating_facts": [
+      "Statistically has the highest level of amenities but the lowest safety scores (2.7 out of 10) in the city.",
+      "The area is currently being aggressively reshaped by municipal policies aimed at reducing mass tourism.",
+      "Only 4% of the local population consists of children under 15."
+    ]
+  },
+  {
+    "id": "GA01-03",
+    "stadsdeel": "Centrum",
+    "neighborhood": "Nieuwmarkt / Lastage",
+    "etymology": "'New Market' refers to the square created in 1614; 'Lastage' refers to a historical shipyard and loading area outside the medieval walls.",
+    "history": "Historically a port area and Jewish market. In the 1970s, it was the site of the violent Nieuwmarktrellen (riots) over the demolition of homes to build the modern metro system.",
+    "current_tone": "Bustling, diverse, and serves as Amsterdam's historic and active Chinatown.",
+    "top_facts": [
+      "The Zeedijk street is the historic heart of the local Chinese community.",
+      "The 15th-century Waag (Weigh House) dominates the center of the Nieuwmarkt square."
+    ],
+    "rotating_facts": [
+      "Chinese migration to this specific area began around 1911 by sailors arriving in the port.",
+      "The Zeedijk was a notorious no-go zone for heroin addiction in the 1980s before being cleaned up."
+    ]
+  },
+  {
+    "id": "GA01-04",
+    "stadsdeel": "Centrum",
+    "neighborhood": "Haarlemmerbuurt",
+    "etymology": "Named for the road and canal leading out of the city toward the neighboring city of Haarlem.",
+    "history": "Developed in the 17th century as a northern commercial extension of the canal belt, serving as a busy artery for regional trade.",
+    "current_tone": "Trendy, independent, and known for boutique shopping, specialty food stores, and young professionals.",
+    "top_facts": [
+      "The Haarlemmerstraat is frequently voted the best independent shopping street in the Netherlands.",
+      "It connects the bustling Central Station area directly to the green Westerpark."
+    ],
+    "rotating_facts": [
+      "Over 34% of the population here is between the ages of 25 and 45.",
+      "Historically housed the West-Indisch Huis, the global headquarters of the Dutch West India Company."
+    ]
+  },
+  {
+    "id": "GA01-05",
+    "stadsdeel": "Centrum",
+    "neighborhood": "Grachtengordel-West",
+    "etymology": "Translates literally to 'Canal Belt West'.",
+    "history": "Part of the massive 17th-century urban expansion designed explicitly to house the city's wealthiest Golden Age merchants.",
+    "current_tone": "Opulent, historic, heavily photographed, and highly protected as a UNESCO World Heritage site.",
+    "top_facts": [
+      "Features some of the most expensive historic real estate in Europe.",
+      "Characterized by stately merchant houses with ornate, individualized gables."
+    ],
+    "rotating_facts": [
+      "The concentric ring layout was an engineering marvel of the Dutch Golden Age.",
+      "Many former merchant mansions are now corporate headquarters or luxury boutique hotels.",
+      "Property values here average €892,000."
+    ]
+  },
+  {
+    "id": "GA02-01",
+    "stadsdeel": "Centrum",
+    "neighborhood": "Grachtengordel-Zuid",
+    "etymology": "Translates literally to 'Canal Belt South'.",
+    "history": "The southern continuation of the Golden Age canal expansion, housing the legendary 'Gouden Bocht' (Golden Bend) where the absolute richest citizens lived.",
+    "current_tone": "Prestigious, majestic, culturally dense, and exceptionally wealthy.",
+    "top_facts": [
+      "The Gouden Bocht features the widest and most lavish mansions in the entire city.",
+      "Hosts major cultural institutions including the Hermitage (H'ART) Museum."
+    ],
+    "rotating_facts": [
+      "Property values here average around €908,000, driven by extreme historical scarcity.",
+      "The Mayor of Amsterdam's official residence is located on the Herengracht in this sector."
+    ]
+  },
+  {
+    "id": "GA02-02",
+    "stadsdeel": "Centrum",
+    "neighborhood": "De Weteringschans",
+    "etymology": "Named after the 'schans' (sconce or fortification) built along the Wetering waterway.",
+    "history": "Originally the site of the 17th-century defensive city walls, redeveloped in the 19th century into a stately residential boulevard.",
+    "current_tone": "Cultured, upscale, and incredibly busy with public transit and cyclists.",
+    "top_facts": [
+      "Acts as the architectural transition zone between the historic medieval center and the 19th-century South.",
+      "Sits in very close proximity to the Leidseplein entertainment district."
+    ],
+    "rotating_facts": [
+      "Features grand 19th-century villas that contrast sharply with the older, narrower canal houses.",
+      "The world-famous Rijksmuseum sits right on the edge of this neighborhood."
+    ]
+  },
+  {
+    "id": "GA02-03",
+    "stadsdeel": "Centrum",
+    "neighborhood": "Weesperbuurt / Plantage",
+    "etymology": "'Plantage' translates to Plantation, referring to the green parklands and gardens laid out in the 17th century.",
+    "history": "Originally designed as a green recreation area for wealthy citizens. It became the vibrant heart of Amsterdam's Jewish community in the 19th and 20th centuries.",
+    "current_tone": "Leafy, intellectual, and solemn, marked by major Holocaust memorials and university buildings.",
+    "top_facts": [
+      "Home to Artis, the oldest and most famous zoo in the Netherlands.",
+      "The Hollandsche Schouwburg, a primary deportation center during WWII, serves as a memorial here."
+    ],
+    "rotating_facts": [
+      "The neighborhood was devastated during WWII when the vast majority of its Jewish residents were deported.",
+      "The Hortus Botanicus located here is one of the oldest botanical gardens in the world."
+    ]
+  },
+  {
+    "id": "GA02-04",
+    "stadsdeel": "Centrum",
+    "neighborhood": "Oostelijke Eilanden / Kadijken",
+    "etymology": "Translates to 'Eastern Islands' and 'Small Dikes', built as artificial islands for the admiralty and Dutch East India Company.",
+    "history": "Constructed in the 1650s to house shipyards and warehouses. Oostenburg was the roaring industrial heart of the VOC.",
+    "current_tone": "A mix of rugged maritime history, modern social housing, and localized urban charm.",
+    "top_facts": [
+      "The National Maritime Museum (Scheepvaartmuseum) is housed in the neighborhood's former naval storehouse.",
+      "Historically contained the highest density of shipbuilding activity in the world."
+    ],
+    "rotating_facts": [
+      "Scores relatively low on safety (4.0) but retains a very strong sense of working-class community cohesion.",
+      "Features a striking architectural mix of 17th-century warehouses and late 20th-century infill housing."
+    ]
+  },
+  {
+    "id": "GK13-01",
+    "stadsdeel": "Zuid",
+    "neighborhood": "De Pijp",
+    "etymology": "Means 'The Pipe'. It likely refers to the long, narrow ditches and street patterns that funneled traffic toward the city center.",
+    "history": "Built cheaply in the 19th century under Jan Kalff's plan to house laborers. It was upgraded in the 1920s with Amsterdam School architecture in the southern half.",
+    "current_tone": "The ultimate hipster neighborhood; densely populated, vibrant, and highly gentrified with a young demographic.",
+    "top_facts": [
+      "Home to the Albert Cuyp Market, the busiest and most famous street market in the Netherlands.",
+      "The original Heineken Brewery, now a major tourist attraction, is located here."
+    ],
+    "rotating_facts": [
+      "Originally, the area was supposed to have a grand Parisian layout (Plan YY), but the municipality rejected it for being too expensive.",
+      "Former home to famous artists like Piet Mondrian and folk singer André Hazes.",
+      "Has one of the highest concentrations of cafes and restaurants in the city."
+    ]
+  },
+  {
+    "id": "GK13-02",
+    "stadsdeel": "Zuid",
+    "neighborhood": "Rivierenbuurt",
+    "etymology": "Translates to 'Rivers Neighborhood'; all the streets are named after major Dutch rivers.",
+    "history": "Part of H.P. Berlage's Plan Zuid (1915). Built in the 1920s specifically for the middle class, heavily featuring iconic Amsterdam School architecture.",
+    "current_tone": "Stately, symmetrical, family-oriented, and architecturally breathtaking.",
+    "top_facts": [
+      "Showcases the absolute pinnacle of Amsterdam School architecture by visionaries like Michel de Klerk and Piet Kramer.",
+      "Characterized by wide avenues, brick expressionism, and expansive green squares."
+    ],
+    "rotating_facts": [
+      "Before WWII, it housed a massive Jewish population; Anne Frank lived on the Merwedeplein here before her family went into hiding.",
+      "The iconic 'Skyscraper' building (De Wolkenkrabber) from 1932 is located here."
+    ]
+  },
+  {
+    "id": "GK11-01",
+    "stadsdeel": "Zuid",
+    "neighborhood": "Apollobuurt",
+    "etymology": "Streets are named after Greek mythological figures (like Apollo), ancient concepts, and famous classical composers.",
+    "history": "Part of Plan Zuid, constructed in the 1920s and 30s. Designed explicitly to be a luxurious, spacious enclave for the upper class.",
+    "current_tone": "Extremely wealthy, quiet, exclusive, and dominated by large villas.",
+    "top_facts": [
+      "Currently holds the highest average property value (WOZ) in all of Amsterdam at €1,295,000.",
+      "The Beethovenstraat serves as the neighborhood's luxury shopping and culinary artery."
+    ],
+    "rotating_facts": [
+      "During the interwar period, it was a prominent and highly desired neighborhood for the affluent Jewish bourgeoisie.",
+      "Characterized by large standalone villas and wide, leafy avenues intersecting with decorative waterways."
+    ]
+  },
+  {
+    "id": "GK11-02",
+    "stadsdeel": "Zuid",
+    "neighborhood": "Stadionbuurt",
+    "etymology": "Named after the national stadium designed by Harry Elte in 1914, which preceded the current Olympic Stadium.",
+    "history": "Developed as part of Plan Zuid. The original 1914 stadium was completely demolished to build upscale housing after the 1928 Olympics.",
+    "current_tone": "Sporty, upscale, and architecturally cohesive.",
+    "top_facts": [
+      "The iconic 1928 Olympic Stadium anchors the western edge of the neighborhood.",
+      "Features large, rolling Amsterdam School housing blocks designed for affluent families."
+    ],
+    "rotating_facts": [
+      "The neighborhood was heavily reconfigured to accommodate the massive influx of visitors for the 1928 Olympic Games.",
+      "Citroën's historical Dutch headquarters are located here."
+    ]
+  },
+  {
+    "id": "GK11-03",
+    "stadsdeel": "Zuid",
+    "neighborhood": "Museumkwartier",
+    "etymology": "The 'Museum Quarter', named for its unparalleled concentration of world-class museums.",
+    "history": "Developed in the late 19th century to extend the city southwards. The Rijksmuseum was built in a marshy meadow, sparking rapid upscale villa development around it.",
+    "current_tone": "Prestigious, highly cultured, and frequented by high-end tourists, art collectors, and expats.",
+    "top_facts": [
+      "Contains the holy trinity of Dutch art: the Rijksmuseum, Van Gogh Museum, and the Stedelijk Museum.",
+      "The P.C. Hooftstraat is the most exclusive, expensive designer shopping street in the Netherlands."
+    ],
+    "rotating_facts": [
+      "The world-renowned Concertgebouw (Concert Hall) sits at the edge of the Museumplein, famed for its perfect acoustics.",
+      "Average property values here easily exceed €1.15 million, ranking third in the city."
+    ]
+  },
+  {
+    "id": "GK11-04",
+    "stadsdeel": "Zuid",
+    "neighborhood": "Willemspark",
+    "etymology": "Named after King Willem I, originally planned as an exclusive villa park.",
+    "history": "Developed in the early 20th century bordering the Vondelpark, designed for the extreme elite of Dutch society.",
+    "current_tone": "Aristocratic, serene, and fiercely protected from commercial overdevelopment.",
+    "top_facts": [
+      "Features some of the largest standalone urban villas in Amsterdam.",
+      "Borders the prestigious Vondelpark, providing residents with immediate access to the city's best green space."
+    ],
+    "rotating_facts": [
+      "It is the second most expensive neighborhood in the city, with average values of €1,217,000.",
+      "Many of the grand residential villas now serve as foreign consulates or private equity headquarters."
+    ]
+  },
+  {
+    "id": "GK12-01",
+    "stadsdeel": "Zuid",
+    "neighborhood": "Buitenveldert",
+    "etymology": "Named after a historic rural hamlet near the Amstelveenseweg; translates roughly to 'Outer Fields'.",
+    "history": "A post-war 'Tuinstad' (Garden City) built south of the Ring A10 to accommodate population growth with principles of light, air, and space.",
+    "current_tone": "Suburban, orderly, with a strong Orthodox Jewish identity and a mix of elderly residents and young professionals.",
+    "top_facts": [
+      "Considered the absolute heart of Amsterdam's contemporary Jewish community.",
+      "Features a mix of modernist low-rise and mid-rise apartment blocks surrounded by extensive green space."
+    ],
+    "rotating_facts": [
+      "There are roughly 20,000 Jewish residents in the Greater Amsterdam area, heavily anchored here with kosher amenities.",
+      "One of Schiphol Airport's primary runways, the Buitenveldertbaan, is named directly after this neighborhood."
+    ]
+  },
+  {
+    "id": "GK12-02",
+    "stadsdeel": "Zuid",
+    "neighborhood": "Zuidas",
+    "etymology": "Translates literally to 'South Axis'.",
+    "history": "Developed in the late 20th and early 21st century as the city's premier financial district, capitalizing on its direct proximity to Schiphol Airport.",
+    "current_tone": "Corporate, international, fast-paced, and extremely wealthy.",
+    "top_facts": [
+      "The primary financial, banking, and legal hub of the Netherlands.",
+      "Features striking contemporary high-rise architecture, a rarity in low-lying Amsterdam."
+    ],
+    "rotating_facts": [
+      "Often referred to as the 'Financial Mile' of the Netherlands.",
+      "Station Amsterdam Zuid is currently undergoing massive expansion to become the city's second major transport hub."
+    ]
+  },
+  {
+    "id": "GE03-01",
+    "stadsdeel": "West",
+    "neighborhood": "Spaarndammerbuurt",
+    "etymology": "Named after the Spaarndammerdijk, the old sea dike leading toward the village of Spaarndam.",
+    "history": "Built in the late 19th century for impoverished dockworkers. It became a canvas for socialist housing associations to build 'worker palaces'.",
+    "current_tone": "A mix of authentic working-class roots and steady gentrification, revered by global architecture buffs.",
+    "top_facts": [
+      "Home to 'Het Schip' (The Ship), the absolute masterpiece of Amsterdam School architecture.",
+      "Originally a rough, dirty neighborhood for harbor workers, now highly desirable."
+    ],
+    "rotating_facts": [
+      "The intricate brickwork of Het Schip includes a fully integrated post office and school, elevating working-class life.",
+      "The neighborhood is physically separated from the water by the modern railway lines."
+    ]
+  },
+  {
+    "id": "GE03-02",
+    "stadsdeel": "West",
+    "neighborhood": "Houthavens",
+    "etymology": "Translates to 'Timber Docks', reflecting its original maritime function.",
+    "history": "Historically the site where timber was stored in the water. Recently redeveloped into a massive, climate-neutral residential island complex.",
+    "current_tone": "Ultra-modern, sustainable, and highly sought-after by high-income, eco-conscious families.",
+    "top_facts": [
+      "One of the largest climate-neutral urban expansion projects in Europe.",
+      "Built on a series of artificial peninsulas jutting out into the IJ river."
+    ],
+    "rotating_facts": [
+      "Ranks in the top 10 for highest average property values in the city.",
+      "Car traffic is routed through an underground tunnel to maximize green space and pedestrian areas above."
+    ]
+  },
+  {
+    "id": "GE04-01",
+    "stadsdeel": "West",
+    "neighborhood": "Bos en Lommer",
+    "etymology": "Named after a former farm on the Sloterdijkermeer polder; translates to 'Woods and Shade'.",
+    "history": "Constructed just before and after WWII. It was the very first neighborhood built according to the functionalist AUP (General Extension Plan).",
+    "current_tone": "Super-diverse, bustling, with a strong Turkish and Moroccan cultural presence mixed with young urbanites.",
+    "top_facts": [
+      "Colloquially known by locals as 'BoLo'.",
+      "Features significant mid-century functionalist architecture designed to maximize light and space."
+    ],
+    "rotating_facts": [
+      "It represents Amsterdam's modern 'super-diversity' with dozens of nationalities living side-by-side.",
+      "The local market on the Bos en Lommerplein is a major cultural and culinary hub."
+    ]
+  },
+  {
+    "id": "GE05-01",
+    "stadsdeel": "West",
+    "neighborhood": "De Baarsjes",
+    "etymology": "Derived from the former hamlet 'De Baarsjes', which was annexed by Amsterdam.",
+    "history": "Built in the 1920s and 30s as part of the western expansion. It features a dense mix of Amsterdam School and rationalist architecture.",
+    "current_tone": "Vibrant, rapidly gentrifying, with a gritty edge and a highly multicultural population.",
+    "top_facts": [
+      "Mercatorplein, designed by H.P. Berlage, acts as the monumental central square of the neighborhood.",
+      "The neighborhood features the striking Jerusalem Church, an architectural landmark."
+    ],
+    "rotating_facts": [
+      "In 2010, the borough was merged administratively with Bos en Lommer and Oud-West.",
+      "The area is highly dense, driving up real estate competition significantly in recent years."
+    ]
+  },
+  {
+    "id": "GE05-02",
+    "stadsdeel": "West",
+    "neighborhood": "Oud-West (Kinkerbuurt)",
+    "etymology": "Translates to 'Old West'. The Kinkerbuurt sub-section is named after the Dutch poet Johannes Kinker.",
+    "history": "Built in the late 19th century to absorb the massive influx of workers during the industrial revolution.",
+    "current_tone": "Extremely popular, culinary-focused, and dominated by young professionals and expats.",
+    "top_facts": [
+      "Home to De Hallen, a converted historic tram depot now serving as a massive food, film, and cultural hall.",
+      "The Kinkerstraat is a major, bustling shopping artery."
+    ],
+    "rotating_facts": [
+      "Historically a poor, overcrowded district, it is now one of the most desirable postcodes in the city.",
+      "Borders the Vondelpark to the south, giving residents premium park access."
+    ]
+  },
+  {
+    "id": "GF08-01",
+    "stadsdeel": "Nieuw-West",
+    "neighborhood": "Osdorp",
+    "etymology": "Derived from 'Oostdorp' (East Village), referring to its position east of the city of Haarlem.",
+    "history": "An ancient peat-bog village existing since 1100. Annexed by Amsterdam in 1921. Swallowed by the modernist 'Tuinstad Osdorp' in 1957.",
+    "current_tone": "Spacious, suburban, and multicultural, actively dealing with issues of post-war urban renewal.",
+    "top_facts": [
+      "Osdorp centers around the Sloterplas, a massive artificial lake created by sand extraction.",
+      "The old ribbon village 'Oud Osdorp' still exists on the fringes, retaining a rural character."
+    ],
+    "rotating_facts": [
+      "Built on the functionalist principles of light, air, and space.",
+      "The historic Pancratius church originally served the Catholic farmers here before the city expanded."
+    ]
+  },
+  {
+    "id": "GF07-01",
+    "stadsdeel": "Nieuw-West",
+    "neighborhood": "Geuzenveld",
+    "etymology": "Named in honor of the 'Geuzen' (Sea Beggars), referencing a rebellious group from the 80 Years' War.",
+    "history": "Built in the 1950s as a Garden City. Constructed on the former Spieringhorner polder to alleviate inner-city crowding.",
+    "current_tone": "Family-oriented, heavily multicultural, with ongoing municipal modernization and demolition efforts.",
+    "top_facts": [
+      "Surrounded by vast green spaces and agricultural buffers known as the Tuinen van West.",
+      "Part of the massive post-war AUP expansion masterminded by Cornelis van Eesteren."
+    ],
+    "rotating_facts": [
+      "The historic distance to the old city walls was exactly 1,100 'roeden' (rods), a measurement still referenced locally.",
+      "Features a mix of low-rise single-family homes and mid-rise functionalist flats."
+    ]
+  },
+  {
+    "id": "GF07-02",
+    "stadsdeel": "Nieuw-West",
+    "neighborhood": "Slotermeer",
+    "etymology": "Named after the historic Slochter or Slotermeer (Sloten Lake), which was drained in the 17th century.",
+    "history": "The very first of the Western Garden Cities to be built (1952) to relieve intense post-war housing shortages in the center.",
+    "current_tone": "Quiet, deeply diverse, with protected post-war urban layouts.",
+    "top_facts": [
+      "Features the Van Eesteren Museum, dedicated entirely to post-war modernist city planning.",
+      "Borders the expansive Sloterpark and the Sloterplas lake."
+    ],
+    "rotating_facts": [
+      "Queen Juliana poured the first concrete here in 1952 to kick off the massive expansion.",
+      "The street layout deliberately prioritizes pedestrian and bicycle safety over cars."
+    ]
+  },
+  {
+    "id": "GM14-01",
+    "stadsdeel": "Oost",
+    "neighborhood": "Dapperbuurt",
+    "etymology": "Named after Olfert Dapper, a 17th-century Dutch physician and writer who never traveled but wrote extensively about world geography.",
+    "history": "Built in the late 19th century as a dense working-class district. Underwent massive, controversial urban renewal in the 1970s and 80s.",
+    "current_tone": "Lively, authentic, highly multicultural, and resistant to extreme gentrification.",
+    "top_facts": [
+      "Home to the Dappermarkt, one of the most diverse and cheapest street markets in Amsterdam.",
+      "Scores a perfect 10.0 for access to urban amenities."
+    ],
+    "rotating_facts": [
+      "Many original 19th-century buildings were demolished in the 1980s and replaced with modern social housing.",
+      "Famous Dutch writer Nescio frequently referenced the unique character of this area in his literature."
+    ]
+  },
+  {
+    "id": "GM14-02",
+    "stadsdeel": "Oost",
+    "neighborhood": "Transvaalbuurt",
+    "etymology": "Streets are named after locations and figures from the Boer Republics in South Africa (e.g., Pretorius, Kruger).",
+    "history": "Constructed in the early 20th century. It had a massive Jewish population before WWII and suffered heavily during the Holocaust.",
+    "current_tone": "Gritty, diverse, and historically solemn.",
+    "top_facts": [
+      "The neighborhood features beautiful but austere Amsterdam School brick architecture.",
+      "In 1982, anti-apartheid activists attempted to illegally rename the streets to remove colonial references."
+    ],
+    "rotating_facts": [
+      "Tragically, over 70% of its residents were deported during WWII.",
+      "The street names remain controversial today due to their colonial origins."
+    ]
+  },
+  {
+    "id": "GM15-01",
+    "stadsdeel": "Oost",
+    "neighborhood": "Indische Buurt",
+    "etymology": "Translates to 'Indies Neighborhood'; all streets are named after islands in the former Dutch East Indies.",
+    "history": "Built around 1900 to house laborers working in the nearby Eastern Docklands.",
+    "current_tone": "Rapidly gentrifying, highly international, blending working-class roots with trendy cafes.",
+    "top_facts": [
+      "The Javastraat is the primary commercial artery, famous for its intense diversity and trendy restaurants.",
+      "Initially constructed with poor-quality materials, leading to vast renovations in recent decades."
+    ],
+    "rotating_facts": [
+      "The name reflects the height of Dutch colonial ambition in Southeast Asia.",
+      "It borders the Flevopark to the east, providing massive green space."
+    ]
+  },
+  {
+    "id": "GM15-02",
+    "stadsdeel": "Oost",
+    "neighborhood": "Oostelijk Havengebied",
+    "etymology": "Translates to 'Eastern Docklands'.",
+    "history": "Constructed in the late 19th century to accommodate larger steamships. Derelict by the 1980s, it was transformed into high-end residential peninsulas in the 1990s.",
+    "current_tone": "Architecturally experimental, affluent, and peaceful.",
+    "top_facts": [
+      "The Sporenburg and Borneo Island peninsulas feature some of the highest livability scores in the city (10.0).",
+      "Characterized by striking contemporary architecture and modern canal-side homes."
+    ],
+    "rotating_facts": [
+      "The Python Bridge, a bright red, snake-like pedestrian bridge, connects the peninsulas.",
+      "It was once a massive squatter stronghold in the 1980s before municipal redevelopment."
+    ]
+  },
+  {
+    "id": "GM16-01",
+    "stadsdeel": "Oost",
+    "neighborhood": "Watergraafsmeer",
+    "etymology": "Translates to 'Lake of the Water Margrave', referencing the lake that was drained to create the polder in 1629.",
+    "history": "A reclaimed polder originally populated by wealthy merchants' country estates. Annexed by Amsterdam in 1921.",
+    "current_tone": "Green, highly desirable, family-friendly, and suburban.",
+    "top_facts": [
+      "Contains Betondorp (Concrete Village), famous for its experimental 1920s concrete architecture.",
+      "Legendary footballer Johan Cruyff grew up in Betondorp."
+    ],
+    "rotating_facts": [
+      "The elegant Nesciobrug connects it directly to IJburg for cyclists.",
+      "It sits significantly below sea level compared to the rest of Amsterdam East."
+    ]
+  },
+  {
+    "id": "GN18-01",
+    "stadsdeel": "Noord",
+    "neighborhood": "Buiksloterham (NDSM)",
+    "etymology": "Named after the 'ham' (piece of land) belonging to the historical village of Buiksloot.",
+    "history": "A former industrial polder dominated by the massive NDSM shipyard (1894-1984), which was once the largest in Europe.",
+    "current_tone": "Gritty, post-industrial, heavily artistic, and rapidly gentrifying with high-rise developments.",
+    "top_facts": [
+      "The NDSM wharf is a massive cultural hotspot featuring festivals, art collectives, and street art.",
+      "The massive Faralda Crane has been converted into a world-famous luxury hotel."
+    ],
+    "rotating_facts": [
+      "During the 1950s, NDSM produced some of the largest oil tankers in the world.",
+      "Street names here are heavily derived from nautical terms and ship types."
+    ]
+  },
+  {
+    "id": "GN19-01",
+    "stadsdeel": "Noord",
+    "neighborhood": "Tuindorp Oostzaan",
+    "etymology": "A 'Tuindorp' (Garden Village) built near the village of Oostzaan.",
+    "history": "Built in the 1920s specifically to house the dockworkers of the NDSM shipyard in healthy, green environments away from the slums.",
+    "current_tone": "Tight-knit, historically working-class, and quiet.",
+    "top_facts": [
+      "Colloquially known as 'Tuttifruttidorp' because the streets are named entirely after fruits.",
+      "Built on the utopian ideals of Ebenezer Howard's Garden City movement."
+    ],
+    "rotating_facts": [
+      "Historically, the residents felt deeply isolated from the rest of Amsterdam.",
+      "The village experienced a massive, devastating flood in 1960 that forced evacuations."
+    ]
+  },
+  {
+    "id": "GN20-01",
+    "stadsdeel": "Noord",
+    "neighborhood": "Tuindorp Nieuwendam",
+    "etymology": "A Garden Village built adjacent to the historical dike village of Nieuwendam.",
+    "history": "Constructed in the 1920s to provide high-quality housing for laborers, escaping the overcrowded slums of the inner city.",
+    "current_tone": "Picturesque, village-like, and highly sought-after by families.",
+    "top_facts": [
+      "Designed with a distinctive rural Dutch aesthetic, avoiding the look of a big city entirely.",
+      "Centers around the Purmerplein, a quaint commercial square with independent shops."
+    ],
+    "rotating_facts": [
+      "Features beautiful wooden facades and pitched roofs.",
+      "It represents the early 20th-century socialist ideal of uplifting the working class through superior architecture."
+    ]
+  },
+  {
+    "id": "GT22-01",
+    "stadsdeel": "Zuidoost",
+    "neighborhood": "Bijlmermeer",
+    "etymology": "Derived from 'Bijlmer' (a former village/lake) + 'meer' (lake), essentially an old Dutch contraction for 'connection lake'.",
+    "history": "A utopian CIAM project built in the 1960s with massive honeycomb high-rises. Following severe social decline, a deadly plane crash in 1992 prompted massive demolition and renewal.",
+    "current_tone": "Proud, highly multicultural, predominantly Afro-Surinamese and West African, and structurally renewed.",
+    "top_facts": [
+      "The site of the tragic 1992 El Al Boeing 747 crash, commemorated by the 'growing monument'.",
+      "Originally designed to completely separate cars, cyclists, and pedestrians onto different vertical levels."
+    ],
+    "rotating_facts": [
+      "Over 50% of the original modernist high-rises have been demolished and replaced with low-rise homes.",
+      "The population boomed following Suriname's independence in 1975, changing the demographic makeup permanently."
+    ]
+  },
+  {
+    "id": "GT24-01",
+    "stadsdeel": "Zuidoost",
+    "neighborhood": "Gaasperdam (Holendrecht / Reigersbos)",
+    "etymology": "Named after the Gaasp river and the historical Holendrecht river.",
+    "history": "Built in the late 1970s and 80s as a reaction against the high-rise failure of the Bijlmermeer, focusing instead on low-rise residential areas.",
+    "current_tone": "Suburban, green, heavily residential, and quieter than the Bijlmer.",
+    "top_facts": [
+      "Borders the massive Gaasperplas, a recreational lake created by sand extraction for construction.",
+      "Holendrecht is home to the massive Amsterdam UMC academic hospital."
+    ],
+    "rotating_facts": [
+      "Street names in Reigersbos are systematically named after Dutch towns starting with the letters P, R, S, and T.",
+      "The brutalist Kraaiennest metro station serves this area, named after a historic farm."
+    ]
+  },
+  {
+    "id": "GS25-01",
+    "stadsdeel": "Weesp",
+    "neighborhood": "Weesp (Centrum)",
+    "etymology": "Derived from 'Wesopa' or 'Wispe', referencing an old Germanic root word for flowing water.",
+    "history": "A historically independent fortified city dating back to the 12th century. It officially merged with the municipality of Amsterdam in 2022.",
+    "current_tone": "Historic, provincial, peaceful, and serving as a wealthy commuter hub.",
+    "top_facts": [
+      "Famous for its historical chocolate production (the original Van Houten factory).",
+      "Features a beautiful historical center with canals, distinct from Amsterdam's architecture."
+    ],
+    "rotating_facts": [
+      "It was a key defensive point in the historic Dutch Water Line.",
+      "The local brewery still uses the historical name 'Wispe'."
+    ]
+  },
+  {
+    "id": "GS25-02",
+    "stadsdeel": "Weesp",
+    "neighborhood": "Aetsveld",
+    "etymology": "Named after the historic Aetsveldsche polder.",
+    "history": "Archaeological evidence shows intensive Iron Age settlement here. The modern residential area was built in the 1980s.",
+    "current_tone": "Quiet, suburban, and highly rated for living standards by its residents.",
+    "top_facts": [
+      "Aetsveld-Zuid scores a near-perfect 9.9 out of 10 for overall neighborhood satisfaction.",
+      "Designed heavily around pedestrian pathways and localized greenery."
+    ],
+    "rotating_facts": [
+      "The area belonged to the municipality of Weesperkarspel until 1966.",
+      "Iron Age artifacts dating back to 300 BC were discovered beneath the modern streets."
+    ]
+  }
+]

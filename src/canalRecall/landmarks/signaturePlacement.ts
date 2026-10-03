@@ -45,12 +45,20 @@ export interface ModelBounds {
  * A model that arrives already georeferenced and life-size, so it is placed by
  * its own published anchor rather than fitted to a footprint.
  */
+export interface HorizontalProjectionBasis {
+  /** Mercator east/south metres per metre along normalized Blender +X/+Y. */
+  readonly x: readonly [number, number];
+  readonly y: readonly [number, number];
+}
+
 export interface SurveyedAnchor {
   /** The publisher's own `[lng, lat]` for the model's origin. */
   readonly anchor: LngLat;
   /** Correction, in degrees clockwise, if a model is not actually north-up.
    *  Normally zero — geo-located SketchUp models are north-up by construction. */
   readonly northOffsetDegrees: number;
+  /** Optional explicit map projection; georeferencing, never model fitting. */
+  readonly horizontalBasis?: HorizontalProjectionBasis;
   /** Where the anchor came from, so a wrong building can be traced back. */
   readonly source: string;
 }
@@ -69,6 +77,8 @@ export interface SignatureModelSpec {
   /** The landmark extract entry this model represents, so the existing card,
    *  highlight and camera behaviour keep working unchanged. */
   readonly landmarkId: string;
+  /** Other cards belonging to the same architectural complex. */
+  readonly relatedLandmarkIds?: readonly string[];
   /** Runtime GLB, relative to the Canal Recall page. */
   readonly modelUrl: string;
   /** OSM ids, prefixed `w`/`r`, whose basemap extrusion must be hidden once
@@ -114,6 +124,7 @@ export interface SignatureModelAttribution {
 /** The transform the runtime applies: where to put the model, how much to turn
  *  it, and how much to scale it so it fills its measured footprint. */
 export interface SignaturePlacement {
+  readonly horizontalBasis?: HorizontalProjectionBasis;
   readonly anchor: LngLat;
   readonly altitudeMetres: number;
   /**
@@ -397,10 +408,19 @@ function surveyedPlacement(
   spec: SignatureModelSpec,
   surveyed: SurveyedAnchor,
 ): SignaturePlacement {
+  const basis=surveyed.horizontalBasis;
+  if (basis) {
+    const values=[...basis.x,...basis.y];
+    if (basis.x.length!==2 || basis.y.length!==2 || !values.every(Number.isFinite) ||
+        basis.x[0]*basis.y[1]-basis.x[1]*basis.y[0] >= -1e-8) {
+      throw new Error('Surveyed horizontal basis must be finite and preserve the normalized frontage handedness.');
+    }
+  }
   return {
+    ...(basis ? { horizontalBasis: basis } : {}),
     anchor: surveyed.anchor,
     altitudeMetres: spec.groundAltitudeMetres,
-    modelRotationDegrees: normaliseBearing(90 + surveyed.northOffsetDegrees),
+    modelRotationDegrees: basis ? normaliseBearing(Math.atan2(basis.x[0],-basis.x[1])*180/Math.PI) : normaliseBearing(90 + surveyed.northOffsetDegrees),
     facadeBearingDegrees: spec.footprint
       ? normaliseBearing(spec.footprint.headingDegrees + spec.facingOffsetDegrees)
       : normaliseBearing(spec.facingOffsetDegrees),
