@@ -18,6 +18,7 @@ import { formTriangles, type KitForm } from './landmarkForms.js';
 import { MUSEUM_KITS } from './museumKits.js';
 import { WORSHIP_KITS } from './worshipKits.js';
 import { FIT_COVERAGE, FIT_MAX_DEV_M, GENERIC_WORSHIP_KITS } from './worshipBuildings.js';
+import { GENERIC_PUBLIC_KITS } from './publicBuildings.js';
 
 export type Mat = 'brick' | 'stone' | 'lead' | 'gold' | 'copper' | 'slate' | 'white' | 'tile' | 'blue';
 export type StageShape = 'square' | 'octagon';
@@ -553,7 +554,7 @@ const kitIds = (k: Kit) => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.on
 export const HAND_KIT_IDS: ReadonlySet<string> = new Set(HAND_KITS.flatMap(kitIds));
 const HAND_IDS = HAND_KIT_IDS;
 /** Every kit: the hand-modelled ones, then the generic worship treatment for footprints none of them claims. */
-export const KITS: Kit[] = [...HAND_KITS, ...GENERIC_WORSHIP_KITS.filter(k => kitIds(k).every(id => !HAND_IDS.has(id)))];
+export const KITS: Kit[] = [...HAND_KITS, ...[...GENERIC_WORSHIP_KITS, ...GENERIC_PUBLIC_KITS].filter(k => kitIds(k).every(id => !HAND_IDS.has(id)))];
 
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */
 export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? []), ...(k.forms ?? []).map(f => f.on)]));
