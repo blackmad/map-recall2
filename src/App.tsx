@@ -818,7 +818,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col w-screen h-screen overflow-hidden bg-[#f4efe5] text-white font-sans select-none">
+    <div className="flex flex-col w-full h-full overflow-hidden bg-[#f4efe5] text-white font-sans select-none">
       {/* Top App Header (Strict Single Line) */}
       <GameHeader
         cities={allCities}

@@ -182,7 +182,7 @@ export const DebugPlacesModal: React.FC<DebugPlacesModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="debug-places-modal-title"
-        className="w-full max-w-5xl bg-slate-900 text-slate-100 rounded-2xl shadow-2xl border border-slate-700/80 flex flex-col max-h-[92vh] overflow-hidden"
+        className="w-full max-w-5xl bg-slate-900 text-slate-100 rounded-2xl shadow-2xl border border-slate-700/80 flex flex-col max-h-[92dvh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

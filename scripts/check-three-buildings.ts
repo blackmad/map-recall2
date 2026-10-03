@@ -268,6 +268,20 @@ for (const c of [0.64, 1.4]) {
     ids.add(roofed);
     const f = house(roofed);
     assert.equal(wrapped(f), f, 'a landmark building is returned untouched, and the list is read at call time');
+    // Unmodelled landmarks: an old one the size of a house takes the generic period facade and roof;
+    // a big one keeps its bare form but loses a palette-guess colour; a kit-modelled one is untouched.
+    const old = { ...f, properties: { ...f.properties, constructionYear: 1788 } };
+    assert.ok(wrapped(old).properties.roofPlanned, 'an old house-sized landmark (Felix Meritis) gets the generic roof');
+    const big = { ...f, properties: { ...f.properties, height: 40, constructionYear: 1888, appearanceStyleSource: 'identity-palette-not-measured' } };
+    assert.equal(wrapped(big).properties.sideColour, '#7a4535', 'an old tower-height landmark is period brick, not a palette guess');
+    assert.equal(wrapped(big).properties.roofPlanned, undefined, 'and keeps its own bare form');
+    assert.equal(wrapped({ ...big, properties: { ...big.properties, constructionYear: 1972 } }).properties.sideColour, '#b9ad9a', 'a modern one is concrete');
+    const restored = { ...big, properties: { ...big.properties, constructionYear: 1990 } };
+    assert.equal(exceptLandmarks(decorateRoof, ids, new Set(), new Set([roofed]))(restored).properties.sideColour, '#7a4535', 'a listed landmark with a restoration year is still old brick (Carré)');
+    const measuredBig = { ...big, properties: { ...big.properties, appearanceStyleSource: 'measured-photo' } };
+    assert.equal(wrapped(measuredBig), measuredBig, 'a measured colour is kept');
+    const kitWrapped = exceptLandmarks(decorateRoof, ids, new Set([roofed]));
+    assert.equal(kitWrapped(old), old, 'a kit-modelled landmark is never decorated');
   }
   const measured = { type: 'Feature' as const, properties: { id: 'm', height: 14, facade: 'canal-priorBrickRed', facadeStyle: 'canal', roofEavesHeightM: 11.2 }, geometry: { type: 'Polygon', coordinates: [ring] } };
   assert.equal(decorateRoof(measured), measured, 'a measured roof is never overridden');
@@ -443,6 +457,54 @@ for (const c of [0.64, 1.4]) {
 }
 
 {
+  // Hand-modelled landmark churches whose single BAG footprint carries the tower's height (the
+  // whole building stood as one bare box at tower height). Each: the walls stop at the eaves,
+  // every wing and tower stands on the footprint, the roofs ridge where the photo says, and the
+  // highest point matches the documented height. `tile` is the building-tiles/14 file.
+  const { readFileSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const { KITS: kits, decorateKitRoof: decorate, kitGeometry: geometry } = await import('../src/canalRecall/landmarkKits.ts');
+  const KO = { lng: 4.9, lat: 52.37 }, kkx = 111_320 * Math.cos(KO.lat * Math.PI / 180);
+  const toL = ([lng, lat]: number[]): [number, number] => [(lng - KO.lng) * kkx, (lat - KO.lat) * 110_540];
+  const inside = (ring: [number, number][], [x, y]: [number, number]) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) if ((ring[i][1] > y) !== (ring[j][1] > y) && x < ((ring[j][0] - ring[i][0]) * (y - ring[i][1])) / (ring[j][1] - ring[i][1]) + ring[i][0]) c = !c; return c; };
+  const churches = [
+    // Obrechtkerk (Cuypers/Stuyt 1911): twin front towers 36.3 m with caps, a lower tiled crossing tower, nave ridge 23 m.
+    { name: 'Obrechtkerk', tile: '8413/5385', id: 'NL.IMBAG.Pand.0363100012124153', bagHeight: 36.27, top: 36.3, tol: 1, ridge: 23, wall: '#7d6858' },
+    // Oosterkerk (Stalpaert 1671): lead lantern and dome over hipped slate roofs ridged at 19 m; BAG 26.86 m with the vane.
+    { name: 'Oosterkerk', tile: '8415/5384', id: 'NL.IMBAG.Pand.0363100012170274', bagHeight: 26.86, top: 26.9, tol: 1, ridge: 19, wall: '#8c5b46' },
+    // De Duif (Molkenboer 1857): no tower, a pitched nave behind a pediment; BAG 24.48 m is the pediment, the model ridges at 22 m.
+    { name: 'De Duif', tile: '8414/5385', id: 'NL.IMBAG.Pand.0363100012171729', bagHeight: 24.48, top: 22, tol: 3, ridge: 22, wall: '#a99e8c' },
+    // Opstandingskerk (Duintjer 1956): the "Kolenkit" bell tower, 48 m at its high edge (nl.wikipedia), over an 11 m nave.
+    { name: 'Opstandingskerk', tile: '8412/5383', id: 'NL.IMBAG.Pand.0363100012133302', bagHeight: 35.17, top: 48, tol: 1, ridge: 14, wall: '#b07a63' },
+    // Mozes en Aäronkerk (Suys 1841): cream twin timber towers 33 m over a brown-brick hall with a low roof ridged at 18.5 m.
+    { name: 'Mozes en Aäronkerk', tile: '8415/5384', id: 'NL.IMBAG.Pand.0363100012253765', bagHeight: 24.38, top: 33.1, tol: 1, ridge: 18.5, wall: '#7c5a4a' },
+    // Westerkerk's east end: the 1.8 m sliver BAG records at 35 m, walled to the nave's 27 m eaves (slim ridge 28.5 m).
+    { name: 'Westerkerk', tile: '8414/5384', id: 'NL.IMBAG.Pand.0363100012164998', bagHeight: 35.14, top: 28.5, tol: 1, ridge: 28.5, wall: '#8a4b38' },
+  ];
+  for (const c of churches) {
+    const tile = JSON.parse(gunzipSync(readFileSync(`public/data/extracts/amsterdam/building-tiles/14/${c.tile}.geojson.gz`)).toString());
+    const f = tile.features.find((x: any) => x.properties.id === c.id);
+    assert.ok(f, `${c.name} footprint is in its tile`);
+    const ring: [number, number][] = f.geometry.coordinates[0].map(toL);
+    const kit = kits.find(k => k.name === c.name)!, spec = kit.halls![0];
+    assert.equal(spec.id, c.id, `${c.name} kit hangs on the BAG footprint`);
+    const decorated = decorate({ type: 'Feature', properties: { id: c.id, height: c.bagHeight, sideColour: '#557260' }, geometry: null });
+    assert.equal(decorated.properties.roofEavesHeightM, spec.eavesM, `${c.name}: walls stop at the eaves, not at tower height`);
+    assert.ok(spec.eavesM < c.bagHeight - 5 && spec.eavesM > 8, `${c.name}: eaves ${spec.eavesM} m sit well below the BAG height`);
+    assert.equal(decorated.properties.sideColour, c.wall, `${c.name}: its own wall colour, not the palette's`);
+    for (const t of spec.towers ?? []) assert.ok(inside(ring, toL(t.at)), `${c.name}: each tower stands on the footprint`);
+    for (const w of spec.wings ?? []) assert.ok(inside(ring, toL(w.at)), `${c.name}: each wing is centred on the footprint`);
+    const tris = geometry(kit, new Map([[c.id, { id: c.id, ring, minHeightM: 0, heightM: c.bagHeight }]]))[0].tris;
+    const top = Math.max(...tris.flatMap(t => t.p.map(p => p[2])));
+    assert.ok(Math.abs(top - c.top) <= c.tol, `${c.name}: highest point ${top.toFixed(1)} m, documented ${c.top} m +/- ${c.tol}`);
+    const roof = tris.filter(t => t.layer === 'slope'), ridge = Math.max(...roof.flatMap(t => t.p.map(p => p[2])));
+    assert.ok(roof.length && Math.abs(ridge - c.ridge) < 1.5, `${c.name}: roof ridge ${ridge.toFixed(1)} m, expected ${c.ridge} m`);
+    // The footprint's towers outrank the roofs only where the church has them.
+    if ((spec.towers ?? []).length) assert.ok(top > ridge + 3, `${c.name}: tower rises above the roofs`);
+  }
+}
+
+{
   // A shop's ground floor takes its paint colour (user 2026-10-02: "the white bit should go to the
   // ground because that's the paint color of the bottom floor … different colors"); doors and upper floors keep the wall.
   const shop: MeshBuilding = { ...house('paint', 0, 12, 12), layers: { upper: 1, ground: 2, door: 3 }, groundHex: '#2b2d2c' };
@@ -466,5 +528,18 @@ for (const c of [0.64, 1.4]) {
   assert.equal(archetypeFor('x', 1965, 15), 'modern');
   assert.ok(BAY_STYLES.canal.every(s => s.shape === 'rect'), 'canal houses have flat lintels; arched hoods are 19th century');
   assert.ok(BAY_LAYER_COUNT < 200, 'bay layers fit the byte layer index with room for roofs');
+}
+{
+  // Wall colours follow the period (user 2026-10-02, real-vs-game sheet: "one brick palette"): canal houses
+  // run darker than 19th-century rows, and post-war blocks are buff and grey, not red brick.
+  const { bayLookFor } = await import('../src/canalRecall/bayLook.ts');
+  const lum = (hex: string) => { const n = parseInt(hex.slice(1), 16); return 0.2126 * (n >> 16) + 0.7152 * ((n >> 8) & 255) + 0.0722 * (n & 255); };
+  const red = (hex: string) => { const n = parseInt(hex.slice(1), 16); return (n >> 16) - (n & 255); };
+  const walls = (year: number) => Array.from({ length: 400 }, (_, i) => bayLookFor(`w${i}`, year, 12, 'photo').wallHex);
+  const mean = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / xs.length;
+  const canal = walls(1680), c19 = walls(1895), modern = walls(1965);
+  assert.ok(mean(canal.map(lum)) + 15 < mean(c19.map(lum)), 'canal houses darker than 19th-century rows');
+  assert.ok(canal.filter(h => lum(h) < 60).length > 40, 'some canal houses painted near-black or dark green');
+  assert.ok(mean(modern.map(red)) < mean(c19.map(red)) - 30, 'post-war blocks buff and grey, not red brick');
 }
 console.log('three buildings: ok');

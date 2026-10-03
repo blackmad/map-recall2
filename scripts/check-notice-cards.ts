@@ -23,11 +23,11 @@ const stub = (text: string, font: string) => {
   const bare = measureLandmarkCard({ name: 'Nes', body: '' }, stub);
   const text = measureLandmarkCard({ name: 'Nes', body: 'A street in the centre.' }, stub);
   const photo = measureLandmarkCard({ name: 'Nes', body: 'A street.', hasImage: true }, stub);
-  assert.ok(bare.height >= 50 && bare.height <= 60, 'a card with nothing to say stays short');
+  assert.ok(bare.height >= 40 && bare.height <= 60, `a card with nothing to say stays short, got ${bare.height}`);
   assert.ok(text.height > bare.height, 'body text grows the plate');
-  assert.equal(photo.height, 136, 'a photo sets the floor');
+  assert.equal(photo.height, 134, 'a photo plus its insets sets the floor');
   assert.equal(bare.imageWidth, 0);
-  assert.equal(text.textLeft, 20, 'bare cards keep side padding');
+  assert.equal(text.textLeft, 16, 'bare cards keep side padding');
   assert.ok(photo.textLeft > bare.textLeft, 'text clears the photo');
 
   const street = measureLandmarkCard({
@@ -38,8 +38,8 @@ const stub = (text: string, font: string) => {
       + 'waterway that borders the entire city centre of Amsterdam along the canals.',
   }, stub);
   assert.equal(street.lines.length, 3, 'street cards show three body lines');
-  assert.ok(street.height >= 100, `badges + three lines need air, got ${street.height}`);
-  assert.equal(street.textLeft, 20);
+  assert.ok(street.height >= 80, `chips + three lines need air, got ${street.height}`);
+  assert.equal(street.textLeft, 16);
 }
 
 // --- Body text is wrapped and cut to a budget -------------------------------
@@ -180,13 +180,50 @@ const stub = (text: string, font: string) => {
   const long = 'The Oude Kerk is the oldest building in Amsterdam, consecrated in 1306 and extended over three centuries into a cruciform basilica. '.repeat(12);
   const props = { name: 'Oude Kerk', body: long, category: 'CHURCH', factKind: 'history', hasArticle: true, hasImage: true };
   const narrow = measureLandmarkCard(props, stub, 300);
-  const right = narrow.width - 20; // PAD_RIGHT
+  const right = narrow.width - 16; // PAD_RIGHT
   const last = narrow.badges[narrow.badges.length - 1];
   assert.ok(last.x + last.width <= right + 0.001, `chips end at ${last.x + last.width}, column at ${right}`);
   assert.equal(last.kind, 'more', 'the MORE chip survives');
   const wide = measureLandmarkCard(props, stub, 900);
   assert.deepEqual(wide.badges.map(badge => badge.kind), ['category', 'fact', 'article', 'more'], 'a wide card keeps them all');
   assert.equal(wide.badges.find(badge => badge.kind === 'article')?.label, 'W  WIKIPEDIA');
+}
+
+// --- A street card is compact: chip and name on one row, "more" a link -----
+{
+  // User report 2026-10-02: the Prinsengracht card stretched to 480 px with a
+  // "+ MORE" pill beside STREET, the name jammed under the chips, and a band
+  // of empty paper below and to the right of two body lines.
+  const body = "After 'the princely title', meaning that of the Princes of Orange. The canal is one "
+    + 'of the three main canals, and the plainest in the character of its buildings. Its houses '
+    + 'were built for merchants and artisans rather than the richest families of the Golden Age.';
+  const card = measureLandmarkCard({ name: 'Prinsengracht', category: 'STREET', body }, stub);
+  assert.equal(card.truncated, true);
+  assert.equal(card.headerInline, true, 'STREET and PRINSENGRACHT share the header row');
+  const chip = card.badges.find(b => b.kind === 'category')!;
+  const more = card.badges.find(b => b.kind === 'more')!;
+  assert.equal(more.label, 'MORE ›', 'more reads as an action, not a tag');
+  assert.ok(card.nameX >= chip.x + chip.width + 8, 'the name clears the chip');
+  assert.ok(more.x + more.width <= card.width - 16 + 0.001, 'more stays inside the right padding');
+  assert.ok(more.x >= card.nameX + 13 * 16 * 0.6 + 12, 'more does not crowd the name');
+  assert.ok(card.width <= 440, `the card is sized to its content, got ${card.width}`);
+  assert.ok(card.height <= 100, `three lines and a header stay compact, got ${card.height}`);
+  const lastBaseline = card.bodyBaseline + (card.lines.length - 1) * card.lineStep;
+  const bottomAir = card.height - lastBaseline;
+  assert.ok(card.headerTop >= 12 && bottomAir >= 14 && bottomAir <= 20,
+    `padding is even top and bottom: top ${card.headerTop}, bottom ${bottomAir}`);
+
+  // A short card shrinks rather than sitting in a 480 px plate.
+  const short = measureLandmarkCard({ name: 'Nes', category: 'STREET', body: 'A street in the centre.' }, stub);
+  assert.ok(short.width < 300, `a short card is narrow, got ${short.width}`);
+  assert.equal(short.badges.some(b => b.kind === 'more'), false);
+
+  // A name too long to share the row drops below the chips instead of eliding.
+  const long = measureLandmarkCard(
+    { name: 'Nieuwe Herengracht Oostelijke Eilanden', category: 'STREET', factKind: 'history', hasArticle: true, body }, stub, 330);
+  assert.equal(long.headerInline, false);
+  assert.ok(long.nameBaseline > long.headerTop + long.badgeHeight, 'a stacked name sits below the chips');
+  assert.ok(long.bodyBaseline > long.nameBaseline + 12, 'and the body below the name');
 }
 
 // --- Wrapping degenerate input ----------------------------------------------

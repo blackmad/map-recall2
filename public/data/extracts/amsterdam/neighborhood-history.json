@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-10-02T14:32:08.936Z",
+ "generatedAt": "2026-10-03T07:42:29.616Z",
  "neighborhoods": [
   {
    "name": "Overhoeks",
@@ -20,6 +20,13 @@
     "sourceUrl": "https://en.wikipedia.org/wiki/EYE_Film_Institute_Netherlands",
     "lang": "en",
     "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   },
+   "localFact": {
+    "en": "Thousands of Amsterdammers first set foot in the Buiksloterham in 1913, when the First Dutch Shipping Exhibition was held here.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Overhoeks_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
   },
@@ -41,6 +48,13 @@
     "sourceUrl": "https://en.wikipedia.org/wiki/Het_Schip",
     "lang": "en",
     "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   },
+   "localFact": {
+    "en": "Its best-known buildings are Michel de Klerk's Amsterdam School workers' housing by the Spaarndammerplantsoen. The former post office in the complex has been Museum Het Schip since 2001.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Spaarndammerbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
   },
@@ -115,6 +129,13 @@
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
+   },
+   "localFact": {
+    "en": "Johan Cruyff was born and raised in Betondorp, across the road from Ajax's De Meer stadium, which opened in 1934. The writer Gerard Reve also grew up here, in the Ploegstraat.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Betondorp",
+    "lang": "en",
+    "sourceLabel": "English and Dutch Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -136,6 +157,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "De Bloemenbuurt, tussen Sneeuwbalstraat en Mosveld, en Floradorp vormen samen het overgrote deel van Tuindorp Buiksloterham, een van de tuindorpen die tussen 1920 en 1940 werden ontwikkeld in Amsterdam om een tegenwicht te bieden aan de verpauperde volksbuurten in de binnenstad. De buurt is gebouwd aan het eind van de jaren twintig van de twintigste eeuw door de gemeente Amsterdam, in een periode dat in de Amsterdamse binnenstad op grote schaal woningen onbewoonbaar moesten worden verklaard, zoals op Uilenburg, Rapenburg en in de Jordaan en plannen werden ontwikkeld voor vervangende volkswoningbouw."
+   },
+   "localFact": {
+    "en": "Amsterdammers call Floradorp 'de Rimboe' (the jungle), after the history of the land it was built on, and also 'Canta-capital' for the many Canta cars in its streets.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Floradorp",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -173,6 +201,13 @@
     "en": "Han van Zomerenbrug (bridge here): Residents largely financed the original footbridge built here in 1927 to connect new southern housing.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Han_van_Zomerenbrug",
     "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "localFact": {
+    "en": "Many diamond cutters once lived here. At one end of the Diamantstraat stands the Asscher diamond works, where the Cullinan, the largest diamond in the world, was cut.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Diamantbuurt_(Amsterdam)",
+    "lang": "nl",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
@@ -214,6 +249,13 @@
     "en": "Grachtengordel means 'canal belt' (or 'canal girdle'); in English it is known as the Canal District.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Grachtengordel",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "The canal ring has been a UNESCO World Heritage site since 1 August 2010. In Dutch, 'grachtengordel' is also shorthand for a supposedly elitist attitude among people living in the city centre.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Grachtengordel_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -231,6 +273,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "'Overtoom', exploitatie maatschappij van bouwterreinen, en architect Redeker Bisdom werden in 1883 met de uitwerking belast. Met de aanleg van het Jacob van Lennepkanaal werd in 1884 begonnen."
+   },
+   "localFact": {
+    "en": "Its streets were named after writers and poets, and the area became known as the Dichtersbuurt (Poets' Quarter). Writers such as Lodewijk van Deyssel and Willem Kloos lived here.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Helmersbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -284,6 +333,13 @@
     "en": "The Dutch word Rivierenbuurt translates as 'Rivers Neighbourhood'; most streets in the area are named after rivers in the Netherlands.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Rivierenbuurt",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Many middle-class Jewish families moved here, seeing it as a step up from the working-class Jodenbuurt. On 3 November 1941 the German occupiers turned the playground on the Gaaspstraat into a market where Jews were required to shop.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rivierenbuurt",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -297,6 +353,13 @@
     "en": "The Nieuwe Pijp is part of the Plan Zuid urban expansion plan designed by architect Hendrik Petrus Berlage in 1917. The neighbourhood was built between 1921 and 1929. This part of Berlage's masterplan, along with the neighbouring Diamantbuurt, was designated for working-class housing projects. The neighbourhood is characterized by Amsterdam School architecture. One of the most prominent examples of this architectural movement is the Dageraad (‘Dawn’) complex. It was designed by Michel de Klerk and Piet Kramer for a socialist housing association.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Nieuwe_Pijp",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Michel de Klerk and Piet Kramer's De Dageraad complex (1919 to 1922) is considered one of the showpieces of the Amsterdam School.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Nieuwe_Pijp",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -311,6 +374,13 @@
     "sourceUrl": "https://en.wikipedia.org/wiki/Heineken_Experience",
     "lang": "en",
     "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   },
+   "localFact": {
+    "en": "The old part of De Pijp is known as Amsterdam's Quartier Latin, after the Paris district, and several novels are set here around 1900, such as Jacob Israël de Haan's Pijpelijntjes (1904).",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oude_Pijp",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
   },
@@ -330,6 +400,13 @@
     "en": "De Pijp means \"The Pipe\" in English and the origin of the name is not well documented, but it is likely a reference to the long, narrow streets that funneled people towards central Amsterdam.",
     "sourceUrl": "https://en.wikipedia.org/wiki/De_Pijp",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "The Albert Cuypmarkt on the Albert Cuypstraat is the largest daily market in the Netherlands, held Monday to Saturday.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Pijp",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -348,6 +425,13 @@
     "en": "Staatsliedenbuurt means 'Neighbourhood of the Statesmen': after Amsterdam annexed the area in 1877, its streets were named after Dutch statesmen of the 18th and 19th centuries.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Staatsliedenbuurt",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "It was once nicknamed the 'brass buttons neighbourhood' for the many tram conductors and other uniformed workers housed here. In the 1980s it became a squatters' stronghold centred on the squat café De Rioolrat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Staatsliedenbuurt_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -384,6 +468,13 @@
     "en": "The streets are named after Greek legends, painters and composers.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Apollobuurt",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "John Lennon and Yoko Ono held their 1969 Bed-In for Peace at the Amsterdam Hilton, in this neighbourhood.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Apollobuurt",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -404,6 +495,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Stadionbuurt",
     "lang": "nl",
     "original": "De buurt is vernoemd naar het nationale stadion van Harry Elte en niet naar het Olympisch Stadion van Jan Wils."
+   },
+   "localFact": {
+    "en": "The neighbourhood is named after Harry Elte's national stadium, which stood here from 1914 to 1929, not after Jan Wils's Olympic Stadium, built for the 1928 Games.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Stadionbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -445,6 +543,13 @@
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
+   },
+   "localFact": {
+    "en": "Its houses are a high point of the rural variant of the Amsterdam School, and it was considered one of the most beautiful garden villages of its day.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Tuindorp_Nieuwendam",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -464,6 +569,13 @@
     "en": "Solebayplein (square here): The residential block forming the square's south side was constructed in 1934 and 1935.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Solebayplein",
     "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "localFact": {
+    "en": "Landlust was the first Amsterdam neighbourhood to use open rows of strip housing alongside the usual closed blocks, with the architect Ben Merkelbach among the pioneers.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Landlust",
+    "lang": "nl",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
@@ -671,6 +783,13 @@
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
+   },
+   "localFact": {
+    "en": "IJburg is reached over bridges such as the Nescio Bridge, named after the writer Nescio, and Nicholas Grimshaw's bridge of 2000, with two 75-metre spans, one of the biggest bridges in Amsterdam.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/IJburg",
+    "lang": "en",
+    "sourceLabel": "English and Dutch Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -690,6 +809,13 @@
     "en": "Named after the Slotervaart canal.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Slotervaart_(neighbourhood)",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "The first pile of the garden suburb was driven in 1954, and on 19 October 1955 its first residents, the Charmant couple, moved in.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Slotervaart_(tuinstad)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -710,6 +836,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Uilenburg_(Amsterdam)",
     "lang": "nl",
     "original": "De naam Uilenburg is mogelijk afkomstig van een hier gelegen gebied dat in 1470 Uylenbraeck werd genoemd."
+   },
+   "localFact": {
+    "en": "The Uilenburger Synagogue, built in 1766 for Ashkenazi Jews, is still in use. In 1879 the Boas diamond works opened here, then the largest in Amsterdam and Europe.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Uilenburg_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -747,6 +880,13 @@
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
+   },
+   "localFact": {
+    "en": "Vincent van Gogh lived here for a year (1877 to '78), with his uncle in the commander's house.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Marineterrein_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -767,6 +907,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Rapenburg_(Amsterdam)",
     "lang": "nl",
     "original": "De herkomst van de naam is onbekend. De hoofdstraat heeft de naam van het eiland gekregen."
+   },
+   "localFact": {
+    "en": "Built from the 1590s close to the IJ, Rapenburg was home to many shipbuilders. In the 17th century Rapenburg 13 was known as the house of Piet Hein.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Rapenburg",
+    "lang": "en",
+    "sourceLabel": "English and Dutch Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -790,6 +937,13 @@
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
+   },
+   "localFact": {
+    "en": "In 1910 the Vulcanus, the world's first diesel-powered tanker, was built at the NSM yard on Oostenburg.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oostenburg",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -811,6 +965,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Kattenburg_(Amsterdam)",
     "lang": "nl",
     "original": "Een verklaring voor de naam Kattenburg is gelegen in het feit dat hier ooit een kat was, een verdedigingswerk. Dit is nog steeds zichtbaar in de knik van de Kattenburgerstraat die vanaf het Kattenburgerplein langs het Marine Etablissement loopt. De combinatie van 'kat' en 'burg' maakte samen de naam ‘Kattenburg'."
+   },
+   "localFact": {
+    "en": "Kattenburg's shipyard workers were nicknamed the 'Bijltjes' (little axes) after the main tool of wooden shipbuilding. In the late 1970s and early 1980s the island was known for its residents' fight against high rents.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kattenburg_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -893,6 +1054,13 @@
     "en": "The name Kadijken is the plural form of Kadijk and refers to the two main streets that traverse the neighbourhood, Hoogte Kadijk (\"Upper Kadijk\") and Laagte Kadijk (\"Lower Kadijk\").",
     "sourceUrl": "https://en.wikipedia.org/wiki/Kadijken",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Its 96 warehouses, stretching 800 metres, formed one of the largest warehouse complexes in Europe.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kadijken",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -913,6 +1081,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Czaar_Peterbuurt",
     "lang": "nl",
     "original": "De Czaar Peterbuurt, vernoemd naar tsaar Peter de Grote, is een buurt in de Nederlandse stad Amsterdam."
+   },
+   "localFact": {
+    "en": "The film Ciske de Rat was shot here in 1983, and the first series of the TV show Het Blok was filmed in the Czaar Peterstraat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Czaar_Peterbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -932,6 +1107,13 @@
     "en": "Oostelijke Eilanden means 'Eastern Islands': the neighbourhood consists of Kattenburg, Wittenburg and Oostenburg.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Oostelijke_Eilanden",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "The people of Kattenburg were known as a rowdy bunch, the 'Bijltjes', named after their main carpentry tool.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oostelijke_Eilanden",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -952,6 +1134,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Plantage_(Amsterdam)",
     "lang": "nl",
     "original": "Voor het gebied, dat bij de stadsuitbreiding van circa 1663 (de vierde uitleg) binnen de grote omwalling met de 26 bolwerken van Daniël Stalpaert was gebracht, bleken niet genoeg kopers. De bouw stagneerde en in dit gebied, dat men Plantagie of Plantaadje noemde, werden tuinen en lusthoven aangelegd, waar de Amsterdammers zich in het groen konden verpozen. Deze percelen werden door de stad verhuurd voor een periode van 20 jaar (met de mogelijkheid van verlenging van telkens 10 jaar). De intentie was om de percelen later alsnog te verkopen. Bebouwing was dan ook niet de bedoeling."
+   },
+   "localFact": {
+    "en": "Artis, opened in 1838, is the oldest zoo in the Netherlands. The nearby Hortus Botanicus, opened in 1682, is one of the oldest botanical gardens in the world.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Plantage",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -973,6 +1162,13 @@
     "sourceUrl": "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/0363300000004834/",
     "lang": "en",
     "sourceLabel": "Gemeente Amsterdam street-name register",
+    "kind": "derived"
+   },
+   "localFact": {
+    "en": "Royal Theatre Carré has stood on the Amstel since 1887, and since 2009 the H'ART Museum (called Hermitage Amsterdam until 2023) has filled the historic Amstelhof building.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Weesperbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
   },
@@ -1016,6 +1212,13 @@
     "lang": "en",
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia"
+   },
+   "localFact": {
+    "en": "The Nieuwmarkt, dominated by the Waag, a medieval city gate later turned weighing house, is considered part of Amsterdam's Chinatown.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Nieuwmarkt",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1036,6 +1239,13 @@
     "en": "Entrepothaven (waterway here): The harbor was excavated directly into a swamp area known as the City Reedlands.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Entrepothaven_(Amsterdam)",
     "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "localFact": {
+    "en": "On the Scheepstimmermanstraat stand 60 houses each by a different architect, among them Herman Hertzberger, MVRDV and Koen van Velsen.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Borneo_(Amsterdam)",
+    "lang": "nl",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
@@ -1061,6 +1271,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "Sinds de jaren negentig van de twintigste eeuw is het gebied herontwikkeld tot een woonwijk, volgens een stedenbouwkundig plan van West 8. Vanaf begin 2023 vaart een tijdelijk pontveer tussen de in ontwikkeling zijnde Sluisbuurt op het Zeeburgereiland en het Tegelbergplein, op de kop van Sporenburg."
+   },
+   "localFact": {
+    "en": "The Borneo-Sporenburg waterfront housing by Adriaan Geuze and West 8 won Harvard's Veronica Rudge Green Prize in Urban Design in 2002.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Eastern_Docklands",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1079,6 +1296,13 @@
     "en": "Java-eiland means 'Java Island'. The Stoomvaart Maatschappij Nederland, based here, ran services to the Dutch East Indies, particularly Java; the name was given when the area was designated for housing in the 1990s.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Java-eiland",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Four small canals cross the island, lined with post-modern canal houses by different architects and spanned by bridges designed by the artists Guy Rombouts and Monica Droste.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Java-eiland",
+    "lang": "en",
+    "sourceLabel": "English and Dutch Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1097,6 +1321,13 @@
     "en": "The most common theory on the origin of the name posits derivation from the French word jardin (meaning garden); indeed, most streets and canals in the Jordaan are named after trees and flowers.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Jordaan",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "On summer Sundays some of the Jordaan's hofjes, courtyards built by wealthy Amsterdammers to house elderly women, open for free concerts. The oldest surviving one is the Sint Andrieshofje (1614) on the Egelantiersgracht.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Jordaan",
+    "lang": "en",
+    "sourceLabel": "English and Dutch Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1116,6 +1347,13 @@
     "en": "Kinkerstraat, the area's main shopping street, was named after Dutch poet and lawyer Johannes Kinker.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Kinkerbuurt",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "In 2005 the Kinkerbuurt had the highest address density in the Netherlands, 11,971 addresses per square kilometre. Its daily market is on the Ten Katestraat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Kinkerbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -1135,6 +1373,13 @@
     "en": "In the tradition of naming high-status areas after prominent figures, the neighbourhood is named after Frederik Hendrik (1584 - 1647); Prince of Orange, Count of Nassau, governor, captain-general and admiral-general of the Dutch Republic. Following this naming convention, prominent streets of the neighbourhood are similarly named after Hendrik's family.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Frederik_Hendrikbuurt",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Locals call the neighbourhood 'the Fred'. It is built around the Frederik Hendrikplantsoen park.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Frederik_Hendrikbuurt",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1170,6 +1415,13 @@
     "en": "The largest neighborhood of Amsterdam-Zuidoost is Bijlmermeer, planned in the 1960s as a modern, functional 'town of the future' in accordance with the principles of the Swiss architect Le Corbusier. In total, 18,000 homes would be built, 13,000 of which were in highrise tower blocks, many of them built together to form a distinct \"honeycombed\" pattern. Roads were elevated above the ground, with separate routes for cars, buses, bicyclists and pedestrians. The main architect of Bijlmermeer was Siegfried Nassuth. Construction of the Bijlmermeer began in 1963.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-Zuidoost",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Zuidoost has Amsterdam's largest community of people of Surinamese descent, many of whom came after Suriname's independence in 1975. Its Bijlmermeer was planned in the 1960s as a 'town of the future' on the principles of Le Corbusier.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-Zuidoost",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1189,6 +1441,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Weesp",
     "lang": "nl",
     "original": "De oude Latijnse (gelatiniseerde) benaming voor Weesp is Wesopa. Deze naam leeft voort in het bioscoop-theatergebouw City of Wesopa. De eerste vermeldingen van Weesp stammen echter van omstreeks het jaar 1150 als Wesepa of Wis(e)pe. De Wispe Brouwerij uit Weesp herinnert aan deze vroege benaming voor Weesp."
+   },
+   "localFact": {
+    "en": "Its cocoa made Weesp known worldwide as the 'cacaostad' (cocoa town), and the first Dutch porcelain was made here in 1759.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Weesp",
+    "lang": "en",
+    "sourceLabel": "English and Dutch Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1202,6 +1461,13 @@
     "en": "Nieuw-West (English: New West) is a sprawling, high-density suburban residential area in the west of Amsterdam. It is situated on the territory of the former municipality of Sloten, Amsterdam, a town dating back to 1063 which has become part of the borough. The plans for the western expansion of the city date back to 1935, when the Algemeen Uitbreidingsplan (General Expansion Plan) was adopted. The neighbourhoods in Nieuw-West are designed on the basis of the garden city principles: planned, self-contained communities surrounded by greenbelts.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam_Nieuw-West",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Sloten, inside Nieuw-West, is the oldest place within Amsterdam's municipal boundaries. The Sloterplas lake and its park form the heart of the western garden suburbs.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Amsterdam_Nieuw-West",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -1223,6 +1489,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Prinses_Irenebuurt",
     "lang": "nl",
     "original": "De buurt ontleent haar naam aan de Prinses Irenestraat, die oost-west door de buurt loopt. Deze straat kreeg haar naam in 1953, vernoemd naar prinses Irene, dochter van de toenmalige koningin Juliana."
+   },
+   "localFact": {
+    "en": "The Warnersblokken, four housing blocks of 1957 by Allert Warners, are known for coloured facade panels whose colours were composed by the artist Joseph Ongenae.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Prinses_Irenebuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -1276,6 +1549,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Schinkelbuurt",
     "lang": "nl",
     "original": "De straten zijn hier genoemd naar begrippen in de scheepvaart (o.a. Sluisstraat, Zeilstraat, Vaartstraat, Vlietstraat, Baarsstraat, Havenstraat, Karperstraat/-weg)."
+   },
+   "localFact": {
+    "en": "One of Piet Mondrian's first cityscapes is 'View of Schinkelbuurt', painted around 1895.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Schinkelbuurt",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1294,6 +1574,13 @@
     "en": "The name comes from the former hamlet De Baarsjes (The Little Perches) that was formed in the 17th century, which in turn derived its name from an inn called De Drie Baarsjes (The Three Little Perches) situated on the eastern border of the present-day district.",
     "sourceUrl": "https://en.wikipedia.org/wiki/De_Baarsjes",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "The Mercatorplein was designed by Berlage himself and is the only square of his in Amsterdam that survives complete.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/De_Baarsjes_(wijk)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -1315,6 +1602,13 @@
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdamsche_FC",
     "lang": "en",
     "sourceLabel": "Wikipedia",
+    "kind": "derived"
+   },
+   "localFact": {
+    "en": "One of the first buildings here was the Esso Motor Hotel, opened on 26 February 1969; it is now a Holiday Inn.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Vivaldi_(project)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
   },
@@ -1338,6 +1632,13 @@
     "lang": "en",
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia"
+   },
+   "localFact": {
+    "en": "Buitenveldert is Amsterdam's modern Jewish quarter: synagogues, Jewish schools, kosher shops and care homes gather around the Kastelenstraat. Chief Rabbi Aron Schuster opened its first synagogue in 1965.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Buitenveldert",
+    "lang": "en",
+    "sourceLabel": "English and Dutch Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1357,6 +1658,13 @@
     "en": "Zuidas means 'South Axis'.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Zuidas",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Zuidas is known as the 'Financial Mile'. The Amsterdamsche Football Club, founded in 1895 and one of the oldest football clubs in the Netherlands, plays here at Sportpark Goed Genoeg.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Zuidas",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1394,6 +1702,13 @@
     "en": "Abdellah Zakibrug (bridge here): A British stray bullet hit a building on the northeastern slope during World War II in 1940.",
     "sourceUrl": "https://nl.wikipedia.org/wiki/Abdellah_Zakibrug",
     "lang": "en",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "localFact": {
+    "en": "In December 1876 the Jacob van Lennepstraat was laid out across the 'landje van Mina', where horses had grazed. Until the bridge to the Kinkerstraat opened in 1880, residents crossed by ferry.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Van_Lennepbuurt",
+    "lang": "nl",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
    }
@@ -1456,6 +1771,13 @@
     "en": "Houthaven means 'timber port': it was dug in 1876 to tranship and store timber.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Houthaven",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "The Houthaven was the first port in Amsterdam to be dug out rather than made from existing water. An apartment building by MVRDV from 2002 stands on stilts in the water here.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Houthaven",
+    "lang": "en",
+    "sourceLabel": "English and Dutch Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1470,6 +1792,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Theater_Amsterdam",
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
+   },
+   "localFact": {
+    "en": "Westpoort is the largest continuous industrial estate in the Netherlands. In 2008 about 45,000 people commuted here, making it the largest commuter destination within the city.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Westpoort",
+    "lang": "en",
+    "sourceLabel": "English and Dutch Wikipedia",
     "kind": "derived"
    }
   },
@@ -1513,6 +1842,13 @@
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
+   },
+   "localFact": {
+    "en": "The Hollandsche Manege, between the Overtoom and the Vondelstraat, is the oldest riding school in the Netherlands.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Vondelparkbuurt",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -1532,6 +1868,13 @@
     "en": "Oud-Zuid means 'Old South'. From 1998 to 2010 it was also the name of a larger borough that included De Pijp.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam_Oud-Zuid",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "The P.C. Hooftstraat is Amsterdam's best-known luxury shopping street, with more shops along the Van Baerlestraat, Cornelis Schuytstraat and Beethovenstraat.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oud-Zuid_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -1545,6 +1888,13 @@
     "en": "Amsterdam-Zuid is the borough of Amsterdam situated to the south and southwest of the Singelgracht canal, along the Stadhouderskade city ring road. It is bordered by the Vondelpark in the northwest, the Westlandgracht canal in the west, the Amstel river in the east and the Kalfjeslaan in the south, which also forms the border with the municipality of Amstelveen. The Singelgracht canal had been Amsterdam's city border since the 17th century, when the Amsterdam canal belt was constructed.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-Zuid",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Zuid's landmarks include the Olympic Stadium, Aldo van Eyck's former Burgerweeshuis orphanage and the Wolkenkrabber (skyscraper) on the Victorieplein.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Amsterdam-Zuid",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -1567,6 +1917,13 @@
     "lang": "en",
     "sourceLabel": "Wikipedia (translated from Dutch)",
     "kind": "derived"
+   },
+   "localFact": {
+    "en": "The island is known as a showcase of late-20th-century architecture; Wiel Arets's Skydome (1996) is its only residential tower.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/KNSM-eiland",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -1583,6 +1940,13 @@
     "lang": "en",
     "sourceLabel": "Wikipedia",
     "kind": "derived"
+   },
+   "localFact": {
+    "en": "Loods 6 (1922), the only harbour shed preserved in full, now houses more than a hundred artists.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Oostelijk_Havengebied",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {
@@ -1596,6 +1960,13 @@
     "en": "The borough of Amsterdam-West consists primarily of the pre-World War II part of Amsterdam to the west of the Singelgracht. The western expansion beyond the 17th-century Amsterdam canal belt started in the last quarter of the 19th century. The first neighborhoods to be built were Spaarndammerbuurt, parts of Zeeheldenbuurt, Staatsliedenbuurt, Kinkerbuurt and Overtoombuurt.",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-West",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Its first western neighbourhoods are known for revolutiebouw ('revolution building'): 19th-century apartment blocks put up quickly and cheaply for working and middle-class families.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-West",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1624,6 +1995,13 @@
     "en": "Amsterdam-Oost is the borough of Amsterdam on the eastern side of the Singelgracht canal. The borough is bordered by the Amstel river in the west, the Weespertrekvaart canal in the south, and the IJ lake in the east and north. The eastern city expansion beyond the 17th-century Amsterdam canal belt began in the last quarter of the 19th century with the development of the Oosterparkbuurt and Dapperbuurt. These neighborhoods, including the Weesperzijde area along the Amstel river, are called Oud-Oost ('Old East').",
     "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-Oost",
     "lang": "en"
+   },
+   "localFact": {
+    "en": "Between 1932 and 1942 the Eastern Railway Works lifted the old ground-level railways onto embankments to open up the new eastern neighbourhoods.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-Oost",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1638,6 +2016,13 @@
     "sourceUrl": "https://nl.wikipedia.org/wiki/Amsterdam-Noord",
     "lang": "nl",
     "original": "Amsterdam benoorden het IJ bestond aanvankelijk slechts uit een schiereilandje, de Volewijck, waarover de stad in 1393 zeggenschap kreeg (recht van ambachtsheerlijkheid). Tot 1795 was hier het galgenveld, waar de lijken van veroordeelden na de executie werden opgehangen, als afschrikwekkend voorbeeld. Boven Amsterdam lag Waterland, met dorpen als Buiksloot, Nieuwendam en Durgerdam. In 1629 werd de Buikslotermeer ten oosten van Buiksloot drooggemalen in de hoop op vruchtbare landbouwgrond, maar de poldergrond bleek alleen geschikt voor grasland."
+   },
+   "localFact": {
+    "en": "Noord is known for its garden villages, built from the 1920s on annexed land, and for its typical wooden houses in Schellingwoude and Nieuwendam.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Amsterdam-Noord",
+    "lang": "en",
+    "sourceLabel": "English and Dutch Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1657,6 +2042,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "Tot 1663 liep de Herengracht tot de huidige Leidsegracht. Vanaf dat jaar werd de Amsterdamse grachtengordel uitgebreid. De grond werd onteigend en de Herengracht werd verlengd. Ter hoogte van de Nieuwe Spiegelstraat kreeg de Herengracht een knik. Doordat de drie grachten hier wat verder uit elkaar werden gelegd, waren de kavels aan de zuidzijde dieper. De percelen zijn verkocht tussen 1664 en 1668. De burgemeesters bevorderden de aankoop van dubbele kavels."
+   },
+   "localFact": {
+    "en": "The De Neufville family's house of 1731, at Herengracht 475 and 476, is known for having the prettiest facades on the bend. A few doors on, at Herengracht 497, is a small private museum, the Kattenkabinet.",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Gouden_Bocht",
+    "lang": "en",
+    "sourceLabel": "Wikipedia",
+    "kind": "derived"
    }
   },
   {
@@ -1684,6 +2076,13 @@
     "sourceLabel": "Wikipedia",
     "kind": "wikipedia",
     "original": "Het terrein werd begin 20e eeuw aangeplempt met baggerslib afkomstig uit het IJ en het Oostelijk Havengebied. Het was lang een afgelegen gebied dat in gebruik was als militair terrein met schietbanen en de watervliegtuigbasis Marinevliegkamp Schellingwoude. In de jaren tachtig werd de Rioolwaterzuiveringsinrichting Oost aanlegd op het voormalige militaire terrein. In 2006 is ter vervanging hiervan een nieuwe installatie in het Westelijk Havengebied in gebruik genomen."
+   },
+   "localFact": {
+    "en": "Building began here in July 2012, and in 2013 and 2014 the first homes built by their own future residents were finished.",
+    "sourceUrl": "https://nl.wikipedia.org/wiki/Sportheldenbuurt_(Amsterdam)",
+    "lang": "nl",
+    "sourceLabel": "Wikipedia (translated from Dutch)",
+    "kind": "derived"
    }
   },
   {

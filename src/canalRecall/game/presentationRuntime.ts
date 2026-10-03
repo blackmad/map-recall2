@@ -1161,238 +1161,310 @@ export class GamePresentationRuntime {
       else if (stored) bestText = `Personal best  ${this.hud.formatTime(stored.time)}`;
     }
 
-    const blocks: CardBlock[] = [];
+    // The card has to fit the screen (user report 2026-10-02: on a laptop
+    // the actions ran off the bottom). It is built at the roomiest density
+    // first; each further level tightens spacing and shortens the prose, and
+    // only if the tightest still overflows is the whole card scaled down.
+    const buildBlocks = (level: number): CardBlock[] => {
+      const blocks: CardBlock[] = [];
 
-    blocks.push({ height: 74, draw: (top) => {
-      ctx.textAlign = 'left';
-      ctx.fillStyle = ACCENT; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-      ctx.fillText('ARRIVED', cardX + padX, top + 11);
-      ctx.fillStyle = INK; ctx.font = '800 26px system-ui, sans-serif';
-      ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
-      ctx.fillStyle = MUTED; ctx.font = '13px system-ui, sans-serif';
-      ctx.fillText(`${this.routeFrom.name}  →  ${this.routeTo.name}`, cardX + padX, top + 64);
-    } });
-
-    if (landmark) {
-      const photo = hasImage ? 88 : 0;
-      const textX = cardX + padX + (hasImage ? photo + 16 : 0);
-      const textW = cardX + cardW - padX - textX;
-      ctx.font = '12px system-ui, sans-serif';
-      const blurb = wrapText(ctx, landmark.longDetail || landmark.detail
-        || `A place to remember on your ${this._cityDisplayName()} map.`, textW, hasImage ? 4 : 3);
-      const height = Math.max(photo, 20 + blurb.length * 17) + 14;
-      blocks.push({ height, draw: (top) => {
-        if (hasImage && image) {
-          ctx.save();
-          ctx.beginPath();
-          roundRect(ctx, cardX + padX, top, photo, photo, 8);
-          ctx.clip();
-          const side = Math.min(image.naturalWidth, image.naturalHeight);
-          ctx.drawImage(image, (image.naturalWidth - side) / 2, (image.naturalHeight - side) / 2,
-            side, side, cardX + padX, top, photo, photo);
-          ctx.restore();
-        }
+      blocks.push({ height: 74, draw: (top) => {
         ctx.textAlign = 'left';
-        ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        const kind = String(landmark.type || 'landmark').toUpperCase();
-        ctx.fillText(landmark.wikipediaUrl ? `${kind}  ·  W  WIKIPEDIA` : kind, textX, top + 10);
-        ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
-        blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
+        ctx.fillStyle = ACCENT; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+        ctx.fillText('ARRIVED', cardX + padX, top + 11);
+        ctx.fillStyle = INK; ctx.font = '800 26px system-ui, sans-serif';
+        ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
+        ctx.fillStyle = MUTED; ctx.font = '13px system-ui, sans-serif';
+        ctx.fillText(`${this.routeFrom.name}  →  ${this.routeTo.name}`, cardX + padX, top + 64);
       } });
-    }
 
-    // One stat row instead of four differently coloured boxes.
-    const profile = travelProfile(this.travelMode);
-    const recallNoun = profile.recallNoun;
-    const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
-    // A ride with no questions ends on what was covered, not on "0% recall".
-    const stats = this.quizAttempts > 0 ? [
-      { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
-      { label: 'Recall', value: `${accuracy}%` },
-    ] : [];
-    stats.push(
-      { label: 'Time', value: this.hud.formatTime(this.raceTime).slice(0, -2) },
-      { label: 'Distance', value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
-    );
-    if (gamey && this.quizAttempts > 0) stats.splice(2, 0, { label: 'Points', value: String(this.quizPoints) });
-
-    const footerBits = [
-      this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
-      profile.label,
-      this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()),
-    ];
-    if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
-
-    // Five stats across a 600 px card is four columns of comfortable space; the
-    // same five across a 366 px phone card ran "420", "03:33" and "0.00 km"
-    // into each other. On a phone they wrap into rows of at most three.
-    const statsPerRow = compact ? Math.min(3, stats.length) : stats.length;
-    const statRows = Math.ceil(stats.length / statsPerRow);
-    const ROW_H = 48;
-    blocks.push({ height: 30 + statRows * ROW_H, rule: true, draw: (top) => {
-      ctx.textAlign = 'center';
-      stats.forEach((stat, index) => {
-        const row = Math.floor(index / statsPerRow);
-        // The last row is centred rather than left-packed, so a trailing pair
-        // does not sit under the first two columns with a gap beside it.
-        const inRow = Math.min(statsPerRow, stats.length - row * statsPerRow);
-        const column = innerW / inRow;
-        const sx = cardX + padX + column * ((index % statsPerRow) + 0.5);
-        const sy = top + row * ROW_H;
-        ctx.fillStyle = INK; ctx.font = `700 ${compact ? 19 : 21}px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        ctx.fillText(stat.value, sx, sy + 24);
-        ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
-        ctx.fillText(stat.label, sx, sy + 42);
-      });
-      ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
-      ctx.fillText(footerBits.join('  ·  '), cx, top + statRows * ROW_H + 18);
-    } });
-
-    if (ribbon) {
-      blocks.push({ height: 86, rule: true, draw: (top) => {
-        this._renderRouteRibbon(ctx, cardX + padX, top + 6, innerW, 74);
-      } });
-    }
-
-    if (exploration) {
-      const known = exploration.learnedWaterways.length + exploration.learnedStreets.length
-        + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
-      const totals: string[] = [];
-      if (known > 0) totals.push(`${known} names`);
-      if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
-      if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
-      const gain = this._explorationRouteGain;
-      const story = finishStory({
-        gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
-        destinationName: this.routeTo?.name || '',
-        cityName: this._cityDisplayName(),
-        newPassportStamps: this._finishPassportFresh || [],
-        placeStreak: { days: [], current: 0, best: 0 },
-        signedIn: !!(this.recall && this.recall.signedIn),
-        recallAvailable: !!(this.recall && this.recall.available),
-      });
-      // Prefer live streak label computed at save time.
-      if (this._finishPlaceStreakLabel) story.streak = this._finishPlaceStreakLabel;
-      const fresh: string[] = [];
-      if (gain && gain.newNames > 0) fresh.push(`${gain.newNames} names`);
-      if (gain && gain.newNeighborhoods > 0) fresh.push(`${gain.newNeighborhoods} neighborhoods`);
-      if (gain && gain.newLandmarks > 0) fresh.push(`${gain.newLandmarks} landmarks`);
-      const knowledgeStacked = compact;
-      const storyLines = [story.headline, story.detail, story.passport, story.streak, story.guestTease]
-        .filter(Boolean) as string[];
-      const knowledgeH = (knowledgeStacked ? 34 : 18)
-        + (fresh.length ? 18 : 0)
-        + storyLines.length * 16
-        + 10;
-      blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
-        ctx.textAlign = 'left';
-        ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        ctx.fillText('CITY KNOWLEDGE', cardX + padX, top + 12);
-        ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
-        if (knowledgeStacked) {
-          ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + padX, top + 30);
-        } else {
-          ctx.textAlign = 'right';
-          ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + cardW - padX, top + 12);
-        }
-        let y = top + (knowledgeStacked ? 48 : 30);
-        if (fresh.length) {
-          ctx.textAlign = 'left';
-          ctx.fillStyle = ACCENT;
-          ctx.font = '11px system-ui, sans-serif';
-          ctx.fillText(`+${fresh.join(', +')} first-time`, cardX + padX, y);
-          y += 16;
-        }
-        ctx.textAlign = 'left';
-        ctx.fillStyle = BODY;
+      // The tightest level drops the encyclopedia blurb: the heading already
+      // names the place, and scaling the card would shrink the touch targets.
+      if (landmark && level < 3) {
+        const photo = hasImage ? (level >= 2 ? 64 : 88) : 0;
+        const textX = cardX + padX + (hasImage ? photo + 16 : 0);
+        const textW = cardX + cardW - padX - textX;
         ctx.font = '12px system-ui, sans-serif';
-        for (const line of storyLines) {
-          ctx.fillText(line, cardX + padX, y);
-          y += 16;
-        }
-      } });
-    }
-
-    if (bestText) {
-      blocks.push({ height: 26, draw: (top) => {
-        ctx.textAlign = 'left';
-        ctx.fillStyle = bestText.startsWith('★') ? GOOD : MUTED;
-        ctx.font = 'bold 13px system-ui, sans-serif';
-        ctx.fillText(bestText, cardX + padX, top + 14);
-      } });
-    }
-
-    // A phone has no ENTER, ESC or C, so the keycaps that document the actions
-    // on a keyboard are the actions themselves on touch: full-width buttons
-    // with 44 px targets, hit-tested against `_finishButtonBounds`.
-    type FinishAction = { id: 'again' | 'route' | 'copy'; key: string; caption: string };
-    const actions: FinishAction[] = [
-      // Say what happens: 'again' deals another route with these settings,
-      // 'route' goes back to setup. "Continue" / "Finish" said neither.
-      { id: 'again', key: 'ENTER', caption: 'Next route' },
-    ];
-    // Route setup is a tap target on the phone. The desktop card no longer
-    // offers it on ESC (user request 2026-09-28); the pause menu keeps it.
-    if (compact) actions.push({ id: 'route', key: '', caption: 'Route setup' });
-    if (this._shareUrl) {
-      actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? 'Link copied' : 'Share this route' });
-    }
-    const BUTTON_H = 44, BUTTON_GAP = 8;
-    const finishButtons: NonNullable<typeof this._finishButtonBounds> = [];
-    this._finishButtonBounds = finishButtons;
-    blocks.push({
-      height: compact ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP : 34,
-      rule: true,
-      draw: (top) => {
-        if (compact) {
-          let by = top;
-          for (const action of actions) {
-            const primary = action.id === 'again';
-            const bounds = { x: cardX + padX, y: by, w: cardW - padX * 2, h: BUTTON_H };
-            ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
-            roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
-            ctx.fill();
-            if (!primary) {
-              ctx.strokeStyle = RULE; ctx.lineWidth = 1; ctx.stroke();
-            }
-            ctx.textAlign = 'center';
-            ctx.fillStyle = primary ? '#1f1c17' : (action.caption === 'Link copied' ? GOOD : INK);
-            ctx.font = '700 14px system-ui, sans-serif';
-            ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
-            finishButtons.push({ ...bounds, id: action.id });
-            by += BUTTON_H + BUTTON_GAP;
+        const blurb = wrapText(ctx, landmark.longDetail || landmark.detail
+          || `A place to remember on your ${this._cityDisplayName()} map.`, textW,
+          [hasImage ? 4 : 3, 3, 2][level]);
+        const height = Math.max(photo, 20 + blurb.length * 17) + 14;
+        blocks.push({ height, draw: (top) => {
+          if (hasImage && image) {
+            ctx.save();
+            ctx.beginPath();
+            roundRect(ctx, cardX + padX, top, photo, photo, 8);
+            ctx.clip();
+            const side = Math.min(image.naturalWidth, image.naturalHeight);
+            ctx.drawImage(image, (image.naturalWidth - side) / 2, (image.naturalHeight - side) / 2,
+              side, side, cardX + padX, top, photo, photo);
+            ctx.restore();
           }
           ctx.textAlign = 'left';
-          return;
+          ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+          const kind = String(landmark.type || 'landmark').toUpperCase();
+          ctx.fillText(landmark.wikipediaUrl ? `${kind}  ·  W  WIKIPEDIA` : kind, textX, top + 10);
+          ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
+          blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
+        } });
+      }
+
+      // One stat row instead of four differently coloured boxes.
+      const profile = travelProfile(this.travelMode);
+      const recallNoun = profile.recallNoun;
+      const accuracy = this.quizAttempts > 0 ? Math.round(100 * this.quizCorrect / this.quizAttempts) : 0;
+      // A ride with no questions ends on what was covered, not on "0% recall".
+      const stats = this.quizAttempts > 0 ? [
+        { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
+        { label: 'Recall', value: `${accuracy}%` },
+      ] : [];
+      stats.push(
+        { label: 'Time', value: this.hud.formatTime(this.raceTime).slice(0, -2) },
+        { label: 'Distance', value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
+      );
+      if (gamey && this.quizAttempts > 0) stats.splice(2, 0, { label: 'Points', value: String(this.quizPoints) });
+
+      const footerBits = [
+        this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
+        profile.label,
+        this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()),
+      ];
+      if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
+      // Tighter levels fold the personal best into this line rather than give
+      // it a row of its own.
+      const bestInFooter = level >= 1 && !!bestText;
+      if (bestInFooter) footerBits.unshift(bestText.replace('★  ', '★ '));
+
+      // Five stats across a 600 px card is four columns of comfortable space; the
+      // same five across a 366 px phone card ran "420", "03:33" and "0.00 km"
+      // into each other. On a phone they wrap into rows of at most three.
+      const statsPerRow = compact ? Math.min(3, stats.length) : stats.length;
+      const statRows = Math.ceil(stats.length / statsPerRow);
+      const ROW_H = level >= 2 ? 42 : 48;
+      blocks.push({ height: 30 + statRows * ROW_H, rule: true, draw: (top) => {
+        ctx.textAlign = 'center';
+        stats.forEach((stat, index) => {
+          const row = Math.floor(index / statsPerRow);
+          // The last row is centred rather than left-packed, so a trailing pair
+          // does not sit under the first two columns with a gap beside it.
+          const inRow = Math.min(statsPerRow, stats.length - row * statsPerRow);
+          const column = innerW / inRow;
+          const sx = cardX + padX + column * ((index % statsPerRow) + 0.5);
+          const sy = top + row * ROW_H;
+          ctx.fillStyle = INK; ctx.font = `700 ${compact ? 19 : 21}px ${window.CanalRecallUi.hudSurface.fontMono}`;
+          ctx.fillText(stat.value, sx, sy + 24);
+          ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
+          ctx.fillText(stat.label, sx, sy + 42);
+        });
+        ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
+        ctx.fillText(wrapText(ctx, footerBits.join('  ·  '), innerW, 1)[0], cx, top + statRows * ROW_H + 18);
+      } });
+
+      if (ribbon) {
+        blocks.push({ height: 86, rule: true, draw: (top) => {
+          this._renderRouteRibbon(ctx, cardX + padX, top + 6, innerW, 74);
+        } });
+      }
+
+      if (exploration) {
+        const known = exploration.learnedWaterways.length + exploration.learnedStreets.length
+          + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
+        const totals: string[] = [];
+        if (known > 0) totals.push(`${known} names`);
+        if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
+        if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
+        const gain = this._explorationRouteGain;
+        const story = finishStory({
+          gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
+          destinationName: this.routeTo?.name || '',
+          cityName: this._cityDisplayName(),
+          newPassportStamps: this._finishPassportFresh || [],
+          placeStreak: { days: [], current: 0, best: 0 },
+          signedIn: !!(this.recall && this.recall.signedIn),
+          recallAvailable: !!(this.recall && this.recall.available),
+        });
+        // Prefer live streak label computed at save time.
+        if (this._finishPlaceStreakLabel) story.streak = this._finishPlaceStreakLabel;
+        const fresh: string[] = [];
+        if (gain && gain.newNames > 0) fresh.push(`${gain.newNames} names`);
+        if (gain && gain.newNeighborhoods > 0) fresh.push(`${gain.newNeighborhoods} neighborhoods`);
+        if (gain && gain.newLandmarks > 0) fresh.push(`${gain.newLandmarks} landmarks`);
+        const knowledgeStacked = compact;
+        // Wrapped to the card: on a phone "You made it to … · 2 new names, 1
+        // landmark" ran past the right edge. Tighter levels keep fewer lines.
+        ctx.font = '12px system-ui, sans-serif';
+        // Whole sentences only: cutting a wrapped one after its first line
+        // left "… · 2" hanging.
+        const lineBudget = [Infinity, 4, 2, 1][level];
+        const storyLines: string[] = [];
+        for (const sentence of [story.headline, story.detail, story.passport, story.streak, story.guestTease]) {
+          if (!sentence) continue;
+          const room = lineBudget - storyLines.length;
+          // A first sentence too long for the budget keeps its lead clause
+          // ("You made it to …"); the gains are on the line above it.
+          if (!storyLines.length && wrapText(ctx, sentence, innerW, 2).length > room && sentence.includes(' · ')) {
+            storyLines.push(...wrapText(ctx, sentence.split(' · ')[0], innerW, room));
+            if (storyLines.length >= lineBudget) break;
+            continue;
+          }
+          const wrapped = wrapText(ctx, sentence, innerW, Math.min(2, room));
+          if (!storyLines.length || wrapText(ctx, sentence, innerW, 2).length <= room) storyLines.push(...wrapped);
+          if (storyLines.length >= lineBudget) break;
         }
-        ctx.textAlign = 'left';
-        let ax = cardX + padX;
-        for (const action of actions) {
-          ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          const keyW = ctx.measureText(action.key).width + 14;
-          ctx.fillStyle = 'rgba(31,28,23,.08)';
-          roundRect(ctx, ax, top + 4, keyW, 20, 5);
-          ctx.fill();
-          ctx.fillStyle = INK;
-          ctx.fillText(action.key, ax + 7, top + 18);
-          ax += keyW + 8;
-          ctx.fillStyle = action.caption === 'Link copied' ? GOOD : MUTED;
+        const knowledgeH = (knowledgeStacked ? 34 : 18)
+          + (fresh.length ? 18 : 0)
+          + storyLines.length * 16
+          + 10;
+        blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
+          ctx.textAlign = 'left';
+          ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+          ctx.fillText('CITY KNOWLEDGE', cardX + padX, top + 12);
+          ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
+          if (knowledgeStacked) {
+            ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + padX, top + 30);
+          } else {
+            ctx.textAlign = 'right';
+            ctx.fillText(totals.join('  ·  ') || 'Start exploring', cardX + cardW - padX, top + 12);
+          }
+          let y = top + (knowledgeStacked ? 48 : 30);
+          if (fresh.length) {
+            ctx.textAlign = 'left';
+            ctx.fillStyle = ACCENT;
+            ctx.font = '11px system-ui, sans-serif';
+            ctx.fillText(`+${fresh.join(', +')} first-time`, cardX + padX, y);
+            y += 16;
+          }
+          ctx.textAlign = 'left';
+          ctx.fillStyle = BODY;
           ctx.font = '12px system-ui, sans-serif';
-          ctx.fillText(action.caption, ax, top + 18);
-          ax += ctx.measureText(action.caption).width + 22;
-        }
-      },
-    });
+          for (const line of storyLines) {
+            ctx.fillText(line, cardX + padX, y);
+            y += 16;
+          }
+        } });
+      }
+
+      if (bestText && !bestInFooter) {
+        blocks.push({ height: 26, draw: (top) => {
+          ctx.textAlign = 'left';
+          ctx.fillStyle = bestText.startsWith('★') ? GOOD : MUTED;
+          ctx.font = 'bold 13px system-ui, sans-serif';
+          ctx.fillText(bestText, cardX + padX, top + 14);
+        } });
+      }
+
+      // A phone has no ENTER, ESC or C, so the keycaps that document the actions
+      // on a keyboard are the actions themselves on touch: full-width buttons
+      // with 44 px targets, hit-tested against `_finishButtonBounds`.
+      type FinishAction = { id: 'again' | 'route' | 'copy'; key: string; caption: string };
+      const actions: FinishAction[] = [
+        // Say what happens: 'again' deals another route with these settings,
+        // 'route' goes back to setup. "Continue" / "Finish" said neither.
+        { id: 'again', key: 'ENTER', caption: 'Next route' },
+      ];
+      // Route setup is a tap target on the phone. The desktop card no longer
+      // offers it on ESC (user request 2026-09-28); the pause menu keeps it.
+      if (compact) actions.push({ id: 'route', key: '', caption: 'Route setup' });
+      if (this._shareUrl) {
+        actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? 'Link copied' : 'Share this route' });
+      }
+      const BUTTON_H = 44, BUTTON_GAP = 8;
+      // A short phone pairs the secondary actions on one row rather than
+      // shrinking the whole card, so every target stays 44 px tall.
+      const pairSecondary = compact && level >= 2 && actions.length === 3;
+      const buttonRows = pairSecondary ? 2 : actions.length;
+      const finishButtons: NonNullable<typeof this._finishButtonBounds> = [];
+      this._finishButtonBounds = finishButtons;
+      blocks.push({
+        height: compact ? buttonRows * BUTTON_H + (buttonRows - 1) * BUTTON_GAP : 34,
+        rule: true,
+        draw: (top) => {
+          if (compact) {
+            let by = top;
+            const fullW = cardW - padX * 2;
+            actions.forEach((action, index) => {
+              const primary = action.id === 'again';
+              const paired = pairSecondary && index > 0;
+              const halfW = (fullW - BUTTON_GAP) / 2;
+              const bounds = paired
+                ? { x: cardX + padX + (index - 1) * (halfW + BUTTON_GAP), y: by, w: halfW, h: BUTTON_H }
+                : { x: cardX + padX, y: by, w: fullW, h: BUTTON_H };
+              ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
+              roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
+              ctx.fill();
+              if (!primary) {
+                ctx.strokeStyle = RULE; ctx.lineWidth = 1; ctx.stroke();
+              }
+              ctx.textAlign = 'center';
+              ctx.fillStyle = primary ? '#1f1c17' : (action.caption === 'Link copied' ? GOOD : INK);
+              ctx.font = '700 14px system-ui, sans-serif';
+              ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
+              finishButtons.push({ ...bounds, id: action.id });
+              if (!paired || index === actions.length - 1) by += BUTTON_H + BUTTON_GAP;
+            });
+            ctx.textAlign = 'left';
+            return;
+          }
+          ctx.textAlign = 'left';
+          let ax = cardX + padX;
+          for (const action of actions) {
+            ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+            const keyW = ctx.measureText(action.key).width + 14;
+            ctx.fillStyle = 'rgba(31,28,23,.08)';
+            roundRect(ctx, ax, top + 4, keyW, 20, 5);
+            ctx.fill();
+            ctx.fillStyle = INK;
+            ctx.fillText(action.key, ax + 7, top + 18);
+            ax += keyW + 8;
+            ctx.fillStyle = action.caption === 'Link copied' ? GOOD : MUTED;
+            ctx.font = '12px system-ui, sans-serif';
+            ctx.fillText(action.caption, ax, top + 18);
+            ax += ctx.measureText(action.caption).width + 22;
+          }
+        },
+      });
+
+      return blocks;
+    };
 
     // Measurement and drawing share one formula for the space above a block,
     // so the card cannot end up with a band of dead space at the bottom.
-    const GAP = 16, PAD_TOP = 30, PAD_BOTTOM = 26;
+    const MARGIN = 16;
+    // A phone keeps its settings and help buttons in the bottom corner; the
+    // card's own buttons must end above them, not under them.
+    const bottomReserve = compact ? 76 : MARGIN;
+    const room = CANVAS_H - MARGIN - bottomReserve;
+    const spacing = (level: number) => ({
+      GAP: [16, 12, 10, 8][level], PAD_TOP: [30, 24, 20, 18][level], PAD_BOTTOM: [26, 20, 18, 16][level],
+    });
+    let level = 0;
+    let blocks = buildBlocks(0);
+    const measureCard = (lv: number, list: CardBlock[]): number => {
+      const { GAP, PAD_TOP, PAD_BOTTOM } = spacing(lv);
+      let height = PAD_TOP + PAD_BOTTOM;
+      list.forEach((block, index) => { height += (index === 0 ? 0 : block.rule ? GAP * 2 : GAP) + block.height; });
+      return height;
+    };
+    let cardH = measureCard(0, blocks);
+    while (cardH > room && level < 3) {
+      level += 1;
+      blocks = buildBlocks(level);
+      cardH = measureCard(level, blocks);
+    }
+    const { GAP, PAD_TOP } = spacing(level);
     const leadFor = (block: CardBlock, index: number): number =>
       (index === 0 ? 0 : block.rule ? GAP * 2 : GAP);
-    let cardH = PAD_TOP + PAD_BOTTOM;
-    blocks.forEach((block, index) => { cardH += leadFor(block, index) + block.height; });
-    const cardY = Math.max(16, Math.min(
-      Math.round((CANVAS_H - cardH) / 2), Math.max(16, CANVAS_H - cardH - 16)));
+    // Last resort: shrink the whole card about its top centre. The touch
+    // buttons' hit boxes are mapped through the same transform below.
+    const scale = Math.min(1, room / cardH);
+    const cardY = scale < 1 ? MARGIN : Math.max(MARGIN, Math.min(
+      Math.round((CANVAS_H - cardH) / 2), CANVAS_H - cardH - bottomReserve));
+    ctx.save();
+    if (scale < 1) {
+      ctx.translate(cx, cardY);
+      ctx.scale(scale, scale);
+      ctx.translate(-cx, -cardY);
+    }
 
     this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH },
       { solid: true, radius: 16 });
@@ -1406,6 +1478,16 @@ export class GamePresentationRuntime {
       block.draw(y);
       y += block.height;
     });
+    ctx.restore();
+    this._finishCardBounds = { x: cx - (cardW / 2) * scale, y: cardY, w: cardW * scale, h: cardH * scale };
+    if (scale < 1 && this._finishButtonBounds) {
+      for (const bounds of this._finishButtonBounds) {
+        bounds.x = cx + (bounds.x - cx) * scale;
+        bounds.y = cardY + (bounds.y - cardY) * scale;
+        bounds.w *= scale;
+        bounds.h *= scale;
+      }
+    }
     ctx.textAlign = 'center';
   }
 
@@ -1493,7 +1575,14 @@ export class GamePresentationRuntime {
       const w = trackW - 14;
       ctx.fillStyle = '#94A3B8';
       ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-      ctx.fillText(`${axis.label} ${Math.round(axis.score * 100)}%`, x, boxY + 45);
+      // On a phone "Efficiency 100%" ran past the box; the bar already shows
+      // the share, so a narrow column keeps the name and drops the number.
+      let axisText = `${axis.label} ${Math.round(axis.score * 100)}%`;
+      if (ctx.measureText(axisText).width > w) {
+        ctx.font = `10px ${window.CanalRecallUi.hudSurface.fontMono}`;
+        axisText = axis.label;
+      }
+      ctx.fillText(axisText, x, boxY + 45);
       ctx.fillStyle = 'rgba(148,163,184,.25)';
       roundRect(ctx, x, boxY + 52, w, 7, 3.5);
       ctx.fill();
