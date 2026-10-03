@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+## Original landmark catalogue: 29 models (2026-10-04)
+
+The flat-colour catalogue now includes Amstelkerk, He Hua Temple, Haarlemmerpoort,
+Museum Het Schip and Scheepvaarthuis, in addition to the 24 earlier models.
+Het Schip follows the actual 40-building triangular complex, retaining its open
+courtyards. Scheepvaarthuis follows the waterfront outline and prow tower.
+Embassy of the Free Mind / Huis met de Hoofden includes the sculpted heads and
+shares its model across both landmark records. The browsable POI queue reflects
+current model coverage.
+
+Narrow house museums and the Amsterdam School complexes suppress only their
+explicit OSM building IDs. Their padded bounding rectangles formerly also hid
+nearby houses or courtyard structures. The runtime still restores generic
+geometry when replacements are disabled. `check-landmark-suppression.mjs`
+checks these cases; all 29 models pass geometry, placement and compression
+checks. The newest models were reviewed in the gallery and on the map.
+
 ## Facade extrusions slimmed: ivy, oriels, bay windows, canopies, balconies, awnings
 
 User (2026-10-03, Nassaukade screenshot): "what are these awful imposing extrusions on our canal house grammar?"

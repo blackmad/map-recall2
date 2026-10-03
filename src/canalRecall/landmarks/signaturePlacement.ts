@@ -85,6 +85,8 @@ export interface SignatureModelSpec {
    *  the model is drawn. Keyed on the id rather than on a spatial test so a
    *  partly loaded tile can never leave both geometries standing. */
   readonly suppressOsmIds: readonly string[];
+  /** Exact complete OSM lists can opt out of padded rectangle suppression. */
+  readonly spatialSuppression?: boolean;
   /** The footprint the model is fitted to. Required for a fitted model; for a
    *  surveyed one it is only ever reported, and several municipal models cover
    *  landmarks the extract holds as a point with no ring. */
