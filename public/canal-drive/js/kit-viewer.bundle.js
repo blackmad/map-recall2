@@ -953,6 +953,647 @@
     }
   ];
 
+  // src/canalRecall/worshipKits.ts
+  var ESNOGA_BRICK = "#7a4a3a";
+  var ESNOGA_STONE = "#e6dfcf";
+  var WORSHIP_KITS = [
+    {
+      // Portuguese Synagogue (Esnoga), Mr. Visserplein: Elias Bouman's 1675 brick box. Commons
+      // "EsnogaAmsterdam.jpg" and "De Portuguese Synagoge te Amsterdam - Amsterdam - 20013903 -
+      // RCE.jpg": dark brick walls between giant pilaster-buttresses, a lower row of tall
+      // round-headed windows and an upper row of square ones, a white stone cornice and balustrade,
+      // and the roof hidden behind it. The low ring of service buildings around it are separate
+      // footprints. One BAG footprint (1675, 21.9 m tile height) carries the box with its 1.1 m
+      // buttresses, 37 x 27.9 m on an axis of 151 degrees, and two small 8 m annexes on the east.
+      // 3D BAG: roof slopes from 18.7 to 23.7 m (hipped, behind the balustrade), a few flat bits at
+      // 21 m. Scaled off the RCE photo (cornice 19 m): arched windows 6.2-13.2 m, square ones
+      // 14.6-17.6 m, two between each pair of buttresses; balustrade to 20.2 m.
+      name: "Portuguese Synagogue",
+      wall: { plain: true, hex: ESNOGA_BRICK },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012170255",
+        widthM: 0,
+        anchor: [4.905322, 52.367546],
+        eavesM: 19.2,
+        riseM: 4.4,
+        mat: "slate",
+        wings: [{ at: [4.905322, 52.367546], lenM: 37, widM: 27.9, bearingDeg: 151, riseM: 4.4, roof: "hipped" }],
+        windows: {
+          glassHex: "#3c454d",
+          rows: [
+            { z0: 6.2, z1: 13.2, widthM: 2.1, bayM: 4.9, head: "round" },
+            { z0: 14.6, z1: 17.6, widthM: 1.9, bayM: 4.9, head: "flat" }
+          ]
+        }
+      }],
+      // The stone cornice and balustrade round the top of the walls.
+      forms: [{ on: "NL.IMBAG.Pand.0363100012170255", z0: 18.7, z1: 20.2, outsetM: 0.35, hex: ESNOGA_STONE }]
+    },
+    {
+      // Hofkerk (H.H. Martelaren van Gorcumkerk), Linnaeusstraat: J.T.J. Cuypers and Jan Stuyt's
+      // 1927-29 brick church. Commons "Overzicht westgevel met ingangsportaal - Amsterdam - 20409083 -
+      // RCE.jpg" (the west front), "H.H. Martelaren van Gorcum kerk.JPG" (the south side) and
+      // "... kerk 3.JPG" (the tower): a square west tower with paired belfry arches and a narrow
+      // tiled pyramid, the nave's big gable between three pointed portals, a small clock turret,
+      // one sweeping glazed-tile roof over nave and aisles, a square crossing tower under a tiled
+      // pyramid, and a lower transept and choir. No dome. One BAG footprint (1929, tile height
+      // 32.1 m: the whole church stood as a 32 m box). 3D BAG: nave slopes 5.4-19.8 m, transept
+      // 6-13.9 m, choir 8-15 m, crossing tower pyramid 22.3-29.3 m, the west tower's flat top
+      // 25.7-26.1 m (ridge 32.1 m with its cap and cross), the clock turret's pyramid 11.2-16.7 m.
+      name: "Hofkerk",
+      wall: { plain: true, hex: "#8f5038" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012123068",
+        widthM: 0,
+        anchor: [4.933645, 52.353062],
+        eavesM: 8,
+        riseM: 11.8,
+        mat: "tile",
+        roofHex: "#9a8150",
+        wings: [
+          { at: [4.933645, 52.353062], lenM: 37.4, widM: 21, bearingDeg: 0, riseM: 11.8 },
+          { at: [4.93399, 52.353055], lenM: 43, widM: 12, bearingDeg: 90, riseM: 5.9 },
+          { at: [4.93412, 52.35306], lenM: 10, widM: 12, bearingDeg: 0, riseM: 7, roof: "hipped" }
+        ],
+        towers: [
+          // West tower: walls to the 26 m flat top, a narrow tiled pyramid and cross (32.1 m).
+          { at: [4.933435, 52.353172], widthM: 8.5, z1: 26, capM: 4.5, capWidthM: 4.2, cap: "tile", bearingDeg: 0 },
+          // Crossing tower under its tiled pyramid (29.3 m, cross 30.9 m).
+          { at: [4.93397, 52.353062], widthM: 10, z1: 21.5, capM: 7.8, cap: "tile", bearingDeg: 0 },
+          // Clock turret at the south west, turned with the angled block it stands in.
+          { at: [4.933603, 52.352865], widthM: 5, z1: 11.2, capM: 5.5, cap: "tile", bearingDeg: 44 }
+        ],
+        windows: {
+          glassHex: "#3a434c",
+          rows: [
+            // The west front's three pointed portals, the middle one widest (photo: 3 m and 2.4 m).
+            { z0: 0.3, z1: 5.6, widthM: 2.8, bayM: 6.2, head: "pointed", at: [4.93337, 52.35305], count: 3 },
+            // Aisle windows: small pointed lights in a row under the eaves.
+            { z0: 2.6, z1: 5.8, widthM: 0.8, bayM: 2.2, head: "pointed" }
+          ],
+          // Paired belfry arches near the west tower's top.
+          towerRows: [{ z0: 21.4, z1: 24.6, widthM: 1.4, bayM: 1.9, head: "round", count: 2 }]
+        }
+      }]
+    },
+    {
+      // Gerardus Majellakerk, Amsterdam-Oost (OSM way 45037862): a 1926 central church. Commons "Gerardus Majellakerk -
+      // Amsterdam - 20307934 - RCE.jpg", "2022 Gerardus Majellakerk, Asd.jpg" and "Gerardus
+      // Majellakerk Amsterdam (Oostzijde).jpg": dark brown brick, a broad octagonal drum ringed with
+      // round-arched windows under a steep slate cone with a gilt ball and cross, four short arms with
+      // slate gable roofs, round chapels with conical caps in the angles, and a narthex with a round
+      // window at the west end. One BAG footprint (tile height 41.5 m: the whole church stood as a
+      // 41 m block of flats with house windows). 3D BAG: the cone's facets rise from 23-28 m to
+      // 41.3 m round (4.938523, 52.359805); the arms' slopes run 13.3 to 18.8-19.8 m (long arm,
+      // axis 13 degrees) and 13.3 to 19.1-21.2 m (cross arm); chapels 10.5-13.9 m, apses 8-11.4 m.
+      // The footprint is 69 m along the axis and 40 m across at the drum.
+      name: "Gerardus Majellakerk",
+      wall: { plain: true, hex: "#6e4a3c" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012136492",
+        widthM: 0,
+        anchor: [4.938523, 52.359805],
+        eavesM: 13.3,
+        riseM: 6,
+        mat: "slate",
+        wings: [
+          { at: [4.938523, 52.359805], lenM: 56, widM: 20, bearingDeg: 13.3, riseM: 6 },
+          { at: [4.938523, 52.359805], lenM: 40, widM: 14, bearingDeg: 103.3, riseM: 6 }
+        ],
+        towers: [
+          // The drum (24 m across, walls to 25.5 m) under its slate cone to 41.3 m.
+          { at: [4.938523, 52.359805], widthM: 24, z1: 25.5, capM: 15.8, cap: "slate", shape: "octagon", bearingDeg: 13.3 }
+        ],
+        windows: {
+          glassHex: "#3a434c",
+          frameHex: "#e3dccb",
+          rows: [{ z0: 4, z1: 10.5, widthM: 1.5, bayM: 4.2, head: "round" }],
+          // The narthex's round window over the west porch.
+          roses: [{ at: [4.93802, 52.359705], z: 9.5, radiusM: 2 }]
+        }
+      }]
+    },
+    {
+      // Westermoskee (Ayasofya Camii), Piri Reisplein: Marc Breitman and Nada Breitman-Jakov's 2015
+      // mosque in the Ottoman manner (before this kit it stood as a glass-fronted
+      // box). Commons "Westermoskee Aya Sofya (Amsterdam, The Netherlands 2017).jpg" and
+      // "Westermoskee - Amsterdam (26579109769).jpg": a two-storey body of banded brown and buff
+      // brick with round-headed upper windows, a chamfered square drum with a ring of arched windows,
+      // a big zinc dome with a gilt finial, half-domes and a white colonnade, and one slender brick
+      // minaret with two white balconies and a silver spike. One BAG footprint (2015, tile 21.5 m).
+      // 3D BAG: the dome's facets reach 26.4 m round (4.86064, 52.36620); lower roofs and half-domes
+      // 10.5-24 m; the minaret is the small polygon at the east corner (4.86094, 52.366252), where the
+      // point cloud catches only 26.5-32.6 m of it. Its height, about 40 m, is read off the second
+      // photo against the 26 m dome, not measured.
+      name: "Westermoskee",
+      wall: { plain: true, hex: "#7b4636" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012241498",
+        widthM: 0,
+        anchor: [4.86064, 52.3662],
+        eavesM: 10.6,
+        riseM: 0,
+        mat: "lead",
+        towers: [
+          // The drum (22 m across, walls to 18 m) under the zinc dome to 26.4 m.
+          { at: [4.86064, 52.3662], widthM: 22, z1: 18, capM: 8.4, cap: "lead", capShape: "dome", capHex: "#9aa3a8", shape: "octagon", bearingDeg: -37.5 },
+          // The minaret: brick shaft, two white balconies, a silver spike.
+          { at: [4.86094, 52.366252], widthM: 3, z1: 34, capM: 7, cap: "lead", capShape: "spire", capHex: "#c9ced2", shape: "octagon", bearingDeg: -37.5, wallHex: "#6b3a30" },
+          ...[20.5, 30].map((z) => ({ at: [4.86094, 52.366252], widthM: 4.4, z0: z, z1: z + 1.3, capM: 0.3, cap: "white", capShape: "dome", shape: "octagon", mat: "white", wallHex: "#ece8de", bearingDeg: -37.5, finial: false }))
+        ],
+        windows: {
+          glassHex: "#3a434c",
+          frameHex: "#ece8de",
+          rows: [
+            { z0: 0.6, z1: 3.6, widthM: 1.2, bayM: 3, head: "flat" },
+            { z0: 5.2, z1: 8.6, widthM: 1.3, bayM: 3, head: "round" }
+          ]
+        }
+      }]
+    },
+    {
+      // Dominicuskerk (Sint-Dominicus), Spuistraat 12: P.J.H. Cuypers' 1884-86 neo-Gothic basilica
+      // (it stood as two beige boxes, 28 and 15 m). Commons "Overzicht van de zuidgevel in de
+      // spuistraat - Amsterdam - 20424399 - RCE.jpg" and "WLM - andrevanb - amsterdam, dominicuskerk
+      // (1).jpg": grey-brown brick with buff bands, tall pointed traceried windows in the aisles and
+      // the clerestory, balustrades and pinnacles along both, a steep roof behind, and at the front
+      // corner a slender stair turret with an octagonal belfry and a slate spire. OSM maps the nave
+      // (w749287654, 28 m), the whole church as the aisles' part (w749287651, 15 m) and the turret
+      // (w749287652). 3D BAG (pand 0363100012171033): nave roof 20.5-25.6 m, aisle roofs 10.4-12.7
+      // m, the turret's belfry top flat at 28.5 m; the spire above it (8 m) is scaled off the photo.
+      name: "Dominicuskerk",
+      wall: { plain: true, hex: "#6f5e52" },
+      tiers: [{ id: "w749287652", shape: "octagon", mat: "brick", z1: 28.5 }],
+      stacks: [{ onId: "w749287652", startZ: 28.5, stages: [
+        { shape: "octagon", w0: 5.4, w1: 5.4, h: 0.5, mat: "stone" },
+        { shape: "octagon", w0: 4.4, w1: 0.3, h: 8, mat: "slate" },
+        { shape: "octagon", w0: 0.4, w1: 0, h: 1.4, mat: "gold" }
+      ] }],
+      roofs: [],
+      halls: [
+        {
+          id: "w749287654",
+          widthM: 0,
+          anchor: [4.893274, 52.376958],
+          fit: true,
+          eavesM: 20.6,
+          riseM: 5,
+          mat: "slate",
+          windows: { glassHex: "#3a434c", frameHex: "#cbb98f", rows: [{ z0: 13, z1: 19.4, widthM: 1.6, bayM: 5, head: "pointed" }] }
+        },
+        {
+          id: "w749287651",
+          widthM: 0,
+          anchor: [4.893274, 52.376958],
+          fit: true,
+          eavesM: 10.4,
+          riseM: 2.3,
+          mat: "slate",
+          windows: { glassHex: "#3a434c", frameHex: "#cbb98f", rows: [{ z0: 2.8, z1: 9.4, widthM: 1.8, bayM: 5, head: "pointed" }] }
+        }
+      ]
+    }
+  ];
+
+  // src/canalRecall/worshipBuildingData.ts
+  var WORSHIP_BUILDINGS = [
+    ["NL.IMBAG.Pand.0305100000001042", "c", "w", 6.1, 0, "e"],
+    // Anna s Hoeve, 1910, 6.1 m, 501 m2
+    ["NL.IMBAG.Pand.0358100021571530", "c", "h", 5.8, 6.7, "o"],
+    // Petrus en Pauluskerk, 1860, 10.5 m, 244 m2
+    ["NL.IMBAG.Pand.0362100001054286", "c", "w", 25.8, 0, "e"],
+    // Kruiskerk, 1950, 25.8 m, 822 m2
+    ["NL.IMBAG.Pand.0362100001055799", "c", "w", 15.5, 0, "o"],
+    // Sint Urbanuskerk, 1875, 15.5 m, 1418 m2
+    ["NL.IMBAG.Pand.0362100001056666", "c", "w", 11.8, 0, "e"],
+    // Dorpskerk, 1920, 11.8 m, 414 m2
+    ["NL.IMBAG.Pand.0362100001056682", "c", "w", 20.9, 0, "e"],
+    // Sint-Annakerk, 1928, 20.9 m, 867 m2
+    ["NL.IMBAG.Pand.0362100001059417", "c", "b", 4.5, 0, "m"],
+    // Nieuw Apostolische Kerk, 1966, 4.5 m, 203 m2
+    ["NL.IMBAG.Pand.0362100001059917", "s", "b", 7.2, 0, "m"],
+    // Sjoel Amstelveen, 1971, 7.2 m, 1091 m2
+    ["NL.IMBAG.Pand.0362100001060156", "c", "b", 8.2, 0, "m"],
+    // Titus Brandsmakerk, 1969, 8.2 m, 1231 m2
+    ["NL.IMBAG.Pand.0362100001077847", "c", "w", 13.8, 0, "e"],
+    // Pauluskerk, 1939, 13.8 m, 927 m2
+    ["NL.IMBAG.Pand.0362100001082159", "c", "b", 12.6, 0, "m"],
+    // (unnamed), 1963, 12.6 m, 501 m2
+    ["NL.IMBAG.Pand.0363100012062993", "c", "w", 11.1, 0, "e"],
+    // (unnamed), 1955, 11.1 m, 1209 m2
+    ["NL.IMBAG.Pand.0363100012066059", "c", "w", 11.2, 0, "e"],
+    // Mor Sharbil, 1958, 11.2 m, 1050 m2
+    ["NL.IMBAG.Pand.0363100012067458", "c", "w", 10.1, 0, "e"],
+    // De Nieuwe Augustinus, 1934, 10.1 m, 882 m2
+    ["NL.IMBAG.Pand.0363100012069508", "c", "b", 17.9, 0, "m"],
+    // (unnamed), 1997, 17.9 m, 451 m2
+    ["NL.IMBAG.Pand.0363100012072736", "c", "w", 11.1, 0, "e"],
+    // Bethelkerk, 1958, 11.1 m, 423 m2
+    ["NL.IMBAG.Pand.0363100012073895", "s", "b", 3.9, 0, "m"],
+    // (unnamed), 1992, 3.9 m, 381 m2
+    ["NL.IMBAG.Pand.0363100012074574", "s", "w", 17.1, 0, "e"],
+    // Raw Aron Schuster Synagoge, 1928, 17.1 m, 588 m2
+    ["NL.IMBAG.Pand.0363100012078085", "c", "b", 16.1, 0, "m"],
+    // De Ontmoeting, 1964, 16.1 m, 629 m2
+    ["NL.IMBAG.Pand.0363100012080392", "m", "b", 6.2, 0, "m"],
+    // Rabitha Al Islamia, 1965, 6.2 m, 1342 m2
+    ["NL.IMBAG.Pand.0363100012082170", "c", "h", 10.4, 14, "e"],
+    // Parkkerk, 1924, 20.2 m, 744 m2
+    ["NL.IMBAG.Pand.0363100012083695", "t", "w", 9.6, 0, "e"],
+    // (unnamed), 1927, 9.6 m, 239 m2
+    ["NL.IMBAG.Pand.0363100012088135", "c", "w", 9.9, 0, "e"],
+    // Christus Koningkerk, 1958, 9.9 m, 2465 m2
+    ["NL.IMBAG.Pand.0363100012089044", "c", "w", 13.3, 0, "e"],
+    // Maranathakerk, 1955, 13.3 m, 824 m2
+    ["NL.IMBAG.Pand.0363100012097084", "c", "h", 10, 9, "e"],
+    // Elthetokerk, 1914, 16.3 m, 323 m2
+    ["NL.IMBAG.Pand.0363100012097194", "c", "h", 6.7, 4.7, "o"],
+    // Schellingwouderkerk, 1866, 10 m, 148 m2
+    ["NL.IMBAG.Pand.0363100012097854", "c", "w", 13, 0, "e"],
+    // (unnamed), 1914, 13 m, 498 m2
+    ["NL.IMBAG.Pand.0363100012097989", "m", "w", 8.5, 0, "e"],
+    // Haci Bayram Camii Osdorp, 1931, 8.5 m, 560 m2
+    ["NL.IMBAG.Pand.0363100012098124", "c", "b", 6.9, 0, "m"],
+    // (unnamed), 1969, 6.9 m, 500 m2
+    ["NL.IMBAG.Pand.0363100012098251", "c", "w", 16.4, 0, "e"],
+    // De Bron, 1939, 16.4 m, 943 m2
+    ["NL.IMBAG.Pand.0363100012098714", "c", "h", 6.1, 13.5, "e"],
+    // Willem de Zwijgerkerk, 1931, 15.6 m, 739 m2
+    ["NL.IMBAG.Pand.0363100012099552", "c", "b", 9, 0, "m"],
+    // (unnamed), 1966, 9 m, 1399 m2
+    ["NL.IMBAG.Pand.0363100012100328", "t", "b", 4.2, 0, "m"],
+    // (unnamed), 1985, 4.2 m, 318 m2
+    ["NL.IMBAG.Pand.0363100012101255", "c", "b", 5.7, 0, "m"],
+    // (unnamed), 2001, 5.7 m, 1593 m2
+    ["NL.IMBAG.Pand.0363100012102877", "c", "b", 9.5, 0, "m"],
+    // Herdenkingskerk, 1964, 9.5 m, 575 m2
+    ["NL.IMBAG.Pand.0363100012103534", "c", "w", 20.5, 0, "e"],
+    // Augustinuskerk, 1935, 20.5 m, 1359 m2
+    ["NL.IMBAG.Pand.0363100012108972", "m", "w", 11.3, 0, "e"],
+    // Moskee an-Nour, 1921, 11.3 m, 280 m2
+    ["NL.IMBAG.Pand.0363100012109328", "c", "b", 5.4, 0, "m"],
+    // Gunung Batu, 1972, 5.4 m, 243 m2
+    ["NL.IMBAG.Pand.0363100012117241", "c", "h", 5, 7.1, "e"],
+    // (unnamed), 1914, 10 m, 748 m2
+    ["NL.IMBAG.Pand.0363100012117919", "c", "w", 15.4, 0, "e"],
+    // (unnamed), 1927, 15.4 m, 1706 m2
+    ["NL.IMBAG.Pand.0363100012119483", "m", "b", 3.9, 0, "m"],
+    // Emir Sultan Moskee, 1968, 3.9 m, 510 m2
+    ["NL.IMBAG.Pand.0363100012119680", "c", "b", 19.8, 0, "e"],
+    // Boomkerk, 1911, 19.8 m, 1256 m2
+    ["NL.IMBAG.Pand.0363100012120748", "c", "b", 8.6, 0, "m"],
+    // (unnamed), 1971, 8.6 m, 746 m2
+    ["NL.IMBAG.Pand.0363100012120986", "c", "h", 8.5, 10.3, "o"],
+    // Augustinuskerk, 1888, 15.7 m, 626 m2
+    ["NL.IMBAG.Pand.0363100012123194", "c", "b", 9.1, 0, "m"],
+    // CGK & NGK - De Bron, 1967, 9.1 m, 623 m2
+    ["NL.IMBAG.Pand.0363100012124248", "c", "b", 5, 0, "m"],
+    // Vergadering van Gelovigen, 1968, 5 m, 244 m2
+    ["NL.IMBAG.Pand.0363100012124586", "t", "b", 7.9, 0, "m"],
+    // Ikeda Centrum voor Vriendschap en Vrede, 1965, 7.9 m, 1269 m2
+    ["NL.IMBAG.Pand.0363100012125533", "m", "b", 9.5, 0, "m"],
+    // Djame Masdjied Taibah, 1984, 9.5 m, 1268 m2
+    ["NL.IMBAG.Pand.0363100012126000", "c", "b", 12.4, 0, "m"],
+    // (unnamed), 1985, 12.4 m, 612 m2
+    ["NL.IMBAG.Pand.0363100012128901", "m", "b", 7.4, 0, "m"],
+    // Islamitisch Centrum Quba, 1990, 7.4 m, 1140 m2
+    ["NL.IMBAG.Pand.0363100012128930", "m", "b", 3.8, 0, "m"],
+    // Al Houda Moskee, 1974, 3.8 m, 651 m2
+    ["NL.IMBAG.Pand.0363100012129592", "c", "w", 14.7, 0, "e"],
+    // Sint-Josephkerk, 1953, 14.7 m, 1406 m2
+    ["NL.IMBAG.Pand.0363100012130941", "m", "h", 6, 6.5, "e"],
+    // Kuba Camii Moskee, 1955, 10.5 m, 199 m2
+    ["NL.IMBAG.Pand.0363100012132809", "c", "w", 16.5, 0, "e"],
+    // (unnamed), 1923, 16.5 m, 1567 m2
+    ["NL.IMBAG.Pand.0363100012134386", "c", "b", 4.6, 0, "m"],
+    // Weerenkapel, 1969, 4.6 m, 406 m2
+    ["NL.IMBAG.Pand.0363100012135926", "c", "w", 14.4, 0, "e"],
+    // Maarten Lutherkerk, 1937, 14.4 m, 458 m2
+    ["NL.IMBAG.Pand.0363100012136224", "m", "b", 10.6, 0, "m"],
+    // El Ouma, 1992, 10.6 m, 833 m2
+    ["NL.IMBAG.Pand.0363100012137097", "m", "w", 6.4, 0, "e"],
+    // El Tawheed, 1914, 6.4 m, 595 m2
+    ["NL.IMBAG.Pand.0363100012137751", "c", "w", 10.2, 0, "e"],
+    // (unnamed), 1952, 10.2 m, 670 m2
+    ["NL.IMBAG.Pand.0363100012137946", "c", "h", 8.2, 6.8, "o"],
+    // Sloterkerk, 1861, 13 m, 333 m2
+    ["NL.IMBAG.Pand.0363100012140916", "s", "h", 8.2, 6.8, "o"],
+    // Gerard Dou Synagogue, 1892, 12.9 m, 208 m2
+    ["NL.IMBAG.Pand.0363100012142532", "m", "h", 8.4, 6, "o"],
+    // (unnamed), 1896, 12.6 m, 149 m2
+    ["NL.IMBAG.Pand.0363100012143236", "m", "w", 11.3, 0, "e"],
+    // Moskee El-Hijra, 1956, 11.3 m, 786 m2
+    ["NL.IMBAG.Pand.0363100012144206", "c", "h", 6.5, 6.5, "o"],
+    // Nieuwendammerkerk, 1849, 11 m, 246 m2
+    ["NL.IMBAG.Pand.0363100012146056", "s", "b", 7.6, 0, "m"],
+    // Joods Cultureel Centrum, 1967, 7.6 m, 1255 m2
+    ["NL.IMBAG.Pand.0363100012148521", "c", "w", 17.7, 0, "e"],
+    // (unnamed), 1927, 17.7 m, 405 m2
+    ["NL.IMBAG.Pand.0363100012153991", "t", "b", 5.9, 0, "m"],
+    // (unnamed), 2003, 5.9 m, 103 m2
+    ["NL.IMBAG.Pand.0363100012155663", "c", "b", 10.5, 0, "m"],
+    // (unnamed), 2010, 10.5 m, 362 m2
+    ["NL.IMBAG.Pand.0363100012160472", "c", "w", 14.5, 0, "o"],
+    // (unnamed), 1609, 14.5 m, 387 m2
+    ["NL.IMBAG.Pand.0363100012161518", "c", "h", 7.2, 6.7, "o"],
+    // Sint-Gertrudiskerk, 1894, 11.9 m, 289 m2
+    ["NL.IMBAG.Pand.0363100012161733", "c", "b", 11.8, 0, "m"],
+    // (unnamed), 1975, 11.8 m, 262 m2
+    ["NL.IMBAG.Pand.0363100012162454", "c", "h", 6.3, 6.3, "e"],
+    // (unnamed), 1927, 10.7 m, 208 m2
+    ["NL.IMBAG.Pand.0363100012162810", "c", "h", 5, 2.7, "e"],
+    // Meerpadkerk, 1924, 6.9 m, 99 m2
+    ["NL.IMBAG.Pand.0363100012163298", "c", "h", 6.2, 7.6, "o"],
+    // Petruskerk, 1850, 11.6 m, 311 m2
+    ["NL.IMBAG.Pand.0363100012163469", "c", "h", 5, 6.7, "e"],
+    // Sacramentskerk, 1939, 9.7 m, 904 m2
+    ["NL.IMBAG.Pand.0363100012165085", "c", "w", 16.5, 0, "o"],
+    // Oude Lutherse Kerk, 1885, 16.5 m, 1434 m2
+    ["NL.IMBAG.Pand.0363100012165936", "c", "h", 8.8, 9.1, "e"],
+    // Pancratiuskerk, 1901, 15.2 m, 486 m2
+    ["NL.IMBAG.Pand.0363100012166358", "c", "h", 10.1, 14, "e"],
+    // Sint-Agneskerk, 1914, 19.9 m, 1377 m2
+    ["NL.IMBAG.Pand.0363100012167089", "c", "h", 5, 4.6, "e"],
+    // Witte Kerk, 1933, 8.2 m, 126 m2
+    ["NL.IMBAG.Pand.0363100012167695", "c", "w", 13.4, 0, "o"],
+    // (unnamed), 1630, 13.4 m, 915 m2
+    ["NL.IMBAG.Pand.0363100012167890", "c", "h", 5, 3.1, "o"],
+    // Simon de Looier, 1894, 7.2 m, 322 m2
+    ["NL.IMBAG.Pand.0363100012168060", "c", "w", 13.3, 0, "o"],
+    // Begijnhofkapel, 1671, 13.3 m, 524 m2
+    ["NL.IMBAG.Pand.0363100012168141", "c", "w", 11.6, 0, "o"],
+    // Engelse kerk, 1665, 11.6 m, 477 m2
+    ["NL.IMBAG.Pand.0363100012169397", "c", "w", 15.2, 0, "e"],
+    // Heilige Nikolaas van Myrakerk, 1912, 15.2 m, 977 m2
+    ["NL.IMBAG.Pand.0363100012171741", "c", "w", 14.3, 0, "o"],
+    // Singelkerk, 1639, 14.3 m, 786 m2
+    ["NL.IMBAG.Pand.0363100012171989", "c", "b", 13.9, 0, "m"],
+    // (unnamed), 1969, 13.9 m, 488 m2
+    ["NL.IMBAG.Pand.0363100012176840", "c", "w", 11.7, 0, "e"],
+    // (unnamed), 1907, 11.7 m, 102 m2
+    ["NL.IMBAG.Pand.0363100012177272", "c", "h", 13, 8.1, "o"],
+    // Keizersgrachtkerk, 1888, 18.7 m, 416 m2
+    ["NL.IMBAG.Pand.0363100012177887", "c", "h", 7.2, 13.4, "o"],
+    // Sint Olofskapel, 1440, 16.6 m, 555 m2
+    ["NL.IMBAG.Pand.0363100012177921", "t", "b", 12.5, 0, "m"],
+    // Fo Guang Shan He Hua Tempel, 2000, 12.5 m, 326 m2
+    ["NL.IMBAG.Pand.0363100012179330", "c", "h", 13.8, 8.2, "o"],
+    // Nieuwe Waalse Kerk, 1856, 19.6 m, 423 m2
+    ["NL.IMBAG.Pand.0363100012180211", "c", "h", 10.1, 6.4, "o"],
+    // Agnietenkapel (UvA), 1470, 14.6 m, 249 m2
+    ["NL.IMBAG.Pand.0363100012181889", "s", "h", 10.2, 6.4, "o"],
+    // Uilenburger Synagoge, 1766, 14.6 m, 253 m2
+    ["NL.IMBAG.Pand.0363100012208081", "c", "h", 7.8, 9.5, "e"],
+    // (unnamed), 1921, 14.5 m, 347 m2
+    ["NL.IMBAG.Pand.0363100012233557", "c", "b", 18.5, 0, "m"],
+    // Vincentiuskerk, 1990, 18.5 m, 1744 m2
+    ["NL.IMBAG.Pand.0363100012235970", "c", "h", 5, 7.1, "o"],
+    // (unnamed), 1899, 10 m, 382 m2
+    ["NL.IMBAG.Pand.0363100012237290", "m", "h", 7.8, 10.8, "e"],
+    // Masjid Al-Karam, 1904, 15.3 m, 364 m2
+    ["NL.IMBAG.Pand.0363100012237328", "c", "w", 15.4, 0, "e"],
+    // (unnamed), 1926, 15.4 m, 931 m2
+    ["NL.IMBAG.Pand.0363100012237810", "m", "w", 18.2, 0, "o"],
+    // Blauwe Moskee, 18.2 m, 1352 m2
+    ["NL.IMBAG.Pand.0363100012239394", "c", "b", 4.7, 0, "m"],
+    // Koninkrijkszaal, 2010, 4.7 m, 308 m2
+    ["NL.IMBAG.Pand.0363100012240297", "c", "b", 8, 0, "m"],
+    // Wi Eegi Kerki, 2013, 8 m, 910 m2
+    ["NL.IMBAG.Pand.0363100012241744", "s", "b", 16.7, 0, "m"],
+    // LJG, 2010, 16.7 m, 978 m2
+    ["NL.IMBAG.Pand.0363100012241807", "m", "b", 7.4, 0, "m"],
+    // Moskee Taqwa, 2014, 7.4 m, 483 m2
+    ["NL.IMBAG.Pand.0363100012246231", "c", "h", 9.8, 7.8, "o"],
+    // Gerardus Majellakerk, 15.3 m, 241 m2
+    ["NL.IMBAG.Pand.0363100012253747", "c", "w", 17.2, 0, "o"],
+    // De Papegaai, 17.2 m, 667 m2
+    ["NL.IMBAG.Pand.0384100000004250", "c", "w", 13.6, 0, "e"],
+    // Sint-Petrus -Bandenkerk, 1910, 13.6 m, 581 m2
+    ["NL.IMBAG.Pand.0384100000004631", "c", "w", 8.8, 0, "e"],
+    // (unnamed), 1937, 8.8 m, 714 m2
+    ["NL.IMBAG.Pand.0393100000000191", "c", "w", 8.8, 0, "e"],
+    // (unnamed), 1924, 8.8 m, 379 m2
+    ["NL.IMBAG.Pand.0394100000209235", "c", "w", 11.3, 0, "e"],
+    // Pelgrimskerk, 1950, 11.3 m, 1122 m2
+    ["NL.IMBAG.Pand.0394100000209852", "c", "w", 10.8, 0, "e"],
+    // HH. Engelbewaarders, 1958, 10.8 m, 856 m2
+    ["NL.IMBAG.Pand.0394100001031599", "c", "w", 17.4, 0, "e"],
+    // Onze Lieve Vrouw Geboorte, 1929, 17.4 m, 480 m2
+    ["NL.IMBAG.Pand.0437100000001261", "c", "w", 16.8, 0, "o"],
+    // Amstelkerk, 1774, 16.8 m, 449 m2
+    ["NL.IMBAG.Pand.0437100000002950", "c", "b", 11.5, 0, "m"],
+    // Elimkerk, 1970, 11.5 m, 508 m2
+    ["NL.IMBAG.Pand.0437100000004199", "c", "h", 6.2, 7.3, "e"],
+    // De Kleine Kerk, 1925, 11.3 m, 252 m2
+    ["NL.IMBAG.Pand.0437100000004530", "c", "b", 6.6, 0, "m"],
+    // El Ministerio El Encuentro, 1982, 6.6 m, 1495 m2
+    ["NL.IMBAG.Pand.0457100000054845", "c", "w", 21.9, 0, "o"],
+    // Laurenskerk, 1462, 21.9 m, 1320 m2
+    ["NL.IMBAG.Pand.0457100000054855", "s", "h", 5.5, 5.9, "o"],
+    // Synagoge Masorti Nederland, 1840, 9.7 m, 111 m2
+    ["NL.IMBAG.Pand.0457100000059177", "c", "w", 12.4, 0, "e"],
+    // Van Houtenkerk, 1905, 12.4 m, 468 m2
+    ["NL.IMBAG.Pand.0457100000065023", "m", "b", 8, 0, "m"],
+    // Assoenat Moskee, 2017, 8 m, 553 m2
+    ["NL.IMBAG.Pand.0479100000005285", "m", "b", 5.5, 0, "m"],
+    // Essalam Moskee, 1980, 5.5 m, 119 m2
+    ["w1428145947", "c", "b", 3, 0, "m"],
+    // Koninkrijkszaal van Jehovah s Getuigen, 1998, 3 m, 106 m2
+    ["w1428145953", "c", "b", 9, 0, "m"],
+    // Koninkrijkszaal van Jehovah s Getuigen, 1998, 9 m, 328 m2
+    ["w1435276700", "c", "b", 3, 0, "m"],
+    // De Nieuwe Stad, 1992, 3 m, 520 m2
+    ["w1435276702", "c", "b", 3, 0, "m"],
+    // De Nieuwe Stad, 1992, 3 m, 193 m2
+    ["w1435276703", "c", "b", 9, 0, "m"],
+    // De Nieuwe Stad, 1992, 9 m, 592 m2
+    ["w1465800049", "c", "h", 10.3, 4.7, "o"],
+    // Sint Urbanus, 1820, 15 m, 81 m2
+    ["w1465800050", "c", "w", 6, 0, "o"],
+    // Sint Urbanus, 1820, 6 m, 80 m2
+    ["w1465800052", "c", "w", 6, 0, "o"],
+    // Sint Urbanus, 1820, 6 m, 63 m2
+    ["w1465800053", "c", "h", 10.3, 4.7, "o"],
+    // Sint Urbanus, 1820, 15 m, 295 m2
+    ["w1465800056", "c", "b", 3, 0, "o"],
+    // Sint Urbanus, 1820, 3 m, 35 m2
+    ["w1465800058", "c", "h", 10.2, 4.8, "o"],
+    // Sint Urbanus, 1820, 15 m, 227 m2
+    ["w174987150", "c", "w", 15, 0, "o"],
+    // (unnamed), 1380, 15 m, 596 m2
+    ["w276686506", "c", "h", 5.1, 3.9, "o"],
+    // Avontuur, 9 m, 182 m2
+    ["w282293967", "c", "w", 3, 0, "o"],
+    // Koninkrijkszaal van Jehovah s Getuigen, 3 m, 112 m2
+    ["w282293972", "c", "b", 11.9, 0, "m"],
+    // Koninkrijkszaal van Jehovah s Getuigen, 1998, 11.9 m, 337 m2
+    ["w314261187", "c", "w", 9, 0, "o"],
+    // Augustanahof, 9 m, 475 m2
+    ["w330159868", "c", "h", 5, 4, "o"],
+    // Calvariekerk, 9 m, 497 m2
+    ["w57858486", "c", "h", 5, 7.7, "e"],
+    // (unnamed), 1957, 12.7 m, 659 m2
+    ["w57860431", "c", "b", 35, 0, "m"],
+    // Kerk van Ransdorp, 1985, 35 m, 349 m2
+    ["w747868957", "c", "b", 7, 0, "o"],
+    // Old Church, 1300, 7 m, 13 m2
+    ["w747868958", "c", "b", 10, 0, "o"],
+    // Old Church, 1300, 10 m, 13 m2
+    ["w747868959", "c", "b", 9, 0, "o"],
+    // Old Church, 1300, 9 m, 28 m2
+    ["w747868960", "c", "b", 10, 0, "o"],
+    // Oude Kerk, 1300, 10 m, 39 m2
+    ["w747868962", "c", "b", 15, 0, "o"],
+    // Oude Kerk, 1300, 15 m, 38 m2
+    ["w747868963", "c", "b", 15, 0, "o"],
+    // Oude Kerk, 1300, 15 m, 38 m2
+    ["w747868964", "c", "b", 15, 0, "o"],
+    // Oude Kerk, 1300, 15 m, 37 m2
+    ["w747868965", "c", "b", 15, 0, "o"],
+    // Oude Kerk, 1300, 15 m, 37 m2
+    ["w747868966", "c", "b", 15, 0, "o"],
+    // Oude Kerk, 1300, 15 m, 38 m2
+    ["w747868968", "c", "b", 17, 0, "o"],
+    // Old Church, 1300, 17 m, 13 m2
+    ["w747868969", "c", "b", 17, 0, "o"],
+    // Old Church, 1300, 17 m, 15 m2
+    ["w747868985", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 60 m2
+    ["w747868986", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 59 m2
+    ["w747868987", "c", "h", 15, 8, "o"],
+    // Oude Kerk, 1300, 23 m, 220 m2
+    ["w747868988", "c", "h", 15, 8, "o"],
+    // Oude Kerk, 1300, 23 m, 199 m2
+    ["w747868989", "c", "h", 15, 8, "o"],
+    // Oude Kerk, 1300, 23 m, 116 m2
+    ["w747868990", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 105 m2
+    ["w747868991", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 105 m2
+    ["w747868992", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 62 m2
+    ["w747868993", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 63 m2
+    ["w747868994", "c", "b", 23, 0, "o"],
+    // Oude Kerk, 1300, 23 m, 100 m2
+    ["w747868995", "c", "h", 15, 8, "o"],
+    // Oude Kerk, 1300, 23 m, 697 m2
+    ["w747911435", "c", "h", 14.6, 4.4, "o"],
+    // (unnamed), 1380, 19 m, 102 m2
+    ["w747911440", "c", "b", 34, 0, "o"],
+    // (unnamed), 1380, 34 m, 151 m2
+    ["w747924617", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 39 m2
+    ["w747924618", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 36 m2
+    ["w747924619", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 34 m2
+    ["w747924621", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 46 m2
+    ["w747924622", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 49 m2
+    ["w747924623", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 44 m2
+    ["w747924624", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 48 m2
+    ["w747924625", "c", "b", 19, 0, "o"],
+    // (unnamed), 1380, 19 m, 52 m2
+    ["w748997142", "c", "h", 6.4, 3.6, "o"],
+    // (unnamed), 10 m, 118 m2
+    ["w748997143", "c", "b", 34, 0, "o"],
+    // New Church, 1380, 34 m, 5 m2
+    ["w748997144", "c", "b", 34, 0, "o"],
+    // New Church, 1380, 34 m, 5 m2
+    ["w749242499", "c", "b", 6, 0, "o"],
+    // Old Church, 1300, 6 m, 7 m2
+    ["w749242500", "c", "b", 7, 0, "o"],
+    // Old Church, 1300, 7 m, 19 m2
+    ["w749242501", "c", "b", 7, 0, "o"],
+    // Oude Kerk, 1300, 7 m, 32 m2
+    ["w749287964", "c", "w", 5, 0, "o"],
+    // Westerkerk, 5 m, 295 m2
+    ["w749356521", "c", "b", 19, 0, "o"],
+    // Waalse kerk, 1496, 19 m, 73 m2
+    ["w749356522", "c", "h", 9.3, 3.7, "o"],
+    // Waalse kerk, 1496, 13 m, 232 m2
+    ["w749356523", "c", "h", 13.4, 5.6, "o"],
+    // Waalse kerk, 1496, 19 m, 401 m2
+    ["w749386975", "c", "b", 4.5, 0, "o"],
+    // Walloon Church, 1496, 4.5 m, 13 m2
+    ["w749386976", "c", "h", 9.7, 3.3, "o"],
+    // Waalse kerk, 1496, 13 m, 206 m2
+    ["w749871267", "c", "w", 4, 0, "o"],
+    // Noorderkerk, 1622, 4 m, 93 m2
+    ["w750036045", "c", "h", 8.1, 9.9, "o"],
+    // Posthoornkerk, 1673, 18 m, 390 m2
+    ["w750036046", "c", "b", 26, 0, "o"],
+    // Posthoornkerk, 1673, 26 m, 49 m2
+    ["w750036047", "c", "b", 54, 0, "o"],
+    // Posthoornkerk, 1673, 54 m, 32 m2
+    ["w750036048", "c", "b", 54, 0, "o"],
+    // Posthoornkerk, 1673, 54 m, 33 m2
+    ["w750036049", "c", "b", 26, 0, "o"],
+    // Posthoornkerk, 1673, 26 m, 136 m2
+    ["w750036050", "c", "b", 26, 0, "o"],
+    // Posthoornkerk, 1673, 26 m, 117 m2
+    ["w750036051", "c", "h", 21.5, 4.5, "o"],
+    // Posthoornkerk, 1673, 26 m, 297 m2
+    ["w750093275", "c", "h", 11.9, 4.1, "o"],
+    // Posthoornkerk, 1673, 16 m, 186 m2
+    ["w750093276", "c", "b", 23, 0, "o"],
+    // Posthoornkerk, 1673, 23 m, 47 m2
+    ["w750093277", "c", "b", 23, 0, "o"],
+    // Posthoornkerk, 1673, 23 m, 47 m2
+    ["w750093278", "c", "b", 26, 0, "o"],
+    // Posthoornkerk, 1673, 26 m, 68 m2
+    ["w995323510", "c", "b", 49, 0, "e"],
+    // Vredeskerk, 1925, 49 m, 48 m2
+    ["w995323511", "c", "b", 40, 0, "e"],
+    // Vredeskerk, 1925, 40 m, 45 m2
+    ["w995323512", "c", "b", 40, 0, "e"]
+    // Vredeskerk, 1925, 40 m, 45 m2
+  ];
+
+  // src/canalRecall/worshipBuildings.ts
+  var WORSHIP_WALL = { o: "#7a4535", e: "#83503d", m: "#9b7a62" };
+  var FIT_COVERAGE = 0.78;
+  var FIT_MAX_DEV_M = 6;
+  var round1 = (v) => Math.round(v * 10) / 10;
+  function worshipWindows(eavesM) {
+    const z0 = Math.max(1.5, eavesM * 0.22), z1 = Math.min(eavesM - 1, z0 + 9);
+    if (z1 - z0 < 2.5) return [];
+    const widthM = Math.min(1.8, Math.max(0.9, (z1 - z0) / 3.2));
+    return [{ z0: round1(z0), z1: round1(z1), widthM: round1(widthM), bayM: round1(Math.max(3.2, widthM * 2.6)), head: "round" }];
+  }
+  var KIND_NAME = { c: "church", m: "mosque", s: "synagogue", t: "temple" };
+  function worshipKit([id, kind, mode, eavesM, riseM, era]) {
+    const name = `Generic ${KIND_NAME[kind]} ${id}`, hex2 = WORSHIP_WALL[era];
+    const rows = worshipWindows(eavesM);
+    if (mode === "b" || mode === "w" && !rows.length) return { name, wall: { plain: true, hex: hex2 }, tiers: [], stacks: [], roofs: [], body: [id] };
+    return {
+      name,
+      wall: { plain: true, hex: hex2 },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === "h", eavesM, riseM, mat: era === "o" ? "slate" : "tile", windows: rows.length ? { rows, glassHex: "#3a434c" } : void 0 }]
+    };
+  }
+  var GENERIC_WORSHIP_KITS = WORSHIP_BUILDINGS.map(worshipKit);
+
   // src/canalRecall/landmarkKits.ts
   var MAT_HEX = {
     brick: "#9a5240",
@@ -972,7 +1613,7 @@
     { shape: "octagon", w0: 1.6, w1: 1.6, h: 1, mat: "gold" },
     { shape: "octagon", w0: 0.9, w1: 0, h: 1.8, mat: "gold" }
   ];
-  var KITS = [
+  var HAND_KITS = [
     {
       // Tower 87 m: brick base, stone clock stage, octagonal stone and lead stages, lantern, crown.
       name: "Westerkerk",
@@ -1224,6 +1865,8 @@
     },
     // Museums and cinemas: the Van Gogh Museum, the Stedelijk, Eye, Tuschinski, the Maritime Museum, H'ART (museumKits.ts).
     ...MUSEUM_KITS,
+    // Places of worship modelled by hand (worshipKits.ts), and the generic treatment for the rest (worshipBuildings.ts).
+    ...WORSHIP_KITS,
     {
       // De Hallen, the 1902-05 Tollensstraat tram depot (user report 2026-10-02: one bare tan
       // block). One BAG footprint over a row of brick sheds about 9.6 m wide, whose gable ends
@@ -1482,6 +2125,10 @@
       }]
     }
   ];
+  var kitIds = (k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f) => f.on), ...k.body ?? []];
+  var HAND_KIT_IDS = new Set(HAND_KITS.flatMap(kitIds));
+  var HAND_IDS = HAND_KIT_IDS;
+  var KITS = [...HAND_KITS, ...GENERIC_WORSHIP_KITS.filter((k) => kitIds(k).every((id) => !HAND_IDS.has(id)))];
   var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f) => f.on)]));
   var KIT_HIDE_IDS = [...new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.hides ?? []]))];
   var KIT_MODELLED_IDS = /* @__PURE__ */ new Set([...KIT_PART_IDS, ...KITS.flatMap((k) => k.body ?? [])]);
@@ -1587,7 +2234,7 @@
     }
     stage(sink, cx, cy, ang, shape, w, w, z0, t.z1, body, hex2);
     if (shape === "square") stage(sink, cx, cy, ang, "square", w + 0.8, w + 0.8, t.z1 - 0.6, t.z1, "stone");
-    if (capShape === "pyramid") stage(sink, cx, cy, ang, "square", w + 1.2, 0, t.z1, t.z1 + t.capM, t.cap, t.capHex);
+    if (capShape === "pyramid") stage(sink, cx, cy, ang, shape, t.capWidthM ?? w + 1.2, 0, t.z1, t.z1 + t.capM, t.cap, t.capHex);
     else {
       let z = t.z1;
       const base = shape === "square" ? w + 0.5 : w;
@@ -1596,7 +2243,7 @@
         z += h * t.capM;
       }
     }
-    stage(sink, cx, cy, ang, "octagon", 0.35, 0, t.z1 + t.capM, t.z1 + t.capM + 1.6, "gold");
+    if (t.finial !== false) stage(sink, cx, cy, ang, "octagon", 0.35, 0, t.z1 + t.capM, t.z1 + t.capM + 1.6, "gold");
   }
   function cloisterDome(sink, rect, z0, rise, inset, hex2) {
     const { cx, cy, ux, uy } = rect, vx = -uy, vy = ux;
@@ -1781,6 +2428,15 @@
         for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
           const slope = t.part === "slope";
           sink.out.push({ p: t.p, uv: t.uv, layer: slope ? "slope" : "plain", hex: slope ? hex2 : gable, n: t.n });
+        }
+      }
+      if (spec.fit) {
+        const rect = fitRect(part.ring, 200);
+        if (rect && rect.coverage >= FIT_COVERAGE && rect.maxDev <= FIT_MAX_DEV_M && spec.riseM > 0) {
+          for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
+            const slope = t.part === "slope";
+            sink.out.push({ p: t.p, uv: t.uv, layer: slope ? "slope" : "plain", hex: slope ? hex2 : gable, n: t.n });
+          }
         }
       }
       for (const wing of spec.wings ?? []) {
