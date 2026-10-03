@@ -33,6 +33,7 @@ import {
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan } from './introFlight';
+import { vehicleZoomScale } from './vehicleZoomScale';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit } from './modes';
 import { travelProfile } from './travelProfile';
@@ -43,6 +44,10 @@ import { canShowMiniMap, canShowPoiLabels, type TeachingGateInput } from './teac
 import { bicycleRestrictionNotice } from '../routing/bikeAccess';
 import { maskSpoiledName } from '../orientationPois';
 import { isReviewStop, REVIEW_STOP_LABEL } from './routeSelection';
+import { bearingAfterTwist, startTwist, twistStep, wheelTwistDegrees, WHEEL_PINCH_GRACE_MS } from './trackpadTwist';
+
+/** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
+interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
 
 /** One measured band of the arrival card. Each block reports its own height so
  *  the card measures itself, instead of keeping a stack of hand-tuned offsets
@@ -279,13 +284,55 @@ export class GamePresentationRuntime {
         if (input) input.value = String(this.camera.zoom);
       }
     };
+    // Twist orbits chase/cockpit (see trackpadTwist.ts). The bearing is
+    // persisted once the gesture settles, not on every event.
+    const twistable = () => this.state !== GameState.MENU && (this.viewMode === 'chase' || this.viewMode === 'cockpit');
+    let persistTwistTimer = 0;
+    const twist = (clockwiseDeg: number) => {
+      if (!clockwiseDeg) return;
+      const cam = this.camera;
+      const before = Number.isFinite(cam.bearingOffset) ? cam.bearingOffset * 180 / Math.PI : 0;
+      const after = bearingAfterTwist(before, clockwiseDeg);
+      cam.bearingOffset = after * Math.PI / 180;
+      // A dragged-off camera holds its rotation; turn it too so the twist shows.
+      if (cam.detached) cam.rotation -= clockwiseDeg * Math.PI / 180;
+      window.clearTimeout(persistTwistTimer);
+      persistTwistTimer = window.setTimeout(() => this._nudgeCameraBearing?.(0), 300);
+    };
+    let lastCtrlWheel = -Infinity;
     this.canvas.addEventListener('wheel', event => {
       if (this.state === GameState.MENU) return;
       event.preventDefault();
-      if (event.ctrlKey) { this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * Math.exp(-event.deltaY * .002))); this._zoomTouchedByPlayer = true; }
+      const twistDeg = wheelTwistDegrees(event);
+      if (twistDeg !== null) { if (twistable()) twist(twistDeg); return; }
+      if (event.ctrlKey) { lastCtrlWheel = performance.now(); this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * Math.exp(-event.deltaY * .002))); this._zoomTouchedByPlayer = true; }
       else this.camera.pan(event.deltaX, event.deltaY);
       syncZoom();
     }, { passive: false });
+    // Safari: trackpad pinch/twist arrive as gesture events. Swallow them so
+    // the page itself never zooms, turn the camera on a twist, and zoom on a
+    // pinch only when no touch pinch or ctrl+wheel is already zooming.
+    let twistState = startTwist();
+    let gestureScale = 1;
+    this.canvas.addEventListener('gesturestart', (event: Event) => {
+      event.preventDefault();
+      twistState = startTwist();
+      gestureScale = 1;
+    });
+    this.canvas.addEventListener('gesturechange', (event: Event) => {
+      event.preventDefault();
+      const gesture = event as SafariGestureEvent;
+      if (twistable()) twist(twistStep(twistState, gesture.rotation));
+      const scale = Number.isFinite(gesture.scale) && gesture.scale > 0 ? gesture.scale : 1;
+      const wheelZooming = performance.now() - lastCtrlWheel < WHEEL_PINCH_GRACE_MS;
+      if (this.state !== GameState.MENU && livePinch.size < 2 && !wheelZooming && scale !== gestureScale) {
+        this.camera.zoom = Math.min(this.camera.maxZoom, Math.max(this.camera.minZoom, this.camera.zoom * scale / gestureScale));
+        this._zoomTouchedByPlayer = true;
+        syncZoom();
+      }
+      gestureScale = scale;
+    });
+    this.canvas.addEventListener('gestureend', (event: Event) => { event.preventDefault(); });
     this.canvas.addEventListener('touchstart', event => {
       for (const touch of event.changedTouches) {
         const point = this._eventPoint(touch);
@@ -488,7 +535,8 @@ export class GamePresentationRuntime {
     const byBoat = isBoat(this.travelMode);
     const byTransit = isTransit(this.travelMode);
     const showBike = !byBoat && !byTransit;
-    this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike);
+    this.vectorMap.setPlayerBike(player, this.osmLoader, pitched && showBike,
+      vehicleZoomScale(this.camera.zoom, this._defaultZoom ?? this.camera.zoom));
     this.vectorMap.setPlayerBoat(player, this.osmLoader, pitched && byBoat);
     if (typeof this.vectorMap.setPlayerTransit === 'function') {
       let underground = false;
@@ -755,7 +803,13 @@ export class GamePresentationRuntime {
     this.hud.paperCard(ctx, plate, { radius: 9 });
     ctx.fillStyle = surface.inkMuted;
     ctx.textAlign = 'center';
-    ctx.fillText(text, plate.x + plate.width / 2, plate.y + 15);
+    // Centre the ink, not a guessed baseline: a fixed alphabetic offset sat
+    // the line low in the plate (user report 2026-10-03).
+    ctx.textBaseline = 'alphabetic';
+    const ink = ctx.measureText(text);
+    const ascent = ink.actualBoundingBoxAscent || 8;
+    const descent = ink.actualBoundingBoxDescent || 2;
+    ctx.fillText(text, plate.x + plate.width / 2, plate.y + plate.height / 2 + (ascent - descent) / 2);
     ctx.restore();
   }
 

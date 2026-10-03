@@ -991,9 +991,10 @@ scope.
 Craft board: [`LARGE_LETTER_CRAFT.md`](LARGE_LETTER_CRAFT.md). **Check loop:**
 `test:large-letter-craft` → `render:large-letter-craft -- --round=N` (gallery +
 pixel P0 on Jordaan: no top ink, cream ring ≤14px) → vision. Three themed
-rounds + a fill bump (span ~64%H). Remaining: true vanishing-point side faces,
-tighter Waterloo greeting nest, place props. Map Recall's "Greetings from" falls
-back to a serif where Pacifico is not installed (index.html does not link it).
+rounds + a fill bump (span ~64%H), then the Spoon Graphics recipe pass
+(2026-10-03, HISTORY). Remaining: tighter greeting nest, place props, a
+converging (vanishing-point) block as an optional style (the recipe's own block
+is parallel), and the recipe colours for the non-default styles.
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.
