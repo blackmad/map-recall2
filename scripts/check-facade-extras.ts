@@ -68,6 +68,17 @@ for (const comp of WALL_COMPONENTS) {
   const well = outOf('basement-well', 'canal').sink;
   assert.ok(well.tris.every(t => { const xs = t.p.map(p => p[0]), zs = t.p.map(p => p[2]); return Math.max(...xs) - Math.min(...xs) < 0.1 || Math.max(...zs) - Math.min(...zs) < 0.1; }), 'basement railing is openwork');
 }
+// User report 2026-10-03 ("awful imposing extrusions on our canal house grammar"): on canal, c19 and school
+// fronts nothing above the ground floor sticks out more than 0.6 m, except thin hoist beams and flagpoles.
+{
+  const THIN = new Set(['hoist-beam', 'hoist-hood', 'house-flag', 'scaffolding']);
+  for (const style of ['canal', 'c19', 'school'] as FacadeStyle[]) for (const comp of WALL_COMPONENTS) {
+    if (THIN.has(comp.id) || chanceFor(comp.p, style) <= 0 || !comp.styles.includes(style)) continue;
+    const c = wall(style), sink = new ExtraSink(9999); comp.build(c, sink, 0.4);
+    const out = Math.max(0, ...sink.tris.flatMap(t => t.p.filter(p => p[2] > c.base + c.layout.groundM + 0.05).map(p => -p[1])));
+    assert.ok(out <= 0.6, `${comp.id} on a ${style} front sticks out ${out.toFixed(2)} m above the ground floor`);
+  }
+}
 for (const comp of ROOF_COMPONENTS) {
   const sink = new ExtraSink(9999);
   comp.build({ id: 'r', style: comp.styles[0], rect: { cx: 0, cy: 0, ux: 1, uy: 0, len: 12, wid: 9 }, z: 14, wallHex: '#a4523b' }, sink, 0.4);
