@@ -1,0 +1,114 @@
+[
+  {
+    "id": "buiksloterkerk",
+    "name": "Buiksloterkerk",
+    "landmarkId": "extract_landmarks_1198118755",
+    "modelUrl": "./models/buiksloterkerk.glb",
+    "suppressOsmIds": [
+      "w44825314"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.916339590226489,
+        52.40181965170745
+      ],
+      "headingDegrees": 85.98901818904636,
+      "lengthMetres": 32.25158238481576,
+      "widthMetres": 17.735686367161463
+    },
+    "surveyed": {
+      "anchor": [
+        4.916339590226489,
+        52.40181965170745
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Actual OSM church outline and tower part; local east/south metre coordinates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Buiksloterkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://buiksloterkerk.nl/gebouw/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
+    }
+  },
+  {
+    "id": "english-reformed-church",
+    "name": "English Reformed Church",
+    "landmarkId": "extract_landmarks_1187067601",
+    "modelUrl": "./models/english-reformed-church.glb",
+    "suppressOsmIds": [
+      "w57858493",
+      "w1425764020"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.890147908845572,
+        52.36934141794237
+      ],
+      "headingDegrees": 74.7564361014704,
+      "lengthMetres": 36.964534844831036,
+      "widthMetres": 17.897307676559574
+    },
+    "surveyed": {
+      "anchor": [
+        4.890147908845572,
+        52.36934141794237
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Actual OSM church outline and tower part; local east/south metre coordinates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "English Reformed Church",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.erc.amsterdam/about",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
+    }
+  },
+  {
+    "id": "de-papegaai",
+    "name": "De Papegaai",
+    "landmarkId": "extract_landmarks_1601841225",
+    "modelUrl": "./models/de-papegaai.glb",
+    "suppressOsmIds": [
+      "w266903909"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8914874867156035,
+        52.3712251052276
+      ],
+      "headingDegrees": 65.28136792399175,
+      "lengthMetres": 50.0801457619763,
+      "widthMetres": 23.700591646413127
+    },
+    "surveyed": {
+      "anchor": [
+        4.8914874867156035,
+        52.3712251052276
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Actual OSM church outline and tower part; local east/south metre coordinates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "De Papegaai",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.nicolaas-parochie.nl/papegaai/over-ons/gebouw/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
+    }
+  }
+]
