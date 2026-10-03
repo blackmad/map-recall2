@@ -639,7 +639,10 @@
         { id: "w749268117", riseM: 7, mat: "slate" },
         { id: "w749268116", riseM: 7, mat: "slate" },
         { id: "w749268115", riseM: 4, mat: "slate" }
-      ]
+      ],
+      // BAG's own record for the church's east end (NL.IMBAG.Pand.0363100012164998, BAG year 1990): a 1.8 x 10 m sliver 35 m tall that stood as a bare beige slab beside
+      // the OSM nave parts. Walled in the kit's brick to the nave's 27 m eaves under a slim slate ridge.
+      halls: [{ id: "NL.IMBAG.Pand.0363100012164998", widthM: 1.9, anchor: [4.884358, 52.374554], eavesM: 27, riseM: 1.5, mat: "slate" }]
     },
     {
       // The tower is 80 m; OSM stops at 30, so the octagonal stage, lantern and needle spire are stacked on.
@@ -896,6 +899,149 @@
         { at: [4.878461, 52.373017], widthM: 7.5, z1: 31, capM: 8.5, cap: "slate" },
         { at: [4.878772, 52.373095], widthM: 7.5, z1: 31, capM: 8.5, cap: "slate" }
       ] }]
+    },
+    {
+      // Obrechtkerk, Jacob Obrechtstraat: Jos Cuypers and Jan Stuyt's 1908-11 neo-Romanesque cross
+      // basilica (BAG height 36.3 m is the twin towers', carried by the whole 2075 m2 footprint).
+      // Commons "Obrechtkerk.jpg" (RCE view of the front): two square brown-grey brick towers with
+      // arched belfries and a steep banded cap each, red-tile roofs behind; nl.wikipedia: "een front
+      // ... geflankeerd door twee rijzige torens, en met een lagere vieringtoren aan de westkant".
+      // The footprint is a Latin cross on an axis of 24 degrees with the front to the east: a 24 m
+      // wide nave, a 30 m wide transept block, a choir block with the apse, and a 15 m annex at the
+      // south east corner. The towers fill the two front corners (7 m wide, an 11 m porch between);
+      // the crossing tower (10 m, tiled pyramid) stands over the transept, lower than the front.
+      name: "Obrechtkerk",
+      wall: { plain: true, hex: "#7d6858" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012124153",
+        widthM: 0,
+        anchor: [4.874498, 52.35549],
+        eavesM: 15,
+        riseM: 8,
+        mat: "tile",
+        wings: [
+          { at: [4.87496, 52.355863], lenM: 30.3, widM: 24.4, bearingDeg: 24, riseM: 8 },
+          { at: [4.874639, 52.355771], lenM: 37.9, widM: 17.9, bearingDeg: 114, riseM: 6 },
+          { at: [4.874436, 52.355718], lenM: 42.1, widM: 12, bearingDeg: 114, riseM: 4.3 },
+          { at: [4.875291, 52.35577], lenM: 15.1, widM: 12.5, bearingDeg: 24, riseM: 4.2 }
+        ],
+        towers: [
+          // Front towers: walls to 27 m, a banded spire cap 7.7 m with its cross (36.3 m in all).
+          { at: [4.875065, 52.355978], widthM: 7, z1: 27, capM: 7.7, cap: "slate", capShape: "spire", capHex: "#665a50", bearingDeg: 24 },
+          { at: [4.875169, 52.355834], widthM: 7, z1: 27, capM: 7.7, cap: "slate", capShape: "spire", capHex: "#665a50", bearingDeg: 24 },
+          { at: [4.874637, 52.355775], widthM: 10, z1: 22, capM: 6.5, cap: "tile", bearingDeg: 24 }
+        ]
+      }]
+    },
+    {
+      // Oosterkerk, Wittenburgergracht: Daniel Stalpaert's 1669-71 Greek-cross church (BAG height
+      // 26.9 m is the lantern with its weathervane). Commons "Oosterkerk-amsterdam-wittenburg.jpg":
+      // brown brick, tall slate hipped roofs on four arms meeting at the crossing, and a lead-clad
+      // wooden lantern with an open belfry and a dome; nl.wikipedia: "gelijkarmig kruis ... Op de
+      // kruising van de hoge schilddaken staat een met lood beklede houten koepeltoren". The
+      // footprint is a 29 m square (corners filled in) with arms 14 m wide running out 5 m
+      // beyond it on a 45 degree axis. Eaves at 14 m and ridges at 19 m read off the photo
+      // (the hipped end reaches 4.5 m above the cornice); the lantern runs from the ridges to 25 m.
+      name: "Oosterkerk",
+      wall: { plain: true, hex: "#8c5b46" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012170274",
+        widthM: 0,
+        anchor: [4.919276, 52.369762],
+        eavesM: 14,
+        riseM: 5,
+        mat: "slate",
+        wings: [
+          { at: [4.91931, 52.369991], lenM: 39.1, widM: 13.9, bearingDeg: 45, riseM: 5, roof: "hipped" },
+          { at: [4.91931, 52.369991], lenM: 32.5, widM: 14.5, bearingDeg: 135, riseM: 5, roof: "hipped" }
+        ],
+        towers: [
+          // The belfry (lead grey, octagonal, from the ridge up) and its dome with a small lantern: 26.8 m.
+          { at: [4.91931, 52.369991], widthM: 5.4, z0: 17.5, z1: 22.5, capM: 2.7, cap: "lead", shape: "octagon", mat: "lead", wallHex: "#5f6670", capShape: "dome", capHex: "#8d939b", bearingDeg: 45 }
+        ]
+      }]
+    },
+    {
+      // Mozes en Aäronkerk, Waterlooplein: Suys' 1837-41 neoclassical church. Commons
+      // "Mozes_en_Aaronkerk_1.jpg": a cream stuccoed front with a four-column portico between two
+      // open timber towers, brown brick flanks under a very low roof; nl.wikipedia: "facade met
+      // twee torens", "driebeukige hallenkerk", "bakstenen zijgevels". BAG height 24.4 m is a blend.
+      // The footprint is 23 x 44.6 m (front at the south west end, where two 6.5 m blocks flank
+      // the portico recess). Walls 15 m, ridge 18.5 m; towers 31.4 m of cream stucco with a slate
+      // cap and cross, 33 m in all (photo: columns 10 m against a 33 m cross).
+      name: "Mozes en A\xE4ronkerk",
+      wall: { plain: true, hex: "#7c5a4a" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012253765",
+        widthM: 0,
+        anchor: [4.902946, 52.368211],
+        eavesM: 15,
+        riseM: 3.5,
+        mat: "slate",
+        wings: [{ at: [4.903287, 52.368335], lenM: 40.6, widM: 23, bearingDeg: 56, riseM: 3.5 }],
+        towers: [
+          { at: [4.903024, 52.368228], widthM: 6.5, z1: 29.5, capM: 2, cap: "slate", wallHex: "#e3d6a6", bearingDeg: -34 },
+          { at: [4.903229, 52.368143], widthM: 6.5, z1: 29.5, capM: 2, cap: "slate", wallHex: "#e3d6a6", bearingDeg: -34 }
+        ]
+      }]
+    },
+    {
+      // De Duif (Sint-Willibrorduskerk), Prinsengracht 756: Theo Molkenboer's 1857 neoclassical
+      // church with a neo-baroque front (user report: one bare box). Commons "De Duif (Amsterdam,
+      // Q2050495).jpg": grey stuccoed front with pilasters and an arched window under a pediment
+      // with a cross, no tower; nl.wikipedia: "neoclassicistische stijl ... neobarokke voorgevel".
+      // BAG height 24.5 m is the pediment. The footprint is a plain 46 x 18.6 m nave (the street
+      // front is the jagged pilastered short end) under a long pitched roof; walls at 16 m, ridge 22 m.
+      name: "De Duif",
+      wall: { plain: true, hex: "#a99e8c", flat: true },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012171729",
+        widthM: 0,
+        anchor: [4.897017, 52.361124],
+        eavesM: 16,
+        riseM: 6,
+        mat: "slate",
+        wings: [{ at: [4.896787, 52.361299], lenM: 46.1, widM: 18.6, bearingDeg: 107, riseM: 6 }]
+      }]
+    },
+    {
+      // Opstandingskerk, Bos en Lommerplein: Marius Duintjer's 1955-56 church, nicknamed "Kolenkit"
+      // for its bell tower. Commons "Overzicht westgevel met kerktoren - Amsterdam - 20357071 -
+      // RCE.jpg" (rijksmonument photo): pink-red brick, a low nave under a very shallow gable, and
+      // a slab tower 7 m wide whose top is cut on a long slant, high edge up; nl.wikipedia: "48 meter
+      // hoge klokkentoren" and "rode baksteen". BAG height (35.2 m) is a blend of the two. The tower
+      // is the 7 x 12.5 m strip at the footprint's south end; its top rises 10.5 m from the low
+      // (west) edge at 37.5 m to 48 m along the photo's long slope. The nave (11 m walls, a
+      // 15 degree roof) roofs the rounded hall; the saw-tooth north wall stays as mapped.
+      name: "Opstandingskerk",
+      wall: { plain: true, hex: "#b07a63" },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012133302",
+        widthM: 0,
+        anchor: [4.842514, 52.377448],
+        eavesM: 11,
+        riseM: 3,
+        mat: "lead",
+        wings: [{ at: [4.842772, 52.377707], lenM: 31, widM: 22, bearingDeg: 2, riseM: 3 }],
+        towers: [
+          { at: [4.842958, 52.377514], widthM: 7, lenM: 12.5, z1: 37.5, capM: 10.5, cap: "slate", capShape: "slant", highBearingDeg: 2, bearingDeg: 2 }
+        ]
+      }]
     }
   ];
   var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? []]));
@@ -969,6 +1115,51 @@
       stage(sink, cx + Math.cos(a) * rad, cy + Math.sin(a) * rad, a, "square", 0.7, 0.7, z0, z1, "white");
     }
   }
+  function slab(sink, cx, cy, ang, w, l, z0, zLow, zHigh, high, mat, hexOverride) {
+    const ax = Math.cos(ang), ay = Math.sin(ang), bx = -ay, by = ax, hx = Math.cos(high), hy = Math.sin(high);
+    const layer = layerFor(mat), hex2 = hexOverride ?? MAT_HEX[mat];
+    const pts = [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([i, j]) => [cx + ax * (i * w) / 2 + bx * (j * l) / 2, cy + ay * (i * w) / 2 + by * (j * l) / 2]);
+    const reach = Math.abs(hx * ax + hy * ay) * (w / 2) + Math.abs(hx * bx + hy * by) * (l / 2);
+    const zAt = (p) => zLow + (zHigh - zLow) * (((p[0] - cx) * hx + (p[1] - cy) * hy) / reach + 1) / 2;
+    const tops = pts.map((p) => [p[0], p[1], zAt(p)]), feet = pts.map((p) => [p[0], p[1], z0]);
+    let run = 0;
+    for (let k = 0; k < 4; k++) {
+      const k1 = (k + 1) % 4, side = Math.hypot(pts[k1][0] - pts[k][0], pts[k1][1] - pts[k][1]);
+      const u0 = run / 5, u1 = (run + side) / 5;
+      run += side;
+      const mx = (pts[k][0] + pts[k1][0]) / 2 - cx, my = (pts[k][1] + pts[k1][1]) / 2 - cy, hint = [mx, my, 0];
+      sink.tri(feet[k], feet[k1], tops[k1], [u0, z0 / 3.1], [u1, z0 / 3.1], [u1, tops[k1][2] / 3.1], layer, hex2, hint);
+      sink.tri(feet[k], tops[k1], tops[k], [u0, z0 / 3.1], [u1, tops[k1][2] / 3.1], [u0, tops[k][2] / 3.1], layer, hex2, hint);
+    }
+    sink.tri(tops[0], tops[1], tops[2], [0, 0], [1, 0], [1, 1], "flat", hex2, [0, 0, 1]);
+    sink.tri(tops[0], tops[2], tops[3], [0, 0], [1, 0], [1, 1], "flat", hex2, [0, 0, 1]);
+  }
+  var CAP_PROFILES = {
+    // A hemisphere in four steps: radius cos and height sin of 0, 30, 55, 75, 90 degrees.
+    dome: [[1, 0.87, 0.5], [0.87, 0.57, 0.32], [0.57, 0.26, 0.17], [0.26, 0, 0.01]],
+    // A steep bulged point, the Obrechtkerk's banded tower caps: fat low down, a long thin tip.
+    spire: [[1, 0.9, 0.2], [0.9, 0.62, 0.28], [0.62, 0.32, 0.27], [0.32, 0.1, 0.2], [0.1, 0, 0.05]]
+  };
+  function towerParts(sink, t, [cx, cy], ang, baseZ, gable) {
+    const w = t.widthM, z0 = t.z0 ?? baseZ, shape = t.shape ?? "square", body = t.mat ?? "brick";
+    const hex2 = t.wallHex ?? (body === "brick" ? gable : void 0), capShape = t.capShape ?? "pyramid";
+    if (capShape === "slant") {
+      slab(sink, cx, cy, ang, w, t.lenM ?? w, z0, t.z1, t.z1 + t.capM, (t.highBearingDeg ?? 0) * Math.PI / 180, body, hex2);
+      return;
+    }
+    stage(sink, cx, cy, ang, shape, w, w, z0, t.z1, body, hex2);
+    if (shape === "square") stage(sink, cx, cy, ang, "square", w + 0.8, w + 0.8, t.z1 - 0.6, t.z1, "stone");
+    if (capShape === "pyramid") stage(sink, cx, cy, ang, "square", w + 1.2, 0, t.z1, t.z1 + t.capM, t.cap, t.capHex);
+    else {
+      let z = t.z1;
+      const base = shape === "square" ? w + 0.5 : w;
+      for (const [r0, r1, h] of CAP_PROFILES[capShape]) {
+        stage(sink, cx, cy, ang, "octagon", base * r0, base * r1, z, z + h * t.capM, t.cap, t.capHex);
+        z += h * t.capM;
+      }
+    }
+    stage(sink, cx, cy, ang, "octagon", 0.35, 0, t.z1 + t.capM, t.z1 + t.capM + 1.6, "gold");
+  }
   function kitGeometry(kit, parts) {
     const out = /* @__PURE__ */ new Map();
     const sinkFor = (id) => {
@@ -1022,14 +1213,17 @@
           sink.out.push({ p: t.p, uv: t.uv, layer: slope ? "slope" : "plain", hex: slope ? hex2 : gable, n: t.n });
         }
       }
-      const axis = hallRects(part.ring, spec.widthM, toLocal(spec.anchor))[0], ang = axis ? Math.atan2(axis.uy, axis.ux) : 0;
-      for (const tower of spec.towers ?? []) {
-        const [cx, cy] = toLocal(tower.at), w = tower.widthM;
-        stage(sink, cx, cy, ang, "square", w, w, part.minHeightM, tower.z1, "brick", gable);
-        stage(sink, cx, cy, ang, "square", w + 0.8, w + 0.8, tower.z1 - 0.6, tower.z1, "stone");
-        stage(sink, cx, cy, ang, "square", w + 1.2, 0, tower.z1, tower.z1 + tower.capM, tower.cap);
-        stage(sink, cx, cy, ang, "octagon", 0.35, 0, tower.z1 + tower.capM, tower.z1 + tower.capM + 1.6, "gold");
+      for (const wing of spec.wings ?? []) {
+        const [cx, cy] = toLocal(wing.at), b = wing.bearingDeg * Math.PI / 180;
+        const rect = { cx, cy, ux: Math.cos(b), uy: Math.sin(b), len: wing.lenM, wid: wing.widM, coverage: 1, maxDev: 0 };
+        const wingPlan = { ...plan, kind: wing.roof === "hipped" ? "hipped" : "pitched", riseM: wing.riseM };
+        for (const t of roofTriangles(rect, wingPlan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
+          const slope = t.part === "slope";
+          sink.out.push({ p: t.p, uv: t.uv, layer: slope ? "slope" : "plain", hex: slope ? hex2 : gable, n: t.n });
+        }
       }
+      const axis = hallRects(part.ring, spec.widthM, toLocal(spec.anchor))[0], ang = axis ? Math.atan2(axis.uy, axis.ux) : 0;
+      for (const tower of spec.towers ?? []) towerParts(sink, tower, toLocal(tower.at), tower.bearingDeg === void 0 ? ang : tower.bearingDeg * Math.PI / 180, part.minHeightM, gable);
     }
     return [...out].map(([id, sink]) => ({ id, tris: sink.out }));
   }
