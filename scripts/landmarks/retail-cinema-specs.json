@@ -1,0 +1,125 @@
+[
+  {
+    "id": "rialto",
+    "name": "Rialto",
+    "landmarkId": "extract_landmarks_1428677427",
+    "modelUrl": "./models/rialto.glb",
+    "suppressOsmIds": [
+      "w277244583"
+    ],
+    "footprint": {
+      "centre": [
+        4.89396640278434,
+        52.35291910893182
+      ],
+      "headingDegrees": 167.64151226366334,
+      "lengthMetres": 24.608901125734388,
+      "widthMetres": 12.087697796837961
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180,
+    "attribution": {
+      "title": "Rialto",
+      "author": "Map Recall",
+      "sourceUrl": "https://depijp.rialtofilm.nl/en/information/about-rialto",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    },
+    "surveyed": {
+      "anchor": [
+        4.89396640278434,
+        52.35291910893182
+      ],
+      "northOffsetDegrees": 257.64151226366334,
+      "source": "OSM building w277244583 footprint, short north-facing Ceintuurbaan facade"
+    },
+    "spatialSuppression": false
+  },
+  {
+    "id": "kriterion",
+    "name": "Kriterion",
+    "landmarkId": "extract_landmarks_1605152135",
+    "modelUrl": "./models/kriterion.glb",
+    "suppressOsmIds": [
+      "w268999077"
+    ],
+    "footprint": {
+      "centre": [
+        4.910484137908315,
+        52.36263900277887
+      ],
+      "headingDegrees": 161.44363710419276,
+      "lengthMetres": 45.2242965083953,
+      "widthMetres": 30.547694670912293
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 270,
+    "attribution": {
+      "title": "Kriterion",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.stichtingkriterion.nl/geschiedenis",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    },
+    "surveyed": {
+      "anchor": [
+        4.910484137908315,
+        52.36263900277887
+      ],
+      "northOffsetDegrees": 251.44363710419276,
+      "source": "OSM building w268999077 polygon, east-facing Roetersstraat street house"
+    },
+    "spatialSuppression": false
+  },
+  {
+    "id": "de-bijenkorf",
+    "name": "De Bijenkorf",
+    "landmarkId": "de-bijenkorf",
+    "modelUrl": "./models/de-bijenkorf.glb",
+    "suppressOsmIds": [
+      "w23582490",
+      "w751128372",
+      "w751128373",
+      "w751128376",
+      "w751128377",
+      "w751128378",
+      "w751128379",
+      "w751128380",
+      "w751128381",
+      "w751128382",
+      "w751128383",
+      "w751128384",
+      "w751128385",
+      "w751235773",
+      "w751235774",
+      "w751235775",
+      "w751235776",
+      "w751235777",
+      "w751235778",
+      "w751235779",
+      "w751235780"
+    ],
+    "footprint": {
+      "centre": [
+        4.894352481530528,
+        52.373581327421924
+      ],
+      "headingDegrees": 39.69686744069807,
+      "lengthMetres": 111.74151268014535,
+      "widthMetres": 39.11553890323157
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 270,
+    "attribution": {
+      "title": "De Bijenkorf",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.cultureelerfgoeddebijenkorf.nl/architectuur/bouwfasesamsterdam",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    },
+    "spatialSuppression": false
+  }
+]
