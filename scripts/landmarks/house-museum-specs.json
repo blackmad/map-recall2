@@ -32,7 +32,8 @@
         52.37526883046758
       ],
       "northOffsetDegrees": 119.51208512104333
-    }
+    },
+    "spatialSuppression": false
   },
   {
     "id": "rembrandt-house",
@@ -67,7 +68,8 @@
         52.369299500000004
       ],
       "northOffsetDegrees": 214.19839036962065
-    }
+    },
+    "spatialSuppression": false
   },
   {
     "id": "moco-museum",
@@ -102,7 +104,8 @@
         52.35869759396733
       ],
       "northOffsetDegrees": 59.387481311342526
-    }
+    },
+    "spatialSuppression": false
   },
   {
     "id": "museum-van-loon",
@@ -137,6 +140,7 @@
         52.36338835201399
       ],
       "northOffsetDegrees": 192.3449814578558
-    }
+    },
+    "spatialSuppression": false
   }
 ]

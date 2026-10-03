@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 25,
+    "manual-model": 29,
     "catalogue-model": 13,
     "procedural-kit": 19,
-    "pending": 222
+    "pending": 218
   },
   "destinations": [
     {
@@ -524,7 +524,8 @@
       "type": "landmark",
       "queueRank": 45,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "haarlemmerpoort"
     },
     {
       "id": "lm-extract_landmarks_1187067601",
@@ -546,7 +547,8 @@
       "type": "museum",
       "queueRank": 47,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "het-schip"
     },
     {
       "id": "lm-extract_landmarks_741048430",
@@ -659,7 +661,8 @@
       "type": "landmark",
       "queueRank": 57,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "he-hua-temple"
     },
     {
       "id": "lm-extract_landmarks_1862244163",
@@ -703,7 +706,8 @@
       "type": "landmark",
       "queueRank": 61,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "amstelkerk"
     },
     {
       "id": "lm-extract_landmarks_1588171596",

@@ -2150,6 +2150,356 @@
       "triangles": 3554,
       "bytes": 53904,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "amstelkerk": {
+      "id": "amstelkerk",
+      "name": "Amstelkerk",
+      "landmarkId": "extract_landmarks_444968372",
+      "modelUrl": "./models/amstelkerk.glb",
+      "suppressOsmIds": [
+        "w57862594"
+      ],
+      "footprint": {
+        "centre": [
+          4.896631258458023,
+          52.36231406217453
+        ],
+        "headingDegrees": 162.77460287081203,
+        "lengthMetres": 32.33797500418897,
+        "widthMetres": 28.68211205174098
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Amstelkerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://stadsherstel.nl/monumenten/de-amstelkerk/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      },
+      "bounds": {
+        "min": [
+          -16.048917770385742,
+          -4.7683716530855236e-8,
+          -13.98900318145752
+        ],
+        "max": [
+          16.048917770385742,
+          21.899999618530273,
+          15.264002799987793
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.896631258458023,
+          52.36231406217453
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 162.77460287081203,
+        "facadeBearingDegrees": 252.77460287081203,
+        "scale": 1.0074814846350761
+      },
+      "extent": {
+        "widthMetres": 32.097835540771484,
+        "heightMetres": 21.89999966621399,
+        "depthMetres": 29.253005981445312,
+        "depthCoverage": 1.019904180301453
+      },
+      "triangles": 5296,
+      "bytes": 69172,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "he-hua-temple": {
+      "id": "he-hua-temple",
+      "name": "Fo Guang Shan He Hua Temple",
+      "landmarkId": "extract_landmarks_944681607",
+      "modelUrl": "./models/he-hua-temple.glb",
+      "suppressOsmIds": [
+        "w267091468"
+      ],
+      "footprint": {
+        "centre": [
+          4.900066205093341,
+          52.373727761786604
+        ],
+        "headingDegrees": 4.424469025937611,
+        "lengthMetres": 38.46371394807869,
+        "widthMetres": 15.688531853006925
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Fo Guang Shan He Hua Temple",
+        "author": "Map Recall",
+        "sourceUrl": "https://ibps.nl/he-hua-temple/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      },
+      "bounds": {
+        "min": [
+          -19.03953742980957,
+          -9.536743306171047e-8,
+          -8.201150894165039
+        ],
+        "max": [
+          19.03953742980957,
+          10.75,
+          9.466068267822266
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.900066205093341,
+          52.373727761786604
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 4.424469025937583,
+        "facadeBearingDegrees": 94.42446902593758,
+        "scale": 1.0101010618004127
+      },
+      "extent": {
+        "widthMetres": 38.07907485961914,
+        "heightMetres": 10.750000095367433,
+        "depthMetres": 17.667219161987305,
+        "depthCoverage": 1.126123166113924
+      },
+      "triangles": 7732,
+      "bytes": 109444,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "haarlemmerpoort": {
+      "id": "haarlemmerpoort",
+      "name": "Haarlemmerpoort",
+      "landmarkId": "extract_landmarks_498862002",
+      "modelUrl": "./models/haarlemmerpoort.glb",
+      "suppressOsmIds": [
+        "w33202039"
+      ],
+      "footprint": {
+        "centre": [
+          4.883079796368743,
+          52.384966999977514
+        ],
+        "headingDegrees": 42.81534677084582,
+        "lengthMetres": 35.36444542075912,
+        "widthMetres": 19.964773212277446
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Haarlemmerpoort",
+        "author": "Map Recall",
+        "sourceUrl": "https://stadsherstel.nl/monumenten/haarlemmerpoort/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      },
+      "bounds": {
+        "min": [
+          -18.182222366333008,
+          9.536743306171047e-8,
+          -10.18238639831543
+        ],
+        "max": [
+          18.182222366333008,
+          15.100000381469727,
+          10.277703285217285
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.883080159788275,
+          52.384966794464916
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 42.81534677084585,
+        "facadeBearingDegrees": 132.81534677084585,
+        "scale": 0.9725006302376287
+      },
+      "extent": {
+        "widthMetres": 36.364444732666016,
+        "heightMetres": 15.100000286102294,
+        "depthMetres": 20.460089683532715,
+        "depthCoverage": 1.0248095215502209
+      },
+      "triangles": 3760,
+      "bytes": 57008,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "scheepvaarthuis": {
+      "id": "scheepvaarthuis",
+      "name": "Scheepvaarthuis",
+      "landmarkId": "scheepvaarthuis",
+      "modelUrl": "./models/scheepvaarthuis.glb",
+      "suppressOsmIds": [
+        "w57863677"
+      ],
+      "footprint": {
+        "centre": [
+          4.903908332712785,
+          52.37432204329201
+        ],
+        "headingDegrees": 132.30446233848764,
+        "lengthMetres": 76.97848116218616,
+        "widthMetres": 66.4167813949489
+      },
+      "surveyed": {
+        "anchor": [
+          4.903908332712785,
+          52.37432204329201
+        ],
+        "northOffsetDegrees": 0
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Scheepvaarthuis",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.amrathamsterdam.com/en/information/history/the-scheepvaarthuis",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
+      },
+      "spatialSuppression": false,
+      "bounds": {
+        "min": [
+          -19.069854736328125,
+          -7.629394644936838e-7,
+          -49.33502960205078
+        ],
+        "max": [
+          48.18478012084961,
+          38.900001525878906,
+          50.45252227783203
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.903908332712785,
+          52.37432204329201
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 222.3044623384876,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 99.78755187988281,
+        "heightMetres": 38.90000228881837,
+        "depthMetres": 67.25463485717773,
+        "depthCoverage": 1.0126150867993213
+      },
+      "triangles": 31231,
+      "bytes": 463296,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "het-schip": {
+      "id": "het-schip",
+      "name": "Museum Het Schip",
+      "landmarkId": "extract_landmarks_975578776",
+      "modelUrl": "./models/het-schip.glb",
+      "suppressOsmIds": [
+        "w57857095",
+        "w274039865",
+        "w274039880",
+        "w274039890",
+        "w274039928",
+        "w274039961",
+        "w274039965",
+        "w274039970",
+        "w274040061",
+        "w274040252",
+        "w274040255",
+        "w274040262",
+        "w274040271",
+        "w274040276",
+        "w274040281",
+        "w274040284",
+        "w274040290",
+        "w274040293",
+        "w274040296",
+        "w274040305",
+        "w274040311",
+        "w274040314",
+        "w274040317",
+        "w274040326",
+        "w274040331",
+        "w274040334",
+        "w274040338",
+        "w274040342",
+        "w274040348",
+        "w274040351",
+        "w274040357",
+        "w274040362",
+        "w274040371",
+        "w274040375",
+        "w274040415",
+        "w274040419",
+        "w274040437",
+        "w274040452",
+        "w274040559",
+        "w274040564"
+      ],
+      "footprint": {
+        "centre": [
+          4.8734670680245165,
+          52.3902157496525
+        ],
+        "headingDegrees": 153.90696093135256,
+        "lengthMetres": 115.22286870841877,
+        "widthMetres": 66.04156587363654
+      },
+      "surveyed": {
+        "anchor": [
+          4.8734670680245165,
+          52.3902157496525
+        ],
+        "northOffsetDegrees": 0
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Museum Het Schip",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.hetschip.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
+      },
+      "spatialSuppression": false,
+      "bounds": {
+        "min": [
+          -49.07402038574219,
+          -3.814697322468419e-7,
+          -66.17605590820312
+        ],
+        "max": [
+          55.853721618652344,
+          28.700000762939453,
+          42.38469696044922
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8734670680245165,
+          52.3902157496525
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 243.90696093135261,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 108.56075286865234,
+        "heightMetres": 28.700001144409185,
+        "depthMetres": 104.92774200439453,
+        "depthCoverage": 1.588813660250917
+      },
+      "triangles": 26317,
+      "bytes": 379924,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

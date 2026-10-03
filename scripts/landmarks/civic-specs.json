@@ -1,0 +1,86 @@
+[
+  {
+    "id": "amstelkerk",
+    "name": "Amstelkerk",
+    "landmarkId": "extract_landmarks_444968372",
+    "modelUrl": "./models/amstelkerk.glb",
+    "suppressOsmIds": [
+      "w57862594"
+    ],
+    "footprint": {
+      "centre": [
+        4.896631258458023,
+        52.36231406217453
+      ],
+      "headingDegrees": 162.77460287081203,
+      "lengthMetres": 32.33797500418897,
+      "widthMetres": 28.68211205174098
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Amstelkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/de-amstelkerk/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  },
+  {
+    "id": "he-hua-temple",
+    "name": "Fo Guang Shan He Hua Temple",
+    "landmarkId": "extract_landmarks_944681607",
+    "modelUrl": "./models/he-hua-temple.glb",
+    "suppressOsmIds": [
+      "w267091468"
+    ],
+    "footprint": {
+      "centre": [
+        4.900066205093341,
+        52.373727761786604
+      ],
+      "headingDegrees": 4.424469025937611,
+      "lengthMetres": 38.46371394807869,
+      "widthMetres": 15.688531853006925
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Fo Guang Shan He Hua Temple",
+      "author": "Map Recall",
+      "sourceUrl": "https://ibps.nl/he-hua-temple/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  },
+  {
+    "id": "haarlemmerpoort",
+    "name": "Haarlemmerpoort",
+    "landmarkId": "extract_landmarks_498862002",
+    "modelUrl": "./models/haarlemmerpoort.glb",
+    "suppressOsmIds": [
+      "w33202039"
+    ],
+    "footprint": {
+      "centre": [
+        4.883079796368743,
+        52.384966999977514
+      ],
+      "headingDegrees": 42.81534677084582,
+      "lengthMetres": 35.36444542075912,
+      "widthMetres": 19.964773212277446
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Haarlemmerpoort",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/haarlemmerpoort/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  }
+]
