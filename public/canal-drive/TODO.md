@@ -54,6 +54,14 @@ transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
 weather/time mood. Cold-open is superseded by review rides (see HISTORY,
 2026-09-30).
 
+**Local-knowledge facts beyond Amsterdam (data lane).** Amsterdam's 57
+approved local facts are published (`localFact`, the card's lead line; see
+HISTORY). Open: run `npm run mine:area-facts -- --city utrecht|rotterdam|den-haag`,
+draft cited picks into `scripts/data/area-fact-review-<city>.json`, review,
+`publish`; 32 Amsterdam areas still have none (14 without any article); nine
+Amsterdam picks are boroughs/Gouden Bocht the quiz does not ask yet;
+`sentencesOf` splits after initials ("A.J. Ernststraat").
+
 **Neighbourhood trivia gaps (pipeline built 2026-10-02, data lane).**
 `npm run fill:neighborhood-gaps -- audit|offline|online|publish` fills missing
 description, history, name origin and photo for Amsterdam areas into
