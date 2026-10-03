@@ -243,7 +243,12 @@ for (const name of STREETS) {
   const { buildings, ways } = load(name);
   const a = analyseStreets(buildings, ways);
   const m = measure(name, a, buildings);
-  results.push({ ...m, drawnToday: drawnVariety(name, a, buildings), drawnWithEnsembleSeed: drawnVariety(name, a, buildings, true) });
+  const faceIds = new Set(a.faces.filter(f => f.streetName === name).map(f => f.id));
+  const pins = a.ensembles.filter(e => faceIds.has(e.faceId) && e.buildings.length >= 4).sort((x, y) => (y.endM - y.startM) - (x.endM - x.startM)).slice(0, 2).map(e => {
+    const bs = e.buildings.map(i => buildings[i]), c = bs[Math.floor(bs.length / 2)].ring[0];
+    return { first: bs[0].id, last: bs[bs.length - 1].id, buildings: bs.length, lengthM: Math.round(e.endM - e.startM), yearMedian: e.year, eaveM: e.eaveM, near: [Math.round((ORIGIN.lng + c[0] / KX) * 1e6) / 1e6, Math.round((ORIGIN.lat + c[1] / KY) * 1e6) / 1e6] };
+  });
+  results.push({ ...m, pins, drawnToday: drawnVariety(name, a, buildings), drawnWithEnsembleSeed: drawnVariety(name, a, buildings, true) });
   probes.push(probePoint(name, a));
   if (outDir) fs.writeFileSync(`${outDir}/strip-${name.replace(/\s+/g, '-').toLowerCase()}.svg`, strips(name, a, buildings));
 }
