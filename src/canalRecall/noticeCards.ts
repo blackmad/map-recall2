@@ -66,6 +66,11 @@ export interface LandmarkCardLayout {
   /** True when `lines` dropped part of the body, so an expanded view has
    *  something the card does not already show. */
   truncated: boolean;
+  /** The close "×" at the header row's right end, and the larger corner
+   *  region that takes a tap on it. Cards stay up until closed or replaced
+   *  (user request 2026-10-03), so every card needs a way to put it away. */
+  close: Rect;
+  closeHit: Rect;
 }
 
 const CARD_WIDTH = 480;
@@ -109,6 +114,12 @@ const MORE_GAP = 16;
 /** "More" is the action that opens the panel, so it reads as a link with an
  *  arrow rather than as one more chip beside the category. */
 const MORE_LABEL = 'MORE ›';
+/** The close glyph's box, and the header room it reserves beside "more". */
+const CLOSE_SIZE = 14;
+const CLOSE_ROOM = CLOSE_SIZE + 10;
+/** Side of the square corner region a tap on the close takes: a finger is
+ *  wider than the glyph. */
+const CLOSE_HIT = 40;
 
 /**
  * Badges that fit on one row of the text column. On a 320 px phone
@@ -187,7 +198,9 @@ export function measureLandmarkCard(
   // Nothing else on a canvas card says it can be clicked, so the cut body has
   // to advertise the panel that holds the rest of it.
   if (truncated) pushBadge(MORE_LABEL, 'more');
-  badges = fitBadges(badges, columnWidth, measure);
+  // The header row shares its right end with the close "×".
+  const headerColumn = columnWidth - CLOSE_ROOM;
+  badges = fitBadges(badges, headerColumn, measure);
 
   const chips = badges.filter(badge => badge.kind !== 'more');
   const more = badges.find(badge => badge.kind === 'more') || null;
@@ -198,10 +211,10 @@ export function measureLandmarkCard(
   const nameWidth = measure(name, NAME_FONT);
   const inlineNameX = chips.length ? chipsWidth + NAME_GAP : 0;
   // A card with no chips always keeps the name on the top row, beside "more".
-  const headerInline = !chips.length || inlineNameX + nameWidth + moreWidth <= columnWidth;
+  const headerInline = !chips.length || inlineNameX + nameWidth + moreWidth <= headerColumn;
 
   let displayName = props.name || '';
-  const nameRoom = headerInline ? columnWidth - inlineNameX - moreWidth : columnWidth;
+  const nameRoom = headerInline ? headerColumn - inlineNameX - moreWidth : headerColumn;
   if (measure(displayName.toUpperCase(), NAME_FONT) > nameRoom) {
     while (displayName.length > 10 && measure(`${displayName}…`.toUpperCase(), NAME_FONT) > nameRoom) {
       displayName = displayName.slice(0, -1);
@@ -211,16 +224,16 @@ export function measureLandmarkCard(
   const shownNameWidth = measure(displayName.toUpperCase(), NAME_FONT);
 
   // Width: the widest of the header and the body, inside the column.
-  const headerWidth = headerInline
+  const headerWidth = CLOSE_ROOM + (headerInline
     ? inlineNameX + shownNameWidth + moreWidth
-    : Math.max(badgeRowWidth(badges), shownNameWidth);
+    : Math.max(badgeRowWidth(badges), shownNameWidth));
   const bodyLinesWidth = lines.reduce((widest, line) => Math.max(widest, measure(line, BODY_FONT)), 0);
   const contentWidth = Math.min(columnWidth, Math.ceil(Math.max(headerWidth, bodyLinesWidth)));
   const width = Math.min(cardWidth, Math.max(hasImage ? textLeft + 160 : MIN_CARD_WIDTH, textLeft + contentWidth + PAD_RIGHT));
 
   let cursor = textLeft;
   for (const badge of badges) {
-    if (badge.kind === 'more') badge.x = width - PAD_RIGHT - badge.width;
+    if (badge.kind === 'more') badge.x = width - PAD_RIGHT - CLOSE_ROOM - badge.width;
     else { badge.x = cursor; cursor += badge.width + BADGE_GAP; }
   }
 
@@ -263,6 +276,8 @@ export function measureLandmarkCard(
     displayName,
     lines,
     truncated,
+    close: { x: width - PAD_RIGHT - CLOSE_SIZE + 3, y: Math.round(rowCentre - CLOSE_SIZE / 2), width: CLOSE_SIZE, height: CLOSE_SIZE },
+    closeHit: { x: width - CLOSE_HIT, y: 0, width: CLOSE_HIT, height: CLOSE_HIT },
   };
 }
 

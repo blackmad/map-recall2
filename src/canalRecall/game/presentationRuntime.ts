@@ -348,6 +348,7 @@ export class GamePresentationRuntime {
         if (finish) this._runFinishAction(finish.id);
         else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
         else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this.camera.resetPan();
+        else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
         else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
         else this._inspectBuildingAt(event.clientX, event.clientY);
       }

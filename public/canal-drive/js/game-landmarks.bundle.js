@@ -735,6 +735,41 @@
     }
   };
 
+  // src/canalRecall/game/postcardPacing.ts
+  var POSTCARD_FIRST_VISITS = 3;
+  var POSTCARD_QUIET_SECONDS = 45;
+  var POSTCARD_MIN_GAP_SECONDS = 120;
+  var POSTCARD_LULL_SECONDS = 90;
+  var POSTCARD_LULL_GAP_SECONDS = 180;
+  var since = (now, at) => at == null || at > now ? Infinity : now - at;
+  function postcardOnEntry(input) {
+    if (input.priorEntries < POSTCARD_FIRST_VISITS) return true;
+    return since(input.now, input.lastTriviaAt) >= POSTCARD_QUIET_SECONDS && since(input.now, input.lastPostcardAt) >= POSTCARD_MIN_GAP_SECONDS;
+  }
+  function postcardForLull(input) {
+    const trivia = input.lastTriviaAt != null && input.lastTriviaAt <= input.now ? input.lastTriviaAt : -Infinity;
+    return since(input.now, Math.max(input.enteredAt, trivia)) >= POSTCARD_LULL_SECONDS && since(input.now, input.lastPostcardAt) >= POSTCARD_LULL_GAP_SECONDS;
+  }
+  var storageKey = (cityId) => `canalRecall.neighborhoodEntries.${cityId}`;
+  function loadEntryCounts(storage, cityId) {
+    try {
+      const raw = storage?.getItem(storageKey(cityId));
+      const parsed = raw ? JSON.parse(raw) : {};
+      return new Map(Object.entries(parsed).filter((e) => typeof e[1] === "number"));
+    } catch {
+      return /* @__PURE__ */ new Map();
+    }
+  }
+  function recordEntry(storage, cityId, counts, name) {
+    const prior = counts.get(name) ?? 0;
+    counts.set(name, prior + 1);
+    try {
+      storage?.setItem(storageKey(cityId), JSON.stringify(Object.fromEntries(counts)));
+    } catch {
+    }
+    return prior;
+  }
+
   // src/canalRecall/game/routeSelection.ts
   function nearestRouteIndex(route, player) {
     if (route.length === 1) return { index: 0, distance: Math.hypot(route[0].x - player.x, route[0].y - player.y) };
@@ -819,13 +854,14 @@
     }
     return chosen;
   }
+  var CLICK_PREEMPT_AFTER_SECONDS = 20;
   function mayReplaceNotice(source, hold, elapsed) {
     if (!source || !hold) return true;
-    if (source === "click" || source === "arrival" || hold.kind === "sticky") return false;
-    return elapsed >= PREEMPT_AFTER_SECONDS;
+    if (source === "arrival") return false;
+    return elapsed >= (source === "click" ? CLICK_PREEMPT_AFTER_SECONDS : PREEMPT_AFTER_SECONDS);
   }
   function driveByGapElapsed(lastShownAt, now) {
-    return lastShownAt == null || now - lastShownAt >= DRIVE_BY_MIN_GAP_SECONDS;
+    return lastShownAt == null || lastShownAt > now || now - lastShownAt >= DRIVE_BY_MIN_GAP_SECONDS;
   }
 
   // src/canalRecall/transit/corridorStreets.ts
@@ -889,7 +925,6 @@
   }
 
   // src/canalRecall/game/landmarkRuntime.ts
-  var CLICKED_NOTICE_SECONDS = 8;
   var CLICK_SELECT_RADIUS = 120;
   var CLICK_MARKER_RADIUS = 40;
   async function readJson(response, fallback) {
@@ -939,7 +974,7 @@
         if (!building) return;
         nearest = this._cardForClickedBuilding(building);
       }
-      this._showLandmarkNotice(nearest, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS }, "click");
+      this._showLandmarkNotice(nearest, { kind: "sticky" }, "click");
       this.vectorMap.setActiveLandmark(nearest);
     }
     /** Open a landmark card, saying why it is up — which is what decides when it
@@ -957,6 +992,7 @@
       this._landmarkNoticeHold = hold;
       this._landmarkNoticeSource = source;
       this._landmarkNoticeState = openNotice();
+      if (source !== "arrival") this._lastTriviaAt = this.raceTime;
       this._landmarkNoticeAlpha = 0;
       this._ensureLandmarkImage(this._landmarkNotice);
     }
@@ -994,6 +1030,7 @@
       this._landmarkNoticeState = openNotice();
       this._landmarkNoticeAlpha = 0;
       this._landmarkCardBounds = null;
+      this._landmarkCloseBounds = null;
     }
     /**
      * A nameless footprint cannot teach the player anything, but swallowing the
@@ -1068,7 +1105,7 @@
         imageUrl: entry.wikipediaImageUrl || "",
         wikipediaUrl: entry.wikipediaUrl || "",
         extractLang: entry.wikipediaExtractLang || "en"
-      }, { kind: "timed", seconds: CLICKED_NOTICE_SECONDS }, "street");
+      }, { kind: "sticky" }, "street");
     }
     // ---- Loading the extract ----
     /**
@@ -1235,11 +1272,37 @@
       if (this.currentNeighborhood) this._visitedNeighborhoods.add(this.currentNeighborhood);
       if (this.currentNeighborhood && this.currentNeighborhood !== this._previousNeighborhood) {
         this._previousNeighborhood = this.currentNeighborhood;
-        if (canShowDriveByCard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
-          if (hood) this._ensureNeighborhoodImage(hood);
-          this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
-          this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
+        this._neighborhoodEnteredAt = this.raceTime;
+        const cityId = this.cityId || "amsterdam";
+        if (this._neighborhoodEntries?.cityId !== cityId) {
+          this._neighborhoodEntries = { cityId, counts: loadEntryCounts(typeof localStorage === "undefined" ? null : localStorage, cityId) };
         }
+        const priorEntries = recordEntry(
+          typeof localStorage === "undefined" ? null : localStorage,
+          cityId,
+          this._neighborhoodEntries.counts,
+          this.currentNeighborhood
+        );
+        this._postcardPending = postcardOnEntry({
+          now: this.raceTime,
+          priorEntries,
+          lastTriviaAt: this._lastTriviaAt ?? null,
+          lastPostcardAt: this._lastPostcardAt ?? null
+        }) ? this.currentNeighborhood : null;
+      } else if (this.currentNeighborhood && !this._postcardPending && postcardForLull({
+        now: this.raceTime,
+        enteredAt: this._neighborhoodEnteredAt ?? 0,
+        lastTriviaAt: this._lastTriviaAt ?? null,
+        lastPostcardAt: this._lastPostcardAt ?? null
+      })) {
+        this._postcardPending = this.currentNeighborhood;
+      }
+      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && canShowDriveByCard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+        this._postcardPending = null;
+        this._lastPostcardAt = this.raceTime;
+        if (hood) this._ensureNeighborhoodImage(hood);
+        this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
+        this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
       }
       const routePath = this.routePath;
       const landmarkRouteRadiusPx = isTransit(this.travelMode) ? (window.CanalRecallTransit?.TRANSIT_LANDMARK_ROUTE_RADIUS_M ?? 120) * PIXELS_PER_METER : Infinity;
@@ -1269,7 +1332,7 @@
       if (nearest && nearest.id !== this._landmarkNotice?.id) {
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);
-        this._showLandmarkNotice(nearest, { kind: "proximity", anchor: { x: nearest.x, y: nearest.y } }, "drive-by");
+        this._showLandmarkNotice(nearest, { kind: "sticky" }, "drive-by");
         this._lastDriveByAt = this.raceTime;
         this.vectorMap.setActiveLandmark(nearest);
       }
@@ -1311,6 +1374,7 @@
     _renderLandmarkNotice() {
       const lm = this._landmarkNotice;
       this._landmarkCardBounds = null;
+      this._landmarkCloseBounds = null;
       if (!lm) return;
       if (!canShowTeachingCard(this._teachingGate())) return;
       const ctx = this.ctx;
@@ -1356,6 +1420,7 @@
       this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
       ctx.restore();
       this._landmarkCardBounds = { x: cardX, y: cardY, w: card.width, h: card.height };
+      this._landmarkCloseBounds = { x: cardX + card.closeHit.x, y: cardY + card.closeHit.y, w: card.closeHit.width, h: card.closeHit.height };
     }
     /**
      * The expanded card. `measureLandmarkCard` cuts the body to three or four
