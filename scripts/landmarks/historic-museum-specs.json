@@ -1,0 +1,76 @@
+[
+  {
+    "id": "hart-museum",
+    "name": "H'ART Museum \u2014 Amstelhof",
+    "landmarkId": "extract_landmarks_352379234",
+    "modelUrl": "./models/hart-museum.glb",
+    "suppressOsmIds": [
+      "r3604193",
+      "NL.IMBAG.Pand.0363100012165553"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.902899923436612,
+        52.36539923653881
+      ],
+      "headingDegrees": 162.6932525153169,
+      "lengthMetres": 102.78905473145181,
+      "widthMetres": 80.97941766115503
+    },
+    "surveyed": {
+      "anchor": [
+        4.902899923436612,
+        52.36539923653881
+      ],
+      "northOffsetDegrees": 72.7
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "H'ART Museum \u2014 Amstelhof",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.hartmuseum.nl/en/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
+    }
+  },
+  {
+    "id": "amsterdam-museum",
+    "name": "Amsterdam Museum \u2014 Burgerweeshuis",
+    "landmarkId": "extract_landmarks_2083029836",
+    "modelUrl": "./models/amsterdam-museum.glb",
+    "suppressOsmIds": [
+      "r3583133",
+      "NL.IMBAG.Pand.0363100012168198"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.890522675661112,
+        52.37023504304229
+      ],
+      "headingDegrees": 73.00211651228418,
+      "lengthMetres": 120.66940764415725,
+      "widthMetres": 71.720449445128
+    },
+    "surveyed": {
+      "anchor": [
+        4.890522675661112,
+        52.37023504304229
+      ],
+      "northOffsetDegrees": 72.7
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 9.997883487715825,
+    "attribution": {
+      "title": "Amsterdam Museum \u2014 Burgerweeshuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.amsterdammuseum.nl/en/het-nieuwe-amsterdam-museum",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
+    }
+  }
+]
