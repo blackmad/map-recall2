@@ -19,6 +19,10 @@ The extrusions were facade extras, each now slimmer:
   - Entrance slabs went from 1.8 to 1.0 m.
   - Vertical fins went from 0.45 to 0.22 m.
 - **Check:** `check-facade-extras.ts` now asserts that nothing above the ground floor of a canal, c19 or school front sticks out more than 0.6 m. Thin hoist beams and flagpoles are exempt.
+- **Pickets on the pavement** (second screenshot: "bunch of weird artifacts here too"):
+  - Parked bikes and bike racks were drawn on each facade, standing out from the wall as dark pickets. They are gone.
+  - Stoop railings were their own component, so they stood without steps under them. They are now part of the stoop.
+  - The light-well railing and the bench never stand in front of a shop window.
 
 ## Local renames for businesses OSM has not caught up with
 
