@@ -100,7 +100,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="settings-modal-title"
-        className="app-dialog w-full max-w-lg p-5 sm:p-6 space-y-5 max-h-[90vh] overflow-y-auto"
+        className="app-dialog w-full max-w-lg p-5 sm:p-6 space-y-5 max-h-[90dvh] overflow-y-auto"
       >
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-white/15">

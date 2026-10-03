@@ -250,7 +250,8 @@ a:focus-visible {
 @media (max-width: 640px) {
   .quiz-card,
   .quiz-result-card { border-radius: 10px !important; }
-  .quiz-result-card { max-height: min(58dvh, 520px); overflow-y: auto; }
+  /* No inner scroller: the overlay wrapper (max-h 42dvh) is the one scroll
+     area. A nested one taller than its parent hid the card's last lines. */
 }
 
 @media (prefers-reduced-motion: reduce) {

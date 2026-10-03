@@ -13,6 +13,38 @@ User (2026-10-03), after Fatih rendered as a 37 m green box: "More? Landmarks?"
 - **Tried and dropped:** giving the big ones the generic facade too. Carré and the Oosterkerk read as nine-storey flats.
 - **Hand-modelled churches** (kits with sources, real-tile checks): Obrechtkerk, Oosterkerk, De Duif, Opstandingskerk, Mozes en Aäronkerk and the Westerkerk east-end sliver. Kits gained explicit wings, slab and round towers, and spire, dome and slanted caps. Guesses: Opstandingskerk's slab sits at the south end; the Obrechtkerk towers are placed from the footprint.
 
+## Arrival card fits the window
+
+User (2026-10-02), on the De Dolphijn arrival card on a laptop: "ideally fits on screen". With a photo, a ribbon, first-time gains, a sign-in tease and a personal best, the card was taller than the window, so the Next route and Share actions were cut off.
+
+- **Density levels:** `_renderFinish` builds the card at up to four densities and uses the first that fits.
+  - Spacing gets tighter at each level.
+  - The personal best moves into the footer line.
+  - The blurb and the story get shorter, and the photo gets smaller.
+  - At the tightest level the encyclopedia blurb is dropped.
+  - Only if the tightest level still overflows is the card scaled down, and the touch hit boxes are scaled with it.
+- **Story lines:** they now wrap to the card. On a phone, "You made it to … · 2 new names, 1 landmark" ran past the right edge, and a cut never leaves half a sentence.
+- **Phone:**
+  - The card stops above the settings and help buttons.
+  - On short screens, Route setup and Share sit side by side, so every button keeps a 44 px target.
+  - Ribbon axis labels drop their percentage when the column is too narrow.
+- **Checks:** `tests/e2e/finish-card-fit.spec.ts` checks a full card at 1440x700 and 1280x600. Storybook has `FinishCardFull` and `FinishCardFullPhone`.
+
+## Trivia card: compact header, "more" as a link, sized to its content
+
+User (2026-10-02), on the Prinsengracht street card: "bad layout".
+
+- **Was:** every bare card was 480 px wide whatever it held. "+ MORE" was a copper pill beside STREET, so it read as a second tag. The name sat 2 px under the chips, and the plate had 7 px of air on top and nearly 30 px below.
+- **Now:** `measureLandmarkCard` puts the category chip and the name on one row when they fit, and drops the name below the chips when they do not. "MORE ›" is copper text at the row's right end, with no pill. The body wraps at a 400 px measure. The card is as wide as its widest line, with a 220 px floor and the old width as the ceiling. Padding is even on all sides.
+- **Renderer:** the layout now carries every vertical position (`headerTop`, `nameBaseline`, `bodyBaseline`, `lineStep`), so `renderer.drawLandmarkCard` can no longer drift from the measured height.
+- **Checks:** the Prinsengracht case is pinned in `scripts/check-notice-cards.ts`. Storybook has `StreetOriginCard` and `PortraitStreetOriginCard`.
+## Map Recall bottom card fits above iPhone Safari's toolbar
+
+User (2026-10-02, iPhone Safari screenshot): "Mobile needs some display fixes at the bottom. Also can't scroll to the bottom of the trivia card."
+
+- **Cause:** the Map Recall shell was Tailwind `h-screen` (100vh). iOS sizes 100vh to the large viewport (toolbar hidden), so the bottom card's "No idea" / "Place a pin first" row and the end of every scroll area were laid out under the toolbar, where no touch can reach. `#root` was already 100dvh; the shell now fills it (`h-full w-full`). Modal caps moved from `vh` to `dvh` for the same reason.
+- **Trivia card:** on phones `.quiz-result-card` had its own `max-height: 58dvh; overflow-y: auto` inside the overlay wrapper's 42dvh scroller. The inner scroller was taller than its parent, so scrolling the outer one never reached the card's last lines. The wrapper is now the only scroll area (`overscroll-contain` so the page does not rubber-band).
+- **Regression:** `tests/e2e/map-recall-phone-chrome.spec.ts` shrinks `#root` by a 90 px "toolbar" the way Safari's dynamic viewport does and requires both buttons and the scrolled-to-end answer card to sit above it. Both tests fail on the old code. Not yet checked on a real iPhone.
 ## Listed buildings draw the gable the monuments register names
 
 User (2026-10-02): "do you think it's at all possible to correlate the canal house builder more to the year the house was built?", then "start on wall colors, then gables".
