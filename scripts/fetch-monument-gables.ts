@@ -101,23 +101,32 @@ const featuresOf = (x: number, y: number) => {
 };
 const buildings: Record<string, string> = {};
 const counts: Record<string, number> = {};
+// Landmark buildings that are listed: their BAG year is often a restoration (Westerkerk 1990,
+// Mozes en Aäronkerk 1969), so the landmark fallback reads "listed" as old whatever the year.
+// A register point marks one part of a many-part landmark; the whole landmark counts as listed.
+const landmarkParts = Object.values(JSON.parse(readFileSync('public/data/extracts/amsterdam/landmark-buildings.json', 'utf8')).buildings as Record<string, string[]>);
+const landmarkIds = new Set(landmarkParts.flat());
+const listed = new Set<string>();
 let named = 0, matched = 0;
 for (const [nr, m] of byNr) {
-  if (!m.shape) continue;
-  named++;
   const [x, y] = tileOf(...m.point);
   const hit = featuresOf(x, y).find(f => (f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates).some((poly: Ring[]) => inside(m.point, poly[0])));
+  if (hit && landmarkIds.has(String(hit.properties.id))) listed.add(String(hit.properties.id));
+  if (!m.shape) continue;
+  named++;
   if (!hit) continue;
   matched++;
   buildings[String(hit.properties.id)] = m.shape;
   counts[m.shape] = (counts[m.shape] ?? 0) + 1;
   void nr;
 }
-const out = { version: 1, source: 'Rijksdienst voor het Cultureel Erfgoed, monumentenregister (CC0), linkeddata.cultureelerfgoed.nl', generated: new Date().toISOString().slice(0, 10), buildings };
+const out = { version: 1, source: 'Rijksdienst voor het Cultureel Erfgoed, monumentenregister (CC0), linkeddata.cultureelerfgoed.nl', generated: new Date().toISOString().slice(0, 10), buildings, listedLandmarks: [...listed].sort() };
 mkdirSync('/mnt/project-files/house-design', { recursive: true });
 writeFileSync(STAGING, JSON.stringify(out));
 console.log(`${byNr.size} Amsterdam monuments; ${named} name a gable; ${matched} matched a footprint (${Object.keys(buildings).length} buildings)`);
+for (const parts of landmarkParts) if (parts.some(id => listed.has(id))) for (const id of parts) listed.add(id);
 console.log('by shape', JSON.stringify(counts));
+console.log(`${listed.size} landmark buildings are listed`);
 console.log(`staged ${STAGING}`);
 if (process.argv.includes('--publish')) { writeFileSync(EXTRACT, JSON.stringify(out)); console.log(`published ${EXTRACT}`); }
 void readdirSync;

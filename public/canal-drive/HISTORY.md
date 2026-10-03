@@ -1,5 +1,18 @@
 # Canal Recall — what is built
 
+## Kit-less landmarks: house-sized old ones get a period facade, big ones period brick
+
+User (2026-10-03), after Fatih rendered as a 37 m green box: "More? Landmarks?"
+
+- **Before:** every landmark building a kit did not model stood as one bare box at its BAG height, in the citywide identity palette when no colour was measured. That palette could make a church green.
+- **Now (`exceptLandmarks` in `roofMesh.ts`):**
+  - Kit-modelled parts and bodies (`KIT_MODELLED_IDS`) still pass through untouched.
+  - An old landmark the size of a house (built before 1945 and at most 26 m) takes the generic period facade and roof. Felix Meritis now reads as a Keizersgracht building with a pediment roof. Measured over the 977 landmark parts: 263 kit, 339 period facade, 375 bare.
+  - A larger one keeps its bare form, but a palette-guessed colour becomes period brick `#7a4535` (old) or concrete `#b9ad9a` (1945 on). Measured colours are kept.
+  - A listed landmark counts as old whatever BAG says. BAG often dates a restoration: the Westerkerk east end says 1990 and Mozes en Aäron says 1969. `fetch-monument-gables.ts` now writes `listedLandmarks` (483 parts, a whole landmark counts when any part holds a register point).
+- **Tried and dropped:** giving the big ones the generic facade too. Carré and the Oosterkerk read as nine-storey flats.
+- **Hand-modelled churches** (kits with sources, real-tile checks): Obrechtkerk, Oosterkerk, De Duif, Opstandingskerk, Mozes en Aäronkerk and the Westerkerk east-end sliver. Kits gained explicit wings, slab and round towers, and spire, dome and slanted caps. Guesses: Opstandingskerk's slab sits at the south end; the Obrechtkerk towers are placed from the footprint.
+
 ## Listed buildings draw the gable the monuments register names
 
 User (2026-10-02): "do you think it's at all possible to correlate the canal house builder more to the year the house was built?", then "start on wall colors, then gables".

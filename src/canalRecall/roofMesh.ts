@@ -731,7 +731,29 @@ export function decorateRoof<T extends GeoFeature>(feature: T): T {
  * decorator so any building in `ids` (the resolved landmark buildings) is
  * passed through untouched, with no generic facade or roof. `ids` is read at
  * call time, so it can fill in after the decorator is installed.
+ *
+ * Unless a kit models it (`modelled`), a landmark used to stand as one bare box in the
+ * unmeasured identity palette (user 2026-10-03, after Fatih's 37 m green block: "More?
+ * Landmarks?"). Now an old landmark the size of a house (built before 1945, at most
+ * 26 m: Felix Meritis, a canal-house museum) takes the generic period facade and roof,
+ * and a larger one keeps its bare form in period brick or concrete instead of a palette guess.
+ * `listed`: landmark buildings in the monuments register (monument-gables.json), counted as old.
  */
-export function exceptLandmarks<T extends GeoFeature>(decorate: (feature: T) => T, ids: ReadonlySet<string>): (feature: T) => T {
-  return (feature: T) => (ids.size && ids.has(String(feature.properties.id ?? '')) ? feature : decorate(feature));
+export const OLD_LANDMARK_MAX_M = 26;
+const UNMODELLED_OLD_WALL = '#7a4535', UNMODELLED_NEW_WALL = '#b9ad9a';
+export function exceptLandmarks<T extends GeoFeature>(decorate: (feature: T) => T, ids: ReadonlySet<string>, modelled: ReadonlySet<string> = new Set(), listed: ReadonlySet<string> = new Set()): (feature: T) => T {
+  return (feature: T) => {
+    const id = String(feature.properties.id ?? '');
+    if (!ids.size || !ids.has(id)) return decorate(feature);
+    if (modelled.has(id)) return feature;
+    const p = feature.properties, height = Number(p.height), year = Number(p.constructionYear);
+    const dated = p.constructionYear !== null && p.constructionYear !== undefined && Number.isFinite(year);
+    if (dated && year < 1945 && height <= OLD_LANDMARK_MAX_M) return decorate(feature);
+    // Not the generic facade for the big ones: tried 2026-10-03, Carré and the Oosterkerk read as nine-storey flats.
+    // A listed landmark is old whatever BAG says: its year is often a restoration (Carré, the Oosterkerk).
+    const old = (dated && year < 1945) || listed.has(id);
+    const guessed = typeof p.appearanceStyleSource === 'string' && p.appearanceStyleSource.includes('not-measured');
+    const wall = old ? UNMODELLED_OLD_WALL : UNMODELLED_NEW_WALL;
+    return guessed ? { ...feature, properties: { ...p, sideColour: wall, groundColour: wall } } : feature;
+  };
 }

@@ -327,6 +327,8 @@ export const KITS: Kit[] = [
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */
 export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? [])]));
 export const KIT_HIDE_IDS: readonly string[] = [...new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...(k.hides ?? [])]))];
+/** Every landmark part a kit draws or walls itself (parts, hall hosts, bodies): the generic landmark fallback leaves these alone. */
+export const KIT_MODELLED_IDS: ReadonlySet<string> = new Set([...KIT_PART_IDS, ...KITS.flatMap(k => k.body ?? [])]);
 const KIT_ROOF = new Map(KITS.flatMap(k => k.roofs.map(r => [r.id, { roof: r, wall: k.wall }] as const)));
 const KIT_HALLS = new Map(KITS.flatMap(k => (k.halls ?? []).map(h => [h.id, { halls: h, wall: k.wall }] as const)));
 const KIT_BODY = new Map(KITS.flatMap(k => (k.wall ? (k.body ?? []).map(id => [id, k.wall!] as const) : [])));

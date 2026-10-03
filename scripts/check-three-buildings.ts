@@ -268,6 +268,20 @@ for (const c of [0.64, 1.4]) {
     ids.add(roofed);
     const f = house(roofed);
     assert.equal(wrapped(f), f, 'a landmark building is returned untouched, and the list is read at call time');
+    // Unmodelled landmarks: an old one the size of a house takes the generic period facade and roof;
+    // a big one keeps its bare form but loses a palette-guess colour; a kit-modelled one is untouched.
+    const old = { ...f, properties: { ...f.properties, constructionYear: 1788 } };
+    assert.ok(wrapped(old).properties.roofPlanned, 'an old house-sized landmark (Felix Meritis) gets the generic roof');
+    const big = { ...f, properties: { ...f.properties, height: 40, constructionYear: 1888, appearanceStyleSource: 'identity-palette-not-measured' } };
+    assert.equal(wrapped(big).properties.sideColour, '#7a4535', 'an old tower-height landmark is period brick, not a palette guess');
+    assert.equal(wrapped(big).properties.roofPlanned, undefined, 'and keeps its own bare form');
+    assert.equal(wrapped({ ...big, properties: { ...big.properties, constructionYear: 1972 } }).properties.sideColour, '#b9ad9a', 'a modern one is concrete');
+    const restored = { ...big, properties: { ...big.properties, constructionYear: 1990 } };
+    assert.equal(exceptLandmarks(decorateRoof, ids, new Set(), new Set([roofed]))(restored).properties.sideColour, '#7a4535', 'a listed landmark with a restoration year is still old brick (Carré)');
+    const measuredBig = { ...big, properties: { ...big.properties, appearanceStyleSource: 'measured-photo' } };
+    assert.equal(wrapped(measuredBig), measuredBig, 'a measured colour is kept');
+    const kitWrapped = exceptLandmarks(decorateRoof, ids, new Set([roofed]));
+    assert.equal(kitWrapped(old), old, 'a kit-modelled landmark is never decorated');
   }
   const measured = { type: 'Feature' as const, properties: { id: 'm', height: 14, facade: 'canal-priorBrickRed', facadeStyle: 'canal', roofEavesHeightM: 11.2 }, geometry: { type: 'Polygon', coordinates: [ring] } };
   assert.equal(decorateRoof(measured), measured, 'a measured roof is never overridden');

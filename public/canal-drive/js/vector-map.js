@@ -882,7 +882,7 @@ class VectorBasemap {
     const decorate = withRoofs ? (feature) => api.decorateRoof(named(Facades.decorateFacade(feature))) : Facades.decorateFacade;
     // Landmark buildings (churches, museums, Centraal…) keep their own form: no generic facade or roof.
     if (!this._landmarkBuildingIds) this._landmarkBuildingIds = new Set();
-    const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds) : decorate;
+    const base = api && api.exceptLandmarks ? api.exceptLandmarks(decorate, this._landmarkBuildingIds, this._listedLandmarks) : decorate;
     // Landmark kits (spires, domes, pitched roofs on naves) lower their roofed parts to the eaves.
     // Measured landmark fronts cap and colour the parts behind them (landmarkFrontData.ts).
     this._completeCity.setFeatureDecorator(this._buildings3dEnabled && api && api.decorateKitRoof
@@ -899,6 +899,8 @@ class VectorBasemap {
       if (!response.ok) return;
       const data = await response.json();
       this._monumentGables = new Map(Object.entries(data.buildings || {}));
+      // Listed landmarks count as old even when BAG dates a restoration (landmark fallback, roofMesh.ts).
+      this._listedLandmarks = new Set(data.listedLandmarks || []);
       this._applyFeatureDecorator();
     } catch (error) {
       console.warn('Monument gables unavailable; listed buildings get period gables.', error);
