@@ -131,13 +131,12 @@ complete. Next candidates: Jewish Museum, Portuguese Synagogue, Hollandsche
 Schouwburg and National Holocaust Museum. Exact building IDs preserve neighbors and courtyards
 around narrow house museums and irregular complexes. Squares/intersections require a public-space treatment rather than
 a generic building model.
-Open for cinemas: the large pre-1945 ones (Pathé City 24 m and 1,222 m², Studio/K 3,494 m², LAB111) still wear canal-house
-facades. Proposed: a cinema landmark part over about 800 m² or 20 m gets a plain wall with no windows or gables, optionally with a
-signage band. This needs cinema ids passed through `exceptLandmarks` in vector-map.js. Also still bare: Amsterdam Museum, Madame Tussauds,
-Jewish Museum, Hollandsche Schouwburg, National Holocaust Museum.
-Next, by recognisability: Oude Kerk (spire), Munttoren, Centraal (two towers and
-central pavilions, long facade), Rijksmuseum (towers, central arch), Beurs van
-Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera, Hofkerk
+Large cinemas and theatres now have the public-building category treatment;
+Pathé City and Tuschinski also have original models. Studio/K and LAB111 still
+need individual recognition details. Remaining museum models include Madame
+Tussauds, Jewish Museum, Hollandsche Schouwburg and National Holocaust Museum.
+Further kit refinements: Munttoren, Rijksmuseum (towers, central arch), Beurs van
+Berlage (clock tower), NEMO (green ship prow), Stopera, Hofkerk
 (dome), Dominicuskerk and Vredeskerk (the big kit-less ones still stand as
 bare period-brick boxes; see HISTORY "Kit-less landmarks"). Each needs its
 OSM part ids first (look at the stacked parts near the landmark's coordinate; the
@@ -148,7 +147,11 @@ measured on a phone; palace columns and tower openings are crude; church windows
 are bare brick; the highlight for a kit landmark falls back to the plain yellow
 prism.
 
-**Places of worship: the rest (after 2026-10-03 kits and generic rule, see HISTORY).** Engelse Kerk kit: a brick west tower with a slate spire and a white nave with tall arched windows. 3D BAG puts the nave roof at 6.7–15.9 m and the aisle at 5.2–10.1 m; photos are already cached in `/mnt/project-files/house-design/worship/`. Fo Guang Shan kit, which needs a tiered-eave roof shape: roofs at 11.4–14.1 m, 7.5–8.2 m and 5.5 m. The Fo Guang Shan camera preset is off. Taibah, the Amstelkerk and the Augustinuskerk have not been checked against 3D BAG. The Vredeskerk has only its tower parts in the tiles.
+**Places of worship: the rest (after 2026-10-04 original models).** English
+Reformed Church, He Hua Temple and Amstelkerk now have original models reviewed
+on the map. Taibah and Augustinuskerk still need a 3DBAG check. Vredeskerk has
+only its tower parts in the tiles; its nave needs treatment.
+
 
 **Public buildings, next (after 2026-10-03, see HISTORY).** These are matched in staging but untreated: fire stations (19), police (23), hospitals (54) and civic offices (92). Red fire-station doors need a glass colour per window row in `KitWindows`. Big cinemas and theatres need a signage band, because plain brick boxes read as bare. The pitched-or-flat roof call on pre-1930 schools is a guess wherever the tile `roofShape` is missing.
 
