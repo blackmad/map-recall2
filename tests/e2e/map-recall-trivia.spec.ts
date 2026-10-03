@@ -9,10 +9,18 @@ async function quietExternalRequests(page: Page) {
   await page.route(/(basemaps\.cartocdn\.com|tile\.openstreetmap\.org|googleapis\.com|gstatic\.com|wikimedia\.org)/, (route) => route.abort());
 }
 
-/** Skip rounds until the answer card shows `selector`; returns how many rounds it took. */
+/** Open the folded answer card ("More"), when the answer has details to open. */
+async function openAnswerDetails(page: Page) {
+  const folded = page.locator('[data-testid="answer-details"][data-expanded="no"]');
+  if (await folded.isVisible().catch(() => false)) await folded.click();
+}
+
+/** Skip rounds until the answer card, opened, shows `selector`; returns how many rounds it took. */
 async function skipUntil(page: Page, selector: string, maxRounds = 10): Promise<number> {
   for (let round = 1; round <= maxRounds; round++) {
     await page.getByRole('button', { name: 'No idea' }).click();
+    if (await page.locator(selector).first().isVisible().catch(() => false)) return round;
+    await openAnswerDetails(page);
     if (await page.locator(selector).first().isVisible().catch(() => false)) return round;
     const next = page.locator('#next-round-btn, #guess-next-round-btn').first();
     if (!(await next.isVisible())) break;
@@ -124,4 +132,33 @@ test('a neighbourhood with photos opens its card with a painted postcard', async
   const rounds = await skipUntil(page, '[data-testid="answer-postcard"]');
   expect(rounds, 'a neighbourhood with a postcard within ten rounds').toBeGreaterThan(0);
   await expect(page.locator('[data-testid="answer-postcard"]')).toHaveAttribute('data-painted', 'yes', { timeout: 15_000 });
+  // Every letter's photograph arrives and fills its window.
+  await expect(page.locator('[data-testid="answer-postcard"]')).toHaveAttribute('data-photos', /^([1-9]\d*)\/\1$/);
+});
+
+// User report 2026-10-02: the postcard popped in seconds after the answer (it was composed at reveal
+// after all eight photographs loaded), and the answer card covered the neighbourhood it named.
+test('a neighbourhood answer opens folded, its postcard ready, above the outline it reveals', async ({ page }) => {
+  // Photographs never arrive: the postcard's frame must not wait for them.
+  await quietExternalRequests(page);
+  await page.goto('/?city=amsterdam&mode=pinpoint&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=10');
+  await expect(page.locator('#target-feature-name')).toBeVisible();
+  const rounds = await skipUntil(page, '[data-testid="answer-postcard-thumbnail"]');
+  expect(rounds, 'a neighbourhood with a postcard within ten rounds').toBeGreaterThan(0);
+  const viewport = page.viewportSize()!;
+  const card = (await page.locator('[data-result-card]').boundingBox())!;
+  expect(card.height, 'the folded answer card leaves most of the map visible').toBeLessThan(viewport.height * 0.4);
+  // The revealed area is fitted above the card, not under it.
+  await expect.poll(async () => {
+    const label = (await page.locator('.custom-true-target-icon').boundingBox())!;
+    return label.y + label.height < card.y;
+  }, { timeout: 5_000 }).toBe(true);
+  await page.getByTestId('answer-details').click();
+  const postcard = page.locator('[data-testid="answer-postcard"]');
+  await expect(postcard).toHaveAttribute('data-painted', 'yes');
+  // One photo window per letter, each a plain image the browser loads on its own.
+  expect(await postcard.locator('img').count()).toBeGreaterThan(3);
+  await expect(postcard).toHaveAttribute('data-photos', /^0\//);
+  await page.getByRole('button', { name: /Less/ }).click();
+  await expect(page.locator('[data-testid="answer-details"]')).toHaveAttribute('data-expanded', 'no');
 });

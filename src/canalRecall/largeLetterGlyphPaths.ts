@@ -42,7 +42,7 @@ const opentype: OtApi = (() => {
   return api;
 })();
 
-type PathCmd = {
+export type PathCmd = {
   type: string;
   x?: number;
   y?: number;

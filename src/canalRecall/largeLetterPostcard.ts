@@ -18,7 +18,9 @@ import {
 import {
   LARGE_LETTER_FONT_CSS,
   pathCommandsToPath2D,
+  pathCommandsToSvgD,
   warpPathCommands,
+  type PathCmd,
   pathBendLift,
   type ArchEnvelope,
   type OtFont,
@@ -1414,6 +1416,46 @@ function lineArchEnvelope(
   };
 }
 
+/** The glyph's face outline (Bézier commands, arch-warped) in block coordinates, or null without an outline font. */
+function glyphFaceCommands(
+  layout: LargeLetterPostcardLayout,
+  g: GlyphLayout,
+  offsetX: number,
+  offsetY: number,
+  font: OtFont | null,
+): PathCmd[] | null {
+  if (!font || g.char === ' ' || g.char === '-') return null;
+  const sx = g.scaleX ?? layout.horizontalScale;
+  const sy = layout.facePullY;
+  const raw = font.getPath(g.char, 0, 0, layout.nameFontSize);
+  const placed: PathCmd[] = raw.commands.map((c) => {
+    const map = (x: number, y: number) => ({
+      x: g.x + offsetX + x * sx,
+      y: g.baselineY + offsetY + y * sy,
+    });
+    const out: PathCmd = { type: c.type };
+    if (c.type === 'Z') return out;
+    if (c.x1 != null && c.y1 != null) {
+      const p = map(c.x1, c.y1);
+      out.x1 = p.x;
+      out.y1 = p.y;
+    }
+    if (c.x2 != null && c.y2 != null) {
+      const p = map(c.x2, c.y2);
+      out.x2 = p.x;
+      out.y2 = p.y;
+    }
+    if (c.x != null && c.y != null) {
+      const p = map(c.x, c.y);
+      out.x = p.x;
+      out.y = p.y;
+    }
+    return out;
+  });
+  const env = lineArchEnvelope(layout, g);
+  return env ? warpPathCommands(placed, env) : placed;
+}
+
 type GlyphPaint = (mode: 'text' | 'path', path?: Path2D) => void;
 
 /**
@@ -1430,45 +1472,8 @@ function withGlyphFace(
 ): void {
   const sx = g.scaleX ?? layout.horizontalScale;
   const sy = layout.facePullY;
-  const font = paintOtFont;
-
-  if (font && g.char !== ' ' && g.char !== '-') {
-    const raw = font.getPath(g.char, 0, 0, layout.nameFontSize);
-    type Cmd = {
-      type: string;
-      x?: number;
-      y?: number;
-      x1?: number;
-      y1?: number;
-      x2?: number;
-      y2?: number;
-    };
-    const placed: Cmd[] = raw.commands.map((c) => {
-      const map = (x: number, y: number) => ({
-        x: g.x + offsetX + x * sx,
-        y: g.baselineY + offsetY + y * sy,
-      });
-      const out: Cmd = { type: c.type };
-      if (c.type === 'Z') return out;
-      if (c.x1 != null && c.y1 != null) {
-        const p = map(c.x1, c.y1);
-        out.x1 = p.x;
-        out.y1 = p.y;
-      }
-      if (c.x2 != null && c.y2 != null) {
-        const p = map(c.x2, c.y2);
-        out.x2 = p.x;
-        out.y2 = p.y;
-      }
-      if (c.x != null && c.y != null) {
-        const p = map(c.x, c.y);
-        out.x = p.x;
-        out.y = p.y;
-      }
-      return out;
-    });
-    const env = lineArchEnvelope(layout, g);
-    const cmds = env ? warpPathCommands(placed, env) : placed;
+  const cmds = glyphFaceCommands(layout, g, offsetX, offsetY, paintOtFont);
+  if (cmds) {
     paint('path', pathCommandsToPath2D(cmds));
     return;
   }
@@ -1633,6 +1638,29 @@ function drawGlyphExtrusion(
   paintGlyphFill(ctx, layout, g, dx * 0.35, dy * 0.35);
 }
 
+const GLYPH_PHOTO_FILTER = 'saturate(1.78) contrast(1.4) brightness(1.12)';
+
+/** The box a letter's photograph is cover-cropped into. */
+function glyphPhotoBox(layout: LargeLetterPostcardLayout, g: GlyphLayout): { x: number; y: number; w: number; h: number } {
+  const pad = 12;
+  const pullY = layout.facePullY;
+  // Generous crop — short boxes left a flat photo cutoff under the crest
+  // stroke after path-warp / facePull (OUD WEST).
+  const x = g.x - pad - Math.abs(layout.archAmount) * 0.35 - layout.outlineWidth;
+  const w = Math.max(
+    4,
+    g.width + pad * 2 + Math.abs(layout.archAmount) * 0.7 + layout.outlineWidth * 2,
+  );
+  const y = g.baselineY
+    - layout.nameFontSize * 1.28 * pullY
+    - layout.archAmount * 1.25
+    - layout.outlineWidth;
+  const h = layout.nameFontSize * 1.6 * pullY
+    + layout.archAmount * 1.5
+    + layout.outlineWidth * 2;
+  return { x, y, w, h };
+}
+
 function drawGlyphPhoto(
   ctx: CanvasCtx,
   layout: LargeLetterPostcardLayout,
@@ -1651,23 +1679,8 @@ function drawGlyphPhoto(
   if (img) {
     const { w: nw, h: nh } = imageSize(img);
     if (nw && nh) {
-      gLayer.ctx.filter = 'saturate(1.78) contrast(1.4) brightness(1.12)';
-      const pad = 12;
-      const pullY = layout.facePullY;
-      // Generous crop — short boxes left a flat photo cutoff under the crest
-      // stroke after path-warp / facePull (OUD WEST).
-      const bx = g.x - pad - Math.abs(layout.archAmount) * 0.35 - layout.outlineWidth;
-      const bw = Math.max(
-        4,
-        g.width + pad * 2 + Math.abs(layout.archAmount) * 0.7 + layout.outlineWidth * 2,
-      );
-      const by = g.baselineY
-        - layout.nameFontSize * 1.28 * pullY
-        - layout.archAmount * 1.25
-        - layout.outlineWidth;
-      const bh = layout.nameFontSize * 1.6 * pullY
-        + layout.archAmount * 1.5
-        + layout.outlineWidth * 2;
+      gLayer.ctx.filter = GLYPH_PHOTO_FILTER;
+      const { x: bx, y: by, w: bw, h: bh } = glyphPhotoBox(layout, g);
       const crop = coverCropFocus(nw, nh, bw, bh, focusX, focusY);
       gLayer.ctx.drawImage(img, crop.sx, crop.sy, crop.sw, crop.sh, bx, by, bw, bh);
       gLayer.ctx.filter = 'none';
@@ -2122,18 +2135,28 @@ export function drawLargeLetterPostcard(
   ctx: CanvasCtx,
   layout: LargeLetterPostcardLayout,
   images: CanvasImageSource[] = [],
-  opts?: { font?: OtFont },
+  opts?: {
+    font?: OtFont;
+    /**
+     * Leave every letter face transparent instead of painting a photograph into it, so the page can
+     * show the photographs as ordinary images behind the card (`largeLetterPhotoWindows`). `images[0]`,
+     * when given, is still the faded backdrop. Needs `font` (the windows are its outlines).
+     */
+    photoWindows?: boolean;
+  },
 ): void {
   const prevFont = paintOtFont;
   paintOtFont = opts?.font ?? null;
+  const windows = !!(opts?.photoWindows && opts.font);
   try {
     ctx.save();
     drawPaper(ctx, layout);
     drawFadedBackground(ctx, layout, images[0] ?? null);
     drawLinenTexture(ctx, layout);
-    const faceImages = images.length >= 2
-      ? [...images.slice(1), images[0]]
-      : images;
+    const faceImages = windows ? []
+      : images.length >= 2
+        ? [...images.slice(1), images[0]]
+        : images;
     ctx.save();
     // Rectangular clip — rounded clip left cream corner mats that read as a fat border.
     ctx.beginPath();
@@ -2145,6 +2168,7 @@ export function drawLargeLetterPostcard(
     );
     ctx.clip();
     drawPerspectiveLetterBlock(ctx, layout, faceImages);
+    if (windows) cutPhotoWindows(ctx, layout);
     ctx.globalAlpha = 0.045;
     ctx.globalCompositeOperation = 'multiply';
     ctx.strokeStyle = '#5a4030';
@@ -2167,6 +2191,113 @@ export function drawLargeLetterPostcard(
   } finally {
     paintOtFont = prevFont;
   }
+}
+
+/** Glyphs in the order the letter block paints them: line by line, each line from the shelf side. */
+function blockPaintOrder(layout: LargeLetterPostcardLayout): Array<{ g: GlyphLayout; i: number }> {
+  const letterGlyphs = layout.glyphs.filter((g) => g.char !== ' ' && g.char !== '-');
+  const lineYs = layout.nameBaselineYs.length
+    ? layout.nameBaselineYs
+    : [...new Set(letterGlyphs.map((g) => g.baselineY))];
+  const lineTol = layout.nameFontSize * 0.45;
+  return lineYs.flatMap((y) => {
+    const line = letterGlyphs.map((g, i) => ({ g, i })).filter(({ g }) => Math.abs(g.baselineY - y) < lineTol);
+    return layout.extrusionDx >= 0 ? line : [...line].reverse();
+  });
+}
+
+/** Punch the letter faces out of the painted card, keeping each letter's outline (photo-window mode). */
+function cutPhotoWindows(ctx: CanvasCtx, layout: LargeLetterPostcardLayout): void {
+  const holes = makeLayer(layout.width, layout.height);
+  holes.ctx.fillStyle = '#000';
+  holes.ctx.strokeStyle = '#000';
+  // Same order as the block: a later face covers an earlier outline, and each outline stays opaque.
+  for (const { g } of blockPaintOrder(layout)) {
+    holes.ctx.globalCompositeOperation = 'source-over';
+    paintGlyphFill(holes.ctx, layout, g);
+    holes.ctx.globalCompositeOperation = 'destination-out';
+    holes.ctx.lineJoin = 'round';
+    holes.ctx.lineWidth = Math.max(3.2, layout.outlineWidth * 1.15);
+    paintGlyphStroke(holes.ctx, layout, g);
+  }
+  ctx.save();
+  ctx.globalCompositeOperation = 'destination-out';
+  ctx.translate(layout.paintPivotX, layout.paintPivotY);
+  ctx.transform(PAINT_LEAN.a, PAINT_LEAN.b, PAINT_LEAN.c, PAINT_LEAN.d, 0, 0);
+  ctx.scale(layout.paintScaleX, layout.paintScaleY);
+  ctx.translate(-layout.paintPivotX, -layout.paintPivotY);
+  ctx.drawImage(holes.canvas, 0, 0);
+  ctx.restore();
+}
+
+export interface LargeLetterPhotoWindow {
+  /** The letter's face as SVG path data relative to `box` (for CSS `clip-path: path()` on the photo). */
+  d: string;
+  /** The photograph's box in block coordinates; the photo is cover-cropped into it at `focus`. */
+  box: { x: number; y: number; width: number; height: number };
+  /** Cover-crop focus, 0..1 on each axis (CSS `object-position` percentages). */
+  focusX: number;
+  focusY: number;
+  /** Which of the postcard's photographs fills this letter (index into the `images` list). */
+  imageIndex: number;
+}
+
+export interface LargeLetterPhotoWindows {
+  /** Block → card transform, as a CSS/SVG matrix(a, b, c, d, e, f); boxes are in block coordinates. */
+  matrix: [number, number, number, number, number, number];
+  /** Photographs stay inside this card-space rectangle (the printed border). */
+  clip: { x: number; y: number; width: number; height: number };
+  /** Bottom to top, in paint order. */
+  windows: LargeLetterPhotoWindow[];
+  /** The colour-boost the canvas applies to letter photographs, as a CSS filter. */
+  filter: string;
+  /** What an empty window shows until its photograph arrives. */
+  fallbackFill: string;
+}
+
+/**
+ * Where each photograph goes when the card is drawn with `photoWindows`: the same boxes, crops and
+ * letter shapes `drawGlyphPhoto` uses, so a page can lay plain images behind the card and the
+ * browser loads them in its own time. `imageCount` is how many photographs the card was given.
+ */
+export function largeLetterPhotoWindows(
+  layout: LargeLetterPostcardLayout,
+  imageCount: number,
+  font: OtFont,
+): LargeLetterPhotoWindows {
+  const letterCount = layout.glyphs.filter((g) => g.char !== ' ' && g.char !== '-').length;
+  // drawLargeLetterPostcard rotates the list so the first photograph (the backdrop) comes last.
+  const faceIndex = (i: number) => {
+    if (!imageCount) return -1;
+    const slot = i % imageCount;
+    return imageCount >= 2 ? (slot + 1) % imageCount : slot;
+  };
+  const windows = blockPaintOrder(layout).flatMap(({ g, i }) => {
+    const cmds = glyphFaceCommands(layout, g, 0, 0, font);
+    if (!cmds) return [];
+    const box = glyphPhotoBox(layout, g);
+    const shift = (v: number | undefined, by: number) => (v == null ? v : v - by);
+    const inBox = cmds.map((c) => ({
+      ...c, x: shift(c.x, box.x), y: shift(c.y, box.y), x1: shift(c.x1, box.x), y1: shift(c.y1, box.y), x2: shift(c.x2, box.x), y2: shift(c.y2, box.y),
+    }));
+    return [{
+      d: pathCommandsToSvgD(inBox),
+      box: { x: box.x, y: box.y, width: box.w, height: box.h },
+      focusX: letterCount <= 1 ? 0.5 : i / Math.max(1, letterCount - 1),
+      focusY: 0.35 + (i % 3) * 0.12,
+      imageIndex: faceIndex(i),
+    }];
+  });
+  const { paintPivotX: px, paintPivotY: py, paintScaleX: sx, paintScaleY: sy } = layout;
+  const a = PAINT_LEAN.a * sx, b = PAINT_LEAN.b * sx, c = PAINT_LEAN.c * sy, d = PAINT_LEAN.d * sy;
+  const inset = Math.max(1, layout.borderInset - 1);
+  return {
+    matrix: [a, b, c, d, px - (a * px + c * py), py - (b * px + d * py)],
+    clip: { x: inset, y: inset, width: layout.width - Math.max(2, inset * 2), height: layout.height - Math.max(2, inset * 2) },
+    windows,
+    filter: GLYPH_PHOTO_FILTER,
+    fallbackFill: layout.fallbackFill,
+  };
 }
 
 /** Build just the word-art overlay (opaque card with transparent letter faces). */

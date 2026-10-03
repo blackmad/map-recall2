@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { WikipediaCard } from './WikipediaCard';
-import { LookAroundLink } from './LookAroundLink';
+import { AnswerDetails, usePreparePostcard } from './AnswerDetails';
 import { StreetFeature } from '../types';
 import { CheckCircle2, XCircle } from 'lucide-react';
 
@@ -70,6 +69,8 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
   const isCorrect = selectedGuessName === currentFeature.name;
   const badge = getFeatureTypeBadge(currentFeature.type);
 
+  usePreparePostcard(currentFeature);
+
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       if (isRoundComplete && event.key === 'Enter') return onNextRound();
@@ -83,7 +84,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
   return (
     <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
       {/* UNIFIED BOTTOM CARD: QUESTION + MULTIPLE CHOICE OPTIONS */}
-      <div className="pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] sm:max-h-none overflow-y-auto">
+      <div className="pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] sm:max-h-[55dvh] overflow-y-auto">
         {!isRoundComplete ? (
           /* ACTIVE QUESTION & 4 MULTIPLE CHOICE OPTIONS */
           <div
@@ -143,7 +144,8 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
           /* COMPLETED ROUND FEEDBACK CARD */
           <div
             id="guess-feedback-card"
-            className="quiz-result-card w-full min-w-0 p-4 sm:p-5 space-y-3 animate-slideUp"
+            data-result-card
+            className="quiz-result-card w-full min-w-0 p-3 sm:p-4 space-y-2.5 animate-slideUp"
           >
             {/* Top Result Row */}
             <div className="flex items-center justify-between gap-2 pb-2 border-b border-white/15">
@@ -188,8 +190,7 @@ export const GuessNameModeOverlay: React.FC<GuessNameModeOverlayProps> = ({
                 </button>
               </div>
             </div>
-            <WikipediaCard feature={currentFeature} factSeed={factSeed} roundIndex={roundNumber - 1} />
-            <LookAroundLink feature={currentFeature} />
+            <AnswerDetails feature={currentFeature} factSeed={factSeed} roundIndex={roundNumber - 1} />
           </div>
         )}
       </div>

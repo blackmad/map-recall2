@@ -9,8 +9,7 @@ import {
   Target,
   Sparkles,
 } from 'lucide-react';
-import { WikipediaCard } from './WikipediaCard';
-import { LookAroundLink } from './LookAroundLink';
+import { AnswerDetails, usePreparePostcard } from './AnswerDetails';
 
 interface PinpointModeOverlayProps {
   currentFeature: StreetFeature;
@@ -97,6 +96,8 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
     ];
   }, [currentFeature.center, searchCenter, unit]);
 
+  usePreparePostcard(currentFeature);
+
   useEffect(() => {
     setShowClues(false);
     setRevealedClueIndex(1);
@@ -115,7 +116,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
   return (
     <div className="pointer-events-none absolute inset-0 flex flex-col justify-end p-2 pb-3 sm:p-4 z-20">
       {/* UNIFIED BOTTOM CARD: QUESTION + CLUES + PIN STATUS + SUBMIT CTA */}
-      <div className="pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] sm:max-h-none overflow-y-auto">
+      <div className="pointer-events-auto w-full max-w-xl mx-auto max-h-[42dvh] sm:max-h-[55dvh] overflow-y-auto">
         {!isRoundComplete ? (
           /* ACTIVE QUESTION & ACTION CARD */
           <div
@@ -255,7 +256,8 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
           scoreResult && (
             <div
               id="pinpoint-feedback-card"
-              className="quiz-result-card w-full min-w-0 p-4 sm:p-5 space-y-3 animate-slideUp"
+              data-result-card
+              className="quiz-result-card w-full min-w-0 p-3 sm:p-4 space-y-2.5 animate-slideUp"
             >
               {/* Target & Accuracy Header */}
               <div className="flex items-center justify-between gap-2 pb-2 border-b border-white/15">
@@ -306,8 +308,7 @@ export const PinpointModeOverlay: React.FC<PinpointModeOverlayProps> = ({
                   Dashed line shows distance on map
                 </span>
               </div>
-              <WikipediaCard feature={currentFeature} factSeed={factSeed} roundIndex={roundNumber - 1} />
-              <LookAroundLink feature={currentFeature} />
+              <AnswerDetails feature={currentFeature} factSeed={factSeed} roundIndex={roundNumber - 1} />
             </div>
           )
         )}
