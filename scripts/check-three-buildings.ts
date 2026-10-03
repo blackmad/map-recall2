@@ -303,9 +303,10 @@ for (const c of [0.64, 1.4]) {
     for (const stack of kit.stacks) if (!parts.has(stack.onId)) parts.set(stack.onId, { id: stack.onId, ring: square(0, 0, 10), minHeightM: 0, heightM: 30 });
     for (const roof of kit.roofs) parts.set(roof.id, { id: roof.id, ring: square(40, 0, 12, 30), minHeightM: 0, heightM: 20 });
     for (const hall of kit.halls ?? []) parts.set(hall.id, { id: hall.id, ring: square(0, 80, 40, 60), minHeightM: 0, heightM: 10 });
+    for (const form of kit.forms ?? []) if (!parts.has(form.on)) parts.set(form.on, { id: form.on, ring: square(-80, 0, 30, 20), minHeightM: 0, heightM: 10 });
     const geometry = kitGeometry(kit, parts);
     // A body-only kit (NEMO: just its walls recoloured) builds no geometry of its own.
-    const bodyOnly = !kit.tiers.length && !kit.stacks.length && !kit.roofs.length && !kit.halls?.length;
+    const bodyOnly = !kit.tiers.length && !kit.stacks.length && !kit.roofs.length && !kit.halls?.length && !kit.forms?.length;
     assert.ok(bodyOnly ? geometry.length === 0 && (kit.body?.length ?? 0) > 0 : geometry.length > 0 && geometry.every(g => g.tris.length > 0), `${kit.name}: builds geometry`);
     for (const g of geometry) for (const t of g.tris) {
       assert.ok(t.p.flat().every(Number.isFinite) && t.uv.flat().every(Number.isFinite) && t.n.every(Number.isFinite), `${kit.name}: finite`);
@@ -501,6 +502,158 @@ for (const c of [0.64, 1.4]) {
     assert.ok(roof.length && Math.abs(ridge - c.ridge) < 1.5, `${c.name}: roof ridge ${ridge.toFixed(1)} m, expected ${c.ridge} m`);
     // The footprint's towers outrank the roofs only where the church has them.
     if ((spec.towers ?? []).length) assert.ok(top > ridge + 3, `${c.name}: tower rises above the roofs`);
+  }
+}
+
+{
+  // Landmark forms (landmarkForms.ts): the ring helpers behave on a 10 m square.
+  const { cleanRing, clipHalf, earcut, offsetRing } = await import('../src/canalRecall/landmarkForms.ts');
+  const sq = cleanRing([[0, 0], [0, 10], [10, 10], [10, 0], [0, 0]]);
+  const area = (pts: [number, number][]) => { let a = 0; for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) a += pts[j][0] * pts[i][1] - pts[i][0] * pts[j][1]; return a / 2; };
+  assert.equal(sq.length, 4, 'closing vertex dropped');
+  assert.ok(area(sq) > 0, 'ring turned counter-clockwise');
+  const tris = earcut(sq);
+  assert.equal(tris.length, 2, 'a square is two triangles');
+  assert.ok(Math.abs(tris.reduce((a, [i, j, k]) => a + area([sq[i], sq[j], sq[k]]), 0) - 100) < 1e-6, 'lid covers the square');
+  const ell = cleanRing(Array.from({ length: 40 }, (_, k) => [Math.cos(k / 40 * 2 * Math.PI) * 20, Math.sin(k / 40 * 2 * Math.PI) * (k < 20 ? 8 : 3)] as [number, number]));
+  assert.ok(Math.abs(earcut(ell).reduce((a, [i, j, k]) => a + area([ell[i], ell[j], ell[k]]), 0) - area(ell)) < 1e-6, 'lid of a lopsided ellipse covers it');
+  assert.ok(Math.abs(area(offsetRing(sq, 1)) - 144) < 1e-6 && Math.abs(area(offsetRing(sq, -1)) - 64) < 1e-6, 'outset grows each side, inset shrinks it');
+  assert.ok(Math.abs(area(clipHalf(sq, [4, 0], [1, 0])) - 60) < 1e-6, 'a cut keeps the side its bearing points to');
+}
+
+{
+  // Museums and cinemas (2026-10-03, "work on museums, movie theaters"): before these kits the
+  // Van Gogh Museum was a beige block and a windowed oval, the Stedelijk's 2012 wing sat under the
+  // old building's tiled roof, Eye was a beige slab, Tuschinski a canal-house front, and the
+  // Maritime Museum and H'ART had one roof over their whole courtyard blocks. Each is checked on
+  // its real tile against the 3D BAG heights it was modelled from (museumKits.ts).
+  const { readFileSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const { KITS: kits, KIT_HIDE_IDS: hideIds, decorateKitRoof: decorate, kitGeometry: geometry } = await import('../src/canalRecall/landmarkKits.ts');
+  const KO = { lng: 4.9, lat: 52.37 }, kkx = 111_320 * Math.cos(KO.lat * Math.PI / 180);
+  const toL = ([lng, lat]: number[]): [number, number] => [(lng - KO.lng) * kkx, (lat - KO.lat) * 110_540];
+  const inside = (ring: [number, number][], [x, y]: [number, number]) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) if ((ring[i][1] > y) !== (ring[j][1] > y) && x < ((ring[j][0] - ring[i][0]) * (y - ring[i][1])) / (ring[j][1] - ring[i][1]) + ring[i][0]) c = !c; return c; };
+  const tiles = new Map<string, any[]>();
+  const featureOf = (tile: string, id: string) => {
+    if (!tiles.has(tile)) tiles.set(tile, JSON.parse(gunzipSync(readFileSync(`public/data/extracts/amsterdam/building-tiles/14/${tile}.geojson.gz`)).toString()).features);
+    const f = tiles.get(tile)!.find((x: any) => x.properties.id === id);
+    assert.ok(f, `${id} is in tile ${tile}`);
+    return f;
+  };
+  const outer = (f: any): [number, number][] => (f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates[0][0] : f.geometry.coordinates[0]).map(toL);
+  const holes = (f: any): [number, number][][] => (f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates[0] : f.geometry.coordinates).slice(1).map((r: number[][]) => r.map(toL));
+  /** Every part the kit names, from its tile, and the kit's triangles per part id. */
+  const build = (name: string, tile: string) => {
+    const kit = kits.find(k => k.name === name);
+    assert.ok(kit, `${name} kit exists`);
+    const ids = new Set([...kit!.tiers.map(t => t.id), ...kit!.stacks.map(s => s.onId), ...(kit!.halls ?? []).map(h => h.id), ...(kit!.forms ?? []).map(f => f.on), ...(kit!.hides ?? []), ...(kit!.body ?? [])]);
+    const parts = new Map([...ids].map(id => { const f = featureOf(tile, id); return [id, { id, ring: outer(f), minHeightM: Number(f.properties.minHeight) || 0, heightM: Number(f.properties.height) }] as const; }));
+    const byId = new Map(geometry(kit!, parts).map(g => [g.id, g.tris]));
+    const top = (id: string) => Math.max(...(byId.get(id) ?? []).flatMap(t => t.p.map(p => p[2])));
+    return { kit: kit!, parts, byId, top };
+  };
+  const near = (got: number, want: number, tol: number, what: string) => assert.ok(Math.abs(got - want) <= tol, `${what}: ${got.toFixed(1)} m, expected ${want} +/- ${tol}`);
+
+  {
+    // Van Gogh Museum: Rietveld's block, stair tower and green glass block at their measured
+    // heights; Kurokawa's granite drum under a tilted brim that overhangs it; the glass hall lower.
+    const { kit, parts, byId, top } = build('Van Gogh Museum', '8414/5385');
+    for (const id of ['w1230401242', 'w1230401241', 'w754324684', 'w754324685', 'w754324683']) assert.ok(hideIds.includes(id), `${id}: its plain prism gives way to the form`);
+    near(top('w754324684'), 21, 0.01, 'Rietveld main block');
+    near(top('w754324685'), 24, 0.01, 'Rietveld stair tower');
+    near(top('w1230401242'), 14.9, 0.2, 'Kurokawa brim, high side (3D BAG roof 15.0 m)');
+    const drum = byId.get('w1230401242')!, ring = parts.get('w1230401242')!.ring;
+    const lowRim = Math.min(...drum.filter(t => t.n[2] > 0.9 && t.hex === '#cdd1d5').flatMap(t => t.p.map(p => p[2])));
+    near(lowRim, 12.2, 0.3, 'Kurokawa brim, low side at the cut');
+    assert.ok(drum.some(t => t.p.some(p => !inside(ring, [p[0], p[1]]))), 'the brim overhangs the drum wall');
+    assert.ok(drum.some(t => t.n[2] < -0.9), 'the brim has an underside');
+    assert.ok(top('w1230401241') <= 9.6 && top('w1230401241') < top('w1230401242') - 4, 'the glass hall stays below the drum');
+    const body = decorate({ type: 'Feature', properties: { id: 'w754324682', height: 12, sideColour: '#557260' }, geometry: null });
+    assert.equal(body.properties.sideColour, kit.wall!.hex, 'the low wings wear Rietveld stone, not the palette');
+  }
+  {
+    // Stedelijk: the 1895 front tower to its lantern (3D BAG 30.9 m), four corner pavilions to
+    // 24 m, slate roofs over the old wings to 23 m; the 2012 tub in white on a recessed glass
+    // ground floor under a canopy at 17.6 m that runs out over the Museumplein entrance.
+    const { byId, top, parts } = build('Stedelijk', '8414/5385');
+    near(top('w754299889'), 30.1, 0.5, 'front tower with its lantern');
+    for (const id of ['w754299894', 'w754299895', 'w754299896', 'w754299897']) near(top(id), 24, 0.1, `corner pavilion ${id}`);
+    near(top('w754299893'), 23, 0.1, 'old building roof ridge');
+    near(top('w754299892'), 17.6, 0.01, 'canopy');
+    const tub = byId.get('w754299890')!;
+    near(Math.max(...tub.flatMap(t => t.p.map(p => p[2]))), 16.8, 0.01, 'tub under the canopy');
+    assert.ok(tub.some(t => t.hex === '#efeee9') && tub.some(t => t.hex === '#5d6c74'), 'white tub over a glass ground floor');
+    const tubRing = parts.get('w754299890')!.ring;
+    const glass = tub.filter(t => t.hex === '#5d6c74' && Math.abs(t.n[2]) < 0.1).flatMap(t => t.p);
+    assert.ok(glass.length && glass.every(p => inside(tubRing, [p[0], p[1]])), 'the glass ground floor is set back under the tub');
+    // The canopy reaches over the entrance: its south edge lies well beyond the tub's.
+    const canopy = byId.get('w754299892')!.filter(t => t.p.every(p => p[2] > 16.7));
+    const south = (pts: number[][]) => Math.min(...pts.map(p => p[1]));
+    assert.ok(south(tubRing) - south(canopy.flatMap(t => t.p)) > 8, 'canopy overhangs the plaza by more than 8 m');
+    const decorated = decorate({ type: 'Feature', properties: { id: 'w754299893', height: 14 }, geometry: null });
+    assert.equal(decorated.properties.roofEavesHeightM, 14, 'old building walls stop at their 14 m eaves under the slate roof');
+  }
+  {
+    // Eye: a white wedge rising east to a flat prow at 24.5 m (3D BAG max 24.5 m) over a glazed band.
+    const { byId, top } = build('Eye Filmmuseum', '8415/5383');
+    const id = 'NL.IMBAG.Pand.0363100012237838';
+    assert.ok(hideIds.includes(id), 'the BAG prism gives way to the forms');
+    near(top(id), 24.5, 0.01, 'Eye prow');
+    const lid = byId.get(id)!.filter(t => t.n[2] > 0.5 && t.hex === '#f1f1ee').flatMap(t => t.p);
+    const west = lid.reduce((a, p) => (p[0] < a[0] ? p : a)), east = lid.reduce((a, p) => (p[0] > a[0] ? p : a));
+    assert.ok(west[2] < 8 && east[2] > 20, `roof climbs from the west (${west[2].toFixed(1)} m) to the prow (${east[2].toFixed(1)} m)`);
+    assert.ok(byId.get(id)!.some(t => t.hex === '#5d6c74'), 'a glazed band at the foot');
+  }
+  {
+    // NEMO: the deck climbs north from 12 m to 22 m over the hall and on to the prow at 31.5 m
+    // (3D BAG), instead of a flat 21.7 m box between 24 m fins.
+    const { byId, top } = build('NEMO deck', '8415/5384');
+    for (const id of ['w1390692772', 'w1390692771', 'w1390692768', 'w1390692765']) assert.ok(hideIds.includes(id), `${id}: tilted, not flat`);
+    near(top('w1390692765'), 31.5, 0.01, 'NEMO prow');
+    const deck = byId.get('w1390692772')!.filter(t => t.n[2] > 0.5).flatMap(t => t.p);
+    const south = deck.reduce((a, p) => (p[1] < a[1] ? p : a)), north = deck.reduce((a, p) => (p[1] > a[1] ? p : a));
+    assert.ok(south[2] < 13 && north[2] > 21, `deck climbs north (${south[2].toFixed(1)} to ${north[2].toFixed(1)} m)`);
+    assert.ok(Math.max(top('w1390692771'), top('w1390692768')) < top('w1390692765'), 'the side strips stay under the prow');
+  }
+  {
+    // Tuschinski: walls stop at the 19 m flat roofs, two towers inside the street-front corners
+    // rise under copper domes to 33.5 m (3D BAG), the stage house at the back to 25 m.
+    const { kit, parts, byId } = build('Tuschinski', '8414/5384');
+    const id = 'NL.IMBAG.Pand.0363100012168188', spec = kit.halls![0], ring = parts.get(id)!.ring;
+    const decorated = decorate({ type: 'Feature', properties: { id, height: 21.87, facade: 'canal' }, geometry: null });
+    assert.equal(decorated.properties.roofEavesHeightM, 19, 'walls stop at the flat roofs, not at the 70th-percentile height');
+    assert.equal(decorated.properties.sideColour, kit.wall!.hex, 'glazed-stone grey-brown');
+    for (const t of spec.towers!) assert.ok(inside(ring, toL(t.at)), 'each tower stands on the footprint');
+    for (const w of spec.wings!) assert.ok(inside(ring, toL(w.at)), 'each roof is centred on the footprint');
+    const tris = byId.get(id)!, zs = tris.flatMap(t => t.p.map(p => p[2]));
+    near(Math.max(...zs), 33.5, 0.5, 'dome lanterns');
+    assert.ok(tris.some(t => t.hex === '#4f8a76'), 'green copper domes');
+    const high = tris.filter(t => t.p.some(p => p[2] > 30)).flatMap(t => t.p);
+    const frontEdge = toL([4.894811, 52.366501]);
+    assert.ok(high.every(p => Math.hypot(p[0] - frontEdge[0], p[1] - frontEdge[1]) < 20), 'the domes stand at the street front');
+  }
+  {
+    // Maritime Museum ('s Lands Zeemagazijn): four hipped slate wings round the courtyard, eaves 17 m,
+    // ridges 22.8 m (3D BAG), and the courtyard's glass roof at the eaves instead of a 9 m box.
+    const { kit, parts, byId, top } = build('Scheepvaartmuseum', '8415/5384');
+    const id = 'r3604837', spec = kit.halls![0], ring = parts.get(id)!.ring, court = holes(featureOf('8415/5384', id))[0];
+    assert.ok(court, 'the footprint keeps its courtyard');
+    for (const w of spec.wings!) assert.ok(inside(ring, toL(w.at)) && !inside(court, toL(w.at)), 'each wing stands on the block, not in the courtyard');
+    near(top(id), 22.8, 0.1, 'ridges');
+    assert.equal(decorate({ type: 'Feature', properties: { id, height: 17 }, geometry: null }).properties.roofEavesHeightM, 17, 'eaves at 17 m');
+    assert.ok(byId.get(id)!.filter(t => t.layer === 'slope').every(t => t.p.every(p => p[2] >= 16.4)), 'roof slopes start at the eaves');
+    near(top('w269078550'), 17.4, 0.01, 'courtyard glass roof');
+    assert.ok(hideIds.includes('w269078550'), 'the 9 m courtyard box is gone');
+  }
+  {
+    // H'ART Museum (the Amstelhof): four hipped slate wings, eaves 10 m, ridges 14.5 m (3D BAG), the
+    // Amstel front 102 m long.
+    const { kit, parts, top } = build("H'ART Museum", '8415/5384');
+    const id = 'NL.IMBAG.Pand.0363100012165553', spec = kit.halls![0], ring = parts.get(id)!.ring, court = holes(featureOf('8415/5384', id))[0];
+    for (const w of spec.wings!) assert.ok(inside(ring, toL(w.at)) && !(court && inside(court, toL(w.at))), 'each wing stands on the block');
+    assert.ok(spec.wings!.some(w => w.lenM > 100), 'the long Amstel front');
+    near(top(id), 14.5, 0.1, 'ridges');
+    assert.equal(decorate({ type: 'Feature', properties: { id, height: 13.93 }, geometry: null }).properties.roofEavesHeightM, 10, 'eaves at 10 m');
   }
 }
 
