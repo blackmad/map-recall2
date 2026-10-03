@@ -2,6 +2,15 @@
 export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  [/^taxodium distichum$/,'conical-deciduous','species-prior',nursery('taxodium-distichum')],
+  [/^larix decidua$/,'conical-deciduous','species-prior',nursery('larix-decidua')],
+  [/^larix kaempferi$/,'conical-deciduous','species-prior',nursery('larix-kaempferi')],
+  [/^thuja plicata$/,'conical-evergreen','species-prior',nursery('thuja-plicata')],
+  [/^thuja occidentalis$/,'conical-evergreen','species-prior',nursery('thuja-occidentalis')],
+  [/^chamaecyparis lawsoniana$/,'conical-evergreen','species-prior',nursery('chamaecyparis-lawsoniana')],
+  [/^picea omorika$/,'conical-evergreen','species-prior',nursery('picea-omorika')],
+  [/^salix babylonica$/,'weeping','species-prior',nursery('salix-babylonica')],
+  [/^taxus baccata 'fastigiata'$/,'columnar','cultivar-prior',nursery('taxus-baccata-fastigiata')],
   [/^betula pubescens$/,"upright-oval","species-prior",nursery("betula-pubescens")],
   [/^alnus cordata$/,"pyramidal","species-prior",nursery("alnus-cordata")],
   [/^quercus palustris$/,"pyramidal","species-prior",nursery("quercus-palustris")],
@@ -86,7 +95,7 @@ export function treeTypology(tree){
   else if(archetype==='airy-oval')lobes=[lobe(0,h*.79,0,r*.66,h*.21,r*.64,0),lobe(-r*.48,h*.61,r*.20,r*.52,h*.19,r*.48,1),lobe(r*.47,h*.64,-r*.23,r*.53,h*.20,r*.50,2)];
   else lobes=[lobe(0,h*.76,0,r,h*.24,r*.88,0),lobe(-r*.48,h*.72,r*.25,r*.65,h*.18,r*.67,1),lobe(r*.44,h*.70,-r*.23,r*.66,h*.22,r*.65,2)];
   // These summer colours are art direction, not observations from the inventory.
-  const foliage=archetype==='conical-evergreen'?'#496955':species.startsWith('salix')?'#88a06c':species.startsWith('betula')?'#91ad6e':species.startsWith('fagus')?'#587b51':species.startsWith('quercus')?'#648357':species.startsWith('robinia')?'#94a965':species.startsWith('tilia')?'#789655':'#78945a';
+  const foliage=archetype==='conical-evergreen'||/^(?:pinus|taxus)\b/.test(species)?'#496955':species.startsWith('salix')?'#88a06c':species.startsWith('betula')?'#91ad6e':species.startsWith('fagus')?'#587b51':species.startsWith('quercus')?'#648357':species.startsWith('robinia')?'#94a965':species.startsWith('tilia')?'#789655':'#78945a';
   const bark=species.startsWith('betula')?'#d8d9c5':species.startsWith('platanus')?'#aaa68a':species.startsWith('fagus')?'#8a8b80':species.startsWith('metasequoia')?'#935d47':'#665741';
   return {version:TREE_TYPOLOGY_VERSION,id:tree.id,position:[...tree.position],height,archetype,lobes,
     trunkHeight:h*(managed?.78:.60),trunkWidth:Math.min(.52,Math.max(.14,h*.023)),

@@ -20,6 +20,16 @@ assert.equal(treeTypology({...fixture,species:'Betula pendula'}).archetype,'upri
 assert.equal(treeTypology({...fixture,species:"Salix x sepulcralis 'Chrysocoma'"}).archetype,'weeping');
 for(const [species,archetype] of [['Quercus robur','irregular-spreading'],['Fraxinus excelsior','airy-oval'],['Aesculus hippocastanum','domed'],['Metasequoia glyptostroboides','conical-deciduous'],["Carpinus betulus 'Frans Fontaine'",'columnar']])assert.equal(treeTypology({...fixture,species}).archetype,archetype);
 assert.equal(treeTypology({...fixture,species:'Picea abies'}).crownGeometry,'cone');
+for(const species of ['Taxodium distichum','Larix decidua','Larix kaempferi'])assert.equal(treeTypology({...fixture,species}).archetype,'conical-deciduous');
+for(const species of ['Thuja plicata','Thuja occidentalis','Chamaecyparis lawsoniana','Picea omorika'])assert.equal(treeTypology({...fixture,species}).archetype,'conical-evergreen');
+assert.equal(treeTypology({...fixture,species:'Salix babylonica'}).archetype,'weeping');
+for(const species of ['Platanus hispanica',"Tilia europaea 'Pallida'"]){
+ assert.equal(treeTypology({...fixture,species,type:'Knotboom'}).archetype,'pollarded');
+ assert.equal(treeTypology({...fixture,species,type:'Gekandelaberde boom'}).archetype,'candelabra-pruned');
+ assert.equal(treeTypology({...fixture,species,type:'Boom niet vrij uitgroeiend'}).provenance.crownBasis,species.includes("'")?'cultivar-prior':'species-prior');
+}
+assert.equal(treeTypology({...fixture,species:"Taxus baccata 'Fastigiata'"}).archetype,'columnar');
+assert.equal(treeTypology({...fixture,species:'Pinus sylvestris'}).foliage,'#496955');
 assert.equal(treeTypology({...fixture,species:'Betula pendula'}).bark,'#d8d9c5');
 assert.notEqual(treeTypology({...fixture,species:'Quercus robur'}).foliage,treeTypology({...fixture,species:'Betula pendula'}).foliage);
 for(const height of [null,undefined,0,-1,NaN,Infinity,1000,'15']){
