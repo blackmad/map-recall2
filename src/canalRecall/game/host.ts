@@ -298,6 +298,8 @@ export interface RecallHost extends GameCoreHost {
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
 export interface PresentationHost extends GameCoreHost {
+  /** Orbit chase/cockpit by `delta` degrees and persist it (game-route.js). */
+  _nudgeCameraBearing?(delta: number): void;
   _routeLearningPlan: { expectedNovelty: number } | null;
   /** The start-of-ride orientation flight while it runs; see introFlight.ts. */
   /** performance.now() until which the settings/help buttons show mid-ride. */
