@@ -933,4 +933,181 @@ for (const c of [0.64, 1.4]) {
     assert.ok(!modelled.has(house.properties.id), 'and is not in any kit');
   }
 }
+{
+  // Public buildings (2026-10-03, "keep going balancing hand models with new category treatments"):
+  // big cinemas and theatres get plain walls (no windows, no gable), schools a classroom-window
+  // grid in their era's brick, by publicBuildings.ts and the list scripts/build-public-buildings.ts wrote.
+  const { PUBLIC_BUILDINGS } = await import('../src/canalRecall/publicBuildingData.ts');
+  const { planPublic, schoolWindows, publicKit, PUBLIC_WALL } = await import('../src/canalRecall/publicBuildings.ts');
+  const { KITS: kits, KIT_MODELLED_IDS: modelled, HAND_KIT_IDS: handIds, decorateKitRoof: decorate } = await import('../src/canalRecall/landmarkKits.ts');
+  const entry = (id: string) => PUBLIC_BUILDINGS.find(e => e[0] === id);
+  const rect = (len: number, wid: number, coverage = 0.95, maxDev = 0.5) => ({ len, wid, coverage, maxDev });
+  // Rules.
+  assert.equal(planPublic({ kind: 'c', heightM: 24, year: 1935, areaM2: 1222, rect: rect(40, 30) })?.mode, 'p', 'a big old cinema is plain walls');
+  assert.equal(planPublic({ kind: 'c', heightM: 12, year: 1910, areaM2: 400, rect: rect(20, 20) }), null, 'a small cinema in an old building stays a house');
+  assert.equal(planPublic({ kind: 'c', heightM: 22, year: 1910, areaM2: 400, rect: rect(20, 20) })?.mode, 'p', 'a tall one does not');
+  assert.equal(planPublic({ kind: 'c', heightM: 46, year: 2012, areaM2: 322, rect: rect(20, 16) }), null, 'a tower holding a stage is left alone');
+  assert.equal(planPublic({ kind: 's', heightM: 14, year: 1925, areaM2: 1500, rect: rect(60, 22), roofShape: 'flat' })?.mode, 'f', 'a flat-roofed school stays flat');
+  assert.equal(planPublic({ kind: 's', heightM: 14, year: 1925, areaM2: 1500, rect: rect(60, 15) })?.mode, 'h', 'a pre-1930 school on a plain rectangle gets a pitched roof');
+  assert.equal(planPublic({ kind: 's', heightM: 9, year: 1965, areaM2: 1500, rect: rect(60, 15) })?.mode, 'f', 'a post-war school is a flat slab');
+  assert.equal(planPublic({ kind: 's', heightM: 9, year: null, areaM2: 1500, rect: rect(60, 15) }), null, 'an undated school keeps the generic rules');
+  assert.equal(planPublic({ kind: 's', heightM: 9, year: 2012, areaM2: 1500, rect: rect(60, 15) }), null, 'a new school keeps the generic rules');
+  assert.equal(planPublic({ kind: 's', heightM: 9, year: 1965, areaM2: 20000, rect: rect(160, 120) }), null, 'a campus is left alone');
+  assert.equal(planPublic({ kind: 's', heightM: 9, year: 1965, areaM2: 120, rect: rect(12, 10) }), null, 'a schoolhouse-sized building stays a house');
+  const post = schoolWindows(8.4, 'e'), pre = schoolWindows(22, 'o');
+  assert.equal(post.length, 2, 'two storeys of classroom windows on 8.4 m');
+  assert.equal(pre.length, 5, 'five storeys on 22 m');
+  for (const r of [...post, ...pre]) assert.ok(r.head === 'flat' && r.z1 - r.z0 >= 1.2, 'flat-headed classroom windows');
+  assert.ok(Math.max(...pre.map(r => r.z1)) <= 22 - 0.3, 'the top row clears the eaves');
+  // The published list.
+  const ids = PUBLIC_BUILDINGS.map(e => e[0]);
+  assert.equal(new Set(ids).size, ids.length, 'public ids are unique');
+  assert.ok(PUBLIC_BUILDINGS.filter(e => e[1] === 's').length > 200, 'the generic rule covers the city\'s schools');
+  assert.ok(PUBLIC_BUILDINGS.filter(e => e[1] === 'c').length > 30, 'and its big cinemas and theatres');
+  for (const id of ids) {
+    assert.ok(!handIds.has(id), `${id}: a hand kit owns it, not the generic rule`);
+    assert.ok(modelled.has(id), `${id}: the landmark fallback leaves it to its kit`);
+  }
+  // Real buildings.
+  for (const [id, why] of [['NL.IMBAG.Pand.0363100012174390', 'Pathé City (1935, 24 m, 1,222 m2)'], ['NL.IMBAG.Pand.0363100012237077', 'LAB111 (1928)'], ['r3699016', 'Studio/K (1910, 3,494 m2)']] as const) {
+    const e = entry(id);
+    assert.ok(e && e[1] === 'c' && e[2] === 'p', `${why}: plain cinema walls`);
+    const out = decorate({ type: 'Feature', properties: { id, height: 20, facade: 'canal-priorBrickRed', facadeStyle: 'canal' }, geometry: null });
+    assert.equal(out.properties.kitWall, 'plain', `${why}: plain, no house facade`);
+    assert.equal(out.properties.roofEavesHeightM, undefined, `${why}: no gable, its own height`);
+    assert.equal(out.properties.sideColour, PUBLIC_WALL.c[e![5]]);
+    assert.equal(publicKit(e!).halls, undefined, `${why}: no windows`);
+  }
+  for (const [id, mode, era, why] of [['NL.IMBAG.Pand.0363100012237203', 'f', 'o', 'Montessori Lyceum (1912)'], ['NL.IMBAG.Pand.0363100012076543', 'f', 'o', 'Fons Vitae Lyceum (1926)'], ['NL.IMBAG.Pand.0363100012112357', 'f', 'e', 'Slotermeerschool (1955)'], ['NL.IMBAG.Pand.0363100012129398', 'f', 'e', 'Spinoza Lyceum (1957)']] as const) {
+    const e = entry(id);
+    assert.ok(e && e[1] === 's' && e[2] === mode && e[5] === era, `${why}: school ${mode} ${era}`);
+    const kit = publicKit(e!), rows = kit.halls![0].windows!.rows;
+    assert.equal(kit.wall && kit.wall.plain && kit.wall.hex, PUBLIC_WALL.s[era], `${why}: era brick`);
+    assert.ok(rows.length >= 2 && rows.every(r => r.head === 'flat'), `${why}: classroom windows`);
+    const out = decorate({ type: 'Feature', properties: { id, height: e![3], facade: 'canal-priorBrickRed', facadeStyle: 'canal' }, geometry: null });
+    assert.equal(out.properties.kitWall, 'plain', `${why}: no house facade`);
+  }
+  assert.ok(kits.some(k => k.halls?.[0]?.id === 'NL.IMBAG.Pand.0363100012237203'), 'the school kits are in KITS');
+  // Left alone: an ordinary canal house, the Concertgebouw (a concert hall with a monumental front), Frascati's block of houses.
+  for (const id of ['NL.IMBAG.Pand.0363100012072136', 'w754269611', 'NL.IMBAG.Pand.0363100012168465']) assert.ok(!entry(id), `${id} keeps its own rules`);
+}
+// --- Gallery pages: landmark gallery and house playground --------------------
+{
+  const { readFileSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const { HAND_KITS, HAND_KIT_IDS, KITS } = await import('../src/canalRecall/landmarkKits.ts');
+  const { buildKitScene, kitPartIds } = await import('../src/canalRecall/galleryKits.ts');
+  const { gameDecorator, tileKeyAt, tilesAround, fromLocal, toLocal, fitDistance } = await import('../src/canalRecall/galleryPipeline.ts');
+  const { orbitPosition, zoomOrbit, rotateOrbit } = await import('../src/canalRecall/galleryOrbit.ts');
+  const model = await import('../src/canalRecall/housePlaygroundModel.ts');
+  const { setShopfronts } = await import('../src/canalRecall/shopfronts.ts');
+
+  // Every hand kit builds from the real tiles, from locations alone (no hard-coded centre table).
+  const locations = JSON.parse(readFileSync('public/data/extracts/amsterdam/kit-locations.json', 'utf8')) as { ids: Record<string, string>; missing: string[] };
+  assert.deepEqual(locations.missing, [], 'every footprint a hand kit uses is located in the building tiles (scripts/build-kit-locations.ts)');
+  const tileCache = new Map<string, any[]>();
+  const tile = (key: string) => { let t = tileCache.get(key); if (!t) { const [x, y] = key.split('/'); t = JSON.parse(gunzipSync(readFileSync(`public/data/extracts/amsterdam/building-tiles/14/${x}/${y}.geojson.gz`)).toString('utf8')).features; tileCache.set(key, t); } return t!; };
+  const decorate = gameDecorator();
+  let kitTris = 0;
+  assert.ok(HAND_KITS.length >= 35, 'the gallery lists the hand kits');
+  assert.ok(KITS.length > HAND_KITS.length, 'KITS also holds generic worship kits, which the gallery leaves out');
+  for (const kit of HAND_KITS) {
+    const keys = [...new Set(kitPartIds(kit).map(id => locations.ids[id]))];
+    assert.ok(keys.every(Boolean), `${kit.name}: located`);
+    const scene = buildKitScene(kit, keys.flatMap(tile), 'photo', decorate);
+    assert.ok(scene, `${kit.name}: builds from its footprints`);
+    assert.deepEqual(scene!.missing, [], `${kit.name}: every footprint found`);
+    assert.ok(scene!.tris.kit + scene!.tris.hosts > 0, `${kit.name}: draws something`);
+    assert.ok(Number.isFinite(scene!.frame.cx) && scene!.frame.halfDiag > 1 && scene!.frame.top > 3 && scene!.frame.dist > 20, `${kit.name}: automatic frame ${JSON.stringify(scene!.frame)}`);
+    assert.ok(kitPartIds(kit).every(id => HAND_KIT_IDS.has(id)), `${kit.name}: part ids are hand-kit ids`);
+    kitTris += scene!.tris.kit + scene!.tris.hosts;
+  }
+  assert.ok(kitTris > 20_000, `hand kits draw ${kitTris} triangles in total`);
+  {
+    // Westerkerk (the old hard-coded table's first entry): its spire sets the frame, centred on the church.
+    const kit = HAND_KITS.find(k => k.name === 'Westerkerk')!;
+    const feats = [...new Set(kitPartIds(kit).map(id => locations.ids[id]))].flatMap(tile);
+    const scene = buildKitScene(kit, feats, 'photo', decorate)!;
+    assert.ok(scene.frame.top > 70 && scene.frame.top < 95, `Westerkerk tower ~87 m, framed ${scene.frame.top.toFixed(1)}`);
+    const [lng, lat] = fromLocal(scene.frame.cx, scene.frame.cy);
+    assert.ok(Math.abs(lng - 4.8836) < 0.002 && Math.abs(lat - 52.3744) < 0.002, `Westerkerk centred at ${lng.toFixed(5)}, ${lat.toFixed(5)}`);
+    const flat = buildKitScene(kit, feats, 'untextured', decorate)!;
+    assert.equal(flat.tris.kit, scene.tris.kit, 'a look recolours a kit, it never changes its triangles');
+  }
+  assert.ok(tilesAround(0, 0, 40).includes(tileKeyAt(...fromLocal(0, 0))), 'tilesAround includes the centre tile');
+  assert.ok(Math.abs(toLocal(...fromLocal(120, -45))[0] - 120) < 1e-6);
+  assert.ok(fitDistance(10, 87) > fitDistance(10, 20), 'a tall kit stands further back');
+
+  // Orbit maths: z-up, yaw 0 views from the south.
+  {
+    const o = { yaw: 0, pitch: 0, dist: 10, target: [0, 0, 0] as [number, number, number], minDist: 2, maxDist: 50 };
+    const [x, y, z] = orbitPosition(o);
+    assert.ok(Math.abs(x) < 1e-9 && Math.abs(y + 10) < 1e-9 && Math.abs(z) < 1e-9, 'yaw 0, pitch 0: ten metres south');
+    zoomOrbit(o, 100); assert.equal(o.dist, 50); zoomOrbit(o, 0.0001); assert.equal(o.dist, 2);
+    rotateOrbit(o, 0, 1000); assert.equal(o.pitch, 88, 'pitch is clamped');
+  }
+
+  // The playground steers the real decorators and the real roof planner.
+  {
+    const P = model.DEFAULT_PARAMS;
+    for (const roof of ['gable', 'pitched', 'hipped', 'halfHipped', 'mansard', 'mansardHip'] as const) {
+      const t = model.buildTerrace({ ...P, roof, style: 'c19', width: 8, depth: 14, height: 16 });
+      assert.ok(t.plans.every(p => p?.kind === roof), `${roof} roofs come out of the planner (not forced onto the mesh)`);
+      assert.equal(t.notes.length, 0);
+    }
+    const flat = model.buildTerrace({ ...P, roof: 'flat', style: 'modern', year: 2005 });
+    assert.ok(flat.plans.every(p => !p || p.kind === 'parapet'), 'flat: no pitched roof');
+    for (const gable of model.GABLE_SHAPES) {
+      const t = model.buildTerrace({ ...P, gable, style: 'canal', year: 1700 });
+      assert.ok(t.plans.every(p => p?.kind === 'gable' && p.gable === gable), `${gable} gable`);
+    }
+    const school = model.buildTerrace({ ...P, roof: 'school', style: 'c19' });
+    assert.ok(school.notes.length === 1 && /No school roof/.test(school.notes[0]), 'an impossible roof is reported, not faked');
+    assert.deepEqual(model.buildTerrace(P).ids, model.buildTerrace(P).ids, 'same seed, same terrace');
+    assert.notDeepEqual(model.buildTerrace(P).ids, model.buildTerrace({ ...P, seed: P.seed + 1 }).ids, 'a new seed is a new terrace');
+    for (const style of model.FACADE_STYLES) assert.equal(model.buildTerrace({ ...P, style, year: model.STYLE_YEAR[style], height: style === 'tower' ? 40 : 13 }).features[0].properties.facadeStyle, style, `${style} style is stamped by the facade decorator`);
+    assert.equal(model.buildTerrace({ ...P, style: 'auto', year: 1700, height: 13 }).styleUsed, 'canal', 'auto style follows the year');
+    const shop = model.buildTerrace({ ...P, shop: 'shopCafe', shopsOn: 'all', houses: 2 });
+    assert.deepEqual(shop.features.map(f => f.properties.shopKind), ['shopCafe', 'shopCafe'], 'the shopfront decorator reads the playground extract');
+    const chain = model.buildTerrace({ ...P, chain: 'ah', shopsOn: 'first' });
+    assert.equal((chain.features[0].properties.shopChain as string[])[0], 'ah');
+    assert.equal(chain.features[1].properties.shopQuiet, true, 'houses without a shop stay quiet');
+    for (const look of ['photo', 'storybook', 'cartoon', 'procedural', 'untextured'] as const) {
+      const c = model.buildTerraceChunks(model.buildTerrace({ ...P, look, shop: 'shopBar' }), look, true);
+      assert.ok(c.walls.vertexCount > 300 && c.triangles > (look === 'untextured' ? 200 : 500), `${look}: terrace meshes (${c.triangles} tris)`);
+    }
+    assert.equal(model.buildTerraceChunks(model.buildTerrace(P), 'untextured', true).extras, null, 'untextured is totally flat: no extras');
+    assert.equal(model.storeysForHeight('canal', model.heightForStoreys('canal', 5)), 5, 'storeys and height round-trip');
+    setShopfronts(null);
+  }
+  assert.equal(model.normaliseBuildingId('W754269603'), 'w754269603');
+  assert.equal(model.normaliseBuildingId('0363100012120986'), 'NL.IMBAG.Pand.0363100012120986');
+  assert.equal(model.normaliseBuildingId('P0363100012120986'), 'NL.IMBAG.Pand.0363100012120986');
+  assert.equal(model.normaliseBuildingId('hello'), null);
+  {
+    const square = [[0, 0], [10, 0], [10, 10], [0, 10], [0, 0]] as [number, number][];
+    const b = { id: 'a', ring: square, heightM: 12, minHeightM: 0, bbox: [0, 0, 10, 10] as [number, number, number, number] };
+    assert.equal(model.pickBuilding([5, -40, 20], [0, 0.9, -0.4], [b])?.id, 'a', 'a ray from above and in front hits the building');
+    assert.equal(model.pickBuilding([50, -40, 20], [0, 0.9, -0.4], [b]), null, 'and one that misses reaches the ground');
+  }
+  // A real building through the playground's real-scene path: the Westerkerk tower footprint gets walls plus its kit geometry.
+  {
+    const westerkerk = HAND_KITS.find(k => k.name === 'Westerkerk')!, id = westerkerk.tiers[0].id, key = locations.ids[id];
+    const host = tile(key).find((f: any) => f.properties.id === id);
+    assert.ok(host, 'Westerkerk tower footprint is in its tile');
+    const ring = host.geometry.type === 'Polygon' ? host.geometry.coordinates[0] : host.geometry.coordinates[0][0], centre = toLocal(ring[0][0], ring[0][1]);
+    const rs = model.buildRealScene(tile(key), centre, 60, 'photo', true, gameDecorator());
+    assert.ok(rs.buildings.length > 10 && rs.chunks.walls.vertexCount > 0, 'real scene: walls');
+    assert.ok(rs.chunks.kit && rs.chunks.kit.vertexCount > 100, 'real scene: the kit the footprint belongs to is drawn too');
+    assert.ok(rs.buildings.some(x => x.id === id), 'the replaced footprint stays pickable');
+  }
+}
+{
+  // A landmark kit's walls never take facade extras (hoist beams, strips on the Westerkerk; user 2026-10-03).
+  const { meshBuildingFor } = await import('../src/canalRecall/threeBuildingFeatures.ts');
+  const ring = [[4.9, 52.37], [4.9001, 52.37], [4.9001, 52.3701], [4.9, 52.3701], [4.9, 52.37]];
+  const f = (extra: Record<string, unknown>) => ({ type: 'Feature' as const, properties: { id: 'kx', height: 14, minHeight: 0, facade: 'canal-priorBrickRed', facadeStyle: 'canal', ...extra }, geometry: { type: 'Polygon', coordinates: [ring] } });
+  assert.ok(meshBuildingFor(f({}) as any, 'photo')?.extras, 'an ordinary house takes extras');
+  assert.ok(!meshBuildingFor(f({ kitWall: 'grid', kitWallHex: '#7a4535' }) as any, 'photo')?.extras, 'a kit wall takes none');
+}
 console.log('three buildings: ok');

@@ -1594,6 +1594,706 @@
   }
   var GENERIC_WORSHIP_KITS = WORSHIP_BUILDINGS.map(worshipKit);
 
+  // src/canalRecall/publicBuildingData.ts
+  var PUBLIC_BUILDINGS = [
+    ["NL.IMBAG.Pand.0305100000000252", "s", "f", 3.7, 0, "m"],
+    // (unnamed), 1981, 3.7 m, 1248 m2
+    ["NL.IMBAG.Pand.0305100000001060", "s", "f", 5.6, 0, "e"],
+    // (unnamed), 1955, 5.6 m, 1248 m2
+    ["NL.IMBAG.Pand.0305100000001188", "s", "f", 6.2, 0, "m"],
+    // (unnamed), 1985, 6.2 m, 964 m2
+    ["NL.IMBAG.Pand.0358100019106022", "s", "f", 4.3, 0, "m"],
+    // (unnamed), 1960, 4.3 m, 2840 m2
+    ["NL.IMBAG.Pand.0358100020880018", "s", "f", 3.8, 0, "m"],
+    // (unnamed), 1990, 3.8 m, 981 m2
+    ["NL.IMBAG.Pand.0358100020881991", "s", "f", 8.3, 0, "m"],
+    // (unnamed), 1974, 8.3 m, 886 m2
+    ["NL.IMBAG.Pand.0358100021235050", "s", "f", 7.8, 0, "e"],
+    // (unnamed), 1933, 7.8 m, 1940 m2
+    ["NL.IMBAG.Pand.0358100021569571", "s", "f", 4.5, 0, "m"],
+    // (unnamed), 1971, 4.5 m, 1267 m2
+    ["NL.IMBAG.Pand.0362100001054252", "s", "f", 12.6, 0, "e"],
+    // Amity International School Amsterdam, 1958, 12.6 m, 3221 m2
+    ["NL.IMBAG.Pand.0362100001054264", "s", "f", 5.7, 0, "m"],
+    // De Cirkel, 1981, 5.7 m, 5948 m2
+    ["NL.IMBAG.Pand.0362100001054502", "s", "f", 7.7, 0, "m"],
+    // De Bloeiwijzer, 1974, 7.7 m, 1802 m2
+    ["NL.IMBAG.Pand.0362100001056681", "s", "f", 10.3, 0, "e"],
+    // (unnamed), 1955, 10.3 m, 341 m2
+    ["NL.IMBAG.Pand.0362100001056689", "s", "f", 9.8, 0, "e"],
+    // Amsteltaal, 1940, 9.8 m, 604 m2
+    ["NL.IMBAG.Pand.0362100001056925", "s", "f", 7.3, 0, "o"],
+    // S.A.K.B. Kunstlokaal, 1926, 7.3 m, 514 m2
+    ["NL.IMBAG.Pand.0362100001057631", "s", "f", 9.3, 0, "e"],
+    // Het Palet, 1955, 9.3 m, 984 m2
+    ["NL.IMBAG.Pand.0362100001060286", "s", "f", 6, 0, "m"],
+    // (unnamed), 1972, 6 m, 1036 m2
+    ["NL.IMBAG.Pand.0362100001060288", "s", "f", 8.1, 0, "m"],
+    // Omnibus, 1974, 8.1 m, 924 m2
+    ["NL.IMBAG.Pand.0362100001063786", "s", "f", 6.8, 0, "m"],
+    // De Triangel, 1993, 6.8 m, 1867 m2
+    ["NL.IMBAG.Pand.0362100001071115", "s", "f", 4.5, 0, "m"],
+    // Tulip Gakuen, 1988, 4.5 m, 713 m2
+    ["NL.IMBAG.Pand.0362100001077423", "s", "f", 9.7, 0, "e"],
+    // Piet Heinschool, 1952, 9.7 m, 952 m2
+    ["NL.IMBAG.Pand.0362100001079502", "s", "f", 3.7, 0, "e"],
+    // Het Palet, 1956, 3.7 m, 351 m2
+    ["NL.IMBAG.Pand.0362100001081052", "s", "f", 3.5, 0, "e"],
+    // (unnamed), 1954, 3.5 m, 348 m2
+    ["NL.IMBAG.Pand.0362100001091554", "s", "f", 14, 0, "m"],
+    // NOVA College - De Parelvisserslaan, 1989, 14 m, 1227 m2
+    ["NL.IMBAG.Pand.0362100001094331", "s", "f", 6.8, 0, "m"],
+    // (unnamed), 1973, 6.8 m, 466 m2
+    ["NL.IMBAG.Pand.0362100001110286", "s", "f", 11.3, 0, "m"],
+    // Keizer Karel College, 1968, 11.3 m, 6891 m2
+    ["NL.IMBAG.Pand.0362100001111443", "c", "p", 16.6, 0, "m"],
+    // Cinema Amstelveen, 2002, 16.6 m, 2501 m2
+    ["NL.IMBAG.Pand.0362100001111444", "c", "p", 13.2, 0, "m"],
+    // Schouwburg Amstelveen, 1975, 13.2 m, 2157 m2
+    ["NL.IMBAG.Pand.0363100012061252", "s", "h", 10, 5, "o"],
+    // Nicolaas Maesschool, 1916, 13.5 m, 624 m2
+    ["NL.IMBAG.Pand.0363100012061926", "s", "h", 14.1, 5, "o"],
+    // (unnamed), 1924, 17.6 m, 568 m2
+    ["NL.IMBAG.Pand.0363100012061961", "s", "f", 16.3, 0, "m"],
+    // Op de Kade, 1994, 16.3 m, 3222 m2
+    ["NL.IMBAG.Pand.0363100012062340", "s", "f", 11.6, 0, "o"],
+    // Azalea I, 1928, 11.6 m, 446 m2
+    ["NL.IMBAG.Pand.0363100012063764", "s", "f", 3.9, 0, "m"],
+    // (unnamed), 1983, 3.9 m, 2499 m2
+    ["NL.IMBAG.Pand.0363100012064693", "s", "f", 12.7, 0, "e"],
+    // (unnamed), 1931, 12.7 m, 547 m2
+    ["NL.IMBAG.Pand.0363100012065279", "s", "f", 4.2, 0, "m"],
+    // Alexander Roozendaalschool, 1982, 4.2 m, 2951 m2
+    ["NL.IMBAG.Pand.0363100012065903", "s", "f", 15, 0, "m"],
+    // Obs De Waterkant, 1985, 15 m, 1078 m2
+    ["NL.IMBAG.Pand.0363100012066710", "s", "f", 4.2, 0, "m"],
+    // Wereldwijs, 1976, 4.2 m, 1339 m2
+    ["NL.IMBAG.Pand.0363100012067061", "s", "f", 7.5, 0, "m"],
+    // Waldorf aan de Werf, 1991, 7.5 m, 944 m2
+    ["NL.IMBAG.Pand.0363100012068181", "s", "f", 4.7, 0, "m"],
+    // Kentalis Signis SO/TOS Amsterdam/Assendelft, 1977, 4.7 m, 2299 m2
+    ["NL.IMBAG.Pand.0363100012068345", "s", "f", 11.9, 0, "m"],
+    // (unnamed), 1971, 11.9 m, 1216 m2
+    ["NL.IMBAG.Pand.0363100012068581", "s", "f", 4.3, 0, "m"],
+    // Het Gein, 1990, 4.3 m, 2010 m2
+    ["NL.IMBAG.Pand.0363100012068625", "s", "f", 12, 0, "e"],
+    // (unnamed), 1932, 12 m, 1025 m2
+    ["NL.IMBAG.Pand.0363100012069994", "s", "f", 9.2, 0, "e"],
+    // Lidwinaschool, 1956, 9.2 m, 1233 m2
+    ["NL.IMBAG.Pand.0363100012070769", "s", "f", 11.1, 0, "m"],
+    // 2e Daltonschool, 1983, 11.1 m, 914 m2
+    ["NL.IMBAG.Pand.0363100012071822", "s", "f", 15.6, 0, "o"],
+    // 1e Montessorischool de Wielewaal, 1926, 15.6 m, 746 m2
+    ["NL.IMBAG.Pand.0363100012072950", "s", "f", 13.7, 0, "e"],
+    // (unnamed), 1933, 13.7 m, 400 m2
+    ["NL.IMBAG.Pand.0363100012073434", "s", "f", 8.5, 0, "o"],
+    // De Apollo, 1900, 8.5 m, 1658 m2
+    ["NL.IMBAG.Pand.0363100012074274", "s", "h", 9.7, 5, "o"],
+    // Taalschool, 1922, 13.2 m, 638 m2
+    ["NL.IMBAG.Pand.0363100012074804", "s", "f", 5.3, 0, "m"],
+    // Holendrechtschool, 1977, 5.3 m, 2399 m2
+    ["NL.IMBAG.Pand.0363100012074914", "s", "f", 12.7, 0, "e"],
+    // IBS Elif Amsterdam Zuid, 1954, 12.7 m, 457 m2
+    ["NL.IMBAG.Pand.0363100012075047", "s", "f", 7.5, 0, "m"],
+    // De Boomgaard, 1983, 7.5 m, 1146 m2
+    ["NL.IMBAG.Pand.0363100012075161", "s", "f", 4, 0, "m"],
+    // (unnamed), 1975, 4 m, 1536 m2
+    ["NL.IMBAG.Pand.0363100012075686", "s", "f", 6.6, 0, "m"],
+    // De Botteloef, 1976, 6.6 m, 2114 m2
+    ["NL.IMBAG.Pand.0363100012075737", "s", "h", 12.9, 5, "o"],
+    // (unnamed), 1927, 16.4 m, 601 m2
+    ["NL.IMBAG.Pand.0363100012076543", "s", "f", 19.1, 0, "o"],
+    // Fons Vitae Lyceum, 1926, 19.1 m, 2863 m2
+    ["NL.IMBAG.Pand.0363100012077054", "s", "f", 6.9, 0, "e"],
+    // Immanuelschool, 1956, 6.9 m, 534 m2
+    ["NL.IMBAG.Pand.0363100012077177", "s", "f", 7, 0, "m"],
+    // Kiem Montessori, 1986, 7 m, 1143 m2
+    ["NL.IMBAG.Pand.0363100012078294", "s", "f", 4.5, 0, "m"],
+    // Huibersschool, 1965, 4.5 m, 1877 m2
+    ["NL.IMBAG.Pand.0363100012079617", "s", "f", 9, 0, "m"],
+    // (unnamed), 1987, 9 m, 684 m2
+    ["NL.IMBAG.Pand.0363100012079921", "s", "f", 3.9, 0, "m"],
+    // (unnamed), 1967, 3.9 m, 1195 m2
+    ["NL.IMBAG.Pand.0363100012079924", "s", "f", 4.5, 0, "m"],
+    // De Bonkelaar, 1973, 4.5 m, 1656 m2
+    ["NL.IMBAG.Pand.0363100012080098", "s", "f", 7.2, 0, "m"],
+    // Metis Montessori Lyceum, 1991, 7.2 m, 723 m2
+    ["NL.IMBAG.Pand.0363100012080150", "s", "f", 7.3, 0, "m"],
+    // 7ᵉ Montessorischool, 1982, 7.3 m, 2118 m2
+    ["NL.IMBAG.Pand.0363100012080302", "s", "f", 6.8, 0, "m"],
+    // De Amsterdamse Plus, 1974, 6.8 m, 2363 m2
+    ["NL.IMBAG.Pand.0363100012080308", "s", "f", 13.6, 0, "o"],
+    // Basisschool Corantijn, 1924, 13.6 m, 689 m2
+    ["NL.IMBAG.Pand.0363100012080630", "s", "f", 17.2, 0, "e"],
+    // Montessori Lyceum Oostpoort, 1932, 17.2 m, 357 m2
+    ["NL.IMBAG.Pand.0363100012081651", "s", "f", 6.7, 0, "e"],
+    // De Roos, 1932, 6.7 m, 1027 m2
+    ["NL.IMBAG.Pand.0363100012082745", "s", "f", 8.5, 0, "e"],
+    // Twiskeschool, 1959, 8.5 m, 1235 m2
+    ["NL.IMBAG.Pand.0363100012083302", "s", "f", 12.4, 0, "m"],
+    // De Amsterdamse Montessori School, 1983, 12.4 m, 444 m2
+    ["NL.IMBAG.Pand.0363100012083832", "s", "f", 8.1, 0, "e"],
+    // IBS El Amien, 1953, 8.1 m, 1461 m2
+    ["NL.IMBAG.Pand.0363100012084484", "c", "p", 5.5, 0, "m"],
+    // Stichting Theaterstraat, 1981, 5.5 m, 835 m2
+    ["NL.IMBAG.Pand.0363100012085252", "s", "f", 11.1, 0, "m"],
+    // College De Meer, 1962, 11.1 m, 1572 m2
+    ["NL.IMBAG.Pand.0363100012085366", "s", "f", 18.3, 0, "m"],
+    // (unnamed), 1969, 18.3 m, 7454 m2
+    ["NL.IMBAG.Pand.0363100012085435", "c", "p", 12.4, 0, "m"],
+    // Meervaart Theater, 1999, 12.4 m, 4686 m2
+    ["NL.IMBAG.Pand.0363100012085618", "c", "p", 13.2, 0, "m"],
+    // Bijlmerparktheater, 2009, 13.2 m, 921 m2
+    ["NL.IMBAG.Pand.0363100012086684", "s", "f", 12.6, 0, "e"],
+    // De Weidevogel, 1931, 12.6 m, 491 m2
+    ["NL.IMBAG.Pand.0363100012087388", "s", "f", 17.1, 0, "e"],
+    // Gerrit van der Veen College, 1931, 17.1 m, 1284 m2
+    ["NL.IMBAG.Pand.0363100012087482", "c", "p", 17.7, 0, "o"],
+    // Het Veem Theater, 1900, 17.7 m, 1519 m2
+    ["NL.IMBAG.Pand.0363100012087825", "s", "h", 16.5, 5, "o"],
+    // Montessori Lyceum Amsterdam, 1912, 20 m, 906 m2
+    ["NL.IMBAG.Pand.0363100012088641", "s", "f", 13.5, 0, "o"],
+    // (unnamed), 1927, 13.5 m, 345 m2
+    ["NL.IMBAG.Pand.0363100012089331", "s", "f", 6.4, 0, "m"],
+    // (unnamed), 1984, 6.4 m, 451 m2
+    ["NL.IMBAG.Pand.0363100012089596", "s", "f", 4.1, 0, "m"],
+    // Wereldwijs, 1980, 4.1 m, 1621 m2
+    ["NL.IMBAG.Pand.0363100012089744", "s", "f", 8.6, 0, "m"],
+    // Kindcentrum de Vindplaats, 1989, 8.6 m, 1648 m2
+    ["NL.IMBAG.Pand.0363100012090063", "s", "f", 12, 0, "m"],
+    // SOB, 1976, 12 m, 2010 m2
+    ["NL.IMBAG.Pand.0363100012090993", "s", "f", 15.6, 0, "e"],
+    // Eerste Openluchtschool, 1932, 15.6 m, 367 m2
+    ["NL.IMBAG.Pand.0363100012091041", "s", "f", 7.3, 0, "m"],
+    // Van Detschool, 1978, 7.3 m, 1768 m2
+    ["NL.IMBAG.Pand.0363100012091321", "s", "f", 12.4, 0, "m"],
+    // ROC van Amsterdam, 1971, 12.4 m, 1587 m2
+    ["NL.IMBAG.Pand.0363100012091522", "s", "f", 14.3, 0, "e"],
+    // As-Siddieq, 1931, 14.3 m, 652 m2
+    ["NL.IMBAG.Pand.0363100012091856", "s", "f", 16.4, 0, "e"],
+    // St. Ignatiusgymnasium, 1956, 16.4 m, 1992 m2
+    ["NL.IMBAG.Pand.0363100012092742", "c", "p", 11.2, 0, "e"],
+    // Zonnehuis, 1932, 11.2 m, 972 m2
+    ["NL.IMBAG.Pand.0363100012093296", "s", "f", 4.2, 0, "m"],
+    // De Zijderoute, 1987, 4.2 m, 1276 m2
+    ["NL.IMBAG.Pand.0363100012093382", "s", "f", 14.3, 0, "o"],
+    // Philadelphia, 1925, 14.3 m, 621 m2
+    ["NL.IMBAG.Pand.0363100012093415", "s", "f", 11.4, 0, "m"],
+    // 4e Montessorischool De Pinksterbloem, 1982, 11.4 m, 1807 m2
+    ["NL.IMBAG.Pand.0363100012094306", "s", "f", 8, 0, "m"],
+    // Universum, 1971, 8 m, 1287 m2
+    ["NL.IMBAG.Pand.0363100012094391", "c", "p", 14.7, 0, "e"],
+    // Amsterdams Theaterhuis, 1936, 14.7 m, 2333 m2
+    ["NL.IMBAG.Pand.0363100012095378", "s", "f", 11.7, 0, "e"],
+    // Hervormd Lyceum Zuid, 1930, 11.7 m, 606 m2
+    ["NL.IMBAG.Pand.0363100012095474", "s", "f", 10, 0, "m"],
+    // Thula, 1986, 10 m, 1219 m2
+    ["NL.IMBAG.Pand.0363100012097095", "s", "f", 8.9, 0, "m"],
+    // (unnamed), 1982, 8.9 m, 1073 m2
+    ["NL.IMBAG.Pand.0363100012097934", "s", "f", 11.1, 0, "e"],
+    // El Kadisia, 1957, 11.1 m, 922 m2
+    ["NL.IMBAG.Pand.0363100012098037", "s", "f", 10.1, 0, "e"],
+    // (unnamed), 1959, 10.1 m, 2131 m2
+    ["NL.IMBAG.Pand.0363100012098213", "s", "f", 4.9, 0, "m"],
+    // ROC Op Maat West, 1960, 4.9 m, 1622 m2
+    ["NL.IMBAG.Pand.0363100012100092", "c", "p", 19.9, 0, "m"],
+    // Pathé Arena, 2000, 19.9 m, 3938 m2
+    ["NL.IMBAG.Pand.0363100012100220", "s", "f", 8.2, 0, "m"],
+    // Buitenveldertse Montessori School, 1974, 8.2 m, 1401 m2
+    ["NL.IMBAG.Pand.0363100012100351", "s", "h", 16.5, 5, "o"],
+    // Lucia Marthas Institute for Performing Arts, 1912, 20 m, 302 m2
+    ["NL.IMBAG.Pand.0363100012100376", "s", "f", 16.2, 0, "e"],
+    // Montessori Lyceum Oostpoort, 1930, 16.2 m, 537 m2
+    ["NL.IMBAG.Pand.0363100012101375", "s", "f", 10.6, 0, "m"],
+    // Dr. Rijk Kramerschool, 1988, 10.6 m, 494 m2
+    ["NL.IMBAG.Pand.0363100012101771", "s", "f", 27.5, 0, "e"],
+    // Metropolis lyceum, 1936, 27.5 m, 3966 m2
+    ["NL.IMBAG.Pand.0363100012102419", "s", "f", 14.3, 0, "o"],
+    // De Kleine Nicolaas, 1922, 14.3 m, 409 m2
+    ["NL.IMBAG.Pand.0363100012102814", "s", "f", 10.9, 0, "m"],
+    // (unnamed), 1983, 10.9 m, 4766 m2
+    ["NL.IMBAG.Pand.0363100012104151", "s", "f", 11.5, 0, "e"],
+    // (unnamed), 1959, 11.5 m, 514 m2
+    ["NL.IMBAG.Pand.0363100012104990", "s", "h", 11.8, 4.8, "o"],
+    // College ZUYD, 1924, 15.2 m, 718 m2
+    ["NL.IMBAG.Pand.0363100012105242", "s", "f", 11.3, 0, "m"],
+    // Bataviaschool, 1988, 11.3 m, 796 m2
+    ["NL.IMBAG.Pand.0363100012105310", "s", "f", 7.7, 0, "m"],
+    // Damstede 2 - Agora, 1972, 7.7 m, 1986 m2
+    ["NL.IMBAG.Pand.0363100012106094", "s", "f", 4, 0, "m"],
+    // De Tamboerijn, 1981, 4 m, 2501 m2
+    ["NL.IMBAG.Pand.0363100012108191", "s", "f", 8, 0, "m"],
+    // Ingenieur Lely Lyceum, 1983, 8 m, 7394 m2
+    ["NL.IMBAG.Pand.0363100012108564", "s", "f", 16.4, 0, "e"],
+    // 6e Montessorischool Anne Frank, 1935, 16.4 m, 750 m2
+    ["NL.IMBAG.Pand.0363100012108636", "s", "h", 9.2, 3.7, "o"],
+    // Azalea I, 1928, 11.8 m, 294 m2
+    ["NL.IMBAG.Pand.0363100012109215", "s", "h", 10.8, 5, "o"],
+    // Europaschool, 1924, 14.3 m, 803 m2
+    ["NL.IMBAG.Pand.0363100012109431", "s", "f", 7.3, 0, "m"],
+    // Bassischool Frankendael, 1985, 7.3 m, 1386 m2
+    ["NL.IMBAG.Pand.0363100012110771", "s", "f", 4.8, 0, "m"],
+    // Openbare Daltonschool Nellestein, 1979, 4.8 m, 4347 m2
+    ["NL.IMBAG.Pand.0363100012111095", "s", "f", 3.3, 0, "m"],
+    // (unnamed), 1992, 3.3 m, 606 m2
+    ["NL.IMBAG.Pand.0363100012111133", "s", "h", 8.4, 5, "o"],
+    // De Visserschool, 1929, 11.9 m, 880 m2
+    ["NL.IMBAG.Pand.0363100012112062", "s", "f", 12.4, 0, "m"],
+    // De Dapper, 1985, 12.4 m, 1619 m2
+    ["NL.IMBAG.Pand.0363100012112226", "s", "f", 12.7, 0, "m"],
+    // Willemsparkschool, 1983, 12.7 m, 448 m2
+    ["NL.IMBAG.Pand.0363100012112291", "s", "f", 8.4, 0, "m"],
+    // De Buikslotermeer, 1968, 8.4 m, 1493 m2
+    ["NL.IMBAG.Pand.0363100012112357", "s", "f", 8.4, 0, "e"],
+    // Slotermeerschool, 1955, 8.4 m, 2401 m2
+    ["NL.IMBAG.Pand.0363100012112403", "s", "f", 10.7, 0, "e"],
+    // (unnamed), 1933, 10.7 m, 888 m2
+    ["NL.IMBAG.Pand.0363100012113048", "s", "f", 14.1, 0, "e"],
+    // Olympiaschool, 1937, 14.1 m, 679 m2
+    ["NL.IMBAG.Pand.0363100012113669", "s", "f", 10.3, 0, "o"],
+    // Bassischool Frankendael (locatie Hogeweg), 1921, 10.3 m, 928 m2
+    ["NL.IMBAG.Pand.0363100012115235", "s", "f", 27.8, 0, "m"],
+    // Merkelbachschool, 1992, 27.8 m, 6227 m2
+    ["NL.IMBAG.Pand.0363100012115402", "s", "f", 5.5, 0, "e"],
+    // (unnamed), 1933, 5.5 m, 494 m2
+    ["NL.IMBAG.Pand.0363100012115532", "s", "f", 10.3, 0, "m"],
+    // (unnamed), 1994, 10.3 m, 1670 m2
+    ["NL.IMBAG.Pand.0363100012116143", "s", "f", 4.1, 0, "m"],
+    // Mobiel, 1983, 4.1 m, 2719 m2
+    ["NL.IMBAG.Pand.0363100012116155", "c", "p", 12.2, 0, "m"],
+    // Cinema De Vlugt, 1967, 12.2 m, 1258 m2
+    ["NL.IMBAG.Pand.0363100012116483", "s", "f", 7.3, 0, "m"],
+    // (unnamed), 1978, 7.3 m, 2055 m2
+    ["NL.IMBAG.Pand.0363100012116722", "s", "f", 5.5, 0, "e"],
+    // De Jaargetijden, 1955, 5.5 m, 1013 m2
+    ["NL.IMBAG.Pand.0363100012116795", "s", "f", 8.5, 0, "m"],
+    // De Mijlpaal, 1992, 8.5 m, 987 m2
+    ["NL.IMBAG.Pand.0363100012117108", "s", "f", 15.5, 0, "o"],
+    // International French School, 1913, 15.5 m, 522 m2
+    ["NL.IMBAG.Pand.0363100012117415", "s", "f", 7.5, 0, "m"],
+    // Kentalis Signis, 1976, 7.5 m, 1561 m2
+    ["NL.IMBAG.Pand.0363100012117753", "s", "f", 8.3, 0, "m"],
+    // Over Y College, 1980, 8.3 m, 2922 m2
+    ["NL.IMBAG.Pand.0363100012117953", "s", "f", 11, 0, "m"],
+    // VierTaal College, 1991, 11 m, 1047 m2
+    ["NL.IMBAG.Pand.0363100012118525", "s", "f", 13.3, 0, "o"],
+    // (unnamed), 1927, 13.3 m, 359 m2
+    ["NL.IMBAG.Pand.0363100012118764", "s", "f", 20.6, 0, "m"],
+    // Lumion Amsterdam, 1973, 20.6 m, 3178 m2
+    ["NL.IMBAG.Pand.0363100012120896", "s", "f", 15, 0, "o"],
+    // (unnamed), 1928, 15 m, 2385 m2
+    ["NL.IMBAG.Pand.0363100012121569", "s", "f", 16.9, 0, "e"],
+    // Olympiaschool, 1931, 16.9 m, 568 m2
+    ["NL.IMBAG.Pand.0363100012122517", "s", "f", 9.1, 0, "m"],
+    // (unnamed), 1964, 9.1 m, 1405 m2
+    ["NL.IMBAG.Pand.0363100012122803", "c", "p", 10.2, 0, "e"],
+    // Podium Mozaïek, 1954, 10.2 m, 964 m2
+    ["NL.IMBAG.Pand.0363100012123040", "s", "f", 13.2, 0, "e"],
+    // (unnamed), 1939, 13.2 m, 1495 m2
+    ["NL.IMBAG.Pand.0363100012123240", "c", "p", 19.8, 0, "m"],
+    // AFAS Live, 2001, 19.8 m, 6732 m2
+    ["NL.IMBAG.Pand.0363100012125752", "s", "f", 3.8, 0, "m"],
+    // Boven  t IJ, 1975, 3.8 m, 2067 m2
+    ["NL.IMBAG.Pand.0363100012126767", "s", "f", 15.2, 0, "m"],
+    // Denise, 1960, 15.2 m, 2844 m2
+    ["NL.IMBAG.Pand.0363100012126872", "s", "f", 4.9, 0, "m"],
+    // Driemaster, 1976, 4.9 m, 3106 m2
+    ["NL.IMBAG.Pand.0363100012127997", "s", "f", 16.1, 0, "o"],
+    // Berlage Lyceum, 1924, 16.1 m, 1384 m2
+    ["NL.IMBAG.Pand.0363100012128730", "s", "f", 7.4, 0, "m"],
+    // Azalea II, 1991, 7.4 m, 1272 m2
+    ["NL.IMBAG.Pand.0363100012129398", "s", "f", 14.8, 0, "e"],
+    // Spinoza Lyceum, 1957, 14.8 m, 2812 m2
+    ["NL.IMBAG.Pand.0363100012131629", "s", "f", 8.1, 0, "m"],
+    // Multatulischool, 1988, 8.1 m, 2016 m2
+    ["NL.IMBAG.Pand.0363100012132628", "s", "f", 8.3, 0, "e"],
+    // Kentalis Signis CMB, 1955, 8.3 m, 2013 m2
+    ["NL.IMBAG.Pand.0363100012133077", "s", "f", 14.6, 0, "m"],
+    // Huygens College, 1990, 14.6 m, 1420 m2
+    ["NL.IMBAG.Pand.0363100012133123", "s", "f", 4.9, 0, "m"],
+    // Clusius College, 1985, 4.9 m, 2648 m2
+    ["NL.IMBAG.Pand.0363100012133297", "s", "f", 14.6, 0, "e"],
+    // Hervormd Lyceum Zuid, 1935, 14.6 m, 1739 m2
+    ["NL.IMBAG.Pand.0363100012134381", "s", "f", 16, 0, "o"],
+    // Berlage Lyceum, 1924, 16 m, 1362 m2
+    ["NL.IMBAG.Pand.0363100012134530", "s", "f", 6.2, 0, "m"],
+    // (unnamed), 1977, 6.2 m, 487 m2
+    ["NL.IMBAG.Pand.0363100012134770", "s", "f", 9, 0, "m"],
+    // IJpleinschool, 1986, 9 m, 531 m2
+    ["NL.IMBAG.Pand.0363100012137219", "s", "f", 8.4, 0, "e"],
+    // Al Wafa, 1956, 8.4 m, 556 m2
+    ["NL.IMBAG.Pand.0363100012137446", "s", "f", 8.2, 0, "m"],
+    // Louis Bouwmeesterschool, 1960, 8.2 m, 2044 m2
+    ["NL.IMBAG.Pand.0363100012137724", "s", "f", 8.3, 0, "e"],
+    // PI-school Professor Waterink West, 1956, 8.3 m, 563 m2
+    ["NL.IMBAG.Pand.0363100012138092", "s", "f", 12.2, 0, "e"],
+    // Tobiasschool, 1954, 12.2 m, 2073 m2
+    ["NL.IMBAG.Pand.0363100012139793", "s", "f", 6.9, 0, "m"],
+    // Praktijkcollege De Atlant, 1992, 6.9 m, 1490 m2
+    ["NL.IMBAG.Pand.0363100012142124", "s", "f", 6.7, 0, "m"],
+    // (unnamed), 1978, 6.7 m, 460 m2
+    ["NL.IMBAG.Pand.0363100012143192", "s", "f", 7.6, 0, "m"],
+    // De Wereldburger, 1965, 7.6 m, 350 m2
+    ["NL.IMBAG.Pand.0363100012143384", "s", "f", 12.5, 0, "m"],
+    // Hervormd Lyceum West, 1962, 12.5 m, 3031 m2
+    ["NL.IMBAG.Pand.0363100012143434", "s", "f", 7.8, 0, "m"],
+    // De Indische Buurtschool, 1988, 7.8 m, 1093 m2
+    ["NL.IMBAG.Pand.0363100012143602", "s", "f", 8.3, 0, "e"],
+    // (unnamed), 1956, 8.3 m, 560 m2
+    ["NL.IMBAG.Pand.0363100012143874", "s", "f", 4, 0, "m"],
+    // De Brink, 1980, 4 m, 2254 m2
+    ["NL.IMBAG.Pand.0363100012143944", "s", "f", 7.2, 0, "m"],
+    // Het Spectrum, 1973, 7.2 m, 935 m2
+    ["NL.IMBAG.Pand.0363100012144879", "s", "f", 9.5, 0, "m"],
+    // Al Wafa, 1964, 9.5 m, 1028 m2
+    ["NL.IMBAG.Pand.0363100012145699", "s", "f", 10, 0, "o"],
+    // Kairos, 1927, 10 m, 711 m2
+    ["NL.IMBAG.Pand.0363100012147735", "s", "f", 8.4, 0, "m"],
+    // De Indische Buurtschool, 1987, 8.4 m, 1176 m2
+    ["NL.IMBAG.Pand.0363100012148474", "s", "f", 8.1, 0, "m"],
+    // School van Maas en Waal, 1987, 8.1 m, 907 m2
+    ["NL.IMBAG.Pand.0363100012148715", "s", "f", 15.6, 0, "m"],
+    // (unnamed), 1961, 15.6 m, 1432 m2
+    ["NL.IMBAG.Pand.0363100012148948", "s", "f", 4, 0, "m"],
+    // Tweede Openluchtschool, 1992, 4 m, 1391 m2
+    ["NL.IMBAG.Pand.0363100012149675", "s", "f", 7.6, 0, "m"],
+    // De Vlaamse Reus, 1993, 7.6 m, 1376 m2
+    ["NL.IMBAG.Pand.0363100012149878", "s", "f", 17.7, 0, "o"],
+    // Amsterdams Lyceum, 1920, 17.7 m, 1486 m2
+    ["NL.IMBAG.Pand.0363100012150241", "s", "f", 4.9, 0, "m"],
+    // (unnamed), 1985, 4.9 m, 537 m2
+    ["NL.IMBAG.Pand.0363100012151320", "s", "f", 4.4, 0, "m"],
+    // Prof. Dr. I.C. Van Houteschool, 1980, 4.4 m, 1774 m2
+    ["NL.IMBAG.Pand.0363100012152606", "s", "f", 14.9, 0, "o"],
+    // (unnamed), 1909, 14.9 m, 334 m2
+    ["NL.IMBAG.Pand.0363100012152781", "s", "h", 7.7, 4.3, "o"],
+    // Aldoende, 1917, 10.7 m, 536 m2
+    ["NL.IMBAG.Pand.0363100012154481", "s", "f", 9.9, 0, "m"],
+    // Westerparkschool, 1984, 9.9 m, 1229 m2
+    ["NL.IMBAG.Pand.0363100012154521", "s", "f", 17.6, 0, "m"],
+    // Geert Groote School Roeske, 1987, 17.6 m, 3446 m2
+    ["NL.IMBAG.Pand.0363100012154937", "s", "f", 6.1, 0, "m"],
+    // De Zevensprong, 1994, 6.1 m, 1828 m2
+    ["NL.IMBAG.Pand.0363100012155572", "s", "f", 11.2, 0, "m"],
+    // Rosa Boekdrukker, 1994, 11.2 m, 900 m2
+    ["NL.IMBAG.Pand.0363100012155611", "s", "f", 20.2, 0, "o"],
+    // Metis Montessori Lyceum, 1904, 20.2 m, 981 m2
+    ["NL.IMBAG.Pand.0363100012155763", "s", "f", 14.1, 0, "o"],
+    // (unnamed), 1888, 14.1 m, 515 m2
+    ["NL.IMBAG.Pand.0363100012156533", "s", "f", 15.9, 0, "o"],
+    // Joke Smit, 1925, 15.9 m, 1235 m2
+    ["NL.IMBAG.Pand.0363100012156882", "s", "f", 13.4, 0, "e"],
+    // WSV, 1930, 13.4 m, 630 m2
+    ["NL.IMBAG.Pand.0363100012157107", "s", "f", 11.3, 0, "o"],
+    // 5e Montessorischool Watergraafsmeer, 1929, 11.3 m, 624 m2
+    ["NL.IMBAG.Pand.0363100012158248", "s", "f", 12.7, 0, "o"],
+    // 5e Montessorischool Watergraafsmeer, 1929, 12.7 m, 344 m2
+    ["NL.IMBAG.Pand.0363100012158405", "s", "f", 17.6, 0, "o"],
+    // (unnamed), 1925, 17.6 m, 930 m2
+    ["NL.IMBAG.Pand.0363100012158651", "s", "f", 15.4, 0, "o"],
+    // 9e Montessorischool De Scholekster, 1921, 15.4 m, 783 m2
+    ["NL.IMBAG.Pand.0363100012160100", "s", "h", 11.6, 5, "o"],
+    // Oscar Carré, 1890, 15.1 m, 787 m2
+    ["NL.IMBAG.Pand.0363100012163070", "s", "f", 3.6, 0, "m"],
+    // IJpleinschool, 1986, 3.6 m, 436 m2
+    ["NL.IMBAG.Pand.0363100012163079", "s", "f", 16.6, 0, "e"],
+    // Geert Groote School Plein, 1934, 16.6 m, 836 m2
+    ["NL.IMBAG.Pand.0363100012163104", "s", "f", 13.6, 0, "o"],
+    // Cartesius Lyceum, 1899, 13.6 m, 1350 m2
+    ["NL.IMBAG.Pand.0363100012163664", "s", "f", 10.4, 0, "o"],
+    // Brede School Annie M.G. Schmidt, 1911, 10.4 m, 311 m2
+    ["NL.IMBAG.Pand.0363100012163802", "s", "f", 12.6, 0, "e"],
+    // LUCA, 1935, 12.6 m, 825 m2
+    ["NL.IMBAG.Pand.0363100012164511", "s", "f", 15.1, 0, "o"],
+    // 5e Montessorischool Watergraafsmeer, 1929, 15.1 m, 895 m2
+    ["NL.IMBAG.Pand.0363100012164683", "s", "f", 14.1, 0, "o"],
+    // Kindcentrum Sarphati, 1905, 14.1 m, 738 m2
+    ["NL.IMBAG.Pand.0363100012164714", "s", "f", 19.4, 0, "o"],
+    // Pax, 1888, 19.4 m, 929 m2
+    ["NL.IMBAG.Pand.0363100012164850", "s", "f", 18.2, 0, "o"],
+    // Lycée français Vincent van Gogh, 1903, 18.2 m, 500 m2
+    ["NL.IMBAG.Pand.0363100012164940", "s", "f", 10.6, 0, "m"],
+    // Boekmanschool, 1992, 10.6 m, 1219 m2
+    ["NL.IMBAG.Pand.0363100012165625", "s", "f", 15.1, 0, "o"],
+    // De Witte Olifant, 1921, 15.1 m, 768 m2
+    ["NL.IMBAG.Pand.0363100012167253", "s", "f", 12.5, 0, "o"],
+    // WSV, 1929, 12.5 m, 875 m2
+    ["NL.IMBAG.Pand.0363100012167313", "s", "h", 11.3, 4.8, "o"],
+    // Cartesius Lyceum, 1892, 14.6 m, 521 m2
+    ["NL.IMBAG.Pand.0363100012168139", "s", "f", 14.8, 0, "m"],
+    // De Burght, 1968, 14.8 m, 467 m2
+    ["NL.IMBAG.Pand.0363100012168547", "c", "p", 12.7, 0, "o"],
+    // De Toneelmakerij, 12.7 m, 2725 m2
+    ["NL.IMBAG.Pand.0363100012168684", "c", "p", 16.3, 0, "e"],
+    // De Balie, 1936, 16.3 m, 1105 m2
+    ["NL.IMBAG.Pand.0363100012168735", "c", "p", 21.3, 0, "o"],
+    // Melkweg, 1905, 21.3 m, 1837 m2
+    ["NL.IMBAG.Pand.0363100012168811", "s", "f", 14.7, 0, "o"],
+    // Theo Thijssenschool, 1874, 14.7 m, 498 m2
+    ["NL.IMBAG.Pand.0363100012169564", "s", "f", 22.6, 0, "o"],
+    // Barlaeus Gymnasium, 1866, 22.6 m, 479 m2
+    ["NL.IMBAG.Pand.0363100012169565", "s", "h", 18.3, 5, "o"],
+    // Barlaeus Gymnasium, 1885, 21.8 m, 864 m2
+    ["NL.IMBAG.Pand.0363100012169852", "c", "p", 14.6, 0, "m"],
+    // Bellevue, 2010, 14.6 m, 1106 m2
+    ["NL.IMBAG.Pand.0363100012169888", "s", "f", 11.4, 0, "m"],
+    // 14e Montessorischool De Jordaan, 1993, 11.4 m, 442 m2
+    ["NL.IMBAG.Pand.0363100012170167", "s", "f", 9.2, 0, "o"],
+    // Theo Thijssenschool, 1892, 9.2 m, 581 m2
+    ["NL.IMBAG.Pand.0363100012170259", "c", "p", 19.5, 0, "m"],
+    // Nederlandse Film en Televisie Academie, 1999, 19.5 m, 2146 m2
+    ["NL.IMBAG.Pand.0363100012170328", "s", "f", 9.8, 0, "m"],
+    // Alan Turing School, 1982, 9.8 m, 1847 m2
+    ["NL.IMBAG.Pand.0363100012170573", "s", "f", 8.7, 0, "m"],
+    // Basisschool Oostelijke Eilanden, 1994, 8.7 m, 1193 m2
+    ["NL.IMBAG.Pand.0363100012171200", "c", "p", 17.9, 0, "o"],
+    // Compagnietheater, 1793, 17.9 m, 1055 m2
+    ["NL.IMBAG.Pand.0363100012171760", "s", "f", 12.9, 0, "m"],
+    // De Witte Olifant, 1988, 12.9 m, 517 m2
+    ["NL.IMBAG.Pand.0363100012172090", "s", "h", 6, 4.6, "o"],
+    // Vinseschool, 1905, 9.2 m, 723 m2
+    ["NL.IMBAG.Pand.0363100012172975", "s", "f", 11.1, 0, "m"],
+    // Theo Thijssenschool, 1988, 11.1 m, 460 m2
+    ["NL.IMBAG.Pand.0363100012173113", "s", "f", 15.2, 0, "o"],
+    // Theo Thijssen School, 1890, 15.2 m, 348 m2
+    ["NL.IMBAG.Pand.0363100012174390", "c", "p", 24.3, 0, "e"],
+    // Pathé City, 1935, 24.3 m, 1222 m2
+    ["NL.IMBAG.Pand.0363100012179384", "c", "p", 22.1, 0, "m"],
+    // Pathé de Munt, 2001, 22.1 m, 1099 m2
+    ["NL.IMBAG.Pand.0363100012180412", "c", "p", 15.8, 0, "o"],
+    // Universiteitstheater, 15.8 m, 819 m2
+    ["NL.IMBAG.Pand.0363100012180757", "s", "f", 12.2, 0, "o"],
+    // (unnamed), 1898, 12.2 m, 957 m2
+    ["NL.IMBAG.Pand.0363100012180835", "s", "f", 14.8, 0, "o"],
+    // (unnamed), 1882, 14.8 m, 969 m2
+    ["NL.IMBAG.Pand.0363100012182486", "s", "f", 20.6, 0, "m"],
+    // Asvo, 1990, 20.6 m, 538 m2
+    ["NL.IMBAG.Pand.0363100012183194", "s", "f", 10.3, 0, "o"],
+    // Brede School Annie M.G. Schmidt, 1911, 10.3 m, 327 m2
+    ["NL.IMBAG.Pand.0363100012185844", "c", "p", 27.3, 0, "m"],
+    // Academie voor Theater en Dans, 1996, 27.3 m, 3041 m2
+    ["NL.IMBAG.Pand.0363100012186868", "s", "f", 10.3, 0, "m"],
+    // IJpleinschool, 1986, 10.3 m, 354 m2
+    ["NL.IMBAG.Pand.0363100012191081", "s", "f", 8.2, 0, "m"],
+    // Open Schoolgemeenschap Bijlmer, 1973, 8.2 m, 988 m2
+    ["NL.IMBAG.Pand.0363100012208464", "s", "f", 7.5, 0, "m"],
+    // Japanese School Amsterdam, 1960, 7.5 m, 1818 m2
+    ["NL.IMBAG.Pand.0363100012212122", "s", "f", 4.2, 0, "o"],
+    // Amsterdams Lyceum, 1925, 4.2 m, 1356 m2
+    ["NL.IMBAG.Pand.0363100012233517", "s", "f", 15.5, 0, "o"],
+    // Muziekpakhuis, 1924, 15.5 m, 290 m2
+    ["NL.IMBAG.Pand.0363100012233590", "s", "f", 15, 0, "o"],
+    // (unnamed), 1892, 15 m, 1502 m2
+    ["NL.IMBAG.Pand.0363100012235989", "c", "p", 13.3, 0, "o"],
+    // De Krakeling, 1885, 13.3 m, 1387 m2
+    ["NL.IMBAG.Pand.0363100012236544", "c", "p", 19.8, 0, "o"],
+    // Marci Panis, 1896, 19.8 m, 1814 m2
+    ["NL.IMBAG.Pand.0363100012236586", "s", "f", 18.5, 0, "o"],
+    // Aldoende, 1899, 18.5 m, 1037 m2
+    ["NL.IMBAG.Pand.0363100012236656", "s", "f", 14.5, 0, "o"],
+    // The British School, 1890, 14.5 m, 4667 m2
+    ["NL.IMBAG.Pand.0363100012236816", "s", "f", 14.8, 0, "o"],
+    // De Kaap, 1916, 14.8 m, 860 m2
+    ["NL.IMBAG.Pand.0363100012236840", "s", "h", 14.5, 5, "o"],
+    // Montessori Lyceum Amsterdam, 1900, 18 m, 604 m2
+    ["NL.IMBAG.Pand.0363100012236988", "c", "p", 10.3, 0, "o"],
+    // Clifford Studio, 1909, 10.3 m, 842 m2
+    ["NL.IMBAG.Pand.0363100012237030", "s", "f", 15.6, 0, "o"],
+    // Vrijeschool Amsterdam West, 1896, 15.6 m, 920 m2
+    ["NL.IMBAG.Pand.0363100012237077", "c", "p", 16.7, 0, "o"],
+    // LAB111, 1928, 16.7 m, 1280 m2
+    ["NL.IMBAG.Pand.0363100012237203", "s", "f", 22, 0, "o"],
+    // Montessori Lyceum Amsterdam, 1912, 22 m, 1916 m2
+    ["NL.IMBAG.Pand.0363100012237336", "s", "f", 15.1, 0, "o"],
+    // Brede School Annie M.G. Schmidt, 1911, 15.1 m, 725 m2
+    ["NL.IMBAG.Pand.0363100012238475", "c", "p", 18.8, 0, "m"],
+    // Studio H67, 2013, 18.8 m, 1451 m2
+    ["NL.IMBAG.Pand.0363100012240368", "c", "p", 25.8, 0, "m"],
+    // DeLaMar (West), 2014, 25.8 m, 4492 m2
+    ["NL.IMBAG.Pand.0363100012246190", "c", "p", 17.5, 0, "m"],
+    // CC Amstel, 2018, 17.5 m, 1268 m2
+    ["NL.IMBAG.Pand.0363100012249726", "c", "p", 23.5, 0, "m"],
+    // Pathé Amsterdam Noord, 2020, 23.5 m, 5980 m2
+    ["NL.IMBAG.Pand.0363100012254404", "c", "p", 6.4, 0, "m"],
+    // Vue, 2021, 6.4 m, 3707 m2
+    ["NL.IMBAG.Pand.0363100012571556", "c", "p", 20.4, 0, "o"],
+    // DeLaMar, 20.4 m, 1457 m2
+    ["NL.IMBAG.Pand.0384100000005587", "s", "f", 8.7, 0, "m"],
+    // Gymzaal Schoolstraat, 1960, 8.7 m, 503 m2
+    ["NL.IMBAG.Pand.0384100000005599", "s", "f", 5.3, 0, "m"],
+    // De Octopus, 1990, 5.3 m, 2272 m2
+    ["NL.IMBAG.Pand.0384100000005895", "c", "p", 11, 0, "m"],
+    // De Omval, 1996, 11 m, 1190 m2
+    ["NL.IMBAG.Pand.0384100000006041", "s", "f", 6.1, 0, "m"],
+    // Sint Petrusschool, 1981, 6.1 m, 605 m2
+    ["NL.IMBAG.Pand.0393100000000125", "s", "f", 5.4, 0, "m"],
+    // Jong Geleerd, 1994, 5.4 m, 866 m2
+    ["NL.IMBAG.Pand.0393100000000414", "s", "f", 5.1, 0, "m"],
+    // Jong Geleerd, 1981, 5.1 m, 742 m2
+    ["NL.IMBAG.Pand.0394100000207281", "s", "f", 5.7, 0, "e"],
+    // (unnamed), 1955, 5.7 m, 908 m2
+    ["NL.IMBAG.Pand.0394100000208189", "s", "f", 8.1, 0, "m"],
+    // Rietveldschool, 1963, 8.1 m, 2595 m2
+    ["NL.IMBAG.Pand.0394100000208246", "s", "f", 8.2, 0, "e"],
+    // Oranje Nassau School, 1931, 8.2 m, 1595 m2
+    ["NL.IMBAG.Pand.0394100000209255", "s", "f", 6.7, 0, "m"],
+    // (unnamed), 1973, 6.7 m, 455 m2
+    ["NL.IMBAG.Pand.0394100000209553", "s", "f", 3.7, 0, "m"],
+    // (unnamed), 1970, 3.7 m, 1085 m2
+    ["NL.IMBAG.Pand.0394100000209846", "s", "f", 6.9, 0, "m"],
+    // Doctor Plesmanschool, 1962, 6.9 m, 452 m2
+    ["NL.IMBAG.Pand.0394100000217330", "s", "f", 4.3, 0, "m"],
+    // (unnamed), 1971, 4.3 m, 1122 m2
+    ["NL.IMBAG.Pand.0394100000226772", "s", "f", 9.1, 0, "e"],
+    // (unnamed), 1931, 9.1 m, 1388 m2
+    ["NL.IMBAG.Pand.0394100000242779", "s", "f", 4.6, 0, "m"],
+    // (unnamed), 1971, 4.6 m, 1223 m2
+    ["NL.IMBAG.Pand.0394100000242783", "s", "f", 4.3, 0, "m"],
+    // (unnamed), 1971, 4.3 m, 1230 m2
+    ["NL.IMBAG.Pand.0394100000258704", "s", "f", 4.4, 0, "m"],
+    // (unnamed), 1975, 4.4 m, 1302 m2
+    ["NL.IMBAG.Pand.0415100000002681", "s", "f", 4, 0, "m"],
+    // OBS De Stap, 1984, 4 m, 1510 m2
+    ["NL.IMBAG.Pand.0415100000002748", "s", "f", 5.7, 0, "m"],
+    // OBS Ds JL de Wagemakerschool, 1979, 5.7 m, 1160 m2
+    ["NL.IMBAG.Pand.0424100000001256", "s", "f", 5.2, 0, "m"],
+    // (unnamed), 1980, 5.2 m, 1428 m2
+    ["NL.IMBAG.Pand.0424100000004412", "s", "f", 6, 0, "m"],
+    // (unnamed), 1981, 6 m, 833 m2
+    ["NL.IMBAG.Pand.0437100000003305", "s", "f", 4, 0, "m"],
+    // Het Kofschip, 1977, 4 m, 1334 m2
+    ["NL.IMBAG.Pand.0437100000003427", "s", "f", 8.8, 0, "e"],
+    // Het Kofschip, 1959, 8.8 m, 576 m2
+    ["NL.IMBAG.Pand.0437100000006427", "s", "f", 3.6, 0, "m"],
+    // (unnamed), 1977, 3.6 m, 298 m2
+    ["NL.IMBAG.Pand.0437100000007315", "s", "f", 7.5, 0, "m"],
+    // Amstelschool, 1974, 7.5 m, 715 m2
+    ["NL.IMBAG.Pand.0457100000054413", "s", "f", 11.2, 0, "e"],
+    // Jozefschool Weesp, 1933, 11.2 m, 534 m2
+    ["NL.IMBAG.Pand.0457100000062574", "s", "f", 4.9, 0, "e"],
+    // De Triangel, 1956, 4.9 m, 2620 m2
+    ["NL.IMBAG.Pand.0457100000063604", "s", "f", 4.7, 0, "e"],
+    // Van der Muelen-Vastwijkschool, 1956, 4.7 m, 1694 m2
+    ["NL.IMBAG.Pand.0479100000000190", "c", "p", 6.4, 0, "m"],
+    // Podium De Flux, 1960, 6.4 m, 3469 m2
+    ["NL.IMBAG.Pand.0479100000001512", "s", "f", 3.9, 0, "m"],
+    // (unnamed), 1984, 3.9 m, 583 m2
+    ["NL.IMBAG.Pand.0852100000007043", "s", "f", 4.5, 0, "m"],
+    // (unnamed), 1974, 4.5 m, 1673 m2
+    ["NL.IMBAG.Pand.1696100000004556", "s", "f", 4, 0, "m"],
+    // (unnamed), 1976, 4 m, 1327 m2
+    ["r3699016", "c", "p", 12, 0, "o"],
+    // Studio/K, 1910, 12 m, 3494 m2
+    ["w1362284226", "s", "f", 9, 0, "m"],
+    // (unnamed), 1963, 9 m, 620 m2
+    ["w1362284227", "s", "f", 12, 0, "m"],
+    // (unnamed), 1963, 12 m, 1294 m2
+    ["w1362309458", "s", "f", 6, 0, "m"],
+    // (unnamed), 1963, 6 m, 462 m2
+    ["w1362309461", "s", "f", 6, 0, "m"],
+    // (unnamed), 1963, 6 m, 596 m2
+    ["w1387551669", "s", "f", 6, 0, "m"],
+    // (unnamed), 1973, 6 m, 353 m2
+    ["w1421415124", "s", "f", 6, 0, "m"],
+    // DE Brede School, 1973, 6 m, 749 m2
+    ["w1421415126", "s", "f", 6, 0, "m"],
+    // (unnamed), 1973, 6 m, 349 m2
+    ["w1423983489", "s", "f", 6, 0, "m"],
+    // (unnamed), 1973, 6 m, 744 m2
+    ["w1423983494", "s", "f", 6, 0, "m"],
+    // As-Soeffah, 1973, 6 m, 847 m2
+    ["w1488019247", "c", "p", 21, 0, "m"],
+    // Bijlmerbios film(t)huis, 1987, 21 m, 127 m2
+    ["w1488019248", "c", "p", 21, 0, "m"],
+    // Bijlmerbios film(t)huis, 1987, 21 m, 200 m2
+    ["w1488019252", "c", "p", 21, 0, "m"],
+    // Bijlmerbios film(t)huis, 1987, 21 m, 80 m2
+    ["w1488019253", "c", "p", 21, 0, "m"],
+    // Bijlmerbios film(t)huis, 1987, 21 m, 198 m2
+    ["w1488019254", "c", "p", 24, 0, "m"],
+    // Bijlmerbios film(t)huis, 1987, 24 m, 131 m2
+    ["w1488019255", "c", "p", 24, 0, "m"],
+    // Bijlmerbios film(t)huis, 1987, 24 m, 206 m2
+    ["w1488019256", "c", "p", 30, 0, "m"],
+    // Bijlmerbios film(t)huis, 1987, 30 m, 20 m2
+    ["w1488019257", "c", "p", 18, 0, "m"],
+    // Bijlmerbios film(t)huis, 1987, 18 m, 843 m2
+    ["w1488019266", "c", "p", 21, 0, "m"],
+    // Bijlmerbios film(t)huis, 1987, 21 m, 845 m2
+    ["w1488019269", "c", "p", 6, 0, "m"],
+    // Bijlmerbios film(t)huis, 1987, 6 m, 815 m2
+    ["w1488019297", "s", "f", 24, 0, "m"],
+    // (unnamed), 1987, 24 m, 828 m2
+    ["w1488019298", "s", "f", 24, 0, "m"],
+    // (unnamed), 1987, 24 m, 725 m2
+    ["w1488019299", "s", "f", 21, 0, "m"],
+    // (unnamed), 1987, 21 m, 873 m2
+    ["w1488019300", "s", "f", 18, 0, "m"],
+    // (unnamed), 1987, 18 m, 622 m2
+    ["w1488019301", "s", "f", 15, 0, "m"],
+    // Amsterdam International Community School, 1987, 15 m, 881 m2
+    ["w1488019303", "s", "f", 6, 0, "m"],
+    // (unnamed), 1987, 6 m, 1579 m2
+    ["w1488019306", "s", "f", 6, 0, "m"],
+    // (unnamed), 1987, 6 m, 744 m2
+    ["w1488019307", "s", "f", 9, 0, "m"],
+    // (unnamed), 1987, 9 m, 319 m2
+    ["w1488019308", "s", "f", 6, 0, "m"],
+    // (unnamed), 1987, 6 m, 750 m2
+    ["w265853828", "c", "p", 19.1, 0, "m"],
+    // Theater Amsterdam, 2014, 19.1 m, 5205 m2
+    ["w267883763", "s", "f", 9, 0, "m"],
+    // (unnamed), 1964, 9 m, 611 m2
+    ["w280657731", "s", "f", 13.6, 0, "e"],
+    // Oranje Nassauschool, 1930, 13.6 m, 798 m2
+    ["w283332324", "s", "f", 9, 0, "e"],
+    // (unnamed), 1935, 9 m, 803 m2
+    ["w285287131", "s", "f", 9, 0, "m"],
+    // (unnamed), 1962, 9 m, 1565 m2
+    ["w44828165", "s", "f", 12.7, 0, "m"],
+    // Damstede Lyceum, 1984, 12.7 m, 4119 m2
+    ["w52296553", "s", "f", 9, 0, "m"]
+    // (unnamed), 1974, 9 m, 1689 m2
+  ];
+
+  // src/canalRecall/publicBuildings.ts
+  var PUBLIC_WALL = {
+    c: { o: "#8a6350", e: "#8f6b58", m: "#a8a6a0" },
+    s: { o: "#8a4a38", e: "#955a45", m: "#b5a68e" }
+  };
+  var round12 = (v) => Math.round(v * 10) / 10;
+  function schoolWindows(eavesM, era) {
+    const floorH = era === "o" ? 4 : era === "e" ? 3.6 : 3.4;
+    const floors = Math.max(1, Math.min(5, Math.round(eavesM / floorH)));
+    const step = eavesM / floors, rows = [];
+    const winH = era === "o" ? 2.5 : era === "e" ? 2.2 : 1.7, sill = era === "o" ? 0.9 : 0.8;
+    const widthM = era === "o" ? 2 : era === "e" ? 2.2 : 3, bayM = era === "o" ? 3.1 : era === "e" ? 3.3 : 3.5;
+    for (let i = 0; i < floors; i++) {
+      const z0 = i * step + sill, z1 = Math.min(z0 + winH, (i + 1) * step - 0.3);
+      if (z1 - z0 < 1.2) continue;
+      rows.push({ z0: round12(z0), z1: round12(z1), widthM, bayM, head: "flat" });
+    }
+    return rows;
+  }
+  var KIND_NAME2 = { c: "cinema", s: "school", f: "fire station", p: "police station", h: "hospital", o: "civic office" };
+  function publicKit([id, kind, mode, eavesM, riseM, era]) {
+    const name = `Generic ${KIND_NAME2[kind]} ${id}`;
+    if (kind === "c" || mode === "p") {
+      return { name, wall: { plain: true, hex: PUBLIC_WALL.c[era] }, tiers: [], stacks: [], roofs: [], body: [id] };
+    }
+    const rows = schoolWindows(eavesM, era);
+    const windows = { rows, glassHex: "#3a4650", frameHex: era === "m" ? void 0 : "#d8d2c4", plinth: era === "m" ? void 0 : { z1: 0.8, hex: "#8c877d" } };
+    return {
+      name,
+      wall: { plain: true, hex: PUBLIC_WALL.s[era] },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{ id, widthM: 0, anchor: [0, 0], fit: mode === "h", eavesM, riseM, mat: "tile", windows }]
+    };
+  }
+  var GENERIC_PUBLIC_KITS = PUBLIC_BUILDINGS.map(publicKit);
+
   // src/canalRecall/landmarkKits.ts
   var MAT_HEX = {
     brick: "#9a5240",
@@ -2128,7 +2828,7 @@
   var kitIds = (k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f) => f.on), ...k.body ?? []];
   var HAND_KIT_IDS = new Set(HAND_KITS.flatMap(kitIds));
   var HAND_IDS = HAND_KIT_IDS;
-  var KITS = [...HAND_KITS, ...GENERIC_WORSHIP_KITS.filter((k) => kitIds(k).every((id) => !HAND_IDS.has(id)))];
+  var KITS = [...HAND_KITS, ...[...GENERIC_WORSHIP_KITS, ...GENERIC_PUBLIC_KITS].filter((k) => kitIds(k).every((id) => !HAND_IDS.has(id)))];
   var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? [], ...(k.forms ?? []).map((f) => f.on)]));
   var KIT_HIDE_IDS = [...new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.hides ?? []]))];
   var KIT_MODELLED_IDS = /* @__PURE__ */ new Set([...KIT_PART_IDS, ...KITS.flatMap((k) => k.body ?? [])]);
@@ -2887,12 +3587,12 @@
       if (c.layout.storeys < 2 || c.f.len < 5.5) return;
       const x = c.f.len * (r < 0.5 ? 0.5 : 0.3), z0 = storeyZ(c, 0) + 0.1, z1 = storeyZ(c, Math.min(2, c.layout.storeys - 1)) - 0.1;
       const glassZ0 = z0 + 0.7, glassZ1 = z1 - 0.35, frame = c.style === "school" ? pickOf(SCHOOL_FRAMES, r) : WHITE2;
-      s.box(c.f, x - 0.75, x + 0.75, 0, 0.6, z0 - 0.45, z0, SANDSTONE, true);
+      s.box(c.f, x - 0.75, x + 0.75, 0, 0.4, z0 - 0.4, z0, SANDSTONE, true);
       const body = shadeHex(c.wallHex, 0.88);
-      for (const [hw, o] of [[1.3, 0.35], [1.05, 0.65], [0.7, 0.85]]) s.box(c.f, x - hw, x + hw, 0, o, z0, z1, body, true);
-      for (const [a0, a1, o] of [[x - 1.22, x - 1.1, 0.35], [x - 0.95, x - 0.8, 0.65], [x - 0.62, x + 0.62, 0.85], [x + 0.8, x + 0.95, 0.65], [x + 1.1, x + 1.22, 0.35]]) s.strip(c.f, a0, a1, o + 0.01, glassZ0, glassZ1, "#4d5f6b", 0.01);
-      s.strip(c.f, x - 0.6, x + 0.6, 0.88, glassZ0 + (glassZ1 - glassZ0) * 0.68, glassZ0 + (glassZ1 - glassZ0) * 0.72, frame, 0.03);
-      s.box(c.f, x - 1.38, x + 1.38, 0, 0.95, z1, z1 + 0.14, c.style === "school" ? "#4f7a6a" : STONE2, true);
+      for (const [hw, o] of [[1.3, 0.2], [1.05, 0.38], [0.7, 0.5]]) s.box(c.f, x - hw, x + hw, 0, o, z0, z1, body, true);
+      for (const [a0, a1, o] of [[x - 1.22, x - 1.1, 0.2], [x - 0.95, x - 0.8, 0.38], [x - 0.62, x + 0.62, 0.5], [x + 0.8, x + 0.95, 0.38], [x + 1.1, x + 1.22, 0.2]]) s.strip(c.f, a0, a1, o + 0.01, glassZ0, glassZ1, "#8ea6b4", 0.01);
+      s.strip(c.f, x - 0.6, x + 0.6, 0.53, glassZ0 + (glassZ1 - glassZ0) * 0.68, glassZ0 + (glassZ1 - glassZ0) * 0.72, frame, 0.03);
+      s.box(c.f, x - 1.38, x + 1.38, 0, 0.56, z1, z1 + 0.14, c.style === "school" ? "#4f7a6a" : STONE2, true);
     } },
     // --- Ground floor -------------------------------------------------------------------------
     { id: "rusticated-plinth", styles: CANAL, p: { c19: 0.4, canal: 0.12 }, wide: true, street: true, group: "plinth", build: (c, s) => {
@@ -2951,6 +3651,7 @@
   var STONE3 = "#cfc6b4";
   var IRON2 = "#26282b";
   var WOOD = "#5a4030";
+  var WHITE3 = "#efece4";
   var GREEN = "#3f7a3a";
   var DARKGREEN = "#2c4f33";
   var CONCRETE = "#b9b5ac";
@@ -2986,11 +3687,10 @@
       const x = doorX(c);
       if (x == null || !c.groundLevel) return;
       for (let k = 0; k < 3; k++) s.box(c.f, x - 0.75, x + 0.75, 0, 1.2 - k * 0.35, c.base + k * 0.18, c.base + (k + 1) * 0.18, STONE3);
-    } },
-    { id: "stoop-railing", styles: ["canal"], p: 0.35, build: (c, s) => {
-      const x = doorX(c);
-      if (x == null || !c.groundLevel) return;
-      for (const dx of [-0.75, 0.73]) s.box(c.f, x + dx, x + dx + 0.03, 0.1, 1.2, c.base + 0.5, c.base + 0.55, IRON2);
+      if (hash012(`${c.id}:rail`) < 0.6) for (const dx of [-0.75, 0.72]) {
+        s.box(c.f, x + dx, x + dx + 0.03, 0.1, 1.2, c.base + 0.75, c.base + 0.79, IRON2);
+        s.box(c.f, x + dx, x + dx + 0.03, 1.12, 1.16, c.base, c.base + 0.79, IRON2);
+      }
     } },
     { id: "double-stoop", group: "stoop", styles: ["canal"], p: 0.08, build: (c, s) => {
       const x = doorX(c);
@@ -2999,7 +3699,7 @@
       for (const side of [-1, 1]) for (let k = 0; k < 3; k++) s.box(c.f, x + side * (0.7 + k * 0.3) - (side > 0 ? 0 : 0.3), x + side * (0.7 + k * 0.3) + (side > 0 ? 0.3 : 0), 0.1, 0.95, c.base, c.base + 0.75 - k * 0.25, STONE3);
     } },
     { id: "basement-well", styles: ["canal", "c19"], p: 0.25, build: (c, s) => {
-      if (!c.groundLevel) return;
+      if (!c.groundLevel || c.shopfront) return;
       const xs = windowXs(c);
       const x = xs[xs.length - 1];
       s.strip(c.f, x - 0.6, x + 0.6, 0.62, c.base + 0.72, c.base + 0.76, IRON2, 0.03);
@@ -3057,10 +3757,14 @@
         if (hash012(`${c.id}:f${x}`) < 0.4) s.box(c.f, x - 0.2, x + 0.2, 0.05, 0.3, c.base + h, c.base + h + 0.12, pickOf2(["#e84a7f", "#f2b92e", "#c04fd0", "#ffffff"], r + x));
       }
     } },
-    { id: "climbing-ivy", styles: ALL, p: 0.08, build: (c, s) => {
-      const x0 = hash012(c.wallKey) * Math.max(0, c.f.len - 3), h = Math.min(c.top - c.base, 4 + hash012(`${c.wallKey}:h`) * 6);
-      s.box(c.f, x0, x0 + 2.2, 0, 0.12, c.base, c.base + h, DARKGREEN);
-      s.box(c.f, x0 + 0.4, x0 + 1.6, 0, 0.14, c.base + h, c.base + h + 1.2, GREEN);
+    // Ivy as a thin climber hugging the wall to the first floor, in a few ragged fingers: a 2.2 m
+    // dark slab up to 10 m read as a black-green box (user 2026-10-03: "awful imposing extrusions on our canal house grammar").
+    { id: "climbing-ivy", styles: ["school", "postwar", "modern"], p: 0.05, build: (c, s) => {
+      const x0 = hash012(c.wallKey) * Math.max(0, c.f.len - 2), top = Math.min(c.top - c.base, c.layout.groundM + 1.5);
+      for (let k = 0; k < 4; k++) {
+        const x = x0 + 0.15 + k * 0.4, h = top * (0.55 + 0.45 * hash012(`${c.wallKey}:iv${k}`));
+        s.box(c.f, x, x + 0.32, 0, 0.04, c.base, c.base + h, k % 2 ? GREEN : "#4f7a45");
+      }
     } },
     // --- 19th century -----------------------------------------------------------------
     { id: "juliet-balcony", group: "balcony", styles: ["c19", "school"], p: 0.3, build: (c, s) => {
@@ -3076,9 +3780,11 @@
     { id: "bay-window", group: "oriel", styles: ["c19", "school"], p: 0.2, build: (c, s) => {
       if (c.layout.storeys < 1 || c.f.len < 5) return;
       const x = c.f.len / 2, z0 = storeyZ2(c, 0), z1 = z0 + c.layout.storeyM * Math.min(2, c.layout.storeys) - 0.2;
-      s.box(c.f, x - 1.3, x + 1.3, 0, 0.8, z0, z1, c.wallHex, true);
-      s.box(c.f, x - 1.1, x + 1.1, 0.8, 0.82, z0 + 0.5, z1 - 0.4, GLASS2);
-      s.box(c.f, x - 1.4, x + 1.4, 0, 0.9, z1, z1 + 0.15, STONE3);
+      const zz1 = z0 + c.layout.storeyM - 0.25;
+      void z1;
+      s.box(c.f, x - 1.1, x + 1.1, 0, 0.45, z0 + 0.15, zz1, c.wallHex, true);
+      for (const [a, b] of [[-0.95, -0.35], [-0.3, 0.3], [0.35, 0.95]]) s.box(c.f, x + a, x + b, 0.45, 0.47, z0 + 0.6, zz1 - 0.35, "#9fb6c4");
+      s.box(c.f, x - 1.18, x + 1.18, 0, 0.52, zz1, zz1 + 0.12, WHITE3, true);
     } },
     { id: "cornice-brackets", group: "crown", styles: ["c19", "canal"], p: 0.35, build: (c, s) => {
       const z = c.top - 0.15;
@@ -3089,7 +3795,7 @@
       const x = doorX(c);
       if (x == null) return;
       const z = c.base + Math.min(2.6, c.layout.groundM - 0.25);
-      s.box(c.f, x - 0.8, x + 0.8, 0, 0.9, z, z + 0.1, c.style === "c19" ? IRON2 : CONCRETE, true);
+      s.box(c.f, x - 0.65, x + 0.65, 0, 0.5, z, z + 0.06, c.style === "c19" ? "#3a3f45" : CONCRETE, true);
     } },
     { id: "downpipe", styles: ALL, p: 0.4, build: (c, s) => {
       const x = hash012(`${c.wallKey}:dp`) < 0.5 ? 0.15 : c.f.len - 0.15;
@@ -3101,10 +3807,10 @@
     } },
     // --- Amsterdam School ------------------------------------------------------------
     { id: "brick-balcony", styles: ["school"], p: 0.3, build: (c, s) => {
-      for (let k = 1; k < Math.min(4, c.layout.storeys + 1); k++) {
+      for (let k = 1; k < Math.min(3, c.layout.storeys + 1); k++) {
         const x = c.f.len / 2, z = storeyZ2(c, k - 1) + 0.05;
-        s.box(c.f, x - 1.4, x + 1.4, 0, 1, z, z + 0.15, c.wallHex, true);
-        s.box(c.f, x - 1.4, x + 1.4, 0.85, 1, z + 0.15, z + 1, c.wallHex);
+        s.box(c.f, x - 1.2, x + 1.2, 0, 0.5, z, z + 0.12, c.wallHex, true);
+        s.box(c.f, x - 1.2, x + 1.2, 0.4, 0.5, z + 0.12, z + 0.8, c.wallHex);
       }
     } },
     { id: "brick-bands", styles: ["school"], p: 0.35, build: (c, s) => {
@@ -3145,17 +3851,17 @@
     { id: "entrance-slab", styles: ["postwar", "modern", "tower"], p: 0.4, build: (c, s) => {
       const x = doorX(c);
       if (x == null) return;
-      s.box(c.f, x - 1.6, x + 1.6, 0, 1.8, c.base + 2.55, c.base + 2.8, CONCRETE, true);
+      s.box(c.f, x - 1.3, x + 1.3, 0, 1, c.base + 2.6, c.base + 2.75, CONCRETE, true);
     } },
     { id: "glass-balconies", styles: ["modern", "tower"], p: 0.45, build: (c, s) => {
       for (let k = 0; k < Math.min(8, c.layout.storeys); k++) {
         const z = storeyZ2(c, k) + 0.02, x = c.f.len * (0.25 + 0.5 * (k % 2));
-        s.box(c.f, x - 1.6, x + 1.6, 0, 1.3, z, z + 0.12, CONCRETE, true);
-        s.box(c.f, x - 1.6, x + 1.6, 1.26, 1.3, z + 0.12, z + 1.05, "#a9c4cf");
+        s.box(c.f, x - 1.5, x + 1.5, 0, 0.9, z, z + 0.08, CONCRETE, true);
+        s.box(c.f, x - 1.5, x + 1.5, 0.87, 0.9, z + 0.08, z + 1, "#c3d6de");
       }
     } },
     { id: "vertical-fins", styles: ["modern", "tower"], p: 0.25, build: (c, s) => {
-      for (let x = 0.6; x < c.f.len - 0.3; x += 1.5) s.box(c.f, x - 0.06, x + 0.06, 0, 0.45, c.base + c.layout.groundM, c.top - 0.3, "#d6d2c8");
+      for (let x = 0.6; x < c.f.len - 0.3; x += 1.5) s.box(c.f, x - 0.05, x + 0.05, 0, 0.22, c.base + c.layout.groundM, c.top - 0.3, "#d6d2c8");
     } },
     { id: "garage-door", styles: ["postwar"], p: 0.12, build: (c, s) => {
       if (!c.groundLevel || c.f.len < 4) return;
@@ -3166,24 +3872,10 @@
       if (c.groundLevel) s.box(c.f, 0, c.f.len, 0, 0.06, c.base, c.base + 0.5, "#3a3530");
     } },
     // --- Street life ------------------------------------------------------------------
-    { id: "parked-bikes", styles: ALL, p: 0.3, build: (c, s, r) => {
-      if (!c.groundLevel) return;
-      const n = 1 + Math.floor(r * 4), x0 = hash012(`${c.wallKey}:bx`) * Math.max(0, c.f.len - n * 0.7);
-      for (let k = 0; k < n; k++) {
-        const x = x0 + k * 0.7, hex2 = pickOf2(["#1d1d1f", "#2f3d4a", "#4a1f25", "#2c3f36"], hash012(`${c.wallKey}:bc${k}`));
-        for (const v of [0.2, 1.25]) s.box(c.f, x - 0.015, x + 0.015, v, v + 0.62, c.base + 0.02, c.base + 0.64, "#202224");
-        s.box(c.f, x - 0.025, x + 0.025, 0.5, 1, c.base + 0.55, c.base + 0.6, hex2);
-        s.box(c.f, x - 0.025, x + 0.025, 0.95, 1.02, c.base + 0.3, c.base + 0.95, hex2);
-        s.box(c.f, x - 0.06, x + 0.06, 0.42, 0.62, c.base + 0.88, c.base + 0.94, "#141414");
-        s.box(c.f, x - 0.25, x + 0.25, 1.05, 1.1, c.base + 0.98, c.base + 1.02, hex2);
-      }
-    } },
-    { id: "bike-racks", styles: ["school", "postwar", "modern"], p: 0.2, build: (c, s) => {
-      if (!c.groundLevel) return;
-      for (let x = 1; x < Math.min(c.f.len - 0.5, 9); x += 0.8) s.box(c.f, x - 0.03, x + 0.03, 1.2, 1.9, c.base, c.base + 0.8, "#8a8f94");
-    } },
+    // Parked bikes and racks were removed 2026-10-03: drawn per facade they stood out from the
+    // wall as dark pickets on the pavement (user: "bunch of weird artifacts here too").
     { id: "bench", styles: ["canal", "c19"], p: 0.1, build: (c, s) => {
-      if (!c.groundLevel) return;
+      if (!c.groundLevel || c.shopfront) return;
       const x = c.f.len * 0.3;
       s.box(c.f, x - 0.8, x + 0.8, 0.1, 0.5, c.base, c.base + 0.45, WOOD);
       s.box(c.f, x - 0.8, x + 0.8, 0.05, 0.12, c.base + 0.45, c.base + 0.9, WOOD);

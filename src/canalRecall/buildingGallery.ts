@@ -10,7 +10,7 @@ import { BAY_ENTRIES, BAY_STYLES, CARTOON_WALLS, PERIOD_WALLS, PHOTO_WALLS, STOR
 import { PALETTES, bayTextures, type Look } from './bayTextures.js';
 import { ROOF_CELL_KINDS, paintRoofCell } from './roofCells.js';
 import { GABLE_SHAPES, fitRect, gableProfile, roofTriangles, type RoofPlan } from './roofMesh.js';
-import { KITS, MAT_HEX } from './landmarkKits.js';
+import { MAT_HEX } from './landmarkKits.js';
 import { ROOF_TONES, calmBayLayers } from './threeBuildingsBrowser.js';
 
 const hex = (h: string): [number, number, number] => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) as [number, number, number];
@@ -138,12 +138,10 @@ async function main() {
     void gableProfile;
   }
 
-  // 6. Landmark kits, live from their OSM parts.
-  const kits = section('Landmark kits (live 3D)', 'Towers, spires, domes and roofs generated from each landmark\'s real OSM parts, drawn in flat colours over grey context. Each loads its own tiles.');
-  const views: Record<string, string> = { Westerkerk: 'az=50&el=10&r=170&y=42', Zuiderkerk: 'az=40&el=10&r=160&y=40', Montelbaanstoren: 'az=40&el=10&r=90&y=22', Noorderkerk: 'az=40&el=12&r=110&y=16', 'Royal Palace': 'az=100&el=14&r=150&y=22' };
-  for (const kit of KITS) {
-    const frame = el('iframe', { src: `kit-viewer.html?kit=${encodeURIComponent(kit.name)}&${views[kit.name]}`, width: 440, height: 330, loading: 'lazy' } as any);
-    kits.append(tile(frame, kit.name, `${kit.tiers.length} tiers, ${kit.stacks.length} stacks, ${kit.roofs.length} roofs`));
+  // 6. Landmark kits and the generator playground: their own pages (one shared WebGL context, deep links).
+  const kits = section('Landmark kits and the house playground (live 3D)', 'Two pages built from the game\'s own code. The landmark gallery shows every hand-modelled kit over grey context (?kit=Westerkerk opens one). The house playground builds a house or terrace with the generic facade, roof and shopfront generators, or loads a real building.');
+  for (const [href, title, blurb] of [['landmark-gallery.html', 'Landmark gallery', 'every hand-modelled landmark, orbit and zoom, triangle counts'], ['house-playground.html', 'House playground', 'period, year, size, look, gable, roof, shopfront, seed; or a real building']] as const) {
+    kits.append(el('a', { href, cls: 'tilelink' } as any, el('b', {}, title), ` ${blurb}`));
   }
   const compare = section('Low-poly landmark reconstructions', 'Left to right: plain OSM prism, low-poly reconstruction (kit plus a measured front, flat colours, no textures), and the street panorama it was measured from, shown only as a reference. Panoramas: Gemeente Amsterdam.');
   for (const [name, view] of [['waag', 'r=95&el=14&az=-35'], ['bijenkorf', 'r=90&el=16&az=-35'], ['beurs', 'r=75&el=8&az=-25'], ['royal-palace', 'r=130&el=12&az=-25'], ['concertgebouw', 'r=110&el=12&az=-25'], ['tuschinski', 'r=70&el=12&az=-20']]) {
