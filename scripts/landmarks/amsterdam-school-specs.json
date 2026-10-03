@@ -1,0 +1,113 @@
+[
+  {
+    "id": "het-schip",
+    "name": "Museum Het Schip",
+    "landmarkId": "extract_landmarks_975578776",
+    "modelUrl": "./models/het-schip.glb",
+    "suppressOsmIds": [
+      "w57857095",
+      "w274039865",
+      "w274039880",
+      "w274039890",
+      "w274039928",
+      "w274039961",
+      "w274039965",
+      "w274039970",
+      "w274040061",
+      "w274040252",
+      "w274040255",
+      "w274040262",
+      "w274040271",
+      "w274040276",
+      "w274040281",
+      "w274040284",
+      "w274040290",
+      "w274040293",
+      "w274040296",
+      "w274040305",
+      "w274040311",
+      "w274040314",
+      "w274040317",
+      "w274040326",
+      "w274040331",
+      "w274040334",
+      "w274040338",
+      "w274040342",
+      "w274040348",
+      "w274040351",
+      "w274040357",
+      "w274040362",
+      "w274040371",
+      "w274040375",
+      "w274040415",
+      "w274040419",
+      "w274040437",
+      "w274040452",
+      "w274040559",
+      "w274040564"
+    ],
+    "footprint": {
+      "centre": [
+        4.8734670680245165,
+        52.3902157496525
+      ],
+      "headingDegrees": 153.90696093135256,
+      "lengthMetres": 115.22286870841877,
+      "widthMetres": 66.04156587363654
+    },
+    "surveyed": {
+      "anchor": [
+        4.8734670680245165,
+        52.3902157496525
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Museum Het Schip",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.hetschip.nl/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
+    },
+    "spatialSuppression": false
+  },
+  {
+    "id": "scheepvaarthuis",
+    "name": "Scheepvaarthuis",
+    "landmarkId": "scheepvaarthuis",
+    "modelUrl": "./models/scheepvaarthuis.glb",
+    "suppressOsmIds": [
+      "w57863677"
+    ],
+    "footprint": {
+      "centre": [
+        4.903908332712785,
+        52.37432204329201
+      ],
+      "headingDegrees": 132.30446233848764,
+      "lengthMetres": 76.97848116218616,
+      "widthMetres": 66.4167813949489
+    },
+    "surveyed": {
+      "anchor": [
+        4.903908332712785,
+        52.37432204329201
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Scheepvaarthuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.amrathamsterdam.com/en/information/history/the-scheepvaarthuis",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
+    },
+    "spatialSuppression": false
+  }
+]
