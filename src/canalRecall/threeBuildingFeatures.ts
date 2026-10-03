@@ -99,7 +99,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
     }
   }
   // Facade extras for every faced building; the plain and Untextured looks stay light.
-  building.extras = !building.bare && look !== 'untextured';
+  // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
+  building.extras = !building.bare && !p.kitWall && look !== 'untextured';
   if (look === 'untextured') {
     // Untextured: one flat layer for every wall and roof face, so only colour and shape remain.
     const flat = roofBase + 3;

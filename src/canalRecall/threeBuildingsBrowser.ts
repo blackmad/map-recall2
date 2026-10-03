@@ -42,7 +42,7 @@ const EXTRAS_PREFIX = 'extras:';
 /** Facades show from this map zoom (the extrusion layer's own minzoom was 14). */
 export const MIN_ZOOM = 14;
 
-const VERTEX = /* glsl */ `
+export const VERTEX = /* glsl */ `
 in vec3 position;
 in vec2 uv;
 in float layer;
@@ -64,7 +64,7 @@ void main() {
   gl_Position = hidden > 0.5 && hidden < 1.5 ? vec4(2.0, 2.0, 2.0, 1.0) : projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 }`;
 
-const FRAGMENT = /* glsl */ `
+export const FRAGMENT = /* glsl */ `
 precision highp float;
 precision highp sampler2DArray;
 uniform sampler2DArray cells;
@@ -157,6 +157,61 @@ type ChunkInfo = { buildingCount: number; wallCount: number; quadCount: number; 
 
 export type ThreeBuildingStats = { kitVertices: number; chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number };
 
+/** The game's colour and tint-mask texture arrays for a look (also used by the gallery pages). */
+export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number): Promise<{ colour: any; mask: any }> {
+    let layers: number, colour: Uint8Array, mask: Uint8Array;
+    if (look === 'procedural') ({ layers, colour, mask } = paintProceduralLayers(paintRoofLayers(false)));
+    else {
+      let brick: CanvasImageSource = document.createElement('canvas');
+      if (look === 'photo') {
+        const image = new Image();
+        image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
+        try { await image.decode(); brick = image; } catch { /* flat brick: the drawn detail still reads */ }
+      }
+      layers = BAY_LAYER_COUNT + ROOF_LAYER_COUNT;
+      colour = new Uint8Array(CELL_PX * CELL_PX * 4 * layers); mask = new Uint8Array(CELL_PX * CELL_PX * 2 * layers);
+      const scratch = document.createElement('canvas'); scratch.width = scratch.height = CELL_PX;
+      const ctx = scratch.getContext('2d', { willReadFrequently: true })!;
+      for (const entry of BAY_ENTRIES) {
+        const { colour: c, mask: m } = bayTextures(bayVariant(entry), brick, look);
+        for (const [source, isMask] of [[c, false], [m, true]] as const) {
+          ctx.clearRect(0, 0, CELL_PX, CELL_PX);
+          ctx.drawImage(source, 0, 0, CELL_PX, CELL_PX);
+          const data = ctx.getImageData(0, 0, CELL_PX, CELL_PX).data;
+          // Canvas rows run down from the top; layer rows run up from the ground.
+          for (let y = 0; y < CELL_PX; y++) for (let x = 0; x < CELL_PX; x++) {
+            const from = ((CELL_PX - 1 - y) * CELL_PX + x) * 4, px = y * CELL_PX + x;
+            if (isMask) { mask[(entry.layer * CELL_PX * CELL_PX + px) * 2] = data[from]; mask[(entry.layer * CELL_PX * CELL_PX + px) * 2 + 1] = data[from + 1]; }
+            else { const to = (entry.layer * CELL_PX * CELL_PX + px) * 4; colour[to] = data[from]; colour[to + 1] = data[from + 1]; colour[to + 2] = data[from + 2]; colour[to + 3] = 255; }
+          }
+        }
+      }
+    }
+    if (look !== 'procedural') {
+      // Roof cells sit after the bays; the bays are softened, the roofs are drawn as intended.
+      paintRoofLayers(look === 'cartoon').forEach((cell, i) => {
+        const layer = BAY_LAYER_COUNT + i;
+        for (let px = 0; px < CELL_PX * CELL_PX; px++) {
+          const at = (layer * CELL_PX * CELL_PX + px) * 4;
+          colour[at] = cell[px * 4]; colour[at + 1] = cell[px * 4 + 1]; colour[at + 2] = cell[px * 4 + 2]; colour[at + 3] = 255;
+          mask[(layer * CELL_PX * CELL_PX + px) * 2] = cell[px * 4 + 3];
+        }
+      });
+      calmBayLayers(colour, mask, BAY_LAYER_COUNT, look);
+    }
+    const array = (data: Uint8Array, format: any) => {
+      const t = new THREE.DataArrayTexture(data, CELL_PX, CELL_PX, layers);
+      t.format = format; t.type = THREE.UnsignedByteType;
+      t.wrapS = t.wrapT = THREE.RepeatWrapping; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter;
+      t.userData = { bytes: data.byteLength };
+      // Once on the GPU the CPU copy is dead weight; a restored context rebuilds the set.
+      t.onUpdate = () => { t.image.data = null; };
+      t.generateMipmaps = true; t.anisotropy = maxAnisotropy; t.unpackAlignment = 1; t.needsUpdate = true;
+      return t;
+    };
+    return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat) };
+  }
+
 export class ThreeBuildings {
   readonly layer: any;
   private visible = true;
@@ -218,59 +273,8 @@ export class ThreeBuildings {
     return set;
   }
 
-  private async buildTextures(look: 'procedural' | Look): Promise<{ colour: any; mask: any }> {
-    const THREE = this.THREE;
-    let layers: number, colour: Uint8Array, mask: Uint8Array;
-    if (look === 'procedural') ({ layers, colour, mask } = paintProceduralLayers(paintRoofLayers(false)));
-    else {
-      let brick: CanvasImageSource = document.createElement('canvas');
-      if (look === 'photo') {
-        const image = new Image();
-        image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
-        try { await image.decode(); brick = image; } catch { /* flat brick: the drawn detail still reads */ }
-      }
-      layers = BAY_LAYER_COUNT + ROOF_LAYER_COUNT;
-      colour = new Uint8Array(CELL_PX * CELL_PX * 4 * layers); mask = new Uint8Array(CELL_PX * CELL_PX * 2 * layers);
-      const scratch = document.createElement('canvas'); scratch.width = scratch.height = CELL_PX;
-      const ctx = scratch.getContext('2d', { willReadFrequently: true })!;
-      for (const entry of BAY_ENTRIES) {
-        const { colour: c, mask: m } = bayTextures(bayVariant(entry), brick, look);
-        for (const [source, isMask] of [[c, false], [m, true]] as const) {
-          ctx.clearRect(0, 0, CELL_PX, CELL_PX);
-          ctx.drawImage(source, 0, 0, CELL_PX, CELL_PX);
-          const data = ctx.getImageData(0, 0, CELL_PX, CELL_PX).data;
-          // Canvas rows run down from the top; layer rows run up from the ground.
-          for (let y = 0; y < CELL_PX; y++) for (let x = 0; x < CELL_PX; x++) {
-            const from = ((CELL_PX - 1 - y) * CELL_PX + x) * 4, px = y * CELL_PX + x;
-            if (isMask) { mask[(entry.layer * CELL_PX * CELL_PX + px) * 2] = data[from]; mask[(entry.layer * CELL_PX * CELL_PX + px) * 2 + 1] = data[from + 1]; }
-            else { const to = (entry.layer * CELL_PX * CELL_PX + px) * 4; colour[to] = data[from]; colour[to + 1] = data[from + 1]; colour[to + 2] = data[from + 2]; colour[to + 3] = 255; }
-          }
-        }
-      }
-    }
-    if (look !== 'procedural') {
-      // Roof cells sit after the bays; the bays are softened, the roofs are drawn as intended.
-      paintRoofLayers(look === 'cartoon').forEach((cell, i) => {
-        const layer = BAY_LAYER_COUNT + i;
-        for (let px = 0; px < CELL_PX * CELL_PX; px++) {
-          const at = (layer * CELL_PX * CELL_PX + px) * 4;
-          colour[at] = cell[px * 4]; colour[at + 1] = cell[px * 4 + 1]; colour[at + 2] = cell[px * 4 + 2]; colour[at + 3] = 255;
-          mask[(layer * CELL_PX * CELL_PX + px) * 2] = cell[px * 4 + 3];
-        }
-      });
-      calmBayLayers(colour, mask, BAY_LAYER_COUNT, look);
-    }
-    const array = (data: Uint8Array, format: any) => {
-      const t = new THREE.DataArrayTexture(data, CELL_PX, CELL_PX, layers);
-      t.format = format; t.type = THREE.UnsignedByteType;
-      t.wrapS = t.wrapT = THREE.RepeatWrapping; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter;
-      t.userData = { bytes: data.byteLength };
-      // Once on the GPU the CPU copy is dead weight; a restored context rebuilds the set.
-      t.onUpdate = () => { t.image.data = null; };
-      t.generateMipmaps = true; t.anisotropy = this.renderer.capabilities.getMaxAnisotropy(); t.unpackAlignment = 1; t.needsUpdate = true;
-      return t;
-    };
-    return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat) };
+  private buildTextures(look: 'procedural' | Look): Promise<{ colour: any; mask: any }> {
+    return buildLookTextures(this.THREE, look, this.renderer.capabilities.getMaxAnisotropy());
   }
 
   setVisible(visible: boolean): void {
