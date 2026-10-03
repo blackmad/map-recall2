@@ -1,0 +1,43 @@
+[
+  {
+    "id": "hortus-greenhouses",
+    "name": "Hortus Botanicus \u2014 greenhouses and orangery",
+    "landmarkId": "hortus-botanicus",
+    "modelUrl": "./models/hortus-greenhouses.glb",
+    "suppressOsmIds": [
+      "w57863706",
+      "NL.IMBAG.Pand.0363100012181028",
+      "w57863916",
+      "NL.IMBAG.Pand.0363100012164942",
+      "w57856456",
+      "NL.IMBAG.Pand.0363100012182570"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.907562825146495,
+        52.36667455153043
+      ],
+      "headingDegrees": 115.67678459307069,
+      "lengthMetres": 135.42441302242912,
+      "widthMetres": 65.33673807094493
+    },
+    "surveyed": {
+      "anchor": [
+        4.907562825146495,
+        52.36667455153043
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 74.3,
+    "attribution": {
+      "title": "Hortus Botanicus \u2014 greenhouses and orangery",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.dehortus.nl/en/garden-and-greenhouses/climate-house/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of three separate surveyed buildings with no garden parcel fill: the 1911 Palm House circular dome/perpendicular wings, 2025 Climate House ETFE canopy and retained external steel cable skeleton, and historic orangery. Actual OpenStreetMap building outlines; official Hortus aerial photography and ZJA 2025 architect plan/section references. Heights and ornamental details approximate."
+    }
+  }
+]
