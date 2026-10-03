@@ -7,10 +7,11 @@ import { triviaForRound } from './localFacts';
 import { descriptionWithoutOrigin } from './trivia';
 
 export function answerTeaser(
-  feature: Pick<StreetFeature, 'nameOrigin' | 'localFacts' | 'wikipediaExtract' | 'history'>,
+  feature: Pick<StreetFeature, 'localFact' | 'nameOrigin' | 'localFacts' | 'wikipediaExtract' | 'history'>,
   factSeed = 0,
   roundIndex = 0,
 ): string | undefined {
+  if (feature.localFact?.text) return feature.localFact.text;
   if (feature.nameOrigin?.text) return feature.nameOrigin.text;
   const trivia = triviaForRound(feature.localFacts, factSeed, roundIndex);
   if (trivia) return trivia.text;

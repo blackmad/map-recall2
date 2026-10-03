@@ -8,6 +8,16 @@ A first cut baked every postcard to WebP (66 for Amsterdam, 3.7 MB). The user pr
 
 The answer card now opens folded (`AnswerDetails`): a postcard thumbnail, the opening line (name origin, reviewed fact, lede or history) and "More", which opens the full card; it folds again each round. The overlay holder is capped at 55dvh on desktop, and `MapComponent` fits the revealed answer above the card's measured height instead of a fixed 42% guess, refitting when the card opens or folds. Pinned in `test:postcard-images` (window geometry, photo rotation, teaser) and `map-recall-trivia.spec.ts` (folded card under 40% of the viewport, the answer's label above it, the postcard present with no photograph loaded, every window filled when they do). Storybook: Map Recall/Answer card.
 
+## Neighbourhood cards lead with a local fact
+
+User (2026-10-02): "Buitenveldbuurt is the current Jewish neighborhood right? How can we get that in the trivia card (more generally …)". The area is Buitenveldert; en.wikipedia's lede calls it "the modern Jewish quarter of Amsterdam".
+
+- **Why it was missed:** Buitenveldert has no Wikidata match in our extract, so `fetch-neighborhood-history.ts` never read the English article, and the pipeline reads only ledes, History sections and naming sentences. The Dutch article's facts sit under "Bewoners", "Onderwijs" and "Winkelgebieden".
+- **Miner:** `scripts/mine-area-facts.ts` + `src/mapRecall/areaFacts.ts` find both articles (Wikidata, title guesses, nl search, langlinks), score every sentence for local signals, and filter resident statistics, origin shares, crime/policing and planning text before anything reaches the sheet. OSM places inside each outline are clustered (Overpass via maps.mail.ru, since overpass-api.de resets through the cloud proxy) and only corroborate a sentence, never stand alone. Everything goes through the scrape store.
+- **Picks:** a Claude session words one fact per area from cited sentences only; `publish` refuses an unapproved pick, a cited sentence no longer in its article, or a number the citations do not state. Pinned in `test:map-recall-trivia` with Buitenveldert as the named regression.
+- **Card:** the user chose the lead line (decision card, 2026-10-03): `localFact` renders first with a Local chip; the description clamps to two lines beside it.
+- **Published:** 57 of 89 Amsterdam areas, all approved by the user 2026-10-03 ("Push?" after the review page); every citation check passed. 32 areas stay `null` (14 have no article). Rivierenbuurt (1941 Jewish market), Zuidoost (Surinamese community) and Staatsliedenbuurt (squatting) were flagged on the review page and shipped as written.
+
 ## Kit-less landmarks: house-sized old ones get a period facade, big ones period brick
 
 User (2026-10-03), after Fatih rendered as a 37 m green box: "More? Landmarks?"

@@ -58,6 +58,7 @@ const photo = (imageUrl: string): { name: string; photo: PlacePhoto } => ({
   assert.equal(answerTeaser({ nameOrigin: origin, wikipediaExtract: 'An area.' }), origin.text, 'why it is called this comes first');
   assert.equal(answerTeaser({ wikipediaExtract: 'An area in the east.' }), 'An area in the east.');
   assert.equal(answerTeaser({ history: { ...origin, text: 'Built in 1900.' } }), 'Built in 1900.');
+  assert.equal(answerTeaser({ localFact: { ...origin, text: 'The Jewish quarter today.' }, nameOrigin: origin }), 'The Jewish quarter today.', 'the reviewed local fact leads, as on the full card');
   assert.equal(answerTeaser({}), undefined);
 }
 

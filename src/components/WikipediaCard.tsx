@@ -36,22 +36,24 @@ const PlacesHere: React.FC<{ places?: StreetFeature['notablePlaces']; showPhotos
 };
 
 /**
- * What the answer teaches beyond its position: why it is called this, a
- * reviewed fact or the encyclopedia lede, and (for neighbourhoods) a short
- * history. Every line names and links its source.
+ * What the answer teaches beyond its position: for neighbourhoods a lead
+ * line a local would tell you, why it is called this, a reviewed fact or the
+ * encyclopedia lede, and (for neighbourhoods) a short history. Every line
+ * names and links its source.
  */
 export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number; roundIndex?: number }> = ({ feature, factSeed = 0, roundIndex = 0 }) => {
   const trivia = triviaForRound(feature.localFacts, factSeed, roundIndex);
   const origin: TriviaText | undefined = feature.nameOrigin;
   const description = trivia ? undefined : descriptionWithoutOrigin(feature.wikipediaExtract, origin?.text);
   const history = feature.history;
+  const localFact = feature.localFact;
   // The line under the description names where it really came from and links there: the article for
   // Wikipedia text, the data's own source for text composed from the map.
   const extractSource = feature.wikipediaExtractSource;
   const descriptionSource = extractSource
     ? { href: extractSource.sourceUrl, label: extractSource.sourceLabel === 'Wikipedia' ? 'From Wikipedia' : extractSource.sourceLabel }
     : { href: feature.wikipediaUrl, label: feature.wikipediaUrl?.includes('nl.wikipedia') ? 'Wikipedia (translated from Dutch)' : 'From Wikipedia' };
-  if (!origin && !trivia && !description && !history && !feature.wikipediaImageUrl) return null;
+  if (!localFact && !origin && !trivia && !description && !history && !feature.wikipediaImageUrl) return null;
   // Neighbourhoods open with a postcard cut from their own photographs and those of the places in them.
   const postcardPhotos = postcardPhotosFor(feature);
   return <div className="answer-detail-card flex flex-col gap-2 p-3 text-left" data-testid="answer-trivia">
@@ -67,6 +69,9 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
     <div className="flex gap-3">
     {feature.wikipediaImageUrl && postcardPhotos.length < 2 && <img src={feature.wikipediaImageUrl} referrerPolicy="no-referrer" alt="" className="h-12 w-16 flex-none rounded-md object-cover sm:h-16 sm:w-20" />}
     <div className="min-w-0 space-y-1.5">
+      {localFact && <p className="text-xs font-semibold leading-relaxed text-white" data-testid="answer-local-fact">
+        <Chip>Local</Chip>{localFact.text}{' '}<Source href={localFact.sourceUrl}>{localFact.sourceLabel}</Source>
+      </p>}
       {origin && <p className="text-xs leading-relaxed text-white" data-testid="answer-name-origin">
         <Chip>Name</Chip>{origin.text}{' '}<Source href={origin.sourceUrl}>{origin.sourceLabel}</Source>
       </p>}
@@ -74,7 +79,7 @@ export const WikipediaCard: React.FC<{ feature: StreetFeature; factSeed?: number
         <Chip>{FACT_KIND_LABELS[trivia.kind]}</Chip>“{trivia.text}”{' '}<Source href={trivia.sourceUrl}>Reviewed Wikipedia fact · {trivia.license}</Source>
       </p>}
       {description && <p className="text-xs leading-relaxed text-white">
-        <span className={origin || history ? 'line-clamp-2' : 'line-clamp-3'}>“{description}”</span>
+        <span className={origin || history || localFact ? 'line-clamp-2' : 'line-clamp-3'}>“{description}”</span>
         <Source href={descriptionSource.href}>{descriptionSource.label}</Source>
       </p>}
       {!description && !trivia && !origin && feature.wikipediaUrl && <Source href={feature.wikipediaUrl}>View photo on Wikipedia</Source>}
