@@ -35,15 +35,38 @@ export type KitWall = { plain: true; hex: string; flat?: boolean } | { plain: fa
  * ([lng, lat], a corner where two halls meet), and each strip's stretch of the footprint gets
  * its own pitched roof with gable ends, ridge along the axis, eaves at `eavesM`.
  */
-export type KitHalls = { id: string; widthM: number; anchor: [number, number]; eavesM: number; riseM: number; mat: 'slate' | 'tile' | 'lead'; towers?: KitTower[]; wings?: KitWing[] };
+export type KitHalls = {
+  id: string; widthM: number; anchor: [number, number]; eavesM: number; riseM: number; mat: 'slate' | 'tile' | 'lead'; towers?: KitTower[]; wings?: KitWing[];
+  /** Window openings on the host's walls and towers (opt in: a kit without it keeps blank walls). */
+  windows?: KitWindows;
+  /** A roof colour other than the material's own (Carré's pale zinc). */
+  roofHex?: string;
+};
+/**
+ * A row of window openings, `z0` (sill) to `z1` (top of the head), `widthM` wide, `bayM` apart,
+ * with a round, pointed or flat head. Without `at` the row fills every wall edge long enough
+ * for one window (bays spread evenly, none inside a tower); with `at` ([lng, lat], a point on a
+ * wall) it puts exactly `count` windows, `bayM` apart, centred on that point of the nearest wall,
+ * and the fill rows then leave that wall alone. On towers (`towerRows`) `count` windows go
+ * centred on each of the four faces.
+ */
+export type KitWindowRow = { z0: number; z1: number; widthM: number; bayM: number; head?: 'round' | 'pointed' | 'flat'; at?: [number, number]; count?: number };
+/** A round window on the nearest wall to `at`: glass, a stone ring, a hub and six spokes of tracery. */
+export type KitRose = { at: [number, number]; z: number; radiusM: number };
+/**
+ * Cheap window geometry on a kit's walls: dark glass panes a hand's breadth proud of the wall,
+ * optionally in a light `frameHex` surround, and a stone `plinth` band round the base.
+ */
+export type KitWindows = { rows: KitWindowRow[]; towerRows?: KitWindowRow[]; roses?: KitRose[]; glassHex?: string; frameHex?: string; plinth?: { z1: number; hex: string } };
 /**
  * A pitched or hipped roof over one rectangle of the footprint, at the host's eaves: a nave, a
  * transept, a cross arm. `at` is its centre ([lng, lat]), `lenM` runs along the ridge, `bearingDeg`
  * is the ridge's direction (degrees counter-clockwise from east). The strips of `widthM` cut a
  * footprint into parallel halls; wings are for a plan that is not one, and `widthM: 0` leaves the
- * strips off so the wings roof the building alone.
+ * strips off so the wings roof the building alone. `roof: 'dome'` is a cloister dome: four convex
+ * sides curving up from the eaves to a flat top `riseM` higher (Carré's roof over the circus ring).
  */
-export type KitWing = { at: [number, number]; lenM: number; widM: number; bearingDeg: number; riseM: number; roof?: 'gable' | 'hipped' };
+export type KitWing = { at: [number, number]; lenM: number; widM: number; bearingDeg: number; riseM: number; roof?: 'gable' | 'hipped' | 'dome'; /** `dome`: how far the curved sides reach in from the eaves before the flat top (default 35% of the width). */ insetM?: number };
 /**
  * A tower standing on a hall host's footprint at `at` ([lng, lat], its centre), walled
  * in the kit's own brick up to `z1`, with a stone cornice and a pyramid cap `capM` tall. For a
@@ -339,7 +362,32 @@ export const KITS: Kit[] = [
     halls: [{ id: 'NL.IMBAG.Pand.0363100012167944', widthM: 30.6, anchor: [4.878429, 52.372973], eavesM: 16, riseM: 9, mat: 'slate', towers: [
       { at: [4.878461, 52.373017], widthM: 7.5, z1: 31, capM: 8.5, cap: 'slate' },
       { at: [4.878772, 52.373095], widthM: 7.5, z1: 31, capM: 8.5, cap: 'slate' },
-    ] }],
+    ],
+    // Openings read off Commons "Fatih moskee, Amsterdam 69.jpg" (the front, scaled by its 4.5 m
+    // door arches) and "Fatihmosquewesterkerkamsterdam.jpg" (the towers): three pointed door
+    // arches, four round-headed windows over them, a 3.6 m rose with star tracery in the gable,
+    // paired windows up each tower and a row of five belfry arches under the cornice. The photos
+    // show round heads, not pointed ones, everywhere but the doors. The nave's long walls stand
+    // behind 10-16 m neighbours; their tall windows are a guess from the plan, not a photo.
+    windows: {
+      glassHex: '#46505a', frameHex: '#c9bda4',
+      // `at` points sit on the front wall: its middle, and in front of each tower.
+      rows: [
+        { z0: 0.3, z1: 4.6, widthM: 2.6, bayM: 3.1, head: 'pointed', at: [4.8786371, 52.3730248], count: 3 },
+        { z0: 7.7, z1: 10.9, widthM: 1, bayM: 1.9, head: 'round', at: [4.8786371, 52.3730248], count: 4 },
+        ...([[4.8784814, 52.372986], [4.8787927, 52.3730635]] as [number, number][]).flatMap(at => [
+          { z0: 5.6, z1: 8.4, widthM: 0.85, bayM: 1.3, head: 'flat' as const, at, count: 2 },
+          { z0: 9.6, z1: 12.2, widthM: 0.85, bayM: 1.3, head: 'flat' as const, at, count: 2 },
+          { z0: 13.6, z1: 15.6, widthM: 0.85, bayM: 1.3, head: 'round' as const, at, count: 2 },
+        ]),
+        { z0: 6, z1: 13.5, widthM: 1.5, bayM: 4.5, head: 'round' },
+      ],
+      roses: [{ at: [4.8786371, 52.3730248], z: 16, radiusM: 1.8 }],
+      towerRows: [
+        { z0: 18, z1: 20.8, widthM: 0.85, bayM: 1.3, head: 'round', count: 2 },
+        { z0: 27.4, z1: 29.8, widthM: 0.75, bayM: 1.3, head: 'round', count: 5 },
+      ],
+    } }],
   },
   {
     // Obrechtkerk, Jacob Obrechtstraat: Jos Cuypers and Jan Stuyt's 1908-11 neo-Romanesque cross
@@ -438,6 +486,47 @@ export const KITS: Kit[] = [
       towers: [
         { at: [4.842958, 52.377514], widthM: 7, lenM: 12.5, z1: 37.5, capM: 10.5, cap: 'slate', capShape: 'slant', highBearingDeg: 2, bearingDeg: 2 },
       ] }],
+  },
+  {
+    // Koninklijk Theater Carré, Amstel 115-125: the 1887 circus building (user 2026-10-03:
+    // "Carre looks awful in that shot", one bare 28 m brick slab). One BAG footprint, 58 x 37 m on
+    // an axis of 17 degrees, its 37 m front on the Amstel at the west end with an 8 m central
+    // risalit standing 1.9 m proud. Commons "Carre_Theatre_2038.jpg" and "Overzicht op Carré gezien
+    // vanaf de overzijde van de Amstel - 20408841 - RCE.jpg" (straight on, scaled by the 37 m
+    // front): a cream stuccoed neo-Renaissance front, a grey stone ground storey of round arches
+    // to 4.5 m, three rows of windows (5-8 m, 9-11.5 m, 14.5-16.5 m), the cornice at 19 m and a
+    // pediment over the risalit to 21.5 m. Behind it the whole block sits under one pale zinc
+    // cloister dome (Commons "Theater Carre - Amsterdam - 20015613 - RCE.jpg" and "Amsterdam - Amstel -
+    // Hoge Sluis - View North towards Carré Theatre.jpg" show its curved sides from the south west)
+    // with a flat top and the CARRÉ sign box; BAG 28.3 m is the box's top. The front's
+    // ends are pilastered bays, not raised pavilions. The 8.7 m strip on the north (Bridge Hotel)
+    // side and its round stair turret keep the eaves under low hipped roofs and the flat lid.
+    name: 'Carré',
+    wall: { plain: true, hex: '#e2d8c2', flat: true },
+    tiers: [], stacks: [], roofs: [],
+    halls: [{ id: 'NL.IMBAG.Pand.0363100012165489', widthM: 0, anchor: [4.903937, 52.362186], eavesM: 19, riseM: 8, mat: 'lead', roofHex: '#98a299',
+      wings: [
+        { at: [4.904268, 52.362423], lenM: 58.3, widM: 37.1, bearingDeg: 17, riseM: 8, roof: 'dome', insetM: 13 },
+        { at: [4.903873, 52.362349], lenM: 6, widM: 8, bearingDeg: 17, riseM: 2.5 },
+        { at: [4.904316, 52.362648], lenM: 31.4, widM: 8.7, bearingDeg: 17, riseM: 1.5, roof: 'hipped' },
+        { at: [4.904043, 52.362572], lenM: 9.1, widM: 3.4, bearingDeg: 17, riseM: 1, roof: 'hipped' },
+      ],
+      towers: [
+        // The CARRÉ sign box on the dome's flat top, behind the pediment: 8.4 m across the front.
+        { at: [4.904079, 52.362387], widthM: 3.5, lenM: 8.4, z0: 26.6, z1: 28, capM: 0.3, cap: 'lead', capShape: 'slant', highBearingDeg: 17, bearingDeg: 17, mat: 'white', wallHex: '#ece6da' },
+        // The round stair turret at the back (south east) corner: a low zinc cap, a guess (no photo shows it).
+        { at: [4.904677, 52.362304], widthM: 7.6, shape: 'octagon', z0: 18.4, z1: 19, capM: 1.6, cap: 'lead', capShape: 'dome', capHex: '#98a299', mat: 'white', wallHex: '#e2d8c2', bearingDeg: 17 },
+      ],
+      windows: {
+        glassHex: '#3b4148',
+        plinth: { z1: 4.6, hex: '#8c877d' },
+        rows: [
+          { z0: 0.4, z1: 3.9, widthM: 2.2, bayM: 3.7, head: 'round' },
+          { z0: 5.2, z1: 8, widthM: 1.4, bayM: 3.7, head: 'flat' },
+          { z0: 9.3, z1: 11.6, widthM: 1.4, bayM: 3.7, head: 'flat' },
+          { z0: 14.6, z1: 16.3, widthM: 1.4, bayM: 3.7, head: 'flat' },
+        ],
+      } }],
   },
 ];
 
@@ -594,6 +683,159 @@ function towerParts(sink: TriSink, t: KitTower, [cx, cy]: Vec2, ang: number, bas
 }
 
 /**
+ * A cloister dome over a rectangle: four convex sides rise from the eaves rectangle, each ring
+ * stepped in by `inset * (1 - cos a)` at height `rise * sin a`, to a flat top `inset` in from the eaves.
+ */
+function cloisterDome(sink: TriSink, rect: Rect, z0: number, rise: number, inset: number, hex: string) {
+  const { cx, cy, ux, uy } = rect, vx = -uy, vy = ux;
+  const ring = (d: number, z: number): Vec3[] => ([[-1, -1], [1, -1], [1, 1], [-1, 1]] as const)
+    .map(([i, j]) => [cx + ux * i * (rect.len / 2 - d) + vx * j * (rect.wid / 2 - d), cy + uy * i * (rect.len / 2 - d) + vy * j * (rect.wid / 2 - d), z] as Vec3);
+  const steps = [0, 22, 45, 67, 90].map(deg => (deg * Math.PI) / 180);
+  let lower = ring(0, z0);
+  for (let s = 1; s < steps.length; s++) {
+    const upper = ring(inset * (1 - Math.cos(steps[s])), z0 + rise * Math.sin(steps[s]));
+    for (let k = 0; k < 4; k++) {
+      const k1 = (k + 1) % 4, mx = (lower[k][0] + lower[k1][0]) / 2 - cx, my = (lower[k][1] + lower[k1][1]) / 2 - cy;
+      const hint: Vec3 = [mx, my, Math.hypot(mx, my) * 0.3];
+      const side = Math.hypot(lower[k1][0] - lower[k][0], lower[k1][1] - lower[k][1]);
+      const v0 = (s - 1) * 1.6, v1 = s * 1.6;
+      sink.tri(lower[k], lower[k1], upper[k1], [0, v0], [side / 5, v0], [side / 5, v1], 'slope', hex, hint);
+      sink.tri(lower[k], upper[k1], upper[k], [0, v0], [side / 5, v1], [0, v1], 'slope', hex, hint);
+    }
+    lower = upper;
+  }
+  sink.tri(lower[0], lower[1], lower[2], [0, 0], [1, 0], [1, 1], 'slope', hex, [0, 0, 1]);
+  sink.tri(lower[0], lower[2], lower[3], [0, 0], [1, 1], [0, 1], 'slope', hex, [0, 0, 1]);
+}
+
+const GLASS_HEX = '#2c333b';
+/** Proud of the wall: plinth, frame, glass, tracery. Far enough not to shimmer, close enough to read as an opening. */
+const OFF = { plinth: 0.04, frame: 0.07, glass: 0.1, tracery: 0.13 };
+
+/** One opening's outline in wall coordinates (s along the wall, z up), convex, counter-clockwise. */
+function openingOutline(s0: number, s1: number, z0: number, z1: number, head: 'round' | 'pointed' | 'flat'): Vec2[] {
+  const w = s1 - s0, mid = (s0 + s1) / 2;
+  if (head === 'flat' || z1 - z0 < w) return [[s0, z0], [s1, z0], [s1, z1], [s0, z1]];
+  if (head === 'round') {
+    const r = w / 2, zb = z1 - r, arc: Vec2[] = [];
+    for (let k = 0; k <= 4; k++) { const a = (k * Math.PI) / 4; arc.push([mid + Math.cos(a) * r, zb + Math.sin(a) * r]); }
+    return [[s0, z0], [s1, z0], ...arc];
+  }
+  const zb = z1 - 0.8 * w, shoulder = zb + 0.5 * (z1 - zb);
+  return [[s0, z0], [s1, z0], [s1, zb], [s1 - 0.12 * w, shoulder], [mid, z1], [s0 + 0.12 * w, shoulder], [s0, zb]];
+}
+
+/** A flat convex polygon on a wall: `o` the wall's foot at s = 0, `t` along it, `n` out of it. */
+function wallPolygon(sink: TriSink, o: Vec2, t: Vec2, n: Vec2, off: number, pts: readonly Vec2[], hex: string) {
+  const at = ([s, z]: Vec2): Vec3 => [o[0] + t[0] * s + n[0] * off, o[1] + t[1] * s + n[1] * off, z];
+  const hint: Vec3 = [n[0], n[1], 0];
+  for (let k = 1; k + 1 < pts.length; k++) sink.tri(at(pts[0]), at(pts[k]), at(pts[k + 1]), [0, 0], [1, 0], [1, 1], 'flat', hex, hint);
+}
+
+/** A window at `s` along a wall: glass, and a light surround when the kit has one. */
+function opening(sink: TriSink, o: Vec2, t: Vec2, n: Vec2, s: number, row: KitWindowRow, glass: string, frame?: string) {
+  const head = row.head ?? 'round', w = row.widthM;
+  if (frame) wallPolygon(sink, o, t, n, OFF.frame, openingOutline(s - w / 2 - 0.18, s + w / 2 + 0.18, row.z0 - 0.15, row.z1 + 0.18, head), frame);
+  wallPolygon(sink, o, t, n, OFF.glass, openingOutline(s - w / 2, s + w / 2, row.z0, row.z1, head), glass);
+}
+
+/** A rose window centred at `s`, height `z`: stone ring, glass, six spokes and a hub. */
+function roseWindow(sink: TriSink, o: Vec2, t: Vec2, n: Vec2, s: number, rose: KitRose, glass: string, stone: string) {
+  const disc = (r: number, k = 12): Vec2[] => Array.from({ length: k }, (_, i) => [s + Math.cos((i * 2 * Math.PI) / k) * r, rose.z + Math.sin((i * 2 * Math.PI) / k) * r] as Vec2);
+  const r = rose.radiusM;
+  wallPolygon(sink, o, t, n, OFF.frame, disc(r + 0.3), stone);
+  wallPolygon(sink, o, t, n, OFF.glass, disc(r), glass);
+  for (let i = 0; i < 3; i++) {
+    const a = (i * Math.PI) / 3, ca = Math.cos(a), sa = Math.sin(a), px = -sa * 0.09, pz = ca * 0.09;
+    wallPolygon(sink, o, t, n, OFF.tracery, [[s - ca * r + px, rose.z - sa * r + pz], [s - ca * r - px, rose.z - sa * r - pz], [s + ca * r - px, rose.z + sa * r - pz], [s + ca * r + px, rose.z + sa * r + pz]], stone);
+  }
+  wallPolygon(sink, o, t, n, OFF.tracery, disc(r * 0.26, 8), stone);
+}
+
+type WallEdge = { o: Vec2; t: Vec2; n: Vec2; len: number };
+
+/** The ring's edges with unit tangents and outward normals. */
+function wallEdges(ring: readonly Vec2[]): WallEdge[] {
+  const pts = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : ring.slice();
+  let area2 = 0;
+  for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) area2 += pts[j][0] * pts[i][1] - pts[i][0] * pts[j][1];
+  const sign = area2 >= 0 ? 1 : -1;
+  return pts.map((a, i) => {
+    const b = pts[(i + 1) % pts.length], len = Math.hypot(b[0] - a[0], b[1] - a[1]), t: Vec2 = len ? [(b[0] - a[0]) / len, (b[1] - a[1]) / len] : [1, 0];
+    return { o: a, t, n: [t[1] * sign, -t[0] * sign] as Vec2, len };
+  });
+}
+
+/** The edge nearest `p`, and where `p` falls along its line. */
+function nearestEdge(edges: readonly WallEdge[], p: Vec2): { edge: number; s: number } {
+  let best = { edge: 0, s: 0, d: Infinity };
+  edges.forEach((e, i) => {
+    const s = (p[0] - e.o[0]) * e.t[0] + (p[1] - e.o[1]) * e.t[1], c = Math.max(0, Math.min(e.len, s));
+    const d = Math.hypot(e.o[0] + e.t[0] * c - p[0], e.o[1] + e.t[1] * c - p[1]);
+    if (d < best.d) best = { edge: i, s, d };
+  });
+  return best;
+}
+
+/** Windows, roses and a plinth on a hall host's walls and its square towers. */
+function kitWindows(sink: TriSink, ring: readonly Vec2[], spec: KitHalls, win: KitWindows, towerAng: (t: KitTower) => number) {
+  const edges = wallEdges(ring), glass = win.glassHex ?? GLASS_HEX, stone = win.frameHex ?? MAT_HEX.stone;
+  if (win.plinth) for (const e of edges) if (e.len >= 0.2) wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, 0], [e.len, 0], [e.len, win.plinth.z1], [0, win.plinth.z1]], win.plinth.hex);
+  // A window centre inside a tower's plan (plus a margin) is behind the tower's own wall.
+  const inTower = (p: Vec2) => (spec.towers ?? []).some(t => {
+    const [cx, cy] = toLocal(t.at), a = towerAng(t), dx = p[0] - cx, dy = p[1] - cy;
+    return Math.abs(dx * Math.cos(a) + dy * Math.sin(a)) < t.widthM / 2 + 0.4 && Math.abs(-dx * Math.sin(a) + dy * Math.cos(a)) < (t.lenM ?? t.widthM) / 2 + 0.4;
+  });
+  const placed = win.rows.filter(r => r.at).map(r => ({ row: r, ...nearestEdge(edges, toLocal(r.at!)) }));
+  // A placed row claims its whole wall: every edge on the same line (a front mapped as several
+  // collinear pieces a few centimetres apart). Its openings go on the outermost of those pieces,
+  // so a piece standing proud does not swallow them (the Fatih front's 0.2 m jogs).
+  const claimed = new Set<number>();
+  const plane = (edge: number): WallEdge => {
+    const a = edges[edge];
+    let out = 0;
+    edges.forEach((e, i) => {
+      const along = e.t[0] * a.t[0] + e.t[1] * a.t[1], off = (e.o[0] - a.o[0]) * a.n[0] + (e.o[1] - a.o[1]) * a.n[1];
+      if (along > 0.995 && Math.abs(off) < 0.4) { claimed.add(i); out = Math.max(out, off); }
+    });
+    return { ...a, o: [a.o[0] + a.n[0] * out, a.o[1] + a.n[1] * out] };
+  };
+  for (const { row, edge, s } of placed) {
+    const e = plane(edge), n = row.count ?? 1;
+    for (let k = 0; k < n; k++) opening(sink, e.o, e.t, e.n, s + (k - (n - 1) / 2) * row.bayM, row, glass, win.frameHex);
+  }
+  for (const row of win.rows) {
+    if (row.at || row.z1 > spec.eavesM) continue;
+    edges.forEach((e, i) => {
+      if (claimed.has(i) || e.len < row.widthM + 1) return;
+      const n = Math.max(1, Math.floor(e.len / row.bayM));
+      for (let k = 0; k < n; k++) {
+        const s = ((k + 0.5) * e.len) / n;
+        if (!inTower([e.o[0] + e.t[0] * s + e.n[0] * 0.5, e.o[1] + e.t[1] * s + e.n[1] * 0.5])) opening(sink, e.o, e.t, e.n, s, row, glass, win.frameHex);
+      }
+    });
+  }
+  for (const rose of win.roses ?? []) {
+    const { edge, s } = nearestEdge(edges, toLocal(rose.at)), e = plane(edge);
+    roseWindow(sink, e.o, e.t, e.n, s, rose, glass, stone);
+  }
+  // Tower faces: square towers only (a slab or an octagon has no four faces of one width).
+  for (const t of spec.towers ?? []) {
+    if ((t.shape ?? 'square') !== 'square' || t.lenM !== undefined || t.capShape === 'slant') continue;
+    const [cx, cy] = toLocal(t.at), a = towerAng(t), half = t.widthM / 2;
+    for (let f = 0; f < 4; f++) {
+      const na = a + (f * Math.PI) / 2, n: Vec2 = [Math.cos(na), Math.sin(na)], tt: Vec2 = [-n[1], n[0]];
+      const o: Vec2 = [cx + n[0] * half - tt[0] * half, cy + n[1] * half - tt[1] * half];
+      for (const row of win.towerRows ?? []) {
+        if (row.z1 > t.z1 - 0.6 || row.z0 < (t.z0 ?? 0)) continue;
+        const count = row.count ?? Math.max(1, Math.floor(t.widthM / row.bayM));
+        for (let k = 0; k < count; k++) opening(sink, o, tt, n, half + (k - (count - 1) / 2) * row.bayM, row, glass, win.frameHex);
+      }
+    }
+  }
+}
+
+/**
  * Triangles for every part of a kit that is present. `parts` are the OSM
  * footprints in metres; missing parts (a tile that has not loaded) are skipped.
  */
@@ -636,7 +878,7 @@ export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): Ki
   for (const spec of kit.halls ?? []) {
     const part = parts.get(spec.id);
     if (!part) continue;
-    const sink = sinkFor(spec.id), hex = MAT_HEX[spec.mat === 'tile' ? 'tile' : spec.mat === 'lead' ? 'lead' : 'slate'], gable = kit.wall?.hex ?? MAT_HEX.brick;
+    const sink = sinkFor(spec.id), hex = spec.roofHex ?? MAT_HEX[spec.mat === 'tile' ? 'tile' : spec.mat === 'lead' ? 'lead' : 'slate'], gable = kit.wall?.hex ?? MAT_HEX.brick;
     const plan: RoofPlan = { kind: 'pitched', gable: 'plain', riseM: spec.riseM, dormers: false, material: 'slate', tone: 0, seed: spec.id, chimney: false };
     for (const rect of hallRects(part.ring, spec.widthM, toLocal(spec.anchor))) {
       for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
@@ -647,6 +889,7 @@ export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): Ki
     for (const wing of spec.wings ?? []) {
       const [cx, cy] = toLocal(wing.at), b = (wing.bearingDeg * Math.PI) / 180;
       const rect: Rect = { cx, cy, ux: Math.cos(b), uy: Math.sin(b), len: wing.lenM, wid: wing.widM, coverage: 1, maxDev: 0 };
+      if (wing.roof === 'dome') { cloisterDome(sink, rect, spec.eavesM, wing.riseM, wing.insetM ?? Math.min(wing.lenM, wing.widM) * 0.35, hex); continue; }
       const wingPlan: RoofPlan = { ...plan, kind: wing.roof === 'hipped' ? 'hipped' : 'pitched', riseM: wing.riseM };
       for (const t of roofTriangles(rect, wingPlan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
         const slope = t.part === 'slope';
@@ -655,7 +898,9 @@ export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): Ki
     }
     // Towers line up with the halls' axis (the footprint's longest edge).
     const axis = hallRects(part.ring, spec.widthM, toLocal(spec.anchor))[0], ang = axis ? Math.atan2(axis.uy, axis.ux) : 0;
-    for (const tower of spec.towers ?? []) towerParts(sink, tower, toLocal(tower.at), tower.bearingDeg === undefined ? ang : (tower.bearingDeg * Math.PI) / 180, part.minHeightM, gable);
+    const towerAng = (tower: KitTower) => (tower.bearingDeg === undefined ? ang : (tower.bearingDeg * Math.PI) / 180);
+    for (const tower of spec.towers ?? []) towerParts(sink, tower, toLocal(tower.at), towerAng(tower), part.minHeightM, gable);
+    if (spec.windows) kitWindows(sink, part.ring, spec, spec.windows, towerAng);
   }
   return [...out].map(([id, sink]) => ({ id, tris: sink.out }));
 }
