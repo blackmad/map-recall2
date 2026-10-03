@@ -3106,6 +3106,488 @@
       "triangles": 38131,
       "bytes": 476668,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "buiksloterkerk": {
+      "id": "buiksloterkerk",
+      "name": "Buiksloterkerk",
+      "landmarkId": "extract_landmarks_1198118755",
+      "modelUrl": "./models/buiksloterkerk.glb",
+      "suppressOsmIds": [
+        "w44825314"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.916339590226489,
+          52.40181965170745
+        ],
+        "headingDegrees": 85.98901818904636,
+        "lengthMetres": 32.25158238481576,
+        "widthMetres": 17.735686367161463
+      },
+      "surveyed": {
+        "anchor": [
+          4.916339590226489,
+          52.40181965170745
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Actual OSM church outline and tower part; local east/south metre coordinates"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Buiksloterkerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://buiksloterkerk.nl/gebouw/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
+      },
+      "bounds": {
+        "min": [
+          -16.415252685546875,
+          -3.814697322468419e-7,
+          -9.065231323242188
+        ],
+        "max": [
+          15.995484352111816,
+          23.799999237060547,
+          9.065231323242188
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.916339590226489,
+          52.40181965170745
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 175.98901818904642,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 32.41073703765869,
+        "heightMetres": 23.79999961853028,
+        "depthMetres": 18.130462646484375,
+        "depthCoverage": 1.022258866736269
+      },
+      "triangles": 4188,
+      "bytes": 64304,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "english-reformed-church": {
+      "id": "english-reformed-church",
+      "name": "English Reformed Church",
+      "landmarkId": "extract_landmarks_1187067601",
+      "modelUrl": "./models/english-reformed-church.glb",
+      "suppressOsmIds": [
+        "w57858493",
+        "w1425764020"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.890147908845572,
+          52.36934141794237
+        ],
+        "headingDegrees": 74.7564361014704,
+        "lengthMetres": 36.964534844831036,
+        "widthMetres": 17.897307676559574
+      },
+      "surveyed": {
+        "anchor": [
+          4.890147908845572,
+          52.36934141794237
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Actual OSM church outline and tower part; local east/south metre coordinates"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "English Reformed Church",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.erc.amsterdam/about",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
+      },
+      "bounds": {
+        "min": [
+          -19.6134033203125,
+          -9.536743306171047e-8,
+          -10.392387390136719
+        ],
+        "max": [
+          17.33083724975586,
+          18.700000762939453,
+          12.744625091552734
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.890147908845572,
+          52.36934141794237
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 164.7564361014704,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 36.94424057006836,
+        "heightMetres": 18.700000858306886,
+        "depthMetres": 23.137012481689453,
+        "depthCoverage": 1.2927649733592286
+      },
+      "triangles": 3891,
+      "bytes": 56628,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "de-papegaai": {
+      "id": "de-papegaai",
+      "name": "De Papegaai",
+      "landmarkId": "extract_landmarks_1601841225",
+      "modelUrl": "./models/de-papegaai.glb",
+      "suppressOsmIds": [
+        "w266903909"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8914874867156035,
+          52.3712251052276
+        ],
+        "headingDegrees": 65.28136792399175,
+        "lengthMetres": 50.0801457619763,
+        "widthMetres": 23.700591646413127
+      },
+      "surveyed": {
+        "anchor": [
+          4.8914874867156035,
+          52.3712251052276
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Actual OSM church outline and tower part; local east/south metre coordinates"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "De Papegaai",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.nicolaas-parochie.nl/papegaai/over-ons/gebouw/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
+      },
+      "bounds": {
+        "min": [
+          -22.44135284423828,
+          -1.9073486612342094e-7,
+          -9.43953800201416
+        ],
+        "max": [
+          27.047311782836914,
+          18.07481575012207,
+          20.008317947387695
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8914874867156035,
+          52.3712251052276
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 155.28136792399175,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 49.488664627075195,
+        "heightMetres": 18.074815940856936,
+        "depthMetres": 29.447855949401855,
+        "depthCoverage": 1.2424945498716495
+      },
+      "triangles": 1824,
+      "bytes": 28376,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "de-hallen": {
+      "id": "de-hallen",
+      "name": "De Hallen / Foodhallen / Filmhallen",
+      "landmarkId": "extract_landmarks_564717297",
+      "relatedLandmarkIds": [
+        "extract_landmarks_935859030",
+        "extract_landmarks_1004895807"
+      ],
+      "modelUrl": "./models/de-hallen.glb",
+      "suppressOsmIds": [
+        "w94517266"
+      ],
+      "footprint": {
+        "centre": [
+          4.868094135610376,
+          52.36705123990049
+        ],
+        "headingDegrees": 156.4336677813015,
+        "lengthMetres": 138.92102637771075,
+        "widthMetres": 102.3948245125872
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90.00366778130149,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.868094135610376,
+          52.36705123990049
+        ],
+        "northOffsetDegrees": 66.4336677813015,
+        "source": "Actual OSM polygon contours in local east/south metres; courtyard recesses and double-house split preserved."
+      },
+      "attribution": {
+        "title": "De Hallen / Foodhallen / Filmhallen",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.dehallen-amsterdam.nl/historie",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
+      },
+      "bounds": {
+        "min": [
+          -69.04818725585938,
+          0,
+          -51.43000030517578
+        ],
+        "max": [
+          69.07721710205078,
+          11.742252349853516,
+          51.439998626708984
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.868094135610376,
+          52.36705123990049
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 156.43366778130144,
+        "facadeBearingDegrees": 66.43,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 138.12540435791016,
+        "heightMetres": 11.742252349853516,
+        "depthMetres": 102.86999893188477,
+        "depthCoverage": 1.0046406097335432
+      },
+      "triangles": 10037,
+      "bytes": 133016,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "huis-bartolotti": {
+      "id": "huis-bartolotti",
+      "name": "Huis Bartolotti",
+      "landmarkId": "extract_landmarks_1450151185",
+      "modelUrl": "./models/huis-bartolotti.glb",
+      "suppressOsmIds": [
+        "w174193863",
+        "w266616315"
+      ],
+      "footprint": {
+        "centre": [
+          4.886722670237744,
+          52.37412259415594
+        ],
+        "headingDegrees": 106.44208897821662,
+        "lengthMetres": 31.771102166533325,
+        "widthMetres": 22.603326969147606
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -6.442088978216617,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.886722670237744,
+          52.37412259415594
+        ],
+        "northOffsetDegrees": -80,
+        "source": "Actual OSM polygon contours in local east/south metres; courtyard recesses and double-house split preserved."
+      },
+      "attribution": {
+        "title": "Huis Bartolotti",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.hendrickdekeyser.nl/de-huizen/huis-bartolotti",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
+      },
+      "bounds": {
+        "min": [
+          -9.824999809265137,
+          -3.814697322468419e-7,
+          -15.82561206817627
+        ],
+        "max": [
+          12.839282989501953,
+          22.670000076293945,
+          16.8624324798584
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.886722670237744,
+          52.37412259415594
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 10,
+        "facadeBearingDegrees": 100,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 32.68804454803467,
+        "heightMetres": 22.670000457763678,
+        "depthMetres": 22.66428279876709,
+        "depthCoverage": 1.002696763609299
+      },
+      "triangles": 5804,
+      "bytes": 87592,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "hart-museum": {
+      "id": "hart-museum",
+      "name": "H'ART Museum — Amstelhof",
+      "landmarkId": "extract_landmarks_352379234",
+      "modelUrl": "./models/hart-museum.glb",
+      "suppressOsmIds": [
+        "r3604193",
+        "NL.IMBAG.Pand.0363100012165553"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.902899923436612,
+          52.36539923653881
+        ],
+        "headingDegrees": 162.6932525153169,
+        "lengthMetres": 102.78905473145181,
+        "widthMetres": 80.97941766115503
+      },
+      "surveyed": {
+        "anchor": [
+          4.902899923436612,
+          52.36539923653881
+        ],
+        "northOffsetDegrees": 72.7
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "H'ART Museum — Amstelhof",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.hartmuseum.nl/en/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
+      },
+      "bounds": {
+        "min": [
+          -51.5706672668457,
+          -5.364418242947977e-9,
+          -40.902713775634766
+        ],
+        "max": [
+          51.537532806396484,
+          15.550000190734863,
+          45.45000076293945
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.902899923436612,
+          52.36539923653881
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 162.70000000000005,
+        "facadeBearingDegrees": 252.69325251531689,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 103.10820007324219,
+        "heightMetres": 15.550000196099282,
+        "depthMetres": 86.35271453857422,
+        "depthCoverage": 1.0663538591979367
+      },
+      "triangles": 34598,
+      "bytes": 432904,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "amsterdam-museum": {
+      "id": "amsterdam-museum",
+      "name": "Amsterdam Museum — Burgerweeshuis",
+      "landmarkId": "extract_landmarks_2083029836",
+      "modelUrl": "./models/amsterdam-museum.glb",
+      "suppressOsmIds": [
+        "r3583133",
+        "NL.IMBAG.Pand.0363100012168198"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.890522675661112,
+          52.37023504304229
+        ],
+        "headingDegrees": 73.00211651228418,
+        "lengthMetres": 120.66940764415725,
+        "widthMetres": 71.720449445128
+      },
+      "surveyed": {
+        "anchor": [
+          4.890522675661112,
+          52.37023504304229
+        ],
+        "northOffsetDegrees": 72.7
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 9.997883487715825,
+      "attribution": {
+        "title": "Amsterdam Museum — Burgerweeshuis",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.amsterdammuseum.nl/en/het-nieuwe-amsterdam-museum",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
+      },
+      "bounds": {
+        "min": [
+          -36.064090728759766,
+          -3.814697322468419e-7,
+          -60.470542907714844
+        ],
+        "max": [
+          35.84607696533203,
+          17.149999618530273,
+          60.537559509277344
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.890522675661112,
+          52.37023504304229
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 162.70000000000005,
+        "facadeBearingDegrees": 83,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 121.00810241699219,
+        "heightMetres": 17.150000000000006,
+        "depthMetres": 71.9101676940918,
+        "depthCoverage": 1.0026452462363464
+      },
+      "triangles": 29329,
+      "bytes": 433620,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

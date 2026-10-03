@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 40,
+    "manual-model": 49,
     "catalogue-model": 12,
-    "procedural-kit": 19,
-    "pending": 212
+    "procedural-kit": 18,
+    "pending": 205
   },
   "destinations": [
     {
@@ -327,7 +327,8 @@
       "type": "museum",
       "queueRank": 28,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "amsterdam-museum"
     },
     {
       "id": "lm-extract_landmarks_9366648",
@@ -468,7 +469,8 @@
       "type": "landmark",
       "queueRank": 40,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "de-papegaai"
     },
     {
       "id": "lm-extract_landmarks_554373448",
@@ -502,7 +504,8 @@
       "type": "landmark",
       "queueRank": 43,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "buiksloterkerk"
     },
     {
       "id": "lm-extract_landmarks_1523176628",
@@ -537,7 +540,8 @@
       "type": "landmark",
       "queueRank": 46,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "english-reformed-church"
     },
     {
       "id": "lm-extract_landmarks_975578776",
@@ -594,7 +598,8 @@
       "type": "cinema",
       "queueRank": 51,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "de-hallen"
     },
     {
       "id": "lm-extract_landmarks_1884008891",
@@ -686,7 +691,8 @@
       "type": "museum",
       "queueRank": 59,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "huis-bartolotti"
     },
     {
       "id": "lm-extract_landmarks_903098984",
@@ -1718,8 +1724,8 @@
       "type": "landmark",
       "queueRank": 151,
       "origin": "POI Destinations",
-      "status": "procedural-kit",
-      "kitName": "De Hallen"
+      "status": "manual-model",
+      "modelId": "de-hallen"
     },
     {
       "id": "lm-extract_landmarks_945535287",
@@ -2560,7 +2566,8 @@
       "type": "library",
       "queueRank": 227,
       "origin": "POI Destinations",
-      "status": "pending"
+      "status": "manual-model",
+      "modelId": "de-hallen"
     },
     {
       "id": "lm-extract_landmarks_2090706815",
@@ -3175,6 +3182,16 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "gashouder"
+    },
+    {
+      "id": "hart-museum",
+      "name": "H'ART Museum — Amstelhof",
+      "lat": 52.36539923653881,
+      "lng": 4.902899923436612,
+      "queueRank": 284,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "hart-museum"
     }
   ]
 }

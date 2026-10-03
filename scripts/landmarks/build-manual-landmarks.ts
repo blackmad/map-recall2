@@ -21,6 +21,9 @@ import {buildRetailCinemaLandmark} from './retail-cinema-builders';
 import {buildIndustrialTheaterLandmark} from './industrial-theater-builders';
 import {buildCinemaPalaceLandmark} from './cinema-palace-builders';
 import {buildHistoricChurchLandmark} from './historic-church-builders';
+import {buildSecondaryChurchLandmark} from './secondary-church-builders';
+import {buildHallenHouseLandmark} from './hallen-house-builders';
+import {buildHistoricMuseumLandmark} from './historic-museum-builders';
 import hospitals from './hospital-footprints.json';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
@@ -90,6 +93,9 @@ const retailCinemaIds=new Set(['rialto','kriterion','de-bijenkorf']);
 const industrialTheaterIds=new Set(['gashouder','stadsschouwburg']);
 const cinemaPalaceIds=new Set(['tuschinski','pathe-city']);
 const historicChurchIds=new Set(['oude-kerk','nieuwe-kerk']);
+const secondaryChurchIds=new Set(['buiksloterkerk','english-reformed-church','de-papegaai']);
+const hallenHouseIds=new Set(['de-hallen','huis-bartolotti']);
+const historicMuseumIds=new Set(['hart-museum','amsterdam-museum']);
 for(const spec of MANUAL_LANDMARKS){
   const id=spec.id;
   if(process.argv.includes('--only')&&!process.argv.includes(id))continue;
@@ -109,6 +115,9 @@ for(const spec of MANUAL_LANDMARKS){
     else if(industrialTheaterIds.has(id))buildIndustrialTheaterLandmark(id,w,d,helpers);
     else if(cinemaPalaceIds.has(id))buildCinemaPalaceLandmark(id,w,d,helpers);
     else if(historicChurchIds.has(id))buildHistoricChurchLandmark(id,w,d,helpers);
+    else if(secondaryChurchIds.has(id))buildSecondaryChurchLandmark(id,w,d,helpers);
+    else if(hallenHouseIds.has(id))buildHallenHouseLandmark(id,w,d,helpers);
+    else if(historicMuseumIds.has(id))buildHistoricMuseumLandmark(id,w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   manifest.models[id]=await save(id);

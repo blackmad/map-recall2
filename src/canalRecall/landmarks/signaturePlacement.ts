@@ -81,8 +81,9 @@ export interface SignatureModelSpec {
   readonly relatedLandmarkIds?: readonly string[];
   /** Runtime GLB, relative to the Canal Recall page. */
   readonly modelUrl: string;
-  /** OSM ids, prefixed `w`/`r`, whose basemap extrusion must be hidden once
-   *  the model is drawn. Keyed on the id rather than on a spatial test so a
+  /** Building identities: OSM `w`/`r` ids and, where needed, BAG pand ids.
+   *  Their generic geometry is hidden once the model is drawn. Keyed on the id
+   *  rather than on a spatial test so a
    *  partly loaded tile can never leave both geometries standing. */
   readonly suppressOsmIds: readonly string[];
   /** Exact complete OSM lists can opt out of padded rectangle suppression. */

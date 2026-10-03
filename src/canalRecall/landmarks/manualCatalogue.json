@@ -1173,5 +1173,270 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
     }
+  },
+  {
+    "id": "buiksloterkerk",
+    "name": "Buiksloterkerk",
+    "landmarkId": "extract_landmarks_1198118755",
+    "modelUrl": "./models/buiksloterkerk.glb",
+    "suppressOsmIds": [
+      "w44825314"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.916339590226489,
+        52.40181965170745
+      ],
+      "headingDegrees": 85.98901818904636,
+      "lengthMetres": 32.25158238481576,
+      "widthMetres": 17.735686367161463
+    },
+    "surveyed": {
+      "anchor": [
+        4.916339590226489,
+        52.40181965170745
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Actual OSM church outline and tower part; local east/south metre coordinates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Buiksloterkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://buiksloterkerk.nl/gebouw/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
+    }
+  },
+  {
+    "id": "english-reformed-church",
+    "name": "English Reformed Church",
+    "landmarkId": "extract_landmarks_1187067601",
+    "modelUrl": "./models/english-reformed-church.glb",
+    "suppressOsmIds": [
+      "w57858493",
+      "w1425764020"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.890147908845572,
+        52.36934141794237
+      ],
+      "headingDegrees": 74.7564361014704,
+      "lengthMetres": 36.964534844831036,
+      "widthMetres": 17.897307676559574
+    },
+    "surveyed": {
+      "anchor": [
+        4.890147908845572,
+        52.36934141794237
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Actual OSM church outline and tower part; local east/south metre coordinates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "English Reformed Church",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.erc.amsterdam/about",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
+    }
+  },
+  {
+    "id": "de-papegaai",
+    "name": "De Papegaai",
+    "landmarkId": "extract_landmarks_1601841225",
+    "modelUrl": "./models/de-papegaai.glb",
+    "suppressOsmIds": [
+      "w266903909"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8914874867156035,
+        52.3712251052276
+      ],
+      "headingDegrees": 65.28136792399175,
+      "lengthMetres": 50.0801457619763,
+      "widthMetres": 23.700591646413127
+    },
+    "surveyed": {
+      "anchor": [
+        4.8914874867156035,
+        52.3712251052276
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Actual OSM church outline and tower part; local east/south metre coordinates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "De Papegaai",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.nicolaas-parochie.nl/papegaai/over-ons/gebouw/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction from official church photographs and OSM footprints (ODbL). Mapped maximum height from 3DBAG; wall/roof division and decorative details approximate. No reference pixels or model geometry imported."
+    }
+  },
+  {
+    "id": "de-hallen",
+    "name": "De Hallen / Foodhallen / Filmhallen",
+    "landmarkId": "extract_landmarks_564717297",
+    "relatedLandmarkIds": [
+      "extract_landmarks_935859030",
+      "extract_landmarks_1004895807"
+    ],
+    "modelUrl": "./models/de-hallen.glb",
+    "suppressOsmIds": [
+      "w94517266"
+    ],
+    "footprint": {
+      "centre": [
+        4.868094135610376,
+        52.36705123990049
+      ],
+      "headingDegrees": 156.4336677813015,
+      "lengthMetres": 138.92102637771075,
+      "widthMetres": 102.3948245125872
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.00366778130149,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.868094135610376,
+        52.36705123990049
+      ],
+      "northOffsetDegrees": 66.4336677813015,
+      "source": "Actual OSM polygon contours in local east/south metres; courtyard recesses and double-house split preserved."
+    },
+    "attribution": {
+      "title": "De Hallen / Foodhallen / Filmhallen",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.dehallen-amsterdam.nl/historie",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
+    }
+  },
+  {
+    "id": "huis-bartolotti",
+    "name": "Huis Bartolotti",
+    "landmarkId": "extract_landmarks_1450151185",
+    "modelUrl": "./models/huis-bartolotti.glb",
+    "suppressOsmIds": [
+      "w174193863",
+      "w266616315"
+    ],
+    "footprint": {
+      "centre": [
+        4.886722670237744,
+        52.37412259415594
+      ],
+      "headingDegrees": 106.44208897821662,
+      "lengthMetres": 31.771102166533325,
+      "widthMetres": 22.603326969147606
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -6.442088978216617,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.886722670237744,
+        52.37412259415594
+      ],
+      "northOffsetDegrees": -80,
+      "source": "Actual OSM polygon contours in local east/south metres; courtyard recesses and double-house split preserved."
+    },
+    "attribution": {
+      "title": "Huis Bartolotti",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.hendrickdekeyser.nl/de-huizen/huis-bartolotti",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official architectural imagery, with surveyed OpenStreetMap contours; no imported mesh or image textures."
+    }
+  },
+  {
+    "id": "hart-museum",
+    "name": "H'ART Museum — Amstelhof",
+    "landmarkId": "extract_landmarks_352379234",
+    "modelUrl": "./models/hart-museum.glb",
+    "suppressOsmIds": [
+      "r3604193",
+      "NL.IMBAG.Pand.0363100012165553"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.902899923436612,
+        52.36539923653881
+      ],
+      "headingDegrees": 162.6932525153169,
+      "lengthMetres": 102.78905473145181,
+      "widthMetres": 80.97941766115503
+    },
+    "surveyed": {
+      "anchor": [
+        4.902899923436612,
+        52.36539923653881
+      ],
+      "northOffsetDegrees": 72.7
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "H'ART Museum — Amstelhof",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.hartmuseum.nl/en/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
+    }
+  },
+  {
+    "id": "amsterdam-museum",
+    "name": "Amsterdam Museum — Burgerweeshuis",
+    "landmarkId": "extract_landmarks_2083029836",
+    "modelUrl": "./models/amsterdam-museum.glb",
+    "suppressOsmIds": [
+      "r3583133",
+      "NL.IMBAG.Pand.0363100012168198"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.890522675661112,
+        52.37023504304229
+      ],
+      "headingDegrees": 73.00211651228418,
+      "lengthMetres": 120.66940764415725,
+      "widthMetres": 71.720449445128
+    },
+    "surveyed": {
+      "anchor": [
+        4.890522675661112,
+        52.37023504304229
+      ],
+      "northOffsetDegrees": 72.7
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 9.997883487715825,
+    "attribution": {
+      "title": "Amsterdam Museum — Burgerweeshuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.amsterdammuseum.nl/en/het-nieuwe-amsterdam-museum",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the mapped historic museum complex and genuine open courtyard. Actual OpenStreetMap relation polygon retained; original window, hip-roof, dormer and gate geometry informed by official museum photographs. Dimensions and ornament approximate; future renovation volumes are not represented."
+    }
   }
 ]

@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const catalogue = JSON.parse(fs.readFileSync('src/canalRecall/landmarks/manualCatalogue.json', 'utf8'));
-const exactIds = ['embassy-free-mind', 'anne-frank-house', 'rembrandt-house', 'moco-museum', 'museum-van-loon', 'het-schip', 'scheepvaarthuis', 'rialto', 'kriterion', 'de-bijenkorf', 'gashouder', 'stadsschouwburg', 'tuschinski', 'pathe-city', 'oude-kerk', 'nieuwe-kerk'];
+const exactIds = ['embassy-free-mind', 'anne-frank-house', 'rembrandt-house', 'moco-museum', 'museum-van-loon', 'het-schip', 'scheepvaarthuis', 'rialto', 'kriterion', 'de-bijenkorf', 'gashouder', 'stadsschouwburg', 'tuschinski', 'pathe-city', 'oude-kerk', 'nieuwe-kerk', 'buiksloterkerk', 'english-reformed-church', 'de-papegaai', 'de-hallen', 'huis-bartolotti', 'hart-museum', 'amsterdam-museum'];
 for (const id of exactIds) {
   const spec = catalogue.find(spec => spec.id === id);
   assert.ok(spec, id);
