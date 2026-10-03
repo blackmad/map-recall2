@@ -1,5 +1,9 @@
 # Canal Recall — what is built
 
+## Two-finger twist spins the 3D camera
+
+User (2026-10-03): "I want to be able to spin the camera with a two-finger twist gesture on my trackpad." Only Safari reports a trackpad rotation (`gesturestart`/`gesturechange` with `rotation`, also fired by iOS Safari for a two-finger touch); Chrome and Firefox expose no twist at all, as a gesture or as a wheel delta, so those get Option/Alt + two-finger scroll instead. Both orbit chase/cockpit through the existing `camera.bearingOffset` (the same one Shift + [ / ] nudges) and persist through `_nudgeCameraBearing` once the gesture settles; the 2D views ignore it, as they ignore the keys. A twist engages only past a 6° dead zone and then tracks the fingers without a jump, so a pinch's wobble never turns the view. The Safari gestures are also swallowed so the page itself cannot zoom, and their `scale` zooms the map unless a touch pinch or ctrl+wheel is already doing it. Logic in `src/canalRecall/game/trackpadTwist.ts`, pinned in `test:trackpad-twist` and `tests/e2e/trackpad-twist.spec.ts` (synthetic Safari events: wobble ignored, a clockwise twist turns north clockwise on screen, Alt+scroll turns it, the bearing persists).
+
 ## Map Recall: folded answer card and a layered postcard
 
 User (2026-10-02, with a screenshot of Nieuwmarktbuurt): the postcard "pops in too late" and the answer card "takes up too much of my screen so I don't get confirmation of where the hood was". Cause of the delay: `PostcardHeader` composed the large-letter postcard at reveal, after a dynamic import of the compositor, the Archivo Black outline font and `Promise.all` over up to eight Commons thumbnails, so the slowest photo gated it, then drew the warped letters (70-240 ms a paint here). Measured over seeded rounds: 1.3-12 s from Confirm to postcard, 1.3-3 s even with every photo on local disk.
