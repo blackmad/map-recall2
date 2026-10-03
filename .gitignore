@@ -67,3 +67,6 @@ public/canal-drive/loop-status/
 # Full OSM building dumps from refresh — hundreds of MB; LoD1 tiles cover play.
 public/data/extracts/*/buildings-osm.geojson
 tmp/
+
+# Local renders and preview harnesses (render:large-letter-craft writes here)
+.tmp/
