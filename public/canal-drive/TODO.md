@@ -54,20 +54,19 @@ transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
 weather/time mood. Cold-open is superseded by review rides (see HISTORY,
 2026-09-30).
 
-**Local-knowledge facts for neighbourhood cards (samples shown 2026-10-03, awaiting go).**
-User ask: cards should carry what a local would say, e.g. Buitenveldert is
-Amsterdam's modern Jewish quarter (en.wikipedia lede). The current pipeline
-misses it because Buitenveldert has no Wikidata match (English article never
-read) and only lede/History/naming sentences are used. `npm run
-mine:area-facts -- [--only "A,B"]` now scores every sentence of both articles
-(found via Wikidata, title guesses, nl search and langlinks) and clusters OSM
-places inside the outline (Overpass via maps.mail.ru; overpass-api.de resets
-from the cloud proxy), all through the scrape store. Twelve cited draft picks
-are in `scripts/data/area-fact-review.json`; sample page
-https://claude.ai/artifact/WWrkvAP4jaGyzv5XQWiqAW. Open: user approval of
-rules and card placement (lead line), mining all 91 Amsterdam areas, a
-`publish` step that checks cites still match, the card UI field, the A.J.-style
-initials sentence split in `sentencesOf`, then Utrecht/Rotterdam/Den Haag.
+**Local-knowledge facts for neighbourhood cards (57 drafted 2026-10-03, awaiting approval).**
+User chose "lead line": the answer card opens with `localFact` (Local chip)
+when `neighborhood-history.json` has one. `npm run mine:area-facts` mined all
+89 Amsterdam areas (14 have no article); 57 cited picks are drafted in
+`scripts/data/area-fact-review.json`, 32 areas are `null` (no article, or
+nothing distinctive and sourced). Review page:
+https://claude.ai/artifact/WWrkvAP4jaGyzv5XQWiqAW. Three picks need a content
+check (Rivierenbuurt wartime persecution, Zuidoost community by descent,
+Staatsliedenbuurt squatting). A dry run with all approved published 57 with no
+citation problems. Open: user approval (`approve: true`), then
+`npm run mine:area-facts -- publish`; nine picks are boroughs/Gouden Bocht that
+the quiz does not ask yet; `sentencesOf` splits after initials ("A.J.
+Ernststraat"); then Utrecht/Rotterdam/Den Haag (`--city`).
 
 **Neighbourhood trivia gaps (pipeline built 2026-10-02, data lane).**
 `npm run fill:neighborhood-gaps -- audit|offline|online|publish` fills missing

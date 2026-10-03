@@ -1,5 +1,14 @@
 # Canal Recall — what is built
 
+## Neighbourhood cards lead with a local fact
+
+User (2026-10-02): "Buitenveldbuurt is the current Jewish neighborhood right? How can we get that in the trivia card (more generally …)". The area is Buitenveldert; en.wikipedia's lede calls it "the modern Jewish quarter of Amsterdam".
+
+- **Why it was missed:** Buitenveldert has no Wikidata match in our extract, so `fetch-neighborhood-history.ts` never read the English article, and the pipeline reads only ledes, History sections and naming sentences. The Dutch article's facts sit under "Bewoners", "Onderwijs" and "Winkelgebieden".
+- **Miner:** `scripts/mine-area-facts.ts` + `src/mapRecall/areaFacts.ts` find both articles (Wikidata, title guesses, nl search, langlinks), score every sentence for local signals, and filter resident statistics, origin shares, crime/policing and planning text before anything reaches the sheet. OSM places inside each outline are clustered (Overpass via maps.mail.ru, since overpass-api.de resets through the cloud proxy) and only corroborate a sentence, never stand alone. Everything goes through the scrape store.
+- **Picks:** a Claude session words one fact per area from cited sentences only; `publish` refuses an unapproved pick, a cited sentence no longer in its article, or a number the citations do not state. Pinned in `test:map-recall-trivia` with Buitenveldert as the named regression.
+- **Card:** the user chose the lead line (decision card, 2026-10-03): `localFact` renders first with a Local chip; the description clamps to two lines beside it.
+
 ## Untextured is flat colour only
 
 User (2026-10-02, a screenshot of brick, window grids and awnings): "untextured should be totally untextured or very flat".
