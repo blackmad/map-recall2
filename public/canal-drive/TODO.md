@@ -54,6 +54,14 @@ transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
 weather/time mood. Cold-open is superseded by review rides (see HISTORY,
 2026-09-30).
 
+**Local-knowledge facts beyond Amsterdam (data lane).** Amsterdam's 57
+approved local facts are published (`localFact`, the card's lead line; see
+HISTORY). Open: run `npm run mine:area-facts -- --city utrecht|rotterdam|den-haag`,
+draft cited picks into `scripts/data/area-fact-review-<city>.json`, review,
+`publish`; 32 Amsterdam areas still have none (14 without any article); nine
+Amsterdam picks are boroughs/Gouden Bocht the quiz does not ask yet;
+`sentencesOf` splits after initials ("A.J. Ernststraat").
+
 **Neighbourhood trivia gaps (pipeline built 2026-10-02, data lane).**
 `npm run fill:neighborhood-gaps -- audit|offline|online|publish` fills missing
 description, history, name origin and photo for Amsterdam areas into
@@ -999,8 +1007,10 @@ scope.
 Craft board: [`LARGE_LETTER_CRAFT.md`](LARGE_LETTER_CRAFT.md). **Check loop:**
 `test:large-letter-craft` → `render:large-letter-craft -- --round=N` (gallery +
 pixel P0 on Jordaan: no top ink, cream ring ≤14px) → vision. Three themed
-rounds + a fill bump (span ~64%H). Remaining: true vanishing-point side faces,
-tighter Waterloo greeting nest, place props, game pop-in.
+rounds + a fill bump (span ~64%H), then the Spoon Graphics recipe pass
+(2026-10-03, HISTORY). Remaining: tighter greeting nest, place props, a
+converging (vanishing-point) block as an optional style (the recipe's own block
+is parallel), and the recipe colours for the non-default styles.
 
 **19. Structured Wikidata + city-hall advisor.** Assignments from mayors,
 architects, opening dates — without another card competing with the corridor.

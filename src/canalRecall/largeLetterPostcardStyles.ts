@@ -28,6 +28,16 @@ export interface PostcardStyle {
   extrusionBands: ExtrusionBand[];
   outlineWidth: number;
   outlineFill: string;
+  /**
+   * Spoon Graphics recipe colours (used when the outline font is loaded): the extrusion's
+   * down-facing facets, its side facets, the line around it, and the two rims between face and
+   * extrusion (inner light, outer coloured). Default from the bands and outline when absent.
+   */
+  extrusionBottom?: string;
+  extrusionSide?: string;
+  extrusionEdge?: string;
+  rimLight?: string;
+  rimColor?: string;
   paperTop: string;
   paperBottom: string;
   paperMid: string;
@@ -65,6 +75,11 @@ export const LINEN_ARCH: PostcardStyle = {
   extrusionBands: LINEN_WALL_BANDS,
   outlineWidth: 3.5,
   outlineFill: '#05080c',
+  extrusionBottom: '#e8662c',
+  extrusionSide: '#2f6aa6',
+  extrusionEdge: '#142b48',
+  rimLight: '#f3efe6',
+  rimColor: '#2f6aa6',
   paperTop: '#f2ebe0',
   paperBottom: '#d9cbb4',
   paperMid: '#ebe1d2',
@@ -74,10 +89,11 @@ export const LINEN_ARCH: PostcardStyle = {
   greetingTiltDeg: -5,
   linenGrain: 0.12,
   linenHatch: 0.07,
-  backdropAlpha: 0.16,
-  veilTop: 'rgba(245,240,230,0.7)',
-  veilMid: 'rgba(245,240,230,0.48)',
-  veilBottom: 'rgba(220,200,170,0.66)',
+  // The recipe lays the scene at 70% under the card texture; the rims keep the faces apart from it.
+  backdropAlpha: 0.6,
+  veilTop: 'rgba(245,240,230,0.42)',
+  veilMid: 'rgba(245,240,230,0.2)',
+  veilBottom: 'rgba(220,200,170,0.4)',
 };
 
 /** Alaska / Hayward — flat baseline, deep solid navy extrusion. */
@@ -180,6 +196,19 @@ export const POSTCARD_STYLES: Record<PostcardStyleId, PostcardStyle> = {
 };
 
 export const DEFAULT_POSTCARD_STYLE_ID: PostcardStyleId = 'linen-arch';
+
+/** The recipe colours of a style, filling in the ones it leaves out. */
+export function recipeColors(style: PostcardStyle): Required<Pick<PostcardStyle, 'extrusionBottom' | 'extrusionSide' | 'extrusionEdge' | 'rimLight' | 'rimColor'>> {
+  const bands = style.extrusionBands;
+  const side = style.extrusionSide ?? bands[Math.floor(bands.length / 2)]?.color ?? style.fallbackFill;
+  return {
+    extrusionBottom: style.extrusionBottom ?? bands[0]?.color ?? side,
+    extrusionSide: side,
+    extrusionEdge: style.extrusionEdge ?? style.outlineFill,
+    rimLight: style.rimLight ?? '#f3efe6',
+    rimColor: style.rimColor ?? side,
+  };
+}
 
 export function resolvePostcardStyle(
   style?: PostcardStyleId | PostcardStyle,

@@ -42,7 +42,7 @@ const opentype: OtApi = (() => {
   return api;
 })();
 
-type PathCmd = {
+export type PathCmd = {
   type: string;
   x?: number;
   y?: number;
@@ -88,9 +88,20 @@ export function pathBendLift(path: PathBend, amount: number, t: number): number 
 let cachedFont: OtFont | null = null;
 let cachedFontUrl: string | null = null;
 
-/** Default craft face — ultra-black, thick strokes for photo windows. */
-export const LARGE_LETTER_FONT_URL = '/public/canal-drive/fonts/ArchivoBlack-Regular.ttf';
-export const LARGE_LETTER_FONT_CSS = '"Archivo Black", "Arial Black", "Helvetica Neue", sans-serif';
+/**
+ * Default craft face: Anton, a condensed extra-bold standing in for the Futura Condensed Extra Bold
+ * of the Spoon Graphics large-letter recipe (tall letters, so tall photo windows). Self-hosted as
+ * a webfont too (`ensureLargeLetterWebFonts`).
+ */
+export const LARGE_LETTER_FONT_URL = '/public/canal-drive/fonts/Anton-Regular.ttf';
+export const LARGE_LETTER_FONT_CSS = '"Anton", "Archivo Black", "Arial Narrow", sans-serif';
+/**
+ * Layout sizes are in the units the compositor was tuned in (Archivo Black, caps 0.688 em). Anton's
+ * caps are 0.859 em, so it is drawn at this fraction of the layout size to keep the same cap height.
+ */
+export const LARGE_LETTER_FONT_EM_SCALE = 0.688 / 0.859;
+/** The greeting script, self-hosted next to the outline font. */
+export const LARGE_LETTER_SCRIPT_FAMILY = 'Pacifico';
 
 /**
  * Browser/Storybook URL for the bundled TTF. Vite serves `public/` at `/`,
@@ -98,7 +109,25 @@ export const LARGE_LETTER_FONT_CSS = '"Archivo Black", "Arial Black", "Helvetica
  * repo root and needs `/public/canal-drive/fonts/...` — callers should pass
  * an explicit URL when not using the default.
  */
-export const LARGE_LETTER_FONT_PUBLIC_URL = '/canal-drive/fonts/ArchivoBlack-Regular.ttf';
+export const LARGE_LETTER_FONT_PUBLIC_URL = '/canal-drive/fonts/Anton-Regular.ttf';
+
+/**
+ * Register the name face and the greeting script as webfonts from `fontsBaseUrl` (the directory
+ * holding Anton-Regular.ttf and Pacifico-Regular.ttf) and wait for them, so canvas text never
+ * falls back to a serif. Pages that already declare the families lose nothing. Never rejects.
+ */
+let webFontsPromise: Promise<void> | null = null;
+export function ensureLargeLetterWebFonts(fontsBaseUrl: string): Promise<void> {
+  if (typeof document === 'undefined' || typeof FontFace === 'undefined') return Promise.resolve();
+  webFontsPromise ??= Promise.all([
+    ['Anton', 'Anton-Regular.ttf'],
+    [LARGE_LETTER_SCRIPT_FAMILY, 'Pacifico-Regular.ttf'],
+  ].map(async ([family, file]) => {
+    const face = new FontFace(family, `url(${fontsBaseUrl.replace(/\/?$/, '/')}${file})`);
+    document.fonts.add(await face.load());
+  })).then(() => undefined, () => undefined);
+  return webFontsPromise;
+}
 
 function parseFontBuffer(buffer: ArrayBuffer): OtFont {
   const font = opentype.parse(buffer);
@@ -108,7 +137,7 @@ function parseFontBuffer(buffer: ArrayBuffer): OtFont {
   return font;
 }
 
-/** Load Archivo Black (or any TTF/OTF/WOFF) for outline path warping. */
+/** Load the outline font (Anton by default, or any TTF/OTF/WOFF) for path warping. */
 export async function loadLargeLetterFont(
   url: string = LARGE_LETTER_FONT_URL,
 ): Promise<OtFont> {

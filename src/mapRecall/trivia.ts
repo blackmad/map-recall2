@@ -20,6 +20,8 @@ export interface NeighborhoodHistoryEntry {
   description?: PublishedText;
   history?: PublishedText;
   nameOrigin?: PublishedText;
+  /** What a local would tell you about the area, picked and cited by `scripts/mine-area-facts.ts`; the card's lead line. */
+  localFact?: PublishedText;
 }
 
 /** One entry of `neighborhoods-enriched.json`. */
@@ -30,6 +32,7 @@ interface TriviaBearing {
   type: FeatureType;
   nameOrigin?: TriviaText;
   history?: TriviaText;
+  localFact?: TriviaText;
   wikipediaExtract?: string;
   wikipediaUrl?: string;
   wikipediaExtractSource?: { sourceUrl: string; sourceLabel: string };
@@ -80,7 +83,7 @@ const label = (text: PublishedText) => text.sourceLabel && text.kind === 'derive
 const asTrivia = (text: PublishedText | undefined): TriviaText | undefined =>
   text ? { text: text.en, sourceUrl: text.sourceUrl, sourceLabel: label(text) } : undefined;
 
-/** A neighbourhood's description, photo, history and name origin, by exact name. */
+/** A neighbourhood's local fact, description, photo, history and name origin, by exact name. */
 export function attachNeighborhoodTrivia<T extends TriviaBearing>(
   features: readonly T[],
   history: readonly NeighborhoodHistoryEntry[] | null | undefined,
@@ -105,6 +108,7 @@ export function attachNeighborhoodTrivia<T extends TriviaBearing>(
       wikipediaImageUrl: feature.wikipediaImageUrl || photo,
       history: feature.history || asTrivia(entry?.history),
       nameOrigin: feature.nameOrigin || asTrivia(entry?.nameOrigin),
+      localFact: feature.localFact || asTrivia(entry?.localFact),
     };
   });
 }
