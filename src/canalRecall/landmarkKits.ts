@@ -14,6 +14,8 @@
 // clean, since nothing here is copied from a model or a photograph.
 
 import { fitRect, roofTriangles, type Rect, type RoofPlan } from './roofMesh.js';
+import { formTriangles, type KitForm } from './landmarkForms.js';
+import { MUSEUM_KITS } from './museumKits.js';
 
 export type Mat = 'brick' | 'stone' | 'lead' | 'gold' | 'copper' | 'slate' | 'white' | 'tile' | 'blue';
 export type StageShape = 'square' | 'octagon';
@@ -81,7 +83,7 @@ export type KitTower = {
   lenM?: number; bearingDeg?: number; z0?: number; shape?: StageShape; mat?: Mat; wallHex?: string;
   capShape?: 'pyramid' | 'spire' | 'dome' | 'slant'; capHex?: string; highBearingDeg?: number;
 };
-export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; halls?: KitHalls[]; wall?: KitWall; hides?: string[]; body?: string[] };
+export type Kit = { name: string; tiers: Tier[]; stacks: Stack[]; roofs: KitRoof[]; halls?: KitHalls[]; wall?: KitWall; hides?: string[]; body?: string[]; /** Hand-modelled volumes (landmarkForms.ts). */ forms?: KitForm[] };
 
 export const MAT_HEX: Record<Mat, string> = {
   brick: '#9a5240', blue: '#3f5f9a', stone: '#cfc2a6', lead: '#4d535c', gold: '#d9b24c', copper: '#6aa896', slate: '#4a525d', white: '#efe9db', tile: '#b5543a',
@@ -339,6 +341,8 @@ export const KITS: Kit[] = [
     roofs: [],
     body: ['w1390692763', 'w1390692767', 'w1390692768', 'w1390692769', 'w1390692770', 'w1390692771', 'w1390692772', 'w1390692766', 'w1390692764', 'w1390692765'],
   },
+  // Museums and cinemas: the Van Gogh Museum, the Stedelijk, Eye, Tuschinski, the Maritime Museum, H'ART (museumKits.ts).
+  ...MUSEUM_KITS,
   {
     // De Hallen, the 1902-05 Tollensstraat tram depot (user report 2026-10-02: one bare tan
     // block). One BAG footprint over a row of brick sheds about 9.6 m wide, whose gable ends
@@ -531,7 +535,7 @@ export const KITS: Kit[] = [
 ];
 
 /** Every part a kit draws, and which of them hide their own plain prism (tiers, and hosts under a stack). */
-export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? [])]));
+export const KIT_PART_IDS: ReadonlySet<string> = new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...k.roofs.map(r => r.id), ...(k.halls ?? []).map(h => h.id), ...(k.hides ?? []), ...(k.forms ?? []).map(f => f.on)]));
 export const KIT_HIDE_IDS: readonly string[] = [...new Set(KITS.flatMap(k => [...k.tiers.map(t => t.id), ...k.stacks.map(s => s.onId), ...(k.hides ?? [])]))];
 /** Every landmark part a kit draws or walls itself (parts, hall hosts, bodies): the generic landmark fallback leaves these alone. */
 export const KIT_MODELLED_IDS: ReadonlySet<string> = new Set([...KIT_PART_IDS, ...KITS.flatMap(k => k.body ?? [])]);
@@ -902,6 +906,7 @@ export function kitGeometry(kit: Kit, parts: ReadonlyMap<string, PartInput>): Ki
     for (const tower of spec.towers ?? []) towerParts(sink, tower, toLocal(tower.at), towerAng(tower), part.minHeightM, gable);
     if (spec.windows) kitWindows(sink, part.ring, spec, spec.windows, towerAng);
   }
+  for (const form of kit.forms ?? []) { const part = parts.get(form.on); if (part) sinkFor(form.on).out.push(...formTriangles(form, part.ring, toLocal)); }
   return [...out].map(([id, sink]) => ({ id, tris: sink.out }));
 }
 
