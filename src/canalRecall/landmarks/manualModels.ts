@@ -1,4 +1,5 @@
 import type {SignatureModelSpec} from './signaturePlacement';
+import culturalCatalogue from './manualCatalogue.json';
 import hospitals from '../../../scripts/landmarks/hospital-footprints.json';
 const ownAttribution=(title:string,sourceUrl:string)=>({title,author:'Map Recall',sourceUrl,licence:'Original project asset',licenceUrl:'./LICENSE',modifications:'Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate.'});
 export const MANUAL_LANDMARKS: readonly SignatureModelSpec[] = [
@@ -7,5 +8,6 @@ export const MANUAL_LANDMARKS: readonly SignatureModelSpec[] = [
  surveyed:{anchor:[4.899750668752946,52.37855998792934],northOffsetDegrees:30.65330083236796,source:'OSM Cuypersgebouw footprint centre and long-axis bearing'},attribution:ownAttribution('Amsterdam Centraal','https://sketchfab.com/3d-models/centraal-station-amsterdam-582a09c29440490da209c26cc9dcc147')},
  {id:'muziekgebouw-bimhuis',name:'Muziekgebouw aan ’t IJ / Bimhuis',landmarkId:'extract_landmarks_1912967098',relatedLandmarkIds:['extract_landmarks_1651446989'],modelUrl:'./models/muziekgebouw-bimhuis.glb',suppressOsmIds:['w755464127','w755464129','w755464130','w755464132','w755504271','w755504272','w755504273','w755504274','w755504275','w755464126','w755464128'],groundAltitudeMetres:0,facingOffsetDegrees:196,
  surveyed:{anchor:[4.91313365,52.37829585],northOffsetDegrees:15.8,source:'OSM main auditorium w755464132 rectangle centre / bearing'},attribution:ownAttribution('Muziekgebouw and Bimhuis','https://www.studiocarchitecten.nl/en/bimhuis')},
+ ...(culturalCatalogue as unknown as SignatureModelSpec[]),
  ...hospitals.sites.map(s=>({id:s.id,name:s.id==='olvg-west'?'OLVG West':'OLVG Oost',landmarkId:s.id,modelUrl:`./models/${s.id}.glb`,suppressOsmIds:s.buildings.filter(f=>f.properties.building!=='construction').map(f=>f.id),groundAltitudeMetres:0,facingOffsetDegrees:0,surveyed:{anchor:(s.id==='olvg-west'?[4.8397,52.37115]:[4.9153,52.3582]) as [number,number],northOffsetDegrees:0,source:'OSM building rings; local east/south metres'},attribution:ownAttribution(s.id==='olvg-west'?'OLVG West':'OLVG Oost','https://www.olvg.nl/over-olvg/')})),
 ];

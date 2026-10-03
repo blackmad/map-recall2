@@ -5,7 +5,7 @@
     "landmarkId": "extract_landmarks_2070637412",
     "modelUrl": "./models/van-gogh-museum.glb",
     "suppressOsmIds": [
-      "w6577680"
+      "r6577680"
     ],
     "footprint": {
       "centre": [
@@ -89,7 +89,7 @@
     "landmarkId": "pontsteiger",
     "modelUrl": "./models/pontsteiger.glb",
     "suppressOsmIds": [
-      "w13123696"
+      "r13123696"
     ],
     "footprint": {
       "centre": [
@@ -201,7 +201,7 @@
     "attribution": {
       "title": "Paradiso",
       "author": "Map Recall",
-      "sourceUrl": "https://www.paradiso.nl/en/about-paradiso",
+      "sourceUrl": "https://www.paradiso.nl/en/info/about-us/paradiso-vandaag",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
       "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."

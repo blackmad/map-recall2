@@ -112,7 +112,7 @@
         "depthCoverage": 1.1304675555787045
       },
       "triangles": 29036,
-      "bytes": 304500,
+      "bytes": 304492,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "de-beurs-van-berlage": {
@@ -923,6 +923,490 @@
       "extent": null,
       "triangles": 22930,
       "bytes": 322736,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "van-gogh-museum": {
+      "id": "van-gogh-museum",
+      "name": "Van Gogh Museum",
+      "landmarkId": "extract_landmarks_2070637412",
+      "modelUrl": "./models/van-gogh-museum.glb",
+      "suppressOsmIds": [
+        "r6577680"
+      ],
+      "footprint": {
+        "centre": [
+          4.881046973181264,
+          52.35839801249034
+        ],
+        "headingDegrees": 147.75744680394797,
+        "lengthMetres": 59.00779161686317,
+        "widthMetres": 52.127957130108186
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Van Gogh Museum",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.vangoghmuseum.nl/nl/over/organisatie/het-gebouw",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+      },
+      "bounds": {
+        "min": [
+          -28.598739624023438,
+          0,
+          -20.159263610839844
+        ],
+        "max": [
+          29.578895568847656,
+          18.399999618530273,
+          22.22736167907715
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.880990140168312,
+          52.358376119002486
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 147.75744680394791,
+        "facadeBearingDegrees": 237.75744680394791,
+        "scale": 1.014269339433271
+      },
+      "extent": {
+        "widthMetres": 58.177635192871094,
+        "heightMetres": 18.399999618530273,
+        "depthMetres": 42.38662528991699,
+        "depthCoverage": 0.8131265375338338
+      },
+      "triangles": 2256,
+      "bytes": 30972,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "stedelijk-museum": {
+      "id": "stedelijk-museum",
+      "name": "Stedelijk Museum",
+      "landmarkId": "extract_landmarks_1719479765",
+      "modelUrl": "./models/stedelijk-museum.glb",
+      "suppressOsmIds": [
+        "w44508819"
+      ],
+      "footprint": {
+        "centre": [
+          4.879830319756338,
+          52.35792078508553
+        ],
+        "headingDegrees": 66.37991087111777,
+        "lengthMetres": 100.85707403797215,
+        "widthMetres": 82.04982538671491
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Stedelijk Museum",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.benthemcrouwel.com/projects/stedelijk-museum",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+      },
+      "bounds": {
+        "min": [
+          -47.407867431640625,
+          -9.536743306171047e-8,
+          -36.922420501708984
+        ],
+        "max": [
+          47.407867431640625,
+          27,
+          41.61566925048828
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.879830319756338,
+          52.35792078508553
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 66.37991087111777,
+        "facadeBearingDegrees": 156.37991087111777,
+        "scale": 1.0637166308250647
+      },
+      "extent": {
+        "widthMetres": 94.81573486328125,
+        "heightMetres": 27.000000095367433,
+        "depthMetres": 78.53808975219727,
+        "depthCoverage": 0.9571999621209889
+      },
+      "triangles": 5726,
+      "bytes": 75488,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "adam-tower": {
+      "id": "adam-tower",
+      "name": "A’DAM Tower",
+      "landmarkId": "adam-tower",
+      "modelUrl": "./models/adam-tower.glb",
+      "suppressOsmIds": [
+        "w44824385"
+      ],
+      "footprint": {
+        "centre": [
+          4.902217394449075,
+          52.383774274858496
+        ],
+        "headingDegrees": 139.08611969097242,
+        "lengthMetres": 62.381961899454694,
+        "widthMetres": 36.20922563625085
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "A’DAM Tower",
+        "author": "Map Recall",
+        "sourceUrl": "https://adamtoren.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+      },
+      "bounds": {
+        "min": [
+          -30.567161560058594,
+          0,
+          -18.35427474975586
+        ],
+        "max": [
+          30.567161560058594,
+          88,
+          18.35427474975586
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.902217394449075,
+          52.383774274858496
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 139.0861196909724,
+        "facadeBearingDegrees": 229.0861196909724,
+        "scale": 1.0204081556098386
+      },
+      "extent": {
+        "widthMetres": 61.13432312011719,
+        "heightMetres": 88,
+        "depthMetres": 36.70854949951172,
+        "depthCoverage": 1.0137899624884816
+      },
+      "triangles": 8532,
+      "bytes": 111356,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "pontsteiger": {
+      "id": "pontsteiger",
+      "name": "Pontsteiger",
+      "landmarkId": "pontsteiger",
+      "modelUrl": "./models/pontsteiger.glb",
+      "suppressOsmIds": [
+        "r13123696"
+      ],
+      "footprint": {
+        "centre": [
+          4.886200223567619,
+          52.39323956218515
+        ],
+        "headingDegrees": 139.67770384126857,
+        "lengthMetres": 89.26245888721829,
+        "widthMetres": 87.17557208386057
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Pontsteiger",
+        "author": "Map Recall",
+        "sourceUrl": "https://arcam.nl/architectuur-gids/pontsteiger/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+      },
+      "bounds": {
+        "min": [
+          -43.04597854614258,
+          0,
+          -41.6083984375
+        ],
+        "max": [
+          43.04597854614258,
+          89.5,
+          41.6083984375
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.886195205886302,
+          52.393236963385505
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 139.67770384126857,
+        "facadeBearingDegrees": 229.67770384126857,
+        "scale": 1.0368269220728081
+      },
+      "extent": {
+        "widthMetres": 86.09195709228516,
+        "heightMetres": 89.5,
+        "depthMetres": 83.216796875,
+        "depthCoverage": 0.9545884803021156
+      },
+      "triangles": 27672,
+      "bytes": 343748,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "oba-oosterdok": {
+      "id": "oba-oosterdok",
+      "name": "OBA Oosterdok",
+      "landmarkId": "extract_landmarks_751632752",
+      "modelUrl": "./models/oba-oosterdok.glb",
+      "suppressOsmIds": [
+        "w1487606301",
+        "w1487606300",
+        "w1487606301",
+        "w1487606302",
+        "w1487606303",
+        "w1487606304",
+        "w1487606305",
+        "w1487606306",
+        "w1487606307",
+        "w1487606308",
+        "w1487606309",
+        "w1487606310",
+        "w1487606311"
+      ],
+      "footprint": {
+        "centre": [
+          4.908303881212726,
+          52.37600837944057
+        ],
+        "headingDegrees": 172.17112613676915,
+        "lengthMetres": 64.40470560623255,
+        "widthMetres": 38.70079461141226
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "OBA Oosterdok",
+        "author": "Map Recall",
+        "sourceUrl": "https://oba.nl/nl/locaties/oba-oosterdok",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+      },
+      "bounds": {
+        "min": [
+          -32.202354431152344,
+          0,
+          -19.543901443481445
+        ],
+        "max": [
+          35.872589111328125,
+          35.79999923706055,
+          19.837406158447266
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.908293365423461,
+          52.37600749676237
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 172.1711261367691,
+        "facadeBearingDegrees": 262.1711261367691,
+        "scale": 0.9460853326458127
+      },
+      "extent": {
+        "widthMetres": 68.07494354248047,
+        "heightMetres": 35.79999923706055,
+        "depthMetres": 39.38130760192871,
+        "depthCoverage": 1.0175839539562264
+      },
+      "triangles": 5040,
+      "bytes": 70084,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "rem-eiland": {
+      "id": "rem-eiland",
+      "name": "REM-eiland",
+      "landmarkId": "rem-eiland",
+      "modelUrl": "./models/rem-eiland.glb",
+      "suppressOsmIds": [
+        "w169906479"
+      ],
+      "footprint": {
+        "centre": [
+          4.883275104301525,
+          52.39872817898343
+        ],
+        "headingDegrees": 140.85611828259619,
+        "lengthMetres": 26.055565349606344,
+        "widthMetres": 12.011365706204316
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "REM-eiland",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.remeiland.nl/nl/historie",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+      },
+      "bounds": {
+        "min": [
+          -12.936393737792969,
+          0,
+          -6.478930473327637
+        ],
+        "max": [
+          12.981337547302246,
+          34.20000076293945,
+          7.991522312164307
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.883275104301525,
+          52.39872817898343
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 140.85611828259619,
+        "facadeBearingDegrees": 230.85611828259619,
+        "scale": 1.0053181377256732
+      },
+      "extent": {
+        "widthMetres": 25.917731285095215,
+        "heightMetres": 34.20000076293945,
+        "depthMetres": 14.470452785491943,
+        "depthCoverage": 1.2047300148406452
+      },
+      "triangles": 1720,
+      "bytes": 26604,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "paradiso": {
+      "id": "paradiso",
+      "name": "Paradiso",
+      "landmarkId": "paradiso",
+      "modelUrl": "./models/paradiso.glb",
+      "suppressOsmIds": [
+        "w57857350"
+      ],
+      "footprint": {
+        "centre": [
+          4.883800679368446,
+          52.36216899080454
+        ],
+        "headingDegrees": 37.75613184714064,
+        "lengthMetres": 38.545097684005455,
+        "widthMetres": 20.61145838101024
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Paradiso",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.paradiso.nl/en/info/about-us/paradiso-vandaag",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+      },
+      "bounds": {
+        "min": [
+          -18.694372177124023,
+          0,
+          -10.305728912353516
+        ],
+        "max": [
+          19.973634719848633,
+          17,
+          10.345728874206543
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.883800828485565,
+          52.36216892028193
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 37.75613184714064,
+        "facadeBearingDegrees": 127.75613184714064,
+        "scale": 0.9968214236307891
+      },
+      "extent": {
+        "widthMetres": 38.668006896972656,
+        "heightMetres": 17,
+        "depthMetres": 20.65145778656006,
+        "depthCoverage": 1.0019406392701775
+      },
+      "triangles": 3412,
+      "bytes": 44048,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "melkweg": {
+      "id": "melkweg",
+      "name": "Melkweg",
+      "landmarkId": "extract_landmarks_1586263374",
+      "modelUrl": "./models/melkweg.glb",
+      "suppressOsmIds": [
+        "w267565714"
+      ],
+      "footprint": {
+        "centre": [
+          4.881114921160033,
+          52.36474434271804
+        ],
+        "headingDegrees": 140.28036879963844,
+        "lengthMetres": 49.67162760006897,
+        "widthMetres": 35.589591569044984
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Melkweg",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.melkweg.nl/en/info/about-us/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+      },
+      "bounds": {
+        "min": [
+          -23.794023513793945,
+          0,
+          -16.215316772460938
+        ],
+        "max": [
+          24.090740203857422,
+          16.299999237060547,
+          19.794795989990234
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.881114921160033,
+          52.36474434271804
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 140.28036879963838,
+        "facadeBearingDegrees": 230.28036879963838,
+        "scale": 1.03731591729164
+      },
+      "extent": {
+        "widthMetres": 47.88476371765137,
+        "heightMetres": 16.299999237060547,
+        "depthMetres": 36.01011276245117,
+        "depthCoverage": 1.0118158476921648
+      },
+      "triangles": 2828,
+      "bytes": 41976,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
