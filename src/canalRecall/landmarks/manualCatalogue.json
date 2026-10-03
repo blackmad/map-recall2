@@ -1599,5 +1599,162 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free reconstruction of the surveyed historic synagogue complex from actual OpenStreetMap polygons and official Jewish Cultural Quarter exterior photographs. Separate historic roof volumes, arched windows, classical stone cornices and entrance details; Esnoga courtyard kept open. Heights and ornament approximate."
     }
+  },
+  {
+    "id": "homomonument",
+    "name": "Homomonument",
+    "assetKind": "memorial",
+    "landmarkId": "extract_landmarks_7630368",
+    "modelUrl": "./models/homomonument.glb",
+    "suppressOsmIds": [
+      "w37737807"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8846925,
+        52.37443243333333
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 34.72792283999182,
+      "widthMetres": 35.405961999833835
+    },
+    "surveyed": {
+      "anchor": [
+        4.8846925,
+        52.37443243333333
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Three extreme vertices of the mapped whole-monument perimeter; local east/south metres"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "Homomonument",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.iamsterdam.com/en/whats-on/calendar/attractions-and-sights/sights/homomonument",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Geometric interpretation of mapped outline, not a measured stonework survey. Individual triangle heights and stair treads approximate; no surrounding ground or host buildings replaced."
+    }
+  },
+  {
+    "id": "micropia-ledenlokalen",
+    "name": "ARTIS Micropia / Ledenlokalen",
+    "landmarkId": "extract_landmarks_1369065076",
+    "modelUrl": "./models/micropia-ledenlokalen.glb",
+    "suppressOsmIds": [
+      "w57857205",
+      "NL.IMBAG.Pand.0363100012170549"
+    ],
+    "footprint": {
+      "centre": [
+        4.91252702449228,
+        52.36671446028425
+      ],
+      "headingDegrees": 29.62256147607775,
+      "lengthMetres": 78.36566837716668,
+      "widthMetres": 30.10354919257424
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 269.37743852392225,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.9124796703067215,
+        52.3667230808103
+      ],
+      "northOffsetDegrees": 119,
+      "source": "Current 2021-updated BAG contour including both end pavilions and the built rear conservatory; stale 2014 OSM hall outline is suppressed. Published native origin retained."
+    },
+    "attribution": {
+      "title": "ARTIS Micropia / Ledenlokalen",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.rappange.nl/projecten/ledenlokalen-artis-micropia/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
+    }
+  },
+  {
+    "id": "artis-entrance",
+    "name": "ARTIS entrance gate and kiosks",
+    "landmarkId": "extract_landmarks_2001162595",
+    "modelUrl": "./models/artis-entrance.glb",
+    "suppressOsmIds": [
+      "w269020382",
+      "NL.IMBAG.Pand.0363100012181131",
+      "w269020400",
+      "NL.IMBAG.Pand.0363100012181128"
+    ],
+    "footprint": {
+      "centre": [
+        4.912695619709629,
+        52.36720632230263
+      ],
+      "headingDegrees": 28.93815525735573,
+      "lengthMetres": 20.421311223951083,
+      "widthMetres": 3.0659945811082725
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 270.06184474264427,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.912695619709629,
+        52.36720632230263
+      ],
+      "northOffsetDegrees": 119,
+      "source": "Mapped individual OSM/BAG contours, native model +X bearing 209 degrees; street front +Z bearing 299 degrees."
+    },
+    "attribution": {
+      "title": "ARTIS entrance gate and kiosks",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.monumenten.nl/monument/4103",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction; no imported meshes or textures. Individual footprints preserve public Artisplein and neighboring Groote Museum."
+    }
+  },
+  {
+    "id": "hortus-greenhouses",
+    "name": "Hortus Botanicus \u2014 greenhouses and orangery",
+    "landmarkId": "hortus-botanicus",
+    "modelUrl": "./models/hortus-greenhouses.glb",
+    "suppressOsmIds": [
+      "w57863706",
+      "NL.IMBAG.Pand.0363100012181028",
+      "w57863916",
+      "NL.IMBAG.Pand.0363100012164942",
+      "w57856456",
+      "NL.IMBAG.Pand.0363100012182570"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.907562825146495,
+        52.36667455153043
+      ],
+      "headingDegrees": 115.67678459307069,
+      "lengthMetres": 135.42441302242912,
+      "widthMetres": 65.33673807094493
+    },
+    "surveyed": {
+      "anchor": [
+        4.907562825146495,
+        52.36667455153043
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 74.3,
+    "attribution": {
+      "title": "Hortus Botanicus \u2014 greenhouses and orangery",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.dehortus.nl/en/garden-and-greenhouses/climate-house/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of three separate surveyed buildings with no garden parcel fill: the 1911 Palm House circular dome/perpendicular wings, 2025 Climate House ETFE canopy and retained external steel cable skeleton, and historic orangery. Actual OpenStreetMap building outlines; official Hortus aerial photography and ZJA 2025 architect plan/section references. Heights and ornamental details approximate."
+    }
   }
 ]

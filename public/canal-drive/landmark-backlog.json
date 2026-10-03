@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 53,
+    "manual-model": 57,
     "catalogue-model": 12,
     "procedural-kit": 18,
-    "pending": 201
+    "pending": 198
   },
   "destinations": [
     {
@@ -196,7 +196,8 @@
       "type": "landmark",
       "queueRank": 15,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "artis-entrance",
       "treatment": "complex",
       "taskNote": "Preserve the zoo grounds, paths and mapped trees; model entrance and museum buildings individually."
     },
@@ -271,7 +272,8 @@
       "type": "landmark",
       "queueRank": 21,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "homomonument",
       "treatment": "memorial",
       "taskNote": "Model the three mapped pink granite triangles and waterside steps."
     },
@@ -643,7 +645,8 @@
       "type": "museum",
       "queueRank": 50,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "micropia-ledenlokalen",
       "treatment": "building"
     },
     {
@@ -3495,6 +3498,17 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "hart-museum",
+      "treatment": "building"
+    },
+    {
+      "id": "hortus-greenhouses",
+      "name": "Hortus Botanicus — greenhouses and orangery",
+      "lat": 52.36667455153043,
+      "lng": 4.907562825146495,
+      "queueRank": 285,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "hortus-greenhouses",
       "treatment": "building"
     }
   ]

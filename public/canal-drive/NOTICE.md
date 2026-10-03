@@ -130,7 +130,9 @@ He Hua Temple, Haarlemmerpoort, Museum Het Schip, Scheepvaarthuis, Rialto,
 Kriterion, De Bijenkorf, Gashouder, Stadsschouwburg, Tuschinski, Pathé City,
 Oude Kerk, Nieuwe Kerk, Buiksloterkerk, English Reformed Church, De Papegaai,
 De Hallen, Huis Bartolotti, H’ART Museum, Amsterdam Museum, Jewish Museum,
-Portuguese Synagogue, Hollandsche Schouwburg and National Holocaust Museum use the
+Portuguese Synagogue, Hollandsche Schouwburg, National Holocaust Museum and
+Homomonument, ARTIS Micropia/Ledenlokalen, ARTIS entrance and Hortus
+greenhouses/orangery use the
 same original modelling workflow in
 `scripts/landmarks/build-manual-landmarks.ts`. The live game loads these
 flat-colour replacements; the older imported catalogue remains available in

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "homomonument",
+    "osmId": "w37737807",
+    "ring": [
+      [
+        4.8846151,
+        52.3746131
+      ],
+      [
+        4.8849,
+        52.3744431
+      ],
+      [
+        4.8849867,
+        52.3743914
+      ],
+      [
+        4.8848743,
+        52.3743666
+      ],
+      [
+        4.8844757,
+        52.3742928
+      ],
+      [
+        4.8846151,
+        52.3746131
+      ]
+    ],
+    "corners": [
+      [
+        4.8846151,
+        52.3746131
+      ],
+      [
+        4.8849867,
+        52.3743914
+      ],
+      [
+        4.8844757,
+        52.3742928
+      ]
+    ],
+    "sources": [
+      {
+        "url": "https://www.openstreetmap.org/way/37737807",
+        "use": "Actual mapped whole-monument perimeter and three extreme corner positions; individual triangles derived from 10 m edges."
+      },
+      {
+        "url": "https://www.iamsterdam.com/en/whats-on/calendar/attractions-and-sights/sights/homomonument",
+        "use": "Three triangles, canal setting, Karin Daan design, placement directions and official exterior photographs."
+      },
+      {
+        "url": "https://en.wikipedia.org/wiki/Homomonument",
+        "use": "10 m triangle edges, 36 m total arrangement, raised platform and tapered waterside steps."
+      }
+    ],
+    "retrievedAt": "2026-10-04",
+    "notes": "Geometric interpretation of mapped outline, not a measured stonework survey. Individual triangle heights and stair treads approximate; no surrounding ground or host buildings replaced."
+  }
+]
