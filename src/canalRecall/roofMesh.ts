@@ -744,8 +744,10 @@ const UNMODELLED_OLD_WALL = '#7a4535', UNMODELLED_NEW_WALL = '#b9ad9a';
 export function exceptLandmarks<T extends GeoFeature>(decorate: (feature: T) => T, ids: ReadonlySet<string>, modelled: ReadonlySet<string> = new Set(), listed: ReadonlySet<string> = new Set()): (feature: T) => T {
   return (feature: T) => {
     const id = String(feature.properties.id ?? '');
-    if (!ids.size || !ids.has(id)) return decorate(feature);
+    // A kit part is the kit's own, landmark list or not: the Beurs van Berlage is not in the landmark
+    // list, so its halls took house windows under the kit roofs (user 2026-10-03: "why does it have windows???").
     if (modelled.has(id)) return feature;
+    if (!ids.size || !ids.has(id)) return decorate(feature);
     const p = feature.properties, height = Number(p.height), year = Number(p.constructionYear);
     const dated = p.constructionYear !== null && p.constructionYear !== undefined && Number.isFinite(year);
     if (dated && year < 1945 && height <= OLD_LANDMARK_MAX_M) return decorate(feature);

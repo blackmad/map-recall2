@@ -282,6 +282,8 @@ for (const c of [0.64, 1.4]) {
     assert.equal(wrapped(measuredBig), measuredBig, 'a measured colour is kept');
     const kitWrapped = exceptLandmarks(decorateRoof, ids, new Set([roofed]));
     assert.equal(kitWrapped(old), old, 'a kit-modelled landmark is never decorated');
+    const beurs = house('w749918651');
+    assert.equal(exceptLandmarks(decorateRoof, ids, new Set(['w749918651']))(beurs), beurs, 'a kit part outside the landmark list (Beurs van Berlage hall) is never decorated');
   }
   const measured = { type: 'Feature' as const, properties: { id: 'm', height: 14, facade: 'canal-priorBrickRed', facadeStyle: 'canal', roofEavesHeightM: 11.2 }, geometry: { type: 'Polygon', coordinates: [ring] } };
   assert.equal(decorateRoof(measured), measured, 'a measured roof is never overridden');

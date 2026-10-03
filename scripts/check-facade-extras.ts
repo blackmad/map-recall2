@@ -55,6 +55,19 @@ for (const comp of WALL_COMPONENTS) {
     assert.equal(sink.tris.length, 0, `${comp.id} needs a door`);
   }
 }
+// User report 2026-10-03 (Nassaukade, screenshots): heavy cornices and stray objects by the stoops.
+{
+  const outOf = (id: string, style: FacadeStyle, over: Partial<ExtraContext> = {}) => {
+    const sink = new ExtraSink(9999); WALL_COMPONENTS.find(c => c.id === id)!.build(wall(style, 'h1', over), sink, 0.4);
+    return { sink, out: Math.max(0, ...sink.tris.flatMap(t => t.p.map(p => -p[1]))) };
+  };
+  for (const id of ['kroonlijst', 'console-cornice', 'cornice-brackets']) assert.ok(outOf(id, 'c19').out <= 0.42, `${id} projects at most 0.42 m (${outOf(id, 'c19').out})`);
+  assert.equal(outOf('geveltuin', 'canal', { shopfront: true }).sink.tris.length, 0, 'no facade garden in front of a shop window');
+  assert.ok(Math.max(...outOf('geveltuin', 'canal').sink.tris.flatMap(t => t.p.map(p => p[2]))) <= 1.15, 'facade garden plants stay low (no green posts)');
+  // The light-well railing is bars, not a plate: no triangle wider than a rail is 0.75 m tall.
+  const well = outOf('basement-well', 'canal').sink;
+  assert.ok(well.tris.every(t => { const xs = t.p.map(p => p[0]), zs = t.p.map(p => p[2]); return Math.max(...xs) - Math.min(...xs) < 0.1 || Math.max(...zs) - Math.min(...zs) < 0.1; }), 'basement railing is openwork');
+}
 for (const comp of ROOF_COMPONENTS) {
   const sink = new ExtraSink(9999);
   comp.build({ id: 'r', style: comp.styles[0], rect: { cx: 0, cy: 0, ux: 1, uy: 0, len: 12, wid: 9 }, z: 14, wallHex: '#a4523b' }, sink, 0.4);
