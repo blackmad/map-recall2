@@ -895,10 +895,44 @@
       tiers: [],
       stacks: [],
       roofs: [],
-      halls: [{ id: "NL.IMBAG.Pand.0363100012167944", widthM: 30.6, anchor: [4.878429, 52.372973], eavesM: 16, riseM: 9, mat: "slate", towers: [
-        { at: [4.878461, 52.373017], widthM: 7.5, z1: 31, capM: 8.5, cap: "slate" },
-        { at: [4.878772, 52.373095], widthM: 7.5, z1: 31, capM: 8.5, cap: "slate" }
-      ] }]
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012167944",
+        widthM: 30.6,
+        anchor: [4.878429, 52.372973],
+        eavesM: 16,
+        riseM: 9,
+        mat: "slate",
+        towers: [
+          { at: [4.878461, 52.373017], widthM: 7.5, z1: 31, capM: 8.5, cap: "slate" },
+          { at: [4.878772, 52.373095], widthM: 7.5, z1: 31, capM: 8.5, cap: "slate" }
+        ],
+        // Openings read off Commons "Fatih moskee, Amsterdam 69.jpg" (the front, scaled by its 4.5 m
+        // door arches) and "Fatihmosquewesterkerkamsterdam.jpg" (the towers): three pointed door
+        // arches, four round-headed windows over them, a 3.6 m rose with star tracery in the gable,
+        // paired windows up each tower and a row of five belfry arches under the cornice. The photos
+        // show round heads, not pointed ones, everywhere but the doors. The nave's long walls stand
+        // behind 10-16 m neighbours; their tall windows are a guess from the plan, not a photo.
+        windows: {
+          glassHex: "#46505a",
+          frameHex: "#c9bda4",
+          // `at` points sit on the front wall: its middle, and in front of each tower.
+          rows: [
+            { z0: 0.3, z1: 4.6, widthM: 2.6, bayM: 3.1, head: "pointed", at: [4.8786371, 52.3730248], count: 3 },
+            { z0: 7.7, z1: 10.9, widthM: 1, bayM: 1.9, head: "round", at: [4.8786371, 52.3730248], count: 4 },
+            ...[[4.8784814, 52.372986], [4.8787927, 52.3730635]].flatMap((at) => [
+              { z0: 5.6, z1: 8.4, widthM: 0.85, bayM: 1.3, head: "flat", at, count: 2 },
+              { z0: 9.6, z1: 12.2, widthM: 0.85, bayM: 1.3, head: "flat", at, count: 2 },
+              { z0: 13.6, z1: 15.6, widthM: 0.85, bayM: 1.3, head: "round", at, count: 2 }
+            ]),
+            { z0: 6, z1: 13.5, widthM: 1.5, bayM: 4.5, head: "round" }
+          ],
+          roses: [{ at: [4.8786371, 52.3730248], z: 16, radiusM: 1.8 }],
+          towerRows: [
+            { z0: 18, z1: 20.8, widthM: 0.85, bayM: 1.3, head: "round", count: 2 },
+            { z0: 27.4, z1: 29.8, widthM: 0.75, bayM: 1.3, head: "round", count: 5 }
+          ]
+        }
+      }]
     },
     {
       // Obrechtkerk, Jacob Obrechtstraat: Jos Cuypers and Jan Stuyt's 1908-11 neo-Romanesque cross
@@ -1042,6 +1076,57 @@
           { at: [4.842958, 52.377514], widthM: 7, lenM: 12.5, z1: 37.5, capM: 10.5, cap: "slate", capShape: "slant", highBearingDeg: 2, bearingDeg: 2 }
         ]
       }]
+    },
+    {
+      // Koninklijk Theater Carré, Amstel 115-125: the 1887 circus building (user 2026-10-03:
+      // "Carre looks awful in that shot", one bare 28 m brick slab). One BAG footprint, 58 x 37 m on
+      // an axis of 17 degrees, its 37 m front on the Amstel at the west end with an 8 m central
+      // risalit standing 1.9 m proud. Commons "Carre_Theatre_2038.jpg" and "Overzicht op Carré gezien
+      // vanaf de overzijde van de Amstel - 20408841 - RCE.jpg" (straight on, scaled by the 37 m
+      // front): a cream stuccoed neo-Renaissance front, a grey stone ground storey of round arches
+      // to 4.5 m, three rows of windows (5-8 m, 9-11.5 m, 14.5-16.5 m), the cornice at 19 m and a
+      // pediment over the risalit to 21.5 m. Behind it the whole block sits under one pale zinc
+      // cloister dome (Commons "Theater Carre - Amsterdam - 20015613 - RCE.jpg" and "Amsterdam - Amstel -
+      // Hoge Sluis - View North towards Carré Theatre.jpg" show its curved sides from the south west)
+      // with a flat top and the CARRÉ sign box; BAG 28.3 m is the box's top. The front's
+      // ends are pilastered bays, not raised pavilions. The 8.7 m strip on the north (Bridge Hotel)
+      // side and its round stair turret keep the eaves under low hipped roofs and the flat lid.
+      name: "Carr\xE9",
+      wall: { plain: true, hex: "#e2d8c2", flat: true },
+      tiers: [],
+      stacks: [],
+      roofs: [],
+      halls: [{
+        id: "NL.IMBAG.Pand.0363100012165489",
+        widthM: 0,
+        anchor: [4.903937, 52.362186],
+        eavesM: 19,
+        riseM: 8,
+        mat: "lead",
+        roofHex: "#98a299",
+        wings: [
+          { at: [4.904268, 52.362423], lenM: 58.3, widM: 37.1, bearingDeg: 17, riseM: 8, roof: "dome", insetM: 13 },
+          { at: [4.903873, 52.362349], lenM: 6, widM: 8, bearingDeg: 17, riseM: 2.5 },
+          { at: [4.904316, 52.362648], lenM: 31.4, widM: 8.7, bearingDeg: 17, riseM: 1.5, roof: "hipped" },
+          { at: [4.904043, 52.362572], lenM: 9.1, widM: 3.4, bearingDeg: 17, riseM: 1, roof: "hipped" }
+        ],
+        towers: [
+          // The CARRÉ sign box on the dome's flat top, behind the pediment: 8.4 m across the front.
+          { at: [4.904079, 52.362387], widthM: 3.5, lenM: 8.4, z0: 26.6, z1: 28, capM: 0.3, cap: "lead", capShape: "slant", highBearingDeg: 17, bearingDeg: 17, mat: "white", wallHex: "#ece6da" },
+          // The round stair turret at the back (south east) corner: a low zinc cap, a guess (no photo shows it).
+          { at: [4.904677, 52.362304], widthM: 7.6, shape: "octagon", z0: 18.4, z1: 19, capM: 1.6, cap: "lead", capShape: "dome", capHex: "#98a299", mat: "white", wallHex: "#e2d8c2", bearingDeg: 17 }
+        ],
+        windows: {
+          glassHex: "#3b4148",
+          plinth: { z1: 4.6, hex: "#8c877d" },
+          rows: [
+            { z0: 0.4, z1: 3.9, widthM: 2.2, bayM: 3.7, head: "round" },
+            { z0: 5.2, z1: 8, widthM: 1.4, bayM: 3.7, head: "flat" },
+            { z0: 9.3, z1: 11.6, widthM: 1.4, bayM: 3.7, head: "flat" },
+            { z0: 14.6, z1: 16.3, widthM: 1.4, bayM: 3.7, head: "flat" }
+          ]
+        }
+      }]
     }
   ];
   var KIT_PART_IDS = new Set(KITS.flatMap((k) => [...k.tiers.map((t) => t.id), ...k.stacks.map((s) => s.onId), ...k.roofs.map((r) => r.id), ...(k.halls ?? []).map((h) => h.id), ...k.hides ?? []]));
@@ -1160,6 +1245,138 @@
     }
     stage(sink, cx, cy, ang, "octagon", 0.35, 0, t.z1 + t.capM, t.z1 + t.capM + 1.6, "gold");
   }
+  function cloisterDome(sink, rect, z0, rise, inset, hex2) {
+    const { cx, cy, ux, uy } = rect, vx = -uy, vy = ux;
+    const ring = (d, z) => [[-1, -1], [1, -1], [1, 1], [-1, 1]].map(([i, j]) => [cx + ux * i * (rect.len / 2 - d) + vx * j * (rect.wid / 2 - d), cy + uy * i * (rect.len / 2 - d) + vy * j * (rect.wid / 2 - d), z]);
+    const steps = [0, 22, 45, 67, 90].map((deg) => deg * Math.PI / 180);
+    let lower = ring(0, z0);
+    for (let s = 1; s < steps.length; s++) {
+      const upper = ring(inset * (1 - Math.cos(steps[s])), z0 + rise * Math.sin(steps[s]));
+      for (let k = 0; k < 4; k++) {
+        const k1 = (k + 1) % 4, mx = (lower[k][0] + lower[k1][0]) / 2 - cx, my = (lower[k][1] + lower[k1][1]) / 2 - cy;
+        const hint = [mx, my, Math.hypot(mx, my) * 0.3];
+        const side = Math.hypot(lower[k1][0] - lower[k][0], lower[k1][1] - lower[k][1]);
+        const v0 = (s - 1) * 1.6, v1 = s * 1.6;
+        sink.tri(lower[k], lower[k1], upper[k1], [0, v0], [side / 5, v0], [side / 5, v1], "slope", hex2, hint);
+        sink.tri(lower[k], upper[k1], upper[k], [0, v0], [side / 5, v1], [0, v1], "slope", hex2, hint);
+      }
+      lower = upper;
+    }
+    sink.tri(lower[0], lower[1], lower[2], [0, 0], [1, 0], [1, 1], "slope", hex2, [0, 0, 1]);
+    sink.tri(lower[0], lower[2], lower[3], [0, 0], [1, 1], [0, 1], "slope", hex2, [0, 0, 1]);
+  }
+  var GLASS_HEX = "#2c333b";
+  var OFF = { plinth: 0.04, frame: 0.07, glass: 0.1, tracery: 0.13 };
+  function openingOutline(s0, s1, z0, z1, head) {
+    const w = s1 - s0, mid = (s0 + s1) / 2;
+    if (head === "flat" || z1 - z0 < w) return [[s0, z0], [s1, z0], [s1, z1], [s0, z1]];
+    if (head === "round") {
+      const r = w / 2, zb2 = z1 - r, arc = [];
+      for (let k = 0; k <= 4; k++) {
+        const a = k * Math.PI / 4;
+        arc.push([mid + Math.cos(a) * r, zb2 + Math.sin(a) * r]);
+      }
+      return [[s0, z0], [s1, z0], ...arc];
+    }
+    const zb = z1 - 0.8 * w, shoulder = zb + 0.5 * (z1 - zb);
+    return [[s0, z0], [s1, z0], [s1, zb], [s1 - 0.12 * w, shoulder], [mid, z1], [s0 + 0.12 * w, shoulder], [s0, zb]];
+  }
+  function wallPolygon(sink, o, t, n, off, pts, hex2) {
+    const at = ([s, z]) => [o[0] + t[0] * s + n[0] * off, o[1] + t[1] * s + n[1] * off, z];
+    const hint = [n[0], n[1], 0];
+    for (let k = 1; k + 1 < pts.length; k++) sink.tri(at(pts[0]), at(pts[k]), at(pts[k + 1]), [0, 0], [1, 0], [1, 1], "flat", hex2, hint);
+  }
+  function opening(sink, o, t, n, s, row, glass, frame) {
+    const head = row.head ?? "round", w = row.widthM;
+    if (frame) wallPolygon(sink, o, t, n, OFF.frame, openingOutline(s - w / 2 - 0.18, s + w / 2 + 0.18, row.z0 - 0.15, row.z1 + 0.18, head), frame);
+    wallPolygon(sink, o, t, n, OFF.glass, openingOutline(s - w / 2, s + w / 2, row.z0, row.z1, head), glass);
+  }
+  function roseWindow(sink, o, t, n, s, rose, glass, stone) {
+    const disc = (r2, k = 12) => Array.from({ length: k }, (_, i) => [s + Math.cos(i * 2 * Math.PI / k) * r2, rose.z + Math.sin(i * 2 * Math.PI / k) * r2]);
+    const r = rose.radiusM;
+    wallPolygon(sink, o, t, n, OFF.frame, disc(r + 0.3), stone);
+    wallPolygon(sink, o, t, n, OFF.glass, disc(r), glass);
+    for (let i = 0; i < 3; i++) {
+      const a = i * Math.PI / 3, ca = Math.cos(a), sa = Math.sin(a), px = -sa * 0.09, pz = ca * 0.09;
+      wallPolygon(sink, o, t, n, OFF.tracery, [[s - ca * r + px, rose.z - sa * r + pz], [s - ca * r - px, rose.z - sa * r - pz], [s + ca * r - px, rose.z + sa * r - pz], [s + ca * r + px, rose.z + sa * r + pz]], stone);
+    }
+    wallPolygon(sink, o, t, n, OFF.tracery, disc(r * 0.26, 8), stone);
+  }
+  function wallEdges(ring) {
+    const pts = ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1] ? ring.slice(0, -1) : ring.slice();
+    let area2 = 0;
+    for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) area2 += pts[j][0] * pts[i][1] - pts[i][0] * pts[j][1];
+    const sign = area2 >= 0 ? 1 : -1;
+    return pts.map((a, i) => {
+      const b = pts[(i + 1) % pts.length], len = Math.hypot(b[0] - a[0], b[1] - a[1]), t = len ? [(b[0] - a[0]) / len, (b[1] - a[1]) / len] : [1, 0];
+      return { o: a, t, n: [t[1] * sign, -t[0] * sign], len };
+    });
+  }
+  function nearestEdge(edges, p) {
+    let best = { edge: 0, s: 0, d: Infinity };
+    edges.forEach((e, i) => {
+      const s = (p[0] - e.o[0]) * e.t[0] + (p[1] - e.o[1]) * e.t[1], c = Math.max(0, Math.min(e.len, s));
+      const d = Math.hypot(e.o[0] + e.t[0] * c - p[0], e.o[1] + e.t[1] * c - p[1]);
+      if (d < best.d) best = { edge: i, s, d };
+    });
+    return best;
+  }
+  function kitWindows(sink, ring, spec, win, towerAng) {
+    const edges = wallEdges(ring), glass = win.glassHex ?? GLASS_HEX, stone = win.frameHex ?? MAT_HEX.stone;
+    if (win.plinth) {
+      for (const e of edges) if (e.len >= 0.2) wallPolygon(sink, e.o, e.t, e.n, OFF.plinth, [[0, 0], [e.len, 0], [e.len, win.plinth.z1], [0, win.plinth.z1]], win.plinth.hex);
+    }
+    const inTower = (p) => (spec.towers ?? []).some((t) => {
+      const [cx, cy] = toLocal(t.at), a = towerAng(t), dx = p[0] - cx, dy = p[1] - cy;
+      return Math.abs(dx * Math.cos(a) + dy * Math.sin(a)) < t.widthM / 2 + 0.4 && Math.abs(-dx * Math.sin(a) + dy * Math.cos(a)) < (t.lenM ?? t.widthM) / 2 + 0.4;
+    });
+    const placed = win.rows.filter((r) => r.at).map((r) => ({ row: r, ...nearestEdge(edges, toLocal(r.at)) }));
+    const claimed = /* @__PURE__ */ new Set();
+    const plane = (edge) => {
+      const a = edges[edge];
+      let out = 0;
+      edges.forEach((e, i) => {
+        const along = e.t[0] * a.t[0] + e.t[1] * a.t[1], off = (e.o[0] - a.o[0]) * a.n[0] + (e.o[1] - a.o[1]) * a.n[1];
+        if (along > 0.995 && Math.abs(off) < 0.4) {
+          claimed.add(i);
+          out = Math.max(out, off);
+        }
+      });
+      return { ...a, o: [a.o[0] + a.n[0] * out, a.o[1] + a.n[1] * out] };
+    };
+    for (const { row, edge, s } of placed) {
+      const e = plane(edge), n = row.count ?? 1;
+      for (let k = 0; k < n; k++) opening(sink, e.o, e.t, e.n, s + (k - (n - 1) / 2) * row.bayM, row, glass, win.frameHex);
+    }
+    for (const row of win.rows) {
+      if (row.at || row.z1 > spec.eavesM) continue;
+      edges.forEach((e, i) => {
+        if (claimed.has(i) || e.len < row.widthM + 1) return;
+        const n = Math.max(1, Math.floor(e.len / row.bayM));
+        for (let k = 0; k < n; k++) {
+          const s = (k + 0.5) * e.len / n;
+          if (!inTower([e.o[0] + e.t[0] * s + e.n[0] * 0.5, e.o[1] + e.t[1] * s + e.n[1] * 0.5])) opening(sink, e.o, e.t, e.n, s, row, glass, win.frameHex);
+        }
+      });
+    }
+    for (const rose of win.roses ?? []) {
+      const { edge, s } = nearestEdge(edges, toLocal(rose.at)), e = plane(edge);
+      roseWindow(sink, e.o, e.t, e.n, s, rose, glass, stone);
+    }
+    for (const t of spec.towers ?? []) {
+      if ((t.shape ?? "square") !== "square" || t.lenM !== void 0 || t.capShape === "slant") continue;
+      const [cx, cy] = toLocal(t.at), a = towerAng(t), half = t.widthM / 2;
+      for (let f = 0; f < 4; f++) {
+        const na = a + f * Math.PI / 2, n = [Math.cos(na), Math.sin(na)], tt = [-n[1], n[0]];
+        const o = [cx + n[0] * half - tt[0] * half, cy + n[1] * half - tt[1] * half];
+        for (const row of win.towerRows ?? []) {
+          if (row.z1 > t.z1 - 0.6 || row.z0 < (t.z0 ?? 0)) continue;
+          const count = row.count ?? Math.max(1, Math.floor(t.widthM / row.bayM));
+          for (let k = 0; k < count; k++) opening(sink, o, tt, n, half + (k - (count - 1) / 2) * row.bayM, row, glass, win.frameHex);
+        }
+      }
+    }
+  }
   function kitGeometry(kit, parts) {
     const out = /* @__PURE__ */ new Map();
     const sinkFor = (id) => {
@@ -1205,7 +1422,7 @@
     for (const spec of kit.halls ?? []) {
       const part = parts.get(spec.id);
       if (!part) continue;
-      const sink = sinkFor(spec.id), hex2 = MAT_HEX[spec.mat === "tile" ? "tile" : spec.mat === "lead" ? "lead" : "slate"], gable = kit.wall?.hex ?? MAT_HEX.brick;
+      const sink = sinkFor(spec.id), hex2 = spec.roofHex ?? MAT_HEX[spec.mat === "tile" ? "tile" : spec.mat === "lead" ? "lead" : "slate"], gable = kit.wall?.hex ?? MAT_HEX.brick;
       const plan = { kind: "pitched", gable: "plain", riseM: spec.riseM, dormers: false, material: "slate", tone: 0, seed: spec.id, chimney: false };
       for (const rect of hallRects(part.ring, spec.widthM, toLocal(spec.anchor))) {
         for (const t of roofTriangles(rect, plan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
@@ -1216,6 +1433,10 @@
       for (const wing of spec.wings ?? []) {
         const [cx, cy] = toLocal(wing.at), b = wing.bearingDeg * Math.PI / 180;
         const rect = { cx, cy, ux: Math.cos(b), uy: Math.sin(b), len: wing.lenM, wid: wing.widM, coverage: 1, maxDev: 0 };
+        if (wing.roof === "dome") {
+          cloisterDome(sink, rect, spec.eavesM, wing.riseM, wing.insetM ?? Math.min(wing.lenM, wing.widM) * 0.35, hex2);
+          continue;
+        }
         const wingPlan = { ...plan, kind: wing.roof === "hipped" ? "hipped" : "pitched", riseM: wing.riseM };
         for (const t of roofTriangles(rect, wingPlan, spec.eavesM, { bayM: 5, storeyM: 3.1, cellM: 1.2 })) {
           const slope = t.part === "slope";
@@ -1223,7 +1444,9 @@
         }
       }
       const axis = hallRects(part.ring, spec.widthM, toLocal(spec.anchor))[0], ang = axis ? Math.atan2(axis.uy, axis.ux) : 0;
-      for (const tower of spec.towers ?? []) towerParts(sink, tower, toLocal(tower.at), tower.bearingDeg === void 0 ? ang : tower.bearingDeg * Math.PI / 180, part.minHeightM, gable);
+      const towerAng = (tower) => tower.bearingDeg === void 0 ? ang : tower.bearingDeg * Math.PI / 180;
+      for (const tower of spec.towers ?? []) towerParts(sink, tower, toLocal(tower.at), towerAng(tower), part.minHeightM, gable);
+      if (spec.windows) kitWindows(sink, part.ring, spec, spec.windows, towerAng);
     }
     return [...out].map(([id, sink]) => ({ id, tris: sink.out }));
   }
@@ -1466,19 +1689,19 @@
     { id: "kroonlijst", styles: CANAL, p: { canal: 0.6, c19: 0.15 }, wide: true, street: true, group: "crown", build: (c, s, r) => {
       if (c.roofKind === "gable") return;
       const t = c.top, hex2 = r < 0.75 ? WHITE2 : CREAM2;
-      s.box(c.f, 0, c.f.len, 0, 0.3, t - 0.5, t - 0.34, hex2, true);
-      s.box(c.f, 0, c.f.len, 0, 0.55, t - 0.34, t - 0.12, hex2, true);
-      s.box(c.f, 0, c.f.len, 0, 0.68, t - 0.12, t, hex2, true);
-      for (const x of pierXs(c).slice(0, 6)) s.box(c.f, Math.max(0, x - 0.11), Math.min(c.f.len, x + 0.11), 0.05, 0.4, t - 0.88, t - 0.5, hex2);
+      s.box(c.f, 0, c.f.len, 0, 0.16, t - 0.4, t - 0.28, hex2, true);
+      s.box(c.f, 0, c.f.len, 0, 0.3, t - 0.28, t - 0.1, hex2, true);
+      s.box(c.f, 0, c.f.len, 0, 0.4, t - 0.1, t, hex2, true);
+      for (const x of pierXs(c).slice(0, 6)) s.box(c.f, Math.max(0, x - 0.09), Math.min(c.f.len, x + 0.09), 0.04, 0.26, t - 0.7, t - 0.4, hex2);
     } },
     { id: "console-cornice", styles: ["c19", "canal"], p: { c19: 0.4, canal: 0.12 }, wide: true, street: true, group: "crown", build: (c, s) => {
       if (c.roofKind === "gable") return;
       const t = c.top;
-      s.strip(c.f, 0, c.f.len, 0.04, t - 0.62, t - 0.32, CREAM2);
-      s.box(c.f, 0, c.f.len, 0, 0.55, t - 0.32, t - 0.12, CREAM2, true);
-      s.box(c.f, 0, c.f.len, 0, 0.66, t - 0.12, t, WHITE2, true);
+      s.strip(c.f, 0, c.f.len, 0.04, t - 0.52, t - 0.26, CREAM2);
+      s.box(c.f, 0, c.f.len, 0, 0.28, t - 0.26, t - 0.1, CREAM2, true);
+      s.box(c.f, 0, c.f.len, 0, 0.38, t - 0.1, t, WHITE2, true);
       const piers = pierXs(c), ends = piers.length > 2 ? [piers[0], piers[Math.floor(piers.length / 2)], piers[piers.length - 1]] : piers;
-      for (const x of ends) for (const dx of [-0.16, 0.08]) s.box(c.f, Math.max(0, x + dx), Math.min(c.f.len, x + dx + 0.08), 0.04, 0.45, t - 0.62, t - 0.32, CREAM2);
+      for (const x of ends) for (const dx of [-0.14, 0.07]) s.box(c.f, Math.max(0, x + dx), Math.min(c.f.len, x + dx + 0.07), 0.04, 0.26, t - 0.52, t - 0.26, CREAM2);
     } },
     { id: "corbel-roofline", styles: ["school"], p: 0.45, wide: true, street: true, group: "crown", build: (c, s) => {
       const t = c.top, brick = shadeHex(c.wallHex, 0.82);
@@ -1520,7 +1743,8 @@
       const d = doorSpan(c);
       if (!d || !c.groundLevel) return;
       const l = d.x - d.hw - 0.05, rr = d.x + d.hw + 0.05, top = c.base + c.layout.groundM - 0.15;
-      s.strip(c.f, l, rr, 0.02, c.base, top - 0.25, "#2a2522");
+      s.strip(c.f, l, rr, 0.02, c.base, top - 0.25, "#5b4c42");
+      s.strip(c.f, d.x - d.hw + 0.12, d.x + d.hw - 0.12, 0.03, c.base + 0.8, top - 0.45, ["#2c4f33", "#1f3550", "#7a1f2b", "#3a3f45"][Math.floor(hash012(`${c.id}:pd`) * 4)]);
       s.box(c.f, l - 0.22, l, 0, 0.14, c.base, top, STONE2);
       s.box(c.f, rr, rr + 0.22, 0, 0.14, c.base, top, STONE2);
       s.box(c.f, l - 0.26, rr + 0.26, 0, 0.18, top - 0.3, top + 0.12, STONE2, true);
@@ -1765,7 +1989,8 @@
       if (!c.groundLevel) return;
       const xs = windowXs(c);
       const x = xs[xs.length - 1];
-      s.box(c.f, x - 0.6, x + 0.6, 0.6, 0.65, c.base, c.base + 0.75, IRON2);
+      s.strip(c.f, x - 0.6, x + 0.6, 0.62, c.base + 0.72, c.base + 0.76, IRON2, 0.03);
+      for (const dx of [-0.6, -0.3, 0, 0.3, 0.6]) s.strip(c.f, x + dx - 0.015, x + dx + 0.015, 0.62, c.base, c.base + 0.74, IRON2, 0.03);
     } },
     { id: "wall-anchors", styles: ["canal"], p: 0.5, build: (c, s) => {
       for (let k = 0; k < Math.min(3, c.layout.storeys); k++) for (const x of [0.5, c.f.len - 0.5]) {
@@ -1810,13 +2035,13 @@
       }
     } },
     { id: "geveltuin", styles: ["canal", "c19", "school"], p: 0.3, build: (c, s, r) => {
-      if (!c.groundLevel) return;
+      if (!c.groundLevel || c.shopfront) return;
       const d = doorX(c);
-      for (let x = 0.3; x < Math.min(c.f.len - 0.3, 8); x += 0.55) {
-        if (d != null && Math.abs(x - d) < 0.7) continue;
-        const h = 0.8 + hash012(`${c.id}:${x}`) * 1.4;
-        s.box(c.f, x - 0.08, x + 0.08, 0.05, 0.3, c.base, c.base + h, GREEN);
-        if (hash012(`${c.id}:f${x}`) < 0.5) s.box(c.f, x - 0.12, x + 0.12, 0.05, 0.33, c.base + h - 0.4, c.base + h, pickOf2(["#e84a7f", "#f2b92e", "#c04fd0", "#ffffff"], r + x));
+      for (let x = 0.45; x < Math.min(c.f.len - 0.45, 6); x += 0.9) {
+        if (d != null && Math.abs(x - d) < 0.9) continue;
+        const h = 0.4 + hash012(`${c.id}:${x}`) * 0.6;
+        s.box(c.f, x - 0.32, x + 0.32, 0.02, 0.28, c.base, c.base + h, hash012(`${c.id}:g${x}`) < 0.5 ? GREEN : DARKGREEN);
+        if (hash012(`${c.id}:f${x}`) < 0.4) s.box(c.f, x - 0.2, x + 0.2, 0.05, 0.3, c.base + h, c.base + h + 0.12, pickOf2(["#e84a7f", "#f2b92e", "#c04fd0", "#ffffff"], r + x));
       }
     } },
     { id: "climbing-ivy", styles: ALL, p: 0.08, build: (c, s) => {
@@ -1844,8 +2069,8 @@
     } },
     { id: "cornice-brackets", group: "crown", styles: ["c19", "canal"], p: 0.35, build: (c, s) => {
       const z = c.top - 0.15;
-      s.box(c.f, 0, c.f.len, 0, 0.45, z - 0.15, z + 0.1, STONE3, true);
-      for (let x = 0.4; x < c.f.len - 0.2; x += 1.1) s.box(c.f, x - 0.08, x + 0.08, 0, 0.35, z - 0.55, z - 0.15, STONE3);
+      s.box(c.f, 0, c.f.len, 0, 0.3, z - 0.1, z + 0.1, STONE3, true);
+      for (let x = 0.4; x < c.f.len - 0.2; x += 1.1) s.box(c.f, x - 0.06, x + 0.06, 0, 0.24, z - 0.42, z - 0.1, STONE3);
     } },
     { id: "door-canopy", group: "door-frame", styles: ["c19", "school", "postwar"], p: 0.25, build: (c, s) => {
       const x = doorX(c);
@@ -1932,10 +2157,12 @@
       if (!c.groundLevel) return;
       const n = 1 + Math.floor(r * 4), x0 = hash012(`${c.wallKey}:bx`) * Math.max(0, c.f.len - n * 0.7);
       for (let k = 0; k < n; k++) {
-        const x = x0 + k * 0.7, hex2 = pickOf2(["#1d1d1f", "#2f5d8a", "#7a1f2b", "#3f6f5a", "#c9a227"], hash012(`${c.wallKey}:bc${k}`));
-        s.box(c.f, x - 0.03, x + 0.03, 0.15, 1.9, c.base + 0.3, c.base + 0.6, hex2);
-        s.box(c.f, x - 0.02, x + 0.02, 0.15, 0.25, c.base, c.base + 0.95, hex2);
-        s.box(c.f, x - 0.02, x + 0.02, 1.75, 1.85, c.base, c.base + 0.9, hex2);
+        const x = x0 + k * 0.7, hex2 = pickOf2(["#1d1d1f", "#2f3d4a", "#4a1f25", "#2c3f36"], hash012(`${c.wallKey}:bc${k}`));
+        for (const v of [0.2, 1.25]) s.box(c.f, x - 0.015, x + 0.015, v, v + 0.62, c.base + 0.02, c.base + 0.64, "#202224");
+        s.box(c.f, x - 0.025, x + 0.025, 0.5, 1, c.base + 0.55, c.base + 0.6, hex2);
+        s.box(c.f, x - 0.025, x + 0.025, 0.95, 1.02, c.base + 0.3, c.base + 0.95, hex2);
+        s.box(c.f, x - 0.06, x + 0.06, 0.42, 0.62, c.base + 0.88, c.base + 0.94, "#141414");
+        s.box(c.f, x - 0.25, x + 0.25, 1.05, 1.1, c.base + 0.98, c.base + 1.02, hex2);
       }
     } },
     { id: "bike-racks", styles: ["school", "postwar", "modern"], p: 0.2, build: (c, s) => {
@@ -1952,8 +2179,9 @@
       const x = doorX(c);
       if (x == null) return;
       const z = c.base + 2.3;
-      s.box(c.f, x + 0.6, x + 0.64, 0, 0.3, z + 0.3, z + 0.34, IRON2);
-      s.box(c.f, x + 0.52, x + 0.72, 0.2, 0.4, z, z + 0.3, "#f3d58a");
+      s.box(c.f, x + 0.6, x + 0.63, 0, 0.22, z + 0.26, z + 0.29, IRON2);
+      s.box(c.f, x + 0.56, x + 0.67, 0.14, 0.25, z, z + 0.24, IRON2);
+      s.box(c.f, x + 0.575, x + 0.655, 0.13, 0.26, z + 0.04, z + 0.2, "#e8c878");
     } },
     { id: "house-flag", styles: ["canal", "c19"], p: 0.06, build: (c, s, r) => {
       const z = storeyZ2(c, 0) + 0.5;

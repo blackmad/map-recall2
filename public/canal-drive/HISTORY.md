@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## Stray facade objects, slimmer cornices, Carré, Fatih windows, chain supermarkets
+
+User (2026-10-03), screenshots at Da Costakade: "these overhangs look a little heavy / too wide", "what's these random artifacts in front of buildings?", "not sure what these are", "bad mix", and of a hand-modelled church "why does it have windows???". Earlier: "Carre looks awful in that shot?", "Work on museums, movie theaters and grocery stores".
+
+- **Stray objects were facade extras** (`facadeExtras.ts`, `facadeOrnaments.ts`), each redrawn and pinned in `check-facade-extras.ts`:
+  - The dark slab by the stoops was the light-well railing, drawn as one solid iron plate. It is now openwork bars.
+  - The green posts were facade-garden stalks up to 2.2 m tall. They are now low clumps (at most 1.15 m), never in front of a shop window.
+  - The yellow box was a 20 cm door lantern. It is now a small black lantern on a bracket.
+  - The yellow bar sticking out was a parked bike drawn as one coloured tube. Bikes now have wheels, frame, saddle and bars, in dark colours.
+  - The black doorway was the portiek recess. It is now a warm shadow with a painted door.
+- **Cornices:** the kroonlijst went from 0.68 m to 0.4 m deep, the console cornice from 0.66 m to 0.38 m, and the bracket cornice from 0.45 m to 0.3 m. Checked to be at most 0.42 m.
+- **Kit parts never take a house facade.** The landmark wrapper used to check the landmark list first. The Beurs van Berlage is not on that list, so its kit-roofed halls got house windows under the kit roofs, and the two fought.
+- **Carré:** hand-modelled from Commons photos and the BAG footprint:
+  - cream stucco to a 19 m cornice over a grey stone ground storey;
+  - round arches and three window rows;
+  - a pediment to 21.5 m;
+  - a zinc cloister dome to 27 m with a sign box at the BAG 28.3 m.
+- **Windows on kit walls:** opt in with `windows` on a kit's halls; other kits are unchanged and are checked to draw no glass. Fatih has a 3.6 m rose window, door arches, tower windows and belfry arches, and round-headed nave windows.
+  - Its windows are round-headed, following the photos, not pointed.
+  - Cost: Fatih goes from 70 to 1,114 triangles, Carré from 166 to 816.
+- **Chain supermarkets:** `npm run build:supermarkets` runs Overpass through the maps.mail.ru mirror and caches the results in the scrape store.
+  - It matched 258 of 270 ground-floor chain stores to 245 buildings: AH 126, Jumbo 25, Lidl 17, Spar 18, Vomar 15, Dirk 15, Ekoplaza 16, Aldi 6, DekaMarkt 4, Plus 3. The 12 unmatched stand 10–48 m from any footprint in the tiles.
+  - They get large glazing, a fascia in the chain colour and a logo panel on the street wall nearest the store.
+  - The brand word is drawn in a 5×7 block font (`blockLetters.ts`).
+  - Colours come from each chain's Commons logo. Dirk's red is from memory, and Ekoplaza's green is a guess at its fascia.
+- **Street rhythm:** a study and a pure prototype (`streetEnsembles.ts`). The plan is in TODO under "Street ensembles".
+
 ## Kit-less landmarks: house-sized old ones get a period facade, big ones period brick
 
 User (2026-10-03), after Fatih rendered as a 37 m green box: "More? Landmarks?"
