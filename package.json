@@ -154,6 +154,7 @@
     "test:roof-shapes": "tsx scripts/check-roof-shapes.ts",
     "build:supermarkets": "tsx scripts/build-supermarkets.ts",
     "build:worship-buildings": "tsx scripts/build-worship-buildings.ts",
+    "build:public-buildings": "tsx scripts/build-public-buildings.ts",
     "test:map-recall-trivia": "tsx scripts/check-map-recall-trivia.ts",
     "test:locate-hints": "tsx scripts/check-locate-hints.ts",
     "test:neighborhood-gaps": "tsx scripts/check-neighborhood-gaps.ts && tsx scripts/check-neighborhood-trivia-data.ts && tsx scripts/check-city-extracts.ts",
