@@ -456,6 +456,85 @@ for (const c of [0.64, 1.4]) {
   assert.ok(top > 39 && top < 43, `towers about 40 m with caps (${top.toFixed(1)})`);
   const nave = tris.filter(t => t.layer === 'slope'), ridge = Math.max(...nave.flatMap(t => t.p.map(p => p[2])));
   assert.ok(nave.length && Math.abs(ridge - (spec.eavesM + spec.riseM)) < 0.5, `nave ridge at ${ridge.toFixed(1)} m`);
+  // Windows (user 2026-10-03: "how does Fatih look", bare dark brick): the front carries three
+  // door arches, four windows and the rose in the gable between the towers, the towers their
+  // paired windows and belfry arches; all of it is glass a hand's breadth proud of the walls.
+  const glass = kit.halls![0].windows!.glassHex!, panes = tris.filter(t => t.hex === glass);
+  const bare = geometry({ ...kit, halls: kit.halls!.map(h => ({ ...h, windows: undefined })) }, new Map([[id, { id, ring, minHeightM: 0, heightM: 37.31 }]]))[0].tris;
+  assert.ok(tris.length - bare.length < 1500, `windows cost ${tris.length - bare.length} triangles`);
+  const front = toL([4.8786371, 52.3730248]);
+  const near = (r: number, z0: number, z1: number) => panes.filter(t => t.p.every(p => Math.hypot(p[0] - front[0], p[1] - front[1]) < r && p[2] >= z0 && p[2] <= z1));
+  assert.ok(near(2.3, 14, 18).length >= 10, 'a rose window in the gable between the towers');
+  assert.ok(near(3.6, 7.5, 11).length >= 4 * 5, 'four round-headed windows over the doors');
+  assert.ok(panes.some(t => t.p.every(p => p[2] > 27 && p[2] < 30.5)), 'belfry arches under the tower cornices');
+  // The front is mapped as several collinear pieces; the nave's fill row must leave all of them to the placed rows.
+  const [ax, ay] = toL([4.878429, 52.372973]), [bx, by] = toL([4.878843, 52.373076]), fl = Math.hypot(bx - ax, by - ay);
+  const onFrontLine = (p: number[]) => Math.abs(((p[0] - ax) * (by - ay) - (p[1] - ay) * (bx - ax)) / fl) < 0.4;
+  assert.ok(!panes.some(t => t.p.every(onFrontLine) && t.p.some(p => p[2] > 12.4 && p[2] < 13.55)), 'no nave window on the front');
+  // Those pieces jog 0.2 m in and out: the front's openings stand proud of the outermost one, not behind it.
+  const inward = toL(spec.towers![0].at), side = Math.sign(((inward[0] - ax) * (by - ay) - (inward[1] - ay) * (bx - ax)) / fl);
+  const outward = (p: number[]) => -side * ((p[0] - ax) * (by - ay) - (p[1] - ay) * (bx - ax)) / fl;
+  const wallFace = Math.max(...ring.filter(onFrontLine).map(outward));
+  assert.ok(near(3.6, 7.5, 11).every(t => t.p.every(p => outward(p) > wallFace + 0.05)), 'front windows in front of every piece of the wall');
+  assert.ok(panes.every(t => Math.abs(t.n[2]) < 1e-6), 'panes are upright, in their walls');
+}
+
+{
+  // Carré, Amstel 115-125 (user 2026-10-03: "Carre looks awful in that shot", one bare 28 m brick
+  // slab): a cream stuccoed front with a grey stone ground storey and rows of windows, walls to
+  // the 19 m cornice, a pediment over the risalit, and one pale cloister dome over the whole block
+  // with the sign box on its flat top at BAG's 28.3 m.
+  const { readFileSync } = await import('node:fs');
+  const { gunzipSync } = await import('node:zlib');
+  const { KITS: kits, decorateKitRoof: decorate, kitGeometry: geometry } = await import('../src/canalRecall/landmarkKits.ts');
+  const tile = JSON.parse(gunzipSync(readFileSync('public/data/extracts/amsterdam/building-tiles/14/8415/5384.geojson.gz')).toString());
+  const id = 'NL.IMBAG.Pand.0363100012165489', f = tile.features.find((x: any) => x.properties.id === id);
+  assert.ok(f, 'Carré footprint is in its tile');
+  const landmarks = JSON.parse(readFileSync('public/data/extracts/amsterdam/landmark-buildings.json', 'utf8'));
+  assert.deepEqual(landmarks.buildings.extract_landmarks_1137362739, [id], 'the Royal Theater Carré landmark is this one footprint');
+  const KO = { lng: 4.9, lat: 52.37 }, kkx = 111_320 * Math.cos(KO.lat * Math.PI / 180);
+  const toL = ([lng, lat]: number[]): [number, number] => [(lng - KO.lng) * kkx, (lat - KO.lat) * 110_540];
+  const ring: [number, number][] = f.geometry.coordinates[0].map(toL);
+  const inside = ([x, y]: [number, number]) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) if ((ring[i][1] > y) !== (ring[j][1] > y) && x < ((ring[j][0] - ring[i][0]) * (y - ring[i][1])) / (ring[j][1] - ring[i][1]) + ring[i][0]) c = !c; return c; };
+  const kit = kits.find(k => k.name === 'Carré')!, spec = kit.halls![0];
+  const decorated = decorate({ type: 'Feature', properties: { id, height: f.properties.height, sideColour: '#7a4535' }, geometry: null });
+  assert.equal(decorated.properties.roofEavesHeightM, 19, 'walls stop at the cornice, not at the sign box');
+  assert.equal(decorated.properties.kitWall, 'flat', 'cream stucco, not brick');
+  assert.equal(decorated.properties.sideColour, kit.wall!.hex);
+  for (const w of spec.wings!) assert.ok(inside(toL(w.at)), 'each roof stands on the footprint');
+  for (const t of spec.towers!) assert.ok(inside(toL(t.at)), 'the sign box and the turret cap stand on the footprint');
+  const tris = geometry(kit, new Map([[id, { id, ring, minHeightM: 0, heightM: f.properties.height }]]))[0].tris;
+  const top = Math.max(...tris.flatMap(t => t.p.map(p => p[2])));
+  assert.ok(Math.abs(top - f.properties.height) < 0.5, `sign box top ${top.toFixed(1)} m, BAG ${f.properties.height} m`);
+  const roof = tris.filter(t => t.layer === 'slope'), crown = Math.max(...roof.flatMap(t => t.p.map(p => p[2])));
+  assert.ok(Math.abs(crown - 27) < 0.3, `dome crown ${crown.toFixed(1)} m`);
+  // The dome is convex: its sides steepen towards the eaves (the lowest band is the steepest).
+  const dome = roof.filter(t => t.n[2] < 0.999 && t.p.every(p => p[2] >= 19 - 1e-6));
+  const band = (z0: number, z1: number) => Math.min(...dome.filter(t => t.p.every(p => p[2] >= z0 - 1e-6 && p[2] <= z1 + 1e-6)).map(t => t.n[2]));
+  assert.ok(band(19, 22.1) < band(25.3, 27), 'the dome curves: steep at the eaves, flat at the crown');
+  const pediment = tris.filter(t => t.hex === kit.wall!.hex && t.p.some(p => p[2] > 21));
+  assert.ok(pediment.length, 'a cream pediment rises over the risalit');
+  // The Amstel front (its west end) carries arches and three rows of windows on a stone plinth.
+  const glass = spec.windows!.glassHex!, panes = tris.filter(t => t.hex === glass);
+  const front = toL([4.903858, 52.362346]);
+  const onFront = panes.filter(t => t.p.every(p => Math.abs((p[0] - front[0]) * Math.cos(17 * Math.PI / 180) + (p[1] - front[1]) * Math.sin(17 * Math.PI / 180)) < 2.2));
+  for (const [z0, z1] of [[0.4, 3.9], [5.2, 8], [9.3, 11.6], [14.6, 16.3]]) {
+    const row = onFront.filter(t => t.p.every(p => p[2] >= z0 - 1e-6 && p[2] <= z1 + 1e-6));
+    assert.ok(row.length >= 8 * 2, `front row ${z0}-${z1} m has its windows (${row.length} triangles)`);
+  }
+  assert.ok(tris.some(t => t.hex === spec.windows!.plinth!.hex), 'a stone ground storey');
+  assert.ok(tris.length < 1000, `Carré costs ${tris.length} triangles`);
+}
+
+{
+  // Windows are opt in: a kit without them draws no glass, so the other kits are unchanged.
+  const { KITS: kits, kitGeometry: geometry } = await import('../src/canalRecall/landmarkKits.ts');
+  const square = (cx: number, cy: number, w: number, d = w): Array<[number, number]> => [[cx - w / 2, cy - d / 2], [cx + w / 2, cy - d / 2], [cx + w / 2, cy + d / 2], [cx - w / 2, cy + d / 2], [cx - w / 2, cy - d / 2]];
+  for (const kit of kits) {
+    if (kit.halls?.some(h => h.windows)) continue;
+    const parts = new Map((kit.halls ?? []).map(h => [h.id, { id: h.id, ring: square(0, 0, 40, 60), minHeightM: 0, heightM: 20 }]));
+    for (const g of geometry(kit, parts)) assert.ok(g.tris.every(t => t.hex !== '#2c333b'), `${kit.name}: no windows unless the kit asks`);
+  }
 }
 
 {
