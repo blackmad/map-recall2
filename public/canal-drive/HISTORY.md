@@ -1,5 +1,19 @@
 # Canal Recall — what is built
 
+## Wall colours by period
+
+From the real-vs-game sheet (2026-10-02: "one brick palette" everywhere), and the user's "start on wall colors, then gables".
+
+- **Before:** every bay-look building drew its wall from one hash-picked brick palette, whatever its age. Post-war blocks in Photo came out red brick too.
+- **Now:** `PERIOD_WALLS` (in `bayLook.ts`) gives each archetype its own range, still hash-picked and still unmeasured:
+  - **Canal houses:** deep red-brown brick, about a quarter painted near-black, dark green or grey, and a little white stucco.
+  - **1860–1914 rows:** red and orange brick, with buff and cream stucco.
+  - **Amsterdam School:** dark purple-brown and orange brick.
+  - **Post-war and modern:** buff, grey and concrete.
+  - **Storybook and Cartoon:** each look's own palette is split the same way by period.
+- **Pinned:** `test:three-buildings` checks that canal houses are darker than 19th-century rows, that some are painted dark, and that post-war blocks are not red.
+- **Gallery:** `building-gallery.html` shows every period palette.
+
 ## Untextured is flat colour only
 
 User (2026-10-02, a screenshot of brick, window grids and awnings): "untextured should be totally untextured or very flat".
