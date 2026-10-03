@@ -1,0 +1,104 @@
+[
+  {
+    "id": "oude-kerk",
+    "name": "Oude Kerk",
+    "landmarkId": "extract_landmarks_1522513904",
+    "modelUrl": "./models/oude-kerk.glb",
+    "suppressOsmIds": [
+      "w57857592",
+      "w747868970",
+      "w747868971",
+      "w747868972",
+      "w747868973",
+      "w747868974",
+      "w747868975",
+      "w747868976",
+      "w747868977",
+      "w747868978",
+      "w747868979",
+      "w747868980",
+      "w747868981",
+      "w747868982",
+      "w747868984"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.898072331391026,
+        52.374357755718066
+      ],
+      "headingDegrees": 86.48218640835745,
+      "lengthMetres": 81.97608859440939,
+      "widthMetres": 63.9732853832862
+    },
+    "surveyed": {
+      "anchor": [
+        4.89807215,
+        52.37436065
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Oude Kerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.oudekerk.nl/nu-te-zien/evenementen/bezoek-oudekerkstoren/39591",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
+    }
+  },
+  {
+    "id": "nieuwe-kerk",
+    "name": "Nieuwe Kerk",
+    "landmarkId": "extract_landmarks_239964759",
+    "modelUrl": "./models/nieuwe-kerk.glb",
+    "suppressOsmIds": [
+      "w220749328",
+      "w747911436",
+      "w747911437",
+      "w747911438",
+      "w747911439",
+      "w747911440",
+      "w747911441",
+      "w747924617",
+      "w747924618",
+      "w747924619",
+      "w747924620",
+      "w747924621",
+      "w747924622",
+      "w747924623",
+      "w747924624",
+      "w747924625",
+      "w747924626"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.89174203315766,
+        52.373932974434126
+      ],
+      "headingDegrees": 51.267866875012544,
+      "lengthMetres": 94.47997996878692,
+      "widthMetres": 62.97060523555761
+    },
+    "surveyed": {
+      "anchor": [
+        4.89174605,
+        52.37393705
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Nieuwe Kerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.nieuwekerk.nl/de-nieuwe-kerk/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
+    }
+  }
+]
