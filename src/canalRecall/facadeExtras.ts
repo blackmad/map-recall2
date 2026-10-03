@@ -55,16 +55,16 @@ const STREET_FURNITURE: readonly WallComponent[] = [
     s.slope(c.f, x - 0.35, x + 0.35, 0, 1.1, c.top - 0.05, c.top - 0.4, WOOD); } },
   { id: 'stoop', group: 'stoop', styles: ['canal'], p: 0.5, build: (c, s) => {
     const x = doorX(c); if (x == null || !c.groundLevel) return;
-    for (let k = 0; k < 3; k++) s.box(c.f, x - 0.75, x + 0.75, 0, 1.2 - k * 0.35, c.base + k * 0.18, c.base + (k + 1) * 0.18, STONE); } },
-  { id: 'stoop-railing', styles: ['canal'], p: 0.35, build: (c, s) => {
-    const x = doorX(c); if (x == null || !c.groundLevel) return;
-    for (const dx of [-0.75, 0.73]) s.box(c.f, x + dx, x + dx + 0.03, 0.1, 1.2, c.base + 0.5, c.base + 0.55, IRON); } },
+    for (let k = 0; k < 3; k++) s.box(c.f, x - 0.75, x + 0.75, 0, 1.2 - k * 0.35, c.base + k * 0.18, c.base + (k + 1) * 0.18, STONE);
+    // Railings belong to the stoop: as their own component they stood on the pavement with no steps
+    // under them and read as stray pickets (user 2026-10-03: "bunch of weird artifacts here too").
+    if (hash01(`${c.id}:rail`) < 0.6) for (const dx of [-0.75, 0.72]) { s.box(c.f, x + dx, x + dx + 0.03, 0.1, 1.2, c.base + 0.75, c.base + 0.79, IRON); s.box(c.f, x + dx, x + dx + 0.03, 1.12, 1.16, c.base, c.base + 0.79, IRON); } } },
   { id: 'double-stoop', group: 'stoop', styles: ['canal'], p: 0.08, build: (c, s) => {
     const x = doorX(c); if (x == null || !c.groundLevel) return;
     s.box(c.f, x - 0.7, x + 0.7, 0, 1.0, c.base, c.base + 0.75, STONE);
     for (const side of [-1, 1]) for (let k = 0; k < 3; k++) s.box(c.f, x + side * (0.7 + k * 0.3) - (side > 0 ? 0 : 0.3), x + side * (0.7 + k * 0.3) + (side > 0 ? 0.3 : 0), 0.1, 0.95, c.base, c.base + 0.75 - k * 0.25, STONE); } },
   { id: 'basement-well', styles: ['canal', 'c19'], p: 0.25, build: (c, s) => {
-    if (!c.groundLevel) return; const xs = windowXs(c); const x = xs[xs.length - 1];
+    if (!c.groundLevel || c.shopfront) return; const xs = windowXs(c); const x = xs[xs.length - 1];
     // An openwork railing round the light well (top rail and bars); a solid iron plate read as a black slab (user 2026-10-03).
     s.strip(c.f, x - 0.6, x + 0.6, 0.62, c.base + 0.72, c.base + 0.76, IRON, 0.03);
     for (const dx of [-0.6, -0.3, 0, 0.3, 0.6]) s.strip(c.f, x + dx - 0.015, x + dx + 0.015, 0.62, c.base, c.base + 0.74, IRON, 0.03); } },
@@ -155,17 +155,9 @@ const STREET_FURNITURE: readonly WallComponent[] = [
   { id: 'garage-door', styles: ['postwar'], p: 0.12, build: (c, s) => { if (!c.groundLevel || c.f.len < 4) return; const x = c.f.len - 2; s.box(c.f, x - 1.25, x + 1.25, 0, 0.04, c.base, c.base + 2.3, '#9aa0a6'); } },
   { id: 'plinth', group: 'plinth', styles: ['canal', 'c19', 'school'], p: 0.35, build: (c, s) => { if (c.groundLevel) s.box(c.f, 0, c.f.len, 0, 0.06, c.base, c.base + 0.5, '#3a3530'); } },
   // --- Street life ------------------------------------------------------------------
-  { id: 'parked-bikes', styles: ALL, p: 0.3, build: (c, s, r) => {
-    if (!c.groundLevel) return; const n = 1 + Math.floor(r * 4), x0 = hash01(`${c.wallKey}:bx`) * Math.max(0, c.f.len - n * 0.7);
-    // Wheels, frame, saddle and bars, in dark Dutch-bike colours: a single bright bar read as a
-    // stray beam sticking out of the wall (user 2026-10-03).
-    for (let k = 0; k < n; k++) { const x = x0 + k * 0.7, hex = pickOf(['#1d1d1f', '#2f3d4a', '#4a1f25', '#2c3f36'], hash01(`${c.wallKey}:bc${k}`));
-      for (const v of [0.2, 1.25]) s.box(c.f, x - 0.015, x + 0.015, v, v + 0.62, c.base + 0.02, c.base + 0.64, '#202224');
-      s.box(c.f, x - 0.025, x + 0.025, 0.5, 1.0, c.base + 0.55, c.base + 0.6, hex); s.box(c.f, x - 0.025, x + 0.025, 0.95, 1.02, c.base + 0.3, c.base + 0.95, hex);
-      s.box(c.f, x - 0.06, x + 0.06, 0.42, 0.62, c.base + 0.88, c.base + 0.94, '#141414'); s.box(c.f, x - 0.25, x + 0.25, 1.05, 1.1, c.base + 0.98, c.base + 1.02, hex); } } },
-  { id: 'bike-racks', styles: ['school', 'postwar', 'modern'], p: 0.2, build: (c, s) => {
-    if (!c.groundLevel) return; for (let x = 1; x < Math.min(c.f.len - 0.5, 9); x += 0.8) s.box(c.f, x - 0.03, x + 0.03, 1.2, 1.9, c.base, c.base + 0.8, '#8a8f94'); } },
-  { id: 'bench', styles: ['canal', 'c19'], p: 0.1, build: (c, s) => { if (!c.groundLevel) return; const x = c.f.len * 0.3; s.box(c.f, x - 0.8, x + 0.8, 0.1, 0.5, c.base, c.base + 0.45, WOOD); s.box(c.f, x - 0.8, x + 0.8, 0.05, 0.12, c.base + 0.45, c.base + 0.9, WOOD); } },
+  // Parked bikes and racks were removed 2026-10-03: drawn per facade they stood out from the
+  // wall as dark pickets on the pavement (user: "bunch of weird artifacts here too").
+  { id: 'bench', styles: ['canal', 'c19'], p: 0.1, build: (c, s) => { if (!c.groundLevel || c.shopfront) return; const x = c.f.len * 0.3; s.box(c.f, x - 0.8, x + 0.8, 0.1, 0.5, c.base, c.base + 0.45, WOOD); s.box(c.f, x - 0.8, x + 0.8, 0.05, 0.12, c.base + 0.45, c.base + 0.9, WOOD); } },
   { id: 'door-lantern', styles: ['canal', 'c19'], p: 0.3, build: (c, s) => {
     // A small black lantern on its bracket with a warm pane; a 20 cm yellow block read as a box (user 2026-10-03).
     const x = doorX(c); if (x == null) return; const z = c.base + 2.3; s.box(c.f, x + 0.6, x + 0.63, 0, 0.22, z + 0.26, z + 0.29, IRON);
