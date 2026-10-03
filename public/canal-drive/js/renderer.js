@@ -345,7 +345,7 @@ class Renderer {
     ctx.stroke();
 
     if (image) {
-      const ix = x + 12, iy = y + 12;
+      const ix = x + 12, iy = y + 12; // IMAGE_INSET in noticeCards.ts
       ctx.save();
       roundRect(ctx, ix, iy, card.imageWidth, card.imageHeight, 6);
       ctx.clip();
@@ -357,17 +357,18 @@ class Renderer {
 
     // Ink on the paper plate. The kinds stay visually distinct — the category
     // and the kind of fact are different axes and must not read as one label —
-    // but only the category and "more" get copper; the rest are ink tints.
+    // but only the category gets copper; the rest are ink tints. "More" is not
+    // a chip at all: it is the card's action, drawn as a copper text link at
+    // the header's right end (a "+ MORE" pill beside STREET read as a second
+    // tag, user report 2026-10-02).
     const badgeColors = {
       category: ['rgba(180,104,44,.14)', '#8a4a18'],
       lang: ['rgba(31,28,23,.07)', '#5f584d'],
       article: ['rgba(31,28,23,.07)', '#5f584d'],
-      more: ['rgba(180,104,44,.14)', '#8a4a18'],
       fact: ['rgba(31,28,23,.07)', '#5f584d'],
     };
-    // Keep in step with `measureLandmarkCard` height: top air, badge row, name,
-    // body line step, then bottom air so the last glyph is not flush to the plate.
-    let textY = y + 18;
+    // Every vertical position comes from `measureLandmarkCard`, so the plate
+    // height and what is drawn on it cannot drift apart.
     ctx.font = `700 11px ${surface.fontMono}`;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'alphabetic';
@@ -384,11 +385,17 @@ class Renderer {
     const scaleY = transform.d || 1;
     const toDevice = v => Math.round(v * scaleY + transform.f);
     const fromDevice = v => (v - transform.f) / scaleY;
-    const pillTopDevice = toDevice(textY - 11), pillBottomDevice = toDevice(textY + 5);
+    const pillTopDevice = toDevice(y + card.headerTop);
+    const pillBottomDevice = toDevice(y + card.headerTop + card.badgeHeight);
     const capDevice = Math.round((ctx.measureText('M').actualBoundingBoxAscent || 8) * scaleY);
     const pillTop = fromDevice(pillTopDevice), pillHeight = fromDevice(pillBottomDevice) - pillTop;
     const badgeBaseline = fromDevice(pillTopDevice + Math.round((pillBottomDevice - pillTopDevice + capDevice) / 2));
     for (const badge of card.badges) {
+      if (badge.kind === 'more') {
+        ctx.fillStyle = '#8a4a18';
+        ctx.fillText(badge.label, x + badge.x, badgeBaseline);
+        continue;
+      }
       const [fill, ink] = badgeColors[badge.kind];
       ctx.fillStyle = fill;
       roundRect(ctx, x + badge.x, pillTop, badge.width, pillHeight, 3);
@@ -396,18 +403,23 @@ class Renderer {
       ctx.fillStyle = ink;
       ctx.fillText(badge.label, x + badge.x + 5, badgeBaseline);
     }
-    if (card.badges.length) textY += 18;
 
     ctx.fillStyle = surface.ink;
     ctx.font = `800 16px ${surface.fontPlaque}`;
-    ctx.fillText(card.displayName.toUpperCase(), x + card.textLeft, textY);
-    textY += 20;
+    let nameBaseline = y + card.nameBaseline;
+    if (card.headerInline) {
+      // Beside the chips the name's capitals share the pill's centre line.
+      const nameCapDevice = Math.round((ctx.measureText('M').actualBoundingBoxAscent || 12) * scaleY);
+      nameBaseline = fromDevice(Math.round((pillTopDevice + pillBottomDevice + nameCapDevice) / 2));
+    }
+    ctx.fillText(card.displayName.toUpperCase(), x + card.nameX, nameBaseline);
 
     ctx.fillStyle = surface.inkMuted;
     ctx.font = `500 11px ${surface.fontUi}`;
+    let textY = y + card.bodyBaseline;
     for (const line of card.lines) {
       ctx.fillText(line, x + card.textLeft, textY);
-      textY += 15;
+      textY += card.lineStep;
     }
   }
 

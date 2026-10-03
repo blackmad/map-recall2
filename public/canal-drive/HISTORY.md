@@ -8,6 +8,90 @@ User (2026-10-02): "Buitenveldbuurt is the current Jewish neighborhood right? Ho
 - **Miner:** `scripts/mine-area-facts.ts` + `src/mapRecall/areaFacts.ts` find both articles (Wikidata, title guesses, nl search, langlinks), score every sentence for local signals, and filter resident statistics, origin shares, crime/policing and planning text before anything reaches the sheet. OSM places inside each outline are clustered (Overpass via maps.mail.ru, since overpass-api.de resets through the cloud proxy) and only corroborate a sentence, never stand alone. Everything goes through the scrape store.
 - **Picks:** a Claude session words one fact per area from cited sentences only; `publish` refuses an unapproved pick, a cited sentence no longer in its article, or a number the citations do not state. Pinned in `test:map-recall-trivia` with Buitenveldert as the named regression.
 - **Card:** the user chose the lead line (decision card, 2026-10-03): `localFact` renders first with a Local chip; the description clamps to two lines beside it.
+- **Published:** 57 of 89 Amsterdam areas, all approved by the user 2026-10-03 ("Push?" after the review page); every citation check passed. 32 areas stay `null` (14 have no article). Rivierenbuurt (1941 Jewish market), Zuidoost (Surinamese community) and Staatsliedenbuurt (squatting) were flagged on the review page and shipped as written.
+
+## Kit-less landmarks: house-sized old ones get a period facade, big ones period brick
+
+User (2026-10-03), after Fatih rendered as a 37 m green box: "More? Landmarks?"
+
+- **Before:** every landmark building a kit did not model stood as one bare box at its BAG height, in the citywide identity palette when no colour was measured. That palette could make a church green.
+- **Now (`exceptLandmarks` in `roofMesh.ts`):**
+  - Kit-modelled parts and bodies (`KIT_MODELLED_IDS`) still pass through untouched.
+  - An old landmark the size of a house (built before 1945 and at most 26 m) takes the generic period facade and roof. Felix Meritis now reads as a Keizersgracht building with a pediment roof. Measured over the 977 landmark parts: 263 kit, 339 period facade, 375 bare.
+  - A larger one keeps its bare form, but a palette-guessed colour becomes period brick `#7a4535` (old) or concrete `#b9ad9a` (1945 on). Measured colours are kept.
+  - A listed landmark counts as old whatever BAG says. BAG often dates a restoration: the Westerkerk east end says 1990 and Mozes en Aäron says 1969. `fetch-monument-gables.ts` now writes `listedLandmarks` (483 parts, a whole landmark counts when any part holds a register point).
+- **Tried and dropped:** giving the big ones the generic facade too. Carré and the Oosterkerk read as nine-storey flats.
+- **Hand-modelled churches** (kits with sources, real-tile checks): Obrechtkerk, Oosterkerk, De Duif, Opstandingskerk, Mozes en Aäronkerk and the Westerkerk east-end sliver. Kits gained explicit wings, slab and round towers, and spire, dome and slanted caps. Guesses: Opstandingskerk's slab sits at the south end; the Obrechtkerk towers are placed from the footprint.
+
+## Arrival card fits the window
+
+User (2026-10-02), on the De Dolphijn arrival card on a laptop: "ideally fits on screen". With a photo, a ribbon, first-time gains, a sign-in tease and a personal best, the card was taller than the window, so the Next route and Share actions were cut off.
+
+- **Density levels:** `_renderFinish` builds the card at up to four densities and uses the first that fits.
+  - Spacing gets tighter at each level.
+  - The personal best moves into the footer line.
+  - The blurb and the story get shorter, and the photo gets smaller.
+  - At the tightest level the encyclopedia blurb is dropped.
+  - Only if the tightest level still overflows is the card scaled down, and the touch hit boxes are scaled with it.
+- **Story lines:** they now wrap to the card. On a phone, "You made it to … · 2 new names, 1 landmark" ran past the right edge, and a cut never leaves half a sentence.
+- **Phone:**
+  - The card stops above the settings and help buttons.
+  - On short screens, Route setup and Share sit side by side, so every button keeps a 44 px target.
+  - Ribbon axis labels drop their percentage when the column is too narrow.
+- **Checks:** `tests/e2e/finish-card-fit.spec.ts` checks a full card at 1440x700 and 1280x600. Storybook has `FinishCardFull` and `FinishCardFullPhone`.
+
+## Trivia card: compact header, "more" as a link, sized to its content
+
+User (2026-10-02), on the Prinsengracht street card: "bad layout".
+
+- **Was:** every bare card was 480 px wide whatever it held. "+ MORE" was a copper pill beside STREET, so it read as a second tag. The name sat 2 px under the chips, and the plate had 7 px of air on top and nearly 30 px below.
+- **Now:** `measureLandmarkCard` puts the category chip and the name on one row when they fit, and drops the name below the chips when they do not. "MORE ›" is copper text at the row's right end, with no pill. The body wraps at a 400 px measure. The card is as wide as its widest line, with a 220 px floor and the old width as the ceiling. Padding is even on all sides.
+- **Renderer:** the layout now carries every vertical position (`headerTop`, `nameBaseline`, `bodyBaseline`, `lineStep`), so `renderer.drawLandmarkCard` can no longer drift from the measured height.
+- **Checks:** the Prinsengracht case is pinned in `scripts/check-notice-cards.ts`. Storybook has `StreetOriginCard` and `PortraitStreetOriginCard`.
+## Map Recall bottom card fits above iPhone Safari's toolbar
+
+User (2026-10-02, iPhone Safari screenshot): "Mobile needs some display fixes at the bottom. Also can't scroll to the bottom of the trivia card."
+
+- **Cause:** the Map Recall shell was Tailwind `h-screen` (100vh). iOS sizes 100vh to the large viewport (toolbar hidden), so the bottom card's "No idea" / "Place a pin first" row and the end of every scroll area were laid out under the toolbar, where no touch can reach. `#root` was already 100dvh; the shell now fills it (`h-full w-full`). Modal caps moved from `vh` to `dvh` for the same reason.
+- **Trivia card:** on phones `.quiz-result-card` had its own `max-height: 58dvh; overflow-y: auto` inside the overlay wrapper's 42dvh scroller. The inner scroller was taller than its parent, so scrolling the outer one never reached the card's last lines. The wrapper is now the only scroll area (`overscroll-contain` so the page does not rubber-band).
+- **Regression:** `tests/e2e/map-recall-phone-chrome.spec.ts` shrinks `#root` by a 90 px "toolbar" the way Safari's dynamic viewport does and requires both buttons and the scrolled-to-end answer card to sit above it. Both tests fail on the old code. Not yet checked on a real iPhone.
+## Listed buildings draw the gable the monuments register names
+
+User (2026-10-02): "do you think it's at all possible to correlate the canal house builder more to the year the house was built?", then "start on wall colors, then gables".
+
+- **Source:** the national monuments register (RCE, CC0) describes each rijksmonument's front in Dutch, for example:
+  - "Pand met trapgevel"
+  - "onder rechte lijst"
+  - "klokvormige top"
+- **Fetch:** `scripts/fetch-monument-gables.ts` queries the register's SPARQL endpoint in ranges of monument number. OFFSET paging timed out past the third page, and joining on the municipality repeated every row about 20 times. Raw responses are cached in `/mnt/project-files/scrape-store/rce-monuments/amsterdam-by-number/`.
+- **Classify:** `monumentGables.ts` takes the first gable phrase in each description.
+- **Match:** the monument's point is placed in its building footprint, and the result goes to `monument-gables.json` (179 KB).
+- **Coverage:** 7,672 Amsterdam monuments; 5,377 name a gable; 4,326 buildings matched:
+  - cornice 2,299
+  - neck 1,283
+  - bell 911
+  - plain 575
+  - step 144
+  - spout 35
+  - raised neck 1
+- **In game:** `vector-map.js` loads the file and tags `monumentGable` before roofs are planned. `planRoof` then draws that gable whatever the style, OSM tag or year.
+- **Measured:** in one Herengracht view, 574 buildings were tagged and 488 drew the named gable. The rest are footprints too irregular for a gable roof.
+- **Pinned:** in `test:roof-shapes`, using register numbers 836, 2791 and 5114.
+- **Open:** the first-phrase rule can pick up a rear or side gable where a description starts there. "verhoogde halsgevel" is rare in the register's wording, so raised necks are still mostly guessed. Landmark buildings keep their own form.
+
+## Wall colours by period
+
+From the real-vs-game sheet (2026-10-02: "one brick palette" everywhere), and the user's "start on wall colors, then gables".
+
+- **Before:** every bay-look building drew its wall from one hash-picked brick palette, whatever its age. Post-war blocks in Photo came out red brick too.
+- **Now:** `PERIOD_WALLS` (in `bayLook.ts`) gives each archetype its own range, still hash-picked and still unmeasured:
+  - **Canal houses:** deep red-brown brick, about a quarter painted near-black, dark green or grey, and a little white stucco.
+  - **1860–1914 rows:** red and orange brick, with buff and cream stucco.
+  - **Amsterdam School:** dark purple-brown and orange brick.
+  - **Post-war and modern:** buff, grey and concrete.
+  - **Storybook and Cartoon:** each look's own palette is split the same way by period.
+- **Pinned:** `test:three-buildings` checks that canal houses are darker than 19th-century rows, that some are painted dark, and that post-war blocks are not red.
+- **Gallery:** `building-gallery.html` shows every period palette.
 
 ## Untextured is flat colour only
 

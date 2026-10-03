@@ -44,8 +44,21 @@ export interface LandmarkCardLayout {
   imageWidth: number;
   imageHeight: number;
   textLeft: number;
-  /** Badges in draw order, already positioned relative to the card. */
+  /** Badges in draw order, already positioned relative to the card. A `more`
+   *  entry is drawn as a text link at the header's right edge, not a chip. */
   badges: Array<{ label: string; x: number; width: number; kind: 'category' | 'lang' | 'article' | 'more' | 'fact' }>;
+  /** Top of the chip row relative to the card, and the pill height. */
+  headerTop: number;
+  badgeHeight: number;
+  /** True when the chips and the name share one row. */
+  headerInline: boolean;
+  /** Where the name starts, and its baseline when it sits on its own row
+   *  (an inline name is centred on the chips by the renderer). */
+  nameX: number;
+  nameBaseline: number;
+  /** Baseline of the first body line, and the step between lines. */
+  bodyBaseline: number;
+  lineStep: number;
   /** Body text already wrapped and elided to the lines that will be drawn. */
   lines: string[];
   /** The name, elided with an ellipsis if it would not fit. */
@@ -58,34 +71,50 @@ export interface LandmarkCardLayout {
 const CARD_WIDTH = 480;
 const IMAGE_WIDTH = 90;
 const IMAGE_HEIGHT = 110;
-/** Horizontal inset for text and badges on a bare (no-photo) card. */
-const PAD_X = 20;
-/** Right inset so wrapped body does not kiss the plate edge. */
-const PAD_RIGHT = 20;
+/** Even inset on every side of a bare card. */
+const PAD_X = 16;
+const PAD_RIGHT = 16;
+const PAD_TOP = 14;
+const PAD_BOTTOM = 14;
+/** The image sits at this inset; text starts a gutter past it. */
+const IMAGE_INSET = 12;
+const IMAGE_GUTTER = 14;
+/** A comfortable line length for the body. The card used to stretch to 480
+ *  px whatever it held, so a two-line street origin sat in a wide plate with a
+ *  band of empty paper below and to the right (user report 2026-10-02). */
+const BODY_MEASURE = 400;
+/** Smallest a bare card shrinks to, so a one-word card still reads as a card. */
+const MIN_CARD_WIDTH = 220;
 // Measured in the faces `renderer.drawLandmarkCard` actually draws with; these
 // were bare `monospace`, so wrapping and badge widths were computed for Courier
 // while the card drew system-ui and Barlow.
 const BADGE_FONT = `700 11px ${hudSurface.fontMono}`;
 const NAME_FONT = `800 16px ${hudSurface.fontPlaque}`;
 const BODY_FONT = `500 11px ${hudSurface.fontUi}`;
+const BADGE_HEIGHT = 16;
+const LINE_STEP = 15;
+/** Ascent of the 11 px body face above its baseline, and descent below it. */
+const BODY_ASCENT = 9;
+const BODY_DESCENT = 3;
+/** Cap height of the 16 px plaque face. */
+const NAME_CAP = 12;
 /** Body lines on a bare encyclopedia/street card — enough for a full short
  *  lede sentence without turning into an article. */
 const BARE_BODY_LINES = 3;
 const PHOTO_BODY_LINES = 4;
-
-/**
- * The card's own size and content, given only what fits. A card with a photo
- * gets four lines of body text and a taller box; a bare one gets three, with
- * height sized to the content so badges and the last line keep air from the
- * plate edge.
- */
 const BADGE_GAP = 6;
+/** Air between the chips and an inline name, and before the "more" link. */
+const NAME_GAP = 10;
+const MORE_GAP = 16;
+/** "More" is the action that opens the panel, so it reads as a link with an
+ *  arrow rather than as one more chip beside the category. */
+const MORE_LABEL = 'MORE ›';
 
 /**
  * Badges that fit on one row of the text column. On a 320 px phone
  * "CHURCH · W WIKIPEDIA · + MORE" ran off the card's edge. The Wikipedia
  * chip shortens to its "W" mark first, and then chips go by priority. The
- * chips that stay longest are "+ MORE", the only sign the card opens, and
+ * chips that stay longest are "more", the only sign the card opens, and
  * the language chip, which says the text is not English.
  */
 export function fitBadges(
@@ -93,43 +122,57 @@ export function fitBadges(
   maxWidth: number,
   measure: TextMeasurer,
 ): LandmarkCardLayout['badges'] {
-  const rowWidth = (row: LandmarkCardLayout['badges']) =>
-    row.reduce((total, badge) => total + badge.width, 0) + Math.max(0, row.length - 1) * BADGE_GAP;
   let row = badges.map(badge => ({ ...badge }));
-  if (rowWidth(row) <= maxWidth) return row;
+  if (badgeRowWidth(row) <= maxWidth) return row;
   const article = row.find(badge => badge.kind === 'article');
   if (article) { article.label = 'W'; article.width = measure('W', BADGE_FONT) + 10; }
   const dropOrder: Array<LandmarkCardLayout['badges'][number]['kind']> = ['article', 'fact', 'category', 'lang', 'more'];
   for (const kind of dropOrder) {
-    if (rowWidth(row) <= maxWidth) break;
+    if (badgeRowWidth(row) <= maxWidth) break;
     row = row.filter(badge => badge.kind !== kind);
   }
   return row;
 }
 
+/** Width of a header row: chips at a fixed gap, "more" a wider gap after. */
+function badgeRowWidth(row: LandmarkCardLayout['badges']): number {
+  const chips = row.filter(badge => badge.kind !== 'more');
+  const more = row.find(badge => badge.kind === 'more');
+  const chipsWidth = chips.reduce((total, badge) => total + badge.width, 0)
+    + Math.max(0, chips.length - 1) * BADGE_GAP;
+  return chipsWidth + (more ? (chips.length ? MORE_GAP : 0) + more.width : 0);
+}
+
+/**
+ * The card's own size and content, given only what fits. The card is as wide
+ * as what it holds (up to `cardWidth`) and as tall as its text: the category
+ * chip and the name share a row when they fit, "more" is a link at that row's
+ * right end, and the plate keeps the same padding on every side.
+ */
 export function measureLandmarkCard(
   props: LandmarkCardProps,
   measure: TextMeasurer,
-  /** The width the card has to fit in. A phone gives it the screen width less
+  /** The widest the card may be. A phone gives it the screen width less
    *  margins; setting the width after measuring only clipped the text. */
   cardWidth: number = CARD_WIDTH,
 ): LandmarkCardLayout {
   const hasImage = !!props.hasImage;
   const imageWidth = hasImage ? IMAGE_WIDTH : 0;
-  const textLeft = hasImage ? imageWidth + 22 : PAD_X;
-  const maxTextWidth = Math.max(60, cardWidth - textLeft - PAD_RIGHT);
+  const textLeft = hasImage ? IMAGE_INSET + imageWidth + IMAGE_GUTTER : PAD_X;
+  const columnWidth = Math.max(60, cardWidth - textLeft - PAD_RIGHT);
+  const bodyWidth = Math.min(columnWidth, BODY_MEASURE);
   const body = props.body || '';
   const maxLines = hasImage ? PHOTO_BODY_LINES : (body ? BARE_BODY_LINES : 0);
-  const wrapped = wrapToLines(body, maxTextWidth, maxLines, measure, BODY_FONT);
+  const wrapped = wrapToLines(body, bodyWidth, maxLines, measure, BODY_FONT);
   // The card shows a prefix of the body; whether anything was left behind is
   // what decides if there is a bigger version worth opening.
   const shownWords = wrapped.reduce((total, line) => total + line.split(' ').length, 0);
   const truncated = body ? shownWords < body.split(' ').length : false;
-  const lines = truncated ? endCutLines(wrapped, maxTextWidth, measure, BODY_FONT) : wrapped;
+  const lines = truncated ? endCutLines(wrapped, bodyWidth, measure, BODY_FONT) : wrapped;
 
   let badges: LandmarkCardLayout['badges'] = [];
   const pushBadge = (label: string, kind: LandmarkCardLayout['badges'][number]['kind']) => {
-    badges.push({ label, x: 0, width: measure(label, BADGE_FONT) + 10, kind });
+    badges.push({ label, x: 0, width: measure(label, BADGE_FONT) + (kind === 'more' ? 0 : 10), kind });
   };
   if (props.category) pushBadge(props.category, 'category');
   // Directly after the category, because it qualifies the same thing: what
@@ -143,35 +186,80 @@ export function measureLandmarkCard(
   if (props.hasArticle) pushBadge('W  WIKIPEDIA', 'article');
   // Nothing else on a canvas card says it can be clicked, so the cut body has
   // to advertise the panel that holds the rest of it.
-  if (truncated) pushBadge('+  MORE', 'more');
-  badges = fitBadges(badges, maxTextWidth, measure);
-  let cursor = textLeft;
-  for (const badge of badges) { badge.x = cursor; cursor += badge.width + BADGE_GAP; }
+  if (truncated) pushBadge(MORE_LABEL, 'more');
+  badges = fitBadges(badges, columnWidth, measure);
+
+  const chips = badges.filter(badge => badge.kind !== 'more');
+  const more = badges.find(badge => badge.kind === 'more') || null;
+  const chipsWidth = chips.reduce((total, badge) => total + badge.width, 0)
+    + Math.max(0, chips.length - 1) * BADGE_GAP;
+  const moreWidth = more ? MORE_GAP + more.width : 0;
+  const name = (props.name || '').toUpperCase();
+  const nameWidth = measure(name, NAME_FONT);
+  const inlineNameX = chips.length ? chipsWidth + NAME_GAP : 0;
+  // A card with no chips always keeps the name on the top row, beside "more".
+  const headerInline = !chips.length || inlineNameX + nameWidth + moreWidth <= columnWidth;
 
   let displayName = props.name || '';
-  if (measure(displayName, NAME_FONT) > maxTextWidth) {
-    while (displayName.length > 10 && measure(`${displayName}…`, NAME_FONT) > maxTextWidth) {
+  const nameRoom = headerInline ? columnWidth - inlineNameX - moreWidth : columnWidth;
+  if (measure(displayName.toUpperCase(), NAME_FONT) > nameRoom) {
+    while (displayName.length > 10 && measure(`${displayName}…`.toUpperCase(), NAME_FONT) > nameRoom) {
       displayName = displayName.slice(0, -1);
     }
     displayName += '…';
   }
+  const shownNameWidth = measure(displayName.toUpperCase(), NAME_FONT);
 
-  // Vertical budget mirrors `renderer.drawLandmarkNotice`: badge row, name,
-  // body lines, then bottom air. A fixed 80 px plate used to clip the second
-  // line of street cards flush against the edge.
-  const height = hasImage
-    ? Math.max(136, IMAGE_HEIGHT + 26)
-    : (!body
-      ? (badges.length ? 58 : 52)
-      : 18 + (badges.length ? 18 : 0) + 20 + lines.length * 15 + 14);
+  // Width: the widest of the header and the body, inside the column.
+  const headerWidth = headerInline
+    ? inlineNameX + shownNameWidth + moreWidth
+    : Math.max(badgeRowWidth(badges), shownNameWidth);
+  const bodyLinesWidth = lines.reduce((widest, line) => Math.max(widest, measure(line, BODY_FONT)), 0);
+  const contentWidth = Math.min(columnWidth, Math.ceil(Math.max(headerWidth, bodyLinesWidth)));
+  const width = Math.min(cardWidth, Math.max(hasImage ? textLeft + 160 : MIN_CARD_WIDTH, textLeft + contentWidth + PAD_RIGHT));
+
+  let cursor = textLeft;
+  for (const badge of badges) {
+    if (badge.kind === 'more') badge.x = width - PAD_RIGHT - badge.width;
+    else { badge.x = cursor; cursor += badge.width + BADGE_GAP; }
+  }
+
+  // Vertical rhythm. With chips the header is the pill's height; a name on
+  // its own row sits a gap below; the body starts a gap below the header.
+  const headerTop = hasImage ? IMAGE_INSET + 2 : PAD_TOP;
+  const rowCentre = headerTop + BADGE_HEIGHT / 2;
+  let nameBaseline: number;
+  let headerBottom: number;
+  if (headerInline) {
+    nameBaseline = Math.round(rowCentre + NAME_CAP / 2);
+    headerBottom = headerTop + Math.max(BADGE_HEIGHT, NAME_CAP + 2);
+  } else {
+    nameBaseline = headerTop + BADGE_HEIGHT + 6 + NAME_CAP;
+    headerBottom = nameBaseline;
+  }
+  const bodyBaseline = headerBottom + 10 + BODY_ASCENT;
+  const textBottom = lines.length
+    ? bodyBaseline + (lines.length - 1) * LINE_STEP + BODY_DESCENT
+    : headerBottom;
+  const height = Math.max(
+    hasImage ? IMAGE_INSET * 2 + IMAGE_HEIGHT : 0,
+    Math.round(textBottom + PAD_BOTTOM),
+  );
 
   return {
-    width: cardWidth,
+    width,
     height,
     imageWidth,
     imageHeight: IMAGE_HEIGHT,
     textLeft,
     badges,
+    headerTop,
+    badgeHeight: BADGE_HEIGHT,
+    headerInline: headerInline && chips.length > 0,
+    nameX: textLeft + (headerInline ? inlineNameX : 0),
+    nameBaseline,
+    bodyBaseline,
+    lineStep: LINE_STEP,
     displayName,
     lines,
     truncated,

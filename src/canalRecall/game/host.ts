@@ -88,6 +88,8 @@ export interface GameCoreHost {
   _teachingGate(): import('./teachingSurface.ts').TeachingGateInput;
   /** Tap targets for the arrival card's actions, on touch. */
   _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' }>;
+  /** Where the arrival card was last drawn, in canvas units; e2e checks it fits. */
+  _finishCardBounds?: { x: number; y: number; w: number; h: number };
   /** Tap targets for the pause card (resume / new route / copy). */
   _pauseButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'resume' | 'route' | 'copy' }>;
   _runPauseAction?(id: 'resume' | 'route' | 'copy'): void;

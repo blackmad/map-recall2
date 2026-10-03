@@ -6,7 +6,7 @@
 import { CELL_KINDS, CELL_PX, CELL_VARIANTS, paintCell, STYLE_DIMS } from './facadeCells.js';
 import { FACADE_STYLES, FACADE_STYLE_COLOURS, mutedWallHex } from './genericFacades.js';
 import { CONTEXTUAL_BUILDING_COLOURS } from './cityAppearancePalette.js';
-import { BAY_ENTRIES, BAY_STYLES, CARTOON_WALLS, PHOTO_WALLS, STORYBOOK_WALLS, bayVariant } from './bayLook.js';
+import { BAY_ENTRIES, BAY_STYLES, CARTOON_WALLS, PERIOD_WALLS, PHOTO_WALLS, STORYBOOK_WALLS, bayVariant } from './bayLook.js';
 import { PALETTES, bayTextures, type Look } from './bayTextures.js';
 import { ROOF_CELL_KINDS, paintRoofCell } from './roofCells.js';
 import { GABLE_SHAPES, fitRect, gableProfile, roofTriangles, type RoofPlan } from './roofMesh.js';
@@ -98,6 +98,7 @@ async function main() {
   // 4. Palettes.
   const pal = section('Palettes', 'Wall colours per look, and the roof tones. Photo reds dominate; cartoon is a short sticker palette.');
   pal.append(swatches(PHOTO_WALLS, 'Photo walls'), swatches(STORYBOOK_WALLS, 'Storybook walls'), swatches(CARTOON_WALLS, 'Cartoon walls'));
+  for (const look of ['photo', 'storybook', 'cartoon'] as const) for (const [period, hexes] of Object.entries(PERIOD_WALLS[look])) if (hexes) pal.append(swatches([...hexes], `${look} walls, ${period}`));
   for (const look of ['procedural', 'photo', 'storybook', 'cartoon'] as const) pal.append(swatches([...ROOF_TONES[look].tile, ...ROOF_TONES[look].slate], `Roofs, ${look}`));
   pal.append(swatches(Object.values(MAT_HEX), `Landmark materials (${Object.keys(MAT_HEX).join(', ')})`));
   for (const look of ['photo', 'storybook', 'cartoon'] as const) for (const arche of ['canal', 'c19', 'school', 'modern'] as const) pal.append(swatches(PALETTES[look][arche].accents, `${look} accents, ${arche}`));

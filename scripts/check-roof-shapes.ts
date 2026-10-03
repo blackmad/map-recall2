@@ -15,6 +15,7 @@ import {
   GABLE_SHAPES, ROOF_KINDS, decorateRoof, fitRect, gableProfile, corniceHeight, localOuterRing, planBuildingRoof, planRoof,
   roofPlanForFeature, roofTriangles, roofTrianglesForOutline, type RoofPlan, type RoofTri, type Rect,
 } from '../src/canalRecall/roofMesh.ts';
+import { classifyGable, withMonumentGable } from '../src/canalRecall/monumentGables.ts';
 import { findChamfer, inscribedRects, insetRing, openRing } from '../src/canalRecall/roofFootprint.ts';
 import { meshBuildingFor, ORIGIN } from '../src/canalRecall/threeBuildingFeatures.ts';
 import { wallTopHeightM } from '../src/canalRecall/threeBuildingMesh.ts';
@@ -224,6 +225,29 @@ for (const shape of GABLE_SHAPES) for (const [W, R] of [[5.5, 2.0], [4, 1.6], [8
     checkSolid(`${name} #${i} ${plan.kind}`, tris, meshRing(ll), h0, pieceRings);
   }
   for (const want of ['L c19:mansardHip+wing', 'chamfer c19:hipped+turret', 'U postwar:parapet', 'modern block:parapet']) assert.ok([...seen].some(s => s.startsWith(want.split('+')[0]) && (!want.includes('+') || s.includes(want.split('+')[1]))), `${want} is built (${[...seen].join(', ')})`);
+}
+
+// --- Listed buildings draw the gable the monuments register names ---------------------
+{
+  assert.equal(classifyGable('Pand met trapgevel, gedateerd 1620.'), 'step');
+  assert.equal(classifyGable('Huis met verhoogde halsgevel en beeldhouwwerk.'), 'raisedNeck', 'a raised neck is not read as a plain neck');
+  assert.equal(classifyGable('Pand met halsgevel; achtergevel met trapgevel.'), 'neck', 'the first gable named is the front');
+  assert.equal(classifyGable('Pand met lijstgevel en kroonlijst.'), 'cornice');
+  assert.equal(classifyGable('Klokgevel met vazen.'), 'bell');
+  assert.equal(classifyGable('Pakhuis met tuitgevel.'), 'spout');
+  assert.equal(classifyGable('Pand vanwege de zandstenen attiek.'), 'cornice');
+  assert.equal(classifyGable('Pand met gevel (XVIII) onder klokvormige top met rollagen.'), 'bell', 'register no. 5114');
+  assert.equal(classifyGable('Pand met gevel onder rechte klossenlijst (XIX A).'), 'cornice', 'register no. 836');
+  assert.equal(classifyGable('Pand met gevel, risaliet vormend, onder rechte lijst waarop gebogen fronton (1776).'), 'cornice', 'register no. 2791');
+  assert.equal(classifyGable('Woonhuis, gepleisterd.'), null);
+  const rect = fitRect(rectPts(6, 14))!;
+  for (const shape of GABLE_SHAPES) for (let i = 0; i < 50; i++) {
+    const plan = planRoof(`m${i}`, i % 2 ? 'c19' : 'modern', 15, 0, rect, 'hipped', 1890, shape);
+    assert.ok(plan && plan.kind === 'gable' && plan.gable === shape, `a register ${shape} gable is drawn whatever the style, tag or year`);
+  }
+  const f = { properties: { id: 'NL.IMBAG.Pand.1' } };
+  assert.equal(withMonumentGable(f, new Map([['NL.IMBAG.Pand.1', 'step' as const]])).properties.monumentGable, 'step');
+  assert.equal(withMonumentGable(f, new Map()), f, 'unlisted buildings pass through untouched');
 }
 
 // --- Gables follow the construction year ---------------------------------------------

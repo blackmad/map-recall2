@@ -54,19 +54,13 @@ transfer dares, Dutch plaque hard mode, shareable blank silhouette routes,
 weather/time mood. Cold-open is superseded by review rides (see HISTORY,
 2026-09-30).
 
-**Local-knowledge facts for neighbourhood cards (57 drafted 2026-10-03, awaiting approval).**
-User chose "lead line": the answer card opens with `localFact` (Local chip)
-when `neighborhood-history.json` has one. `npm run mine:area-facts` mined all
-89 Amsterdam areas (14 have no article); 57 cited picks are drafted in
-`scripts/data/area-fact-review.json`, 32 areas are `null` (no article, or
-nothing distinctive and sourced). Review page:
-https://claude.ai/artifact/WWrkvAP4jaGyzv5XQWiqAW. Three picks need a content
-check (Rivierenbuurt wartime persecution, Zuidoost community by descent,
-Staatsliedenbuurt squatting). A dry run with all approved published 57 with no
-citation problems. Open: user approval (`approve: true`), then
-`npm run mine:area-facts -- publish`; nine picks are boroughs/Gouden Bocht that
-the quiz does not ask yet; `sentencesOf` splits after initials ("A.J.
-Ernststraat"); then Utrecht/Rotterdam/Den Haag (`--city`).
+**Local-knowledge facts beyond Amsterdam (data lane).** Amsterdam's 57
+approved local facts are published (`localFact`, the card's lead line; see
+HISTORY). Open: run `npm run mine:area-facts -- --city utrecht|rotterdam|den-haag`,
+draft cited picks into `scripts/data/area-fact-review-<city>.json`, review,
+`publish`; 32 Amsterdam areas still have none (14 without any article); nine
+Amsterdam picks are boroughs/Gouden Bocht the quiz does not ask yet;
+`sentencesOf` splits after initials ("A.J. Ernststraat").
 
 **Neighbourhood trivia gaps (pipeline built 2026-10-02, data lane).**
 `npm run fill:neighborhood-gaps -- audit|offline|online|publish` fills missing
@@ -106,10 +100,12 @@ look at the photo look; gables and roofs are still MapLibre's; decide whether
 it replaces the pattern layer or stays opt-in. Two layout modules now exist
 (`wallBays.ts`, `facadeLayout.ts`): keep one.
 
-**Landmark kits: more landmarks, and a phone check.** Five are done (see HISTORY).
+**Landmark kits: more landmarks, and a phone check.** Twelve are done (see HISTORY).
 Next, by recognisability: Oude Kerk (spire), Munttoren, Centraal (two towers and
 central pavilions, long facade), Rijksmuseum (towers, central arch), Beurs van
-Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera. Each needs its
+Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera, Hofkerk
+(dome), Dominicuskerk, Carré and Vredeskerk (the big kit-less ones still stand as
+bare period-brick boxes; see HISTORY "Kit-less landmarks"). Each needs its
 OSM part ids first (look at the stacked parts near the landmark's coordinate; the
 resolved ids in `landmark-buildings.json` are sometimes the wrong piece: Westerkerk's
 is a 10 x 2 m fragment). Add a kit to `KITS`, view it with the kit viewer, then

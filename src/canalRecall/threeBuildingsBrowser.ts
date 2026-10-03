@@ -14,10 +14,11 @@
 
 import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, paintProceduralLayers } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
-import { decorateRoof, exceptLandmarks, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
+import { withMonumentGable } from './monumentGables.js';
+import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
 import { BAY_ENTRIES, BAY_LAYER_COUNT, bayLayer, bayLookFor, bayVariant } from './bayLook.js';
 import { bayTextures, type Look } from './bayTextures.js';
-import { KITS, KIT_HIDE_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
+import { KITS, KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof, kitGeometry, type KitPartGeometry, type PartInput } from './landmarkKits.js';
 import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
 import { frontKitGeometry, lookHex } from './landmarkFronts.js';
 import { decorateShopfront, setShopfronts } from './shopfronts.js';
@@ -138,7 +139,9 @@ const tileKeyOf = (polygons: number[][][][], zoom = TILE_ZOOM): string => {
 };
 
 
-export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS };
+/** Landmarks keep their own form; kit-modelled parts and bodies pass through, the rest get a period fallback (roofMesh.ts). */
+const exceptLandmarks = <T extends { properties: Record<string, unknown>; type: 'Feature'; geometry: unknown }>(decorate: (f: T) => T, ids: ReadonlySet<string>, listed?: ReadonlySet<string>) => exceptLandmarksOf(decorate, ids, KIT_MODELLED_IDS, listed);
+export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable };
 
 const KIT_KEY = '__kit';
 const BOAT_PREFIX = 'boats:';
