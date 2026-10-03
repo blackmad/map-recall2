@@ -147,6 +147,7 @@
     "test:generic-facades": "tsx scripts/check-generic-facades.ts",
     "test:three-buildings": "tsx scripts/check-three-buildings.ts",
     "test:roof-shapes": "tsx scripts/check-roof-shapes.ts",
+    "build:supermarkets": "tsx scripts/build-supermarkets.ts",
     "test:map-recall-trivia": "tsx scripts/check-map-recall-trivia.ts",
     "test:locate-hints": "tsx scripts/check-locate-hints.ts",
     "test:neighborhood-gaps": "tsx scripts/check-neighborhood-gaps.ts && tsx scripts/check-neighborhood-trivia-data.ts && tsx scripts/check-city-extracts.ts",

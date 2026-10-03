@@ -92,11 +92,11 @@ look at the photo look; gables and roofs are still MapLibre's; decide whether
 it replaces the pattern layer or stays opt-in. Two layout modules now exist
 (`wallBays.ts`, `facadeLayout.ts`): keep one.
 
-**Landmark kits: more landmarks, and a phone check.** Twelve are done (see HISTORY).
+**Landmark kits: more landmarks, and a phone check.** Thirteen are done (see HISTORY), Carré and Fatih with windows (opt-in `windows` on halls); museum and cinema kits in progress.
 Next, by recognisability: Oude Kerk (spire), Munttoren, Centraal (two towers and
 central pavilions, long facade), Rijksmuseum (towers, central arch), Beurs van
 Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera, Hofkerk
-(dome), Dominicuskerk, Carré and Vredeskerk (the big kit-less ones still stand as
+(dome), Dominicuskerk and Vredeskerk (the big kit-less ones still stand as
 bare period-brick boxes; see HISTORY "Kit-less landmarks"). Each needs its
 OSM part ids first (look at the stacked parts near the landmark's coordinate; the
 resolved ids in `landmark-buildings.json` are sometimes the wrong piece: Westerkerk's
@@ -105,6 +105,25 @@ shoot it in game. Open: kit geometry cost (about 100-700 triangles each) is not
 measured on a phone; palace columns and tower openings are crude; church windows
 are bare brick; the highlight for a kit landmark falls back to the plain yellow
 prism.
+
+**Street ensembles: one builder's terrace drawn as one (user 2026-10-03: "fix up the overall rhythm of major commercial streets like rozengracht, kinkerstraat, Jan Pieter Heijestraat").**
+Study and prototype done (`src/canalRecall/streetEnsembles.ts`, `npx tsx scripts/check-street-ensembles.ts`; findings,
+strips and photos in `/mnt/project-files/house-design/street-rhythm/`). Measured: terrace streets (Kinkerstraat, JP Heijestraat,
+Javastraat, Ferdinand Bolstraat) have 55-80% of buildings in runs of 3+ (year within 2, height within 1.6 m); on those runs the
+game draws one wall colour 0% of the time and one roof kind 0-8%, eave sd 0.6-1.3 m against 0.2-0.4 m in the data. Organic
+streets (Rozengracht, Haarlemmerdijk, Utrechtsestraat) have no runs; their rhythm is the 4-6 m plot and a continuous shop band.
+Next, in order:
+- P1: offline extract `building-ensembles/14/x/y` (staging, coverage) plus a tile enricher next to `constructionYearEnricher`;
+  run-shared wall colour, window style, roof decision (kind, material, rise) and eave. A shared seed alone fixes colour and
+  windows but only half the roofs, because `planRoof` branches per footprint.
+- P1: run-shared storey/ground scale (the per-building 0.93-1.09 / 0.92-1.12 jitter in `threeBuildingMesh.ts` breaks floor
+  lines) and one shop-band height per face.
+- P2: regime gating (terrace / mixed / organic: organic faces get only the shop band and whole-storey cornice steps); corner
+  accents that are not "taller" (real corners are not); replace the radial 40 m shop infill in `build-shopfronts.ts`
+  (overstates Kinkerstraat at 97%) with the face-aware band.
+- P3: periodic accents every 2-4 houses in long runs, awnings, bike rows.
+Pins: Kinkerstraat 1903 run (18 houses, 95 m) near 4.861654,52.364465; Javastraat 27-house run near 4.933378,52.36355;
+Rozengracht organic face near 4.881577,52.373621; Haarlemmerdijk and Utrechtsestraat must stay ungrouped.
 
 **Empty areas of the city (user report 2026-10-02, fix shipped, unconfirmed).**
 Tile streamer retries, timeouts and the wider-view re-plan cover the likely causes (see HISTORY).
