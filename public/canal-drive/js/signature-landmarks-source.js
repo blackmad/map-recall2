@@ -161,6 +161,7 @@ export class SignatureLandmarks {
   shownFootprints() {
     if (!this.enabled || !this.suppressing) return [];
     return (this._entries || [])
+      .filter(entry => entry.spec.spatialSuppression !== false)
       .map(entry => entry.spec.footprint)
       .filter(Boolean);
   }

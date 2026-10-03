@@ -498,7 +498,8 @@
         52.37526883046758
       ],
       "northOffsetDegrees": 119.51208512104333
-    }
+    },
+    "spatialSuppression": false
   },
   {
     "id": "rembrandt-house",
@@ -533,7 +534,8 @@
         52.369299500000004
       ],
       "northOffsetDegrees": 214.19839036962065
-    }
+    },
+    "spatialSuppression": false
   },
   {
     "id": "moco-museum",
@@ -568,7 +570,8 @@
         52.35869759396733
       ],
       "northOffsetDegrees": 59.387481311342526
-    }
+    },
+    "spatialSuppression": false
   },
   {
     "id": "museum-van-loon",
@@ -603,6 +606,202 @@
         52.36338835201399
       ],
       "northOffsetDegrees": 192.3449814578558
+    },
+    "spatialSuppression": false
+  },
+  {
+    "id": "amstelkerk",
+    "name": "Amstelkerk",
+    "landmarkId": "extract_landmarks_444968372",
+    "modelUrl": "./models/amstelkerk.glb",
+    "suppressOsmIds": [
+      "w57862594"
+    ],
+    "footprint": {
+      "centre": [
+        4.896631258458023,
+        52.36231406217453
+      ],
+      "headingDegrees": 162.77460287081203,
+      "lengthMetres": 32.33797500418897,
+      "widthMetres": 28.68211205174098
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Amstelkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/de-amstelkerk/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
     }
+  },
+  {
+    "id": "he-hua-temple",
+    "name": "Fo Guang Shan He Hua Temple",
+    "landmarkId": "extract_landmarks_944681607",
+    "modelUrl": "./models/he-hua-temple.glb",
+    "suppressOsmIds": [
+      "w267091468"
+    ],
+    "footprint": {
+      "centre": [
+        4.900066205093341,
+        52.373727761786604
+      ],
+      "headingDegrees": 4.424469025937611,
+      "lengthMetres": 38.46371394807869,
+      "widthMetres": 15.688531853006925
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Fo Guang Shan He Hua Temple",
+      "author": "Map Recall",
+      "sourceUrl": "https://ibps.nl/he-hua-temple/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  },
+  {
+    "id": "haarlemmerpoort",
+    "name": "Haarlemmerpoort",
+    "landmarkId": "extract_landmarks_498862002",
+    "modelUrl": "./models/haarlemmerpoort.glb",
+    "suppressOsmIds": [
+      "w33202039"
+    ],
+    "footprint": {
+      "centre": [
+        4.883079796368743,
+        52.384966999977514
+      ],
+      "headingDegrees": 42.81534677084582,
+      "lengthMetres": 35.36444542075912,
+      "widthMetres": 19.964773212277446
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Haarlemmerpoort",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/haarlemmerpoort/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+    }
+  },
+  {
+    "id": "het-schip",
+    "name": "Museum Het Schip",
+    "landmarkId": "extract_landmarks_975578776",
+    "modelUrl": "./models/het-schip.glb",
+    "suppressOsmIds": [
+      "w57857095",
+      "w274039865",
+      "w274039880",
+      "w274039890",
+      "w274039928",
+      "w274039961",
+      "w274039965",
+      "w274039970",
+      "w274040061",
+      "w274040252",
+      "w274040255",
+      "w274040262",
+      "w274040271",
+      "w274040276",
+      "w274040281",
+      "w274040284",
+      "w274040290",
+      "w274040293",
+      "w274040296",
+      "w274040305",
+      "w274040311",
+      "w274040314",
+      "w274040317",
+      "w274040326",
+      "w274040331",
+      "w274040334",
+      "w274040338",
+      "w274040342",
+      "w274040348",
+      "w274040351",
+      "w274040357",
+      "w274040362",
+      "w274040371",
+      "w274040375",
+      "w274040415",
+      "w274040419",
+      "w274040437",
+      "w274040452",
+      "w274040559",
+      "w274040564"
+    ],
+    "footprint": {
+      "centre": [
+        4.8734670680245165,
+        52.3902157496525
+      ],
+      "headingDegrees": 153.90696093135256,
+      "lengthMetres": 115.22286870841877,
+      "widthMetres": 66.04156587363654
+    },
+    "surveyed": {
+      "anchor": [
+        4.8734670680245165,
+        52.3902157496525
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Museum Het Schip",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.hetschip.nl/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
+    },
+    "spatialSuppression": false
+  },
+  {
+    "id": "scheepvaarthuis",
+    "name": "Scheepvaarthuis",
+    "landmarkId": "scheepvaarthuis",
+    "modelUrl": "./models/scheepvaarthuis.glb",
+    "suppressOsmIds": [
+      "w57863677"
+    ],
+    "footprint": {
+      "centre": [
+        4.903908332712785,
+        52.37432204329201
+      ],
+      "headingDegrees": 132.30446233848764,
+      "lengthMetres": 76.97848116218616,
+      "widthMetres": 66.4167813949489
+    },
+    "surveyed": {
+      "anchor": [
+        4.903908332712785,
+        52.37432204329201
+      ],
+      "northOffsetDegrees": 0
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Scheepvaarthuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.amrathamsterdam.com/en/information/history/the-scheepvaarthuis",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly architectural reconstruction. Exact OpenStreetMap building polygons retain courtyards and offsets; heights and sculptural details are approximated from building tags and photographs."
+    },
+    "spatialSuppression": false
   }
 ]
