@@ -59,6 +59,30 @@ for (const spec of MANUAL_LANDMARKS) {
     queueRank:destinations.length+1,origin:'Landmark catalogue',
     status:'manual-model',modelId:spec.id} as any);
 }
+// A destination can describe a whole district, a complex or a small memorial.
+// Keep its teaching identity while making the asset task explicit for reviewers.
+const treatments:Record<string,{kind:string;note:string}>={
+  'red light district':{kind:'area',note:'Treat the streets and canals as an area; individual buildings have their own queue entries.'},
+  'canal ring area of amsterdam':{kind:'area',note:'Treat the canal ensemble; there is no single building to replace.'},
+  'amsterdam':{kind:'area',note:'City-wide identity; choose a specific mapped place before authoring geometry.'},
+  'chinatown':{kind:'area',note:'Street ensemble; He Hua Temple is already modeled separately.'},
+  'artis':{kind:'complex',note:'Preserve the zoo grounds, paths and mapped trees; model entrance and museum buildings individually.'},
+  'begijnhof':{kind:'complex',note:'Preserve the open court; English Reformed Church is already modeled separately.'},
+  'westergasfabriek':{kind:'complex',note:'Preserve the industrial campus; Gashouder is already modeled separately.'},
+  'university of amsterdam':{kind:'complex',note:'Identify the represented campus or historic building before replacing its geometry.'},
+  'universiteit van amsterdam':{kind:'complex',note:'Identify the represented campus or historic building before replacing its geometry.'},
+  'homomonument':{kind:'memorial',note:'Model the three mapped pink granite triangles and waterside steps.'},
+  'de schreeuw':{kind:'memorial',note:'Author the sculpture at its mapped position; retain the surrounding park.'},
+  'de dokwerker':{kind:'memorial',note:'Author the statue and plinth at the mapped position.'},
+  'auschwitz memorial':{kind:'memorial',note:'Preserve the ground-level memorial and surrounding park.'},
+  'monument indie nederland':{kind:'memorial',note:'Model the mapped monument and landscaped setting.'},
+  'equestrian statue of queen wilhelmina':{kind:'memorial',note:'Author the horse, rider and pedestal at the mapped position.'},
+  'plaquette 7 mei 1945':{kind:'memorial',note:'Use a small mapped wall plaque rather than replacing the host building.'},
+};
+for(const p of destinations){const task=treatments[normaliseAnswer(p.name)];
+  if(task)Object.assign(p,{treatment:task.kind,taskNote:task.note});
+  else Object.assign(p,{treatment:p.status==='landscape'?'landscape':p.status==='pending'&&!['museum','cinema','library','music venue'].includes((p as any).type)?'review':'building'});
+}
 const counts=destinations.reduce((a:any,p)=>{a[p.status]=(a[p.status]||0)+1;return a;},{});
 fs.writeFileSync('public/canal-drive/landmark-backlog.json',JSON.stringify({version:1,cityId:'amsterdam',
   generatedBy:'scripts/landmarks/build-poi-backlog.ts',rules:'Same teachable-card gate, 4 km city-centre radius, name deduplication and prominence order as game-route.js. Requested additions and completed original assets may lie outside this pool; their origin records this.',
