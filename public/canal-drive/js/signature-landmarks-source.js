@@ -55,6 +55,12 @@ export class SignatureLandmarks {
     // the coloured extract, so it opts out and composes suppression itself.
     this.manageBasemapFilter = options.manageBasemapFilter !== false;
     this.getBasemapBaseFilter = options.getBasemapBaseFilter || null;
+    this.loadVisibleOnly = options.loadVisibleOnly === true;
+    this._pending = new Map();
+    this._failed = new Set();
+    this._generation = 0;
+    this._removed = false;
+    this._onMove = () => this._requestModels();
     this.enabled = true;
     this.suppressing = true;
     /** Specs whose model has loaded and is in the scene. */
@@ -68,6 +74,7 @@ export class SignatureLandmarks {
     this.enabled = !!enabled;
     // A hidden model must give its extrusion back, or the Dam has a hole in it.
     this._applySuppression();
+    if (this.enabled) this._requestModels();
     this.map.triggerRepaint();
   }
 
@@ -188,6 +195,79 @@ export class SignatureLandmarks {
     this.map.setFilter('building-3d', basemapBuildingFilter(osmIds, base));
   }
 
+  /** Keep loading and render culling aligned, including large footprint edges. */
+  _nearby(spec, anchor = spec.surveyed?.anchor || spec.footprint?.centre) {
+    if (!anchor) return !this.loadVisibleOnly;
+    const bounds = this.map.getBounds();
+    const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
+    const dy = radius / 111320;
+    const dx = dy / Math.max(.1, Math.cos(anchor[1] * Math.PI / 180));
+    return anchor[0] >= bounds.getWest() - .004 - dx && anchor[0] <= bounds.getEast() + .004 + dx &&
+      anchor[1] >= bounds.getSouth() - .002 - dy && anchor[1] <= bounds.getNorth() + .002 + dy;
+  }
+
+  _requestModels() {
+    if (this._removed || !this.enabled || !this._loader || this._pending.size >= 2) return;
+    const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
+      !this._failed.has(spec.id) && (!this.loadVisibleOnly || this._nearby(spec)));
+    const bounds = this.map.getBounds();
+    const center = this.map.getCenter?.() || {lng: (bounds.getWest() + bounds.getEast()) / 2, lat: (bounds.getSouth() + bounds.getNorth()) / 2};
+    const distance = spec => {
+      const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
+      return anchor ? ((anchor[0] - center.lng) * Math.cos(center.lat * Math.PI / 180)) ** 2 + (anchor[1] - center.lat) ** 2 : Infinity;
+    };
+    if (this.loadVisibleOnly) candidates.sort((a, b) => distance(a) - distance(b));
+    while (this._pending.size < 2 && candidates.length) {
+      const spec = candidates.shift(), generation = this._generation;
+      if (this._pending.has(spec.id) || this.shown.has(spec.id)) continue;
+      this._pending.set(spec.id, generation);
+      const finish = () => {
+        if (this._removed || generation !== this._generation) return;
+        this._pending.delete(spec.id);
+        this._requestModels();
+      };
+      this._loader.load(assetUrl(spec.modelUrl), gltf => {
+        if (this._removed || generation !== this._generation) {
+          this._disposeModel(gltf.scene);
+          return;
+        }
+        try { this._add(this._lightScene, spec, gltf.scene, this.map); }
+        catch (error) {
+          this._failed.add(spec.id);
+          // Placement or the host callback can fail after insertion. Give the
+          // extrusion back before freeing its model so no hidden shell remains.
+          this._entries = this._entries.filter(entry => entry.spec.id !== spec.id);
+          this.shown.delete(spec.id);
+          this._applySuppression();
+          this._disposeModel(gltf.scene);
+          console.warn(`Signature model for ${spec.name} could not be placed; keeping the OSM extrusion.`, error);
+        }
+        finally { finish(); }
+      }, undefined, error => {
+        if (this._removed || generation !== this._generation) return;
+        this._failed.add(spec.id);
+        console.warn(`Signature model for ${spec.name} unavailable; keeping the OSM extrusion.`, error);
+        finish();
+      });
+    }
+  }
+
+  _disposeModel(group) {
+    const geometries = new Set(), materials = new Set(), textures = new Set();
+    group.traverse(child => {
+      if (!child.isMesh) return;
+      if (child.geometry) geometries.add(child.geometry);
+      for (const material of Array.isArray(child.material) ? child.material : [child.material]) {
+        if (!material) continue;
+        materials.add(material);
+        for (const value of Object.values(material)) if (value?.isTexture) textures.add(value);
+      }
+    });
+    for (const geometry of geometries) geometry.dispose();
+    for (const texture of textures) texture.dispose();
+    for (const material of materials) material.dispose();
+  }
+
   _makeLayer() {
     const owner = this;
     let camera, scene, renderer;
@@ -197,6 +277,8 @@ export class SignatureLandmarks {
       type: 'custom',
       renderingMode: '3d',
       onAdd(map, gl) {
+        owner._removed = false;
+        owner._generation++;
         camera = new THREE.Camera();
         scene = new THREE.Scene();
         // Daylight, and note the sign of the sun's Y.
@@ -229,26 +311,30 @@ export class SignatureLandmarks {
         // fails and every landmark silently falls back to its grey box.
         if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
 
-        for (const spec of owner.models) {
-          loader.load(
-            assetUrl(spec.modelUrl),
-            gltf => owner._add(scene, spec, gltf.scene, map),
-            undefined,
-            error => console.warn(
-              `Signature model for ${spec.name} unavailable; keeping the OSM extrusion.`,
-              error,
-            ),
-          );
-        }
+        owner._loader = loader;
+        owner._lightScene = scene;
+        map.on('moveend', owner._onMove);
+        owner._requestModels();
+      },
+      onRemove(map) {
+        owner._removed = true;
+        owner._generation++;
+        map.off('moveend', owner._onMove);
+        owner._pending.clear();
+        for (const entry of owner._entries) owner._disposeModel(entry.group);
+        owner._entries = [];
+        owner.shown.clear();
+        owner._loader = null;
+        owner._lightScene = null;
+        owner._applyBasemapFilter();
+        // This renderer borrows MapLibre's context: release resources, never lose it.
+        renderer?.dispose();
       },
       render(_gl, args) {
-        if (!owner.enabled || !owner._entries.length) return;
+        if (owner._removed || !owner.enabled || !owner._entries.length) return;
         for (const entry of owner._entries) {
           // Shared WebGL canvas: distant landmarks should cost no render calls.
-          const bounds = owner.map.getBounds();
-          const [lng, lat] = entry.placement.anchor;
-          if (lng < bounds.getWest() - 0.004 || lng > bounds.getEast() + 0.004 ||
-              lat < bounds.getSouth() - 0.002 || lat > bounds.getNorth() + 0.002) continue;
+          if (!owner._nearby(entry.spec, entry.placement.anchor)) continue;
           camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(entry.transform);
           renderer.resetState();
           renderer.render(entry.scene, camera);
