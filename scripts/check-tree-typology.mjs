@@ -12,6 +12,16 @@ for(const species of [null,'Unknown sp.',"Ulmus 'Unverified Cultivar'",'Ulmus cv
 assert.equal(treeTypology({...fixture,type:'Gekandelaberde boom'}).archetype,'candelabra-pruned');
 assert.notEqual(treeTypology(fixture).archetype,'candelabra-pruned','restricted growth is not evidence of pollarding');
 assert.equal(treeTypology({...fixture,type:'Stobbe'}),null);
+assert.equal(treeTypology({...fixture,type:'Knotboom'}).archetype,'pollarded');
+assert.equal(treeTypology({...fixture,type:'Leiboom'}).archetype,'trained-flat');
+assert.equal(treeTypology({...fixture,species:"Populus nigra 'Italica'"}).archetype,'columnar');
+assert.equal(treeTypology({...fixture,species:'Picea abies'}).archetype,'conical-evergreen');
+assert.equal(treeTypology({...fixture,species:'Betula pendula'}).archetype,'upright-oval');
+assert.equal(treeTypology({...fixture,species:"Salix x sepulcralis 'Chrysocoma'"}).archetype,'weeping');
+for(const [species,archetype] of [['Quercus robur','irregular-spreading'],['Fraxinus excelsior','airy-oval'],['Aesculus hippocastanum','domed'],['Metasequoia glyptostroboides','conical-deciduous'],["Carpinus betulus 'Frans Fontaine'",'columnar']])assert.equal(treeTypology({...fixture,species}).archetype,archetype);
+assert.equal(treeTypology({...fixture,species:'Picea abies'}).crownGeometry,'cone');
+assert.equal(treeTypology({...fixture,species:'Betula pendula'}).bark,'#d8d9c5');
+assert.notEqual(treeTypology({...fixture,species:'Quercus robur'}).foliage,treeTypology({...fixture,species:'Betula pendula'}).foliage);
 for(const height of [null,undefined,0,-1,NaN,Infinity,1000,'15']){
   const p=treeTypology({...fixture,height});assert.equal(p.height,9);assert.equal(p.provenance.height,'authored-height-fallback');
 }
@@ -36,6 +46,7 @@ for(const [i,p] of proxies.entries()){
 }
 const count=key=>proxies.reduce((a,p)=>{const v=key(p);a[v]=(a[v]||0)+1;return a;},{});
 const report={version:TREE_TYPOLOGY_VERSION,at:new Date().toISOString(),trees:proxies.length,archetypes:count(p=>p.archetype),crownSources:count(p=>p.provenance.crownBasis),heightSources:count(p=>p.provenance.height),proxies};
+await fs.mkdir('.cache/da-costa-neighbourhood',{recursive:true});
 await fs.writeFile('.cache/da-costa-neighbourhood/tree-typology-report.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({...report,proxies:undefined},null,2));
 console.log('Passed: species/cultivar fallbacks, explicit pruning only, missing heights, stump exclusion, preserved inventory, deterministic three-lobe palette and bounded crowns.');
