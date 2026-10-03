@@ -96,6 +96,26 @@ const stub = (text: string, font: string) => {
   assert.ok(more.x + more.width < long.width, 'the MORE badge stays inside the card');
 }
 
+// --- Every card has a close "×", clear of MORE and the name (2026-10-03) -----
+{
+  for (const props of [
+    { name: 'Nes', body: '' },
+    { name: 'Oude Kerk', category: 'CHURCH', hasArticle: true, hasImage: true, body: 'The Oude Kerk is Amsterdam\'s oldest building and oldest parish church, founded in 1213 and consecrated in 1306, standing on the Oudekerksplein in De Wallen, and its long history runs well past what any four lines can hold.' },
+    { name: 'Nederlandse Film en Televisie Academie Amsterdam Centrum', body: 'A school.', category: 'COLLEGE' },
+  ]) {
+    for (const width of [480, 340]) {
+      const card = measureLandmarkCard(props, stub, width);
+      assert.ok(card.close.x + card.close.width <= card.width - 8, `${props.name}: the close sits inside the card`);
+      const more = card.badges.find((b) => b.kind === 'more');
+      if (more) assert.ok(more.x + more.width < card.close.x, `${props.name}: MORE ends before the close`);
+      for (const badge of card.badges) assert.ok(badge.x + badge.width < card.close.x, `${props.name}: badges end before the close`);
+      if (card.headerInline) assert.ok(card.nameX + stub(card.displayName.toUpperCase(), '') <= card.close.x, `${props.name}: an inline name ends before the close`);
+      assert.ok(card.closeHit.x <= card.close.x && card.closeHit.y <= card.close.y
+        && card.closeHit.x + card.closeHit.width >= card.close.x + card.close.width, `${props.name}: the tap region covers the glyph`);
+    }
+  }
+}
+
 // --- A name too long to fit is elided, not overflowed -----------------------
 {
   const short = measureLandmarkCard({ name: 'Nes', body: '' }, stub);

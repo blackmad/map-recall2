@@ -22,7 +22,7 @@ import { KITS, KIT_HIDE_IDS, KIT_MODELLED_IDS, KIT_PART_IDS, decorateKitRoof, ki
 import { FRONT_LIST, FRONT_PART_IDS, decorateFront } from './landmarkFrontData.js';
 import { frontKitGeometry, lookHex } from './landmarkFronts.js';
 import { decorateShopfront, setShopfronts } from './shopfronts.js';
-import { houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
+import { boatForLandmark, houseboatGeometry, houseboatsByTile, type Houseboat } from './houseboats.js';
 import { buildKitChunk, type Chunk } from './threeBuildingMesh.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js';
 import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
@@ -183,6 +183,7 @@ export class ThreeBuildings {
   private readonly inflight = new Map<string, Feature[]>();
   private boatTiles = new Map<string, Houseboat[]>();
   private boatIds: ReadonlySet<string> = new Set();
+  private boats: readonly Houseboat[] = [];
   private lastFeatures: readonly Feature[] = [];
   private detailTiles = new Set<string>();
 
@@ -443,10 +444,16 @@ export class ThreeBuildings {
 
   /** OSM houseboat footprints (Amsterdam extract); drawn by the houseboat generator in the resident tiles. */
   setHouseboats(boats: readonly Houseboat[]): void {
+    this.boats = boats;
     this.boatTiles = houseboatsByTile(boats);
     this.boatIds = new Set(boats.map(b => b.id));
     for (const key of [...this.chunks.keys()]) if (key.startsWith(BOAT_PREFIX)) this.dropChunk(key);
     this.setFeatures(this.lastFeatures);
+  }
+
+  /** The drawn houseboat a landmark with no building is aboard, if any (see `boatForLandmark`). */
+  boatForLandmark(lngLat: [number, number], type?: string): string | null {
+    return boatForLandmark(this.boats, lngLat, type);
   }
 
   private buildBoats(tile: string): Chunk {
