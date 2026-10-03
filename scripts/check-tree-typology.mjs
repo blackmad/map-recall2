@@ -31,6 +31,15 @@ for(const species of ['Platanus hispanica',"Tilia europaea 'Pallida'"]){
 assert.equal(treeTypology({...fixture,species:"Taxus baccata 'Fastigiata'"}).archetype,'columnar');
 assert.equal(treeTypology({...fixture,species:'Pinus sylvestris'}).foliage,'#496955');
 assert.equal(treeTypology({...fixture,species:'Betula pendula'}).bark,'#d8d9c5');
+for(const [species,archetype]of [["Tilia europaea 'Zwarte Linde'",'domed'],["Ulmus 'Rebona'",'upright-oval'],["Ulmus minor 'Sarniensis'",'pyramidal'],['Prunus avium','domed'],["Acer pseudoplatanus 'Negenia'",'pyramidal'],['Tilia tomentosa','domed'],['Corylus colurna','pyramidal'],["Acer campestre 'Elsrijk'",'upright-oval']]){
+ const p=treeTypology({...fixture,species});assert.equal(p.archetype,archetype);assert.equal(p.height,fixture.height);assert.ok(p.provenance.reference.startsWith('https://'));
+ assert.equal(treeTypology({...fixture,species,type:'Knotboom'}).archetype,'pollarded');
+ assert.equal(treeTypology({...fixture,species,type:'Leiboom'}).archetype,'trained-flat');
+ assert.equal(treeTypology({...fixture,species,type:'Gekandelaberde boom'}).archetype,'candelabra-pruned');
+ assert.equal(treeTypology({...fixture,species:species+' unknown cultivar'}).provenance.crownBasis,'authored-fallback','do not infer unverified taxa');
+}
+assert.equal(treeTypology({...fixture,species:'Prunus avium'}).bark,'#8a5544');
+assert.equal(treeTypology({...fixture,species:'Ulmus hollandica'}).provenance.crownBasis,'authored-fallback');
 assert.notEqual(treeTypology({...fixture,species:'Quercus robur'}).foliage,treeTypology({...fixture,species:'Betula pendula'}).foliage);
 for(const height of [null,undefined,0,-1,NaN,Infinity,1000,'15']){
   const p=treeTypology({...fixture,height});assert.equal(p.height,9);assert.equal(p.provenance.height,'authored-height-fallback');
