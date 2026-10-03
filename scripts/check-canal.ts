@@ -137,6 +137,7 @@ const CHECKS = [
   'test:facade-heritage-text',
   'test:compass',
   'test:intro-flight',
+  'test:trackpad-twist',
   'test:recall-clear',
   'test:recall-practice',
   'test:recall-forget',
