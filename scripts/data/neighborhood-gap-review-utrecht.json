@@ -1,0 +1,586 @@
+{
+ "_about": "Reviewed decisions for scripts/fill-neighborhood-gaps.ts --city utrecht. Dutch translated 2026-10-02; null rejects category/list dumps, articles about another place or person, out-of-date plans, and demographic or political text. Photos judged by eye on a contact sheet.",
+ "Rivierenwijk": {
+  "history": {
+   "approve": true,
+   "en": "At the end of the 19th century the only buildings stood along the Vaartsche Rijn: factories and workers' housing. Since 1 September 2008 the former New Apostolic Church on the Berkelstraat has been home to twenty-nine students."
+  }
+ },
+ "Watervogelbuurt": {
+  "history": {
+   "approve": true,
+   "en": "During the 19th century the area around the Oosterkade along the Vaartsche Rijn was built up further, leaving dense blocks with many alleys inside closed urban blocks. In the 1920s the Watervogelbuurt was built east of the Albatrosstraat."
+  }
+ },
+ "Galgenwaard E.o.": {
+  "description": {
+   "approve": true,
+   "en": "Galgenwaard en Kromhoutkazerne is a neighbourhood in the Oost district of Utrecht. The Stadion Galgenwaard stands here. The Galgenwaard already existed in the Middle Ages, when it lay within the city's liberty as part of the outer jurisdiction of Abstede. The abbey of Saint Servatius once owned the whole of the Galgenwaard."
+  }
+ },
+ "Schildersbuurt": {
+  "history": {
+   "approve": true,
+   "en": "On the Minstroom, along the Rembrandtkade and the Albert Neuhuysstraat, Utrecht's first blocks of flats were built in the 1920s, in a sober variant of the Amsterdam School. On the Prins Hendriklaan stands probably the best-known house in Utrecht: the Rietveld Schröder House of 1924."
+  }
+ },
+ "Voordorp/voorveldsepolder": {
+  "history": {
+   "approve": true,
+   "en": "It is a compact neighbourhood of about 1,600 homes with a mix of residents: young families, older people, tenants and owners. The cattle market closed in 2008 and was demolished."
+  },
+  "nameOrigin": {
+   "approve": true,
+   "en": "Eighteen streets in Voordorp are named after internationally known freedom fighters, among them David Ben-Gurion, Steve Biko, Simón Bolívar, Kartini, Tomáš Masaryk, Andrei Sakharov, Pablo Neruda, Che Guevara, Chico Mendes and Archbishop Romero."
+  }
+ },
+ "Tuindorp-Oost": {
+  "history": {
+   "approve": true,
+   "en": "The footpath in the park De Groene Kop is named after Hans Lubach (1935-2015), a local resident who worked for years to have the park redesigned and the path laid."
+  }
+ },
+ "Lauwerecht": {
+  "history": {
+   "approve": true,
+   "en": "In the 16th and 17th centuries clay tobacco pipes were made in Lauwerecht. On 1 January 1818 Lauwerecht was split off from the municipality of Utrecht as a municipality of its own."
+  }
+ },
+ "Schaakbuurt E.o.": {
+  "history": {
+   "approve": true,
+   "en": "After the factories closed, the neighbourhood, by then mostly walk-up flats in social rented housing, grew poorer from the 1980s onwards and drew more and more residents with social problems. By the end of the century its safety problems were the worst in the city of Utrecht."
+  }
+ },
+ "Leidsche Rijn Centrum E.o.": {
+  "description": {
+   "approve": true,
+   "en": "Leidsche Rijn Centrum is a neighbourhood still under construction for shopping, living and working in the Leidsche Rijn district of Utrecht. It rises around the roof of the Leidsche Rijn tunnel, the Berlijnplein; east of the tunnel more than 130 shops and 762 apartments have been built, and 9,000 m² of office space is to follow."
+  },
+  "history": {
+   "approve": true,
+   "en": "On 16 May 2018 the shopping centre was officially opened by Mayor Jan van Zanen."
+  }
+ },
+ "Terwijde": {
+  "history": {
+   "approve": true,
+   "en": "Terwijde's first residents arrived in June 2003. The Terwijde shopping centre opened in November 2014."
+  }
+ },
+ "Rijnenburg": {
+  "history": {
+   "approve": true,
+   "en": "Until 2000 the southern part of this polder, including the Nedereindseweg, belonged to the municipality of Nieuwegein. In the municipal reorganisation of 1 January 2001 the two parts were joined as the neighbourhood of Rijnenburg in Utrecht's Vleuten-De Meern district."
+  }
+ },
+ "Hooch Boulandt": {
+  "history": {
+   "approve": true,
+   "en": "In the 17th century the area was part of Mayor Hendrick Moreelse's extension plan for the city, which was never carried out. In 1997 the Sint-Martinusbrug, a footbridge designed by the architect Wiek Röling, opened so that residents can cross the city moat to the shops in the Twijnstraat."
+  }
+ },
+ "Halve Maan-Noord": {
+  "description": null,
+  "photo": null
+ },
+ "Wijk C": {
+  "nameOrigin": {
+   "approve": true,
+   "en": "At that time the city's districts were named after companies of the civic guard: each district inside the city wall had its own guard company made up of citizens."
+  }
+ },
+ "Transwijk-Noord": {
+  "description": {
+   "approve": true,
+   "en": "Administratively Transwijk consists of the neighbourhoods Transwijk-Noord and Transwijk-Zuid and the Merwedekanaalzone, where Utrecht's street-prostitution zone was until 2021."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Kanaleneiland-Noord": {
+  "description": {
+   "approve": true,
+   "en": "Thorough renewal plans exist for much of Kanaleneiland-Noord. Kanaleneiland-Noord and Kanaleneiland-Zuid are separated by the Churchilllaan."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Nieuw Hoograven-Zuid": {
+  "description": null,
+  "photo": {
+   "approve": true
+  }
+ },
+ "Oud Hoograven-Noord": {
+  "description": null,
+  "photo": {
+   "approve": true
+  }
+ },
+ "Oud Hoograven-Zuid": {
+  "description": null,
+  "photo": {
+   "approve": true
+  }
+ },
+ "Nieuw Hoograven-Noord": {
+  "description": null,
+  "photo": null
+ },
+ "Lunetten-Noord": {
+  "description": null,
+  "photo": null
+ },
+ "Oudwijk": {
+  "history": {
+   "approve": true,
+   "en": "In 1131 Machteld, burgravine of Utrecht, founded the abbey of Saint Stephen here for about twenty women of noble birth. The Benedictine convent was closed after the Reformation and largely demolished in 1584, after which the site became a country estate."
+  }
+ },
+ "Bokkenbuurt": {
+  "history": {
+   "approve": true,
+   "en": "Until September 1974 there was a level crossing on the Houtensepad from the Watervogelbuurt to the Bokkenbuurt."
+  }
+ },
+ "Nieuw Hoograven, Bokkenbuurt": {
+  "description": null,
+  "photo": null
+ },
+ "Sterrenwijk": {
+  "history": {
+   "approve": true,
+   "en": "The neighbourhood began as social housing built under the Housing Act at the start of the 20th century, on the Abstederdijk. In the 1980s a new Sterrenwijk was built on the Venuslaan. Its streets are named after stars, planets and astronomical terms, such as the Marsstraat, Orionstraat, Zenithstraat and Meridiaanstraat."
+  },
+  "photo": null
+ },
+ "Rubenslaan E.o.": {
+  "description": null,
+  "photo": null
+ },
+ "Tuinwijk-Oost": {
+  "description": {
+   "approve": true,
+   "en": "Administratively Tuinwijk consists of two neighbourhoods: in 2008 Tuinwijk-West had 2,440 residents and Tuinwijk-Oost 2,530."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Staatsliedenbuurt": {
+  "history": {
+   "approve": true,
+   "en": "The neighbourhood was built in the 1950s as an addition to the prewar Tuinwijk. Its layout is recognisably stamp-and-strip planning: open blocks, shared green spaces and 1950s walk-up flats of three or four storeys, sometimes with a pitched roof and often with distinctive brick detailing, alongside two-storey houses with pitched roofs."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Tuinwijk-West": {
+  "description": {
+   "approve": true,
+   "en": "Administratively Tuinwijk consists of two neighbourhoods: in 2008 Tuinwijk-West had 2,440 residents and Tuinwijk-Oost 2,530."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Huizingalaan, Karel Doormanlaan E.o.": {
+  "description": null,
+  "photo": null
+ },
+ "Pijlsweerd-Zuid": {
+  "history": {
+   "approve": true,
+   "en": "Pijlsweerd was built up as part of the city in the 20th century. From 1926 to 2009 the Herberhold battery factory (De Witte Kat) stood in Pijlsweerd."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Pijlsweerd": {
+  "history": {
+   "approve": true,
+   "en": "Pijlsweerd was built up as part of the city in the 20th century. From 1926 to 2009 the Herberhold battery factory (De Witte Kat) stood in Pijlsweerd."
+  }
+ },
+ "Egelantierstraat, Mariendaalstraat E.o.": {
+  "nameOrigin": null,
+  "photo": null
+ },
+ "Pijlsweerd-Noord": {
+  "history": {
+   "approve": true,
+   "en": "Pijlsweerd was built up as part of the city in the 20th century. From 1926 to 2009 the Herberhold battery factory (De Witte Kat) stood in Pijlsweerd."
+  },
+  "photo": null
+ },
+ "Ondiep, 2e Daalsebuurt": {
+  "description": null,
+  "photo": {
+   "approve": true
+  }
+ },
+ "Vechtzoom-Zuid": {
+  "description": null,
+  "photo": {
+   "approve": true
+  }
+ },
+ "Overvecht": {
+  "nameOrigin": {
+   "approve": true,
+   "en": "Every street name in Overvecht ends in -dreef. The main through roads are named after famous scholars (Einsteindreef, Zamenhofdreef), and the cross streets between them after rivers (Theemsdreef, Moezeldreef)."
+  }
+ },
+ "Parkwijk, Langerak": {
+  "description": null,
+  "photo": {
+   "approve": true
+  }
+ },
+ "Terwijde-West": {
+  "description": {
+   "approve": true,
+   "en": "Terwijde is split administratively into two neighbourhoods: Terwijde-West, with 4,943 residents, and Terwijde-Oost, with 3,665, on 1 January 2018. The streets of Terwijde-West are named after European composers."
+  },
+  "nameOrigin": {
+   "approve": true,
+   "en": "The streets of Terwijde-West are named after European composers; those of Terwijde-Oost after American musicians."
+  }
+ },
+ "Het Zand": {
+  "history": {
+   "approve": true,
+   "en": "According to the plan, Het Zand was to be finished in 2014 with 4,300 homes."
+  }
+ },
+ "Bedrijvengebied De Wetering": {
+  "description": null,
+  "photo": null
+ },
+ "Terwijde-Oost": {
+  "description": {
+   "approve": true,
+   "en": "Utrecht Leidsche Rijn station is a stop on the Utrecht–Rotterdam railway serving the Parkwijk and Terwijde-Oost neighbourhoods."
+  },
+  "nameOrigin": {
+   "approve": true,
+   "en": "The streets of Terwijde-Oost are named after American musicians; those of Terwijde-West after European composers."
+  }
+ },
+ "Strijkviertel": {
+  "description": {
+   "approve": true,
+   "en": "The Strijkviertelplas, officially Recreatieplas Strijkviertel, is a recreational lake in Utrecht, named after a road nearby. The site covers 20.6 hectares, of which 12.7 are water: a lake about 750 metres long and 175 metres wide."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Papendorp": {
+  "nameOrigin": {
+   "approve": true,
+   "en": "Several roads in the Papendorp business park are named after famous cartographers, among them Mercator and Ortelius."
+  },
+  "photo": {
+   "approve": true
+  }
+ },
+ "Lombok-Oost": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "'t Luie End": {
+  "photo": null
+ },
+ "Het Groene Dak": {
+  "photo": null
+ },
+ "Lombok-West": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Leidseweg E.o.": {
+  "photo": null
+ },
+ "Laan Van Nieuw-Guinea, Spinozaweg E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Nobelstraat E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Bleekstraat E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Domplein, Neude, Janskerkhof": {
+  "photo": null
+ },
+ "Springweg E.o., Geertebuurt": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Lange Elisabethstraat, Mariaplaats E.o.": {
+  "photo": null
+ },
+ "Welgelegen, Den Hommel": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Transwijk-Zuid": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Kanaleneiland-Zuid": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Binnenstad City- En Winkelgebied": {
+  "photo": null
+ },
+ "Hoog Catharijne, Ns, Jaarbeurs": {
+  "photo": null
+ },
+ "Bedrijvengebied Kanaleneiland-Zuid": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Transwijk, Bedr.geb. Kanaleneiland": {
+  "photo": null
+ },
+ "Dichterswijk, Rivierenwijk": {
+  "photo": null
+ },
+ "Tolsteeg, Rotsoord": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Oud Hoograven, Tolsteeg": {
+  "photo": null
+ },
+ "Lunetten-Zuid": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Zuid": {
+  "photo": null
+ },
+ "Nieuwegracht-Oost": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Franse buurt": {
+  "photo": null
+ },
+ "Lange Nieuwstraat E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Abstede": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Maarschalkerweerd, Mereveld": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Abstede, Gansstraat": {
+  "photo": null
+ },
+ "De Uithof - Utrecht Science Park": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Nw Engeland, Th. À Kempisplantsoen E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Oudwijk, Buiten Wittevrouwen": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Wilhelminapark E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Oost": {
+  "photo": null
+ },
+ "Wilhelminapark, Rijnsweerd": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Breedstraat, Plompetorengracht E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Binnenstad Woongebied": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Vogelenbuurt": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Wittevrouwen, Zeeheldenbuurt": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Zeeheldenbuurt, Hengeveldstraat E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Tuindorp, Van Lieflandlaan-West": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Tuindorp, Voordorp": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Donaudreef, Wolgadreef E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Taagdreef, wolgadreef": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Taagdreef, Rubicondreef E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Neckardreef E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Zambesidreef E.o.": {
+  "photo": null
+ },
+ "Poldergebied Overvecht": {
+  "photo": null
+ },
+ "Tigrisdreef E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Vechtzoom-Noord, Klopvaart": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Zambesidreef, Tigrisdreef": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Noordoost": {
+  "photo": null
+ },
+ "Votulast": {
+  "photo": null
+ },
+ "Zamenhofdreef, Neckardreef": {
+  "photo": null
+ },
+ "Zamenhofdreef E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "2e Daalsebuurt e.o.": {
+  "photo": null
+ },
+ "Julianapark E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Geuzenwijk, De Driehoek": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Elinkwijk E.o.": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Schepenbuurt, Cartesiusweg E.o.": {
+  "photo": null
+ },
+ "Bedrijvengebied Overvecht": {
+  "photo": null
+ },
+ "Vechtzoom, Klopvaart": {
+  "photo": null
+ },
+ "Zuilen-Noord En -Oost": {
+  "photo": {
+   "approve": true
+  }
+ },
+ "Queeckhovenplein E.o.": {
+  "photo": null
+ },
+ "Zuilen West": {
+  "photo": null
+ },
+ "Prins Bernhardplein E.o., Demkagebied": {
+  "photo": null
+ },
+ "Oog in Al, Welgelegen": {
+  "photo": null
+ },
+ "Halve Maan-Zuid": {
+  "photo": null
+ },
+ "Terwijde. De Wetering": {
+  "photo": null
+ },
+ "Leidsche Rijn-Zuid": {
+  "photo": null
+ },
+ "Rijnvliet": {
+  "photo": null
+ }
+}

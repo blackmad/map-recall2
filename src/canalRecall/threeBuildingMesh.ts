@@ -12,12 +12,13 @@
 // Positions are metres east / north / up from a caller-supplied origin.
 
 import { CELL_VARIANTS, cellLayer } from './facadeCells.js';
-import { groundRuns, layoutWall } from './facadeLayout.js';
+import { edgeGroundPieces, edgeLayout, layoutRun } from './facadeLayout.js';
+import { FALLBACK_REACH_M, SegmentGrid, streetDistance } from './streetFronts.js';
 import { FACADE_CORNICE_M, type FacadeStyle } from './genericFacades.js';
 import type { KitPartGeometry } from './landmarkKits.js';
 import earcut from 'earcut';
 import { ExtraSink, EXTRA_BUDGET, roofExtras, wallExtras } from './facadeExtras.js';
-import { fitRect, roofTriangles, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
+import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 
 export type MeshBuilding = {
   id: string;
@@ -26,10 +27,14 @@ export type MeshBuilding = {
   heightM: number;
   minHeightM: number;
   style: FacadeStyle;
+  /** The building's real period when the look lays it out as another style (facadeExtras: 19th-century dressing on a bay-look canal layout). */
+  period?: FacadeStyle;
   wallHex: string;
   /** A bay look's own layers and accent colour; absent means the procedural cells. */
   layers?: { upper: number; ground: number; door: number };
   accentHex?: string;
+  /** Paint of a shop's ground floor (bay looks): tints the shop bays' painted surface instead of the wall colour. */
+  groundHex?: string;
   /** A shopfront on the street-level bays (procedural cells; the bay looks choose their own layer). */
   shop?: boolean;
   /** The ground floor is a shopfront (either look): it takes the whole frontage, no house door beside it. */
@@ -232,6 +237,37 @@ function signatureTris(sig: { at: [number, number]; hex: string }, edges: readon
 
 const edgeKey = (x: number, y: number) => `${Math.round(x * 10)},${Math.round(y * 10)}`;
 
+/** Edges whose directions differ by less than this read as one wall (a curve or a slight kink). */
+export const RUN_TURN_DEG = 25;
+const COS_RUN = Math.cos(RUN_TURN_DEG * Math.PI / 180);
+
+/**
+ * A ring's visible walls grouped into runs: consecutive exposed edges that meet end to end
+ * and turn by less than RUN_TURN_DEG, laid out as one facade. A hidden (party) wall or a
+ * real corner ends a run.
+ */
+export function wallRuns(rings: readonly (readonly Edge[])[], hidden: (e: Edge) => boolean): Array<Array<{ e: Edge }>> {
+  const runs: Array<Array<{ e: Edge }>> = [];
+  for (const ring of rings) {
+    const n = ring.length;
+    if (!n) continue;
+    const joins = (a: Edge, b: Edge) => !hidden(a) && !hidden(b) && Math.hypot(a.x1 - b.x0, a.y1 - b.y0) < 0.05
+      && ((a.x1 - a.x0) * (b.x1 - b.x0) + (a.y1 - a.y0) * (b.y1 - b.y0)) / (a.len * b.len) >= COS_RUN;
+    // Start at an edge that does not join its predecessor, so no run wraps round the ring's start.
+    // A ring that joins all the way round (a round building) is one run from edge 0.
+    const start = Math.max(0, ring.findIndex((e, i) => !joins(ring[(i - 1 + n) % n], e)));
+    let run: Array<{ e: Edge }> = [];
+    for (let k = 0; k < n; k++) {
+      const e = ring[(start + k) % n];
+      if (hidden(e)) { if (run.length) runs.push(run); run = []; continue; }
+      if (run.length && !joins(run[run.length - 1].e, e)) { runs.push(run); run = []; }
+      run.push({ e });
+    }
+    if (run.length) runs.push(run);
+  }
+  return runs;
+}
+
 /**
  * Build one chunk. Walls shared exactly with a taller-or-equal neighbour in
  * the same chunk (party walls between terraced houses, the bulk of a canal
@@ -242,15 +278,18 @@ const edgeKey = (x: number, y: number) => `${Math.round(x * 10)},${Math.round(y 
  * `mode: 'extras'` builds only the facade extras (facadeExtras.ts) of these buildings: they are a
  * separate, near-camera chunk, too many triangles to draw across the whole resident city.
  */
-export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' = 'walls'): Chunk {
+export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, mode: 'walls' | 'extras' = 'walls', streets?: Float32Array): Chunk {
   type Prepared = { b: MeshBuilding; edges: Edge[]; top: number };
   const prepared: Prepared[] = [];
+  const rings: Edge[][][] = [];
   const shared = new Map<string, { top: number; base: number }[]>();
   for (const b of buildings) {
     // A lidded building owns its top, so its facade rows run to the full height (no band to leave room for).
     const top = b.lid ? b.heightM : facadeTopM(b.heightM);
-    const edges: Edge[] = [];
-    for (const polygon of b.polygons) polygon.forEach((ring, i) => edges.push(...ringEdges(ring, origin, i > 0)));
+    const own: Edge[][] = [];
+    for (const polygon of b.polygons) polygon.forEach((ring, i) => own.push(ringEdges(ring, origin, i > 0)));
+    const edges = own.flat();
+    rings.push(own);
     prepared.push({ b, edges, top });
     for (const e of edges) {
       const key = `${edgeKey(e.x0, e.y0)}>${edgeKey(e.x1, e.y1)}`;
@@ -264,13 +303,34 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     return !!others && others.some(o => o.top >= b.heightM && o.base <= b.minHeightM);
   };
 
+  // Street side: with the streets near this chunk, a door goes only on a wall that sees a street
+  // before it sees another building (streetFronts.ts). Without them, any outer wall may carry one.
+  const streetGrid = streets && streets.length ? new SegmentGrid(streets) : null;
+  let wallGrid: SegmentGrid | null = null;
+  if (streetGrid) {
+    const segs: number[] = [], owners: number[] = [];
+    prepared.forEach(({ edges }, i) => { for (const e of edges) { segs.push(e.x0, e.y0, e.x1, e.y1); owners.push(i); } });
+    wallGrid = new SegmentGrid(segs, 25, owners);
+  }
+  const doorWalls = (bi: number): Set<Edge> => {
+    const { b, edges } = prepared[bi];
+    const outer = edges.filter(e => !e.hole && e.len >= 2.4 && !hiddenByNeighbour(e, b));
+    if (!streetGrid) return new Set(outer);
+    const facing = new Set(outer.filter(e => streetDistance(e, streetGrid, wallGrid, bi) < Infinity));
+    if (facing.size || !outer.length) return facing;
+    // Set back from every street (an inner-block house): one door, on the wall nearest a street.
+    let best: Edge | null = null, bestD = Infinity;
+    for (const e of outer) { const d = streetDistance(e, streetGrid, null, bi, FALLBACK_REACH_M); if (d < bestD) { bestD = d; best = e; } }
+    return new Set(best ? [best] : []);
+  };
+
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
   type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: RoofTri[]; lid: LidMesh | null; sign: SignTri[] }> = [];
   let signTotal = 0;
   let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
   const kxLocal = mPerDegLng(origin.lat);
-  for (const { b, edges, top } of prepared) {
+  for (const [bi, { b, edges, top }] of prepared.entries()) {
     const quads: Quad[] = [];
     const base = b.minHeightM;
     const [r, g, bl] = parseHex(b.wallHex);
@@ -282,51 +342,56 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     let walls = 0;
     const extraSink = mode === 'extras' && b.extras ? new ExtraSink(EXTRA_BUDGET.building) : null;
     const cornice: RoofTri[] = [];
-    for (const e of edges) {
-      if (hiddenByNeighbour(e, b)) continue;
-      const layout = b.bare ? null : layoutWall(b.style, e.len, top - base, hash01(`${b.id}:${edgeKey(e.x0, e.y0)}`), base < 0.5, scale);
-      const shadeTint = (): [number, number, number, number] => [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255];
-      // With the top owned here, a wall too short for a layout (a corner chamfer) is still walled, in bare wall.
-      if (!layout && b.lid && b.plainLayer !== undefined && b.heightM > base + 0.01) {
-        quads.push({ e, u0: 0, u1: Math.max(1, e.len / 5), v1: 1, layer: b.plainLayer, accent, z0: base, z1: b.heightM, tint: shadeTint(), along0: 0, along1: 1 });
+    const doorAllowed = doorWalls(bi);
+    const paintTint = b.groundHex && b.layers ? parseHex(b.groundHex) : null;
+    for (const run of wallRuns(rings[bi], e => hiddenByNeighbour(e, b))) {
+      const first = run[0].e;
+      const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), top - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, scale, run.map(r => doorAllowed.has(r.e)));
+      if (!layout) {
+        // With the top owned here, a wall too short for a layout (a corner chamfer) is still walled, in bare wall.
+        if (b.lid && b.plainLayer !== undefined && b.heightM > base + 0.01) for (const { e } of run) {
+          quads.push({ e, u0: 0, u1: Math.max(1, e.len / 5), v1: 1, layer: b.plainLayer, accent, z0: base, z1: b.heightM, tint: [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255], along0: 0, along1: 1 });
+        }
+        continue;
       }
-      if (!layout) continue;
-      walls++;
-      if (extraSink && !e.hole && e.len >= 2.5) wallExtras({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: e.len }, base, top, layout, wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5 }, extraSink);
+      // Doors first, so the stoops and pediments the extras hang on a door follow them.
       if (b.plainWalls && b.plainLayer !== undefined) layout.doorBays.length = 0;
       // A shop fills its ground floor; only a wide front keeps a separate door to the floors above.
       if (b.shopfront && layout.bays < 3) layout.doorBays.length = 0;
-      // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
-      if (!b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
-        const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
-        const A: [number, number, number] = [e.x0, e.y0, z], B: [number, number, number] = [e.x1, e.y1, z];
-        const C: [number, number, number] = [e.x1 + nx, e.y1 + ny, z - drop], D: [number, number, number] = [e.x0 + nx, e.y0 + ny, z - drop];
-        const n: [number, number, number] = [e.nx * drop, e.ny * drop, out], l = Math.hypot(...n);
-        const nn: [number, number, number] = [n[0] / l, n[1] / l, n[2] / l], u1 = e.len / 5;
-        cornice.push({ p: [A, D, C], uv: [[0, 0], [0, 0.1], [u1, 0.1]], part: 'plate', n: nn }, { p: [A, C, B], uv: [[0, 0], [u1, 0.1], [u1, 0]], part: 'plate', n: nn });
-      }
-      const shade = wallShade(e.nx, e.ny);
-      const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), shade * 255];
-      const groundTop = base + layout.groundM;
-      for (const run of groundRuns(layout)) {
-        quads.push({ e, u0: 0, u1: run.to - run.from, v1: 1, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (run.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, run.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, tint, along0: run.from / layout.bays, along1: run.to / layout.bays });
-      }
-      if (layout.storeys > 0) quads.push({ e, u0: 0, u1: layout.bays, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
+      const bw = layout.bayWidthM, groundTop = base + layout.groundM;
+      run.forEach(({ e }, k) => {
+        walls++;
+        const s = layout.edgeStartM[k];
+        if (extraSink && !e.hole && e.len >= 2.5) wallExtras({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: e.len }, base, top, layout: edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, streetSide: doorAllowed.has(e), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' }, extraSink);
+        // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
+        if (!b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
+          const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
+          const A: [number, number, number] = [e.x0, e.y0, z], B: [number, number, number] = [e.x1, e.y1, z];
+          const C: [number, number, number] = [e.x1 + nx, e.y1 + ny, z - drop], D: [number, number, number] = [e.x0 + nx, e.y0 + ny, z - drop];
+          const n: [number, number, number] = [e.nx * drop, e.ny * drop, out], l = Math.hypot(...n);
+          const nn: [number, number, number] = [n[0] / l, n[1] / l, n[2] / l], u1 = e.len / 5;
+          cornice.push({ p: [A, D, C], uv: [[0, 0], [0, 0.1], [u1, 0.1]], part: 'plate', n: nn }, { p: [A, C, B], uv: [[0, 0], [u1, 0.1], [u1, 0]], part: 'plate', n: nn });
+        }
+        const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255];
+        const paint = paintTint ? [paintTint[0], paintTint[1], paintTint[2], tint[3]] as [number, number, number, number] : tint;
+        // u counts bays along the whole run, so the bay grid carries on round a kink.
+        for (const piece of edgeGroundPieces(layout, k, e.len)) {
+          quads.push({ e, u0: piece.a0 / bw, u1: piece.a1 / bw, v1: 1, tint: piece.door || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
+        }
+        if (layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
+      });
     }
     let roof: RoofTri[] = cornice;
     if (b.roof) {
-      const outer = b.polygons[0]?.[0] ?? [];
-      const rect = fitRect(outer.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number]));
-      if (rect) roof = roofTriangles(rect, b.roof.plan, b.heightM, b.roof.dims);
-      if (!rect) roof = [];
+      roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal);
     }
     const walled = mode === 'walls';
-    const lid = walled && b.lid && (!b.roof || !roof.length) ? lidMesh(b, origin) : null;
+    const lid = walled && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
     // Walls mode carries the signature storefront; extras mode only the extras.
     const sign: SignTri[] = walled && b.signature && b.lid ? signatureTris(b.signature, edges, b.minHeightM, origin) : [];
     if (extraSink) {
       // Roof extras on a flat roof only (a pitched roof has its own chimneys and dormers).
-      if (!b.roof) {
+      if (!b.roof || b.roof.plan.kind === 'parapet') {
         const outer = b.polygons[0]?.[0] ?? [];
         const rect = fitRect(outer.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number]), 40);
         if (rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
@@ -374,9 +439,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2, white: [number, number, number] = [255, 255, 255];
       for (const t of roof) {
         const shade = Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
-        const wall = t.part === 'plate' || t.part === 'dormerFace';
-        const layer = t.part === 'plate' ? (b.plainLayer ?? b.roof!.layers.plain) : t.part === 'dormerFace' ? b.roof!.layers.dormer : b.roof!.layers.slope;
-        const tint = wall ? [wr * jitter, wg * jitter, wb * jitter] : [rr, rg, rb];
+        const wall = t.part === 'plate' || t.part === 'dormerFace', flat = t.part === 'trim' || t.part === 'decal';
+        // Trim and decals (white stone, cornices, shutters) are flat colour on the lid's flat layer.
+        const layer = flat ? (b.lid?.flatLayer ?? b.roof!.layers.slope) : t.part === 'plate' ? (b.plainLayer ?? b.roof!.layers.plain) : t.part === 'dormerFace' ? b.roof!.layers.dormer : b.roof!.layers.slope;
+        const tint = t.hex ? parseHex(t.hex) : flat ? white : wall ? [wr * jitter, wg * jitter, wb * jitter] : [rr, rg, rb];
         for (let k = 0; k < 3; k++) {
           positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
           uvs[v * 2] = t.uv[k][0]; uvs[v * 2 + 1] = t.uv[k][1];

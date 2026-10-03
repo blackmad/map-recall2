@@ -11,55 +11,12 @@
 
 import type { FacadeStyle } from './genericFacades.js';
 import type { WallLayout } from './facadeLayout.js';
+import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, type RoofContext, type WallComponent } from './facadeExtraCore.js';
+import { ORNAMENT_COMPONENTS, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
-export type V3 = [number, number, number];
-export type FlatTri = { p: V3[]; hex: string; n: V3 };
-/** Wall frame: origin at the wall's start (ground of this building), x along, y outward. */
-export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number; len: number };
-export type ExtraContext = {
-  id: string; style: FacadeStyle; wallKey: string; f: WallFrame; base: number; top: number;
-  layout: WallLayout; wallHex: string; accentHex: string; roofKind?: string; groundLevel: boolean;
-};
-export type RoofContext = { id: string; style: FacadeStyle; rect: { cx: number; cy: number; ux: number; uy: number; len: number; wid: number }; z: number; wallHex: string };
-
-export function hash01(text: string): number {
-  let h = 2166136261;
-  for (const c of text) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); }
-  return (h >>> 0) / 4294967296;
-}
-
-/** Collects boxes as triangles; stops accepting boxes when its budget is spent. */
-export class ExtraSink {
-  readonly tris: FlatTri[] = [];
-  boxes = 0;
-  constructor(public budget: number) {}
-  /** A box in a wall frame: x along [a0, a1], y outward [o0, o1], z up [z0, z1]. Back face omitted. */
-  box(f: WallFrame, a0: number, a1: number, o0: number, o1: number, z0: number, z1: number, hex: string, bottom = false): boolean {
-    if (this.boxes >= this.budget) return false;
-    this.boxes++;
-    const P = (a: number, o: number, z: number): V3 => [f.x0 + f.ux * a + f.nx * o, f.y0 + f.uy * a + f.ny * o, z];
-    const N = (a: number, o: number, z: number): V3 => [f.ux * a + f.nx * o, f.uy * a + f.ny * o, z];
-    this.face([P(a0, o1, z0), P(a1, o1, z0), P(a1, o1, z1), P(a0, o1, z1)], N(0, 1, 0), hex);
-    this.face([P(a0, o0, z0), P(a0, o1, z0), P(a0, o1, z1), P(a0, o0, z1)], N(-1, 0, 0), hex);
-    this.face([P(a1, o0, z0), P(a1, o1, z0), P(a1, o1, z1), P(a1, o0, z1)], N(1, 0, 0), hex);
-    this.face([P(a0, o0, z1), P(a1, o0, z1), P(a1, o1, z1), P(a0, o1, z1)], [0, 0, 1], hex);
-    if (bottom) this.face([P(a0, o0, z0), P(a1, o0, z0), P(a1, o1, z0), P(a0, o1, z0)], [0, 0, -1], hex);
-    return true;
-  }
-  /** A sloped quad (a hood or a canopy): from (a0..a1, o0, zLow) at the wall up to the outer edge. */
-  slope(f: WallFrame, a0: number, a1: number, o0: number, o1: number, zWall: number, zOut: number, hex: string) {
-    const P = (a: number, o: number, z: number): V3 => [f.x0 + f.ux * a + f.nx * o, f.y0 + f.uy * a + f.ny * o, z];
-    const n: V3 = [f.nx * (zWall - zOut), f.ny * (zWall - zOut), o1 - o0];
-    this.face([P(a0, o0, zWall), P(a1, o0, zWall), P(a1, o1, zOut), P(a0, o1, zOut)], n, hex);
-  }
-  private face(q: V3[], n: V3, hex: string) {
-    const [A, B, C, D] = q;
-    const e1 = [B[0] - A[0], B[1] - A[1], B[2] - A[2]], e2 = [C[0] - A[0], C[1] - A[1], C[2] - A[2]];
-    const c = [e1[1] * e2[2] - e1[2] * e2[1], e1[2] * e2[0] - e1[0] * e2[2], e1[0] * e2[1] - e1[1] * e2[0]];
-    const flip = c[0] * n[0] + c[1] * n[1] + c[2] * n[2] < 0, l = Math.hypot(...n) || 1, nn: V3 = [n[0] / l, n[1] / l, n[2] / l];
-    this.tris.push({ p: flip ? [A, C, B] : [A, B, C], hex, n: nn }, { p: flip ? [A, D, C] : [A, C, D], hex, n: nn });
-  }
-}
+export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
+export type { V3, FlatTri, WallFrame, ExtraContext, RoofContext, WallComponent, RoofComponent, Chance } from './facadeExtraCore.js';
+export { ORNAMENT_COMPONENTS } from './facadeOrnaments.js';
 
 // --- Palettes -------------------------------------------------------------------
 const STONE = '#cfc6b4', IRON = '#26282b', WOOD = '#5a4030', WHITE = '#efece4', GREEN = '#3f7a3a', DARKGREEN = '#2c4f33', CONCRETE = '#b9b5ac', GLASS = '#5d6f7c';
@@ -69,17 +26,15 @@ const pickOf = <T>(list: readonly T[], r: number) => list[Math.floor(r * list.le
 
 // --- Wall helpers -----------------------------------------------------------------
 const bayCentre = (l: WallLayout, i: number) => (i + 0.5) * l.bayWidthM;
-/** Window centres across the bays (two per wide canal bay, one otherwise). */
+/** Window centres across the bays: the painted windows of this building's first upper storey. */
 function windowXs(c: ExtraContext): number[] {
-  const l = c.layout, per = c.style === 'canal' && l.bayWidthM > 4 ? 2 : 1, out: number[] = [];
-  for (let i = 0; i < l.bays; i++) for (let k = 0; k < per; k++) out.push(i * l.bayWidthM + ((k + 0.5) / per) * l.bayWidthM);
-  return out;
+  const xs = windowSpans(c, 0).map(w => w.x);
+  return xs.length ? xs : Array.from({ length: c.layout.bays }, (_, i) => bayCentre(c.layout, i));
 }
-const doorX = (c: ExtraContext) => (c.layout.doorBays.length ? bayCentre(c.layout, c.layout.doorBays[0]) - c.layout.bayWidthM * 0.3 : null);
+/** The painted door's axis (facadeOpenings.ts), so stoops and lanterns stand on it. */
+const doorX = (c: ExtraContext) => (c.layout.doorBays.length ? (c.layout.doorBays[0] + openingsOf(c).door.axis) * c.layout.bayWidthM : null);
 const storeyZ = (c: ExtraContext, s: number) => c.base + c.layout.groundM + s * c.layout.storeyM;
 
-export type WallComponent = { id: string; styles: readonly FacadeStyle[]; p: number; build: (c: ExtraContext, s: ExtraSink, r: number) => void };
-export type RoofComponent = { id: string; styles: readonly FacadeStyle[]; p: number; build: (c: RoofContext, s: ExtraSink, r: number) => void };
 
 const ALL: readonly FacadeStyle[] = ['canal', 'c19', 'school', 'postwar', 'modern', 'tower'];
 const OLD: readonly FacadeStyle[] = ['canal', 'c19'];
@@ -90,21 +45,21 @@ function roofBox(c: RoofContext, s: ExtraSink, u0: number, u1: number, v0: numbe
   return s.box({ x0: cx + vx * v0, y0: cy + vy * v0, ux, uy, nx: vx, ny: vy, len: 0 }, u0, u1, 0, v1 - v0, z0, z1, hex, false);
 }
 
-export const WALL_COMPONENTS: readonly WallComponent[] = [
+const STREET_FURNITURE: readonly WallComponent[] = [
   // --- Canal houses --------------------------------------------------------------
-  { id: 'hoist-beam', styles: ['canal'], p: 0.55, build: (c, s) => {
+  { id: 'hoist-beam', group: 'hoist', street: true, styles: ['canal'], p: 0.55, build: (c, s) => {
     const x = c.f.len / 2; s.box(c.f, x - 0.1, x + 0.1, 0, 0.95, c.top - 0.55, c.top - 0.35, WOOD, true);
     s.box(c.f, x - 0.02, x + 0.02, 0.85, 0.9, c.top - 0.9, c.top - 0.55, IRON); } },
-  { id: 'hoist-hood', styles: ['canal'], p: 0.2, build: (c, s) => {
+  { id: 'hoist-hood', group: 'hoist', street: true, styles: ['canal'], p: 0.2, build: (c, s) => {
     const x = c.f.len / 2; s.box(c.f, x - 0.1, x + 0.1, 0, 1.0, c.top - 0.6, c.top - 0.42, WOOD, true);
     s.slope(c.f, x - 0.35, x + 0.35, 0, 1.1, c.top - 0.05, c.top - 0.4, WOOD); } },
-  { id: 'stoop', styles: ['canal'], p: 0.5, build: (c, s) => {
+  { id: 'stoop', group: 'stoop', styles: ['canal'], p: 0.5, build: (c, s) => {
     const x = doorX(c); if (x == null || !c.groundLevel) return;
     for (let k = 0; k < 3; k++) s.box(c.f, x - 0.75, x + 0.75, 0, 1.2 - k * 0.35, c.base + k * 0.18, c.base + (k + 1) * 0.18, STONE); } },
   { id: 'stoop-railing', styles: ['canal'], p: 0.35, build: (c, s) => {
     const x = doorX(c); if (x == null || !c.groundLevel) return;
     for (const dx of [-0.75, 0.73]) s.box(c.f, x + dx, x + dx + 0.03, 0.1, 1.2, c.base + 0.5, c.base + 0.55, IRON); } },
-  { id: 'double-stoop', styles: ['canal'], p: 0.08, build: (c, s) => {
+  { id: 'double-stoop', group: 'stoop', styles: ['canal'], p: 0.08, build: (c, s) => {
     const x = doorX(c); if (x == null || !c.groundLevel) return;
     s.box(c.f, x - 0.7, x + 0.7, 0, 1.0, c.base, c.base + 0.75, STONE);
     for (const side of [-1, 1]) for (let k = 0; k < 3; k++) s.box(c.f, x + side * (0.7 + k * 0.3) - (side > 0 ? 0 : 0.3), x + side * (0.7 + k * 0.3) + (side > 0 ? 0.3 : 0), 0.1, 0.95, c.base, c.base + 0.75 - k * 0.25, STONE); } },
@@ -117,7 +72,7 @@ export const WALL_COMPONENTS: readonly WallComponent[] = [
   { id: 'gable-stone', styles: ['canal'], p: 0.15, build: (c, s) => {
     const x = doorX(c); if (x == null) return; const z = c.base + c.layout.groundM + 0.25;
     s.box(c.f, x - 0.35, x + 0.35, 0, 0.06, z, z + 0.5, STONE); s.box(c.f, x - 0.25, x + 0.25, 0.06, 0.08, z + 0.08, z + 0.42, pickOf(['#3f6f8a', '#a8442c', '#c9a227'], hash01(c.id))); } },
-  { id: 'door-pediment', styles: ['canal'], p: 0.3, build: (c, s) => {
+  { id: 'door-pediment', group: 'door-frame', styles: ['canal'], p: 0.3, build: (c, s) => {
     const x = doorX(c); if (x == null) return; const z = c.base + Math.min(2.7, c.layout.groundM - 0.2);
     s.box(c.f, x - 0.65, x + 0.65, 0, 0.18, z, z + 0.14, STONE, true); s.slope(c.f, x - 0.6, x + 0.6, 0, 0.16, z + 0.45, z + 0.14, STONE); } },
   { id: 'shutters-3d', styles: ['canal'], p: 0.3, build: (c, s, r) => {
@@ -137,21 +92,26 @@ export const WALL_COMPONENTS: readonly WallComponent[] = [
     const x0 = hash01(c.wallKey) * Math.max(0, c.f.len - 3), h = Math.min(c.top - c.base, 4 + hash01(`${c.wallKey}:h`) * 6);
     s.box(c.f, x0, x0 + 2.2, 0, 0.12, c.base, c.base + h, DARKGREEN); s.box(c.f, x0 + 0.4, x0 + 1.6, 0, 0.14, c.base + h, c.base + h + 1.2, GREEN); } },
   // --- 19th century -----------------------------------------------------------------
-  { id: 'juliet-balcony', styles: ['c19', 'school'], p: 0.3, build: (c, s) => {
+  { id: 'juliet-balcony', group: 'balcony', styles: ['c19', 'school'], p: 0.3, build: (c, s) => {
     if (c.layout.storeys < 2) return; const z = storeyZ(c, 1) + 0.05;
-    for (const x of windowXs(c).slice(0, 4)) { s.box(c.f, x - 0.6, x + 0.6, 0, 0.35, z, z + 0.06, STONE, true); s.box(c.f, x - 0.6, x + 0.6, 0.32, 0.36, z + 0.06, z + 0.95, IRON); } } },
-  { id: 'bay-window', styles: ['c19', 'school'], p: 0.2, build: (c, s) => {
+    // An openwork railing (top rail, foot rail, bars) rather than a solid plate, which read as a black box.
+    for (const x of windowXs(c).slice(0, 4)) {
+      s.box(c.f, x - 0.6, x + 0.6, 0, 0.35, z, z + 0.06, STONE, true);
+      s.strip(c.f, x - 0.6, x + 0.6, 0.34, z + 0.88, z + 0.94, IRON, 0.04); s.strip(c.f, x - 0.6, x + 0.6, 0.34, z + 0.14, z + 0.18, IRON, 0.03);
+      for (const dx of [-0.5, -0.17, 0.17, 0.5]) s.strip(c.f, x + dx - 0.02, x + dx + 0.02, 0.34, z + 0.06, z + 0.9, IRON, 0.03);
+    } } },
+  { id: 'bay-window', group: 'oriel', styles: ['c19', 'school'], p: 0.2, build: (c, s) => {
     if (c.layout.storeys < 1 || c.f.len < 5) return; const x = c.f.len / 2, z0 = storeyZ(c, 0), z1 = z0 + c.layout.storeyM * Math.min(2, c.layout.storeys) - 0.2;
     s.box(c.f, x - 1.3, x + 1.3, 0, 0.8, z0, z1, c.wallHex, true); s.box(c.f, x - 1.1, x + 1.1, 0.8, 0.82, z0 + 0.5, z1 - 0.4, GLASS); s.box(c.f, x - 1.4, x + 1.4, 0, 0.9, z1, z1 + 0.15, STONE); } },
-  { id: 'cornice-brackets', styles: ['c19', 'canal'], p: 0.35, build: (c, s) => {
+  { id: 'cornice-brackets', group: 'crown', styles: ['c19', 'canal'], p: 0.35, build: (c, s) => {
     const z = c.top - 0.15; s.box(c.f, 0, c.f.len, 0, 0.45, z - 0.15, z + 0.1, STONE, true);
     for (let x = 0.4; x < c.f.len - 0.2; x += 1.1) s.box(c.f, x - 0.08, x + 0.08, 0, 0.35, z - 0.55, z - 0.15, STONE); } },
-  { id: 'door-canopy', styles: ['c19', 'school', 'postwar'], p: 0.25, build: (c, s) => {
+  { id: 'door-canopy', group: 'door-frame', styles: ['c19', 'school', 'postwar'], p: 0.25, build: (c, s) => {
     const x = doorX(c); if (x == null) return; const z = c.base + Math.min(2.6, c.layout.groundM - 0.25);
     s.box(c.f, x - 0.8, x + 0.8, 0, 0.9, z, z + 0.1, c.style === 'c19' ? IRON : CONCRETE, true); } },
   { id: 'downpipe', styles: ALL, p: 0.4, build: (c, s) => {
     const x = hash01(`${c.wallKey}:dp`) < 0.5 ? 0.15 : c.f.len - 0.15; s.box(c.f, x - 0.05, x + 0.05, 0, 0.1, c.base, c.top - 0.2, '#4a4d50'); s.box(c.f, x - 0.15, x + 0.15, 0, 0.2, c.top - 0.45, c.top - 0.2, '#4a4d50'); } },
-  { id: 'gutter', styles: ['canal', 'c19', 'school'], p: 0.3, build: (c, s) => { s.box(c.f, 0, c.f.len, 0, 0.16, c.top - 0.12, c.top, '#3a3d40', true); } },
+  { id: 'gutter', group: 'crown', styles: ['canal', 'c19', 'school'], p: 0.3, build: (c, s) => { s.box(c.f, 0, c.f.len, 0, 0.16, c.top - 0.12, c.top, '#3a3d40', true); } },
   // --- Amsterdam School ------------------------------------------------------------
   { id: 'brick-balcony', styles: ['school'], p: 0.3, build: (c, s) => {
     for (let k = 1; k < Math.min(4, c.layout.storeys + 1); k++) { const x = c.f.len / 2, z = storeyZ(c, k - 1) + 0.05;
@@ -179,7 +139,7 @@ export const WALL_COMPONENTS: readonly WallComponent[] = [
   { id: 'vertical-fins', styles: ['modern', 'tower'], p: 0.25, build: (c, s) => {
     for (let x = 0.6; x < c.f.len - 0.3; x += 1.5) s.box(c.f, x - 0.06, x + 0.06, 0, 0.45, c.base + c.layout.groundM, c.top - 0.3, '#d6d2c8'); } },
   { id: 'garage-door', styles: ['postwar'], p: 0.12, build: (c, s) => { if (!c.groundLevel || c.f.len < 4) return; const x = c.f.len - 2; s.box(c.f, x - 1.25, x + 1.25, 0, 0.04, c.base, c.base + 2.3, '#9aa0a6'); } },
-  { id: 'plinth', styles: ['canal', 'c19', 'school'], p: 0.35, build: (c, s) => { if (c.groundLevel) s.box(c.f, 0, c.f.len, 0, 0.06, c.base, c.base + 0.5, '#3a3530'); } },
+  { id: 'plinth', group: 'plinth', styles: ['canal', 'c19', 'school'], p: 0.35, build: (c, s) => { if (c.groundLevel) s.box(c.f, 0, c.f.len, 0, 0.06, c.base, c.base + 0.5, '#3a3530'); } },
   // --- Street life ------------------------------------------------------------------
   { id: 'parked-bikes', styles: ALL, p: 0.3, build: (c, s, r) => {
     if (!c.groundLevel) return; const n = 1 + Math.floor(r * 4), x0 = hash01(`${c.wallKey}:bx`) * Math.max(0, c.f.len - n * 0.7);
@@ -220,25 +180,50 @@ export const ROOF_COMPONENTS: readonly RoofComponent[] = [
   { id: 'water-tank', styles: ['school', 'postwar'], p: 0.06, build: (c, s) => { roofBox(c, s, -1.2, 1.2, -1.2, 1.2, c.z + 1.6, c.z + 3.6, '#7c6a58'); for (const [u, v] of [[-1, -1], [1, -1], [-1, 1], [1, 1]]) roofBox(c, s, u - 0.06, u + 0.06, v - 0.06, v + 0.06, c.z, c.z + 1.6, IRON); } },
 ];
 
-/** Box budgets: per wall, and per building (walls and roof together). */
-export const EXTRA_BUDGET = { wall: 5, building: 8 } as const;
+/**
+ * Triangle budgets. A street wall may spend `wall`, any other wall `sideWall`; the building (walls
+ * and flat roof together) `building`, of which `streetReserve` is held back for its street wall
+ * until that wall has been dressed (walls arrive in ring order, often back walls first).
+ * Measured on the 40-house sample of scripts/check-facade-extras.ts; see HISTORY.md for the cost.
+ */
+export const EXTRA_BUDGET = { wall: 180, sideWall: 30, building: 230, streetReserve: 160 } as const;
+
+/** Everything a wall can get: the architecture first (it is what reads from down the street), then the furniture. */
+// The budget runs out in this order, so the parts that read from down the street come first:
+// the crown, the front door and its stoop, the hoist beam, the sills and balconies.
+const FIRST = ['kroonlijst', 'console-cornice', 'corbel-roofline', 'stepped-parapet', 'white-fascia', 'door-surround', 'portiek', 'brick-door-arch',
+  'stoop', 'double-stoop', 'hoist-beam', 'hoist-hood', 'window-sills', 'iron-balconies', 'brick-fins'];
+const ALL_WALL = [...ORNAMENT_COMPONENTS, ...STREET_FURNITURE];
+export const WALL_COMPONENTS: readonly WallComponent[] = [...FIRST.map(id => ALL_WALL.find(c => c.id === id)!), ...ALL_WALL.filter(c => !FIRST.includes(c.id))];
+const ATOMIC = new Set(ORNAMENT_COMPONENTS.map(c => c.id));
+// Building-wide choices of the original set (shutters, balcony slabs) use the building's roll so all its walls agree.
+const WIDE = new Set(['shutters-3d', 'balcony-slabs', 'gallery-walkway', 'glass-balconies', 'brick-bands', 'cornice-brackets', 'gutter', 'plinth', 'flower-boxes']);
+const streetDressed = new WeakSet<ExtraSink>();
+/** Tuning hook (scripts only): sees every wall's context and the components it got. */
+export const extraUsage: { record: null | ((c: ExtraContext, used: readonly string[]) => void) } = { record: null };
 
 /** Every wall extra this wall gets, in registry order, within the budget. */
 export function wallExtras(c: ExtraContext, sink: ExtraSink): string[] {
-  const used: string[] = [];
-  const start = sink.boxes, cap = Math.min(sink.budget, start + EXTRA_BUDGET.wall), outer = sink.budget;
-  sink.budget = cap;
+  const used: string[] = [], groups = new Set<string>();
+  const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
+  const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
+  sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + (street ? EXTRA_BUDGET.wall : EXTRA_BUDGET.sideWall)));
   for (const comp of WALL_COMPONENTS) {
-    if (!comp.styles.includes(c.style)) continue;
-    const r = hash01(`${c.id}:${c.wallKey}:${comp.id}`);
-    // Building-wide choices (stoop, shutters, balconies) use the building's roll so all its walls agree.
-    const roll = ['shutters-3d', 'balcony-slabs', 'gallery-walkway', 'glass-balconies', 'brick-bands', 'cornice-brackets', 'gutter', 'plinth', 'flower-boxes'].includes(comp.id) ? hash01(`${c.id}:${comp.id}`) : r;
-    if (roll >= comp.p) continue;
-    const before = sink.boxes;
+    // Ornaments follow the building's period; street furniture (a stoop, a hoist beam) also its
+    // layout style, so a 19th-century house laid out as a canal house keeps its stoop.
+    const as = comp.styles.includes(period) ? period : !ATOMIC.has(comp.id) && comp.styles.includes(c.style) ? c.style : null;
+    if (!as || (comp.street && !street) || (comp.group && groups.has(comp.group))) continue;
+    const roll = comp.wide || WIDE.has(comp.id) ? hash01(`${c.id}:${comp.id}`) : hash01(`${c.id}:${c.wallKey}:${comp.id}`);
+    if (roll >= chanceFor(comp.p, as)) continue;
+    const before = sink.tris.length, atomic = comp.atomic ?? ATOMIC.has(comp.id);
+    if (atomic) sink.begin();
     comp.build(c, sink, hash01(`${c.id}:${comp.id}:v`));
-    if (sink.boxes > before) used.push(comp.id);
+    if (atomic && !sink.commit()) continue;
+    if (sink.tris.length > before) { used.push(comp.id); if (comp.group) groups.add(comp.group); }
   }
   sink.budget = outer;
+  if (street) streetDressed.add(sink);
+  extraUsage.record?.(c, used);
   return used;
 }
 

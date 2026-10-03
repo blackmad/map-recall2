@@ -77,6 +77,24 @@ export function areaKm2(polygons: Polygons): number {
   return total;
 }
 
+/** Distance from a point to the nearest outer-ring edge of any polygon (0 inside), local flat-earth. */
+export function distanceToPolygonsKm(point: LatLng, polygons: Polygons): number {
+  if (pointInPolygons(point, polygons)) return 0;
+  const kx = 111.32 * Math.cos((point[0] * Math.PI) / 180), ky = 110.54;
+  let best = Infinity;
+  for (const polygon of polygons) {
+    const ring = polygon[0] ?? [];
+    for (let i = 1; i < ring.length; i++) {
+      const ax = (ring[i - 1][1] - point[1]) * kx, ay = (ring[i - 1][0] - point[0]) * ky;
+      const bx = (ring[i][1] - point[1]) * kx, by = (ring[i][0] - point[0]) * ky;
+      const dx = bx - ax, dy = by - ay, len = dx * dx + dy * dy;
+      const t = len ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / len)) : 0;
+      best = Math.min(best, Math.hypot(ax + t * dx, ay + t * dy));
+    }
+  }
+  return best;
+}
+
 export function distanceKm(a: LatLng, b: LatLng): number {
   const kx = 111.32 * Math.cos((a[0] * Math.PI) / 180);
   return Math.hypot((a[0] - b[0]) * 110.54, (a[1] - b[1]) * kx);
@@ -456,16 +474,56 @@ export function historyFromBody(sentences: readonly string[], alreadyUsed = ''):
 export interface AreaPhotoFile extends CommonsFile { lat: number; lon: number }
 
 const JUNK_TITLE = /\b(logo|map|kaart|plattegrond|plan|diagram|flag|vlag|wapen|coat of arms|screenshot|poster|stamp|postzegel|scan|krant|brief|letter|portrait|portret|interior|interieur|menu|sticker|sign|bord|tram|bus|metro|ov-?chip|ticket)\b/i;
+/** Anefo press photos ("03-22-1947 01334 Frits Sieger": mostly people, not places) and Mapillary dashcam frames. */
+const NOT_A_VIEW = /^(File:)?\d\d-\d\d-\d{4} \d+|\bmapillary\b/i;
+
+export interface SearchPoint { lat: number; lon: number; radiusM: number }
+
+/**
+ * Where to run Commons geosearch for an area. Geosearch returns at most the 200 files nearest a
+ * point, so one query at the centroid misses most of a large area, and none of a horseshoe (the
+ * Grachtengordel's centroid lies in the old town, outside it). Small compact areas get one query;
+ * others a grid of cells no wider than about 1 km, each searched from its centre if that centre is
+ * inside the area, with a radius that covers the cell.
+ */
+export function areaSearchPoints(polygons: Polygons, cellKm = 1, maxCells = 5): SearchPoint[] {
+  let minLat = Infinity, maxLat = -Infinity, minLon = Infinity, maxLon = -Infinity;
+  for (const polygon of polygons) for (const [lat, lon] of polygon[0] ?? []) {
+    minLat = Math.min(minLat, lat); maxLat = Math.max(maxLat, lat); minLon = Math.min(minLon, lon); maxLon = Math.max(maxLon, lon);
+  }
+  if (!Number.isFinite(minLat)) return [];
+  const radius = (km: number) => Math.round(Math.min(10000, Math.max(300, km * 1000)));
+  const round = (v: number) => Math.round(v * 1e5) / 1e5; // stable cache keys
+  const centre = centroidOf(polygons);
+  const heightKm = distanceKm([minLat, minLon], [maxLat, minLon]), widthKm = distanceKm([minLat, minLon], [minLat, maxLon]);
+  if (Math.max(heightKm, widthKm) <= cellKm && pointInPolygons(centre, polygons)) {
+    return [{ lat: round(centre[0]), lon: round(centre[1]), radiusM: radius(Math.hypot(heightKm, widthKm) / 2) }];
+  }
+  const rows = Math.min(maxCells, Math.max(1, Math.ceil(heightKm / cellKm))), cols = Math.min(maxCells, Math.max(1, Math.ceil(widthKm / cellKm)));
+  const points: SearchPoint[] = [];
+  const cellRadius = radius(Math.hypot(heightKm / rows, widthKm / cols) / 2);
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const lat = minLat + ((r + 0.5) * (maxLat - minLat)) / rows, lon = minLon + ((c + 0.5) * (maxLon - minLon)) / cols;
+    if (pointInPolygons([lat, lon], polygons)) points.push({ lat: round(lat), lon: round(lon), radiusM: cellRadius });
+  }
+  if (!points.length) {
+    // A thin or ring-shaped area with no cell centre inside: search from its first vertex.
+    const [lat, lon] = polygons[0]?.[0]?.[0] ?? centre;
+    points.push({ lat: round(lat), lon: round(lon), radiusM: cellRadius });
+  }
+  return points;
+}
 
 /**
  * Photographs taken inside an area, for the postcard: licensed landscape JPEGs, no maps, logos or
  * vehicles, one per near-identical title, and spread across the area (each pick is the one farthest
  * from those already chosen) so the strips show different corners instead of one street ten times.
  */
-export function rankAreaPhotos(files: readonly AreaPhotoFile[], polygons: Polygons, max = 8): AreaPhotoFile[] {
+export function rankAreaPhotos(files: readonly AreaPhotoFile[], polygons: Polygons, max = 8, slackKm = 0): AreaPhotoFile[] {
+  const near = (f: AreaPhotoFile) => pointInPolygons([f.lat, f.lon], polygons) || (slackKm > 0 && distanceToPolygonsKm([f.lat, f.lon], polygons) <= slackKm);
   const seen = new Set<string>();
   const usable = files
-    .filter(f => f.mime === 'image/jpeg' && f.license && f.thumbUrl && f.width >= 700 && f.width >= f.height * 0.9 && !JUNK_TITLE.test(f.title) && pointInPolygons([f.lat, f.lon], polygons))
+    .filter(f => f.mime === 'image/jpeg' && f.license && f.thumbUrl && f.width >= 700 && f.width >= f.height * 0.9 && !JUNK_TITLE.test(f.title) && !NOT_A_VIEW.test(f.title) && near(f))
     .sort((a, b) => b.width * b.height - a.width * a.height)
     .filter(f => { const key = f.title.replace(/^File:/, '').replace(/[\d_\-. ()]+/g, '').replace(/jpe?g$/i, '').toLowerCase().slice(0, 18); if (seen.has(key)) return false; seen.add(key); return true; });
   const picked: AreaPhotoFile[] = [];

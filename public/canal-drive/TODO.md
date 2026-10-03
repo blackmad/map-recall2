@@ -39,10 +39,10 @@ Snap skips remain: 482 `noSnap`, 70 `noRoute`, 1,276 `missesDeck`.
 
 ## P1 — The learning model itself
 
-**Handoff 2026-10-02 — Map Recall neighbourhood cards, Utrecht and Rotterdam.** Needs a new session so `WIKIMEDIA_TOKEN` (set in the environment; sent only to Wikimedia hosts) is in effect: the anonymous shared IP is what throttles every fetch.
-- *Utrecht and Rotterdam text:* `online` runs finished or were restarted (`/tmp` logs are gone in a new session; rerun `NODE_USE_ENV_PROXY=1 npx tsx scripts/fill-neighborhood-gaps.ts online --city utrecht|rotterdam`, resumes via staging `online-done.json`). Then `worksheet --city X`, translate Dutch fields into `scripts/data/neighborhood-gap-review-<city>.json` (`{approve:true,en}`; `null` for junk such as category dumps or political text), review photos on a contact sheet, `offline --city X`, `publish --city X --accept offline`, `check-neighborhood-trivia-data.ts`, commit. The laptop branch `randstad-trivia-local-lane` is already merged: its Utrecht/Rotterdam history is the baseline these are additive on.
-- *Photos:* `fetch-place-photos.ts --city X` done for all four cities; `fetch-area-photos.ts --city X` (geotagged Commons files inside each area, feeds the postcard) done or nearly so for Amsterdam, then run den-haag, utrecht, rotterdam. It checkpoints every five areas and caches responses.
-- *Review page:* `/?gallery=cards&city=X` on the Map Recall site (edumap-blackmad.web.app) lists every card with gap flags; use it to review each city before merging. Postcard needs two or more photos per area.
+**Handoff 2026-10-02 — Map Recall neighbourhood cards, Utrecht and Rotterdam.** `WIKIMEDIA_TOKEN` now reaches wikipedia, wikidata and commons hosts (checked 18:56 UTC: each answers as user Whizziwig). Every response `fill-neighborhood-gaps.ts` fetches is kept in the durable scrape store (`scripts/lib/scrapeStore.ts`; `/mnt/project-files/scrape-store/` in cloud sessions), so reruns and new sessions ask Wikimedia only for what is missing.
+- *Utrecht and Rotterdam text:* published 2026-10-02 (see HISTORY). Coverage now Utrecht description 111/135, history 105, name origin 24, photo 87; Rotterdam 106/128, 81, 39, 88. Still open: name origins are the thinnest field in both cities (no street-name register for them yet); 38 Dutch fields were rejected as junk and 73 geosearch photos rejected, so those areas wait for better sources; review both cities on `/?gallery=cards&city=X` before relying on them. Rerunning `online` costs nothing for answered requests (scrape store).
+- *Photos:* `fetch-place-photos.ts` and `fetch-area-photos.ts` done for all four cities (2026-10-02). Postcards (2+ area photos) measured in the card gallery: Amsterdam and Den Haag every card, Utrecht all but Strijkviertel, Rotterdam missing 15 (Burgen, De Vaan, Het Zuiderhof, Hoeken, Hof van Eden, Horsten, Kampen, Landbouwbuurt, Molièrebuurt, Pascalkwartier, Smeetsland, Sportdorp, Steinen, Veld van Klanken, Voordes/Rodes): Commons has almost no geotagged photos there, so these need another source (e.g. a Commons category or Wikidata image) rather than a wider search. Area photos rebuild offline from the Commons DB (`--offline`, see HISTORY).
+- *Review page:* `/?gallery=cards&city=X` on the Map Recall site (edumap-blackmad.web.app) lists every card with gap flags; use it to review each city before merging. Postcard needs two or more photos per area. (It crashed for every city but Amsterdam until 2026-10-02: it looked cities up in the game's `CITIES`.)
 - *Open:* Houthaven islands' themes beyond Wiborg/Reval/Memel (image-quality plan not found); Amsterdam histories still missing for Westindische Buurt, IJselbuurt, Van Galenbuurt, Polder Meerzicht; Canal Recall difficulty is separate from the new Map Recall Easy/Medium/Hard (place clues are easy/medium only).
 
 **Delight loop (thin slice shipped 2026-09-06).** Mission punchlines, finish
@@ -84,7 +84,7 @@ a hitch not yet measured. The ground floor repeats above 32 m except on
 towers. Facades are Amsterdam-only, and walls take a period palette colour.
 Check on a real device.
 
-**Three.js facade layer (now a setting: Building look).** Open: measure geometry cost now that roofs, cornices and shops add vertices (and consider a distance cutoff for cornice and chimney geometry); roof coverage is limited to near-rectangular footprints (L-shapes and courtyard blocks keep flat lids); check Safari and a real phone (the user saw broken roofs in Safari photo mode, not reproduced in Chromium; ask whether Default look has roofs there); flat lids now come from the three.js mesh in a neutral grey or the mapped roof colour, not per look yet; buildings without a facade (no palette prior and no OSM colour, e.g. r3674348 by Bilderdijkpark) now draw as bare three.js walls but still deserve a generic facade; measure GPU frame time on a real phone now that the three layer draws every building (chunk builds are in a worker); the 32-layer bay set drops attic and tall-first-floor bays; measure on a real
+**Three.js facade layer (now a setting: Building look).** Open: measure geometry cost now that roofs, cornices and shops add vertices (and consider a distance cutoff for cornice and chimney geometry); roof coverage now uses the largest inscribed rectangle plus one wing (2026-10-02), so truly round or courtyard footprints still keep a lid or a parapet, and rows of narrow hipped/mansardHip houses read as separate roofs rather than one; roofs added 35-42% walls-chunk triangles (canal belt 492k to 665k), unmeasured on a phone; check Safari and a real phone (the user saw broken roofs in Safari photo mode, not reproduced in Chromium; ask whether Default look has roofs there); flat lids now come from the three.js mesh in a neutral grey or the mapped roof colour, not per look yet; buildings without a facade (no palette prior and no OSM colour, e.g. r3674348 by Bilderdijkpark) now draw as bare three.js walls but still deserve a generic facade; measure GPU frame time on a real phone now that the three layer draws every building (chunk builds are in a worker); the 32-layer bay set drops attic and tall-first-floor bays; measure on a real
 phone (heap is now below the pattern layer in software GL; geometry still
 42-63 MB: pack vertices, prune by distance); a shimmer metric that works (the
 current one is noisy and shows no win);
@@ -92,10 +92,12 @@ look at the photo look; gables and roofs are still MapLibre's; decide whether
 it replaces the pattern layer or stays opt-in. Two layout modules now exist
 (`wallBays.ts`, `facadeLayout.ts`): keep one.
 
-**Landmark kits: more landmarks, and a phone check.** Five are done (see HISTORY).
+**Landmark kits: more landmarks, and a phone check.** Twelve are done (see HISTORY).
 Next, by recognisability: Oude Kerk (spire), Munttoren, Centraal (two towers and
 central pavilions, long facade), Rijksmuseum (towers, central arch), Beurs van
-Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera. Each needs its
+Berlage (clock tower), NEMO (green ship prow), Nieuwe Kerk, Stopera, Hofkerk
+(dome), Dominicuskerk, Carré and Vredeskerk (the big kit-less ones still stand as
+bare period-brick boxes; see HISTORY "Kit-less landmarks"). Each needs its
 OSM part ids first (look at the stacked parts near the landmark's coordinate; the
 resolved ids in `landmark-buildings.json` are sometimes the wrong piece: Westerkerk's
 is a 10 x 2 m fragment). Add a kit to `KITS`, view it with the kit viewer, then
@@ -131,6 +133,15 @@ ride's hotspots, `KEYBOARD_RIDE_TRACE=1`) and whether the rider feels it.
 quarters and buurten, so Guess Name can offer Nieuwmarktbuurt and
 Nieuwmarkt/Lastage together, though they cover the same streets. Choices
 should skip an area that overlaps the answer by more than about half.
+
+**Map Recall locate hints: data gaps.** Hints now name places
+(`src/mapRecall/locateHints.ts`), ranked by Wikidata sitelinks. 96 linked
+waters were never given sitelinks, among them Prinsengracht, Keizersgracht,
+Singelgracht and Brouwersgracht, so they rank as obscure as Koningsbergengracht
+(Narva-eiland's hint names that rather than Houthaven); Singel's link points at
+Muntsluis. Fetch their sitelinks into the extract. Betondorp, Floradorp and
+Molenwijkpark have only a district to name and fall back to bearings; Utrecht,
+Rotterdam and Den Haag hints are unchecked.
 
 **Map Recall follow-ups.** 14 OSM neighbourhoods have no article in either
 language (Rijnbuurt, Scheldebuurt, Westindische Buurt, Van Galenbuurt, …);

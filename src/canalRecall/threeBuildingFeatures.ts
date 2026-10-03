@@ -3,7 +3,7 @@
 
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
-import { fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
+import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
 import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
 import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
@@ -54,8 +54,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
   if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p));
-    building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers };
+    building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
+    if ((FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) && p.facadeStyle !== bay.layout) building.period = p.facadeStyle as FacadeStyle;
   } else {
     layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
     building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && (shopfrontOf(p) ? shopfrontOf(p) !== 'quiet' : hashShop(id)) };
@@ -85,8 +86,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
     if (p.kitWall === 'flat') { building.bare = true; building.plainLayer = roofBase + 3; }
   }
   if (p.roofPlanned) {
-    const ring = localOuterRing(feature.geometry);
-    const plan = ring ? planRoof(id, String(p.facadeStyle ?? ''), Number(p.height), minHeightM, fitRect(ring)) : null;
+    // The decorator's own plan, recomputed from the same feature (pure), so the two agree.
+    const plan = roofPlanForFeature(feature);
     if (plan) {
       const dims = STYLE_DIMS[layout];
       building.roof = { plan, roofHex: roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
@@ -106,6 +107,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
 
 
 /** A chunk for a group of streamed features in one look. */
-export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' = 'walls'): Chunk {
-  return buildChunk(features.map(f => meshBuildingFor(f, look)).filter((b): b is MeshBuilding => !!b), ORIGIN, mode);
+/** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
+export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' = 'walls', streets?: Float32Array): Chunk {
+  return buildChunk(features.map(f => meshBuildingFor(f, look)).filter((b): b is MeshBuilding => !!b), ORIGIN, mode, streets);
 }
