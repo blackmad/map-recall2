@@ -1130,13 +1130,41 @@ class GameRouteRuntime {
 
   // ---- OSM Loading Flow ----
 
+  /**
+   * The city network already in memory, when the next ride can use it. Every
+   * load reads the whole city extract, so a second ride in the same city and
+   * mode would fetch, project and graph the same data again behind the loading
+   * screen; Enter on the finish card felt like a reload (user report
+   * 2026-10-03). Transit rewrites the track's finish per leg, so it reloads.
+   */
+  _reusableWorld(startLL, finishLL) {
+    const world = this._loadedWorld;
+    if (!world || !startLL || !finishLL || this.travelMode === 'transit') return null;
+    if (world.track !== this.track || world.travelMode !== this.travelMode) return null;
+    if (world.cityId !== (this.cityId || 'amsterdam')) return null;
+    return world;
+  }
+
   async _onLocationSelected(lat, lng, startLL, finishLL) {
-    this.state = GameState.LOADING;
+    // The ride's key and share link are named by the centre it was asked
+    // with, whichever projection centre the network in memory uses.
+    const keyCenter = { lat, lng };
+    const world = this._reusableWorld(startLL, finishLL);
     // One token per load. A shared abort flag let a second start (or Escape
     // then start) clear the first load's abort, and both loads then wrote the
     // progress bar in turn: it jumped back and forth (user report 2026-09-29).
     const load = ++this._loadToken;
     const stale = () => load !== this._loadToken;
+    // A failure on the reused network still shows its message before setup.
+    const fail = (message, delayMs = 2500) => {
+      this.loadingMessage = message;
+      this.state = GameState.LOADING;
+      setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), delayMs);
+    };
+    if (!world) {
+      this.state = GameState.LOADING;
+      this._loadedWorld = null;
+    }
     this.loadingProgress = 0.05;
     const Prefs = window.CanalRecallPreferences;
     const profile = Prefs && Prefs.travelProfile
@@ -1149,37 +1177,44 @@ class GameRouteRuntime {
       : `Loading ${this._activeCity().name} ${networkNoun}...`;
 
     try {
-      // Step 1: Fetch from Overpass API (tries multiple servers)
-      this.loadingProgress = 0.1;
-      const ways = await this.osmLoader.fetchRoads(lat, lng, OSM_FETCH_RADIUS, this.travelMode, this.cityId);
-      if (stale()) return;
-      if (this.vectorMap && this.vectorMap.setCycleTracks) this.vectorMap.setCycleTracks(this.travelMode === 'car' ? ways : []);
-      if (this.vectorMap && this.vectorMap.setStreetFronts) this.vectorMap.setStreetFronts(this.travelMode === 'car' ? ways : []);
+      let segments;
+      if (world) {
+        // Same projection as the ride just finished: landmarks, areas and the
+        // basemap stay where they were drawn.
+        lat = world.lat;
+        lng = world.lng;
+        segments = world.segments;
+      } else {
+        // Step 1: Fetch from Overpass API (tries multiple servers)
+        this.loadingProgress = 0.1;
+        const ways = await this.osmLoader.fetchRoads(lat, lng, OSM_FETCH_RADIUS, this.travelMode, this.cityId);
+        if (stale()) return;
+        if (this.vectorMap && this.vectorMap.setCycleTracks) this.vectorMap.setCycleTracks(this.travelMode === 'car' ? ways : []);
+        if (this.vectorMap && this.vectorMap.setStreetFronts) this.vectorMap.setStreetFronts(this.travelMode === 'car' ? ways : []);
 
-      if (ways.length === 0) {
-        this.loadingMessage = `No named ${networkNoun} found here.`;
-        setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
-        return;
+        if (ways.length === 0) {
+          this.loadingMessage = `No named ${networkNoun} found here.`;
+          setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
+          return;
+        }
+
+        // Step 2: Build road segments
+        this.loadingMessage = `Building ${profile.networkNounSingular} network...`;
+        this.loadingProgress = 0.3;
+        segments = this.osmLoader.buildRoadSegments(ways, lat, lng);
+
+        if (segments.length === 0) {
+          this.loadingMessage = 'Could not build the canal network.';
+          setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
+          return;
+        }
+        await this._loadLandmarks(lat, lng, segments);
+        if (stale()) return;
+
+        // Step 3: MapLibre supplies a continuously rendered vector basemap.
+        this.loadingMessage = 'Preparing vector map...';
+        this.loadingProgress = 0.45;
       }
-
-      // Step 2: Build road segments
-      this.loadingMessage = `Building ${profile.networkNounSingular} network...`;
-      this.loadingProgress = 0.3;
-      const segments = this.osmLoader.buildRoadSegments(ways, lat, lng);
-
-      if (segments.length === 0) {
-        this.loadingMessage = 'Could not build the canal network.';
-        setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
-        return;
-      }
-      await this._loadLandmarks(lat, lng, segments);
-      if (stale()) return;
-
-      // Step 3: MapLibre supplies a continuously rendered vector basemap.
-      this.loadingMessage = 'Preparing vector map...';
-      this.loadingProgress = 0.45;
-      const tiles = [];
-      if (stale()) return;
 
       // Step 4: Find start/finish — use user-picked points or auto-find
       this.loadingMessage = `Choosing a starting ${profile.networkNounSingular}...`;
@@ -1219,27 +1254,24 @@ class GameRouteRuntime {
         finish = result.finish;
         const sfDist = result.distance;
         if (!start || !finish || sfDist < 200) {
-          this.loadingMessage = 'Area too small. Try a different area.';
-          setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
+          fail('Area too small. Try a different area.');
           return;
         }
       }
 
       if (!start || !finish) {
-        this.loadingMessage = this.routePattern === 'home'
+        fail(this.routePattern === 'home'
           ? 'That address is too far from a connected mapped waterway. Try a nearby bridge or canal-side address.'
           : this.routePattern === 'here'
             ? 'Could not snap your location to a mapped street or waterway. Move closer to the network, or try Surprise.'
-            : 'Could not place start/finish. Try different points.';
-        setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
+            : 'Could not place start/finish. Try different points.');
         return;
       }
 
       // Validate minimum distance between start and finish
       const sfDist2 = Math.sqrt((start.x - finish.x) ** 2 + (start.y - finish.y) ** 2);
       if (sfDist2 < MIN_START_FINISH_DIST) {
-        this.loadingMessage = 'Start and finish are too close. Try different points.';
-        setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 2500);
+        fail('Start and finish are too close. Try different points.');
         return;
       }
 
@@ -1251,11 +1283,25 @@ class GameRouteRuntime {
           : 'Rendering waterways...';
       this.loadingProgress = 0.8;
 
-      // Use a small delay to let the loading screen render
-      await new Promise(r => setTimeout(r, 50));
-      if (stale()) return;
-
-      this.track = new RoadNetwork(segments, start, finish, tiles);
+      if (world) {
+        // The routing graph and spatial grid are cached on the track; only
+        // the ends move.
+        this.track.setEndpoints(start, finish);
+        this.track.clearFrameCache();
+      } else {
+        // Use a small delay to let the loading screen render
+        await new Promise(r => setTimeout(r, 50));
+        if (stale()) return;
+        this.track = new RoadNetwork(segments, start, finish, []);
+        this._loadedWorld = {
+          cityId: this.cityId || 'amsterdam',
+          travelMode: this.travelMode,
+          lat,
+          lng,
+          segments,
+          track: this.track,
+        };
+      }
       this._routeMastery = this.recall ? this.recall.routeMastery(this.cityId || 'amsterdam') : {};
       this._routeReviewDue = this.recall && typeof this.recall.routeReviewDue === 'function'
         ? this.recall.routeReviewDue(this.cityId || 'amsterdam')
@@ -1399,32 +1445,39 @@ class GameRouteRuntime {
 
       // Hold briefly until MapLibre finishes the first idle at the spawn so
       // the handoff into racing is not a Damrak→neighbourhood jump mid-frame.
-      await this._waitForMapSettle(2800);
-      if (stale()) return;
+      // Riding on, the map is already there.
+      if (!world) {
+        await this._waitForMapSettle(2800);
+        if (stale()) return;
+      }
 
       this.loadingMessage = 'Ready!';
       this.loadingProgress = 1.0;
 
       // Generate leaderboard key from route coordinates
       this._raceKey = (startLL && finishLL)
-        ? `${lat.toFixed(3)},${lng.toFixed(3)}_${startLL.lat.toFixed(3)},${startLL.lng.toFixed(3)}_${finishLL.lat.toFixed(3)},${finishLL.lng.toFixed(3)}`
+        ? `${keyCenter.lat.toFixed(3)},${keyCenter.lng.toFixed(3)}_${startLL.lat.toFixed(3)},${startLL.lng.toFixed(3)}_${finishLL.lat.toFixed(3)},${finishLL.lng.toFixed(3)}`
         : null;
 
       // Generate shareable URL
       if (startLL && finishLL) {
-        const raceHash = `#race=${lat.toFixed(4)},${lng.toFixed(4)},${startLL.lat.toFixed(4)},${startLL.lng.toFixed(4)},${finishLL.lat.toFixed(4)},${finishLL.lng.toFixed(4)}`;
+        const raceHash = `#race=${keyCenter.lat.toFixed(4)},${keyCenter.lng.toFixed(4)},${startLL.lat.toFixed(4)},${startLL.lng.toFixed(4)},${finishLL.lat.toFixed(4)},${finishLL.lng.toFixed(4)}`;
         this._shareUrl = `${window.location.origin}${window.location.pathname}${raceHash}`;
         history.replaceState(null, '', raceHash);
       } else {
         this._shareUrl = null;
       }
 
-      await new Promise(r => setTimeout(r, 200));
-      if (stale()) return;
+      // Riding on there is no loading screen to hide the overview tiles
+      // behind; the flight starts at once and they stream in under it.
+      if (!world) {
+        await new Promise(r => setTimeout(r, 200));
+        if (stale()) return;
+      }
 
       // Load the start flight's overview tiles while the loading screen is
       // still up; see _prepareIntro.
-      if (this._prepareIntro()) {
+      if (!world && this._prepareIntro()) {
         this.loadingMessage = 'Finding your way...';
         await this._waitForMapSettle(1800);
         if (stale()) return;
@@ -1436,8 +1489,7 @@ class GameRouteRuntime {
     } catch (err) {
       if (stale()) return;
       console.error('OSM loading error:', err);
-      this.loadingMessage = 'Error: ' + (err.message || 'Failed to load waterways');
-      setTimeout(() => !stale() && this._returnToRouteSetup(this.loadingMessage), 3000);
+      fail('Error: ' + (err.message || 'Failed to load waterways'), 3000);
     }
   }
 

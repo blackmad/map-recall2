@@ -388,6 +388,8 @@ export interface PresentationHost extends GameCoreHost {
   _debugMode: boolean;
   _lastZoomShown: number | null;
   _zoomTouchedByPlayer: boolean;
+  /** The window's starting zoom, which the chase bike's size is tuned at. */
+  _defaultZoom?: number;
 
   /** Canvas hit targets, recomputed as they are drawn. */
   _alanLinkBounds: LinkBounds | null;
