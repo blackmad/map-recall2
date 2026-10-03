@@ -207,6 +207,9 @@ export interface StreetFeature {
   history?: TriviaText;
   /** What a local would tell you about a neighbourhood (reviewed, cited; `neighborhood-history.json` localFact). */
   localFact?: TriviaText;
+  /** Cited fixed facts and a rotating pool for researched area cards. */
+  neighborhoodTopFacts?: TriviaText[];
+  neighborhoodRotatingFacts?: TriviaText[];
   /** A neighbourhood's best-known places (src/mapRecall/trivia.ts notablePlacesIn). */
   /** Photographs of places inside a neighbourhood, best first (fetch-place-photos.ts), for the postcard. */
   areaPhotos?: Array<{ name: string; photo: PlacePhoto }>;

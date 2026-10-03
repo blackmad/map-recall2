@@ -22,11 +22,11 @@ export function attachLocalFacts<T extends FactBearingFeature>(
 }
 
 /** A stable per-game choice. The same answer does not flicker on re-render, while a new game seed rotates it. */
-export function triviaForRound(
-  facts: readonly Fact[] | null | undefined,
+export function triviaForRound<T extends { text: string } = Fact>(
+  facts: readonly T[] | null | undefined,
   gameSeed: number,
   roundIndex: number,
-): Fact | null {
+): T | null {
   if (!facts?.length) return null;
   let mixed = (gameSeed ^ Math.imul(roundIndex + 1, 0x9e3779b1)) >>> 0;
   mixed ^= mixed >>> 16;

@@ -1,6 +1,7 @@
 import { AdministrativeArea, FeatureCategory, LoadingProgress, LocationScope, PlacePhoto, StreetFeature } from '../types';
 import { calculateHaversineDistanceMeters } from '../utils/geo';
 import { fetchCategorySpecificOSMFeatures } from '../utils/osm';
+import { attachNeighborhoodStories, type NeighborhoodStoriesFile } from '../mapRecall/neighborhoodStories';
 import { attachLocalFacts } from '../mapRecall/localFacts';
 import type { FactsFile } from '../canalRecall/facts/factTypes';
 import {
@@ -39,6 +40,7 @@ interface ExtractManifest {
 // One set of cached loads per extract city (Amsterdam, Utrecht, Rotterdam, Den Haag).
 const manifestPromises = new Map<string, Promise<ExtractManifest | null>>();
 const partitionPromises = new Map<string, Promise<StreetFeature[]>>();
+const storyPromises = new Map<string, Promise<NeighborhoodStoriesFile | null>>();
 const areasPromises = new Map<string, Promise<AdministrativeArea[]>>();
 const factsPromises = new Map<string, Promise<FactsFile | null>>();
 const originsPromises = new Map<string, Promise<{ origins?: StreetNameOrigin[] } | null>>();
@@ -218,7 +220,8 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
         notablePlaces: notablePlacesIn(feature.areaGeometry, places, [feature.name, ...feature.distractors])
           .map((place) => placePhotos[place.name] ? { ...place, photo: placePhotos[place.name] } : place),
       }));
-      const withTrivia = attachNeighborhoodTrivia(withPlaces, historyFile?.neighborhoods, photosFile);
+      const storyFile = await cached(storyPromises, city.id, () => optionalJson<NeighborhoodStoriesFile>(`${city.id}/neighborhood-stories.json`));
+      const withTrivia = attachNeighborhoodStories(attachNeighborhoodTrivia(withPlaces, historyFile?.neighborhoods, photosFile), storyFile);
       const selectedArea = amsterdamAreas?.find(({ id }) => id === request.areaId);
       const allFeatures = [...enriched, ...withTrivia];
       const features = selectedArea?.geometry

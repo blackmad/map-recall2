@@ -69,6 +69,8 @@ export interface SignatureModelSpec {
   /** The landmark extract entry this model represents, so the existing card,
    *  highlight and camera behaviour keep working unchanged. */
   readonly landmarkId: string;
+  /** Other cards belonging to the same architectural complex. */
+  readonly relatedLandmarkIds?: readonly string[];
   /** Runtime GLB, relative to the Canal Recall page. */
   readonly modelUrl: string;
   /** OSM ids, prefixed `w`/`r`, whose basemap extrusion must be hidden once

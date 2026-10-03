@@ -1,0 +1,2 @@
+import {chromium} from '@playwright/test';
+const browser=await chromium.launch({headless:true});const page=await browser.newPage({viewport:{width:1600,height:1150},deviceScaleFactor:1});let errors=[];page.on('pageerror',e=>errors.push(String(e)));await page.goto('http://127.0.0.1:5196/canal-drive/manual-landmarks.html');await page.waitForFunction(()=>window.review?.loaded.length===4);await page.screenshot({path:'artifacts/manual-landmarks/gallery.png',fullPage:true});console.log(await page.evaluate(()=>window.review),errors);await browser.close();
