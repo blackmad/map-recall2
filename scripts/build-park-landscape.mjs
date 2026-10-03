@@ -10,12 +10,13 @@ const run = args => execFileSync('osmium', args, {stdio: 'inherit'});
 run(['extract', source, '-b', '4.75,52.28,5.03,52.44', '-o', `${work}/area.pbf`]);
 run(['tags-filter', `${work}/area.pbf`, 'wr/leisure=park', 'wr/landuse=grass,forest,meadow',
   'wr/natural=wood,water,scrub,grassland,shrubbery', 'wr/landuse=flowerbed',
-  'wr/leisure=garden,playground', 'wr/tourism=zoo',
+  'wr/leisure=garden,playground', 'wr/tourism=zoo', 'wr/place=square',
   'wr/highway=footway,path,pedestrian,cycleway', 'n/amenity=bench', '-o', `${work}/detail.pbf`]);
 run(['export', `${work}/detail.pbf`, '-u', 'type_id', '-o', `${work}/detail.geojson`]);
 const raw = JSON.parse(fs.readFileSync(`${work}/detail.geojson`, 'utf8')).features;
 const names = ['Vondelpark', 'Oosterpark', 'Sarphatipark', 'Westerpark', 'Erasmuspark',
-  'Rembrandtpark', 'Beatrixpark', 'Flevopark', 'Noorderpark', 'Amstelpark', 'Gaasperpark'];
+  'Rembrandtpark', 'Beatrixpark', 'Flevopark', 'Noorderpark', 'Amstelpark', 'Gaasperpark',
+  'Wertheimpark','Park Frankendael','Martin Luther Kingpark'];
 const polygons = g => g.type === 'MultiPolygon' ? g.coordinates : g.type === 'Polygon' ? [g.coordinates] : [];
 function ringArea(r) {
   return Math.abs(r.reduce((a, p, i) => {const q = r[(i + 1) % r.length]; return a + p[0] * q[1] - q[0] * p[1];}, 0));
@@ -32,7 +33,8 @@ const parks = names.flatMap(name => {
   const matches = raw.filter(f => f.properties.leisure === 'park' && f.properties.name === name && polygons(f.geometry).length);
   // Several parks have duplicate relation/way boundaries. Keep the largest boundary.
   matches.sort((a,b) => polygons(b.geometry).reduce((s,p)=>s+ringArea(p[0]),0) - polygons(a.geometry).reduce((s,p)=>s+ringArea(p[0]),0));
-  return matches.slice(0,1);
+  // MLKpark has two distinct mapped grounds, separated by the Utrechtsebrug.
+  return name==='Martin Luther Kingpark'?matches:matches.slice(0,1);
 });
 const botanicalNames=['Hortus Botanicus','Artis'];
 for(const name of botanicalNames){
@@ -41,6 +43,9 @@ for(const name of botanicalNames){
   if(!boundary)throw Error(`Missing mapped botanical/zoo boundary: ${name}`);
   parks.push(boundary);
 }
+const square=raw.find(f=>f.properties.name==='Rembrandtplein'&&f.properties.place==='square'&&polygons(f.geometry).length);
+if(!square)throw Error('Missing mapped Rembrandtplein square boundary');
+parks.push(square);
 const contains = (park, p) => polygons(park.geometry).some(poly => inRing(p, poly[0]) && !poly.slice(1).some(h => inRing(p,h)));
 const features = [], counts = {};
 function emit(id, geometry, role, park, extra = {}) {
@@ -48,7 +53,7 @@ function emit(id, geometry, role, park, extra = {}) {
   counts[role] = (counts[role] || 0) + 1;
 }
 for (const park of parks) {
-  const botanical=botanicalNames.includes(park.properties.name);
+  const botanical=botanicalNames.includes(park.properties.name)||park===square;
   // A zoo/garden boundary includes halls, enclosures and paved courts. Keep
   // their existing basemap surfaces; colour only explicitly mapped interiors.
   if(!botanical)emit(park.id, park.geometry, 'park', park);
@@ -84,6 +89,7 @@ for (const park of parks) {
 const result = {type:'FeatureCollection', attribution:'© OpenStreetMap contributors, ODbL',
   source:'Cached Amsterdam OSM extract; mapped geometry only. No synthetic water, paths or trees.',
   botanicalGrounds:parks.filter(f=>botanicalNames.includes(f.properties.name)).map(f=>({id:f.id,name:f.properties.name,baseFill:false})),features};
+result.squares=[{id:square.id,name:square.properties.name,baseFill:false}];
 const out = 'public/data/extracts/amsterdam/park-landscape.geojson';
 fs.writeFileSync(out,JSON.stringify(result));
 console.log(JSON.stringify({parks:parks.map(f=>f.properties.name),counts,bytes:fs.statSync(out).size},null,2));
