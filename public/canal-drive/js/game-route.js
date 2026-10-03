@@ -1,6 +1,16 @@
 // Methods in this file are installed on Game.prototype by game.js.
 // Keeping each subsystem in a class preserves private runtime state on the Game instance
 // while making ownership and review boundaries explicit.
+
+// Dev tools the backtick debug overlay links to. Plain relative hrefs: the
+// game is served from the same directory as these pages. Opened by the canvas
+// click handler in game.js, which hit-tests `_debugLinkBounds`.
+const DEBUG_TOOL_LINKS = [
+  { label: 'Landmark models', href: 'manual-landmarks.html' },
+  { label: 'Building assets', href: 'building-gallery.html' },
+  { label: 'Map placement', href: 'signature-landmark-demo.html' },
+];
+
 class GameRouteRuntime {
   _overlayZoom() {
     return { min: this.camera.minZoom, max: this.camera.maxZoom, defaultZoom: CAMERA_ZOOM_INITIAL };
@@ -243,6 +253,7 @@ class GameRouteRuntime {
 
   _toggleDebug() {
     this._debugMode = !this._debugMode;
+    if (!this._debugMode) this._debugLinkBounds = null;
   }
 
   _renderDebug() {
@@ -258,6 +269,25 @@ class GameRouteRuntime {
     let y = 42;
     const x = CANVAS_W - panelW;
     ctx.fillText('DEBUG  (` to close)', x, y); y += 20;
+    // Tool links first, so they stay on screen however long the network list
+    // below runs. Hit targets are recomputed here and read by game.js.
+    this._debugLinkBounds = [];
+    ctx.font = '11px monospace';
+    for (const link of DEBUG_TOOL_LINKS) {
+      const label = `\u2197 ${link.label}`;
+      const width = ctx.measureText(label).width;
+      ctx.fillStyle = '#7DD3FC';
+      ctx.fillText(label, x, y);
+      ctx.strokeStyle = 'rgba(125,211,252,.5)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(x, y + 2.5);
+      ctx.lineTo(x + width, y + 2.5);
+      ctx.stroke();
+      this._debugLinkBounds.push({ x, y: y - 11, w: width, h: 14, href: link.href });
+      y += 16;
+    }
+    y += 4;
     ctx.fillStyle = '#E0F2FE';
     ctx.font = '11px monospace';
     if (this.player) {

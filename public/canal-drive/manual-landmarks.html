@@ -1,5 +1,180 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><title>Amsterdam landmark reconstructions</title><style>body{margin:0;background:#ebe7dd;color:#303b43;font:16px system-ui}header{padding:22px 32px}h1{font-size:24px;margin:0 0 8px}main{display:grid;grid-template-columns:1fr 1fr}article{border:1px solid #d4cfc3}h2{margin:16px 24px;font-size:18px}.view{height:400px}canvas{width:100%;height:100%}p{margin:8px 24px 18px;font-size:13px}</style><header><h1>Amsterdam landmark reconstructions</h1>Original flat-colour meshes · drag to orbit · scroll to zoom</header><main></main><script src="./js/three.bundle.js"></script><script type="module">
-const {THREE:T,GLTFLoader,MeshoptDecoder}=window.CanalRecallThree;
-const ids=['centraal-station','muziekgebouw-bimhuis','olvg-west','olvg-oost'];const names=['Amsterdam Centraal','Muziekgebouw / Bimhuis','OLVG West','OLVG Oost'];window.review={loaded:[],errors:[]};
-for(let i=0;i<ids.length;i++){let article=document.createElement('article');article.innerHTML=`<h2>${names[i]}</h2><div class="view"></div><p><a href="./signature-landmark-demo.html?only=${ids[i]}">Inspect map placement</a></p>`;document.querySelector('main').append(article);let host=article.querySelector('.view');let renderer=new T.WebGLRenderer({antialias:true});renderer.setPixelRatio(devicePixelRatio);renderer.setSize(host.clientWidth,host.clientHeight);renderer.setClearColor('#ebe7dd');host.append(renderer.domElement);let scene=new T.Scene();scene.add(new T.HemisphereLight(0xffffff,0x88806e,2));let sun=new T.DirectionalLight(0xffefce,2.2);sun.position.set(-100,200,150);scene.add(sun);let camera=new T.PerspectiveCamera(32,host.clientWidth/host.clientHeight,1,2000),target=new T.Vector3(),distance=200,theta=.55,phi=1.02;function draw(){camera.position.set(target.x+distance*Math.sin(phi)*Math.sin(theta),target.y+distance*Math.cos(phi),target.z+distance*Math.sin(phi)*Math.cos(theta));camera.lookAt(target);renderer.render(scene,camera);}new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).load(`./models/${ids[i]}.glb`,g=>{scene.add(g.scene);let b=new T.Box3().setFromObject(g.scene);b.getCenter(target);distance=b.getSize(new T.Vector3()).length()*1.65;window.review.loaded.push(ids[i]);draw();},undefined,e=>window.review.errors.push(String(e)));let last;host.onpointerdown=e=>{last=[e.clientX,e.clientY];host.setPointerCapture(e.pointerId)};host.onpointerup=()=>last=null;host.onpointermove=e=>{if(last){theta-=(e.clientX-last[0])*.01;phi=Math.max(.1,Math.min(1.5,phi+(e.clientY-last[1])*.01));last=[e.clientX,e.clientY];draw()}};host.onwheel=e=>{e.preventDefault();distance*=Math.exp(e.deltaY*.001);draw()};}
-</script></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amsterdam landmark models</title>
+<style>
+  :root{--bg:#ebe7dd;--ink:#303b43;--mut:#6d6a63;--line:#d4cfc3;--card:#f7f4ec;--link:#2f5d8a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{padding:22px 32px 6px}
+  h1{font-size:24px;margin:0 0 6px}
+  header p{margin:0;color:var(--mut);max-width:76ch}
+  code{font-size:12.5px;background:rgba(0,0,0,.05);border-radius:4px;padding:1px 4px}
+  main{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:16px;padding:16px 32px 48px}
+  article{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+  h2{font-size:15px;line-height:1.35;margin:0;padding:12px 14px 6px}
+  .view{height:300px;background:var(--bg);position:relative}
+  .view canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
+  .view canvas:active{cursor:grabbing}
+  .view .error{position:absolute;inset:0;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;color:#9a4a3a;font-size:13px;text-align:center;padding:16px}
+  .view .error small{color:var(--mut);font-size:11px;word-break:break-all}
+  .meta{margin:0;padding:8px 14px;color:var(--mut);font-size:12px}
+  .links{margin:auto 0 0;padding:10px 14px 12px;border-top:1px solid var(--line);font-size:13px}
+  a{color:var(--link);text-underline-offset:3px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Amsterdam landmark models</h1>
+  <p>Every curated one-off landmark the game places by hand, read live from <code>SIGNATURE_MODELS</code> — the surveyed 3D Warehouse batch and the original flat-colour reconstructions. Drag to orbit &middot; scroll to zoom. Screenshot contract: <code>window.review</code>.</p>
+</header>
+<main></main>
+<script src="./js/three.bundle.js"></script>
+<script src="./js/signature-placement.bundle.js"></script>
+<script>
+// One WebGL context for the whole page, blitted into a 2D canvas per model.
+// A renderer per model would exhaust the browser's context budget before the
+// sixteen listed here finished loading.
+const { THREE: T, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
+const MODELS = (window.CanalRecallSignatureLandmarks || {}).SIGNATURE_MODELS || [];
+const main = document.querySelector('main');
+
+window.review = { loaded: [], errors: [], total: MODELS.length, done: MODELS.length === 0 };
+
+const renderer = new T.WebGLRenderer({ antialias: true });
+const loader = new GLTFLoader();
+if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
+
+const entries = [];
+
+function frame(entry) {
+  if (!entry.ready) return;
+  const view = entry.view;
+  const w = Math.max(1, view.clientWidth), h = Math.max(1, view.clientHeight);
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const bw = Math.round(w * dpr), bh = Math.round(h * dpr);
+  if (entry.canvas.width !== bw || entry.canvas.height !== bh) {
+    entry.canvas.width = bw; entry.canvas.height = bh;
+  }
+  renderer.setPixelRatio(dpr);
+  renderer.setSize(w, h, false);
+  const camera = entry.camera;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  const { target, distance, theta, phi } = entry;
+  camera.position.set(
+    target.x + distance * Math.sin(phi) * Math.sin(theta),
+    target.y + distance * Math.cos(phi),
+    target.z + distance * Math.sin(phi) * Math.cos(theta),
+  );
+  camera.lookAt(target);
+  renderer.render(entry.scene, camera);
+  entry.ctx.setTransform(1, 0, 0, 1, 0, 0);
+  entry.ctx.clearRect(0, 0, entry.canvas.width, entry.canvas.height);
+  entry.ctx.drawImage(renderer.domElement, 0, 0, entry.canvas.width, entry.canvas.height);
+}
+
+function settle() {
+  if (window.review.loaded.length + window.review.errors.length >= window.review.total) window.review.done = true;
+}
+
+function build(spec) {
+  const article = document.createElement('article');
+  const heading = document.createElement('h2');
+  heading.textContent = spec.name || spec.id;
+  article.append(heading);
+
+  const view = document.createElement('div');
+  view.className = 'view';
+  const canvas = document.createElement('canvas');
+  view.append(canvas);
+  article.append(view);
+
+  const attribution = spec.attribution || {};
+  const meta = document.createElement('p');
+  meta.className = 'meta';
+  meta.textContent = [attribution.author, attribution.licence].filter(Boolean).join(' \u00b7 ') || spec.id;
+  if (attribution.title) meta.title = attribution.title;
+  article.append(meta);
+
+  const links = document.createElement('p');
+  links.className = 'links';
+  const link = document.createElement('a');
+  link.href = `./signature-landmark-demo.html?only=${encodeURIComponent(spec.id)}`;
+  link.textContent = 'Inspect map placement \u2192';
+  links.append(link);
+  article.append(links);
+
+  main.append(article);
+
+  const scene = new T.Scene();
+  scene.background = new T.Color('#ebe7dd');
+  scene.add(new T.HemisphereLight(0xffffff, 0x88806e, 2));
+  const sun = new T.DirectionalLight(0xffefce, 2.2);
+  sun.position.set(-100, 200, 150);
+  scene.add(sun);
+
+  const entry = {
+    spec, view, canvas, ctx: canvas.getContext('2d'),
+    scene, camera: new T.PerspectiveCamera(32, 1, 1, 20000),
+    target: new T.Vector3(), distance: 200, theta: 0.55, phi: 1.02, ready: false,
+  };
+  entries.push(entry);
+
+  let last = null;
+  canvas.addEventListener('pointerdown', (event) => {
+    last = [event.clientX, event.clientY];
+    canvas.setPointerCapture(event.pointerId);
+  });
+  canvas.addEventListener('pointerup', () => { last = null; });
+  canvas.addEventListener('pointercancel', () => { last = null; });
+  canvas.addEventListener('pointermove', (event) => {
+    if (!last) return;
+    entry.theta -= (event.clientX - last[0]) * 0.01;
+    entry.phi = Math.max(0.1, Math.min(1.5, entry.phi + (event.clientY - last[1]) * 0.01));
+    last = [event.clientX, event.clientY];
+    frame(entry);
+  });
+  canvas.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    entry.distance *= Math.exp(event.deltaY * 0.001);
+    frame(entry);
+  }, { passive: false });
+
+  loader.load(spec.modelUrl, (gltf) => {
+    const model = gltf.scene;
+    scene.add(model);
+    const box = new T.Box3().setFromObject(model);
+    box.getCenter(entry.target);
+    const size = box.getSize(new T.Vector3());
+    entry.distance = Math.max(size.length() * 1.5, 1);
+    entry.camera.near = Math.max(entry.distance / 1000, 0.05);
+    entry.camera.far = entry.distance * 50;
+    entry.camera.updateProjectionMatrix();
+    entry.ready = true;
+    frame(entry);
+    window.review.loaded.push(spec.id);
+    settle();
+  }, undefined, (error) => {
+    const box = document.createElement('div');
+    box.className = 'error';
+    box.innerHTML = `Model not available<br><small></small>`;
+    box.querySelector('small').textContent = spec.modelUrl;
+    view.append(box);
+    window.review.errors.push({ id: spec.id, error: String(error && error.message || error) });
+    settle();
+  });
+}
+
+for (const spec of MODELS) build(spec);
+
+let resizeTimer = 0;
+addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => { for (const entry of entries) frame(entry); }, 120);
+});
+</script>
+</body>
+</html>

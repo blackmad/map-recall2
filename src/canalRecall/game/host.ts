@@ -386,6 +386,8 @@ export interface PresentationHost extends GameCoreHost {
   _copiedTimer: number;
   _menuQuote: { text: string; character: string } | null;
   _debugMode: boolean;
+  /** Hit targets for the debug overlay's tool links, recomputed as it draws. */
+  _debugLinkBounds: DebugLinkBounds[] | null;
   _lastZoomShown: number | null;
   _zoomTouchedByPlayer: boolean;
 
@@ -411,4 +413,9 @@ export interface LinkBounds {
   y: number;
   w: number;
   h: number;
+}
+
+/** A debug-overlay tool link: a hit target plus the page it opens. */
+export interface DebugLinkBounds extends LinkBounds {
+  href: string;
 }
