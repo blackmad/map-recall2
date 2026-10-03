@@ -92,9 +92,12 @@ const STREET_FURNITURE: readonly WallComponent[] = [
     if (!c.groundLevel || c.shopfront) return; const d = doorX(c);
     for (let x = 0.45; x < Math.min(c.f.len - 0.45, 6); x += 0.9) { if (d != null && Math.abs(x - d) < 0.9) continue; const h = 0.4 + hash01(`${c.id}:${x}`) * 0.6;
       s.box(c.f, x - 0.32, x + 0.32, 0.02, 0.28, c.base, c.base + h, hash01(`${c.id}:g${x}`) < 0.5 ? GREEN : DARKGREEN); if (hash01(`${c.id}:f${x}`) < 0.4) s.box(c.f, x - 0.2, x + 0.2, 0.05, 0.3, c.base + h, c.base + h + 0.12, pickOf(['#e84a7f', '#f2b92e', '#c04fd0', '#ffffff'], r + x)); } } },
-  { id: 'climbing-ivy', styles: ALL, p: 0.08, build: (c, s) => {
-    const x0 = hash01(c.wallKey) * Math.max(0, c.f.len - 3), h = Math.min(c.top - c.base, 4 + hash01(`${c.wallKey}:h`) * 6);
-    s.box(c.f, x0, x0 + 2.2, 0, 0.12, c.base, c.base + h, DARKGREEN); s.box(c.f, x0 + 0.4, x0 + 1.6, 0, 0.14, c.base + h, c.base + h + 1.2, GREEN); } },
+  // Ivy as a thin climber hugging the wall to the first floor, in a few ragged fingers: a 2.2 m
+  // dark slab up to 10 m read as a black-green box (user 2026-10-03: "awful imposing extrusions on our canal house grammar").
+  { id: 'climbing-ivy', styles: ['school', 'postwar', 'modern'], p: 0.05, build: (c, s) => {
+    const x0 = hash01(c.wallKey) * Math.max(0, c.f.len - 2), top = Math.min(c.top - c.base, c.layout.groundM + 1.5);
+    for (let k = 0; k < 4; k++) { const x = x0 + 0.15 + k * 0.4, h = top * (0.55 + 0.45 * hash01(`${c.wallKey}:iv${k}`));
+      s.box(c.f, x, x + 0.32, 0, 0.04, c.base, c.base + h, k % 2 ? GREEN : '#4f7a45'); } } },
   // --- 19th century -----------------------------------------------------------------
   { id: 'juliet-balcony', group: 'balcony', styles: ['c19', 'school'], p: 0.3, build: (c, s) => {
     if (c.layout.storeys < 2) return; const z = storeyZ(c, 1) + 0.05;
@@ -106,20 +109,27 @@ const STREET_FURNITURE: readonly WallComponent[] = [
     } } },
   { id: 'bay-window', group: 'oriel', styles: ['c19', 'school'], p: 0.2, build: (c, s) => {
     if (c.layout.storeys < 1 || c.f.len < 5) return; const x = c.f.len / 2, z0 = storeyZ(c, 0), z1 = z0 + c.layout.storeyM * Math.min(2, c.layout.storeys) - 0.2;
-    s.box(c.f, x - 1.3, x + 1.3, 0, 0.8, z0, z1, c.wallHex, true); s.box(c.f, x - 1.1, x + 1.1, 0.8, 0.82, z0 + 0.5, z1 - 0.4, GLASS); s.box(c.f, x - 1.4, x + 1.4, 0, 0.9, z1, z1 + 0.15, STONE); } },
+    // A shallow oriel with light framed panes, one storey: 0.8 m deep over two storeys with a
+    // single dark glass sheet read as a grey box bolted on (user 2026-10-03: "awful imposing extrusions on our canal house grammar").
+    const zz1 = z0 + c.layout.storeyM - 0.25; void z1;
+    s.box(c.f, x - 1.1, x + 1.1, 0, 0.45, z0 + 0.15, zz1, c.wallHex, true);
+    for (const [a, b] of [[-0.95, -0.35], [-0.3, 0.3], [0.35, 0.95]]) s.box(c.f, x + a, x + b, 0.45, 0.47, z0 + 0.6, zz1 - 0.35, '#9fb6c4');
+    s.box(c.f, x - 1.18, x + 1.18, 0, 0.52, zz1, zz1 + 0.12, WHITE, true); } },
   { id: 'cornice-brackets', group: 'crown', styles: ['c19', 'canal'], p: 0.35, build: (c, s) => {
     const z = c.top - 0.15; s.box(c.f, 0, c.f.len, 0, 0.3, z - 0.1, z + 0.1, STONE, true);
     for (let x = 0.4; x < c.f.len - 0.2; x += 1.1) s.box(c.f, x - 0.06, x + 0.06, 0, 0.24, z - 0.42, z - 0.1, STONE); } },
   { id: 'door-canopy', group: 'door-frame', styles: ['c19', 'school', 'postwar'], p: 0.25, build: (c, s) => {
     const x = doorX(c); if (x == null) return; const z = c.base + Math.min(2.6, c.layout.groundM - 0.25);
-    s.box(c.f, x - 0.8, x + 0.8, 0, 0.9, z, z + 0.1, c.style === 'c19' ? IRON : CONCRETE, true); } },
+    // A slim canopy over the door only (user 2026-10-03: "awful imposing extrusions on our canal house grammar"): 0.5 m out, not a 0.9 m black slab.
+    s.box(c.f, x - 0.65, x + 0.65, 0, 0.5, z, z + 0.06, c.style === 'c19' ? '#3a3f45' : CONCRETE, true); } },
   { id: 'downpipe', styles: ALL, p: 0.4, build: (c, s) => {
     const x = hash01(`${c.wallKey}:dp`) < 0.5 ? 0.15 : c.f.len - 0.15; s.box(c.f, x - 0.05, x + 0.05, 0, 0.1, c.base, c.top - 0.2, '#4a4d50'); s.box(c.f, x - 0.15, x + 0.15, 0, 0.2, c.top - 0.45, c.top - 0.2, '#4a4d50'); } },
   { id: 'gutter', group: 'crown', styles: ['canal', 'c19', 'school'], p: 0.3, build: (c, s) => { s.box(c.f, 0, c.f.len, 0, 0.16, c.top - 0.12, c.top, '#3a3d40', true); } },
   // --- Amsterdam School ------------------------------------------------------------
   { id: 'brick-balcony', styles: ['school'], p: 0.3, build: (c, s) => {
-    for (let k = 1; k < Math.min(4, c.layout.storeys + 1); k++) { const x = c.f.len / 2, z = storeyZ(c, k - 1) + 0.05;
-      s.box(c.f, x - 1.4, x + 1.4, 0, 1.0, z, z + 0.15, c.wallHex, true); s.box(c.f, x - 1.4, x + 1.4, 0.85, 1.0, z + 0.15, z + 1.0, c.wallHex); } } },
+    for (let k = 1; k < Math.min(3, c.layout.storeys + 1); k++) { const x = c.f.len / 2, z = storeyZ(c, k - 1) + 0.05;
+      // Shallow brick balconies (user 2026-10-03: "awful imposing extrusions on our canal house grammar"): 0.5 m out with a low parapet, not 1 m stacked boxes.
+      s.box(c.f, x - 1.2, x + 1.2, 0, 0.5, z, z + 0.12, c.wallHex, true); s.box(c.f, x - 1.2, x + 1.2, 0.4, 0.5, z + 0.12, z + 0.8, c.wallHex); } } },
   { id: 'brick-bands', styles: ['school'], p: 0.35, build: (c, s) => {
     for (let k = 0; k < c.layout.storeys; k++) s.box(c.f, 0, c.f.len, 0, 0.05, storeyZ(c, k) - 0.15, storeyZ(c, k), '#6b3a2c'); } },
   { id: 'stair-glass', styles: ['school', 'postwar', 'modern'], p: 0.3, build: (c, s) => {
@@ -136,12 +146,12 @@ const STREET_FURNITURE: readonly WallComponent[] = [
     for (let k = 0; k < 3; k++) { const x = hash01(`${c.wallKey}:sd${k}`) * c.f.len, z = storeyZ(c, Math.floor(hash01(`${c.wallKey}:sz${k}`) * Math.max(1, c.layout.storeys))) + 1.3;
       s.box(c.f, x - 0.3, x + 0.3, 0.9, 0.95, z - 0.3, z + 0.3, '#e9e7e2'); } } },
   { id: 'entrance-slab', styles: ['postwar', 'modern', 'tower'], p: 0.4, build: (c, s) => {
-    const x = doorX(c); if (x == null) return; s.box(c.f, x - 1.6, x + 1.6, 0, 1.8, c.base + 2.55, c.base + 2.8, CONCRETE, true); } },
+    const x = doorX(c); if (x == null) return; s.box(c.f, x - 1.3, x + 1.3, 0, 1.0, c.base + 2.6, c.base + 2.75, CONCRETE, true); } },
   { id: 'glass-balconies', styles: ['modern', 'tower'], p: 0.45, build: (c, s) => {
     for (let k = 0; k < Math.min(8, c.layout.storeys); k++) { const z = storeyZ(c, k) + 0.02, x = c.f.len * (0.25 + 0.5 * (k % 2));
-      s.box(c.f, x - 1.6, x + 1.6, 0, 1.3, z, z + 0.12, CONCRETE, true); s.box(c.f, x - 1.6, x + 1.6, 1.26, 1.3, z + 0.12, z + 1.05, '#a9c4cf'); } } },
+      s.box(c.f, x - 1.5, x + 1.5, 0, 0.9, z, z + 0.08, CONCRETE, true); s.box(c.f, x - 1.5, x + 1.5, 0.87, 0.9, z + 0.08, z + 1.0, '#c3d6de'); } } },
   { id: 'vertical-fins', styles: ['modern', 'tower'], p: 0.25, build: (c, s) => {
-    for (let x = 0.6; x < c.f.len - 0.3; x += 1.5) s.box(c.f, x - 0.06, x + 0.06, 0, 0.45, c.base + c.layout.groundM, c.top - 0.3, '#d6d2c8'); } },
+    for (let x = 0.6; x < c.f.len - 0.3; x += 1.5) s.box(c.f, x - 0.05, x + 0.05, 0, 0.22, c.base + c.layout.groundM, c.top - 0.3, '#d6d2c8'); } },
   { id: 'garage-door', styles: ['postwar'], p: 0.12, build: (c, s) => { if (!c.groundLevel || c.f.len < 4) return; const x = c.f.len - 2; s.box(c.f, x - 1.25, x + 1.25, 0, 0.04, c.base, c.base + 2.3, '#9aa0a6'); } },
   { id: 'plinth', group: 'plinth', styles: ['canal', 'c19', 'school'], p: 0.35, build: (c, s) => { if (c.groundLevel) s.box(c.f, 0, c.f.len, 0, 0.06, c.base, c.base + 0.5, '#3a3530'); } },
   // --- Street life ------------------------------------------------------------------

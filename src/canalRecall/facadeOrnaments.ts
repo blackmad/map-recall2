@@ -276,13 +276,14 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     if (c.layout.storeys < 2 || c.f.len < 5.5) return;
     const x = c.f.len * (r < 0.5 ? 0.5 : 0.3), z0 = storeyZ(c, 0) + 0.1, z1 = storeyZ(c, Math.min(2, c.layout.storeys - 1)) - 0.1;
     const glassZ0 = z0 + 0.7, glassZ1 = z1 - 0.35, frame = c.style === 'school' ? pickOf(SCHOOL_FRAMES, r) : WHITE;
-    s.box(c.f, x - 0.75, x + 0.75, 0, 0.6, z0 - 0.45, z0, SANDSTONE, true);
+    s.box(c.f, x - 0.75, x + 0.75, 0, 0.4, z0 - 0.4, z0, SANDSTONE, true);
     const body = shadeHex(c.wallHex, 0.88);
-    for (const [hw, o] of [[1.3, 0.35], [1.05, 0.65], [0.7, 0.85]] as const) s.box(c.f, x - hw, x + hw, 0, o, z0, z1, body, true);
+    // Shallower since 2026-10-03 (0.85 m out read as a box bolted on: "awful imposing extrusions").
+    for (const [hw, o] of [[1.3, 0.2], [1.05, 0.38], [0.7, 0.5]] as const) s.box(c.f, x - hw, x + hw, 0, o, z0, z1, body, true);
     // Glass on each step's face, where the step stands out past the next one.
-    for (const [a0, a1, o] of [[x - 1.22, x - 1.1, 0.35], [x - 0.95, x - 0.8, 0.65], [x - 0.62, x + 0.62, 0.85], [x + 0.8, x + 0.95, 0.65], [x + 1.1, x + 1.22, 0.35]] as const) s.strip(c.f, a0, a1, o + 0.01, glassZ0, glassZ1, '#4d5f6b', 0.01);
-    s.strip(c.f, x - 0.6, x + 0.6, 0.88, glassZ0 + (glassZ1 - glassZ0) * 0.68, glassZ0 + (glassZ1 - glassZ0) * 0.72, frame, 0.03);
-    s.box(c.f, x - 1.38, x + 1.38, 0, 0.95, z1, z1 + 0.14, c.style === 'school' ? '#4f7a6a' : STONE, true);
+    for (const [a0, a1, o] of [[x - 1.22, x - 1.1, 0.2], [x - 0.95, x - 0.8, 0.38], [x - 0.62, x + 0.62, 0.5], [x + 0.8, x + 0.95, 0.38], [x + 1.1, x + 1.22, 0.2]] as const) s.strip(c.f, a0, a1, o + 0.01, glassZ0, glassZ1, '#8ea6b4', 0.01);
+    s.strip(c.f, x - 0.6, x + 0.6, 0.53, glassZ0 + (glassZ1 - glassZ0) * 0.68, glassZ0 + (glassZ1 - glassZ0) * 0.72, frame, 0.03);
+    s.box(c.f, x - 1.38, x + 1.38, 0, 0.56, z1, z1 + 0.14, c.style === 'school' ? '#4f7a6a' : STONE, true);
   } },
   // --- Ground floor -------------------------------------------------------------------------
   { id: 'rusticated-plinth', styles: CANAL, p: { c19: 0.4, canal: 0.12 }, wide: true, street: true, group: 'plinth', build: (c, s) => {
