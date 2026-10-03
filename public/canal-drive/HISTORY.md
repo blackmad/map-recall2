@@ -9,6 +9,10 @@ User (2026-10-03): "why does hitting enter at the end of route reload the whole 
 - **Bike size:** the chase bike is a world-space piece, so zooming in made it fill the street (user screenshot, Marnixstraat). `vehicleZoomScale.ts` gives back half of the zoom, `(defaultZoom / zoom)^0.5` clamped to 0.6-2.2: at 150% it reads 1.5x rather than 2.3x, at 40% it stays visible, and at the window's default zoom nothing changes.
 - **Keyboard hint plate:** the line sat low in its plate (fixed alphabetic offset); it now centres on the measured ink.
 
+## Two-finger twist spins the 3D camera
+
+User (2026-10-03): "I want to be able to spin the camera with a two-finger twist gesture on my trackpad." Only Safari reports a trackpad rotation (`gesturestart`/`gesturechange` with `rotation`, also fired by iOS Safari for a two-finger touch); Chrome and Firefox expose no twist at all, as a gesture or as a wheel delta, so those get Option/Alt + two-finger scroll instead. Both orbit chase/cockpit through the existing `camera.bearingOffset` (the same one Shift + [ / ] nudges) and persist through `_nudgeCameraBearing` once the gesture settles; the 2D views ignore it, as they ignore the keys. A twist engages only past a 6° dead zone and then tracks the fingers without a jump, so a pinch's wobble never turns the view. The Safari gestures are also swallowed so the page itself cannot zoom, and their `scale` zooms the map unless a touch pinch or ctrl+wheel is already doing it. Logic in `src/canalRecall/game/trackpadTwist.ts`, pinned in `test:trackpad-twist` and `tests/e2e/trackpad-twist.spec.ts` (synthetic Safari events: wobble ignored, a clockwise twist turns north clockwise on screen, Alt+scroll turns it, the bearing persists).
+
 ## Large-letter postcard: the Spoon Graphics recipe
 
 User (2026-10-03, with the Spoon Graphics tutorial "How To Create a Vintage Style Large Letter Postcard Design"): revisit the postcard against it. Audit: `/mnt/project-files/map-recall/postcard-design-audit.md`; before/after renders in `/mnt/project-files/map-recall/postcard-recipe/`. Changes, step by step against the recipe:
