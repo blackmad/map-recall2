@@ -2,6 +2,13 @@ import {treeTypology} from '../da-costa-block/tree-typology.js';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
+// Include crowns whose trunks sit just beyond the viewport (max proxy radius <24m).
+function crownBounds(map) {
+  const bounds=map.getBounds(),lat=(bounds.getNorth()+bounds.getSouth())/2;
+  const dy=24/111320,dx=dy/Math.max(.1,Math.cos(lat*Math.PI/180));
+  return {getWest:()=>bounds.getWest()-dx,getEast:()=>bounds.getEast()+dx,
+    getSouth:()=>bounds.getSouth()-dy,getNorth:()=>bounds.getNorth()+dy};
+}
 
 /** Stream real municipal tree positions; at most seven instanced draws for the visible canopy. */
 export class InventoryTrees {
@@ -19,6 +26,7 @@ export class InventoryTrees {
     this.layer={id:'municipal-inventory-trees',type:'custom',renderingMode:'3d',
       onAdd:(_map,gl)=>{this.camera=new THREE.Camera();this.renderer=new THREE.WebGLRenderer({canvas:map.getCanvas(),context:gl,antialias:true});this.renderer.autoClear=false;},
       onRemove:()=>{
+        this.generation++;this.enabled=false;this.ready=false;
         this.clear();map.off('moveend',this.move);
         for(const geometry of this.geometries.values())geometry.dispose();
         for(const material of this.materials.values())material.dispose();
@@ -67,7 +75,7 @@ export class InventoryTrees {
   update() {
     if (!this.enabled || !this.ready) return;
     if (this.map.getZoom()<MIN_ZOOM) {this.clear();return;}
-    const b=this.map.getBounds(),c=this.map.getCenter();
+    const b=crownBounds(this.map),c=this.map.getCenter();
     const tile=(lng,lat)=>[Math.floor((lng+180)/360*32768),Math.floor((1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*32768)];
     const [x0,y1]=tile(b.getWest(),b.getSouth()),[x1,y0]=tile(b.getEast(),b.getNorth()),[cx,cy]=tile(c.lng,c.lat);
     const wanted=[];
@@ -96,7 +104,7 @@ export class InventoryTrees {
   }
   rebuild() {
     this.disposeMeshes();
-    const b=this.map.getBounds(),groups=new Map();let trees=0;
+    const b=crownBounds(this.map),groups=new Map();let trees=0;
     const archetypes=new Set(), color=new THREE.Color();
     const append=(key,item)=>{if(!groups.has(key))groups.set(key,[]);groups.get(key).push(item);};
     for(const tile of this.tiles.values())for(const tree of tile){
