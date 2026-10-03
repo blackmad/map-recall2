@@ -35,4 +35,6 @@ export { SIGNATURE_MODELS, signatureModel, suppressedOsmIds } from './signatureM
 // extrusions it replaces with the same mechanism the rest of the game uses.
 export { basemapBuildingFilter, encodeBasemapBuildingId } from '../buildingStyle';
 
+export {rdProjectionBasis,rdProjectedSurvey} from './rdProjectionBasis';
+
 export { MANUAL_LANDMARKS } from './manualModels';

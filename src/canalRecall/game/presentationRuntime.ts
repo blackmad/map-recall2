@@ -329,6 +329,12 @@ export class GamePresentationRuntime {
     });
     this.canvas.addEventListener('pointerdown', event => {
       if (event.button !== 0 || this.state === GameState.MENU || livePinch.size >= 2 || window.CanalRecallUi.isInsideDpad(this._eventPoint(event), this.input.dpad)) return;
+      // A debug-overlay tool link owns the tap: don't start a camera drag, so
+      // the pointerup below cannot fall through and open a landmark card.
+      if (this._debugMode && this._debugLinkBounds) {
+        const point = this._eventPoint(event);
+        if (this._debugLinkBounds.some(b => point.x >= b.x && point.x <= b.x + b.w && point.y >= b.y && point.y <= b.y + b.h)) return;
+      }
       dragging = true; moved = false; detachedBeforeDrag = !!this.camera.detached;
       downX = lastX = event.clientX; downY = lastY = event.clientY; this.canvas.setPointerCapture(event.pointerId);
     });

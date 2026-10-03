@@ -1,0 +1,238 @@
+[
+  {
+    "id": "van-gogh-museum",
+    "name": "Van Gogh Museum",
+    "landmarkId": "extract_landmarks_2070637412",
+    "modelUrl": "./models/van-gogh-museum.glb",
+    "suppressOsmIds": [
+      "w6577680"
+    ],
+    "footprint": {
+      "centre": [
+        4.881046973181264,
+        52.35839801249034
+      ],
+      "headingDegrees": 147.75744680394797,
+      "lengthMetres": 59.00779161686317,
+      "widthMetres": 52.127957130108186
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Van Gogh Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.vangoghmuseum.nl/nl/over/organisatie/het-gebouw",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+    }
+  },
+  {
+    "id": "stedelijk-museum",
+    "name": "Stedelijk Museum",
+    "landmarkId": "extract_landmarks_1719479765",
+    "modelUrl": "./models/stedelijk-museum.glb",
+    "suppressOsmIds": [
+      "w44508819"
+    ],
+    "footprint": {
+      "centre": [
+        4.879830319756338,
+        52.35792078508553
+      ],
+      "headingDegrees": 66.37991087111777,
+      "lengthMetres": 100.85707403797215,
+      "widthMetres": 82.04982538671491
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Stedelijk Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.benthemcrouwel.com/projects/stedelijk-museum",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+    }
+  },
+  {
+    "id": "adam-tower",
+    "name": "A’DAM Tower",
+    "landmarkId": "adam-tower",
+    "modelUrl": "./models/adam-tower.glb",
+    "suppressOsmIds": [
+      "w44824385"
+    ],
+    "footprint": {
+      "centre": [
+        4.902217394449075,
+        52.383774274858496
+      ],
+      "headingDegrees": 139.08611969097242,
+      "lengthMetres": 62.381961899454694,
+      "widthMetres": 36.20922563625085
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "A’DAM Tower",
+      "author": "Map Recall",
+      "sourceUrl": "https://adamtoren.nl/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+    }
+  },
+  {
+    "id": "pontsteiger",
+    "name": "Pontsteiger",
+    "landmarkId": "pontsteiger",
+    "modelUrl": "./models/pontsteiger.glb",
+    "suppressOsmIds": [
+      "w13123696"
+    ],
+    "footprint": {
+      "centre": [
+        4.886200223567619,
+        52.39323956218515
+      ],
+      "headingDegrees": 139.67770384126857,
+      "lengthMetres": 89.26245888721829,
+      "widthMetres": 87.17557208386057
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Pontsteiger",
+      "author": "Map Recall",
+      "sourceUrl": "https://arcam.nl/architectuur-gids/pontsteiger/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+    }
+  },
+  {
+    "id": "oba-oosterdok",
+    "name": "OBA Oosterdok",
+    "landmarkId": "extract_landmarks_751632752",
+    "modelUrl": "./models/oba-oosterdok.glb",
+    "suppressOsmIds": [
+      "w1487606301",
+      "w1487606300",
+      "w1487606301",
+      "w1487606302",
+      "w1487606303",
+      "w1487606304",
+      "w1487606305",
+      "w1487606306",
+      "w1487606307",
+      "w1487606308",
+      "w1487606309",
+      "w1487606310",
+      "w1487606311"
+    ],
+    "footprint": {
+      "centre": [
+        4.908303881212726,
+        52.37600837944057
+      ],
+      "headingDegrees": 172.17112613676915,
+      "lengthMetres": 64.40470560623255,
+      "widthMetres": 38.70079461141226
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "OBA Oosterdok",
+      "author": "Map Recall",
+      "sourceUrl": "https://oba.nl/nl/locaties/oba-oosterdok",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+    }
+  },
+  {
+    "id": "rem-eiland",
+    "name": "REM-eiland",
+    "landmarkId": "rem-eiland",
+    "modelUrl": "./models/rem-eiland.glb",
+    "suppressOsmIds": [
+      "w169906479"
+    ],
+    "footprint": {
+      "centre": [
+        4.883275104301525,
+        52.39872817898343
+      ],
+      "headingDegrees": 140.85611828259619,
+      "lengthMetres": 26.055565349606344,
+      "widthMetres": 12.011365706204316
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "REM-eiland",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.remeiland.nl/nl/historie",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+    }
+  },
+  {
+    "id": "paradiso",
+    "name": "Paradiso",
+    "landmarkId": "paradiso",
+    "modelUrl": "./models/paradiso.glb",
+    "suppressOsmIds": [
+      "w57857350"
+    ],
+    "footprint": {
+      "centre": [
+        4.883800679368446,
+        52.36216899080454
+      ],
+      "headingDegrees": 37.75613184714064,
+      "lengthMetres": 38.545097684005455,
+      "widthMetres": 20.61145838101024
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Paradiso",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.paradiso.nl/en/about-paradiso",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+    }
+  },
+  {
+    "id": "melkweg",
+    "name": "Melkweg",
+    "landmarkId": "extract_landmarks_1586263374",
+    "modelUrl": "./models/melkweg.glb",
+    "suppressOsmIds": [
+      "w267565714"
+    ],
+    "footprint": {
+      "centre": [
+        4.881114921160033,
+        52.36474434271804
+      ],
+      "headingDegrees": 140.28036879963844,
+      "lengthMetres": 49.67162760006897,
+      "widthMetres": 35.589591569044984
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Melkweg",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.melkweg.nl/en/info/about-us/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+    }
+  }
+]

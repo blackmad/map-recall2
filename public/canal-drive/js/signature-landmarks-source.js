@@ -294,11 +294,25 @@ export class SignatureLandmarks {
       placement.altitudeMetres,
     );
     const units = coordinate.meterInMercatorCoordinateUnits();
-    const transform = new THREE.Matrix4()
-      .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
-      .scale(new THREE.Vector3(units, -units, units))
-      .multiply(new THREE.Matrix4().makeRotationZ(rotationForBearing(placement.modelRotationDegrees)))
-      .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
+    let transform;
+    if (placement.horizontalBasis) {
+      // glTF +X is facade tangent; glTF -Z is Blender +Y into the owner.
+      // Only horizontal coordinates use the projected RD basis. Vertical
+      // altitude and metre scale remain independent and unchanged.
+      const { x, y } = placement.horizontalBasis;
+      transform = new THREE.Matrix4().set(
+        units*x[0], 0, -units*y[0], coordinate.x,
+        units*x[1], 0, -units*y[1], coordinate.y,
+        0, units, 0, coordinate.z,
+        0, 0, 0, 1,
+      );
+    } else {
+      transform = new THREE.Matrix4()
+        .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
+        .scale(new THREE.Vector3(units, -units, units))
+        .multiply(new THREE.Matrix4().makeRotationZ(rotationForBearing(placement.modelRotationDegrees)))
+        .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
+    }
 
     this._entries.push({ spec, group, scene: modelScene, transform, highlighted: false, placement });
     this.shown.add(spec.id);
