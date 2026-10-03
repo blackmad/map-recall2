@@ -169,3 +169,37 @@ export function placeClusters(inside: readonly PlaceItem[], citywideCount: Reado
   out.sort((a, b) => b.score - a.score);
   return out.map((c, i) => ({ ...c, id: `${prefix}${i + 1}` }));
 }
+
+// ---------------------------------------------------------------------------
+// Publishing reviewed picks
+
+export interface FactCite { id?: string; from: string; lang: 'en' | 'nl'; sourceUrl: string; text: string }
+/** One area in `scripts/data/area-fact-review.json`; `null` there means "no local fact for this area". */
+export interface ReviewedFact { en: string; cites: FactCite[]; approve?: boolean; needsReview?: boolean; places?: unknown[] }
+export interface PublishedFact { en: string; sourceUrl: string; lang: 'en' | 'nl'; sourceLabel: string; kind: 'derived' }
+
+const squash = (text: string) => text.replace(/\s+/g, ' ').trim();
+
+/**
+ * A reviewed pick ready for the extract, or why not. It ships only when a
+ * person approved it, every cited sentence is still in its article (a re-fetch
+ * that changed the source is reported), and every year or number the English
+ * states appears in a cited sentence.
+ */
+export function publishableFact(entry: ReviewedFact, articleText: (sourceUrl: string) => string | undefined): { fact?: PublishedFact; problem?: string } {
+  if (!entry.approve) return { problem: 'not approved' };
+  if (!entry.cites?.length) return { problem: 'no citations' };
+  for (const cite of entry.cites) {
+    const text = articleText(cite.sourceUrl);
+    if (!text) return { problem: `article not in the store: ${cite.sourceUrl}` };
+    if (!squash(text).includes(squash(cite.text))) return { problem: `cited sentence no longer in ${cite.sourceUrl}: "${cite.from}…"` };
+  }
+  const cited = entry.cites.map(c => c.text).join(' ');
+  const missing = (entry.en.match(/\b\d{2,}\b/g) ?? []).filter(n => !cited.includes(n));
+  if (missing.length) return { problem: `numbers not in any cited sentence: ${missing.join(', ')}` };
+  const langs = new Set(entry.cites.map(c => c.lang));
+  const sourceLabel = langs.size > 1 ? 'English and Dutch Wikipedia' : langs.has('nl') ? 'Wikipedia (translated from Dutch)' : 'Wikipedia';
+  // The card links one source: the English article when one is cited, as most players read it.
+  const primary = entry.cites.find(c => c.lang === 'en') ?? entry.cites[0];
+  return { fact: { en: entry.en, sourceUrl: primary.sourceUrl, lang: primary.lang, sourceLabel, kind: 'derived' } };
+}

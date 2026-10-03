@@ -4,6 +4,7 @@ import {
   attachNameOrigins, attachNeighborhoodTrivia, descriptionWithoutOrigin, nearestAreaNames, originKindFor,
   notablePlacesIn, placeCandidates, placeCluesEnabled, type NeighborhoodHistoryEntry, type StreetNameOrigin,
 } from '../src/mapRecall/trivia';
+import { excludedBy, publishableFact, sentenceCandidates } from '../src/mapRecall/areaFacts';
 import { applyReview, isDisambiguation, mentions, sentencesOf, tidy } from './fetch-neighborhood-history';
 
 // Place clues are an easy/medium aid.
@@ -116,5 +117,25 @@ for (const entry of published) {
   }
 }
 assert.match(published.find((entry) => entry.name === 'Staatsliedenbuurt')!.nameOrigin!.en, /Statesmen/);
+
+// Local facts (scripts/mine-area-facts.ts). Named regression: Buitenveldert, Amsterdam's modern Jewish
+// quarter, which the lede/History/name pipeline missed (user report 2026-10-02).
+const buitenveldertEn = { lang: 'en' as const, title: 'Buitenveldert', url: 'https://en.wikipedia.org/wiki/Buitenveldert',
+  text: 'Buitenveldert is a neighborhood of Amsterdam, Netherlands. It is considered the modern Jewish quarter of Amsterdam with its synagogue, Jewish schools, nursing homes, shops and restaurants.\n\n== Demographics ==\nAbout 12% of residents have a Moroccan background.' };
+const mined = sentenceCandidates([buitenveldertEn], 'Buitenveldert', (text) => sentencesOf(tidy(text)));
+assert.match(mined[0].text, /modern Jewish quarter/, 'the community sentence ranks first');
+assert.ok(!mined.some((c) => /Moroccan|12%/.test(c.text)), 'resident statistics never reach the sheet');
+assert.equal(excludedBy('In 2010 the police closed three coffeeshops.'), 'crime');
+assert.equal(excludedBy('Opperrabbijn Aron Schuster opende in 1965 de eerste synagoge in de nieuwe wijk.'), null);
+const cite = { from: 'It is considered', lang: 'en' as const, sourceUrl: buitenveldertEn.url, text: mined[0].text };
+const pick = { en: "Buitenveldert is Amsterdam's modern Jewish quarter.", cites: [cite] };
+assert.equal(publishableFact(pick, () => buitenveldertEn.text).problem, 'not approved', 'nothing ships unreviewed');
+assert.deepEqual(publishableFact({ ...pick, approve: true }, () => buitenveldertEn.text).fact,
+  { en: pick.en, sourceUrl: buitenveldertEn.url, lang: 'en', sourceLabel: 'Wikipedia', kind: 'derived' });
+assert.match(publishableFact({ ...pick, approve: true }, () => 'The article was rewritten.').problem!, /no longer in/);
+assert.match(publishableFact({ ...pick, en: 'Its first synagogue opened in 1965.', approve: true }, () => buitenveldertEn.text).problem!, /1965/, 'no number the sources do not state');
+const [withFact] = attachNeighborhoodTrivia([{ name: 'Buitenveldert', type: 'neighborhood' as const }],
+  [{ name: 'Buitenveldert', localFact: { ...publishableFact({ ...pick, approve: true }, () => buitenveldertEn.text).fact! } }], []);
+assert.deepEqual(withFact.localFact, { text: pick.en, sourceUrl: buitenveldertEn.url, sourceLabel: 'Wikipedia' });
 
 console.log('Map Recall trivia checks passed.');
