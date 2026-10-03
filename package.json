@@ -89,6 +89,8 @@
     "fetch:3dbag": "tsx scripts/fetch-3dbag-tiles.ts",
     "probe:3dbag": "tsx scripts/probe-3dbag-metadata.ts",
     "test:building-tile-source": "tsx scripts/check-building-tile-source.ts",
+    "test:new-build-gaps": "tsx scripts/check-new-build-gaps.ts",
+    "fill:new-build-gaps": "tsx scripts/fill-new-build-gaps.ts",
     "test:slippy-tiles": "tsx scripts/check-slippy-tiles.ts",
     "test:building-ladder": "tsx scripts/check-building-ladder.ts",
     "test:rd-coordinates": "tsx scripts/check-rd-coordinates.ts",

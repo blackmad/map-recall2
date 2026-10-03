@@ -80,6 +80,7 @@ const CHECKS = [
   'test:houseboats',
   'test:facade-extras',
   'test:shopfronts',
+  'test:new-build-gaps',
   'test:roof-shapes',
   'test:teaching-surface',
   'test:recall-rules',

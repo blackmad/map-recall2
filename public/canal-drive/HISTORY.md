@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+## New-build gaps filled from OSM footprints
+
+User (2026-10-03): "mr blou I love you has no building, any idea why?" Mr Blou I Love You (OSM node 9039944077, Elandsgracht 150) is a 10 m² kiosk, pand 0363100012571031 built in 2023, next to an 11 m² kiosk from 2021. The building tiles are 3DBAG `v20250903`, which reconstructs panden from an AHN survey flown before both existed, and the 3DBAG API holds nothing at that point; our OSM layer only adds building:parts and a few footprints, so neither kiosk drew.
+
+The same hole exists wherever Amsterdam has built since the survey. `scripts/fill-new-build-gaps.ts` (rules in `src/canalRecall/newBuildGaps.ts`) takes every OSM building with a `start_date` from 2015 on (26,022, one Overpass answer kept in the scrape store) and adds it as tier 4 when its BAG/OSM id is not in the tiles, under 30% of its interior is covered by a ground-reaching footprint, and no hand-mapped tier-2 part touches it (those panden are suppressed on purpose: Overhoeks's 32-storey tower outline was the case that showed it). Heights: OSM `height`, else storeys × 3.1 m, else 3.2 m under 25 m², else the median of measured panden within 35 m, else 9.5 m. 3,671 fills went into 165 tiles (+77 KB gzipped); a rerun finds 0, so it is idempotent. Pinned in `test:new-build-gaps` (rules on a synthetic block, and Mr Blou standing in a small building), which is part of `check:canal`.
+
 ## Map Recall: folded answer card and a layered postcard
 
 User (2026-10-02, with a screenshot of Nieuwmarktbuurt): the postcard "pops in too late" and the answer card "takes up too much of my screen so I don't get confirmation of where the hood was". Cause of the delay: `PostcardHeader` composed the large-letter postcard at reveal, after a dynamic import of the compositor, the Archivo Black outline font and `Promise.all` over up to eight Commons thumbnails, so the slowest photo gated it, then drew the warped letters (70-240 ms a paint here). Measured over seeded rounds: 1.3-12 s from Confirm to postcard, 1.3-3 s even with every photo on local disk.
