@@ -1,5 +1,12 @@
 # Canal Recall — what is built
 
+## Map Recall bottom card fits above iPhone Safari's toolbar
+
+User (2026-10-02, iPhone Safari screenshot): "Mobile needs some display fixes at the bottom. Also can't scroll to the bottom of the trivia card."
+
+- **Cause:** the Map Recall shell was Tailwind `h-screen` (100vh). iOS sizes 100vh to the large viewport (toolbar hidden), so the bottom card's "No idea" / "Place a pin first" row and the end of every scroll area were laid out under the toolbar, where no touch can reach. `#root` was already 100dvh; the shell now fills it (`h-full w-full`). Modal caps moved from `vh` to `dvh` for the same reason.
+- **Trivia card:** on phones `.quiz-result-card` had its own `max-height: 58dvh; overflow-y: auto` inside the overlay wrapper's 42dvh scroller. The inner scroller was taller than its parent, so scrolling the outer one never reached the card's last lines. The wrapper is now the only scroll area (`overscroll-contain` so the page does not rubber-band).
+- **Regression:** `tests/e2e/map-recall-phone-chrome.spec.ts` shrinks `#root` by a 90 px "toolbar" the way Safari's dynamic viewport does and requires both buttons and the scrolled-to-end answer card to sit above it. Both tests fail on the old code. Not yet checked on a real iPhone.
 ## Listed buildings draw the gable the monuments register names
 
 User (2026-10-02): "do you think it's at all possible to correlate the canal house builder more to the year the house was built?", then "start on wall colors, then gables".
