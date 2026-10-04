@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 146,
+    "manual-model": 147,
     "procedural-kit": 15,
-    "pending": 165
+    "pending": 164
   },
   "destinations": [
     {
@@ -1844,8 +1844,9 @@
       "type": "landmark",
       "queueRank": 143,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "muiderpoort",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_800494636",

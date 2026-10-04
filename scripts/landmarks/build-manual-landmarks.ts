@@ -18,6 +18,7 @@ import {buildConcertgebouw} from './concertgebouw-builder';
 import {buildStadhuis} from './stadhuis-builder';
 import {buildHeinekenExperience} from './heineken-builder';
 import {buildFaralda} from './faralda-builder';
+import {buildMuiderpoort} from './muiderpoort-builder';
 import {buildSilodam} from './silodam-builder';
 import {buildVenueLandmark} from './venue-builders';
 import {buildTheaterLandmark} from './theater-builders';
@@ -88,7 +89,7 @@ import hospitals from './hospital-footprints.json';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 const out=path.resolve('public/canal-drive/models');
-const palette={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58'};
+const palette={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',lead:'#7c838c',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58'};
 type Colour=keyof typeof palette;
 let parts: {g:T.BufferGeometry,c:Colour}[]=[];
 function add(g:T.BufferGeometry,c:Colour,x=0,y=0,z=0,angle=0){g.rotateY(angle);g.translate(x,y,z);parts.push({g,c});}
@@ -172,6 +173,7 @@ for(const spec of MANUAL_LANDMARKS){
     else if(id==='stadhuis')buildStadhuis(w,d,helpers);
     else if(id==='heineken-experience-amsterdam')buildHeinekenExperience(id,w,d,helpers);
     else if(id==='faralda-crane-hotel')buildFaralda(w,d,helpers);
+    else if(id==='muiderpoort')buildMuiderpoort(w,d,helpers);
     else if(id==='silodam')buildSilodam(w,d,helpers);
     else if(venueIds.has(id))buildVenueLandmark(id,w,d,helpers);
     else if(theaterIds.has(id))buildTheaterLandmark(id,w,d,helpers);

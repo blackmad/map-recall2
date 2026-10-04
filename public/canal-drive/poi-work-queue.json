@@ -547,6 +547,14 @@
       "validation": "Original5896tri87500B accepted in gallery and both dense live views. Existing canonical chosen finish/pin retained, physical click opens opaque sourced card; exact two aliases/native1/openportal and uploaded X/Y-Helling neighbors pass."
     },
     {
+      "id": "muiderpoort",
+      "task": "Muiderpoort historic city gate",
+      "status": "verified",
+      "priority": "normal",
+      "owner": "deepseek-trial",
+      "validation": "Original3448tri54104B accepted in gallery and live front/rear views. Existing canonical chosen finish/pin retained, physical click opens sourced monument-register card; exact two aliases (w45038672 / NL.IMBAG.Pand.0363100012169095)/native1 and open carriage arch pass. Free-standing on Alexanderplein, so no adjacent neighbours suppressed."
+    },
+    {
       "id": "street-rhythm-independent-city-discovery",
       "task": "Discover street-side architectural rhythms independently from municipal panoramas and admit reviewed city batches",
       "priority": "high",

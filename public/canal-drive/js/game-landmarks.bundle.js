@@ -4190,6 +4190,44 @@ Map source: ${osmUrl(places[i][0])}`);
       }
     },
     {
+      id: "muiderpoort",
+      name: "Muiderpoort",
+      landmarkId: "extract_landmarks_1639856562",
+      modelUrl: "./models/muiderpoort.glb",
+      suppressOsmIds: [
+        "w45038672",
+        "NL.IMBAG.Pand.0363100012169095"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.919485,
+          52.3637232
+        ],
+        headingDegrees: 56.62,
+        lengthMetres: 24.4,
+        widthMetres: 17.6
+      },
+      surveyed: {
+        anchor: [
+          4.919485,
+          52.3637232
+        ],
+        northOffsetDegrees: 146.62,
+        source: "Current BAG pand 0363100012169095 / OSM w45038672 gate outline (oriented extent 24.4 x 17.6 m at heading 56.6 deg). Native metres, scale 1. +X is the facade width, +Z faces the city (bearing 326.6 deg NW). 3DBAG AHN5 dome max ~20.35 m above ground; wing eaves, arch proportions and octagonal dome/lantern profiles are approximate from photographs."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: -90,
+      attribution: {
+        title: "Muiderpoort",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/5139",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly reconstruction: flat-roofed stone-faced guard-house wings with brick side walls flanking a sandstone triumphal-arch centre (one carriage arch, two pedestrian arches) crowned by an octagonal grey slate/lead dome with a stone clock lantern and spire. Surveyed BAG parent and 3DBAG height; arch proportions, dome profile and heraldic pediment relief simplified from photographs. No imported mesh geometry or reference-image pixels. Bridges, canals and the square retained."
+      }
+    },
+    {
       id: "huis-aan-drie-grachten",
       name: "Huis aan de Drie Grachten",
       landmarkId: "extract_landmarks_1614063354",
@@ -9196,6 +9234,17 @@ Map source: ${osmUrl(places[i][0])}`);
       additionalSources: [
         "https://www.iaa-architecten.nl/projecten/feralda-crane-hotel/",
         "https://www.faralda.com/hotels/"
+      ]
+    },
+    {
+      modelId: "muiderpoort",
+      landmarkId: "extract_landmarks_1639856562",
+      name: "Muiderpoort",
+      description: "The Muiderpoort on the Alexanderplein is the only remaining 18th-century city gate of Amsterdam. City architect Cornelis Rauws rebuilt it in 1770 in Louis XVI style after the 1663 gate collapsed in 1769. The low brick guard-house wings flank a raised sandstone centre framed as a triumphal arch, crowned by an octagonal dome tower.",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/5139",
+      additionalSources: [
+        "https://nl.wikipedia.org/wiki/Muiderpoort_(Amsterdam)",
+        "https://www.stadsherstel.nl/94/diversen/nieuws/details/amsterdams-icoon-de-muiderpoort-aangekocht/?id=10615"
       ]
     }
   ];

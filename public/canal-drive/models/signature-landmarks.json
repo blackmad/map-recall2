@@ -9847,6 +9847,75 @@
       "triangles": 5896,
       "bytes": 87500,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "muiderpoort": {
+      "id": "muiderpoort",
+      "name": "Muiderpoort",
+      "landmarkId": "extract_landmarks_1639856562",
+      "modelUrl": "./models/muiderpoort.glb",
+      "suppressOsmIds": [
+        "w45038672",
+        "NL.IMBAG.Pand.0363100012169095"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.919485,
+          52.3637232
+        ],
+        "headingDegrees": 56.62,
+        "lengthMetres": 24.4,
+        "widthMetres": 17.6
+      },
+      "surveyed": {
+        "anchor": [
+          4.919485,
+          52.3637232
+        ],
+        "northOffsetDegrees": 146.62,
+        "source": "Current BAG pand 0363100012169095 / OSM w45038672 gate outline (oriented extent 24.4 x 17.6 m at heading 56.6 deg). Native metres, scale 1. +X is the facade width, +Z faces the city (bearing 326.6 deg NW). 3DBAG AHN5 dome max ~20.35 m above ground; wing eaves, arch proportions and octagonal dome/lantern profiles are approximate from photographs."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90,
+      "attribution": {
+        "title": "Muiderpoort",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5139",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction: flat-roofed stone-faced guard-house wings with brick side walls flanking a sandstone triumphal-arch centre (one carriage arch, two pedestrian arches) crowned by an octagonal grey slate/lead dome with a stone clock lantern and spire. Surveyed BAG parent and 3DBAG height; arch proportions, dome profile and heraldic pediment relief simplified from photographs. No imported mesh geometry or reference-image pixels. Bridges, canals and the square retained."
+      },
+      "bounds": {
+        "min": [
+          -12.300000190734863,
+          0,
+          -9.140000343322754
+        ],
+        "max": [
+          12.300000190734863,
+          23.6299991607666,
+          9.279999732971191
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.919485,
+          52.3637232
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 236.62,
+        "facadeBearingDegrees": 326.62,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 24.600000381469727,
+        "heightMetres": 23.6299991607666,
+        "depthMetres": 18.420000076293945,
+        "depthCoverage": 1.0465909134257922
+      },
+      "triangles": 5392,
+      "bytes": 74800,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
