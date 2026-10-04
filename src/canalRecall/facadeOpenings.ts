@@ -8,8 +8,9 @@
 // Everything is a fraction: across a bay for axes and widths, up a storey (or the ground
 // floor) for sills and heads, measured from the bottom.
 
-import { BAY_STYLES } from './bayLook.js';
-import { hashSeed } from './wallBays.js';
+import { BAY_STYLES, bayLookFor, bayStyleForRecipe } from './bayLook.js';
+import { bayDoorGeometry, bayDoorWindowGeometry, bayWindowGeometry, type BayVariant, type Look } from './bayTextures.js';
+import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
 
 export type OpeningRow = { axes: number[]; width: number; sill: number; head: number; arch?: boolean };
@@ -30,23 +31,39 @@ const BAY_W = 520, STOREY_H = 310, GROUND_H = 340;
 const rowPx = (n: number, y: number, h: number, H: number, widthPx: number): OpeningRow => ({
   axes: Array.from({ length: n }, (_, i) => (i + 0.5) / n), width: widthPx / BAY_W, sill: (H - y - h) / H, head: (H - y) / H,
 });
-/** `layoutWindows`: 150 / 112 / 82 px for one, two or three windows. */
-const bayWidthPx = (n: number) => (n === 1 ? 150 : n === 2 ? 112 : 82);
 /** `doorAt`: 118 px wide from 0.14 of the bay, 226 px tall standing 24 px above the foot. */
 const BAY_DOOR: DoorOpening = { axis: (0.14 * BAY_W + 59) / BAY_W, width: 118 / BAY_W, bottom: 24 / GROUND_H, top: (24 + 226) / GROUND_H, fanlight: true };
 
-export function bayLookOpenings(id: string, style: FacadeStyle): Openings {
-  if (style === 'modern' || style === 'postwar' || style === 'tower') {
-    return { upper: { axes: [0.5], width: 0.9, sill: (STOREY_H - 210) / STOREY_H, head: (STOREY_H - 70) / STOREY_H }, ground: rowPx(1, 80, 140, GROUND_H, 140),
-      doorWindow: null, door: { axis: (0.62 * BAY_W + 59) / BAY_W, width: 118 / BAY_W, bottom: BAY_DOOR.bottom, top: BAY_DOOR.top, fanlight: true }, ribbon: true };
+/** Opening placement comes from the same bounded variant used to paint the cell. */
+export function bayVariantOpenings(v: BayVariant, look: Look = 'photo'): Openings {
+  if (v.family === 'ribbon' || v.family === 'curtain') {
+    const curtain = v.family === 'curtain';
+    return { upper: { axes: [0.5], width: 0.9, sill: curtain ? 16 / STOREY_H : 100 / STOREY_H, head: curtain ? 302 / STOREY_H : 240 / STOREY_H },
+      ground: rowPx(1, 80, 140, GROUND_H, 140), doorWindow: null,
+      door: { ...BAY_DOOR, axis: (0.62 * BAY_W + 59) / BAY_W }, ribbon: true };
   }
-  const archetype = style === 'school' ? 'school' : 'canal';
-  const styles = BAY_STYLES[archetype], v = styles[(hashSeed(id) >>> 4) % styles.length];
-  const upper = archetype === 'school'
+  const row = (n: 1 | 2 | 3, y: number, h: number, H: number) => {
+    const g = bayWindowGeometry({ ...v, windows: n }, y, h, look);
+    return { ...rowPx(n, g.y, g.height, H, g.width), arch: v.shape === 'arch' };
+  };
+  const upper = v.archetype === 'school' && !v.proportions
     ? { axes: [0.3, 0.7], width: 76 / BAY_W, sill: (STOREY_H - 248) / STOREY_H, head: (STOREY_H - 68) / STOREY_H }
-    : { ...rowPx(v.windows, 62, 188, STOREY_H, bayWidthPx(v.windows)), arch: v.shape === 'arch' };
-  const doorWindow: OpeningRow = { axes: [0.64], width: 150 / BAY_W, sill: (GROUND_H - 226) / GROUND_H, head: (GROUND_H - 76) / GROUND_H };
-  return { upper, ground: rowPx(v.windows, 70, 150, GROUND_H, bayWidthPx(v.windows)), doorWindow, door: BAY_DOOR };
+    : row(v.windows, 62, 188, STOREY_H);
+  const dw = bayDoorWindowGeometry(v, look), dg = bayDoorGeometry(v);
+  const doorWindow = { ...rowPx(1, dw.y, dw.height, GROUND_H, dw.width), axes: [dw.axis] };
+  const door = { axis: (dg.x + dg.width / 2) / BAY_W, width: dg.width / BAY_W, bottom: dg.bottom / GROUND_H, top: (dg.bottom + dg.height) / GROUND_H, fanlight: dg.fanlight };
+  return { upper, ground: row(v.windows, 70, 150, GROUND_H), doorWindow, door };
+}
+
+export function bayLookOpenings(id: string, style: FacadeStyle, look: Look = 'photo'): Openings {
+  const archetype = style === 'school' ? 'school' : style === 'c19' ? 'c19' : style === 'modern' || style === 'postwar' || style === 'tower' ? 'modern' : 'canal';
+  const v = BAY_STYLES[archetype][bayStyleForRecipe(id, archetype)];
+  return bayVariantOpenings({ archetype, kind: 'upper', ...v }, look);
+}
+
+export function recipeBayOpenings(id: string, recipe: ArchitecturalRecipe, look: Look = 'photo'): Openings {
+  const chosen = bayLookFor(id, null, 12, look, 'quiet', recipe);
+  return bayVariantOpenings({ ...chosen.variant, kind: 'upper' }, look);
 }
 
 // --- Procedural cells (facadeCells.ts, nominal STYLE_DIMS) --------------------------------

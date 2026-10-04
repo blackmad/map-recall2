@@ -82,8 +82,51 @@ function storeysThatFit(c: ExtraContext, s: ExtraSink, perWindow: number, max: n
 // --- Components ------------------------------------------------------------------------
 const CANAL: readonly FacadeStyle[] = ['canal', 'c19'];
 
+/** Profile-only masonry relief; excluded from generic probabilistic components. */
+export function paleMasonryAccents(c: ExtraContext, s: ExtraSink): void {
+    if (!c.recipe || openingsOf(c).ribbon) return;
+    const colour = c.recipe.frameHex ?? CREAM;
+    // Alternate pale masonry beside the opening; glazing stays rectangular.
+    const windows = windowSpans(c, 0);
+    const n = Math.min(c.layout.storeys, Math.floor(s.room() / Math.max(1, windows.length * 24)));
+    for (let k = 0; k < n; k++) for (const w of windowSpans(c, k)) {
+      for (const fraction of [.15, .5, .85]) {
+        const z = w.z0 + (w.z1 - w.z0) * fraction;
+        for (const sign of [-1, 1]) {
+          const a = w.x + sign * (w.hw + .1);
+          if (a - .12 < 0 || a + .12 > c.f.len || z + .06 > c.top) continue;
+          s.strip(c.f, a - .12, a + .12, .065, z - .06, z + .06, colour);
+        }
+      }
+    }
+    // Quoins belong to actual facade ends, never to each repeated texture bay.
+    const ends = [c.runStart ? .16 : null, c.runEnd ? c.f.len - .16 : null].filter((x): x is number => x !== null);
+    const count = Math.min(12, Math.floor((c.top - c.base) / .6), Math.floor(s.room() / Math.max(4, ends.length * 4)));
+    for (let i = 0; i < count; i++) for (const x of ends) {
+      const z = c.base + .25 + i * .6, half = i % 2 ? .12 : .16;
+      s.strip(c.f, Math.max(0, x - half), Math.min(c.f.len, x + half), .055, z, Math.min(c.top, z + .18), colour);
+    }
+}
+
+/** A connected pale entrance assembly follows the quiet painted door rather than inventing a leaf. */
+export function restrainedDoorSurround(c: ExtraContext, s: ExtraSink, r: number): void {
+  const d = doorSpan(c);
+  if (!d || c.shopfront || !c.recipe || c.recipe.family !== 'masonry') return;
+  const pale = c.recipe.frameHex ?? WHITE;
+  const l = d.x - d.hw, right = d.x + d.hw, top = d.z1 + .025;
+  const cap = Math.min(c.base + c.layout.groundM - .04, top + .10);
+  if (l < .12 || right > c.f.len - .12 || cap <= top) return;
+  // Continuous, shallow masonry surround with a plain header and separate threshold.
+  s.strip(c.f, l - .11, l - .005, .04, d.z0, cap, pale);
+  s.strip(c.f, right + .005, right + .11, .04, d.z0, cap, pale);
+  s.strip(c.f, l - .11, right + .11, .04, top, cap, pale);
+  s.strip(c.f, l - .12, right + .12, .06, d.z0 - .035, d.z0 + .015, pale);
+  if (c.recipe.period === 'c19' && r < (c.recipe.trim?.arches ?? 0) * .7 && cap + .06 < c.base + c.layout.groundM) {
+    s.strip(c.f, d.x - .045, d.x + .045, .065, top - .025, cap + .06, pale);
+  }
+}
+
 export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
-  // --- Crowns: one per wall, the strongest line on a facade --------------------------------
   { id: 'kroonlijst', styles: CANAL, p: { canal: 0.6, c19: 0.15 }, wide: true, street: true, group: 'crown', build: (c, s, r) => {
     // Deep moulded cornice in white: a bed moulding, the corona and a drip, on consoles at the piers.
     // Not under a stepped or neck gable: that front ends in its gable (roofMesh.ts).
@@ -127,6 +170,7 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   // --- Doors ------------------------------------------------------------------------------------
   { id: 'door-surround', styles: CANAL, p: { canal: 0.5, c19: 0.4 }, street: true, group: 'door-frame', build: (c, s, r) => {
     // White jambs, an entablature over the door and the fanlight's radiating bars.
+    if (c.recipe && c.recipe.trimDensity !== 'ornate') { restrainedDoorSurround(c, s, r); return; }
     const d = doorSpan(c); if (!d) return;
     const l = d.x - d.hw, rr = d.x + d.hw, top = d.z1 + 0.04;
     s.box(c.f, l - 0.2, l, 0, 0.1, d.z0, top, WHITE);
@@ -140,13 +184,9 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
     }
   } },
   { id: 'portiek', styles: CANAL, p: { c19: 0.35, canal: 0.06 }, street: true, group: 'door-frame', build: (c, s) => {
-    // A recessed, round-headed entrance between the shops with a steep stone stair up to the
-    // upper-floor door: a dark recess, a stone arch surround and the stair climbing out of it.
+    // Dress the existing painted entrance; a second solid door panel duplicates its leaf.
     const d = doorSpan(c); if (!d || !c.groundLevel) return;
-    const l = d.x - d.hw - 0.05, rr = d.x + d.hw + 0.05, top = c.base + c.layout.groundM - 0.15;
-    // A warm-shadow recess with the painted door at its back; a near-black strip read as a void (user 2026-10-03).
-    s.strip(c.f, l, rr, 0.02, c.base, top - 0.25, '#5b4c42');
-    s.strip(c.f, d.x - d.hw + 0.12, d.x + d.hw - 0.12, 0.03, c.base + 0.8, top - 0.45, ['#2c4f33', '#1f3550', '#7a1f2b', '#3a3f45'][Math.floor(hash01(`${c.id}:pd`) * 4)]);
+    const l = d.x - d.hw - 0.05, rr = d.x + d.hw + 0.05, top = d.z1 + 0.3;
     s.box(c.f, l - 0.22, l, 0, 0.14, c.base, top, STONE);
     s.box(c.f, rr, rr + 0.22, 0, 0.14, c.base, top, STONE);
     s.box(c.f, l - 0.26, rr + 0.26, 0, 0.18, top - 0.3, top + 0.12, STONE, true);
@@ -190,31 +230,36 @@ export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'white-lintels', styles: CANAL, p: { canal: 0.4, c19: 0.12 }, wide: true, group: 'window-head', build: (c, s, r) => {
     // A white flat arch over each window, with a keystone on the grander houses.
     const o = openingsOf(c); if (o.ribbon) return;
-    const key = r < 0.55, n = storeysThatFit(c, s, key ? 8 : 4, 5);
+    const restrained = !!c.recipe && c.recipe.trimDensity !== 'ornate';
+    const key = !restrained && r < 0.55, n = storeysThatFit(c, s, key ? 8 : 4, 5);
     for (let k = 0; k < n; k++) for (const w of windowSpans(c, k)) {
       if (o.upper.arch) { s.strip(c.f, w.x - 0.1, w.x + 0.1, 0.07, w.z1 + 0.02, w.z1 + 0.26, WHITE); continue; }
-      s.strip(c.f, w.x - w.hw - 0.1, w.x + w.hw + 0.1, 0.05, w.z1 + 0.03, w.z1 + 0.2, WHITE);
+      s.strip(c.f, w.x - w.hw - (restrained ? 0.03 : 0.1), w.x + w.hw + (restrained ? 0.03 : 0.1), restrained ? 0.025 : 0.05, w.z1 + 0.02, w.z1 + (restrained ? 0.07 : 0.2), WHITE);
       if (key) s.strip(c.f, w.x - 0.09, w.x + 0.09, 0.09, w.z1 + 0.01, w.z1 + 0.27, WHITE);
     }
   } },
   { id: 'stucco-hoods', styles: CANAL, p: { c19: 0.5, canal: 0.12 }, wide: true, group: 'window-head', build: (c, s, r) => {
     // 19th-century stucco hood mouldings: a cornice over each window with a sloped top.
     if (openingsOf(c).ribbon) return;
+    const restrained = !!c.recipe && c.recipe.trimDensity !== 'ornate';
     const hex = r < 0.6 ? WHITE : CREAM, n = storeysThatFit(c, s, 6, 5);
     for (let k = 0; k < n; k++) for (const w of windowSpans(c, k)) {
-      const a0 = w.x - w.hw - 0.14, a1 = w.x + w.hw + 0.14;
-      s.strip(c.f, a0, a1, 0.14, w.z1 + 0.06, w.z1 + 0.2, hex);
-      s.slope(c.f, a0, a1, 0, 0.14, w.z1 + 0.3, w.z1 + 0.2, hex);
+      const a0 = w.x - w.hw - (restrained ? .04 : .14), a1 = w.x + w.hw + (restrained ? .04 : .14);
+      s.strip(c.f, a0, a1, restrained ? .04 : .14, w.z1 + .03, w.z1 + (restrained ? .09 : .2), hex);
+      s.slope(c.f, a0, a1, 0, restrained ? .04 : .14, w.z1 + (restrained ? .12 : .3), w.z1 + (restrained ? .09 : .2), hex);
     }
   } },
   { id: 'white-window-frames', styles: CANAL, p: { canal: 0.3, c19: 0.35 }, wide: true, build: (c, s) => {
     // Painted frames standing proud of the brick: jambs and head round every window.
     if (openingsOf(c).ribbon) return;
-    const n = storeysThatFit(c, s, 12, 5);
+    const groundCost = windowSpans(c, -1).length * 12;
+    const n = Math.max(0, Math.min(5, c.layout.storeys, Math.floor((s.room() - groundCost) / Math.max(12, windowSpans(c, 0).length * 12))));
     for (let k = -1; k < n; k++) for (const w of windowSpans(c, k)) {
-      s.strip(c.f, w.x - w.hw - 0.07, w.x - w.hw + 0.01, 0.05, w.z0, w.z1 + 0.04, WHITE);
-      s.strip(c.f, w.x + w.hw - 0.01, w.x + w.hw + 0.07, 0.05, w.z0, w.z1 + 0.04, WHITE);
-      s.strip(c.f, w.x - w.hw - 0.07, w.x + w.hw + 0.07, 0.05, w.z1 - 0.02, w.z1 + 0.05, WHITE);
+      const colour = c.recipe?.frameHex ?? WHITE;
+      const restrained = !!c.recipe && c.recipe.trimDensity !== 'ornate', frame = restrained ? .025 : .07, out = restrained ? .025 : .05;
+      s.strip(c.f, Math.max(0, w.x - w.hw - frame), w.x - w.hw + 0.01, out, w.z0, Math.min(c.top, w.z1 + 0.04), colour);
+      s.strip(c.f, w.x + w.hw - 0.01, Math.min(c.f.len, w.x + w.hw + frame), out, w.z0, Math.min(c.top, w.z1 + 0.04), colour);
+      s.strip(c.f, Math.max(0, w.x - w.hw - frame), Math.min(c.f.len, w.x + w.hw + frame), out, w.z1 - 0.02, Math.min(c.top, w.z1 + 0.05), colour);
     }
   } },
   { id: 'school-window-bars', styles: ['school'], p: 0.4, wide: true, build: (c, s, r) => {

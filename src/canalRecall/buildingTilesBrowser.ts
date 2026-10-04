@@ -244,12 +244,27 @@ export class BuildingTileStreamer {
     if (this.suspended === suspended) return;
     this.suspended = suspended;
     if (!suspended) {
+      this.preloadBounds = null;
+      this.preloadSignature = '';
+      this.lastFollowSignature = '';
       if (this.flushDirty) this.scheduleFlush();
       this.followCamera();
     }
   }
 
   private suspended = false;
+  private preloadBounds: Bounds | null = null;
+  private preloadSignature = '';
+
+  /** Warm a fixed landing neighbourhood during the intro, without chasing its wide camera. */
+  preloadAt(lng: number, lat: number): void {
+    const signature = `${lng.toFixed(5)}/${lat.toFixed(5)}`;
+    if (!this.available || !this.attached || this.disposed || signature === this.preloadSignature) return;
+    this.preloadSignature = signature;
+    const radiusM = 600, dy = radiusM / 111320, dx = dy / Math.cos(lat * Math.PI / 180);
+    this.preloadBounds = { west: lng - dx, east: lng + dx, south: lat - dy, north: lat + dy };
+    this.update();
+  }
 
   followCamera(): void {
     if (this.suspended) return;
@@ -287,7 +302,7 @@ export class BuildingTileStreamer {
     // The LoD1 city is the gap-free fallback beneath optional detail. At game
     // zoom the viewport itself covers every required z14 tile; a neighbour
     // ring only multiplies residency during low-pitch clearance adjustments.
-    const plan = planTiles(this.bounds(), this.cache.heldKeys, { zoom: this.zoom, margin: 0, budget: 12 });
+    const plan = planTiles(this.preloadBounds ?? this.bounds(), this.cache.heldKeys, { zoom: this.zoom, margin: 0, budget: 12 });
     const wantedKeys = new Set(plan.wanted);
 
     let changed = false;
@@ -409,9 +424,9 @@ export class BuildingTileStreamer {
     this.flushScheduled = true;
     const run = () => {
       this.flushScheduled = false;
-      // Tiles that land mid-flight wait: a flush re-styles and re-uploads the
-      // whole resident set, a visible hitch while the camera is sweeping.
-      if (!this.flushDirty || this.disposed || this.suspended) return;
+      // Ordinary camera-driven arrivals wait during a flight. A fixed landing
+      // preload may publish now so geometry is ready before the player arrives.
+      if (!this.flushDirty || this.disposed || this.suspended && !this.preloadBounds) return;
       this.flushDirty = false;
       this.flush();
     };

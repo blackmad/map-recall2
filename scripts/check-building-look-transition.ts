@@ -11,6 +11,7 @@ class Material {
 class Attribute { constructor(public array: any, public itemSize: number) {} onUpload() {} }
 class Geometry {
   attributes: any = {}; setAttribute(k: string, a: any) { this.attributes[k] = a; }
+  getAttribute(k: string) { return this.attributes[k]; }
   setIndex() {} computeBoundingSphere() {} dispose() {}
 }
 class Scene { children: any[] = []; add(m: any) { this.children.push(m); } remove(m: any) { this.children = this.children.filter(x => x !== m); } }

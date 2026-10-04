@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "zoom": 12,
+  "tileSize": 512,
+  "bounds": [
+    4.658203125,
+    52.2143386082582,
+    5.185546875,
+    52.48278022207821
+  ],
+  "buildings": 346664,
+  "tiles": 30,
+  "bytes": 916909,
+  "sourceSha256": "a63356dbff0d088f7eb2abe4f3325980047023c4cb89630a6a6837e08e5c5de5",
+  "projection": "Web Mercator",
+  "geometry": "Surveyed footprint raster; original holes preserved; no inferred heights or facades"
+}

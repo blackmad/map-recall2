@@ -14,7 +14,7 @@ export const STOREY_PX = 310;
 export const GROUND_PX = 340;
 
 export type Look = 'photo' | 'storybook' | 'cartoon';
-/** Bay drawing families: canal house (before 1860), 19th century (1860-1914), Amsterdam School (1915-44), modern (1945 on, ribbon windows). */
+/** Construction periods inform palette and details; opening family is independent. */
 export type Archetype = 'canal' | 'c19' | 'school' | 'modern';
 export type BayKind = 'plain' | 'groundDoor' | 'groundShop' | 'shopCafe' | 'shopWindow' | 'shopBar' | 'shopDeli' | 'shopFlorist' | 'shopBike' | 'ground' | 'upper' | 'upperTall' | 'attic';
 export const SHOP_KINDS = ['groundShop', 'shopCafe', 'shopWindow', 'shopBar', 'shopDeli', 'shopFlorist', 'shopBike'] as const;
@@ -30,10 +30,20 @@ export interface BayVariant {
   shutters: boolean;
   /** Frame woodwork: white, or the accent colour (painted frames). */
   paintedFrames: boolean;
+  family?: 'masonry' | 'punched' | 'ribbon' | 'curtain';
+  proportions?: 'tall' | 'balanced' | 'wide';
+  frameTone?: 'pale' | 'dark';
+  lintel?: 'flat' | 'arch' | 'none';
+  paleAccents?: boolean;
+  openingOccupancy?: number;
+  openingHeight?: number;
+  sash?: 'plain' | 'transom' | 'six-over-six';
+  trimDensity?: 'restrained' | 'ornate';
+  wallMaterial?: 'brick' | 'smooth';
 }
 
 export const variantKey = (v: BayVariant, look: Look) =>
-  `${look}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}`;
+  `${look}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}|${v.family ?? "masonry"}|${v.proportions ?? "tall"}|${v.frameTone ?? "pale"}|${v.lintel ?? "flat"}|${!!v.paleAccents}|${v.openingOccupancy ?? "legacy"}|${v.openingHeight ?? "legacy"}|${v.sash ?? "legacy"}|${v.trimDensity ?? "legacy"}|${v.wallMaterial ?? "legacy"}`;
 
 /** Building-level choices, derived from a seed so every wall of a building agrees. */
 export function buildingStyle(seed: string, archetype: Archetype): Omit<BayVariant, 'kind'> & { shop: boolean } {
@@ -41,7 +51,7 @@ export function buildingStyle(seed: string, archetype: Archetype): Omit<BayVaria
   const windows = (archetype === 'modern' ? 1 : [2, 2, 3, 1][h % 4]) as 1 | 2 | 3;
   const shape: WindowShape = archetype === 'canal' ? (['rect', 'rect', 'rect', 'arch', 'round'] as const)[(h >>> 3) % 5] : 'rect';
   return {
-    archetype, windows, shape,
+    archetype, windows, shape, family: archetype === 'modern' ? 'punched' : 'masonry',
     shutters: archetype === 'canal' && (h >>> 8) % 4 === 0,
     paintedFrames: (h >>> 10) % 5 === 0,
     shop: (h >>> 13) % 4 === 0,
@@ -81,13 +91,12 @@ export function paletteFor(seed: string, archetype: Archetype, look: Look): { wa
   return { wall: p.walls[h % p.walls.length], accent: p.accents[(h >>> 5) % p.accents.length] };
 }
 
-/** Period by construction year when known; otherwise a seeded mix weighted to the canal belt. */
-export function archetypeFor(seed: string, year: number | null, heightM: number): Archetype {
+/** Known construction period, otherwise a conservative low-rise masonry/tall punched fallback. */
+export function archetypeFor(_seed: string, year: number | null, heightM: number): Archetype {
   // The same periods as `facadeStyleFor`: 1860-1914 and post-war blocks no longer draw as canal houses.
   if (year !== null && year > 1500 && year < 2100) return year < 1860 ? 'canal' : year < 1915 ? 'c19' : year < 1945 ? 'school' : 'modern';
   if (heightM >= 28) return 'modern';
-  const r = (hashSeed(seed + ':a') >>> 3) % 100;
-  return r < 14 ? 'modern' : r < 30 ? 'school' : r < 62 ? 'c19' : 'canal';
+  return 'c19';
 }
 
 type Pass = 'colour' | 'mask';
@@ -118,14 +127,15 @@ class Painter {
   }
 }
 
-function wall(p: Painter, w: number, h: number, brick: CanvasImageSource, archetype: Archetype): void {
+function wall(p: Painter, w: number, h: number, brick: CanvasImageSource, archetype: Archetype, material?: 'brick' | 'smooth'): void {
   const { ctx } = p;
   if (p.pass === 'mask') { p.fill('wall', ''); ctx.fillRect(0, 0, w, h); return; }
-  if (p.cartoon || archetype === 'modern') {
+  const smooth = material === 'smooth' || archetype === 'modern' && material !== 'brick';
+  if (p.cartoon || smooth) {
     ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
-    if (p.toon && archetype !== 'modern') return; // cartoon walls are flat colour
-    ctx.strokeStyle = archetype === 'modern' ? 'rgba(0,0,0,0.05)' : 'rgba(60,30,20,0.16)'; ctx.lineWidth = 2;
-    if (archetype === 'modern') { for (let x = 130; x < w; x += 130) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); } return; }
+    if (p.toon && !smooth) return; // cartoon walls are flat colour
+    ctx.strokeStyle = smooth ? 'rgba(0,0,0,0.05)' : 'rgba(60,30,20,0.16)'; ctx.lineWidth = 2;
+    if (smooth) { for (let x = 130; x < w; x += 130) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); } return; }
     for (let row = 0, y = 6; y < h; y += 14, row++) {
       ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
       for (let x = (row % 2) * 24; x < w; x += 48) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + 14); ctx.stroke(); }
@@ -151,21 +161,29 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   }
   // Reveal shadow, then lintel (soldier course or cream block) and sill.
   p.fill('ink', 'rgba(20,14,10,0.55)'); ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
+  const restrained = v.trimDensity === 'restrained';
   const stone = cartoon ? p.stone : '#cfc8b8';
-  if (v.archetype !== 'modern') {
+  if (v.lintel !== 'none' && v.family !== 'punched' && v.archetype !== 'modern') {
     p.fill('ink', stone);
-    if (shape === 'arch') { ctx.beginPath(); ctx.ellipse(x + w / 2, y + 2, w / 2 + 12, 30, 0, Math.PI, 0); ctx.fill(); if (cartoon) outline(); }
-    else { p.rr(x - 12, y - 32, w + 24, 26, cartoon ? 8 : 2); ctx.fill(); outline();
-      p.shade(() => { if (!cartoon) { ctx.strokeStyle = 'rgba(80,58,44,0.7)'; ctx.lineWidth = 2; for (let bx = x - 10; bx < x + w + 12; bx += 10) { ctx.beginPath(); ctx.moveTo(bx, y - 32); ctx.lineTo(bx, y - 6); ctx.stroke(); } } }); }
-    p.fill('ink', stone); p.rr(x - 10, y + h + 2, w + 20, 12, cartoon ? 6 : 1); ctx.fill(); outline();
+    if (v.lintel === 'arch' || (v.lintel === undefined && shape === 'arch')) { ctx.beginPath(); ctx.ellipse(x + w / 2, y + 2, w / 2 + (restrained ? 5 : 12), restrained ? 12 : 30, 0, Math.PI, 0); ctx.fill(); if (cartoon) outline(); }
+    else { p.rr(x - (restrained ? 4 : 12), y - (restrained ? 12 : 32), w + (restrained ? 8 : 24), restrained ? 8 : 26, cartoon ? 4 : 1); ctx.fill(); outline();
+      p.shade(() => { if (!cartoon && !restrained) { ctx.strokeStyle = 'rgba(80,58,44,0.7)'; ctx.lineWidth = 2; for (let bx = x - 10; bx < x + w + 12; bx += 10) { ctx.beginPath(); ctx.moveTo(bx, y - 32); ctx.lineTo(bx, y - 6); ctx.stroke(); } } }); }
+    p.fill('ink', stone); p.rr(x - (restrained ? 4 : 10), y + h + 2, w + (restrained ? 8 : 20), restrained ? 5 : 12, cartoon ? 3 : 1); ctx.fill(); outline();
+  }
+  // Alternating pale masonry blocks sit outside the rectangular glazing, not in it.
+  if (v.paleAccents) {
+    p.fill('ink', p.cartoon ? '#fffaf0' : '#eee9de');
+    for (let by = y + 8; by < y + h; by += restrained ? 70 : 42) {
+      ctx.fillRect(x - (restrained ? 10 : 18), by, restrained ? 10 : 18, restrained ? 12 : 18); ctx.fillRect(x + w, by, restrained ? 10 : 18, restrained ? 12 : 18);
+    }
   }
   // Frame and glass.
-  const frameColour = v.paintedFrames ? '#ffffff' : (cartoon ? '#fffaf0' : '#f1ede2');
+  const frameColour = v.frameTone === 'dark' ? '#2c302f' : v.paintedFrames ? '#ffffff' : (cartoon ? '#fffaf0' : '#f1ede2');
   p.fill(v.paintedFrames ? 'accent' : 'ink', frameColour);
   if (shape === 'arch') { ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x, y + w / 2); ctx.arc(x + w / 2, y + w / 2, w / 2, Math.PI, 0); ctx.lineTo(x + w, y + h); ctx.closePath(); }
   else if (shape === 'round') { p.rr(x, y, w, h, Math.min(w / 2, 28)); } else p.rr(x, y, w, h, topR);
   ctx.fill(); outline();
-  const m = cartoon ? 12 : 9;
+  const m = restrained ? (p.toon ? 8 : 5) : v.paleAccents ? (cartoon ? 16 : 13) : cartoon ? 12 : 9;
   p.shade(() => {
     const g = ctx.createLinearGradient(0, y, 0, y + h);
     if (cartoon) { g.addColorStop(0, p.glass[0]); g.addColorStop(1, p.glass[1]); } else { g.addColorStop(0, '#6f8796'); g.addColorStop(0.55, '#2f4350'); g.addColorStop(1, '#1d2a33'); }
@@ -176,13 +194,43 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   if (p.pass === 'mask') { ctx.fillStyle = '#000'; ctx.fillRect(x + m, y + m, w - 2 * m, h - 2 * m); }
   // Muntins: a cross in cartoon, six-over-six sashes in photo.
   p.fill(v.paintedFrames ? 'accent' : 'ink', frameColour);
-  if (p.toon) { ctx.fillRect(x + w / 2 - 4, y + m, 8, h - 2 * m); ctx.fillRect(x + m, y + h * 0.42, w - 2 * m, 8); }
+  if (v.sash === 'transom') {
+    ctx.fillRect(x + m, y + h * .29 - 2, w - 2 * m, p.toon ? 5 : 4);
+  } else if (v.sash === 'plain') {
+    // Unsubdivided modern opening; perimeter frame already drawn.
+  } else if (p.toon || v.family === 'punched') { ctx.fillRect(x + w / 2 - 4, y + m, 8, h - 2 * m); ctx.fillRect(x + m, y + h * 0.42, w - 2 * m, 8); }
   else {
     ctx.fillRect(x + m, y + h / 2 - 3, w - 2 * m, 6);
     for (let c = 1; c < 3; c++) ctx.fillRect(x + m + ((w - 2 * m) * c) / 3 - 1.5, y + m, 3, h - 2 * m);
     for (const half of [0, 1]) ctx.fillRect(x + m, y + h / 4 + half * (h / 2) - 1.5, w - 2 * m, 3);
   }
   p.shade(() => { if (cartoon) { ctx.fillStyle = 'rgba(255,255,255,0.75)'; ctx.beginPath(); ctx.moveTo(x + 20, y + h * 0.1 + 14); ctx.lineTo(x + 36, y + h * 0.1 + 14); ctx.lineTo(x + 20, y + h * 0.1 + 46); ctx.closePath(); ctx.fill(); } });
+}
+
+/** Shared modern/quiet entry layout; keep it clear of the adjacent window. */
+export function bayDoorGeometry(v: BayVariant) {
+  const quiet = v.trimDensity === 'restrained';
+  return { x: BAY_PX * .14, width: quiet ? 98 : 118, height: quiet ? 214 : 226, bottom: 24, fanlight: !quiet };
+}
+export function bayDoorWindowGeometry(v: BayVariant, look: Look = 'photo') {
+  const quiet = v.trimDensity === 'restrained';
+  if (quiet) return { axis: .66, width: v.family === 'punched' ? 160 : 170, y: 88, height: 166 };
+  const g = bayWindowGeometry({ ...v, windows: 1 }, 76, 150, look);
+  return { axis: .64, ...g };
+}
+function quietDoorAt(p: Painter, v: BayVariant, groundY: number): void {
+  const { ctx } = p, g = bayDoorGeometry(v), y = groundY - g.height;
+  p.fill('ink', p.cartoon ? '#e8e3d8' : '#c9c7be'); ctx.fillRect(g.x - 5, y - 5, g.width + 10, g.height + 5);
+  p.fill('accent', '#ffffff'); ctx.fillRect(g.x, y, g.width, g.height);
+  // Modern communal entry has a flush rectangular glazed leaf, never a historic fanlight.
+  if (v.family === 'punched' || v.family === 'curtain' || v.family === 'ribbon') {
+    glassRect(p, g.x + 9, y + 10, g.width - 18, g.height - 24, 1);
+    p.fill('ink', '#bdbdb4'); ctx.fillRect(g.x + g.width - 16, y + g.height * .5, 3, 24);
+  } else {
+    glassRect(p, g.x + 8, y + 9, g.width - 16, 36, 1);
+    p.shade(() => { ctx.strokeStyle = 'rgba(0,0,0,.18)'; ctx.lineWidth = 2; ctx.strokeRect(g.x + 12, y + 66, g.width - 24, g.height - 82); });
+    p.fill('ink', '#b3aea0'); ctx.fillRect(g.x + g.width - 17, y + g.height * .6, 4, 13);
+  }
 }
 
 function doorAt(p: Painter, x: number, groundY: number, v: BayVariant): void {
@@ -249,6 +297,23 @@ function fascia(p: Painter, x: number, y: number, w: number, h: number): void {
 }
 
 /** The other shopfronts: a café, a display window under a sign, a brown café. */
+/** Quiet observed streets use real facade openings, not painted pavement props. */
+function quietShopAt(p: Painter, w: number, groundY: number, kind: BayKind): void {
+  const { ctx } = p;
+  const x = 24, y = 78, width = w - 48, height = groundY - y - 12;
+  p.fill('wall', '#ffffff'); ctx.fillRect(x, y, width, height);
+  glassRect(p, x + 7, y + 7, width - 14, height - 14, 1);
+  p.fill('wall', '#ffffff');
+  for (const mx of [w * .34, w * .70]) ctx.fillRect(mx - 3, y + 7, 6, height - 14);
+  ctx.fillRect(x + 7, y + 42, width - 14, 5);
+  // A narrow plain fascia. Synthetic lettering and terrace objects do not describe architecture.
+  p.fill('ink', kind === 'shopBar' ? '#43322f' : '#39423e'); ctx.fillRect(x, 35, width, 28);
+  // Only mapped cafe/restaurant categories retain a small straight valance.
+  if (kind === 'shopCafe' || kind === 'groundShop') {
+    p.fill('accent', '#ffffff'); ctx.fillRect(x, 66, width, 10);
+  }
+}
+
 function shopVariantAt(p: Painter, w: number, groundY: number, kind: BayKind): void {
   const { ctx } = p, cartoon = p.cartoon;
   const frame = cartoon ? '#fffaf0' : '#e4dfd2';
@@ -337,8 +402,15 @@ function ribbon(p: Painter, w: number, y: number, h: number): void {
   p.fill('accent', '#ffffff'); ctx.fillRect(14, y + h + 10, w - 28, 44);
 }
 
+/** Shared by the painter and 3D ornament placement. Fractions are quantized into bounded presets. */
+export function bayWindowGeometry(v: Pick<BayVariant, 'windows' | 'proportions' | 'openingOccupancy' | 'openingHeight'>, y: number, h: number, look?: Look) {
+  const width = v.openingOccupancy !== undefined ? BAY_PX * v.openingOccupancy / v.windows : (v.windows === 1 ? 150 : v.windows === 2 ? 112 : 82) * (v.proportions === 'wide' ? 1.35 : v.proportions === 'balanced' ? 1.12 : 1) * (look === 'cartoon' ? 1.12 : 1);
+  const height = v.openingHeight !== undefined ? Math.min((y === 70 || y === 76 ? GROUND_PX : STOREY_PX) * v.openingHeight, h * 1.18) : h * (v.proportions === 'wide' ? 0.76 : v.proportions === 'balanced' ? 0.88 : 1);
+  return { width, y: y + (h - height) / 2, height };
+}
 function layoutWindows(p: Painter, v: BayVariant, w: number, y: number, h: number): void {
-  const ww = (v.windows === 1 ? 150 : v.windows === 2 ? 112 : 82) * (p.toon ? 1.12 : 1);
+  const geometry = bayWindowGeometry(v, y, h, p.look), ww = geometry.width;
+  y = geometry.y; h = geometry.height;
   for (let i = 0; i < v.windows; i++) windowAt(p, ((i + 0.5) / v.windows) * w - ww / 2, y, ww, h, v);
 }
 
@@ -352,31 +424,35 @@ export const isBareBay = (kind: BayKind): boolean => kind === 'plain';
 
 function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImageSource): void {
   const { ctx } = p;
-  wall(p, w, h, brick, v.archetype);
+  wall(p, w, h, brick, v.archetype, v.wallMaterial);
   const isShop = (SHOP_KINDS as readonly string[]).includes(v.kind);
   const ground = v.kind === 'groundDoor' || isShop || v.kind === 'ground';
   if (isBareBay(v.kind)) {
     // wall only
-  } else if (v.archetype === 'modern') {
-    if (!ground) ribbon(p, w, v.kind === 'attic' ? 120 : 70, v.kind === 'attic' ? 90 : 140);
-    else if (isShop) { paintedGround(p, w, h); if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
+  } else if (v.family === 'ribbon' || v.family === 'curtain') {
+    if (!ground) ribbon(p, w, v.family === 'curtain' ? 8 : v.kind === 'attic' ? 120 : 70, v.family === 'curtain' ? h - 24 : v.kind === 'attic' ? 90 : 140);
+    else if (isShop) { paintedGround(p, w, h); if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else { windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: 'rect', archetype: 'modern' }); if (v.kind === 'groundDoor') doorAt(p, w * 0.62, h - 24, v); }
   } else if (ground) {
-    if (isShop) { paintedGround(p, w, h); if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
-    else if (v.kind === 'groundDoor') { doorAt(p, w * 0.14, h - 24, v); layoutWindows(p, { ...v, windows: 1 }, w * 1.28, 76, 150); }
+    if (isShop) { paintedGround(p, w, h); if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
+    else if (v.kind === 'groundDoor') {
+      if (v.trimDensity === 'restrained') quietDoorAt(p, v, h - 24); else doorAt(p, w * .14, h - 24, v);
+      const g = bayDoorWindowGeometry(v, p.look);
+      windowAt(p, w * g.axis - g.width / 2, g.y, g.width, g.height, v);
+    }
     else layoutWindows(p, v, w, 70, 150);
     if (v.archetype === 'school') { p.fill('ink', p.cartoon ? '#fff1cf' : '#c9c1ae'); ctx.fillRect(0, h - 70, w, 8); }
     if (v.archetype === 'c19') { p.fill('ink', p.stone); ctx.fillRect(0, 0, w, 12); }
   } else {
     const [y, wh] = v.kind === 'upperTall' ? [26, 250] : v.kind === 'attic' ? [96, 118] : [62, 188];
-    if (v.archetype === 'school') {
+    if (v.archetype === 'school' && !v.proportions) {
       // Paired tall windows under a pale stone band at the floor line.
       p.fill('ink', p.cartoon ? '#fff1cf' : '#c9c1ae'); ctx.fillRect(0, 0, w, 16); ctx.fillRect(0, h - 10, w, 10);
       for (const cx of [0.3, 0.7]) { windowAt(p, w * cx - 38, y + 6, 76, wh - 8, { ...v, shape: 'rect', shutters: false }); }
     } else layoutWindows(p, v, w, y, wh);
     if (v.archetype === 'c19') {
       // White stucco string course at the floor line and a sill band: the 19th-century street's horizontal lines.
-      p.fill('ink', p.stone); ctx.fillRect(0, h - 12, w, 12); ctx.fillRect(0, y + wh + 4, w, 7);
+      p.fill('ink', p.stone); ctx.fillRect(0, h - (v.trimDensity === 'restrained' ? 4 : 12), w, v.trimDensity === 'restrained' ? 4 : 12); if (v.trimDensity !== 'restrained') ctx.fillRect(0, y + wh + 4, w, 7);
       if (p.cartoon) { p.stroke(OUTLINE, p.lineW * 0.5); ctx.strokeRect(0, h - 12, w, 12); }
     } else if (v.archetype === 'canal' && v.kind !== 'attic') {
       // A pale cornice line under each canal-house floor, the white trim the streets show.

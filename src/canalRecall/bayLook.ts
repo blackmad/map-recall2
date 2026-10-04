@@ -2,10 +2,12 @@
 // looks (the per-bay drawing lives in `bayTextures.ts`, from the standalone
 // rendering spike). The spike builds one mesh per variant; here the variants
 // are a small fixed set so they fit one texture array and one draw per tile:
-// 10 building styles x 4 bay kinds, plus 7 shopfronts per archetype = 68 layers.
+// Bounded opening/trim presets plus one set of shopfronts per period.
 
 import { SHOP_KINDS, archetypeFor, paletteFor, type Archetype, type BayKind, type BayVariant, type Look, type ShopKind } from './bayTextures.js';
+import { lookHex } from './landmarkFronts.js';
 import { hashSeed } from './wallBays.js';
+import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
 
 export const BAY_KINDS = ['upper', 'ground', 'groundDoor', ...SHOP_KINDS, 'plain'] as const satisfies readonly BayKind[];
@@ -16,36 +18,62 @@ type BayStyle = Omit<BayVariant, 'kind' | 'archetype'>;
 export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
   // Canal houses: tall white-framed sashes under flat lintels; shutters only beside ground-floor windows.
   canal: [
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .55, openingHeight: .62, sash: 'plain', trimDensity: 'restrained', lintel: 'none' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .55, openingHeight: .62, sash: 'transom', trimDensity: 'restrained', lintel: 'none' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .55, openingHeight: .62, sash: 'transom', trimDensity: 'restrained', lintel: 'none', frameTone: 'dark' },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
     { windows: 2, shape: 'rect', shutters: true, paintedFrames: false },
     { windows: 3, shape: 'rect', shutters: false, paintedFrames: true },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: true },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'tall', frameTone: 'dark', lintel: 'flat' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'tall', paleAccents: true, lintel: 'flat' },
   ],
-  // 1860-1914: segmental-arched windows under stucco hoods, string courses at every floor.
+  // 1860-1914: rectangular sashes under flat or segmental masonry heads.
   c19: [
-    { windows: 2, shape: 'arch', shutters: false, paintedFrames: false },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .55, openingHeight: .70, sash: 'plain', trimDensity: 'restrained', lintel: 'flat' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .55, openingHeight: .70, sash: 'transom', trimDensity: 'restrained', lintel: 'flat' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .55, openingHeight: .70, sash: 'transom', trimDensity: 'restrained', lintel: 'flat', paleAccents: true },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .55, openingHeight: .70, sash: 'transom', trimDensity: 'restrained', lintel: 'arch', paleAccents: true },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .55, openingHeight: .70, sash: 'transom', trimDensity: 'restrained', lintel: 'none', frameTone: 'dark' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, lintel: 'arch' },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'tall', paleAccents: true, lintel: 'arch' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'balanced', paleAccents: true, lintel: 'flat' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'tall', frameTone: 'dark', lintel: 'flat' },
   ],
   school: [
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: true },
   ],
   modern: [
-    { windows: 1, shape: 'rect', shutters: false, paintedFrames: false },
-    { windows: 1, shape: 'rect', shutters: false, paintedFrames: true },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .65, openingHeight: .52, sash: 'plain', trimDensity: 'restrained', lintel: 'none', wallMaterial: 'brick' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .65, openingHeight: .52, sash: 'plain', trimDensity: 'restrained', lintel: 'none', frameTone: 'dark', wallMaterial: 'brick' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .65, openingHeight: .52, sash: 'plain', trimDensity: 'restrained', lintel: 'none' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .65, openingHeight: .52, sash: 'plain', trimDensity: 'restrained', lintel: 'none', frameTone: 'dark' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', proportions: 'balanced', lintel: 'none' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', proportions: 'wide', lintel: 'none', frameTone: 'dark' },
+    { windows: 1, shape: 'rect', shutters: false, paintedFrames: false, family: 'ribbon' },
+    { windows: 1, shape: 'rect', shutters: false, paintedFrames: false, family: 'curtain' },
   ],
 };
 const ARCHETYPES = Object.keys(BAY_STYLES) as Archetype[];
 
-type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[number]; layer: number };
-// Shopfronts do not depend on the building's window style, so they exist once per archetype.
-export const BAY_ENTRIES: readonly Entry[] = ARCHETYPES.flatMap(archetype =>
-  BAY_STYLES[archetype].flatMap((_, style) => BAY_KINDS.filter(kind => !isShopKind(kind) || style === 0).map(kind => ({ archetype, style, kind, layer: 0 })))).map((e, layer) => ({ ...e, layer }));
+type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[number]; layer: number; restrainedShop?: boolean };
+// Shop cells are shared by period and art direction, not every opening preset.
+const entries: Omit<Entry, 'layer'>[] = ARCHETYPES.flatMap(archetype =>
+  BAY_STYLES[archetype].flatMap((_, style) => BAY_KINDS.filter(kind => !isShopKind(kind) || style === 0).map(kind => ({ archetype, style, kind }))));
+entries.push(...ARCHETYPES.flatMap(archetype => SHOP_KINDS.map(kind => ({ archetype, style: 0, kind, restrainedShop: true }))));
+export const BAY_ENTRIES: readonly Entry[] = entries.map((e, layer) => ({ ...e, layer }));
 export const BAY_LAYER_COUNT = BAY_ENTRIES.length;
 
-export const bayVariant = (e: Entry): BayVariant => ({ archetype: e.archetype, kind: e.kind, ...BAY_STYLES[e.archetype][e.style] });
-export const bayLayer = (archetype: Archetype, style: number, kind: (typeof BAY_KINDS)[number]): number =>
-  BAY_ENTRIES.find(e => e.archetype === archetype && e.style === (isShopKind(kind) ? 0 : style) && e.kind === kind)!.layer;
+export const bayVariant = (e: Entry): BayVariant => {
+  const v = { archetype: e.archetype, kind: e.kind, ...BAY_STYLES[e.archetype][e.style] };
+  // The shared legacy shopset keeps its existing look, even if style0 is a street preset.
+  if (isShopKind(e.kind)) return { ...v, trimDensity: e.restrainedShop ? 'restrained' : undefined };
+  return v;
+};
+export const bayLayer = (archetype: Archetype, style: number, kind: (typeof BAY_KINDS)[number], restrainedShop = false): number =>
+  BAY_ENTRIES.find(e => e.archetype === archetype && e.style === (isShopKind(kind) ? 0 : style) && e.kind === kind && (!isShopKind(kind) || !!e.restrainedShop === restrainedShop))!.layer;
 
 /** The layout style (cell dimensions) each archetype uses. */
 export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal', c19: 'c19', school: 'school', modern: 'modern' };
@@ -101,26 +129,52 @@ export const GROUND_PAINTS: Record<Look, readonly string[]> = {
   cartoon: ['#fffaf0', '#fffaf0', '#fffaf0', '#ffe9b8', '#ffe9b8', '#3b3b4a', '#2a9d8f', '#d9453d', '#4672b0', '#f2b92e'],
 };
 
+const DEFAULT_STYLE_INDICES = Object.fromEntries(ARCHETYPES.map(archetype => [archetype, BAY_STYLES[archetype].flatMap((v, i) => v.openingOccupancy === undefined && (!v.family || v.family === 'masonry' || v.family === 'punched') ? [i] : [])])) as Record<Archetype, number[]>;
+// Keys contain only finite preset decisions, never building ids or raw evidence.
+const recipeStyles = new Map<string, number[]>();
+/** Deterministic, bounded recipe compilation. No canvas or layer is allocated per building. */
+export function bayStyleForRecipe(id: string, archetype: Archetype, recipe?: ArchitecturalRecipe): number {
+  const styles = BAY_STYLES[archetype], h = hashSeed(id);
+  if (!recipe) {
+    // Construction date alone is not evidence for continuous ribbon glazing.
+    const candidates = DEFAULT_STYLE_INDICES[archetype];
+    return candidates[(h >>> 4) % candidates.length];
+  }
+  const proportion = recipe.windowProportions ?? (recipe.windowWidth && recipe.windowWidth > 0.3 ? 'wide' : recipe.windowHeight && recipe.windowHeight < 0.5 ? 'balanced' : 'tall');
+  const dark = recipe.frameColor === 'dark' || !!recipe.frameHex && parseInt(recipe.frameHex.slice(1, 3), 16) < 100;
+  const pale = recipe.paleAccents ?? ((recipe.trim?.lintels ?? 0) > 0.65 || (recipe.trim?.quoins ?? 0) > 0.5);
+  const lintel = recipe.lintel ?? ((recipe.trim?.arches ?? 0) > 0.5 ? 'arch' : 'flat');
+  const sash = recipe.sash ?? (recipe.family === 'punched' ? 'plain' : 'transom'), trim = recipe.trimDensity ?? 'restrained';
+  const material = recipe.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick');
+  const key = `${archetype}|${material}|${recipe.family}|${proportion}|${dark}|${pale}|${lintel}|${sash}|${trim}`;
+  const cached = recipeStyles.get(key);
+  if (cached) return cached[(h >>> 4) % cached.length];
+  const scored = styles.map((v, i) => ({ i, score: ((v.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')) === material ? 25 : 0) + ((v.sash ?? 'six-over-six') === sash ? 50 : 0) + (v.trimDensity === trim ? 40 : 0) + ((v.family ?? 'masonry') === recipe.family ? 100 : 0) +
+    ((v.proportions ?? 'tall') === proportion ? 8 : 0) + (!!v.paleAccents === pale ? 12 : 0) +
+    ((v.frameTone === 'dark') === dark ? 10 : 0) + ((v.lintel ?? 'flat') === lintel ? 6 : 0) }));
+  const max = Math.max(...scored.map(v => v.score)), ties = scored.filter(v => v.score === max);
+  const indices = ties.map(v => v.i);
+  recipeStyles.set(key, indices);
+  return indices[(h >>> 4) % indices.length];
+}
+
 /** Everything the mesh builder needs from a feature for a bay look. */
-/**
- * `shopfront`: from the shopfronts extract, the shopfront this building really has, or
- * 'quiet' for none; undefined (no extract) keeps the old random third of shops.
- */
-export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet') {
-  const archetype = archetypeFor(id, year, heightM);
-  const h = hashSeed(id), style = (h >>> 4) % BAY_STYLES[archetype].length;
+export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe) {
+  const archetype: Archetype = recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern') : archetypeFor(id, year, heightM);
+  const h = hashSeed(id), style = bayStyleForRecipe(id, archetype, recipe);
   // Without the extract: a third of buildings, picking among the original four shopfronts.
   const shop = shopfront ? shopfront !== 'quiet' : (h >>> 13) % 3 === 0;
   const shopKind = shopfront && shopfront !== 'quiet' ? shopfront : SHOP_KINDS[(h >>> 17) % 4];
   const palette = paletteFor(id, archetype, look);
   const walls = PERIOD_WALLS[look][archetype];
   if (walls) palette.wall = walls[(hashSeed(id) >>> 7) % walls.length];
+  if (recipe?.wallHex) palette.wall = lookHex(recipe.wallHex, look);
   // A shop's ground floor is painted, and the paint is its own colour, not the brick's.
   const paints = GROUND_PAINTS[look];
   return {
-    archetype, layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: palette.accent,
+    archetype, style, variant: { archetype, ...BAY_STYLES[archetype][style] }, layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: palette.accent,
     groundHex: shop ? paints[(h >>> 21) % paints.length] : undefined,
-    layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop ? shopKind : 'ground'), door: bayLayer(archetype, style, 'groundDoor') },
+    layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop ? shopKind : 'ground', !!recipe && recipe.trimDensity !== 'ornate'), door: bayLayer(archetype, style, 'groundDoor') },
     plain: bayLayer(archetype, style, 'plain'),
   };
 }

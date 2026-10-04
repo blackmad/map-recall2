@@ -33,7 +33,6 @@ for (const [name, box] of [['phone', phone], ['desktop', desktop]] as const) {
       const camera = introOverview(start, finish, box, PLAY_ZOOM);
       ok(camera.zoom <= PLAY_ZOOM * INTRO_MAX_ZOOM_FRACTION + 1e-9,
         `${name} ${metres} m opens at least ${1 / INTRO_MAX_ZOOM_FRACTION}× wider than driving`);
-      if (camera.zoom <= INTRO_MIN_ZOOM) continue; // floor: a cross-city route may overflow
       for (const [label, point] of [['start', start], ['finish', finish]] as const) {
         const screen = toScreen(camera, point, box);
         ok(screen.x >= 20 && screen.x <= box.width - 20,

@@ -227,6 +227,32 @@ for (const shape of GABLE_SHAPES) for (const [W, R] of [[5.5, 2.0], [4, 1.6], [8
   for (const want of ['L c19:mansardHip+wing', 'chamfer c19:hipped+turret', 'U postwar:parapet', 'modern block:parapet']) assert.ok([...seen].some(s => s.startsWith(want.split('+')[0]) && (!want.includes('+') || s.includes(want.split('+')[1]))), `${want} is built (${[...seen].join(', ')})`);
 }
 
+// --- Perimeter roofs follow bent walls ---------------------------------------
+{
+  // Da Costakade 13 (including unit 13-3): the quay wall bends at its middle vertex.
+  const outline = [[4.873699, 52.372831], [4.873632, 52.372815], [4.873563, 52.372787], [4.873684, 52.372727], [4.873781, 52.372785], [4.873699, 52.372831]];
+  const kx = 111_320 * Math.cos(ORIGIN.lat * Math.PI / 180);
+  for (const ring of [outline, [...outline].reverse()]) {
+    const feature = { type: 'Feature' as const, properties: { id: 'NL.IMBAG.Pand.0363100012166570', height: 16.43, minHeight: 0, facade: 'c19-priorBrickRed', facadeStyle: 'c19' }, geometry: { type: 'Polygon', coordinates: [ring] } };
+    const decorated = decorateRoof(feature), plan = roofPlanForFeature(decorated)!;
+    assert.ok(plan?.perimeterInsetM, 'bent wall gets a perimeter roof');
+    assert.deepEqual(plan, roofPlanForFeature(feature), 'decorator and worker recompute the same perimeter roof');
+    const h0 = Number(decorated.properties.roofEavesHeightM);
+    const tris = roofTrianglesForOutline(ring, ORIGIN, plan, h0, dims, kx);
+    const foot = openRing(ring.map(([lng, lat]) => [(lng - ORIGIN.lng) * kx, (lat - ORIGIN.lat) * 110_540] as V2));
+    checkSolid('Da Costakade 13 perimeter', tris, foot, h0);
+    for (let i = 0; i < foot.length; i++) {
+      const a = foot[i], b = foot[(i + 1) % foot.length];
+      assert.ok(tris.some(t => t.p.some(p => Math.hypot(p[0] - a[0], p[1] - a[1], p[2] - h0) < 1e-6) && t.p.some(p => Math.hypot(p[0] - b[0], p[1] - b[1], p[2] - h0) < 1e-6)), 'every wall edge supports a matching roof eave');
+    }
+    const area = tris.reduce((sum, t) => sum + triArea(t) * t.n[2], 0);
+    const footprintArea = Math.abs(foot.reduce((sum, a, i) => { const b = foot[(i + 1) % foot.length]; return sum + a[0] * b[1] - b[0] * a[1]; }, 0)) / 2;
+    assert.ok(Math.abs(area - footprintArea) < 1e-5, 'roof covers the footprint exactly, without gaps or overhang');
+    const hole = outline.map(([lng, lat]) => [4.87368 + (lng - 4.87368) * 0.2, 52.37278 + (lat - 52.37278) * 0.2]);
+    assert.equal(roofPlanForFeature({ ...feature, geometry: { type: 'Polygon', coordinates: [ring, hole] } }), null, 'open courts retain their footprint lid');
+  }
+}
+
 // --- Listed buildings draw the gable the monuments register names ---------------------
 {
   assert.equal(classifyGable('Pand met trapgevel, gedateerd 1620.'), 'step');

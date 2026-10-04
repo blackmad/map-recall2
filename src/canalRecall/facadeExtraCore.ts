@@ -2,6 +2,7 @@
 // triangle sink every component draws into. Split out of facadeExtras.ts so the component
 // families (facadeExtras.ts, facadeOrnaments.ts) can share it without importing each other.
 
+import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
 import type { WallLayout } from './facadeLayout.js';
 import type { Openings } from './facadeOpenings.js';
@@ -11,6 +12,8 @@ export type FlatTri = { p: V3[]; hex: string; n: V3 };
 /** Wall frame: origin at the wall's start (ground of this building), x along, y outward. */
 export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: number; ny: number; len: number };
 export type ExtraContext = {
+  recipe?: ArchitecturalRecipe;
+  runStart?: boolean; runEnd?: boolean;
   id: string; style: FacadeStyle; wallKey: string; f: WallFrame; base: number; top: number;
   layout: WallLayout; wallHex: string; accentHex: string; roofKind?: string; groundLevel: boolean;
   /**

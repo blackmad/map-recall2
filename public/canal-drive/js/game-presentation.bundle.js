@@ -347,7 +347,7 @@
     const spanX = Math.max(1, Math.abs(finish.x - start.x));
     const spanY = Math.max(1, Math.abs(finish.y - start.y));
     const fit = Math.min(usableW / spanX, usableH / spanY) * INTRO_CONTEXT / screenScale;
-    const zoom = Math.max(INTRO_MIN_ZOOM, Math.min(fit, playZoom * INTRO_MAX_ZOOM_FRACTION));
+    const zoom = Math.min(fit, Math.max(INTRO_MIN_ZOOM, Math.min(fit, playZoom * INTRO_MAX_ZOOM_FRACTION)));
     const bandShift = (box.top - box.bottom) / 2 / (zoom * screenScale);
     return {
       x: (start.x + finish.x) / 2,
@@ -379,8 +379,8 @@
   }
 
   // src/canalRecall/game/vehicleZoomScale.ts
-  var VEHICLE_ZOOM_EXPONENT = 0.5;
-  var VEHICLE_ZOOM_MIN_SCALE = 0.6;
+  var VEHICLE_ZOOM_EXPONENT = 0.65;
+  var VEHICLE_ZOOM_MIN_SCALE = 0.5;
   var VEHICLE_ZOOM_MAX_SCALE = 2.2;
   function vehicleZoomScale(zoom, defaultZoom) {
     if (!(zoom > 0) || !(defaultZoom > 0)) return 1;
@@ -1767,7 +1767,8 @@
       landmarkId: "extract_landmarks_1939633952",
       modelUrl: "./models/stadsschouwburg.glb",
       suppressOsmIds: [
-        "w57863115"
+        "w57863115",
+        "NL.IMBAG.Pand.0363100012168738"
       ],
       spatialSuppression: false,
       footprint: {
@@ -1920,6 +1921,8 @@
       modelUrl: "./models/nieuwe-kerk.glb",
       suppressOsmIds: [
         "w220749328",
+        "w174987150",
+        "w747911435",
         "w747911436",
         "w747911437",
         "w747911438",
@@ -1929,40 +1932,43 @@
         "w747924617",
         "w747924618",
         "w747924619",
-        "w747924620",
         "w747924621",
         "w747924622",
         "w747924623",
         "w747924624",
         "w747924625",
-        "w747924626"
+        "w747924626",
+        "w748997143",
+        "w748997144",
+        "NL.IMBAG.Pand.0363100012169079"
       ],
       spatialSuppression: false,
       footprint: {
         centre: [
-          4.89174203315766,
-          52.373932974434126
+          4.891777577968536,
+          52.37394620723149
         ],
-        headingDegrees: 51.267866875012544,
-        lengthMetres: 94.47997996878692,
-        widthMetres: 62.97060523555761
+        headingDegrees: 90,
+        lengthMetres: 94.96254563554697,
+        widthMetres: 66.11294799981863
       },
       surveyed: {
         anchor: [
-          4.89174605,
-          52.37393705
+          4.891777577968536,
+          52.37394620723149
         ],
-        northOffsetDegrees: 0
+        northOffsetDegrees: 0,
+        source: "Native current parent and mapped church/chapel/tourelle parts; source roofs and 34m tourelles preserved, approximate 46m crossing finial retained."
       },
       groundAltitudeMetres: 0,
-      facingOffsetDegrees: 90,
+      facingOffsetDegrees: 0,
       attribution: {
         title: "Nieuwe Kerk",
         author: "Map Recall",
-        sourceUrl: "https://www.nieuwekerk.nl/de-nieuwe-kerk/",
+        sourceUrl: "https://www.nieuwekerk.nl/pers/beeldbank/",
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
-        modifications: "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
+        modifications: "Original texture-free Gothic stone-striped brick church rebuilt from exact current roof/chapel polygons and official church exterior/restoration photos. Pointed tracery, rose, portals, balustrades, mapped tourelles and gilded crossing finial approximated with shared-palette meshes; no imported geometry or copied photograph pixels. Adjacent Palace, shops and streets retained."
       }
     },
     {
@@ -5086,6 +5092,909 @@
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free shared-palette reconstruction from exact current mapped footing/steppedtiers and restorationarchitect exteriorphotograph. Redbrick roundbase, white Renaissance lanterns, gilded open-finial silhouette. Window/ornament details approximate. No imported geometry/photo texture; adjacent houses/canal retained."
       }
+    },
+    {
+      id: "munttoren-amsterdam",
+      name: "Munttoren / Muntgebouw",
+      landmarkId: "extract_landmarks_1375175685",
+      modelUrl: "./models/munttoren-amsterdam.glb",
+      suppressOsmIds: [
+        "w57862728",
+        "w751683816",
+        "w751683817",
+        "w751683818",
+        "w751683819",
+        "w751683820",
+        "w751698382",
+        "w751698383",
+        "w751698384",
+        "NL.IMBAG.Pand.0363100012168045"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8932132,
+          52.3670559
+        ],
+        headingDegrees: 90,
+        lengthMetres: 28.69100677281662,
+        widthMetres: 8.738620000084438
+      },
+      surveyed: {
+        anchor: [
+          4.8932132,
+          52.3670559
+        ],
+        northOffsetDegrees: 0,
+        source: "Actual mapped Munttoren compound parent/eight source parts, preserved 3 m covered link. Native 41 m upper finial per conservation heritage description/current photographs; no model fitting."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Munttoren / Muntgebouw",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/3729",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free shared-palette reconstruction from exact current mapped footing/host/tier polygons and current conservation expert photographs. Round brick base, octagonal stone/lead tiers, large black/gold dials and open bell/pear-shaped finial. Window/ornament details approximate; no imported geometry/photo texture. Covered ground link retained; bridge, streets and neighbors omitted."
+      }
+    },
+    {
+      id: "national-monument-on-the-dam",
+      name: "National Monument on the Dam",
+      assetKind: "memorial",
+      landmarkId: "extract_landmarks_720777797",
+      modelUrl: "./models/national-monument-on-the-dam.glb",
+      suppressOsmIds: [
+        "w168680619",
+        "n5413222221",
+        "n5413222222",
+        "w940729263",
+        "w1320477257"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8936887569767435,
+          52.37281966395349
+        ],
+        headingDegrees: 90,
+        lengthMetres: 47.93140716581357,
+        widthMetres: 46.54650399967858
+      },
+      surveyed: {
+        anchor: [
+          4.8936887569767435,
+          52.37281966395349
+        ],
+        northOffsetDegrees: 0,
+        source: "Current mapped 36.97 m circular podium, exact curved urn wall and pylon/relief base, plus separately mapped lion positions. Native local east/south coordinates; no legacy fitted rectangle. Internal heights and sculpture details approximate."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "National Monument on the Dam",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/530906",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free shared-palette reconstruction from the exact mapped podium, curved wall, pylon/relief base and separate lion positions, primary heritage description and Committee photographs. Six concentric steps, pale conical pylon, curved urn wall and original faceted sculpture silhouettes. Internal details approximate; surrounding Dam square and host buildings retained. No downloaded geometry or photo pixels."
+      }
+    },
+    {
+      id: "de-beurs-van-berlage",
+      name: "Beurs van Berlage",
+      landmarkId: "extract_landmarks_1104215352",
+      modelUrl: "./models/de-beurs-van-berlage.glb",
+      suppressOsmIds: [
+        "w57858502",
+        "w749918629",
+        "w749918630",
+        "w749918631",
+        "w749918632",
+        "w749918633",
+        "w749918634",
+        "w749918635",
+        "w749918636",
+        "w749918637",
+        "w749918638",
+        "w749918639",
+        "w749918641",
+        "w749918642",
+        "w749918643",
+        "w749918644",
+        "w749918645",
+        "w749918646",
+        "w749918647",
+        "w749918648",
+        "w749918649",
+        "w749918650",
+        "w749918651",
+        "w749918652",
+        "w749918653",
+        "w749918654",
+        "w749931375",
+        "w749931376",
+        "w749931377",
+        "w749931378",
+        "w749931379",
+        "w749931380",
+        "w749931381",
+        "w749931382",
+        "w749931383",
+        "w750005616",
+        "w750005617",
+        "w750166476",
+        "w750166477",
+        "w750166478",
+        "w750166479",
+        "NL.IMBAG.Pand.0363100012171966"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.896210789570552,
+          52.37513358466257
+        ],
+        headingDegrees: 90,
+        lengthMetres: 128.82427674050848,
+        widthMetres: 135.5654960006973
+      },
+      surveyed: {
+        anchor: [
+          4.896210789570552,
+          52.37513358466257
+        ],
+        northOffsetDegrees: 0,
+        source: "Current exact parent and forty mapped roof/tower/inner-court parts; native anchor, source heights and roof slopes. No legacy fitted rectangle or adjacent buildings."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Beurs van Berlage",
+        author: "Map Recall",
+        sourceUrl: "https://beursvanberlage.com/a-building-like-the-beurs-deserves-care/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free shared-palette reconstruction from exact current mapped parent/forty parts and official restored-exterior photographs. Brick facades, stone-framed paired windows, entrance arches, low inner roofs and 40 m clock tower with original blue/red/gold dial interpretation. Window/ornament details approximate. No imported mesh or photo pixels; adjacent streets and buildings retained."
+      }
+    },
+    {
+      id: "amsta-de-poort",
+      name: "Amsta De Poort",
+      landmarkId: "amsta-de-poort",
+      modelUrl: "./models/amsta-de-poort.glb",
+      suppressOsmIds: [
+        "w220525683",
+        "NL.IMBAG.Pand.0363100012237064"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8735112432713015,
+          52.37350397269679
+        ],
+        headingDegrees: 71.81808321129071,
+        lengthMetres: 72.03219885973493,
+        widthMetres: 51.065153370485824
+      },
+      surveyed: {
+        anchor: [
+          4.873552902185253,
+          52.373488756470465
+        ],
+        northOffsetDegrees: -18.319999999999993
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 89.8619167887093,
+      attribution: {
+        title: "Amsta De Poort",
+        author: "Map Recall",
+        sourceUrl: "https://www.amsta.nl/locaties/de-poort",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original low-poly reconstruction of actual1966 nursing-home parent with1969 operation recorded separately: six occupied facade rows, recessed brick-column ground storey, ochre-panel glass room strips, projecting front bays, rooftop ribbon/setback, actual14.1m rear wing and23.65/27.75m main roofs. Small service structure reaches31.7m; whole footprint is not extruded to the old31.7m OSM maximum. Official facade imagery is visual reference only, no imported mesh or photo texture. CurrentBAG and AHN5 survey calibrate native massing; attached neighboring residential/school parents and courtyard void remain. Front glazing follows the owner facade photograph; rear/side window rhythm is inferred rather than measured. Explicit roof panels own upward caps to avoid coplanar flicker."
+      }
+    },
+    {
+      id: "rembrandt-tower",
+      name: "Rembrandt Tower",
+      landmarkId: "osm_building_44451577",
+      modelUrl: "./models/rembrandt-tower.glb",
+      suppressOsmIds: [
+        "w44451577",
+        "NL.IMBAG.Pand.0363100012113758",
+        "w754399963",
+        "w754399964",
+        "w754399965",
+        "w754399966",
+        "w754399967",
+        "w754399968",
+        "w754399969",
+        "w754399970",
+        "w754399971",
+        "w754399972",
+        "w754399973"
+      ],
+      footprint: {
+        centre: [
+          4.917060393089527,
+          52.34506421222511
+        ],
+        headingDegrees: 159.4775109936597,
+        lengthMetres: 48.0924042566222,
+        widthMetres: 48.05852548433693
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0.22248900634028246,
+      spatialSuppression: false,
+      surveyed: {
+        anchor: [
+          4.917031687807691,
+          52.3450817261875
+        ],
+        northOffsetDegrees: -20.3,
+        source: "Current BAG 0363100012113758 and exact OSM parent; native +X heading 69.7 degrees, scale 1. Original simplified roof/terrace massing based on 3DBAG/AHN measured envelope and primary architectural references; published architecture heights guide visible crowns rather than copying a third-party mesh."
+      },
+      attribution: {
+        title: "Rembrandt Tower",
+        author: "Map Recall",
+        sourceUrl: "https://arcam.nl/architectuur-gids/rembrandttoren/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
+      }
+    },
+    {
+      id: "breitner-tower",
+      name: "Breitner Tower / Breitner Center",
+      landmarkId: "osm_building_279841030",
+      modelUrl: "./models/breitner-tower.glb",
+      suppressOsmIds: [
+        "w279841030",
+        "NL.IMBAG.Pand.0363100012070861",
+        "w754399978",
+        "w463020446",
+        "w754399974",
+        "w754399975",
+        "w754399976",
+        "w754399977",
+        "w754399979",
+        "w754399980",
+        "r10396839"
+      ],
+      footprint: {
+        centre: [
+          4.9163509978620015,
+          52.34472019794773
+        ],
+        headingDegrees: 159.49559371157028,
+        lengthMetres: 111.69773778800698,
+        widthMetres: 28.675251217411237
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0.2044062884297091,
+      spatialSuppression: false,
+      surveyed: {
+        anchor: [
+          4.916345037374623,
+          52.34470057536986
+        ],
+        northOffsetDegrees: -20.3,
+        source: "Current BAG 0363100012070861 and exact OSM parent; native +X heading 69.7 degrees, scale 1. Original simplified roof/terrace massing based on 3DBAG/AHN measured envelope and primary architectural references; published architecture heights guide visible crowns rather than copying a third-party mesh."
+      },
+      attribution: {
+        title: "Breitner Tower / Breitner Center",
+        author: "Map Recall",
+        sourceUrl: "https://www.zzdp.nl/nl/project/de-omval",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
+      }
+    },
+    {
+      id: "mondriaan-tower",
+      name: "Mondriaan Tower",
+      landmarkId: "osm_building_279842059",
+      modelUrl: "./models/mondriaan-tower.glb",
+      suppressOsmIds: [
+        "w279842059",
+        "NL.IMBAG.Pand.0363100012097541",
+        "w754399954",
+        "w754399955",
+        "w754399956",
+        "w754399957",
+        "w754399958",
+        "w754399959",
+        "w754399960",
+        "w754399961",
+        "r10396838"
+      ],
+      footprint: {
+        centre: [
+          4.9173687631678735,
+          52.3440175406779
+        ],
+        headingDegrees: 69.48566007198855,
+        lengthMetres: 59.170833187125076,
+        widthMetres: 29.340644963658846
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90.21433992801144,
+      spatialSuppression: false,
+      surveyed: {
+        anchor: [
+          4.917383745624289,
+          52.34402338555016
+        ],
+        northOffsetDegrees: -20.3,
+        source: "Current BAG 0363100012097541 and exact OSM parent; native +X heading 69.7 degrees, scale 1. Original simplified roof/terrace massing based on 3DBAG/AHN measured envelope and primary architectural references; published architecture heights guide visible crowns rather than copying a third-party mesh."
+      },
+      attribution: {
+        title: "Mondriaan Tower",
+        author: "Map Recall",
+        sourceUrl: "https://www.mondriaan-tower.nl/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
+      }
+    },
+    {
+      id: "de-piramides",
+      name: "De Piramides",
+      landmarkId: "osm_building_276272893",
+      modelUrl: "./models/de-piramides.glb",
+      suppressOsmIds: [
+        "w276272893",
+        "NL.IMBAG.Pand.0363100012110293",
+        "w1080809439",
+        "w1080809440",
+        "w1080809441",
+        "w1080809442",
+        "w1080809443",
+        "w1080809444",
+        "w1080809445",
+        "w1080809446",
+        "w1080809447",
+        "w1080809448",
+        "w1080809449",
+        "w1080809450",
+        "w1080809451",
+        "w1080809452"
+      ],
+      footprint: {
+        centre: [
+          4.866884215446545,
+          52.37540721557084
+        ],
+        headingDegrees: 81.45079813511978,
+        lengthMetres: 65.5709901923359,
+        widthMetres: 25.170773722289375
+      },
+      groundAltitudeMetres: 0,
+      spatialSuppression: false,
+      facingOffsetDegrees: 90.04920186488022,
+      surveyed: {
+        anchor: [
+          4.866881797272151,
+          52.3754167167955
+        ],
+        northOffsetDegrees: -8.5,
+        source: "Current BAG 0363100012110293 and fourteen exact mapped building parts. Native +X heading 81.5degrees, scale 1; measured 3DBAG 55.083 m roof envelope relative to ground, mapped 55 m twin crowns. Primary architect photos guide original masonry/window/terrace details."
+      },
+      attribution: {
+        title: "De Piramides",
+        author: "Map Recall",
+        sourceUrl: "https://pphp.nl/project/piramides-amsterdam-concept/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly reconstruction of the actual twin stepped residential building. Adjacent Marcanti College and surrounding low-rise housing remain separate."
+      }
+    },
+    {
+      id: "zuiveringshal-west",
+      name: "Zuiveringshal West \xB7 Fabrique des Lumi\xE8res",
+      landmarkId: "fabrique-des-lumieres",
+      modelUrl: "./models/zuiveringshal-west.glb",
+      suppressOsmIds: [
+        "w274066572",
+        "NL.IMBAG.Pand.0363100012236268",
+        "w274066787",
+        "NL.IMBAG.Pand.0363100012236955",
+        "w274066816",
+        "NL.IMBAG.Pand.0363100012235891",
+        "w274066616",
+        "NL.IMBAG.Pand.0363100012236658",
+        "w274066838",
+        "NL.IMBAG.Pand.0363100012236031",
+        "w274066643",
+        "NL.IMBAG.Pand.0363100012236961",
+        "w274066620",
+        "NL.IMBAG.Pand.0363100012236221",
+        "w274066822",
+        "NL.IMBAG.Pand.0363100012236613",
+        "w274066793",
+        "NL.IMBAG.Pand.0363100012236642",
+        "w274066820",
+        "NL.IMBAG.Pand.0363100012235912",
+        "w274066812",
+        "NL.IMBAG.Pand.0363100012237038",
+        "w274066717",
+        "NL.IMBAG.Pand.0363100012236152",
+        "w274066798",
+        "NL.IMBAG.Pand.0363100012236665",
+        "w274066818",
+        "NL.IMBAG.Pand.0363100012236260",
+        "w274066824",
+        "NL.IMBAG.Pand.0363100012236412"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.872148914070394,
+          52.38597705909584
+        ],
+        headingDegrees: 88.38277400738434,
+        lengthMetres: 68.12957158750693,
+        widthMetres: 41.41800754626077
+      },
+      surveyed: {
+        anchor: [
+          4.872149301126166,
+          52.3859766755098
+        ],
+        northOffsetDegrees: -1.6200000000000045
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: -90.00277400738435,
+      attribution: {
+        title: "Zuiveringshal West \xB7 Fabrique des Lumi\xE8res",
+        author: "Map Recall",
+        sourceUrl: "https://www.fabrique-lumieres.com/en",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+      }
+    },
+    {
+      id: "amsterdam-in-motion",
+      name: "Amsterdam in Motion \xB7 Zuiveringshal Oost",
+      landmarkId: "amsterdam-in-motion",
+      modelUrl: "./models/amsterdam-in-motion.glb",
+      suppressOsmIds: [
+        "w274066840",
+        "NL.IMBAG.Pand.0363100012236269",
+        "w274066772",
+        "NL.IMBAG.Pand.0363100012236486",
+        "w274066814",
+        "NL.IMBAG.Pand.0363100012236952",
+        "w274066625",
+        "NL.IMBAG.Pand.0363100012236651",
+        "w274066800",
+        "NL.IMBAG.Pand.0363100012237235",
+        "w274066776",
+        "NL.IMBAG.Pand.0363100012236699",
+        "w274066807",
+        "NL.IMBAG.Pand.0363100012236180",
+        "w274066632",
+        "NL.IMBAG.Pand.0363100012237241"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.873243911684909,
+          52.385996221555054
+        ],
+        headingDegrees: 178.38518176963328,
+        lengthMetres: 41.46894644246084,
+        widthMetres: 32.87974491271963
+      },
+      surveyed: {
+        anchor: [
+          4.873240886305469,
+          52.385996206559895
+        ],
+        northOffsetDegrees: -1.6200000000000045
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: -180.00518176963328,
+      attribution: {
+        title: "Amsterdam in Motion \xB7 Zuiveringshal Oost",
+        author: "Map Recall",
+        sourceUrl: "https://www.amsterdammuseum.nl/tickets-en-bezoek/locaties/amsterdam-in-motion/228553",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+      }
+    },
+    {
+      id: "de-krakeling",
+      name: "Theater De Krakeling",
+      landmarkId: "extract_landmarks_1635482107",
+      modelUrl: "./models/de-krakeling.glb",
+      suppressOsmIds: [
+        "w274066580",
+        "NL.IMBAG.Pand.0363100012235989",
+        "w274066614",
+        "NL.IMBAG.Pand.0363100012236443",
+        "w274066641",
+        "NL.IMBAG.Pand.0363100012237301",
+        "w274066587",
+        "NL.IMBAG.Pand.0363100012236702",
+        "w274066806",
+        "NL.IMBAG.Pand.0363100012236527",
+        "w274066662",
+        "NL.IMBAG.Pand.0363100012236566"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.873736814604472,
+          52.38600465670549
+        ],
+        headingDegrees: 88.39749239264023,
+        lengthMetres: 52.10799579808097,
+        widthMetres: 41.461485886013406
+      },
+      surveyed: {
+        anchor: [
+          4.873684349406492,
+          52.38600418652962
+        ],
+        northOffsetDegrees: -1.6200000000000045
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: -90.01749239264024,
+      attribution: {
+        title: "Theater De Krakeling",
+        author: "Map Recall",
+        sourceUrl: "https://krakeling.nl/over-ons",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+      }
+    },
+    {
+      id: "nemo",
+      name: "NEMO Science Museum",
+      landmarkId: "extract_landmarks_1875483593",
+      modelUrl: "./models/nemo.glb",
+      suppressOsmIds: [
+        "w57856769",
+        "w1390692763",
+        "w1390692764",
+        "w1390692765",
+        "w1390692766",
+        "w1390692767",
+        "w1390692768",
+        "w1390692769",
+        "w1390692770",
+        "w1390692771",
+        "w1390692772",
+        "NL.IMBAG.Pand.0363100012164988"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.912322028079611,
+          52.3741956935447
+        ],
+        headingDegrees: 90,
+        lengthMetres: 44.8339207526614,
+        widthMetres: 117.2867519998627
+      },
+      surveyed: {
+        anchor: [
+          4.912322028079611,
+          52.3741956935447
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact current parent and ten roof/stair/annex polygons, native coordinates and part maximum heights. Original curved roofs/flared copper shell; no old import fitting or street slab."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "NEMO Science Museum",
+        author: "Map Recall",
+        sourceUrl: "https://www.rpbw.com/project/nemo-national-center-for-science-and-technology",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free reconstruction from current mapped parent/ten parts and primary architect/museum exterior photographs. Copper-green flared wedge, ascending roof stairs, mapped green roof and glazed lobby. Curvature and ornaments approximate; no downloaded mesh or photo pixels. Bridge, tunnel approaches and nearby buildings retained."
+      }
+    },
+    {
+      id: "sloterdijk-station",
+      name: "Amsterdam Sloterdijk Station",
+      landmarkId: "osm_building_268460687",
+      modelUrl: "./models/sloterdijk-station.glb",
+      suppressOsmIds: [
+        "w268460687",
+        "NL.IMBAG.Pand.0363100012120833"
+      ],
+      footprint: {
+        centre: [
+          4.838214466204455,
+          52.388991330978456
+        ],
+        headingDegrees: 90.96814969006601,
+        lengthMetres: 108.01202901198465,
+        widthMetres: 79.4406584713856
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 89.03185030993399,
+      spatialSuppression: false,
+      surveyed: {
+        anchor: [
+          4.8382093052835575,
+          52.38899714869885
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012120833 and exact OSM parent. Native +X faces east at 90 degrees, scale 1; primary current facade photos and measured 3DBAG roof envelope guide original texture-free geometry."
+      },
+      attribution: {
+        title: "Amsterdam Sloterdijk Station",
+        author: "Map Recall",
+        sourceUrl: "https://arcam.nl/architectuur-gids/station-sloterdijk/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original glass hall, open white table trusses and raised deck; open circulation below retained. Separate platform canopies, Orlyplein public space and adjacent hotel not suppressed."
+      }
+    },
+    {
+      id: "hnk-sloterdijk",
+      name: "HNK Amsterdam Sloterdijk",
+      landmarkId: "osm_building_57866724",
+      modelUrl: "./models/hnk-sloterdijk.glb",
+      suppressOsmIds: [
+        "w57866724",
+        "NL.IMBAG.Pand.0363100012131039"
+      ],
+      footprint: {
+        centre: [
+          4.835183318193806,
+          52.39104959620991
+        ],
+        headingDegrees: 176.4349486881305,
+        lengthMetres: 68.38611907408828,
+        widthMetres: 42.50977977676619
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 3.565051311869496,
+      spatialSuppression: false,
+      surveyed: {
+        anchor: [
+          4.835180875927809,
+          52.39104404000188
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG 0363100012131039 and exact OSM parent. Native +X faces east at 90 degrees, scale 1; primary current facade photos and measured 3DBAG roof envelope guide original texture-free geometry."
+      },
+      attribution: {
+        title: "HNK Amsterdam Sloterdijk",
+        author: "Map Recall",
+        sourceUrl: "https://hnk.nl/en/locations/amsterdam-sloterdijk",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original white pronged office block, curved glazing, exposed escape stairs and measured roof plant. Former FNV/ArboNed labels are historical occupants, not additional destinations or exterior architect attribution."
+      }
+    },
+    {
+      id: "palace-on-the-dam",
+      name: "Royal Palace Amsterdam",
+      landmarkId: "extract_landmarks_342809743",
+      modelUrl: "./models/palace-on-the-dam.glb",
+      suppressOsmIds: [
+        "r3580875",
+        "w748659170",
+        "w748659171",
+        "w748659172",
+        "w748659173",
+        "w748659174",
+        "w748659175",
+        "w748659176",
+        "w748659177",
+        "w748659178",
+        "w748659179",
+        "w748659180",
+        "w748659181",
+        "w748659182",
+        "w748659183",
+        "w748659184",
+        "w748659185",
+        "w748659186",
+        "w748659187",
+        "w57856712",
+        "NL.IMBAG.Pand.0363100012167579"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.891336076094146,
+          52.373148321742
+        ],
+        headingDegrees: 90,
+        lengthMetres: 66.09371218019203,
+        widthMetres: 82.3879320001754
+      },
+      surveyed: {
+        anchor: [
+          4.891336076094146,
+          52.373148321742
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact current parent relation, 18 parts and two open courtyard holes; native placement and source roof profiles. Original 55m tower corroborated by official Palace and current 3DBAG 55.201m maximum above ground."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Royal Palace Amsterdam",
+        author: "Map Recall",
+        sourceUrl: "https://www.paleisamsterdam.nl/en/discover-palace/new-town-hall-amsterdam/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free stone classical facade, mapped slate roof wings, corner pavilions, two open courtyards, central pediment and open 55m domed clock tower. Exact OSM/BAG footprint; original ornaments approximated from official Palace photograph. No copied imported geometry or reference pixels."
+      }
+    },
+    {
+      id: "machinegebouw",
+      name: "Machinegebouw \xB7 Cantine",
+      landmarkId: "cantine-de-caron",
+      modelUrl: "./models/machinegebouw.glb",
+      suppressOsmIds: [
+        "w42298030",
+        "NL.IMBAG.Pand.0363100012152471"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.872808548242466,
+          52.38634502299453
+        ],
+        headingDegrees: 88.31856627968506,
+        lengthMetres: 25.7027472649258,
+        widthMetres: 17.955190280247155
+      },
+      surveyed: {
+        anchor: [
+          4.872808548242466,
+          52.38634502756621
+        ],
+        northOffsetDegrees: -1.681433720314942
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      attribution: {
+        title: "Machinegebouw \xB7 Cantine",
+        author: "Map Recall",
+        sourceUrl: "https://cantine.nl/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
+      }
+    },
+    {
+      id: "de-wester",
+      name: "De Wester \xB7 Transformatorhuis",
+      landmarkId: "de-wester",
+      modelUrl: "./models/de-wester.glb",
+      suppressOsmIds: [
+        "w57867037",
+        "NL.IMBAG.Pand.0363100012166956"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.870118520583264,
+          52.38684718893202
+        ],
+        headingDegrees: 88.6360509504791,
+        lengthMetres: 48.010353075402364,
+        widthMetres: 19.673421387625524
+      },
+      surveyed: {
+        anchor: [
+          4.870119186757984,
+          52.38685189098992
+        ],
+        northOffsetDegrees: -1.3639490495208975
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 180,
+      attribution: {
+        title: "De Wester \xB7 Transformatorhuis",
+        author: "Map Recall",
+        sourceUrl: "https://westergas.nl/en/de-wester-as-event-venue/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
+      }
+    },
+    {
+      id: "amstel-hotel",
+      name: "Amstel Hotel",
+      landmarkId: "amstel-hotel",
+      modelUrl: "./models/amstel-hotel.glb",
+      suppressOsmIds: [
+        "w268998398",
+        "NL.IMBAG.Pand.0363100012165491"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.90511362939625,
+          52.35997963537399
+        ],
+        headingDegrees: 163.2148645974187,
+        lengthMetres: 87.12102267135651,
+        widthMetres: 30.42622936228252
+      },
+      surveyed: {
+        anchor: [
+          4.905142672706717,
+          52.35999084096068
+        ],
+        northOffsetDegrees: 73.21486459741871
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: -90,
+      attribution: {
+        title: "Amstel Hotel",
+        author: "Map Recall",
+        sourceUrl: "https://www.amstelhotel.com/history/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free low-poly architecture calibrated to the current canonical PDOK parent and large AHN5/3DBAG roof levels. Principal mansard roofs25.3\u201327.1m, end pavilions28.35m and central pavilion29.54m retain low3.5m terrace and8.5\u201311.5m river conservatory. Primary hotel/Intercontinental photos guide original masonry/window/dormer rhythm and simplified corner lion sculptures. Ornament and turrets approximate from photographs; no imported mesh or texture and no neighboring suppression."
+      }
+    },
+    {
+      id: "concertgebouw",
+      name: "Royal Concertgebouw",
+      landmarkId: "extract_landmarks_626684803",
+      modelUrl: "./models/concertgebouw.glb",
+      suppressOsmIds: [
+        "w46696080",
+        "NL.IMBAG.Pand.0363100012233435",
+        "w754269603",
+        "w754269604",
+        "w754269605",
+        "w754269606",
+        "w754269607",
+        "w754269608",
+        "w754269609",
+        "w754269610",
+        "w754269611",
+        "w754276795",
+        "w754276796",
+        "w754276797"
+      ],
+      footprint: {
+        centre: [
+          4.879022231224272,
+          52.35624462484694
+        ],
+        headingDegrees: 58.92662097254748,
+        lengthMetres: 85.33398544808925,
+        widthMetres: 64.24249063999933
+      },
+      spatialSuppression: false,
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 368.37337902745253,
+      surveyed: {
+        anchor: [
+          4.879044208914783,
+          52.35621988842513
+        ],
+        northOffsetDegrees: 247.3,
+        source: "Current BAG whole parent with both inner courts retained, current OSM mapped parts and primary Concertgebouw facade/restoration photographs. Native front axis337.3 degrees, +Z faces northeast. AHN5 roof plane envelopes guide original low-poly roof surfaces; old OSM25m pavilion tags rejected for measured21.6m caps."
+      },
+      attribution: {
+        title: "Royal Concertgebouw",
+        author: "Map Recall",
+        sourceUrl: "https://www.concertgebouw.nl/en/our-history/history",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original project-native pale-stone/red-brick classical facade, columned pediment, golden lyre, four roof pavilions and Pi de Bruijn glass promenade. No imported legacy mesh or textures; roof contours derived from open surveyed data."
+      }
     }
   ];
 
@@ -7557,15 +8466,16 @@
   var MANUAL_LANDMARKS = [
     {
       id: "centraal-station",
-      name: "Amsterdam Centraal \u2014 Cuypersgebouw",
+      name: "Amsterdam Centraal \u2014 station complex",
       landmarkId: "extract_landmarks_332626598",
       modelUrl: "./models/centraal-station.glb",
-      suppressOsmIds: ["w332626598"],
+      suppressOsmIds: ["w332626598", "w57856845", "w1239767708", "w1239767706", "w451533145", "w451533147", "w451533149", "w506192827", "NL.IMBAG.Pand.0363100012185598", "NL.IMBAG.Pand.0363100012242112", "NL.IMBAG.Pand.0363100012240304", "NL.IMBAG.Pand.0363100012245758", "NL.IMBAG.Pand.0363100012245759", "NL.IMBAG.Pand.0363100012246251"],
+      spatialSuppression: false,
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 210.6533,
       footprint: { centre: [4.899750668752946, 52.37855998792934], headingDegrees: 120.65330083236796, lengthMetres: 244.34798071019168, widthMetres: 30.916412054875813 },
-      surveyed: { anchor: [4.899750668752946, 52.37855998792934], northOffsetDegrees: 30.65330083236796, source: "OSM Cuypersgebouw footprint centre and long-axis bearing" },
-      attribution: ownAttribution("Amsterdam Centraal", "https://sketchfab.com/3d-models/centraal-station-amsterdam-582a09c29440490da209c26cc9dcc147")
+      surveyed: { anchor: [4.899750668752946, 52.37855998792934], northOffsetDegrees: 30.65330083236796, source: "OSM Cuypersgebouw anchor/bearing; four exact current train/bus roof outlines. Zuidkap 23 m /50 frames per ProRail; other profiles and bus deck approximately reconstructed from architect photographs and 3DBAG." },
+      attribution: { ...ownAttribution("Amsterdam Centraal", "https://www.benthemcrouwel.com/projects/bus-station-amsterdam-cs"), modifications: "Original texture-free Cuypers facade and four arched roof structures. Current mapped roof perimeters retained at native scale; approximate interior roof profiles, frame details and raised bus deck. Published Zuidkap 23 m height and 50 frames. Colored AMSTERDAM glass panels follow architect photographs. No imported geometry or photo pixels. Metro, ferry piers, hotel/postal buildings and ground-level streets omitted." }
     },
     {
       id: "muziekgebouw-bimhuis",
@@ -7580,12 +8490,12 @@
       attribution: ownAttribution("Muziekgebouw and Bimhuis", "https://www.studiocarchitecten.nl/en/bimhuis")
     },
     ...manualCatalogue_default,
-    ...hospital_footprints_default.sites.map((s) => ({ id: s.id, name: s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", landmarkId: s.id, modelUrl: `./models/${s.id}.glb`, suppressOsmIds: s.buildings.filter((f) => f.properties.building !== "construction").map((f) => f.id), groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: s.id === "olvg-west" ? [4.8397, 52.37115] : [4.9153, 52.3582], northOffsetDegrees: 0, source: "OSM building rings; local east/south metres" }, attribution: ownAttribution(s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", "https://www.olvg.nl/over-olvg/") }))
+    ...hospital_footprints_default.sites.map((s) => ({ id: s.id, name: s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", landmarkId: s.id, modelUrl: `./models/${s.id}.glb`, suppressOsmIds: s.buildings.filter((f) => f.properties.building !== "construction").flatMap((f) => [f.id, ...f.properties["ref:bag"] ? [`NL.IMBAG.Pand.${f.properties["ref:bag"]}`] : []]), spatialSuppression: false, groundAltitudeMetres: 0, facingOffsetDegrees: 0, surveyed: { anchor: s.id === "olvg-west" ? [4.8397, 52.37115] : [4.9153, 52.3582], northOffsetDegrees: 0, source: "OSM building rings; local east/south metres" }, attribution: ownAttribution(s.id === "olvg-west" ? "OLVG West" : "OLVG Oost", "https://www.olvg.nl/over-olvg/") }))
   ];
 
   // src/canalRecall/landmarks/signatureModels.ts
   var EXPECTED_HEIGHTS = {
-    "palace-on-the-dam": { metres: 60.9, tolerance: 1.5 }
+    "palace-on-the-dam": { metres: 55, tolerance: 1.5 }
   };
   var FACADE_BEARINGS = {
     "palace-on-the-dam": 91,
@@ -7782,6 +8692,95 @@
       name: "OLVG Oost",
       description: "OLVG Oost is one of OLVG\u2019s two main Amsterdam hospital locations. OLVG provides hospital care for the city across its eastern and western sites.",
       sourceUrl: "https://www.olvg.nl/over-olvg/"
+    },
+    {
+      modelId: "amsta-de-poort",
+      name: "Amsta De Poort",
+      description: "De Poort has provided residential care on Hugo de Grootkade since 1969. Its canal-side setting gives residents wide views across Amsterdam. The ground-floor De Ontmoeting brings residents and neighbors together, with a restaurant that also provides work and learning opportunities for local students.",
+      sourceUrl: "https://www.amsta.nl/locaties/de-poort"
+    },
+    {
+      modelId: "rembrandt-tower",
+      name: "Rembrandt Tower",
+      sourceUrl: "https://arcam.nl/architectuur-gids/rembrandttoren/",
+      description: "The Rembrandt Tower is an office skyscraper at De Omval, completed in 1995. Its stepped granite crown and glass corner bays recall American skyscrapers of the 1930s."
+    },
+    {
+      modelId: "breitner-tower",
+      name: "Breitner Tower / Breitner Center",
+      sourceUrl: "https://nl.linkedin.com/posts/zzdp-architecten_breitnertoren-philips-som-activity-7343676714033569792-l8Qf",
+      description: "The Breitner Tower and its lower Breitner Center wing form part of De Omval\u2019s three-tower ensemble near Amstelstation. The glass tower was completed in 2001 for Philips, designed by SOM with ZZDP."
+    },
+    {
+      modelId: "mondriaan-tower",
+      name: "Mondriaan Tower",
+      sourceUrl: "https://www.mondriaan-tower.nl/",
+      description: "The Mondriaan Tower is a 30-floor office tower at Amstelplein, completed in 2002. Its solid central block is flanked by stepped glass bays, with a glass lookout near the top."
+    },
+    {
+      modelId: "de-piramides",
+      name: "De Piramides",
+      sourceUrl: "https://pphp.nl/project/piramides-amsterdam-concept/",
+      description: "De Piramides consists of two interlocking stepped residential towers on Marcanti-eiland, designed by Sjoerd Soeters\u2019s practice and completed in 2006. Their terraces follow the triangular island; two lower towers replaced an earlier proposal for one 75-metre pyramid."
+    },
+    {
+      modelId: "zuiveringshal-west",
+      name: "Fabrique des Lumi\xE8res",
+      description: "Fabrique des Lumi\xE8res opened in 2022 in Zuiveringshal West. The former gas-purification hall now turns its industrial walls and floors into immersive artworks using large-scale light projections and music. Its two exhibition spaces occupy around 2,800 square metres of the historic Westergas complex.",
+      sourceUrl: "https://westergas.nl/en/press-release-latelier-des-lumieres/"
+    },
+    {
+      modelId: "amsterdam-in-motion",
+      name: "Amsterdam in Motion",
+      description: "Amsterdam in Motion opened in 2025 for the city\u2019s 750th anniversary. Curated by the Amsterdam Museum in Zuiveringshal Oost, it tells the city\u2019s story through a 200-square-metre multimedia model and an interactive exhibition about Amsterdam\u2019s future.",
+      sourceUrl: "https://www.amsterdammuseum.nl/tickets-en-bezoek/locaties/amsterdam-in-motion/228553"
+    },
+    {
+      modelId: "de-krakeling",
+      name: "Theater De Krakeling",
+      description: "De Krakeling is a theater devoted to young audiences. Founded in 1978 by Hans Snoek, it moved to the former Westergastheater on Pazzanistraat 15 in 2020. Its main auditorium is named the Hans Snoek Zaal in her honor.",
+      sourceUrl: "https://krakeling.nl/over-ons"
+    },
+    {
+      modelId: "sloterdijk-station",
+      name: "Amsterdam Sloterdijk Station",
+      sourceUrl: "https://arcam.nl/architectuur-gids/station-sloterdijk/",
+      description: "Amsterdam Sloterdijk\u2019s glass-and-steel station was designed by Harry Reijnders and completed in 1986. Its white table-like trusses frame a transport interchange where railway lines cross at different heights.",
+      center: [
+        52.3890237,
+        4.8374469
+      ],
+      centerSourceUrl: "https://www.openstreetmap.org/node/3938569974"
+    },
+    {
+      modelId: "hnk-sloterdijk",
+      name: "HNK Amsterdam Sloterdijk",
+      sourceUrl: "https://hnk.nl/en/locations/amsterdam-sloterdijk",
+      description: "HNK Amsterdam Sloterdijk occupies the white office building at Radarweg 60. The renewed venue opened in 2023 with shared workspaces, a library, podcast studio and The Social hospitality space; the building itself dates from 1992."
+    },
+    {
+      modelId: "machinegebouw",
+      name: "Cantine \xB7 Machinegebouw",
+      description: "Cantine occupies the freestanding Machinegebouw at Westergas. The former gasworks building has two parallel halls with unequal pitched roofs, tall paired arched windows and terracotta roof crests. Its industrial interior now houses a French restaurant.",
+      sourceUrl: "https://cantine.nl/"
+    },
+    {
+      modelId: "de-wester",
+      name: "De Wester \xB7 Transformatorhuis",
+      description: "De Wester is an event venue in the former Westergas water-gas factory, built in 1904 and later used as a transformer workshop. Its long brick hall has paired arched windows and a steep pitched roof. The neighboring WestWeelde buildings remain separate spaces.",
+      sourceUrl: "https://westergas.nl/en/de-wester-as-event-venue/"
+    },
+    {
+      modelId: "amstel-hotel",
+      name: "Amstel Hotel",
+      description: "The Amstel Hotel was completed in 1867 to a design by Cornelis Outshoorn, following Samuel Sarphati\u2019s ambition for a grand riverside hotel. Its mansard roofs and pale stone details give it the silhouette of a French ch\xE2teau. Recent restoration brought back eight 1.60-metre roof lions, while a lower glass lounge overlooks the Amstel.",
+      sourceUrl: "https://www.amstelhotel.com/history/"
+    },
+    {
+      modelId: "concertgebouw",
+      name: "Royal Concertgebouw",
+      sourceUrl: "https://www.concertgebouw.nl/en/our-history/history",
+      description: "The Royal Concertgebouw was designed by Adolf Leonard van Gendt and opened on 11 April 1888. Its famous classical facade is crowned by a golden lyre. Pi de Bruijn\u2019s 1985\u20131988 renovation added the glass promenade beside the historic halls."
     }
   ];
 

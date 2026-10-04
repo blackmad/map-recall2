@@ -1,0 +1,93 @@
+{
+  "errors": [],
+  "look": "photo",
+  "atlas": [
+    {
+      "width": 128,
+      "look": "photo"
+    },
+    {
+      "width": 128,
+      "look": "cartoon"
+    },
+    {
+      "width": 128,
+      "look": "procedural"
+    }
+  ],
+  "stats": {
+    "chunks": 19,
+    "buildMs": 0,
+    "drawCalls": 19,
+    "buildings": 6310,
+    "walls": 5716,
+    "quads": 123863,
+    "vertices": 1004781,
+    "geometryMB": 33.07290458679199,
+    "kitVertices": 49653,
+    "textureMB": 22,
+    "triangles": 378002
+  },
+  "pixelRatio": 1.5,
+  "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Mobile/15E148 Safari/604.1",
+  "detailZoom": 17,
+  "modes": [
+    {
+      "stats": {
+        "chunks": 19,
+        "buildMs": 0,
+        "drawCalls": 19,
+        "buildings": 6310,
+        "walls": 5716,
+        "quads": 123863,
+        "vertices": 1004781,
+        "geometryMB": 33.07290458679199,
+        "kitVertices": 49653,
+        "textureMB": 22,
+        "triangles": 378002
+      },
+      "look": "cartoon",
+      "atlasWidth": 128
+    },
+    {
+      "stats": {
+        "chunks": 19,
+        "buildMs": 0,
+        "drawCalls": 19,
+        "buildings": 6310,
+        "walls": 5716,
+        "quads": 123885,
+        "vertices": 1004193,
+        "geometryMB": 33.05409049987793,
+        "kitVertices": 49653,
+        "textureMB": 29.5,
+        "triangles": 377828
+      },
+      "look": "procedural",
+      "atlasWidth": 128
+    },
+    {
+      "stats": {
+        "chunks": 19,
+        "buildMs": 0,
+        "drawCalls": 19,
+        "buildings": 6310,
+        "walls": 5716,
+        "quads": 123863,
+        "vertices": 1004781,
+        "geometryMB": 33.07290458679199,
+        "kitVertices": 49653,
+        "textureMB": 22,
+        "triangles": 378002
+      },
+      "look": "photo",
+      "atlasWidth": 128
+    }
+  ],
+  "textureBuild": {
+    "bytes": 17301504,
+    "maxFrameGapMs": 30,
+    "durationMs": 1693,
+    "animationFrames": 99
+  }
+}

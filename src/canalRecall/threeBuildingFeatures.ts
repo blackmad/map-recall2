@@ -8,6 +8,9 @@ import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
 import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
+import { profilesNearBuilding } from './streetFacadeRendering.js';
+import { bayVariantOpenings, proceduralOpenings } from './facadeOpenings.js';
+import type { StreetAppearanceProfile } from './streetAppearance.js';
 import { SUPERMARKET_CHAINS } from './shopfronts.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes. */
@@ -43,7 +46,7 @@ export const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] 
 };
 const roofHexFor = (look: BuildingLook, plan: RoofPlan) => { const set = ROOF_TONES[look][plan.material]; return set[Math.min(set.length - 1, Math.floor(plan.tone * set.length))]; };
 
-export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuilding | null {
+export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = false): MeshBuilding | null {
   const p = feature.properties;
   const polygons = asPolygons(feature.geometry);
   const minHeightM = Number(p.minHeight) || 0;
@@ -56,16 +59,18 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const bay = bayLookFor(id, year, Number(p.height) || heightM, look as Look, shopfrontOf(p));
     building = { id, polygons, heightM, minHeightM, style: bay.layout, wallHex: bay.wallHex, accentHex: bay.accentHex, layers: bay.layers, groundHex: bay.groundHex };
+    building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
     if ((FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) && p.facadeStyle !== bay.layout) building.period = p.facadeStyle as FacadeStyle;
   } else {
     layout = (FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) ? p.facadeStyle as FacadeStyle : 'c19';
     building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && (shopfrontOf(p) ? shopfrontOf(p) !== 'quiet' : hashShop(id)) };
+    building.openings = proceduralOpenings(layout);
     plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
   }
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
   if (look === 'photo') {
-    const sourced = [p.facadeMappedColour, p.facadeMaterialColourPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
+    const sourced = [p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined, p.facadeMaterialColourPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
     if (sourced) building.wallHex = String(sourced);
   }
   const front = shopfrontOf(p);
@@ -94,7 +99,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
     building.plainWalls = p.kitWall === 'plain' || p.kitWall === 'flat';
     if (p.kitWall === 'flat') { building.bare = true; building.plainLayer = roofBase + 3; }
   }
-  if (p.roofPlanned) {
+  if (p.roofPlanned && !coarse) {
     // The decorator's own plan, recomputed from the same feature (pure), so the two agree.
     const plan = roofPlanForFeature(feature);
     if (plan) {
@@ -118,6 +123,26 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
 
 /** A chunk for a group of streamed features in one look. */
 /** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
-export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' = 'walls', streets?: Float32Array): Chunk {
-  return buildChunk(features.map(f => meshBuildingFor(f, look)).filter((b): b is MeshBuilding => !!b), ORIGIN, mode, streets);
+export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = []): Chunk {
+  return buildChunk(features.map(f => {
+    const building = meshBuildingFor(f, look, mode === 'coarse');
+    if (building && mode === 'coarse') {
+      // Distant buildings keep their surveyed footprint, courtyards, colour and full
+      // height, but need only one wall quad per edge and a flat triangulated lid.
+      building.heightM = Number(f.properties.height) || building.heightM;
+      building.bare = true;
+      building.roof = undefined;
+      building.extras = false;
+      return building;
+    }
+    if (building && profiles.length && look !== 'untextured' && !f.properties.kitWall && !f.properties.frontCarrier) {
+      const localProfiles = profilesNearBuilding(profiles, building.polygons);
+      if (!localProfiles.length) return building;
+      const p = f.properties;
+      const sourcedWall = [p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined].find(value => typeof value === 'string' && /^#[0-9a-f]{6}$/i.test(value));
+      const mappedWallHex = look === 'photo' ? sourcedWall as string | undefined : undefined;
+      building.streetAppearance = { profiles: localProfiles, look, year: p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear), mappedWallHex, shopfront: shopfrontOf(p) };
+    }
+    return building;
+  }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets);
 }

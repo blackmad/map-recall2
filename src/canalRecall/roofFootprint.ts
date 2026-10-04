@@ -189,3 +189,18 @@ export const parapetRingOk = (ring: readonly Vec2[], t: number, maxVertices = 40
   const pts = openRing(ring);
   return pts.length >= 3 && pts.length <= maxVertices && insetRing(pts, t) !== null;
 };
+
+/** A convex inset for a perimeter roof. Concave wings keep their separate roofs. */
+export function perimeterRoofInset(ring: readonly Vec2[], widthM: number): number | null {
+  const pts = openRing(ring), orientation = Math.sign(signedArea(pts));
+  const convex = (p: readonly Vec2[]) => p.every((b, i) => {
+    const a = p[(i + p.length - 1) % p.length], c = p[(i + 1) % p.length];
+    return orientation * ((b[0] - a[0]) * (c[1] - b[1]) - (b[1] - a[1]) * (c[0] - b[0])) >= -1e-7;
+  });
+  if (pts.length < 4 || !orientation || !convex(pts)) return null;
+  for (let t = Math.min(2.2, widthM * 0.18); t >= 0.4; t *= 0.75) {
+    const inner = insetRing(pts, t);
+    if (inner && convex(inner) && orientation * signedArea(inner) > 1) return t;
+  }
+  return null;
+}

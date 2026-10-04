@@ -118,6 +118,7 @@ class VectorBasemap {
       center: [4.9041, 52.3676],
       zoom: 17,
       interactive: false,
+      pixelRatio: window.matchMedia('(pointer: coarse)').matches ? Math.min(window.devicePixelRatio || 1, 1.5) : window.devicePixelRatio || 1,
       attributionControl: false,
       fadeDuration: 0
     });
@@ -131,6 +132,7 @@ class VectorBasemap {
       this._ensureTreeLayers();
       if (window.CanalRecallParks) this._parkLandscape = new window.CanalRecallParks.ParkLandscape(this.map, this._extractPath, this.theme);
       this._ensureBuildingAppearanceLayers();
+      void this._ensureBuildingOverview();
       this._ensurePlaceLayers();
       this._ensureOwnPoiLayers();
       this.setPlaces(this._pendingPlaces.landmarks, this._pendingPlaces.boundaries);
@@ -508,6 +510,31 @@ class VectorBasemap {
     // to hitch the first turn: parse + setData the extract, install a 10k-id
     // filter, then tear it down for tiles.
     void this._bootstrapBuildings();
+  }
+
+  async _ensureBuildingOverview() {
+    // Rasterized surveyed footprints provide citywide coverage without parsing
+    // hundreds of thousands of polygons or drawing distant 3D meshes.
+    try {
+      const base = new URL(this._extractFile('building-overview/'), window.location.href).href.replace(/\/$/, '');
+      const response = await fetch(`${base}/index.json`);
+      if (!response.ok) return;
+      const index = await response.json();
+      if (index.version !== 1 || index.zoom !== 12 || !Array.isArray(index.bounds) || index.bounds.length !== 4 || !index.bounds.every(Number.isFinite)) return;
+      if (!this.map || this.map.getSource('city-building-overview')) return;
+      this.map.addSource('city-building-overview', {
+        type: 'raster', tiles: [`${base}/${index.zoom}/{x}/{y}.png`],
+        tileSize: index.tileSize, minzoom: index.zoom, maxzoom: index.zoom, bounds: index.bounds,
+        attribution: 'Building footprints © OpenStreetMap contributors / BAG'
+      });
+      this.map.addLayer({
+        id: 'city-building-overview', type: 'raster', source: 'city-building-overview', minzoom: 10, maxzoom: 15.6,
+        paint: {
+          'raster-opacity': ['interpolate', ['linear'], ['zoom'], 12, 0.55, 14, 0.45, 15, 0.15, 15.6, 0],
+          'raster-fade-duration': 200
+        }
+      }, this.map.getLayer('osm-colored-building-ground-floors') ? 'osm-colored-building-ground-floors' : undefined);
+    } catch (_) { /* Optional overview tiles: the basemap remains available. */ }
   }
 
   async _bootstrapBuildings() {
@@ -2283,7 +2310,7 @@ class VectorBasemap {
     const appliedPitch = Math.min(pitch, this._clearancePitch);
     this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
     // Near detail (facade extras) follows the rider.
-    if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(lon, lat);
+    if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(subject[0], subject[1]);
     this._syncFacadeZoom(mapZoom);
     this._updateRiderCover(subject, pitch > 0 && !detached && introFlat === 0);
     this._liftPoiMarkers(appliedPitch, lat);
@@ -2292,9 +2319,10 @@ class VectorBasemap {
     // followCamera no-ops until the centre tile / zoom bucket changes.
     // Not during the start flight: every half-step of zoom re-planned and
     // re-flushed the building tiles, which is where the flight stuttered. The
-    // first frame after landing plans once for the driving view.
+    // landing area preloads once; the first frame after landing resumes camera planning.
     if (this._completeCity && typeof this._completeCity.setSuspended === 'function') {
       this._completeCity.setSuspended(introFlat > 0);
+      if (introFlat > 0 && typeof this._completeCity.preloadAt === 'function') this._completeCity.preloadAt(subject[0], subject[1]);
     }
     if (introFlat === 0 && this._completeCity && typeof this._completeCity.followCamera === 'function') {
       this._completeCity.followCamera();
