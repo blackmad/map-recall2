@@ -9,7 +9,7 @@ const base=JSON.parse(fs.readFileSync(basePath));
 const chunk=JSON.parse(fs.readFileSync(chunkPath));
 const previous=JSON.parse(execFileSync('git',['show',`a1c6938c:${basePath}`],{maxBuffer:10e6}));
 const baseCount=base.features.length;
-assert.equal(baseCount,9479);
+assert.equal(baseCount,9765);
 const priorIds=new Set(previous.features.map(f=>f.id));
 assert.deepEqual(base.features.filter(f=>priorIds.has(f.id)),previous.features);
 assert.equal(chunk.features.length,3254);
