@@ -1,5 +1,6 @@
 /** Loose inventory-driven priors, not surveyed crowns. Three shared crown instances per tree, seven for verified fan palms. */
 export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
+const foliagePriors={"prunus cerasifera 'nigra'":{colour:'#694653',reference:'https://www.vdberk.com/trees/prunus-cerasifera-nigra/'},"fagus sylvatica 'atropunicea'":{colour:'#765247',reference:'https://www.vdberk.com/trees/fagus-sylvatica-atropunicea/'}};
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
   [/^prunus 'umineko'$/,'columnar','cultivar-prior',nursery('prunus-umineko')],
@@ -136,14 +137,15 @@ export function treeTypology(tree){
   else if(archetype==='irregular-spreading')lobes=[lobe(-r*.20,h*.76,0,r*.78,h*.24,r*.85,0),lobe(-r*.43,h*.61,r*.21,r*.64,h*.20,r*.70,1),lobe(r*.43,h*.67,-r*.18,r*.64,h*.23,r*.64,2)];
   else if(archetype==='airy-oval')lobes=[lobe(0,h*.79,0,r*.66,h*.21,r*.64,0),lobe(-r*.48,h*.61,r*.20,r*.52,h*.19,r*.48,1),lobe(r*.47,h*.64,-r*.23,r*.53,h*.20,r*.50,2)];
   else lobes=[lobe(0,h*.76,0,r,h*.24,r*.88,0),lobe(-r*.48,h*.72,r*.25,r*.65,h*.18,r*.67,1),lobe(r*.44,h*.70,-r*.23,r*.66,h*.22,r*.65,2)];
-  // These summer colours are art direction, not observations from the inventory.
-  const foliage=archetype==='conical-evergreen'||/^(?:pinus|taxus)\b/.test(species)?'#496955':species.startsWith('salix')?'#88a06c':species.startsWith('betula')?'#91ad6e':species.startsWith('fagus')?'#587b51':species.startsWith('quercus')?'#648357':species.startsWith('robinia')?'#94a965':species.startsWith('tilia')?'#789655':'#78945a';
+  // Summer RGB values are art direction; exact cultivar colour priors cite primary nursery descriptions.
+  const foliagePrior=managed?null:foliagePriors[species];
+  const foliage=foliagePrior?.colour||(archetype==='conical-evergreen'||/^(?:pinus|taxus)\b/.test(species)?'#496955':species.startsWith('salix')?'#88a06c':species.startsWith('betula')?'#91ad6e':species.startsWith('fagus')?'#587b51':species.startsWith('quercus')?'#648357':species.startsWith('robinia')?'#94a965':species.startsWith('tilia')?'#789655':'#78945a');
   const bark=species==='betula nigra'&&!managed?'#805b46':species.startsWith('betula')?'#d8d9c5':species.startsWith('platanus')?'#aaa68a':species==='prunus avium'?'#8a5544':species==='corylus colurna'||species.startsWith('fagus')?'#8a8b80':species.startsWith('metasequoia')?'#935d47':'#665741';
   return {version:TREE_TYPOLOGY_VERSION,id:tree.id,position:[...tree.position],height,archetype,lobes,
     trunkHeight:h*(managed?.78:archetype==='fan-palm'?.90:.60),trunkWidth:Math.min(.52,Math.max(.14,h*.023)),
     foliage,bark,crownGeometry:archetype.startsWith('conical-')?'cone':'faceted',rotation:numberSeed(tree.id)*Math.PI*2,
     provenance:{position:tree.source==='osm'?'explicit OSM tree node':'municipal inventory',height:heightSource,heightClass:tree.heightClass??null,
-      crownBasis:managed?'explicit-inventory-management':rule?.[2]||'authored-fallback',reference:managed?null:rule?.[3]||null,
+      ...(foliagePrior?{foliageReference:foliagePrior.reference}:{}),crownBasis:managed?'explicit-inventory-management':rule?.[2]||'authored-fallback',reference:managed?null:rule?.[3]||null,
       species:tree.species??null,type:tree.type??null,measuredCrown:false,
       note:'Shape, width, clearance and summer foliage are authored priors. Not freely growing does not imply pollarding; age, pruning and actual crown extent are unverified.'}};
 }
