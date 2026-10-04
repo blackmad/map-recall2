@@ -321,6 +321,7 @@ class Game {
   _loop(timestamp) {
     let dt = (timestamp - this.lastTime) / 1000;
     this.lastTime = timestamp;
+    this._cameraDt = dt > 0 ? dt : 1 / 60;
     dt = Math.min(dt, 0.05);
     if (dt <= 0) dt = 1/60;
 
@@ -462,7 +463,7 @@ class Game {
       // anything hid its card, show it again rather than freeze the bike
       // behind an invisible question (user reports 2026-10-01).
       if (this._prompt && this._prompt.style.display === 'none') this._prompt.style.display = 'flex';
-      this.camera.update(this.player, dt);
+      this.camera.update(this.player, this._cameraDt || dt);
       return;
     }
 
@@ -576,7 +577,7 @@ class Game {
     // Particles + camera + sound
     this._emitCarParticles();
     this.particles.update(dt);
-    this.camera.update(this.player, dt);
+    this.camera.update(this.player, this._cameraDt || dt);
     this.sound.update(this.player.speed, this.player.throttle, this.player.maxSpeed);
 
     if (this.track.getDistanceToFinish(this.player.x, this.player.y) < FINISH_RADIUS) {
