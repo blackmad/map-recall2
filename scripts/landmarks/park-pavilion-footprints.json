@@ -1,0 +1,213 @@
+[
+  {
+    "id": "vondelpark-bandstand",
+    "parts": [
+      {
+        "osmId": "w561468937",
+        "bagId": null,
+        "tags": {
+          "building": "yes",
+          "description": "decagonal (10 sides) bandstand",
+          "leisure": "bandstand",
+          "name": "De Muziektent",
+          "name:en": "Bandstand",
+          "ref:bag": "0363100012217883",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "start_date": "1937",
+          "wikidata": "Q17301744",
+          "wikimedia_commons": "Category:Muziektent, Vondelpark",
+          "wikipedia": "nl:Muziektent (Vondelpark)"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.8713565,
+                52.3589987
+              ],
+              [
+                4.8713856,
+                52.3589757
+              ],
+              [
+                4.8714242,
+                52.3589689
+              ],
+              [
+                4.8714611,
+                52.3589752
+              ],
+              [
+                4.8714789,
+                52.3589899
+              ],
+              [
+                4.8714871,
+                52.3589956
+              ],
+              [
+                4.8714881,
+                52.359023
+              ],
+              [
+                4.8714648,
+                52.3590419
+              ],
+              [
+                4.8714255,
+                52.3590497
+              ],
+              [
+                4.8713864,
+                52.3590451
+              ],
+              [
+                4.8713585,
+                52.3590242
+              ],
+              [
+                4.8713565,
+                52.3589987
+              ]
+            ]
+          ]
+        ]
+      }
+    ],
+    "nonActiveBagIdentity": {
+      "id": "0363100012217883",
+      "properties": {
+        "aantal_verblijfsobjecten": 0,
+        "bouwjaar": 1937,
+        "documentdatum": "2014-03-28",
+        "documentnummer": "GV00001867_AC00AC",
+        "gebruiksdoel": null,
+        "geconstateerd": "N",
+        "identificatie": "0363100012217883",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012217883",
+        "status": "Niet gerealiseerd pand",
+        "verblijfsobject.href": null
+      },
+      "note": "Current legal record says Niet gerealiseerd pand and 1937. RCE identifies the existing pavilion as 1873. This non-active BAG identity does not appear on the resident generic original and is not suppressed."
+    },
+    "heightEvidence": {
+      "source": "PDOK current AHN WCS dsm_05m and dtm_05m,0.5m nearest-neighbor samples inside current BAG decagon",
+      "requestBboxRD": [
+        119857,
+        485796,
+        119872,
+        485812
+      ],
+      "samples": [
+        {
+          "rd": [
+            119863.25,
+            485807.75
+          ],
+          "dsmNAP": 4.134,
+          "dtmNAP": -1.772,
+          "height": 5.907
+        },
+        {
+          "rd": [
+            119863.75,
+            485807.75
+          ],
+          "dsmNAP": 4.829,
+          "dtmNAP": -1.746,
+          "height": 6.575
+        },
+        {
+          "rd": [
+            119864.25,
+            485807.75
+          ],
+          "dsmNAP": 3.802,
+          "dtmNAP": -1.795,
+          "height": 5.597
+        },
+        {
+          "rd": [
+            119864.75,
+            485807.75
+          ],
+          "dsmNAP": 4.926,
+          "dtmNAP": -1.731,
+          "height": 6.657
+        },
+        {
+          "rd": [
+            119865.25,
+            485807.75
+          ],
+          "dsmNAP": -0.793,
+          "dtmNAP": -1.715,
+          "height": 0.922
+        },
+        {
+          "rd": [
+            119862.25,
+            485807.25
+          ],
+          "dsmNAP": 4.348,
+          "dtmNAP": -1.825,
+          "height": 6.173
+        },
+        {
+          "rd": [
+            119866.25,
+            485807.25
+          ],
+          "dsmNAP": 4.256,
+          "dtmNAP": -1.718,
+          "height": 5.974
+        },
+        {
+          "rd": [
+            119866.75,
+            485806.75
+          ],
+          "dsmNAP": 4.72,
+          "dtmNAP": -1.747,
+          "height": 6.467
+        },
+        {
+          "rd": [
+            119867.25,
+            485806.25
+          ],
+          "dsmNAP": 2.812,
+          "dtmNAP": -1.742,
+          "height": 4.554
+        },
+        {
+          "rd": [
+            119867.75,
+            485805.25
+          ],
+          "dsmNAP": 4.389,
+          "dtmNAP": -1.717,
+          "height": 6.106
+        }
+      ],
+      "roofSummary": {
+        "roofDsmValidSamples": 176,
+        "roofDsmMaxNAP": 5.926300048828125,
+        "roofDsmMedianNAP": 5.194200038909912,
+        "neighborDtmMedianNAP": -1.854200005531311,
+        "roofMaxAboveAdjacentGroundMetres": 7.780500054359436,
+        "datumMethod": "Median valid DTM outside mapped pavilion because ground raster is mostly nodata under canopy."
+      },
+      "uncertainty": "Adjacent valid DTM median is used because ground samples beneath the canopy are mostly nodata. Ground selection and 0.5 m DSM sampling allow a few decimeters of uncertainty; the thin finial may not be sampled at its exact tip."
+    },
+    "references": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/504754",
+      "https://commons.wikimedia.org/wiki/File:Muziektent_op_eiland_in_het_water_-_Amsterdam_-_20356882_-_RCE.jpg",
+      "https://commons.wikimedia.org/wiki/File:Vondelpark_Muziektent,_July_2026.jpg",
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012217883",
+      "https://service.pdok.nl/rws/ahn/wcs/v1_0?service=WCS&version=1.0.0&request=GetCoverage&coverage=dsm_05m&crs=EPSG:28992&response_crs=EPSG:28992&bbox=119857,485796,119872,485812&width=30&height=32&format=GEOTIFF"
+    ],
+    "reconstructionNotes": "RCE primary description substantiates ten cast-iron fluted columns with composite capitals, open decorated friezes, railings, nine stone steps and a shallow overhanging timber tent roof with onion finial. Roof plan is the exact OSM decagon; basement/column circle sits within it. DSM peak minus nearby DTM median is 7.7805 m; a restrained 8 m finial allows thin-detail sampling uncertainty. Ornamental shapes and individual vertical proportions are low-poly visual approximations. No solid wall fills the pavilion; surrounding island and wooden bridge remain existing park geometry."
+  }
+]

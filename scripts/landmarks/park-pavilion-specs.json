@@ -1,0 +1,39 @@
+[
+  {
+    "id": "vondelpark-bandstand",
+    "name": "Vondelpark Muziektent / iron bandstand",
+    "landmarkId": "osm_bandstand_561468937",
+    "modelUrl": "./models/vondelpark-bandstand.glb",
+    "suppressOsmIds": [
+      "w561468937"
+    ],
+    "footprint": {
+      "centre": [
+        4.871422757741471,
+        52.35900936120375
+      ],
+      "headingDegrees": 2.7423133534936426,
+      "lengthMetres": 8.988583900747946,
+      "widthMetres": 8.88511289151667
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 123.8328039969667,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.871428790909091,
+        52.35900799090909
+      ],
+      "northOffsetDegrees": -53.424882649539654,
+      "source": "Exact mapped pavilion roof, entrance faces the private footbridge. PDOK AHN DSM/DTM samples constrain total roof height; thin finial may be undersampled. Columns/ornament proportions reconstructed from primary heritage photographs."
+    },
+    "attribution": {
+      "title": "Vondelpark Muziektent / iron bandstand",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504754",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly pavilion geometry. No meshes or images imported. Existing park island, footbridge and audience grounds retained."
+    }
+  }
+]
