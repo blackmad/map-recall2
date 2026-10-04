@@ -1,0 +1,42 @@
+{
+  "id": "national-monument-on-the-dam",
+  "name": "National Monument on the Dam",
+  "assetKind": "memorial",
+  "landmarkId": "extract_landmarks_720777797",
+  "modelUrl": "./models/national-monument-on-the-dam.glb",
+  "suppressOsmIds": [
+    "w168680619",
+    "n5413222221",
+    "n5413222222",
+    "w940729263",
+    "w1320477257"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8936887569767435,
+      52.37281966395349
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 47.93140716581357,
+    "widthMetres": 46.54650399967858
+  },
+  "surveyed": {
+    "anchor": [
+      4.8936887569767435,
+      52.37281966395349
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current mapped 36.97 m circular podium, exact curved urn wall and pylon/relief base, plus separately mapped lion positions. Native local east/south coordinates; no legacy fitted rectangle. Internal heights and sculpture details approximate."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "National Monument on the Dam",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/530906",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free shared-palette reconstruction from the exact mapped podium, curved wall, pylon/relief base and separate lion positions, primary heritage description and Committee photographs. Six concentric steps, pale conical pylon, curved urn wall and original faceted sculpture silhouettes. Internal details approximate; surrounding Dam square and host buildings retained. No downloaded geometry or photo pixels."
+  }
+}

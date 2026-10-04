@@ -1,0 +1,78 @@
+{
+  "id": "de-beurs-van-berlage",
+  "name": "Beurs van Berlage",
+  "landmarkId": "extract_landmarks_1104215352",
+  "modelUrl": "./models/de-beurs-van-berlage.glb",
+  "suppressOsmIds": [
+    "w57858502",
+    "w749918629",
+    "w749918630",
+    "w749918631",
+    "w749918632",
+    "w749918633",
+    "w749918634",
+    "w749918635",
+    "w749918636",
+    "w749918637",
+    "w749918638",
+    "w749918639",
+    "w749918641",
+    "w749918642",
+    "w749918643",
+    "w749918644",
+    "w749918645",
+    "w749918646",
+    "w749918647",
+    "w749918648",
+    "w749918649",
+    "w749918650",
+    "w749918651",
+    "w749918652",
+    "w749918653",
+    "w749918654",
+    "w749931375",
+    "w749931376",
+    "w749931377",
+    "w749931378",
+    "w749931379",
+    "w749931380",
+    "w749931381",
+    "w749931382",
+    "w749931383",
+    "w750005616",
+    "w750005617",
+    "w750166476",
+    "w750166477",
+    "w750166478",
+    "w750166479",
+    "NL.IMBAG.Pand.0363100012171966"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.896210789570552,
+      52.37513358466257
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 128.82427674050848,
+    "widthMetres": 135.5654960006973
+  },
+  "surveyed": {
+    "anchor": [
+      4.896210789570552,
+      52.37513358466257
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current exact parent and forty mapped roof/tower/inner-court parts; native anchor, source heights and roof slopes. No legacy fitted rectangle or adjacent buildings."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Beurs van Berlage",
+    "author": "Map Recall",
+    "sourceUrl": "https://beursvanberlage.com/a-building-like-the-beurs-deserves-care/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free shared-palette reconstruction from exact current mapped parent/forty parts and official restored-exterior photographs. Brick facades, stone-framed paired windows, entrance arches, low inner roofs and 40 m clock tower with original blue/red/gold dial interpretation. Window/ornament details approximate. No imported mesh or photo pixels; adjacent streets and buildings retained."
+  }
+}

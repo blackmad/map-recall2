@@ -145,7 +145,10 @@ function build(spec) {
     frame(entry);
   }, { passive: false });
 
-  loader.load(spec.modelUrl, (gltf) => {
+  const modelUrl = new URL(spec.modelUrl, location.href);
+  const version = window.CanalRecallSignatureLandmarks.MODEL_ASSET_VERSIONS?.[spec.id];
+  if (version) modelUrl.searchParams.set('asset', version);
+  loader.load(modelUrl.href, (gltf) => {
     const model = gltf.scene;
     scene.add(model);
     const box = new T.Box3().setFromObject(model);

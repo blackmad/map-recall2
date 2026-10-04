@@ -4,6 +4,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import * as T from 'three';
 import {Document, NodeIO} from '@gltf-transform/core';
 import {dedup, prune, weld, meshopt} from '@gltf-transform/functions';
@@ -38,6 +39,11 @@ import {buildEye} from './eye-builder';
 import {buildRijksmuseum} from './rijksmuseum-builder';
 import {buildWesterkerk} from './westerkerk-builder';
 import {buildMontelbaanstoren} from './montelbaanstoren-builder';
+import {buildMunttoren} from './munttoren-builder';
+import {buildNationalMonument} from './national-monument-builder';
+import {buildCentraalComplex} from './centraal-complex-builder';
+import {buildBeursBerlage} from './beurs-berlage-builder';
+import {buildAmstaDePoort} from './amsta-de-poort-builder';
 import {buildPendingVenueLandmark} from './pending-venues-builders';
 import {buildSmallMuseumLandmark} from './small-museums-builders';
 import {buildSintJorishof} from './sint-jorishof-builder';
@@ -68,7 +74,7 @@ import hospitals from './hospital-footprints.json';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
 const out=path.resolve('public/canal-drive/models');
-const palette={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148'};
+const palette={brick:'#9a5240',stone:'#cfc2a6',slate:'#4a525d',white:'#efe9db',gold:'#d9b24c',glass:'#527787',dark:'#303b43',frame:'#9daaa8',red:'#ac624e',blue:'#3f5f9a',pink:'#be9295',bronze:'#3d5148',copper:'#43888b',green:'#718b58'};
 type Colour=keyof typeof palette;
 let parts: {g:T.BufferGeometry,c:Colour}[]=[];
 function add(g:T.BufferGeometry,c:Colour,x=0,y=0,z=0,angle=0){g.rotateY(angle);g.translate(x,y,z);parts.push({g,c});}
@@ -142,7 +148,7 @@ for(const spec of MANUAL_LANDMARKS){
   const id=spec.id;
   if(process.argv.includes('--only')&&!process.argv.includes(id))continue;
   parts=[];
-  if(id==='centraal-station')station();
+  if(id==='centraal-station'){station();buildCentraalComplex(helpers);}
   else if(id==='muziekgebouw-bimhuis')music();
   else if(id.startsWith('olvg-'))hospital(id);
   else {
@@ -171,6 +177,10 @@ for(const spec of MANUAL_LANDMARKS){
     else if(id==='rijksmuseum')buildRijksmuseum(w,d,helpers);
     else if(id==='westerkerk')buildWesterkerk(w,d,helpers);
     else if(id==='montelbaanstoren-amsterdam')buildMontelbaanstoren(w,d,helpers);
+    else if(id==='munttoren-amsterdam')buildMunttoren(w,d,helpers);
+    else if(id==='national-monument-on-the-dam')buildNationalMonument(w,d,helpers);
+    else if(id==='de-beurs-van-berlage')buildBeursBerlage(w,d,helpers);
+    else if(id==='amsta-de-poort')buildAmstaDePoort(id,w,d,helpers);
     else if(['sexmuseum-venustempel','oude-lutherse-kerk'].includes(id))buildPendingVenueLandmark(id,w,d,helpers);
     else if(['kattenkabinet','pianola-museum'].includes(id))buildSmallMuseumLandmark(id,w,d,helpers);
     else if(id==='sint-jorishof')buildSintJorishof(w,d,helpers);
@@ -205,3 +215,11 @@ for(const spec of MANUAL_LANDMARKS){
   manifest.models[id]=await save(id);
 }
 fs.writeFileSync(path.join(out,'signature-landmarks.json'),JSON.stringify(manifest,null,2)+'\n');
+// Model URLs stay stable; a content fingerprint prevents a cached old imported
+// mesh being loaded with the new original model's native placement.
+const versions:Record<string,string>={};
+for(const id of Object.keys(manifest.models).sort()){
+  const file=path.join(out,`${id}.glb`);
+  if(fs.existsSync(file))versions[id]=createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,16);
+}
+fs.writeFileSync('src/canalRecall/landmarks/modelAssetVersions.json',JSON.stringify(versions,null,2)+'\n');

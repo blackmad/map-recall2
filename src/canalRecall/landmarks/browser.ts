@@ -38,3 +38,4 @@ export { basemapBuildingFilter, encodeBasemapBuildingId } from '../buildingStyle
 export {rdProjectionBasis,rdProjectedSurvey} from './rdProjectionBasis';
 
 export { MANUAL_LANDMARKS } from './manualModels';
+export {default as MODEL_ASSET_VERSIONS} from './modelAssetVersions.json';

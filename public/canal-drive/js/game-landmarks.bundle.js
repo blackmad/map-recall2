@@ -165,6 +165,88 @@
     return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
   }
 
+  // src/canalRecall/clickPoiInfo.ts
+  function validPoiWebsite(value) {
+    if (typeof value !== "string" || !value.trim()) return "";
+    try {
+      const url = new URL(/^[a-z]+:/i.test(value.trim()) ? value.trim() : `https://${value.trim()}`);
+      return /^(https?:)$/.test(url.protocol) && url.hostname.includes(".") && !url.username && !url.password ? url.href : "";
+    } catch {
+      return "";
+    }
+  }
+  function inRing(point, ring) {
+    let inside = false;
+    const [x, y] = point;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [ax, ay] = ring[j], [bx, by] = ring[i];
+      const cross = (x - ax) * (by - ay) - (y - ay) * (bx - ax);
+      if (Math.abs(cross) < 1e-14 && x >= Math.min(ax, bx) && x <= Math.max(ax, bx) && y >= Math.min(ay, by) && y <= Math.max(ay, by)) return true;
+      if (ay > y !== by > y && x < (bx - ax) * (y - ay) / (by - ay) + ax) inside = !inside;
+    }
+    return inside;
+  }
+  function poiInsideBuilding(point, geometry) {
+    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
+    return polygons.some((rings) => rings.length && inRing(point, rings[0]) && !rings.slice(1).some((hole) => inRing(point, hole)));
+  }
+  var osmUrl = (id) => `https://www.openstreetmap.org/${{ n: "node", w: "way", r: "relation" }[id[0]]}/${id.slice(1)}`;
+  var cell = (lng, lat) => `${Math.floor(lng * 1e3)}/${Math.floor(lat * 1e3)}`;
+  var ClickPoiIndex = class {
+    cells = /* @__PURE__ */ new Map();
+    rows = [];
+    constructor(file) {
+      if (file?.version !== 1 || !Array.isArray(file.points)) return;
+      for (const row of file.points) {
+        if (!Array.isArray(row) || !/^[nwr]\d+$/.test(row[0]) || !row[1] || !Number.isFinite(row[2]) || !Number.isFinite(row[3])) continue;
+        this.rows.push(row);
+        const key = cell(row[2], row[3]);
+        const group = this.cells.get(key) ?? [];
+        group.push(row);
+        this.cells.set(key, group);
+      }
+    }
+    contained(geometry) {
+      const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
+      const outer = polygons.flatMap((rings) => rings[0] ?? []);
+      if (!outer.length) return [];
+      const xs = outer.map((p) => Math.floor(p[0] * 1e3)), ys = outer.map((p) => Math.floor(p[1] * 1e3));
+      const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+      const candidates = [];
+      if ((maxX - minX + 1) * (maxY - minY + 1) > 2e3) candidates.push(...this.rows);
+      else for (let x = minX; x <= maxX; x++) for (let y = minY; y <= maxY; y++) candidates.push(...this.cells.get(`${x}/${y}`) ?? []);
+      const found = candidates.filter((row) => poiInsideBuilding([row[2], row[3]], geometry)).sort((a, b) => Number(!!b[8]) - Number(!!a[8]) || Number(!!b[7]) - Number(!!a[7]) || a[0].localeCompare(b[0]));
+      const seen = /* @__PURE__ */ new Set();
+      return found.filter((row) => {
+        const key = row[1].normalize("NFC").toLocaleLowerCase("nl").trim();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+    card(building) {
+      if (!building.footprint) return null;
+      const places = this.contained(building.footprint);
+      if (!places.length) return null;
+      const summaries = places.slice(0, 8).map((row) => `${row[1]} is mapped as ${row[5] || row[4]}${row[6] ? ` at ${row[6]}` : ""}.` + (row[8] ? ` ${row[8]}` : ""));
+      const paragraphs = summaries.map((summary, i) => summary + (validPoiWebsite(places[i][7]) ? `
+Website: ${validPoiWebsite(places[i][7])}` : "") + `
+Map source: ${osmUrl(places[i][0])}`);
+      const first = places[0];
+      return {
+        id: `clicked-poi-${building.id}`,
+        name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
+        type: first[4],
+        detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ""}.`,
+        longDetail: summaries.join("\n\n"),
+        factTexts: paragraphs,
+        sourceUrl: osmUrl(first[0]),
+        lngLat: [first[2], first[3]],
+        featureTarget: building.featureTarget
+      };
+    }
+  };
+
   // src/canalRecall/game/landmarkNotice.ts
   var DEFAULT_NOTICE_CONFIG = {
     exitRadius: 480,
@@ -5259,6 +5341,209 @@
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free shared-palette reconstruction from exact current mapped footing/steppedtiers and restorationarchitect exteriorphotograph. Redbrick roundbase, white Renaissance lanterns, gilded open-finial silhouette. Window/ornament details approximate. No imported geometry/photo texture; adjacent houses/canal retained."
       }
+    },
+    {
+      id: "munttoren-amsterdam",
+      name: "Munttoren / Muntgebouw",
+      landmarkId: "extract_landmarks_1375175685",
+      modelUrl: "./models/munttoren-amsterdam.glb",
+      suppressOsmIds: [
+        "w57862728",
+        "w751683816",
+        "w751683817",
+        "w751683818",
+        "w751683819",
+        "w751683820",
+        "w751698382",
+        "w751698383",
+        "w751698384",
+        "NL.IMBAG.Pand.0363100012168045"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8932132,
+          52.3670559
+        ],
+        headingDegrees: 90,
+        lengthMetres: 28.69100677281662,
+        widthMetres: 8.738620000084438
+      },
+      surveyed: {
+        anchor: [
+          4.8932132,
+          52.3670559
+        ],
+        northOffsetDegrees: 0,
+        source: "Actual mapped Munttoren compound parent/eight source parts, preserved 3 m covered link. Native 41 m upper finial per conservation heritage description/current photographs; no model fitting."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Munttoren / Muntgebouw",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/3729",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free shared-palette reconstruction from exact current mapped footing/host/tier polygons and current conservation expert photographs. Round brick base, octagonal stone/lead tiers, large black/gold dials and open bell/pear-shaped finial. Window/ornament details approximate; no imported geometry/photo texture. Covered ground link retained; bridge, streets and neighbors omitted."
+      }
+    },
+    {
+      id: "national-monument-on-the-dam",
+      name: "National Monument on the Dam",
+      assetKind: "memorial",
+      landmarkId: "extract_landmarks_720777797",
+      modelUrl: "./models/national-monument-on-the-dam.glb",
+      suppressOsmIds: [
+        "w168680619",
+        "n5413222221",
+        "n5413222222",
+        "w940729263",
+        "w1320477257"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8936887569767435,
+          52.37281966395349
+        ],
+        headingDegrees: 90,
+        lengthMetres: 47.93140716581357,
+        widthMetres: 46.54650399967858
+      },
+      surveyed: {
+        anchor: [
+          4.8936887569767435,
+          52.37281966395349
+        ],
+        northOffsetDegrees: 0,
+        source: "Current mapped 36.97 m circular podium, exact curved urn wall and pylon/relief base, plus separately mapped lion positions. Native local east/south coordinates; no legacy fitted rectangle. Internal heights and sculpture details approximate."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "National Monument on the Dam",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/530906",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free shared-palette reconstruction from the exact mapped podium, curved wall, pylon/relief base and separate lion positions, primary heritage description and Committee photographs. Six concentric steps, pale conical pylon, curved urn wall and original faceted sculpture silhouettes. Internal details approximate; surrounding Dam square and host buildings retained. No downloaded geometry or photo pixels."
+      }
+    },
+    {
+      id: "de-beurs-van-berlage",
+      name: "Beurs van Berlage",
+      landmarkId: "extract_landmarks_1104215352",
+      modelUrl: "./models/de-beurs-van-berlage.glb",
+      suppressOsmIds: [
+        "w57858502",
+        "w749918629",
+        "w749918630",
+        "w749918631",
+        "w749918632",
+        "w749918633",
+        "w749918634",
+        "w749918635",
+        "w749918636",
+        "w749918637",
+        "w749918638",
+        "w749918639",
+        "w749918641",
+        "w749918642",
+        "w749918643",
+        "w749918644",
+        "w749918645",
+        "w749918646",
+        "w749918647",
+        "w749918648",
+        "w749918649",
+        "w749918650",
+        "w749918651",
+        "w749918652",
+        "w749918653",
+        "w749918654",
+        "w749931375",
+        "w749931376",
+        "w749931377",
+        "w749931378",
+        "w749931379",
+        "w749931380",
+        "w749931381",
+        "w749931382",
+        "w749931383",
+        "w750005616",
+        "w750005617",
+        "w750166476",
+        "w750166477",
+        "w750166478",
+        "w750166479",
+        "NL.IMBAG.Pand.0363100012171966"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.896210789570552,
+          52.37513358466257
+        ],
+        headingDegrees: 90,
+        lengthMetres: 128.82427674050848,
+        widthMetres: 135.5654960006973
+      },
+      surveyed: {
+        anchor: [
+          4.896210789570552,
+          52.37513358466257
+        ],
+        northOffsetDegrees: 0,
+        source: "Current exact parent and forty mapped roof/tower/inner-court parts; native anchor, source heights and roof slopes. No legacy fitted rectangle or adjacent buildings."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Beurs van Berlage",
+        author: "Map Recall",
+        sourceUrl: "https://beursvanberlage.com/a-building-like-the-beurs-deserves-care/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free shared-palette reconstruction from exact current mapped parent/forty parts and official restored-exterior photographs. Brick facades, stone-framed paired windows, entrance arches, low inner roofs and 40 m clock tower with original blue/red/gold dial interpretation. Window/ornament details approximate. No imported mesh or photo pixels; adjacent streets and buildings retained."
+      }
+    },
+    {
+      id: "amsta-de-poort",
+      name: "Amsta De Poort",
+      landmarkId: "amsta-de-poort",
+      modelUrl: "./models/amsta-de-poort.glb",
+      suppressOsmIds: [
+        "w220525683",
+        "NL.IMBAG.Pand.0363100012237064"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8735112432713015,
+          52.37350397269679
+        ],
+        headingDegrees: 71.81808321129071,
+        lengthMetres: 72.03219885973493,
+        widthMetres: 51.065153370485824
+      },
+      surveyed: {
+        anchor: [
+          4.873552902185253,
+          52.373488756470465
+        ],
+        northOffsetDegrees: -18.319999999999993
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 89.8619167887093,
+      attribution: {
+        title: "Amsta De Poort",
+        author: "Map Recall",
+        sourceUrl: "https://www.amsta.nl/locaties/de-poort",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original low-poly reconstruction of actual1966 nursing-home parent with1969 operation recorded separately: six occupied facade rows, recessed brick-column ground storey, ochre-panel glass room strips, projecting front bays, rooftop ribbon/setback, actual14.1m rear wing and23.65/27.75m main roofs. Small service structure reaches31.7m; whole footprint is not extruded to the old31.7m OSM maximum. Official facade imagery is visual reference only, no imported mesh or photo texture. CurrentBAG and AHN5 survey calibrate native massing; attached neighboring residential/school parents and courtyard void remain. Front glazing follows the owner facade photograph; rear/side window rhythm is inferred rather than measured. Explicit roof panels own upward caps to avoid coplanar flicker."
+      }
     }
   ];
 
@@ -7730,15 +8015,16 @@
   var MANUAL_LANDMARKS = [
     {
       id: "centraal-station",
-      name: "Amsterdam Centraal \u2014 Cuypersgebouw",
+      name: "Amsterdam Centraal \u2014 station complex",
       landmarkId: "extract_landmarks_332626598",
       modelUrl: "./models/centraal-station.glb",
-      suppressOsmIds: ["w332626598"],
+      suppressOsmIds: ["w332626598", "w57856845", "w1239767708", "w1239767706", "w451533145", "w451533147", "w451533149", "w506192827", "NL.IMBAG.Pand.0363100012185598", "NL.IMBAG.Pand.0363100012242112", "NL.IMBAG.Pand.0363100012240304", "NL.IMBAG.Pand.0363100012245758", "NL.IMBAG.Pand.0363100012245759", "NL.IMBAG.Pand.0363100012246251"],
+      spatialSuppression: false,
       groundAltitudeMetres: 0,
       facingOffsetDegrees: 210.6533,
       footprint: { centre: [4.899750668752946, 52.37855998792934], headingDegrees: 120.65330083236796, lengthMetres: 244.34798071019168, widthMetres: 30.916412054875813 },
-      surveyed: { anchor: [4.899750668752946, 52.37855998792934], northOffsetDegrees: 30.65330083236796, source: "OSM Cuypersgebouw footprint centre and long-axis bearing" },
-      attribution: ownAttribution("Amsterdam Centraal", "https://sketchfab.com/3d-models/centraal-station-amsterdam-582a09c29440490da209c26cc9dcc147")
+      surveyed: { anchor: [4.899750668752946, 52.37855998792934], northOffsetDegrees: 30.65330083236796, source: "OSM Cuypersgebouw anchor/bearing; four exact current train/bus roof outlines. Zuidkap 23 m /50 frames per ProRail; other profiles and bus deck approximately reconstructed from architect photographs and 3DBAG." },
+      attribution: { ...ownAttribution("Amsterdam Centraal", "https://www.benthemcrouwel.com/projects/bus-station-amsterdam-cs"), modifications: "Original texture-free Cuypers facade and four arched roof structures. Current mapped roof perimeters retained at native scale; approximate interior roof profiles, frame details and raised bus deck. Published Zuidkap 23 m height and 50 frames. Colored AMSTERDAM glass panels follow architect photographs. No imported geometry or photo pixels. Metro, ferry piers, hotel/postal buildings and ground-level streets omitted." }
     },
     {
       id: "muziekgebouw-bimhuis",
@@ -7955,6 +8241,12 @@
       name: "OLVG Oost",
       description: "OLVG Oost is one of OLVG\u2019s two main Amsterdam hospital locations. OLVG provides hospital care for the city across its eastern and western sites.",
       sourceUrl: "https://www.olvg.nl/over-olvg/"
+    },
+    {
+      modelId: "amsta-de-poort",
+      name: "Amsta De Poort",
+      description: "De Poort has provided residential care on Hugo de Grootkade since 1969. Its canal-side setting gives residents wide views across Amsterdam. The ground-floor De Ontmoeting brings residents and neighbors together, with a restaurant that also provides work and learning opportunities for local students.",
+      sourceUrl: "https://www.amsta.nl/locaties/de-poort"
     }
   ];
 
@@ -8208,7 +8500,7 @@
       let nearest = building?.landmarkId ? this.landmarks.find((landmark) => landmark.id === building.landmarkId) ?? null : null;
       const owner = building && building.id != null ? this.landmarks.find((landmark) => landmark.buildingIds?.includes(String(building.id))) : void 0;
       if (owner && !nearest) nearest = owner;
-      if (!nearest) {
+      if (!nearest || !isWorthACard(nearest)) {
         if (building) nearest = this._cardForClickedBuilding(building);
       }
       if (!nearest || !isWorthACard(nearest)) {
@@ -8278,15 +8570,13 @@
       this._landmarkCardBounds = null;
       this._landmarkCloseBounds = null;
     }
-    /**
-     * A nameless footprint cannot teach the player anything, but swallowing the
-     * click makes the map look broken. Acknowledge it without inventing a name
-     * or presenting it as encyclopedia content.
-     */
+    /** Exact researched owner first, then mapped places inside the actual plan. */
     _cardForClickedBuilding(building) {
       const buildingName = building.name || "";
       const matched = this.landmarks.find((landmark) => landmark.id === String(building.id) || landmark.buildingIds?.includes(String(building.id)));
-      if (matched) return { ...matched, featureTarget: building.featureTarget };
+      if (matched && isWorthACard(matched)) return { ...matched, featureTarget: building.featureTarget };
+      const mapped = this._clickPoiInfo?.card(building);
+      if (mapped) return mapped;
       let row = this._buildingFacts?.lookup(building.id) ?? null;
       const spoils = this.vectorMap._spoils;
       const monument = row && row.length > 3 ? row[3] : void 0;
@@ -8381,6 +8671,7 @@
         const base = window.location.href;
         const url = (name) => new URL(`${city.extractPath}/${name}`, base);
         const factBase = new URL(`${city.extractPath}/`, base).href;
+        this._clickPoiInfo = null;
         if (this._buildingFacts) this._buildingFacts.setBase(factBase);
         else this._buildingFacts = new BuildingFactStore(factBase);
         const [
@@ -8426,9 +8717,11 @@
           deferredJson("street-knowledge.json"),
           deferredJson("facts.json"),
           deferredJson("branded-pois.json"),
-          deferredJson("landmark-buildings.json")
-        ]).then(([originsFile, bridgeRegister, encyclopedia, factsFile, brandedPois, landmarkBuildings]) => {
+          deferredJson("landmark-buildings.json"),
+          deferredJson("click-poi-info.json")
+        ]).then(([originsFile, bridgeRegister, encyclopedia, factsFile, brandedPois, landmarkBuildings, clickPoiInfo]) => {
           if (this.streetKnowledge !== knowledge) return;
+          this._clickPoiInfo = new ClickPoiIndex(clickPoiInfo);
           if (factsFile) this._facts = buildFactIndex(factsFile);
           if (originsFile?.origins?.length || bridgeRegister?.bridges || encyclopedia?.length) {
             this.streetKnowledge = buildRouteKnowledgeIndex(

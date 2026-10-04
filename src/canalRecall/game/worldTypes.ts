@@ -122,6 +122,8 @@ export interface BuildingHit {
   landmarkId?: string;
   /** Metres, from the streamed building tile. */
   height?: number;
+  /** The exact installed mesh owner's plan, including its courtyard holes. */
+  footprint?: import('../clickPoiInfo').PolygonGeometry;
   lngLat: LngLat;
   geojson?: GeoJsonFeatureCollection;
   featureTarget: FeatureTarget | null;

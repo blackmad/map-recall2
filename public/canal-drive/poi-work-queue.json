@@ -28,7 +28,7 @@
       "priority": "urgent",
       "status": "verified",
       "owner": "root",
-      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5\u2013120 fps."
+      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5–120 fps."
     },
     {
       "id": "building-inspection",
@@ -44,7 +44,7 @@
       "priority": "high",
       "status": "verified",
       "owner": "venue_landmarks",
-      "validation": "124 registered assets, 125 genuine modeled destinations; visible picker, pin/label, sourced cards, exact arrival IDs; existing facts preserved."
+      "validation": "125 registered assets, 126 genuine modeled destinations; visible picker, geographic pins/labels, sourced cards, exact arrival IDs; existing facts preserved."
     },
     {
       "id": "westerkerk",
@@ -73,7 +73,8 @@
       "task": "Roof/eaves/facade coherence at Nassaukade124 row",
       "priority": "high",
       "status": "in-progress",
-      "owner": "museum_landmarks"
+      "owner": "museum_landmarks",
+      "validation": "Scoped irregular-roof correction preserves source heights/exterior ornament and removes unsupported inner gables for real BAG2160087/2166317; original screenshot assembly remains unmatched and unresolved."
     },
     {
       "id": "photo-mode-colors",
@@ -87,8 +88,9 @@
       "id": "centraal-complex",
       "task": "Three train-shed roofs, IJhal and bus-station roof around completed Cuypersgebouw",
       "priority": "high",
-      "status": "researching",
-      "owner": "root"
+      "status": "verified",
+      "owner": "root",
+      "validation": "Four native mapped train/bus roofs accepted in gallery and city/IJ live views; correctly oriented AMSTERDAM panels, raised bus deck clear below, exact masks and retained neighboring buildings; 38,607 triangles /415,052 bytes. Existing station route/pin/card identity preserved."
     },
     {
       "id": "sexmuseum-venustempel",
@@ -124,7 +126,7 @@
       "priority": "low",
       "status": "built",
       "owner": "root",
-      "validation": "1897 candidates within Amsterdam municipality; net footprint excludes courtyards; modeled identities excluded; twin outlines and raised parts grouped."
+      "validation": "1889 candidates within Amsterdam municipality; net footprint excludes courtyards; modeled identities excluded; twin outlines and raised parts grouped."
     },
     {
       "id": "faralda-crane",
@@ -136,7 +138,8 @@
       "id": "nemo",
       "task": "NEMO house-style replacement",
       "priority": "normal",
-      "status": "queued"
+      "status": "in-progress",
+      "owner": "trees"
     },
     {
       "id": "rai",
@@ -182,7 +185,7 @@
     },
     {
       "id": "vinoly",
-      "task": "Vi\u00f1oly",
+      "task": "Viñoly",
       "priority": "normal",
       "status": "queued"
     },
@@ -220,7 +223,9 @@
       "id": "amsta-de-poort",
       "task": "Amsta De Poort",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "owner": "museum_landmarks",
+      "validation": "Native gallery and dense live front/rear accepted. Actual open court,14.1/23.65/27.75m roof hierarchy and small31.7m service maximum; sourced front/inferred rear glazing, clean caps, exact masks and neighbors retained. 13,444 triangles/168,428 bytes; route/pin/sourced card passed."
     },
     {
       "id": "zuiveringshal",
@@ -278,7 +283,7 @@
     },
     {
       "id": "kinderkookkafe",
-      "task": "Kinderkookkaf\u00e9",
+      "task": "Kinderkookkafé",
       "priority": "normal",
       "status": "queued"
     },
@@ -347,15 +352,33 @@
       "id": "munttoren-amsterdam",
       "task": "Original house-style Munttoren and host wing with open 3 m covered passage",
       "priority": "high",
-      "status": "source-ready-awaiting-generation",
-      "owner": "trees"
+      "status": "verified",
+      "owner": "trees",
+      "validation": "Native gallery and dense live-game views accepted; scale 1, exact identity masks, preserved Munt passage/bridge and Dam square/lions, no browser errors. Geometry budgets and route/pin/card/source contract passed."
     },
     {
       "id": "national-monument-on-the-dam",
       "task": "Original National Monument with exact mapped podium, relief wall/base and separate lions",
       "priority": "high",
-      "status": "source-ready-awaiting-generation",
-      "owner": "trees"
+      "status": "verified",
+      "owner": "trees",
+      "validation": "Native gallery and dense live-game views accepted; scale 1, exact identity masks, preserved Munt passage/bridge and Dam square/lions, no browser errors. Geometry budgets and route/pin/card/source contract passed."
+    },
+    {
+      "id": "de-beurs-van-berlage",
+      "task": "Original house-style Beurs van Berlage with 40 mapped parts and preserved low inner roofs",
+      "status": "verified",
+      "priority": "high",
+      "owner": "trees",
+      "validation": "Corrected native gallery/live review accepted; 40m clock tower,40mappedparts, low/glazed inner courts, exact masks and neighbors retained. Coplanar brick roof caps removed and regression passed; 14,794 triangles/211,812 bytes."
+    },
+    {
+      "id": "contained-poi-info",
+      "task": "Mapped shop/venue info for actual clicked building polygon, with source/address/website; exclude courts and neighbors",
+      "status": "verified",
+      "priority": "high",
+      "owner": "venue_landmarks",
+      "validation": "10,329 mapped indoor places indexed. Physical mesh click opens opaque name/category/address card; expanded website/OSM href verified, exact clicked highlight; holes and neighbors excluded, researched cards take priority, route pool unchanged."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

@@ -308,6 +308,7 @@ export class ThreeBuildings {
         const at = (this.map as any).unproject([x, y]);
         result = { id: pair[0], name: p.name || p['name:en'] || '',
           height: Number(p.height) || undefined, lngLat: [at.lng, at.lat], depth,
+          footprint: feature.geometry,
           featureTarget: { source: 'osm-building-appearance', id: pair[0] } };
       } } finally { temporary?.dispose(); }
     }

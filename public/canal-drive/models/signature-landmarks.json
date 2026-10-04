@@ -50,12 +50,26 @@
     },
     "centraal-station": {
       "id": "centraal-station",
-      "name": "Amsterdam Centraal — Cuypersgebouw",
+      "name": "Amsterdam Centraal — station complex",
       "landmarkId": "extract_landmarks_332626598",
       "modelUrl": "./models/centraal-station.glb",
       "suppressOsmIds": [
-        "w332626598"
+        "w332626598",
+        "w57856845",
+        "w1239767708",
+        "w1239767706",
+        "w451533145",
+        "w451533147",
+        "w451533149",
+        "w506192827",
+        "NL.IMBAG.Pand.0363100012185598",
+        "NL.IMBAG.Pand.0363100012242112",
+        "NL.IMBAG.Pand.0363100012240304",
+        "NL.IMBAG.Pand.0363100012245758",
+        "NL.IMBAG.Pand.0363100012245759",
+        "NL.IMBAG.Pand.0363100012246251"
       ],
+      "spatialSuppression": false,
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 210.6533,
       "footprint": {
@@ -73,24 +87,24 @@
           52.37855998792934
         ],
         "northOffsetDegrees": 30.65330083236796,
-        "source": "OSM Cuypersgebouw footprint centre and long-axis bearing"
+        "source": "OSM Cuypersgebouw anchor/bearing; four exact current train/bus roof outlines. Zuidkap 23 m /50 frames per ProRail; other profiles and bus deck approximately reconstructed from architect photographs and 3DBAG."
       },
       "attribution": {
         "title": "Amsterdam Centraal",
         "author": "Map Recall",
-        "sourceUrl": "https://sketchfab.com/3d-models/centraal-station-amsterdam-582a09c29440490da209c26cc9dcc147",
+        "sourceUrl": "https://www.benthemcrouwel.com/projects/bus-station-amsterdam-cs",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original low-poly reconstruction; reference used for silhouette only. Flat materials, no imported model geometry or image textures. Hospital footprints from OpenStreetMap (ODbL); heights and architectural details are approximate."
+        "modifications": "Original texture-free Cuypers facade and four arched roof structures. Current mapped roof perimeters retained at native scale; approximate interior roof profiles, frame details and raised bus deck. Published Zuidkap 23 m height and 50 frames. Colored AMSTERDAM glass panels follow architect photographs. No imported geometry or photo pixels. Metro, ferry piers, hotel/postal buildings and ground-level streets omitted."
       },
       "bounds": {
         "min": [
-          -124.5,
-          0,
-          -16
+          -185.1193084716797,
+          -2.3610128607742809e-7,
+          -167.28273010253906
         ],
         "max": [
-          124.5,
+          184.81980895996094,
           36.5,
           18.950000762939453
         ]
@@ -106,108 +120,196 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 249,
-        "heightMetres": 36.5,
-        "depthMetres": 34.95000076293945,
-        "depthCoverage": 1.1304675555787045
+        "widthMetres": 369.9391174316406,
+        "heightMetres": 36.500000236101286,
+        "depthMetres": 186.23273086547852,
+        "depthCoverage": 6.023749797839424
       },
-      "triangles": 29036,
-      "bytes": 304492,
+      "triangles": 38607,
+      "bytes": 415052,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "de-beurs-van-berlage": {
-      "name": "De Beurs van Berlage (Stock Exchange)",
+      "id": "de-beurs-van-berlage",
+      "name": "Beurs van Berlage",
       "landmarkId": "extract_landmarks_1104215352",
       "modelUrl": "./models/de-beurs-van-berlage.glb",
+      "suppressOsmIds": [
+        "w57858502",
+        "w749918629",
+        "w749918630",
+        "w749918631",
+        "w749918632",
+        "w749918633",
+        "w749918634",
+        "w749918635",
+        "w749918636",
+        "w749918637",
+        "w749918638",
+        "w749918639",
+        "w749918641",
+        "w749918642",
+        "w749918643",
+        "w749918644",
+        "w749918645",
+        "w749918646",
+        "w749918647",
+        "w749918648",
+        "w749918649",
+        "w749918650",
+        "w749918651",
+        "w749918652",
+        "w749918653",
+        "w749918654",
+        "w749931375",
+        "w749931376",
+        "w749931377",
+        "w749931378",
+        "w749931379",
+        "w749931380",
+        "w749931381",
+        "w749931382",
+        "w749931383",
+        "w750005616",
+        "w750005617",
+        "w750166476",
+        "w750166477",
+        "w750166478",
+        "w750166479",
+        "NL.IMBAG.Pand.0363100012171966"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.896210789570552,
+          52.37513358466257
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 128.82427674050848,
+        "widthMetres": 135.5654960006973
+      },
+      "surveyed": {
+        "anchor": [
+          4.896210789570552,
+          52.37513358466257
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current exact parent and forty mapped roof/tower/inner-court parts; native anchor, source heights and roof slopes. No legacy fitted rectangle or adjacent buildings."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Beurs van Berlage",
+        "author": "Map Recall",
+        "sourceUrl": "https://beursvanberlage.com/a-building-like-the-beurs-deserves-care/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free shared-palette reconstruction from exact current mapped parent/forty parts and official restored-exterior photographs. Brick facades, stone-framed paired windows, entrance arches, low inner roofs and 40 m clock tower with original blue/red/gold dial interpretation. Window/ornament details approximate. No imported mesh or photo pixels; adjacent streets and buildings retained."
+      },
       "bounds": {
         "min": [
-          -64.50733021661081,
-          -0.031205919203717514,
-          -68.92785093470219
+          -60.00481414794922,
+          0,
+          -58.04224395751953
         ],
         "max": [
-          65.07019425384519,
-          42.58900661428903,
-          69.18273796980174
+          69.06237030029297,
+          40,
+          77.76261138916016
         ]
       },
       "placement": {
         "anchor": [
-          4.896348334822169,
-          52.37503529982596
+          4.896210789570552,
+          52.37513358466257
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 134.10231784305506,
+        "facadeBearingDegrees": 90,
         "scale": 1
       },
       "extent": {
-        "widthMetres": 138.1105889045039,
-        "heightMetres": 42.62021253349275,
-        "depthMetres": 129.577524470456,
-        "depthCoverage": 2.387859329506167
+        "widthMetres": 135.8048553466797,
+        "heightMetres": 40,
+        "depthMetres": 129.0671844482422,
+        "depthCoverage": 0.9520651512061618
       },
-      "triangles": 3987,
-      "bytes": 828988,
-      "sourceBytes": 3324072,
-      "sourceTriangles": 4318,
-      "droppedAttributes": [],
-      "maxTextureSize": 512,
-      "attribution": {
-        "title": "De Beurs van Berlage (Stock Exchange)",
-        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
-        "sourceUrl": "https://3dwarehouse.sketchup.com/model/c5a0708f3e4b36fe622758e070290bc2",
-        "licence": "3D Warehouse General Model License",
-        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
-        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
-      }
+      "triangles": 14794,
+      "bytes": 211812,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "national-monument-on-the-dam": {
+      "id": "national-monument-on-the-dam",
       "name": "National Monument on the Dam",
+      "assetKind": "memorial",
       "landmarkId": "extract_landmarks_720777797",
       "modelUrl": "./models/national-monument-on-the-dam.glb",
+      "suppressOsmIds": [
+        "w168680619",
+        "n5413222221",
+        "n5413222222",
+        "w940729263",
+        "w1320477257"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8936887569767435,
+          52.37281966395349
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 47.93140716581357,
+        "widthMetres": 46.54650399967858
+      },
+      "surveyed": {
+        "anchor": [
+          4.8936887569767435,
+          52.37281966395349
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current mapped 36.97 m circular podium, exact curved urn wall and pylon/relief base, plus separately mapped lion positions. Native local east/south coordinates; no legacy fitted rectangle. Internal heights and sculpture details approximate."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "National Monument on the Dam",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/530906",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free shared-palette reconstruction from the exact mapped podium, curved wall, pylon/relief base and separate lion positions, primary heritage description and Committee photographs. Six concentric steps, pale conical pylon, curved urn wall and original faceted sculpture silhouettes. Internal details approximate; surrounding Dam square and host buildings retained. No downloaded geometry or photo pixels."
+      },
       "bounds": {
         "min": [
-          -26.739226466408923,
-          0.000983608880467557,
-          -24.940625391173086
+          -27.09249496459961,
+          -7.1525572131747595e-9,
+          -25.710264205932617
         ],
         "max": [
-          18.619999670215456,
-          23.19901551895925,
-          18.61901598097448
+          18.48891258239746,
+          22,
+          18.486238479614258
         ]
       },
       "placement": {
         "anchor": [
-          4.8936960138168075,
-          52.37278222735422
+          4.8936887569767435,
+          52.37281966395349
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 87.47702002174162,
+        "facadeBearingDegrees": 90,
         "scale": 1
       },
       "extent": {
-        "widthMetres": 45.35922613662438,
-        "heightMetres": 23.198031910078782,
-        "depthMetres": 43.55964137214757,
-        "depthCoverage": 1.261785278433804
+        "widthMetres": 45.58140754699707,
+        "heightMetres": 22.000000007152558,
+        "depthMetres": 44.196502685546875,
+        "depthCoverage": 0.9495128288442902
       },
-      "triangles": 8098,
-      "bytes": 300096,
-      "sourceBytes": 1009436,
-      "sourceTriangles": 8299,
-      "droppedAttributes": [],
-      "maxTextureSize": 512,
-      "attribution": {
-        "title": "National Monument on the Dam",
-        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
-        "sourceUrl": "https://3dwarehouse.sketchup.com/model/80385c387986217491e131c17526634a",
-        "licence": "3D Warehouse General Model License",
-        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
-        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
-      }
+      "triangles": 6052,
+      "bytes": 58972,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "nemo": {
       "name": "NEMO",
@@ -805,51 +907,81 @@
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "munttoren-amsterdam": {
-      "name": "Munttoren Amsterdam",
+      "id": "munttoren-amsterdam",
+      "name": "Munttoren / Muntgebouw",
       "landmarkId": "extract_landmarks_1375175685",
       "modelUrl": "./models/munttoren-amsterdam.glb",
+      "suppressOsmIds": [
+        "w57862728",
+        "w751683816",
+        "w751683817",
+        "w751683818",
+        "w751683819",
+        "w751683820",
+        "w751698382",
+        "w751698383",
+        "w751698384",
+        "NL.IMBAG.Pand.0363100012168045"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8932132,
+          52.3670559
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 28.69100677281662,
+        "widthMetres": 8.738620000084438
+      },
+      "surveyed": {
+        "anchor": [
+          4.8932132,
+          52.3670559
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Actual mapped Munttoren compound parent/eight source parts, preserved 3 m covered link. Native 41 m upper finial per conservation heritage description/current photographs; no model fitting."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Munttoren / Muntgebouw",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3729",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free shared-palette reconstruction from exact current mapped footing/host/tier polygons and current conservation expert photographs. Round brick base, octagonal stone/lead tiers, large black/gold dials and open bell/pear-shaped finial. Window/ornament details approximate; no imported geometry/photo texture. Covered ground link retained; bridge, streets and neighbors omitted."
+      },
       "bounds": {
         "min": [
-          -2.4228063606143015,
-          -0.7490584260542539,
-          -10.097076347968482
+          -24.491540908813477,
+          0,
+          -3.8700644969940186
         ],
         "max": [
-          7.18889932681151,
-          34.102401405731385,
-          -2.3409351307538637
+          4.567722320556641,
+          41,
+          5.325292110443115
         ]
       },
       "placement": {
         "anchor": [
-          4.893198211404391,
-          52.3670118642164
+          4.8932132,
+          52.3670559
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 325.7992752644517,
+        "facadeBearingDegrees": 90,
         "scale": 1
       },
       "extent": {
-        "widthMetres": 9.611705687425811,
-        "heightMetres": 34.85145983178564,
-        "depthMetres": 7.756141217214618,
-        "depthCoverage": 1.7547861457818807
+        "widthMetres": 29.059263229370117,
+        "heightMetres": 41,
+        "depthMetres": 9.195356607437134,
+        "depthCoverage": 1.052266445657127
       },
-      "triangles": 3537,
-      "bytes": 244996,
-      "sourceBytes": 656488,
-      "sourceTriangles": 3756,
-      "droppedAttributes": [],
-      "maxTextureSize": 512,
-      "attribution": {
-        "title": "Munttoren Amsterdam",
-        "author": "OnO",
-        "sourceUrl": "https://3dwarehouse.sketchup.com/model/289437190bd7efc1c0de3c0357f9a9da",
-        "licence": "3D Warehouse General Model License",
-        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
-        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
-      }
+      "triangles": 11650,
+      "bytes": 146324,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "netherlands-film-and-television-academy-the-netherlands": {
       "name": "Netherlands Film and Television Academy, The Netherlands",
@@ -8484,6 +8616,74 @@
       },
       "triangles": 6979,
       "bytes": 93160,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "amsta-de-poort": {
+      "id": "amsta-de-poort",
+      "name": "Amsta De Poort",
+      "landmarkId": "amsta-de-poort",
+      "modelUrl": "./models/amsta-de-poort.glb",
+      "suppressOsmIds": [
+        "w220525683",
+        "NL.IMBAG.Pand.0363100012237064"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8735112432713015,
+          52.37350397269679
+        ],
+        "headingDegrees": 71.81808321129071,
+        "lengthMetres": 72.03219885973493,
+        "widthMetres": 51.065153370485824
+      },
+      "surveyed": {
+        "anchor": [
+          4.873552902185253,
+          52.373488756470465
+        ],
+        "northOffsetDegrees": -18.319999999999993
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 89.8619167887093,
+      "attribution": {
+        "title": "Amsta De Poort",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.amsta.nl/locaties/de-poort",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original low-poly reconstruction of actual1966 nursing-home parent with1969 operation recorded separately: six occupied facade rows, recessed brick-column ground storey, ochre-panel glass room strips, projecting front bays, rooftop ribbon/setback, actual14.1m rear wing and23.65/27.75m main roofs. Small service structure reaches31.7m; whole footprint is not extruded to the old31.7m OSM maximum. Official facade imagery is visual reference only, no imported mesh or photo texture. CurrentBAG and AHN5 survey calibrate native massing; attached neighboring residential/school parents and courtyard void remain. Front glazing follows the owner facade photograph; rear/side window rhythm is inferred rather than measured. Explicit roof panels own upward caps to avoid coplanar flicker."
+      },
+      "bounds": {
+        "min": [
+          -38.15837097167969,
+          4.7683716530855236e-8,
+          -27.744972229003906
+        ],
+        "max": [
+          33.83759689331055,
+          31.809999465942383,
+          23.53499984741211
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.873552902185253,
+          52.373488756470465
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 71.68,
+        "facadeBearingDegrees": 161.68000000000006,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 71.99596786499023,
+        "heightMetres": 31.809999418258666,
+        "depthMetres": 51.279972076416016,
+        "depthCoverage": 1.0042067572845939
+      },
+      "triangles": 13444,
+      "bytes": 168428,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
