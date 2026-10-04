@@ -3323,5 +3323,79 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
     }
+  },
+  {
+    "id": "vondelpark-bandstand",
+    "name": "Vondelpark Muziektent / iron bandstand",
+    "landmarkId": "osm_bandstand_561468937",
+    "modelUrl": "./models/vondelpark-bandstand.glb",
+    "suppressOsmIds": [
+      "w561468937"
+    ],
+    "footprint": {
+      "centre": [
+        4.871422757741471,
+        52.35900936120375
+      ],
+      "headingDegrees": 2.7423133534936426,
+      "lengthMetres": 8.988583900747946,
+      "widthMetres": 8.88511289151667
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 123.8328039969667,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.871428790909091,
+        52.35900799090909
+      ],
+      "northOffsetDegrees": -53.424882649539654,
+      "source": "Exact mapped pavilion roof, entrance faces the private footbridge. PDOK AHN DSM/DTM samples constrain total roof height; thin finial may be undersampled. Columns/ornament proportions reconstructed from primary heritage photographs."
+    },
+    "attribution": {
+      "title": "Vondelpark Muziektent / iron bandstand",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504754",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly pavilion geometry. No meshes or images imported. Existing park island, footbridge and audience grounds retained."
+    }
+  },
+  {
+    "id": "oost-indisch-huis",
+    "name": "Oost-Indisch Huis and Bushuis",
+    "landmarkId": "extract_landmarks_1570040251",
+    "modelUrl": "./models/oost-indisch-huis.glb",
+    "suppressOsmIds": [
+      "r3584291",
+      "NL.IMBAG.Pand.0363100012165008"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.897856122169366,
+        52.37090523766349
+      ],
+      "headingDegrees": 30.132385501566773,
+      "lengthMetres": 65.47131796665981,
+      "widthMetres": 50.924392605043664
+    },
+    "surveyed": {
+      "anchor": [
+        4.897856122169366,
+        52.37090523766349
+      ],
+      "northOffsetDegrees": -59.6
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.2676144984332254,
+    "attribution": {
+      "title": "Oost-Indisch Huis and Bushuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/2012",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the current Oost-Indisch Huis/Bushuis university complex from exact mapped geometry and original primary photographer references, cross-checked against current PDOK BAG and its Kloveniersburgwal48 onderwijsfunctie VBO. Height references measured from 3DBAG AHN5 LoD2.2 planes (NAP ground0.834; Bushuis roof about14.2\u201321.7m relative, historic courtyard wings about10.3\u201317.1m); mesh uses original authored simplified roofs and details, no imported source triangles. The single actual courtyard hole and west perimeter notches remain open; adjoining Waalse Kerk and neighboring houses are retained. The historical courtyard Renaissance gable and separate 1890/1891 Peters Bushuis23-bay Neo-Renaissance canal facade have distinct silhouettes."
+    }
   }
 ]

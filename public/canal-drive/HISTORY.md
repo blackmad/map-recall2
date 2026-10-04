@@ -1,5 +1,32 @@
 # Canal Recall — what is built
 
+## Courtyard university, iron bandstand and eight parks: 95 original landmarks (2026-10-04)
+
+Oost-Indisch Huis/Bushuis now uses its exact shared parent outline, one open
+courtyard and reentrant perimeter notches. The 23-axis Bushuis canal facade
+has three stepped gables and a taller roof; the older courtyard wings have
+lower roofs and an inward Renaissance gable aligned with the mapped door.
+Current BAG/3DBAG measurements and primary heritage photographs guide the
+original geometry. The separate Waalse Kerk parents remain untouched. A wider review verified the
+large adjacent Sint Jorishof mass is disjoint and retains its own identity.
+
+Vondelpark Muziektent replaces the closed generic cylinder with ten open
+iron columns, railings, nine entrance steps and a shallow tent roof with a
+small finial. The steps face the existing footbridge; island, bridge, water
+and trees remain mapped landscape. AHN samples constrain roof height, while
+the thin finial and decorative proportions remain visual approximations.
+The non-realized BAG record is documentary evidence, not a suppressed alias.
+
+Eight additional public park selections add 768 mapped features: Brasapark
+Noord/Zuid, Natuurpark Vrije Geer, Park de Schinkeleilanden, De Oeverlanden,
+Lange Bretten and Spoorpark Noord/Zuid. The main dataset now has 10,533
+features (5,335,782 bytes raw / 972,842 gzip); all prior 9,765 features and the
+optional Bos chunk remain byte-identical. The picker has 46 main selections
+plus Bos. Existing access restrictions, allotments and source holes remain;
+future Spoorpark Midden is excluded. Source, streaming, gallery, live-game,
+mobile and toggle checks passed. Both new meshes passed geometry, life-size
+placement, highlight and exact suppression checks in the actual game.
+
 ## Canal heritage, stages and six more parks: 93 original landmarks (2026-10-04)
 
 Herepoort / Bergpoort models the paired Rijksmuseum garden gate, with a truly
