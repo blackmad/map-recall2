@@ -1,0 +1,37 @@
+{
+  "modelId": "ing-house",
+  "landmarkId": "osm-way-57856367",
+  "name": "ING House / Infinity",
+  "sourceUrl": "https://mvsa-architects.com/en/projects/ing-house/",
+  "sourceUrls": [
+    "https://mvsa-architects.com/en/projects/ing-house/",
+    "https://www.amsterdam.nl/stadsarchief/stukken/plannen/zuidas/",
+    "https://www.breeam.nl/projecten/infinity-amsterdam-16223",
+    "https://www.lexence.com/wp-content/uploads/2025/02/Routebeschrijving-2.pdf"
+  ],
+  "wikidata": "Q645881",
+  "wikipedia": "nl:Infinity (gebouw)",
+  "address": "Amstelveenseweg 500, 1081 KL Amsterdam",
+  "center": [
+    52.3369407,
+    4.8553107
+  ],
+  "description": "Meyer and Van Schooten Architects completed ING House in 2002. Its glass-and-aluminium wedge rests on 16 inclined steel legs, 9–12 metres above ground, keeping a route open beneath its silver belly. The double-skin facade shields offices from A10 noise while drawing fresh air from the quieter south side. Six interior gardens form part of the design. ING moved out in 2015; the building became the multi-tenant Infinity offices.",
+  "destinationNotes": "The arrival pin is the public bicycle approach on Skûtsjespad at mapped road/footway junction n6407529791, matching installed routing_7438. It marks the approach to the complex, not a door. From there the mapped footway and steps connect to the covered pedestrian passage beneath ING House. The separately recorded main entrance n1339449505, Amstelveenseweg 500, lies inside its exact current BAG footprint. Primary Lexence visitor directions confirm ground-floor lift and visitor access. Keep the selected ING House identity when routing fails; do not substitute the closer northern busway or another POI.",
+  "entrance": {
+    "center": [
+      52.3371561,
+      4.8560226
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/node/1339449505",
+    "precision": "OSM entrance=main node n1339449505 with house number 500, last edited in 2019 as version 7. It lies within the current BAG parent and connects to the covered pedestrian passage. This is a mapped entrance location, not an independent door survey."
+  },
+  "streetApproach": {
+    "center": [
+      52.3369407,
+      4.8553107
+    ],
+    "sourceUrl": "https://www.openstreetmap.org/way/7381220",
+    "precision": "Actual mapped road node n6407529791 where footway w684001541 branches into steps to the covered passage. This is the public bicycle arrival approach, not a surveyed door."
+  }
+}

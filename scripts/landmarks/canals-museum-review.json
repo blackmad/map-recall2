@@ -1,0 +1,126 @@
+{
+  "id": "canals-museum",
+  "reviewedOn": "2026-10-04",
+  "status": "accepted",
+  "sourceImages": [
+    "docs/references/canals-museum/current-facade.webp",
+    "docs/references/canals-museum/facade-roof.jpg"
+  ],
+  "sourceAssertionsUsed": [
+    {
+      "source": "RCE1828",
+      "assertion": "Dubbel huis met pilastergevel voorzien van een fronton op de middenrisaliet",
+      "modeledFeature": "Single surveyed double house; six pilaster axes around five window bays; central projecting bay and wide triangular pediment",
+      "impact": "Selects classical pilaster/pediment assembly instead of generic neck or stepped gable"
+    },
+    {
+      "source": "Cached operator policy2023–2026",
+      "assertion": "Doric then composite pilasters; triangular central pediment with oval window, coat of arms and festoon",
+      "modeledFeature": "Lower plain capitals, upper paired volute approximation, central oval, simplified shields and pediment festoon",
+      "impact": "Architectural prose drives three recognizable assemblies without drawing search repetition"
+    },
+    {
+      "source": "Cached operator policy2023–2026",
+      "assertion": "Between-pilaster festoons removed in late eighteenth century",
+      "modeledFeature": "No repeated inter-pilaster festoons",
+      "impact": "Prevents incorrect restoration of historic drawing ornament"
+    },
+    {
+      "source": "Operator2026 exterior photograph",
+      "assertion": "Five bays; four tall bel-etage windows around central portal; cream basement and pilasters; taller middle row and short upper row",
+      "modeledFeature": "Measured facade-width five-bay rhythm, framed glazing, prominent stone doorcase and oval overdoor",
+      "impact": "Current photo calibrates text-supported geometry and verifies retained versus removed ornament"
+    },
+    {
+      "source": "Commons2010 full facade/roof photo",
+      "assertion": "Dark hipped roof and two small flanking dormers; adjoining houses remain separate",
+      "modeledFeature": "Explicit native clipped hipped roof and two small dormers",
+      "impact": "Resolves roof missing from cropped current operator image"
+    }
+  ],
+  "cpuCheck": {
+    "command": "node --import tsx scripts/check-canals-museum-geometry.ts",
+    "passed": true,
+    "triangles": 6502,
+    "firstHitVisiblePanes": 35,
+    "totalPanes": 35,
+    "openGardenProbes": 2,
+    "upwardRoofNormals": true
+  },
+  "pendingAcceptance": [],
+  "limitations": [
+    "No inspected archive drawing; failed bounded address searches reused honestly.",
+    "Eave, roof rise, ornamental dimensions and rear fenestration approximate; installed BAG native perimeter and roof maximum retained.",
+    "Garden excluded rather than modeled as whole opaque parcel.",
+    "No painted building name or speculative signage."
+  ],
+  "sourceCostObservation": "Reused one compact archive-record entry. Prose immediately selected two pilaster orders and pediment; its documented alteration removed needless festoon modeling. Additional work was installed footprint extraction and two exterior references; no repeated expansive archive search.",
+  "identityAudit": {
+    "passed": true,
+    "basis": "Targeted installed geometry/facts14/8414/5384 resolves exact BAG parent only; no invented unavailable OSM alias"
+  },
+  "specPath": "scripts/landmarks/canals-museum-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012176531"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012176536"
+    ]
+  ],
+  "zoom": 19,
+  "bearing": 270,
+  "rootAcceptance": {
+    "date": "2026-10-04",
+    "status": "accepted",
+    "evidence": "artifacts/canals-museum-review/",
+    "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
+    "limitations": "Photo-derived fine proportions, carving and rear fenestration remain approximate; bounded archive searches did not yield an inspected construction drawing for this house."
+  },
+  "referenceComparison": {
+    "reviewedOn": "2026-10-04",
+    "reviewer": "independent current-batch worker",
+    "status": "accepted",
+    "sourceEvidence": [
+      "docs/references/canals-museum/current-facade.webp",
+      "docs/references/canals-museum/facade-roof.jpg"
+    ],
+    "renderEvidence": [
+      "artifacts/canals-museum-review/gallery.png",
+      "artifacts/canals-museum-review/neutral-front.png",
+      "artifacts/canals-museum-review/live-rear.png"
+    ],
+    "findings": [
+      "Native gallery and actual canal-front view retain the source five-bay double-house rhythm, cream pilasters over brick, tall bel-etage around the central entrance, taller middle windows and short upper window row.",
+      "The central projecting entrance/oval overdoor, wide triangular pediment with oval and simplified ornament, two small flanking dormers and dark hipped roof distinguish the house from ordinary neighbors. Lower plain and upper volute capitals visibly separate the two pilaster orders.",
+      "Model avoids restoring the historically removed repeated inter-pilaster festoons, consistent with the cached operator architectural account.",
+      "Actual garden-side view shows the separate native house envelope, exposed rear windows and open garden instead of a parcel-filling slab; adjoining buildings remain drawn.",
+      "No material silhouette, facade assembly, open-space or native-neighbor failure found in inspected evidence."
+    ],
+    "limitations": [
+      "Brick tone is warmer/redder than the weathered brown current photo, within the established flat-color palette.",
+      "Pediment heraldry, capital carving, entrance arch and window proportions remain approximate.",
+      "Rear fenestration and roof rise/eave are inferred rather than established by a downloaded construction drawing.",
+      "Tree overlap partially hides bel-etage side windows in the actual front view; gallery provides the complete five-bay composition."
+    ],
+    "pending": []
+  },
+  "actualGameContractEvidence": {
+    "log": "/tmp/current-landmark-final-checks-2.log",
+    "status": "passed",
+    "checked": [
+      "chosen route destination",
+      "geographic pin",
+      "native scale and placement",
+      "physical sourced-card click",
+      "exact BAG replacement",
+      "resident drawable adjacent neighbors"
+    ]
+  },
+  "sharedValidation": {
+    "manualLandmarks": "145 native assets passed",
+    "poiContract": "145 models /146 independent destinations passed",
+    "typescript": "npm run lint passed",
+    "bundles": "signature placement, landmark runtime and route-selection rebuilt"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "muiderpoort",
+  "name": "Muiderpoort",
+  "landmarkId": "extract_landmarks_1639856562",
+  "modelUrl": "./models/muiderpoort.glb",
+  "suppressOsmIds": [
+    "w45038672",
+    "NL.IMBAG.Pand.0363100012169095"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9194747,
+      52.3637334
+    ],
+    "headingDegrees": 56.7,
+    "lengthMetres": 24.5,
+    "widthMetres": 17.8
+  },
+  "surveyed": {
+    "anchor": [
+      4.9194747,
+      52.3637334
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current OSM w45038672/BAG0363100012169095 exact polygon retrieved2026-10-04. Nativeeast/southmetres; authoredaxes33.3degrees relativeeast. 28.2m OSM3DBAG maximum; subordinateheightstages estimated from ownerphotos."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Muiderpoort",
+    "author": "Map Recall",
+    "sourceUrl": "https://stadsherstel.nl/monumenten/muiderpoort/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original surveyedtexture-free citygate with openarchedpassage, sandstoneDoricorders, heraldicpediments, brickwings, offsetoctagonal dome and clocklantern. Photos guideoriginalgeometry only; no downloadedmeshes or photopixels. Carvings/vault simplified; stageheights estimated."
+  }
+}

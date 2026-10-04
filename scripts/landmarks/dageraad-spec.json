@@ -1,0 +1,37 @@
+{
+  "id": "dageraad",
+  "name": "Museum De Dageraad",
+  "landmarkId": "extract_landmarks_897347854",
+  "modelUrl": "./models/dageraad.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012076951"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.898997149741256,
+      52.34985665994483
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 14.929,
+    "widthMetres": 14.850999999999999
+  },
+  "surveyed": {
+    "anchor": [
+      4.898997149741256,
+      52.34985665994483
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current museum VBO/parent identity; native RD east/south surveyed footprint, 3DBAG2020 AHN4 semantic roof levels; museum occupies corner shop only."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Museum De Dageraad",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.hetschip.nl/de-dageraad",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly corner parent only, with rounded stepped brickwork, scalloped narrow tower crown, horizontal white window rods and green shop entrances. Native survey17.56m main roof and21.34m narrow tower. Museum-name lettering omitted. Operator/heritage photographs guide geometry; no imported mesh or photo pixels. Adjoining estate parents and court remain."
+  }
+}

@@ -14,7 +14,7 @@
     "Exact modeled identities excluded; repeated tile identities, near-identical footprints and raised parts grouped.",
     "Ground-level courtyard buildings remain separate. Uncertain complex identities require manual research."
   ],
-  "candidateCount": 1860,
+  "candidateCount": 1858,
   "candidates": [
     {
       "id": "NL.IMBAG.Pand.0363100012207510",
@@ -4038,32 +4038,6 @@
         "state": "suggested",
         "reasons": [
           "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012068127",
-      "name": null,
-      "footprintSquareMetres": 3699,
-      "heightMetres": 48.3,
-      "center": [
-        4.855192000000001,
-        52.3371745
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "many",
-      "poiNames": [],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Complex footprint",
-          "Unusual mapped roof: many"
         ]
       },
       "priority": "low",
@@ -18082,34 +18056,6 @@
       "priority": "low",
       "status": "needs-identification-and-research",
       "sourceUrl": "https://www.openstreetmap.org/way/1386126986"
-    },
-    {
-      "id": "NL.IMBAG.Pand.0363100012164130",
-      "name": null,
-      "footprintSquareMetres": 2552,
-      "heightMetres": 25.7,
-      "center": [
-        4.939438,
-        52.369088500000004
-      ],
-      "aliases": [],
-      "raisedParts": false,
-      "roofShape": "",
-      "poiNames": [
-        "International Institute of Social History"
-      ],
-      "fidelity": {
-        "treatment": "unreviewed",
-        "workflow": "recognition-review",
-        "state": "suggested",
-        "reasons": [
-          "Mapped POI: International Institute of Social History",
-          "Complex footprint"
-        ]
-      },
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
     },
     {
       "id": "NL.IMBAG.Pand.0363100012143865",

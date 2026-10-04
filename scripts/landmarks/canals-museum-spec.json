@@ -1,0 +1,36 @@
+{
+  "id": "canals-museum",
+  "name": "Museum of the Canals \u2014 Herengracht 386",
+  "landmarkId": "extract_landmarks_915035378",
+  "modelUrl": "./models/canals-museum.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012176537"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8861835,
+      52.3678965
+    ],
+    "headingDegrees": 92.93335363117035,
+    "lengthMetres": 21.784371314611192,
+    "widthMetres": 14.711695885297168
+  },
+  "surveyed": {
+    "anchor": [
+      4.8861835,
+      52.3678965
+    ],
+    "northOffsetDegrees": -87.06664636882965
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 180,
+  "attribution": {
+    "title": "Museum of the Canals",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1828",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native BAG footprint model; source-supported pilaster facade and central pediment. Dimensions/ornament approximate. Current facade checked against operator photo; removed inter-pilaster festoons omitted."
+  }
+}

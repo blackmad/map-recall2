@@ -1,0 +1,114 @@
+{
+  "specPath": "scripts/landmarks/dageraad-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012075169"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012117924"
+    ]
+  ],
+  "zoom": 19.3,
+  "bearing": 225,
+  "sourceReadyChecks": [
+    "node --import tsx scripts/check-dageraad-geometry.ts"
+  ],
+  "referenceImages": [
+    "artifacts/landmarks/dageraad/references/operator-front.jpg",
+    "artifacts/landmarks/dageraad/references/platform-front.jpg"
+  ],
+  "status": "Independent corrected gallery/live visual review accepted for exact museum parent; actual game contract passed",
+  "limitations": [
+    "Only official museum corner parent is modeled; adjoining long estate wings are preserved.",
+    "No tower name lettering: map label identifies POI.",
+    "Main brick palette approximates warm brick; verify daylight golden reference against render.",
+    "Stepped cylinder rhythm is source-derived approximation, not surveyed fine ornament."
+  ],
+  "acceptanceRisks": [
+    "Native scope must retain neighboring long facades, which are not part of museum parent.",
+    "Scalloped tower crown and stepped cylinder surfaces must remain recognizable at native gallery/game scale.",
+    "Museum physical pointer card, route, map pin and exact mask require shared browser runner."
+  ],
+  "referenceComparison": {
+    "reviewedOn": "2026-10-04",
+    "reviewer": "independent current-batch worker, follow-up after geometry correction",
+    "status": "accepted",
+    "renderEvidence": [
+      "artifacts/dageraad-review/gallery-low-front.png",
+      "artifacts/dageraad-review/neutral-front.png",
+      "artifacts/dageraad-review/live-rear.png"
+    ],
+    "sourceEvidence": [
+      "artifacts/landmarks/dageraad/references/operator-front.jpg",
+      "artifacts/landmarks/dageraad/references/platform-front.jpg"
+    ],
+    "findings": [
+      "Previous buried-cylinder failure is visibly corrected: low-front gallery and actual front game view now show paired rounded tiers with exposed curved caps and receding edges at three levels. They read as an articulated corner around the intentionally blank central tower rather than isolated slots on a flat wall.",
+      "Central tower, narrow gridded flank openings, green lower doors, sculptural center relief and pale crown retain the source recognition features within the exact 136m² museum parent.",
+      "Operator/platform references include broad estate wings outside this parent. Current surrounding wings and courtyard space remain drawn in actual front/rear game views; scope and suppression must remain unchanged.",
+      "Accepted at native game scale in the established flat-color style. The correction restores the defining stepped-cylinder rhythm sufficiently for this scoped model."
+    ],
+    "limitations": [
+      "Tier projection/depth and curved profiles remain approximate and less emphatic than the photographic source; the pale cap strips carry much of the small-scale rhythm.",
+      "Tower scalloping, ceramic crown silhouettes and relief ornament are simplified; flat lighting reduces visible curvature.",
+      "Ochre matches warm sunlit brick broadly, while shaded source photographs read more grey-brown."
+    ],
+    "pending": []
+  },
+  "actualGameContractEvidence": {
+    "log": "/tmp/current-landmark-final-checks-2.log",
+    "status": "passed",
+    "checked": [
+      "chosen route destination",
+      "geographic pin",
+      "native scale and placement",
+      "physical sourced card click",
+      "exact parent suppression",
+      "resident drawable neighbors"
+    ]
+  },
+  "geometryCorrection": {
+    "date": "2026-10-04",
+    "cause": "Full-height main prism at street plane buried visual depth of low rounded tiers; previous tier wedges mainly changed lateral thresholds rather than creating visibly rounded retreat.",
+    "change": "Main backing recessed1.35m behind tower-front plane. Three rounded profiles per flank, clipped to surveyed street perimeter, now own exposed8.35/12.02/15.03m caps. Narrow windows follow actual tier surface. Curved pale cap strips replace isolated ledges.",
+    "nativeScope": "Unchanged136m² museum BAGparent; root ochre palette and21.34m central tower retained.",
+    "cpuEvidence": "scripts/check-dageraad-geometry.ts passed4004triangles, actual downward rays reach each round cap, facade first-hits retreat at both transitions; source window exposure and exact parent bounds remain passing.",
+    "visualStatus": "Independently reviewed refreshed low-front gallery and actual front/rear game captures; corrected tier rhythm accepted."
+  },
+  "referenceComparisonHistory": [
+    {
+      "reviewedOn": "2026-10-04",
+      "reviewer": "independent current-batch worker",
+      "status": "changes-required",
+      "renderEvidence": [
+        "artifacts/dageraad-review/gallery.png",
+        "artifacts/dageraad-review/gallery-low-front.png",
+        "artifacts/dageraad-review/neutral-front.png",
+        "artifacts/dageraad-review/live-rear.png"
+      ],
+      "sourceEvidence": [
+        "artifacts/landmarks/dageraad/references/operator-front.jpg",
+        "artifacts/landmarks/dageraad/references/platform-front.jpg"
+      ],
+      "findings": [
+        "Museum parent scope is narrow corner BAG0363100012076951; broad white gridded estate wing windows in references belong to preserved neighboring parents and are not required additions to this asset.",
+        "The own corner stepped rounded flank cylinders fail recognition: operator/platform photographs show receding tier volumes with substantial visible curved tops and edges. Current low-front gallery and actual game front show an almost continuous full-height wall with six isolated narrow slots and tiny ledges.",
+        "The source-derived low cylinder bodies appear enveloped by the main 17.56m prism; review requires reducing/clipping that parent body so the receding rounds have exposed tops and source-supported profiles. Root should confirm this suspected geometric cause.",
+        "The central blank tower, paired low green doors and pale crown are present. Crown teeth are readable, but the actual scalloped top/profile remains strongly simplified. Ochre is closer to sunlit operator brick than the previous red-brick palette; palette alone cannot repair missing volume articulation.",
+        "Exact neighbor preservation and open estate courts are visible in rear game evidence; no wider suppression or neighboring wing replacement is warranted."
+      ],
+      "pending": [
+        "Expose source-supported stepped rounded corner tiers within exact museum parent",
+        "Refresh low-front gallery and actual front game views after geometry fix",
+        "Independent re-review of corrected facade before visual acceptance"
+      ]
+    }
+  ],
+  "rootAcceptance": {
+    "date": "2026-10-04",
+    "status": "accepted",
+    "evidence": "artifacts/dageraad-review/",
+    "checks": "Gallery/current source and actual game front/rear reviewed; route, pin, physical sourced card, native scale, exact suppression, resident drawable neighbors passed.",
+    "limitations": "Fine ornament and photo-derived dimensions approximate; Dageraad scope is museum corner parent only."
+  }
+}

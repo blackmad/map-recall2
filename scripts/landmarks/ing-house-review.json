@@ -1,0 +1,38 @@
+{
+  "specPath": "scripts/landmarks/ing-house-spec.json",
+  "id": "ing-house",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012071645"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012216927"
+    ]
+  ],
+  "zoom": 17.7,
+  "bearing": 5,
+  "oppositeBearing": 185,
+  "referenceImages": [
+    "https://mvsa-architects.com/media/images/ING_F12_FOLDER.width-1160.jpg",
+    "https://mvsa-architects.com/media/images/Architect-Offices-ING-House-Kantor.2e16d0ba.fill-898x540.jpg"
+  ],
+  "risks": [
+    "Native 138m surveyed span and rising eastern end; no forced scale",
+    "Sixteen slanted supports visible against open undercroft",
+    "Rounded aluminium western nose and exposed glass facade rhythm",
+    "High patio roof gap, supported upward roof profile, equipment maxima excluded",
+    "All-layer exact suppression after GLB load and neighbor retention",
+    "Explicit route to osm-way-57856367, map label, physical useful sourced card",
+    "Arrival pin on sourced public Skûtsjespad approach; preserve actual eastern entrance separately",
+    "Photo-informed broad tapered support plates must read at normal low/game views; CPU taper checks alone are not visual acceptance",
+    "Archive-supported eastern ground lobby must read as tall exposed glazing up to the belly, with pedestrian lane beside it still open"
+  ],
+  "rootAcceptance": {
+    "date": "2026-10-04",
+    "status": "accepted",
+    "evidence": "artifacts/ing-house-review/",
+    "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
+    "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details."
+  },
+  "status": "accepted"
+}

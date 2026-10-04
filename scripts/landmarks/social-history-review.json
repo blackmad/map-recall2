@@ -1,0 +1,70 @@
+{
+  "specPath": "scripts/landmarks/social-history-spec.json",
+  "neighbors": [
+    [
+      "w57859920",
+      "NL.IMBAG.Pand.0363100012070696"
+    ]
+  ],
+  "zoom": 18.25,
+  "bearing": 0,
+  "sourceReadyChecks": [
+    "node --import tsx scripts/check-social-history-geometry.ts"
+  ],
+  "status": "accepted",
+  "visualChecks": [
+    "Compare south four glazed bay groups/open entry against AtelierPRO principal reference",
+    "Compare north long library ribbon/tall atrium/rounded pavilion against Arcam and architect context",
+    "Keep library below archive wall and stepped roof below25.72m",
+    "Verify east neighbor and harbour remain unsuppressed"
+  ],
+  "referenceImages": [
+    "artifacts/landmarks/social-history/references/atelierpro-harbour.png",
+    "artifacts/landmarks/social-history/references/atelierpro-north.png",
+    "artifacts/landmarks/social-history/references/arcam-street.jpg"
+  ],
+  "referenceComparison": {
+    "reviewedOn": "2026-10-04",
+    "reviewer": "independent current-batch worker",
+    "status": "accepted",
+    "renderEvidence": [
+      "artifacts/social-history-review/gallery.png",
+      "artifacts/social-history-review/neutral-front.png",
+      "artifacts/social-history-review/live-rear.png"
+    ],
+    "sourceEvidence": [
+      "artifacts/landmarks/social-history/references/atelierpro-harbour.png",
+      "artifacts/landmarks/social-history/references/atelierpro-north.png",
+      "artifacts/landmarks/social-history/references/arcam-street.jpg"
+    ],
+    "findings": [
+      "Concrete palette now reads as the reference off-white/grey precast warehouse rather than a white generic block. Tall sparse archive slots and narrow ribs preserve the source facade identity.",
+      "South entry presents four broad paired glazed groups and raised steps; north live view exposes the long projected library ribbon, tall end atrium and low rounded glazed pavilion. These major assemblies remain readable at native game scale.",
+      "Flat stepped roof remains subordinate to the archive body. Harbor, adjacent east building and surrounding road space remain visible in actual game views."
+    ],
+    "limitations": [
+      "Small ribs, slit positions, column recess depth and rounded pavilion divisions are house-style approximations rather than surveyed facade elevations.",
+      "Street-level photographic perspective differs from elevated game camera; review accepts major composition and source-supported assemblies, not photographic matching."
+    ],
+    "pending": []
+  },
+  "actualGameContractEvidence": {
+    "log": "/tmp/current-landmark-batch-review-3.log",
+    "status": "passed",
+    "checked": [
+      "native scale and placement",
+      "chosen route destination",
+      "geographic pin",
+      "physical click sourced card",
+      "exact replacement identities",
+      "resident drawable east neighbor"
+    ]
+  },
+  "rootAcceptance": {
+    "date": "2026-10-04",
+    "status": "accepted",
+    "evidence": "artifacts/social-history-review/",
+    "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
+    "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details."
+  }
+}

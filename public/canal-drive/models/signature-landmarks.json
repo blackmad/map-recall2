@@ -5043,7 +5043,7 @@
     "ons-lieve-heer-op-solder": {
       "id": "ons-lieve-heer-op-solder",
       "name": "Ons’ Lieve Heer op Solder — historic church and entrance",
-      "landmarkId": "extract_landmarks_769225968",
+      "landmarkId": "extract_landmarks_1791250152",
       "modelUrl": "./models/ons-lieve-heer-op-solder.glb",
       "suppressOsmIds": [
         "w266941199",
@@ -5076,18 +5076,21 @@
         "sourceUrl": "https://opsolder.nl/en/the-monument/",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
+        "modifications": "Original texture-free surveyed reconstruction of historic museum and separate modern entrance. Exact OSM/BAG identity suppression; open Heintje Hoekssteeg preserved. Photo-derived sash and modern facade assemblies, bounded upward roof planes and gables; dimensions above surveyed plan approximate."
       },
+      "relatedLandmarkIds": [
+        "extract_landmarks_769225968"
+      ],
       "bounds": {
         "min": [
-          -10.527772903442383,
+          -10.605344772338867,
           -1.9073486612342094e-7,
-          -11.974828720092773
+          -12.040220260620117
         ],
         "max": [
-          10.655447006225586,
-          21.200000762939453,
-          12.925000190734863
+          10.72342586517334,
+          19.850000381469727,
+          14.125265121459961
         ]
       },
       "placement": {
@@ -5101,13 +5104,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 24.899828910827637,
-        "heightMetres": 21.20000095367432,
-        "depthMetres": 21.18321990966797,
-        "depthCoverage": 1.004452617923228
+        "widthMetres": 26.165485382080078,
+        "heightMetres": 19.850000572204593,
+        "depthMetres": 21.328770637512207,
+        "depthCoverage": 1.0113542509255389
       },
-      "triangles": 9377,
-      "bytes": 134732,
+      "triangles": 11176,
+      "bytes": 164744,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "agnietenkapel": {
@@ -9846,6 +9849,485 @@
       },
       "triangles": 5896,
       "bytes": 87500,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "ing-house": {
+      "id": "ing-house",
+      "name": "ING House / Infinity",
+      "landmarkId": "osm-way-57856367",
+      "modelUrl": "./models/ing-house.glb",
+      "suppressOsmIds": [
+        "w57856367",
+        "NL.IMBAG.Pand.0363100012068127"
+      ],
+      "footprint": {
+        "centre": [
+          4.85519,
+          52.33717
+        ],
+        "headingDegrees": 85,
+        "lengthMetres": 137.75,
+        "widthMetres": 28.62
+      },
+      "spatialSuppression": false,
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.85519,
+          52.33717
+        ],
+        "northOffsetDegrees": 5,
+        "source": "Current in-use BAG0363100012068127;OSMw57856367 exact surveyed outline. 138m longitudinal eastward85deg axis, roof profile measured from AHN5/3DBAG and calibrated against primary MVSA photos. Original native-scale reconstruction, not imported mesh."
+      },
+      "attribution": {
+        "title": "ING House / Infinity",
+        "author": "Map Recall",
+        "sourceUrl": "https://mvsa-architects.com/en/projects/ing-house/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free flat-color glass/aluminium wedge, rounded auditorium nose, 16steel supports, double-skin facade and ground lobby. Exact surveyed BAG boundary, open undercroft. Heights use real roof planes;equipment peaks excluded. No imported third-party meshes or image pixels."
+      },
+      "bounds": {
+        "min": [
+          -69.7292251586914,
+          -1.9073486612342094e-7,
+          -13.731155395507812
+        ],
+        "max": [
+          68.43206787109375,
+          48.55987548828125,
+          14.65999984741211
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.85519,
+          52.33717
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 95,
+        "facadeBearingDegrees": 85,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 138.16129302978516,
+        "heightMetres": 48.559875679016116,
+        "depthMetres": 28.391155242919922,
+        "depthCoverage": 0.9920040266568806
+      },
+      "triangles": 26416,
+      "bytes": 246012,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "muiderpoort": {
+      "id": "muiderpoort",
+      "name": "Muiderpoort",
+      "landmarkId": "extract_landmarks_1639856562",
+      "modelUrl": "./models/muiderpoort.glb",
+      "suppressOsmIds": [
+        "w45038672",
+        "NL.IMBAG.Pand.0363100012169095"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9194747,
+          52.3637334
+        ],
+        "headingDegrees": 56.7,
+        "lengthMetres": 24.5,
+        "widthMetres": 17.8
+      },
+      "surveyed": {
+        "anchor": [
+          4.9194747,
+          52.3637334
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current OSM w45038672/BAG0363100012169095 exact polygon retrieved2026-10-04. Nativeeast/southmetres; authoredaxes33.3degrees relativeeast. 28.2m OSM3DBAG maximum; subordinateheightstages estimated from ownerphotos."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Muiderpoort",
+        "author": "Map Recall",
+        "sourceUrl": "https://stadsherstel.nl/monumenten/muiderpoort/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original surveyedtexture-free citygate with openarchedpassage, sandstoneDoricorders, heraldicpediments, brickwings, offsetoctagonal dome and clocklantern. Photos guideoriginalgeometry only; no downloadedmeshes or photopixels. Carvings/vault simplified; stageheights estimated."
+      },
+      "bounds": {
+        "min": [
+          -14.012145042419434,
+          -9.536743306171047e-8,
+          -12.36886978149414
+        ],
+        "max": [
+          14.012145042419434,
+          28.200000762939453,
+          13.088796615600586
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9194747,
+          52.3637334
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 56.69999999999999,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 28.024290084838867,
+        "heightMetres": 28.200000858306886,
+        "depthMetres": 25.457666397094727,
+        "depthCoverage": 1.4302059773648723
+      },
+      "triangles": 11859,
+      "bytes": 147172,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "idfa-pavilion": {
+      "id": "idfa-pavilion",
+      "name": "IDFA Het Documentaire Paviljoen",
+      "landmarkId": "osm-way-57857054",
+      "modelUrl": "./models/idfa-pavilion.glb",
+      "suppressOsmIds": [
+        "w57857054",
+        "NL.IMBAG.Pand.0363100012237216"
+      ],
+      "footprint": {
+        "centre": [
+          4.875,
+          52.36108
+        ],
+        "headingDegrees": 116.4,
+        "lengthMetres": 44.1,
+        "widthMetres": 29.8
+      },
+      "spatialSuppression": false,
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.875,
+          52.36108
+        ],
+        "northOffsetDegrees": 26.4,
+        "source": "Current BAG parent0363100012237216; native facade xaxis116.4degrees/+Z206.4degrees. AHN5 surveyed roof planes relative to groundNAP-1.514m. RCE504833 and Arcam photographs guide original exposed loggias, domes and terrace."
+      },
+      "attribution": {
+        "title": "IDFA Het Documentaire Paviljoen",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.idfa.nl/en/vondelpark/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free plaster/brick pavilion with exposed arched loggias, balustrades, corner domes, central classical facade and native surveyed roof contours. No imported mesh or photo pixels."
+      },
+      "bounds": {
+        "min": [
+          -22.32420539855957,
+          0,
+          -17.3799991607666
+        ],
+        "max": [
+          21.915000915527344,
+          21.721500396728516,
+          16.625
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.875,
+          52.36108
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 116.39999999999998,
+        "facadeBearingDegrees": 116.39999999999998,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 44.239206314086914,
+        "heightMetres": 21.721500396728516,
+        "depthMetres": 34.0049991607666,
+        "depthCoverage": 1.141107354388141
+      },
+      "triangles": 17688,
+      "bytes": 178660,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "social-history": {
+      "id": "social-history",
+      "name": "International Institute of Social History",
+      "landmarkId": "extract_landmarks_742782013",
+      "modelUrl": "./models/social-history.glb",
+      "suppressOsmIds": [
+        "w57859743",
+        "NL.IMBAG.Pand.0363100012164130"
+      ],
+      "footprint": {
+        "centre": [
+          4.939438,
+          52.369089
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 76.6,
+        "widthMetres": 37.6
+      },
+      "spatialSuppression": false,
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.939438,
+          52.369089
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Native current BAG0363100012164130 footprint, current OSMw57859743. Facade assemblies and relative vertical dimensions from AtelierPRO references."
+      },
+      "attribution": {
+        "title": "International Institute of Social History",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction of the1961 concrete cocoa warehouse transformed by AtelierPRO in1989; off-white vertical ribs, blind archives, raised entrance, library cantilever, tall harbour atrium and rounded glass pavilion. No imported meshes or image pixels. Exact BAG/OSM suppression preserves the adjacent historic warehouse and waterfront."
+      },
+      "bounds": {
+        "min": [
+          -38.27000045776367,
+          1.7881393032936899e-9,
+          -18.771163940429688
+        ],
+        "max": [
+          38.266510009765625,
+          25.649999618530273,
+          20.450000762939453
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.939438,
+          52.369089
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 76.5365104675293,
+        "heightMetres": 25.649999616742136,
+        "depthMetres": 39.22116470336914,
+        "depthCoverage": 1.0431160825364132
+      },
+      "triangles": 3302,
+      "bytes": 46964,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "dageraad": {
+      "id": "dageraad",
+      "name": "Museum De Dageraad",
+      "landmarkId": "extract_landmarks_897347854",
+      "modelUrl": "./models/dageraad.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012076951"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.898997149741256,
+          52.34985665994483
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 14.929,
+        "widthMetres": 14.850999999999999
+      },
+      "surveyed": {
+        "anchor": [
+          4.898997149741256,
+          52.34985665994483
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current museum VBO/parent identity; native RD east/south surveyed footprint, 3DBAG2020 AHN4 semantic roof levels; museum occupies corner shop only."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Museum De Dageraad",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.hetschip.nl/de-dageraad",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly corner parent only, with rounded stepped brickwork, scalloped narrow tower crown, horizontal white window rods and green shop entrances. Native survey17.56m main roof and21.34m narrow tower. Museum-name lettering omitted. Operator/heritage photographs guide geometry; no imported mesh or photo pixels. Adjoining estate parents and court remain."
+      },
+      "bounds": {
+        "min": [
+          -6.970600128173828,
+          -4.577636616431846e-7,
+          -6.641499996185303
+        ],
+        "max": [
+          7.958399772644043,
+          21.899999618530273,
+          8.209500312805176
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.898997149741256,
+          52.34985665994483
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 14.928999900817871,
+        "heightMetres": 21.900000076293935,
+        "depthMetres": 14.851000308990479,
+        "depthCoverage": 1.0000000208060387
+      },
+      "triangles": 4004,
+      "bytes": 57452,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "canals-museum": {
+      "id": "canals-museum",
+      "name": "Museum of the Canals — Herengracht 386",
+      "landmarkId": "extract_landmarks_915035378",
+      "modelUrl": "./models/canals-museum.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012176537"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8861835,
+          52.3678965
+        ],
+        "headingDegrees": 92.93335363117035,
+        "lengthMetres": 21.784371314611192,
+        "widthMetres": 14.711695885297168
+      },
+      "surveyed": {
+        "anchor": [
+          4.8861835,
+          52.3678965
+        ],
+        "northOffsetDegrees": -87.06664636882965
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 180,
+      "attribution": {
+        "title": "Museum of the Canals",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1828",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native BAG footprint model; source-supported pilaster facade and central pediment. Dimensions/ornament approximate. Current facade checked against operator photo; removed inter-pilaster festoons omitted."
+      },
+      "bounds": {
+        "min": [
+          -7.539999961853027,
+          0,
+          -11.092185974121094
+        ],
+        "max": [
+          7.539999961853027,
+          17.809999465942383,
+          12.332185745239258
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8861835,
+          52.3678965
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 2.9333536311703483,
+        "facadeBearingDegrees": 272.93335363117035,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 23.42437171936035,
+        "heightMetres": 17.809999465942383,
+        "depthMetres": 15.079999923706055,
+        "depthCoverage": 1.0250347778584092
+      },
+      "triangles": 6502,
+      "bytes": 80060,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "niod": {
+      "id": "niod",
+      "name": "NIOD Institute for War, Holocaust, and Genocide Studies",
+      "landmarkId": "extract_landmarks_1742509310",
+      "modelUrl": "./models/niod.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012169506"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.885957632081178,
+          52.36811466960355
+        ],
+        "headingDegrees": 92.85016810608217,
+        "lengthMetres": 17.310609999999997,
+        "widthMetres": 54.51096
+      },
+      "surveyed": {
+        "anchor": [
+          4.885957632081178,
+          52.36811466960355
+        ],
+        "northOffsetDegrees": -87.14983221643158,
+        "source": "Exact current PDOK BAG parent; native metres/front axis from actual east frontage."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "NIOD Institute for War, Holocaust, and Genocide Studies",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free sandstone French neo-Renaissance double house. Exact BAG perimeter at scale1 with separately low middle/rear roof zones. Salm1888drawing resolves window groups, carriage entry, dormer assemblies;2016municipalphoto overrides obsolete standing ridge figures and small dormers. AHN5roof levels guide heights; carved reliefs and skylight are visual approximations. No imported mesh or reference-photo pixels."
+      },
+      "bounds": {
+        "min": [
+          -8.862234115600586,
+          -3.814697322468419e-7,
+          -27.449480056762695
+        ],
+        "max": [
+          8.872237205505371,
+          23.399999618530273,
+          28.309450149536133
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.885957632081178,
+          52.36811466960355
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 2.850167783568395,
+        "facadeBearingDegrees": 92.85016810608215,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 55.75893020629883,
+        "heightMetres": 23.400000000000006,
+        "depthMetres": 17.734471321105957,
+        "depthCoverage": 0.3253377177930082
+      },
+      "triangles": 15056,
+      "bytes": 161048,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

@@ -60,7 +60,7 @@
       "priority": "urgent",
       "status": "verified",
       "owner": "root",
-      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5\u2013120 fps."
+      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5–120 fps."
     },
     {
       "id": "building-inspection",
@@ -229,7 +229,7 @@
     },
     {
       "id": "vinoly",
-      "task": "Vi\u00f1oly",
+      "task": "Viñoly",
       "priority": "normal",
       "status": "queued"
     },
@@ -339,7 +339,7 @@
     },
     {
       "id": "kinderkookkafe",
-      "task": "Kinderkookkaf\u00e9",
+      "task": "Kinderkookkafé",
       "priority": "normal",
       "status": "queued"
     },
@@ -447,7 +447,7 @@
     },
     {
       "id": "street-aware-procedural-architecture",
-      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215\u2013247, Bethani\u00ebndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
+      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215–247, Bethaniëndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
       "priority": "high",
       "status": "verified-pilot",
       "notes": "Three self-review/improvement cycles complete on Overtoom, De Wallen and Marcantilaan, plus adjacent withheld-source transfers. 36 tests and four rendering-mode browser review pass; 349 surveyed neighbors, 95 frozen frontage assignments, 169 compact architectural street segments. Current source and cohort admission replay pass. Final same-worker profile-on/off CPU compile aggregate +0.29%; walls +3.29%, extras -0.37%, one of 24 cases +12.3%. Reviewed stage triangles decrease with unchanged draw calls. Full-game GPU budget remains unverified. Ready for reviewed city batches, not a blanket city-wide style claim. Approximate street character, no individual facade registration claim. Latest demos: artifacts/street-appearance/cycles/index.html."
@@ -586,14 +586,15 @@
     },
     {
       "id": "ing-house",
-      "task": "ING House / Infinity \u2014 original house-style landmark",
+      "task": "ING House / Infinity — original house-style landmark",
       "priority": "high",
-      "status": "queued",
-      "owner": "root",
+      "status": "verified",
+      "owner": "ing_house",
       "requested": true,
       "workflow": "full-landmark",
       "sourceUrl": "https://mvsa-architects.com/en/projects/ing-house/",
-      "notes": "Explicit user request. MVSA primary reference documents glass/aluminium wedge and 9\u201312 m stilts; preserve raised open structure and distinctive rising silhouette. Resolve exact OSM/BAG footprint and genuine destination identity before modeling. Completion requires destination, map pin/label and sourced info card."
+      "notes": "Explicit user request. MVSA primary reference documents glass/aluminium wedge and 9–12 m stilts; preserve raised open structure and distinctive rising silhouette. Resolve exact OSM/BAG footprint and genuine destination identity before modeling. Completion requires destination, map pin/label and sourced info card.",
+      "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
     },
     {
       "id": "dominant-building-fidelity-triage",
@@ -605,14 +606,77 @@
     },
     {
       "id": "idfa-vondelpark-pavilion",
-      "task": "IDFA \u2014 Het Documentaire Paviljoen / Vondelparkpaviljoen",
+      "task": "IDFA — Het Documentaire Paviljoen / Vondelparkpaviljoen",
       "priority": "high",
-      "status": "queued",
-      "owner": "root",
+      "status": "verified",
+      "owner": "idfa_pavilion",
       "requested": true,
       "workflow": "full-landmark",
       "sourceUrl": "https://www.idfa.nl/en/vondelpark/",
-      "notes": "Explicit user request. IDFA confirms venue at Vondelpark 3, 1071 AA Amsterdam. Research historic pavilion silhouette, facade and terrace; resolve current OSM/BAG identity and existing mapped POI aliases before building. IDFA moved here in summer 2023; cinema, studio, salon and public cafe share this pavilion. Preserve meaningful sourced card and integrate destination plus geographic pin/label. No separate duplicate building for Cafe Vertigo. References: https://www.idfa.nl/vondelpark/verhuur/praktische-informatie/ and https://www.idfa.nl/en/about-idfa/meet-the-team/annual-reports/annualreport-2023/het-documentaire-paviljoen/."
+      "notes": "Explicit user request. IDFA confirms venue at Vondelpark 3, 1071 AA Amsterdam. Research historic pavilion silhouette, facade and terrace; resolve current OSM/BAG identity and existing mapped POI aliases before building. IDFA moved here in summer 2023; cinema, studio, salon and public cafe share this pavilion. Preserve meaningful sourced card and integrate destination plus geographic pin/label. No separate duplicate building for Cafe Vertigo. References: https://www.idfa.nl/vondelpark/verhuur/praktische-informatie/ and https://www.idfa.nl/en/about-idfa/meet-the-team/annual-reports/annualreport-2023/het-documentaire-paviljoen/.",
+      "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
+    },
+    {
+      "id": "muiderpoort-original",
+      "task": "Muiderpoort historic gate — original house-style model",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "muiderpoort",
+      "workflow": "full-landmark",
+      "notes": "Existing canonical POI extract_landmarks_1639856562; historic gate, not station. Fresh worker owns researched native builder and geometry checks; root integrates destination/pin/card, exact suppression and gallery/live review.",
+      "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
+    },
+    {
+      "id": "dageraad-original",
+      "task": "Museum De Dageraad",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "dageraad",
+      "notes": "Fresh bounded worker source/CPU checkpoint delivered; root shared export and gallery/live acceptance in progress. Preserve failure evidence and current mapped native footprint.",
+      "validation": "Root and independent visual comparison accepted; actual route, pin, physical sourced card, native scale, exact suppression and resident drawable neighbors passed. Earlier failed visuals retained in review history."
+    },
+    {
+      "id": "social-history-original",
+      "task": "International Institute of Social History",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "social_history",
+      "notes": "Fresh bounded worker source/CPU checkpoint delivered; root shared export and gallery/live acceptance in progress. Preserve failure evidence and current mapped native footprint.",
+      "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
+    },
+    {
+      "id": "our-lord-attic-repair",
+      "task": "Our Lord in the Attic — facade and canonical identity repair",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "our_lord_attic",
+      "notes": "Fresh bounded worker source/CPU checkpoint delivered; root shared export and gallery/live acceptance in progress. Preserve failure evidence and current mapped native footprint.",
+      "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
+    },
+    {
+      "id": "da-costakade-13-17-archive-facades",
+      "task": "Use user-found 1903 Beeldbank elevation to improve Da Costakade 13–17 coordinated facade and roof composition",
+      "priority": "high",
+      "status": "research",
+      "owner": "archive_facades",
+      "reference": "docs/references/da-costakade-13-17-beeldbank.json",
+      "validation": "Drawing screenshot inspected; address-to-BAG matching and current-state comparison pending. Existing curved-footprint roof fix is separate."
+    },
+    {
+      "id": "canals-museum-original",
+      "task": "Build Museum of the Canals using RCE and operator architectural descriptions",
+      "priority": "high",
+      "status": "verified",
+      "owner": "canals_museum_archive_build",
+      "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
+    },
+    {
+      "id": "niod-original",
+      "task": "Build NIOD using Salm archive elevation, register text and current-state comparison",
+      "priority": "high",
+      "status": "verified",
+      "owner": "niod_archive_build",
+      "validation": "Root and independent visual comparison accepted; actual route, pin, physical sourced card, native scale, exact suppression and resident drawable neighbors passed. Earlier failed visuals retained in review history."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

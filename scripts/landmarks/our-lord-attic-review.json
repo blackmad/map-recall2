@@ -1,0 +1,109 @@
+{
+  "specPath": "scripts/landmarks/our-lord-attic-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012178020"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012178030"
+    ]
+  ],
+  "zoom": 18.9,
+  "bearing": 301,
+  "sourceReadyChecks": [
+    "node --import tsx scripts/check-our-lord-attic-geometry.ts"
+  ],
+  "referenceImages": [
+    "https://www.nlbouwmeesters.nl/wp-content/uploads/2020/09/Project-NL-Bouwmeesters-OHLOS-impressie-04.jpg",
+    "https://vekemans.nl/wp-content/uploads/2015/04/Ons-Lieve-Heer-scaled.jpg"
+  ],
+  "status": "accepted",
+  "referenceComparison": {
+    "reviewedOn": "2026-10-04",
+    "reviewer": "independent current-batch worker, follow-up with canal-side camera",
+    "status": "accepted",
+    "gallery": "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
+    "renderEvidence": [
+      "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
+      "artifacts/ons-lieve-heer-op-solder-review/neutral-front.png",
+      "artifacts/ons-lieve-heer-op-solder-review/live-rear.png"
+    ],
+    "sourceEvidence": [
+      "https://www.nlbouwmeesters.nl/wp-content/uploads/2020/09/Project-NL-Bouwmeesters-OHLOS-impressie-04.jpg",
+      "https://vekemans.nl/wp-content/uploads/2015/04/Ons-Lieve-Heer-scaled.jpg"
+    ],
+    "findings": [
+      "New actual canal-front neutral view at bearing301 resolves the earlier camera-evidence gap: both historic and modern fronts are visibly installed beside the open Heintje Hoekssteeg alley. Neighbor roofs no longer hide the principal facades.",
+      "Historic four-bay white sash rhythm, pale lower pui, raised steps and triangular shoulder-scroll gable remain recognizable in the actual scene. Modern entrance reads as a separate grey-brick three-bay ungridded facade with red/orange bands, pitched red roof and glazing lantern.",
+      "Corrected greyBrick retains the source grey-brown recycled masonry identity against the historic red/brown house. The source-supported differing facade/roof families and open alley establish the compound at native scale.",
+      "Actual game contract independently records the correct chosen destination, pin, physical sourced card, exact two-parent replacement and resident drawable neighbors."
+    ],
+    "limitations": [
+      "Facade dimensions, trim, sash spacing and roof details remain house-style approximations.",
+      "Tree overlap partly obscures the historic ground entry in the actual camera, while gallery shows the stair/pui clearly.",
+      "Modern windows and brick bands appear relatively bold at game scale; accepted as the stylized three-bay rhythm rather than photographic detail matching."
+    ],
+    "pending": []
+  },
+  "referenceComparisonHistory": [
+    {
+      "reviewedOn": "2026-10-04",
+      "gallery": "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
+      "status": "changes-required",
+      "findings": [
+        "Modern entrance shell stone palette is noticeably too tan compared with recycled dark gray-brown brick in primary mason and contractor photographs.",
+        "Historic four-bay sash frontage, pale lower pui, raised stairs, triangular shoulder-scroll gable and separate public alley appear readable at gallery resolution.",
+        "Modern three ungridded bays appear exposed; roof gable/dormer and exact neighbor retention require higher resolution actual game views."
+      ],
+      "pending": [
+        "Correct modern recycled-brick material color",
+        "Root actual game-scene acceptance and refreshed reference comparison"
+      ]
+    },
+    {
+      "reviewedOn": "2026-10-04",
+      "reviewer": "independent current-batch worker",
+      "status": "live-visual-review-pending",
+      "gallery": "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
+      "renderEvidence": [
+        "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
+        "artifacts/ons-lieve-heer-op-solder-review/neutral-front.png",
+        "artifacts/ons-lieve-heer-op-solder-review/live-front.png",
+        "artifacts/ons-lieve-heer-op-solder-review/live-rear.png"
+      ],
+      "sourceEvidence": [
+        "https://www.nlbouwmeesters.nl/wp-content/uploads/2020/09/Project-NL-Bouwmeesters-OHLOS-impressie-04.jpg",
+        "https://vekemans.nl/wp-content/uploads/2015/04/Ons-Lieve-Heer-scaled.jpg"
+      ],
+      "findings": [
+        "Previous tan modern-entrance defect is corrected: greyBrick reads as the grey-brown recycled brick shown in primary mason/contractor photographs. Source images were retrieved to temporary files for this review because no cached raster paths were present in the source record.",
+        "Gallery shows recognizable historic four-bay white sash frontage, pale lower pui, raised stair, triangular shoulder-scroll gable, separate alley, modern three ungridded bays and red/orange lintels/roof termination. Small trim and facade dimensions remain approximate.",
+        "Actual game evidence proves placement and physical POI card but provided front/neutral/rear screenshots look across the block or at roof/rear sides; neighboring roofs occlude principal historic and modern canal-front facades. These views do not establish their actual in-scene visibility or source comparison."
+      ],
+      "pending": [
+        "Capture actual game view from canal side with both principal facades visible at useful scale",
+        "Review historic/modern fronts, alley and native neighbors from that view before full visual acceptance"
+      ]
+    }
+  ],
+  "actualGameContractEvidence": {
+    "log": "/tmp/current-landmark-final-checks-2.log",
+    "status": "passed",
+    "checked": [
+      "chosen route destination",
+      "geographic pin",
+      "native scale and placement",
+      "physical sourced card click",
+      "exact historic and modern parent suppression",
+      "resident drawable neighbors"
+    ]
+  },
+  "cameraReason": "Principal canal facade outward normal approx121degrees; map camera approaches from bearing+180. Previous31/211 views obscured frontage. Re-review301 canal-side.",
+  "rootAcceptance": {
+    "date": "2026-10-04",
+    "status": "accepted",
+    "evidence": "artifacts/ons-lieve-heer-op-solder-review/",
+    "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
+    "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details."
+  }
+}

@@ -1,0 +1,811 @@
+{
+  "id": "niod",
+  "retrievedOn": "2026-10-04",
+  "coordinateConvention": "Native metres; +X follows canal facade towards north, +Z outward to canal. Local axes rotated 2.850168 degrees east of north; glTF Y up.",
+  "anchor": [
+    4.885957632081178,
+    52.36811466960355
+  ],
+  "authorHeadingDegrees": 2.850167783568424,
+  "localRing": [
+    [
+      7.88798,
+      27.26768
+    ],
+    [
+      7.96026,
+      5.74044
+    ],
+    [
+      8.61872,
+      5.75305
+    ],
+    [
+      8.65847,
+      -27.1407
+    ],
+    [
+      -0.18273,
+      -27.19265
+    ],
+    [
+      -8.37805,
+      -27.24328
+    ],
+    [
+      -8.37404,
+      -26.73372
+    ],
+    [
+      -8.39419,
+      -22.8242
+    ],
+    [
+      -8.45746,
+      -10.65364
+    ],
+    [
+      -8.65214,
+      27.26768
+    ]
+  ],
+  "building": {
+    "type": "Feature",
+    "properties": {
+      "aantal_verblijfsobjecten": 1,
+      "bouwjaar": 1889,
+      "documentdatum": "2023-09-28",
+      "documentnummer": "GV00007182_AC00AC",
+      "gebruiksdoel": "kantoorfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012169506",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012169506",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/7f6d2e12-6ae9-55a1-a235-8ca13439c26a"
+      ]
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.886364076119955,
+            52.36817367405613
+          ],
+          [
+            4.886047805927625,
+            52.36818401080708
+          ],
+          [
+            4.886048472930157,
+            52.36818995451407
+          ],
+          [
+            4.88556515867898,
+            52.36820511023687
+          ],
+          [
+            4.88555792736448,
+            52.36812525065627
+          ],
+          [
+            4.885551188042401,
+            52.36805122618983
+          ],
+          [
+            4.8855586785117815,
+            52.368051033234
+          ],
+          [
+            4.885616110657866,
+            52.36804909254269
+          ],
+          [
+            4.885794899447969,
+            52.368043046140556
+          ],
+          [
+            4.886351976066164,
+            52.36802422897023
+          ],
+          [
+            4.886364076119955,
+            52.36817367405613
+          ]
+        ]
+      ]
+    },
+    "id": "6c537744-5de8-5b97-85ef-29215fdd98e1",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/6c537744-5de8-5b97-85ef-29215fdd98e1?f=json"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/6c537744-5de8-5b97-85ef-29215fdd98e1?f=jsonfg"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/6c537744-5de8-5b97-85ef-29215fdd98e1?f=html"
+      },
+      {
+        "rel": "collection",
+        "title": "The collection to which this feature belongs",
+        "type": "application/json",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand?f=json"
+      }
+    ]
+  },
+  "vbo": {
+    "type": "Feature",
+    "properties": {
+      "bronhouder_identificatie": "0363",
+      "bronhouder_naam": "Amsterdam",
+      "documentdatum": "2012-08-09",
+      "documentnummer": "GV00001551",
+      "gebruiksdoel": "kantoorfunctie",
+      "geconstateerd": "N",
+      "hoofdadres_identificatie": "0363200000529256",
+      "hoofdadres_status": "Naamgeving uitgegeven",
+      "huisletter": null,
+      "huisnummer": 380,
+      "identificatie": "0363010001044655",
+      "openbare_ruimte_identificatie": "0363300000003533",
+      "openbare_ruimte_naam": "Herengracht",
+      "openbare_ruimte_naam_kort": null,
+      "openbare_ruimte_status": "Naamgeving uitgegeven",
+      "oppervlakte": 2919,
+      "pand.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/6c537744-5de8-5b97-85ef-29215fdd98e1"
+      ],
+      "postcode": "1016CJ",
+      "provincie_afkorting": "NH",
+      "provincie_naam": "Noord-Holland",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0363010001044655",
+      "status": "Verblijfsobject in gebruik",
+      "toevoeging": null,
+      "woonplaats_identificatie": "3594",
+      "woonplaats_naam": "Amsterdam",
+      "woonplaats_status": "Woonplaats aangewezen"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        4.886316409224283,
+        52.3680935805551
+      ]
+    },
+    "id": "7f6d2e12-6ae9-55a1-a235-8ca13439c26a"
+  },
+  "areaNote": "VBO oppervlakte2919m2 is usable floor area, not footprint; 3DBAG ground reference926.15m2.",
+  "sourceUrls": [
+    "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Herengracht%20380%20Amsterdam&rows=2",
+    "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?f=json&identificatie=0363010001044655",
+    "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/6c537744-5de8-5b97-85ef-29215fdd98e1?f=json",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012169506"
+  ],
+  "research": {
+    "poiId": "lm-extract_landmarks_1742509310",
+    "extractId": "extract_landmarks_1742509310",
+    "name": "NIOD Institute for War, Holocaust, and Genocide Studies",
+    "backlogStatus": "pending",
+    "backlogRank": 206,
+    "centerLatLng": [
+      52.3680936,
+      4.8863164
+    ],
+    "address": "Herengracht 380\u2013382",
+    "bagPandIdentity": null,
+    "identityStatus": "Genuine destination/extract identity confirmed; BAG parent/footprint matching remains a prerequisite before modeling.",
+    "rce": {
+      "monumentNumber": 1826,
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826",
+      "access": "HTML retrieved and description inspected using Python urllib; web retrieval succeeded for 1826/1828 but failed for 3133 including PDF; fallback HTTP fetch succeeded.",
+      "descriptionDutch": "Dubbel huis (XIXd door A.Salm) met rijk gebeeldhouwde zandstenen gevel in Franse neo-renaissance-stijl, stoephek en twee lantarens.",
+      "descriptionDate": "Register inscription 1970; wording date not stated; retrieved 2026-10-04.",
+      "buildingPart": "Street-facing house at registered address; rear scope not inferred from prose.",
+      "assertions": [
+        {
+          "feature": "Double house, richly carved sandstone facade, French neo-Renaissance style, pavement railing and two lanterns.",
+          "confidence": "High: explicit register prose.",
+          "dimensionsUnknown": true
+        }
+      ]
+    },
+    "archiveSearch": {
+      "queries": [
+        "site.archief.amsterdam \"Herengracht\" \"380\" bouwtekening",
+        "site.archief.amsterdam \"380-382\" Salm"
+      ],
+      "status": "Exact City Archives elevation identifier resolved through Commons mirror; original archive URL returned 502. Mirror scan downloaded and visually inspected.",
+      "negativeEvidence": "No matching accessible result does not mean no drawing exists. Search returned nearby or third-party records; unrelated Korsjespoortsteeg 17 drawing excluded.",
+      "emailRequested": false,
+      "recordId": "1315BT900084",
+      "originalUrl": "http://beeldbank.amsterdam.nl/afbeelding/1315BT900084",
+      "mirrorPage": "https://commons.wikimedia.org/wiki/File:Herengracht380-382_bouwtekening_Salm.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Herengracht380-382_bouwtekening_Salm.jpg",
+      "cachedImage": "docs/references/next-batch-archive/niod-salm-elevation-1888.jpg",
+      "creator": "Abraham Salm",
+      "drawingDate": "ca.1888 per Commons catalogue; date not independently confirmed on archive record",
+      "reuseTerms": "Commons marks Salm artwork and faithful reproduction public domain; original archive terms not independently inspected.",
+      "featuresResolved": [
+        "Principal front proportions; three dominant window groups; asymmetric right-hand carriage opening; center and flanking elaborate dormer profiles; steep front roof slope and ornament placement."
+      ],
+      "notResolved": [
+        "Metric dimensions/roof pitch not extracted from scan scale; rear roof/lightcourt geometry and present sculpture state require survey/current photos."
+      ]
+    },
+    "modelingEffort": "High: bespoke sculpted facade, dormer assemblies and surveyed rear/lightcourt scope; full landmark loop.",
+    "visualAcceptance": "Not modeled or accepted. Geometry/gallery/live scene, exact suppression/neighbor retention, destination/pin/card still required.",
+    "otherSources": [
+      {
+        "url": "https://openresearch.amsterdam/nl/page/151733/erfgoed-van-de-week-ambitieuze-techniek-op-de-herengracht",
+        "type": "Municipal conservation research, 2022-04-28",
+        "access": "Read text and visually inspected cached Paul Nieuwenhuizen 2016 facade photo.",
+        "cachedImage": "docs/references/next-batch-archive/niod-municipal-facade-2016.jpg",
+        "imageUrl": "https://openresearch.amsterdam/image/2026/9/4/53_af_niod_pn_2-195989628.jpg%28mediaclass-landscape-large.93f1e343de01d1381fc159cb72e3b9e0ecdbfeae%29.jpg",
+        "reuseTerms": "Facade photo explicitly All Rights Reserved; cached only as research reference, never asset texture.",
+        "featuresResolved": [
+          "2016 photo supports steep roof, dominant three dormers/window groups, sandstone front and right opening.",
+          "Municipal text confirms glazed roof/lightcap over staircase/hall/bathroom; aerial/BAG scope required."
+        ],
+        "importantComparison": "1888 elevation depicts full-height standing figures at both ridge ends; these are absent from the 2016 reference. Small intermediate dormer forms also differ. Do not copy proposal/historic scan literally; newer/current photo and roof survey needed before choosing final detail."
+      },
+      {
+        "url": "https://www.niod.nl/longreads/als-de-muren-konden-spreken/",
+        "type": "Operator history, 2026",
+        "access": "Text read; supports address and 1888\u20131890 construction, right carriage entry and central dormer flanking Mercurius/Minerva sculptures.",
+        "featuresResolved": [
+          "Public entrance position clue; original versus later use chronology; useful card material."
+        ]
+      },
+      {
+        "url": "https://www.niod.nl/contact-en-bereikbaarheid/",
+        "type": "Operator address",
+        "access": "Read; Herengracht 380 confirmed."
+      }
+    ]
+  },
+  "surveyAttributes": {
+    "b3_bag_bag_overlap": 0.0,
+    "b3_bouwlagen": null,
+    "b3_dak_type": "slanted",
+    "b3_extrusie": "standard",
+    "b3_h_dak_50p": 9.743000030517578,
+    "b3_h_dak_70p": 19.575000762939453,
+    "b3_h_dak_max": 23.54800033569336,
+    "b3_h_dak_min": 5.302999973297119,
+    "b3_h_maaiveld": 1.0210000276565552,
+    "b3_h_nok": 24.063461303710938,
+    "b3_is_glas_dak": false,
+    "b3_kas_warenhuis": false,
+    "b3_kwaliteitsindicator": true,
+    "b3_mutatie_ahn3_ahn4": false,
+    "b3_mutatie_ahn4_ahn5": false,
+    "b3_n_nok": 20,
+    "b3_n_vlakken": 70,
+    "b3_nodata_fractie_ahn3": 0.01266846340149641,
+    "b3_nodata_fractie_ahn4": 0.024797843769192696,
+    "b3_nodata_fractie_ahn5": 0.034770891070365906,
+    "b3_nodata_radius_ahn3": 0.018704669550061226,
+    "b3_nodata_radius_ahn4": 0.0,
+    "b3_nodata_radius_ahn5": 0.0,
+    "b3_opp_buitenmuur": 1268.55,
+    "b3_opp_dak_plat": 496.68,
+    "b3_opp_dak_schuin": 715.09,
+    "b3_opp_grond": 926.15,
+    "b3_opp_scheidingsmuur": 815.2,
+    "b3_puntdichtheid_ahn3": 18.4111385345459,
+    "b3_puntdichtheid_ahn4": 30.75290298461914,
+    "b3_puntdichtheid_ahn5": 18.680814743041992,
+    "b3_pw_bron": "ahn5",
+    "b3_pw_datum": 2023,
+    "b3_pw_onvoldoende": false,
+    "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+    "b3_rmse_lod12": 9.807902336120605,
+    "b3_rmse_lod13": 2.0542666912078857,
+    "b3_rmse_lod22": 0.30397406220436096,
+    "b3_t_run": 787,
+    "b3_val3dity_lod12": "[]",
+    "b3_val3dity_lod13": "[]",
+    "b3_val3dity_lod22": "[]",
+    "b3_volume_lod12": 16885.75390625,
+    "b3_volume_lod13": 11081.0,
+    "b3_volume_lod22": 10571.11328125,
+    "begingeldigheid": "2023-09-28",
+    "documentdatum": "2023-09-28",
+    "documentnummer": "GV00007182_AC00AC",
+    "eindgeldigheid": null,
+    "eindregistratie": null,
+    "fid": 8348471,
+    "geconstateerd": false,
+    "identificatie": "NL.IMBAG.Pand.0363100012169506",
+    "oorspronkelijkbouwjaar": 1889,
+    "status": "Pand in gebruik",
+    "tijdstipeindregistratielv": null,
+    "tijdstipinactief": null,
+    "tijdstipinactieflv": null,
+    "tijdstipnietbaglv": null,
+    "tijdstipregistratie": "2023-09-28T18:28:47Z",
+    "tijdstipregistratielv": "2023-09-28T20:16:50Z",
+    "voorkomenidentificatie": 3
+  },
+  "heightNotes": {
+    "groundNAP": 1.021,
+    "frontEave": "14.1m visual inference; explicit front roof starts15.1m after cornice/balustrade",
+    "mainRoof": "22.44m above ground from large AHN5 roof reference23.46NAP; ornate central crest23.6m visual approximation",
+    "tallRear": "18.58m above ground, flat118m2 roof19.43\u201319.77NAP",
+    "lowMiddle": "4.33m above ground, large301m2 flat roof5.35\u20135.36NAP",
+    "rearHouse": "5.35m eaves and9.52m ridge approximated from far rear slanted roof maxima10.55NAP",
+    "equipmentWarning": "25.1NAP small central crest plane is not whole-building height."
+  },
+  "neighborsToRetain": [
+    {
+      "type": "Feature",
+      "properties": {
+        "aantal_verblijfsobjecten": 37,
+        "bouwjaar": 1905,
+        "documentdatum": "2023-09-28",
+        "documentnummer": "GV00007182_AC00AC",
+        "gebruiksdoel": "kantoorfunctie,woonfunctie",
+        "geconstateerd": "N",
+        "identificatie": "0363100012176531",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012176531",
+        "status": "Pand in gebruik",
+        "verblijfsobject.href": [
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e3eee45c-d6ae-5c60-aaaa-45f4ec055e35",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/ffb0957e-f354-52d5-add5-01b43fa0d8e9",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/d3062201-9fdb-55db-b6c9-1e8b000368eb",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/2f3d7aff-2b71-5d08-89b2-dd4dda8a0572",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0ae7974b-b13b-5749-973c-cfcb85475d66",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/18b688b8-f87b-502f-b6f7-7e8412ec6800",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/07d8387d-a0cf-5b17-88e9-a79b32504eed",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0f905f6b-902d-50fe-8f0f-e0f18c15705b",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/6f76094b-8ee3-55dd-895b-4c005c20d277",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/435e2a85-00cd-52d4-8d6e-e0bb32f16786",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/8d47c00a-ec49-5d2f-9e4c-459668c8ce87",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/478621c5-533b-5fbf-86c3-065fd57a145f",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/6d002388-07a5-5cf5-847d-cfb02cbd7b68",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e26f52ac-eb6c-58fc-8651-20abf7fd5000",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/3bb8e083-4424-5e3c-816c-2d7d7ee26068",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/dbb97dd1-d4c4-563a-9380-a43b5374c4d1",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/978f34ba-02ac-532c-b87e-f5c56263fd34",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/006e4cb5-f9ea-50f0-af96-0e6efc021500",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/a5b62390-8f93-58c8-bfc9-6acbd9add498",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e3c05596-fde6-55f5-8ad1-474a79f5b1fd",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/77dc9315-537f-5cc3-ba91-9acce7802988",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/accbc8b0-4ad2-511f-b4b4-dca61dbf749b",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/df578748-d641-5e97-98f0-6e2224db66c2",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/701293db-ff92-5b2e-99cf-5fd851c996a6",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/796634fd-b290-591e-b980-97a50a513771",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/5038fe7e-6ce4-524c-9459-2ffd3643c6c1",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/ec34b94a-8576-5338-bd25-5400749d1a30",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/8bbbd689-6e56-5e4e-8ac0-bf7d9991341c",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0dc52b0d-834b-59c4-92ad-181d372ac67e",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/3e03e3b5-bd22-524b-b943-450481459c68",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/722a2ebc-aa4e-59df-98ac-5a35a9d1b835",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e805a6eb-ac2f-5c70-9ffa-d3bb0520828c",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/6af8f2d8-9850-59b1-ab30-42388f7d092b",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/18bd722f-252f-5b6e-bb97-1aa8b07a6355",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/1921ddba-6a67-5632-9c09-6299c45329c1",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/89779dfd-7f34-5284-a5ae-00a67f06fb24",
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/a5eaac84-d685-55ab-9adf-32b439310762"
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.886350081190111,
+              52.36800088883
+            ],
+            [
+              4.886351976066164,
+              52.36802422897023
+            ],
+            [
+              4.885794899447969,
+              52.368043046140556
+            ],
+            [
+              4.885791985252737,
+              52.36797351377242
+            ],
+            [
+              4.8860262346674945,
+              52.36796584142703
+            ],
+            [
+              4.886346369999018,
+              52.367955053727236
+            ],
+            [
+              4.886348483521,
+              52.36798113604771
+            ],
+            [
+              4.886350081190111,
+              52.36800088883
+            ]
+          ]
+        ]
+      },
+      "id": "d3363fe3-09ee-5331-aee0-1a0eb8ed383e"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "aantal_verblijfsobjecten": 1,
+        "bouwjaar": 1740,
+        "documentdatum": "2023-09-28",
+        "documentnummer": "GV00007182_AC00AC",
+        "gebruiksdoel": "woonfunctie",
+        "geconstateerd": "N",
+        "identificatie": "0363100012176532",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012176532",
+        "status": "Pand in gebruik",
+        "verblijfsobject.href": [
+          "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/ce0900d6-1f4a-54eb-9646-bf6ccd324f29"
+        ]
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.8863669113182215,
+              52.368208666259264
+            ],
+            [
+              4.886368226477471,
+              52.36822483174468
+            ],
+            [
+              4.886098284564265,
+              52.36823222788242
+            ],
+            [
+              4.886053355446831,
+              52.368233457775325
+            ],
+            [
+              4.886048472930157,
+              52.36818995451407
+            ],
+            [
+              4.886047805927625,
+              52.36818401080708
+            ],
+            [
+              4.886364076119955,
+              52.36817367405613
+            ],
+            [
+              4.886365454744975,
+              52.36819072060682
+            ],
+            [
+              4.886366190372584,
+              52.368199693464085
+            ],
+            [
+              4.8863669113182215,
+              52.368208666259264
+            ]
+          ]
+        ]
+      },
+      "id": "8ae4e062-3966-58bb-b2d6-a2ea92a416fd"
+    }
+  ],
+  "scope": "One exact current BAG parent; no separate OSM identity in installed landmark mapping. Low middle roof covers surveyed301m2 zone; no courtyard hole exists in current BAG ring, no invented ground void. Glazed hall lightcap position/size inferred, not surveyed.",
+  "approximations": [
+    "Individual sandstone carving abstracted into original relief and scroll assemblies.",
+    "Metric frontage height and window/dormer dimensions inferred from2016photo +1888elevation with currentAHN5 limits.",
+    "Original clipped roof zones simplify survey roof surfaces; no source mesh is copied.",
+    "Central skylight position/geometry approximate; no2026 facade photograph inspected."
+  ],
+  "roofReferenceSummary": {
+    "source": "AHN5 2023, 3DBAG LoD2.2; summaries only, source mesh NOT imported into authored geometry.",
+    "crs": "EPSG:7415 RD/NAP",
+    "recordsMinHorizontalArea8M2": [
+      {
+        "horizontalAreaM2": 13.532,
+        "centroidRD": [
+          120876.051,
+          486802.503
+        ],
+        "minNAP": 18.988,
+        "maxNAP": 20.924,
+        "semanticRoof": {
+          "b3_azimut": 183.1580047607422,
+          "b3_h_dak_50p": 20.05596351623535,
+          "b3_h_dak_70p": 20.241214752197266,
+          "b3_h_dak_max": 23.174095153808594,
+          "b3_h_dak_min": 19.289249420166016,
+          "b3_hellingshoek": 36.76921463012695,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 12.411,
+        "centroidRD": [
+          120842.873,
+          486804.252
+        ],
+        "minNAP": 6.37,
+        "maxNAP": 10.55,
+        "semanticRoof": {
+          "b3_azimut": 184.01556396484375,
+          "b3_h_dak_50p": 8.702725410461426,
+          "b3_h_dak_70p": 9.461623191833496,
+          "b3_h_dak_max": 10.56429672241211,
+          "b3_h_dak_min": 6.8984503746032715,
+          "b3_hellingshoek": 58.570884704589844,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 8.268,
+        "centroidRD": [
+          120865.658,
+          486812.27
+        ],
+        "minNAP": 14.935,
+        "maxNAP": 16.768,
+        "semanticRoof": {
+          "b3_azimut": 294.9747009277344,
+          "b3_h_dak_50p": 15.817292213439941,
+          "b3_h_dak_70p": 16.25495719909668,
+          "b3_h_dak_max": 19.700347900390625,
+          "b3_h_dak_min": 14.92152214050293,
+          "b3_hellingshoek": 33.37630844116211,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 12.512,
+        "centroidRD": [
+          120883.094,
+          486808.091
+        ],
+        "minNAP": 19.244,
+        "maxNAP": 24.046,
+        "semanticRoof": {
+          "b3_azimut": 272.79510498046875,
+          "b3_h_dak_50p": 22.377260208129883,
+          "b3_h_dak_70p": 22.96343994140625,
+          "b3_h_dak_max": 24.161479949951172,
+          "b3_h_dak_min": 20.354206085205078,
+          "b3_hellingshoek": 65.41341400146484,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 301.341,
+        "centroidRD": [
+          120859.442,
+          486811.194
+        ],
+        "minNAP": 5.355,
+        "maxNAP": 5.365,
+        "semanticRoof": {
+          "b3_azimut": 226.0874481201172,
+          "b3_h_dak_50p": 5.359355926513672,
+          "b3_h_dak_70p": 5.360475063323975,
+          "b3_h_dak_max": 19.209026336669922,
+          "b3_h_dak_min": 5.354528427124023,
+          "b3_hellingshoek": 0.024228321388363838,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 118.279,
+        "centroidRD": [
+          120874.001,
+          486811.712
+        ],
+        "minNAP": 19.426,
+        "maxNAP": 19.773,
+        "semanticRoof": {
+          "b3_azimut": 77.97382354736328,
+          "b3_h_dak_50p": 19.65741729736328,
+          "b3_h_dak_70p": 19.68317985534668,
+          "b3_h_dak_max": 22.49020004272461,
+          "b3_h_dak_min": 19.42496109008789,
+          "b3_hellingshoek": 0.9737772345542908,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 61.925,
+        "centroidRD": [
+          120881.442,
+          486809.535
+        ],
+        "minNAP": 22.165,
+        "maxNAP": 23.458,
+        "semanticRoof": {
+          "b3_azimut": 90.22918701171875,
+          "b3_h_dak_50p": 22.8935489654541,
+          "b3_h_dak_70p": 23.100542068481445,
+          "b3_h_dak_max": 23.537614822387695,
+          "b3_h_dak_min": 22.175207138061523,
+          "b3_hellingshoek": 11.559782028198242,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 9.268,
+        "centroidRD": [
+          120839.673,
+          486808.423
+        ],
+        "minNAP": 6.565,
+        "maxNAP": 10.549,
+        "semanticRoof": {
+          "b3_azimut": 273.696533203125,
+          "b3_h_dak_50p": 8.790604591369629,
+          "b3_h_dak_70p": 9.556991577148438,
+          "b3_h_dak_max": 10.878032684326172,
+          "b3_h_dak_min": 6.887300491333008,
+          "b3_hellingshoek": 58.65903091430664,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 33.004,
+        "centroidRD": [
+          120885.699,
+          486810.069
+        ],
+        "minNAP": 17.219,
+        "maxNAP": 25.102,
+        "semanticRoof": {
+          "b3_azimut": 92.99533081054688,
+          "b3_h_dak_50p": 21.034481048583984,
+          "b3_h_dak_70p": 22.275047302246094,
+          "b3_h_dak_max": 24.13521957397461,
+          "b3_h_dak_min": 17.15093994140625,
+          "b3_hellingshoek": 64.04621887207031,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 46.439,
+        "centroidRD": [
+          120846.776,
+          486813.88
+        ],
+        "minNAP": 5.355,
+        "maxNAP": 10.553,
+        "semanticRoof": {
+          "b3_azimut": 93.6521224975586,
+          "b3_h_dak_50p": 7.740406036376953,
+          "b3_h_dak_70p": 8.811615943908691,
+          "b3_h_dak_max": 10.815787315368652,
+          "b3_h_dak_min": 5.3042449951171875,
+          "b3_hellingshoek": 58.43042755126953,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 72.18,
+        "centroidRD": [
+          120838.349,
+          486814.305
+        ],
+        "minNAP": 5.803,
+        "maxNAP": 6.694,
+        "semanticRoof": {
+          "b3_azimut": 273.544677734375,
+          "b3_h_dak_50p": 6.189892768859863,
+          "b3_h_dak_70p": 6.36218786239624,
+          "b3_h_dak_max": 8.92066764831543,
+          "b3_h_dak_min": 5.7591552734375,
+          "b3_hellingshoek": 10.42719841003418,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 15.715,
+        "centroidRD": [
+          120842.145,
+          486819.413
+        ],
+        "minNAP": 6.415,
+        "maxNAP": 10.53,
+        "semanticRoof": {
+          "b3_azimut": 3.427748441696167,
+          "b3_h_dak_50p": 7.77489709854126,
+          "b3_h_dak_70p": 8.535272598266602,
+          "b3_h_dak_max": 10.520890235900879,
+          "b3_h_dak_min": 5.996812343597412,
+          "b3_hellingshoek": 58.9679069519043,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 9.067,
+        "centroidRD": [
+          120866.498,
+          486809.79
+        ],
+        "minNAP": 19.18,
+        "maxNAP": 19.354,
+        "semanticRoof": {
+          "b3_azimut": 267.8186340332031,
+          "b3_h_dak_50p": 19.293935775756836,
+          "b3_h_dak_70p": 19.331628799438477,
+          "b3_h_dak_max": 19.722827911376953,
+          "b3_h_dak_min": 19.224992752075195,
+          "b3_hellingshoek": 3.8732032775878906,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 11.911,
+        "centroidRD": [
+          120874.551,
+          486810.917
+        ],
+        "minNAP": 19.575,
+        "maxNAP": 21.067,
+        "semanticRoof": {
+          "b3_azimut": 273.2114562988281,
+          "b3_h_dak_50p": 20.30364990234375,
+          "b3_h_dak_70p": 22.41958999633789,
+          "b3_h_dak_max": 22.57145881652832,
+          "b3_h_dak_min": 19.576351165771484,
+          "b3_hellingshoek": 54.22135543823242,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 28.7,
+        "centroidRD": [
+          120876.093,
+          486807.543
+        ],
+        "minNAP": 22.418,
+        "maxNAP": 23.458,
+        "semanticRoof": {
+          "b3_azimut": 273.42626953125,
+          "b3_h_dak_50p": 22.938533782958984,
+          "b3_h_dak_70p": 23.15858268737793,
+          "b3_h_dak_max": 23.537614822387695,
+          "b3_h_dak_min": 22.38372230529785,
+          "b3_hellingshoek": 21.806520462036133,
+          "type": "RoofSurface"
+        }
+      },
+      {
+        "horizontalAreaM2": 48.47,
+        "centroidRD": [
+          120841.959,
+          486811.653
+        ],
+        "minNAP": 10.518,
+        "maxNAP": 10.55,
+        "semanticRoof": {
+          "b3_azimut": 63.03489303588867,
+          "b3_h_dak_50p": 10.533591270446777,
+          "b3_h_dak_70p": 10.538023948669434,
+          "b3_h_dak_max": 10.878032684326172,
+          "b3_h_dak_min": 10.520164489746094,
+          "b3_hellingshoek": 0.18974563479423523,
+          "type": "RoofSurface"
+        }
+      }
+    ]
+  }
+}

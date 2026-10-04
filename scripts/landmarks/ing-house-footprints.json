@@ -1,0 +1,2814 @@
+{
+  "version": 1,
+  "fetchedOn": "2026-10-04",
+  "coordinateConvention": "glTF Y up; native +X eastward bearing85deg; +Z southward. Metres, anchor EPSG4326 longitude/latitude.",
+  "anchor": [
+    4.85519,
+    52.33717
+  ],
+  "northOffsetDegrees": 5,
+  "localRing": [
+    [
+      -40.722,
+      -13.516
+    ],
+    [
+      -44.297,
+      -13.508
+    ],
+    [
+      -51.484,
+      -13.41
+    ],
+    [
+      -54.829,
+      -12.973
+    ],
+    [
+      -57.78,
+      -12.258
+    ],
+    [
+      -59.388,
+      -9.701
+    ],
+    [
+      -62.388,
+      -9.155
+    ],
+    [
+      -65.881,
+      -8.348
+    ],
+    [
+      -67.597,
+      -7.846
+    ],
+    [
+      -67.981,
+      -7.707
+    ],
+    [
+      -68.223,
+      -7.335
+    ],
+    [
+      -68.314,
+      -7.128
+    ],
+    [
+      -68.682,
+      -5.864
+    ],
+    [
+      -69.082,
+      -4.078
+    ],
+    [
+      -69.375,
+      -2.328
+    ],
+    [
+      -69.513,
+      -0.532
+    ],
+    [
+      -69.521,
+      1.26
+    ],
+    [
+      -69.367,
+      3.043
+    ],
+    [
+      -69.103,
+      4.852
+    ],
+    [
+      -68.676,
+      6.534
+    ],
+    [
+      -68.248,
+      8.058
+    ],
+    [
+      -68.02,
+      8.431
+    ],
+    [
+      -67.65,
+      8.62
+    ],
+    [
+      -65.888,
+      9.119
+    ],
+    [
+      -62.378,
+      9.916
+    ],
+    [
+      -59.405,
+      10.457
+    ],
+    [
+      -57.826,
+      12.933
+    ],
+    [
+      -54.924,
+      13.745
+    ],
+    [
+      -51.631,
+      14.206
+    ],
+    [
+      -48.019,
+      14.275
+    ],
+    [
+      -44.341,
+      14.254
+    ],
+    [
+      -40.835,
+      14.308
+    ],
+    [
+      3.462,
+      14.259
+    ],
+    [
+      68.232,
+      14.355
+    ],
+    [
+      68.214,
+      -13.352
+    ],
+    [
+      -40.722,
+      -13.516
+    ]
+  ],
+  "bag": {
+    "type": "Feature",
+    "properties": {
+      "aantal_verblijfsobjecten": 1,
+      "bouwjaar": 2002,
+      "documentdatum": "2023-07-28",
+      "documentnummer": "GV00007101_AC00AC",
+      "gebruiksdoel": "kantoorfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012068127",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012068127",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/43b34d73-4d0d-597f-87c0-66d807728904"
+      ]
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.854576260732728,
+            52.33725907407321
+          ],
+          [
+            4.854523913394777,
+            52.33725620502343
+          ],
+          [
+            4.8544187730749195,
+            52.337249700885195
+          ],
+          [
+            4.854370343375698,
+            52.33724316440927
+          ],
+          [
+            4.85432804354417,
+            52.33723446249461
+          ],
+          [
+            4.854307776768818,
+            52.337210319887255
+          ],
+          [
+            4.854264535065038,
+            52.337203078719014
+          ],
+          [
+            4.854214400364987,
+            52.33719312812542
+          ],
+          [
+            4.854189922922352,
+            52.33718729264928
+          ],
+          [
+            4.854184468520073,
+            52.33718574914363
+          ],
+          [
+            4.8541814001443955,
+            52.337182230082114
+          ],
+          [
+            4.854180337508774,
+            52.33718030190723
+          ],
+          [
+            4.854176573841439,
+            52.33716869968478
+          ],
+          [
+            4.8541729985420226,
+            52.337152406680936
+          ],
+          [
+            4.854170944378503,
+            52.33713651599174
+          ],
+          [
+            4.854171226612476,
+            52.33712033922928
+          ],
+          [
+            4.854173400013065,
+            52.33710429681455
+          ],
+          [
+            4.854177947888213,
+            52.33708846282669
+          ],
+          [
+            4.854184126283705,
+            52.33707247440266
+          ],
+          [
+            4.854192534263744,
+            52.337057763300194
+          ],
+          [
+            4.854200764017433,
+            52.337044453490606
+          ],
+          [
+            4.854204572777814,
+            52.33704129795358
+          ],
+          [
+            4.854210238611132,
+            52.33703989441347
+          ],
+          [
+            4.854236686535695,
+            52.33703680489073
+          ],
+          [
+            4.854289120643844,
+            52.33703242130754
+          ],
+          [
+            4.854333344852341,
+            52.337029915132554
+          ],
+          [
+            4.854359654614915,
+            52.3370089931718
+          ],
+          [
+            4.854403189746276,
+            52.337003994248306
+          ],
+          [
+            4.854452009676982,
+            52.337002443451816
+          ],
+          [
+            4.854505010144938,
+            52.337004659365526
+          ],
+          [
+            4.854558851453365,
+            52.33700772389307
+          ],
+          [
+            4.854610266722558,
+            52.33700998655111
+          ],
+          [
+            4.85525897993214,
+            52.33704510771129
+          ],
+          [
+            4.8562077214857915,
+            52.33709495480385
+          ],
+          [
+            4.856171962730357,
+            52.33734289343759
+          ],
+          [
+            4.854576260732728,
+            52.33725907407321
+          ]
+        ]
+      ]
+    },
+    "id": "68830daa-e013-5a4d-99e1-6ecf6cae4162"
+  },
+  "osm": {
+    "version": "0.6",
+    "generator": "openstreetmap-cgimap 2.1.0 (829810 spike-07.openstreetmap.org)",
+    "copyright": "OpenStreetMap and contributors",
+    "attribution": "http://www.openstreetmap.org/copyright",
+    "license": "http://opendatacommons.org/licenses/odbl/1-0/",
+    "elements": [
+      {
+        "type": "node",
+        "id": 717730850,
+        "lat": 52.3370051,
+        "lon": 4.8545052,
+        "timestamp": "2014-04-26T19:50:44Z",
+        "version": 2,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 717732262,
+        "lat": 52.3370582,
+        "lon": 4.8541927,
+        "timestamp": "2014-04-26T19:50:44Z",
+        "version": 2,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 717739666,
+        "lat": 52.3373433,
+        "lon": 4.8561721,
+        "timestamp": "2014-04-26T19:50:44Z",
+        "version": 3,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 717744244,
+        "lat": 52.3371862,
+        "lon": 4.8541846,
+        "timestamp": "2014-04-26T19:50:44Z",
+        "version": 2,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 717747156,
+        "lat": 52.3372501,
+        "lon": 4.8544189,
+        "timestamp": "2014-04-26T19:50:44Z",
+        "version": 2,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 717785912,
+        "lat": 52.3370954,
+        "lon": 4.8562079,
+        "timestamp": "2014-04-26T19:50:45Z",
+        "version": 3,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 717826854,
+        "lat": 52.3370029,
+        "lon": 4.8544522,
+        "timestamp": "2014-04-26T19:50:46Z",
+        "version": 2,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 722171176,
+        "lat": 52.3370455,
+        "lon": 4.8552591,
+        "timestamp": "2014-04-26T19:50:46Z",
+        "version": 2,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2766856210,
+        "lat": 52.3371321,
+        "lon": 4.8562026,
+        "timestamp": "2019-04-15T19:14:37Z",
+        "version": 3,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 2819140500,
+        "lat": 52.3370044,
+        "lon": 4.8544033,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140601,
+        "lat": 52.3370081,
+        "lon": 4.854559,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140602,
+        "lat": 52.3370094,
+        "lon": 4.8543598,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140603,
+        "lat": 52.3370104,
+        "lon": 4.8546104,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140604,
+        "lat": 52.3370303,
+        "lon": 4.8543335,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140605,
+        "lat": 52.3370328,
+        "lon": 4.8542893,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140606,
+        "lat": 52.3370372,
+        "lon": 4.8542368,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140607,
+        "lat": 52.3370403,
+        "lon": 4.8542104,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140608,
+        "lat": 52.3370417,
+        "lon": 4.8542047,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140610,
+        "lat": 52.3370449,
+        "lon": 4.8542009,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140612,
+        "lat": 52.3370729,
+        "lon": 4.8541843,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140613,
+        "lat": 52.3370889,
+        "lon": 4.8541781,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140614,
+        "lat": 52.3371047,
+        "lon": 4.8541736,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140617,
+        "lat": 52.3371208,
+        "lon": 4.8541714,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140618,
+        "lat": 52.3371369,
+        "lon": 4.8541711,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140619,
+        "lat": 52.3371528,
+        "lon": 4.8541732,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140620,
+        "lat": 52.3371691,
+        "lon": 4.8541767,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140621,
+        "lat": 52.3371807,
+        "lon": 4.8541805,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140622,
+        "lat": 52.3371827,
+        "lon": 4.8541816,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140623,
+        "lat": 52.3371935,
+        "lon": 4.8542146,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140624,
+        "lat": 52.3372035,
+        "lon": 4.8542647,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140625,
+        "lat": 52.3372107,
+        "lon": 4.8543079,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140626,
+        "lat": 52.3372349,
+        "lon": 4.8543282,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140627,
+        "lat": 52.3372436,
+        "lon": 4.8543705,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140628,
+        "lat": 52.3372566,
+        "lon": 4.8545241,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 2819140629,
+        "lat": 52.3372595,
+        "lon": 4.8545764,
+        "timestamp": "2014-04-26T19:50:20Z",
+        "version": 1,
+        "changeset": 21962479,
+        "user": "sebastic_BAG",
+        "uid": 1974440
+      },
+      {
+        "type": "node",
+        "id": 6407529785,
+        "lat": 52.3370473,
+        "lon": 4.8552942,
+        "timestamp": "2019-04-15T19:14:35Z",
+        "version": 1,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 6407529793,
+        "lat": 52.3370101,
+        "lon": 4.8546041,
+        "timestamp": "2019-04-15T19:14:36Z",
+        "version": 1,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "way",
+        "id": 57856367,
+        "timestamp": "2025-12-24T17:21:43Z",
+        "version": 14,
+        "changeset": 176370586,
+        "user": "Jvitegem",
+        "uid": 6155361,
+        "nodes": [
+          717739666,
+          2766856210,
+          717785912,
+          6407529785,
+          722171176,
+          2819140603,
+          6407529793,
+          2819140601,
+          717730850,
+          717826854,
+          2819140500,
+          2819140602,
+          2819140604,
+          2819140605,
+          2819140606,
+          2819140607,
+          2819140608,
+          2819140610,
+          717732262,
+          2819140612,
+          2819140613,
+          2819140614,
+          2819140617,
+          2819140618,
+          2819140619,
+          2819140620,
+          2819140621,
+          2819140622,
+          717744244,
+          2819140623,
+          2819140624,
+          2819140625,
+          2819140626,
+          2819140627,
+          717747156,
+          2819140628,
+          2819140629,
+          717739666
+        ],
+        "tags": {
+          "alt_name": "De Poenschoen",
+          "building": "commercial",
+          "building:levels": "10",
+          "loc_name": "De Schoen",
+          "name": "Infinity",
+          "old_name": "ING House",
+          "ref:bag": "0363100012068127",
+          "roof:levels": "0",
+          "roof:shape": "many",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "start_date": "2002",
+          "wikidata": "Q645881",
+          "wikimedia_commons": "Category:ING House",
+          "wikipedia": "nl:Infinity (gebouw)"
+        }
+      }
+    ]
+  },
+  "vbo": {
+    "type": "Feature",
+    "properties": {
+      "bronhouder_identificatie": "0363",
+      "bronhouder_naam": "Amsterdam",
+      "documentdatum": "2017-08-30",
+      "documentnummer": "SK03026911",
+      "gebruiksdoel": "kantoorfunctie",
+      "geconstateerd": "N",
+      "hoofdadres_identificatie": "0363200000490056",
+      "hoofdadres_status": "Naamgeving uitgegeven",
+      "huisletter": null,
+      "huisnummer": 500,
+      "identificatie": "0363010001011210",
+      "openbare_ruimte_identificatie": "0363300000002705",
+      "openbare_ruimte_naam": "Amstelveenseweg",
+      "openbare_ruimte_naam_kort": null,
+      "openbare_ruimte_status": "Naamgeving uitgegeven",
+      "oppervlakte": 16944,
+      "pand.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items/68830daa-e013-5a4d-99e1-6ecf6cae4162"
+      ],
+      "postcode": "1081KL",
+      "provincie_afkorting": "NH",
+      "provincie_naam": "Noord-Holland",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/0363010001011210",
+      "status": "Verblijfsobject in gebruik",
+      "toevoeging": null,
+      "woonplaats_identificatie": "3594",
+      "woonplaats_naam": "Amsterdam",
+      "woonplaats_status": "Woonplaats aangewezen"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        4.855896611837457,
+        52.33716888509894
+      ]
+    },
+    "id": "43b34d73-4d0d-597f-87c0-66d807728904",
+    "links": [
+      {
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "type": "application/geo+json",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/43b34d73-4d0d-597f-87c0-66d807728904?f=json"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as JSON-FG",
+        "type": "application/vnd.ogc.fg+json",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/43b34d73-4d0d-597f-87c0-66d807728904?f=jsonfg"
+      },
+      {
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "type": "text/html",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/43b34d73-4d0d-597f-87c0-66d807728904?f=html"
+      },
+      {
+        "rel": "collection",
+        "title": "The collection to which this feature belongs",
+        "type": "application/json",
+        "href": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject?f=json"
+      }
+    ]
+  },
+  "sourceUrls": [
+    "https://mvsa-architects.com/en/projects/ing-house/",
+    "https://www.amsterdam.nl/stadsarchief/stukken/plannen/zuidas/",
+    "https://www.breeam.nl/projecten/infinity-amsterdam-16223",
+    "https://api.openstreetmap.org/api/0.6/way/57856367/full.json",
+    "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012068127&f=json",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012068127",
+    "https://www.lexence.com/wp-content/uploads/2025/02/Routebeschrijving-2.pdf",
+    "https://www.lexence.com/contact/",
+    "https://archief.amsterdam/beeldbank/detail/a098b7d6-9986-ff3b-5ea7-28ff857cccb5",
+    "https://archief.amsterdam/beeldbank/detail/4981c883-6b17-8149-9e6e-b1cc840cad00"
+  ],
+  "referenceImages": [
+    "https://mvsa-architects.com/media/images/ING_F12_FOLDER.width-1160.jpg",
+    "https://mvsa-architects.com/media/images/Architect-Offices-ING-House-Kantor.2e16d0ba.fill-898x540.jpg"
+  ],
+  "heightNotes": {
+    "published": "BREEAM dimensions138x28x48m;16steel supports in two rows of eight. MVSA stilts9–12m, eight office floors, glass/aluminium double skin.",
+    "survey": "AHN5ground0.116mNAP;3DBAG main roof nose23.48m rising36.74,40.27,48.46m, high east plateau48.2–48.46m. Equipment maxima51.2m not whole-building height.",
+    "approximate": "Leg cross-sections, lobby dimensions and facade subdivision reconstructed from primary photos. Lower lobby ground-level remains distinct; no full-footprint podium. Roof patio inferred from primary gardens references, approximate shape; needs gallery review. Mappedmainentrance proves groundlobbyeastposition x56.5/z6.5;fullgroundlobbyscope andheight remainphotograph-estimated."
+  },
+  "roofPlaneSummary": [
+    {
+      "bounds": [
+        [
+          64.62,
+          65.67
+        ],
+        [
+          45.99,
+          48.22
+        ],
+        [
+          -9.5,
+          -8.93
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          64.33,
+          65.01
+        ],
+        [
+          48.62,
+          48.69
+        ],
+        [
+          7.93,
+          8.67
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -19.75,
+          -5.35
+        ],
+        [
+          31.5,
+          31.53
+        ],
+        [
+          11.12,
+          14.3
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          61.16,
+          67.82
+        ],
+        [
+          1.12,
+          7.92
+        ],
+        [
+          -13.35,
+          -12.43
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -26.06,
+          -19.75
+        ],
+        [
+          15.7,
+          15.84
+        ],
+        [
+          13.53,
+          14.3
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -59.16,
+          -49.37
+        ],
+        [
+          16.67,
+          16.74
+        ],
+        [
+          -13.43,
+          -10.04
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          3,
+          9.22
+        ],
+        [
+          15.7,
+          15.88
+        ],
+        [
+          13.35,
+          14.28
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          30.79,
+          53.4
+        ],
+        [
+          49.8,
+          49.84
+        ],
+        [
+          -6.03,
+          6.98
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          59.06,
+          62.27
+        ],
+        [
+          48.62,
+          48.66
+        ],
+        [
+          10.22,
+          10.75
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          64.89,
+          65.52
+        ],
+        [
+          10.69,
+          14.39
+        ],
+        [
+          -3.26,
+          3.53
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -18.45,
+          -4.66
+        ],
+        [
+          36.53,
+          40.27
+        ],
+        [
+          8.25,
+          11.39
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          18.53,
+          21.42
+        ],
+        [
+          50.73,
+          50.82
+        ],
+        [
+          4.14,
+          6.87
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          22.92,
+          25.51
+        ],
+        [
+          50.77,
+          50.82
+        ],
+        [
+          4.64,
+          6.93
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          22.42,
+          27.37
+        ],
+        [
+          48.75,
+          48.93
+        ],
+        [
+          2.85,
+          5.31
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -49.41,
+          -33.47
+        ],
+        [
+          24.09,
+          24.15
+        ],
+        [
+          -13.23,
+          -10.29
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          16.48,
+          18.37
+        ],
+        [
+          49.08,
+          50.49
+        ],
+        [
+          -8.37,
+          -7.49
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -18.7,
+          -5.11
+        ],
+        [
+          36.38,
+          40.06
+        ],
+        [
+          -10.45,
+          -7.42
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -69.52,
+          -18.42
+        ],
+        [
+          23.48,
+          36.74
+        ],
+        [
+          -10.5,
+          11.41
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          9.72,
+          24.44
+        ],
+        [
+          37.22,
+          45.05
+        ],
+        [
+          -13.43,
+          -10.23
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -33.61,
+          -19.32
+        ],
+        [
+          27.8,
+          27.85
+        ],
+        [
+          -12.85,
+          -10.3
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          65.05,
+          65.2
+        ],
+        [
+          48.66,
+          48.7
+        ],
+        [
+          10.52,
+          11.13
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          15,
+          18.99
+        ],
+        [
+          50.47,
+          50.5
+        ],
+        [
+          -9.64,
+          -8.24
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          29.02,
+          30.97
+        ],
+        [
+          46.24,
+          47.06
+        ],
+        [
+          11.21,
+          12.53
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          7.39,
+          10.11
+        ],
+        [
+          48.42,
+          51.2
+        ],
+        [
+          -1.64,
+          2.58
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          9.85,
+          29.71
+        ],
+        [
+          50.96,
+          51.07
+        ],
+        [
+          -4.28,
+          6.96
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -18.66,
+          0.28
+        ],
+        [
+          35.34,
+          35.37
+        ],
+        [
+          -7.99,
+          8.9
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -34.16,
+          -19.49
+        ],
+        [
+          27.78,
+          27.85
+        ],
+        [
+          11.01,
+          14.3
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -59.12,
+          -55.53
+        ],
+        [
+          24.5,
+          24.58
+        ],
+        [
+          10.91,
+          12.15
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -49.57,
+          -33.5
+        ],
+        [
+          24.08,
+          24.15
+        ],
+        [
+          10.93,
+          13.82
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -19.42,
+          -5.05
+        ],
+        [
+          31.49,
+          31.54
+        ],
+        [
+          -13.04,
+          -10.11
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -5.73,
+          9.14
+        ],
+        [
+          35.33,
+          35.35
+        ],
+        [
+          10.83,
+          14.06
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          64.71,
+          68.24
+        ],
+        [
+          35.09,
+          35.29
+        ],
+        [
+          -4.24,
+          13.92
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -58.63,
+          -49.44
+        ],
+        [
+          16.7,
+          16.77
+        ],
+        [
+          10.91,
+          14.24
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          24.23,
+          67.81
+        ],
+        [
+          43.29,
+          43.3
+        ],
+        [
+          -12.99,
+          -3.98
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          8.18,
+          64.91
+        ],
+        [
+          43.23,
+          43.42
+        ],
+        [
+          10.81,
+          14.35
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -5.37,
+          9.97
+        ],
+        [
+          35.34,
+          35.35
+        ],
+        [
+          -12.95,
+          -10.16
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          -5.12,
+          3.06
+        ],
+        [
+          40.17,
+          48.46
+        ],
+        [
+          -10.37,
+          11.49
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          3.01,
+          65.56
+        ],
+        [
+          48.2,
+          48.46
+        ],
+        [
+          -10.8,
+          12.27
+        ]
+      ]
+    },
+    {
+      "bounds": [
+        [
+          63.8,
+          64.42
+        ],
+        [
+          46.66,
+          47.05
+        ],
+        [
+          11.66,
+          12.28
+        ]
+      ]
+    }
+  ],
+  "openSpaceProbes": [
+    [
+      -20,
+      4,
+      0
+    ],
+    [
+      0,
+      4,
+      0
+    ],
+    [
+      30,
+      5,
+      0
+    ]
+  ],
+  "recognitionTraits": [
+    "Rounded silver western auditorium nose",
+    "Glass wedge rising towards the east",
+    "16exposed inclined silver steel supports",
+    "Through route beneath shiny aluminium belly",
+    "Fine double-skin facade mullions and floor bands",
+    "Stepped exterior galleries and high roof patio"
+  ],
+  "installedFeatureEvidence": {
+    "source": "public/data/extracts/amsterdam/building-tiles/14/8412/5386.geojson.gz",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012068127",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 48.29,
+          "roofShape": "many"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.854579,
+                52.337261
+              ],
+              [
+                4.854527,
+                52.337258
+              ],
+              [
+                4.854422,
+                52.337252
+              ],
+              [
+                4.854373,
+                52.337245
+              ],
+              [
+                4.854331,
+                52.337236
+              ],
+              [
+                4.854311,
+                52.337212
+              ],
+              [
+                4.854267,
+                52.337205
+              ],
+              [
+                4.854217,
+                52.337195
+              ],
+              [
+                4.854193,
+                52.337189
+              ],
+              [
+                4.854187,
+                52.337188
+              ],
+              [
+                4.854184,
+                52.337184
+              ],
+              [
+                4.854183,
+                52.337182
+              ],
+              [
+                4.854179,
+                52.337171
+              ],
+              [
+                4.854176,
+                52.337154
+              ],
+              [
+                4.854174,
+                52.337139
+              ],
+              [
+                4.854174,
+                52.337122
+              ],
+              [
+                4.854176,
+                52.337106
+              ],
+              [
+                4.854181,
+                52.33709
+              ],
+              [
+                4.854187,
+                52.337074
+              ],
+              [
+                4.854195,
+                52.33706
+              ],
+              [
+                4.854203,
+                52.337046
+              ],
+              [
+                4.854207,
+                52.337043
+              ],
+              [
+                4.854213,
+                52.337042
+              ],
+              [
+                4.854239,
+                52.337039
+              ],
+              [
+                4.854292,
+                52.337034
+              ],
+              [
+                4.854336,
+                52.337032
+              ],
+              [
+                4.854362,
+                52.337011
+              ],
+              [
+                4.854406,
+                52.337006
+              ],
+              [
+                4.854455,
+                52.337004
+              ],
+              [
+                4.854508,
+                52.337007
+              ],
+              [
+                4.854562,
+                52.33701
+              ],
+              [
+                4.854613,
+                52.337012
+              ],
+              [
+                4.855262,
+                52.337047
+              ],
+              [
+                4.85621,
+                52.337097
+              ],
+              [
+                4.856175,
+                52.337345
+              ],
+              [
+                4.854579,
+                52.337261
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012071645",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 31.61
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.854945,
+                52.335748
+              ],
+              [
+                4.855157,
+                52.335749
+              ],
+              [
+                4.855156,
+                52.335761
+              ],
+              [
+                4.855162,
+                52.335761
+              ],
+              [
+                4.855162,
+                52.335765
+              ],
+              [
+                4.855203,
+                52.335765
+              ],
+              [
+                4.855202,
+                52.335881
+              ],
+              [
+                4.855218,
+                52.335881
+              ],
+              [
+                4.855217,
+                52.335873
+              ],
+              [
+                4.855223,
+                52.335873
+              ],
+              [
+                4.855221,
+                52.336252
+              ],
+              [
+                4.855125,
+                52.336252
+              ],
+              [
+                4.855125,
+                52.3363
+              ],
+              [
+                4.855221,
+                52.3363
+              ],
+              [
+                4.85522,
+                52.336446
+              ],
+              [
+                4.855151,
+                52.336446
+              ],
+              [
+                4.85515,
+                52.336577
+              ],
+              [
+                4.855124,
+                52.336577
+              ],
+              [
+                4.855124,
+                52.336634
+              ],
+              [
+                4.855219,
+                52.336634
+              ],
+              [
+                4.855218,
+                52.336781
+              ],
+              [
+                4.854812,
+                52.33678
+              ],
+              [
+                4.854912,
+                52.336494
+              ],
+              [
+                4.854943,
+                52.336498
+              ],
+              [
+                4.854961,
+                52.336446
+              ],
+              [
+                4.854814,
+                52.336446
+              ],
+              [
+                4.854815,
+                52.336442
+              ],
+              [
+                4.85479,
+                52.336442
+              ],
+              [
+                4.854789,
+                52.336445
+              ],
+              [
+                4.854624,
+                52.336445
+              ],
+              [
+                4.854623,
+                52.336447
+              ],
+              [
+                4.854622,
+                52.33645
+              ],
+              [
+                4.85462,
+                52.336452
+              ],
+              [
+                4.854617,
+                52.336454
+              ],
+              [
+                4.854614,
+                52.336455
+              ],
+              [
+                4.85461,
+                52.336457
+              ],
+              [
+                4.854607,
+                52.336457
+              ],
+              [
+                4.854605,
+                52.336458
+              ],
+              [
+                4.854601,
+                52.336458
+              ],
+              [
+                4.854597,
+                52.336458
+              ],
+              [
+                4.854593,
+                52.336457
+              ],
+              [
+                4.854589,
+                52.336456
+              ],
+              [
+                4.854587,
+                52.336455
+              ],
+              [
+                4.854584,
+                52.336454
+              ],
+              [
+                4.854582,
+                52.336452
+              ],
+              [
+                4.85458,
+                52.33645
+              ],
+              [
+                4.854578,
+                52.336447
+              ],
+              [
+                4.854578,
+                52.336445
+              ],
+              [
+                4.854502,
+                52.336445
+              ],
+              [
+                4.854505,
+                52.336442
+              ],
+              [
+                4.85448,
+                52.336442
+              ],
+              [
+                4.854327,
+                52.336594
+              ],
+              [
+                4.854211,
+                52.336551
+              ],
+              [
+                4.854486,
+                52.335759
+              ],
+              [
+                4.854627,
+                52.335759
+              ],
+              [
+                4.854626,
+                52.335894
+              ],
+              [
+                4.854945,
+                52.335894
+              ],
+              [
+                4.854945,
+                52.335748
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "NL.IMBAG.Pand.0363100012216927",
+          "tier": 3,
+          "minHeight": 0,
+          "height": 6.45
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.855849,
+                52.336517
+              ],
+              [
+                4.855879,
+                52.336518
+              ],
+              [
+                4.855887,
+                52.336517
+              ],
+              [
+                4.855887,
+                52.33658
+              ],
+              [
+                4.855848,
+                52.336579
+              ],
+              [
+                4.855847,
+                52.336844
+              ],
+              [
+                4.855267,
+                52.336843
+              ],
+              [
+                4.855271,
+                52.335982
+              ],
+              [
+                4.855272,
+                52.335762
+              ],
+              [
+                4.855852,
+                52.335763
+              ],
+              [
+                4.855852,
+                52.335792
+              ],
+              [
+                4.85589,
+                52.335792
+              ],
+              [
+                4.855891,
+                52.335853
+              ],
+              [
+                4.855852,
+                52.335854
+              ],
+              [
+                4.85585,
+                52.336155
+              ],
+              [
+                4.855889,
+                52.336155
+              ],
+              [
+                4.855888,
+                52.336217
+              ],
+              [
+                4.85585,
+                52.336217
+              ],
+              [
+                4.855849,
+                52.336517
+              ]
+            ]
+          ]
+        }
+      }
+    ]
+  },
+  "accessEvidence": {
+    "primaryTenant": "Lexence",
+    "sourceUrl": "https://www.lexence.com/wp-content/uploads/2025/02/Routebeschrijving-2.pdf",
+    "summary": "Primary current tenant directs visitors along the road beside Infinity, then right into the garage immediately beyond the building. Ground-floor lift serves Lexence third-floor reception; visitors parking at far end accesses stairs to ground floor. Metro approach is Amstelveenseweg on VU side, roughly3minutes walking.",
+    "precision": "Building/address and public visitor approach established; PDF has no surveyed door coordinate/map. Keep geographic model pin at exact building centre unless verified entrance placement becomes available; do not claim address VBO point as actual door."
+  },
+  "mappedAccessEvidence": {
+    "sourceUrl": "https://api.openstreetmap.org/api/0.6/map.json?bbox=4.8540,52.3367,4.8563,52.3373",
+    "elements": [
+      {
+        "type": "node",
+        "id": 1339449497,
+        "lat": 52.3372397,
+        "lon": 4.8571779,
+        "timestamp": "2019-07-27T14:40:30Z",
+        "version": 2,
+        "changeset": 72718355,
+        "user": "A67-A67",
+        "uid": 553736
+      },
+      {
+        "type": "node",
+        "id": 1339449499,
+        "lat": 52.3372306,
+        "lon": 4.8571097,
+        "timestamp": "2019-04-15T19:14:37Z",
+        "version": 3,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 1339449502,
+        "lat": 52.3371853,
+        "lon": 4.856278,
+        "timestamp": "2019-04-15T19:14:37Z",
+        "version": 4,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 1339449505,
+        "lat": 52.3371561,
+        "lon": 4.8560226,
+        "timestamp": "2019-04-15T19:14:37Z",
+        "version": 7,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244,
+        "tags": {
+          "addr:city": "Amsterdam",
+          "addr:housenumber": "500",
+          "addr:postcode": "1081KL",
+          "addr:street": "Amstelveenseweg",
+          "entrance": "main",
+          "source": "BAG",
+          "source:date": "2014-03-24"
+        }
+      },
+      {
+        "type": "node",
+        "id": 2766856210,
+        "lat": 52.3371321,
+        "lon": 4.8562026,
+        "timestamp": "2019-04-15T19:14:37Z",
+        "version": 3,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 2766856213,
+        "lat": 52.3370491,
+        "lon": 4.8546756,
+        "timestamp": "2019-04-15T19:14:37Z",
+        "version": 2,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 6407529785,
+        "lat": 52.3370473,
+        "lon": 4.8552942,
+        "timestamp": "2019-04-15T19:14:35Z",
+        "version": 1,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 6407529786,
+        "lat": 52.3371225,
+        "lon": 4.856027,
+        "timestamp": "2019-04-15T19:14:35Z",
+        "version": 1,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 6407529788,
+        "lat": 52.3370069,
+        "lon": 4.8553004,
+        "timestamp": "2019-04-15T19:14:36Z",
+        "version": 1,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 6407529790,
+        "lat": 52.3370824,
+        "lon": 4.8552887,
+        "timestamp": "2019-04-15T19:14:36Z",
+        "version": 1,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 6407529791,
+        "lat": 52.3369407,
+        "lon": 4.8553107,
+        "timestamp": "2019-04-15T19:14:36Z",
+        "version": 1,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "node",
+        "id": 6407529793,
+        "lat": 52.3370101,
+        "lon": 4.8546041,
+        "timestamp": "2019-04-15T19:14:36Z",
+        "version": 1,
+        "changeset": 69247086,
+        "user": "JeroenHoek",
+        "uid": 197244
+      },
+      {
+        "type": "way",
+        "id": 119138474,
+        "timestamp": "2025-08-22T09:08:38Z",
+        "version": 3,
+        "changeset": 170819080,
+        "user": "freundTech",
+        "uid": 5498032,
+        "nodes": [
+          1339449497,
+          1339449499,
+          1339449502,
+          2766856210
+        ],
+        "tags": {
+          "highway": "footway",
+          "name": "Amstelveenseweg",
+          "surface": "paving_stones"
+        }
+      },
+      {
+        "type": "way",
+        "id": 271742339,
+        "timestamp": "2025-08-22T09:08:19Z",
+        "version": 6,
+        "changeset": 170819080,
+        "user": "freundTech",
+        "uid": 5498032,
+        "nodes": [
+          2766856210,
+          6407529786,
+          6407529790,
+          2766856213,
+          6407529793
+        ],
+        "tags": {
+          "covered": "yes",
+          "highway": "footway",
+          "surface": "sett"
+        }
+      },
+      {
+        "type": "way",
+        "id": 684001539,
+        "timestamp": "2026-08-29T12:17:02Z",
+        "version": 2,
+        "changeset": 188193886,
+        "user": "freundTech",
+        "uid": 5498032,
+        "nodes": [
+          1339449505,
+          6407529786
+        ],
+        "tags": {
+          "covered": "yes",
+          "highway": "footway",
+          "surface": "sett"
+        }
+      },
+      {
+        "type": "way",
+        "id": 684001541,
+        "timestamp": "2026-08-29T12:16:12Z",
+        "version": 2,
+        "changeset": 188193886,
+        "user": "freundTech",
+        "uid": 5498032,
+        "nodes": [
+          6407529791,
+          6407529788
+        ],
+        "tags": {
+          "highway": "footway",
+          "surface": "paving_stones"
+        }
+      },
+      {
+        "type": "way",
+        "id": 684001542,
+        "timestamp": "2026-08-29T12:16:41Z",
+        "version": 7,
+        "changeset": 188194060,
+        "user": "freundTech",
+        "uid": 5498032,
+        "nodes": [
+          6407529788,
+          6407529785
+        ],
+        "tags": {
+          "handrail": "no",
+          "highway": "steps",
+          "incline": "up",
+          "ramp": "no",
+          "step_count": "14",
+          "surface": "paving_stones",
+          "tactile_paving": "no"
+        }
+      }
+    ],
+    "mainEntrance": {
+      "osmId": "n1339449505",
+      "coordinates": [
+        4.8560226,
+        52.3371561
+      ],
+      "precision": "Mapped OSM entrance=main node with exact house500 address;2019version7. Lies within current BAGparent, connected by covered pedestrian passage. This is mapped location, not independent door survey."
+    },
+    "streetApproach": {
+      "name": "Skûtsjespad",
+      "osmWay": "w7381220",
+      "routingId": "routing_7438",
+      "coordinates": [
+        4.8553107,
+        52.3369407
+      ],
+      "precision": "Actual mapped road node6407529791 where footwayw684001541 branches into steps to covered passage. A street approach, explicitly not the door;use if bicycle snapping at actualmainentrance mistakenly selects northbusway."
+    }
+  },
+  "routingEvidence": {
+    "source": "public/data/extracts/amsterdam/streets-routing.json",
+    "street": {
+      "id": "routing_7438",
+      "name": "Skûtsjespad",
+      "type": "street",
+      "cityId": "amsterdam",
+      "center": [
+        52.336941,
+        4.855311
+      ],
+      "highway": "residential",
+      "path": [
+        [
+          52.336788,
+          4.853986
+        ],
+        [
+          52.33681,
+          4.854154
+        ],
+        [
+          52.336834,
+          4.854362
+        ],
+        [
+          52.336877,
+          4.854661
+        ],
+        [
+          52.336885,
+          4.854733
+        ],
+        [
+          52.336921,
+          4.855052
+        ],
+        [
+          52.336938,
+          4.855255
+        ],
+        [
+          52.336941,
+          4.855311
+        ],
+        [
+          52.336948,
+          4.855428
+        ],
+        [
+          52.336968,
+          4.855786
+        ],
+        [
+          52.336976,
+          4.855989
+        ],
+        [
+          52.336981,
+          4.856145
+        ],
+        [
+          52.336988,
+          4.856317
+        ],
+        [
+          52.337001,
+          4.856666
+        ]
+      ],
+      "paths": [
+        [
+          [
+            52.336788,
+            4.853986
+          ],
+          [
+            52.33681,
+            4.854154
+          ],
+          [
+            52.336834,
+            4.854362
+          ],
+          [
+            52.336877,
+            4.854661
+          ],
+          [
+            52.336885,
+            4.854733
+          ],
+          [
+            52.336921,
+            4.855052
+          ],
+          [
+            52.336938,
+            4.855255
+          ],
+          [
+            52.336941,
+            4.855311
+          ],
+          [
+            52.336948,
+            4.855428
+          ],
+          [
+            52.336968,
+            4.855786
+          ],
+          [
+            52.336976,
+            4.855989
+          ],
+          [
+            52.336981,
+            4.856145
+          ],
+          [
+            52.336988,
+            4.856317
+          ],
+          [
+            52.337001,
+            4.856666
+          ]
+        ],
+        [
+          [
+            52.336778,
+            4.853836
+          ],
+          [
+            52.33678,
+            4.853928
+          ],
+          [
+            52.336788,
+            4.853986
+          ]
+        ],
+        [
+          [
+            52.337001,
+            4.856666
+          ],
+          [
+            52.336984,
+            4.856926
+          ],
+          [
+            52.336988,
+            4.857059
+          ],
+          [
+            52.336989,
+            4.857101
+          ],
+          [
+            52.336992,
+            4.857183
+          ],
+          [
+            52.336995,
+            4.857256
+          ],
+          [
+            52.336997,
+            4.85728
+          ]
+        ],
+        [
+          [
+            52.337127,
+            4.857177
+          ],
+          [
+            52.337001,
+            4.856666
+          ]
+        ],
+        [
+          [
+            52.337121,
+            4.857448
+          ],
+          [
+            52.337075,
+            4.857306
+          ],
+          [
+            52.33707,
+            4.857279
+          ],
+          [
+            52.337064,
+            4.857253
+          ],
+          [
+            52.337055,
+            4.857184
+          ],
+          [
+            52.33705,
+            4.857113
+          ],
+          [
+            52.337037,
+            4.856926
+          ],
+          [
+            52.337001,
+            4.856666
+          ]
+        ],
+        [
+          [
+            52.337001,
+            4.856666
+          ],
+          [
+            52.336942,
+            4.856944
+          ],
+          [
+            52.336939,
+            4.857183
+          ]
+        ],
+        [
+          [
+            52.336791,
+            4.85374
+          ],
+          [
+            52.336778,
+            4.853836
+          ]
+        ],
+        [
+          [
+            52.336997,
+            4.85728
+          ],
+          [
+            52.336999,
+            4.857305
+          ],
+          [
+            52.337028,
+            4.857449
+          ]
+        ]
+      ]
+    },
+    "connectivity": "Installed Skûtsjespad paths run past the full south facade from Jachthavenweg west junction52.336788,4.853986 to Amstelveenseweg east junctions52.337121,4.857448 and52.337028,4.857449. Mainentrance pedestrian link/steps are not included in bike graph because untagged footways are excluded.",
+    "approachNode": [
+      52.3369407,
+      4.8553107
+    ],
+    "installedRoundedNode": [
+      52.336941,
+      4.855311
+    ],
+    "roundedErrorMetres": 0.05,
+    "nearestCentroidWarnings": [
+      {
+        "routingId": "routing_46730",
+        "highway": "busway",
+        "distanceMetres": 20
+      },
+      {
+        "routingId": "routing_7438",
+        "highway": "residential",
+        "name": "Skûtsjespad",
+        "distanceMetres": 26.2
+      }
+    ],
+    "actualGameRouteReview": "Pending root actual chosen finish test; this source check is not live acceptance."
+  },
+  "visualRevisions": [
+    {
+      "reviewedOn": "2026-10-04",
+      "evidence": "artifacts/ing-house-review/gallery.png compared with primary MVSA ING_F12_FOLDER photo",
+      "failure": "High gallery exposed weak western nose recognition: silver side cheek too narrow; full-length glass rhythm extended onto real opaque side panels. Belly edge read flat.",
+      "decision": "Broaden silver/white nose side panels to first western notch x~-49; panoramic glazing stays bounded on curved end x<-60 with source-supported top/bottom margins. Approximate rounded aluminium belly corner with three bevel bands constrained to surveyed outer ring. Preserve failed gallery evidence. Supports unchanged pending low-view root comparison.",
+      "approximation": "Flat-palette white represents bright aluminium nose in sun. Native boundary, roof profiles, supports, open lanes and exact identities unchanged.",
+      "acceptance": "CPU field/bevel visibility probes pass; no visual acceptance until root rerender and compare."
+    },
+    {
+      "reviewedOn": "2026-10-04",
+      "evidence": "artifacts/ing-house-review/gallery-low-front.png compared with primary MVSA ING_F12_FOLDER.width-1160.jpg",
+      "failure": "The nose and wedge now read, but constant-width 1.65m steel legs looked like thin sticks compared with dominant broad upper plates tapering to narrow pin bearings in the primary photograph.",
+      "decision": "Keep all16support centre axes and bearings; replace uniform rectangular shafts with inclined trapezoidal steel plates, broad at belly and narrow at bearing. Add physically exposed narrow stiffener on outward face. Existing surveyed roof/native scope, eastern lobby, three belly bevel bands and open undercroft retained.",
+      "approximation": "Support authored top width3.3m, pin width0.7m, depth1.0–1.5m are photo-informed proportions, not surveyed engineering dimensions. Primary photo shows substantial upper steel plates and narrow feet. Independent drawings have not been searched for exact steel sections; Bouwdossiers1905–2010 address search remains unperformed, not claimed consulted.",
+      "acceptance": "CPU first-hit exposed upper-plate and narrow-foot probes pass on both rows, plus existing native bounds/open lanes/roof/glazing checks. Final root rerender and actual game acceptance required."
+    },
+    {
+      "reviewedOn": "2026-10-04",
+      "evidence": "Beeldbank D10134001313 / record a098b7d6-9986-ff3b-5ea7-28ff857cccb5, July2005 eastern entrance photograph; root inspected",
+      "failure": "Ground glass lobby was only4.3m high with an opaque lift core extending to the belly; archive entrance photograph shows a tall glazed ground lobby reaching the raised body.",
+      "decision": "Raise exposed east lobby shell and slender mullions to10.8m, add proportionate horizontal glazing divisions at3.5/7m; keep mapped eastern42..64m/-2..6.5m scope and covered passage alongside. Core stays inside its exposed outer glass shell. Raised belly underside owns ceiling; no overlapping roof cap.",
+      "approximation": "Lobby height10.8m is photo-informed under-belly height, not independently surveyed or sourced engineering drawing. Address-based DataAmsterdam dossier is unavailable per user; no access request pending.",
+      "checks": "Physical main-door glazing hit at2m and upper glazed bays at5/9m pass; exterior covered lane atz8.5 stays unobstructed. An initial upper glazing probe through an actual inclined support correctly hit steel; revised bay probes test exposed panes between supports.",
+      "acceptance": "Fresh exported root gallery/game comparison pending. CPU checks are not visual acceptance."
+    }
+  ],
+  "archiveAccess": {
+    "checkedOn": "2026-10-04",
+    "query": "Amstelveenseweg 500",
+    "userProvidedSearchUrl": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Amstelveenseweg%20500&rows=1&page=1&reverse=0",
+    "searchState": "Public Beeldbank HTML and underlying published Memorix media endpoint available read-only. Exact-address query returned67records; bounded filtered search minusaanbouw examined8records, selected2 relevant exterior photographs. No browser/GPU used.",
+    "records": [
+      {
+        "id": "a098b7d6-9986-ff3b-5ea7-28ff857cccb5",
+        "title": "ING House, het hoofdkantoor van de ING Bank, Amstelveenseweg 500. Ingang met personeel",
+        "description": "",
+        "sourceUrl": "https://archief.amsterdam/beeldbank/detail/a098b7d6-9986-ff3b-5ea7-28ff857cccb5",
+        "metadata": [
+          {
+            "field": "dc_title",
+            "label": "Titel",
+            "value": "ING House, het hoofdkantoor van de ING Bank, Amstelveenseweg 500. Ingang met personeel"
+          },
+          {
+            "field": "sk_documenttype",
+            "label": "Documenttype",
+            "value": "foto"
+          },
+          {
+            "field": "sk_vervaardiger",
+            "label": "Vervaardiger",
+            "value": [
+              "Kransberg, Doriann (1949-)"
+            ]
+          },
+          {
+            "field": "geografische_aanduiding",
+            "label": "Geografische aanduiding",
+            "value": [
+              [
+                {
+                  "field": "geografische_aanduiding.sk_geografische_naam",
+                  "label": "Straat",
+                  "value": "Amstelveenseweg"
+                },
+                {
+                  "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+                  "label": "Huisnummer van / tot",
+                  "value": "500 - 500"
+                }
+              ]
+            ]
+          },
+          {
+            "field": "dc_provenance",
+            "label": "Collectie",
+            "value": "Collectie Zuidas: foto's"
+          },
+          {
+            "field": "dc_date",
+            "label": "Datering",
+            "value": "juli 2005"
+          },
+          {
+            "field": "sr_rechthebbende",
+            "label": "Rechthebbende",
+            "value": "Stadsarchief Amsterdam"
+          },
+          {
+            "field": "sr_leveringsvoorwaarden",
+            "label": "Gebruiksvoorwaarden",
+            "value": "-"
+          },
+          {
+            "field": "dc_source",
+            "label": "Inventarissen",
+            "value": "<a href='http://archief.amsterdam/archief/10192' target='_blank'>http://archief.amsterdam/archief/10192</a>"
+          },
+          {
+            "field": "quality",
+            "label": "Kwaliteit",
+            "value": "Hoog"
+          },
+          {
+            "field": "identifier",
+            "label": "Afbeeldingsbestand",
+            "value": "D10134001313"
+          }
+        ],
+        "imageUrl": "https://images.memorix.nl/ams/thumb/640x480/f2871915-970e-e736-1cb7-549319b7f60b.jpg",
+        "assetUuid": "f2871915-970e-e736-1cb7-549319b7f60b",
+        "inspected": true,
+        "cachePath": "/tmp/ing-archive-photo-1.jpg",
+        "observation": "July2005 eastern entrance facade: broad upper inclined steel legs narrowing toward bearings, tall glass lobby beneath high end. Supports current taper treatment and mapped eastern main entrance. Ground-floor lobby looks taller than current4.3m glass shell; report to root for scope judgment, no builder mutation."
+      },
+      {
+        "id": "4981c883-6b17-8149-9e6e-b1cc840cad00",
+        "title": "ING House",
+        "description": "Het ING House, Amstelveenseweg 500, in de schemering. Beeld bewerkt. Het gebouw maakt deel uit van kantorenpark De Zuiderhof.",
+        "sourceUrl": "https://archief.amsterdam/beeldbank/detail/4981c883-6b17-8149-9e6e-b1cc840cad00",
+        "metadata": [
+          {
+            "field": "dc_title",
+            "label": "Titel",
+            "value": "ING House"
+          },
+          {
+            "field": "dc_description",
+            "label": "Beschrijving",
+            "value": "Het ING House, Amstelveenseweg 500, in de schemering. Beeld bewerkt. Het gebouw maakt deel uit van kantorenpark De Zuiderhof."
+          },
+          {
+            "field": "sk_documenttype",
+            "label": "Documenttype",
+            "value": "foto"
+          },
+          {
+            "field": "sk_vervaardiger",
+            "label": "Vervaardiger",
+            "value": [
+              "Kransberg, Doriann (1949-)"
+            ]
+          },
+          {
+            "field": "geografische_aanduiding",
+            "label": "Geografische aanduiding",
+            "value": [
+              [
+                {
+                  "field": "geografische_aanduiding.sk_geografische_naam",
+                  "label": "Straat",
+                  "value": "Amstelveenseweg"
+                },
+                {
+                  "field": "geografische_aanduiding.sk_geografische_nummers_from_to",
+                  "label": "Huisnummer van / tot",
+                  "value": "500 - 500"
+                }
+              ]
+            ]
+          },
+          {
+            "field": "dc_provenance",
+            "label": "Collectie",
+            "value": "Collectie Zuidas: foto's"
+          },
+          {
+            "field": "dc_date",
+            "label": "Datering",
+            "value": "oktober 2002"
+          },
+          {
+            "field": "sr_rechthebbende",
+            "label": "Rechthebbende",
+            "value": "Stadsarchief Amsterdam"
+          },
+          {
+            "field": "sr_leveringsvoorwaarden",
+            "label": "Gebruiksvoorwaarden",
+            "value": "-"
+          },
+          {
+            "field": "dc_source",
+            "label": "Inventarissen",
+            "value": "<a href='http://archief.amsterdam/archief/10192' target='_blank'>http://archief.amsterdam/archief/10192</a>"
+          },
+          {
+            "field": "quality",
+            "label": "Kwaliteit",
+            "value": "Hoog"
+          },
+          {
+            "field": "identifier",
+            "label": "Afbeeldingsbestand",
+            "value": "D10134000292"
+          }
+        ],
+        "imageUrl": "https://images.memorix.nl/ams/thumb/640x480/759b9ad1-e067-6ace-7623-440952330fb8.jpg",
+        "assetUuid": "759b9ad1-e067-6ace-7623-440952330fb8",
+        "inspected": true,
+        "cachePath": "/tmp/ing-archive-photo-2.jpg",
+        "observation": "October2002 edited dusk image: broad silver rounded western nose cheek/panoramic glazing margin, curved silver belly, substantial inclined plate supports. Confirms recognition treatment; edited lighting/colors not used for numeric material calibration."
+      }
+    ],
+    "bouwdossiers": {
+      "state": "unavailable",
+      "reportedBy": "user",
+      "detail": "User attempted Data Amsterdam dossier; no public access. No dossier retrieved or used, no email/access request pending."
+    },
+    "dateComparison": "2002/2005 photographs show original ING era; current MVSA primary photographs and mapped2019entrance used to compare unchanged core nose/support/lobby form. Historic painted ING signage is not copied; current Infinity identity kept. Exact engineered steel sections still not surveyed."
+  }
+}
