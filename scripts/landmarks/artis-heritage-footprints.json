@@ -1,0 +1,508 @@
+{
+  "sites": [
+    {
+      "id": "groote-museum",
+      "key": "groote",
+      "parent": "a538040748",
+      "landmarkId": "extract_landmarks_402613958",
+      "name": "ARTIS Groote Museum",
+      "author": 299.9,
+      "url": "https://www.artis.nl/en/artis-groote-museum/to-see-in-artis-groote-museum/building",
+      "anchor": [
+        4.913127461904327,
+        52.366173715262796
+      ],
+      "footprint": {
+        "centre": [
+          4.913127461904327,
+          52.366173715262796
+        ],
+        "headingDegrees": 120.18889601770292,
+        "lengthMetres": 71.91223163195569,
+        "widthMetres": 19.842842472567856
+      },
+      "authorHeadingDegrees": 299.9,
+      "buildings": [
+        {
+          "type": "Feature",
+          "id": "a538040748",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9126041,
+                    52.3662667
+                  ],
+                  [
+                    4.9129975,
+                    52.366127
+                  ],
+                  [
+                    4.9129901,
+                    52.3661194
+                  ],
+                  [
+                    4.9131317,
+                    52.3660691
+                  ],
+                  [
+                    4.913139,
+                    52.3660768
+                  ],
+                  [
+                    4.9135186,
+                    52.365942
+                  ],
+                  [
+                    4.9136169,
+                    52.3660451
+                  ],
+                  [
+                    4.9135577,
+                    52.3660661
+                  ],
+                  [
+                    4.9132373,
+                    52.36618
+                  ],
+                  [
+                    4.9132404,
+                    52.3661836
+                  ],
+                  [
+                    4.9132438,
+                    52.3661885
+                  ],
+                  [
+                    4.9132462,
+                    52.3661936
+                  ],
+                  [
+                    4.9132478,
+                    52.3661989
+                  ],
+                  [
+                    4.9132484,
+                    52.3662042
+                  ],
+                  [
+                    4.9132481,
+                    52.3662096
+                  ],
+                  [
+                    4.9132468,
+                    52.3662149
+                  ],
+                  [
+                    4.9132446,
+                    52.3662201
+                  ],
+                  [
+                    4.9132416,
+                    52.3662251
+                  ],
+                  [
+                    4.9132376,
+                    52.3662299
+                  ],
+                  [
+                    4.913233,
+                    52.3662343
+                  ],
+                  [
+                    4.9132274,
+                    52.3662385
+                  ],
+                  [
+                    4.9132213,
+                    52.3662423
+                  ],
+                  [
+                    4.9132144,
+                    52.3662457
+                  ],
+                  [
+                    4.9132072,
+                    52.3662485
+                  ],
+                  [
+                    4.9131994,
+                    52.3662509
+                  ],
+                  [
+                    4.913187,
+                    52.3662535
+                  ],
+                  [
+                    4.9131741,
+                    52.3662549
+                  ],
+                  [
+                    4.9131653,
+                    52.3662551
+                  ],
+                  [
+                    4.9131566,
+                    52.3662547
+                  ],
+                  [
+                    4.9131481,
+                    52.3662538
+                  ],
+                  [
+                    4.9131397,
+                    52.3662524
+                  ],
+                  [
+                    4.9131316,
+                    52.3662503
+                  ],
+                  [
+                    4.913124,
+                    52.3662478
+                  ],
+                  [
+                    4.9131167,
+                    52.3662448
+                  ],
+                  [
+                    4.91311,
+                    52.3662413
+                  ],
+                  [
+                    4.9131041,
+                    52.3662375
+                  ],
+                  [
+                    4.9130988,
+                    52.3662333
+                  ],
+                  [
+                    4.9130957,
+                    52.3662302
+                  ],
+                  [
+                    4.9127024,
+                    52.3663699
+                  ],
+                  [
+                    4.9126041,
+                    52.3662667
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building": "yes",
+            "height": "20.4",
+            "name": "oude hoofdgebouw Artis",
+            "ref:bag": "0363100012165614",
+            "source": "BAG",
+            "source:date": "2014-03-24",
+            "source:height": "3DBAG",
+            "source:height:date": "2025-09-03",
+            "start_date": "1855",
+            "wikidata": "Q17298532",
+            "wikimedia_commons": "Category:Hoofdgebouw Artis",
+            "wikipedia": "nl:Hoofdgebouw (Artis)"
+          }
+        }
+      ],
+      "parts": [],
+      "suppressOsmIds": [
+        "w269020374",
+        "NL.IMBAG.Pand.0363100012165614"
+      ],
+      "primaryReferences": [
+        "https://www.artis.nl/en/artis-groote-museum/to-see-in-artis-groote-museum/building",
+        "https://www.zri.nl/artis_groote_museum_-_amsterdam",
+        "https://merk-x.nl/musea/",
+        "https://merk-x.nl/musea/artis-het-groote-museum/"
+      ],
+      "sourceNote": "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
+    },
+    {
+      "id": "artis-library",
+      "key": "library",
+      "parent": "a538040712",
+      "landmarkId": "extract_landmarks_1124317571",
+      "name": "ARTIS Library \u2014 Fauna Building",
+      "author": 119.9,
+      "url": "https://www.allardpierson.nl/en/artis-library",
+      "anchor": [
+        4.9149289852780305,
+        52.36553813024979
+      ],
+      "footprint": {
+        "centre": [
+          4.9149289852780305,
+          52.36553813024979
+        ],
+        "headingDegrees": 119.53591573579465,
+        "lengthMetres": 80.2468587459968,
+        "widthMetres": 11.025797003150897
+      },
+      "authorHeadingDegrees": 119.9,
+      "buildings": [
+        {
+          "type": "Feature",
+          "id": "a538040712",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9143759,
+                    52.3656728
+                  ],
+                  [
+                    4.9144435,
+                    52.3656495
+                  ],
+                  [
+                    4.9144495,
+                    52.365656
+                  ],
+                  [
+                    4.9145496,
+                    52.3656216
+                  ],
+                  [
+                    4.9145479,
+                    52.3656198
+                  ],
+                  [
+                    4.9146004,
+                    52.3656017
+                  ],
+                  [
+                    4.9146021,
+                    52.3656035
+                  ],
+                  [
+                    4.9147023,
+                    52.3655688
+                  ],
+                  [
+                    4.9146962,
+                    52.3655623
+                  ],
+                  [
+                    4.9147637,
+                    52.365539
+                  ],
+                  [
+                    4.9147697,
+                    52.3655455
+                  ],
+                  [
+                    4.9148674,
+                    52.3655115
+                  ],
+                  [
+                    4.9148639,
+                    52.3655079
+                  ],
+                  [
+                    4.9149202,
+                    52.3654882
+                  ],
+                  [
+                    4.9149236,
+                    52.3654918
+                  ],
+                  [
+                    4.9150214,
+                    52.365458
+                  ],
+                  [
+                    4.9150154,
+                    52.3654515
+                  ],
+                  [
+                    4.9150831,
+                    52.3654281
+                  ],
+                  [
+                    4.9150891,
+                    52.3654346
+                  ],
+                  [
+                    4.915189,
+                    52.3654
+                  ],
+                  [
+                    4.9151874,
+                    52.3653982
+                  ],
+                  [
+                    4.9152398,
+                    52.3653801
+                  ],
+                  [
+                    4.9152414,
+                    52.3653818
+                  ],
+                  [
+                    4.9153413,
+                    52.3653472
+                  ],
+                  [
+                    4.9153354,
+                    52.3653406
+                  ],
+                  [
+                    4.9154027,
+                    52.3653175
+                  ],
+                  [
+                    4.915444,
+                    52.3653622
+                  ],
+                  [
+                    4.9154822,
+                    52.3654035
+                  ],
+                  [
+                    4.915415,
+                    52.3654269
+                  ],
+                  [
+                    4.915409,
+                    52.3654204
+                  ],
+                  [
+                    4.915309,
+                    52.365455
+                  ],
+                  [
+                    4.9153105,
+                    52.3654567
+                  ],
+                  [
+                    4.9152581,
+                    52.3654748
+                  ],
+                  [
+                    4.9152565,
+                    52.3654731
+                  ],
+                  [
+                    4.9151565,
+                    52.3655076
+                  ],
+                  [
+                    4.9151625,
+                    52.3655141
+                  ],
+                  [
+                    4.9150948,
+                    52.3655375
+                  ],
+                  [
+                    4.9150888,
+                    52.365531
+                  ],
+                  [
+                    4.9149911,
+                    52.3655649
+                  ],
+                  [
+                    4.9149944,
+                    52.3655686
+                  ],
+                  [
+                    4.9149378,
+                    52.3655879
+                  ],
+                  [
+                    4.9149344,
+                    52.3655843
+                  ],
+                  [
+                    4.9148367,
+                    52.3656179
+                  ],
+                  [
+                    4.9148427,
+                    52.3656244
+                  ],
+                  [
+                    4.9147751,
+                    52.3656478
+                  ],
+                  [
+                    4.9147691,
+                    52.3656413
+                  ],
+                  [
+                    4.914669,
+                    52.365676
+                  ],
+                  [
+                    4.9146706,
+                    52.3656778
+                  ],
+                  [
+                    4.9146389,
+                    52.3656887
+                  ],
+                  [
+                    4.9146182,
+                    52.3656959
+                  ],
+                  [
+                    4.9146166,
+                    52.3656941
+                  ],
+                  [
+                    4.9145168,
+                    52.3657289
+                  ],
+                  [
+                    4.9145228,
+                    52.3657354
+                  ],
+                  [
+                    4.9144554,
+                    52.3657589
+                  ],
+                  [
+                    4.9143759,
+                    52.3656728
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building": "yes",
+            "height": "10.8",
+            "ref:bag": "0363100012164975",
+            "source": "BAG",
+            "source:date": "2014-03-24",
+            "source:height": "3DBAG",
+            "source:height:date": "2025-09-03",
+            "start_date": "1956"
+          }
+        }
+      ],
+      "parts": [],
+      "suppressOsmIds": [
+        "w269020356",
+        "NL.IMBAG.Pand.0363100012164975"
+      ],
+      "primaryReferences": [
+        "https://www.allardpierson.nl/en/artis-library",
+        "https://www.artis.nl/nl/artis-park/te-zien-in-artis-park/artis-bibliotheek",
+        "https://www.salverda.nl/projecten/restauratie-en-verduurzaming-artis-bibliotheek",
+        "https://kennis.cultureelerfgoed.nl/index.php/Monumenten/4105"
+      ],
+      "sourceNote": "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
+    }
+  ]
+}

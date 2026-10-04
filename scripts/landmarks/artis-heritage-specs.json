@@ -1,0 +1,76 @@
+[
+  {
+    "id": "groote-museum",
+    "name": "ARTIS Groote Museum",
+    "landmarkId": "extract_landmarks_402613958",
+    "modelUrl": "./models/groote-museum.glb",
+    "suppressOsmIds": [
+      "w269020374",
+      "NL.IMBAG.Pand.0363100012165614"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.913127461904327,
+        52.366173715262796
+      ],
+      "headingDegrees": 120.18889601770292,
+      "lengthMetres": 71.91223163195569,
+      "widthMetres": 19.842842472567856
+    },
+    "surveyed": {
+      "anchor": [
+        4.913127461904327,
+        52.366173715262796
+      ],
+      "northOffsetDegrees": 209.89999999999998
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 179.71110398229706,
+    "attribution": {
+      "title": "ARTIS Groote Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.artis.nl/en/artis-groote-museum/to-see-in-artis-groote-museum/building",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
+    }
+  },
+  {
+    "id": "artis-library",
+    "name": "ARTIS Library — Fauna Building",
+    "landmarkId": "extract_landmarks_1124317571",
+    "modelUrl": "./models/artis-library.glb",
+    "suppressOsmIds": [
+      "w269020356",
+      "NL.IMBAG.Pand.0363100012164975"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.9149289852780305,
+        52.36553813024979
+      ],
+      "headingDegrees": 119.53591573579465,
+      "lengthMetres": 80.2468587459968,
+      "widthMetres": 11.025797003150897
+    },
+    "surveyed": {
+      "anchor": [
+        4.9149289852780305,
+        52.36553813024979
+      ],
+      "northOffsetDegrees": 29.900000000000006
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.3640842642053599,
+    "attribution": {
+      "title": "ARTIS Library — Fauna Building",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.allardpierson.nl/en/artis-library",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
+    }
+  }
+]
