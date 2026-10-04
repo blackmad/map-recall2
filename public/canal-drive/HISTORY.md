@@ -1,5 +1,37 @@
 # Canal Recall — what is built
 
+## Two churches, local venues and ARTIS heritage: 74 original landmarks (2026-10-04)
+
+Dominicuskerk now keeps its actual nave, aisle roofs, small bell turret and
+unfinished hexagonal tower stump. An older church roof patch is rebuilt only
+within the current parent plan; the neighboring historic BAG house remains.
+Vredeskerk includes its nave, transverse roofs, rose window, clear arched
+entrance doors and documented 50 m tower including the iron cross.
+
+Badhuistheater retains its octagonal bath-house dome and clerestory. Cinecenter
+models the current side-street entrance and older canal frontage. Studio/K uses
+the complete mapped Timorplein school with open court, workshop connectors,
+paired gables and corner clock tower. Groote Museum retains its rounded
+Artisplein bow and long arched facade; ARTIS Library its five pavilions,
+circular upper windows and historic name plaques. Original photographs guide
+approximations; exact OSM/BAG identities keep neighbors and courtyards visible.
+
+Gallery and active-game reviews corrected door/window occlusion, overlapping
+church roof geometry, facade signage and a clock placement. All 74 assets pass
+finite-geometry, decoded triangle/file-size, material and life-size checks;
+exact-ID suppression and hidden-model restoration pass. The refreshed queue has
+288 entries: 78 original-model entries, 12 imported references, 17 procedural
+kits and 181 pending tasks. Entries exceed meshes because teaching aliases
+share some assets.
+
+Tree crowns now include a sixteenth palm form for 37 exactly recorded windmill
+palms, with seven radial fronds and a high solitary trunk. Five exact evergreen
+taxa also move 202 unpruned trees from generic crowns to conifers. Whole-inventory
+comparison preserves positions, heights and every unmatched/pruned record.
+Gallery, mobile Chromium, real instancing/culling/lifecycle checks and an
+isolated recorded-palm park capture pass within the existing seven-draw,
+four-geometry and two-material budgets. Phone hardware performance is unmeasured.
+
 ## Chapel, independent cinemas and eastern museums: 67 original landmarks (2026-10-04)
 
 Agnietenkapel now uses its exact chapel and courtyard-wall plans, distinct west

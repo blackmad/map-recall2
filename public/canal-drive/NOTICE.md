@@ -134,7 +134,9 @@ Portuguese Synagogue, Hollandsche Schouwburg, National Holocaust Museum and
 Homomonument, ARTIS Micropia/Ledenlokalen, ARTIS entrance and Hortus
 greenhouses/orangery, Arcam, Foam, Huis Marseille, Ons’ Lieve Heer op Solder,
 Brakke Grond, Frascati, Boom Chicago, Agnietenkapel, LAB111, OCCII, Ketelhuis,
-Wereldmuseum Amsterdam, Dutch Resistance Museum and Allard Pierson use the
+Wereldmuseum Amsterdam, Dutch Resistance Museum, Allard Pierson, Dominicuskerk,
+Vredeskerk, Badhuistheater, Cinecenter, Studio/K / Timorplein school, ARTIS
+Groote Museum and ARTIS Library use the
 same original modelling workflow in
 `scripts/landmarks/build-manual-landmarks.ts`. The live game loads these
 flat-colour replacements; the older imported catalogue remains available in
@@ -172,5 +174,5 @@ the tile index. OSM trees without a valid recorded height use an authored
 
 Park boundaries, lawns, woodland, ponds, paths and bench locations derive from
 OpenStreetMap contributors under [ODbL](https://www.openstreetmap.org/copyright).
-`scripts/build-park-landscape.mjs` rebuilds the eleven-park overlay from the
+`scripts/build-park-landscape.mjs` rebuilds the mapped park/site overlays and optional Amsterdamse Bos chunk from the
 cached source extract. No synthetic ponds, tree positions or paths are added.

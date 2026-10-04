@@ -1,0 +1,86 @@
+[
+  {
+    "id": "dominicuskerk",
+    "name": "Dominicuskerk",
+    "landmarkId": "extract_landmarks_1569842434",
+    "modelUrl": "./models/dominicuskerk.glb",
+    "suppressOsmIds": [
+      "w266621545",
+      "NL.IMBAG.Pand.0363100012171033",
+      "w749287651",
+      "w749287652",
+      "w749287653",
+      "w749287654",
+      "w749599657"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.89321725882353,
+        52.3769672
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 49.880298147937275,
+      "widthMetres": 43.05533000047106
+    },
+    "surveyed": {
+      "anchor": [
+        4.89321725882353,
+        52.3769672
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Actual OSM/BAG plan and mapped roof/tower parts; local east/south metre coordinates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Dominicuskerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://dominicusamsterdam.nl/gebouw-en-historie/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction. Exact current church parent and four contained roof/body parts. Mapped church roof part w749599657 is rebuilt above21m and clipped to the current parent to avoid encroaching on adjacent BAG0363100012179327; no neighboring building is suppressed. Parent height28.6m and historical part tags up to29m differ; decorative divisions approximate. Unfinished hexagonal tower stump retained; no proposed85m tower built."
+    }
+  },
+  {
+    "id": "vredeskerk",
+    "name": "Vredeskerk",
+    "landmarkId": "extract_landmarks_77247220",
+    "modelUrl": "./models/vredeskerk.glb",
+    "suppressOsmIds": [
+      "w44451461",
+      "NL.IMBAG.Pand.0363100012107328",
+      "w995323510",
+      "w995323511",
+      "w995323512"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.889909207894737,
+        52.349861886842106
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 54.83400106963944,
+      "widthMetres": 42.447359999649734
+    },
+    "surveyed": {
+      "anchor": [
+        4.889909207894737,
+        52.349861886842106
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Actual OSM/BAG plan and mapped roof/tower parts; local east/south metre coordinates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Vredeskerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.amsterdam.vredeskerk.nl/his.index.htm",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction. Exact church parent and tower parts. Parish/diocese describe50m including iron spire; historical mapped tower part49m. Nave roof/wall division and checkerboard tile details approximate. No plaza trees or fountain positions invented."
+    }
+  }
+]

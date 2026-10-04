@@ -2,12 +2,19 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const catalogue = JSON.parse(fs.readFileSync('src/canalRecall/landmarks/manualCatalogue.json', 'utf8'));
-const exactIds = ['embassy-free-mind', 'anne-frank-house', 'rembrandt-house', 'moco-museum', 'museum-van-loon', 'het-schip', 'scheepvaarthuis', 'rialto', 'kriterion', 'de-bijenkorf', 'gashouder', 'stadsschouwburg', 'tuschinski', 'pathe-city', 'oude-kerk', 'nieuwe-kerk', 'buiksloterkerk', 'english-reformed-church', 'de-papegaai', 'de-hallen', 'huis-bartolotti', 'hart-museum', 'amsterdam-museum', 'national-holocaust-museum', 'hollandsche-schouwburg', 'jewish-museum', 'portuguese-synagogue', 'homomonument', 'micropia-ledenlokalen', 'artis-entrance', 'hortus-greenhouses', 'arcam', 'brakke-grond', 'frascati', 'boom-chicago', 'foam', 'huis-marseille', 'ons-lieve-heer-op-solder', 'agnietenkapel', 'lab111', 'occii', 'ketelhuis', 'wereldmuseum-amsterdam', 'dutch-resistance-museum', 'allard-pierson'];
+const exactIds = ['embassy-free-mind', 'anne-frank-house', 'rembrandt-house', 'moco-museum', 'museum-van-loon', 'het-schip', 'scheepvaarthuis', 'rialto', 'kriterion', 'de-bijenkorf', 'gashouder', 'stadsschouwburg', 'tuschinski', 'pathe-city', 'oude-kerk', 'nieuwe-kerk', 'buiksloterkerk', 'english-reformed-church', 'de-papegaai', 'de-hallen', 'huis-bartolotti', 'hart-museum', 'amsterdam-museum', 'national-holocaust-museum', 'hollandsche-schouwburg', 'jewish-museum', 'portuguese-synagogue', 'homomonument', 'micropia-ledenlokalen', 'artis-entrance', 'hortus-greenhouses', 'arcam', 'brakke-grond', 'frascati', 'boom-chicago', 'foam', 'huis-marseille', 'ons-lieve-heer-op-solder', 'agnietenkapel', 'lab111', 'occii', 'ketelhuis', 'wereldmuseum-amsterdam', 'dutch-resistance-museum', 'allard-pierson', 'dominicuskerk', 'vredeskerk', 'badhuistheater', 'cinecenter', 'studiok', 'groote-museum', 'artis-library'];
 for (const id of exactIds) {
   const spec = catalogue.find(spec => spec.id === id);
   assert.ok(spec, id);
   assert.equal(spec.spatialSuppression, false, `${id}: padded rectangles would hide neighboring buildings`);
   assert.ok(spec.suppressOsmIds.length, `${id}: exact building IDs still required`);
+}
+// The older church roof patch crosses the current parent boundary: only its
+// exact identity is replaced, never the separate historic house beside it.
+const dominicus = catalogue.find(spec => spec.id === 'dominicuskerk');
+assert.ok(dominicus.suppressOsmIds.includes('w749599657'));
+for (const neighbor of ['w266621396', 'NL.IMBAG.Pand.0363100012179327']) {
+  assert.equal(dominicus.suppressOsmIds.includes(neighbor), false);
 }
 // Exercise the runtime methods without creating a WebGL context.
 globalThis.window = {CanalRecallThree: {THREE: {}}, CanalRecallSignatureLandmarks: {}};

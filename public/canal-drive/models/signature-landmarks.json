@@ -5161,6 +5161,495 @@
       "triangles": 14064,
       "bytes": 172204,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "dominicuskerk": {
+      "id": "dominicuskerk",
+      "name": "Dominicuskerk",
+      "landmarkId": "extract_landmarks_1569842434",
+      "modelUrl": "./models/dominicuskerk.glb",
+      "suppressOsmIds": [
+        "w266621545",
+        "NL.IMBAG.Pand.0363100012171033",
+        "w749287651",
+        "w749287652",
+        "w749287653",
+        "w749287654",
+        "w749599657"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.89321725882353,
+          52.3769672
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 49.880298147937275,
+        "widthMetres": 43.05533000047106
+      },
+      "surveyed": {
+        "anchor": [
+          4.89321725882353,
+          52.3769672
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Actual OSM/BAG plan and mapped roof/tower parts; local east/south metre coordinates"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Dominicuskerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://dominicusamsterdam.nl/gebouw-en-historie/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction. Exact current church parent and four contained roof/body parts. Mapped church roof part w749599657 is rebuilt above21m and clipped to the current parent to avoid encroaching on adjacent BAG0363100012179327; no neighboring building is suppressed. Parent height28.6m and historical part tags up to29m differ; decorative divisions approximate. Unfinished hexagonal tower stump retained; no proposed85m tower built."
+      },
+      "bounds": {
+        "min": [
+          -20.1735782623291,
+          -1.9073486612342094e-7,
+          -26.551708221435547
+        ],
+        "max": [
+          29.70672035217285,
+          28.600000381469727,
+          16.51606559753418
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.89321725882353,
+          52.3769672
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 180,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 49.88029861450195,
+        "heightMetres": 28.600000572204593,
+        "depthMetres": 43.06777381896973,
+        "depthCoverage": 1.0002890192340537
+      },
+      "triangles": 14220,
+      "bytes": 172780,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "vredeskerk": {
+      "id": "vredeskerk",
+      "name": "Vredeskerk",
+      "landmarkId": "extract_landmarks_77247220",
+      "modelUrl": "./models/vredeskerk.glb",
+      "suppressOsmIds": [
+        "w44451461",
+        "NL.IMBAG.Pand.0363100012107328",
+        "w995323510",
+        "w995323511",
+        "w995323512"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.889909207894737,
+          52.349861886842106
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 54.83400106963944,
+        "widthMetres": 42.447359999649734
+      },
+      "surveyed": {
+        "anchor": [
+          4.889909207894737,
+          52.349861886842106
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Actual OSM/BAG plan and mapped roof/tower parts; local east/south metre coordinates"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Vredeskerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.amsterdam.vredeskerk.nl/his.index.htm",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction. Exact church parent and tower parts. Parish/diocese describe50m including iron spire; historical mapped tower part49m. Nave roof/wall division and checkerboard tile details approximate. No plaza trees or fountain positions invented."
+      },
+      "bounds": {
+        "min": [
+          -24.4450626373291,
+          -3.814697322468419e-7,
+          -24.127288818359375
+        ],
+        "max": [
+          31.04899787902832,
+          50,
+          18.613481521606445
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.889909207894737,
+          52.349861886842106
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 180,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 55.49406051635742,
+        "heightMetres": 50.00000038146973,
+        "depthMetres": 42.74077033996582,
+        "depthCoverage": 1.0069123342492563
+      },
+      "triangles": 10529,
+      "bytes": 135488,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "badhuistheater": {
+      "id": "badhuistheater",
+      "name": "Badhuistheater / Boerhaaveplein bath house",
+      "landmarkId": "extract_landmarks_1884008891",
+      "modelUrl": "./models/badhuistheater.glb",
+      "suppressOsmIds": [
+        "w81362448",
+        "NL.IMBAG.Pand.0363100012135740"
+      ],
+      "footprint": {
+        "centre": [
+          4.912708742836539,
+          52.35946578999055
+        ],
+        "headingDegrees": 18.508703067779862,
+        "lengthMetres": 19.31788960379386,
+        "widthMetres": 19.040379422032384
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.912708742836539,
+          52.35946578999055
+        ],
+        "northOffsetDegrees": -161.49129693222014,
+        "source": "Individual current BAG outer polygon and courtyard rings, native axes aligned to named streets. Current venue entrances from primary official references; mapped heights from OSM/3DBAG."
+      },
+      "attribution": {
+        "title": "Badhuistheater / Boerhaaveplein bath house",
+        "author": "Map Recall",
+        "sourceUrl": "https://items.amsterdamse-school.nl/details/objects/892",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
+      },
+      "bounds": {
+        "min": [
+          -9.704999923706055,
+          -0.020000003278255463,
+          -9.704999923706055
+        ],
+        "max": [
+          9.704999923706055,
+          11.699999809265137,
+          10.59000015258789
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.912708742836539,
+          52.35946578999055
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 288.50870306777983,
+        "facadeBearingDegrees": 18.508703067779834,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 20.295000076293945,
+        "heightMetres": 11.719999812543392,
+        "depthMetres": 19.40999984741211,
+        "depthCoverage": 1.0194124506233329
+      },
+      "triangles": 8915,
+      "bytes": 111928,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "cinecenter": {
+      "id": "cinecenter",
+      "name": "Cinecenter",
+      "landmarkId": "extract_landmarks_2066573666",
+      "modelUrl": "./models/cinecenter.glb",
+      "suppressOsmIds": [
+        "w267565713",
+        "NL.IMBAG.Pand.0363100012173768"
+      ],
+      "footprint": {
+        "centre": [
+          4.881781412209045,
+          52.36504920795147
+        ],
+        "headingDegrees": 51.32964359660497,
+        "lengthMetres": 30.133997865222117,
+        "widthMetres": 25.388899781308155
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.881781412209045,
+          52.36504920795147
+        ],
+        "northOffsetDegrees": -128.67035640339503,
+        "source": "Individual current BAG outer polygon and courtyard rings, native axes aligned to named streets. Current venue entrances from primary official references; mapped heights from OSM/3DBAG."
+      },
+      "attribution": {
+        "title": "Cinecenter",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.cinecenter.nl/info/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
+      },
+      "bounds": {
+        "min": [
+          -13.420000076293945,
+          -3.814697322468419e-7,
+          -15.057455062866211
+        ],
+        "max": [
+          12.914999961853027,
+          20.579999923706055,
+          15.781200408935547
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.881781412209045,
+          52.36504920795147
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 321.32964359660497,
+        "facadeBearingDegrees": 51.32964359660497,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 30.838655471801758,
+        "heightMetres": 20.580000305175787,
+        "depthMetres": 26.335000038146973,
+        "depthCoverage": 1.0372643267328723
+      },
+      "triangles": 8549,
+      "bytes": 116836,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "studiok": {
+      "id": "studiok",
+      "name": "Timorplein school / Studio K",
+      "landmarkId": "osm_school_3699016",
+      "modelUrl": "./models/studiok.glb",
+      "suppressOsmIds": [
+        "r3699016",
+        "NL.IMBAG.Pand.0363100012237325"
+      ],
+      "footprint": {
+        "centre": [
+          4.9359819354640555,
+          52.36529993337992
+        ],
+        "headingDegrees": 89.0647456396652,
+        "lengthMetres": 74.58075217954416,
+        "widthMetres": 51.08127989623449
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.9359819354640555,
+          52.36529993337992
+        ],
+        "northOffsetDegrees": -0.9352543603347954,
+        "source": "Individual current BAG outer polygon and courtyard rings, native axes aligned to named streets. Current venue entrances from primary official references; mapped heights from OSM/3DBAG."
+      },
+      "attribution": {
+        "title": "Timorplein school / Studio K",
+        "author": "Map Recall",
+        "sourceUrl": "https://arcam.nl/architectuur-gids/voormalige-technische-school-timorplein/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
+      },
+      "bounds": {
+        "min": [
+          -37.724998474121094,
+          -7.629394644936838e-7,
+          -25.635000228881836
+        ],
+        "max": [
+          37.54499816894531,
+          27.610000610351562,
+          26.524999618530273
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9359819354640555,
+          52.36529993337992
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 89.0647456396652,
+        "facadeBearingDegrees": 179.06474563966526,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 75.2699966430664,
+        "heightMetres": 27.610001373291027,
+        "depthMetres": 52.15999984741211,
+        "depthCoverage": 1.021117715792731
+      },
+      "triangles": 15669,
+      "bytes": 186516,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "groote-museum": {
+      "id": "groote-museum",
+      "name": "ARTIS Groote Museum",
+      "landmarkId": "extract_landmarks_402613958",
+      "modelUrl": "./models/groote-museum.glb",
+      "suppressOsmIds": [
+        "w269020374",
+        "NL.IMBAG.Pand.0363100012165614"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.913127461904327,
+          52.366173715262796
+        ],
+        "headingDegrees": 120.18889601770292,
+        "lengthMetres": 71.91223163195569,
+        "widthMetres": 19.842842472567856
+      },
+      "surveyed": {
+        "anchor": [
+          4.913127461904327,
+          52.366173715262796
+        ],
+        "northOffsetDegrees": 209.89999999999998
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 179.71110398229706,
+      "attribution": {
+        "title": "ARTIS Groote Museum",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.artis.nl/en/artis-groote-museum/to-see-in-artis-groote-museum/building",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
+      },
+      "bounds": {
+        "min": [
+          -36.39500045776367,
+          7.629394644936838e-7,
+          -10.156338691711426
+        ],
+        "max": [
+          36.39500045776367,
+          20.399999618530273,
+          10.204999923706055
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.913127461904327,
+          52.366173715262796
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 299.9,
+        "facadeBearingDegrees": 299.9,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 72.79000091552734,
+        "heightMetres": 20.39999885559081,
+        "depthMetres": 20.36133861541748,
+        "depthCoverage": 1.0261301345090266
+      },
+      "triangles": 11646,
+      "bytes": 128924,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "artis-library": {
+      "id": "artis-library",
+      "name": "ARTIS Library — Fauna Building",
+      "landmarkId": "extract_landmarks_1124317571",
+      "modelUrl": "./models/artis-library.glb",
+      "suppressOsmIds": [
+        "w269020356",
+        "NL.IMBAG.Pand.0363100012164975"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9149289852780305,
+          52.36553813024979
+        ],
+        "headingDegrees": 119.53591573579465,
+        "lengthMetres": 80.2468587459968,
+        "widthMetres": 11.025797003150897
+      },
+      "surveyed": {
+        "anchor": [
+          4.9149289852780305,
+          52.36553813024979
+        ],
+        "northOffsetDegrees": 29.900000000000006
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0.3640842642053599,
+      "attribution": {
+        "title": "ARTIS Library — Fauna Building",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.allardpierson.nl/en/artis-library",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
+      },
+      "bounds": {
+        "min": [
+          -40.435001373291016,
+          -1.9073486612342094e-7,
+          -6.310774803161621
+        ],
+        "max": [
+          40.435001373291016,
+          10.800000190734863,
+          6.280489921569824
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9149289852780305,
+          52.36553813024979
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 119.89999999999998,
+        "facadeBearingDegrees": 119.89999999999998,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 80.87000274658203,
+        "heightMetres": 10.80000038146973,
+        "depthMetres": 12.591264724731445,
+        "depthCoverage": 1.141982273130294
+      },
+      "triangles": 12356,
+      "bytes": 141816,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
