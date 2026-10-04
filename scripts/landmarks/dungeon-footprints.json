@@ -1,0 +1,333 @@
+{
+  "sites": [
+    {
+      "id": "amsterdam-dungeon",
+      "name": "Amsterdam Dungeon / Nieuwezijds Kapel",
+      "landmarkId": "extract_landmarks_1198863663",
+      "anchor": [
+        4.8919633178149855,
+        52.37020123860339
+      ],
+      "footprint": {
+        "centre": [
+          4.8919633178149855,
+          52.37020123860339
+        ],
+        "headingDegrees": 15.012596956822051,
+        "lengthMetres": 40.36408570166537,
+        "widthMetres": 32.38051115446507
+      },
+      "authorHeadingDegrees": 15.5,
+      "buildings": [
+        {
+          "type": "Feature",
+          "id": "a533807908",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.8916655,
+                    52.3700623
+                  ],
+                  [
+                    4.8917794,
+                    52.3700494
+                  ],
+                  [
+                    4.8919278,
+                    52.3700319
+                  ],
+                  [
+                    4.891984,
+                    52.3701599
+                  ],
+                  [
+                    4.8921723,
+                    52.370129
+                  ],
+                  [
+                    4.8921774,
+                    52.3701397
+                  ],
+                  [
+                    4.8921478,
+                    52.370145
+                  ],
+                  [
+                    4.8921576,
+                    52.3701655
+                  ],
+                  [
+                    4.8921872,
+                    52.3701602
+                  ],
+                  [
+                    4.892193,
+                    52.3701724
+                  ],
+                  [
+                    4.8920244,
+                    52.3702001
+                  ],
+                  [
+                    4.8920031,
+                    52.3702036
+                  ],
+                  [
+                    4.8920092,
+                    52.3702175
+                  ],
+                  [
+                    4.8920262,
+                    52.3702562
+                  ],
+                  [
+                    4.8920403,
+                    52.3702883
+                  ],
+                  [
+                    4.8920337,
+                    52.3702894
+                  ],
+                  [
+                    4.8919883,
+                    52.3702969
+                  ],
+                  [
+                    4.8919936,
+                    52.370309
+                  ],
+                  [
+                    4.8920233,
+                    52.3703779
+                  ],
+                  [
+                    4.8919306,
+                    52.3703943
+                  ],
+                  [
+                    4.8918109,
+                    52.3704139
+                  ],
+                  [
+                    4.8917782,
+                    52.3703392
+                  ],
+                  [
+                    4.8917992,
+                    52.3703358
+                  ],
+                  [
+                    4.8917779,
+                    52.3702873
+                  ],
+                  [
+                    4.8917745,
+                    52.3702885
+                  ],
+                  [
+                    4.8917688,
+                    52.3702893
+                  ],
+                  [
+                    4.8917649,
+                    52.3702891
+                  ],
+                  [
+                    4.891763,
+                    52.3702888
+                  ],
+                  [
+                    4.8917612,
+                    52.3702884
+                  ],
+                  [
+                    4.8917594,
+                    52.3702878
+                  ],
+                  [
+                    4.8917578,
+                    52.3702871
+                  ],
+                  [
+                    4.8917564,
+                    52.3702863
+                  ],
+                  [
+                    4.8917539,
+                    52.3702845
+                  ],
+                  [
+                    4.8917523,
+                    52.3702823
+                  ],
+                  [
+                    4.8917518,
+                    52.3702811
+                  ],
+                  [
+                    4.8917515,
+                    52.37028
+                  ],
+                  [
+                    4.8917514,
+                    52.3702788
+                  ],
+                  [
+                    4.891752,
+                    52.3702764
+                  ],
+                  [
+                    4.8917535,
+                    52.3702742
+                  ],
+                  [
+                    4.8917557,
+                    52.3702722
+                  ],
+                  [
+                    4.8917604,
+                    52.37027
+                  ],
+                  [
+                    4.8917621,
+                    52.3702696
+                  ],
+                  [
+                    4.8917659,
+                    52.370269
+                  ],
+                  [
+                    4.8917698,
+                    52.370269
+                  ],
+                  [
+                    4.8916972,
+                    52.3701033
+                  ],
+                  [
+                    4.8916844,
+                    52.3701054
+                  ],
+                  [
+                    4.8916655,
+                    52.3700623
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building": "apartments",
+            "height": "32.3",
+            "ref:bag": "0363100012168346",
+            "source": "BAG",
+            "source:date": "2014-02-11",
+            "source:height": "3DBAG",
+            "source:height:date": "2025-09-03",
+            "start_date": "1707"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a533807734",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.8920092,
+                    52.3702175
+                  ],
+                  [
+                    4.8920305,
+                    52.370214
+                  ],
+                  [
+                    4.8920244,
+                    52.3702001
+                  ],
+                  [
+                    4.892193,
+                    52.3701724
+                  ],
+                  [
+                    4.8922,
+                    52.3701875
+                  ],
+                  [
+                    4.8921814,
+                    52.3701933
+                  ],
+                  [
+                    4.8921853,
+                    52.3702019
+                  ],
+                  [
+                    4.8922062,
+                    52.3702009
+                  ],
+                  [
+                    4.8922131,
+                    52.3702157
+                  ],
+                  [
+                    4.8922162,
+                    52.3702157
+                  ],
+                  [
+                    4.8922195,
+                    52.370223
+                  ],
+                  [
+                    4.8922182,
+                    52.3702234
+                  ],
+                  [
+                    4.8922187,
+                    52.3702245
+                  ],
+                  [
+                    4.8920262,
+                    52.3702562
+                  ],
+                  [
+                    4.8920092,
+                    52.3702175
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building": "yes",
+            "height": "18.2",
+            "ref:bag": "0363100012175269",
+            "source": "BAG",
+            "source:date": "2014-02-11",
+            "source:height": "3DBAG",
+            "source:height:date": "2025-09-03",
+            "start_date": "1912"
+          }
+        }
+      ],
+      "suppressOsmIds": [
+        "w266903954",
+        "w266903867",
+        "NL.IMBAG.Pand.0363100012168346",
+        "NL.IMBAG.Pand.0363100012175269"
+      ],
+      "primaryReferences": [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/518455",
+        "https://arcam.nl/architectuur-gids/nieuwezijds-kapel/",
+        "https://www.thedungeons.com/amsterdam/en/",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168346",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175269"
+      ],
+      "sourceNote": "Original texture-free model scoped to the two actual buildings used by Amsterdam Dungeon: currentPDOK Rokin78 bijeenkomstfunctie1277m² VBO0363010003702386 is linked to both BAG2168346 (chapel/side rooms) and2175269 (entrance wing). Other RCE518455 compound buildings including Rokin80/82 BAG2175268 andKalverstraat81/87 BAG2168348 remain visible and unsuppressed. PrimaryArcam exterior confirms two gabled venue wings and portal; the neighboring streetcorner dome is outside model scope. Original octagonal chapel,tent roof/open lantern,sculpted brick gables,stone bands and measured lower wings refer to Posthumus Meyjes’1908–1912 architecture. Heights approximate13.3–17.8m front,7–16m side rooms,18m chapel eaves,24.7m truncated tent roof and29m lantern: AHN5 raw height26.9m and reconstructedplanepeaks29.1m differ; OSM32.3m is not used as a flat mass. Exact mapped recesses retained; no imported mesh faces or textures."
+    }
+  ]
+}
