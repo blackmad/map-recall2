@@ -118,10 +118,10 @@ export class InventoryTrees {
       for(const l of t.lobes){
         const dx=l.offset[0]*co-l.offset[2]*si,dz=l.offset[0]*si+l.offset[2]*co;
         color.set(t.foliage).multiplyScalar([1,1.10,.86][l.tone]);
-        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:t.rotation,color:color.clone()});
+        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:l.rotation===undefined?t.rotation:-(t.rotation+l.rotation),color:color.clone()});
         // A short fork connects each offset crown to the recorded trunk position.
         // All forks share the trunk draw call; no per-tree meshes or materials.
-        if(t.crownGeometry==='faceted'&&Math.hypot(dx,dz)>.1){
+        if(t.crownGeometry==='faceted'&&t.archetype!=='fan-palm'&&Math.hypot(dx,dz)>.1){
           const from=new THREE.Vector3(x,-south,t.trunkHeight*.72);
           const to=new THREE.Vector3(x+dx*.75,-(south+dz*.75),l.offset[1]);
           const delta=to.clone().sub(from),length=delta.length();
