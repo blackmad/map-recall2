@@ -1531,7 +1531,7 @@ class VectorBasemap {
   setPlaces(landmarks, boundaries) {
     this._pendingPlaces = { landmarks: landmarks || [], boundaries: boundaries || [] };
     if (!this.map || !this.map.getSource('amsterdam-pois')) return;
-    const pois = this._pendingPlaces.landmarks.filter(item => item.center && (item.prominenceScore || 0) >= 220 && !this._spoils(item.name)).map(item => ({ type: 'Feature', properties: { id: item.id, name: item.name }, geometry: { type: 'Point', coordinates: [item.center[1], item.center[0]] } }));
+    const pois = this._pendingPlaces.landmarks.filter(item => item.center && (item.manualPoi || (item.prominenceScore || 0) >= 220) && !this._spoils(item.name)).map(item => ({ type: 'Feature', properties: { id: item.id, name: item.name }, geometry: { type: 'Point', coordinates: [item.center[1], item.center[0]] } }));
     const polygons = [], labels = [];
     for (const boundary of this._pendingPlaces.boundaries.filter(item => item.kind === 'neighbourhood' && item.geometry)) {
       for (const polygon of boundary.geometry) {
@@ -1839,12 +1839,15 @@ class VectorBasemap {
       x: cssX * mapCanvas.clientWidth / canvasRect.width,
       y: cssY * mapCanvas.clientHeight / canvasRect.height
     };
+    const signature = this._signatureLandmarks?.inspectAtScreen?.(pixel.x, pixel.y, mapCanvas.clientWidth, mapCanvas.clientHeight);
+    const generic = this._threeBuildings?.inspectAtScreen?.(pixel.x, pixel.y, mapCanvas.clientWidth, mapCanvas.clientHeight);
+    const surface = signature && (!generic || signature.depth < generic.depth) ? signature : generic;
     // Curated POIs must win over the much larger building extrusion under the
     // pointer. The hit box is forgiving because dots are intentionally small.
     let poiResult = null;
     const poiLayers = ['poi-labels'].filter(id => this.map.getLayer(id));
     if (poiLayers.length) {
-      const hitRadius = 28;
+      const hitRadius = 8;
       const poi = this.map.queryRenderedFeatures([
         [pixel.x - hitRadius, pixel.y - hitRadius],
         [pixel.x + hitRadius, pixel.y + hitRadius]
@@ -1852,9 +1855,15 @@ class VectorBasemap {
       if (poi) {
         const lngLat = this.map.unproject(pixel);
         const coordinates = poi.geometry && poi.geometry.type === 'Point' ? poi.geometry.coordinates : [lngLat.lng, lngLat.lat];
-        poiResult = { id: poi.properties.id, name: poi.properties.name, lngLat: coordinates, poi: true };
+        poiResult = { id: poi.properties.id, landmarkId: poi.properties.id, name: poi.properties.name, lngLat: coordinates, poi: true, featureTarget: null };
       }
   }
+    // An explicitly clicked visible POI label selects that venue, including
+    // genuine venues sharing one model. Otherwise use the nearest real mesh.
+    if (poiResult) return poiResult;
+    if (surface) return surface;
+    // The hidden basemap cannot stand in for the complete city's actual mesh.
+    if (this._completeCityHasBuildings && this._threeBuildings?.ready) return poiResult;
     const layers = this.map.getStyle().layers.filter(layer => layer.type === 'fill-extrusion' && !layer.id.startsWith('active-landmark')).map(layer => layer.id);
     const feature = this.map.queryRenderedFeatures(pixel, layers.length ? { layers } : undefined)
       .find(candidate => candidate.layer && candidate.layer.type === 'fill-extrusion');

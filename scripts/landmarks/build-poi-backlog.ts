@@ -6,18 +6,19 @@ import {normaliseAnswer} from '../../src/canalRecall/answerPath';
 import {SIGNATURE_MODELS} from '../../src/canalRecall/landmarks/signatureModels';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {KITS} from '../../src/canalRecall/landmarkKits';
+import {mergeManualPoiFeatures} from '../../src/canalRecall/game/manualPoiCatalog';
 
 const city=CANAL_CITIES.amsterdam;
-const extract=JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/landmarks.json','utf8'));
+const extract=mergeManualPoiFeatures(JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/landmarks.json','utf8')));
 const km=(a:{lat:number;lng:number},b:{lat:number;lng:number})=>Math.hypot((a.lat-b.lat)*111.32,(a.lng-b.lng)*111.32*Math.cos(a.lat*Math.PI/180));
 const seen=new Set(city.curatedPois.map(p=>normaliseAnswer(p.name)));
 const extras=extract.flatMap((f:any)=>{
   if(!f.center||!f.name||!isTeachableRouteDestination(f))return[];
   const key=normaliseAnswer(f.name),p={id:`lm-${f.id}`,name:f.name,lat:f.center[0],lng:f.center[1],prominence:f.prominenceScore||0,type:f.type||'landmark'};
-  if(seen.has(key)||km(p,city.center)>4)return[];
+  if(seen.has(key)||(!f.manualPoi&&km(p,city.center)>4))return[];
   seen.add(key);return[p];
 }).sort((a:any,b:any)=>b.prominence-a.prominence);
-const requests=['Silodam','Embassy of the Free Mind','OLVG West','OLVG Oost','A’DAM Tower','Pontsteiger','REM-eiland','Paradiso','Melkweg'];
+const requests=['Silodam','Embassy of the Free Mind','OLVG West','OLVG Oost','A’DAM Tower','Pontsteiger','REM-eiland','Paradiso','Melkweg','Amsterdam Centraal station complex','RAI Amsterdam','Amstel Hotel','Rembrandt Tower','Breitner Tower','Mondriaan Tower','De Piramides','Valley','Viñoly','The Rock','Symphony','World Trade Center Amsterdam','Westergasfabriek','Zuiveringshal','Machinegebouw','Transformatorhuis','Westergastheater','Blauwe Theehuis','Groot Melkhuis','VondelCS','Vondeltuin','Kinderkookkafé','Beest Boulders','Monk Amsterdam','Het Lab','Beta Boulders','Klimmuur Centraal','Mountain Network Amsterdam','Klimhal Amsterdam','Beest Boulders Het Lab','Amsterdam Sloterdijk station','HNK Amsterdam Sloterdijk','Amsta De Poort'];
 const aliases:Record<string,string>={'central':'centraal-station','nemo':'nemo','palace':'palace-on-the-dam','rijksmuseum':'rijksmuseum','mint':'munttoren-amsterdam','westerkerk':'westerkerk'};
 const equivalents:Record<string,string>={
   'national maritime museum':'scheepvaartmuseum','the national maritime museum':'scheepvaartmuseum','het scheepvaartmuseum':'scheepvaartmuseum',

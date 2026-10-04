@@ -79,6 +79,30 @@ export class SignatureLandmarks {
     this.map.triggerRepaint();
   }
 
+  /** Pick the actual visible surface, using the same projection as drawing.
+   * Ground-centroid proximity cannot identify a roof or facade at pitch. */
+  inspectAtScreen(x, y, width, height) {
+    if (!this.enabled || !width || !height) return null;
+    const nx = x / width * 2 - 1, ny = 1 - y / height * 2;
+    let result = null;
+    for (const entry of this._entries || []) {
+      if (!entry.pickProjection || !this._nearby(entry.spec, entry.placement.anchor)) continue;
+      const inverse = entry.pickProjection.clone().invert();
+      const near = new THREE.Vector3(nx, ny, -1).applyMatrix4(inverse);
+      const far = new THREE.Vector3(nx, ny, 1).applyMatrix4(inverse);
+      entry.group.updateWorldMatrix(true, true);
+      const ray = new THREE.Raycaster(near, far.sub(near).normalize());
+      const hit = ray.intersectObject(entry.group, true).find(hit => hit.object.visible);
+      if (!hit) continue;
+      const depth = hit.point.clone().applyMatrix4(entry.pickProjection).z;
+      if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
+      result = { id: entry.spec.suppressOsmIds?.[0] || entry.spec.landmarkId,
+        landmarkId: entry.spec.landmarkId, name: entry.spec.name,
+        lngLat: entry.placement.anchor, depth, featureTarget: null };
+    }
+    return result;
+  }
+
   /** Hosts drawing the complete city already remove basemap geometry. The
    * legacy offset otherwise pulls intersecting roof faces through one another. */
   setDepthBiasEnabled(enabled) {
@@ -347,6 +371,7 @@ export class SignatureLandmarks {
           // Shared WebGL canvas: distant landmarks should cost no render calls.
           if (!owner._nearby(entry.spec, entry.placement.anchor)) continue;
           camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(entry.transform);
+          entry.pickProjection = camera.projectionMatrix.clone();
           renderer.resetState();
           renderer.render(entry.scene, camera);
         }

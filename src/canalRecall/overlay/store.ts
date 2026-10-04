@@ -8,6 +8,7 @@ import {
   type CanalPreferences,
   type ZoomClamp,
 } from '../game/preferences.ts';
+import type { RoutePoi } from '../game/routeSelection';
 
 export interface AccountState {
   visible: boolean;
@@ -24,6 +25,8 @@ export interface OverlayState {
   knowledgeOpen: boolean;
   advancedOpen: boolean;
   routeError: string;
+  routePois: readonly RoutePoi[];
+  destinationId: string;
   account: AccountState;
 }
 
@@ -43,6 +46,8 @@ export function createOverlayStore(initial: CanalPreferences) {
     knowledgeOpen: false,
     advancedOpen: false,
     routeError: '',
+    routePois: [],
+    destinationId: '',
     account: { ...GUEST_ACCOUNT },
   };
   const listeners = new Set<() => void>();
@@ -82,6 +87,14 @@ export function createOverlayStore(initial: CanalPreferences) {
     },
     setRouteError(routeError: string): void {
       state = { ...state, routeError };
+      emit();
+    },
+    setRoutePois(routePois: readonly RoutePoi[]): void {
+      state = { ...state, routePois, destinationId: routePois.some(poi => poi.id === state.destinationId) ? state.destinationId : '' };
+      emit();
+    },
+    setDestinationId(destinationId: string): void {
+      state = { ...state, destinationId };
       emit();
     },
     setAccount(account: Partial<AccountState>): void {

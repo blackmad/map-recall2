@@ -1,0 +1,128 @@
+[
+  {
+    "modelId": "centraal-station",
+    "name": "Amsterdam Centraal",
+    "description": "Amsterdam Centraal was designed by Pierre Cuypers and opened in 1889. Its monumental station building stands on artificial islands along the IJ.",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/centraal-station/"
+  },
+  {
+    "modelId": "adam-tower",
+    "name": "A’DAM Tower",
+    "description": "A’DAM Tower brings an observation deck, music companies, restaurants, a hotel and a nightclub together across the IJ from Amsterdam Centraal.",
+    "sourceUrl": "https://adamtoren.nl/"
+  },
+  {
+    "modelId": "pontsteiger",
+    "name": "Pontsteiger",
+    "description": "Arons & Gelauff designed this chair-shaped residential building in the IJ. Its raised lower floors leave a public waterside square beneath the large upper volume.",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/pontsteiger/"
+  },
+  {
+    "modelId": "rem-eiland",
+    "name": "REM-eiland",
+    "description": "This former North Sea platform broadcast commercial television in 1964. It was moved to Amsterdam’s Nieuwe Houthaven in 2011 and converted into a restaurant.",
+    "sourceUrl": "https://www.remeiland.nl/nl/historie"
+  },
+  {
+    "modelId": "paradiso",
+    "name": "Paradiso",
+    "description": "Paradiso is a music venue in a former church near Leidseplein. The main hall retains the church’s tall stained-glass windows.",
+    "sourceUrl": "https://www.paradiso.nl/en/info/about-us/paradiso-vandaag"
+  },
+  {
+    "modelId": "magna-plaza",
+    "name": "Magna Plaza",
+    "description": "Magna Plaza occupies Amsterdam’s former main post office. P.C. Peters designed the monumental building, which was later converted into a shopping centre.",
+    "sourceUrl": "https://www.magnaplaza.nl/the-story-behind-magna-plaza/"
+  },
+  {
+    "modelId": "scheepvaarthuis",
+    "name": "Scheepvaarthuis",
+    "description": "Six shipping companies commissioned this Amsterdam School headquarters. Its sculpted facade uses maritime symbols, and the building now houses Grand Hotel Amrâth.",
+    "sourceUrl": "https://www.amrathamsterdam.com/en/information/history/the-scheepvaarthuis"
+  },
+  {
+    "modelId": "de-bijenkorf",
+    "name": "De Bijenkorf",
+    "description": "The Bijenkorf’s Dam Square department store opened in 1914. Its original monumental facades were extended as the store expanded along Damrak.",
+    "sourceUrl": "https://www.cultureelerfgoeddebijenkorf.nl/architectuur/bouwfasesamsterdam"
+  },
+  {
+    "modelId": "gashouder",
+    "name": "Gashouder",
+    "description": "The circular Gashouder is an industrial landmark at the former Westergas gasworks. Its large column-free interior is used for cultural events.",
+    "sourceUrl": "https://gashouder.nl/"
+  },
+  {
+    "modelId": "hortus-greenhouses",
+    "name": "Hortus Botanicus greenhouses",
+    "description": "The Hortus Climate House brings contrasting plant habitats together under one greenhouse roof. The garden also contains historic palm and orangery buildings.",
+    "sourceUrl": "https://www.dehortus.nl/en/garden-and-greenhouses/climate-house/"
+  },
+  {
+    "modelId": "frascati",
+    "name": "Frascati",
+    "description": "Frascati is a theatre and production house on the Nes, presenting contemporary theatre and performance in the heart of Amsterdam.",
+    "sourceUrl": "https://www.frascatitheater.nl/"
+  },
+  {
+    "modelId": "lab111",
+    "name": "LAB111",
+    "description": "LAB111 is an independent cinema in a former pathological anatomical laboratory. Its name recalls the building’s earlier scientific use.",
+    "sourceUrl": "https://www.lab111.nl/over-ons/"
+  },
+  {
+    "modelId": "studiok",
+    "name": "Studio/K — Timorplein school",
+    "description": "Studio/K occupies part of the former technical school on Timorplein. The school complex was repurposed for cinema, cultural activity and other shared uses.",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/voormalige-technische-school-timorplein/"
+  },
+  {
+    "modelId": "athenaeum",
+    "name": "Athenaeum Bookshop",
+    "description": "Athenaeum is a bookshop on the Spui. Its neighbouring Nieuwscentrum specialises in newspapers and magazines.",
+    "sourceUrl": "https://www.athenaeum.nl/"
+  },
+  {
+    "modelId": "scheltema",
+    "name": "Scheltema",
+    "description": "Scheltema is a bookshop on the Rokin, with books spread across several floors in a historic city-centre building.",
+    "sourceUrl": "https://www.scheltema.nl/"
+  },
+  {
+    "modelId": "vondelpark-bandstand",
+    "name": "Vondelpark bandstand",
+    "description": "This open iron bandstand stands on an island in Vondelpark. Its slender columns support a tent-shaped roof with a decorative finial.",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504754"
+  },
+  {
+    "modelId": "hemp-gallery",
+    "name": "Hemp Gallery",
+    "description": "The Hemp Gallery opened in 2009 as the Hash Marihuana & Hemp Museum’s second Amsterdam venue. It explores hemp’s uses in paper, sails, food, clothing and design.",
+    "sourceUrl": "https://hashmuseum.com/en/amsterdam/"
+  },
+  {
+    "modelId": "sint-jorishof",
+    "name": "Sint Jorishof",
+    "description": "Sint Jorishof is a protected historic complex on the Korte Spinhuissteeg. Its buildings enclose a courtyard within the dense city-centre block.",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5550"
+  },
+  {
+    "modelId": "silodam",
+    "name": "Silodam",
+    "description": "MVRDV designed Silodam as a mixed-use building at the edge of Amsterdam’s harbour. Different housing types are expressed as blocks of contrasting colours and materials.",
+    "sourceUrl": "https://www.mvrdv.com/projects/163/silodam"
+  },
+  {
+    "modelId": "olvg-west",
+    "name": "OLVG West",
+    "description": "OLVG West is one of OLVG’s two main Amsterdam hospital locations. OLVG provides hospital care for the city across its eastern and western sites.",
+    "sourceUrl": "https://www.olvg.nl/over-olvg/"
+  },
+  {
+    "modelId": "olvg-oost",
+    "name": "OLVG Oost",
+    "description": "OLVG Oost is one of OLVG’s two main Amsterdam hospital locations. OLVG provides hospital care for the city across its eastern and western sites.",
+    "sourceUrl": "https://www.olvg.nl/over-olvg/"
+  }
+]

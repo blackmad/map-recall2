@@ -32,7 +32,7 @@
 // These are display priors, not evidence: the period comes from the BAG
 // construction year (via `building-facts`), the rest is invented rhythm.
 
-import { CONTEXTUAL_BUILDING_COLOURS, type ContextualBuildingColour } from './cityAppearancePalette.js';
+import { CONTEXTUAL_BUILDING_COLOURS, materialWallDisplayPrior, type ContextualBuildingColour } from './cityAppearancePalette.js';
 import { BUILDING_FACT_ZOOM, plausibleYear, shortBuildingId, type BuildingFactTile } from './buildingFacts.js';
 
 export const FACADE_STYLES = ['canal', 'c19', 'school', 'postwar', 'modern', 'tower'] as const;
@@ -156,8 +156,10 @@ export function decorateFacade<T extends Feature>(feature: T): T {
   const prior = p.appearanceStyleSource === 'citywide-identity-palette-v3-not-measured';
   // A building with its own OSM colour tag keeps that colour's family: the
   // facade is baked in the closest of the eight wall colours.
-  const mapped = prior || p.appearanceStyleSource !== undefined ? null
-    : snapWallColour(p.sideColour ?? p.colour ?? p.color);
+  const explicit = !prior && p.appearanceStyleSource === undefined
+    ? [p.facadeMappedColour, p.sideColour, p.colour, p.color].find(v => typeof v === 'string' && HEX.test(v.trim())) as string | undefined : undefined;
+  const materialPrior = !prior && p.appearanceStyleSource === undefined ? materialWallDisplayPrior(p.material) : null;
+  const mapped = snapWallColour(explicit ?? materialPrior);
   if (!prior && !mapped) return feature;
   if (p.groundAppearanceStyleSource !== undefined && p.groundAppearanceStyleSource !== 'wall-inherited-not-independently-measured') return feature;
   const heightM = Number(p.height), minHeightM = Number(p.minHeight) || 0;
@@ -168,7 +170,7 @@ export function decorateFacade<T extends Feature>(feature: T): T {
   const colours = FACADE_STYLE_COLOURS[style];
   const colour = mapped ?? colours[stableIndex(String(p.id ?? ''), colours.length)];
   const hex = CONTEXTUAL_BUILDING_COLOURS[colour];
-  return { ...feature, properties: { ...p, facade: facadeKey(style, colour), facadeStyle: style, sideColour: mutedWallHex(hex), groundColour: mutedWallHex(hex) } };
+  return { ...feature, properties: { ...p, facade: facadeKey(style, colour), facadeStyle: style, ...(explicit ? { facadeMappedColour: explicit.trim() } : materialPrior ? { facadeMaterialColourPrior: materialPrior } : {}), sideColour: mutedWallHex(hex), groundColour: mutedWallHex(hex) } };
 }
 
 // ---------------------------------------------------------------------------

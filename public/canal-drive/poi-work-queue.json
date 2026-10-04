@@ -1,0 +1,362 @@
+{
+  "version": 1,
+  "updatedOn": "2026-10-04",
+  "primaryBuildingInventory": "./landmark-backlog.json",
+  "agentMemory": "AGENTS.md (repository root)",
+  "completionRequirements": [
+    "selectable POI destination",
+    "geographic map pin and label",
+    "meaningful researched trivia/info card",
+    "native house-style model validated in gallery and game"
+  ],
+  "dominantBuildingThresholds": {
+    "footprintSquareMetres": 2500,
+    "heightMetres": 35,
+    "priority": "low",
+    "excludeCompleted": true,
+    "deduplicateParentParts": true
+  },
+  "notes": [
+    "Gashouder, Ketelhuis, Vondelpark open-air theater and bandstand already have original models.",
+    "Preserve previous requests when adding tasks. Existing completed landmark inventory is generated separately.",
+    "Background ordinary city geometry is not automatically a researched POI. Candidate backlog is separate from completed POIs."
+  ],
+  "tasks": [
+    {
+      "id": "camera-follow",
+      "task": "Recenter must restore persistent camera follow",
+      "priority": "urgent",
+      "status": "verified",
+      "owner": "root",
+      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5\u2013120 fps."
+    },
+    {
+      "id": "building-inspection",
+      "task": "Correct pitched building selection; highlight only together with meaningful card; containing POI takes priority over year-only metadata",
+      "priority": "urgent",
+      "status": "verified",
+      "owner": "venue_landmarks",
+      "validation": "Physical pitched facade click draws fully opaque sourced card with matching yellow identity; expanded article passes; ordinary click clears both and defers automatic replacement."
+    },
+    {
+      "id": "poi-contract",
+      "task": "Every modeled POI: route destination, geographic pin/label, researched trivia/info card",
+      "priority": "high",
+      "status": "verified",
+      "owner": "venue_landmarks",
+      "validation": "124 registered assets, 125 genuine modeled destinations; visible picker, pin/label, sourced cards, exact arrival IDs; existing facts preserved."
+    },
+    {
+      "id": "westerkerk",
+      "task": "Original house-style Westerkerk replacement",
+      "priority": "high",
+      "status": "verified",
+      "owner": "trees"
+    },
+    {
+      "id": "homomonument",
+      "task": "Exact mapped arrangement; retain intended waterside triangle platform",
+      "priority": "high",
+      "status": "verified",
+      "owner": "trees"
+    },
+    {
+      "id": "grey-city-blocks",
+      "task": "Diagnose/fix gray fallback/detail gaps at Ikaria/Da Costakade, Ten Katemarkt, Andreasveldje and other supplied examples",
+      "priority": "high",
+      "status": "verified",
+      "owner": "museum_landmarks",
+      "validation": "Actual reported carrier meshes now styled; original footprint/courtyard geometry and neighboring identities preserved."
+    },
+    {
+      "id": "nassaukade-roofs",
+      "task": "Roof/eaves/facade coherence at Nassaukade124 row",
+      "priority": "high",
+      "status": "in-progress",
+      "owner": "museum_landmarks"
+    },
+    {
+      "id": "photo-mode-colors",
+      "task": "Mode changes must consistently update geometry and realistic colors, including cached/in-flight tiles",
+      "priority": "high",
+      "status": "verified",
+      "owner": "museum_landmarks",
+      "validation": "Out-of-order initializer and worker regression; 28,424 resident buildings completed rapid mode cycle with coherent installed PHOTO state and no pending/in-flight jobs."
+    },
+    {
+      "id": "centraal-complex",
+      "task": "Three train-shed roofs, IJhal and bus-station roof around completed Cuypersgebouw",
+      "priority": "high",
+      "status": "researching",
+      "owner": "root"
+    },
+    {
+      "id": "sexmuseum-venustempel",
+      "task": "Sexmuseum Venustempel",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "venue_landmarks"
+    },
+    {
+      "id": "oude-lutherse-kerk",
+      "task": "Oude Lutherse Kerk",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "venue_landmarks"
+    },
+    {
+      "id": "kattenkabinet",
+      "task": "KattenKabinet",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "museum_landmarks"
+    },
+    {
+      "id": "pianola-museum",
+      "task": "Pianola Museum",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "museum_landmarks"
+    },
+    {
+      "id": "large-building-candidates",
+      "task": "Automatic low-priority dominant-building candidate list with configurable footprint/height thresholds and parent/part deduplication",
+      "priority": "low",
+      "status": "built",
+      "owner": "root",
+      "validation": "1897 candidates within Amsterdam municipality; net footprint excludes courtyards; modeled identities excluded; twin outlines and raised parts grouped."
+    },
+    {
+      "id": "faralda-crane",
+      "task": "Faralda NDSM Crane Hotel",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "nemo",
+      "task": "NEMO house-style replacement",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "rai",
+      "task": "RAI Amsterdam complex",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "amstel-hotel",
+      "task": "Amstel Hotel",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "rembrandt-tower",
+      "task": "Rembrandt Tower",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "breitner-tower",
+      "task": "Breitner Tower",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "mondriaan-tower",
+      "task": "Mondriaan Tower",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "de-piramides",
+      "task": "De Piramides, Marcanti-eiland",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "valley",
+      "task": "Valley",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "vinoly",
+      "task": "Vi\u00f1oly",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "the-rock",
+      "task": "The Rock",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "symphony",
+      "task": "Symphony",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "wtc-amsterdam",
+      "task": "World Trade Center Amsterdam",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "sloterdijk-station",
+      "task": "Amsterdam Sloterdijk station",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "hnk-sloterdijk",
+      "task": "HNK Amsterdam Sloterdijk",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "amsta-de-poort",
+      "task": "Amsta De Poort",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "zuiveringshal",
+      "task": "Westergas Zuiveringshal",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "machinegebouw",
+      "task": "Westergas Machinegebouw",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "transformatorhuis",
+      "task": "Westergas Transformatorhuis",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "westergastheater",
+      "task": "Westergastheater / relevant physical venue identity",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "westergas-other",
+      "task": "Remaining distinctive historic Westergas buildings",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "blauwe-theehuis",
+      "task": "Blauwe Theehuis",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "groot-melkhuis",
+      "task": "Groot Melkhuis",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "vondelcs",
+      "task": "VondelCS",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "vondeltuin",
+      "task": "Vondeltuin",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "kinderkookkafe",
+      "task": "Kinderkookkaf\u00e9",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "beest-boulders",
+      "task": "Beest Boulders Amsterdam",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "het-lab",
+      "task": "Beest Boulders Het Lab",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "monk",
+      "task": "Monk Amsterdam",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "beta-boulders",
+      "task": "Beta Boulders",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "klimmuur-centraal",
+      "task": "Klimmuur Centraal",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "mountain-network",
+      "task": "Mountain Network Amsterdam",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "klimhal-amsterdam",
+      "task": "Klimhal Amsterdam",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "electric-ladyland",
+      "task": "Electric Ladyland: research identifiable exterior before model",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "legacy-imports",
+      "task": "Remaining legacy imports: Montelbaanstoren, Munttoren, Beurs van Berlage, Palace on Dam, Stadhuis, National Monument, Heineken Experience, Concertgebouw",
+      "priority": "normal",
+      "status": "queued"
+    },
+    {
+      "id": "montelbaanstoren-amsterdam",
+      "task": "Original house-style Montelbaanstoren replacement",
+      "priority": "high",
+      "status": "verified",
+      "owner": "trees"
+    },
+    {
+      "id": "munttoren-amsterdam",
+      "task": "Original house-style Munttoren and host wing with open 3 m covered passage",
+      "priority": "high",
+      "status": "source-ready-awaiting-generation",
+      "owner": "trees"
+    },
+    {
+      "id": "national-monument-on-the-dam",
+      "task": "Original National Monument with exact mapped podium, relief wall/base and separate lions",
+      "priority": "high",
+      "status": "source-ready-awaiting-generation",
+      "owner": "trees"
+    }
+  ],
+  "dominantBuildingInventory": "./dominant-building-backlog.json"
+}

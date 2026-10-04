@@ -14,7 +14,6 @@ import {
   buildLandmarks,
   buildNeighborhoods,
   isWorthACard,
-  matchLandmarkToBuilding,
   neighborhoodAt,
 } from './landmarkData';
 import type { RoadSegment } from './collaborators';
@@ -29,6 +28,7 @@ import type {
 } from './extracts';
 import {
   advanceNotice,
+  DEFAULT_NOTICE_CONFIG,
   openNotice,
   type NoticeHold,
 } from './landmarkNotice';
@@ -46,6 +46,7 @@ import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge
 import { canShowDriveByCard, canShowMiniMap, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
+import { mergeManualPoiFeatures } from './manualPoiCatalog';
 import type { BridgeRegisterFile } from '../bridgeRegister';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
@@ -57,11 +58,6 @@ import {
 
 /** Seconds a clicked card stays up. A drive-by card is held by proximity
  *  instead — see `landmarkNotice.ts`. */
-/** px — how far a click may be from a landmark's marker and still select it. */
-const CLICK_SELECT_RADIUS = 120;
-/** px — a click this close to a landmark's marker means the landmark, even
- *  over another building. */
-const CLICK_MARKER_RADIUS = 40;
 
 async function readJson<T>(response: Response, fallback: T): Promise<T> {
   if (!response.ok) return fallback;
@@ -89,37 +85,33 @@ export class GameLandmarkRuntime {
   _inspectBuildingAt(clientX: number, clientY: number): void {
     if (!this.player || this.quizPromptName || this._utilityOpen) return;
     const rect = this.canvas.getBoundingClientRect();
-    const screen = {
-      x: (clientX - rect.left) * CANVAS_W / rect.width,
-      y: (clientY - rect.top) * CANVAS_H / rect.height,
-    };
     const building = this.vectorMap.inspectBuilding(clientX - rect.left, clientY - rect.top, rect);
 
-    let nearest: LandmarkNotice | null = null;
-    let nearestDistance = CLICK_SELECT_RADIUS;
-    for (const landmark of this.landmarks) {
-      const point = this.camera.worldToScreen(landmark.x, landmark.y);
-      const distance = Math.hypot(point.x - screen.x, point.y - screen.y);
-      if (distance < nearestDistance) { nearest = landmark; nearestDistance = distance; }
-    }
-    // A building that is a landmark's own, by the extract-time join, is that
-    // landmark. Otherwise a landmark nearby wins only when its marker itself
-    // was clicked: within 120 px it used to take any click, and lit the
-    // ordinary house next door as the museum.
+    // Exact mesh/label identity wins. Screen proximity to a ground centroid
+    // cannot identify a facade under a pitched camera.
+    let nearest: LandmarkNotice | null = building?.landmarkId
+      ? this.landmarks.find(landmark => landmark.id === building.landmarkId) ?? null
+      : null;
     const owner = building && building.id != null
       ? this.landmarks.find(landmark => landmark.buildingIds?.includes(String(building.id)))
       : undefined;
-    if (owner) nearest = owner;
-    else if (nearest && building && nearestDistance > CLICK_MARKER_RADIUS) nearest = null;
-    if (nearest && !owner && building && building.featureTarget) {
-      // Keep the curated card identity, but highlight the actual extrusion
-      // under the click rather than rebuilding its approximate OSM footprint.
-      nearest = { ...nearest, featureTarget: building.featureTarget };
-    }
+    if (owner && !nearest) nearest = owner;
     if (!nearest) {
-      if (!building) return;
-      nearest = this._cardForClickedBuilding(building);
+      if (building) nearest = this._cardForClickedBuilding(building);
     }
+    if (!nearest || !isWorthACard(nearest)) {
+      this.vectorMap.setActiveLandmark(null);
+      this._landmarkNotice = null;
+      // Respect the deliberate deselection before offering another automatic
+      // nearby card. Otherwise the next frame highlights an unrelated POI.
+      this._lastDriveByAt = this.raceTime;
+      return;
+    }
+    // An explicit request for information replaces lingering mission/answer
+    // feedback. Otherwise the teaching mutex hides the card while the new
+    // yellow highlight appears, leaving a selection with no visible content.
+    this.quizFeedback = '';
+    if (this._prompt) this._prompt.style.display = 'none';
     this._showLandmarkNotice(nearest, { kind: 'sticky' }, 'click');
     this.vectorMap.setActiveLandmark(nearest);
   }
@@ -140,9 +132,11 @@ export class GameLandmarkRuntime {
     this._landmarkNoticeSource = source;
     this._landmarkNoticeState = openNotice();
     if (source !== 'arrival') this._lastTriviaAt = this.raceTime;
-    // Start transparent so the card fades in, and so a new card never inherits
-    // the alpha the previous one happened to be at.
-    this._landmarkNoticeAlpha = 0;
+    // A deliberate request must be readable immediately, even when slow
+    // rendering advances the capped simulation clock only a little per frame.
+    // Automatic cards retain their normal fade-in.
+    if (source === 'click') this._landmarkNoticeState.elapsed = DEFAULT_NOTICE_CONFIG.fadeSeconds;
+    this._landmarkNoticeAlpha = source === 'click' ? 1 : 0;
     // Street/water encyclopedia cards arrive here without a proximity prefetch,
     // so kick the image load as soon as the notice opens.
     this._ensureLandmarkImage(this._landmarkNotice);
@@ -198,9 +192,10 @@ export class GameLandmarkRuntime {
    * click makes the map look broken. Acknowledge it without inventing a name
    * or presenting it as encyclopedia content.
    */
-  _cardForClickedBuilding(building: BuildingHit): LandmarkNotice {
+  _cardForClickedBuilding(building: BuildingHit): LandmarkNotice | null {
     const buildingName = building.name || '';
-    const matched = matchLandmarkToBuilding(this.landmarks, building, buildingName);
+    const matched = this.landmarks.find(landmark => landmark.id === String(building.id)
+      || landmark.buildingIds?.includes(String(building.id)));
     if (matched) return { ...matched, featureTarget: building.featureTarget };
     // Not a landmark: say what the register knows (year, type, listing, size)
     // rather than "no building details".
@@ -214,6 +209,9 @@ export class GameLandmarkRuntime {
       row = [row[0], row[1], row[2], rest];
     }
     const facts = describeBuilding(row, building.height, buildingName);
+    // A year, generic category or height alone is not a teaching card. A
+    // named/described heritage entry can still provide meaningful context.
+    if (!monument || !(monument.a || (monument.f != null && monument.f > 0))) return null;
     return {
       id: `clicked-${building.id || building.lngLat.join('-')}`,
       name: facts.name,
@@ -230,8 +228,9 @@ export class GameLandmarkRuntime {
    *  the canvas card cannot make clickable — so it is offered on a key. */
   _openLandmarkArticle(): void {
     const notice = this._landmarkNotice;
-    if (!notice || !notice.wikipediaUrl) return;
-    window.open(notice.wikipediaUrl, '_blank', 'noopener');
+    const source = notice?.wikipediaUrl || notice?.sourceUrl;
+    if (!source) return;
+    window.open(source, '_blank', 'noopener');
   }
 
   /**
@@ -318,7 +317,7 @@ export class GameLandmarkRuntime {
       ] = await Promise.all(START_EXTRACTS.map((name) => fetch(url(name))));
       if (!landmarkResponse.ok || !boundaryResponse.ok) throw new Error('Cached place data unavailable');
 
-      const [features, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex,
+      const [rawFeatures, boundaries, neighborhoodEnriched, bridgeFeatures, crossingIndex,
         streetFeatures, waterFeatures] =
         await Promise.all([
           landmarkResponse.json() as Promise<LandmarkFeature[]>,
@@ -329,6 +328,7 @@ export class GameLandmarkRuntime {
           readJson<StreetKnowledgeEntry[]>(streetResponse, []),
           readJson<StreetKnowledgeEntry[]>(waterResponse, []),
         ]);
+      const features = mergeManualPoiFeatures(rawFeatures, this.cityId || 'amsterdam');
       const streetKnowledge: StreetKnowledgeEntry[] = [];
 
       this._facts = buildFactIndex(null);
@@ -370,7 +370,9 @@ export class GameLandmarkRuntime {
         // (a tree, a statue) and keeps its dot; without it, the map guesses.
         // The highlight reads buildingIds when it draws, so late is fine.
         if (landmarkBuildings?.buildings && this.landmarks === landmarks) {
-          for (const landmark of landmarks) landmark.buildingIds = landmarkBuildings.buildings[landmark.id] ?? [];
+          for (const landmark of landmarks) landmark.buildingIds = [...new Set([
+            ...(landmark.buildingIds ?? []), ...(landmarkBuildings.buildings[landmark.id] ?? []),
+          ])];
         }
       });
       // Everything the game can ask about, so no orientation label says it
@@ -391,8 +393,8 @@ export class GameLandmarkRuntime {
       // Transit corridors must not snap landmarks onto the rails — that pulled
       // off-corridor museums onto the tram shape. Boat/bike still snap so a
       // landmark standing beside a named way lands on the mapped network.
-      this.landmarks = buildLandmarks(features, (lat, lng) => (
-        isTransit(this.travelMode)
+      this.landmarks = buildLandmarks(features, (lat, lng, feature) => (
+        feature.manualPoi || isTransit(this.travelMode)
           ? toWorld([lat, lng])
           : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false)
       ));
@@ -613,7 +615,8 @@ export class GameLandmarkRuntime {
       category: lm.type ? lm.type.toUpperCase() : '',
       factKind: lm.factKind,
       extractLang: lm.extractLang,
-      hasArticle: !!lm.wikipediaUrl,
+      hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
+      articleLabel: lm.wikipediaUrl ? 'W  WIKIPEDIA' : 'W  SOURCE',
       hasImage,
     }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
 
@@ -696,8 +699,9 @@ export class GameLandmarkRuntime {
     }
 
     const link = panel.querySelector('#landmark-panel-link') as HTMLAnchorElement;
-    if (lm.wikipediaUrl) {
-      link.href = lm.wikipediaUrl;
+    if (lm.wikipediaUrl || lm.sourceUrl) {
+      link.href = lm.wikipediaUrl || lm.sourceUrl!;
+      link.textContent = lm.wikipediaUrl ? 'Wikipedia ↗' : 'Research source ↗';
       link.hidden = false;
     } else {
       link.removeAttribute('href');

@@ -1,0 +1,76 @@
+[
+  {
+    "id": "kattenkabinet",
+    "name": "KattenKabinet",
+    "landmarkId": "extract_landmarks_1164156962",
+    "modelUrl": "./models/kattenkabinet.glb",
+    "suppressOsmIds": [
+      "w267123217",
+      "NL.IMBAG.Pand.0363100012168340"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.891564718450845,
+        52.36565041913723
+      ],
+      "headingDegrees": 12.612191418343116,
+      "lengthMetres": 20.976262163393297,
+      "widthMetres": 14.92796102524749
+    },
+    "surveyed": {
+      "anchor": [
+        4.891564718450845,
+        52.36565041913723
+      ],
+      "northOffsetDegrees": 12.267173108393777
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 89.65498169005066,
+    "attribution": {
+      "title": "KattenKabinet",
+      "author": "Map Recall",
+      "sourceUrl": "https://kattenkabinet.nl/over/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original low-poly reconstruction of Herengracht497: exact currentBAG parent, six-bay doublehouse with central classicalpediment, nineteenth-centuryT-windows, currentground-levelentrance and hippedroof withtwo dormers/twochimneys. Historicaldouble stoopremoved1837 is not invented; neighboringHerengracht495/499 remain. Native roofenvelope calibrated to AHN5 approximate13.86m eaves/19.53m ridge andlower rearreturns, sourceimages visualreference only, no imported mesh/texture."
+    }
+  },
+  {
+    "id": "pianola-museum",
+    "name": "Pianola Museum",
+    "landmarkId": "extract_landmarks_660242980",
+    "modelUrl": "./models/pianola-museum.glb",
+    "suppressOsmIds": [
+      "w266555881",
+      "NL.IMBAG.Pand.0363100012173588"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.883565911555713,
+        52.378646506954865
+      ],
+      "headingDegrees": 162.91758463448625,
+      "lengthMetres": 18.220444424257835,
+      "widthMetres": 13.947608047202838
+    },
+    "surveyed": {
+      "anchor": [
+        4.883565911555713,
+        52.378646506954865
+      ],
+      "northOffsetDegrees": -16.68392197665763
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -89.60150661114388,
+    "attribution": {
+      "title": "Pianola Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://pianolamuseum.online/en/about-us/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original low-poly reconstruction of the1905former police stationWesterstraat106/currentPianolaMuseum parent: exactcurrentBAGplan with projectingoriel, asymmetricfivebaystreetfront, centralcrenellatedtower, round-head dormers, reddishtile roof andlowerrearflatwings. Actual3DBAGapprox12.84m eaves/16.37m ridge, currentmuseumground-levelentrance; adjacentparents retained. Sourcesvisualreferenceonly; no importedmesh/texture."
+    }
+  }
+]

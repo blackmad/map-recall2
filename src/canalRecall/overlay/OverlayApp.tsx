@@ -789,7 +789,7 @@ export function OverlayApp({
                 const next: Partial<CanalPreferences> = { travelMode: value };
                 // Transit extract is Amsterdam-only for now.
                 if (value === 'transit' && prefs.cityId !== 'amsterdam') next.cityId = 'amsterdam';
-                patch(next);
+                patch(next, true);
               }}
               options={TRAVEL}
               icons={TRAVEL_ICONS}
@@ -829,6 +829,15 @@ export function OverlayApp({
               gloss="Naming help. Expert & Custom sit under More options."
             />
 
+            <label className="setup-field enamel-field" style={{ marginTop: 10 }}>
+              <span>Destination</span>
+              <select id="poi-destination" value={state.destinationId} onChange={event => store.setDestinationId(event.target.value)}>
+                <option value="">Surprise me</option>
+                {[...state.routePois].sort((a, b) => a.name.localeCompare(b.name)).map(poi => (
+                  <option key={poi.id} value={poi.id}>{poi.name}</option>
+                ))}
+              </select>
+            </label>
             <label id="home-address-field" className="setup-field enamel-field" style={{ display: prefs.routePattern === 'home' ? 'flex' : 'none', marginTop: 10 }}>
               HOME ADDRESS
               <input

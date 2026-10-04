@@ -63,6 +63,11 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook): MeshBuild
     building = { id, polygons, heightM, minHeightM, style: layout, wallHex: typeof p.sideColour === 'string' ? p.sideColour : '#a4523b', shop: layout !== 'tower' && (shopfrontOf(p) ? shopfrontOf(p) !== 'quiet' : hashShop(id)) };
     plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
   }
+  // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
+  if (look === 'photo') {
+    const sourced = [p.facadeMappedColour, p.facadeMaterialColourPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
+    if (sourced) building.wallHex = String(sourced);
+  }
   const front = shopfrontOf(p);
   building.shopfront = front ? front !== 'quiet' : false;
   // A named business's own colour goes on its sign and awning (the cells' accent), and a

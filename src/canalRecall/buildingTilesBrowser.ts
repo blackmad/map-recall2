@@ -26,7 +26,7 @@ import {
   type BuildingFeature, type Bounds, type LandmarkBuildingQuery
 } from './buildingTileSource.js';
 import { tileFor, tileKey, tilesCovering } from './slippyTiles.js';
-import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior } from './cityAppearancePalette.js';
+import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './cityAppearancePalette.js';
 
 type GeoJsonSource = {
   setData(data: unknown): void;
@@ -70,9 +70,11 @@ const present=(value:unknown)=>value!==undefined&&value!==null&&value!=='';
 export function decorateBuildingFeature(feature:BuildingFeature,priors:ReadonlyMap<string,BuildingAppearancePrior>):BuildingFeature{
   const properties=feature.properties??{},id=String(properties.id??''),prior=priors.get(id);
   if(prior)return{...feature,properties:{...properties,sideColour:prior.sideColour,sideColourSource:prior.sideColourSource??'procedural-prior-not-measured',sideColourObservationId:prior.sideColourObservationId,sideColourSourceSha256:prior.sideColourSourceSha256,sideColourReviewOrigin:prior.sideColourReviewOrigin,sideColourReviewer:prior.sideColourReviewer,roofColour:prior.roofColour,groundColour:prior.sideColour,groundAppearanceStyleSource:'wall-inherited-not-independently-measured',groundFloorHeightM:prior.groundFloorHeightM,roofShape:prior.roofShape,roofEavesHeightM:prior.roofEavesHeightM,roofGeometrySource:prior.roofGeometrySource,constructionYear:prior.constructionYear,appearanceStyleSource:prior.sideColourSource??'procedural-prior-not-measured',appearanceGeometryRevision:prior.geometryRevision}};
-  if(!/^NL\.IMBAG\.Pand\.\d+$/.test(id))return feature;
+  // The complete-city tiles also retain OSM outlines where BAG has no equivalent.
+  // They need the same display prior; source identity does not imply mapped appearance.
+  if(!/^(?:NL\.IMBAG\.Pand\.\d+|[wr]\d+)$/.test(id))return feature;
   const additions:Record<string,unknown>={};
-  if(!['sideColour','colour','color','material'].some(key=>present(properties[key]))){additions.sideColour=citywideBuildingWallPrior(id);additions.groundColour=citywideBuildingGroundPrior(id);additions.groundFloorHeightM=3.2;additions.appearanceStyleSource='citywide-identity-palette-v3-not-measured';additions.wallAppearanceStyleSource='citywide-identity-palette-v3-not-measured';additions.groundAppearanceStyleSource='wall-inherited-not-independently-measured';}
+  if(!['sideColour','colour','color'].some(key=>typeof properties[key]==='string'&&/^#[a-f0-9]{6}$/i.test(String(properties[key]).trim()))&&!materialWallDisplayPrior(properties.material)){additions.sideColour=citywideBuildingWallPrior(id);additions.groundColour=citywideBuildingGroundPrior(id);additions.groundFloorHeightM=3.2;additions.appearanceStyleSource='citywide-identity-palette-v3-not-measured';additions.wallAppearanceStyleSource='citywide-identity-palette-v3-not-measured';additions.groundAppearanceStyleSource='wall-inherited-not-independently-measured';}
   if(!present(properties.roofColour)&&(!present(properties.roofShape)||properties.roofShape==='flat')){additions.roofColour=citywideBuildingRoofPrior(id);additions.roofAppearanceStyleSource='citywide-flat-cap-palette-v3-not-measured';}
   return Object.keys(additions).length?{...feature,properties:{...properties,...additions}}:feature;
 }

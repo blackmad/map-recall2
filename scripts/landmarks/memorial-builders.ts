@@ -8,7 +8,7 @@ export function buildMemorialLandmark(id:string,_w:number,_d:number,b:BuildingTo
   if(id!=='homomonument')throw new Error(`Unknown memorial ${id}`);
   const source=sources.find(s=>s.id===id)!,spec=specs.find(s=>s.id===id)!,anchor=spec.surveyed.anchor;
   const points=source.corners.map(([lng,lat])=>new T.Vector2(
-    (lng-anchor[0])*111320*Math.cos(anchor[1]*Math.PI/180),(anchor[1]-lat)*110540));
+    (lng-anchor[0])*111320*Math.cos(anchor[1]*Math.PI/180),(anchor[1]-lat)*111320));
   function slab(ring:T.Vector2[],top:number,depth:number){
     const shape=new T.Shape(ring);
     const g=new T.ExtrudeGeometry(shape,{depth,bevelEnabled:false});

@@ -1,0 +1,50 @@
+{
+  "id": "westerkerk",
+  "name": "Westerkerk / Westertoren",
+  "landmarkId": "extract_landmarks_1692085215",
+  "modelUrl": "./models/westerkerk.glb",
+  "suppressOsmIds": [
+    "w99203577",
+    "w99205257",
+    "w749268115",
+    "w749268116",
+    "w749268117",
+    "w749268118",
+    "w749287964",
+    "w751083595",
+    "w751083596",
+    "w751083597",
+    "w751083598",
+    "w751083599",
+    "NL.IMBAG.Pand.0363100012174221",
+    "NL.IMBAG.Pand.0363100012164998"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.883896010526316,
+      52.37449989605263
+    ],
+    "headingDegrees": 273.2,
+    "lengthMetres": 61.11872292780377,
+    "widthMetres": 43.35214296082779
+  },
+  "surveyed": {
+    "anchor": [
+      4.883896010526316,
+      52.37449989605263
+    ],
+    "northOffsetDegrees": 3.1999999999999886,
+    "source": "Actual current church/tower parents and10sourceparts; native mapped roof tiers and official85m crown/87m rooster. AnneFrank complex and adjacent buildings excluded."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Westerkerk / Westertoren",
+    "author": "Map Recall",
+    "sourceUrl": "https://westerkerk.nl/bezoek-de-westerkerk-amsterdam/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free shared-palette reconstruction from current mapped church/tower polygons and official church/municipal exterior references. Double-cross roof plan, Renaissance arched windows/pilasters, stone clock tiers and blue-gold imperial crown. No imported geometry or reference pixels. Ornamental details approximate; exact source grounds and neighboring buildings retained."
+  }
+}

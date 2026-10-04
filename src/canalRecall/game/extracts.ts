@@ -22,6 +22,10 @@ export interface LandmarkFeature {
   wikipediaExtract?: string;
   wikipediaExtractLang?: string;
   wikipediaImageUrl?: string;
+  sourceUrl?: string;
+  manualPoi?: boolean;
+  modelId?: string;
+  buildingIds?: string[];
 }
 
 export interface BoundaryFeature {
