@@ -3,6 +3,13 @@ export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const foliagePriors={"prunus cerasifera 'nigra'":{colour:'#694653',reference:'https://www.vdberk.com/trees/prunus-cerasifera-nigra/'},"fagus sylvatica 'atropunicea'":{colour:'#765247',reference:'https://www.vdberk.com/trees/fagus-sylvatica-atropunicea/'}};
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  [/^alnus spaethii$/,'pyramidal','species-prior','https://www.rhs.org.uk/plants/91790/alnus-%C3%97-spaethii/details'],
+  [/^gleditsia triacanthos$/,'airy-oval','species-prior',nursery('gleditsia-triacanthos')],
+  // The inventory quotes Inermis as a cultivar; the botanical source describes the thornless form.
+  [/^gleditsia triacanthos 'inermis'$/,'airy-oval','species-prior',nursery('gleditsia-triacanthos-f-inermis')],
+  [/^gleditsia triacanthos 'skyline'$/,'pyramidal','cultivar-prior',nursery('gleditsia-triacanthos-skyline')],
+  [/^ilex aquifolium$/,'upright-oval','species-prior',nursery('ilex-aquifolium')],
+  [/^tilia cordata 'greenspire'$/,'upright-oval','cultivar-prior',nursery('tilia-cordata-greenspire')],
   [/^prunus 'umineko'$/,'columnar','cultivar-prior',nursery('prunus-umineko')],
   [/^prunus subhirtella 'autumnalis'$/,'vase','cultivar-prior',nursery('prunus-subhirtella-autumnalis')],
   [/^prunus yedoensis$/,'vase','species-prior',nursery('prunus-yedoensis')],

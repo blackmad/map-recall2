@@ -18,7 +18,7 @@ for(const tile of index.tiles){
     const x=Math.floor((t.lng+180)/360*32768),y=Math.floor((1-Math.asinh(Math.tan(t.lat*Math.PI/180))/Math.PI)/2*32768);
     assert.equal(`15/${x}/${y}`,tile.key,'tree must stream from its actual location');
     const p=treeTypology({...t,position:[0,0]});assert.ok(p,'standing inventory trees only');
-    assert.equal(p.lobes.length,3);assert.ok(p.height>=1&&p.height<=60);
+    assert.equal(p.lobes.length,p.archetype==='fan-palm'?7:3);assert.ok(p.height>=1&&p.height<=60);
     if(t.height!==null){assert.equal(p.height,t.height);knownHeights++;}
     for(const l of p.lobes){assert.ok([...l.offset,...l.scale].every(Number.isFinite));assert.ok(l.scale.every(v=>v>0));assert.ok(l.offset[1]+l.scale[1]<=p.height+1e-8);}
     shapes[p.archetype]=(shapes[p.archetype]||0)+1;
