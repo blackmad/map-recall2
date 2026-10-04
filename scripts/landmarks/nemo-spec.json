@@ -1,0 +1,48 @@
+{
+  "id": "nemo",
+  "name": "NEMO Science Museum",
+  "landmarkId": "extract_landmarks_1875483593",
+  "modelUrl": "./models/nemo.glb",
+  "suppressOsmIds": [
+    "w57856769",
+    "w1390692763",
+    "w1390692764",
+    "w1390692765",
+    "w1390692766",
+    "w1390692767",
+    "w1390692768",
+    "w1390692769",
+    "w1390692770",
+    "w1390692771",
+    "w1390692772",
+    "NL.IMBAG.Pand.0363100012164988"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.912322028079611,
+      52.3741956935447
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 44.8339207526614,
+    "widthMetres": 117.2867519998627
+  },
+  "surveyed": {
+    "anchor": [
+      4.912322028079611,
+      52.3741956935447
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact current parent and ten roof/stair/annex polygons, native coordinates and part maximum heights. Original curved roofs/flared copper shell; no old import fitting or street slab."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "NEMO Science Museum",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.rpbw.com/project/nemo-national-center-for-science-and-technology",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free reconstruction from current mapped parent/ten parts and primary architect/museum exterior photographs. Copper-green flared wedge, ascending roof stairs, mapped green roof and glazed lobby. Curvature and ornaments approximate; no downloaded mesh or photo pixels. Bridge, tunnel approaches and nearby buildings retained."
+  }
+}

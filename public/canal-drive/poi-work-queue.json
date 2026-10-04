@@ -44,7 +44,7 @@
       "priority": "high",
       "status": "verified",
       "owner": "venue_landmarks",
-      "validation": "125 registered assets, 126 genuine modeled destinations; visible picker, geographic pins/labels, sourced cards, exact arrival IDs; existing facts preserved."
+      "validation": "132 registered assets, 133 genuine modeled destinations; visible picker, geographic pins/labels, sourced cards, exact arrival IDs; existing facts preserved."
     },
     {
       "id": "westerkerk",
@@ -126,7 +126,7 @@
       "priority": "low",
       "status": "built",
       "owner": "root",
-      "validation": "1889 candidates within Amsterdam municipality; net footprint excludes courtyards; modeled identities excluded; twin outlines and raised parts grouped."
+      "validation": "1870 candidates within Amsterdam municipality; net footprint excludes courtyards; modeled identities excluded; twin outlines and raised parts grouped."
     },
     {
       "id": "faralda-crane",
@@ -138,8 +138,9 @@
       "id": "nemo",
       "task": "NEMO house-style replacement",
       "priority": "normal",
-      "status": "in-progress",
-      "owner": "trees"
+      "status": "verified",
+      "owner": "trees",
+      "validation": "Original 8709-triangle copper shell accepted in gallery and both dense live waterfront views; 3555 actual roof/wall seam samples within 0.003 mm; exact 12 source identities, native scale and retained approaches; existing route/pin/finish and real-click sourced card verified."
     },
     {
       "id": "rai",
@@ -157,25 +158,33 @@
       "id": "rembrandt-tower",
       "task": "Rembrandt Tower",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "owner": "venue_landmarks",
+      "validation": "Native gallery and dense live front/rear views accepted; exact legacy part masks verified; Blookerhuisje/Rotonda and Marcanti College retained; meaningful geometry, sourced destination/pin/card contract passed."
     },
     {
       "id": "breitner-tower",
       "task": "Breitner Tower",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "owner": "venue_landmarks",
+      "validation": "Native gallery and dense live front/rear views accepted; exact legacy part masks verified; Blookerhuisje/Rotonda and Marcanti College retained; meaningful geometry, sourced destination/pin/card contract passed."
     },
     {
       "id": "mondriaan-tower",
       "task": "Mondriaan Tower",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "owner": "venue_landmarks",
+      "validation": "Native gallery and dense live front/rear views accepted; exact legacy part masks verified; Blookerhuisje/Rotonda and Marcanti College retained; meaningful geometry, sourced destination/pin/card contract passed."
     },
     {
       "id": "de-piramides",
       "task": "De Piramides, Marcanti-eiland",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "owner": "venue_landmarks",
+      "validation": "Native gallery and dense live front/rear views accepted; exact legacy part masks verified; Blookerhuisje/Rotonda and Marcanti College retained; meaningful geometry, sourced destination/pin/card contract passed."
     },
     {
       "id": "valley",
@@ -211,13 +220,15 @@
       "id": "sloterdijk-station",
       "task": "Amsterdam Sloterdijk station",
       "priority": "normal",
-      "status": "queued"
+      "status": "in-progress",
+      "owner": "venue_landmarks"
     },
     {
       "id": "hnk-sloterdijk",
       "task": "HNK Amsterdam Sloterdijk",
       "priority": "normal",
-      "status": "queued"
+      "status": "in-progress",
+      "owner": "venue_landmarks"
     },
     {
       "id": "amsta-de-poort",
@@ -231,7 +242,9 @@
       "id": "zuiveringshal",
       "task": "Westergas Zuiveringshal",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "owner": "museum_landmarks",
+      "validation": "Three original Westergas hall ensembles accepted in gallery and dense front/rear views; exact 58 aliases, native scale, retained connector and neighboring original Ketelhuis; physical sourced cards and route/pin contract passed. Old-site Krakeling facts explicitly scoped to former home; mistranslated 1910s corrected to 2010s."
     },
     {
       "id": "machinegebouw",
@@ -249,7 +262,9 @@
       "id": "westergastheater",
       "task": "Westergastheater / relevant physical venue identity",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "owner": "museum_landmarks",
+      "validation": "Three original Westergas hall ensembles accepted in gallery and dense front/rear views; exact 58 aliases, native scale, retained connector and neighboring original Ketelhuis; physical sourced cards and route/pin contract passed. Old-site Krakeling facts explicitly scoped to former home; mistranslated 1910s corrected to 2010s."
     },
     {
       "id": "westergas-other",

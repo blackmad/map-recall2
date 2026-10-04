@@ -26,6 +26,7 @@ const equivalents:Record<string,string>={
   'co kathedrale basiliek van sint nicolaas':'sint nicolaas','sint franciscus xaveriuskerk':'krijtberg',
   'central station':'centraal','amsterdam centraal':'centraal','mint tower':'munttoren',
   'royal palace':'royal palace','palace on the dam':'royal palace','h art museum':'h art museum',
+  'westergastheater':'theater de krakeling','zuiveringshal':'fabrique des lumieres',
 };
 const canon=(n:string)=>{
   const normalized=normaliseAnswer(n),alias=equivalents[normalized]||normalized;

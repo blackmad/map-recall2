@@ -1,0 +1,20 @@
+[
+  {
+    "modelId": "rembrandt-tower",
+    "name": "Rembrandt Tower",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/rembrandttoren/",
+    "description": "The Rembrandt Tower is an office skyscraper at De Omval, completed in 1995. Its stepped granite crown and glass corner bays recall American skyscrapers of the 1930s."
+  },
+  {
+    "modelId": "breitner-tower",
+    "name": "Breitner Tower / Breitner Center",
+    "sourceUrl": "https://nl.linkedin.com/posts/zzdp-architecten_breitnertoren-philips-som-activity-7343676714033569792-l8Qf",
+    "description": "The Breitner Tower and its lower Breitner Center wing form part of De Omval’s three-tower ensemble near Amstelstation. The glass tower was completed in 2001 for Philips, designed by SOM with ZZDP."
+  },
+  {
+    "modelId": "mondriaan-tower",
+    "name": "Mondriaan Tower",
+    "sourceUrl": "https://www.mondriaan-tower.nl/",
+    "description": "The Mondriaan Tower is a 30-floor office tower at Amstelplein, completed in 2002. Its solid central block is flanked by stepped glass bays, with a glass lookout near the top."
+  }
+]

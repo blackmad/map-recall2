@@ -1,0 +1,52 @@
+{
+  "id": "de-piramides",
+  "name": "De Piramides",
+  "landmarkId": "osm_building_276272893",
+  "modelUrl": "./models/de-piramides.glb",
+  "suppressOsmIds": [
+    "w276272893",
+    "NL.IMBAG.Pand.0363100012110293",
+    "w1080809439",
+    "w1080809440",
+    "w1080809441",
+    "w1080809442",
+    "w1080809443",
+    "w1080809444",
+    "w1080809445",
+    "w1080809446",
+    "w1080809447",
+    "w1080809448",
+    "w1080809449",
+    "w1080809450",
+    "w1080809451",
+    "w1080809452"
+  ],
+  "footprint": {
+    "centre": [
+      4.866884215446545,
+      52.37540721557084
+    ],
+    "headingDegrees": 81.45079813511978,
+    "lengthMetres": 65.5709901923359,
+    "widthMetres": 25.170773722289375
+  },
+  "groundAltitudeMetres": 0,
+  "spatialSuppression": false,
+  "facingOffsetDegrees": 90.04920186488022,
+  "surveyed": {
+    "anchor": [
+      4.866881797272151,
+      52.3754167167955
+    ],
+    "northOffsetDegrees": -8.5,
+    "source": "Current BAG 0363100012110293 and fourteen exact mapped building parts. Native +X heading 81.5degrees, scale 1; measured 3DBAG 55.083 m roof envelope relative to ground, mapped 55 m twin crowns. Primary architect photos guide original masonry/window/terrace details."
+  },
+  "attribution": {
+    "title": "De Piramides",
+    "author": "Map Recall",
+    "sourceUrl": "https://pphp.nl/project/piramides-amsterdam-concept/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly reconstruction of the actual twin stepped residential building. Adjacent Marcanti College and surrounding low-rise housing remain separate."
+  }
+}

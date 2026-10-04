@@ -1,0 +1,145 @@
+[
+  {
+    "id": "rembrandt-tower",
+    "name": "Rembrandt Tower",
+    "landmarkId": "osm_building_44451577",
+    "modelUrl": "./models/rembrandt-tower.glb",
+    "suppressOsmIds": [
+      "w44451577",
+      "NL.IMBAG.Pand.0363100012113758",
+      "w754399963",
+      "w754399964",
+      "w754399965",
+      "w754399966",
+      "w754399967",
+      "w754399968",
+      "w754399969",
+      "w754399970",
+      "w754399971",
+      "w754399972",
+      "w754399973"
+    ],
+    "footprint": {
+      "centre": [
+        4.917060393089527,
+        52.34506421222511
+      ],
+      "headingDegrees": 159.4775109936597,
+      "lengthMetres": 48.0924042566222,
+      "widthMetres": 48.05852548433693
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.22248900634028246,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.917031687807691,
+        52.3450817261875
+      ],
+      "northOffsetDegrees": -20.3,
+      "source": "Current BAG 0363100012113758 and exact OSM parent; native +X heading 69.7 degrees, scale 1. Original simplified roof/terrace massing based on 3DBAG/AHN measured envelope and primary architectural references; published architecture heights guide visible crowns rather than copying a third-party mesh."
+    },
+    "attribution": {
+      "title": "Rembrandt Tower",
+      "author": "Map Recall",
+      "sourceUrl": "https://arcam.nl/architectuur-gids/rembrandttoren/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
+    }
+  },
+  {
+    "id": "breitner-tower",
+    "name": "Breitner Tower / Breitner Center",
+    "landmarkId": "osm_building_279841030",
+    "modelUrl": "./models/breitner-tower.glb",
+    "suppressOsmIds": [
+      "w279841030",
+      "NL.IMBAG.Pand.0363100012070861",
+      "w754399978",
+      "w463020446",
+      "w754399974",
+      "w754399975",
+      "w754399976",
+      "w754399977",
+      "w754399979",
+      "w754399980",
+      "r10396839"
+    ],
+    "footprint": {
+      "centre": [
+        4.9163509978620015,
+        52.34472019794773
+      ],
+      "headingDegrees": 159.49559371157028,
+      "lengthMetres": 111.69773778800698,
+      "widthMetres": 28.675251217411237
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.2044062884297091,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.916345037374623,
+        52.34470057536986
+      ],
+      "northOffsetDegrees": -20.3,
+      "source": "Current BAG 0363100012070861 and exact OSM parent; native +X heading 69.7 degrees, scale 1. Original simplified roof/terrace massing based on 3DBAG/AHN measured envelope and primary architectural references; published architecture heights guide visible crowns rather than copying a third-party mesh."
+    },
+    "attribution": {
+      "title": "Breitner Tower / Breitner Center",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.zzdp.nl/nl/project/de-omval",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
+    }
+  },
+  {
+    "id": "mondriaan-tower",
+    "name": "Mondriaan Tower",
+    "landmarkId": "osm_building_279842059",
+    "modelUrl": "./models/mondriaan-tower.glb",
+    "suppressOsmIds": [
+      "w279842059",
+      "NL.IMBAG.Pand.0363100012097541",
+      "w754399954",
+      "w754399955",
+      "w754399956",
+      "w754399957",
+      "w754399958",
+      "w754399959",
+      "w754399960",
+      "w754399961",
+      "r10396838"
+    ],
+    "footprint": {
+      "centre": [
+        4.9173687631678735,
+        52.3440175406779
+      ],
+      "headingDegrees": 69.48566007198855,
+      "lengthMetres": 59.170833187125076,
+      "widthMetres": 29.340644963658846
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90.21433992801144,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.917383745624289,
+        52.34402338555016
+      ],
+      "northOffsetDegrees": -20.3,
+      "source": "Current BAG 0363100012097541 and exact OSM parent; native +X heading 69.7 degrees, scale 1. Original simplified roof/terrace massing based on 3DBAG/AHN measured envelope and primary architectural references; published architecture heights guide visible crowns rather than copying a third-party mesh."
+    },
+    "attribution": {
+      "title": "Mondriaan Tower",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.mondriaan-tower.nl/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
+    }
+  }
+]
