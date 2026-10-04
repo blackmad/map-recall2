@@ -1,0 +1,545 @@
+{
+  "id": "eye-filmmuseum",
+  "anchor": [
+    4.900944,
+    52.384387
+  ],
+  "authorHeadingDegrees": 90,
+  "parent": {
+    "type": "Feature",
+    "properties": {
+      "aantal_verblijfsobjecten": 1,
+      "bouwjaar": 2011,
+      "documentdatum": "2012-08-07",
+      "documentnummer": "SN00000395_RB00GM",
+      "gebruiksdoel": "bijeenkomstfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012237838",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012237838",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/3d88ce8c-0c71-507a-94e5-d31c55d37ec7"
+      ]
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.9017553313348525,
+            52.38427027768529
+          ],
+          [
+            4.901313841099405,
+            52.38442084433376
+          ],
+          [
+            4.90089965830066,
+            52.384533476615
+          ],
+          [
+            4.900581421158968,
+            52.38477832406362
+          ],
+          [
+            4.900127649648521,
+            52.38475572408493
+          ],
+          [
+            4.900211640248812,
+            52.384463978788574
+          ],
+          [
+            4.900331704353603,
+            52.3841681934652
+          ],
+          [
+            4.900555152683239,
+            52.38415516298851
+          ],
+          [
+            4.900553835132481,
+            52.3841561012812
+          ],
+          [
+            4.901206950265871,
+            52.3841183297159
+          ],
+          [
+            4.901242827033338,
+            52.38411624799297
+          ],
+          [
+            4.901257333506337,
+            52.38411540874977
+          ],
+          [
+            4.901401057410912,
+            52.38399612068587
+          ],
+          [
+            4.901420438249737,
+            52.384004855324925
+          ],
+          [
+            4.901443209865525,
+            52.384015131775016
+          ],
+          [
+            4.901498078197327,
+            52.3840398842041
+          ],
+          [
+            4.901448165965838,
+            52.38410306063136
+          ],
+          [
+            4.901670834713381,
+            52.38409006979144
+          ],
+          [
+            4.9017541042843105,
+            52.384100612170286
+          ],
+          [
+            4.9017553313348525,
+            52.38427027768529
+          ]
+        ]
+      ]
+    },
+    "id": "5809ce81-0ec1-5b7b-8c7f-3a171bce7bca"
+  },
+  "osmBuildings": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.9001258,
+                52.3847453
+              ],
+              [
+                4.9002116,
+                52.384464
+              ],
+              [
+                4.9003317,
+                52.3841682
+              ],
+              [
+                4.9005533,
+                52.3841565
+              ],
+              [
+                4.9007715,
+                52.3841434
+              ],
+              [
+                4.901207,
+                52.3841183
+              ],
+              [
+                4.9012428,
+                52.3841162
+              ],
+              [
+                4.9012573,
+                52.3841154
+              ],
+              [
+                4.9012925,
+                52.3840862
+              ],
+              [
+                4.9014011,
+                52.3839961
+              ],
+              [
+                4.9014204,
+                52.3840049
+              ],
+              [
+                4.9014432,
+                52.3840151
+              ],
+              [
+                4.9014981,
+                52.3840399
+              ],
+              [
+                4.9014482,
+                52.3841031
+              ],
+              [
+                4.9015428,
+                52.3840891
+              ],
+              [
+                4.9015994,
+                52.3840807
+              ],
+              [
+                4.9016793,
+                52.3840688
+              ],
+              [
+                4.9017654,
+                52.3840701
+              ],
+              [
+                4.9017638,
+                52.3842421
+              ],
+              [
+                4.9017431,
+                52.3842492
+              ],
+              [
+                4.9017411,
+                52.3842498
+              ],
+              [
+                4.901404,
+                52.3843591
+              ],
+              [
+                4.9013469,
+                52.3843769
+              ],
+              [
+                4.9009054,
+                52.3845145
+              ],
+              [
+                4.9008255,
+                52.3845765
+              ],
+              [
+                4.9006085,
+                52.384745
+              ],
+              [
+                4.9005597,
+                52.3847714
+              ],
+              [
+                4.9001258,
+                52.3847453
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 127505497,
+        "building": "yes",
+        "building:colour": "#bbbcb6",
+        "layer": "2",
+        "level": "1",
+        "ref:bag": "0363100012237838",
+        "source": "BAG",
+        "source:date": "2016-10-04",
+        "start_date": "2011"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.9002622,
+                52.3846414
+              ],
+              [
+                4.9002776,
+                52.3845045
+              ],
+              [
+                4.9002813,
+                52.3844716
+              ],
+              [
+                4.9002847,
+                52.3844424
+              ],
+              [
+                4.9002925,
+                52.3843716
+              ],
+              [
+                4.9002961,
+                52.3843413
+              ],
+              [
+                4.900308,
+                52.384333
+              ],
+              [
+                4.900534,
+                52.38417
+              ],
+              [
+                4.9005533,
+                52.3841565
+              ],
+              [
+                4.9007715,
+                52.3841434
+              ],
+              [
+                4.901207,
+                52.3841183
+              ],
+              [
+                4.9012428,
+                52.3841162
+              ],
+              [
+                4.9012573,
+                52.3841154
+              ],
+              [
+                4.9013256,
+                52.3841134
+              ],
+              [
+                4.9013414,
+                52.3841204
+              ],
+              [
+                4.9013605,
+                52.384129
+              ],
+              [
+                4.9013283,
+                52.3841714
+              ],
+              [
+                4.9012207,
+                52.384191
+              ],
+              [
+                4.9012223,
+                52.3841978
+              ],
+              [
+                4.901224,
+                52.3842054
+              ],
+              [
+                4.9012529,
+                52.384203
+              ],
+              [
+                4.9012536,
+                52.3842066
+              ],
+              [
+                4.9012551,
+                52.3842071
+              ],
+              [
+                4.9012886,
+                52.3843384
+              ],
+              [
+                4.9011894,
+                52.3843718
+              ],
+              [
+                4.9009303,
+                52.3844589
+              ],
+              [
+                4.9009272,
+                52.3844585
+              ],
+              [
+                4.9007985,
+                52.3845622
+              ],
+              [
+                4.9006899,
+                52.3845577
+              ],
+              [
+                4.900691,
+                52.3845378
+              ],
+              [
+                4.9006633,
+                52.3845372
+              ],
+              [
+                4.9006631,
+                52.3845393
+              ],
+              [
+                4.9005255,
+                52.3846507
+              ],
+              [
+                4.9004617,
+                52.3846484
+              ],
+              [
+                4.9003984,
+                52.3846462
+              ],
+              [
+                4.9002622,
+                52.3846414
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 1206726812,
+        "building": "yes",
+        "building:colour": "#bbbcb6",
+        "level": "0",
+        "ref:bag": "0363100012237838",
+        "source": "BAG",
+        "source:date": "2016-10-04",
+        "start_date": "2011"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.9012428,
+                52.3841162
+              ],
+              [
+                4.9012763,
+                52.3840883
+              ],
+              [
+                4.9015365,
+                52.3838721
+              ],
+              [
+                4.9015508,
+                52.3839255
+              ],
+              [
+                4.9016484,
+                52.383845
+              ],
+              [
+                4.9016609,
+                52.3838505
+              ],
+              [
+                4.9016725,
+                52.3838555
+              ],
+              [
+                4.9014393,
+                52.3841493
+              ],
+              [
+                4.9014405,
+                52.3841509
+              ],
+              [
+                4.90137,
+                52.3841638
+              ],
+              [
+                4.9013283,
+                52.3841714
+              ],
+              [
+                4.9013605,
+                52.384129
+              ],
+              [
+                4.9013414,
+                52.3841204
+              ],
+              [
+                4.9013256,
+                52.3841134
+              ],
+              [
+                4.9012573,
+                52.3841154
+              ],
+              [
+                4.9012428,
+                52.3841162
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 1207014127,
+        "building": "yes",
+        "level": "0",
+        "ref:bag": "0363100012237838",
+        "source": "BAG",
+        "source:date": "2016-10-04",
+        "start_date": "2011"
+      }
+    }
+  ],
+  "heightReference": {
+    "groundNap": 1.109,
+    "surveyRoofMaximumNap": 25.591,
+    "aboveGroundMaximum": 24.482,
+    "surveyDetailedRoofMaximum": 24.544
+  },
+  "sources": [
+    {
+      "url": "https://3dwarehouse.sketchup.com/model/6d65ba16-de1d-41dd-a57b-23e4e0d031f9/Eye-Museum-Amsterdam",
+      "use": "User-supplied tom A. model viewed as silhouette reference only. No model triangles, textures or components imported."
+    },
+    {
+      "url": "https://www.dmaa.at/work/eye-film-institute",
+      "use": "Architect exterior photographs, roof folds, southern glazing, entrance steps and cantilever."
+    },
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012237838&f=json",
+      "use": "Current exact shared parent and ground/roof scope."
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012237838",
+      "use": "AHN5 current height measurements and simplified roof-profile calibration; no imported survey roof faces."
+    },
+    {
+      "url": "https://www.openstreetmap.org/way/127505497",
+      "use": "Upper outline, shared BAG identity; local extract also distinguishes lower level and entrance stair."
+    }
+  ],
+  "sourceNote": "Original texture-free folded-shell reconstruction. Current BAG parent scope, recorded lower-level outline and approximate roof heights constrain original rounded control points. White inclined panels, southern glass ribbon, recessed lower storey and eastern cantilever are interpreted from architect photographs and the supplied Warehouse viewer. Individual roof folds, glazing contours, mullion spacing and stairs remain approximations. No imported Warehouse or survey mesh geometry; no photo pixels. The extract teaching ID681957397 is retained only as teaching identity, not suppressed as a current OSM way: current OSM way681957397 is in another country. Only verified EYE parent/levels are suppressed; A\u2019DAM, promenade and park remain separate.",
+  "localReferences": [
+    {
+      "file": "Gebouw.skp",
+      "sha256": "d7618ebe6fab5cc38eb46d762c434d692a9936f4f8cf7d36e313134f12c901ef",
+      "use": "Building-only thumbnail confirms silhouette; no geometry or pixels incorporated."
+    },
+    {
+      "file": "eyeaf.skp",
+      "sha256": "d89e45b2c81015c05d2d86cd1bb7d334bc49ba363bda03b15904cf25ec303c82",
+      "use": "Same model as eyeaf (1).skp, includes complete plaza; viewed only."
+    }
+  ]
+}

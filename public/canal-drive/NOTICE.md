@@ -75,7 +75,7 @@ Earth snapshot, which the export still carries.
 - **Oude Kerk (Old Church), retired import** — replaced by an original project mesh; historic source: City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/5ec8bf3fa426e5d622fc8389905f949e
 - **National Monument on the Dam** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/80385c387986217491e131c17526634a
 - **NEMO** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/a2a1d7c7726cb7e065a54e9dd3ee74f
-- **Rijksmuseum** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/a57b8c559152b7851aeb638739e9b807
+- **Rijksmuseum, retired import** — replaced by an original project mesh; historic source: City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/a57b8c559152b7851aeb638739e9b807
 - **De Beurs van Berlage (Stock Exchange)** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/c5a0708f3e4b36fe622758e070290bc2
 - **Palace on the Dam** — City of Amsterdam, Geo en Vastgoedinformatie, https://3dwarehouse.sketchup.com/model/d1ad512d8df5fc6745407e0587dff10e
 
@@ -144,13 +144,18 @@ De Dolphijn, De Rode Hoed, Theater Amsterdam, Vondelpark Open Air Theater,
 Vondelpark Muziektent, Oost-Indisch Huis/Bushuis, Het Veem, Tobacco Theater,
 Plein Theater, Hash Marihuana & Hemp Museum, Hemp Gallery and
 Madame Tussauds / Peek & Cloppenburg, The Amsterdam Dungeon, Sint Jorishof,
-Waalse Kerk, Schreierstoren and Huize Lydia use the
+Waalse Kerk, Schreierstoren, Huize Lydia, EYE Filmmuseum, Royal Theater Carré,
+Sint Nicolaas Basilica and Rijksmuseum use the
 same original modelling workflow in
 `scripts/landmarks/build-manual-landmarks.ts`. The live game loads these
 flat-colour replacements; the older imported catalogue remains available in
 the signature-model demo. No reference photograph pixels or downloaded
-model geometry are included. The current Centraal and Oude Kerk GLBs replace their former
-3D Warehouse assets.
+model geometry are included. The current Centraal, Oude Kerk and Rijksmuseum GLBs replace their former
+3D Warehouse assets. EYE, Carré and Sint Nicolaas retain their native surveyed
+plans; Rijksmuseum retains an open bicycle passage and hollow glazed atria.
+Supplied EYE, Silodam and Bijenkorf SketchUp files were visual references only.
+The reusable-model research catalogue and browser-local shortlist are available
+at `model-reuse-review.html`; no reviewed third-party candidates are imported.
 
 Hospital footprints and landmark placement coordinates derive from
 OpenStreetMap contributors, [ODbL](https://www.openstreetmap.org/copyright).

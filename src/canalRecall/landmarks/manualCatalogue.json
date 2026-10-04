@@ -236,37 +236,6 @@
     }
   },
   {
-    "id": "silodam",
-    "name": "Silodam",
-    "landmarkId": "silodam",
-    "modelUrl": "./models/silodam.glb",
-    "suppressOsmIds": [
-      "w57864184",
-      "w1038324509",
-      "w1038324510",
-      "w1038324511"
-    ],
-    "footprint": {
-      "centre": [
-        4.8905845781125485,
-        52.39274079370824
-      ],
-      "headingDegrees": 164.76785231590262,
-      "lengthMetres": 65.91515774263391,
-      "widthMetres": 40.43657598726371
-    },
-    "groundAltitudeMetres": 0,
-    "facingOffsetDegrees": 90,
-    "attribution": {
-      "title": "Silodam",
-      "author": "Map Recall",
-      "sourceUrl": "https://www.mvrdv.com/projects/163/silodam",
-      "licence": "Original project asset",
-      "licenceUrl": "./LICENSE",
-      "modifications": "Original texture-free low-poly reconstruction of the colourful ten-storey harbour block, using architectural photographs for silhouette and OpenStreetMap for measured footprint. No imported geometry or photo textures."
-    }
-  },
-  {
     "id": "embassy-free-mind",
     "name": "Embassy of the Free Mind",
     "landmarkId": "extract_landmarks_740511540",
@@ -905,7 +874,10 @@
       "w751235777",
       "w751235778",
       "w751235779",
-      "w751235780"
+      "w751235780",
+      "NL.IMBAG.Pand.0363100012168052",
+      "w751128374",
+      "w751128375"
     ],
     "footprint": {
       "centre": [
@@ -924,9 +896,17 @@
       "sourceUrl": "https://www.cultureelerfgoeddebijenkorf.nl/architectuur/bouwfasesamsterdam",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      "modifications": "Original texture-free low-poly reconstruction of full historic Damrak and Dam fronts, curved pediments, mansard dormers, paired-window/pilaster rhythm, surveyed cupola and separate rear extension. Supplied SketchUp preview used as visual reference only; no imported mesh or texture."
     },
-    "spatialSuppression": false
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8943519,
+        52.3736161
+      ],
+      "northOffsetDegrees": 129.69686744069807,
+      "source": "Current BAG0363100012168052 and OSM original store/roof parts; native scale1, +Z Damrak frontage309.697 degrees, +X Dam end219.697 degrees. Original historic roof/facades reconciled with primary RCE518426 and 3DBAG AHN roof envelope (cupola45.43m above ground)."
+    }
   },
   {
     "id": "gashouder",
@@ -3817,6 +3797,241 @@
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
+    }
+  },
+  {
+    "id": "eye-filmmuseum",
+    "name": "EYE Filmmuseum",
+    "landmarkId": "extract_landmarks_681957397",
+    "modelUrl": "./models/eye-filmmuseum.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012237838",
+      "w127505497",
+      "w1206726812",
+      "w1207014127"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.900944,
+        52.384387
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 110.59346833808135,
+      "widthMetres": 86.4647613760225
+    },
+    "surveyed": {
+      "anchor": [
+        4.900944,
+        52.384387
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Native east/south metres; current shared BAG plan and AHN5 envelope, original simplified roof folds."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180,
+    "attribution": {
+      "title": "EYE Filmmuseum",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.dmaa.at/work/eye-film-institute",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free folded-shell reconstruction. Current BAG parent scope, recorded lower-level outline and approximate roof heights constrain original rounded control points. White inclined panels, southern glass ribbon, recessed lower storey and eastern cantilever are interpreted from architect photographs and the supplied Warehouse viewer. Individual roof folds, glazing contours, mullion spacing and stairs remain approximations. No imported Warehouse or survey mesh geometry; no photo pixels. The extract teaching ID681957397 is retained only as teaching identity, not suppressed as a current OSM way: current OSM way681957397 is in another country. Only verified EYE parent/levels are suppressed; A\u2019DAM, promenade and park remain separate."
+    }
+  },
+  {
+    "id": "royal-theater-carre",
+    "name": "Royal Theater Carr\u00e9",
+    "landmarkId": "extract_landmarks_1137362739",
+    "modelUrl": "./models/royal-theater-carre.glb",
+    "suppressOsmIds": [
+      "w269000174",
+      "NL.IMBAG.Pand.0363100012165489"
+    ],
+    "footprint": {
+      "centre": [
+        4.904245736017089,
+        52.36243042368101
+      ],
+      "headingDegrees": 73.15109016624513,
+      "lengthMetres": 60.15133144122461,
+      "widthMetres": 51.934439973235555
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 179.83737933711802,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.90426525,
+        52.3624545
+      ],
+      "northOffsetDegrees": 72.98846950336312,
+      "source": "Current active BAG/OSM whole theatre parent; native scale1, Amstel facade axis162.988 degrees. AHN5/3DBAG LoD2.2 envelope reconciled with primary theatre/architectural photographs; original simplified zinc cloister dome and separate modern ribbed stagehouse."
+    },
+    "attribution": {
+      "title": "Royal Theater Carr\u00e9",
+      "author": "Map Recall",
+      "sourceUrl": "https://arcam.nl/architectuur-gids/koninklijk-theater-carre/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly theatre, facade and ornament geometry. No imported mesh or image; exact current parent replacement preserves neighboring Amstel houses and Onbekendegracht."
+    }
+  },
+  {
+    "id": "sint-nicolaas",
+    "name": "Sint Nicolaas Basilica",
+    "landmarkId": "extract_landmarks_1272308587",
+    "modelUrl": "./models/sint-nicolaas.glb",
+    "suppressOsmIds": [
+      "w174996833",
+      "NL.IMBAG.Pand.0363100012165691",
+      "w645534930",
+      "w645534931",
+      "w749289632",
+      "w749289633",
+      "w749289634",
+      "w750217059",
+      "w750217060",
+      "w750217061",
+      "w750217062",
+      "w750217063",
+      "w750217064",
+      "w750591088",
+      "w750591090"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.9011602841322865,
+        52.37644052156187
+      ],
+      "headingDegrees": 150.27603524728386,
+      "lengthMetres": 52.451608220779384,
+      "widthMetres": 22.869811981363846
+    },
+    "surveyed": {
+      "anchor": [
+        4.9011602841322865,
+        52.37644052156187
+      ],
+      "northOffsetDegrees": 150.27603524728386
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Sint Nicolaas Basilica",
+      "author": "Map Recall",
+      "sourceUrl": "https://nicolaas-parochie.nl/nicolaas/over-ons/gebouw/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction of Bleijs\u2019s1884\u20131887 SintNicolaas basilica. Native geometry retains the actual52.45\u00d722.87m church plan, thirteen measured in-parent OSM building parts, staggered twin6m west towers,13m octagonal crossing drum and stepped aisle/nave/transept/apse roofs. The parish documents58m dome height; modeled58m cross and56m tower crowns extend above AHN5 bulkroofmax50.889m, which does not capture fine lantern crosses. Ornament/curved metal crowns/rose window/arcaded entrance and clerestory are original simplified geometry from primary parish and architecture photographer references, with no imported source meshes/textures. Five adjacent rectory/side-annex parts outside the exact church parent and ordinary neighbors remain unsuppressed. Same-part proceduralSintNicolaas kit is replaced by this model; currentBAG1875 date is not treated as architectural evidence."
+    }
+  },
+  {
+    "id": "rijksmuseum",
+    "name": "Rijksmuseum",
+    "landmarkId": "extract_landmarks_512243549",
+    "modelUrl": "./models/rijksmuseum.glb",
+    "suppressOsmIds": [
+      "w431070185",
+      "w431070791",
+      "w431070942",
+      "w517791046",
+      "w749429987",
+      "w749429988",
+      "w749429989",
+      "w749429990",
+      "w749429991",
+      "w749429992",
+      "w749429993",
+      "w749429994",
+      "w749429995",
+      "w749429996",
+      "w749429997",
+      "w749429998",
+      "w749429999",
+      "w749430000",
+      "w749430001",
+      "w749805753",
+      "w749805754",
+      "w749805755",
+      "w749805756",
+      "w749805757",
+      "w749805758",
+      "w749805759",
+      "w749805760",
+      "w749805761",
+      "w749805762",
+      "w749805763",
+      "w749805764"
+    ],
+    "footprint": {
+      "centre": [
+        4.885063574936609,
+        52.35986465365779
+      ],
+      "headingDegrees": 129.4,
+      "lengthMetres": 137.93519237901404,
+      "widthMetres": 120.49669215065194
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.885063574936609,
+        52.35986465365779
+      ],
+      "northOffsetDegrees": 219.4,
+      "source": "OSM museum mainparent w431070185 and30 mappedparts with27\u201354m roof heights; exact groundpassage and roofedatrium voids retained."
+    },
+    "spatialSuppression": false,
+    "attribution": {
+      "title": "Rijksmuseum",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.rijksmuseum.nl/en/visitor-information/inside-the-rijksmuseum/-the-building-from-the-exterior",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free shared-palette reconstruction of Cuypers museum from official exterior imagery and exact current OpenStreetMap polygons/heights. Open central bicycle passage, hollow roofed atria, tall paired towers and Philips wing retained. Warehouse reference viewed only; no imported geometry or photo textures."
+    }
+  },
+  {
+    "id": "silodam",
+    "name": "Silodam",
+    "landmarkId": "silodam",
+    "modelUrl": "./models/silodam.glb",
+    "suppressOsmIds": [
+      "w57864184",
+      "NL.IMBAG.Pand.0363100012149391",
+      "w1038324509",
+      "w1038324510",
+      "w1038324511"
+    ],
+    "footprint": {
+      "centre": [
+        4.8905845781125485,
+        52.39274079370824
+      ],
+      "headingDegrees": 164.76785231590262,
+      "lengthMetres": 65.91515774263391,
+      "widthMetres": 40.43657598726371
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Silodam",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.mvrdv.com/projects/163/silodam",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction rebuilt from MVRDV primary exterior photographs and the supplied SketchUp thumbnail as visual references only. No imported SketchUp/Warehouse geometry or photo textures. Native mapped parent and three building parts retain the ten-storey 20m-deep housing, 29m flat roof, open piles, and separate mapped 3\u20137m projecting office/public balcony. Four distinct facade neighbourhoods include continuous red gallery strips, yellow-framed double-height glass, corrugated silver cladding, large white-framed lower panes, and orange-base cladding represented by the shared warm-gold project palette. Exact current BAG/OSM identities suppress only this building; neighboring historic silos remain."
+    },
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8905845781125485,
+        52.39274079370824
+      ],
+      "northOffsetDegrees": 74.76785231590262
     }
   }
 ]

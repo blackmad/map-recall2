@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 111,
-    "catalogue-model": 12,
-    "procedural-kit": 18,
+    "manual-model": 115,
+    "procedural-kit": 15,
+    "catalogue-model": 11,
     "pending": 151
   },
   "destinations": [
@@ -56,7 +56,7 @@
       "lng": 4.8864162,
       "queueRank": 3,
       "origin": "POI Destinations",
-      "status": "catalogue-model",
+      "status": "manual-model",
       "modelId": "rijksmuseum",
       "treatment": "building"
     },
@@ -261,8 +261,8 @@
       "type": "landmark",
       "queueRank": 20,
       "origin": "POI Destinations",
-      "status": "procedural-kit",
-      "kitName": "Sint-Nicolaas",
+      "status": "manual-model",
+      "modelId": "sint-nicolaas",
       "treatment": "building"
     },
     {
@@ -405,8 +405,8 @@
       "type": "museum",
       "queueRank": 31,
       "origin": "POI Destinations",
-      "status": "procedural-kit",
-      "kitName": "Eye Filmmuseum",
+      "status": "manual-model",
+      "modelId": "eye-filmmuseum",
       "treatment": "building"
     },
     {
@@ -921,8 +921,8 @@
       "type": "landmark",
       "queueRank": 71,
       "origin": "POI Destinations",
-      "status": "procedural-kit",
-      "kitName": "Carré",
+      "status": "manual-model",
+      "modelId": "royal-theater-carre",
       "treatment": "building"
     },
     {
@@ -3506,8 +3506,8 @@
     {
       "id": "de-bijenkorf",
       "name": "De Bijenkorf",
-      "lat": 52.373581327421924,
-      "lng": 4.894352481530528,
+      "lat": 52.3736161,
+      "lng": 4.8943519,
       "queueRank": 281,
       "origin": "Landmark catalogue",
       "status": "manual-model",

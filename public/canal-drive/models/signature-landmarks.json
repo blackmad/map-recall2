@@ -380,51 +380,102 @@
       }
     },
     "rijksmuseum": {
+      "id": "rijksmuseum",
       "name": "Rijksmuseum",
       "landmarkId": "extract_landmarks_512243549",
       "modelUrl": "./models/rijksmuseum.glb",
+      "suppressOsmIds": [
+        "w431070185",
+        "w431070791",
+        "w431070942",
+        "w517791046",
+        "w749429987",
+        "w749429988",
+        "w749429989",
+        "w749429990",
+        "w749429991",
+        "w749429992",
+        "w749429993",
+        "w749429994",
+        "w749429995",
+        "w749429996",
+        "w749429997",
+        "w749429998",
+        "w749429999",
+        "w749430000",
+        "w749430001",
+        "w749805753",
+        "w749805754",
+        "w749805755",
+        "w749805756",
+        "w749805757",
+        "w749805758",
+        "w749805759",
+        "w749805760",
+        "w749805761",
+        "w749805762",
+        "w749805763",
+        "w749805764"
+      ],
+      "footprint": {
+        "centre": [
+          4.885063574936609,
+          52.35986465365779
+        ],
+        "headingDegrees": 129.4,
+        "lengthMetres": 137.93519237901404,
+        "widthMetres": 120.49669215065194
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.885063574936609,
+          52.35986465365779
+        ],
+        "northOffsetDegrees": 219.4,
+        "source": "OSM museum mainparent w431070185 and30 mappedparts with27–54m roof heights; exact groundpassage and roofedatrium voids retained."
+      },
+      "spatialSuppression": false,
+      "attribution": {
+        "title": "Rijksmuseum",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.rijksmuseum.nl/en/visitor-information/inside-the-rijksmuseum/-the-building-from-the-exterior",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free shared-palette reconstruction of Cuypers museum from official exterior imagery and exact current OpenStreetMap polygons/heights. Open central bicycle passage, hollow roofed atria, tall paired towers and Philips wing retained. Warehouse reference viewed only; no imported geometry or photo textures."
+      },
       "bounds": {
         "min": [
-          -88.99903232396834,
-          -3.0824731283086586,
-          -95.40196402611895
+          -69.28762817382812,
+          -9.536743306171047e-8,
+          -60.2484130859375
         ],
         "max": [
-          87.9772882685494,
-          52.877743209300974,
-          87.08038341981269
+          69.27163696289062,
+          55.599998474121094,
+          60.248374938964844
         ]
       },
       "placement": {
         "anchor": [
-          4.885146056364321,
-          52.35975292731005
+          4.885063574936609,
+          52.35986465365779
         ],
         "altitudeMetres": 0,
-        "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 115.66684543249102,
+        "modelRotationDegrees": 309.4,
+        "facadeBearingDegrees": 129.39999999999998,
         "scale": 1
       },
       "extent": {
-        "widthMetres": 182.48234744593162,
-        "heightMetres": 55.96021633760963,
-        "depthMetres": 176.97632059251774,
-        "depthCoverage": 0.9261783444094878
+        "widthMetres": 138.55926513671875,
+        "heightMetres": 55.59999856948853,
+        "depthMetres": 120.49678802490234,
+        "depthCoverage": 1.0000007956587744
       },
-      "triangles": 10628,
-      "bytes": 853672,
-      "sourceBytes": 2716660,
-      "sourceTriangles": 10952,
-      "droppedAttributes": [],
-      "maxTextureSize": 512,
-      "attribution": {
-        "title": "Rijksmuseum",
-        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
-        "sourceUrl": "https://3dwarehouse.sketchup.com/model/a57b8c559152b7851aeb638739e9b807",
-        "licence": "3D Warehouse General Model License",
-        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
-        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
-      }
+      "triangles": 39354,
+      "bytes": 498936,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "stadhuis": {
       "name": "Stadhuis (City hall)",
@@ -1450,6 +1501,7 @@
       "modelUrl": "./models/silodam.glb",
       "suppressOsmIds": [
         "w57864184",
+        "NL.IMBAG.Pand.0363100012149391",
         "w1038324509",
         "w1038324510",
         "w1038324511"
@@ -1471,38 +1523,46 @@
         "sourceUrl": "https://www.mvrdv.com/projects/163/silodam",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly reconstruction of the colourful ten-storey harbour block, using architectural photographs for silhouette and OpenStreetMap for measured footprint. No imported geometry or photo textures."
+        "modifications": "Original texture-free low-poly reconstruction rebuilt from MVRDV primary exterior photographs and the supplied SketchUp thumbnail as visual references only. No imported SketchUp/Warehouse geometry or photo textures. Native mapped parent and three building parts retain the ten-storey 20m-deep housing, 29m flat roof, open piles, and separate mapped 3–7m projecting office/public balcony. Four distinct facade neighbourhoods include continuous red gallery strips, yellow-framed double-height glass, corrugated silver cladding, large white-framed lower panes, and orange-base cladding represented by the shared warm-gold project palette. Exact current BAG/OSM identities suppress only this building; neighboring historic silos remain."
+      },
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.8905845781125485,
+          52.39274079370824
+        ],
+        "northOffsetDegrees": 74.76785231590262
       },
       "bounds": {
         "min": [
-          -33.29124069213867,
+          -33.30500030517578,
           0,
-          -20.01610565185547
+          -20.475000381469727
         ],
         "max": [
-          33.29124069213867,
-          29.25,
-          20.456104278564453
+          33.224998474121094,
+          29.329999923706055,
+          20.604999542236328
         ]
       },
       "placement": {
         "anchor": [
-          4.890581950499203,
-          52.39274035708358
+          4.8905845781125485,
+          52.39274079370824
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 164.7678523159026,
         "facadeBearingDegrees": 254.7678523159026,
-        "scale": 0.9899774891567646
+        "scale": 1
       },
       "extent": {
-        "widthMetres": 66.58248138427734,
-        "heightMetres": 29.25,
-        "depthMetres": 40.47220993041992,
-        "depthCoverage": 1.000881230477265
+        "widthMetres": 66.52999877929688,
+        "heightMetres": 29.329999923706055,
+        "depthMetres": 41.079999923706055,
+        "depthCoverage": 1.0159119292554593
       },
-      "triangles": 14928,
-      "bytes": 196140,
+      "triangles": 17290,
+      "bytes": 212656,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "embassy-free-mind": {
@@ -2702,7 +2762,10 @@
         "w751235777",
         "w751235778",
         "w751235779",
-        "w751235780"
+        "w751235780",
+        "NL.IMBAG.Pand.0363100012168052",
+        "w751128374",
+        "w751128375"
       ],
       "footprint": {
         "centre": [
@@ -2721,39 +2784,47 @@
         "sourceUrl": "https://www.cultureelerfgoeddebijenkorf.nl/architectuur/bouwfasesamsterdam",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+        "modifications": "Original texture-free low-poly reconstruction of full historic Damrak and Dam fronts, curved pediments, mansard dormers, paired-window/pilaster rhythm, surveyed cupola and separate rear extension. Supplied SketchUp preview used as visual reference only; no imported mesh or texture."
       },
       "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.8943519,
+          52.3736161
+        ],
+        "northOffsetDegrees": 129.69686744069807,
+        "source": "Current BAG0363100012168052 and OSM original store/roof parts; native scale1, +Z Damrak frontage309.697 degrees, +X Dam end219.697 degrees. Original historic roof/facades reconciled with primary RCE518426 and 3DBAG AHN roof envelope (cupola45.43m above ground)."
+      },
       "bounds": {
         "min": [
-          -55.87075424194336,
-          0,
-          -19.8327693939209
+          -53.98500061035156,
+          -3.814697322468419e-7,
+          -22.17583465576172
         ],
         "max": [
-          57.33343505859375,
-          48,
-          21.67276954650879
+          59.8849983215332,
+          45.43000030517578,
+          18.7801570892334
         ]
       },
       "placement": {
         "anchor": [
-          4.894352481530528,
-          52.373581327421924
+          4.8943519,
+          52.3736161
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 219.69686744069804,
         "facadeBearingDegrees": 309.69686744069804,
-        "scale": 0.987079306610212
+        "scale": 1
       },
       "extent": {
-        "widthMetres": 113.20418930053711,
-        "heightMetres": 48,
-        "depthMetres": 41.50553894042969,
-        "depthCoverage": 1.0611010382117136
+        "widthMetres": 113.86999893188477,
+        "heightMetres": 45.43000068664551,
+        "depthMetres": 40.95599174499512,
+        "depthCoverage": 1.0470517061344002
       },
-      "triangles": 16648,
-      "bytes": 206632,
+      "triangles": 29289,
+      "bytes": 341100,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "gashouder": {
@@ -7858,6 +7929,227 @@
       },
       "triangles": 15053,
       "bytes": 187340,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "eye-filmmuseum": {
+      "id": "eye-filmmuseum",
+      "name": "EYE Filmmuseum",
+      "landmarkId": "extract_landmarks_681957397",
+      "modelUrl": "./models/eye-filmmuseum.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012237838",
+        "w127505497",
+        "w1206726812",
+        "w1207014127"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.900944,
+          52.384387
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 110.59346833808135,
+        "widthMetres": 86.4647613760225
+      },
+      "surveyed": {
+        "anchor": [
+          4.900944,
+          52.384387
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Native east/south metres; current shared BAG plan and AHN5 envelope, original simplified roof folds."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 180,
+      "attribution": {
+        "title": "EYE Filmmuseum",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.dmaa.at/work/eye-film-institute",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free folded-shell reconstruction. Current BAG parent scope, recorded lower-level outline and approximate roof heights constrain original rounded control points. White inclined panels, southern glass ribbon, recessed lower storey and eastern cantilever are interpreted from architect photographs and the supplied Warehouse viewer. Individual roof folds, glazing contours, mullion spacing and stairs remain approximations. No imported Warehouse or survey mesh geometry; no photo pixels. The extract teaching ID681957397 is retained only as teaching identity, not suppressed as a current OSM way: current OSM way681957397 is in another country. Only verified EYE parent/levels are suppressed; A’DAM, promenade and park remain separate."
+      },
+      "bounds": {
+        "min": [
+          -54,
+          0,
+          -42
+        ],
+        "max": [
+          55,
+          24.399999618530273,
+          59.912681579589844
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.900944,
+          52.384387
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 270,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 109,
+        "heightMetres": 24.399999618530273,
+        "depthMetres": 101.91268157958984,
+        "depthCoverage": 1.1786614565023388
+      },
+      "triangles": 2703,
+      "bytes": 36264,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "royal-theater-carre": {
+      "id": "royal-theater-carre",
+      "name": "Royal Theater Carré",
+      "landmarkId": "extract_landmarks_1137362739",
+      "modelUrl": "./models/royal-theater-carre.glb",
+      "suppressOsmIds": [
+        "w269000174",
+        "NL.IMBAG.Pand.0363100012165489"
+      ],
+      "footprint": {
+        "centre": [
+          4.904245736017089,
+          52.36243042368101
+        ],
+        "headingDegrees": 73.15109016624513,
+        "lengthMetres": 60.15133144122461,
+        "widthMetres": 51.934439973235555
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 179.83737933711802,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.90426525,
+          52.3624545
+        ],
+        "northOffsetDegrees": 72.98846950336312,
+        "source": "Current active BAG/OSM whole theatre parent; native scale1, Amstel facade axis162.988 degrees. AHN5/3DBAG LoD2.2 envelope reconciled with primary theatre/architectural photographs; original simplified zinc cloister dome and separate modern ribbed stagehouse."
+      },
+      "attribution": {
+        "title": "Royal Theater Carré",
+        "author": "Map Recall",
+        "sourceUrl": "https://arcam.nl/architectuur-gids/koninklijk-theater-carre/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly theatre, facade and ornament geometry. No imported mesh or image; exact current parent replacement preserves neighboring Amstel houses and Onbekendegracht."
+      },
+      "bounds": {
+        "min": [
+          -23.809999465942383,
+          -9.155273232863692e-7,
+          -28.235000610351562
+        ],
+        "max": [
+          28.1474609375,
+          32.61000061035156,
+          32.529998779296875
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.90426525,
+          52.3624545
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 162.98846950336315,
+        "facadeBearingDegrees": 252.98846950336315,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 60.76499938964844,
+        "heightMetres": 32.610001525878886,
+        "depthMetres": 51.95746040344238,
+        "depthCoverage": 1.000443259428978
+      },
+      "triangles": 17742,
+      "bytes": 209368,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "sint-nicolaas": {
+      "id": "sint-nicolaas",
+      "name": "Sint Nicolaas Basilica",
+      "landmarkId": "extract_landmarks_1272308587",
+      "modelUrl": "./models/sint-nicolaas.glb",
+      "suppressOsmIds": [
+        "w174996833",
+        "NL.IMBAG.Pand.0363100012165691",
+        "w645534930",
+        "w645534931",
+        "w749289632",
+        "w749289633",
+        "w749289634",
+        "w750217059",
+        "w750217060",
+        "w750217061",
+        "w750217062",
+        "w750217063",
+        "w750217064",
+        "w750591088",
+        "w750591090"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.9011602841322865,
+          52.37644052156187
+        ],
+        "headingDegrees": 150.27603524728386,
+        "lengthMetres": 52.451608220779384,
+        "widthMetres": 22.869811981363846
+      },
+      "surveyed": {
+        "anchor": [
+          4.9011602841322865,
+          52.37644052156187
+        ],
+        "northOffsetDegrees": 150.27603524728386
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Sint Nicolaas Basilica",
+        "author": "Map Recall",
+        "sourceUrl": "https://nicolaas-parochie.nl/nicolaas/over-ons/gebouw/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction of Bleijs’s1884–1887 SintNicolaas basilica. Native geometry retains the actual52.45×22.87m church plan, thirteen measured in-parent OSM building parts, staggered twin6m west towers,13m octagonal crossing drum and stepped aisle/nave/transept/apse roofs. The parish documents58m dome height; modeled58m cross and56m tower crowns extend above AHN5 bulkroofmax50.889m, which does not capture fine lantern crosses. Ornament/curved metal crowns/rose window/arcaded entrance and clerestory are original simplified geometry from primary parish and architecture photographer references, with no imported source meshes/textures. Five adjacent rectory/side-annex parts outside the exact church parent and ordinary neighbors remain unsuppressed. Same-part proceduralSintNicolaas kit is replaced by this model; currentBAG1875 date is not treated as architectural evidence."
+      },
+      "bounds": {
+        "min": [
+          -11.866292953491211,
+          -3.814697322468419e-7,
+          -26.056386947631836
+        ],
+        "max": [
+          11.930498123168945,
+          58,
+          26.546947479248047
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.9011602841322865,
+          52.37644052156187
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 240.27603524728386,
+        "facadeBearingDegrees": 240.27603524728386,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 52.60333442687988,
+        "heightMetres": 58.00000038146973,
+        "depthMetres": 23.796791076660156,
+        "depthCoverage": 1.040532869096243
+      },
+      "triangles": 35781,
+      "bytes": 373616,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
