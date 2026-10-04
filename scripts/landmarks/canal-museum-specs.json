@@ -1,0 +1,121 @@
+[
+  {
+    "id": "foam",
+    "name": "Foam \u2014 Fodor Museum canal houses",
+    "landmarkId": "extract_landmarks_1875254501",
+    "modelUrl": "./models/foam.glb",
+    "suppressOsmIds": [
+      "w268283689",
+      "NL.IMBAG.Pand.0363100012167983",
+      "r3596865",
+      "NL.IMBAG.Pand.0363100012167977",
+      "r3596866",
+      "NL.IMBAG.Pand.0363100012167978"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.893417347733199,
+        52.36407363385784
+      ],
+      "headingDegrees": 12.003412745985031,
+      "lengthMetres": 29.89426360518473,
+      "widthMetres": 22.51366543490861
+    },
+    "surveyed": {
+      "anchor": [
+        4.893417347733199,
+        52.36407363385784
+      ],
+      "northOffsetDegrees": 12.599999999999994
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180.59658725401496,
+    "attribution": {
+      "title": "Foam \u2014 Fodor Museum canal houses",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.benthemcrouwel.com/projects/foam",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
+    }
+  },
+  {
+    "id": "huis-marseille",
+    "name": "Huis Marseille \u2014 two canal houses",
+    "landmarkId": "extract_landmarks_204772388",
+    "modelUrl": "./models/huis-marseille.glb",
+    "suppressOsmIds": [
+      "w266679116",
+      "NL.IMBAG.Pand.0363100012172340",
+      "r3581187",
+      "NL.IMBAG.Pand.0363100012172341"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.885023211366768,
+        52.367655981132486
+      ],
+      "headingDegrees": 93.69918033754192,
+      "lengthMetres": 31.747527439675313,
+      "widthMetres": 13.145083902037701
+    },
+    "surveyed": {
+      "anchor": [
+        4.885023211366768,
+        52.367655981132486
+      ],
+      "northOffsetDegrees": 93.19999999999999
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 179.50081966245807,
+    "attribution": {
+      "title": "Huis Marseille \u2014 two canal houses",
+      "author": "Map Recall",
+      "sourceUrl": "https://huismarseille.nl/en/history/the-house/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
+    }
+  },
+  {
+    "id": "ons-lieve-heer-op-solder",
+    "name": "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
+    "landmarkId": "extract_landmarks_769225968",
+    "modelUrl": "./models/ons-lieve-heer-op-solder.glb",
+    "suppressOsmIds": [
+      "w266941199",
+      "NL.IMBAG.Pand.0363100012178021",
+      "w266940951",
+      "NL.IMBAG.Pand.0363100012178040"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.899258769422396,
+        52.375132921670925
+      ],
+      "headingDegrees": 121.0851936786699,
+      "lengthMetres": 23.644547311709523,
+      "widthMetres": 21.08931723774654
+    },
+    "surveyed": {
+      "anchor": [
+        4.899258769422396,
+        52.375132921670925
+      ],
+      "northOffsetDegrees": -59
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -0.08519367866989569,
+    "attribution": {
+      "title": "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
+      "author": "Map Recall",
+      "sourceUrl": "https://opsolder.nl/en/the-monument/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
+    }
+  }
+]
