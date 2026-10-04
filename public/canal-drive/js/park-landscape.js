@@ -5,6 +5,21 @@
     constructor(map, root, theme) {
       this.map = map;
       this.generation = 0;
+      this.enabled = true;
+      this.cache = new Map();
+      this.pending = new Map();
+      this.base = EMPTY;
+      this.active = '';
+      this.moveHandler = () => this.updateViewport();
+      this.visibilityHandler = () => {
+        if (!map.getLayer('park-landscape-ground')) return;
+        const visible = map.getLayoutProperty('park-landscape-ground','visibility') !== 'none';
+        if (visible !== this.enabled) this.setEnabled(visible);
+      };
+      this.removeHandler = () => this.destroy();
+      map.on('moveend',this.moveHandler);
+      map.on('styledata',this.visibilityHandler);
+      map.on('remove',this.removeHandler);
       map.addSource('park-landscape', {type:'geojson',data:EMPTY,maxzoom:17,
         attribution:'Park landscape © OpenStreetMap contributors (ODbL)'});
       const before = map.getStyle().layers.find(l => l.type === 'fill-extrusion' || l.id.startsWith('tree-'))?.id;
@@ -23,21 +38,92 @@
       this.setTheme(theme);
       this.load(root);
     }
+    cancel() {
+      this.baseController?.abort();
+      for (const request of this.pending.values()) request.controller.abort();
+      this.pending.clear();
+    }
     async load(root) {
       const generation = ++this.generation;
-      this.debugFeatures = 0;
-      this.map.getSource('park-landscape').setData(EMPTY);
-      // Other cities retain their own basemap vegetation.
-      if (!root.endsWith('/amsterdam')) return;
+      this.cancel();
+      this.root = root;
+      this.cache.clear();
+      this.base = EMPTY;
+      this.active = '';
+      this.publish([]);
+      if (this.destroyed || !root.endsWith('/amsterdam')) return;
+      const controller = this.baseController = new AbortController();
       try {
-        const response = await fetch(`${root}/park-landscape.geojson`);
+        const response = await fetch(`${root}/park-landscape.geojson`,{signal:controller.signal});
         if (!response.ok) return;
         const data = await response.json();
-        if (generation === this.generation) {
-          this.map.getSource('park-landscape')?.setData(data);
-          this.debugFeatures = data.features.length;
-        }
-      } catch (_) { /* Basemap remains available if the optional extract cannot load. */ }
+        if (generation !== this.generation || controller.signal.aborted || this.destroyed) return;
+        this.base = data;
+        this.publish([]);
+        this.updateViewport();
+      } catch (_) { /* The basemap remains available. */ }
+    }
+    publish(chunks) {
+      const features = [...this.base.features,...chunks.flatMap(data=>data.features)];
+      this.map.getSource('park-landscape')?.setData({type:'FeatureCollection',features});
+      this.debugFeatures = features.length;
+    }
+    updateViewport() {
+      if (this.destroyed) return;
+      const b = this.map.getBounds(), zoom = this.map.getZoom();
+      const wanted = this.enabled ? (this.base.optionalChunks || []).filter(c =>
+        zoom >= c.minzoom && b.getWest() <= c.bounds[2] && b.getEast() >= c.bounds[0]
+        && b.getSouth() <= c.bounds[3] && b.getNorth() >= c.bounds[1]).slice(0,1) : [];
+      const ids = new Set(wanted.map(c=>c.id));
+      for (const [id,request] of this.pending) if (!ids.has(id)) {
+        request.controller.abort();
+        this.pending.delete(id);
+      }
+      const ready = wanted.filter(c=>this.cache.has(c.id));
+      const active = ready.map(c=>c.id).join(',');
+      if (active !== this.active) {
+        this.active = active;
+        this.publish(ready.map(c=>this.cache.get(c.id)));
+      }
+      for (const c of wanted) {
+        if (this.cache.has(c.id) || this.pending.has(c.id)) continue;
+        const generation = this.generation, controller = new AbortController();
+        const request = {controller};
+        this.pending.set(c.id,request);
+        fetch(`${this.root}/${c.url}`,{signal:controller.signal}).then(async response => {
+          if (!response.ok) throw Error('Optional park chunk unavailable');
+          const data = await response.json();
+          if (this.destroyed || generation !== this.generation || controller.signal.aborted
+              || this.pending.get(c.id) !== request) return;
+          if (data.type !== 'FeatureCollection' || !Array.isArray(data.features)
+              || data.features.length !== c.features) throw Error('Invalid optional park chunk');
+          this.cache.clear(); // One optional chunk retained at most.
+          this.cache.set(c.id,data);
+          this.pending.delete(c.id);
+          this.updateViewport();
+        }).catch(()=>{
+          if (this.pending.get(c.id) === request) this.pending.delete(c.id);
+        });
+      }
+    }
+    setEnabled(enabled) {
+      this.enabled = Boolean(enabled);
+      for (const layer of this.map.getStyle().layers) if (layer.id.startsWith('park-landscape-'))
+        this.map.setLayoutProperty(layer.id,'visibility',this.enabled?'visible':'none');
+      this.updateViewport();
+    }
+    destroy() {
+      if (this.destroyed) return;
+      this.destroyed = true;
+      ++this.generation;
+      this.cancel();
+      this.cache.clear();
+      this.base = EMPTY;
+      this.active = '';
+      this.debugFeatures = 0;
+      this.map.off('moveend',this.moveHandler);
+      this.map.off('styledata',this.visibilityHandler);
+      this.map.off('remove',this.removeHandler);
     }
     setTheme(theme) {
       const p = theme === 'cyberpunk' ? ['#20243b','#283747','#16332e','#304438','#554547','#19364a','#63597a','#3c4658']
