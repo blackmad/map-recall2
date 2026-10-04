@@ -60,7 +60,7 @@
       "priority": "urgent",
       "status": "verified",
       "owner": "root",
-      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5\u2013120 fps."
+      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5–120 fps."
     },
     {
       "id": "building-inspection",
@@ -229,7 +229,7 @@
     },
     {
       "id": "vinoly",
-      "task": "Vi\u00f1oly",
+      "task": "Viñoly",
       "priority": "normal",
       "status": "queued"
     },
@@ -339,7 +339,7 @@
     },
     {
       "id": "kinderkookkafe",
-      "task": "Kinderkookkaf\u00e9",
+      "task": "Kinderkookkafé",
       "priority": "normal",
       "status": "queued"
     },
@@ -447,7 +447,7 @@
     },
     {
       "id": "street-aware-procedural-architecture",
-      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215\u2013247, Bethani\u00ebndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
+      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215–247, Bethaniëndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
       "priority": "high",
       "status": "verified-pilot",
       "notes": "Three self-review/improvement cycles complete on Overtoom, De Wallen and Marcantilaan, plus adjacent withheld-source transfers. 36 tests and four rendering-mode browser review pass; 349 surveyed neighbors, 95 frozen frontage assignments, 169 compact architectural street segments. Current source and cohort admission replay pass. Final same-worker profile-on/off CPU compile aggregate +0.29%; walls +3.29%, extras -0.37%, one of 24 cases +12.3%. Reviewed stage triangles decrease with unchanged draw calls. Full-game GPU budget remains unverified. Ready for reviewed city batches, not a blanket city-wide style claim. Approximate street character, no individual facade registration claim. Latest demos: artifacts/street-appearance/cycles/index.html."
@@ -576,6 +576,13 @@
       "status": "in-progress",
       "owner": "root",
       "validation": "Initial lettering inventory complete: docs/landmark-signage-audit.md. Heineken real signs explicitly retained. Unsupported-label candidates and panel/rotation risks identified; uncertain signs require facade-reference and native render comparison before changes. Moco/Van Loon/Brakke labels removed and Boom panel fit verified in d94b0de6. Broader source/render audit remains in progress."
+    },
+    {
+      "id": "coarse-facades-emergency",
+      "task": "Restore windows and doors outside the rider detail tiles after mobile LOD optimization",
+      "priority": "urgent",
+      "status": "implemented-awaiting-deployment",
+      "notes": "Coarse shells no longer force bare walls. Keep textured upper windows and ground doors, simple roofs and no relief. Desktop and coarse-pointer browser comparisons preserve the same rider detail ownership while panning Da Costakade.6,298-building tile retains65.3% geometry reduction, courtyard/identity/height and atlas regression checks pass. Clean HEAD runtime bundles rebuilt; unpublished neighborhood experiments excluded. Push triggers Firebase release; verify live revision after deployment."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

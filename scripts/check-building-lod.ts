@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
-import { buildFeatureChunk, ORIGIN, type Feature } from '../src/canalRecall/threeBuildingFeatures.ts';
+import { buildFeatureChunk, meshBuildingFor, ORIGIN, type Feature } from '../src/canalRecall/threeBuildingFeatures.ts';
 import { decorateRoof } from '../src/canalRecall/roofMesh.ts';
 import { BuildingTileStreamer } from '../src/canalRecall/buildingTilesBrowser.ts';
 
@@ -13,7 +13,13 @@ const f: Feature = { type: 'Feature', properties: { id: 'court', height: 18, roo
 ] } };
 const coarse = buildFeatureChunk([f], 'photo', 'coarse');
 assert.equal(coarse.ranges[0].id, 'court', 'coarse shell retains inspection identity');
-assert.ok(coarse.vertexCount < buildFeatureChunk([f], 'photo').vertexCount / 2, 'coarse walls substantially reduce geometry');
+assert.ok(coarse.vertexCount <= buildFeatureChunk([f], 'photo').vertexCount, 'an already simple courtyard shell does not grow');
+for (const look of ['photo', 'storybook', 'cartoon'] as const) {
+  const shell = buildFeatureChunk([f], look, 'coarse');
+  const appearance = meshBuildingFor(f, look, true)!;
+  assert.ok(shell.layers.includes(appearance.layers!.upper), `${look}: distant walls retain their window atlas`);
+  assert.ok(shell.layers.includes(appearance.layers!.door), `${look}: distant ground floors retain their door atlas`);
+}
 assert.equal(Math.max(...coarse.positions.filter((_,i) => i % 3 === 2)), 18, 'coarse shell keeps the total building height, not just the eaves');
 let lidArea = 0;
 for (let i=0; i<coarse.indices.length; i+=3) {

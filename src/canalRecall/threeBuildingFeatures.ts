@@ -127,10 +127,9 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
   return buildChunk(features.map(f => {
     const building = meshBuildingFor(f, look, mode === 'coarse');
     if (building && mode === 'coarse') {
-      // Distant buildings keep their surveyed footprint, courtyards, colour and full
-      // height, but need only one wall quad per edge and a flat triangulated lid.
+      // Keep textured windows and ground-floor doors at every distance. Simplify
+      // roofs and omit relief; a plain shell made normal street views look empty.
       building.heightM = Number(f.properties.height) || building.heightM;
-      building.bare = true;
       building.roof = undefined;
       building.extras = false;
       return building;
