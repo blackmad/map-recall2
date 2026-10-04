@@ -1,0 +1,39 @@
+[
+  {
+    "id": "madame-tussauds",
+    "name": "Madame Tussauds / Peek & Cloppenburg",
+    "landmarkId": "extract_landmarks_1227471359",
+    "modelUrl": "./models/madame-tussauds.glb",
+    "suppressOsmIds": [
+      "w168680283",
+      "NL.IMBAG.Pand.0363100012175378"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8924166515045835,
+        52.372525122237114
+      ],
+      "headingDegrees": 94.103759466783,
+      "lengthMetres": 43.81294642372319,
+      "widthMetres": 30.69666420139541
+    },
+    "surveyed": {
+      "anchor": [
+        4.8924166515045835,
+        52.372525122237114
+      ],
+      "northOffsetDegrees": 184.5
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180.396240533217,
+    "attribution": {
+      "title": "Madame Tussauds / Peek & Cloppenburg",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518421",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of Joling’s1914–1917 Peek & Cloppenburg department-store building occupied in part by Madame Tussauds. RCE518421 and original photographer frontage guide the stone11-bay Dam facade,9-bay Rokin facade,colossal pilasters,open balconies,rose-window central gable,dormers and decorative roof vents. CurrentPDOK confirms single actualBAG2175378 with Dam20,Rokin6,Kromelleboogsteeg2 VBOs; mapped1900 date is not the architecturaldate. ExactL-shaped parent outline and rear recesses are retained. Original simplified roof regions follow AHN5 approximate21.8m eaves,31.3m mainhips,33.9m vents, and lower innerrear rooms13.85/17.3m. No imported source faces or textures; exact-only suppression retains all neighboring buildings."
+    }
+  }
+]
