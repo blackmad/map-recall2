@@ -1,0 +1,19 @@
+[
+  {
+    "modelId": "sloterdijk-station",
+    "name": "Amsterdam Sloterdijk Station",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/station-sloterdijk/",
+    "description": "Amsterdam Sloterdijk\u2019s glass-and-steel station was designed by Harry Reijnders and completed in 1986. Its white table-like trusses frame a transport interchange where railway lines cross at different heights.",
+    "center": [
+      52.3890237,
+      4.8374469
+    ],
+    "centerSourceUrl": "https://www.openstreetmap.org/node/3938569974"
+  },
+  {
+    "modelId": "hnk-sloterdijk",
+    "name": "HNK Amsterdam Sloterdijk",
+    "sourceUrl": "https://hnk.nl/en/locations/amsterdam-sloterdijk",
+    "description": "HNK Amsterdam Sloterdijk occupies the white office building at Radarweg 60. The renewed venue opened in 2023 with shared workspaces, a library, podcast studio and The Social hospitality space; the building itself dates from 1992."
+  }
+]

@@ -47,7 +47,8 @@
     "landmarkId": "extract_landmarks_1939633952",
     "modelUrl": "./models/stadsschouwburg.glb",
     "suppressOsmIds": [
-      "w57863115"
+      "w57863115",
+      "NL.IMBAG.Pand.0363100012168738"
     ],
     "spatialSuppression": false,
     "footprint": {

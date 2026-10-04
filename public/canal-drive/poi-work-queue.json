@@ -23,6 +23,30 @@
   ],
   "tasks": [
     {
+      "id": "duplicate-generated-doors",
+      "task": "Fix duplicate painted and 3D entrance doors reported in the Da Costakade screenshot",
+      "priority": "urgent",
+      "status": "verified",
+      "owner": "root",
+      "validation": "Active texture opening positions explicitly reach the extras builder in every look; portiek no longer draws an opaque extra leaf. Facade extras, building and street facade regressions and TypeScript passed; browser/worker bundles rebuilt."
+    },
+    {
+      "id": "bike-zoom-scaling",
+      "task": "Adjust bike size gently with camera zoom",
+      "priority": "high",
+      "status": "verified",
+      "owner": "root",
+      "validation": "65% world-scale zoom compensation; default size preserved; 2.3x zoom yields 1.34x screen size. Scale bounds and zoom direction checked; presentation bundle rebuilt."
+    },
+    {
+      "id": "da-costakade-13-curved-roof",
+      "task": "Make the generated roof at Da Costakade 13-3 follow the bent building footprint",
+      "priority": "high",
+      "status": "verified",
+      "owner": "root",
+      "validation": "Perimeter slopes and inset deck follow every surveyed wall edge; exact projected area and solid/winding checks in both ring directions; courtyard exclusion; roof/building regression suites and TypeScript passed; browser and worker bundles rebuilt. Geometry review: artifacts/da-costakade-roof/review.png."
+    },
+    {
       "id": "camera-follow",
       "task": "Recenter must restore persistent camera follow",
       "priority": "urgent",
@@ -152,7 +176,9 @@
       "id": "amstel-hotel",
       "task": "Amstel Hotel",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "owner": "museum_landmarks",
+      "validation": "Final current-asset gallery and dense live game accepted: exposed dark pavilion roofs, lower mansard/terrace, exact masks at scale 1, three actual neighboring BAG parents retained, canonical sourced card and pin. No page errors."
     },
     {
       "id": "rembrandt-tower",
@@ -220,15 +246,17 @@
       "id": "sloterdijk-station",
       "task": "Amsterdam Sloterdijk station",
       "priority": "normal",
-      "status": "in-progress",
-      "owner": "venue_landmarks"
+      "status": "verified",
+      "owner": "venue_landmarks",
+      "validation": "Final actual Bike destination, sourced west entrance, pin and opaque physical-click card accepted. Scale 1, exact OSM/BAG masks, open underside and neighboring Orly Plaza/Busitel retained."
     },
     {
       "id": "hnk-sloterdijk",
       "task": "HNK Amsterdam Sloterdijk",
       "priority": "normal",
-      "status": "in-progress",
-      "owner": "venue_landmarks"
+      "status": "verified",
+      "owner": "venue_landmarks",
+      "validation": "Final explicit Bike destination, canonical map pin and opaque physical-click sourced card accepted. Scale 1, exact OSM/BAG masks; neighboring Spark and Crystal Tower remain drawable."
     },
     {
       "id": "amsta-de-poort",
@@ -250,13 +278,17 @@
       "id": "machinegebouw",
       "task": "Westergas Machinegebouw",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "owner": "museum_landmarks",
+      "validation": "Native gallery/live scene accepted; exact identity masks, separate unequal roofs, current Cantine destination/pin/card and neighboring connector/meter houses retained."
     },
     {
       "id": "transformatorhuis",
       "task": "Westergas Transformatorhuis",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "owner": "museum_landmarks",
+      "validation": "Native gallery/live scene accepted; exact identity masks, long hall/low entry, current De Wester destination/pin/card and neighboring WestWeelde buildings retained."
     },
     {
       "id": "westergastheater",
@@ -352,9 +384,10 @@
     },
     {
       "id": "legacy-imports",
-      "task": "Remaining legacy imports: Montelbaanstoren, Munttoren, Beurs van Berlage, Palace on Dam, Stadhuis, National Monument, Heineken Experience, Concertgebouw",
+      "task": "Remaining legacy imports: Stadhuis/Stopera, Heineken Experience, Concertgebouw",
       "priority": "normal",
-      "status": "queued"
+      "status": "queued",
+      "validation": "Original Montelbaanstoren, Munttoren, Beurs, National Monument and NEMO replacements deployed; Royal Palace final gallery/live/courtyard/card acceptance passed in current checkpoint."
     },
     {
       "id": "montelbaanstoren-amsterdam",
@@ -394,6 +427,69 @@
       "priority": "high",
       "owner": "venue_landmarks",
       "validation": "10,329 mapped indoor places indexed. Physical mesh click opens opaque name/category/address card; expanded website/OSM href verified, exact clicked highlight; holes and neighbors excluded, researched cards take priority, route pool unchanged."
+    },
+    {
+      "id": "palace-on-the-dam",
+      "task": "Royal Palace original house-style replacement",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "trees",
+      "validation": "Final corrected side windows accepted in native gallery and dense live scene. Scale 1, 55 m tower, exact parent/18-part aliases, both loaded-GLB courtyards open, retained Nieuwe Kerk/Magna Plaza, canonical route/pin and physical-click sourced card."
+    },
+    {
+      "id": "street-aware-procedural-architecture",
+      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215–247, Bethaniëndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
+      "priority": "high",
+      "status": "in-progress",
+      "notes": "Shared procedural priors preserve surveyed geometry and curated landmarks. Profiles aggregate overlapping views without exact per-building registration; evidence and visual/performance review required before completion."
+    },
+    {
+      "id": "olvg-building-visibility",
+      "task": "Restore visible OLVG Oost and West originals by replacing exact OSM and BAG parents",
+      "priority": "urgent",
+      "status": "verified",
+      "owner": "root",
+      "validation": "Corrected actual East/West scenes accepted: originals visible at scale 1, exact OSM/BAG masks, all tested neighboring buildings drawable. Real physical clicks open canonical sourced cards and pins. Decoded roof normal/cap and full manual asset checks pass."
+    },
+    {
+      "id": "stadsschouwburg-duplicate-parent",
+      "task": "Remove ordinary BAG parent covering Stadsschouwburg original",
+      "priority": "high",
+      "status": "verified",
+      "owner": "museum_landmarks",
+      "validation": "Final current-asset gallery and dense live game accepted: exact OSM and BAG parent hidden after native load, slate roofs visible, surrounding buildings visually retained, scale 1 and no broad suppression. Local cap/winding checks pass. Deeper roof hierarchy survey remains deferred."
+    },
+    {
+      "id": "landmark-progress-dashboard",
+      "task": "Dashboard for model coverage, active tasks, large candidate buildings and requested streets",
+      "priority": "high",
+      "status": "verified",
+      "owner": "root",
+      "validation": "Plain browser DOM review passed: six metrics, work progress, 1,866 ranked large candidates, 17 Haparandaweg buildings and one deferred permit-only parent. Model and task progress remain distinct."
+    },
+    {
+      "id": "haparandaweg-requested-buildings",
+      "task": "Buildings along Haparandaweg requested by user",
+      "priority": "high",
+      "status": "queued",
+      "owner": "trees",
+      "validation": "All522 official addresses resolved through explicit VBO/BAG parent links to17 buildings:16 in use pending source/model review;1 permit-only deferred. Exact polygons, holes, address lists and reproducible source snapshot persisted in requested-street-buildings.json."
+    },
+    {
+      "id": "concertgebouw-original-detail",
+      "task": "Improve Concertgebouw in original house style",
+      "priority": "high",
+      "status": "source-ready",
+      "owner": "venue_landmarks",
+      "validation": "Original source ready and focused geometry checks pass; shared generation and visual review pending. Two actual courtyards remain open."
+    },
+    {
+      "id": "nieuwe-kerk-original-detail",
+      "task": "Improve Nieuwe Kerk Gothic silhouette and facade",
+      "priority": "high",
+      "status": "source-ready",
+      "owner": "trees",
+      "validation": "Original source ready; current parent and19 genuine parts scoped with unrelated neighboring roof excluded. Shared generation and visual review pending."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

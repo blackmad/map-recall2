@@ -502,7 +502,7 @@ class GameRouteRuntime {
       const from = this.routePattern === 'home' ? this.homeBase
         : this.routePattern === 'here' ? this.gpsOrigin
           : this._pickDestinationNear(selectedDestination);
-      if (from) this._launchPoiRoute(from, selectedDestination);
+      if (from) this._launchPoiRoute(from, selectedDestination, { explicitDestination: true });
       else this._setRouteError('No reachable starting point is available for this destination.');
       return;
     }
@@ -957,7 +957,7 @@ class GameRouteRuntime {
     return !!(poi && (poi.id === 'home' || poi.id === 'here'));
   }
 
-  _launchPoiRoute(from, to) {
+  _launchPoiRoute(from, to, { explicitDestination = false } = {}) {
     this.routeFrom = from;
     this.routeTo = to;
     this._applyPrefsToRuntime(this._prefs());
@@ -968,7 +968,8 @@ class GameRouteRuntime {
       (from.lat + to.lat) / 2,
       (from.lng + to.lng) / 2,
       { lat: from.lat, lng: from.lng },
-      { lat: to.lat, lng: to.lng }
+      { lat: to.lat, lng: to.lng },
+      { explicitDestination }
     );
   }
 
@@ -1199,7 +1200,7 @@ class GameRouteRuntime {
     return world;
   }
 
-  async _onLocationSelected(lat, lng, startLL, finishLL) {
+  async _onLocationSelected(lat, lng, startLL, finishLL, { explicitDestination = false } = {}) {
     // The ride's key and share link are named by the centre it was asked
     // with, whichever projection centre the network in memory uses.
     const keyCenter = { lat, lng };
@@ -1293,7 +1294,7 @@ class GameRouteRuntime {
             console.info(`Origin swapped to ${swap.poi.name}: the original did not snap to the network`);
           }
         }
-        if (!finish && this.routeTo && this.routeTo.id !== 'home') {
+        if (!finish && !explicitDestination && this.routeTo && this.routeTo.id !== 'home') {
           const swap = this._nearestSnappableDestination(finishLL, segments, lat, lng, finishSnapLimit, this.routeFrom?.id);
           if (swap) {
             finish = swap.point;
@@ -1314,6 +1315,10 @@ class GameRouteRuntime {
       }
 
       if (!start || !finish) {
+        if (explicitDestination && !finish) {
+          fail(`Could not reach ${this.routeTo.name} on the mapped ${networkNoun}. Try another travel mode or destination.`);
+          return;
+        }
         fail(this.routePattern === 'home'
           ? 'That address is too far from a connected mapped waterway. Try a nearby bridge or canal-side address.'
           : this.routePattern === 'here'
@@ -1457,6 +1462,17 @@ class GameRouteRuntime {
       this._routeLearningPlan = this.track.planRoute(start, finish, this._reviewVia);
       this.routePath = this._routeLearningPlan ? this._routeLearningPlan.path : [];
       if (!this.routePath || this.routePath.length < 2) {
+        if (explicitDestination) {
+          // A chosen POI must remain the destination. Only Surprise's random
+          // origin may be retried; home and live-location starts stay fixed.
+          if (this.routePattern === 'surprise' && this._routeRerolls < MAX_ROUTE_REROLLS) {
+            this._routeRerolls++;
+            this._startConfiguredRoute({ isReroll: true });
+          } else {
+            fail(`Could not find a route to ${this.routeTo.name} on the mapped ${networkNoun}. Try another starting point or travel mode.`);
+          }
+          return;
+        }
         // Widening the destination pool to the whole landmark extract means a
         // pair can straddle a gap in the navigable graph — most often the IJ,
         // which boats cannot cross because the open-water polygons are not in

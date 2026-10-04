@@ -1531,7 +1531,7 @@ class VectorBasemap {
   setPlaces(landmarks, boundaries) {
     this._pendingPlaces = { landmarks: landmarks || [], boundaries: boundaries || [] };
     if (!this.map || !this.map.getSource('amsterdam-pois')) return;
-    const pois = this._pendingPlaces.landmarks.filter(item => item.center && (item.manualPoi || (item.prominenceScore || 0) >= 220) && !this._spoils(item.name)).map(item => ({ type: 'Feature', properties: { id: item.id, name: item.name }, geometry: { type: 'Point', coordinates: [item.center[1], item.center[0]] } }));
+    const pois = this._pendingPlaces.landmarks.filter(item => item.center && (item.manualPoi || ((item.prominenceScore || 0) >= 220 && !this._spoils(item.name)))).map(item => ({ type: 'Feature', properties: { id: item.id, name: item.name }, geometry: { type: 'Point', coordinates: [item.center[1], item.center[0]] } }));
     const polygons = [], labels = [];
     for (const boundary of this._pendingPlaces.boundaries.filter(item => item.kind === 'neighbourhood' && item.geometry)) {
       for (const polygon of boundary.geometry) {

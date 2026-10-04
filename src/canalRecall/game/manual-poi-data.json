@@ -172,5 +172,40 @@
     "name": "Theater De Krakeling",
     "description": "De Krakeling is a theater devoted to young audiences. Founded in 1978 by Hans Snoek, it moved to the former Westergastheater on Pazzanistraat 15 in 2020. Its main auditorium is named the Hans Snoek Zaal in her honor.",
     "sourceUrl": "https://krakeling.nl/over-ons"
+  },
+  {
+    "modelId": "sloterdijk-station",
+    "name": "Amsterdam Sloterdijk Station",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/station-sloterdijk/",
+    "description": "Amsterdam Sloterdijk’s glass-and-steel station was designed by Harry Reijnders and completed in 1986. Its white table-like trusses frame a transport interchange where railway lines cross at different heights.",
+    "center": [
+      52.3890237,
+      4.8374469
+    ],
+    "centerSourceUrl": "https://www.openstreetmap.org/node/3938569974"
+  },
+  {
+    "modelId": "hnk-sloterdijk",
+    "name": "HNK Amsterdam Sloterdijk",
+    "sourceUrl": "https://hnk.nl/en/locations/amsterdam-sloterdijk",
+    "description": "HNK Amsterdam Sloterdijk occupies the white office building at Radarweg 60. The renewed venue opened in 2023 with shared workspaces, a library, podcast studio and The Social hospitality space; the building itself dates from 1992."
+  },
+  {
+    "modelId": "machinegebouw",
+    "name": "Cantine · Machinegebouw",
+    "description": "Cantine occupies the freestanding Machinegebouw at Westergas. The former gasworks building has two parallel halls with unequal pitched roofs, tall paired arched windows and terracotta roof crests. Its industrial interior now houses a French restaurant.",
+    "sourceUrl": "https://cantine.nl/"
+  },
+  {
+    "modelId": "de-wester",
+    "name": "De Wester · Transformatorhuis",
+    "description": "De Wester is an event venue in the former Westergas water-gas factory, built in 1904 and later used as a transformer workshop. Its long brick hall has paired arched windows and a steep pitched roof. The neighboring WestWeelde buildings remain separate spaces.",
+    "sourceUrl": "https://westergas.nl/en/de-wester-as-event-venue/"
+  },
+  {
+    "modelId": "amstel-hotel",
+    "name": "Amstel Hotel",
+    "description": "The Amstel Hotel was completed in 1867 to a design by Cornelis Outshoorn, following Samuel Sarphati’s ambition for a grand riverside hotel. Its mansard roofs and pale stone details give it the silhouette of a French château. Recent restoration brought back eight 1.60-metre roof lions, while a lower glass lounge overlooks the Amstel.",
+    "sourceUrl": "https://www.amstelhotel.com/history/"
   }
 ]

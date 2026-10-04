@@ -34,19 +34,13 @@ interface SurveyedCatalogueEntry {
   footprint: OrientedFootprint | null;
 }
 
-/**
- * Height assertions, in metres to the highest point, for the buildings where
- * the number is worth pinning.
- *
- * Only filled in where there is something to check against. The Palace is the
- * case that earned it: Dutch Wikipedia and Wikidata both claim 90 m for a
- * building whose own survey puts the main stone mass at 51.9 m and the rooster
- * on the weathervane at 60.9 m. A surveyed model is placed at scale 1, so a
- * height that disagrees with the survey means the wrong file rather than a bad
- * fit — which is exactly the failure worth catching.
+/** Highest-point assertions for measured landmark envelopes.
+ * The Palace owner gives 55 m to the tower top; current LoD2.2 vertices
+ * measure 55.201 m above ground. The original reconstruction follows these
+ * current sources rather than the earlier imported model's 60.9 m envelope.
  */
 const EXPECTED_HEIGHTS: Readonly<Record<string, { metres: number; tolerance: number }>> = {
-  'palace-on-the-dam': { metres: 60.9, tolerance: 1.5 },
+  'palace-on-the-dam': { metres: 55, tolerance: 1.5 },
 };
 
 /**

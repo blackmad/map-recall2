@@ -1,0 +1,57 @@
+{
+  "id": "palace-on-the-dam",
+  "name": "Royal Palace Amsterdam",
+  "landmarkId": "extract_landmarks_342809743",
+  "modelUrl": "./models/palace-on-the-dam.glb",
+  "suppressOsmIds": [
+    "r3580875",
+    "w748659170",
+    "w748659171",
+    "w748659172",
+    "w748659173",
+    "w748659174",
+    "w748659175",
+    "w748659176",
+    "w748659177",
+    "w748659178",
+    "w748659179",
+    "w748659180",
+    "w748659181",
+    "w748659182",
+    "w748659183",
+    "w748659184",
+    "w748659185",
+    "w748659186",
+    "w748659187",
+    "w57856712",
+    "NL.IMBAG.Pand.0363100012167579"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.891336076094146,
+      52.373148321742
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 66.09371218019203,
+    "widthMetres": 82.3879320001754
+  },
+  "surveyed": {
+    "anchor": [
+      4.891336076094146,
+      52.373148321742
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact current parent relation, 18 parts and two open courtyard holes; native placement and source roof profiles. Original 55m tower corroborated by official Palace and current 3DBAG 55.201m maximum above ground."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Royal Palace Amsterdam",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.paleisamsterdam.nl/en/discover-palace/new-town-hall-amsterdam/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free stone classical facade, mapped slate roof wings, corner pavilions, two open courtyards, central pediment and open 55m domed clock tower. Exact OSM/BAG footprint; original ornaments approximated from official Palace photograph. No copied imported geometry or reference pixels."
+  }
+}

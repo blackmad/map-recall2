@@ -6,6 +6,7 @@
 <style>
   *{box-sizing:border-box}body{margin:0;background:#ebe7dd;color:#35434c;font:14px system-ui}main{max-width:1160px;margin:auto;padding:28px 20px}
   h1{font-size:25px;margin:0 0 8px}p{line-height:1.6;max-width:760px;margin:8px 0}a{color:#336a88}nav{display:flex;flex-wrap:wrap;gap:18px;margin:20px 0}
+  .metrics{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}.metric{background:#faf8f1;border:1px solid #d5d0c4;border-radius:8px;padding:14px;min-width:155px}.metric strong{display:block;font-size:25px}.metric span{font-size:12px}.note{font-size:12px;font-weight:400;line-height:1.5;color:#687176;margin-top:5px}
   .filters{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:16px;background:#faf8f1;border:1px solid #d5d0c4;border-radius:8px}
   input[type=search],select{padding:9px;border:1px solid #b5b3aa;border-radius:4px;background:white;color:inherit;font:inherit}input[type=search]{flex:1;min-width:220px}
   #count{margin:18px 0;font-variant-numeric:tabular-nums}.table-wrap{overflow:auto;background:#faf8f1;border:1px solid #d5d0c4;border-radius:8px}table{border-collapse:collapse;width:100%;text-align:left}
@@ -14,36 +15,52 @@
   @media(max-width:600px){main{padding:20px 12px}td,th{padding:12px 10px}table th:first-child,table td:first-child{display:none}}
 </style>
 <main><h1>Amsterdam landmark queue</h1>
-<p>Work through the game’s POI Destinations and additions. Existing authored kits and original models have their own status; imported reference models still need review.</p>
+<p>Current model coverage, active work, and requested additions. Large buildings are ranked automatically for research; this is not a complete inventory of gray buildings or proof that a building needs a custom model.</p>
 <nav><a href="manual-landmarks.html">Landmark models</a><a href="park-landscape.html">Park views</a><a href="tree-models.html">Tree models</a><a href="https://arcam.nl/architectuur-gids/">Arcam architecture guide ↗</a></nav>
-<div class="filters"><input id="search" type="search" placeholder="Find a place" aria-label="Find a place">
+<div id="metrics" class="metrics" aria-label="Progress"></div>
+<div class="filters"><select id="inventory" aria-label="Work inventory"><option value="destinations">POI destinations</option><option value="tasks">Work progress</option><option value="dominant">Large building candidates</option><option value="streets">Requested streets</option></select><input id="search" type="search" placeholder="Find a place" aria-label="Find a place">
 <select id="status" aria-label="Model status"><option value="pending">Needs work</option><option value="all">All destinations</option><option value="manual-model">Original model</option><option value="procedural-kit">Existing kit</option><option value="catalogue-model">Reference model</option><option value="landscape">Park landscape</option></select>
 <select id="treatment" aria-label="Place treatment"><option value="all">All place types</option><option value="building">Building</option><option value="complex">Complex</option><option value="memorial">Memorial</option><option value="area">Area</option><option value="landscape">Landscape</option><option value="review">Needs site review</option></select>
 <label><input id="requested" type="checkbox"> Requested additions</label></div>
 <p id="count" role="status">Loading destinations…</p>
 <div class="table-wrap"><table><thead><tr><th>Queue</th><th>Place</th><th>Status</th><th>Review</th></tr></thead><tbody id="rows"></tbody></table></div>
 </main>
+<script src="js/signature-placement.bundle.js"></script>
 <script>
-const labels={'pending':'Needs work','manual-model':'Original model','procedural-kit':'Existing kit','catalogue-model':'Reference model','landscape':'Park landscape'};
-const controls=['search','status','requested','treatment'].map(id=>document.getElementById(id));let destinations=[];
-function render(){
-  const text=controls[0].value.toLocaleLowerCase(),status=controls[1].value,requested=controls[2].checked;
-  const shown=destinations.filter(p=>(status==='all'||p.status===status)&&(!requested||p.requested)&&(controls[3].value==='all'||p.treatment===controls[3].value)&&`${p.name} ${p.type||''} ${p.taskNote||''}`.toLocaleLowerCase().includes(text));
-  document.getElementById('count').textContent=`${shown.length} shown · ${destinations.length} destinations and additions`;
-  const body=document.getElementById('rows');body.replaceChildren();
-  for(const p of shown){const row=document.createElement('tr');
-    const cell=value=>{const td=document.createElement('td');td.textContent=value;row.append(td);return td;};
-    cell(p.queueRank);const name=cell(p.name);if(p.requested){const tag=document.createElement('span');tag.className='requested';tag.textContent='requested';name.append(tag);}else if(p.origin==='Landmark catalogue'){const tag=document.createElement('span');tag.className='requested';tag.textContent='catalogue addition';name.append(tag);}
-    if(p.taskNote){const note=document.createElement('div');note.style.cssText='font-size:12px;font-weight:400;line-height:1.5;color:#687176;margin-top:5px';note.textContent=p.taskNote;name.append(note);}
-    cell(labels[p.status]||p.status).className=`status ${p.status}`;
-    const links=cell('');links.className='links';
-    const link=(label,url)=>{const a=document.createElement('a');a.textContent=label;a.href=url;links.append(a);};
-    if(p.modelId)link('Model',`signature-landmark-demo.html?only=${encodeURIComponent(p.modelId)}`);
-    if(Number.isFinite(p.lat)&&Number.isFinite(p.lng))link('Map ↗',`https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lng}#map=19/${p.lat}/${p.lng}`);
-    body.append(row);
-  }
+const labels={'pending':'Needs work','manual-model':'Original model','procedural-kit':'Existing kit','catalogue-model':'Reference model','landscape':'Park landscape','verified':'Verified','queued':'Queued','in-progress':'In progress','generated-awaiting-visual-review':'Awaiting visual review','needs-identification-and-research':'Needs identification and research','pending-source-review':'Needs source review','deferred-permit-only':'Deferred: permit only'};
+const byId=id=>document.getElementById(id),controls=['search','status','requested','treatment'].map(byId);
+let inventories={destinations:[],tasks:[],dominant:[],streets:[]};
+function setInventory(){
+ const key=byId('inventory').value,select=byId('status');select.replaceChildren();
+ for(const status of ['all',...new Set(inventories[key].map(p=>p.status))]){const option=document.createElement('option');option.value=status;option.textContent=status==='all'?'All statuses':labels[status]||status;select.append(option);}
+ controls[2].disabled=key!=='destinations';controls[3].disabled=key!=='destinations';render();
 }
-controls.forEach(c=>c.addEventListener('input',render));
-fetch('landmark-backlog.json').then(r=>{if(!r.ok)throw Error('Queue unavailable');return r.json();}).then(data=>{destinations=data.destinations;render();}).catch(e=>document.getElementById('count').textContent=e.message);
+function render(){
+ const key=byId('inventory').value,all=inventories[key],text=controls[0].value.toLocaleLowerCase(),status=controls[1].value;
+ const shown=all.filter(p=>(status==='all'||p.status===status)&&(key!=='destinations'||((!controls[2].checked||p.requested)&&(controls[3].value==='all'||p.treatment===controls[3].value)))&&`${p.name} ${p.id||''} ${p.type||''} ${p.taskNote||''}`.toLocaleLowerCase().includes(text));
+ byId('count').textContent=`${shown.length.toLocaleString()} shown · ${all.length.toLocaleString()} ${key==='dominant'?'large building candidates':key==='streets'?'requested street buildings':key==='tasks'?'tracked tasks':'destinations and additions'}`;
+ const body=byId('rows');body.replaceChildren();
+ for(const p of shown){const row=document.createElement('tr');const cell=value=>{const td=document.createElement('td');td.textContent=value;row.append(td);return td;};
+ cell(p.queueRank||p.priority||'');const name=cell(p.name);if(p.requested){const tag=document.createElement('span');tag.className='requested';tag.textContent='requested';name.append(tag);}
+ if(p.taskNote){const note=document.createElement('div');note.className='note';note.textContent=p.taskNote;name.append(note);}
+ cell(labels[p.status]||p.status).className=`status ${p.status}`;
+ const links=cell('');links.className='links';const link=(label,url)=>{const a=document.createElement('a');a.textContent=label;a.href=url;links.append(a);};
+ if(p.modelId)link('Model',`manual-landmarks.html?only=${encodeURIComponent(p.modelId)}`);
+ if(Number.isFinite(p.lat)&&Number.isFinite(p.lng))link('Map ↗',`https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lng}#map=19/${p.lat}/${p.lng}`);
+ if(p.sourceUrl?.startsWith('https://'))link('Source ↗',p.sourceUrl);
+ body.append(row);}
+}
+controls.forEach(c=>c.addEventListener('input',render));byId('inventory').addEventListener('change',setInventory);
+async function load(file){const r=await fetch(file);if(!r.ok)throw Error(`${file} unavailable`);return r.json();}
+Promise.all([load('landmark-backlog.json'),load('poi-work-queue.json'),load('dominant-building-backlog.json'),load('requested-street-buildings.json')]).then(([pois,work,large,streets])=>{
+ inventories.destinations=pois.destinations;
+ inventories.tasks=work.tasks.map(t=>({...t,name:t.task,taskNote:[t.owner&&`Owner: ${t.owner}`,t.validation,t.notes].filter(Boolean).join(' · ')}));
+ inventories.dominant=large.candidates.map((b,i)=>({...b,queueRank:i+1,name:b.name||b.id,lng:b.center?.[0],lat:b.center?.[1],taskNote:`${b.footprintSquareMetres.toLocaleString()} m² footprint · ${b.heightMetres} m tall · ${b.aliases.length} grouped aliases`}));
+ inventories.streets=streets.requestedStreets.flatMap(s=>s.buildings.map(b=>{const points=b.geometry.coordinates.flat(Infinity).filter(Number.isFinite),lngs=points.filter((_,i)=>i%2===0),lats=points.filter((_,i)=>i%2===1);return {...b,id:b.buildingId,name:`${s.street} ${b.addressRange.minimum}–${b.addressRange.maximum}`,priority:'requested',lng:(Math.min(...lngs)+Math.max(...lngs))/2,lat:(Math.min(...lats)+Math.max(...lats))/2,taskNote:`${b.addressCount} addresses · ${b.bagStatus} · BAG ${b.bagId}`,modelId:b.modelIds[0]};}));
+ const models=CanalRecallSignatureLandmarks.SIGNATURE_MODELS,original=models.filter(m=>m.attribution?.licence==='Original project asset').length;
+ const metrics=[[original,'Original models'],[models.length-original,'Reference models remaining'],[inventories.tasks.filter(t=>t.status==='in-progress').length,'Tasks in progress'],[inventories.tasks.filter(t=>t.status==='generated-awaiting-visual-review').length,'Awaiting visual review'],[large.candidateCount,'Large building candidates'],[inventories.streets.length,'Requested street buildings']];
+ for(const[count,label]of metrics){const box=document.createElement('div');box.className='metric';const n=document.createElement('strong'),l=document.createElement('span');n.textContent=count.toLocaleString();l.textContent=label;box.append(n,l);byId('metrics').append(box);}
+ setInventory();
+}).catch(e=>byId('count').textContent=e.message);
 </script>
 </html>

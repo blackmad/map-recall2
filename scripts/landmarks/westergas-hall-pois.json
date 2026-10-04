@@ -1,0 +1,14 @@
+[
+  {
+    "modelId": "machinegebouw",
+    "name": "Cantine \u00b7 Machinegebouw",
+    "description": "Cantine occupies the freestanding Machinegebouw at Westergas. The former gasworks building has two parallel halls with unequal pitched roofs, tall paired arched windows and terracotta roof crests. Its industrial interior now houses a French restaurant.",
+    "sourceUrl": "https://cantine.nl/"
+  },
+  {
+    "modelId": "de-wester",
+    "name": "De Wester \u00b7 Transformatorhuis",
+    "description": "De Wester is an event venue in the former Westergas water-gas factory, built in 1904 and later used as a transformer workshop. Its long brick hall has paired arched windows and a steep pitched roof. The neighboring WestWeelde buildings remain separate spaces.",
+    "sourceUrl": "https://westergas.nl/en/de-wester-as-event-venue/"
+  }
+]
