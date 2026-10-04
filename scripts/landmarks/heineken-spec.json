@@ -1,0 +1,37 @@
+{
+  "id": "heineken-experience-amsterdam",
+  "name": "Heineken Experience",
+  "landmarkId": "extract_landmarks_914627337",
+  "modelUrl": "./models/heineken-experience-amsterdam.glb",
+  "suppressOsmIds": [
+    "w44451454",
+    "NL.IMBAG.Pand.0363100012166152"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.891634499471685,
+      52.35771184229546
+    ],
+    "headingDegrees": 275.66,
+    "lengthMetres": 96.73778031683932,
+    "widthMetres": 44.705812770835806
+  },
+  "surveyed": {
+    "anchor": [
+      4.891634499471685,
+      52.35771184229546
+    ],
+    "northOffsetDegrees": 185.66000000000003
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "Heineken Experience",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/complexen/527808",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original manual facade details and regional massing. AHN5 2023 roof-plane samples calibrate rebuilt roof patch surfaces; no imported asset mesh. Current single BAG parent encloses three surviving historic fronts and low museum wings; surrounding 1990s residences/retail stay outside exact suppression. BAG nominal 1886 does not date all present parts: RCE identifies 1911\u201313/1925/1933\u201334."
+  }
+}

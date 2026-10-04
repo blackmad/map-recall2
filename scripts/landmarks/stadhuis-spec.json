@@ -1,0 +1,62 @@
+{
+  "id": "stadhuis",
+  "name": "Stadhuis / Nationale Opera & Ballet",
+  "landmarkId": "extract_landmarks_1919682395",
+  "modelUrl": "./models/stadhuis.glb",
+  "suppressOsmIds": [
+    "w268782345",
+    "w751591420",
+    "w751559653",
+    "w751559654",
+    "w751559655",
+    "w751559656",
+    "w751559657",
+    "w751559658",
+    "w751559659",
+    "w751559660",
+    "w751559661",
+    "w751559663",
+    "w751559664",
+    "w751559665",
+    "w751567319",
+    "w751567320",
+    "w751567321",
+    "w751573304",
+    "w751573305",
+    "w751573306",
+    "w751591418",
+    "w751591419",
+    "w751612860",
+    "w751612861",
+    "w751612862",
+    "NL.IMBAG.Pand.0363100012186092"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.90086458624536,
+      52.367798989750916
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 209.20768610521935,
+    "widthMetres": 198.1495999996173
+  },
+  "surveyed": {
+    "anchor": [
+      4.90086458624536,
+      52.367798989750916
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact current two same-BAG parents and 23 mapped parts including recorded elevated volumes/glazed passage roofs; mapped heights5\u201322m, complex 3DBAG maximum not assigned to whole component."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Stadhuis / Nationale Opera & Ballet",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.operaballet.nl/stopera-amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free shared-palette city-hall and opera ensemble, rebuilt against native current roof/part polygons. Curved marble foyer bays, brick auditorium, stepped office wings, glazed passage canopy and raised volumes preserve source apertures. No imported geometry/textures, whole-parcel cap or proposed future garden interiors."
+  }
+}

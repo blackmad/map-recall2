@@ -1,0 +1,38 @@
+{
+  "id": "faralda-crane-hotel",
+  "name": "Faralda NDSM Crane Hotel Amsterdam",
+  "landmarkId": "extract_landmarks_1759004236",
+  "modelUrl": "./models/faralda-crane-hotel.glb",
+  "suppressOsmIds": [
+    "w280619914",
+    "NL.IMBAG.Pand.0363100012241774"
+  ],
+  "footprint": {
+    "centre": [
+      4.894817040473574,
+      52.39937946222803
+    ],
+    "headingDegrees": 101.98499708839654,
+    "lengthMetres": 11.939848301110935,
+    "widthMetres": 8.634885206243403
+  },
+  "spatialSuppression": false,
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": -90.08499708839653,
+  "surveyed": {
+    "anchor": [
+      4.894841236019676,
+      52.39937627409353
+    ],
+    "northOffsetDegrees": 11.900000000000006,
+    "source": "Current in-use BAG 0363100012241774 crane base; canonical OSM w280619914. Original open steel structure constrained by primary IAA, operator and shipyard height/photographs. Native +X heading 101.9 degrees follows base edges; rotating crane boom is shown at a representative orientation. 3DBAG 14.925m roof is studio-only undersampling, not the true 50m crane."
+  },
+  "attribution": {
+    "title": "Faralda Crane Hotel",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.iaa-architecten.nl/projecten/feralda-crane-hotel/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original project-native open steel crane, red hotel suites/lifts, yellow lattice boom and counterweight. No imported meshes/textures."
+  }
+}

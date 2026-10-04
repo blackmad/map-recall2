@@ -658,46 +658,97 @@
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "stadhuis": {
-      "name": "Stadhuis (City hall)",
+      "id": "stadhuis",
+      "name": "Stadhuis / Nationale Opera & Ballet",
       "landmarkId": "extract_landmarks_1919682395",
       "modelUrl": "./models/stadhuis.glb",
+      "suppressOsmIds": [
+        "w268782345",
+        "w751591420",
+        "w751559653",
+        "w751559654",
+        "w751559655",
+        "w751559656",
+        "w751559657",
+        "w751559658",
+        "w751559659",
+        "w751559660",
+        "w751559661",
+        "w751559663",
+        "w751559664",
+        "w751559665",
+        "w751567319",
+        "w751567320",
+        "w751567321",
+        "w751573304",
+        "w751573305",
+        "w751573306",
+        "w751591418",
+        "w751591419",
+        "w751612860",
+        "w751612861",
+        "w751612862",
+        "NL.IMBAG.Pand.0363100012186092"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.90086458624536,
+          52.367798989750916
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 209.20768610521935,
+        "widthMetres": 198.1495999996173
+      },
+      "surveyed": {
+        "anchor": [
+          4.90086458624536,
+          52.367798989750916
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Exact current two same-BAG parents and 23 mapped parts including recorded elevated volumes/glazed passage roofs; mapped heights5–22m, complex 3DBAG maximum not assigned to whole component."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Stadhuis / Nationale Opera & Ballet",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.operaballet.nl/stopera-amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free shared-palette city-hall and opera ensemble, rebuilt against native current roof/part polygons. Curved marble foyer bays, brick auditorium, stepped office wings, glazed passage canopy and raised volumes preserve source apertures. No imported geometry/textures, whole-parcel cap or proposed future garden interiors."
+      },
       "bounds": {
         "min": [
-          -119.05084050188768,
-          2.347979928652695,
-          -107.60359764684317
+          -102.94824981689453,
+          0,
+          -103.60016632080078
         ],
         "max": [
-          102.04053766652319,
-          27.5911289271693,
-          87.75488440894617
+          106.49171447753906,
+          22,
+          94.93000793457031
         ]
       },
       "placement": {
         "anchor": [
-          4.900961341213284,
-          52.367703988914265
+          4.90086458624536,
+          52.367798989750916
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 270,
+        "facadeBearingDegrees": 90,
         "scale": 1
       },
-      "extent": null,
-      "triangles": 6929,
-      "bytes": 414468,
-      "sourceBytes": 1310484,
-      "sourceTriangles": 7184,
-      "droppedAttributes": [],
-      "maxTextureSize": 512,
-      "attribution": {
-        "title": "Stadhuis (City hall)",
-        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
-        "sourceUrl": "https://3dwarehouse.sketchup.com/model/5995fd7a0e7fa47d99c802e874695f6b",
-        "licence": "3D Warehouse General Model License",
-        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
-        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
-      }
+      "extent": {
+        "widthMetres": 209.4399642944336,
+        "heightMetres": 22,
+        "depthMetres": 198.5301742553711,
+        "depthCoverage": 1.0019206410497652
+      },
+      "triangles": 33251,
+      "bytes": 481716,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "westerkerk": {
       "id": "westerkerk",
@@ -904,46 +955,72 @@
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "heineken-experience-amsterdam": {
-      "name": "Heineken Experience, Amsterdam.",
+      "id": "heineken-experience-amsterdam",
+      "name": "Heineken Experience",
       "landmarkId": "extract_landmarks_914627337",
       "modelUrl": "./models/heineken-experience-amsterdam.glb",
+      "suppressOsmIds": [
+        "w44451454",
+        "NL.IMBAG.Pand.0363100012166152"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.891634499471685,
+          52.35771184229546
+        ],
+        "headingDegrees": 275.66,
+        "lengthMetres": 96.73778031683932,
+        "widthMetres": 44.705812770835806
+      },
+      "surveyed": {
+        "anchor": [
+          4.891634499471685,
+          52.35771184229546
+        ],
+        "northOffsetDegrees": 185.66000000000003
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Heineken Experience",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/complexen/527808",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original manual facade details and regional massing. AHN5 2023 roof-plane samples calibrate rebuilt roof patch surfaces; no imported asset mesh. Current single BAG parent encloses three surviving historic fronts and low museum wings; surrounding 1990s residences/retail stay outside exact suppression. BAG nominal 1886 does not date all present parts: RCE identifies 1911–13/1925/1933–34."
+      },
       "bounds": {
         "min": [
-          -65.43220826907489,
-          -0.02119105428034196,
-          -20.369304734001474
+          -47.375,
+          -9.155273232863692e-7,
+          -25.049999237060547
         ],
         "max": [
-          35.52333326348991,
-          32.69677976216954,
-          14.601147550549097
+          49.630001068115234,
+          31.141000747680664,
+          20.267009735107422
         ]
       },
       "placement": {
         "anchor": [
-          4.89184165895771,
-          52.35768328228659
+          4.891634499471685,
+          52.35771184229546
         ],
         "altitudeMetres": 0,
-        "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 100,
+        "modelRotationDegrees": 275.6600000000001,
+        "facadeBearingDegrees": 5.660000000000025,
         "scale": 1
       },
-      "extent": null,
-      "triangles": 46143,
-      "bytes": 628644,
-      "sourceBytes": 2266368,
-      "sourceTriangles": 46176,
-      "droppedAttributes": [],
-      "maxTextureSize": 512,
-      "attribution": {
-        "title": "Heineken Experience, Amsterdam.",
-        "author": "marcinplymouth",
-        "sourceUrl": "https://3dwarehouse.sketchup.com/model/4e77b7d365245b8239a65e5e29a6306",
-        "licence": "3D Warehouse General Model License",
-        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
-        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
-      }
+      "extent": {
+        "widthMetres": 97.00500106811523,
+        "heightMetres": 31.141001663207987,
+        "depthMetres": 45.31700897216797,
+        "depthCoverage": 1.0136715152560851
+      },
+      "triangles": 15537,
+      "bytes": 184764,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "montelbaanstoren-amsterdam": {
       "id": "montelbaanstoren-amsterdam",
@@ -9700,6 +9777,75 @@
       },
       "triangles": 20724,
       "bytes": 250624,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "faralda-crane-hotel": {
+      "id": "faralda-crane-hotel",
+      "name": "Faralda NDSM Crane Hotel Amsterdam",
+      "landmarkId": "extract_landmarks_1759004236",
+      "modelUrl": "./models/faralda-crane-hotel.glb",
+      "suppressOsmIds": [
+        "w280619914",
+        "NL.IMBAG.Pand.0363100012241774"
+      ],
+      "footprint": {
+        "centre": [
+          4.894817040473574,
+          52.39937946222803
+        ],
+        "headingDegrees": 101.98499708839654,
+        "lengthMetres": 11.939848301110935,
+        "widthMetres": 8.634885206243403
+      },
+      "spatialSuppression": false,
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90.08499708839653,
+      "surveyed": {
+        "anchor": [
+          4.894841236019676,
+          52.39937627409353
+        ],
+        "northOffsetDegrees": 11.900000000000006,
+        "source": "Current in-use BAG 0363100012241774 crane base; canonical OSM w280619914. Original open steel structure constrained by primary IAA, operator and shipyard height/photographs. Native +X heading 101.9 degrees follows base edges; rotating crane boom is shown at a representative orientation. 3DBAG 14.925m roof is studio-only undersampling, not the true 50m crane."
+      },
+      "attribution": {
+        "title": "Faralda Crane Hotel",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.iaa-architecten.nl/projecten/feralda-crane-hotel/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original project-native open steel crane, red hotel suites/lifts, yellow lattice boom and counterweight. No imported meshes/textures."
+      },
+      "bounds": {
+        "min": [
+          -17.700000762939453,
+          0,
+          -4.5
+        ],
+        "max": [
+          34.206199645996094,
+          49.48757553100586,
+          4.5
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.894841236019676,
+          52.39937627409353
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 101.89999999999998,
+        "facadeBearingDegrees": 11.899999999999977,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 51.90620040893555,
+        "heightMetres": 49.48757553100586,
+        "depthMetres": 9,
+        "depthCoverage": 1.0422836882061388
+      },
+      "triangles": 5896,
+      "bytes": 87500,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

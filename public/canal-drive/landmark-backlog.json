@@ -21,10 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 143,
+    "manual-model": 146,
     "procedural-kit": 15,
-    "pending": 166,
-    "catalogue-model": 2
+    "pending": 165
   },
   "destinations": [
     {
@@ -494,7 +493,7 @@
       "type": "museum",
       "queueRank": 38,
       "origin": "POI Destinations",
-      "status": "catalogue-model",
+      "status": "manual-model",
       "modelId": "heineken-experience-amsterdam",
       "treatment": "building"
     },
@@ -1091,7 +1090,7 @@
       "type": "landmark",
       "queueRank": 84,
       "origin": "POI Destinations",
-      "status": "catalogue-model",
+      "status": "manual-model",
       "modelId": "stadhuis",
       "treatment": "building"
     },
@@ -1286,8 +1285,9 @@
       "type": "landmark",
       "queueRank": 99,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "faralda-crane-hotel",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_433737872",

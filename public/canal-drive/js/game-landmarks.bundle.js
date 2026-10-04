@@ -6250,6 +6250,143 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original project-native pale-stone/red-brick classical facade, columned pediment, golden lyre, four roof pavilions and Pi de Bruijn glass promenade. No imported legacy mesh or textures; roof contours derived from open surveyed data."
       }
+    },
+    {
+      id: "stadhuis",
+      name: "Stadhuis / Nationale Opera & Ballet",
+      landmarkId: "extract_landmarks_1919682395",
+      modelUrl: "./models/stadhuis.glb",
+      suppressOsmIds: [
+        "w268782345",
+        "w751591420",
+        "w751559653",
+        "w751559654",
+        "w751559655",
+        "w751559656",
+        "w751559657",
+        "w751559658",
+        "w751559659",
+        "w751559660",
+        "w751559661",
+        "w751559663",
+        "w751559664",
+        "w751559665",
+        "w751567319",
+        "w751567320",
+        "w751567321",
+        "w751573304",
+        "w751573305",
+        "w751573306",
+        "w751591418",
+        "w751591419",
+        "w751612860",
+        "w751612861",
+        "w751612862",
+        "NL.IMBAG.Pand.0363100012186092"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.90086458624536,
+          52.367798989750916
+        ],
+        headingDegrees: 90,
+        lengthMetres: 209.20768610521935,
+        widthMetres: 198.1495999996173
+      },
+      surveyed: {
+        anchor: [
+          4.90086458624536,
+          52.367798989750916
+        ],
+        northOffsetDegrees: 0,
+        source: "Exact current two same-BAG parents and 23 mapped parts including recorded elevated volumes/glazed passage roofs; mapped heights5\u201322m, complex 3DBAG maximum not assigned to whole component."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Stadhuis / Nationale Opera & Ballet",
+        author: "Map Recall",
+        sourceUrl: "https://www.operaballet.nl/stopera-amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free shared-palette city-hall and opera ensemble, rebuilt against native current roof/part polygons. Curved marble foyer bays, brick auditorium, stepped office wings, glazed passage canopy and raised volumes preserve source apertures. No imported geometry/textures, whole-parcel cap or proposed future garden interiors."
+      }
+    },
+    {
+      id: "heineken-experience-amsterdam",
+      name: "Heineken Experience",
+      landmarkId: "extract_landmarks_914627337",
+      modelUrl: "./models/heineken-experience-amsterdam.glb",
+      suppressOsmIds: [
+        "w44451454",
+        "NL.IMBAG.Pand.0363100012166152"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.891634499471685,
+          52.35771184229546
+        ],
+        headingDegrees: 275.66,
+        lengthMetres: 96.73778031683932,
+        widthMetres: 44.705812770835806
+      },
+      surveyed: {
+        anchor: [
+          4.891634499471685,
+          52.35771184229546
+        ],
+        northOffsetDegrees: 185.66000000000003
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 90,
+      attribution: {
+        title: "Heineken Experience",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/complexen/527808",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original manual facade details and regional massing. AHN5 2023 roof-plane samples calibrate rebuilt roof patch surfaces; no imported asset mesh. Current single BAG parent encloses three surviving historic fronts and low museum wings; surrounding 1990s residences/retail stay outside exact suppression. BAG nominal 1886 does not date all present parts: RCE identifies 1911\u201313/1925/1933\u201334."
+      }
+    },
+    {
+      id: "faralda-crane-hotel",
+      name: "Faralda NDSM Crane Hotel Amsterdam",
+      landmarkId: "extract_landmarks_1759004236",
+      modelUrl: "./models/faralda-crane-hotel.glb",
+      suppressOsmIds: [
+        "w280619914",
+        "NL.IMBAG.Pand.0363100012241774"
+      ],
+      footprint: {
+        centre: [
+          4.894817040473574,
+          52.39937946222803
+        ],
+        headingDegrees: 101.98499708839654,
+        lengthMetres: 11.939848301110935,
+        widthMetres: 8.634885206243403
+      },
+      spatialSuppression: false,
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: -90.08499708839653,
+      surveyed: {
+        anchor: [
+          4.894841236019676,
+          52.39937627409353
+        ],
+        northOffsetDegrees: 11.900000000000006,
+        source: "Current in-use BAG 0363100012241774 crane base; canonical OSM w280619914. Original open steel structure constrained by primary IAA, operator and shipyard height/photographs. Native +X heading 101.9 degrees follows base edges; rotating crane boom is shown at a representative orientation. 3DBAG 14.925m roof is studio-only undersampling, not the true 50m crane."
+      },
+      attribution: {
+        title: "Faralda Crane Hotel",
+        author: "Map Recall",
+        sourceUrl: "https://www.iaa-architecten.nl/projecten/feralda-crane-hotel/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original project-native open steel crane, red hotel suites/lifts, yellow lattice boom and counterweight. No imported meshes/textures."
+      }
     }
   ];
 
@@ -9036,6 +9173,30 @@ Map source: ${osmUrl(places[i][0])}`);
       name: "Royal Concertgebouw",
       sourceUrl: "https://www.concertgebouw.nl/en/our-history/history",
       description: "The Royal Concertgebouw was designed by Adolf Leonard van Gendt and opened on 11 April 1888. Its famous classical facade is crowned by a golden lyre. Pi de Bruijn\u2019s 1985\u20131988 renovation added the glass promenade beside the historic halls."
+    },
+    {
+      modelId: "heineken-experience-amsterdam",
+      landmarkId: "extract_landmarks_914627337",
+      name: "Heineken Experience",
+      description: "The brewery on Stadhouderskade made Heineken beer from 1867 until 1988. Its surviving street front combines a 1911\u201313 brew house with paired arched windows, a 1925 malt silo and the largely windowless 1933\u201334 cooling and storage building. Today the former brewery houses the Heineken Experience.",
+      sourceUrl: "https://www.heinekenexperience.com/en/about-the-experience",
+      additionalSources: [
+        "https://monumentenregister.cultureelerfgoed.nl/complexen/527808",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/527809",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/527810",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/527811"
+      ]
+    },
+    {
+      modelId: "faralda-crane-hotel",
+      landmarkId: "extract_landmarks_1759004236",
+      name: "Faralda NDSM Crane Hotel Amsterdam",
+      description: "Faralda occupies NDSM\u2019s former Crane 13, built in 1950 and restored by Talsma in 2013. It opened as a hotel in 2014. Three suites sit at 35, 40 and 45 metres, with a rooftop jacuzzi above them; the restored steel is blue-gray and yellow, while new lifts and stairs are red.",
+      sourceUrl: "https://talsmashipyards.nl/en/projecten/specials-en/ndsm-cranehotel/",
+      additionalSources: [
+        "https://www.iaa-architecten.nl/projecten/feralda-crane-hotel/",
+        "https://www.faralda.com/hotels/"
+      ]
     }
   ];
 

@@ -1,0 +1,23 @@
+{
+  "id": "stadhuis-city-hall",
+  "name": "Amsterdam City Hall",
+  "landmarkId": "stadhuis-city-hall",
+  "type": "landmark",
+  "cityId": "amsterdam",
+  "center": [
+    52.3679389,
+    4.9007028
+  ],
+  "radius": 45,
+  "modelId": "stadhuis",
+  "sourceUrl": "https://www.amsterdam.nl/projecten/stadhuis/",
+  "address": "Amstel 1",
+  "description": "Amsterdam\u2019s City Hall occupies the stepped administrative wing of the Stopera complex; the curved theatre is Dutch National Opera & Ballet.",
+  "identityNote": "Distinct administrative function documented by municipality. This is an additional proposal, not a replacement or alias of the existing genuine Opera canonical destination. Official project location retained; route point must be snapped by normal route ingestion.",
+  "facts": [
+    {
+      "text": "The opera theatre opened in 1986; municipal staff moved into City Hall in 1988.",
+      "sourceUrl": "https://www.operaballet.nl/stopera-amsterdam"
+    }
+  ]
+}
