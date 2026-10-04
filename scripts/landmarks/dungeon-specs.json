@@ -1,0 +1,41 @@
+[
+  {
+    "id": "amsterdam-dungeon",
+    "name": "Amsterdam Dungeon / Nieuwezijds Kapel",
+    "landmarkId": "extract_landmarks_1198863663",
+    "modelUrl": "./models/amsterdam-dungeon.glb",
+    "suppressOsmIds": [
+      "w266903954",
+      "w266903867",
+      "NL.IMBAG.Pand.0363100012168346",
+      "NL.IMBAG.Pand.0363100012175269"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8919633178149855,
+        52.37020123860339
+      ],
+      "headingDegrees": 15.012596956822051,
+      "lengthMetres": 40.36408570166537,
+      "widthMetres": 32.38051115446507
+    },
+    "surveyed": {
+      "anchor": [
+        4.8919633178149855,
+        52.37020123860339
+      ],
+      "northOffsetDegrees": -74.5
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.4874030431779488,
+    "attribution": {
+      "title": "Amsterdam Dungeon / Nieuwezijds Kapel",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518455",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free model scoped to the two actual buildings used by Amsterdam Dungeon: currentPDOK Rokin78 bijeenkomstfunctie1277m² VBO0363010003702386 is linked to both BAG2168346 (chapel/side rooms) and2175269 (entrance wing). Other RCE518455 compound buildings including Rokin80/82 BAG2175268 andKalverstraat81/87 BAG2168348 remain visible and unsuppressed. PrimaryArcam exterior confirms two gabled venue wings and portal; the neighboring streetcorner dome is outside model scope. Original octagonal chapel,tent roof/open lantern,sculpted brick gables,stone bands and measured lower wings refer to Posthumus Meyjes’1908–1912 architecture. Heights approximate13.3–17.8m front,7–16m side rooms,18m chapel eaves,24.7m truncated tent roof and29m lantern: AHN5 raw height26.9m and reconstructedplanepeaks29.1m differ; OSM32.3m is not used as a flat mass. Exact mapped recesses retained; no imported mesh faces or textures."
+    }
+  }
+]
