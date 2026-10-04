@@ -1,0 +1,300 @@
+{
+  "sites": [
+    {
+      "id": "willet-holthuysen",
+      "key": "willet",
+      "parent": "a534233526",
+      "landmarkId": "extract_landmarks_154293883",
+      "name": "Willet-Holthuysen House",
+      "author": 74,
+      "url": "https://www.amsterdammuseum.nl/en/tickets-and-visit/locations/huis-willet-holthuysen/3632",
+      "anchor": [
+        4.898971038437082,
+        52.36568706873301
+      ],
+      "footprint": {
+        "centre": [
+          4.898971038437082,
+          52.36568706873301
+        ],
+        "headingDegrees": 163.11579731148294,
+        "lengthMetres": 25.94850886864895,
+        "widthMetres": 14.953045719179908
+      },
+      "authorHeadingDegrees": 74,
+      "buildings": [
+        {
+          "type": "Feature",
+          "id": "a534233526",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.8988115,
+                    52.3657793
+                  ],
+                  [
+                    4.8988437,
+                    52.365712
+                  ],
+                  [
+                    4.8989224,
+                    52.3655569
+                  ],
+                  [
+                    4.898924,
+                    52.3655572
+                  ],
+                  [
+                    4.8989242,
+                    52.3655567
+                  ],
+                  [
+                    4.8989318,
+                    52.3655581
+                  ],
+                  [
+                    4.8989313,
+                    52.365559
+                  ],
+                  [
+                    4.8991234,
+                    52.3655946
+                  ],
+                  [
+                    4.8991239,
+                    52.3655936
+                  ],
+                  [
+                    4.8991316,
+                    52.3655953
+                  ],
+                  [
+                    4.8990283,
+                    52.3658031
+                  ],
+                  [
+                    4.8990212,
+                    52.3658174
+                  ],
+                  [
+                    4.8989945,
+                    52.3658125
+                  ],
+                  [
+                    4.8990245,
+                    52.3657518
+                  ],
+                  [
+                    4.8990373,
+                    52.3657471
+                  ],
+                  [
+                    4.8989796,
+                    52.3657366
+                  ],
+                  [
+                    4.8989682,
+                    52.3657605
+                  ],
+                  [
+                    4.8989733,
+                    52.3657635
+                  ],
+                  [
+                    4.8989636,
+                    52.365783
+                  ],
+                  [
+                    4.8989369,
+                    52.3657903
+                  ],
+                  [
+                    4.8989009,
+                    52.365783
+                  ],
+                  [
+                    4.898888,
+                    52.3657697
+                  ],
+                  [
+                    4.8988986,
+                    52.3657476
+                  ],
+                  [
+                    4.898907,
+                    52.3657491
+                  ],
+                  [
+                    4.8989182,
+                    52.3657255
+                  ],
+                  [
+                    4.8988577,
+                    52.3657145
+                  ],
+                  [
+                    4.8988668,
+                    52.3657232
+                  ],
+                  [
+                    4.8988368,
+                    52.3657839
+                  ],
+                  [
+                    4.8988115,
+                    52.3657793
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building": "yes",
+            "height": "20.4",
+            "ref:bag": "0363100012171562",
+            "source": "BAG",
+            "source:date": "2014-02-11",
+            "source:height": "3DBAG",
+            "source:height:date": "2025-09-03",
+            "start_date": "1687",
+            "wikidata": "Q17235592",
+            "wikimedia_commons": "Category:Herengracht 605, Amsterdam"
+          }
+        }
+      ],
+      "parts": [],
+      "suppressOsmIds": [
+        "w267116763",
+        "NL.IMBAG.Pand.0363100012171562"
+      ],
+      "primaryReferences": [
+        "https://www.amsterdammuseum.nl/en/tickets-and-visit/locations/huis-willet-holthuysen/3632",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/1687",
+        "https://hart.amsterdam/image/2018/6/15/tuin_incl_afbeeldingen_v2.pdf"
+      ],
+      "sourceNote": "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen\u2019s open French garden and the Pipe Museum\u2019s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
+    },
+    {
+      "id": "amsterdam-pipe-museum",
+      "key": "pipe",
+      "parent": "a535131354",
+      "landmarkId": "extract_landmarks_301593654",
+      "name": "Amsterdam Pipe Museum",
+      "author": 315.3,
+      "url": "https://pipemuseum.nl/en/article/de-geschiedenis-van-het-pijpenkabinet-van-particuliere-collectie-tot-nationaal-museum",
+      "anchor": [
+        4.885162575010229,
+        52.36406118702082
+      ],
+      "footprint": {
+        "centre": [
+          4.885162575010229,
+          52.36406118702082
+        ],
+        "headingDegrees": 48.361372776468016,
+        "lengthMetres": 31.302749222414075,
+        "widthMetres": 9.508166304295873
+      },
+      "authorHeadingDegrees": 315.3,
+      "buildings": [
+        {
+          "type": "Feature",
+          "id": "a535131354",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.8849459,
+                    52.3640007
+                  ],
+                  [
+                    4.8849537,
+                    52.3639951
+                  ],
+                  [
+                    4.8849954,
+                    52.3639654
+                  ],
+                  [
+                    4.8850369,
+                    52.3639359
+                  ],
+                  [
+                    4.8851741,
+                    52.3640103
+                  ],
+                  [
+                    4.8851111,
+                    52.3640529
+                  ],
+                  [
+                    4.8851835,
+                    52.364094
+                  ],
+                  [
+                    4.8852304,
+                    52.3640626
+                  ],
+                  [
+                    4.8852228,
+                    52.364058
+                  ],
+                  [
+                    4.8852106,
+                    52.3640653
+                  ],
+                  [
+                    4.8851568,
+                    52.3640369
+                  ],
+                  [
+                    4.8851851,
+                    52.3640163
+                  ],
+                  [
+                    4.8853811,
+                    52.3641227
+                  ],
+                  [
+                    4.8852863,
+                    52.3641855
+                  ],
+                  [
+                    4.8849459,
+                    52.3640007
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building": "yes",
+            "height": "15.4",
+            "ref:bag": "0363100012169037",
+            "source": "BAG",
+            "source:date": "2014-02-11",
+            "source:height": "3DBAG",
+            "source:height:date": "2025-09-03",
+            "start_date": "1710"
+          }
+        }
+      ],
+      "parts": [],
+      "suppressOsmIds": [
+        "w267565677",
+        "NL.IMBAG.Pand.0363100012169037"
+      ],
+      "primaryReferences": [
+        "https://pipemuseum.nl/en/article/de-geschiedenis-van-het-pijpenkabinet-van-particuliere-collectie-tot-nationaal-museum",
+        "https://pipemuseum.nl/en/visit",
+        "https://pipemuseum.nl/en/jaarverslag-2021"
+      ],
+      "sourceNote": "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen\u2019s open French garden and the Pipe Museum\u2019s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
+    }
+  ]
+}
