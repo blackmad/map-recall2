@@ -1,0 +1,1301 @@
+{
+  "source": "https://tiles.openfreemap.org/planet/20260927_080001_pt/{z}/{x}/{y}.pbf",
+  "sourceLayer": "transportation",
+  "note": "Actual z14 vector line geometry normalized from source extent4096 to MapLibre8192. All13 unique source ways independently verified A9/tunnel=yes/layer=-1 in Amsterdam OSM extract; fixtures are geometry evidence, not runtime ID selectors.",
+  "layers": [
+    {
+      "id": "tunnel_motorway_link_casing",
+      "type": "line",
+      "sourceLayer": "transportation",
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "class"
+          ],
+          "motorway"
+        ],
+        [
+          "==",
+          [
+            "get",
+            "ramp"
+          ],
+          1
+        ],
+        [
+          "==",
+          [
+            "get",
+            "brunnel"
+          ],
+          "tunnel"
+        ]
+      ]
+    },
+    {
+      "id": "tunnel_link_casing",
+      "type": "line",
+      "sourceLayer": "transportation",
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "ramp"
+          ],
+          1
+        ],
+        [
+          "==",
+          [
+            "get",
+            "brunnel"
+          ],
+          "tunnel"
+        ]
+      ]
+    },
+    {
+      "id": "tunnel_motorway_casing",
+      "type": "line",
+      "sourceLayer": "transportation",
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "class"
+          ],
+          "motorway"
+        ],
+        [
+          "!=",
+          [
+            "get",
+            "ramp"
+          ],
+          1
+        ],
+        [
+          "==",
+          [
+            "get",
+            "brunnel"
+          ],
+          "tunnel"
+        ]
+      ]
+    },
+    {
+      "id": "tunnel_motorway_link",
+      "type": "line",
+      "sourceLayer": "transportation",
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "class"
+          ],
+          "motorway"
+        ],
+        [
+          "==",
+          [
+            "get",
+            "ramp"
+          ],
+          1
+        ],
+        [
+          "==",
+          [
+            "get",
+            "brunnel"
+          ],
+          "tunnel"
+        ]
+      ]
+    },
+    {
+      "id": "tunnel_link",
+      "type": "line",
+      "sourceLayer": "transportation",
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "ramp"
+          ],
+          1
+        ],
+        [
+          "==",
+          [
+            "get",
+            "brunnel"
+          ],
+          "tunnel"
+        ]
+      ]
+    },
+    {
+      "id": "tunnel_motorway",
+      "type": "line",
+      "sourceLayer": "transportation",
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "class"
+          ],
+          "motorway"
+        ],
+        [
+          "!=",
+          [
+            "get",
+            "ramp"
+          ],
+          1
+        ],
+        [
+          "==",
+          [
+            "get",
+            "brunnel"
+          ],
+          "tunnel"
+        ]
+      ]
+    }
+  ],
+  "records": [
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8417,
+        "y": 5389
+      },
+      "id": 4092850712,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 4326,
+            "y": 3858
+          },
+          {
+            "x": 4508,
+            "y": 3760
+          },
+          {
+            "x": 4814,
+            "y": 3584
+          },
+          {
+            "x": 5142,
+            "y": 3372
+          },
+          {
+            "x": 5394,
+            "y": 3184
+          },
+          {
+            "x": 5908,
+            "y": 2772
+          },
+          {
+            "x": 6270,
+            "y": 2514
+          },
+          {
+            "x": 6706,
+            "y": 2222
+          },
+          {
+            "x": 7026,
+            "y": 2026
+          },
+          {
+            "x": 7332,
+            "y": 1844
+          },
+          {
+            "x": 7950,
+            "y": 1500
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8417,
+        "y": 5389
+      },
+      "id": 4093143402,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 8320,
+            "y": 952
+          },
+          {
+            "x": 8274,
+            "y": 978
+          },
+          {
+            "x": 8016,
+            "y": 1144
+          },
+          {
+            "x": 7874,
+            "y": 1230
+          },
+          {
+            "x": 6896,
+            "y": 1784
+          },
+          {
+            "x": 6548,
+            "y": 1998
+          },
+          {
+            "x": 5206,
+            "y": 2914
+          },
+          {
+            "x": 4626,
+            "y": 3276
+          },
+          {
+            "x": 4146,
+            "y": 3536
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8417,
+        "y": 5389
+      },
+      "id": 4093143462,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 4340,
+            "y": 3884
+          },
+          {
+            "x": 4576,
+            "y": 3756
+          },
+          {
+            "x": 4828,
+            "y": 3610
+          },
+          {
+            "x": 4994,
+            "y": 3506
+          },
+          {
+            "x": 5158,
+            "y": 3394
+          },
+          {
+            "x": 5408,
+            "y": 3212
+          },
+          {
+            "x": 5700,
+            "y": 2976
+          },
+          {
+            "x": 5926,
+            "y": 2798
+          },
+          {
+            "x": 6290,
+            "y": 2538
+          },
+          {
+            "x": 6660,
+            "y": 2286
+          },
+          {
+            "x": 7042,
+            "y": 2052
+          },
+          {
+            "x": 7348,
+            "y": 1872
+          },
+          {
+            "x": 8072,
+            "y": 1466
+          },
+          {
+            "x": 8320,
+            "y": 1344
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8417,
+        "y": 5389
+      },
+      "id": 4093186582,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 7834,
+            "y": 1290
+          },
+          {
+            "x": 6710,
+            "y": 1928
+          },
+          {
+            "x": 6142,
+            "y": 2306
+          },
+          {
+            "x": 5764,
+            "y": 2562
+          },
+          {
+            "x": 5218,
+            "y": 2938
+          },
+          {
+            "x": 4618,
+            "y": 3310
+          },
+          {
+            "x": 4162,
+            "y": 3564
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8417,
+        "y": 5389
+      },
+      "id": 10921463672,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 7950,
+            "y": 1500
+          },
+          {
+            "x": 8320,
+            "y": 1292
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8417,
+        "y": 5389
+      },
+      "id": 10921463722,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 8320,
+            "y": 1006
+          },
+          {
+            "x": 7834,
+            "y": 1290
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8417,
+        "y": 5389
+      },
+      "id": 4092774522,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 4246,
+            "y": 3712
+          },
+          {
+            "x": 4718,
+            "y": 3448
+          },
+          {
+            "x": 5302,
+            "y": 3056
+          },
+          {
+            "x": 5836,
+            "y": 2666
+          },
+          {
+            "x": 6212,
+            "y": 2402
+          },
+          {
+            "x": 6566,
+            "y": 2172
+          },
+          {
+            "x": 7580,
+            "y": 1572
+          },
+          {
+            "x": 8320,
+            "y": 1156
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8417,
+        "y": 5389
+      },
+      "id": 4093143452,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 8320,
+            "y": 1080
+          },
+          {
+            "x": 7546,
+            "y": 1516
+          },
+          {
+            "x": 6768,
+            "y": 1972
+          },
+          {
+            "x": 6430,
+            "y": 2182
+          },
+          {
+            "x": 5806,
+            "y": 2624
+          },
+          {
+            "x": 5268,
+            "y": 3010
+          },
+          {
+            "x": 4996,
+            "y": 3196
+          },
+          {
+            "x": 4688,
+            "y": 3392
+          },
+          {
+            "x": 4214,
+            "y": 3656
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8417,
+        "y": 5389
+      },
+      "id": 4183638242,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 4270,
+            "y": 3760
+          },
+          {
+            "x": 4532,
+            "y": 3614
+          },
+          {
+            "x": 4794,
+            "y": 3462
+          },
+          {
+            "x": 5078,
+            "y": 3284
+          },
+          {
+            "x": 5348,
+            "y": 3100
+          },
+          {
+            "x": 6116,
+            "y": 2536
+          },
+          {
+            "x": 6440,
+            "y": 2312
+          },
+          {
+            "x": 6798,
+            "y": 2084
+          },
+          {
+            "x": 6992,
+            "y": 1966
+          },
+          {
+            "x": 7258,
+            "y": 1810
+          },
+          {
+            "x": 8320,
+            "y": 1214
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5388
+      },
+      "id": 4093143402,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 8058,
+            "y": 4832
+          },
+          {
+            "x": 7724,
+            "y": 4984
+          },
+          {
+            "x": 7486,
+            "y": 5102
+          },
+          {
+            "x": 7160,
+            "y": 5270
+          },
+          {
+            "x": 6290,
+            "y": 5750
+          },
+          {
+            "x": 5428,
+            "y": 6212
+          },
+          {
+            "x": 4054,
+            "y": 6956
+          },
+          {
+            "x": 3668,
+            "y": 7152
+          },
+          {
+            "x": 3184,
+            "y": 7420
+          },
+          {
+            "x": 1588,
+            "y": 8320
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5388
+      },
+      "id": 4093143462,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 2318,
+            "y": 8320
+          },
+          {
+            "x": 3356,
+            "y": 7738
+          },
+          {
+            "x": 4022,
+            "y": 7352
+          },
+          {
+            "x": 4226,
+            "y": 7222
+          },
+          {
+            "x": 4426,
+            "y": 7110
+          },
+          {
+            "x": 4510,
+            "y": 7046
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5388
+      },
+      "id": 4093186562,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 8072,
+            "y": 4858
+          },
+          {
+            "x": 7726,
+            "y": 5016
+          },
+          {
+            "x": 7174,
+            "y": 5302
+          },
+          {
+            "x": 6414,
+            "y": 5718
+          },
+          {
+            "x": 5252,
+            "y": 6346
+          },
+          {
+            "x": 4210,
+            "y": 6920
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5388
+      },
+      "id": 4093186572,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 4510,
+            "y": 7046
+          },
+          {
+            "x": 5052,
+            "y": 6748
+          },
+          {
+            "x": 5482,
+            "y": 6530
+          },
+          {
+            "x": 5820,
+            "y": 6348
+          },
+          {
+            "x": 7010,
+            "y": 5680
+          },
+          {
+            "x": 7294,
+            "y": 5526
+          },
+          {
+            "x": 7682,
+            "y": 5328
+          },
+          {
+            "x": 8320,
+            "y": 5030
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5388
+      },
+      "id": 8752924932,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 3338,
+            "y": 7682
+          },
+          {
+            "x": 4430,
+            "y": 7070
+          },
+          {
+            "x": 4510,
+            "y": 7046
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5388
+      },
+      "id": 10921463752,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 4210,
+            "y": 6920
+          },
+          {
+            "x": 3224,
+            "y": 7470
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5388
+      },
+      "id": 4092774522,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 1958,
+            "y": 8320
+          },
+          {
+            "x": 4212,
+            "y": 7054
+          },
+          {
+            "x": 4742,
+            "y": 6762
+          },
+          {
+            "x": 7234,
+            "y": 5412
+          },
+          {
+            "x": 7812,
+            "y": 5108
+          },
+          {
+            "x": 8320,
+            "y": 4874
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5388
+      },
+      "id": 4093143452,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 8320,
+            "y": 4806
+          },
+          {
+            "x": 8098,
+            "y": 4912
+          },
+          {
+            "x": 7784,
+            "y": 5050
+          },
+          {
+            "x": 7206,
+            "y": 5360
+          },
+          {
+            "x": 6338,
+            "y": 5836
+          },
+          {
+            "x": 4714,
+            "y": 6712
+          },
+          {
+            "x": 4184,
+            "y": 7004
+          },
+          {
+            "x": 1828,
+            "y": 8320
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5388
+      },
+      "id": 4183638242,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 2058,
+            "y": 8320
+          },
+          {
+            "x": 4556,
+            "y": 6918
+          },
+          {
+            "x": 4908,
+            "y": 6724
+          },
+          {
+            "x": 5704,
+            "y": 6308
+          },
+          {
+            "x": 7152,
+            "y": 5500
+          },
+          {
+            "x": 7438,
+            "y": 5350
+          },
+          {
+            "x": 7834,
+            "y": 5158
+          },
+          {
+            "x": 8052,
+            "y": 5058
+          },
+          {
+            "x": 8320,
+            "y": 4930
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5389
+      },
+      "id": 4093143402,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 2040,
+            "y": -128
+          },
+          {
+            "x": 82,
+            "y": 978
+          },
+          {
+            "x": -128,
+            "y": 1114
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5389
+      },
+      "id": 4093143462,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": -128,
+            "y": 1472
+          },
+          {
+            "x": 402,
+            "y": 1202
+          },
+          {
+            "x": 2774,
+            "y": -128
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5389
+      },
+      "id": 10921463672,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": -128,
+            "y": 1436
+          },
+          {
+            "x": 882,
+            "y": 870
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5389
+      },
+      "id": 10921463722,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "ramp": 1,
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 764,
+            "y": 658
+          },
+          {
+            "x": 594,
+            "y": 744
+          },
+          {
+            "x": 116,
+            "y": 1012
+          },
+          {
+            "x": -128,
+            "y": 1156
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5389
+      },
+      "id": 4092774522,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": -128,
+            "y": 1300
+          },
+          {
+            "x": 2414,
+            "y": -128
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5389
+      },
+      "id": 4093143452,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": 2286,
+            "y": -128
+          },
+          {
+            "x": -128,
+            "y": 1224
+          }
+        ]
+      ]
+    },
+    {
+      "canonical": {
+        "z": 14,
+        "x": 8418,
+        "y": 5389
+      },
+      "id": 4183638242,
+      "type": 2,
+      "properties": {
+        "brunnel": "tunnel",
+        "surface": "paved",
+        "class": "motorway",
+        "layer": -1,
+        "oneway": 1
+      },
+      "geometry": [
+        [
+          {
+            "x": -128,
+            "y": 1358
+          },
+          {
+            "x": 1172,
+            "y": 624
+          },
+          {
+            "x": 2514,
+            "y": -128
+          }
+        ]
+      ]
+    }
+  ]
+}
