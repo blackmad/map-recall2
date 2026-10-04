@@ -1,0 +1,39 @@
+[
+  {
+    "id": "oost-indisch-huis",
+    "name": "Oost-Indisch Huis and Bushuis",
+    "landmarkId": "extract_landmarks_1570040251",
+    "modelUrl": "./models/oost-indisch-huis.glb",
+    "suppressOsmIds": [
+      "r3584291",
+      "NL.IMBAG.Pand.0363100012165008"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.897856122169366,
+        52.37090523766349
+      ],
+      "headingDegrees": 30.132385501566773,
+      "lengthMetres": 65.47131796665981,
+      "widthMetres": 50.924392605043664
+    },
+    "surveyed": {
+      "anchor": [
+        4.897856122169366,
+        52.37090523766349
+      ],
+      "northOffsetDegrees": -59.6
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.2676144984332254,
+    "attribution": {
+      "title": "Oost-Indisch Huis and Bushuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/2012",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the current Oost-Indisch Huis/Bushuis university complex from exact mapped geometry and original primary photographer references, cross-checked against current PDOK BAG and its Kloveniersburgwal48 onderwijsfunctie VBO. Height references measured from 3DBAG AHN5 LoD2.2 planes (NAP ground0.834; Bushuis roof about14.2–21.7m relative, historic courtyard wings about10.3–17.1m); mesh uses original authored simplified roofs and details, no imported source triangles. The single actual courtyard hole and west perimeter notches remain open; adjoining Waalse Kerk and neighboring houses are retained. The historical courtyard Renaissance gable and separate 1890/1891 Peters Bushuis23-bay Neo-Renaissance canal facade have distinct silhouettes."
+    }
+  }
+]
