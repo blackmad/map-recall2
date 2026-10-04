@@ -324,7 +324,7 @@ function RideOptions({
       </ToggleGroup>
       <ToggleGroup label="Comfort & detail">
         <ToggleTile id={id('reduced-motion', 'live-reduced-motion')} checked={prefs.reducedMotion} onChange={reducedMotion => set({ reducedMotion })} title="Less motion" />
-        <ToggleTile id={id('trees-enabled', 'live-trees')} checked={prefs.trees} onChange={trees => set({ trees })} title="Trees in 3D" hidden />
+        <ToggleTile id={id('trees-enabled', 'live-trees')} checked={prefs.trees} onChange={trees => set({ trees })} title="Trees" />
       </ToggleGroup>
     </>
   );
