@@ -1,0 +1,472 @@
+[
+  {
+    "id": "lab111",
+    "parts": [
+      {
+        "osmId": "w44532021",
+        "bagId": "0363100012237077",
+        "tags": {
+          "amenity": "arts_centre",
+          "building": "yes",
+          "check_date": "2025-08-17",
+          "description": "Former laboratory of anatomical pathology of the Wilhelmina Hospital",
+          "description:nl": "Voormalig voormalige laboratorium voor de pathologische anatomie van het Wilhelmina Gasthuis",
+          "height": "22.1",
+          "heritage": "2",
+          "heritage:operator": "rce",
+          "heritage:website": "https://monumentenregister.cultureelerfgoed.nl/monumenten/524816",
+          "name": "LAB 111",
+          "old_name": "Pathologisch Anatomisch Laboratorium",
+          "ref:bag": "0363100012237077",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1928",
+          "website": "https://www.lab111.nl/",
+          "wheelchair": "no"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.867653094337727,
+                52.36367357657051
+              ],
+              [
+                4.86778197623883,
+                52.36370676760632
+              ],
+              [
+                4.867796550223768,
+                52.36372849200288
+              ],
+              [
+                4.86777630154735,
+                52.363761343231154
+              ],
+              [
+                4.867793915681431,
+                52.3637654200568
+              ],
+              [
+                4.867790818159152,
+                52.3637704126381
+              ],
+              [
+                4.867788049399846,
+                52.36377491233601
+              ],
+              [
+                4.8677769361604915,
+                52.363772347009636
+              ],
+              [
+                4.867701173962292,
+                52.36388190767658
+              ],
+              [
+                4.867692099755696,
+                52.36388450126504
+              ],
+              [
+                4.867300821536762,
+                52.363784277962544
+              ],
+              [
+                4.867288611240567,
+                52.363802667183414
+              ],
+              [
+                4.8672858764238365,
+                52.363806771558174
+              ],
+              [
+                4.8670043216020575,
+                52.36373224868878
+              ],
+              [
+                4.867001737153648,
+                52.36373604813467
+              ],
+              [
+                4.866935144193545,
+                52.36371831928399
+              ],
+              [
+                4.866937684077448,
+                52.3637145645824
+              ],
+              [
+                4.866943845806108,
+                52.36371620046631
+              ],
+              [
+                4.867004932089992,
+                52.363627589128285
+              ],
+              [
+                4.867048642476206,
+                52.36363854849986
+              ],
+              [
+                4.867080369867114,
+                52.36359214937303
+              ],
+              [
+                4.867117903809117,
+                52.36358268839893
+              ],
+              [
+                4.867131662581194,
+                52.36358625406086
+              ],
+              [
+                4.86721789377775,
+                52.3634616403272
+              ],
+              [
+                4.867236949966842,
+                52.363434104696886
+              ],
+              [
+                4.867241604510868,
+                52.363435311521926
+              ],
+              [
+                4.867374097003192,
+                52.36346975917275
+              ],
+              [
+                4.867371544069111,
+                52.36347337901032
+              ],
+              [
+                4.86733728308323,
+                52.363521780343476
+              ],
+              [
+                4.86733553637913,
+                52.36352425328973
+              ],
+              [
+                4.8673142334145325,
+                52.36355434057494
+              ],
+              [
+                4.867322135713311,
+                52.36355653233505
+              ],
+              [
+                4.8673204934567895,
+                52.363558861935935
+              ],
+              [
+                4.8673853320194675,
+                52.36357595372544
+              ],
+              [
+                4.867383979167644,
+                52.36357864410752
+              ],
+              [
+                4.867390918865759,
+                52.36358029237192
+              ],
+              [
+                4.867397902501194,
+                52.36358194981657
+              ],
+              [
+                4.867395646019534,
+                52.3635853282872
+              ],
+              [
+                4.867383240756607,
+                52.36360407617184
+              ],
+              [
+                4.867396955935803,
+                52.363607605660484
+              ],
+              [
+                4.8674050649363165,
+                52.36360969945741
+              ],
+              [
+                4.867449006084364,
+                52.363621019203784
+              ],
+              [
+                4.867653094337727,
+                52.36367357657051
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 10,
+          "bouwjaar": 1928,
+          "documentdatum": "2014-03-28",
+          "documentnummer": "GV00001868_AC00AC",
+          "gebruiksdoel": "bijeenkomstfunctie,industriefunctie,kantoorfunctie,overige gebruiksfunctie,sportfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012237077",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012237077",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/8794121e-9edc-50b8-bc60-f464f8f08685",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/ba99cd93-82fe-5e57-b9bb-b248ee0139a6",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e7742945-c456-5743-ad89-99f481e773ba",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/365fd4c6-27a3-5552-b8ac-323432fa5eec",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/f8166c64-e13f-519a-81d7-3dba1fda05c1",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/183fb9fd-271f-5746-b568-79bcda7468c3",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/48e2c1b4-ebfb-54fb-b7e4-a8854d30a658",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/f9ae7a8c-90f9-5be3-ab35-0b1a0f52974a",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/3c1c0054-9206-5519-b151-c36eace0980e",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/1db68229-9fc8-59fc-a8c1-0f5b3a801372"
+          ]
+        }
+      }
+    ],
+    "notes": "Original PAL 1927 laboratory building: flat-roof wings, central clock stair tower, recessed entry, glazed rooflight hall. Preserve reentrant courts and keep adjacent former hospital buildings separate.",
+    "surveySource": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items",
+    "surveyFetched": "2026-10-04",
+    "architectureReferences": [
+      "https://www.monumenten.nl/monument/524816",
+      "https://www.lab111.nl/over-ons/",
+      "https://upload.wikimedia.org/wikipedia/commons/7/74/Arie_Biemondstraat_105.jpg"
+    ],
+    "reconstructionNotes": "RCE monument 524816: 1927 Hulshoff laboratory, unequal flat-roof wings, eleven-bay front, central clock/stair tower with tall gridded windows and sculptural cornice. Current BAG recess remains open; mapped max 22.1 m bounds clock-tower cap. Native frontage follows Arie Biemondstraat south of the plot, parallel to main canal-side wing."
+  },
+  {
+    "id": "occii",
+    "parts": [
+      {
+        "osmId": "w276906892",
+        "bagId": "0363100012233440",
+        "tags": {
+          "building": "industrial",
+          "height": "9.9",
+          "ref:bag": "0363100012233440",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1884"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.8552851611299435,
+                52.35430606031971
+              ],
+              [
+                4.85529529720254,
+                52.35429192317488
+              ],
+              [
+                4.855420687138505,
+                52.354323179787606
+              ],
+              [
+                4.855388212451088,
+                52.3544033036164
+              ],
+              [
+                4.855056140004716,
+                52.35432025620704
+              ],
+              [
+                4.8550168755057905,
+                52.35431044479498
+              ],
+              [
+                4.855025580737244,
+                52.354298125756216
+              ],
+              [
+                4.854939880356017,
+                52.35427553165198
+              ],
+              [
+                4.854857662547909,
+                52.35425385192433
+              ],
+              [
+                4.85477834192456,
+                52.35423294014321
+              ],
+              [
+                4.8547382385181646,
+                52.354290613996675
+              ],
+              [
+                4.854737667816994,
+                52.35429046762516
+              ],
+              [
+                4.854544465935999,
+                52.35424073188855
+              ],
+              [
+                4.8545829486612595,
+                52.3541848034213
+              ],
+              [
+                4.854518504883858,
+                52.35416816467982
+              ],
+              [
+                4.854542829154697,
+                52.3541312894857
+              ],
+              [
+                4.854605684790701,
+                52.35414694140185
+              ],
+              [
+                4.854613138413807,
+                52.3541349582963
+              ],
+              [
+                4.854613348105823,
+                52.35413460871691
+              ],
+              [
+                4.854614246015467,
+                52.35413317471446
+              ],
+              [
+                4.854637117245764,
+                52.354139092704514
+              ],
+              [
+                4.854721037114175,
+                52.354160798219255
+              ],
+              [
+                4.8548013865205215,
+                52.35418158883818
+              ],
+              [
+                4.854879643577536,
+                52.35420183072657
+              ],
+              [
+                4.854964838369739,
+                52.354223730544014
+              ],
+              [
+                4.8552851611299435,
+                52.35430606031971
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1884,
+          "documentdatum": "2023-08-19",
+          "documentnummer": "GV00007124_AC00AC",
+          "gebruiksdoel": "industriefunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012233440",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012233440",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/1539c5fe-b416-531f-b89a-84e310a124d5"
+          ]
+        }
+      }
+    ],
+    "notes": "Separate former coach-house parent; adjoining Schinkelhaven stable/courtyard remains untouched. Ornate restored Russian-inspired timber arcade rebuilt with flat-palette geometry, no texture.",
+    "surveySource": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items",
+    "surveyFetched": "2026-10-04",
+    "architectureReferences": [
+      "https://www.monumenten.nl/monument/504667",
+      "https://occii.org/hut-chicken-legs-occiis-architecture/",
+      "https://occii.org/wp-content/uploads/2014/09/hut-on-chicken-legs-2.jpg"
+    ],
+    "currentFacadePhoto": "https://www.monumenten.nl/files/styles/gallery_first_image/public/externals/a0476eb104ea5ede8e412c462b5aa64b.jpg?itok=I2a70u76",
+    "reconstructionNotes": "RCE monument 504667 and venue architecture page: 1884 Salm horse-tram house with deep stable/forge parent, narrow ENE entrance on Amstelveenseweg. Current facade photo shows red-brick triangular gable, three central upper windows, two carved side rosette fields, ogee flank-window ornaments and pale carved timber windboards. No neighboring tram-remise courts or parents included."
+  },
+  {
+    "id": "ketelhuis",
+    "parts": [
+      {
+        "osmId": "w57860887",
+        "bagId": "0363100012135793",
+        "tags": {
+          "building": "retail",
+          "height": "13.4",
+          "name": "Ketelhuis",
+          "ref:bag": "0363100012135793",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1885"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.87369632397076,
+                52.38644184903866
+              ],
+              [
+                4.873356957041003,
+                52.38643607197305
+              ],
+              [
+                4.873360338696197,
+                52.38627736394017
+              ],
+              [
+                4.873360434838394,
+                52.386272870509444
+              ],
+              [
+                4.87369984447977,
+                52.3862786567419
+              ],
+              [
+                4.873699750245516,
+                52.38628298840258
+              ],
+              [
+                4.87369632397076,
+                52.38644184903866
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1885,
+          "documentdatum": "2023-09-21",
+          "documentnummer": "GV00007167_AC00AC",
+          "gebruiksdoel": "bijeenkomstfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012135793",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012135793",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/703947ef-7626-5b66-862d-adb9a384896a"
+          ]
+        }
+      }
+    ],
+    "notes": "Seven-bay industrial boilerhouse and three linked end arches, broken-pitch mansard roof on simple individual rectangular plan; surrounding Westerpark paths/trees remain separate.",
+    "surveySource": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items",
+    "surveyFetched": "2026-10-04",
+    "architectureReferences": [
+      "https://www.monumenten.nl/monument/337627",
+      "https://westergas.nl/map/",
+      "https://upload.wikimedia.org/wikipedia/commons/a/a2/Amsterdam_Ketelhuis_337627.JPG"
+    ],
+    "reconstructionNotes": "RCE monument 337627: rectangular seven-bay former boiler house, coupled round-arched short elevations and broken-pitch mansard. Current mapped max 13.4 m retained; street entrance on south long elevation at Pazzanistraat. Individual factory footprint, no adjoining Wester gasworks parents suppressed."
+  }
+]
