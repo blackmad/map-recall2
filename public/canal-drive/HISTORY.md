@@ -1,5 +1,49 @@
 # Canal Recall — what is built
 
+## Chapel, independent cinemas and eastern museums: 67 original landmarks (2026-10-04)
+
+Agnietenkapel now uses its exact chapel and courtyard-wall plans, distinct west
+and east windows, pitched hall and open Renaissance gateway. LAB111 retains its
+clock stair tower and recessed wings, OCCII its ornate narrow coach-house front
+and irregular low rear body, and Ketelhuis its industrial mansard and arched
+windows. An oblique OCCII review verified the taller roof behind it belongs to
+a separate neighbor and remains visible.
+
+Wereldmuseum models the whole mapped KIT complex with individual roof parts,
+open courtyard, museum entrance gable and correctly scaled clock dormer.
+Plancius / Dutch Resistance Museum keeps its classical street front and real
+inner court. Allard Pierson uses the former bank front and actual rear plan.
+Gallery and close/wide active-game reviews corrected window occlusion and
+roof/dormer defects before completion. All 67 actual files passed geometry,
+compression, life-size and exact-identity suppression checks. The queue has
+287 entries: 71 original-model teaching/catalogue entries, 12 imported
+references, 18 procedural kits and 186 pending tasks.
+
+Trees now have a fifteenth compact globose form for three exact grafted
+cultivars: Globosum maple, Umbraculifera robinia and Nana catalpa. It changes
+1,322 recorded crowns while keeping all 431 explicitly pruned examples and
+every tree position and height unchanged. Gallery comparisons and streamed
+park reviews retain the existing shared draw, geometry and material budgets.
+
+## Six more park interiors and eight exact species rules (2026-10-04)
+
+Joop van Stigtpark, Baanakkerspark, Vliegenbos, Rietlandpark, Darwinplantsoen
+and Piet Wiedijkpark add 1,399 actual mapped landscape features. The base
+now contains 9,479 features (4.79 MB raw, 871 KB gzip), adding 691 KB raw and
+121 KB gzip. All previous 8,080 features and the separate Bos chunk remain
+unchanged, with no repeated new path edges. Source, browser, toggle and
+streaming checks passed. Every explicit tree node in these six parks was
+already displayed or within the inventory's deduplication distance, so this
+batch adds no invented tree positions.
+
+Eight exact species/cultivar rules now classify 9,331 standing trees, changing
+7,085 crown geometries: Commelin elm, Plantijn elm, Turkey oak, Norway maple,
+Japanese pagoda tree, common yew, Plena cherry and black pine. Whole-inventory
+comparison preserves all other fields and all unmatched or explicitly pruned
+models. The species gallery and streamed park reviews passed within the
+existing shared geometry, material, draw and tile limits. Crown shapes remain
+authored approximations supported by the cited nursery/botanical references.
+
 ## Amsterdamse Bos loads on approach (2026-10-04)
 
 Amsterdamse Bos adds 3,254 actual mapped landscape features in a separate

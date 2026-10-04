@@ -1,0 +1,147 @@
+{
+  "parent": {
+    "id": "w158853695",
+    "tags": {
+      "building": "yes",
+      "height": "18.7",
+      "historic": "yes",
+      "name": "Agnietenkapel (UvA)",
+      "ref:bag": "0363100012180211",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "start_date": "1470",
+      "wikidata": "Q11721709",
+      "wikimedia_commons": "Category:Agnietenkapel",
+      "wikipedia": "nl:Agnietenkapel"
+    },
+    "ring": [
+      [
+        4.8952527,
+        52.3699216
+      ],
+      [
+        4.895254,
+        52.3699212
+      ],
+      [
+        4.8952038,
+        52.3698606
+      ],
+      [
+        4.8950889,
+        52.3698816
+      ],
+      [
+        4.8950803,
+        52.3698638
+      ],
+      [
+        4.8950631,
+        52.3698669
+      ],
+      [
+        4.8950262,
+        52.3698734
+      ],
+      [
+        4.8948626,
+        52.3699004
+      ],
+      [
+        4.8948674,
+        52.3699174
+      ],
+      [
+        4.8948587,
+        52.3699183
+      ],
+      [
+        4.894867,
+        52.3699481
+      ],
+      [
+        4.8948792,
+        52.3699904
+      ],
+      [
+        4.8949995,
+        52.3699795
+      ],
+      [
+        4.8950359,
+        52.3699763
+      ],
+      [
+        4.8950871,
+        52.3699717
+      ],
+      [
+        4.8951524,
+        52.3699563
+      ],
+      [
+        4.8951464,
+        52.3699466
+      ],
+      [
+        4.8952527,
+        52.3699216
+      ]
+    ]
+  },
+  "courtyardWall": {
+    "id": "w158853696",
+    "tags": {
+      "barrier": "wall"
+    },
+    "ring": [
+      [
+        4.8947967,
+        52.3699999
+      ],
+      [
+        4.894774,
+        52.3699571
+      ],
+      [
+        4.8947529,
+        52.3699159
+      ]
+    ]
+  },
+  "entrancePath": {
+    "id": "w158853700",
+    "tags": {
+      "highway": "footway"
+    },
+    "ring": [
+      [
+        4.8947285,
+        52.3699643
+      ],
+      [
+        4.894774,
+        52.3699571
+      ],
+      [
+        4.894867,
+        52.3699481
+      ]
+    ]
+  },
+  "anchor": [
+    4.895042658823529,
+    52.36992318235294
+  ],
+  "axisHeadingDegrees": 104.5,
+  "heightMetres": 18.7,
+  "references": [
+    "https://arcam.nl/architectuur-gids/agnietenkapel/",
+    "https://www.uva.nl/locaties/binnenstad/agnietenkapel.html",
+    "https://www.openstreetmap.org/way/158853695",
+    "https://www.openstreetmap.org/way/158853696"
+  ],
+  "notes": "Exact mapped chapel plan and courtyard wall; roof divisions, tracery and carved gate details approximate. Reference photos guide geometry only."
+}

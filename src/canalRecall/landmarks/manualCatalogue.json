@@ -2027,5 +2027,307 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
     }
+  },
+  {
+    "id": "agnietenkapel",
+    "name": "Agnietenkapel (UvA)",
+    "landmarkId": "extract_landmarks_736156087",
+    "modelUrl": "./models/agnietenkapel.glb",
+    "suppressOsmIds": [
+      "w158853695",
+      "NL.IMBAG.Pand.0363100012180211"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.895042658823529,
+        52.36992318235294
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 34.05858877984683,
+      "widthMetres": 15.39822200008075
+    },
+    "surveyed": {
+      "anchor": [
+        4.895042658823529,
+        52.36992318235294
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Actual mapped chapel and courtyard wall; local east/south metre coordinates"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Agnietenkapel",
+      "author": "Map Recall",
+      "sourceUrl": "https://arcam.nl/architectuur-gids/agnietenkapel/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Exact mapped chapel plan and courtyard wall; roof divisions, tracery and carved gate details approximate. Reference photos guide geometry only."
+    }
+  },
+  {
+    "id": "lab111",
+    "name": "LAB111 / Pathological Anatomical Laboratory",
+    "landmarkId": "osm_arts_centre_44532021",
+    "modelUrl": "./models/lab111.glb",
+    "suppressOsmIds": [
+      "w44532021",
+      "NL.IMBAG.Pand.0363100012237077"
+    ],
+    "footprint": {
+      "centre": [
+        4.867419736081726,
+        52.36366317589964
+      ],
+      "headingDegrees": 66.93701729326187,
+      "lengthMetres": 55.81708423248726,
+      "widthMetres": 37.18983549504506
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90.0,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.867419736081726,
+        52.36366317589964
+      ],
+      "northOffsetDegrees": -23.062982706738126,
+      "source": "Individual current PDOK BAG building polygon and OSM/2025 3DBAG height, native frontage faces named entrance street. No replacement of adjacent complex buildings."
+    },
+    "attribution": {
+      "title": "LAB111 / Pathological Anatomical Laboratory",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.lab111.nl/over-ons/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
+    }
+  },
+  {
+    "id": "occii",
+    "name": "OCCII / former horse-tram coach house",
+    "landmarkId": "extract_landmarks_1988696513",
+    "modelUrl": "./models/occii.glb",
+    "suppressOsmIds": [
+      "w276906892",
+      "NL.IMBAG.Pand.0363100012233440"
+    ],
+    "footprint": {
+      "centre": [
+        4.854958401332961,
+        52.35427766374001
+      ],
+      "headingDegrees": 69.11143834993021,
+      "lengthMetres": 64.57938007152399,
+      "widthMetres": 13.368354678900868
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.0,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.854958401332961,
+        52.35427766374001
+      ],
+      "northOffsetDegrees": -110.88856165006979,
+      "source": "Individual current PDOK BAG building polygon and OSM/2025 3DBAG height, native frontage faces named entrance street. No replacement of adjacent complex buildings."
+    },
+    "attribution": {
+      "title": "OCCII / former horse-tram coach house",
+      "author": "Map Recall",
+      "sourceUrl": "https://occii.org/hut-chicken-legs-occiis-architecture/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
+    }
+  },
+  {
+    "id": "ketelhuis",
+    "name": "Het Ketelhuis",
+    "landmarkId": "extract_landmarks_2037503288",
+    "modelUrl": "./models/ketelhuis.glb",
+    "suppressOsmIds": [
+      "w57860887",
+      "NL.IMBAG.Pand.0363100012135793"
+    ],
+    "footprint": {
+      "centre": [
+        4.873528379404577,
+        52.38635735977405
+      ],
+      "headingDegrees": 88.40235146891928,
+      "lengthMetres": 23.336638256284797,
+      "widthMetres": 18.16711235417388
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90.0,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.873528379404577,
+        52.38635735977405
+      ],
+      "northOffsetDegrees": -1.597648531080722,
+      "source": "Individual current PDOK BAG building polygon and OSM/2025 3DBAG height, native frontage faces named entrance street. No replacement of adjacent complex buildings."
+    },
+    "attribution": {
+      "title": "Het Ketelhuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://westergas.nl/map/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
+    }
+  },
+  {
+    "id": "wereldmuseum-amsterdam",
+    "name": "Wereldmuseum Amsterdam \u2014 KIT complex",
+    "landmarkId": "extract_landmarks_754896207",
+    "modelUrl": "./models/wereldmuseum-amsterdam.glb",
+    "suppressOsmIds": [
+      "r3697339",
+      "w750932737",
+      "w750932738",
+      "w750932739",
+      "w750932740",
+      "w750932741",
+      "w750932742",
+      "w750932743",
+      "w750932744",
+      "w750932745",
+      "w750932746",
+      "w750932747",
+      "w750932748",
+      "w750932749",
+      "w750932750",
+      "w750932751",
+      "w750932752",
+      "w750932753",
+      "w750932754",
+      "w750932755",
+      "w750932756",
+      "w750932757",
+      "w750939953",
+      "w750939954",
+      "w750939955",
+      "w750939956",
+      "w750939957",
+      "w750939958",
+      "w750939959",
+      "w750940954",
+      "w751004889",
+      "w751004890",
+      "w751004891",
+      "w751004892",
+      "w751004893",
+      "w751004894",
+      "w751004895",
+      "w751004896",
+      "w751004897",
+      "NL.IMBAG.Pand.0363100012237251"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.92160227871942,
+        52.36254354571057
+      ],
+      "headingDegrees": 86.1554630626917,
+      "lengthMetres": 187.2199743118305,
+      "widthMetres": 87.93109064053408
+    },
+    "surveyed": {
+      "anchor": [
+        4.92160227871942,
+        52.36254354571057
+      ],
+      "northOffsetDegrees": 239.89999999999998
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 243.74453693730828,
+    "attribution": {
+      "title": "Wereldmuseum Amsterdam \u2014 KIT complex",
+      "author": "Map Recall",
+      "sourceUrl": "https://amsterdam.wereldmuseum.nl/en/whats-on/exhibitions/building-full-stories",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
+    }
+  },
+  {
+    "id": "dutch-resistance-museum",
+    "name": "Dutch Resistance Museum \u2014 Plancius",
+    "landmarkId": "extract_landmarks_435355441",
+    "modelUrl": "./models/dutch-resistance-museum.glb",
+    "suppressOsmIds": [
+      "r3604243",
+      "w252753161",
+      "NL.IMBAG.Pand.0363100012170669"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.912335391811038,
+        52.3678438887728
+      ],
+      "headingDegrees": 29.638214355817865,
+      "lengthMetres": 71.45008265644202,
+      "widthMetres": 62.890100946325326
+    },
+    "surveyed": {
+      "anchor": [
+        4.912335391811038,
+        52.3678438887728
+      ],
+      "northOffsetDegrees": -60.1
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.2617856441821331,
+    "attribution": {
+      "title": "Dutch Resistance Museum \u2014 Plancius",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.verzetsmuseum.org/en/history-of-the-museum",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
+    }
+  },
+  {
+    "id": "allard-pierson",
+    "name": "Allard Pierson Museum",
+    "landmarkId": "extract_landmarks_275245540",
+    "modelUrl": "./models/allard-pierson.glb",
+    "suppressOsmIds": [
+      "w266914044",
+      "NL.IMBAG.Pand.0363100012165686"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8936619689743805,
+        52.36902112113398
+      ],
+      "headingDegrees": 85.42197001499528,
+      "lengthMetres": 120.1193593401295,
+      "widthMetres": 29.62057461638325
+    },
+    "surveyed": {
+      "anchor": [
+        4.8936619689743805,
+        52.36902112113398
+      ],
+      "northOffsetDegrees": 68.9
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 73.47802998500472,
+    "attribution": {
+      "title": "Allard Pierson Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.atelierpro.nl/en/projecten/allard-pierson",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Exact OpenStreetMap parent/parts polygons cross-checked against current PDOK BAG footprints; original texture-free meshes informed by primary architecture photographs. Whole actual cadastral building is represented with separate measured roof/body portions, preserving genuine open courts."
+    }
   }
 ]
