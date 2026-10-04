@@ -3,6 +3,10 @@ export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const foliagePriors={"prunus cerasifera 'nigra'":{colour:'#694653',reference:'https://www.vdberk.com/trees/prunus-cerasifera-nigra/'},"fagus sylvatica 'atropunicea'":{colour:'#765247',reference:'https://www.vdberk.com/trees/fagus-sylvatica-atropunicea/'}};
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  [/^betula nigra$/,'irregular-spreading','species-prior',nursery('betula-nigra')],
+  [/^acer saccharinum$/,'irregular-spreading','species-prior',nursery('acer-saccharinum')],
+  [/^ailanthus altissima$/,'irregular-spreading','species-prior','https://mdc.mo.gov/discover-nature/field-guide/tree-heaven'],
+  [/^liriodendron tulipifera$/,'upright-oval','species-prior',nursery('liriodendron-tulipifera')],
   [/^alnus spaethii$/,'pyramidal','species-prior','https://www.rhs.org.uk/plants/91790/alnus-%C3%97-spaethii/details'],
   [/^gleditsia triacanthos$/,'airy-oval','species-prior',nursery('gleditsia-triacanthos')],
   // The inventory quotes Inermis as a cultivar; the botanical source describes the thornless form.

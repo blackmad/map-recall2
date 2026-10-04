@@ -16,6 +16,7 @@ for(const tile of index.tiles)for(const r of JSON.parse(gunzipSync(fs.readFileSy
  if(targets.has(name)){assert.equal(a.archetype,targets.get(name));assert.ok(a.provenance.reference);assert.notDeepEqual(a.lobes,b.lobes);crownChanged++;counts[name]=(counts[name]||0)+1;assert.deepEqual({...a,archetype:b.archetype,lobes:b.lobes,provenance:{...a.provenance,crownBasis:b.provenance.crownBasis,reference:b.provenance.reference}},b);}
  else if(["prunus cerasifera 'nigra'","fagus sylvatica 'atropunicea'"].includes(name)){const {foliageReference,...provenance}=a.provenance;assert.deepEqual({...a,foliage:b.foliage,provenance},b,'subsequent approved cultivar palette only');}
  else if(["alnus spaethii", "gleditsia triacanthos", "gleditsia triacanthos 'inermis'", "gleditsia triacanthos 'skyline'", "ilex aquifolium", "tilia cordata 'greenspire'"].includes(name))assert.deepEqual({...a,archetype:b.archetype,lobes:b.lobes,provenance:{...a.provenance,crownBasis:b.provenance.crownBasis,reference:b.provenance.reference}},b,'subsequent approved honey-locust batch only');
+ else if(["betula nigra", "acer saccharinum", "ailanthus altissima", "liriodendron tulipifera"].includes(name))assert.deepEqual({...a,archetype:b.archetype,lobes:b.lobes,provenance:{...a.provenance,crownBasis:b.provenance.crownBasis,reference:b.provenance.reference}},b,'subsequent approved spreading species only');
  else assert.deepEqual(a,b,'unmatched model remains unchanged');
 }
 assert.equal(checked,311544);assert.equal(crownChanged,3019);assert.equal(prunedCrownsPreserved,11);
