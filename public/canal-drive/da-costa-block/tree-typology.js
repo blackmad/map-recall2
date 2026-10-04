@@ -2,6 +2,12 @@
 export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  [/^alnus spaethii 'spaeth'$/,'pyramidal','cultivar-prior',nursery('alnus-spaethii-spaeth')],
+  [/^quercus robur 'fastigiate koster'$/,'columnar','cultivar-prior',nursery('quercus-robur-fastigiate-koster')],
+  [/^prunus serrulata 'amanogawa'$/,'columnar','cultivar-prior',nursery('prunus-serrulata-amanogawa')],
+  [/^betula utilis 'doorenbos'$/,'upright-oval','cultivar-prior',nursery('betula-utilis-doorenbos')],
+  [/^alnus incana$/,'upright-oval','species-prior',nursery('alnus-incana')],
+  [/^ilex aquifolium 'j.c. van tol'$/,'upright-oval','cultivar-prior',nursery('ilex-aquifolium-j-c-van-tol')],
   [/^sequoiadendron giganteum$/,'conical-evergreen','species-prior',nursery('sequoiadendron-giganteum')],
   [/^sequoia sempervirens$/,'conical-evergreen','species-prior',nursery('sequoia-sempervirens')],
   [/^abies grandis$/,'conical-evergreen','species-prior',nursery('abies-grandis')],
@@ -126,7 +132,7 @@ export function treeTypology(tree){
   else lobes=[lobe(0,h*.76,0,r,h*.24,r*.88,0),lobe(-r*.48,h*.72,r*.25,r*.65,h*.18,r*.67,1),lobe(r*.44,h*.70,-r*.23,r*.66,h*.22,r*.65,2)];
   // These summer colours are art direction, not observations from the inventory.
   const foliage=archetype==='conical-evergreen'||/^(?:pinus|taxus)\b/.test(species)?'#496955':species.startsWith('salix')?'#88a06c':species.startsWith('betula')?'#91ad6e':species.startsWith('fagus')?'#587b51':species.startsWith('quercus')?'#648357':species.startsWith('robinia')?'#94a965':species.startsWith('tilia')?'#789655':'#78945a';
-  const bark=species.startsWith('betula')?'#d8d9c5':species.startsWith('platanus')?'#aaa68a':species==='prunus avium'?'#8a5544':species==='corylus colurna'||species.startsWith('fagus')?'#8a8b80':species.startsWith('metasequoia')?'#935d47':'#665741';
+  const bark=species==='betula nigra'&&!managed?'#805b46':species.startsWith('betula')?'#d8d9c5':species.startsWith('platanus')?'#aaa68a':species==='prunus avium'?'#8a5544':species==='corylus colurna'||species.startsWith('fagus')?'#8a8b80':species.startsWith('metasequoia')?'#935d47':'#665741';
   return {version:TREE_TYPOLOGY_VERSION,id:tree.id,position:[...tree.position],height,archetype,lobes,
     trunkHeight:h*(managed?.78:archetype==='fan-palm'?.90:.60),trunkWidth:Math.min(.52,Math.max(.14,h*.023)),
     foliage,bark,crownGeometry:archetype.startsWith('conical-')?'cone':'faceted',rotation:numberSeed(tree.id)*Math.PI*2,
