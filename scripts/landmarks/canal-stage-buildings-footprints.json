@@ -1,0 +1,1148 @@
+[
+  {
+    "id": "rode-hoed",
+    "parts": [
+      {
+        "osmId": "w31742462",
+        "bagId": "0363100012167695",
+        "tags": {
+          "building": "church",
+          "building:colour": "brown",
+          "height": "16.7",
+          "ref:bag": "0363100012167695",
+          "source": "BAG",
+          "source:date": "2014-02-11",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1630"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.887244869717529,
+                52.37745551062656
+              ],
+              [
+                4.887232403452454,
+                52.37744098778938
+              ],
+              [
+                4.887176532268124,
+                52.37745971593106
+              ],
+              [
+                4.88718973987969,
+                52.37747361276524
+              ],
+              [
+                4.887109972986956,
+                52.37750158718371
+              ],
+              [
+                4.887095453845854,
+                52.37748678603122
+              ],
+              [
+                4.886982972876931,
+                52.3775245985474
+              ],
+              [
+                4.886964845283558,
+                52.37750420975937
+              ],
+              [
+                4.886950991385414,
+                52.37750855520808
+              ],
+              [
+                4.886945806297065,
+                52.37750342828749
+              ],
+              [
+                4.886919962723062,
+                52.37751219895649
+              ],
+              [
+                4.886924754143589,
+                52.37751707255933
+              ],
+              [
+                4.886909417508894,
+                52.3775226700174
+              ],
+              [
+                4.8869044390324445,
+                52.37751745409087
+              ],
+              [
+                4.886871016753722,
+                52.37752888904024
+              ],
+              [
+                4.886874932118764,
+                52.377533309558366
+              ],
+              [
+                4.88686239988486,
+                52.37753766058104
+              ],
+              [
+                4.886858457380603,
+                52.37753304221836
+              ],
+              [
+                4.886824283691404,
+                52.37754468968446
+              ],
+              [
+                4.886828491746405,
+                52.377549201317926
+              ],
+              [
+                4.886815372088978,
+                52.37755354985342
+              ],
+              [
+                4.8868059320626696,
+                52.37754416275033
+              ],
+              [
+                4.886810795469439,
+                52.37754265539243
+              ],
+              [
+                4.8867935409566545,
+                52.37752298928373
+              ],
+              [
+                4.88678395187281,
+                52.37752681347334
+              ],
+              [
+                4.886776941191114,
+                52.37751948583069
+              ],
+              [
+                4.88678679319057,
+                52.37751578858057
+              ],
+              [
+                4.886770765859758,
+                52.37749799709676
+              ],
+              [
+                4.88676014779111,
+                52.3775019068129
+              ],
+              [
+                4.886753906110403,
+                52.377495409287484
+              ],
+              [
+                4.886764675087898,
+                52.37749114070159
+              ],
+              [
+                4.88674727071978,
+                52.3774717435836
+              ],
+              [
+                4.886735626710176,
+                52.37747546920753
+              ],
+              [
+                4.88672950333079,
+                52.37746890027914
+              ],
+              [
+                4.886741205674847,
+                52.3774652108532
+              ],
+              [
+                4.886722898544802,
+                52.37744512685062
+              ],
+              [
+                4.88671169205732,
+                52.37744912395248
+              ],
+              [
+                4.88670487717735,
+                52.37744136572316
+              ],
+              [
+                4.886715876040536,
+                52.37743754749847
+              ],
+              [
+                4.88669854473564,
+                52.37741818663262
+              ],
+              [
+                4.886686441839811,
+                52.37742223386949
+              ],
+              [
+                4.8866800543422135,
+                52.37741564584662
+              ],
+              [
+                4.886692291838869,
+                52.37741138347447
+              ],
+              [
+                4.8866833003395005,
+                52.37740129721609
+              ],
+              [
+                4.886670475635119,
+                52.37740553912981
+              ],
+              [
+                4.886666273695652,
+                52.37740048825411
+              ],
+              [
+                4.88667870179418,
+                52.377396253652115
+              ],
+              [
+                4.886667925815817,
+                52.377384227493366
+              ],
+              [
+                4.88664315813868,
+                52.377392661117135
+              ],
+              [
+                4.886658397163019,
+                52.377408723647434
+              ],
+              [
+                4.886584100143716,
+                52.37743348526049
+              ],
+              [
+                4.886552184048057,
+                52.377398657787516
+              ],
+              [
+                4.886646918741997,
+                52.37736654975826
+              ],
+              [
+                4.886698576142563,
+                52.377349035370905
+              ],
+              [
+                4.886790727333082,
+                52.37731679946692
+              ],
+              [
+                4.886903964505208,
+                52.37727701303291
+              ],
+              [
+                4.886979592873677,
+                52.377355525562315
+              ],
+              [
+                4.886993013257807,
+                52.37735054913976
+              ],
+              [
+                4.886995939965276,
+                52.377352781465675
+              ],
+              [
+                4.886994229679556,
+                52.37735337641724
+              ],
+              [
+                4.88700576298887,
+                52.37736597197052
+              ],
+              [
+                4.8871101544663045,
+                52.3773292037935
+              ],
+              [
+                4.887124658360243,
+                52.377345353035984
+              ],
+              [
+                4.887141774765446,
+                52.37733950242265
+              ],
+              [
+                4.887130849694132,
+                52.37732766441836
+              ],
+              [
+                4.887146507181723,
+                52.37732225702838
+              ],
+              [
+                4.887139600991936,
+                52.37731477705728
+              ],
+              [
+                4.887123958292772,
+                52.37732017552109
+              ],
+              [
+                4.887115847922851,
+                52.377311387246074
+              ],
+              [
+                4.887270682736314,
+                52.377257926078464
+              ],
+              [
+                4.887271756275932,
+                52.37725909901232
+              ],
+              [
+                4.88728247800303,
+                52.37727073841571
+              ],
+              [
+                4.8872971169446995,
+                52.37728663655155
+              ],
+              [
+                4.8873135838549695,
+                52.37730452868491
+              ],
+              [
+                4.88740185298738,
+                52.377400395633714
+              ],
+              [
+                4.887244869717529,
+                52.37745551062656
+              ]
+            ]
+          ]
+        ]
+      }
+    ],
+    "currentBagProperties": {
+      "aantal_verblijfsobjecten": 3,
+      "bouwjaar": 1630,
+      "documentdatum": "2023-09-28",
+      "documentnummer": "GV00007182_AC00AC",
+      "gebruiksdoel": "bijeenkomstfunctie,overige gebruiksfunctie,woonfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012167695",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012167695",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/fed8a9f0-9a56-5932-bb31-0e824ad2156d",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/3c2ef704-fd1b-5a75-b7de-cbee9d15fbfd",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/dfb8aa21-7b6a-51ab-9bf3-06c557232bb3"
+      ]
+    },
+    "heightEvidence": {
+      "b3_bag_bag_overlap": 0.0,
+      "b3_bouwlagen": 4,
+      "b3_dak_type": "slanted",
+      "b3_extrusie": "standard",
+      "b3_h_dak_50p": 12.689000129699707,
+      "b3_h_dak_70p": 14.116999626159668,
+      "b3_h_dak_max": 17.073999404907227,
+      "b3_h_dak_min": 3.7990000247955322,
+      "b3_h_maaiveld": 0.7490000128746033,
+      "b3_h_nok": 17.402767181396484,
+      "b3_is_glas_dak": false,
+      "b3_kas_warenhuis": false,
+      "b3_kwaliteitsindicator": true,
+      "b3_mutatie_ahn3_ahn4": false,
+      "b3_mutatie_ahn4_ahn5": false,
+      "b3_n_nok": 9,
+      "b3_n_vlakken": 43,
+      "b3_nodata_fractie_ahn3": 0.0046120453625917435,
+      "b3_nodata_fractie_ahn4": 0.013836137019097805,
+      "b3_nodata_fractie_ahn5": 0.026858383789658546,
+      "b3_nodata_radius_ahn3": 0.22717519104480743,
+      "b3_nodata_radius_ahn4": 0.0,
+      "b3_nodata_radius_ahn5": 0.0,
+      "b3_opp_buitenmuur": 1853.31,
+      "b3_opp_dak_plat": 324.71,
+      "b3_opp_dak_schuin": 906.49,
+      "b3_opp_grond": 920.53,
+      "b3_opp_scheidingsmuur": 359.34,
+      "b3_puntdichtheid_ahn3": 18.58163070678711,
+      "b3_puntdichtheid_ahn4": 32.061622619628906,
+      "b3_puntdichtheid_ahn5": 15.519375801086426,
+      "b3_pw_bron": "ahn5",
+      "b3_pw_datum": 2023,
+      "b3_pw_onvoldoende": false,
+      "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+      "b3_rmse_lod12": 3.4729983806610107,
+      "b3_rmse_lod13": 1.7958786487579346,
+      "b3_rmse_lod22": 0.4457465410232544,
+      "b3_t_run": 481,
+      "b3_val3dity_lod12": "[]",
+      "b3_val3dity_lod13": "[]",
+      "b3_val3dity_lod22": "[]",
+      "b3_volume_lod12": 12220.4765625,
+      "b3_volume_lod13": 11312.51171875,
+      "b3_volume_lod22": 10397.6328125,
+      "begingeldigheid": "2023-09-28",
+      "documentdatum": "2023-09-28",
+      "documentnummer": "GV00007182_AC00AC",
+      "eindgeldigheid": null,
+      "eindregistratie": null,
+      "fid": 8549359,
+      "geconstateerd": false,
+      "identificatie": "NL.IMBAG.Pand.0363100012167695",
+      "oorspronkelijkbouwjaar": 1630,
+      "status": "Pand in gebruik",
+      "tijdstipeindregistratielv": null,
+      "tijdstipinactief": null,
+      "tijdstipinactieflv": null,
+      "tijdstipnietbaglv": null,
+      "tijdstipregistratie": "2023-09-28T18:26:10Z",
+      "tijdstipregistratielv": "2023-09-28T20:08:43Z",
+      "voorkomenidentificatie": 3
+    },
+    "references": [
+      "https://rodehoed.nl/index.php/over-rode-hoed/",
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012167695",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167695",
+      "https://www.amsterdam.nl/stadsarchief/stukken/grachten-torens/hoed-gevel/",
+      "https://rodehoed.nl/img/square/1024/webp/crop/Rode%20Hoed%20voorkant%20.jpg"
+    ],
+    "reconstructionNotes": "Whole shared parent includes three canal-front halls and the rear church with real service recesses. Front roof surface heights 12.81/15.28/14.38 m; church transverse roof ridge 16.66 m above local terrain. Adjacent separate canal houses are not suppressed.",
+    "roofSurfaceEvidence": {
+      "source": "Detailed LoD2.2 RoofSurface vertex heights, local terrain subtracted",
+      "surfaces": [
+        {
+          "surfaceIndex": 206,
+          "heightAboveTerrainMetres": [
+            12.616,
+            15.276
+          ]
+        },
+        {
+          "surfaceIndex": 207,
+          "heightAboveTerrainMetres": [
+            9.597,
+            11.719
+          ]
+        },
+        {
+          "surfaceIndex": 208,
+          "heightAboveTerrainMetres": [
+            3.328,
+            3.767
+          ]
+        },
+        {
+          "surfaceIndex": 209,
+          "heightAboveTerrainMetres": [
+            2.35,
+            3.02
+          ]
+        },
+        {
+          "surfaceIndex": 210,
+          "heightAboveTerrainMetres": [
+            4.164,
+            4.414
+          ]
+        },
+        {
+          "surfaceIndex": 211,
+          "heightAboveTerrainMetres": [
+            4.202,
+            5.174
+          ]
+        },
+        {
+          "surfaceIndex": 212,
+          "heightAboveTerrainMetres": [
+            11.932,
+            16.656
+          ]
+        },
+        {
+          "surfaceIndex": 213,
+          "heightAboveTerrainMetres": [
+            2.618,
+            2.698
+          ]
+        },
+        {
+          "surfaceIndex": 214,
+          "heightAboveTerrainMetres": [
+            2.974,
+            4.364
+          ]
+        },
+        {
+          "surfaceIndex": 215,
+          "heightAboveTerrainMetres": [
+            10.753,
+            14.384
+          ]
+        },
+        {
+          "surfaceIndex": 216,
+          "heightAboveTerrainMetres": [
+            9.538,
+            9.686
+          ]
+        },
+        {
+          "surfaceIndex": 217,
+          "heightAboveTerrainMetres": [
+            12.283,
+            14.797
+          ]
+        },
+        {
+          "surfaceIndex": 218,
+          "heightAboveTerrainMetres": [
+            9.964,
+            14.384
+          ]
+        },
+        {
+          "surfaceIndex": 219,
+          "heightAboveTerrainMetres": [
+            4.27,
+            4.458
+          ]
+        },
+        {
+          "surfaceIndex": 220,
+          "heightAboveTerrainMetres": [
+            12.554,
+            12.666
+          ]
+        },
+        {
+          "surfaceIndex": 221,
+          "heightAboveTerrainMetres": [
+            11.841,
+            16.651
+          ]
+        },
+        {
+          "surfaceIndex": 222,
+          "heightAboveTerrainMetres": [
+            7.025,
+            11.878
+          ]
+        },
+        {
+          "surfaceIndex": 223,
+          "heightAboveTerrainMetres": [
+            3.247,
+            3.344
+          ]
+        },
+        {
+          "surfaceIndex": 224,
+          "heightAboveTerrainMetres": [
+            6.985,
+            11.779
+          ]
+        },
+        {
+          "surfaceIndex": 225,
+          "heightAboveTerrainMetres": [
+            15.902,
+            16.708
+          ]
+        },
+        {
+          "surfaceIndex": 226,
+          "heightAboveTerrainMetres": [
+            9.943,
+            10.063
+          ]
+        },
+        {
+          "surfaceIndex": 227,
+          "heightAboveTerrainMetres": [
+            6.64,
+            11.878
+          ]
+        },
+        {
+          "surfaceIndex": 228,
+          "heightAboveTerrainMetres": [
+            6.835,
+            7.116
+          ]
+        },
+        {
+          "surfaceIndex": 229,
+          "heightAboveTerrainMetres": [
+            8.618,
+            12.81
+          ]
+        },
+        {
+          "surfaceIndex": 230,
+          "heightAboveTerrainMetres": [
+            5.784,
+            8.611
+          ]
+        },
+        {
+          "surfaceIndex": 231,
+          "heightAboveTerrainMetres": [
+            11.689,
+            11.949
+          ]
+        },
+        {
+          "surfaceIndex": 232,
+          "heightAboveTerrainMetres": [
+            11.739,
+            11.899
+          ]
+        },
+        {
+          "surfaceIndex": 233,
+          "heightAboveTerrainMetres": [
+            12.526,
+            15.276
+          ]
+        },
+        {
+          "surfaceIndex": 234,
+          "heightAboveTerrainMetres": [
+            8.56,
+            12.81
+          ]
+        },
+        {
+          "surfaceIndex": 235,
+          "heightAboveTerrainMetres": [
+            5.413,
+            5.49
+          ]
+        },
+        {
+          "surfaceIndex": 236,
+          "heightAboveTerrainMetres": [
+            13.479,
+            13.574
+          ]
+        },
+        {
+          "surfaceIndex": 237,
+          "heightAboveTerrainMetres": [
+            12.135,
+            14.866
+          ]
+        },
+        {
+          "surfaceIndex": 238,
+          "heightAboveTerrainMetres": [
+            9.957,
+            10.013
+          ]
+        },
+        {
+          "surfaceIndex": 239,
+          "heightAboveTerrainMetres": [
+            2.933,
+            3.094
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "theater-amsterdam",
+    "parts": [
+      {
+        "osmId": "w265853828",
+        "bagId": "0363100012242100",
+        "tags": {
+          "addr:city": "Amsterdam",
+          "addr:housenumber": "5",
+          "addr:postcode": "1013AP",
+          "addr:street": "Danzigerkade",
+          "amenity": "theatre",
+          "building": "yes",
+          "height": "19.1",
+          "name": "Theater Amsterdam",
+          "ref:bag": "0363100012242100",
+          "source": "BAG",
+          "source:date": "2015-07-19",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "2014",
+          "website": "https://www.theateramsterdam.nl/",
+          "wikidata": "Q18088265",
+          "wikipedia": "nl:Theater Amsterdam"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.87648127628753,
+                52.39724102636692
+              ],
+              [
+                4.876491668210398,
+                52.39721897947114
+              ],
+              [
+                4.876501569285771,
+                52.39719745174312
+              ],
+              [
+                4.876573995139708,
+                52.39704642953326
+              ],
+              [
+                4.876584531817776,
+                52.3970245630062
+              ],
+              [
+                4.876668086760256,
+                52.396849933151564
+              ],
+              [
+                4.876678623137832,
+                52.39682808458956
+              ],
+              [
+                4.876750690419312,
+                52.39667747415136
+              ],
+              [
+                4.87676131496842,
+                52.396655616973774
+              ],
+              [
+                4.876771535276893,
+                52.39663441415343
+              ],
+              [
+                4.8767719115726065,
+                52.396633633847316
+              ],
+              [
+                4.876922538605271,
+                52.39666038304827
+              ],
+              [
+                4.876920732873283,
+                52.39666408717874
+              ],
+              [
+                4.876977459207471,
+                52.39667438874956
+              ],
+              [
+                4.876979265142048,
+                52.39667066664377
+              ],
+              [
+                4.877611543988968,
+                52.39678390093502
+              ],
+              [
+                4.877625971605927,
+                52.396786488540236
+              ],
+              [
+                4.87761690078892,
+                52.39680486526054
+              ],
+              [
+                4.877935319542183,
+                52.39686206613135
+              ],
+              [
+                4.877859241694732,
+                52.39702190834379
+              ],
+              [
+                4.877854519513815,
+                52.39703137003331
+              ],
+              [
+                4.87786038187873,
+                52.39703264452841
+              ],
+              [
+                4.877863035100837,
+                52.397028063236334
+              ],
+              [
+                4.8778998358224435,
+                52.39703480943857
+              ],
+              [
+                4.8778793680476875,
+                52.397077098310334
+              ],
+              [
+                4.87784256729412,
+                52.39707035210172
+              ],
+              [
+                4.8778448392561815,
+                52.397065706256875
+              ],
+              [
+                4.877838710472431,
+                52.39706460138119
+              ],
+              [
+                4.877757082206938,
+                52.397234315083175
+              ],
+              [
+                4.877439140985062,
+                52.397177538220554
+              ],
+              [
+                4.877429926723477,
+                52.39719687598924
+              ],
+              [
+                4.877418664642003,
+                52.397220528014635
+              ],
+              [
+                4.877408039350225,
+                52.397242466133925
+              ],
+              [
+                4.877396086327007,
+                52.39726742738354
+              ],
+              [
+                4.877387908819743,
+                52.397284765359736
+              ],
+              [
+                4.877382356954693,
+                52.39729609289536
+              ],
+              [
+                4.877356508957458,
+                52.39735006046956
+              ],
+              [
+                4.877346059182926,
+                52.397372062252096
+              ],
+              [
+                4.877335448303779,
+                52.39739401840181
+              ],
+              [
+                4.877275786510841,
+                52.39738336283854
+              ],
+              [
+                4.877261285777665,
+                52.397380729938334
+              ],
+              [
+                4.877041041569676,
+                52.39734128736308
+              ],
+              [
+                4.876688528574615,
+                52.397278149100075
+              ],
+              [
+                4.876690305070959,
+                52.397274435859806
+              ],
+              [
+                4.8766335905541585,
+                52.39726432294687
+              ],
+              [
+                4.87663179946512,
+                52.39726802713576
+              ],
+              [
+                4.87655303384733,
+                52.39725387354448
+              ],
+              [
+                4.876538429942482,
+                52.397251276061326
+              ],
+              [
+                4.8765052344407085,
+                52.397245326907665
+              ],
+              [
+                4.87648127628753,
+                52.39724102636692
+              ]
+            ]
+          ]
+        ]
+      }
+    ],
+    "currentBagProperties": {
+      "aantal_verblijfsobjecten": 1,
+      "bouwjaar": 2014,
+      "documentdatum": "2024-04-17",
+      "documentnummer": "GV00007340_GV00GM",
+      "gebruiksdoel": "bijeenkomstfunctie,industriefunctie,overige gebruiksfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012242100",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012242100",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/888c1ddd-1d91-5669-9b0a-4e6354738078"
+      ]
+    },
+    "heightEvidence": {
+      "b3_bag_bag_overlap": null,
+      "b3_bouwlagen": null,
+      "b3_dak_type": "slanted",
+      "b3_extrusie": "standard",
+      "b3_h_dak_50p": 17.350000381469727,
+      "b3_h_dak_70p": 17.62299919128418,
+      "b3_h_dak_max": 19.857999801635742,
+      "b3_h_dak_min": 16.902000427246094,
+      "b3_h_maaiveld": 0.9639999866485596,
+      "b3_h_nok": 16.9102725982666,
+      "b3_is_glas_dak": false,
+      "b3_kas_warenhuis": false,
+      "b3_kwaliteitsindicator": true,
+      "b3_mutatie_ahn3_ahn4": false,
+      "b3_mutatie_ahn4_ahn5": false,
+      "b3_n_nok": 4,
+      "b3_n_vlakken": 32,
+      "b3_nodata_fractie_ahn3": 0.0010937796905636787,
+      "b3_nodata_fractie_ahn4": 0.0,
+      "b3_nodata_fractie_ahn5": 9.511128155281767e-05,
+      "b3_nodata_radius_ahn3": 0.0,
+      "b3_nodata_radius_ahn4": 0.0,
+      "b3_nodata_radius_ahn5": 0.1153944879770279,
+      "b3_opp_buitenmuur": 5397.37,
+      "b3_opp_dak_plat": 5054.33,
+      "b3_opp_dak_schuin": 327.95,
+      "b3_opp_grond": 5250.46,
+      "b3_opp_scheidingsmuur": 0.0,
+      "b3_puntdichtheid_ahn3": 14.654605865478516,
+      "b3_puntdichtheid_ahn4": 33.560394287109375,
+      "b3_puntdichtheid_ahn5": 36.964900970458984,
+      "b3_pw_bron": "ahn5",
+      "b3_pw_datum": 2023,
+      "b3_pw_onvoldoende": false,
+      "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+      "b3_rmse_lod12": 0.5103007555007935,
+      "b3_rmse_lod13": 0.5103007555007935,
+      "b3_rmse_lod22": 0.1535576581954956,
+      "b3_t_run": 5688,
+      "b3_val3dity_lod12": "[]",
+      "b3_val3dity_lod13": "[]",
+      "b3_val3dity_lod22": "[]",
+      "b3_volume_lod12": 87484.0234375,
+      "b3_volume_lod13": 87484.0234375,
+      "b3_volume_lod22": 86629.9921875,
+      "begingeldigheid": "2024-04-17",
+      "documentdatum": "2024-04-17",
+      "documentnummer": "GV00007340_GV00GM",
+      "eindgeldigheid": null,
+      "eindregistratie": null,
+      "fid": 8620617,
+      "geconstateerd": false,
+      "identificatie": "NL.IMBAG.Pand.0363100012242100",
+      "oorspronkelijkbouwjaar": 2014,
+      "status": "Pand in gebruik",
+      "tijdstipeindregistratielv": null,
+      "tijdstipinactief": null,
+      "tijdstipinactieflv": null,
+      "tijdstipnietbaglv": null,
+      "tijdstipregistratie": "2024-04-19T10:40:20Z",
+      "tijdstipregistratielv": "2024-04-19T10:40:25Z",
+      "voorkomenidentificatie": 4
+    },
+    "references": [
+      "https://dedato.com/project/een-theater-voor-anne-frank/",
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012242100",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012242100",
+      "https://dedato.com/media/Theater-Amsterdam-011-760x507.jpg",
+      "https://dedato.com/media/Theater-Amsterdam-021-760x507.jpg"
+    ],
+    "reconstructionNotes": "Entire 2014 theater parent, three-storey glazed foyer in front and broad dark hall behind. Detailed roof surfaces place foyer canopy 16.34\u201316.39 m, hall 15.8\u201317.33 m, rooftop service-room top 19.14 m above terrain. Glass replaces opaque foyer walls; it is not overlaid on a filled hall.",
+    "roofSurfaceEvidence": {
+      "source": "Detailed LoD2.2 RoofSurface vertex heights, local terrain subtracted",
+      "surfaces": [
+        {
+          "surfaceIndex": 118,
+          "heightAboveTerrainMetres": [
+            17.751,
+            17.775
+          ]
+        },
+        {
+          "surfaceIndex": 119,
+          "heightAboveTerrainMetres": [
+            18.637,
+            18.691
+          ]
+        },
+        {
+          "surfaceIndex": 120,
+          "heightAboveTerrainMetres": [
+            17.828,
+            18.004
+          ]
+        },
+        {
+          "surfaceIndex": 121,
+          "heightAboveTerrainMetres": [
+            15.769,
+            16.999
+          ]
+        },
+        {
+          "surfaceIndex": 122,
+          "heightAboveTerrainMetres": [
+            17.506,
+            17.608
+          ]
+        },
+        {
+          "surfaceIndex": 123,
+          "heightAboveTerrainMetres": [
+            15.802,
+            16.809
+          ]
+        },
+        {
+          "surfaceIndex": 124,
+          "heightAboveTerrainMetres": [
+            18.874,
+            19.143
+          ]
+        },
+        {
+          "surfaceIndex": 125,
+          "heightAboveTerrainMetres": [
+            16.893,
+            16.943
+          ]
+        },
+        {
+          "surfaceIndex": 126,
+          "heightAboveTerrainMetres": [
+            18.644,
+            18.801
+          ]
+        },
+        {
+          "surfaceIndex": 127,
+          "heightAboveTerrainMetres": [
+            17.76,
+            17.778
+          ]
+        },
+        {
+          "surfaceIndex": 128,
+          "heightAboveTerrainMetres": [
+            15.816,
+            17.145
+          ]
+        },
+        {
+          "surfaceIndex": 129,
+          "heightAboveTerrainMetres": [
+            16.337,
+            16.39
+          ]
+        },
+        {
+          "surfaceIndex": 130,
+          "heightAboveTerrainMetres": [
+            15.835,
+            17.326
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "vondelpark-open-air-theater",
+    "parts": [
+      {
+        "osmId": "w230377611",
+        "bagId": null,
+        "tags": {
+          "amenity": "theatre",
+          "building": "yes",
+          "check_date": "2025-01-16",
+          "name": "Vondelpark Openluchttheater",
+          "name:en": "Vondelpark Open Air Theater",
+          "payment:cash": "yes",
+          "website": "https://www.openluchttheater.nl",
+          "wheelchair": "yes",
+          "wikidata": "Q2302282",
+          "wikimedia_commons": "Category:Vondelpark Openluchttheater",
+          "wikipedia": "nl:Vondelpark Openluchttheater"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.8710165,
+                52.3583659
+              ],
+              [
+                4.8712149,
+                52.3584069
+              ],
+              [
+                4.8712123,
+                52.3584593
+              ],
+              [
+                4.8710191,
+                52.3584904
+              ],
+              [
+                4.8710165,
+                52.3583659
+              ]
+            ]
+          ]
+        ]
+      }
+    ],
+    "currentBagProperties": {},
+    "heightEvidence": {
+      "primaryMeasuredPodiumHeightMetres": 1.2,
+      "primaryMeasuredPodiumFrontMetres": 13.3,
+      "primaryMeasuredPodiumRearMetres": 5.0,
+      "primaryMeasuredPodiumDepthMetres": 10.5,
+      "current2026GridHeightAboveStageMetres": [
+        4.1,
+        4.8
+      ],
+      "canopyApproximateHeightMetres": 8.2,
+      "canopyHeightStatus": "Visual approximation from official venue overview; roof envelope is not represented in current BAG or the measured lighting-grid drawing."
+    },
+    "references": [
+      "https://www.openluchttheater.nl/techniek/plattegronden/",
+      "https://www.openluchttheater.nl/wp-content/uploads/2019/04/Podium-VOLT.pdf",
+      "https://www.openluchttheater.nl/wp-content/uploads/2019/04/Zijaanzicht-VOLT.pdf",
+      "https://www.openluchttheater.nl/wp-content/uploads/2026/03/rider-VOLT-2026.pdf",
+      "https://www.openluchttheater.nl/wp-content/uploads/2019/03/IMG_5951-e1559655273833.jpg"
+    ],
+    "reconstructionNotes": "Non-BAG structure: legal BAG bbox contains no pand at the mapped stage canopy. Exact OSM roof trapezoid retained; measured 13.3\u21925 m podium is 10.5 m deep and 1.2 m high.2026 rider gives 8 m usable stage plus rear deck. Roof and steel-leg silhouettes are photo approximations; lighting-grid dimensions are not claimed as measured canopy envelope. Separate Muziektent bandstand, audience grounds, nearby pavilions and all park vegetation stay untouched."
+  }
+]

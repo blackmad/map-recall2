@@ -1,0 +1,115 @@
+[
+  {
+    "id": "rode-hoed",
+    "name": "De Rode Hoed / former Remonstrant church",
+    "landmarkId": "extract_landmarks_933328743",
+    "modelUrl": "./models/rode-hoed.glb",
+    "suppressOsmIds": [
+      "w31742462",
+      "NL.IMBAG.Pand.0363100012167695"
+    ],
+    "footprint": {
+      "centre": [
+        4.886977068632325,
+        52.377399662040965
+      ],
+      "headingDegrees": 119.33760650003984,
+      "lengthMetres": 50.248894059454734,
+      "widthMetres": 28.67251006008804
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.16239349996016017,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8873364,
+        52.37732955
+      ],
+      "northOffsetDegrees": -60.5,
+      "source": "Individual current BAG parent, frontage surveyed against mapped street axis; primary current venue/architect photos and detailed AHN5/3DBAG roof surfaces above local terrain."
+    },
+    "attribution": {
+      "title": "De Rode Hoed / former Remonstrant church",
+      "author": "Map Recall",
+      "sourceUrl": "https://rodehoed.nl/index.php/over-rode-hoed/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
+    }
+  },
+  {
+    "id": "theater-amsterdam",
+    "name": "Theater Amsterdam",
+    "landmarkId": "extract_landmarks_707691223",
+    "modelUrl": "./models/theater-amsterdam.glb",
+    "suppressOsmIds": [
+      "w265853828",
+      "NL.IMBAG.Pand.0363100012242100"
+    ],
+    "footprint": {
+      "centre": [
+        4.877233932262727,
+        52.39704600970005
+      ],
+      "headingDegrees": 73.64238721269251,
+      "lengthMetres": 86.099781433493,
+      "widthMetres": 70.46676920649148
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -0.2423872126925346,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8778458,
+        52.3970485
+      ],
+      "northOffsetDegrees": 253.39999999999998,
+      "source": "Individual current BAG parent, frontage surveyed against mapped street axis; primary current venue/architect photos and detailed AHN5/3DBAG roof surfaces above local terrain."
+    },
+    "attribution": {
+      "title": "Theater Amsterdam",
+      "author": "Map Recall",
+      "sourceUrl": "https://dedato.com/project/een-theater-voor-anne-frank/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
+    }
+  },
+  {
+    "id": "vondelpark-open-air-theater",
+    "name": "Vondelpark Open Air Theater / stage canopy",
+    "landmarkId": "extract_landmarks_1467127381",
+    "modelUrl": "./models/vondelpark-open-air-theater.glb",
+    "suppressOsmIds": [
+      "w230377611"
+    ],
+    "footprint": {
+      "centre": [
+        4.871116555823464,
+        52.35842738077742
+      ],
+      "headingDegrees": 0.7307111567452864,
+      "lengthMetres": 13.860467166636939,
+      "widthMetres": 13.429006472367991
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 269.99998884325476,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8711157,
+        52.35843215
+      ],
+      "northOffsetDegrees": 90.73070000000001,
+      "source": "Exact current BAG / OSM parent footprint and street-facing axis; primary architectural photos and roof surfaces. Stage dimensions from official operator drawings; roof curvature and envelope approximated from primary venue photo."
+    },
+    "attribution": {
+      "title": "Vondelpark Open Air Theater / stage canopy",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.openluchttheater.nl/techniek/plattegronden/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
+    }
+  }
+]
