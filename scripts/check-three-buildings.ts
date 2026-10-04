@@ -754,7 +754,7 @@ for (const c of [0.64, 1.4]) {
 
 {
   // Bay archetypes follow the facade periods: a 1890 Jordaan block is 19th century, a 1965 slab is modern, not canal houses.
-  const { archetypeFor } = await import('../src/canalRecall/bayTextures.ts');
+  const { archetypeFor, isBareBay } = await import('../src/canalRecall/bayTextures.ts');
   const { BAY_LAYER_COUNT, BAY_STYLES } = await import('../src/canalRecall/bayLook.ts');
   assert.equal(archetypeFor('x', 1650, 15), 'canal');
   assert.equal(archetypeFor('x', 1890, 15), 'c19');
@@ -762,6 +762,10 @@ for (const c of [0.64, 1.4]) {
   assert.equal(archetypeFor('x', 1965, 15), 'modern');
   assert.ok(BAY_STYLES.canal.every(s => s.shape === 'rect'), 'canal houses have flat lintels; arched hoods are 19th century');
   assert.ok(BAY_LAYER_COUNT < 200, 'bay layers fit the byte layer index with room for roofs');
+  // A plain bay is bare wall at every archetype (user report 2026-10-04: a modern gable face drew a
+  // ribbon window band). `draw` branches on `isBareBay` first, so this guards the regression.
+  for (const kind of ['plain', 'upper', 'upperTall', 'attic', 'ground', 'groundDoor'] as const)
+    assert.equal(isBareBay(kind), kind === 'plain', `${kind}: only plain bays are bare wall`);
 }
 {
   // Wall colours follow the period (user 2026-10-02, real-vs-game sheet: "one brick palette"): canal houses
