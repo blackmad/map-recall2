@@ -91,7 +91,8 @@ varied crowns, conifers, trunks and branch forks. Positions are inventory
 locations; crown width/shape remain approximations. The main landscape contains
 9,479 mapped features across 32 park/site selections; Amsterdamse Bos adds an
 optional, locally streamed 3,254-feature chunk. Sixteen crown forms include
-recorded palms. Review at `park-landscape.html`.
+recorded palms. The visible Trees setting honors its saved preference in all
+four views; fresh desktop and mobile views show inventory trees by default. Review at `park-landscape.html`.
 Open: real-device Safari/phone performance and more verified cultivar priors.
 Other cities retain the OSM tree fallback.
 
@@ -136,17 +137,19 @@ Boom Chicago, Agnietenkapel, LAB111, OCCII, Ketelhuis, Wereldmuseum Amsterdam,
 Dutch Resistance Museum, Allard Pierson, Dominicuskerk, Vredeskerk, Badhuistheater,
 Cinecenter, Studio/K / Timorplein school, ARTIS Groote Museum and ARTIS Library
 plus Willet-Holthuysen, Amsterdam Pipe Museum, Athenaeum/Nieuwscentrum,
-Scheltema, Haarlemmermeerstation and De Dokwerker (80 original assets). The live replacements retain measured footprint alignment and
+Scheltema, Haarlemmermeerstation, De Dokwerker, Begijnhofkapel, Houten Huys,
+Huis De Pinto, Amsterdam Tulip Museum, OT301, Filmhuis Cavia and Orgelpark
+(87 original assets). The live replacements retain measured footprint alignment and
 hide generic building geometry only after the GLB has loaded. Review meshes at
 `manual-landmarks.html`; inspect actual map placement before marking additions
-complete. Next batches: Huis De Pinto, Amsterdam Tulip Museum, Begijnhofkapel
-and further church/theatre destinations. Exact building IDs preserve neighbors and courtyards
+complete. Next batches: De Rode Hoed, Theater Amsterdam, Vondelpark Open Air
+Theater and further house/church destinations. Exact building IDs preserve neighbors and courtyards
 around narrow house museums and irregular complexes. Squares/intersections require a public-space treatment rather than
 a generic building model.
 Large cinemas and theatres now have the public-building category treatment;
 Pathé City, Tuschinski, LAB111, OCCII and Ketelhuis also have original models.
 Studio/K, Cinecenter and Badhuistheater now have individual models. Remaining museum models include Madame
-Tussauds, Amsterdam Tulip Museum and Huis De Pinto.
+Tussauds, Hash Marihuana & Hemp Museum and further smaller museums.
 Further kit refinements: Munttoren, Rijksmuseum (towers, central arch), Beurs van
 Berlage (clock tower), NEMO (green ship prow), Stopera, Hofkerk
 (dome). Dominicuskerk and Vredeskerk now have original whole-church models.

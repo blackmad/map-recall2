@@ -1,0 +1,38 @@
+{
+  "id": "begijnhofkapel",
+  "name": "Begijnhofkapel — HH. Johannes en Ursula",
+  "landmarkId": "extract_landmarks_643362629",
+  "modelUrl": "./models/begijnhofkapel.glb",
+  "suppressOsmIds": [
+    "w266903904",
+    "NL.IMBAG.Pand.0363100012168060"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.88955916,
+      52.369376188
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 21.525620909399965,
+    "widthMetres": 40.921907999888134
+  },
+  "surveyed": {
+    "anchor": [
+      4.88955916,
+      52.369376188
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Actual shared OSM/BAG plan, local east/south metres; current3DBAG ridge15.794m aboveground"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Begijnhofkapel",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/368",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free reconstruction. Exact sharedBAG plan, two bent three-bay fronts, Empire windows and projecting stone portal. Authored simplified rear roof/wall divisions within current3DBAG height; church has no spire. EnglishReformedChurch and neighboring houses retained."
+  }
+}

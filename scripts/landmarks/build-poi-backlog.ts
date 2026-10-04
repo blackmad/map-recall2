@@ -20,7 +20,8 @@ const extras=extract.flatMap((f:any)=>{
 const requests=['Silodam','Embassy of the Free Mind','OLVG West','OLVG Oost','A’DAM Tower','Pontsteiger','REM-eiland','Paradiso','Melkweg'];
 const aliases:Record<string,string>={'central':'centraal-station','nemo':'nemo','palace':'palace-on-the-dam','rijksmuseum':'rijksmuseum','mint':'munttoren-amsterdam','westerkerk':'westerkerk'};
 const equivalents:Record<string,string>={
-  'national maritime museum':'scheepvaartmuseum','het scheepvaartmuseum':'scheepvaartmuseum',
+  'national maritime museum':'scheepvaartmuseum','the national maritime museum':'scheepvaartmuseum','het scheepvaartmuseum':'scheepvaartmuseum',
+  'the shipping house':'scheepvaarthuis','shipping house':'scheepvaarthuis',
   'co kathedrale basiliek van sint nicolaas':'sint nicolaas','sint franciscus xaveriuskerk':'krijtberg',
   'central station':'centraal','amsterdam centraal':'centraal','mint tower':'munttoren',
   'royal palace':'royal palace','palace on the dam':'royal palace','h art museum':'h art museum',

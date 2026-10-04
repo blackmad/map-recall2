@@ -2830,5 +2830,273 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
     }
+  },
+  {
+    "id": "begijnhofkapel",
+    "name": "Begijnhofkapel \u2014 HH. Johannes en Ursula",
+    "landmarkId": "extract_landmarks_643362629",
+    "modelUrl": "./models/begijnhofkapel.glb",
+    "suppressOsmIds": [
+      "w266903904",
+      "NL.IMBAG.Pand.0363100012168060"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.88955916,
+        52.369376188
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 21.525620909399965,
+      "widthMetres": 40.921907999888134
+    },
+    "surveyed": {
+      "anchor": [
+        4.88955916,
+        52.369376188
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Actual shared OSM/BAG plan, local east/south metres; current3DBAG ridge15.794m aboveground"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "Begijnhofkapel",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/368",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction. Exact sharedBAG plan, two bent three-bay fronts, Empire windows and projecting stone portal. Authored simplified rear roof/wall divisions within current3DBAG height; church has no spire. EnglishReformedChurch and neighboring houses retained."
+    }
+  },
+  {
+    "id": "huis-de-pinto",
+    "name": "Huis De Pinto",
+    "landmarkId": "extract_landmarks_560548170",
+    "modelUrl": "./models/huis-de-pinto.glb",
+    "suppressOsmIds": [
+      "w175846919",
+      "NL.IMBAG.Pand.0363100012182911"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.900947893723509,
+        52.37012639422018
+      ],
+      "headingDegrees": 72.79839529693228,
+      "lengthMetres": 21.772135341096394,
+      "widthMetres": 12.27648518938112
+    },
+    "surveyed": {
+      "anchor": [
+        4.900947893723509,
+        52.37012639422018
+      ],
+      "northOffsetDegrees": 78
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 95.20160470306772,
+    "attribution": {
+      "title": "Huis De Pinto",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/huis-de-pinto/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto\u2019s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116\u2013118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
+    }
+  },
+  {
+    "id": "amsterdam-tulip-museum",
+    "name": "Amsterdam Tulip Museum",
+    "landmarkId": "extract_landmarks_339731654",
+    "modelUrl": "./models/amsterdam-tulip-museum.glb",
+    "suppressOsmIds": [
+      "w266561396",
+      "NL.IMBAG.Pand.0363100012174699"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.884088419391602,
+        52.37632814296878
+      ],
+      "headingDegrees": 119.76088510470072,
+      "lengthMetres": 14.680859994520542,
+      "widthMetres": 9.493627369251168
+    },
+    "surveyed": {
+      "anchor": [
+        4.884088419391602,
+        52.37632814296878
+      ],
+      "northOffsetDegrees": -61
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.76088510470072,
+    "attribution": {
+      "title": "Amsterdam Tulip Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://amsterdamtulipmuseum.com/pages/about-amsterdam-tulip-museum",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto\u2019s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116\u2013118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
+    }
+  },
+  {
+    "id": "ot301",
+    "name": "OT301 / former Film Academy",
+    "landmarkId": "extract_landmarks_1988238017",
+    "modelUrl": "./models/ot301.glb",
+    "suppressOsmIds": [
+      "w276420914",
+      "NL.IMBAG.Pand.0363100012138646"
+    ],
+    "footprint": {
+      "centre": [
+        4.865818145598819,
+        52.36011157597592
+      ],
+      "headingDegrees": 69.89213180174445,
+      "lengthMetres": 29.669648058764523,
+      "widthMetres": 16.385921212879335
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 269.85026819825555,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.865769599943963,
+        52.360078554569874
+      ],
+      "northOffsetDegrees": 159.7424,
+      "source": "Individual current BAG parents and actual street axes. Primary owner/venue/municipal architectural photos; AHN5/3DBAG roof surfaces verified above local terrain."
+    },
+    "attribution": {
+      "title": "OT301 / former Film Academy",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.ot301.nl/about-contact",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
+    }
+  },
+  {
+    "id": "cavia",
+    "name": "Filmhuis Cavia / former twin-school complex",
+    "landmarkId": "extract_landmarks_2115483451",
+    "modelUrl": "./models/cavia.glb",
+    "suppressOsmIds": [
+      "w276272880",
+      "NL.IMBAG.Pand.0363100012118954",
+      "w276272821",
+      "NL.IMBAG.Pand.0363100012117132",
+      "w276272948",
+      "NL.IMBAG.Pand.0363100012164519"
+    ],
+    "footprint": {
+      "centre": [
+        4.870052028940552,
+        52.38190186277704
+      ],
+      "headingDegrees": 167.79050507678784,
+      "lengthMetres": 46.333902117182305,
+      "widthMetres": 42.23061649285789
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.08355507678783,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.87016028922798,
+        52.38200245851402
+      ],
+      "northOffsetDegrees": 257.70695,
+      "source": "Individual current BAG parents and actual street axes. Primary owner/venue/municipal architectural photos; AHN5/3DBAG roof surfaces verified above local terrain."
+    },
+    "attribution": {
+      "title": "Filmhuis Cavia / former twin-school complex",
+      "author": "Map Recall",
+      "sourceUrl": "https://filmhuiscavia.nl/over-cavia/about-cavia",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
+    }
+  },
+  {
+    "id": "orgelpark",
+    "name": "Orgelpark / Parkkerk",
+    "landmarkId": "extract_landmarks_1851884741",
+    "modelUrl": "./models/orgelpark.glb",
+    "suppressOsmIds": [
+      "w152508197",
+      "NL.IMBAG.Pand.0363100012082170"
+    ],
+    "footprint": {
+      "centre": [
+        4.868224357468281,
+        52.35983534853001
+      ],
+      "headingDegrees": 159.34344754145258,
+      "lengthMetres": 36.2085078763728,
+      "widthMetres": 26.104344344553603
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180.1335524585474,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.868256447423842,
+        52.35985026617333
+      ],
+      "northOffsetDegrees": 159.477,
+      "source": "Individual current BAG parents and actual street axes. Primary owner/venue/municipal architectural photos; AHN5/3DBAG roof surfaces verified above local terrain."
+    },
+    "attribution": {
+      "title": "Orgelpark / Parkkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/orgelpark/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
+    }
+  },
+  {
+    "id": "houten-huys",
+    "name": "Houten Huys \u2014 Begijnhof 34",
+    "landmarkId": "extract_landmarks_630735672",
+    "modelUrl": "./models/houten-huys.glb",
+    "suppressOsmIds": [
+      "w266903979",
+      "NL.IMBAG.Pand.0363100012175498"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.88969626,
+        52.36909782
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 12.608234423445666,
+      "widthMetres": 10.578678000310333
+    },
+    "surveyed": {
+      "anchor": [
+        4.88969626,
+        52.36909782
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Exact current OSM/BAG corner-house plan in local east/south metres; actual narrow NE gable front and current3DBAG height aboveground."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "Houten Huys",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/371",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly model: narrow black timber gables, overhanging upper front, white masonry base and leaded windows. Exact BAG plan and current3DBAG height; side/rear details and roof are simplified. No photograph pixels or downloaded mesh geometry. Courtyard statue, trees, fences and neighboring houses retained."
+    }
   }
 ]

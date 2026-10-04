@@ -1,0 +1,189 @@
+{
+  "id": "begijnhofkapel",
+  "osmId": "w266903904",
+  "bagId": "0363100012168060",
+  "teachingId": "extract_landmarks_643362629",
+  "anchor": [
+    4.88955916,
+    52.369376188
+  ],
+  "ring": [
+    [
+      4.8897043,
+      52.3693588
+    ],
+    [
+      4.8896805,
+      52.3693129
+    ],
+    [
+      4.8896836,
+      52.3692475
+    ],
+    [
+      4.8895887,
+      52.3692152
+    ],
+    [
+      4.8895819,
+      52.3691541
+    ],
+    [
+      4.8894542,
+      52.3691612
+    ],
+    [
+      4.8894555,
+      52.3691699
+    ],
+    [
+      4.8894527,
+      52.36917
+    ],
+    [
+      4.8894588,
+      52.3692119
+    ],
+    [
+      4.8894653,
+      52.3692823
+    ],
+    [
+      4.8894684,
+      52.3693394
+    ],
+    [
+      4.8894697,
+      52.3693394
+    ],
+    [
+      4.8894969,
+      52.3694015
+    ],
+    [
+      4.8895173,
+      52.3694376
+    ],
+    [
+      4.8895396,
+      52.3694804
+    ],
+    [
+      4.8895567,
+      52.369512
+    ],
+    [
+      4.8895603,
+      52.3695113
+    ],
+    [
+      4.8895652,
+      52.3695201
+    ],
+    [
+      4.8895624,
+      52.3695207
+    ],
+    [
+      4.8895644,
+      52.3695243
+    ],
+    [
+      4.88957,
+      52.3695229
+    ],
+    [
+      4.8895688,
+      52.3695211
+    ],
+    [
+      4.8895846,
+      52.3695174
+    ],
+    [
+      4.8896598,
+      52.3694995
+    ],
+    [
+      4.8897694,
+      52.3694733
+    ],
+    [
+      4.8897043,
+      52.3693588
+    ]
+  ],
+  "heightMetres": 15.794394716620445,
+  "bagAttributes": {
+    "b3_bag_bag_overlap": 0.0,
+    "b3_bouwlagen": 4,
+    "b3_dak_type": "slanted",
+    "b3_extrusie": "standard",
+    "b3_h_dak_50p": 12.781000137329102,
+    "b3_h_dak_70p": 13.5,
+    "b3_h_dak_max": 15.925000190734863,
+    "b3_h_dak_min": 8.741000175476074,
+    "b3_h_maaiveld": 0.1679999977350235,
+    "b3_h_nok": 15.962394714355469,
+    "b3_is_glas_dak": false,
+    "b3_kas_warenhuis": false,
+    "b3_kwaliteitsindicator": false,
+    "b3_mutatie_ahn3_ahn4": false,
+    "b3_mutatie_ahn4_ahn5": false,
+    "b3_n_nok": 13,
+    "b3_n_vlakken": 55,
+    "b3_nodata_fractie_ahn3": 0.0023719165474176407,
+    "b3_nodata_fractie_ahn4": 0.0033206830266863108,
+    "b3_nodata_fractie_ahn5": 0.02039848268032074,
+    "b3_nodata_radius_ahn3": 0.07539715617895126,
+    "b3_nodata_radius_ahn4": 0.0,
+    "b3_nodata_radius_ahn5": 0.0,
+    "b3_opp_buitenmuur": 1055.41,
+    "b3_opp_dak_plat": 221.63,
+    "b3_opp_dak_schuin": 545.22,
+    "b3_opp_grond": 528.23,
+    "b3_opp_scheidingsmuur": 395.64,
+    "b3_puntdichtheid_ahn3": 19.790775299072266,
+    "b3_puntdichtheid_ahn4": 31.765825271606445,
+    "b3_puntdichtheid_ahn5": 20.68377685546875,
+    "b3_pw_bron": "ahn5",
+    "b3_pw_datum": 2023,
+    "b3_pw_onvoldoende": false,
+    "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+    "b3_rmse_lod12": 1.972057819366455,
+    "b3_rmse_lod13": 1.3513716459274292,
+    "b3_rmse_lod22": 0.31987684965133667,
+    "b3_t_run": 587,
+    "b3_val3dity_lod12": "[]",
+    "b3_val3dity_lod13": "[]",
+    "b3_val3dity_lod22": "[102]",
+    "b3_volume_lod12": 6993.744140625,
+    "b3_volume_lod13": 6824.76806640625,
+    "b3_volume_lod22": 6460.404296875,
+    "begingeldigheid": "2023-09-28",
+    "documentdatum": "2023-09-28",
+    "documentnummer": "GV00007182_AC00AC",
+    "eindgeldigheid": null,
+    "eindregistratie": null,
+    "fid": 8028605,
+    "geconstateerd": false,
+    "identificatie": "NL.IMBAG.Pand.0363100012168060",
+    "oorspronkelijkbouwjaar": 1671,
+    "status": "Pand in gebruik",
+    "tijdstipeindregistratielv": null,
+    "tijdstipinactief": null,
+    "tijdstipinactieflv": null,
+    "tijdstipnietbaglv": null,
+    "tijdstipregistratie": "2023-09-28T18:39:48Z",
+    "tijdstipregistratielv": "2023-09-28T20:57:23Z",
+    "voorkomenidentificatie": 4
+  },
+  "references": [
+    "https://begijnhofkapelamsterdam.nl/begijnhofkapel/geschiedenis/",
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/368",
+    "https://openresearch.amsterdam/nl/page/113856/erfgoed-van-de-week-schuilkerken-verborgen-in-het-openbaar",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012168060",
+    "https://www.openstreetmap.org/way/266903904"
+  ],
+  "notes": "Exact whole shared church/BAG plan, OSM tags the shared property as retail. Original1671 date confirmed RCE. Height is current3DBAG ridge aboveground15.794m, not estimatedOSMheight. Facade bent undercontinuouscornice,three-tierarchedEmpirewindows andprojectingstoneportal; uppermassingsimplified from primaryheritagephoto. No EnglishReformedChurch oradjacenthousesincluded."
+}
