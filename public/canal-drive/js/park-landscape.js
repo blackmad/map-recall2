@@ -1,6 +1,8 @@
 /* Mapped park grounds and furniture, below buildings and the existing tree inventory. */
 (() => {
   const EMPTY = {type:'FeatureCollection',features:[]};
+  const BRASA_TUNNEL_LAYERS = ['tunnel_motorway_link_casing','tunnel_link_casing','tunnel_motorway_casing',
+    'tunnel_motorway_link','tunnel_link','tunnel_motorway'];
   class ParkLandscape {
     constructor(map, root, theme) {
       this.map = map;
@@ -9,9 +11,12 @@
       this.cache = new Map();
       this.pending = new Map();
       this.base = EMPTY;
+      this.brasaGeometry = null;
+      this.tunnelFilters = new Map();
       this.active = '';
       this.moveHandler = () => this.updateViewport();
       this.visibilityHandler = () => {
+        this.updateTunnelFilters();
         if (!map.getLayer('park-landscape-ground')) return;
         const visible = map.getLayoutProperty('park-landscape-ground','visibility') !== 'none';
         if (visible !== this.enabled) this.setEnabled(visible);
@@ -49,6 +54,7 @@
       this.root = root;
       this.cache.clear();
       this.base = EMPTY;
+      this.brasaGeometry = null;
       this.active = '';
       this.publish([]);
       if (this.destroyed || !root.endsWith('/amsterdam')) return;
@@ -59,17 +65,50 @@
         const data = await response.json();
         if (generation !== this.generation || controller.signal.aborted || this.destroyed) return;
         this.base = data;
+        const boundaries = data.features.filter(f => f.properties.role === 'park-boundary'
+          && ['Brasapark-Noord','Brasapark-Zuid'].includes(f.properties.park));
+        if (boundaries.length === 2) this.brasaGeometry = {type:'MultiPolygon',coordinates:boundaries.flatMap(f =>
+          f.geometry.type === 'MultiPolygon' ? f.geometry.coordinates : [f.geometry.coordinates])};
         this.publish([]);
         this.updateViewport();
       } catch (_) { /* The basemap remains available. */ }
+    }
+    // Source-backed roof park: conceal only motorway tunnel segments intersecting its
+    // exact mapped boundaries. Filters operate on whole tile-clipped features, so
+    // an intersecting below-ground segment may also disappear beyond the boundary.
+    updateTunnelFilters() {
+      if (this.updatingTunnelFilters) return;
+      this.updatingTunnelFilters = true;
+      try {
+        const active = !this.destroyed && this.enabled && this.root?.endsWith('/amsterdam')
+          && this.map.getLayer('park-landscape-ground') && this.map.getZoom() >= 13 && this.brasaGeometry;
+        for (const id of BRASA_TUNNEL_LAYERS) {
+          const layer = this.map.getLayer(id), previous = this.tunnelFilters.get(id);
+          if (previous && previous.layer !== layer) this.tunnelFilters.delete(id);
+          if (!active) {
+            if (previous?.layer === layer && layer) this.map.setFilter(id,previous.original);
+            this.tunnelFilters.delete(id);
+            continue;
+          }
+          if (!layer || layer.type !== 'line' || layer.sourceLayer !== 'transportation') continue;
+          if (this.tunnelFilters.has(id)) continue;
+          const original = this.map.getFilter(id);
+          const keep = ['any',['!=',['get','class'],'motorway'],['!=',['get','brunnel'],'tunnel'],
+            ['>',['distance',this.brasaGeometry],0]];
+          this.tunnelFilters.set(id,{layer,original});
+          this.map.setFilter(id,original ? ['all',original,keep] : keep);
+        }
+      } finally { this.updatingTunnelFilters = false; }
     }
     publish(chunks) {
       const features = [...this.base.features,...chunks.flatMap(data=>data.features)];
       this.map.getSource('park-landscape')?.setData({type:'FeatureCollection',features});
       this.debugFeatures = features.length;
+      this.updateTunnelFilters();
     }
     updateViewport() {
       if (this.destroyed) return;
+      this.updateTunnelFilters();
       const b = this.map.getBounds(), zoom = this.map.getZoom();
       const wanted = this.enabled ? (this.base.optionalChunks || []).filter(c =>
         zoom >= c.minzoom && b.getWest() <= c.bounds[2] && b.getEast() >= c.bounds[0]
@@ -115,10 +154,12 @@
     destroy() {
       if (this.destroyed) return;
       this.destroyed = true;
+      this.updateTunnelFilters();
       ++this.generation;
       this.cancel();
       this.cache.clear();
       this.base = EMPTY;
+      this.brasaGeometry = null;
       this.active = '';
       this.debugFeatures = 0;
       this.map.off('moveend',this.moveHandler);
