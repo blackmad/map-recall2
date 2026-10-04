@@ -1,0 +1,116 @@
+[
+  {
+    "id": "lab111",
+    "name": "LAB111 / Pathological Anatomical Laboratory",
+    "landmarkId": "osm_arts_centre_44532021",
+    "modelUrl": "./models/lab111.glb",
+    "suppressOsmIds": [
+      "w44532021",
+      "NL.IMBAG.Pand.0363100012237077"
+    ],
+    "footprint": {
+      "centre": [
+        4.867419736081726,
+        52.36366317589964
+      ],
+      "headingDegrees": 66.93701729326187,
+      "lengthMetres": 55.81708423248726,
+      "widthMetres": 37.18983549504506
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90.0,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.867419736081726,
+        52.36366317589964
+      ],
+      "northOffsetDegrees": -23.062982706738126,
+      "source": "Individual current PDOK BAG building polygon and OSM/2025 3DBAG height, native frontage faces named entrance street. No replacement of adjacent complex buildings."
+    },
+    "attribution": {
+      "title": "LAB111 / Pathological Anatomical Laboratory",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.lab111.nl/over-ons/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
+    }
+  },
+  {
+    "id": "occii",
+    "name": "OCCII / former horse-tram coach house",
+    "landmarkId": "extract_landmarks_1988696513",
+    "modelUrl": "./models/occii.glb",
+    "suppressOsmIds": [
+      "w276906892",
+      "NL.IMBAG.Pand.0363100012233440"
+    ],
+    "footprint": {
+      "centre": [
+        4.854958401332961,
+        52.35427766374001
+      ],
+      "headingDegrees": 69.11143834993021,
+      "lengthMetres": 64.57938007152399,
+      "widthMetres": 13.368354678900868
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.0,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.854958401332961,
+        52.35427766374001
+      ],
+      "northOffsetDegrees": -110.88856165006979,
+      "source": "Individual current PDOK BAG building polygon and OSM/2025 3DBAG height, native frontage faces named entrance street. No replacement of adjacent complex buildings."
+    },
+    "attribution": {
+      "title": "OCCII / former horse-tram coach house",
+      "author": "Map Recall",
+      "sourceUrl": "https://occii.org/hut-chicken-legs-occiis-architecture/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
+    }
+  },
+  {
+    "id": "ketelhuis",
+    "name": "Het Ketelhuis",
+    "landmarkId": "extract_landmarks_2037503288",
+    "modelUrl": "./models/ketelhuis.glb",
+    "suppressOsmIds": [
+      "w57860887",
+      "NL.IMBAG.Pand.0363100012135793"
+    ],
+    "footprint": {
+      "centre": [
+        4.873528379404577,
+        52.38635735977405
+      ],
+      "headingDegrees": 88.40235146891928,
+      "lengthMetres": 23.336638256284797,
+      "widthMetres": 18.16711235417388
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90.0,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.873528379404577,
+        52.38635735977405
+      ],
+      "northOffsetDegrees": -1.597648531080722,
+      "source": "Individual current PDOK BAG building polygon and OSM/2025 3DBAG height, native frontage faces named entrance street. No replacement of adjacent complex buildings."
+    },
+    "attribution": {
+      "title": "Het Ketelhuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://westergas.nl/map/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage references with individual current BAG plans; no imported meshes or textures."
+    }
+  }
+]
