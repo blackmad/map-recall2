@@ -13,6 +13,7 @@ for(const tile of index.tiles)for(const record of JSON.parse(gunzipSync(fs.readF
  const tree={...record,position:[record.lng,record.lat]},a=treeTypology(tree),b=old(tree);checked++;
  if(targets.get(normalizedTreeName(tree.species))==='globose'&&a.provenance.crownBasis==='explicit-inventory-management')globosePruned++;
  if(normalizedTreeName(tree.species)==='betula nigra'&&a.provenance.crownBasis!=='explicit-inventory-management'){assert.deepEqual({...a,bark:b.bark},b);continue;}
+ if(["prunus cerasifera 'nigra'","fagus sylvatica 'atropunicea'"].includes(normalizedTreeName(tree.species))&&a.provenance.crownBasis!=='explicit-inventory-management'){const {foliageReference,...provenance}=a.provenance;assert.deepEqual({...a,foliage:b.foliage,provenance},b);continue;}
  if(!targets.has(normalizedTreeName(tree.species))||a.provenance.crownBasis==='explicit-inventory-management'){assert.deepEqual(a,b);continue;}
  matched++;counts[tree.species]=(counts[tree.species]||0)+1;if(JSON.stringify(a.lobes)!==JSON.stringify(b.lobes))geometryChanged++;
  const normalized={...a,...(targets.get(normalizedTreeName(tree.species))==='conical-evergreen'?{crownGeometry:b.crownGeometry,foliage:b.foliage}:{}),...(targets.get(normalizedTreeName(tree.species))==='fan-palm'?{trunkHeight:b.trunkHeight}:{}),archetype:b.archetype,lobes:b.lobes,provenance:{...a.provenance,crownBasis:b.provenance.crownBasis,reference:b.provenance.reference}};assert.deepEqual(normalized,b,'only crown selection and its reference change');
