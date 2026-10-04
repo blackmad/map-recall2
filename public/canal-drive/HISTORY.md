@@ -1,5 +1,50 @@
 # Canal Recall — what is built
 
+## Canal heritage, stages and six more parks: 93 original landmarks (2026-10-04)
+
+Herepoort / Bergpoort models the paired Rijksmuseum garden gate, with a truly
+open ground-level arch, sandstone front columns/niches and a taller brick/stone
+reverse. The museum publishes different facade heights, 6.7 m and 8.5 m; the
+current BAG roof maximum supports the taller silhouette. No museum, separate
+garden pavilion, fences, trees or landscape are replaced. Reliefs and roof
+proportions are original visual approximations.
+
+Huis aan de Drie Grachten keeps its three stepped gables, transverse roof,
+canal-side walls and red shutters; review removed an unintended rear roof fin.
+De Dolphijn keeps both restored Renaissance facades within the same current
+BAG parent (Singel 140/142), leaving the distinct Singel 138 parent untouched.
+The final front faces the actual Singel, while its surveyed rear notch remains.
+De Rode Hoed models the canal houses and concealed church behind them.
+Theater Amsterdam includes its glazed foyer, broad canopy and dark hall.
+Vondelpark Open Air Theater uses the documented trapezoidal podium and an
+original curved canopy approximation; its technical lighting-grid dimensions
+are distinguished from the unmeasured canopy envelope. The separate bandstand
+and park remain visible.
+
+Six additional public parks — Houthavenpark, Bella Vistapark, Park Somerlust,
+Siegerpark, Eendrachtspark and Schellingwouderpark — add 286 mapped interior
+features. All previous 9,479 features remain exact; the base now contains
+9,765 features (4,915,267 bytes raw / 892,045 gzip). The optional Amsterdamse
+Bos chunk remains byte-identical at 3,254 features. The picker has 38 main
+selections plus Bos. Source checks verify original geometries and no duplicate
+new path edges; gallery, actual-game and mobile/toggle reviews pass.
+
+Four exact species rules refine 2,978 crowns, keeping 30 managed records and
+existing river-birch brown bark unchanged. Five further exact elm/ash/lime
+priors refine 3,229 crowns, preserving 50 managed records; unnamed or differently
+named lime varieties retain their existing behavior. All inventory positions/heights and
+unmatched records remain exact. Sixteen crown forms and the seven-draw,
+four-geometry, two-material budget remain intact. Browser reviews compare the
+new asymmetric/upward crown choices at the same height. A complete municipal
+source comparison found no height-field/unit mismatch. Height metadata now
+accurately describes bounded-range midpoints, the up-to-6 m class rendered at
+6 m, 24 m-plus rendered at 27 m and the 9 m unknown fallback; no heights or
+tile files changed.
+
+All 93 models pass decoded geometry, material, compression, life-size placement
+and exact-ID suppression checks. The queue has 289 entries: 98 original model
+entries, 12 imported references, 18 procedural kits and 161 pending tasks.
+
 ## Concealed chapels, community venues and tree visibility: 87 original landmarks (2026-10-04)
 
 Begijnhofkapel models its actual shared house/church parent, two bent three-bay
