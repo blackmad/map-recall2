@@ -18,10 +18,10 @@ const names = ['Vondelpark', 'Oosterpark', 'Sarphatipark', 'Westerpark', 'Erasmu
   'Rembrandtpark', 'Beatrixpark', 'Flevopark', 'Noorderpark', 'Amstelpark', 'Gaasperpark',
   'Wertheimpark','Park Frankendael','Martin Luther Kingpark',
   'Sloterpark','Nelson Mandelapark','Diemerpark','Museumplein','Gerbrandypark',
-  'Bijlmerweide','Gijsbrecht van Aemstelpark',"'t Kleine Loopveld"];
+  'Bijlmerweide','Gijsbrecht van Aemstelpark',"'t Kleine Loopveld",'Amsterdamse Bos'];
 const largeParkIds={'Sloterpark':'a974946116','Nelson Mandelapark':'a253205604','Diemerpark':'a26617920',
   'Museumplein':'a51930778','Gerbrandypark':'a12632708','Bijlmerweide':'a1634686926',
-  'Gijsbrecht van Aemstelpark':'a14700737',"'t Kleine Loopveld":'a1625964550'};
+  'Gijsbrecht van Aemstelpark':'a14700737',"'t Kleine Loopveld":'a1625964550','Amsterdamse Bos':'a53034066'};
 const polygons = g => g.type === 'MultiPolygon' ? g.coordinates : g.type === 'Polygon' ? [g.coordinates] : [];
 function ringArea(r) {
   return Math.abs(r.reduce((a, p, i) => {const q = r[(i + 1) % r.length]; return a + p[0] * q[1] - q[0] * p[1];}, 0));
@@ -57,7 +57,7 @@ const square=raw.find(f=>f.properties.name==='Rembrandtplein'&&f.properties.plac
 if(!square)throw Error('Missing mapped Rembrandtplein square boundary');
 parks.push(square);
 const contains = (park, p) => polygons(park.geometry).some(poly => inRing(p, poly[0]) && !poly.slice(1).some(h => inRing(p,h)));
-const features = [], counts = {}, seenShapes=new Set();let duplicateShapesSkipped=0;
+const features = [], optionalFeatures = [], counts = {}, seenShapes=new Set();let duplicateShapesSkipped=0;
 function emit(id, geometry, role, park, extra = {}) {
   const key=g=>`${role}:${JSON.stringify(g)}`;
   if(largeParkIds[park.properties.name]){
@@ -70,7 +70,7 @@ function emit(id, geometry, role, park, extra = {}) {
   }
   if(geometry.type==='MultiPolygon')for(const poly of geometry.coordinates)seenShapes.add(key({type:'Polygon',coordinates:poly}));
   else seenShapes.add(key(geometry));
-  features.push({type:'Feature', id, geometry, properties:{role, park:park.properties.name, ...extra}});
+  (park.properties.name==='Amsterdamse Bos'?optionalFeatures:features).push({type:'Feature', id, geometry, properties:{role, park:park.properties.name, ...extra}});
   counts[role] = (counts[role] || 0) + 1;
 }
 for (const park of parks) {
@@ -119,7 +119,13 @@ const result = {type:'FeatureCollection', attribution:'© OpenStreetMap contribu
   botanicalGrounds:parks.filter(f=>botanicalNames.includes(f.properties.name)).map(f=>({id:f.id,name:f.properties.name,baseFill:false})),features};
 result.squares=[{id:square.id,name:square.properties.name,baseFill:false}];
 result.pavedSquares=[{id:paved.id,name:paved.properties.name,sourceOsmId:'r13131904',surface:'sett'}];
-result.interiorOnlyParks=parks.filter(f=>largeParkIds[f.properties.name]).map(f=>({id:f.id,name:f.properties.name,baseFill:false}));
+result.interiorOnlyParks=parks.filter(f=>largeParkIds[f.properties.name]&&f.properties.name!=='Amsterdamse Bos').map(f=>({id:f.id,name:f.properties.name,baseFill:false}));
 const out = 'public/data/extracts/amsterdam/park-landscape.geojson';
+const bos=parks.find(f=>f.properties.name==='Amsterdamse Bos');
+const points=polygons(bos.geometry).flat(2);
+const bounds=[Math.min(...points.map(p=>p[0])),Math.min(...points.map(p=>p[1])),Math.max(...points.map(p=>p[0])),Math.max(...points.map(p=>p[1]))];
+result.optionalChunks=[{id:'amsterdamse-bos',url:'park-landscape-bos.geojson',bounds,minzoom:15,features:optionalFeatures.length}];
+const optional={type:'FeatureCollection',attribution:result.attribution,source:result.source,interiorOnlyParks:[{id:bos.id,name:bos.properties.name,baseFill:false}],features:optionalFeatures};
+fs.writeFileSync('public/data/extracts/amsterdam/park-landscape-bos.geojson',JSON.stringify(optional));
 fs.writeFileSync(out,JSON.stringify(result));
 console.log(JSON.stringify({parks:parks.map(f=>f.properties.name),counts,duplicateShapesSkipped,bytes:fs.statSync(out).size},null,2));
