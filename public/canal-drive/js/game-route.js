@@ -1154,6 +1154,10 @@ class GameRouteRuntime {
 
     this.camera.x = this.player.x;
     this.camera.y = this.player.y;
+    // The opening flight runs before Camera.update refreshes the rider target.
+    // Reset it now so nearby detail cannot follow the previous ride's spawn.
+    this.camera.targetX = this.player.x;
+    this.camera.targetY = this.player.y;
     this.camera._lookahead = 0;
     this.camera.resetPan();
     // Snap the basemap onto the boat before the first paint — sync only runs
