@@ -76,7 +76,7 @@ export function buildHouseMuseumLandmark(id:string,w:number,d:number,b:BuildingT
   for(let x of [-w*.32,w*.37]){box(x,12,0,1.15,10.6,1.15,'brick');box(x,22.6,0,1.45,.3,1.45,'stone');}
   add(new T.CylinderGeometry(1.32,1.32,.35,16).rotateX(Math.PI/2),'brick',-w*.17,17.1,front*.42);add(new T.CylinderGeometry(1.08,1.08,.38,16).rotateX(Math.PI/2),'glass',-w*.17,17.1,front*.42+.16);
   for(let u of [-.5,0,.5])box(-w*.17+u,16.05,front*.42+.39,.08,2.1,.1,'white');box(-w*.17,17.1,front*.42+.39,2.1,.08,.1,'white');
-  stairs(bx,front+1.65,2.5,2.4);window(bx,2.4,front+1.6,1.4,3.3);sign('MOCO',-w*.23,9.6,front+.35,.23);
+  stairs(bx,front+1.65,2.5,2.4);window(bx,2.4,front+1.6,1.4,3.3);
  }else if(id==='museum-van-loon'){
   box(0,0,0,w,14.7,d,'brick');box(0,0,d/2-.1,w,14.7,.4,'stone');
   hip(0,14.7,0,w,d,3.7,'slate');
@@ -90,7 +90,6 @@ export function buildHouseMuseumLandmark(id:string,w:number,d:number,b:BuildingT
   // Canal frontage is sandstone with five bays and statues on its balustrade.
   stairs(0,front+.3,2.5,1.6);window(0,1.6,front+.23,1.8,4.1);box(0,6.1,front+.7,2.8,.2,1.4,'stone');
   for(let x of [-1.3,1.3])box(x,6.3,front+1.3,.12,.9,.12,'dark');box(0,7.2,front+1.3,2.8,.1,.1,'dark');
-  sign('VAN LOON',0,10.8,front+.33,.14,'dark');
   for(let x of [-w*.26,w*.26]){box(x,15.7,0,1.1,3.2,1.1,'brick');box(x,18.9,0,1.4,.3,1.4,'stone');}
   // The garden-side elevation has the distinct blue niches and classical portal.
   box(0,0,-d/2-.1,w,9.6,.35,'white');

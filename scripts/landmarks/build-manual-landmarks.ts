@@ -13,6 +13,7 @@ import {MeshoptEncoder} from 'meshoptimizer';
 await MeshoptEncoder.ready;
 import {buildCulturalLandmark} from './cultural-builders';
 import {openTopPrism, upwardRoofPlane} from './house-geometry';
+import {fittedSignLayout} from './sign-layout';
 import {buildNieuweKerk} from './nieuwe-kerk-builder';
 import {buildConcertgebouw} from './concertgebouw-builder';
 import {buildStadhuis} from './stadhuis-builder';
@@ -115,7 +116,7 @@ Object.assign(letters,{
  '6':['01110','10000','10000','11110','10001','10001','01110'],'7':['11111','00001','00010','00100','01000','01000','01000'],
  '8':['01110','10001','10001','01110','10001','10001','01110'],'9':['01110','10001','10001','01111','00001','00001','01110'],
 });
-function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour='white'){let width=[...text].reduce((n,ch)=>n+(letters[ch]?.[0].length??3)+1,0)*pixel;let u=-width/2;for(let ch of text){let rows=letters[ch];if(rows)for(let j=0;j<7;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1')box(x+u+k*pixel,y+(6-j)*pixel,z,pixel*.85,pixel*.85,.08,c);u+=((rows?.[0].length??3)+1)*pixel;}}
+function sign(text:string,x:number,y:number,z:number,pixel:number,c:Colour='white',maxWidth?:number){const layout=fittedSignLayout(text,letters,pixel,maxWidth);pixel=layout.pixel;let u=layout.start;for(let ch of text){let rows=letters[ch];if(rows)for(let j=0;j<7;j++)for(let k=0;k<rows[j].length;k++)if(rows[j][k]==='1')box(x+u+k*pixel,y+(6-j)*pixel,z,pixel*.85,pixel*.85,.08,c);u+=((rows?.[0].length??3)+1)*pixel;}}
 function station(){box(0,0,0,244,1,31,'stone');box(0,1,0,244,15.7,29,'brick');gableRoof(0,16.7,0,244,29,6.3,'slate');for(let z of [-14.65,14.65]){for(let y of [1,6.6,12.5,16])box(0,y,z,244,.4,.6,'stone');for(let x=-117;x<=117;x+=5.85){for(let y of [1.9,8.1])window(x,y,z>0?14.72:-15.1,2.5,y<3?3.7:3.4);box(x-2.8,1,z,.5,15.7,.65,'stone');}}
  // Central entrance pavilion, paired clock / wind-dial towers, steep roof and crest.
  box(0,1,14,33,19,5,'brick');prism(0,20,14,33,8,11,'brick');prism(0,20.7,14.1,29,8.3,9.5,'stone');prism(0,21.3,14.25,26,8.6,8,'brick');for(let x of [-10,0,10])window(x,1.5,16.6,5.5,7);for(let x of [-9,-3,3,9])window(x,11.3,16.6,3.7,5.4);box(0,19,16.8,31,.8,.8,'stone');box(0,27.5,18.75,3,2,.4,'gold');
