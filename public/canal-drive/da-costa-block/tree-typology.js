@@ -2,6 +2,12 @@
 export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  [/^prunus 'umineko'$/,'columnar','cultivar-prior',nursery('prunus-umineko')],
+  [/^prunus subhirtella 'autumnalis'$/,'vase','cultivar-prior',nursery('prunus-subhirtella-autumnalis')],
+  [/^prunus yedoensis$/,'vase','species-prior',nursery('prunus-yedoensis')],
+  [/^acer freemanii 'elegant'$/,'vase','cultivar-prior',nursery('acer-freemanii-elegant')],
+  [/^populus canescens 'de moffart'$/,'pyramidal','cultivar-prior',nursery('populus-canescens-de-moffart')],
+  [/^liquidambar styraciflua 'worplesdon'$/,'pyramidal','cultivar-prior',nursery('liquidambar-styraciflua-worplesdon')],
   [/^alnus spaethii 'spaeth'$/,'pyramidal','cultivar-prior',nursery('alnus-spaethii-spaeth')],
   [/^quercus robur 'fastigiate koster'$/,'columnar','cultivar-prior',nursery('quercus-robur-fastigiate-koster')],
   [/^prunus serrulata 'amanogawa'$/,'columnar','cultivar-prior',nursery('prunus-serrulata-amanogawa')],
