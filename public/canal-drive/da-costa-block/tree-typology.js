@@ -3,6 +3,12 @@ export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const foliagePriors={"prunus cerasifera 'nigra'":{colour:'#694653',reference:'https://www.vdberk.com/trees/prunus-cerasifera-nigra/'},"fagus sylvatica 'atropunicea'":{colour:'#765247',reference:'https://www.vdberk.com/trees/fagus-sylvatica-atropunicea/'}};
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  [/^salix alba 'liempde'$/,'pyramidal','cultivar-prior',nursery('salix-alba-liempde')],
+  [/^alnus glutinosa 'laciniata'$/,'pyramidal','cultivar-prior',nursery('alnus-glutinosa-laciniata')],
+  [/^amelanchier lamarckii$/,'vase','species-prior',nursery('amelanchier-lamarckii')],
+  [/^gleditsia triacanthos 'sunburst'$/,'pyramidal','cultivar-prior',nursery('gleditsia-triacanthos-sunburst')],
+  [/^ulmus 'sapporo autumn gold'$/,'vase','cultivar-prior',nursery('ulmus-sapporo-autumn-gold')],
+  [/^fraxinus angustifolia 'raywood'$/,'airy-oval','cultivar-prior',nursery('fraxinus-angustifolia-raywood')],
   // Udenhout explicitly identifies the named Koningslinde as a Pallida synonym; no generic hybrid alias.
   [/^tilia europaea 'koningslinde'$/,'pyramidal','cultivar-prior','https://www.udenhout-trees.nl/en/assortment/tilia-europaea-pallida/'],
   [/^ulmus hollandica 'belgica'$/,'upright-oval','cultivar-prior','https://www.ebben.nl/en/treeebb/ulhbelgi-ulmus-x-hollandica-belgica/'],
