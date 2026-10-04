@@ -60,7 +60,7 @@
       "priority": "urgent",
       "status": "verified",
       "owner": "root",
-      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5–120 fps."
+      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5\u2013120 fps."
     },
     {
       "id": "building-inspection",
@@ -229,7 +229,7 @@
     },
     {
       "id": "vinoly",
-      "task": "Viñoly",
+      "task": "Vi\u00f1oly",
       "priority": "normal",
       "status": "queued"
     },
@@ -339,7 +339,7 @@
     },
     {
       "id": "kinderkookkafe",
-      "task": "Kinderkookkafé",
+      "task": "Kinderkookkaf\u00e9",
       "priority": "normal",
       "status": "queued"
     },
@@ -447,7 +447,7 @@
     },
     {
       "id": "street-aware-procedural-architecture",
-      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215–247, Bethaniëndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
+      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215\u2013247, Bethani\u00ebndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
       "priority": "high",
       "status": "verified-pilot",
       "notes": "Three self-review/improvement cycles complete on Overtoom, De Wallen and Marcantilaan, plus adjacent withheld-source transfers. 36 tests and four rendering-mode browser review pass; 349 surveyed neighbors, 95 frozen frontage assignments, 169 compact architectural street segments. Current source and cohort admission replay pass. Final same-worker profile-on/off CPU compile aggregate +0.29%; walls +3.29%, extras -0.37%, one of 24 cases +12.3%. Reviewed stage triangles decrease with unchanged draw calls. Full-game GPU budget remains unverified. Ready for reviewed city batches, not a blanket city-wide style claim. Approximate street character, no individual facade registration claim. Latest demos: artifacts/street-appearance/cycles/index.html."
@@ -583,6 +583,25 @@
       "priority": "urgent",
       "status": "implemented-awaiting-deployment",
       "notes": "Coarse shells no longer force bare walls. Keep textured upper windows and ground doors, simple roofs and no relief. Desktop and coarse-pointer browser comparisons preserve the same rider detail ownership while panning Da Costakade.6,298-building tile retains65.3% geometry reduction, courtyard/identity/height and atlas regression checks pass. Clean HEAD runtime bundles rebuilt; unpublished neighborhood experiments excluded. Push triggers Firebase release; verify live revision after deployment."
+    },
+    {
+      "id": "ing-house",
+      "task": "ING House / Infinity \u2014 original house-style landmark",
+      "priority": "high",
+      "status": "queued",
+      "owner": "root",
+      "requested": true,
+      "workflow": "full-landmark",
+      "sourceUrl": "https://mvsa-architects.com/en/projects/ing-house/",
+      "notes": "Explicit user request. MVSA primary reference documents glass/aluminium wedge and 9\u201312 m stilts; preserve raised open structure and distinctive rising silhouette. Resolve exact OSM/BAG footprint and genuine destination identity before modeling. Completion requires destination, map pin/label and sourced info card."
+    },
+    {
+      "id": "dominant-building-fidelity-triage",
+      "task": "Screen large buildings for standard or full landmark treatment",
+      "priority": "normal",
+      "status": "in-progress",
+      "owner": "root",
+      "notes": "Geometry only suggests eligibility. Record a dated facade/context reference and recognition/open-space checklist before approving standard treatment. Faster workflow keeps native identity, scale, openings, neighbor safety and gallery/live integration checks; omit non-defining ornament and bespoke per-building harnesses. Policy and reviews: dominant-building-fidelity.json; workflow: docs/landmark-building-recipe.md."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
