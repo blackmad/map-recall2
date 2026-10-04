@@ -9,7 +9,7 @@
 </head>
 <body>
 <header><h1>Amsterdam tree models</h1>
-<p>The municipal inventory selects the tree’s species, height class and recorded management. These fourteen crown forms use the same geometry as the game. Summer foliage, branch shapes and crown widths are authored approximations.</p>
+<p>The municipal inventory selects the tree’s species, height class and recorded management. These fifteen crown forms use the same geometry as the game. Summer foliage, branch shapes and crown widths are authored approximations.</p>
 <p>All examples below are scaled to <strong>15 metres</strong> for comparison. The game uses each tree’s recorded height class instead.</p>
 <div class="controls"><label for="angle">Turn the trees</label><input id="angle" type="range" min="0" max="360" value="0"><a href="park-landscape.html">See them in Amsterdam parks →</a></div>
 <p id="status" role="status">Preparing models…</p></header>
@@ -18,10 +18,13 @@
 <script type="module">
 import {treeTypology} from './da-costa-block/tree-typology.js';
 const {THREE:T}=window.CanalRecallThree;
-const examples=new URLSearchParams(location.search).has('species-batch')?[
+const params=new URLSearchParams(location.search);
+const examples=params.has('globose')?[
+ ['Globose maple',"Acer platanoides 'Globosum'",'Boom'],['Globose robinia',"Robinia pseudoacacia 'Umbraculifera'",'Boom'],['Globose catalpa',"Catalpa bignonioides 'Nana'",'Boom'],['Generic rounded comparison','Platanus hispanica','Boom'],['Recorded pollard comparison',"Acer platanoides 'Globosum'",'Knotboom']
+]:params.has('species-batch')?[
  ['Commelin oval',"Ulmus hollandica 'Commelin'",'Boom'],['Turkey oak rounded','Quercus cerris','Boom'],['Plantijn vase',"Ulmus 'Plantijn'",'Boom'],['Pagoda tree dome','Styphnolobium japonicum','Boom'],['Yew irregular','Taxus baccata','Boom'],['Black pine dome','Pinus nigra','Boom'],['Plena cherry rounded',"Prunus avium 'Plena'",'Boom'],['Norway maple dome','Acer platanoides','Boom']
 ]:[
- ['Rounded','Platanus hispanica','Boom'],['Domed','Aesculus hippocastanum','Boom'],['Irregular spreading','Quercus robur','Boom'],['Airy oval','Fraxinus excelsior','Boom'],['Upright oval','Betula pendula','Boom'],['Pyramidal',"Pyrus calleryana 'Chanticleer'",'Boom'],['Columnar',"Populus nigra 'Italica'",'Boom'],['Evergreen cone','Picea abies','Boom'],['Deciduous cone','Metasequoia glyptostroboides','Boom'],['Weeping',"Salix x sepulcralis 'Chrysocoma'",'Boom'],['Vase',"Prunus serrulata 'Kanzan'",'Boom'],['Pollarded','Salix alba','Knotboom'],['Candelabra pruned','Platanus hispanica','Gekandelaberde boom'],['Trained flat','Tilia cordata','Leiboom']
+ ['Rounded','Platanus hispanica','Boom'],['Globose',"Acer platanoides 'Globosum'",'Boom'],['Domed','Aesculus hippocastanum','Boom'],['Irregular spreading','Quercus robur','Boom'],['Airy oval','Fraxinus excelsior','Boom'],['Upright oval','Betula pendula','Boom'],['Pyramidal',"Pyrus calleryana 'Chanticleer'",'Boom'],['Columnar',"Populus nigra 'Italica'",'Boom'],['Evergreen cone','Picea abies','Boom'],['Deciduous cone','Metasequoia glyptostroboides','Boom'],['Weeping',"Salix x sepulcralis 'Chrysocoma'",'Boom'],['Vase',"Prunus serrulata 'Kanzan'",'Boom'],['Pollarded','Salix alba','Knotboom'],['Candelabra pruned','Platanus hispanica','Gekandelaberde boom'],['Trained flat','Tilia cordata','Leiboom']
 ];
 const renderer=new T.WebGLRenderer({antialias:true});renderer.setClearColor('#ebe7dd');renderer.setPixelRatio(1);
 const projection={MercatorCoordinate:{fromLngLat:([lng,lat])=>({x:lng,y:lat,z:0,meterInMercatorCoordinateUnits:()=>1})}};
