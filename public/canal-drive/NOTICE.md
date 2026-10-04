@@ -136,7 +136,8 @@ greenhouses/orangery, Arcam, Foam, Huis Marseille, Ons’ Lieve Heer op Solder,
 Brakke Grond, Frascati, Boom Chicago, Agnietenkapel, LAB111, OCCII, Ketelhuis,
 Wereldmuseum Amsterdam, Dutch Resistance Museum, Allard Pierson, Dominicuskerk,
 Vredeskerk, Badhuistheater, Cinecenter, Studio/K / Timorplein school, ARTIS
-Groote Museum and ARTIS Library use the
+Groote Museum, ARTIS Library, Willet-Holthuysen, Amsterdam Pipe Museum,
+Athenaeum/Nieuwscentrum, Scheltema, Haarlemmermeerstation and De Dokwerker use the
 same original modelling workflow in
 `scripts/landmarks/build-manual-landmarks.ts`. The live game loads these
 flat-colour replacements; the older imported catalogue remains available in

@@ -1,5 +1,39 @@
 # Canal Recall — what is built
 
+## Canal museums, bookshops and a memorial: 80 original landmarks (2026-10-04)
+
+Willet-Holthuysen models its five-bay classical facade, double stoop, two
+dormers and mapped rear service wings; its separate French garden remains open.
+Amsterdam Pipe Museum keeps its narrow two-window house front, stoop and actual
+courtyard notch. Athenaeum/Nieuwscentrum models their shared physical parent,
+with the pale corner and brick section separated to avoid coplanar stripes.
+Scheltema keeps the full Rokin shop frontage, upper facade over the recessed
+entry and blue awnings. Haarlemmermeerstation retains its low annexes,
+mansard/dormer roofs and correctly sized canopy sign. Active-game frontage,
+opposite-view and neighbor reviews corrected duplicated windows and wall/sign
+geometry before completion.
+
+De Dokwerker adds an original faceted bronze-colored figure on the exact mapped
+memorial node. A published UvA illustration records a 1.60 m pedestal and
+2.60 m statue; pose divisions and southwest facing are visual approximations.
+No plaza or host-building geometry is replaced. The gallery now fits each
+bounding sphere to the narrower camera field of view, so tall statues and
+towers are fully visible in the first view. All 80 assets pass decoded geometry,
+actual file-size, life-size placement and exact-ID suppression checks. The
+queue has 290 entries: 84 original-model entries, 12 imported references,
+17 procedural kits and 177 pending tasks.
+
+Two exact six-taxon tree batches refine 7,692 generic crowns using existing
+columnar, vase, oval and pyramidal forms. Exact river birches gain brown bark
+(789 unpruned records); purple plums and copper beeches gain muted canopy color
+(1,098 unpruned records). Whole-inventory comparisons preserve all positions,
+heights, unmatched and explicitly pruned records. A coordinate-convention fix
+aligns anisotropic lobes with their rotated centers, making trained-flat crowns
+one screen instead of a crossed canopy. Real THREE matrix checks cover ordinary
+lobes and byte-identical existing palm transforms. Before/after galleries,
+mobile Chromium park/toggle checks, instancing/culling and streaming checks
+retain 16 forms, seven draws, four shared geometries and two materials.
+
 ## Two churches, local venues and ARTIS heritage: 74 original landmarks (2026-10-04)
 
 Dominicuskerk now keeps its actual nave, aisle roofs, small bell turret and

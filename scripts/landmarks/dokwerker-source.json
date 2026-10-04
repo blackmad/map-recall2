@@ -1,0 +1,14 @@
+{
+  "id": "de-dokwerker",
+  "osmId": "n34051159",
+  "anchor": [4.9050146, 52.3671957],
+  "pedestalMetres": {"height": 1.60, "width": 1.15, "depth": 1.10},
+  "statueHeightMetres": 2.60,
+  "references": [
+    "https://www.4en5mei.nl/oorlogsmonumenten/zoeken/1434/amsterdam-de-dokwerker",
+    "https://pure.uva.nl/ws/files/994964/73441_20.pdf",
+    "https://www.amsterdam.nl/stadsarchief/stukken/tweede-wereldoorlog/dokwerker/",
+    "https://www.openstreetmap.org/node/34051159"
+  ],
+  "notes": "UvA thesis illustration35 by Roel Hijink records pedestal160x115x110cm and statue260cm. OSM survey node supplies exact trunk/site anchor. Pose and divisions approximate from National Committee photographs; facing southwest is a visual interpretation, not a surveyed bearing. No surrounding plaza, trees or host buildings replaced."
+}

@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 78,
+    "manual-model": 84,
     "catalogue-model": 12,
     "procedural-kit": 17,
-    "pending": 181
+    "pending": 177
   },
   "destinations": [
     {
@@ -966,8 +966,9 @@
       "type": "landmark",
       "queueRank": 75,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "haarlemmermeerstation",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_549496794",
@@ -1041,7 +1042,8 @@
       "type": "museum",
       "queueRank": 81,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "amsterdam-pipe-museum",
       "treatment": "building"
     },
     {
@@ -1066,7 +1068,8 @@
       "type": "landmark",
       "queueRank": 83,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "de-dokwerker",
       "treatment": "memorial",
       "taskNote": "Author the statue and plinth at the mapped position."
     },
@@ -1752,7 +1755,8 @@
       "type": "museum",
       "queueRank": 138,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "willet-holthuysen",
       "treatment": "building"
     },
     {
@@ -3559,6 +3563,28 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "studiok",
+      "treatment": "building"
+    },
+    {
+      "id": "athenaeum",
+      "name": "Athenaeum bookshop / Nieuwscentrum",
+      "lat": 52.36892986410698,
+      "lng": 4.889058364860993,
+      "queueRank": 289,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "athenaeum",
+      "treatment": "building"
+    },
+    {
+      "id": "scheltema",
+      "name": "Scheltema / Rokin 9–15",
+      "lat": 52.372135134784074,
+      "lng": 4.893404379268778,
+      "queueRank": 290,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "scheltema",
       "treatment": "building"
     }
   ]
