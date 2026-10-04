@@ -29,6 +29,9 @@ import {buildJewishQuarterLandmark} from './jewish-quarter-builders';
 import {buildMemorialLandmark} from './memorial-builders';
 import {buildArtisEntryLandmark} from './artis-entry-builders';
 import {buildHortusLandmark} from './hortus-builders';
+import {buildArcam} from './arcam-builder';
+import {buildNesRozentheaterLandmark} from './nes-rozentheater-builders';
+import {buildCanalMuseumLandmark} from './canal-museum-builders';
 import hospitals from './hospital-footprints.json';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
@@ -130,6 +133,9 @@ for(const spec of MANUAL_LANDMARKS){
     else if(id==='homomonument')buildMemorialLandmark(id,w,d,helpers);
     else if(id==='micropia-ledenlokalen'||id==='artis-entrance')buildArtisEntryLandmark(id,w,d,helpers);
     else if(id==='hortus-greenhouses')buildHortusLandmark(id,w,d,helpers);
+    else if(id==='arcam')buildArcam(w,d,helpers);
+    else if(['brakke-grond','frascati','boom-chicago'].includes(id))buildNesRozentheaterLandmark(id,w,d,helpers);
+    else if(['foam','huis-marseille','ons-lieve-heer-op-solder'].includes(id))buildCanalMuseumLandmark(id,w,d,helpers);
     else buildCulturalLandmark(id,w,d,helpers);
   }
   manifest.models[id]=await save(id);

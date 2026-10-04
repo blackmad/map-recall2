@@ -39,7 +39,8 @@
 // A renderer per model would exhaust the browser's context budget before the
 // sixteen listed here finished loading.
 const { THREE: T, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
-const MODELS = (window.CanalRecallSignatureLandmarks || {}).SIGNATURE_MODELS || [];
+const selectedIds = new Set((new URLSearchParams(location.search).get('only') || '').split(',').filter(Boolean));
+const MODELS = ((window.CanalRecallSignatureLandmarks || {}).SIGNATURE_MODELS || []).filter(spec => !selectedIds.size || selectedIds.has(spec.id));
 const main = document.querySelector('main');
 
 window.review = { loaded: [], errors: [], total: MODELS.length, done: MODELS.length === 0 };

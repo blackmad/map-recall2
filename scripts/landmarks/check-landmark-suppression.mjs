@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const catalogue = JSON.parse(fs.readFileSync('src/canalRecall/landmarks/manualCatalogue.json', 'utf8'));
-const exactIds = ['embassy-free-mind', 'anne-frank-house', 'rembrandt-house', 'moco-museum', 'museum-van-loon', 'het-schip', 'scheepvaarthuis', 'rialto', 'kriterion', 'de-bijenkorf', 'gashouder', 'stadsschouwburg', 'tuschinski', 'pathe-city', 'oude-kerk', 'nieuwe-kerk', 'buiksloterkerk', 'english-reformed-church', 'de-papegaai', 'de-hallen', 'huis-bartolotti', 'hart-museum', 'amsterdam-museum', 'national-holocaust-museum', 'hollandsche-schouwburg', 'jewish-museum', 'portuguese-synagogue', 'homomonument', 'micropia-ledenlokalen', 'artis-entrance', 'hortus-greenhouses'];
+const exactIds = ['embassy-free-mind', 'anne-frank-house', 'rembrandt-house', 'moco-museum', 'museum-van-loon', 'het-schip', 'scheepvaarthuis', 'rialto', 'kriterion', 'de-bijenkorf', 'gashouder', 'stadsschouwburg', 'tuschinski', 'pathe-city', 'oude-kerk', 'nieuwe-kerk', 'buiksloterkerk', 'english-reformed-church', 'de-papegaai', 'de-hallen', 'huis-bartolotti', 'hart-museum', 'amsterdam-museum', 'national-holocaust-museum', 'hollandsche-schouwburg', 'jewish-museum', 'portuguese-synagogue', 'homomonument', 'micropia-ledenlokalen', 'artis-entrance', 'hortus-greenhouses', 'arcam', 'brakke-grond', 'frascati', 'boom-chicago', 'foam', 'huis-marseille', 'ons-lieve-heer-op-solder'];
 for (const id of exactIds) {
   const spec = catalogue.find(spec => spec.id === id);
   assert.ok(spec, id);

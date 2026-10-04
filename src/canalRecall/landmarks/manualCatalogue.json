@@ -1756,5 +1756,276 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free reconstruction of three separate surveyed buildings with no garden parcel fill: the 1911 Palm House circular dome/perpendicular wings, 2025 Climate House ETFE canopy and retained external steel cable skeleton, and historic orangery. Actual OpenStreetMap building outlines; official Hortus aerial photography and ZJA 2025 architect plan/section references. Heights and ornamental details approximate."
     }
+  },
+  {
+    "id": "arcam",
+    "name": "Arcam \u2014 Amsterdam Centre for Architecture",
+    "landmarkId": "extract_landmarks_2001179186",
+    "modelUrl": "./models/arcam.glb",
+    "suppressOsmIds": [
+      "w31980601",
+      "NL.IMBAG.Pand.0363100012180470"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.912601916666667,
+        52.37145868333334
+      ],
+      "headingDegrees": 134.5,
+      "lengthMetres": 26.773420132289857,
+      "widthMetres": 11.68397608971833
+    },
+    "surveyed": {
+      "anchor": [
+        4.912601916666667,
+        52.37145868333334
+      ],
+      "northOffsetDegrees": 44.5,
+      "source": "Actual mapped footprint; local+X follows street, +Z faces Prins Hendrikkade"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Arcam",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.renevanzuuk.nl/arcam",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original simplified curved shell and window reconstruction. Footprint and height sourced; folds, seams and glass-opening contours approximate. No imported mesh or photo texture."
+    }
+  },
+  {
+    "id": "brakke-grond",
+    "name": "Vlaams Cultuurhuis de Brakke Grond",
+    "landmarkId": "extract_landmarks_9366648",
+    "modelUrl": "./models/brakke-grond.glb",
+    "suppressOsmIds": [
+      "w57859598",
+      "NL.IMBAG.Pand.0363100012168529"
+    ],
+    "footprint": {
+      "centre": [
+        4.894160923761204,
+        52.371060301942144
+      ],
+      "headingDegrees": 93.24769955052625,
+      "lengthMetres": 82.56081513635031,
+      "widthMetres": 58.812151618836445
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -88.24769955052625,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.894160923761204,
+        52.371060301942144
+      ],
+      "northOffsetDegrees": 185,
+      "source": "Current PDOK BAG contour; native +X275\u00b0 and entrance +Z5\u00b0 face the public Nesplein. Cafe facade faces opposite185\u00b0, while west side follows Nes."
+    },
+    "attribution": {
+      "title": "Vlaams Cultuurhuis de Brakke Grond",
+      "author": "Map Recall",
+      "sourceUrl": "https://brakkegrond.nl/over-ons/de-geschiedenis-van-de-brakke-grond",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
+    }
+  },
+  {
+    "id": "frascati",
+    "name": "Frascati",
+    "landmarkId": "osm_theatre_2724220323",
+    "modelUrl": "./models/frascati.glb",
+    "suppressOsmIds": [
+      "w266932399",
+      "NL.IMBAG.Pand.0363100012168465"
+    ],
+    "footprint": {
+      "centre": [
+        4.893913835356087,
+        52.37036795599974
+      ],
+      "headingDegrees": 92.01886487244738,
+      "lengthMetres": 54.685246723089925,
+      "widthMetres": 38.14016308987897
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 182.98113512755262,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.893913835356087,
+        52.37036795599974
+      ],
+      "northOffsetDegrees": 95,
+      "source": "Current PDOK BAG individual building contours with named street frontage orientation; precise native metre geometry preserves courtyards and neighbors."
+    },
+    "attribution": {
+      "title": "Frascati",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.frascatitheater.nl/nl/contact-en-route-hvkz",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
+    }
+  },
+  {
+    "id": "boom-chicago",
+    "name": "Boom Chicago / Rozentheater",
+    "landmarkId": "extract_landmarks_855923099",
+    "modelUrl": "./models/boom-chicago.glb",
+    "suppressOsmIds": [
+      "w266659986",
+      "NL.IMBAG.Pand.0363100012174999"
+    ],
+    "footprint": {
+      "centre": [
+        4.879140883714867,
+        52.372669186374516
+      ],
+      "headingDegrees": 157.26777098353097,
+      "lengthMetres": 43.760989498567824,
+      "widthMetres": 17.890234957107282
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180.73222901646903,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.879140883714867,
+        52.372669186374516
+      ],
+      "northOffsetDegrees": 158,
+      "source": "Current PDOK BAG individual building contours with named street frontage orientation; precise native metre geometry preserves courtyards and neighbors."
+    },
+    "attribution": {
+      "title": "Boom Chicago / Rozentheater",
+      "author": "Map Recall",
+      "sourceUrl": "https://arcam.nl/architectuur-gids/rozentheater-2/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
+    }
+  },
+  {
+    "id": "foam",
+    "name": "Foam \u2014 Fodor Museum canal houses",
+    "landmarkId": "extract_landmarks_1875254501",
+    "modelUrl": "./models/foam.glb",
+    "suppressOsmIds": [
+      "w268283689",
+      "NL.IMBAG.Pand.0363100012167983",
+      "r3596865",
+      "NL.IMBAG.Pand.0363100012167977",
+      "r3596866",
+      "NL.IMBAG.Pand.0363100012167978"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.893417347733199,
+        52.36407363385784
+      ],
+      "headingDegrees": 12.003412745985031,
+      "lengthMetres": 29.89426360518473,
+      "widthMetres": 22.51366543490861
+    },
+    "surveyed": {
+      "anchor": [
+        4.893417347733199,
+        52.36407363385784
+      ],
+      "northOffsetDegrees": 12.599999999999994
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180.59658725401496,
+    "attribution": {
+      "title": "Foam \u2014 Fodor Museum canal houses",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.benthemcrouwel.com/projects/foam",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
+    }
+  },
+  {
+    "id": "huis-marseille",
+    "name": "Huis Marseille \u2014 two canal houses",
+    "landmarkId": "extract_landmarks_204772388",
+    "modelUrl": "./models/huis-marseille.glb",
+    "suppressOsmIds": [
+      "w266679116",
+      "NL.IMBAG.Pand.0363100012172340",
+      "r3581187",
+      "NL.IMBAG.Pand.0363100012172341"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.885023211366768,
+        52.367655981132486
+      ],
+      "headingDegrees": 93.69918033754192,
+      "lengthMetres": 31.747527439675313,
+      "widthMetres": 13.145083902037701
+    },
+    "surveyed": {
+      "anchor": [
+        4.885023211366768,
+        52.367655981132486
+      ],
+      "northOffsetDegrees": 93.19999999999999
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 179.50081966245807,
+    "attribution": {
+      "title": "Huis Marseille \u2014 two canal houses",
+      "author": "Map Recall",
+      "sourceUrl": "https://huismarseille.nl/en/history/the-house/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
+    }
+  },
+  {
+    "id": "ons-lieve-heer-op-solder",
+    "name": "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
+    "landmarkId": "extract_landmarks_769225968",
+    "modelUrl": "./models/ons-lieve-heer-op-solder.glb",
+    "suppressOsmIds": [
+      "w266941199",
+      "NL.IMBAG.Pand.0363100012178021",
+      "w266940951",
+      "NL.IMBAG.Pand.0363100012178040"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.899258769422396,
+        52.375132921670925
+      ],
+      "headingDegrees": 121.0851936786699,
+      "lengthMetres": 23.644547311709523,
+      "widthMetres": 21.08931723774654
+    },
+    "surveyed": {
+      "anchor": [
+        4.899258769422396,
+        52.375132921670925
+      ],
+      "northOffsetDegrees": -59
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -0.08519367866989569,
+    "attribution": {
+      "title": "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
+      "author": "Map Recall",
+      "sourceUrl": "https://opsolder.nl/en/the-monument/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
+    }
   }
 ]
