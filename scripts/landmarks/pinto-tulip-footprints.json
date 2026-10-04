@@ -1,0 +1,260 @@
+{
+  "sites": [
+    {
+      "id": "huis-de-pinto",
+      "key": "pinto",
+      "parent": "a351693838",
+      "landmarkId": "extract_landmarks_560548170",
+      "name": "Huis De Pinto",
+      "author": 168,
+      "url": "https://stadsherstel.nl/monumenten/huis-de-pinto/",
+      "anchor": [
+        4.900947893723509,
+        52.37012639422018
+      ],
+      "footprint": {
+        "centre": [
+          4.900947893723509,
+          52.37012639422018
+        ],
+        "headingDegrees": 72.79839529693228,
+        "lengthMetres": 21.772135341096394,
+        "widthMetres": 12.27648518938112
+      },
+      "authorHeadingDegrees": 168,
+      "buildings": [
+        {
+          "type": "Feature",
+          "id": "a351693838",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9007838,
+                    52.3701531
+                  ],
+                  [
+                    4.9008216,
+                    52.3700448
+                  ],
+                  [
+                    4.9009707,
+                    52.3700742
+                  ],
+                  [
+                    4.9010528,
+                    52.3700908
+                  ],
+                  [
+                    4.9010311,
+                    52.3701312
+                  ],
+                  [
+                    4.9010282,
+                    52.3701367
+                  ],
+                  [
+                    4.9011029,
+                    52.3701506
+                  ],
+                  [
+                    4.9010827,
+                    52.3701912
+                  ],
+                  [
+                    4.9010771,
+                    52.37019
+                  ],
+                  [
+                    4.9010679,
+                    52.3702068
+                  ],
+                  [
+                    4.9010356,
+                    52.3702006
+                  ],
+                  [
+                    4.9010569,
+                    52.3701592
+                  ],
+                  [
+                    4.9009816,
+                    52.3701447
+                  ],
+                  [
+                    4.9009622,
+                    52.3701824
+                  ],
+                  [
+                    4.9009608,
+                    52.3701821
+                  ],
+                  [
+                    4.9007838,
+                    52.3701531
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building": "yes",
+            "height": "15.9",
+            "name": "Huis De Pinto",
+            "name:es": "Casa de Pinto",
+            "name:nl": "Huis De Pinto",
+            "ref:bag": "0363100012182911",
+            "source": "BAG",
+            "source:date": "2014-02-11",
+            "source:height": "3DBAG",
+            "source:height:date": "2025-09-03",
+            "start_date": "1680",
+            "tourism": "yes",
+            "wikidata": "Q2009396",
+            "wikimedia_commons": "Category:Huis de Pinto",
+            "wikipedia": "nl:Huis De Pinto"
+          }
+        }
+      ],
+      "parts": [],
+      "suppressOsmIds": [
+        "w175846919",
+        "NL.IMBAG.Pand.0363100012182911"
+      ],
+      "primaryReferences": [
+        "https://stadsherstel.nl/monumenten/huis-de-pinto/",
+        "https://huisdepinto.nl/info/geschiedenis/"
+      ],
+      "sourceNote": "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto’s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116–118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
+    },
+    {
+      "id": "amsterdam-tulip-museum",
+      "key": "tulip",
+      "parent": "a533122792",
+      "landmarkId": "extract_landmarks_339731654",
+      "name": "Amsterdam Tulip Museum",
+      "author": 29,
+      "url": "https://amsterdamtulipmuseum.com/pages/about-amsterdam-tulip-museum",
+      "anchor": [
+        4.884088419391602,
+        52.37632814296878
+      ],
+      "footprint": {
+        "centre": [
+          4.884088419391602,
+          52.37632814296878
+        ],
+        "headingDegrees": 119.76088510470072,
+        "lengthMetres": 14.680859994520542,
+        "widthMetres": 9.493627369251168
+      },
+      "authorHeadingDegrees": 29,
+      "buildings": [
+        {
+          "type": "Feature",
+          "id": "a533122792",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.8839677,
+                    52.3763321
+                  ],
+                  [
+                    4.8839759,
+                    52.3763183
+                  ],
+                  [
+                    4.8841475,
+                    52.3762584
+                  ],
+                  [
+                    4.8841493,
+                    52.3762603
+                  ],
+                  [
+                    4.8841484,
+                    52.3762606
+                  ],
+                  [
+                    4.8841595,
+                    52.3762729
+                  ],
+                  [
+                    4.8841572,
+                    52.3762737
+                  ],
+                  [
+                    4.8841896,
+                    52.3763094
+                  ],
+                  [
+                    4.8841928,
+                    52.3763083
+                  ],
+                  [
+                    4.8841965,
+                    52.3763124
+                  ],
+                  [
+                    4.884194,
+                    52.3763133
+                  ],
+                  [
+                    4.8842016,
+                    52.3763217
+                  ],
+                  [
+                    4.8842041,
+                    52.3763208
+                  ],
+                  [
+                    4.8842087,
+                    52.3763259
+                  ],
+                  [
+                    4.8840749,
+                    52.3763726
+                  ],
+                  [
+                    4.8840674,
+                    52.3763846
+                  ],
+                  [
+                    4.8839677,
+                    52.3763321
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building": "apartments",
+            "height": "17.7",
+            "ref:bag": "0363100012174699",
+            "source": "BAG",
+            "source:date": "2014-02-11",
+            "source:height": "3DBAG",
+            "source:height:date": "2025-09-03",
+            "start_date": "1927"
+          }
+        }
+      ],
+      "parts": [],
+      "suppressOsmIds": [
+        "w266561396",
+        "NL.IMBAG.Pand.0363100012174699"
+      ],
+      "primaryReferences": [
+        "https://amsterdamtulipmuseum.com/pages/about-amsterdam-tulip-museum",
+        "https://amsterdamtulipmuseum.com/pages/visit-contact",
+        "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=8675"
+      ],
+      "sourceNote": "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto’s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116–118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
+    }
+  ]
+}
