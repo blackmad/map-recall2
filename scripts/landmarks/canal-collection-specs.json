@@ -1,0 +1,76 @@
+[
+  {
+    "id": "willet-holthuysen",
+    "name": "Willet-Holthuysen House",
+    "landmarkId": "extract_landmarks_154293883",
+    "modelUrl": "./models/willet-holthuysen.glb",
+    "suppressOsmIds": [
+      "w267116763",
+      "NL.IMBAG.Pand.0363100012171562"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.898971038437082,
+        52.36568706873301
+      ],
+      "headingDegrees": 163.11579731148294,
+      "lengthMetres": 25.94850886864895,
+      "widthMetres": 14.953045719179908
+    },
+    "surveyed": {
+      "anchor": [
+        4.898971038437082,
+        52.36568706873301
+      ],
+      "northOffsetDegrees": -16
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -89.11579731148294,
+    "attribution": {
+      "title": "Willet-Holthuysen House",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.amsterdammuseum.nl/en/tickets-and-visit/locations/huis-willet-holthuysen/3632",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen’s open French garden and the Pipe Museum’s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
+    }
+  },
+  {
+    "id": "amsterdam-pipe-museum",
+    "name": "Amsterdam Pipe Museum",
+    "landmarkId": "extract_landmarks_301593654",
+    "modelUrl": "./models/amsterdam-pipe-museum.glb",
+    "suppressOsmIds": [
+      "w267565677",
+      "NL.IMBAG.Pand.0363100012169037"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.885162575010229,
+        52.36406118702082
+      ],
+      "headingDegrees": 48.361372776468016,
+      "lengthMetres": 31.302749222414075,
+      "widthMetres": 9.508166304295873
+    },
+    "surveyed": {
+      "anchor": [
+        4.885162575010229,
+        52.36406118702082
+      ],
+      "northOffsetDegrees": 225.3
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 266.93862722353197,
+    "attribution": {
+      "title": "Amsterdam Pipe Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://pipemuseum.nl/en/article/de-geschiedenis-van-het-pijpenkabinet-van-particuliere-collectie-tot-nationaal-museum",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen’s open French garden and the Pipe Museum’s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
+    }
+  }
+]
