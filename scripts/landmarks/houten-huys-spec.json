@@ -1,0 +1,38 @@
+{
+  "id": "houten-huys",
+  "name": "Houten Huys \u2014 Begijnhof 34",
+  "landmarkId": "extract_landmarks_630735672",
+  "modelUrl": "./models/houten-huys.glb",
+  "suppressOsmIds": [
+    "w266903979",
+    "NL.IMBAG.Pand.0363100012175498"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.88969626,
+      52.36909782
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 12.608234423445666,
+    "widthMetres": 10.578678000310333
+  },
+  "surveyed": {
+    "anchor": [
+      4.88969626,
+      52.36909782
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact current OSM/BAG corner-house plan in local east/south metres; actual narrow NE gable front and current3DBAG height aboveground."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Houten Huys",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/371",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly model: narrow black timber gables, overhanging upper front, white masonry base and leaded windows. Exact BAG plan and current3DBAG height; side/rear details and roof are simplified. No photograph pixels or downloaded mesh geometry. Courtyard statue, trees, fences and neighboring houses retained."
+  }
+}

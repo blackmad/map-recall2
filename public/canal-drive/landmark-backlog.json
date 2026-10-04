@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 84,
+    "manual-model": 91,
     "catalogue-model": 12,
-    "procedural-kit": 17,
-    "pending": 177
+    "procedural-kit": 18,
+    "pending": 168
   },
   "destinations": [
     {
@@ -222,8 +222,9 @@
       "type": "landmark",
       "queueRank": 17,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "ot301",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1617200654",
@@ -889,8 +890,9 @@
       "type": "landmark",
       "queueRank": 69,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "begijnhofkapel",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_740511540",
@@ -1030,7 +1032,8 @@
       "type": "museum",
       "queueRank": 80,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "amsterdam-tulip-museum",
       "treatment": "building"
     },
     {
@@ -1145,7 +1148,8 @@
       "type": "museum",
       "queueRank": 89,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "procedural-kit",
+      "kitName": "Scheepvaartmuseum",
       "treatment": "building"
     },
     {
@@ -1221,7 +1225,8 @@
       "type": "cinema",
       "queueRank": 95,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "cavia",
       "treatment": "building"
     },
     {
@@ -1246,8 +1251,9 @@
       "type": "landmark",
       "queueRank": 97,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "orgelpark",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_560548170",
@@ -1258,8 +1264,9 @@
       "type": "landmark",
       "queueRank": 98,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "huis-de-pinto",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_856768624",
@@ -1525,8 +1532,9 @@
       "type": "landmark",
       "queueRank": 119,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "scheepvaarthuis",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_95134534",
@@ -2411,8 +2419,9 @@
       "type": "landmark",
       "queueRank": 192,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "houten-huys",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1194428339",
@@ -3478,22 +3487,11 @@
       "treatment": "building"
     },
     {
-      "id": "scheepvaarthuis",
-      "name": "Scheepvaarthuis",
-      "lat": 52.37432204329201,
-      "lng": 4.903908332712785,
-      "queueRank": 281,
-      "origin": "Landmark catalogue",
-      "status": "manual-model",
-      "modelId": "scheepvaarthuis",
-      "treatment": "building"
-    },
-    {
       "id": "de-bijenkorf",
       "name": "De Bijenkorf",
       "lat": 52.373581327421924,
       "lng": 4.894352481530528,
-      "queueRank": 282,
+      "queueRank": 281,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "de-bijenkorf",
@@ -3504,7 +3502,7 @@
       "name": "Gashouder",
       "lat": 52.386820591571,
       "lng": 4.868872884498755,
-      "queueRank": 283,
+      "queueRank": 282,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "gashouder",
@@ -3515,7 +3513,7 @@
       "name": "H'ART Museum — Amstelhof",
       "lat": 52.36539923653881,
       "lng": 4.902899923436612,
-      "queueRank": 284,
+      "queueRank": 283,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "hart-museum",
@@ -3526,7 +3524,7 @@
       "name": "Hortus Botanicus — greenhouses and orangery",
       "lat": 52.36667455153043,
       "lng": 4.907562825146495,
-      "queueRank": 285,
+      "queueRank": 284,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "hortus-greenhouses",
@@ -3537,7 +3535,7 @@
       "name": "Frascati",
       "lat": 52.37036795599974,
       "lng": 4.893913835356087,
-      "queueRank": 286,
+      "queueRank": 285,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "frascati",
@@ -3548,7 +3546,7 @@
       "name": "LAB111 / Pathological Anatomical Laboratory",
       "lat": 52.36366317589964,
       "lng": 4.867419736081726,
-      "queueRank": 287,
+      "queueRank": 286,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "lab111",
@@ -3559,7 +3557,7 @@
       "name": "Timorplein school / Studio K",
       "lat": 52.36529993337992,
       "lng": 4.9359819354640555,
-      "queueRank": 288,
+      "queueRank": 287,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "studiok",
@@ -3570,7 +3568,7 @@
       "name": "Athenaeum bookshop / Nieuwscentrum",
       "lat": 52.36892986410698,
       "lng": 4.889058364860993,
-      "queueRank": 289,
+      "queueRank": 288,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "athenaeum",
@@ -3581,7 +3579,7 @@
       "name": "Scheltema / Rokin 9–15",
       "lat": 52.372135134784074,
       "lng": 4.893404379268778,
-      "queueRank": 290,
+      "queueRank": 289,
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "scheltema",

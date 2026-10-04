@@ -1,5 +1,51 @@
 # Canal Recall — what is built
 
+## Concealed chapels, community venues and tree visibility: 87 original landmarks (2026-10-04)
+
+Begijnhofkapel models its actual shared house/church parent, two bent three-bay
+fronts, arched Empire windows and projecting stone portal; the English Reformed
+Church and other courtyard houses remain separate. Houten Huys retains its
+narrow timber gable, projecting upper front, white masonry base and leaded
+windows. The current 3DBAG height controls the roof; side/rear details are
+simplified. Conflicting historical construction dates are recorded in its
+source file rather than presented as a verified oldest-house claim.
+
+Huis De Pinto adds its pale five-bay facade and actual rear wings. Amsterdam
+Tulip Museum uses its current combined straight-parapet building and shopfront.
+OT301 includes its older brick entrance and separate glazed school frontage;
+Filmhuis Cavia uses the three registered school parents while preserving open
+courts and the separate residential gateway. Orgelpark includes its steep
+church roof, documented needle height and same-parent kosterij. Final visual
+reviews corrected Cavia windows above the lower gym roof. All 87 assets pass
+decoded geometry, compression, material, life-size placement and exact-ID
+suppression checks.
+
+An active-game Tulip review exposed a generic-building north-axis scale error:
+local meshes used 110,540 metres per degree, while their Mercator transform
+applied the spherical equatorial metre. It displaced the preserved neighboring
+facade about five metres south. North-axis compensation fixes that alignment
+without suppressing the neighbor, moving signature anchors or changing heights.
+Independent Mercator regression checks cover the museum, neighbor, Pinto,
+Silodam, Willet-Holthuysen and city bounds; the remaining origin-linear
+curvature is explicitly bounded. The queue now has 289 entries: 91 original
+model entries, 12 imported references, 18 procedural kits and 168 pending tasks.
+English Shipping House / Maritime Museum aliases now match existing coverage.
+
+Trees now honor their saved preference in all four game views. The visible
+Trees setting, fresh desktop/mobile defaults, saved-off behavior, view switches,
+low-zoom cutoff and city cleanup pass actual-game checks. Six further exact
+species/cultivar rules refine 4,968 fallback crowns, distinguishing open honey
+locusts from denser Skyline cultivars and tapering alder, holly and Greenspire
+lime. All 311,544 records retain positions/heights; ten managed target records
+remain unchanged. Sixteen forms, seven draws, four shared geometries and two
+materials remain the rendering budget. These browser checks do not measure
+real-phone performance.
+
+The park audit reviewed Sarphatipark, Vondelpark and Wertheimpark in north and
+chase views: mapped lawns, paths, ponds and benches remain readable, with
+default visibility and toggling intact. Actual MapLibre-projected path widths
+match mapped metres within 0.3%; no speculative path-width change was made.
+
 ## Canal museums, bookshops and a memorial: 80 original landmarks (2026-10-04)
 
 Willet-Holthuysen models its five-bay classical facade, double stoop, two

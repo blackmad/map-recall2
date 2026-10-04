@@ -1,0 +1,110 @@
+{
+  "id": "houten-huys",
+  "osmId": "w266903979",
+  "bagId": "0363100012175498",
+  "teachingId": "extract_landmarks_630735672",
+  "anchor": [
+    4.88969626,
+    52.36909782
+  ],
+  "ring": [
+    [
+      4.8897672,
+      52.3691031
+    ],
+    [
+      4.8897759,
+      52.3690898
+    ],
+    [
+      4.889607,
+      52.3690481
+    ],
+    [
+      4.8895904,
+      52.3691043
+    ],
+    [
+      4.8897408,
+      52.3691438
+    ],
+    [
+      4.8897672,
+      52.3691031
+    ]
+  ],
+  "heightMetres": 13.623890433460474,
+  "bagAttributes": {
+    "b3_bag_bag_overlap": 0.0,
+    "b3_bouwlagen": null,
+    "b3_dak_type": "slanted",
+    "b3_extrusie": "standard",
+    "b3_h_dak_50p": 11.006999969482422,
+    "b3_h_dak_70p": 11.956000328063965,
+    "b3_h_dak_max": 13.5,
+    "b3_h_dak_min": 8.404999732971191,
+    "b3_h_maaiveld": 0.039000000804662704,
+    "b3_h_nok": 13.662890434265137,
+    "b3_is_glas_dak": false,
+    "b3_kas_warenhuis": false,
+    "b3_kwaliteitsindicator": true,
+    "b3_mutatie_ahn3_ahn4": false,
+    "b3_mutatie_ahn4_ahn5": false,
+    "b3_n_nok": 3,
+    "b3_n_vlakken": 4,
+    "b3_nodata_fractie_ahn3": 0.0,
+    "b3_nodata_fractie_ahn4": 0.0,
+    "b3_nodata_fractie_ahn5": 0.02675585262477398,
+    "b3_nodata_radius_ahn3": 0.0,
+    "b3_nodata_radius_ahn4": 0.0,
+    "b3_nodata_radius_ahn5": 0.0,
+    "b3_opp_buitenmuur": 237.39,
+    "b3_opp_dak_plat": 0.0,
+    "b3_opp_dak_schuin": 147.36,
+    "b3_opp_grond": 74.57,
+    "b3_opp_scheidingsmuur": 89.5,
+    "b3_puntdichtheid_ahn3": 20.107023239135742,
+    "b3_puntdichtheid_ahn4": 30.581939697265625,
+    "b3_puntdichtheid_ahn5": 19.78006935119629,
+    "b3_pw_bron": "ahn5",
+    "b3_pw_datum": 2023,
+    "b3_pw_onvoldoende": false,
+    "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+    "b3_rmse_lod12": 1.7392553091049194,
+    "b3_rmse_lod13": 1.7392553091049194,
+    "b3_rmse_lod22": 0.13328363001346588,
+    "b3_t_run": 33,
+    "b3_val3dity_lod12": "[]",
+    "b3_val3dity_lod13": "[]",
+    "b3_val3dity_lod22": "[]",
+    "b3_volume_lod12": 881.8589477539062,
+    "b3_volume_lod13": 881.8589477539062,
+    "b3_volume_lod22": 801.2807006835938,
+    "begingeldigheid": "2023-09-28",
+    "documentdatum": "2023-09-28",
+    "documentnummer": "GV00007182_AC00AC",
+    "eindgeldigheid": null,
+    "eindregistratie": null,
+    "fid": 8402087,
+    "geconstateerd": false,
+    "identificatie": "NL.IMBAG.Pand.0363100012175498",
+    "oorspronkelijkbouwjaar": 1455,
+    "status": "Pand in gebruik",
+    "tijdstipeindregistratielv": null,
+    "tijdstipinactief": null,
+    "tijdstipinactieflv": null,
+    "tijdstipnietbaglv": null,
+    "tijdstipregistratie": "2023-09-28T18:43:29Z",
+    "tijdstipregistratielv": "2023-09-28T21:09:59Z",
+    "voorkomenidentificatie": 3
+  },
+  "references": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/371",
+    "https://arcam.nl/architectuur-gids/houten-huis/",
+    "https://arcam.nl/wp-content/uploads/2021/07/Amsterdam-Begijnhof-Houtenhuys.jpg",
+    "https://openresearch.amsterdam/en/page/43344/de-datering-van-het-houten-huys-op-het-begijnhof",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175498",
+    "https://www.openstreetmap.org/way/266903979"
+  ],
+  "notes": "Exact shared BAG corner-house plan. NE timber gable comprises collinear edges4\u21920 and0\u21921, together6.43m wide; it is not the long NW side. Main and rear timber gables, projecting upper front, white masonry foot and leaded windows authored from architectural photos; roof and rear window rhythm are approximations within current3DBAG height. Historical dates conflict across primary sources; no verified1455 or oldest-house claim is published."
+}
