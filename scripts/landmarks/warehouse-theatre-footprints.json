@@ -1,0 +1,1762 @@
+[
+  {
+    "id": "het-veem",
+    "parts": [
+      {
+        "osmId": "w274024256",
+        "bagId": "0363100012087482",
+        "polygons": [
+          [
+            [
+              [
+                4.886731,
+                52.3903126
+              ],
+              [
+                4.8875953,
+                52.3902029
+              ],
+              [
+                4.8876706,
+                52.3904252
+              ],
+              [
+                4.8876692,
+                52.3904254
+              ],
+              [
+                4.8876697,
+                52.3904285
+              ],
+              [
+                4.8876688,
+                52.390433
+              ],
+              [
+                4.8876672,
+                52.3904359
+              ],
+              [
+                4.8876647,
+                52.3904386
+              ],
+              [
+                4.8876614,
+                52.390441
+              ],
+              [
+                4.8876576,
+                52.3904429
+              ],
+              [
+                4.8876532,
+                52.3904444
+              ],
+              [
+                4.8876485,
+                52.3904455
+              ],
+              [
+                4.8876435,
+                52.390446
+              ],
+              [
+                4.887636,
+                52.3904457
+              ],
+              [
+                4.8876312,
+                52.3904448
+              ],
+              [
+                4.8876267,
+                52.3904434
+              ],
+              [
+                4.8876227,
+                52.3904416
+              ],
+              [
+                4.8876178,
+                52.3904381
+              ],
+              [
+                4.8876155,
+                52.3904354
+              ],
+              [
+                4.887614,
+                52.3904324
+              ],
+              [
+                4.8868908,
+                52.3905244
+              ],
+              [
+                4.8868946,
+                52.3905358
+              ],
+              [
+                4.8868272,
+                52.3905444
+              ],
+              [
+                4.8868233,
+                52.3905447
+              ],
+              [
+                4.8868193,
+                52.3905444
+              ],
+              [
+                4.8868155,
+                52.3905437
+              ],
+              [
+                4.8868104,
+                52.3905417
+              ],
+              [
+                4.8868077,
+                52.3905399
+              ],
+              [
+                4.8868066,
+                52.3905388
+              ],
+              [
+                4.886805,
+                52.3905366
+              ],
+              [
+                4.8868045,
+                52.3905354
+              ],
+              [
+                4.886731,
+                52.3903126
+              ]
+            ]
+          ]
+        ],
+        "properties": {
+          "building": "commercial",
+          "height": "20.4",
+          "ref:bag": "0363100012087482",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1900"
+        }
+      }
+    ],
+    "bag": {
+      "identificatie": "0363100012087482",
+      "status": "Pand in gebruik",
+      "bouwjaar": 1900,
+      "numberOfUnits": 1
+    },
+    "heightEvidence": {
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012087482",
+      "groundNAP": 0.5529999732971191,
+      "attributes": {
+        "b3_bag_bag_overlap": 0,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 17.98699951171875,
+        "b3_h_dak_70p": 18.22599983215332,
+        "b3_h_dak_max": 20.690000534057617,
+        "b3_h_dak_min": 16.66200065612793,
+        "b3_h_maaiveld": 0.5529999732971191,
+        "b3_h_nok": 20.89764976501465,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": false,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 6,
+        "b3_n_vlakken": 32,
+        "b3_nodata_fractie_ahn3": 0.003913894295692444,
+        "b3_nodata_fractie_ahn4": 0.008317025378346443,
+        "b3_nodata_fractie_ahn5": 0.007338551804423332,
+        "b3_nodata_radius_ahn3": 0.015072599984705448,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 2710.95,
+        "b3_opp_dak_plat": 1449.82,
+        "b3_opp_dak_schuin": 665.13,
+        "b3_opp_grond": 1533.61,
+        "b3_opp_scheidingsmuur": 379.08,
+        "b3_puntdichtheid_ahn3": 13.506875991821289,
+        "b3_puntdichtheid_ahn4": 24.438743591308594,
+        "b3_puntdichtheid_ahn5": 15.957942962646484,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 1.0693329572677612,
+        "b3_rmse_lod13": 1.0693329572677612,
+        "b3_rmse_lod22": 0.3836608827114105,
+        "b3_t_run": 972,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 27051.8203125,
+        "b3_volume_lod13": 27051.8203125,
+        "b3_volume_lod22": 27297.6796875,
+        "begingeldigheid": "2023-09-21",
+        "documentdatum": "2023-09-21",
+        "documentnummer": "GV00007167_AC00AC",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8202892,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012087482",
+        "oorspronkelijkbouwjaar": 1900,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2023-09-21T17:52:55Z",
+        "tijdstipregistratielv": "2023-09-21T19:59:48Z",
+        "voorkomenidentificatie": 2
+      },
+      "roofRegions": [
+        {
+          "x": [
+            13.47,
+            18.81
+          ],
+          "z": [
+            1.29,
+            4.63
+          ],
+          "y": [
+            17.93,
+            17.98
+          ]
+        },
+        {
+          "x": [
+            -24.62,
+            8.4
+          ],
+          "z": [
+            -1.51,
+            5.22
+          ],
+          "y": [
+            17.34,
+            20.41
+          ]
+        },
+        {
+          "x": [
+            -12.21,
+            -9.32
+          ],
+          "z": [
+            10.03,
+            13.13
+          ],
+          "y": [
+            19.28,
+            19.44
+          ]
+        },
+        {
+          "x": [
+            -29.95,
+            -29.61
+          ],
+          "z": [
+            -3.2,
+            3.56
+          ],
+          "y": [
+            19.2,
+            19.38
+          ]
+        },
+        {
+          "x": [
+            26.54,
+            29.92
+          ],
+          "z": [
+            -13.87,
+            -12.51
+          ],
+          "y": [
+            15.76,
+            16.11
+          ]
+        },
+        {
+          "x": [
+            -24.44,
+            -18.93
+          ],
+          "z": [
+            -5.51,
+            -2.66
+          ],
+          "y": [
+            19.37,
+            20.36
+          ]
+        },
+        {
+          "x": [
+            8.34,
+            11.8
+          ],
+          "z": [
+            9.51,
+            13.12
+          ],
+          "y": [
+            19.3,
+            19.42
+          ]
+        },
+        {
+          "x": [
+            -26.96,
+            27.08
+          ],
+          "z": [
+            -13.28,
+            -10.03
+          ],
+          "y": [
+            13.57,
+            17.61
+          ]
+        },
+        {
+          "x": [
+            -29.98,
+            30.1
+          ],
+          "z": [
+            -13.29,
+            13.13
+          ],
+          "y": [
+            17.25,
+            17.57
+          ]
+        },
+        {
+          "x": [
+            -24.59,
+            8.38
+          ],
+          "z": [
+            -7.4,
+            -1.49
+          ],
+          "y": [
+            18.22,
+            20.41
+          ]
+        }
+      ],
+      "uncertainty": "Mapped OSM height and current scalar roof attributes can disagree with detailed LoD2.2 roof vertices. Small roof fixtures may be oversegmented. Silhouette uses coherent measured roof regions reconciled with current exterior photos, not an unqualified legal-outline extrusion.",
+      "reconstructionNote": "Original coherent cross-section uses roof peak20.4m, front eaves17.3m and rear wall14.75m. Fine lower13.57m survey strip is not extended across the entire rear facade: it is a localized lower edge; primary photograph constrains four storeys and five attic gables. Roof profile and lift boxes are manual visual reconstruction, not imported survey mesh."
+    },
+    "references": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/526741",
+      "https://www.veem.nl/nl/plattegronden",
+      "https://www.veem.nl/historie",
+      "https://amsterdamopdekaart.nl/1850-1940/Van_Diemenstraat/Oranje-Nassauveem",
+      "https://static.contentecontent.com/platen_groot/20/20947.webp",
+      "https://static.contentecontent.com/platen_groot/9/9371.webp"
+    ],
+    "scopeNotes": "Only the yellow Oranje Nassau warehouse parent; adjacent red Koelit stays generic. Theatre shares the warehouse with studios/offices/restaurant; no invented standalone theatre. Round rear turrets belong to this parent."
+  },
+  {
+    "id": "tobacco-theater",
+    "parts": [
+      {
+        "osmId": "w266932382",
+        "bagId": "0363100012179546",
+        "polygons": [
+          [
+            [
+              [
+                4.8933099,
+                52.3694742
+              ],
+              [
+                4.8933112,
+                52.369474
+              ],
+              [
+                4.8935609,
+                52.3694666
+              ],
+              [
+                4.8935646,
+                52.3694897
+              ],
+              [
+                4.8935587,
+                52.3694923
+              ],
+              [
+                4.893567,
+                52.3695254
+              ],
+              [
+                4.8936392,
+                52.369523
+              ],
+              [
+                4.8936697,
+                52.3696643
+              ],
+              [
+                4.8936783,
+                52.3697041
+              ],
+              [
+                4.8933775,
+                52.369729
+              ],
+              [
+                4.8933771,
+                52.3697284
+              ],
+              [
+                4.89337,
+                52.3697018
+              ],
+              [
+                4.8933099,
+                52.3694742
+              ]
+            ]
+          ]
+        ],
+        "properties": {
+          "building": "yes",
+          "height": "16.3",
+          "ref:bag": "0363100012179546",
+          "source": "BAG",
+          "source:date": "2014-02-11",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1905"
+        }
+      }
+    ],
+    "bag": {
+      "identificatie": "0363100012179546",
+      "status": "Pand in gebruik",
+      "bouwjaar": 1905,
+      "numberOfUnits": 2
+    },
+    "heightEvidence": {
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012179546",
+      "groundNAP": 0.6169999837875366,
+      "attributes": {
+        "b3_bag_bag_overlap": 0,
+        "b3_bouwlagen": 3,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 10.071000099182129,
+        "b3_h_dak_70p": 10.888999938964844,
+        "b3_h_dak_max": 13.918999671936035,
+        "b3_h_dak_min": 6.947000026702881,
+        "b3_h_maaiveld": 0.6169999837875366,
+        "b3_h_nok": 13.425500869750977,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": false,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 20,
+        "b3_n_vlakken": 58,
+        "b3_nodata_fractie_ahn3": 0.028854824602603912,
+        "b3_nodata_fractie_ahn4": 0.012623985297977924,
+        "b3_nodata_fractie_ahn5": 0.017583409324288368,
+        "b3_nodata_radius_ahn3": 0,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 858.74,
+        "b3_opp_dak_plat": 199.65,
+        "b3_opp_dak_schuin": 527.31,
+        "b3_opp_grond": 555.02,
+        "b3_opp_scheidingsmuur": 379.05,
+        "b3_puntdichtheid_ahn3": 15.153203010559082,
+        "b3_puntdichtheid_ahn4": 30.292238235473633,
+        "b3_puntdichtheid_ahn5": 19.02524185180664,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 1.903802514076233,
+        "b3_rmse_lod13": 1.903802514076233,
+        "b3_rmse_lod22": 0.42758119106292725,
+        "b3_t_run": 447,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 5686.0830078125,
+        "b3_volume_lod13": 5686.0830078125,
+        "b3_volume_lod22": 5163.73046875,
+        "begingeldigheid": "2023-09-28",
+        "documentdatum": "2023-09-28",
+        "documentnummer": "GV00007182_AC00AC",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8075414,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012179546",
+        "oorspronkelijkbouwjaar": 1905,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2023-09-28T18:57:37Z",
+        "tijdstipregistratielv": "2023-09-28T21:56:59Z",
+        "voorkomenidentificatie": 2
+      },
+      "roofRegions": [
+        {
+          "x": [
+            -13.01,
+            -12.24
+          ],
+          "z": [
+            8.79,
+            10.19
+          ],
+          "y": [
+            9.86,
+            12.97
+          ]
+        },
+        {
+          "x": [
+            11.18,
+            14.02
+          ],
+          "z": [
+            -6.82,
+            -2.48
+          ],
+          "y": [
+            6.65,
+            6.86
+          ]
+        },
+        {
+          "x": [
+            2.09,
+            2.98
+          ],
+          "z": [
+            2.98,
+            3.47
+          ],
+          "y": [
+            12.47,
+            13.74
+          ]
+        },
+        {
+          "x": [
+            -0.85,
+            0.13
+          ],
+          "z": [
+            3.59,
+            4.57
+          ],
+          "y": [
+            10.73,
+            12.7
+          ]
+        },
+        {
+          "x": [
+            -0.23,
+            4.14
+          ],
+          "z": [
+            3.28,
+            8.21
+          ],
+          "y": [
+            9.77,
+            13.05
+          ]
+        },
+        {
+          "x": [
+            -13.55,
+            -11.15
+          ],
+          "z": [
+            -10.51,
+            -7.71
+          ],
+          "y": [
+            6.22,
+            6.35
+          ]
+        },
+        {
+          "x": [
+            -1.05,
+            0.05
+          ],
+          "z": [
+            2.56,
+            3.71
+          ],
+          "y": [
+            7.83,
+            9.6
+          ]
+        },
+        {
+          "x": [
+            7.74,
+            12.03
+          ],
+          "z": [
+            -6.66,
+            -1.61
+          ],
+          "y": [
+            6.13,
+            8.75
+          ]
+        },
+        {
+          "x": [
+            -13.35,
+            -11.27
+          ],
+          "z": [
+            -3.58,
+            5.23
+          ],
+          "y": [
+            7.9,
+            8.27
+          ]
+        },
+        {
+          "x": [
+            -12.08,
+            -7.94
+          ],
+          "z": [
+            -3.93,
+            5.03
+          ],
+          "y": [
+            7.5,
+            9.97
+          ]
+        },
+        {
+          "x": [
+            -6.94,
+            -5.01
+          ],
+          "z": [
+            -8.29,
+            -2.81
+          ],
+          "y": [
+            7.99,
+            10.21
+          ]
+        },
+        {
+          "x": [
+            6.2,
+            9.5
+          ],
+          "z": [
+            -1.75,
+            3.76
+          ],
+          "y": [
+            6.4,
+            10.81
+          ]
+        },
+        {
+          "x": [
+            -6.14,
+            -0.73
+          ],
+          "z": [
+            -8.71,
+            4.12
+          ],
+          "y": [
+            7.58,
+            10.65
+          ]
+        },
+        {
+          "x": [
+            -12.79,
+            -8.26
+          ],
+          "z": [
+            4.69,
+            8.66
+          ],
+          "y": [
+            11.44,
+            16.27
+          ]
+        },
+        {
+          "x": [
+            -9.13,
+            -7.21
+          ],
+          "z": [
+            8.56,
+            10.18
+          ],
+          "y": [
+            10.63,
+            10.88
+          ]
+        },
+        {
+          "x": [
+            11.16,
+            14.65
+          ],
+          "z": [
+            -3.48,
+            2.82
+          ],
+          "y": [
+            5.67,
+            10.82
+          ]
+        },
+        {
+          "x": [
+            7.41,
+            10.07
+          ],
+          "z": [
+            3.44,
+            5.01
+          ],
+          "y": [
+            6.71,
+            7.02
+          ]
+        },
+        {
+          "x": [
+            11.38,
+            14.84
+          ],
+          "z": [
+            2,
+            4.82
+          ],
+          "y": [
+            8.23,
+            9.75
+          ]
+        },
+        {
+          "x": [
+            8.61,
+            12.06
+          ],
+          "z": [
+            -2.14,
+            3.45
+          ],
+          "y": [
+            10.78,
+            10.82
+          ]
+        },
+        {
+          "x": [
+            10.73,
+            11.91
+          ],
+          "z": [
+            4.82,
+            6.78
+          ],
+          "y": [
+            10.43,
+            12.69
+          ]
+        },
+        {
+          "x": [
+            7.64,
+            9.99
+          ],
+          "z": [
+            4.85,
+            8.24
+          ],
+          "y": [
+            10.91,
+            12.81
+          ]
+        },
+        {
+          "x": [
+            4.55,
+            10.47
+          ],
+          "z": [
+            -8.03,
+            -1.37
+          ],
+          "y": [
+            6.26,
+            6.48
+          ]
+        },
+        {
+          "x": [
+            9.72,
+            11.62
+          ],
+          "z": [
+            3.21,
+            5.15
+          ],
+          "y": [
+            6.88,
+            8.68
+          ]
+        },
+        {
+          "x": [
+            2.95,
+            8.22
+          ],
+          "z": [
+            2.14,
+            8.4
+          ],
+          "y": [
+            9.57,
+            13.37
+          ]
+        },
+        {
+          "x": [
+            -11.15,
+            -9.01
+          ],
+          "z": [
+            -7.88,
+            -3.87
+          ],
+          "y": [
+            7.37,
+            9.98
+          ]
+        },
+        {
+          "x": [
+            -9.94,
+            -4.09
+          ],
+          "z": [
+            -8.56,
+            4.61
+          ],
+          "y": [
+            7.32,
+            10.79
+          ]
+        },
+        {
+          "x": [
+            -13.48,
+            -10.34
+          ],
+          "z": [
+            -7.72,
+            -3.37
+          ],
+          "y": [
+            7.31,
+            7.39
+          ]
+        },
+        {
+          "x": [
+            -8.55,
+            15.58
+          ],
+          "z": [
+            3.71,
+            10.18
+          ],
+          "y": [
+            10.07,
+            10.64
+          ]
+        },
+        {
+          "x": [
+            -11.73,
+            2.24
+          ],
+          "z": [
+            -10.93,
+            -2.27
+          ],
+          "y": [
+            7.88,
+            8.25
+          ]
+        },
+        {
+          "x": [
+            11.62,
+            15.25
+          ],
+          "z": [
+            3.64,
+            8
+          ],
+          "y": [
+            9.83,
+            12.69
+          ]
+        },
+        {
+          "x": [
+            1.16,
+            7.26
+          ],
+          "z": [
+            -11.06,
+            2.91
+          ],
+          "y": [
+            5.72,
+            10.42
+          ]
+        },
+        {
+          "x": [
+            -13.12,
+            -8.84
+          ],
+          "z": [
+            4.92,
+            10.19
+          ],
+          "y": [
+            12.5,
+            13.28
+          ]
+        },
+        {
+          "x": [
+            -2.43,
+            2.87
+          ],
+          "z": [
+            -10.32,
+            3.59
+          ],
+          "y": [
+            7.23,
+            10.64
+          ]
+        },
+        {
+          "x": [
+            1.27,
+            3.85
+          ],
+          "z": [
+            -7.02,
+            2.99
+          ],
+          "y": [
+            7.71,
+            10.14
+          ]
+        }
+      ],
+      "uncertainty": "Mapped OSM height and current scalar roof attributes can disagree with detailed LoD2.2 roof vertices. Small roof fixtures may be oversegmented. Silhouette uses coherent measured roof regions reconciled with current exterior photos, not an unqualified legal-outline extrusion.",
+      "reconstructionNote": "Front cornice10.7m and lower rear auction rooms6.4\u201310.8m, reconciled with actual two-storey facade. One north-front roof reaches13.3m; chimney tip13.9m. Fragmented16.27m survey roof point is not treated as a uniform facade height."
+    },
+    "references": [
+      "https://tobacco.nl/historie/",
+      "https://amsterdamopdekaart.nl/1850-1940/Nes/73-87",
+      "https://static.contentecontent.com/platen_groot/8/8569.webp",
+      "https://tobacco.nl/wp-content/uploads/2025/07/Sef-Kunst-in-de-posterbakken-2-2-900x1200.jpg"
+    ],
+    "scopeNotes": "Single physical former tobacco-office/auction building parent, adjacent Frascati and other narrow Nes houses preserved. Entrance on Nes and lower back hall reconstructed separately."
+  },
+  {
+    "id": "plein-theater",
+    "parts": [
+      {
+        "osmId": "w278102241",
+        "bagId": "0363100012124352",
+        "polygons": [
+          [
+            [
+              [
+                4.9136214,
+                52.3609994
+              ],
+              [
+                4.9136544,
+                52.3609362
+              ],
+              [
+                4.9136284,
+                52.360931
+              ],
+              [
+                4.9136568,
+                52.3608767
+              ],
+              [
+                4.9136831,
+                52.3608817
+              ],
+              [
+                4.9137161,
+                52.3608183
+              ],
+              [
+                4.9137382,
+                52.3608114
+              ],
+              [
+                4.9138015,
+                52.3608236
+              ],
+              [
+                4.9138055,
+                52.3608158
+              ],
+              [
+                4.9138187,
+                52.3608184
+              ],
+              [
+                4.9138223,
+                52.3608135
+              ],
+              [
+                4.9138256,
+                52.3608106
+              ],
+              [
+                4.913832,
+                52.3608069
+              ],
+              [
+                4.9138395,
+                52.3608041
+              ],
+              [
+                4.913845,
+                52.3608029
+              ],
+              [
+                4.9138537,
+                52.3608021
+              ],
+              [
+                4.9138624,
+                52.3608025
+              ],
+              [
+                4.9138681,
+                52.3608035
+              ],
+              [
+                4.9138759,
+                52.3608059
+              ],
+              [
+                4.9138806,
+                52.3608081
+              ],
+              [
+                4.9138847,
+                52.3608107
+              ],
+              [
+                4.9138894,
+                52.3608152
+              ],
+              [
+                4.9138916,
+                52.3608185
+              ],
+              [
+                4.9138929,
+                52.360822
+              ],
+              [
+                4.9138932,
+                52.3608238
+              ],
+              [
+                4.9138932,
+                52.3608274
+              ],
+              [
+                4.9138929,
+                52.3608291
+              ],
+              [
+                4.9138915,
+                52.3608326
+              ],
+              [
+                4.9139047,
+                52.3608356
+              ],
+              [
+                4.9139005,
+                52.3608431
+              ],
+              [
+                4.9139615,
+                52.360855
+              ],
+              [
+                4.9139755,
+                52.3608505
+              ],
+              [
+                4.9139975,
+                52.3608551
+              ],
+              [
+                4.9140058,
+                52.3608637
+              ],
+              [
+                4.9141057,
+                52.3608831
+              ],
+              [
+                4.9140671,
+                52.3609505
+              ],
+              [
+                4.9140898,
+                52.3609556
+              ],
+              [
+                4.9140319,
+                52.3610557
+              ],
+              [
+                4.9140093,
+                52.3610506
+              ],
+              [
+                4.9139877,
+                52.3610878
+              ],
+              [
+                4.9139389,
+                52.3610837
+              ],
+              [
+                4.9139381,
+                52.361085
+              ],
+              [
+                4.9138898,
+                52.3610796
+              ],
+              [
+                4.9139035,
+                52.3610544
+              ],
+              [
+                4.9138798,
+                52.3610501
+              ],
+              [
+                4.9138577,
+                52.3610569
+              ],
+              [
+                4.9136325,
+                52.3610129
+              ],
+              [
+                4.9136214,
+                52.3609994
+              ]
+            ]
+          ]
+        ],
+        "properties": {
+          "building": "retail",
+          "height": "18.9",
+          "ref:bag": "0363100012124352",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1989"
+        }
+      }
+    ],
+    "bag": {
+      "identificatie": "0363100012124352",
+      "status": "Pand in gebruik",
+      "bouwjaar": 1989,
+      "numberOfUnits": 23
+    },
+    "heightEvidence": {
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012124352",
+      "groundNAP": -0.07400000095367432,
+      "attributes": {
+        "b3_bag_bag_overlap": null,
+        "b3_bouwlagen": null,
+        "b3_dak_type": "slanted",
+        "b3_extrusie": "standard",
+        "b3_h_dak_50p": 17.959999084472656,
+        "b3_h_dak_70p": 17.97800064086914,
+        "b3_h_dak_max": 18.072999954223633,
+        "b3_h_dak_min": 4.540999889373779,
+        "b3_h_maaiveld": -0.07400000095367432,
+        "b3_h_nok": null,
+        "b3_is_glas_dak": false,
+        "b3_kas_warenhuis": false,
+        "b3_kwaliteitsindicator": true,
+        "b3_mutatie_ahn3_ahn4": false,
+        "b3_mutatie_ahn4_ahn5": false,
+        "b3_n_nok": 0,
+        "b3_n_vlakken": 6,
+        "b3_nodata_fractie_ahn3": 0.10951008647680283,
+        "b3_nodata_fractie_ahn4": 0.0003602305368985981,
+        "b3_nodata_fractie_ahn5": 0.002521613845601678,
+        "b3_nodata_radius_ahn3": 0.07028695195913315,
+        "b3_nodata_radius_ahn4": 0,
+        "b3_nodata_radius_ahn5": 0,
+        "b3_opp_buitenmuur": 1752.78,
+        "b3_opp_dak_plat": 692.82,
+        "b3_opp_dak_schuin": 3.44,
+        "b3_opp_grond": 692.71,
+        "b3_opp_scheidingsmuur": 0,
+        "b3_puntdichtheid_ahn3": 17.323623657226562,
+        "b3_puntdichtheid_ahn4": 32.536216735839844,
+        "b3_puntdichtheid_ahn5": 16.728059768676758,
+        "b3_pw_bron": "ahn5",
+        "b3_pw_datum": 2023,
+        "b3_pw_onvoldoende": false,
+        "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+        "b3_rmse_lod12": 7.064677715301514,
+        "b3_rmse_lod13": 0.19359202682971954,
+        "b3_rmse_lod22": 0.12467063963413239,
+        "b3_t_run": 604,
+        "b3_val3dity_lod12": "[]",
+        "b3_val3dity_lod13": "[]",
+        "b3_val3dity_lod22": "[]",
+        "b3_volume_lod12": 12503.30078125,
+        "b3_volume_lod13": 9387.6845703125,
+        "b3_volume_lod22": 9372.76171875,
+        "begingeldigheid": "2023-07-22",
+        "documentdatum": "2023-07-22",
+        "documentnummer": "GV00007088_AC00AC",
+        "eindgeldigheid": null,
+        "eindregistratie": null,
+        "fid": 8271759,
+        "geconstateerd": false,
+        "identificatie": "NL.IMBAG.Pand.0363100012124352",
+        "oorspronkelijkbouwjaar": 1989,
+        "status": "Pand in gebruik",
+        "tijdstipeindregistratielv": null,
+        "tijdstipinactief": null,
+        "tijdstipinactieflv": null,
+        "tijdstipnietbaglv": null,
+        "tijdstipregistratie": "2023-07-22T08:41:03Z",
+        "tijdstipregistratielv": "2023-07-22T18:52:59Z",
+        "voorkomenidentificatie": 3
+      },
+      "roofRegions": [
+        {
+          "x": [
+            -4.99,
+            -3
+          ],
+          "z": [
+            3.39,
+            5.93
+          ],
+          "y": [
+            18.78,
+            18.87
+          ]
+        },
+        {
+          "x": [
+            -15.73,
+            5.02
+          ],
+          "z": [
+            -11.88,
+            12.88
+          ],
+          "y": [
+            18.04,
+            18.06
+          ]
+        },
+        {
+          "x": [
+            -7.13,
+            -1.96
+          ],
+          "z": [
+            12.35,
+            15.05
+          ],
+          "y": [
+            2.91,
+            3.05
+          ]
+        },
+        {
+          "x": [
+            3.43,
+            6.58
+          ],
+          "z": [
+            8.73,
+            12.28
+          ],
+          "y": [
+            2.97,
+            3.06
+          ]
+        },
+        {
+          "x": [
+            4.63,
+            14.99
+          ],
+          "z": [
+            -13.62,
+            11.52
+          ],
+          "y": [
+            4.82,
+            4.9
+          ]
+        }
+      ],
+      "uncertainty": "Mapped OSM height and current scalar roof attributes can disagree with detailed LoD2.2 roof vertices. Small roof fixtures may be oversegmented. Silhouette uses coherent measured roof regions reconciled with current exterior photos, not an unqualified legal-outline extrusion.",
+      "reconstructionNote": "Separate measured rooftop plan envelopes constrain housing/porches/low hall. The curved entrance porch is only3m high; tall housing has its own recessed frontage. Upper windows follow the actual frontage envelope rather than floating beyond the main wall."
+    },
+    "references": [
+      "https://www.plein-theater.nl/over-ons",
+      "https://www.plein-theater.nl/media/content/1744.jpg",
+      "https://www.plein-theater.nl/media/content/2265.jpg",
+      "https://www.plein-theater.nl/media/content/2341.jpg"
+    ],
+    "scopeNotes": "Theatre occupies base/low side hall of a white residential building (23 BAG units). Entire physical mapped parent reconstructed with housing facade; adjacent historic brick brewery building and Sajetplein playground stay untouched.",
+    "volumePlans": [
+      {
+        "name": "housing",
+        "height": 18.08,
+        "ring": [
+          [
+            4.99,
+            11.59
+          ],
+          [
+            4.94,
+            8.73
+          ],
+          [
+            4.63,
+            -10.48
+          ],
+          [
+            5.02,
+            -10.71
+          ],
+          [
+            4.52,
+            -10.72
+          ],
+          [
+            3.32,
+            -11.88
+          ],
+          [
+            -12.75,
+            -11.84
+          ],
+          [
+            -13.91,
+            -10.65
+          ],
+          [
+            -13.88,
+            -3.31
+          ],
+          [
+            -15.64,
+            -3.3
+          ],
+          [
+            -15.63,
+            -3.08
+          ],
+          [
+            -15.73,
+            -3.07
+          ],
+          [
+            -15.7,
+            3.02
+          ],
+          [
+            -13.83,
+            3.02
+          ],
+          [
+            -13.79,
+            10.38
+          ],
+          [
+            -12.6,
+            11.56
+          ],
+          [
+            -8.08,
+            11.56
+          ],
+          [
+            -8.08,
+            12.47
+          ],
+          [
+            -7.14,
+            12.46
+          ],
+          [
+            -7.13,
+            12.69
+          ],
+          [
+            -6.99,
+            12.88
+          ],
+          [
+            -4.36,
+            12.35
+          ],
+          [
+            -1.96,
+            12.66
+          ],
+          [
+            -1.95,
+            12.45
+          ],
+          [
+            -0.99,
+            12.41
+          ],
+          [
+            -1.01,
+            11.53
+          ],
+          [
+            3.33,
+            11.52
+          ],
+          [
+            3.43,
+            11.62
+          ]
+        ]
+      },
+      {
+        "name": "curved entrance porch",
+        "height": 2.94,
+        "ring": [
+          [
+            -7.1,
+            12.91
+          ],
+          [
+            -7.05,
+            13.13
+          ],
+          [
+            -6.89,
+            13.56
+          ],
+          [
+            -6.66,
+            13.95
+          ],
+          [
+            -6.52,
+            14.14
+          ],
+          [
+            -6.37,
+            14.3
+          ],
+          [
+            -6.2,
+            14.46
+          ],
+          [
+            -6.01,
+            14.59
+          ],
+          [
+            -5.82,
+            14.71
+          ],
+          [
+            -5.61,
+            14.82
+          ],
+          [
+            -5.4,
+            14.9
+          ],
+          [
+            -5.18,
+            14.97
+          ],
+          [
+            -4.96,
+            15.01
+          ],
+          [
+            -4.73,
+            15.04
+          ],
+          [
+            -4.51,
+            15.05
+          ],
+          [
+            -4.06,
+            15.01
+          ],
+          [
+            -3.84,
+            14.95
+          ],
+          [
+            -3.62,
+            14.88
+          ],
+          [
+            -3.22,
+            14.69
+          ],
+          [
+            -2.85,
+            14.43
+          ],
+          [
+            -2.69,
+            14.28
+          ],
+          [
+            -2.4,
+            13.93
+          ],
+          [
+            -2.18,
+            13.54
+          ],
+          [
+            -2.1,
+            13.33
+          ],
+          [
+            -1.98,
+            12.9
+          ],
+          [
+            -1.96,
+            12.66
+          ],
+          [
+            -4.36,
+            12.35
+          ],
+          [
+            -6.99,
+            12.88
+          ],
+          [
+            -7.13,
+            12.69
+          ]
+        ]
+      },
+      {
+        "name": "theatre entrance porch",
+        "height": 2.96,
+        "ring": [
+          [
+            5.79,
+            10.18
+          ],
+          [
+            4.94,
+            8.73
+          ],
+          [
+            4.99,
+            11.59
+          ],
+          [
+            3.43,
+            11.62
+          ],
+          [
+            4.09,
+            12.28
+          ],
+          [
+            5.67,
+            12.26
+          ],
+          [
+            6.49,
+            11.52
+          ],
+          [
+            6.58,
+            11.52
+          ],
+          [
+            6.01,
+            10.56
+          ],
+          [
+            5.99,
+            10.24
+          ]
+        ]
+      },
+      {
+        "name": "low theatre wing",
+        "height": 4.83,
+        "ring": [
+          [
+            4.94,
+            8.73
+          ],
+          [
+            5.79,
+            10.18
+          ],
+          [
+            5.99,
+            10.24
+          ],
+          [
+            6.01,
+            10.56
+          ],
+          [
+            6.58,
+            11.52
+          ],
+          [
+            13.62,
+            11.51
+          ],
+          [
+            13.36,
+            3.61
+          ],
+          [
+            14.99,
+            3.54
+          ],
+          [
+            14.58,
+            -7.89
+          ],
+          [
+            13.28,
+            -7.97
+          ],
+          [
+            13.24,
+            -8.14
+          ],
+          [
+            12.93,
+            -8.12
+          ],
+          [
+            12.77,
+            -12.49
+          ],
+          [
+            9.47,
+            -13.05
+          ],
+          [
+            9.46,
+            -13.2
+          ],
+          [
+            6.15,
+            -13.62
+          ],
+          [
+            6.2,
+            -10.69
+          ],
+          [
+            5.02,
+            -10.71
+          ],
+          [
+            4.63,
+            -10.48
+          ]
+        ]
+      }
+    ]
+  }
+]
