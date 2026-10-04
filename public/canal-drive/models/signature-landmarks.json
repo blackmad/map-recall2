@@ -472,51 +472,92 @@
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "palace-on-the-dam": {
-      "name": "Palace on the Dam",
+      "id": "palace-on-the-dam",
+      "name": "Royal Palace Amsterdam",
       "landmarkId": "extract_landmarks_342809743",
       "modelUrl": "./models/palace-on-the-dam.glb",
+      "suppressOsmIds": [
+        "r3580875",
+        "w748659170",
+        "w748659171",
+        "w748659172",
+        "w748659173",
+        "w748659174",
+        "w748659175",
+        "w748659176",
+        "w748659177",
+        "w748659178",
+        "w748659179",
+        "w748659180",
+        "w748659181",
+        "w748659182",
+        "w748659183",
+        "w748659184",
+        "w748659185",
+        "w748659186",
+        "w748659187",
+        "w57856712",
+        "NL.IMBAG.Pand.0363100012167579"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.891336076094146,
+          52.373148321742
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 66.09371218019203,
+        "widthMetres": 82.3879320001754
+      },
+      "surveyed": {
+        "anchor": [
+          4.891336076094146,
+          52.373148321742
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Exact current parent relation, 18 parts and two open courtyard holes; native placement and source roof profiles. Original 55m tower corroborated by official Palace and current 3DBAG 55.201m maximum above ground."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Royal Palace Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.paleisamsterdam.nl/en/discover-palace/new-town-hall-amsterdam/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free stone classical facade, mapped slate roof wings, corner pavilions, two open courtyards, central pediment and open 55m domed clock tower. Exact OSM/BAG footprint; original ornaments approximated from official Palace photograph. No copied imported geometry or reference pixels."
+      },
       "bounds": {
         "min": [
-          -39.17484928517042,
-          0.0027659888043096714,
-          -35.901868865030316
+          -33.516971588134766,
+          0,
+          -41.26860427856445
         ],
         "max": [
-          33.932860546722885,
-          60.931806350159036,
-          49.20291987230433
+          33.49958419799805,
+          55,
+          42.04069519042969
         ]
       },
       "placement": {
         "anchor": [
-          4.891409500306835,
-          52.373196352182916
+          4.891336076094146,
+          52.373148321742
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 92.43501927650891,
+        "facadeBearingDegrees": 90,
         "scale": 1
       },
       "extent": {
-        "widthMetres": 85.10478873733464,
-        "heightMetres": 60.92904036135472,
-        "depthMetres": 73.1077098318933,
-        "depthCoverage": 1.1162697665980177
+        "widthMetres": 83.30929946899414,
+        "heightMetres": 55,
+        "depthMetres": 67.01655578613281,
+        "depthCoverage": 0.8134268473444647
       },
-      "triangles": 12300,
-      "bytes": 635416,
-      "sourceBytes": 1723564,
-      "sourceTriangles": 12357,
-      "droppedAttributes": [],
-      "maxTextureSize": 512,
-      "attribution": {
-        "title": "Palace on the Dam",
-        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
-        "sourceUrl": "https://3dwarehouse.sketchup.com/model/d1ad512d8df5fc6745407e0587dff10e",
-        "licence": "3D Warehouse General Model License",
-        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
-        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
-      }
+      "triangles": 25553,
+      "bytes": 359648,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "rijksmuseum": {
       "id": "rijksmuseum",
@@ -1135,11 +1176,17 @@
       "modelUrl": "./models/olvg-west.glb",
       "suppressOsmIds": [
         "w274704704",
+        "NL.IMBAG.Pand.0363100012186327",
         "w274704714",
+        "NL.IMBAG.Pand.0363100012187037",
         "w1837609",
+        "NL.IMBAG.Pand.0363100012074757",
         "w12206467",
-        "w1488945488"
+        "NL.IMBAG.Pand.0363100012242128",
+        "w1488945488",
+        "NL.IMBAG.Pand.0363100012246187"
       ],
+      "spatialSuppression": false,
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "surveyed": {
@@ -1181,8 +1228,8 @@
         "scale": 1
       },
       "extent": null,
-      "triangles": 16975,
-      "bytes": 238104,
+      "triangles": 16776,
+      "bytes": 236988,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "olvg-oost": {
@@ -1192,8 +1239,11 @@
       "modelUrl": "./models/olvg-oost.glb",
       "suppressOsmIds": [
         "w44451612",
-        "w278102390"
+        "NL.IMBAG.Pand.0363100012124921",
+        "w278102390",
+        "NL.IMBAG.Pand.0363100012159066"
       ],
+      "spatialSuppression": false,
       "groundAltitudeMetres": 0,
       "facingOffsetDegrees": 0,
       "surveyed": {
@@ -1235,8 +1285,8 @@
         "scale": 1
       },
       "extent": null,
-      "triangles": 22930,
-      "bytes": 322736,
+      "triangles": 22632,
+      "bytes": 321248,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "van-gogh-museum": {
@@ -3135,7 +3185,8 @@
       "landmarkId": "extract_landmarks_1939633952",
       "modelUrl": "./models/stadsschouwburg.glb",
       "suppressOsmIds": [
-        "w57863115"
+        "w57863115",
+        "NL.IMBAG.Pand.0363100012168738"
       ],
       "spatialSuppression": false,
       "footprint": {
@@ -3192,8 +3243,8 @@
         "depthMetres": 53.97186470031738,
         "depthCoverage": 0.5176113858416661
       },
-      "triangles": 7734,
-      "bytes": 94676,
+      "triangles": 7630,
+      "bytes": 94208,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "tuschinski": {
@@ -9268,6 +9319,348 @@
       },
       "triangles": 4818,
       "bytes": 62004,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "sloterdijk-station": {
+      "id": "sloterdijk-station",
+      "name": "Amsterdam Sloterdijk Station",
+      "landmarkId": "osm_building_268460687",
+      "modelUrl": "./models/sloterdijk-station.glb",
+      "suppressOsmIds": [
+        "w268460687",
+        "NL.IMBAG.Pand.0363100012120833"
+      ],
+      "footprint": {
+        "centre": [
+          4.838214466204455,
+          52.388991330978456
+        ],
+        "headingDegrees": 90.96814969006601,
+        "lengthMetres": 108.01202901198465,
+        "widthMetres": 79.4406584713856
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 89.03185030993399,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.8382093052835575,
+          52.38899714869885
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012120833 and exact OSM parent. Native +X faces east at 90 degrees, scale 1; primary current facade photos and measured 3DBAG roof envelope guide original texture-free geometry."
+      },
+      "attribution": {
+        "title": "Amsterdam Sloterdijk Station",
+        "author": "Map Recall",
+        "sourceUrl": "https://arcam.nl/architectuur-gids/station-sloterdijk/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original glass hall, open white table trusses and raised deck; open circulation below retained. Separate platform canopies, Orlyplein public space and adjacent hotel not suppressed."
+      },
+      "bounds": {
+        "min": [
+          -54.25473403930664,
+          0,
+          -39.46535873413086
+        ],
+        "max": [
+          54.21906661987305,
+          23.671756744384766,
+          39.48074722290039
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8382093052835575,
+          52.38899714869885
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 180,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 108.47380065917969,
+        "heightMetres": 23.671756744384766,
+        "depthMetres": 78.94610595703125,
+        "depthCoverage": 0.9937745667788933
+      },
+      "triangles": 11768,
+      "bytes": 123240,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "hnk-sloterdijk": {
+      "id": "hnk-sloterdijk",
+      "name": "HNK Amsterdam Sloterdijk",
+      "landmarkId": "osm_building_57866724",
+      "modelUrl": "./models/hnk-sloterdijk.glb",
+      "suppressOsmIds": [
+        "w57866724",
+        "NL.IMBAG.Pand.0363100012131039"
+      ],
+      "footprint": {
+        "centre": [
+          4.835183318193806,
+          52.39104959620991
+        ],
+        "headingDegrees": 176.4349486881305,
+        "lengthMetres": 68.38611907408828,
+        "widthMetres": 42.50977977676619
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 3.565051311869496,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.835180875927809,
+          52.39104404000188
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG 0363100012131039 and exact OSM parent. Native +X faces east at 90 degrees, scale 1; primary current facade photos and measured 3DBAG roof envelope guide original texture-free geometry."
+      },
+      "attribution": {
+        "title": "HNK Amsterdam Sloterdijk",
+        "author": "Map Recall",
+        "sourceUrl": "https://hnk.nl/en/locations/amsterdam-sloterdijk",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original white pronged office block, curved glazing, exposed escape stairs and measured roof plant. Former FNV/ArboNed labels are historical occupants, not additional destinations or exterior architect attribution."
+      },
+      "bounds": {
+        "min": [
+          -22.434316635131836,
+          1.5258788721439487e-7,
+          -34.19844436645508
+        ],
+        "max": [
+          22.100000381469727,
+          42.560001373291016,
+          34.00939178466797
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.835180875927809,
+          52.39104404000188
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 180,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 68.20783615112305,
+        "heightMetres": 42.56000122070313,
+        "depthMetres": 44.53431701660156,
+        "depthCoverage": 1.0476252111976805
+      },
+      "triangles": 19548,
+      "bytes": 282592,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "machinegebouw": {
+      "id": "machinegebouw",
+      "name": "Machinegebouw · Cantine",
+      "landmarkId": "cantine-de-caron",
+      "modelUrl": "./models/machinegebouw.glb",
+      "suppressOsmIds": [
+        "w42298030",
+        "NL.IMBAG.Pand.0363100012152471"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.872808548242466,
+          52.38634502299453
+        ],
+        "headingDegrees": 88.31856627968506,
+        "lengthMetres": 25.7027472649258,
+        "widthMetres": 17.955190280247155
+      },
+      "surveyed": {
+        "anchor": [
+          4.872808548242466,
+          52.38634502756621
+        ],
+        "northOffsetDegrees": -1.681433720314942
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Machinegebouw · Cantine",
+        "author": "Map Recall",
+        "sourceUrl": "https://cantine.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
+      },
+      "bounds": {
+        "min": [
+          -13.04317855834961,
+          -7.629394360719743e-8,
+          -9.111881256103516
+        ],
+        "max": [
+          13.0431489944458,
+          13.149999618530273,
+          9.152892112731934
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.872808548242466,
+          52.38634502756621
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 88.31856627968506,
+        "facadeBearingDegrees": 178.318566279685,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 26.08632755279541,
+        "heightMetres": 13.149999694824217,
+        "depthMetres": 18.26477336883545,
+        "depthCoverage": 1.0172419831678905
+      },
+      "triangles": 4045,
+      "bytes": 52992,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "de-wester": {
+      "id": "de-wester",
+      "name": "De Wester · Transformatorhuis",
+      "landmarkId": "de-wester",
+      "modelUrl": "./models/de-wester.glb",
+      "suppressOsmIds": [
+        "w57867037",
+        "NL.IMBAG.Pand.0363100012166956"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.870118520583264,
+          52.38684718893202
+        ],
+        "headingDegrees": 88.6360509504791,
+        "lengthMetres": 48.010353075402364,
+        "widthMetres": 19.673421387625524
+      },
+      "surveyed": {
+        "anchor": [
+          4.870119186757984,
+          52.38685189098992
+        ],
+        "northOffsetDegrees": -1.3639490495208975
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 180,
+      "attribution": {
+        "title": "De Wester · Transformatorhuis",
+        "author": "Map Recall",
+        "sourceUrl": "https://westergas.nl/en/de-wester-as-event-venue/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
+      },
+      "bounds": {
+        "min": [
+          -24.280000686645508,
+          -3.5762786065873797e-9,
+          -9.505000114440918
+        ],
+        "max": [
+          24.209999084472656,
+          15.59000015258789,
+          10.289713859558105
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.870119186757984,
+          52.38685189098992
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 88.6360509504791,
+        "facadeBearingDegrees": 268.6360509504791,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 48.489999771118164,
+        "heightMetres": 15.59000015616417,
+        "depthMetres": 19.794713973999023,
+        "depthCoverage": 1.0061653021090573
+      },
+      "triangles": 4472,
+      "bytes": 50768,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "amstel-hotel": {
+      "id": "amstel-hotel",
+      "name": "Amstel Hotel",
+      "landmarkId": "amstel-hotel",
+      "modelUrl": "./models/amstel-hotel.glb",
+      "suppressOsmIds": [
+        "w268998398",
+        "NL.IMBAG.Pand.0363100012165491"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.90511362939625,
+          52.35997963537399
+        ],
+        "headingDegrees": 163.2148645974187,
+        "lengthMetres": 87.12102267135651,
+        "widthMetres": 30.42622936228252
+      },
+      "surveyed": {
+        "anchor": [
+          4.905142672706717,
+          52.35999084096068
+        ],
+        "northOffsetDegrees": 73.21486459741871
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90,
+      "attribution": {
+        "title": "Amstel Hotel",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.amstelhotel.com/history/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly architecture calibrated to the current canonical PDOK parent and large AHN5/3DBAG roof levels. Principal mansard roofs25.3–27.1m, end pavilions28.35m and central pavilion29.54m retain low3.5m terrace and8.5–11.5m river conservatory. Primary hotel/Intercontinental photos guide original masonry/window/dormer rhythm and simplified corner lion sculptures. Ornament and turrets approximate from photographs; no imported mesh or texture and no neighboring suppression."
+      },
+      "bounds": {
+        "min": [
+          -42.673248291015625,
+          0,
+          -13.260000228881836
+        ],
+        "max": [
+          43.91020965576172,
+          30.649999618530273,
+          17.475553512573242
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.905142672706717,
+          52.35999084096068
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 163.21486459741868,
+        "facadeBearingDegrees": 73.21486459741868,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 86.58345794677734,
+        "heightMetres": 30.649999618530273,
+        "depthMetres": 30.735553741455078,
+        "depthCoverage": 1.0101663724245769
+      },
+      "triangles": 20724,
+      "bytes": 250624,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

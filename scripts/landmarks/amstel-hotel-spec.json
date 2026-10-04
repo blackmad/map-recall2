@@ -1,0 +1,37 @@
+{
+  "id": "amstel-hotel",
+  "name": "Amstel Hotel",
+  "landmarkId": "amstel-hotel",
+  "modelUrl": "./models/amstel-hotel.glb",
+  "suppressOsmIds": [
+    "w268998398",
+    "NL.IMBAG.Pand.0363100012165491"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.90511362939625,
+      52.35997963537399
+    ],
+    "headingDegrees": 163.2148645974187,
+    "lengthMetres": 87.12102267135651,
+    "widthMetres": 30.42622936228252
+  },
+  "surveyed": {
+    "anchor": [
+      4.905142672706717,
+      52.35999084096068
+    ],
+    "northOffsetDegrees": 73.21486459741871
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": -90,
+  "attribution": {
+    "title": "Amstel Hotel",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.amstelhotel.com/history/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly architecture calibrated to the current canonical PDOK parent and large AHN5/3DBAG roof levels. Principal mansard roofs25.3\u201327.1m, end pavilions28.35m and central pavilion29.54m retain low3.5m terrace and8.5\u201311.5m river conservatory. Primary hotel/Intercontinental photos guide original masonry/window/dormer rhythm and simplified corner lion sculptures. Ornament and turrets approximate from photographs; no imported mesh or texture and no neighboring suppression."
+  }
+}

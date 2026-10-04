@@ -1,0 +1,78 @@
+[
+  {
+    "id": "sloterdijk-station",
+    "name": "Amsterdam Sloterdijk Station",
+    "landmarkId": "osm_building_268460687",
+    "modelUrl": "./models/sloterdijk-station.glb",
+    "suppressOsmIds": [
+      "w268460687",
+      "NL.IMBAG.Pand.0363100012120833"
+    ],
+    "footprint": {
+      "centre": [
+        4.838214466204455,
+        52.388991330978456
+      ],
+      "headingDegrees": 90.96814969006601,
+      "lengthMetres": 108.01202901198465,
+      "widthMetres": 79.4406584713856
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 89.03185030993399,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8382093052835575,
+        52.38899714869885
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Current BAG 0363100012120833 and exact OSM parent. Native +X faces east at 90 degrees, scale 1; primary current facade photos and measured 3DBAG roof envelope guide original texture-free geometry."
+    },
+    "attribution": {
+      "title": "Amsterdam Sloterdijk Station",
+      "author": "Map Recall",
+      "sourceUrl": "https://arcam.nl/architectuur-gids/station-sloterdijk/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original glass hall, open white table trusses and raised deck; open circulation below retained. Separate platform canopies, Orlyplein public space and adjacent hotel not suppressed."
+    }
+  },
+  {
+    "id": "hnk-sloterdijk",
+    "name": "HNK Amsterdam Sloterdijk",
+    "landmarkId": "osm_building_57866724",
+    "modelUrl": "./models/hnk-sloterdijk.glb",
+    "suppressOsmIds": [
+      "w57866724",
+      "NL.IMBAG.Pand.0363100012131039"
+    ],
+    "footprint": {
+      "centre": [
+        4.835183318193806,
+        52.39104959620991
+      ],
+      "headingDegrees": 176.4349486881305,
+      "lengthMetres": 68.38611907408828,
+      "widthMetres": 42.50977977676619
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 3.565051311869496,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.835180875927809,
+        52.39104404000188
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Current BAG 0363100012131039 and exact OSM parent. Native +X faces east at 90 degrees, scale 1; primary current facade photos and measured 3DBAG roof envelope guide original texture-free geometry."
+    },
+    "attribution": {
+      "title": "HNK Amsterdam Sloterdijk",
+      "author": "Map Recall",
+      "sourceUrl": "https://hnk.nl/en/locations/amsterdam-sloterdijk",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original white pronged office block, curved glazing, exposed escape stairs and measured roof plant. Former FNV/ArboNed labels are historical occupants, not additional destinations or exterior architect attribution."
+    }
+  }
+]

@@ -1,0 +1,76 @@
+[
+  {
+    "id": "machinegebouw",
+    "name": "Machinegebouw \u00b7 Cantine",
+    "landmarkId": "cantine-de-caron",
+    "modelUrl": "./models/machinegebouw.glb",
+    "suppressOsmIds": [
+      "w42298030",
+      "NL.IMBAG.Pand.0363100012152471"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.872808548242466,
+        52.38634502299453
+      ],
+      "headingDegrees": 88.31856627968506,
+      "lengthMetres": 25.7027472649258,
+      "widthMetres": 17.955190280247155
+    },
+    "surveyed": {
+      "anchor": [
+        4.872808548242466,
+        52.38634502756621
+      ],
+      "northOffsetDegrees": -1.681433720314942
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Machinegebouw \u00b7 Cantine",
+      "author": "Map Recall",
+      "sourceUrl": "https://cantine.nl/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
+    }
+  },
+  {
+    "id": "de-wester",
+    "name": "De Wester \u00b7 Transformatorhuis",
+    "landmarkId": "de-wester",
+    "modelUrl": "./models/de-wester.glb",
+    "suppressOsmIds": [
+      "w57867037",
+      "NL.IMBAG.Pand.0363100012166956"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.870118520583264,
+        52.38684718893202
+      ],
+      "headingDegrees": 88.6360509504791,
+      "lengthMetres": 48.010353075402364,
+      "widthMetres": 19.673421387625524
+    },
+    "surveyed": {
+      "anchor": [
+        4.870119186757984,
+        52.38685189098992
+      ],
+      "northOffsetDegrees": -1.3639490495208975
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180,
+    "attribution": {
+      "title": "De Wester \u00b7 Transformatorhuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://westergas.nl/en/de-wester-as-event-venue/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly architecture. Exact current BAG/OSM outline and AHN5/3DBAG roof envelope guide manually authored walls and unequal roof levels; primary owner photographs and RCE descriptions guide original arched windows, masonry bands and current entrance. Window ornament is approximate. Machinegebouw retains two parallel unequal ridges at 12.8 and 10.15 metres; De Wester retains the 15.33-metre main hall and separate low western entrance roof. No imported mesh or textures, no vanished chimney or roof ventilator. Exact-only parent replacement preserves adjacent WestWeelde and all other Westergas buildings."
+    }
+  }
+]
