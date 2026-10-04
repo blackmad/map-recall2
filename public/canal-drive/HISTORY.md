@@ -1,5 +1,16 @@
 # Canal Recall — what is built
 
+## Amsterdamse Bos loads on approach (2026-10-04)
+
+Amsterdamse Bos adds 3,254 actual mapped landscape features in a separate
+optional GeoJSON chunk (1.71 MB raw, 365 KB gzip). The base 8,080-feature
+payload remains unchanged apart from a small chunk descriptor. A bounds and
+zoom gate skips the forest at city overview scale; local visits fetch it once,
+leaving its bounds removes its features, and returning reuses a bounded cache.
+Toggles and city changes abort stale requests. Removal releases geometry and
+listeners. Source-fidelity, lifecycle and browser checks passed without map
+errors, including no forest request at zoom 13 and local rendering at zoom 17.
+
 ## Canal museums and theatre courtyards: 60 original landmarks (2026-10-04)
 
 Foam retains three distinct canal fronts and its covered light court. Huis
