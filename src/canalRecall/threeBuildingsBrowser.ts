@@ -28,6 +28,7 @@ import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js
 import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, ROOF_TONES, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
+import { buildingProjectionScale } from './buildingProjectionScale.js';
 
 type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number };
 type MaplibreLike = { MercatorCoordinate: { fromLngLat(lngLat: [number, number], altitude: number): { x: number; y: number; z: number; meterInMercatorCoordinateUnits(): number } } };
@@ -609,7 +610,7 @@ export class ThreeBuildings {
         });
         const c = owner.maplibregl.MercatorCoordinate.fromLngLat([ORIGIN.lng, ORIGIN.lat], 0);
         const scale = c.meterInMercatorCoordinateUnits();
-        owner.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(scale, -scale, scale));
+        owner.transform = new THREE.Matrix4().makeTranslation(c.x, c.y, c.z).scale(new THREE.Vector3(...buildingProjectionScale(scale)));
       },
       render(_gl: WebGL2RenderingContext, args: any) {
         if (!owner.visible || !owner.ready || !owner.scene || !owner.chunks.size || owner.map.getZoom() < MIN_ZOOM) return;
