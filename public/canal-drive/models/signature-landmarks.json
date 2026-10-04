@@ -312,46 +312,83 @@
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "nemo": {
-      "name": "NEMO",
+      "id": "nemo",
+      "name": "NEMO Science Museum",
       "landmarkId": "extract_landmarks_1875483593",
       "modelUrl": "./models/nemo.glb",
+      "suppressOsmIds": [
+        "w57856769",
+        "w1390692763",
+        "w1390692764",
+        "w1390692765",
+        "w1390692766",
+        "w1390692767",
+        "w1390692768",
+        "w1390692769",
+        "w1390692770",
+        "w1390692771",
+        "w1390692772",
+        "NL.IMBAG.Pand.0363100012164988"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.912322028079611,
+          52.3741956935447
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 44.8339207526614,
+        "widthMetres": 117.2867519998627
+      },
+      "surveyed": {
+        "anchor": [
+          4.912322028079611,
+          52.3741956935447
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Exact current parent and ten roof/stair/annex polygons, native coordinates and part maximum heights. Original curved roofs/flared copper shell; no old import fitting or street slab."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "NEMO Science Museum",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.rpbw.com/project/nemo-national-center-for-science-and-technology",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction from current mapped parent/ten parts and primary architect/museum exterior photographs. Copper-green flared wedge, ascending roof stairs, mapped green roof and glazed lobby. Curvature and ornaments approximate; no downloaded mesh or photo pixels. Bridge, tunnel approaches and nearby buildings retained."
+      },
       "bounds": {
         "min": [
-          -2.7893808248290597,
-          -0.0029359560689243835,
-          -85.78547273553573
+          -23.5504207611084,
+          0,
+          -59.08937454223633
         ],
         "max": [
-          41.430989578185226,
-          30.499035383107476,
-          126.17603647973183
+          21.28350067138672,
+          32.56999969482422,
+          58.1973762512207
         ]
       },
       "placement": {
         "anchor": [
-          4.912047425587275,
-          52.37396981022394
+          4.912322028079611,
+          52.3741956935447
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 250,
+        "facadeBearingDegrees": 90,
         "scale": 1
       },
-      "extent": null,
-      "triangles": 2812,
-      "bytes": 219300,
-      "sourceBytes": 958588,
-      "sourceTriangles": 5402,
-      "droppedAttributes": [],
-      "maxTextureSize": 512,
-      "attribution": {
-        "title": "NEMO",
-        "author": "City of Amsterdam, Geo en Vastgoedinformatie",
-        "sourceUrl": "https://3dwarehouse.sketchup.com/model/a2a1d7c7726cb7e065a54e9dd3ee74f",
-        "licence": "3D Warehouse General Model License",
-        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
-        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
-      }
+      "extent": {
+        "widthMetres": 117.28675079345703,
+        "heightMetres": 32.56999969482422,
+        "depthMetres": 44.83392143249512,
+        "depthCoverage": 0.38225904177607034
+      },
+      "triangles": 8709,
+      "bytes": 127032,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "oude-kerk": {
       "id": "oude-kerk",
@@ -8684,6 +8721,553 @@
       },
       "triangles": 13444,
       "bytes": 168428,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "rembrandt-tower": {
+      "id": "rembrandt-tower",
+      "name": "Rembrandt Tower",
+      "landmarkId": "osm_building_44451577",
+      "modelUrl": "./models/rembrandt-tower.glb",
+      "suppressOsmIds": [
+        "w44451577",
+        "NL.IMBAG.Pand.0363100012113758"
+      ],
+      "footprint": {
+        "centre": [
+          4.917060393089527,
+          52.34506421222511
+        ],
+        "headingDegrees": 159.4775109936597,
+        "lengthMetres": 48.0924042566222,
+        "widthMetres": 48.05852548433693
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0.22248900634028246,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.917031687807691,
+          52.3450817261875
+        ],
+        "northOffsetDegrees": -20.3,
+        "source": "Current BAG 0363100012113758 and exact OSM parent; native +X heading 69.7 degrees, scale 1. Original simplified roof/terrace massing based on 3DBAG/AHN measured envelope and primary architectural references; published architecture heights guide visible crowns rather than copying a third-party mesh."
+      },
+      "attribution": {
+        "title": "Rembrandt Tower",
+        "author": "Map Recall",
+        "sourceUrl": "https://arcam.nl/architectuur-gids/rembrandttoren/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
+      },
+      "bounds": {
+        "min": [
+          -23.191864013671875,
+          -9.536743306171047e-8,
+          -21.678232192993164
+        ],
+        "max": [
+          25.44330596923828,
+          150,
+          26.69499969482422
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.917031687807691,
+          52.3450817261875
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 69.69999999999999,
+        "facadeBearingDegrees": 159.70000000000005,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 48.635169982910156,
+        "heightMetres": 150.00000009536743,
+        "depthMetres": 48.37323188781738,
+        "depthCoverage": 1.0065483990677786
+      },
+      "triangles": 17676,
+      "bytes": 212480,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "breitner-tower": {
+      "id": "breitner-tower",
+      "name": "Breitner Tower / Breitner Center",
+      "landmarkId": "osm_building_279841030",
+      "modelUrl": "./models/breitner-tower.glb",
+      "suppressOsmIds": [
+        "w279841030",
+        "NL.IMBAG.Pand.0363100012070861",
+        "w754399978"
+      ],
+      "footprint": {
+        "centre": [
+          4.9163509978620015,
+          52.34472019794773
+        ],
+        "headingDegrees": 159.49559371157028,
+        "lengthMetres": 111.69773778800698,
+        "widthMetres": 28.675251217411237
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0.2044062884297091,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.916345037374623,
+          52.34470057536986
+        ],
+        "northOffsetDegrees": -20.3,
+        "source": "Current BAG 0363100012070861 and exact OSM parent; native +X heading 69.7 degrees, scale 1. Original simplified roof/terrace massing based on 3DBAG/AHN measured envelope and primary architectural references; published architecture heights guide visible crowns rather than copying a third-party mesh."
+      },
+      "attribution": {
+        "title": "Breitner Tower / Breitner Center",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.zzdp.nl/nl/project/de-omval",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
+      },
+      "bounds": {
+        "min": [
+          -13.674473762512207,
+          -0.0000015258789289873675,
+          -57.618064880371094
+        ],
+        "max": [
+          15.601152420043945,
+          95,
+          53.849124908447266
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.916345037374623,
+          52.34470057536986
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 69.69999999999999,
+        "facadeBearingDegrees": 159.70000000000005,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 111.46718978881836,
+        "heightMetres": 95.00000152587893,
+        "depthMetres": 29.275626182556152,
+        "depthCoverage": 1.0209370429082893
+      },
+      "triangles": 13396,
+      "bytes": 175800,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "mondriaan-tower": {
+      "id": "mondriaan-tower",
+      "name": "Mondriaan Tower",
+      "landmarkId": "osm_building_279842059",
+      "modelUrl": "./models/mondriaan-tower.glb",
+      "suppressOsmIds": [
+        "w279842059",
+        "NL.IMBAG.Pand.0363100012097541"
+      ],
+      "footprint": {
+        "centre": [
+          4.9173687631678735,
+          52.3440175406779
+        ],
+        "headingDegrees": 69.48566007198855,
+        "lengthMetres": 59.170833187125076,
+        "widthMetres": 29.340644963658846
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90.21433992801144,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.917383745624289,
+          52.34402338555016
+        ],
+        "northOffsetDegrees": -20.3,
+        "source": "Current BAG 0363100012097541 and exact OSM parent; native +X heading 69.7 degrees, scale 1. Original simplified roof/terrace massing based on 3DBAG/AHN measured envelope and primary architectural references; published architecture heights guide visible crowns rather than copying a third-party mesh."
+      },
+      "attribution": {
+        "title": "Mondriaan Tower",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.mondriaan-tower.nl/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction. Exact physical parent scope; separate Blookerhuisje, Rotonda, neighbouring towers and the shared public square retained."
+      },
+      "bounds": {
+        "min": [
+          -30.971466064453125,
+          -3.814697322468419e-7,
+          -14.475310325622559
+        ],
+        "max": [
+          28.64645767211914,
+          122.30000305175781,
+          15.0659761428833
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.917383745624289,
+          52.34402338555016
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 69.69999999999999,
+        "facadeBearingDegrees": 159.70000000000005,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 59.617923736572266,
+        "heightMetres": 122.30000343322754,
+        "depthMetres": 29.54128646850586,
+        "depthCoverage": 1.0068383467744328
+      },
+      "triangles": 13584,
+      "bytes": 174408,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "de-piramides": {
+      "id": "de-piramides",
+      "name": "De Piramides",
+      "landmarkId": "osm_building_276272893",
+      "modelUrl": "./models/de-piramides.glb",
+      "suppressOsmIds": [
+        "w276272893",
+        "NL.IMBAG.Pand.0363100012110293",
+        "w1080809439",
+        "w1080809440",
+        "w1080809441",
+        "w1080809442",
+        "w1080809443",
+        "w1080809444",
+        "w1080809445",
+        "w1080809446",
+        "w1080809447",
+        "w1080809448",
+        "w1080809449",
+        "w1080809450",
+        "w1080809451",
+        "w1080809452"
+      ],
+      "footprint": {
+        "centre": [
+          4.866884215446545,
+          52.37540721557084
+        ],
+        "headingDegrees": 81.45079813511978,
+        "lengthMetres": 65.5709901923359,
+        "widthMetres": 25.170773722289375
+      },
+      "groundAltitudeMetres": 0,
+      "spatialSuppression": false,
+      "facingOffsetDegrees": 90.04920186488022,
+      "surveyed": {
+        "anchor": [
+          4.866881797272151,
+          52.3754167167955
+        ],
+        "northOffsetDegrees": -8.5,
+        "source": "Current BAG 0363100012110293 and fourteen exact mapped building parts. Native +X heading 81.5degrees, scale 1; measured 3DBAG 55.083 m roof envelope relative to ground, mapped 55 m twin crowns. Primary architect photos guide original masonry/window/terrace details."
+      },
+      "attribution": {
+        "title": "De Piramides",
+        "author": "Map Recall",
+        "sourceUrl": "https://pphp.nl/project/piramides-amsterdam-concept/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction of the actual twin stepped residential building. Adjacent Marcanti College and surrounding low-rise housing remain separate."
+      },
+      "bounds": {
+        "min": [
+          -32.93399429321289,
+          -3.814697322468419e-7,
+          -11.643967628479004
+        ],
+        "max": [
+          32.95189666748047,
+          55.012001037597656,
+          13.705741882324219
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.866881797272151,
+          52.3754167167955
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 81.5,
+        "facadeBearingDegrees": 171.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 65.88589096069336,
+        "heightMetres": 55.01200141906739,
+        "depthMetres": 25.349709510803223,
+        "depthCoverage": 1.0071088712046778
+      },
+      "triangles": 31412,
+      "bytes": 402556,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "zuiveringshal-west": {
+      "id": "zuiveringshal-west",
+      "name": "Zuiveringshal West · Fabrique des Lumières",
+      "landmarkId": "fabrique-des-lumieres",
+      "modelUrl": "./models/zuiveringshal-west.glb",
+      "suppressOsmIds": [
+        "w274066572",
+        "NL.IMBAG.Pand.0363100012236268",
+        "w274066787",
+        "NL.IMBAG.Pand.0363100012236955",
+        "w274066816",
+        "NL.IMBAG.Pand.0363100012235891",
+        "w274066616",
+        "NL.IMBAG.Pand.0363100012236658",
+        "w274066838",
+        "NL.IMBAG.Pand.0363100012236031",
+        "w274066643",
+        "NL.IMBAG.Pand.0363100012236961",
+        "w274066620",
+        "NL.IMBAG.Pand.0363100012236221",
+        "w274066822",
+        "NL.IMBAG.Pand.0363100012236613",
+        "w274066793",
+        "NL.IMBAG.Pand.0363100012236642",
+        "w274066820",
+        "NL.IMBAG.Pand.0363100012235912",
+        "w274066812",
+        "NL.IMBAG.Pand.0363100012237038",
+        "w274066717",
+        "NL.IMBAG.Pand.0363100012236152",
+        "w274066798",
+        "NL.IMBAG.Pand.0363100012236665",
+        "w274066818",
+        "NL.IMBAG.Pand.0363100012236260",
+        "w274066824",
+        "NL.IMBAG.Pand.0363100012236412"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.872148914070394,
+          52.38597705909584
+        ],
+        "headingDegrees": 88.38277400738434,
+        "lengthMetres": 68.12957158750693,
+        "widthMetres": 41.41800754626077
+      },
+      "surveyed": {
+        "anchor": [
+          4.872149301126166,
+          52.3859766755098
+        ],
+        "northOffsetDegrees": -1.6200000000000045
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90.00277400738435,
+      "attribution": {
+        "title": "Zuiveringshal West · Fabrique des Lumières",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.fabrique-lumieres.com/en",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+      },
+      "bounds": {
+        "min": [
+          -34.08665084838867,
+          -9.536743306171047e-8,
+          -21.21794319152832
+        ],
+        "max": [
+          34.04265213012695,
+          17.790000915527344,
+          20.738800048828125
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.872149301126166,
+          52.3859766755098
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 88.38,
+        "facadeBearingDegrees": 358.38,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 68.12930297851562,
+        "heightMetres": 17.790001010894777,
+        "depthMetres": 41.956743240356445,
+        "depthCoverage": 1.0130072817600884
+      },
+      "triangles": 9529,
+      "bytes": 107384,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "amsterdam-in-motion": {
+      "id": "amsterdam-in-motion",
+      "name": "Amsterdam in Motion · Zuiveringshal Oost",
+      "landmarkId": "amsterdam-in-motion",
+      "modelUrl": "./models/amsterdam-in-motion.glb",
+      "suppressOsmIds": [
+        "w274066840",
+        "NL.IMBAG.Pand.0363100012236269",
+        "w274066772",
+        "NL.IMBAG.Pand.0363100012236486",
+        "w274066814",
+        "NL.IMBAG.Pand.0363100012236952",
+        "w274066625",
+        "NL.IMBAG.Pand.0363100012236651",
+        "w274066800",
+        "NL.IMBAG.Pand.0363100012237235",
+        "w274066776",
+        "NL.IMBAG.Pand.0363100012236699",
+        "w274066807",
+        "NL.IMBAG.Pand.0363100012236180",
+        "w274066632",
+        "NL.IMBAG.Pand.0363100012237241"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.873243911684909,
+          52.385996221555054
+        ],
+        "headingDegrees": 178.38518176963328,
+        "lengthMetres": 41.46894644246084,
+        "widthMetres": 32.87974491271963
+      },
+      "surveyed": {
+        "anchor": [
+          4.873240886305469,
+          52.385996206559895
+        ],
+        "northOffsetDegrees": -1.6200000000000045
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -180.00518176963328,
+      "attribution": {
+        "title": "Amsterdam in Motion · Zuiveringshal Oost",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.amsterdammuseum.nl/tickets-en-bezoek/locaties/amsterdam-in-motion/228553",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+      },
+      "bounds": {
+        "min": [
+          -16.23652458190918,
+          -9.536743306171047e-8,
+          -21.058799743652344
+        ],
+        "max": [
+          16.643096923828125,
+          17.790000915527344,
+          20.805139541625977
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.873240886305469,
+          52.385996206559895
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 88.38,
+        "facadeBearingDegrees": 358.38,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 41.86393928527832,
+        "heightMetres": 17.790001010894777,
+        "depthMetres": 32.879621505737305,
+        "depthCoverage": 0.9999962467171611
+      },
+      "triangles": 4275,
+      "bytes": 54288,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "de-krakeling": {
+      "id": "de-krakeling",
+      "name": "Theater De Krakeling",
+      "landmarkId": "extract_landmarks_1635482107",
+      "modelUrl": "./models/de-krakeling.glb",
+      "suppressOsmIds": [
+        "w274066580",
+        "NL.IMBAG.Pand.0363100012235989",
+        "w274066614",
+        "NL.IMBAG.Pand.0363100012236443",
+        "w274066641",
+        "NL.IMBAG.Pand.0363100012237301",
+        "w274066587",
+        "NL.IMBAG.Pand.0363100012236702",
+        "w274066806",
+        "NL.IMBAG.Pand.0363100012236527",
+        "w274066662",
+        "NL.IMBAG.Pand.0363100012236566"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.873736814604472,
+          52.38600465670549
+        ],
+        "headingDegrees": 88.39749239264023,
+        "lengthMetres": 52.10799579808097,
+        "widthMetres": 41.461485886013406
+      },
+      "surveyed": {
+        "anchor": [
+          4.873684349406492,
+          52.38600418652962
+        ],
+        "northOffsetDegrees": -1.6200000000000045
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90.01749239264024,
+      "attribution": {
+        "title": "Theater De Krakeling",
+        "author": "Map Recall",
+        "sourceUrl": "https://krakeling.nl/over-ons",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+      },
+      "bounds": {
+        "min": [
+          -22.490097045898438,
+          -9.536743306171047e-8,
+          -21.699995040893555
+        ],
+        "max": [
+          29.619680404663086,
+          17.979999542236328,
+          20.81429100036621
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.873684349406492,
+          52.38600418652962
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 88.38,
+        "facadeBearingDegrees": 358.38,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 52.10977745056152,
+        "heightMetres": 17.97999963760376,
+        "depthMetres": 42.514286041259766,
+        "depthCoverage": 1.0253922437353242
+      },
+      "triangles": 4818,
+      "bytes": 62004,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

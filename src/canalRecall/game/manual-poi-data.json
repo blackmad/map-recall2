@@ -130,5 +130,47 @@
     "name": "Amsta De Poort",
     "description": "De Poort has provided residential care on Hugo de Grootkade since 1969. Its canal-side setting gives residents wide views across Amsterdam. The ground-floor De Ontmoeting brings residents and neighbors together, with a restaurant that also provides work and learning opportunities for local students.",
     "sourceUrl": "https://www.amsta.nl/locaties/de-poort"
+  },
+  {
+    "modelId": "rembrandt-tower",
+    "name": "Rembrandt Tower",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/rembrandttoren/",
+    "description": "The Rembrandt Tower is an office skyscraper at De Omval, completed in 1995. Its stepped granite crown and glass corner bays recall American skyscrapers of the 1930s."
+  },
+  {
+    "modelId": "breitner-tower",
+    "name": "Breitner Tower / Breitner Center",
+    "sourceUrl": "https://nl.linkedin.com/posts/zzdp-architecten_breitnertoren-philips-som-activity-7343676714033569792-l8Qf",
+    "description": "The Breitner Tower and its lower Breitner Center wing form part of De Omval’s three-tower ensemble near Amstelstation. The glass tower was completed in 2001 for Philips, designed by SOM with ZZDP."
+  },
+  {
+    "modelId": "mondriaan-tower",
+    "name": "Mondriaan Tower",
+    "sourceUrl": "https://www.mondriaan-tower.nl/",
+    "description": "The Mondriaan Tower is a 30-floor office tower at Amstelplein, completed in 2002. Its solid central block is flanked by stepped glass bays, with a glass lookout near the top."
+  },
+  {
+    "modelId": "de-piramides",
+    "name": "De Piramides",
+    "sourceUrl": "https://pphp.nl/project/piramides-amsterdam-concept/",
+    "description": "De Piramides consists of two interlocking stepped residential towers on Marcanti-eiland, designed by Sjoerd Soeters’s practice and completed in 2006. Their terraces follow the triangular island; two lower towers replaced an earlier proposal for one 75-metre pyramid."
+  },
+  {
+    "modelId": "zuiveringshal-west",
+    "name": "Fabrique des Lumières",
+    "description": "Fabrique des Lumières opened in 2022 in Zuiveringshal West. The former gas-purification hall now turns its industrial walls and floors into immersive artworks using large-scale light projections and music. Its two exhibition spaces occupy around 2,800 square metres of the historic Westergas complex.",
+    "sourceUrl": "https://westergas.nl/en/press-release-latelier-des-lumieres/"
+  },
+  {
+    "modelId": "amsterdam-in-motion",
+    "name": "Amsterdam in Motion",
+    "description": "Amsterdam in Motion opened in 2025 for the city’s 750th anniversary. Curated by the Amsterdam Museum in Zuiveringshal Oost, it tells the city’s story through a 200-square-metre multimedia model and an interactive exhibition about Amsterdam’s future.",
+    "sourceUrl": "https://www.amsterdammuseum.nl/tickets-en-bezoek/locaties/amsterdam-in-motion/228553"
+  },
+  {
+    "modelId": "de-krakeling",
+    "name": "Theater De Krakeling",
+    "description": "De Krakeling is a theater devoted to young audiences. Founded in 1978 by Hans Snoek, it moved to the former Westergastheater on Pazzanistraat 15 in 2020. Its main auditorium is named the Hans Snoek Zaal in her honor.",
+    "sourceUrl": "https://krakeling.nl/over-ons"
   }
 ]

@@ -1,0 +1,165 @@
+[
+  {
+    "id": "zuiveringshal-west",
+    "name": "Zuiveringshal West \u00b7 Fabrique des Lumi\u00e8res",
+    "landmarkId": "fabrique-des-lumieres",
+    "modelUrl": "./models/zuiveringshal-west.glb",
+    "suppressOsmIds": [
+      "w274066572",
+      "NL.IMBAG.Pand.0363100012236268",
+      "w274066787",
+      "NL.IMBAG.Pand.0363100012236955",
+      "w274066816",
+      "NL.IMBAG.Pand.0363100012235891",
+      "w274066616",
+      "NL.IMBAG.Pand.0363100012236658",
+      "w274066838",
+      "NL.IMBAG.Pand.0363100012236031",
+      "w274066643",
+      "NL.IMBAG.Pand.0363100012236961",
+      "w274066620",
+      "NL.IMBAG.Pand.0363100012236221",
+      "w274066822",
+      "NL.IMBAG.Pand.0363100012236613",
+      "w274066793",
+      "NL.IMBAG.Pand.0363100012236642",
+      "w274066820",
+      "NL.IMBAG.Pand.0363100012235912",
+      "w274066812",
+      "NL.IMBAG.Pand.0363100012237038",
+      "w274066717",
+      "NL.IMBAG.Pand.0363100012236152",
+      "w274066798",
+      "NL.IMBAG.Pand.0363100012236665",
+      "w274066818",
+      "NL.IMBAG.Pand.0363100012236260",
+      "w274066824",
+      "NL.IMBAG.Pand.0363100012236412"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.872148914070394,
+        52.38597705909584
+      ],
+      "headingDegrees": 88.38277400738434,
+      "lengthMetres": 68.12957158750693,
+      "widthMetres": 41.41800754626077
+    },
+    "surveyed": {
+      "anchor": [
+        4.872149301126166,
+        52.3859766755098
+      ],
+      "northOffsetDegrees": -1.6200000000000045
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.00277400738435,
+    "attribution": {
+      "title": "Zuiveringshal West \u00b7 Fabrique des Lumi\u00e8res",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.fabrique-lumieres.com/en",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+    }
+  },
+  {
+    "id": "amsterdam-in-motion",
+    "name": "Amsterdam in Motion \u00b7 Zuiveringshal Oost",
+    "landmarkId": "amsterdam-in-motion",
+    "modelUrl": "./models/amsterdam-in-motion.glb",
+    "suppressOsmIds": [
+      "w274066840",
+      "NL.IMBAG.Pand.0363100012236269",
+      "w274066772",
+      "NL.IMBAG.Pand.0363100012236486",
+      "w274066814",
+      "NL.IMBAG.Pand.0363100012236952",
+      "w274066625",
+      "NL.IMBAG.Pand.0363100012236651",
+      "w274066800",
+      "NL.IMBAG.Pand.0363100012237235",
+      "w274066776",
+      "NL.IMBAG.Pand.0363100012236699",
+      "w274066807",
+      "NL.IMBAG.Pand.0363100012236180",
+      "w274066632",
+      "NL.IMBAG.Pand.0363100012237241"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.873243911684909,
+        52.385996221555054
+      ],
+      "headingDegrees": 178.38518176963328,
+      "lengthMetres": 41.46894644246084,
+      "widthMetres": 32.87974491271963
+    },
+    "surveyed": {
+      "anchor": [
+        4.873240886305469,
+        52.385996206559895
+      ],
+      "northOffsetDegrees": -1.6200000000000045
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -180.00518176963328,
+    "attribution": {
+      "title": "Amsterdam in Motion \u00b7 Zuiveringshal Oost",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.amsterdammuseum.nl/tickets-en-bezoek/locaties/amsterdam-in-motion/228553",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+    }
+  },
+  {
+    "id": "de-krakeling",
+    "name": "Theater De Krakeling",
+    "landmarkId": "extract_landmarks_1635482107",
+    "modelUrl": "./models/de-krakeling.glb",
+    "suppressOsmIds": [
+      "w274066580",
+      "NL.IMBAG.Pand.0363100012235989",
+      "w274066614",
+      "NL.IMBAG.Pand.0363100012236443",
+      "w274066641",
+      "NL.IMBAG.Pand.0363100012237301",
+      "w274066587",
+      "NL.IMBAG.Pand.0363100012236702",
+      "w274066806",
+      "NL.IMBAG.Pand.0363100012236527",
+      "w274066662",
+      "NL.IMBAG.Pand.0363100012236566"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.873736814604472,
+        52.38600465670549
+      ],
+      "headingDegrees": 88.39749239264023,
+      "lengthMetres": 52.10799579808097,
+      "widthMetres": 41.461485886013406
+    },
+    "surveyed": {
+      "anchor": [
+        4.873684349406492,
+        52.38600418652962
+      ],
+      "northOffsetDegrees": -1.6200000000000045
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.01749239264024,
+    "attribution": {
+      "title": "Theater De Krakeling",
+      "author": "Map Recall",
+      "sourceUrl": "https://krakeling.nl/over-ons",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly Westergas hall ensemble authored against current disjoint BAG/OSM parents. High17.34m/17.9m halls retain separately mapped low~10.55m street/rear wings, gray pitched roofs and rooflights; primary venue photographs guide arched industrial windows and current entrance portals. AHN5/3DBAG roof envelopes calibrate native height hierarchy, not imported source mesh. Window rhythm and ornamental finial heights are approximate from visual references. Exact-only replacement excludes central connector2236902, existing Gashouder/Ketelhuis and all neighboring ensembles. Each independently operated venue retains its own route/card identity; Krakeling uses the current game identity at Pazzanistraat15, not its former city-center location."
+    }
+  }
+]
