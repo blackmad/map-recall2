@@ -29,6 +29,10 @@ class Camera {
     this._lookahead = 0;
   }
   update(target, dt) {
+    // Keep the same easing at 60 fps, but follow at the same pace when city
+    // rendering slows down. Simulation time is capped separately by the game.
+    const seconds = Number.isFinite(dt) && dt > 0 ? Math.min(dt, 1) : 1 / 60;
+    const ease = rate => 1 - Math.pow(1 - clamp(rate, 0, 1), seconds * 60);
     // The vehicle itself, for the clearance guard's sightline (the view centre
     // leads it in chase and cockpit).
     this.targetX = target.x;
@@ -37,15 +41,17 @@ class Camera {
     // Ease the lookahead instead of binding it straight to speed, so the view
     // no longer surges forward and back with the throttle.
     const wantedLookahead = this.reducedMotion ? 0 : CAMERA_LOOKAHEAD * speedRatio;
-    this._lookahead += (wantedLookahead - this._lookahead) * CAMERA_LOOKAHEAD_SMOOTHING;
+    this._lookahead += (wantedLookahead - this._lookahead) * ease(CAMERA_LOOKAHEAD_SMOOTHING);
     const cockpitLead = typeof COCKPIT_LOOKAHEAD === 'number' ? COCKPIT_LOOKAHEAD : 160;
     const chaseLead = typeof CHASE_LOOKAHEAD === 'number' ? CHASE_LOOKAHEAD : 0;
     const lead = this.viewMode === 'cockpit' ? cockpitLead : this.viewMode === 'chase' ? chaseLead : 0;
     const lookahead = lead + this._lookahead;
-    const tx = this.detached ? this.anchorX : target.x + Math.cos(target.angle) * lookahead;
-    const ty = this.detached ? this.anchorY : target.y + Math.sin(target.angle) * lookahead;
-    this.x += (tx - this.x) * this.smoothing;
-    this.y += (ty - this.y) * this.smoothing;
+    this._followX = target.x + Math.cos(target.angle) * lookahead;
+    this._followY = target.y + Math.sin(target.angle) * lookahead;
+    const tx = this.detached ? this.anchorX : this._followX;
+    const ty = this.detached ? this.anchorY : this._followY;
+    this.x += (tx - this.x) * ease(this.smoothing);
+    this.y += (ty - this.y) * ease(this.smoothing);
     // Reported for the re-centre affordance and the debug panel: how far the
     // view has drifted from the vehicle, which keeps growing while detached.
     this.panX = this.detached ? this.x - target.x : 0;
@@ -58,7 +64,7 @@ class Camera {
       : (this.northUp || this.holdHeading ? 0 : target.angle + Math.PI / 2) + (is3d ? this.bearingOffset : 0);
     const delta = Math.atan2(Math.sin(wantedRotation - this.rotation), Math.cos(wantedRotation - this.rotation));
     const rotationRate = this.reducedMotion ? CAMERA_REDUCED_ROTATION_SMOOTHING : CAMERA_ROTATION_SMOOTHING;
-    this.rotation += delta * Math.min(1, this.smoothing * rotationRate);
+    this.rotation += delta * ease(this.smoothing * rotationRate);
   }
   zoomIn() {
     this.zoom = clamp(this.zoom + CAMERA_ZOOM_STEP, this.minZoom, this.maxZoom);
@@ -80,6 +86,12 @@ class Camera {
     this.detached = false;
     this.panX = 0;
     this.panY = 0;
+    // Recenter is an explicit request, so restore the latest live follow
+    // position immediately rather than leaving the bike offscreen while easing.
+    if (Number.isFinite(this._followX) && Number.isFinite(this._followY)) {
+      this.x = this._followX;
+      this.y = this._followY;
+    }
   }
   worldToScreen(wx, wy) {
     if (this.projector) return this.projector(wx, wy);
