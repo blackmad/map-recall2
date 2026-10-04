@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 98,
+    "manual-model": 100,
     "catalogue-model": 12,
     "procedural-kit": 18,
-    "pending": 161
+    "pending": 160
   },
   "destinations": [
     {
@@ -1462,8 +1462,9 @@
       "type": "landmark",
       "queueRank": 113,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "oost-indisch-huis",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1925449487",
@@ -3590,6 +3591,17 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "scheltema",
+      "treatment": "building"
+    },
+    {
+      "id": "vondelpark-bandstand",
+      "name": "Vondelpark Muziektent / iron bandstand",
+      "lat": 52.35900799090909,
+      "lng": 4.871428790909091,
+      "queueRank": 290,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "vondelpark-bandstand",
       "treatment": "building"
     }
   ]

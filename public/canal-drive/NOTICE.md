@@ -140,7 +140,8 @@ Groote Museum, ARTIS Library, Willet-Holthuysen, Amsterdam Pipe Museum,
 Athenaeum/Nieuwscentrum, Scheltema, Haarlemmermeerstation, De Dokwerker,
 Begijnhofkapel, Houten Huys, Huis De Pinto, Amsterdam Tulip Museum, OT301,
 Filmhuis Cavia, Orgelpark, Herepoort / Bergpoort, Huis aan de Drie Grachten,
-De Dolphijn, De Rode Hoed, Theater Amsterdam and Vondelpark Open Air Theater use the
+De Dolphijn, De Rode Hoed, Theater Amsterdam, Vondelpark Open Air Theater,
+Vondelpark Muziektent and Oost-Indisch Huis/Bushuis use the
 same original modelling workflow in
 `scripts/landmarks/build-manual-landmarks.ts`. The live game loads these
 flat-colour replacements; the older imported catalogue remains available in

@@ -32,6 +32,8 @@ import {buildHortusLandmark} from './hortus-builders';
 import {buildBegijnhofkapel} from './begijnhofkapel-builder';
 import {buildHoutenHuys} from './houten-huys-builder';
 import {buildHerepoort} from './herepoort-builder';
+import {buildOostIndischLandmark} from './oost-indisch-builders';
+import {buildParkPavilionLandmark} from './park-pavilion-builders';
 import {buildCanalStageLandmark} from './canal-stage-buildings';
 import {buildCanalRenaissanceLandmark} from './canal-renaissance-builders';
 import {buildPintoTulipLandmark} from './pinto-tulip-builders';
@@ -149,6 +151,8 @@ for(const spec of MANUAL_LANDMARKS){
     else if(id==='begijnhofkapel')buildBegijnhofkapel(w,d,helpers);
     else if(id==='houten-huys')buildHoutenHuys(w,d,helpers);
     else if(id==='herepoort-bergpoort')buildHerepoort(w,d,helpers);
+    else if(id==='oost-indisch-huis')buildOostIndischLandmark(id,w,d,helpers);
+    else if(id==='vondelpark-bandstand')buildParkPavilionLandmark(id,w,d,helpers);
     else if(['rode-hoed','theater-amsterdam','vondelpark-open-air-theater'].includes(id))buildCanalStageLandmark(id,w,d,helpers);
     else if(['huis-aan-drie-grachten','de-dolphijn'].includes(id))buildCanalRenaissanceLandmark(id,w,d,helpers);
     else if(['huis-de-pinto','amsterdam-tulip-museum'].includes(id))buildPintoTulipLandmark(id,w,d,helpers);
