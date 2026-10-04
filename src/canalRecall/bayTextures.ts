@@ -342,18 +342,25 @@ function layoutWindows(p: Painter, v: BayVariant, w: number, y: number, h: numbe
   for (let i = 0; i < v.windows; i++) windowAt(p, ((i + 0.5) / v.windows) * w - ww / 2, y, ww, h, v);
 }
 
+/**
+ * Bare wall bays: a gable, party wall or chamfer. Their layer carries wall only — no opening, no
+ * shop and no accent band, at every archetype. Modern used to draw its ribbon window here, so a
+ * modern gable face read as a window band (user report 2026-10-04). `draw` branches on this first,
+ * and `check-three-buildings` pins it.
+ */
+export const isBareBay = (kind: BayKind): boolean => kind === 'plain';
+
 function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImageSource): void {
   const { ctx } = p;
   wall(p, w, h, brick, v.archetype);
   const isShop = (SHOP_KINDS as readonly string[]).includes(v.kind);
   const ground = v.kind === 'groundDoor' || isShop || v.kind === 'ground';
-  if (v.archetype === 'modern') {
-    // Bare wall stays bare: a kit's walls and gable faces use this layer (it drew ribbon windows on tall churches).
-    if (v.kind === 'plain') { /* wall only */ } else if (!ground) ribbon(p, w, v.kind === 'attic' ? 120 : 70, v.kind === 'attic' ? 90 : 140);
+  if (isBareBay(v.kind)) {
+    // wall only
+  } else if (v.archetype === 'modern') {
+    if (!ground) ribbon(p, w, v.kind === 'attic' ? 120 : 70, v.kind === 'attic' ? 90 : 140);
     else if (isShop) { paintedGround(p, w, h); if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else { windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: 'rect', archetype: 'modern' }); if (v.kind === 'groundDoor') doorAt(p, w * 0.62, h - 24, v); }
-  } else if (v.kind === 'plain') {
-    // wall only
   } else if (ground) {
     if (isShop) { paintedGround(p, w, h); if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else if (v.kind === 'groundDoor') { doorAt(p, w * 0.14, h - 24, v); layoutWindows(p, { ...v, windows: 1 }, w * 1.28, 76, 150); }
