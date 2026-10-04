@@ -575,7 +575,7 @@
       "priority": "normal",
       "status": "in-progress",
       "owner": "root",
-      "validation": "Policy persisted in AGENTS.md and building recipe. Removed invented name lettering from Moco Museum, Museum Van Loon and Brakke Grond; regenerated GLBs and visually reviewed museum gallery. Boom Chicago defining real signage fitted to actual panel. Broader signage audit remains queued."
+      "validation": "Initial lettering inventory complete: docs/landmark-signage-audit.md. Heineken real signs explicitly retained. Unsupported-label candidates and panel/rotation risks identified; uncertain signs require facade-reference and native render comparison before changes. Moco/Van Loon/Brakke labels removed and Boom panel fit verified in d94b0de6. Broader source/render audit remains in progress."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
