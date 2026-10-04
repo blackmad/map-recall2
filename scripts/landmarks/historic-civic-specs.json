@@ -1,0 +1,121 @@
+[
+  {
+    "id": "walloon-church",
+    "name": "Walloon Church",
+    "landmarkId": "extract_landmarks_56521997",
+    "modelUrl": "./models/walloon-church.glb",
+    "suppressOsmIds": [
+      "w158206091",
+      "NL.IMBAG.Pand.0363100012171206",
+      "w749356521",
+      "w749356522",
+      "w749356523",
+      "w749386975",
+      "w749386976"
+    ],
+    "footprint": {
+      "centre": [
+        4.897371867711793,
+        52.37106990634758
+      ],
+      "headingDegrees": 94.49689812817684,
+      "lengthMetres": 45.69206999573948,
+      "widthMetres": 40.69967153575252
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 198.73310187182324,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8973534999999995,
+        52.3710305
+      ],
+      "northOffsetDegrees": 113.22999999999999,
+      "source": "Current BAG/OSM exact parent footprint at native surveyed scale 1; original simplified volumes reconciled with 3DBAG LoD2.2 roof sections, heritage description and primary exterior photographs."
+    },
+    "attribution": {
+      "title": "Walloon Church",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/50",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
+    }
+  },
+  {
+    "id": "schreierstoren",
+    "name": "Schreierstoren / Weepers Tower",
+    "landmarkId": "extract_landmarks_240585875",
+    "modelUrl": "./models/schreierstoren.glb",
+    "suppressOsmIds": [
+      "w57859248",
+      "NL.IMBAG.Pand.0363100012182530"
+    ],
+    "footprint": {
+      "centre": [
+        4.902247139590537,
+        52.376359237178846
+      ],
+      "headingDegrees": 21.28079662509981,
+      "lengthMetres": 22.559922962138025,
+      "widthMetres": 10.52902743701412
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 269.91920337490023,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.902237749999999,
+        52.376358249999996
+      ],
+      "northOffsetDegrees": 111.19999999999999,
+      "source": "Current BAG/OSM exact parent footprint at native surveyed scale 1; original simplified volumes reconciled with 3DBAG LoD2.2 roof sections, heritage description and primary exterior photographs."
+    },
+    "attribution": {
+      "title": "Schreierstoren / Weepers Tower",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/4148",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
+    }
+  },
+  {
+    "id": "huize-lydia",
+    "name": "Huize Lydia / Huis van de Wijk Lydia",
+    "landmarkId": "extract_landmarks_366321397",
+    "modelUrl": "./models/huize-lydia.glb",
+    "suppressOsmIds": [
+      "w277121147",
+      "NL.IMBAG.Pand.0363100012119530"
+    ],
+    "footprint": {
+      "centre": [
+        4.8815378377866,
+        52.352868413309864
+      ],
+      "headingDegrees": 145.5052311128626,
+      "lengthMetres": 49.595429224093074,
+      "widthMetres": 38.95435970755049
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 273.29076888713735,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8815018,
+        52.35285595
+      ],
+      "northOffsetDegrees": 238.796,
+      "source": "Current BAG/OSM exact parent footprint at native surveyed scale 1; original simplified volumes reconciled with 3DBAG LoD2.2 roof sections, heritage description and primary exterior photographs."
+    },
+    "attribution": {
+      "title": "Huize Lydia / Huis van de Wijk Lydia",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/505630",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
+    }
+  }
+]
