@@ -99,7 +99,10 @@
       "w751235777",
       "w751235778",
       "w751235779",
-      "w751235780"
+      "w751235780",
+      "NL.IMBAG.Pand.0363100012168052",
+      "w751128374",
+      "w751128375"
     ],
     "footprint": {
       "centre": [
@@ -118,8 +121,16 @@
       "sourceUrl": "https://www.cultureelerfgoeddebijenkorf.nl/architectuur/bouwfasesamsterdam",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Original texture-free low-poly reconstruction guided by official venue imagery; approximate architectural details aligned to the OpenStreetMap building footprint."
+      "modifications": "Original texture-free low-poly reconstruction of full historic Damrak and Dam fronts, curved pediments, mansard dormers, paired-window/pilaster rhythm, surveyed cupola and separate rear extension. Supplied SketchUp preview used as visual reference only; no imported mesh or texture."
     },
-    "spatialSuppression": false
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8943519,
+        52.3736161
+      ],
+      "northOffsetDegrees": 129.69686744069807,
+      "source": "Current BAG0363100012168052 and OSM original store/roof parts; native scale1, +Z Damrak frontage309.697 degrees, +X Dam end219.697 degrees. Original historic roof/facades reconciled with primary RCE518426 and 3DBAG AHN roof envelope (cupola45.43m above ground)."
+    }
   }
 ]
