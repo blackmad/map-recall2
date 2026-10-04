@@ -1,0 +1,1124 @@
+{
+  "sites": [
+    {
+      "id": "sint-nicolaas",
+      "name": "Sint Nicolaas Basilica",
+      "landmarkId": "extract_landmarks_1272308587",
+      "anchor": [
+        4.9011602841322865,
+        52.37644052156187
+      ],
+      "authorHeadingDegrees": 240.27603524728386,
+      "footprint": {
+        "centre": [
+          4.9011602841322865,
+          52.37644052156187
+        ],
+        "headingDegrees": 150.27603524728386,
+        "lengthMetres": 52.451608220779384,
+        "widthMetres": 22.869811981363846
+      },
+      "parent": {
+        "type": "Feature",
+        "id": "a349993666",
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  4.9008229,
+                  52.3765941
+                ],
+                [
+                  4.9008574,
+                  52.3765572
+                ],
+                [
+                  4.9012012,
+                  52.3761896
+                ],
+                [
+                  4.9012121,
+                  52.3761875
+                ],
+                [
+                  4.901221,
+                  52.3761904
+                ],
+                [
+                  4.901224,
+                  52.3761963
+                ],
+                [
+                  4.9012165,
+                  52.3762045
+                ],
+                [
+                  4.9012347,
+                  52.3762105
+                ],
+                [
+                  4.9012447,
+                  52.3762075
+                ],
+                [
+                  4.9012486,
+                  52.3762117
+                ],
+                [
+                  4.9012401,
+                  52.3762142
+                ],
+                [
+                  4.9012525,
+                  52.3762391
+                ],
+                [
+                  4.9012591,
+                  52.3762409
+                ],
+                [
+                  4.9012569,
+                  52.3762364
+                ],
+                [
+                  4.9012665,
+                  52.3762342
+                ],
+                [
+                  4.9012695,
+                  52.3762391
+                ],
+                [
+                  4.9012723,
+                  52.3762381
+                ],
+                [
+                  4.9012732,
+                  52.3762369
+                ],
+                [
+                  4.9012757,
+                  52.3762347
+                ],
+                [
+                  4.9012788,
+                  52.3762329
+                ],
+                [
+                  4.9012825,
+                  52.3762315
+                ],
+                [
+                  4.9012887,
+                  52.3762303
+                ],
+                [
+                  4.9012952,
+                  52.3762303
+                ],
+                [
+                  4.9013013,
+                  52.3762315
+                ],
+                [
+                  4.9013066,
+                  52.3762338
+                ],
+                [
+                  4.9013094,
+                  52.3762359
+                ],
+                [
+                  4.9013122,
+                  52.3762357
+                ],
+                [
+                  4.9013138,
+                  52.3762308
+                ],
+                [
+                  4.9013242,
+                  52.376232
+                ],
+                [
+                  4.9013227,
+                  52.3762366
+                ],
+                [
+                  4.9013655,
+                  52.3762539
+                ],
+                [
+                  4.901371,
+                  52.3762506
+                ],
+                [
+                  4.9013797,
+                  52.3762554
+                ],
+                [
+                  4.9013734,
+                  52.3762588
+                ],
+                [
+                  4.9013747,
+                  52.3762605
+                ],
+                [
+                  4.9013808,
+                  52.3762614
+                ],
+                [
+                  4.9013863,
+                  52.3762635
+                ],
+                [
+                  4.9013905,
+                  52.3762664
+                ],
+                [
+                  4.9013924,
+                  52.3762687
+                ],
+                [
+                  4.9013931,
+                  52.37627
+                ],
+                [
+                  4.9013938,
+                  52.3762725
+                ],
+                [
+                  4.9013936,
+                  52.3762751
+                ],
+                [
+                  4.9013926,
+                  52.3762777
+                ],
+                [
+                  4.9013896,
+                  52.3762811
+                ],
+                [
+                  4.9013906,
+                  52.3762825
+                ],
+                [
+                  4.9013982,
+                  52.3762821
+                ],
+                [
+                  4.9013996,
+                  52.3762891
+                ],
+                [
+                  4.9013914,
+                  52.3762897
+                ],
+                [
+                  4.9013918,
+                  52.3762913
+                ],
+                [
+                  4.9013976,
+                  52.3762959
+                ],
+                [
+                  4.901433,
+                  52.3762892
+                ],
+                [
+                  4.901433,
+                  52.3762844
+                ],
+                [
+                  4.901441,
+                  52.3762844
+                ],
+                [
+                  4.901441,
+                  52.3762895
+                ],
+                [
+                  4.9014601,
+                  52.3762958
+                ],
+                [
+                  4.9014676,
+                  52.3762932
+                ],
+                [
+                  4.9014718,
+                  52.3762974
+                ],
+                [
+                  4.9014648,
+                  52.3762997
+                ],
+                [
+                  4.901472,
+                  52.3763144
+                ],
+                [
+                  4.9011762,
+                  52.3766302
+                ],
+                [
+                  4.9011345,
+                  52.3766748
+                ],
+                [
+                  4.9011323,
+                  52.3766772
+                ],
+                [
+                  4.9011065,
+                  52.3766681
+                ],
+                [
+                  4.9011141,
+                  52.3766605
+                ],
+                [
+                  4.9010892,
+                  52.3766517
+                ],
+                [
+                  4.9010816,
+                  52.3766593
+                ],
+                [
+                  4.9010554,
+                  52.3766503
+                ],
+                [
+                  4.901056,
+                  52.3766496
+                ],
+                [
+                  4.9010509,
+                  52.3766494
+                ],
+                [
+                  4.9010516,
+                  52.3766424
+                ],
+                [
+                  4.9010624,
+                  52.3766427
+                ],
+                [
+                  4.901072,
+                  52.3766323
+                ],
+                [
+                  4.9009342,
+                  52.3765837
+                ],
+                [
+                  4.9009245,
+                  52.3765942
+                ],
+                [
+                  4.9009302,
+                  52.376601
+                ],
+                [
+                  4.90092,
+                  52.376605
+                ],
+                [
+                  4.900917,
+                  52.3766021
+                ],
+                [
+                  4.9008995,
+                  52.3766208
+                ],
+                [
+                  4.9008749,
+                  52.3766121
+                ],
+                [
+                  4.9008836,
+                  52.3766029
+                ],
+                [
+                  4.9008575,
+                  52.3765936
+                ],
+                [
+                  4.9008484,
+                  52.3766031
+                ],
+                [
+                  4.9008229,
+                  52.3765941
+                ]
+              ]
+            ]
+          ]
+        },
+        "properties": {
+          "addr:city": "Amsterdam",
+          "addr:housenumber": "74-77",
+          "addr:postcode": "1012AE",
+          "addr:street": "Prins Hendrikkade",
+          "alt_name": "Sint Nicolaaskerk",
+          "amenity": "place_of_worship",
+          "basilica": "minor",
+          "building": "church",
+          "building:levels": "3",
+          "building:material": "brick",
+          "denomination": "roman_catholic",
+          "name": "Co-kathedrale Basiliek van Sint Nicolaas",
+          "name:de": "Konkathedrale St. Nikolaus",
+          "name:ko": "세인트 니콜라스 대성당",
+          "name:ru": "Церковь святого Николая",
+          "name:zh": "聖尼可拉教堂",
+          "note": "Basiliek sinds 2015, co-kathedraal sinds 2025.",
+          "official_name": "Co-kathedrale Basiliek van Sint Nicolaas",
+          "old_name": "Nicolaasbasiliek",
+          "opening_hours": "Su-Mo 12:00-15:00; Tu-Sa 11:00-16:00",
+          "ref:bag": "0363100012165691",
+          "religion": "christian",
+          "source": "BAG",
+          "source:date": "2014-02-11",
+          "start_date": "1875",
+          "website": "https://nicolaas-parochie.nl/",
+          "wheelchair": "no",
+          "wikidata": "Q1350750",
+          "wikimedia_commons": "Category:Sint-Nicolaaskerk (Amsterdam)",
+          "wikipedia": "nl:Co-kathedrale basiliek van de Heilige Nicolaas"
+        }
+      },
+      "parts": [
+        {
+          "type": "Feature",
+          "id": "a1291069860",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9008229,
+                    52.3765941
+                  ],
+                  [
+                    4.9008667,
+                    52.3765472
+                  ],
+                  [
+                    4.9009434,
+                    52.3765739
+                  ],
+                  [
+                    4.9008995,
+                    52.3766208
+                  ],
+                  [
+                    4.9008229,
+                    52.3765941
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "56",
+            "man_made": "tower",
+            "roof:height": "23",
+            "roof:material": "copper",
+            "roof:shape": "pyramidal",
+            "tower:type": "bell_tower"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1291069862",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9010554,
+                    52.3766503
+                  ],
+                  [
+                    4.9010989,
+                    52.3766035
+                  ],
+                  [
+                    4.9011762,
+                    52.3766302
+                  ],
+                  [
+                    4.9011323,
+                    52.3766772
+                  ],
+                  [
+                    4.9010554,
+                    52.3766503
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "56",
+            "man_made": "tower",
+            "roof:height": "23",
+            "roof:material": "copper",
+            "roof:shape": "pyramidal",
+            "tower:type": "bell_tower"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1498579264",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9011204,
+                    52.3763672
+                  ],
+                  [
+                    4.9011575,
+                    52.3763273
+                  ],
+                  [
+                    4.9012334,
+                    52.3763146
+                  ],
+                  [
+                    4.9013026,
+                    52.3763391
+                  ],
+                  [
+                    4.9013236,
+                    52.3763839
+                  ],
+                  [
+                    4.9012867,
+                    52.3764233
+                  ],
+                  [
+                    4.9012114,
+                    52.3764373
+                  ],
+                  [
+                    4.9011438,
+                    52.3764122
+                  ],
+                  [
+                    4.9011204,
+                    52.3763672
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "39",
+            "min_height": "24"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1498579266",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9010289,
+                    52.3763738
+                  ],
+                  [
+                    4.9011211,
+                    52.3762752
+                  ],
+                  [
+                    4.9014126,
+                    52.3763777
+                  ],
+                  [
+                    4.9013202,
+                    52.3764763
+                  ],
+                  [
+                    4.9010289,
+                    52.3763738
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "30",
+            "roof:height": "6",
+            "roof:material": "roof_tiles",
+            "roof:shape": "gabled"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1498579268",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9009214,
+                    52.3765793
+                  ],
+                  [
+                    4.901216,
+                    52.3762644
+                  ],
+                  [
+                    4.9013823,
+                    52.3763225
+                  ],
+                  [
+                    4.9010872,
+                    52.3766377
+                  ],
+                  [
+                    4.9010124,
+                    52.3766113
+                  ],
+                  [
+                    4.9009614,
+                    52.3765934
+                  ],
+                  [
+                    4.9009214,
+                    52.3765793
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "30",
+            "roof:height": "6",
+            "roof:material": "roof_tiles",
+            "roof:shape": "gabled"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1500434118",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9012062,
+                    52.3763012
+                  ],
+                  [
+                    4.901216,
+                    52.3762644
+                  ],
+                  [
+                    4.9012629,
+                    52.3762402
+                  ],
+                  [
+                    4.9013179,
+                    52.3762353
+                  ],
+                  [
+                    4.9013695,
+                    52.3762554
+                  ],
+                  [
+                    4.901392,
+                    52.3762865
+                  ],
+                  [
+                    4.9013823,
+                    52.3763225
+                  ],
+                  [
+                    4.901339,
+                    52.3763463
+                  ],
+                  [
+                    4.9012787,
+                    52.3763493
+                  ],
+                  [
+                    4.901231,
+                    52.3763317
+                  ],
+                  [
+                    4.9012062,
+                    52.3763012
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "30",
+            "roof:height": "6",
+            "roof:material": "roof_tiles",
+            "roof:shape": "pyramidal"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1500434120",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9011684,
+                    52.3762248
+                  ],
+                  [
+                    4.9011839,
+                    52.3762083
+                  ],
+                  [
+                    4.901212,
+                    52.3762033
+                  ],
+                  [
+                    4.9012386,
+                    52.3762121
+                  ],
+                  [
+                    4.9012472,
+                    52.3762298
+                  ],
+                  [
+                    4.9012327,
+                    52.3762461
+                  ],
+                  [
+                    4.9012036,
+                    52.3762514
+                  ],
+                  [
+                    4.901177,
+                    52.3762425
+                  ],
+                  [
+                    4.9011684,
+                    52.3762248
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "14",
+            "roof:height": "4",
+            "roof:shape": "pyramidal"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1500434122",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9013952,
+                    52.3763088
+                  ],
+                  [
+                    4.9014094,
+                    52.3762937
+                  ],
+                  [
+                    4.9014374,
+                    52.3762886
+                  ],
+                  [
+                    4.9014632,
+                    52.376297
+                  ],
+                  [
+                    4.9014717,
+                    52.3763141
+                  ],
+                  [
+                    4.9014575,
+                    52.3763292
+                  ],
+                  [
+                    4.9014294,
+                    52.3763344
+                  ],
+                  [
+                    4.9014036,
+                    52.3763259
+                  ],
+                  [
+                    4.9013952,
+                    52.3763088
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "14",
+            "roof:height": "4",
+            "roof:shape": "pyramidal"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1500434124",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.901129,
+                    52.3763796
+                  ],
+                  [
+                    4.9011337,
+                    52.3763575
+                  ],
+                  [
+                    4.901152,
+                    52.3763381
+                  ],
+                  [
+                    4.9011809,
+                    52.3763245
+                  ],
+                  [
+                    4.9012163,
+                    52.3763187
+                  ],
+                  [
+                    4.9012526,
+                    52.3763216
+                  ],
+                  [
+                    4.9012843,
+                    52.3763327
+                  ],
+                  [
+                    4.9013066,
+                    52.3763504
+                  ],
+                  [
+                    4.9013161,
+                    52.376372
+                  ],
+                  [
+                    4.9013114,
+                    52.3763941
+                  ],
+                  [
+                    4.9012931,
+                    52.3764135
+                  ],
+                  [
+                    4.9012641,
+                    52.3764271
+                  ],
+                  [
+                    4.9012288,
+                    52.3764329
+                  ],
+                  [
+                    4.9011925,
+                    52.37643
+                  ],
+                  [
+                    4.9011608,
+                    52.3764189
+                  ],
+                  [
+                    4.9011385,
+                    52.3764012
+                  ],
+                  [
+                    4.901129,
+                    52.3763796
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:part": "yes",
+            "height": "50",
+            "min_height": "39",
+            "roof:height": "11",
+            "roof:material": "copper",
+            "roof:shape": "dome"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1500434126",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9008574,
+                    52.3765572
+                  ],
+                  [
+                    4.9008667,
+                    52.3765472
+                  ],
+                  [
+                    4.9011762,
+                    52.3762163
+                  ],
+                  [
+                    4.9012399,
+                    52.3762383
+                  ],
+                  [
+                    4.9009214,
+                    52.3765793
+                  ],
+                  [
+                    4.9008574,
+                    52.3765572
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "14",
+            "roof:height": "4",
+            "roof:material": "roof_tiles",
+            "roof:shape": "gabled"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1500434128",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9010872,
+                    52.3766377
+                  ],
+                  [
+                    4.9014027,
+                    52.3763006
+                  ],
+                  [
+                    4.9014647,
+                    52.3763222
+                  ],
+                  [
+                    4.9011491,
+                    52.3766592
+                  ],
+                  [
+                    4.9010872,
+                    52.3766377
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "14",
+            "roof:height": "4",
+            "roof:material": "roof_tiles",
+            "roof:shape": "gabled"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1501182176",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9011971,
+                    52.3761949
+                  ],
+                  [
+                    4.9012025,
+                    52.3761893
+                  ],
+                  [
+                    4.9012121,
+                    52.3761875
+                  ],
+                  [
+                    4.901221,
+                    52.3761904
+                  ],
+                  [
+                    4.901224,
+                    52.3761963
+                  ],
+                  [
+                    4.9012187,
+                    52.3762018
+                  ],
+                  [
+                    4.901209,
+                    52.3762036
+                  ],
+                  [
+                    4.9012001,
+                    52.3762008
+                  ],
+                  [
+                    4.9011971,
+                    52.3761949
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "brick",
+            "building:part": "church",
+            "height": "14",
+            "roof:height": "2",
+            "roof:material": "roof_tiles",
+            "roof:shape": "pyramidal"
+          }
+        },
+        {
+          "type": "Feature",
+          "id": "a1501182180",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.9011943,
+                    52.3763748
+                  ],
+                  [
+                    4.9012051,
+                    52.3763631
+                  ],
+                  [
+                    4.9012265,
+                    52.3763597
+                  ],
+                  [
+                    4.9012456,
+                    52.3763664
+                  ],
+                  [
+                    4.9012512,
+                    52.3763795
+                  ],
+                  [
+                    4.9012401,
+                    52.3763911
+                  ],
+                  [
+                    4.9012188,
+                    52.3763946
+                  ],
+                  [
+                    4.9011997,
+                    52.3763878
+                  ],
+                  [
+                    4.9011943,
+                    52.3763748
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building:material": "copper",
+            "building:part": "church",
+            "height": "56",
+            "min_height": "50",
+            "roof:height": "2",
+            "roof:material": "copper",
+            "roof:shape": "dome"
+          }
+        }
+      ],
+      "suppressOsmIds": [
+        "w174996833",
+        "NL.IMBAG.Pand.0363100012165691",
+        "w645534930",
+        "w645534931",
+        "w749289632",
+        "w749289633",
+        "w749289634",
+        "w750217059",
+        "w750217060",
+        "w750217061",
+        "w750217062",
+        "w750217063",
+        "w750217064",
+        "w750591088",
+        "w750591090"
+      ],
+      "primaryReferences": [
+        "https://nicolaas-parochie.nl/nicolaas/over-ons/gebouw/",
+        "https://arcam.nl/architectuur-gids/sint-nicolaaskerk/",
+        "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=5481",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165691"
+      ],
+      "sourceNote": "Original texture-free low-poly reconstruction of Bleijs’s1884–1887 SintNicolaas basilica. Native geometry retains the actual52.45×22.87m church plan, thirteen measured in-parent OSM building parts, staggered twin6m west towers,13m octagonal crossing drum and stepped aisle/nave/transept/apse roofs. The parish documents58m dome height; modeled58m cross and56m tower crowns extend above AHN5 bulkroofmax50.889m, which does not capture fine lantern crosses. Ornament/curved metal crowns/rose window/arcaded entrance and clerestory are original simplified geometry from primary parish and architecture photographer references, with no imported source meshes/textures. Five adjacent rectory/side-annex parts outside the exact church parent and ordinary neighbors remain unsuppressed. Same-part proceduralSintNicolaas kit is replaced by this model; currentBAG1875 date is not treated as architectural evidence."
+    }
+  ]
+}
