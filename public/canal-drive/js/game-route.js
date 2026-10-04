@@ -145,7 +145,7 @@ class GameRouteRuntime {
     this.routeDifficulty = prefs.difficulty;
     this.routePattern = prefs.routePattern;
     if (typeof this.vectorMap.setBuildingLookPreference === 'function') this.vectorMap.setBuildingLookPreference(prefs.buildingLook || 'photo');
-    this.vectorMap.setTreesVisible(prefs.trees && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
+    this.vectorMap.setTreesVisible(prefs.trees);
     this.vectorMap.setDetailedBuildingsVisible(prefs.detailed3d && (this.viewMode === 'chase' || this.viewMode === 'cockpit'));
     this.vectorMap.setGoogleTilesEnabled(!!prefs.googleTiles && !prefs.measuredColoursOnly);
     this.vectorMap.setMeasuredColoursOnly(!!prefs.measuredColoursOnly);
