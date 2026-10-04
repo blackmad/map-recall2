@@ -1,0 +1,50 @@
+{
+  "id": "concertgebouw",
+  "name": "Royal Concertgebouw",
+  "landmarkId": "extract_landmarks_626684803",
+  "modelUrl": "./models/concertgebouw.glb",
+  "suppressOsmIds": [
+    "w46696080",
+    "NL.IMBAG.Pand.0363100012233435",
+    "w754269603",
+    "w754269604",
+    "w754269605",
+    "w754269606",
+    "w754269607",
+    "w754269608",
+    "w754269609",
+    "w754269610",
+    "w754269611",
+    "w754276795",
+    "w754276796",
+    "w754276797"
+  ],
+  "footprint": {
+    "centre": [
+      4.879022231224272,
+      52.35624462484694
+    ],
+    "headingDegrees": 58.92662097254748,
+    "lengthMetres": 85.33398544808925,
+    "widthMetres": 64.24249063999933
+  },
+  "spatialSuppression": false,
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 368.37337902745253,
+  "surveyed": {
+    "anchor": [
+      4.879044208914783,
+      52.35621988842513
+    ],
+    "northOffsetDegrees": 247.3,
+    "source": "Current BAG whole parent with both inner courts retained, current OSM mapped parts and primary Concertgebouw facade/restoration photographs. Native front axis337.3 degrees, +Z faces northeast. AHN5 roof plane envelopes guide original low-poly roof surfaces; old OSM25m pavilion tags rejected for measured21.6m caps."
+  },
+  "attribution": {
+    "title": "Royal Concertgebouw",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.concertgebouw.nl/en/our-history/history",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original project-native pale-stone/red-brick classical facade, columned pediment, golden lyre, four roof pavilions and Pi de Bruijn glass promenade. No imported legacy mesh or textures; roof contours derived from open surveyed data."
+  }
+}

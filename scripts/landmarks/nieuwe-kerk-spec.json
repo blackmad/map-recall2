@@ -1,0 +1,57 @@
+{
+  "id": "nieuwe-kerk",
+  "name": "Nieuwe Kerk",
+  "landmarkId": "extract_landmarks_239964759",
+  "modelUrl": "./models/nieuwe-kerk.glb",
+  "suppressOsmIds": [
+    "w220749328",
+    "w174987150",
+    "w747911435",
+    "w747911436",
+    "w747911437",
+    "w747911438",
+    "w747911439",
+    "w747911440",
+    "w747911441",
+    "w747924617",
+    "w747924618",
+    "w747924619",
+    "w747924621",
+    "w747924622",
+    "w747924623",
+    "w747924624",
+    "w747924625",
+    "w747924626",
+    "w748997143",
+    "w748997144",
+    "NL.IMBAG.Pand.0363100012169079"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.891777577968536,
+      52.37394620723149
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 94.96254563554697,
+    "widthMetres": 66.11294799981863
+  },
+  "surveyed": {
+    "anchor": [
+      4.891777577968536,
+      52.37394620723149
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native current parent and mapped church/chapel/tourelle parts; source roofs and 34m tourelles preserved, approximate 46m crossing finial retained."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Nieuwe Kerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.nieuwekerk.nl/pers/beeldbank/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free Gothic stone-striped brick church rebuilt from exact current roof/chapel polygons and official church exterior/restoration photos. Pointed tracery, rose, portals, balustrades, mapped tourelles and gilded crossing finial approximated with shared-palette meshes; no imported geometry or copied photograph pixels. Adjacent Palace, shops and streets retained."
+  }
+}

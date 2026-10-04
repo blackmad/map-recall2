@@ -1,4 +1,5 @@
 import * as T from 'three';
+import {openTopPrism, upwardRoofPlane} from './house-geometry';
 import type {BuildingTools} from './cultural-builders';
 import data from './industrial-theater-footprints.json';
 import specs from './industrial-theater-specs.json';
@@ -42,13 +43,8 @@ export function buildIndustrialTheaterLandmark(id:string,w:number,d:number,b:Bui
   const polygons=site.buildings[0].geometry.coordinates.map(poly=>poly.map(r=>ring(r).map(local)));
   // Clip historic frontage and rear stage volumes along the local depth axis.
   function clip(r:T.Vector2[],side:number){const out:T.Vector2[]=[];for(let i=0;i<r.length;i++){const a=r[i],c=r[(i+1)%r.length],ia=a.y*side>=0,ic=c.y*side>=0;if(ia)out.push(a);if(ia!==ic)out.push(new T.Vector2(a.x+(c.x-a.x)*(-a.y)/(c.y-a.y),0));}return out;}
-  for(const poly of polygons)for(const side of [-1,1]){const r=clip(poly[0],side);if(r.length<3)continue;const height=side>0?17.5:22.5,shape=new T.Shape(r);for(const hole of poly.slice(1)){const h=clip(hole,side);if(h.length>2)shape.holes.push(new T.Path(h));}const g=new T.ExtrudeGeometry(shape,{depth:height,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,height,0);
-   // The separate slate lid owns the upper face. The old brick cap remained
-   // visible because the rotated ShapeGeometry lid had downward winding.
-   const flat=g.index?g.toNonIndexed():g,p=flat.getAttribute('position'),n=flat.getAttribute('normal'),walls:number[]=[];
-   for(let i=0;i<p.count;i+=3){if([0,1,2].every(k=>n.getY(i+k)>.9))continue;for(let k=0;k<3;k++)walls.push(p.getX(i+k),p.getY(i+k),p.getZ(i+k));}
-   const shell=new T.BufferGeometry();shell.setAttribute('position',new T.Float32BufferAttribute(walls,3));shell.computeVertexNormals();add(shell,side>0?'brick':'dark');g.dispose();if(flat!==g)flat.dispose();
-   const roof=new T.ShapeGeometry(shape);roof.rotateX(Math.PI/2);const ix=roof.index!;for(let i=0;i<ix.count;i+=3){const tmp=ix.getX(i+1);ix.setX(i+1,ix.getX(i+2));ix.setX(i+2,tmp);}roof.computeVertexNormals();add(roof,'slate',0,height+.03,0);
+  for(const poly of polygons)for(const side of [-1,1]){const r=clip(poly[0],side);if(r.length<3)continue;const height=side>0?17.5:22.5,shape=new T.Shape(r);for(const hole of poly.slice(1)){const h=clip(hole,side);if(h.length>2)shape.holes.push(new T.Path(h));}add(openTopPrism(shape,0,height),side>0?'brick':'dark');
+   add(upwardRoofPlane(shape,height+.03),'slate');
   }
   const front=d/2-.4,main=w*.64;
   box(0,0,front-6,main,18.8,12,'brick');

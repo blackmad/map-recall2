@@ -12,6 +12,9 @@ import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
 import {MeshoptEncoder} from 'meshoptimizer';
 await MeshoptEncoder.ready;
 import {buildCulturalLandmark} from './cultural-builders';
+import {openTopPrism, upwardRoofPlane} from './house-geometry';
+import {buildNieuweKerk} from './nieuwe-kerk-builder';
+import {buildConcertgebouw} from './concertgebouw-builder';
 import {buildSilodam} from './silodam-builder';
 import {buildVenueLandmark} from './venue-builders';
 import {buildTheaterLandmark} from './theater-builders';
@@ -127,12 +130,8 @@ function music(){box(0,0,0,70,1.1,43,'stone');box(0,1.1,0,66,18.7,40,'glass');bo
  for(let i=0;i<7;i++)box(22,0,23+i*.9,22,(7-i)*.28,.95,'stone');box(25,1.2,23,13,.3,7,'slate');
 }
 function hospital(id:string){let s=hospitals.sites.find(s=>s.id===id)!;let spec=MANUAL_LANDMARKS.find(s=>s.id===id)!;let anchor=spec.surveyed!.anchor;let west=id==='olvg-west';let lon=111320*Math.cos(anchor[1]*Math.PI/180);let coord=(p:number[])=>new T.Vector2((p[0]-anchor[0])*lon,-(p[1]-anchor[1])*110540);
- for(let f of s.buildings){if(f.properties.building==='construction')continue;let main=f.properties.building==='hospital'||f.id==='w44451612';let height=Number(f.properties.height)|| (main?(west?9.5:19):4);for(let poly of f.geometry.coordinates){let shape=new T.Shape(poly[0].slice(0,-1).map(coord));shape.holes=poly.slice(1).map(r=>new T.Path(r.slice(0,-1).map(coord)));let g=new T.ExtrudeGeometry(shape,{depth:height,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,height,0);
- // Only the explicit slate roof owns the top; retain the walls and courtyard holes.
- const flat=g.index?g.toNonIndexed():g,p=flat.getAttribute('position'),n=flat.getAttribute('normal'),v:number[]=[];
- for(let i=0;i<p.count;i+=3){if([0,1,2].every(j=>n.getY(i+j)>.9))continue;for(let j=0;j<3;j++)v.push(p.getX(i+j),p.getY(i+j),p.getZ(i+j));}
- const shell=new T.BufferGeometry();shell.setAttribute('position',new T.Float32BufferAttribute(v,3));shell.computeVertexNormals();add(shell,west?'white':'brick');if(flat!==g)flat.dispose();g.dispose();
- let roof=new T.ShapeGeometry(shape);roof.rotateX(Math.PI/2);const index=roof.index!;for(let i=0;i<index.count;i+=3){const k=index.getX(i+1);index.setX(i+1,index.getX(i+2));index.setX(i+2,k);}roof.computeVertexNormals();roof.translate(0,height+.04,0);add(roof,'slate');
+ for(let f of s.buildings){if(f.properties.building==='construction')continue;let main=f.properties.building==='hospital'||f.id==='w44451612';let height=Number(f.properties.height)|| (main?(west?9.5:19):4);for(let poly of f.geometry.coordinates){let shape=new T.Shape(poly[0].slice(0,-1).map(coord));shape.holes=poly.slice(1).map(r=>new T.Path(r.slice(0,-1).map(coord)));add(openTopPrism(shape,0,height),west?'white':'brick');
+ add(upwardRoofPlane(shape,height+.04),'slate');
  for(let ring of poly){let r=ring.map(coord);for(let i=0;i<r.length-1;i++){let a=r[i],b=r[i+1],dx=b.x-a.x,dz=b.y-a.y,L=Math.hypot(dx,dz);if(L<3)continue;let angle=-Math.atan2(dz,dx);for(let y=2;y<height-1;y+=3.3){for(let u=1.7;u<L-1;u+=3.6){box(a.x+u*dx/L,y,a.y+u*dz/L,2.1,1.5,.24,west?'blue':'glass',angle);}}}}}}
  if(west){sign('OLVG WEST',66,6,46,.22,'blue'); // High ward wings around the rear courtyard; lower fingers retained from OSM outline.
  let angle=15*Math.PI/180;for(let [x,z,w,d] of [[68,6,17,48],[35,-15,53,15],[52,28,44,14]]){box(x,9.5,z,w,23,d,'white',angle);box(x,32.5,z,w+1,.45,d+1,'slate',angle);for(let y=11;y<31;y+=3.2)for(let u=-w/2+2;u<w/2-1;u+=3.3){let xx=x+u*Math.cos(angle),zz=z-u*Math.sin(angle);for(let side of [-1,1])box(xx+side*d/2*Math.sin(angle),y,zz+side*d/2*Math.cos(angle),1.8,1.45,.25,'blue',angle);}}
@@ -165,7 +164,9 @@ for(const spec of MANUAL_LANDMARKS){
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='silodam')buildSilodam(w,d,helpers);
+    if(id==='nieuwe-kerk')buildNieuweKerk(w,d,helpers);
+    else if(id==='concertgebouw')buildConcertgebouw(w,d,helpers);
+    else if(id==='silodam')buildSilodam(w,d,helpers);
     else if(venueIds.has(id))buildVenueLandmark(id,w,d,helpers);
     else if(theaterIds.has(id))buildTheaterLandmark(id,w,d,helpers);
     else if(houseMuseumIds.has(id))buildHouseMuseumLandmark(id,w,d,helpers);

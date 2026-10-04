@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 142,
+    "manual-model": 143,
     "procedural-kit": 15,
     "pending": 166,
-    "catalogue-model": 3
+    "catalogue-model": 2
   },
   "destinations": [
     {
@@ -157,7 +157,7 @@
       "type": "landmark",
       "queueRank": 12,
       "origin": "POI Destinations",
-      "status": "catalogue-model",
+      "status": "manual-model",
       "modelId": "concertgebouw",
       "treatment": "building"
     },

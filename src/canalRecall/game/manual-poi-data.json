@@ -207,5 +207,11 @@
     "name": "Amstel Hotel",
     "description": "The Amstel Hotel was completed in 1867 to a design by Cornelis Outshoorn, following Samuel Sarphati’s ambition for a grand riverside hotel. Its mansard roofs and pale stone details give it the silhouette of a French château. Recent restoration brought back eight 1.60-metre roof lions, while a lower glass lounge overlooks the Amstel.",
     "sourceUrl": "https://www.amstelhotel.com/history/"
+  },
+  {
+    "modelId": "concertgebouw",
+    "name": "Royal Concertgebouw",
+    "sourceUrl": "https://www.concertgebouw.nl/en/our-history/history",
+    "description": "The Royal Concertgebouw was designed by Adolf Leonard van Gendt and opened on 11 April 1888. Its famous classical facade is crowned by a golden lyre. Pi de Bruijn’s 1985–1988 renovation added the glass promenade beside the historic halls."
   }
 ]
