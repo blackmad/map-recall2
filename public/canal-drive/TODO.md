@@ -135,17 +135,18 @@ Foam, Huis Marseille, Ons’ Lieve Heer op Solder, Brakke Grond, Frascati and
 Boom Chicago, Agnietenkapel, LAB111, OCCII, Ketelhuis, Wereldmuseum Amsterdam,
 Dutch Resistance Museum, Allard Pierson, Dominicuskerk, Vredeskerk, Badhuistheater,
 Cinecenter, Studio/K / Timorplein school, ARTIS Groote Museum and ARTIS Library
-(74 original assets). The live replacements retain measured footprint alignment and
+plus Willet-Holthuysen, Amsterdam Pipe Museum, Athenaeum/Nieuwscentrum,
+Scheltema, Haarlemmermeerstation and De Dokwerker (80 original assets). The live replacements retain measured footprint alignment and
 hide generic building geometry only after the GLB has loaded. Review meshes at
 `manual-landmarks.html`; inspect actual map placement before marking additions
-complete. Next batches: Willet-Holthuysen, Amsterdam Pipe Museum, notable shops
+complete. Next batches: Huis De Pinto, Amsterdam Tulip Museum, Begijnhofkapel
 and further church/theatre destinations. Exact building IDs preserve neighbors and courtyards
 around narrow house museums and irregular complexes. Squares/intersections require a public-space treatment rather than
 a generic building model.
 Large cinemas and theatres now have the public-building category treatment;
 Pathé City, Tuschinski, LAB111, OCCII and Ketelhuis also have original models.
 Studio/K, Cinecenter and Badhuistheater now have individual models. Remaining museum models include Madame
-Tussauds, Amsterdam Tulip Museum, Amsterdam Pipe Museum and Willet-Holthuysen.
+Tussauds, Amsterdam Tulip Museum and Huis De Pinto.
 Further kit refinements: Munttoren, Rijksmuseum (towers, central arch), Beurs van
 Berlage (clock tower), NEMO (green ship prow), Stopera, Hofkerk
 (dome). Dominicuskerk and Vredeskerk now have original whole-church models.

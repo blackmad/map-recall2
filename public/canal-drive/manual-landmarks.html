@@ -151,7 +151,12 @@ function build(spec) {
     const box = new T.Box3().setFromObject(model);
     box.getCenter(entry.target);
     const size = box.getSize(new T.Vector3());
-    entry.distance = Math.max(size.length() * 1.5, 1);
+    // Fit the bounding sphere to the narrower field of view. Tall statues and
+    // towers must stay fully visible in the initial landscape or phone card.
+    const halfVerticalFov = entry.camera.fov * Math.PI / 360;
+    const aspect = Math.max(1, view.clientWidth) / Math.max(1, view.clientHeight);
+    const halfFov = Math.min(halfVerticalFov, Math.atan(Math.tan(halfVerticalFov) * aspect));
+    entry.distance = Math.max(size.length() * .5 / Math.sin(halfFov) * 1.05, 1);
     entry.camera.near = Math.max(entry.distance / 1000, 0.05);
     entry.camera.far = entry.distance * 50;
     entry.camera.updateProjectionMatrix();

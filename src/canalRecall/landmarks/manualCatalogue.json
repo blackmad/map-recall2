@@ -2601,5 +2601,234 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free low-poly reconstruction of the exact mapped individual ARTIS building, cross-checked against current PDOK BAG and primary museum/architect imagery. Actual historic permanent roof silhouette retained; dates follow documented architecture history, and temporary works or unconfirmed solar-panel layout are not represented."
     }
+  },
+  {
+    "id": "de-dokwerker",
+    "name": "De Dokwerker",
+    "assetKind": "memorial",
+    "landmarkId": "extract_landmarks_1098130181",
+    "modelUrl": "./models/de-dokwerker.glb",
+    "suppressOsmIds": [
+      "n34051159"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.9050146,
+        52.3671957
+      ],
+      "headingDegrees": 135,
+      "lengthMetres": 1.5,
+      "widthMetres": 1.2
+    },
+    "surveyed": {
+      "anchor": [
+        4.9050146,
+        52.3671957
+      ],
+      "northOffsetDegrees": 45,
+      "source": "OSM surveyed memorial node; southwestern facing visually interpreted from primary photographs, not a surveyed bearing"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "De Dokwerker \u2014 original faceted interpretation",
+      "author": "Map Recall; commemorated sculpture by Mari Andriessen",
+      "sourceUrl": "https://www.4en5mei.nl/oorlogsmonumenten/zoeken/1434/amsterdam-de-dokwerker",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free geometric silhouette with documented1.60m pedestal and2.60m standing figure; body/pose divisions and facing approximate. Exact node position. No surrounding buildings or plaza replaced."
+    }
+  },
+  {
+    "id": "willet-holthuysen",
+    "name": "Willet-Holthuysen House",
+    "landmarkId": "extract_landmarks_154293883",
+    "modelUrl": "./models/willet-holthuysen.glb",
+    "suppressOsmIds": [
+      "w267116763",
+      "NL.IMBAG.Pand.0363100012171562"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.898971038437082,
+        52.36568706873301
+      ],
+      "headingDegrees": 163.11579731148294,
+      "lengthMetres": 25.94850886864895,
+      "widthMetres": 14.953045719179908
+    },
+    "surveyed": {
+      "anchor": [
+        4.898971038437082,
+        52.36568706873301
+      ],
+      "northOffsetDegrees": -16
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -89.11579731148294,
+    "attribution": {
+      "title": "Willet-Holthuysen House",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.amsterdammuseum.nl/en/tickets-and-visit/locations/huis-willet-holthuysen/3632",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen\u2019s open French garden and the Pipe Museum\u2019s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
+    }
+  },
+  {
+    "id": "amsterdam-pipe-museum",
+    "name": "Amsterdam Pipe Museum",
+    "landmarkId": "extract_landmarks_301593654",
+    "modelUrl": "./models/amsterdam-pipe-museum.glb",
+    "suppressOsmIds": [
+      "w267565677",
+      "NL.IMBAG.Pand.0363100012169037"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.885162575010229,
+        52.36406118702082
+      ],
+      "headingDegrees": 48.361372776468016,
+      "lengthMetres": 31.302749222414075,
+      "widthMetres": 9.508166304295873
+    },
+    "surveyed": {
+      "anchor": [
+        4.885162575010229,
+        52.36406118702082
+      ],
+      "northOffsetDegrees": 225.3
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 266.93862722353197,
+    "attribution": {
+      "title": "Amsterdam Pipe Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://pipemuseum.nl/en/article/de-geschiedenis-van-het-pijpenkabinet-van-particuliere-collectie-tot-nationaal-museum",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly museum reconstruction from primary museum photographs and exact OSM/current PDOK BAG building outlines. Willet-Holthuysen\u2019s open French garden and the Pipe Museum\u2019s central courtyard notch are retained; adjacent canal houses are outside the model and suppression scope."
+    }
+  },
+  {
+    "id": "athenaeum",
+    "name": "Athenaeum bookshop / Nieuwscentrum",
+    "landmarkId": "osm_shop_1772991830",
+    "modelUrl": "./models/athenaeum.glb",
+    "suppressOsmIds": [
+      "w266697389",
+      "NL.IMBAG.Pand.0363100012175036"
+    ],
+    "footprint": {
+      "centre": [
+        4.889010436459753,
+        52.36896764373011
+      ],
+      "headingDegrees": 89.63588020742122,
+      "lengthMetres": 20.29241050175719,
+      "widthMetres": 16.21092442777015
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 89.83191979257879,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.889058364860993,
+        52.36892986410698
+      ],
+      "northOffsetDegrees": -0.5322000000000031,
+      "source": "Current individual BAG polygon, actual street facade surveyed against OSM geometry. Primary facade photographs and AHN5/3DBAG heights above local terrain."
+    },
+    "attribution": {
+      "title": "Athenaeum bookshop / Nieuwscentrum",
+      "author": "Map Recall",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_Athenaeum_Boekhandel.jpg",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
+    },
+    "relatedLandmarkIds": [
+      "osm_shop_3868737201"
+    ]
+  },
+  {
+    "id": "scheltema",
+    "name": "Scheltema / Rokin 9\u201315",
+    "landmarkId": "osm_shop_266934444",
+    "modelUrl": "./models/scheltema.glb",
+    "suppressOsmIds": [
+      "w266934444",
+      "NL.IMBAG.Pand.0363100012167909"
+    ],
+    "footprint": {
+      "centre": [
+        4.893568102495726,
+        52.37212259797889
+      ],
+      "headingDegrees": 102.7116791473693,
+      "lengthMetres": 26.57905429659337,
+      "widthMetres": 24.20944735155051
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180.1196208526307,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.893404379268778,
+        52.372135134784074
+      ],
+      "northOffsetDegrees": 102.8313,
+      "source": "Current individual BAG polygon, actual street facade surveyed against OSM geometry. Primary facade photographs and AHN5/3DBAG heights above local terrain."
+    },
+    "attribution": {
+      "title": "Scheltema / Rokin 9\u201315",
+      "author": "Map Recall",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2022_Rokin_9-15,_Asd_(01).jpg",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
+    }
+  },
+  {
+    "id": "haarlemmermeerstation",
+    "name": "Haarlemmermeerstation",
+    "landmarkId": "extract_landmarks_1993361519",
+    "modelUrl": "./models/haarlemmermeerstation.glb",
+    "suppressOsmIds": [
+      "w57862882",
+      "NL.IMBAG.Pand.0363100012154509"
+    ],
+    "footprint": {
+      "centre": [
+        4.856654491697236,
+        52.34934579394123
+      ],
+      "headingDegrees": 166.09587226381385,
+      "lengthMetres": 36.29384848701365,
+      "widthMetres": 22.400340181713553
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -97.63617226381385,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.856727367238149,
+        52.3493589147138
+      ],
+      "northOffsetDegrees": 248.4597,
+      "source": "Current individual BAG polygon, actual street facade surveyed against OSM geometry. Primary facade photographs and AHN5/3DBAG heights above local terrain."
+    },
+    "attribution": {
+      "title": "Haarlemmermeerstation",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.museumtramlijn.org/station/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
+    }
   }
 ]

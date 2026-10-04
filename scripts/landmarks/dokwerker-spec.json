@@ -1,0 +1,38 @@
+{
+  "id": "de-dokwerker",
+  "name": "De Dokwerker",
+  "assetKind": "memorial",
+  "landmarkId": "extract_landmarks_1098130181",
+  "modelUrl": "./models/de-dokwerker.glb",
+  "suppressOsmIds": [
+    "n34051159"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9050146,
+      52.3671957
+    ],
+    "headingDegrees": 135,
+    "lengthMetres": 1.5,
+    "widthMetres": 1.2
+  },
+  "surveyed": {
+    "anchor": [
+      4.9050146,
+      52.3671957
+    ],
+    "northOffsetDegrees": 45,
+    "source": "OSM surveyed memorial node; southwestern facing visually interpreted from primary photographs, not a surveyed bearing"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "De Dokwerker — original faceted interpretation",
+    "author": "Map Recall; commemorated sculpture by Mari Andriessen",
+    "sourceUrl": "https://www.4en5mei.nl/oorlogsmonumenten/zoeken/1434/amsterdam-de-dokwerker",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free geometric silhouette with documented1.60m pedestal and2.60m standing figure; body/pose divisions and facing approximate. Exact node position. No surrounding buildings or plaza replaced."
+  }
+}
