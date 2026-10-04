@@ -1,7 +1,13 @@
-/** Loose inventory-driven priors, not surveyed crowns. Three shared faceted crown instances per tree. */
+/** Loose inventory-driven priors, not surveyed crowns. Three shared crown instances per tree, seven for verified fan palms. */
 export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  [/^sequoiadendron giganteum$/,'conical-evergreen','species-prior',nursery('sequoiadendron-giganteum')],
+  [/^sequoia sempervirens$/,'conical-evergreen','species-prior',nursery('sequoia-sempervirens')],
+  [/^abies grandis$/,'conical-evergreen','species-prior',nursery('abies-grandis')],
+  [/^abies nordmanniana$/,'conical-evergreen','species-prior',nursery('abies-nordmanniana')],
+  [/^picea orientalis$/,'conical-evergreen','species-prior',nursery('picea-orientalis')],
+  [/^trachycarpus fortunei$/,'fan-palm','species-prior','https://plants.ces.ncsu.edu/plants/trachycarpus-fortunei/'],
   [/^acer platanoides 'globosum'$/,'globose','cultivar-prior',nursery('acer-platanoides-globosum')],
   [/^robinia pseudoacacia 'umbraculifera'$/,'globose','cultivar-prior',nursery('robinia-pseudoacacia-umbraculifera')],
   [/^catalpa bignonioides 'nana'$/,'globose','cultivar-prior',nursery('catalpa-bignonioides-nana')],
@@ -100,7 +106,11 @@ export function treeTypology(tree){
   const r=baseRadius*variation;
   const lobe=(dx,y,dz,sx,sy,sz,tone)=>({offset:[dx,y,dz],scale:[sx,sy,sz],tone});
   let lobes;
-  if(archetype==='globose')lobes=[lobe(0,h*.85,0,r*1.60,h*.15,r*1.50,0),lobe(-r*.65,h*.82,r*.10,r*1.05,h*.12,r*1.05,1),lobe(r*.65,h*.82,-r*.10,r*1.05,h*.12,r*1.05,2)];
+  if(archetype==='fan-palm'){
+    const leafRadius=Math.min(r,1.2);
+    lobes=Array.from({length:7},(_,i)=>{const angle=i*Math.PI*2/7;return {...lobe(Math.cos(angle)*leafRadius*.65,h*.95,Math.sin(angle)*leafRadius*.65,leafRadius*.80,h*.05,leafRadius*.30,i%3),rotation:angle};});
+  }
+  else if(archetype==='globose')lobes=[lobe(0,h*.85,0,r*1.60,h*.15,r*1.50,0),lobe(-r*.65,h*.82,r*.10,r*1.05,h*.12,r*1.05,1),lobe(r*.65,h*.82,-r*.10,r*1.05,h*.12,r*1.05,2)];
   else if(archetype==='pyramidal')lobes=[lobe(0,h*.65,0,r*.84,h*.19,r*.78,2),lobe(0,h*.80,0,r*.62,h*.16,r*.59,0),lobe(0,h*.90,0,r*.34,h*.10,r*.34,1)];
   else if(archetype==='upright-oval')lobes=[lobe(0,h*.73,0,r*.80,h*.27,r*.72,0),lobe(-r*.28,h*.68,r*.14,r*.51,h*.22,r*.48,1),lobe(r*.25,h*.65,-r*.12,r*.5,h*.23,r*.48,2)];
   else if(archetype==='conical-evergreen'||archetype==='conical-deciduous')lobes=[lobe(0,h*.55,0,r*.70,h*.24,r*.70,2),lobe(0,h*.74,0,r*.49,h*.19,r*.49,0),lobe(0,h*.90,0,r*.25,h*.10,r*.25,1)];
@@ -118,7 +128,7 @@ export function treeTypology(tree){
   const foliage=archetype==='conical-evergreen'||/^(?:pinus|taxus)\b/.test(species)?'#496955':species.startsWith('salix')?'#88a06c':species.startsWith('betula')?'#91ad6e':species.startsWith('fagus')?'#587b51':species.startsWith('quercus')?'#648357':species.startsWith('robinia')?'#94a965':species.startsWith('tilia')?'#789655':'#78945a';
   const bark=species.startsWith('betula')?'#d8d9c5':species.startsWith('platanus')?'#aaa68a':species==='prunus avium'?'#8a5544':species==='corylus colurna'||species.startsWith('fagus')?'#8a8b80':species.startsWith('metasequoia')?'#935d47':'#665741';
   return {version:TREE_TYPOLOGY_VERSION,id:tree.id,position:[...tree.position],height,archetype,lobes,
-    trunkHeight:h*(managed?.78:.60),trunkWidth:Math.min(.52,Math.max(.14,h*.023)),
+    trunkHeight:h*(managed?.78:archetype==='fan-palm'?.90:.60),trunkWidth:Math.min(.52,Math.max(.14,h*.023)),
     foliage,bark,crownGeometry:archetype.startsWith('conical-')?'cone':'faceted',rotation:numberSeed(tree.id)*Math.PI*2,
     provenance:{position:tree.source==='osm'?'explicit OSM tree node':'municipal inventory',height:heightSource,heightClass:tree.heightClass??null,
       crownBasis:managed?'explicit-inventory-management':rule?.[2]||'authored-fallback',reference:managed?null:rule?.[3]||null,
