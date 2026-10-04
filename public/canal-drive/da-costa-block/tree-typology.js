@@ -2,6 +2,14 @@
 export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  [/^ulmus hollandica 'commelin'$/,'upright-oval','cultivar-prior','https://www.ebben.nl/en/treeebb/ulhcomme-ulmus-x-hollandica-commelin/'],
+  [/^quercus cerris$/,'rounded','species-prior',nursery('quercus-cerris')],
+  [/^ulmus 'plantijn'$/,'vase','cultivar-prior','https://www.vdberk.co.uk/trees/ulmus-plantijn/'],
+  [/^styphnolobium japonicum$/,'domed','species-prior','https://plants.ces.ncsu.edu/plants/styphnolobium-japonicum/'],
+  [/^taxus baccata$/,'irregular-spreading','species-prior',nursery('taxus-baccata')],
+  [/^pinus nigra$/,'domed','species-prior','https://plants.ces.ncsu.edu/plants/pinus-nigra/'],
+  [/^prunus avium 'plena'$/,'rounded','cultivar-prior',nursery('prunus-avium-plena')],
+  [/^acer platanoides$/,'domed','species-prior',nursery('acer-platanoides')],
   [/^tilia europaea 'zwarte linde'$/,'domed','cultivar-prior',nursery('tilia-europaea-zwarte-linde')],
   [/^ulmus 'rebona'$/,'upright-oval','cultivar-prior','https://resista-ulmen.com/en/varieties/rebona/'],
   [/^ulmus minor 'sarniensis'$/,'pyramidal','cultivar-prior',nursery('ulmus-minor-sarniensis')],
