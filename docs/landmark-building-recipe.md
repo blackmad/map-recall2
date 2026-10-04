@@ -25,6 +25,37 @@ Use actual dimensions and survey data where available. OSM/BAG/AHN/3DBAG each de
 
 Reuse stored research first. Browse only for missing evidence or changed conditions. Reference images guide original reconstruction; do not import their pixels or third-party geometry into an asset attributed as original.
 
+### Architectural records before estimating details
+
+For every new historic landmark, make one bounded address-based Beeldbank search early, before estimating facade or roof details. Reuse cached results, including recorded unsuccessful searches. Use official records by address/BAG identity to resolve roof profiles, pane divisions, dimensions or historic ornament. Cache useful records once and reuse them across workers. Do not turn each standard-building pass into an exhaustive archival survey.
+
+- **Before1905:** search `bouwtekening` plus address in the City Archives/Beeldbank. Facade elevations, sections and restoration drawings can clarify proportions and details. [City guidance](https://www.amsterdam.nl/wonen-bouwen-verbouwen/bouwen-verbouwen/bouwtekeningen-bouwvergunningen-opvragen/).
+- **1905–2010:** find the address in Data Amsterdam, then its `Bouw- en omgevingsdossiers`/`Bouwdossiers` records. Public dossiers may require email-based temporary access before free download. Record the dossier/date and access state; do not represent a search hit as an inspected drawing. [Current archive instructions](https://beta.archief.amsterdam/handleiding/bouwdossiers).
+- **BAG:** record exact Pand/VBO identity, current status, registered original construction year, Pand geometry and VBO usage functions. BAG `oppervlakte` means a VBO’s usable floor area, not the building footprint. Derive footprint area separately from current Pand geometry. Multiple VBO functions can belong to one physical Pand. [Official area definition](https://catalogus.kadaster.nl/bag/nl/page/?uri=Oppervlakte).
+- **National/municipal monument registers:** keep the monument ID and architectural-description evidence for gable type, window rhythm, materials, alterations and named ornament. These are often prose descriptions, not guaranteed normalized facade fields. A proposed automatic `trapgevel`/`klokgevel`/`halsgevel` tag must retain its exact supporting passage, applicable facade/building part, source date and confidence; ambiguous text stays unresolved rather than becoming generated geometry.
+
+A dated permit drawing records a proposal or historical state, not proof of the present facade. Compare it with current photos, documented alterations and current surveyed geometry before using it as dimensions/shape authority. Preserve evidence for measured, inferred and approximate features separately. Record archive search results and useful image/dossier identifiers in each footprint source file so workers do not repeat discovery. Existing RCE descriptions remain valid research evidence even where no drawings have been obtained.
+
+### Turn monument descriptions into modeling evidence
+
+For each registered monument, read and cache its register description during the initial reference pass. Extract explicitly stated architectural features into the reference pack: facade termination (straight cornice versus gable), roof form, frieze/ornament, material, openings, building part and historical period. Keep the source passage and monument URL with each assertion. Leave unstated dimensions, spacing, colors and ornament counts unknown until a drawing/photo/survey supports them.
+
+Example supplied by the user: [monument5087](https://monumentenregister.cultureelerfgoed.nl/monumenten/5087), described as a facade beneath a straight cornice with triglyphs and consoles, topped by a small hipped roof, eighteenth century. This suggests a straight cornice, triglyph frieze, consoles and a small hipped roof; it does not justify an invented stepped gable, exact roof pitch or console count. The English description is user-provided; direct page retrieval failed during this check, so do not label it an independently verified Dutch transcription.
+
+Use these assertions to select reusable geometry assemblies and as review criteria. Match the registered address/building part to the correct BAG identity, then compare current photos for alterations. Preserve historic period separately from BAG construction year. For batch extraction, validate a small sample before allowing parsed prose to drive geometry across the backlog.
+
+### Additional reference sources
+
+- [RCE Beeldbank](https://www.cultureelerfgoed.nl/onderwerpen/b/beeldbank): heritage photos and drawings; search building name and monument ID as well as address.
+- [Nieuwe Instituut collection](https://nieuweinstituut.nl/projects/collectie/zoeken-in-de-collectie): architects’ archives and project documents; search architect/project name when municipal searches miss a landmark. Catalogue presence does not guarantee a digitized downloadable drawing.
+- [3DBAG roof layers](https://docs.3dbag.nl/en/schema/layers/): AHN-derived LoD2.2 roof planes and BAG identity for measured massing; not window/ornament truth. Use existing cached survey evidence before fetching again.
+- [AHN point clouds](https://www.ahn.nl/dataroom): check irregular roof elevations and terrain against actual survey coverage/date; sparse aerial facade observations cannot establish window patterns.
+- [PDOK aerial imagery](https://www.beeldmateriaal.nl/bekijk-luchtfotos): roof layout, courtyards, annexes and context. Ortho imagery is a plan reference, not a facade elevation.
+- [BGT](https://www.pdok.nl/introductie/-/article/basisregistratie-grootschalige-topografie-bgt-): detailed ground-level road, water and terrain boundaries for placement/context checks, including suspected monument/water overlaps.
+- [Data Amsterdam](https://data.amsterdam.nl/): municipal map includes panoramas, aerial photos and measuring tools to compare drawings with current visible appearance.
+
+Treat archival accessibility and open-data licensing separately. Record each source’s date, access state and reuse terms; do not assume every publicly viewable scan is openly licensed. Cache a compact reference pack per building (identity, useful elevation, roof evidence, current facade, remaining uncertainty) to reduce repeated research without reducing quality.
+
 ## 4. Author the model
 
 Use Three.js geometry and the shared `BuildingTools` palette/primitives in `scripts/landmarks/cultural-builders.ts` and `build-manual-landmarks.ts`. Use `house-geometry.ts` for open-top footprint shells and upward-facing roof planes. Geometry is in metres, glTF Y-up; surveyed local axes and the placement specification determine map orientation. Existing facade-oriented primitives generally face +Z.

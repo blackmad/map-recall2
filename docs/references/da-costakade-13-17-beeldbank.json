@@ -1,0 +1,16 @@
+{
+  "address": "Da Costakade 13–17",
+  "recordId": "1ba4992c-608f-1da9-1b7c-9dcedaa67947",
+  "mediaId": "935996b3-afcc-5dcc-828d-04a005de80b7",
+  "url": "https://archief.amsterdam/beeldbank/detail/1ba4992c-608f-1da9-1b7c-9dcedaa67947/media/935996b3-afcc-5dcc-828d-04a005de80b7",
+  "dateShown": "1903-04-04",
+  "titleShown": "Da Costakade 13-17",
+  "sourceState": "User supplied screenshot inspected; web tool could not retrieve record; full-resolution drawing not downloaded.",
+  "screenshotPath": "/var/folders/tl/40rt5yw54v150s3k8shhw5y00000gn/T/codex-clipboard-XZvzMP.png",
+  "observations": [
+    "Three dwellings share a coordinated roof/facade composition.",
+    "Alternating projecting gables and dormers, repeated window bays, balconies and arched entrances are clearly depicted.",
+    "Visible scale annotation 1:50; avoid deriving absolute dimensions from resized screenshot alone."
+  ],
+  "nextStep": "Match addresses to BAG parents and compare drawing with current facade photos before changing models."
+}

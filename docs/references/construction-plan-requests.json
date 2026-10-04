@@ -1,0 +1,19 @@
+{
+  "requests": [
+    {
+      "building": "ING House / Infinity",
+      "address": "Amstelveenseweg 500, 1081 KL",
+      "period": "1905\u20132010 dossiers",
+      "source": "https://data.amsterdam.nl/",
+      "status": "user reports no public dossier access",
+      "requestedSheets": [
+        "side elevation",
+        "section through inclined supports"
+      ],
+      "purpose": "Resolve support taper/proportions and underside profile currently approximated from primary photos.",
+      "blocking": false,
+      "alternative": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Amstelveenseweg%20500&rows=1&page=1&reverse=0",
+      "nextStep": "Use archive photographs for support/underside comparison; no further access request pending."
+    }
+  ]
+}
