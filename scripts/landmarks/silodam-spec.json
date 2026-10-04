@@ -5,6 +5,7 @@
   "modelUrl": "./models/silodam.glb",
   "suppressOsmIds": [
     "w57864184",
+    "NL.IMBAG.Pand.0363100012149391",
     "w1038324509",
     "w1038324510",
     "w1038324511"
@@ -26,6 +27,14 @@
     "sourceUrl": "https://www.mvrdv.com/projects/163/silodam",
     "licence": "Original project asset",
     "licenceUrl": "./LICENSE",
-    "modifications": "Original texture-free low-poly reconstruction of the colourful ten-storey harbour block, using architectural photographs for silhouette and OpenStreetMap for measured footprint. No imported geometry or photo textures."
+    "modifications": "Original texture-free low-poly reconstruction rebuilt from MVRDV primary exterior photographs and the supplied SketchUp thumbnail as visual references only. No imported SketchUp/Warehouse geometry or photo textures. Native mapped parent and three building parts retain the ten-storey 20m-deep housing, 29m flat roof, open piles, and separate mapped 3\u20137m projecting office/public balcony. Four distinct facade neighbourhoods include continuous red gallery strips, yellow-framed double-height glass, corrugated silver cladding, large white-framed lower panes, and orange-base cladding represented by the shared warm-gold project palette. Exact current BAG/OSM identities suppress only this building; neighboring historic silos remain."
+  },
+  "spatialSuppression": false,
+  "surveyed": {
+    "anchor": [
+      4.8905845781125485,
+      52.39274079370824
+    ],
+    "northOffsetDegrees": 74.76785231590262
   }
 }
