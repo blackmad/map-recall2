@@ -3622,5 +3622,201 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free reconstruction of Joling\u2019s1914\u20131917 Peek & Cloppenburg department-store building occupied in part by Madame Tussauds. RCE518421 and original photographer frontage guide the stone11-bay Dam facade,9-bay Rokin facade,colossal pilasters,open balconies,rose-window central gable,dormers and decorative roof vents. CurrentPDOK confirms single actualBAG2175378 with Dam20,Rokin6,Kromelleboogsteeg2 VBOs; mapped1900 date is not the architecturaldate. ExactL-shaped parent outline and rear recesses are retained. Original simplified roof regions follow AHN5 approximate21.8m eaves,31.3m mainhips,33.9m vents, and lower innerrear rooms13.85/17.3m. No imported source faces or textures; exact-only suppression retains all neighboring buildings."
     }
+  },
+  {
+    "id": "amsterdam-dungeon",
+    "name": "Amsterdam Dungeon / Nieuwezijds Kapel",
+    "landmarkId": "extract_landmarks_1198863663",
+    "modelUrl": "./models/amsterdam-dungeon.glb",
+    "suppressOsmIds": [
+      "w266903954",
+      "w266903867",
+      "NL.IMBAG.Pand.0363100012168346",
+      "NL.IMBAG.Pand.0363100012175269"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.8919633178149855,
+        52.37020123860339
+      ],
+      "headingDegrees": 15.012596956822051,
+      "lengthMetres": 40.36408570166537,
+      "widthMetres": 32.38051115446507
+    },
+    "surveyed": {
+      "anchor": [
+        4.8919633178149855,
+        52.37020123860339
+      ],
+      "northOffsetDegrees": -74.5
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.4874030431779488,
+    "attribution": {
+      "title": "Amsterdam Dungeon / Nieuwezijds Kapel",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518455",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free model scoped to the two actual buildings used by Amsterdam Dungeon: currentPDOK Rokin78 bijeenkomstfunctie1277m\u00b2 VBO0363010003702386 is linked to both BAG2168346 (chapel/side rooms) and2175269 (entrance wing). Other RCE518455 compound buildings including Rokin80/82 BAG2175268 andKalverstraat81/87 BAG2168348 remain visible and unsuppressed. PrimaryArcam exterior confirms two gabled venue wings and portal; the neighboring streetcorner dome is outside model scope. Original octagonal chapel,tent roof/open lantern,sculpted brick gables,stone bands and measured lower wings refer to Posthumus Meyjes\u20191908\u20131912 architecture. Heights approximate13.3\u201317.8m front,7\u201316m side rooms,18m chapel eaves,24.7m truncated tent roof and29m lantern: AHN5 raw height26.9m and reconstructedplanepeaks29.1m differ; OSM32.3m is not used as a flat mass. Exact mapped recesses retained; no imported mesh faces or textures."
+    }
+  },
+  {
+    "id": "sint-jorishof",
+    "name": "Sint Jorishof / historic courtyard complex",
+    "landmarkId": "osm_building_267001389",
+    "modelUrl": "./models/sint-jorishof.glb",
+    "suppressOsmIds": [
+      "w267001389",
+      "NL.IMBAG.Pand.0363100012165371"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.897190642415213,
+        52.37077101390563
+      ],
+      "headingDegrees": 107.86167823744009,
+      "lengthMetres": 64.29186811748798,
+      "widthMetres": 49.53789148287094
+    },
+    "surveyed": {
+      "anchor": [
+        4.897190642415213,
+        52.37077101390563
+      ],
+      "northOffsetDegrees": -70.5,
+      "source": "Native metres/current exact PDOK perimeter; roof zones original visual simplifications measured against current AHN5 survey."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -88.36167823744009,
+    "attribution": {
+      "title": "Sint Jorishof / historic courtyard complex",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5550",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original simplified reconstruction of current shared courtyard complex. Exact current PDOK perimeter remains concave and open, retaining Waalse Kerk and Oost-Indisch Huis. AHN5/3DBAG ground NAP0.611 and reference roofs range roughly8.1\u201320.1m above ground; original separate authored roof zones avoid treating the 20.1m maximum as every wall height. Primary heritage photos guide three-storey courtyard facades, white cornices and entrance portal. Portal position is the first intersection of the mapped alley axis with the exact parent, local[-15.8236,-13.9174]; direct RD survey polygon containment confirms its low9.059\u201311.236m roof. The small cupola position local[-15.9283,-11.0778] is explicitly inferred from primary photographs plus the tiny elevated survey roof227(0.87m2,15.322\u201316.838m). Its simplified open stage/finial are visual approximations, not exact survey measurements. Survey measurements are references, not imported roof triangles. Current BAG year1005 is not treated as historical architectural evidence; RCE records1579/1747 and earlier than1700 wings. The central courtyard axis includes the photographed1747 stone tablet and restrained original reliefs."
+    }
+  },
+  {
+    "id": "walloon-church",
+    "name": "Walloon Church",
+    "landmarkId": "extract_landmarks_56521997",
+    "modelUrl": "./models/walloon-church.glb",
+    "suppressOsmIds": [
+      "w158206091",
+      "NL.IMBAG.Pand.0363100012171206",
+      "w749356521",
+      "w749356522",
+      "w749356523",
+      "w749386975",
+      "w749386976"
+    ],
+    "footprint": {
+      "centre": [
+        4.897371867711793,
+        52.37106990634758
+      ],
+      "headingDegrees": 94.49689812817684,
+      "lengthMetres": 45.69206999573948,
+      "widthMetres": 40.69967153575252
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 198.73310187182324,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8973534999999995,
+        52.3710305
+      ],
+      "northOffsetDegrees": 113.22999999999999,
+      "source": "Current BAG/OSM exact parent footprint at native surveyed scale 1; original simplified volumes reconciled with 3DBAG LoD2.2 roof sections, heritage description and primary exterior photographs."
+    },
+    "attribution": {
+      "title": "Walloon Church",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/50",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
+    }
+  },
+  {
+    "id": "schreierstoren",
+    "name": "Schreierstoren / Weepers Tower",
+    "landmarkId": "extract_landmarks_240585875",
+    "modelUrl": "./models/schreierstoren.glb",
+    "suppressOsmIds": [
+      "w57859248",
+      "NL.IMBAG.Pand.0363100012182530"
+    ],
+    "footprint": {
+      "centre": [
+        4.902247139590537,
+        52.376359237178846
+      ],
+      "headingDegrees": 21.28079662509981,
+      "lengthMetres": 22.559922962138025,
+      "widthMetres": 10.52902743701412
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 269.91920337490023,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.902237749999999,
+        52.376358249999996
+      ],
+      "northOffsetDegrees": 111.19999999999999,
+      "source": "Current BAG/OSM exact parent footprint at native surveyed scale 1; original simplified volumes reconciled with 3DBAG LoD2.2 roof sections, heritage description and primary exterior photographs."
+    },
+    "attribution": {
+      "title": "Schreierstoren / Weepers Tower",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/4148",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
+    }
+  },
+  {
+    "id": "huize-lydia",
+    "name": "Huize Lydia / Huis van de Wijk Lydia",
+    "landmarkId": "extract_landmarks_366321397",
+    "modelUrl": "./models/huize-lydia.glb",
+    "suppressOsmIds": [
+      "w277121147",
+      "NL.IMBAG.Pand.0363100012119530"
+    ],
+    "footprint": {
+      "centre": [
+        4.8815378377866,
+        52.352868413309864
+      ],
+      "headingDegrees": 145.5052311128626,
+      "lengthMetres": 49.595429224093074,
+      "widthMetres": 38.95435970755049
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 273.29076888713735,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8815018,
+        52.35285595
+      ],
+      "northOffsetDegrees": 238.796,
+      "source": "Current BAG/OSM exact parent footprint at native surveyed scale 1; original simplified volumes reconciled with 3DBAG LoD2.2 roof sections, heritage description and primary exterior photographs."
+    },
+    "attribution": {
+      "title": "Huize Lydia / Huis van de Wijk Lydia",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/505630",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly facade, roof and ornament geometry; no imported mesh or image. Exact parent suppression retains neighboring buildings and public open space."
+    }
   }
 ]

@@ -1,0 +1,465 @@
+{
+  "sites": [
+    {
+      "id": "sint-jorishof",
+      "name": "Sint Jorishof / historic courtyard complex",
+      "anchor": [
+        4.897190642415213,
+        52.37077101390563
+      ],
+      "authorHeadingDegrees": 19.5,
+      "footprint": {
+        "centre": [
+          4.897190642415213,
+          52.37077101390563
+        ],
+        "headingDegrees": 107.86167823744009,
+        "lengthMetres": 64.29186811748798,
+        "widthMetres": 49.53789148287094
+      },
+      "building": {
+        "type": "Feature",
+        "id": "w267001389",
+        "properties": {
+          "addr:city": "Amsterdam",
+          "addr:housenumber": "3",
+          "addr:postcode": "1012CG",
+          "addr:street": "Korte Spinhuissteeg",
+          "building": "yes",
+          "height": "20.1",
+          "name": "Sint Jorishof",
+          "ref:bag": "0363100012165371",
+          "source": "BAG",
+          "source:date": "2014-02-11",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1005",
+          "wikidata": "Q17306717",
+          "wikimedia_commons": "Category:Korte Spinhuissteeg 3, Amsterdam"
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  4.897186764996247,
+                  52.37096353860527
+                ],
+                [
+                  4.8970480489612465,
+                  52.37099919389905
+                ],
+                [
+                  4.897022666865739,
+                  52.370962742524476
+                ],
+                [
+                  4.897020585357906,
+                  52.37095975897532
+                ],
+                [
+                  4.896892504665066,
+                  52.37077582545262
+                ],
+                [
+                  4.896855003816214,
+                  52.37078365124068
+                ],
+                [
+                  4.8968763403527396,
+                  52.3708141180605
+                ],
+                [
+                  4.896790271117153,
+                  52.37083736332796
+                ],
+                [
+                  4.8967364116504255,
+                  52.37085189805496
+                ],
+                [
+                  4.896720000033994,
+                  52.37081958216775
+                ],
+                [
+                  4.896707554828756,
+                  52.37079507505391
+                ],
+                [
+                  4.896685668337254,
+                  52.37075194224123
+                ],
+                [
+                  4.896814051296326,
+                  52.37072515139633
+                ],
+                [
+                  4.8968566296994265,
+                  52.37071626812409
+                ],
+                [
+                  4.896930498087186,
+                  52.37070084552298
+                ],
+                [
+                  4.896906730907691,
+                  52.37064983172926
+                ],
+                [
+                  4.89688392448283,
+                  52.37060223723865
+                ],
+                [
+                  4.897242333365747,
+                  52.37052707371913
+                ],
+                [
+                  4.8972691741100896,
+                  52.37057503535467
+                ],
+                [
+                  4.897458697187602,
+                  52.37053513206143
+                ],
+                [
+                  4.897483714206663,
+                  52.37057141106885
+                ],
+                [
+                  4.897552709516223,
+                  52.37067150493544
+                ],
+                [
+                  4.897592401298242,
+                  52.37066072204236
+                ],
+                [
+                  4.8976555058543525,
+                  52.370751767826526
+                ],
+                [
+                  4.8976644662747,
+                  52.370764774138785
+                ],
+                [
+                  4.897677704794029,
+                  52.37076135062934
+                ],
+                [
+                  4.89769811118944,
+                  52.370790995572456
+                ],
+                [
+                  4.897685595513706,
+                  52.37079544667154
+                ],
+                [
+                  4.8977491425407,
+                  52.370887680609115
+                ],
+                [
+                  4.897708896896996,
+                  52.3708980747935
+                ],
+                [
+                  4.897631748356481,
+                  52.370917996147355
+                ],
+                [
+                  4.897620114505017,
+                  52.370914388910414
+                ],
+                [
+                  4.897593299154773,
+                  52.370921279454606
+                ],
+                [
+                  4.89739149047369,
+                  52.37062815547503
+                ],
+                [
+                  4.897051946283943,
+                  52.370699640679135
+                ],
+                [
+                  4.897044135107734,
+                  52.37071420438405
+                ],
+                [
+                  4.897022955852725,
+                  52.37071866448631
+                ],
+                [
+                  4.8970519906598575,
+                  52.37076206949626
+                ],
+                [
+                  4.897074828444778,
+                  52.370756348987165
+                ],
+                [
+                  4.897109265755781,
+                  52.37080783832172
+                ],
+                [
+                  4.897112078180321,
+                  52.3708071309461
+                ],
+                [
+                  4.897129239177042,
+                  52.3708327809993
+                ],
+                [
+                  4.8971264414343025,
+                  52.370833488436084
+                ],
+                [
+                  4.897160907734817,
+                  52.37088502281298
+                ],
+                [
+                  4.897138069894621,
+                  52.370890743338485
+                ],
+                [
+                  4.897186764996247,
+                  52.37096353860527
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "currentBag": {
+        "aantal_verblijfsobjecten": 0,
+        "bouwjaar": 1005,
+        "documentdatum": "2023-09-28",
+        "documentnummer": "GV00007182_AC00AC",
+        "gebruiksdoel": null,
+        "geconstateerd": "N",
+        "identificatie": "0363100012165371",
+        "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012165371",
+        "status": "Pand in gebruik",
+        "verblijfsobject.href": null
+      },
+      "roofMeasurementReferences": [
+        {
+          "surface": 247,
+          "area": 201,
+          "center": [
+            4.8975372016162755,
+            52.370682418539054
+          ],
+          "relativeLow": 14.68,
+          "relativeHigh": 20.01,
+          "azimuth": 113.29899597167969,
+          "slope": 46.779266357421875
+        },
+        {
+          "surface": 211,
+          "area": 169,
+          "center": [
+            4.89748999168133,
+            52.370715947743705
+          ],
+          "relativeLow": 15.43,
+          "relativeHigh": 20.01,
+          "azimuth": 293.3676452636719,
+          "slope": 46.63517761230469
+        },
+        {
+          "surface": 221,
+          "area": 121,
+          "center": [
+            4.896980413347762,
+            52.37085121224901
+          ],
+          "relativeLow": 10.94,
+          "relativeHigh": 17.63,
+          "azimuth": 292.4599304199219,
+          "slope": 56.00994110107422
+        },
+        {
+          "surface": 222,
+          "area": 75,
+          "center": [
+            4.897011086709389,
+            52.37058940984387
+          ],
+          "relativeLow": 9.32,
+          "relativeHigh": 12.59,
+          "azimuth": 199.28192138671875,
+          "slope": 46.54644012451172
+        },
+        {
+          "surface": 239,
+          "area": 70,
+          "center": [
+            4.897005536726774,
+            52.37062666099841
+          ],
+          "relativeLow": 8.67,
+          "relativeHigh": 12.53,
+          "azimuth": 18.767396926879883,
+          "slope": 46.44654846191406
+        },
+        {
+          "surface": 228,
+          "area": 59,
+          "center": [
+            4.896793334464873,
+            52.37079430423516
+          ],
+          "relativeLow": 17.83,
+          "relativeHigh": 17.96,
+          "azimuth": 289.0267333984375,
+          "slope": 1.0962868928909302
+        },
+        {
+          "surface": 246,
+          "area": 59,
+          "center": [
+            4.89766929583318,
+            52.37077798089513
+          ],
+          "relativeLow": 13.59,
+          "relativeHigh": 14.81,
+          "azimuth": 112.83677673339844,
+          "slope": 20.978303909301758
+        },
+        {
+          "surface": 218,
+          "area": 57,
+          "center": [
+            4.896999091943043,
+            52.370813191241716
+          ],
+          "relativeLow": 14.41,
+          "relativeHigh": 17.63,
+          "azimuth": 112.68698120117188,
+          "slope": 56.276405334472656
+        },
+        {
+          "surface": 249,
+          "area": 57,
+          "center": [
+            4.8973218069420055,
+            52.37062262595736
+          ],
+          "relativeLow": 15.52,
+          "relativeHigh": 20.06,
+          "azimuth": 19.710004806518555,
+          "slope": 47.33671951293945
+        },
+        {
+          "surface": 251,
+          "area": 54,
+          "center": [
+            4.8971170937185295,
+            52.37063104057237
+          ],
+          "relativeLow": 7.56,
+          "relativeHigh": 9.76,
+          "azimuth": 199.0877227783203,
+          "slope": 27.774105072021484
+        },
+        {
+          "surface": 245,
+          "area": 53,
+          "center": [
+            4.897064272031805,
+            52.370840327515104
+          ],
+          "relativeLow": 14.41,
+          "relativeHigh": 17.77,
+          "azimuth": 292.5818176269531,
+          "slope": 58.41436767578125
+        },
+        {
+          "surface": 250,
+          "area": 50,
+          "center": [
+            4.8970640892144,
+            52.370678863746186
+          ],
+          "relativeLow": 7.6,
+          "relativeHigh": 9.76,
+          "azimuth": 20.230377197265625,
+          "slope": 28.371517181396484
+        },
+        {
+          "surface": 252,
+          "area": 47,
+          "center": [
+            4.897287289256167,
+            52.370587964852824
+          ],
+          "relativeLow": 15.5,
+          "relativeHigh": 20.06,
+          "azimuth": 199.335693359375,
+          "slope": 46.51911163330078
+        },
+        {
+          "surface": 234,
+          "area": 26,
+          "center": [
+            4.8969382128955745,
+            52.37070568022076
+          ],
+          "relativeLow": 12.84,
+          "relativeHigh": 18.01,
+          "azimuth": 199.0725555419922,
+          "slope": 56.50379943847656
+        },
+        {
+          "surface": 225,
+          "area": 25,
+          "center": [
+            4.897110663081914,
+            52.37082340994196
+          ],
+          "relativeLow": 14.24,
+          "relativeHigh": 17.5,
+          "azimuth": 112.37667083740234,
+          "slope": 56.18305969238281
+        },
+        {
+          "surface": 241,
+          "area": 22,
+          "center": [
+            4.897074746144919,
+            52.37083942911091
+          ],
+          "relativeLow": 17.38,
+          "relativeHigh": 17.5,
+          "azimuth": 302.58880615234375,
+          "slope": 1.8841387033462524
+        },
+        {
+          "surface": 243,
+          "area": 21,
+          "center": [
+            4.897014198671493,
+            52.37072042554929
+          ],
+          "relativeLow": 12.97,
+          "relativeHigh": 17.72,
+          "azimuth": 112.80554962158203,
+          "slope": 55.603763580322266
+        }
+      ],
+      "primaryReferences": [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/5550",
+        "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=5974",
+        "https://www.amsterdam-monumentenstad.nl/database/pics/3/20211015-43.jpg",
+        "https://www.amsterdam-monumentenstad.nl/database/pics/3/20211018-22.jpg",
+        "https://www.amsterdam-monumentenstad.nl/database/pics/3/20211018-33.jpg",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012165371&f=json",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165371",
+        "https://www.amsterdam-monumentenstad.nl/database/pics/3/20211015-35.jpg"
+      ],
+      "sourceNote": "Original simplified reconstruction of current shared courtyard complex. Exact current PDOK perimeter remains concave and open, retaining Waalse Kerk and Oost-Indisch Huis. AHN5/3DBAG ground NAP0.611 and reference roofs range roughly8.1\u201320.1m above ground; original separate authored roof zones avoid treating the 20.1m maximum as every wall height. Primary heritage photos guide three-storey courtyard facades, white cornices and entrance portal. Portal position is the first intersection of the mapped alley axis with the exact parent, local[-15.8236,-13.9174]; direct RD survey polygon containment confirms its low9.059\u201311.236m roof. The small cupola position local[-15.9283,-11.0778] is explicitly inferred from primary photographs plus the tiny elevated survey roof227(0.87m2,15.322\u201316.838m). Its simplified open stage/finial are visual approximations, not exact survey measurements. Survey measurements are references, not imported roof triangles. Current BAG year1005 is not treated as historical architectural evidence; RCE records1579/1747 and earlier than1700 wings. The central courtyard axis includes the photographed1747 stone tablet and restrained original reliefs."
+    }
+  ]
+}
