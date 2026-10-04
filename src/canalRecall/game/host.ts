@@ -120,6 +120,7 @@ export interface LandmarkHost extends GameCoreHost {
   /** Construction year, type and listing for clicked buildings, loaded
    *  around the rider (`buildingFacts.ts`). */
   _buildingFacts?: import('../buildingFacts').BuildingFactStore;
+  _clickPoiInfo?: import('../clickPoiInfo').ClickPoiIndex | null;
   /** World pixels to [lat, lng]; provided by the recall runtime. */
   _toLatLon?(x: number, y: number): [number, number] | null;
   /** What opened the current card, which decides whether a landmark about to

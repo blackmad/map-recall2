@@ -11,7 +11,11 @@ Every modeled POI building must be integrated into all three game surfaces:
 
 Audit these together before declaring a POI complete. Reuse genuine extract identities and preserve existing researched facts. An asset belonging to an already selectable complex can share that POI identity; do not manufacture duplicate destinations for aliases or multiple mesh parts. Muziekgebouw and Bimhuis remain distinct genuine destinations despite sharing a mesh. Year-built-only generic building metadata is not meaningful trivia: clicking it must not select or highlight the building. If the clicked building contains a genuine POI, show that POI's useful card instead.
 
+For ordinary clicked buildings, use mapped place information only from points inside the actual installed footprint, excluding courtyard holes. Prefer researched landmark cards, validate website links, and keep basic mapped-place info separate from the curated automatic route pool. Never substitute a nearby POI for the clicked building.
+
 Author landmarks in the established texture-free, flat-color house style using native surveyed footprints, scale 1, and current OSM/BAG identities. Rebuild legacy imports in this style, beginning with Westerkerk. Reference photos guide original geometry; do not copy downloaded meshes or photo pixels into original assets. Verify actual scope, heights, open courts, underpasses, and neighboring buildings. Suppress exact replaced identities after the GLB loads, preserve fallback on load failure, and avoid padded rectangular suppression.
+
+The manual asset generator also refreshes `modelAssetVersions.json`. Rebuild the signature browser/runtime bundles after model changes so gallery and game request the current content fingerprint rather than a cached older mesh.
 
 Use the POI Destinations list and explicit requested additions as the main work queue. Regenerate `public/canal-drive/dominant-building-backlog.json` with `scripts/landmarks/build-dominant-building-backlog.ts` for large ordinary buildings. Thresholds live in the work queue (currently net footprint 2,500 m² or height 35 m); constrain candidates to the Amsterdam municipality, exclude modeled identities, group duplicate outlines/raised parts, and preserve separate courtyard buildings. Do not treat unnamed candidates as researched POIs automatically.
 

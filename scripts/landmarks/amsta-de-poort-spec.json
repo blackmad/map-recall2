@@ -1,0 +1,37 @@
+{
+  "id": "amsta-de-poort",
+  "name": "Amsta De Poort",
+  "landmarkId": "amsta-de-poort",
+  "modelUrl": "./models/amsta-de-poort.glb",
+  "suppressOsmIds": [
+    "w220525683",
+    "NL.IMBAG.Pand.0363100012237064"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8735112432713015,
+      52.37350397269679
+    ],
+    "headingDegrees": 71.81808321129071,
+    "lengthMetres": 72.03219885973493,
+    "widthMetres": 51.065153370485824
+  },
+  "surveyed": {
+    "anchor": [
+      4.873552902185253,
+      52.373488756470465
+    ],
+    "northOffsetDegrees": -18.319999999999993
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 89.8619167887093,
+  "attribution": {
+    "title": "Amsta De Poort",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.amsta.nl/locaties/de-poort",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original low-poly reconstruction of actual1966 nursing-home parent with1969 operation recorded separately: six occupied facade rows, recessed brick-column ground storey, ochre-panel glass room strips, projecting front bays, rooftop ribbon/setback, actual14.1m rear wing and23.65/27.75m main roofs. Small service structure reaches31.7m; whole footprint is not extruded to the old31.7m OSM maximum. Official facade imagery is visual reference only, no imported mesh or photo texture. CurrentBAG and AHN5 survey calibrate native massing; attached neighboring residential/school parents and courtyard void remain. Front glazing follows the owner facade photograph; rear/side window rhythm is inferred rather than measured. Explicit roof panels own upward caps to avoid coplanar flicker."
+  }
+}

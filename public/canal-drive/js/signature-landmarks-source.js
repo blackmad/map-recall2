@@ -14,7 +14,12 @@
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
 
-const assetUrl = path => new URL(path, window.location.href).href;
+const assetUrl = (path, id) => {
+  const url = new URL(path, window.location.href);
+  const version = window.CanalRecallSignatureLandmarks.MODEL_ASSET_VERSIONS?.[id];
+  if (version) url.searchParams.set('asset', version);
+  return url.href;
+};
 
 /** The highlight the rest of the game already uses for the building being
  *  asked about. Matching it exactly matters more than picking a nicer colour:
@@ -261,7 +266,7 @@ export class SignatureLandmarks {
         this._pending.delete(spec.id);
         this._requestModels();
       };
-      this._loader.load(assetUrl(spec.modelUrl), gltf => {
+      this._loader.load(assetUrl(spec.modelUrl, spec.id), gltf => {
         if (this._removed || generation !== this._generation) {
           this._disposeModel(gltf.scene);
           return;

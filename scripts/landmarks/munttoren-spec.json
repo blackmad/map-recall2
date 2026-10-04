@@ -1,0 +1,46 @@
+{
+  "id": "munttoren-amsterdam",
+  "name": "Munttoren / Muntgebouw",
+  "landmarkId": "extract_landmarks_1375175685",
+  "modelUrl": "./models/munttoren-amsterdam.glb",
+  "suppressOsmIds": [
+    "w57862728",
+    "w751683816",
+    "w751683817",
+    "w751683818",
+    "w751683819",
+    "w751683820",
+    "w751698382",
+    "w751698383",
+    "w751698384",
+    "NL.IMBAG.Pand.0363100012168045"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8932132,
+      52.3670559
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 28.69100677281662,
+    "widthMetres": 8.738620000084438
+  },
+  "surveyed": {
+    "anchor": [
+      4.8932132,
+      52.3670559
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Actual mapped Munttoren compound parent/eight source parts, preserved 3 m covered link. Native 41 m upper finial per conservation heritage description/current photographs; no model fitting."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Munttoren / Muntgebouw",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3729",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free shared-palette reconstruction from exact current mapped footing/host/tier polygons and current conservation expert photographs. Round brick base, octagonal stone/lead tiers, large black/gold dials and open bell/pear-shaped finial. Window/ornament details approximate; no imported geometry/photo texture. Covered ground link retained; bridge, streets and neighbors omitted."
+  }
+}

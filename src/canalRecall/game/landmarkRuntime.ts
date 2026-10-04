@@ -17,6 +17,7 @@ import {
   neighborhoodAt,
 } from './landmarkData';
 import type { RoadSegment } from './collaborators';
+import { ClickPoiIndex, type ClickPoiFile } from '../clickPoiInfo';
 import type {
   BoundaryFeature,
   BridgeCrossingIndex,
@@ -96,7 +97,7 @@ export class GameLandmarkRuntime {
       ? this.landmarks.find(landmark => landmark.buildingIds?.includes(String(building.id)))
       : undefined;
     if (owner && !nearest) nearest = owner;
-    if (!nearest) {
+    if (!nearest || !isWorthACard(nearest)) {
       if (building) nearest = this._cardForClickedBuilding(building);
     }
     if (!nearest || !isWorthACard(nearest)) {
@@ -187,16 +188,14 @@ export class GameLandmarkRuntime {
     this._landmarkCloseBounds = null;
   }
 
-  /**
-   * A nameless footprint cannot teach the player anything, but swallowing the
-   * click makes the map look broken. Acknowledge it without inventing a name
-   * or presenting it as encyclopedia content.
-   */
+  /** Exact researched owner first, then mapped places inside the actual plan. */
   _cardForClickedBuilding(building: BuildingHit): LandmarkNotice | null {
     const buildingName = building.name || '';
     const matched = this.landmarks.find(landmark => landmark.id === String(building.id)
       || landmark.buildingIds?.includes(String(building.id)));
-    if (matched) return { ...matched, featureTarget: building.featureTarget };
+    if (matched && isWorthACard(matched)) return { ...matched, featureTarget: building.featureTarget };
+    const mapped = this._clickPoiInfo?.card(building);
+    if (mapped) return mapped;
     // Not a landmark: say what the register knows (year, type, listing, size)
     // rather than "no building details".
     // A monument's own name can carry a quiz answer ("Pakhuis Prinsengracht");
@@ -306,6 +305,7 @@ export class GameLandmarkRuntime {
       const base = window.location.href;
       const url = (name: string) => new URL(`${city.extractPath}/${name}`, base);
       const factBase = new URL(`${city.extractPath}/`, base).href;
+      this._clickPoiInfo = null;
       if (this._buildingFacts) this._buildingFacts.setBase(factBase);
       else this._buildingFacts = new BuildingFactStore(factBase);
       // Only what the start needs is awaited (START_EXTRACTS): the places,
@@ -357,9 +357,11 @@ export class GameLandmarkRuntime {
         deferredJson<FactsFile>('facts.json'),
         deferredJson<unknown[]>('branded-pois.json'),
         deferredJson<{ buildings?: Record<string, string[]> }>('landmark-buildings.json'),
-      ]).then(([originsFile, bridgeRegister, encyclopedia, factsFile, brandedPois, landmarkBuildings]) => {
+        deferredJson<ClickPoiFile>('click-poi-info.json'),
+      ]).then(([originsFile, bridgeRegister, encyclopedia, factsFile, brandedPois, landmarkBuildings, clickPoiInfo]) => {
         // Another load replaced this one: its own merge will run.
         if (this.streetKnowledge !== knowledge) return;
+        this._clickPoiInfo = new ClickPoiIndex(clickPoiInfo);
         if (factsFile) this._facts = buildFactIndex(factsFile);
         if (originsFile?.origins?.length || bridgeRegister?.bridges || encyclopedia?.length) {
           this.streetKnowledge = buildRouteKnowledgeIndex(

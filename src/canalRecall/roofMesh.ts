@@ -34,6 +34,8 @@ export const ROOF_KINDS: readonly RoofKind[] = ['gable', 'pitched', 'mansard', '
 export type RoofPlan = {
   kind: RoofKind;
   gable: GableShape;
+  /** Inscribed roofs may decorate only ends supported by the exterior outline: negative u, positive u. */
+  gableEnds?: [boolean, boolean];
   /** Roof rise above the eaves, metres (for a gable plate, the roof's own rise; the plate stands higher). */
   riseM: number;
   dormers: boolean;
@@ -227,6 +229,26 @@ const PARAPET: Record<string, { p: number; h: [number, number]; hex: string }> =
   tower: { p: 0.55, h: [0.9, 1.3], hex: '#c9ccce' },
 };
 
+/** A facade ornament needs an exterior wall across its width, not an interior roof-piece edge. */
+function exteriorGableEnds(rect: Rect, ring: readonly Vec2[]): [boolean, boolean] {
+  const distanceToOutline = (x: number, y: number): number => {
+    let nearest = Infinity;
+    for (let i = 0; i < ring.length; i++) {
+      const a = ring[i], b = ring[(i + 1) % ring.length];
+      const dx = b[0] - a[0], dy = b[1] - a[1], length2 = dx * dx + dy * dy;
+      if (!length2) continue;
+      const t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / length2));
+      nearest = Math.min(nearest, Math.hypot(x - a[0] - t * dx, y - a[1] - t * dy));
+    }
+    return nearest;
+  };
+  // Sample most of the end width; a single corner touching a side wall is insufficient.
+  return [-1, 1].map(end => [-0.45, -0.225, 0, 0.225, 0.45].every(across => {
+    const u = end * rect.len / 2, v = across * rect.wid;
+    return distanceToOutline(rect.cx + u * rect.ux - v * rect.uy, rect.cy + u * rect.uy + v * rect.ux) <= 0.35;
+  })) as [boolean, boolean];
+}
+
 /**
  * The roof for a building from its footprint ring (metres, any frame), or null
  * for the plain flat lid. Rectangles get `planRoof`; other footprints roof their
@@ -256,7 +278,8 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
     if (ins && ins.mainShare >= 0.5 && ins.main.len * ins.main.wid >= 24) {
       const plan = planRoof(id, style, heightM, minHeightM, ins.main, tagged, year, measured);
       if (plan && plan.kind !== 'sawtooth') {
-        const pieces: RoofPlan['pieces'] = [{ rect: ins.main, plan }];
+        const mainPlan = plan.kind === 'gable' ? { ...plan, gableEnds: exteriorGableEnds(ins.main, pts) } : plan;
+        const pieces: RoofPlan['pieces'] = [{ rect: ins.main, plan: mainPlan }];
         if (ins.second) {
           const w = ins.second, wingKind: RoofKind = plan.kind === 'hipped' || plan.kind === 'school' && w.wid >= 6 ? plan.kind : 'pitched';
           const riseM = Math.min(plan.riseM, riseFor(wingKind, w.wid));
@@ -589,13 +612,13 @@ export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: Roof
     halfHipSlopes(s, L, W, R, zc, ov);
     for (const e of [-1, 1]) {
       const f = e * L / 2;
-      if (cornice) {
+      if (cornice && plan.gableEnds?.[e < 0 ? 0 : 1] !== false) {
         const prof = gableProfile('cornice', W, R);
         gableSlab(s, prof, e, L, accents ? 'trim' : 'plate', trim);
         if (accents) gableAccents(s, { shape: 'cornice', prof, f, e, W, R, trimHex: trim, shutterHex: '', shutters: false });
       } else {
         s.quad([f, -W / 2, 0], [f, W / 2, 0], [f, vc, zc], [f, -vc, zc], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(vc, zc), s.wallUv(-vc, zc), 'plate', [e, 0, 0]);
-        if (accents) vergeBoards(s, f, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
+        if (accents && plan.gableEnds?.[e < 0 ? 0 : 1] !== false) vergeBoards(s, f, e, [[[-W / 2, 0], [-vc, zc]], [[vc, zc], [W / 2, 0]]], trim);
       }
     }
     const d = vc;
@@ -611,9 +634,10 @@ export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: Roof
   chimney(s, plan, L, W, R, (_u, v) => surfV(v));
   for (const e of [-1, 1]) {
     const f = e * L / 2;
-    if (plan.kind === 'pitched') {
+    const exterior = plan.gableEnds?.[e < 0 ? 0 : 1] !== false;
+    if (plan.kind === 'pitched' || !exterior) {
       s.tri([f, -W / 2, 0], [f, W / 2, 0], [f, 0, R], s.wallUv(-W / 2, 0), s.wallUv(W / 2, 0), s.wallUv(0, R), 'plate', [e, 0, 0]);
-      if (accents) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
+      if (accents && exterior) vergeBoards(s, f, e, [[[-W / 2, 0], [0, R]], [[0, R], [W / 2, 0]]], trim);
       continue;
     }
     const prof = gableProfile(plan.gable, W, R);
