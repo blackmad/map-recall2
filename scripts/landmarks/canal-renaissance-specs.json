@@ -1,0 +1,76 @@
+[
+  {
+    "id": "huis-aan-drie-grachten",
+    "name": "Huis aan de Drie Grachten",
+    "landmarkId": "extract_landmarks_1614063354",
+    "modelUrl": "./models/huis-aan-drie-grachten.glb",
+    "suppressOsmIds": [
+      "w266932427",
+      "NL.IMBAG.Pand.0363100012168466"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.89468947030048,
+        52.36937961104943
+      ],
+      "headingDegrees": 106.52373678073104,
+      "lengthMetres": 14.12965803339511,
+      "widthMetres": 12.990739658930853
+    },
+    "surveyed": {
+      "anchor": [
+        4.89468947030048,
+        52.36937961104943
+      ],
+      "northOffsetDegrees": 103.5
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 86.97626321926896,
+    "attribution": {
+      "title": "Huis aan de Drie Grachten",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6096",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
+    }
+  },
+  {
+    "id": "de-dolphijn",
+    "name": "De Dolphijn",
+    "landmarkId": "extract_landmarks_1604899229",
+    "modelUrl": "./models/de-dolphijn.glb",
+    "suppressOsmIds": [
+      "w266620771",
+      "NL.IMBAG.Pand.0363100012167968"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.889886838805892,
+        52.37568578980617
+      ],
+      "headingDegrees": 123.83730488963849,
+      "lengthMetres": 31.287332178361126,
+      "widthMetres": 14.221836472519911
+    },
+    "surveyed": {
+      "anchor": [
+        4.889886838805892,
+        52.37568578980617
+      ],
+      "northOffsetDegrees": -56.16
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -89.99730488963849,
+    "attribution": {
+      "title": "De Dolphijn",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5303",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
+    }
+  }
+]
