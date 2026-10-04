@@ -1,0 +1,239 @@
+{
+  "anchor": [
+    4.8905845781125485,
+    52.39274079370824
+  ],
+  "authorHeadingDegrees": 164.76785231590262,
+  "sources": [
+    {
+      "url": "https://www.mvrdv.com/projects/163/silodam",
+      "notes": "MVRDV original architect: 20m deep, ten storeys, 157 dwellings; diverse gallery bands and double-height homes. Primary exterior images viewed from project gallery. Supplied SKP thumbnail is visual reference only; no imported mesh or texture."
+    }
+  ],
+  "buildings": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8901791,
+                52.39298
+              ],
+              [
+                4.8903052,
+                52.3926934
+              ],
+              [
+                4.8902978,
+                52.3926922
+              ],
+              [
+                4.8903035,
+                52.3926798
+              ],
+              [
+                4.8903094,
+                52.3926808
+              ],
+              [
+                4.8903518,
+                52.3925854
+              ],
+              [
+                4.8903478,
+                52.3925848
+              ],
+              [
+                4.8904302,
+                52.3924083
+              ],
+              [
+                4.8907121,
+                52.3924584
+              ],
+              [
+                4.8907131,
+                52.3924558
+              ],
+              [
+                4.8909971,
+                52.3925025
+              ],
+              [
+                4.8908726,
+                52.3927866
+              ],
+              [
+                4.8905883,
+                52.3927398
+              ],
+              [
+                4.8904616,
+                52.3930272
+              ],
+              [
+                4.8901791,
+                52.39298
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 57864184,
+        "building": "apartments",
+        "height": "29",
+        "ref:bag": "0363100012149391",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "start_date": "2002",
+        "wikidata": "Q1925285",
+        "wikimedia_commons": "Category:Silodam, Amsterdam",
+        "wikipedia": "nl:Silodam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.890178,
+                52.392982
+              ],
+              [
+                4.8903052,
+                52.3926934
+              ],
+              [
+                4.8903094,
+                52.3926808
+              ],
+              [
+                4.8903518,
+                52.3925854
+              ],
+              [
+                4.8903478,
+                52.3925848
+              ],
+              [
+                4.8904302,
+                52.3924083
+              ],
+              [
+                4.8907121,
+                52.3924584
+              ],
+              [
+                4.8905883,
+                52.3927398
+              ],
+              [
+                4.890462,
+                52.393027
+              ],
+              [
+                4.890178,
+                52.392982
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 1038324509,
+        "building:part": "yes",
+        "height": "29"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8905883,
+                52.3927398
+              ],
+              [
+                4.8907121,
+                52.3924584
+              ],
+              [
+                4.8907131,
+                52.3924558
+              ],
+              [
+                4.8909971,
+                52.3925025
+              ],
+              [
+                4.8908726,
+                52.3927866
+              ],
+              [
+                4.8905883,
+                52.3927398
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 1038324510,
+        "building:part": "yes",
+        "height": "7",
+        "min_height": "3"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8902978,
+                52.3926922
+              ],
+              [
+                4.8903035,
+                52.3926798
+              ],
+              [
+                4.8903094,
+                52.3926808
+              ],
+              [
+                4.8903052,
+                52.3926934
+              ],
+              [
+                4.8902978,
+                52.3926922
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 1038324511,
+        "building:part": "yes",
+        "height": "1"
+      }
+    }
+  ]
+}
