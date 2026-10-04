@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 106,
+    "manual-model": 111,
     "catalogue-model": 12,
     "procedural-kit": 18,
-    "pending": 155
+    "pending": 151
   },
   "destinations": [
     {
@@ -831,8 +831,9 @@
       "type": "landmark",
       "queueRank": 64,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "amsterdam-dungeon",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1448512409",
@@ -1679,8 +1680,9 @@
       "type": "landmark",
       "queueRank": 130,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "huize-lydia",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_240585875",
@@ -1691,8 +1693,9 @@
       "type": "landmark",
       "queueRank": 131,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "schreierstoren",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_275245540",
@@ -1716,8 +1719,9 @@
       "type": "landmark",
       "queueRank": 133,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "walloon-church",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1791250152",
@@ -3618,6 +3622,17 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "hemp-gallery",
+      "treatment": "building"
+    },
+    {
+      "id": "sint-jorishof",
+      "name": "Sint Jorishof / historic courtyard complex",
+      "lat": 52.37077101390563,
+      "lng": 4.897190642415213,
+      "queueRank": 292,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "sint-jorishof",
       "treatment": "building"
     }
   ]

@@ -1,0 +1,38 @@
+{
+  "id": "sint-jorishof",
+  "name": "Sint Jorishof / historic courtyard complex",
+  "landmarkId": "osm_building_267001389",
+  "modelUrl": "./models/sint-jorishof.glb",
+  "suppressOsmIds": [
+    "w267001389",
+    "NL.IMBAG.Pand.0363100012165371"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.897190642415213,
+      52.37077101390563
+    ],
+    "headingDegrees": 107.86167823744009,
+    "lengthMetres": 64.29186811748798,
+    "widthMetres": 49.53789148287094
+  },
+  "surveyed": {
+    "anchor": [
+      4.897190642415213,
+      52.37077101390563
+    ],
+    "northOffsetDegrees": -70.5,
+    "source": "Native metres/current exact PDOK perimeter; roof zones original visual simplifications measured against current AHN5 survey."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": -88.36167823744009,
+  "attribution": {
+    "title": "Sint Jorishof / historic courtyard complex",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5550",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original simplified reconstruction of current shared courtyard complex. Exact current PDOK perimeter remains concave and open, retaining Waalse Kerk and Oost-Indisch Huis. AHN5/3DBAG ground NAP0.611 and reference roofs range roughly8.1\u201320.1m above ground; original separate authored roof zones avoid treating the 20.1m maximum as every wall height. Primary heritage photos guide three-storey courtyard facades, white cornices and entrance portal. Portal position is the first intersection of the mapped alley axis with the exact parent, local[-15.8236,-13.9174]; direct RD survey polygon containment confirms its low9.059\u201311.236m roof. The small cupola position local[-15.9283,-11.0778] is explicitly inferred from primary photographs plus the tiny elevated survey roof227(0.87m2,15.322\u201316.838m). Its simplified open stage/finial are visual approximations, not exact survey measurements. Survey measurements are references, not imported roof triangles. Current BAG year1005 is not treated as historical architectural evidence; RCE records1579/1747 and earlier than1700 wings. The central courtyard axis includes the photographed1747 stone tablet and restrained original reliefs."
+  }
+}

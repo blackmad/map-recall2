@@ -1,5 +1,39 @@
 # Canal Recall — what is built
 
+## Courtyard complexes, civic landmarks and six tree crowns: 106 original landmarks (2026-10-04)
+
+The Amsterdam Dungeon replaces its two verified building parents: the chapel
+and the Rokin entrance block. Its octagonal chapel, tent roof and open lantern
+remain distinct from the lower entrance rooms. The neighboring retail parents,
+including the separate corner dome, remain visible.
+
+Sint Jorishof retains its exact concave courtyard plan, separate roof heights,
+white sash windows and photographed 1747 courtyard tablet. The entrance follows
+the mapped alley's intersection with the surveyed perimeter; its lower roof
+profile is checked against the local survey region. The small cupola position
+and simplified detail are explicitly inferred from primary photographs and
+a tiny raised survey roof, rather than claimed as an exact reconstruction.
+Oost-Indisch Huis and Waalse Kerk remain separate models.
+
+Waalse Kerk replaces only its five exact parent/part identities after its GLB
+loads, including three resident procedural-kit roof ranges. Schreierstoren has
+its pointed tower roof and clipped annex, with contradictory scalar and detailed
+survey heights documented. Huize Lydia preserves its open U-shaped courtyard,
+curved bay and individual roof forms. Dense front/rear game reviews check native
+scale, loaded neighbors, highlights and absence of broad footprint suppression.
+
+Six verified species/cultivar rules change 3,127 crowns: Liempde willow,
+cut-leaf alder, serviceberry, Sunburst honey locust, Sapporo Autumn Gold elm and
+Raywood ash. Explicit pruning continues to override the new shapes for 260
+managed trees. Inventory positions, heights and tiles remain unchanged.
+Before/after crown galleries and mobile park streaming/toggle checks passed.
+
+Brasapark now hides only below-ground motorway/link features intersecting its
+mapped boundary while its landscape is visible. Surface roads and other tunnels
+remain; original filters return when the landscape is disabled or the view leaves
+its zoom range. Four actual game views and vector-tile fixtures verify the
+A9 tunnel disappears below the park without removing its surface roads.
+
 ## Canal museums, three venues and compact parks: 101 original landmarks (2026-10-04)
 
 Hash Marihuana & Hemp Museum and Hemp Gallery are separate original meshes
