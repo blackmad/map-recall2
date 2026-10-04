@@ -26,17 +26,17 @@ const names = ['Vondelpark', 'Oosterpark', 'Sarphatipark', 'Westerpark', 'Erasmu
   'Sloterpark','Nelson Mandelapark','Diemerpark','Museumplein','Gerbrandypark',
   'Bijlmerweide','Gijsbrecht van Aemstelpark',"'t Kleine Loopveld",'Amsterdamse Bos','Professor Joop van Stigtpark','Baanakkerspark','W.H. Vliegenbos',
   'Rietlandpark','Darwinplantsoen','Piet Wiedijkpark',
-  'Houthavenpark','Bella Vistapark','Park Somerlust','Siegerpark','Eendrachtspark','Schellingwouderpark','Brasapark-Noord','Brasapark-Zuid','Natuurpark Vrije Geer','Park de Schinkeleilanden','De Oeverlanden','Lange Bretten','Spoorpark Noord','Spoorpark Zuid'];
+  'Houthavenpark','Bella Vistapark','Park Somerlust','Siegerpark','Eendrachtspark','Schellingwouderpark','Brasapark-Noord','Brasapark-Zuid','Natuurpark Vrije Geer','Park de Schinkeleilanden','De Oeverlanden','Lange Bretten','Spoorpark Noord','Spoorpark Zuid','Oeverpark','Frederik Hendrikplantsoen','Eerste Weteringplantsoen','Bilderdijkpark','Wibautpark'];
 const largeParkIds={'Sloterpark':'a974946116','Nelson Mandelapark':'a253205604','Diemerpark':'a26617920',
   'Museumplein':'a51930778','Gerbrandypark':'a12632708','Bijlmerweide':'a1634686926',
   'Gijsbrecht van Aemstelpark':'a14700737',"'t Kleine Loopveld":'a1625964550','Amsterdamse Bos':'a53034066','Professor Joop van Stigtpark':'a1634686930',
   'Baanakkerspark':'a338346296','W.H. Vliegenbos':'a438320562','Rietlandpark':'a1474761438',
   'Darwinplantsoen':'a1090059682','Piet Wiedijkpark':'a1073574284',
   'Houthavenpark':'a1342528732','Bella Vistapark':'a1794310586','Park Somerlust':'a2688775192',
-  'Siegerpark':'a560654378','Eendrachtspark':'a870243156','Schellingwouderpark':'a320368258','Brasapark-Noord':'a1992743354','Brasapark-Zuid':'a2765075828','Natuurpark Vrije Geer':'a2076574184','Park de Schinkeleilanden':'a677298638','De Oeverlanden':'a36700791','Lange Bretten':'a1090078806','Spoorpark Noord':'a2590769720','Spoorpark Zuid':'a2617292602'};
-// Current municipal public-park pages verify these eight mapped grounds.
-// Spoorpark Midden remains future work; reserve selection is only the exact Lange Bretten ID.
-const publicParkIds=new Set(['a1992743354','a2765075828','a2076574184','a677298638','a36700791','a1090078806','a2590769720','a2617292602']);
+  'Siegerpark':'a560654378','Eendrachtspark':'a870243156','Schellingwouderpark':'a320368258','Brasapark-Noord':'a1992743354','Brasapark-Zuid':'a2765075828','Natuurpark Vrije Geer':'a2076574184','Park de Schinkeleilanden':'a677298638','De Oeverlanden':'a36700791','Lange Bretten':'a1090078806','Spoorpark Noord':'a2590769720','Spoorpark Zuid':'a2617292602','Oeverpark':'a2410062728','Frederik Hendrikplantsoen':['a442057328','a442202462','a442348528'],'Eerste Weteringplantsoen':'a20424078','Bilderdijkpark':'a441772170','Wibautpark':'a19861794'};
+// Current municipal public-park pages verify these mapped grounds.
+// Spoorpark Midden and the redeveloping Tweede Weteringplantsoen remain excluded; reserve selection is only the exact Lange Bretten ID.
+const publicParkIds=new Set(['a1992743354','a2765075828','a2076574184','a677298638','a36700791','a1090078806','a2590769720','a2617292602','a2410062728','a442057328','a442202462','a442348528','a20424078','a441772170','a19861794']);
 const polygons = g => g.type === 'MultiPolygon' ? g.coordinates : g.type === 'Polygon' ? [g.coordinates] : [];
 function ringArea(r) {
   return Math.abs(r.reduce((a, p, i) => {const q = r[(i + 1) % r.length]; return a + p[0] * q[1] - q[0] * p[1];}, 0));
@@ -52,9 +52,10 @@ function inRing([x, y], ring) {
 const parks = names.flatMap(name => {
   const matches = raw.filter(f => (f.properties.leisure === 'park'||(name==='Lange Bretten'&&f.id==='a1090078806'&&f.properties.leisure==='nature_reserve')) && f.properties.name === name && polygons(f.geometry).length);
   if(largeParkIds[name]){
-    const verified=matches.find(f=>f.id===largeParkIds[name]);
-    if(!verified)throw Error(`Missing verified Amsterdam park boundary: ${name}`);
-    return [verified];
+    const ids=Array.isArray(largeParkIds[name])?largeParkIds[name]:[largeParkIds[name]];
+    return ids.map(id=>{const verified=matches.find(f=>f.id===id);
+      if(!verified)throw Error(`Missing verified Amsterdam park boundary: ${name} ${id}`);
+      return verified;});
   }
   // Several parks have duplicate relation/way boundaries. Keep the largest boundary.
   matches.sort((a,b) => polygons(b.geometry).reduce((s,p)=>s+ringArea(p[0]),0) - polygons(a.geometry).reduce((s,p)=>s+ringArea(p[0]),0));
@@ -137,7 +138,8 @@ const result = {type:'FeatureCollection', attribution:'© OpenStreetMap contribu
 result.squares=[{id:square.id,name:square.properties.name,baseFill:false}];
 result.pavedSquares=[{id:paved.id,name:paved.properties.name,sourceOsmId:'r13131904',surface:'sett'}];
 result.interiorOnlyParks=parks.filter(f=>largeParkIds[f.properties.name]&&f.properties.name!=='Amsterdamse Bos').map(f=>({id:f.id,name:f.properties.name,baseFill:false}));
-result.publicParkGrounds=parks.filter(p=>publicParkIds.has(p.id)).map(p=>({id:p.id,name:p.properties.name,baseFill:false,sourceUrl:p.properties.name.startsWith('Brasapark')?'https://www.amsterdam.nl/leefomgeving/parken-recreatiegebieden/brasapark/':p.properties.name.startsWith('Spoorpark')?'https://www.amsterdam.nl/projecten/overtoomse-veld/':p.properties.name==='Lange Bretten'?'https://www.amsterdam.nl/projecten/bretten/':`https://www.amsterdam.nl/leefomgeving/parken-recreatiegebieden/${({'Natuurpark Vrije Geer':'vrije-geer','Park de Schinkeleilanden':'park-schinkeleilanden','De Oeverlanden':'oeverlanden'})[p.properties.name]}/`}));
+const compactParkSources={"Oeverpark": "https://assets.amsterdam.nl/publish/pages/1081786/locatieprofielen_evenementen_1_.pdf", "Frederik Hendrikplantsoen": "https://www.santenco.nl/portfolio_page/fredrik-hendrikplantsoen-amsterdam/", "Eerste Weteringplantsoen": "https://www.amsterdam.nl/projecten/weteringpark/", "Bilderdijkpark": "https://www.amsterdam.nl/nieuws/achtergrond/amsterdams-parkgenot/", "Wibautpark": "https://www.wibautpark.nl/onewebmedia/FACTSHEET%20VERENIGING%20VRIENDEN%20VAN%20HET%20WIBAUTPLANTSOEN.pdf"};
+result.publicParkGrounds=parks.filter(p=>publicParkIds.has(p.id)).map(p=>({id:p.id,name:p.properties.name,baseFill:false,sourceUrl:compactParkSources[p.properties.name]?compactParkSources[p.properties.name]:p.properties.name.startsWith('Brasapark')?'https://www.amsterdam.nl/leefomgeving/parken-recreatiegebieden/brasapark/':p.properties.name.startsWith('Spoorpark')?'https://www.amsterdam.nl/projecten/overtoomse-veld/':p.properties.name==='Lange Bretten'?'https://www.amsterdam.nl/projecten/bretten/':`https://www.amsterdam.nl/leefomgeving/parken-recreatiegebieden/${({'Natuurpark Vrije Geer':'vrije-geer','Park de Schinkeleilanden':'park-schinkeleilanden','De Oeverlanden':'oeverlanden'})[p.properties.name]}/`}));
 const out = 'public/data/extracts/amsterdam/park-landscape.geojson';
 const bos=parks.find(f=>f.properties.name==='Amsterdamse Bos');
 const points=polygons(bos.geometry).flat(2);
