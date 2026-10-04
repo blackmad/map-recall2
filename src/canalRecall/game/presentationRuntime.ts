@@ -1557,6 +1557,8 @@ export class GamePresentationRuntime {
   _finishLandmark(): Landmark | null {
     // A review stop is a street; a nearby landmark would claim its arrival.
     if (!this.routeTo || this.routeTo.id === 'home' || isReviewStop(this.routeTo) || !this.landmarks) return null;
+    const exactId = this.routeTo.landmarkId || (this.routeTo.id.startsWith('lm-') ? this.routeTo.id.slice(3) : '');
+    if (exactId) return this.landmarks.find(landmark => landmark.id === exactId) ?? null;
     const wanted = this._normaliseCanalName(this.routeTo.name);
     const byName = this.landmarks.find(
       landmark => this._normaliseCanalName(landmark.name) === wanted);

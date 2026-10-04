@@ -1,0 +1,353 @@
+[
+  {
+    "id": "sexmuseum-venustempel",
+    "osmId": "w266648604",
+    "bagId": "NL.IMBAG.Pand.0363100012170952",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.897127957784993,
+            52.37665049880389
+          ],
+          [
+            4.897145686907878,
+            52.37667677132029
+          ],
+          [
+            4.8971184427244046,
+            52.37668360605823
+          ],
+          [
+            4.897095057098919,
+            52.37664559915397
+          ],
+          [
+            4.897076240801588,
+            52.37664993423325
+          ],
+          [
+            4.897099611728113,
+            52.37668794108041
+          ],
+          [
+            4.896916100910924,
+            52.376731553676244
+          ],
+          [
+            4.896892321221478,
+            52.376693338383205
+          ],
+          [
+            4.89683993432831,
+            52.37670554245619
+          ],
+          [
+            4.896791172264427,
+            52.37671664704365
+          ],
+          [
+            4.896765728978747,
+            52.37668014148546
+          ],
+          [
+            4.896811963385113,
+            52.37666918821928
+          ],
+          [
+            4.897079013280415,
+            52.37660503417583
+          ],
+          [
+            4.897302135702267,
+            52.37655167178366
+          ],
+          [
+            4.897345951565362,
+            52.37658681520008
+          ],
+          [
+            4.89734645859405,
+            52.376587446436545
+          ],
+          [
+            4.897268905877566,
+            52.376605820003775
+          ],
+          [
+            4.897143531178388,
+            52.376632632796095
+          ],
+          [
+            4.8971200289486445,
+            52.37663840449663
+          ],
+          [
+            4.897127957784993,
+            52.37665049880389
+          ]
+        ]
+      ]
+    },
+    "properties": {
+      "aantal_verblijfsobjecten": 2,
+      "bouwjaar": 1725,
+      "documentdatum": "2023-09-28",
+      "documentnummer": "GV00007182_AC00AC",
+      "gebruiksdoel": "overige gebruiksfunctie,winkelfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012170952",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012170952",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0547abc1-aa1b-539a-89ab-40d780e49f40",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/058f6f95-2019-509e-bd63-1333628369ba"
+      ]
+    },
+    "primarySources": [
+      "https://sexmuseumamsterdam.nl/",
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/857",
+      "https://commons.wikimedia.org/wiki/File:Sexmuseum_Amsterdam_01.jpg"
+    ],
+    "roofSurvey": {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012170952",
+      "groundNap": 1.1390000581741333,
+      "description": "Front house13.9–15.64m roof withraised cornice~18.2m; centre roof15.71m and rear11.96m, lowrearservice4–7.6m. Museum occupies front house and2rearhouses inside one parent; adjacent Damrak17/19 untouched."
+    },
+    "geometryPolicy": "Measured heights and axis/plan used as evidence only; no roof survey mesh imported."
+  },
+  {
+    "id": "oude-lutherse-kerk",
+    "osmId": "r3583147",
+    "bagId": "NL.IMBAG.Pand.0363100012165085",
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.889043159744292,
+            52.36840752162139
+          ],
+          [
+            4.889154558627924,
+            52.36822584516791
+          ],
+          [
+            4.889215631547318,
+            52.36824358317447
+          ],
+          [
+            4.889229796174263,
+            52.36822828273904
+          ],
+          [
+            4.889607945521757,
+            52.36829991390578
+          ],
+          [
+            4.889647162892624,
+            52.368248938600146
+          ],
+          [
+            4.88967239710794,
+            52.368218037012284
+          ],
+          [
+            4.88995131949643,
+            52.3682831114545
+          ],
+          [
+            4.889961192901098,
+            52.36828515718216
+          ],
+          [
+            4.889946159503232,
+            52.368312488610684
+          ],
+          [
+            4.8899361026667085,
+            52.36833073637986
+          ],
+          [
+            4.889921638751683,
+            52.368357036609254
+          ],
+          [
+            4.8899227520895785,
+            52.36835726597836
+          ],
+          [
+            4.889906819468309,
+            52.368386220401796
+          ],
+          [
+            4.889905706129769,
+            52.36838599103256
+          ],
+          [
+            4.889904739460156,
+            52.36838839568084
+          ],
+          [
+            4.889903289455539,
+            52.368392002653295
+          ],
+          [
+            4.889895813551827,
+            52.36841053987867
+          ],
+          [
+            4.889894378631094,
+            52.368414110963485
+          ],
+          [
+            4.889876436272489,
+            52.36845861468152
+          ],
+          [
+            4.889875261684021,
+            52.36845860974769
+          ],
+          [
+            4.889619868103639,
+            52.36842165772352
+          ],
+          [
+            4.8895971169955335,
+            52.36841836247874
+          ],
+          [
+            4.889574545188059,
+            52.36846583960525
+          ],
+          [
+            4.88952228888368,
+            52.36857571951007
+          ],
+          [
+            4.889462522278423,
+            52.36855928138778
+          ],
+          [
+            4.889435619244259,
+            52.3685517534177
+          ],
+          [
+            4.889169458673158,
+            52.368477240418024
+          ],
+          [
+            4.88907827795994,
+            52.36843660983142
+          ],
+          [
+            4.889043159744292,
+            52.36840752162139
+          ]
+        ],
+        [
+          [
+            4.889667708618329,
+            52.36824986978579
+          ],
+          [
+            4.889718691309216,
+            52.36826397004235
+          ],
+          [
+            4.889729705729494,
+            52.3682480631216
+          ],
+          [
+            4.889679931468757,
+            52.36823226028108
+          ],
+          [
+            4.889667708618329,
+            52.36824986978579
+          ]
+        ],
+        [
+          [
+            4.889705269724036,
+            52.36833086316334
+          ],
+          [
+            4.889768589930488,
+            52.36834332554747
+          ],
+          [
+            4.889787229703638,
+            52.36830996055798
+          ],
+          [
+            4.889724818261859,
+            52.368296333598586
+          ],
+          [
+            4.889705269724036,
+            52.36833086316334
+          ]
+        ],
+        [
+          [
+            4.889710448909699,
+            52.36840584249885
+          ],
+          [
+            4.889755727742993,
+            52.36841402282815
+          ],
+          [
+            4.889754179755094,
+            52.36841851018349
+          ],
+          [
+            4.889772792368902,
+            52.368421617244195
+          ],
+          [
+            4.889784431268357,
+            52.36839454120836
+          ],
+          [
+            4.889720196112258,
+            52.36838379164285
+          ],
+          [
+            4.889710448909699,
+            52.36840584249885
+          ]
+        ]
+      ]
+    },
+    "properties": {
+      "aantal_verblijfsobjecten": 2,
+      "bouwjaar": 1633,
+      "documentdatum": "2025-04-14",
+      "documentnummer": "TM25040878_TM00AC",
+      "gebruiksdoel": "bijeenkomstfunctie,overige gebruiksfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012165085",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012165085",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/6af1047b-9efe-5bd1-95d8-3e3bfb403111",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/9b516b71-03a7-5812-9ccf-642d838ff7d2"
+      ]
+    },
+    "primarySources": [
+      "https://www.luthersamsterdam.nl/orgel",
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/5241",
+      "https://erfgoedregister.amsterdam.nl/monument/96b47052-314f-466b-8ed5-79c809abeaf0/",
+      "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Singel_411_(Oude_Luterse_Kerk).JPG"
+    ],
+    "roofSurvey": {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012165085",
+      "groundNap": 0.7580000162124634,
+      "description": "Three skewed aisle roofs: nave ridge21.93m, side aisle19.11m/18.52m aboveground;1884annex14.8m/17.5m. Three actual mapped annex holes stay open. Isolated24m LiDAR patches are not representative main roof ridge."
+    },
+    "geometryPolicy": "Measured heights and axis/plan used as evidence only; no roof survey mesh imported."
+  }
+]

@@ -54,9 +54,14 @@
       {
         "url": "https://en.wikipedia.org/wiki/Homomonument",
         "use": "10 m triangle edges, 36 m total arrangement, raised platform and tapered waterside steps."
+      },
+      {
+        "url": "https://www.cultureelerfgoed.nl/onderwerpen/p/post-65-erfgoed/verhalen-en-tijdlijnen/beschrijvingen-post-65-objecten/homomonument-amsterdam",
+        "use": "Primary national heritage overhead photograph verifies the intentional triangle/platform projecting over Keizersgracht; other two triangles remain on the square."
       }
     ],
     "retrievedAt": "2026-10-04",
-    "notes": "Geometric interpretation of mapped outline, not a measured stonework survey. Individual triangle heights and stair treads approximate; no surrounding ground or host buildings replaced."
+    "notes": "Current whole-monument perimeter exactly rechecked 2026-10-04. OSM does not individually survey the three small triangle polygons; their 10 m edge-length construction and stair heights remain approximate. The eastern tip intentionally projects over Keizersgracht, independently verified against RCE overhead photo. North-coordinate metre scale corrected; no triangle moved away from source corner or surrounding ground added.",
+    "currentSource": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8843,52.3741,4.8853,52.3749"
   }
 ]

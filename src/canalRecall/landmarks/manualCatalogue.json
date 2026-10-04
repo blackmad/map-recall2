@@ -1597,7 +1597,7 @@
       ],
       "headingDegrees": 90,
       "lengthMetres": 34.72792283999182,
-      "widthMetres": 35.405961999833835
+      "widthMetres": 35.65579599983266
     },
     "surveyed": {
       "anchor": [
@@ -1605,17 +1605,17 @@
         52.37443243333333
       ],
       "northOffsetDegrees": 0,
-      "source": "Three extreme vertices of the mapped whole-monument perimeter; local east/south metres"
+      "source": "Three extreme vertices of the current mapped whole-monument perimeter; local east/south metres: 111320 latitude and 111320*cos(latitude) longitude. Waterside stair-platform tip intentionally extends into Keizersgracht."
     },
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
     "attribution": {
       "title": "Homomonument",
       "author": "Map Recall",
-      "sourceUrl": "https://www.iamsterdam.com/en/whats-on/calendar/attractions-and-sights/sights/homomonument",
+      "sourceUrl": "https://www.cultureelerfgoed.nl/onderwerpen/p/post-65-erfgoed/verhalen-en-tijdlijnen/beschrijvingen-post-65-objecten/homomonument-amsterdam",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Geometric interpretation of mapped outline, not a measured stonework survey. Individual triangle heights and stair treads approximate; no surrounding ground or host buildings replaced."
+      "modifications": "Original geometric interpretation of the mapped whole-monument outline and primary RCE overhead photograph. Waterside stair-platform projection into Keizersgracht retained intentionally. OSM maps the whole arrangement, not three individual stone polygons; individual 10 m triangles/heights/stair treads approximate. No surrounding ground or host buildings replaced."
     }
   },
   {
@@ -4032,6 +4032,248 @@
         52.39274079370824
       ],
       "northOffsetDegrees": 74.76785231590262
+    }
+  },
+  {
+    "id": "westerkerk",
+    "name": "Westerkerk / Westertoren",
+    "landmarkId": "extract_landmarks_1692085215",
+    "modelUrl": "./models/westerkerk.glb",
+    "suppressOsmIds": [
+      "w99203577",
+      "w99205257",
+      "w749268115",
+      "w749268116",
+      "w749268117",
+      "w749268118",
+      "w749287964",
+      "w751083595",
+      "w751083596",
+      "w751083597",
+      "w751083598",
+      "w751083599",
+      "NL.IMBAG.Pand.0363100012174221",
+      "NL.IMBAG.Pand.0363100012164998"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.883896010526316,
+        52.37449989605263
+      ],
+      "headingDegrees": 273.2,
+      "lengthMetres": 61.11872292780377,
+      "widthMetres": 43.35214296082779
+    },
+    "surveyed": {
+      "anchor": [
+        4.883896010526316,
+        52.37449989605263
+      ],
+      "northOffsetDegrees": 3.1999999999999886,
+      "source": "Actual current church/tower parents and10sourceparts; native mapped roof tiers and official85m crown/87m rooster. AnneFrank complex and adjacent buildings excluded."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "Westerkerk / Westertoren",
+      "author": "Map Recall",
+      "sourceUrl": "https://westerkerk.nl/bezoek-de-westerkerk-amsterdam/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free shared-palette reconstruction from current mapped church/tower polygons and official church/municipal exterior references. Double-cross roof plan, Renaissance arched windows/pilasters, stone clock tiers and blue-gold imperial crown. No imported geometry or reference pixels. Ornamental details approximate; exact source grounds and neighboring buildings retained."
+    }
+  },
+  {
+    "id": "sexmuseum-venustempel",
+    "name": "Sexmuseum Venustempel",
+    "landmarkId": "extract_landmarks_175435208",
+    "modelUrl": "./models/sexmuseum-venustempel.glb",
+    "suppressOsmIds": [
+      "w266648604",
+      "NL.IMBAG.Pand.0363100012170952"
+    ],
+    "footprint": {
+      "centre": [
+        4.8970676572826966,
+        52.376651769064054
+      ],
+      "headingDegrees": 111.44082364949816,
+      "lengthMetres": 40.50561572553951,
+      "widthMetres": 9.120788613138604
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 16.05305661503553,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.897056093786398,
+        52.376641612729955
+      ],
+      "northOffsetDegrees": -52.506119735466314,
+      "source": "Current BAG0363100012170952 physical parent and OSMw266648604; native scale1, simplified original roof envelope calibrated to AHN5/3DBAG LoD2.2 measurements and primary architectural photographs."
+    },
+    "attribution": {
+      "title": "Sexmuseum Venustempel",
+      "author": "Map Recall",
+      "sourceUrl": "https://sexmuseumamsterdam.nl/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
+    }
+  },
+  {
+    "id": "oude-lutherse-kerk",
+    "name": "Oude Lutherse Kerk",
+    "landmarkId": "extract_landmarks_1463154066",
+    "modelUrl": "./models/oude-lutherse-kerk.glb",
+    "suppressOsmIds": [
+      "r3583147",
+      "NL.IMBAG.Pand.0363100012165085"
+    ],
+    "footprint": {
+      "centre": [
+        4.889496169962845,
+        52.36837375043232
+      ],
+      "headingDegrees": 69.47451985894676,
+      "lengthMetres": 55.03645269255932,
+      "widthMetres": 40.86683779238047
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 179.85916855874166,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.889502176322695,
+        52.36839687826118
+      ],
+      "northOffsetDegrees": 69.33368841768836,
+      "source": "Current BAG0363100012165085 physical parent and OSM relation r3583147; native scale1, simplified original roof envelope calibrated to AHN5/3DBAG LoD2.2 measurements and primary architectural photographs."
+    },
+    "attribution": {
+      "title": "Oude Lutherse Kerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.luthersamsterdam.nl/orgel",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
+    }
+  },
+  {
+    "id": "kattenkabinet",
+    "name": "KattenKabinet",
+    "landmarkId": "extract_landmarks_1164156962",
+    "modelUrl": "./models/kattenkabinet.glb",
+    "suppressOsmIds": [
+      "w267123217",
+      "NL.IMBAG.Pand.0363100012168340"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.891564718450845,
+        52.36565041913723
+      ],
+      "headingDegrees": 12.612191418343116,
+      "lengthMetres": 20.976262163393297,
+      "widthMetres": 14.92796102524749
+    },
+    "surveyed": {
+      "anchor": [
+        4.891564718450845,
+        52.36565041913723
+      ],
+      "northOffsetDegrees": 12.267173108393777
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 89.65498169005066,
+    "attribution": {
+      "title": "KattenKabinet",
+      "author": "Map Recall",
+      "sourceUrl": "https://kattenkabinet.nl/over/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original low-poly reconstruction of Herengracht497: exact currentBAG parent, six-bay doublehouse with central classicalpediment, nineteenth-centuryT-windows, currentground-levelentrance and hippedroof withtwo dormers/twochimneys. Historicaldouble stoopremoved1837 is not invented; neighboringHerengracht495/499 remain. Native roofenvelope calibrated to AHN5 approximate13.86m eaves/19.53m ridge andlower rearreturns, sourceimages visualreference only, no imported mesh/texture."
+    }
+  },
+  {
+    "id": "pianola-museum",
+    "name": "Pianola Museum",
+    "landmarkId": "extract_landmarks_660242980",
+    "modelUrl": "./models/pianola-museum.glb",
+    "suppressOsmIds": [
+      "w266555881",
+      "NL.IMBAG.Pand.0363100012173588"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.883565911555713,
+        52.378646506954865
+      ],
+      "headingDegrees": 162.91758463448625,
+      "lengthMetres": 18.220444424257835,
+      "widthMetres": 13.947608047202838
+    },
+    "surveyed": {
+      "anchor": [
+        4.883565911555713,
+        52.378646506954865
+      ],
+      "northOffsetDegrees": -16.68392197665763
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -89.60150661114388,
+    "attribution": {
+      "title": "Pianola Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://pianolamuseum.online/en/about-us/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original low-poly reconstruction of the1905former police stationWesterstraat106/currentPianolaMuseum parent: exactcurrentBAGplan with projectingoriel, asymmetricfivebaystreetfront, centralcrenellatedtower, round-head dormers, reddishtile roof andlowerrearflatwings. Actual3DBAGapprox12.84m eaves/16.37m ridge, currentmuseumground-levelentrance; adjacentparents retained. Sourcesvisualreferenceonly; no importedmesh/texture."
+    }
+  },
+  {
+    "id": "montelbaanstoren-amsterdam",
+    "name": "Montelbaanstoren",
+    "landmarkId": "extract_landmarks_1027016792",
+    "modelUrl": "./models/montelbaanstoren-amsterdam.glb",
+    "suppressOsmIds": [
+      "w57864086",
+      "w751647817",
+      "w751647818",
+      "w751647819",
+      "w751647820",
+      "NL.IMBAG.Pand.0363100012181906"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.90566385,
+        52.3720335
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 11.621912657196383,
+      "widthMetres": 11.933504000244284
+    },
+    "surveyed": {
+      "anchor": [
+        4.90566385,
+        52.3720335
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Exact mapped round foundation and four stepped octagonal tower parts; local east/south metres. Native48m ornamental top from primaryheritage reference."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "Montelbaanstoren",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.archivolt.eu/files/projects/028/amsterdam-montelbaanstoren-a4_w.pdf",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free shared-palette reconstruction from exact current mapped footing/steppedtiers and restorationarchitect exteriorphotograph. Redbrick roundbase, white Renaissance lanterns, gilded open-finial silhouette. Window/ornament details approximate. No imported geometry/photo texture; adjacent houses/canal retained."
     }
   }
 ]

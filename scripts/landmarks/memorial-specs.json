@@ -16,7 +16,7 @@
       ],
       "headingDegrees": 90,
       "lengthMetres": 34.72792283999182,
-      "widthMetres": 35.405961999833835
+      "widthMetres": 35.65579599983266
     },
     "surveyed": {
       "anchor": [
@@ -24,17 +24,17 @@
         52.37443243333333
       ],
       "northOffsetDegrees": 0,
-      "source": "Three extreme vertices of the mapped whole-monument perimeter; local east/south metres"
+      "source": "Three extreme vertices of the current mapped whole-monument perimeter; local east/south metres: 111320 latitude and 111320*cos(latitude) longitude. Waterside stair-platform tip intentionally extends into Keizersgracht."
     },
     "groundAltitudeMetres": 0,
     "facingOffsetDegrees": 0,
     "attribution": {
       "title": "Homomonument",
       "author": "Map Recall",
-      "sourceUrl": "https://www.iamsterdam.com/en/whats-on/calendar/attractions-and-sights/sights/homomonument",
+      "sourceUrl": "https://www.cultureelerfgoed.nl/onderwerpen/p/post-65-erfgoed/verhalen-en-tijdlijnen/beschrijvingen-post-65-objecten/homomonument-amsterdam",
       "licence": "Original project asset",
       "licenceUrl": "./LICENSE",
-      "modifications": "Geometric interpretation of mapped outline, not a measured stonework survey. Individual triangle heights and stair treads approximate; no surrounding ground or host buildings replaced."
+      "modifications": "Original geometric interpretation of the mapped whole-monument outline and primary RCE overhead photograph. Waterside stair-platform projection into Keizersgracht retained intentionally. OSM maps the whole arrangement, not three individual stone polygons; individual 10 m triangles/heights/stair treads approximate. No surrounding ground or host buildings replaced."
     }
   }
 ]

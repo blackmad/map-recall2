@@ -99,6 +99,7 @@ class GameRouteRuntime {
 
   _applyPrefsToRuntime(prefs, { persist = true, applySound = persist } = {}) {
     const previousCityId = this.cityId;
+    const previousTravelMode = this.travelMode;
     this.routeOptions = {
       answerMode: prefs.answerMode,
       line: prefs.line,
@@ -134,6 +135,8 @@ class GameRouteRuntime {
           pitch: 0,
         });
       }
+      this._loadRoutePoiCatalog();
+    } else if (previousTravelMode !== this.travelMode && this.state === GameState.MENU) {
       this._loadRoutePoiCatalog();
     }
     this.camera.zoom = prefs.zoom;
@@ -494,6 +497,15 @@ class GameRouteRuntime {
       this.gpsOrigin = null;
     }
 
+    const selectedDestination = this.routePois.find(poi => poi.id === this._overlay.store.getState().destinationId);
+    if (selectedDestination) {
+      const from = this.routePattern === 'home' ? this.homeBase
+        : this.routePattern === 'here' ? this.gpsOrigin
+          : this._pickDestinationNear(selectedDestination);
+      if (from) this._launchPoiRoute(from, selectedDestination);
+      else this._setRouteError('No reachable starting point is available for this destination.');
+      return;
+    }
     if (this.travelMode === 'transit' && this.routePattern === 'surprise') {
       const pair = this._pickTeachableTransitPair();
       if (pair) {
@@ -752,26 +764,35 @@ class GameRouteRuntime {
       const catalogUrl = `${city.extractPath}/landmarks.json`;
       const response = await fetch(new URL(catalogUrl, window.location.href));
       if (!response.ok) throw new Error(`landmark catalog ${response.status}`);
-      const features = await response.json();
+      const features = CanalRecallRoute.mergeManualPoiFeatures(await response.json(), city.id);
+      for (const poi of curated) {
+        const modelId = CanalRecallRoute.manualPoiForCuratedId(poi.id);
+        const match = features.find(feature => modelId && feature.modelId === modelId
+          || this._normaliseCanalName(feature.name) === this._normaliseCanalName(poi.name));
+        if (match) poi.landmarkId = match.id;
+      }
       const seen = new Set(curated.map(poi => this._normaliseCanalName(poi.name)));
+      const curatedModels = new Set(curated.map(poi => CanalRecallRoute.manualPoiForCuratedId(poi.id)).filter(Boolean));
       const extras = [];
       for (const feature of features) {
         const centre = feature.center;
         if (!centre || !feature.name) continue;
+        if (feature.modelId && curatedModels.has(feature.modelId)) continue;
         // Completing a route must reveal something worth learning. The raw
         // extract also contains named OSM features with no article, fact or
         // image; those remain map geometry rather than empty arrival rewards.
         if (!CanalRecallRoute.isTeachableRouteDestination(feature)) continue;
         const key = this._normaliseCanalName(feature.name);
         if (seen.has(key)) continue;
-        const poi = { id: `lm-${feature.id}`, name: feature.name, lat: centre[0], lng: centre[1],
+        const poi = { id: `lm-${feature.id}`, landmarkId: feature.id, name: feature.name, lat: centre[0], lng: centre[1],
                       prominence: feature.prominenceScore || 0, type: feature.type || 'landmark' };
-        if (Game._kmBetween(poi, city.center) > ROUTE_POI_MAX_KM_FROM_CENTRE) continue;
+        if (!feature.manualPoi && Game._kmBetween(poi, city.center) > ROUTE_POI_MAX_KM_FROM_CENTRE) continue;
         seen.add(key);
         extras.push(poi);
       }
       extras.sort((a, b) => b.prominence - a.prominence);
       this.routePois = [...curated, ...extras];
+      this._overlay.store.setRoutePois(this.routePois);
       // Rebuild destination selects from the active city's pool.
       if (this._routeFrom && this._routeTo) {
         this._routeFrom.innerHTML = '';
@@ -786,6 +807,7 @@ class GameRouteRuntime {
       console.info(`Route destinations (${city.name}): ${this.routePois.length} (${curated.length} curated + ${extras.length} from the extract)`);
     } catch (error) {
       this.routePois = [...curated];
+      this._overlay.store.setRoutePois(this.routePois);
       console.warn('Landmark route catalog unavailable, using the curated list:', error);
     }
   }
@@ -804,6 +826,7 @@ class GameRouteRuntime {
       });
       this._transitPlayLoad = load;
       this.routePois = Transit.transitRouteAnchors(load);
+      this._overlay.store.setRoutePois(this.routePois);
       try {
         const transferUrl = new URL(`${city.extractPath}/transit-transfers.json`, window.location.href);
         const transferResponse = await fetch(transferUrl);
@@ -822,6 +845,7 @@ class GameRouteRuntime {
       console.info(`Transit destinations (${city.name}): ${this.routePois.length} stop anchors`);
     } catch (error) {
       this.routePois = [];
+      this._overlay.store.setRoutePois(this.routePois);
       this._transitPlayLoad = null;
       this._transitTransfersCatalog = null;
       console.warn('Transit route anchors unavailable:', error);

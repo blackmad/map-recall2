@@ -165,13 +165,13 @@ function displayGeometry(feature: LandmarkFeature, center: LatLng): GeoJsonFeatu
  */
 export function buildLandmarks(
   features: readonly LandmarkFeature[],
-  project: PointProjection,
+  project: (lat: number, lng: number, feature: LandmarkFeature) => WorldPoint | null,
 ): Landmark[] {
   const landmarks: Landmark[] = [];
   for (const feature of features) {
     const center = feature.center || (feature.path && feature.path[0]);
     if (!center) continue;
-    const point = project(center[0], center[1]);
+    const point = project(center[0], center[1], feature);
     if (!point) continue;
     const { detail, longDetail } = splitDetail(feature.funFact || feature.wikipediaExtract || '');
     landmarks.push({
@@ -186,6 +186,8 @@ export function buildLandmarks(
       longDetail,
       prominenceScore: feature.prominenceScore || 0,
       wikipediaUrl: feature.wikipediaUrl || '',
+      sourceUrl: feature.sourceUrl,
+      buildingIds: feature.buildingIds,
       wikidata: feature.wikidata || '',
       wikipedia: feature.wikipedia || '',
       extractLang: feature.wikipediaExtractLang || 'en',

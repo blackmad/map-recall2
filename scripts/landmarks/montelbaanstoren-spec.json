@@ -1,0 +1,42 @@
+{
+  "id": "montelbaanstoren-amsterdam",
+  "name": "Montelbaanstoren",
+  "landmarkId": "extract_landmarks_1027016792",
+  "modelUrl": "./models/montelbaanstoren-amsterdam.glb",
+  "suppressOsmIds": [
+    "w57864086",
+    "w751647817",
+    "w751647818",
+    "w751647819",
+    "w751647820",
+    "NL.IMBAG.Pand.0363100012181906"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.90566385,
+      52.3720335
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 11.621912657196383,
+    "widthMetres": 11.933504000244284
+  },
+  "surveyed": {
+    "anchor": [
+      4.90566385,
+      52.3720335
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Exact mapped round foundation and four stepped octagonal tower parts; local east/south metres. Native48m ornamental top from primaryheritage reference."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Montelbaanstoren",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.archivolt.eu/files/projects/028/amsterdam-montelbaanstoren-a4_w.pdf",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free shared-palette reconstruction from exact current mapped footing/steppedtiers and restorationarchitect exteriorphotograph. Redbrick roundbase, white Renaissance lanterns, gilded open-finial silhouette. Window/ornament details approximate. No imported geometry/photo texture; adjacent houses/canal retained."
+  }
+}

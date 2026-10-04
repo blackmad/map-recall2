@@ -225,7 +225,7 @@ export interface RecallHost extends GameCoreHost {
   _factRotation: RotationState;
 
   routeFrom: { id: string; name: string };
-  routeTo: { id: string; name: string; reviewStop?: string };
+  routeTo: { id: string; name: string; reviewStop?: string; landmarkId?: string };
   routeOptions: { answerMode: AnswerMode };
   routeDifficulty: RouteDifficulty;
   gameyFeatures: boolean;
@@ -343,7 +343,7 @@ export interface PresentationHost extends GameCoreHost {
   routeOptions: { answerMode: AnswerMode; line: boolean; arrow: boolean; minimap: boolean };
 
   routeFrom: { id: string; name: string };
-  routeTo: { id: string; name: string; reviewStop?: string };
+  routeTo: { id: string; name: string; reviewStop?: string; landmarkId?: string };
   routePath: WorldPoint[] | null;
   _liveRoutePath: WorldPoint[] | null;
   /** Length of the route planned at the start — the efficiency reference,

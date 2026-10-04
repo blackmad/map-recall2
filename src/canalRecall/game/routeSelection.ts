@@ -8,12 +8,14 @@
 
 import type { WorldPoint } from './worldTypes';
 import { isWorthACard } from './landmarkData';
+export { mergeManualPoiFeatures, manualPoiForCuratedId } from './manualPoiCatalog';
 
 export interface RoutePoi {
   id: string;
   name: string;
   lat: number;
   lng: number;
+  landmarkId?: string;
 }
 
 /** The content fields available on a raw landmark-extract destination. */

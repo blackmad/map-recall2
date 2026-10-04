@@ -232,11 +232,15 @@ export class ThreeBuildings {
   private transform: any = null;
 
   private look: BuildingLook;
+  private requestedLook: BuildingLook;
+  private readonly materials = new Map<BuildingLook, any>();
+  private sourceGroups = new Map<string, Feature[]>();
   private textureSets = new Map<BuildingLook, Promise<{ colour: any; mask: any }>>();
   private lookToken = 0;
   private worker: Worker | null | undefined;
   private readonly gens = new Map<string, number>();
   private readonly inflight = new Map<string, Feature[]>();
+  private readonly inflightOptions = new Map<string, { look: BuildingLook; streets?: Float32Array }>();
   private boatTiles = new Map<string, Houseboat[]>();
   private boatIds: ReadonlySet<string> = new Set();
   private boats: readonly Houseboat[] = [];
@@ -244,27 +248,116 @@ export class ThreeBuildings {
   private detailTiles = new Set<string>();
 
   constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural') {
-    this.look = look;
+    this.look = this.requestedLook = look;
     this.layer = this.makeLayer();
   }
 
-  getLook(): BuildingLook { return this.look; }
+  /** Raycast the rendered mesh and resolve its vertex range to an exact
+   * building ID. Shader-hidden replacement meshes must never intercept a
+   * click on the manual model that replaced them. */
+  inspectAtScreen(x: number, y: number, width: number, height: number): any {
+    if (!this.visible || !this.ready || !this.camera || !this.THREE || !width || !height) return null;
+    const T = this.THREE;
+    const projection = this.camera.projectionMatrix;
+    const inverse = projection.clone().invert();
+    const nx = x / width * 2 - 1, ny = 1 - y / height * 2;
+    const near = new T.Vector3(nx, ny, -1).applyMatrix4(inverse);
+    const far = new T.Vector3(nx, ny, 1).applyMatrix4(inverse);
+    const ray = new T.Raycaster(near, far.sub(near).normalize());
+    let result: any = null;
+    for (const [key, chunk] of this.chunks) {
+      if (!chunk.mesh || !chunk.source.length) continue;
+      chunk.mesh.updateWorldMatrix(true, true);
+      const sphere = chunk.mesh.geometry.boundingSphere?.clone().applyMatrix4(chunk.mesh.matrixWorld);
+      if (sphere && !ray.ray.intersectsSphere(sphere)) continue;
+      let pickMesh = chunk.mesh, temporary: any = null;
+      // Uploaded buffers are intentionally released on the CPU. Rebuild
+      // only a ray-intersecting chunk, with its installed build inputs, and
+      // discard it after the click rather than retaining city-wide buffers.
+      if (!chunk.mesh.geometry.getAttribute('position')?.array || chunk.mesh.geometry.index && !chunk.mesh.geometry.index.array) {
+        const installedLook = chunk.mesh.userData.installedLook as BuildingLook | undefined;
+        if (!installedLook) continue;
+        const rebuilt = key === KIT_KEY ? this.buildKits(chunk.source, installedLook)
+          : buildFeatureChunk(chunk.source, installedLook, key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls', chunk.mesh.userData.installedStreets);
+        if (rebuilt.vertexCount !== chunk.mesh.geometry.getAttribute('position').count
+          || rebuilt.ranges.length !== chunk.ranges.size
+          || rebuilt.ranges.some(range => {
+            const drawn = chunk.ranges.get(range.id);
+            return !drawn || drawn.start !== range.start || drawn.count !== range.count;
+          })) continue;
+        temporary = new T.BufferGeometry();
+        temporary.setAttribute('position', new T.BufferAttribute(rebuilt.positions, 3));
+        temporary.setIndex(new T.BufferAttribute(rebuilt.indices, 1));
+        temporary.boundingSphere = chunk.mesh.geometry.boundingSphere;
+        pickMesh = new T.Mesh(temporary, chunk.mesh.material);
+        pickMesh.matrixAutoUpdate = false;
+        pickMesh.matrixWorld.copy(chunk.mesh.matrixWorld);
+      }
+      try { for (const hit of ray.intersectObject(pickMesh, false)) {
+        const vertex = hit.face?.a;
+        if (vertex == null) continue;
+        const hidden = chunk.mesh.geometry.getAttribute('hidden')?.getX(vertex);
+        if (hidden > 0.5 && hidden < 1.5) continue;
+        const pair = [...chunk.ranges].find(([, range]) => vertex >= range.start && vertex < range.start + range.count);
+        if (!pair || this.hidden.has(pair[0])) continue;
+        const feature = chunk.source.find(feature => String(feature.properties.id) === pair[0]);
+        if (!feature) continue;
+        const depth = hit.point.clone().applyMatrix4(projection).z;
+        if (depth < -1 || depth > 1 || result && depth >= result.depth) continue;
+        const p = feature.properties || {};
+        const at = (this.map as any).unproject([x, y]);
+        result = { id: pair[0], name: p.name || p['name:en'] || '',
+          height: Number(p.height) || undefined, lngLat: [at.lng, at.lat], depth,
+          featureTarget: { source: 'osm-building-appearance', id: pair[0] } };
+      } } finally { temporary?.dispose(); }
+    }
+    return result;
+  }
 
-  /** Switch the wall look at runtime: loads its textures, then rebuilds every chunk. */
+  getLook(): BuildingLook { return this.requestedLook; }
+
+  /** Keep every resident mesh paired with the atlas and palette it was built for. */
+  private bindLookMaterial(look: BuildingLook, set: { colour: any; mask: any }): void {
+    let material = this.materials.get(look);
+    if (!material) {
+      material = this.material.clone();
+      this.materials.set(look, material);
+    }
+    material.uniforms.cells.value = set.colour;
+    material.uniforms.masks.value = set.mask;
+    material.uniforms.bands.value = look === 'cartoon' ? 3 : 0;
+    material.uniforms.flatColour.value = look === 'untextured' ? 1 : 0;
+    this.material = material;
+    this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
+  }
+
+  /** Invalidate work at request time, before awaiting textures or pumping queued jobs. */
+  private invalidateBuilds(): void {
+    for (const key of new Set([...this.gens.keys(), ...this.inflight.keys(), ...this.sourceGroups.keys()])) {
+      this.gens.set(key, (this.gens.get(key) ?? 0) + 1);
+    }
+    this.inflight.clear();
+    this.inflightOptions.clear();
+    this.pending = [];
+  }
+
+  /** Switch each chunk's geometry, vertex colors and material together after textures arrive. */
   async setLook(look: BuildingLook): Promise<void> {
-    if (look === this.look && this.material?.uniforms.cells.value) return;
+    if (look === this.requestedLook && this.ready && this.material?.uniforms.cells.value) return;
     const token = ++this.lookToken;
-    this.look = look;
-    if (!this.THREE) return; // onAdd will pick the look up
+    this.requestedLook = look;
+    this.invalidateBuilds();
+    if (!this.THREE) { this.look = look; return; } // onAdd picks up the latest request
     const set = await this.texturesFor(cellSetOf(look));
     if (token !== this.lookToken) return;
-    this.material.uniforms.cells.value = set.colour;
-    this.material.uniforms.masks.value = set.mask;
-    this.material.uniforms.bands.value = look === 'cartoon' ? 3 : 0;
-    this.material.uniforms.flatColour.value = look === 'untextured' ? 1 : 0;
-    this.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
-    for (const [key, entry] of [...this.chunks]) this.pending.push(() => this.rebuild(key, entry.source));
+    // Tile arrivals during texture loading may have queued jobs for the former look.
+    this.invalidateBuilds();
+    this.look = look;
+    this.bindLookMaterial(look, set);
+    this.ready = true;
+    for (const [key, source] of this.sourceGroups) this.pending.push(() => this.rebuild(key, source));
     this.pump();
+    this.map.triggerRepaint();
   }
 
   /** Build (once) the colour and tint-mask texture arrays for a look. */
@@ -310,8 +403,9 @@ export class ThreeBuildings {
     // Houseboats ride along with the resident building tiles, one chunk per tile.
     for (const key of [...groups.keys()]) if (this.boatTiles.has(key)) groups.set(BOAT_PREFIX + key, NO_SOURCE);
     this.lastFeatures = features;
+    this.sourceGroups = groups;
     const same = (a: readonly Feature[] | undefined, b: readonly Feature[]) => !!a && a.length === b.length && a.every((f, i) => f === b[i]);
-    for (const key of [...this.chunks.keys(), ...this.inflight.keys()]) if (!groups.has(key)) { this.dropChunk(key); this.inflight.delete(key); this.gens.set(key, (this.gens.get(key) ?? 0) + 1); }
+    for (const key of [...this.chunks.keys(), ...this.inflight.keys()]) if (!groups.has(key)) { this.dropChunk(key); this.inflight.delete(key); this.inflightOptions.delete(key); this.gens.set(key, (this.gens.get(key) ?? 0) + 1); }
     for (const [key, list] of groups) {
       const flying = this.inflight.get(key);
       if (flying ? same(flying, list) : same(this.chunks.get(key)?.source, list)) continue;
@@ -361,7 +455,8 @@ export class ThreeBuildings {
 
   dispose(): void {
     for (const key of [...this.chunks.keys()]) this.dropChunk(key);
-    this.material?.dispose();
+    for (const material of new Set([this.material, ...this.materials.values()])) material?.dispose();
+    this.materials.clear();
     for (const set of this.textureSets.values()) void set.then(t => { t.colour.dispose(); t.mask.dispose(); });
   }
 
@@ -383,7 +478,7 @@ export class ThreeBuildings {
   }
 
   /** Landmark kits: build each kit from whichever of its OSM parts are resident. */
-  private buildKits(source: Feature[]): Chunk {
+  private buildKits(source: Feature[], look: BuildingLook = this.look): Chunk {
     const kx = 111_320 * Math.cos(ORIGIN.lat * Math.PI / 180), ky = 110_540;
     const parts = new Map<string, PartInput>();
     for (const f of source) {
@@ -392,7 +487,6 @@ export class ThreeBuildings {
       const id = String(f.properties.id);
       parts.set(id, { id, ring: outer.map(([lng, lat]) => [(lng - ORIGIN.lng) * kx, (lat - ORIGIN.lat) * ky] as [number, number]), minHeightM: Number(f.properties.minHeight) || 0, heightM: Number(f.properties.height) });
     }
-    const look = this.look;
     // Kits and fronts are authored in natural colours; each look recolours them like its neighbours.
     const geometry: KitPartGeometry[] = KITS.flatMap(kit => kitGeometry(kit, parts)).map(g => ({ ...g, tris: g.tris.map(t => ({ ...t, hex: lookHex(t.hex, look) })) }));
     for (const front of FRONT_LIST) {
@@ -401,7 +495,7 @@ export class ThreeBuildings {
       // One range per id: a front shares its first carrier's range (a kit roof on the Beurs hall), so hiding the answer hides both.
       if (held) held.tris.push(...g.tris); else geometry.push(g);
     }
-    return buildKitChunk(geometry, this.kitLayers());
+    return buildKitChunk(geometry, this.kitLayers(look));
   }
 
   /**
@@ -468,14 +562,19 @@ export class ThreeBuildings {
     return buildKitChunk(geometry, this.kitLayers());
   }
 
-  private kitLayers() {
-    const cells = cellSetOf(this.look), roofBase = cells === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
+  private kitLayers(look: BuildingLook = this.look) {
+    const cells = cellSetOf(look), roofBase = cells === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
     const plain = this.look === 'untextured' ? roofBase + 3 : cells === 'procedural' ? cellLayer('canal', 'plain', 0) : bayLayer('canal', 0, 'plain');
     return { plain, flat: roofBase + 3, slope: roofBase + 1 };
   }
 
+  private currentSource(key: string, source: readonly Feature[]): boolean {
+    const latest = this.sourceGroups.get(key);
+    return !!latest && latest.length === source.length && latest.every((f, i) => f === source[i]);
+  }
+
   private rebuild(key: string, source: Feature[]): void {
-    if (!this.THREE) return;
+    if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     if (key.startsWith(BOAT_PREFIX)) {
       const t0 = performance.now(), chunk = this.buildBoats(key.slice(BOAT_PREFIX.length));
       this.install(key, source, chunk, performance.now() - t0);
@@ -487,12 +586,15 @@ export class ThreeBuildings {
     if (worker) {
       // Off the main thread; a reply for an older generation (the tile changed again, or the look) is dropped.
       this.inflight.set(key, source);
-      worker.postMessage({ key, gen, look: this.look, features: source, mode: key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls', streets: this.streetsFor(source) });
+      const options = { look: this.look, streets: this.streetsFor(source) };
+      this.inflightOptions.set(key, options);
+      worker.postMessage({ key, gen, ...options, features: source, mode: key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls' });
       return;
     }
     const t0 = performance.now();
-    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, this.look, key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls', this.streetsFor(source));
-    this.install(key, source, chunk, performance.now() - t0);
+    const options = { look: this.look, streets: this.streetsFor(source) };
+    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, options.look, key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls', options.streets);
+    this.install(key, source, chunk, performance.now() - t0, options);
   }
 
   /** The chunk worker, started on first use; null where workers are unavailable (then chunks build inline). */
@@ -505,8 +607,10 @@ export class ThreeBuildings {
       worker.onmessage = (event: MessageEvent<{ key: string; gen: number; chunk: Chunk; ms: number }>) => {
         const { key, gen, chunk, ms } = event.data, source = this.inflight.get(key);
         if (this.gens.get(key) !== gen || !source) return;
+        const options = this.inflightOptions.get(key);
         this.inflight.delete(key);
-        this.install(key, source, chunk, ms);
+        this.inflightOptions.delete(key);
+        this.install(key, source, chunk, ms, options);
       };
       worker.onerror = (error) => {
         // Fall back to inline builds for good, and redo whatever was in flight.
@@ -514,6 +618,7 @@ export class ThreeBuildings {
         this.worker = null; worker.terminate();
         for (const [key, source] of this.inflight) this.pending.push(() => this.rebuild(key, source));
         this.inflight.clear();
+        this.inflightOptions.clear();
         this.pump();
       };
       this.worker = worker;
@@ -523,8 +628,8 @@ export class ThreeBuildings {
     return this.worker;
   }
 
-  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number): void {
-    if (!this.THREE) return;
+  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: { look: BuildingLook; streets?: Float32Array }): void {
+    if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     const t0 = performance.now() - buildMs;
     this.dropChunk(key);
     if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); return; }
@@ -546,6 +651,9 @@ export class ThreeBuildings {
     // whole map flashes once per new chunk, so measure while the array exists.
     geometry.computeBoundingSphere();
     const mesh = new THREE.Mesh(geometry, this.material);
+    mesh.userData ??= {};
+    mesh.userData.installedLook = options?.look ?? this.look;
+    mesh.userData.installedStreets = options?.streets;
     mesh.frustumCulled = false;
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
     this.chunks.set(key, entry);
@@ -589,22 +697,28 @@ export class ThreeBuildings {
         owner.renderer.autoClear = false;
         // CPU copies are freed after upload, so a restored context needs fresh meshes.
         map.getCanvas().addEventListener('webglcontextrestored', () => {
+          owner.ready = false;
           owner.textureSets.clear();
-          void owner.texturesFor(cellSetOf(owner.look)).then(set => {
-            owner.material.uniforms.cells.value = set.colour; owner.material.uniforms.masks.value = set.mask;
-            for (const [key, entry] of [...owner.chunks]) owner.pending.push(() => owner.rebuild(key, entry.source));
-            owner.pump();
-          });
+          for (const key of [...owner.chunks.keys()]) owner.dropChunk(key);
+          for (const material of owner.materials.values()) material.dispose();
+          owner.materials.clear();
+          owner.material.uniforms.cells.value = null;
+          void owner.setLook(owner.requestedLook);
         });
         owner.material = new THREE.RawShaderMaterial({
           glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
           uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 }, flatColour: { value: owner.look === 'untextured' ? 1 : 0 } }, side: THREE.FrontSide,
         });
-        void owner.texturesFor(cellSetOf(owner.look)).then(set => {
-          owner.material.uniforms.cells.value = set.colour;
-          owner.material.uniforms.masks.value = set.mask;
-          owner.textureMB = (set.colour.userData.bytes + set.mask.userData.bytes) * 4 / 3 / 1048576;
+        owner.materials.set(owner.look, owner.material);
+        const initialLook = owner.requestedLook, token = ++owner.lookToken;
+        void owner.texturesFor(cellSetOf(initialLook)).then(set => {
+          // A newer mode can finish before the initial atlas. Never overwrite it.
+          if (token !== owner.lookToken) return;
+          owner.look = initialLook;
+          owner.bindLookMaterial(initialLook, set);
           owner.ready = true;
+          owner.invalidateBuilds();
+          for (const [key, source] of owner.sourceGroups) owner.pending.push(() => owner.rebuild(key, source));
           owner.pump();
           owner.map.triggerRepaint();
         });

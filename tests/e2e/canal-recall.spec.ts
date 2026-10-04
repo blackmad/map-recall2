@@ -219,7 +219,7 @@ test('curated POI identity wins over an unnamed building hit', async ({ page }) 
   await openCarRoute(page);
   const selected = await page.evaluate(() => {
     const game = window.canalRecallGame;
-    const landmark = { id: 'harness-poi', name: 'Harness Museum', x: 100000, y: 100000 };
+    const landmark = { id: 'harness-poi', name: 'Harness Museum', detail: 'A museum with researched information.', x: 100000, y: 100000 };
     game.landmarks = [landmark];
     game.vectorMap.inspectBuilding = () => ({ id: landmark.id, name: landmark.name, lngLat: [4.9, 52.37], poi: true });
     game.vectorMap.setActiveLandmark = () => undefined;
@@ -234,34 +234,33 @@ test('curated POI identity wins over an unnamed building hit', async ({ page }) 
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
 });
 
-test('anonymous building footprints acknowledge the click without inventing a name', async ({ page }) => {
+test('anonymous year-only buildings clear selection without opening a card', async ({ page }) => {
   await openCarRoute(page);
   const result = await page.evaluate(() => {
-    const game = window.canalRecallGame;
+    const game = window.canalRecallGame as any;
     game.landmarks = [];
-    game._landmarkNotice = null;
+    game.quizPromptName = '';
+    game._utilityOpen = false;
+    game._landmarkNotice = { id: 'previous-museum', name: 'Previous museum' };
+    game._buildingFacts = { lookup: () => [1887, -1, 0] };
+    let active: unknown = 'previous-museum';
+    game.vectorMap.setActiveLandmark = (value: unknown) => { active = value; };
     game.vectorMap.inspectBuilding = () => ({ id: 'anonymous-footprint', name: '', lngLat: [4.9, 52.37] });
     const canvas = document.querySelector<HTMLCanvasElement>('#gameCanvas');
     if (!canvas) throw new Error('Canvas missing');
     const rect = canvas.getBoundingClientRect();
     const inspector = game as HarnessGame & { _inspectBuildingAt(x: number, y: number): void };
     inspector._inspectBuildingAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
-    return game._landmarkNotice;
+    return { card: game._landmarkNotice, active };
   });
-  expect(result).toMatchObject({
-    id: 'clicked-anonymous-footprint',
-    name: 'No building details',
-    // With no facts for it either (see buildingFacts.ts for what it says when
-    // the register has a year).
-    detail: 'This building has no name or date in the map data.',
-  });
+  expect(result).toEqual({ card: null, active: null });
   await expect(page.locator('text=Unnamed building')).toHaveCount(0);
 });
 
 // Named regression (2026-09-30): any click within 120 px of a landmark opened
 // the landmark and lit the clicked building, so the house next door lit up as
-// the museum. The extract-time join decides now; a nearby landmark wins only
-// when its marker itself is clicked.
+// the museum. Exact surface ownership or an explicit marker identity decides;
+// screen proximity cannot assign a landmark to the house next door.
 test('a click opens the building clicked, not the landmark next door', async ({ page }) => {
   await openCarRoute(page);
   const result = await page.evaluate(() => {
@@ -271,12 +270,14 @@ test('a click opens the building clicked, not the landmark next door', async ({ 
     const logicalW = (0, eval)('CANVAS_W') as number, logicalH = (0, eval)('CANVAS_H') as number;
     const toClient = (p: { x: number; y: number }) => [rect.left + p.x * rect.width / logicalW, rect.top + p.y * rect.height / logicalH];
     // A landmark whose own building is 'museum', beside the player.
-    const landmark = { ...game.landmarks[0], id: 'museum-landmark', name: 'Museum', x: game.player.x, y: game.player.y, buildingIds: ['museum'] };
+    const landmark = { ...game.landmarks[0], id: 'museum-landmark', name: 'Museum', detail: 'Researched museum information.', x: game.player.x, y: game.player.y, buildingIds: ['museum'] };
+    game.quizPromptName = '';
+    game._utilityOpen = false;
     game.landmarks = [landmark];
     const marker = game.camera.worldToScreen(landmark.x, landmark.y);
-    const clickOn = (id: string, at: { x: number; y: number }) => {
+    const clickOn = (id: string, at: { x: number; y: number }, landmarkId?: string) => {
       game._landmarkNotice = null;
-      game.vectorMap.inspectBuilding = () => ({ id, name: '', lngLat: [4.9, 52.37], featureTarget: null });
+      game.vectorMap.inspectBuilding = () => ({ id, landmarkId, name: '', lngLat: [4.9, 52.37], featureTarget: null });
       const [x, y] = toClient(at);
       game._inspectBuildingAt(x, y);
       return game._landmarkNotice?.id;
@@ -285,10 +286,10 @@ test('a click opens the building clicked, not the landmark next door', async ({ 
     return {
       neighbour: clickOn('house-next-door', beside),
       own: clickOn('museum', beside),
-      marker: clickOn('house-next-door', marker),
+      marker: clickOn('house-next-door', marker, landmark.id),
     };
   });
-  expect(result.neighbour, '80 px from the marker, on another building').toBe('clicked-house-next-door');
+  expect(result.neighbour, '80 px from the marker, on an ordinary building').toBeUndefined();
   expect(result.own, 'the landmark\'s own building').toBe('museum-landmark');
   expect(result.marker, 'on the marker itself').toBe('museum-landmark');
 });

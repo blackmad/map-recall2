@@ -37,3 +37,11 @@ export function contextualBuildingPalette(id:string,constructionYear?:number|nul
   const ground=wall;
   return{wallKey:wall,roofKey:roof,groundKey:ground,wall:CONTEXTUAL_BUILDING_COLOURS[wall],roof:CONTEXTUAL_BUILDING_COLOURS[roof],ground:CONTEXTUAL_BUILDING_COLOURS[ground]};
 }
+
+/** A material family suggests a display hue, never a measured wall color. */
+export function materialWallDisplayPrior(material: unknown): string | null {
+  if (typeof material !== 'string') return null;
+  const colours: Record<string, string> = { brick: '#9a5846', stone: '#bcb5a6', concrete: '#b9b8b2', plaster: '#ded8cb', stucco: '#ded8cb', wood: '#8c6f55', metal: '#999c9e', glass: '#8d9a9e' };
+  const key = material.trim().toLowerCase();
+  return Object.prototype.hasOwnProperty.call(colours, key) ? colours[key] : null;
+}

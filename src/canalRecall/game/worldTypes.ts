@@ -52,6 +52,7 @@ export interface LandmarkNotice {
   factTexts?: string[];
   imageUrl?: string;
   wikipediaUrl?: string;
+  sourceUrl?: string;
   wikidata?: string;
   wikipedia?: string;
   extractLang?: string;
@@ -118,6 +119,7 @@ export interface Bridge {
 export interface BuildingHit {
   id?: string | number;
   name?: string;
+  landmarkId?: string;
   /** Metres, from the streamed building tile. */
   height?: number;
   lngLat: LngLat;

@@ -35,6 +35,7 @@ export interface LandmarkCardProps {
    *  telling them something new rather than repeating itself. */
   factKind?: string;
   hasArticle?: boolean;
+  articleLabel?: string;
   hasImage?: boolean;
 }
 
@@ -194,7 +195,7 @@ export function measureLandmarkCard(
   if (props.extractLang && props.extractLang !== 'en' && props.body) {
     pushBadge(props.extractLang.toUpperCase(), 'lang');
   }
-  if (props.hasArticle) pushBadge('W  WIKIPEDIA', 'article');
+  if (props.hasArticle) pushBadge(props.articleLabel || 'W  WIKIPEDIA', 'article');
   // Nothing else on a canvas card says it can be clicked, so the cut body has
   // to advertise the panel that holds the rest of it.
   if (truncated) pushBadge(MORE_LABEL, 'more');

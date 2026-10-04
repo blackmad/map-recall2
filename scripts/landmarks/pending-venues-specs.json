@@ -1,0 +1,78 @@
+[
+  {
+    "id": "sexmuseum-venustempel",
+    "name": "Sexmuseum Venustempel",
+    "landmarkId": "extract_landmarks_175435208",
+    "modelUrl": "./models/sexmuseum-venustempel.glb",
+    "suppressOsmIds": [
+      "w266648604",
+      "NL.IMBAG.Pand.0363100012170952"
+    ],
+    "footprint": {
+      "centre": [
+        4.8970676572826966,
+        52.376651769064054
+      ],
+      "headingDegrees": 111.44082364949816,
+      "lengthMetres": 40.50561572553951,
+      "widthMetres": 9.120788613138604
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 16.05305661503553,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.897056093786398,
+        52.376641612729955
+      ],
+      "northOffsetDegrees": -52.506119735466314,
+      "source": "Current BAG0363100012170952 physical parent and OSMw266648604; native scale1, simplified original roof envelope calibrated to AHN5/3DBAG LoD2.2 measurements and primary architectural photographs."
+    },
+    "attribution": {
+      "title": "Sexmuseum Venustempel",
+      "author": "Map Recall",
+      "sourceUrl": "https://sexmuseumamsterdam.nl/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
+    }
+  },
+  {
+    "id": "oude-lutherse-kerk",
+    "name": "Oude Lutherse Kerk",
+    "landmarkId": "extract_landmarks_1463154066",
+    "modelUrl": "./models/oude-lutherse-kerk.glb",
+    "suppressOsmIds": [
+      "r3583147",
+      "NL.IMBAG.Pand.0363100012165085"
+    ],
+    "footprint": {
+      "centre": [
+        4.889496169962845,
+        52.36837375043232
+      ],
+      "headingDegrees": 69.47451985894676,
+      "lengthMetres": 55.03645269255932,
+      "widthMetres": 40.86683779238047
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 179.85916855874166,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.889502176322695,
+        52.36839687826118
+      ],
+      "northOffsetDegrees": 69.33368841768836,
+      "source": "Current BAG0363100012165085 physical parent and OSM relation r3583147; native scale1, simplified original roof envelope calibrated to AHN5/3DBAG LoD2.2 measurements and primary architectural photographs."
+    },
+    "attribution": {
+      "title": "Oude Lutherse Kerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.luthersamsterdam.nl/orgel",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free architectural reconstruction; no imported mesh or photograph. Exact current parent scope, neighboring narrow houses and mapped courts preserved."
+    }
+  }
+]
