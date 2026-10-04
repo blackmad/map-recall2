@@ -2,6 +2,9 @@
 export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  [/^acer platanoides 'globosum'$/,'globose','cultivar-prior',nursery('acer-platanoides-globosum')],
+  [/^robinia pseudoacacia 'umbraculifera'$/,'globose','cultivar-prior',nursery('robinia-pseudoacacia-umbraculifera')],
+  [/^catalpa bignonioides 'nana'$/,'globose','cultivar-prior',nursery('catalpa-bignonioides-nana')],
   [/^ulmus hollandica 'commelin'$/,'upright-oval','cultivar-prior','https://www.ebben.nl/en/treeebb/ulhcomme-ulmus-x-hollandica-commelin/'],
   [/^quercus cerris$/,'rounded','species-prior',nursery('quercus-cerris')],
   [/^ulmus 'plantijn'$/,'vase','cultivar-prior','https://www.vdberk.co.uk/trees/ulmus-plantijn/'],
@@ -97,7 +100,8 @@ export function treeTypology(tree){
   const r=baseRadius*variation;
   const lobe=(dx,y,dz,sx,sy,sz,tone)=>({offset:[dx,y,dz],scale:[sx,sy,sz],tone});
   let lobes;
-  if(archetype==='pyramidal')lobes=[lobe(0,h*.65,0,r*.84,h*.19,r*.78,2),lobe(0,h*.80,0,r*.62,h*.16,r*.59,0),lobe(0,h*.90,0,r*.34,h*.10,r*.34,1)];
+  if(archetype==='globose')lobes=[lobe(0,h*.85,0,r*1.60,h*.15,r*1.50,0),lobe(-r*.65,h*.82,r*.10,r*1.05,h*.12,r*1.05,1),lobe(r*.65,h*.82,-r*.10,r*1.05,h*.12,r*1.05,2)];
+  else if(archetype==='pyramidal')lobes=[lobe(0,h*.65,0,r*.84,h*.19,r*.78,2),lobe(0,h*.80,0,r*.62,h*.16,r*.59,0),lobe(0,h*.90,0,r*.34,h*.10,r*.34,1)];
   else if(archetype==='upright-oval')lobes=[lobe(0,h*.73,0,r*.80,h*.27,r*.72,0),lobe(-r*.28,h*.68,r*.14,r*.51,h*.22,r*.48,1),lobe(r*.25,h*.65,-r*.12,r*.5,h*.23,r*.48,2)];
   else if(archetype==='conical-evergreen'||archetype==='conical-deciduous')lobes=[lobe(0,h*.55,0,r*.70,h*.24,r*.70,2),lobe(0,h*.74,0,r*.49,h*.19,r*.49,0),lobe(0,h*.90,0,r*.25,h*.10,r*.25,1)];
   else if(archetype==='vase')lobes=[lobe(0,h*.65,0,r*.6,h*.19,r*.58,2),lobe(-r*.4,h*.84,0,r*.70,h*.16,r*.75,0),lobe(r*.4,h*.84,0,r*.70,h*.16,r*.75,1)];

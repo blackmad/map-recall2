@@ -9,7 +9,7 @@ const errors=[];page.on('pageerror',e=>errors.push(String(e)));
 await page.goto('http://127.0.0.1:5196/canal-drive/tree-models.html');
 await page.waitForFunction(()=>window.treeReview?.done);
 const models=await page.evaluate(()=>treeReview.entries.map(e=>({species:e.species,archetype:e.proxy.archetype,draws:e.trees.meshes.length})));
-assert.equal(models.length,14);assert.equal(new Set(models.map(m=>m.archetype)).size,14);
+assert.equal(models.length,15);assert.equal(new Set(models.map(m=>m.archetype)).size,15);
 await page.screenshot({path:'artifacts/tree-models/gallery.png',fullPage:true});
 await page.locator('#angle').evaluate(e=>{e.value='90';e.dispatchEvent(new Event('input',{bubbles:true}));});
 await page.setViewportSize({width:390,height:844});
