@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 64,
+    "manual-model": 71,
     "catalogue-model": 12,
     "procedural-kit": 18,
-    "pending": 192
+    "pending": 186
   },
   "destinations": [
     {
@@ -1001,8 +1001,9 @@
       "type": "landmark",
       "queueRank": 78,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "agnietenkapel",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1875254501",
@@ -1340,8 +1341,9 @@
       "type": "landmark",
       "queueRank": 105,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "occii",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_238467800",
@@ -1389,7 +1391,8 @@
       "type": "museum",
       "queueRank": 109,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "wereldmuseum-amsterdam",
       "treatment": "building"
     },
     {
@@ -1401,7 +1404,8 @@
       "type": "cinema",
       "queueRank": 110,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "ketelhuis",
       "treatment": "building"
     },
     {
@@ -1672,7 +1676,8 @@
       "type": "museum",
       "queueRank": 132,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "allard-pierson",
       "treatment": "building"
     },
     {
@@ -1756,7 +1761,8 @@
       "type": "museum",
       "queueRank": 139,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "dutch-resistance-museum",
       "treatment": "building"
     },
     {
@@ -3526,6 +3532,17 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "frascati",
+      "treatment": "building"
+    },
+    {
+      "id": "lab111",
+      "name": "LAB111 / Pathological Anatomical Laboratory",
+      "lat": 52.36366317589964,
+      "lng": 4.867419736081726,
+      "queueRank": 287,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "lab111",
       "treatment": "building"
     }
   ]

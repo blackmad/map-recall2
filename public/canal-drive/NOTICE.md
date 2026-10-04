@@ -133,7 +133,9 @@ De Hallen, Huis Bartolotti, H’ART Museum, Amsterdam Museum, Jewish Museum,
 Portuguese Synagogue, Hollandsche Schouwburg, National Holocaust Museum and
 Homomonument, ARTIS Micropia/Ledenlokalen, ARTIS entrance and Hortus
 greenhouses/orangery, Arcam, Foam, Huis Marseille, Ons’ Lieve Heer op Solder,
-Brakke Grond, Frascati and Boom Chicago use the same original modelling workflow in
+Brakke Grond, Frascati, Boom Chicago, Agnietenkapel, LAB111, OCCII, Ketelhuis,
+Wereldmuseum Amsterdam, Dutch Resistance Museum and Allard Pierson use the
+same original modelling workflow in
 `scripts/landmarks/build-manual-landmarks.ts`. The live game loads these
 flat-colour replacements; the older imported catalogue remains available in
 the signature-model demo. No reference photograph pixels or downloaded

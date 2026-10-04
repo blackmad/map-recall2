@@ -1,0 +1,38 @@
+{
+  "id": "agnietenkapel",
+  "name": "Agnietenkapel (UvA)",
+  "landmarkId": "extract_landmarks_736156087",
+  "modelUrl": "./models/agnietenkapel.glb",
+  "suppressOsmIds": [
+    "w158853695",
+    "NL.IMBAG.Pand.0363100012180211"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.895042658823529,
+      52.36992318235294
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 34.05858877984683,
+    "widthMetres": 15.39822200008075
+  },
+  "surveyed": {
+    "anchor": [
+      4.895042658823529,
+      52.36992318235294
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Actual mapped chapel and courtyard wall; local east/south metre coordinates"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "Agnietenkapel",
+    "author": "Map Recall",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/agnietenkapel/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Exact mapped chapel plan and courtyard wall; roof divisions, tracery and carved gate details approximate. Reference photos guide geometry only."
+  }
+}

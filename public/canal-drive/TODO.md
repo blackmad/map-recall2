@@ -129,16 +129,17 @@ Huis Bartolotti, H’ART Museum, Amsterdam Museum, Jewish Museum, Portuguese
 Synagogue, Hollandsche Schouwburg, National Holocaust Museum and Homomonument
 plus ARTIS Micropia/Ledenlokalen, ARTIS entrance, Hortus greenhouses, Arcam,
 Foam, Huis Marseille, Ons’ Lieve Heer op Solder, Brakke Grond, Frascati and
-Boom Chicago (60 original assets). The live replacements retain measured footprint alignment and
+Boom Chicago, Agnietenkapel, LAB111, OCCII, Ketelhuis, Wereldmuseum Amsterdam,
+Dutch Resistance Museum and Allard Pierson (67 original assets). The live replacements retain measured footprint alignment and
 hide generic building geometry only after the GLB has loaded. Review meshes at
 `manual-landmarks.html`; inspect actual map placement before marking additions
-complete. Next batches: Studio/K, LAB111, Ketelhuis and further individual
-museums and historic university buildings. Exact building IDs preserve neighbors and courtyards
+complete. Next batches: Studio/K / Timorplein school, Cinecenter, Badhuistheater,
+Groote Museum, ARTIS Library, Dominicuskerk and Vredeskerk. Exact building IDs preserve neighbors and courtyards
 around narrow house museums and irregular complexes. Squares/intersections require a public-space treatment rather than
 a generic building model.
 Large cinemas and theatres now have the public-building category treatment;
-Pathé City and Tuschinski also have original models. Studio/K and LAB111 still
-need individual recognition details. Remaining museum models include Madame
+Pathé City, Tuschinski, LAB111, OCCII and Ketelhuis also have original models.
+Studio/K and Cinecenter still need individual recognition details. Remaining museum models include Madame
 Tussauds, Amsterdam Tulip Museum, Amsterdam Pipe Museum and Groote Museum.
 Further kit refinements: Munttoren, Rijksmuseum (towers, central arch), Beurs van
 Berlage (clock tower), NEMO (green ship prow), Stopera, Hofkerk
