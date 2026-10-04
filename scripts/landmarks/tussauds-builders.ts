@@ -1,0 +1,36 @@
+import * as T from 'three';
+import type {BuildingTools} from './cultural-builders';
+import data from './tussauds-footprints.json';
+/** The stone department store has an L plan, not a filled rectangular site. */
+export function buildTussaudsLandmark(_id:string,_w:number,_d:number,b:BuildingTools){
+ const {add,box,sign}=b,s=data.sites[0],a=s.authorHeadingDegrees*Math.PI/180;
+ const r=s.buildings[0].geometry.coordinates[0][0].slice(0,-1).map(p=>{const e=(p[0]-s.anchor[0])*111320*Math.cos(s.anchor[1]*Math.PI/180),n=(p[1]-s.anchor[1])*110540;return new T.Vector2(e*Math.sin(a)+n*Math.cos(a),e*Math.cos(a)-n*Math.sin(a));});
+ function clip(r:T.Vector2[],f:(p:T.Vector2)=>number){const out:T.Vector2[]=[];for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length],fp=f(p),fq=f(q);if(fp>=-1e-8)out.push(p);if((fp>=0)!==(fq>=0))out.push(p.clone().lerp(q,fp/(fp-fq)));}return out;}
+ function region(bounds:number[]){let out=r;const [xl,xh,zl,zh]=bounds;for(const f of [(p:T.Vector2)=>p.x-xl,(p:T.Vector2)=>xh-p.x,(p:T.Vector2)=>p.y-zl,(p:T.Vector2)=>zh-p.y])out=clip(out,f);return out;}
+ function shell(p:T.Vector2[],h:number){if(p.length<3)return;const g=new T.ExtrudeGeometry(new T.Shape(p),{depth:h,bevelEnabled:false});g.rotateX(Math.PI/2);g.translate(0,h,0);add(g,'stone');}
+ function hip(p:T.Vector2[],bounds:number[],y:number,rise:number){if(p.length<3)return;const [xl,xh,zl,zh]=bounds,half=Math.min(xh-xl,zh-zl)/2,planes=[(p:T.Vector2)=>p.x-xl,(p:T.Vector2)=>xh-p.x,(p:T.Vector2)=>p.y-zl,(p:T.Vector2)=>zh-p.y],vv:number[]=[];for(let i=0;i<4;i++){let poly=p;for(let j=0;j<4;j++)if(i!==j)poly=clip(poly,q=>planes[j](q)-planes[i](q));if(poly.length<3)continue;const g=new T.ShapeGeometry(new T.Shape(poly)),pos=g.getAttribute('position'),ix=g.index!;for(let k=0;k<ix.count;k++){const q=new T.Vector2(pos.getX(ix.getX(k)),pos.getY(ix.getX(k)));vv.push(q.x,y+Math.max(0,Math.min(half,planes[i](q)))*rise/half,q.y);}g.dispose();}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(vv,3));g.computeVertexNormals();add(g,'slate');}
+ const main=region([-30,30,-1.85,20]);shell(main,21.82);hip(main,[-22,22,-1.85,15.25],21.82,9.55);
+ const east=region([-30,-9.6,-20,-1.85]);shell(east,21.82);hip(east,[-22,-9.6,-15.13,10],21.82,9.52);
+ const rear=region([-9.6,30,-20,-5.5]);shell(rear,13.85);hip(rear,[-9.6,1,-15.13,-5.5],13.85,.20);
+ const inner=region([-9.6,30,-5.5,-1.85]);shell(inner,17.25);hip(inner,[-9.6,1,-5.5,-1.85],17.25,.18);
+ function pane(x:number,y:number,z:number,w:number,h:number,angle=0){const nx=Math.sin(angle),nz=Math.cos(angle);add(new T.PlaneGeometry(w+.18,h+.18),'white',x,y+h/2,z,angle);add(new T.PlaneGeometry(w,h),'glass',x+nx*.025,y+h/2,z+nz*.025,angle);box(x+nx*.06,y,z+nz*.06,.13,h,.12,'stone',angle);box(x+nx*.06,y+h*.68,z+nz*.06,w,.085,.12,'stone',angle);box(x+nx*.08,y-.14,z+nz*.08,w+.33,.17,.27,'stone',angle);}
+ function cornice(x:number,y:number,z:number,w:number,angle=0){for(const [dy,hh,dd]of [[0,.18,.28],[.18,.25,.44],[.43,.24,.66]])box(x,y+dy,z,w,hh,dd,'stone',angle);}
+ function rail(x:number,y:number,z:number,w:number,angle=0){const tx=Math.cos(angle),tz=-Math.sin(angle),nx=Math.sin(angle),nz=Math.cos(angle);box(x+nx*.5,y-.20,z+nz*.5,w,.23,1.14,'stone',angle);for(let u=-w/2+.1;u<w/2;u+=.46)box(x+u*tx+nx*.99,y,z+u*tz+nz*.99,.12,.92,.12,'stone',angle);box(x+nx*.99,y+.88,z+nz*.99,w,.17,.20,'stone',angle);}
+ function facade(x:number,z:number,width:number,axes:number,angle:number,central=false){const tx=Math.cos(angle),tz=-Math.sin(angle),nx=Math.sin(angle),nz=Math.cos(angle),step=width/axes;for(const y of [4.40,8.85,21.45])cornice(x,y,z,width,angle);for(let k=0;k<axes;k++){const u=(k-(axes-1)/2)*step,px=x+u*tx,pz=z+u*tz;for(const y of [4.92,9.13,13.34,17.55])pane(px+nx*.13,y,pz+nz*.13,Math.min(2.1,step*.66),3.19,angle);pane(px+nx*.10,.42,pz+nz*.10,Math.min(2.54,step*.79),3.62,angle);if(k<axes-1){const xx=px+step*.5*tx,zz=pz+step*.5*tz;box(xx,.05,zz,.48,4.35,.52,'stone',angle);box(xx,4.95,zz,.43,16.56,.37,'stone',angle);box(xx,20.95,zz,.80,.38,.50,'stone',angle);}rail(px,8.85,pz,step*.87,angle);if(central&&k>=4&&k<=6){box(px,4.64,pz+nx*.15,2.0,.22,.35,'stone',angle);add(new T.SphereGeometry(.27,6,4),'stone',px+nx*.32,8.4,pz+nz*.32);}}
+ }
+ // Eleven bays on the Dam; nine along the long Rokin return.
+ facade(.02,14.98,41.68,11,0,true);facade(-22.12,-.80,28.35,9,-Math.PI/2);
+ // The middle three-bay risalit rises to a rose-window gable.
+ const cx=.12,z=15.48,w=10.70;box(cx,21.82,z,w,5.50,.23,'stone');const sh=new T.Shape();sh.moveTo(-w/2,0);sh.lineTo(w/2,0);sh.lineTo(0,3.04);sh.closePath();add(new T.ShapeGeometry(sh),'stone',cx,27.30,z);const rim=new T.Shape();rim.moveTo(-w/2-.12,0);rim.lineTo(0,3.23);rim.lineTo(w/2+.12,0);rim.lineTo(w/2-.18,0);rim.lineTo(0,2.82);rim.lineTo(-w/2+.18,0);rim.closePath();add(new T.ShapeGeometry(rim),'white',cx,27.30,z+.03);
+ add(new T.CircleGeometry(1.55,24),'glass',cx,25.13,z+.15);add(new T.TorusGeometry(1.68,.17,4,24),'stone',cx,25.13,z+.22);add(new T.TorusGeometry(1.85,.12,4,24),'white',cx,25.13,z+.20);for(const x of [cx-3.8,cx+3.8]){pane(x,23.9,z+.15,1.24,2.07);box(x,21.6,z+.06,.30,6.10,.33,'white');}cornice(cx,23.05,z+.11,w+.25);box(cx,27.83,z+.12,3.1,.62,.16,'stone');for(const x of [-.9,0,.9])box(cx+x,27.50,z+.17,.28,1.34,.14,'white');
+ box(cx,20.86,z+.28,10.42,.57,.12,'bronze');sign('MADAME TUSSAUDS',cx,20.99,z+.39,.114,'gold');
+ // Original stylised corner/risalit sculptures: small scale, no portrait texture.
+ for(const x of [cx-2.8,cx+2.8]){box(x,21.45,z+.5,.36,1.10,.30,'dark');add(new T.SphereGeometry(.22,6,4),'stone',x,22.79,z+.55);box(x,22.08,z+.52,.80,.36,.25,'dark');}
+ // Rokin's three-bay roof-front gable is distinct from the Dam rose-window top.
+ const side=-22.18,sz=-10.45,ang=-Math.PI/2;box(side,21.82,sz,7.2,3.1,.25,'stone',ang);const sideTop=new T.Shape([new T.Vector2(-3.6,0),new T.Vector2(3.6,0),new T.Vector2(0,2.2)]);add(new T.ShapeGeometry(sideTop),'stone',side,24.92,sz,ang);pane(side-.08,22.65,sz,2.02,1.81,ang);for(const zz of [sz-2.6,sz+2.6])pane(side-.08,22.74,zz,.75,1.22,ang);
+ // Small slate-roof dormers and two historic green roof ventilation kiosks.
+ for(const x of [-18.0,-12.3,-6.8,7.0,12.6,18.0]){box(x,25.6,12.00,1.8,1.9,1.65,'stone');b.gableRoof(x,27.5,12.00,2.0,1.86,.74,'slate');pane(x,25.8,12.89,1.1,1.35);}
+ for(const x of [-14.1,14.1]){box(x,30.9,6.55,1.22,2.21,1.22,'bronze');for(const z0 of [5.88,7.22]){box(x,31.22,z0,.95,1.24,.07,'glass');for(const u of [-.31,0,.31])box(x+u,31.2,z0,.075,1.45,.08,'bronze');}b.hip(x,33.12,6.55,1.65,1.65,.58,'bronze');box(x,33.70,6.55,.11,.52,.11,'bronze');}
+ // Backstreet facades stop at their real L-shaped rear outline and lower rooms.
+ let area=0;for(let i=0;i<r.length;i++)area+=r[i].x*r[(i+1)%r.length].y-r[(i+1)%r.length].x*r[i].y;for(let i=0;i<r.length;i++){const p=r[i],q=r[(i+1)%r.length],v=q.clone().sub(p),len=v.length();if(len<3.0||p.y>13&&q.y>13||p.x<-21&&q.x<-21)continue;const t=v.clone().normalize(),n=new T.Vector2(t.y,-t.x).multiplyScalar(area>0?1:-1),ang=Math.atan2(n.x,n.y),count=Math.round(len/3.8);for(let j=0;j<count;j++){const pt=p.clone().addScaledVector(t,len*(j+.5)/count).addScaledVector(n,.06),h=pt.y>=-1.85||pt.x<=-9.6?21.8:pt.y>=-5.5?17.25:13.85;for(let y=1.2;y+2.5<h;y+=4.1)pane(pt.x,y,pt.y,1.63,2.50,ang);}}
+}
