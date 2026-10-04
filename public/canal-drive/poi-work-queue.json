@@ -158,13 +158,14 @@
       "priority": "low",
       "status": "built",
       "owner": "root",
-      "validation": "1870 candidates within Amsterdam municipality; net footprint excludes courtyards; modeled identities excluded; twin outlines and raised parts grouped."
+      "validation": "1860 candidates within Amsterdam municipality; net footprint excludes courtyards; modeled identities excluded; twin outlines and raised parts grouped."
     },
     {
       "id": "faralda-crane",
       "task": "Faralda NDSM Crane Hotel",
       "priority": "normal",
-      "status": "queued"
+      "status": "verified",
+      "validation": "Original5896tri87500B accepted in gallery and both dense live views. Existing canonical chosen finish/pin retained, physical click opens opaque sourced card; exact two aliases/native1/openportal and uploaded X/Y-Helling neighbors pass."
     },
     {
       "id": "nemo",
@@ -394,8 +395,8 @@
       "id": "legacy-imports",
       "task": "Remaining legacy imports: Stadhuis/Stopera and Heineken Experience",
       "priority": "normal",
-      "status": "queued",
-      "validation": "Concertgebouw and Royal Palace original replacements accepted. Stopera and Heineken original sources are ready for coordinated generation and visual review."
+      "status": "verified",
+      "validation": "All legacy references replaced by original house-style models. Stopera and Heineken accepted in gallery and dense live game; current138original models, exact native placement/neighbor masks and genuine canonical cards/pins/routes checked."
     },
     {
       "id": "montelbaanstoren-amsterdam",
@@ -448,22 +449,22 @@
       "id": "street-aware-procedural-architecture",
       "task": "Street-side panorama profiles and architectural recipes: Overtoom 215–247, Bethaniëndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
       "priority": "high",
-      "status": "in-progress",
-      "notes": "Shared procedural priors preserve surveyed geometry and curated landmarks. Five reviewed municipal street sides plus four unchanged holdout transfers, from 36 valid perspective crops. Pale accents, proportions, masonry/punched/ribbon/curtain recipes and stratified local mixtures work in four detailed modes. 20 targeted tests, TypeScript, mesh/extras and mode-transition checks pass. Review at artifacts/street-appearance/index.html; performance acceptance remains open because shared rendering changes and browser timing limits confound the baseline. Exact Samrat appearance is not a reconstruction claim."
+      "status": "verified-pilot",
+      "notes": "Three self-review/improvement cycles complete on Overtoom, De Wallen and Marcantilaan, plus adjacent withheld-source transfers. 36 tests and four rendering-mode browser review pass; 349 surveyed neighbors, 95 frozen frontage assignments, 169 compact architectural street segments. Current source and cohort admission replay pass. Final same-worker profile-on/off CPU compile aggregate +0.29%; walls +3.29%, extras -0.37%, one of 24 cases +12.3%. Reviewed stage triangles decrease with unchanged draw calls. Full-game GPU budget remains unverified. Ready for reviewed city batches, not a blanket city-wide style claim. Approximate street character, no individual facade registration claim. Latest demos: artifacts/street-appearance/cycles/index.html."
     },
     {
       "id": "street-profile-realized-palette",
       "task": "Validate and improve realized facade palette mixtures on actual exposed street runs, especially charcoal fronts in the De Wallen pilot",
       "priority": "high",
-      "status": "in-progress",
-      "notes": "The pilot's production source replay admits Samrat and applies local priors, but the captured right side has four dark-red, two cream and one modern-buff runs with no charcoal selection. Stratified assembly quantiles do not guarantee the frontage histogram after geometry and year filtering. Preserve approximate buildings; improve block-level realization and measure actual visible frontage rather than special-casing Samrat. See artifacts/street-appearance/applied-wall-audit.json."
+      "status": "verified",
+      "notes": "Full eligible exposed-frontage cohorts replace gap-sensitive assembly quantiles. Unique surveyed identities, construction eligibility and width-aware largest-remainder allocation produce visible charcoal/red/cream mixtures. Split streamed subsets and complete/compact street graphs reproduce assignments without differences. Count and frontage-width histograms are both audited; wide modern infill stays modern. Three visual review cycles and adjacent heldouts accepted."
     },
     {
       "id": "street-profile-entrances-and-crowns",
       "task": "Extend street profiles to correlated entrance/basement patterns and crown frequencies, using municipal evidence and held-out review",
       "priority": "normal",
-      "status": "deferred",
-      "notes": "Follow-up identified while reviewing the user's Sketchfab canal-house references. Existing cornice, sill, stoop and hoist components need coordinated placement tied to opening axes and roof compatibility. See scripts/street-appearance/model-reference-notes.md. No imported meshes or photo textures; surveyed roofs remain authoritative."
+      "status": "in-progress",
+      "notes": "Pilot connected pale entry surrounds and compatible small attic windows implemented and visually reviewed in cycle 3. Unsourced front crown plates inherit street wall tint; surveyed roof shape and sourced colors remain authoritative. Further correlated basement/stoop, communal stairwell glazing and richer source-supported crown frequencies remain queued; no imported meshes or per-building registration."
     },
     {
       "id": "olvg-building-visibility",
@@ -524,26 +525,33 @@
     {
       "id": "heineken-original",
       "task": "Original Heineken Experience complex",
-      "status": "source-ready",
+      "status": "verified",
       "priority": "normal",
       "owner": "museum_landmarks",
-      "validation": "Current official parent, original brew house/silo/cooling hall and74 documented clerestory lights researched; actual exposed glazing/roof/scope checks pass. Shared generation and visual review pending."
+      "validation": "Original15537tri184764B accepted in gallery/front/rear/context. Actual canonical selected finish/pin and physical nearest-surface click sourced card pass; native1/exact2aliases, all3surveyed neighboring parents resident and unhidden. Actual local camera residency awaited; no source/runtime selection workaround."
     },
     {
       "id": "stopera-original",
       "task": "Original Stopera/City Hall complex",
-      "status": "source-ready",
+      "status": "verified",
       "priority": "normal",
       "owner": "trees",
-      "validation": "23 current parts, open passages/plot and physically visible curved/stepped glazing checked. Exterior height calibration explicitly separates noisy equipment maxima. Shared generation and visual review pending."
+      "validation": "Original33251tri481716B accepted in gallery and both dense live views. Canonical Opera chosen finish/pin+physical sourcedcard, exact26aliases/native1, two openpassages/sixopenplotprobes and uploaded GranVista neighbor passed. Coplanar trim caps lowered2.5cm; regenerated source geometry/asset checks pass."
     },
     {
       "id": "faralda-crane-hotel",
       "task": "Faralda NDSM Crane Hotel",
-      "status": "source-ready",
+      "status": "verified",
       "priority": "normal",
       "owner": "venue_landmarks",
-      "validation": "Current exact crane parent and genuine teaching destination preserved. Primary published suite heights, open base, steel lattice and supported boom geometry checked. Shared generation and visual review pending."
+      "validation": "Original5896tri87500B accepted in gallery and both dense live views. Existing canonical chosen finish/pin retained, physical click opens opaque sourced card; exact two aliases/native1/openportal and uploaded X/Y-Helling neighbors pass."
+    },
+    {
+      "id": "street-rhythm-independent-city-discovery",
+      "task": "Discover street-side architectural rhythms independently from municipal panoramas and admit reviewed city batches",
+      "priority": "high",
+      "status": "deferred",
+      "notes": "User wants expansion without supplying screenshots. Pilot acquisition, joint recipe compilation, source admission, baked frontage cohorts and heldout four-mode review exist. Next: rank unprofiled routed segments by native footprint/year/height transitions and panorama coverage; sample each side, split where character changes, preserve source-specific appearance and modern exceptions, reject uncertain crops. District priors may guide discovery but must not overwrite individual street-side evidence. Keep recurring per-batch self-review and performance evidence."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

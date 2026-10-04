@@ -1,0 +1,376 @@
+{
+  "id": "faralda-crane-hotel",
+  "osmId": "w280619914",
+  "bagId": "0363100012241774",
+  "currentBagProperties": {
+    "aantal_verblijfsobjecten": 1,
+    "bouwjaar": 2014,
+    "documentdatum": "2014-05-14",
+    "documentnummer": "SN00002050_RB00GM",
+    "gebruiksdoel": "bijeenkomstfunctie,logiesfunctie",
+    "geconstateerd": "N",
+    "identificatie": "0363100012241774",
+    "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012241774",
+    "status": "Pand in gebruik",
+    "verblijfsobject.href": [
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0ebe7eb2-a027-5f24-8ff3-f014a96a25c5"
+    ]
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          4.8947269937446976,
+          52.3993787651383
+        ],
+        [
+          4.894724315417947,
+          52.399371204370006
+        ],
+        [
+          4.894772683508413,
+          52.39936479053154
+        ],
+        [
+          4.894766246550832,
+          52.399346392998176
+        ],
+        [
+          4.8948898184816105,
+          52.39933038731837
+        ],
+        [
+          4.894916087007949,
+          52.399406064722754
+        ],
+        [
+          4.894792792038313,
+          52.399422251334784
+        ],
+        [
+          4.894786582857008,
+          52.39940451084869
+        ],
+        [
+          4.894738362050789,
+          52.39941088935458
+        ],
+        [
+          4.8947269937446976,
+          52.3993787651383
+        ]
+      ]
+    ]
+  },
+  "poi": {
+    "osmId": "n957126234",
+    "center": [
+      4.8948433,
+      52.3994089
+    ]
+  },
+  "retainedNeighbors": [
+    {
+      "id": "w280619702",
+      "name": "Y-Helling",
+      "bag": "0363100012238702",
+      "distance": 67.7,
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8947415,
+                52.3988534
+              ],
+              [
+                4.8955083,
+                52.3987535
+              ],
+              [
+                4.895864,
+                52.3997734
+              ],
+              [
+                4.8958554,
+                52.3997789
+              ],
+              [
+                4.8959315,
+                52.4000078
+              ],
+              [
+                4.8959128,
+                52.4000455
+              ],
+              [
+                4.8959699,
+                52.4002021
+              ],
+              [
+                4.8959437,
+                52.4002596
+              ],
+              [
+                4.8960405,
+                52.4005287
+              ],
+              [
+                4.8954363,
+                52.4006082
+              ],
+              [
+                4.8953393,
+                52.4003422
+              ],
+              [
+                4.895239,
+                52.4002687
+              ],
+              [
+                4.8951027,
+                52.3998791
+              ],
+              [
+                4.8950936,
+                52.3998794
+              ],
+              [
+                4.8949443,
+                52.3994443
+              ],
+              [
+                4.8947415,
+                52.3988534
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "w280620080",
+      "name": "X-Helling",
+      "bag": "0363100012238701",
+      "distance": 61.2,
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8943604,
+                52.3993721
+              ],
+              [
+                4.8946136,
+                52.3993405
+              ],
+              [
+                4.8949551,
+                52.4003165
+              ],
+              [
+                4.8949075,
+                52.4003227
+              ],
+              [
+                4.8947897,
+                52.4003379
+              ],
+              [
+                4.8946997,
+                52.4003496
+              ],
+              [
+                4.8943604,
+                52.3993721
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "w608121734",
+      "name": null,
+      "bag": null,
+      "distance": 45.1,
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8945909,
+                52.3989585
+              ],
+              [
+                4.8945936,
+                52.3989491
+              ],
+              [
+                4.8946077,
+                52.3989474
+              ],
+              [
+                4.8946144,
+                52.3989519
+              ],
+              [
+                4.8946204,
+                52.3989609
+              ],
+              [
+                4.8946439,
+                52.3990235
+              ],
+              [
+                4.8946452,
+                52.3990415
+              ],
+              [
+                4.8946425,
+                52.3990497
+              ],
+              [
+                4.8946291,
+                52.3990509
+              ],
+              [
+                4.8946204,
+                52.399044
+              ],
+              [
+                4.894613,
+                52.3990305
+              ],
+              [
+                4.8945916,
+                52.3989699
+              ],
+              [
+                4.8945909,
+                52.3989585
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "w608121735",
+      "name": null,
+      "bag": null,
+      "distance": 27.7,
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8946311,
+                52.3990783
+              ],
+              [
+                4.8946335,
+                52.3990724
+              ],
+              [
+                4.8946372,
+                52.3990696
+              ],
+              [
+                4.8946415,
+                52.3990685
+              ],
+              [
+                4.8946459,
+                52.3990687
+              ],
+              [
+                4.8946512,
+                52.3990704
+              ],
+              [
+                4.894659,
+                52.3990769
+              ],
+              [
+                4.8946647,
+                52.3990859
+              ],
+              [
+                4.8947106,
+                52.3992203
+              ],
+              [
+                4.8947113,
+                52.3992314
+              ],
+              [
+                4.8947096,
+                52.3992353
+              ],
+              [
+                4.8947072,
+                52.3992379
+              ],
+              [
+                4.8947025,
+                52.3992389
+              ],
+              [
+                4.8946989,
+                52.3992391
+              ],
+              [
+                4.8946945,
+                52.3992381
+              ],
+              [
+                4.8946885,
+                52.3992344
+              ],
+              [
+                4.8946801,
+                52.399224
+              ],
+              [
+                4.8946311,
+                52.3990878
+              ],
+              [
+                4.8946311,
+                52.3990783
+              ]
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "measurements": {
+    "heightMetres": 50,
+    "studioPlatformMetres": 10,
+    "suiteLevelsMetres": [
+      35,
+      40,
+      45
+    ],
+    "baseHeadingDegrees": 101.9,
+    "source": "Operator and IAA primary descriptions; outline current BAG. Beam sections/cabin extents/boom reach are visual approximations from architect photographs, not surveyed structural dimensions."
+  },
+  "referenceSources": [
+    "https://www.iaa-architecten.nl/projecten/feralda-crane-hotel/",
+    "https://www.faralda.com/hotels/",
+    "https://talsmashipyards.nl/en/projecten/specials-en/ndsm-cranehotel/",
+    "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012241774&f=json",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012241774",
+    "https://www.openstreetmap.org/way/280619914",
+    "https://d2bcsmrol7g4u1.cloudfront.net/Feralda-Crane-hotel-Amsterdam.jpg"
+  ],
+  "notes": "Current BAG base is approximately 2.5 m southwest of the 2017 OSM outline. Crane rotates in the wind; boom orientation is representative, not a permanently fixed surveyed axis. BAG construction 2014 records reuse, while Talsma dates original crane to 1950. 3DBAG roof max 14.925 m and open-lattice no-data do not capture the 50 m crane. Suppress only exact physical parent aliases; hotel point stays a genuine destination and neighbors/yard remain unmasked."
+}

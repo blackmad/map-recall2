@@ -14,7 +14,7 @@
     "Exact modeled identities excluded; repeated tile identities, near-identical footprints and raised parts grouped.",
     "Ground-level courtyard buildings remain separate. Uncertain complex identities require manual research."
   ],
-  "candidateCount": 1864,
+  "candidateCount": 1860,
   "candidates": [
     {
       "id": "NL.IMBAG.Pand.0363100012207510",
@@ -4865,20 +4865,6 @@
       "sourceUrl": "https://3dbag.nl/en/viewer"
     },
     {
-      "id": "w751559664",
-      "name": null,
-      "footprintSquareMetres": 5186,
-      "heightMetres": 22,
-      "center": [
-        4.90094445,
-        52.3682094
-      ],
-      "aliases": [],
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://www.openstreetmap.org/way/751559664"
-    },
-    {
       "id": "w199414695",
       "name": null,
       "footprintSquareMetres": 10368,
@@ -9331,20 +9317,6 @@
       "sourceUrl": "https://3dbag.nl/en/viewer"
     },
     {
-      "id": "NL.IMBAG.Pand.0363100012166152",
-      "name": null,
-      "footprintSquareMetres": 2846,
-      "heightMetres": 24.7,
-      "center": [
-        4.8916375,
-        52.357714
-      ],
-      "aliases": [],
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
       "id": "NL.IMBAG.Pand.0363100012236735",
       "name": null,
       "footprintSquareMetres": 2958,
@@ -12577,20 +12549,6 @@
       "priority": "low",
       "status": "needs-identification-and-research",
       "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "w751559655",
-      "name": null,
-      "footprintSquareMetres": 2928,
-      "heightMetres": 18,
-      "center": [
-        4.901380100000001,
-        52.3675322
-      ],
-      "aliases": [],
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://www.openstreetmap.org/way/751559655"
     },
     {
       "id": "w449011926",
@@ -17273,20 +17231,6 @@
       "priority": "low",
       "status": "needs-identification-and-research",
       "sourceUrl": "https://3dbag.nl/en/viewer"
-    },
-    {
-      "id": "w751573304",
-      "name": null,
-      "footprintSquareMetres": 3436,
-      "heightMetres": 10,
-      "center": [
-        4.90101135,
-        52.3673195
-      ],
-      "aliases": [],
-      "priority": "low",
-      "status": "needs-identification-and-research",
-      "sourceUrl": "https://www.openstreetmap.org/way/751573304"
     },
     {
       "id": "NL.IMBAG.Pand.0363100012253352",
