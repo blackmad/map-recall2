@@ -1,0 +1,67 @@
+{
+  "id": "rijksmuseum",
+  "name": "Rijksmuseum",
+  "landmarkId": "extract_landmarks_512243549",
+  "modelUrl": "./models/rijksmuseum.glb",
+  "suppressOsmIds": [
+    "w431070185",
+    "w431070791",
+    "w431070942",
+    "w517791046",
+    "w749429987",
+    "w749429988",
+    "w749429989",
+    "w749429990",
+    "w749429991",
+    "w749429992",
+    "w749429993",
+    "w749429994",
+    "w749429995",
+    "w749429996",
+    "w749429997",
+    "w749429998",
+    "w749429999",
+    "w749430000",
+    "w749430001",
+    "w749805753",
+    "w749805754",
+    "w749805755",
+    "w749805756",
+    "w749805757",
+    "w749805758",
+    "w749805759",
+    "w749805760",
+    "w749805761",
+    "w749805762",
+    "w749805763",
+    "w749805764"
+  ],
+  "footprint": {
+    "centre": [
+      4.885063574936609,
+      52.35986465365779
+    ],
+    "headingDegrees": 129.4,
+    "lengthMetres": 137.93519237901404,
+    "widthMetres": 120.49669215065194
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.885063574936609,
+      52.35986465365779
+    ],
+    "northOffsetDegrees": 219.4,
+    "source": "OSM museum mainparent w431070185 and30 mappedparts with27\u201354m roof heights; exact groundpassage and roofedatrium voids retained."
+  },
+  "spatialSuppression": false,
+  "attribution": {
+    "title": "Rijksmuseum",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.rijksmuseum.nl/en/visitor-information/inside-the-rijksmuseum/-the-building-from-the-exterior",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free shared-palette reconstruction of Cuypers museum from official exterior imagery and exact current OpenStreetMap polygons/heights. Open central bicycle passage, hollow roofed atria, tall paired towers and Philips wing retained. Warehouse reference viewed only; no imported geometry or photo textures."
+  }
+}
