@@ -1,0 +1,50 @@
+{
+  "id": "sint-nicolaas",
+  "name": "Sint Nicolaas Basilica",
+  "landmarkId": "extract_landmarks_1272308587",
+  "modelUrl": "./models/sint-nicolaas.glb",
+  "suppressOsmIds": [
+    "w174996833",
+    "NL.IMBAG.Pand.0363100012165691",
+    "w645534930",
+    "w645534931",
+    "w749289632",
+    "w749289633",
+    "w749289634",
+    "w750217059",
+    "w750217060",
+    "w750217061",
+    "w750217062",
+    "w750217063",
+    "w750217064",
+    "w750591088",
+    "w750591090"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.9011602841322865,
+      52.37644052156187
+    ],
+    "headingDegrees": 150.27603524728386,
+    "lengthMetres": 52.451608220779384,
+    "widthMetres": 22.869811981363846
+  },
+  "surveyed": {
+    "anchor": [
+      4.9011602841322865,
+      52.37644052156187
+    ],
+    "northOffsetDegrees": 150.27603524728386
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "Sint Nicolaas Basilica",
+    "author": "Map Recall",
+    "sourceUrl": "https://nicolaas-parochie.nl/nicolaas/over-ons/gebouw/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly reconstruction of Bleijs’s1884–1887 SintNicolaas basilica. Native geometry retains the actual52.45×22.87m church plan, thirteen measured in-parent OSM building parts, staggered twin6m west towers,13m octagonal crossing drum and stepped aisle/nave/transept/apse roofs. The parish documents58m dome height; modeled58m cross and56m tower crowns extend above AHN5 bulkroofmax50.889m, which does not capture fine lantern crosses. Ornament/curved metal crowns/rose window/arcaded entrance and clerestory are original simplified geometry from primary parish and architecture photographer references, with no imported source meshes/textures. Five adjacent rectory/side-annex parts outside the exact church parent and ordinary neighbors remain unsuppressed. Same-part proceduralSintNicolaas kit is replaced by this model; currentBAG1875 date is not treated as architectural evidence."
+  }
+}
