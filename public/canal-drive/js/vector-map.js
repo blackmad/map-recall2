@@ -2628,6 +2628,10 @@ class VectorBasemap {
     const bearing = Number.isFinite(options.bearing) ? options.bearing : 0;
     const pitch = Number.isFinite(options.pitch) ? options.pitch : TOPDOWN_TILT_DEGREES;
     this.map.jumpTo({ center: [lon, lat], zoom, bearing, pitch });
+    // Preload full detail at the actual spawn before the opening flight draws.
+    if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) {
+      this._threeBuildings.setDetailCentre(lon, lat);
+    }
     if (this._completeCity && typeof this._completeCity.followCamera === 'function') {
       this._completeCity.followCamera();
     }

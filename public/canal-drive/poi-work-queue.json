@@ -581,8 +581,8 @@
       "id": "coarse-facades-emergency",
       "task": "Restore windows and doors outside the rider detail tiles after mobile LOD optimization",
       "priority": "urgent",
-      "status": "implemented-awaiting-deployment",
-      "notes": "Coarse shells no longer force bare walls. Keep textured upper windows and ground doors, simple roofs and no relief. Desktop and coarse-pointer browser comparisons preserve the same rider detail ownership while panning Da Costakade.6,298-building tile retains65.3% geometry reduction, courtyard/identity/height and atlas regression checks pass. Clean HEAD runtime bundles rebuilt; unpublished neighborhood experiments excluded. Push triggers Firebase release; verify live revision after deployment."
+      "status": "verified",
+      "notes": "Windows and doors restored in 42faff7c; Firebase run 37226113553 and fresh live desktop/touch response hashes and screenshots verified. Full-detail area matches actual bike at settled spawn and after movement. Follow-up initializes camera rider target and full-detail center at spawn before the opening flight, including relocated starts. Initial and relocated aim ordering checks passed. Evidence: artifacts/street-appearance/emergency/index.html."
     },
     {
       "id": "ing-house",
