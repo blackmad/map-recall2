@@ -103,6 +103,8 @@ class VectorBasemap {
     this._activeLandmark = null;
     this._playerBike = null;
     this._playerBoat = null;
+    this._bridgeSurfaces = null;
+    this._bridges3dEnabled = new URLSearchParams(window.location.search).get('bridges3d') === '1';
     this._labelsVisible = false;
     this._lastCameraClearance = { constrained: false, reason: 'not-synchronised' };
     this._cameraClearanceCheck = null;
@@ -177,6 +179,11 @@ class VectorBasemap {
         if (PlayerBoat3D) this._playerBoat = new PlayerBoat3D(this.map, maplibregl);
         if (PlayerTransit3D) this._playerTransit = new PlayerTransit3D(this.map, maplibregl);
       }
+      if (this._bridges3dEnabled && window.CanalRecallBridgeSurfaces?.BridgeSurfaces) {
+        this._bridgeSurfaces = new window.CanalRecallBridgeSurfaces.BridgeSurfaces(this.map, maplibregl);
+        this._bridgeSurfaces.setEnabled(this._bridges3dEnabled);
+        this._bridgeSurfaces.load(this._extractPath);
+      }
       this.ready = true;
       if (window.CanalRecallInventoryTrees && this._trees3dEnabled) {
         this._inventoryTrees = new window.CanalRecallInventoryTrees.InventoryTrees(this.map, maplibregl, () => this._syncTreeVisibility());
@@ -198,6 +205,7 @@ class VectorBasemap {
   setExtractRoot(path) {
     if (!path || path === this._extractPath) return;
     this._extractPath = path;
+    if (this._bridgeSurfaces) this._bridgeSurfaces.load(path);
     if (this._parkLandscape) this._parkLandscape.load(path);
     this._rawTrees = null;
     this._treeLoadSerial = (this._treeLoadSerial || 0) + 1;
@@ -1823,8 +1831,12 @@ class VectorBasemap {
   setPlayerBike(player, loader, visible, zoomScale = 1) {
     if (!this._playerBike || !player || !loader) return;
     this._playerBike.zoomScale = zoomScale;
+    const lngLat = this.worldToLngLat(player.x, player.y, loader);
+    const surface = this._bridgeSurfaces?.sample(lngLat, player.angle, this._playerBike.surfaceContactOffsets())
+      || { heightM: 0, pitch: 0 };
+    this._playerBike.setSurfacePose(surface.heightM + 0.22, surface.pitch);
     this._playerBike.update(
-      this.worldToLngLat(player.x, player.y, loader), player.angle, visible,
+      lngLat, player.angle, visible,
       player.steerInput || 0, player.distancePx || 0
     );
   }
@@ -2308,7 +2320,13 @@ class VectorBasemap {
     }
     this._clearancePitchRequested = pitch;
     const appliedPitch = Math.min(pitch, this._clearancePitch);
-    this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch });
+    const bridgeElevation = !detached && introFlat === 0 && this._playerBike?.visible
+      && (viewMode === 'chase' || viewMode === 'cockpit')
+      ? this._bridgeSurfaces?.sample(subject).heightM || 0 : 0;
+    this._bridgeCameraElevation = (this._bridgeCameraElevation || 0)
+      + (bridgeElevation - (this._bridgeCameraElevation || 0)) * .15;
+    this.map.jumpTo({ center: [lon, lat], zoom: mapZoom, bearing, pitch: appliedPitch,
+      elevation: this._bridgeCameraElevation });
     // Near detail (facade extras) follows the rider.
     if (this._threeBuildings && this._buildings3dEnabled && this._threeBuildings.setDetailCentre) this._threeBuildings.setDetailCentre(subject[0], subject[1]);
     this._syncFacadeZoom(mapZoom);

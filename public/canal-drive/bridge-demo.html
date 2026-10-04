@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Amsterdam bridge demo</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f2f0e9;color:#273b32;font:15px system-ui,sans-serif}header{padding:20px 24px 14px;border-bottom:1px solid #c8cec3}h1{font-size:25px;margin:0 0 6px}p{margin:0;line-height:1.5;color:#526057}.heading{display:flex;justify-content:space-between;gap:24px;align-items:start}.counts{display:flex;gap:22px;white-space:nowrap}.counts strong{display:block;font-size:25px}.counts span{font-size:12px;color:#526057}nav{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:18px}button,a{font:inherit}button{padding:9px 15px;border:1px solid #a7b7a8;border-radius:5px;background:#fff;color:#294636;cursor:pointer}button[aria-selected=true]{background:#3e6252;color:#fff;border-color:#3e6252}a{color:#315e4b}#open-view{margin-left:auto}.examples{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:10px 24px;border-bottom:1px solid #c8cec3;font-size:13px}.examples button{padding:3px 0;background:none;border:0;text-decoration:underline;font-size:13px}.examples span{color:#68736a}iframe{display:block;width:100%;height:calc(100vh - 204px);min-height:620px;border:0;background:#e4e8e1}#load-error{padding:10px 24px;color:#8b3b2e}#load-error:empty{display:none}@media(max-width:850px){header{padding:16px}.heading{display:block}.counts{margin-top:12px;gap:26px}.counts strong{font-size:21px}h1{font-size:22px}.examples{padding:10px 16px}iframe{height:80vh;min-height:650px}#open-view{margin-left:0}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="heading"><div><h1>Amsterdam bridges</h1><p>Measured deck heights and slopes, with stylised bridge structures.<br>Isolated bridge experiment · not enabled on main.<br>Street joins and runtime performance still need review.</p></div>
+      <div class="counts" aria-label="Current bridge coverage"><div><strong id="ready">…</strong><span>generated profiles</span></div><div><strong id="review">…</strong><span>need review</span></div><div><strong id="unmatched">…</strong><span>unmatched</span></div></div>
+    </div>
+    <nav role="tablist" aria-label="Bridge demos"><button role="tab" id="tab-gallery" aria-controls="demo-panel" aria-selected="true" data-view="gallery">3D collection</button><button role="tab" id="tab-matching" aria-controls="demo-panel" aria-selected="false" data-view="matching">Jordaan matching map</button><button role="tab" id="tab-game" aria-controls="demo-panel" aria-selected="false" data-view="game">Game · bridges off</button><a id="open-view" href="bridge-pilot.html" target="_blank" rel="noopener">Open this view separately ↗</a></nav>
+  </header>
+  <div class="examples"><span>Start with:</span><button data-gallery="BRU0057">Papiermolensluis</button><button data-gallery="BRU0059">Lekkeresluis</button><button data-gallery="BRU0065">Berensluis</button><span>Previously unmatched:</span><button data-matching="BRU0130">Trapjesbrug</button><button data-matching="BRU0102">Looiersgracht · 102</button><button data-matching="BRU0155">Kattenslootbrug</button></div>
+  <p id="load-error" role="status"></p>
+  <main id="demo-panel" role="tabpanel" aria-labelledby="tab-gallery"><iframe id="demo-content" title="3D bridge collection" src="bridge-pilot.html"></iframe></main>
+  <script>
+    const pages={gallery:['bridge-pilot.html','3D bridge collection'],matching:['unmatched-bridges.html','Bridge matching near the Jordaan'],game:['index.html','Canal game with experimental bridges disabled']};
+    function show(view,id){const [url,title]=pages[view],href=url+(id?'#'+id:'');document.querySelectorAll('[role=tab]').forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.view===view)));document.getElementById('demo-panel').setAttribute('aria-labelledby','tab-'+view);const frame=document.getElementById('demo-content');frame.title=title;frame.src=href;document.getElementById('open-view').href=href;}
+    document.querySelectorAll('[data-view]').forEach(tab=>tab.onclick=()=>show(tab.dataset.view));
+    document.querySelectorAll('[data-gallery]').forEach(button=>button.onclick=()=>show('gallery',button.dataset.gallery));
+    document.querySelectorAll('[data-matching]').forEach(button=>button.onclick=()=>show('matching',button.dataset.matching));
+    fetch('../data/extracts/amsterdam/bridge-surface-review.json').then(response=>{if(!response.ok)throw Error('Coverage data unavailable');return response.json();}).then(report=>{for(const key of ['ready','review','unmatched'])document.getElementById(key).textContent=(report.summary[key]||0).toLocaleString();}).catch(error=>document.getElementById('load-error').textContent=error.message);
+  </script>
+</body>
+</html>

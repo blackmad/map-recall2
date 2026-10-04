@@ -30,7 +30,7 @@
     "build:canal-vehicles": "node scripts/build-3d-bundles.mjs",
     "build:canal-3d": "node scripts/build-3d-bundles.mjs",
     "dev": "tsx server.ts",
-    "build": "npm run build:reconstruction-workbench && npm run build:facade-repair-preview && npm run build:point-cloud-facades && npm run build:facade-opening-layout && npm run build:wall-material-demo && npm run build:appearance-viewer && npm run build:facade-registration-browser && npm run publish:enamel-css && npm run build:canal-orientation-pois && npm run build:canal-car && npm run build:canal-photoreal-gate && npm run build:canal-preferences && npm run build:canal-transit && npm run build:canal-overlay && npm run build:canal-three && npm run build:canal-vehicles && npm run build:canal-study-roofs && npm run build:canal-study-facades && npm run build:canal-study-trees && npm run build:canal-three-buildings && npm run build:building-gallery && npm run build:kit-viewer && npm run build:landmark-gallery && npm run build:house-playground && npm run build:facade-compare && npm run build:canal-study-public-realm && npm run build:canal-road-graph && npm run build:canal-road-projection && npm run build:canal-road-surface && npm run build:canal-ui && npm run build:canal-building-tiles && npm run build:canal-cards && npm run build:canal-answer-path && npm run build:canal-neighborhoods && npm run build:canal-bridges && npm run build:canal-buildings && npm run build:canal-route-selection && npm run build:canal-boat-corridor && npm run build:canal-city-overview && npm run build:canal-game-landmarks && npm run build:canal-game-recall && npm run build:canal-game-presentation && npm run build:canal-recall-store && npm run canal:firebase-config && npm run canal:google-tiles-config && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "npm run build:reconstruction-workbench && npm run build:facade-repair-preview && npm run build:point-cloud-facades && npm run build:facade-opening-layout && npm run build:wall-material-demo && npm run build:appearance-viewer && npm run build:facade-registration-browser && npm run publish:enamel-css && npm run build:canal-orientation-pois && npm run build:canal-car && npm run build:canal-photoreal-gate && npm run build:canal-preferences && npm run build:canal-transit && npm run build:canal-overlay && npm run build:canal-three && npm run build:canal-vehicles && npm run build:canal-study-roofs && npm run build:canal-study-facades && npm run build:canal-study-trees && npm run build:canal-three-buildings && npm run build:building-gallery && npm run build:kit-viewer && npm run build:landmark-gallery && npm run build:house-playground && npm run build:facade-compare && npm run build:canal-study-public-realm && npm run build:canal-road-graph && npm run build:canal-road-projection && npm run build:canal-road-surface && npm run build:canal-ui && npm run build:canal-building-tiles && npm run build:canal-cards && npm run build:canal-answer-path && npm run build:canal-neighborhoods && npm run build:canal-bridges && npm run build:canal-bridge-surfaces && npm run build:bridge-pilot && npm run build:canal-buildings && npm run build:canal-route-selection && npm run build:canal-boat-corridor && npm run build:canal-city-overview && npm run build:canal-game-landmarks && npm run build:canal-game-recall && npm run build:canal-game-presentation && npm run build:canal-recall-store && npm run canal:firebase-config && npm run canal:google-tiles-config && vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -405,7 +405,14 @@
     "evaluate:local-materials": "node scripts/city-appearance/evaluate-local-materials.mjs",
     "review:district-materials:worker": "node --import tsx scripts/city-appearance/run-district-material-review.ts",
     "test:district-materials:worker": "node --import tsx --test scripts/city-appearance/run-district-material-review.test.ts",
-    "build:facade-compare": "esbuild src/canalRecall/facadeCompareViewer.ts --bundle --format=iife --outfile=public/canal-drive/js/facade-compare.bundle.js"
+    "build:facade-compare": "esbuild src/canalRecall/facadeCompareViewer.ts --bundle --format=iife --outfile=public/canal-drive/js/facade-compare.bundle.js",
+    "build:bridge-surfaces": "node --import tsx scripts/build-bridge-surfaces.ts",
+    "fetch:bridge-surfaces": "node --import tsx scripts/build-bridge-surfaces.ts --scope=canal-belt --fetch",
+    "fetch:all-bridge-surfaces": "node --import tsx scripts/build-bridge-surfaces.ts --scope=all --fetch",
+    "discover:bridge-surfaces": "node --import tsx scripts/build-bridge-surfaces.ts --scope=all --discover-only --report=public/data/extracts/amsterdam/bridge-surface-discovery.json",
+    "build:canal-bridge-surfaces": "esbuild src/canalRecall/bridgeSurfacesBrowser.ts --bundle --format=iife --global-name=CanalRecallBridgeSurfaces --outfile=public/canal-drive/js/bridge-surfaces.bundle.js --minify",
+    "build:bridge-pilot": "esbuild src/canalRecall/bridgePilotBrowser.ts --bundle --format=iife --outfile=public/canal-drive/js/bridge-pilot.bundle.js --minify",
+    "test:bridge-surfaces": "node --import tsx --test scripts/bridges/discovery.test.ts scripts/check-bridge-surfaces.test.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -429,7 +436,8 @@
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "three": "^0.185.1",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "geotiff": "^3.0.5"
   },
   "devDependencies": {
     "@gltf-transform/core": "^4.5.0",

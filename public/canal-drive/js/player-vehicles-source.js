@@ -103,6 +103,7 @@ class Vehicle3D {
     this._scene = null;
     this._modelRoot = null;
     this.altitudeM = 0.22;
+    this.surfacePitch = 0;
     /** Set per frame by the game for the camera zoom; see vehicleZoomScale.ts. */
     this.zoomScale = 1;
     this.layer = this._makeLayer();
@@ -125,6 +126,11 @@ class Vehicle3D {
   setAltitude(metres) {
     const value = Number(metres);
     this.altitudeM = Number.isFinite(value) ? value : 0.22;
+  }
+
+  setSurfacePose(metres, pitch) {
+    this.setAltitude(metres);
+    this.surfacePitch = Number.isFinite(pitch) ? pitch : 0;
   }
 
   update(lngLat, angle, visible) {
@@ -286,6 +292,8 @@ class Vehicle3D {
           .makeTranslation(coordinate.x, coordinate.y, coordinate.z)
           .scale(new THREE.Vector3(units, -units, units))
           .multiply(new THREE.Matrix4().makeRotationZ(headingOffset - owner.angle))
+          // In the Z-up map frame, negative Y rotation raises native +X (the bike's nose).
+          .multiply(new THREE.Matrix4().makeRotationY(-owner.surfacePitch))
           .multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2));
         camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(transform);
         renderer.resetState();
@@ -322,6 +330,7 @@ export class PlayerBike3D extends Vehicle3D {
     });
     this.steerAngle = 0;
     this.wheelSpin = 0;
+    this._surfaceContactOffsets = [-.6, .6];
   }
 
   // Named `Lenker` / `RadVorn` / `RadHinten` empties. Missing parts must not
@@ -342,6 +351,18 @@ export class PlayerBike3D extends Vehicle3D {
     }
     // The omafiets GLB carries an optional child seat; the game never shows it.
     if (this.parts.babySeat) this.parts.babySeat.visible = false;
+    if (this.parts.frontWheel && this.parts.rearWheel) {
+      const front = this.parts.frontWheel.getWorldPosition(new THREE.Vector3()).x;
+      const rear = this.parts.rearWheel.getWorldPosition(new THREE.Vector3()).x;
+      if (Number.isFinite(front) && Number.isFinite(rear) && front - rear > .1) {
+        this._surfaceContactOffsets = [rear, front];
+      }
+    }
+  }
+
+  surfaceContactOffsets() {
+    const scale = this.options.gameScale * this.viewportScale() * (this.zoomScale || 1);
+    return this._surfaceContactOffsets.map(value => value * scale);
   }
 
   update(lngLat, angle, visible, steerInput = 0, distancePx = 0) {

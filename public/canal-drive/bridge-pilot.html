@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Amsterdam bridge review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eeeae1;color:#292f2d;font:15px system-ui,sans-serif}header{padding:22px 28px;border-bottom:1px solid #d4d0c6;display:flex;align-items:center;gap:24px}h1{font-size:21px;margin:0}header a{margin-left:auto;color:#425e51}main{display:grid;grid-template-columns:minmax(0,1fr) 310px;min-height:calc(100vh - 77px)}#viewport{position:relative;min-height:600px;touch-action:none}canvas{display:block;width:100%;height:100%}aside{padding:25px;background:#f7f4ee;border-left:1px solid #d4d0c6}select,button{font:inherit;padding:9px;border:1px solid #bfc5bd;background:#fff;border-radius:5px;color:inherit}select{width:100%;margin:12px 0 20px}button{cursor:pointer}button.active{background:#425e51;color:#fff}.views{display:flex;gap:6px;flex-wrap:wrap}h2{font-size:17px;margin:26px 0 10px}p{line-height:1.5;color:#56615a}dl{display:grid;grid-template-columns:1fr auto;gap:9px}dt{color:#56615a}dd{margin:0;font-variant-numeric:tabular-nums}#profile{width:100%;height:125px;margin-top:14px}#hint{position:absolute;bottom:20px;left:24px;color:#516358;background:#ffffffbd;padding:9px 13px;border-radius:6px;font-size:13px}#status{color:#89503e}a{color:#425e51}@media(max-width:760px){main{display:block}#viewport{height:55vh;min-height:350px}aside{border-left:0;border-top:1px solid #d4d0c6}header{padding:16px}header a{font-size:12px}}
+@media(min-width:761px){main{height:calc(100vh - 77px);min-height:0}#viewport{min-height:0}aside{overflow-y:auto}}
+</style></head>
+<body><header><h1>Amsterdam bridge review</h1><a href="./">Back to the game</a></header>
+<main><div id="viewport"><div id="hint">Drag to orbit · Scroll to zoom</div></div><aside>
+<p id="coverage">Loading coverage…</p>
+<label for="search">Find a bridge</label><input id="search" type="search" placeholder="Name or municipal number" style="width:100%;padding:9px;margin:8px 0 14px;font:inherit">
+<label for="bridge">Choose a bridge</label><select id="bridge"></select>
+<div class="views"><button data-view="canal" class="active">Canal</button><button data-view="opposite">Other bank</button><button data-view="low">Under arch</button><button data-view="road">Road</button><button data-view="above">Above</button></div>
+<h2>Measured shape</h2><dl id="facts"></dl><svg id="profile" viewBox="0 0 260 120" role="img" aria-label="Bridge elevation profile"></svg>
+<p>Deck and approach heights come from AHN rasters. The outline comes from Amsterdam’s bridge register; the road alignment comes from OSM.</p>
+<h2>Game appearance</h2><p>Flat-color materials, simplified railings and supports. Arch openings and structural thickness are illustrative; they are not surveyed dimensions.</p>
+<p><a href="../data/extracts/amsterdam/bridge-surfaces.json">Open geometry and source evidence</a></p><p id="status">Loading bridge survey…</p>
+<details><summary id="review-summary">Crossings needing review</summary><p>These crossings keep their existing game rendering. Reasons below come from automatic matching, elevation and geometry checks.</p><ul id="review-list" style="padding-left:18px;max-height:420px;overflow:auto"></ul></details>
+<p><a href="../data/extracts/amsterdam/bridge-surface-review.json">Coverage and review report</a> · <a href="../data/extracts/amsterdam/bridge-surface-discovery.json">Citywide matching report</a></p>
+<p><a href="bridge-demo.html">Open the combined bridge demo</a></p>
+<p><a href="unmatched-bridges.html">Explore bridge matching near the Jordaan</a></p>
+</aside></main>
+<script src="js/three.bundle.js"></script><script src="js/bridge-pilot.bundle.js"></script></body></html>
