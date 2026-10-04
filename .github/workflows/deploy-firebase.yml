@@ -50,7 +50,13 @@ jobs:
         run: |
           node --input-type=module <<'JS'
           import { writeFileSync } from 'node:fs';
-          const revision = JSON.stringify({ sha: process.env.GITHUB_SHA, run: process.env.GITHUB_RUN_ID });
+          const sha = process.env.GITHUB_SHA || '';
+          const revision = JSON.stringify({
+            sha,
+            short: sha.slice(0, 7),
+            run: process.env.GITHUB_RUN_ID,
+            builtAt: new Date().toISOString(),
+          });
           for (const site of ['dist', 'dist-canalrecall']) {
             writeFileSync(`${site}/deployment.json`, revision);
           }
