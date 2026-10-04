@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "researchedOn": "2026-10-04",
+  "scope": "Bounded next-batch source trial only; no geometry/registration/queue mutation. Reuse these cached records before repeating searches.",
+  "selection": "Three genuine pending historic POIs; avoid buildings under current assignment.",
+  "strongArchiveCandidate": "NIOD: exact Salm elevation 1315BT900084 is accessible through a provenance-bearing mirror and was visually inspected against a municipal facade photo. It resolves facade/roof assemblies, but directly demonstrates why historical drawings must not be copied as current geometry.",
+  "bestBudgetCandidate": "Museum of the Canals: RCE and operator architecture text immediately resolve pilasters/pediment and an alteration that prevents invented historical festoons; no drawing is yet accessible.",
+  "limits": [
+    "BAG identities and native footprints not researched in this source-only task.",
+    "No current-2026 site photograph inspected; NIOD comparison photo is 2016.",
+    "Failed archive searches preserved, no claim of archival exhaustiveness.",
+    "No emailed access requests or contact sent.",
+    "Time/effort classes are planning judgments, not measured modeling budgets."
+  ],
+  "candidates": [
+    {
+      "poiId": "lm-extract_landmarks_1742509310",
+      "extractId": "extract_landmarks_1742509310",
+      "name": "NIOD Institute for War, Holocaust, and Genocide Studies",
+      "backlogStatus": "pending",
+      "backlogRank": 206,
+      "centerLatLng": [
+        52.3680936,
+        4.8863164
+      ],
+      "address": "Herengracht 380–382",
+      "bagPandIdentity": null,
+      "identityStatus": "Genuine destination/extract identity confirmed; BAG parent/footprint matching remains a prerequisite before modeling.",
+      "rce": {
+        "monumentNumber": 1826,
+        "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826",
+        "access": "HTML retrieved and description inspected using Python urllib; web retrieval succeeded for 1826/1828 but failed for 3133 including PDF; fallback HTTP fetch succeeded.",
+        "descriptionDutch": "Dubbel huis (XIXd door A.Salm) met rijk gebeeldhouwde zandstenen gevel in Franse neo-renaissance-stijl, stoephek en twee lantarens.",
+        "descriptionDate": "Register inscription 1970; wording date not stated; retrieved 2026-10-04.",
+        "buildingPart": "Street-facing house at registered address; rear scope not inferred from prose.",
+        "assertions": [
+          {
+            "feature": "Double house, richly carved sandstone facade, French neo-Renaissance style, pavement railing and two lanterns.",
+            "confidence": "High: explicit register prose.",
+            "dimensionsUnknown": true
+          }
+        ]
+      },
+      "archiveSearch": {
+        "queries": [
+          "site.archief.amsterdam \"Herengracht\" \"380\" bouwtekening",
+          "site.archief.amsterdam \"380-382\" Salm"
+        ],
+        "status": "Exact City Archives elevation identifier resolved through Commons mirror; original archive URL returned 502. Mirror scan downloaded and visually inspected.",
+        "negativeEvidence": "No matching accessible result does not mean no drawing exists. Search returned nearby or third-party records; unrelated Korsjespoortsteeg 17 drawing excluded.",
+        "emailRequested": false,
+        "recordId": "1315BT900084",
+        "originalUrl": "http://beeldbank.amsterdam.nl/afbeelding/1315BT900084",
+        "mirrorPage": "https://commons.wikimedia.org/wiki/File:Herengracht380-382_bouwtekening_Salm.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Herengracht380-382_bouwtekening_Salm.jpg",
+        "cachedImage": "docs/references/next-batch-archive/niod-salm-elevation-1888.jpg",
+        "creator": "Abraham Salm",
+        "drawingDate": "ca.1888 per Commons catalogue; date not independently confirmed on archive record",
+        "reuseTerms": "Commons marks Salm artwork and faithful reproduction public domain; original archive terms not independently inspected.",
+        "featuresResolved": [
+          "Principal front proportions; three dominant window groups; asymmetric right-hand carriage opening; center and flanking elaborate dormer profiles; steep front roof slope and ornament placement."
+        ],
+        "notResolved": [
+          "Metric dimensions/roof pitch not extracted from scan scale; rear roof/lightcourt geometry and present sculpture state require survey/current photos."
+        ]
+      },
+      "modelingEffort": "High: bespoke sculpted facade, dormer assemblies and surveyed rear/lightcourt scope; full landmark loop.",
+      "visualAcceptance": "Not modeled or accepted. Geometry/gallery/live scene, exact suppression/neighbor retention, destination/pin/card still required.",
+      "otherSources": [
+        {
+          "url": "https://openresearch.amsterdam/nl/page/151733/erfgoed-van-de-week-ambitieuze-techniek-op-de-herengracht",
+          "type": "Municipal conservation research, 2022-04-28",
+          "access": "Read text and visually inspected cached Paul Nieuwenhuizen 2016 facade photo.",
+          "cachedImage": "docs/references/next-batch-archive/niod-municipal-facade-2016.jpg",
+          "imageUrl": "https://openresearch.amsterdam/image/2026/9/4/53_af_niod_pn_2-195989628.jpg%28mediaclass-landscape-large.93f1e343de01d1381fc159cb72e3b9e0ecdbfeae%29.jpg",
+          "reuseTerms": "Facade photo explicitly All Rights Reserved; cached only as research reference, never asset texture.",
+          "featuresResolved": [
+            "2016 photo supports steep roof, dominant three dormers/window groups, sandstone front and right opening.",
+            "Municipal text confirms glazed roof/lightcap over staircase/hall/bathroom; aerial/BAG scope required."
+          ],
+          "importantComparison": "1888 elevation depicts full-height standing figures at both ridge ends; these are absent from the 2016 reference. Small intermediate dormer forms also differ. Do not copy proposal/historic scan literally; newer/current photo and roof survey needed before choosing final detail."
+        },
+        {
+          "url": "https://www.niod.nl/longreads/als-de-muren-konden-spreken/",
+          "type": "Operator history, 2026",
+          "access": "Text read; supports address and 1888–1890 construction, right carriage entry and central dormer flanking Mercurius/Minerva sculptures.",
+          "featuresResolved": [
+            "Public entrance position clue; original versus later use chronology; useful card material."
+          ]
+        },
+        {
+          "url": "https://www.niod.nl/contact-en-bereikbaarheid/",
+          "type": "Operator address",
+          "access": "Read; Herengracht 380 confirmed."
+        }
+      ]
+    },
+    {
+      "poiId": "lm-extract_landmarks_915035378",
+      "extractId": "extract_landmarks_915035378",
+      "name": "Museum of the Canals",
+      "backlogStatus": "pending",
+      "backlogRank": 300,
+      "centerLatLng": [
+        52.3678921,
+        4.8862198
+      ],
+      "address": "Herengracht 386",
+      "bagPandIdentity": null,
+      "identityStatus": "Genuine destination/extract identity confirmed; BAG parent/footprint matching remains a prerequisite before modeling.",
+      "rce": {
+        "monumentNumber": 1828,
+        "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1828",
+        "access": "HTML retrieved and description inspected using Python urllib; web retrieval succeeded for 1826/1828 but failed for 3133 including PDF; fallback HTTP fetch succeeded.",
+        "descriptionDutch": "Dubbel huis met pilastergevel voorzien van een fronton op de middenrisaliet, in 1663 gebouwd door Philips Vingboons; ingangspartij en stoeppalen XIXc.",
+        "descriptionDate": "Register inscription 1970; wording date not stated; retrieved 2026-10-04.",
+        "buildingPart": "Street-facing house at registered address; rear scope not inferred from prose.",
+        "assertions": [
+          {
+            "feature": "Double house with pilaster facade and pediment on central projecting bay; entrance composition and pavement posts dated XIXc.",
+            "confidence": "High: explicit register prose.",
+            "dimensionsUnknown": true
+          }
+        ]
+      },
+      "archiveSearch": {
+        "queries": [
+          "site.archief.amsterdam \"Herengracht 386\" bouwtekening",
+          "site.archief.amsterdam \"Herengracht 386\" tekening"
+        ],
+        "status": "Bounded address search completed; no verified directly accessible drawing record from indexed City Archives search.",
+        "negativeEvidence": "No matching accessible result does not mean no drawing exists. Search returned nearby or third-party records; unrelated Korsjespoortsteeg 17 drawing excluded.",
+        "emailRequested": false,
+        "attemptedDirectSearchUrl": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Herengracht%20386%20bouwtekening",
+        "directAccess": "Web tool could not access search URL; no scan inspected."
+      },
+      "modelingEffort": "Medium: pilaster orders, central pediment and open garden; reusable house primitives, full landmark loop.",
+      "visualAcceptance": "Not modeled or accepted. Geometry/gallery/live scene, exact suppression/neighbor retention, destination/pin/card still required.",
+      "otherSources": [
+        {
+          "url": "https://grachten.museum/wp-content/uploads/2023/08/Beleidsplan-2023-2026-Grachtenmuseum-Amsterdam.pdf",
+          "type": "Operator policy/collection description",
+          "access": "Indexed PDF description inspected; facade history text extracted by search.",
+          "featuresResolved": [
+            "Stacked Doric then composite pilasters; triangular central pediment with oval window, coat of arms and festoon.",
+            "Between-pilaster festoons shown by original Vingboons/Grachtenboek drawings were removed in late eighteenth century. Do not restore missing festoons merely because a historic drawing depicts them."
+          ],
+          "confidence": "High for explicit operator architectural account; current photo verification required."
+        },
+        {
+          "url": "https://grachten.museum/stijlkamers-en-gebouw/",
+          "type": "Operator house history",
+          "access": "Text read.",
+          "featuresResolved": [
+            "1663 design commission versus museum description of 1665 completed house; preserve chronology separately from BAG year."
+          ]
+        },
+        {
+          "url": "https://grachten.museum/adres-en-route/",
+          "type": "Operator address",
+          "access": "Indexed text read; Herengracht 386 confirmed."
+        }
+      ]
+    },
+    {
+      "poiId": "lm-extract_landmarks_1273422573",
+      "extractId": "extract_landmarks_1273422573",
+      "name": "Multatuli Museum",
+      "backlogStatus": "pending",
+      "backlogRank": 171,
+      "centerLatLng": [
+        52.3774872,
+        4.8911258
+      ],
+      "address": "Korsjespoortsteeg 20",
+      "bagPandIdentity": null,
+      "identityStatus": "Genuine destination/extract identity confirmed; BAG parent/footprint matching remains a prerequisite before modeling.",
+      "rce": {
+        "monumentNumber": 3133,
+        "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3133",
+        "access": "HTML retrieved and description inspected using Python urllib; web retrieval succeeded for 1826/1828 but failed for 3133 including PDF; fallback HTTP fetch succeeded.",
+        "descriptionDutch": "Huis (in de kern vermoedelijk XVII) met klokgevel (XVIII/XIX) (geboortehuis van Multatuli met gedenksteen).",
+        "descriptionDate": "Register inscription 1970; wording date not stated; retrieved 2026-10-04.",
+        "buildingPart": "Street-facing house at registered address; rear scope not inferred from prose.",
+        "assertions": [
+          {
+            "feature": "Possibly seventeenth-century core, bell gable dated XVIII/XIX, birth house memorial stone.",
+            "confidence": "High for explicit bell gable; core date explicitly uncertain.",
+            "dimensionsUnknown": true
+          }
+        ]
+      },
+      "archiveSearch": {
+        "queries": [
+          "site.archief.amsterdam \"Korsjespoortsteeg 20\" bouwtekening",
+          "site.archief.amsterdam \"Korsjespoortsteeg\" \"bouwtekening\""
+        ],
+        "status": "Bounded address search completed; no verified directly accessible drawing record from indexed City Archives search.",
+        "negativeEvidence": "No matching accessible result does not mean no drawing exists. Search returned nearby or third-party records; unrelated Korsjespoortsteeg 17 drawing excluded.",
+        "emailRequested": false,
+        "attemptedDirectSearchUrl": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Korsjespoortsteeg%2020%20bouwtekening",
+        "directAccess": "Web tool could not access search URL; no scan inspected."
+      },
+      "modelingEffort": "Low-to-medium: narrow house and explicitly supported bell gable; full landmark loop, photo/survey still required.",
+      "visualAcceptance": "Not modeled or accepted. Geometry/gallery/live scene, exact suppression/neighbor retention, destination/pin/card still required.",
+      "otherSources": [
+        {
+          "url": "https://www.multatuli-museum.nl/bezoekersinformatie",
+          "type": "Operator address",
+          "access": "Text read; Korsjespoortsteeg 20 confirmed."
+        }
+      ]
+    }
+  ]
+}
