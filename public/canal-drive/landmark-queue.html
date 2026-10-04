@@ -21,6 +21,7 @@
 <div class="filters"><select id="inventory" aria-label="Work inventory"><option value="destinations">POI destinations</option><option value="tasks">Work progress</option><option value="dominant">Large building candidates</option><option value="streets">Requested streets</option></select><input id="search" type="search" placeholder="Find a place" aria-label="Find a place">
 <select id="status" aria-label="Model status"><option value="pending">Needs work</option><option value="all">All destinations</option><option value="manual-model">Original model</option><option value="procedural-kit">Existing kit</option><option value="catalogue-model">Reference model</option><option value="landscape">Park landscape</option></select>
 <select id="treatment" aria-label="Place treatment"><option value="all">All place types</option><option value="building">Building</option><option value="complex">Complex</option><option value="memorial">Memorial</option><option value="area">Area</option><option value="landscape">Landscape</option><option value="review">Needs site review</option></select>
+<select id="fidelity" aria-label="Building workflow"><option value="all">All building workflows</option><option value="standard-eligibility-review">Quick-loop candidates: need visual check</option><option value="recognition-review">Recognition/complexity review</option><option value="standard-building">Approved standard buildings</option><option value="full-landmark">Full landmark workflow</option></select>
 <label><input id="requested" type="checkbox"> Requested additions</label></div>
 <p id="count" role="status">Loading destinations…</p>
 <div class="table-wrap"><table><thead><tr><th>Queue</th><th>Place</th><th>Status</th><th>Review</th></tr></thead><tbody id="rows"></tbody></table></div>
@@ -33,11 +34,11 @@ let inventories={destinations:[],tasks:[],dominant:[],streets:[]};
 function setInventory(){
  const key=byId('inventory').value,select=byId('status');select.replaceChildren();
  for(const status of ['all',...new Set(inventories[key].map(p=>p.status))]){const option=document.createElement('option');option.value=status;option.textContent=status==='all'?'All statuses':labels[status]||status;select.append(option);}
- controls[2].disabled=key!=='destinations';controls[3].disabled=key!=='destinations';render();
+ byId('fidelity').disabled=key!=='dominant';controls[2].disabled=key!=='destinations';controls[3].disabled=key!=='destinations';render();
 }
 function render(){
  const key=byId('inventory').value,all=inventories[key],text=controls[0].value.toLocaleLowerCase(),status=controls[1].value;
- const shown=all.filter(p=>(status==='all'||p.status===status)&&(key!=='destinations'||((!controls[2].checked||p.requested)&&(controls[3].value==='all'||p.treatment===controls[3].value)))&&`${p.name} ${p.id||''} ${p.type||''} ${p.taskNote||''}`.toLocaleLowerCase().includes(text));
+ const shown=all.filter(p=>(key!=='dominant'||byId('fidelity').value==='all'||p.fidelity?.workflow===byId('fidelity').value)&&(status==='all'||p.status===status)&&(key!=='destinations'||((!controls[2].checked||p.requested)&&(controls[3].value==='all'||p.treatment===controls[3].value)))&&`${p.name} ${p.id||''} ${p.type||''} ${p.taskNote||''}`.toLocaleLowerCase().includes(text));
  byId('count').textContent=`${shown.length.toLocaleString()} shown · ${all.length.toLocaleString()} ${key==='dominant'?'large building candidates':key==='streets'?'requested street buildings':key==='tasks'?'tracked tasks':'destinations and additions'}`;
  const body=byId('rows');body.replaceChildren();
  for(const p of shown){const row=document.createElement('tr');const cell=value=>{const td=document.createElement('td');td.textContent=value;row.append(td);return td;};
@@ -50,15 +51,15 @@ function render(){
  if(p.sourceUrl?.startsWith('https://'))link('Source ↗',p.sourceUrl);
  body.append(row);}
 }
-controls.forEach(c=>c.addEventListener('input',render));byId('inventory').addEventListener('change',setInventory);
+byId('fidelity').addEventListener('change',render);controls.forEach(c=>c.addEventListener('input',render));byId('inventory').addEventListener('change',setInventory);
 async function load(file){const r=await fetch(file);if(!r.ok)throw Error(`${file} unavailable`);return r.json();}
 Promise.all([load('landmark-backlog.json'),load('poi-work-queue.json'),load('dominant-building-backlog.json'),load('requested-street-buildings.json')]).then(([pois,work,large,streets])=>{
  inventories.destinations=pois.destinations;
  inventories.tasks=work.tasks.map(t=>({...t,name:t.task,taskNote:[t.owner&&`Owner: ${t.owner}`,t.validation,t.notes].filter(Boolean).join(' · ')}));
- inventories.dominant=large.candidates.map((b,i)=>({...b,queueRank:i+1,name:b.name||b.id,lng:b.center?.[0],lat:b.center?.[1],taskNote:`${b.footprintSquareMetres.toLocaleString()} m² footprint · ${b.heightMetres} m tall · ${b.aliases.length} grouped aliases`}));
+ inventories.dominant=large.candidates.map((b,i)=>({...b,queueRank:i+1,name:b.name||b.id,lng:b.center?.[0],lat:b.center?.[1],taskNote:`${b.footprintSquareMetres.toLocaleString()} m² footprint · ${b.heightMetres} m tall · ${b.aliases.length} grouped aliases · ${({'standard-eligibility-review':'Quick-loop candidate: visual check needed','recognition-review':'Recognition/complexity review','standard-building':'Approved standard treatment','full-landmark':'Full landmark treatment'})[b.fidelity?.workflow]||'Unreviewed'} · ${(b.fidelity?.reasons||[]).join('; ')}`}));
  inventories.streets=streets.requestedStreets.flatMap(s=>s.buildings.map(b=>{const points=b.geometry.coordinates.flat(Infinity).filter(Number.isFinite),lngs=points.filter((_,i)=>i%2===0),lats=points.filter((_,i)=>i%2===1);return {...b,id:b.buildingId,name:`${s.street} ${b.addressRange.minimum}–${b.addressRange.maximum}`,priority:'requested',lng:(Math.min(...lngs)+Math.max(...lngs))/2,lat:(Math.min(...lats)+Math.max(...lats))/2,taskNote:`${b.addressCount} addresses · ${b.bagStatus} · BAG ${b.bagId}`,modelId:b.modelIds[0]};}));
  const models=CanalRecallSignatureLandmarks.SIGNATURE_MODELS,original=models.filter(m=>m.attribution?.licence==='Original project asset').length;
- const metrics=[[original,'Original models'],[models.length-original,'Reference models remaining'],[inventories.tasks.filter(t=>t.status==='in-progress').length,'Tasks in progress'],[inventories.tasks.filter(t=>t.status==='generated-awaiting-visual-review').length,'Awaiting visual review'],[large.candidateCount,'Large building candidates'],[inventories.streets.length,'Requested street buildings']];
+ const metrics=[[original,'Original models'],[models.length-original,'Reference models remaining'],[inventories.tasks.filter(t=>t.status==='in-progress').length,'Tasks in progress'],[inventories.tasks.filter(t=>t.status==='generated-awaiting-visual-review').length,'Awaiting visual review'],[large.candidateCount,'Large building candidates'],[large.candidates.filter(b=>b.fidelity?.workflow==='standard-eligibility-review').length,'Quick-loop candidates (unreviewed)'],[large.candidates.filter(b=>b.fidelity?.workflow==='standard-building').length,'Approved standard buildings'],[inventories.streets.length,'Requested street buildings']];
  for(const[count,label]of metrics){const box=document.createElement('div');box.className='metric';const n=document.createElement('strong'),l=document.createElement('span');n.textContent=count.toLocaleString();l.textContent=label;box.append(n,l);byId('metrics').append(box);}
  setInventory();
 }).catch(e=>byId('count').textContent=e.message);

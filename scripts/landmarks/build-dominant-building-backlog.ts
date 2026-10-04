@@ -2,16 +2,19 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
+import { triageDominantBuilding, type FidelityReview } from './dominant-building-triage';
 import { SIGNATURE_MODELS } from '../../src/canalRecall/landmarks/signatureModels';
 
 const root = 'public/data/extracts/amsterdam/building-tiles';
 const output = 'public/canal-drive/dominant-building-backlog.json';
 const queue = JSON.parse(fs.readFileSync('public/canal-drive/poi-work-queue.json', 'utf8'));
 const thresholds = queue.dominantBuildingThresholds;
+const fidelity = JSON.parse(fs.readFileSync('public/canal-drive/dominant-building-fidelity.json', 'utf8'));
+const destinations = JSON.parse(fs.readFileSync('public/canal-drive/landmark-backlog.json', 'utf8')).destinations;
 const excluded = new Set(SIGNATURE_MODELS.flatMap(model => model.suppressOsmIds ?? []));
 type Point = [number, number];
 type Candidate = { id: string; name: string | null; footprintSquareMetres: number; heightMetres: number;
-  minHeightMetres: number; center: Point; bounds: number[]; rings: Point[][]; holes: Point[][]; aliases: string[] };
+  minHeightMetres: number; center: Point; bounds: number[]; rings: Point[][]; holes: Point[][]; aliases: string[]; raisedParts: boolean; roofShape: string; poiNames: string[] };
 const candidates = new Map<string, Candidate>();
 const index = JSON.parse(fs.readFileSync(path.join(root, 'index-z14.json'), 'utf8'));
 const municipality = JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/boundaries.json', 'utf8'))
@@ -69,7 +72,10 @@ for (const tile of index.tileList as string[]) {
     if (!cityPolygons.some(polygon => inside(center, polygon[0]) && !polygon.slice(1).some(hole => inside(center, hole)))) continue;
     candidates.set(id, { id, name: props.name ?? null, footprintSquareMetres: footprint,
       heightMetres: Number.isFinite(height) ? height : 0, minHeightMetres: Number(props.minHeight) || 0,
-      center, bounds, rings, holes: polygons.flatMap((polygon: Point[][]) => polygon.slice(1)), aliases: [] });
+      center, bounds, rings, holes: polygons.flatMap((polygon: Point[][]) => polygon.slice(1)), aliases: [], raisedParts: Number(props.minHeight) > 0, roofShape: String(props.roofShape ?? props['roof:shape'] ?? ''),
+      poiNames: destinations.filter((poi: any) => Number.isFinite(poi.lng) && Number.isFinite(poi.lat)
+        && polygons.some((poly: Point[][]) => inside([poi.lng, poi.lat], poly[0])
+          && !poly.slice(1).some(hole => inside([poi.lng, poi.lat], hole)))).map((poi: any) => poi.name) });
   }
 }
 // Group near-identical footprints and clearly raised parts. Ground-level
@@ -89,12 +95,17 @@ for (const item of [...candidates.values()].sort((a, b) => b.footprintSquareMetr
   });
   if (parent) {
     parent.aliases.push(item.id);
+    parent.raisedParts ||= item.minHeightMetres > 0;
+    parent.poiNames = [...new Set([...parent.poiNames, ...item.poiNames])];
     parent.heightMetres = Math.max(parent.heightMetres, item.heightMetres);
   } else retained.push(item);
 }
 const items = retained.sort((a, b) => b.footprintSquareMetres * b.heightMetres - a.footprintSquareMetres * a.heightMetres)
   .map(({ rings: _rings, holes: _holes, bounds: _bounds, minHeightMetres: _base, ...item }) => ({
-    ...item, footprintSquareMetres: Math.round(item.footprintSquareMetres), heightMetres: Math.round(item.heightMetres * 10) / 10,
+    ...item, fidelity: triageDominantBuilding({ heightMetres: item.heightMetres, holes: _holes.length,
+      outlines: _rings.length, vertices: _rings.reduce((sum, ring) => sum + ring.length - 1, 0),
+      raisedParts: item.raisedParts, roofShape: item.roofShape, poiNames: item.poiNames }, fidelity.reviews[item.id] as FidelityReview | undefined),
+    footprintSquareMetres: Math.round(item.footprintSquareMetres), heightMetres: Math.round(item.heightMetres * 10) / 10,
     priority: 'low', status: 'needs-identification-and-research',
     sourceUrl: /^[wr]\d+$/.test(item.id) ? `https://www.openstreetmap.org/${item.id[0] === 'w' ? 'way' : 'relation'}/${item.id.slice(1)}`
       : 'https://3dbag.nl/en/viewer',

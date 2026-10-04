@@ -83,3 +83,15 @@ Report owned files, source evidence, output budget, checks, reference/render fin
 ## Cost discipline without reducing quality
 
 Keep worker context small, references cached on disk, tool output bounded and shared integration coordinated. Do not print huge source datasets. Batch common build/check work. Preserve researched architecture and actual visual/game acceptance. Elapsed time includes research, waiting and review; token totals include cached context rereads and are not a direct percentage of subscription allowance.
+
+## Large ordinary buildings: standard treatment
+
+Large candidates first receive a recognition check, not automatic landmark detail. The generated backlog screens footprint complexity, courtyards, raised parts, unusual mapped roofs, skyline height and mapped POIs. These are clues: a rectangular footprint can still belong to a distinctive building. An unreviewed quick-loop candidate is not an approved simpler model.
+
+Record decisions by exact candidate ID in `public/canal-drive/dominant-building-fidelity.json`. A review needs `treatment` (`standard` or `landmark`), `reviewedOn`, `sourceUrls`, `referenceImage` (saved source image/crop or direct image URL), `reason`, and four boolean `checks`: `ordinarySilhouette`, `repetitiveFacade`, `noDefiningDetailsLost`, `openSpacesUnderstood`. Standard approval requires all four true. Mapped POIs and raised structures require landmark review. Recognizable architecture, user-requested landmarks such as ING House, distinctive roofs, historic ornament or unresolved structure stay in the full loop. No evidence means unreviewed.
+
+For an approved standard building, use one cached facade/context reference, surveyed native massing and height, correct roof/open spaces, restrained real material colors, and a reusable facade rhythm. Omit tiny ornament, interiors and invented lettering. Reuse a parameterized builder and batch similar buildings after one accepted example. Record which details were deliberately simplified. If the model fails recognition or needs substantial bespoke geometry, promote it to the full loop rather than iterate a cheap model indefinitely.
+
+Keep the inexpensive shared geometry/identity checks and one gallery plus live-game visual comparison, including exact suppression and the adjacent building. Use the shared harness rather than writing a bespoke test/review script per ordinary block; add focused probes only for actual risks. A faster loop reduces researched/detail scope and repeated plumbing, not native placement or acceptance. If promoted to a POI, it still requires a genuine destination, map pin/label and meaningful sourced card. Anonymous background improvements do not automatically become trivia destinations.
+
+Track elapsed time for the first small batch to calibrate the faster loop before promising timing or token savings. Review records survive backlog regeneration, and the dashboard distinguishes suggestions, approved standard buildings and full landmark treatment.

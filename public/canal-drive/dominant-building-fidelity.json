@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "reviews": {},
+  "notes": [
+    "Automatic geometry screening suggests review order; it never approves lower fidelity.",
+    "Standard treatment requires a dated facade/context image, source URL, reason, and all recognition/open-space checks.",
+    "Mapped POIs and raised structures retain the full landmark review. ING House is explicitly queued for that workflow."
+  ]
+}
