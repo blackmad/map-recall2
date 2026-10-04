@@ -1,0 +1,468 @@
+{
+  "date": "2026-10-04",
+  "models": [
+    {
+      "id": "ing-house",
+      "status": "accepted",
+      "visualEvidence": "artifacts/ing-house-review",
+      "proof": {
+        "placement-proof": {
+          "id": "ing-house",
+          "scale": 1,
+          "bias": false,
+          "broad": false,
+          "pin": true,
+          "destination": true,
+          "source": "https://mvsa-architects.com/en/projects/ing-house/",
+          "click": {
+            "x": 553.2878137722482,
+            "y": 474.5761187606599
+          },
+          "aliases": [
+            {
+              "id": "w57856367",
+              "hidden": true
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012068127",
+              "hidden": true
+            }
+          ],
+          "oldPyramidIds": [],
+          "neighbors": [
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012071645"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            },
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012216927"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            }
+          ],
+          "features": 10995,
+          "buildings": 13559
+        },
+        "physical-card-proof": {
+          "notice": "osm-way-57856367",
+          "source": "https://mvsa-architects.com/en/projects/ing-house/",
+          "alpha": 1,
+          "drawn": true,
+          "active": "osm-way-57856367"
+        }
+      }
+    },
+    {
+      "id": "muiderpoort",
+      "status": "accepted",
+      "visualEvidence": "artifacts/muiderpoort-review",
+      "proof": {
+        "placement-proof": {
+          "id": "muiderpoort",
+          "scale": 1,
+          "bias": false,
+          "broad": false,
+          "pin": true,
+          "destination": true,
+          "source": "https://stadsherstel.nl/monumenten/muiderpoort/",
+          "click": {
+            "x": 757.2327126795096,
+            "y": 473.6669572525112
+          },
+          "aliases": [
+            {
+              "id": "w45038672",
+              "hidden": true
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012169095",
+              "hidden": true
+            }
+          ],
+          "oldPyramidIds": [],
+          "neighbors": [
+            {
+              "ids": [
+                "w269052430",
+                "NL.IMBAG.Pand.0363100012180658"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            },
+            {
+              "ids": [
+                "w269006047",
+                "NL.IMBAG.Pand.0363100012180599"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            }
+          ],
+          "features": 14475,
+          "buildings": 19608
+        },
+        "physical-card-proof": {
+          "notice": "extract_landmarks_1639856562",
+          "source": "https://stadsherstel.nl/monumenten/muiderpoort/",
+          "alpha": 1,
+          "drawn": true,
+          "active": "extract_landmarks_1639856562"
+        }
+      }
+    },
+    {
+      "id": "idfa-pavilion",
+      "status": "accepted",
+      "visualEvidence": "artifacts/idfa-pavilion-review",
+      "proof": {
+        "placement-proof": {
+          "id": "idfa-pavilion",
+          "scale": 1,
+          "bias": false,
+          "broad": false,
+          "pin": true,
+          "destination": true,
+          "source": "https://www.idfa.nl/en/vondelpark/",
+          "click": {
+            "x": 849.2737452958492,
+            "y": 455.8947470166561
+          },
+          "aliases": [
+            {
+              "id": "w57857054",
+              "hidden": true
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012237216",
+              "hidden": true
+            }
+          ],
+          "oldPyramidIds": [],
+          "neighbors": [
+            {
+              "ids": [
+                "w224310059",
+                "NL.IMBAG.Pand.0363100012201632"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            },
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012166213"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            }
+          ],
+          "features": 29630,
+          "buildings": 32204
+        },
+        "physical-card-proof": {
+          "notice": "osm-way-57857054",
+          "source": "https://www.idfa.nl/en/vondelpark/",
+          "alpha": 1,
+          "drawn": true,
+          "active": "osm-way-57857054"
+        }
+      }
+    },
+    {
+      "id": "social-history",
+      "status": "accepted",
+      "visualEvidence": "artifacts/social-history-review",
+      "proof": {
+        "placement-proof": {
+          "id": "social-history",
+          "scale": 1,
+          "bias": false,
+          "broad": false,
+          "pin": true,
+          "destination": true,
+          "source": "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis",
+          "click": {
+            "x": 532.1905002378536,
+            "y": 522.0480019891492
+          },
+          "aliases": [
+            {
+              "id": "w57859743",
+              "hidden": true
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012164130",
+              "hidden": true
+            }
+          ],
+          "oldPyramidIds": [],
+          "neighbors": [
+            {
+              "ids": [
+                "w57859920",
+                "NL.IMBAG.Pand.0363100012070696"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            }
+          ],
+          "features": 3853,
+          "buildings": 5130
+        },
+        "physical-card-proof": {
+          "notice": "extract_landmarks_742782013",
+          "source": "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis",
+          "alpha": 1,
+          "drawn": true,
+          "active": "extract_landmarks_742782013"
+        }
+      }
+    },
+    {
+      "id": "dageraad",
+      "status": "accepted",
+      "visualEvidence": "artifacts/dageraad-review",
+      "proof": {
+        "placement-proof": {
+          "id": "dageraad",
+          "scale": 1,
+          "bias": false,
+          "broad": false,
+          "pin": true,
+          "destination": true,
+          "source": "https://www.hetschip.nl/de-dageraad",
+          "click": {
+            "x": 775.3866809271666,
+            "y": 268.51908247200976
+          },
+          "aliases": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012076951",
+              "hidden": true
+            }
+          ],
+          "oldPyramidIds": [],
+          "neighbors": [
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012075169"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            },
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012117924"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            }
+          ],
+          "features": 14729,
+          "buildings": 17394
+        },
+        "physical-card-proof": {
+          "notice": "extract_landmarks_897347854",
+          "source": "https://www.hetschip.nl/de-dageraad",
+          "alpha": 1,
+          "drawn": true,
+          "active": "extract_landmarks_897347854"
+        }
+      }
+    },
+    {
+      "id": "ons-lieve-heer-op-solder",
+      "status": "accepted",
+      "visualEvidence": "artifacts/ons-lieve-heer-op-solder-review",
+      "proof": {
+        "placement-proof": {
+          "id": "ons-lieve-heer-op-solder",
+          "scale": 1,
+          "bias": false,
+          "broad": false,
+          "pin": true,
+          "destination": true,
+          "source": "https://opsolder.nl/en/the-monument/",
+          "click": {
+            "x": 685.8949121536865,
+            "y": 441.01892030304845
+          },
+          "aliases": [
+            {
+              "id": "w266941199",
+              "hidden": true
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012178021",
+              "hidden": true
+            },
+            {
+              "id": "w266940951",
+              "hidden": true
+            },
+            {
+              "id": "NL.IMBAG.Pand.0363100012178040",
+              "hidden": true
+            }
+          ],
+          "oldPyramidIds": [],
+          "neighbors": [
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012178020"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            },
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012178030"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            }
+          ],
+          "features": 17155,
+          "buildings": 22923
+        },
+        "physical-card-proof": {
+          "notice": "extract_landmarks_1791250152",
+          "source": "https://opsolder.nl/en/the-monument/",
+          "alpha": 1,
+          "drawn": true,
+          "active": "extract_landmarks_1791250152"
+        }
+      }
+    },
+    {
+      "id": "canals-museum",
+      "status": "accepted",
+      "visualEvidence": "artifacts/canals-museum-review",
+      "proof": {
+        "placement-proof": {
+          "id": "canals-museum",
+          "scale": 1,
+          "bias": false,
+          "broad": false,
+          "pin": true,
+          "destination": true,
+          "source": "https://grachten.museum/stijlkamers-en-gebouw/",
+          "click": {
+            "x": 775.0483658243804,
+            "y": 524.1656361332223
+          },
+          "aliases": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012176537",
+              "hidden": true
+            }
+          ],
+          "oldPyramidIds": [],
+          "neighbors": [
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012176531"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            },
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012176536"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            }
+          ],
+          "features": 6744,
+          "buildings": 10730
+        },
+        "physical-card-proof": {
+          "notice": "extract_landmarks_915035378",
+          "source": "https://grachten.museum/stijlkamers-en-gebouw/",
+          "alpha": 1,
+          "drawn": true,
+          "active": "extract_landmarks_915035378"
+        }
+      }
+    },
+    {
+      "id": "niod",
+      "status": "accepted",
+      "visualEvidence": "artifacts/niod-review",
+      "proof": {
+        "placement-proof": {
+          "id": "niod",
+          "scale": 1,
+          "bias": false,
+          "broad": false,
+          "pin": true,
+          "destination": true,
+          "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826",
+          "click": {
+            "x": 781.8060646618441,
+            "y": 502.6569134866994
+          },
+          "aliases": [
+            {
+              "id": "NL.IMBAG.Pand.0363100012169506",
+              "hidden": true
+            }
+          ],
+          "oldPyramidIds": [],
+          "neighbors": [
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012176531"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            },
+            {
+              "ids": [
+                "NL.IMBAG.Pand.0363100012176532"
+              ],
+              "resident": true,
+              "hidden": false,
+              "drawable": true
+            }
+          ],
+          "features": 11489,
+          "buildings": 13674
+        },
+        "physical-card-proof": {
+          "notice": "extract_landmarks_1742509310",
+          "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826",
+          "alpha": 1,
+          "drawn": true,
+          "active": "extract_landmarks_1742509310"
+        }
+      }
+    }
+  ],
+  "earlierFailures": [
+    "Dageraad main prism buried stepped cylinders; corrected with exposed tier caps and facade-retreat ray tests.",
+    "ING legs were too thin and lobby too short; corrected using primary and Beeldbank photos.",
+    "Attic modern brick was too tan and live front was occluded; corrected palette and canal-side review camera.",
+    "Review harness sampled insufficient points and could inspect before render projection ready; corrected sampling and render wait, rerun passed."
+  ],
+  "researchOutcome": "NIOD archive elevation resolved ornate dormers and asymmetrical frontage; current photo excluded obsolete figures. Canals monument/operator text selected pilaster orders and prevented adding removed festoons. ING Beeldbank photos exposed a lobby-height mismatch; construction dossier public access unavailable."
+}

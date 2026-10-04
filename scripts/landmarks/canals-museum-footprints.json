@@ -1,0 +1,183 @@
+{
+  "id": "canals-museum",
+  "landmarkId": "extract_landmarks_915035378",
+  "anchor": [
+    4.8861835,
+    52.3678965
+  ],
+  "authorHeadingDegrees": 2.93335363117035,
+  "building": {
+    "type": "Feature",
+    "properties": {
+      "id": "NL.IMBAG.Pand.0363100012176537",
+      "tier": 3,
+      "minHeight": 0,
+      "height": 17.81
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.886349,
+            52.367957
+          ],
+          [
+            4.886029,
+            52.367968
+          ],
+          [
+            4.886018,
+            52.367836
+          ],
+          [
+            4.886338,
+            52.367825
+          ],
+          [
+            4.886349,
+            52.367957
+          ]
+        ]
+      ]
+    }
+  },
+  "localRing": [
+    [
+      7.254575564760642,
+      10.892185657335743
+    ],
+    [
+      7.355847942650129,
+      -10.892185657275451
+    ],
+    [
+      -7.254575565541957,
+      -10.892185657235258
+    ],
+    [
+      -7.355847942647039,
+      10.892185657335743
+    ]
+  ],
+  "coordinateConvention": "GeoJSON longitude/latitude; local metres x right along principal facade, z outward to canal; Y-up",
+  "source": "Installed BAG tile 14/8414/5384; parent matching uses polygon containing genuine museum center and operator Herengracht386 facade width/context",
+  "heightNotes": {
+    "tileHeight": 17.81,
+    "eave": 14.2,
+    "ridge": 17.81,
+    "basis": "Tile maximum used for main roof ridge, eave approximate from observed 3-storey plus basement facade; no equipment interpreted as whole-building height"
+  },
+  "neighborsToRetain": [
+    "NL.IMBAG.Pand.0363100012176531",
+    "NL.IMBAG.Pand.0363100012176536"
+  ],
+  "archiveResearch": {
+    "poiId": "lm-extract_landmarks_915035378",
+    "extractId": "extract_landmarks_915035378",
+    "name": "Museum of the Canals",
+    "backlogStatus": "pending",
+    "backlogRank": 300,
+    "centerLatLng": [
+      52.3678921,
+      4.8862198
+    ],
+    "address": "Herengracht 386",
+    "bagPandIdentity": null,
+    "identityStatus": "Genuine destination/extract identity confirmed; BAG parent/footprint matching remains a prerequisite before modeling.",
+    "rce": {
+      "monumentNumber": 1828,
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1828",
+      "access": "HTML retrieved and description inspected using Python urllib; web retrieval succeeded for 1826/1828 but failed for 3133 including PDF; fallback HTTP fetch succeeded.",
+      "descriptionDutch": "Dubbel huis met pilastergevel voorzien van een fronton op de middenrisaliet, in 1663 gebouwd door Philips Vingboons; ingangspartij en stoeppalen XIXc.",
+      "descriptionDate": "Register inscription 1970; wording date not stated; retrieved 2026-10-04.",
+      "buildingPart": "Street-facing house at registered address; rear scope not inferred from prose.",
+      "assertions": [
+        {
+          "feature": "Double house with pilaster facade and pediment on central projecting bay; entrance composition and pavement posts dated XIXc.",
+          "confidence": "High: explicit register prose.",
+          "dimensionsUnknown": true
+        }
+      ]
+    },
+    "archiveSearch": {
+      "queries": [
+        "site.archief.amsterdam \"Herengracht 386\" bouwtekening",
+        "site.archief.amsterdam \"Herengracht 386\" tekening"
+      ],
+      "status": "Bounded address search completed; no verified directly accessible drawing record from indexed City Archives search.",
+      "negativeEvidence": "No matching accessible result does not mean no drawing exists. Search returned nearby or third-party records; unrelated Korsjespoortsteeg 17 drawing excluded.",
+      "emailRequested": false,
+      "attemptedDirectSearchUrl": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Herengracht%20386%20bouwtekening",
+      "directAccess": "Web tool could not access search URL; no scan inspected."
+    },
+    "modelingEffort": "Medium: pilaster orders, central pediment and open garden; reusable house primitives, full landmark loop.",
+    "visualAcceptance": "Not modeled or accepted. Geometry/gallery/live scene, exact suppression/neighbor retention, destination/pin/card still required.",
+    "otherSources": [
+      {
+        "url": "https://grachten.museum/wp-content/uploads/2023/08/Beleidsplan-2023-2026-Grachtenmuseum-Amsterdam.pdf",
+        "type": "Operator policy/collection description",
+        "access": "Indexed PDF description inspected; facade history text extracted by search.",
+        "featuresResolved": [
+          "Stacked Doric then composite pilasters; triangular central pediment with oval window, coat of arms and festoon.",
+          "Between-pilaster festoons shown by original Vingboons/Grachtenboek drawings were removed in late eighteenth century. Do not restore missing festoons merely because a historic drawing depicts them."
+        ],
+        "confidence": "High for explicit operator architectural account; current photo verification required."
+      },
+      {
+        "url": "https://grachten.museum/stijlkamers-en-gebouw/",
+        "type": "Operator house history",
+        "access": "Text read.",
+        "featuresResolved": [
+          "1663 design commission versus museum description of 1665 completed house; preserve chronology separately from BAG year."
+        ]
+      },
+      {
+        "url": "https://grachten.museum/adres-en-route/",
+        "type": "Operator address",
+        "access": "Indexed text read; Herengracht 386 confirmed."
+      }
+    ]
+  },
+  "openGardenProbes": [
+    [
+      0,
+      -15
+    ],
+    [
+      4,
+      -17
+    ]
+  ],
+  "references": [
+    {
+      "url": "https://grachten.museum/adres-en-route/",
+      "image": "docs/references/canals-museum/current-facade.webp",
+      "date": "2026 operator page asset",
+      "use": "Current facade photo supports five bays, tall bel-etage, cream pilasters, basement and entrance; roof cutoff supplemented by context photo"
+    },
+    {
+      "url": "https://commons.wikimedia.org/wiki/File:Herengracht_386.jpg",
+      "image": "docs/references/canals-museum/facade-roof.jpg",
+      "date": "2010 Commons photo",
+      "use": "Full roof/context: dark hipped roof, two side dormers, triangular pediment"
+    }
+  ],
+  "identityEvidence": {
+    "installedGeometryId": "NL.IMBAG.Pand.0363100012176537",
+    "installedFactsKey": "P0363100012176537",
+    "factsRecord": [
+      1663,
+      14,
+      2,
+      {
+        "f": 0
+      }
+    ],
+    "factsFile": "public/data/extracts/amsterdam/building-facts/14/8414/5384.json.gz",
+    "aliasAudit": "Targeted current installed geometry tile contains only BAG parent identity for this footprint; no OSM alias to suppress. Nearby BAG6531/6536 are distinct footprints and retained.",
+    "bagYear": 1663,
+    "chronology": "BAG registered construction year1663; operator commission1663/completion1665 distinguished.",
+    "centerInsideFootprint": true
+  }
+}

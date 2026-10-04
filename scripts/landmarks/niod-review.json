@@ -1,0 +1,115 @@
+{
+  "status": "accepted",
+  "archiveUsefulness": {
+    "recordId": "1315BT900084",
+    "benefit": "Resolves asymmetric ground floor, double/triple window groups, complete ornamental dormer assembly shapes and frontage proportions. More informative than RCE prose for construction.",
+    "currentStateOverride": "2016 facade photograph removes1888standing ridge-end figures and replaces intermediate dormers with plain small rectangles. Drawing is not copied literally.",
+    "rceBenefit": "Establishes sandstone material, French neo-Renaissance architecture, stoep railing and two lanterns without inventing dimensions."
+  },
+  "referenceImages": [
+    "docs/references/next-batch-archive/niod-municipal-facade-2016.jpg",
+    "docs/references/next-batch-archive/niod-salm-elevation-1888.jpg"
+  ],
+  "geometryChecks": {
+    "passed": true,
+    "triangles": 15056,
+    "meshes": 1043,
+    "bounds": {
+      "min": [
+        -8.862234075221211,
+        -3.814697322468419e-07,
+        -27.449479521279724
+      ],
+      "max": [
+        8.87223761527169,
+        23.40000000059605,
+        28.309449993443486
+      ]
+    },
+    "checks": [
+      "finite native geometry",
+      "visible front glazing",
+      "exposed glazed hall",
+      "independently low rear roof",
+      "upward supported ridge",
+      "no padded neighbor filling",
+      "exact genuine BAG replacement"
+    ]
+  },
+  "requiredRootReview": [
+    "Native-scale gallery vs2016facade and1888drawing; independent failure review.",
+    "Live front and rear roof views; exact parent suppression and north/south neighbor retention after residency.",
+    "Selectable genuine destination, geographic pin and pointer-click sourced card."
+  ],
+  "limitations": [
+    "Individual sandstone carving abstracted into original relief and scroll assemblies.",
+    "Metric frontage height and window/dormer dimensions inferred from2016photo +1888elevation with currentAHN5 limits.",
+    "Original clipped roof zones simplify survey roof surfaces; no source mesh is copied.",
+    "Central skylight position/geometry approximate; no2026 facade photograph inspected."
+  ],
+  "specPath": "scripts/landmarks/niod-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012176531"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012176532"
+    ]
+  ],
+  "zoom": 19,
+  "bearing": 270,
+  "rootAcceptance": {
+    "date": "2026-10-04",
+    "status": "accepted",
+    "evidence": "artifacts/niod-review/",
+    "checks": "Gallery/current source and actual game front/rear reviewed; route, pin, physical sourced card, native scale, exact suppression, resident drawable neighbors passed.",
+    "limitations": "Fine ornament and photo-derived dimensions approximate; Dageraad scope is museum corner parent only."
+  },
+  "referenceComparison": {
+    "reviewedOn": "2026-10-04",
+    "reviewer": "independent current-batch worker",
+    "status": "accepted",
+    "sourceEvidence": [
+      "docs/references/next-batch-archive/niod-municipal-facade-2016.jpg",
+      "docs/references/next-batch-archive/niod-salm-elevation-1888.jpg"
+    ],
+    "renderEvidence": [
+      "artifacts/niod-review/gallery.png",
+      "artifacts/niod-review/neutral-front.png",
+      "artifacts/niod-review/live-rear.png"
+    ],
+    "findings": [
+      "The three richly framed main dormer assemblies, higher central crest and double/triple window groups retain the distinctive French neo-Renaissance composition of the 2016 municipal facade photograph and 1888 Salm elevation. These read clearly in the native gallery and actual canal-front scene.",
+      "Ground-floor composition remains intentionally asymmetric, with narrow central openings and the large right carriage entrance; horizontal stone bands, cornice and stoep railing reinforce the sandstone facade identity.",
+      "Current-state roof differs appropriately from the 1888 drawing: plain small intermediate roof windows are used and obsolete standing ridge-end figures are absent. The steep principal roof and restrained crest fit the photographed family.",
+      "Rear game view preserves the lower pitched rear house and surrounding garden/neighbor space. Source summaries establish independently low middle and rear roof zones; the review does not treat the small equipment/crest maximum as uniform building height.",
+      "No material facade, roof, native-scope or neighbor-retention failure found in the inspected evidence."
+    ],
+    "limitations": [
+      "Sandstone color is warmer and relief more schematic than the weathered grey 2016 photo; flat-color relief conveys architectural grouping rather than individual carving.",
+      "Arched glazing heads, dormer scrolls, cornice carving and lantern details are simplified.",
+      "Actual front view trees partly obscure the ground floor; gallery and elevation supply a clear comparison of its asymmetric arrangement.",
+      "2016 is the inspected current-state facade photograph; no 2026 exterior image or surveyed facade dimensions were inspected. Rear fenestration and skylight placement remain approximate."
+    ],
+    "pending": []
+  },
+  "actualGameContractEvidence": {
+    "log": "/tmp/niod-final-checks.log",
+    "status": "passed",
+    "checked": [
+      "chosen route destination",
+      "geographic pin",
+      "native scale and placement",
+      "physical sourced-card click",
+      "exact BAG replacement",
+      "resident drawable north/south neighbors"
+    ]
+  },
+  "pendingAcceptance": [],
+  "sharedValidation": {
+    "manualLandmarks": "145 native assets passed",
+    "poiContract": "145 models /146 independent destinations passed",
+    "typescript": "npm run lint passed",
+    "bundles": "signature placement, landmark runtime and route-selection rebuilt"
+  }
+}

@@ -1,0 +1,682 @@
+{
+  "anchor": [
+    4.939438,
+    52.369089
+  ],
+  "coordinateConvention": "Longitude/latitude source; model X east, Z south, Y up, scale 1.",
+  "source": {
+    "installedTile": "public/data/extracts/amsterdam/building-tiles/14/8416/5384.geojson.gz",
+    "osmUrl": "https://www.openstreetmap.org/way/57859743",
+    "retrieved": "2026-10-04",
+    "osm": {
+      "type": "way",
+      "id": 57859743,
+      "bounds": {
+        "minlat": 52.3689178,
+        "minlon": 4.938872,
+        "maxlat": 52.3692558,
+        "maxlon": 4.9399986
+      },
+      "geometry": [
+        {
+          "lat": 52.3692152,
+          "lon": 4.9399953
+        },
+        {
+          "lat": 52.3690611,
+          "lon": 4.9399986
+        },
+        {
+          "lat": 52.3690607,
+          "lon": 4.9399443
+        },
+        {
+          "lat": 52.3689256,
+          "lon": 4.9399474
+        },
+        {
+          "lat": 52.3689213,
+          "lon": 4.9394301
+        },
+        {
+          "lat": 52.3689306,
+          "lon": 4.9394211
+        },
+        {
+          "lat": 52.368924,
+          "lon": 4.9394026
+        },
+        {
+          "lat": 52.3689212,
+          "lon": 4.9394023
+        },
+        {
+          "lat": 52.368921,
+          "lon": 4.9393783
+        },
+        {
+          "lat": 52.3689178,
+          "lon": 4.9389335
+        },
+        {
+          "lat": 52.368935,
+          "lon": 4.9389324
+        },
+        {
+          "lat": 52.3689499,
+          "lon": 4.9389319
+        },
+        {
+          "lat": 52.3690517,
+          "lon": 4.9389302
+        },
+        {
+          "lat": 52.3690518,
+          "lon": 4.9388754
+        },
+        {
+          "lat": 52.3692074,
+          "lon": 4.938872
+        },
+        {
+          "lat": 52.3692085,
+          "lon": 4.9389886
+        },
+        {
+          "lat": 52.3692069,
+          "lon": 4.9389886
+        },
+        {
+          "lat": 52.3692087,
+          "lon": 4.9392213
+        },
+        {
+          "lat": 52.3692452,
+          "lon": 4.9392142
+        },
+        {
+          "lat": 52.3692486,
+          "lon": 4.9392342
+        },
+        {
+          "lat": 52.3692512,
+          "lon": 4.9392526
+        },
+        {
+          "lat": 52.3692532,
+          "lon": 4.9392713
+        },
+        {
+          "lat": 52.3692551,
+          "lon": 4.9392995
+        },
+        {
+          "lat": 52.3692558,
+          "lon": 4.9393279
+        },
+        {
+          "lat": 52.3692553,
+          "lon": 4.9393562
+        },
+        {
+          "lat": 52.3692535,
+          "lon": 4.9393845
+        },
+        {
+          "lat": 52.3692505,
+          "lon": 4.9394124
+        },
+        {
+          "lat": 52.3692478,
+          "lon": 4.9394308
+        },
+        {
+          "lat": 52.3692519,
+          "lon": 4.9399042
+        },
+        {
+          "lat": 52.3692162,
+          "lon": 4.9399065
+        },
+        {
+          "lat": 52.369217,
+          "lon": 4.9399953
+        },
+        {
+          "lat": 52.3692152,
+          "lon": 4.9399953
+        }
+      ],
+      "tags": {
+        "building": "civic",
+        "ref:bag": "0363100012164130",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "start_date": "1905"
+      }
+    }
+  },
+  "building": {
+    "type": "Feature",
+    "properties": {
+      "id": "NL.IMBAG.Pand.0363100012164130",
+      "tier": 3,
+      "minHeight": 0,
+      "height": 25.72
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.939424,
+            52.368932
+          ],
+          [
+            4.939433,
+            52.368923
+          ],
+          [
+            4.93995,
+            52.368927
+          ],
+          [
+            4.939947,
+            52.369062
+          ],
+          [
+            4.940001,
+            52.369063
+          ],
+          [
+            4.939998,
+            52.369219
+          ],
+          [
+            4.939909,
+            52.369218
+          ],
+          [
+            4.939907,
+            52.369254
+          ],
+          [
+            4.939433,
+            52.369249
+          ],
+          [
+            4.939399,
+            52.369254
+          ],
+          [
+            4.939365,
+            52.369257
+          ],
+          [
+            4.93933,
+            52.369258
+          ],
+          [
+            4.939296,
+            52.369256
+          ],
+          [
+            4.939261,
+            52.369254
+          ],
+          [
+            4.939228,
+            52.369249
+          ],
+          [
+            4.939217,
+            52.369247
+          ],
+          [
+            4.939224,
+            52.36921
+          ],
+          [
+            4.938991,
+            52.369209
+          ],
+          [
+            4.938991,
+            52.36921
+          ],
+          [
+            4.938875,
+            52.369209
+          ],
+          [
+            4.938878,
+            52.369054
+          ],
+          [
+            4.938933,
+            52.369053
+          ],
+          [
+            4.938934,
+            52.368952
+          ],
+          [
+            4.938935,
+            52.368937
+          ],
+          [
+            4.938936,
+            52.368919
+          ],
+          [
+            4.939405,
+            52.368923
+          ],
+          [
+            4.939405,
+            52.368926
+          ],
+          [
+            4.939424,
+            52.368932
+          ]
+        ]
+      ]
+    }
+  },
+  "neighbor": {
+    "type": "Feature",
+    "properties": {
+      "id": "NL.IMBAG.Pand.0363100012070696",
+      "tier": 3,
+      "minHeight": 0,
+      "height": 22.5
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.940734,
+            52.369223
+          ],
+          [
+            4.940733,
+            52.369265
+          ],
+          [
+            4.940706,
+            52.369265
+          ],
+          [
+            4.940706,
+            52.369277
+          ],
+          [
+            4.940704,
+            52.369277
+          ],
+          [
+            4.940704,
+            52.369283
+          ],
+          [
+            4.940672,
+            52.369283
+          ],
+          [
+            4.940672,
+            52.369277
+          ],
+          [
+            4.940642,
+            52.369277
+          ],
+          [
+            4.940642,
+            52.369283
+          ],
+          [
+            4.94061,
+            52.369283
+          ],
+          [
+            4.94061,
+            52.369277
+          ],
+          [
+            4.940487,
+            52.369276
+          ],
+          [
+            4.940487,
+            52.369282
+          ],
+          [
+            4.940454,
+            52.369281
+          ],
+          [
+            4.940455,
+            52.369275
+          ],
+          [
+            4.940405,
+            52.369275
+          ],
+          [
+            4.940405,
+            52.369281
+          ],
+          [
+            4.940373,
+            52.369281
+          ],
+          [
+            4.940374,
+            52.369275
+          ],
+          [
+            4.940243,
+            52.369273
+          ],
+          [
+            4.940243,
+            52.36928
+          ],
+          [
+            4.940212,
+            52.369279
+          ],
+          [
+            4.940212,
+            52.369273
+          ],
+          [
+            4.940174,
+            52.369273
+          ],
+          [
+            4.940173,
+            52.369279
+          ],
+          [
+            4.940142,
+            52.369279
+          ],
+          [
+            4.940142,
+            52.369273
+          ],
+          [
+            4.940139,
+            52.369273
+          ],
+          [
+            4.94014,
+            52.36926
+          ],
+          [
+            4.940113,
+            52.369259
+          ],
+          [
+            4.940113,
+            52.369252
+          ],
+          [
+            4.940103,
+            52.369252
+          ],
+          [
+            4.940104,
+            52.369232
+          ],
+          [
+            4.940114,
+            52.369232
+          ],
+          [
+            4.940114,
+            52.369224
+          ],
+          [
+            4.940109,
+            52.369223
+          ],
+          [
+            4.940106,
+            52.369223
+          ],
+          [
+            4.940101,
+            52.369221
+          ],
+          [
+            4.940099,
+            52.36922
+          ],
+          [
+            4.940099,
+            52.369218
+          ],
+          [
+            4.9401,
+            52.369217
+          ],
+          [
+            4.940101,
+            52.369216
+          ],
+          [
+            4.940103,
+            52.369214
+          ],
+          [
+            4.940106,
+            52.369213
+          ],
+          [
+            4.940109,
+            52.369212
+          ],
+          [
+            4.940111,
+            52.369211
+          ],
+          [
+            4.940114,
+            52.369211
+          ],
+          [
+            4.94012,
+            52.368977
+          ],
+          [
+            4.94011,
+            52.368977
+          ],
+          [
+            4.94011,
+            52.368958
+          ],
+          [
+            4.940115,
+            52.368958
+          ],
+          [
+            4.940115,
+            52.368959
+          ],
+          [
+            4.940121,
+            52.368959
+          ],
+          [
+            4.940121,
+            52.368928
+          ],
+          [
+            4.940149,
+            52.368928
+          ],
+          [
+            4.940149,
+            52.368921
+          ],
+          [
+            4.940182,
+            52.368922
+          ],
+          [
+            4.940182,
+            52.368928
+          ],
+          [
+            4.940219,
+            52.368929
+          ],
+          [
+            4.940219,
+            52.368922
+          ],
+          [
+            4.940252,
+            52.368922
+          ],
+          [
+            4.940252,
+            52.368929
+          ],
+          [
+            4.940382,
+            52.36893
+          ],
+          [
+            4.940382,
+            52.368923
+          ],
+          [
+            4.940414,
+            52.368924
+          ],
+          [
+            4.940414,
+            52.36893
+          ],
+          [
+            4.940463,
+            52.368931
+          ],
+          [
+            4.940463,
+            52.368924
+          ],
+          [
+            4.940496,
+            52.368924
+          ],
+          [
+            4.940496,
+            52.368931
+          ],
+          [
+            4.940618,
+            52.368932
+          ],
+          [
+            4.940618,
+            52.368925
+          ],
+          [
+            4.940651,
+            52.368925
+          ],
+          [
+            4.940651,
+            52.368932
+          ],
+          [
+            4.940674,
+            52.368932
+          ],
+          [
+            4.940674,
+            52.368926
+          ],
+          [
+            4.940707,
+            52.368926
+          ],
+          [
+            4.940707,
+            52.368933
+          ],
+          [
+            4.940741,
+            52.368933
+          ],
+          [
+            4.940734,
+            52.369223
+          ]
+        ]
+      ]
+    }
+  },
+  "sourceUrls": [
+    "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis",
+    "https://arcam.nl/architectuur-gids/internationaal-instituut-voor-sociale-geschiedenis/",
+    "https://iisg.amsterdam/nl/collecties/plan-uw-bezoek"
+  ],
+  "heightNotes": {
+    "installedAggregate": 25.72,
+    "mainRoof": 23.8,
+    "southRaisedRoof": 25.4,
+    "libraryBottom": 6.1,
+    "libraryTop": 10.1,
+    "groundPavilionTop": 4.1,
+    "method": "BAG tile aggregate provides maximum envelope only. Relative roof setbacks, raised entry, library ribbon and upper blind archive levels estimated from primary architect photos; not an AHN surveyed facade-height claim.",
+    "dateConflict": "OSM start_date1905 conflicts with primary architect and Arcam1961 original concrete warehouse; use1961."
+  },
+  "criticalTraits": [
+    "Off-white ribbed concrete block, no ubiquitous window grid",
+    "Largely blind upper archive levels with intermittent slit openings",
+    "South paired glazed bays above open raised entry columns",
+    "North long first-floor library ribbon projected above ground windows",
+    "North tall atrium glazing and rounded former press museum glass pavilion",
+    "Flat stepped roof; no whole-footprint equipment plate"
+  ],
+  "openSpaceProbes": [
+    [
+      44,
+      4
+    ],
+    [
+      0,
+      -25
+    ],
+    [
+      -27,
+      2.3,
+      18.1
+    ]
+  ],
+  "references": [
+    {
+      "path": "artifacts/landmarks/social-history/references/atelierpro-harbour.png",
+      "view": "South entry (filename retained from download; image is entrance facade)",
+      "url": "https://cdn.prod.website-files.com/6643473eb811e3b512dc7e8d/687f70bd1b015496d4415265_IISG.avif"
+    },
+    {
+      "path": "artifacts/landmarks/social-history/references/atelierpro-north.png",
+      "view": "Harbour/context north facade",
+      "url": "https://cdn.prod.website-files.com/6643473eb811e3b512dc7e8d/687f73201eeafcb988d26f18_8711%20ext%2003%20GB%20dia%20fotog.%20onbek.%20200%20dpi.avif"
+    },
+    {
+      "path": "artifacts/landmarks/social-history/references/arcam-street.jpg",
+      "view": "North library cantilever, ribs and rounded pavilion detail",
+      "url": "https://arcam.nl/wp-content/uploads/2021/06/museumn8app3.jpg"
+    }
+  ]
+}

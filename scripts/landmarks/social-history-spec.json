@@ -1,0 +1,38 @@
+{
+  "id": "social-history",
+  "name": "International Institute of Social History",
+  "landmarkId": "extract_landmarks_742782013",
+  "modelUrl": "./models/social-history.glb",
+  "suppressOsmIds": [
+    "w57859743",
+    "NL.IMBAG.Pand.0363100012164130"
+  ],
+  "footprint": {
+    "centre": [
+      4.939438,
+      52.369089
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 76.6,
+    "widthMetres": 37.6
+  },
+  "spatialSuppression": false,
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.939438,
+      52.369089
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native current BAG0363100012164130 footprint, current OSMw57859743. Facade assemblies and relative vertical dimensions from AtelierPRO references."
+  },
+  "attribution": {
+    "title": "International Institute of Social History",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free reconstruction of the1961 concrete cocoa warehouse transformed by AtelierPRO in1989; off-white vertical ribs, blind archives, raised entrance, library cantilever, tall harbour atrium and rounded glass pavilion. No imported meshes or image pixels. Exact BAG/OSM suppression preserves the adjacent historic warehouse and waterfront."
+  }
+}

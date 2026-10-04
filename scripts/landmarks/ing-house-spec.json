@@ -1,0 +1,38 @@
+{
+  "id": "ing-house",
+  "name": "ING House / Infinity",
+  "landmarkId": "osm-way-57856367",
+  "modelUrl": "./models/ing-house.glb",
+  "suppressOsmIds": [
+    "w57856367",
+    "NL.IMBAG.Pand.0363100012068127"
+  ],
+  "footprint": {
+    "centre": [
+      4.85519,
+      52.33717
+    ],
+    "headingDegrees": 85,
+    "lengthMetres": 137.75,
+    "widthMetres": 28.62
+  },
+  "spatialSuppression": false,
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.85519,
+      52.33717
+    ],
+    "northOffsetDegrees": 5,
+    "source": "Current in-use BAG0363100012068127;OSMw57856367 exact surveyed outline. 138m longitudinal eastward85deg axis, roof profile measured from AHN5/3DBAG and calibrated against primary MVSA photos. Original native-scale reconstruction, not imported mesh."
+  },
+  "attribution": {
+    "title": "ING House / Infinity",
+    "author": "Map Recall",
+    "sourceUrl": "https://mvsa-architects.com/en/projects/ing-house/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-color glass/aluminium wedge, rounded auditorium nose, 16steel supports, double-skin facade and ground lobby. Exact surveyed BAG boundary, open undercroft. Heights use real roof planes;equipment peaks excluded. No imported third-party meshes or image pixels."
+  }
+}

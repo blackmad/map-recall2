@@ -1,0 +1,37 @@
+{
+  "id": "niod",
+  "name": "NIOD Institute for War, Holocaust, and Genocide Studies",
+  "landmarkId": "extract_landmarks_1742509310",
+  "modelUrl": "./models/niod.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012169506"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.885957632081178,
+      52.36811466960355
+    ],
+    "headingDegrees": 92.85016810608217,
+    "lengthMetres": 17.310609999999997,
+    "widthMetres": 54.51096
+  },
+  "surveyed": {
+    "anchor": [
+      4.885957632081178,
+      52.36811466960355
+    ],
+    "northOffsetDegrees": -87.14983221643158,
+    "source": "Exact current PDOK BAG parent; native metres/front axis from actual east frontage."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "NIOD Institute for War, Holocaust, and Genocide Studies",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free sandstone French neo-Renaissance double house. Exact BAG perimeter at scale1 with separately low middle/rear roof zones. Salm1888drawing resolves window groups, carriage entry, dormer assemblies;2016municipalphoto overrides obsolete standing ridge figures and small dormers. AHN5roof levels guide heights; carved reliefs and skylight are visual approximations. No imported mesh or reference-photo pixels."
+  }
+}

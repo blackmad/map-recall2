@@ -1,0 +1,42 @@
+{
+  "id": "ons-lieve-heer-op-solder",
+  "name": "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
+  "landmarkId": "extract_landmarks_1791250152",
+  "modelUrl": "./models/ons-lieve-heer-op-solder.glb",
+  "suppressOsmIds": [
+    "w266941199",
+    "NL.IMBAG.Pand.0363100012178021",
+    "w266940951",
+    "NL.IMBAG.Pand.0363100012178040"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.899258769422396,
+      52.375132921670925
+    ],
+    "headingDegrees": 121.0851936786699,
+    "lengthMetres": 23.644547311709523,
+    "widthMetres": 21.08931723774654
+  },
+  "surveyed": {
+    "anchor": [
+      4.899258769422396,
+      52.375132921670925
+    ],
+    "northOffsetDegrees": -59
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": -0.08519367866989569,
+  "attribution": {
+    "title": "Ons\u2019 Lieve Heer op Solder \u2014 historic church and entrance",
+    "author": "Map Recall",
+    "sourceUrl": "https://opsolder.nl/en/the-monument/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free surveyed reconstruction of historic museum and separate modern entrance. Exact OSM/BAG identity suppression; open Heintje Hoekssteeg preserved. Photo-derived sash and modern facade assemblies, bounded upward roof planes and gables; dimensions above surveyed plan approximate."
+  },
+  "relatedLandmarkIds": [
+    "extract_landmarks_769225968"
+  ]
+}

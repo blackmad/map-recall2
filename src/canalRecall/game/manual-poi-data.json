@@ -237,5 +237,201 @@
       "https://www.iaa-architecten.nl/projecten/feralda-crane-hotel/",
       "https://www.faralda.com/hotels/"
     ]
+  },
+  {
+    "modelId": "ing-house",
+    "landmarkId": "osm-way-57856367",
+    "name": "ING House / Infinity",
+    "sourceUrl": "https://mvsa-architects.com/en/projects/ing-house/",
+    "sourceUrls": [
+      "https://mvsa-architects.com/en/projects/ing-house/",
+      "https://www.amsterdam.nl/stadsarchief/stukken/plannen/zuidas/",
+      "https://www.breeam.nl/projecten/infinity-amsterdam-16223",
+      "https://www.lexence.com/wp-content/uploads/2025/02/Routebeschrijving-2.pdf"
+    ],
+    "wikidata": "Q645881",
+    "wikipedia": "nl:Infinity (gebouw)",
+    "address": "Amstelveenseweg 500, 1081 KL Amsterdam",
+    "center": [
+      52.3369407,
+      4.8553107
+    ],
+    "description": "Meyer and Van Schooten Architects completed ING House in 2002. Its glass-and-aluminium wedge rests on 16 inclined steel legs, 9–12 metres above ground, keeping a route open beneath its silver belly. The double-skin facade shields offices from A10 noise while drawing fresh air from the quieter south side. Six interior gardens form part of the design. ING moved out in 2015; the building became the multi-tenant Infinity offices.",
+    "destinationNotes": "The arrival pin is the public bicycle approach on Skûtsjespad at mapped road/footway junction n6407529791, matching installed routing_7438. It marks the approach to the complex, not a door. From there the mapped footway and steps connect to the covered pedestrian passage beneath ING House. The separately recorded main entrance n1339449505, Amstelveenseweg 500, lies inside its exact current BAG footprint. Primary Lexence visitor directions confirm ground-floor lift and visitor access. Keep the selected ING House identity when routing fails; do not substitute the closer northern busway or another POI.",
+    "entrance": {
+      "center": [
+        52.3371561,
+        4.8560226
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/1339449505",
+      "precision": "OSM entrance=main node n1339449505 with house number 500, last edited in 2019 as version 7. It lies within the current BAG parent and connects to the covered pedestrian passage. This is a mapped entrance location, not an independent door survey."
+    },
+    "streetApproach": {
+      "center": [
+        52.3369407,
+        4.8553107
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/way/7381220",
+      "precision": "Actual mapped road node n6407529791 where footway w684001541 branches into steps to the covered passage. This is the public bicycle arrival approach, not a surveyed door."
+    }
+  },
+  {
+    "modelId": "muiderpoort",
+    "landmarkId": "extract_landmarks_1639856562",
+    "name": "Muiderpoort",
+    "description": "The Muiderpoort is a surviving gate of Amsterdam’s former city wall. Cornelis Rauws designed the present classical gate after its predecessor collapsed in 1769; it was built in 1770–1771. Its two sculpted pediments show different city emblems: a medieval cog ship on the city side and the three Saint Andrew’s crosses on the outer side. Napoleon entered Amsterdam through this gate in 1811. The open passage retains a brick vault beneath the octagonal dome and clock lantern.",
+    "sourceUrl": "https://stadsherstel.nl/monumenten/muiderpoort/",
+    "additionalSources": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/5139",
+      "https://erfgoedregister.amsterdam.nl/monument/f665a00b-f8e3-4242-8b0f-ce071282d956/?collection=2017-stad-en-land"
+    ]
+  },
+  {
+    "modelId": "idfa-pavilion",
+    "landmarkId": "osm-way-57857054",
+    "name": "IDFA Het Documentaire Paviljoen",
+    "center": [
+      52.36108,
+      4.875
+    ],
+    "sourceUrl": "https://www.idfa.nl/en/vondelpark/",
+    "description": "IDFA’s year-round documentary home occupies Willem Hamer’s Vondelparkpaviljoen, built in 1879–1881 as a café-restaurant. Its Italian Renaissance facade combines open columned loggias, corner domes and a raised terrace. The historic pavilion previously housed the Nederlands Filmmuseum; today it brings documentary screenings, conversations and exhibitions to Vondelpark, with Café Vertigo downstairs.",
+    "sourceLinks": [
+      {
+        "title": "IDFA documentary pavilion",
+        "url": "https://www.idfa.nl/en/vondelpark/"
+      },
+      {
+        "title": "National heritage register 504833",
+        "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504833"
+      },
+      {
+        "title": "IDFA practical information and Café Vertigo",
+        "url": "https://www.idfa.nl/vondelpark/verhuur/praktische-informatie/"
+      },
+      {
+        "title": "IDFA2023 annual report: pavilion opened March2024",
+        "url": "https://www.idfa.nl/en/about-idfa/meet-the-team/annual-reports/annualreport-2023/het-documentaire-paviljoen/"
+      }
+    ]
+  },
+  {
+    "modelId": "social-history",
+    "landmarkId": "extract_landmarks_742782013",
+    "name": "International Institute of Social History",
+    "center": [
+      52.3690003,
+      4.9393848
+    ],
+    "sourceUrl": "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis",
+    "description": "The IISG preserves archives of labour and social movements. Its Cruquiusweg home began as the massive concrete cocoa warehouse Koning Willem I in1961. AtelierPRO converted it into an archive and research centre in1989: the heavy structure carries the collections, while a great harbour window lights the atrium. The former loading platform supports the projecting reading room. The institute was founded in1935 by historian Nicolaas Posthumus.",
+    "sourceLinks": [
+      {
+        "title": "AtelierPRO: warehouse conversion and reading room",
+        "url": "https://www.atelierpro.nl/projecten/internationaal-instituut-voor-sociale-geschiedenis"
+      },
+      {
+        "title": "Arcam: cocoa warehouse, atrium and former press museum",
+        "url": "https://arcam.nl/architectuur-gids/internationaal-instituut-voor-sociale-geschiedenis/"
+      },
+      {
+        "title": "IISG: visiting the collections at Cruquiusweg31",
+        "url": "https://iisg.amsterdam/nl/collecties/plan-uw-bezoek"
+      },
+      {
+        "title": "KNAW: social history archive and research institute",
+        "url": "https://www.knaw.nl/instituten/internationaal-instituut-voor-sociale-geschiedenis-iisg"
+      }
+    ]
+  },
+  {
+    "id": "extract_landmarks_897347854",
+    "name": "Museum De Dageraad",
+    "center": [
+      52.3498616,
+      4.8990404
+    ],
+    "description": "Museum De Dageraad occupies a former shop in the Amsterdam School housing complex designed by Michel de Klerk and Piet Kramer. Its exhibitions connect the expressive brick architecture with social housing and Berlage’s Plan Zuid; guided walks reveal how the architects designed both street and rear facades as a total artwork.",
+    "funFact": "De Klerk and Kramer designed the street facades, rear facades and home layouts together. The museum occupies a former corner shop, while the surrounding complex remains housing.",
+    "sourceUrls": [
+      "https://www.hetschip.nl/de-dageraad",
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/1508",
+      "https://amsterdamse-school.nl/blog/museum-de-dageraad"
+    ],
+    "website": "https://www.hetschip.nl/de-dageraad",
+    "modelId": "dageraad",
+    "landmarkId": "extract_landmarks_897347854",
+    "sourceUrl": "https://www.hetschip.nl/de-dageraad"
+  },
+  {
+    "modelId": "ons-lieve-heer-op-solder",
+    "name": "Our Lord in the Attic",
+    "sourceUrl": "https://opsolder.nl/en/the-monument/",
+    "description": "Merchant Jan Hartman bought the canal house and two rear alley houses in 1661 and joined their attics to create a hidden Catholic church, when public Catholic worship was forbidden. The surviving church is an example of Amsterdam’s tolerated private worship. The museum opened in 1888; its 2015 entrance at number 38 links to the historic house underground, leaving Heintje Hoekssteeg open.",
+    "sourceUrls": [
+      "https://opsolder.nl/en/the-monument/",
+      "https://opsolder.nl/en/media-and-press/",
+      "https://www.nlbouwmeesters.nl/projecten/museum-ons-lieve-heer-op-solder/",
+      "https://vekemans.nl/2015/04/15/historische-gevel-opnieuw-opgebouwd/",
+      "https://opsolder.nl/wp-content/uploads/2024/04/haantje46.pdf"
+    ],
+    "landmarkId": "extract_landmarks_1791250152"
+  },
+  {
+    "modelId": "canals-museum",
+    "landmarkId": "extract_landmarks_915035378",
+    "name": "Museum of the Canals",
+    "center": [
+      52.3678921,
+      4.8862198
+    ],
+    "description": "The Museum of the Canals explains how Amsterdam's seventeenth-century canal belt was created, inside a double-width merchant's house at Herengracht 386. Karel Gerards commissioned Philips Vingboons in 1663; the museum dates the completed house to 1665. Its classical facade has stacked pilasters and a central triangular pediment. Later resident Jan Willink helped finance American independence through loans to John Adams.",
+    "funFact": "The Andriessenkamer's landscape murals were painted in 1776 and probably moved here during a later alteration. Its apparently historic ceiling was actually painted by Pascal Amblard in 2022.",
+    "sourceUrl": "https://grachten.museum/stijlkamers-en-gebouw/",
+    "sourceLinks": [
+      {
+        "title": "Museum house, residents and historic rooms",
+        "url": "https://grachten.museum/stijlkamers-en-gebouw/"
+      },
+      {
+        "title": "National heritage register 1828",
+        "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1828"
+      },
+      {
+        "title": "Museum public address and entrance",
+        "url": "https://grachten.museum/adres-en-route/"
+      }
+    ],
+    "website": "https://grachten.museum/",
+    "identityNotes": "Preserve existing genuine extract destination and center; this is one double house, not two invented POIs. Center lies inside BAG parent0363100012176537; existing canal-facing destination remains used."
+  },
+  {
+    "modelId": "niod",
+    "landmarkId": "extract_landmarks_1742509310",
+    "name": "NIOD Institute for War, Holocaust, and Genocide Studies",
+    "center": [
+      52.3680936,
+      4.8863164
+    ],
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826",
+    "description": "NIOD studies war, the Holocaust and genocide from this richly carved sandstone double house on the Herengracht. Abraham and G.B. Salm designed the French neo-Renaissance house, built in 1888–1890. Its right-hand carriage entrance and elaborate three-part dormer facade preserve the ambition of its original private residence. The house had an innovative glazed roof bringing daylight into its staircase, hall and bathroom.",
+    "sourceLinks": [
+      {
+        "title": "RCE: monument 1826, sandstone double house and pavement lanterns",
+        "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1826"
+      },
+      {
+        "title": "NIOD: Als de muren konden spreken",
+        "url": "https://www.niod.nl/longreads/als-de-muren-konden-spreken/"
+      },
+      {
+        "title": "Amsterdam: ambitious building technology on the Herengracht",
+        "url": "https://openresearch.amsterdam/nl/page/151733/erfgoed-van-de-week-ambitieuze-techniek-op-de-herengracht"
+      },
+      {
+        "title": "NIOD: contact and public address",
+        "url": "https://www.niod.nl/contact-en-bereikbaarheid/"
+      }
+    ]
   }
 ]

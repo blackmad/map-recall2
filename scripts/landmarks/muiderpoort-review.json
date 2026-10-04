@@ -1,0 +1,36 @@
+{
+  "specPath": "scripts/landmarks/muiderpoort-spec.json",
+  "neighbors": [
+    [
+      "w269052430",
+      "NL.IMBAG.Pand.0363100012180658"
+    ],
+    [
+      "w269006047",
+      "NL.IMBAG.Pand.0363100012180599"
+    ]
+  ],
+  "zoom": 18.2,
+  "bearing": -61.7,
+  "oppositeBearing": 118.3,
+  "referenceImages": [
+    "https://stadsherstel.nl/wp-content/uploads/2020/01/Sarphatistraat-500-Nieuw-Muiderpoort-5385-1400x800.jpg",
+    "https://stadsherstel.nl/wp-content/uploads/2020/05/4-muiderpoort.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d5/Muiderpoort%2C_stadszijde_-_Amsterdam_-_20011058_-_RCE.jpg"
+  ],
+  "acceptanceRisks": [
+    "Open passage must be clear through both arches, offset tower in correct city-side direction.",
+    "Front circular wing lights and end-wall glazing first-hit exposed.",
+    "Native scale, exact two suppression aliases; neighboring Sarphatistraat buildings drawn and retained.",
+    "Land-side columns vs city-side pilasters and differing heraldry; recognizable octagonal dome and enclosed octagonal clock lantern.",
+    "Current source pin remains the canonical chosen route finish; real physical model click opens sourced Muiderpoort card."
+  ],
+  "status": "accepted",
+  "rootAcceptance": {
+    "date": "2026-10-04",
+    "status": "accepted",
+    "evidence": "artifacts/muiderpoort-review/",
+    "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
+    "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details."
+  }
+}

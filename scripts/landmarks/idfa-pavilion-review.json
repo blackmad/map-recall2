@@ -1,0 +1,35 @@
+{
+  "specPath": "scripts/landmarks/idfa-pavilion-spec.json",
+  "neighbors": [
+    [
+      "w224310059",
+      "NL.IMBAG.Pand.0363100012201632"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012166213"
+    ]
+  ],
+  "zoom": 18.2,
+  "bearing": 26.4,
+  "oppositeBearing": 206.4,
+  "referenceImages": [
+    "artifacts/landmarks/idfa-pavilion/references/front.jpg",
+    "artifacts/landmarks/idfa-pavilion/references/context.jpg"
+  ],
+  "recognitionChecks": [
+    "Pale plaster central3-arched-bay facade above brick basement",
+    "Three open loggia bays either side: no solid parent behind columns",
+    "Tall central slate hipped roof and two smaller corner domes",
+    "Low raised terrace with balustrade and accessible side stairs",
+    "Exact native source identity suppression and nearest northern neighbors retained"
+  ],
+  "status": "accepted",
+  "neighborEvidence": "Original BAG0363100012197143 absent installed current z14 city. Replaced stale alias group with actual current nearby northern building0363100012166213, installed tile14/8413/5385, height17.98m at4.874825,52.361389. Preserve current small neighbor0363100012201632 too.",
+  "rootAcceptance": {
+    "date": "2026-10-04",
+    "status": "accepted",
+    "evidence": "artifacts/idfa-pavilion-review/",
+    "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
+    "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details."
+  }
+}

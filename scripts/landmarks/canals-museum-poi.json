@@ -1,0 +1,16 @@
+{
+  "modelId": "canals-museum",
+  "landmarkId": "extract_landmarks_915035378",
+  "name": "Museum of the Canals",
+  "center": [52.3678921, 4.8862198],
+  "description": "The Museum of the Canals explains how Amsterdam's seventeenth-century canal belt was created, inside a double-width merchant's house at Herengracht 386. Karel Gerards commissioned Philips Vingboons in 1663; the museum dates the completed house to 1665. Its classical facade has stacked pilasters and a central triangular pediment. Later resident Jan Willink helped finance American independence through loans to John Adams.",
+  "funFact": "The Andriessenkamer's landscape murals were painted in 1776 and probably moved here during a later alteration. Its apparently historic ceiling was actually painted by Pascal Amblard in 2022.",
+  "sourceUrl": "https://grachten.museum/stijlkamers-en-gebouw/",
+  "sourceLinks": [
+    {"title": "Museum house, residents and historic rooms", "url": "https://grachten.museum/stijlkamers-en-gebouw/"},
+    {"title": "National heritage register 1828", "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/1828"},
+    {"title": "Museum public address and entrance", "url": "https://grachten.museum/adres-en-route/"}
+  ],
+  "website": "https://grachten.museum/",
+  "identityNotes": "Preserve existing genuine extract destination and center; this is one double house, not two invented POIs. Center lies inside BAG parent0363100012176537; existing canal-facing destination remains used."
+}

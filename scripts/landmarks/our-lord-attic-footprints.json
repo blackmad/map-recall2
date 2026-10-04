@@ -1,0 +1,228 @@
+{
+  "id": "ons-lieve-heer-op-solder",
+  "landmarkId": "extract_landmarks_1791250152",
+  "anchor": [
+    4.899258769422396,
+    52.375132921670925
+  ],
+  "footprint": {
+    "centre": [
+      4.899258769422396,
+      52.375132921670925
+    ],
+    "headingDegrees": 121.0851936786699,
+    "lengthMetres": 23.644547311709523,
+    "widthMetres": 21.08931723774654
+  },
+  "authorHeadingDegrees": 31,
+  "buildings": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.8990332,
+                52.3751087
+              ],
+              [
+                4.8990776,
+                52.3750939
+              ],
+              [
+                4.8990886,
+                52.3750899
+              ],
+              [
+                4.8991341,
+                52.3750682
+              ],
+              [
+                4.8991688,
+                52.3751055
+              ],
+              [
+                4.8993641,
+                52.3750375
+              ],
+              [
+                4.8994119,
+                52.3750858
+              ],
+              [
+                4.899347,
+                52.3751085
+              ],
+              [
+                4.8993364,
+                52.3751122
+              ],
+              [
+                4.8993262,
+                52.3751158
+              ],
+              [
+                4.8993059,
+                52.3751228
+              ],
+              [
+                4.899215,
+                52.3751547
+              ],
+              [
+                4.8991126,
+                52.3751906
+              ],
+              [
+                4.8990332,
+                52.3751087
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 266941199,
+        "building": "yes",
+        "height": "19.8",
+        "ref:bag": "0363100012178021",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "source:height": "3DBAG",
+        "source:height:date": "2025-09-03",
+        "start_date": "1630"
+      },
+      "fit": {
+        "centre": [
+          4.8992207226139115,
+          52.37509530494508
+        ],
+        "headingDegrees": 119.8367240520441,
+        "lengthMetres": 23.59321026081351,
+        "widthMetres": 11.092496967301585
+      },
+      "currentTileHeightMetres": 17.95
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                4.89921,
+                52.3751858
+              ],
+              [
+                4.8993471,
+                52.3751383
+              ],
+              [
+                4.8993581,
+                52.3751345
+              ],
+              [
+                4.8993678,
+                52.3751311
+              ],
+              [
+                4.8994231,
+                52.3751118
+              ],
+              [
+                4.8994363,
+                52.375107
+              ],
+              [
+                4.8994588,
+                52.37513
+              ],
+              [
+                4.8994649,
+                52.3751363
+              ],
+              [
+                4.8994873,
+                52.3751594
+              ],
+              [
+                4.8994849,
+                52.3751603
+              ],
+              [
+                4.8993353,
+                52.3752122
+              ],
+              [
+                4.8993096,
+                52.3752211
+              ],
+              [
+                4.8993121,
+                52.3752239
+              ],
+              [
+                4.8992973,
+                52.375229
+              ],
+              [
+                4.899259,
+                52.3752423
+              ],
+              [
+                4.89921,
+                52.3751858
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@type": "way",
+        "@id": 266940951,
+        "building": "apartments",
+        "height": "17.6",
+        "ref:bag": "0363100012178040",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "source:height": "3DBAG",
+        "source:height:date": "2025-09-03",
+        "start_date": "1732"
+      },
+      "fit": {
+        "centre": [
+          4.899348452310564,
+          52.3751744156117
+        ],
+        "headingDegrees": 119.69957487189117,
+        "lengthMetres": 18.049263859271598,
+        "widthMetres": 7.12191502949168
+      },
+      "currentTileHeightMetres": 15.81
+    }
+  ],
+  "references": [
+    "https://opsolder.nl/en/the-monument/",
+    "https://opsolder.nl/en/media-and-press/",
+    "https://www.nlbouwmeesters.nl/projecten/museum-ons-lieve-heer-op-solder/",
+    "https://vekemans.nl/2015/04/15/historische-gevel-opnieuw-opgebouwd/",
+    "https://opsolder.nl/wp-content/uploads/2024/04/haantje46.pdf"
+  ],
+  "relatedLandmarkIds": [
+    "extract_landmarks_769225968"
+  ],
+  "referenceImages": [
+    "https://www.nlbouwmeesters.nl/wp-content/uploads/2020/09/Project-NL-Bouwmeesters-OHLOS-impressie-04.jpg",
+    "https://vekemans.nl/wp-content/uploads/2015/04/Ons-Lieve-Heer-scaled.jpg"
+  ],
+  "scopeNotes": [
+    "Historic house Oudezijds Voorburgwal 40 and the two incorporated rear alley houses share BAG0363100012178021; entrance38 is separate BAG0363100012178040.",
+    "Heintje Hoekssteeg remains open above ground; connection is underground and is deliberately not drawn as an opaque street bridge.",
+    "Native WGS84 surveys inherited from cached canal-museum-footprints source. Heights 19.8/17.6 are envelope guidance, not uniform wall heights. Eaves14/14.8 and facade bay dimensions are photograph-derived approximations.",
+    "Historic main facade four sash bays, white lower pui, basement and raised entry stairs, shoulder-scroll triangular gable with two lower attic windows and one upper; modern entrance three ungridded bays, recycled brick and red lintels, tile gable/dormer and rear roof lantern."
+  ]
+}
