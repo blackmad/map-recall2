@@ -1,0 +1,76 @@
+[
+  {
+    "id": "hash-marihuana-hemp-museum",
+    "name": "Hash Marihuana & Hemp Museum",
+    "landmarkId": "extract_landmarks_741048430",
+    "modelUrl": "./models/hash-marihuana-hemp-museum.glb",
+    "suppressOsmIds": [
+      "w266952908",
+      "NL.IMBAG.Pand.0363100012178837"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.896852208624917,
+        52.371801540474635
+      ],
+      "headingDegrees": 122.45219898026488,
+      "lengthMetres": 20.08306280385528,
+      "widthMetres": 5.657733210129706
+    },
+    "surveyed": {
+      "anchor": [
+        4.896852208624917,
+        52.371801540474635
+      ],
+      "northOffsetDegrees": -57.6
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.05219898026488,
+    "attribution": {
+      "title": "Hash Marihuana & Hemp Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://hashmuseum.com/en/amsterdam/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the actual narrow red-brick three-bay Oudezijds Achterburgwal148 house, cross-checked against the museum owner’s original frontage photographs and current148H VBO/Pand records. The adjoining black Sensi Seeds146 house is retained. Exact mapped rear recesses remain open. Height references use 3DBAG AHN5 relative roofmax16.672m; simplified roof and facade meshes are authored originally, with no imported source faces or textures."
+    }
+  },
+  {
+    "id": "hemp-gallery",
+    "name": "Hemp Gallery",
+    "landmarkId": "osm_museum_2724369153",
+    "modelUrl": "./models/hemp-gallery.glb",
+    "suppressOsmIds": [
+      "w266952890",
+      "NL.IMBAG.Pand.0363100012171247"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.897208314885277,
+        52.372126997533954
+      ],
+      "headingDegrees": 122.701239396414,
+      "lengthMetres": 17.85028279658754,
+      "widthMetres": 12.500123403170502
+    },
+    "surveyed": {
+      "anchor": [
+        4.897208314885277,
+        52.372126997533954
+      ],
+      "northOffsetDegrees": -57.6
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.30123939641399,
+    "attribution": {
+      "title": "Hemp Gallery",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518459",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction of the single actual five-bay Oudezijds Achterburgwal128–132 block containing Hemp Gallery130, verified against RCE518459, the museum owner and current original photographer reference. Rademaker’s1879–1881 neo-Renaissance facade has a rusticated ground floor, three full upper floors and mezzanine, with white pilasters and projecting cornices. The OSM1993 date is a register mismatch, not the architectural date. Exact rear return remains scoped to the actual building; adjoining houses remain unsuppressed. Roof reference measured from3DBAG AHN5 maxrelative19.311m; all asset meshes are original simplified geometry."
+    }
+  }
+]
