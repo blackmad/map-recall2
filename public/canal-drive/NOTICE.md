@@ -141,7 +141,9 @@ Athenaeum/Nieuwscentrum, Scheltema, Haarlemmermeerstation, De Dokwerker,
 Begijnhofkapel, Houten Huys, Huis De Pinto, Amsterdam Tulip Museum, OT301,
 Filmhuis Cavia, Orgelpark, Herepoort / Bergpoort, Huis aan de Drie Grachten,
 De Dolphijn, De Rode Hoed, Theater Amsterdam, Vondelpark Open Air Theater,
-Vondelpark Muziektent and Oost-Indisch Huis/Bushuis use the
+Vondelpark Muziektent, Oost-Indisch Huis/Bushuis, Het Veem, Tobacco Theater,
+Plein Theater, Hash Marihuana & Hemp Museum, Hemp Gallery and
+Madame Tussauds / Peek & Cloppenburg use the
 same original modelling workflow in
 `scripts/landmarks/build-manual-landmarks.ts`. The live game loads these
 flat-colour replacements; the older imported catalogue remains available in
