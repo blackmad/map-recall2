@@ -4,6 +4,10 @@
 
 The user authorizes ongoing landmark work, parallel agents, and periodic commits and pushes. Keep requested tasks and deferred work in `public/canal-drive/poi-work-queue.json`; regenerate `public/canal-drive/landmark-backlog.json` with `scripts/landmarks/build-poi-backlog.ts` as assets and POI coverage change. Do not drop earlier requests when the user adds another building or reports a bug.
 
+Preserve the current visual quality and researched/gallery/live-game acceptance bar while reducing overhead. Use fresh workers with short scoped context (`fork_turns="none"` and an explicit handoff for new Codex workers), cached source records, bounded tool output, and batched shared generation/checks. Do not keep reusing a long worker conversation across unrelated buildings. Follow `docs/landmark-building-recipe.md`; `docs/landmark-deepseek-handoff.md` is a self-contained external-worker trial. Do not lower model detail or omit required acceptance checks to save budget.
+
+Do not add painted building-name words for identification. Keep only source-supported real signage that is a defining architectural feature, fitted to its actual panel and wall plane. Use the game map label for the POI name.
+
 Every modeled POI building must be integrated into all three game surfaces:
 1. A selectable POI route destination.
 2. A geographically correct map pin and label.
