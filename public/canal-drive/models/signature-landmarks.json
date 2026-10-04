@@ -823,51 +823,85 @@
       }
     },
     "concertgebouw": {
-      "name": "Concertgebouw (ALMOST FINISHED)",
+      "id": "concertgebouw",
+      "name": "Royal Concertgebouw",
       "landmarkId": "extract_landmarks_626684803",
       "modelUrl": "./models/concertgebouw.glb",
+      "suppressOsmIds": [
+        "w46696080",
+        "NL.IMBAG.Pand.0363100012233435",
+        "w754269603",
+        "w754269604",
+        "w754269605",
+        "w754269606",
+        "w754269607",
+        "w754269608",
+        "w754269609",
+        "w754269610",
+        "w754269611",
+        "w754276795",
+        "w754276796",
+        "w754276797"
+      ],
+      "footprint": {
+        "centre": [
+          4.879022231224272,
+          52.35624462484694
+        ],
+        "headingDegrees": 58.92662097254748,
+        "lengthMetres": 85.33398544808925,
+        "widthMetres": 64.24249063999933
+      },
+      "spatialSuppression": false,
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 368.37337902745253,
+      "surveyed": {
+        "anchor": [
+          4.879044208914783,
+          52.35621988842513
+        ],
+        "northOffsetDegrees": 247.3,
+        "source": "Current BAG whole parent with both inner courts retained, current OSM mapped parts and primary Concertgebouw facade/restoration photographs. Native front axis337.3 degrees, +Z faces northeast. AHN5 roof plane envelopes guide original low-poly roof surfaces; old OSM25m pavilion tags rejected for measured21.6m caps."
+      },
+      "attribution": {
+        "title": "Royal Concertgebouw",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.concertgebouw.nl/en/our-history/history",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original project-native pale-stone/red-brick classical facade, columned pediment, golden lyre, four roof pavilions and Pi de Bruijn glass promenade. No imported legacy mesh or textures; roof contours derived from open surveyed data."
+      },
       "bounds": {
         "min": [
-          -26.73374374706743,
-          -1.199040866595169e-14,
-          -46.496874259187834
+          -33.8592643737793,
+          -9.536743306171047e-8,
+          -39.80350112915039
         ],
         "max": [
-          43.4937654973566,
-          28.778329141804885,
-          44.320918983360514
+          34.71661376953125,
+          27.84000015258789,
+          42.849998474121094
         ]
       },
       "placement": {
         "anchor": [
-          4.879062953458586,
-          52.35618133090705
+          4.879044208914783,
+          52.35621988842513
         ],
         "altitudeMetres": 0,
-        "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 69.53032726644909,
+        "modelRotationDegrees": 337.29999999999995,
+        "facadeBearingDegrees": 67.30000000000001,
         "scale": 1
       },
       "extent": {
-        "widthMetres": 90.81779324254835,
-        "heightMetres": 28.778329141804896,
-        "depthMetres": 70.22750924442403,
-        "depthCoverage": 1.0899439976666971
+        "widthMetres": 82.65349960327148,
+        "heightMetres": 27.840000247955324,
+        "depthMetres": 68.57587814331055,
+        "depthCoverage": 1.0674536036841187
       },
-      "triangles": 634,
-      "bytes": 129288,
-      "sourceBytes": 908132,
-      "sourceTriangles": 673,
-      "droppedAttributes": [],
-      "maxTextureSize": 512,
-      "attribution": {
-        "title": "Concertgebouw (ALMOST FINISHED)",
-        "author": "Gijs",
-        "sourceUrl": "https://3dwarehouse.sketchup.com/model/702e13dbca79c53796fa299c99288367",
-        "licence": "3D Warehouse General Model License",
-        "licenceUrl": "https://3dwarehouse.sketchup.com/tos/",
-        "modifications": "Cleaned up for the web, not changed artistically: SketchUp construction edges removed, faces made double-sided so inward-facing normals stop rendering black, all materials set non-metallic (they arrive at glTF's default metallicFactor 1.0, which renders black with no environment map), unpainted faces darkened from SketchUp's near-white, spare UV sets and tangents dropped, textures re-encoded as WebP, geometry quantized and meshopt-compressed. Placed at the city's own published coordinate at its surveyed size, unscaled and unrotated."
-      }
+      "triangles": 15669,
+      "bytes": 191700,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "heineken-experience-amsterdam": {
       "name": "Heineken Experience, Amsterdam.",
@@ -3382,6 +3416,8 @@
       "modelUrl": "./models/nieuwe-kerk.glb",
       "suppressOsmIds": [
         "w220749328",
+        "w174987150",
+        "w747911435",
         "w747911436",
         "w747911437",
         "w747911438",
@@ -3391,71 +3427,74 @@
         "w747924617",
         "w747924618",
         "w747924619",
-        "w747924620",
         "w747924621",
         "w747924622",
         "w747924623",
         "w747924624",
         "w747924625",
-        "w747924626"
+        "w747924626",
+        "w748997143",
+        "w748997144",
+        "NL.IMBAG.Pand.0363100012169079"
       ],
       "spatialSuppression": false,
       "footprint": {
         "centre": [
-          4.89174203315766,
-          52.373932974434126
+          4.891777577968536,
+          52.37394620723149
         ],
-        "headingDegrees": 51.267866875012544,
-        "lengthMetres": 94.47997996878692,
-        "widthMetres": 62.97060523555761
+        "headingDegrees": 90,
+        "lengthMetres": 94.96254563554697,
+        "widthMetres": 66.11294799981863
       },
       "surveyed": {
         "anchor": [
-          4.89174605,
-          52.37393705
+          4.891777577968536,
+          52.37394620723149
         ],
-        "northOffsetDegrees": 0
+        "northOffsetDegrees": 0,
+        "source": "Native current parent and mapped church/chapel/tourelle parts; source roofs and 34m tourelles preserved, approximate 46m crossing finial retained."
       },
       "groundAltitudeMetres": 0,
-      "facingOffsetDegrees": 90,
+      "facingOffsetDegrees": 0,
       "attribution": {
         "title": "Nieuwe Kerk",
         "author": "Map Recall",
-        "sourceUrl": "https://www.nieuwekerk.nl/de-nieuwe-kerk/",
+        "sourceUrl": "https://www.nieuwekerk.nl/pers/beeldbank/",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original texture-free Gothic reconstruction using museum photographic references and actual OpenStreetMap church/chapel/tower polygons. Surveyed placement in metres; decorative tracery and roof details are approximate."
+        "modifications": "Original texture-free Gothic stone-striped brick church rebuilt from exact current roof/chapel polygons and official church exterior/restoration photos. Pointed tracery, rose, portals, balustrades, mapped tourelles and gilded crossing finial approximated with shared-palette meshes; no imported geometry or copied photograph pixels. Adjacent Palace, shops and streets retained."
       },
       "bounds": {
         "min": [
-          -48.22468566894531,
+          -49.623958587646484,
           0,
-          -33.111934661865234
+          -32.03709030151367
         ],
         "max": [
-          48.2618293762207,
+          45.338584899902344,
           46,
-          33.09092712402344
+          34.07585525512695
         ]
       },
       "placement": {
         "anchor": [
-          4.89174605,
-          52.37393705
+          4.891777577968536,
+          52.37394620723149
         ],
         "altitudeMetres": 0,
         "modelRotationDegrees": 90,
-        "facadeBearingDegrees": 141.26786687501254,
+        "facadeBearingDegrees": 90,
         "scale": 1
       },
       "extent": {
-        "widthMetres": 96.48651504516602,
+        "widthMetres": 94.96254348754883,
         "heightMetres": 46,
-        "depthMetres": 66.20286178588867,
-        "depthCoverage": 1.0513296090809352
+        "depthMetres": 66.11294555664062,
+        "depthCoverage": 0.9999999630453931
       },
-      "triangles": 38131,
-      "bytes": 476668,
+      "triangles": 33064,
+      "bytes": 387932,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "buiksloterkerk": {

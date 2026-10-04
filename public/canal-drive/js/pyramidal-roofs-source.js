@@ -65,6 +65,7 @@ export class PyramidalRoofs {
     this.maplibregl = maplibregl;
     this.enabled = true;
     this._entries = [];
+    this._hiddenIds = new Set();
     this.layer = this._makeLayer();
     if (!map.getLayer(this.layer.id)) map.addLayer(this.layer);
     map._pyramidalRoofs = this;
@@ -72,6 +73,16 @@ export class PyramidalRoofs {
 
   setEnabled(enabled) {
     this.enabled = !!enabled;
+    this.map.triggerRepaint();
+  }
+
+  // Loaded landmark models also replace these separately rendered roof cones.
+  // Toggle visibility without disposing and rebuilding every roof on each model load.
+  setHidden(ids) {
+    this._hiddenIds = new Set([...ids].map(String));
+    for (const entry of this._entries) {
+      entry.mesh.visible = !entry.ids.some(id => this._hiddenIds.has(id));
+    }
     this.map.triggerRepaint();
   }
 
@@ -125,6 +136,8 @@ export class PyramidalRoofs {
         side: THREE.DoubleSide,
       });
       const mesh = new THREE.Mesh(geometry, material);
+      const ids = [props.osmId, props.id].filter(id => id != null).map(String);
+      mesh.visible = !ids.some(id => this._hiddenIds.has(id));
       mesh.frustumCulled = false;
       const scene = new THREE.Scene();
       scene.add(mesh);
@@ -133,6 +146,7 @@ export class PyramidalRoofs {
         scene,
         transform: mercatorTransform(this.maplibregl, meshData.originLng, meshData.originLat),
         id: props.osmId || props.id || null,
+        ids,
         maxRadius,
       });
     }
@@ -168,6 +182,7 @@ export class PyramidalRoofs {
         const main = args.defaultProjectionData.mainMatrix;
         renderer.resetState();
         for (const entry of owner._entries) {
+          if (!entry.mesh.visible) continue;
           mvp.fromArray(main).multiply(entry.transform);
           camera.projectionMatrix.copy(mvp);
           renderer.render(entry.scene, camera);

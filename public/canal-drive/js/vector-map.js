@@ -578,6 +578,7 @@ class VectorBasemap {
     const kitApi = window.CanalRecallThreeBuildings;
     const kitIds = this._buildings3dEnabled && kitApi && kitApi.KIT_HIDE_IDS ? new Set(kitApi.KIT_HIDE_IDS) : null;
     this._pyramidalRoofs.setFeatures(kitIds ? this._pyramidFeatures.filter(f => !kitIds.has(String(f.properties && f.properties.id))) : this._pyramidFeatures);
+    this._pyramidalRoofs.setHidden(this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds());
   }
 
   // The basemap keeps only the buildings the extract does not carry. Its ids
@@ -1723,6 +1724,7 @@ class VectorBasemap {
       this._signatureLandmarks.setEnabled(!detailed && !google && !this._measuredColoursOnly);
       this._refreshBuildingSuppression();
     }
+    if (this._pyramidalRoofs) this._pyramidalRoofs.setHidden(this._measuredColoursOnly ? [] : this._signatureSuppressOsmIds());
     if (this._pyramidalRoofs) this._pyramidalRoofs.setEnabled(!detailed && !google && !this._measuredColoursOnly);
     this._studyLayersAllowed = !detailed && !google;
     this._updateStudyAreaResidency();

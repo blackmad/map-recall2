@@ -23,6 +23,14 @@
   ],
   "tasks": [
     {
+      "id": "initial-overview-mobile-lod",
+      "task": "Reduce startup city pop-in and mobile rendering cost",
+      "priority": "urgent",
+      "status": "built",
+      "owner": "root",
+      "validation": "Citywide footprint raster:30 z12 tiles,916909 bytes. Fixed landing-area preload during intro; coarse shells retain heights/holes/identities until detail installs. Touch detail uses z17 and map DPR capped at1.5. Real6298-building tile:86.4% fewer coarse vertices. Mobile Chromium overview, input-skip, LOD ownership and no-flash checks passed; overview screenshot reviewed; TypeScript passed. Actual phone/Safari frame-time measurement remains open."
+    },
+    {
       "id": "duplicate-generated-doors",
       "task": "Fix duplicate painted and 3D entrance doors reported in the Da Costakade screenshot",
       "priority": "urgent",
@@ -384,10 +392,10 @@
     },
     {
       "id": "legacy-imports",
-      "task": "Remaining legacy imports: Stadhuis/Stopera, Heineken Experience, Concertgebouw",
+      "task": "Remaining legacy imports: Stadhuis/Stopera and Heineken Experience",
       "priority": "normal",
       "status": "queued",
-      "validation": "Original Montelbaanstoren, Munttoren, Beurs, National Monument and NEMO replacements deployed; Royal Palace final gallery/live/courtyard/card acceptance passed in current checkpoint."
+      "validation": "Concertgebouw and Royal Palace original replacements accepted. Stopera and Heineken original sources are ready for coordinated generation and visual review."
     },
     {
       "id": "montelbaanstoren-amsterdam",
@@ -441,7 +449,21 @@
       "task": "Street-side panorama profiles and architectural recipes: Overtoom 215–247, Bethaniëndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
       "priority": "high",
       "status": "in-progress",
-      "notes": "Shared procedural priors preserve surveyed geometry and curated landmarks. Profiles aggregate overlapping views without exact per-building registration; evidence and visual/performance review required before completion."
+      "notes": "Shared procedural priors preserve surveyed geometry and curated landmarks. Five reviewed municipal street sides plus four unchanged holdout transfers, from 36 valid perspective crops. Pale accents, proportions, masonry/punched/ribbon/curtain recipes and stratified local mixtures work in four detailed modes. 20 targeted tests, TypeScript, mesh/extras and mode-transition checks pass. Review at artifacts/street-appearance/index.html; performance acceptance remains open because shared rendering changes and browser timing limits confound the baseline. Exact Samrat appearance is not a reconstruction claim."
+    },
+    {
+      "id": "street-profile-realized-palette",
+      "task": "Validate and improve realized facade palette mixtures on actual exposed street runs, especially charcoal fronts in the De Wallen pilot",
+      "priority": "high",
+      "status": "in-progress",
+      "notes": "The pilot's production source replay admits Samrat and applies local priors, but the captured right side has four dark-red, two cream and one modern-buff runs with no charcoal selection. Stratified assembly quantiles do not guarantee the frontage histogram after geometry and year filtering. Preserve approximate buildings; improve block-level realization and measure actual visible frontage rather than special-casing Samrat. See artifacts/street-appearance/applied-wall-audit.json."
+    },
+    {
+      "id": "street-profile-entrances-and-crowns",
+      "task": "Extend street profiles to correlated entrance/basement patterns and crown frequencies, using municipal evidence and held-out review",
+      "priority": "normal",
+      "status": "deferred",
+      "notes": "Follow-up identified while reviewing the user's Sketchfab canal-house references. Existing cornice, sill, stoop and hoist components need coordinated placement tied to opening axes and roof compatibility. See scripts/street-appearance/model-reference-notes.md. No imported meshes or photo textures; surveyed roofs remain authoritative."
     },
     {
       "id": "olvg-building-visibility",
@@ -479,17 +501,49 @@
       "id": "concertgebouw-original-detail",
       "task": "Improve Concertgebouw in original house style",
       "priority": "high",
-      "status": "source-ready",
+      "status": "verified",
       "owner": "venue_landmarks",
-      "validation": "Original source ready and focused geometry checks pass; shared generation and visual review pending. Two actual courtyards remain open."
+      "validation": "Final original15669tri191700B: six columns and recessed glazing physically exposed, supported mansards/open iron crests, both real courts open. Actual gallery/live route, pin, physical card, exact masks and four retained neighboring parents pass. Independent old pyramidal roofs are suppressed after model load."
     },
     {
       "id": "nieuwe-kerk-original-detail",
       "task": "Improve Nieuwe Kerk Gothic silhouette and facade",
       "priority": "high",
-      "status": "source-ready",
+      "status": "verified",
       "owner": "trees",
-      "validation": "Original source ready; current parent and19 genuine parts scoped with unrelated neighboring roof excluded. Shared generation and visual review pending."
+      "validation": "Final original33064tri387932B: correctly placed western facade and readable Gothic roofs/tracery; exact current parent plus19parts. Native live/card/pin and actual uploaded neighboring parent/roof retention pass;46m slender crossing finial remains approximate."
+    },
+    {
+      "id": "signature-pyramidal-roofs",
+      "task": "Independent ordinary pyramidal roofs must respect loaded native models",
+      "status": "verified",
+      "priority": "high",
+      "owner": "root",
+      "validation": "Exact A/B old-roof proof and final Concertgebouw live review show all four obsolete caps removed. Real bundled roof geometry regression covers OSM/BAG identities, delayed model load, refreshed features, neighbors and fallback restoration; visibility updates avoid full rebuilds."
+    },
+    {
+      "id": "heineken-original",
+      "task": "Original Heineken Experience complex",
+      "status": "source-ready",
+      "priority": "normal",
+      "owner": "museum_landmarks",
+      "validation": "Current official parent, original brew house/silo/cooling hall and74 documented clerestory lights researched; actual exposed glazing/roof/scope checks pass. Shared generation and visual review pending."
+    },
+    {
+      "id": "stopera-original",
+      "task": "Original Stopera/City Hall complex",
+      "status": "source-ready",
+      "priority": "normal",
+      "owner": "trees",
+      "validation": "23 current parts, open passages/plot and physically visible curved/stepped glazing checked. Exterior height calibration explicitly separates noisy equipment maxima. Shared generation and visual review pending."
+    },
+    {
+      "id": "faralda-crane-hotel",
+      "task": "Faralda NDSM Crane Hotel",
+      "status": "source-ready",
+      "priority": "normal",
+      "owner": "venue_landmarks",
+      "validation": "Current exact crane parent and genuine teaching destination preserved. Primary published suite heights, open base, steel lattice and supported boom geometry checked. Shared generation and visual review pending."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
