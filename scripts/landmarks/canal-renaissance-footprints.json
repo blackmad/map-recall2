@@ -1,0 +1,204 @@
+{
+  "sites": [
+    {
+      "id": "huis-aan-drie-grachten",
+      "key": "drie",
+      "parent": "a533864854",
+      "landmarkId": "extract_landmarks_1614063354",
+      "name": "Huis aan de Drie Grachten",
+      "author": 193.5,
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6096",
+      "anchor": [
+        4.89468947030048,
+        52.36937961104943
+      ],
+      "footprint": {
+        "centre": [
+          4.89468947030048,
+          52.36937961104943
+        ],
+        "headingDegrees": 106.52373678073104,
+        "lengthMetres": 14.12965803339511,
+        "widthMetres": 12.990739658930853
+      },
+      "authorHeadingDegrees": 193.5,
+      "buildings": [
+        {
+          "type": "Feature",
+          "id": "a533864854",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.8945727,
+                    52.3693399
+                  ],
+                  [
+                    4.8947208,
+                    52.3693364
+                  ],
+                  [
+                    4.8947778,
+                    52.3693751
+                  ],
+                  [
+                    4.8948065,
+                    52.3694067
+                  ],
+                  [
+                    4.8948163,
+                    52.3694175
+                  ],
+                  [
+                    4.894617,
+                    52.3694536
+                  ],
+                  [
+                    4.8945727,
+                    52.3693399
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building": "house",
+            "height": "16",
+            "ref:bag": "0363100012168466",
+            "source": "BAG",
+            "source:date": "2014-02-11",
+            "source:height": "3DBAG",
+            "source:height:date": "2025-09-03",
+            "start_date": "1610"
+          }
+        }
+      ],
+      "parts": [],
+      "suppressOsmIds": [
+        "w266932427",
+        "NL.IMBAG.Pand.0363100012168466"
+      ],
+      "primaryReferences": [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/6096",
+        "https://www.amsterdam.nl/nieuws/achtergrond/wandeling-wallen/",
+        "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=405"
+      ],
+      "sourceNote": "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
+    },
+    {
+      "id": "de-dolphijn",
+      "key": "dolphijn",
+      "parent": "a533241542",
+      "landmarkId": "extract_landmarks_1604899229",
+      "name": "De Dolphijn",
+      "author": 33.84,
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5303",
+      "anchor": [
+        4.889886838805892,
+        52.37568578980617
+      ],
+      "footprint": {
+        "centre": [
+          4.889886838805892,
+          52.37568578980617
+        ],
+        "headingDegrees": 123.83730488963849,
+        "lengthMetres": 31.287332178361126,
+        "widthMetres": 14.221836472519911
+      },
+      "authorHeadingDegrees": 33.84,
+      "buildings": [
+        {
+          "type": "Feature",
+          "id": "a533241542",
+          "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [
+              [
+                [
+                  [
+                    4.8896546,
+                    52.375704
+                  ],
+                  [
+                    4.8897303,
+                    52.375673
+                  ],
+                  [
+                    4.8897629,
+                    52.3757029
+                  ],
+                  [
+                    4.8898203,
+                    52.3756794
+                  ],
+                  [
+                    4.8897876,
+                    52.3756495
+                  ],
+                  [
+                    4.8898157,
+                    52.375638
+                  ],
+                  [
+                    4.8900198,
+                    52.3755545
+                  ],
+                  [
+                    4.8901363,
+                    52.3756606
+                  ],
+                  [
+                    4.8897539,
+                    52.3758171
+                  ],
+                  [
+                    4.8897218,
+                    52.3757878
+                  ],
+                  [
+                    4.8897385,
+                    52.3757808
+                  ],
+                  [
+                    4.8896546,
+                    52.375704
+                  ]
+                ]
+              ]
+            ]
+          },
+          "properties": {
+            "building": "apartments",
+            "height": "19.1",
+            "historic": "yes",
+            "name": "De Dolphijn",
+            "ref:bag": "0363100012167968",
+            "source": "BAG",
+            "source:date": "2014-02-11",
+            "source:height": "3DBAG",
+            "source:height:date": "2025-09-03",
+            "start_date": "1605",
+            "wikidata": "Q2466535",
+            "wikimedia_commons": "Category:Huis De Dolphijn",
+            "wikipedia": "nl:De Dolphijn"
+          }
+        }
+      ],
+      "parts": [],
+      "suppressOsmIds": [
+        "w266620771",
+        "NL.IMBAG.Pand.0363100012167968"
+      ],
+      "primaryReferences": [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/5303",
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/5304",
+        "https://www.amsterdam.nl/stadsarchief/alleamsterdamseakten/verhalen/huis-blijven-zoals/",
+        "https://www.amsterdam-monumentenstad.nl/database/grachtenboek_objecten.php?id=656"
+      ],
+      "sourceNote": "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
+    }
+  ]
+}
