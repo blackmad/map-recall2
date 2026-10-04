@@ -1,0 +1,120 @@
+[
+  {
+    "id": "ot301",
+    "name": "OT301 / former Film Academy",
+    "landmarkId": "extract_landmarks_1988238017",
+    "modelUrl": "./models/ot301.glb",
+    "suppressOsmIds": [
+      "w276420914",
+      "NL.IMBAG.Pand.0363100012138646"
+    ],
+    "footprint": {
+      "centre": [
+        4.865818145598819,
+        52.36011157597592
+      ],
+      "headingDegrees": 69.89213180174445,
+      "lengthMetres": 29.669648058764523,
+      "widthMetres": 16.385921212879335
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 269.85026819825555,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.865769599943963,
+        52.360078554569874
+      ],
+      "northOffsetDegrees": 159.7424,
+      "source": "Individual current BAG parents and actual street axes. Primary owner/venue/municipal architectural photos; AHN5/3DBAG roof surfaces verified above local terrain."
+    },
+    "attribution": {
+      "title": "OT301 / former Film Academy",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.ot301.nl/about-contact",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
+    }
+  },
+  {
+    "id": "cavia",
+    "name": "Filmhuis Cavia / former twin-school complex",
+    "landmarkId": "extract_landmarks_2115483451",
+    "modelUrl": "./models/cavia.glb",
+    "suppressOsmIds": [
+      "w276272880",
+      "NL.IMBAG.Pand.0363100012118954",
+      "w276272821",
+      "NL.IMBAG.Pand.0363100012117132",
+      "w276272948",
+      "NL.IMBAG.Pand.0363100012164519"
+    ],
+    "footprint": {
+      "centre": [
+        4.870052028940552,
+        52.38190186277704
+      ],
+      "headingDegrees": 167.79050507678784,
+      "lengthMetres": 46.333902117182305,
+      "widthMetres": 42.23061649285789
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.08355507678783,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.87016028922798,
+        52.38200245851402
+      ],
+      "northOffsetDegrees": 257.70695,
+      "source": "Individual current BAG parents and actual street axes. Primary owner/venue/municipal architectural photos; AHN5/3DBAG roof surfaces verified above local terrain."
+    },
+    "attribution": {
+      "title": "Filmhuis Cavia / former twin-school complex",
+      "author": "Map Recall",
+      "sourceUrl": "https://filmhuiscavia.nl/over-cavia/about-cavia",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
+    }
+  },
+  {
+    "id": "orgelpark",
+    "name": "Orgelpark / Parkkerk",
+    "landmarkId": "extract_landmarks_1851884741",
+    "modelUrl": "./models/orgelpark.glb",
+    "suppressOsmIds": [
+      "w152508197",
+      "NL.IMBAG.Pand.0363100012082170"
+    ],
+    "footprint": {
+      "centre": [
+        4.868224357468281,
+        52.35983534853001
+      ],
+      "headingDegrees": 159.34344754145258,
+      "lengthMetres": 36.2085078763728,
+      "widthMetres": 26.104344344553603
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180.1335524585474,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.868256447423842,
+        52.35985026617333
+      ],
+      "northOffsetDegrees": 159.477,
+      "source": "Individual current BAG parents and actual street axes. Primary owner/venue/municipal architectural photos; AHN5/3DBAG roof surfaces verified above local terrain."
+    },
+    "attribution": {
+      "title": "Orgelpark / Parkkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/orgelpark/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry from primary reference photos and surveyed footprints. No imported meshes or texture images. Shared courtyards and separate neighboring parents retained."
+    }
+  }
+]
