@@ -65,7 +65,7 @@ for (const [key,trees] of tiles) {
 const index={version:1,zoom:15,source:'Gemeente Amsterdam, GISIB municipal tree inventory',sourceUrl:'https://maps.amsterdam.nl/bomen/',
   apiUrl:endpoint,documentationUrl:'https://api.data.amsterdam.nl/v1/docs/datasets/bomen.html',
   licence:'Openbaar, tenzij anders aangegeven / behoudens uitzonderingen',retrievedAt:new Date().toISOString(),
-  heightMeaning:'Midpoint of recorded height class; open-ended classes use threshold + 3 m. Crown shape is an authored species prior, not a surveyed crown.',
+  heightMeaning:'Bounded height ranges use their midpoint; the up-to-6-metre class uses its upper bound of 6 m. Open-ended lower thresholds use threshold + 3 m (24 m and above renders at 27 m). Unknown classes remain null in the tiles and render using an authored 9 m fallback. Crown shapes are authored priors, not surveyed crowns.',
   sources:{municipal:{trees:municipalTrees.length,licence:'Openbaar, tenzij anders aangegeven / behoudens uitzonderingen',idPrefix:'ams-'},
     osm:{trees:supplement.trees.length,licence:'ODbL',sourceUrl:'https://www.openstreetmap.org/copyright',idPrefix:'osm-n',positionMeaning:'Explicit natural=tree nodes only; no sampled tree rows',heightMeaning:'Recorded OSM height in metres, when parseable; otherwise authored height fallback',...supplement.report}},
   trees:list.reduce((s,t)=>s+t.trees,0),rejected,stumps,tiles:list.sort((a,b)=>a.key.localeCompare(b.key))};

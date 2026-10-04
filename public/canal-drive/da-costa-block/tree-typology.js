@@ -3,6 +3,12 @@ export const TREE_TYPOLOGY_VERSION='inventory-crown-priors/v2';
 const foliagePriors={"prunus cerasifera 'nigra'":{colour:'#694653',reference:'https://www.vdberk.com/trees/prunus-cerasifera-nigra/'},"fagus sylvatica 'atropunicea'":{colour:'#765247',reference:'https://www.vdberk.com/trees/fagus-sylvatica-atropunicea/'}};
 const nursery=name=>'https://www.vdberk.com/trees/'+name+'/';
 const rules=[
+  // Udenhout explicitly identifies the named Koningslinde as a Pallida synonym; no generic hybrid alias.
+  [/^tilia europaea 'koningslinde'$/,'pyramidal','cultivar-prior','https://www.udenhout-trees.nl/en/assortment/tilia-europaea-pallida/'],
+  [/^ulmus hollandica 'belgica'$/,'upright-oval','cultivar-prior','https://www.ebben.nl/en/treeebb/ulhbelgi-ulmus-x-hollandica-belgica/'],
+  [/^ulmus laevis$/,'airy-oval','species-prior',nursery('ulmus-laevis')],
+  [/^fraxinus excelsior 'atlas'$/,'pyramidal','cultivar-prior',nursery('fraxinus-excelsior-atlas')],
+  [/^fraxinus angustifolia$/,'airy-oval','species-prior',nursery('fraxinus-angustifolia')],
   [/^betula nigra$/,'irregular-spreading','species-prior',nursery('betula-nigra')],
   [/^acer saccharinum$/,'irregular-spreading','species-prior',nursery('acer-saccharinum')],
   [/^ailanthus altissima$/,'irregular-spreading','species-prior','https://mdc.mo.gov/discover-nature/field-guide/tree-heaven'],
