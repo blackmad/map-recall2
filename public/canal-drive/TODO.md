@@ -84,11 +84,14 @@ Dutch reviewed before it ships. Map Recall also still reads only the Amsterdam
 extract; other cities fall back to live OSM.
 
 **Municipal trees and park landscape (2026-10-03).** Amsterdam now streams
-302,404 standing municipal trees in 430 z15 tiles (5.22 MB compressed in total).
+311,544 trees in 454 z15 tiles (5.35 MB compressed): 302,404 standing municipal
+records and 9,140 deduplicated explicit OSM tree nodes.
 Species/cultivar priors, height classes and explicit pruning records drive
 varied crowns, conifers, trunks and branch forks. Positions are inventory
-locations; crown width/shape remain approximations. Eleven parks have mapped
-lawns, woodland, ponds, paths and benches. Review at `park-landscape.html`.
+locations; crown width/shape remain approximations. The main landscape contains
+9,479 mapped features across 32 park/site selections; Amsterdamse Bos adds an
+optional, locally streamed 3,254-feature chunk. Sixteen crown forms include
+recorded palms. Review at `park-landscape.html`.
 Open: real-device Safari/phone performance and more verified cultivar priors.
 Other cities retain the OSM tree fallback.
 
@@ -130,21 +133,23 @@ Synagogue, Hollandsche Schouwburg, National Holocaust Museum and Homomonument
 plus ARTIS Micropia/Ledenlokalen, ARTIS entrance, Hortus greenhouses, Arcam,
 Foam, Huis Marseille, Ons’ Lieve Heer op Solder, Brakke Grond, Frascati and
 Boom Chicago, Agnietenkapel, LAB111, OCCII, Ketelhuis, Wereldmuseum Amsterdam,
-Dutch Resistance Museum and Allard Pierson (67 original assets). The live replacements retain measured footprint alignment and
+Dutch Resistance Museum, Allard Pierson, Dominicuskerk, Vredeskerk, Badhuistheater,
+Cinecenter, Studio/K / Timorplein school, ARTIS Groote Museum and ARTIS Library
+(74 original assets). The live replacements retain measured footprint alignment and
 hide generic building geometry only after the GLB has loaded. Review meshes at
 `manual-landmarks.html`; inspect actual map placement before marking additions
-complete. Next batches: Studio/K / Timorplein school, Cinecenter, Badhuistheater,
-Groote Museum, ARTIS Library, Dominicuskerk and Vredeskerk. Exact building IDs preserve neighbors and courtyards
+complete. Next batches: Willet-Holthuysen, Amsterdam Pipe Museum, notable shops
+and further church/theatre destinations. Exact building IDs preserve neighbors and courtyards
 around narrow house museums and irregular complexes. Squares/intersections require a public-space treatment rather than
 a generic building model.
 Large cinemas and theatres now have the public-building category treatment;
 Pathé City, Tuschinski, LAB111, OCCII and Ketelhuis also have original models.
-Studio/K and Cinecenter still need individual recognition details. Remaining museum models include Madame
-Tussauds, Amsterdam Tulip Museum, Amsterdam Pipe Museum and Groote Museum.
+Studio/K, Cinecenter and Badhuistheater now have individual models. Remaining museum models include Madame
+Tussauds, Amsterdam Tulip Museum, Amsterdam Pipe Museum and Willet-Holthuysen.
 Further kit refinements: Munttoren, Rijksmuseum (towers, central arch), Beurs van
 Berlage (clock tower), NEMO (green ship prow), Stopera, Hofkerk
-(dome), Dominicuskerk and Vredeskerk (the big kit-less ones still stand as
-bare period-brick boxes; see HISTORY "Kit-less landmarks"). Each needs its
+(dome). Dominicuskerk and Vredeskerk now have original whole-church models.
+Each remaining kit refinement needs its
 OSM part ids first (look at the stacked parts near the landmark's coordinate; the
 resolved ids in `landmark-buildings.json` are sometimes the wrong piece: Westerkerk's
 is a 10 x 2 m fragment). Add a kit to `KITS`, view it with the kit viewer, then
@@ -155,8 +160,8 @@ prism.
 
 **Places of worship: the rest (after 2026-10-04 original models).** English
 Reformed Church, He Hua Temple and Amstelkerk now have original models reviewed
-on the map. Taibah and Augustinuskerk still need a 3DBAG check. Vredeskerk has
-only its tower parts in the tiles; its nave needs treatment.
+on the map. Taibah and Augustinuskerk still need a 3DBAG check. Dominicuskerk
+and Vredeskerk now include their naves and actual tower silhouettes.
 
 
 **Public buildings, next (after 2026-10-03, see HISTORY).** These are matched in staging but untreated: fire stations (19), police (23), hospitals (54) and civic offices (92). Red fire-station doors need a glass colour per window row in `KitWindows`. Big cinemas and theatres need a signage band, because plain brick boxes read as bare. The pitched-or-flat roof call on pre-1930 schools is a guess wherever the tile `roofShape` is missing.

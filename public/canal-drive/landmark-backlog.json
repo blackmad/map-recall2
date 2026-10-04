@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 71,
+    "manual-model": 78,
     "catalogue-model": 12,
-    "procedural-kit": 18,
-    "pending": 186
+    "procedural-kit": 17,
+    "pending": 181
   },
   "destinations": [
     {
@@ -339,7 +339,8 @@
       "type": "library",
       "queueRank": 26,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "artis-library",
       "treatment": "building"
     },
     {
@@ -673,8 +674,9 @@
       "type": "landmark",
       "queueRank": 52,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "badhuistheater",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1117288073",
@@ -1417,7 +1419,8 @@
       "type": "cinema",
       "queueRank": 111,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "cinecenter",
       "treatment": "building"
     },
     {
@@ -2428,7 +2431,8 @@
       "type": "museum",
       "queueRank": 194,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "groote-museum",
       "treatment": "building"
     },
     {
@@ -2960,8 +2964,9 @@
       "type": "landmark",
       "queueRank": 238,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "vredeskerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_213091641",
@@ -2996,8 +3001,8 @@
       "type": "landmark",
       "queueRank": 241,
       "origin": "POI Destinations",
-      "status": "procedural-kit",
-      "kitName": "Dominicuskerk",
+      "status": "manual-model",
+      "modelId": "dominicuskerk",
       "treatment": "building"
     },
     {
@@ -3543,6 +3548,17 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "lab111",
+      "treatment": "building"
+    },
+    {
+      "id": "studiok",
+      "name": "Timorplein school / Studio K",
+      "lat": 52.36529993337992,
+      "lng": 4.9359819354640555,
+      "queueRank": 288,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "studiok",
       "treatment": "building"
     }
   ]
