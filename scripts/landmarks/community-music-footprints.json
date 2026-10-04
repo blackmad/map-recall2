@@ -1,0 +1,1453 @@
+[
+  {
+    "id": "ot301",
+    "parts": [
+      {
+        "osmId": "w276420914",
+        "bagId": "0363100012138646",
+        "tags": {
+          "building": "apartments",
+          "building:levels": "7",
+          "height": "24.2",
+          "ref:bag": "0363100012138646",
+          "roof:levels": "0",
+          "roof:shape": "flat",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1896"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.865716764559721,
+                52.36016638555827
+              ],
+              [
+                4.865637956891962,
+                52.36014921330504
+              ],
+              [
+                4.865571799773853,
+                52.36013487395751
+              ],
+              [
+                4.865651460433922,
+                52.36000578339782
+              ],
+              [
+                4.865693631170038,
+                52.36001501085887
+              ],
+              [
+                4.865681195034273,
+                52.36003516053041
+              ],
+              [
+                4.865700215779961,
+                52.36003932476243
+              ],
+              [
+                4.865692949598494,
+                52.360051767746896
+              ],
+              [
+                4.865697386299093,
+                52.36005273999357
+              ],
+              [
+                4.865773820803512,
+                52.36006947034299
+              ],
+              [
+                4.865777378425359,
+                52.36007029491057
+              ],
+              [
+                4.865802488975411,
+                52.36002970000018
+              ],
+              [
+                4.865813410857252,
+                52.360032219735544
+              ],
+              [
+                4.8660585394673594,
+                52.36008869959995
+              ],
+              [
+                4.866063546570766,
+                52.3600898540989
+              ],
+              [
+                4.865981054462431,
+                52.360226374319055
+              ],
+              [
+                4.865716764559721,
+                52.36016638555827
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 38,
+          "bouwjaar": 1896,
+          "documentdatum": "2023-10-05",
+          "documentnummer": "GV00007191_AC00AC",
+          "gebruiksdoel": "bijeenkomstfunctie,kantoorfunctie,winkelfunctie,woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012138646",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012138646",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/8909e130-1250-586d-959c-0d6d58eaeec0",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/ef74e0b8-d27f-542c-afdf-6180e497c394",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/357df13b-3937-5d77-a00a-1a19a18b0c15",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/eb5f5e6c-7d39-5946-bd90-853cc711f224",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/1e91f049-8449-58a7-b23e-82135c7f5a28",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/b595b018-ef96-516f-9eff-039c2b108498",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/a2aff0fa-936f-5dd6-8bfb-f1a447c9d4e0",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/834ef801-b9fb-5eeb-b397-b7becd12059b",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/7265dd90-1cbc-5ac6-9c2f-ebc5357b1805",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/915806c8-26ad-5cf3-bebd-df0dc680874f",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/eb13410e-a2f5-5650-bd1f-2f58c9861605",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/06acab59-1c0c-5c10-95e6-0167776cf87c",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/397a261c-5690-5d9c-b2ca-ce199b99caef",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/c92ef1d8-39bc-50b8-9860-e9d44e3817c6",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/34ab65b3-c133-5268-9093-ef8f41aafc06",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0e3a76a1-2301-5ee7-9fe5-5a4ddeb6e2b5",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/2ce21f0d-2f36-530e-9264-6a94de722dba",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/2bf4f96d-5904-5dd4-8130-4bf3bdb0620b",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/a87d08f3-6247-5f01-a6bc-3ef2fdebf248",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/81b63440-6bc8-5136-a129-51a5ff9f292e",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/f5d0ee08-bd68-5eef-97c4-c8e1d9ebda93",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/bd46c7f8-b975-5421-b61b-2edafa66795c",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/c6640c7d-3155-5c00-951a-d9e326bf1ca4",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/543fc9aa-42e7-5b80-b77a-3a1e72240458",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/a0dab1fc-f3b8-5dd9-b860-aeacbae14052",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/496c2065-8e7e-5fc9-aaee-1a2627f652b4",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/25a30d1b-5c34-5a90-969f-f3f110a6600e",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e04abd2b-942c-59a0-a445-76a521b0980b",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/975f3b97-ae45-5c41-8ee3-72846a255530",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/2c86f385-297d-5df5-ae7a-c52329772c8b",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/fb5a2b9b-5e66-50c3-b770-d2669a99d114",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/149b19ad-f6fe-55d8-bacf-1678ff7c041e",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/3cbb7e44-74ff-5af9-9f0d-b0b8f09638bf",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/ffb8be60-f820-5b01-b27a-70f1df3a0142",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e0c4ad6f-e564-5bd9-8e88-968e39beaac0",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/1330755b-755c-5c0a-a48d-2c4db3c91317",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/83249c2c-0fa8-5537-85e7-d587a2d7d0b6",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/bee7a366-c004-5c51-b0a3-1d7305fdc95d"
+          ]
+        },
+        "heightEvidence": {
+          "b3_bag_bag_overlap": 0.0,
+          "b3_bouwlagen": null,
+          "b3_dak_type": "slanted",
+          "b3_extrusie": "standard",
+          "b3_h_dak_50p": 21.218000411987305,
+          "b3_h_dak_70p": 21.246999740600586,
+          "b3_h_dak_max": 24.211999893188477,
+          "b3_h_dak_min": 12.63700008392334,
+          "b3_h_maaiveld": -0.07000000029802322,
+          "b3_h_nok": null,
+          "b3_is_glas_dak": false,
+          "b3_kas_warenhuis": false,
+          "b3_kwaliteitsindicator": true,
+          "b3_mutatie_ahn3_ahn4": false,
+          "b3_mutatie_ahn4_ahn5": false,
+          "b3_n_nok": 0,
+          "b3_n_vlakken": 9,
+          "b3_nodata_fractie_ahn3": 0.001124859438277781,
+          "b3_nodata_fractie_ahn4": 0.0,
+          "b3_nodata_fractie_ahn5": 0.009561304934322834,
+          "b3_nodata_radius_ahn3": 0.0,
+          "b3_nodata_radius_ahn4": 0.002708515850827098,
+          "b3_nodata_radius_ahn5": 0.0,
+          "b3_opp_buitenmuur": 1758.71,
+          "b3_opp_dak_plat": 473.22,
+          "b3_opp_dak_schuin": 4.3,
+          "b3_opp_grond": 444.54,
+          "b3_opp_scheidingsmuur": 182.22,
+          "b3_puntdichtheid_ahn3": 20.304054260253906,
+          "b3_puntdichtheid_ahn4": 31.959505081176758,
+          "b3_puntdichtheid_ahn5": 14.964224815368652,
+          "b3_pw_bron": "ahn5",
+          "b3_pw_datum": 2023,
+          "b3_pw_onvoldoende": false,
+          "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+          "b3_rmse_lod12": 4.463781356811523,
+          "b3_rmse_lod13": 1.102425456047058,
+          "b3_rmse_lod22": 0.25019964575767517,
+          "b3_t_run": 178,
+          "b3_val3dity_lod12": "[]",
+          "b3_val3dity_lod13": "[]",
+          "b3_val3dity_lod22": "[]",
+          "b3_volume_lod12": 9476.7958984375,
+          "b3_volume_lod13": 8475.0966796875,
+          "b3_volume_lod22": 8478.0263671875,
+          "begingeldigheid": "2023-10-05",
+          "documentdatum": "2023-10-05",
+          "documentnummer": "GV00007191_AC00AC",
+          "eindgeldigheid": null,
+          "eindregistratie": null,
+          "fid": 8452025,
+          "geconstateerd": false,
+          "identificatie": "NL.IMBAG.Pand.0363100012138646",
+          "oorspronkelijkbouwjaar": 1896,
+          "status": "Pand in gebruik",
+          "tijdstipeindregistratielv": null,
+          "tijdstipinactief": null,
+          "tijdstipinactieflv": null,
+          "tijdstipnietbaglv": null,
+          "tijdstipregistratie": "2023-10-05T17:29:12Z",
+          "tijdstipregistratielv": "2023-10-05T18:50:25Z",
+          "voorkomenidentificatie": 3
+        },
+        "roofSurfaceEvidence": [
+          {
+            "b3_azimut": 70.8310546875,
+            "b3_h_dak_50p": 24.133892059326172,
+            "b3_h_dak_70p": 24.13724708557129,
+            "b3_h_dak_max": 24.143232345581055,
+            "b3_h_dak_min": 24.125207901000977,
+            "b3_hellingshoek": 0.22856968641281128,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 149.98570251464844,
+            "b3_h_dak_50p": 21.23968505859375,
+            "b3_h_dak_70p": 21.257583618164062,
+            "b3_h_dak_max": 24.143232345581055,
+            "b3_h_dak_min": 21.18320655822754,
+            "b3_hellingshoek": 0.2866736650466919,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 337.0808410644531,
+            "b3_h_dak_50p": 4.259318828582764,
+            "b3_h_dak_70p": 4.2653279304504395,
+            "b3_h_dak_max": 10.1862211227417,
+            "b3_h_dak_min": 4.2390971183776855,
+            "b3_hellingshoek": 1.767686128616333,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 202.18487548828125,
+            "b3_h_dak_50p": 14.26826286315918,
+            "b3_h_dak_70p": 14.288578033447266,
+            "b3_h_dak_max": 21.271961212158203,
+            "b3_h_dak_min": 14.203274726867676,
+            "b3_hellingshoek": 0.6063566207885742,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 147.9523468017578,
+            "b3_h_dak_50p": 12.783045768737793,
+            "b3_h_dak_70p": 12.851715087890625,
+            "b3_h_dak_max": 14.284391403198242,
+            "b3_h_dak_min": 12.594808578491211,
+            "b3_hellingshoek": 1.4845081567764282,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 171.96533203125,
+            "b3_h_dak_50p": 10.289931297302246,
+            "b3_h_dak_70p": 10.333849906921387,
+            "b3_h_dak_max": 12.609989166259766,
+            "b3_h_dak_min": 10.126428604125977,
+            "b3_hellingshoek": 11.830931663513184,
+            "type": "RoofSurface"
+          }
+        ]
+      }
+    ],
+    "references": [
+      "https://www.ot301.nl/about-contact",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012138646",
+      "https://www.ot301.nl/media/content/1172.jpg",
+      "https://www.ot301.nl/media/content/1013.jpg"
+    ],
+    "reconstructionNotes": "Exact registered Overtoom301 parent has tall21.4m wing,14.4m entrance block and13m lower side/rear annexes;24.3m rooftop service block. Primary door photo1172 shows brick three-window entrance and giant301 door. Distinct adjoining school with pyramidal roofs is not replaced. Source building:levels7 is not used uniformly."
+  },
+  {
+    "id": "cavia",
+    "parts": [
+      {
+        "osmId": "w276272880",
+        "bagId": "0363100012118954",
+        "tags": {
+          "building": "yes",
+          "height": "15.2",
+          "ref:bag": "0363100012118954",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1913"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.870319267409996,
+                52.382044898762786
+              ],
+              [
+                4.870283551051753,
+                52.382145369213134
+              ],
+              [
+                4.870040400870191,
+                52.38211236529257
+              ],
+              [
+                4.8700626877933795,
+                52.382048892578865
+              ],
+              [
+                4.8701211970313665,
+                52.38205696737425
+              ],
+              [
+                4.870131363120722,
+                52.382029059999134
+              ],
+              [
+                4.870113904676432,
+                52.38202736598104
+              ],
+              [
+                4.870100682208424,
+                52.382015084964685
+              ],
+              [
+                4.870109769920549,
+                52.3819914869811
+              ],
+              [
+                4.870127921667874,
+                52.38198410644429
+              ],
+              [
+                4.870146694572083,
+                52.38198643533903
+              ],
+              [
+                4.870157180562679,
+                52.38195628243174
+              ],
+              [
+                4.870138266042541,
+                52.381953503535
+              ],
+              [
+                4.870163286216645,
+                52.38188611510772
+              ],
+              [
+                4.870182350720876,
+                52.38188862502421
+              ],
+              [
+                4.870366103782169,
+                52.38191277719481
+              ],
+              [
+                4.870319267409996,
+                52.382044898762786
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 2,
+          "bouwjaar": 1913,
+          "documentdatum": "2023-09-15",
+          "documentnummer": "GV00007156_AC00AC",
+          "gebruiksdoel": "kantoorfunctie,sportfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012118954",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012118954",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/8edbf994-4655-56d3-9f52-84d2b7412ef1",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0553d241-3001-528d-b289-b36aeeff0f11"
+          ]
+        },
+        "heightEvidence": {
+          "b3_bag_bag_overlap": 0.0,
+          "b3_bouwlagen": null,
+          "b3_dak_type": "multiple horizontal",
+          "b3_extrusie": "standard",
+          "b3_h_dak_50p": 14.215999603271484,
+          "b3_h_dak_70p": 15.581000328063965,
+          "b3_h_dak_max": 15.939000129699707,
+          "b3_h_dak_min": 10.722999572753906,
+          "b3_h_maaiveld": 0.5809999704360962,
+          "b3_h_nok": null,
+          "b3_is_glas_dak": false,
+          "b3_kas_warenhuis": false,
+          "b3_kwaliteitsindicator": true,
+          "b3_mutatie_ahn3_ahn4": false,
+          "b3_mutatie_ahn4_ahn5": false,
+          "b3_n_nok": 0,
+          "b3_n_vlakken": 4,
+          "b3_nodata_fractie_ahn3": 0.0006397952674888074,
+          "b3_nodata_fractie_ahn4": 0.0006397952674888074,
+          "b3_nodata_fractie_ahn5": 0.0025591810699552298,
+          "b3_nodata_radius_ahn3": 0.10894747823476791,
+          "b3_nodata_radius_ahn4": 0.0,
+          "b3_nodata_radius_ahn5": 0.0,
+          "b3_opp_buitenmuur": 1108.02,
+          "b3_opp_dak_plat": 424.75,
+          "b3_opp_dak_schuin": 0.0,
+          "b3_opp_grond": 390.1,
+          "b3_opp_scheidingsmuur": 281.13,
+          "b3_puntdichtheid_ahn3": 19.544174194335938,
+          "b3_puntdichtheid_ahn4": 39.533931732177734,
+          "b3_puntdichtheid_ahn5": 14.442591667175293,
+          "b3_pw_bron": "ahn5",
+          "b3_pw_datum": 2023,
+          "b3_pw_onvoldoende": false,
+          "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+          "b3_rmse_lod12": 1.59287428855896,
+          "b3_rmse_lod13": 1.0609556436538696,
+          "b3_rmse_lod22": 0.15987849235534668,
+          "b3_t_run": 192,
+          "b3_val3dity_lod12": "[]",
+          "b3_val3dity_lod13": "[]",
+          "b3_val3dity_lod22": "[]",
+          "b3_volume_lod12": 5852.162109375,
+          "b3_volume_lod13": 5719.16552734375,
+          "b3_volume_lod22": 5432.2783203125,
+          "begingeldigheid": "2023-09-15",
+          "documentdatum": "2023-09-15",
+          "documentnummer": "GV00007156_AC00AC",
+          "eindgeldigheid": null,
+          "eindregistratie": null,
+          "fid": 8265575,
+          "geconstateerd": false,
+          "identificatie": "NL.IMBAG.Pand.0363100012118954",
+          "oorspronkelijkbouwjaar": 1913,
+          "status": "Pand in gebruik",
+          "tijdstipeindregistratielv": null,
+          "tijdstipinactief": null,
+          "tijdstipinactieflv": null,
+          "tijdstipnietbaglv": null,
+          "tijdstipregistratie": "2023-09-15T17:54:08Z",
+          "tijdstipregistratielv": "2023-09-15T18:45:57Z",
+          "voorkomenidentificatie": 2
+        },
+        "roofSurfaceEvidence": [
+          {
+            "b3_azimut": 243.29696655273438,
+            "b3_h_dak_50p": 10.73894214630127,
+            "b3_h_dak_70p": 10.743246078491211,
+            "b3_h_dak_max": 14.182656288146973,
+            "b3_h_dak_min": 10.724936485290527,
+            "b3_hellingshoek": 0.2762456238269806,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 109.56964874267578,
+            "b3_h_dak_50p": 15.618209838867188,
+            "b3_h_dak_70p": 15.64631462097168,
+            "b3_h_dak_max": 15.718348503112793,
+            "b3_h_dak_min": 15.515215873718262,
+            "b3_hellingshoek": 1.2017076015472412,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 58.471214294433594,
+            "b3_h_dak_50p": 14.127738952636719,
+            "b3_h_dak_70p": 14.14299201965332,
+            "b3_h_dak_max": 15.728561401367188,
+            "b3_h_dak_min": 14.074445724487305,
+            "b3_hellingshoek": 0.40445175766944885,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 121.58267974853516,
+            "b3_h_dak_50p": 15.679346084594727,
+            "b3_h_dak_70p": 15.694798469543457,
+            "b3_h_dak_max": 15.732418060302734,
+            "b3_h_dak_min": 15.622672080993652,
+            "b3_hellingshoek": 0.42197272181510925,
+            "type": "RoofSurface"
+          }
+        ]
+      },
+      {
+        "osmId": "w276272821",
+        "bagId": "0363100012117132",
+        "tags": {
+          "building": "industrial",
+          "height": "17.3",
+          "ref:bag": "0363100012117132",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1913"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.870366103782169,
+                52.38191277719481
+              ],
+              [
+                4.870182350720876,
+                52.38188862502421
+              ],
+              [
+                4.870193583575756,
+                52.381857396849284
+              ],
+              [
+                4.8701761272923845,
+                52.381855523095446
+              ],
+              [
+                4.870162176807985,
+                52.381842699644565
+              ],
+              [
+                4.870169454887672,
+                52.38182313822235
+              ],
+              [
+                4.870190238643583,
+                52.381816757815145
+              ],
+              [
+                4.870208429249511,
+                52.38181863477279
+              ],
+              [
+                4.870218755717314,
+                52.381789559687554
+              ],
+              [
+                4.87016010413844,
+                52.381781124809194
+              ],
+              [
+                4.870180032939412,
+                52.38171454101563
+              ],
+              [
+                4.870425100244954,
+                52.38174544091366
+              ],
+              [
+                4.870409841869018,
+                52.3817893871225
+              ],
+              [
+                4.870366103782169,
+                52.38191277719481
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 2,
+          "bouwjaar": 1913,
+          "documentdatum": "2023-09-15",
+          "documentnummer": "GV00007156_AC00AC",
+          "gebruiksdoel": "industriefunctie,kantoorfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012117132",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012117132",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/b0e7d97d-3cf8-54d9-8d21-77bb581def38",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0553d241-3001-528d-b289-b36aeeff0f11"
+          ]
+        },
+        "heightEvidence": {
+          "b3_bag_bag_overlap": 0.0,
+          "b3_bouwlagen": null,
+          "b3_dak_type": "slanted",
+          "b3_extrusie": "standard",
+          "b3_h_dak_50p": 15.611000061035156,
+          "b3_h_dak_70p": 15.638999938964844,
+          "b3_h_dak_max": 17.04400062561035,
+          "b3_h_dak_min": 14.048999786376953,
+          "b3_h_maaiveld": 0.6069999933242798,
+          "b3_h_nok": null,
+          "b3_is_glas_dak": false,
+          "b3_kas_warenhuis": false,
+          "b3_kwaliteitsindicator": true,
+          "b3_mutatie_ahn3_ahn4": false,
+          "b3_mutatie_ahn4_ahn5": false,
+          "b3_n_nok": 0,
+          "b3_n_vlakken": 4,
+          "b3_nodata_fractie_ahn3": 0.0008833922329358757,
+          "b3_nodata_fractie_ahn4": 0.0017667844658717513,
+          "b3_nodata_fractie_ahn5": 0.0017667844658717513,
+          "b3_nodata_radius_ahn3": 0.0,
+          "b3_nodata_radius_ahn4": 0.0,
+          "b3_nodata_radius_ahn5": 0.0,
+          "b3_opp_buitenmuur": 863.76,
+          "b3_opp_dak_plat": 292.25,
+          "b3_opp_dak_schuin": 6.57,
+          "b3_opp_grond": 283.4,
+          "b3_opp_scheidingsmuur": 285.73,
+          "b3_puntdichtheid_ahn3": 19.93634033203125,
+          "b3_puntdichtheid_ahn4": 35.88318634033203,
+          "b3_puntdichtheid_ahn5": 14.718584060668945,
+          "b3_pw_bron": "ahn5",
+          "b3_pw_datum": 2023,
+          "b3_pw_onvoldoende": false,
+          "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+          "b3_rmse_lod12": 1.0339170694351196,
+          "b3_rmse_lod13": 1.0339170694351196,
+          "b3_rmse_lod22": 0.1968025118112564,
+          "b3_t_run": 156,
+          "b3_val3dity_lod12": "[]",
+          "b3_val3dity_lod13": "[]",
+          "b3_val3dity_lod22": "[]",
+          "b3_volume_lod12": 4260.783203125,
+          "b3_volume_lod13": 4260.783203125,
+          "b3_volume_lod22": 4079.548583984375,
+          "begingeldigheid": "2023-09-15",
+          "documentdatum": "2023-09-15",
+          "documentnummer": "GV00007156_AC00AC",
+          "eindgeldigheid": null,
+          "eindregistratie": null,
+          "fid": 8003098,
+          "geconstateerd": false,
+          "identificatie": "NL.IMBAG.Pand.0363100012117132",
+          "oorspronkelijkbouwjaar": 1913,
+          "status": "Pand in gebruik",
+          "tijdstipeindregistratielv": null,
+          "tijdstipinactief": null,
+          "tijdstipinactieflv": null,
+          "tijdstipnietbaglv": null,
+          "tijdstipregistratie": "2023-09-15T17:53:57Z",
+          "tijdstipregistratielv": "2023-09-15T18:45:20Z",
+          "voorkomenidentificatie": 2
+        },
+        "roofSurfaceEvidence": [
+          {
+            "b3_azimut": 146.62132263183594,
+            "b3_h_dak_50p": 15.647377014160156,
+            "b3_h_dak_70p": 15.663361549377441,
+            "b3_h_dak_max": 15.693586349487305,
+            "b3_h_dak_min": 15.600632667541504,
+            "b3_hellingshoek": 0.32805347442626953,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 166.01478576660156,
+            "b3_h_dak_50p": 16.92089080810547,
+            "b3_h_dak_70p": 17.290693283081055,
+            "b3_h_dak_max": 18.10515785217285,
+            "b3_h_dak_min": 15.88521957397461,
+            "b3_hellingshoek": 31.392526626586914,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 68.52983093261719,
+            "b3_h_dak_50p": 14.088920593261719,
+            "b3_h_dak_70p": 14.091938018798828,
+            "b3_h_dak_max": 15.692826271057129,
+            "b3_h_dak_min": 14.067583084106445,
+            "b3_hellingshoek": 0.1153499037027359,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 146.62503051757812,
+            "b3_h_dak_50p": 15.65187931060791,
+            "b3_h_dak_70p": 15.66080093383789,
+            "b3_h_dak_max": 18.10515785217285,
+            "b3_h_dak_min": 15.621007919311523,
+            "b3_hellingshoek": 0.32835155725479126,
+            "type": "RoofSurface"
+          }
+        ]
+      },
+      {
+        "osmId": "w276272948",
+        "bagId": "0363100012164519",
+        "tags": {
+          "building": "commercial",
+          "height": "15.2",
+          "ref:bag": "0363100012164519",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1913"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.8700626877933795,
+                52.382048892578865
+              ],
+              [
+                4.870040400870191,
+                52.38211236529257
+              ],
+              [
+                4.870031631555771,
+                52.38211117656932
+              ],
+              [
+                4.870033768120408,
+                52.38210555060871
+              ],
+              [
+                4.869889059307041,
+                52.38208598145585
+              ],
+              [
+                4.869894392935998,
+                52.38207069869243
+              ],
+              [
+                4.869810571593716,
+                52.382059313574196
+              ],
+              [
+                4.869788223166557,
+                52.38205627695059
+              ],
+              [
+                4.8696845023890365,
+                52.382042189373166
+              ],
+              [
+                4.869817246131468,
+                52.38166727203295
+              ],
+              [
+                4.87002723947434,
+                52.38169563776989
+              ],
+              [
+                4.870030479266447,
+                52.38168608899936
+              ],
+              [
+                4.870182636787418,
+                52.38170662522709
+              ],
+              [
+                4.870180032939412,
+                52.38171454101563
+              ],
+              [
+                4.87016010413844,
+                52.381781124809194
+              ],
+              [
+                4.870157836158542,
+                52.38178668728461
+              ],
+              [
+                4.870013389861205,
+                52.381767362093655
+              ],
+              [
+                4.870000200224942,
+                52.38177746059685
+              ],
+              [
+                4.869974970100726,
+                52.38185024069835
+              ],
+              [
+                4.870090825677471,
+                52.381865306746434
+              ],
+              [
+                4.8700666666982215,
+                52.381934406583866
+              ],
+              [
+                4.8699496339104345,
+                52.38191951512506
+              ],
+              [
+                4.869921881703998,
+                52.381994441246796
+              ],
+              [
+                4.86992520734352,
+                52.38201153241453
+              ],
+              [
+                4.8700687773808005,
+                52.38203049437503
+              ],
+              [
+                4.8700626877933795,
+                52.382048892578865
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 2,
+          "bouwjaar": 1913,
+          "documentdatum": "2023-09-15",
+          "documentnummer": "GV00007156_AC00AC",
+          "gebruiksdoel": "kantoorfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012164519",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012164519",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/6a9e5b1f-adee-582d-ad1e-fcbc4c200c7f",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0553d241-3001-528d-b289-b36aeeff0f11"
+          ]
+        },
+        "heightEvidence": {
+          "b3_bag_bag_overlap": 0.0,
+          "b3_bouwlagen": null,
+          "b3_dak_type": "multiple horizontal",
+          "b3_extrusie": "standard",
+          "b3_h_dak_50p": 10.694999694824219,
+          "b3_h_dak_70p": 10.739999771118164,
+          "b3_h_dak_max": 15.614999771118164,
+          "b3_h_dak_min": 9.178999900817871,
+          "b3_h_maaiveld": 0.5879999995231628,
+          "b3_h_nok": null,
+          "b3_is_glas_dak": false,
+          "b3_kas_warenhuis": false,
+          "b3_kwaliteitsindicator": true,
+          "b3_mutatie_ahn3_ahn4": false,
+          "b3_mutatie_ahn4_ahn5": false,
+          "b3_n_nok": 0,
+          "b3_n_vlakken": 7,
+          "b3_nodata_fractie_ahn3": 0.0011309018591418862,
+          "b3_nodata_fractie_ahn4": 0.0,
+          "b3_nodata_fractie_ahn5": 0.0031099801417440176,
+          "b3_nodata_radius_ahn3": 0.05009351670742035,
+          "b3_nodata_radius_ahn4": 0.0,
+          "b3_nodata_radius_ahn5": 0.0,
+          "b3_opp_buitenmuur": 1841.89,
+          "b3_opp_dak_plat": 998.16,
+          "b3_opp_dak_schuin": 7.69,
+          "b3_opp_grond": 870.43,
+          "b3_opp_scheidingsmuur": 222.01,
+          "b3_puntdichtheid_ahn3": 19.778091430664062,
+          "b3_puntdichtheid_ahn4": 37.37630844116211,
+          "b3_puntdichtheid_ahn5": 14.475326538085938,
+          "b3_pw_bron": "ahn5",
+          "b3_pw_datum": 2023,
+          "b3_pw_onvoldoende": false,
+          "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+          "b3_rmse_lod12": 1.0961061716079712,
+          "b3_rmse_lod13": 0.9408474564552307,
+          "b3_rmse_lod22": 0.11863864213228226,
+          "b3_t_run": 419,
+          "b3_val3dity_lod12": "[]",
+          "b3_val3dity_lod13": "[]",
+          "b3_val3dity_lod22": "[]",
+          "b3_volume_lod12": 8836.228515625,
+          "b3_volume_lod13": 8903.6318359375,
+          "b3_volume_lod22": 8395.5693359375,
+          "begingeldigheid": "2023-09-15",
+          "documentdatum": "2023-09-15",
+          "documentnummer": "GV00007156_AC00AC",
+          "eindgeldigheid": null,
+          "eindregistratie": null,
+          "fid": 7987919,
+          "geconstateerd": false,
+          "identificatie": "NL.IMBAG.Pand.0363100012164519",
+          "oorspronkelijkbouwjaar": 1913,
+          "status": "Pand in gebruik",
+          "tijdstipeindregistratielv": null,
+          "tijdstipinactief": null,
+          "tijdstipinactieflv": null,
+          "tijdstipnietbaglv": null,
+          "tijdstipregistratie": "2023-09-15T18:01:56Z",
+          "tijdstipregistratielv": "2023-09-15T19:12:54Z",
+          "voorkomenidentificatie": 3
+        },
+        "roofSurfaceEvidence": [
+          {
+            "b3_azimut": 53.817440032958984,
+            "b3_h_dak_50p": 10.772019386291504,
+            "b3_h_dak_70p": 10.804746627807617,
+            "b3_h_dak_max": 15.778804779052734,
+            "b3_h_dak_min": 10.657234191894531,
+            "b3_hellingshoek": 0.9915004372596741,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 64.64801025390625,
+            "b3_h_dak_50p": 15.666973114013672,
+            "b3_h_dak_70p": 15.681818962097168,
+            "b3_h_dak_max": 15.71048641204834,
+            "b3_h_dak_min": 15.61357593536377,
+            "b3_hellingshoek": 2.3803493976593018,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 121.42747497558594,
+            "b3_h_dak_50p": 10.683698654174805,
+            "b3_h_dak_70p": 10.69483470916748,
+            "b3_h_dak_max": 15.71048641204834,
+            "b3_h_dak_min": 10.637812614440918,
+            "b3_hellingshoek": 0.4078242778778076,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 83.23657989501953,
+            "b3_h_dak_50p": 15.723233222961426,
+            "b3_h_dak_70p": 15.742676734924316,
+            "b3_h_dak_max": 15.778804779052734,
+            "b3_h_dak_min": 15.658598899841309,
+            "b3_hellingshoek": 4.719038486480713,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 255.537109375,
+            "b3_h_dak_50p": 10.83907413482666,
+            "b3_h_dak_70p": 10.85877799987793,
+            "b3_h_dak_max": 10.897171974182129,
+            "b3_h_dak_min": 10.780323028564453,
+            "b3_hellingshoek": 0.77833491563797,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 345.8502197265625,
+            "b3_h_dak_50p": 9.225664138793945,
+            "b3_h_dak_70p": 9.22960090637207,
+            "b3_h_dak_max": 15.709502220153809,
+            "b3_h_dak_min": 9.21463394165039,
+            "b3_hellingshoek": 0.01978234015405178,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 93.47502899169922,
+            "b3_h_dak_50p": 10.717809677124023,
+            "b3_h_dak_70p": 10.733145713806152,
+            "b3_h_dak_max": 10.757645606994629,
+            "b3_h_dak_min": 10.67516040802002,
+            "b3_hellingshoek": 0.3437809348106384,
+            "type": "RoofSurface"
+          }
+        ]
+      }
+    ],
+    "references": [
+      "https://filmhuiscavia.nl/over-cavia/about-cavia",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012118954",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012117132",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012164519",
+      "https://filmhuiscavia.nl/info/bezoekersinformatie",
+      "https://amsterdamopdekaart.nl/1850-1940/Van_Hallstraat/52-54",
+      "https://static.contentecontent.com/platen_medium/24/24206.webp",
+      "https://static.contentecontent.com/platen_medium/3/3058.webp",
+      "https://static.contentecontent.com/platen_medium/3/3057.webp"
+    ],
+    "reconstructionNotes": "VanHall52 registered VBO spans three1913 schoolBAGparents, authored as whole physical twin-school/gym complex. Original PubliekeWerken1913facade drawing and creator2011courtyard photographs substantiate three-storey brick elevations and white-painted Cavia lower frontage. Separate residential gateway arch row excluded; all mapped recesses retained. Cinema first floor on right side of courtyard, above gym per official visitor directions."
+  },
+  {
+    "id": "orgelpark",
+    "parts": [
+      {
+        "osmId": "w152508197",
+        "bagId": "0363100012082170",
+        "tags": {
+          "architect": "Ernst Roest",
+          "building": "church",
+          "height": "36",
+          "name": "Parkkerk",
+          "note": "former protestant church",
+          "ref:bag": "0363100012082170",
+          "source": "BAG",
+          "source:date": "2021-01-08",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1924",
+          "wikidata": "Q17301247",
+          "wikimedia_commons": "Category:Parkkerk (Amsterdam)"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.868412592367408,
+                52.3598494317387
+              ],
+              [
+                4.868404656796953,
+                52.35984762637525
+              ],
+              [
+                4.868380693025993,
+                52.35988703148727
+              ],
+              [
+                4.8683888335898144,
+                52.359888882689475
+              ],
+              [
+                4.868361925799053,
+                52.35993273281738
+              ],
+              [
+                4.868353990215783,
+                52.35993092745049
+              ],
+              [
+                4.8683468204395055,
+                52.359942723900595
+              ],
+              [
+                4.8683337084510425,
+                52.35996428196139
+              ],
+              [
+                4.86832679315504,
+                52.35997565710156
+              ],
+              [
+                4.868340585310421,
+                52.35997879136317
+              ],
+              [
+                4.868329567640589,
+                52.35999700617331
+              ],
+              [
+                4.8683211267566815,
+                52.36001079233012
+              ],
+              [
+                4.868310320995215,
+                52.360028459814664
+              ],
+              [
+                4.868310066503668,
+                52.36002888112328
+              ],
+              [
+                4.868309319739619,
+                52.36002871607054
+              ],
+              [
+                4.868211768650983,
+                52.360006178578715
+              ],
+              [
+                4.868237041497602,
+                52.35996406494047
+              ],
+              [
+                4.868040005344874,
+                52.35991870265349
+              ],
+              [
+                4.868014687562722,
+                52.35996087896766
+              ],
+              [
+                4.86795076575835,
+                52.35994616428145
+              ],
+              [
+                4.8680118534402474,
+                52.35985054194204
+              ],
+              [
+                4.8680394775679225,
+                52.359857161234316
+              ],
+              [
+                4.868059381225865,
+                52.35982602508799
+              ],
+              [
+                4.868031757114577,
+                52.359819405800344
+              ],
+              [
+                4.868070427923249,
+                52.35975890809643
+              ],
+              [
+                4.868098037428399,
+                52.359765518323435
+              ],
+              [
+                4.868117941003928,
+                52.35973438216662
+              ],
+              [
+                4.868090316940876,
+                52.35972776289256
+              ],
+              [
+                4.868143492698937,
+                52.359644580781016
+              ],
+              [
+                4.86814441974764,
+                52.3596431378185
+              ],
+              [
+                4.8681999166069385,
+                52.35965644034009
+              ],
+              [
+                4.868199767184933,
+                52.359656664378676
+              ],
+              [
+                4.868182001753378,
+                52.359684484457425
+              ],
+              [
+                4.868384401874755,
+                52.359731793399455
+              ],
+              [
+                4.868381677887752,
+                52.35973625735915
+              ],
+              [
+                4.868453136747467,
+                52.359752946195414
+              ],
+              [
+                4.868461086352015,
+                52.35975480554368
+              ],
+              [
+                4.868449845443889,
+                52.359773289019735
+              ],
+              [
+                4.868439577288053,
+                52.3597901859262
+              ],
+              [
+                4.868431494668805,
+                52.359803470347345
+              ],
+              [
+                4.86843906387659,
+                52.35980522017714
+              ],
+              [
+                4.868412592367408,
+                52.3598494317387
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 2,
+          "bouwjaar": 1924,
+          "documentdatum": "2023-10-05",
+          "documentnummer": "GV00007191_AC00AC",
+          "gebruiksdoel": "bijeenkomstfunctie,woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012082170",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012082170",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/d925afa1-6654-54da-bc24-b1943a1ef604",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/68c18017-d5c3-5b51-b46b-3fa467df9250"
+          ]
+        },
+        "heightEvidence": {
+          "b3_bag_bag_overlap": 0.0,
+          "b3_bouwlagen": 4,
+          "b3_dak_type": "slanted",
+          "b3_extrusie": "standard",
+          "b3_h_dak_50p": 17.31599998474121,
+          "b3_h_dak_70p": 18.7189998626709,
+          "b3_h_dak_max": 24.618999481201172,
+          "b3_h_dak_min": 7.252999782562256,
+          "b3_h_maaiveld": -1.4859999418258667,
+          "b3_h_nok": 19.203189849853516,
+          "b3_is_glas_dak": false,
+          "b3_kas_warenhuis": false,
+          "b3_kwaliteitsindicator": true,
+          "b3_mutatie_ahn3_ahn4": false,
+          "b3_mutatie_ahn4_ahn5": false,
+          "b3_n_nok": 6,
+          "b3_n_vlakken": 28,
+          "b3_nodata_fractie_ahn3": 0.013639387674629688,
+          "b3_nodata_fractie_ahn4": 0.015968063846230507,
+          "b3_nodata_fractie_ahn5": 0.006653360091149807,
+          "b3_nodata_radius_ahn3": 0.2218027561903,
+          "b3_nodata_radius_ahn4": 0.0,
+          "b3_nodata_radius_ahn5": 0.0,
+          "b3_opp_buitenmuur": 2257.54,
+          "b3_opp_dak_plat": 28.39,
+          "b3_opp_dak_schuin": 1132.07,
+          "b3_opp_grond": 750.45,
+          "b3_opp_scheidingsmuur": 94.91,
+          "b3_puntdichtheid_ahn3": 17.092748641967773,
+          "b3_puntdichtheid_ahn4": 27.32657241821289,
+          "b3_puntdichtheid_ahn5": 14.91761589050293,
+          "b3_pw_bron": "ahn5",
+          "b3_pw_datum": 2023,
+          "b3_pw_onvoldoende": false,
+          "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+          "b3_rmse_lod12": 5.074089527130127,
+          "b3_rmse_lod13": 2.716749429702759,
+          "b3_rmse_lod22": 0.6316661238670349,
+          "b3_t_run": 402,
+          "b3_val3dity_lod12": "[]",
+          "b3_val3dity_lod13": "[]",
+          "b3_val3dity_lod22": "[]",
+          "b3_volume_lod12": 15273.248046875,
+          "b3_volume_lod13": 14756.376953125,
+          "b3_volume_lod22": 13890.1171875,
+          "begingeldigheid": "2023-10-05",
+          "documentdatum": "2023-10-05",
+          "documentnummer": "GV00007191_AC00AC",
+          "eindgeldigheid": null,
+          "eindregistratie": null,
+          "fid": 8055505,
+          "geconstateerd": false,
+          "identificatie": "NL.IMBAG.Pand.0363100012082170",
+          "oorspronkelijkbouwjaar": 1924,
+          "status": "Pand in gebruik",
+          "tijdstipeindregistratielv": null,
+          "tijdstipinactief": null,
+          "tijdstipinactieflv": null,
+          "tijdstipnietbaglv": null,
+          "tijdstipregistratie": "2023-10-05T17:28:44Z",
+          "tijdstipregistratielv": "2023-10-05T18:49:13Z",
+          "voorkomenidentificatie": 2
+        },
+        "roofSurfaceEvidence": [
+          {
+            "b3_azimut": 124.31187438964844,
+            "b3_h_dak_50p": 7.2695512771606445,
+            "b3_h_dak_70p": 7.285099506378174,
+            "b3_h_dak_max": 10.818916320800781,
+            "b3_h_dak_min": 7.2079997062683105,
+            "b3_hellingshoek": 1.1046442985534668,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 252.4857635498047,
+            "b3_h_dak_50p": 12.760939598083496,
+            "b3_h_dak_70p": 13.408215522766113,
+            "b3_h_dak_max": 18.25194549560547,
+            "b3_h_dak_min": 10.45234489440918,
+            "b3_hellingshoek": 61.47862243652344,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 248.4455108642578,
+            "b3_h_dak_50p": 17.483341217041016,
+            "b3_h_dak_70p": 18.25907325744629,
+            "b3_h_dak_max": 19.33804702758789,
+            "b3_h_dak_min": 14.758638381958008,
+            "b3_hellingshoek": 30.429170608520508,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 337.12841796875,
+            "b3_h_dak_50p": 12.335855484008789,
+            "b3_h_dak_70p": 12.593276977539062,
+            "b3_h_dak_max": 13.35765266418457,
+            "b3_h_dak_min": 11.495246887207031,
+            "b3_hellingshoek": 29.195268630981445,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 69.96671295166016,
+            "b3_h_dak_50p": 17.272512435913086,
+            "b3_h_dak_70p": 18.08184051513672,
+            "b3_h_dak_max": 19.33804702758789,
+            "b3_h_dak_min": 14.549429893493652,
+            "b3_hellingshoek": 29.868751525878906,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 249.71351623535156,
+            "b3_h_dak_50p": 12.530200958251953,
+            "b3_h_dak_70p": 13.464959144592285,
+            "b3_h_dak_max": 15.162020683288574,
+            "b3_h_dak_min": 9.576445579528809,
+            "b3_hellingshoek": 50.7175407409668,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 160.65782165527344,
+            "b3_h_dak_50p": 17.39533042907715,
+            "b3_h_dak_70p": 18.169527053833008,
+            "b3_h_dak_max": 19.3181095123291,
+            "b3_h_dak_min": 14.865128517150879,
+            "b3_hellingshoek": 29.83561134338379,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 252.06297302246094,
+            "b3_h_dak_50p": 17.45847511291504,
+            "b3_h_dak_70p": 18.287918090820312,
+            "b3_h_dak_max": 19.3203125,
+            "b3_h_dak_min": 14.71762466430664,
+            "b3_hellingshoek": 30.16567039489746,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 340.12982177734375,
+            "b3_h_dak_50p": 18.29536247253418,
+            "b3_h_dak_70p": 20.18675994873047,
+            "b3_h_dak_max": 27.69739532470703,
+            "b3_h_dak_min": 10.770299911499023,
+            "b3_hellingshoek": 50.833858489990234,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 68.93500518798828,
+            "b3_h_dak_50p": 17.28712272644043,
+            "b3_h_dak_70p": 18.087942123413086,
+            "b3_h_dak_max": 19.3203125,
+            "b3_h_dak_min": 14.617722511291504,
+            "b3_hellingshoek": 29.774328231811523,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 250.2836456298828,
+            "b3_h_dak_50p": 19.364431381225586,
+            "b3_h_dak_70p": 21.088321685791016,
+            "b3_h_dak_max": 33.57075119018555,
+            "b3_h_dak_min": 12.93009090423584,
+            "b3_hellingshoek": 50.840476989746094,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 250.57650756835938,
+            "b3_h_dak_50p": 13.070940017700195,
+            "b3_h_dak_70p": 13.68813705444336,
+            "b3_h_dak_max": 18.689680099487305,
+            "b3_h_dak_min": 10.828021049499512,
+            "b3_hellingshoek": 63.682613372802734,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 249.5352020263672,
+            "b3_h_dak_50p": 12.547213554382324,
+            "b3_h_dak_70p": 13.099315643310547,
+            "b3_h_dak_max": 17.95798683166504,
+            "b3_h_dak_min": 11.082032203674316,
+            "b3_hellingshoek": 38.02336883544922,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 216.2625274658203,
+            "b3_h_dak_50p": 33.7814826965332,
+            "b3_h_dak_70p": 33.901668548583984,
+            "b3_h_dak_max": 34.35277557373047,
+            "b3_h_dak_min": 32.99945831298828,
+            "b3_hellingshoek": 48.2130126953125,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 104.66390991210938,
+            "b3_h_dak_50p": 33.52122497558594,
+            "b3_h_dak_70p": 33.86289978027344,
+            "b3_h_dak_max": 34.47279739379883,
+            "b3_h_dak_min": 32.49619674682617,
+            "b3_hellingshoek": 35.23603057861328,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 267.12811279296875,
+            "b3_h_dak_50p": 27.7033748626709,
+            "b3_h_dak_70p": 27.709352493286133,
+            "b3_h_dak_max": 34.47279739379883,
+            "b3_h_dak_min": 27.68385887145996,
+            "b3_hellingshoek": 0.7222634553909302,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 70.03478240966797,
+            "b3_h_dak_50p": 17.329999923706055,
+            "b3_h_dak_70p": 19.60637664794922,
+            "b3_h_dak_max": 33.1060905456543,
+            "b3_h_dak_min": 10.814713478088379,
+            "b3_hellingshoek": 51.0882453918457,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 161.53619384765625,
+            "b3_h_dak_50p": 12.440727233886719,
+            "b3_h_dak_70p": 12.80731201171875,
+            "b3_h_dak_max": 13.35765266418457,
+            "b3_h_dak_min": 11.614751815795898,
+            "b3_hellingshoek": 30.122751235961914,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 339.19866943359375,
+            "b3_h_dak_50p": 17.110565185546875,
+            "b3_h_dak_70p": 17.842754364013672,
+            "b3_h_dak_max": 19.3181095123291,
+            "b3_h_dak_min": 14.548630714416504,
+            "b3_hellingshoek": 29.93231964111328,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 160.0312042236328,
+            "b3_h_dak_50p": 18.541379928588867,
+            "b3_h_dak_70p": 20.626361846923828,
+            "b3_h_dak_max": 32.74846267700195,
+            "b3_h_dak_min": 10.661191940307617,
+            "b3_hellingshoek": 50.68352127075195,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 152.19436645507812,
+            "b3_h_dak_50p": 4.943031311035156,
+            "b3_h_dak_70p": 5.375458240509033,
+            "b3_h_dak_max": 6.750295162200928,
+            "b3_h_dak_min": 3.7310783863067627,
+            "b3_hellingshoek": 41.38926315307617,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 73.90120697021484,
+            "b3_h_dak_50p": 5.029430866241455,
+            "b3_h_dak_70p": 5.64222526550293,
+            "b3_h_dak_max": 15.002091407775879,
+            "b3_h_dak_min": 3.7373199462890625,
+            "b3_hellingshoek": 41.87822341918945,
+            "type": "RoofSurface"
+          },
+          {
+            "b3_azimut": 35.599281311035156,
+            "b3_h_dak_50p": 32.666019439697266,
+            "b3_h_dak_70p": 32.82638168334961,
+            "b3_h_dak_max": 33.634578704833984,
+            "b3_h_dak_min": 32.1015625,
+            "b3_hellingshoek": 54.23667526245117,
+            "type": "RoofSurface"
+          }
+        ]
+      }
+    ],
+    "references": [
+      "https://stadsherstel.nl/monumenten/orgelpark/",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012082170",
+      "https://www.orgelpark.nl/over-het-gebouw",
+      "https://stadsherstel.nl/wp-content/uploads/2020/07/Tekening-gevel-pand-Parkkerk-Gerard-Brandstraat-verbeterd-578x800.png",
+      "https://stadsherstel.nl/wp-content/uploads/2020/07/2-De-bouw-Parkkerk-1918.jpg"
+    ],
+    "reconstructionNotes": "High square steep roof, octagonal bell lantern and needle spire follow owner original elevation/restoration photos. Global3DBAG summary roofmax26.1m is inconsistent with detailed LoD2.2geometry: highest roof vertices34.47mNAP minus ground-1.486=35.956m, verifying mapped36m spire. Broad mainhip reaches26.9m; detailed roof surfaces retained. Kosterij in same BAG footprint included; neighboring houses excluded. Current concert entrances at street-level beside original raised stairs, per official venue."
+  }
+]
