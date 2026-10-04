@@ -1,0 +1,116 @@
+[
+  {
+    "id": "badhuistheater",
+    "name": "Badhuistheater / Boerhaaveplein bath house",
+    "landmarkId": "extract_landmarks_1884008891",
+    "modelUrl": "./models/badhuistheater.glb",
+    "suppressOsmIds": [
+      "w81362448",
+      "NL.IMBAG.Pand.0363100012135740"
+    ],
+    "footprint": {
+      "centre": [
+        4.912708742836539,
+        52.35946578999055
+      ],
+      "headingDegrees": 18.508703067779862,
+      "lengthMetres": 19.31788960379386,
+      "widthMetres": 19.040379422032384
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.912708742836539,
+        52.35946578999055
+      ],
+      "northOffsetDegrees": -161.49129693222014,
+      "source": "Individual current BAG outer polygon and courtyard rings, native axes aligned to named streets. Current venue entrances from primary official references; mapped heights from OSM/3DBAG."
+    },
+    "attribution": {
+      "title": "Badhuistheater / Boerhaaveplein bath house",
+      "author": "Map Recall",
+      "sourceUrl": "https://items.amsterdamse-school.nl/details/objects/892",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
+    }
+  },
+  {
+    "id": "cinecenter",
+    "name": "Cinecenter",
+    "landmarkId": "extract_landmarks_2066573666",
+    "modelUrl": "./models/cinecenter.glb",
+    "suppressOsmIds": [
+      "w267565713",
+      "NL.IMBAG.Pand.0363100012173768"
+    ],
+    "footprint": {
+      "centre": [
+        4.881781412209045,
+        52.36504920795147
+      ],
+      "headingDegrees": 51.32964359660497,
+      "lengthMetres": 30.133997865222117,
+      "widthMetres": 25.388899781308155
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.881781412209045,
+        52.36504920795147
+      ],
+      "northOffsetDegrees": -128.67035640339503,
+      "source": "Individual current BAG outer polygon and courtyard rings, native axes aligned to named streets. Current venue entrances from primary official references; mapped heights from OSM/3DBAG."
+    },
+    "attribution": {
+      "title": "Cinecenter",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.cinecenter.nl/info/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
+    }
+  },
+  {
+    "id": "studiok",
+    "name": "Timorplein school / Studio K",
+    "landmarkId": "osm_school_3699016",
+    "modelUrl": "./models/studiok.glb",
+    "suppressOsmIds": [
+      "r3699016",
+      "NL.IMBAG.Pand.0363100012237325"
+    ],
+    "footprint": {
+      "centre": [
+        4.9359819354640555,
+        52.36529993337992
+      ],
+      "headingDegrees": 89.0647456396652,
+      "lengthMetres": 74.58075217954416,
+      "widthMetres": 51.08127989623449
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.9359819354640555,
+        52.36529993337992
+      ],
+      "northOffsetDegrees": -0.9352543603347954,
+      "source": "Individual current BAG outer polygon and courtyard rings, native axes aligned to named streets. Current venue entrances from primary official references; mapped heights from OSM/3DBAG."
+    },
+    "attribution": {
+      "title": "Timorplein school / Studio K",
+      "author": "Map Recall",
+      "sourceUrl": "https://arcam.nl/architectuur-gids/voormalige-technische-school-timorplein/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary architecture/venue photos; individual current BAG footprint with courtyards retained. No imported meshes."
+    }
+  }
+]
