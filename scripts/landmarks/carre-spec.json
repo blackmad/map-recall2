@@ -1,0 +1,38 @@
+{
+  "id": "royal-theater-carre",
+  "name": "Royal Theater Carré",
+  "landmarkId": "extract_landmarks_1137362739",
+  "modelUrl": "./models/royal-theater-carre.glb",
+  "suppressOsmIds": [
+    "w269000174",
+    "NL.IMBAG.Pand.0363100012165489"
+  ],
+  "footprint": {
+    "centre": [
+      4.904245736017089,
+      52.36243042368101
+    ],
+    "headingDegrees": 73.15109016624513,
+    "lengthMetres": 60.15133144122461,
+    "widthMetres": 51.934439973235555
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 179.83737933711802,
+  "spatialSuppression": false,
+  "surveyed": {
+    "anchor": [
+      4.90426525,
+      52.3624545
+    ],
+    "northOffsetDegrees": 72.98846950336312,
+    "source": "Current active BAG/OSM whole theatre parent; native scale1, Amstel facade axis162.988 degrees. AHN5/3DBAG LoD2.2 envelope reconciled with primary theatre/architectural photographs; original simplified zinc cloister dome and separate modern ribbed stagehouse."
+  },
+  "attribution": {
+    "title": "Royal Theater Carré",
+    "author": "Map Recall",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/koninklijk-theater-carre/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly theatre, facade and ornament geometry. No imported mesh or image; exact current parent replacement preserves neighboring Amstel houses and Onbekendegracht."
+  }
+}
