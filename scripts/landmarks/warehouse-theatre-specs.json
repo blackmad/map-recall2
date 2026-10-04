@@ -1,0 +1,116 @@
+[
+  {
+    "id": "het-veem",
+    "name": "Werkgebouw Het Veem / Oranje Nassau warehouse",
+    "landmarkId": "extract_landmarks_1698086177",
+    "modelUrl": "./models/het-veem.glb",
+    "suppressOsmIds": [
+      "w274024256",
+      "NL.IMBAG.Pand.0363100012087482"
+    ],
+    "footprint": {
+      "centre": [
+        4.887202592481908,
+        52.39037709872149
+      ],
+      "headingDegrees": 101.67970825541758,
+      "lengthMetres": 60.104736117452,
+      "widthMetres": 27.178718637417326
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 89.99429174458243,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8872008000000005,
+        52.3903738
+      ],
+      "northOffsetDegrees": 11.674000000000007,
+      "source": "Exact OSM/current BAG parent footprint; native scale1. Roof heights/regions checked against current 3DBAG LoD2.2 survey and primary exterior photographs. Manual facade, roof and ornament reconstruction."
+    },
+    "attribution": {
+      "title": "Werkgebouw Het Veem / Oranje Nassau warehouse",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526741",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
+    }
+  },
+  {
+    "id": "tobacco-theater",
+    "name": "TOBACCO Theater / former Gebing tobacco office",
+    "landmarkId": "extract_landmarks_421921642",
+    "modelUrl": "./models/tobacco-theater.glb",
+    "suppressOsmIds": [
+      "w266932382",
+      "NL.IMBAG.Pand.0363100012179546"
+    ],
+    "footprint": {
+      "centre": [
+        4.893494636681719,
+        52.3695890593804
+      ],
+      "headingDegrees": 7.720948917293072,
+      "lengthMetres": 28.734665985711672,
+      "widthMetres": 21.449225500078356
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 271.5790510827069,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8934941,
+        52.3695978
+      ],
+      "northOffsetDegrees": 99.30000000000001,
+      "source": "Exact OSM/current BAG parent footprint; native scale1. Roof heights/regions checked against current 3DBAG LoD2.2 survey and primary exterior photographs. Manual facade, roof and ornament reconstruction."
+    },
+    "attribution": {
+      "title": "TOBACCO Theater / former Gebing tobacco office",
+      "author": "Map Recall",
+      "sourceUrl": "https://tobacco.nl/historie/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
+    }
+  },
+  {
+    "id": "plein-theater",
+    "name": "Plein Theater / shared residential building",
+    "landmarkId": "extract_landmarks_1701367153",
+    "modelUrl": "./models/plein-theater.glb",
+    "suppressOsmIds": [
+      "w278102241",
+      "NL.IMBAG.Pand.0363100012124352"
+    ],
+    "footprint": {
+      "centre": [
+        4.913864151085397,
+        52.36093771367041
+      ],
+      "headingDegrees": 66.99917691629415,
+      "lengthMetres": 31.258641973745252,
+      "widthMetres": 27.715535739441457
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 95.50082308370588,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.91386355,
+        52.360944950000004
+      ],
+      "northOffsetDegrees": -17.5,
+      "source": "Exact OSM/current BAG parent footprint; native scale1. Roof heights/regions checked against current 3DBAG LoD2.2 survey and primary exterior photographs. Manual facade, roof and ornament reconstruction."
+    },
+    "attribution": {
+      "title": "Plein Theater / shared residential building",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.plein-theater.nl/over-ons",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
+    }
+  }
+]
