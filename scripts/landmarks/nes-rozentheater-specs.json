@@ -1,0 +1,116 @@
+[
+  {
+    "id": "brakke-grond",
+    "name": "Vlaams Cultuurhuis de Brakke Grond",
+    "landmarkId": "extract_landmarks_9366648",
+    "modelUrl": "./models/brakke-grond.glb",
+    "suppressOsmIds": [
+      "w57859598",
+      "NL.IMBAG.Pand.0363100012168529"
+    ],
+    "footprint": {
+      "centre": [
+        4.894160923761204,
+        52.371060301942144
+      ],
+      "headingDegrees": 93.24769955052625,
+      "lengthMetres": 82.56081513635031,
+      "widthMetres": 58.812151618836445
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -88.24769955052625,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.894160923761204,
+        52.371060301942144
+      ],
+      "northOffsetDegrees": 185,
+      "source": "Current PDOK BAG contour; native +X275\u00b0 and entrance +Z5\u00b0 face the public Nesplein. Cafe facade faces opposite185\u00b0, while west side follows Nes."
+    },
+    "attribution": {
+      "title": "Vlaams Cultuurhuis de Brakke Grond",
+      "author": "Map Recall",
+      "sourceUrl": "https://brakkegrond.nl/over-ons/de-geschiedenis-van-de-brakke-grond",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
+    }
+  },
+  {
+    "id": "frascati",
+    "name": "Frascati",
+    "landmarkId": "osm_theatre_2724220323",
+    "modelUrl": "./models/frascati.glb",
+    "suppressOsmIds": [
+      "w266932399",
+      "NL.IMBAG.Pand.0363100012168465"
+    ],
+    "footprint": {
+      "centre": [
+        4.893913835356087,
+        52.37036795599974
+      ],
+      "headingDegrees": 92.01886487244738,
+      "lengthMetres": 54.685246723089925,
+      "widthMetres": 38.14016308987897
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 182.98113512755262,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.893913835356087,
+        52.37036795599974
+      ],
+      "northOffsetDegrees": 95,
+      "source": "Current PDOK BAG individual building contours with named street frontage orientation; precise native metre geometry preserves courtyards and neighbors."
+    },
+    "attribution": {
+      "title": "Frascati",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.frascatitheater.nl/nl/contact-en-route-hvkz",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
+    }
+  },
+  {
+    "id": "boom-chicago",
+    "name": "Boom Chicago / Rozentheater",
+    "landmarkId": "extract_landmarks_855923099",
+    "modelUrl": "./models/boom-chicago.glb",
+    "suppressOsmIds": [
+      "w266659986",
+      "NL.IMBAG.Pand.0363100012174999"
+    ],
+    "footprint": {
+      "centre": [
+        4.879140883714867,
+        52.372669186374516
+      ],
+      "headingDegrees": 157.26777098353097,
+      "lengthMetres": 43.760989498567824,
+      "widthMetres": 17.890234957107282
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180.73222901646903,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.879140883714867,
+        52.372669186374516
+      ],
+      "northOffsetDegrees": 158,
+      "source": "Current PDOK BAG individual building contours with named street frontage orientation; precise native metre geometry preserves courtyards and neighbors."
+    },
+    "attribution": {
+      "title": "Boom Chicago / Rozentheater",
+      "author": "Map Recall",
+      "sourceUrl": "https://arcam.nl/architectuur-gids/rozentheater-2/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
+    }
+  }
+]

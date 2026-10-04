@@ -1,0 +1,698 @@
+[
+  {
+    "id": "brakke-grond",
+    "parts": [
+      {
+        "osmId": "w57859598",
+        "bagId": "0363100012168529",
+        "tags": {
+          "amenity": "arts_centre",
+          "building": "yes",
+          "email": "info@brakkegrond.nl",
+          "height": "17.7",
+          "name": "Vlaams Cultuurhuis de Brakke Grond",
+          "phone": "+31 20 622 9014",
+          "ref:bag": "0363100012168529",
+          "source": "BAG",
+          "source:date": "2014-02-11",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1880",
+          "toilets:wheelchair": "yes",
+          "website": "https://www.brakkegrond.nl",
+          "wheelchair": "yes",
+          "wikidata": "Q2155935",
+          "wikimedia_commons": "Category:De Brakke Grond (Amsterdam)",
+          "wikipedia": "nl:De Brakke Grond"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.8942154006853,
+                52.37110577485003
+              ],
+              [
+                4.89422804328226,
+                52.37114411513704
+              ],
+              [
+                4.894516592879931,
+                52.37110352331421
+              ],
+              [
+                4.894514215887574,
+                52.37108881851616
+              ],
+              [
+                4.8945559106783,
+                52.371076274394746
+              ],
+              [
+                4.8945705019419945,
+                52.37112692692841
+              ],
+              [
+                4.894583732746707,
+                52.371161252116984
+              ],
+              [
+                4.894732264687121,
+                52.3711357696824
+              ],
+              [
+                4.894751331410873,
+                52.37115762620716
+              ],
+              [
+                4.8947575517085085,
+                52.37116475236916
+              ],
+              [
+                4.894781533730237,
+                52.371192246650764
+              ],
+              [
+                4.894183334331302,
+                52.37129440123533
+              ],
+              [
+                4.893965024293522,
+                52.371331671809244
+              ],
+              [
+                4.893891676594902,
+                52.371164086964356
+              ],
+              [
+                4.893879378520784,
+                52.37116345152421
+              ],
+              [
+                4.893869453549865,
+                52.371175211036274
+              ],
+              [
+                4.8938350233847725,
+                52.37116431827371
+              ],
+              [
+                4.893726701944378,
+                52.371168100077355
+              ],
+              [
+                4.893727832741392,
+                52.371169408008356
+              ],
+              [
+                4.893728742689677,
+                52.371170768945184
+              ],
+              [
+                4.89372946115574,
+                52.371172183010216
+              ],
+              [
+                4.893729959072979,
+                52.37117362311916
+              ],
+              [
+                4.893730236441376,
+                52.37117508927207
+              ],
+              [
+                4.893730278777608,
+                52.371176563433146
+              ],
+              [
+                4.893730115548159,
+                52.37117803673747
+              ],
+              [
+                4.89372971758644,
+                52.3711794910881
+              ],
+              [
+                4.893729099675676,
+                52.37118091755884
+              ],
+              [
+                4.893728276599093,
+                52.37118230722371
+              ],
+              [
+                4.893727233873371,
+                52.37118364204684
+              ],
+              [
+                4.893726015748251,
+                52.37118490423725
+              ],
+              [
+                4.893724592757209,
+                52.37118610265984
+              ],
+              [
+                4.893722994566722,
+                52.371187210475114
+              ],
+              [
+                4.893721250643294,
+                52.37118821881812
+              ],
+              [
+                4.893719346303662,
+                52.371189127627744
+              ],
+              [
+                4.893717311014348,
+                52.37118992803901
+              ],
+              [
+                4.893715174241878,
+                52.37119061118699
+              ],
+              [
+                4.8937129361862315,
+                52.37119115909718
+              ],
+              [
+                4.8937106261139744,
+                52.3711915808792
+              ],
+              [
+                4.893708258708396,
+                52.371191876594246
+              ],
+              [
+                4.893705863436034,
+                52.371192037377455
+              ],
+              [
+                4.893703455080166,
+                52.3711920543027
+              ],
+              [
+                4.8937010482240915,
+                52.37119193641845
+              ],
+              [
+                4.893698672234373,
+                52.37119168384716
+              ],
+              [
+                4.893696356477563,
+                52.37119129671121
+              ],
+              [
+                4.893694086270417,
+                52.371190774949405
+              ],
+              [
+                4.893691920146042,
+                52.37119013678108
+              ],
+              [
+                4.893689858204443,
+                52.37118937321908
+              ],
+              [
+                4.893687915028906,
+                52.3711884933118
+              ],
+              [
+                4.893686119885985,
+                52.37118750616897
+              ],
+              [
+                4.893684487258968,
+                52.37118642982637
+              ],
+              [
+                4.893683017247841,
+                52.371185255296744
+              ],
+              [
+                4.893681724235899,
+                52.37118400960319
+              ],
+              [
+                4.89368063758966,
+                52.37118269286805
+              ],
+              [
+                4.893679742425863,
+                52.371181323004784
+              ],
+              [
+                4.893679068111022,
+                52.37117990013574
+              ],
+              [
+                4.8936786143451485,
+                52.37117845122291
+              ],
+              [
+                4.8936783810282245,
+                52.37117698525346
+              ],
+              [
+                4.893563713686739,
+                52.371173064951726
+              ],
+              [
+                4.89356401757226,
+                52.371170828278615
+              ],
+              [
+                4.893562843511505,
+                52.37117076945752
+              ],
+              [
+                4.893583335596376,
+                52.37101566407834
+              ],
+              [
+                4.893584875533163,
+                52.37101583227714
+              ],
+              [
+                4.893591959541992,
+                52.37096379599702
+              ],
+              [
+                4.893630261409315,
+                52.3708141035509
+              ],
+              [
+                4.893813361556091,
+                52.37080814387197
+              ],
+              [
+                4.894023555448878,
+                52.37080066999022
+              ],
+              [
+                4.894225185307868,
+                52.370793492624
+              ],
+              [
+                4.894338870832708,
+                52.3707905415894
+              ],
+              [
+                4.894337556410333,
+                52.37084276370897
+              ],
+              [
+                4.894333376349263,
+                52.37088858363659
+              ],
+              [
+                4.894272226480447,
+                52.370907652654374
+              ],
+              [
+                4.894271937833251,
+                52.370920414002676
+              ],
+              [
+                4.894214056144462,
+                52.37092286933058
+              ],
+              [
+                4.8942154006853,
+                52.37110577485003
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 14,
+          "bouwjaar": 1880,
+          "documentdatum": "2023-04-07",
+          "documentnummer": "TM02304456_TM00OP",
+          "gebruiksdoel": "bijeenkomstfunctie,logiesfunctie,woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012168529",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012168529",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e1119ccf-8638-5850-a1af-172c11498e5f",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/5d6b2507-ffba-5e4d-a779-300059dd7b43",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/877ae376-05a9-55e3-bdcc-7f93842b636e",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/2118794c-89c7-511a-9ba4-03b1f8ab2365",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/772b48b6-f648-5092-8fea-878db7a8231d",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/6f4f403c-ba86-5d86-8965-abb427da6405",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/3f56b3b0-3de9-5f0f-899b-9bf6feb14d1d",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/b4f01aa3-52a5-5957-a84f-d3c88ab323c7",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/4ee4787f-06e4-5257-98bd-5f666d29fbb2",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/ff0700e1-3eef-51cd-8b5e-6670d8d68d9c",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/39fc2420-cfca-518f-bf61-46178e66b303",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/53b90f76-b10b-5b48-b6a1-5c245478902b",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/724634ab-3607-55b5-af9b-8608dcb73051",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e29e074a-26d5-5833-8563-a2845765409c"
+          ]
+        }
+      }
+    ],
+    "notes": "The public Nesplein remains outside current BAG contour. Rebuild cafe wing, contemporary entry wing and rear performance halls separately, guided by venue visual access PDF/site plan. No plaza slab.",
+    "architectureReferences": [
+      "https://brakkegrond.nl/over-ons/de-geschiedenis-van-de-brakke-grond",
+      "https://brakkegrond.nl/download/hier-een-pdf-met-fotos-van-het-gebouw-om-je-voor-te-bereiden-op-je-bezoek-03e53.pdf/hier%20een%20pdf%20met%20foto%27s%20van%20het%20gebouw%20om%20je%20voor%20te%20bereiden%20op%20je%20bezoek/original"
+    ],
+    "surveySource": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items",
+    "surveyFetched": "2026-10-04"
+  },
+  {
+    "id": "frascati",
+    "parts": [
+      {
+        "osmId": "w266932399",
+        "bagId": "0363100012168465",
+        "tags": {
+          "building": "yes",
+          "height": "19.5",
+          "ref:bag": "0363100012168465",
+          "source": "BAG",
+          "source:date": "2014-02-11",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1817"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.89389492765649,
+                52.37023796173897
+              ],
+              [
+                4.893998636164254,
+                52.37023417854757
+              ],
+              [
+                4.893995063975669,
+                52.37019756570136
+              ],
+              [
+                4.8941119728365905,
+                52.37019643484595
+              ],
+              [
+                4.8941262766226465,
+                52.37025834785235
+              ],
+              [
+                4.894158685212531,
+                52.37025554382969
+              ],
+              [
+                4.89419030011956,
+                52.3702528083951
+              ],
+              [
+                4.894289980402991,
+                52.37024418177355
+              ],
+              [
+                4.894312444574507,
+                52.37029984631703
+              ],
+              [
+                4.894037904555407,
+                52.37032359908796
+              ],
+              [
+                4.894039465306356,
+                52.37033510087305
+              ],
+              [
+                4.894050010334362,
+                52.37041283458024
+              ],
+              [
+                4.894032931490611,
+                52.370414309330776
+              ],
+              [
+                4.894046136586919,
+                52.37051164732931
+              ],
+              [
+                4.89404829444255,
+                52.37052755557971
+              ],
+              [
+                4.893928861358306,
+                52.37053904767838
+              ],
+              [
+                4.893922457702656,
+                52.37051409807412
+              ],
+              [
+                4.893586354691857,
+                52.3705464192381
+              ],
+              [
+                4.893559945576761,
+                52.37044815432824
+              ],
+              [
+                4.893542484634163,
+                52.3703823633739
+              ],
+              [
+                4.893502369914385,
+                52.37021338889146
+              ],
+              [
+                4.893502947570929,
+                52.370211620720625
+              ],
+              [
+                4.89350523623005,
+                52.370210479836416
+              ],
+              [
+                4.8935101148678015,
+                52.37021014965791
+              ],
+              [
+                4.893605894688948,
+                52.37020368237523
+              ],
+              [
+                4.893610377278174,
+                52.37024950244735
+              ],
+              [
+                4.8936617028230796,
+                52.370247622265296
+              ],
+              [
+                4.893657261330035,
+                52.37020206301024
+              ],
+              [
+                4.89381057122864,
+                52.370199583233315
+              ],
+              [
+                4.8938231049909335,
+                52.370328186717266
+              ],
+              [
+                4.893903442599118,
+                52.37032524992961
+              ],
+              [
+                4.89389492765649,
+                52.37023796173897
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 5,
+          "bouwjaar": 1817,
+          "documentdatum": "2023-09-28",
+          "documentnummer": "GV00007182_AC00AC",
+          "gebruiksdoel": "bijeenkomstfunctie,kantoorfunctie,woonfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012168465",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012168465",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/6d9bb1f5-5ad7-5a44-a937-5b3c81ff67b8",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/7ee4f99c-bc86-5049-94ef-68653912afc4",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/e2a3e3c5-9ad4-559f-87a8-5a75e44911d3",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/208832ba-37ee-5d22-b56e-6a25989aa2fc",
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/041684a2-88dc-546e-98ab-9d0585885fed"
+          ]
+        }
+      }
+    ],
+    "notes": "Main Nes59-65 complex spans through to canal facade Oudezijds Voorburgwal304, preserving all mapped reentrant court shapes. Separate Frascati4/Nes71 not included. Source-backed measured total height19.5m.",
+    "architectureReferences": [
+      "https://www.frascatitheater.nl/nl/contact-en-route-hvkz",
+      "https://www.frascatitheater.nl/en/frascati-s-history-f1rq",
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/6160",
+      "https://static.contentecontent.com/platen_medium/4/4919.webp",
+      "https://static.contentecontent.com/platen_medium/4/4917.webp"
+    ],
+    "surveySource": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items",
+    "surveyFetched": "2026-10-04"
+  },
+  {
+    "id": "boom-chicago",
+    "parts": [
+      {
+        "osmId": "w266659986",
+        "bagId": "0363100012174999",
+        "tags": {
+          "addr:city": "Amsterdam",
+          "addr:housenumber": "117",
+          "addr:postcode": "1016LV",
+          "addr:street": "Rozengracht",
+          "building": "apartments",
+          "height": "15.1",
+          "ref:bag": "0363100012174999",
+          "source": "BAG",
+          "source:date": "2014-02-11",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1913",
+          "wikidata": "Q12148408",
+          "wikimedia_commons": "Category:Rozengracht 117, Amsterdam",
+          "wikipedia": "nl:Rozengracht 117"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.879084220671262,
+                52.37286282652064
+              ],
+              [
+                4.879073852857776,
+                52.372860310406075
+              ],
+              [
+                4.878895082235164,
+                52.37281942191831
+              ],
+              [
+                4.879115549543237,
+                52.372498158508805
+              ],
+              [
+                4.8791303798389825,
+                52.37250208686494
+              ],
+              [
+                4.879111055599703,
+                52.37253025233913
+              ],
+              [
+                4.87910700026411,
+                52.37252918337408
+              ],
+              [
+                4.8790956208382354,
+                52.37254576181948
+              ],
+              [
+                4.879125296350208,
+                52.372553600623284
+              ],
+              [
+                4.879163392143377,
+                52.372498085178094
+              ],
+              [
+                4.879183624764886,
+                52.3725034298034
+              ],
+              [
+                4.879179637625507,
+                52.37250922774952
+              ],
+              [
+                4.879193106465765,
+                52.37251279074763
+              ],
+              [
+                4.879218030580816,
+                52.37247647944994
+              ],
+              [
+                4.879301623356221,
+                52.37249747385361
+              ],
+              [
+                4.87928944285964,
+                52.372514767898714
+              ],
+              [
+                4.879323159144666,
+                52.372523666561484
+              ],
+              [
+                4.879335593472053,
+                52.37250600510536
+              ],
+              [
+                4.8793423580882775,
+                52.37250771482344
+              ],
+              [
+                4.879364921839466,
+                52.372513383986444
+              ],
+              [
+                4.879386574487966,
+                52.3725191121516
+              ],
+              [
+                4.8793181196305255,
+                52.3726162453956
+              ],
+              [
+                4.879272182823864,
+                52.37260376213608
+              ],
+              [
+                4.879084220671262,
+                52.37286282652064
+              ]
+            ]
+          ]
+        ],
+        "currentBagProperties": {
+          "aantal_verblijfsobjecten": 1,
+          "bouwjaar": 1913,
+          "documentdatum": "2023-09-28",
+          "documentnummer": "GV00007182_AC00AC",
+          "gebruiksdoel": "bijeenkomstfunctie",
+          "geconstateerd": "N",
+          "identificatie": "0363100012174999",
+          "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012174999",
+          "status": "Pand in gebruik",
+          "verblijfsobject.href": [
+            "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/0e377b6a-ef18-58cc-95b8-c0b54398728f"
+          ]
+        }
+      }
+    ],
+    "notes": "Actual 1913 Rozentheater parent at Rozengracht117. Photographed current street facade has tall stained-glass bays, three stone entrance arches and slate barrel/pitched roof forms; adjacent canal houses remain intact. Mapped maxheight15.1m.",
+    "architectureReferences": [
+      "https://arcam.nl/architectuur-gids/rozentheater-2/",
+      "https://arcam.nl/wp-content/uploads/2021/07/1.jpeg",
+      "https://boomchicago.nl/boom/about-us/"
+    ],
+    "surveySource": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items",
+    "surveyFetched": "2026-10-04"
+  }
+]
