@@ -18,10 +18,13 @@ const names = ['Vondelpark', 'Oosterpark', 'Sarphatipark', 'Westerpark', 'Erasmu
   'Rembrandtpark', 'Beatrixpark', 'Flevopark', 'Noorderpark', 'Amstelpark', 'Gaasperpark',
   'Wertheimpark','Park Frankendael','Martin Luther Kingpark',
   'Sloterpark','Nelson Mandelapark','Diemerpark','Museumplein','Gerbrandypark',
-  'Bijlmerweide','Gijsbrecht van Aemstelpark',"'t Kleine Loopveld",'Amsterdamse Bos'];
+  'Bijlmerweide','Gijsbrecht van Aemstelpark',"'t Kleine Loopveld",'Amsterdamse Bos','Professor Joop van Stigtpark','Baanakkerspark','W.H. Vliegenbos',
+  'Rietlandpark','Darwinplantsoen','Piet Wiedijkpark'];
 const largeParkIds={'Sloterpark':'a974946116','Nelson Mandelapark':'a253205604','Diemerpark':'a26617920',
   'Museumplein':'a51930778','Gerbrandypark':'a12632708','Bijlmerweide':'a1634686926',
-  'Gijsbrecht van Aemstelpark':'a14700737',"'t Kleine Loopveld":'a1625964550','Amsterdamse Bos':'a53034066'};
+  'Gijsbrecht van Aemstelpark':'a14700737',"'t Kleine Loopveld":'a1625964550','Amsterdamse Bos':'a53034066','Professor Joop van Stigtpark':'a1634686930',
+  'Baanakkerspark':'a338346296','W.H. Vliegenbos':'a438320562','Rietlandpark':'a1474761438',
+  'Darwinplantsoen':'a1090059682','Piet Wiedijkpark':'a1073574284'};
 const polygons = g => g.type === 'MultiPolygon' ? g.coordinates : g.type === 'Polygon' ? [g.coordinates] : [];
 function ringArea(r) {
   return Math.abs(r.reduce((a, p, i) => {const q = r[(i + 1) % r.length]; return a + p[0] * q[1] - q[0] * p[1];}, 0));
