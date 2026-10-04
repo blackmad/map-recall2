@@ -602,6 +602,17 @@
       "status": "in-progress",
       "owner": "root",
       "notes": "Geometry only suggests eligibility. Record a dated facade/context reference and recognition/open-space checklist before approving standard treatment. Faster workflow keeps native identity, scale, openings, neighbor safety and gallery/live integration checks; omit non-defining ornament and bespoke per-building harnesses. Policy and reviews: dominant-building-fidelity.json; workflow: docs/landmark-building-recipe.md."
+    },
+    {
+      "id": "idfa-vondelpark-pavilion",
+      "task": "IDFA \u2014 Het Documentaire Paviljoen / Vondelparkpaviljoen",
+      "priority": "high",
+      "status": "queued",
+      "owner": "root",
+      "requested": true,
+      "workflow": "full-landmark",
+      "sourceUrl": "https://www.idfa.nl/en/vondelpark/",
+      "notes": "Explicit user request. IDFA confirms venue at Vondelpark 3, 1071 AA Amsterdam. Research historic pavilion silhouette, facade and terrace; resolve current OSM/BAG identity and existing mapped POI aliases before building. IDFA moved here in summer 2023; cinema, studio, salon and public cafe share this pavilion. Preserve meaningful sourced card and integrate destination plus geographic pin/label. No separate duplicate building for Cafe Vertigo. References: https://www.idfa.nl/vondelpark/verhuur/praktische-informatie/ and https://www.idfa.nl/en/about-idfa/meet-the-team/annual-reports/annualreport-2023/het-documentaire-paviljoen/."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
