@@ -50,5 +50,11 @@ try {
  for (const [slug, name] of new Map(catalogue.models.map(m => [m.license.slug, m.license.name]))) { const option = el('option', name); option.value = slug; fields.license.append(option); }
  const held = catalogue.models.filter(m => m.category === 'Needs source check').length;
  document.getElementById('research').textContent = `${catalogue.models.length - held} open-license candidates + ${held} requiring source checks. Checked ${catalogue.checkedOn}. Researched ${catalogue.research.sketchfabCandidatesExamined} Sketchfab results and ${catalogue.research.polyHavenModelCatalogueExamined} Poly Haven assets, alongside other primary providers.`;
+ if (catalogue.collectionAudit) {
+  const audit = catalogue.collectionAudit;
+  const container = document.getElementById('collection-audit');
+  const text = el('p'); text.append(link("Jungle Jim’s Amsterdam collection", audit.sourceUrl), document.createTextNode(` — ${audit.entriesExamined} entries checked. ${audit.note}`)); container.append(text);
+  for (const reference of audit.referenceOnly) { const paragraph = el('p'); paragraph.append(link(reference.name, reference.sourceUrl), document.createTextNode(` by ${reference.author}. ${reference.note}`)); container.append(paragraph); }
+ }
  render();
 } catch (error) { document.getElementById('research').textContent = 'Catalogue unavailable.'; grid.append(el('p', `Could not load the review data: ${error.message}. Reload this page after starting the development server.`, 'message')); }

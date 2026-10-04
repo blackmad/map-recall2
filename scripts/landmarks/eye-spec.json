@@ -1,0 +1,40 @@
+{
+  "id": "eye-filmmuseum",
+  "name": "EYE Filmmuseum",
+  "landmarkId": "extract_landmarks_681957397",
+  "modelUrl": "./models/eye-filmmuseum.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012237838",
+    "w127505497",
+    "w1206726812",
+    "w1207014127"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.900944,
+      52.384387
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 110.59346833808135,
+    "widthMetres": 86.4647613760225
+  },
+  "surveyed": {
+    "anchor": [
+      4.900944,
+      52.384387
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Native east/south metres; current shared BAG plan and AHN5 envelope, original simplified roof folds."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 180,
+  "attribution": {
+    "title": "EYE Filmmuseum",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.dmaa.at/work/eye-film-institute",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free folded-shell reconstruction. Current BAG parent scope, recorded lower-level outline and approximate roof heights constrain original rounded control points. White inclined panels, southern glass ribbon, recessed lower storey and eastern cantilever are interpreted from architect photographs and the supplied Warehouse viewer. Individual roof folds, glazing contours, mullion spacing and stairs remain approximations. No imported Warehouse or survey mesh geometry; no photo pixels. The extract teaching ID681957397 is retained only as teaching identity, not suppressed as a current OSM way: current OSM way681957397 is in another country. Only verified EYE parent/levels are suppressed; A\u2019DAM, promenade and park remain separate."
+  }
+}
