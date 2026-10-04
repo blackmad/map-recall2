@@ -4154,6 +4154,494 @@
       "triangles": 15640,
       "bytes": 212864,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "arcam": {
+      "id": "arcam",
+      "name": "Arcam — Amsterdam Centre for Architecture",
+      "landmarkId": "extract_landmarks_2001179186",
+      "modelUrl": "./models/arcam.glb",
+      "suppressOsmIds": [
+        "w31980601",
+        "NL.IMBAG.Pand.0363100012180470"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.912601916666667,
+          52.37145868333334
+        ],
+        "headingDegrees": 134.5,
+        "lengthMetres": 26.773420132289857,
+        "widthMetres": 11.68397608971833
+      },
+      "surveyed": {
+        "anchor": [
+          4.912601916666667,
+          52.37145868333334
+        ],
+        "northOffsetDegrees": 44.5,
+        "source": "Actual mapped footprint; local+X follows street, +Z faces Prins Hendrikkade"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 90,
+      "attribution": {
+        "title": "Arcam",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.renevanzuuk.nl/arcam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original simplified curved shell and window reconstruction. Footprint and height sourced; folds, seams and glass-opening contours approximate. No imported mesh or photo texture."
+      },
+      "bounds": {
+        "min": [
+          -14.61358642578125,
+          -2.9802322831784522e-9,
+          -8.647258758544922
+        ],
+        "max": [
+          12.159832954406738,
+          14.524975776672363,
+          3.3136322498321533
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.912601916666667,
+          52.37145868333334
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 134.5,
+        "facadeBearingDegrees": 224.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 26.77341938018799,
+        "heightMetres": 14.524975779652596,
+        "depthMetres": 11.960891008377075,
+        "depthCoverage": 1.0237004010049648
+      },
+      "triangles": 1640,
+      "bytes": 28592,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "brakke-grond": {
+      "id": "brakke-grond",
+      "name": "Vlaams Cultuurhuis de Brakke Grond",
+      "landmarkId": "extract_landmarks_9366648",
+      "modelUrl": "./models/brakke-grond.glb",
+      "suppressOsmIds": [
+        "w57859598",
+        "NL.IMBAG.Pand.0363100012168529"
+      ],
+      "footprint": {
+        "centre": [
+          4.894160923761204,
+          52.371060301942144
+        ],
+        "headingDegrees": 93.24769955052625,
+        "lengthMetres": 82.56081513635031,
+        "widthMetres": 58.812151618836445
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -88.24769955052625,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.894160923761204,
+          52.371060301942144
+        ],
+        "northOffsetDegrees": 185,
+        "source": "Current PDOK BAG contour; native +X275° and entrance +Z5° face the public Nesplein. Cafe facade faces opposite185°, while west side follows Nes."
+      },
+      "attribution": {
+        "title": "Vlaams Cultuurhuis de Brakke Grond",
+        "author": "Map Recall",
+        "sourceUrl": "https://brakkegrond.nl/over-ons/de-geschiedenis-van-de-brakke-grond",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
+      },
+      "bounds": {
+        "min": [
+          -40.74862289428711,
+          -1.9073486612342094e-7,
+          -30.254650115966797
+        ],
+        "max": [
+          41.55864715576172,
+          17.649999618530273,
+          28.72264289855957
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.894160923761204,
+          52.371060301942144
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 275,
+        "facadeBearingDegrees": 5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 82.30727005004883,
+        "heightMetres": 17.64999980926514,
+        "depthMetres": 58.97729301452637,
+        "depthCoverage": 1.0028079468467708
+      },
+      "triangles": 7877,
+      "bytes": 97944,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "frascati": {
+      "id": "frascati",
+      "name": "Frascati",
+      "landmarkId": "osm_theatre_2724220323",
+      "modelUrl": "./models/frascati.glb",
+      "suppressOsmIds": [
+        "w266932399",
+        "NL.IMBAG.Pand.0363100012168465"
+      ],
+      "footprint": {
+        "centre": [
+          4.893913835356087,
+          52.37036795599974
+        ],
+        "headingDegrees": 92.01886487244738,
+        "lengthMetres": 54.685246723089925,
+        "widthMetres": 38.14016308987897
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 182.98113512755262,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.893913835356087,
+          52.37036795599974
+        ],
+        "northOffsetDegrees": 95,
+        "source": "Current PDOK BAG individual building contours with named street frontage orientation; precise native metre geometry preserves courtyards and neighbors."
+      },
+      "attribution": {
+        "title": "Frascati",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.frascatitheater.nl/nl/contact-en-route-hvkz",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
+      },
+      "bounds": {
+        "min": [
+          -18.929515838623047,
+          0,
+          -27.70784568786621
+        ],
+        "max": [
+          19.91385841369629,
+          19.450000762939453,
+          26.735000610351562
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.893913835356087,
+          52.37036795599974
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 185,
+        "facadeBearingDegrees": 275,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 54.44284629821777,
+        "heightMetres": 19.450000762939453,
+        "depthMetres": 38.843374252319336,
+        "depthCoverage": 1.01843754995969
+      },
+      "triangles": 5084,
+      "bytes": 65628,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "boom-chicago": {
+      "id": "boom-chicago",
+      "name": "Boom Chicago / Rozentheater",
+      "landmarkId": "extract_landmarks_855923099",
+      "modelUrl": "./models/boom-chicago.glb",
+      "suppressOsmIds": [
+        "w266659986",
+        "NL.IMBAG.Pand.0363100012174999"
+      ],
+      "footprint": {
+        "centre": [
+          4.879140883714867,
+          52.372669186374516
+        ],
+        "headingDegrees": 157.26777098353097,
+        "lengthMetres": 43.760989498567824,
+        "widthMetres": 17.890234957107282
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 180.73222901646903,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.879140883714867,
+          52.372669186374516
+        ],
+        "northOffsetDegrees": 158,
+        "source": "Current PDOK BAG individual building contours with named street frontage orientation; precise native metre geometry preserves courtyards and neighbors."
+      },
+      "attribution": {
+        "title": "Boom Chicago / Rozentheater",
+        "author": "Map Recall",
+        "sourceUrl": "https://arcam.nl/architectuur-gids/rozentheater-2/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly reconstruction from primary venue/heritage architecture references, current BAG outlines and mapped 2025 3DBAG height; no imported meshes or textures."
+      },
+      "bounds": {
+        "min": [
+          -9.267677307128906,
+          -3.814697322468419e-7,
+          -21.71483039855957
+        ],
+        "max": [
+          9.267973899841309,
+          15.050000190734863,
+          22.225000381469727
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.879140883714867,
+          52.372669186374516
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 248,
+        "facadeBearingDegrees": 338,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 43.9398307800293,
+        "heightMetres": 15.050000572204596,
+        "depthMetres": 18.535651206970215,
+        "depthCoverage": 1.0360764546363057
+      },
+      "triangles": 3501,
+      "bytes": 49540,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "foam": {
+      "id": "foam",
+      "name": "Foam — Fodor Museum canal houses",
+      "landmarkId": "extract_landmarks_1875254501",
+      "modelUrl": "./models/foam.glb",
+      "suppressOsmIds": [
+        "w268283689",
+        "NL.IMBAG.Pand.0363100012167983",
+        "r3596865",
+        "NL.IMBAG.Pand.0363100012167977",
+        "r3596866",
+        "NL.IMBAG.Pand.0363100012167978"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.893417347733199,
+          52.36407363385784
+        ],
+        "headingDegrees": 12.003412745985031,
+        "lengthMetres": 29.89426360518473,
+        "widthMetres": 22.51366543490861
+      },
+      "surveyed": {
+        "anchor": [
+          4.893417347733199,
+          52.36407363385784
+        ],
+        "northOffsetDegrees": 12.599999999999994
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 180.59658725401496,
+      "attribution": {
+        "title": "Foam — Fodor Museum canal houses",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.benthemcrouwel.com/projects/foam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
+      },
+      "bounds": {
+        "min": [
+          -11.556057929992676,
+          -7.629394644936838e-7,
+          -14.9685697555542
+        ],
+        "max": [
+          11.328587532043457,
+          23.399999618530273,
+          15.829999923706055
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.893417347733199,
+          52.36407363385784
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 102.60000000000002,
+        "facadeBearingDegrees": 192.60000000000002,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 30.798569679260254,
+        "heightMetres": 23.400000381469738,
+        "depthMetres": 22.884645462036133,
+        "depthCoverage": 1.0164779932525914
+      },
+      "triangles": 25245,
+      "bytes": 324916,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "huis-marseille": {
+      "id": "huis-marseille",
+      "name": "Huis Marseille — two canal houses",
+      "landmarkId": "extract_landmarks_204772388",
+      "modelUrl": "./models/huis-marseille.glb",
+      "suppressOsmIds": [
+        "w266679116",
+        "NL.IMBAG.Pand.0363100012172340",
+        "r3581187",
+        "NL.IMBAG.Pand.0363100012172341"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.885023211366768,
+          52.367655981132486
+        ],
+        "headingDegrees": 93.69918033754192,
+        "lengthMetres": 31.747527439675313,
+        "widthMetres": 13.145083902037701
+      },
+      "surveyed": {
+        "anchor": [
+          4.885023211366768,
+          52.367655981132486
+        ],
+        "northOffsetDegrees": 93.19999999999999
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 179.50081966245807,
+      "attribution": {
+        "title": "Huis Marseille — two canal houses",
+        "author": "Map Recall",
+        "sourceUrl": "https://huismarseille.nl/en/history/the-house/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
+      },
+      "bounds": {
+        "min": [
+          -6.829017639160156,
+          -1.9073486612342094e-7,
+          -15.93256950378418
+        ],
+        "max": [
+          6.571066856384277,
+          19.18996810913086,
+          16.954999923706055
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.885023211366768,
+          52.367655981132486
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 183.20000000000005,
+        "facadeBearingDegrees": 273.20000000000005,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 32.887569427490234,
+        "heightMetres": 19.189968299865725,
+        "depthMetres": 13.400084495544434,
+        "depthCoverage": 1.0193989323618697
+      },
+      "triangles": 14423,
+      "bytes": 183708,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "ons-lieve-heer-op-solder": {
+      "id": "ons-lieve-heer-op-solder",
+      "name": "Ons’ Lieve Heer op Solder — historic church and entrance",
+      "landmarkId": "extract_landmarks_769225968",
+      "modelUrl": "./models/ons-lieve-heer-op-solder.glb",
+      "suppressOsmIds": [
+        "w266941199",
+        "NL.IMBAG.Pand.0363100012178021",
+        "w266940951",
+        "NL.IMBAG.Pand.0363100012178040"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.899258769422396,
+          52.375132921670925
+        ],
+        "headingDegrees": 121.0851936786699,
+        "lengthMetres": 23.644547311709523,
+        "widthMetres": 21.08931723774654
+      },
+      "surveyed": {
+        "anchor": [
+          4.899258769422396,
+          52.375132921670925
+        ],
+        "northOffsetDegrees": -59
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -0.08519367866989569,
+      "attribution": {
+        "title": "Ons’ Lieve Heer op Solder — historic church and entrance",
+        "author": "Map Recall",
+        "sourceUrl": "https://opsolder.nl/en/the-monument/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction of precisely scoped historic canal museum buildings using actual OpenStreetMap/current BAG geometry and official museum/architect exterior photographs. Original window, gable, doorcase and stair geometry; rear courtyard/lightwell rings and the OnsSolder public alley preserved. Foam light courts represented with low glass covers as described by its architect. Dimensions and ornament approximate."
+      },
+      "bounds": {
+        "min": [
+          -10.527772903442383,
+          -1.9073486612342094e-7,
+          -11.974828720092773
+        ],
+        "max": [
+          10.655447006225586,
+          21.200000762939453,
+          12.925000190734863
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.899258769422396,
+          52.375132921670925
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 31,
+        "facadeBearingDegrees": 121,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 24.899828910827637,
+        "heightMetres": 21.20000095367432,
+        "depthMetres": 21.18321990966797,
+        "depthCoverage": 1.004452617923228
+      },
+      "triangles": 9377,
+      "bytes": 134732,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

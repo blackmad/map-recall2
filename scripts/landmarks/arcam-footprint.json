@@ -1,0 +1,51 @@
+{
+  "id": "arcam",
+  "osmId": "w31980601",
+  "bagId": "NL.IMBAG.Pand.0363100012180470",
+  "ring": [
+    [
+      4.912752,
+      52.3714764
+    ],
+    [
+      4.9127083,
+      52.3713683
+    ],
+    [
+      4.9126651,
+      52.3713832
+    ],
+    [
+      4.9125927,
+      52.3714257
+    ],
+    [
+      4.9124162,
+      52.3715311
+    ],
+    [
+      4.9124772,
+      52.3715674
+    ],
+    [
+      4.912752,
+      52.3714764
+    ]
+  ],
+  "sources": [
+    {
+      "url": "https://www.openstreetmap.org/way/31980601",
+      "use": "Mapped floor outline, BAG identity and14.5m sourced3DBAGheight"
+    },
+    {
+      "url": "https://www.renevanzuuk.nl/arcam",
+      "use": "Architect original exterior photographs and continuous coated-aluminium skin, three floors and waterfront glass facade"
+    },
+    {
+      "url": "https://arcam.nl/over-arcam/over-het-gebouw/",
+      "use": "Venue architectural account and waterfront/front entrance orientation"
+    }
+  ],
+  "retrievedAt": "2026-10-04",
+  "notes": "Original simplified curved shell and window reconstruction. Footprint and height sourced; folds, seams and glass-opening contours approximate. No imported mesh or photo texture."
+}

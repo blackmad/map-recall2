@@ -1,0 +1,38 @@
+{
+  "id": "arcam",
+  "name": "Arcam \u2014 Amsterdam Centre for Architecture",
+  "landmarkId": "extract_landmarks_2001179186",
+  "modelUrl": "./models/arcam.glb",
+  "suppressOsmIds": [
+    "w31980601",
+    "NL.IMBAG.Pand.0363100012180470"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.912601916666667,
+      52.37145868333334
+    ],
+    "headingDegrees": 134.5,
+    "lengthMetres": 26.773420132289857,
+    "widthMetres": 11.68397608971833
+  },
+  "surveyed": {
+    "anchor": [
+      4.912601916666667,
+      52.37145868333334
+    ],
+    "northOffsetDegrees": 44.5,
+    "source": "Actual mapped footprint; local+X follows street, +Z faces Prins Hendrikkade"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "Arcam",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.renevanzuuk.nl/arcam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original simplified curved shell and window reconstruction. Footprint and height sourced; folds, seams and glass-opening contours approximate. No imported mesh or photo texture."
+  }
+}

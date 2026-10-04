@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 57,
+    "manual-model": 64,
     "catalogue-model": 12,
     "procedural-kit": 18,
-    "pending": 198
+    "pending": 192
   },
   "destinations": [
     {
@@ -247,8 +247,9 @@
       "type": "landmark",
       "queueRank": 19,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "boom-chicago",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1272308587",
@@ -376,8 +377,9 @@
       "type": "landmark",
       "queueRank": 29,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "brakke-grond",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_916929647",
@@ -1011,7 +1013,8 @@
       "type": "museum",
       "queueRank": 79,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "foam",
       "treatment": "building"
     },
     {
@@ -1148,7 +1151,8 @@
       "type": "museum",
       "queueRank": 90,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "huis-marseille",
       "treatment": "building"
     },
     {
@@ -1185,7 +1189,8 @@
       "type": "museum",
       "queueRank": 93,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "arcam",
       "treatment": "building"
     },
     {
@@ -1484,8 +1489,9 @@
       "type": "landmark",
       "queueRank": 117,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "ons-lieve-heer-op-solder",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1875483593",
@@ -3509,6 +3515,17 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "hortus-greenhouses",
+      "treatment": "building"
+    },
+    {
+      "id": "frascati",
+      "name": "Frascati",
+      "lat": 52.37036795599974,
+      "lng": 4.893913835356087,
+      "queueRank": 286,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "frascati",
       "treatment": "building"
     }
   ]

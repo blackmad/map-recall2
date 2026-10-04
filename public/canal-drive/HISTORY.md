@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+## Canal museums and theatre courtyards: 60 original landmarks (2026-10-04)
+
+Foam retains three distinct canal fronts and its covered light court. Huis
+Marseille keeps its two houses and enclosed courtyard. Ons’ Lieve Heer op
+Solder models the historic merchant house and separate modern entrance across
+the open alley. Brakke Grond and Frascati preserve their irregular complexes,
+recessed courts and narrow street/canal fronts; Boom Chicago uses the actual
+Rozentheater frontage. Arcam adds its faceted folded metal skin, S-shaped
+street glazing and full-width waterfront glass. Architectural details are
+approximate reconstructions on sourced footprints, not downloaded geometry.
+
+Gallery and active-game reviews checked surveyed scale, neighboring buildings,
+open courts and normal material depth. Roof and glazing artifacts found during
+review were corrected before the final captures. All 60 actual GLB files passed
+geometry, compression and manifest checks. The refreshed destination queue has
+286 rows: 64 original-model entries (including shared teaching identities),
+12 imported references, 18 procedural kits and 192 pending tasks.
+
+Sloterpark, Nelson Mandelapark, Diemerpark, Museumplein, Gerbrandypark,
+Bijlmerweide, Gijsbrecht van Aemstelpark and Het Kleine Loopveld add 2,322 actual
+mapped landscape features. The base overlay now has 8,080 features; all 5,758
+previous features retain their source identities and geometries. Large ponds
+crossing park boundaries remain in the basemap rather than being clipped into
+invented park geometry. The review picker includes all eight additions.
+
 ## ARTIS and Hortus architecture: 53 original landmarks (2026-10-04)
 
 Micropia/Ledenlokalen now includes the current BAG frontage, historic end
