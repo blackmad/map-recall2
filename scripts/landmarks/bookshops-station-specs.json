@@ -1,0 +1,119 @@
+[
+  {
+    "id": "athenaeum",
+    "name": "Athenaeum bookshop / Nieuwscentrum",
+    "landmarkId": "osm_shop_1772991830",
+    "modelUrl": "./models/athenaeum.glb",
+    "suppressOsmIds": [
+      "w266697389",
+      "NL.IMBAG.Pand.0363100012175036"
+    ],
+    "footprint": {
+      "centre": [
+        4.889010436459753,
+        52.36896764373011
+      ],
+      "headingDegrees": 89.63588020742122,
+      "lengthMetres": 20.29241050175719,
+      "widthMetres": 16.21092442777015
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 89.83191979257879,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.889058364860993,
+        52.36892986410698
+      ],
+      "northOffsetDegrees": -0.5322000000000031,
+      "source": "Current individual BAG polygon, actual street facade surveyed against OSM geometry. Primary facade photographs and AHN5/3DBAG heights above local terrain."
+    },
+    "attribution": {
+      "title": "Athenaeum bookshop / Nieuwscentrum",
+      "author": "Map Recall",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amsterdam_Athenaeum_Boekhandel.jpg",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
+    },
+    "relatedLandmarkIds": [
+      "osm_shop_3868737201"
+    ]
+  },
+  {
+    "id": "scheltema",
+    "name": "Scheltema / Rokin 9\u201315",
+    "landmarkId": "osm_shop_266934444",
+    "modelUrl": "./models/scheltema.glb",
+    "suppressOsmIds": [
+      "w266934444",
+      "NL.IMBAG.Pand.0363100012167909"
+    ],
+    "footprint": {
+      "centre": [
+        4.893568102495726,
+        52.37212259797889
+      ],
+      "headingDegrees": 102.7116791473693,
+      "lengthMetres": 26.57905429659337,
+      "widthMetres": 24.20944735155051
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 180.1196208526307,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.893404379268778,
+        52.372135134784074
+      ],
+      "northOffsetDegrees": 102.8313,
+      "source": "Current individual BAG polygon, actual street facade surveyed against OSM geometry. Primary facade photographs and AHN5/3DBAG heights above local terrain."
+    },
+    "attribution": {
+      "title": "Scheltema / Rokin 9\u201315",
+      "author": "Map Recall",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2022_Rokin_9-15,_Asd_(01).jpg",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
+    }
+  },
+  {
+    "id": "haarlemmermeerstation",
+    "name": "Haarlemmermeerstation",
+    "landmarkId": "extract_landmarks_1993361519",
+    "modelUrl": "./models/haarlemmermeerstation.glb",
+    "suppressOsmIds": [
+      "w57862882",
+      "NL.IMBAG.Pand.0363100012154509"
+    ],
+    "footprint": {
+      "centre": [
+        4.856654491697236,
+        52.34934579394123
+      ],
+      "headingDegrees": 166.09587226381385,
+      "lengthMetres": 36.29384848701365,
+      "widthMetres": 22.400340181713553
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -97.63617226381385,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.856727367238149,
+        52.3493589147138
+      ],
+      "northOffsetDegrees": 248.4597,
+      "source": "Current individual BAG polygon, actual street facade surveyed against OSM geometry. Primary facade photographs and AHN5/3DBAG heights above local terrain."
+    },
+    "attribution": {
+      "title": "Haarlemmermeerstation",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.museumtramlijn.org/station/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction; no imported meshes or photographic textures. Exact mapped parent retained with neighboring buildings excluded."
+    }
+  }
+]

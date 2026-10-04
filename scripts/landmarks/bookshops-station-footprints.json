@@ -1,0 +1,1069 @@
+[
+  {
+    "id": "athenaeum",
+    "parts": [
+      {
+        "osmId": "w266697389",
+        "bagId": "0363100012175036",
+        "tags": {
+          "building": "yes",
+          "height": "20.9",
+          "ref:bag": "0363100012175036",
+          "source": "BAG",
+          "source:date": "2014-02-11",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1884"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.888863983873259,
+                52.36890279978878
+              ],
+              [
+                4.8888647404977625,
+                52.368894264641185
+              ],
+              [
+                4.888879363963165,
+                52.368894353153486
+              ],
+              [
+                4.888998936212226,
+                52.368895036111205
+              ],
+              [
+                4.888998917943402,
+                52.36889666281131
+              ],
+              [
+                4.889012572364964,
+                52.36889674722954
+              ],
+              [
+                4.88901259063329,
+                52.36889512052941
+              ],
+              [
+                4.889017435756965,
+                52.36889514990408
+              ],
+              [
+                4.889017417589746,
+                52.36889676761689
+              ],
+              [
+                4.889054710532717,
+                52.36889697845488
+              ],
+              [
+                4.889054728597655,
+                52.368895369729344
+              ],
+              [
+                4.889097307138428,
+                52.368895611780076
+              ],
+              [
+                4.889097288974124,
+                52.3688972294929
+              ],
+              [
+                4.8891322327179845,
+                52.36889743042332
+              ],
+              [
+                4.889132244523954,
+                52.368896378909994
+              ],
+              [
+                4.88913240043046,
+                52.36889557067122
+              ],
+              [
+                4.88913445799845,
+                52.36889539957246
+              ],
+              [
+                4.889139157407209,
+                52.36889532946425
+              ],
+              [
+                4.889141064114014,
+                52.368895517239494
+              ],
+              [
+                4.889141196812459,
+                52.36889677607824
+              ],
+              [
+                4.8891420621718,
+                52.36889686060796
+              ],
+              [
+                4.889143146961409,
+                52.368897017962446
+              ],
+              [
+                4.889144186896304,
+                52.36889724703006
+              ],
+              [
+                4.8891451969616915,
+                52.36889752091055
+              ],
+              [
+                4.889146162273274,
+                52.3688978575168
+              ],
+              [
+                4.8891470682494536,
+                52.36889824779979
+              ],
+              [
+                4.889147914890233,
+                52.36889869175944
+              ],
+              [
+                4.889148673133319,
+                52.368899162310385
+              ],
+              [
+                4.889149342877811,
+                52.36889966843996
+              ],
+              [
+                4.889149953387803,
+                52.36890021925891
+              ],
+              [
+                4.889150475500098,
+                52.36890079666915
+              ],
+              [
+                4.8891509092146945,
+                52.36890140067073
+              ],
+              [
+                4.889151239949991,
+                52.3689020222145
+              ],
+              [
+                4.889151497070984,
+                52.36890266142407
+              ],
+              [
+                4.889151553782955,
+                52.368902841417025
+              ],
+              [
+                4.8891537571672075,
+                52.368902760808524
+              ],
+              [
+                4.889154138110483,
+                52.368908065164554
+              ],
+              [
+                4.889152081550998,
+                52.36890814639068
+              ],
+              [
+                4.8891545120181625,
+                52.36894015289039
+              ],
+              [
+                4.8891567154042646,
+                52.368940072281795
+              ],
+              [
+                4.889156961631148,
+                52.36894429754493
+              ],
+              [
+                4.889154318778386,
+                52.368944286427734
+              ],
+              [
+                4.889154958056963,
+                52.36895273757168
+              ],
+              [
+                4.889157601919237,
+                52.36895265881594
+              ],
+              [
+                4.889158043712373,
+                52.36895777468584
+              ],
+              [
+                4.889159423458974,
+                52.368995744609784
+              ],
+              [
+                4.889155751514165,
+                52.36899584600408
+              ],
+              [
+                4.889072378296321,
+                52.36899208891805
+              ],
+              [
+                4.889036807271534,
+                52.36898890140858
+              ],
+              [
+                4.889037175884447,
+                52.368997917640556
+              ],
+              [
+                4.8890372110506215,
+                52.3689987087077
+              ],
+              [
+                4.889026092489763,
+                52.36899770023968
+              ],
+              [
+                4.889027608496833,
+                52.369040524106175
+              ],
+              [
+                4.888863421091527,
+                52.36903132178764
+              ],
+              [
+                4.888863796231957,
+                52.36903060434917
+              ],
+              [
+                4.888862894698408,
+                52.369002370132634
+              ],
+              [
+                4.888862525630584,
+                52.368990783410766
+              ],
+              [
+                4.888862276777817,
+                52.3689828731715
+              ],
+              [
+                4.888861863561397,
+                52.36898044474844
+              ],
+              [
+                4.888862087319053,
+                52.36896444755219
+              ],
+              [
+                4.888862210375574,
+                52.3689561074678
+              ],
+              [
+                4.888862496569791,
+                52.368935859343615
+              ],
+              [
+                4.888862567689219,
+                52.36893083550856
+              ],
+              [
+                4.888861542942313,
+                52.368930561563815
+              ],
+              [
+                4.888863983873259,
+                52.36890279978878
+              ]
+            ]
+          ]
+        ]
+      }
+    ],
+    "currentBagProperties": {
+      "aantal_verblijfsobjecten": 13,
+      "bouwjaar": 1884,
+      "documentdatum": "2023-09-28",
+      "documentnummer": "GV00007182_AC00AC",
+      "gebruiksdoel": "kantoorfunctie,winkelfunctie,woonfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012175036",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012175036",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/a3c87c62-1d2f-52fd-816b-848efac44b2c",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/7c3d08e8-6814-576f-859b-5a4b4b003959",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/b4872e37-3548-536a-8b24-443b31d53ea0",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/305dd3d8-de60-5b19-87ff-e24f5ada4791",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/71fc2227-ae21-5247-a415-f1246ded22e3",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/be4cf070-60bb-5569-8b1f-f74d3bda2817",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/2a9d70b4-fd4f-55d2-8e11-6eaf5c6afe67",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/f5f98050-9804-516c-8f5f-98346cfdcc92",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/064de094-4545-5e93-8fc6-49d627314274",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/73c4b16e-cc1c-5871-a651-71ca650d5ec6",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/fd17da71-650c-5341-a284-fdce76eb2a0d",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/fc5f5b2e-c966-5e96-8a79-79b83882abbf",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/51d24aa2-c56f-52eb-9c74-b32024ec8dd4"
+      ]
+    },
+    "heightEvidence": {
+      "b3_bag_bag_overlap": 0.0,
+      "b3_bouwlagen": 5,
+      "b3_dak_type": "slanted",
+      "b3_extrusie": "standard",
+      "b3_h_dak_50p": 17.349000930786133,
+      "b3_h_dak_70p": 18.52899932861328,
+      "b3_h_dak_max": 22.006000518798828,
+      "b3_h_dak_min": 10.5600004196167,
+      "b3_h_maaiveld": 1.0190000534057617,
+      "b3_h_nok": 18.833385467529297,
+      "b3_is_glas_dak": false,
+      "b3_kas_warenhuis": false,
+      "b3_kwaliteitsindicator": true,
+      "b3_mutatie_ahn3_ahn4": false,
+      "b3_mutatie_ahn4_ahn5": false,
+      "b3_n_nok": 4,
+      "b3_n_vlakken": 23,
+      "b3_nodata_fractie_ahn3": 0.022747952491044998,
+      "b3_nodata_fractie_ahn4": 0.0027297544293105602,
+      "b3_nodata_fractie_ahn5": 0.03821656107902527,
+      "b3_nodata_radius_ahn3": 0.0,
+      "b3_nodata_radius_ahn4": 0.0,
+      "b3_nodata_radius_ahn5": 0.0,
+      "b3_opp_buitenmuur": 1119.88,
+      "b3_opp_dak_plat": 117.58,
+      "b3_opp_dak_schuin": 301.68,
+      "b3_opp_grond": 269.78,
+      "b3_opp_scheidingsmuur": 159.42,
+      "b3_puntdichtheid_ahn3": 18.80819320678711,
+      "b3_puntdichtheid_ahn4": 31.45620346069336,
+      "b3_puntdichtheid_ahn5": 20.109745025634766,
+      "b3_pw_bron": "ahn5",
+      "b3_pw_datum": 2023,
+      "b3_pw_onvoldoende": false,
+      "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+      "b3_rmse_lod12": 4.472466468811035,
+      "b3_rmse_lod13": 1.5536646842956543,
+      "b3_rmse_lod22": 0.7902069687843323,
+      "b3_t_run": 139,
+      "b3_val3dity_lod12": "[]",
+      "b3_val3dity_lod13": "[]",
+      "b3_val3dity_lod22": "[]",
+      "b3_volume_lod12": 4696.75390625,
+      "b3_volume_lod13": 4434.40673828125,
+      "b3_volume_lod22": 4231.88037109375,
+      "begingeldigheid": "2023-09-28",
+      "documentdatum": "2023-09-28",
+      "documentnummer": "GV00007182_AC00AC",
+      "eindgeldigheid": null,
+      "eindregistratie": null,
+      "fid": 8310472,
+      "geconstateerd": false,
+      "identificatie": "NL.IMBAG.Pand.0363100012175036",
+      "oorspronkelijkbouwjaar": 1884,
+      "status": "Pand in gebruik",
+      "tijdstipeindregistratielv": null,
+      "tijdstipinactief": null,
+      "tijdstipinactieflv": null,
+      "tijdstipnietbaglv": null,
+      "tijdstipregistratie": "2023-09-28T18:41:52Z",
+      "tijdstipregistratielv": "2023-09-28T21:04:01Z",
+      "voorkomenidentificatie": 3
+    },
+    "references": [
+      "https://commons.wikimedia.org/wiki/File:Amsterdam_Athenaeum_Boekhandel.jpg",
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012175036",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012175036"
+    ],
+    "reconstructionNotes": "Both Athenaeum shop nodes occupy the same corner parent; attached western news-shop frontage retained. Helios opposite and neighboring narrow houses are excluded. AHN5 roof max minus terrain20.987m; gable finials top20.9m. Western brick frontage and pale stone corner are disjoint geometry regions, avoiding coplanar duplicate surfaces; rounded corner oriel and paired pointed gables follow primary photo."
+  },
+  {
+    "id": "scheltema",
+    "parts": [
+      {
+        "osmId": "w266934444",
+        "bagId": "0363100012167909",
+        "tags": {
+          "building": "commercial",
+          "height": "25.1",
+          "ref:bag": "0363100012167909",
+          "source": "BAG",
+          "source:date": "2023-03-11",
+          "source:height": "3DBAG",
+          "source:height:date": "2025-09-03",
+          "start_date": "1830",
+          "wikidata": "Q112117692",
+          "wikimedia_commons": "Category:Rokin 9-15, Amsterdam"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.893767572872097,
+                52.37220515556869
+              ],
+              [
+                4.893416548855341,
+                52.37225494012844
+              ],
+              [
+                4.893413755106317,
+                52.37224736082636
+              ],
+              [
+                4.8934135840053585,
+                52.372246901739636
+              ],
+              [
+                4.893418172497102,
+                52.37224627376
+              ],
+              [
+                4.893401508701951,
+                52.37220116685409
+              ],
+              [
+                4.8933969201145935,
+                52.37220180382036
+              ],
+              [
+                4.893396763497485,
+                52.37220136276942
+              ],
+              [
+                4.893394325639375,
+                52.372194791574444
+              ],
+              [
+                4.893394154638873,
+                52.3721943235004
+              ],
+              [
+                4.893398757909094,
+                52.37219368659551
+              ],
+              [
+                4.8933840613561745,
+                52.37215389962712
+              ],
+              [
+                4.893379472773465,
+                52.37215453659274
+              ],
+              [
+                4.893379316056641,
+                52.372154104529095
+              ],
+              [
+                4.893376535703146,
+                52.372146642122026
+              ],
+              [
+                4.893381565392897,
+                52.37214595306994
+              ],
+              [
+                4.893381310693601,
+                52.37214508918761
+              ],
+              [
+                4.89338117356303,
+                52.372144216807826
+              ],
+              [
+                4.8933811539011245,
+                52.37214334491802
+              ],
+              [
+                4.893381266491505,
+                52.37214246459203
+              ],
+              [
+                4.893381496350429,
+                52.372141602730565
+              ],
+              [
+                4.893381828894358,
+                52.372140750285084
+              ],
+              [
+                4.893382293290342,
+                52.37213992535263
+              ],
+              [
+                4.89338287495485,
+                52.37213911888465
+              ],
+              [
+                4.893383559004182,
+                52.3721383487945
+              ],
+              [
+                4.8933843898892935,
+                52.37213757931681
+              ],
+              [
+                4.893385337742751,
+                52.37213685526541
+              ],
+              [
+                4.893386387780916,
+                52.37213618556644
+              ],
+              [
+                4.893387539903738,
+                52.3721355792072
+              ],
+              [
+                4.893388764744055,
+                52.37213503606516
+              ],
+              [
+                4.893390062201822,
+                52.37213456512767
+              ],
+              [
+                4.893391432377089,
+                52.37213415740741
+              ],
+              [
+                4.893392860286134,
+                52.372133839804995
+              ],
+              [
+                4.893394316761902,
+                52.372133594223385
+              ],
+              [
+                4.893393019476346,
+                52.372130092593984
+              ],
+              [
+                4.8933966079722415,
+                52.37212959526037
+              ],
+              [
+                4.893389223995587,
+                52.372109611750076
+              ],
+              [
+                4.893385635501228,
+                52.37211010908348
+              ],
+              [
+                4.893384338317094,
+                52.37210659846674
+              ],
+              [
+                4.893382853375501,
+                52.37210676304011
+              ],
+              [
+                4.893381354750868,
+                52.37210683767931
+              ],
+              [
+                4.893379842243096,
+                52.37210684035889
+              ],
+              [
+                4.893378345419439,
+                52.37210675322684
+              ],
+              [
+                4.893376864079797,
+                52.3721065942576
+              ],
+              [
+                4.8933754131078615,
+                52.37210634553794
+              ],
+              [
+                4.8933739923035215,
+                52.37210602504238
+              ],
+              [
+                4.893372645817556,
+                52.3721056239674
+              ],
+              [
+                4.893371344182771,
+                52.3721051511778
+              ],
+              [
+                4.893370175200419,
+                52.372104634002845
+              ],
+              [
+                4.89336908023628,
+                52.37210406321035
+              ],
+              [
+                4.893368073973923,
+                52.37210343886156
+              ],
+              [
+                4.893367156513405,
+                52.37210275196915
+              ],
+              [
+                4.8933663422381235,
+                52.372102029556274
+              ],
+              [
+                4.893365631148073,
+                52.37210127162285
+              ],
+              [
+                4.893365023343311,
+                52.37210046918169
+              ],
+              [
+                4.8933645186237165,
+                52.37209964020735
+              ],
+              [
+                4.893364146256362,
+                52.372098793809585
+              ],
+              [
+                4.893359145938829,
+                52.372099482983415
+              ],
+              [
+                4.89335622345925,
+                52.372091597560605
+              ],
+              [
+                4.89336079735221,
+                52.372090960534656
+              ],
+              [
+                4.893346072600677,
+                52.37205107457815
+              ],
+              [
+                4.893341484128131,
+                52.372051702555
+              ],
+              [
+                4.893338191289673,
+                52.37204279098805
+              ],
+              [
+                4.893719863160346,
+                52.371991372809035
+              ],
+              [
+                4.893797487906797,
+                52.37220091220451
+              ],
+              [
+                4.893777073875878,
+                52.37220381105503
+              ],
+              [
+                4.893767572872097,
+                52.37220515556869
+              ]
+            ]
+          ]
+        ]
+      }
+    ],
+    "currentBagProperties": {
+      "aantal_verblijfsobjecten": 7,
+      "bouwjaar": 1830,
+      "documentdatum": "2023-09-28",
+      "documentnummer": "GV00007182_AC00AC",
+      "gebruiksdoel": "bijeenkomstfunctie,kantoorfunctie,winkelfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012167909",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012167909",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/dc9a9288-ddf0-5439-8c35-fafb108e3348",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/25b406d1-9504-5a29-96db-515bb8f8d32b",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/8188c494-a230-522c-af4b-7e2f46b33d0b",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/ea33e3e5-375c-5141-857e-b1ca0bdfffab",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/3ac3d1b1-3c91-5894-accc-14a997f4fa2a",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/9fe48730-a090-5f2c-8e23-b9947cf5be18",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/a0938382-ca71-595f-a347-1b10d0dcf78c"
+      ]
+    },
+    "heightEvidence": {
+      "b3_bag_bag_overlap": 0.0,
+      "b3_bouwlagen": null,
+      "b3_dak_type": "slanted",
+      "b3_extrusie": "standard",
+      "b3_h_dak_50p": 23.677000045776367,
+      "b3_h_dak_70p": 24.238000869750977,
+      "b3_h_dak_max": 25.82699966430664,
+      "b3_h_dak_min": 14.319999694824219,
+      "b3_h_maaiveld": 0.7379999756813049,
+      "b3_h_nok": 25.039688110351562,
+      "b3_is_glas_dak": false,
+      "b3_kas_warenhuis": false,
+      "b3_kwaliteitsindicator": true,
+      "b3_mutatie_ahn3_ahn4": false,
+      "b3_mutatie_ahn4_ahn5": false,
+      "b3_n_nok": 7,
+      "b3_n_vlakken": 40,
+      "b3_nodata_fractie_ahn3": 0.008744037710130215,
+      "b3_nodata_fractie_ahn4": 0.06081081181764603,
+      "b3_nodata_fractie_ahn5": 0.030604133382439613,
+      "b3_nodata_radius_ahn3": 0.0,
+      "b3_nodata_radius_ahn4": 0.0,
+      "b3_nodata_radius_ahn5": 0.0,
+      "b3_opp_buitenmuur": 1961.51,
+      "b3_opp_dak_plat": 340.12,
+      "b3_opp_dak_schuin": 473.61,
+      "b3_opp_grond": 629.02,
+      "b3_opp_scheidingsmuur": 407.55,
+      "b3_puntdichtheid_ahn3": 15.287891387939453,
+      "b3_puntdichtheid_ahn4": 26.848920822143555,
+      "b3_puntdichtheid_ahn5": 19.325952529907227,
+      "b3_pw_bron": "ahn5",
+      "b3_pw_datum": 2023,
+      "b3_pw_onvoldoende": false,
+      "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+      "b3_rmse_lod12": 3.641731023788452,
+      "b3_rmse_lod13": 1.413694143295288,
+      "b3_rmse_lod22": 0.5123567581176758,
+      "b3_t_run": 434,
+      "b3_val3dity_lod12": "[]",
+      "b3_val3dity_lod13": "[]",
+      "b3_val3dity_lod22": "[]",
+      "b3_volume_lod12": 14768.9697265625,
+      "b3_volume_lod13": 13808.0625,
+      "b3_volume_lod22": 13362.7998046875,
+      "begingeldigheid": "2023-09-28",
+      "documentdatum": "2023-09-28",
+      "documentnummer": "GV00007182_AC00AC",
+      "eindgeldigheid": null,
+      "eindregistratie": null,
+      "fid": 8594086,
+      "geconstateerd": false,
+      "identificatie": "NL.IMBAG.Pand.0363100012167909",
+      "oorspronkelijkbouwjaar": 1830,
+      "status": "Pand in gebruik",
+      "tijdstipeindregistratielv": null,
+      "tijdstipinactief": null,
+      "tijdstipinactieflv": null,
+      "tijdstipnietbaglv": null,
+      "tijdstipregistratie": "2023-09-28T18:49:43Z",
+      "tijdstipregistratielv": "2023-09-28T21:31:00Z",
+      "voorkomenidentificatie": 4
+    },
+    "references": [
+      "https://commons.wikimedia.org/wiki/File:2022_Rokin_9-15,_Asd_(01).jpg",
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012167909",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012167909"
+    ],
+    "reconstructionNotes": "Entire Rokin9\u201315 physical parent with shared shop frontage; Scheltema signage on northern/central shop bays, neighboring white house excluded. Latest AHN5 roof25.089m above terrain. Current BAG traces a recessed ground-floor doorway; primary facade photo confirms upper floors bridge above it, modeled as an upper wall band only. Solid blue shop awnings occupy the northern bays."
+  },
+  {
+    "id": "haarlemmermeerstation",
+    "parts": [
+      {
+        "osmId": "w57862882",
+        "bagId": "0363100012154509",
+        "tags": {
+          "building": "yes",
+          "name": "Haarlemmermeerstation",
+          "ref:bag": "0363100012154509",
+          "source": "BAG",
+          "source:date": "2014-03-24",
+          "start_date": "1915",
+          "tourism": "attraction",
+          "wikidata": "Q4648414",
+          "wikimedia_commons": "Category:Haarlemmermeerstation",
+          "wikipedia": "nl:Station Amsterdam Haarlemmermeer"
+        },
+        "polygons": [
+          [
+            [
+              [
+                4.856798782405485,
+                52.34935776980003
+              ],
+              [
+                4.856794355728567,
+                52.34936466156008
+              ],
+              [
+                4.856811269777772,
+                52.34937763481111
+              ],
+              [
+                4.856801354129638,
+                52.34939311226062
+              ],
+              [
+                4.856774719181094,
+                52.34939528478065
+              ],
+              [
+                4.8567689167438814,
+                52.34940430946418
+              ],
+              [
+                4.856776737522609,
+                52.34941552530292
+              ],
+              [
+                4.856777213667867,
+                52.349416210507506
+              ],
+              [
+                4.856764935263379,
+                52.349435353364306
+              ],
+              [
+                4.856762122803368,
+                52.34943612269621
+              ],
+              [
+                4.856745631120992,
+                52.34944061457421
+              ],
+              [
+                4.856739828457088,
+                52.349449657230835
+              ],
+              [
+                4.856756802408123,
+                52.34946253189229
+              ],
+              [
+                4.856747006600411,
+                52.34947780315541
+              ],
+              [
+                4.8567186494563614,
+                52.34948039036983
+              ],
+              [
+                4.856715837732938,
+                52.34948478177643
+              ],
+              [
+                4.856697876266088,
+                52.349512779074104
+              ],
+              [
+                4.856695812304196,
+                52.349516005421314
+              ],
+              [
+                4.856693479447108,
+                52.34951962602522
+              ],
+              [
+                4.856502457436202,
+                52.34947325558987
+              ],
+              [
+                4.856522094098655,
+                52.34944264140254
+              ],
+              [
+                4.856569846941537,
+                52.349454144143046
+              ],
+              [
+                4.856632016528394,
+                52.34935725603337
+              ],
+              [
+                4.856626925530939,
+                52.3493521910709
+              ],
+              [
+                4.856632818087136,
+                52.34934299603044
+              ],
+              [
+                4.856642186338357,
+                52.34934139326284
+              ],
+              [
+                4.856678871832988,
+                52.34928421571192
+              ],
+              [
+                4.856666461755693,
+                52.349281221083224
+              ],
+              [
+                4.856687040313019,
+                52.34924914608296
+              ],
+              [
+                4.856680469400856,
+                52.34924756174538
+              ],
+              [
+                4.856655269008446,
+                52.34921199202018
+              ],
+              [
+                4.856606097351596,
+                52.3492001054659
+              ],
+              [
+                4.8565494035742764,
+                52.349186405587176
+              ],
+              [
+                4.856564052432709,
+                52.34916418158511
+              ],
+              [
+                4.856862316931696,
+                52.34923626118754
+              ],
+              [
+                4.85686800986985,
+                52.34923762587445
+              ],
+              [
+                4.8568294911642385,
+                52.349297168041076
+              ],
+              [
+                4.856828701955313,
+                52.34929811720853
+              ],
+              [
+                4.856821223484336,
+                52.34929633108098
+              ],
+              [
+                4.8568195186375425,
+                52.34929898382218
+              ],
+              [
+                4.856817649025866,
+                52.34930191444597
+              ],
+              [
+                4.856809408678473,
+                52.34931475699828
+              ],
+              [
+                4.856807539172857,
+                52.34931767863462
+              ],
+              [
+                4.856804727683383,
+                52.349322052068906
+              ],
+              [
+                4.8568194062195404,
+                52.349325587126934
+              ],
+              [
+                4.856813558483952,
+                52.34933471946302
+              ],
+              [
+                4.856798782405485,
+                52.34935776980003
+              ]
+            ]
+          ]
+        ]
+      }
+    ],
+    "currentBagProperties": {
+      "aantal_verblijfsobjecten": 3,
+      "bouwjaar": 1915,
+      "documentdatum": "2023-08-19",
+      "documentnummer": "GV00007124_AC00AC",
+      "gebruiksdoel": "bijeenkomstfunctie,woonfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012154509",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012154509",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/bc546895-3793-5796-a810-a8ec5f9bea78",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/25deedcf-88ad-5510-a5e6-f011da64a447",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/b68875f0-9023-5553-9069-1843ffdf000a"
+      ]
+    },
+    "heightEvidence": {
+      "b3_bag_bag_overlap": null,
+      "b3_bouwlagen": 3,
+      "b3_dak_type": "slanted",
+      "b3_extrusie": "standard",
+      "b3_h_dak_50p": 11.170000076293945,
+      "b3_h_dak_70p": 12.625,
+      "b3_h_dak_max": 15.168999671936035,
+      "b3_h_dak_min": 5.3420000076293945,
+      "b3_h_maaiveld": 0.6230000257492065,
+      "b3_h_nok": 15.255265235900879,
+      "b3_is_glas_dak": false,
+      "b3_kas_warenhuis": false,
+      "b3_kwaliteitsindicator": false,
+      "b3_mutatie_ahn3_ahn4": false,
+      "b3_mutatie_ahn4_ahn5": false,
+      "b3_n_nok": 7,
+      "b3_n_vlakken": 47,
+      "b3_nodata_fractie_ahn3": 0.07228195667266846,
+      "b3_nodata_fractie_ahn4": 0.15173237025737762,
+      "b3_nodata_fractie_ahn5": 0.007765830494463444,
+      "b3_nodata_radius_ahn3": 0.15898777544498444,
+      "b3_nodata_radius_ahn4": 0.0,
+      "b3_nodata_radius_ahn5": 0.013551919721066952,
+      "b3_opp_buitenmuur": 987.81,
+      "b3_opp_dak_plat": 105.24,
+      "b3_opp_dak_schuin": 538.7,
+      "b3_opp_grond": 418.62,
+      "b3_opp_scheidingsmuur": 0.0,
+      "b3_puntdichtheid_ahn3": 12.154540061950684,
+      "b3_puntdichtheid_ahn4": 21.56338119506836,
+      "b3_puntdichtheid_ahn5": 14.249247550964355,
+      "b3_pw_bron": "ahn5",
+      "b3_pw_datum": 2023,
+      "b3_pw_onvoldoende": false,
+      "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+      "b3_rmse_lod12": 3.794060230255127,
+      "b3_rmse_lod13": 2.0611648559570312,
+      "b3_rmse_lod22": 0.4385560154914856,
+      "b3_t_run": 351,
+      "b3_val3dity_lod12": "[]",
+      "b3_val3dity_lod13": "[]",
+      "b3_val3dity_lod22": "[102]",
+      "b3_volume_lod12": 4949.2041015625,
+      "b3_volume_lod13": 4447.04150390625,
+      "b3_volume_lod22": 3956.5390625,
+      "begingeldigheid": "2023-08-19",
+      "documentdatum": "2023-08-19",
+      "documentnummer": "GV00007124_AC00AC",
+      "eindgeldigheid": null,
+      "eindregistratie": null,
+      "fid": 8169415,
+      "geconstateerd": false,
+      "identificatie": "NL.IMBAG.Pand.0363100012154509",
+      "oorspronkelijkbouwjaar": 1915,
+      "status": "Pand in gebruik",
+      "tijdstipeindregistratielv": null,
+      "tijdstipinactief": null,
+      "tijdstipinactieflv": null,
+      "tijdstipnietbaglv": null,
+      "tijdstipregistratie": "2023-08-19T21:30:34Z",
+      "tijdstipregistratielv": "2023-08-20T00:49:27Z",
+      "voorkomenidentificatie": 2
+    },
+    "references": [
+      "https://www.museumtramlijn.org/station/",
+      "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012154509",
+      "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012154509"
+    ],
+    "reconstructionNotes": "Station operator primary photos distinguish central two-storey mansard building and lower end/rear annexes. Museum operator names Van Emmerik; commercial venue history has inconsistent architect claims and is not used. AHN5 roof ridge14.632m above terrain. Tram control hut is a separate building and excluded."
+  }
+]
