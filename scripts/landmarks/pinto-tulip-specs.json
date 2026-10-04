@@ -1,0 +1,76 @@
+[
+  {
+    "id": "huis-de-pinto",
+    "name": "Huis De Pinto",
+    "landmarkId": "extract_landmarks_560548170",
+    "modelUrl": "./models/huis-de-pinto.glb",
+    "suppressOsmIds": [
+      "w175846919",
+      "NL.IMBAG.Pand.0363100012182911"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.900947893723509,
+        52.37012639422018
+      ],
+      "headingDegrees": 72.79839529693228,
+      "lengthMetres": 21.772135341096394,
+      "widthMetres": 12.27648518938112
+    },
+    "surveyed": {
+      "anchor": [
+        4.900947893723509,
+        52.37012639422018
+      ],
+      "northOffsetDegrees": 78
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 95.20160470306772,
+    "attribution": {
+      "title": "Huis De Pinto",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/huis-de-pinto/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto’s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116–118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
+    }
+  },
+  {
+    "id": "amsterdam-tulip-museum",
+    "name": "Amsterdam Tulip Museum",
+    "landmarkId": "extract_landmarks_339731654",
+    "modelUrl": "./models/amsterdam-tulip-museum.glb",
+    "suppressOsmIds": [
+      "w266561396",
+      "NL.IMBAG.Pand.0363100012174699"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.884088419391602,
+        52.37632814296878
+      ],
+      "headingDegrees": 119.76088510470072,
+      "lengthMetres": 14.680859994520542,
+      "widthMetres": 9.493627369251168
+    },
+    "surveyed": {
+      "anchor": [
+        4.884088419391602,
+        52.37632814296878
+      ],
+      "northOffsetDegrees": -61
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -90.76088510470072,
+    "attribution": {
+      "title": "Amsterdam Tulip Museum",
+      "author": "Map Recall",
+      "sourceUrl": "https://amsterdamtulipmuseum.com/pages/about-amsterdam-tulip-museum",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction of the exact mapped museum/cultural-house building, cross-checked against current PDOK BAG. Pinto’s twin historic roofs remain behind the monumental parapet; the Tulip Museum occupies the actual combined 1927 Prinsengracht116–118 apartment/shop block with straight brick cornice. Neighboring buildings and any open rear spaces are retained."
+    }
+  }
+]
