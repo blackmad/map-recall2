@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 100,
+    "manual-model": 106,
     "catalogue-model": 12,
     "procedural-kit": 18,
-    "pending": 160
+    "pending": 155
   },
   "destinations": [
     {
@@ -624,7 +624,8 @@
       "type": "museum",
       "queueRank": 48,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "hash-marihuana-hemp-museum",
       "treatment": "building"
     },
     {
@@ -817,7 +818,8 @@
       "type": "museum",
       "queueRank": 63,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "madame-tussauds",
       "treatment": "building"
     },
     {
@@ -1590,8 +1592,9 @@
       "type": "landmark",
       "queueRank": 123,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "het-veem",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1701367153",
@@ -1602,8 +1605,9 @@
       "type": "landmark",
       "queueRank": 124,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "plein-theater",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_421921642",
@@ -1614,8 +1618,9 @@
       "type": "landmark",
       "queueRank": 125,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "tobacco-theater",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1627616501",
@@ -3602,6 +3607,17 @@
       "origin": "Landmark catalogue",
       "status": "manual-model",
       "modelId": "vondelpark-bandstand",
+      "treatment": "building"
+    },
+    {
+      "id": "hemp-gallery",
+      "name": "Hemp Gallery",
+      "lat": 52.372126997533954,
+      "lng": 4.897208314885277,
+      "queueRank": 291,
+      "origin": "Landmark catalogue",
+      "status": "manual-model",
+      "modelId": "hemp-gallery",
       "treatment": "building"
     }
   ]

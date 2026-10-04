@@ -1,5 +1,42 @@
 # Canal Recall — what is built
 
+## Canal museums, three venues and compact parks: 101 original landmarks (2026-10-04)
+
+Hash Marihuana & Hemp Museum and Hemp Gallery are separate original meshes
+at their actual Oudezijds Achterburgwal addresses. The narrow three-bay red
+museum facade retains its triangular top, while the gallery occupies the
+five-bay 128–132 neo-Renaissance block. Current survey roof regions keep lower
+rear rooms below the taller fronts. The Sensi Seeds neighbor and all adjacent
+houses remain separate; four immediate neighboring parents were verified
+resident and unsuppressed in the actual game.
+
+Het Veem models the yellow Oranje Nassau warehouse, castellated hoist towers,
+rear gables, stair turrets and daylight roof; the neighboring red Koelit
+warehouse remains separate. Tobacco Theater keeps its yellow-brick office
+front and lower rear halls. Plein Theater models its actual shared white
+residential building and low theatre wing, including the curved lower porch.
+Current survey roof envelopes keep the porch out of the tall housing volume.
+Review corrected canonical BAG suppression aliases, preventing generic parent
+geometry remaining visible underneath the meshes. The suppression check now
+rejects unsupported identity formats. All three corrected venue replacements
+passed dense front/rear review; Plein’s eight neighboring parents were
+verified resident, drawable and unsuppressed after local chunks finished.
+
+Madame Tussauds models the entire shared Peek & Cloppenburg parent: stone
+Dam and Rokin facades, colossal pilasters, central rose-window gable, slate
+hip roofs, dormers and decorative roof vents. The exact L-shaped plan keeps
+its rear recesses and lower inner rooms. Current address records confirm
+three VBOs belong to the same parent; adjacent buildings remain separate.
+
+Five existing public green spaces add 238 mapped features: Oeverpark, the
+three Frederik Hendrikplantsoen parts, Eerste Weteringplantsoen, Bilderdijkpark
+and Wibautpark. Main landscape totals 10,771 features (5,433,622 raw bytes /
+987,093 gzip); all previous 10,533 features and optional Bos remain exact.
+The actual Eerste lawn hole is retained. No inferred lawn fill was added.
+The picker has 51 main selections plus Bos. Tweede Weteringplantsoen is
+excluded while its documented redevelopment remains underway. Source,
+streaming, seven-part gallery, actual-game, mobile and toggle checks passed.
+
 ## Courtyard university, iron bandstand and eight parks: 95 original landmarks (2026-10-04)
 
 Oost-Indisch Huis/Bushuis now uses its exact shared parent outline, one open

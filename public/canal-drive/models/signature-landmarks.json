@@ -7097,6 +7097,417 @@
       "triangles": 22315,
       "bytes": 214940,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "het-veem": {
+      "id": "het-veem",
+      "name": "Werkgebouw Het Veem / Oranje Nassau warehouse",
+      "landmarkId": "extract_landmarks_1698086177",
+      "modelUrl": "./models/het-veem.glb",
+      "suppressOsmIds": [
+        "w274024256",
+        "NL.IMBAG.Pand.0363100012087482"
+      ],
+      "footprint": {
+        "centre": [
+          4.887202592481908,
+          52.39037709872149
+        ],
+        "headingDegrees": 101.67970825541758,
+        "lengthMetres": 60.104736117452,
+        "widthMetres": 27.178718637417326
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 89.99429174458243,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.8872008000000005,
+          52.3903738
+        ],
+        "northOffsetDegrees": 11.674000000000007,
+        "source": "Exact OSM/current BAG parent footprint; native scale1. Roof heights/regions checked against current 3DBAG LoD2.2 survey and primary exterior photographs. Manual facade, roof and ornament reconstruction."
+      },
+      "attribution": {
+        "title": "Werkgebouw Het Veem / Oranje Nassau warehouse",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/526741",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
+      },
+      "bounds": {
+        "min": [
+          -30,
+          -3.4332276754867053e-7,
+          -14.6899995803833
+        ],
+        "max": [
+          30.219999313354492,
+          20.649999618530273,
+          15.350000381469727
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8872008000000005,
+          52.3903738
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 101.67399999999998,
+        "facadeBearingDegrees": 191.67399999999998,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 60.21999931335449,
+        "heightMetres": 20.64999996185304,
+        "depthMetres": 30.039999961853027,
+        "depthCoverage": 1.1052765350201808
+      },
+      "triangles": 26282,
+      "bytes": 298320,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "tobacco-theater": {
+      "id": "tobacco-theater",
+      "name": "TOBACCO Theater / former Gebing tobacco office",
+      "landmarkId": "extract_landmarks_421921642",
+      "modelUrl": "./models/tobacco-theater.glb",
+      "suppressOsmIds": [
+        "w266932382",
+        "NL.IMBAG.Pand.0363100012179546"
+      ],
+      "footprint": {
+        "centre": [
+          4.893494636681719,
+          52.3695890593804
+        ],
+        "headingDegrees": 7.720948917293072,
+        "lengthMetres": 28.734665985711672,
+        "widthMetres": 21.449225500078356
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 271.5790510827069,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.8934941,
+          52.3695978
+        ],
+        "northOffsetDegrees": 99.30000000000001,
+        "source": "Exact OSM/current BAG parent footprint; native scale1. Roof heights/regions checked against current 3DBAG LoD2.2 survey and primary exterior photographs. Manual facade, roof and ornament reconstruction."
+      },
+      "attribution": {
+        "title": "TOBACCO Theater / former Gebing tobacco office",
+        "author": "Map Recall",
+        "sourceUrl": "https://tobacco.nl/historie/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
+      },
+      "bounds": {
+        "min": [
+          -14.0649995803833,
+          -3.814697322468419e-7,
+          -11.079999923706055
+        ],
+        "max": [
+          15.513932228088379,
+          13.90999984741211,
+          12.029999732971191
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8934941,
+          52.3695978
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 189.29999999999995,
+        "facadeBearingDegrees": 279.29999999999995,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 29.57893180847168,
+        "heightMetres": 13.910000228881842,
+        "depthMetres": 23.109999656677246,
+        "depthCoverage": 1.0774281643219623
+      },
+      "triangles": 5721,
+      "bytes": 72840,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "plein-theater": {
+      "id": "plein-theater",
+      "name": "Plein Theater / shared residential building",
+      "landmarkId": "extract_landmarks_1701367153",
+      "modelUrl": "./models/plein-theater.glb",
+      "suppressOsmIds": [
+        "w278102241",
+        "NL.IMBAG.Pand.0363100012124352"
+      ],
+      "footprint": {
+        "centre": [
+          4.913864151085397,
+          52.36093771367041
+        ],
+        "headingDegrees": 66.99917691629415,
+        "lengthMetres": 31.258641973745252,
+        "widthMetres": 27.715535739441457
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 95.50082308370588,
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.91386355,
+          52.360944950000004
+        ],
+        "northOffsetDegrees": -17.5,
+        "source": "Exact OSM/current BAG parent footprint; native scale1. Roof heights/regions checked against current 3DBAG LoD2.2 survey and primary exterior photographs. Manual facade, roof and ornament reconstruction."
+      },
+      "attribution": {
+        "title": "Plein Theater / shared residential building",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.plein-theater.nl/over-ons",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free low-poly geometry. No imported mesh or image. Other buildings, park/plaza surfaces and public paths preserved."
+      },
+      "bounds": {
+        "min": [
+          -16,
+          -0.03999999910593033,
+          -13.619999885559082
+        ],
+        "max": [
+          15.163018226623535,
+          18.1200008392334,
+          15.40999984741211
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.91386355,
+          52.360944950000004
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 72.5,
+        "facadeBearingDegrees": 162.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 31.163018226623535,
+        "heightMetres": 18.16000083833933,
+        "depthMetres": 29.02999973297119,
+        "depthCoverage": 1.0474269740223403
+      },
+      "triangles": 7966,
+      "bytes": 100448,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "hash-marihuana-hemp-museum": {
+      "id": "hash-marihuana-hemp-museum",
+      "name": "Hash Marihuana & Hemp Museum",
+      "landmarkId": "extract_landmarks_741048430",
+      "modelUrl": "./models/hash-marihuana-hemp-museum.glb",
+      "suppressOsmIds": [
+        "w266952908",
+        "NL.IMBAG.Pand.0363100012178837"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.896852208624917,
+          52.371801540474635
+        ],
+        "headingDegrees": 122.45219898026488,
+        "lengthMetres": 20.08306280385528,
+        "widthMetres": 5.657733210129706
+      },
+      "surveyed": {
+        "anchor": [
+          4.896852208624917,
+          52.371801540474635
+        ],
+        "northOffsetDegrees": -57.6
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90.05219898026488,
+      "attribution": {
+        "title": "Hash Marihuana & Hemp Museum",
+        "author": "Map Recall",
+        "sourceUrl": "https://hashmuseum.com/en/amsterdam/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction of the actual narrow red-brick three-bay Oudezijds Achterburgwal148 house, cross-checked against the museum owner’s original frontage photographs and current148H VBO/Pand records. The adjoining black Sensi Seeds146 house is retained. Exact mapped rear recesses remain open. Height references use 3DBAG AHN5 relative roofmax16.672m; simplified roof and facade meshes are authored originally, with no imported source faces or textures."
+      },
+      "bounds": {
+        "min": [
+          -3.1047422885894775,
+          -4.1961669694501325e-7,
+          -10.032843589782715
+        ],
+        "max": [
+          2.934270143508911,
+          17.34000015258789,
+          11.050000190734863
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.896852208624917,
+          52.371801540474635
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 32.39999999999998,
+        "facadeBearingDegrees": 32.39999999999998,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 21.082843780517578,
+        "heightMetres": 17.340000572204588,
+        "depthMetres": 6.039012432098389,
+        "depthCoverage": 1.0673908096772808
+      },
+      "triangles": 7492,
+      "bytes": 91916,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "hemp-gallery": {
+      "id": "hemp-gallery",
+      "name": "Hemp Gallery",
+      "landmarkId": "osm_museum_2724369153",
+      "modelUrl": "./models/hemp-gallery.glb",
+      "suppressOsmIds": [
+        "w266952890",
+        "NL.IMBAG.Pand.0363100012171247"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.897208314885277,
+          52.372126997533954
+        ],
+        "headingDegrees": 122.701239396414,
+        "lengthMetres": 17.85028279658754,
+        "widthMetres": 12.500123403170502
+      },
+      "surveyed": {
+        "anchor": [
+          4.897208314885277,
+          52.372126997533954
+        ],
+        "northOffsetDegrees": -57.6
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90.30123939641399,
+      "attribution": {
+        "title": "Hemp Gallery",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518459",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction of the single actual five-bay Oudezijds Achterburgwal128–132 block containing Hemp Gallery130, verified against RCE518459, the museum owner and current original photographer reference. Rademaker’s1879–1881 neo-Renaissance facade has a rusticated ground floor, three full upper floors and mezzanine, with white pilasters and projecting cornices. The OSM1993 date is a register mismatch, not the architectural date. Exact rear return remains scoped to the actual building; adjoining houses remain unsuppressed. Roof reference measured from3DBAG AHN5 maxrelative19.311m; all asset meshes are original simplified geometry."
+      },
+      "bounds": {
+        "min": [
+          -6.445000171661377,
+          -4.577636616431846e-7,
+          -9.217920303344727
+        ],
+        "max": [
+          6.476466178894043,
+          19.18000030517578,
+          9.670000076293945
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.897208314885277,
+          52.372126997533954
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 32.39999999999998,
+        "facadeBearingDegrees": 32.39999999999998,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 18.887920379638672,
+        "heightMetres": 19.180000762939443,
+        "depthMetres": 12.92146635055542,
+        "depthCoverage": 1.033707103025723
+      },
+      "triangles": 11180,
+      "bytes": 126544,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "madame-tussauds": {
+      "id": "madame-tussauds",
+      "name": "Madame Tussauds / Peek & Cloppenburg",
+      "landmarkId": "extract_landmarks_1227471359",
+      "modelUrl": "./models/madame-tussauds.glb",
+      "suppressOsmIds": [
+        "w168680283",
+        "NL.IMBAG.Pand.0363100012175378"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8924166515045835,
+          52.372525122237114
+        ],
+        "headingDegrees": 94.103759466783,
+        "lengthMetres": 43.81294642372319,
+        "widthMetres": 30.69666420139541
+      },
+      "surveyed": {
+        "anchor": [
+          4.8924166515045835,
+          52.372525122237114
+        ],
+        "northOffsetDegrees": 184.5
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 180.396240533217,
+      "attribution": {
+        "title": "Madame Tussauds / Peek & Cloppenburg",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/518421",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free reconstruction of Joling’s1914–1917 Peek & Cloppenburg department-store building occupied in part by Madame Tussauds. RCE518421 and original photographer frontage guide the stone11-bay Dam facade,9-bay Rokin facade,colossal pilasters,open balconies,rose-window central gable,dormers and decorative roof vents. CurrentPDOK confirms single actualBAG2175378 with Dam20,Rokin6,Kromelleboogsteeg2 VBOs; mapped1900 date is not the architecturaldate. ExactL-shaped parent outline and rear recesses are retained. Original simplified roof regions follow AHN5 approximate21.8m eaves,31.3m mainhips,33.9m vents, and lower innerrear rooms13.85/17.3m. No imported source faces or textures; exact-only suppression retains all neighboring buildings."
+      },
+      "bounds": {
+        "min": [
+          -23.209999084472656,
+          -3.814697322468419e-7,
+          -15.396112442016602
+        ],
+        "max": [
+          22.259902954101562,
+          34.220001220703125,
+          16.22052574157715
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8924166515045835,
+          52.372525122237114
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 274.5,
+        "facadeBearingDegrees": 274.5,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 45.46990203857422,
+        "heightMetres": 34.22000160217286,
+        "depthMetres": 31.61663818359375,
+        "depthCoverage": 1.0299698356851594
+      },
+      "triangles": 14267,
+      "bytes": 178440,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
