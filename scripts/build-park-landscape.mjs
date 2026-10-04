@@ -17,8 +17,11 @@ const raw = JSON.parse(fs.readFileSync(`${work}/detail.geojson`, 'utf8')).featur
 const names = ['Vondelpark', 'Oosterpark', 'Sarphatipark', 'Westerpark', 'Erasmuspark',
   'Rembrandtpark', 'Beatrixpark', 'Flevopark', 'Noorderpark', 'Amstelpark', 'Gaasperpark',
   'Wertheimpark','Park Frankendael','Martin Luther Kingpark',
-  'Sloterpark','Nelson Mandelapark','Diemerpark'];
-const largeParkIds={'Sloterpark':'a974946116','Nelson Mandelapark':'a253205604','Diemerpark':'a26617920'};
+  'Sloterpark','Nelson Mandelapark','Diemerpark','Museumplein','Gerbrandypark',
+  'Bijlmerweide','Gijsbrecht van Aemstelpark',"'t Kleine Loopveld"];
+const largeParkIds={'Sloterpark':'a974946116','Nelson Mandelapark':'a253205604','Diemerpark':'a26617920',
+  'Museumplein':'a51930778','Gerbrandypark':'a12632708','Bijlmerweide':'a1634686926',
+  'Gijsbrecht van Aemstelpark':'a14700737',"'t Kleine Loopveld":'a1625964550'};
 const polygons = g => g.type === 'MultiPolygon' ? g.coordinates : g.type === 'Polygon' ? [g.coordinates] : [];
 function ringArea(r) {
   return Math.abs(r.reduce((a, p, i) => {const q = r[(i + 1) % r.length]; return a + p[0] * q[1] - q[0] * p[1];}, 0));
