@@ -1,0 +1,38 @@
+{
+  "id": "herepoort-bergpoort",
+  "name": "Herepoort / Bergpoort \u2014 Rijksmuseum garden",
+  "landmarkId": "extract_landmarks_1613749874",
+  "modelUrl": "./models/herepoort-bergpoort.glb",
+  "suppressOsmIds": [
+    "w277104741",
+    "NL.IMBAG.Pand.0363100012229949"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.88359005,
+      52.36021645833333
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 8.164708297908032,
+    "widthMetres": 8.887415999396495
+  },
+  "surveyed": {
+    "anchor": [
+      4.88359005,
+      52.36021645833333
+    ],
+    "northOffsetDegrees": 0,
+    "source": "CurrentOSM/BAG gate parent, nativeeast/south metres. Rijksmuseum published pairedfacade9x6.7m and9x8.5m dimensions; currentAHN5 supports8.4m roofmaximum."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Herepoort / Bergpoort",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.rijksmuseum.nl/en/collection/object/Facade-van-de-Herenpoort--63cb930a4b01ebfb38602d3c669c8ce2",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free low-poly reconstruction of pairedmuseumgardenfacades: openarch passage, sandstoneHerepoort with pairedcolumns/niches and brick/stoneBergpoort reverse. Surveyedparent and publisheddimensions; carvedreliefs, roof and archproportions simplified from photos. No downloadedmesh geometry or referenceimage pixels. Othermuseumgarden objects retained."
+  }
+}

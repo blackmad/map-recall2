@@ -21,10 +21,10 @@
     }
   ],
   "counts": {
-    "manual-model": 91,
+    "manual-model": 98,
     "catalogue-model": 12,
     "procedural-kit": 18,
-    "pending": 168
+    "pending": 161
   },
   "destinations": [
     {
@@ -853,8 +853,9 @@
       "type": "landmark",
       "queueRank": 66,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "de-dolphijn",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1225009678",
@@ -981,7 +982,8 @@
       "type": "landmark",
       "queueRank": 76,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "theater-amsterdam",
       "treatment": "area",
       "taskNote": "City-wide identity; choose a specific mapped place before authoring geometry."
     },
@@ -1085,8 +1087,9 @@
       "type": "landmark",
       "queueRank": 84,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "vondelpark-open-air-theater",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1522513904",
@@ -1123,8 +1126,9 @@
       "type": "landmark",
       "queueRank": 87,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "theater-amsterdam",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1428677427",
@@ -1174,8 +1178,9 @@
       "type": "landmark",
       "queueRank": 91,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "herepoort-bergpoort",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_273619808",
@@ -1290,8 +1295,9 @@
       "type": "landmark",
       "queueRank": 100,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "huis-aan-drie-grachten",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1759004236",
@@ -1378,8 +1384,9 @@
       "type": "landmark",
       "queueRank": 107,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "rode-hoed",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1875747488",

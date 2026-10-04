@@ -3098,5 +3098,230 @@
       "licenceUrl": "./LICENSE",
       "modifications": "Original texture-free low-poly model: narrow black timber gables, overhanging upper front, white masonry base and leaded windows. Exact BAG plan and current3DBAG height; side/rear details and roof are simplified. No photograph pixels or downloaded mesh geometry. Courtyard statue, trees, fences and neighboring houses retained."
     }
+  },
+  {
+    "id": "herepoort-bergpoort",
+    "name": "Herepoort / Bergpoort \u2014 Rijksmuseum garden",
+    "landmarkId": "extract_landmarks_1613749874",
+    "modelUrl": "./models/herepoort-bergpoort.glb",
+    "suppressOsmIds": [
+      "w277104741",
+      "NL.IMBAG.Pand.0363100012229949"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.88359005,
+        52.36021645833333
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 8.164708297908032,
+      "widthMetres": 8.887415999396495
+    },
+    "surveyed": {
+      "anchor": [
+        4.88359005,
+        52.36021645833333
+      ],
+      "northOffsetDegrees": 0,
+      "source": "CurrentOSM/BAG gate parent, nativeeast/south metres. Rijksmuseum published pairedfacade9x6.7m and9x8.5m dimensions; currentAHN5 supports8.4m roofmaximum."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "Herepoort / Bergpoort",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.rijksmuseum.nl/en/collection/object/Facade-van-de-Herenpoort--63cb930a4b01ebfb38602d3c669c8ce2",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free low-poly reconstruction of pairedmuseumgardenfacades: openarch passage, sandstoneHerepoort with pairedcolumns/niches and brick/stoneBergpoort reverse. Surveyedparent and publisheddimensions; carvedreliefs, roof and archproportions simplified from photos. No downloadedmesh geometry or referenceimage pixels. Othermuseumgarden objects retained."
+    }
+  },
+  {
+    "id": "huis-aan-drie-grachten",
+    "name": "Huis aan de Drie Grachten",
+    "landmarkId": "extract_landmarks_1614063354",
+    "modelUrl": "./models/huis-aan-drie-grachten.glb",
+    "suppressOsmIds": [
+      "w266932427",
+      "NL.IMBAG.Pand.0363100012168466"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.89468947030048,
+        52.36937961104943
+      ],
+      "headingDegrees": 106.52373678073104,
+      "lengthMetres": 14.12965803339511,
+      "widthMetres": 12.990739658930853
+    },
+    "surveyed": {
+      "anchor": [
+        4.89468947030048,
+        52.36937961104943
+      ],
+      "northOffsetDegrees": 103.5
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 86.97626321926896,
+    "attribution": {
+      "title": "Huis aan de Drie Grachten",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6096",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
+    }
+  },
+  {
+    "id": "de-dolphijn",
+    "name": "De Dolphijn",
+    "landmarkId": "extract_landmarks_1604899229",
+    "modelUrl": "./models/de-dolphijn.glb",
+    "suppressOsmIds": [
+      "w266620771",
+      "NL.IMBAG.Pand.0363100012167968"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.889886838805892,
+        52.37568578980617
+      ],
+      "headingDegrees": 123.83730488963849,
+      "lengthMetres": 31.287332178361126,
+      "widthMetres": 14.221836472519911
+    },
+    "surveyed": {
+      "anchor": [
+        4.889886838805892,
+        52.37568578980617
+      ],
+      "northOffsetDegrees": -56.16
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -89.99730488963849,
+    "attribution": {
+      "title": "De Dolphijn",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/5303",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction from primary monument descriptions and original photographer references, scoped to current PDOK BAG. Huis aan de Drie Grachten retains three stepped gables and transverse tiled roofs; De Dolphijn models both current restored Renaissance facade halves within ONE actual parent whose VBO addresses are Singel140 and142. Adjacent Singel138/BAG0363100012167969 and house247/BAG0363100012179859 are retained. Current photographic silhouette takes priority over older register wording about incomplete/restored tops."
+    }
+  },
+  {
+    "id": "rode-hoed",
+    "name": "De Rode Hoed / former Remonstrant church",
+    "landmarkId": "extract_landmarks_933328743",
+    "modelUrl": "./models/rode-hoed.glb",
+    "suppressOsmIds": [
+      "w31742462",
+      "NL.IMBAG.Pand.0363100012167695"
+    ],
+    "footprint": {
+      "centre": [
+        4.886977068632325,
+        52.377399662040965
+      ],
+      "headingDegrees": 119.33760650003984,
+      "lengthMetres": 50.248894059454734,
+      "widthMetres": 28.67251006008804
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0.16239349996016017,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8873364,
+        52.37732955
+      ],
+      "northOffsetDegrees": -60.5,
+      "source": "Individual current BAG parent, frontage surveyed against mapped street axis; primary current venue/architect photos and detailed AHN5/3DBAG roof surfaces above local terrain."
+    },
+    "attribution": {
+      "title": "De Rode Hoed / former Remonstrant church",
+      "author": "Map Recall",
+      "sourceUrl": "https://rodehoed.nl/index.php/over-rode-hoed/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
+    }
+  },
+  {
+    "id": "theater-amsterdam",
+    "name": "Theater Amsterdam",
+    "landmarkId": "extract_landmarks_707691223",
+    "modelUrl": "./models/theater-amsterdam.glb",
+    "suppressOsmIds": [
+      "w265853828",
+      "NL.IMBAG.Pand.0363100012242100"
+    ],
+    "footprint": {
+      "centre": [
+        4.877233932262727,
+        52.39704600970005
+      ],
+      "headingDegrees": 73.64238721269251,
+      "lengthMetres": 86.099781433493,
+      "widthMetres": 70.46676920649148
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": -0.2423872126925346,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8778458,
+        52.3970485
+      ],
+      "northOffsetDegrees": 253.39999999999998,
+      "source": "Individual current BAG parent, frontage surveyed against mapped street axis; primary current venue/architect photos and detailed AHN5/3DBAG roof surfaces above local terrain."
+    },
+    "attribution": {
+      "title": "Theater Amsterdam",
+      "author": "Map Recall",
+      "sourceUrl": "https://dedato.com/project/een-theater-voor-anne-frank/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
+    }
+  },
+  {
+    "id": "vondelpark-open-air-theater",
+    "name": "Vondelpark Open Air Theater / stage canopy",
+    "landmarkId": "extract_landmarks_1467127381",
+    "modelUrl": "./models/vondelpark-open-air-theater.glb",
+    "suppressOsmIds": [
+      "w230377611"
+    ],
+    "footprint": {
+      "centre": [
+        4.871116555823464,
+        52.35842738077742
+      ],
+      "headingDegrees": 0.7307111567452864,
+      "lengthMetres": 13.860467166636939,
+      "widthMetres": 13.429006472367991
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 269.99998884325476,
+    "spatialSuppression": false,
+    "surveyed": {
+      "anchor": [
+        4.8711157,
+        52.35843215
+      ],
+      "northOffsetDegrees": 90.73070000000001,
+      "source": "Exact current BAG / OSM parent footprint and street-facing axis; primary architectural photos and roof surfaces. Stage dimensions from official operator drawings; roof curvature and envelope approximated from primary venue photo."
+    },
+    "attribution": {
+      "title": "Vondelpark Open Air Theater / stage canopy",
+      "author": "Map Recall",
+      "sourceUrl": "https://www.openluchttheater.nl/techniek/plattegronden/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-palette low-poly geometry; no imported meshes or texture images. Exact mapped scope with neighboring houses, courtyard recesses and park grounds retained."
+    }
   }
 ]

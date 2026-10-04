@@ -1,0 +1,242 @@
+{
+  "id": "herepoort-bergpoort",
+  "osmId": "w277104741",
+  "bagId": "0363100012229949",
+  "teachingId": "extract_landmarks_1613749874",
+  "anchor": [
+    4.88359005,
+    52.36021645833333
+  ],
+  "ring": [
+    [
+      4.8836199,
+      52.360217
+    ],
+    [
+      4.8836011,
+      52.3602027
+    ],
+    [
+      4.883579,
+      52.3601859
+    ],
+    [
+      4.8835804,
+      52.3601851
+    ],
+    [
+      4.8835753,
+      52.3601812
+    ],
+    [
+      4.8835738,
+      52.3601819
+    ],
+    [
+      4.8835605,
+      52.3601718
+    ],
+    [
+      4.8835533,
+      52.3601754
+    ],
+    [
+      4.8835554,
+      52.360177
+    ],
+    [
+      4.8835351,
+      52.360187
+    ],
+    [
+      4.8835327,
+      52.3601851
+    ],
+    [
+      4.8835259,
+      52.3601885
+    ],
+    [
+      4.8835299,
+      52.3601915
+    ],
+    [
+      4.8835232,
+      52.3601947
+    ],
+    [
+      4.8835409,
+      52.3602082
+    ],
+    [
+      4.8835475,
+      52.3602049
+    ],
+    [
+      4.8835671,
+      52.3602198
+    ],
+    [
+      4.8835836,
+      52.3602323
+    ],
+    [
+      4.8835878,
+      52.3602355
+    ],
+    [
+      4.8835812,
+      52.3602388
+    ],
+    [
+      4.8835989,
+      52.3602522
+    ],
+    [
+      4.8836057,
+      52.3602488
+    ],
+    [
+      4.8836097,
+      52.3602519
+    ],
+    [
+      4.883615,
+      52.3602493
+    ],
+    [
+      4.8836161,
+      52.3602501
+    ],
+    [
+      4.8836197,
+      52.3602483
+    ],
+    [
+      4.8836186,
+      52.3602474
+    ],
+    [
+      4.8836346,
+      52.3602393
+    ],
+    [
+      4.8836358,
+      52.3602402
+    ],
+    [
+      4.8836393,
+      52.3602384
+    ],
+    [
+      4.8836381,
+      52.3602375
+    ],
+    [
+      4.8836433,
+      52.3602348
+    ],
+    [
+      4.8836302,
+      52.3602248
+    ],
+    [
+      4.8836316,
+      52.3602241
+    ],
+    [
+      4.8836265,
+      52.3602202
+    ],
+    [
+      4.8836251,
+      52.3602209
+    ],
+    [
+      4.8836199,
+      52.360217
+    ]
+  ],
+  "authorAngleRadians": -2.250525603410727,
+  "localCentre": [
+    0.5706151329678888,
+    0.1774461425776468
+  ],
+  "heightMetres": 8.5,
+  "frontHeightMetres": 6.7,
+  "widthMetres": 9,
+  "bagAttributes": {
+    "b3_bag_bag_overlap": null,
+    "b3_bouwlagen": null,
+    "b3_dak_type": "slanted",
+    "b3_extrusie": "standard",
+    "b3_h_dak_50p": 8.241999626159668,
+    "b3_h_dak_70p": 8.50100040435791,
+    "b3_h_dak_max": 8.803999900817871,
+    "b3_h_dak_min": 7.7179999351501465,
+    "b3_h_maaiveld": 0.4020000100135803,
+    "b3_h_nok": null,
+    "b3_is_glas_dak": false,
+    "b3_kas_warenhuis": false,
+    "b3_kwaliteitsindicator": true,
+    "b3_mutatie_ahn3_ahn4": false,
+    "b3_mutatie_ahn4_ahn5": false,
+    "b3_n_nok": 0,
+    "b3_n_vlakken": 3,
+    "b3_nodata_fractie_ahn3": 0.017094017937779427,
+    "b3_nodata_fractie_ahn4": 0.03418803587555885,
+    "b3_nodata_fractie_ahn5": 0.0,
+    "b3_nodata_radius_ahn3": 0.0,
+    "b3_nodata_radius_ahn4": 0.0,
+    "b3_nodata_radius_ahn5": 0.0,
+    "b3_opp_buitenmuur": 217.15,
+    "b3_opp_dak_plat": 0.0,
+    "b3_opp_dak_schuin": 30.98,
+    "b3_opp_grond": 28.99,
+    "b3_opp_scheidingsmuur": 0.0,
+    "b3_puntdichtheid_ahn3": 12.55652141571045,
+    "b3_puntdichtheid_ahn4": 25.026548385620117,
+    "b3_puntdichtheid_ahn5": 17.846153259277344,
+    "b3_pw_bron": "ahn5",
+    "b3_pw_datum": 2023,
+    "b3_pw_onvoldoende": false,
+    "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+    "b3_rmse_lod12": 0.5357487797737122,
+    "b3_rmse_lod13": 0.5357487797737122,
+    "b3_rmse_lod22": 0.12638835608959198,
+    "b3_t_run": 30,
+    "b3_val3dity_lod12": "[]",
+    "b3_val3dity_lod13": "[]",
+    "b3_val3dity_lod22": "[]",
+    "b3_volume_lod12": 233.40469360351562,
+    "b3_volume_lod13": 233.40469360351562,
+    "b3_volume_lod22": 226.4120330810547,
+    "begingeldigheid": "2023-08-13",
+    "documentdatum": "2023-08-13",
+    "documentnummer": "GV00007111_AC01AC",
+    "eindgeldigheid": null,
+    "eindregistratie": null,
+    "fid": 8434015,
+    "geconstateerd": false,
+    "identificatie": "NL.IMBAG.Pand.0363100012229949",
+    "oorspronkelijkbouwjaar": 1885,
+    "status": "Pand in gebruik",
+    "tijdstipeindregistratielv": null,
+    "tijdstipinactief": null,
+    "tijdstipinactieflv": null,
+    "tijdstipnietbaglv": null,
+    "tijdstipregistratie": "2023-08-13T20:37:18Z",
+    "tijdstipregistratielv": "2023-08-13T21:28:04Z",
+    "voorkomenidentificatie": 3
+  },
+  "references": [
+    "https://www.rijksmuseum.nl/en/collection/object/Facade-van-de-Herenpoort--63cb930a4b01ebfb38602d3c669c8ce2",
+    "https://www.rijksmuseum.nl/en/collection/object/Facade-van-de-Bergpoort--486e6acf1bd49e7ca855651772ee8a79",
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/530421",
+    "https://commons.wikimedia.org/wiki/File:Herepoort_-_totaalfoto_-_01.jpg",
+    "https://commons.wikimedia.org/wiki/File:Amsterdam_-_Garden_at_West_Facade_of_the_Rijksmuseum_1885_P.H.J._Cuypers_-_View_on_Bergpoort.jpg",
+    "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012229949",
+    "https://www.openstreetmap.org/way/277104741"
+  ],
+  "notes": "The current garden gate combines two historical facades, not an intact Groningen gate tower. Rijksmuseum BK-NM-8640 documents9x6.7m sandstoneHerepoortfront; BK-NM-8647 documents9x8.5m Bergpoortback. Current3DBAG has no ridge; roofmaximum8.804NAP minusground.402=8.402m supports rounded8.5m overall silhouette. Facade bodies/arch/pairedcolumns/niches/bands and low rear roof are original visual approximations within9.15x3.69m mapped extent. Exact singleparent suppresses onlygate; no museum, separategardenpavilion, fences, trees, benches orlandscape replaced."
+}
