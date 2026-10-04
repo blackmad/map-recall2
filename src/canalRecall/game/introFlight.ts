@@ -37,7 +37,7 @@ export const INTRO_FLIGHT_S = 1.9;
 export const INTRO_MAX_ZOOM_FRACTION = 0.2;
 /** Frame the pins with city around them, not edge to edge. */
 export const INTRO_CONTEXT = 0.7;
-/** A floor so a cross-city route does not open on a dot. */
+/** Preferred floor, provided both route endpoints still fit on screen. */
 export const INTRO_MIN_ZOOM = 0.012;
 
 /** Screen room the overview may use, after the HUD's top band and a margin. */
@@ -61,7 +61,7 @@ export function introOverview(
   const spanX = Math.max(1, Math.abs(finish.x - start.x));
   const spanY = Math.max(1, Math.abs(finish.y - start.y));
   const fit = Math.min(usableW / spanX, usableH / spanY) * INTRO_CONTEXT / screenScale;
-  const zoom = Math.max(INTRO_MIN_ZOOM, Math.min(fit, playZoom * INTRO_MAX_ZOOM_FRACTION));
+  const zoom = Math.min(fit, Math.max(INTRO_MIN_ZOOM, Math.min(fit, playZoom * INTRO_MAX_ZOOM_FRACTION)));
   // Centre the box in the usable band, not the whole screen: the band is
   // shifted down by the top HUD, so the world centre moves up by half the
   // difference, in world units at the drawn scale.

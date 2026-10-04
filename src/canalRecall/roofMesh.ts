@@ -19,11 +19,11 @@
 // The plan (`planBuildingRoof`) is pure and deterministic from the building id
 // and its footprint, so it runs in the tile decorator (to lower the plain wall to
 // the eaves) and again in the mesh builder (to build the geometry) and agrees.
-// Footprints that are not close to a rectangle roof their largest inscribed
-// rectangle (and a wing) over a flat lid, or keep the flat lid.
+// Convex nonrectangular footprints can slope inward from their actual perimeter
+// to a flat deck. Concave wings roof inscribed rectangles over a flat lid.
 
 import { RoofSink, type V2, type V3 } from './roofSink.js';
-import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, signedArea } from './roofFootprint.js';
+import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perimeterRoofInset, signedArea } from './roofFootprint.js';
 import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
 
 export type RoofKind = 'gable' | 'pitched' | 'mansard' | 'mansardHip' | 'hipped' | 'halfHipped' | 'school' | 'sawtooth' | 'parapet';
@@ -57,6 +57,8 @@ export type RoofPlan = {
   pieces?: Array<{ rect: Rect; plan: RoofPlan }>;
   /** Draw the flat lid at the eaves as well (around pieces, or inside a parapet). */
   keepLid?: boolean;
+  /** Sloping perimeter and flat deck following a convex, nonrectangular wall outline. */
+  perimeterInsetM?: number;
   /** Parapet height above the lid, metres (kind 'parapet'). */
   parapetM?: number;
   /** A corner turret: centre and radius in the footprint frame. */
@@ -251,8 +253,8 @@ function exteriorGableEnds(rect: Rect, ring: readonly Vec2[]): [boolean, boolean
 
 /**
  * The roof for a building from its footprint ring (metres, any frame), or null
- * for the plain flat lid. Rectangles get `planRoof`; other footprints roof their
- * main inscribed rectangle and a wing (over a lid), and flat periods a parapet.
+ * for the plain flat lid. Rectangles get `planRoof`; convex outlines can get a
+ * perimeter roof, concave wings get inscribed pieces, and flat periods a parapet.
  */
 export function planBuildingRoof(id: string, style: string, heightM: number, minHeightM: number, ring: readonly Vec2[], tag?: string, year?: number | null, measured?: GableShape | null): RoofPlan | null {
   if (minHeightM > 0.5 || heightM < 6.5) return null;
@@ -278,6 +280,10 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
     if (ins && ins.mainShare >= 0.5 && ins.main.len * ins.main.wid >= 24) {
       const plan = planRoof(id, style, heightM, minHeightM, ins.main, tagged, year, measured);
       if (plan && plan.kind !== 'sawtooth') {
+        const perimeterInsetM = frame && !tagged && !measured && plan.kind !== 'gable' ? perimeterRoofInset(pts, frame.wid) : null;
+        if (perimeterInsetM !== null) {
+          return { ...plan, kind: 'mansardHip', gable: 'plain', dormers: false, chimney: false, perimeterInsetM };
+        }
         const mainPlan = plan.kind === 'gable' ? { ...plan, gableEnds: exteriorGableEnds(ins.main, pts) } : plan;
         const pieces: RoofPlan['pieces'] = [{ rect: ins.main, plan: mainPlan }];
         if (ins.second) {
@@ -682,6 +688,17 @@ export function roofTrianglesForOutline(outer: readonly number[][], origin: { ln
   if (outer.length < 4) return [];
   const toMesh = ([lng, lat]: readonly number[]): Vec2 => [(lng - origin.lng) * kx, (lat - origin.lat) * M_PER_DEG_LAT];
   const mesh = outer.map(toMesh);
+  if (plan.perimeterInsetM !== undefined) {
+    const ring = openRing(mesh), inner = insetRing(ring, plan.perimeterInsetM);
+    if (!inner) return [];
+    const s = new RoofSink({ cx: 0, cy: 0, ux: 1, uy: 0, len: 1, wid: 1, coverage: 1, maxDev: 0 }, h0, dims);
+    for (let i = 0; i < ring.length; i++) {
+      const j = (i + 1) % ring.length;
+      s.slopePoly([[...ring[i], 0], [...ring[j], 0], [...inner[j], plan.riseM], [...inner[i], plan.riseM]], [0, 0, 1]);
+    }
+    s.slopePoly(inner.map(([x, y]) => [x, y, plan.riseM]), [0, 0, 1]);
+    return s.out;
+  }
   if (plan.kind === 'parapet') return parapetTriangles(mesh, h0, plan.parapetM ?? plan.riseM, dims, plan.trimHex ?? TRIM_WHITE);
   if (!plan.pieces) { const rect = fitRect(mesh); return rect ? roofTriangles(rect, plan, h0, dims) : []; }
   const [lng0, lat0] = outer[0], sx = kx / (111_320 * Math.cos(lat0 * Math.PI / 180)), [x0, y0] = mesh[0];
@@ -726,7 +743,11 @@ export function roofPlanForFeature(feature: GeoFeature): RoofPlan | null {
   const tag = typeof p.roofShapeTag === 'string' ? p.roofShapeTag : typeof p.roofShape === 'string' && !p.roofPlanned ? p.roofShape : undefined;
   const year = p.constructionYear === null || p.constructionYear === undefined ? null : Number(p.constructionYear);
   const measured = typeof p.monumentGable === 'string' && (GABLE_SHAPES as readonly string[]).includes(p.monumentGable) ? p.monumentGable as GableShape : null;
-  return planBuildingRoof(String(p.id ?? ''), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined, Number.isFinite(year) ? year : null, measured);
+  const plan = planBuildingRoof(String(p.id ?? ''), String(p.facadeStyle ?? ''), height, minHeight, ring, tag && honouredRoofTag(tag) ? tag : undefined, Number.isFinite(year) ? year : null, measured);
+  const g = feature.geometry as { type: string; coordinates: number[][][] | number[][][][] };
+  const polygon = g.type === 'Polygon' ? g.coordinates : g.coordinates[0];
+  // A perimeter deck must not cover an open courtyard.
+  return plan?.perimeterInsetM !== undefined && polygon.length > 1 ? null : plan;
 }
 
 /**

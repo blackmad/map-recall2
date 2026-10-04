@@ -3,7 +3,8 @@
 // ornaments are all-or-nothing; every component turns up in a sample city; extras only exist in the
 // near chunk.
 import assert from 'node:assert/strict';
-import { ExtraSink, EXTRA_BUDGET, ORNAMENT_COMPONENTS, ROOF_COMPONENTS, WALL_COMPONENTS, COMPONENT_COUNT, chanceFor, wallExtras, type ExtraContext } from '../src/canalRecall/facadeExtras.ts';
+import { ExtraSink, EXTRA_BUDGET, ORNAMENT_COMPONENTS, ROOF_COMPONENTS, WALL_COMPONENTS, COMPONENT_COUNT, chanceFor, wallExtras, extraUsage, type ExtraContext } from '../src/canalRecall/facadeExtras.ts';
+import { buildFeatureChunk, ORIGIN } from '../src/canalRecall/threeBuildingFeatures.ts';
 import { bayLookOpenings, proceduralOpenings } from '../src/canalRecall/facadeOpenings.ts';
 import { doorSpan, windowSpans } from '../src/canalRecall/facadeOrnaments.ts';
 import { buildChunk, type MeshBuilding } from '../src/canalRecall/threeBuildingMesh.ts';
@@ -30,6 +31,30 @@ assert.ok(proceduralOpenings('school').ribbon, 'procedural School windows are ri
 
 // Every wall component, on every style it claims.
 const DOOR_ITEMS = ['stoop', 'double-stoop', 'gable-stone', 'door-pediment', 'door-canopy', 'door-lantern', 'entrance-slab', 'door-surround', 'brick-door-arch', 'portiek'];
+// A c19 bay paints its door on the left; a procedural c19 cell paints it centrally.
+// Extras must follow the current painter, rather than drawing a second central entrance.
+{
+  const kx = 111320 * Math.cos(ORIGIN.lat * Math.PI / 180);
+  const ll = (x: number, y: number) => [ORIGIN.lng + x / kx, ORIGIN.lat + y / 110540];
+  const feature = { type: 'Feature' as const, properties: { id: 'double-door-regression', height: 14, minHeight: 0, facade: 'c19-priorBrickRed', facadeStyle: 'c19', constructionYear: 1890, shopQuiet: true }, geometry: { type: 'Polygon', coordinates: [[ll(0, 0), ll(7, 0), ll(7, 12), ll(0, 12), ll(0, 0)]] } };
+  try {
+    for (const look of ['photo', 'storybook', 'cartoon', 'procedural'] as const) {
+      const contexts: ExtraContext[] = [];
+      extraUsage.record = c => { if (c.layout.doorBays.length) contexts.push(c); };
+      buildFeatureChunk([feature], look, 'extras', new Float32Array([-20, -4, 20, -4]));
+      assert.ok(contexts.length, `${look}: entrance context reached the extras builder`);
+      for (const c of contexts) {
+        assert.ok(c.openings, `${look}: exact texture openings supplied`);
+        const expected = look === 'procedural' ? 0.5 : 0.14 + 59 / 520;
+        assert.ok(Math.abs(c.openings.door.axis - expected) < 1e-9, `${look}: entrance details align with the painted door`);
+        const sink = new ExtraSink(9999), d = doorSpan(c)!;
+        WALL_COMPONENTS.find(comp => comp.id === 'portiek')!.build(c, sink, 0.4);
+        assert.ok(!sink.tris.some(t => t.p.every(p => p[2] > c.base + 0.8 && p[2] < d.z1 - 0.1) && Math.min(...t.p.map(p => p[0])) < d.x && Math.max(...t.p.map(p => p[0])) > d.x), 'entrance trim does not add another opaque door leaf');
+      }
+    }
+  } finally { extraUsage.record = null; }
+}
+
 for (const comp of WALL_COMPONENTS) {
   const live = comp.styles.filter(st => chanceFor(comp.p, st) > 0);
   assert.ok(live.length > 0, `${comp.id} is used by at least one style`);

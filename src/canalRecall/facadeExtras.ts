@@ -12,7 +12,7 @@
 import type { FacadeStyle } from './genericFacades.js';
 import type { WallLayout } from './facadeLayout.js';
 import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, type RoofContext, type WallComponent } from './facadeExtraCore.js';
-import { ORNAMENT_COMPONENTS, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
+import { ORNAMENT_COMPONENTS, paleMasonryAccents, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
 export type { V3, FlatTri, WallFrame, ExtraContext, RoofContext, WallComponent, RoofComponent, Chance } from './facadeExtraCore.js';
@@ -207,6 +207,13 @@ const FIRST = ['kroonlijst', 'console-cornice', 'corbel-roofline', 'stepped-para
   'stoop', 'double-stoop', 'hoist-beam', 'hoist-hood', 'window-sills', 'iron-balconies', 'brick-fins'];
 const ALL_WALL = [...ORNAMENT_COMPONENTS, ...STREET_FURNITURE];
 export const WALL_COMPONENTS: readonly WallComponent[] = [...FIRST.map(id => ALL_WALL.find(c => c.id === id)!), ...ALL_WALL.filter(c => !FIRST.includes(c.id))];
+const RECIPE_TRIM_KEYS: Record<string, keyof NonNullable<NonNullable<ExtraContext['recipe']>['trim']>> = {
+    'door-surround': 'lintels', 'white-window-frames': 'frames', 'white-lintels': 'lintels', 'stucco-hoods': 'arches',
+    'kroonlijst': 'cornice', 'console-cornice': 'cornice', 'white-fascia': 'cornice',
+    'floor-cornices': 'courses', 'string-courses': 'courses', 'corner-pilasters': 'quoins', 'pale-masonry-accents': 'quoins',
+  };
+const DEFINING_TRIM = new Set(['white-window-frames', 'white-lintels', 'string-courses']);
+const PROFILE_COMPONENTS = [...WALL_COMPONENTS.filter(comp => comp.id === 'door-surround'), ...WALL_COMPONENTS.filter(comp => DEFINING_TRIM.has(comp.id)), ...WALL_COMPONENTS.filter(comp => comp.id !== 'door-surround' && !DEFINING_TRIM.has(comp.id))];
 const ATOMIC = new Set(ORNAMENT_COMPONENTS.map(c => c.id));
 // Building-wide choices of the original set (shutters, balcony slabs) use the building's roll so all its walls agree.
 const WIDE = new Set(['shutters-3d', 'balcony-slabs', 'gallery-walkway', 'glass-balconies', 'brick-bands', 'cornice-brackets', 'gutter', 'plinth', 'flower-boxes']);
@@ -220,13 +227,23 @@ export function wallExtras(c: ExtraContext, sink: ExtraSink): string[] {
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + (street ? EXTRA_BUDGET.wall : EXTRA_BUDGET.sideWall)));
-  for (const comp of WALL_COMPONENTS) {
+  if (street && c.recipe && hash01(`${c.id}:pale-masonry-accents`) < (c.recipe.trim?.quoins ?? 0)) {
+    const before = sink.tris.length; paleMasonryAccents(c, sink);
+    if (sink.tris.length > before) used.push('pale-masonry-accents');
+  }
+  // Local assemblies spend their limited relief budget on their defining trim first.
+  const components = c.recipe?.trim ? PROFILE_COMPONENTS : WALL_COMPONENTS;
+  for (const comp of components) {
     // Ornaments follow the building's period; street furniture (a stoop, a hoist beam) also its
     // layout style, so a 19th-century house laid out as a canal house keeps its stoop.
     const as = comp.styles.includes(period) ? period : !ATOMIC.has(comp.id) && comp.styles.includes(c.style) ? c.style : null;
     if (!as || (comp.street && !street) || (comp.group && groups.has(comp.group))) continue;
     const roll = comp.wide || WIDE.has(comp.id) ? hash01(`${c.id}:${comp.id}`) : hash01(`${c.id}:${c.wallKey}:${comp.id}`);
-    if (roll >= chanceFor(comp.p, as)) continue;
+    const localChance = RECIPE_TRIM_KEYS[comp.id] && c.recipe?.trim?.[RECIPE_TRIM_KEYS[comp.id]];
+    let chance = typeof localChance === 'number' ? localChance : chanceFor(comp.p, as);
+    if (comp.id === 'door-surround' && c.recipe?.period === 'c19' && c.recipe.trimDensity !== 'ornate') chance *= .85;
+    if (comp.id === 'wall-anchors' && c.recipe && c.recipe.trimDensity !== 'ornate') chance *= .15;
+    if (roll >= chance) continue;
     const before = sink.tris.length, atomic = comp.atomic ?? ATOMIC.has(comp.id);
     if (atomic) sink.begin();
     comp.build(c, sink, hash01(`${c.id}:${comp.id}:v`));

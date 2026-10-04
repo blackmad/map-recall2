@@ -11,6 +11,10 @@
 //     hidden by touching a few bytes instead of rebuilding the mesh.
 // Positions are metres east / north / up from a caller-supplied origin.
 
+import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
+import { streetWallBuilding, recipeLayoutScale, type StreetFacadeContext } from './streetFacadeRendering.js';
+import type { ArchitecturalRecipe } from './streetAppearance.js';
+import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
 import { CELL_VARIANTS, cellLayer } from './facadeCells.js';
 import { edgeGroundPieces, edgeLayout, layoutRun } from './facadeLayout.js';
 import { FALLBACK_REACH_M, SegmentGrid, streetDistance } from './streetFronts.js';
@@ -23,6 +27,10 @@ import { ExtraSink, EXTRA_BUDGET, roofExtras, wallExtras } from './facadeExtras.
 import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 
 export type MeshBuilding = {
+  streetAppearance?: StreetFacadeContext;
+  recipe?: ArchitecturalRecipe;
+  /** Exact opening positions of the active texture, shared with 3D entrance details. */
+  openings?: Openings;
   id: string;
   /** Rings of [lng, lat]; outer first, holes after. One polygon per entry. */
   polygons: number[][][][];
@@ -381,28 +389,37 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
 
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
   type Quad = { accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
-  const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: RoofTri[]; lid: LidMesh | null; sign: SignTri[] }> = [];
+  const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[] }> = [];
   let signTotal = 0;
   let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
   const kxLocal = mPerDegLng(origin.lat);
   for (const [bi, { b, edges, top }] of prepared.entries()) {
     const quads: Quad[] = [];
     const base = b.minHeightM;
-    const [r, g, bl] = parseHex(b.wallHex);
+    const wallRGB = parseHex(b.wallHex), wallAccent = parseHex(b.accentHex ?? '#ffffff');
+    const groundPaint = b.groundHex && b.layers ? parseHex(b.groundHex) : null;
     const variant = Math.floor(hash01(`${b.id}:look`) * CELL_VARIANTS);
     // No two neighbours share a rhythm: bay width, storey and ground-floor height vary per building.
     const scale = { bay: 0.88 + hash01(`${b.id}:bay`) * 0.3, storey: 0.93 + hash01(`${b.id}:storey`) * 0.16, ground: 0.92 + hash01(`${b.id}:ground`) * 0.2 };
-    const accent = parseHex(b.accentHex ?? '#ffffff');
     const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2;
     let walls = 0;
     const extraSink = mode === 'extras' && b.extras ? new ExtraSink(EXTRA_BUDGET.building) : null;
     const cornice: RoofTri[] = [];
     const doorAllowed = doorWalls(bi);
-    const paintTint = b.groundHex && b.layers ? parseHex(b.groundHex) : null;
     let groundSeen = Infinity;
-    for (const run of wallRuns(rings[bi], e => hiddenByNeighbour(e, b))) {
+    const fallbackBuilding = b;
+    const crownFronts: StreetCrownFront[] = [];
+    for (const run of wallRuns(rings[bi], e => hiddenByNeighbour(e, fallbackBuilding))) {
       const first = run[0].e;
-      const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), top - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, scale, run.map(r => doorAllowed.has(r.e)));
+      const b = fallbackBuilding.streetAppearance ? streetWallBuilding(fallbackBuilding, {
+        ...first, x1: run[run.length - 1].e.x1, y1: run[run.length - 1].e.y1,
+      }, origin, run.some(({ e }) => doorAllowed.has(e))) : fallbackBuilding;
+      const runScale = b.recipe ? recipeLayoutScale(b.recipe, scale) : scale;
+      const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
+      const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
+      if (b.recipe) crownFronts.push({ start:[first.x0,first.y0],end:[run[run.length-1].e.x1,run[run.length-1].e.y1],normal:[first.nx,first.ny],tint:[r*jitter,g*jitter,bl*jitter],plainLayer:b.plainLayer,recipe:b.recipe,frameHex:b.recipe.frameHex??'#e6e1d4',glassHex:b.streetAppearance?.look==='cartoon'?'#68a2bf':'#35464f' });
+      const paintTint = b === fallbackBuilding ? groundPaint : b.groundHex && b.layers ? parseHex(b.groundHex) : null;
+      const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), top - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
       if (!layout) {
         // With the top owned here, a wall too short for a layout (a corner chamfer) is still walled, in bare wall.
         if (b.lid && b.plainLayer !== undefined && b.heightM > base + 0.01) for (const { e } of run) {
@@ -419,7 +436,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       run.forEach(({ e }, k) => {
         walls++;
         const s = layout.edgeStartM[k];
-        if (extraSink && !e.hole && e.len >= 2.5) wallExtras({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: e.len }, base, top, layout: edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, streetSide: doorAllowed.has(e), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' }, extraSink);
+        if (extraSink && !e.hole && e.len >= 2.5) wallExtras({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: e.len }, base, top, layout: edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : b.openings, streetSide: doorAllowed.has(e), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' }, extraSink);
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
@@ -438,9 +455,10 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         if (layout.storeys > 0) quads.push({ e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: top, tint, along0: 0, along1: 1 });
       });
     }
-    let roof: RoofTri[] = cornice;
+    let roof: StreetCrownTri[] = cornice;
     if (b.roof) {
       roof = roofTrianglesForOutline(b.polygons[0]?.[0] ?? [], origin, b.roof.plan, b.heightM, b.roof.dims, kxLocal);
+      if (crownFronts.length) roof = streetCrown(roof,crownFronts,b.heightM,['gable','pitched','halfHipped'].includes(b.roof.plan.kind)&&!b.roof.plan.shutters);
     }
     const walled = mode === 'walls';
     const lid = walled && b.lid && (!b.roof || !roof.length || b.roof.plan.keepLid) ? lidMesh(b, origin) : null;
@@ -500,12 +518,13 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     if (roof.length) {
       const [wr, wg, wb] = parseHex(b.wallHex), [rr, rg, rb] = parseHex(b.roof?.roofHex ?? b.wallHex);
       const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2, white: [number, number, number] = [255, 255, 255];
+      const defaultWallTint = [wr*jitter,wg*jitter,wb*jitter];
       for (const t of roof) {
         const shade = Math.max(0.5, Math.min(1, 0.58 + 0.42 * Math.max(0, t.n[0] * -0.35 + t.n[1] * 0.5 + t.n[2] * 0.8)));
         const wall = t.part === 'plate' || t.part === 'dormerFace', flat = t.part === 'trim' || t.part === 'decal';
         // Trim and decals (white stone, cornices, shutters) are flat colour on the lid's flat layer.
-        const layer = flat ? (b.lid?.flatLayer ?? b.roof!.layers.slope) : t.part === 'plate' ? (b.plainLayer ?? b.roof!.layers.plain) : t.part === 'dormerFace' ? b.roof!.layers.dormer : b.roof!.layers.slope;
-        const tint = t.hex ? parseHex(t.hex) : flat ? white : wall ? [wr * jitter, wg * jitter, wb * jitter] : [rr, rg, rb];
+        const layer = flat ? (b.lid?.flatLayer ?? b.roof!.layers.slope) : t.part === 'plate' ? (t.facadeLayer ?? b.plainLayer ?? b.roof!.layers.plain) : t.part === 'dormerFace' ? b.roof!.layers.dormer : b.roof!.layers.slope;
+        const tint = t.hex ? parseHex(t.hex) : flat ? white : wall ? t.facadeTint ?? defaultWallTint : [rr, rg, rb];
         for (let k = 0; k < 3; k++) {
           positions[v * 3] = t.p[k][0]; positions[v * 3 + 1] = t.p[k][1]; positions[v * 3 + 2] = t.p[k][2];
           uvs[v * 2] = t.uv[k][0]; uvs[v * 2 + 1] = t.uv[k][1];

@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "build:building-overview": "node --import tsx scripts/build-building-overview.ts",
+    "test:building-lod": "node --import tsx scripts/check-building-lod.ts",
     "build:canal-car": "esbuild src/canalRecall/carRoadGuard.ts --bundle --format=iife --global-name=CanalRecallCar --outfile=public/canal-drive/js/car-road-guard.bundle.js --minify",
     "build:rendering-spike": "esbuild src/canalRecall/renderingSpike.ts --bundle --format=iife --outfile=public/canal-drive/js/rendering-spike.bundle.js",
     "build:canal-building-tiles": "esbuild src/canalRecall/buildingTilesBrowser.ts --bundle --format=iife --global-name=CanalRecallBuildingTiles --outfile=public/canal-drive/js/building-tiles.bundle.js --minify",

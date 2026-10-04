@@ -28,7 +28,7 @@
       "priority": "urgent",
       "status": "built",
       "owner": "root",
-      "validation": "Citywide footprint raster:30 z12 tiles,916909 bytes. Fixed landing-area preload during intro; coarse shells retain heights/holes/identities until detail installs. Touch detail uses z17 and map DPR capped at1.5. Real6298-building tile:86.4% fewer coarse vertices. Mobile Chromium overview, input-skip, LOD ownership and no-flash checks passed; overview screenshot reviewed; TypeScript passed. Actual phone/Safari frame-time measurement remains open."
+      "validation": "Citywide footprint raster:30 z12 tiles,916909 bytes. Fixed landing-area preload during intro; coarse shells retain heights/holes/identities until detail installs. Touch detail uses z17 and map DPR capped at1.5. Real6298-building tile:86.4% fewer coarse vertices. Mobile Chromium overview, input-skip, LOD ownership and no-flash checks passed. iPhone16Pro iOS18.4 Simulator Mobile Safari rendered photo/cartoon/procedural with no captured JavaScript errors; screenshot reviewed. Mobile128px atlases use75% less memory (photo/cartoon22MiB, procedural29.5MiB). Incremental photo atlas build1693ms,99 animation frames,max gap30ms on this Mac. Artifacts:artifacts/mobile-textures/safari-report.json and safari-game.png. TypeScript and street facade regressions passed; runtime/gallery bundles rebuilt. Physical iPhone frame times and memory pressure remain open."
     },
     {
       "id": "duplicate-generated-doors",
@@ -60,7 +60,7 @@
       "priority": "urgent",
       "status": "verified",
       "owner": "root",
-      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5–120 fps."
+      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5\u2013120 fps."
     },
     {
       "id": "building-inspection",
@@ -229,7 +229,7 @@
     },
     {
       "id": "vinoly",
-      "task": "Viñoly",
+      "task": "Vi\u00f1oly",
       "priority": "normal",
       "status": "queued"
     },
@@ -339,7 +339,7 @@
     },
     {
       "id": "kinderkookkafe",
-      "task": "Kinderkookkafé",
+      "task": "Kinderkookkaf\u00e9",
       "priority": "normal",
       "status": "queued"
     },
@@ -447,7 +447,7 @@
     },
     {
       "id": "street-aware-procedural-architecture",
-      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215–247, Bethaniëndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
+      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215\u2013247, Bethani\u00ebndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
       "priority": "high",
       "status": "verified-pilot",
       "notes": "Three self-review/improvement cycles complete on Overtoom, De Wallen and Marcantilaan, plus adjacent withheld-source transfers. 36 tests and four rendering-mode browser review pass; 349 surveyed neighbors, 95 frozen frontage assignments, 169 compact architectural street segments. Current source and cohort admission replay pass. Final same-worker profile-on/off CPU compile aggregate +0.29%; walls +3.29%, extras -0.37%, one of 24 cases +12.3%. Reviewed stage triangles decrease with unchanged draw calls. Full-game GPU budget remains unverified. Ready for reviewed city batches, not a blanket city-wide style claim. Approximate street character, no individual facade registration claim. Latest demos: artifacts/street-appearance/cycles/index.html."

@@ -12,7 +12,7 @@
 // per style instead of one per style x colour, and walls laid out in whole bays
 // and storeys so openings line up with the building.
 
-import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, paintProceduralLayers } from './facadeCells.js';
+import { CELL_LAYER_COUNT, CELL_PX, STYLE_DIMS, cellLayer, CELL_KINDS, CELL_VARIANTS, paintCell } from './facadeCells.js';
 import { ROOF_CELL_M, paintRoofLayers } from './roofCells.js';
 import { withMonumentGable } from './monumentGables.js';
 import { decorateRoof, exceptLandmarks as exceptLandmarksOf, fitRect, localOuterRing, planRoof, type RoofPlan } from './roofMesh.js';
@@ -28,6 +28,8 @@ import { FALLBACK_REACH_M, SegmentGrid, streetSegments } from './streetFronts.js
 import { ORIGIN, ROOF_TONES, asPolygons, buildFeatureChunk, cellSetOf, type BuildingLook, type Feature } from './threeBuildingFeatures.js';
 export { ORIGIN, ROOF_TONES, type BuildingLook };
 import { FACADE_STYLES, type FacadeStyle } from './genericFacades.js';
+import { validateStreetAppearanceCatalog, type StreetAppearanceCatalog, type StreetAppearanceProfile } from './streetAppearance.js';
+import { PROCEDURAL_RECIPE_LAYER_OFFSET } from './streetFacadeRendering.js';
 import { buildingProjectionScale } from './buildingProjectionScale.js';
 
 type MapLike = { getCanvas(): HTMLCanvasElement; triggerRepaint(): void; getZoom(): number };
@@ -35,11 +37,13 @@ type MaplibreLike = { MercatorCoordinate: { fromLngLat(lngLat: [number, number],
 
 const TILE_ZOOM = 14;
 /**
- * Near detail (LOD tier 1): facade extras are built only for the 2 x 2 z16 tiles (~600 m)
- * around the camera, as `extras:<z16 tile>` chunks; everything further has walls and roofs only.
+ * Detailed walls, roofs and extras stay in the nearest 2 x 2 z16 tiles (z17 on touch
+ * devices). The surrounding city uses simple footprint shells with courtyard lids.
  */
 const DETAIL_ZOOM = 16;
 const EXTRAS_PREFIX = 'extras:';
+const COARSE_PREFIX = 'coarse:';
+const chunkMode = (key: string): 'walls' | 'extras' | 'coarse' => key.startsWith(EXTRAS_PREFIX) ? 'extras' : key.startsWith(COARSE_PREFIX) ? 'coarse' : 'walls';
 /** Facades show from this map zoom (the extrusion layer's own minzoom was 14). */
 export const MIN_ZOOM = 14;
 
@@ -73,6 +77,7 @@ uniform sampler2DArray masks;
 uniform float bands;
 // Untextured: the vertex colour alone, no brick, tile or grain from any cell.
 uniform float flatColour;
+uniform float cityFade;
 in vec2 vUv;
 flat in float vLayer;
 in vec3 vTint;
@@ -81,6 +86,8 @@ in float vShade;
 flat in float vHighlight;
 out vec4 fragColor;
 void main() {
+  // Screen-door coverage keeps depth writes correct while the city emerges from the overview.
+  if (cityFade < 1.0 && fract(dot(floor(gl_FragCoord.xy), vec2(0.754877666, 0.569840296))) >= cityFade) discard;
   if (vHighlight > 0.5) { fragColor = vec4(vec3(1.0, 0.824, 0.122) * vShade, 1.0); return; }
   vec3 p = vec3(vUv, vLayer);
   vec3 c = texture(cells, p).rgb;
@@ -105,8 +112,8 @@ const infoOf = (chunk: Chunk): ChunkInfo => ({
  * not speckle) and the darkest glass is lifted so windows stop being black
  * holes. Frames, doors and stone keep their contrast, so the facade rhythm stays.
  */
-export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: number, look: Look): void {
-  const px = CELL_PX * CELL_PX;
+export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: number, look: Look, size = CELL_PX): void {
+  const px = size * size;
   const wallPull = look === 'photo' ? 0.7 : 0.35, glassLift = look === 'photo' ? 0.5 : 0.25;
   for (let layer = 0; layer < layers; layer++) {
     // Mean wall colour of this layer (mask.r is the wall tint weight).
@@ -121,7 +128,16 @@ export function calmBayLayers(colour: Uint8Array, mask: Uint8Array, layers: numb
     for (let i = 0; i < px; i++) {
       const at = (layer * px + i) * 4, wall = mask[(layer * px + i) * 2] / 255, accent = mask[(layer * px + i) * 2 + 1];
       if (wall > 0.5) {
-        for (let c = 0; c < 3; c++) colour[at + c] = Math.min(255, (colour[at + c] + (mean[c] - colour[at + c]) * wallPull * wall) * (1 + (lift - 1) * wall));
+        if (look === 'photo') {
+          // Brick is relief evidence, not a second colour prior. Multiplying a
+          // red photograph by surveyed brown/charcoal tint made every street
+          // orange. Keep luminance variation and let vertex tint own the hue.
+          const lum = (colour[at] + colour[at + 1] + colour[at + 2]) / 3;
+          const neutral = Math.min(255, (lum + (meanLum - lum) * wallPull * wall) * (1 + (lift - 1) * wall));
+          for (let c = 0; c < 3; c++) colour[at + c] = colour[at + c] * (1 - wall) + neutral * wall;
+        } else {
+          for (let c = 0; c < 3; c++) colour[at + c] = Math.min(255, (colour[at + c] + (mean[c] - colour[at + c]) * wallPull * wall) * (1 + (lift - 1) * wall));
+        }
       } else if (accent < 128) {
         const lum = (colour[at] + colour[at + 1] + colour[at + 2]) / 3;
         if (lum < 90) { const k = glassLift * (1 - lum / 90); for (let c = 0; c < 3; c++) colour[at + c] += (150 - colour[at + c]) * k; }
@@ -159,59 +175,74 @@ type ChunkInfo = { buildingCount: number; wallCount: number; quadCount: number; 
 export type ThreeBuildingStats = { kitVertices: number; chunks: number; buildings: number; walls: number; quads: number; vertices: number; geometryMB: number; textureMB: number; drawCalls: number; triangles: number; buildMs: number };
 
 /** The game's colour and tint-mask texture arrays for a look (also used by the gallery pages). */
-export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number): Promise<{ colour: any; mask: any }> {
-    let layers: number, colour: Uint8Array, mask: Uint8Array;
-    if (look === 'procedural') ({ layers, colour, mask } = paintProceduralLayers(paintRoofLayers(false)));
-    else {
-      let brick: CanvasImageSource = document.createElement('canvas');
-      if (look === 'photo') {
-        const image = new Image();
-        image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
-        try { await image.decode(); brick = image; } catch { /* flat brick: the drawn detail still reads */ }
+export async function buildLookTextures(THREE: any, look: 'procedural' | Look, maxAnisotropy: number, size = CELL_PX): Promise<{ colour: any; mask: any }> {
+  if (size !== CELL_PX && size !== CELL_PX / 2) throw new Error('Unsupported building texture size');
+  const layers = look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT : BAY_LAYER_COUNT + ROOF_LAYER_COUNT;
+  if (layers > 256) throw new Error('Building texture array exceeds byte layer indices');
+  const px = size * size, colour = new Uint8Array(px * 4 * layers), mask = new Uint8Array(px * 2 * layers);
+  let batchStart = performance.now();
+  const yieldBudget = async () => {
+    if (performance.now() - batchStart < 6) return;
+    await new Promise<void>(resolve => setTimeout(resolve, 0));
+    batchStart = performance.now();
+  };
+  // Native procedural painters store wall tint in alpha. Downsample one cell at
+  // a time so the mobile path never allocates a second full-size city atlas.
+  const copyCell = (cell: Uint8ClampedArray, layer: number) => {
+    const factor = CELL_PX / size;
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+      let red = 0, green = 0, blue = 0, tint = 0;
+      for (let dy = 0; dy < factor; dy++) for (let dx = 0; dx < factor; dx++) {
+        const at = ((y * factor + dy) * CELL_PX + x * factor + dx) * 4;
+        red += cell[at]; green += cell[at + 1]; blue += cell[at + 2]; tint += cell[at + 3];
       }
-      layers = BAY_LAYER_COUNT + ROOF_LAYER_COUNT;
-      colour = new Uint8Array(CELL_PX * CELL_PX * 4 * layers); mask = new Uint8Array(CELL_PX * CELL_PX * 2 * layers);
-      const scratch = document.createElement('canvas'); scratch.width = scratch.height = CELL_PX;
-      const ctx = scratch.getContext('2d', { willReadFrequently: true })!;
-      for (const entry of BAY_ENTRIES) {
-        const { colour: c, mask: m } = bayTextures(bayVariant(entry), brick, look);
-        for (const [source, isMask] of [[c, false], [m, true]] as const) {
-          ctx.clearRect(0, 0, CELL_PX, CELL_PX);
-          ctx.drawImage(source, 0, 0, CELL_PX, CELL_PX);
-          const data = ctx.getImageData(0, 0, CELL_PX, CELL_PX).data;
-          // Canvas rows run down from the top; layer rows run up from the ground.
-          for (let y = 0; y < CELL_PX; y++) for (let x = 0; x < CELL_PX; x++) {
-            const from = ((CELL_PX - 1 - y) * CELL_PX + x) * 4, px = y * CELL_PX + x;
-            if (isMask) { mask[(entry.layer * CELL_PX * CELL_PX + px) * 2] = data[from]; mask[(entry.layer * CELL_PX * CELL_PX + px) * 2 + 1] = data[from + 1]; }
-            else { const to = (entry.layer * CELL_PX * CELL_PX + px) * 4; colour[to] = data[from]; colour[to + 1] = data[from + 1]; colour[to + 2] = data[from + 2]; colour[to + 3] = 255; }
-          }
-        }
-      }
+      const at = layer * px + y * size + x, count = factor * factor;
+      colour[at * 4] = Math.round(red / count); colour[at * 4 + 1] = Math.round(green / count); colour[at * 4 + 2] = Math.round(blue / count);
+      colour[at * 4 + 3] = 255; mask[at * 2] = Math.round(tint / count);
     }
-    if (look !== 'procedural') {
-      // Roof cells sit after the bays; the bays are softened, the roofs are drawn as intended.
-      paintRoofLayers(look === 'cartoon').forEach((cell, i) => {
-        const layer = BAY_LAYER_COUNT + i;
-        for (let px = 0; px < CELL_PX * CELL_PX; px++) {
-          const at = (layer * CELL_PX * CELL_PX + px) * 4;
-          colour[at] = cell[px * 4]; colour[at + 1] = cell[px * 4 + 1]; colour[at + 2] = cell[px * 4 + 2]; colour[at + 3] = 255;
-          mask[(layer * CELL_PX * CELL_PX + px) * 2] = cell[px * 4 + 3];
-        }
-      });
-      calmBayLayers(colour, mask, BAY_LAYER_COUNT, look);
+  };
+  if (look === 'procedural') {
+    for (const style of FACADE_STYLES) for (let variant = 0; variant < CELL_VARIANTS; variant++) for (const kind of CELL_KINDS) {
+      copyCell(paintCell(style, kind, variant), cellLayer(style, kind, variant));
+      await yieldBudget();
     }
-    const array = (data: Uint8Array, format: any) => {
-      const t = new THREE.DataArrayTexture(data, CELL_PX, CELL_PX, layers);
-      t.format = format; t.type = THREE.UnsignedByteType;
-      t.wrapS = t.wrapT = THREE.RepeatWrapping; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter;
-      t.userData = { bytes: data.byteLength };
-      // Once on the GPU the CPU copy is dead weight; a restored context rebuilds the set.
-      t.onUpdate = () => { t.image.data = null; };
-      t.generateMipmaps = true; t.anisotropy = maxAnisotropy; t.unpackAlignment = 1; t.needsUpdate = true;
-      return t;
-    };
-    return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat) };
   }
+  const roofBase = look === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
+  for (const [i, cell] of paintRoofLayers(look === 'cartoon').entries()) { copyCell(cell, roofBase + i); await yieldBudget(); }
+  let brick: CanvasImageSource = document.createElement('canvas');
+  if (look === 'photo') {
+    const image = new Image(); image.src = new URL('materials/ambientcg/Bricks057/colour.jpg', document.baseURI).href;
+    try { await image.decode(); brick = image; } catch { /* neutral drawn brick */ }
+  }
+  const scratch = document.createElement('canvas'); scratch.width = scratch.height = size;
+  const ctx = scratch.getContext('2d', { willReadFrequently: true })!;
+  for (const entry of BAY_ENTRIES) {
+    const bayLook = look === 'procedural' ? 'photo' : look;
+    const painted = bayTextures(bayVariant(entry), brick, bayLook);
+    const layer = look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + entry.layer : entry.layer;
+    for (const [source, isMask] of [[painted.colour, false], [painted.mask, true]] as const) {
+      ctx.clearRect(0, 0, size, size); ctx.drawImage(source, 0, 0, size, size);
+      const pixels = ctx.getImageData(0, 0, size, size).data;
+      for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
+        const from = ((size - 1 - y) * size + x) * 4, at = layer * px + y * size + x;
+        if (isMask) { mask[at * 2] = pixels[from]; mask[at * 2 + 1] = pixels[from + 1]; }
+        else { colour[at * 4] = pixels[from]; colour[at * 4 + 1] = pixels[from + 1]; colour[at * 4 + 2] = pixels[from + 2]; colour[at * 4 + 3] = 255; }
+      }
+    }
+    if (look !== 'procedural') calmBayLayers(colour.subarray(layer * px * 4, (layer + 1) * px * 4), mask.subarray(layer * px * 2, (layer + 1) * px * 2), 1, bayLook, size);
+    await yieldBudget();
+  }
+  const array = (data: Uint8Array, format: any) => {
+    const t = new THREE.DataArrayTexture(data, size, size, layers);
+    t.format = format; t.type = THREE.UnsignedByteType;
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.minFilter = THREE.LinearMipmapLinearFilter; t.magFilter = THREE.LinearFilter;
+    t.userData = { bytes: data.byteLength };
+    t.onUpdate = () => { t.image.data = null; };
+    t.generateMipmaps = true; t.anisotropy = maxAnisotropy; t.unpackAlignment = 1; t.needsUpdate = true;
+    return t;
+  };
+  return { colour: array(colour, THREE.RGBAFormat), mask: array(mask, THREE.RGFormat) };
+}
 
 export class ThreeBuildings {
   readonly layer: any;
@@ -237,15 +268,22 @@ export class ThreeBuildings {
   private sourceGroups = new Map<string, Feature[]>();
   private textureSets = new Map<BuildingLook, Promise<{ colour: any; mask: any }>>();
   private lookToken = 0;
+  private appearanceToken = 0;
+  private appearanceRevision = '';
+  private appearanceProfiles: readonly StreetAppearanceProfile[] = [];
+  private appearanceStreets: SegmentGrid | null = null;
+  private appearanceLoaded = false;
   private worker: Worker | null | undefined;
   private readonly gens = new Map<string, number>();
   private readonly inflight = new Map<string, Feature[]>();
-  private readonly inflightOptions = new Map<string, { look: BuildingLook; streets?: Float32Array }>();
+  private readonly inflightOptions = new Map<string, { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; appearanceRevision: string }>();
   private boatTiles = new Map<string, Houseboat[]>();
   private boatIds: ReadonlySet<string> = new Set();
   private boats: readonly Houseboat[] = [];
   private lastFeatures: readonly Feature[] = [];
   private detailTiles = new Set<string>();
+  private installedDetailIds = new Set<string>();
+  private readonly detailZoom = typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches ? 17 : DETAIL_ZOOM;
 
   constructor(private readonly map: MapLike, private readonly maplibregl: MaplibreLike, look: BuildingLook = 'procedural') {
     this.look = this.requestedLook = look;
@@ -278,7 +316,7 @@ export class ThreeBuildings {
         const installedLook = chunk.mesh.userData.installedLook as BuildingLook | undefined;
         if (!installedLook) continue;
         const rebuilt = key === KIT_KEY ? this.buildKits(chunk.source, installedLook)
-          : buildFeatureChunk(chunk.source, installedLook, key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls', chunk.mesh.userData.installedStreets);
+          : buildFeatureChunk(chunk.source, installedLook, chunkMode(key), chunk.mesh.userData.installedStreets, chunk.mesh.userData.installedProfiles ?? []);
         if (rebuilt.vertexCount !== chunk.mesh.geometry.getAttribute('position').count
           || rebuilt.ranges.length !== chunk.ranges.size
           || rebuilt.ranges.some(range => {
@@ -342,6 +380,35 @@ export class ThreeBuildings {
     this.pending = [];
   }
 
+  /** Update every resident/in-flight chunk atomically with respect to profile revision. */
+  setStreetAppearance(catalog: StreetAppearanceCatalog): void {
+    const admitted = validateStreetAppearanceCatalog(catalog);
+    if (this.appearanceRevision === admitted.revision) return;
+    // Detach inputs from callers, including mutable recipe/evidence arrays.
+    const detached = JSON.parse(JSON.stringify(admitted)) as StreetAppearanceCatalog;
+    this.appearanceProfiles = detached.profiles;
+    this.appearanceStreets = detached.streetFrontPaths?.length ? new SegmentGrid(streetSegments(detached.streetFrontPaths, ORIGIN)) : null;
+    this.appearanceRevision = admitted.revision;
+    this.invalidateBuilds();
+    for (const [key, source] of this.sourceGroups) this.pending.push(() => this.rebuild(key, source));
+    this.pump();
+    this.map.triggerRepaint();
+  }
+
+  private async loadStreetAppearance(): Promise<void> {
+    if (typeof document === 'undefined' || !document.baseURI) return;
+    this.appearanceLoaded = true;
+    const token = ++this.appearanceToken;
+    try {
+      const response = await fetch(new URL('../data/street-appearance/profiles.json', document.baseURI), { cache: 'no-cache' });
+      if (!response.ok) return; // Existing period priors remain available offline.
+      const catalog = await response.json();
+      if (token === this.appearanceToken) this.setStreetAppearance(catalog);
+    } catch (error) {
+      console.warn('Street appearance unavailable; using period priors', error);
+    }
+  }
+
   /** Switch each chunk's geometry, vertex colors and material together after textures arrive. */
   async setLook(look: BuildingLook): Promise<void> {
     if (look === this.requestedLook && this.ready && this.material?.uniforms.cells.value) return;
@@ -369,7 +436,7 @@ export class ThreeBuildings {
   }
 
   private buildTextures(look: 'procedural' | Look): Promise<{ colour: any; mask: any }> {
-    return buildLookTextures(this.THREE, look, this.renderer.capabilities.getMaxAnisotropy());
+    return buildLookTextures(this.THREE, look, Math.min(this.renderer.capabilities.getMaxAnisotropy(), this.detailZoom === 17 ? 4 : 16), this.detailZoom === 17 ? CELL_PX / 2 : CELL_PX);
   }
 
   setVisible(visible: boolean): void {
@@ -391,18 +458,24 @@ export class ThreeBuildings {
       if (KIT_HIDE_SET.has(id) || this.boatIds.has(id)) continue;
       const polygons = asPolygons(feature.geometry);
       if (!polygons.length) continue;
-      const key = tileKeyOf(polygons);
+      const near = tileKeyOf(polygons, this.detailZoom);
+      const detailed = this.detailTiles.has(near);
+      const key = COARSE_PREFIX + tileKeyOf(polygons);
       let list = groups.get(key);
       if (!list) groups.set(key, list = []);
       list.push(feature);
-      if (this.detailTiles.size) {
-        const near = tileKeyOf(polygons, DETAIL_ZOOM);
-        if (this.detailTiles.has(near)) { const k = EXTRAS_PREFIX + near; let l = groups.get(k); if (!l) groups.set(k, l = []); l.push(feature); }
-      }
+      // The cheap shell remains available until the detailed mesh actually installs.
+      if (detailed) { const k = `near:${near}`; let l = groups.get(k); if (!l) groups.set(k, l = []); l.push(feature); }
+      if (detailed) { const k = EXTRAS_PREFIX + near; let l = groups.get(k); if (!l) groups.set(k, l = []); l.push(feature); }
     }
     if (kitParts.length) groups.set(KIT_KEY, kitParts);
     // Houseboats ride along with the resident building tiles, one chunk per tile.
-    for (const key of [...groups.keys()]) if (this.boatTiles.has(key)) groups.set(BOAT_PREFIX + key, NO_SOURCE);
+    for (const feature of features) {
+      const polygons = asPolygons(feature.geometry);
+      if (!polygons.length) continue;
+      const key = tileKeyOf(polygons);
+      if (this.boatTiles.has(key)) groups.set(BOAT_PREFIX + key, NO_SOURCE);
+    }
     this.lastFeatures = features;
     this.sourceGroups = groups;
     const same = (a: readonly Feature[] | undefined, b: readonly Feature[]) => !!a && a.length === b.length && a.every((f, i) => f === b[i]);
@@ -455,6 +528,11 @@ export class ThreeBuildings {
   }
 
   dispose(): void {
+    ++this.appearanceToken;
+    this.appearanceLoaded = false;
+    this.invalidateBuilds();
+    this.worker?.terminate();
+    this.worker = undefined;
     for (const key of [...this.chunks.keys()]) this.dropChunk(key);
     for (const material of new Set([this.material, ...this.materials.values()])) material?.dispose();
     this.materials.clear();
@@ -500,11 +578,11 @@ export class ThreeBuildings {
   }
 
   /**
-   * The camera's position for near detail: the 2 x 2 block of z16 tiles nearest it gets facade
-   * extras. Cheap to call every frame; regroups only when that block changes.
+   * Detail follows the rider; touch devices use a smaller z17 neighbourhood.
+   * Cheap to call every frame; regroups only when that block changes.
    */
   setDetailCentre(lng: number, lat: number): void {
-    const n = 2 ** DETAIL_ZOOM, rad = lat * Math.PI / 180;
+    const n = 2 ** this.detailZoom, rad = lat * Math.PI / 180;
     const fx = ((lng + 180) / 360) * n, fy = ((1 - Math.log(Math.tan(rad) + 1 / Math.cos(rad)) / Math.PI) / 2) * n;
     const x = Math.floor(fx), y = Math.floor(fy), dx = fx - x < 0.5 ? -1 : 1, dy = fy - y < 0.5 ? -1 : 1;
     const next = [`${x}/${y}`, `${x + dx}/${y}`, `${x}/${y + dy}`, `${x + dx}/${y + dy}`];
@@ -529,7 +607,10 @@ export class ThreeBuildings {
 
   /** The street segments within reach of a chunk's buildings, metres from ORIGIN, for the chunk builder. */
   private streetsFor(source: readonly Feature[]): Float32Array | undefined {
-    if (!this.streets) return undefined;
+    // Architectural fronts use actual streets in every travel mode. A boat's
+    // navigation ways are not a substitute for the streets around its houses.
+    const grids = [this.streets, this.appearanceStreets].filter((grid): grid is SegmentGrid => !!grid);
+    if (!grids.length) return undefined;
     const kx = 111_320 * Math.cos(ORIGIN.lat * Math.PI / 180), ky = 110_540;
     let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
     for (const f of source) for (const polygon of asPolygons(f.geometry)) for (const [lng, lat] of polygon[0] ?? []) {
@@ -537,8 +618,11 @@ export class ThreeBuildings {
       if (x < minX) minX = x; if (x > maxX) maxX = x; if (y < minY) minY = y; if (y > maxY) maxY = y;
     }
     if (!(minX <= maxX)) return undefined;
-    const pad = FALLBACK_REACH_M, segs = this.streets.segs, out: number[] = [];
-    for (const i of this.streets.near(minX - pad, minY - pad, maxX + pad, maxY + pad)) out.push(segs[i * 4], segs[i * 4 + 1], segs[i * 4 + 2], segs[i * 4 + 3]);
+    const pad = FALLBACK_REACH_M, out: number[] = [];
+    for (const grid of grids) {
+      const segs = grid.segs;
+      for (const i of grid.near(minX - pad, minY - pad, maxX + pad, maxY + pad)) out.push(segs[i * 4], segs[i * 4 + 1], segs[i * 4 + 2], segs[i * 4 + 3]);
+    }
     return Float32Array.from(out);
   }
 
@@ -587,14 +671,14 @@ export class ThreeBuildings {
     if (worker) {
       // Off the main thread; a reply for an older generation (the tile changed again, or the look) is dropped.
       this.inflight.set(key, source);
-      const options = { look: this.look, streets: this.streetsFor(source) };
+      const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, appearanceRevision: this.appearanceRevision };
       this.inflightOptions.set(key, options);
-      worker.postMessage({ key, gen, ...options, features: source, mode: key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls' });
+      worker.postMessage({ key, gen, ...options, features: source, mode: chunkMode(key) });
       return;
     }
     const t0 = performance.now();
-    const options = { look: this.look, streets: this.streetsFor(source) };
-    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, options.look, key.startsWith(EXTRAS_PREFIX) ? 'extras' : 'walls', options.streets);
+    const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, appearanceRevision: this.appearanceRevision };
+    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, options.look, chunkMode(key), options.streets, options.profiles);
     this.install(key, source, chunk, performance.now() - t0, options);
   }
 
@@ -629,8 +713,9 @@ export class ThreeBuildings {
     return this.worker;
   }
 
-  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: { look: BuildingLook; streets?: Float32Array }): void {
+  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; appearanceRevision: string }): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
+    if (options && (options.look !== this.look || options.appearanceRevision !== this.appearanceRevision)) return;
     const t0 = performance.now() - buildMs;
     this.dropChunk(key);
     if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); return; }
@@ -655,11 +740,15 @@ export class ThreeBuildings {
     mesh.userData ??= {};
     mesh.userData.installedLook = options?.look ?? this.look;
     mesh.userData.installedStreets = options?.streets;
+    mesh.userData.installedProfiles = options?.profiles;
+    mesh.userData.appearanceRevision = options?.appearanceRevision;
     mesh.frustumCulled = false;
     const entry = { source, mesh, info: infoOf(chunk), ranges: new Map(chunk.ranges.map(r => [r.id, { start: r.start, count: r.count }])) };
     this.chunks.set(key, entry);
     this.scene.add(mesh);
-    if (this.hidden.size || this.highlighted.size) this.applyHidden(entry, new Set([...this.hidden, ...this.highlighted]));
+    mesh.userData.coarse = key.startsWith(COARSE_PREFIX);
+    this.refreshDetailOwnership();
+    this.applyHidden(entry, new Set([...this.hidden, ...this.highlighted, ...this.installedDetailIds]));
     this.lastBuildMs = performance.now() - t0;
     this.map.triggerRepaint();
   }
@@ -671,7 +760,7 @@ export class ThreeBuildings {
     for (const id of ids) {
       const range = entry.ranges.get(id);
       if (!range) continue;
-      attribute.array.fill(this.hidden.has(id) ? 1 : this.highlighted.has(id) ? 2 : 0, range.start, range.start + range.count);
+      attribute.array.fill(this.hidden.has(id) || entry.mesh.userData.coarse && this.installedDetailIds.has(id) ? 1 : this.highlighted.has(id) ? 2 : 0, range.start, range.start + range.count);
       touched = true;
     }
     if (touched) attribute.needsUpdate = true;
@@ -682,6 +771,16 @@ export class ThreeBuildings {
     if (!held) return;
     if (held.mesh) { this.scene?.remove(held.mesh); held.mesh.geometry.dispose(); }
     this.chunks.delete(key);
+    if (key.startsWith('near:')) this.refreshDetailOwnership();
+  }
+
+  private refreshDetailOwnership(): void {
+    const next = new Set<string>();
+    for (const [key, entry] of this.chunks) if (key.startsWith('near:') && entry.mesh) for (const id of entry.ranges.keys()) next.add(id);
+    const changed = new Set([...next, ...this.installedDetailIds].filter(id => next.has(id) !== this.installedDetailIds.has(id)));
+    this.installedDetailIds = next;
+    if (!changed.size) return;
+    for (const [key, entry] of this.chunks) if (key.startsWith(COARSE_PREFIX)) this.applyHidden(entry, changed);
   }
 
   private makeLayer(): any {
@@ -692,6 +791,7 @@ export class ThreeBuildings {
         const THREE = (window as any).CanalRecallThree?.THREE;
         if (!THREE) { console.warn('three-building-facades: shared three.js missing'); return; }
         owner.THREE = THREE;
+        if (!owner.appearanceLoaded) void owner.loadStreetAppearance();
         owner.camera = new THREE.Camera();
         owner.scene = new THREE.Scene();
         owner.renderer = new THREE.WebGLRenderer({ canvas: map.getCanvas(), context: gl, antialias: true });
@@ -708,7 +808,7 @@ export class ThreeBuildings {
         });
         owner.material = new THREE.RawShaderMaterial({
           glslVersion: THREE.GLSL3, vertexShader: VERTEX, fragmentShader: FRAGMENT,
-          uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 }, flatColour: { value: owner.look === 'untextured' ? 1 : 0 } }, side: THREE.FrontSide,
+          uniforms: { cells: { value: null }, masks: { value: null }, bands: { value: owner.look === 'cartoon' ? 3 : 0 }, flatColour: { value: owner.look === 'untextured' ? 1 : 0 }, cityFade: { value: 1 } }, side: THREE.FrontSide,
         });
         owner.materials.set(owner.look, owner.material);
         const initialLook = owner.requestedLook, token = ++owner.lookToken;
@@ -729,6 +829,8 @@ export class ThreeBuildings {
       },
       render(_gl: WebGL2RenderingContext, args: any) {
         if (!owner.visible || !owner.ready || !owner.scene || !owner.chunks.size || owner.map.getZoom() < MIN_ZOOM) return;
+        const fade = Math.max(0, Math.min(1, (owner.map.getZoom() - MIN_ZOOM) / 1.6));
+        for (const material of owner.materials.values()) material.uniforms.cityFade.value = fade;
         owner.camera.projectionMatrix.fromArray(args.defaultProjectionData.mainMatrix).multiply(owner.transform);
         owner.renderer.resetState();
         owner.renderer.render(owner.scene, owner.camera);
