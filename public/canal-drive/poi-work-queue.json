@@ -552,6 +552,30 @@
       "priority": "high",
       "status": "deferred",
       "notes": "User wants expansion without supplying screenshots. Pilot acquisition, joint recipe compilation, source admission, baked frontage cohorts and heldout four-mode review exist. Next: rank unprofiled routed segments by native footprint/year/height transitions and panorama coverage; sample each side, split where character changes, preserve source-specific appearance and modern exceptions, reject uncertain crops. District priors may guide discovery but must not overwrite individual street-side evidence. Keep recurring per-batch self-review and performance evidence."
+    },
+    {
+      "id": "boom-roof-sign-repair",
+      "task": "Repair Boom Chicago barrel roof and fit defining facade sign",
+      "priority": "high",
+      "status": "verified",
+      "owner": "root",
+      "validation": "Focused roof/sign envelope and wall-backed pane geometry checks passed. Regenerated native GLBs; gallery and live front/rear reviewed. Actual selected destination, pin, physical click sourced card, exact suppression and preserved resident/drawable neighboring buildings passed. Evidence: scripts/landmarks/review-nes-rozentheater-repairs.mjs; /tmp/nes-repairs-review.log; /tmp/boom-chicago-gallery.png and live front/rear screenshots. All 138 manual asset checks and TypeScript passed."
+    },
+    {
+      "id": "brakke-window-wall-repair",
+      "task": "Attach Brakke Grond windows to surveyed wall; remove decorative building name",
+      "priority": "high",
+      "status": "verified",
+      "owner": "root",
+      "validation": "Focused roof/sign envelope and wall-backed pane geometry checks passed. Regenerated native GLBs; gallery and live front/rear reviewed. Actual selected destination, pin, physical click sourced card, exact suppression and preserved resident/drawable neighboring buildings passed. Evidence: scripts/landmarks/review-nes-rozentheater-repairs.mjs; /tmp/nes-repairs-review.log; /tmp/brakke-grond-gallery.png and live front/rear screenshots. All 138 manual asset checks and TypeScript passed."
+    },
+    {
+      "id": "architectural-signage-policy",
+      "task": "Remove identifying words from models except defining source-supported architectural signs",
+      "priority": "normal",
+      "status": "in-progress",
+      "owner": "root",
+      "validation": "Policy persisted in AGENTS.md and building recipe. Removed invented name lettering from Moco Museum, Museum Van Loon and Brakke Grond; regenerated GLBs and visually reviewed museum gallery. Boom Chicago defining real signage fitted to actual panel. Broader signage audit remains queued."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

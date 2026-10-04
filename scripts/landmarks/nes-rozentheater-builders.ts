@@ -40,9 +40,19 @@ export function buildNesRozentheaterLandmark(id:string,_w:number,_d:number,b:Bui
   for(const y of [4.7,8.5])for(const x of [21.0,27.5,34.0,39.2])sash(x,y,entryFace(x)+.18,2.65,2.9);
   // Small octagonal window is a characteristic surviving feature of the square facade.
   add(new T.CircleGeometry(1.0,8),'stone',16.5,5.9,fz+.18);const oct=new T.CircleGeometry(.8,8);add(oct,'glass',16.5,5.9,fz+.26);
-  sign('VLAAMS CULTUURHUIS',16.7,3.91,fz+.34,.11,'white');
   // Windows on the west Nes frontage are separate from the inward-facing entrance wing.
-  for(let z=-27;z<7;z+=4.6)for(const y of [1.1,5.1,9.1]){box(40.0,y,z,.18,2.6,2.4,'glass');box(40.14,y+2.7,z,.22,.15,2.65,'white');}
+  // Project each Nes window onto the actual surveyed outer edge. This wall
+  // recedes by almost8m along the street; a fixed x40 left windows in midair.
+  const signedArea=ring.reduce((s,p,i)=>s+p.x*ring[(i+1)%ring.length].y-ring[(i+1)%ring.length].x*p.y,0);
+  for(let z=-27;z<7;z+=4.6){
+   const candidates=ring.flatMap((a,i)=>{const q=ring[(i+1)%ring.length],dz=q.y-a.y;if(Math.abs(dz)<.001)return[];const t=(z-a.y)/dz;if(t<0||t>1)return[];return[{a,q,x:a.x+t*(q.x-a.x)}]}).filter(p=>p.x>30).sort((a,q)=>q.x-a.x);
+   const p=candidates[0];if(!p)continue;const dx=p.q.x-p.a.x,dz=p.q.y-p.a.y,L=Math.hypot(dx,dz),nx=(signedArea>0?dz:-dz)/L,nz=(signedArea>0?-dx:dx)/L,angle=-Math.atan2(dz,dx)+(signedArea>0?Math.PI:0);
+   for(const y of[1.1,5.1,9.1]){
+    box(p.x+nx*.035,y,z+nz*.035,2.65,2.8,.18,'white',angle);
+    const pane=new T.BoxGeometry(2.4,2.6,.08);pane.userData.role='brakke-nes-window';pane.userData.wallPoint=[p.x,z];pane.userData.outward=[nx,nz];add(pane,'glass',p.x+nx*.145,y+1.4,z+nz*.145,angle);
+    box(p.x+nx*.19,y+2.8,z+nz*.19,2.85,.15,.28,'white',angle);
+   }
+  }
  }else if(id==='frascati'){
   body(ring,9.4,'brick');plane(ring,9.44,'slate');
   const street=region(-20,21,17,28);body(street,14.2,'brick');plane(street,14.23,'slate');
@@ -72,11 +82,20 @@ export function buildNesRozentheaterLandmark(id:string,_w:number,_d:number,b:Bui
   box(cx,0,front,w,3.6,.22,'stone');for(const x of [cx-2.6,cx,cx+2.6]){arch(x,.05,front+.18,2.35,3.2,'white');arch(x,.09,front+.23,2.05,2.95,'dark');box(x,.1,front+.3,.07,2.5,.08,'gold');}
   for(const x of [left+.75,right-.75]){box(x,4.25,front+.07,1.0,6.65,.18,'white');box(x,4.37,front+.2,.78,6.4,.08,'glass');box(x,4.37,front+.26,.055,6.4,.05,'frame');for(let yy=4.4;yy<10.8;yy+=1.1)box(x,yy,front+.26,.8,.055,.05,'frame');}
   for(let i=0;i<5;i++){const x=cx-3.0+i*1.5;sash(x,4.65,front+.13,1.22,6.7);for(let j=0;j<6;j++){const c:C=(i+j)%3===0?'gold':(i+j)%3===1?'red':'blue';box(x+(j%2?-.28:.27),5.2+j*.86,front+.34,.28,.25,.04,c);}}
-  box(cx,3.65,front+.4,8.1,.35,.85,'slate');box(cx,4.0,front+.4,8.0,.5,.23,'dark');sign('BOOM CHICAGO',cx-3.2,4.1,front+.55,.14,'red');
+  box(cx,3.65,front+.4,8.1,.35,.85,'slate');box(cx,4.0,front+.4,8.0,.85,.23,'dark');sign('BOOM CHICAGO',cx,4.1,front+.55,.14,'red',7.6);
   for(const y of [3.8,11.3,11.65])box(cx,y,front+.09,w+.2,.22,.3,'stone');
   // Lead-covered barrel across central foyer, with the taller sloping side roof masses behind the facade.
   for(const [lo,hi] of [[left,cx-3.9],[cx+3.9,right]])roof(region(lo,hi,11,21.2),11.75,3.3,'x','slate');
-  const barrel=new T.CylinderGeometry(1,1,7.2,16,1,true,0,Math.PI);barrel.rotateZ(Math.PI/2);barrel.rotateY(Math.PI/2);barrel.scale(3.9,2.3,1);add(barrel,'slate',cx,12.05,16.5);
+  // Build directly in native X/Y/Z. Rotating a unit cylinder and then
+  // scaling its world axes distorted the old barrel into intersecting arcs.
+  const barrelRegion=region(cx-3.9,cx+3.9,11,21.2),steps=20;
+  for(let i=0;i<steps;i++){
+   const x0=cx-3.9+i*7.8/steps,x1=cx-3.9+(i+1)*7.8/steps;
+   const strip=clip(clip(barrelRegion,'x',x0,true),'x',x1,false);if(strip.length<3)continue;
+   const roof=new T.ShapeGeometry(new T.Shape(strip)),p=roof.getAttribute('position');
+   for(let j=0;j<p.count;j++){const x=p.getX(j),z=p.getY(j),u=(x-cx)/3.9;p.setXYZ(j,x,11.79+2.3*Math.sqrt(Math.max(0,1-u*u)),z)}
+   if(roof.index)for(let j=0;j<roof.index.count;j+=3){const k=roof.index.getX(j);roof.index.setX(j,roof.index.getX(j+2));roof.index.setX(j+2,k)}roof.computeVertexNormals();roof.userData.role='boom-foyer-barrel';add(roof,'slate');
+  }
   // Rear auditorium volume follows the narrow irregular mapped plot and remains below mapped max15.1m.
   const auditorium=region(-10,10,-22,11);body(auditorium,12.6,'brick');roof(auditorium,12.6,2.45,'x','slate');
  }else throw new Error(`No Nes/Rozentheater builder for ${id}`);

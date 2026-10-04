@@ -2569,8 +2569,8 @@
         "depthMetres": 18.74285364151001,
         "depthCoverage": 1.2024937732170768
       },
-      "triangles": 4122,
-      "bytes": 59016,
+      "triangles": 3366,
+      "bytes": 49640,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "museum-van-loon": {
@@ -2636,8 +2636,8 @@
         "depthMetres": 14.946446418762207,
         "depthCoverage": 0.6548679010285186
       },
-      "triangles": 3554,
-      "bytes": 53904,
+      "triangles": 2258,
+      "bytes": 38840,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "amstelkerk": {
@@ -4756,8 +4756,8 @@
         "depthMetres": 58.97729301452637,
         "depthCoverage": 1.0028079468467708
       },
-      "triangles": 7877,
-      "bytes": 97944,
+      "triangles": 5177,
+      "bytes": 72824,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "frascati": {
@@ -4894,8 +4894,8 @@
         "depthMetres": 18.535651206970215,
         "depthCoverage": 1.0360764546363057
       },
-      "triangles": 3501,
-      "bytes": 49540,
+      "triangles": 3509,
+      "bytes": 49476,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "foam": {

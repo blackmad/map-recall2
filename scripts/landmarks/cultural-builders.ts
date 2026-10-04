@@ -8,7 +8,7 @@ export interface BuildingTools {
  hip(x:number,y:number,z:number,w:number,d:number,h:number,c:Colour):void;
  window(x:number,y:number,z:number,w:number,h:number):void;
  clock(x:number,y:number,z:number,wind?:boolean):void;
- sign(text:string,x:number,y:number,z:number,pixel:number,c?:Colour):void;
+ sign(text:string,x:number,y:number,z:number,pixel:number,c?:Colour,maxWidth?:number):void;
 }
 /** Each model is authored against its measured footprint, not stretched after export. */
 export function buildCulturalLandmark(id:string,w:number,d:number,b:BuildingTools){
