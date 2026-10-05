@@ -7,7 +7,9 @@ const browser=await chromium.launch({headless:true,executablePath:'/Applications
 const report={views:[],errors:[],limits:'Headless Chrome touch emulation; frame interval includes vsync. GPU timer only if supported and non-disjoint. Heights/colours/openings are approximate.'};
 try {
  if(process.argv.includes('--demo')){
-  const page=await browser.newPage({viewport:{width:1440,height:1000}});
+  const stress=process.argv.includes('--intro-stress');
+  const page=await browser.newPage({viewport:stress?{width:2048,height:1080}:{width:1440,height:1000},deviceScaleFactor:stress?2:1});
+  if(stress)await page.route('**/allotment-houses-demo.html',async route=>{const response=await route.fetch();const html=await response.text();await route.fulfill({response,body:html.replace('await show(true);status.textContent=', 'game.vectorMap._completeCity.setSuspended(true);game.vectorMap._facadesOutOfZoom=true;game.vectorMap._applyFacadeState();await show(true);status.textContent=')});});
   page.on('pageerror',e=>report.errors.push(e.message));
   await page.goto(`${base}/canal-drive/allotment-houses-demo.html`);
   await page.waitForFunction(()=>document.querySelector('#status').textContent.includes('376 mapped'),null,{timeout:120000});
@@ -16,7 +18,9 @@ try {
   await page.waitForFunction(()=>Math.abs(document.querySelector('iframe').contentWindow.canalRecallGame.vectorMap.map.getCenter().lng-4.8603)<.0001);
   await page.locator('#look').selectOption('cartoon');
   await page.waitForFunction(()=>document.querySelector('iframe').contentWindow.canalRecallGame.vectorMap._threeBuildings.look==='cartoon');
-  report.demo={pass:true,parkButton:true,lookSwitch:true};
+  report.demo=await page.evaluate(()=>{const v=document.querySelector('iframe').contentWindow.canalRecallGame.vectorMap;return{pass:true,parkButton:true,lookSwitch:true,status:document.querySelector('#status').textContent,gardenResident:v._threeBuildings.lastFeatures.filter(f=>f.properties.allotmentHouse).length,chunks:v._threeBuildings.chunks.size,suspended:v._completeCity.suspended,facadesOutOfZoom:v._facadesOutOfZoom};});
+  report.demo.forcedIntroSuspension=stress;
+  if(!report.demo.gardenResident||!report.demo.chunks||report.demo.suspended||report.demo.facadesOutOfZoom)throw Error('Demo building streaming did not resume');
   console.log('Interactive demo boots, park selector and look switch pass.');
  } else for(const mobile of [false,true]){
   const page=await browser.newPage({viewport:mobile?{width:430,height:850}:{width:1440,height:1000},isMobile:mobile,hasTouch:mobile,deviceScaleFactor:1});

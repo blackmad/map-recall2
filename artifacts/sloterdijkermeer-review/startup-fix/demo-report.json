@@ -1,0 +1,16 @@
+{
+  "views": [],
+  "errors": [],
+  "limits": "Headless Chrome touch emulation; frame interval includes vsync. GPU timer only if supported and non-disjoint. Heights/colours/openings are approximate.",
+  "demo": {
+    "pass": true,
+    "parkButton": true,
+    "lookSwitch": true,
+    "status": "Drag to explore · scroll or pinch to zoom · 376 mapped garden houses",
+    "gardenResident": 376,
+    "chunks": 32,
+    "suspended": false,
+    "facadesOutOfZoom": false,
+    "forcedIntroSuspension": true
+  }
+}
