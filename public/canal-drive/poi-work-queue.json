@@ -874,6 +874,30 @@
       "researchLeads": [
         "User previously linked jungle_jim Amsterdam Sketchfab collection including a market-hall reference; inspect matching model/rights rather than assuming a licence or copying its mesh."
       ]
+    },
+    {
+      "id": "mediamatic",
+      "task": "Mediamatic — original house-style landmark model",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Research the waterfront venue and greenhouse/industrial ensemble; resolve exact occupied buildings and public entrance while preserving surrounding uses. Archive original reference sources; integrate destination, pin/label and meaningful sourced card, then review gallery and native game placement."
+    },
+    {
+      "id": "hannekes-boom",
+      "task": "Hannekes Boom — original house-style landmark model",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Research the waterfront cafe, timber pavilion and terrace; preserve the open waterside setting and verify current footprint and public access. Archive original reference sources; integrate destination, pin/label and meaningful sourced card, then review gallery and native game placement."
+    },
+    {
+      "id": "pulitzer-amsterdam",
+      "task": "Pulitzer Amsterdam hotel — original house-style landmark model",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Research the connected historic canal houses and hotel courtyards; identify exact participating buildings and preserve individual rooflines, courts and neighboring houses. Archive original reference sources; integrate destination, pin/label and meaningful sourced card, then review gallery and native game placement."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
