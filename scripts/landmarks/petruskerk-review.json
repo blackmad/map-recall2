@@ -1,0 +1,117 @@
+{
+  "modelId": "petruskerk",
+  "status": "geometry-ready-visual-review-pending",
+  "referenceImages": [
+    "artifacts/landmarks/petruskerk/references/operator-front.jpg",
+    "artifacts/landmarks/petruskerk/references/operator-side.jpg",
+    "artifacts/landmarks/petruskerk/references/operator-tower.jpg"
+  ],
+  "recognitionChecks": [
+    "cream timber square belfry, four black/gold clocks and narrow pyramid spire",
+    "truncated long dark roof with surveyed steep side pitches",
+    "7 heavy buttresses per long elevation; white tall arched panes between",
+    "west double blind Gothic panel, white doorway surround and small slot above",
+    "churchyard/open entrance and neighboring houses retained"
+  ],
+  "geometryCheck": "node --import tsx scripts/check-petruskerk-geometry.ts",
+  "cpuEvidence": {
+    "triangles": 7300,
+    "boundsMetres": {
+      "min": [
+        -13.878,
+        0,
+        -7.411
+      ],
+      "max": [
+        13.898,
+        24.9,
+        7.421
+      ]
+    },
+    "checksPassed": [
+      "first-hit glazing north/south/west",
+      "first-hit door",
+      "native bounds and exact suppression",
+      "upward roof normals and supported slope",
+      "three open-space rays",
+      "preserved distinct neighboring/tomb BAG parents"
+    ],
+    "typescript": "npx tsc --noEmit --pretty false passed"
+  },
+  "limitations": [
+    "Spire apex estimated from source photograph ratios; surveyed AHN omits high pyramid.",
+    "Bounded Beeldbank address/name search produced a JavaScript shell; no historical drawing/photo inspected.",
+    "East-end facade window rhythm simplified; no separate context building or detached tomb parent incorporated."
+  ],
+  "requiredBeforeAcceptance": [
+    "root reference/render gallery comparison incl 4 lower-angle rotations",
+    "independent reviewer seek failures",
+    "live-game sides, loaded replacement suppression and neighbor check",
+    "route/map-pin/physical-card-pointer contract",
+    "private source archive commit before model commit"
+  ],
+  "specPath": "scripts/landmarks/petruskerk-spec.json",
+  "neighbors": [
+    [
+      "w274066751",
+      "NL.IMBAG.Pand.0363100012163820"
+    ],
+    [
+      "w274066833",
+      "NL.IMBAG.Pand.0363100012155599"
+    ]
+  ],
+  "zoom": 19.1,
+  "bearing": 75,
+  "independentVisualReview": {
+    "reviewer": "review_landmark_batch static independent reviewer",
+    "reviewedAt": "2026-10-05",
+    "status": "visual-pass-current-new-model",
+    "acceptance": true,
+    "scope": "Visual comparison only; coordinator owns integration and final acceptance",
+    "freshness": "Current regenerated17:22gallery and subsequent current native batch captures",
+    "sourceEvidence": [
+      "artifacts/landmarks/petruskerk/references/operator-front.jpg",
+      "artifacts/landmarks/petruskerk/references/operator-side.jpg"
+    ],
+    "renderEvidence": [
+      "artifacts/petruskerk-review/gallery.png",
+      "artifacts/petruskerk-review/gallery-angle-0.png",
+      "artifacts/petruskerk-review/gallery-angle-1.png",
+      "artifacts/petruskerk-review/gallery-angle-2.png",
+      "artifacts/petruskerk-review/gallery-angle-3.png",
+      "artifacts/petruskerk-review/neutral-front.png",
+      "artifacts/petruskerk-review/live-rear.png"
+    ],
+    "findings": [
+      "Cream square louver/clock belfry with narrow dark pyramid spire, steep truncated dark nave roof, heavy repeated buttresses and tall white sash/arched glazing preserve photographic recognition.",
+      "West paired blind pointed lancets and small upper slot, white entry surround and front side windows read correctly in gallery/native view; opposite end and both long window/buttress elevations are exposed in other rotations.",
+      "Native front/opposite retain churchyard, approach and separate neighboring house/consistory volumes; no visible replacement overlap, unsupported roof fin or filled open space."
+    ],
+    "limitations": [
+      "Spire apex is photo-ratio estimate; sash/buttress detail and brick shade simplified.",
+      "Separate tomb parents remain context rather than part of asset; monument carving not reproduced."
+    ],
+    "pending": []
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "canonicalModelId": "petruskerk",
+    "privatePath": "models/petruskerk",
+    "commit": "aae9a040f371bf61f3df2a75f3870ed25cbd78a1"
+  },
+  "visualAcceptance": true,
+  "state": "verified-gallery-and-native-game",
+  "coordinatorAcceptance": {
+    "date": "2026-10-05",
+    "status": "pass",
+    "evidenceDirectory": "artifacts/petruskerk-review",
+    "checks": [
+      "Gallery and rotated source comparison",
+      "Native game front and opposite visual comparison",
+      "Exact masks and resident neighbor retention",
+      "Physical destination, pin/label and meaningful info card",
+      "Independent visual review"
+    ]
+  }
+}

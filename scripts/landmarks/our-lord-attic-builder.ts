@@ -12,12 +12,12 @@ export function buildOurLordAttic(_w:number,_d:number,b:BuildingTools){
  function roof(poly:T.Vector2[][],eave:number,modern:boolean){
   const shape=new T.Shape(poly[0]);shape.holes=poly.slice(1).map(r=>new T.Path(r));b.add(openTopPrism(shape,0,eave),modern?'greyBrick':'brick');
   const g=new T.ShapeGeometry(shape),p=g.getAttribute('position'),ix=g.index!;
-  const height=(x:number,z:number)=>eave+(modern?Math.max(0,Math.min(2.8-Math.abs(x-7.14)*.84,(11.81-z)*.84)):Math.max(0,5.8-Math.abs(x+2.2)*1.81,4.2-Math.abs(x+8.1)*1.65));
+  const height=(x:number,z:number)=>eave+(modern?Math.max(0,Math.min(4.55-Math.abs(x-7.14)*1.35,.8+(11.81-z)*1.35)):Math.max(0,5.8-Math.abs(x+2.2)*1.81,4.2-Math.abs(x+8.1)*1.65));
   const cuts=modern?[-Infinity,7.14,Infinity]:[-Infinity,-10.65,-8.1,-5.55,-5.31,-5.4,-2.2,Infinity];cuts.sort((a,c)=>a-c);
   for(let i=0;i<ix.count;i+=3){const triangle=[0,1,2].map(j=>new T.Vector2(p.getX(ix.getX(i+j)),p.getY(ix.getX(i+j))));for(let k=1;k<cuts.length;k++){const clipped=clip(clip(triangle,cuts[k-1],false),cuts[k],true);
    // The present entrance has a straight coping: hip the front roof behind it.
    // Split at every competing roof plane so no triangle bridges a crease.
-   let parts=[clipped];if(modern)for(const [nx,nz,c] of [[0,1,11.81-2.8/.84],[1,1,11.81+7.14-2.8/.84],[-1,1,11.81-7.14-2.8/.84]]){const split=(ring:T.Vector2[],side:number)=>{const out:T.Vector2[]=[];for(let t=0;t<ring.length;t++){const a=ring[t],b=ring[(t+1)%ring.length],da=side*(nx*a.x+nz*a.y-c),db=side*(nx*b.x+nz*b.y-c);if(da>=0)out.push(a);if((da>=0)!==(db>=0))out.push(a.clone().lerp(b,da/(da-db)));}return out;};parts=parts.flatMap(r=>[split(r,1),split(r,-1)]).filter(r=>r.length>=3);}
+   let parts=[clipped];if(modern)for(const [nx,nz,c] of [[0,1,11.81-(4.55-.8)/1.35],[1,1,11.81+7.14-(4.55-.8)/1.35],[-1,1,11.81-7.14-(4.55-.8)/1.35]]){const split=(ring:T.Vector2[],side:number)=>{const out:T.Vector2[]=[];for(let t=0;t<ring.length;t++){const a=ring[t],b=ring[(t+1)%ring.length],da=side*(nx*a.x+nz*a.y-c),db=side*(nx*b.x+nz*b.y-c);if(da>=0)out.push(a);if((da>=0)!==(db>=0))out.push(a.clone().lerp(b,da/(da-db)));}return out;};parts=parts.flatMap(r=>[split(r,1),split(r,-1)]).filter(r=>r.length>=3);}
    for(const q of parts)for(let j=1;j<q.length-1;j++){
    // The +Y normal owns the entire roof; wall shells have no overlapping caps.
    const a=q[0],c=q[j],d=q[j+1],cross=(c.x-a.x)*(d.y-a.y)-(c.y-a.y)*(d.x-a.x);mesh((cross<0?[a,c,d]:[a,d,c]).flatMap(v=>[v.x,height(v.x,v.y),v.y]),modern?'red':'slate');}}
@@ -32,6 +32,7 @@ export function buildOurLordAttic(_w:number,_d:number,b:BuildingTools){
   // than floating ahead of it. Historic white trim is four rails, not a slab.
   b.box(p.x,y,p.y,w+.12,h+.12,.045,modern?'dark':'white',a);
   const q=offset(p,a,.035);b.box(q.x,y+.045,q.y,w,h,.04,'glass',a);
+  if(modern){for(const u of [-w/2-.035,w/2+.035]){const f=offset(p,a,.06,u);b.box(f.x,y-.015,f.y,.075,h+.13,.075,'dark',a);}for(const yy of [y-.015,y+h+.045]){const f=offset(p,a,.06);b.box(f.x,yy,f.y,w+.14,.07,.075,'dark',a);}}
   if(!modern){for(const u of [-w/2,0,w/2]){const q=offset(p,a,.065,u);b.box(q.x,y+.03,q.y,.045,h+.03,.04,'white',a);}for(let v=.65;v<h;v+=.7){const q=offset(p,a,.065);b.box(q.x,y+v,q.y,w,.045,.04,'white',a);}}
   const sill=offset(p,a,.045);b.box(sill.x,y-.045,sill.y,w+.16,.065,.105,modern?'dark':'stone',a);
  }
@@ -39,10 +40,11 @@ export function buildOurLordAttic(_w:number,_d:number,b:BuildingTools){
    // Canal fronts are bespoke below. Only alley sides have photographed
    // openings; the neighboring party walls and roof band must stay solid.
    if(modern?n.x>-.8:n.x<.8)continue;
+   if(modern){if(len>10){const c=p.clone().addScaledVector(v,len*.88).addScaledVector(n,.024);pane(c,10.95,1.35,2.05,a,true);}continue;}
    const count=Math.max(1,Math.floor(len/3));for(let j=0;j<count;j++){const c=p.clone().addScaledVector(v,len*(j+.5)/count).addScaledVector(n,.022);for(const y of [1.5,5.1,8.7])pane(c,y,Math.min(1.20,len/count*.45),2.35,a,modern);}
   }}}
 
- for(let i=0;i<polygons.length;i++)for(const poly of polygons[i]){roof(poly,i?14.8:14,!!i);edgeWindows(poly,!!i);}
+ for(let i=0;i<polygons.length;i++)for(const poly of polygons[i]){roof(poly,i?13.0:14,!!i);edgeWindows(poly,!!i);}
  // Historic main house: every detail derives from its actual slightly angled canal edge.
  const r=polygons[0][0][0],p=r[5],q=r[6],v=q.clone().sub(p),length=v.length();v.normalize();const n=new T.Vector2(-v.y,v.x),a=Math.atan2(n.x,n.y),centre=p.clone().lerp(q,.5).addScaledVector(n,.018);
  const front=(u:number,d=.0)=>offset(centre,a,d,u);
@@ -59,16 +61,31 @@ export function buildOurLordAttic(_w:number,_d:number,b:BuildingTools){
  const cap=front(0,.07);b.box(cap.x,19.68,cap.y,1.05,.17,.36,'stone',a);const beam=front(0,.43);b.box(beam.x,18.98,beam.y,.22,.24,1.02,'dark',a);
  for(let j=0;j<8;j++){const c=front(-2.5,.25+(8-j)*.26);b.box(c.x,j*.19,c.y,1.25,.19,.33,'stone',a);}
  for(const u of [-1.5,.5,2.15])pane(front(u),.20,.8,.75,a);
- // Three modern bays, ungridded glazing and orange/red brick lintels.
+ // Current entrance38: rebuilt grey-brown masonry, three flush ungridded bays,
+ // black reveals/sills, broad terracotta lintels and reused black wall ties.
  const mr=polygons[1][0][0],mp=mr[5],mq=mr[8],mv=mq.clone().sub(mp),ml=mv.length();mv.normalize();const mn=new T.Vector2(-mv.y,mv.x),ma=Math.atan2(mn.x,mn.y),mc=mp.clone().lerp(mq,.5).addScaledVector(mn,.018),mf=(u:number,d=0)=>offset(mc,ma,d,u);
- for(const y of [4.1,7.65,11.1])for(const u of [-2.2,0,2.2]){const c=mf(u);pane(c,y,1.6,2.65,ma,true);const top=mf(u,.01);b.box(top.x,y+2.77,top.y,1.72,.30,.055,'red',ma);}
- pane(mf(0,.01),.08,ml-.32,2.9,ma,true);for(const u of [-ml/2+.15,0,ml/2-.15]){const c=mf(u,.16);b.box(c.x,.1,c.y,.07,2.9,.07,'dark',ma);}
- const band=mf(0,.06);b.box(band.x,3.02,band.y,ml,.8,.13,'red',ma);
- // Actual gold star-like emblem on the entrance panel, no name lettering.
- for(let j=0;j<8;j++){const g=new T.BoxGeometry(.045,.42,.045);g.rotateZ(j*Math.PI/4);b.add(g,'gold',band.x,3.43,band.y+.12,ma);}
- const coping=mf(0,.01);b.box(coping.x,14.75,coping.y,ml,.14,.10,'red',ma);
- // Current contractor/front photos show a glazed box behind the straight
- // coping, not the earlier reconstruction's tile-front attic window.
- b.box(7.14,15.8,9.8,1.7,1.72,1.35,'glass');b.box(7.14,17.52,9.8,1.79,.065,1.44,'dark');
- for(const x of [6.29,7.99])for(const z of [9.125,10.475])b.box(x,15.8,z,.045,1.72,.045,'dark');
+ // Surveyed side eave is13m; the straight front parapet rises above the hipped roof.
+ const frontWall=mf(0,-.065);b.box(frontWall.x,12.95,frontWall.y,ml,.85,.14,'greyBrick',ma);
+ for(const [y,h,lintel] of [[4.1,2.8,.46],[7.65,2.50,.34],[11.00,2.05,.22]])for(const u of [-2.2,0,2.2]){const c=mf(u);pane(c,y,1.50,h,ma,true);const top=mf(u,.014);b.box(top.x,y+h+.13,top.y,1.68,lintel,.085,'red',ma);}
+ // Original ornamental iron anchors survive between and beside the new openings.
+ for(const y of [7.3,10.62,13.48])for(const u of [-ml/2+.26,-1.1,1.1,ml/2-.26]){const c=mf(u,.10);b.box(c.x,y-.13,c.y,.07,.30,.075,'dark',ma);for(const dy of [-.10,.02,.12]){const q=mf(u,.125);b.add(new T.SphereGeometry(.075,6,4),'dark',q.x,y+dy,q.y);}const q=mf(u,.14);b.add(new T.TorusGeometry(.09,.028,4,8),'dark',q.x,y-.03,q.y,ma);}
+ pane(mf(0,.01),.08,ml-.32,2.9,ma,true);for(const u of [-ml/2+.15,-ml*.21,ml*.21,ml/2-.15]){const c=mf(u,.12);b.box(c.x,.1,c.y,.09,2.9,.08,'dark',ma);}
+ const band=mf(0,.06);b.box(band.x,3.02,band.y,ml,1.0,.13,'red',ma);
+ // Actual small gold star emblem is retained; the map label supplies the name.
+ for(let j=0;j<8;j++){const g=new T.BoxGeometry(.045,.42,.045);g.rotateZ(j*Math.PI/4);const q=mf(0,.145);b.add(g,'gold',q.x,3.53,q.y,ma);}
+ const coping=mf(0,.035);b.box(coping.x,13.76,coping.y,ml,.14,.15,'red',ma);
+ // Current museum press photograph (Rebekka Mell) shows an inset glazed
+ // dormer with a slanted front and dark cheeks; AHN5 fixes its lower height.
+ const dx=7.14,dz=11.24,ww=1.62,bottom=14.0,top=15.95;
+ // AHN5 low-slope lantern patch reaches the front line (localz≈11.85).
+ // Source photograph shows the pane beginning at the coping; a1m retreat
+ // buried its lower half in the hip. Bring its bottom forward, retaining height.
+ // Tilt the whole glass and frame together: no floating rectangular panel.
+ const tilt=-.19,glazing=new T.BoxGeometry(ww,top-bottom,.035);glazing.rotateX(tilt);b.add(glazing,'glass',dx,(top+bottom)/2,dz+.38);
+ for(const u of [-ww/2,ww/2]){const g=new T.BoxGeometry(.07,top-bottom+.1,.08);g.rotateX(tilt);b.add(g,'dark',dx+u,(top+bottom)/2,dz+.38);}
+ for(const y of [bottom,top]){const yy=(top+bottom)/2+Math.cos(tilt)*(y-(top+bottom)/2),z=dz+.38+Math.sin(tilt)*(y-(top+bottom)/2);b.box(dx,yy-.025,z,ww+.1,.05,.06,'dark');}
+ for(const side of [-1,1])b.box(dx+side*(ww/2-.025),bottom,dz-.18,.065,top-bottom,1.08,'dark');
+ b.box(dx,bottom,dz-.70,ww,top-bottom,.065,'dark');
+ const capFront=dz+.38+Math.sin(tilt)*(top-bottom)/2,capRear=dz-.70;
+ b.box(dx,top-.055,(capFront+capRear)/2,ww,.04,capFront-capRear,'dark');
 }

@@ -217,14 +217,14 @@
   ],
   "referenceImages": [
     "https://www.nlbouwmeesters.nl/wp-content/uploads/2020/09/Project-NL-Bouwmeesters-OHLOS-impressie-04.jpg",
-    "https://vekemans.nl/wp-content/uploads/2015/04/Ons-Lieve-Heer-scaled.jpg"
+    "https://vekemans.nl/wp-content/uploads/2015/04/Ons-Lieve-Heer-scaled.jpg",
+    "https://opsolder.nl/wp-content/uploads/2022/10/Persmap-Museum-Ons-Lieve-Heer-op-Solder.zip"
   ],
   "scopeNotes": [
     "Historic house Oudezijds Voorburgwal 40 and the two incorporated rear alley houses share BAG0363100012178021; entrance38 is separate BAG0363100012178040.",
     "Heintje Hoekssteeg remains open above ground; connection is underground and is deliberately not drawn as an opaque street bridge.",
     "Native WGS84 surveys inherited from cached canal-museum-footprints source. Heights 19.8/17.6 are envelope guidance, not uniform wall heights. Eaves14/14.8 and facade bay dimensions are photograph-derived approximations.",
-    "Historic main facade four sash bays, white lower pui, basement and raised entry stairs, shoulder-scroll triangular gable with two lower attic windows and one upper; modern entrance three ungridded bays, recycled brick and red lintels, tile gable/dormer and rear roof lantern.",
-    "2026-10-05 current-photo repair supersedes earlier tile-gable interpretation of modern entrance; straight front coping, set-back roof and glazing box are used instead."
+    "2026-10-05 second user defect audit: modern entrance38 retains three ungridded windows per floor, shorter top row, black reveals/sills, broad terracotta lintels, ornamental reused iron ties, sparse alley opening and straight coping with inset slanted glass dormer. AHN5 2023 roof planes support side eave~13m and ridge~17.55m above ground. Source photo proportions are approximate."
   ],
   "windowRepairEvidence": {
     "reviewedOn": "2026-10-05",
@@ -247,7 +247,8 @@
           "Modern windows have thin dark flush frame and narrow shallow projecting sill; red brick lintels sit in facade plane.",
           "Alley return has sparse openings, not a complete repetitive grid. Adjacent party wall is not an exposed street facade."
         ],
-        "confidence": "high for facade relief/roof termination, medium for simplified alley distribution"
+        "confidence": "high for facade relief/roof termination, medium for simplified alley distribution",
+        "auditCorrection": "2026-10-05: NL Bouwmeesters image04 shows triangular tile-front variant, not current straight-coping roof."
       },
       {
         "path": "/tmp/attic-reference-mason.jpg",
@@ -256,14 +257,16 @@
         "assertions": [
           "Earlier photographed front has triangular tile termination; differs from present contractor/front photographs and is not used as current roof-front authority."
         ],
-        "confidence": "high photo discrepancy; precise alteration date unresolved"
+        "confidence": "high photo discrepancy; precise alteration date unresolved",
+        "auditCorrection": "2026-10-05: Vekemans montage actually shows straight coping/glass box; previous statement of triangular tile-front was incorrect."
       }
     ],
     "repairDecision": "Use current straight-coping front with hipped roof set back behind it and glazed roof box; remove generic roof-band/front/party-wall rows and physically attach thin pane frames. Preserve historic bespoke three gable openings.",
     "limitations": [
       "Alley windows below eave retain bounded approximate spacing; no claim that photo establishes every opening.",
       "Roof dimensions remain native-envelope/photo approximations; root multi-angle visual review pending."
-    ]
+    ],
+    "supersededBy": "currentEntranceAudit 2026-10-05 second user-reported defect; earlier roof-source attribution reversed"
   },
   "privateSourceArchive": {
     "repository": "https://github.com/blackmad/map-recall2-source-data",
@@ -271,5 +274,85 @@
     "modelPath": "models/ons-lieve-heer-op-solder/",
     "manifest": "models/ons-lieve-heer-op-solder/manifest.json",
     "scope": "Available cached references and explicitly dated current captures; missing historical responses are not claimed recovered."
+  },
+  "currentEntranceAudit": {
+    "date": "2026-10-05",
+    "ownerCurrentReference": {
+      "archive": "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-press.zip",
+      "member": "2022 Persmap/Gevel_MuseumOnsLieveHeerOpSolder_RebekkaMell_006.jpg",
+      "image": "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-current-owner-front.jpg",
+      "author": "Rebekka Mell",
+      "date": "2022 press pack; exact exposure date unknown",
+      "rights": "Museum permits royalty-free press use with photographer credit; research only"
+    },
+    "correctedSourceAttribution": [
+      "NL Bouwmeesters project image04 is the triangular tile-front roof variant; it is NOT evidence for the straight current coping.",
+      "Vekemans montage2015 and current museum press photo show straight terracotta coping and inset glass box; precise variant alteration date unresolved."
+    ],
+    "survey": {
+      "raw": "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-3dbag-modern.json",
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012178040",
+      "ahn": "AHN5 2023",
+      "groundAbsoluteMetres": 0.844,
+      "ridgeAbsoluteMetres": 18.408,
+      "sidePitchDegrees": [
+        53.25,
+        53.37
+      ],
+      "dormerFlatTopAbsoluteMetres": 16.65,
+      "interpretation": "Main ridge~17.56m above ground; dormer~15.8m; side eave~13m. AHN/source front parapet not separately resolved; authoring13.8m front is photo-derived."
+    },
+    "architecturalAssertions": [
+      {
+        "part": "front38",
+        "feature": "three large ungridded blue-green panes per floor, with top windows shorter than lower row, dark reveal and projecting sill, orange-red brick lintels",
+        "confidence": "high",
+        "source": "current museum press image Rebekka Mell"
+      },
+      {
+        "part": "front38",
+        "feature": "ornamental black iron ties alternating between bay openings and at edge masonry",
+        "confidence": "high",
+        "source": "current museum press image and Vekemans montage"
+      },
+      {
+        "part": "roof38",
+        "feature": "straight terracotta coping with slanted glazed dormer behind; no triangular tile-front gable in current owner photo",
+        "confidence": "high morphology, bounded approximate dimensions",
+        "source": "current museum press image"
+      }
+    ],
+    "rawSources": [
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-project.jpg",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-press.zip",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-mason.html",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-mason.jpg",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-monument.html",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-owner.html",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-current-owner-front.jpg",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-contractor.html",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-register.html",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-beeldbank38.html",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-project.html",
+      "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-3dbag-modern.json"
+    ],
+    "archiveSearch": "bounded Oudezijds Voorburgwal38 Beeldbank shell saved; no inspected historic drawing. New entrance built2015 outside Bouwdossiers1905\u20132010 range.",
+    "accepted": false,
+    "lanternSetbackCorrection": {
+      "date": "2026-10-05",
+      "trigger": "Root and independent reviewer saw defining source glass box reduced to a dark slot in revised gallery-angle0",
+      "evidence": "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-current-owner-front.jpg",
+      "surveyPlanInterpretation": "Existing AHN5 low-slope patch corners approximately local[(8.5,11.86),(8.43,10.49),(7.13,9.68),(5.82,10.45),(5.80,11.85)], elevations15.71\u201315.86m above source ground. RD plan aligned by31degree source heading and matching native footprint bounds; bounded approximate alignment, not new exact survey conversion. Reflective surface fit does not establish exact glazing aperture width.",
+      "diagnosis": "Previous facecenterz10.88 put glass1m behind parapet; hip atface rises15.05m and hides lower1m. Frame crossrails also used opposite tilt sign and cap projected ahead of glass.",
+      "decision": "Advance glasscenter toz11.62, slopedbottomz11.80 meeting frontcopingz11.81. Keep1.62m source-proportioned width and15.95m top. Align crossrails with rotated glass and terminate opaque cap at its top edge. Dark side cheeks remain source-supported; no invented side glazing.",
+      "cpuEvidence": "First-hit glass at14.4,15.1,15.6m and from elevated diagonal;8104triangles; prior checks retained",
+      "visualAcceptance": "pending refreshed root gallery/game comparison"
+    }
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "canonicalModelId": "ons-lieve-heer-op-solder",
+    "privatePath": "models/ons-lieve-heer-op-solder",
+    "commit": "aae9a040f371bf61f3df2a75f3870ed25cbd78a1"
   }
 }

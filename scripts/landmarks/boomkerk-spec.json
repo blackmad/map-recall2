@@ -1,0 +1,38 @@
+{
+  "id": "boomkerk",
+  "name": "Boomkerk",
+  "landmarkId": "extract_landmarks_746878126",
+  "modelUrl": "./models/boomkerk.glb",
+  "suppressOsmIds": [
+    "w276234088",
+    "NL.IMBAG.Pand.0363100012119680"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.850806,
+      52.383285
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 52,
+    "widthMetres": 29
+  },
+  "surveyed": {
+    "anchor": [
+      4.850806,
+      52.383285
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG native shape; geometry baked east/south metres"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Boomkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native BAG church reconstruction; separate presbytery and school retained. Roof heights from AHN5/3DBAG, architectural detail from RCE and reference photographs."
+  }
+}

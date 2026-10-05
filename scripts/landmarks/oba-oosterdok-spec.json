@@ -1,0 +1,48 @@
+{
+  "id": "oba-oosterdok",
+  "name": "OBA Oosterdok",
+  "landmarkId": "extract_landmarks_751632752",
+  "modelUrl": "./models/oba-oosterdok.glb",
+  "suppressOsmIds": [
+    "w1487606300",
+    "w1487606301",
+    "w1487606302",
+    "w1487606303",
+    "w1487606304",
+    "w1487606305",
+    "w1487606306",
+    "w1487606307",
+    "w1487606308",
+    "w1487606309",
+    "w1487606310",
+    "w1487606311"
+  ],
+  "footprint": {
+    "centre": [
+      4.908303881212726,
+      52.37600837944057
+    ],
+    "headingDegrees": 172.17112613676915,
+    "lengthMetres": 64.40470560623255,
+    "widthMetres": 38.70079461141226
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "OBA Oosterdok",
+    "author": "Map Recall",
+    "sourceUrl": "https://oba.nl/nl/locaties/oba-oosterdok",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native surveyed model: pale limestone portal and thin cantilever canopy, recessed cedar square window bays, glass plinth and stairs, open side terraces, stepped restaurant/theatre roofs and separate north stair core. Current OSM footprint parts own scope; model scale1. Upper facade arrangements and roof thickness approximate from architect photographs; no imported mesh or photo pixels."
+  },
+  "spatialSuppression": false,
+  "surveyed": {
+    "anchor": [
+      4.908303881212726,
+      52.37600837944057
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current OSM twelve exact building parts, native east/south; BAG envelope shared with college is intentionally not suppressed."
+  }
+}

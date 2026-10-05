@@ -461,5 +461,86 @@
     ],
     "website": "https://www.multatuli-museum.nl/",
     "identityNotes": "Keep existing genuine museum destination; both museum and residence belong to same Pand, no duplicate residential POI."
+  },
+  {
+    "modelId": "singelkerk",
+    "landmarkId": "extract_landmarks_760984505",
+    "name": "Singelkerk",
+    "description": "The Singelkerk is a Mennonite hidden church between the Singel and Herengracht. In 1639 a larger church replaced an earlier wooden meeting place on the back lot. Its domestic canal frontage conceals a hall with double galleries on Tuscan columns; the organ case dates from 1777. The Herengracht side was rebuilt around 1840, giving the church its pale facade and open forecourt behind an iron fence. The rebus stone on Singel 452 recalls the reunion of Mennonite congregations in 1801.",
+    "sourceUrl": "https://www.doopsgezindamsterdam.nl/historie/singelkerk-4/",
+    "additionalSources": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/5402",
+      "https://www.doopsgezindamsterdam.nl/locaties/"
+    ],
+    "destinationOverride": {
+      "center": [
+        52.36770787,
+        4.88862596
+      ],
+      "reason": "Official BAG address point for actual Singel 452; old extract point incorrectly lies on neighboring Singel 454.",
+      "sourceUrl": "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Singel%20452%20Amsterdam&fq=type:adres&rows=3"
+    }
+  },
+  {
+    "landmarkId": "extract_landmarks_736359928",
+    "name": "Sint-Agneskerk",
+    "lat": 52.350116,
+    "lng": 4.857814,
+    "description": "Jan Stuyt designed this neo-Romanesque basilica as a free interpretation of Sant’Agnese in Rome. Its nave and aisles opened in 1921; the transept, choir and separate Italian-style campanile followed in 1930–1932. The church contains an unusually rich collection of twentieth-century religious art, including Joep Nicolas’s opaline glass mosaic in the apse.",
+    "funFact": "The freestanding campanile and early-Christian basilica plan recall Italian churches. Inside, the apse mosaic uses opaline glass backed with a shining metal layer.",
+    "sourceUrls": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/505910",
+      "https://agneskerk.nl/contact-route/"
+    ],
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Sint-Agneskerk_(Amsterdam)",
+    "modelId": "sint-agneskerk",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/505910"
+  },
+  {
+    "name": "Petruskerk",
+    "description": "The old village church of Sloterdijk has a late-medieval tower inside a nave rebuilt in 1664. Its monumental tombs occupy the spaces between heavy outer buttresses, preserving the churchyard as a remarkable open-air extension of the church.",
+    "funFact": "Vincent van Gogh’s grandparents married here in 1811. The restored church now hosts weddings and community events among Sloterdijk’s modern offices.",
+    "sourceUrls": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/6775",
+      "https://www.oudsloterdijk.nl/"
+    ],
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/Petruskerk_(Sloterdijk)",
+    "landmarkId": "extract_landmarks_800494636",
+    "lat": 52.386718,
+    "lng": 4.846343,
+    "modelId": "petruskerk",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6775",
+    "center": [
+      52.386718,
+      4.846343
+    ]
+  },
+  {
+    "name": "Boomkerk",
+    "landmarkId": "extract_landmarks_746878126",
+    "description": "The neo-Romanesque Church of St Francis of Assisi was designed by P.J. Bekkers in 1910 and completed in 1911. Its Latin-cross basilica, wheel window and three arched portals lead to a tall corner tower beside Van Gentstraat.",
+    "funFact": "De Boom replaced a concealed Catholic church in the Kalverstraat dating from 1730. Its two old facade stones, paintings, altars and 1774 Hilgers organ were carried into the new church.",
+    "sourceUrls": [
+      "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085",
+      "https://www.rkamsterdamwest.nl/locaties/de-boom"
+    ],
+    "wikipediaUrl": "https://nl.wikipedia.org/wiki/De_Boom_(Amsterdam)",
+    "lat": 52.3830729,
+    "lng": 4.8505888,
+    "entranceSource": "RCE identifies SW three-portal entrance; point derived just outside surveyed front wall toward Admiraal de Ruijterweg",
+    "modelId": "boomkerk",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085",
+    "center": [
+      52.3830729,
+      4.8505888
+    ],
+    "destinationOverride": {
+      "center": [
+        52.3830729,
+        4.8505888
+      ],
+      "reason": "RCE identifies SW three-portal entrance; point derived just outside surveyed front wall toward Admiraal de Ruijterweg",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085"
+    }
   }
 ]

@@ -30,7 +30,7 @@ for(const g of glasses){const centre=g.boundingBox!.getCenter(new T.Vector3()),t
 // Check glass-to-frame depth continuity; first-hit exposure alone also passes
 // for a pane floating several centimetres in front of its frame.
 let attachedPanes=0;
-for(const g of glasses){const centre=g.boundingBox!.getCenter(new T.Vector3());if((g as T.BoxGeometry).parameters.depth>.1)continue;
+for(const g of glasses){const centre=g.boundingBox!.getCenter(new T.Vector3());if((g as T.BoxGeometry).parameters.depth>.1||centre.y>14)continue;
  const normals=g.getAttribute('normal'),normal=new T.Vector3(normals.getX(16),normals.getY(16),normals.getZ(16)).normalize();
  // BoxGeometry's +Z face follows the facade outward normal after rotation.
  const tangent=new T.Vector3(normal.z,0,-normal.x),width=(g as T.BoxGeometry).parameters.width;
@@ -42,6 +42,12 @@ assert(attachedPanes>=30,'pane attachment checks must cover both facades and all
 // it, rather than a facade window floating against the earlier tile gable.
 const modernFront=new T.Vector2(7.14,11.81),frontTop=hit(modernFront.x,30,modernFront.y,new T.Vector3(0,-1,0));
 assert(frontTop&&frontTop.point.y<15,'current entrance front must end at straight coping');
+// The current roof dormer must remain attached and visible above its hip.
+for(const y of [14.4,15.1,15.6])assert.equal(hit(7.35,y,16,new T.Vector3(0,0,-1))?.object.geometry.userData.palette,'glass','most of source lantern pane must remain first-hit visible above coping');
+// Elevated diagonal view must also encounter glass rather than an opaque cap or hip.
+assert.equal(hit(7.35,17.1,14.5,new T.Vector3(0,-.5,-1).normalize())?.object.geometry.userData.palette,'glass','elevated lantern view must preserve its defining glass face');
+// Source photo top row has a shorter aperture and substantial black side reveals.
+assert.equal(hit(7.5,13.40,16,new T.Vector3(0,0,-1))?.object.geometry.userData.palette,'greyBrick','top aperture must leave masonry above its source-sized opening');
 // Every authored roof surface has upward normals, independent of rendering DoubleSide.
 for(const g of gs.filter(g=>['slate','red'].includes(g.userData.palette)&&!g.index)){const n=g.getAttribute('normal');for(let i=0;i<n.count;i++)assert(n.getY(i)>=-1e-5,'downward roof face');}
 assert.equal(spec.landmarkId,'extract_landmarks_1791250152');assert(spec.relatedLandmarkIds.includes('extract_landmarks_769225968'));

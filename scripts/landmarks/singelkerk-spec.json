@@ -1,0 +1,40 @@
+{
+  "id": "singelkerk",
+  "name": "Singelkerk",
+  "landmarkId": "extract_landmarks_760984505",
+  "modelUrl": "./models/singelkerk.glb",
+  "suppressOsmIds": [
+    "w267123307",
+    "NL.IMBAG.Pand.0363100012171741",
+    "w267123332",
+    "NL.IMBAG.Pand.0363100012177610"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8883,
+      52.367535
+    ],
+    "headingDegrees": 49,
+    "lengthMetres": 54,
+    "widthMetres": 29
+  },
+  "surveyed": {
+    "anchor": [
+      4.8883,
+      52.367535
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current PDOK BAG church (1639) and service house Singel 452, exact parent identities; native east/south metres. Original surfaces reconstructed from AHN5 2023 semantic roof observations. Singel 454 is separate and retained."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Singelkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.doopsgezindamsterdam.nl/historie/singelkerk-4/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free hidden church and domestic Singel 452 frontage, sourced straight cornices, round-head tracery, open forecourt, iron rail and surveyed intersecting hipped roofs. No imported render meshes or photo pixels. Tiny reliefs and roof details simplified; source pack archived privately."
+  }
+}

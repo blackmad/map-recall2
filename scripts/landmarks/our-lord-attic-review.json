@@ -17,7 +17,7 @@
     "https://www.nlbouwmeesters.nl/wp-content/uploads/2020/09/Project-NL-Bouwmeesters-OHLOS-impressie-04.jpg",
     "https://vekemans.nl/wp-content/uploads/2015/04/Ons-Lieve-Heer-scaled.jpg"
   ],
-  "status": "Repaired multi-angle gallery and native game roof/window review accepted; exact POI/neighbor contract passed",
+  "status": "Second user-reported modern entrance appearance failure; source-audited CPU repair ready, visual acceptance withdrawn pending fresh gallery/live-game review",
   "referenceComparison": {
     "reviewedOn": "2026-10-05",
     "reviewer": "independent current-batch repair reviewer",
@@ -148,16 +148,21 @@
   "cameraReason": "Principal canal facade outward normal approx121degrees; map camera approaches from bearing+180. Previous31/211 views obscured frontage. Re-review301 canal-side.",
   "rootAcceptance": {
     "date": "2026-10-05",
-    "status": "verified-scoped-repair",
-    "evidence": "artifacts/ons-lieve-heer-op-solder-review/",
-    "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
-    "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details.",
-    "withdrawalReason": "2026-10-05 user screenshot revealed floating modern panes and unsupported generic roof/party-face rows missed by original acceptance."
+    "status": "withdrawn-pending-second-user-defect-review",
+    "reason": "User right-building screenshot exposes excessive generic simplification; prior accepted checks do not establish current visual quality"
   },
   "acceptanceHistory": [
     {
       "date": "2026-10-04",
       "status": "withdrawn-pending-window-repair-review",
+      "evidence": "artifacts/ons-lieve-heer-op-solder-review/",
+      "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
+      "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details.",
+      "withdrawalReason": "2026-10-05 user screenshot revealed floating modern panes and unsupported generic roof/party-face rows missed by original acceptance."
+    },
+    {
+      "date": "2026-10-05",
+      "status": "verified-scoped-repair",
       "evidence": "artifacts/ons-lieve-heer-op-solder-review/",
       "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
       "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details.",
@@ -170,10 +175,152 @@
       "status": "user-rejected-prior-acceptance",
       "finding": "Detached or inappropriate window rows/fins",
       "acceptanceEffect": "Earlier visual acceptance cannot establish acceptance of the repaired export."
+    },
+    {
+      "date": "2026-10-05",
+      "status": "user-rejected-modern-entrance-appearance",
+      "image": "artifacts/landmarks/ons-lieve-heer-op-solder/references/user-right-building-defect.png",
+      "finding": "Crude broad panes with weak frame/lintel relief, plain grey walls, odd roof dormer; audited against current museum owner photo"
     }
   ],
   "repairGameEvidence": {
     "log": "/tmp/landmark-user-repairs-2026-10-05.log",
     "status": "Completed with exit 0; native front/rear and four gallery angles inspected by root and independent reviewer. Scoped roof/pane repair accepted; fine architectural detail remains approximate."
+  },
+  "secondEntranceRepair": {
+    "date": "2026-10-05",
+    "status": "CPU-ready-visual-pending",
+    "diagnosis": "Large ungridded glass is real. Model lost black surrounds/sills, substantial terracotta lintels, ornamental iron ties, unequal aperture heights and sparse alley rhythm. Roof used generic shallow hip and over-tall generic box; primary sources were mislabeled in previous acceptance.",
+    "decisiveSource": "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-current-owner-front.jpg",
+    "sourceArchiveURL": "https://opsolder.nl/wp-content/uploads/2022/10/Persmap-Museum-Ons-Lieve-Heer-op-Solder.zip",
+    "changes": [
+      "Source-sized shorter upper apertures and substantial dark four-sided frames/sills",
+      "Broader source-supported terracotta lintels, decorative iron ties, four entrance door divisions",
+      "Remove unsupported repetitive modern alley grid; retain one upper near-front window",
+      "Steeper survey-supported roof with reduced side eave; straight13.8m photo-derived front parapet and source-supported shorter slanted dormer",
+      "Preserve exact native footprint, alley, genuine POIs, historic geometry and neighbor suppression"
+    ],
+    "cpuEvidence": {
+      "triangles": 8104,
+      "paneAttachmentChecks": 44,
+      "firstHitFacadePanes": 4,
+      "extraChecks": [
+        "first-hit slanted dormer glass",
+        "source-sized upper aperture masonry band",
+        "upward roof winding",
+        "open public alley",
+        "exact current identities"
+      ],
+      "typescript": "Full npx tsc --noEmit blocked by concurrent unrelated src/canalRecall/feedback browser/cloud errors; no errors reported in modified landmark files"
+    },
+    "remaining": [
+      "Root regenerate/export/bundles",
+      "Fresh reference/gallery and live-game comparison plus independent reviewer",
+      "Review colour under consistent neutral lighting; greyBrick remains flat abstraction of mottled recycled masonry",
+      "Verify modern parapet, roof and dormer proportions with owner press image; front13.8m height photo-derived",
+      "Commit updated private source pack before model commit"
+    ]
+  },
+  "independentVisualReviewHistory": [
+    {
+      "reviewer": "review_landmark_batch static independent reviewer",
+      "reviewedAt": "2026-10-05",
+      "status": "visual-pass-scoped-modern-entrance-repair",
+      "acceptance": true,
+      "scope": "Visual comparison only; coordinator owns integration and final acceptance",
+      "freshness": "Regenerated modern portion and current17:22gallery/current native batch captures",
+      "sourceEvidence": [
+        "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-current-owner-front.jpg"
+      ],
+      "renderEvidence": [
+        "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
+        "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-0.png",
+        "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-1.png",
+        "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-2.png",
+        "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-3.png",
+        "artifacts/ons-lieve-heer-op-solder-review/neutral-front.png",
+        "artifacts/ons-lieve-heer-op-solder-review/live-rear.png"
+      ],
+      "findings": [
+        "Modern three-column broad glazing is source-supported; repaired dark surrounds/sills and orange lintels now attach to wall, upper panes read shorter than lower panes and entrance divisions remain exposed.",
+        "No repetitive unsupported modern alley grid or detached floating panes appears in gallery rotations. Historic frontage/roof remain legible alongside separate modern entry; native front/rear retain public alley and both neighboring parents without visible overlay roofs.",
+        "Current modern roof reads as steep surveyed family behind straight front parapet, with small slanted glazed dormer; no tall generic box from former failure appears."
+      ],
+      "limitations": [
+        "Modern flat grey-brown brick material abstracts mottled recycled brick; terracotta lintels/roof warm under neutral game light.",
+        "Glazed rooftop lantern/dormer reads smaller and less emphatic than owner photograph; fine frame, ties and historical ornament remain approximate. This is a bounded secondary-detail limitation, not evidence of measured photographic matching."
+      ],
+      "pending": []
+    },
+    {
+      "reviewer": "review_landmark_batch static independent reviewer",
+      "reviewedAt": "2026-10-05",
+      "status": "prior-scoped-pass-withdrawn-for-new-lantern-geometry",
+      "acceptance": false,
+      "reason": "Coordinator identified hidden lower lantern glass and worker changed forward face/frame geometry. Previous static pass preserved as history; changed export requires new current renders.",
+      "pending": [
+        "Current regenerated gallery and native lantern comparison after coordinator freshness confirmation"
+      ]
+    },
+    {
+      "reviewer": "review_landmark_batch static independent reviewer",
+      "reviewedAt": "2026-10-05",
+      "status": "visual-pass-current-lantern-and-entrance-repair",
+      "acceptance": true,
+      "scope": "Visual comparison only; coordinator owns integration and final acceptance",
+      "freshness": "Coordinator regenerated8104triangle asset and fingerprint, new gallery/default/four rotations/native front/opposite in /tmp/solder-boom-final-native.log",
+      "renderEvidence": [
+        "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
+        "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-0.png",
+        "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-1.png",
+        "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-2.png",
+        "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-3.png",
+        "artifacts/ons-lieve-heer-op-solder-review/neutral-front.png",
+        "artifacts/ons-lieve-heer-op-solder-review/live-rear.png"
+      ],
+      "sourceEvidence": [
+        "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-current-owner-front.jpg"
+      ],
+      "findings": [
+        "Lantern now has a substantial fully exposed tilted glazed face above modern straight parapet in gallery front/oblique views and actual native front; former tiny dark roof-slot reading is corrected and owner-photo recognition improved.",
+        "Four rotations preserve attached panes, black surround/sill relief, orange lintels, shorter upper apertures and sparse modern alley rhythm; no buried lower lantern glass, floating pane or tall generic rooftop box appears.",
+        "Native front/opposite retain historic facade and roof families, public alley and neighboring parents; no visible fallback overlap or filled open space."
+      ],
+      "limitations": [
+        "Flat grey-brown masonry abstracts mottled recycled brick; fine frame/ties and historic ornament approximate.",
+        "Roof dimensions use surveyed family plus photo-derived front parapet/lantern detail; no claim of measured photographic matching."
+      ],
+      "pending": []
+    }
+  ],
+  "lanternFollowupRepair": {
+    "date": "2026-10-05",
+    "status": "CPU-ready-pending-regeneration-and-visual-review",
+    "failedEvidence": "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-0.png before followup regeneration",
+    "source": "artifacts/landmarks/ons-lieve-heer-op-solder/references/audit-current-owner-front.jpg",
+    "finding": "Defining box reduced to slot because lowerglass was buried by hip at incorrect1m setback; frame/cap alignment also obscured face.",
+    "correction": "Forwardsetback to match ownercoping relationship and AHN5 patch reachingfront; original15.95mheight/1.62mwidth retained. Tilted crossrails/cap align withpane. No blindsizeincrease.",
+    "cpuChecks": "8104triangles,44facadeattachment probes; exposed glass at3heights and elevateddiagonal; all existing exactscope/openalley/roof checks pass.",
+    "required": "Root refreshedsource/render comparison and independentreview plus actualgame; priorcandidate caveat not visualacceptance ofnewexport"
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "canonicalModelId": "ons-lieve-heer-op-solder",
+    "privatePath": "models/ons-lieve-heer-op-solder",
+    "commit": "aae9a040f371bf61f3df2a75f3870ed25cbd78a1"
+  },
+  "visualAcceptance": true,
+  "state": "verified-gallery-and-native-game",
+  "coordinatorAcceptance": {
+    "date": "2026-10-05",
+    "status": "pass",
+    "evidenceDirectory": "artifacts/ons-lieve-heer-op-solder-review",
+    "checks": [
+      "Gallery and rotated source comparison",
+      "Native game front and opposite visual comparison",
+      "Exact masks and resident neighbor retention",
+      "Physical destination, pin/label and meaningful info card",
+      "Independent visual review"
+    ]
   }
 }

@@ -30,7 +30,10 @@ export function buildDageraad(_id: string, _w: number, _d: number, b: BuildingTo
   body(ring,5.12,'ochre','stone',true);
   const main=data.roofZones[8].plan.map(p=>uv(new T.Vector2(p[0],p[1])));
   // The fitted main roof is behind the sculptural rounds, not an opaque backing at their street plane.
-  body(clip(main,'y',-1.35,false).map(p=>xy(p.x,p.y)),17.56);
+  body(clip(clip(clip(main,'y',-1.35,false),'x',-4.05,true),'x',4.05,false).map(p=>xy(p.x,p.y)),17.56);
+  // Museum Pand also owns the short angled street flank beyond each round.
+  // Recess only the central backing; retain both photographed window-bearing edges.
+  for(const side of [-1,1])body(clip(main,'x',side*4.05,side>0).map(p=>xy(p.x,p.y)),17.56);
   const tower=data.roofZones[4].plan.map(p=>new T.Vector2(p[0],p[1]));
   // The blank tower has a gently scalloped outer face, rather than a rectangle with painted identity.
   const towerUv=tower.map(uv),umin=Math.min(...towerUv.map(p=>p.x)),umax=Math.max(...towerUv.map(p=>p.x));
@@ -115,6 +118,27 @@ export function buildDageraad(_id: string, _w: number, _d: number, b: BuildingTo
   for(const side of [-1,1]){
     const u=side*2.64,v=frontAt(u)+.12;pane(u,.20,v,.88,2.70,'green');pane(u,.44,v+.025,.66,2.34,'glass');
     const p=xy(u,v+.07);b.box(p.x,.2,p.y,.055,2.7,.07,'green',angle);
+  }
+  // Broad gridded windows on the museum parent's own angled flank strips.
+  // Their ends are source BAG party boundaries; neighboring estate panes are
+  // left to their own models. The high center tower deliberately has none.
+  for(const side of [-1,1]){
+    const a=side<0?new T.Vector2(-3.85,.01):new T.Vector2(3.60,0);
+    const d=side<0?new T.Vector2(-7.73,-2.24):new T.Vector2(7.48,-2.27);
+    const p=xy(a.x,a.y),q=xy(d.x,d.y),tangent=q.clone().sub(p).normalize();
+    let normal=new T.Vector2(tangent.y,-tangent.x);const mid=p.clone().lerp(q,.60);
+    const frontDirection=new T.Vector2(nx,nz);if(normal.dot(frontDirection)<0)normal.negate();
+    const facing=Math.atan2(normal.x,normal.y);
+    function flankPane(y:number,w:number,h:number){
+      const frame=mid.clone().addScaledVector(normal,.10),glass=mid.clone().addScaledVector(normal,.14),rods=mid.clone().addScaledVector(normal,.19);
+      b.add(new T.PlaneGeometry(w+.18,h+.18),'white',frame.x,y+h/2,frame.y,facing);
+      b.add(new T.PlaneGeometry(w,h),'glass',glass.x,y+h/2,glass.y,facing);
+      for(let j=1;j<5;j++)b.box(rods.x,y+h*j/5,rods.y,w,.045,.045,'white',facing);
+      for(const u of [-w/6,w/6]){const r=rods.clone().addScaledVector(tangent,u);b.box(r.x,y,r.y,.055,h,.055,'white',facing);}
+    }
+    for(const y of [5.38,8.72,12.45])flankPane(y,2.25,1.35);
+    flankPane(15.45,.82,1.05);
+    for(const offset of [-.8,0,.8]){const c=mid.clone().addScaledVector(tangent,offset),v=c.clone().addScaledVector(normal,.13);b.add(new T.PlaneGeometry(.33,.65),'white',v.x,4.15,v.y,facing);b.add(new T.PlaneGeometry(.24,.55),'glass',v.x+normal.x*.035,4.15,v.y+normal.y*.035,facing);}
   }
   // Pale ceramic crown follows each wave; small relief figure is source-supported, without inscription lettering.
   for(let i=0;i<=25;i++){

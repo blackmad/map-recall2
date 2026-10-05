@@ -24,8 +24,8 @@ export function mergeManualPoiFeatures(features: readonly LandmarkFeature[], cit
         ...existing,
         id,
         name: existing?.name || fallback?.name || model.name,
-        // Large transport complexes can use a surveyed public entrance.
-        center: existing?.center ?? (fallback?.center as LandmarkFeature['center'] | undefined) ?? [anchor[1], anchor[0]],
+        // Explicit sourced corrections fix mislabeled neighbors or use a public entrance.
+        center: (fallback?.destinationOverride?.center as LandmarkFeature['center'] | undefined) ?? existing?.center ?? (fallback?.center as LandmarkFeature['center'] | undefined) ?? [anchor[1], anchor[0]],
         type: existing?.type || 'landmark',
         funFact: existing?.funFact || (!existing?.wikipediaExtract ? fallback?.description : undefined),
         sourceUrl: existing?.sourceUrl || fallback?.sourceUrl || model.attribution.sourceUrl,

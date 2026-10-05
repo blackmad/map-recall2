@@ -30,6 +30,15 @@ for (const model of MANUAL_LANDMARKS) {
   }
 }
 assert.deepEqual(mergeManualPoiFeatures(raw, 'utrecht'), raw, 'other cities untouched');
+const singelkerk = features.find(feature => feature.id === 'extract_landmarks_760984505');
+assert.deepEqual(singelkerk?.center, [52.36770787, 4.88862596], 'Singelkerk pin uses sourced Singel452 address rather than neighboring454');
+assert.notDeepEqual(singelkerk?.center, raw.find(feature => feature.id === singelkerk?.id)?.center, 'explicit correction supersedes the mistaken extract pin');
+const boomkerk = features.find(feature => feature.id === 'extract_landmarks_746878126');
+assert.deepEqual(boomkerk?.center, [52.3830729, 4.8505888], 'Boomkerk uses the documented public southwest entrance outside its surveyed portal');
+for (const feature of features.filter(feature => feature.manualPoi && feature.id !== singelkerk?.id && feature.id !== boomkerk?.id)) {
+  const original = raw.find(item => item.id === feature.id);
+  if (original?.center) assert.deepEqual(feature.center, original.center, 'uncorrected existing destinations retain their coordinates');
+}
 const store = createOverlayStore(defaultPreferences({ min: 0.2, max: 1.5, defaultZoom: 0.5 }));
 assert.equal(store.getState().destinationId, '', 'Surprise remains the default');
 const choice = { id: 'lm-frascati', name: 'Frascati', lat: 52.37, lng: 4.89 };

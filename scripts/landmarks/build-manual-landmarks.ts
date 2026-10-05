@@ -94,6 +94,11 @@ import {buildCanalMuseumLandmark} from './canal-museum-builders';
 import {buildCanalsMuseum} from './canals-museum-builder';
 import {buildNiod} from './niod-builder';
 import {buildMultatuli} from './multatuli-builder';
+import {buildSingelkerk} from './singelkerk-builder';
+import {buildObaOosterdok} from './oba-oosterdok-builder';
+import {buildSintAgneskerk} from './sint-agneskerk-builder';
+import {buildPetruskerk} from './petruskerk-builder';
+import {buildBoomkerk} from './boomkerk-builder';
 import hospitals from './hospital-footprints.json';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
@@ -168,16 +173,27 @@ const hallenHouseIds=new Set(['de-hallen','huis-bartolotti']);
 const historicMuseumIds=new Set(['hart-museum','amsterdam-museum']);
 const plantageMuseumIds=new Set(['national-holocaust-museum','hollandsche-schouwburg']);
 const jewishQuarterIds=new Set(['jewish-museum','portuguese-synagogue']);
-for(const spec of MANUAL_LANDMARKS){
+const selectedIds = process.argv.flatMap((arg, index, args) => arg === '--only' ? (args[index + 1] ?? '').split(',').filter(Boolean) : []);
+if (process.argv.includes('--help')) {
+  console.log('Usage: build-manual-landmarks.ts [--only model-id[,model-id]]');
+  process.exit(0);
+}
+if (process.argv.includes('--only') && !selectedIds.length) throw new Error('--only requires at least one model ID');
+for (const id of selectedIds) if (!MANUAL_LANDMARKS.some(model => model.id === id)) throw new Error(`Unknown manual landmark: ${id}`);
+for(const spec of MANUAL_LANDMARKS.filter(model => !selectedIds.length || selectedIds.includes(model.id))){
   const id=spec.id;
-  if(process.argv.includes('--only')&&!process.argv.includes(id))continue;
   parts=[];
   if(id==='centraal-station'){station();buildCentraalComplex(helpers);}
   else if(id==='muziekgebouw-bimhuis')music();
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='multatuli')buildMultatuli(w,d,helpers);
+    if(id==='petruskerk')buildPetruskerk(w,d,helpers);
+    else if(id==='boomkerk')buildBoomkerk(w,d,helpers);
+    else if(id==='sint-agneskerk')buildSintAgneskerk(w,d,helpers);
+    else if(id==='oba-oosterdok')buildObaOosterdok(w,d,helpers);
+    else if(id==='singelkerk')buildSingelkerk(w,d,helpers);
+    else if(id==='multatuli')buildMultatuli(w,d,helpers);
     else if(id==='niod')buildNiod(w,d,helpers);
     else if(id==='nieuwe-kerk')buildNieuweKerk(w,d,helpers);
     else if(id==='concertgebouw')buildConcertgebouw(w,d,helpers);

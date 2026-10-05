@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 154,
+    "manual-model": 158,
     "procedural-kit": 15,
-    "pending": 158
+    "pending": 154
   },
   "destinations": [
     {
@@ -1803,14 +1803,15 @@
     {
       "id": "lm-extract_landmarks_760984505",
       "name": "Singelkerk",
-      "lat": 52.3676785,
-      "lng": 4.8887067,
+      "lat": 52.36770787,
+      "lng": 4.88862596,
       "prominence": 251,
       "type": "landmark",
       "queueRank": 140,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "singelkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_736359928",
@@ -1821,8 +1822,9 @@
       "type": "landmark",
       "queueRank": 141,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "sint-agneskerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1639856562",
@@ -1846,8 +1848,9 @@
       "type": "landmark",
       "queueRank": 143,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "petruskerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_2003244540",
@@ -1864,14 +1867,15 @@
     {
       "id": "lm-extract_landmarks_746878126",
       "name": "Boomkerk",
-      "lat": 52.383495,
-      "lng": 4.850867,
+      "lat": 52.3830729,
+      "lng": 4.8505888,
       "prominence": 246,
       "type": "landmark",
       "queueRank": 145,
       "origin": "POI Destinations",
-      "status": "pending",
-      "treatment": "review"
+      "status": "manual-model",
+      "modelId": "boomkerk",
+      "treatment": "building"
     },
     {
       "id": "lm-extract_landmarks_1958595244",
