@@ -3,6 +3,7 @@
  * Reference photographs guide silhouette only; no downloaded meshes or pixels.
  */
 import fs from 'node:fs';
+import {refreshModelDates} from './model-dates';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import * as T from 'three';
@@ -285,3 +286,5 @@ for(const id of Object.keys(manifest.models).sort()){
   if(fs.existsSync(file))versions[id]=createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,16);
 }
 fs.writeFileSync('src/canalRecall/landmarks/modelAssetVersions.json',JSON.stringify(versions,null,2)+'\n');
+
+refreshModelDates(out);

@@ -1,0 +1,775 @@
+{
+  "description": "Model asset update dates, not historical building construction dates.",
+  "models": {
+    "adam-tower": {
+      "updatedAt": "2026-10-03T23:34:10+02:00",
+      "version": "b6bc30564fde16c9",
+      "dateSource": "git-history"
+    },
+    "agnietenkapel": {
+      "updatedAt": "2026-10-04T03:01:07+02:00",
+      "version": "ba5fe79aed5afb2d",
+      "dateSource": "git-history"
+    },
+    "allard-pierson": {
+      "updatedAt": "2026-10-04T02:58:21+02:00",
+      "version": "9909a0e9b2c71f4f",
+      "dateSource": "git-history"
+    },
+    "amsta-de-poort": {
+      "updatedAt": "2026-10-04T12:49:59+02:00",
+      "version": "1a767c01f7a0af9f",
+      "dateSource": "git-history"
+    },
+    "amstel-hotel": {
+      "updatedAt": "2026-10-04T17:40:44+02:00",
+      "version": "5edd095b81fd3700",
+      "dateSource": "git-history"
+    },
+    "amstelkerk": {
+      "updatedAt": "2026-10-04T00:18:08+02:00",
+      "version": "81f473aa9dd31fa3",
+      "dateSource": "git-history"
+    },
+    "amsterdam-dungeon": {
+      "updatedAt": "2026-10-04T05:54:12+02:00",
+      "version": "3da6448fcbd9c489",
+      "dateSource": "git-history"
+    },
+    "amsterdam-in-motion": {
+      "updatedAt": "2026-10-04T13:28:28+02:00",
+      "version": "d4a5bcd2a43ca817",
+      "dateSource": "git-history"
+    },
+    "amsterdam-museum": {
+      "updatedAt": "2026-10-04T01:16:02+02:00",
+      "version": "596fb2b7f0c9ed4c",
+      "dateSource": "git-history"
+    },
+    "amsterdam-pipe-museum": {
+      "updatedAt": "2026-10-04T03:52:47+02:00",
+      "version": "64d077d5bc1ffb31",
+      "dateSource": "git-history"
+    },
+    "amsterdam-tulip-museum": {
+      "updatedAt": "2026-10-04T04:30:00+02:00",
+      "version": "3f8dbb51843c6054",
+      "dateSource": "git-history"
+    },
+    "anne-frank-house": {
+      "updatedAt": "2026-10-04T00:09:57+02:00",
+      "version": "75608e113736daa2",
+      "dateSource": "git-history"
+    },
+    "arcam": {
+      "updatedAt": "2026-10-04T02:29:48+02:00",
+      "version": "6ee584e00b324458",
+      "dateSource": "git-history"
+    },
+    "artis-entrance": {
+      "updatedAt": "2026-10-04T01:54:42+02:00",
+      "version": "a027602c839ce971",
+      "dateSource": "git-history"
+    },
+    "artis-library": {
+      "updatedAt": "2026-10-04T03:31:34+02:00",
+      "version": "d9e537bc26136840",
+      "dateSource": "git-history"
+    },
+    "athenaeum": {
+      "updatedAt": "2026-10-04T03:55:52+02:00",
+      "version": "067cace770708c8e",
+      "dateSource": "git-history"
+    },
+    "badhuistheater": {
+      "updatedAt": "2026-10-04T03:30:16+02:00",
+      "version": "e5ae0193173a6585",
+      "dateSource": "git-history"
+    },
+    "begijnhofkapel": {
+      "updatedAt": "2026-10-04T04:37:05+02:00",
+      "version": "6f9418891f76b644",
+      "dateSource": "git-history"
+    },
+    "boom-chicago": {
+      "updatedAt": "2026-10-04T20:43:07+02:00",
+      "version": "926c88d13bb852a8",
+      "dateSource": "git-history"
+    },
+    "boomkerk": {
+      "updatedAt": "2026-10-05T18:07:25+02:00",
+      "version": "796eb1791fc67a1d",
+      "dateSource": "git-history"
+    },
+    "brakke-grond": {
+      "updatedAt": "2026-10-04T20:43:07+02:00",
+      "version": "617d67be917d679f",
+      "dateSource": "git-history"
+    },
+    "breitner-tower": {
+      "updatedAt": "2026-10-04T13:28:28+02:00",
+      "version": "34942497e72240a7",
+      "dateSource": "git-history"
+    },
+    "buiksloterkerk": {
+      "updatedAt": "2026-10-04T01:12:41+02:00",
+      "version": "5f33780635f73091",
+      "dateSource": "git-history"
+    },
+    "canals-museum": {
+      "updatedAt": "2026-10-04T23:51:03+02:00",
+      "version": "a3e41a96d5fbca7f",
+      "dateSource": "git-history"
+    },
+    "cavia": {
+      "updatedAt": "2026-10-04T04:33:51+02:00",
+      "version": "d456b7533d9928a5",
+      "dateSource": "git-history"
+    },
+    "centraal-station": {
+      "updatedAt": "2026-10-04T12:49:59+02:00",
+      "version": "83293771e9c194c6",
+      "dateSource": "git-history"
+    },
+    "cinecenter": {
+      "updatedAt": "2026-10-04T03:30:16+02:00",
+      "version": "5a100909943d2d2d",
+      "dateSource": "git-history"
+    },
+    "concertgebouw": {
+      "updatedAt": "2026-10-04T19:03:47+02:00",
+      "version": "cb142773c572e558",
+      "dateSource": "git-history"
+    },
+    "dageraad": {
+      "updatedAt": "2026-10-05T18:07:25+02:00",
+      "version": "42d83ce27bf06493",
+      "dateSource": "git-history"
+    },
+    "de-balie": {
+      "updatedAt": "2026-10-04T00:07:10+02:00",
+      "version": "d620405e3f786d47",
+      "dateSource": "git-history"
+    },
+    "de-beurs-van-berlage": {
+      "updatedAt": "2026-10-04T12:49:59+02:00",
+      "version": "1e46ca4ddd8d41f9",
+      "dateSource": "git-history"
+    },
+    "de-bijenkorf": {
+      "updatedAt": "2026-10-04T09:17:04+02:00",
+      "version": "902c3a4b29545923",
+      "dateSource": "git-history"
+    },
+    "de-dokwerker": {
+      "updatedAt": "2026-10-04T03:57:56+02:00",
+      "version": "82ce929da58ab5aa",
+      "dateSource": "git-history"
+    },
+    "de-dolphijn": {
+      "updatedAt": "2026-10-04T04:54:22+02:00",
+      "version": "209671bcce9bab36",
+      "dateSource": "git-history"
+    },
+    "de-hallen": {
+      "updatedAt": "2026-10-04T01:16:17+02:00",
+      "version": "dbe038fb26700d34",
+      "dateSource": "git-history"
+    },
+    "de-krakeling": {
+      "updatedAt": "2026-10-04T13:28:28+02:00",
+      "version": "232d3fd856a022d6",
+      "dateSource": "git-history"
+    },
+    "de-papegaai": {
+      "updatedAt": "2026-10-04T01:12:41+02:00",
+      "version": "3669802e5fea667e",
+      "dateSource": "git-history"
+    },
+    "de-piramides": {
+      "updatedAt": "2026-10-04T13:28:28+02:00",
+      "version": "09dfd6fe2056b4d9",
+      "dateSource": "git-history"
+    },
+    "de-wester": {
+      "updatedAt": "2026-10-04T17:40:44+02:00",
+      "version": "8ad96681b320b7c3",
+      "dateSource": "git-history"
+    },
+    "delamar": {
+      "updatedAt": "2026-10-03T23:59:52+02:00",
+      "version": "8daeeaeb636ed0a5",
+      "dateSource": "git-history"
+    },
+    "dominicuskerk": {
+      "updatedAt": "2026-10-04T03:32:54+02:00",
+      "version": "b501442978aa4b1d",
+      "dateSource": "git-history"
+    },
+    "dutch-resistance-museum": {
+      "updatedAt": "2026-10-04T02:58:21+02:00",
+      "version": "70349a3d5eeb7d0e",
+      "dateSource": "git-history"
+    },
+    "embassy-free-mind": {
+      "updatedAt": "2026-10-03T23:59:52+02:00",
+      "version": "212d08e4aed60889",
+      "dateSource": "git-history"
+    },
+    "english-reformed-church": {
+      "updatedAt": "2026-10-04T01:12:41+02:00",
+      "version": "37fc9d996520a28f",
+      "dateSource": "git-history"
+    },
+    "eye-filmmuseum": {
+      "updatedAt": "2026-10-04T09:18:13+02:00",
+      "version": "3e6505fb458d8d37",
+      "dateSource": "git-history"
+    },
+    "faralda-crane-hotel": {
+      "updatedAt": "2026-10-04T19:31:25+02:00",
+      "version": "1c731fea39788340",
+      "dateSource": "git-history"
+    },
+    "felix-meritis": {
+      "updatedAt": "2026-10-04T00:07:10+02:00",
+      "version": "dcb8aed0db97ae12",
+      "dateSource": "git-history"
+    },
+    "foam": {
+      "updatedAt": "2026-10-04T02:25:47+02:00",
+      "version": "1faf16397ccbe23b",
+      "dateSource": "git-history"
+    },
+    "frascati": {
+      "updatedAt": "2026-10-04T02:29:04+02:00",
+      "version": "11cdb4e5fba53e45",
+      "dateSource": "git-history"
+    },
+    "gashouder": {
+      "updatedAt": "2026-10-04T00:34:55+02:00",
+      "version": "a61e26dbacb806f0",
+      "dateSource": "git-history"
+    },
+    "groote-museum": {
+      "updatedAt": "2026-10-04T03:31:34+02:00",
+      "version": "83a3afa84a5d1246",
+      "dateSource": "git-history"
+    },
+    "haarlemmermeerstation": {
+      "updatedAt": "2026-10-04T03:55:52+02:00",
+      "version": "2b43cdf9d86db7dc",
+      "dateSource": "git-history"
+    },
+    "haarlemmerpoort": {
+      "updatedAt": "2026-10-04T00:18:08+02:00",
+      "version": "895a02057078f6ae",
+      "dateSource": "git-history"
+    },
+    "hart-museum": {
+      "updatedAt": "2026-10-04T01:16:02+02:00",
+      "version": "a3a3d83088d38859",
+      "dateSource": "git-history"
+    },
+    "hash-marihuana-hemp-museum": {
+      "updatedAt": "2026-10-04T05:34:04+02:00",
+      "version": "8db446fefd6e32d5",
+      "dateSource": "git-history"
+    },
+    "he-hua-temple": {
+      "updatedAt": "2026-10-04T00:18:08+02:00",
+      "version": "fcf36613652d62ca",
+      "dateSource": "git-history"
+    },
+    "heineken-experience-amsterdam": {
+      "updatedAt": "2026-10-04T19:31:25+02:00",
+      "version": "a3682e71bdb96b27",
+      "dateSource": "git-history"
+    },
+    "hemp-gallery": {
+      "updatedAt": "2026-10-04T05:34:04+02:00",
+      "version": "9cb6ca346ecc2db5",
+      "dateSource": "git-history"
+    },
+    "herepoort-bergpoort": {
+      "updatedAt": "2026-10-04T05:02:31+02:00",
+      "version": "dd67e46044c10b46",
+      "dateSource": "git-history"
+    },
+    "het-schip": {
+      "updatedAt": "2026-10-04T00:23:44+02:00",
+      "version": "2b8522053787a6bd",
+      "dateSource": "git-history"
+    },
+    "het-veem": {
+      "updatedAt": "2026-10-04T05:44:11+02:00",
+      "version": "959ab5ba83752320",
+      "dateSource": "git-history"
+    },
+    "hnk-sloterdijk": {
+      "updatedAt": "2026-10-04T17:40:44+02:00",
+      "version": "02db406a59ab982c",
+      "dateSource": "git-history"
+    },
+    "hollandsche-schouwburg": {
+      "updatedAt": "2026-10-04T01:37:30+02:00",
+      "version": "62c3cf225b10116b",
+      "dateSource": "git-history"
+    },
+    "homomonument": {
+      "updatedAt": "2026-10-04T10:58:02+02:00",
+      "version": "42ddfb9e300078c0",
+      "dateSource": "git-history"
+    },
+    "hortus-greenhouses": {
+      "updatedAt": "2026-10-04T01:52:21+02:00",
+      "version": "f7824a049c315a4f",
+      "dateSource": "git-history"
+    },
+    "houten-huys": {
+      "updatedAt": "2026-10-04T04:37:05+02:00",
+      "version": "ea52102890367c71",
+      "dateSource": "git-history"
+    },
+    "huis-aan-drie-grachten": {
+      "updatedAt": "2026-10-04T04:54:22+02:00",
+      "version": "ef516639b168b53b",
+      "dateSource": "git-history"
+    },
+    "huis-bartolotti": {
+      "updatedAt": "2026-10-04T01:16:17+02:00",
+      "version": "5e8e931a48170630",
+      "dateSource": "git-history"
+    },
+    "huis-de-pinto": {
+      "updatedAt": "2026-10-04T04:30:00+02:00",
+      "version": "651d0053a0182291",
+      "dateSource": "git-history"
+    },
+    "huis-marseille": {
+      "updatedAt": "2026-10-04T02:25:47+02:00",
+      "version": "8ea7c944e0177147",
+      "dateSource": "git-history"
+    },
+    "huize-lydia": {
+      "updatedAt": "2026-10-04T06:15:19+02:00",
+      "version": "971151a77561e93f",
+      "dateSource": "git-history"
+    },
+    "idfa-pavilion": {
+      "updatedAt": "2026-10-05T09:29:22+02:00",
+      "version": "666d6b58ad29572a",
+      "dateSource": "git-history"
+    },
+    "ing-house": {
+      "updatedAt": "2026-10-04T23:51:03+02:00",
+      "version": "411fcd990d5e838a",
+      "dateSource": "git-history"
+    },
+    "jeruzalemkerk": {
+      "updatedAt": "2026-10-05T16:56:09.416Z",
+      "version": "202fbee82e35d0c0",
+      "dateSource": "asset-update"
+    },
+    "jewish-museum": {
+      "updatedAt": "2026-10-04T01:37:22+02:00",
+      "version": "4ff4a46b572bdedd",
+      "dateSource": "git-history"
+    },
+    "kattenkabinet": {
+      "updatedAt": "2026-10-04T10:58:02+02:00",
+      "version": "16cfd90fbaaa8913",
+      "dateSource": "git-history"
+    },
+    "ketelhuis": {
+      "updatedAt": "2026-10-04T02:55:04+02:00",
+      "version": "ae7a77d4b2cfa278",
+      "dateSource": "git-history"
+    },
+    "kleine-komedie": {
+      "updatedAt": "2026-10-04T00:07:10+02:00",
+      "version": "4b55df2562dcf809",
+      "dateSource": "git-history"
+    },
+    "kriterion": {
+      "updatedAt": "2026-10-04T00:35:10+02:00",
+      "version": "452d0da753f4c034",
+      "dateSource": "git-history"
+    },
+    "lab111": {
+      "updatedAt": "2026-10-04T02:55:04+02:00",
+      "version": "91e8bb5fc7ba3853",
+      "dateSource": "git-history"
+    },
+    "machinegebouw": {
+      "updatedAt": "2026-10-04T17:40:44+02:00",
+      "version": "825b775e04c45e57",
+      "dateSource": "git-history"
+    },
+    "madame-tussauds": {
+      "updatedAt": "2026-10-04T05:46:30+02:00",
+      "version": "18e0e1ec55d0e0e3",
+      "dateSource": "git-history"
+    },
+    "magna-plaza": {
+      "updatedAt": "2026-10-04T00:13:31+02:00",
+      "version": "11d88faf4e5f90df",
+      "dateSource": "git-history"
+    },
+    "melkweg": {
+      "updatedAt": "2026-10-04T00:13:31+02:00",
+      "version": "a55b13361380a702",
+      "dateSource": "git-history"
+    },
+    "micropia-ledenlokalen": {
+      "updatedAt": "2026-10-04T01:54:42+02:00",
+      "version": "6d8e4969e328569f",
+      "dateSource": "git-history"
+    },
+    "moco-museum": {
+      "updatedAt": "2026-10-04T20:43:07+02:00",
+      "version": "58c8b2145a387663",
+      "dateSource": "git-history"
+    },
+    "mondriaan-tower": {
+      "updatedAt": "2026-10-04T13:28:28+02:00",
+      "version": "da4a8d9ed9d84bfc",
+      "dateSource": "git-history"
+    },
+    "montelbaanstoren-amsterdam": {
+      "updatedAt": "2026-10-04T10:58:02+02:00",
+      "version": "cd253f9546f3b5fb",
+      "dateSource": "git-history"
+    },
+    "muiderpoort": {
+      "updatedAt": "2026-10-04T23:51:03+02:00",
+      "version": "4c4040cbd509e074",
+      "dateSource": "git-history"
+    },
+    "multatuli": {
+      "updatedAt": "2026-10-05T09:29:22+02:00",
+      "version": "12b95d37da67cc5d",
+      "dateSource": "git-history"
+    },
+    "munttoren-amsterdam": {
+      "updatedAt": "2026-10-04T12:49:59+02:00",
+      "version": "d25c5e03036cf9a0",
+      "dateSource": "git-history"
+    },
+    "museum-van-loon": {
+      "updatedAt": "2026-10-04T20:43:07+02:00",
+      "version": "9f0b61e941491fa0",
+      "dateSource": "git-history"
+    },
+    "muziekgebouw-bimhuis": {
+      "updatedAt": "2026-10-03T23:22:30+02:00",
+      "version": "4d6f6c76eda45f3b",
+      "dateSource": "git-history"
+    },
+    "naco-house": {
+      "updatedAt": "2026-10-05T16:23:53.459Z",
+      "version": "df4445c3f6b327bb",
+      "dateSource": "asset-update"
+    },
+    "national-holocaust-museum": {
+      "updatedAt": "2026-10-04T01:37:30+02:00",
+      "version": "206a3b7910093d22",
+      "dateSource": "git-history"
+    },
+    "national-monument-on-the-dam": {
+      "updatedAt": "2026-10-04T12:49:59+02:00",
+      "version": "aeac99d45ed7c5f6",
+      "dateSource": "git-history"
+    },
+    "nemo": {
+      "updatedAt": "2026-10-04T13:28:28+02:00",
+      "version": "31386d84a4793626",
+      "dateSource": "git-history"
+    },
+    "nieuwe-kerk": {
+      "updatedAt": "2026-10-04T19:03:47+02:00",
+      "version": "924564b0723fa33c",
+      "dateSource": "git-history"
+    },
+    "nikolaas-myrakerk": {
+      "updatedAt": "2026-10-05T16:23:53.443Z",
+      "version": "c1750d621307d40f",
+      "dateSource": "asset-update"
+    },
+    "niod": {
+      "updatedAt": "2026-10-04T23:51:03+02:00",
+      "version": "cc6c658e4e0ddf79",
+      "dateSource": "git-history"
+    },
+    "oba-oosterdok": {
+      "updatedAt": "2026-10-05T18:07:25+02:00",
+      "version": "4fc90fd20e653331",
+      "dateSource": "git-history"
+    },
+    "occii": {
+      "updatedAt": "2026-10-04T02:55:04+02:00",
+      "version": "99ed270e19f3ac00",
+      "dateSource": "git-history"
+    },
+    "olvg-oost": {
+      "updatedAt": "2026-10-04T17:40:44+02:00",
+      "version": "b85fbdea39e26e68",
+      "dateSource": "git-history"
+    },
+    "olvg-west": {
+      "updatedAt": "2026-10-04T17:40:44+02:00",
+      "version": "b3d9166087c429c8",
+      "dateSource": "git-history"
+    },
+    "ons-lieve-heer-op-solder": {
+      "updatedAt": "2026-10-05T18:07:25+02:00",
+      "version": "da35531d4fe2d20d",
+      "dateSource": "git-history"
+    },
+    "oost-indisch-huis": {
+      "updatedAt": "2026-10-04T05:24:36+02:00",
+      "version": "c37ff7dcef43f0e3",
+      "dateSource": "git-history"
+    },
+    "orgelpark": {
+      "updatedAt": "2026-10-04T04:33:51+02:00",
+      "version": "c606c20d2d637ebd",
+      "dateSource": "git-history"
+    },
+    "ot301": {
+      "updatedAt": "2026-10-04T04:33:51+02:00",
+      "version": "7ef8609567eecf26",
+      "dateSource": "git-history"
+    },
+    "oude-kerk": {
+      "updatedAt": "2026-10-04T00:49:31+02:00",
+      "version": "4d599c203d4832c2",
+      "dateSource": "git-history"
+    },
+    "oude-lutherse-kerk": {
+      "updatedAt": "2026-10-04T10:58:02+02:00",
+      "version": "2e6def813b1db07e",
+      "dateSource": "git-history"
+    },
+    "palace-on-the-dam": {
+      "updatedAt": "2026-10-04T17:40:44+02:00",
+      "version": "dc1eb61b42c88dd2",
+      "dateSource": "git-history"
+    },
+    "paradiso": {
+      "updatedAt": "2026-10-04T00:13:31+02:00",
+      "version": "910c44a76ca569b0",
+      "dateSource": "git-history"
+    },
+    "pathe-city": {
+      "updatedAt": "2026-10-04T00:48:21+02:00",
+      "version": "07c1b888cb76da4d",
+      "dateSource": "git-history"
+    },
+    "petruskerk": {
+      "updatedAt": "2026-10-05T18:07:25+02:00",
+      "version": "ddc41f62dcf7186a",
+      "dateSource": "git-history"
+    },
+    "pianola-museum": {
+      "updatedAt": "2026-10-04T10:58:02+02:00",
+      "version": "ba244aaa14dcb405",
+      "dateSource": "git-history"
+    },
+    "plein-theater": {
+      "updatedAt": "2026-10-04T05:44:11+02:00",
+      "version": "260f0e47a725d8d7",
+      "dateSource": "git-history"
+    },
+    "pontsteiger": {
+      "updatedAt": "2026-10-03T23:34:10+02:00",
+      "version": "7eceb598c7d77e8b",
+      "dateSource": "git-history"
+    },
+    "portuguese-synagogue": {
+      "updatedAt": "2026-10-04T01:37:22+02:00",
+      "version": "f7c67aca9592d33d",
+      "dateSource": "git-history"
+    },
+    "rem-eiland": {
+      "updatedAt": "2026-10-03T23:34:10+02:00",
+      "version": "7980acb723a2773d",
+      "dateSource": "git-history"
+    },
+    "rembrandt-house": {
+      "updatedAt": "2026-10-04T00:09:57+02:00",
+      "version": "de2a8f9b6da74788",
+      "dateSource": "git-history"
+    },
+    "rembrandt-tower": {
+      "updatedAt": "2026-10-04T13:28:28+02:00",
+      "version": "77b57de315082631",
+      "dateSource": "git-history"
+    },
+    "rialto": {
+      "updatedAt": "2026-10-04T00:35:10+02:00",
+      "version": "be9d5e860f1ae8b0",
+      "dateSource": "git-history"
+    },
+    "rijksmuseum": {
+      "updatedAt": "2026-10-04T09:03:59+02:00",
+      "version": "86607f097c034ce7",
+      "dateSource": "git-history"
+    },
+    "rode-hoed": {
+      "updatedAt": "2026-10-04T04:57:51+02:00",
+      "version": "0f01b478009b89df",
+      "dateSource": "git-history"
+    },
+    "royal-theater-carre": {
+      "updatedAt": "2026-10-04T08:47:46+02:00",
+      "version": "6cd5c146f0460417",
+      "dateSource": "git-history"
+    },
+    "scheepvaarthuis": {
+      "updatedAt": "2026-10-04T00:23:44+02:00",
+      "version": "dad2253f2cbb3e00",
+      "dateSource": "git-history"
+    },
+    "scheltema": {
+      "updatedAt": "2026-10-04T03:55:52+02:00",
+      "version": "940ecaab5a705bff",
+      "dateSource": "git-history"
+    },
+    "schreierstoren": {
+      "updatedAt": "2026-10-04T06:15:19+02:00",
+      "version": "696f87d9db247773",
+      "dateSource": "git-history"
+    },
+    "sexmuseum-venustempel": {
+      "updatedAt": "2026-10-04T10:58:02+02:00",
+      "version": "8c1f56d5387fca1c",
+      "dateSource": "git-history"
+    },
+    "silodam": {
+      "updatedAt": "2026-10-04T09:06:33+02:00",
+      "version": "7440fb0b33e0f13c",
+      "dateSource": "git-history"
+    },
+    "singelkerk": {
+      "updatedAt": "2026-10-05T18:07:25+02:00",
+      "version": "44504f14eb3bbca5",
+      "dateSource": "git-history"
+    },
+    "sint-agneskerk": {
+      "updatedAt": "2026-10-05T18:07:25+02:00",
+      "version": "f1bea314f629b3e8",
+      "dateSource": "git-history"
+    },
+    "sint-jorishof": {
+      "updatedAt": "2026-10-04T06:16:22+02:00",
+      "version": "51546a65d0743c24",
+      "dateSource": "git-history"
+    },
+    "sint-nicolaas": {
+      "updatedAt": "2026-10-04T08:51:10+02:00",
+      "version": "273d5ac92f039827",
+      "dateSource": "git-history"
+    },
+    "sloterdijk-station": {
+      "updatedAt": "2026-10-04T17:40:44+02:00",
+      "version": "38d256e4825dfc69",
+      "dateSource": "git-history"
+    },
+    "social-history": {
+      "updatedAt": "2026-10-04T23:51:03+02:00",
+      "version": "379578130b1c302a",
+      "dateSource": "git-history"
+    },
+    "stadhuis": {
+      "updatedAt": "2026-10-04T19:31:25+02:00",
+      "version": "e7e5c297dafb7fb5",
+      "dateSource": "git-history"
+    },
+    "stadsschouwburg": {
+      "updatedAt": "2026-10-04T17:40:44+02:00",
+      "version": "1bd50d002bf9bb79",
+      "dateSource": "git-history"
+    },
+    "stedelijk-museum": {
+      "updatedAt": "2026-10-04T00:13:31+02:00",
+      "version": "cad040a76b7e50a6",
+      "dateSource": "git-history"
+    },
+    "studiok": {
+      "updatedAt": "2026-10-04T03:30:16+02:00",
+      "version": "c41ea486ca160306",
+      "dateSource": "git-history"
+    },
+    "the-movies": {
+      "updatedAt": "2026-10-03T23:59:52+02:00",
+      "version": "81b65535e377b947",
+      "dateSource": "git-history"
+    },
+    "theater-amsterdam": {
+      "updatedAt": "2026-10-04T04:57:51+02:00",
+      "version": "ee5101d708768c42",
+      "dateSource": "git-history"
+    },
+    "tobacco-theater": {
+      "updatedAt": "2026-10-04T05:44:11+02:00",
+      "version": "e77efef4eb4fd0a0",
+      "dateSource": "git-history"
+    },
+    "tuschinski": {
+      "updatedAt": "2026-10-04T00:48:21+02:00",
+      "version": "40d1ef278d608881",
+      "dateSource": "git-history"
+    },
+    "van-gogh-museum": {
+      "updatedAt": "2026-10-03T23:34:10+02:00",
+      "version": "f7c57ad6fb08f886",
+      "dateSource": "git-history"
+    },
+    "vondelpark-bandstand": {
+      "updatedAt": "2026-10-04T05:18:02+02:00",
+      "version": "0e632fab53dc3740",
+      "dateSource": "git-history"
+    },
+    "vondelpark-open-air-theater": {
+      "updatedAt": "2026-10-04T04:57:51+02:00",
+      "version": "5067ef40e3266e95",
+      "dateSource": "git-history"
+    },
+    "vredeskerk": {
+      "updatedAt": "2026-10-04T03:32:54+02:00",
+      "version": "15f1065728425196",
+      "dateSource": "git-history"
+    },
+    "walloon-church": {
+      "updatedAt": "2026-10-04T06:15:19+02:00",
+      "version": "d9c664eac2d1422d",
+      "dateSource": "git-history"
+    },
+    "wereldmuseum-amsterdam": {
+      "updatedAt": "2026-10-04T02:58:21+02:00",
+      "version": "f735821ca778afe2",
+      "dateSource": "git-history"
+    },
+    "westerkerk": {
+      "updatedAt": "2026-10-04T10:58:02+02:00",
+      "version": "bbea8afc7cde1a24",
+      "dateSource": "git-history"
+    },
+    "willet-holthuysen": {
+      "updatedAt": "2026-10-04T03:52:47+02:00",
+      "version": "c7f1f08ff67ab766",
+      "dateSource": "git-history"
+    },
+    "wine-guildhall": {
+      "updatedAt": "2026-10-05T17:01:34.698Z",
+      "version": "3a19119616abfb57",
+      "dateSource": "asset-update"
+    },
+    "zuiveringshal-west": {
+      "updatedAt": "2026-10-04T13:28:28+02:00",
+      "version": "5978f719de17ff3e",
+      "dateSource": "git-history"
+    }
+  }
+}
