@@ -11,9 +11,9 @@ export function answerTeaser(
   factSeed = 0,
   roundIndex = 0,
 ): string | undefined {
+  if (feature.nameOrigin?.text) return feature.nameOrigin.text;
   if (feature.neighborhoodTopFacts?.[0]?.text) return feature.neighborhoodTopFacts[0].text;
   if (feature.localFact?.text) return feature.localFact.text;
-  if (feature.nameOrigin?.text) return feature.nameOrigin.text;
   const trivia = triviaForRound(feature.localFacts, factSeed, roundIndex);
   if (trivia) return trivia.text;
   return descriptionWithoutOrigin(feature.wikipediaExtract, undefined) ?? feature.history?.text;

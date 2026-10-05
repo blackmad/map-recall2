@@ -28,6 +28,7 @@ import { LoadingProgressModal } from './components/LoadingProgressModal';
 import { useAuth } from './AuthContext';
 import { loadLocalReviewStates, recordReview, syncProgress } from './progressRepository';
 import { ReviewState, selectReviewFeatures } from './spacedRepetition';
+import { focusImportantWaters } from './mapRecall/waterImportance';
 import { readSharedHome, scopeToHome } from './mapRecall/homeScope';
 import { MAP_DIFFICULTIES, placeCluesEnabled, type MapDifficulty } from './mapRecall/trivia';
 import { getFeatureKey } from './utils/featureIdentity';
@@ -131,6 +132,7 @@ export default function App() {
   const [gameMode, setGameMode] = useState<GameMode>(() => validValue(urlParams.get('mode'), ['pinpoint', 'guess_name'] as const, 'pinpoint'));
   const [selectedCategory, setSelectedCategory] = useState<FeatureCategory>(() => legacyNeighborhoodLink ? 'neighborhoods' : validValue(urlParams.get('category'), FEATURE_CATEGORIES.map(({ id }) => id), 'all'));
   const [linkedFeaturesOnly, setLinkedFeaturesOnly] = useState<boolean>(() => urlParams.get('references') === 'wiki');
+  const [importantWatersOnly, setImportantWatersOnly] = useState(() => urlParams.get('waters') !== 'all');
   const [roundsPerGame, setRoundsPerGame] = useState<number>(() => Math.round(numberParam('rounds', 5, 1, 50)));
   const [blindMapMode, setBlindMapMode] = useState<boolean>(() => urlParams.get('labels') !== 'on'); // Label-less by default
   const [tileStyle, setTileStyle] = useState<TileStyle>(() => validValue(urlParams.get('map'), ['voyager', 'light_nolabels', 'osm', 'dark'] as const, 'light_nolabels'));
@@ -186,6 +188,7 @@ export default function App() {
     params.set('mode', gameMode);
     params.set('category', selectedCategory);
     params.set('references', linkedFeaturesOnly ? 'wiki' : 'all');
+    params.set('waters', importantWatersOnly ? 'important' : 'all');
     params.set('rounds', String(roundsPerGame));
     params.set('scope', locationScope);
     params.set('radius', String(searchRadiusMeters));
@@ -201,7 +204,7 @@ export default function App() {
     }
     const nextUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
     window.history.replaceState(null, '', nextUrl);
-  }, [currentCityId, gameMode, selectedCategory, linkedFeaturesOnly, roundsPerGame, locationScope, searchRadiusMeters, tileStyle, blindMapMode, unit, difficulty, selectedAdministrativeAreaId, customLocationCity]);
+  }, [currentCityId, gameMode, selectedCategory, linkedFeaturesOnly, importantWatersOnly, roundsPerGame, locationScope, searchRadiusMeters, tileStyle, blindMapMode, unit, difficulty, selectedAdministrativeAreaId, customLocationCity]);
 
   // Combine custom location city with predefined cities, applying dynamically fetched OSM features
   const allCities: City[] = useMemo(() => {
@@ -344,14 +347,14 @@ export default function App() {
 
   // Features selected for current game session
   const featuresForGame: StreetFeature[] = useMemo(() => {
-    let pool = filteredCityFeatures;
+    let pool = importantWatersOnly ? focusImportantWaters(filteredCityFeatures) : filteredCityFeatures;
     if (nearHome && sharedHome) {
       const learned = new Set(reviewStates.filter(state => state.mode === gameMode).map(state => state.featureKey));
       const scoped = scopeToHome(pool, sharedHome, learned, Math.max(roundsPerGame * 2, 10)).features;
       if (scoped.length) pool = scoped;
     }
     return selectReviewFeatures(pool, reviewStates, gameMode, Math.min(roundsPerGame, pool.length), Date.now(), gameSeed);
-  }, [filteredCityFeatures, reviewStates, gameMode, roundsPerGame, gameSeed, nearHome, sharedHome]);
+  }, [filteredCityFeatures, importantWatersOnly, reviewStates, gameMode, roundsPerGame, gameSeed, nearHome, sharedHome]);
 
   const currentFeature: StreetFeature | null =
     featuresForGame[currentRoundIndex] || featuresForGame[0] || null;
@@ -1144,6 +1147,8 @@ export default function App() {
         selectedCategory={selectedCategory}
         onChangeCategory={handleSelectCategory}
         blindMapMode={blindMapMode}
+        importantWatersOnly={importantWatersOnly}
+        onChangeImportantWaters={(value) => { setImportantWatersOnly(value); resetGame(); }}
         onToggleBlindMap={() => setBlindMapMode((prev) => !prev)}
         tileStyle={tileStyle}
         onChangeTileStyle={(s) => setTileStyle(s)}

@@ -10,6 +10,8 @@ interface SettingsModalProps {
   currentCity: City;
   selectedCategory: FeatureCategory;
   onChangeCategory: (category: FeatureCategory) => void;
+  importantWatersOnly: boolean;
+  onChangeImportantWaters: (value: boolean) => void;
   blindMapMode: boolean;
   onToggleBlindMap: () => void;
   tileStyle: TileStyle;
@@ -35,6 +37,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   currentCity,
   selectedCategory,
   onChangeCategory,
+  importantWatersOnly,
+  onChangeImportantWaters,
   blindMapMode,
   onToggleBlindMap,
   tileStyle,
@@ -297,6 +301,14 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               })}
             </div>
           </div>
+
+          <label className="enamel-chip flex items-start gap-3 p-3.5">
+            <input type="checkbox" className="mt-1" checked={importantWatersOnly} onChange={event => onChangeImportantWaters(event.target.checked)} />
+            <span>
+              <span className="block font-semibold">Important canals & waters first</span>
+              <span className="block text-xs text-white/60">Focus on up to 40 notable waters. Amsterdam favours Centrum and the main canals; tiny waters and Noord rank lower. Turn off to include every named water.</span>
+            </span>
+          </label>
 
           {/* Blind Map Mode (Label-less Basemap) */}
           <div className="flex items-center justify-between enamel-chip p-3.5">

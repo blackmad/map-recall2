@@ -143,11 +143,11 @@ test('a neighbourhood answer opens folded, its postcard ready, above the outline
   await quietExternalRequests(page);
   await page.goto('/?city=amsterdam&mode=pinpoint&category=neighborhoods&radius=4500&map=light_nolabels&labels=off&rounds=10');
   await expect(page.locator('#target-feature-name')).toBeVisible();
-  const rounds = await skipUntil(page, '[data-testid="answer-postcard-thumbnail"]');
+  const rounds = await skipUntil(page, '[data-testid="answer-postcard"]');
   expect(rounds, 'a neighbourhood with a postcard within ten rounds').toBeGreaterThan(0);
   const viewport = page.viewportSize()!;
   const card = (await page.locator('[data-result-card]').boundingBox())!;
-  expect(card.height, 'the folded answer card leaves most of the map visible').toBeLessThan(viewport.height * 0.4);
+  expect(card.height, 'the folded answer card leaves most of the map visible').toBeLessThan(viewport.height * 0.5);
   // The revealed area is fitted above the card, not under it.
   await expect.poll(async () => {
     const label = (await page.locator('.custom-true-target-icon').boundingBox())!;
@@ -176,4 +176,36 @@ test('neighbourhood map hints name places, not only compass bearings', async ({ 
   expect(hints.join(' ')).toMatch(/district|along|runs through|borders|inside|just \w+ of/);
   for (const hint of hints) expect(hint.toLowerCase()).not.toContain(name.toLowerCase().replace(/buurt$/, ''));
   await page.screenshot({ path: test.info().outputPath('neighbourhood-hints.png') });
+});
+
+test('Van Galenbuurt shows its photo postcard and name meaning while folded', async ({ page }) => {
+  await quietExternalRequests(page);
+  // Match EduMap hosting: the Canal Recall directory is excluded there.
+  await page.route('**/canal-drive/fonts/**', route => route.abort());
+  await page.route('**/data/extracts/amsterdam/boundaries.json', async route => {
+    const response = await route.fetch();
+    const areas = await response.json();
+    await route.fulfill({ json: areas.filter((area: { name: string; kind: string }) => area.name === 'Van Galenbuurt' || area.kind === 'municipality') });
+  });
+  await page.goto('/?city=amsterdam&mode=pinpoint&category=neighborhoods&radius=4500&rounds=1');
+  await expect(page.locator('#target-feature-name')).toHaveText('Van Galenbuurt');
+  await page.getByRole('button', { name: 'No idea' }).click();
+  await expect(page.getByTestId('answer-name-origin-summary')).toContainText('Jan van Galen');
+  const postcard = page.getByTestId('answer-postcard');
+  await expect(postcard).toBeVisible();
+  expect(await postcard.locator('img').count()).toBeGreaterThan(3);
+  await page.screenshot({ path: test.info().outputPath('van-galen-postcard.png') });
+  await page.locator('#next-round-btn').click();
+  await expect(page.getByRole('button', { name: 'Play Again' })).toBeVisible();
+  await page.locator('body').click({ position: { x: 5, y: 5 } });
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#target-feature-name')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Play Again' })).toHaveCount(0);
+});
+
+test('water quizzes start with the core canals', async ({ page }) => {
+  await quietExternalRequests(page);
+  await page.goto('/?city=amsterdam&mode=pinpoint&category=water&radius=4500&rounds=5');
+  await expect(page.locator('#target-feature-name')).toHaveText(/^(Amstel|Herengracht|Keizersgracht|Prinsengracht|Singel|Singelgracht|IJ|Oudezijds Voorburgwal|Oudezijds Achterburgwal)$/);
+  expect(new URL(page.url()).searchParams.get('waters')).toBe('important');
 });

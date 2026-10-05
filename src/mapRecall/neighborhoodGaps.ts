@@ -393,6 +393,16 @@ export interface CommonsFile {
   license?: string;
   artist?: string;
   categories?: string;
+  colour?: 'colour' | 'monochrome';
+}
+
+/** Explicit catalogue metadata wins; unknown colour stays ahead of known B&W. */
+export function photoColourPriority(file: Pick<CommonsFile, 'title' | 'categories' | 'colour'>): number {
+  if (file.colour) return file.colour === 'colour' ? 2 : 0;
+  const metadata = `${file.title} ${file.categories ?? ''}`.replace(/_/g, ' ');
+  if (/black[ -]and[ -]white|zwart[ -]wit|monochrome|sepia/i.test(metadata)) return 0;
+  if (/colou?r photographs|kleurenfoto/i.test(metadata)) return 2;
+  return 1;
 }
 
 const NOT_A_PHOTO = /(map|kaart|logo|flag|vlag|wapen|coat[_ ]of[_ ]arms|locator|plattegrond|diagram|schema|poster|stamp|icon|panorama\.svg|\.svg|\.pdf|\.tif|\.ogg|\.webm)/i;
@@ -411,7 +421,7 @@ export function rankCommonsFiles(files: readonly CommonsFile[], name: string): C
   };
   return files
     .filter(f => /^image\/jpeg$/i.test(f.mime) && f.width >= 800 && !NOT_A_PHOTO.test(f.title) && (!f.license || FREE_LICENCE.test(f.license)))
-    .sort((a, b) => score(b) - score(a));
+    .sort((a, b) => photoColourPriority(b) - photoColourPriority(a) || score(b) - score(a));
 }
 
 export const commonsAttribution = (f: CommonsFile) =>
@@ -524,14 +534,15 @@ export function rankAreaPhotos(files: readonly AreaPhotoFile[], polygons: Polygo
   const seen = new Set<string>();
   const usable = files
     .filter(f => f.mime === 'image/jpeg' && f.license && f.thumbUrl && f.width >= 700 && f.width >= f.height * 0.9 && !JUNK_TITLE.test(f.title) && !NOT_A_VIEW.test(f.title) && near(f))
-    .sort((a, b) => b.width * b.height - a.width * a.height)
+    .sort((a, b) => photoColourPriority(b) - photoColourPriority(a) || b.width * b.height - a.width * a.height)
     .filter(f => { const key = f.title.replace(/^File:/, '').replace(/[\d_\-. ()]+/g, '').replace(/jpe?g$/i, '').toLowerCase().slice(0, 18); if (seen.has(key)) return false; seen.add(key); return true; });
   const picked: AreaPhotoFile[] = [];
   while (usable.length && picked.length < max) {
-    let best = 0, bestScore = -1;
+    let best = 0, bestScore = -1, bestColour = -1;
     usable.forEach((f, index) => {
       const score = picked.length ? Math.min(...picked.map(p => distanceKm([p.lat, p.lon], [f.lat, f.lon]))) : 1;
-      if (score > bestScore) { best = index; bestScore = score; }
+      const colour = photoColourPriority(f);
+      if (colour > bestColour || colour === bestColour && score > bestScore) { best = index; bestScore = score; bestColour = colour; }
     });
     picked.push(usable.splice(best, 1)[0]);
   }

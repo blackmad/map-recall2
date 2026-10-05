@@ -20,7 +20,7 @@ const photo = (imageUrl: string): { name: string; photo: PlacePhoto } => ({
 {
   const area = { type: 'neighborhood' as const, wikipediaImageUrl: 'lede.jpg', areaPhotos: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'].map(photo) };
   assert.deepEqual(postcardPhotosFor(area), ['lede.jpg', 'a', 'b', 'c', 'd', 'e', 'f', 'g'], 'own image first, eight at most');
-  assert.deepEqual(postcardPhotosFor({ ...area, areaPhotos: [] }), [], 'one photograph is a thumbnail, not a postcard');
+  assert.deepEqual(postcardPhotosFor({ ...area, areaPhotos: [] }), ['lede.jpg'], 'one photograph can fill the postcard');
   assert.deepEqual(postcardPhotosFor({ ...area, type: 'street' }), [], 'only neighbourhoods get postcards');
 }
 
@@ -58,7 +58,8 @@ const photo = (imageUrl: string): { name: string; photo: PlacePhoto } => ({
   assert.equal(answerTeaser({ nameOrigin: origin, wikipediaExtract: 'An area.' }), origin.text, 'why it is called this comes first');
   assert.equal(answerTeaser({ wikipediaExtract: 'An area in the east.' }), 'An area in the east.');
   assert.equal(answerTeaser({ history: { ...origin, text: 'Built in 1900.' } }), 'Built in 1900.');
-  assert.equal(answerTeaser({ localFact: { ...origin, text: 'The Jewish quarter today.' }, nameOrigin: origin }), 'The Jewish quarter today.', 'the reviewed local fact leads, as on the full card');
+  assert.equal(answerTeaser({ localFact: { ...origin, text: 'The Jewish quarter today.' }, nameOrigin: origin }), origin.text, 'name meaning remains visible ahead of local trivia');
+  assert.equal(answerTeaser({ neighborhoodTopFacts: [{ ...origin, text: 'A local story.' }], nameOrigin: origin }), origin.text, 'stories do not hide the name meaning');
   assert.equal(answerTeaser({}), undefined);
 }
 

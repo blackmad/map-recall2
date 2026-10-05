@@ -17,7 +17,7 @@ export function usePreparePostcard(feature: StreetFeature) {
   const photos = postcardPhotosFor(feature);
   const key = photos.join('|');
   useEffect(() => {
-    if (photos.length) void preparePostcard(feature.name, postcardCityName(feature.cityId), photos);
+    if (feature.type === 'neighborhood') void preparePostcard(feature.name, postcardCityName(feature.cityId), photos);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [feature.id, key]);
 }
@@ -34,7 +34,8 @@ export const AnswerDetails: React.FC<{ feature: StreetFeature; factSeed: number;
   const teaser = answerTeaser(feature, factSeed, roundIndex);
   const postcardPhotos = postcardPhotosFor(feature);
   const thumbnail = feature.wikipediaImageUrl ?? postcardPhotos[0];
-  if (!teaser && !thumbnail) return <LookAroundLink feature={feature} />;
+  const isNeighborhood = feature.type === 'neighborhood';
+  if (!teaser && !thumbnail && !isNeighborhood) return <LookAroundLink feature={feature} />;
 
   if (expanded) return <div className="space-y-2" data-testid="answer-details" data-expanded="yes">
     <button
@@ -49,7 +50,9 @@ export const AnswerDetails: React.FC<{ feature: StreetFeature; factSeed: number;
     <LookAroundLink feature={feature} />
   </div>;
 
-  return <button
+  return <div className="space-y-2">
+    {isNeighborhood && <PostcardHeader name={feature.name} cityName={postcardCityName(feature.cityId)} photos={postcardPhotos} className="mx-auto w-full max-w-[150px] rounded-md shadow-sm sm:max-w-[220px]" />}
+    <button
     type="button"
     onClick={() => setExpanded(true)}
     aria-expanded="false"
@@ -57,12 +60,10 @@ export const AnswerDetails: React.FC<{ feature: StreetFeature; factSeed: number;
     data-expanded="no"
     className="answer-detail-card flex w-full items-center gap-2.5 p-2 text-left"
   >
-    {postcardPhotos.length
-      ? <PostcardHeader thumbnail name={feature.name} cityName={postcardCityName(feature.cityId)} photos={postcardPhotos} className="w-[77px] flex-none rounded-md shadow-sm sm:w-[90px]" />
-      : thumbnail && <img src={thumbnail} referrerPolicy="no-referrer" alt="" className="h-12 w-[77px] flex-none rounded-md object-cover shadow-sm sm:h-14 sm:w-[90px]" />}
-    <span className="min-w-0 flex-1 text-xs leading-snug text-white line-clamp-2">{teaser ?? `More about ${feature.name}`}</span>
+    {!isNeighborhood && thumbnail && <img src={thumbnail} referrerPolicy="no-referrer" alt="" className="h-12 w-[77px] flex-none rounded-md object-cover shadow-sm sm:h-14 sm:w-[90px]" />}
+    <span data-testid={feature.nameOrigin ? 'answer-name-origin-summary' : undefined} className={`min-w-0 flex-1 text-xs leading-snug text-white ${feature.nameOrigin ? '' : 'line-clamp-2'}`}>{feature.nameOrigin && <strong>Name: </strong>}{teaser ?? `More about ${feature.name}`}</span>
     <span className="flex flex-none items-center gap-0.5 text-[11px] font-bold text-[#8a4a18]">
       More <ChevronDown className="h-3.5 w-3.5" />
     </span>
-  </button>;
+  </button></div>;
 };

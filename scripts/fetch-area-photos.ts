@@ -123,7 +123,7 @@ for (const area of areas) {
     // 3. Rank from the store alone, so --offline gives the same answer.
     const files: AreaPhotoFile[] = inside.flatMap(hit => {
       const f = store.files.get(hit.pageid);
-      return f ? [{ title: f.title, url: f.url, thumbUrl: f.thumbUrl, width: f.width, height: f.height, mime: f.mime, license: f.meta.LicenseShortName, artist: f.meta.Artist, lat: hit.lat, lon: hit.lon }] : [];
+      return f ? [{ title: f.title, url: f.url, thumbUrl: f.thumbUrl, width: f.width, height: f.height, mime: f.mime, license: f.meta.LicenseShortName, artist: f.meta.Artist, categories: f.meta.Categories, lat: hit.lat, lon: hit.lon }] : [];
     });
     // Too few inside (small islands, parks): allow photos taken just outside the boundary, flagged.
     const insidePicks = rankAreaPhotos(files, area.geometry, 8);
