@@ -384,7 +384,7 @@ class Game {
     if (this.input.isDown('KeyK')) this.camera.pan(0, 8);
     if (this.input.isDown('KeyJ')) this.camera.pan(-8, 0);
     if (this.input.isDown('KeyU')) this.camera.pan(8, 0);
-    if (this.input.wasPressed('KeyR')) this.camera.resetPan();
+    if (this.input.wasPressed('KeyR')) this._recenterCamera();
 
     switch (this.state) {
       case GameState.MENU:

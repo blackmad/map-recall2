@@ -31,4 +31,37 @@ assert.ok(Math.abs(camera.x - target.x) < 45, 'follow stays responsive at low fr
 assert.equal(camera.panX, 0);
 camera.update(target, NaN);
 assert.ok(Number.isFinite(camera.x), 'missing frame timing cannot corrupt the camera');
+
+// A new ride must discard the orbit, detached anchor and previous follow
+// target together. It must also be correct before the first update/intro.
+for (const mode of ['chase', 'cockpit', 'heading', 'north']) {
+  for (const absolute of [false, true]) {
+    camera.viewMode = mode;
+    camera.northUp = mode === 'north';
+    camera.holdHeading = absolute;
+    camera.bearingOffset = 1.7;
+    camera.pan(900, 300);
+    const spawn = { ...target, x: -7000, y: 5000, angle: -0.58, speed: 0 };
+    camera.resetForRide(spawn);
+    const expectedRotation = mode === 'north' || (absolute && mode === 'heading') ? 0 : spawn.angle + Math.PI / 2;
+    const lead = mode === 'chase' ? 65 : mode === 'cockpit' ? 160 : 0;
+    assert.equal(camera.bearingOffset, 0, 'new ride clears the orbit');
+    assert.equal(camera.detached, false);
+    assert.equal(camera.rotation, expectedRotation, `${mode} starts at its driving bearing`);
+    assert.equal(camera.targetX, spawn.x);
+    assert.equal(camera.targetY, spawn.y);
+    assert.equal(camera.x, spawn.x + Math.cos(spawn.angle) * lead);
+    assert.equal(camera.y, spawn.y + Math.sin(spawn.angle) * lead);
+    const initial = { x: camera.x, y: camera.y, rotation: camera.rotation };
+    camera.resetPan();
+    camera.update(spawn, 1 / 60);
+    assert.equal(camera.x, initial.x, 'recenter/update cannot pull back to the old spawn');
+    assert.equal(camera.y, initial.y);
+    assert.equal(camera.rotation, initial.rotation, 'first driving frame keeps the landing bearing');
+    if (absolute && mode === 'chase') {
+      camera.update({ ...spawn, angle: spawn.angle + 1 }, 1);
+      assert.equal(camera.rotation, initial.rotation, 'absolute steering keeps the starting bearing while turning');
+    }
+  }
+}
 console.log('Camera follow checks passed: frame-rate independence, recenter, moving target, detached pan.');
