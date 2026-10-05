@@ -1,0 +1,10 @@
+{
+  "officialInventoryScope": "https://bomen.amsterdam.nl/ \u2014 municipality-managed trees",
+  "inventoryDocs": "https://api.data.amsterdam.nl/v1/docs/datasets/bomen.html",
+  "mappedAudit": "../tree-coverage-audit.json",
+  "cachedOsmExplicitTreePointsInsideParks": 0,
+  "userReference": "user-aerial-reference.png",
+  "groundPhoto": "https://gardendrum.com/wp-content/uploads/2016/07/4.-Amsterdam-canal-with-naturalised-yellow-iris-astilbes-and-ferns.jpg",
+  "priorRejection": "Garden v1 acceptance withdrawn after user rejection. Initial lush game captures were stale v1, preserved in local gardens-lush-stale-preview with rejection note; final browser bundle hashes checked.",
+  "authoredLayer": "Separate allotment-prior positions/heights on source-screened clear ground. No copying reference pixels into game geometry."
+}

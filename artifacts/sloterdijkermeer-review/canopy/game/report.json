@@ -1,0 +1,625 @@
+{
+  "views": [
+    {
+      "mobile": false,
+      "camera": {
+        "id": "sloterdijkermeer-wide",
+        "center": [
+          4.853,
+          52.38725
+        ],
+        "zoom": 16.8,
+        "pitch": 50,
+        "bearing": -25
+      },
+      "image": "desktop-sloterdijkermeer-wide.png",
+      "treeLayer": {
+        "ready": true,
+        "enabled": true,
+        "trees": 3173,
+        "authoredTrees": 986,
+        "tiles": 6,
+        "pending": 0,
+        "sourceTotal": 311544
+      },
+      "gardenOwnership": {
+        "coarseRanges": 371,
+        "hiddenBehindDetail": 153,
+        "wrongFlags": 0
+      },
+      "gardenResident": 376,
+      "detailZoom": 16,
+      "stats": {
+        "kitVertices": 57399,
+        "chunks": 31,
+        "buildings": 14101,
+        "walls": 62119,
+        "quads": 293727,
+        "vertices": 2748353,
+        "geometryMB": 90.64224815368652,
+        "textureMB": 97,
+        "drawCalls": 31,
+        "triangles": 1049558,
+        "buildMs": 0.6000003814697266
+      },
+      "frameMedianMs": 16.699999999999818,
+      "frameP95Ms": 16.799999999999272,
+      "rider": {
+        "x": 9060.452418531202,
+        "y": -22055.585971074222
+      },
+      "stationaryRider": true
+    },
+    {
+      "mobile": false,
+      "camera": {
+        "id": "sloterdijkermeer-south-heldout",
+        "center": [
+          4.8508,
+          52.38665
+        ],
+        "zoom": 18.5,
+        "pitch": 60,
+        "bearing": 35
+      },
+      "image": "desktop-sloterdijkermeer-south-heldout.png",
+      "treeLayer": {
+        "ready": true,
+        "enabled": true,
+        "trees": 1604,
+        "authoredTrees": 729,
+        "tiles": 4,
+        "pending": 0,
+        "sourceTotal": 311544
+      },
+      "gardenOwnership": {
+        "coarseRanges": 371,
+        "hiddenBehindDetail": 153,
+        "wrongFlags": 0
+      },
+      "gardenResident": 376,
+      "detailZoom": 16,
+      "stats": {
+        "kitVertices": 57399,
+        "chunks": 31,
+        "buildings": 14101,
+        "walls": 62119,
+        "quads": 293727,
+        "vertices": 2748353,
+        "geometryMB": 90.64224815368652,
+        "textureMB": 97,
+        "drawCalls": 31,
+        "triangles": 1049558,
+        "buildMs": 0.6000003814697266
+      },
+      "frameMedianMs": 16.699999999999818,
+      "frameP95Ms": 16.700000000000728,
+      "rider": {
+        "x": 9060.452418531202,
+        "y": -22055.585971074222
+      },
+      "stationaryRider": true
+    },
+    {
+      "mobile": false,
+      "camera": {
+        "id": "nut-en-genoegen-heldout",
+        "center": [
+          4.8603,
+          52.3872
+        ],
+        "zoom": 18.3,
+        "pitch": 60,
+        "bearing": -25
+      },
+      "image": "desktop-nut-en-genoegen-heldout.png",
+      "treeLayer": {
+        "ready": true,
+        "enabled": true,
+        "trees": 1458,
+        "authoredTrees": 850,
+        "tiles": 4,
+        "pending": 0,
+        "sourceTotal": 311544
+      },
+      "gardenOwnership": {
+        "coarseRanges": 371,
+        "hiddenBehindDetail": 218,
+        "wrongFlags": 0
+      },
+      "gardenResident": 376,
+      "detailZoom": 16,
+      "stats": {
+        "kitVertices": 57399,
+        "chunks": 31,
+        "buildings": 13090,
+        "walls": 58073,
+        "quads": 281795,
+        "vertices": 2376400,
+        "geometryMB": 78.53071975708008,
+        "textureMB": 97,
+        "drawCalls": 31,
+        "triangles": 921119,
+        "buildMs": 6.900000095367432
+      },
+      "frameMedianMs": 16.69999999999891,
+      "frameP95Ms": 16.799999999999272,
+      "rider": {
+        "x": 9060.452418531202,
+        "y": -22055.585971074222
+      },
+      "stationaryRider": true
+    },
+    {
+      "mobile": false,
+      "camera": {
+        "id": "railway-transition",
+        "center": [
+          4.8557,
+          52.38825
+        ],
+        "zoom": 18.4,
+        "pitch": 58,
+        "bearing": 155
+      },
+      "image": "desktop-railway-transition.png",
+      "treeLayer": {
+        "ready": true,
+        "enabled": true,
+        "trees": 1340,
+        "authoredTrees": 712,
+        "tiles": 4,
+        "pending": 0,
+        "sourceTotal": 311544
+      },
+      "gardenOwnership": {
+        "coarseRanges": 371,
+        "hiddenBehindDetail": 248,
+        "wrongFlags": 0
+      },
+      "gardenResident": 376,
+      "detailZoom": 16,
+      "stats": {
+        "kitVertices": 57399,
+        "chunks": 31,
+        "buildings": 12908,
+        "walls": 57171,
+        "quads": 279998,
+        "vertices": 2423473,
+        "geometryMB": 80.04450416564941,
+        "textureMB": 97,
+        "drawCalls": 31,
+        "triangles": 935713,
+        "buildMs": 3.499999523162842
+      },
+      "frameMedianMs": 16.69999999999891,
+      "frameP95Ms": 16.799999999999272,
+      "rider": {
+        "x": 9060.452418531202,
+        "y": -22055.585971074222
+      },
+      "stationaryRider": true
+    },
+    {
+      "mobile": true,
+      "camera": {
+        "id": "sloterdijkermeer-wide",
+        "center": [
+          4.853,
+          52.38725
+        ],
+        "zoom": 16.8,
+        "pitch": 50,
+        "bearing": -25
+      },
+      "image": "touch-sloterdijkermeer-wide.png",
+      "treeLayer": {
+        "ready": true,
+        "enabled": true,
+        "trees": 1790,
+        "authoredTrees": 772,
+        "tiles": 2,
+        "pending": 0,
+        "sourceTotal": 311544
+      },
+      "gardenOwnership": {
+        "coarseRanges": 150,
+        "hiddenBehindDetail": 103,
+        "wrongFlags": 0
+      },
+      "gardenResident": 151,
+      "detailZoom": 17,
+      "stats": {
+        "kitVertices": 93564,
+        "chunks": 32,
+        "buildings": 13070,
+        "walls": 65379,
+        "quads": 330316,
+        "vertices": 2237189,
+        "geometryMB": 74.22300910949707,
+        "textureMB": 24.25,
+        "drawCalls": 31,
+        "triangles": 892733,
+        "buildMs": 0.3000001907348633
+      },
+      "frameMedianMs": 16.699999999999818,
+      "frameP95Ms": 16.700000000000728,
+      "rider": {
+        "x": 9834.974289949621,
+        "y": -13753.3509445166
+      },
+      "stationaryRider": true
+    },
+    {
+      "mobile": true,
+      "camera": {
+        "id": "sloterdijkermeer-south-heldout",
+        "center": [
+          4.8508,
+          52.38665
+        ],
+        "zoom": 18.5,
+        "pitch": 60,
+        "bearing": 35
+      },
+      "image": "touch-sloterdijkermeer-south-heldout.png",
+      "treeLayer": {
+        "ready": true,
+        "enabled": true,
+        "trees": 998,
+        "authoredTrees": 443,
+        "tiles": 2,
+        "pending": 0,
+        "sourceTotal": 311544
+      },
+      "gardenOwnership": {
+        "coarseRanges": 150,
+        "hiddenBehindDetail": 91,
+        "wrongFlags": 0
+      },
+      "gardenResident": 151,
+      "detailZoom": 17,
+      "stats": {
+        "kitVertices": 93564,
+        "chunks": 32,
+        "buildings": 13054,
+        "walls": 65539,
+        "quads": 330190,
+        "vertices": 2248083,
+        "geometryMB": 74.5792179107666,
+        "textureMB": 24.25,
+        "drawCalls": 31,
+        "triangles": 896624,
+        "buildMs": 14.900000095367432
+      },
+      "frameMedianMs": 16.699999999999818,
+      "frameP95Ms": 16.800000000000182,
+      "rider": {
+        "x": 9834.974289949621,
+        "y": -13753.3509445166
+      },
+      "stationaryRider": true
+    },
+    {
+      "mobile": true,
+      "camera": {
+        "id": "nut-en-genoegen-heldout",
+        "center": [
+          4.8603,
+          52.3872
+        ],
+        "zoom": 18.3,
+        "pitch": 60,
+        "bearing": -25
+      },
+      "image": "touch-nut-en-genoegen-heldout.png",
+      "treeLayer": {
+        "ready": true,
+        "enabled": true,
+        "trees": 690,
+        "authoredTrees": 458,
+        "tiles": 2,
+        "pending": 0,
+        "sourceTotal": 311544
+      },
+      "gardenOwnership": {
+        "coarseRanges": 371,
+        "hiddenBehindDetail": 152,
+        "wrongFlags": 0
+      },
+      "gardenResident": 376,
+      "detailZoom": 17,
+      "stats": {
+        "kitVertices": 104733,
+        "chunks": 40,
+        "buildings": 18650,
+        "walls": 91478,
+        "quads": 472356,
+        "vertices": 3220615,
+        "geometryMB": 106.7677173614502,
+        "textureMB": 24.25,
+        "drawCalls": 37,
+        "triangles": 1277968,
+        "buildMs": 1.5999999046325684
+      },
+      "frameMedianMs": 16.69999999999891,
+      "frameP95Ms": 16.700000000000728,
+      "rider": {
+        "x": 9834.974289949621,
+        "y": -13753.3509445166
+      },
+      "stationaryRider": true
+    },
+    {
+      "mobile": true,
+      "camera": {
+        "id": "railway-transition",
+        "center": [
+          4.8557,
+          52.38825
+        ],
+        "zoom": 18.4,
+        "pitch": 58,
+        "bearing": 155
+      },
+      "image": "touch-railway-transition.png",
+      "treeLayer": {
+        "ready": true,
+        "enabled": true,
+        "trees": 612,
+        "authoredTrees": 351,
+        "tiles": 4,
+        "pending": 0,
+        "sourceTotal": 311544
+      },
+      "gardenOwnership": {
+        "coarseRanges": 371,
+        "hiddenBehindDetail": 50,
+        "wrongFlags": 0
+      },
+      "gardenResident": 376,
+      "detailZoom": 17,
+      "stats": {
+        "kitVertices": 104733,
+        "chunks": 40,
+        "buildings": 18582,
+        "walls": 91252,
+        "quads": 469513,
+        "vertices": 3101965,
+        "geometryMB": 102.92368125915527,
+        "textureMB": 24.25,
+        "drawCalls": 39,
+        "triangles": 1238696,
+        "buildMs": 2.1000003814697266
+      },
+      "frameMedianMs": 16.69999999999891,
+      "frameP95Ms": 16.799999999999272,
+      "rider": {
+        "x": 9834.974289949621,
+        "y": -13753.3509445166
+      },
+      "stationaryRider": true
+    }
+  ],
+  "errors": [],
+  "assetHashes": {
+    "inventory-trees.bundle.js": "50ccdc28877e69045f4a64596af302d91d5e589b74acafea503d221ba8bc4e76",
+    "three-buildings.bundle.js": "41b950d5a683c24aa37de398c23d15889064ed093882a55a41cd2ecbef33f397",
+    "three-buildings-worker.bundle.js": "66b81d9c1fe0e5b70215e4cf79bc55917225279e172e9048667e2889216b28a7"
+  },
+  "limits": "Headless Chrome touch emulation; frame interval includes vsync. GPU timer only if supported and non-disjoint. Heights/colours/openings are approximate.",
+  "desktopPerformance": {
+    "withCanopy": {
+      "frame": {
+        "samples": 38,
+        "medianMs": 16.69999999999891,
+        "p95Ms": 16.80000000000109
+      },
+      "completedFullSceneCpu": {
+        "samples": 53,
+        "medianMs": 1.5999999046325684,
+        "p95Ms": 1.9000000953674316
+      },
+      "gpu": {
+        "samples": 52,
+        "medianMs": 3.690833,
+        "p95Ms": 4.847333
+      },
+      "stats": {
+        "kitVertices": 57399,
+        "chunks": 31,
+        "buildings": 12908,
+        "walls": 57171,
+        "quads": 279998,
+        "vertices": 2423473,
+        "geometryMB": 80.04450416564941,
+        "textureMB": 97,
+        "drawCalls": 31,
+        "triangles": 935713,
+        "buildMs": 3.499999523162842
+      },
+      "trees": {
+        "total": 1340,
+        "authored": 712,
+        "draws": 7
+      }
+    },
+    "withoutCanopy": {
+      "frame": {
+        "samples": 38,
+        "medianMs": 16.69999999999891,
+        "p95Ms": 16.80000000000109
+      },
+      "completedFullSceneCpu": {
+        "samples": 53,
+        "medianMs": 1.9000000953674316,
+        "p95Ms": 2.3000001907348633
+      },
+      "gpu": {
+        "samples": 52,
+        "medianMs": 2.992166,
+        "p95Ms": 4.335583
+      },
+      "stats": {
+        "kitVertices": 57399,
+        "chunks": 31,
+        "buildings": 12908,
+        "walls": 57171,
+        "quads": 279998,
+        "vertices": 2423473,
+        "geometryMB": 80.04450416564941,
+        "textureMB": 97,
+        "drawCalls": 31,
+        "triangles": 935713,
+        "buildMs": 3.499999523162842
+      },
+      "trees": {
+        "total": 628,
+        "authored": 0,
+        "draws": 7
+      }
+    },
+    "repeatWithCanopy": {
+      "frame": {
+        "samples": 38,
+        "medianMs": 16.69999999999891,
+        "p95Ms": 16.700000000000728
+      },
+      "completedFullSceneCpu": {
+        "samples": 53,
+        "medianMs": 1.6999998092651367,
+        "p95Ms": 2
+      },
+      "gpu": {
+        "samples": 52,
+        "medianMs": 3.745625,
+        "p95Ms": 4.921999
+      },
+      "stats": {
+        "kitVertices": 57399,
+        "chunks": 31,
+        "buildings": 12908,
+        "walls": 57171,
+        "quads": 279998,
+        "vertices": 2423473,
+        "geometryMB": 80.04450416564941,
+        "textureMB": 97,
+        "drawCalls": 31,
+        "triangles": 935713,
+        "buildMs": 3.499999523162842
+      },
+      "trees": {
+        "total": 1340,
+        "authored": 712,
+        "draws": 7
+      }
+    }
+  },
+  "touchPerformance": {
+    "withCanopy": {
+      "frame": {
+        "samples": 38,
+        "medianMs": 16.69999999999891,
+        "p95Ms": 16.799999999999272
+      },
+      "completedFullSceneCpu": {
+        "samples": 53,
+        "medianMs": 1.1000003814697266,
+        "p95Ms": 1.3999996185302734
+      },
+      "gpu": {
+        "samples": 52,
+        "medianMs": 4.325875,
+        "p95Ms": 4.851541
+      },
+      "stats": {
+        "kitVertices": 104733,
+        "chunks": 40,
+        "buildings": 18582,
+        "walls": 91252,
+        "quads": 469513,
+        "vertices": 3101965,
+        "geometryMB": 102.92368125915527,
+        "textureMB": 24.25,
+        "drawCalls": 39,
+        "triangles": 1238696,
+        "buildMs": 2.1000003814697266
+      },
+      "trees": {
+        "total": 612,
+        "authored": 351,
+        "draws": 7
+      }
+    },
+    "withoutCanopy": {
+      "frame": {
+        "samples": 38,
+        "medianMs": 16.700000000000728,
+        "p95Ms": 16.700000000000728
+      },
+      "completedFullSceneCpu": {
+        "samples": 53,
+        "medianMs": 1.1999998092651367,
+        "p95Ms": 1.3000001907348633
+      },
+      "gpu": {
+        "samples": 52,
+        "medianMs": 4.049416,
+        "p95Ms": 4.484999
+      },
+      "stats": {
+        "kitVertices": 104733,
+        "chunks": 40,
+        "buildings": 18582,
+        "walls": 91252,
+        "quads": 469513,
+        "vertices": 3101965,
+        "geometryMB": 102.92368125915527,
+        "textureMB": 24.25,
+        "drawCalls": 39,
+        "triangles": 1238696,
+        "buildMs": 2.1000003814697266
+      },
+      "trees": {
+        "total": 261,
+        "authored": 0,
+        "draws": 7
+      }
+    },
+    "repeatWithCanopy": {
+      "frame": {
+        "samples": 38,
+        "medianMs": 16.69999999999891,
+        "p95Ms": 16.799999999999272
+      },
+      "completedFullSceneCpu": {
+        "samples": 53,
+        "medianMs": 1.1000003814697266,
+        "p95Ms": 1.200000286102295
+      },
+      "gpu": {
+        "samples": 52,
+        "medianMs": 4.341583,
+        "p95Ms": 4.842749
+      },
+      "stats": {
+        "kitVertices": 104733,
+        "chunks": 40,
+        "buildings": 18582,
+        "walls": 91252,
+        "quads": 469513,
+        "vertices": 3101965,
+        "geometryMB": 102.92368125915527,
+        "textureMB": 24.25,
+        "drawCalls": 39,
+        "triangles": 1238696,
+        "buildMs": 2.1000003814697266
+      },
+      "trees": {
+        "total": 612,
+        "authored": 351,
+        "draws": 7
+      }
+    }
+  }
+}

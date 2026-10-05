@@ -1,0 +1,27 @@
+{
+  "views": [],
+  "errors": [],
+  "assetHashes": {
+    "inventory-trees.bundle.js": "f6c129a86c88d771779841604e01175319bc1178886e7419897e86a0361b1e60",
+    "three-buildings.bundle.js": "371d20627fd0464c0b1a4d09681880ecb931bc3fd393bfa933fb9c73516a3ad9",
+    "three-buildings-worker.bundle.js": "25c79ac24f2e88f426483c80cd69725e79fa0329ececeecbd22d2e11bbedb7db"
+  },
+  "limits": "Headless Chrome touch emulation; frame interval includes vsync. GPU timer only if supported and non-disjoint. Heights/colours/openings are approximate.",
+  "demo": {
+    "pass": true,
+    "parkButton": true,
+    "lookSwitch": true,
+    "treeLayer": {
+      "ready": true,
+      "enabled": true,
+      "trees": 352,
+      "sourceTotal": 311544
+    },
+    "status": "Drag to explore · scroll or pinch to zoom · 376 mapped garden houses",
+    "gardenResident": 376,
+    "chunks": 31,
+    "suspended": false,
+    "facadesOutOfZoom": false,
+    "forcedIntroSuspension": false
+  }
+}

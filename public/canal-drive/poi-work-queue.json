@@ -46,7 +46,7 @@
       },
       "gardenPlantingFollowup": {
         "requested": "User reported the restored house surroundings still look empty; fill the gardens.",
-        "status": "verified-scoped-approximate-planting",
+        "status": "superseded-after-user-rejection",
         "patches": 3855,
         "gardensWithClearGround": 372,
         "retainedEmptyGardens": 4,
@@ -54,6 +54,16 @@
         "review": "../../artifacts/sloterdijkermeer-review/gardens/independent-review.md",
         "runtimeEvidence": "../../artifacts/sloterdijkermeer-review/gardens/game/report.json",
         "failureAndRepair": "Preserved initial coarse/near ownership failure; separate internal garden render ranges fix duplication and keep garden clicks from selecting houses."
+      },
+      "canopyFollowup": {
+        "status": "verified-scoped-approximate-canopy",
+        "mappedTrees": 1003,
+        "authoredExtraTrees": 1743,
+        "sourceScope": "Municipal inventory is municipality-managed trees only. Cached OSM has no explicit tree points inside the two park polygons.",
+        "treatment": "Separate estimated private-garden canopy, scoped crown priors and rounded green understory. Mapped source positions/heights/species retained; no survey claim for authored trees.",
+        "review": "../../artifacts/sloterdijkermeer-review/canopy/independent-review.md",
+        "evidence": "../../artifacts/sloterdijkermeer-review/canopy/game/report.json",
+        "priorFailure": "User rejected v1 gardens; prior visual acceptance withdrawn. Brown tiled beds removed; stale-preview failure preserved."
       }
     },
     {
