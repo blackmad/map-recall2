@@ -1,0 +1,42 @@
+{
+  "privateSourceCommit": "65cf81b476c757a363f59aec86a76db824b48598",
+  "models": [
+    {
+      "id": "jan-evertsen-native-0363100012118917",
+      "name": "Native GLB draft · 0363100012118917",
+      "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-native-0363100012118917.glb?asset=5cc3df3eea3f3079",
+      "attribution": {
+        "author": "Original project geometry",
+        "licence": "Source and game review pending"
+      }
+    },
+    {
+      "id": "jan-evertsen-native-0363100012096187",
+      "name": "Native GLB draft · 0363100012096187",
+      "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-native-0363100012096187.glb?asset=a2980a284da57718",
+      "attribution": {
+        "author": "Original project geometry",
+        "licence": "Source and game review pending"
+      }
+    },
+    {
+      "id": "jan-evertsen-procedural-0363100012118917",
+      "name": "Procedural geometry preview · 0363100012118917",
+      "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-procedural-0363100012118917.glb?asset=5cf327969489eeb9",
+      "attribution": {
+        "author": "Original project geometry",
+        "licence": "Facade atlas omitted from this geometry preview"
+      }
+    },
+    {
+      "id": "jan-evertsen-procedural-0363100012096187",
+      "name": "Procedural geometry preview · 0363100012096187",
+      "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-procedural-0363100012096187.glb?asset=171ba54746b6a457",
+      "attribution": {
+        "author": "Original project geometry",
+        "licence": "Facade atlas omitted from this geometry preview"
+      }
+    }
+  ],
+  "acceptance": "drafts; no runtime replacement or neighborhood acceptance"
+}

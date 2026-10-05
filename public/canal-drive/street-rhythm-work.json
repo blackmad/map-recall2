@@ -823,6 +823,98 @@
         ],
         "failed": []
       }
+    },
+    {
+      "id": "jan-evertsenstraat-north-canopy-pilot",
+      "status": "reviewing-unaccepted-pilot",
+      "scope": "Five native geometry candidates around supplied Jan Evertsenstraat/Mercatorplein camera; no neighborhood-wide profile admission.",
+      "scopeBoundary": [
+        4.85175,
+        52.3701,
+        4.85255,
+        52.3708
+      ],
+      "segments": [
+        {
+          "segment": [
+            [
+              4.851836,
+              52.37036
+            ],
+            [
+              4.852514,
+              52.37048
+            ]
+          ],
+          "side": 1,
+          "reachM": 18,
+          "source": "Approximate axis derived from native rows; official street survey not established."
+        }
+      ],
+      "sampling": {
+        "representatives": [
+          "NL.IMBAG.Pand.0363100012096187",
+          "NL.IMBAG.Pand.0363100012118917"
+        ],
+        "transitions": [
+          "NL.IMBAG.Pand.0363100012088014"
+        ],
+        "heldouts": [
+          "NL.IMBAG.Pand.0363100012072380",
+          "NL.IMBAG.Pand.0363100012096804"
+        ],
+        "sourceRole": "Native inventory frozen; heldout facade images not acquired or used for tuning.",
+        "inventory": "../../docs/references/jan-evertsen-pilot/candidate-inventory.json"
+      },
+      "traits": [
+        {
+          "id": "continuous-rigid-shop-canopy",
+          "importance": "critical",
+          "relationship": "Thin dark rounded nose above pale fascia spans shops independently of window bay tessellation; recessed tall shop glazing below.",
+          "sourceEvidence": [
+            "User screenshot: image capture April 2017, upload January 2019; lower facade only."
+          ],
+          "generatorCapability": "supported",
+          "implementation": "../../src/canalRecall/shopCanopies.ts",
+          "decision": "pass-bounded-geometry-only",
+          "reason": "Miter closure and detail-budget regressions fixed; two native production geometry probes each emit one canopy. Textured/gallery/game/heldout acceptance pending."
+        },
+        {
+          "id": "upper-window-groups-and-roof",
+          "importance": "critical",
+          "relationship": "Residential window groups and roof family must be source-derived before admitting the row.",
+          "generatorCapability": "inadequate-source-evidence",
+          "decision": "uncertain",
+          "reason": "Upper elevation and roof cropped; draft row counts and flat closures remain provisional."
+        }
+      ],
+      "cycles": [
+        {
+          "id": "pilot-cpu-1",
+          "evidence": "../../docs/references/jan-evertsen-pilot/independent-review.json",
+          "rootInspected": "Eight native GLB CPU views, procedural geometry views, supplied lower-facade photo.",
+          "failedEvidence": "Original bend-gap and six-facet budget failures preserved in independent review; corrected geometry checks pass."
+        }
+      ],
+      "coverage": {
+        "accepted": [],
+        "withheld": [
+          "NL.IMBAG.Pand.0363100012072380",
+          "NL.IMBAG.Pand.0363100012088014",
+          "NL.IMBAG.Pand.0363100012096187",
+          "NL.IMBAG.Pand.0363100012096804",
+          "NL.IMBAG.Pand.0363100012118917"
+        ],
+        "failed": []
+      },
+      "productionEvidence": [],
+      "reviewerDecision": "Bounded geometry repairs pass independent recheck; no facade-source, heldout, runtime or performance acceptance.",
+      "privateSourceArchive": {
+        "commit": "65cf81b476c757a363f59aec86a76db824b48598",
+        "path": "models/jan-evertsen-north-canopy-pilot/"
+      },
+      "preview": "./jan-evertsen-pilot.html",
+      "nextAction": "Acquire complete current facades and official address-parent links; compare textured procedural and native GLBs in real gallery/game, frozen heldouts and performance before live profile admission."
     }
   ],
   "coverageInventory": [

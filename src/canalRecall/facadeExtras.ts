@@ -12,6 +12,7 @@
 import type { FacadeStyle } from './genericFacades.js';
 import type { WallLayout } from './facadeLayout.js';
 import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, type RoofContext, type WallComponent } from './facadeExtraCore.js';
+import { continuousShopCanopy } from './shopCanopies.js';
 import { ORNAMENT_COMPONENTS, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, canalSideEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
@@ -301,7 +302,7 @@ export const extraUsage: { record: null | ((c: ExtraContext, used: readonly stri
 /** Only observed defining assemblies can exceed the ordinary building allowance. */
 export const DEFINING_BUILDING_CEILING = 540;
 type DressingState = { used: string[]; groups: Set<string>; spent: number };
-const definingWall = (c: ExtraContext) => isStreetWall(c) && !!(c.recipe?.facadeAssembly && c.assemblyOwner !== false || (c.recipe?.entranceAssembly || c.recipe?.groundAssembly === 'tall-side-entry') && !c.shopfront);
+const definingWall = (c: ExtraContext) => isStreetWall(c) && !!(c.recipe?.shopCanopy && c.canopyOwner !== false && c.groundLevel || c.recipe?.facadeAssembly && c.assemblyOwner !== false || (c.recipe?.entranceAssembly || c.recipe?.groundAssembly === 'tall-side-entry') && !c.shopfront);
 
 /** Give every supported face its defining assembly before spending on optional trim. */
 export function buildingWallExtras(contexts: readonly ExtraContext[], sink: ExtraSink): void {
@@ -334,6 +335,11 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
   const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall : EXTRA_BUDGET.sideWall) - state.spent);
   sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
+  if(phase!=='optional'&&street&&c.recipe?.shopCanopy){
+    const before=sink.tris.length;
+    continuousShopCanopy(c,sink);
+    if(sink.tris.length>before){used.push('continuous-shop-canopy');groups.add('door-frame');}
+  }
   const raisedEntry = street && !!(c.recipe?.entranceAssembly || c.recipe?.groundAssembly === 'tall-side-entry') && !c.shopfront;
   if (raisedEntry && phase !== 'optional') {
     const before = sink.tris.length;

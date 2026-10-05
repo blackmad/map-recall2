@@ -57,6 +57,19 @@ class Sink {
   quad(a: V3, b: V3, c: V3, d: V3, hex: string, hint: V3) { this.tri(a, b, c, hex, hint); this.tri(a, c, d, hex, hint); }
 }
 
+/** Footprint evidence, independent of tracing density. A detailed rectangular
+ * pontoon is still an ark; a barge requires an elongated body and a tapered end.
+ * Ambiguous outlines keep the simpler residential form instead of guessed rigging. */
+export function classifyHouseboatHull(points: readonly (readonly [number,number])[], length:number, width:number): 'ark'|'barge' {
+ if(points.length<3||length<=0||width<=0)return 'ark';
+ let area=0;for(let i=0;i<points.length;i++){const p=points[i],q=points[(i+1)%points.length];area+=p[0]*q[1]-q[0]*p[1];}
+ const occupancy=Math.abs(area)/2/(length*width);
+ const section=(a:number)=>{const hits:number[]=[];for(let i=0;i<points.length;i++){const p=points[i],q=points[(i+1)%points.length];if((p[0]<=a&&q[0]>a)||(q[0]<=a&&p[0]>a))hits.push(p[1]+(q[1]-p[1])*(a-p[0])/(q[0]-p[0]));}return hits.length>=2?Math.max(...hits)-Math.min(...hits):0;};
+ const body=Math.max(section(-length*.15),section(0),section(length*.15));
+ const endWidth=Math.min(section(-length*.46),section(length*.46));
+ return length/width>=2.3&&occupancy<.96&&body>0&&endWidth/body<.86?'barge':'ark';
+}
+
 /** One boat's triangles in local metres from `origin` (x east, y north, z up). */
 export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: number }): KitPartGeometry | null {
   const kx = 111_320 * Math.cos(origin.lat * Math.PI / 180), ky = 110_540;
@@ -102,19 +115,32 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
     box(a - 0.09, a + 0.09, b - 0.09, b + 0.09, z, z + 0.9, null);
     box(a - 0.16, a + 0.16, b - 0.16, b + 0.16, z + 0.9, z + 1.0, PIPE);
   };
+  /** Preserve the mapped pontoon perimeter, including notches. */
+  const pontoon=(ring: [number,number][],base:number,top:number,hex:string)=>{
+    const index=earcut(ring.flat());
+    for(let i=0;i<index.length;i+=3)sink.tri(...index.slice(i,i+3).map(k=>[ring[k][0],ring[k][1],top] as V3) as [V3,V3,V3],hex,[0,0,1]);
+    const area=ring.reduce((a,p,i)=>{const q=ring[(i+1)%ring.length];return a+p[0]*q[1]-q[0]*p[1];},0);
+    for(let i=0;i<ring.length;i++){const p=ring[i],q=ring[(i+1)%ring.length];sink.quad([p[0],p[1],base],[q[0],q[1],base],[q[0],q[1],top],[p[0],p[1],top],hex,area>0?[q[1]-p[1],p[0]-q[0],0]:[p[1]-q[1],q[0]-p[0],0]);}
+  };
   const roofHex = pick(ROOFS, id, 'roof'), doorHex = pick(DOORS, id, 'door');
-  const traced = pts.length > 8;
+  const form=classifyHouseboatHull(pts.map(([x,y])=>[(x-cx)*ux+(y-cy)*uy,(x-cx)*vx+(y-cy)*vy]),L,W);
+  const traced=form==='barge';
 
   if (!traced) {
     // An ark: pontoon, cabin over most of it, an open deck at one end.
     const cabinHex = pick(ARK_CABINS, id, 'cabin'), hullHex = pick(ARK_HULLS, id, 'hull');
     const hullTop = 0.5;
-    box(-L / 2, L / 2, -W / 2, W / 2, WATERLINE, hullTop, hullHex);
+    pontoon(pts,WATERLINE,hullTop,hullHex);
     const deckLen = Math.min(3.5, Math.max(1.4, L * 0.14)), deckAtStart = hash(`${id}:deck`) < 0.5;
     const a0 = deckAtStart ? -L / 2 + deckLen : -L / 2 + 0.3, a1 = deckAtStart ? L / 2 - 0.3 : L / 2 - deckLen;
-    const half = Math.max(1, W / 2 - 0.3), levels = Math.min(3, boat.levels ?? (hash(`${id}:levels`) < 0.12 ? 2 : 1));
+    const half = Math.max(1, W / 2 - 0.3), levels = Math.max(1,Math.min(3,boat.levels??1));
     const height = levels * 2.5 + hash(`${id}:height`) * 0.3, top = hullTop + height;
-    box(deckAtStart ? -L / 2 : a1, deckAtStart ? a0 : L / 2, -W / 2 + 0.05, W / 2 - 0.05, hullTop, hullTop + 0.08, DECK);
+    // Clip the timber deck to the source outline as well; a rectangle would
+    // refill the very pontoon notch retained by the hull below it.
+    const clip=(poly:[number,number][],axis:0|1,value:number,above:boolean)=>{const out:[number,number][]=[];for(let i=0;i<poly.length;i++){const p=poly[i],q=poly[(i+1)%poly.length],inside=above?p[axis]>=value:p[axis]<=value,next=above?q[axis]>=value:q[axis]<=value;if(inside)out.push(p);if(inside!==next){const t=(value-p[axis])/(q[axis]-p[axis]);out.push([p[0]+t*(q[0]-p[0]),p[1]+t*(q[1]-p[1])]);}}return out;};
+    let deck=pts.map(([x,y])=>[(x-cx)*ux+(y-cy)*uy,(x-cx)*vx+(y-cy)*vy] as [number,number]);
+    deck=clip(clip(clip(clip(deck,0,deckAtStart?-L/2:a1,true),0,deckAtStart?a0:L/2,false),1,-W/2+.05,true),1,W/2-.05,false);
+    if(deck.length>=3)pontoon(deck.map(([a,b])=>{const p=at(a,b,0);return [p[0],p[1]];}),hullTop,hullTop+.08,DECK);
     box(a0, a1, -half, half, hullTop, top, cabinHex);
     for (let level = 0; level < levels; level++) {
       const z0 = hullTop + level * 2.5 + 0.8, z1 = z0 + 1.2;
@@ -188,11 +214,11 @@ export function houseboatGeometry(boat: Houseboat, origin: { lng: number; lat: n
       sink.quad([x0, y0, t0 - stripe], [x1, y1, t1 - stripe], [x1, y1, t1], [x0, y0, t0], GUNWALE, [nx, ny, 0]);
     }
     const half = Math.max(0.8, W / 2 - 0.6);
-    const c0 = Math.min(-0.22 * L * stern, 0.28 * L * stern), c1 = Math.max(-0.22 * L * stern, 0.28 * L * stern), cabinTop = hullTop + 1.5;
+    const c0 = Math.min(-0.34 * L * stern, 0.28 * L * stern), c1 = Math.max(-0.34 * L * stern, 0.28 * L * stern), cabinTop = hullTop + 1.9;
     box(c0, c1, -half, half, hullTop, cabinTop, cabinHex);
     box(c0 - 0.15, c1 + 0.15, -half - 0.15, half + 0.15, cabinTop, cabinTop + 0.12, roofHex, true, FRAME);
-    sideWindows(c0 + 0.4, c1 - 0.4, -half, hullTop + 0.5, hullTop + 1.15, 1.6, 0.75);
-    sideWindows(c0 + 0.4, c1 - 0.4, half, hullTop + 0.5, hullTop + 1.15, 1.6, 0.75);
+    sideWindows(c0 + 0.4, c1 - 0.4, -half, hullTop + 0.55, hullTop + 1.5, 2.1, 1.1);
+    sideWindows(c0 + 0.4, c1 - 0.4, half, hullTop + 0.55, hullTop + 1.5, 2.1, 1.1);
     // Pots along the cabin roof, the barge dweller's garden, and the stove pipe.
     const roofZ = cabinTop + 0.12, pots = Math.min(2, Math.floor((c1 - c0) / 5));
     for (let k = 0; k < pots; k++) if (hash(`${id}:roofpot${k}`) < 0.75) plant(c0 + (c1 - c0) * (k + 0.5) / (pots + 0.5), (k % 2 ? 1 : -1) * half * 0.5, roofZ, `roofpot${k}`);

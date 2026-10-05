@@ -929,6 +929,26 @@
         "requestedOn": "2026-10-05",
         "sourceCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa"
       }
+    },
+    {
+      "id": "jan-evertsen-generator-glb-pilot",
+      "task": "Compare shared continuous canopy street generator with native house GLB drafts on Jan Evertsenstraat",
+      "priority": "high",
+      "status": "draft-comparison-source-game-review-pending",
+      "requestedOn": "2026-10-05",
+      "evidence": "../../docs/references/jan-evertsen-pilot/README.md",
+      "preview": "./jan-evertsen-pilot.html",
+      "nextAction": "Acquire complete current facades and official address-parent links; compare textured procedural and native GLBs in real gallery/game, frozen heldouts and performance before live profile admission."
+    },
+    {
+      "id": "houseboat-generator-form-repair",
+      "task": "Reduce inappropriate barge forms and improve residential houseboat geometry",
+      "priority": "high",
+      "status": "geometry-cpu-reviewed-live-scene-pending",
+      "requestedOn": "2026-10-05",
+      "evidence": "../../docs/references/jan-evertsen-pilot/independent-review.json",
+      "validation": "Shape-based hull classification, mapped pontoon/deck perimeter retention, source-only storey count and larger residential barge cabins/windows. All3083 extract records checked;3082classifiable,1degenerate;207classification changes. Mean195triangles. Independent representative CPU review passed.",
+      "nextAction": "Review real gameplay canal rows and changed classifier cases against references; verify water placement, camera pans and performance. Preserve cinema/REM pending reviews as separate tasks."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

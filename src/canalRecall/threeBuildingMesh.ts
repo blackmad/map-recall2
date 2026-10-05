@@ -417,9 +417,17 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const crownFronts: StreetCrownFront[] = [];
     for (const run of wallRuns(rings[bi], e => hiddenByNeighbour(e, fallbackBuilding))) {
       const first = run[0].e;
-      const b = fallbackBuilding.streetAppearance ? streetWallBuilding(fallbackBuilding, {
+      let b = fallbackBuilding.streetAppearance ? streetWallBuilding(fallbackBuilding, {
         ...first, x1: run[run.length - 1].e.x1, y1: run[run.length - 1].e.y1,
       }, origin, run.some(({ e }) => doorAllowed.has(e))) : fallbackBuilding;
+      if(!b.recipe?.shopCanopy&&!run.some(({e})=>doorAllowed.has(e))&&!first.hole&&fallbackBuilding.streetAppearance?.profiles.some(p=>p.recipes.some(r=>r.recipe.shopCanopy))){
+        // A front split entirely into sub-door-width facets still has its observed canopy.
+        // Apply exactly the usual source/profile admission and street visibility to its run;
+        // this exception accepts only a recipe carrying the explicit canopy assembly.
+        const end=run[run.length-1].e,full={...first,x1:end.x1,y1:end.y1,len:Math.hypot(end.x1-first.x0,end.y1-first.y0)};
+        const candidate=streetWallBuilding(fallbackBuilding,full,origin,!streetGrid||streetDistance(full,streetGrid,wallGrid,bi)<Infinity);
+        if(candidate.recipe?.shopCanopy)b=candidate;
+      }
       const runScale = frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0));
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
@@ -452,10 +460,25 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // each continuous facade. Keep relief contained on that facet, without seam matching.
       const assemblyOwnerEdge = extraSink && b.recipe?.facadeAssembly ? run.reduce((best, { e }, k) =>
         !e.hole && e.len >= 2.5 && doorAllowed.has(e) && (best < 0 || e.len > run[best].e.len + 1e-6) ? k : best, -1) : -1;
+      // A canopy spans eligible continuous facets, never a rear facet, hole or hidden party wall.
+      // Collinear vertices are merged by the assembly, so tessellation cannot spend its budget.
+      const canopyRuns=new Map<number,NonNullable<ExtraContext['canopyFrames']>>();
+      if(extraSink&&b.recipe?.shopCanopy){
+        let start=-1,frames:NonNullable<ExtraContext['canopyFrames']>[number][]=[];
+        const finish=()=>{if(start>=0&&frames.reduce((sum,f)=>sum+f.len,0)>=2.5)canopyRuns.set(start,frames);start=-1;frames=[];};
+        run.forEach(({e},k)=>{
+          // The door test deliberately rejects tiny facets; a continuous canopy still owns
+          // those surveyed pieces when the same street visibility test supports them.
+          if(e.hole||!(doorAllowed.has(e)||e.len<2.4&&(!streetGrid||streetDistance(e,streetGrid,wallGrid,bi)<Infinity))){finish();return;}
+          if(start<0)start=k;
+          frames.push({x0:e.x0,y0:e.y0,ux:(e.x1-e.x0)/e.len,uy:(e.y1-e.y0)/e.len,nx:e.nx,ny:e.ny,len:e.len});
+        });
+        finish();
+      }
       run.forEach(({ e }, k) => {
         walls++;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && (b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5)) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : b.openings, streetSide: b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;

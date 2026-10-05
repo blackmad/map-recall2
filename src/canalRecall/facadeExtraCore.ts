@@ -16,6 +16,9 @@ export type ExtraContext = {
   runStart?: boolean; runEnd?: boolean;
   /** One eligible facet owns a defining balcony stack for its continuous wall run. */
   assemblyOwner?: boolean;
+  /** One owner emits all eligible facets of a continuous shop canopy, atomically. */
+  canopyOwner?: boolean;
+  canopyFrames?: readonly WallFrame[];
   id: string; style: FacadeStyle; wallKey: string; f: WallFrame; base: number; top: number;
   layout: WallLayout; wallHex: string; accentHex: string; roofKind?: string; groundLevel: boolean;
   /**
@@ -119,12 +122,35 @@ export class ExtraSink {
     this.face([P(a0, o0, zWall), P(a1, o0, zWall), P(a1, o1, zOut), P(a0, o1, zOut)], n, hex);
     return true;
   }
+  /** Extrude a convex outward/up cross-section along a wall, including both end caps. */
+  wallProfile(f: WallFrame, profile: readonly (readonly [number, number])[], hex: string, join: {startSkew?:number;endSkew?:number;startCap?:boolean;endCap?:boolean} = {}): boolean {
+    const count=profile.length;
+    const caps=Number(join.startCap!==false)+Number(join.endCap!==false);
+    if(count<3||this.mark?.failed||!this.fits(2*count+caps*(count-2)))return false;
+    this.boxes++;
+    const p=(a:number,o:number,z:number):V3=>{const along=a+o*(a===0?(join.startSkew??0):(join.endSkew??0));return [f.x0+f.ux*along+f.nx*o,f.y0+f.uy*along+f.ny*o,z];};
+    // Positive signed area means outward normals are right of each profile edge.
+    const sign=profile.reduce((sum,[o,z],i)=>{const next=profile[(i+1)%count];return sum+o*next[1]-next[0]*z;},0)>=0?1:-1;
+    for(let i=0;i<count;i++){
+      const [o,z]=profile[i], [q,w]=profile[(i+1)%count];
+      this.face([p(0,o,z),p(f.len,o,z),p(f.len,q,w),p(0,q,w)],[f.nx*(w-z)*sign,f.ny*(w-z)*sign,(o-q)*sign],hex);
+    }
+    for(const [a,direction] of [[0,-1],[f.len,1]])for(let i=1;i<count-1;i++){
+      if(a===0&&join.startCap===false||a!==0&&join.endCap===false)continue;
+      const points=[profile[0],profile[i],profile[i+1]].map(([o,z])=>p(a,o,z));
+      const skew=a===0?(join.startSkew??0):(join.endSkew??0);
+      const n:V3=[(f.ux-skew*f.nx)*direction,(f.uy-skew*f.ny)*direction,0];
+      this.face(points,n,hex);
+    }
+    return true;
+  }
   private face(q: V3[], n: V3, hex: string) {
     const [A, B, C, D] = q;
     const e1 = [B[0] - A[0], B[1] - A[1], B[2] - A[2]], e2 = [C[0] - A[0], C[1] - A[1], C[2] - A[2]];
     const c = [e1[1] * e2[2] - e1[2] * e2[1], e1[2] * e2[0] - e1[0] * e2[2], e1[0] * e2[1] - e1[1] * e2[0]];
     const flip = c[0] * n[0] + c[1] * n[1] + c[2] * n[2] < 0, l = Math.hypot(...n) || 1, nn: V3 = [n[0] / l, n[1] / l, n[2] / l];
-    this.tris.push({ p: flip ? [A, C, B] : [A, B, C], hex, n: nn }, { p: flip ? [A, D, C] : [A, C, D], hex, n: nn });
+    this.tris.push({ p: flip ? [A, C, B] : [A, B, C], hex, n: nn });
+    if(D)this.tris.push({ p: flip ? [A, D, C] : [A, C, D], hex, n: nn });
   }
 }
 

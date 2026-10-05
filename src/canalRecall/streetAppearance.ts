@@ -16,6 +16,8 @@ export interface ArchitecturalRecipe {
   /** One complete frontage group, independent of tessellation and construction date. */
   openingGroup?: 'canal-two' | 'canal-three';
   groundAssembly?: 'tall-side-entry' | 'tall-commercial';
+  /** Observed rigid shop canopy; opt-in for a source-registered street frontage only. */
+  shopCanopy?: { kind: 'continuous-rigid'; projectionM: number; fasciaHeightM: number; fasciaHex: string; edgeHex: string };
   /** Procedural crown prior for an admitted source-visual frontage, not surveyed geometry. */
   crownShape?: 'neck' | 'plain' | 'bell' | 'cornice';
   crownWindows?: 'rectangular' | 'paired-oculi';
@@ -343,6 +345,10 @@ export function validateStreetAppearanceCatalog(value: unknown): StreetAppearanc
       if(r.wallMaterial!=null&&!['brick','smooth'].includes(r.wallMaterial))throw Error('invalid recipe wall material');
       if(r.openingGroup!=null&&(!['canal-two','canal-three'].includes(r.openingGroup)||r.family!=='masonry'||r.period!=='canal'))throw Error('incompatible frontage opening group');
       if(r.groundAssembly!=null&&(!['tall-side-entry','tall-commercial'].includes(r.groundAssembly)||!r.openingGroup))throw Error('incompatible frontage ground assembly');
+      if(r.shopCanopy!=null){
+        const c=r.shopCanopy;
+        if(c.kind!=='continuous-rigid'||r.family!=='masonry'||!['c19','school'].includes(r.period)||!Number.isFinite(c.projectionM)||c.projectionM<.3||c.projectionM>1.8||!Number.isFinite(c.fasciaHeightM)||c.fasciaHeightM<.12||c.fasciaHeightM>.4||![c.fasciaHex,c.edgeHex].every(hex=>/^#[a-f0-9]{6}$/i.test(hex)))throw Error('invalid source shop canopy');
+      }
       if(r.crownShape!=null&&(!['neck','plain','bell','cornice'].includes(r.crownShape)||!p.visualClass||r.family!=='masonry'||!['canal','c19'].includes(r.period)))throw Error('incompatible source crown prior');
       if(r.crownWindows!=null&&(!['rectangular','paired-oculi'].includes(r.crownWindows)||!p.visualClass||!r.crownShape))throw Error('incompatible source crown windows');
       if(r.crownTrim!=null&&(typeof r.crownTrim!=='boolean'||!p.visualClass||!r.crownShape))throw Error('incompatible source crown trim');

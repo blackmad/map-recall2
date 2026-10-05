@@ -1,0 +1,284 @@
+[
+  {
+    "id": "jan-evertsen-native-0363100012118917",
+    "role": "ordinary-building-native-draft",
+    "acceptance": "unaccepted",
+    "variant": "pale-framed-shop",
+    "sourceBuildingId": "NL.IMBAG.Pand.0363100012118917",
+    "suppressionIds": [
+      "NL.IMBAG.Pand.0363100012118917"
+    ],
+    "retainedNeighborIds": [
+      "NL.IMBAG.Pand.0363100012088014",
+      "NL.IMBAG.Pand.0363100012072380"
+    ],
+    "anchor": [
+      4.85200975,
+      52.370567
+    ],
+    "bearingRadians": 0,
+    "scale": 1,
+    "height": 16.5,
+    "footprint": [
+      [
+        4.852014,
+        52.370658
+      ],
+      [
+        4.851929,
+        52.370643
+      ],
+      [
+        4.852006,
+        52.370476
+      ],
+      [
+        4.85209,
+        52.370491
+      ],
+      [
+        4.852014,
+        52.370658
+      ]
+    ],
+    "localFootprint": [
+      [
+        0.2888569754994279,
+        -10.13007366192304
+      ],
+      [
+        -5.488282534549496,
+        -8.460281300284894
+      ],
+      [
+        -0.25487380187575037,
+        10.130073662714013
+      ],
+      [
+        5.454299360986185,
+        8.460281300284894
+      ],
+      [
+        0.2888569754994279,
+        -10.13007366192304
+      ]
+    ],
+    "frontage": {
+      "indices": [
+        2,
+        3
+      ],
+      "vertices": [
+        [
+          4.852006,
+          52.370476
+        ],
+        [
+          4.85209,
+          52.370491
+        ]
+      ],
+      "localVertices": [
+        [
+          -0.25487380187575037,
+          10.130073662714013
+        ],
+        [
+          5.454299360986185,
+          8.460281300284894
+        ]
+      ],
+      "width": 5.948349749062304,
+      "angleRadians": 0.2845392205295693,
+      "outwardEastSouth": [
+        0.2807152290754834,
+        0.9597911023577468
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ]
+    },
+    "heightNotes": "16.5/14.43 m from installed extract; survey method/date not exposed in this tile. Flat provisional roof only; north-row roof form not tagged.",
+    "source": {
+      "path": "public/data/extracts/amsterdam/building-tiles/14/8412/5384.geojson.gz",
+      "sha256": "a99197c84e90cd689f5c38eaac5e4842b1964886708789f4af4f6b522da01d6d",
+      "rawPrivateArchive": "models/jan-evertsen-native-0363100012118917/",
+      "privateSourceCommit": "65cf81b476c757a363f59aec86a76db824b48598",
+      "userImageSha256": "0bcad915f2d04fd581aee5a1685ef9edd58d29309c664d105b034af79c8f4ac4"
+    },
+    "evidenceGaps": [
+      "Exact 94 address-to-VBO-to-Pand parent unavailable; neither draft asserted to be the photographed shop",
+      "Upper floors and roof cropped in supplied image; window row count/grouping is provisional",
+      "Current panorama, Bouwdossiers and bounded Beeldbank address search unavailable",
+      "Gallery/live scene/suppression/performance acceptance pending"
+    ],
+    "observedTraits": [
+      "Rigid continuous canopy with dark top gutter and pale fascia",
+      "Tall shopfront glazing divided by pale frames",
+      "Brown masonry upstairs with pale window trim"
+    ],
+    "provisionalDetails": [
+      "Four upper window rows on 16.5m candidate and three on 14.43m candidate",
+      "Rear windows omitted pending source; side party walls remain blank",
+      "No identification lettering; historical shop plaque simplified to plain green panel on first variant"
+    ]
+  },
+  {
+    "id": "jan-evertsen-native-0363100012096187",
+    "role": "ordinary-building-native-draft",
+    "acceptance": "unaccepted",
+    "variant": "dark-pier-shop",
+    "sourceBuildingId": "NL.IMBAG.Pand.0363100012096187",
+    "suppressionIds": [
+      "NL.IMBAG.Pand.0363100012096187"
+    ],
+    "retainedNeighborIds": [
+      "NL.IMBAG.Pand.0363100012088014",
+      "NL.IMBAG.Pand.0363100012072380"
+    ],
+    "anchor": [
+      4.85206975,
+      52.3706045
+    ],
+    "bearingRadians": 0,
+    "scale": 1,
+    "height": 14.43,
+    "footprint": [
+      [
+        4.852096,
+        52.370678
+      ],
+      [
+        4.852011,
+        52.370664
+      ],
+      [
+        4.852024,
+        52.370636
+      ],
+      [
+        4.852056,
+        52.370641
+      ],
+      [
+        4.852069,
+        52.370613
+      ],
+      [
+        4.852037,
+        52.370607
+      ],
+      [
+        4.85209,
+        52.370491
+      ],
+      [
+        4.852175,
+        52.370506
+      ],
+      [
+        4.852096,
+        52.370678
+      ]
+    ],
+    "localFootprint": [
+      [
+        1.784115098750509,
+        -8.181982573213375
+      ],
+      [
+        -3.993019506675587,
+        -6.623509702087447
+      ],
+      [
+        -3.1094577434934827,
+        -3.506563959835593
+      ],
+      [
+        -0.9345364802806382,
+        -4.063161413978633
+      ],
+      [
+        -0.050974717098533656,
+        -0.9462156717267782
+      ],
+      [
+        -2.2258959803113783,
+        -0.27829872707151976
+      ],
+      [
+        1.3763173618415072,
+        12.634762204775745
+      ],
+      [
+        7.153451967267603,
+        10.964969843137599
+      ],
+      [
+        1.784115098750509,
+        -8.181982573213375
+      ]
+    ],
+    "frontage": {
+      "indices": [
+        6,
+        7
+      ],
+      "vertices": [
+        [
+          4.85209,
+          52.370491
+        ],
+        [
+          4.852175,
+          52.370506
+        ]
+      ],
+      "localVertices": [
+        [
+          1.3763173618415072,
+          12.634762204775745
+        ],
+        [
+          7.153451967267603,
+          10.964969843137599
+        ]
+      ],
+      "width": 6.013608798400244,
+      "angleRadians": 0.281366775277871,
+      "outwardEastSouth": [
+        0.2776689368424412,
+        0.9606768246984979
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ]
+    },
+    "heightNotes": "16.5/14.43 m from installed extract; survey method/date not exposed in this tile. Flat provisional roof only; north-row roof form not tagged.",
+    "source": {
+      "path": "public/data/extracts/amsterdam/building-tiles/14/8412/5384.geojson.gz",
+      "sha256": "a99197c84e90cd689f5c38eaac5e4842b1964886708789f4af4f6b522da01d6d",
+      "rawPrivateArchive": "models/jan-evertsen-native-0363100012096187/",
+      "privateSourceCommit": "65cf81b476c757a363f59aec86a76db824b48598",
+      "userImageSha256": "0bcad915f2d04fd581aee5a1685ef9edd58d29309c664d105b034af79c8f4ac4"
+    },
+    "evidenceGaps": [
+      "Exact 94 address-to-VBO-to-Pand parent unavailable; neither draft asserted to be the photographed shop",
+      "Upper floors and roof cropped in supplied image; window row count/grouping is provisional",
+      "Current panorama, Bouwdossiers and bounded Beeldbank address search unavailable",
+      "Gallery/live scene/suppression/performance acceptance pending"
+    ],
+    "observedTraits": [
+      "Rigid continuous canopy with dark top gutter and pale fascia",
+      "Tall shopfront glazing divided by pale frames",
+      "Brown masonry upstairs with pale window trim"
+    ],
+    "provisionalDetails": [
+      "Four upper window rows on 16.5m candidate and three on 14.43m candidate",
+      "Rear windows omitted pending source; side party walls remain blank",
+      "No identification lettering; historical shop plaque simplified to plain green panel on first variant"
+    ]
+  }
+]
