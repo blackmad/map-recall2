@@ -111,3 +111,17 @@ test('raised side leaf is painted into the complete ground cell with untinted pa
     }
   }finally{globalThis.document=previous;}
 });
+
+test('segmental heads are explicit alternatives: flat default and ground hierarchy survive atlas sharing',()=>{
+ for(const group of ['canal-two','canal-three'] as const)for(const ground of ['tall-side-entry','tall-commercial'] as const)for(const look of ['photo','storybook','cartoon'] as const){
+  const r=recipe(group,ground),flat=bayLookFor('head',1700,16,look,undefined,r);
+  const curved=bayLookFor('head',1700,16,look,undefined,{...r,windowHead:'segmental'});
+  assert.equal(flat.variant.shape,'rect'); assert.equal(curved.variant.shape,'segmental');
+  assert.deepEqual(recipeBayOpenings('head',r),recipeBayOpenings('head',{...r,windowHead:'segmental'}),'head shape must not move doors or whole-front columns');
+  for(const kind of ['upper','ground','groundDoor'] as const){
+   const a=bayLayer('canal',flat.style,kind),b=bayLayer('canal',curved.style,kind);
+   assert.notEqual(a,b); assert.equal(bayVariant(BAY_ENTRIES[b]).shape,'segmental');
+   assert.ok(b+PROCEDURAL_RECIPE_LAYER_OFFSET<256);
+  }
+ }
+});

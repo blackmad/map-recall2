@@ -7,6 +7,7 @@ export interface ArchitecturalRecipe {
   bayScale?: number; storeyScale?: number; groundScale?: number;
   windowWidth?: number; windowHeight?: number;
   windowProportions?: 'tall' | 'balanced' | 'wide';
+  windowHead?: 'flat' | 'segmental';
   frameColor?: 'pale' | 'dark'; lintel?: 'flat' | 'arch' | 'none'; paleAccents?: boolean;
   sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six';
   facadeAssembly?: 'stacked-open-balcony' | 'stacked-iron-balcony'; trimDensity?: 'restrained' | 'ornate';
@@ -329,6 +330,7 @@ export function validateStreetAppearanceCatalog(value: unknown): StreetAppearanc
       for (const ratio of [r.windowWidth, r.windowHeight]) if (ratio != null && !unit(ratio)) throw Error('invalid opening fraction');
       for (const scale of [r.bayScale, r.storeyScale, r.groundScale]) if (scale != null && (!Number.isFinite(scale) || scale < .5 || scale > 2)) throw Error('invalid recipe scale');
       if (r.windowProportions != null && !['tall','balanced','wide'].includes(r.windowProportions) || r.frameColor != null && !['pale','dark'].includes(r.frameColor) || r.lintel != null && !['flat','arch','none'].includes(r.lintel) || r.paleAccents != null && typeof r.paleAccents !== 'boolean') throw Error('invalid recipe accent');
+      if(r.windowHead!=null&&(!['flat','segmental'].includes(r.windowHead)||r.family!=='masonry'||r.windowHead==='segmental'&&(!r.openingGroup||r.period!=='canal')))throw Error('invalid window head');
       if(r.sash!=null&&!['plain','transom','paired-transom','six-over-six'].includes(r.sash)||r.trimDensity!=null&&!['restrained','ornate'].includes(r.trimDensity))throw Error('invalid recipe detail');
       if(r.facadeAssembly!=null){
         const modern=r.facadeAssembly==='stacked-open-balcony'&&r.family==='punched'&&['modern','postwar'].includes(r.period);

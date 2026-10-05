@@ -18,11 +18,11 @@ for(const e of manifest.evidence){
  if(sha256(await fs.readFile(e.sourceFile))!==e.sourceSha256||sha256(await fs.readFile(e.cropFile))!==e.cropSha256)throw Error(`Source checksum mismatch: ${e.id}`);
  evidence.push({id:e.id,kind:'municipal-panorama' as const,captureDate:e.captureDate,sha256:e.cropSha256,url:e.sourceUrl,panoramaId:e.panoramaId,inference:'agent-visual-review' as const,quality:.9,notes:'Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched.'});
 }
-const palettes:Array<{weight:number;wallHex:string;frameHex:string;crownShape:ArchitecturalRecipe['crownShape'];groundAssembly:ArchitecturalRecipe['groundAssembly'];crownWindows?:ArchitecturalRecipe['crownWindows']}>=[
+const palettes:Array<{weight:number;wallHex:string;frameHex:string;crownShape:ArchitecturalRecipe['crownShape'];groundAssembly:ArchitecturalRecipe['groundAssembly'];windowHead?:ArchitecturalRecipe['windowHead'];crownWindows?:ArchitecturalRecipe['crownWindows']}>=[
  {weight:3,wallHex:'#3c3531',frameHex:'#e4dfce',crownShape:'cornice',groundAssembly:'tall-side-entry'},
  {weight:3,wallHex:'#554039',frameHex:'#e4dfce',crownShape:'neck',groundAssembly:'tall-side-entry'},
  {weight:2,wallHex:'#373638',frameHex:'#e2dfd2',crownShape:'neck',groundAssembly:'tall-commercial'},
- {weight:2,wallHex:'#59443a',frameHex:'#ddd5c4',crownShape:'cornice',groundAssembly:'tall-commercial'},
+ {weight:2,wallHex:'#59443a',frameHex:'#ddd5c4',crownShape:'cornice',groundAssembly:'tall-commercial',windowHead:'segmental'},
  {weight:1,wallHex:'#dad5c5',frameHex:'#373734',crownShape:'cornice',groundAssembly:'tall-side-entry'},
  {weight:1,wallHex:'#393738',frameHex:'#e4dfce',crownShape:'bell',groundAssembly:'tall-side-entry',crownWindows:'paired-oculi'},
 ];
@@ -36,7 +36,7 @@ for(const building of plan.inventory){
 const recipes:StreetAppearanceProfile['recipes']=[];
 for(const group of ['canal-two','canal-three'] as const)for(const p of palettes){
  const three=group==='canal-three';
- recipes.push({weight:p.weight,heightMin:7,heightMax:26,frontageMin:three?5.5:2.5,frontageMax:three?9:5.499999,recipe:{family:'masonry',period:'canal',wallHex:p.wallHex,frameHex:p.frameHex,groundWallHex:p.wallHex,openingGroup:group,groundAssembly:p.groundAssembly,crownShape:p.crownShape,crownWindows:'paired-oculi',crownTrim:true,balconyPolicy:'assembly-only',detailPolicy:'architectural',windowWidth:.62,windowHeight:.70,windowProportions:'tall',frameColor:'pale',lintel:'none',paleAccents:false,sash:'paired-transom',trimDensity:'restrained',wallMaterial:'brick',atticWindows:true,bayScale:1,storeyScale:1,groundScale:1.2,trim:{frames:.75,lintels:.08,cornice:.8,courses:0,quoins:0,arches:0},confidence:.88}});
+ recipes.push({weight:p.weight,heightMin:7,heightMax:26,frontageMin:three?5.5:2.5,frontageMax:three?9:5.499999,recipe:{family:'masonry',period:'canal',wallHex:p.wallHex,frameHex:p.frameHex,groundWallHex:p.wallHex,openingGroup:group,groundAssembly:p.groundAssembly,crownShape:p.crownShape,crownWindows:'paired-oculi',crownTrim:true,balconyPolicy:'assembly-only',detailPolicy:'architectural',windowWidth:.62,windowHeight:.70,windowProportions:'tall',windowHead:p.windowHead??'flat',frameColor:'pale',lintel:'none',paleAccents:false,sash:'paired-transom',trimDensity:'restrained',wallMaterial:'brick',atticWindows:true,bayScale:1,storeyScale:1,groundScale:1.2,trim:{frames:.75,lintels:.08,cornice:.8,courses:0,quoins:0,arches:0},confidence:.88}});
 }
 const profile:StreetAppearanceProfile={id:plan.proposalId,streetName:'Oudezijds Voorburgwal',revision:'',segment:plan.segment,side:plan.side,registerCrowns,reachM:20,confidence:.9,assemblyM:8,status:'reviewed',visualClass:{kind:'historic-frontage',constructionYearPolicy:'source-visual',sourceEvidenceIds:evidence.map(e=>e.id)},recipes,evidence};
 profile.revision=sha256(JSON.stringify(profile)).slice(0,16);

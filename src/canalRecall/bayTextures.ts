@@ -19,7 +19,7 @@ export type Archetype = 'canal' | 'c19' | 'school' | 'modern';
 export type BayKind = 'plain' | 'groundDoor' | 'groundShop' | 'shopCafe' | 'shopWindow' | 'shopBar' | 'shopDeli' | 'shopFlorist' | 'shopBike' | 'ground' | 'upper' | 'upperTall' | 'attic';
 export const SHOP_KINDS = ['groundShop', 'shopCafe', 'shopWindow', 'shopBar', 'shopDeli', 'shopFlorist', 'shopBike'] as const;
 export type ShopKind = (typeof SHOP_KINDS)[number];
-export type WindowShape = 'rect' | 'arch' | 'round';
+export type WindowShape = 'rect' | 'arch' | 'round' | 'segmental';
 
 /** Everything that changes how a bay is drawn; colours are not part of it. */
 export interface BayVariant {
@@ -147,12 +147,24 @@ function wall(p: Painter, w: number, h: number, brick: CanvasImageSource, archet
     return;
   }
   for (let y = 0; y < h; y += 105) for (let x = 0; x < w; x += 105) ctx.drawImage(brick, x, y, 105, 105);
+  ctx.strokeStyle = 'rgba(235,223,205,0.18)'; ctx.lineWidth = 1.7;
+  for (let row = 0, y = 6; y < h; y += 14, row++) {
+    ctx.beginPath(); ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();
+    for(let x=(row%2)*24;x<w;x+=48){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,y+14);ctx.stroke();}
+  }
   if (archetype === 'school') { ctx.fillStyle = 'rgba(0,0,0,0.22)'; ctx.fillRect(0, 0, w, h); }
+}
+
+/** A shallow segmental head, distinct from a semicircular arch or rounded rectangle. */
+function segmentalPath(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, rise: number): void {
+  ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x, y + rise);
+  ctx.quadraticCurveTo(x + w / 2, y - rise, x + w, y + rise);
+  ctx.lineTo(x + w, y + h); ctx.closePath();
 }
 
 function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: BayVariant): void {
   const { ctx } = p, cartoon = p.cartoon, line = cartoon ? p.lineW : 0;
-  const shape = v.shape;
+  const shape = v.shape, headRise = Math.min(w * .10, h * .07);
   const topR = shape === 'arch' ? w / 2 : shape === 'round' ? 18 : 6;
   const outline = () => { if (cartoon) { p.stroke(OUTLINE, line); ctx.lineJoin = 'round'; ctx.stroke(); } };
   const shutterColour = '#ffffff';
@@ -164,7 +176,9 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
     }
   }
   // Reveal shadow, then lintel (soldier course or cream block) and sill.
-  p.fill('ink', 'rgba(20,14,10,0.55)'); ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
+  p.fill('ink', 'rgba(20,14,10,0.55)');
+  if (shape === 'segmental') { segmentalPath(ctx,x-4,y-4,w+8,h+8,headRise+2); ctx.fill(); }
+  else ctx.fillRect(x - 4, y - 4, w + 8, h + 8);
   const restrained = v.trimDensity === 'restrained';
   const stone = cartoon ? p.stone : '#cfc8b8';
   if (v.lintel !== 'none' && v.family !== 'punched' && v.archetype !== 'modern') {
@@ -184,11 +198,13 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   // Frame and glass.
   if (v.openingGroup) {
     p.fill('accent', '#ffffff');
-    ctx.fillRect(x - 11, y - 11, w + 22, h + 22);
+    if (shape === 'segmental') { segmentalPath(ctx,x-11,y-11,w+22,h+22,headRise+3); ctx.fill(); }
+    else ctx.fillRect(x - 11, y - 11, w + 22, h + 22);
   }
   const frameColour = v.openingGroup || v.frameTone === 'dark' ? '#2c302f' : v.paintedFrames ? '#ffffff' : (cartoon ? '#fffaf0' : '#f1ede2');
   p.fill(v.paintedFrames ? 'accent' : 'ink', frameColour);
-  if (shape === 'arch') { ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x, y + w / 2); ctx.arc(x + w / 2, y + w / 2, w / 2, Math.PI, 0); ctx.lineTo(x + w, y + h); ctx.closePath(); }
+  if (shape === 'segmental') segmentalPath(ctx,x,y,w,h,headRise);
+  else if (shape === 'arch') { ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x, y + w / 2); ctx.arc(x + w / 2, y + w / 2, w / 2, Math.PI, 0); ctx.lineTo(x + w, y + h); ctx.closePath(); }
   else if (shape === 'round') { p.rr(x, y, w, h, Math.min(w / 2, 28)); } else p.rr(x, y, w, h, topR);
   ctx.fill(); outline();
   const m = restrained ? (p.toon ? 8 : 5) : v.paleAccents ? (cartoon ? 16 : 13) : cartoon ? 12 : 9;
@@ -196,10 +212,11 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
     const g = ctx.createLinearGradient(0, y, 0, y + h);
     if (cartoon) { g.addColorStop(0, p.glass[0]); g.addColorStop(1, p.glass[1]); } else { g.addColorStop(0, '#6f8796'); g.addColorStop(0.55, '#2f4350'); g.addColorStop(1, '#1d2a33'); }
     ctx.fillStyle = g;
-    if (shape === 'arch') { ctx.beginPath(); ctx.moveTo(x + m, y + h - m); ctx.lineTo(x + m, y + w / 2); ctx.arc(x + w / 2, y + w / 2, w / 2 - m, Math.PI, 0); ctx.lineTo(x + w - m, y + h - m); ctx.closePath(); ctx.fill(); }
+    if (shape === 'segmental') { segmentalPath(ctx,x+m,y+m,w-2*m,h-2*m,headRise); ctx.fill(); }
+    else if (shape === 'arch') { ctx.beginPath(); ctx.moveTo(x + m, y + h - m); ctx.lineTo(x + m, y + w / 2); ctx.arc(x + w / 2, y + w / 2, w / 2 - m, Math.PI, 0); ctx.lineTo(x + w - m, y + h - m); ctx.closePath(); ctx.fill(); }
     else { p.rr(x + m, y + m, w - 2 * m, h - 2 * m, 5); ctx.fill(); }
   });
-  if (p.pass === 'mask') { ctx.fillStyle = '#000'; ctx.fillRect(x + m, y + m, w - 2 * m, h - 2 * m); }
+  if (p.pass === 'mask') { ctx.fillStyle = '#000'; if (shape === 'segmental') { segmentalPath(ctx,x+m,y+m,w-2*m,h-2*m,headRise);ctx.fill(); } else ctx.fillRect(x + m, y + m, w - 2 * m, h - 2 * m); }
   // Muntins: a cross in cartoon, six-over-six sashes in photo.
   p.fill(v.paintedFrames ? 'accent' : 'ink', frameColour);
   if (v.sash === 'paired-transom') {
