@@ -107,3 +107,37 @@ test('architectural street fronts survive an empty navigation network and detach
   catalog.streetFrontPaths[0].points[0][0] = 0;
   assert.deepEqual(renderer.streetsFor([feature]),first);
 });
+
+test('short exposed native returns inherit only their exact admitted frontage color and quiet single-column openings',async()=>{
+  const {readFileSync}=await import('node:fs');
+  const catalog=JSON.parse(readFileSync(new URL('../../public/data/street-appearance/profiles.json',import.meta.url),'utf8')) as {profiles:StreetAppearanceProfile[]};
+  const profiles=catalog.profiles.filter(p=>p.id==='oudezijds-voorburgwal-east-39-71-discovery');
+  const samples=[
+    {id:'NL.IMBAG.Pand.0363100012177971',a:[4.899194,52.374276],b:[4.899181,52.374265]},
+    {id:'NL.IMBAG.Pand.0363100012177969',a:[4.899326,52.374393],b:[4.899315,52.374381]},
+    {id:'NL.IMBAG.Pand.0363100012172010',a:[4.898855,52.374016],b:[4.898869,52.37401]},
+  ];
+  for(const sample of samples)for(const look of ['photo','cartoon','procedural'] as const){
+    const building:MeshBuilding={...base(look),id:sample.id,shop:true,shopfront:true,accentHex:'#e58c35',groundHex:'#34974d',streetAppearance:{profiles,year:1994,look}};
+    const wall={x0:(sample.a[0]-origin.lng)*kx,y0:(sample.a[1]-origin.lat)*110540,x1:(sample.b[0]-origin.lng)*kx,y1:(sample.b[1]-origin.lat)*110540,nx:1,ny:0,hole:false};
+    const inherited=streetWallBuilding(building,wall,origin,false);
+    assert.notEqual(inherited,building,`${sample.id}: native shallow return inherits even outside doorAllowed`);
+    assert.deepEqual(streetWallBuilding(building,wall,origin,true),inherited,'short street returns keep one quiet column rather than squeezed frontage groups');
+    assert.equal(inherited.plainWalls,false);assert.equal(inherited.recipe,undefined,'return gains no facade/roof source class');
+    assert.notEqual(inherited.layers!.upper,inherited.plainLayer);assert.notEqual(inherited.layers!.ground,inherited.plainLayer);assert.equal(inherited.layers!.door,inherited.layers!.ground);
+    const {BAY_ENTRIES,bayVariant}=await import('./bayLook.js');
+    const offset=look==='procedural'?PROCEDURAL_RECIPE_LAYER_OFFSET:0;
+    const variant=bayVariant(BAY_ENTRIES[inherited.layers!.upper-offset]);
+    assert.equal(variant.windows,1);assert.equal(variant.openingGroup,'canal-return');
+    assert.equal(inherited.groundHex,undefined,'stock shop paint cannot interrupt masonry');
+    assert.equal(inherited.polygons,building.polygons);assert.equal(inherited.heightM,building.heightM);
+    assert.equal(streetWallBuilding(building,{...wall,hole:true},origin,false),building);
+    assert.equal(streetWallBuilding(building,{...wall,x0:wall.x0+10,x1:wall.x1+10,y0:wall.y0+10,y1:wall.y1+10},origin,false),building,'rear returns excluded');
+    assert.equal(streetWallBuilding(building,{...wall,x1:wall.x0+3,y1:wall.y0},origin,false),building,'long side walls excluded');
+    const neighbor={...building,id:'unadmitted-neighbor'};assert.equal(streetWallBuilding(neighbor,wall,origin,false),neighbor,'nearby identity never borrows baked admission');
+    const unbaked={...building,streetAppearance:{...building.streetAppearance!,profiles:profiles.map(p=>({...p,frontages:undefined}))}};
+    assert.equal(streetWallBuilding(unbaked,wall,origin,false),unbaked,'unbaked profiles cannot color a return');
+    const mapped={...building,streetAppearance:{...building.streetAppearance!,mappedWallHex:'#54321f'}};
+    assert.equal(streetWallBuilding(mapped,wall,origin,false).wallHex,'#54321f','mapped source colors retain authority');
+  }
+});

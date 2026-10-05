@@ -1155,6 +1155,96 @@
         "pitchDeg": 35
       },
       "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "id": "cornice-upper",
+      "kind": "municipal-panorama",
+      "captureDate": "2025-06-30T06:09:23Z",
+      "sha256": "7d3cac2ee73745810b32e17896f71a20651bfc81c561426d697fe587c26f789d",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01782/equirectangular/panorama_4000.jpg",
+      "panoramaId": "recording_2025-06-30_05-16-46_01782",
+      "inference": "agent-visual-review",
+      "quality": 0.9,
+      "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched.",
+      "profileId": "oudezijds-voorburgwal-east-39-71-discovery",
+      "file": "../map-recall2-source-data/streets/oudezijds-voorburgwal-east-39-71-discovery/artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg",
+      "holdout": false,
+      "appearanceReview": "uncertain-withheld"
+    },
+    {
+      "id": "neck-middle",
+      "kind": "municipal-panorama",
+      "captureDate": "2025-06-30T06:09:08Z",
+      "sha256": "eedb334f9ea370e51e36ce064d930b6ca0b0076f3d4e564fc38e39fb04009667",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01774/equirectangular/panorama_4000.jpg",
+      "panoramaId": "recording_2025-06-30_05-16-46_01774",
+      "inference": "agent-visual-review",
+      "quality": 0.9,
+      "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched.",
+      "profileId": "oudezijds-voorburgwal-east-39-71-discovery",
+      "file": "../map-recall2-source-data/streets/oudezijds-voorburgwal-east-39-71-discovery/artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg",
+      "holdout": false,
+      "appearanceReview": "uncertain-withheld"
+    },
+    {
+      "id": "bell-lower",
+      "kind": "municipal-panorama",
+      "captureDate": "2025-06-30T06:08:54Z",
+      "sha256": "c20b6a189c200aa4f5fe68b6cb9c2be804a90accc345b5dbab7cfa09a415adb3",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01766/equirectangular/panorama_4000.jpg",
+      "panoramaId": "recording_2025-06-30_05-16-46_01766",
+      "inference": "agent-visual-review",
+      "quality": 0.9,
+      "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched.",
+      "profileId": "oudezijds-voorburgwal-east-39-71-discovery",
+      "file": "../map-recall2-source-data/streets/oudezijds-voorburgwal-east-39-71-discovery/artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg",
+      "holdout": false,
+      "appearanceReview": "uncertain-withheld"
+    },
+    {
+      "id": "upper-unmatched",
+      "kind": "municipal-panorama",
+      "captureDate": "2025-06-30T06:09:13Z",
+      "sha256": "f25d7431ddc340685ee0dbae829aea531d4fdfb93eaf714179b7867bd6ba8526",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01777/equirectangular/panorama_4000.jpg",
+      "panoramaId": "recording_2025-06-30_05-16-46_01777",
+      "inference": "agent-visual-review",
+      "quality": 0.9,
+      "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched.",
+      "profileId": "oudezijds-voorburgwal-east-39-71-discovery",
+      "file": "../map-recall2-source-data/streets/oudezijds-voorburgwal-east-39-71-discovery/artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg",
+      "holdout": false,
+      "appearanceReview": "uncertain-withheld"
+    },
+    {
+      "id": "late-year-neck",
+      "kind": "municipal-panorama",
+      "captureDate": "2025-06-30T06:09:02Z",
+      "sha256": "e99d6867cec84133026278237d03d32a087e1eb62ecb59e6ad3492a5d10d35cb",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01771/equirectangular/panorama_4000.jpg",
+      "panoramaId": "recording_2025-06-30_05-16-46_01771",
+      "inference": "agent-visual-review",
+      "quality": 0.9,
+      "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched.",
+      "profileId": "oudezijds-voorburgwal-east-39-71-discovery",
+      "file": "../map-recall2-source-data/streets/oudezijds-voorburgwal-east-39-71-discovery/artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg",
+      "holdout": false,
+      "appearanceReview": "uncertain-withheld"
+    },
+    {
+      "id": "lower-unmatched",
+      "kind": "municipal-panorama",
+      "captureDate": "2025-06-30T06:08:55Z",
+      "sha256": "37fdabaac932ea4fceef484eb38817b74c0df422c94d20b854df98dccd332060",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01767/equirectangular/panorama_4000.jpg",
+      "panoramaId": "recording_2025-06-30_05-16-46_01767",
+      "inference": "agent-visual-review",
+      "quality": 0.9,
+      "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched.",
+      "profileId": "oudezijds-voorburgwal-east-39-71-discovery",
+      "file": "../map-recall2-source-data/streets/oudezijds-voorburgwal-east-39-71-discovery/artifacts/street-appearance/register-transition/next-canal-source/processed/lower-unmatched.jpg",
+      "holdout": false,
+      "appearanceReview": "uncertain-withheld"
     }
   ],
   "failures": [],
@@ -1265,6 +1355,15 @@
       "holdout": false
     },
     {
+      "profileId": "oudezijds-voorburgwal-east-39-71-discovery",
+      "lengthM": 100.15434367413077,
+      "samples": 6,
+      "stationIntervalM": 0,
+      "endGapM": 0,
+      "admitted": true,
+      "holdout": false
+    },
+    {
       "profileId": "bethanienstraat-transition-context",
       "lengthM": 57.745914202720066,
       "samples": 3,
@@ -1274,16 +1373,17 @@
       "holdout": false
     }
   ],
-  "runtimeRevision": "44fb4363499779ec",
+  "runtimeRevision": "1fba4a85e826205b",
   "reviewMode": "agent-visual-review; model proposals retained separately",
   "trainedProfiles": [
     "bethanienstraat-observed-historic-pair",
+    "oudezijds-voorburgwal-east-39-71-discovery",
     "bethanienstraat-transition-context"
   ],
   "holdoutPriorTransfer": [],
   "frontageSurvey": {
     "url": "frontage-survey.json",
-    "sha256": "40a5cacf7eaf54871e937194255e3889c1d1de442c6cfe9b25ca8c5ec91f79d4",
-    "assignments": 7
+    "sha256": "8b52c8d9fc104443fac647cd7154d3c9ecc31bfa8f8158f9017ee4a597bc5f93",
+    "assignments": 25
   }
 }

@@ -12,8 +12,13 @@ export interface ArchitecturalRecipe {
   facadeAssembly?: 'stacked-open-balcony' | 'stacked-iron-balcony'; trimDensity?: 'restrained' | 'ornate';
   wallMaterial?: 'brick' | 'smooth';
   atticWindows?: boolean;
+  /** One complete frontage group, independent of tessellation and construction date. */
+  openingGroup?: 'canal-two' | 'canal-three';
+  groundAssembly?: 'tall-side-entry' | 'tall-commercial';
   /** Procedural crown prior for an admitted source-visual frontage, not surveyed geometry. */
-  crownShape?: 'neck' | 'plain';
+  crownShape?: 'neck' | 'plain' | 'bell' | 'cornice';
+  crownWindows?: 'rectangular' | 'paired-oculi';
+  crownTrim?: boolean;
   /** Reviewed frontage can omit guessed balconies while retaining explicit assemblies. */
   balconyPolicy?: 'assembly-only';
   detailPolicy?: 'architectural';
@@ -36,6 +41,8 @@ export interface StreetAppearanceProfile {
   id: string; streetName: string; revision: string;
   /** Reviewed architectural appearance; never a replacement construction fact. */
   visualClass?: StreetAppearanceVisualClass;
+  /** Explicit official Pand links, independent of image registration or palette allocation. */
+  registerCrowns?: Array<{buildingId:string;shape:'neck'|'plain'|'bell'|'cornice';windows?:'paired-oculi';sourceUrl:string;sourceSnapshotSha256:string}>;
   segment: readonly [StreetPoint, StreetPoint]; side: -1 | 1;
   reachM: number; confidence: number; assemblyM: number;
   /** Each joint recipe is observed as one combination, never independently shuffled. */
@@ -302,6 +309,14 @@ export function validateStreetAppearanceCatalog(value: unknown): StreetAppearanc
     if (!['pilot', 'reviewed'].includes(p.status) || !Array.isArray(p.evidence) || !p.evidence.length || !Array.isArray(p.recipes) || !p.recipes.length) throw Error('missing street evidence');
     for (const e of p.evidence) if (!e || !unit(e.quality) || !/^[a-f0-9]{64}$/.test(e.sha256) || !['municipal-panorama', 'user-reference'].includes(e.kind) || !['agent-visual-review', 'model'].includes(e.inference)) throw Error('invalid street evidence');
     if(p.visualClass&&!admittedStreetAppearanceVisualClass(p))throw Error('invalid source visual class');
+    if(p.registerCrowns){
+      const members=new Set<string>();
+      if(!p.visualClass||!Array.isArray(p.registerCrowns))throw Error('unadmitted register crown metadata');
+      for(const r of p.registerCrowns){
+        if(!r||!/^NL\.IMBAG\.Pand\.\d+$/.test(r.buildingId)||members.has(r.buildingId)||!['neck','plain','bell','cornice'].includes(r.shape)||r.windows!=null&&r.windows!=='paired-oculi'||!/^https:\/\/monumentenregister\.cultureelerfgoed\.nl\/monumenten\/\d+$/.test(r.sourceUrl)||! /^[a-f0-9]{64}$/.test(r.sourceSnapshotSha256))throw Error('invalid explicit register crown');
+        members.add(r.buildingId);
+      }
+    }
     for (const { weight, recipe: r, yearMin, yearMax, heightMin, heightMax, frontageMin, frontageMax, priority, cornerOnly } of p.recipes) {
       if (!Number.isFinite(weight) || weight <= 0 || !r || !['masonry', 'punched', 'ribbon', 'curtain'].includes(r.family) || !['canal', 'c19', 'school', 'postwar', 'modern', 'tower'].includes(r.period) || !unit(r.confidence)) throw Error('invalid architectural recipe');
       if (yearMin != null && !Number.isFinite(yearMin) || yearMax != null && !Number.isFinite(yearMax) || yearMin != null && yearMax != null && yearMin > yearMax) throw Error('invalid period range');
@@ -324,7 +339,11 @@ export function validateStreetAppearanceCatalog(value: unknown): StreetAppearanc
       if(r.balconyPolicy!=null&&r.balconyPolicy!=='assembly-only')throw Error('invalid balcony policy');
       if(r.detailPolicy!=null&&r.detailPolicy!=='architectural')throw Error('invalid detail policy');
       if(r.wallMaterial!=null&&!['brick','smooth'].includes(r.wallMaterial))throw Error('invalid recipe wall material');
-      if(r.crownShape!=null&&(!['neck','plain'].includes(r.crownShape)||!p.visualClass||r.family!=='masonry'||!['canal','c19'].includes(r.period)))throw Error('incompatible source crown prior');
+      if(r.openingGroup!=null&&(!['canal-two','canal-three'].includes(r.openingGroup)||r.family!=='masonry'||r.period!=='canal'))throw Error('incompatible frontage opening group');
+      if(r.groundAssembly!=null&&(!['tall-side-entry','tall-commercial'].includes(r.groundAssembly)||!r.openingGroup))throw Error('incompatible frontage ground assembly');
+      if(r.crownShape!=null&&(!['neck','plain','bell','cornice'].includes(r.crownShape)||!p.visualClass||r.family!=='masonry'||!['canal','c19'].includes(r.period)))throw Error('incompatible source crown prior');
+      if(r.crownWindows!=null&&(!['rectangular','paired-oculi'].includes(r.crownWindows)||!p.visualClass||!r.crownShape))throw Error('incompatible source crown windows');
+      if(r.crownTrim!=null&&(typeof r.crownTrim!=='boolean'||!p.visualClass||!r.crownShape))throw Error('incompatible source crown trim');
       if(r.atticWindows!=null&&typeof r.atticWindows!=='boolean')throw Error('invalid recipe attic window hint');
       if (r.trim && ['frames','lintels','cornice','courses','quoins','arches'].some(key => !unit(r.trim![key as keyof NonNullable<ArchitecturalRecipe['trim']>]))) throw Error('invalid recipe trim');
     }

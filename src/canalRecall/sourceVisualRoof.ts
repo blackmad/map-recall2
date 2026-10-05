@@ -1,4 +1,4 @@
-import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
+import { GABLE_SHAPES, localOuterRing, roofPlanForFeature, type RoofPlan } from './roofMesh.js';
 import { admittedStreetAppearanceVisualClass, type StreetAppearanceProfile } from './streetAppearance.js';
 
 type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: unknown };
@@ -24,9 +24,50 @@ export function sourceVisualRoof<T extends Feature>(feature: T, profiles: readon
     if (selected?.frontageMin != null && front.frontage.widthM < selected.frontageMin || selected?.frontageMax != null && front.frontage.widthM > selected.frontageMax) continue;
     const recipe = selected?.recipe;
     if (!recipe?.crownShape) continue;
-    const roofFeature = { ...feature, properties: { ...p, facadeStyle: 'canal', monumentGable: recipe.crownShape, roofPlanned: true } };
-    const plan = roofPlanForFeature(roofFeature);
-    if (!plan || plan.kind !== 'gable') continue;
+    const official = profile.registerCrowns?.find(c => c.buildingId === id);
+    const registerShape = official?.shape ?? (typeof p.monumentGable === 'string' && GABLE_SHAPES.includes(p.monumentGable as any) ? p.monumentGable : undefined);
+    const roofFeature = { ...feature, properties: { ...p, facadeStyle: 'canal', monumentGable: registerShape ?? recipe.crownShape, roofPlanned: true } };
+    const planned = roofPlanForFeature(roofFeature);
+    if (!planned || planned.kind !== 'gable') continue;
+    const bound = (p: RoofPlan): RoofPlan => ({ ...p, nativeEnvelopeM: p.riseM, chimney: false, dormers: false, accents: recipe.crownTrim ?? true, trimHex: recipe.frameHex ?? p.trimHex, pieces: p.pieces?.map(piece => ({...piece, plan: bound(piece.plan)})) });
+    const explicitCrownAssembly = recipe.crownTrim != null || recipe.crownWindows != null || !!official;
+    const admittedRise = Math.max(planned.riseM, Math.min(3.5, Math.max(2.6,front.frontage.widthM*.52)));
+    const plan = explicitCrownAssembly ? bound({...planned,riseM:admittedRise,pieces:planned.pieces?.map(piece=>({...piece,plan:{...piece.plan,riseM:Math.min(admittedRise,Math.max(piece.plan.riseM,admittedRise*.78))}}))}) : planned;
+    if(explicitCrownAssembly)plan.keepLid=true;
+    if (explicitCrownAssembly) {
+    const ring=localOuterRing(feature.geometry)!;
+    const [lng0,lat0]=(geometry.coordinates![0] as number[][])[0],kx=111320*Math.cos(lat0*Math.PI/180);
+    const point=([lng,lat]:readonly number[]):[number,number]=>[(lng-lng0)*kx,(lat-lat0)*110540];
+    let start=point(front.frontage.start),end=point(front.frontage.end);
+    const mx=(start[0]+end[0])/2,my=(start[1]+end[1])/2;
+    let area=0;for(let i=0;i<ring.length-1;i++)area+=ring[i][0]*ring[i+1][1]-ring[i+1][0]*ring[i][1];
+    let nearest=Infinity,normal:[number,number]=[0,0];
+    for(let i=0;i<ring.length-1;i++) {
+      const a=ring[i],b=ring[i+1],dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy);if(l<.1)continue;
+      const t=Math.max(0,Math.min(1,((mx-a[0])*dx+(my-a[1])*dy)/(l*l))),distance=Math.hypot(mx-a[0]-t*dx,my-a[1]-t*dy);
+      if(distance<nearest){nearest=distance;normal=area>0?[dy/l,-dx/l]:[-dy/l,dx/l];}
+    }
+    // Averaging several exposed walls can put a baked cohort line inside its
+    // concave footprint. Recover an actual parallel outer wall facing the same
+    // admitted street, rather than inventing a carrier through the building.
+    if(nearest>.65) {
+      const streetA=point(profile.segment[0]),streetB=point(profile.segment[1]),streetDx=streetB[0]-streetA[0],streetDy=streetB[1]-streetA[1],streetLength2=streetDx*streetDx+streetDy*streetDy;
+      const tx=end[0]-start[0],ty=end[1]-start[1],frontWidth=Math.hypot(tx,ty);
+      let best=Infinity;
+      for(let i=0;i<ring.length-1;i++) {
+        const a=ring[i],b=ring[i+1],dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy);
+        if(l<Math.max(2.4,frontWidth*.55)||l>frontWidth*1.8||Math.abs((dx*tx+dy*ty)/(l*frontWidth))<.9)continue;
+        const n:[number,number]=area>0?[dy/l,-dx/l]:[-dy/l,dx/l],cx=(a[0]+b[0])/2,cy=(a[1]+b[1])/2;
+        const t=Math.max(0,Math.min(1,((cx-streetA[0])*streetDx+(cy-streetA[1])*streetDy)/streetLength2));
+        const vx=streetA[0]+t*streetDx-cx,vy=streetA[1]+t*streetDy-cy,distance=Math.hypot(vx,vy);
+        if(vx*n[0]+vy*n[1]<=0||distance>profile.reachM)continue;
+        if(distance<best){best=distance;start=[...a];end=[...b];normal=n;nearest=0;}
+      }
+    }
+    // Only an actual surveyed outer frontage can carry this shared crown.
+    if(nearest>.65||Math.hypot(...normal)<.9)continue;
+    plan.sourceCrownFront={start,end,normal,shape:plan.gable,pairedOculi:official?.windows==='paired-oculi'};
+    }
     const eaves = Number(p.height) - plan.riseM;
     if (!Number.isFinite(eaves) || eaves < 4.5) continue;
     return { feature: { ...feature, properties: { ...p, roofPlanned: true, roofShape: plan.kind, roofEavesHeightM: eaves } }, plan };

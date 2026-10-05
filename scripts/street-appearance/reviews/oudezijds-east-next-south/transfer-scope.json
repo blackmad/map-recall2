@@ -1,0 +1,9 @@
+{
+  "candidateCatalogSha256": "a19d56def4707c1bd79921e31124a6c45f406d5a4774717f827500ee37703c26",
+  "primaryProfile": "oudezijds-voorburgwal-east-39-71-discovery",
+  "evaluationProfile": "oudezijds-east-next-south",
+  "frozenRecipe": "opening/ground/material/trim recipes copied unchanged; source-only crown fields omitted",
+  "limit": "Source-visual date overrides and official crown claims do not transfer into unobserved scope. Roofs retain ordinary native/register defaults. Any visual failure prevents accepting affected transfer.",
+  "facadeSourceProjection": "oudezijds-voorburgwal-east-39-71-discovery-facade-transfer-source",
+  "unchangedFacadeFields": "All window, ground, palette, proportions, material, trim, detail and balcony fields copied unchanged. Only source-only crown fields projected out before exact transfer."
+}

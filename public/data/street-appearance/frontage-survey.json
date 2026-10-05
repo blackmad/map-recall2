@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "44fb4363499779ec",
+  "revision": "1fba4a85e826205b",
   "origin": {
     "lng": 4.9,
     "lat": 52.37
@@ -13,6 +13,14 @@
     {
       "file": "public/data/extracts/amsterdam/building-facts/14/8414/5384.json.gz",
       "sha256": "3b7df2ccc54bfde567aef0cef9039d6612d8a4e1052e2022d7dfbca9c5a0a8ed"
+    },
+    {
+      "file": "public/data/extracts/amsterdam/building-tiles/14/8415/5384.geojson.gz",
+      "sha256": "9a56ff6be88bfa885258f14a0f15c0270a5414f91e35e05bdf7c9ffee1ede4ff"
+    },
+    {
+      "file": "public/data/extracts/amsterdam/building-facts/14/8415/5384.json.gz",
+      "sha256": "1846624425891e9140cbdb85ee1041be8364670d06f314bd4e5c23ad536a06b3"
     }
   ],
   "admissionInputs": [
@@ -26,23 +34,23 @@
     },
     {
       "file": "scripts/street-appearance/bake-frontages.ts",
-      "sha256": "49436a378aa488396adcde5ab96725006c65b66e622dd8f8efd7b3cb512de7bc"
+      "sha256": "29940a3fd36770e66eaa44dc513c7dcedeb7b97f5b25aa63912c433418958e41"
     },
     {
       "file": "src/canalRecall/streetAppearance.ts",
-      "sha256": "a44c6ac5be086aebbbddde4bcd8008989ce2392c48abd3539360e30276440421"
+      "sha256": "940777f4d5d9d0dc6255376d7641aa03ed09218f27f551114944f4c585703e76"
     },
     {
       "file": "src/canalRecall/streetFacadeRendering.ts",
-      "sha256": "4f815b29e58bf2ea6a961dbb994e2830cc871462d9bca1340ba73b467778e6cf"
+      "sha256": "befc8020c799b296f88125c643f3d73a2db725665a982bb0200b67fe8ca258ff"
     },
     {
       "file": "src/canalRecall/threeBuildingFeatures.ts",
-      "sha256": "bfa5da25f5c9fdb95758c79d964a9cedc2527db20f88ee12f1fafa4bd92e0c6e"
+      "sha256": "2c83e003bfb0e34df227e5dcd3b0feb6d68cecafea9b99cebaa18753c39fd476"
     },
     {
       "file": "src/canalRecall/threeBuildingMesh.ts",
-      "sha256": "e6ffda1bf565586bd054f54dacc91a18f0b43c9c973447b0a0040d1837b08e9c"
+      "sha256": "59fa12f08ccd303da3c3e18f6cf3c2ca61705e4e87f55893a3a7b069f8dac51a"
     },
     {
       "file": "src/canalRecall/genericFacades.ts",
@@ -58,27 +66,27 @@
     },
     {
       "file": "src/canalRecall/streetCrown.ts",
-      "sha256": "e84e4c54425117b6fbc9ea7b9d3929fb1d206ae1598f5ce7da0969f7450f0d4e"
+      "sha256": "086cc06f97fa4eee03de8e93d6ce0859588b65c6d4304689a50f1798eb3a215a"
     },
     {
       "file": "src/canalRecall/bayLook.ts",
-      "sha256": "212b78ddebf409e646d98a121c1cce128b3430c8ef54600f0a4ae9eaf9c78b10"
+      "sha256": "48541f6be87a71fd53359f7094a156027c03ed2ca77a8fad4a7355f888be766d"
     },
     {
       "file": "src/canalRecall/bayTextures.ts",
-      "sha256": "261b80a468bef7dc731e140af1db608ad11c5e2cfd2d84edaf0e2a26b73914a7"
+      "sha256": "5a663c2b861520ddb6f4193e1df507765026db489af998f8c12b0abcc7d8c6b2"
     },
     {
       "file": "src/canalRecall/facadeOrnaments.ts",
-      "sha256": "c1370d0a849fe6cdcae06e01496bf4e84f86746fcba5e88a1d094d590d89a80d"
+      "sha256": "da6833516224b1245f9c496b2b86bec4a33c5f303f13b51d76604989533fe34c"
     },
     {
       "file": "src/canalRecall/facadeExtras.ts",
-      "sha256": "74e97d9a89f15ae0273cebfdc75d11b2d73bb55efc85aa6bfd0b199a04444991"
+      "sha256": "495bae0cb1c19059335395156ee74c353eaf8a5b16d8ffa37786903c4f0b52e0"
     },
     {
       "file": "src/canalRecall/facadeOpenings.ts",
-      "sha256": "4bc6251cff7de996adc8f70149f730c979bccea76eb2c8b1b6d501fdf2124552"
+      "sha256": "e4d59ec138362fe2cd155f04881d61ab87e15f1135d1b96b303c2f70a7a1b3f3"
     },
     {
       "file": "src/canalRecall/facadeExtraCore.ts",
@@ -90,19 +98,19 @@
     },
     {
       "file": "src/canalRecall/sourceVisualRoof.ts",
-      "sha256": "a48419d462a3541d4c14a5dcb657e9f81f0bbc2e1dc2f84d04cfe58f76449970"
+      "sha256": "5c57594d9ec0695e5de713e457c46118bae33affdeb9503a310030fbec16b165"
     },
     {
       "file": "src/canalRecall/roofMesh.ts",
-      "sha256": "8653e1ff0a23a0eae87ddf6ce5a9039cba714ad735bb3e5f90cdda92476ac0b1"
+      "sha256": "652b1e80517caea93570a3f6cd55411686226c301096e0dc4cd40b96f4edcc1e"
     }
   ],
-  "streetFrontPathsSha256": "e4cea0fbcfebedd8ea2eecd95205f808b974a961ee01a23cb51889a20de775db",
-  "streetSegments": 18,
+  "streetFrontPathsSha256": "f1139d96ba35e3c0a83b5bbd048bb5a9f35583f3b99bd9f5d14db53fa89d67b2",
+  "streetSegments": 112,
   "neighborHaloM": 25,
-  "features": 103,
-  "exposedRuns": 7,
-  "assignments": 7,
+  "features": 289,
+  "exposedRuns": 26,
+  "assignments": 25,
   "profiles": [
     {
       "id": "bethanienstraat-observed-historic-pair",
@@ -171,6 +179,289 @@
         "#c6baa3": 2,
         "#744a3d": 2,
         "#393b3e": 1
+      }
+    },
+    {
+      "id": "oudezijds-voorburgwal-east-39-71-discovery",
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012171846",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.898788138963,
+              52.373951383101
+            ],
+            "end": [
+              4.898744861037,
+              52.373914616899
+            ],
+            "widthM": 5.01883
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012171849",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.898829805832,
+              52.37398197625
+            ],
+            "end": [
+              4.898792194168,
+              52.37395002375
+            ],
+            "widthM": 4.375435
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012172010",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.898868060281,
+              52.374010418109
+            ],
+            "end": [
+              4.898832939719,
+              52.373980581891
+            ],
+            "widthM": 4.074206
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012172011",
+          "recipeIndex": 8,
+          "frontage": {
+            "start": [
+              4.898947925644,
+              52.374072922943
+            ],
+            "end": [
+              4.898888074356,
+              52.374022077057
+            ],
+            "widthM": 6.946648
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177966",
+          "recipeIndex": 2,
+          "frontage": {
+            "start": [
+              4.89899096461,
+              52.374105460676
+            ],
+            "end": [
+              4.89895103539,
+              52.374071539324
+            ],
+            "widthM": 4.631829
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177967",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.899061484093,
+              52.374160229542
+            ],
+            "end": [
+              4.899031515907,
+              52.374134770458
+            ],
+            "widthM": 3.474972
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177968",
+          "recipeIndex": 3,
+          "frontage": {
+            "start": [
+              4.89941179666,
+              52.374452645542
+            ],
+            "end": [
+              4.89938320334,
+              52.374428354458
+            ],
+            "widthM": 3.317214
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177969",
+          "recipeIndex": 5,
+          "frontage": {
+            "start": [
+              4.899330892331,
+              52.374374602976
+            ],
+            "end": [
+              4.899307107669,
+              52.374354397024
+            ],
+            "widthM": 2.761165
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177971",
+          "recipeIndex": 3,
+          "frontage": {
+            "start": [
+              4.899233521646,
+              52.374289212834
+            ],
+            "end": [
+              4.899209478354,
+              52.374268787166
+            ],
+            "widthM": 2.788239
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177972",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.89925717793,
+              52.374308920834
+            ],
+            "end": [
+              4.89923382207,
+              52.374289079166
+            ],
+            "widthM": 2.707561
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177975",
+          "recipeIndex": 4,
+          "frontage": {
+            "start": [
+              4.89938631972,
+              52.374426412818
+            ],
+            "end": [
+              4.89934768028,
+              52.374393587182
+            ],
+            "widthM": 4.48453
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177976",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.89930893346,
+              52.374353584676
+            ],
+            "end": [
+              4.89927106654,
+              52.374321415324
+            ],
+            "widthM": 4.392303
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177980",
+          "recipeIndex": 2,
+          "frontage": {
+            "start": [
+              4.899462377838,
+              52.374500386959
+            ],
+            "end": [
+              4.899422622162,
+              52.374466613041
+            ],
+            "widthM": 4.614248
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177981",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.899575822199,
+              52.374504264461
+            ],
+            "end": [
+              4.899533834053,
+              52.374468593975
+            ],
+            "widthM": 4.878185
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177982",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.899540107814,
+              52.374573507101
+            ],
+            "end": [
+              4.899498892186,
+              52.374538492899
+            ],
+            "widthM": 4.781304
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177989",
+          "recipeIndex": 7,
+          "frontage": {
+            "start": [
+              4.899136078019,
+              52.374218300076
+            ],
+            "end": [
+              4.899065921981,
+              52.374158699924
+            ],
+            "widthM": 8.147208
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177990",
+          "recipeIndex": 6,
+          "frontage": {
+            "start": [
+              4.899193518819,
+              52.374260103951
+            ],
+            "end": [
+              4.899141481181,
+              52.374215896049
+            ],
+            "widthM": 6.046518
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178397",
+          "recipeIndex": 2,
+          "frontage": {
+            "start": [
+              4.898744165931,
+              52.373914481243
+            ],
+            "end": [
+              4.898701834069,
+              52.373878518757
+            ],
+            "widthM": 4.910981
+          }
+        }
+      ],
+      "palette": {
+        "#3c3531": 5,
+        "#554039": 5,
+        "#373638": 4,
+        "#59443a": 2,
+        "#393738": 1,
+        "#dad5c5": 1
       }
     }
   ],

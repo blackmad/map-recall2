@@ -39,13 +39,15 @@ export interface BayVariant {
   openingHeight?: number;
   sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six';
   facadeAssembly?: 'stacked-open-balcony' | 'stacked-iron-balcony';
+  openingGroup?: 'canal-two' | 'canal-three' | 'canal-return';
+  groundAssembly?: 'tall-side-entry' | 'tall-commercial';
   entranceAssembly?: 'raised-pilaster' | 'raised-plain';
   trimDensity?: 'restrained' | 'ornate';
   wallMaterial?: 'brick' | 'smooth';
 }
 
 export const variantKey = (v: BayVariant, look: Look) =>
-  `${look}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}|${v.family ?? "masonry"}|${v.proportions ?? "tall"}|${v.frameTone ?? "pale"}|${v.lintel ?? "flat"}|${!!v.paleAccents}|${v.openingOccupancy ?? "legacy"}|${v.openingHeight ?? "legacy"}|${v.sash ?? "legacy"}|${v.trimDensity ?? "legacy"}|${v.wallMaterial ?? "legacy"}|${v.facadeAssembly ?? "none"}|${v.entranceAssembly ?? "none"}`;
+  `${look}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}|${v.family ?? "masonry"}|${v.proportions ?? "tall"}|${v.frameTone ?? "pale"}|${v.lintel ?? "flat"}|${!!v.paleAccents}|${v.openingOccupancy ?? "legacy"}|${v.openingHeight ?? "legacy"}|${v.sash ?? "legacy"}|${v.trimDensity ?? "legacy"}|${v.wallMaterial ?? "legacy"}|${v.facadeAssembly ?? "none"}|${v.entranceAssembly ?? "none"}|${v.openingGroup ?? "none"}|${v.groundAssembly ?? "none"}`;
 
 /** Building-level choices, derived from a seed so every wall of a building agrees. */
 export function buildingStyle(seed: string, archetype: Archetype): Omit<BayVariant, 'kind'> & { shop: boolean } {
@@ -180,7 +182,11 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
     }
   }
   // Frame and glass.
-  const frameColour = v.frameTone === 'dark' ? '#2c302f' : v.paintedFrames ? '#ffffff' : (cartoon ? '#fffaf0' : '#f1ede2');
+  if (v.openingGroup) {
+    p.fill('accent', '#ffffff');
+    ctx.fillRect(x - 11, y - 11, w + 22, h + 22);
+  }
+  const frameColour = v.openingGroup || v.frameTone === 'dark' ? '#2c302f' : v.paintedFrames ? '#ffffff' : (cartoon ? '#fffaf0' : '#f1ede2');
   p.fill(v.paintedFrames ? 'accent' : 'ink', frameColour);
   if (shape === 'arch') { ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x, y + w / 2); ctx.arc(x + w / 2, y + w / 2, w / 2, Math.PI, 0); ctx.lineTo(x + w, y + h); ctx.closePath(); }
   else if (shape === 'round') { p.rr(x, y, w, h, Math.min(w / 2, 28)); } else p.rr(x, y, w, h, topR);
@@ -213,9 +219,16 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   p.shade(() => { if (cartoon) { ctx.fillStyle = 'rgba(255,255,255,0.75)'; ctx.beginPath(); ctx.moveTo(x + 20, y + h * 0.1 + 14); ctx.lineTo(x + 36, y + h * 0.1 + 14); ctx.lineTo(x + 20, y + h * 0.1 + 46); ctx.closePath(); ctx.fill(); } });
 }
 
+/** Joint tall ground row, shared by painted shells and near opening placement. */
+export function canalGroundGeometry(v: Pick<BayVariant, 'windows' | 'groundAssembly'>) {
+  const axes = Array.from({length:v.windows},(_,i)=>(i+.5)/v.windows);
+  return {axes, width:.66/v.windows, sill:v.groundAssembly==='tall-side-entry'?.14:.06, head:.91, doorAxis:axes[axes.length-1]};
+}
+
 /** Shared modern/quiet entry layout; keep it clear of the adjacent window. */
 export function bayDoorGeometry(v: BayVariant) {
   const quiet = v.trimDensity === 'restrained';
+  if(v.groundAssembly) { const row = canalGroundGeometry(v); return {x:BAY_PX*(row.doorAxis-row.width/2),width:BAY_PX*row.width,height:GROUND_PX*(row.head-row.sill),bottom:GROUND_PX*row.sill,fanlight:false}; }
   if(v.entranceAssembly === 'raised-plain')return {x:BAY_PX*.71,width:BAY_PX*.18,height:222,bottom:70,fanlight:false};
   if(v.entranceAssembly === 'raised-pilaster')return {x:BAY_PX*.115,width:BAY_PX*.18,height:222,bottom:52,fanlight:true};
   if(v.facadeAssembly === 'stacked-open-balcony')return {x:BAY_PX*(.5-.14),width:BAY_PX*.28,height:274,bottom:24,fanlight:false};
@@ -223,6 +236,7 @@ export function bayDoorGeometry(v: BayVariant) {
 }
 export function bayDoorWindowGeometry(v: BayVariant, look: Look = 'photo') {
   const quiet = v.trimDensity === 'restrained';
+  if(v.groundAssembly) { const row=canalGroundGeometry(v); return {axis:row.axes[0],width:BAY_PX*row.width,y:GROUND_PX*(1-row.head),height:GROUND_PX*(row.head-row.sill)}; }
   if(v.entranceAssembly === 'raised-plain')return {axis:.335,width:BAY_PX*.205,y:78,height:166};
   if(v.entranceAssembly === 'raised-pilaster')return {axis:.68,width:BAY_PX*.205,y:78,height:166};
   if (quiet) return { axis: .66, width: v.family === 'punched' ? 160 : 170, y: 88, height: 166 };
@@ -456,7 +470,12 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
     else if (isShop) { paintedGround(p, w, h); if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else { windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: 'rect', archetype: 'modern' }); if (v.kind === 'groundDoor') doorAt(p, w * 0.62, h - 24, v); }
   } else if (ground) {
-    if (v.facadeAssembly==='stacked-open-balcony'&&!isShop){
+    if (v.groundAssembly) {
+      const row=canalGroundGeometry(v), door=v.kind==='groundDoor'||v.groundAssembly==='tall-side-entry';
+      if(v.groundAssembly==='tall-side-entry'){p.fill('ink',p.stone);ctx.fillRect(0,h*(1-row.sill),w,h*row.sill);}
+      for(const axis of (door?row.axes.slice(0,-1):row.axes))windowAt(p,w*(axis-row.width/2),h*(1-row.head),w*row.width,h*(row.head-row.sill),v);
+      if(door){const d=bayDoorGeometry(v),y=h-d.bottom-d.height;windowAt(p,d.x,y,d.width,d.height,v);p.fill('ink','#30342f');ctx.fillRect(d.x+5,y+d.height*.48,d.width-10,d.height*.52-5);p.fill('ink','#1d2421');ctx.fillRect(d.x+13,y+d.height*.56,d.width-26,d.height*.30);p.fill('ink','#686a60');ctx.fillRect(d.x+d.width-18,y+d.height*.58,3,18);}
+    } else if (v.facadeAssembly==='stacked-open-balcony'&&!isShop){
       const g=bayWindowGeometry(v,70,240,p.look);
       for(const axis of (v.kind==='groundDoor'?[.17,.83]:[.17,.5,.83])){const ww=w*(axis===.5?.28:.145);windowAt(p,w*axis-ww/2,g.y,ww,g.height,{...v,sash:axis===.5?'paired-transom':'transom'});}
       if(v.kind==='groundDoor')quietDoorAt(p,v,h-24);
@@ -501,7 +520,7 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
       // White stucco string course at the floor line and a sill band: the 19th-century street's horizontal lines.
       p.fill('ink', p.stone); ctx.fillRect(0, h - (v.entranceAssembly === 'raised-pilaster' ? 12 : v.trimDensity === 'restrained' ? 4 : 12), w, v.entranceAssembly === 'raised-pilaster' ? 12 : v.trimDensity === 'restrained' ? 4 : 12); if (v.trimDensity !== 'restrained') ctx.fillRect(0, y + wh + 4, w, 7);
       if (p.cartoon) { p.stroke(OUTLINE, p.lineW * 0.5); ctx.strokeRect(0, h - 12, w, 12); }
-    } else if (v.archetype === 'canal' && v.kind !== 'attic') {
+    } else if (v.archetype === 'canal' && v.kind !== 'attic' && !v.openingGroup) {
       // A pale cornice line under each canal-house floor, the white trim the streets show.
       p.fill('ink', p.stone); ctx.fillRect(0, h - 7, w, 7);
     }

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent failure-seeking row_visual_review agent",
+  "catalogRevision": "652a570be3fb0c7c",
+  "scope": "Two untouched next-south source crops first inspected after facade recipe freeze; all eight native renders. Seven admitted frontages in ten-building inventory, without exact source-photo-to-Pand registration. Source-only crown flags/official crown table not transferred.",
+  "method": "Direct view_image inspection of all eight renderer-repair captures against the two previously exposed heldout source photographs and original failed evaluation. This is a shared geometry repair regression review, not a new untouched transfer challenge.",
+  "decision": "pass-renderer-attachment-regression; affected-south-transfer-withheld",
+  "worstView": {
+    "image": "oudezijds-east-next-south-station-2-photo-source-row.png",
+    "reason": "Wide ordinary central stock facade still repeats four equal columns/stock ground template instead of source combined broad-three-window group and narrow access tower/compound entrance. Geometry closure improvement does not resolve that facade capability gap."
+  },
+  "criteria": [
+    {
+      "id": "window-column-cadence-and-hierarchy",
+      "decision": "bounded-narrow-front-compatibility; compound-frontage-gap-withholds-transfer",
+      "reason": "Admitted narrow fronts retain coherent two/three groups and pale frames. Station2 wider central source includes broad3-window front plus a narrow access/tower element; ordinary renderer shows a stock4-column wall. That alters frontage group hierarchy and is an unresolved shared capability gap even without exact photo-to-Pand registration.",
+      "evidence": [
+        "oudezijds-east-next-south-station-1-photo-source-row.png",
+        "oudezijds-east-next-south-station-2-photo-block.png"
+      ]
+    },
+    {
+      "id": "joint-material-trim-and-exception",
+      "decision": "pass-bounded-dark-admitted-fronts; exception-transfer-unproven",
+      "reason": "Both source crops support predominantly dark brown/charcoal brick and pale frames. Admitted dark fronts preserve this relationship. Pale/tan ordinary context visible in block/oblique captures does not establish photographed pale exception in this heldout; primary exception should not be generalized from these two crops.",
+      "evidence": [
+        "oudezijds-east-next-south-station-1-photo-block.png",
+        "oudezijds-east-next-south-station-2-photo-opposite-oblique.png"
+      ]
+    },
+    {
+      "id": "ground-opening-and-raised-entry-rhythm",
+      "decision": "bounded-narrow-front-compatibility; compound-ground-gap-withholds-transfer",
+      "reason": "Narrow admitted fronts retain tall ground glazing and side access leaves/stoops. Station2 wider central source has a connected pale3-pane raised surround and separate narrow entrance/canopy axis; ordinary stock ground door/windows erase this compound relationship. No whole-inventory ground transfer acceptance.",
+      "evidence": [
+        "oudezijds-east-next-south-station-1-photo-block.png",
+        "oudezijds-east-next-south-station-1-photo-opposite-oblique.png",
+        "oudezijds-east-next-south-station-2-photo-block.png"
+      ]
+    },
+    {
+      "id": "low-balcony-frequency-and-supported-extras",
+      "decision": "pass-bounded-facade-balcony-frequency",
+      "reason": "Two source crops and admitted render fronts lack repeated residential balcony stacks. Restrained entry rails are compatible. This facade-field pass cannot excuse roof/crown floaters or claim every surrounding prop is supported.",
+      "evidence": [
+        "oudezijds-east-next-south-station-1-photo-block.png",
+        "oudezijds-east-next-south-station-2-photo-opposite-oblique.png"
+      ]
+    },
+    {
+      "id": "crown-family-mixture-and-roof-wall-attachment",
+      "decision": "pass-renderer-attachment-regression; crown-family-transfer-withheld",
+      "reason": "Original giant wings, thin sky blades and wall-to-crown sky gaps are now closed in station1 source-row/front/block and station2 right context. Legacy neck/bell/gable geometry remains as existing families rather than a flattened blanket roof treatment. This only validates geometry attachment; current photographed crown distribution was not authorized for inference or recipe transfer.",
+      "evidence": [
+        "oudezijds-east-next-south-station-1-photo-source-row.png",
+        "oudezijds-east-next-south-station-1-photo-front.png",
+        "oudezijds-east-next-south-station-2-photo-source-row.png",
+        "oudezijds-east-next-south-station-2-photo-block.png"
+      ]
+    }
+  ],
+  "affectedTransfer": "Next-south appearance transfer remains withheld. Renderer attachment repair passes as regression only; previously exposed heldout cannot become fresh challenge evidence. Do not publish evaluated candidate from generic roof correction alone.",
+  "nextAction": "Preserve original evaluation failure, design a shared compound-frontage/ground-entrance capability from newly admitted sources, freeze new scope and use a genuinely fresh heldout for future south discovery. Actual-game/performance evidence is separate.",
+  "boundaries": [
+    "No game or performance evidence reviewed.",
+    "No exact source-photo-to-building identity join.",
+    "No whole-neighborhood acceptance.",
+    "Recipe freeze and authorization boundaries supplied by root; reviewer inspected actual images, not test/cycle counts."
+  ],
+  "originalFailedEvidence": "artifacts/street-appearance/rows/oudezijds-east-next-south/evaluation/independent-review.json"
+}

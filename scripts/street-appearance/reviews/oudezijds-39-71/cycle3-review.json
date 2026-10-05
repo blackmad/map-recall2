@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent failure-seeking row_visual_review agent",
+  "cycle": 3,
+  "scope": "Six fixed primary 2025 municipal station crops and cycle1 candidate row; source labels are station roles, not exact Pand joins. No heldout inspection.",
+  "method": "Direct view_image inspection of all six cycle3 source-row and all six block renders against previously inspected six fixed municipal primary source photographs. No heldout, browser, game or performance review.",
+  "decision": "needs-improvement: useful row gains, but floating cornice gap and blank visible returns/ambiguous ground access prevent scoped acceptance",
+  "worstView": {
+    "image": "neck-middle-photo-block.png",
+    "reason": "Several full-height dark blank protruding wall returns divide the windowed fronts. Raised stairs now appear, but access opening is still indistinguishable from tall ground glass."
+  },
+  "criteria": [
+    {
+      "id": "window-column-cadence-and-hierarchy",
+      "importance": "critical",
+      "decision": "pass-bounded-main-fronts; fail-visible-return-continuity",
+      "reason": "Main front separate two/three-column cadence and short upper/tall lower hierarchy remain readable. Thicker pale frames now communicate source trim far better. However previously windowed street-visible returns are full-height blank brick fins; these remove ordinary facade identity in broad block composition. This is a visible-row regression, not a request for exact photographed corner wrapping.",
+      "renderEvidence": [
+        "neck-middle-photo-source-row.png",
+        "late-year-neck-photo-source-row.png",
+        "lower-unmatched-photo-source-row.png"
+      ]
+    },
+    {
+      "id": "crown-family-mixture-and-paired-oculi",
+      "importance": "critical",
+      "decision": "partial-pass-mixture; fail-cornice-continuity",
+      "reason": "Cycle3 demonstrates differentiated flat projecting cornices, narrowed neck shoulders and shaped bell crest, with visibly paired pale oval openings in bell-lower. Giant thin sky roof triangles are gone. Remaining cornice-upper center still has a broad sky slit beneath its white beam and stock orange/green glazing; late-year-neck center is still bare topped, though surrounding crown mixture is now sufficient for rhythm. The beam gap blocks full criterion pass; exact crest ornament and crown-address pairing remain secondary.",
+      "renderEvidence": [
+        "cornice-upper-photo-source-row.png",
+        "neck-middle-photo-source-row.png",
+        "bell-lower-photo-source-row.png",
+        "late-year-neck-photo-source-row.png",
+        "lower-unmatched-photo-source-row.png"
+      ]
+    },
+    {
+      "id": "joint-material-trim-and-exception",
+      "importance": "critical",
+      "decision": "pass-bounded-admitted-material-rhythm; incomplete-scope",
+      "reason": "Dark brown/charcoal with pale window surrounds is now dominant on admitted main fronts/returns, and pale front with dark frames remains a useful exception. Bright orange context still dominates cornice-upper and some strips elsewhere. Full-height blank return tint improves color coherence but cannot compensate for lost facade detail.",
+      "renderEvidence": [
+        "upper-unmatched-photo-source-row.png",
+        "neck-middle-photo-block.png",
+        "cornice-upper-photo-block.png"
+      ]
+    },
+    {
+      "id": "ground-opening-and-raised-entry-rhythm",
+      "importance": "critical",
+      "decision": "partial; access-relationship-unproven",
+      "reason": "Connected bases, several stepped stoops and aligned iron rails are visible, a useful improvement. Yet most admitted ground groups still read as a uniform series of tall glass rectangles. The stoop target lacks a clearly differentiated door/access leaf/transom and source alternation of raised side entrance with adjacent tall panes remains weak. Bell-lower block still has uninterrupted glass-only ground while the now blank return hides the stock shop. Distinct entrance glazing/leaf relationships are needed, without exact door panel or stair count matching.",
+      "renderEvidence": [
+        "neck-middle-photo-block.png",
+        "bell-lower-photo-block.png",
+        "neck-middle-photo-opposite-oblique.png",
+        "cornice-upper-photo-opposite-oblique.png"
+      ]
+    },
+    {
+      "id": "low-balcony-frequency-and-supported-extras",
+      "importance": "critical",
+      "decision": "pass-bounded-primary-families",
+      "reason": "No repeated residential balcony stacks or sky blades dominate the admitted fronts. Source-like thin stoop rails replace unsupported props and primary block awning is no longer prominent. Some old ground shop treatment remains partially visible behind returns in lower-unmatched/upper-unmatched, so actual-game override compatibility still needs checking. Hiding details behind blank walls does not count as their architectural correction.",
+      "renderEvidence": [
+        "bell-lower-photo-block.png",
+        "lower-unmatched-photo-source-row.png",
+        "lower-unmatched-photo-opposite-oblique.png"
+      ]
+    }
+  ],
+  "nextAction": "Correct cornice-upper actual exposed main-front admission/beam continuity; restore coherent window/ground facade identity on visible street-side returns while retaining surveyed geometry; distinguish raised access leaves beside tall ground panes. Re-review fixed primary row before heldout or production acceptance. Three cycles are effort history only.",
+  "boundaries": [
+    "Heldouts entirely untouched.",
+    "No exact source-station-to-building identity claims.",
+    "Only six fixed primary source crops visually inspected; not exhaustive twenty-frontage coverage.",
+    "No game-scene or performance evidence reviewed; offline screenshots cannot establish scoped production completion.",
+    "The prior 17m Bethanien source class is separate and supplies no acceptance for this canal row."
+  ],
+  "catalogRevision": "1fba4a85e826205b",
+  "visibleReturnOwnership": {
+    "method": "Approximate first positive CPU ray/footprint wall intersection at saved source-row pixel, using report matrixWorld/vfov/viewport and native stage input. Hit requires native-height vertical interval. No browser or code modifications.",
+    "input": "artifacts/street-appearance/stage-inputs/oudezijds-voorburgwal-east-39-71-discovery.json",
+    "hits": [
+      {
+        "station": "neck-middle",
+        "pixel": [
+          870,
+          600
+        ],
+        "buildingId": "NL.IMBAG.Pand.0363100012177971",
+        "edge": [
+          [
+            4.899194,
+            52.374276
+          ],
+          [
+            4.899181,
+            52.374265
+          ]
+        ],
+        "trait": "orange/red narrow return with skinny glazing"
+      },
+      {
+        "station": "upper-unmatched",
+        "pixel": [
+          760,
+          600
+        ],
+        "buildingId": "NL.IMBAG.Pand.0363100012177969",
+        "edge": [
+          [
+            4.899326,
+            52.374393
+          ],
+          [
+            4.899315,
+            52.374381
+          ]
+        ],
+        "trait": "green narrow return"
+      },
+      {
+        "station": "bell-lower",
+        "pixel": [
+          470,
+          600
+        ],
+        "buildingId": "NL.IMBAG.Pand.0363100012172010",
+        "edge": [
+          [
+            4.898855,
+            52.374016
+          ],
+          [
+            4.898869,
+            52.37401
+          ]
+        ],
+        "trait": "gray narrow return and generic shop"
+      }
+    ],
+    "finding": "All three hit identities already appear in surveyed canal profile frontages, but hit wall edges differ from the surveyed assigned main-front segments. Consistent visible-return cohort treatment is a meaningful shared rhythm improvement; blanket whole-building facade overriding may incorrectly alter unrelated rear edges.",
+    "cycle3Assessment": "The same native visible returns now become dark blank walls. Native protrusion geometry should be retained, but removing all windows/doors produces repeating full-height blank fins that interrupt photographed row rhythm. Apply coherent supported detail to reviewed exposed return edges rather than flattening footprints or blindly decorating party walls."
+  }
+}

@@ -26,10 +26,18 @@ try {
  const visual=JSON.parse(await fs.readFile('public/data/street-appearance/source-visual-profiles.json','utf8'));
  profiles.push(...visual.profiles);
 } catch(error) { if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error; }
+// Explicitly accepted whole-row recipes survive routine recompilation.
+// No candidate or heldout catalog is read here.
+let rowProfiles:StreetAppearanceCatalog['profiles']=[];
+try {
+ const rows=validateStreetAppearanceCatalog(JSON.parse(await fs.readFile('public/data/street-appearance/reviewed-row-profiles.json','utf8')));
+ if(rows.profiles.some(p=>p.status!=='reviewed'||p.holdout||p.learnedFrom))throw Error('Unaccepted row publication');
+ rowProfiles=rows.profiles;profiles.push(...rowProfiles);
+} catch(error) { if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error; }
 // Full pilot compilation is research-only and must be requested explicitly.
 // The routine command must not silently republish rejected transfer coverage.
 const scopeIds=process.argv.includes('--research-pilot')?undefined:
- (process.argv.find(arg=>arg.startsWith('--profile-ids='))?.slice('--profile-ids='.length).split(',')??['bethanienstraat-transition-context','bethanienstraat-observed-historic-pair']);
+ (process.argv.find(arg=>arg.startsWith('--profile-ids='))?.slice('--profile-ids='.length).split(',')??['bethanienstraat-transition-context','bethanienstraat-observed-historic-pair',...rowProfiles.map(p=>p.id)]);
 // The original transfer remains a holdout in the research catalog. Publication
 // uses a separately named, explicitly reviewed extent; its recipes still come
 // unchanged from training, while the three independent stations are evaluation.
@@ -45,6 +53,8 @@ if(scopeIds){
 }
 const catalog={schemaVersion:1 as const,revision:sha256(JSON.stringify(profiles)).slice(0,16),profiles};validateStreetAppearanceCatalog(catalog);
 await fs.writeFile('public/data/street-appearance/profiles.json',JSON.stringify(catalog,null,2)+'\n');
+// Registered row evidence remains reproducible from the private source pack.
+for(const profile of rowProfiles)for(const e of profile.evidence)if(!manifest.images.some((image:any)=>image.id===e.id))manifest.images.push({...e,profileId:profile.id,file:`../map-recall2-source-data/streets/${profile.id}/artifacts/street-appearance/register-transition/next-canal-source/processed/${e.id}.jpg`,holdout:false,appearanceReview:'agent-visual-review'});
 const coverage=seeds.profiles.map(p=>{const images=manifest.images.filter((i:any)=>i.profileId===p.id),lengthM=Math.hypot((p.segment[1][0]-p.segment[0][0])*111320*Math.cos(p.segment[0][1]*Math.PI/180),(p.segment[1][1]-p.segment[0][1])*110540);return {profileId:p.id,lengthM,samples:images.length,stationIntervalM:25,endGapM:images.length?Math.max(0,lengthM-Math.max(...images.map((i:any)=>i.alongM))-12.5):lengthM,admitted:profiles.some(x=>x.id===p.id),holdout:!!p.holdout};});
 for(const p of profiles.filter(p=>!seeds.profiles.some(seed=>seed.id===p.id))){
  const lengthM=Math.hypot((p.segment[1][0]-p.segment[0][0])*111320*Math.cos(p.segment[0][1]*Math.PI/180),(p.segment[1][1]-p.segment[0][1])*110540);

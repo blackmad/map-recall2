@@ -23,6 +23,7 @@ test('actual native modern corner receives both supported street stacks before o
  for(const r of stacks)assert.deepEqual(r.used,['glass-balconies'],'three complete levels per face without optional ornaments');
  assert.ok(records.filter(r=>!stacks.includes(r)).every(r=>r.triangles===0),'added allowance never buys rear decorations');
  const native=chunk.ranges.find(r=>r.id===fixture.targetId)!;
+ assert.equal(chunk.quadCount,0,'extras mode must not emit clipped wall rectangles');
  assert.equal(native.count/3,340);assert.equal(new Set(records.map(r=>r.c.wallKey)).size,contexts.length,'one callback per actual face');
  const previous=extraUsage.record;
  try{
