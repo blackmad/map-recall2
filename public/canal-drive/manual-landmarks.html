@@ -22,6 +22,8 @@
   .view .error small{color:var(--mut);font-size:11px;word-break:break-all}
   .meta{margin:0;padding:8px 14px;color:var(--mut);font-size:12px}
   .links{margin:auto 0 0;padding:10px 14px 12px;border-top:1px solid var(--line);font-size:13px}
+  .sort-controls{display:flex;align-items:center;gap:8px;margin-top:12px}
+  select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:5px;padding:5px 8px}
   a{color:var(--link);text-underline-offset:3px}
 </style>
 </head>
@@ -30,6 +32,10 @@
   <h1>Amsterdam landmark models</h1>
   <p><a href="landmark-queue.html">Building queue</a> &middot; <a href="park-landscape.html">Park views</a> &middot; <a href="tree-models.html">Tree models</a> &middot; <a href="model-reuse-review.html">Reusable model review</a></p>
   <p>Every curated one-off landmark the game places by hand, read live from <code>SIGNATURE_MODELS</code> — the surveyed 3D Warehouse batch and the original flat-colour reconstructions. Drag to orbit &middot; scroll to zoom. Screenshot contract: <code>window.review</code>.</p>
+  <div class="sort-controls"><label for="model-sort">Sort models</label><select id="model-sort">
+    <option value="default">Catalogue order</option><option value="newest">Newest updated</option>
+    <option value="oldest">Oldest updated</option><option value="name">Name</option>
+  </select><span id="date-status" role="status"></span></div>
 </header>
 <main></main>
 <script src="./js/three.bundle.js"></script>
@@ -50,6 +56,30 @@ const loader = new GLTFLoader();
 if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
 
 const entries = [];
+const sortControl = document.querySelector('#model-sort');
+const requestedSort = new URLSearchParams(location.search).get('sort');
+if (['default', 'newest', 'oldest', 'name'].includes(requestedSort)) sortControl.value = requestedSort;
+let modelDates = {};
+function sortModels() {
+  const mode = sortControl.value;
+  const ordered = [...entries].sort((a, b) => {
+    if (mode === 'name') return (a.spec.name || a.spec.id).localeCompare(b.spec.name || b.spec.id) || a.order - b.order;
+    if (mode === 'newest' || mode === 'oldest') {
+      const at = Date.parse(modelDates[a.spec.id]?.updatedAt), bt = Date.parse(modelDates[b.spec.id]?.updatedAt);
+      if (!Number.isFinite(at) || !Number.isFinite(bt)) return Number.isFinite(at) ? -1 : Number.isFinite(bt) ? 1 : a.order - b.order;
+      return (mode === 'newest' ? bt - at : at - bt) || a.order - b.order;
+    }
+    return a.order - b.order;
+  });
+  for (const entry of ordered) main.append(entry.article);
+}
+sortControl.addEventListener('change', () => {
+  const url = new URL(location.href);
+  if (sortControl.value === 'default') url.searchParams.delete('sort');
+  else url.searchParams.set('sort', sortControl.value);
+  history.replaceState(null, '', url);
+  sortModels();
+});
 
 function frame(entry) {
   if (!entry.ready) return;
@@ -104,6 +134,10 @@ function build(spec) {
   if (attribution.title) meta.title = attribution.title;
   article.append(meta);
 
+  const updated = document.createElement('p');
+  updated.className = 'meta model-updated';
+  article.append(updated);
+
   const links = document.createElement('p');
   links.className = 'links';
   const link = document.createElement('a');
@@ -122,7 +156,7 @@ function build(spec) {
   scene.add(sun);
 
   const entry = {
-    spec, view, canvas, ctx: canvas.getContext('2d'),
+    spec, article, updated, order: entries.length, view, canvas, ctx: canvas.getContext('2d'),
     scene, sun, camera: new T.PerspectiveCamera(32, 1, 1, 20000),
     target: new T.Vector3(), distance: 200, theta: 0.55, phi: 1.02, ready: false,
   };
@@ -182,6 +216,24 @@ function build(spec) {
 }
 
 for (const spec of MODELS) build(spec);
+sortModels();
+fetch('./models/model-dates.json').then(response => {
+  if (!response.ok) throw new Error('Date metadata unavailable');
+  return response.json();
+}).then(data => {
+  modelDates = data.models || {};
+  for (const entry of entries) {
+    const date = modelDates[entry.spec.id]?.updatedAt;
+    if (date && Number.isFinite(Date.parse(date))) {
+      const time = document.createElement('time');
+      time.dateTime = date;
+      time.textContent = new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      time.title = new Date(date).toLocaleString();
+      entry.updated.append('Model updated ', time);
+    } else entry.updated.textContent = 'Model update date unavailable';
+  }
+  sortModels();
+}).catch(() => { document.querySelector('#date-status').textContent = 'Update dates unavailable'; });
 
 let resizeTimer = 0;
 addEventListener('resize', () => {
