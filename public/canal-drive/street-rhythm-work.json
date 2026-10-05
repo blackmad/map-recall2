@@ -408,13 +408,61 @@
     },
     {
       "id": "oudezijds-voorburgwal-east-39-71",
-      "status": "sources-inventoried",
+      "status": "primary-observed-capability-review",
       "scope": "100.15m east-bank street-side row plus 48.38m adjacent heldout",
       "inventory": "scripts/data/amsterdam-monument-register/rhythm-next-plan.json#nextCanalRow",
       "nativeFrontages": 20,
       "explicitMonumentLinks": 10,
-      "nextAction": "Observe fixed representative and transition stations, preserving heldout images unused; build joint source-backed cornice/neck/bell recipes and withhold unmatched visual assumptions. Review whole-row mixture and modern-date exceptions before publication.",
-      "completion": "No runtime coverage yet; historical descriptions alone are not current-facade measurements."
+      "nextAction": "Capture valid native whole-row baseline with all neighbors; implement joint reusable recipes and only defining missing components, then three review/improvement cycles and untouched heldout challenge. Row remains unpublished.",
+      "completion": "No runtime coverage yet; historical descriptions alone are not current-facade measurements.",
+      "sources": {
+        "archiveCommit": "1b32bd4",
+        "primarySamples": 6,
+        "captureDate": "2025-06-30",
+        "observationRecord": "scripts/street-appearance/reviews/oudezijds-39-71/observations.json",
+        "heldout": "not acquired or inferred"
+      },
+      "definingRhythms": [
+        {
+          "id": "narrow-window-groups",
+          "claim": "Closely packed narrow masonry fronts read as repeated two- and three-column groups of tall separate windows. Broad ground glazing does not turn the upper floors into ribbon glazing. Upper/attic openings tend to shorten while the ground floor can be markedly taller.",
+          "generatorImplication": "Preserve surveyed frontage widths and per-front two/three-bay cadence; ground and upper groups need distinct proportions.",
+          "acceptance": "pending baseline/candidate comparison"
+        },
+        {
+          "id": "dark-masonry-pale-trim",
+          "claim": "Dark brown/charcoal brick dominates these current samples, with bright cream/white window surrounds, cornices and ground door surrounds. Some side fronts use tan lintel/sill bands. One pale rendered front has dark frame surrounds, so white trim and dark masonry are a common combination rather than a universal palette.",
+          "generatorImplication": "Use joint material/trim combinations; preserve pale rendered exception and banded brick exceptions. Do not sample blue reflections as facade color.",
+          "acceptance": "pending baseline/candidate comparison"
+        },
+        {
+          "id": "crown-mixture-and-oculi",
+          "claim": "Flat projecting cornices coexist with narrow raised neck fronts and a shaped bell-like crest. Paired round/oval pale-trimmed crown openings are visibly present in bell-lower. Neck-middle and late-year-neck show narrowed upper silhouettes alongside plain cornices. White crown accents and hoisting beams contribute to the row silhouette.",
+          "generatorImplication": "Generic attic windows cannot substitute for visibly paired oculi. Maintain crown family mixture instead of a homogeneous neck row.",
+          "acceptance": "pending baseline/candidate comparison"
+        },
+        {
+          "id": "ground-stoops-and-large-openings",
+          "claim": "Ground floors alternate between tall individual sash-like glazing with side entrances, pale door surrounds, raised stoops with iron handrails, and broader commercial glazing. These differ from the regular smaller upper rows and are visible contributors to canal frontage rhythm.",
+          "generatorImplication": "Keep ground doors and glazing plus plausible raised-entry assemblies; do not identify buildings with copied shop names.",
+          "acceptance": "pending baseline/candidate comparison"
+        },
+        {
+          "id": "low-balcony-frequency",
+          "claim": "These six sampled central fronts show window boxes, stoop railings and a projecting small ground canopy; no repeating open residential balcony stacks are evident. Window-box supports and entry railings should not be counted as stacked balconies.",
+          "generatorImplication": "Do not transfer the Bethaniën stacked-balcony prior into this new canal row. Frequency remains a sampled-row observation, not a citywide estimate.",
+          "acceptance": "pending baseline/candidate comparison"
+        }
+      ],
+      "baselineDecision": {
+        "status": "rejected",
+        "independentReview": "scripts/street-appearance/reviews/oudezijds-39-71/baseline-review.json",
+        "demo": "http://127.0.0.1:5197/rows/oudezijds-39-71/index.html",
+        "nativeNeighborFeatures": 430,
+        "views": 24,
+        "browserErrors": [],
+        "criticalMissing": "Window cadence, cornice/neck/bell mix and paired oculi, joint dark-masonry/pale-trim, correlated ground glazing/raised entrances, low incidental balcony frequency."
+      }
     }
   ],
   "coverageInventory": [

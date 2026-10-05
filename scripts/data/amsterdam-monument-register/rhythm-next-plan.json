@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updatedOn": "2026-10-05",
-  "status": "bounded-repair-reviewed-next-row-observing",
+  "status": "bounded-repair-published-next-row-capability-review",
   "goal": "Recognizable canal-street rhythm from reusable building recipes, not exact reconstruction of every photographed facade.",
   "sourceSnapshot": "records.json.gz",
   "sourceArchiveRepo": "https://github.com/blackmad/map-recall2-source-data",
@@ -2864,7 +2864,7 @@
     ],
     "schemaVersion": 1,
     "proposalId": "oudezijds-voorburgwal-east-39-71-discovery",
-    "status": "source-scoped-proposal; unaccepted; no runtime profile",
+    "status": "primary-sources-observed-capability-review",
     "scope": "Contiguous east-bank native street-side row, approximately Oudezijds Voorburgwal 39–71; endpoint-intersecting corner identities retained. Native geometry rather than numbered listed-address selection defines the complete inventory.",
     "evidenceSeparation": "No existing Bethaniën challenge panes or evaluation-only stations used as training. No new panorama acquisition. Register descriptions establish research questions, never visible rhythm frequencies.",
     "archiveInput": {
@@ -3712,6 +3712,49 @@
       ],
       "sourceMix": "Known cornice/neck/bell assertions exist in the same contiguous row; counts are biased listed-sample coverage, not observed style distribution.",
       "modernExceptions": "Native …72011 carries year1988 and source-match is absent; …77968 year1960 and …77967 year1994 have explicit historic descriptions. These are fixed discovery questions, not current visual classifications."
+    },
+    "sourceObservation": {
+      "manifest": "scripts/street-appearance/reviews/oudezijds-39-71/source-manifest.json",
+      "observations": "scripts/street-appearance/reviews/oudezijds-39-71/observations.json",
+      "sourceArchiveCommit": "1b32bd4",
+      "captureDate": "2025-06-30",
+      "primarySamples": 6,
+      "heldout": "untouched; not acquired or inferred",
+      "criticalRhythms": [
+        "narrow-window-groups",
+        "dark-masonry-pale-trim",
+        "crown-mixture-and-oculi",
+        "ground-stoops-and-large-openings",
+        "low-balcony-frequency"
+      ]
+    },
+    "implementationPlan": [
+      {
+        "cycle": 1,
+        "focus": "Whole-row material, pale-trim and two/three-column grouping; explicit register crown family mix; preserve factual late years and source-unmatched fronts.",
+        "gate": "Compare frozen baseline and all six current primary samples before admitting candidate."
+      },
+      {
+        "cycle": 2,
+        "focus": "Add reusable paired oculi and coordinated cornice/ground-floor variants only when missing critical traits are demonstrated. Keep balcony frequency low.",
+        "gate": "Independent failure-seeking review of worst whole-row and transition view; no photographed identity matching."
+      },
+      {
+        "cycle": 3,
+        "focus": "Freeze recipes; acquire untouched heldout observations for transfer challenge, all four game looks and rider/coarse detail.",
+        "gate": "Publish only accepted coverage, with GPU limitations and unresolved modern-date/source contradictions recorded."
+      }
+    ],
+    "baseline": {
+      "report": "scripts/street-appearance/reviews/oudezijds-39-71/baseline-report.json",
+      "demo": "http://127.0.0.1:5197/rows/oudezijds-39-71/baseline/index.html",
+      "ordinaryNativeFeatures": 430,
+      "views": 24,
+      "browserErrors": [],
+      "cameraFootprintIntrusions": [],
+      "sourceFixture": "Offline installed extracts and current ordinary decorators, not a live-game capture. Failed empty live collector discarded.",
+      "decision": "Baseline fails defining architectural rhythm; candidate not yet authored.",
+      "independentReview": "scripts/street-appearance/reviews/oudezijds-39-71/baseline-review.json"
     }
   }
 }

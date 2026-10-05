@@ -1,0 +1,1650 @@
+{
+  "version": 1,
+  "cycle": "15",
+  "createdAt": "2026-10-05T08:41:33.543Z",
+  "stageBundleSha256": "1bb22b14b3c402f770667cc120068835bbf43ede6e6b368aaa7c2196b23ab1a5",
+  "catalogRevision": "44fb4363499779ec",
+  "catalogSha256": "0126ee6a0ca68adbe885c8286b1a42677c009d88c64692dbca9a277d5cd425f7",
+  "results": [
+    {
+      "target": "cornice-upper",
+      "look": "photo",
+      "view": "block",
+      "camera": {
+        "id": "block",
+        "lngLat": [
+          4.899505611273052,
+          52.37460837846921
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 70.89300311149361,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "cornice-upper-photo-block.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg",
+      "referenceId": "cornice-upper",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -33.60238089340196,
+          509.41015598695515,
+          2.5
+        ],
+        "camera": [
+          0.3273332925111663,
+          -0.9449089456734967,
+          5.551115123125783e-17,
+          0,
+          -0.19645761656380295,
+          -0.06805641830694054,
+          0.9781476007338057,
+          0,
+          -0.9242604181224408,
+          -0.3201802747100942,
+          -0.20791169081775918,
+          0,
+          -33.60238089340196,
+          509.41015598695515,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "cornice-upper",
+      "look": "photo",
+      "view": "front",
+      "camera": {
+        "id": "front",
+        "lngLat": [
+          4.899505611273052,
+          52.37460837846921
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 40,
+        "vfov": 90,
+        "insideBuildingIds": []
+      },
+      "image": "cornice-upper-photo-front.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg",
+      "referenceId": "cornice-upper",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -33.60238089340196,
+          509.41015598695515,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.810113241459997,
+          0,
+          0,
+          -0.5207307540534856,
+          0.37684929739807516,
+          0.7660444431189781,
+          0,
+          -0.6205827469175337,
+          0.44911150404076006,
+          -0.642787609686539,
+          0,
+          -33.60238089340196,
+          509.41015598695515,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "cornice-upper",
+      "look": "photo",
+      "view": "source-row",
+      "camera": {
+        "id": "source-row",
+        "lngLat": [
+          4.899505611273052,
+          52.37460837846921
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 35,
+        "vfov": 93.93292347689199,
+        "viewport": {
+          "width": 1200,
+          "height": 900
+        },
+        "notes": "Original station retained: a two-metre retreat intersects the opposite surveyed wall in this narrow alley. Composition comparison, no exact registration.",
+        "insideBuildingIds": []
+      },
+      "image": "cornice-upper-photo-source-row.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg",
+      "referenceId": "cornice-upper",
+      "diagnostics": {
+        "viewport": [
+          1200,
+          900
+        ],
+        "eye": [
+          -33.60238089340196,
+          509.41015598695515,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.8101132414599974,
+          -5.551115123125783e-17,
+          0,
+          -0.46466186607741977,
+          0.33627262533637126,
+          0.8191520442889919,
+          0,
+          -0.6636059178475386,
+          0.4802470795960767,
+          -0.5735764363510463,
+          0,
+          -33.60238089340196,
+          509.41015598695515,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "cornice-upper",
+      "look": "photo",
+      "view": "opposite-oblique",
+      "camera": {
+        "id": "opposite-oblique",
+        "lngLat": [
+          4.899505611273052,
+          52.37460837846921
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 180.8930031114936,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "cornice-upper-photo-opposite-oblique.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg",
+      "referenceId": "cornice-upper",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -33.60238089340196,
+          509.41015598695515,
+          2.5
+        ],
+        "camera": [
+          -0.9998785431839097,
+          0.015585213518657309,
+          -1.734723475976807e-18,
+          0,
+          0.0032403480944198414,
+          0.20788643852576494,
+          0.9781476007338055,
+          0,
+          0.015244639210198719,
+          0.9780287980405542,
+          -0.2079116908177594,
+          0,
+          -33.60238089340196,
+          509.41015598695515,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "neck-middle",
+      "look": "photo",
+      "view": "block",
+      "camera": {
+        "id": "block",
+        "lngLat": [
+          4.89916202518743,
+          52.37430403234517
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 70.89300311149361,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "neck-middle-photo-block.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg",
+      "referenceId": "neck-middle",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -56.95507865818467,
+          475.7677354356275,
+          2.5
+        ],
+        "camera": [
+          0.3273332925111663,
+          -0.9449089456734967,
+          5.551115123125783e-17,
+          0,
+          -0.19645761656380295,
+          -0.06805641830694054,
+          0.9781476007338057,
+          0,
+          -0.9242604181224408,
+          -0.3201802747100942,
+          -0.20791169081775918,
+          0,
+          -56.95507865818467,
+          475.7677354356275,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "neck-middle",
+      "look": "photo",
+      "view": "front",
+      "camera": {
+        "id": "front",
+        "lngLat": [
+          4.89916202518743,
+          52.37430403234517
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 40,
+        "vfov": 90,
+        "insideBuildingIds": []
+      },
+      "image": "neck-middle-photo-front.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg",
+      "referenceId": "neck-middle",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -56.95507865818467,
+          475.7677354356275,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.810113241459997,
+          0,
+          0,
+          -0.5207307540534856,
+          0.37684929739807516,
+          0.7660444431189781,
+          0,
+          -0.6205827469175337,
+          0.44911150404076006,
+          -0.642787609686539,
+          0,
+          -56.95507865818467,
+          475.7677354356275,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "neck-middle",
+      "look": "photo",
+      "view": "source-row",
+      "camera": {
+        "id": "source-row",
+        "lngLat": [
+          4.89916202518743,
+          52.37430403234517
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 35,
+        "vfov": 93.93292347689199,
+        "viewport": {
+          "width": 1200,
+          "height": 900
+        },
+        "notes": "Original station retained: a two-metre retreat intersects the opposite surveyed wall in this narrow alley. Composition comparison, no exact registration.",
+        "insideBuildingIds": []
+      },
+      "image": "neck-middle-photo-source-row.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg",
+      "referenceId": "neck-middle",
+      "diagnostics": {
+        "viewport": [
+          1200,
+          900
+        ],
+        "eye": [
+          -56.95507865818467,
+          475.7677354356275,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.8101132414599974,
+          -5.551115123125783e-17,
+          0,
+          -0.46466186607741977,
+          0.33627262533637126,
+          0.8191520442889919,
+          0,
+          -0.6636059178475386,
+          0.4802470795960767,
+          -0.5735764363510463,
+          0,
+          -56.95507865818467,
+          475.7677354356275,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "neck-middle",
+      "look": "photo",
+      "view": "opposite-oblique",
+      "camera": {
+        "id": "opposite-oblique",
+        "lngLat": [
+          4.89916202518743,
+          52.37430403234517
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 180.8930031114936,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "neck-middle-photo-opposite-oblique.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg",
+      "referenceId": "neck-middle",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -56.95507865818467,
+          475.7677354356275,
+          2.5
+        ],
+        "camera": [
+          -0.9998785431839097,
+          0.015585213518657309,
+          -1.734723475976807e-18,
+          0,
+          0.0032403480944198414,
+          0.20788643852576494,
+          0.9781476007338055,
+          0,
+          0.015244639210198719,
+          0.9780287980405542,
+          -0.2079116908177594,
+          0,
+          -56.95507865818467,
+          475.7677354356275,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "bell-lower",
+      "look": "photo",
+      "view": "block",
+      "camera": {
+        "id": "block",
+        "lngLat": [
+          4.898818875655005,
+          52.37402181471671
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 70.89300311149361,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "bell-lower-photo-block.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg",
+      "referenceId": "bell-lower",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -80.2781049802719,
+          444.57139878570433,
+          2.5
+        ],
+        "camera": [
+          0.3273332925111663,
+          -0.9449089456734967,
+          5.551115123125783e-17,
+          0,
+          -0.19645761656380295,
+          -0.06805641830694054,
+          0.9781476007338057,
+          0,
+          -0.9242604181224408,
+          -0.3201802747100942,
+          -0.20791169081775918,
+          0,
+          -80.2781049802719,
+          444.57139878570433,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "bell-lower",
+      "look": "photo",
+      "view": "front",
+      "camera": {
+        "id": "front",
+        "lngLat": [
+          4.898818875655005,
+          52.37402181471671
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 40,
+        "vfov": 90,
+        "insideBuildingIds": []
+      },
+      "image": "bell-lower-photo-front.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg",
+      "referenceId": "bell-lower",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -80.2781049802719,
+          444.57139878570433,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.810113241459997,
+          0,
+          0,
+          -0.5207307540534856,
+          0.37684929739807516,
+          0.7660444431189781,
+          0,
+          -0.6205827469175337,
+          0.44911150404076006,
+          -0.642787609686539,
+          0,
+          -80.2781049802719,
+          444.57139878570433,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "bell-lower",
+      "look": "photo",
+      "view": "source-row",
+      "camera": {
+        "id": "source-row",
+        "lngLat": [
+          4.898818875655005,
+          52.37402181471671
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 35,
+        "vfov": 93.93292347689199,
+        "viewport": {
+          "width": 1200,
+          "height": 900
+        },
+        "notes": "Original station retained: a two-metre retreat intersects the opposite surveyed wall in this narrow alley. Composition comparison, no exact registration.",
+        "insideBuildingIds": []
+      },
+      "image": "bell-lower-photo-source-row.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg",
+      "referenceId": "bell-lower",
+      "diagnostics": {
+        "viewport": [
+          1200,
+          900
+        ],
+        "eye": [
+          -80.2781049802719,
+          444.57139878570433,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.8101132414599974,
+          -5.551115123125783e-17,
+          0,
+          -0.46466186607741977,
+          0.33627262533637126,
+          0.8191520442889919,
+          0,
+          -0.6636059178475386,
+          0.4802470795960767,
+          -0.5735764363510463,
+          0,
+          -80.2781049802719,
+          444.57139878570433,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "bell-lower",
+      "look": "photo",
+      "view": "opposite-oblique",
+      "camera": {
+        "id": "opposite-oblique",
+        "lngLat": [
+          4.898818875655005,
+          52.37402181471671
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 180.8930031114936,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "bell-lower-photo-opposite-oblique.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg",
+      "referenceId": "bell-lower",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -80.2781049802719,
+          444.57139878570433,
+          2.5
+        ],
+        "camera": [
+          -0.9998785431839097,
+          0.015585213518657309,
+          -1.734723475976807e-18,
+          0,
+          0.0032403480944198414,
+          0.20788643852576494,
+          0.9781476007338055,
+          0,
+          0.015244639210198719,
+          0.9780287980405542,
+          -0.2079116908177594,
+          0,
+          -80.2781049802719,
+          444.57139878570433,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "upper-unmatched",
+      "look": "photo",
+      "view": "block",
+      "camera": {
+        "id": "block",
+        "lngLat": [
+          4.899295002461694,
+          52.374418400612505
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 70.89300311149361,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "upper-unmatched-photo-block.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg",
+      "referenceId": "upper-unmatched",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -47.916941709619195,
+          488.4100037066196,
+          2.5
+        ],
+        "camera": [
+          0.3273332925111663,
+          -0.9449089456734967,
+          5.551115123125783e-17,
+          0,
+          -0.19645761656380295,
+          -0.06805641830694054,
+          0.9781476007338057,
+          0,
+          -0.9242604181224408,
+          -0.3201802747100942,
+          -0.20791169081775918,
+          0,
+          -47.916941709619195,
+          488.4100037066196,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "upper-unmatched",
+      "look": "photo",
+      "view": "front",
+      "camera": {
+        "id": "front",
+        "lngLat": [
+          4.899295002461694,
+          52.374418400612505
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 40,
+        "vfov": 90,
+        "insideBuildingIds": []
+      },
+      "image": "upper-unmatched-photo-front.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg",
+      "referenceId": "upper-unmatched",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -47.916941709619195,
+          488.4100037066196,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.810113241459997,
+          0,
+          0,
+          -0.5207307540534856,
+          0.37684929739807516,
+          0.7660444431189781,
+          0,
+          -0.6205827469175337,
+          0.44911150404076006,
+          -0.642787609686539,
+          0,
+          -47.916941709619195,
+          488.4100037066196,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "upper-unmatched",
+      "look": "photo",
+      "view": "source-row",
+      "camera": {
+        "id": "source-row",
+        "lngLat": [
+          4.899295002461694,
+          52.374418400612505
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 35,
+        "vfov": 93.93292347689199,
+        "viewport": {
+          "width": 1200,
+          "height": 900
+        },
+        "notes": "Original station retained: a two-metre retreat intersects the opposite surveyed wall in this narrow alley. Composition comparison, no exact registration.",
+        "insideBuildingIds": []
+      },
+      "image": "upper-unmatched-photo-source-row.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg",
+      "referenceId": "upper-unmatched",
+      "diagnostics": {
+        "viewport": [
+          1200,
+          900
+        ],
+        "eye": [
+          -47.916941709619195,
+          488.4100037066196,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.8101132414599974,
+          -5.551115123125783e-17,
+          0,
+          -0.46466186607741977,
+          0.33627262533637126,
+          0.8191520442889919,
+          0,
+          -0.6636059178475386,
+          0.4802470795960767,
+          -0.5735764363510463,
+          0,
+          -47.916941709619195,
+          488.4100037066196,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "upper-unmatched",
+      "look": "photo",
+      "view": "opposite-oblique",
+      "camera": {
+        "id": "opposite-oblique",
+        "lngLat": [
+          4.899295002461694,
+          52.374418400612505
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 180.8930031114936,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "upper-unmatched-photo-opposite-oblique.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg",
+      "referenceId": "upper-unmatched",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -47.916941709619195,
+          488.4100037066196,
+          2.5
+        ],
+        "camera": [
+          -0.9998785431839097,
+          0.015585213518657309,
+          -1.734723475976807e-18,
+          0,
+          0.0032403480944198414,
+          0.20788643852576494,
+          0.9781476007338055,
+          0,
+          0.015244639210198719,
+          0.9780287980405542,
+          -0.2079116908177594,
+          0,
+          -47.916941709619195,
+          488.4100037066196,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "late-year-neck",
+      "look": "photo",
+      "view": "block",
+      "camera": {
+        "id": "block",
+        "lngLat": [
+          4.89904249604646,
+          52.37419936317126
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 70.89300311149361,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "late-year-neck-photo-block.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg",
+      "referenceId": "late-year-neck",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -65.07917919655084,
+          464.1976049510823,
+          2.5
+        ],
+        "camera": [
+          0.3273332925111663,
+          -0.9449089456734967,
+          5.551115123125783e-17,
+          0,
+          -0.19645761656380295,
+          -0.06805641830694054,
+          0.9781476007338057,
+          0,
+          -0.9242604181224408,
+          -0.3201802747100942,
+          -0.20791169081775918,
+          0,
+          -65.07917919655084,
+          464.1976049510823,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "late-year-neck",
+      "look": "photo",
+      "view": "front",
+      "camera": {
+        "id": "front",
+        "lngLat": [
+          4.89904249604646,
+          52.37419936317126
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 40,
+        "vfov": 90,
+        "insideBuildingIds": []
+      },
+      "image": "late-year-neck-photo-front.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg",
+      "referenceId": "late-year-neck",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -65.07917919655084,
+          464.1976049510823,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.810113241459997,
+          0,
+          0,
+          -0.5207307540534856,
+          0.37684929739807516,
+          0.7660444431189781,
+          0,
+          -0.6205827469175337,
+          0.44911150404076006,
+          -0.642787609686539,
+          0,
+          -65.07917919655084,
+          464.1976049510823,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "late-year-neck",
+      "look": "photo",
+      "view": "source-row",
+      "camera": {
+        "id": "source-row",
+        "lngLat": [
+          4.89904249604646,
+          52.37419936317126
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 35,
+        "vfov": 93.93292347689199,
+        "viewport": {
+          "width": 1200,
+          "height": 900
+        },
+        "notes": "Original station retained: a two-metre retreat intersects the opposite surveyed wall in this narrow alley. Composition comparison, no exact registration.",
+        "insideBuildingIds": []
+      },
+      "image": "late-year-neck-photo-source-row.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg",
+      "referenceId": "late-year-neck",
+      "diagnostics": {
+        "viewport": [
+          1200,
+          900
+        ],
+        "eye": [
+          -65.07917919655084,
+          464.1976049510823,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.8101132414599974,
+          -5.551115123125783e-17,
+          0,
+          -0.46466186607741977,
+          0.33627262533637126,
+          0.8191520442889919,
+          0,
+          -0.6636059178475386,
+          0.4802470795960767,
+          -0.5735764363510463,
+          0,
+          -65.07917919655084,
+          464.1976049510823,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "late-year-neck",
+      "look": "photo",
+      "view": "opposite-oblique",
+      "camera": {
+        "id": "opposite-oblique",
+        "lngLat": [
+          4.89904249604646,
+          52.37419936317126
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 180.8930031114936,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "late-year-neck-photo-opposite-oblique.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg",
+      "referenceId": "late-year-neck",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -65.07917919655084,
+          464.1976049510823,
+          2.5
+        ],
+        "camera": [
+          -0.9998785431839097,
+          0.015585213518657309,
+          -1.734723475976807e-18,
+          0,
+          0.0032403480944198414,
+          0.20788643852576494,
+          0.9781476007338055,
+          0,
+          0.015244639210198719,
+          0.9780287980405542,
+          -0.2079116908177594,
+          0,
+          -65.07917919655084,
+          464.1976049510823,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "lower-unmatched",
+      "look": "photo",
+      "view": "block",
+      "camera": {
+        "id": "block",
+        "lngLat": [
+          4.898863800747932,
+          52.374056126311764
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 70.89300311149361,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "lower-unmatched-photo-block.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/lower-unmatched.jpg",
+      "referenceId": "lower-unmatched",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -77.22465735507858,
+          448.36420250268674,
+          2.5
+        ],
+        "camera": [
+          0.3273332925111663,
+          -0.9449089456734967,
+          5.551115123125783e-17,
+          0,
+          -0.19645761656380295,
+          -0.06805641830694054,
+          0.9781476007338057,
+          0,
+          -0.9242604181224408,
+          -0.3201802747100942,
+          -0.20791169081775918,
+          0,
+          -77.22465735507858,
+          448.36420250268674,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "lower-unmatched",
+      "look": "photo",
+      "view": "front",
+      "camera": {
+        "id": "front",
+        "lngLat": [
+          4.898863800747932,
+          52.374056126311764
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 40,
+        "vfov": 90,
+        "insideBuildingIds": []
+      },
+      "image": "lower-unmatched-photo-front.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/lower-unmatched.jpg",
+      "referenceId": "lower-unmatched",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -77.22465735507858,
+          448.36420250268674,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.810113241459997,
+          0,
+          0,
+          -0.5207307540534856,
+          0.37684929739807516,
+          0.7660444431189781,
+          0,
+          -0.6205827469175337,
+          0.44911150404076006,
+          -0.642787609686539,
+          0,
+          -77.22465735507858,
+          448.36420250268674,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "lower-unmatched",
+      "look": "photo",
+      "view": "source-row",
+      "camera": {
+        "id": "source-row",
+        "lngLat": [
+          4.898863800747932,
+          52.374056126311764
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 125.89300311149361,
+        "pitchUp": 35,
+        "vfov": 93.93292347689199,
+        "viewport": {
+          "width": 1200,
+          "height": 900
+        },
+        "notes": "Original station retained: a two-metre retreat intersects the opposite surveyed wall in this narrow alley. Composition comparison, no exact registration.",
+        "insideBuildingIds": []
+      },
+      "image": "lower-unmatched-photo-source-row.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/lower-unmatched.jpg",
+      "referenceId": "lower-unmatched",
+      "diagnostics": {
+        "viewport": [
+          1200,
+          900
+        ],
+        "eye": [
+          -77.22465735507858,
+          448.36420250268674,
+          2.5
+        ],
+        "camera": [
+          -0.5862734310977911,
+          -0.8101132414599974,
+          -5.551115123125783e-17,
+          0,
+          -0.46466186607741977,
+          0.33627262533637126,
+          0.8191520442889919,
+          0,
+          -0.6636059178475386,
+          0.4802470795960767,
+          -0.5735764363510463,
+          0,
+          -77.22465735507858,
+          448.36420250268674,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    },
+    {
+      "target": "lower-unmatched",
+      "look": "photo",
+      "view": "opposite-oblique",
+      "camera": {
+        "id": "opposite-oblique",
+        "lngLat": [
+          4.898863800747932,
+          52.374056126311764
+        ],
+        "retreatFromReferenceM": 0,
+        "eyeM": 2.5,
+        "bearing": 180.8930031114936,
+        "pitchUp": 12,
+        "vfov": 62,
+        "insideBuildingIds": []
+      },
+      "image": "lower-unmatched-photo-opposite-oblique.png",
+      "reference": "artifacts/street-appearance/register-transition/next-canal-source/processed/lower-unmatched.jpg",
+      "referenceId": "lower-unmatched",
+      "diagnostics": {
+        "viewport": [
+          1440,
+          1000
+        ],
+        "eye": [
+          -77.22465735507858,
+          448.36420250268674,
+          2.5
+        ],
+        "camera": [
+          -0.9998785431839097,
+          0.015585213518657309,
+          -1.734723475976807e-18,
+          0,
+          0.0032403480944198414,
+          0.20788643852576494,
+          0.9781476007338055,
+          0,
+          0.015244639210198719,
+          0.9780287980405542,
+          -0.2079116908177594,
+          0,
+          -77.22465735507858,
+          448.36420250268674,
+          2.5,
+          1
+        ],
+        "drawCalls": 3,
+        "triangles": 129812
+      },
+      "stats": [
+        {
+          "mode": "walls",
+          "vertices": 105014,
+          "triangles": 39724
+        },
+        {
+          "mode": "extras",
+          "vertices": 270258,
+          "triangles": 90086
+        }
+      ],
+      "features": 430,
+      "routeStreetSegments": 848,
+      "architecturalStreetSegments": 18
+    }
+  ],
+  "errors": [],
+  "limits": "Native footprint and height ground-camera stage. Ordinary geometry and production material pipeline; neighbors retained. No cars, trees or curated landmark GLBs. Camera uses municipal panorama coordinates but image registration is not asserted."
+}

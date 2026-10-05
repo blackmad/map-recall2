@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent failure-seeking agent",
+  "scope": "Oudezijds Voorburgwal east39\u201371 discovery row, six fixed primary current2025crops only; no exact photo-Pand mapping and no heldout inspection.",
+  "decision": "rejected-baseline-five-critical-gaps",
+  "failedCriteria": [
+    "window-column-cadence-and-hierarchy",
+    "crown-family-mixture-and-paired-oculi",
+    "joint-material-trim-and-exception",
+    "ground-opening-and-raised-entry-rhythm",
+    "low-balcony-frequency-and-supported-extras"
+  ],
+  "method": "Direct tools.view_image inspection of all six municipal primary crops, six baseline photo-source-row images and cornice-upper/neck-middle/bell-lower block views. Source-only observations read before decisions; roof/palette hypotheses assessed independently.",
+  "observations": "scripts/street-appearance/reviews/oudezijds-39-71/observations.json",
+  "sourceEvidence": [
+    "artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg",
+    "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg",
+    "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg",
+    "artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg",
+    "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg",
+    "artifacts/street-appearance/register-transition/next-canal-source/processed/lower-unmatched.jpg"
+  ],
+  "criteria": [
+    {
+      "id": "window-column-cadence-and-hierarchy",
+      "importance": "critical",
+      "decision": "fail",
+      "observedRelationship": "Narrow fronts carry separate broad2/3-column groups; taller lower/ground glazing, intermediate sash/transom windows and shorter attic openings. Pale outer surrounds remain readable around restrained dark muntins.",
+      "baselineFailure": "Many fronts use extremely skinny multi-pane windows repeated evenly, with weak broad-to-narrow vertical hierarchy. Late-year-neck baseline has six thin columns across its central front, changing whole-front cadence rather than an exact count. Neck-middle and bell-lower substitute slender dense glazing for larger transom/sash openings.",
+      "sourceEvidence": [
+        "neck-middle",
+        "late-year-neck",
+        "bell-lower",
+        "cornice-upper"
+      ],
+      "renderEvidence": [
+        "neck-middle-photo-source-row.png",
+        "late-year-neck-photo-source-row.png",
+        "bell-lower-photo-source-row.png"
+      ],
+      "capabilityGap": "Source-coherent grouped frontage layout calibrated from complete exposed run, differentiated ground/upper/attic sizes and pale surround/dark-muntin hierarchy.",
+      "rejectCondition": "Dense skinny repeated panes remain the dominant row grammar, upper groups become ribbon-like or the ground-to-attic opening hierarchy remains flattened.",
+      "secondaryLimits": "Exact individual pane/column count and camera registration are secondary; gross group cadence and spacing are critical."
+    },
+    {
+      "id": "crown-family-mixture-and-paired-oculi",
+      "importance": "critical",
+      "decision": "fail",
+      "observedRelationship": "Wide projecting pale flat cornices coexist with narrowed raised neck silhouettes and a shaped bell crest; bell-lower has visibly paired pale round/oval crown openings. Hoist beams connect to crown families.",
+      "baselineFailure": "Central neck-middle shows angular/tall rectangular extensions or generic pitched caps; bell-lower lacks shaped bell crest and paired oculi. Cornice-upper includes a pale unsupported bridge-like gap beneath crowning strip. Broad facade-first roof family composition does not reproduce observed flat/neck/bell mixture.",
+      "sourceEvidence": [
+        "cornice-upper",
+        "neck-middle",
+        "late-year-neck",
+        "bell-lower"
+      ],
+      "renderEvidence": [
+        "cornice-upper-photo-source-row.png",
+        "neck-middle-photo-source-row.png",
+        "bell-lower-photo-source-row.png"
+      ],
+      "capabilityGap": "Shared source-admitted roof prior and compatible eaves/wall planning plus contained paired oculi; flat cornice assemblies must connect to wall top, not float over gaps.",
+      "rejectCondition": "Generic attic rectangles replace paired oculi; row becomes predominantly generic triangular/rectangular crowns; roof/wall gaps, reversed plates, floaters or extra lids remain.",
+      "secondaryLimits": "Exact curls/sculpture/crown-to-address assignment are secondary. Native height/footprint/courtyard invariants remain required."
+    },
+    {
+      "id": "joint-material-trim-and-exception",
+      "importance": "critical",
+      "decision": "fail",
+      "observedRelationship": "Dark brown/charcoal masonry and cream/white surrounds/cornices dominate. Pale rendered front with dark frames is a bounded visible exception; tan lintel/sill bands appear on other brick fronts.",
+      "baselineFailure": "Neck-middle baseline favors bright reddish/orange masonry with dark green/red inner frames and repetitive pale string courses. Upper-unmatched central front is dark green, while pale rendered exception is not apparent in comparable group. Bell-lower dark wall color alone does not preserve pale surround/dark sash proportions.",
+      "sourceEvidence": [
+        "neck-middle",
+        "upper-unmatched",
+        "late-year-neck",
+        "bell-lower"
+      ],
+      "renderEvidence": [
+        "neck-middle-photo-source-row.png",
+        "upper-unmatched-photo-source-row.png",
+        "bell-lower-photo-source-row.png"
+      ],
+      "capabilityGap": "Joint material+outer-trim+inner-sash recipes admitted to observed frontage cohorts; retain pale rendered/dark-frame exception rather than uniform dark tint.",
+      "rejectCondition": "Bright orange/red or green masonry dominates observed dark row; pale borders disappear into dark framing; exception is erased or expands across unrelated fronts.",
+      "secondaryLimits": "Precise sampled RGB values and blue sky reflections are not facade facts. Palette alone cannot pass window/crown/ground criteria."
+    },
+    {
+      "id": "ground-opening-and-raised-entry-rhythm",
+      "importance": "critical",
+      "decision": "fail",
+      "observedRelationship": "Tall individual ground glazing beside side entrances alternates with broad commercial glass and pale surrounds. Raised stoops/iron rails align to actual entrance opening and elevated base; upper panes are smaller.",
+      "baselineFailure": "Repeated stock fanlight doors with modest adjacent panes dominate. Neck-middle has some steps but disconnected ordinary window proportions; bell-lower becomes a generic full-width black awning/fascia shop instead of tall glazing and raised side entry. Cornice-upper ground detail lacks broad framed ground group.",
+      "sourceEvidence": [
+        "neck-middle",
+        "upper-unmatched",
+        "late-year-neck",
+        "lower-unmatched",
+        "bell-lower"
+      ],
+      "renderEvidence": [
+        "neck-middle-photo-block.png",
+        "bell-lower-photo-block.png",
+        "cornice-upper-photo-block.png"
+      ],
+      "capabilityGap": "Connected raised-entry/tall-ground-glazing assembly and bounded commercial ground assembly, prioritised before optional props. Preserve genuine mapped shop identity separately from visual grammar.",
+      "rejectCondition": "Every frontage uses the same standard door/window or fascia template; stoops do not meet a door; large ground panes and side entry relationship disappear.",
+      "secondaryLimits": "Exact business labels, door panel decoration and stair count are secondary; do not add painted building names."
+    },
+    {
+      "id": "low-balcony-frequency-and-supported-extras",
+      "importance": "critical",
+      "decision": "fail-bounded-visible-context",
+      "observedRelationship": "Primary crops have window boxes, entry rails and one small ground canopy; no repeated open residential balcony stack on central sampled fronts.",
+      "baselineFailure": "Upper-unmatched/cornice-related context shows incidental residential balcony stacks; block views contain generic window boxes and broad black awnings. These extras mix unsupported modern/ornamental priors into a row that derives rhythm from glazing/crowns/stoops. Exact ownership of peripheral stack-bearing front is unregistered, so do not claim a specific photographed building lacks it.",
+      "sourceEvidence": [
+        "upper-unmatched",
+        "neck-middle",
+        "late-year-neck",
+        "lower-unmatched",
+        "bell-lower"
+      ],
+      "renderEvidence": [
+        "upper-unmatched-photo-source-row.png",
+        "neck-middle-photo-block.png",
+        "bell-lower-photo-block.png"
+      ],
+      "capabilityGap": "Restrained architectural detail policy within admitted observed source class, excluding incidental balcony stacks while retaining sourced entry rails/window boxes/canopy only where compatible.",
+      "rejectCondition": "Repeating balcony stacks spread into admitted primary group or optional props dominate/window-block supported assemblies; no unsupported gap/slab/awning is excused by palette improvement.",
+      "secondaryLimits": "Do not generalize no-balcony claim citywide or to unobserved peripheral fronts."
+    }
+  ],
+  "prewrittenCyclePolicy": {
+    "cycles": [
+      1,
+      2,
+      3
+    ],
+    "rules": [
+      "Freeze criteria and representative samples before recipe tuning; assign each cycle concrete shared-capability changes and preserve before/after failures.",
+      "Review broad row and obliques first, source-row details second; exact source registration, crown curls and individual opening counts cannot delay useful composition improvements.",
+      "Record each critical criterion pass/fail/uncertain every cycle;three completed cycles are effort history, not acceptance.",
+      "Use joint window/ground/crown/material recipe relationships on source-admitted exposed groups, not showcasedbuilding-ID dispatch overrides. Preserve factual years, footprint/nativeheight and explicit measured/tagged/curated geometry.",
+      "Freeze candidate before separately owned heldout acquisition/review. Failed heldout blocks affected transfer regardless of training gains.",
+      "Actual-game/mode/streaming and full-scene CPU/GPU evidence required after native visual pass; offline430neighbor ordinary stage excludes curated kit/GLB/shop overrides and cannot establish game completion."
+    ]
+  },
+  "boundaries": [
+    "Primary source IDs are station roles, not renderer dispatch identities.",
+    "Only six fixed crops visually inspected, not all20frontages exhaustively.",
+    "Strong110degree upward perspective makes dimensional/color estimates qualitative.",
+    "Baseline installed-source ordinary decorators preserve actual native source environment, but curated assets/overrides are outside this offline stage.",
+    "No heldout images/content inspected."
+  ],
+  "nextAction": "Implement shared missing crown/oculi and coordinated frontage-window-ground assemblies before palette tuning; use thefive persisted rejection criteria for nextthreecycles."
+}
