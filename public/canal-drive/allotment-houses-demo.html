@@ -6,16 +6,21 @@ html,body{margin:0;height:100%;font:15px system-ui;background:#e8eddf;color:#273
 </style>
 <header><h1>Garden houses</h1><button data-place="sloterdijkermeer" aria-pressed="true">Sloterdijkermeer</button><button data-place="nut" aria-pressed="false">Nut &amp; Genoegen</button><button id="wide">Overview</button><select id="look" aria-label="Building appearance"><option value="photo">Photo</option><option value="storybook">Storybook</option><option value="cartoon">Cartoon</option><option value="procedural">Painted</option></select><a href="./">Play Canal Recall</a></header>
 <p id="status" role="status">Loading the gardens…</p>
-<iframe id="game" src="./" title="Interactive garden-house game scene"></iframe>
+<iframe id="game" src="./?buildings3d=photo" title="Interactive garden-house game scene"></iframe>
 <script>
 const frame=document.querySelector('#game'),status=document.querySelector('#status');let game,place='sloterdijkermeer';
 const centers={sloterdijkermeer:[4.852,52.3875],nut:[4.8603,52.3872]};
 const wait=async check=>{const deadline=Date.now()+120000;while(!check()){if(Date.now()>deadline)throw Error('The game took too long to load.');await new Promise(r=>setTimeout(r,100));}};
-async function show(wide=false){if(!game)return;const v=game.vectorMap,center=wide?[4.856,52.38725]:centers[place];status.textContent='Loading the gardens…';await v.setBuildingsLook(document.querySelector('#look').value);v.map.jumpTo({center,zoom:wide?16.5:18.3,pitch:55,bearing:-25});v._threeBuildings.setDetailCentre(...center);v._completeCity.followCamera();v.map.triggerRepaint();await new Promise(r=>setTimeout(r,300));await wait(()=>{const t=v._threeBuildings,c=v._completeCity.status();return t.lastFeatures.some(f=>f.properties.allotmentHouse)&&t.chunks.size&&!t.pending.length&&!t.inflight.size&&!t.pumping&&!c.queued&&!c.inFlight;});await new Promise(r=>setTimeout(r,500));status.textContent='Drag to explore · scroll or pinch to zoom · 376 mapped garden houses';}
+async function show(wide=false){if(!game)return;const v=game.vectorMap,center=wide?[4.856,52.38725]:centers[place],zoom=wide?16.5:18.3;status.textContent='Loading the gardens…';v.setBuildingLook(document.querySelector('#look').value);await v.setBuildingsLook(document.querySelector('#look').value);v.map.jumpTo({center,zoom,pitch:55,bearing:-25});v._facadesOutOfZoom=false;v._applyFacadeState();v._syncFacadeZoom(zoom);v._threeBuildings.setDetailCentre(...center);v._completeCity.setSuspended(false);v._completeCity.followCamera();v.map.triggerRepaint();await new Promise(r=>setTimeout(r,300));await wait(()=>{const t=v._threeBuildings,c=v._completeCity.status();return t.lastFeatures.some(f=>f.properties.allotmentHouse)&&t.chunks.size&&!t.pending.length&&!t.inflight.size&&!t.pumping&&!c.queued&&!c.inFlight;});await new Promise(r=>setTimeout(r,500));status.textContent='Drag to explore · scroll or pinch to zoom · 376 mapped garden houses';}
 frame.addEventListener('load',async()=>{try{
  await wait(()=>frame.contentWindow.canalRecallGame?.ctx);game=frame.contentWindow.canalRecallGame;
  const doc=frame.contentDocument;await wait(()=>doc.querySelector('#route-card'));doc.querySelector('#route-card').requestSubmit();
  await wait(()=>game.vectorMap?._threeBuildings?.ready);
+ // Take over only after restoring the normal building/streaming state. The
+ // intro may still own the camera when the renderer first becomes ready.
+ if(game._intro)game._updateIntro(60);
+ game.camera.introOverview=0;game.vectorMap.sync(game.camera,game.osmLoader,game.canvas);
+ game.vectorMap.setMeasuredColoursOnly(false);
  game.vectorMap.sync=()=>{};game.player.update=()=>{};game.player.speed=0;game.player.vx=0;game.player.vy=0;
  const style=doc.createElement('style');style.textContent='#gameCanvas,#canal-overlay-root,#utility-buttons,#quick-help{display:none!important}#vector-map{pointer-events:auto!important}';doc.head.append(style);
  game.vectorMap.map.dragPan.enable();game.vectorMap.map.scrollZoom.enable();game.vectorMap.map.touchZoomRotate.enable();
