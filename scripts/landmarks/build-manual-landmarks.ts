@@ -93,6 +93,7 @@ import {buildNesRozentheaterLandmark} from './nes-rozentheater-builders';
 import {buildCanalMuseumLandmark} from './canal-museum-builders';
 import {buildCanalsMuseum} from './canals-museum-builder';
 import {buildNiod} from './niod-builder';
+import {buildMultatuli} from './multatuli-builder';
 import hospitals from './hospital-footprints.json';
 import {MANUAL_LANDMARKS} from '../../src/canalRecall/landmarks/manualModels';
 import {placementFor, scaledExtent} from '../../src/canalRecall/landmarks/signaturePlacement';
@@ -176,7 +177,8 @@ for(const spec of MANUAL_LANDMARKS){
   else if(id.startsWith('olvg-'))hospital(id);
   else {
     const w=spec.footprint!.lengthMetres,d=spec.footprint!.widthMetres;
-    if(id==='niod')buildNiod(w,d,helpers);
+    if(id==='multatuli')buildMultatuli(w,d,helpers);
+    else if(id==='niod')buildNiod(w,d,helpers);
     else if(id==='nieuwe-kerk')buildNieuweKerk(w,d,helpers);
     else if(id==='concertgebouw')buildConcertgebouw(w,d,helpers);
     else if(id==='stadhuis')buildStadhuis(w,d,helpers);

@@ -72,6 +72,9 @@ function frame(entry) {
     target.z + distance * Math.sin(phi) * Math.cos(theta),
   );
   camera.lookAt(target);
+  // Keep the inspected face lit as the model rotates; fixed model-space lighting
+  // hid curved facades whose principal front faced away from the original sun.
+  entry.sun.position.set(Math.sin(theta - .65) * 150, 200, Math.cos(theta - .65) * 150);
   renderer.render(entry.scene, camera);
   entry.ctx.setTransform(1, 0, 0, 1, 0, 0);
   entry.ctx.clearRect(0, 0, entry.canvas.width, entry.canvas.height);
@@ -120,7 +123,7 @@ function build(spec) {
 
   const entry = {
     spec, view, canvas, ctx: canvas.getContext('2d'),
-    scene, camera: new T.PerspectiveCamera(32, 1, 1, 20000),
+    scene, sun, camera: new T.PerspectiveCamera(32, 1, 1, 20000),
     target: new T.Vector3(), distance: 200, theta: 0.55, phi: 1.02, ready: false,
   };
   entries.push(entry);

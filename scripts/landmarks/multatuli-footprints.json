@@ -1,0 +1,293 @@
+{
+  "id": "multatuli",
+  "landmarkId": "extract_landmarks_1273422573",
+  "anchor": [
+    4.891125589486711,
+    52.37749205605756
+  ],
+  "authorHeadingDegrees": 33.29545565140216,
+  "frontZ": 5.773739524857755,
+  "facadeCenterX": 0.3218472841116231,
+  "facadeWidth": 4.646381856369287,
+  "building": {
+    "type": "Feature",
+    "properties": {
+      "aantal_verblijfsobjecten": 2,
+      "bouwjaar": 1749,
+      "documentdatum": "2022-05-27",
+      "documentnummer": "SA02051595_OV00GM",
+      "gebruiksdoel": "bijeenkomstfunctie,woonfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012167937",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012167937",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/ae58dd72-2ad6-5d85-825a-c7c946f6ebd5",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/de425d2e-0e7e-50d7-a3e0-25953cd2edfa"
+      ]
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.891179747709855,
+            52.377507443251396
+          ],
+          [
+            4.891196846735884,
+            52.37752542736372
+          ],
+          [
+            4.891171023215053,
+            52.37753641900449
+          ],
+          [
+            4.8911427648344485,
+            52.37754845200066
+          ],
+          [
+            4.891099636471641,
+            52.37750471692146
+          ],
+          [
+            4.8910543322375375,
+            52.37745857299299
+          ],
+          [
+            4.891055124139848,
+            52.3774586751757
+          ],
+          [
+            4.8910826097007325,
+            52.3774474568433
+          ],
+          [
+            4.891093600943915,
+            52.37744297309114
+          ],
+          [
+            4.891106436396461,
+            52.37743773310964
+          ],
+          [
+            4.891111482203267,
+            52.37743566011446
+          ],
+          [
+            4.891111860201738,
+            52.377436003230684
+          ],
+          [
+            4.891179747709855,
+            52.377507443251396
+          ]
+        ]
+      ]
+    },
+    "id": "75acd556-1fb8-5152-a34a-5c270040eee2"
+  },
+  "localRing": [
+    [
+      2.1359363514373237,
+      -3.452097260126055
+    ],
+    [
+      2.008173182701665,
+      -5.763340748681797
+    ],
+    [
+      -0.13032798140129387,
+      -5.822735650640742
+    ],
+    [
+      -2.47076886088505,
+      -5.888193306463591
+    ],
+    [
+      -2.2478625347715067,
+      -0.20988020929343976
+    ],
+    [
+      -2.001343644073021,
+      5.773739524857755
+    ],
+    [
+      -1.9626071104063945,
+      5.734689914360883
+    ],
+    [
+      0.2841528053776745,
+      5.753175563907991
+    ],
+    [
+      1.1824686155725224,
+      5.760347853161411
+    ],
+    [
+      2.2317505554251245,
+      5.769086939808064
+    ],
+    [
+      2.6450382122962672,
+      5.773739524857755
+    ],
+    [
+      2.6455411540299525,
+      5.7277124267743735
+    ]
+  ],
+  "coordinateConvention": "Exact current PDOK Pand GeoJSON longitude/latitude; local metres +X southeast along facade, +Z southwest to street, Y-up.",
+  "sources": [
+    "docs/references/multatuli/bag-pand.json",
+    "docs/references/multatuli/bag-addresses.json",
+    "docs/references/multatuli/3dbag.json"
+  ],
+  "bag": {
+    "pandId": "0363100012167937",
+    "status": "Pand in gebruik",
+    "registeredYear": 1749,
+    "vboIds": [
+      "0363010000710627",
+      "0363010000810073"
+    ],
+    "vboFunctions": [
+      "bijeenkomstfunctie",
+      "woonfunctie"
+    ],
+    "vboUsableAreasSquareMetres": [
+      127,
+      66
+    ],
+    "footprintAreaSquareMetres": 52.84428678271171,
+    "relationship": "Both exact-address VBOs return pand.href ending75acd556-1fb8-5152-a34a-5c270040eee2, matching current Pand feature.id. VBO usable area is not footprint."
+  },
+  "heightNotes": {
+    "source": "3DBAG AHN5 2023 roof planes; source ground0.699m NAP deducted",
+    "tileLegacyHeight": 12.57,
+    "eave": 9.98,
+    "ridge": 13.73,
+    "frontGableTop": 14.12,
+    "rearBreakZ": -3.75,
+    "rearLeftRoof": 5.5,
+    "rearRightRoof": 4.0,
+    "basis": "One coherent steep main gable from two dominant surveyed roof planes (10.68/10.34m eaves to14.43/14.31m NAP); remaining two survey planes describe low rear extension, simplified into two coherent shallow roofs. Front bell gable height/proportions inferred from2022photos; no AHN fragment mesh imported."
+  },
+  "neighborsToRetain": [
+    "NL.IMBAG.Pand.0363100012167929",
+    "NL.IMBAG.Pand.0363100012167938",
+    "NL.IMBAG.Pand.0363100012179680"
+  ],
+  "archiveResearch": {
+    "poiId": "lm-extract_landmarks_1273422573",
+    "extractId": "extract_landmarks_1273422573",
+    "name": "Multatuli Museum",
+    "backlogStatus": "pending",
+    "backlogRank": 171,
+    "centerLatLng": [
+      52.3774872,
+      4.8911258
+    ],
+    "address": "Korsjespoortsteeg 20",
+    "bagPandIdentity": null,
+    "identityStatus": "Genuine destination/extract identity confirmed; BAG parent/footprint matching remains a prerequisite before modeling.",
+    "rce": {
+      "monumentNumber": 3133,
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3133",
+      "access": "HTML retrieved and description inspected using Python urllib; web retrieval succeeded for 1826/1828 but failed for 3133 including PDF; fallback HTTP fetch succeeded.",
+      "descriptionDutch": "Huis (in de kern vermoedelijk XVII) met klokgevel (XVIII/XIX) (geboortehuis van Multatuli met gedenksteen).",
+      "descriptionDate": "Register inscription 1970; wording date not stated; retrieved 2026-10-04.",
+      "buildingPart": "Street-facing house at registered address; rear scope not inferred from prose.",
+      "assertions": [
+        {
+          "feature": "Possibly seventeenth-century core, bell gable dated XVIII/XIX, birth house memorial stone.",
+          "confidence": "High for explicit bell gable; core date explicitly uncertain.",
+          "dimensionsUnknown": true
+        }
+      ]
+    },
+    "archiveSearch": {
+      "queries": [
+        "site.archief.amsterdam \"Korsjespoortsteeg 20\" bouwtekening",
+        "site.archief.amsterdam \"Korsjespoortsteeg\" \"bouwtekening\""
+      ],
+      "status": "Bounded address search completed; no verified directly accessible drawing record from indexed City Archives search.",
+      "negativeEvidence": "No matching accessible result does not mean no drawing exists. Search returned nearby or third-party records; unrelated Korsjespoortsteeg 17 drawing excluded.",
+      "emailRequested": false,
+      "attemptedDirectSearchUrl": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=Korsjespoortsteeg%2020%20bouwtekening",
+      "directAccess": "Web tool could not access search URL; no scan inspected."
+    },
+    "modelingEffort": "Low-to-medium: narrow house and explicitly supported bell gable; full landmark loop, photo/survey still required.",
+    "visualAcceptance": "Not modeled or accepted. Geometry/gallery/live scene, exact suppression/neighbor retention, destination/pin/card still required.",
+    "otherSources": [
+      {
+        "url": "https://www.multatuli-museum.nl/bezoekersinformatie",
+        "type": "Operator address",
+        "access": "Text read; Korsjespoortsteeg 20 confirmed."
+      }
+    ]
+  },
+  "photos": [
+    {
+      "path": "docs/references/multatuli/facade-2022-1.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2022_Korsjespoortsteeg_20,_Asd_(1).jpg",
+      "date": "2022-03-19",
+      "author": "Ceescamel",
+      "licence": "CC BY-SA4.0",
+      "inspected": true,
+      "buildingPart": "Front and neighboring row",
+      "assertions": [
+        "Dark weathered brown-gray brick; restrained bell gable with scroll shoulders and rounded crown; projecting cream hoist beam.",
+        "Paired tall windows with three columns and three rows; paired shorter four-pane attic windows, single rectangular top opening.",
+        "Cream four-bay timber pui with left double doors, upper clerestories, geometric carved panels and right display; raised stone stoop with right flight and dark railing.",
+        "Small oval memorial cartouche centered between tall windows above pui."
+      ],
+      "confidence": "High for visible assemblies; metric spacing is inferred from native frontage."
+    },
+    {
+      "path": "docs/references/multatuli/facade-2022-2.jpg",
+      "url": "https://commons.wikimedia.org/wiki/File:2022_Korsjespoortsteeg_20,_Asd_(2).jpg",
+      "date": "2022-03-19",
+      "author": "Ceescamel",
+      "licence": "CC BY-SA4.0",
+      "inspected": true,
+      "buildingPart": "Upper front, memorial stone, timber pui",
+      "assertions": [
+        "Concave bell shoulders and plain curved top lack the elaborate neighboring house ornament.",
+        "Dark iron wall anchors appear beside openings; timber door bays occupy two left pui positions."
+      ],
+      "confidence": "High for visible features."
+    }
+  ],
+  "uncertainties": [
+    "Rear openings not photographed: quiet sparse openings inferred and confined to low extension.",
+    "No current2026 photo; latest inspected facade2022.",
+    "Metric facade/stoop/ornament heights approximated against width/roof survey.",
+    "Source confirms historic memorial stone but fine lettering is deliberately omitted; no invented painted words."
+  ],
+  "openSpaceProbes": [
+    [
+      0,
+      -6.588193306463591
+    ],
+    [
+      -4,
+      0
+    ],
+    [
+      4,
+      0
+    ]
+  ],
+  "publicEntranceLonLat": [
+    4.891082907220403,
+    52.377447116553725
+  ],
+  "privateSourceArchive": {
+    "repository": "https://github.com/blackmad/map-recall2-source-data",
+    "commit": "9c2317a",
+    "modelPath": "models/multatuli/",
+    "manifest": "models/multatuli/manifest.json",
+    "scope": "Available cached references and explicitly dated current captures; missing historical responses are not claimed recovered."
+  }
+}

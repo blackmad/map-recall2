@@ -17,33 +17,34 @@
     "https://www.nlbouwmeesters.nl/wp-content/uploads/2020/09/Project-NL-Bouwmeesters-OHLOS-impressie-04.jpg",
     "https://vekemans.nl/wp-content/uploads/2015/04/Ons-Lieve-Heer-scaled.jpg"
   ],
-  "status": "accepted",
+  "status": "Repaired multi-angle gallery and native game roof/window review accepted; exact POI/neighbor contract passed",
   "referenceComparison": {
-    "reviewedOn": "2026-10-04",
-    "reviewer": "independent current-batch worker, follow-up with canal-side camera",
-    "status": "accepted",
-    "gallery": "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent current-batch repair reviewer",
+    "status": "gallery-passed-live-pending",
     "renderEvidence": [
-      "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
-      "artifacts/ons-lieve-heer-op-solder-review/neutral-front.png",
-      "artifacts/ons-lieve-heer-op-solder-review/live-rear.png"
+      "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-0.png",
+      "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-1.png",
+      "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-2.png",
+      "artifacts/ons-lieve-heer-op-solder-review/gallery-angle-3.png",
+      "artifacts/ons-lieve-heer-op-solder-review/gallery.png"
     ],
     "sourceEvidence": [
       "https://www.nlbouwmeesters.nl/wp-content/uploads/2020/09/Project-NL-Bouwmeesters-OHLOS-impressie-04.jpg",
       "https://vekemans.nl/wp-content/uploads/2015/04/Ons-Lieve-Heer-scaled.jpg"
     ],
     "findings": [
-      "New actual canal-front neutral view at bearing301 resolves the earlier camera-evidence gap: both historic and modern fronts are visibly installed beside the open Heintje Hoekssteeg alley. Neighbor roofs no longer hide the principal facades.",
-      "Historic four-bay white sash rhythm, pale lower pui, raised steps and triangular shoulder-scroll gable remain recognizable in the actual scene. Modern entrance reads as a separate grey-brick three-bay ungridded facade with red/orange bands, pitched red roof and glazing lantern.",
-      "Corrected greyBrick retains the source grey-brown recycled masonry identity against the historic red/brown house. The source-supported differing facade/roof families and open alley establish the compound at native scale.",
-      "Actual game contract independently records the correct chosen destination, pin, physical sourced card, exact two-parent replacement and resident drawable neighbors."
+      "Four gallery angles expose no detached window fins or generic window rows through roof and party walls. Thin front panes follow attached wall faces, and blank party walls now remain blank.",
+      "Historic four-bay white sash groups, pale pui/stair, shoulder-scroll gable and separate alley remain readable; modern grey-brick three-bay entrance retains ungridded glass and red lintels.",
+      "Modern front roof termination is now a continuous red pitched/hipped envelope with attached glazing lantern; no floating glazing plates or roof fragments are apparent."
     ],
     "limitations": [
-      "Facade dimensions, trim, sash spacing and roof details remain house-style approximations.",
-      "Tree overlap partly obscures the historic ground entry in the actual camera, while gallery shows the stair/pui clearly.",
-      "Modern windows and brick bands appear relatively bold at game scale; accepted as the stylized three-bay rhythm rather than photographic detail matching."
+      "Modern roof/dormer termination and rear fenestration remain photo-derived approximations; source frontage differs in fine proportions and material weathering."
     ],
-    "pending": []
+    "pending": [
+      "Inspect refreshed actual game front/rear for repaired export",
+      "Record completed route/pin/card/native exact-neighbor runner evidence"
+    ]
   },
   "referenceComparisonHistory": [
     {
@@ -84,6 +85,52 @@
         "Capture actual game view from canal side with both principal facades visible at useful scale",
         "Review historic/modern fronts, alley and native neighbors from that view before full visual acceptance"
       ]
+    },
+    {
+      "reviewedOn": "2026-10-04",
+      "reviewer": "independent current-batch worker, follow-up with canal-side camera",
+      "status": "accepted",
+      "gallery": "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
+      "renderEvidence": [
+        "artifacts/ons-lieve-heer-op-solder-review/gallery.png",
+        "artifacts/ons-lieve-heer-op-solder-review/neutral-front.png",
+        "artifacts/ons-lieve-heer-op-solder-review/live-rear.png"
+      ],
+      "sourceEvidence": [
+        "https://www.nlbouwmeesters.nl/wp-content/uploads/2020/09/Project-NL-Bouwmeesters-OHLOS-impressie-04.jpg",
+        "https://vekemans.nl/wp-content/uploads/2015/04/Ons-Lieve-Heer-scaled.jpg"
+      ],
+      "findings": [
+        "New actual canal-front neutral view at bearing301 resolves the earlier camera-evidence gap: both historic and modern fronts are visibly installed beside the open Heintje Hoekssteeg alley. Neighbor roofs no longer hide the principal facades.",
+        "Historic four-bay white sash rhythm, pale lower pui, raised steps and triangular shoulder-scroll gable remain recognizable in the actual scene. Modern entrance reads as a separate grey-brick three-bay ungridded facade with red/orange bands, pitched red roof and glazing lantern.",
+        "Corrected greyBrick retains the source grey-brown recycled masonry identity against the historic red/brown house. The source-supported differing facade/roof families and open alley establish the compound at native scale.",
+        "Actual game contract independently records the correct chosen destination, pin, physical sourced card, exact two-parent replacement and resident drawable neighbors."
+      ],
+      "limitations": [
+        "Facade dimensions, trim, sash spacing and roof details remain house-style approximations.",
+        "Tree overlap partly obscures the historic ground entry in the actual camera, while gallery shows the stair/pui clearly.",
+        "Modern windows and brick bands appear relatively bold at game scale; accepted as the stylized three-bay rhythm rather than photographic detail matching."
+      ],
+      "pending": []
+    },
+    {
+      "reviewedOn": "2026-10-05",
+      "status": "repair-review-pending",
+      "sourceEvidence": [
+        "/tmp/solder-front.jpg",
+        "/tmp/attic-reference-contractor.jpg",
+        "/tmp/attic-reference-mason.jpg"
+      ],
+      "failedEvidence": "User screenshot /var/folders/tl/40rt5yw54v150s3k8shhw5y00000gn/T/codex-clipboard-RcAIXc.png",
+      "findings": [
+        "Prior acceptance missed floating/deep pane assemblies and generic facade rows on unsupported roof band or party faces. First-hit glazing checks alone did not establish pane attachment.",
+        "Thin backing/glass now overlap physically; trim/sills are shallower. Generic panes are limited to alley faces below eave, leaving bespoke canal fronts and neighboring party walls unpolluted.",
+        "Current contractor/front photos supersede former triangular tile-front reference: modern front has straight coping, roof hips back, and glass box sits behind it."
+      ],
+      "pending": [
+        "Root regenerate asset/bundles and inspect native gallery from front and both side angles against current cached photos.",
+        "Root actual game-scene checks and independent multi-angle visual review before accepting repaired geometry."
+      ]
     }
   ],
   "actualGameContractEvidence": {
@@ -100,10 +147,33 @@
   },
   "cameraReason": "Principal canal facade outward normal approx121degrees; map camera approaches from bearing+180. Previous31/211 views obscured frontage. Re-review301 canal-side.",
   "rootAcceptance": {
-    "date": "2026-10-04",
-    "status": "accepted",
+    "date": "2026-10-05",
+    "status": "verified-scoped-repair",
     "evidence": "artifacts/ons-lieve-heer-op-solder-review/",
     "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
-    "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details."
+    "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details.",
+    "withdrawalReason": "2026-10-05 user screenshot revealed floating modern panes and unsupported generic roof/party-face rows missed by original acceptance."
+  },
+  "acceptanceHistory": [
+    {
+      "date": "2026-10-04",
+      "status": "withdrawn-pending-window-repair-review",
+      "evidence": "artifacts/ons-lieve-heer-op-solder-review/",
+      "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
+      "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details.",
+      "withdrawalReason": "2026-10-05 user screenshot revealed floating modern panes and unsupported generic roof/party-face rows missed by original acceptance."
+    }
+  ],
+  "userFailureHistory": [
+    {
+      "date": "2026-10-05",
+      "status": "user-rejected-prior-acceptance",
+      "finding": "Detached or inappropriate window rows/fins",
+      "acceptanceEffect": "Earlier visual acceptance cannot establish acceptance of the repaired export."
+    }
+  ],
+  "repairGameEvidence": {
+    "log": "/tmp/landmark-user-repairs-2026-10-05.log",
+    "status": "Completed with exit 0; native front/rear and four gallery angles inspected by root and independent reviewer. Scoped roof/pane repair accepted; fine architectural detail remains approximate."
   }
 }

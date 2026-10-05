@@ -14,11 +14,24 @@ export function buildIdfaPavilion(_w:number,_d:number,b:BuildingTools):void{
  shell(-.6,-2.9,11.2,18.6,3,11.1);shell(-.6,-2.9,11.2,18.6,11.1,16.35,'brick');shell(-11.1,-.7,10.2,11.1,3,11.1);shell(10.45,-.65,10.5,11.0,3,11.1);
  for(const x of[-15.8,15.2]){shell(x,3.5,4.6,5.6,3,11.1);shell(x,3.5,4.6,5.6,11.1,15.2,'brick');}
  shell(-11.8,-9.25,10.7,4.3,3,6.7);shell(.5,-14.1,14,6.1,3,7.35);shell(16.2,-8.8,10.8,3.1,3,8.8);shell(10.2,-13.1,6.2,7.9,3,6.3);
- // Original triangulated surfaces from surveyed AHN roof contours; no wall caps.
- for(const p of source.roofPlanes){if(p.every(q=>q[1]<3.1))continue;const clean=p.filter((q,i)=>!i||Math.hypot(q[0]-p[i-1][0],q[2]-p[i-1][2])>.002);if(clean.length<3)continue;
-  const g=new T.ShapeGeometry(new T.Shape(clean.map(q=>new T.Vector2(q[0],q[2])))),a=g.getAttribute('position');for(let i=0;i<a.count;i++){const x=a.getX(i),z=a.getY(i),q=clean.reduce((best,q)=>Math.hypot(q[0]-x,q[2]-z)<Math.hypot(best[0]-x,best[2]-z)?q:best);a.setXYZ(i,x,q[1],z)}
-  if(g.index)for(let i=0;i<g.index.count;i+=3){const v=g.index.getX(i+1);g.index.setX(i+1,g.index.getX(i+2));g.index.setX(i+2,v)}g.computeVertexNormals();b.add(g,p.every(q=>q[1]<4)?'stone':'slate');
- }
+ // Surveyed patches include equipment/dormer fits and disconnected slivers.
+ // Use their eave/crest envelopes to author closed, supported roof assemblies;
+ // never project every fitted fragment directly into the visible silhouette.
+ type V=[number,number,number];
+ function roofFaces(id:string,faces:V[][]){const values:number[]=[];for(const face of faces)for(let i=1;i<face.length-1;i++){const a=face[0],q=face[i],r=face[i+1],n=new T.Vector3().subVectors(new T.Vector3(...q),new T.Vector3(...a)).cross(new T.Vector3().subVectors(new T.Vector3(...r),new T.Vector3(...a)));values.push(...a,...(n.y>=0?q:r),...(n.y>=0?r:q));}const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(values,3));g.computeVertexNormals();g.userData.roofAssembly=id;b.add(g,'slate');}
+ function hip(id:string,x:number,z:number,w:number,d:number,eave:number,top:number,upperW:number,upperD:number){const lower:V[]=[[-w/2,eave,-d/2],[w/2,eave,-d/2],[w/2,eave,d/2],[-w/2,eave,d/2]].map(p=>[p[0]+x,p[1],p[2]+z] as V),upper:V[]=[[-upperW/2,top,-upperD/2],[upperW/2,top,-upperD/2],[upperW/2,top,upperD/2],[-upperW/2,top,upperD/2]].map(p=>[p[0]+x,p[1],p[2]+z] as V),faces:V[][]=[];for(let i=0;i<4;i++){const j=(i+1)%4;faces.push([lower[i],lower[j],upper[j],upper[i]])}faces.push(upper);roofFaces(id,faces);}
+ // RCE describes a slate hipped central roof. AHN5 gives16.35m eaves
+ // and21.72m crest; photographs show a compact top rather than projecting fins.
+ hip('central',-.6,-2.9,11.2,18.6,16.35,21.72,2.4,11.6);
+ hip('west-wing',-11.1,-.7,10.2,11.1,11.1,13.45,7.4,2.0);
+ hip('east-wing',10.45,-.65,10.5,11.0,11.1,13.45,7.6,2.0);
+ // Four-sided domes on square pavilions, with rounded slope in elevation,
+ // grounded on the15.2m tower cornice; slim existing helms crown18.5m caps.
+ for(const [id,x] of [['west-dome',-15.8],['east-dome',15.2]] as const){const rings:V[][]=[];for(let j=0;j<=8;j++){const t=j/8*Math.PI/2,k=Math.cos(t),y=15.2+3.3*Math.sin(t),rx=Math.max(.12,2.3*k),rz=Math.max(.12,2.8*k);rings.push([[-rx,y,-rz],[rx,y,-rz],[rx,y,rz],[-rx,y,rz]].map(p=>[p[0]+x,p[1],p[2]+3.5] as V))}const faces:V[][]=[];for(let j=0;j<8;j++)for(let i=0;i<4;i++){const q=(i+1)%4;faces.push([rings[j][i],rings[j][q],rings[j+1][q],rings[j+1][i]])}faces.push(rings[8]);roofFaces(id,faces);}
+ hip('west-rear',-11.8,-9.25,10.7,4.3,6.7,6.8,10.1,3.7);
+ hip('central-rear',.5,-14.1,14,6.1,7.35,7.45,13.4,5.5);
+ hip('east-rear',16.2,-8.8,10.8,3.1,8.8,9.95,8.6,.6);
+ hip('east-low-rear',10.2,-13.1,6.2,7.9,6.3,6.45,5.8,7.5);
  function archPane(x:number,y:number,z:number,w:number,h:number,angle=0){const r=w/2,s=new T.Shape();s.moveTo(-r,0);s.lineTo(r,0);s.lineTo(r,h-r);s.absarc(0,h-r,r,0,Math.PI,false);s.lineTo(-r,0);b.add(new T.ShapeGeometry(s),'glass',x,y,z,angle);const nx=Math.sin(angle),nz=Math.cos(angle);b.box(x+nx*.05,y,z+nz*.05,.1,h,.1,'frame',angle);b.box(x+nx*.05,y+h-r-.12,z+nz*.05,w,.1,.1,'frame',angle);b.box(x+nx*.08,y+.15,z+nz*.08,w+.25,.18,.15,'stone',angle)}
  function archRing(x:number,y:number,z:number,w:number,rise:number){const s=new T.Shape(),r=w/2,th=.28;s.absarc(0,0,r+th,0,Math.PI,false);s.lineTo(-r,0);s.absarc(0,0,r,Math.PI,0,true);s.closePath();b.add(new T.ExtrudeGeometry(s,{depth:.36,bevelEnabled:false}),'stone',x,y+rise,z-.18)}
  function column(x:number,z:number,y=3.2,h=6.2,r=.22){b.add(new T.CylinderGeometry(r,r*1.12,h,10),'stone',x,y+h/2,z);b.box(x,y,z,.7,.26,.65,'stone');b.box(x,y+h-.15,z,.76,.34,.7,'stone');for(const side of[-1,1])b.add(new T.TorusGeometry(.14,.05,5,8),'stone',x+side*.24,y+h-.05,z+.08)}

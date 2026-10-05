@@ -874,5 +874,12 @@
     "Receding stacked cylinders either side of blank central tower",
     "white framed horizontal-rodded windows, green former shop entrances",
     "native small corner parent only; adjoining long housing wings retained"
-  ]
+  ],
+  "privateSourceArchive": {
+    "repository": "https://github.com/blackmad/map-recall2-source-data",
+    "commit": "9c2317a",
+    "modelPath": "models/dageraad/",
+    "manifest": "models/dageraad/manifest.json",
+    "scope": "Available cached references and explicitly dated current captures; missing historical responses are not claimed recovered."
+  }
 }

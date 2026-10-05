@@ -17,7 +17,7 @@
     "artifacts/landmarks/dageraad/references/operator-front.jpg",
     "artifacts/landmarks/dageraad/references/platform-front.jpg"
   ],
-  "status": "Independent corrected gallery/live visual review accepted for exact museum parent; actual game contract passed",
+  "status": "Independent repaired multi-angle gallery and actual game front/rear visually accepted; exact POI/neighbor contract passed",
   "limitations": [
     "Only official museum corner parent is modeled; adjoining long estate wings are preserved.",
     "No tower name lettering: map label identifies POI.",
@@ -30,11 +30,14 @@
     "Museum physical pointer card, route, map pin and exact mask require shared browser runner."
   ],
   "referenceComparison": {
-    "reviewedOn": "2026-10-04",
-    "reviewer": "independent current-batch worker, follow-up after geometry correction",
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent current-batch repair reviewer, follow-up after union-boundary wall repair",
     "status": "accepted",
     "renderEvidence": [
-      "artifacts/dageraad-review/gallery-low-front.png",
+      "artifacts/dageraad-review/gallery-angle-0.png",
+      "artifacts/dageraad-review/gallery-angle-1.png",
+      "artifacts/dageraad-review/gallery-angle-2.png",
+      "artifacts/dageraad-review/gallery-angle-3.png",
       "artifacts/dageraad-review/neutral-front.png",
       "artifacts/dageraad-review/live-rear.png"
     ],
@@ -43,35 +46,35 @@
       "artifacts/landmarks/dageraad/references/platform-front.jpg"
     ],
     "findings": [
-      "Previous buried-cylinder failure is visibly corrected: low-front gallery and actual front game view now show paired rounded tiers with exposed curved caps and receding edges at three levels. They read as an articulated corner around the intentionally blank central tower rather than isolated slots on a flat wall.",
-      "Central tower, narrow gridded flank openings, green lower doors, sculptural center relief and pale crown retain the source recognition features within the exact 136m² museum parent.",
-      "Operator/platform references include broad estate wings outside this parent. Current surrounding wings and courtyard space remain drawn in actual front/rear game views; scope and suppression must remain unchanged.",
-      "Accepted at native game scale in the established flat-color style. The correction restores the defining stepped-cylinder rhythm sufficiently for this scoped model."
+      "Previously failed angle2 lower rear/party wall now renders as a clean flat-color surface: dense checker/grid artifact is absent. Other refreshed angles show no patchy overlapping-wall pattern.",
+      "A faint single height-band boundary remains on the rear/party surfaces in angles0/3. It is a restrained shading/edge discontinuity rather than the former dense interference pattern; no material residual z-fighting is visible in these static views.",
+      "Front angle1 retains smooth wave facade shading, source-recognizable paired stepped rounded tiers and connected pale curved caps. Narrow gridded openings remain exposed and attached.",
+      "Fresh actual game front shows the stepped tier/cap rhythm at native scale; rear retains the adjoining estate wings and open courtyard. No unsupported cap, visible roof fragment or facade checker defect is apparent in these captures.",
+      "Exact small museum parent scope remains appropriate. Completed repaired-export runner confirms chosen destination, geographic pin, physical sourced card and resident drawable neighbors."
     ],
     "limitations": [
-      "Tier projection/depth and curved profiles remain approximate and less emphatic than the photographic source; the pale cap strips carry much of the small-scale rhythm.",
-      "Tower scalloping, ceramic crown silhouettes and relief ornament are simplified; flat lighting reduces visible curvature.",
-      "Ochre matches warm sunlit brick broadly, while shaded source photographs read more grey-brown."
+      "Faint height-band shading seam remains in standalone side/rear gallery views; inspected static captures cannot establish absence of temporal flicker across every possible camera movement.",
+      "Brick warmth, tier depth, ceramic crown and relief carving remain simplified source-derived approximations."
     ],
     "pending": []
   },
   "actualGameContractEvidence": {
-    "log": "/tmp/current-landmark-final-checks-2.log",
-    "status": "passed",
+    "log": "/tmp/dageraad-surface-repair.log",
+    "status": "passed and independently visually reviewed actual front/rear screenshots",
     "checked": [
       "chosen route destination",
       "geographic pin",
-      "native scale and placement",
-      "physical sourced card click",
-      "exact parent suppression",
-      "resident drawable neighbors"
+      "native placement/scale",
+      "physical sourced card",
+      "exact small BAG parent suppression",
+      "resident drawable neighboring estate parents"
     ]
   },
   "geometryCorrection": {
     "date": "2026-10-04",
     "cause": "Full-height main prism at street plane buried visual depth of low rounded tiers; previous tier wedges mainly changed lateral thresholds rather than creating visibly rounded retreat.",
     "change": "Main backing recessed1.35m behind tower-front plane. Three rounded profiles per flank, clipped to surveyed street perimeter, now own exposed8.35/12.02/15.03m caps. Narrow windows follow actual tier surface. Curved pale cap strips replace isolated ledges.",
-    "nativeScope": "Unchanged136m² museum BAGparent; root ochre palette and21.34m central tower retained.",
+    "nativeScope": "Unchanged136m\u00b2 museum BAGparent; root ochre palette and21.34m central tower retained.",
     "cpuEvidence": "scripts/check-dageraad-geometry.ts passed4004triangles, actual downward rays reach each round cap, facade first-hits retreat at both transitions; source window exposure and exact parent bounds remain passing.",
     "visualStatus": "Independently reviewed refreshed low-front gallery and actual front/rear game captures; corrected tier rhythm accepted."
   },
@@ -102,13 +105,137 @@
         "Refresh low-front gallery and actual front game views after geometry fix",
         "Independent re-review of corrected facade before visual acceptance"
       ]
+    },
+    {
+      "reviewedOn": "2026-10-04",
+      "reviewer": "independent current-batch worker, follow-up after geometry correction",
+      "status": "accepted",
+      "renderEvidence": [
+        "artifacts/dageraad-review/gallery-low-front.png",
+        "artifacts/dageraad-review/neutral-front.png",
+        "artifacts/dageraad-review/live-rear.png"
+      ],
+      "sourceEvidence": [
+        "artifacts/landmarks/dageraad/references/operator-front.jpg",
+        "artifacts/landmarks/dageraad/references/platform-front.jpg"
+      ],
+      "findings": [
+        "Previous buried-cylinder failure is visibly corrected: low-front gallery and actual front game view now show paired rounded tiers with exposed curved caps and receding edges at three levels. They read as an articulated corner around the intentionally blank central tower rather than isolated slots on a flat wall.",
+        "Central tower, narrow gridded flank openings, green lower doors, sculptural center relief and pale crown retain the source recognition features within the exact 136m\u00b2 museum parent.",
+        "Operator/platform references include broad estate wings outside this parent. Current surrounding wings and courtyard space remain drawn in actual front/rear game views; scope and suppression must remain unchanged.",
+        "Accepted at native game scale in the established flat-color style. The correction restores the defining stepped-cylinder rhythm sufficiently for this scoped model."
+      ],
+      "limitations": [
+        "Tier projection/depth and curved profiles remain approximate and less emphatic than the photographic source; the pale cap strips carry much of the small-scale rhythm.",
+        "Tower scalloping, ceramic crown silhouettes and relief ornament are simplified; flat lighting reduces visible curvature.",
+        "Ochre matches warm sunlit brick broadly, while shaded source photographs read more grey-brown."
+      ],
+      "pending": []
+    },
+    {
+      "reviewedOn": "2026-10-05",
+      "reviewer": "independent current-batch repair reviewer",
+      "status": "changes-required",
+      "renderEvidence": [
+        "artifacts/dageraad-review/gallery-angle-0.png",
+        "artifacts/dageraad-review/gallery-angle-1.png",
+        "artifacts/dageraad-review/gallery-angle-2.png",
+        "artifacts/dageraad-review/gallery-angle-3.png",
+        "artifacts/dageraad-review/gallery.png"
+      ],
+      "sourceEvidence": [
+        "artifacts/landmarks/dageraad/references/operator-front.jpg",
+        "artifacts/landmarks/dageraad/references/platform-front.jpg"
+      ],
+      "findings": [
+        "Front angle1 shows improved smooth wave-face shading, clearly attached rounded tiers and pale curved caps. Source-recognizable tower and stepped cylinder rhythm are now substantially clearer.",
+        "Residual texture-like artifact remains: angle2 lower rear/party facade has a dense fine checker/grid, and angles0/3 show dotted diagonal seams at podium/backing intersections. This is inconsistent with the texture-free house style and appears to be overlapping coplanar shell walls.",
+        "Exact museum parent scope remains appropriate; no estate-wing additions or expanded suppression are required."
+      ],
+      "limitations": [
+        "Curved caps and crown ornament remain simplified; warm ochre approximates sunlit brick."
+      ],
+      "pending": [
+        "Remove overlapping coplanar podium/backing walls causing lower facade checker/seams",
+        "Refresh all-angle gallery evidence and independently re-review",
+        "Inspect refreshed actual game front/rear and completed route/pin/card/neighbor evidence"
+      ]
     }
   ],
   "rootAcceptance": {
-    "date": "2026-10-04",
+    "date": "2026-10-05",
     "status": "accepted",
     "evidence": "artifacts/dageraad-review/",
-    "checks": "Gallery/current source and actual game front/rear reviewed; route, pin, physical sourced card, native scale, exact suppression, resident drawable neighbors passed.",
-    "limitations": "Fine ornament and photo-derived dimensions approximate; Dageraad scope is museum corner parent only."
+    "checks": "Independent four-angle gallery and actual game front/rear inspection; completed route/pin/card/native exact-neighbor contract in /tmp/dageraad-surface-repair.log.",
+    "limitations": "Single faint height-band shading seam in side/rear gallery; source-derived geometric ornament simplified."
+  },
+  "acceptanceHistory": [
+    {
+      "date": "2026-10-04",
+      "status": "accepted",
+      "evidence": "artifacts/dageraad-review/",
+      "checks": "Gallery/current source and actual game front/rear reviewed; route, pin, physical sourced card, native scale, exact suppression, resident drawable neighbors passed.",
+      "limitations": "Fine ornament and photo-derived dimensions approximate; Dageraad scope is museum corner parent only."
+    },
+    {
+      "date": "2026-10-05",
+      "status": "withdrawn after user rejected weird texture/flat dark appearance",
+      "evidence": "artifacts/landmarks/dageraad/references/user-rejected-flat-front-2026-10-05.png"
+    }
+  ],
+  "appearanceCorrection": {
+    "date": "2026-10-05",
+    "failureEvidence": "artifacts/landmarks/dageraad/references/user-rejected-flat-front-2026-10-05.png",
+    "diagnosis": [
+      "Gallery directional light at(-100,200,150) lies behind the NE-facing museum front. Varied correctly outward facade normals all receive little direct light, hiding rounded depth. This requires root capture under facade-side illumination to separate source geometry from gallery presentation.",
+      "Every body previously assigned dark slate caps, including low street podium and rounded stone coping. Exposed podium cap slivers at5.12m caused the angular gray triangular strips rejected by user.",
+      "Tower wave depth was only0.34m peak-to-trough and its closely spaced flat triangle normals were unnecessary for smooth rounded masonry."
+    ],
+    "fix": [
+      "Low podium and rounded flank caps now use pale stone, with genuine rear roof remaining slate; eliminated dark podium-roof wedges.",
+      "Coherent smoothly averaged vertical curve normals retain independent horizontal caps and avoid microfacet patch shading.",
+      "Tower own curve now has0.51m substantial central wave depth tapering toward ends, with crown teeth following same profile; upper flank panes remain exposed."
+    ],
+    "cpu": "4004triangles; pale coping ownership at all exposed tier cap probes; normalized curved-wall normals; own tower wave-depth check >0.2m against shoulders; previous native bounds/first-hit glazing/tier retreat/open-space checks pass.",
+    "pending": "Root actual multi-angle gallery under existing and facade-side lighting, and actual front/rear game comparison; no visual acceptance claimed."
+  },
+  "userFailureHistory": [
+    {
+      "date": "2026-10-05",
+      "status": "user-rejected-prior-acceptance",
+      "finding": "Texture-like appearance and unresolved facade shading",
+      "acceptanceEffect": "Earlier visual acceptance cannot establish acceptance of the repaired export."
+    }
+  ],
+  "repairGameEvidence": {
+    "log": "/tmp/dageraad-surface-repair.log",
+    "status": "passed and independently visually reviewed actual front/rear screenshots",
+    "checked": [
+      "chosen route destination",
+      "geographic pin",
+      "native placement/scale",
+      "physical sourced card",
+      "exact small BAG parent suppression",
+      "resident drawable neighboring estate parents"
+    ]
+  },
+  "residualFailureHistory": [
+    {
+      "date": "2026-10-05",
+      "evidence": [
+        "artifacts/dageraad-review/gallery-angle-2.png",
+        "artifacts/dageraad-review/gallery-angle-0.png",
+        "artifacts/dageraad-review/gallery-angle-3.png"
+      ],
+      "finding": "Checker/grid on low rear party wall and dotted shell seams caused by podium/main/tower extrusions sharing coplanar walls below5.12m. Earlier first-hit checks did not audit simultaneous surface ownership."
+    }
+  ],
+  "surfaceOwnershipCorrection": {
+    "date": "2026-10-05",
+    "method": "Collect surveyed/source-derived volumes; split every wall edge at crossings and coincident edge endpoints; partition by actual roof-height bands. Emit wall only when solid-union occupancy differs across its two sides. Canonical segment/height ownership removes duplicate coincident walls; internal walls are omitted. No polygon offsets, material concealment or lighting workaround.",
+    "scope": "Same source polygons, heights, native parent, ochre, curve profiles and cap materials; only exterior wall topology/ownership changed.",
+    "checks": "4061triangles. Six height slices, X/Z scan rays at0.431m intervals require distinct masonry meshes not to share hit distance within1e-5m; first masonry normals face out. Previous first-hit windows/cap ownership/round retreat/tower wave/native bounds/open-space checks pass.",
+    "pending": "Root refreshed angle2 rear checker region and angles0/3 curved seams plus actual affected game views. No visual acceptance.",
+    "visualReview": "Independent refreshed all-angle gallery and actual game front/rear accepted; angle2 checker removed, faint single band seam recorded as limitation."
   }
 }

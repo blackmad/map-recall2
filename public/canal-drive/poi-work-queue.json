@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedOn": "2026-10-04",
+  "updatedOn": "2026-10-05",
   "primaryBuildingInventory": "./landmark-backlog.json",
   "agentMemory": "AGENTS.md (repository root)",
   "completionRequirements": [
@@ -622,7 +622,7 @@
       "workflow": "full-landmark",
       "sourceUrl": "https://www.idfa.nl/en/vondelpark/",
       "notes": "Explicit user request. IDFA confirms venue at Vondelpark 3, 1071 AA Amsterdam. Research historic pavilion silhouette, facade and terrace; resolve current OSM/BAG identity and existing mapped POI aliases before building. IDFA moved here in summer 2023; cinema, studio, salon and public cafe share this pavilion. Preserve meaningful sourced card and integrate destination plus geographic pin/label. No separate duplicate building for Cafe Vertigo. References: https://www.idfa.nl/vondelpark/verhuur/praktische-informatie/ and https://www.idfa.nl/en/about-idfa/meet-the-team/annual-reports/annualreport-2023/het-documentaire-paviljoen/.",
-      "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
+      "validation": "2026-10-05 user-reported defects repaired and re-reviewed from four gallery angles and native game views. CPU checks, actual route/pin/physical sourced card, exact suppression and resident drawable neighbors passed. Original failed acceptance/evidence retained in per-model review histories. Private source archive b1cdb17."
     },
     {
       "id": "muiderpoort-original",
@@ -641,7 +641,7 @@
       "status": "verified",
       "owner": "dageraad",
       "notes": "Fresh bounded worker source/CPU checkpoint delivered; root shared export and gallery/live acceptance in progress. Preserve failure evidence and current mapped native footprint.",
-      "validation": "Root and independent visual comparison accepted; actual route, pin, physical sourced card, native scale, exact suppression and resident drawable neighbors passed. Earlier failed visuals retained in review history."
+      "validation": "2026-10-05 user-reported defects repaired and re-reviewed from four gallery angles and native game views. CPU checks, actual route/pin/physical sourced card, exact suppression and resident drawable neighbors passed. Original failed acceptance/evidence retained in per-model review histories. Private source archive b1cdb17."
     },
     {
       "id": "social-history-original",
@@ -659,7 +659,7 @@
       "status": "verified",
       "owner": "our_lord_attic",
       "notes": "Fresh bounded worker source/CPU checkpoint delivered; root shared export and gallery/live acceptance in progress. Preserve failure evidence and current mapped native footprint.",
-      "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
+      "validation": "2026-10-05 user-reported defects repaired and re-reviewed from four gallery angles and native game views. CPU checks, actual route/pin/physical sourced card, exact suppression and resident drawable neighbors passed. Original failed acceptance/evidence retained in per-model review histories. Private source archive b1cdb17."
     },
     {
       "id": "da-costakade-13-17-archive-facades",
@@ -685,6 +685,14 @@
       "status": "verified",
       "owner": "niod_archive_build",
       "validation": "Root and independent visual comparison accepted; actual route, pin, physical sourced card, native scale, exact suppression and resident drawable neighbors passed. Earlier failed visuals retained in review history."
+    },
+    {
+      "id": "multatuli-original",
+      "task": "Build Multatuli Museum from register bell-gable description, current facade photographs and native BAG roof evidence",
+      "priority": "high",
+      "status": "verified",
+      "owner": "archive_next_batch",
+      "validation": "Native four-angle gallery/source and installed frontage/rear roof reviewed; actual destination route, pin, physical sourced card, native scale, exact suppression and retained drawable neighbors passed. Camera failures retained in review history; rear facade inference documented. Private source archive9c2317a."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

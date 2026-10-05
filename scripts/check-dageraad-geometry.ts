@@ -25,6 +25,7 @@ for(const [u,v,expected] of [[2.0,.90,8.35],[2.2,.50,12.02],[2.5,.35,15.03]])for
  const point=new T.Vector3(cx+side*u*tx+v*nx,30,cz+side*u*tz+v*nz);
  const hits=new T.Raycaster(point,new T.Vector3(0,-1,0)).intersectObject(root,true);
  assert.ok(hits.length&&Math.abs(hits[0].point.y-expected)<.15,`rounded tier top${expected}m must be exposed from above`);
+ assert.equal(hits[0].object.name,'stone','source pale coping owns exposed round cap; no dark slate wedge');
 }
 for(const side of [-1,1]){
  const u=side*2.50,v=3;const levels=[7,11.5,14.5].map(y=>{
@@ -34,6 +35,23 @@ for(const side of [-1,1]){
   return (hit.point.x-cx)*nx+(hit.point.z-cz)*nz;
  });
  assert.ok(levels[0]-levels[1]>.14&&levels[1]-levels[2]>.14,'stacked cylindrical facade visibly recedes twice');
+}
+// Reject a flat tower normal/profile: its own front must visibly wave independently of the flank tiers.
+const towerDepths=[-1.7,0,1.7].map(u=>{
+ const hit=new T.Raycaster(new T.Vector3(cx+u*tx+nx*3,20,cz+u*tz+nz*3),new T.Vector3(-nx,0,-nz)).intersectObject(root,true)[0];
+ const normal=(hit.object as T.Mesh).geometry.getAttribute('normal');
+ for(const i of [hit.face!.a,hit.face!.b,hit.face!.c])assert.ok(Math.abs(Math.hypot(normal.getX(i),normal.getY(i),normal.getZ(i))-1)<.001,'coherent normalized masonry normals');
+ return (hit.point.x-cx)*nx+(hit.point.z-cz)*nz;
+});
+assert.ok(towerDepths[1]-Math.max(towerDepths[0],towerDepths[2])>.2,'source blank tower has substantial wave depth, not barely visible shallow lines');
+// Real exterior-ray audit: independent podium/main/tower meshes must never own
+// the same wall hit. Rear party walls formerly had two coincident ochre hits below5.12m.
+for(const y of [2.13,4.37,6.17,10.23,14.61,18.29])for(const axis of ['x','z'])for(let sample=-15.83;sample<16;sample+=.431){
+ const origin=axis==='x'?new T.Vector3(-30,y,sample):new T.Vector3(sample,y,-30);
+ const direction=axis==='x'?new T.Vector3(1,0,0):new T.Vector3(0,0,1);
+ const hits=new T.Raycaster(origin,direction).intersectObject(root,true).filter(h=>h.object.name==='ochre');
+ for(let i=1;i<hits.length;i++)assert.ok(hits[i].object===hits[i-1].object||Math.abs(hits[i].distance-hits[i-1].distance)>1e-5,'one wall owner per physical surface; no coplanar podium/tower/main double hit');
+ if(hits.length)assert.ok(hits[0].face!.normal.dot(direction)<.001,'first masonry surface normal points out of union');
 }
 for(const p of [[17,0],[0,-17],[-13,-10]])assert.equal(new T.Raycaster(new T.Vector3(p[0],30,p[1]),new T.Vector3(0,-1,0)).intersectObject(root,true).length,0,'adjacent streets/court beyond exact parent remain open');
 console.log(`Dageraad geometry passed: ${triangles} triangles; native corner bounds, exposed rod windows and rounded tier caps/depth retreats, upward roofs, open surroundings, exact parent only.`);

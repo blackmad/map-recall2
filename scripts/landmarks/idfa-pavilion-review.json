@@ -21,15 +21,65 @@
     "Three open loggia bays either side: no solid parent behind columns",
     "Tall central slate hipped roof and two smaller corner domes",
     "Low raised terrace with balustrade and accessible side stairs",
-    "Exact native source identity suppression and nearest northern neighbors retained"
+    "Exact native source identity suppression and nearest northern neighbors retained",
+    "Centralhip/cornerdomes continuous fromfront/rear/oblique views, without sourcepatch fins, roofholes orunsupportedplates"
   ],
-  "status": "accepted",
+  "status": "Repaired multi-angle gallery and native game roof/window review accepted; exact POI/neighbor contract passed",
   "neighborEvidence": "Original BAG0363100012197143 absent installed current z14 city. Replaced stale alias group with actual current nearby northern building0363100012166213, installed tile14/8413/5385, height17.98m at4.874825,52.361389. Preserve current small neighbor0363100012201632 too.",
   "rootAcceptance": {
-    "date": "2026-10-04",
-    "status": "accepted",
+    "date": "2026-10-05",
+    "status": "verified-scoped-repair",
     "evidence": "artifacts/idfa-pavilion-review/",
     "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
     "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details."
+  },
+  "acceptanceHistory": [
+    {
+      "date": "2026-10-04",
+      "status": "accepted",
+      "evidence": "artifacts/idfa-pavilion-review/",
+      "checks": "Native gallery and actual game front/rear inspected against references; actual destination route, pin, physical sourced card, exact suppression and resident drawable neighbors passed.",
+      "limitations": "Photo-derived fine proportions/ornament remain approximate; no construction drawings downloaded for ING. See source/review details."
+    }
+  ],
+  "userFailureHistory": [
+    {
+      "date": "2026-10-05",
+      "status": "user-rejected-prior-acceptance",
+      "finding": "Broken/spiky roof appearance",
+      "acceptanceEffect": "Earlier visual acceptance cannot establish acceptance of the repaired export."
+    }
+  ],
+  "referenceComparison": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent current-batch repair reviewer",
+    "status": "gallery-passed-live-pending",
+    "renderEvidence": [
+      "artifacts/idfa-pavilion-review/gallery-angle-0.png",
+      "artifacts/idfa-pavilion-review/gallery-angle-1.png",
+      "artifacts/idfa-pavilion-review/gallery-angle-2.png",
+      "artifacts/idfa-pavilion-review/gallery-angle-3.png",
+      "artifacts/idfa-pavilion-review/gallery.png"
+    ],
+    "sourceEvidence": [
+      "artifacts/landmarks/idfa-pavilion/references/front.jpg",
+      "artifacts/landmarks/idfa-pavilion/references/context.jpg"
+    ],
+    "findings": [
+      "All four oblique gallery views show a closed central hipped roof and two connected domed corner envelopes, without prior fragmented spikes, unsupported roof scraps or visible holes.",
+      "Principal pale arched frontage, side arcade rhythm, terrace balustrade and stairs remain recognizable against cached front/context references."
+    ],
+    "limitations": [
+      "Central roof is a simplified hip envelope rather than the full detailed historic mansard/dormer treatment; this review accepts repair continuity, not exact roof ornament reconstruction.",
+      "Upper side/rear masonry color and individual arches/ornament remain stylized."
+    ],
+    "pending": [
+      "Inspect refreshed actual game front/rear for repaired export",
+      "Record completed route/pin/card/native exact-neighbor runner evidence"
+    ]
+  },
+  "repairGameEvidence": {
+    "log": "/tmp/landmark-user-repairs-2026-10-05.log",
+    "status": "Completed with exit 0; native front/rear and four gallery angles inspected by root and independent reviewer. Scoped roof/pane repair accepted; fine architectural detail remains approximate."
   }
 }

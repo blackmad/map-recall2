@@ -1,0 +1,37 @@
+{
+  "id": "multatuli",
+  "name": "Multatuli Museum \u2014 Korsjespoortsteeg20",
+  "landmarkId": "extract_landmarks_1273422573",
+  "modelUrl": "./models/multatuli.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012167937"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.891125589486711,
+      52.37749205605756
+    ],
+    "headingDegrees": 33.29545565140216,
+    "lengthMetres": 11.661932831321346,
+    "widthMetres": 4.646381856369287
+  },
+  "surveyed": {
+    "anchor": [
+      4.891125589486711,
+      52.37749205605756
+    ],
+    "northOffsetDegrees": 33.29545565140216,
+    "source": "PDOK exact VBO-to-Pand parent/current footprint, local facade basis"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 180,
+  "attribution": {
+    "title": "Multatuli Museum",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3133",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native current BAG house, restrained bell gable and cream timber pui after2022facade photos. Coherent main gable and lower rear extensions informed by AHN5survey; facade details and fine ornament approximate. No photo pixels or third-party mesh."
+  }
+}
