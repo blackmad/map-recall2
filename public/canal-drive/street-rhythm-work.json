@@ -657,7 +657,7 @@
       "independentReview": "artifacts/sloterdijkermeer-review/independent-visual-review.json",
       "gardenPlantingCycle": {
         "id": "garden-planting-v1",
-        "status": "accepted-scoped-approximate-planting",
+        "status": "rejected-by-user",
         "source": "review-data/allotment-houses/garden-obstacles.geojson",
         "referenceSources": [
           "https://detuinenvanwesterpark.nl/tuinpark-sloterdijkermeer-keurmerk-natuurlijk-tuinieren/",
@@ -686,6 +686,50 @@
           "Approximate square planting grid remains visible",
           "Four houses lack conservatively screened garden space",
           "Only mapped house groups in these two parks; no surveyed cadastral plots or individually photographed garden fidelity"
+        ],
+        "userRejection": "User: those gardens look diseased, awful. Prior planting acceptance withdrawn."
+      },
+      "canopyPlantingCycle": {
+        "id": "private-garden-canopy-v1",
+        "status": "accepted-scoped-approximate-canopy",
+        "userFeedback": "Prior gardens looked diseased and sparse. User supplied aerial showing mature continuous canopy and asked whether municipal tree inventory misses trees.",
+        "sourceFacts": {
+          "municipalSloterdijkermeerTrees": 625,
+          "municipalNutEnGenoegenTrees": 378,
+          "explicitOsmTreePointsInsideParks": 0,
+          "officialScope": "Municipality-managed trees, not an exhaustive census of all private trees",
+          "sourceUrls": [
+            "https://bomen.amsterdam.nl/",
+            "https://api.data.amsterdam.nl/v1/docs/datasets/bomen.html"
+          ]
+        },
+        "traits": [
+          "Mature joined green crowns throughout house plots",
+          "Healthy rounded green understory; no exposed brown striped beds or square ground tiles",
+          "Keep central communal lawns, paths and ditches readable"
+        ],
+        "inventory": {
+          "mappedTrees": 1003,
+          "authoredPrivateCanopyTrees": 1743,
+          "privateHeightPriorM": [
+            8,
+            13
+          ],
+          "minimumMappedTrunkSeparationM": 4.5,
+          "minimumAuthoredSpacingM": 5,
+          "positions": "Separate authored visual layer in screened cells; individual private trees are not surveyed",
+          "mappedSourceRecords": "Positions, heights and species retained. Broad-leaf crown width receives a scoped aerial-guided prior; disabled canopy restores original mapped treatment."
+        },
+        "samples": "Same fixed wide, south-heldout, Nut-heldout and railway-transition game cameras on desktop and touch",
+        "priorFailure": "Garden v1 rejected by user; acceptance withdrawn. The first lush capture was also stale v1 and invalid. Preserve earlier evidence.",
+        "evidence": "artifacts/sloterdijkermeer-review/canopy/game/report.json",
+        "independentReview": "artifacts/sloterdijkermeer-review/canopy/independent-review.md",
+        "reference": "artifacts/sloterdijkermeer-review/canopy/user-aerial-reference.png",
+        "performance": "Browser-fetched bundle SHA256 verified. All eight captures: no browser errors, zero incorrect garden ownership flags, stationary rider, median frames16.7ms. Canopy on/off/repeat full-scene GPU3.69/2.99/3.75ms desktop and4.33/4.05/4.34ms touch emulation; tree draw groups remain7.",
+        "limits": [
+          "Approximate private-tree placement, species and height; no cadastral plot or photographed-tree matching",
+          "Less dense and more regular than aerial; no transfer to other parks",
+          "Physical-phone budget unverified; unmapped houses remain outside mapped restoration"
         ]
       }
     },

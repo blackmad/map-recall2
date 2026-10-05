@@ -1,4 +1,5 @@
 import {treeTypology} from '../da-costa-block/tree-typology.js';
+import {allotmentCanopyTrees,scopeAllotmentCrown} from './allotment-canopy.js';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
@@ -14,7 +15,7 @@ function crownBounds(map) {
 export class InventoryTrees {
   constructor(map, maplibregl, onReady = () => {}) {
     this.map=map; this.maplibregl=maplibregl; this.onReady=onReady;
-    this.enabled=false; this.ready=false; this.generation=0;
+    this.enabled=false; this.allotmentCanopyEnabled=true; this.ready=false; this.generation=0;
     this.tiles=new Map(); this.pending=new Map(); this.meshes=[]; this.theme='clean';
     // Keep GPU geometry and shaders warm while streamed instance buffers change.
     this.geometries=new Map();this.materials=new Map();
@@ -56,6 +57,7 @@ export class InventoryTrees {
       this.ready=true;this.onReady(true);this.update();
     } catch (error) {console.warn('Municipal trees unavailable; retaining OSM trees.',error);}
   }
+  setAllotmentCanopyEnabled(value) {this.allotmentCanopyEnabled=!!value;if(this.enabled&&this.ready)this.rebuild();this.map.triggerRepaint();}
   setEnabled(value) {this.enabled=!!value;if(this.enabled)this.update();else this.clear();this.map.triggerRepaint();}
   setTheme(value) {
     this.theme=value;
@@ -104,15 +106,15 @@ export class InventoryTrees {
   }
   rebuild() {
     this.disposeMeshes();
-    const b=crownBounds(this.map),groups=new Map();let trees=0;
+    const b=crownBounds(this.map),groups=new Map();let trees=0,authoredTrees=0;
     const archetypes=new Set(), color=new THREE.Color();
     const append=(key,item)=>{if(!groups.has(key))groups.set(key,[]);groups.get(key).push(item);};
-    for(const tile of this.tiles.values())for(const tree of tile){
+    for(const tile of [...this.tiles.values(),...(this.allotmentCanopyEnabled?[allotmentCanopyTrees]:[])])for(const tree of tile){
       if(!Number.isFinite(tree.lng)||!Number.isFinite(tree.lat)||tree.lng<b.getWest()||tree.lng>b.getEast()||tree.lat<b.getSouth()||tree.lat>b.getNorth())continue;
       const point=this.maplibregl.MercatorCoordinate.fromLngLat([tree.lng,tree.lat],0);
       const x=(point.x-this.origin.x)/this.scale,south=(point.y-this.origin.y)/this.scale;
-      const t=treeTypology({...tree,position:[x,south]});if(!t)continue;
-      trees++;archetypes.add(t.archetype);
+      const native=treeTypology({...tree,position:[x,south]});const t=this.allotmentCanopyEnabled?scopeAllotmentCrown(tree,native):native;if(!t)continue;
+      trees++;if(tree.source==='allotment-prior')authoredTrees++;archetypes.add(t.archetype);
       append('wood',{p:[x,-south,t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:t.bark});
       const co=Math.cos(t.rotation),si=Math.sin(t.rotation);
       for(const l of t.lobes){
@@ -149,6 +151,6 @@ export class InventoryTrees {
       });
       m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;this.scene.add(m);this.meshes.push(m);
     }
-    this.debugTrees=trees;this.debugTiles=this.tiles.size;this.debugArchetypes=[...archetypes];this.debugDraws=this.meshes.length;this.setTheme(this.theme);
+    this.debugTrees=trees;this.debugAuthoredTrees=authoredTrees;this.debugTiles=this.tiles.size;this.debugArchetypes=[...archetypes];this.debugDraws=this.meshes.length;this.setTheme(this.theme);
   }
 }

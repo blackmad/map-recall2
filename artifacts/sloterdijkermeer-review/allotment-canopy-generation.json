@@ -1,0 +1,24 @@
+{
+  "mapped": 1003,
+  "authored": 1743,
+  "parkCounts": [
+    {
+      "park": "Tuinpark Nut & Genoegen",
+      "mapped": 378,
+      "authored": 895
+    },
+    {
+      "park": "Tuingroep Sloterdijkermeer",
+      "mapped": 625,
+      "authored": 848
+    }
+  ],
+  "minimumTrunkDistanceToMappedM": 4.5,
+  "minimumAuthoredSpacingM": 5,
+  "privateHeightPriorM": [
+    8,
+    13
+  ],
+  "source": "User aerial image and GardenDrum ground reference; screened cells from cached OSM path/water/building geometry. Individual private-tree positions/heights are authored.",
+  "scope": "Both recorded allotment polygons only; communal lawns without screened house-adjacent cells remain open."
+}
