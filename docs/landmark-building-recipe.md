@@ -56,6 +56,18 @@ Use these assertions to select reusable geometry assemblies and as review criter
 
 Treat archival accessibility and open-data licensing separately. Record each source’s date, access state and reuse terms; do not assume every publicly viewable scan is openly licensed. Cache a compact reference pack per building (identity, useful elevation, roof evidence, current facade, remaining uncertainty) to reduce repeated research without reducing quality.
 
+### Archive every source in the private research repository
+
+Raw reference inputs live in the private repository [map-recall2-source-data](https://github.com/blackmad/map-recall2-source-data), cloned at `/Users/blackmad/Code/map-recall2-source-data`. Keep the public game repository’s source URLs, architectural assertions and reproducible model code; keep complete raw photos, scans, register descriptions/pages, BAG/3DBAG/OSM responses and original imported-reference files in the private archive, grouped by canonical model ID.
+
+At research time, save the original downloaded bytes before parsing or cropping. Record URL, retrieval date, HTTP/access state, content checksum, attribution/reuse terms when known, and the feature informed. Preserve a processed crop/extracted text separately from its original. Never describe extracted JSON or a screenshot as the original HTTP response. An unavailable original gets an explicit missing/access entry; do not silently substitute a similar image or invent a successful download. Preserve useful superseded references and explain why current evidence overrides them.
+
+Before each model commit, sync available inputs using `scripts/landmarks/archive-model-sources.py`, inspect the per-model manifest and unresolved-source report, and commit/push the source pack to the private repository. Record its commit/model path in the model source record. Reuse that cached pack in short worker handoffs. Keep third-party photos/scans and raw imported geometry out of the public asset repository; private archival storage does not change their licensing or the original-house-style asset policy. Archive only task-relevant source files, not account tokens, cookies or unrelated personal downloads.
+
+Save every reference photo/image used and the body of each source webpage read, including monument-register descriptions. Store a rendered page screenshot when layout, embedded images or a JavaScript viewer informs the build; retain downloaded images independently of the screenshot. Record these sources in the model research files so the archiver can associate them with the canonical model. The archive provides browsable `models/<id>/files/` and `webpages/`, a per-model README and checksum manifest.
+
+Run `python3 scripts/landmarks/archive-model-sources.py --destination ../map-recall2-source-data --verify` to copy cached inputs and verify their bytes. Add `--fetch-missing` for current responses of recorded URLs, or `--screenshot-url URL` for an explicitly recorded page requiring a rendered snapshot. These new captures carry their actual retrieval date; they are not the page version read historically. Failed requests and JavaScript-only shells remain explicit gaps. Initial backfill: private commit `b1cdb17`, covering 146 model packs, cached images/reference files, raw HTTP bodies and selected page screenshots.
+
 ## 4. Author the model
 
 Use Three.js geometry and the shared `BuildingTools` palette/primitives in `scripts/landmarks/cultural-builders.ts` and `build-manual-landmarks.ts`. Use `house-geometry.ts` for open-top footprint shells and upward-facing roof planes. Geometry is in metres, glTF Y-up; surveyed local axes and the placement specification determine map orientation. Existing facade-oriented primitives generally face +Z.
@@ -103,7 +115,7 @@ node --import tsx scripts/check-manual-poi-contract.ts
 npm run lint
 ```
 
-Inspect native-scale gallery views against references and live-game views from both relevant sides. Verify exact replacement masks, drawn neighboring geometry, actual chosen destination/finish, visible geographic pin and physical clicking of the correct sourced card. A direct call to show a card is not a pointer-selection test. Wait for current local building residency before evaluating neighbors; coarse/streamed buffers can differ.
+Inspect the default higher gallery view and four lower-angle rotations against references, including roof silhouette and side-window attachment; one successful front view is insufficient. Use consistent face lighting so rotated facades remain readable. Compare live-game views from both relevant sides. Verify exact replacement masks, drawn neighboring geometry, actual chosen destination/finish, visible geographic pin and physical clicking of the correct sourced card. A direct call to show a card is not a pointer-selection test. Wait for current local building residency before evaluating neighbors; coarse/streamed buffers can differ.
 
 Fix concrete observed failures. Repeat the affected checks after edits; do not rerun unrelated checks without reason. Batch independent exports and shared checks; keep GPU reviews serial. Run the required route-start smoke check before pushing. Mark a model verified only after acceptance, not just successful generation.
 
