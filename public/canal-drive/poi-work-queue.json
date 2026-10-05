@@ -400,8 +400,10 @@
     {
       "id": "monk",
       "task": "Monk Amsterdam",
-      "priority": "normal",
-      "status": "queued"
+      "priority": "high",
+      "status": "scope-research",
+      "nextAction": "Model the source-backed corrugated Noord industrial architecture: establish full shared-host/tenant scope or accurate additive venue components. Do not erase unrelated tenants with a Monk-only parent replacement. Shared-host complexity is a modeling task, not grounds to drop it.",
+      "evidence": "../../scripts/landmarks/monk-amsterdam-review.json"
     },
     {
       "id": "beta-boulders",
@@ -791,6 +793,46 @@
       "owner": "agneskerk_build",
       "notes": "User reports sparse windows. Blank central tower supported, but short angled own-parent street flanks omit source-visible broad windows; worker repairing exact scope.",
       "nextAction": "Accepted current geometry after gallery, native gameplay, independent visual review and POI destination/pin/card checks; retain documented fine-detail approximations."
+    },
+    {
+      "id": "pllek",
+      "task": "Pllek — NDSM waterfront venue and container architecture",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Resolve current venue/site identities and surveyed building scope; archive original references; build source-backed house-style model with destination, pin/label and meaningful sourced card. Preserve separate tenants, neighboring structures and existing Faralda model."
+    },
+    {
+      "id": "ndsm-warehouse-complex",
+      "task": "NDSM shipyard and distinctive warehouse complex",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Resolve current venue/site identities and surveyed building scope; archive original references; build source-backed house-style model with destination, pin/label and meaningful sourced card. Preserve separate tenants, neighboring structures and existing Faralda model."
+    },
+    {
+      "id": "straat-museum",
+      "task": "STRAAT Museum — NDSM warehouse exterior",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Resolve current venue/site identities and surveyed building scope; archive original references; build source-backed house-style model with destination, pin/label and meaningful sourced card. Preserve separate tenants, neighboring structures and existing Faralda model."
+    },
+    {
+      "id": "former-nieuw-dakota",
+      "task": "Former Nieuw Dakota building at NDSM",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Resolve current venue/site identities and surveyed building scope; archive original references; build source-backed house-style model with destination, pin/label and meaningful sourced card. Preserve separate tenants, neighboring structures and existing Faralda model."
+    },
+    {
+      "id": "treehouse-ndsm",
+      "task": "Treehouse NDSM — studios and distinctive compound",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Resolve current venue/site identities and surveyed building scope; archive original references; build source-backed house-style model with destination, pin/label and meaningful sourced card. Preserve separate tenants, neighboring structures and existing Faralda model."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
