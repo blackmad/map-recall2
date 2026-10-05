@@ -1,0 +1,901 @@
+{
+  "version": 1,
+  "device": "desktop",
+  "race": "52.3735,4.8954,52.3608814,4.8687372,52.3713544,4.8979412",
+  "reviewPosition": "4.89828,52.37169",
+  "bundleDir": "production-snapshot",
+  "profileAblation": true,
+  "catalogRevision": "44fb4363499779ec",
+  "immutableBundles": {
+    "three-buildings.bundle.js": "7ce254030ce54992137c7879e33d77547ff556f632811b5ef4128538bf78ac56",
+    "three-buildings-worker.bundle.js": "9231a183e317cd62ce45feb10642eba1d8c0eeab5032c5553542d54c90f0a6b3",
+    "vector-map.js": "1a1b9343b8bdb493a00ba7e9292163aac38e8bc3b2a236762e7497f136754122",
+    "game-route.js": "4a61b7a7e4111176f9d9a0ec6ee4f47f0a961c2a88dd692771ca22a14660accf"
+  },
+  "modes": [
+    {
+      "revision": "44fb4363499779ec",
+      "profiles": 2,
+      "look": "photo",
+      "requested": "photo",
+      "player": [
+        4.898279876950284,
+        52.371689968164866
+      ],
+      "subject": [
+        4.898279876950284,
+        52.371689968164866
+      ],
+      "playerTile": "33659/21537",
+      "detailZoom": 16,
+      "detailTiles": [
+        "33659/21537",
+        "33660/21537",
+        "33659/21536",
+        "33660/21536"
+      ],
+      "playerTileSelected": true,
+      "camera": {
+        "center": [
+          4.897986306043769,
+          52.371614016186804
+        ],
+        "zoom": 18.377750990916994,
+        "pitch": 40,
+        "bearing": -112.96586783958958,
+        "detached": false
+      },
+      "chunks": 26,
+      "coarseChunks": 9,
+      "triangles": 1351462,
+      "geometryByMode": {
+        "other": {
+          "triangles": 306179,
+          "chunks": 9,
+          "features": 219
+        },
+        "coarse": {
+          "triangles": 727787,
+          "chunks": 9,
+          "features": 18319
+        },
+        "near-walls": {
+          "triangles": 105354,
+          "chunks": 4,
+          "features": 1100
+        },
+        "extras": {
+          "triangles": 212142,
+          "chunks": 4,
+          "features": 1100
+        }
+      },
+      "geometryCountDigest": "4afe0e85",
+      "mismatches": []
+    },
+    {
+      "revision": "44fb4363499779ec",
+      "profiles": 2,
+      "look": "storybook",
+      "requested": "storybook",
+      "player": [
+        4.898279578135836,
+        52.37168989085629
+      ],
+      "subject": [
+        4.898279578135836,
+        52.37168989085629
+      ],
+      "playerTile": "33659/21537",
+      "detailZoom": 16,
+      "detailTiles": [
+        "33659/21537",
+        "33660/21537",
+        "33659/21536",
+        "33660/21536"
+      ],
+      "playerTileSelected": true,
+      "camera": {
+        "center": [
+          4.897986006380845,
+          52.37161393865871
+        ],
+        "zoom": 18.377750993449304,
+        "pitch": 40,
+        "bearing": -112.96586783958958,
+        "detached": false
+      },
+      "chunks": 26,
+      "coarseChunks": 9,
+      "triangles": 1351462,
+      "geometryByMode": {
+        "other": {
+          "triangles": 306179,
+          "chunks": 9,
+          "features": 219
+        },
+        "coarse": {
+          "triangles": 727787,
+          "chunks": 9,
+          "features": 18319
+        },
+        "near-walls": {
+          "triangles": 105354,
+          "chunks": 4,
+          "features": 1100
+        },
+        "extras": {
+          "triangles": 212142,
+          "chunks": 4,
+          "features": 1100
+        }
+      },
+      "geometryCountDigest": "5a67b9fb",
+      "mismatches": []
+    },
+    {
+      "revision": "44fb4363499779ec",
+      "profiles": 2,
+      "look": "cartoon",
+      "requested": "cartoon",
+      "player": [
+        4.89828002253422,
+        52.371690005830004
+      ],
+      "subject": [
+        4.89828002253422,
+        52.371690005830004
+      ],
+      "playerTile": "33659/21537",
+      "detailZoom": 16,
+      "detailTiles": [
+        "33659/21537",
+        "33660/21537",
+        "33659/21536",
+        "33660/21536"
+      ],
+      "playerTileSelected": true,
+      "camera": {
+        "center": [
+          4.897986432210176,
+          52.37161404882828
+        ],
+        "zoom": 18.37775098985082,
+        "pitch": 40,
+        "bearing": -112.96586783958958,
+        "detached": false
+      },
+      "chunks": 26,
+      "coarseChunks": 9,
+      "triangles": 1351462,
+      "geometryByMode": {
+        "other": {
+          "triangles": 306179,
+          "chunks": 9,
+          "features": 219
+        },
+        "coarse": {
+          "triangles": 727787,
+          "chunks": 9,
+          "features": 18319
+        },
+        "near-walls": {
+          "triangles": 105354,
+          "chunks": 4,
+          "features": 1100
+        },
+        "extras": {
+          "triangles": 212142,
+          "chunks": 4,
+          "features": 1100
+        }
+      },
+      "geometryCountDigest": "5a67b9fb",
+      "mismatches": []
+    },
+    {
+      "revision": "44fb4363499779ec",
+      "profiles": 2,
+      "look": "procedural",
+      "requested": "procedural",
+      "player": [
+        4.898279295762427,
+        52.371689817801304
+      ],
+      "subject": [
+        4.898279295762427,
+        52.371689817801304
+      ],
+      "playerTile": "33659/21537",
+      "detailZoom": 16,
+      "detailTiles": [
+        "33659/21537",
+        "33660/21537",
+        "33659/21536",
+        "33660/21536"
+      ],
+      "playerTileSelected": true,
+      "camera": {
+        "center": [
+          4.897985716627916,
+          52.37161386369451
+        ],
+        "zoom": 18.37775099589787,
+        "pitch": 40,
+        "bearing": -112.96586783958958,
+        "detached": false
+      },
+      "chunks": 26,
+      "coarseChunks": 9,
+      "triangles": 1346640,
+      "geometryByMode": {
+        "other": {
+          "triangles": 306179,
+          "chunks": 9,
+          "features": 219
+        },
+        "coarse": {
+          "triangles": 726421,
+          "chunks": 9,
+          "features": 18319
+        },
+        "near-walls": {
+          "triangles": 105234,
+          "chunks": 4,
+          "features": 1100
+        },
+        "extras": {
+          "triangles": 208806,
+          "chunks": 4,
+          "features": 1100
+        }
+      },
+      "geometryCountDigest": "9afbec09",
+      "mismatches": []
+    }
+  ],
+  "timings": [
+    {
+      "round": 0,
+      "profilesOn": true,
+      "diagnostics": {
+        "revision": "44fb4363499779ec",
+        "profiles": 2,
+        "look": "photo",
+        "requested": "photo",
+        "player": [
+          4.89827909147134,
+          52.37168976494759
+        ],
+        "subject": [
+          4.89827909147134,
+          52.37168976494759
+        ],
+        "playerTile": "33659/21537",
+        "detailZoom": 16,
+        "detailTiles": [
+          "33659/21537",
+          "33660/21537",
+          "33659/21536",
+          "33660/21536"
+        ],
+        "playerTileSelected": true,
+        "camera": {
+          "center": [
+            4.8979854985191915,
+            52.37161380726593
+          ],
+          "zoom": 18.377750997741003,
+          "pitch": 40,
+          "bearing": -112.96586783958958,
+          "detached": false
+        },
+        "chunks": 26,
+        "coarseChunks": 9,
+        "triangles": 1351462,
+        "geometryByMode": {
+          "other": {
+            "triangles": 306179,
+            "chunks": 9,
+            "features": 219
+          },
+          "coarse": {
+            "triangles": 727787,
+            "chunks": 9,
+            "features": 18319
+          },
+          "near-walls": {
+            "triangles": 105354,
+            "chunks": 4,
+            "features": 1100
+          },
+          "extras": {
+            "triangles": 212142,
+            "chunks": 4,
+            "features": 1100
+          }
+        },
+        "geometryCountDigest": "c5f09781",
+        "mismatches": []
+      },
+      "timing": {
+        "gpuRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "gpuExtension": true,
+        "gpuDisjoint": false,
+        "fullMapGpuMs": {
+          "count": 90,
+          "median": 3.813666,
+          "p95": 3.917041
+        },
+        "fullMapCpuSubmissionMs": {
+          "count": 90,
+          "median": 8.200000286102295,
+          "p95": 9.600000381469727
+        },
+        "frameIntervalsMs": {
+          "count": 89,
+          "median": 16.40000009536743,
+          "p95": 20.40000009536743
+        },
+        "method": "EXT_disjoint_timer_query_webgl2 around full MapLibre _render on shared context, all background/custom layers included. Steady actual bike follow;30warm then90measured frames. No gl.finish proxy."
+      }
+    },
+    {
+      "round": 0,
+      "profilesOn": false,
+      "diagnostics": {
+        "revision": "review-empty-0",
+        "profiles": 0,
+        "look": "photo",
+        "requested": "photo",
+        "player": [
+          4.898279108732878,
+          52.37168976941346
+        ],
+        "subject": [
+          4.898279108732878,
+          52.37168976941346
+        ],
+        "playerTile": "33659/21537",
+        "detailZoom": 16,
+        "detailTiles": [
+          "33659/21537",
+          "33660/21537",
+          "33659/21536",
+          "33660/21536"
+        ],
+        "playerTileSelected": true,
+        "camera": {
+          "center": [
+            4.897985536106052,
+            52.37161381699032
+          ],
+          "zoom": 18.377750997423373,
+          "pitch": 40,
+          "bearing": -112.96586783958958,
+          "detached": false
+        },
+        "chunks": 26,
+        "coarseChunks": 9,
+        "triangles": 1351320,
+        "geometryByMode": {
+          "other": {
+            "triangles": 306179,
+            "chunks": 9,
+            "features": 219
+          },
+          "coarse": {
+            "triangles": 727783,
+            "chunks": 9,
+            "features": 18319
+          },
+          "near-walls": {
+            "triangles": 105304,
+            "chunks": 4,
+            "features": 1100
+          },
+          "extras": {
+            "triangles": 212054,
+            "chunks": 4,
+            "features": 1100
+          }
+        },
+        "geometryCountDigest": "afb0807f",
+        "mismatches": []
+      },
+      "timing": {
+        "gpuRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "gpuExtension": true,
+        "gpuDisjoint": false,
+        "fullMapGpuMs": {
+          "count": 90,
+          "median": 1.926708,
+          "p95": 3.922833
+        },
+        "fullMapCpuSubmissionMs": {
+          "count": 90,
+          "median": 8.299999713897705,
+          "p95": 9.5
+        },
+        "frameIntervalsMs": {
+          "count": 89,
+          "median": 16.5,
+          "p95": 21.09999990463257
+        },
+        "method": "EXT_disjoint_timer_query_webgl2 around full MapLibre _render on shared context, all background/custom layers included. Steady actual bike follow;30warm then90measured frames. No gl.finish proxy."
+      }
+    },
+    {
+      "round": 1,
+      "profilesOn": false,
+      "diagnostics": {
+        "revision": "review-empty-1",
+        "profiles": 0,
+        "look": "photo",
+        "requested": "photo",
+        "player": [
+          4.898279222630545,
+          52.371689798880794
+        ],
+        "subject": [
+          4.898279222630545,
+          52.371689798880794
+        ],
+        "playerTile": "33659/21537",
+        "detailZoom": 16,
+        "detailTiles": [
+          "33659/21537",
+          "33660/21537",
+          "33659/21536",
+          "33660/21536"
+        ],
+        "playerTileSelected": true,
+        "camera": {
+          "center": [
+            4.89798564641781,
+            52.37161384552992
+          ],
+          "zoom": 18.37775099649118,
+          "pitch": 40,
+          "bearing": -112.96586783958958,
+          "detached": false
+        },
+        "chunks": 26,
+        "coarseChunks": 9,
+        "triangles": 1351320,
+        "geometryByMode": {
+          "other": {
+            "triangles": 306179,
+            "chunks": 9,
+            "features": 219
+          },
+          "coarse": {
+            "triangles": 727783,
+            "chunks": 9,
+            "features": 18319
+          },
+          "near-walls": {
+            "triangles": 105304,
+            "chunks": 4,
+            "features": 1100
+          },
+          "extras": {
+            "triangles": 212054,
+            "chunks": 4,
+            "features": 1100
+          }
+        },
+        "geometryCountDigest": "afb0807f",
+        "mismatches": []
+      },
+      "timing": {
+        "gpuRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "gpuExtension": true,
+        "gpuDisjoint": false,
+        "fullMapGpuMs": {
+          "count": 90,
+          "median": 3.061875,
+          "p95": 3.919125
+        },
+        "fullMapCpuSubmissionMs": {
+          "count": 90,
+          "median": 8.300000190734863,
+          "p95": 9.300000190734863
+        },
+        "frameIntervalsMs": {
+          "count": 89,
+          "median": 16.59999990463257,
+          "p95": 20.40000009536743
+        },
+        "method": "EXT_disjoint_timer_query_webgl2 around full MapLibre _render on shared context, all background/custom layers included. Steady actual bike follow;30warm then90measured frames. No gl.finish proxy."
+      }
+    },
+    {
+      "round": 1,
+      "profilesOn": true,
+      "diagnostics": {
+        "revision": "44fb4363499779ec",
+        "profiles": 2,
+        "look": "photo",
+        "requested": "photo",
+        "player": [
+          4.898278865073103,
+          52.37168970637437
+        ],
+        "subject": [
+          4.898278865073103,
+          52.37168970637437
+        ],
+        "playerTile": "33659/21537",
+        "detailZoom": 16,
+        "detailTiles": [
+          "33659/21537",
+          "33660/21537",
+          "33659/21536",
+          "33660/21536"
+        ],
+        "playerTileSelected": true,
+        "camera": {
+          "center": [
+            4.897985228485259,
+            52.371613737403386
+          ],
+          "zoom": 18.377751000022933,
+          "pitch": 40,
+          "bearing": -112.96586783958958,
+          "detached": false
+        },
+        "chunks": 26,
+        "coarseChunks": 9,
+        "triangles": 1351462,
+        "geometryByMode": {
+          "other": {
+            "triangles": 306179,
+            "chunks": 9,
+            "features": 219
+          },
+          "coarse": {
+            "triangles": 727787,
+            "chunks": 9,
+            "features": 18319
+          },
+          "near-walls": {
+            "triangles": 105354,
+            "chunks": 4,
+            "features": 1100
+          },
+          "extras": {
+            "triangles": 212142,
+            "chunks": 4,
+            "features": 1100
+          }
+        },
+        "geometryCountDigest": "c5f09781",
+        "mismatches": []
+      },
+      "timing": {
+        "gpuRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "gpuExtension": true,
+        "gpuDisjoint": false,
+        "fullMapGpuMs": {
+          "count": 90,
+          "median": 3.859041,
+          "p95": 5.47725
+        },
+        "fullMapCpuSubmissionMs": {
+          "count": 90,
+          "median": 8.400000095367432,
+          "p95": 10.299999713897705
+        },
+        "frameIntervalsMs": {
+          "count": 89,
+          "median": 16.40000009536743,
+          "p95": 20.90000009536743
+        },
+        "method": "EXT_disjoint_timer_query_webgl2 around full MapLibre _render on shared context, all background/custom layers included. Steady actual bike follow;30warm then90measured frames. No gl.finish proxy."
+      }
+    },
+    {
+      "round": 2,
+      "profilesOn": true,
+      "diagnostics": {
+        "revision": "44fb4363499779ec",
+        "profiles": 2,
+        "look": "photo",
+        "requested": "photo",
+        "player": [
+          4.898278845263865,
+          52.37168970124937
+        ],
+        "subject": [
+          4.898278845263865,
+          52.37168970124937
+        ],
+        "playerTile": "33659/21537",
+        "detailZoom": 16,
+        "detailTiles": [
+          "33659/21537",
+          "33660/21537",
+          "33659/21536",
+          "33660/21536"
+        ],
+        "playerTileSelected": true,
+        "camera": {
+          "center": [
+            4.897985271047462,
+            52.37161374841498
+          ],
+          "zoom": 18.37775099966326,
+          "pitch": 40,
+          "bearing": -112.96586783958958,
+          "detached": false
+        },
+        "chunks": 26,
+        "coarseChunks": 9,
+        "triangles": 1351462,
+        "geometryByMode": {
+          "other": {
+            "triangles": 306179,
+            "chunks": 9,
+            "features": 219
+          },
+          "coarse": {
+            "triangles": 727787,
+            "chunks": 9,
+            "features": 18319
+          },
+          "near-walls": {
+            "triangles": 105354,
+            "chunks": 4,
+            "features": 1100
+          },
+          "extras": {
+            "triangles": 212142,
+            "chunks": 4,
+            "features": 1100
+          }
+        },
+        "geometryCountDigest": "c5f09781",
+        "mismatches": []
+      },
+      "timing": {
+        "gpuRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "gpuExtension": true,
+        "gpuDisjoint": false,
+        "fullMapGpuMs": {
+          "count": 90,
+          "median": 1.708874,
+          "p95": 3.893124
+        },
+        "fullMapCpuSubmissionMs": {
+          "count": 90,
+          "median": 7.700000286102295,
+          "p95": 8.900000095367432
+        },
+        "frameIntervalsMs": {
+          "count": 89,
+          "median": 16.59999990463257,
+          "p95": 20.40000009536743
+        },
+        "method": "EXT_disjoint_timer_query_webgl2 around full MapLibre _render on shared context, all background/custom layers included. Steady actual bike follow;30warm then90measured frames. No gl.finish proxy."
+      }
+    },
+    {
+      "round": 2,
+      "profilesOn": false,
+      "diagnostics": {
+        "revision": "review-empty-2",
+        "profiles": 0,
+        "look": "photo",
+        "requested": "photo",
+        "player": [
+          4.898278956588425,
+          52.371689730051
+        ],
+        "subject": [
+          4.898278956588425,
+          52.371689730051
+        ],
+        "playerTile": "33659/21537",
+        "detailZoom": 16,
+        "detailTiles": [
+          "33659/21537",
+          "33660/21537",
+          "33659/21536",
+          "33660/21536"
+        ],
+        "playerTileSelected": true,
+        "camera": {
+          "center": [
+            4.897985385103709,
+            52.37161377792334
+          ],
+          "zoom": 18.377750998699423,
+          "pitch": 40,
+          "bearing": -112.96586783958958,
+          "detached": false
+        },
+        "chunks": 26,
+        "coarseChunks": 9,
+        "triangles": 1351320,
+        "geometryByMode": {
+          "other": {
+            "triangles": 306179,
+            "chunks": 9,
+            "features": 219
+          },
+          "coarse": {
+            "triangles": 727783,
+            "chunks": 9,
+            "features": 18319
+          },
+          "near-walls": {
+            "triangles": 105304,
+            "chunks": 4,
+            "features": 1100
+          },
+          "extras": {
+            "triangles": 212054,
+            "chunks": 4,
+            "features": 1100
+          }
+        },
+        "geometryCountDigest": "afb0807f",
+        "mismatches": []
+      },
+      "timing": {
+        "gpuRenderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4 Pro, Unspecified Version)",
+        "gpuExtension": true,
+        "gpuDisjoint": false,
+        "fullMapGpuMs": {
+          "count": 90,
+          "median": 1.837375,
+          "p95": 2.619791
+        },
+        "fullMapCpuSubmissionMs": {
+          "count": 90,
+          "median": 7.599999904632568,
+          "p95": 8.700000286102295
+        },
+        "frameIntervalsMs": {
+          "count": 89,
+          "median": 16.600000381469727,
+          "p95": 19.90000009536743
+        },
+        "method": "EXT_disjoint_timer_query_webgl2 around full MapLibre _render on shared context, all background/custom layers included. Steady actual bike follow;30warm then90measured frames. No gl.finish proxy."
+      }
+    }
+  ],
+  "beforePan": {
+    "revision": "44fb4363499779ec",
+    "profiles": 2,
+    "look": "photo",
+    "requested": "photo",
+    "player": [
+      4.898278494624104,
+      52.37168961053267
+    ],
+    "subject": [
+      4.898278494624104,
+      52.37168961053267
+    ],
+    "playerTile": "33659/21537",
+    "detailZoom": 16,
+    "detailTiles": [
+      "33659/21537",
+      "33660/21537",
+      "33659/21536",
+      "33660/21536"
+    ],
+    "playerTileSelected": true,
+    "camera": {
+      "center": [
+        4.897984912206919,
+        52.371613655576596
+      ],
+      "zoom": 18.37775100269565,
+      "pitch": 40,
+      "bearing": -112.96586783958958,
+      "detached": false
+    },
+    "chunks": 26,
+    "coarseChunks": 9,
+    "triangles": 1351462,
+    "geometryByMode": {
+      "other": {
+        "triangles": 306179,
+        "chunks": 9,
+        "features": 219
+      },
+      "coarse": {
+        "triangles": 727787,
+        "chunks": 9,
+        "features": 18319
+      },
+      "near-walls": {
+        "triangles": 105354,
+        "chunks": 4,
+        "features": 1100
+      },
+      "extras": {
+        "triangles": 212142,
+        "chunks": 4,
+        "features": 1100
+      }
+    },
+    "geometryCountDigest": "c5f09781",
+    "mismatches": []
+  },
+  "coarsePan": {
+    "revision": "44fb4363499779ec",
+    "profiles": 2,
+    "look": "photo",
+    "requested": "photo",
+    "player": [
+      4.89827853839918,
+      52.37168962185805
+    ],
+    "subject": [
+      4.89827853839918,
+      52.37168962185805
+    ],
+    "playerTile": "33659/21537",
+    "detailZoom": 16,
+    "detailTiles": [
+      "33659/21537",
+      "33660/21537",
+      "33659/21536",
+      "33660/21536"
+    ],
+    "playerTileSelected": true,
+    "camera": {
+      "center": [
+        4.86853,
+        52.37534
+      ],
+      "zoom": 18.3,
+      "pitch": 58.00000000000001,
+      "bearing": -25,
+      "detached": false
+    },
+    "chunks": 26,
+    "coarseChunks": 9,
+    "triangles": 1354843,
+    "geometryByMode": {
+      "other": {
+        "triangles": 309560,
+        "chunks": 9,
+        "features": 228
+      },
+      "coarse": {
+        "triangles": 727787,
+        "chunks": 9,
+        "features": 18319
+      },
+      "near-walls": {
+        "triangles": 105354,
+        "chunks": 4,
+        "features": 1100
+      },
+      "extras": {
+        "triangles": 212142,
+        "chunks": 4,
+        "features": 1100
+      }
+    },
+    "geometryCountDigest": "ab1fc8ec",
+    "mismatches": []
+  },
+  "coarseOwnershipUnchanged": true,
+  "geometryOnOffChanged": true,
+  "fullMapGpuMedianRatio": 1.9793689547144662,
+  "errors": [],
+  "limits": [
+    "Normal gameplay four modes use actual bike hash and camera sync; setup presentation overlay dismissed to reveal running ride.",
+    "Optional review-position moves the stationary rider in the running game for a scene test; this is not evidence of route reachability.",
+    "Coarse pan is separate fixed read-only camera regression after normal timing; rider detail ownership retained intentionally.",
+    "Profile ablation uses identical current bundles and street-front paths.",
+    "Headless local Chrome GPU timing is this hardware/browser only; report query support/disjoint and variability before asserting budget.",
+    "Partial assembly progress and runtime checks do not waive failed Overtoom block composition."
+  ]
+}

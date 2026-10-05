@@ -15,7 +15,7 @@ test('year does not force ribbon glazing; observed families remain distinct', ()
       assert.equal(!!recipeBayOpenings('x', recipe({ family }), look).ribbon, family !== 'punched');
     }
   }
-  assert.ok(BAY_LAYER_COUNT < 190, 'combined procedural and bay texture layers fit Uint8 indices');
+  assert.ok(BAY_LAYER_COUNT + 64 <= 256, 'combined procedural and bay texture layers fit Uint8 indices');
 });
 test('unsupported construction period does not invent a different family per building', () => {
   for (let i = 0; i < 50; i++) {
@@ -146,4 +146,44 @@ test('connected pale entry stays aligned, contained and affordable before upper 
   const budget = new ExtraSink(230), used = wallExtras(c, budget);
   assert.equal(used[0], 'door-surround', 'connected entry gets priority within wall budget');
   assert.ok(budget.tris.length <= 230);
+});
+
+test('supported balcony assembly selects grouped tall glazing and residential ground instead of random shops', () => {
+  const r = recipe({family:'punched',period:'modern',facadeAssembly:'stacked-open-balcony',sash:'paired-transom'});
+  for (let i=0;i<20;i++) {
+    const b=bayLookFor(`infill${i}`,1992,12,'photo',undefined,r);
+    assert.equal(b.variant.windows,3);assert.equal(b.variant.sash,'paired-transom');
+    assert.equal(b.variant.facadeAssembly,'stacked-open-balcony');
+    assert.equal(b.groundHex,undefined);
+    const o=recipeBayOpenings(`infill${i}`,r);
+    assert.equal(o.upper.axes.length,3);assert.ok(o.upper.head-o.upper.sill>.65);
+  }
+  assert.ok(BAY_LAYER_COUNT+64<=256,'all modes fit the common texture array');
+});
+
+test('paired transom glazing draws a vertical divider as well as the upper transom', () => {
+  const rects:number[][]=[];
+  const ctx=new Proxy({createLinearGradient:()=>({addColorStop(){}})}, {get(target,key){if(key in target)return target[key as keyof typeof target];return (...a:number[])=>{if(key==='fillRect')rects.push(a)}},set:()=>true});
+  const previous=globalThis.document;
+  globalThis.document={createElement:()=>({getContext:()=>ctx})} as unknown as Document;
+  try {
+    const b=bayLookFor('paired',1992,12,'photo',undefined,recipe({family:'punched',period:'modern',facadeAssembly:'stacked-open-balcony',sash:'paired-transom'}));
+    bayTextures({...b.variant,kind:'upper'},{} as CanvasImageSource,'photo');
+    assert.ok(rects.some(r=>r[2]===4&&r[3]>150),'tall central glazing bar');
+    assert.ok(rects.some(r=>r[3]===4&&r[2]>70),'upper transom');
+  } finally {globalThis.document=previous;}
+});
+
+test('joint infill keeps mapped generic shop identity but uses grouped ground glazing and a centered access leaf', () => {
+  const r=recipe({family:'punched',period:'modern',facadeAssembly:'stacked-open-balcony',sash:'paired-transom',groundWallHex:'#787b76'});
+  const generic=bayLookFor('grouped',1992,12,'photo','shopWindow',r), residential=bayLookFor('grouped',1992,12,'photo','quiet',r);
+  assert.equal(generic.layers.ground,residential.layers.ground,'display designation does not force the generic fascia template');
+  assert.equal(generic.groundHex,'#787b76');
+  const o=recipeBayOpenings('grouped',r);
+  assert.equal(o.door.axis,.5);assert.deepEqual(o.doorWindow!.axes,[.17,.83]);
+  assert.ok(o.doorWindow!.axes[0]+o.doorWindow!.width/2<o.door.axis-o.door.width/2);
+  assert.ok(o.doorWindow!.axes[1]-o.doorWindow!.width/2>o.door.axis+o.door.width/2);
+  assert.ok(o.ground!.head-o.ground!.sill>.65);
+  const cafe=bayLookFor('grouped',1992,12,'photo','shopCafe',r);
+  assert.notEqual(cafe.layers.ground,residential.layers.ground,'specific mapped cafe front remains distinct');
 });

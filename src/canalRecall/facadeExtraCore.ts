@@ -14,6 +14,8 @@ export type WallFrame = { x0: number; y0: number; ux: number; uy: number; nx: nu
 export type ExtraContext = {
   recipe?: ArchitecturalRecipe;
   runStart?: boolean; runEnd?: boolean;
+  /** One eligible facet owns a defining balcony stack for its continuous wall run. */
+  assemblyOwner?: boolean;
   id: string; style: FacadeStyle; wallKey: string; f: WallFrame; base: number; top: number;
   layout: WallLayout; wallHex: string; accentHex: string; roofKind?: string; groundLevel: boolean;
   /**
@@ -99,6 +101,13 @@ export class ExtraSink {
     this.face([P(a0, out, z0), P(a1, out, z0), P(a1, out, z1), P(a0, out, z1)], [f.nx, f.ny, 0], hex);
     const back = Math.max(0, out - depth);
     this.face([P(a0, back, z1), P(a1, back, z1), P(a1, out, z1), P(a0, out, z1)], [0, 0, 1], hex);
+    return true;
+  }
+  /** A flat wall ornament with a shaped outline, such as an open triangular pediment. */
+  wallQuad(f: WallFrame, points: readonly [number, number][], out: number, hex: string): boolean {
+    if (points.length !== 4 || this.mark?.failed || !this.fits(2)) return false;
+    this.boxes++;
+    this.face(points.map(([a, z]) => [f.x0 + f.ux * a + f.nx * out, f.y0 + f.uy * a + f.ny * out, z]), [f.nx, f.ny, 0], hex);
     return true;
   }
   /** A sloped quad (a hood or a canopy): from (a0..a1, o0, zWall) at the wall to (o1, zOut) outside. */

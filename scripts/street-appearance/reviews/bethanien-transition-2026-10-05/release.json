@@ -1,0 +1,69 @@
+{
+  "reviewer": "independent failure-seeking agent",
+  "catalogRevision": "44fb4363499779ec",
+  "decision": "pass-bounded-native-and-desktop-release",
+  "scope": "Two published profiles only:57mBethanienstraat transition context and17m historical-pair visual class. No other pilot coverage or city expansion accepted.",
+  "method": "Direct tools.view_image inspection of all nine release source-row/block/opposite-oblique images against prior municipal/challenge review, plus all four release-game screenshots and coarse-pan image. Read final release-game mode/ownership/error/performance report.",
+  "nativeFindings": [
+    "Approved pair retains brown masonry, pale subdivided tall glazing, differentiated street-facing triangular/neck crowns, and no incidental black-rail balconies, shutters, planters or deep cornice.",
+    "Adjoining broad pale modern stack/plain groups retain access/flank window hierarchy, slate bases and pale explicit balcony stack. No new material spread, floaters, pane escape or roof gap visible.",
+    "Narrow publication removes prior pilot styling from opposite street-side and next frontage beyond pale west neighbor; these visibly revert to baseline red/gray glazing. This is expected outside accepted coverage and does not break historical-pair/modern-flank composition."
+  ],
+  "gameFindings": [
+    "Actual-game Photo/Storybook/Cartoon/Procedural images retain installed pair and modern flanks within the running scene. Normal follow camera is overhead; native images supply finer street assembly evidence.",
+    "Surrounding ordinary facades preserve windows and doors across modes; no obvious blank-wall regression. Palette changes on omitted pilot buildings reflect reverted unaccepted coverage.",
+    "Coarse-pan image retains ordinary facade windows/doors away from stationary rider; current revision and rider detail ownership remain correct."
+  ],
+  "runtime": {
+    "profiles": 2,
+    "allModesRevisionMatches": true,
+    "allRequestedModesMatch": true,
+    "riderSelectedAllModes": true,
+    "cacheMismatches": [
+      [],
+      [],
+      [],
+      []
+    ],
+    "errors": [],
+    "coarseOwnershipUnchanged": true
+  },
+  "performance": {
+    "decision": "bounded-local-desktop-budget-pass; marginal-cost-inconclusive",
+    "method": "Current final revision EXT fullMap GPU queries,3on/off pairs,90samples per condition after warmup,AppleM4Pro.",
+    "onGpuMedianMs": [
+      3.813666,
+      3.859041,
+      1.708874
+    ],
+    "offGpuMedianMs": [
+      1.926708,
+      3.061875,
+      1.837375
+    ],
+    "onGpuP95MaxMs": 5.47725,
+    "sceneTriangles": 1351462,
+    "interpretation": "GPU times remain within local desktop scene budget, but substantial inter-round variability and final pair on<off defeat reliable relative-cost attribution. Raw ratio1.979 is not an isolated historical-class cost or a stable slowdown claim. No city/device generalization."
+  },
+  "priorEvidence": {
+    "cycle12CriticalFailure": "../12/independent-review.json",
+    "cycle13UnsupportedSecondaryExtras": "../13/independent-review.json",
+    "cycle14NativeAndEarlier10profileReview": "independent-review.json"
+  },
+  "evidence": [
+    "release/",
+    "release-game/report.json",
+    "release-game/overtoom-bike-photo.png",
+    "release-game/overtoom-bike-storybook.png",
+    "release-game/overtoom-bike-cartoon.png",
+    "release-game/overtoom-bike-procedural.png",
+    "release-game/coarse-pan-revision.png"
+  ],
+  "limits": [
+    "Stationary rider relocated for scene review; no route reachability claim.",
+    "Desktop only; no touch camera/device or citywide GPU acceptance.",
+    "Fixed challenge stations now replay corrected failures; not fresh blind transfer.",
+    "Exact window columns/crown contours/door-crown assignment remain approximate secondary limits.",
+    "Native-height/courtyard/source invariants rely on separate source/geometry tests."
+  ]
+}

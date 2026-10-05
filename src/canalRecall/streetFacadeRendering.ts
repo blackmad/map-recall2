@@ -8,6 +8,9 @@ export type StreetFacadeContext = {
   profiles: readonly StreetAppearanceProfile[];
   look: 'photo' | 'storybook' | 'cartoon' | 'procedural';
   year: number | null;
+  /** Native total height, separate from the roof-adjusted wall top. */
+  sourceHeightM?: number;
+  streetCorner?: boolean;
   mappedWallHex?: string;
   shopfront?: Parameters<typeof bayLookFor>[4];
 };
@@ -42,7 +45,8 @@ export function streetWallBuilding(building: MeshBuilding, wall: {
     start: [origin.lng + wall.x0 / kx, origin.lat + wall.y0 / 110_540],
     end: [origin.lng + wall.x1 / kx, origin.lat + wall.y1 / 110_540],
     normal: [wall.nx, wall.ny],
-  }, { id: building.id, year: context.year, heightM: building.heightM });
+    frontage: { start: [origin.lng + wall.x0 / kx, origin.lat + wall.y0 / 110_540], end: [origin.lng + wall.x1 / kx, origin.lat + wall.y1 / 110_540], widthM: Math.hypot(wall.x1 - wall.x0, wall.y1 - wall.y0) },
+  }, { id: building.id, year: context.year, heightM: context.sourceHeightM ?? building.heightM, streetCorner: context.streetCorner });
   if (!recipe) return building;
   const bay = bayLookFor(building.id, context.year, building.heightM,
     context.look === 'procedural' ? 'photo' : context.look, context.shopfront, recipe);
@@ -52,8 +56,9 @@ export function streetWallBuilding(building: MeshBuilding, wall: {
     wallHex: context.mappedWallHex ?? bay.wallHex,
     accentHex: building.shopfront ? building.accentHex : bay.accentHex,
     layers: { upper: bay.layers.upper + offset, ground: bay.layers.ground + offset, door: bay.layers.door + offset },
-    plainLayer: bay.plain + offset, groundHex: building.groundHex ?? bay.groundHex,
+    plainLayer: bay.plain + offset, groundHex: recipe.groundWallHex && !context.mappedWallHex ? bay.groundHex : building.groundHex ?? bay.groundHex,
     recipe,
+    ...((recipe.facadeAssembly === 'stacked-open-balcony' || recipe.entranceAssembly) && !building.shopfront ? { shop: false } : {}),
   };
 }
 

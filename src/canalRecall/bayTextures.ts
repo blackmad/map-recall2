@@ -37,13 +37,15 @@ export interface BayVariant {
   paleAccents?: boolean;
   openingOccupancy?: number;
   openingHeight?: number;
-  sash?: 'plain' | 'transom' | 'six-over-six';
+  sash?: 'plain' | 'transom' | 'paired-transom' | 'six-over-six';
+  facadeAssembly?: 'stacked-open-balcony' | 'stacked-iron-balcony';
+  entranceAssembly?: 'raised-pilaster' | 'raised-plain';
   trimDensity?: 'restrained' | 'ornate';
   wallMaterial?: 'brick' | 'smooth';
 }
 
 export const variantKey = (v: BayVariant, look: Look) =>
-  `${look}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}|${v.family ?? "masonry"}|${v.proportions ?? "tall"}|${v.frameTone ?? "pale"}|${v.lintel ?? "flat"}|${!!v.paleAccents}|${v.openingOccupancy ?? "legacy"}|${v.openingHeight ?? "legacy"}|${v.sash ?? "legacy"}|${v.trimDensity ?? "legacy"}|${v.wallMaterial ?? "legacy"}`;
+  `${look}|${v.archetype}|${v.kind}|${v.windows}|${v.shape}|${v.shutters}|${v.paintedFrames}|${v.family ?? "masonry"}|${v.proportions ?? "tall"}|${v.frameTone ?? "pale"}|${v.lintel ?? "flat"}|${!!v.paleAccents}|${v.openingOccupancy ?? "legacy"}|${v.openingHeight ?? "legacy"}|${v.sash ?? "legacy"}|${v.trimDensity ?? "legacy"}|${v.wallMaterial ?? "legacy"}|${v.facadeAssembly ?? "none"}|${v.entranceAssembly ?? "none"}`;
 
 /** Building-level choices, derived from a seed so every wall of a building agrees. */
 export function buildingStyle(seed: string, archetype: Archetype): Omit<BayVariant, 'kind'> & { shop: boolean } {
@@ -171,7 +173,7 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
     p.fill('ink', stone); p.rr(x - (restrained ? 4 : 10), y + h + 2, w + (restrained ? 8 : 20), restrained ? 5 : 12, cartoon ? 3 : 1); ctx.fill(); outline();
   }
   // Alternating pale masonry blocks sit outside the rectangular glazing, not in it.
-  if (v.paleAccents) {
+  if (v.paleAccents && !v.entranceAssembly) {
     p.fill('ink', p.cartoon ? '#fffaf0' : '#eee9de');
     for (let by = y + 8; by < y + h; by += restrained ? 70 : 42) {
       ctx.fillRect(x - (restrained ? 10 : 18), by, restrained ? 10 : 18, restrained ? 12 : 18); ctx.fillRect(x + w, by, restrained ? 10 : 18, restrained ? 12 : 18);
@@ -194,7 +196,11 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
   if (p.pass === 'mask') { ctx.fillStyle = '#000'; ctx.fillRect(x + m, y + m, w - 2 * m, h - 2 * m); }
   // Muntins: a cross in cartoon, six-over-six sashes in photo.
   p.fill(v.paintedFrames ? 'accent' : 'ink', frameColour);
-  if (v.sash === 'transom') {
+  if (v.sash === 'paired-transom') {
+    const bar = p.toon ? 5 : 4;
+    ctx.fillRect(x + m, y + h * .27 - bar / 2, w - 2 * m, bar);
+    ctx.fillRect(x + w / 2 - bar / 2, y + m, bar, h - 2 * m);
+  } else if (v.sash === 'transom') {
     ctx.fillRect(x + m, y + h * .29 - 2, w - 2 * m, p.toon ? 5 : 4);
   } else if (v.sash === 'plain') {
     // Unsubdivided modern opening; perimeter frame already drawn.
@@ -210,18 +216,23 @@ function windowAt(p: Painter, x: number, y: number, w: number, h: number, v: Bay
 /** Shared modern/quiet entry layout; keep it clear of the adjacent window. */
 export function bayDoorGeometry(v: BayVariant) {
   const quiet = v.trimDensity === 'restrained';
+  if(v.entranceAssembly === 'raised-plain')return {x:BAY_PX*.71,width:BAY_PX*.18,height:222,bottom:70,fanlight:false};
+  if(v.entranceAssembly === 'raised-pilaster')return {x:BAY_PX*.115,width:BAY_PX*.18,height:222,bottom:52,fanlight:true};
+  if(v.facadeAssembly === 'stacked-open-balcony')return {x:BAY_PX*(.5-.14),width:BAY_PX*.28,height:274,bottom:24,fanlight:false};
   return { x: BAY_PX * .14, width: quiet ? 98 : 118, height: quiet ? 214 : 226, bottom: 24, fanlight: !quiet };
 }
 export function bayDoorWindowGeometry(v: BayVariant, look: Look = 'photo') {
   const quiet = v.trimDensity === 'restrained';
+  if(v.entranceAssembly === 'raised-plain')return {axis:.335,width:BAY_PX*.205,y:78,height:166};
+  if(v.entranceAssembly === 'raised-pilaster')return {axis:.68,width:BAY_PX*.205,y:78,height:166};
   if (quiet) return { axis: .66, width: v.family === 'punched' ? 160 : 170, y: 88, height: 166 };
   const g = bayWindowGeometry({ ...v, windows: 1 }, 76, 150, look);
   return { axis: .64, ...g };
 }
 function quietDoorAt(p: Painter, v: BayVariant, groundY: number): void {
-  const { ctx } = p, g = bayDoorGeometry(v), y = groundY - g.height;
+  const { ctx } = p, g = bayDoorGeometry(v), y = GROUND_PX - g.bottom - g.height;
   p.fill('ink', p.cartoon ? '#e8e3d8' : '#c9c7be'); ctx.fillRect(g.x - 5, y - 5, g.width + 10, g.height + 5);
-  p.fill('accent', '#ffffff'); ctx.fillRect(g.x, y, g.width, g.height);
+  p.fill(v.entranceAssembly === 'raised-plain' ? 'ink' : 'accent', v.entranceAssembly === 'raised-plain' ? '#30342f' : '#ffffff'); ctx.fillRect(g.x, y, g.width, g.height);
   // Modern communal entry has a flush rectangular glazed leaf, never a historic fanlight.
   if (v.family === 'punched' || v.family === 'curtain' || v.family === 'ribbon') {
     glassRect(p, g.x + 9, y + 10, g.width - 18, g.height - 24, 1);
@@ -411,6 +422,9 @@ export function bayWindowGeometry(v: Pick<BayVariant, 'windows' | 'proportions' 
 function layoutWindows(p: Painter, v: BayVariant, w: number, y: number, h: number): void {
   const geometry = bayWindowGeometry(v, y, h, p.look), ww = geometry.width;
   y = geometry.y; h = geometry.height;
+  if(v.entranceAssembly==='raised-plain'){for(const axis of [.20,.47,.80])windowAt(p,w*axis-ww/2,y,ww,h,v);return;}
+  if(v.entranceAssembly==='raised-pilaster'){for(const axis of [.205,.53,.80])windowAt(p,w*axis-ww/2,y,ww,h,v);return;}
+  if(v.facadeAssembly==='stacked-open-balcony'){for(const axis of [.17,.5,.83]){const wide=w*(axis===.5?.28:.145);windowAt(p,w*axis-wide/2,y,wide,h,{...v,sash:axis===.5?'paired-transom':'transom'});}return;}
   for (let i = 0; i < v.windows; i++) windowAt(p, ((i + 0.5) / v.windows) * w - ww / 2, y, ww, h, v);
 }
 
@@ -425,6 +439,14 @@ export const isBareBay = (kind: BayKind): boolean => kind === 'plain';
 function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImageSource): void {
   const { ctx } = p;
   wall(p, w, h, brick, v.archetype, v.wallMaterial);
+  if(v.facadeAssembly==='stacked-open-balcony'&&(v.kind==='ground'||v.kind==='groundDoor')){
+    p.shade(()=>{ctx.strokeStyle='rgba(0,0,0,.19)';ctx.lineWidth=2;for(let row=0,y=12;y<h;y+=38,row++){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();for(let x=(row%2)*65;x<w;x+=130){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,y+38);ctx.stroke();}}});
+  }
+  if(v.entranceAssembly==='raised-pilaster'&&!isBareBay(v.kind)){
+    // Joined pale courses cross the masonry piers; opening painting masks the glass.
+    p.fill('ink',p.cartoon?'#fffaf0':'#eee9de');
+    for(const fraction of [.26,.56,.84])ctx.fillRect(0,h*fraction,w,9);
+  }
   const isShop = (SHOP_KINDS as readonly string[]).includes(v.kind);
   const ground = v.kind === 'groundDoor' || isShop || v.kind === 'ground';
   if (isBareBay(v.kind)) {
@@ -434,8 +456,33 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
     else if (isShop) { paintedGround(p, w, h); if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
     else { windowAt(p, w * 0.2, 80, 140, 140, { ...v, shape: 'rect', archetype: 'modern' }); if (v.kind === 'groundDoor') doorAt(p, w * 0.62, h - 24, v); }
   } else if (ground) {
-    if (isShop) { paintedGround(p, w, h); if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
-    else if (v.kind === 'groundDoor') {
+    if (v.facadeAssembly==='stacked-open-balcony'&&!isShop){
+      const g=bayWindowGeometry(v,70,240,p.look);
+      for(const axis of (v.kind==='groundDoor'?[.17,.83]:[.17,.5,.83])){const ww=w*(axis===.5?.28:.145);windowAt(p,w*axis-ww/2,g.y,ww,g.height,{...v,sash:axis===.5?'paired-transom':'transom'});}
+      if(v.kind==='groundDoor')quietDoorAt(p,v,h-24);
+    } else if (isShop) { paintedGround(p, w, h); if (v.trimDensity === 'restrained') quietShopAt(p, w, h, v.kind); else if (v.kind === 'groundShop') shopAt(p, w, h); else shopVariantAt(p, w, h, v.kind); }
+    else if (v.entranceAssembly === 'raised-plain') {
+      const g=bayDoorWindowGeometry(v,p.look), axes=v.kind==='groundDoor'?[.20,.47]:[.20,.47,.80];
+      // A quiet raised residence: paired ground glazing and its side entrance share the upper axes.
+      p.fill('ink',p.stone); ctx.fillRect(0,h-82,w,82);
+      for(const axis of axes)windowAt(p,w*axis-g.width/2,g.y,g.width,g.height,v);
+      if(v.kind==='groundDoor'){
+        quietDoorAt(p,v,h-70);
+        const d=bayDoorGeometry(v); p.fill('ink',p.stone);
+        for(let i=1;i<=4;i++)ctx.fillRect(d.x-10,h-17.5*i,d.width+20,3);
+      }
+      // Source-supported low basement lights stay inside the raised base, beneath the paired windows.
+      for(const axis of [.20,.47])glassRect(p,w*axis-w*.075,h-42,w*.15,28,1);
+    }
+    else if (v.kind === 'groundDoor' && v.entranceAssembly === 'raised-pilaster') {
+      quietDoorAt(p, v, h - 52);
+      const g = bayDoorWindowGeometry(v, p.look);
+      for(const axis of [.53,.80])windowAt(p,w*axis-g.width/2,g.y,g.width,g.height,v);
+      // Painted stair treads preserve the entrance hierarchy in distant shells.
+      p.fill('ink',p.stone);
+      const d=bayDoorGeometry(v);
+      for(let i=0;i<3;i++)ctx.fillRect(d.x-10,h-17*(i+1),d.width+20,3);
+    } else if (v.kind === 'groundDoor') {
       if (v.trimDensity === 'restrained') quietDoorAt(p, v, h - 24); else doorAt(p, w * .14, h - 24, v);
       const g = bayDoorWindowGeometry(v, p.look);
       windowAt(p, w * g.axis - g.width / 2, g.y, g.width, g.height, v);
@@ -452,7 +499,7 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
     } else layoutWindows(p, v, w, y, wh);
     if (v.archetype === 'c19') {
       // White stucco string course at the floor line and a sill band: the 19th-century street's horizontal lines.
-      p.fill('ink', p.stone); ctx.fillRect(0, h - (v.trimDensity === 'restrained' ? 4 : 12), w, v.trimDensity === 'restrained' ? 4 : 12); if (v.trimDensity !== 'restrained') ctx.fillRect(0, y + wh + 4, w, 7);
+      p.fill('ink', p.stone); ctx.fillRect(0, h - (v.entranceAssembly === 'raised-pilaster' ? 12 : v.trimDensity === 'restrained' ? 4 : 12), w, v.entranceAssembly === 'raised-pilaster' ? 12 : v.trimDensity === 'restrained' ? 4 : 12); if (v.trimDensity !== 'restrained') ctx.fillRect(0, y + wh + 4, w, 7);
       if (p.cartoon) { p.stroke(OUTLINE, p.lineW * 0.5); ctx.strokeRect(0, h - 12, w, 12); }
     } else if (v.archetype === 'canal' && v.kind !== 'attic') {
       // A pale cornice line under each canal-house floor, the white trim the streets show.
@@ -465,7 +512,7 @@ function draw(p: Painter, v: BayVariant, w: number, h: number, brick: CanvasImag
     }
   }
   // A dark plinth under a house's ground floor; a shop's paint runs to the pavement instead.
-  if (ground && !isShop) { p.shade(() => { ctx.fillStyle = p.cartoon ? 'rgba(40,24,24,0.30)' : 'rgba(40,36,34,0.78)'; ctx.fillRect(0, h - 24, w, 24); }); }
+  if (ground && !isShop && v.entranceAssembly !== 'raised-plain') { p.shade(() => { ctx.fillStyle = p.cartoon ? 'rgba(40,24,24,0.30)' : 'rgba(40,36,34,0.78)'; ctx.fillRect(0, h - 24, w, 24); }); }
 }
 
 /** One tileable bay in colour plus its tint mask, drawn once per variant and cached. */

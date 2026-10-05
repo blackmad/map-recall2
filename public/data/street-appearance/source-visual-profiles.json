@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "profiles": [
+    {
+      "id": "bethanienstraat-observed-historic-pair",
+      "streetName": "Bethaniënstraat",
+      "revision": "d79badd283cbe0f5",
+      "segment": [
+        [
+          4.898321264698198,
+          52.37171713130768
+        ],
+        [
+          4.8985444146851345,
+          52.37164765453075
+        ]
+      ],
+      "side": -1,
+      "reachM": 12,
+      "confidence": 0.92,
+      "assemblyM": 6,
+      "status": "reviewed",
+      "visualClass": {
+        "kind": "historic-frontage",
+        "constructionYearPolicy": "source-visual",
+        "sourceEvidenceIds": [
+          "TMX7316010203-000227_pano_0000_000671",
+          "TMX7316010203-000709_pano_0000_001508"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "TMX7316010203-000227_pano_0000_000671",
+          "kind": "municipal-panorama",
+          "captureDate": "2017-03-29T08:24:19.945450Z",
+          "sha256": "358cfb2cad28a1bdbc894dd9f815ebfe4b2109ad2ba62d81815e9dc8db0c74ad",
+          "url": "https://t1.data.amsterdam.nl/panorama/2017/03/29/TMX7316010203-000227/pano_0000_000671/equirectangular/panorama_4000.jpg",
+          "panoramaId": "TMX7316010203-000227_pano_0000_000671",
+          "inference": "agent-visual-review",
+          "quality": 0.92,
+          "notes": "Brown narrow historical-looking pair beside pale modern modules; neck and point crown, pale framed tall subdivided glazing. Appearance observation preserves 1992 BAG fact. Source: retry12/source-plan.md; exact registration and counts secondary."
+        },
+        {
+          "id": "TMX7316010203-000709_pano_0000_001508",
+          "kind": "municipal-panorama",
+          "captureDate": "2018-05-07T10:06:49.303040Z",
+          "sha256": "c2ae8994395bf14e715e0b606435bf4d50e24d8f0f302a432a523b418d78d104",
+          "url": "https://t1.data.amsterdam.nl/panorama/2018/05/07/TMX7316010203-000709/pano_0000_001508/equirectangular/panorama_4000.jpg",
+          "panoramaId": "TMX7316010203-000709_pano_0000_001508",
+          "inference": "agent-visual-review",
+          "quality": 0.92,
+          "notes": "Brown narrow historical-looking pair beside pale modern modules; neck and point crown, pale framed tall subdivided glazing. Appearance observation preserves 1992 BAG fact. Source: retry12/source-plan.md; exact registration and counts secondary."
+        }
+      ],
+      "recipes": [
+        {
+          "weight": 1,
+          "heightMin": 8,
+          "heightMax": 14,
+          "frontageMin": 4,
+          "frontageMax": 6.5,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "crownShape": "neck",
+            "wallHex": "#704b3e",
+            "frameHex": "#dfd8c6",
+            "groundWallHex": "#c9c4b4",
+            "windowWidth": 0.64,
+            "windowHeight": 0.72,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": false,
+            "sash": "six-over-six",
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1,
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "trim": {
+              "frames": 0.9,
+              "lintels": 0.3,
+              "cornice": 0.6,
+              "courses": 0.1,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.9
+          }
+        },
+        {
+          "weight": 1,
+          "heightMin": 8,
+          "heightMax": 14,
+          "frontageMin": 4,
+          "frontageMax": 6.5,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "crownShape": "plain",
+            "wallHex": "#765044",
+            "frameHex": "#dfd8c6",
+            "groundWallHex": "#c9c4b4",
+            "windowWidth": 0.64,
+            "windowHeight": 0.72,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": false,
+            "sash": "six-over-six",
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1,
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "trim": {
+              "frames": 0.9,
+              "lintels": 0.3,
+              "cornice": 0.6,
+              "courses": 0.1,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.9
+          }
+        }
+      ]
+    }
+  ],
+  "sourceManifest": "artifacts/street-appearance/retry/7/source/manifest.json",
+  "sourceManifestSha256": "030e36fe8a31acc8ee8f153c6731ffc08c02352c2ae6c84bcc26d7c1ed39a273"
+}

@@ -1,0 +1,24 @@
+# Sketchfab reference review
+
+Reviewed model preview images on 2026-10-04, following the user's search link. These are visual composition references, not surveyed evidence or geometry inputs. No meshes or texture pixels were imported into game assets. The municipal photographs remain the authority for local street profiles.
+
+## Useful observations
+
+- [Dutch Canal House, kliekie](https://sketchfab.com/3d-models/dutch-canal-house-d5913406d78a4028a4cec975d3b7d7bd): pale bands, window surrounds, plinth and gable edging read as one coordinated trim system. The preview has a decorative front and a much plainer side. Its description identifies Herengracht 203 and a 964-triangle game asset, a useful example of economical silhouette and contrast.
+- [Dutch Canals House Amsterdam #1, ustoopia](https://sketchfab.com/3d-models/dutch-canals-house-amsterdam-1-e81a1b1f7fa54214983fa884fde76b46): the lintel arch sits above rectangular glazing. The facade narrows from three windows to two to one through the stepped crown; a raised entrance and basement create a distinct ground-floor rhythm. Light and dark nested frames, projecting sills and a hoist beam provide depth cues.
+- [Dutch Canals House Amsterdam #2, ustoopia](https://sketchfab.com/3d-models/dutch-canals-house-amsterdam-2-8988f7b5ca374bc5a1ef9e93153ed542): a wider frontage has paired crowns and a shared cornice. Here the openings themselves are arched, unlike #1. Doorways and lower windows share upper axes but vary their heights. These are distinct joint recipes, not interchangeable arch decoration.
+- [Tiny Amsterdam Street v1, Jungle Jim](https://sketchfab.com/3d-models/tiny-amsterdam-street-v1-e69e7064ee2e4279a7452bbaac01c278): neighboring houses share tall repeated openings and pale contrast while changing width, brick colour, crown and cornice height. The preview supports local palette mixtures and correlated detail rather than making every building equally ornate. Its apparent surface distortion makes it unsuitable as dimensional evidence.
+
+## Relation to this implementation
+
+The pilot adds coordinated pale trim, bounded opening proportions, separate decorative lintels, joint palette recipes and stratified street mixtures. It preserves the existing roof generator and surveyed roofs; these preview images do not justify changing local roof geometry. Existing components already provide cornices, sills, stoops, door surrounds and hoist beams, but their placement is not yet inferred as a unified street-specific ground-floor or crown recipe.
+
+Useful follow-up: extend municipal extraction to ground-floor entrance/basement patterns and crown frequencies, with conservative admission and independent held-out review. Couple their placement to actual opening axes and roof compatibility. Avoid transferring a generic ornate canal-house template onto Overtoom or modern residential blocks.
+
+Only previews were inspected, so hidden geometry, topology and materials were not audited. Cached previews and their source URLs are in `artifacts/street-appearance/sketchfab-references/` for this review; they are not runtime assets.
+
+## Retry: construction date versus visible historic/modern transition
+
+The 2020 municipal `bethanienstraat-holdout-1-13` crop visibly places a brown historic-looking crown beside pale modern stacked balconies. Read-only horizontal ray tests using the crop's complete perspective basis (heading 206.8568°, pitch 35°, horizontal FOV 110°, municipal camera position) place upper-left pixels (80–380, 200) on neighboring BAG `0363100012178531` (recorded construction year 1992, 9.81 m height, approximately 4.65 m exposed run) and the modern center (480–600, 200) on BAG `0363100012178208` (1992, 12.69 m height, approximately 9.3 m run). Mid/lower historic-looking pixels partly intersect the latter outline. These footprint intersections establish a source-year/visible-character ambiguity, not a measured boundary for retained historic fabric: camera-position uncertainty or changed/merged cadastral outlines could contribute.
+
+Training `bethaniendwarsstraat-right-38` independently shows the modern stack on BAG 8208's other front beside genuinely older BAG 8207 (recorded 1689). The evidence therefore supports a shared modern joint assembly and an historic/modern transition, but does not justify converting the showcased 1992 identity to an historic family or inventing an exact mixed-front split. Current recipe allocation operates per exposed run and construction eligibility; a genuinely mixed architectural run would require a source-supported subfront grammar that is presently unavailable. Synthetic facadeStyle/monumentGable decorations are not independent evidence. The transition remains uncertain and must not pass solely because balcony/window repairs improve the central modern view.

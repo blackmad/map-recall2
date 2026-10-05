@@ -13,7 +13,7 @@ import { bayDoorGeometry, bayDoorWindowGeometry, bayWindowGeometry, type BayVari
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
 
-export type OpeningRow = { axes: number[]; width: number; sill: number; head: number; arch?: boolean };
+export type OpeningRow = { axes: number[]; width: number; widths?: number[]; sill: number; head: number; arch?: boolean };
 export type DoorOpening = { axis: number; width: number; bottom: number; top: number; fanlight: boolean };
 export type Openings = {
   upper: OpeningRow;
@@ -52,6 +52,19 @@ export function bayVariantOpenings(v: BayVariant, look: Look = 'photo'): Opening
   const dw = bayDoorWindowGeometry(v, look), dg = bayDoorGeometry(v);
   const doorWindow = { ...rowPx(1, dw.y, dw.height, GROUND_H, dw.width), axes: [dw.axis] };
   const door = { axis: (dg.x + dg.width / 2) / BAY_W, width: dg.width / BAY_W, bottom: dg.bottom / GROUND_H, top: (dg.bottom + dg.height) / GROUND_H, fanlight: dg.fanlight };
+  if(v.entranceAssembly==='raised-plain'){
+    const ground={axes:[.20,.47,.80],width:dw.width/BAY_W,sill:(GROUND_H-dw.y-dw.height)/GROUND_H,head:(GROUND_H-dw.y)/GROUND_H};
+    return {upper:{...upper,axes:[.20,.47,.80]},ground,doorWindow:{...ground,axes:[.20,.47]},door};
+  }
+  if(v.entranceAssembly==='raised-pilaster'){
+    const ground={axes:[.53,.80],width:dw.width/BAY_W,sill:(GROUND_H-dw.y-dw.height)/GROUND_H,head:(GROUND_H-dw.y)/GROUND_H};
+    return {upper:{...upper,axes:[.205,.53,.80]},ground:row(v.windows,70,150,GROUND_H),doorWindow:ground,door};
+  }
+  if(v.facadeAssembly==='stacked-open-balcony'){
+    const group={axes:[.17,.5,.83],width:.145,widths:[.145,.28,.145]};
+    const ground={...row(v.windows,70,240,GROUND_H),...group};
+    return {upper:{...upper,...group},ground,doorWindow:{...ground,axes:[.17,.83],widths:[.145,.145]},door};
+  }
   return { upper, ground: row(v.windows, 70, 150, GROUND_H), doorWindow, door };
 }
 

@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "revision": "44fb4363499779ec",
+  "origin": {
+    "lng": 4.9,
+    "lat": 52.37
+  },
+  "sources": [
+    {
+      "file": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+      "sha256": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4"
+    },
+    {
+      "file": "public/data/extracts/amsterdam/building-facts/14/8414/5384.json.gz",
+      "sha256": "3b7df2ccc54bfde567aef0cef9039d6612d8a4e1052e2022d7dfbca9c5a0a8ed"
+    }
+  ],
+  "admissionInputs": [
+    {
+      "file": "public/data/extracts/amsterdam/streets-routing.json",
+      "sha256": "1eebf0b2d9a8b731f62b8ca85e4278a825d0f2aa7f2a2bd158d23304fe09d706"
+    },
+    {
+      "file": "public/canal-drive/models/signature-landmarks.json",
+      "sha256": "f4a375f5ca56102c8514795c6147db6c47c57d0b191d6eff45eebfe6744de7da"
+    },
+    {
+      "file": "scripts/street-appearance/bake-frontages.ts",
+      "sha256": "49436a378aa488396adcde5ab96725006c65b66e622dd8f8efd7b3cb512de7bc"
+    },
+    {
+      "file": "src/canalRecall/streetAppearance.ts",
+      "sha256": "a44c6ac5be086aebbbddde4bcd8008989ce2392c48abd3539360e30276440421"
+    },
+    {
+      "file": "src/canalRecall/streetFacadeRendering.ts",
+      "sha256": "4f815b29e58bf2ea6a961dbb994e2830cc871462d9bca1340ba73b467778e6cf"
+    },
+    {
+      "file": "src/canalRecall/threeBuildingFeatures.ts",
+      "sha256": "bfa5da25f5c9fdb95758c79d964a9cedc2527db20f88ee12f1fafa4bd92e0c6e"
+    },
+    {
+      "file": "src/canalRecall/threeBuildingMesh.ts",
+      "sha256": "e6ffda1bf565586bd054f54dacc91a18f0b43c9c973447b0a0040d1837b08e9c"
+    },
+    {
+      "file": "src/canalRecall/genericFacades.ts",
+      "sha256": "eef9408957f60efbeb583346a60ee3bd57328d2caba0dab8101fe7cea1669cbd"
+    },
+    {
+      "file": "src/canalRecall/streetFronts.ts",
+      "sha256": "e3ab2f986c5863f84fe4f5663eb9d15988625809a2af893d00e7dec20934903b"
+    },
+    {
+      "file": "src/canalRecall/threeBuildingsBrowser.ts",
+      "sha256": "7ab335dd7caaafab07465b03fcb47abfd31cb4b42fb9423700f273fb397d5d7f"
+    },
+    {
+      "file": "src/canalRecall/streetCrown.ts",
+      "sha256": "e84e4c54425117b6fbc9ea7b9d3929fb1d206ae1598f5ce7da0969f7450f0d4e"
+    },
+    {
+      "file": "src/canalRecall/bayLook.ts",
+      "sha256": "212b78ddebf409e646d98a121c1cce128b3430c8ef54600f0a4ae9eaf9c78b10"
+    },
+    {
+      "file": "src/canalRecall/bayTextures.ts",
+      "sha256": "261b80a468bef7dc731e140af1db608ad11c5e2cfd2d84edaf0e2a26b73914a7"
+    },
+    {
+      "file": "src/canalRecall/facadeOrnaments.ts",
+      "sha256": "c1370d0a849fe6cdcae06e01496bf4e84f86746fcba5e88a1d094d590d89a80d"
+    },
+    {
+      "file": "src/canalRecall/facadeExtras.ts",
+      "sha256": "74e97d9a89f15ae0273cebfdc75d11b2d73bb55efc85aa6bfd0b199a04444991"
+    },
+    {
+      "file": "src/canalRecall/facadeOpenings.ts",
+      "sha256": "4bc6251cff7de996adc8f70149f730c979bccea76eb2c8b1b6d501fdf2124552"
+    },
+    {
+      "file": "src/canalRecall/facadeExtraCore.ts",
+      "sha256": "67afc712c5da35bf264a98ecdfd6022dfe3b383848bd680aa4cb6f6bc4db41fc"
+    },
+    {
+      "file": "src/canalRecall/facadeLayout.ts",
+      "sha256": "3cbdd581afd8b1b3abbc505d78b89873d70373ef654717aac69722bc838c8f8c"
+    },
+    {
+      "file": "src/canalRecall/sourceVisualRoof.ts",
+      "sha256": "a48419d462a3541d4c14a5dcb657e9f81f0bbc2e1dc2f84d04cfe58f76449970"
+    },
+    {
+      "file": "src/canalRecall/roofMesh.ts",
+      "sha256": "8653e1ff0a23a0eae87ddf6ce5a9039cba714ad735bb3e5f90cdda92476ac0b1"
+    }
+  ],
+  "streetFrontPathsSha256": "e4cea0fbcfebedd8ea2eecd95205f808b974a961ee01a23cb51889a20de775db",
+  "streetSegments": 18,
+  "neighborHaloM": 25,
+  "features": 103,
+  "exposedRuns": 7,
+  "assignments": 7,
+  "profiles": [
+    {
+      "id": "bethanienstraat-observed-historic-pair",
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178209",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.898409991352,
+              52.3716659895
+            ],
+            "end": [
+              4.898487008648,
+              52.3716420105
+            ],
+            "widthM": 5.867332
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178531",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.898348997406,
+              52.37168499685
+            ],
+            "end": [
+              4.898410002594,
+              52.37166600315
+            ],
+            "widthM": 4.647497
+          }
+        }
+      ],
+      "palette": {
+        "#765044": 1,
+        "#704b3e": 1
+      }
+    },
+    {
+      "id": "bethanienstraat-transition-context",
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178208",
+          "recipeIndex": 3
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178308",
+          "recipeIndex": 1
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178381",
+          "recipeIndex": 0
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178532",
+          "recipeIndex": 3
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178533",
+          "recipeIndex": 1
+        }
+      ],
+      "palette": {
+        "#c6baa3": 2,
+        "#744a3d": 2,
+        "#393b3e": 1
+      }
+    }
+  ],
+  "limits": "Approximate recipes allocated by genuine building identity across complete surveyed street-side cohorts; not per-building photo matching. Neighbor halo retains shared-wall suppression. Source colors and curated identities remain authoritative."
+}

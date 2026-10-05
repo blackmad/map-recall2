@@ -1,11 +1,11 @@
 {
   "version": 1,
   "updatedOn": "2026-10-05",
-  "status": "planned",
+  "status": "bounded-repair-reviewed-next-row-observing",
   "goal": "Recognizable canal-street rhythm from reusable building recipes, not exact reconstruction of every photographed facade.",
   "sourceSnapshot": "records.json.gz",
   "sourceArchiveRepo": "https://github.com/blackmad/map-recall2-source-data",
-  "sourceArchiveState": "Repository created; await and follow its ingestion instructions before transferring raw generations.",
+  "sourceArchiveState": "Raw register, source panoramas, processed crops and original pilot cache archived and pushed; private source commit 54330af.",
   "discoveryFindings": {
     "scope": "RCE record-level literal mentions; overlapping categories, historical assertions and monument-biased sample, not district frequencies.",
     "halsgevel": 1319,
@@ -78,5 +78,3640 @@
       }
     ],
     "use": "Prioritize shared components and source sampling. Do not apply ratios to all buildings or interpret absent words as absent features."
+  },
+  "sourceArchiveCommit": "dc12af4",
+  "currentReview": {
+    "scope": "Bethaniënstraat short historic-modern transition only",
+    "cycles": [
+      {
+        "cycle": 12,
+        "decision": "rejected: incidental balconies contradict source"
+      },
+      {
+        "cycle": 13,
+        "decision": "bounded visual improvement with unsupported dressing"
+      },
+      {
+        "cycle": 14,
+        "decision": "Bounded native and desktop game pass; final scoped revision44fb4363499779ec, no city expansion."
+      }
+    ],
+    "evidence": "artifacts/street-appearance/retry/14/release-review.json",
+    "publication": {
+      "revision": "44fb4363499779ec",
+      "profiles": [
+        "bethanienstraat-transition-context",
+        "bethanienstraat-observed-historic-pair"
+      ],
+      "game": "artifacts/street-appearance/retry/14/release-game/report.json",
+      "limits": "Desktop stationary rider scene; route reachability, touch performance and district completion withheld."
+    }
+  },
+  "nextCanalRow": {
+    "segment": [
+      [
+        4.89949,
+        52.3746
+      ],
+      [
+        4.898626,
+        52.373866
+      ]
+    ],
+    "side": 1,
+    "lengthM": 100.15434367413077,
+    "nativeRoutingPath": {
+      "id": "routing_4398",
+      "name": "Oudezijds Voorburgwal",
+      "type": "street",
+      "cityId": "amsterdam",
+      "center": [
+        52.373912,
+        4.898671
+      ],
+      "highway": "residential",
+      "path": [
+        [
+          52.372627,
+          4.897051
+        ],
+        [
+          52.373084,
+          4.897619
+        ],
+        [
+          52.373522,
+          4.898186
+        ],
+        [
+          52.373841,
+          4.898596
+        ],
+        [
+          52.373878,
+          4.898636
+        ],
+        [
+          52.373912,
+          4.898671
+        ],
+        [
+          52.374076,
+          4.898885
+        ],
+        [
+          52.374183,
+          4.899022
+        ],
+        [
+          52.374314,
+          4.899176
+        ],
+        [
+          52.374698,
+          4.899598
+        ]
+      ]
+    },
+    "sources": [
+      {
+        "file": "public/data/extracts/amsterdam/streets-routing.json",
+        "sha256": "1eebf0b2d9a8b731f62b8ca85e4278a825d0f2aa7f2a2bd158d23304fe09d706"
+      },
+      {
+        "file": "public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz",
+        "sha256": "3c24dd3f6e39e563dee05096394ccfe5205c3af00b12ab29ac7e1ed2c55861e4"
+      },
+      {
+        "file": "public/data/extracts/amsterdam/building-facts/14/8413/5383.json.gz",
+        "sha256": "65376bd851b35bcc8885d46f9316ca9dfb78159cadf1d63a3c863f6ef83c6382"
+      },
+      {
+        "file": "public/data/extracts/amsterdam/building-tiles/14/8413/5384.geojson.gz",
+        "sha256": "2bf316480b3a71cfad0d813cba5f439a401f20e1badcb559b115f02af3b880d6"
+      },
+      {
+        "file": "public/data/extracts/amsterdam/building-facts/14/8413/5384.json.gz",
+        "sha256": "0624a9caef4e83b5996aceb58da91ee8025f60f17e9343daa67bbe3a774fe089"
+      },
+      {
+        "file": "public/data/extracts/amsterdam/building-tiles/14/8414/5383.geojson.gz",
+        "sha256": "8a32974008ea1339ba2e3c44a214d6fd33e4950706655949ca89e8bb6d712f48"
+      },
+      {
+        "file": "public/data/extracts/amsterdam/building-facts/14/8414/5383.json.gz",
+        "sha256": "0156e8b35e367ec7e20ee54ebd6ecad9af248b25468bc3c925fd3adc7b684037"
+      },
+      {
+        "file": "public/data/extracts/amsterdam/building-tiles/14/8414/5384.geojson.gz",
+        "sha256": "1989e17f71e01244ef6db88449dfc0ee86b567124dada97ced783cc31fba3ff4"
+      },
+      {
+        "file": "public/data/extracts/amsterdam/building-facts/14/8414/5384.json.gz",
+        "sha256": "3b7df2ccc54bfde567aef0cef9039d6612d8a4e1052e2022d7dfbca9c5a0a8ed"
+      }
+    ],
+    "method": "Native polygon boundary rays: SegmentGrid and streetDistance use actual routing_4398, 25m grid, all neighboring native walls as blockers, 32m ray reach; retain street-facing exterior runs crossing along interval on east-bank side, depth under20m. Corners crossing endpoints retained.",
+    "inventory": [
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177996",
+        "heightM": 14.13,
+        "facts": [
+          1701,
+          -1,
+          0
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899577,
+                52.374609
+              ],
+              [
+                4.899577,
+                52.374608
+              ],
+              [
+                4.899538,
+                52.374574
+              ],
+              [
+                4.899755,
+                52.374494
+              ],
+              [
+                4.899793,
+                52.374531
+              ],
+              [
+                4.899577,
+                52.374609
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899577,
+              52.374608
+            ],
+            "end": [
+              4.899538,
+              52.374574
+            ],
+            "widthM": 4.598934177544172,
+            "alongStartM": -4.182775793687675,
+            "alongEndM": 0.415814300674916,
+            "normal": [
+              -0.8172241338629513,
+              0.5763199762562019
+            ],
+            "streetDistanceM": 4.268860583227422
+          }
+        ],
+        "alongM": -4.182775793687675,
+        "explicitSourceCoverage": {
+          "municipal": [],
+          "rce": []
+        },
+        "sourceDescriptions": [],
+        "sourceAssertions": [],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-unmatched ordinary candidate; modern status unknown",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 4.598934177544172
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177982",
+        "heightM": 14.88,
+        "facts": [
+          1753,
+          -1,
+          2,
+          {
+            "f": 0
+          }
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899539,
+                52.374574
+              ],
+              [
+                4.8995,
+                52.374538
+              ],
+              [
+                4.899719,
+                52.374458
+              ],
+              [
+                4.899755,
+                52.374494
+              ],
+              [
+                4.899539,
+                52.374574
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899539,
+              52.374574
+            ],
+            "end": [
+              4.8995,
+              52.374538
+            ],
+            "widthM": 4.781304047554856,
+            "alongStartM": 0.375970893176122,
+            "alongEndM": 5.153660823144795,
+            "normal": [
+              -0.8322917682255733,
+              0.5543378144633008
+            ],
+            "streetDistanceM": 4.309297772046433
+          }
+        ],
+        "alongM": 0.375970893176122,
+        "explicitSourceCoverage": {
+          "municipal": [
+            {
+              "id": "11fef85d-a15a-453f-9e3f-329e72f5578b",
+              "number": "6036",
+              "status": "Rijksmonument",
+              "address": "Oudezijds Voorburgwal 39",
+              "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/11fef85d-a15a-453f-9e3f-329e72f5578b?_format=json",
+              "explicitPandLinks": [
+                {
+                  "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012177982?_format=json&volgnummer=4",
+                  "title": "0363100012177982",
+                  "identificatie": "0363100012177982",
+                  "volgnummer": 4,
+                  "beginGeldigheid": "2023-09-28T02:00:00"
+                }
+              ]
+            }
+          ],
+          "rce": [
+            {
+              "number": "6036",
+              "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6036",
+              "bagPandIds": [],
+              "bagVboIds": [],
+              "join": "municipal explicit Rijksmonument-number bridge; no spatial join"
+            }
+          ]
+        },
+        "sourceDescriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194690",
+            "text": "Pand met gevel onder rechte lijst (negentiende eeuw). Op de verdiepingen empire roedenverdeling.",
+            "language": null,
+            "register": "rce",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6036",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ]
+          }
+        ],
+        "sourceAssertions": [
+          {
+            "part": "crown",
+            "trait": "cornice",
+            "verbatim": "Pand met gevel onder rechte lijst (negentiende eeuw).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6036",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194690",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "muntins/transoms",
+            "verbatim": "Op de verdiepingen empire roedenverdeling.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6036",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194690",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          }
+        ],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-supported architectural traits, current survival unreviewed",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 4.781304047554856
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177981",
+        "heightM": 18.15,
+        "facts": [
+          1735,
+          -1,
+          2,
+          {
+            "f": 0
+          }
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.8995,
+                52.374538
+              ],
+              [
+                4.899461,
+                52.374501
+              ],
+              [
+                4.899592,
+                52.374453
+              ],
+              [
+                4.899615,
+                52.374476
+              ],
+              [
+                4.899642,
+                52.374466
+              ],
+              [
+                4.899619,
+                52.374443
+              ],
+              [
+                4.89968,
+                52.37442
+              ],
+              [
+                4.899719,
+                52.374458
+              ],
+              [
+                4.8995,
+                52.374538
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.8995,
+              52.374538
+            ],
+            "end": [
+              4.899461,
+              52.374501
+            ],
+            "widthM": 4.873690806741609,
+            "alongStartM": 5.153660823144795,
+            "alongEndM": 10.020900670598367,
+            "normal": [
+              -0.8391956244386504,
+              0.543829664438254
+            ],
+            "streetDistanceM": 4.357160961837336
+          },
+          {
+            "start": [
+              4.899642,
+              52.374466
+            ],
+            "end": [
+              4.899619,
+              52.374443
+            ],
+            "widthM": 2.9844850571667516,
+            "alongStartM": 5.943491034550689,
+            "alongEndM": 8.919537514124332,
+            "normal": [
+              -0.8518789510301863,
+              0.5237387256941282
+            ],
+            "streetDistanceM": 16.8325902267711
+          }
+        ],
+        "alongM": 5.153660823144795,
+        "explicitSourceCoverage": {
+          "municipal": [
+            {
+              "id": "3bc9f7e7-9ed6-4b65-928c-92a7372eecd2",
+              "number": "6037",
+              "status": "Rijksmonument",
+              "address": "Oudezijds Voorburgwal 41",
+              "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/3bc9f7e7-9ed6-4b65-928c-92a7372eecd2?_format=json",
+              "explicitPandLinks": [
+                {
+                  "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012177981?_format=json&volgnummer=4",
+                  "title": "0363100012177981",
+                  "identificatie": "0363100012177981",
+                  "volgnummer": 4,
+                  "beginGeldigheid": "2023-09-28T02:00:00"
+                }
+              ]
+            }
+          ],
+          "rce": [
+            {
+              "number": "6037",
+              "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6037",
+              "bagPandIds": [
+                "0363100012177981"
+              ],
+              "bagVboIds": [
+                "0363010012118872",
+                "0363010012158302",
+                "0363010012158303",
+                "0363010012158304",
+                "0363010012158305",
+                "0363010012158306"
+              ],
+              "join": "explicit RCE Pand predicate"
+            }
+          ]
+        },
+        "sourceDescriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232824",
+            "text": "Pand met gevel onder verhoogde gesneden lijst, (tweede kwart achttiende eeuw).",
+            "language": null,
+            "register": "rce",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6037",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ]
+          }
+        ],
+        "sourceAssertions": [
+          {
+            "part": "crown",
+            "trait": "cornice",
+            "verbatim": "Pand met gevel onder verhoogde gesneden lijst, (tweede kwart achttiende eeuw).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6037",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232824",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          }
+        ],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-supported architectural traits, current survival unreviewed",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 7.858175863908361
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177980",
+        "heightM": 14.86,
+        "facts": [
+          1725,
+          11,
+          2,
+          {
+            "f": 0
+          }
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899461,
+                52.374501
+              ],
+              [
+                4.899424,
+                52.374466
+              ],
+              [
+                4.899644,
+                52.374384
+              ],
+              [
+                4.89968,
+                52.37442
+              ],
+              [
+                4.899461,
+                52.374501
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899461,
+              52.374501
+            ],
+            "end": [
+              4.899424,
+              52.374466
+            ],
+            "widthM": 4.6142477380256155,
+            "alongStartM": 10.020900670598367,
+            "alongEndM": 14.629353868084559,
+            "normal": [
+              -0.8384682011239531,
+              0.5449505259231904
+            ],
+            "streetDistanceM": 4.447840232624078
+          }
+        ],
+        "alongM": 10.020900670598367,
+        "explicitSourceCoverage": {
+          "municipal": [
+            {
+              "id": "eb819462-4c55-48f0-95d6-37c707faa62f",
+              "number": "6038",
+              "status": "Rijksmonument",
+              "address": "Oudezijds Voorburgwal 43",
+              "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/eb819462-4c55-48f0-95d6-37c707faa62f?_format=json",
+              "explicitPandLinks": [
+                {
+                  "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012177980?_format=json&volgnummer=4",
+                  "title": "0363100012177980",
+                  "identificatie": "0363100012177980",
+                  "volgnummer": 4,
+                  "beginGeldigheid": "2023-09-28T02:00:00"
+                }
+              ]
+            }
+          ],
+          "rce": [
+            {
+              "number": "6038",
+              "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6038",
+              "bagPandIds": [],
+              "bagVboIds": [],
+              "join": "municipal explicit Rijksmonument-number bridge; no spatial join"
+            }
+          ]
+        },
+        "sourceDescriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232825",
+            "text": "Pand met halsgevel (XVIIIb, top verlaagd). Versierde stoep uit de bouwtijd, empire deur, kalf en roedenverdeling op de verdiepingen. Stucgang uit de bouwtijd.",
+            "language": null,
+            "register": "rce",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6038",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ]
+          }
+        ],
+        "sourceAssertions": [
+          {
+            "part": "crown",
+            "trait": "neck",
+            "verbatim": "Pand met halsgevel (XVIIIb, top verlaagd).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6038",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232825",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "muntins/transoms",
+            "verbatim": "Versierde stoep uit de bouwtijd, empire deur, kalf en roedenverdeling op de verdiepingen.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6038",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232825",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "ground",
+            "trait": "door/shopfront/stoop",
+            "verbatim": "Versierde stoep uit de bouwtijd, empire deur, kalf en roedenverdeling op de verdiepingen.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6038",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232825",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          }
+        ],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-supported architectural traits, current survival unreviewed",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 4.6142477380256155
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177968",
+        "heightM": 16.4,
+        "facts": [
+          1960,
+          -1,
+          2,
+          {
+            "f": 0
+          }
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899585,
+                52.374356
+              ],
+              [
+                4.899651,
+                52.374333
+              ],
+              [
+                4.899686,
+                52.374369
+              ],
+              [
+                4.899424,
+                52.374466
+              ],
+              [
+                4.899408,
+                52.374472
+              ],
+              [
+                4.899395,
+                52.374459
+              ],
+              [
+                4.899411,
+                52.374453
+              ],
+              [
+                4.899384,
+                52.374428
+              ],
+              [
+                4.899539,
+                52.374373
+              ],
+              [
+                4.899564,
+                52.3744
+              ],
+              [
+                4.89961,
+                52.374384
+              ],
+              [
+                4.899585,
+                52.374356
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899408,
+              52.374472
+            ],
+            "end": [
+              4.899395,
+              52.374459
+            ],
+            "widthM": 1.6868828580577528,
+            "alongStartM": 14.729548881777138,
+            "alongEndM": 16.41166210903949,
+            "normal": [
+              -0.8518789509593858,
+              0.5237387258092878
+            ],
+            "streetDistanceM": 3.2577948864189383
+          },
+          {
+            "start": [
+              4.899411,
+              52.374453
+            ],
+            "end": [
+              4.899384,
+              52.374428
+            ],
+            "widthM": 3.3172139611331652,
+            "alongStartM": 16.311467095346913,
+            "alongEndM": 19.625987040486432,
+            "normal": [
+              -0.8330786112897351,
+              0.5531546143815183
+            ],
+            "streetDistanceM": 4.5881997485924435
+          }
+        ],
+        "alongM": 14.729548881777138,
+        "explicitSourceCoverage": {
+          "municipal": [
+            {
+              "id": "779c902e-dedb-4aad-aeb3-448bcd8a6737",
+              "number": "6039",
+              "status": "Rijksmonument",
+              "address": "Oudezijds Voorburgwal 45",
+              "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/779c902e-dedb-4aad-aeb3-448bcd8a6737?_format=json",
+              "explicitPandLinks": [
+                {
+                  "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012177968?_format=json&volgnummer=4",
+                  "title": "0363100012177968",
+                  "identificatie": "0363100012177968",
+                  "volgnummer": 4,
+                  "beginGeldigheid": "2023-09-28T02:00:00"
+                }
+              ]
+            }
+          ],
+          "rce": [
+            {
+              "number": "6039",
+              "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6039",
+              "bagPandIds": [],
+              "bagVboIds": [
+                "0363010000759407",
+                "0363010000990378",
+                "0363010000990379",
+                "0363010000990380",
+                "0363010000990381",
+                "0363010000990382",
+                "0363010000990383",
+                "0363010000990384",
+                "0363010000990385",
+                "0363010001016048"
+              ],
+              "join": "municipal explicit Rijksmonument-number bridge; no spatial join"
+            }
+          ]
+        },
+        "sourceDescriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232827",
+            "text": "Pand met gevel onder verhoogde gesneden lijst met kuifstuk, (XVIIIb). Versierde stoep uit de bouwtijd. Empire deur, kalf, snijraam met lantaarn en roedenverdeling.",
+            "language": null,
+            "register": "rce",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6039",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ]
+          }
+        ],
+        "sourceAssertions": [
+          {
+            "part": "crown",
+            "trait": "cornice",
+            "verbatim": "Pand met gevel onder verhoogde gesneden lijst met kuifstuk, (XVIIIb).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6039",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232827",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "crown-detail",
+            "trait": "crest/festoons/consoles",
+            "verbatim": "Pand met gevel onder verhoogde gesneden lijst met kuifstuk, (XVIIIb).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6039",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232827",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "ground",
+            "trait": "door/shopfront/stoop",
+            "verbatim": "Versierde stoep uit de bouwtijd.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6039",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232827",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "muntins/transoms",
+            "verbatim": "Empire deur, kalf, snijraam met lantaarn en roedenverdeling.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6039",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232827",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "ground",
+            "trait": "door/shopfront/stoop",
+            "verbatim": "Empire deur, kalf, snijraam met lantaarn en roedenverdeling.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6039",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232827",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          }
+        ],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-supported architectural traits, current survival unreviewed",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 5.004096819190918
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177975",
+        "heightM": 12.94,
+        "facts": [
+          1711,
+          -1,
+          0
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899385,
+                52.374427
+              ],
+              [
+                4.899349,
+                52.374393
+              ],
+              [
+                4.899544,
+                52.374323
+              ],
+              [
+                4.899578,
+                52.374359
+              ],
+              [
+                4.899385,
+                52.374427
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899385,
+              52.374427
+            ],
+            "end": [
+              4.899349,
+              52.374393
+            ],
+            "widthM": 4.484529560596023,
+            "alongStartM": 19.67569355114421,
+            "alongEndM": 24.15475342301042,
+            "normal": [
+              -0.8380722992573495,
+              0.5455591821402143
+            ],
+            "streetDistanceM": 4.746178353521432
+          }
+        ],
+        "alongM": 19.67569355114421,
+        "explicitSourceCoverage": {
+          "municipal": [],
+          "rce": []
+        },
+        "sourceDescriptions": [],
+        "sourceAssertions": [],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-unmatched ordinary candidate; modern status unknown",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 4.484529560596023
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177969",
+        "heightM": 15.03,
+        "facts": [
+          1752,
+          -1,
+          2,
+          {
+            "f": 0
+          }
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899342,
+                52.374387
+              ],
+              [
+                4.899326,
+                52.374393
+              ],
+              [
+                4.899315,
+                52.374381
+              ],
+              [
+                4.89933,
+                52.374375
+              ],
+              [
+                4.899308,
+                52.374354
+              ],
+              [
+                4.899493,
+                52.374291
+              ],
+              [
+                4.899504,
+                52.374303
+              ],
+              [
+                4.899532,
+                52.374294
+              ],
+              [
+                4.899548,
+                52.374311
+              ],
+              [
+                4.899342,
+                52.374387
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899326,
+              52.374393
+            ],
+            "end": [
+              4.899315,
+              52.374381
+            ],
+            "widthM": 1.522630152285861,
+            "alongStartM": 25.071151795341127,
+            "alongEndM": 26.584028290156386,
+            "normal": [
+              -0.8711767580599312,
+              0.4909695064015565
+            ],
+            "streetDistanceM": 3.5505254784246314
+          },
+          {
+            "start": [
+              4.89933,
+              52.374375
+            ],
+            "end": [
+              4.899308,
+              52.374354
+            ],
+            "widthM": 2.761165145441574,
+            "alongStartM": 26.523676683927214,
+            "alongEndM": 29.280779921032273,
+            "normal": [
+              -0.8407103082026685,
+              0.5414851592442533
+            ],
+            "streetDistanceM": 4.863465665308419
+          }
+        ],
+        "alongM": 25.071151795341127,
+        "explicitSourceCoverage": {
+          "municipal": [
+            {
+              "id": "c2a464a2-b363-495d-9abe-b5ddf7387a75",
+              "number": "6040",
+              "status": "Rijksmonument",
+              "address": "Oudezijds Voorburgwal 49",
+              "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/c2a464a2-b363-495d-9abe-b5ddf7387a75?_format=json",
+              "explicitPandLinks": [
+                {
+                  "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012177969?_format=json&volgnummer=4",
+                  "title": "0363100012177969",
+                  "identificatie": "0363100012177969",
+                  "volgnummer": 4,
+                  "beginGeldigheid": "2023-09-28T02:00:00"
+                }
+              ]
+            }
+          ],
+          "rce": [
+            {
+              "number": "6040",
+              "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6040",
+              "bagPandIds": [
+                "0363100012177969"
+              ],
+              "bagVboIds": [
+                "0363010000980395",
+                "0363010000980396",
+                "0363010000980397",
+                "0363010000980398",
+                "0363010000980399"
+              ],
+              "join": "explicit RCE Pand predicate"
+            }
+          ]
+        },
+        "sourceDescriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194691",
+            "text": "Pand met gevel, (XVIIIb) onder rechte lijst en dakvoorschot (XIX). Pui, versierde stoep en gesneden deur XVIIIb). Goede late roedenverdeling.",
+            "language": null,
+            "register": "rce",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6040",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ]
+          }
+        ],
+        "sourceAssertions": [
+          {
+            "part": "crown",
+            "trait": "cornice",
+            "verbatim": "Pand met gevel, (XVIIIb) onder rechte lijst en dakvoorschot (XIX).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6040",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194691",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "ground",
+            "trait": "door/shopfront/stoop",
+            "verbatim": "Pui, versierde stoep en gesneden deur XVIIIb).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6040",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194691",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "muntins/transoms",
+            "verbatim": "Goede late roedenverdeling.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6040",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194691",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          }
+        ],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-supported architectural traits, current survival unreviewed",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 4.283795297727435
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177976",
+        "heightM": 14.58,
+        "facts": [
+          1693,
+          -1,
+          0
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.8995,
+                52.374242
+              ],
+              [
+                4.899539,
+                52.374229
+              ],
+              [
+                4.899571,
+                52.374264
+              ],
+              [
+                4.899308,
+                52.374354
+              ],
+              [
+                4.899272,
+                52.374321
+              ],
+              [
+                4.899271,
+                52.374321
+              ],
+              [
+                4.89943,
+                52.374266
+              ],
+              [
+                4.899453,
+                52.374292
+              ],
+              [
+                4.899524,
+                52.374268
+              ],
+              [
+                4.8995,
+                52.374242
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899308,
+              52.374354
+            ],
+            "end": [
+              4.899272,
+              52.374321
+            ],
+            "widthM": 4.392303067785154,
+            "alongStartM": 29.280779921032273,
+            "alongEndM": 33.67028987481268,
+            "normal": [
+              -0.8305028007253036,
+              0.5570144504296336
+            ],
+            "streetDistanceM": 4.911579650095298
+          }
+        ],
+        "alongM": 29.280779921032273,
+        "explicitSourceCoverage": {
+          "municipal": [],
+          "rce": []
+        },
+        "sourceDescriptions": [],
+        "sourceAssertions": [],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-unmatched ordinary candidate; modern status unknown",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 4.392303067785154
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177972",
+        "heightM": 13.7,
+        "facts": [
+          1756,
+          -1,
+          0
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899271,
+                52.374321
+              ],
+              [
+                4.89927,
+                52.374321
+              ],
+              [
+                4.899256,
+                52.374327
+              ],
+              [
+                4.899242,
+                52.374315
+              ],
+              [
+                4.899257,
+                52.374309
+              ],
+              [
+                4.899234,
+                52.374289
+              ],
+              [
+                4.899381,
+                52.374238
+              ],
+              [
+                4.899397,
+                52.374254
+              ],
+              [
+                4.899433,
+                52.374241
+              ],
+              [
+                4.899417,
+                52.374225
+              ],
+              [
+                4.899474,
+                52.374205
+              ],
+              [
+                4.899507,
+                52.37424
+              ],
+              [
+                4.899271,
+                52.374321
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899256,
+              52.374327
+            ],
+            "end": [
+              4.899242,
+              52.374315
+            ],
+            "widthM": 1.6324213029733654,
+            "alongStartM": 33.77048488850526,
+            "alongEndM": 35.40289160578151,
+            "normal": [
+              -0.8125843477885185,
+              0.5828436134411253
+            ],
+            "streetDistanceM": 3.6175933564016596
+          },
+          {
+            "start": [
+              4.899257,
+              52.374309
+            ],
+            "end": [
+              4.899234,
+              52.374289
+            ],
+            "widthM": 2.707561308735108,
+            "alongStartM": 35.342540000188635,
+            "alongEndM": 38.0499367267067,
+            "normal": [
+              -0.8165281402064074,
+              0.5773056350418426
+            ],
+            "streetDistanceM": 4.778678075904648
+          }
+        ],
+        "alongM": 33.77048488850526,
+        "explicitSourceCoverage": {
+          "municipal": [],
+          "rce": []
+        },
+        "sourceDescriptions": [],
+        "sourceAssertions": [],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-unmatched ordinary candidate; modern status unknown",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 4.339982611708473
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177971",
+        "heightM": 15.98,
+        "facts": [
+          1706,
+          -1,
+          2,
+          {
+            "f": 0
+          }
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899389,
+                52.374235
+              ],
+              [
+                4.899234,
+                52.374289
+              ],
+              [
+                4.899209,
+                52.374269
+              ],
+              [
+                4.899194,
+                52.374276
+              ],
+              [
+                4.899181,
+                52.374265
+              ],
+              [
+                4.899196,
+                52.374259
+              ],
+              [
+                4.899468,
+                52.374163
+              ],
+              [
+                4.899499,
+                52.374196
+              ],
+              [
+                4.899434,
+                52.374219
+              ],
+              [
+                4.899415,
+                52.374199
+              ],
+              [
+                4.89937,
+                52.374215
+              ],
+              [
+                4.899389,
+                52.374235
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899234,
+              52.374289
+            ],
+            "end": [
+              4.899209,
+              52.374269
+            ],
+            "widthM": 2.788238880470088,
+            "alongStartM": 38.0499367267067,
+            "alongEndM": 40.83702026818695,
+            "normal": [
+              -0.7929019336906924,
+              0.6093492623689315
+            ],
+            "streetDistanceM": 4.7040022044117435
+          },
+          {
+            "start": [
+              4.899194,
+              52.374276
+            ],
+            "end": [
+              4.899181,
+              52.374265
+            ],
+            "widthM": 1.5030160949176712,
+            "alongStartM": 40.80782195629493,
+            "alongEndM": 42.310835348587496,
+            "normal": [
+              -0.8089999862166388,
+              0.5878086613018544
+            ],
+            "streetDistanceM": 3.3991585806681335
+          }
+        ],
+        "alongM": 38.0499367267067,
+        "explicitSourceCoverage": {
+          "municipal": [
+            {
+              "id": "bba47392-37cb-41dc-9256-8cd6062311ee",
+              "number": "6041",
+              "status": "Rijksmonument",
+              "address": "Oudezijds Voorburgwal 55",
+              "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/bba47392-37cb-41dc-9256-8cd6062311ee?_format=json",
+              "explicitPandLinks": [
+                {
+                  "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012177971?_format=json&volgnummer=4",
+                  "title": "0363100012177971",
+                  "identificatie": "0363100012177971",
+                  "volgnummer": 4,
+                  "beginGeldigheid": "2023-09-28T02:00:00"
+                }
+              ]
+            }
+          ],
+          "rce": [
+            {
+              "number": "6041",
+              "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6041",
+              "bagPandIds": [],
+              "bagVboIds": [
+                "0363010000759433"
+              ],
+              "join": "municipal explicit Rijksmonument-number bridge; no spatial join"
+            }
+          ]
+        },
+        "sourceDescriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232828",
+            "text": "Pand met halsgevel, (XVIIIb). Gesneden deur uit de bouwtijd; inwendig: stucgang uit de bouwtijd.",
+            "language": null,
+            "register": "rce",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6041",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ]
+          }
+        ],
+        "sourceAssertions": [
+          {
+            "part": "crown",
+            "trait": "neck",
+            "verbatim": "Pand met halsgevel, (XVIIIb).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6041",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232828",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "ground",
+            "trait": "door/shopfront/stoop",
+            "verbatim": "Gesneden deur uit de bouwtijd; inwendig: stucgang uit de bouwtijd.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6041",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/232828",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          }
+        ],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-supported architectural traits, current survival unreviewed",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 4.291254975387759
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177990",
+        "heightM": 16.33,
+        "facts": [
+          1615,
+          -1,
+          0
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899196,
+                52.374259
+              ],
+              [
+                4.899139,
+                52.374217
+              ],
+              [
+                4.89952,
+                52.374086
+              ],
+              [
+                4.8996,
+                52.374157
+              ],
+              [
+                4.899495,
+                52.374192
+              ],
+              [
+                4.899468,
+                52.374163
+              ],
+              [
+                4.899196,
+                52.374259
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899196,
+              52.374259
+            ],
+            "end": [
+              4.899139,
+              52.374217
+            ],
+            "widthM": 6.046518330213758,
+            "alongStartM": 42.25048374235833,
+            "alongEndM": 48.282654513381075,
+            "normal": [
+              -0.7678269950594426,
+              0.6406572450678962
+            ],
+            "streetDistanceM": 4.30841262286256
+          }
+        ],
+        "alongM": 42.25048374235833,
+        "explicitSourceCoverage": {
+          "municipal": [],
+          "rce": []
+        },
+        "sourceDescriptions": [],
+        "sourceAssertions": [],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-unmatched ordinary candidate; modern status unknown",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 6.046518330213758
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177989",
+        "heightM": 15.97,
+        "facts": [
+          1625,
+          -1,
+          0
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.89952,
+                52.374086
+              ],
+              [
+                4.899139,
+                52.374217
+              ],
+              [
+                4.899063,
+                52.37416
+              ],
+              [
+                4.899062,
+                52.37416
+              ],
+              [
+                4.899221,
+                52.374112
+              ],
+              [
+                4.899252,
+                52.37415
+              ],
+              [
+                4.89931,
+                52.37413
+              ],
+              [
+                4.899281,
+                52.374094
+              ],
+              [
+                4.899465,
+                52.374038
+              ],
+              [
+                4.89952,
+                52.374086
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899139,
+              52.374217
+            ],
+            "end": [
+              4.899063,
+              52.37416
+            ],
+            "widthM": 8.147207829867456,
+            "alongStartM": 48.282654513381075,
+            "alongEndM": 56.41509879222966,
+            "normal": [
+              -0.7733667940447326,
+              0.6339588329449884
+            ],
+            "streetDistanceM": 3.8285701843277415
+          }
+        ],
+        "alongM": 48.282654513381075,
+        "explicitSourceCoverage": {
+          "municipal": [],
+          "rce": []
+        },
+        "sourceDescriptions": [],
+        "sourceAssertions": [],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-unmatched ordinary candidate; modern status unknown",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 8.147207829867456
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177967",
+        "heightM": 13.02,
+        "facts": [
+          1994,
+          -1,
+          2
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899062,
+                52.37416
+              ],
+              [
+                4.899061,
+                52.374159
+              ],
+              [
+                4.899031,
+                52.374135
+              ],
+              [
+                4.899017,
+                52.374141
+              ],
+              [
+                4.898999,
+                52.374127
+              ],
+              [
+                4.899013,
+                52.37412
+              ],
+              [
+                4.899244,
+                52.374049
+              ],
+              [
+                4.899281,
+                52.374094
+              ],
+              [
+                4.899062,
+                52.37416
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.899062,
+              52.37416
+            ],
+            "end": [
+              4.899061,
+              52.374159
+            ],
+            "widthM": 0.12976022031867945,
+            "alongStartM": 56.45494219972844,
+            "alongEndM": 56.58433552534842,
+            "normal": [
+              -0.8518789520769228,
+              0.5237387239915757
+            ],
+            "streetDistanceM": 3.6872960802156522
+          },
+          {
+            "start": [
+              4.899061,
+              52.374159
+            ],
+            "end": [
+              4.899031,
+              52.374135
+            ],
+            "widthM": 3.3458866563076417,
+            "alongStartM": 56.58433552534842,
+            "alongEndM": 59.92883577486314,
+            "normal": [
+              -0.7929019336575703,
+              0.6093492624120308
+            ],
+            "streetDistanceM": 3.6835486898912357
+          },
+          {
+            "start": [
+              4.899017,
+              52.374141
+            ],
+            "end": [
+              4.898999,
+              52.374127
+            ],
+            "widthM": 1.9726570473213099,
+            "alongStartM": 59.94934397359352,
+            "alongEndM": 61.920224156435644,
+            "normal": [
+              -0.7845053462898698,
+              0.6201220538269957
+            ],
+            "streetDistanceM": 2.5516595346712267
+          }
+        ],
+        "alongM": 56.45494219972844,
+        "explicitSourceCoverage": {
+          "municipal": [
+            {
+              "id": "daecf941-9c7d-42e8-a81a-ac65afbfbb58",
+              "number": "6044",
+              "status": "Rijksmonument",
+              "address": "Oudezijds Voorburgwal 61",
+              "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/daecf941-9c7d-42e8-a81a-ac65afbfbb58?_format=json",
+              "explicitPandLinks": [
+                {
+                  "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012177967?_format=json&volgnummer=2",
+                  "title": "0363100012177967",
+                  "identificatie": "0363100012177967",
+                  "volgnummer": 2,
+                  "beginGeldigheid": "2023-09-28T02:00:00"
+                }
+              ]
+            }
+          ],
+          "rce": [
+            {
+              "number": "6044",
+              "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6044",
+              "bagPandIds": [
+                "0363100012177967"
+              ],
+              "bagVboIds": [
+                "0363010012145212",
+                "0363010012145213"
+              ],
+              "join": "explicit RCE Pand predicate"
+            }
+          ]
+        },
+        "sourceDescriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194693",
+            "text": "Pand met halsgevel, (tweede helft zeventiende eeuw). Festoenen. Geblokte deuromlijsting met getralied zijlicht (eerste helft negentiende eeuw); bovenlicht eerste helft negentiende eeuw. Empire roedenverdeling.",
+            "language": null,
+            "register": "rce",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6044",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ]
+          }
+        ],
+        "sourceAssertions": [
+          {
+            "part": "crown",
+            "trait": "neck",
+            "verbatim": "Pand met halsgevel, (tweede helft zeventiende eeuw).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6044",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194693",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "crown-detail",
+            "trait": "crest/festoons/consoles",
+            "verbatim": "Festoenen.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6044",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194693",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "muntins/transoms",
+            "verbatim": "Geblokte deuromlijsting met getralied zijlicht (eerste helft negentiende eeuw); bovenlicht eerste helft negentiende eeuw.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6044",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194693",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "ground",
+            "trait": "door/shopfront/stoop",
+            "verbatim": "Geblokte deuromlijsting met getralied zijlicht (eerste helft negentiende eeuw); bovenlicht eerste helft negentiende eeuw.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6044",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194693",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "muntins/transoms",
+            "verbatim": "Empire roedenverdeling.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6044",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194693",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          }
+        ],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-supported architectural traits, current survival unreviewed",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 5.448303923947631
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012177966",
+        "heightM": 14.73,
+        "facts": [
+          1723,
+          -1,
+          2,
+          {
+            "f": 0
+          }
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.899013,
+                52.37412
+              ],
+              [
+                4.898999,
+                52.374127
+              ],
+              [
+                4.898979,
+                52.374111
+              ],
+              [
+                4.898992,
+                52.374105
+              ],
+              [
+                4.89895,
+                52.374072
+              ],
+              [
+                4.89925,
+                52.373989
+              ],
+              [
+                4.899288,
+                52.374036
+              ],
+              [
+                4.899013,
+                52.37412
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.898999,
+              52.374127
+            ],
+            "end": [
+              4.898979,
+              52.374111
+            ],
+            "widthM": 2.230591104632539,
+            "alongStartM": 61.920224156435644,
+            "alongEndM": 64.14989098988144,
+            "normal": [
+              -0.7929019337403739,
+              0.6093492623042844
+            ],
+            "streetDistanceM": 2.557320502271998
+          },
+          {
+            "start": [
+              4.898992,
+              52.374105
+            ],
+            "end": [
+              4.89895,
+              52.374072
+            ],
+            "widthM": 4.631829210861259,
+            "alongStartM": 64.16922619864985,
+            "alongEndM": 68.79779659798854,
+            "normal": [
+              -0.7875549451740381,
+              0.6162444387837653
+            ],
+            "streetDistanceM": 3.6844350918814714
+          }
+        ],
+        "alongM": 61.920224156435644,
+        "explicitSourceCoverage": {
+          "municipal": [
+            {
+              "id": "16d90fb7-82d7-4b61-9cd5-0897b35a20b6",
+              "number": "6045",
+              "status": "Rijksmonument",
+              "address": "Oudezijds Voorburgwal 63",
+              "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/16d90fb7-82d7-4b61-9cd5-0897b35a20b6?_format=json",
+              "explicitPandLinks": [
+                {
+                  "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012177966?_format=json&volgnummer=4",
+                  "title": "0363100012177966",
+                  "identificatie": "0363100012177966",
+                  "volgnummer": 4,
+                  "beginGeldigheid": "2023-09-28T02:00:00"
+                }
+              ]
+            }
+          ],
+          "rce": [
+            {
+              "number": "6045",
+              "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6045",
+              "bagPandIds": [
+                "0363100012177966"
+              ],
+              "bagVboIds": [
+                "0363010000759441",
+                "0363010000759442",
+                "0363010000759443",
+                "0363010000759444"
+              ],
+              "join": "explicit RCE Pand predicate"
+            }
+          ]
+        },
+        "sourceDescriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194694",
+            "text": "Pand met gevel onder verhoogde gesneden lijst (tweede kwart achttiende eeuw). Deuromlijsting tweede kart achttiende eeuw, bovenlicht midden negentiende eeuw. Goede roedenverdeling.",
+            "language": null,
+            "register": "rce",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6045",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ]
+          }
+        ],
+        "sourceAssertions": [
+          {
+            "part": "crown",
+            "trait": "cornice",
+            "verbatim": "Pand met gevel onder verhoogde gesneden lijst (tweede kwart achttiende eeuw).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6045",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194694",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "muntins/transoms",
+            "verbatim": "Deuromlijsting tweede kart achttiende eeuw, bovenlicht midden negentiende eeuw.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6045",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194694",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "ground",
+            "trait": "door/shopfront/stoop",
+            "verbatim": "Deuromlijsting tweede kart achttiende eeuw, bovenlicht midden negentiende eeuw.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6045",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194694",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "muntins/transoms",
+            "verbatim": "Goede roedenverdeling.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6045",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194694",
+            "descriptionRegistrationDates": [
+              "2026-09-18"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          }
+        ],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-supported architectural traits, current survival unreviewed",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 6.862420315493798
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012172011",
+        "heightM": 13.57,
+        "facts": [
+          1988,
+          -1,
+          0
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.89895,
+                52.374072
+              ],
+              [
+                4.898886,
+                52.374023
+              ],
+              [
+                4.89916,
+                52.373949
+              ],
+              [
+                4.8992,
+                52.374003
+              ],
+              [
+                4.89895,
+                52.374072
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.89895,
+              52.374072
+            ],
+            "end": [
+              4.898886,
+              52.374023
+            ],
+            "widthM": 6.94664804045429,
+            "alongStartM": 68.79779659798854,
+            "alongEndM": 75.73572064513432,
+            "normal": [
+              -0.7797228200038345,
+              0.6261248469476898
+            ],
+            "streetDistanceM": 3.669921029045947
+          }
+        ],
+        "alongM": 68.79779659798854,
+        "explicitSourceCoverage": {
+          "municipal": [],
+          "rce": []
+        },
+        "sourceDescriptions": [],
+        "sourceAssertions": [],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-unmatched ordinary candidate; modern status unknown",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 6.94664804045429
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012172010",
+        "heightM": 15.1,
+        "facts": [
+          1680,
+          -1,
+          2,
+          {
+            "f": 0
+          }
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.898886,
+                52.374023
+              ],
+              [
+                4.898873,
+                52.37403
+              ],
+              [
+                4.898855,
+                52.374016
+              ],
+              [
+                4.898869,
+                52.37401
+              ],
+              [
+                4.898832,
+                52.373981
+              ],
+              [
+                4.899053,
+                52.37392
+              ],
+              [
+                4.89908,
+                52.373956
+              ],
+              [
+                4.899133,
+                52.373942
+              ],
+              [
+                4.899106,
+                52.373905
+              ],
+              [
+                4.899124,
+                52.3739
+              ],
+              [
+                4.89916,
+                52.373949
+              ],
+              [
+                4.898886,
+                52.374023
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.898873,
+              52.37403
+            ],
+            "end": [
+              4.898855,
+              52.374016
+            ],
+            "widthM": 1.9726570473213099,
+            "alongStartM": 75.62683551888101,
+            "alongEndM": 77.59771570172315,
+            "normal": [
+              -0.7845053462898698,
+              0.6201220538269957
+            ],
+            "streetDistanceM": 2.499400697344217
+          },
+          {
+            "start": [
+              4.898869,
+              52.37401
+            ],
+            "end": [
+              4.898832,
+              52.373981
+            ],
+            "widthM": 4.074205567815626,
+            "alongStartM": 77.57720750299276,
+            "alongEndM": 81.64836119369609,
+            "normal": [
+              -0.7868184229789691,
+              0.6171845504068357
+            ],
+            "streetDistanceM": 3.678547832507738
+          }
+        ],
+        "alongM": 75.62683551888101,
+        "explicitSourceCoverage": {
+          "municipal": [
+            {
+              "id": "ab3dd069-5adb-4198-a2f9-cffc4a966c70",
+              "number": "6046",
+              "status": "Rijksmonument",
+              "address": "Oudezijds Voorburgwal 67",
+              "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/ab3dd069-5adb-4198-a2f9-cffc4a966c70?_format=json",
+              "explicitPandLinks": [
+                {
+                  "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012172010?_format=json&volgnummer=4",
+                  "title": "0363100012172010",
+                  "identificatie": "0363100012172010",
+                  "volgnummer": 4,
+                  "beginGeldigheid": "2023-09-28T02:00:00"
+                }
+              ]
+            }
+          ],
+          "rce": [
+            {
+              "number": "6046",
+              "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6046",
+              "bagPandIds": [],
+              "bagVboIds": [],
+              "join": "municipal explicit Rijksmonument-number bridge; no spatial join"
+            }
+          ]
+        },
+        "sourceDescriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194695",
+            "text": "Pand met klokgevel met twee oeils-de-boeuf, (XVIIB). Versierde stoep; empire roedenverdeling, deur en snijraam.",
+            "language": null,
+            "register": "rce",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6046",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ]
+          }
+        ],
+        "sourceAssertions": [
+          {
+            "part": "crown",
+            "trait": "bell",
+            "verbatim": "Pand met klokgevel met twee oeils-de-boeuf, (XVIIB).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6046",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194695",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "oculi",
+            "verbatim": "Pand met klokgevel met twee oeils-de-boeuf, (XVIIB).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6046",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194695",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "muntins/transoms",
+            "verbatim": "Versierde stoep; empire roedenverdeling, deur en snijraam.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6046",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194695",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "ground",
+            "trait": "door/shopfront/stoop",
+            "verbatim": "Versierde stoep; empire roedenverdeling, deur en snijraam.",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6046",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194695",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          }
+        ],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-supported architectural traits, current survival unreviewed",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 6.046862615136936
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012171849",
+        "heightM": 14.06,
+        "facts": [
+          1743,
+          -1,
+          0
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.898832,
+                52.373981
+              ],
+              [
+                4.89879,
+                52.373951
+              ],
+              [
+                4.89895,
+                52.373911
+              ],
+              [
+                4.898973,
+                52.373942
+              ],
+              [
+                4.898832,
+                52.373981
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.898832,
+              52.373981
+            ],
+            "end": [
+              4.89879,
+              52.373951
+            ],
+            "widthM": 4.37543523850925,
+            "alongStartM": 81.64836119369609,
+            "alongEndM": 86.0082818399438,
+            "normal": [
+              -0.7579131719469884,
+              0.6523554428294862
+            ],
+            "streetDistanceM": 3.600506324520969
+          }
+        ],
+        "alongM": 81.64836119369609,
+        "explicitSourceCoverage": {
+          "municipal": [],
+          "rce": []
+        },
+        "sourceDescriptions": [],
+        "sourceAssertions": [],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-unmatched ordinary candidate; modern status unknown",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 4.37543523850925
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012171846",
+        "heightM": 15.32,
+        "facts": [
+          1685,
+          -1,
+          2,
+          {
+            "f": 0
+          }
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.89895,
+                52.373911
+              ],
+              [
+                4.89879,
+                52.373951
+              ],
+              [
+                4.898789,
+                52.373951
+              ],
+              [
+                4.898744,
+                52.373915
+              ],
+              [
+                4.898743,
+                52.373915
+              ],
+              [
+                4.898828,
+                52.373892
+              ],
+              [
+                4.898841,
+                52.373907
+              ],
+              [
+                4.898893,
+                52.373893
+              ],
+              [
+                4.898882,
+                52.373878
+              ],
+              [
+                4.898918,
+                52.373868
+              ],
+              [
+                4.89895,
+                52.373911
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.898789,
+              52.373951
+            ],
+            "end": [
+              4.898744,
+              52.373915
+            ],
+            "widthM": 5.018829985102623,
+            "alongStartM": 86.0481252474426,
+            "alongEndM": 91.06487562236865,
+            "normal": [
+              -0.7929019337127737,
+              0.6093492623401986
+            ],
+            "streetDistanceM": 3.5344577589736095
+          },
+          {
+            "start": [
+              4.898893,
+              52.373893
+            ],
+            "end": [
+              4.898882,
+              52.373878
+            ],
+            "widthM": 1.8188317685962903,
+            "alongStartM": 87.09830609498403,
+            "alongEndM": 88.87983234349117,
+            "normal": [
+              -0.9116291177418604,
+              0.4110138096040053
+            ],
+            "streetDistanceM": 13.57841141539194
+          }
+        ],
+        "alongM": 86.0481252474426,
+        "explicitSourceCoverage": {
+          "municipal": [
+            {
+              "id": "ceaa89f7-080b-476e-92be-c271d4c1fdc3",
+              "number": "6047",
+              "status": "Rijksmonument",
+              "address": "Oudezijds Voorburgwal 71",
+              "recordUrl": "https://api.data.amsterdam.nl/v1/monumenten/monumenten/ceaa89f7-080b-476e-92be-c271d4c1fdc3?_format=json",
+              "explicitPandLinks": [
+                {
+                  "href": "https://api.data.amsterdam.nl/v1/bag/panden/0363100012171846?_format=json&volgnummer=4",
+                  "title": "0363100012171846",
+                  "identificatie": "0363100012171846",
+                  "volgnummer": 4,
+                  "beginGeldigheid": "2023-09-28T02:00:00"
+                }
+              ]
+            }
+          ],
+          "rce": [
+            {
+              "number": "6047",
+              "recordUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6047",
+              "bagPandIds": [
+                "0363100012171846"
+              ],
+              "bagVboIds": [
+                "0363010000966447",
+                "0363010000966448"
+              ],
+              "join": "explicit RCE Pand predicate"
+            }
+          ]
+        },
+        "sourceDescriptions": [
+          {
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194696",
+            "text": "Pand met halsgevel met twee oeils-de-boeuf, (XVIIB).",
+            "language": null,
+            "register": "rce",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6047",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ]
+          }
+        ],
+        "sourceAssertions": [
+          {
+            "part": "crown",
+            "trait": "neck",
+            "verbatim": "Pand met halsgevel met twee oeils-de-boeuf, (XVIIB).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6047",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194696",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          },
+          {
+            "part": "opening",
+            "trait": "oculi",
+            "verbatim": "Pand met halsgevel met twee oeils-de-boeuf, (XVIIB).",
+            "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6047",
+            "sourceUri": "https://linkeddata.cultureelerfgoed.nl/cho-kennis/id/omschrijving/194696",
+            "descriptionRegistrationDates": [
+              "1992-04-01"
+            ],
+            "confidence": "explicit historical prose; current facade survival/side requires independent photographs",
+            "crownCaution": "Whole sentence retained: lowered, former, rear and altered crown qualifiers must be reviewed before assigning current frontage family."
+          }
+        ],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-supported architectural traits, current survival unreviewed",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 6.837661753698913
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012178397",
+        "heightM": 16.15,
+        "facts": [
+          1727,
+          -1,
+          0
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.898743,
+                52.373915
+              ],
+              [
+                4.898742,
+                52.373914
+              ],
+              [
+                4.898703,
+                52.373878
+              ],
+              [
+                4.898886,
+                52.373828
+              ],
+              [
+                4.898888,
+                52.373828
+              ],
+              [
+                4.898918,
+                52.373868
+              ],
+              [
+                4.898743,
+                52.373915
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.898743,
+              52.373915
+            ],
+            "end": [
+              4.898742,
+              52.373914
+            ],
+            "widthM": 0.12976021961797163,
+            "alongStartM": 91.10471902986744,
+            "alongEndM": 91.23411235481574,
+            "normal": [
+              -0.8518789506241223,
+              0.5237387263546052
+            ],
+            "streetDistanceM": 3.591608708673559
+          },
+          {
+            "start": [
+              4.898742,
+              52.373914
+            ],
+            "end": [
+              4.898703,
+              52.373878
+            ],
+            "widthM": 4.781304047554857,
+            "alongStartM": 91.23411235481574,
+            "alongEndM": 96.01180228478441,
+            "normal": [
+              -0.8322917682255729,
+              0.5543378144633011
+            ],
+            "streetDistanceM": 3.6957436601312272
+          }
+        ],
+        "alongM": 91.10471902986744,
+        "explicitSourceCoverage": {
+          "municipal": [],
+          "rce": []
+        },
+        "sourceDescriptions": [],
+        "sourceAssertions": [],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-unmatched ordinary candidate; modern status unknown",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 4.911064267172829
+      },
+      {
+        "nativeId": "NL.IMBAG.Pand.0363100012178398",
+        "heightM": 16.39,
+        "facts": [
+          1745,
+          -1,
+          0
+        ],
+        "footprint": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4.898677,
+                52.373852
+              ],
+              [
+                4.898626,
+                52.373804
+              ],
+              [
+                4.89875,
+                52.373771
+              ],
+              [
+                4.898787,
+                52.373823
+              ],
+              [
+                4.898786,
+                52.373823
+              ],
+              [
+                4.898694,
+                52.373847
+              ],
+              [
+                4.898695,
+                52.373848
+              ],
+              [
+                4.898677,
+                52.373852
+              ]
+            ]
+          ]
+        },
+        "streetfrontWalls": [
+          {
+            "start": [
+              4.898677,
+              52.373852
+            ],
+            "end": [
+              4.898626,
+              52.373804
+            ],
+            "widthM": 6.337651428975602,
+            "alongStartM": 99.37602873994543,
+            "alongEndM": 105.70643857219277,
+            "normal": [
+              -0.8372060311959835,
+              0.5468876130696965
+            ],
+            "streetDistanceM": 3.8741991937913967
+          },
+          {
+            "start": [
+              4.898695,
+              52.373848
+            ],
+            "end": [
+              4.898677,
+              52.373852
+            ],
+            "widthM": 1.3007456853636026,
+            "alongStartM": 99.01704707564916,
+            "alongEndM": 99.37602873994543,
+            "normal": [
+              0.339928092512172,
+              0.9404514298575106
+            ],
+            "streetDistanceM": 14.720623313758486
+          }
+        ],
+        "alongM": 99.01704707564916,
+        "explicitSourceCoverage": {
+          "municipal": [],
+          "rce": []
+        },
+        "sourceDescriptions": [],
+        "sourceAssertions": [],
+        "currentAppearanceState": "unobserved; no visual profile or modern/historic assignment admitted",
+        "exceptionState": "source-unmatched ordinary candidate; modern status unknown",
+        "factsPolicy": "Native fact row retained unchanged, including constructionYear; never infer facade period or alter facts from prose.",
+        "frontageWidthM": 7.638397114339204
+      }
+    ],
+    "schemaVersion": 1,
+    "proposalId": "oudezijds-voorburgwal-east-39-71-discovery",
+    "status": "source-scoped-proposal; unaccepted; no runtime profile",
+    "scope": "Contiguous east-bank native street-side row, approximately Oudezijds Voorburgwal 39–71; endpoint-intersecting corner identities retained. Native geometry rather than numbered listed-address selection defines the complete inventory.",
+    "evidenceSeparation": "No existing Bethaniën challenge panes or evaluation-only stations used as training. No new panorama acquisition. Register descriptions establish research questions, never visible rhythm frequencies.",
+    "archiveInput": {
+      "file": "scripts/data/amsterdam-monument-register/records.json.gz",
+      "sha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d",
+      "uncompressedSha256": "23396d3c4f3ea213bab48a5b0fa4d2d0d1acd615049238dd6bc74b176a81e611",
+      "generation": "2026-10-05T06-10-55-572Z-83107"
+    },
+    "fixedSamples": {
+      "representatives": [
+        {
+          "id": "cornice-upper",
+          "alongM": 3,
+          "buildingId": "NL.IMBAG.Pand.0363100012177982",
+          "purpose": "Native narrow cornice frontage/window grouping; source address39"
+        },
+        {
+          "id": "neck-middle",
+          "alongM": 40,
+          "buildingId": "NL.IMBAG.Pand.0363100012177971",
+          "purpose": "Source neck family plus adjacent source-unmatched fronts; address55"
+        },
+        {
+          "id": "bell-lower",
+          "alongM": 79,
+          "buildingId": "NL.IMBAG.Pand.0363100012172010",
+          "purpose": "Bell silhouette and two oculi claim; address67"
+        }
+      ],
+      "transitions": [
+        {
+          "id": "upper-unmatched",
+          "alongExtentM": [
+            18,
+            37
+          ],
+          "purpose": "Keep native source-unmatched neighbors between listed fronts; photo-classify ordinary/modern exceptions before profile selection."
+        },
+        {
+          "id": "late-year-neck",
+          "alongExtentM": [
+            47,
+            65
+          ],
+          "purpose": "Address61 has native year1994 yet historic neck description: construction-year gate must not establish facade class. Source/geometry disagreement is a review question."
+        },
+        {
+          "id": "lower-unmatched",
+          "alongExtentM": [
+            65,
+            85
+          ],
+          "purpose": "Native …72011 year1988 is source-unmatched beside bell67; test actual transition without guessing modern appearance."
+        }
+      ],
+      "heldout": {
+        "id": "oudezijds-east-next-south",
+        "segment": [
+          [
+            4.898626,
+            52.373866
+          ],
+          [
+            4.898186,
+            52.373522
+          ]
+        ],
+        "side": 1,
+        "reachM": 20,
+        "lengthM": 48.375133804002424,
+        "role": "Untouched adjacent extension, future photographs strictly evaluation-only; do not tune recipes from them.",
+        "nativeInventory": [
+          {
+            "nativeId": "NL.IMBAG.Pand.0363100012178398",
+            "heightM": 16.39,
+            "facts": [
+              1745,
+              -1,
+              0
+            ],
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898677,
+                    52.373852
+                  ],
+                  [
+                    4.898626,
+                    52.373804
+                  ],
+                  [
+                    4.89875,
+                    52.373771
+                  ],
+                  [
+                    4.898787,
+                    52.373823
+                  ],
+                  [
+                    4.898786,
+                    52.373823
+                  ],
+                  [
+                    4.898694,
+                    52.373847
+                  ],
+                  [
+                    4.898695,
+                    52.373848
+                  ],
+                  [
+                    4.898677,
+                    52.373852
+                  ]
+                ]
+              ]
+            },
+            "streetfrontWalls": [
+              {
+                "start": [
+                  4.898677,
+                  52.373852
+                ],
+                "end": [
+                  4.898626,
+                  52.373804
+                ],
+                "widthM": 6.337682931903357,
+                "alongStartM": -0.9260584501641835,
+                "alongEndM": 5.3872468177251545,
+                "normal": [
+                  -0.8372018696685923,
+                  0.546893983714772
+                ],
+                "streetDistanceM": 3.874243595684785
+              }
+            ],
+            "alongM": -0.9260584501641835
+          },
+          {
+            "nativeId": "NL.IMBAG.Pand.0363100012177703",
+            "heightM": 9.85,
+            "facts": [
+              1725,
+              -1,
+              0
+            ],
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898626,
+                    52.373804
+                  ],
+                  [
+                    4.898592,
+                    52.373776
+                  ],
+                  [
+                    4.898773,
+                    52.373728
+                  ],
+                  [
+                    4.898794,
+                    52.373759
+                  ],
+                  [
+                    4.898626,
+                    52.373804
+                  ]
+                ]
+              ]
+            },
+            "streetfrontWalls": [
+              {
+                "start": [
+                  4.898626,
+                  52.373804
+                ],
+                "end": [
+                  4.898592,
+                  52.373776
+                ],
+                "widthM": 3.8625216566135125,
+                "alongStartM": 5.3872468177251545,
+                "alongEndM": 9.248552685562617,
+                "normal": [
+                  -0.8013210734340779,
+                  0.5982345169500477
+                ],
+                "streetDistanceM": 4.113521453746047
+              }
+            ],
+            "alongM": 5.3872468177251545
+          },
+          {
+            "nativeId": "NL.IMBAG.Pand.0363100012177702",
+            "heightM": 10.45,
+            "facts": [
+              1905,
+              -1,
+              0
+            ],
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898592,
+                    52.373776
+                  ],
+                  [
+                    4.898557,
+                    52.373748
+                  ],
+                  [
+                    4.89875,
+                    52.373697
+                  ],
+                  [
+                    4.898773,
+                    52.373728
+                  ],
+                  [
+                    4.898592,
+                    52.373776
+                  ]
+                ]
+              ]
+            },
+            "streetfrontWalls": [
+              {
+                "start": [
+                  4.898592,
+                  52.373776
+                ],
+                "end": [
+                  4.898557,
+                  52.373748
+                ],
+                "widthM": 3.903558521654602,
+                "alongStartM": 9.248552685562617,
+                "alongEndM": 13.151869014899159,
+                "normal": [
+                  -0.7928970407053059,
+                  0.6093556292024948
+                ],
+                "streetDistanceM": 4.204987686590942
+              }
+            ],
+            "alongM": 9.248552685562617
+          },
+          {
+            "nativeId": "NL.IMBAG.Pand.0363100012177704",
+            "heightM": 12.16,
+            "facts": [
+              1905,
+              -1,
+              2,
+              {
+                "y": "1905",
+                "f": 0
+              }
+            ],
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898557,
+                    52.373748
+                  ],
+                  [
+                    4.898516,
+                    52.373715
+                  ],
+                  [
+                    4.898815,
+                    52.373636
+                  ],
+                  [
+                    4.898841,
+                    52.373672
+                  ],
+                  [
+                    4.898557,
+                    52.373748
+                  ]
+                ]
+              ]
+            },
+            "streetfrontWalls": [
+              {
+                "start": [
+                  4.898557,
+                  52.373748
+                ],
+                "end": [
+                  4.898516,
+                  52.373715
+                ],
+                "widthM": 4.590289118854786,
+                "alongStartM": 13.151869014899159,
+                "alongEndM": 17.74170350211969,
+                "normal": [
+                  -0.7946819700815334,
+                  0.6070260014425519
+                ],
+                "streetDistanceM": 4.263519988576239
+              }
+            ],
+            "alongM": 13.151869014899159
+          },
+          {
+            "nativeId": "NL.IMBAG.Pand.0363100012177700",
+            "heightM": 15.25,
+            "facts": [
+              1905,
+              -1,
+              2,
+              {
+                "f": 0
+              }
+            ],
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898684,
+                    52.373636
+                  ],
+                  [
+                    4.898753,
+                    52.373618
+                  ],
+                  [
+                    4.898774,
+                    52.373647
+                  ],
+                  [
+                    4.898516,
+                    52.373715
+                  ],
+                  [
+                    4.898497,
+                    52.373701
+                  ],
+                  [
+                    4.898483,
+                    52.373708
+                  ],
+                  [
+                    4.898467,
+                    52.373696
+                  ],
+                  [
+                    4.898483,
+                    52.37369
+                  ],
+                  [
+                    4.898636,
+                    52.373649
+                  ],
+                  [
+                    4.898649,
+                    52.373667
+                  ],
+                  [
+                    4.898697,
+                    52.373655
+                  ],
+                  [
+                    4.898684,
+                    52.373636
+                  ]
+                ]
+              ]
+            },
+            "streetfrontWalls": [
+              {
+                "start": [
+                  4.898516,
+                  52.373715
+                ],
+                "end": [
+                  4.898497,
+                  52.373701
+                ],
+                "widthM": 2.0155198587699745,
+                "alongStartM": 17.74170350211969,
+                "alongEndM": 19.75637735909255,
+                "normal": [
+                  -0.7678217573923567,
+                  0.6406635223539056
+                ],
+                "streetDistanceM": 4.280770862217231
+              },
+              {
+                "start": [
+                  4.898483,
+                  52.373708
+                ],
+                "end": [
+                  4.898467,
+                  52.373696
+                ],
+                "widthM": 1.715213105046918,
+                "alongStartM": 19.736286276272054,
+                "alongEndM": 21.451146593046,
+                "normal": [
+                  -0.7733616282954013,
+                  0.6339651345936032
+                ],
+                "streetDistanceM": 3.0169846030868115
+              },
+              {
+                "start": [
+                  4.898697,
+                  52.373655
+                ],
+                "end": [
+                  4.898684,
+                  52.373636
+                ],
+                "widthM": 2.278522615952736,
+                "alongStartM": 15.351274627212804,
+                "alongEndM": 17.548341103670257,
+                "normal": [
+                  -0.9217639471694219,
+                  0.38775149993088004
+                ],
+                "streetDistanceM": 18.925472253099688
+              }
+            ],
+            "alongM": 15.351274627212804
+          },
+          {
+            "nativeId": "NL.IMBAG.Pand.0363100012178296",
+            "heightM": 16.23,
+            "facts": [
+              1746,
+              -1,
+              2,
+              {
+                "f": 0
+              }
+            ],
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898483,
+                    52.37369
+                  ],
+                  [
+                    4.898437,
+                    52.373654
+                  ],
+                  [
+                    4.898765,
+                    52.373568
+                  ],
+                  [
+                    4.898792,
+                    52.373607
+                  ],
+                  [
+                    4.898483,
+                    52.37369
+                  ]
+                ]
+              ]
+            },
+            "streetfrontWalls": [
+              {
+                "start": [
+                  4.898483,
+                  52.37369
+                ],
+                "end": [
+                  4.898437,
+                  52.373654
+                ],
+                "widthM": 5.060560637908121,
+                "alongStartM": 21.30032567472746,
+                "alongEndM": 26.360885702631233,
+                "normal": [
+                  -0.7863634654140808,
+                  0.6177641137699388
+                ],
+                "streetDistanceM": 4.27678772538753
+              }
+            ],
+            "alongM": 21.30032567472746
+          },
+          {
+            "nativeId": "NL.IMBAG.Pand.0363100012178298",
+            "heightM": 22.99,
+            "facts": [
+              1650,
+              -1,
+              0
+            ],
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898437,
+                    52.373654
+                  ],
+                  [
+                    4.898342,
+                    52.373579
+                  ],
+                  [
+                    4.898549,
+                    52.373525
+                  ],
+                  [
+                    4.898542,
+                    52.373515
+                  ],
+                  [
+                    4.898557,
+                    52.373511
+                  ],
+                  [
+                    4.89859,
+                    52.373559
+                  ],
+                  [
+                    4.898847,
+                    52.373492
+                  ],
+                  [
+                    4.898848,
+                    52.373491
+                  ],
+                  [
+                    4.898896,
+                    52.373534
+                  ],
+                  [
+                    4.898437,
+                    52.373654
+                  ]
+                ]
+              ]
+            },
+            "streetfrontWalls": [
+              {
+                "start": [
+                  4.898437,
+                  52.373654
+                ],
+                "end": [
+                  4.898342,
+                  52.373579
+                ],
+                "widthM": 10.507942183911304,
+                "alongStartM": 26.360885702631233,
+                "alongEndM": 36.86871037616116,
+                "normal": [
+                  -0.788974649381759,
+                  0.6144257503009869
+                ],
+                "streetDistanceM": 4.306257090283498
+              }
+            ],
+            "alongM": 26.360885702631233
+          },
+          {
+            "nativeId": "NL.IMBAG.Pand.0363100012178233",
+            "heightM": 16.16,
+            "facts": [
+              1742,
+              -1,
+              0
+            ],
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898342,
+                    52.373579
+                  ],
+                  [
+                    4.898299,
+                    52.373546
+                  ],
+                  [
+                    4.898522,
+                    52.373486
+                  ],
+                  [
+                    4.898549,
+                    52.373525
+                  ],
+                  [
+                    4.898342,
+                    52.373579
+                  ]
+                ]
+              ]
+            },
+            "streetfrontWalls": [
+              {
+                "start": [
+                  4.898342,
+                  52.373579
+                ],
+                "end": [
+                  4.898299,
+                  52.373546
+                ],
+                "widthM": 4.674046283595391,
+                "alongStartM": 36.86871037616116,
+                "alongEndM": 41.54256578645448,
+                "normal": [
+                  -0.7804415658052394,
+                  0.6252287280375607
+                ],
+                "streetDistanceM": 4.33859068247987
+              }
+            ],
+            "alongM": 36.86871037616116
+          },
+          {
+            "nativeId": "NL.IMBAG.Pand.0363100012178232",
+            "heightM": 17.84,
+            "facts": [
+              1756,
+              -1,
+              0
+            ],
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898299,
+                    52.373546
+                  ],
+                  [
+                    4.898298,
+                    52.373547
+                  ],
+                  [
+                    4.898282,
+                    52.373535
+                  ],
+                  [
+                    4.898284,
+                    52.373535
+                  ],
+                  [
+                    4.898256,
+                    52.373513
+                  ],
+                  [
+                    4.898495,
+                    52.373449
+                  ],
+                  [
+                    4.898522,
+                    52.373486
+                  ],
+                  [
+                    4.898299,
+                    52.373546
+                  ]
+                ]
+              ]
+            },
+            "streetfrontWalls": [
+              {
+                "start": [
+                  4.898298,
+                  52.373547
+                ],
+                "end": [
+                  4.898282,
+                  52.373535
+                ],
+                "widthM": 1.7152131056543423,
+                "alongStartM": 41.49768516988731,
+                "alongEndM": 43.21254548727865,
+                "normal": [
+                  -0.7733616284794457,
+                  0.6339651343690912
+                ],
+                "streetDistanceM": 4.18643411528279
+              },
+              {
+                "start": [
+                  4.898284,
+                  52.373535
+                ],
+                "end": [
+                  4.898256,
+                  52.373513
+                ],
+                "widthM": 3.0879056291532616,
+                "alongStartM": 43.12852456420587,
+                "alongEndM": 46.21642119609309,
+                "normal": [
+                  -0.7875499744546856,
+                  0.6162507912663675
+                ],
+                "streetDistanceM": 4.28843643530557
+              }
+            ],
+            "alongM": 41.49768516988731
+          },
+          {
+            "nativeId": "NL.IMBAG.Pand.0363100012178300",
+            "heightM": 12.71,
+            "facts": [
+              1905,
+              -1,
+              2,
+              {
+                "f": 0
+              }
+            ],
+            "footprint": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    4.898238,
+                    52.3735
+                  ],
+                  [
+                    4.898188,
+                    52.373461
+                  ],
+                  [
+                    4.898467,
+                    52.373384
+                  ],
+                  [
+                    4.898499,
+                    52.373428
+                  ],
+                  [
+                    4.898238,
+                    52.3735
+                  ]
+                ]
+              ]
+            },
+            "streetfrontWalls": [
+              {
+                "start": [
+                  4.898238,
+                  52.3735
+                ],
+                "end": [
+                  4.898188,
+                  52.373461
+                ],
+                "widthM": 5.489278621890753,
+                "alongStartM": 48.10219351404339,
+                "alongEndM": 53.59146862116863,
+                "normal": [
+                  -0.7853600258000337,
+                  0.6190392797515925
+                ],
+                "streetDistanceM": 4.236048596349558
+              }
+            ],
+            "alongM": 48.10219351404339
+          }
+        ],
+        "nativeInventoryState": "Fixed from geometry before photo acquisition; no heldout architectural prose or images used for training."
+      },
+      "boundaryPolicy": {
+        "sharedEndpointIntersectingIds": [
+          "NL.IMBAG.Pand.0363100012178398"
+        ],
+        "ownership": "Entire shared endpoint building belongs to heldout. Retain it in both native geometric intersection inventories, but exclude its photos/assertions from primary inference/tuning. Interior heldout scoring must not borrow training pixels across endpoint."
+      }
+    },
+    "currentCapabilityGaps": [
+      {
+        "trait": "cornice/neck/bell row mixture",
+        "state": "Generic templates exist; current composition/trim/opening group fidelity unreviewed.",
+        "implementationSources": [
+          "src/canalRecall/roofMesh.ts",
+          "src/canalRecall/sourceVisualRoof.ts",
+          "src/canalRecall/streetCrown.ts"
+        ]
+      },
+      {
+        "trait": "paired oculi at67/71",
+        "state": "Explicit source assertions require photo survival checks and generator capability review; generic attic windows do not prove paired oval crown openings."
+      },
+      {
+        "trait": "raised carved cornices/crest, lowered neck43, festoons61",
+        "state": "Source-qualified crown assemblies may exceed generic silhouette. Missing defining assemblies require geometry work if visible, not palette tuning."
+      },
+      {
+        "trait": "native year1960 at45 and1994 at61 versus historical facade descriptions",
+        "state": "Keep facts unchanged. Reviewed source-visual eligibility exists, but no current source-visual evidence is admitted for this proposal."
+      },
+      {
+        "trait": "white trim, window groups, ground openings and balconies",
+        "state": "Photos not yet acquired. Register prose does not establish row-level colors, bay rhythm or balcony frequency."
+      },
+      {
+        "trait": "courtyard/rear facade distinctions",
+        "state": "Street ray inventory excludes courtyard holes and blocked runs. Architectural descriptions naming rear sides must not transfer to canal side."
+      }
+    ],
+    "nextAction": "Root review native inventory and source-derived assertions, then independently acquire new representative/transition photos and untouched heldout evidence. Heldout inventory already frozen; scoped acceptance requires reference/render comparison, independent failure review, actual game-scene and performance evidence.",
+    "acceptance": "No visual acceptance. No neighborhood expansion authorized by this proposal alone.",
+    "reproduction": {
+      "inventoryScriptLanguage": "TypeScript via tsx; run from repository root after writing string to /tmp/next-canal-row.mts",
+      "inventoryScript": "import fs from 'node:fs/promises';import{gunzipSync}from'node:zlib';import{createHash}from'node:crypto';import{SegmentGrid,streetDistance,streetSegments}from'/ABSOLUTE_REPO_ROOT/src/canalRecall/streetFronts.ts';\nconst root=process.cwd();const sha=(b:any)=>createHash('sha256').update(b).digest('hex');\nconst A=[4.89949,52.37460],B=[4.898626,52.373866];const kx=111320*Math.cos(A[1]*Math.PI/180),ky=110540;const dx=(B[0]-A[0])*kx,dy=(B[1]-A[1])*ky,L=Math.hypot(dx,dy);const loc=(p:any)=>{const x=(p[0]-A[0])*kx,y=(p[1]-A[1])*ky;return {along:(x*dx+y*dy)/L,depth:(dx*y-dy*x)/L,x,y}};const sources:any[]=[];async function read(file:string,gz=false){const b=await fs.readFile(file);sources.push({file,sha256:sha(b)});return JSON.parse((gz?gunzipSync(b):b).toString())}\nconst routing=await read('public/data/extracts/amsterdam/streets-routing.json');const nativePath=routing.find((w:any)=>w.id==='routing_4398');const paths=routing.filter((w:any)=>w.highway).flatMap((w:any)=>(w.paths??[w.path]).map((p:any)=>({highway:w.highway,points:p.map((q:any)=>[q[1],q[0]])})));const road=new SegmentGrid(streetSegments([{highway:nativePath.highway,points:nativePath.path.map((p:any)=>[p[1],p[0]])}],{lng:A[0],lat:A[1]}));\nconst features=new Map(),facts=new Map();for(const tile of ['8413/5383','8413/5384','8414/5383','8414/5384']){const file='public/data/extracts/amsterdam/building-tiles/14/'+tile+'.geojson.gz';try{const d=await read(file,true),f=await read('public/data/extracts/amsterdam/building-facts/14/'+tile+'.json.gz',true);for(const [id,row]of Object.entries(f.buildings))facts.set(id,row);for(const feature of d.features){const polys=feature.geometry.type==='Polygon'?[feature.geometry.coordinates]:feature.geometry.coordinates;const pts=polys.flatMap((p:any)=>p[0]).map(loc);if(pts.some((p:any)=>p.along>-40&&p.along<L+40&&Math.abs(p.depth)<55))features.set(feature.properties.id,feature)}}catch(e){throw e}}\nconst walls:any[]=[],flat:number[]=[],owners:number[]=[];let owner=0;for(const[id,f]of features){const polys=f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates;for(const poly of polys)for(let ri=0;ri<poly.length;ri++){const ring=poly[ri].map(loc);let area=0;for(let i=1;i<ring.length;i++)area+=ring[i-1].x*ring[i].y-ring[i].x*ring[i-1].y;const sign=(area>0?1:-1)*(ri? -1:1);for(let i=1;i<ring.length;i++){const a=ring[i-1],b=ring[i],wx=b.x-a.x,wy=b.y-a.y,len=Math.hypot(wx,wy);if(len<.1)continue;const w={id,owner,hole:ri>0,x0:a.x,y0:a.y,x1:b.x,y1:b.y,nx:sign*wy/len,ny:-sign*wx/len,len,start:poly[ri][i-1],end:poly[ri][i]};walls.push(w);flat.push(a.x,a.y,b.x,b.y);owners.push(owner)}}owner++}const obstacles=new SegmentGrid(flat,25,owners);const fronts=walls.filter(w=>{if(w.hole)return false;const a=loc(w.start),b=loc(w.end);const depth=(a.depth+b.depth)/2;return Math.max(a.along,b.along)>0&&Math.min(a.along,b.along)<L&&depth>0&&depth<20&&streetDistance(w,road,obstacles,w.owner,32)<Infinity});\nconst grouped:any[]=[];for(const[id,f]of features){const ws=fronts.filter(w=>w.id===id);if(!ws.length)continue;grouped.push({nativeId:id,heightM:f.properties.height,facts:facts.get(id.replace('NL.IMBAG.Pand.','P')),footprint:f.geometry,streetfrontWalls:ws.map(w=>({start:w.start,end:w.end,widthM:w.len,alongStartM:loc(w.start).along,alongEndM:loc(w.end).along,normal:[w.nx,w.ny],streetDistanceM:streetDistance(w,road,obstacles,w.owner,32)})),alongM:Math.min(...ws.flatMap(w=>[loc(w.start).along,loc(w.end).along]))})}grouped.sort((a,b)=>a.alongM-b.alongM);\nawait fs.writeFile('/tmp/map-recall-next-canal-inventory.json',JSON.stringify({segment:[A,B],side:1,lengthM:L,nativeRoutingPath:nativePath,sources,method:'Native polygon boundary rays: SegmentGrid and streetDistance use actual routing_4398, 25m grid, all neighboring native walls as blockers, 32m ray reach; retain street-facing exterior runs crossing along interval on east-bank side, depth under20m. Corners crossing endpoints retained.',inventory:grouped},null,2));console.log(JSON.stringify({lengthM:L,frontages:grouped.map(g=>({id:g.nativeId,along:Math.round(g.alongM),year:g.facts?.[0]}))}));\n",
+      "note": "Replace ABSOLUTE_REPO_ROOT in the literal import with the absolute repository root. Native row inventory uses neighbor blocking. Heldout reproduces with A/B equal its recorded segment and a separate output filename."
+    },
+    "coverage": {
+      "allIntersectingNativeStreetfrontBuildings": 20,
+      "municipalExplicitPandLinked": 10,
+      "anyExplicitSourceBridge": 10,
+      "sourceUnmatchedNativeIds": [
+        "NL.IMBAG.Pand.0363100012177996",
+        "NL.IMBAG.Pand.0363100012177975",
+        "NL.IMBAG.Pand.0363100012177976",
+        "NL.IMBAG.Pand.0363100012177972",
+        "NL.IMBAG.Pand.0363100012177990",
+        "NL.IMBAG.Pand.0363100012177989",
+        "NL.IMBAG.Pand.0363100012172011",
+        "NL.IMBAG.Pand.0363100012171849",
+        "NL.IMBAG.Pand.0363100012178397",
+        "NL.IMBAG.Pand.0363100012178398"
+      ],
+      "sourceMix": "Known cornice/neck/bell assertions exist in the same contiguous row; counts are biased listed-sample coverage, not observed style distribution.",
+      "modernExceptions": "Native …72011 carries year1988 and source-match is absent; …77968 year1960 and …77967 year1994 have explicit historic descriptions. These are fixed discovery questions, not current visual classifications."
+    }
   }
 }

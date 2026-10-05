@@ -1,0 +1,1289 @@
+{
+  "schemaVersion": 1,
+  "source": "Gemeente Amsterdam panorama CC BY 4.0",
+  "camera": "Amsterdam world aligned; heading degrees clockwise from north",
+  "samplingM": 25,
+  "images": [
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-right",
+      "alongM": 12.5,
+      "file": ".cache/street-appearance/images/overtoom-gerard-brandt-anna-vondel-right-13-perspective-v2.jpg",
+      "id": "overtoom-gerard-brandt-anna-vondel-right-13",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01591",
+      "captureDate": "2025-07-31T07:44:02Z",
+      "sha256": "a59cb152e4f0aa5004f26c20bb65237f5aeeb01b3bf13ec20bcd41cd5d419d39",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01591/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 157.32489261987223,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868173899013152,
+          52.3608453242267,
+          0
+        ]
+      },
+      "panoramaSha256": "c3731249aae833bf756bc0ba8179dd6baae289172f04f0369e6780b71bc65096",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-right",
+      "alongM": 37.5,
+      "file": ".cache/street-appearance/images/overtoom-gerard-brandt-anna-vondel-right-38-perspective-v2.jpg",
+      "id": "overtoom-gerard-brandt-anna-vondel-right-38",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_07-49-05_00111",
+      "captureDate": "2025-07-31T07:50:25Z",
+      "sha256": "76bbe9a11cba66169d5a5e425e67224cfa9905ea87c7e46f704cd411c07f912d",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_07-49-05_00111/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 157.32489261987223,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868449552643369,
+          52.36100380003653,
+          0
+        ]
+      },
+      "panoramaSha256": "f1e0ee1073237f6413acffbe756c5b2892fb2f6e7b88086c09dd42e10c2bbbd5",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-right",
+      "alongM": 62.5,
+      "file": ".cache/street-appearance/images/overtoom-gerard-brandt-anna-vondel-right-63-perspective-v2.jpg",
+      "id": "overtoom-gerard-brandt-anna-vondel-right-63",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01601",
+      "captureDate": "2025-07-31T07:44:09Z",
+      "sha256": "bc90db0d24befd4a8004eafd7e3f2c2a4520501759348c1e5a471cb2cd0e1267",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01601/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 157.32489261987223,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868849011971541,
+          52.361021377225214,
+          0
+        ]
+      },
+      "panoramaSha256": "9d47b7eeffda8f4b232e82815af41750f178da433e3e0a54cb4c02bdafa9c4f5",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-right",
+      "alongM": 87.5,
+      "file": ".cache/street-appearance/images/overtoom-gerard-brandt-anna-vondel-right-88-perspective-v2.jpg",
+      "id": "overtoom-gerard-brandt-anna-vondel-right-88",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01606",
+      "captureDate": "2025-07-31T07:44:12Z",
+      "sha256": "eff890f5f7645d8ad94b2d37aa199633b9d6074f8435d1de3e93517a13bfa0c7",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01606/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 157.32489261987223,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.869189342949577,
+          52.36110518567872,
+          0
+        ]
+      },
+      "panoramaSha256": "9a13580970a28a9e969ce26e83c9d558534447be33d61da544728a7f439ba29c",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-left",
+      "alongM": 12.5,
+      "file": ".cache/street-appearance/images/overtoom-gerard-brandt-anna-vondel-left-13-perspective-v2.jpg",
+      "id": "overtoom-gerard-brandt-anna-vondel-left-13",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01591",
+      "captureDate": "2025-07-31T07:44:02Z",
+      "sha256": "e07dc0efa4a2829ccd1a555835c99d4f8a7f81b2df8ec93c1f44397b0aa5bb55",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01591/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 337.32489261987223,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868173899013152,
+          52.3608453242267,
+          0
+        ]
+      },
+      "panoramaSha256": "c3731249aae833bf756bc0ba8179dd6baae289172f04f0369e6780b71bc65096",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-left",
+      "alongM": 37.5,
+      "file": ".cache/street-appearance/images/overtoom-gerard-brandt-anna-vondel-left-38-perspective-v2.jpg",
+      "id": "overtoom-gerard-brandt-anna-vondel-left-38",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_07-49-05_00111",
+      "captureDate": "2025-07-31T07:50:25Z",
+      "sha256": "3443aa7a6f6ef30ae2d499113331546a9e8d1efef84b74f429994e0a07ab267f",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_07-49-05_00111/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 337.32489261987223,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868449552643369,
+          52.36100380003653,
+          0
+        ]
+      },
+      "panoramaSha256": "f1e0ee1073237f6413acffbe756c5b2892fb2f6e7b88086c09dd42e10c2bbbd5",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-left",
+      "alongM": 62.5,
+      "file": ".cache/street-appearance/images/overtoom-gerard-brandt-anna-vondel-left-63-perspective-v2.jpg",
+      "id": "overtoom-gerard-brandt-anna-vondel-left-63",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01601",
+      "captureDate": "2025-07-31T07:44:09Z",
+      "sha256": "19e74e477f56fb1a6b44188cb17d3ccee288719ae1867d833832f4a5073ae4f7",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01601/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 337.32489261987223,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868849011971541,
+          52.361021377225214,
+          0
+        ]
+      },
+      "panoramaSha256": "9d47b7eeffda8f4b232e82815af41750f178da433e3e0a54cb4c02bdafa9c4f5",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-left",
+      "alongM": 87.5,
+      "file": ".cache/street-appearance/images/overtoom-gerard-brandt-anna-vondel-left-88-perspective-v2.jpg",
+      "id": "overtoom-gerard-brandt-anna-vondel-left-88",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01606",
+      "captureDate": "2025-07-31T07:44:12Z",
+      "sha256": "fd0e3a190203a13b80c64a7c5154980caa09866489f4c98b8c7b7094cf0c4551",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01606/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 337.32489261987223,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.869189342949577,
+          52.36110518567872,
+          0
+        ]
+      },
+      "panoramaSha256": "9a13580970a28a9e969ce26e83c9d558534447be33d61da544728a7f439ba29c",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "bethaniendwarsstraat-right",
+      "alongM": 12.5,
+      "file": ".cache/street-appearance/images/bethaniendwarsstraat-right-13-perspective-v2.jpg",
+      "id": "bethaniendwarsstraat-right-13",
+      "kind": "municipal-panorama",
+      "panoramaId": "TMX7315120208-000073_pano_0003_000317",
+      "captureDate": "2016-06-09T08:25:25.621550Z",
+      "sha256": "9c5642277f8cf329c9849f9618631aaaae41c9f813f79099671b85c29c088f9d",
+      "url": "https://t1.data.amsterdam.nl/panorama/2016/06/09/TMX7315120208-000073/pano_0003_000317/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 116.46910871509874,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89783629636557,
+          52.371345373247,
+          47.8788708923385
+        ]
+      },
+      "panoramaSha256": "726495529eed53371559f2ba5182d73846bbaf135082dbb47727a6a8d8500c7e",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "bethaniendwarsstraat-right",
+      "alongM": 37.5,
+      "file": ".cache/street-appearance/images/bethaniendwarsstraat-right-38-perspective-v2.jpg",
+      "id": "bethaniendwarsstraat-right-38",
+      "kind": "municipal-panorama",
+      "panoramaId": "TMX7315120208-000073_pano_0003_000312",
+      "captureDate": "2016-06-09T08:25:16.691620Z",
+      "sha256": "3544fa7138f53ab0eedda9c4936e9637dc6209200f9e80f4b158c264bc758c4e",
+      "url": "https://t1.data.amsterdam.nl/panorama/2016/06/09/TMX7315120208-000073/pano_0003_000312/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 116.46910871509874,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89801455473916,
+          52.371555672506,
+          47.3017150564119
+        ]
+      },
+      "panoramaSha256": "97fdbaef933839247fef93fc64885a3bbe949c771f662be1b76861e4a37fb27b",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "bethaniendwarsstraat-right",
+      "alongM": 62.5,
+      "file": ".cache/street-appearance/images/bethaniendwarsstraat-right-63-perspective-v2.jpg",
+      "id": "bethaniendwarsstraat-right-63",
+      "kind": "municipal-panorama",
+      "panoramaId": "TMX7316010203-001662_pano_0000_000192",
+      "captureDate": "2020-04-21T09:50:24.506180Z",
+      "sha256": "967ff655387b93d877efc3b05f31ad0e6386260f1f320aadda147e92087e57a5",
+      "url": "https://t1.data.amsterdam.nl/panorama/2020/04/21/TMX7316010203-001662/pano_0000_000192/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 116.46910871509874,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89820504076896,
+          52.3717439180062,
+          47.7713597398251
+        ]
+      },
+      "panoramaSha256": "77be9fed3ae62d49576106885744d97723f7da3456f9bff30fc8d1f0f80ef7a0",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "bethaniendwarsstraat-left",
+      "alongM": 12.5,
+      "file": ".cache/street-appearance/images/bethaniendwarsstraat-left-13-perspective-v2.jpg",
+      "id": "bethaniendwarsstraat-left-13",
+      "kind": "municipal-panorama",
+      "panoramaId": "TMX7315120208-000073_pano_0003_000317",
+      "captureDate": "2016-06-09T08:25:25.621550Z",
+      "sha256": "63c74fb03efd42823363f098378598d38d539c7544eca3c500258ba007934e9a",
+      "url": "https://t1.data.amsterdam.nl/panorama/2016/06/09/TMX7315120208-000073/pano_0003_000317/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 296.46910871509874,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89783629636557,
+          52.371345373247,
+          47.8788708923385
+        ]
+      },
+      "panoramaSha256": "726495529eed53371559f2ba5182d73846bbaf135082dbb47727a6a8d8500c7e",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "bethaniendwarsstraat-left",
+      "alongM": 37.5,
+      "file": ".cache/street-appearance/images/bethaniendwarsstraat-left-38-perspective-v2.jpg",
+      "id": "bethaniendwarsstraat-left-38",
+      "kind": "municipal-panorama",
+      "panoramaId": "TMX7315120208-000073_pano_0003_000312",
+      "captureDate": "2016-06-09T08:25:16.691620Z",
+      "sha256": "afa606d9d873d51cbb81a2e07fa24c874dbdf2835e37d72a4cd88956c5d37fb2",
+      "url": "https://t1.data.amsterdam.nl/panorama/2016/06/09/TMX7315120208-000073/pano_0003_000312/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 296.46910871509874,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89801455473916,
+          52.371555672506,
+          47.3017150564119
+        ]
+      },
+      "panoramaSha256": "97fdbaef933839247fef93fc64885a3bbe949c771f662be1b76861e4a37fb27b",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "bethaniendwarsstraat-left",
+      "alongM": 62.5,
+      "file": ".cache/street-appearance/images/bethaniendwarsstraat-left-63-perspective-v2.jpg",
+      "id": "bethaniendwarsstraat-left-63",
+      "kind": "municipal-panorama",
+      "panoramaId": "TMX7316010203-001662_pano_0000_000192",
+      "captureDate": "2020-04-21T09:50:24.506180Z",
+      "sha256": "c6e6b4742a7c5102eff7b37892b6080e65e8fdecc174de062d5b0967c68c967e",
+      "url": "https://t1.data.amsterdam.nl/panorama/2020/04/21/TMX7316010203-001662/pano_0000_000192/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 296.46910871509874,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89820504076896,
+          52.3717439180062,
+          47.7713597398251
+        ]
+      },
+      "panoramaSha256": "77be9fed3ae62d49576106885744d97723f7da3456f9bff30fc8d1f0f80ef7a0",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "control-marcantilaan-right",
+      "alongM": 12.5,
+      "file": ".cache/street-appearance/images/control-marcantilaan-right-13-perspective-v2.jpg",
+      "id": "control-marcantilaan-right-13",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-06-18_10-07-55_00332",
+      "captureDate": "2025-06-18T10:16:48Z",
+      "sha256": "f79e447a10d96f9321b0d44e6ad57db3eb83ca5ecaf4d781e2ef6d0d621c773e",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-18_10-07-55_00332/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 186.63297316021345,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868039719354882,
+          52.37550441901181,
+          0
+        ]
+      },
+      "panoramaSha256": "2dc18ebac51f0e2c8642729f861b85e075fc97114f9556d9b1c3bea4e3c4497c",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "control-marcantilaan-right",
+      "alongM": 37.5,
+      "file": ".cache/street-appearance/images/control-marcantilaan-right-38-perspective-v2.jpg",
+      "id": "control-marcantilaan-right-38",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-06-18_10-07-55_00337",
+      "captureDate": "2025-06-18T10:16:54Z",
+      "sha256": "96b41e2d4e81f481df2e85d59d31b81856c0f46428979b5ebca4b88d1b370f7a",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-18_10-07-55_00337/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 186.63297316021345,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868404587625475,
+          52.375496077791055,
+          0
+        ]
+      },
+      "panoramaSha256": "f0df41e1533f95cd4eedaab2634618252c17fe759038b69e7c180107e92207f9",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "control-marcantilaan-right",
+      "alongM": 62.5,
+      "file": ".cache/street-appearance/images/control-marcantilaan-right-63-perspective-v2.jpg",
+      "id": "control-marcantilaan-right-63",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-06-18_10-07-55_00342",
+      "captureDate": "2025-06-18T10:16:58Z",
+      "sha256": "b1dae3db99e12d5e011862c1332f82a2837b93c7d0481f928331c681eee0bef5",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-18_10-07-55_00342/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 186.63297316021345,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868765630679908,
+          52.375455659506386,
+          0
+        ]
+      },
+      "panoramaSha256": "28e4507f6613c3a5940a11f310b3ee05d3e76fbfac21d0790b33bd5f6c222799",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "agent-visual-review"
+    },
+    {
+      "profileId": "control-marcantilaan-left",
+      "alongM": 12.5,
+      "file": ".cache/street-appearance/images/control-marcantilaan-left-13-perspective-v2.jpg",
+      "id": "control-marcantilaan-left-13",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-06-18_10-07-55_00332",
+      "captureDate": "2025-06-18T10:16:48Z",
+      "sha256": "1d1137d9f5a3370d9bcd0244df9e54a154f800ff0856651d7f39aefae07f9be1",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-18_10-07-55_00332/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 6.63297316021351,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868039719354882,
+          52.37550441901181,
+          0
+        ]
+      },
+      "panoramaSha256": "2dc18ebac51f0e2c8642729f861b85e075fc97114f9556d9b1c3bea4e3c4497c",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "uncertain-withheld"
+    },
+    {
+      "profileId": "control-marcantilaan-left",
+      "alongM": 37.5,
+      "file": ".cache/street-appearance/images/control-marcantilaan-left-38-perspective-v2.jpg",
+      "id": "control-marcantilaan-left-38",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-06-18_10-07-55_00337",
+      "captureDate": "2025-06-18T10:16:54Z",
+      "sha256": "a52cc080ae52af11f2cbb60ce44680811592271b2ca4bc9be27cd7d6e6a04679",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-18_10-07-55_00337/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 6.63297316021351,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868404587625475,
+          52.375496077791055,
+          0
+        ]
+      },
+      "panoramaSha256": "f0df41e1533f95cd4eedaab2634618252c17fe759038b69e7c180107e92207f9",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "uncertain-withheld"
+    },
+    {
+      "profileId": "control-marcantilaan-left",
+      "alongM": 62.5,
+      "file": ".cache/street-appearance/images/control-marcantilaan-left-63-perspective-v2.jpg",
+      "id": "control-marcantilaan-left-63",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-06-18_10-07-55_00342",
+      "captureDate": "2025-06-18T10:16:58Z",
+      "sha256": "4026a09fdc804ff0f40d3038d39aa750a960c877bf2ffc1aa213333c90cc3acb",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-18_10-07-55_00342/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 6.63297316021351,
+      "holdout": false,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.868765630679908,
+          52.375455659506386,
+          0
+        ]
+      },
+      "panoramaSha256": "28e4507f6613c3a5940a11f310b3ee05d3e76fbfac21d0790b33bd5f6c222799",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "uncertain-withheld"
+    },
+    {
+      "profileId": "overtoom-holdout-1",
+      "alongM": 12.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout-1-13-perspective-v2.jpg",
+      "id": "overtoom-holdout-1-13",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01612",
+      "captureDate": "2025-07-31T07:44:15Z",
+      "sha256": "6f822c7610b9cb91594dc37d29184f1ad7510abab7d2273632fab1860ac6e6e6",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01612/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 156.77611324457678,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.869592655223853,
+          52.36121290630814,
+          0
+        ]
+      },
+      "panoramaSha256": "8945efd83a52ffefd003050299882fa67b279197e422ab4a98ca33b74554fa2f",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout-1",
+      "alongM": 37.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout-1-38-perspective-v2.jpg",
+      "id": "overtoom-holdout-1-38",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01617",
+      "captureDate": "2025-07-31T07:44:19Z",
+      "sha256": "87634456865177963b37b22b3771685017810a3d07b5a6a5b3adb436e2fae25d",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01617/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 156.77611324457678,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.869927135216754,
+          52.36130520742594,
+          0
+        ]
+      },
+      "panoramaSha256": "f46c524983929ed022fcca81ba75b8ed554810f0c151e6ae3a267c3c49f2c587",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout-1",
+      "alongM": 62.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout-1-63-perspective-v2.jpg",
+      "id": "overtoom-holdout-1-63",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01622",
+      "captureDate": "2025-07-31T07:44:22Z",
+      "sha256": "a0918f9b0b52f06dd855c3e88ac35e0dfb3f09f47317b6bc1569fb85b7375f95",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01622/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 156.77611324457678,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.870264211442614,
+          52.361394040672806,
+          0
+        ]
+      },
+      "panoramaSha256": "851fe5fde4e3055737b1da62966300e67fe350a33e70020e60ab1eb15c89343d",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout-1",
+      "alongM": 87.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout-1-88-perspective-v2.jpg",
+      "id": "overtoom-holdout-1-88",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01627",
+      "captureDate": "2025-07-31T07:44:25Z",
+      "sha256": "4e0153e107a2a2582d1ad257bf79cdcc69a5ed437fe009cf95cbc6304f7250f4",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01627/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 156.77611324457678,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.870600931364496,
+          52.3614833297739,
+          0
+        ]
+      },
+      "panoramaSha256": "64b18de13226aa55c289029cc99bf6f2158729369ac83aa5d48a976c1dcf9b6d",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout-1",
+      "alongM": 112.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout-1-113-perspective-v2.jpg",
+      "id": "overtoom-holdout-1-113",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01632",
+      "captureDate": "2025-07-31T07:44:28Z",
+      "sha256": "72c1b5f9a32c2dea2ac3c5e5e47ccf209463ac5cbae4ce16b18ccb1293df5fb7",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01632/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 156.77611324457678,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.870938264983454,
+          52.36157172181327,
+          0
+        ]
+      },
+      "panoramaSha256": "9f85b20ca949214c8255903a8f939e417d18df684f46c79827c659355755dea8",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout-1",
+      "alongM": 137.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout-1-138-perspective-v2.jpg",
+      "id": "overtoom-holdout-1-138",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01637",
+      "captureDate": "2025-07-31T07:44:31Z",
+      "sha256": "cda0c0369d6fede4e6be3701b1acb834b891aec6dbcbf2434132d9924b5ef832",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01637/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 156.77611324457678,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.8712751365072,
+          52.36166082989095,
+          0
+        ]
+      },
+      "panoramaSha256": "9df921b55da6203495ae54a134bec4de33f9bf25a7ce5786ac3d654bd472b98a",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "bethanienstraat-holdout-1",
+      "alongM": 12.5,
+      "file": ".cache/street-appearance/images/bethanienstraat-holdout-1-13-perspective-v2.jpg",
+      "id": "bethanienstraat-holdout-1-13",
+      "kind": "municipal-panorama",
+      "panoramaId": "TMX7316010203-001662_pano_0000_000194",
+      "captureDate": "2020-04-21T09:50:26.951100Z",
+      "sha256": "ad9dc1ced4f03558aed3b6eab221b9dfde0d58fc69bcbad1b4b7d777f5cab70c",
+      "url": "https://t1.data.amsterdam.nl/panorama/2020/04/21/TMX7316010203-001662/pano_0000_000194/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 206.8568220654033,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89833891176421,
+          52.3717046853722,
+          47.6377689559013
+        ]
+      },
+      "panoramaSha256": "9236ab90baad3bcc8b2758834947b2b63f9dadf496ddca486e4a66500441c714",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "bethanienstraat-holdout-1",
+      "alongM": 37.5,
+      "file": ".cache/street-appearance/images/bethanienstraat-holdout-1-38-perspective-v2.jpg",
+      "id": "bethanienstraat-holdout-1-38",
+      "kind": "municipal-panorama",
+      "panoramaId": "TMX7316010203-001662_pano_0000_000199",
+      "captureDate": "2020-04-21T09:50:31.626130Z",
+      "sha256": "bb3dbfd0a4f3e9a5e078229e05d341e726723adf49a3f50ddde292441e9ca98a",
+      "url": "https://t1.data.amsterdam.nl/panorama/2020/04/21/TMX7316010203-001662/pano_0000_000199/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 206.8568220654033,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89866755466001,
+          52.371602112936,
+          47.5302305398509
+        ]
+      },
+      "panoramaSha256": "00ea8ae60758bf38cd18c753c8aa2a1e49ab85f14d8f470d2dff2f2393034ab2",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout1",
+      "alongM": 12.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout1-13-perspective-v2.jpg",
+      "id": "overtoom-holdout1-13",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01612",
+      "captureDate": "2025-07-31T07:44:15Z",
+      "sha256": "9962b08693873771d3a42ac67727d408ded4e273db0134a4eee90ae77cda87cf",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01612/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 336.7761132445767,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.869592655223853,
+          52.36121290630814,
+          0
+        ]
+      },
+      "panoramaSha256": "8945efd83a52ffefd003050299882fa67b279197e422ab4a98ca33b74554fa2f",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout1",
+      "alongM": 37.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout1-38-perspective-v2.jpg",
+      "id": "overtoom-holdout1-38",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01617",
+      "captureDate": "2025-07-31T07:44:19Z",
+      "sha256": "c64e902a72cf51c068b2ef57a55ab5a4e637e5b318e85b7cfceea3c1dad9f2ff",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01617/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 336.7761132445767,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.869927135216754,
+          52.36130520742594,
+          0
+        ]
+      },
+      "panoramaSha256": "f46c524983929ed022fcca81ba75b8ed554810f0c151e6ae3a267c3c49f2c587",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout1",
+      "alongM": 62.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout1-63-perspective-v2.jpg",
+      "id": "overtoom-holdout1-63",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01622",
+      "captureDate": "2025-07-31T07:44:22Z",
+      "sha256": "258c71847a1659c3123382b20b34a0c427448097f40531a7ecefb959883dccc7",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01622/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 336.7761132445767,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.870264211442614,
+          52.361394040672806,
+          0
+        ]
+      },
+      "panoramaSha256": "851fe5fde4e3055737b1da62966300e67fe350a33e70020e60ab1eb15c89343d",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout1",
+      "alongM": 87.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout1-88-perspective-v2.jpg",
+      "id": "overtoom-holdout1-88",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01627",
+      "captureDate": "2025-07-31T07:44:25Z",
+      "sha256": "ff8a548ac0580d5a03bfa8c1baab184fd119e91193a26f11dd571c33aa9a28c1",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01627/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 336.7761132445767,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.870600931364496,
+          52.3614833297739,
+          0
+        ]
+      },
+      "panoramaSha256": "64b18de13226aa55c289029cc99bf6f2158729369ac83aa5d48a976c1dcf9b6d",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout1",
+      "alongM": 112.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout1-113-perspective-v2.jpg",
+      "id": "overtoom-holdout1-113",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01632",
+      "captureDate": "2025-07-31T07:44:28Z",
+      "sha256": "94e410f0f2f6b2d2ba7340a615398aa64fe9f4f33a1203eb2d4856a6514e555d",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01632/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 336.7761132445767,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.870938264983454,
+          52.36157172181327,
+          0
+        ]
+      },
+      "panoramaSha256": "9f85b20ca949214c8255903a8f939e417d18df684f46c79827c659355755dea8",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "overtoom-holdout1",
+      "alongM": 137.5,
+      "file": ".cache/street-appearance/images/overtoom-holdout1-138-perspective-v2.jpg",
+      "id": "overtoom-holdout1-138",
+      "kind": "municipal-panorama",
+      "panoramaId": "recording_2025-07-31_06-59-14_01637",
+      "captureDate": "2025-07-31T07:44:31Z",
+      "sha256": "46e1a9e296d1f2ee8af4e5e1a0051c7b53e35444559f3b359c71d56c1940b12a",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01637/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 336.7761132445767,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.8712751365072,
+          52.36166082989095,
+          0
+        ]
+      },
+      "panoramaSha256": "9df921b55da6203495ae54a134bec4de33f9bf25a7ce5786ac3d654bd472b98a",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 750,
+        "fovDeg": 90,
+        "pitchDeg": 8
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "bethanienstraat-holdout1",
+      "alongM": 12.5,
+      "file": ".cache/street-appearance/images/bethanienstraat-holdout1-13-perspective-v2.jpg",
+      "id": "bethanienstraat-holdout1-13",
+      "kind": "municipal-panorama",
+      "panoramaId": "TMX7316010203-001662_pano_0000_000194",
+      "captureDate": "2020-04-21T09:50:26.951100Z",
+      "sha256": "6018e3e8130620977b44271bcb9f9a576b19fbbd7d69b3ce8271b572a8f54a8e",
+      "url": "https://t1.data.amsterdam.nl/panorama/2020/04/21/TMX7316010203-001662/pano_0000_000194/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 26.85682206540332,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89833891176421,
+          52.3717046853722,
+          47.6377689559013
+        ]
+      },
+      "panoramaSha256": "9236ab90baad3bcc8b2758834947b2b63f9dadf496ddca486e4a66500441c714",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "appearanceReview": "withheld-for-validation"
+    },
+    {
+      "profileId": "bethanienstraat-holdout1",
+      "alongM": 37.5,
+      "file": ".cache/street-appearance/images/bethanienstraat-holdout1-38-perspective-v2.jpg",
+      "id": "bethanienstraat-holdout1-38",
+      "kind": "municipal-panorama",
+      "panoramaId": "TMX7316010203-001662_pano_0000_000199",
+      "captureDate": "2020-04-21T09:50:31.626130Z",
+      "sha256": "ea26ec98f798a9726c58965fefdd43b796bb486f2d9d2b46ae2d8e15fd904b36",
+      "url": "https://t1.data.amsterdam.nl/panorama/2020/04/21/TMX7316010203-001662/pano_0000_000199/equirectangular/panorama_4000.jpg",
+      "notes": "Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration.",
+      "inferenceRequested": null,
+      "heading": 26.85682206540332,
+      "holdout": true,
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89866755466001,
+          52.371602112936,
+          47.5302305398509
+        ]
+      },
+      "panoramaSha256": "00ea8ae60758bf38cd18c753c8aa2a1e49ab85f14d8f470d2dff2f2393034ab2",
+      "perspective": {
+        "version": 2,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "appearanceReview": "withheld-for-validation"
+    }
+  ],
+  "failures": [],
+  "holdoutSegments": [
+    "overtoom-holdout-1",
+    "bethanienstraat-holdout-1",
+    "overtoom-holdout1",
+    "bethanienstraat-holdout1"
+  ],
+  "coverage": [
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-right",
+      "lengthM": 106.09402887229969,
+      "samples": 4,
+      "stationIntervalM": 25,
+      "endGapM": 6.094028872299688,
+      "admitted": false,
+      "holdout": false
+    },
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-left",
+      "lengthM": 106.09402887229969,
+      "samples": 4,
+      "stationIntervalM": 25,
+      "endGapM": 6.094028872299688,
+      "admitted": false,
+      "holdout": false
+    },
+    {
+      "profileId": "bethaniendwarsstraat-right",
+      "lengthM": 62.976973802620556,
+      "samples": 3,
+      "stationIntervalM": 25,
+      "endGapM": 0,
+      "admitted": false,
+      "holdout": false
+    },
+    {
+      "profileId": "bethaniendwarsstraat-left",
+      "lengthM": 62.976973802620556,
+      "samples": 3,
+      "stationIntervalM": 25,
+      "endGapM": 0,
+      "admitted": false,
+      "holdout": false
+    },
+    {
+      "profileId": "control-marcantilaan-right",
+      "lengthM": 76.55866400331142,
+      "samples": 3,
+      "stationIntervalM": 25,
+      "endGapM": 1.5586640033114207,
+      "admitted": false,
+      "holdout": false
+    },
+    {
+      "profileId": "control-marcantilaan-left",
+      "lengthM": 76.55866400331142,
+      "samples": 3,
+      "stationIntervalM": 25,
+      "endGapM": 1.5586640033114207,
+      "admitted": false,
+      "holdout": false
+    },
+    {
+      "profileId": "overtoom-holdout-1",
+      "lengthM": 159.7864441347158,
+      "samples": 6,
+      "stationIntervalM": 25,
+      "endGapM": 9.786444134715794,
+      "admitted": false,
+      "holdout": true
+    },
+    {
+      "profileId": "bethanienstraat-holdout-1",
+      "lengthM": 57.745914202720066,
+      "samples": 2,
+      "stationIntervalM": 25,
+      "endGapM": 7.745914202720066,
+      "admitted": false,
+      "holdout": true
+    },
+    {
+      "profileId": "overtoom-holdout1",
+      "lengthM": 159.7864441347158,
+      "samples": 6,
+      "stationIntervalM": 25,
+      "endGapM": 9.786444134715794,
+      "admitted": false,
+      "holdout": true
+    },
+    {
+      "profileId": "bethanienstraat-holdout1",
+      "lengthM": 57.745914202720066,
+      "samples": 2,
+      "stationIntervalM": 25,
+      "endGapM": 7.745914202720066,
+      "admitted": false,
+      "holdout": true
+    },
+    {
+      "profileId": "bethanienstraat-observed-historic-pair",
+      "lengthM": 17.000012519558176,
+      "samples": 2,
+      "stationIntervalM": 0,
+      "endGapM": 0,
+      "admitted": true,
+      "holdout": false
+    },
+    {
+      "profileId": "bethanienstraat-transition-context",
+      "lengthM": 57.745914202720066,
+      "samples": 3,
+      "stationIntervalM": 0,
+      "endGapM": 0,
+      "admitted": true,
+      "holdout": false
+    }
+  ],
+  "runtimeRevision": "44fb4363499779ec",
+  "reviewMode": "agent-visual-review; model proposals retained separately",
+  "trainedProfiles": [
+    "bethanienstraat-observed-historic-pair",
+    "bethanienstraat-transition-context"
+  ],
+  "holdoutPriorTransfer": [],
+  "frontageSurvey": {
+    "url": "frontage-survey.json",
+    "sha256": "40a5cacf7eaf54871e937194255e3889c1d1de442c6cfe9b25ca8c5ec91f79d4",
+    "assignments": 7
+  }
+}

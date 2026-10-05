@@ -47,7 +47,7 @@ export function windowSpans(c: ExtraContext, s: number): Span[] {
     const row: OpeningRow | null = s >= 0 ? o.upper : doors.has(i) ? o.doorWindow : c.shopfront ? null : o.ground;
     if (!row) continue;
     const z = s >= 0 ? storeyZ(c, s) : c.base, h = s >= 0 ? l.storeyM : l.groundM;
-    for (const axis of row.axes) out.push({ x: (i + axis) * bw, hw: (row.width * bw) / 2, z0: z + row.sill * h, z1: z + row.head * h });
+    for (const [index,axis] of row.axes.entries()) out.push({ x: (i + axis) * bw, hw: ((row.widths?.[index] ?? row.width) * bw) / 2, z0: z + row.sill * h, z1: z + row.head * h });
   }
   return out;
 }
@@ -124,6 +124,52 @@ export function restrainedDoorSurround(c: ExtraContext, s: ExtraSink, r: number)
   if (c.recipe.period === 'c19' && r < (c.recipe.trim?.arches ?? 0) * .7 && cap + .06 < c.base + c.layout.groundM) {
     s.strip(c.f, d.x - .045, d.x + .045, .065, top - .025, cap + .06, pale);
   }
+}
+
+/** One source-supported entrance: raised access, joined pilasters and an open pediment. */
+export function raisedPilasterEntrance(c: ExtraContext, s: ExtraSink): void {
+  const d = doorSpan(c);
+  if (!d || c.shopfront || !c.groundLevel || c.recipe?.entranceAssembly !== 'raised-pilaster') return;
+  const colour = c.recipe.frameHex ?? WHITE;
+  const l = d.x - d.hw, right = d.x + d.hw, a = l - .19, b = right + .19;
+  const head = d.z1 + .05, rise = Math.min(.28, (b - a) * .2), crown = head + .14;
+  if (a < .03 || b > c.f.len - .03 || crown + rise > c.base + c.layout.groundM - .04) return;
+  s.begin();
+  // The stair landing reaches the painted threshold rather than standing below a flush door.
+  const threshold = d.z0 - c.base;
+  for (let i = 0; i < 3; i++) {
+    s.box(c.f, a, b, .01, .78 - i * .23, c.base + threshold * i / 3, c.base + threshold * (i + 1) / 3, STONE, true);
+  }
+  for (const [p, q] of [[a, l - .015], [right + .015, b]]) {
+    s.strip(c.f, p, q, .10, d.z0, head + .10, colour);
+    s.strip(c.f, p - .02, q + .02, .15, d.z0, d.z0 + .12, colour);
+    s.strip(c.f, p - .02, q + .02, .15, head - .09, head + .07, colour);
+  }
+  s.strip(c.f, a - .02, b + .02, .16, head, crown, colour);
+  // Two narrow diagonal mouldings leave masonry visible within the triangular crown.
+  const apex = d.x, z = crown + rise;
+  s.wallQuad(c.f, [[a - .04, crown], [apex, z], [apex, z - .055], [a - .04, crown - .055]], .17, colour);
+  s.wallQuad(c.f, [[apex, z], [b + .04, crown], [b + .04, crown - .055], [apex, z - .055]], .17, colour);
+  s.strip(c.f, a - .04, b + .04, .17, crown - .055, crown, colour);
+  // A joined floor course continues the portal's horizontal hierarchy across the front.
+  const floor = c.base + c.layout.groundM;
+  s.strip(c.f, 0, c.f.len, .12, floor - .12, floor - .04, colour);
+  s.strip(c.f, 0, c.f.len, .16, floor - .04, floor + .015, colour);
+  s.commit();
+}
+
+/** A quieter observed raised entrance shares its leaf and stair landing, without a pediment. */
+export function raisedPlainEntrance(c: ExtraContext, s: ExtraSink): void {
+  const d = doorSpan(c);
+  if (!d || c.shopfront || !c.groundLevel || c.recipe?.entranceAssembly !== 'raised-plain') return;
+  const a = d.x - d.hw - .12, b = d.x + d.hw + .12;
+  if (a < .02 || b > c.f.len - .02) return;
+  s.begin();
+  restrainedDoorSurround(c, s, 1);
+  const threshold = d.z0 - c.base;
+  for (let i = 0; i < 3; i++) s.box(c.f, a, b, .01, .75 - i * .22,
+    c.base + threshold * i / 3, c.base + threshold * (i + 1) / 3, STONE, true);
+  s.commit();
 }
 
 export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [

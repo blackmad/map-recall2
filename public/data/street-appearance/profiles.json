@@ -1,0 +1,551 @@
+{
+  "schemaVersion": 1,
+  "revision": "44fb4363499779ec",
+  "profiles": [
+    {
+      "id": "bethanienstraat-observed-historic-pair",
+      "streetName": "Bethaniënstraat",
+      "revision": "d79badd283cbe0f5",
+      "segment": [
+        [
+          4.898321264698198,
+          52.37171713130768
+        ],
+        [
+          4.8985444146851345,
+          52.37164765453075
+        ]
+      ],
+      "side": -1,
+      "reachM": 12,
+      "confidence": 0.92,
+      "assemblyM": 6,
+      "status": "reviewed",
+      "visualClass": {
+        "kind": "historic-frontage",
+        "constructionYearPolicy": "source-visual",
+        "sourceEvidenceIds": [
+          "TMX7316010203-000227_pano_0000_000671",
+          "TMX7316010203-000709_pano_0000_001508"
+        ]
+      },
+      "evidence": [
+        {
+          "id": "TMX7316010203-000227_pano_0000_000671",
+          "kind": "municipal-panorama",
+          "captureDate": "2017-03-29T08:24:19.945450Z",
+          "sha256": "358cfb2cad28a1bdbc894dd9f815ebfe4b2109ad2ba62d81815e9dc8db0c74ad",
+          "url": "https://t1.data.amsterdam.nl/panorama/2017/03/29/TMX7316010203-000227/pano_0000_000671/equirectangular/panorama_4000.jpg",
+          "panoramaId": "TMX7316010203-000227_pano_0000_000671",
+          "inference": "agent-visual-review",
+          "quality": 0.92,
+          "notes": "Brown narrow historical-looking pair beside pale modern modules; neck and point crown, pale framed tall subdivided glazing. Appearance observation preserves 1992 BAG fact. Source: retry12/source-plan.md; exact registration and counts secondary."
+        },
+        {
+          "id": "TMX7316010203-000709_pano_0000_001508",
+          "kind": "municipal-panorama",
+          "captureDate": "2018-05-07T10:06:49.303040Z",
+          "sha256": "c2ae8994395bf14e715e0b606435bf4d50e24d8f0f302a432a523b418d78d104",
+          "url": "https://t1.data.amsterdam.nl/panorama/2018/05/07/TMX7316010203-000709/pano_0000_001508/equirectangular/panorama_4000.jpg",
+          "panoramaId": "TMX7316010203-000709_pano_0000_001508",
+          "inference": "agent-visual-review",
+          "quality": 0.92,
+          "notes": "Brown narrow historical-looking pair beside pale modern modules; neck and point crown, pale framed tall subdivided glazing. Appearance observation preserves 1992 BAG fact. Source: retry12/source-plan.md; exact registration and counts secondary."
+        }
+      ],
+      "recipes": [
+        {
+          "weight": 1,
+          "heightMin": 8,
+          "heightMax": 14,
+          "frontageMin": 4,
+          "frontageMax": 6.5,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "crownShape": "neck",
+            "wallHex": "#704b3e",
+            "frameHex": "#dfd8c6",
+            "groundWallHex": "#c9c4b4",
+            "windowWidth": 0.64,
+            "windowHeight": 0.72,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": false,
+            "sash": "six-over-six",
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1,
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "trim": {
+              "frames": 0.9,
+              "lintels": 0.3,
+              "cornice": 0.6,
+              "courses": 0.1,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.9
+          }
+        },
+        {
+          "weight": 1,
+          "heightMin": 8,
+          "heightMax": 14,
+          "frontageMin": 4,
+          "frontageMax": 6.5,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "crownShape": "plain",
+            "wallHex": "#765044",
+            "frameHex": "#dfd8c6",
+            "groundWallHex": "#c9c4b4",
+            "windowWidth": 0.64,
+            "windowHeight": 0.72,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": false,
+            "sash": "six-over-six",
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1,
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "trim": {
+              "frames": 0.9,
+              "lintels": 0.3,
+              "cornice": 0.6,
+              "courses": 0.1,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.9
+          }
+        }
+      ],
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178209",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.898409991352,
+              52.3716659895
+            ],
+            "end": [
+              4.898487008648,
+              52.3716420105
+            ],
+            "widthM": 5.867332
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178531",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.898348997406,
+              52.37168499685
+            ],
+            "end": [
+              4.898410002594,
+              52.37166600315
+            ],
+            "widthM": 4.647497
+          }
+        }
+      ]
+    },
+    {
+      "id": "bethanienstraat-transition-context",
+      "streetName": "Bethaniënstraat",
+      "revision": "62679a2d51fba388",
+      "segment": [
+        [
+          4.89819,
+          52.371758
+        ],
+        [
+          4.898948,
+          52.371522
+        ]
+      ],
+      "side": -1,
+      "reachM": 12,
+      "confidence": 0.68,
+      "assemblyM": 18,
+      "recipes": [
+        {
+          "weight": 4.285714285714285,
+          "yearMax": 1945,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#393b3e",
+            "frameHex": "#e6e1d4",
+            "windowWidth": 0.55,
+            "windowHeight": 0.73,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": false,
+            "trim": {
+              "frames": 0.8,
+              "lintels": 0.7,
+              "cornice": 0.7,
+              "courses": 0.05,
+              "quoins": 0,
+              "arches": 0.25
+            },
+            "confidence": 0.68,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true
+          }
+        },
+        {
+          "weight": 6.428571428571429,
+          "yearMax": 1945,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#744a3d",
+            "frameHex": "#e6e1d4",
+            "windowWidth": 0.55,
+            "windowHeight": 0.73,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": false,
+            "trim": {
+              "frames": 0.8,
+              "lintels": 0.7,
+              "cornice": 0.7,
+              "courses": 0.1,
+              "quoins": 0,
+              "arches": 0.25
+            },
+            "confidence": 0.68,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true
+          }
+        },
+        {
+          "weight": 2.1428571428571423,
+          "yearMax": 1945,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#d3c7ad",
+            "frameHex": "#e6e1d4",
+            "windowWidth": 0.55,
+            "windowHeight": 0.73,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": false,
+            "trim": {
+              "frames": 0.8,
+              "lintels": 0.7,
+              "cornice": 0.7,
+              "courses": 0.1,
+              "quoins": 0,
+              "arches": 0.25
+            },
+            "confidence": 0.68,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true
+          }
+        },
+        {
+          "weight": 2.1428571428571423,
+          "yearMin": 1946,
+          "recipe": {
+            "family": "punched",
+            "period": "modern",
+            "wallHex": "#c6baa3",
+            "frameHex": "#e6e1d4",
+            "windowWidth": 0.57,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "trim": {
+              "frames": 0.8,
+              "lintels": 0.1,
+              "cornice": 0.1,
+              "courses": 0.05,
+              "quoins": 0,
+              "arches": 0.05
+            },
+            "confidence": 0.68,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "smooth",
+            "atticWindows": false,
+            "facadeAssembly": "stacked-open-balcony",
+            "bayScale": 1.1,
+            "groundWallHex": "#787b76",
+            "groundScale": 0.85
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "bethaniendwarsstraat-right-13",
+          "kind": "municipal-panorama",
+          "captureDate": "2016-06-09T08:25:25.621550Z",
+          "sha256": "9c5642277f8cf329c9849f9618631aaaae41c9f813f79099671b85c29c088f9d",
+          "url": "https://t1.data.amsterdam.nl/panorama/2016/06/09/TMX7315120208-000073/pano_0003_000317/equirectangular/panorama_4000.jpg",
+          "panoramaId": "TMX7315120208-000073_pano_0003_000317",
+          "inference": "agent-visual-review",
+          "quality": 0.68,
+          "notes": "Inspected both 13m and 38m upper perspective crops. Narrow historic brick fronts, tall individually framed windows, modest pale lintels/cornice. Samrat side includes dark painted stepped-gable facade, neighboring red brick and pale plaster. Opposite is predominantly red/brown masonry. No inferred roof geometry or business details. Pale painted masonry is also visible; modern pale infill retains its separate punched-window family when construction year supports it. All three stations including the intersection-end context were inspected. Cycle 2 source re-review: thin surrounds and sparse sash divisions, restrained ground floors; opening-jamb block accents limited to the stronger nineteenth-century masonry recipe. Control blocks retain granular brick with individual punched openings. Cycle 3 source re-review: sparse attic openings are permitted only inside an existing compatible crown; roof geometry, source heights and measured colors remain authoritative. Retry capability review: training right-38 perspective crop (municipal 2016-06-09) directly shows thin balcony floors with open railings vertically stacked on aligned access glazing, narrow side windows and continuous vertical framing; right-63 (2020-04-21) supports the same modern infill assembly obliquely. Historical training fronts show paired glazing with a transom. Shared paired-transom and stacked-open-balcony capabilities encode these relationships as bounded street priors. Neighboring holdout crops remain excluded from compilation and recipe tuning; visible acceptance is pending independent retry review. Retry cycle 5 training-source capability correction: right-38 shows a slate-grey block-coursed ground wall and vertically grouped tall glazing with transoms and central access, distinct from pale upper walls. Modern joint assembly now carries groundWallHex #787b76; generic mapped shop semantics do not imply a full-width fascia. Genuine branded/cafe appearance remains authoritative. Visual admission remains pending. Retry cycle 6 module-density correction: training modern stack uses a broad central access pane with narrower flank panes, not repeated uniform triplets. Approximate street-level bayScale 1.10 represents a roughly 4.6m nominal module and groundScale .85 a roughly 3.2m ground level; values are procedural priors, not registered per-building measurements. Construction facts remain unchanged and historic/modern boundary ambiguity is recorded separately. Recipes are approximate procedural priors, not measured per-building colours/proportions. Original panorama remains municipal CC BY 4.0. Perspective crop hash and source link identify inspected evidence. Bounded publication extent: Bethanienstraat transition, independently reviewed in retry14. Recipes transferred unchanged from bethaniendwarsstraat-right; original holdout and failed reviews retained in research artifacts."
+        },
+        {
+          "id": "bethaniendwarsstraat-right-38",
+          "kind": "municipal-panorama",
+          "captureDate": "2016-06-09T08:25:16.691620Z",
+          "sha256": "3544fa7138f53ab0eedda9c4936e9637dc6209200f9e80f4b158c264bc758c4e",
+          "url": "https://t1.data.amsterdam.nl/panorama/2016/06/09/TMX7315120208-000073/pano_0003_000312/equirectangular/panorama_4000.jpg",
+          "panoramaId": "TMX7315120208-000073_pano_0003_000312",
+          "inference": "agent-visual-review",
+          "quality": 0.68,
+          "notes": "Inspected both 13m and 38m upper perspective crops. Narrow historic brick fronts, tall individually framed windows, modest pale lintels/cornice. Samrat side includes dark painted stepped-gable facade, neighboring red brick and pale plaster. Opposite is predominantly red/brown masonry. No inferred roof geometry or business details. Pale painted masonry is also visible; modern pale infill retains its separate punched-window family when construction year supports it. All three stations including the intersection-end context were inspected. Cycle 2 source re-review: thin surrounds and sparse sash divisions, restrained ground floors; opening-jamb block accents limited to the stronger nineteenth-century masonry recipe. Control blocks retain granular brick with individual punched openings. Cycle 3 source re-review: sparse attic openings are permitted only inside an existing compatible crown; roof geometry, source heights and measured colors remain authoritative. Retry capability review: training right-38 perspective crop (municipal 2016-06-09) directly shows thin balcony floors with open railings vertically stacked on aligned access glazing, narrow side windows and continuous vertical framing; right-63 (2020-04-21) supports the same modern infill assembly obliquely. Historical training fronts show paired glazing with a transom. Shared paired-transom and stacked-open-balcony capabilities encode these relationships as bounded street priors. Neighboring holdout crops remain excluded from compilation and recipe tuning; visible acceptance is pending independent retry review. Retry cycle 5 training-source capability correction: right-38 shows a slate-grey block-coursed ground wall and vertically grouped tall glazing with transoms and central access, distinct from pale upper walls. Modern joint assembly now carries groundWallHex #787b76; generic mapped shop semantics do not imply a full-width fascia. Genuine branded/cafe appearance remains authoritative. Visual admission remains pending. Retry cycle 6 module-density correction: training modern stack uses a broad central access pane with narrower flank panes, not repeated uniform triplets. Approximate street-level bayScale 1.10 represents a roughly 4.6m nominal module and groundScale .85 a roughly 3.2m ground level; values are procedural priors, not registered per-building measurements. Construction facts remain unchanged and historic/modern boundary ambiguity is recorded separately. Recipes are approximate procedural priors, not measured per-building colours/proportions. Original panorama remains municipal CC BY 4.0. Perspective crop hash and source link identify inspected evidence. Bounded publication extent: Bethanienstraat transition, independently reviewed in retry14. Recipes transferred unchanged from bethaniendwarsstraat-right; original holdout and failed reviews retained in research artifacts."
+        },
+        {
+          "id": "bethaniendwarsstraat-right-63",
+          "kind": "municipal-panorama",
+          "captureDate": "2020-04-21T09:50:24.506180Z",
+          "sha256": "967ff655387b93d877efc3b05f31ad0e6386260f1f320aadda147e92087e57a5",
+          "url": "https://t1.data.amsterdam.nl/panorama/2020/04/21/TMX7316010203-001662/pano_0000_000192/equirectangular/panorama_4000.jpg",
+          "panoramaId": "TMX7316010203-001662_pano_0000_000192",
+          "inference": "agent-visual-review",
+          "quality": 0.68,
+          "notes": "Inspected both 13m and 38m upper perspective crops. Narrow historic brick fronts, tall individually framed windows, modest pale lintels/cornice. Samrat side includes dark painted stepped-gable facade, neighboring red brick and pale plaster. Opposite is predominantly red/brown masonry. No inferred roof geometry or business details. Pale painted masonry is also visible; modern pale infill retains its separate punched-window family when construction year supports it. All three stations including the intersection-end context were inspected. Cycle 2 source re-review: thin surrounds and sparse sash divisions, restrained ground floors; opening-jamb block accents limited to the stronger nineteenth-century masonry recipe. Control blocks retain granular brick with individual punched openings. Cycle 3 source re-review: sparse attic openings are permitted only inside an existing compatible crown; roof geometry, source heights and measured colors remain authoritative. Retry capability review: training right-38 perspective crop (municipal 2016-06-09) directly shows thin balcony floors with open railings vertically stacked on aligned access glazing, narrow side windows and continuous vertical framing; right-63 (2020-04-21) supports the same modern infill assembly obliquely. Historical training fronts show paired glazing with a transom. Shared paired-transom and stacked-open-balcony capabilities encode these relationships as bounded street priors. Neighboring holdout crops remain excluded from compilation and recipe tuning; visible acceptance is pending independent retry review. Retry cycle 5 training-source capability correction: right-38 shows a slate-grey block-coursed ground wall and vertically grouped tall glazing with transoms and central access, distinct from pale upper walls. Modern joint assembly now carries groundWallHex #787b76; generic mapped shop semantics do not imply a full-width fascia. Genuine branded/cafe appearance remains authoritative. Visual admission remains pending. Retry cycle 6 module-density correction: training modern stack uses a broad central access pane with narrower flank panes, not repeated uniform triplets. Approximate street-level bayScale 1.10 represents a roughly 4.6m nominal module and groundScale .85 a roughly 3.2m ground level; values are procedural priors, not registered per-building measurements. Construction facts remain unchanged and historic/modern boundary ambiguity is recorded separately. Recipes are approximate procedural priors, not measured per-building colours/proportions. Original panorama remains municipal CC BY 4.0. Perspective crop hash and source link identify inspected evidence. Bounded publication extent: Bethanienstraat transition, independently reviewed in retry14. Recipes transferred unchanged from bethaniendwarsstraat-right; original holdout and failed reviews retained in research artifacts."
+        }
+      ],
+      "status": "reviewed",
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178208",
+          "recipeIndex": 3
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178308",
+          "recipeIndex": 1
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178381",
+          "recipeIndex": 0
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178532",
+          "recipeIndex": 3
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178533",
+          "recipeIndex": 1
+        }
+      ]
+    }
+  ],
+  "streetFrontPaths": [
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899456,
+          52.372114
+        ],
+        [
+          4.899174,
+          52.371768
+        ],
+        [
+          4.898948,
+          52.371522
+        ],
+        [
+          4.898754,
+          52.37131
+        ],
+        [
+          4.898641,
+          52.371187
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898974,
+          52.370933
+        ],
+        [
+          4.899647,
+          52.371647
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.897716,
+          52.372407
+        ],
+        [
+          4.896849,
+          52.371586
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.897522,
+          52.371978
+        ],
+        [
+          4.897804,
+          52.372237
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.89819,
+          52.371758
+        ],
+        [
+          4.897704,
+          52.371917
+        ],
+        [
+          4.897522,
+          52.371978
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898948,
+          52.371522
+        ],
+        [
+          4.89819,
+          52.371758
+        ]
+      ]
+    },
+    {
+      "highway": "cycleway",
+      "points": [
+        [
+          4.898156,
+          52.371149
+        ],
+        [
+          4.897777,
+          52.371248
+        ],
+        [
+          4.897019,
+          52.371449
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.897777,
+          52.371248
+        ],
+        [
+          4.898038,
+          52.371566
+        ],
+        [
+          4.89819,
+          52.371758
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.899174,
+          52.371768
+        ],
+        [
+          4.897804,
+          52.372237
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898641,
+          52.371187
+        ],
+        [
+          4.898575,
+          52.371207
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898575,
+          52.371207
+        ],
+        [
+          4.898552,
+          52.371213
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898552,
+          52.371213
+        ],
+        [
+          4.898349,
+          52.371269
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Reviewed Bethaniënstraat transition
+
+This is the durable decision record for the bounded street-side release, revision44fb4363499779ec. Local rendered evidence remains in artifacts/street-appearance/retry/12–14; the comparison demo is http://127.0.0.1:5197/retry/14/index.html. The immutable stage/game bundle hashes and camera conditions are recorded in game.json and release.json. These files preserve failures as well as the accepted result; they do not claim district or city completion.
+
+Source originals, derived crops, original manifests and original pilot cache are preserved in private blackmad/map-recall2-source-data commit54330af. Register descriptions corroborate a historic core at a1992-dated frontage; native dates/heights/footprints are unchanged. The compiler uses class width/height/side/chainage and reviewed source provenance, with baked full-cohort assignments, rather than photographed identity matching.
+
+Publication includes only a57m transition context and nested17m historic class. Seven exposed native runs, two source-class fronts. Other pilot profiles are withheld. Seventy source/geometry/rendering checks and TypeScript pass. Independent native views at all three fixed stations and the final game in four looks pass the bounded criteria. GPU medians1.71–3.86ms and p95<=5.48ms on local M4Pro/Chrome satisfy the local frame budget; on/off variability prevents a stable relative-cost estimate. Stationary rider relocation is a scene test, not route reachability. Touch and city-scale acceptance remain untested.

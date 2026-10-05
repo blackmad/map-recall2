@@ -1,0 +1,66 @@
+{
+  "cycle": 13,
+  "reviewer": "independent failure-seeking agent",
+  "decision": "bounded-native-visual-pass-with-recorded-secondary-defects",
+  "scope": "Only observed Bethanienstraat south-side pair and adjoining modern transition. No city, neighborhood or production completion.",
+  "priorFailure": {
+    "cycle": 12,
+    "decision": "fail",
+    "record": "../12/independent-review.json",
+    "reason": "Unsupported repeated black-rail projecting balconies on historical pair. Failure evidence preserved; repaired in cycle13."
+  },
+  "method": "Direct tools.view_image comparison of three original municipal evaluation crops and representative admitted source671/1508, plus all nine cycle13 source-row, block and opposite-oblique captures.",
+  "sourceManifest": "../12/evaluation-source/manifest.json",
+  "renderEvidence": [
+    "artifacts/street-appearance/retry/13/challenge/TMX7316010203-000227_pano_0000_000676-photo-source-row.png",
+    "artifacts/street-appearance/retry/13/challenge/TMX7316010203-000227_pano_0000_000676-photo-block.png",
+    "artifacts/street-appearance/retry/13/challenge/TMX7316010203-000227_pano_0000_000676-photo-opposite-oblique.png",
+    "artifacts/street-appearance/retry/13/challenge/TMX7316010203-000709_pano_0000_001506-photo-source-row.png",
+    "artifacts/street-appearance/retry/13/challenge/TMX7316010203-000709_pano_0000_001506-photo-block.png",
+    "artifacts/street-appearance/retry/13/challenge/TMX7316010203-000709_pano_0000_001506-photo-opposite-oblique.png",
+    "artifacts/street-appearance/retry/13/challenge/TMX7316010203-001662_pano_0000_000196-photo-source-row.png",
+    "artifacts/street-appearance/retry/13/challenge/TMX7316010203-001662_pano_0000_000196-photo-block.png",
+    "artifacts/street-appearance/retry/13/challenge/TMX7316010203-001662_pano_0000_000196-photo-opposite-oblique.png"
+  ],
+  "criteria": [
+    {
+      "id": "historic-modern-frontage-boundary",
+      "decision": "pass-bounded",
+      "reason": "Two narrow brown fronts retain historical glazing and differentiated crowns between pale wider modern fronts. No brown material or historical crown migration onto broad protected neighbor is visible."
+    },
+    {
+      "id": "crown-differentiation",
+      "decision": "pass-bounded",
+      "reason": "Street-facing triangular and neck silhouettes remain distinct from pale modern flat/parapet neighbors. Attic glazing is contained; no obvious floaters or reversed front plates. Exact door/crown assignment is not required."
+    },
+    {
+      "id": "historical-glazing-hierarchy",
+      "decision": "pass-bounded",
+      "reason": "Black-rail balcony slabs on historical pair are removed. Tall pale subdivided windows differ visibly from modern access/flank grouping. Modern explicit pale balcony stack remains."
+    },
+    {
+      "id": "coherent-roof-wall-assembly",
+      "decision": "pass-bounded-with-secondary-defect",
+      "reason": "No visible gap, floating crown or duplicate flat lid in inspected street views. Optional generic bracketed cornice forms an unsupported heavy shelf beneath neck crown; source671/1508 show masonry continuation with thin trim. Record and correct this ornament without demanding photographed crown matching. Native-height/courtyard invariants require separate geometric evidence."
+    },
+    {
+      "id": "bounded-transfer",
+      "decision": "pass-bounded",
+      "reason": "Same historical/modern mixture survives three fixed stations and both candidate oblique directions; no new narrow historical exception visible in reviewed group. 2017 opposite-oblique does not include pair, so pair oblique evidence comes from2017block and2018/2020opposite-oblique."
+    }
+  ],
+  "secondaryDefects": [
+    {
+      "id": "incidental-extras-budget-substitution",
+      "reason": "Removing historical balconies admits additional optional flower boxes, ground shutters and neck cornice. Boxes cover lower glazing; red shutters cross broad ground glass with weak opening correspondence. Sources do not support these particular ornaments. Their presence does not erase the repaired material/window/roof family mixture, but source-class restrained extras would improve fidelity and prevent budget substitution."
+    }
+  ],
+  "limits": [
+    "Exact pane/bay counts and attic placement are approximate and intentionally not rejection grounds.",
+    "Camera retreat collision prevented requested2mshift; these are original-source camera views, with incomplete roof-back/courtyard visibility.",
+    "Challenge sources were fixed before cycle12; cycle13 is a failed-challenge replay after balcony correction, not a new blind holdout.",
+    "Actual game scene, all detailed modes and same-version performance evidence have not been reviewed by this agent."
+  ],
+  "productionAcceptance": "withheld",
+  "nextAction": "Record secondary ornament defects explicitly; prefer restraining incidental extras for this source-visual class. Root must review actual game and performance gates before scoped completion."
+}
