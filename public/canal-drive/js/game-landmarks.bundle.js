@@ -6853,6 +6853,80 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native BAG church reconstruction; separate presbytery and school retained. Roof heights from AHN5/3DBAG, architectural detail from RCE and reference photographs."
       }
+    },
+    {
+      id: "w139",
+      name: "W139",
+      landmarkId: "extract_landmarks_1875699888",
+      modelUrl: "./models/w139.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012171952"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.896302961217267,
+          52.37358068148385
+        ],
+        headingDegrees: 0,
+        lengthMetres: 52.863119999999995,
+        widthMetres: 64.15679
+      },
+      surveyed: {
+        anchor: [
+          4.896302961217267,
+          52.37358068148385
+        ],
+        northOffsetDegrees: 0,
+        source: "Current PDOK exact BAG parent; east/south native metres, AHN5 bounded roof zones"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "W139 restored neoclassical front and former theatre",
+        author: "Map Recall",
+        sourceUrl: "https://www.smuldersarchitecten.nl/projecten/w139-amsterdam",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native current BAG complex with interpreted AHN5 bounded roof surfaces; restored four-storey plaster three-bay front, low bent-cornice entrance wing, red deep-house roof and low rear theatre. Fine facade detail approximate. No imported mesh or photo pixels."
+      }
+    },
+    {
+      id: "conservatorium",
+      name: "Mandarin Oriental Conservatorium, Amsterdam",
+      landmarkId: "requested-conservatorium",
+      modelUrl: "./models/conservatorium.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012152618",
+        "NL.IMBAG.Pand.0363100012236413"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.87881,
+          52.35871
+        ],
+        headingDegrees: 335,
+        lengthMetres: 68,
+        widthMetres: 70
+      },
+      surveyed: {
+        anchor: [
+          4.87881,
+          52.35871
+        ],
+        northOffsetDegrees: 245
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: -90,
+      attribution: {
+        title: "Mandarin Oriental Conservatorium, Amsterdam",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/287",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free flat-color architecture built at native surveyed BAG scope and scale1 with coherent footprint-clipped gable, hip and flattened-tent roofs calibrated to major AHN5 measurements, exposed arches and dormers, pale stone main gable, open polygonal corner turret and transparent courtyard frame. Thin ornament heights/spacing approximate from source photos. No neighboring rectangular suppression."
+      }
     }
   ];
 
@@ -9968,6 +10042,55 @@ Map source: ${osmUrl(places[i][0])}`);
         reason: "RCE identifies SW three-portal entrance; point derived just outside surveyed front wall toward Admiraal de Ruijterweg",
         sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085"
       }
+    },
+    {
+      modelId: "w139",
+      name: "W139",
+      description: "W139 occupies a restored historic complex behind Warmoesstraat139. The former theatre and soci\xEBteit De Vereeniging were once used by Amsterdam\u2019s securities traders; today artists develop ambitious exhibitions here.",
+      sourceUrl: "https://w139.nl/en/about/",
+      center: [
+        52.3737514,
+        4.8959885
+      ],
+      sourceLinks: [
+        {
+          label: "W139 \u2014 artist-run history",
+          url: "https://w139.nl/en/about/"
+        },
+        {
+          label: "Arcam \u2014 architecture and restoration",
+          url: "https://arcam.nl/architectuur-gids/w139/"
+        },
+        {
+          label: "Smulders Architecten \u2014 2006\u201307 project",
+          url: "https://www.smuldersarchitecten.nl/projecten/w139-amsterdam"
+        }
+      ]
+    },
+    {
+      modelId: "conservatorium",
+      name: "Mandarin Oriental Conservatorium, Amsterdam",
+      description: "This hotel began as the Rijkspostspaarbank headquarters, built in 1899\u20131901 by Rijksbouwmeester Dani\xEBl Knuttel. It housed the Sweelinck Conservatorium from 1985 to 2008 before becoming a hotel in 2011. Its modern steel-and-glass atrium contrasts with the preserved brick and stone bank building. Mandarin Oriental adopted its current name in January 2026.",
+      sourceUrl: "https://arcam.nl/architectuur-gids/conservatorium-hotel/",
+      center: [
+        52.35847,
+        4.87914
+      ],
+      website: "https://www.mandarinoriental.com/en/amsterdam/conservatorium",
+      sourceLinks: [
+        {
+          title: "monumentenregister.cultureelerfgoed.nl",
+          url: "https://monumentenregister.cultureelerfgoed.nl/monumenten/287"
+        },
+        {
+          title: "arcam.nl",
+          url: "https://arcam.nl/architectuur-gids/conservatorium-hotel/"
+        },
+        {
+          title: "press.mandarinoriental.com",
+          url: "https://press.mandarinoriental.com/amsterdam-rebranding/?lang=eng"
+        }
+      ]
     }
   ];
 

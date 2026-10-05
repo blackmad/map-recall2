@@ -1,0 +1,1566 @@
+{
+  "anchor": [
+    4.896302961217267,
+    52.37358068148385
+  ],
+  "building": {
+    "type": "Feature",
+    "properties": {
+      "aantal_verblijfsobjecten": 5,
+      "bouwjaar": 2007,
+      "documentdatum": "2023-09-28",
+      "documentnummer": "GV00007182_AC00AC",
+      "gebruiksdoel": "overige gebruiksfunctie,woonfunctie",
+      "geconstateerd": "N",
+      "identificatie": "0363100012171952",
+      "rdf_seealso": "http://bag.basisregistraties.overheid.nl/bag/id/pand/0363100012171952",
+      "status": "Pand in gebruik",
+      "verblijfsobject.href": [
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/7089fae1-5a94-5c14-991e-ce98e4beccd5",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/8bc2a7d7-856f-5fd5-ae6e-3ee2702f32ab",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/3f76bd16-b84d-5321-a4c9-1d6d1d5927f5",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/4a0c2a94-0f9d-5258-b015-eee89e894232",
+        "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/7041b08c-bcb0-5a33-9cd3-53f880c0b818"
+      ]
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.896405939681869,
+            52.373667860413576
+          ],
+          [
+            4.896272424252243,
+            52.37370647534094
+          ],
+          [
+            4.896235506011615,
+            52.373717152453615
+          ],
+          [
+            4.895968950092311,
+            52.373793853470325
+          ],
+          [
+            4.895966983764892,
+            52.37379504966519
+          ],
+          [
+            4.89592837626223,
+            52.373771287776
+          ],
+          [
+            4.895928058336343,
+            52.37376949790363
+          ],
+          [
+            4.8958444792205205,
+            52.373715863001145
+          ],
+          [
+            4.896166833778766,
+            52.37362087900061
+          ],
+          [
+            4.8961581162449415,
+            52.373609796959045
+          ],
+          [
+            4.896174867452881,
+            52.37360486027427
+          ],
+          [
+            4.8961478168933175,
+            52.37357048696223
+          ],
+          [
+            4.8961149306956155,
+            52.37352868357161
+          ],
+          [
+            4.896177653690273,
+            52.37350970101673
+          ],
+          [
+            4.896145695803073,
+            52.37347026525025
+          ],
+          [
+            4.896521683157431,
+            52.37335608026659
+          ],
+          [
+            4.896501690316337,
+            52.37333016674887
+          ],
+          [
+            4.896545921248241,
+            52.37331682354433
+          ],
+          [
+            4.896606268547911,
+            52.37339177041605
+          ],
+          [
+            4.896680198954934,
+            52.37336982314919
+          ],
+          [
+            4.896788488748497,
+            52.37350616581011
+          ],
+          [
+            4.896695165484541,
+            52.373534225339505
+          ],
+          [
+            4.8965638703876495,
+            52.37357263408759
+          ],
+          [
+            4.8965559028486405,
+            52.3735747221712
+          ],
+          [
+            4.896375230092,
+            52.3736257335739
+          ],
+          [
+            4.896405939681869,
+            52.373667860413576
+          ]
+        ]
+      ]
+    },
+    "id": "43dfc144-6661-537c-bbdb-e9bec3c1648b"
+  },
+  "localRing": [
+    [
+      6.99862,
+      -9.63676
+    ],
+    [
+      -2.07535,
+      -13.90525
+    ],
+    [
+      -4.58439,
+      -15.0855
+    ],
+    [
+      -22.70007,
+      -23.56403
+    ],
+    [
+      -22.83371,
+      -23.69626
+    ],
+    [
+      -25.45755,
+      -21.06962
+    ],
+    [
+      -25.47916,
+      -20.87177
+    ],
+    [
+      -31.15936,
+      -14.94296
+    ],
+    [
+      -9.2515,
+      -4.44343
+    ],
+    [
+      -9.84396,
+      -3.21842
+    ],
+    [
+      -8.70551,
+      -2.67272
+    ],
+    [
+      -10.54392,
+      1.1269
+    ],
+    [
+      -12.77893,
+      5.74785
+    ],
+    [
+      -8.51615,
+      7.84618
+    ],
+    [
+      -10.68808,
+      12.20541
+    ],
+    [
+      14.86479,
+      24.82742
+    ],
+    [
+      13.50603,
+      27.6919
+    ],
+    [
+      16.51205,
+      29.16686
+    ],
+    [
+      20.61338,
+      20.88223
+    ],
+    [
+      25.63784,
+      23.30828
+    ],
+    [
+      32.99743,
+      8.23696
+    ],
+    [
+      26.65499,
+      5.13526
+    ],
+    [
+      17.73191,
+      0.88956
+    ],
+    [
+      17.19042,
+      0.65874
+    ],
+    [
+      4.91154,
+      -4.98006
+    ],
+    [
+      6.99862,
+      -9.63676
+    ]
+  ],
+  "roofRegions": [
+    {
+      "rings": [
+        [
+          [
+            -25.47064,
+            9.754,
+            -20.93391
+          ],
+          [
+            -23.20541,
+            10.062,
+            -19.79873
+          ],
+          [
+            -21.68647,
+            10.05,
+            -20.38819
+          ],
+          [
+            -21.27006,
+            10.008,
+            -20.79336
+          ],
+          [
+            -22.20189,
+            9.727,
+            -22.21275
+          ],
+          [
+            -21.15516,
+            9.685,
+            -22.82684
+          ],
+          [
+            -22.69902,
+            9.483,
+            -23.55062
+          ],
+          [
+            -22.83366,
+            9.455,
+            -23.68284
+          ],
+          [
+            -25.4565,
+            9.735,
+            -21.05522
+          ]
+        ]
+      ],
+      "approxPitch": 9.637474060058594,
+      "id": "survey-roof-0",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            7.62192,
+            12.591,
+            9.22612
+          ],
+          [
+            -6.67187,
+            12.557,
+            2.56869
+          ],
+          [
+            -11.96732,
+            9.844,
+            5.34945
+          ],
+          [
+            -12.28422,
+            9.43,
+            6.00432
+          ],
+          [
+            5.29684,
+            9.516,
+            14.10697
+          ]
+        ]
+      ],
+      "approxPitch": 29.49190902709961,
+      "id": "survey-roof-1",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -9.14347,
+            5.891,
+            -8.06795
+          ],
+          [
+            -7.63459,
+            5.943,
+            -6.76273
+          ],
+          [
+            -6.44331,
+            5.977,
+            -6.07929
+          ],
+          [
+            -4.61181,
+            5.926,
+            -9.86993
+          ],
+          [
+            -4.38841,
+            5.92,
+            -10.33143
+          ],
+          [
+            -4.73352,
+            5.912,
+            -10.44931
+          ],
+          [
+            -4.65493,
+            5.897,
+            -11.21981
+          ],
+          [
+            -5.23197,
+            5.88,
+            -11.54079
+          ],
+          [
+            -5.6232,
+            5.874,
+            -11.54312
+          ],
+          [
+            -5.83272,
+            5.88,
+            -11.09364
+          ],
+          [
+            -6.74002,
+            5.856,
+            -11.54949
+          ],
+          [
+            -7.64923,
+            5.841,
+            -11.55429
+          ],
+          [
+            -8.82093,
+            5.822,
+            -11.5603
+          ],
+          [
+            -9.52504,
+            5.837,
+            -10.31566
+          ],
+          [
+            -9.07241,
+            5.89,
+            -8.18467
+          ]
+        ]
+      ],
+      "approxPitch": 1.5316128730773926,
+      "id": "survey-roof-2",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            17.4427,
+            3.637,
+            0.77974
+          ],
+          [
+            14.81237,
+            5.946,
+            6.12164
+          ],
+          [
+            13.75119,
+            6.878,
+            8.27774
+          ],
+          [
+            29.46485,
+            6.88,
+            15.48699
+          ],
+          [
+            32.99749,
+            3.756,
+            8.25137
+          ],
+          [
+            26.65605,
+            3.688,
+            5.14967
+          ],
+          [
+            17.73197,
+            3.633,
+            0.90397
+          ]
+        ]
+      ],
+      "approxPitch": 21.095369338989258,
+      "id": "survey-roof-3",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            13.75119,
+            6.878,
+            8.27774
+          ],
+          [
+            9.84409,
+            3.412,
+            16.21334
+          ],
+          [
+            11.03547,
+            3.41,
+            16.76465
+          ],
+          [
+            11.34813,
+            3.655,
+            16.22009
+          ],
+          [
+            25.67664,
+            3.687,
+            22.70944
+          ],
+          [
+            25.42061,
+            3.465,
+            23.21686
+          ],
+          [
+            25.63889,
+            3.463,
+            23.32268
+          ],
+          [
+            29.46485,
+            6.88,
+            15.48699
+          ]
+        ]
+      ],
+      "approxPitch": 21.294780731201172,
+      "id": "survey-roof-4",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -8.36632,
+            14.917,
+            -12.36313
+          ],
+          [
+            -7.25788,
+            14.833,
+            -14.32085
+          ],
+          [
+            -5.69165,
+            14.82,
+            -13.8287
+          ],
+          [
+            -5.02216,
+            14.774,
+            -14.88037
+          ],
+          [
+            -4.24215,
+            14.772,
+            -14.50313
+          ],
+          [
+            -4.08573,
+            14.758,
+            -14.83701
+          ],
+          [
+            -4.58334,
+            14.76,
+            -15.0711
+          ],
+          [
+            -21.15516,
+            14.816,
+            -22.82684
+          ],
+          [
+            -22.20189,
+            14.855,
+            -22.21275
+          ],
+          [
+            -21.27006,
+            14.883,
+            -20.79336
+          ],
+          [
+            -21.68647,
+            14.904,
+            -20.38819
+          ],
+          [
+            -23.20541,
+            14.951,
+            -19.79873
+          ],
+          [
+            -21.1555,
+            14.947,
+            -18.77137
+          ],
+          [
+            -10.47331,
+            14.922,
+            -13.41892
+          ]
+        ]
+      ],
+      "approxPitch": 2.1212642192840576,
+      "id": "survey-roof-5",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -22.85049,
+            20.219,
+            -15.60259
+          ],
+          [
+            -22.89582,
+            20.083,
+            -15.51783
+          ],
+          [
+            -24.50607,
+            15.237,
+            -12.50759
+          ],
+          [
+            -20.02886,
+            14.543,
+            -9.70036
+          ],
+          [
+            -20.08421,
+            14.408,
+            -9.6215
+          ],
+          [
+            -14.83954,
+            14.576,
+            -7.10756
+          ],
+          [
+            -13.08444,
+            20.23,
+            -10.68408
+          ],
+          [
+            -22.79341,
+            20.219,
+            -15.57416
+          ]
+        ]
+      ],
+      "approxPitch": 54.68345642089844,
+      "id": "survey-roof-6",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -24.50607,
+            16.873,
+            -12.50759
+          ],
+          [
+            -24.83226,
+            18.024,
+            -11.89736
+          ],
+          [
+            -20.08421,
+            17.826,
+            -9.6215
+          ],
+          [
+            -20.02886,
+            17.667,
+            -9.70036
+          ]
+        ]
+      ],
+      "approxPitch": 58.84701919555664,
+      "id": "survey-roof-7",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -31.15831,
+            20.145,
+            -14.92956
+          ],
+          [
+            -24.83226,
+            20.107,
+            -11.89736
+          ],
+          [
+            -24.50607,
+            20.103,
+            -12.50759
+          ],
+          [
+            -22.89582,
+            20.083,
+            -15.51783
+          ],
+          [
+            -22.85049,
+            20.082,
+            -15.60259
+          ],
+          [
+            -22.79341,
+            20.082,
+            -15.57416
+          ],
+          [
+            -22.76609,
+            20.081,
+            -15.66575
+          ],
+          [
+            -22.70466,
+            20.08,
+            -15.87678
+          ],
+          [
+            -21.1555,
+            20.06,
+            -18.77137
+          ],
+          [
+            -23.20541,
+            20.072,
+            -19.79873
+          ],
+          [
+            -25.47064,
+            20.085,
+            -20.93391
+          ],
+          [
+            -25.47811,
+            20.085,
+            -20.85836
+          ]
+        ]
+      ],
+      "approxPitch": 0.45002225041389465,
+      "id": "survey-roof-8",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            14.72386,
+            6.864,
+            5.28671
+          ],
+          [
+            14.81237,
+            6.878,
+            6.12164
+          ],
+          [
+            17.4427,
+            6.766,
+            0.77974
+          ],
+          [
+            17.19148,
+            6.766,
+            0.67315
+          ],
+          [
+            5.73853,
+            6.747,
+            -4.58674
+          ],
+          [
+            5.41898,
+            6.762,
+            -3.88019
+          ],
+          [
+            5.37571,
+            6.764,
+            -3.78651
+          ],
+          [
+            9.37854,
+            6.771,
+            -1.90299
+          ],
+          [
+            9.13455,
+            6.782,
+            -1.38672
+          ],
+          [
+            6.92387,
+            6.879,
+            3.29267
+          ],
+          [
+            10.06505,
+            6.873,
+            4.09511
+          ]
+        ]
+      ],
+      "approxPitch": 1.0790152549743652,
+      "id": "survey-roof-9",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -6.5614,
+            6.806,
+            -5.83509
+          ],
+          [
+            -5.32056,
+            6.817,
+            -4.76054
+          ],
+          [
+            -5.33082,
+            6.818,
+            -4.65516
+          ],
+          [
+            -3.72927,
+            6.818,
+            -4.10563
+          ],
+          [
+            -2.19867,
+            6.762,
+            -6.64838
+          ],
+          [
+            -1.86907,
+            6.751,
+            -7.19703
+          ],
+          [
+            -4.08475,
+            6.747,
+            -8.23917
+          ],
+          [
+            -4.61181,
+            6.721,
+            -9.86993
+          ],
+          [
+            -6.44331,
+            6.8,
+            -6.07929
+          ]
+        ]
+      ],
+      "approxPitch": 1.0790152549743652,
+      "id": "survey-roof-10",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -7.25788,
+            5.029,
+            -14.32085
+          ],
+          [
+            -8.36632,
+            5.001,
+            -12.36313
+          ],
+          [
+            -8.55763,
+            4.996,
+            -12.02504
+          ],
+          [
+            -7.64923,
+            6.148,
+            -11.55429
+          ],
+          [
+            -6.74002,
+            7.045,
+            -11.54949
+          ],
+          [
+            -5.83272,
+            8.187,
+            -11.09364
+          ],
+          [
+            -5.6232,
+            8.149,
+            -11.54312
+          ],
+          [
+            -5.23197,
+            8.536,
+            -11.54079
+          ],
+          [
+            -4.79791,
+            8.001,
+            -13.31215
+          ],
+          [
+            -4.24215,
+            7.9,
+            -14.50313
+          ],
+          [
+            -5.02216,
+            6.927,
+            -14.88037
+          ],
+          [
+            -5.69165,
+            6.839,
+            -13.8287
+          ]
+        ]
+      ],
+      "approxPitch": 48.283058166503906,
+      "id": "survey-roof-11",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -13.08444,
+            20.23,
+            -10.68408
+          ],
+          [
+            -12.63952,
+            18.747,
+            -11.59117
+          ],
+          [
+            -11.13946,
+            17.577,
+            -11.72945
+          ],
+          [
+            -10.47331,
+            14.922,
+            -13.41892
+          ],
+          [
+            -21.1555,
+            14.947,
+            -18.77137
+          ],
+          [
+            -22.70466,
+            19.763,
+            -15.87678
+          ],
+          [
+            -22.76609,
+            20.081,
+            -15.66575
+          ],
+          [
+            -22.79341,
+            20.219,
+            -15.57416
+          ]
+        ]
+      ],
+      "approxPitch": 55.57851028442383,
+      "id": "survey-roof-12",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            14.81237,
+            14.777,
+            6.12164
+          ],
+          [
+            14.72386,
+            14.775,
+            5.28671
+          ],
+          [
+            10.06505,
+            14.684,
+            4.09511
+          ],
+          [
+            7.62192,
+            14.643,
+            9.22612
+          ],
+          [
+            5.29684,
+            14.604,
+            14.10697
+          ],
+          [
+            9.84409,
+            14.693,
+            16.21334
+          ],
+          [
+            13.75119,
+            14.759,
+            8.27774
+          ]
+        ]
+      ],
+      "approxPitch": 1.0964653491973877,
+      "id": "survey-roof-13",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -8.015,
+            9.937,
+            -2.82889
+          ],
+          [
+            -9.00505,
+            9.914,
+            -0.78056
+          ],
+          [
+            -9.14702,
+            9.806,
+            -0.81736
+          ],
+          [
+            -9.54691,
+            9.502,
+            -0.91898
+          ],
+          [
+            -12.77789,
+            9.424,
+            5.76126
+          ],
+          [
+            -12.28422,
+            9.836,
+            6.00432
+          ],
+          [
+            -11.96732,
+            9.844,
+            5.34945
+          ],
+          [
+            -6.67187,
+            12.557,
+            2.56869
+          ],
+          [
+            -7.63029,
+            10.499,
+            -1.87971
+          ]
+        ]
+      ],
+      "approxPitch": 36.74691390991211,
+      "id": "survey-roof-14",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -8.015,
+            10.102,
+            -2.82889
+          ],
+          [
+            -7.63029,
+            10.499,
+            -1.87971
+          ],
+          [
+            -6.67187,
+            12.557,
+            2.56869
+          ],
+          [
+            7.62192,
+            12.591,
+            9.22612
+          ],
+          [
+            10.06505,
+            9.377,
+            4.09511
+          ],
+          [
+            6.92387,
+            9.709,
+            3.29267
+          ],
+          [
+            9.13455,
+            6.782,
+            -1.38672
+          ],
+          [
+            9.37854,
+            6.459,
+            -1.90299
+          ],
+          [
+            5.37571,
+            6.439,
+            -3.78651
+          ],
+          [
+            5.41898,
+            6.381,
+            -3.88019
+          ],
+          [
+            2.02665,
+            6.422,
+            -5.36347
+          ],
+          [
+            -1.86907,
+            6.403,
+            -7.19703
+          ],
+          [
+            -2.19867,
+            6.762,
+            -6.64838
+          ],
+          [
+            -3.72927,
+            8.431,
+            -4.10563
+          ],
+          [
+            -5.33082,
+            8.529,
+            -4.65516
+          ],
+          [
+            -5.32056,
+            8.472,
+            -4.76054
+          ],
+          [
+            -6.5614,
+            8.214,
+            -5.83509
+          ]
+        ]
+      ],
+      "approxPitch": 29.353818893432617,
+      "id": "survey-roof-15",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -9.00505,
+            9.797,
+            -0.78056
+          ],
+          [
+            -8.015,
+            9.012,
+            -2.82889
+          ],
+          [
+            -6.5614,
+            7.86,
+            -5.83509
+          ],
+          [
+            -6.44331,
+            7.766,
+            -6.07929
+          ],
+          [
+            -7.63459,
+            7.725,
+            -6.76273
+          ],
+          [
+            -9.14347,
+            7.536,
+            -8.06795
+          ],
+          [
+            -9.79387,
+            7.966,
+            -6.99754
+          ],
+          [
+            -11.36322,
+            8.172,
+            -7.06842
+          ],
+          [
+            -12.08804,
+            8.678,
+            -5.78887
+          ],
+          [
+            -9.25045,
+            8.691,
+            -4.43002
+          ],
+          [
+            -9.84391,
+            9.16,
+            -3.20501
+          ],
+          [
+            -8.70545,
+            9.165,
+            -2.65831
+          ],
+          [
+            -9.54691,
+            9.832,
+            -0.91898
+          ],
+          [
+            -9.14702,
+            9.806,
+            -0.81736
+          ]
+        ]
+      ],
+      "approxPitch": 18.940364837646484,
+      "id": "survey-roof-16",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    },
+    {
+      "rings": [
+        [
+          [
+            -12.63952,
+            11.985,
+            -11.59117
+          ],
+          [
+            -13.08444,
+            11.994,
+            -10.68408
+          ],
+          [
+            -14.83954,
+            12.029,
+            -7.10756
+          ],
+          [
+            -12.08804,
+            12.682,
+            -5.78887
+          ],
+          [
+            -11.36322,
+            12.688,
+            -7.06842
+          ],
+          [
+            -9.79387,
+            12.991,
+            -6.99754
+          ],
+          [
+            -9.14347,
+            13.004,
+            -8.06795
+          ],
+          [
+            -9.07241,
+            13.005,
+            -8.18467
+          ],
+          [
+            -9.52504,
+            12.702,
+            -10.31566
+          ],
+          [
+            -8.82093,
+            12.707,
+            -11.5603
+          ],
+          [
+            -7.64923,
+            12.928,
+            -11.55429
+          ],
+          [
+            -8.55763,
+            12.709,
+            -12.02504
+          ],
+          [
+            -8.36632,
+            12.71,
+            -12.36313
+          ],
+          [
+            -10.47331,
+            12.205,
+            -13.41892
+          ],
+          [
+            -11.13946,
+            12.253,
+            -11.72945
+          ]
+        ]
+      ],
+      "approxPitch": 12.062382698059082,
+      "id": "survey-roof-17",
+      "heightConvention": "Metres above AHN5 ground 1.043 NAP; AHN5 2023 bounded part, not whole-building maximum"
+    }
+  ],
+  "id": "w139",
+  "landmarkId": "extract_landmarks_1875699888",
+  "authorHeadingDegrees": 0,
+  "frontEdges": {
+    "main": [
+      6,
+      7
+    ],
+    "lowEntrance": [
+      4,
+      6
+    ]
+  },
+  "neighborsToRetain": [
+    "NL.IMBAG.Pand.0363100012171794",
+    "NL.IMBAG.Pand.0363100012171799",
+    "NL.IMBAG.Pand.0363100012171953",
+    "NL.IMBAG.Pand.0363100012171951",
+    "NL.IMBAG.Pand.0363100012179033",
+    "NL.IMBAG.Pand.0363100012165051"
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "path": "models/w139",
+    "commit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa",
+    "status": "Raw sources saved; coordinator must commit source pack before model commit",
+    "rawManifest": "../map-recall2-source-data/models/w139/raw-manifest.json",
+    "archiverManifest": "../map-recall2-source-data/models/w139/manifest.json",
+    "verifiedOn": "2026-10-05"
+  },
+  "sources": [
+    {
+      "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012171952&f=json",
+      "raw": "bag-current.json",
+      "role": "Current surveyed footprint, 2007 registered year is restoration/registration rather than original circa1550 house age"
+    },
+    {
+      "url": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171952",
+      "raw": "3dbag.json",
+      "role": "AHN5 2023 roof zones and heights; reconstruct original shells and roofs from measured surface polygons, no imported mesh"
+    },
+    {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/328911",
+      "raw": "rce.html",
+      "role": "Historic plastered front/cornice and low left wing. Register describes lowered1985state, overridden by current renovated photographs."
+    },
+    {
+      "url": "https://arcam.nl/architectuur-gids/w139/",
+      "raw": "arcam.html",
+      "role": "Current four-storey classical tripartite plaster facade, diminishing upper windows, 2006 restoration, deep circa1550 gabled rear house"
+    },
+    {
+      "url": "https://www.smuldersarchitecten.nl/projecten/w139-amsterdam",
+      "raw": "architect.html",
+      "role": "2006–07 primary architect project: current facade, rear courtyard and full complex axonometric; 790m² BVO refers office/exhibition intervention, not parcel or footprint"
+    },
+    {
+      "url": "https://w139.nl/en/about/",
+      "raw": "operator.html",
+      "role": "Artist-run1979origin and contemporary experimentation"
+    },
+    {
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Warmoesstraat%20139",
+      "raw": "beeldbank.html",
+      "role": "Bounded exact-address Beeldbank search, JavaScript gallery shell; search engine surfaced drawings005220901436/5221BT900413 and photo010122058526; original archive scan not inspected, remain access gaps"
+    }
+  ],
+  "architecturalAssertions": [
+    {
+      "source": "https://arcam.nl/architectuur-gids/w139/",
+      "part": "main street facade",
+      "assertion": "Four building layers, plaster finish, classical three-bay composition and four ground-floor pilasters; upper-window size decreases, dentilled top cornice.",
+      "date": "2006 renovation/current architectural guide",
+      "confidence": "high"
+    },
+    {
+      "source": "https://monumentenregister.cultureelerfgoed.nl/monumenten/328911",
+      "part": "left entrance wing",
+      "assertion": "Lower plastered wing terminated by bent cornice; third quarter19C.",
+      "date": "1985listing; current architect image183 confirms form",
+      "confidence": "high"
+    },
+    {
+      "source": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/186_large.jpg",
+      "part": "complex rear",
+      "assertion": "Long low theatre roof and higher rear tower; surrounding houses/courtyard outside current footprint must remain.",
+      "date": "2006–07project",
+      "confidence": "high"
+    }
+  ],
+  "uncertainties": [
+    "Fine profiles, exact pane subdivisions and facade storey levels inferred from perspective photographs against AHN5 part heights.",
+    "Lower wing is treated as part of BAG139 complex, not duplicate destination.",
+    "Historical Beeldbank drawings and 2025 Commons image found but original bytes not downloaded (Commons image403); architect primary images downloaded/inspected instead.",
+    "Potential ground passage below courtyard office is bounded visually and requires live comparison; interior not modeled."
+  ],
+  "openSpaceProbes": [
+    [
+      0,
+      -15
+    ],
+    [
+      17,
+      -12
+    ],
+    [
+      0,
+      28
+    ],
+    [
+      32,
+      26
+    ]
+  ],
+  "privateReferenceFiles": [
+    {
+      "file": "/tmp/w139-source-architect-186-large.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/186_large.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-architect-114-large.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/114_large.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-architect-189.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/189_default.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-architect-188.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/188_default.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-operator.html",
+      "sourceUrl": "https://w139.nl/en/about/"
+    },
+    {
+      "file": "/tmp/w139-source-vbo-1.json",
+      "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/8bc2a7d7-856f-5fd5-ae6e-3ee2702f32ab"
+    },
+    {
+      "file": "/tmp/w139-source-arcam.html",
+      "sourceUrl": "https://arcam.nl/architectuur-gids/w139/"
+    },
+    {
+      "file": "/tmp/w139-source-vbo-0.json",
+      "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/7089fae1-5a94-5c14-991e-ce98e4beccd5"
+    },
+    {
+      "file": "/tmp/w139-source-beeldbank.html",
+      "sourceUrl": "https://archief.amsterdam/beeldbank/?mode=gallery&q=Warmoesstraat%20139"
+    },
+    {
+      "file": "/tmp/w139-source-architect-114.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/114_default.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-3dbag.json",
+      "sourceUrl": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012171952"
+    },
+    {
+      "file": "/tmp/w139-source-architect-184-large.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/184_large.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-commons.html",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:2025_Amsterdam,_Warmoesstraat_139.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-vbo-3.json",
+      "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/4a0c2a94-0f9d-5258-b015-eee89e894232"
+    },
+    {
+      "file": "/tmp/w139-source-vbo-2.json",
+      "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/3f76bd16-b84d-5321-a4c9-1d6d1d5927f5"
+    },
+    {
+      "file": "/tmp/w139-source-installed-neighbors.json",
+      "sourceUrl": null
+    },
+    {
+      "file": "/tmp/w139-source-arcam-front.jpg",
+      "sourceUrl": "https://arcam.nl/wp-content/uploads/2021/06/11.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-bag-current.json",
+      "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?identificatie=0363100012171952&f=json"
+    },
+    {
+      "file": "/tmp/w139-source-architect-185.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/185_default.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-architect-190.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/190_default.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-architect-184.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/184_default.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-architect.html",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/projecten/w139-amsterdam"
+    },
+    {
+      "file": "/tmp/w139-source-architect-185-large.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/185_large.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-rce.html",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/328911"
+    },
+    {
+      "file": "/tmp/w139-source-architect-186.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/186_default.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-architect-187.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/187_default.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-arcam-rear.jpg",
+      "sourceUrl": "https://arcam.nl/wp-content/uploads/2021/06/3-177.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-architect-183-large.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/183_large.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-architect-183.jpg",
+      "sourceUrl": "https://www.smuldersarchitecten.nl/uploads/modules/project/11/photo/183_default.jpg"
+    },
+    {
+      "file": "/tmp/w139-source-vbo-4.json",
+      "sourceUrl": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items/7041b08c-bcb0-5a33-9cd3-53f880c0b818"
+    }
+  ],
+  "roofReconstruction": "Every bounded measured polygon receives its own original open-top shell and roof; stable centered least-squares fits use all original vertices to remove rounded-vertex fins. Low source-envelope protrusions without measured roof coverage remain unfilled instead of fabricated high slab."
+}

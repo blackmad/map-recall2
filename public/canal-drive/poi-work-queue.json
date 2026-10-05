@@ -898,6 +898,37 @@
       "status": "queued",
       "requestedOn": "2026-10-05",
       "nextAction": "Research the connected historic canal houses and hotel courtyards; identify exact participating buildings and preserve individual rooflines, courts and neighboring houses. Archive original reference sources; integrate destination, pin/label and meaningful sourced card, then review gallery and native game placement."
+    },
+    {
+      "id": "w139",
+      "task": "Generate W139 in the repository flat-color landmark style, requested with text-to-cad",
+      "priority": "high",
+      "status": "model-generated-live-facade-review-pending",
+      "landmarkId": "extract_landmarks_1875699888",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Finish source-camera live frontage review from artifacts/w139-review/close-plan.json when browser launch is available; preserve Beurs and side neighbors.",
+      "evidence": "../../scripts/landmarks/w139-review.json",
+      "validation": "Native model, CAD and four-angle gallery, focused/shared geometry checks, TypeScript, route smoke, chosen destination, pin and real sourced-card click; exact suppression and resident neighbors verified.",
+      "failedEvidence": "../../artifacts/w139-review/failed-initial/",
+      "publication": {
+        "requestedOn": "2026-10-05",
+        "sourceCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa"
+      }
+    },
+    {
+      "id": "conservatorium",
+      "task": "Generate Mandarin Oriental Conservatorium, Amsterdam in repository style with requested CAD subagent",
+      "priority": "high",
+      "status": "verified-scoped",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Scoped model verified; preserve documented ornament and entrance approximations.",
+      "evidence": "../../scripts/landmarks/conservatorium-review.json",
+      "validation": "Native model, CAD and four-angle gallery, focused/shared geometry checks, TypeScript, route smoke, chosen destination, pin and real sourced-card click; exact suppression and resident neighbors verified.",
+      "failedEvidence": "../../artifacts/conservatorium-review/failed-initial/",
+      "publication": {
+        "requestedOn": "2026-10-05",
+        "sourceCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa"
+      }
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

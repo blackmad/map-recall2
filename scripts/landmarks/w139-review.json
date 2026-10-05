@@ -1,0 +1,33 @@
+{
+  "modelId": "w139",
+  "reviewedOn": "2026-10-05",
+  "status": "generated-integrated-live-facade-review-pending",
+  "budget": {
+    "triangles": 4322,
+    "bytes": 72580,
+    "scale": 1,
+    "textures": 0
+  },
+  "checksPassed": [
+    "focused geometry and roof/window support checks",
+    "shared finite geometry/material/triangle/byte/cache checks",
+    "POI route/pin/card contract",
+    "TypeScript lint",
+    "actual route-start smoke",
+    "real chosen destination, geographic pin, physical sourced-card click, exact suppression and resident neighbors"
+  ],
+  "evidence": "../../artifacts/w139-review/",
+  "independentReview": {
+    "reviewer": "visual_reviewer",
+    "CADAndFourGalleryAngles": "accepted after repairs",
+    "live": "route/pin/card/neighbor proofs pass; principal front obstructed in broad camera views, close source camera still pending"
+  },
+  "failedEvidence": [
+    "../../artifacts/w139-review/failed-initial/"
+  ],
+  "limitations": [
+    "Fine ornament and pane proportions approximated from photographs.",
+    "Retained opposite Beurs roof obscures broad front views. Next source camera is recorded in close-plan.json; final browser launch failed under newly restricted environment, so no complete live-facade acceptance claim."
+  ],
+  "sourceArchiveCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa"
+}

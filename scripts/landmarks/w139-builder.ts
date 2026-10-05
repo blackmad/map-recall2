@@ -1,0 +1,94 @@
+import * as T from 'three';
+import type {BuildingTools} from './cultural-builders';
+import {openTopPrism} from './house-geometry';
+import source from './w139-footprints.json';
+type Colour=Parameters<BuildingTools['add']>[1];
+/** Original metres/Y-up reconstruction. Measured part polygons bound every roof;
+ * only each bounded surface determines its shell height, never Pand maxima. */
+export function buildW139(_width:number,_depth:number,{add}:BuildingTools){
+ const triangle=(g:T.BufferGeometry,colour:Colour)=>add(g,colour);
+ // Centered least-squares over EVERY original roof vertex avoids near-collinear
+ // first-vertex fits and removes centimetre source-rounding roof fins.
+ const fitted=(region:typeof source.roofRegions[number])=>{
+  const ps=region.rings.flat(),n=ps.length,c=ps.reduce((s,p)=>s.map((v,i)=>v+p[i]/n),[0,0,0]);
+  let xx=0,zz=0,xz=0,xy=0,zy=0;for(const p of ps){const x=p[0]-c[0],z=p[2]-c[2],y=p[1]-c[1];xx+=x*x;zz+=z*z;xz+=x*z;xy+=x*y;zy+=z*y;}
+  const det=xx*zz-xz*xz;if(det<1e-8)throw new Error('Degenerate roof region');const a=(xy*zz-zy*xz)/det,b=(zy*xx-xy*xz)/det;
+  return region.rings.map(r=>r.map(p=>[p[0],c[1]+a*(p[0]-c[0])+b*(p[2]-c[2]),p[2]]));
+ };
+ for(const [id,region] of source.roofRegions.entries()){
+  const fittedRings=fitted(region);
+  const rings=fittedRings.map(r=>r.map(p=>new T.Vector2(p[0],p[2]))),outer=rings[0];
+  const heights=fittedRings.flat().map(p=>p[1]),eave=Math.min(...heights);
+  const shape=new T.Shape(outer);for(const hole of rings.slice(1))shape.holes.push(new T.Path(hole));
+  const wallColour:Colour=id===13?'brick':id===0||id===5||id===6||id===8||id===12||id===17?'white':'greyBrick';
+  // Open-top shell gives the roof sole ownership of its upper surface.
+  const shell=openTopPrism(shape,0,eave);shell.userData.surveyPart=id;add(shell,wallColour);
+  const flat=fittedRings.flat();const roofPositions:number[]=[],wallPositions:number[]=[];
+  for(const ids of T.ShapeUtils.triangulateShape(outer,rings.slice(1))){
+   const ps=ids.map(i=>new T.Vector3(flat[i][0],flat[i][1],flat[i][2]));
+   const n=ps[1].clone().sub(ps[0]).cross(ps[2].clone().sub(ps[0]));if(n.lengthSq()<1e-10)continue;if(n.y<0)[ps[1],ps[2]]=[ps[2],ps[1]];for(const p of ps)roofPositions.push(p.x,p.y,p.z);
+  }
+  for(const ring of fittedRings)for(let i=0;i<ring.length;i++){
+   const a=ring[i],b=ring[(i+1)%ring.length];wallPositions.push(a[0],eave,a[2],b[0],eave,b[2],b[0],b[1],b[2],a[0],eave,a[2],b[0],b[1],b[2],a[0],a[1],a[2]);
+  }
+  const roof=new T.BufferGeometry();roof.setAttribute('position',new T.Float32BufferAttribute(roofPositions,3));roof.computeVertexNormals();roof.userData.roofSurface=true;roof.userData.surveyPart=id;triangle(roof,region.approxPitch>15?'red':'slate');
+  const walls=new T.BufferGeometry();walls.setAttribute('position',new T.Float32BufferAttribute(wallPositions,3));walls.computeVertexNormals();walls.userData.surveyPart=id;triangle(walls,wallColour);
+ }
+ const v=(i:number)=>new T.Vector2(...source.localRing[i] as [number,number]);
+ function facade(a:T.Vector2,b:T.Vector2,baseOffset=0){
+  const t=b.clone().sub(a).normalize(),n=new T.Vector2(-t.y,t.x),length=a.distanceTo(b),yaw=Math.atan2(n.x,n.y);
+  const at=(u:number,o:number)=>a.clone().addScaledVector(t,u).addScaledVector(n,o+baseOffset);
+  const panel=(u:number,y:number,w:number,h:number,c:Colour,o=.09)=>{const p=at(u,o);const g=new T.PlaneGeometry(w,h);g.userData.facadeOutward=[n.x,0,n.y];add(g,c,p.x,y+h/2,p.y,yaw);};
+  const block=(u:number,y:number,w:number,h:number,d:number,c:Colour,o=.09)=>{const p=at(u,o);add(new T.BoxGeometry(w,h,d),c,p.x,y+h/2,p.y,yaw);};
+  const pane=(u:number,y:number,w:number,h:number,cols=2,rows=2)=>{
+   panel(u,y-.08,w+.16,h+.16,'white',.13);panel(u,y,w,h,'glass',.18);
+   for(let i=0;i<=cols;i++)block(u-w/2+i*w/cols,y-.035,.055,h+.07,.06,'white',.23);
+   for(let i=0;i<=rows;i++)block(u,y-.035+i*h/rows,w+.08,.065,.07,'white',.24);
+   block(u,y-.17,w+.28,.14,.31,'frame',.19);
+  };
+  const line=(u1:number,y1:number,u2:number,y2:number,r:number,c:Colour,o=.2)=>{const p=at(u1,o),q=at(u2,o),A=new T.Vector3(p.x,y1,p.y),B=new T.Vector3(q.x,y2,q.y),delta=B.clone().sub(A);const g=new T.CylinderGeometry(r,r,delta.length(),6);g.applyQuaternion(new T.Quaternion().setFromUnitVectors(new T.Vector3(0,1,0),delta.normalize()));const m=A.clone().add(B).multiplyScalar(.5);add(g,c,m.x,m.y,m.z);};
+  return {length,panel,block,pane,line};
+ }
+ const main=facade(v(source.frontEdges.main[0]),v(source.frontEdges.main[1])),W=main.length;
+ main.panel(W/2,0,W,19.94,'white',.045);main.block(W/2,0,W,.35,.12,'frame');
+ // Restored 2006–07 four-storey classical front: three bays diminish upwards.
+ const bays=[W/6,W/2,W*5/6],bw=W/3-.60;
+ for(const u of bays){main.pane(u,.48,bw,4.57,2,2);main.pane(u,6.05,bw,4.47,2,3);main.pane(u,12.16,bw,3.60,2,2);main.pane(u,17.43,bw,1.47,2,1);}
+ // Central ground-floor door and transom; the broad lateral displays remain glass.
+ main.block(W/2,.44,.075,3.18,.08,'dark',.29);main.block(W/2,3.68,bw+.03,.085,.08,'frame',.29);
+ for(let i=0;i<4;i++){
+  const u=i===0?.19:i===3?W-.19:i*W/3;
+  main.block(u,.40,i===0||i===3?.37:.45,4.87,.25,'white',.25);
+  main.block(u,.27,.54,.16,.35,'frame',.25);main.block(u,5.03,.59,.19,.38,'stone',.25);
+  if(i===0||i===3)for(let y=.8;y<4.8;y+=.48)main.block(u,y,.40,.035,.30,'stone',.29);
+  else for(const side of [-1,1])main.block(u+side*.13,.65,.033,4.10,.07,'stone',.4);
+ }
+ for(const [y,h,d]of [[5.27,.18,.34],[5.45,.18,.48],[5.65,.12,.56],[11.15,.21,.23],[11.36,.13,.31],[16.43,.16,.21],[19.32,.20,.35],[19.59,.22,.53],[19.82,.15,.62]])main.block(W/2,y,W+.10,h,d,'white',.13);
+ for(let u=.15;u<W;u+=.29)main.block(u,19.13,.12,.20,.28,'stone',.22);
+ // Lower left 139a gateway stays a separate narrow bent-cornice volume.
+ const low=facade(v(source.frontEdges.lowEntrance[0]),v(source.frontEdges.lowEntrance[1])),L=low.length;
+ low.panel(L/2,0,L,8.90,'white',.07);low.block(L/2,0,L,.30,.15,'frame',.12);
+ low.pane(L/2,.35,L-.79,2.43,2,1);low.block(L/2,2.93,L-.48,.91,.20,'stone',.15);
+ low.pane(L/2,4.08,L-.70,3.63,3,3);
+ for(const u of [.20,L-.20]){low.block(u,3.82,.28,4.03,.21,'white',.19);low.block(u,7.75,.43,.22,.30,'stone',.20);}
+ low.block(L/2,7.86,L+.05,.22,.31,'white',.18);
+ for(const [offset,r]of [[0,.065],[.16,.075]] as const){low.line(0,8.03+offset,L/2,8.73+offset,r,'stone');low.line(L/2,8.73+offset,L,8.03+offset,r,'stone');}
+ low.block(L/2,9.14,L+.05,.19,.28,'white',.14);
+ for(const u of [L*.18,L*.50,L*.82]){low.block(u,8.85,L*.26,.23,.10,'stone',.19);low.panel(u,8.895,L*.22,.14,'white',.255);}
+ // Measured roof coverage does not support the entire extended cadastral
+ // theatre edge. Do not place panes along that cadastral envelope: the
+ // uncovered strip is an access/coverage gap, not proof of a vertical wall.
+ // Primary architect court photo184 and axonometric186 identify the white
+ // gabled rear of the same surveyed deep house. Its actual roof6/12 end
+ // bounds the openings; lower extension roof17 hides the lower floors.
+ const rearA=new T.Vector2(-14.83954,-7.10756),rearB=new T.Vector2(-10.47331,-13.41892);
+ const rearLeft=facade(rearA,new T.Vector2(-13.08444,-10.68408));
+ for(const u of [1.15,rearLeft.length-.70])rearLeft.pane(u,13.66,1.14,2.13,2,2);
+ const rearRight=facade(new T.Vector2(-11.13946,-11.72945),rearB);rearRight.pane(rearRight.length/2,13.66,1.14,2.13,2,2);
+ for(const u of [rearLeft.length-.70,rearLeft.length+.60])rearLeft.pane(u,17.61,.61,.81,1,1);
+ // Higher modern former stage-tower face uses red/brown brick and white glazing.
+ // This wall follows a real roof13 edge instead of an invented rectangle.
+ const tower=source.roofRegions[13].rings[0];let best=0;for(let i=1;i<tower.length;i++)if(new T.Vector2(tower[i][0],tower[i][2]).distanceTo(new T.Vector2(tower[(i+1)%tower.length][0],tower[(i+1)%tower.length][2]))>new T.Vector2(tower[best][0],tower[best][2]).distanceTo(new T.Vector2(tower[(best+1)%tower.length][0],tower[(best+1)%tower.length][2])))best=i;
+ const ta=tower[best],tb=tower[(best+1)%tower.length],rear=facade(new T.Vector2(ta[0],ta[2]),new T.Vector2(tb[0],tb[2]));
+ for(const y of [7.2,10.35,13.05])for(const u of [rear.length*.25,rear.length*.75])rear.pane(u,y,Math.min(1.7,rear.length*.25),y>13?1.15:1.8,2,2);
+}

@@ -10685,6 +10685,142 @@
       "triangles": 16821,
       "bytes": 177496,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "w139": {
+      "id": "w139",
+      "name": "W139",
+      "landmarkId": "extract_landmarks_1875699888",
+      "modelUrl": "./models/w139.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012171952"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.896302961217267,
+          52.37358068148385
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 52.863119999999995,
+        "widthMetres": 64.15679
+      },
+      "surveyed": {
+        "anchor": [
+          4.896302961217267,
+          52.37358068148385
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current PDOK exact BAG parent; east/south native metres, AHN5 bounded roof zones"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "W139 restored neoclassical front and former theatre",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.smuldersarchitecten.nl/projecten/w139-amsterdam",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native current BAG complex with interpreted AHN5 bounded roof surfaces; restored four-storey plaster three-bay front, low bent-cornice entrance wing, red deep-house roof and low rear theatre. Fine facade detail approximate. No imported mesh or photo pixels."
+      },
+      "bounds": {
+        "min": [
+          -31.54971694946289,
+          -3.7257990470607183e-7,
+          -23.94646644592285
+        ],
+        "max": [
+          32.99748992919922,
+          20.23051643371582,
+          23.32267951965332
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.896302961217267,
+          52.37358068148385
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 64.54720687866211,
+        "heightMetres": 20.230516806295725,
+        "depthMetres": 47.26914596557617,
+        "depthCoverage": 0.7367754210517106
+      },
+      "triangles": 4322,
+      "bytes": 72580,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "conservatorium": {
+      "id": "conservatorium",
+      "name": "Mandarin Oriental Conservatorium, Amsterdam",
+      "landmarkId": "requested-conservatorium",
+      "modelUrl": "./models/conservatorium.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012152618",
+        "NL.IMBAG.Pand.0363100012236413"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.87881,
+          52.35871
+        ],
+        "headingDegrees": 335,
+        "lengthMetres": 68,
+        "widthMetres": 70
+      },
+      "surveyed": {
+        "anchor": [
+          4.87881,
+          52.35871
+        ],
+        "northOffsetDegrees": 245
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": -90,
+      "attribution": {
+        "title": "Mandarin Oriental Conservatorium, Amsterdam",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/287",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free flat-color architecture built at native surveyed BAG scope and scale1 with coherent footprint-clipped gable, hip and flattened-tent roofs calibrated to major AHN5 measurements, exposed arches and dormers, pale stone main gable, open polygonal corner turret and transparent courtyard frame. Thin ornament heights/spacing approximate from source photos. No neighboring rectangular suppression."
+      },
+      "bounds": {
+        "min": [
+          -36.099998474121094,
+          -3.814697322468419e-7,
+          -26.489999771118164
+        ],
+        "max": [
+          31.070175170898438,
+          38.79999923706055,
+          42.6747932434082
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.87881,
+          52.35871
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 335,
+        "facadeBearingDegrees": 245,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 69.16479301452637,
+        "heightMetres": 38.79999961853028,
+        "depthMetres": 67.17017364501953,
+        "depthCoverage": 0.9595739092145648
+      },
+      "triangles": 28331,
+      "bytes": 312652,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }
