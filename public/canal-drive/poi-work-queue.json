@@ -843,6 +843,26 @@
       "status": "queued",
       "requestedOn": "2026-10-05",
       "nextAction": "Resolve current venue/site identities and surveyed building scope; archive original references; build source-backed house-style model with destination, pin/label and meaningful sourced card. Preserve separate tenants, neighboring structures and existing Faralda model."
+    },
+    {
+      "id": "de-gooyer-windmill",
+      "task": "De Gooyer windmill, Amsterdam Oost",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Research and build the octagonal windmill, raised base, gallery, cap and sails at native surveyed scale; preserve the neighboring brewery and open terrace. Integrate a distinct destination, geographic pin/label and sourced trivia card.",
+      "researchLeads": [
+        "User supplied: dates from 1725; former flour mill; claimed largest windmill in the country. Verify date, original versus moved/rebuilt structure, and precise size distinction before publishing trivia.",
+        "Nearby Brouwerij ’t IJ; brewery tour/free-beer claims require current operator verification."
+      ]
+    },
+    {
+      "id": "brouwerij-het-ij",
+      "task": "Brouwerij ’t IJ brewery beside De Gooyer",
+      "priority": "normal",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Resolve brewery building and terrace scope alongside De Gooyer; preserve separate windmill and brewery POI identities and meaningful sourced cards. Verify current operator history and visitor information."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
