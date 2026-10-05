@@ -1,0 +1,14 @@
+{
+  "method": "Cached full OSM allotment boundary polygons and actual mapped building footprints. No synthetic positions or footprint orientations.",
+  "sourceHashesSha256": {
+    ".cache/osm-source/Amsterdam.osm.pbf": "f96483e73d9aacc23c9605cd11079c72abc6b4482ec10640929540d5765a8682",
+    ".cache/osm-source/derived/amsterdam-buildings.geojsonseq": "beb721fff490d7b3333f130b00d822376390445f051753b1ec6f6ff84166ab8e",
+    "review-data/allotment-houses/park-boundaries.geojson": "bfb58a6d2d1394c5ccecdc701296612a31c67ec7fa477981f03c953e10b84c98"
+  },
+  "boundaryIds": ["w4827637", "w46349143"],
+  "excludedNameAlias": "V.T.V. Nut en Genoegen at 52.43 is another park and excluded.",
+  "sourceCounts": {"withinParks": 381, "eligibleSmallFootprints": 376, "excludedLargerFootprints": 5},
+  "approximateProperties": {"heightM": 3.4, "eavesM": 2.4, "roofHeightM": 1.0, "roofShape": "gabled", "colour": "deterministic muted material palette"},
+  "sourceSupportedProperties": ["OSM identity", "park boundary", "footprint vertices", "orientation", "relative distribution"],
+  "visualAcceptance": "Pending root actual game-scene and independent review. Passing source checks do not establish visual acceptance."
+}

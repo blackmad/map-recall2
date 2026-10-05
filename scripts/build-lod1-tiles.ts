@@ -91,6 +91,11 @@ const renderProperties = (properties: Record<string, unknown>): Record<string, u
   // extrude to the apex and the mesh has nothing to sit on.
   const roofHeight = properties.roofHeight;
   if (typeof roofHeight === 'number' && roofHeight > 0) rendered.roofHeight = roofHeight;
+  // Scoped allotment priors must survive regeneration, including their honest
+  // approximate-height provenance and small-house rendering discriminator.
+  if (properties.allotmentHouse === 'garden-house-v1') {
+    for (const key of ['allotmentHouse', 'allotmentPark', 'heightSource', 'roofEavesHeightM', 'sideColour'] as const) rendered[key] = properties[key];
+  }
   return rendered;
 };
 

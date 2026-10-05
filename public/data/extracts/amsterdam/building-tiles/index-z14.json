@@ -2,10 +2,10 @@
   "city": "amsterdam",
   "zoom": 14,
   "generatedAt": "2026-09-03T21:20:05.136Z",
-  "features": 346664,
+  "features": 347040,
   "tiles": 295,
-  "totalBytes": 111768625,
-  "totalGzipBytes": 15435163,
+  "totalBytes": 111964945,
+  "totalGzipBytes": 15454178,
   "tileList": [
     "14/8405/5378",
     "14/8405/5379",
@@ -302,5 +302,14 @@
     "14/8425/5390",
     "14/8425/5391",
     "14/8425/5392"
-  ]
+  ],
+  "allotmentSupplement": {
+    "version": "garden-house-v1",
+    "parks": [
+      "Tuinpark Nut & Genoegen",
+      "Tuingroep Sloterdijkermeer"
+    ],
+    "source": ".cache/osm-source/derived/amsterdam-buildings.geojsonseq",
+    "approximateHeightM": 3.4
+  }
 }

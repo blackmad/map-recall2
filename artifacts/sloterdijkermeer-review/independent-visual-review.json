@@ -1,0 +1,53 @@
+{
+  "reviewer": "garden_source independent failure-seeking reviewer",
+  "decision": "accepted-bounded-mapped-house-restoration",
+  "scope": "376 source-mapped small house footprints in the two recorded park polygons, with approximate one-storey architecture. Four desktop and four Chrome touch-emulated game views reviewed; no all-plot or individually surveyed architecture claim.",
+  "imagesInspected": [
+    "user-reference-map.png",
+    "user-empty-game.png",
+    "after/overtoom-photo-gameplay.png",
+    "after/overtoom-cartoon-gameplay.png",
+    "after/overtoom-storybook-gameplay.png",
+    "after/overtoom-procedural-gameplay.png",
+    "game/desktop-sloterdijkermeer-wide.png",
+    "game/desktop-sloterdijkermeer-south-heldout.png",
+    "game/desktop-nut-en-genoegen-heldout.png",
+    "game/desktop-railway-transition.png",
+    "game/touch-sloterdijkermeer-wide.png",
+    "game/touch-sloterdijkermeer-south-heldout.png",
+    "game/touch-nut-en-genoegen-heldout.png",
+    "game/touch-railway-transition.png"
+  ],
+  "referenceLimits": "The user map supports small separated mapped footprints following paths and ditches. It does not verify height, roof shape, wall materials, door direction or window counts. Municipal 274 plots versus restored149 footprints establishes partial coverage, not an exact count of missing houses.",
+  "passingObservations": [
+    "The reviewed area now has repeated small separated houses where the user empty-game screenshot showed a mostly empty park.",
+    "Houses read as one-storey garden structures, distinctly smaller than retained long communal buildings and large ordinary neighbors.",
+    "Low roof silhouettes, framed glazing and door panels are visible; there are no obvious missing wall faces or unsupported broad roof plates in reviewed view.",
+    "Paths, ditches and open spacing remain visible between houses; no obvious new overlap with adjacent large structures.",
+    "Ordinary surrounding buildings retain facade windows in all four looks. Garden geometry and flat-color identity remain consistent through mode changes.",
+    "Desktop wide view establishes repeated small footprints across mapped rows and retains communal buildings and industrial neighbors.",
+    "Sloterdijkermeer south and Nut & Genoegen heldout game views retain low roofs, windows and door panels on desktop and touch; railway transition retains open ditches/paths and neighboring ordinary structures.",
+    "All eight final captures report unchanged rider world position while camera moves. Errors array empty. No obvious blank-wall regression in reviewed ordinary neighbors.",
+    "Root repaired geometry counters: direct independent probe now reports 376 ranges,1516 walls,11964 detail quads and9361 coarse quads rather than zero."
+  ],
+  "preservedFailures": [
+    {
+      "failure": "Initial runtime rejected all MultiPolygon inputs after filtering marked houses from ordinary renderer, making all376 disappear.",
+      "resolution": "Root added MultiPolygon support. Independent direct compiler probe now emits376 house ranges at detail and coarse; no current house skipped."
+    },
+    {
+      "failure": "Initial game harness let player idle drift during camera comparison",
+      "resolution": "Root preserved failed-idle-drift-report.json; corrected final report records stationaryRider=true for all8 views."
+    }
+  ],
+  "remainingLimits": [
+    "Partial mapped coverage remains. No fabricated houses added to unmapped plots.",
+    "Height, roof family, materials, window placement and door direction remain approximate priors; user map verifies footprints rather than facade photographs.",
+    "Touch evidence is headless Chrome touch emulation, not physical phone GPU measurement.",
+    "Exact six source-ID samples were not all individually identified in screenshots; actual geographic heldout/transition views establish scoped scene appearance.",
+    "GPU timing varies between first and repeated with-house passes; exact incremental GPU cost cannot be inferred from one short ablation."
+  ],
+  "performanceDecision": "Same-version whole-map GPU query evidence and frame samples reviewed. Latest report desktop GPU median with3.478ms/without2.882ms/repeat1.817ms; touch3.472/3.379/1.987ms. Frame medians stay16.7ms for all passes; CPU medians desktop1.6/1.5/1.6ms,touch1.2/1.3/1.2ms. Supports no observed frame-rate regression in tested environment, with noisy GPU cost; no speedup claim.",
+  "completion": "Accept bounded restoration of current376 source footprints in actual desktop/touch-emulated game scenes. No expansion, all-plot or architectural-photo-fidelity acceptance.",
+  "finalGameEvidence": "artifacts/sloterdijkermeer-review/game/report.json"
+}

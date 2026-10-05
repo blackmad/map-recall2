@@ -13,6 +13,7 @@ import { profilesNearBuilding } from './streetFacadeRendering.js';
 import { bayVariantOpenings, proceduralOpenings } from './facadeOpenings.js';
 import type { StreetAppearanceProfile } from './streetAppearance.js';
 import { SUPERMARKET_CHAINS } from './shopfronts.js';
+import { appendAllotmentHouses, isAllotmentHouse } from './allotmentHouses.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes. */
 export type BuildingLook = 'procedural' | 'untextured' | Look;
@@ -125,7 +126,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
 /** A chunk for a group of streamed features in one look. */
 /** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
 export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = []): Chunk {
-  return buildChunk(features.map(f => {
+  const garden = features.filter(isAllotmentHouse);
+  const chunk = buildChunk(features.filter(f => !isAllotmentHouse(f)).map(f => {
     const visualRoof = mode !== 'coarse' && profiles.length ? sourceVisualRoof(f, profiles) : undefined;
     const building = meshBuildingFor(visualRoof?.feature ?? f, look, mode === 'coarse', visualRoof?.plan);
     if (building && mode === 'coarse') {
@@ -147,4 +149,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
     }
     return building;
   }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets);
+  if (!garden.length || mode === 'extras') return chunk;
+  const flatLayer = (cellSetOf(look) === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT) + 3;
+  return appendAllotmentHouses(chunk, garden, ORIGIN, flatLayer, mode === 'coarse');
 }

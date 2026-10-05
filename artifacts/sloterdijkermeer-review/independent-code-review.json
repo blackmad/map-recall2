@@ -1,0 +1,23 @@
+{
+  "houses": 376,
+  "triangles": 28370,
+  "invalidTriangles": 0,
+  "downwardRoofs": 0,
+  "minPeakM": 2.908747168746777,
+  "maxPeakM": 3.4737685241969225,
+  "partialCoverage": "149 mapped Sloterdijkermeer footprints versus reported 274 garden plots; no all-house claim",
+  "visualAcceptance": "accepted-bounded-mapped-house-restoration",
+  "fixedFailure": "MultiPolygon input support added after independent review",
+  "remainingIssue": "None blocking current scoped376 houses; counters and unsupported-shape ordinary fallback repaired.",
+  "counterRepair": {
+    "detail": {
+      "walls": 1516,
+      "quads": 11964
+    },
+    "coarse": {
+      "walls": 1516,
+      "quads": 9361
+    },
+    "ranges": 376
+  }
+}

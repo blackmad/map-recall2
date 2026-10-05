@@ -23,6 +23,29 @@
   ],
   "tasks": [
     {
+      "id": "sloterdijkermeer-missing-garden-houses",
+      "task": "Restore missing Sloterdijkermeer garden-house footprints and develop source-informed small allotment-house treatment",
+      "priority": "high",
+      "status": "verified-scoped",
+      "evidence": "../../artifacts/sloterdijkermeer-review/independent-visual-review.json",
+      "diagnosis": "Diagnostic rectangle contains 102 cached OSM footprints and 25 shipped buildings across two tiles. Live PDOK BAG check: 76 OSM footprint centroids have no containing BAG polygon; 26 do. Unnamed unmatched OSM footprints inside BAG coverage are discarded in build-lod1-city.ts; fallback OSM height is 9m. Initial single-tile count of 2 was incomplete. Source admission defect plus missing low-rise treatment; visual acceptance pending.",
+      "nextAction": "Mapped-house restoration complete. Further unmapped plot coverage requires source positions; do not claim every plot has a house. Preserve approximate architectural treatment as user-authorized.",
+      "userSteering20261005": {
+        "approximateSizesAuthorized": true,
+        "instruction": "Use approximate sizes: garden houses are broadly similar in size. User supplied an OSM-style park map showing repeated small footprints, plot spacing and orientations.",
+        "implementationScope": "Reusable small single-storey garden-house generator with a common approximate scale and modest bounded variation. Preserve mapped positions/orientations and available source footprints. Do not require individual house reconstruction; do not turn approximate-size authorization into invented house locations.",
+        "referenceImage": "/var/folders/tl/40rt5yw54v150s3k8shhw5y00000gn/T/codex-clipboard-ncm2GZ.png"
+      },
+      "validation": "Restored 376 native mapped footprints (149 Sloterdijkermeer; 227 Nut & Genoegen); existing 7111 buildings unchanged. Dedicated low-rise roof/wall/window/door generator, near/coarse LOD, exact native roof coverage and picking IDs verified. Four game looks and eight desktop/touch-emulated heldout/transition/pan captures pass; independent review accepted the scoped mapped set. Same-version full-map GPU timing and 16.7ms median frame intervals recorded; noisy marginal GPU cost. Physical phone performance and unmapped houses remain outside acceptance.",
+      "demo": "./allotment-houses-demo.html",
+      "coverage": {
+        "sloterdijkermeerMappedHouses": 149,
+        "nutEnGenoegenMappedHouses": 227,
+        "municipalSloterdijkermeerPlots": 274,
+        "limit": "Footprints and plots are different inventories; complete only for the mapped set."
+      }
+    },
+    {
       "id": "canal-house-reusable-recipe-pilot",
       "task": "Trial source-backed canal-house recipes made from reusable components; use registry and Beeldbank evidence to improve street-row rhythm.",
       "priority": "high",

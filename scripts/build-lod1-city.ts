@@ -32,6 +32,7 @@ import { once } from 'node:events';
 import { createInterface } from 'node:readline';
 import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { allotmentPark, allotmentParks, allotmentProperties, footprintsOverlap } from './allotment-house-source.js';
 import { BAG3D_VERSION } from '../src/canalRecall/bag3dTiles.js';
 import {
   footprintsShareOwnership,
@@ -46,6 +47,8 @@ import {
   geometryHasHoles,
   outerRingsOf,
   polygonsOf,
+  bboxesOverlap,
+  ringBbox,
   type FootprintGeometry,
   type PolygonRings,
 } from '../src/canalRecall/buildingGeometry.js';
@@ -174,6 +177,10 @@ let osmCourtyardGeometry = 0;
  * much of the city OSM still owns.
  */
 const coverage = { west: Infinity, south: Infinity, east: -Infinity, north: -Infinity };
+// Only the two recorded Amsterdam park polygons can admit small unnamed OSM
+// houses. Rectangular BAG coverage alone is not evidence of a real footprint.
+const allotmentOwners: FootprintGeometry[] = [];
+const inAllotmentScope = (geometry: FootprintGeometry): boolean => city === 'amsterdam' && polygonsOf(geometry).some(p => allotmentParks.some(park => polygonsOf(park.geometry).some(q => bboxesOverlap(ringBbox(p[0]), ringBbox(q[0])))));
 
 await output.write('{"type":"FeatureCollection","features":[\n');
 
@@ -182,6 +189,7 @@ for await (const rawLine of reader) {
   const line = rawLine.replace(/,\s*$/, '');
   if (!line.startsWith('{"type":"Feature"')) continue;
   const feature = JSON.parse(line) as Feature;
+  if (inAllotmentScope(feature.geometry)) allotmentOwners.push(feature.geometry);
   const bagPolygons = polygonsOf(feature.geometry);
   const rings = outerRingsOf(bagPolygons);
   if (rings.length === 0) continue;
@@ -277,6 +285,11 @@ for (const building of osmById.values()) {
   // Anything else overlapping a pand is already out at tier 3. What remains is
   // a structure with no pand under it at all.
   if (!isStandIn && represented.has(building.osmId)) continue;
+  const geometry = asGeometry(building.polygons);
+  const park = city === 'amsterdam' && !isStandIn ? allotmentPark({ geometry, properties: building.properties }) : undefined;
+  // Centroid ownership can miss thin crossing footprints. Keep the scoped
+  // exception disjoint from actual BAG geometry and earlier admitted owners.
+  if (park && allotmentOwners.some(owner => footprintsOverlap(owner, geometry))) continue;
   const covered = isStandIn || insideCoverage(building.rings);
   if (!isStandIn && covered) {
     // With the complete OSM file, most "unmatched" outlines inside BAG
@@ -284,7 +297,7 @@ for (const building of osmById.values()) {
     // emitting them doubles the city and reintroduces z-fighting. Keep only
     // parts, stacked members, and named leftovers (true gaps in the register).
     const named = typeof building.properties.name === 'string' && building.properties.name.length > 0;
-    if (!building.isPart && building.minHeightM <= 0 && !named) {
+    if (!building.isPart && building.minHeightM <= 0 && !named && !park) {
       suppressedUnmatched++;
       continue;
     }
@@ -301,10 +314,12 @@ for (const building of osmById.values()) {
       heightSource: 'osm',
       // Distinguishes "BAG has no such building" from "BAG was never asked
       // here". Only the first is a statement about the register.
-      bagConsulted: covered
+      bagConsulted: covered,
+      ...(park ? allotmentProperties(building.osmId, park) : {})
     },
-    geometry: asGeometry(building.polygons)
+    geometry
   }));
+  if (inAllotmentScope(geometry)) allotmentOwners.push(geometry);
 }
 
 output.write('\n]}\n');
