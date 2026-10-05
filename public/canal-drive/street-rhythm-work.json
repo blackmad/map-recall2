@@ -654,7 +654,40 @@
       "reviewerDecision": "Root and independent reviewer accept restoration of the376 mapped source houses across both parks and railway transition. Four looks plus eight desktop/touch captures and same-version performance evidence pass scoped gates. Unmapped plots and exact photographed architecture excluded.",
       "nextAction": "Scoped mapped restoration complete; do not expand this prior to other parks without source inventory/review.",
       "productionEvidence": "artifacts/sloterdijkermeer-review/game/report.json",
-      "independentReview": "artifacts/sloterdijkermeer-review/independent-visual-review.json"
+      "independentReview": "artifacts/sloterdijkermeer-review/independent-visual-review.json",
+      "gardenPlantingCycle": {
+        "id": "garden-planting-v1",
+        "status": "accepted-scoped-approximate-planting",
+        "source": "review-data/allotment-houses/garden-obstacles.geojson",
+        "referenceSources": [
+          "https://detuinenvanwesterpark.nl/tuinpark-sloterdijkermeer-keurmerk-natuurlijk-tuinieren/",
+          "https://sloterdijkermeer.nl/natuurlijk-tuinieren-wat-is-dat-eigenlijk-2/"
+        ],
+        "criticalTraits": [
+          "Low hedges, shrubs and flower borders mixed with some vegetable beds",
+          "Retain mapped paths, ditches, water, houses and communal lawns",
+          "Plants and house openings remain visible at near and coarse LOD"
+        ],
+        "inventory": {
+          "houses": 376,
+          "gardensWithClearGround": 372,
+          "groundPatches": 3855,
+          "decoratedPatches": 2488,
+          "renderTriangles": 89488
+        },
+        "placement": "Approximate 4m patches in screened clear ground near mapped houses, not surveyed plot boundaries. All patch corners inside park; complete patch bounding circles clear mapped obstacles. Nearest-house ownership avoids overlapping gardens.",
+        "samples": "Same fixed wide, south-heldout, Nut-heldout and railway-transition cameras on desktop and touch as mapped-house restoration.",
+        "failedEvidence": "artifacts/sloterdijkermeer-review/gardens/failed-ownership",
+        "failureAndRepair": "Independent reviewer found unsuppressed gardens drawn in both coarse and detail meshes. Separate internal non-pickable garden ranges now own LOD visibility; all eight runtime captures have zero wrong vertex hiding flags.",
+        "visualDecision": "artifacts/sloterdijkermeer-review/gardens/independent-review.md",
+        "gameEvidence": "artifacts/sloterdijkermeer-review/gardens/game/report.json",
+        "performance": "Headless desktop/touch-emulated Chrome median frame 16.7ms in all eight views. With/without houses and gardens GPU comparison archived; does not isolate planting-only cost. Physical phone untested.",
+        "limits": [
+          "Approximate square planting grid remains visible",
+          "Four houses lack conservatively screened garden space",
+          "Only mapped house groups in these two parks; no surveyed cadastral plots or individually photographed garden fidelity"
+        ]
+      }
     },
     {
       "id": "oudezijds-next-south-compound-frontage",

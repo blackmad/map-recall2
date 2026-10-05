@@ -31,6 +31,8 @@ try {
   await page.waitForFunction(()=>window.canalRecallGame?.vectorMap?._threeBuildings?.ready,null,{timeout:120000});
   await page.evaluate(()=>{
    const g=window.canalRecallGame;
+   if(g._intro)g._updateIntro(60);g.camera.introOverview=0;g.vectorMap.sync(g.camera,g.osmLoader,g.canvas);
+   g.vectorMap.setMeasuredColoursOnly(false);g.vectorMap._completeCity.setSuspended(false);
    g.vectorMap.sync=()=>{};
    g.player.speed=0;g.player.vx=0;g.player.vy=0;g.player.update=()=>{};
   });
@@ -38,14 +40,16 @@ try {
   const targets=[{id:'sloterdijkermeer-wide',center:[4.853,52.38725],zoom:16.8,pitch:50,bearing:-25},{id:'sloterdijkermeer-south-heldout',center:[4.8508,52.38665],zoom:18.5,pitch:60,bearing:35},{id:'nut-en-genoegen-heldout',center:[4.8603,52.3872],zoom:18.3,pitch:60,bearing:-25},{id:'railway-transition',center:[4.8557,52.38825],zoom:18.4,pitch:58,bearing:155}];
   for(const camera of targets){
    const riderBefore=await page.evaluate(()=>({x:canalRecallGame.player.x,y:canalRecallGame.player.y}));
-   await page.evaluate(async camera=>{const v=canalRecallGame.vectorMap;await v.setBuildingsLook('photo');v.map.jumpTo(camera);v._threeBuildings.setDetailCentre(...camera.center);v._completeCity.followCamera();v.map.triggerRepaint();},camera);
+   await page.evaluate(async camera=>{const v=canalRecallGame.vectorMap;v.setBuildingLook('photo');await v.setBuildingsLook('photo');v.map.jumpTo(camera);v._facadesOutOfZoom=false;v._applyFacadeState();v._syncFacadeZoom(camera.zoom);v._completeCity.setSuspended(false);v._threeBuildings.setDetailCentre(...camera.center);v._completeCity.followCamera();v.map.triggerRepaint();},camera);
    await idle();
    const data=await page.evaluate(async()=>{
     const v=canalRecallGame.vectorMap,t=v._threeBuildings,intervals=[];let last=performance.now();
     await new Promise(resolve=>{const frame=now=>{intervals.push(now-last);last=now;if(intervals.length<61){v.map.triggerRepaint();requestAnimationFrame(frame);}else resolve();};requestAnimationFrame(frame);});
     intervals.shift();intervals.sort((a,b)=>a-b);
     const garden=[...new Set(t.lastFeatures.filter(f=>f.properties.allotmentHouse).map(f=>f.properties.id))];
-    return{gardenResident: garden.length,detailZoom:t.detailZoom,stats:t.stats(),frameMedianMs:intervals[Math.floor(intervals.length*.5)],frameP95Ms:intervals[Math.floor(intervals.length*.95)],rider:{x:canalRecallGame.player.x,y:canalRecallGame.player.y}};
+    const gardenOwnership={coarseRanges:0,hiddenBehindDetail:0,wrongFlags:0};
+    for(const [key,entry] of t.chunks)if(key.startsWith('coarse:')&&entry.mesh)for(const [id,r] of entry.ranges)if(id.startsWith('allotment-garden:')){gardenOwnership.coarseRanges++;const hidden=entry.mesh.geometry.getAttribute('hidden').array,expected=t.installedDetailIds.has(id)?1:0;if(expected)gardenOwnership.hiddenBehindDetail++;for(let i=r.start;i<r.start+r.count;i++)if(hidden[i]!==expected)gardenOwnership.wrongFlags++;}
+    return{gardenOwnership,gardenResident: garden.length,detailZoom:t.detailZoom,stats:t.stats(),frameMedianMs:intervals[Math.floor(intervals.length*.5)],frameP95Ms:intervals[Math.floor(intervals.length*.95)],rider:{x:canalRecallGame.player.x,y:canalRecallGame.player.y}};
    });
    const image=`${mobile?'touch':'desktop'}-${camera.id}.png`;
    await page.locator('#vector-map').screenshot({path:`${output}/${image}`,timeout:90000});
@@ -71,4 +75,4 @@ try {
   await page.close();
  }
 }finally{await browser.close();await fs.writeFile(`${output}/${process.argv.includes('--demo')?'demo-report':'report'}.json`,JSON.stringify(report,null,2)+'\n');}
-if(report.errors.length||report.views.some(v=>!v.stationaryRider||!v.gardenResident))throw Error('Gameplay verification failed');
+if(report.errors.length||report.views.some(v=>!v.stationaryRider||!v.gardenResident||v.gardenOwnership?.wrongFlags))throw Error('Gameplay verification failed');

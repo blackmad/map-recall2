@@ -1,0 +1,10 @@
+{
+  "source": "Local cached .cache/osm-source/Amsterdam.osm.pbf",
+  "extraction": "osmium extract -b 4.847,52.3855,4.8655,52.389; osmium export geojsonseq; retain building/highway/waterway/natural=water",
+  "rawSnapshot": "review-data/allotment-houses/garden-obstacles.geojson",
+  "gardenTraitsSources": [
+    "https://detuinenvanwesterpark.nl/tuinpark-sloterdijkermeer-keurmerk-natuurlijk-tuinieren/",
+    "https://sloterdijkermeer.nl/natuurlijk-tuinieren-wat-is-dat-eigenlijk-2/"
+  ],
+  "approximate": "Placement, species, colours and individual planting layouts are visual priors. Source supplies obstacle geometry, not exact garden layouts."
+}

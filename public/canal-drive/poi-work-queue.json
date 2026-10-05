@@ -43,6 +43,17 @@
         "nutEnGenoegenMappedHouses": 227,
         "municipalSloterdijkermeerPlots": 274,
         "limit": "Footprints and plots are different inventories; complete only for the mapped set."
+      },
+      "gardenPlantingFollowup": {
+        "requested": "User reported the restored house surroundings still look empty; fill the gardens.",
+        "status": "verified-scoped-approximate-planting",
+        "patches": 3855,
+        "gardensWithClearGround": 372,
+        "retainedEmptyGardens": 4,
+        "treatment": "Low shrubs, hedges, lawn patches, flower borders and some vegetable beds. Approximate visual layouts constrained to mapped park ground clear of paths, water and buildings.",
+        "review": "../../artifacts/sloterdijkermeer-review/gardens/independent-review.md",
+        "runtimeEvidence": "../../artifacts/sloterdijkermeer-review/gardens/game/report.json",
+        "failureAndRepair": "Preserved initial coarse/near ownership failure; separate internal garden render ranges fix duplication and keep garden clicks from selecting houses."
       }
     },
     {
@@ -91,7 +102,7 @@
       "priority": "urgent",
       "status": "verified",
       "owner": "root",
-      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5\u2013120 fps."
+      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5–120 fps."
     },
     {
       "id": "building-inspection",
@@ -260,7 +271,7 @@
     },
     {
       "id": "vinoly",
-      "task": "Vi\u00f1oly",
+      "task": "Viñoly",
       "priority": "normal",
       "status": "queued"
     },
@@ -370,7 +381,7 @@
     },
     {
       "id": "kinderkookkafe",
-      "task": "Kinderkookkaf\u00e9",
+      "task": "Kinderkookkafé",
       "priority": "normal",
       "status": "queued"
     },
@@ -478,7 +489,7 @@
     },
     {
       "id": "street-aware-procedural-architecture",
-      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215\u2013247, Bethani\u00ebndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
+      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215–247, Bethaniëndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
       "priority": "high",
       "status": "verified-pilot",
       "notes": "Three self-review/improvement cycles complete on Overtoom, De Wallen and Marcantilaan, plus adjacent withheld-source transfers. 36 tests and four rendering-mode browser review pass; 349 surveyed neighbors, 95 frozen frontage assignments, 169 compact architectural street segments. Current source and cohort admission replay pass. Final same-worker profile-on/off CPU compile aggregate +0.29%; walls +3.29%, extras -0.37%, one of 24 cases +12.3%. Reviewed stage triangles decrease with unchanged draw calls. Full-game GPU budget remains unverified. Ready for reviewed city batches, not a blanket city-wide style claim. Approximate street character, no individual facade registration claim. Latest demos: artifacts/street-appearance/cycles/index.html."
@@ -617,14 +628,14 @@
     },
     {
       "id": "ing-house",
-      "task": "ING House / Infinity \u2014 original house-style landmark",
+      "task": "ING House / Infinity — original house-style landmark",
       "priority": "high",
       "status": "verified",
       "owner": "ing_house",
       "requested": true,
       "workflow": "full-landmark",
       "sourceUrl": "https://mvsa-architects.com/en/projects/ing-house/",
-      "notes": "Explicit user request. MVSA primary reference documents glass/aluminium wedge and 9\u201312 m stilts; preserve raised open structure and distinctive rising silhouette. Resolve exact OSM/BAG footprint and genuine destination identity before modeling. Completion requires destination, map pin/label and sourced info card.",
+      "notes": "Explicit user request. MVSA primary reference documents glass/aluminium wedge and 9–12 m stilts; preserve raised open structure and distinctive rising silhouette. Resolve exact OSM/BAG footprint and genuine destination identity before modeling. Completion requires destination, map pin/label and sourced info card.",
       "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
     },
     {
@@ -637,7 +648,7 @@
     },
     {
       "id": "idfa-vondelpark-pavilion",
-      "task": "IDFA \u2014 Het Documentaire Paviljoen / Vondelparkpaviljoen",
+      "task": "IDFA — Het Documentaire Paviljoen / Vondelparkpaviljoen",
       "priority": "high",
       "status": "verified",
       "owner": "idfa_pavilion",
@@ -649,7 +660,7 @@
     },
     {
       "id": "muiderpoort-original",
-      "task": "Muiderpoort historic gate \u2014 original house-style model",
+      "task": "Muiderpoort historic gate — original house-style model",
       "priority": "normal",
       "status": "verified",
       "owner": "muiderpoort",
@@ -677,7 +688,7 @@
     },
     {
       "id": "our-lord-attic-repair",
-      "task": "Our Lord in the Attic \u2014 facade and canonical identity repair",
+      "task": "Our Lord in the Attic — facade and canonical identity repair",
       "priority": "normal",
       "status": "verified",
       "owner": "our_lord_attic",
@@ -686,7 +697,7 @@
     },
     {
       "id": "da-costakade-13-17-archive-facades",
-      "task": "Use user-found 1903 Beeldbank elevation to improve Da Costakade 13\u201317 coordinated facade and roof composition",
+      "task": "Use user-found 1903 Beeldbank elevation to improve Da Costakade 13–17 coordinated facade and roof composition",
       "priority": "high",
       "status": "research",
       "owner": "archive_facades",
@@ -719,7 +730,7 @@
     },
     {
       "id": "singelkerk-original",
-      "task": "Singelkerk \u2014 bounded original landmark build",
+      "task": "Singelkerk — bounded original landmark build",
       "priority": "normal",
       "status": "verified",
       "owner": "muiderpoort",
@@ -729,7 +740,7 @@
     },
     {
       "id": "oba-oosterdok-rebuild",
-      "task": "OBA Oosterdok \u2014 source-backed architectural rebuild",
+      "task": "OBA Oosterdok — source-backed architectural rebuild",
       "priority": "urgent",
       "status": "verified",
       "owner": "oba_rebuild",
@@ -738,7 +749,7 @@
     },
     {
       "id": "sint-agneskerk-original",
-      "task": "Sint-Agneskerk \u2014 church and detached campanile",
+      "task": "Sint-Agneskerk — church and detached campanile",
       "priority": "normal",
       "status": "verified",
       "owner": "agneskerk_build",
@@ -747,7 +758,7 @@
     },
     {
       "id": "petruskerk-original",
-      "task": "Petruskerk \u2014 native church and belfry",
+      "task": "Petruskerk — native church and belfry",
       "priority": "normal",
       "status": "verified",
       "owner": "petruskerk_build",
@@ -756,7 +767,7 @@
     },
     {
       "id": "boomkerk-original",
-      "task": "Boomkerk \u2014 source-backed church",
+      "task": "Boomkerk — source-backed church",
       "priority": "normal",
       "status": "verified",
       "owner": "boomkerk_build",
@@ -765,7 +776,7 @@
     },
     {
       "id": "solder-modern-entrance-review",
-      "task": "Ons\u2019 Lieve Heer op Solder \u2014 modern entrance repair",
+      "task": "Ons’ Lieve Heer op Solder — modern entrance repair",
       "priority": "high",
       "status": "verified",
       "owner": "petruskerk_build",
@@ -774,7 +785,7 @@
     },
     {
       "id": "dageraad-window-scope-review",
-      "task": "De Dageraad \u2014 own-parent flank windows",
+      "task": "De Dageraad — own-parent flank windows",
       "priority": "high",
       "status": "verified",
       "owner": "agneskerk_build",
