@@ -6,16 +6,18 @@
 // The register's description of each rijksmonument usually names its front ("Pand met
 // trapgevel", "lijstgevel met kroonlijst", "verhoogde halsgevel"). Each monument has a point;
 // the building footprint that contains it gets the gable named first in its description.
-// Raw SPARQL pages are cached in the shared scrape store and only missing pages are fetched.
+// Prefer the reusable local register archive; legacy SPARQL pages use a repo-local cache.
 // Output goes to a staging file with a coverage report; --publish copies it into the extract.
 
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
+import path from 'node:path';
 import { classifyGable } from '../src/canalRecall/monumentGables.ts';
 
 const ENDPOINT = 'https://api.linkeddata.cultureelerfgoed.nl/datasets/rce/cho/sparql';
-const STORE = '/mnt/project-files/scrape-store/rce-monuments/amsterdam-by-number';
-const STAGING = '/mnt/project-files/house-design/monument-gables.staging.json';
+const STORE = '.cache/monument-register/amsterdam/legacy-gables';
+const STAGING = '.cache/monument-register/amsterdam/monument-gables.staging.json';
+const ARCHIVE = 'scripts/data/amsterdam-monument-register/records.json.gz';
 const EXTRACT = 'public/data/extracts/amsterdam/monument-gables.json';
 const TILES = 'public/data/extracts/amsterdam/building-tiles/14';
 
@@ -40,6 +42,20 @@ const RANGES: ReadonlyArray<readonly [number, number]> = [
 type Row = { nr: string; wkt: string; txt: string };
 
 async function pages(): Promise<Row[]> {
+  if (existsSync(ARCHIVE)) {
+    const snapshot = JSON.parse(gunzipSync(readFileSync(ARCHIVE)).toString('utf8'));
+    const rows: Row[] = [];
+    for (const record of snapshot.rce) {
+      for (const location of record.locations) {
+        // The legacy footprint matcher expects longitude/latitude, never RD metres.
+        // GeoSPARQL WKT without an explicit CRS uses CRS84.
+        if (location.value.startsWith('<') && !/CRS84|4326/.test(location.value)) continue;
+        for (const description of record.descriptions) rows.push({ nr: record.monumentNumber, wkt: location.value, txt: description.text });
+      }
+    }
+    console.log(`Read ${rows.length} description/location rows from local archive`);
+    return rows;
+  }
   mkdirSync(STORE, { recursive: true });
   const rows: Row[] = [];
   for (const range of RANGES) {
@@ -121,7 +137,7 @@ for (const [nr, m] of byNr) {
   void nr;
 }
 const out = { version: 1, source: 'Rijksdienst voor het Cultureel Erfgoed, monumentenregister (CC0), linkeddata.cultureelerfgoed.nl', generated: new Date().toISOString().slice(0, 10), buildings, listedLandmarks: [...listed].sort() };
-mkdirSync('/mnt/project-files/house-design', { recursive: true });
+mkdirSync(path.dirname(STAGING), { recursive: true });
 writeFileSync(STAGING, JSON.stringify(out));
 console.log(`${byNr.size} Amsterdam monuments; ${named} name a gable; ${matched} matched a footprint (${Object.keys(buildings).length} buildings)`);
 for (const parts of landmarkParts) if (parts.some(id => listed.has(id))) for (const id of parts) listed.add(id);
