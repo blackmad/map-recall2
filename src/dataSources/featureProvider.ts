@@ -10,6 +10,7 @@ import {
 } from '../mapRecall/trivia';
 import { extractCityFor, type ExtractCity } from '../mapRecall/cityExtracts';
 import { hintReferencesFrom, type HintReference } from '../mapRecall/locateHints';
+import { attachWaterImportance } from '../mapRecall/waterImportance';
 
 interface FeatureRequest {
   cityId: string;
@@ -223,7 +224,7 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
       const storyFile = await cached(storyPromises, city.id, () => optionalJson<NeighborhoodStoriesFile>(`${city.id}/neighborhood-stories.json`));
       const withTrivia = attachNeighborhoodStories(attachNeighborhoodTrivia(withPlaces, historyFile?.neighborhoods, photosFile), storyFile);
       const selectedArea = amsterdamAreas?.find(({ id }) => id === request.areaId);
-      const allFeatures = [...enriched, ...withTrivia];
+      const allFeatures = attachWaterImportance([...enriched, ...withTrivia], amsterdamAreas || []);
       const features = selectedArea?.geometry
         ? allFeatures.filter((feature) => pointInBoundary(feature.center, selectedArea.geometry!)
           || feature.paths?.some((path) => path.some((point) => pointInBoundary(point, selectedArea.geometry!)))
@@ -239,7 +240,7 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
   if (request.category === 'neighborhoods') {
     throw new Error('Neighborhood quizzes need a local city extract; this city does not have one yet.');
   }
-  return fetchCategorySpecificOSMFeatures(
+  return attachWaterImportance(await fetchCategorySpecificOSMFeatures(
     request.center[0],
     request.center[1],
     request.placeName,
@@ -249,5 +250,5 @@ export async function fetchQuizFeatures(request: FeatureRequest): Promise<Street
     request.forceRefresh,
     request.radiusMeters,
     request.areaId
-  );
+  ));
 }

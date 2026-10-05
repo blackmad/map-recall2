@@ -1,5 +1,6 @@
 import { GameMode, RoundResult, StreetFeature } from './types';
 import { getFeatureKey } from './utils/featureIdentity';
+import { isWater, waterImportance } from './mapRecall/waterImportance';
 
 export type ReviewRating = 'again' | 'hard' | 'good' | 'easy';
 
@@ -142,9 +143,14 @@ export function selectReviewFeatures(
     return -Math.log(random) / importanceWeight;
   };
   const unseen = features.filter((feature) => !stateByKey.has(getFeatureKey(feature))).sort((a, b) => weightedOrder(a) - weightedOrder(b));
+  // Preserve mixed-category variety while making new water questions follow
+  // the syllabus. Randomness only breaks equal-priority ties.
+  const newWaters = unseen.filter(isWater).sort((a, b) => waterImportance(b) - waterImportance(a) || weightedOrder(a) - weightedOrder(b));
+  let waterIndex = 0;
+  const prioritizedUnseen = unseen.map(feature => isWater(feature) ? newWaters[waterIndex++] : feature);
   const learned = features.filter((feature) => stateByKey.has(getFeatureKey(feature))).sort((a, b) => weightedOrder(a) - weightedOrder(b));
   const dueTarget = Math.min(due.length, Math.ceil(limit * 0.7));
-  return [...due.slice(0, dueTarget), ...unseen, ...due.slice(dueTarget), ...learned]
+  return [...due.slice(0, dueTarget), ...prioritizedUnseen, ...due.slice(dueTarget), ...learned]
     .filter((feature, index, all) => all.findIndex((candidate) => getFeatureKey(candidate) === getFeatureKey(feature)) === index)
     .slice(0, limit);
 }

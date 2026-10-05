@@ -12,6 +12,8 @@
  * Commons photographs, the compositor chunk and the font (1.3-12 s).
  */
 import type { LargeLetterPhotoWindows } from '../canalRecall/largeLetterPostcard';
+import outlineFontUrl from './fonts/Anton-Regular.ttf?url';
+import scriptFontUrl from './fonts/Pacifico-Regular.ttf?url';
 
 const WIDTH = 640;
 const HEIGHT = 400;
@@ -67,9 +69,15 @@ export function preparePostcard(name: string, cityName: string | undefined, phot
 async function compose(name: string, cityName: string | undefined, photos: readonly string[]): Promise<PreparedPostcard | null> {
   const backdrop = photos.length ? loadImage(photos[0]) : Promise.resolve(null);
   for (const url of photos.slice(1)) void loadImage(url);
-  const fonts = `${import.meta.env.BASE_URL}canal-drive/fonts/`;
   const postcard = await import('../canalRecall/largeLetterPostcard');
-  const [font] = await Promise.all([postcard.loadLargeLetterFont(`${fonts}Anton-Regular.ttf`), postcard.ensureLargeLetterWebFonts(fonts)]);
+  // EduMap hosting excludes canal-drive/**. Vite imports put these fonts in
+  // its own fingerprinted assets, rather than depending on Canal Recall files.
+  const [font] = await Promise.all([postcard.loadLargeLetterFont(outlineFontUrl), Promise.all([
+    ['Anton', outlineFontUrl], ['Pacifico', scriptFontUrl],
+  ].map(async ([family, url]) => {
+    const face = new FontFace(family, `url(${url})`);
+    document.fonts.add(await face.load());
+  }))]);
   const frame = document.createElement('canvas');
   const ctx = frame.getContext('2d');
   if (!ctx) return null;

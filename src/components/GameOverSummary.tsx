@@ -40,6 +40,17 @@ export const GameOverSummary: React.FC<GameOverSummaryProps> = ({
   onSwitchMode,
 }) => {
   const [isMapInspectMode, setIsMapInspectMode] = useState(false);
+  useEffect(() => {
+    const restart = (event: KeyboardEvent) => {
+      if (event.key !== 'Enter' || event.repeat || event.altKey || event.ctrlKey || event.metaKey) return;
+      const target = event.target;
+      if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select, button, a, [role="button"]'))) return;
+      event.preventDefault();
+      onPlayAgain();
+    };
+    window.addEventListener('keydown', restart);
+    return () => window.removeEventListener('keydown', restart);
+  }, [onPlayAgain]);
   const percentage = Math.round((totalScore / maxPossibleScore) * 100);
 
   const activeCategoryInfo =

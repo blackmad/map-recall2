@@ -188,6 +188,8 @@ export interface StreetFeature {
   wikidata?: string;
   wikipedia?: string;
   prominenceScore?: number;
+  /** Quiz water priority, including mapped extent and Amsterdam district. */
+  waterImportance?: number;
   wikipediaPageviews60d?: number;
   wikidataSitelinks?: number;
   encyclopediaScore?: number;

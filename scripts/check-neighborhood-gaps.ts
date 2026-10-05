@@ -200,6 +200,10 @@ console.log('Neighbourhood gap-fill checks passed.');
     file('File:Mapillary (MOhnWRiMH9YywAA) (amsterdam) 2016-08-17.jpg', 52.04, 4.08), // dashcam frame
   ], square, 8);
   assert.deepEqual(picked.map(f => f.title).sort(), ['File:Canal view 1.jpg', 'File:Market square.jpg']);
+  assert.equal(rankAreaPhotos([
+    file('File:Historic street.jpg', 52.01, 4.01, { categories: 'Black and white photographs', width: 5000 }),
+    file('File:Colour street.jpg', 52.02, 4.02, { categories: 'Color photographs' }),
+  ], square, 1)[0].title, 'File:Colour street.jpg', 'colour wins over larger monochrome images');
 }
 
 {
