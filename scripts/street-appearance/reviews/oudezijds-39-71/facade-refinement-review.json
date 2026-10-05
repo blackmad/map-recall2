@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent facade_refinement_review agent",
+  "reviewedOn": "2026-10-05",
+  "planId": "oudezijds-facade-refinement",
+  "scope": "Existing observed Oudezijds39–71 row, 18 fronts over approximately100m. User-requested lighter roofline trim, stronger masonry and one optional shallow segmental-head style while preserving flat heads. No transfer or expansion acceptance.",
+  "decision": "pass-bounded-offline-refinement-visual; actual-game/performance gate owned by root",
+  "provenance": {
+    "catalogRevision": "2b8597da5262de54",
+    "stageBundleSha256": "318724615a4fe9fb9cb82077e48e7dee4ef31a7d5f6148bdcb38ed9a8bcf0f6c",
+    "report": "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/report.json"
+  },
+  "method": "Direct view_image review of four fixed municipal sources, final front/block/source-row images for all four fixed samples, opposite-obliques for the two curved-head areas, and matched prior-final front images for upper-unmatched, neck-middle and bell-lower plus cornice-upper block. Failure-seeking review of casing/glass contradictions, heavy trim, mortar noise and row composition. Tests are not visual acceptance.",
+  "fixedSamples": [
+    "upper-unmatched",
+    "cornice-upper",
+    "bell-lower",
+    "neck-middle"
+  ],
+  "criteria": [
+    {
+      "id": "distinct-selectable-heads",
+      "importance": "critical",
+      "decision": "pass-bounded",
+      "reason": "The selected brown fronts show a shallow continuous curved glass/casing silhouette; adjacent dark and pale fronts visibly retain straight heads. Curvature remains a local style rather than a uniform row treatment. No rectangular header crosses the curved apex in reviewed final views. Lower tall panes show a more conspicuous arch in the low-angle near view, but the row-scale result remains a slight rounded alternative rather than a separate broad arch family.",
+      "renderEvidence": [
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/upper-unmatched-photo-front.png",
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/neck-middle-photo-front.png",
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/upper-unmatched-photo-opposite-oblique.png",
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/neck-middle-photo-block.png"
+      ]
+    },
+    {
+      "id": "lighter-connected-roofline",
+      "importance": "critical",
+      "decision": "pass-bounded",
+      "reason": "The formerly deep projecting cornice slabs read as appreciably thinner pale/dark bands. Cornice fronts remain capped with connected closure; no sky slit or floating slab is visible in the reviewed fronts/source-row views. Existing neck/bell/cornice mixture and neighboring heights remain recognizable against the prior-final comparison.",
+      "renderEvidence": [
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/upper-unmatched-photo-front.png",
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/cornice-upper-photo-front.png",
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/bell-lower-photo-source-row.png"
+      ],
+      "baselineEvidence": [
+        "artifacts/street-appearance/rows/oudezijds-39-71/final/upper-unmatched-photo-front.png",
+        "artifacts/street-appearance/rows/oudezijds-39-71/final/neck-middle-photo-front.png"
+      ]
+    },
+    {
+      "id": "readable-running-bond",
+      "importance": "critical",
+      "decision": "pass-bounded-offline",
+      "reason": "Brick courses and staggered vertical joints are more legible on brown/red fronts while dark fronts remain quiet. Mortar does not compete with pale surrounds or window grouping in the reviewed block/oblique views. Pale masonry remains the highest-contrast surface, already present in baseline; no new noisy checkerboard or row-wide washout appears. Game-distance readability requires root runtime evidence.",
+      "renderEvidence": [
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/cornice-upper-photo-block.png",
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/neck-middle-photo-block.png",
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/bell-lower-photo-block.png"
+      ]
+    },
+    {
+      "id": "row-rhythm-preservation",
+      "importance": "critical",
+      "decision": "pass-bounded",
+      "reason": "Frontage widths, pale trim cadence, tall lower/shorter upper window hierarchy, native narrow returns and roof-family variation remain in place. The two curved fronts add a bounded difference without overwhelming the retained flat majority. No new broad balcony or blank-return regression is visible.",
+      "renderEvidence": [
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/upper-unmatched-photo-source-row.png",
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/neck-middle-photo-source-row.png",
+        "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/bell-lower-photo-block.png"
+      ]
+    }
+  ],
+  "sourceEvidence": [
+    "artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg",
+    "artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg",
+    "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg",
+    "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg"
+  ],
+  "preservedFailedEvidence": {
+    "path": "artifacts/street-appearance/rows/oudezijds-39-71/refinement/",
+    "status": "Initial failure reported by root: rectangular 3D optional header conflicted with curved painter. Final reviewed curved glass/casing no longer shows the conflicting bar. Preserve initial captures; do not rewrite them as accepted evidence."
+  },
+  "worstReviewedView": {
+    "image": "artifacts/street-appearance/rows/oudezijds-39-71/refinement-final/neck-middle-photo-front.png",
+    "reason": "Strong low-angle near projection makes lower segmental heads the most rounded and highlights the flat treatment on the adjacent visible return. The curved glass and casing remain coherent; this is a selectable frontal style review, not exact photographed-building matching."
+  },
+  "limits": [
+    "This review does not certify per-address photographed window-head matching; sources remain predominantly flat-headed at the fixed central facades.",
+    "No new heldout or neighborhood transfer reviewed. The previously failed adjacent south compound-frontage remains outside acceptance.",
+    "Offline native stage omits game vegetation/vehicles/curated landmark meshes. Runtime modes, stationary desktop/touch camera pan, streaming and same-version performance must be reviewed separately.",
+    "Two of18 curved fronts and sixteen flat fronts are the root handoff inventory; this visual review verifies visible mixed treatment, not an independent catalogue count."
+  ],
+  "blockingFailures": [],
+  "nextAction": "Root personally inspect final comparisons and actual-game/performance evidence before marking this bounded refinement complete."
+}

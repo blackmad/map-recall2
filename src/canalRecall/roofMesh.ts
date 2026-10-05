@@ -824,7 +824,20 @@ export function roofTrianglesForOutline(outer: readonly number[][], origin: { ln
     const rect:Rect={cx:(a[0]+b[0])/2-ux*.16,cy:(a[1]+b[1])/2-uy*.16,ux,uy,len:.32,wid:width,coverage:1,maxDev:0};
     const sink=new RoofSink(rect,h0,dims),prof=gableProfile(front.shape,width,plan.riseM),f=.16;
     gableSlab(sink,prof,1,.32,plan.accents?'trim':'plate',plan.trimHex);
-    if(plan.accents)gableAccents(sink,{shape:front.shape,prof,f,e:1,W:width,R:plan.riseM,trimHex:plan.trimHex??TRIM_WHITE,shutterHex:'',shutters:false,claws:front.shape==='raisedNeck'?clawArcs(width,plan.riseM):undefined,crownBase:crownBaseOf(front.shape,width,plan.riseM)});
+    if(plan.accents) {
+      if(front.shape==='cornice') {
+        // Observed fronts need a readable ledge, not the stock deep cornice's
+        // broad white belt. Keep the same top/envelope and closed masonry slab;
+        // these display proportions apply only to an admitted source frontage.
+        const top=corniceHeight(plan.riseM),trim=plan.trimHex??TRIM_WHITE,half=width/2;
+        sink.box(f,f+.18,-half-.05,half+.05,top-.20,top+.05,'trim',trim);
+        const band=(v0:number,v1:number,z0:number,z1:number)=>sink.quad(
+          [f+.012,v0,z0],[f+.012,v1,z0],[f+.012,v1,z1],[f+.012,v0,z1],
+          [0,0],[0,0],[0,0],[0,0],'decal',[1,0,0],trim);
+        band(-half,half,top-.34,top-.24);
+        for(const side of [-1,1])band(side<0?-half:half-.16,side<0?-half+.16:half,-1.6,top-.24);
+      } else gableAccents(sink,{shape:front.shape,prof,f,e:1,W:width,R:plan.riseM,trimHex:plan.trimHex??TRIM_WHITE,shutterHex:'',shutters:false,claws:front.shape==='raisedNeck'?clawArcs(width,plan.riseM):undefined,crownBase:crownBaseOf(front.shape,width,plan.riseM)});
+    }
     const top=Math.max(...sink.out.flatMap(t=>t.p.map(p=>p[2]-h0)));
     // Cornices sit below the hidden rear ridge; raised silhouettes own the full envelope.
     const envelope=front.shape==='cornice'?Math.min(plan.riseM,corniceHeight(plan.riseM)+.05):plan.riseM;

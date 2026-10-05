@@ -187,3 +187,19 @@ test('joint infill keeps mapped generic shop identity but uses grouped ground gl
   const cafe=bayLookFor('grouped',1992,12,'photo','shopCafe',r);
   assert.notEqual(cafe.layers.ground,residential.layers.ground,'specific mapped cafe front remains distinct');
 });
+
+test('segmental glazing, casing and mask share shallow curves, while flat heads stay rectangular',()=>{
+ const calls:Array<{method:string;args:unknown[]}> = [];
+ const ctx=new Proxy({createLinearGradient:()=>({addColorStop(){}})}, {get(target,key){if(key in target)return target[key as keyof typeof target];return (...args:unknown[])=>calls.push({method:String(key),args});},set:()=>true});
+ const previous=globalThis.document;
+ globalThis.document={createElement:()=>({getContext:()=>ctx})} as unknown as Document;
+ try {
+  const r:ArchitecturalRecipe={family:'masonry',period:'canal',confidence:.9,openingGroup:'canal-two',groundAssembly:'tall-commercial',windowHead:'segmental',sash:'paired-transom',trimDensity:'restrained'};
+  const v={...bayLookFor('bow',1700,14,'photo',undefined,r).variant,kind:'upper' as const};
+  bayTextures(v,{} as CanvasImageSource,'photo');
+  assert.ok(calls.filter(c=>c.method==='quadraticCurveTo').length>=12,'both colour and mask retain curved casing and glazing');
+  assert.ok(!calls.some(c=>c.method==='arc'),'no semicircular window arch');
+  calls.length=0;bayTextures({...v,shape:'rect'},{} as CanvasImageSource,'photo');
+  assert.ok(!calls.some(c=>c.method==='quadraticCurveTo'),'flat head remains an independent choice');
+ } finally {globalThis.document=previous;}
+});

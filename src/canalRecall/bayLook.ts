@@ -29,12 +29,12 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'tall', paleAccents: true, lintel: 'flat' },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .55, openingHeight: .68, sash: 'paired-transom', trimDensity: 'restrained', lintel: 'none' },
       { windows: 1, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .56, openingHeight: .70, sash: 'paired-transom', trimDensity: 'restrained', lintel: 'none', openingGroup: 'canal-return', groundAssembly: 'tall-commercial' },
-    ...([2, 3] as const).flatMap(windows => ([undefined, 'tall-side-entry', 'tall-commercial'] as const).map(groundAssembly => ({
-      windows, shape: 'rect' as const, shutters: false, paintedFrames: false,
+    ...([2, 3] as const).flatMap(windows => ([undefined, 'tall-side-entry', 'tall-commercial'] as const).flatMap(groundAssembly => (['rect', 'segmental'] as const).map(shape => ({
+      windows, shape, shutters: false, paintedFrames: false,
       family: 'masonry' as const, openingOccupancy: .62, openingHeight: .70,
       sash: 'paired-transom' as const, trimDensity: 'restrained' as const, lintel: 'none' as const,
       openingGroup: windows === 2 ? 'canal-two' as const : 'canal-three' as const, groundAssembly,
-    }))),
+    })))),
   ],
   // 1860-1914: rectangular sashes under flat or segmental masonry heads.
   c19: [
@@ -72,20 +72,37 @@ const ARCHETYPES = Object.keys(BAY_STYLES) as Archetype[];
 
 type Entry = { archetype: Archetype; style: number; kind: (typeof BAY_KINDS)[number]; layer: number; restrainedShop?: boolean };
 // Shop cells are shared by period and art direction, not every opening preset.
-const entries: Omit<Entry, 'layer'>[] = ARCHETYPES.flatMap(archetype =>
-  BAY_STYLES[archetype].flatMap((variant, style) => BAY_KINDS.filter(kind => kind === 'plain' ? BAY_STYLES[archetype].findIndex(v => (v.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')) === (variant.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick'))) === style : !isShopKind(kind) || style === 0).map(kind => ({ archetype, style, kind }))));
-entries.push(...ARCHETYPES.flatMap(archetype => SHOP_KINDS.map(kind => ({ archetype, style: 0, kind, restrainedShop: true }))));
+// Share only cells whose painter output is identical. Upper cells do not draw
+// ground assemblies; side-entry ground and groundDoor both paint the same door.
+function cellKey(archetype: Archetype, style: number, kind: BayKind, restrainedShop = false): string {
+  const variant = { ...BAY_STYLES[archetype][style] };
+  if (kind === 'plain') return `${archetype}|plain|${variant.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')}`;
+  if (isShopKind(kind)) return `${archetype}|${kind}|${restrainedShop}`;
+  if (kind === 'upper') delete variant.groundAssembly;
+  if (kind === 'groundDoor' && variant.groundAssembly === 'tall-side-entry') kind = 'ground';
+  return `${archetype}|${kind}|${JSON.stringify(variant)}`;
+}
+const entries: Omit<Entry, 'layer'>[] = [];
+const cellLayers = new Map<string, number>();
+for (const archetype of ARCHETYPES) for (const [style] of BAY_STYLES[archetype].entries()) for (const kind of BAY_KINDS) {
+  if (isShopKind(kind) && style !== 0) continue;
+  const key = cellKey(archetype, style, kind);
+  if (!cellLayers.has(key)) { cellLayers.set(key, entries.length); entries.push({ archetype, style, kind }); }
+}
+for (const archetype of ARCHETYPES) for (const kind of SHOP_KINDS) {
+  cellLayers.set(cellKey(archetype, 0, kind, true), entries.length);
+  entries.push({ archetype, style: 0, kind, restrainedShop: true });
+}
 export const BAY_ENTRIES: readonly Entry[] = entries.map((e, layer) => ({ ...e, layer }));
 export const BAY_LAYER_COUNT = BAY_ENTRIES.length;
 
 export const bayVariant = (e: Entry): BayVariant => {
   const v = { archetype: e.archetype, kind: e.kind, ...BAY_STYLES[e.archetype][e.style] };
-  // The shared legacy shopset keeps its existing look, even if style0 is a street preset.
   if (isShopKind(e.kind)) return { ...v, trimDensity: e.restrainedShop ? 'restrained' : undefined };
   return v;
 };
 export const bayLayer = (archetype: Archetype, style: number, kind: (typeof BAY_KINDS)[number], restrainedShop = false): number =>
-  BAY_ENTRIES.find(e => e.archetype === archetype && e.style === (isShopKind(kind) ? 0 : kind === 'plain' ? BAY_STYLES[archetype].findIndex(v => (v.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')) === (BAY_STYLES[archetype][style].wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick'))) : style) && e.kind === kind && (!isShopKind(kind) || !!e.restrainedShop === restrainedShop))!.layer;
+  cellLayers.get(cellKey(archetype, isShopKind(kind) ? 0 : style, kind, restrainedShop))!;
 
 /** The layout style (cell dimensions) each archetype uses. */
 export const ARCHETYPE_LAYOUT: Record<Archetype, FacadeStyle> = { canal: 'canal', c19: 'c19', school: 'school', modern: 'modern' };
@@ -158,10 +175,10 @@ export function bayStyleForRecipe(id: string, archetype: Archetype, recipe?: Arc
   const lintel = recipe.lintel ?? ((recipe.trim?.arches ?? 0) > 0.5 ? 'arch' : 'flat');
   const sash = recipe.sash ?? (recipe.family === 'punched' ? 'plain' : 'transom'), trim = recipe.trimDensity ?? 'restrained';
   const material = recipe.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick');
-  const key = `${recipe.openingGroup ?? 'none'}|${recipe.groundAssembly ?? 'none'}|${archetype}|${recipe.facadeAssembly ?? 'none'}|${recipe.entranceAssembly ?? 'none'}|${material}|${recipe.family}|${proportion}|${dark}|${pale}|${lintel}|${sash}|${trim}`;
+  const key = `${recipe.openingGroup ?? 'none'}|${recipe.groundAssembly ?? 'none'}|${recipe.windowHead ?? 'flat'}|${archetype}|${recipe.facadeAssembly ?? 'none'}|${recipe.entranceAssembly ?? 'none'}|${material}|${recipe.family}|${proportion}|${dark}|${pale}|${lintel}|${sash}|${trim}`;
   const cached = recipeStyles.get(key);
   if (cached) return cached[(h >>> 4) % cached.length];
-  const scored = styles.map((v, i) => ({ i, score: ((v.openingGroup ?? 'none') === (recipe.openingGroup ?? 'none') ? 4000 : 0) + ((v.groundAssembly ?? 'none') === (recipe.groundAssembly ?? 'none') ? 2000 : 0) + ((v.entranceAssembly ?? 'none') === (recipe.entranceAssembly ?? 'none') ? 1000 : 0) + ((v.facadeAssembly ?? 'none') === (recipe.facadeAssembly ?? 'none') ? 1000 : 0) + ((v.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')) === material ? 25 : 0) + ((v.sash ?? 'six-over-six') === sash ? 50 : 0) + (v.trimDensity === trim ? 40 : 0) + ((v.family ?? 'masonry') === recipe.family ? 100 : 0) +
+  const scored = styles.map((v, i) => ({ i, score: ((v.shape === 'segmental') === (recipe.windowHead === 'segmental') ? 8000 : 0) + ((v.openingGroup ?? 'none') === (recipe.openingGroup ?? 'none') ? 4000 : 0) + ((v.groundAssembly ?? 'none') === (recipe.groundAssembly ?? 'none') ? 2000 : 0) + ((v.entranceAssembly ?? 'none') === (recipe.entranceAssembly ?? 'none') ? 1000 : 0) + ((v.facadeAssembly ?? 'none') === (recipe.facadeAssembly ?? 'none') ? 1000 : 0) + ((v.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')) === material ? 25 : 0) + ((v.sash ?? 'six-over-six') === sash ? 50 : 0) + (v.trimDensity === trim ? 40 : 0) + ((v.family ?? 'masonry') === recipe.family ? 100 : 0) +
     ((v.proportions ?? 'tall') === proportion ? 8 : 0) + (!!v.paleAccents === pale ? 12 : 0) +
     ((v.frameTone === 'dark') === dark ? 10 : 0) + ((v.lintel ?? 'flat') === lintel ? 6 : 0) }));
   const max = Math.max(...scored.map(v => v.score)), ties = scored.filter(v => v.score === max);
