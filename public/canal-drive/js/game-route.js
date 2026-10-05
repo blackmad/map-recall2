@@ -236,6 +236,14 @@ class GameRouteRuntime {
     this._savePreferences();
   }
 
+  _recenterCamera() {
+    this.camera.resetPan();
+    if (this.player) {
+      this.camera.resetRotation(this.player);
+      this._nudgeCameraBearing(0);
+    }
+  }
+
   /** Orbit chase/cockpit around the vehicle. No-op in 2D views. */
   _nudgeCameraBearing(delta) {
     if (this.viewMode !== 'chase' && this.viewMode !== 'cockpit') return;
@@ -1152,23 +1160,18 @@ class GameRouteRuntime {
     this._assistUsage = { line: false, arrow: false, minimap: false };
     this._ribbon = null;
 
-    this.camera.x = this.player.x;
-    this.camera.y = this.player.y;
-    // The opening flight runs before Camera.update refreshes the rider target.
-    // Reset it now so nearby detail cannot follow the previous ride's spawn.
-    this.camera.targetX = this.player.x;
-    this.camera.targetY = this.player.y;
-    this.camera._lookahead = 0;
-    this.camera.resetPan();
+    this.camera.northUp = this.viewMode === 'north';
+    this.camera.resetForRide(this.player);
+    this._nudgeCameraBearing(0);
     // Snap the basemap onto the boat before the first paint — sync only runs
     // once RACING draws, and without this the map can still show Damrak for a
     // frame (or sit off-centre until camera smoothing catches up).
     if (this.vectorMap && typeof this.vectorMap.aimAtWorld === 'function') {
-      const bearing = this.camera.northUp ? 0 : (this.player.angle + Math.PI / 2) * 180 / Math.PI;
+      const bearing = this.camera.rotation * 180 / Math.PI;
       const pitch = typeof this.vectorMap.pitchForViewMode === 'function'
         ? this.vectorMap.pitchForViewMode(this.viewMode)
         : undefined;
-      this.vectorMap.aimAtWorld(this.player.x, this.player.y, this.osmLoader, { bearing, pitch });
+      this.vectorMap.aimAtWorld(this.camera.x, this.camera.y, this.osmLoader, { bearing, pitch });
       if (typeof this.vectorMap._pitchSmoothed !== 'undefined') {
         this.vectorMap._pitchSmoothed = pitch;
       }

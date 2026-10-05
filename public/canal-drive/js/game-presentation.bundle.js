@@ -8926,15 +8926,14 @@
       const intro = this._intro;
       const player = this.player;
       if (!intro || !player) return false;
-      const to = { x: player.x, y: player.y, zoom: intro.playZoom };
+      const to = { ...this.camera.followPosition(player), zoom: intro.playZoom };
       intro.elapsed += dt;
       const frame = this.input.anyInput ? { ...to, overview: 0, done: true } : introFrame(intro.plan, to, intro.elapsed);
       this._applyIntroCamera(frame.x, frame.y, frame.zoom);
       intro.overview = frame.overview;
       this.camera.introOverview = frame.overview;
       const cam = this.camera;
-      const is3d = cam.viewMode === "chase" || cam.viewMode === "cockpit";
-      const wanted = (cam.northUp || cam.holdHeading ? 0 : player.angle + Math.PI / 2) + (is3d ? cam.bearingOffset : 0);
+      const wanted = cam.followRotation(player);
       const delta = Math.atan2(Math.sin(wanted), Math.cos(wanted));
       cam.rotation = delta * (1 - frame.overview);
       if (frame.done) {
@@ -9141,7 +9140,7 @@
           const pause = this.state === GameState.PAUSED && this._pauseButtonBounds?.find(hit);
           if (finish) this._runFinishAction(finish.id);
           else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
-          else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this.camera.resetPan();
+          else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this._recenterCamera();
           else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
           else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
           else this._inspectBuildingAt(event.clientX, event.clientY);
@@ -9479,10 +9478,16 @@
       const y = Math.round(compact ? layout.destination.y + layout.destination.height + 10 : 70);
       const surface = window.CanalRecallUi.hudSurface;
       this.hud.paperCard(ctx, { x, y, width, height }, { solid: true, radius: compact ? 14 : 8 });
+      ctx.save();
       ctx.fillStyle = surface.accent;
       ctx.font = `700 12px ${surface.fontPlaque}`;
       ctx.textAlign = "center";
-      ctx.fillText(compact ? "RE-CENTER" : "RE-CENTER (R)", CANVAS_W / 2, y + height / 2 + 4);
+      ctx.textBaseline = "alphabetic";
+      const label = compact ? "RE-CENTER" : "RE-CENTER (R)";
+      const metrics = ctx.measureText(label);
+      const textY = y + height / 2 + (metrics.actualBoundingBoxAscent - metrics.actualBoundingBoxDescent) / 2;
+      ctx.fillText(label, CANVAS_W / 2, textY);
+      ctx.restore();
       this._recenterBtnBounds = { x, y, w: width, h: height };
     }
     /** Only while the player is settling in. It used to sit permanently on top

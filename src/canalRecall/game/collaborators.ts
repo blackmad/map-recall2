@@ -17,6 +17,8 @@ export interface Camera {
   maxZoom: number;
   pan(deltaX: number, deltaY: number): void;
   resetPan(): void;
+  followPosition(target: { x: number; y: number; angle: number }): { x: number; y: number };
+  followRotation(target: { angle: number }): number;
   /** True while the view is dragged off the vehicle. */
   detached: boolean;
   /** View centre in world px. The intro flight drives these directly. */

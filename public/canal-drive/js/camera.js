@@ -13,6 +13,7 @@ class Camera {
     // with the heading would move "right" every time the vehicle turned
     // right — a feedback spin — so absolute mode holds the map still.
     this.holdHeading = false;
+    this.heldRotation = 0;
     this.rotation = 0;
     this.bearingOffset = 0;
     this.viewMode = 'north';
@@ -28,6 +29,41 @@ class Camera {
     this.reducedMotion = false;
     this._lookahead = 0;
   }
+  followPosition(target) {
+    const cockpitLead = typeof COCKPIT_LOOKAHEAD === 'number' ? COCKPIT_LOOKAHEAD : 160;
+    const chaseLead = typeof CHASE_LOOKAHEAD === 'number' ? CHASE_LOOKAHEAD : 0;
+    const lead = this.viewMode === 'cockpit' ? cockpitLead : this.viewMode === 'chase' ? chaseLead : 0;
+    const lookahead = lead + this._lookahead;
+    return { x: target.x + Math.cos(target.angle) * lookahead,
+      y: target.y + Math.sin(target.angle) * lookahead };
+  }
+  followRotation(target) {
+    const is3d = this.viewMode === 'chase' || this.viewMode === 'cockpit';
+    const heading = this.northUp ? 0 : this.holdHeading
+      ? (is3d ? this.heldRotation : 0) : target.angle + Math.PI / 2;
+    return heading + (is3d ? this.bearingOffset : 0);
+  }
+  resetForRide(target) {
+    // Start behind the new vehicle, never at the previous ride's orbit or
+    // cached follow position. Absolute steering holds this initial bearing.
+    this.bearingOffset = 0;
+    this.heldRotation = target.angle + Math.PI / 2;
+    this._lookahead = 0;
+    this.detached = false;
+    this.panX = this.panY = 0;
+    this.targetX = target.x;
+    this.targetY = target.y;
+    const position = this.followPosition(target);
+    this.x = this._followX = position.x;
+    this.y = this._followY = position.y;
+    this.rotation = this.followRotation(target);
+  }
+  resetRotation(target) {
+    this.bearingOffset = 0;
+    this.northUp = this.viewMode === 'north';
+    this.heldRotation = target.angle + Math.PI / 2;
+    this.rotation = this.followRotation(target);
+  }
   update(target, dt) {
     // Keep the same easing at 60 fps, but follow at the same pace when city
     // rendering slows down. Simulation time is capped separately by the game.
@@ -42,12 +78,9 @@ class Camera {
     // no longer surges forward and back with the throttle.
     const wantedLookahead = this.reducedMotion ? 0 : CAMERA_LOOKAHEAD * speedRatio;
     this._lookahead += (wantedLookahead - this._lookahead) * ease(CAMERA_LOOKAHEAD_SMOOTHING);
-    const cockpitLead = typeof COCKPIT_LOOKAHEAD === 'number' ? COCKPIT_LOOKAHEAD : 160;
-    const chaseLead = typeof CHASE_LOOKAHEAD === 'number' ? CHASE_LOOKAHEAD : 0;
-    const lead = this.viewMode === 'cockpit' ? cockpitLead : this.viewMode === 'chase' ? chaseLead : 0;
-    const lookahead = lead + this._lookahead;
-    this._followX = target.x + Math.cos(target.angle) * lookahead;
-    this._followY = target.y + Math.sin(target.angle) * lookahead;
+    const position = this.followPosition(target);
+    this._followX = position.x;
+    this._followY = position.y;
     const tx = this.detached ? this.anchorX : this._followX;
     const ty = this.detached ? this.anchorY : this._followY;
     this.x += (tx - this.x) * ease(this.smoothing);
@@ -58,10 +91,9 @@ class Camera {
     this.panY = this.detached ? this.y - target.y : 0;
     // A panned map holds still: rotating it under the vehicle's heading while
     // the player is looking somewhere else is disorienting.
-    const is3d = this.viewMode === 'chase' || this.viewMode === 'cockpit';
     const wantedRotation = this.detached
       ? this.rotation
-      : (this.northUp || this.holdHeading ? 0 : target.angle + Math.PI / 2) + (is3d ? this.bearingOffset : 0);
+      : this.followRotation(target);
     const delta = Math.atan2(Math.sin(wantedRotation - this.rotation), Math.cos(wantedRotation - this.rotation));
     const rotationRate = this.reducedMotion ? CAMERA_REDUCED_ROTATION_SMOOTHING : CAMERA_ROTATION_SMOOTHING;
     this.rotation += delta * ease(this.smoothing * rotationRate);
