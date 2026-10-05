@@ -1,0 +1,26 @@
+{
+  "id": "extract_landmarks_1875699888",
+  "name": "W139",
+  "type": "landmark",
+  "cityId": "amsterdam",
+  "center": [
+    52.3737514,
+    4.8959885
+  ],
+  "funFact": "Artists squatted this former theatre in1979 and turned it into an artist-run space for experimental contemporary art. Its four-storey neoclassical street front was restored in2006–07 after being reduced to two floors in1958.",
+  "description": "W139 occupies a restored historic complex behind Warmoesstraat139. The former theatre and sociëteit De Vereeniging were once used by Amsterdam’s securities traders; today artists develop ambitious exhibitions here.",
+  "sources": [
+    {
+      "label": "W139 — artist-run history",
+      "url": "https://w139.nl/en/about/"
+    },
+    {
+      "label": "Arcam — architecture and restoration",
+      "url": "https://arcam.nl/architectuur-gids/w139/"
+    },
+    {
+      "label": "Smulders Architecten — 2006–07 project",
+      "url": "https://www.smuldersarchitecten.nl/projecten/w139-amsterdam"
+    }
+  ]
+}

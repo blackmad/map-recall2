@@ -1,0 +1,34 @@
+{
+  "modelId": "conservatorium",
+  "reviewedOn": "2026-10-05",
+  "status": "visually-accepted-scoped",
+  "budget": {
+    "triangles": 28331,
+    "bytes": 312652,
+    "scale": 1,
+    "textures": 0
+  },
+  "checksPassed": [
+    "focused geometry and roof/window support checks",
+    "shared finite geometry/material/triangle/byte/cache checks",
+    "POI route/pin/card contract",
+    "TypeScript lint",
+    "actual route-start smoke",
+    "real chosen destination, geographic pin, physical sourced-card click, exact suppression and resident neighbors"
+  ],
+  "evidence": "../../artifacts/conservatorium-review/",
+  "independentReview": {
+    "reviewer": "visual_reviewer",
+    "CADAndFourGalleryAngles": "accepted after repairs",
+    "live": "accepted front/rear and neighbors"
+  },
+  "failedEvidence": [
+    "../../artifacts/conservatorium-review/failed-initial/",
+    "../../artifacts/conservatorium-review/failed-neighbor-identity/"
+  ],
+  "limitations": [
+    "Fine ornament and pane proportions approximated from photographs.",
+    "Entrance pin derived from sourced street entrance and native perimeter; not an official surveyed entrance coordinate."
+  ],
+  "sourceArchiveCommit": "9926aa1fba89e7758fc9e11d1b0dfde0fb4fc4aa"
+}

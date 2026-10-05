@@ -1,0 +1,37 @@
+{
+  "id": "conservatorium",
+  "name": "Mandarin Oriental Conservatorium, Amsterdam",
+  "landmarkId": "requested-conservatorium",
+  "modelUrl": "./models/conservatorium.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012152618",
+    "NL.IMBAG.Pand.0363100012236413"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.87881,
+      52.35871
+    ],
+    "headingDegrees": 335,
+    "lengthMetres": 68,
+    "widthMetres": 70
+  },
+  "surveyed": {
+    "anchor": [
+      4.87881,
+      52.35871
+    ],
+    "northOffsetDegrees": 245
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": -90,
+  "attribution": {
+    "title": "Mandarin Oriental Conservatorium, Amsterdam",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/287",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free flat-color architecture built at native surveyed BAG scope and scale1 with coherent footprint-clipped gable, hip and flattened-tent roofs calibrated to major AHN5 measurements, exposed arches and dormers, pale stone main gable, open polygonal corner turret and transparent courtyard frame. Thin ornament heights/spacing approximate from source photos. No neighboring rectangular suppression."
+  }
+}

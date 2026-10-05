@@ -1,6 +1,6 @@
 /** Shared real-route/native-placement acceptance. Visual screenshots still require human/agent inspection.
  * node scripts/landmarks/review-manual-pois.mjs <plan.json> [...plans]
- * Plan: {specPath, neighbors:[[exactAliases]], zoom?, bearing?, sourceReadyChecks?:string[]}.
+ * Plan: {specPath, neighbors:[[exactAliases]], zoom?, bearing?, clickLocal?:[number,number,number], sourceReadyChecks?:string[]}.
  */
 import {chromium} from '@playwright/test';
 import assert from 'node:assert/strict';
@@ -11,7 +11,7 @@ assert(plans.length,'Supply a review plan');
 for(const p of plans){assert(p.specPath);assert(p.neighbors?.length,'Record a real neighboring building');assert(p.neighbors.every(ids=>ids.length));}
 const targets=plans.map(p=>({...p,spec:JSON.parse(fs.readFileSync(p.specPath,'utf8'))}));
 const base=process.env.LANDMARK_REVIEW_URL||'http://127.0.0.1:5196';
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.LANDMARK_REVIEW_CHROME?{executablePath:process.env.LANDMARK_REVIEW_CHROME}:{})});
 try{
  const page=await browser.newPage({viewport:{width:1500,height:1000}}),errors=[];
  page.on('pageerror',e=>errors.push(e.message));
@@ -40,19 +40,27 @@ try{
   await page.locator('#route-card').evaluate(form=>form.requestSubmit());
   await page.waitForFunction(()=>canalRecallGame.state===4&&canalRecallGame.camera.introOverview===0,null,{timeout:180000});
   assert.equal(await page.evaluate(()=>canalRecallGame._finishLandmark()?.id),s.landmarkId,'actual chosen route finish must not change');
-  await page.evaluate(({s,plan})=>{const v=canalRecallGame.vectorMap;v.sync=()=>{};v.map.jumpTo({center:plan.cameraCenter??s.surveyed.anchor,zoom:plan.zoom??18.2,pitch:plan.pitch??55,bearing:plan.bearing??s.surveyed.northOffsetDegrees});v._completeCity.setSuspended(false);v._completeCity.followCamera();},{s,plan});
+  await page.evaluate(({s,plan})=>{const v=canalRecallGame.vectorMap;v.sync=()=>{};const camera=plan.sourceCamera;if(camera)v.map.setCenterClampedToGround(false);v.map.jumpTo(camera?v.map.calculateCameraOptionsFromTo(camera.from,camera.fromAltitude,camera.to,camera.toAltitude):{center:plan.cameraCenter??s.surveyed.anchor,zoom:plan.zoom??18.2,pitch:plan.pitch??55,bearing:plan.bearing??s.surveyed.northOffsetDegrees,elevation:plan.elevation??0});v._completeCity.setSuspended(false);v._completeCity.followCamera();},{s,plan});
   await page.waitForFunction(id=>canalRecallGame.vectorMap._signatureLandmarks.shown.has(id),s.id,{timeout:180000});
   await page.waitForTimeout(8500);
   await page.waitForFunction(()=>{const b=canalRecallGame.vectorMap._threeBuildings;return b?.ready&&b.chunks.size&&!b.pending.length&&!b.inflight.size;},null,{timeout:180000});
-  await page.evaluate(({s,plan})=>{const v=canalRecallGame.vectorMap;v.map.jumpTo({center:plan.cameraCenter??s.surveyed.anchor,zoom:plan.zoom??18.2,pitch:plan.pitch??55,bearing:plan.bearing??s.surveyed.northOffsetDegrees});v.map.triggerRepaint();},{s,plan});
+  await page.evaluate(({s,plan})=>{const v=canalRecallGame.vectorMap;const camera=plan.sourceCamera;if(camera)v.map.setCenterClampedToGround(false);v.map.jumpTo(camera?v.map.calculateCameraOptionsFromTo(camera.from,camera.fromAltitude,camera.to,camera.toAltitude):{center:plan.cameraCenter??s.surveyed.anchor,zoom:plan.zoom??18.2,pitch:plan.pitch??55,bearing:plan.bearing??s.surveyed.northOffsetDegrees,elevation:plan.elevation??0});v.map.triggerRepaint();},{s,plan});
   await page.waitForFunction(id=>canalRecallGame.vectorMap._signatureLandmarks._entries.find(e=>e.spec.id===id)?.pickProjection,s.id,{timeout:30000});
-  const proof=await page.evaluate(async({s,neighbors})=>{
+  await page.screenshot({path:path.join(out,'before-pointer-check.png')});
+  console.log(`Review ${s.id}: route/residency ready; testing physical selection`);
+  const proof=await page.evaluate(async({s,neighbors,clickLocal})=>{
    const g=canalRecallGame,v=g.vectorMap,b=v._threeBuildings,l=v._signatureLandmarks,T=CanalRecallThree.THREE;
    const e=l._entries.find(e=>e.spec.id===s.id),lm=g.landmarks.find(lm=>lm.id===s.landmarkId),canvas=v.map.getCanvas(),rect=g.canvas.getBoundingClientRect();let click=null;
    e.group.updateWorldMatrix(true,true);
-   e.group.traverse(o=>{if(click||!o.isMesh)return;const p=o.geometry.getAttribute('position'),ix=o.geometry.getIndex(),triangles=Math.floor((ix?.count??p.count)/3);for(let sample=0,total=Math.min(triangles,512);sample<total;sample++){const i=Math.floor(sample*triangles/total)*3;const q=new T.Vector3().fromBufferAttribute(p,ix?ix.getX(i):i).add(new T.Vector3().fromBufferAttribute(p,ix?ix.getX(i+1):i+1)).add(new T.Vector3().fromBufferAttribute(p,ix?ix.getX(i+2):i+2)).multiplyScalar(1/3).applyMatrix4(o.matrixWorld).applyMatrix4(e.pickProjection),x=(q.x+1)/2*canvas.clientWidth,y=(1-q.y)/2*canvas.clientHeight;if(x<100||y<120||x>canvas.clientWidth-100||y>canvas.clientHeight-160)continue;const nativeHit=l.inspectAtScreen(x,y,canvas.clientWidth,canvas.clientHeight);if(nativeHit?.landmarkId!==s.landmarkId)continue;const hit=v.inspectBuilding(x,y,{width:canvas.clientWidth,height:canvas.clientHeight});if(hit?.landmarkId===s.landmarkId){click={x:rect.left+x/canvas.clientWidth*rect.width,y:rect.top+y/canvas.clientHeight*rect.height};break;}}});
-   return {id:s.id,scale:l.describe().find(m=>m.id===s.id).placement.scale,bias:l.depthBiasEnabled,broad:l.shownFootprints().includes(l.models.find(m=>m.id===s.id).footprint),pin:(await v.map.getSource('amsterdam-pois').getData()).features.some(f=>f.properties.id===s.landmarkId),destination:g.routePois.some(p=>p.id==='lm-'+s.landmarkId),source:lm?.sourceUrl,click,aliases:s.suppressOsmIds.map(id=>({id,hidden:b.hidden.has(id)})),oldPyramidIds:(v._pyramidalRoofs?._entries??[]).filter(p=>p.mesh.visible&&s.suppressOsmIds.includes(String(p.id))).map(p=>p.id),neighbors:neighbors.map(ids=>({ids,resident:ids.some(id=>b.lastFeatures.some(f=>String(f.properties.id)===id)),hidden:ids.some(id=>b.hidden.has(id)),drawable:ids.some(id=>[...b.chunks.values()].some(c=>c.mesh&&c.ranges.has(id)))})),features:b.lastFeatures.length,buildings:b.stats().buildings};
-  },{s,neighbors:plan.neighbors});
+   // Bound expensive whole-scene raycasts. Collect cheap projected samples first,
+   // then prefer the source-backed frontage point when the plan supplies one.
+   const candidates=[],preferred=clickLocal?new T.Vector3(...clickLocal):null;
+   e.group.traverse(o=>{if(!o.isMesh)return;const p=o.geometry.getAttribute('position'),ix=o.geometry.getIndex(),triangles=Math.floor((ix?.count??p.count)/3);for(let sample=0,total=Math.min(triangles,48);sample<total;sample++){const i=Math.floor(sample*triangles/total)*3;const local=new T.Vector3().fromBufferAttribute(p,ix?ix.getX(i):i).add(new T.Vector3().fromBufferAttribute(p,ix?ix.getX(i+1):i+1)).add(new T.Vector3().fromBufferAttribute(p,ix?ix.getX(i+2):i+2)).multiplyScalar(1/3),q=local.clone().applyMatrix4(o.matrixWorld).applyMatrix4(e.pickProjection),x=(q.x+1)/2*canvas.clientWidth,y=(1-q.y)/2*canvas.clientHeight;if(x<100||y<120||x>canvas.clientWidth-100||y>canvas.clientHeight-160)continue;candidates.push({x,y,priority:preferred?local.distanceToSquared(preferred):q.x*q.x+q.y*q.y});}});
+   candidates.sort((a,b)=>a.priority-b.priority);const tried=new Set();let attempts=0;
+   for(const candidate of candidates){const {x,y}=candidate,key=Math.round(x/4)+','+Math.round(y/4);if(tried.has(key))continue;tried.add(key);if(attempts++>=64)break;const nativeHit=l.inspectAtScreen(x,y,canvas.clientWidth,canvas.clientHeight);if(nativeHit?.landmarkId!==s.landmarkId)continue;const hit=v.inspectBuilding(x,y,{width:canvas.clientWidth,height:canvas.clientHeight});if(hit?.landmarkId===s.landmarkId){click={x:rect.left+x/canvas.clientWidth*rect.width,y:rect.top+y/canvas.clientHeight*rect.height};break;}}
+
+   return {id:s.id,actualCamera:{center:v.map.getCenter().toArray(),zoom:v.map.getZoom(),pitch:v.map.getPitch(),bearing:v.map.getBearing(),elevation:v.map.getCenterElevation()},assetVersion:CanalRecallSignatureLandmarks.MODEL_ASSET_VERSIONS[s.id],scale:l.describe().find(m=>m.id===s.id).placement.scale,bias:l.depthBiasEnabled,broad:l.shownFootprints().includes(l.models.find(m=>m.id===s.id).footprint),pin:(await v.map.getSource('amsterdam-pois').getData()).features.some(f=>f.properties.id===s.landmarkId),destination:g.routePois.some(p=>p.id==='lm-'+s.landmarkId),source:lm?.sourceUrl,click,aliases:s.suppressOsmIds.map(id=>({id,hidden:b.hidden.has(id)})),oldPyramidIds:(v._pyramidalRoofs?._entries??[]).filter(p=>p.mesh.visible&&s.suppressOsmIds.includes(String(p.id))).map(p=>p.id),neighbors:neighbors.map(ids=>({ids,resident:ids.some(id=>b.lastFeatures.some(f=>String(f.properties.id)===id)),hidden:ids.some(id=>b.hidden.has(id)),drawable:ids.some(id=>[...b.chunks.values()].some(c=>c.mesh&&c.ranges.has(id)))})),features:b.lastFeatures.length,buildings:b.stats().buildings};
+  },{s,neighbors:plan.neighbors,clickLocal:plan.clickLocal});
   fs.writeFileSync(path.join(out,'placement-proof.json'),JSON.stringify(proof,null,2)+'\n');
   console.log('NATIVE POI PROOF',JSON.stringify(proof));
   if (proof.neighbors.some(neighbor => !neighbor.resident || !neighbor.drawable)) {
@@ -80,7 +88,7 @@ try{
   fs.writeFileSync(path.join(out,'physical-card-proof.json'),JSON.stringify(card,null,2)+'\n');
   await page.screenshot({path:path.join(out,'live-front.png')});
   await page.evaluate(()=>canalRecallGame.vectorMap.setActiveLandmark(null));await page.waitForTimeout(200);await page.screenshot({path:path.join(out,'neutral-front.png')});
-  await page.evaluate(({plan,s})=>{const v=canalRecallGame.vectorMap;v.map.jumpTo({center:plan.oppositeCameraCenter??plan.cameraCenter??s.surveyed.anchor,zoom:plan.oppositeZoom??plan.zoom??18.2,pitch:plan.oppositePitch??plan.pitch??55,bearing:plan.oppositeBearing??((plan.bearing??s.surveyed.northOffsetDegrees)+180)%360});v._completeCity.followCamera();},{plan,s});
+  await page.evaluate(({plan,s})=>{const v=canalRecallGame.vectorMap;v.map.setCenterClampedToGround(true);v.map.jumpTo({center:plan.oppositeCameraCenter??plan.cameraCenter??s.surveyed.anchor,zoom:plan.oppositeZoom??plan.zoom??18.2,pitch:plan.oppositePitch??plan.pitch??55,bearing:plan.oppositeBearing??((plan.bearing??s.surveyed.northOffsetDegrees)+180)%360,elevation:plan.oppositeElevation??plan.elevation??0});v._completeCity.followCamera();},{plan,s});
   await page.waitForTimeout(8500);await page.waitForFunction(()=>{const b=canalRecallGame.vectorMap._threeBuildings;return b?.ready&&b.chunks.size&&!b.pending.length&&!b.inflight.size;},null,{timeout:180000});await page.screenshot({path:path.join(out,'live-rear.png')});
   console.log(`PASS ${s.id}: route, native placement, pin, physical sourced card, exact suppression and resident neighbors. Screenshots await visual acceptance.`);
  }

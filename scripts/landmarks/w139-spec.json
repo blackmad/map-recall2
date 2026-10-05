@@ -1,0 +1,37 @@
+{
+  "id": "w139",
+  "name": "W139",
+  "landmarkId": "extract_landmarks_1875699888",
+  "modelUrl": "./models/w139.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012171952"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.896302961217267,
+      52.37358068148385
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 52.863119999999995,
+    "widthMetres": 64.15679
+  },
+  "surveyed": {
+    "anchor": [
+      4.896302961217267,
+      52.37358068148385
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current PDOK exact BAG parent; east/south native metres, AHN5 bounded roof zones"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "W139 restored neoclassical front and former theatre",
+    "author": "Map Recall",
+    "sourceUrl": "https://www.smuldersarchitecten.nl/projecten/w139-amsterdam",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free native current BAG complex with interpreted AHN5 bounded roof surfaces; restored four-storey plaster three-bay front, low bent-cornice entrance wing, red deep-house roof and low rear theatre. Fine facade detail approximate. No imported mesh or photo pixels."
+  }
+}
