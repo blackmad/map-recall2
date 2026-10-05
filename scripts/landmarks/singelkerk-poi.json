@@ -1,0 +1,18 @@
+{
+  "modelId": "singelkerk",
+  "landmarkId": "extract_landmarks_760984505",
+  "name": "Singelkerk",
+  "description": "The Singelkerk is a Mennonite hidden church between the Singel and Herengracht. In 1639 a larger church replaced an earlier wooden meeting place on the back lot. Its domestic canal frontage conceals a hall with double galleries on Tuscan columns; the organ case dates from 1777. The Herengracht side was rebuilt around 1840, giving the church its pale facade and open forecourt behind an iron fence. The rebus stone on Singel 452 recalls the reunion of Mennonite congregations in 1801.",
+  "sourceUrl": "https://www.doopsgezindamsterdam.nl/historie/singelkerk-4/",
+  "additionalSources": [
+    "https://monumentenregister.cultureelerfgoed.nl/monumenten/5402",
+    "https://www.doopsgezindamsterdam.nl/locaties/"
+  ],
+  "recommendedDestination": {
+    "center": [
+      52.36770787,
+      4.88862596
+    ],
+    "reason": "Official BAG address point for actual Singel 452; old extract point incorrectly lies on neighboring Singel 454."
+  }
+}

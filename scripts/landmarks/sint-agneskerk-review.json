@@ -1,0 +1,180 @@
+{
+  "modelId": "sint-agneskerk",
+  "state": "verified-gallery-and-native-game",
+  "reviewedAt": "2026-10-05",
+  "cpuChecks": {
+    "command": "node --import tsx scripts/check-sint-agneskerk-geometry.ts",
+    "passed": true,
+    "triangles": 19868,
+    "maxHeightMetres": 40.35,
+    "checks": [
+      "Native BAG scope and exact two-parent suppression; neighbors explicitly excluded",
+      "Upward roof surfaces and finite native bounds",
+      "West rose and both high clerestory panes are ray-first visible",
+      "Unfilled tower/portico gap and northern forecourt",
+      "Ray passes through genuine central open belfry arcade"
+    ]
+  },
+  "visualAcceptance": true,
+  "references": "sint-agneskerk-footprints.json",
+  "knownLimitations": [
+    "Authored massing splits approximate the current roof families from3DBAG semantic heights and photos; roof geometry is not an imported mesh.",
+    "1919plan is historical proposal and is not used as current geometric authority.",
+    "Fine stair-tower and rear minor-roof detail simplified within source polygon; visual reviewers must seek recognition failures rather than count triangles.",
+    "Registered1914BAG year is distinguished from RCE phased construction1920\u20131921/1930\u20131932.",
+    "Direct municipal Beeldbank viewer returned an application shell; actual1938VanEckarchive photo was recovered from Commons and cached with original archive ID."
+  ],
+  "specPath": "scripts/landmarks/sint-agneskerk-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012100376"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012165149"
+    ]
+  ],
+  "zoom": 18.4,
+  "bearing": 90,
+  "independentVisualReview": {
+    "reviewer": "boomkerk_build independent CPU worker",
+    "date": "2026-10-05",
+    "nativeViewsAccepted": true,
+    "notes": "Native front/rear retain terracotta crossed roofs, low aisles/apses, portico and slim detached tower with grey roof. Current aerial confirms roof colors. School/presbytery context retained; no overlay caps or filled forecourt visible.",
+    "renderEvidence": [
+      "artifacts/sint-agneskerk-review/neutral-front.png",
+      "artifacts/sint-agneskerk-review/live-rear.png"
+    ],
+    "referenceEvidence": [
+      "artifacts/landmarks/sint-agneskerk/references/front-original.jpg",
+      "artifacts/landmarks/sint-agneskerk/references/roof-aerial-current.jpg"
+    ],
+    "scope": "Visual native comparison only; coordinator owns route/pin/pointer/suppression proofs and final acceptance",
+    "nativeReviewer": "boomkerk_build",
+    "nativeReviewedAt": "2026-10-05",
+    "nativeEvidence": [
+      "neutral-front.png",
+      "live-rear.png"
+    ],
+    "nativeResult": "pass",
+    "nativeObservations": "Current orthophoto confirms terracotta church roofs/slate tower; native views retain school and presbytery, visible rose/portico/slim tower, no roof overlay or filled forecourt.",
+    "acceptance": true
+  },
+  "roofColorReview": {
+    "question": "Independent reviewer could not establish main-church red roof color from B&W side photographs.",
+    "resolved": true,
+    "referenceImage": "artifacts/landmarks/sint-agneskerk/references/roof-aerial-current.jpg",
+    "sourceUrl": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?request=GetMap&service=WMS&version=1.3.0&layers=Actueel_orthoHR&styles=&crs=EPSG:4326&bbox=52.34995,4.8574,52.35062,4.8587&width=1200&height=1000&format=image/jpeg",
+    "finding": "PDOK current color orthophoto confirms terracotta on main-church roof families and grey tower roof. Existing materials retained.",
+    "exactFlightDate": "uninspected; current layer retrieval date recorded",
+    "rawArchiveSync": "pending root source synchronization of newly captured image and source page; before model acceptance/commit"
+  },
+  "neighborIdentityResolution": {
+    "resolvedAt": "2026-10-05",
+    "diagnosticPath": "artifacts/sint-agneskerk-review/resident-neighbor-diagnostic.json",
+    "diagnosticSha256": "dd5eb38ae5daaa4b26d0b04d8f900ff0d779c45bb403d2ca8fd947bf766ecef3",
+    "sourceRawSha256": "f485a20ca947ac33bf25efc09df1c0d1614aafb05be1e9161db7bc8bf7c9905d",
+    "reason": "Initial native review queried nonresident OSM aliases. The same school and presbytery are resident under source-associated BAG parents. Correct only review selectors, retaining both required neighbor checks.",
+    "neighbors": [
+      {
+        "name": "school",
+        "sourceOsmId": "w119456447",
+        "sourceBagId": "0363100012100376",
+        "renderedResidentId": "NL.IMBAG.Pand.0363100012100376",
+        "cachedRawSource": "artifacts/landmarks/sint-agneskerk/references/osm-map.xml",
+        "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8573,52.3498,4.8588,52.3507",
+        "sourceEvidence": "Raw OSM ref:bag tag explicitly associates this whole physical parent with the installed BAG identity.",
+        "geometryEvidence": {
+          "sourceVertices": 16,
+          "residentVertices": 16,
+          "symmetricMaximumNearestVertexDistanceMetres": 0.3002,
+          "comparison": "Same polygon outline and vertex count; all corresponding boundary vertices within0.4m. Small systematic source-coordinate shift retained honestly; not a nearby building substitution."
+        },
+        "diagnosticState": {
+          "hidden": false,
+          "drawable": true
+        },
+        "explanation": "Renderer represents the same physical neighbor as the exact BAG parent. OSM alias is absent from residency; no different leaf/part identity is needed."
+      },
+      {
+        "name": "presbytery",
+        "sourceOsmId": "w277074694",
+        "sourceBagId": "0363100012165149",
+        "renderedResidentId": "NL.IMBAG.Pand.0363100012165149",
+        "cachedRawSource": "artifacts/landmarks/sint-agneskerk/references/osm-map.xml",
+        "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8573,52.3498,4.8588,52.3507",
+        "sourceEvidence": "Raw OSM ref:bag tag explicitly associates this whole physical parent with the installed BAG identity.",
+        "geometryEvidence": {
+          "sourceVertices": 12,
+          "residentVertices": 12,
+          "symmetricMaximumNearestVertexDistanceMetres": 0.3008,
+          "comparison": "Same polygon outline and vertex count; all corresponding boundary vertices within0.4m. Small systematic source-coordinate shift retained honestly; not a nearby building substitution."
+        },
+        "diagnosticState": {
+          "hidden": false,
+          "drawable": true
+        },
+        "explanation": "Renderer represents the same physical neighbor as the exact BAG parent. OSM alias is absent from residency; no different leaf/part identity is needed."
+      }
+    ],
+    "acceptance": "GPU neighbor-retention rerun pending coordinator; diagnostic identity alone is not visual acceptance."
+  },
+  "sourceArchiveCommit": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "b362a893a31a576249a9ada5be7fa3adcce15d8d",
+    "path": "models/sint-agneskerk"
+  },
+  "status": "accepted-gallery-and-native-game",
+  "coordinatorReview": {
+    "reviewedAt": "2026-10-05",
+    "checks": "Gallery rotations/reference and native neutral front/rear inspected; physical sourced card, true destination/pin, native scale, exact fallback suppression and resident/drawable neighbors passed."
+  },
+  "independentVisualReviewHistory": [
+    {
+      "reviewer": "review_landmark_batch static independent reviewer",
+      "reviewedAt": "2026-10-05",
+      "status": "visual-pass-current-unchanged-export",
+      "scope": "Static source/gallery/native visual comparison only; coordinator owns integration and final acceptance",
+      "freshness": "Coordinator explicitly confirmed unchanged current accepted gallery/native captures before inspection",
+      "renderEvidence": [
+        "artifacts/sint-agneskerk-review/gallery.png",
+        "artifacts/sint-agneskerk-review/gallery-angle-0.png",
+        "artifacts/sint-agneskerk-review/gallery-angle-1.png",
+        "artifacts/sint-agneskerk-review/gallery-angle-2.png",
+        "artifacts/sint-agneskerk-review/gallery-angle-3.png",
+        "artifacts/sint-agneskerk-review/neutral-front.png",
+        "artifacts/sint-agneskerk-review/live-rear.png"
+      ],
+      "sourceEvidence": [
+        "artifacts/landmarks/sint-agneskerk/references/front-original.jpg",
+        "artifacts/landmarks/sint-agneskerk/references/roof-aerial-current.jpg"
+      ],
+      "findings": [
+        "Detached narrow clock tower with open belfry, grey tower roof, rose-front nave, lower aisle roofs and cross/transverse rear massing retain source recognition.",
+        "Current color orthophoto supports terracotta roof families; gallery four rotations show no downward cap or unsupported roof fin.",
+        "Native front/rear retain adjacent school/presbytery and street forecourt; opposite side shows rose/entry and tower. No visible fallback roof overlap."
+      ],
+      "limitations": [
+        "Fine rose geometry, porch depth and rear secondary roofs remain source-derived approximations."
+      ],
+      "pending": []
+    }
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "canonicalModelId": "sint-agneskerk",
+    "privatePath": "models/sint-agneskerk",
+    "commit": "aae9a040f371bf61f3df2a75f3870ed25cbd78a1"
+  },
+  "coordinatorAcceptance": {
+    "date": "2026-10-05",
+    "status": "pass",
+    "evidenceDirectory": "artifacts/sint-agneskerk-review",
+    "checks": [
+      "Gallery and rotated source comparison",
+      "Native game front and opposite visual comparison",
+      "Exact masks and resident neighbor retention",
+      "Physical destination, pin/label and meaningful info card",
+      "Independent visual review"
+    ]
+  }
+}

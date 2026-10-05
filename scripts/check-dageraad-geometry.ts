@@ -20,6 +20,23 @@ for(const side of [-1,1])for(const y of [5.38,8.72,12.45]){
  const u=side*2.50+.13,v=front(side*2.50)+3,origin=new T.Vector3(cx+u*tx+v*nx,y+.37,cz+u*tz+v*nz);
  const hits=new T.Raycaster(origin,new T.Vector3(-nx,0,-nz)).intersectObject(root,true);assert.equal(hits[0]?.object.name,'glass','actual first-hit narrow window is exposed');
 }
+// Both short own-parent street flanks are source window-bearing; a scoped
+// museum asset still needs these panes, not just the narrow round-edge slots.
+for(const side of [-1,1]){
+ const a=side<0?new T.Vector2(-3.85,.01):new T.Vector2(3.60,0),d=side<0?new T.Vector2(-7.73,-2.24):new T.Vector2(7.48,-2.27);
+ const xy=(p:T.Vector2)=>new T.Vector2(cx+p.x*tx+p.y*nx,cz+p.x*tz+p.y*nz),p=xy(a),q=xy(d),t=q.clone().sub(p).normalize();
+ const mid=p.clone().lerp(q,.60),normal=new T.Vector2(t.y,-t.x);if(normal.dot(new T.Vector2(nx,nz))<0)normal.negate();
+ for(const y of [5.38,8.72,12.45,15.45]){
+  const sample=mid.clone().addScaledVector(t,.07).addScaledVector(normal,3);
+  const hits=new T.Raycaster(new T.Vector3(sample.x,y+.17,sample.y),new T.Vector3(-normal.x,0,-normal.y)).intersectObject(root,true);
+  assert.equal(hits[0]?.object.name,'glass','Both own-parent flank panes must be first-hit visible');
+  const wall=hits.find(h=>h.object.name==='ochre');assert.ok(wall&&wall.distance-hits[0].distance<.3,'Flank glazing must have its own parent wall directly behind, not float beside the tower');
+ }
+}
+for(const y of [9.5,13.7,19.2]){
+ const hit=new T.Raycaster(new T.Vector3(cx+nx*3,y,cz+nz*3),new T.Vector3(-nx,0,-nz)).intersectObject(root,true)[0];
+ assert.equal(hit?.object.name,'ochre','Source blank central tower must stay blank');
+}
 // These exposed caps and depth retreats failed with the former enclosing17.56m main prism.
 for(const [u,v,expected] of [[2.0,.90,8.35],[2.2,.50,12.02],[2.5,.35,15.03]])for(const side of [-1,1]){
  const point=new T.Vector3(cx+side*u*tx+v*nx,30,cz+side*u*tz+v*nz);
@@ -54,4 +71,4 @@ for(const y of [2.13,4.37,6.17,10.23,14.61,18.29])for(const axis of ['x','z'])fo
  if(hits.length)assert.ok(hits[0].face!.normal.dot(direction)<.001,'first masonry surface normal points out of union');
 }
 for(const p of [[17,0],[0,-17],[-13,-10]])assert.equal(new T.Raycaster(new T.Vector3(p[0],30,p[1]),new T.Vector3(0,-1,0)).intersectObject(root,true).length,0,'adjacent streets/court beyond exact parent remain open');
-console.log(`Dageraad geometry passed: ${triangles} triangles; native corner bounds, exposed rod windows and rounded tier caps/depth retreats, upward roofs, open surroundings, exact parent only.`);
+console.log(`Dageraad geometry passed: ${triangles} triangles; native corner bounds, exposed narrow and own-parent broad flank windows, blank tower and rounded tier caps/depth retreats, upward roofs, open surroundings, exact parent only.`);

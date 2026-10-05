@@ -91,7 +91,7 @@
       "priority": "urgent",
       "status": "verified",
       "owner": "root",
-      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5–120 fps."
+      "validation": "Real browser drag, recenter click, continued driving, wheel pan and R; frame-rate equivalence at 5\u2013120 fps."
     },
     {
       "id": "building-inspection",
@@ -260,7 +260,7 @@
     },
     {
       "id": "vinoly",
-      "task": "Viñoly",
+      "task": "Vi\u00f1oly",
       "priority": "normal",
       "status": "queued"
     },
@@ -370,7 +370,7 @@
     },
     {
       "id": "kinderkookkafe",
-      "task": "Kinderkookkafé",
+      "task": "Kinderkookkaf\u00e9",
       "priority": "normal",
       "status": "queued"
     },
@@ -478,7 +478,7 @@
     },
     {
       "id": "street-aware-procedural-architecture",
-      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215–247, Bethaniëndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
+      "task": "Street-side panorama profiles and architectural recipes: Overtoom 215\u2013247, Bethani\u00ebndwarsstraat around Samrat, screenshot-area family/repetition control; all detailed modes, adjoining-block holdouts",
       "priority": "high",
       "status": "verified-pilot",
       "notes": "Three self-review/improvement cycles complete on Overtoom, De Wallen and Marcantilaan, plus adjacent withheld-source transfers. 36 tests and four rendering-mode browser review pass; 349 surveyed neighbors, 95 frozen frontage assignments, 169 compact architectural street segments. Current source and cohort admission replay pass. Final same-worker profile-on/off CPU compile aggregate +0.29%; walls +3.29%, extras -0.37%, one of 24 cases +12.3%. Reviewed stage triangles decrease with unchanged draw calls. Full-game GPU budget remains unverified. Ready for reviewed city batches, not a blanket city-wide style claim. Approximate street character, no individual facade registration claim. Latest demos: artifacts/street-appearance/cycles/index.html."
@@ -617,14 +617,14 @@
     },
     {
       "id": "ing-house",
-      "task": "ING House / Infinity — original house-style landmark",
+      "task": "ING House / Infinity \u2014 original house-style landmark",
       "priority": "high",
       "status": "verified",
       "owner": "ing_house",
       "requested": true,
       "workflow": "full-landmark",
       "sourceUrl": "https://mvsa-architects.com/en/projects/ing-house/",
-      "notes": "Explicit user request. MVSA primary reference documents glass/aluminium wedge and 9–12 m stilts; preserve raised open structure and distinctive rising silhouette. Resolve exact OSM/BAG footprint and genuine destination identity before modeling. Completion requires destination, map pin/label and sourced info card.",
+      "notes": "Explicit user request. MVSA primary reference documents glass/aluminium wedge and 9\u201312 m stilts; preserve raised open structure and distinctive rising silhouette. Resolve exact OSM/BAG footprint and genuine destination identity before modeling. Completion requires destination, map pin/label and sourced info card.",
       "validation": "Native gallery/reference and live front/rear review accepted; actual destination route, geographic pin, physical sourced card, exact suppression and resident drawable neighbors passed. Detailed source/review records in scripts/landmarks."
     },
     {
@@ -637,7 +637,7 @@
     },
     {
       "id": "idfa-vondelpark-pavilion",
-      "task": "IDFA — Het Documentaire Paviljoen / Vondelparkpaviljoen",
+      "task": "IDFA \u2014 Het Documentaire Paviljoen / Vondelparkpaviljoen",
       "priority": "high",
       "status": "verified",
       "owner": "idfa_pavilion",
@@ -649,7 +649,7 @@
     },
     {
       "id": "muiderpoort-original",
-      "task": "Muiderpoort historic gate — original house-style model",
+      "task": "Muiderpoort historic gate \u2014 original house-style model",
       "priority": "normal",
       "status": "verified",
       "owner": "muiderpoort",
@@ -677,7 +677,7 @@
     },
     {
       "id": "our-lord-attic-repair",
-      "task": "Our Lord in the Attic — facade and canonical identity repair",
+      "task": "Our Lord in the Attic \u2014 facade and canonical identity repair",
       "priority": "normal",
       "status": "verified",
       "owner": "our_lord_attic",
@@ -686,7 +686,7 @@
     },
     {
       "id": "da-costakade-13-17-archive-facades",
-      "task": "Use user-found 1903 Beeldbank elevation to improve Da Costakade 13–17 coordinated facade and roof composition",
+      "task": "Use user-found 1903 Beeldbank elevation to improve Da Costakade 13\u201317 coordinated facade and roof composition",
       "priority": "high",
       "status": "research",
       "owner": "archive_facades",
@@ -716,6 +716,70 @@
       "status": "verified",
       "owner": "archive_next_batch",
       "validation": "Native four-angle gallery/source and installed frontage/rear roof reviewed; actual destination route, pin, physical sourced card, native scale, exact suppression and retained drawable neighbors passed. Camera failures retained in review history; rear facade inference documented. Private source archive9c2317a."
+    },
+    {
+      "id": "singelkerk-original",
+      "task": "Singelkerk \u2014 bounded original landmark build",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "muiderpoort",
+      "workflow": "full-landmark",
+      "notes": "Source/CPU/gallery and actual route/pin/physical sourced card/exact mask/neighbors passed; closer Herengracht front evidence pending because trees/neighbors obscure entrance. Corrected old pin from separate454 to official452point.",
+      "nextAction": "Accepted current geometry after gallery, native gameplay, independent visual review and POI destination/pin/card checks; retain documented fine-detail approximations."
+    },
+    {
+      "id": "oba-oosterdok-rebuild",
+      "task": "OBA Oosterdok \u2014 source-backed architectural rebuild",
+      "priority": "urgent",
+      "status": "verified",
+      "owner": "oba_rebuild",
+      "notes": "Rebuilt native limestone portal/recessed cedar bays, glass plinth/terraces and roof core. Independent gallery and native front/rear passed; true destination/pin/physical sourced card, exact OSM masks and resident campus neighbors passed. Raw sources privately committed b362a89.",
+      "nextAction": "Accepted current geometry after gallery, native gameplay, independent visual review and POI destination/pin/card checks; retain documented fine-detail approximations."
+    },
+    {
+      "id": "sint-agneskerk-original",
+      "task": "Sint-Agneskerk \u2014 church and detached campanile",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "agneskerk_build",
+      "notes": "Native church and detached campanile accepted against current photos/orthophoto; gallery and independent native views passed. Exact suppression and retained school/presbytery BAG parents, route/pin/physical sourced card passed. Source archive b362a89.",
+      "nextAction": "Accepted current geometry after gallery, native gameplay, independent visual review and POI destination/pin/card checks; retain documented fine-detail approximations."
+    },
+    {
+      "id": "petruskerk-original",
+      "task": "Petruskerk \u2014 native church and belfry",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "petruskerk_build",
+      "notes": "CPU-ready original native church; source pack/current photographs/roof survey cached. Root integration and gallery/native acceptance pending.",
+      "nextAction": "Accepted current geometry after gallery, native gameplay, independent visual review and POI destination/pin/card checks; retain documented fine-detail approximations."
+    },
+    {
+      "id": "boomkerk-original",
+      "task": "Boomkerk \u2014 source-backed church",
+      "priority": "normal",
+      "status": "verified",
+      "owner": "boomkerk_build",
+      "notes": "CPU-ready16821triangles; exact BAG/OSM church scope, school/presbytery retained. RCE/current aerial/photo evidence cached. Integration and visual acceptance pending.",
+      "nextAction": "Accepted current geometry after gallery, native gameplay, independent visual review and POI destination/pin/card checks; retain documented fine-detail approximations."
+    },
+    {
+      "id": "solder-modern-entrance-review",
+      "task": "Ons\u2019 Lieve Heer op Solder \u2014 modern entrance repair",
+      "priority": "high",
+      "status": "verified",
+      "owner": "petruskerk_build",
+      "notes": "User reports crude right-hand entrance. Current photos support large panes; worker correcting reveals/lintels/ties/roof against current evidence.",
+      "nextAction": "Accepted current geometry after gallery, native gameplay, independent visual review and POI destination/pin/card checks; retain documented fine-detail approximations."
+    },
+    {
+      "id": "dageraad-window-scope-review",
+      "task": "De Dageraad \u2014 own-parent flank windows",
+      "priority": "high",
+      "status": "verified",
+      "owner": "agneskerk_build",
+      "notes": "User reports sparse windows. Blank central tower supported, but short angled own-parent street flanks omit source-visible broad windows; worker repairing exact scope.",
+      "nextAction": "Accepted current geometry after gallery, native gameplay, independent visual review and POI destination/pin/card checks; retain documented fine-detail approximations."
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"

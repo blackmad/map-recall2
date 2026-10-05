@@ -1642,7 +1642,6 @@
       "landmarkId": "extract_landmarks_751632752",
       "modelUrl": "./models/oba-oosterdok.glb",
       "suppressOsmIds": [
-        "w1487606301",
         "w1487606300",
         "w1487606301",
         "w1487606302",
@@ -1666,45 +1665,54 @@
         "widthMetres": 38.70079461141226
       },
       "groundAltitudeMetres": 0,
-      "facingOffsetDegrees": 90,
+      "facingOffsetDegrees": 0,
       "attribution": {
         "title": "OBA Oosterdok",
         "author": "Map Recall",
         "sourceUrl": "https://oba.nl/nl/locaties/oba-oosterdok",
         "licence": "Original project asset",
         "licenceUrl": "./LICENSE",
-        "modifications": "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+        "modifications": "Original texture-free native surveyed model: pale limestone portal and thin cantilever canopy, recessed cedar square window bays, glass plinth and stairs, open side terraces, stepped restaurant/theatre roofs and separate north stair core. Current OSM footprint parts own scope; model scale1. Upper facade arrangements and roof thickness approximate from architect photographs; no imported mesh or photo pixels."
+      },
+      "spatialSuppression": false,
+      "surveyed": {
+        "anchor": [
+          4.908303881212726,
+          52.37600837944057
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current OSM twelve exact building parts, native east/south; BAG envelope shared with college is intentionally not suppressed."
       },
       "bounds": {
         "min": [
-          -32.202354431152344,
-          0,
-          -19.543901443481445
+          -29.953292846679688,
+          -1.0728836485895954e-8,
+          -47.91844177246094
         ],
         "max": [
-          35.872589111328125,
-          35.79999923706055,
-          19.837406158447266
+          23.85463523864746,
+          37.22999954223633,
+          38.46564865112305
         ]
       },
       "placement": {
         "anchor": [
-          4.908293365423461,
-          52.37600749676237
+          4.908303881212726,
+          52.37600837944057
         ],
         "altitudeMetres": 0,
-        "modelRotationDegrees": 172.1711261367691,
-        "facadeBearingDegrees": 262.1711261367691,
-        "scale": 0.9460853326458127
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 172.1711261367691,
+        "scale": 1
       },
       "extent": {
-        "widthMetres": 68.07494354248047,
-        "heightMetres": 35.79999923706055,
-        "depthMetres": 39.38130760192871,
-        "depthCoverage": 1.0175839539562264
+        "widthMetres": 86.38409042358398,
+        "heightMetres": 37.22999955296517,
+        "depthMetres": 53.80792808532715,
+        "depthCoverage": 1.3903571909983479
       },
-      "triangles": 5040,
-      "bytes": 70084,
+      "triangles": 18376,
+      "bytes": 266836,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "rem-eiland": {
@@ -5084,7 +5092,7 @@
       "bounds": {
         "min": [
           -10.496114730834961,
-          -1.9073486612342094e-7,
+          0,
           -11.798534393310547
         ],
         "max": [
@@ -5105,12 +5113,12 @@
       },
       "extent": {
         "widthMetres": 25.886799812316895,
-        "heightMetres": 19.850000572204593,
+        "heightMetres": 19.850000381469727,
         "depthMetres": 21.005223274230957,
         "depthCoverage": 0.9960124852517717
       },
-      "triangles": 5706,
-      "bytes": 86356,
+      "triangles": 8104,
+      "bytes": 104304,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "agnietenkapel": {
@@ -10167,10 +10175,10 @@
         "min": [
           -6.970600128173828,
           0,
-          -6.641499996185303
+          -6.641991138458252
         ],
         "max": [
-          7.958399772644043,
+          8.024500846862793,
           21.899999618530273,
           8.209500312805176
         ]
@@ -10186,13 +10194,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 14.928999900817871,
+        "widthMetres": 14.995100975036621,
         "heightMetres": 21.899999618530273,
-        "depthMetres": 14.851000308990479,
-        "depthCoverage": 1.0000000208060387
+        "depthMetres": 14.851491451263428,
+        "depthCoverage": 1.0000330921327472
       },
-      "triangles": 4061,
-      "bytes": 54588,
+      "triangles": 4725,
+      "bytes": 64196,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "canals-museum": {
@@ -10396,6 +10404,286 @@
       },
       "triangles": 4524,
       "bytes": 57912,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "singelkerk": {
+      "id": "singelkerk",
+      "name": "Singelkerk",
+      "landmarkId": "extract_landmarks_760984505",
+      "modelUrl": "./models/singelkerk.glb",
+      "suppressOsmIds": [
+        "w267123307",
+        "NL.IMBAG.Pand.0363100012171741",
+        "w267123332",
+        "NL.IMBAG.Pand.0363100012177610"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8883,
+          52.367535
+        ],
+        "headingDegrees": 49,
+        "lengthMetres": 54,
+        "widthMetres": 29
+      },
+      "surveyed": {
+        "anchor": [
+          4.8883,
+          52.367535
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current PDOK BAG church (1639) and service house Singel 452, exact parent identities; native east/south metres. Original surfaces reconstructed from AHN5 2023 semantic roof observations. Singel 454 is separate and retained."
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Singelkerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://www.doopsgezindamsterdam.nl/historie/singelkerk-4/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free hidden church and domestic Singel 452 frontage, sourced straight cornices, round-head tracery, open forecourt, iron rail and surveyed intersecting hipped roofs. No imported render meshes or photo pixels. Tiny reliefs and roof details simplified; source pack archived privately."
+      },
+      "bounds": {
+        "min": [
+          -27.618064880371094,
+          -4.677772551531234e-7,
+          -25.261795043945312
+        ],
+        "max": [
+          26.780168533325195,
+          20.147544860839844,
+          30.31340789794922
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8883,
+          52.367535
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 49,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 55.57520294189453,
+        "heightMetres": 20.1475453286171,
+        "depthMetres": 54.39823341369629,
+        "depthCoverage": 1.8758011521964237
+      },
+      "triangles": 6308,
+      "bytes": 89760,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "sint-agneskerk": {
+      "id": "sint-agneskerk",
+      "name": "Sint-Agneskerk",
+      "landmarkId": "extract_landmarks_736359928",
+      "modelUrl": "./models/sint-agneskerk.glb",
+      "suppressOsmIds": [
+        "w57859521",
+        "w98672987",
+        "NL.IMBAG.Pand.0363100012166358",
+        "NL.IMBAG.Pand.0363100012197426"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8581,
+          52.35028
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 30.519442485800624,
+        "widthMetres": 61.76237319625609
+      },
+      "surveyed": {
+        "anchor": [
+          4.8581,
+          52.35028
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current PDOK BAG polygons; authoring aligned 66.1deg local-to-east/south rotation, geometry baked into east/south metres"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Sint-Agneskerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/505910",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original native-scale texture-free geometry using current BAG plan, researched neo-Romanesque basilica and detached open campanile. Pastorie and neighboring school preserved; no photo pixels or downloaded meshes."
+      },
+      "bounds": {
+        "min": [
+          -31.598173141479492,
+          -3.814697322468419e-7,
+          -20.178213119506836
+        ],
+        "max": [
+          37.2844123840332,
+          40.349998474121094,
+          21.906097412109375
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8581,
+          52.35028
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 68.8825855255127,
+        "heightMetres": 40.349998855590826,
+        "depthMetres": 42.08431053161621,
+        "depthCoverage": 0.6813907619431838
+      },
+      "triangles": 19868,
+      "bytes": 232732,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "petruskerk": {
+      "id": "petruskerk",
+      "name": "Petruskerk",
+      "landmarkId": "extract_landmarks_800494636",
+      "modelUrl": "./models/petruskerk.glb",
+      "suppressOsmIds": [
+        "w8891046",
+        "NL.IMBAG.Pand.0363100012163298"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.846546,
+          52.386716
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 29,
+        "widthMetres": 14.3
+      },
+      "surveyed": {
+        "anchor": [
+          4.846546,
+          52.386716
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG native shape; geometry baked east/south metres"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Petruskerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6775",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free geometry from native BAG footprint, operator facade photographs and roof survey. Separate houses, tomb parents and open churchyard preserved."
+      },
+      "bounds": {
+        "min": [
+          -13.87790298461914,
+          -3.33786012163273e-8,
+          -7.411123752593994
+        ],
+        "max": [
+          13.897787094116211,
+          24.899999618530273,
+          7.420622825622559
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.846546,
+          52.386716
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 27.77569007873535,
+        "heightMetres": 24.899999651908875,
+        "depthMetres": 14.831746578216553,
+        "depthCoverage": 1.037185075399759
+      },
+      "triangles": 7300,
+      "bytes": 100536,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "boomkerk": {
+      "id": "boomkerk",
+      "name": "Boomkerk",
+      "landmarkId": "extract_landmarks_746878126",
+      "modelUrl": "./models/boomkerk.glb",
+      "suppressOsmIds": [
+        "w276234088",
+        "NL.IMBAG.Pand.0363100012119680"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.850806,
+          52.383285
+        ],
+        "headingDegrees": 90,
+        "lengthMetres": 52,
+        "widthMetres": 29
+      },
+      "surveyed": {
+        "anchor": [
+          4.850806,
+          52.383285
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Current BAG native shape; geometry baked east/south metres"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "attribution": {
+        "title": "Boomkerk",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native BAG church reconstruction; separate presbytery and school retained. Roof heights from AHN5/3DBAG, architectural detail from RCE and reference photographs."
+      },
+      "bounds": {
+        "min": [
+          -24.85041046142578,
+          -7.629394644936838e-7,
+          -23.48017692565918
+        ],
+        "max": [
+          24.512144088745117,
+          43.41999816894531,
+          29.85491180419922
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.850806,
+          52.383285
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 90,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 53.3350887298584,
+        "heightMetres": 43.41999893188478,
+        "depthMetres": 49.3625545501709,
+        "depthCoverage": 1.702157053454169
+      },
+      "triangles": 16821,
+      "bytes": 177496,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

@@ -1,0 +1,200 @@
+{
+  "specPath": "scripts/landmarks/singelkerk-spec.json",
+  "neighbors": [
+    [
+      "w267123453",
+      "NL.IMBAG.Pand.0363100012171749"
+    ],
+    [
+      "w751713221"
+    ],
+    [
+      "w751713223"
+    ]
+  ],
+  "zoom": 19.3,
+  "bearing": 35,
+  "oppositeBearing": 229,
+  "referenceImages": [
+    "artifacts/landmarks/singelkerk/references/singel-front.jpg",
+    "artifacts/landmarks/singelkerk/references/herengracht-current.jpg",
+    "artifacts/landmarks/singelkerk/references/roof-context-2024.jpg"
+  ],
+  "acceptanceRisks": [
+    "Exact two-Pand complex; separate Singel 454 and Krijtberg remain drawn and visible.",
+    "Open Herengracht forecourt and transparent iron rail; main windows remain visible through rail.",
+    "Domestic paired Singel 452 windows and straight cornice; pale Herengracht facade with two levels of tracery windows.",
+    "Intersecting hipped roofs and small white dormer match dated 2024 photo; explicit roofs own their tops.",
+    "Correct canonical destination, geographic pin and sourced card after moving the old extract pin off neighboring 454."
+  ],
+  "status": "Changed roof export CPU-checked; prior gallery recognition withdrawn after native unsupported fins; new gallery/native acceptance pending",
+  "independentVisualReview": {
+    "reviewer": "independent fresh-context visual reviewer",
+    "reviewedAt": "2026-10-05",
+    "method": "One bounded static reference/render comparison pass; no reviewer browser or GPU launched",
+    "galleryEvidence": [
+      "gallery.png",
+      "gallery-angle-0.png",
+      "gallery-angle-1.png",
+      "gallery-angle-2.png",
+      "gallery-angle-3.png"
+    ],
+    "liveGame": "pending: native front/rear/neutral and drawable-neighbor screenshots unavailable during initial static pass",
+    "acceptance": false,
+    "gallery": "recognition-pass-with-bounded-detail-limitations",
+    "referenceImages": [
+      "artifacts/landmarks/singelkerk/references/singel-front.jpg",
+      "artifacts/landmarks/singelkerk/references/herengracht-current.jpg",
+      "artifacts/landmarks/singelkerk/references/roof-context-2024.jpg"
+    ],
+    "observations": [
+      "Domestic brick Singel frontage has paired tall exposed white-trimmed windows and straight cornice; no invented church gable.",
+      "Pale Herengracht frontage has three arched bays across two levels, centered entrance and open iron forecourt; glazing remains visible in lower angle3.",
+      "Multi-family intersecting pitched roofs and white dormer are legible; no wall-colored cap obscures roof surfaces in five gallery views."
+    ],
+    "limitations": [
+      "Small native gallery framing limits assessment of fine tracery and exact roof junctions.",
+      "Blank party walls are acceptable only with retained native adjoining buildings; gallery alone cannot establish neighbor retention or absence of fallback overlap.",
+      "Corrected destination pin/454 context and physical sourced-card selection await coordinator live proof."
+    ],
+    "galleryDirectory": "artifacts/singelkerk-review"
+  },
+  "neighborIdentityResolution": {
+    "source": "artifacts/landmarks/singelkerk/references/current-osm.xml",
+    "reason": "Current Krijtberg way267123478 is an enclosing church footprint; native renderer installs its current35m church building parts751713221/751713223. Singel454 retains its BAG parent alias.",
+    "failedParentProbe": "artifacts/singelkerk-review/resident-neighbor-diagnostic.json"
+  },
+  "nativeCaptureHistory": [
+    {
+      "path": "artifacts/singelkerk-review/history-run5",
+      "finding": "Run5 integration passed; native front court facade obscured by tree at zoom18.4 bearing49, requires closer contextual review."
+    },
+    {
+      "path": "artifacts/singelkerk-review/history-run7",
+      "finding": "Bearing90 closer view occludes Herengracht facade behind retained Krijtberg. Integration passes but angle is insufficient."
+    },
+    {
+      "path": "artifacts/singelkerk-review/history-run8",
+      "finding": "Bearing10 showed partial facade but tree and neighboring roof obscure entry."
+    }
+  ],
+  "sourceArchiveCommit": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "b362a893a31a576249a9ada5be7fa3adcce15d8d",
+    "path": "models/singelkerk"
+  },
+  "pitch": 60,
+  "cameraCenter": [
+    4.88806,
+    52.36735
+  ],
+  "cameraReason": "Focus real Herengracht frontage/court instead of complex midpoint to separate entry from foreground neighbors; native model placement/suppression unchanged.",
+  "roofPlaneNumericalCorrection": {
+    "date": "2026-10-05",
+    "cause": "First non-collinear outline triple was technically non-collinear but nearly so on rounded surveyed footprint vertices. Millimetre source rounding became metre-scale plane slope errors.",
+    "failedEvidence": "Root native review identified unsupported roof fins missed by earlier small gallery framing. Preserve existing gallery/native capture history unchanged as prior-export evidence.",
+    "previousFitChurchPlaneVertexResidualsMetres": {
+      "0": 8.676,
+      "12": 2.373,
+      "17": 2.554,
+      "21": 1.51
+    },
+    "change": "Centered least-squares height fit over ALL original outer/hole ring observations. Stable covariance determinant guards degenerate projected geometry; source-planarity residual above1cm rejects invalid source instead of silently emitting unsupported roof or dropping it. Source polygons, holes, surveyed heights, materials, footprint, masks and camera remain unchanged.",
+    "cpuEvidence": {
+      "command": "node --import tsx scripts/check-singelkerk-geometry.ts",
+      "passed": true,
+      "triangles": 6308,
+      "generatedPlaneMaxOriginalVertexResidualMetres": 0.0008836610184488336,
+      "interiorSupportProbes": 212,
+      "checks": [
+        "Independent largest-area generated triangle establishes actual roof plane; every original ring vertex including hole rings must agree within1cm",
+        "Every generated roof vertex coplanar within1mm",
+        "Every roof triangle interior ray hits its own source roof and its own exact footprint floor below, excluding holes",
+        "Existing upward normals, native bounds, exposed facade/dormer panes, open forecourt and exact two-parent suppression checks remain passing"
+      ]
+    },
+    "visualAcceptance": "Withdraw prior gallery roof recognition; new export needs refreshed higher/all-angle gallery and actual native front/rear roof review before acceptance. CPU evidence is not visual acceptance.",
+    "otherRisks": "No footprint/clipping/material changes in this repair. Existing per-plane shells and skirts retain their topology; no separate visually observed coplanar shell defect established by this numerical audit. Coordinator must report/fix one if refreshed views reveal it.",
+    "rawSources": "Unchanged original survey/API/photo raw pack; no new reference input or imported geometry. Existing source archive association retained."
+  },
+  "galleryRoofAcceptance": {
+    "status": "withdrawn-pending-re-export-and-independent-review",
+    "reason": "Prior recognition pass missed unsupported roof fins found in native view; all-vertex numerical repair changes generated roofs.",
+    "priorReviewRetained": "independentVisualReview remains as historical initial-export record, with original acceptance=false; not evidence for repaired roof acceptance."
+  },
+  "independentVisualReviewHistory": [
+    {
+      "reviewer": "review_landmark_batch static independent reviewer",
+      "reviewedAt": "2026-10-05",
+      "status": "gallery-roof-pass-native-opposite-evidence-pending",
+      "acceptance": false,
+      "scope": "Visual comparison only; coordinator owns integration and final acceptance",
+      "freshness": "Coordinator regeneration/bundle confirmation; gallery captured17:22 and native captured during current /tmp/landmark-five-native-review.log run",
+      "renderEvidence": [
+        "artifacts/singelkerk-review/gallery.png",
+        "artifacts/singelkerk-review/gallery-angle-0.png",
+        "artifacts/singelkerk-review/gallery-angle-1.png",
+        "artifacts/singelkerk-review/gallery-angle-2.png",
+        "artifacts/singelkerk-review/gallery-angle-3.png",
+        "artifacts/singelkerk-review/neutral-front.png",
+        "artifacts/singelkerk-review/live-rear.png"
+      ],
+      "findings": [
+        "Fresh stable-fit roof gallery and native roof views no longer show unsupported fins; roof slopes/junctions and white dormer form coherent source-supported families.",
+        "Herengracht gallery angle3 retains cream facade, two arched-window levels and iron forecourt; native front shows entry/right bays with tree obscuring central bay.",
+        "Native rear shows internal roof and retained Krijtberg/Singel context, but domestic Singel452 front is too small/obstructed to compare against source."
+      ],
+      "limitations": [
+        "Fine tracery/roof junctions approximate; source tree also obscures Herengracht facade."
+      ],
+      "pending": [
+        "Conventional native camera focused Singel452 domestic front with retained neighbors"
+      ]
+    },
+    {
+      "reviewer": "review_landmark_batch static independent reviewer",
+      "reviewedAt": "2026-10-05",
+      "status": "visual-pass-current-roof-repair",
+      "acceptance": true,
+      "renderEvidence": [
+        "artifacts/singelkerk-review/live-rear.png",
+        "artifacts/singelkerk-review/neutral-front.png"
+      ],
+      "freshness": "Supplemental current native rerun /tmp/singel-boom-final-native.log",
+      "findings": [
+        "Supplemental opposite camera now shows actual Singel452 frontage clearly: paired tall exposed white-trimmed pane groups under straight cornice match source domestic rhythm; separate454 and Krijtberg remain visible.",
+        "Earlier current all-angle repaired roof review and Herengracht facade/court comparison retain their observations; missing opposite-facade evidence resolved."
+      ],
+      "limitations": [
+        "Fine tracery and roofing junction details approximate; Herengracht tree obscures middle bay in native front."
+      ],
+      "pending": []
+    }
+  ],
+  "oppositeCameraCenter": [
+    4.88862596,
+    52.36770787
+  ],
+  "oppositeZoom": 19.3,
+  "oppositePitch": 55,
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "canonicalModelId": "singelkerk",
+    "privatePath": "models/singelkerk",
+    "commit": "aae9a040f371bf61f3df2a75f3870ed25cbd78a1"
+  },
+  "visualAcceptance": true,
+  "state": "verified-gallery-and-native-game",
+  "coordinatorAcceptance": {
+    "date": "2026-10-05",
+    "status": "pass",
+    "evidenceDirectory": "artifacts/singelkerk-review",
+    "checks": [
+      "Gallery and rotated source comparison",
+      "Native game front and opposite visual comparison",
+      "Exact masks and resident neighbor retention",
+      "Physical destination, pin/label and meaningful info card",
+      "Independent visual review"
+    ]
+  }
+}

@@ -54,6 +54,8 @@ Use these assertions to select reusable geometry assemblies and as review criter
 - [BGT](https://www.pdok.nl/introductie/-/article/basisregistratie-grootschalige-topografie-bgt-): detailed ground-level road, water and terrain boundaries for placement/context checks, including suspected monument/water overlaps.
 - [Data Amsterdam](https://data.amsterdam.nl/): municipal map includes panoramas, aerial photos and measuring tools to compare drawings with current visible appearance.
 
+For every new landmark, run a bounded [Amsterdam Beeldbank](https://archief.amsterdam/beeldbank/) search by exact address and building name for reference photographs as well as drawings. Save useful original images and their catalogue records privately, with dates and reuse terms. Compare archival photos with current views before copying a roofline or facade feature into the model. A JavaScript viewer shell is an access gap, not inspected reference evidence.
+
 Treat archival accessibility and open-data licensing separately. Record each source’s date, access state and reuse terms; do not assume every publicly viewable scan is openly licensed. Cache a compact reference pack per building (identity, useful elevation, roof evidence, current facade, remaining uncertainty) to reduce repeated research without reducing quality.
 
 ### Archive every source in the private research repository

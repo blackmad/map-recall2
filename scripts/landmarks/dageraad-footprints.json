@@ -881,5 +881,109 @@
     "modelPath": "models/dageraad/",
     "manifest": "models/dageraad/manifest.json",
     "scope": "Available cached references and explicitly dated current captures; missing historical responses are not claimed recovered."
+  },
+  "windowScopeAudit": {
+    "date": "2026-10-05",
+    "trigger": "artifacts/landmarks/dageraad/references/user-reported-missing-windows-2026-10-05.png",
+    "rawSources": [
+      {
+        "path": "artifacts/landmarks/dageraad/references/bag-north-wing-audit.json",
+        "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&identificatie=0363100012075169",
+        "retrievedAt": "2026-10-05T15:06:48.007278+00:00",
+        "status": 200,
+        "sha256": "73041c43cb16b3a26f75ea40db4c5510d8c9419e51226d01208e07d1ba22a8ee",
+        "bytes": 3457,
+        "representation": "original-http-response-body",
+        "rights": "Source rights retained; private research only"
+      },
+      {
+        "path": "artifacts/landmarks/dageraad/references/bag-south-wing-audit.json",
+        "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&identificatie=0363100012117924",
+        "retrievedAt": "2026-10-05T15:06:48.155428+00:00",
+        "status": 200,
+        "sha256": "95ae6b50d22a569039fdd5fb3f1e514fd9f09cb588819f41e9167639b39ac51d",
+        "bytes": 3385,
+        "representation": "original-http-response-body",
+        "rights": "Source rights retained; private research only"
+      },
+      {
+        "path": "artifacts/landmarks/dageraad/references/aerial-window-audit.jpg",
+        "url": "https://service.pdok.nl/hwh/luchtfotorgb/wms/v1_0?request=GetMap&service=WMS&version=1.3.0&layers=Actueel_orthoHR&styles=&crs=EPSG:4326&bbox=52.34965,4.8986,52.3501,4.8995&width=1200&height=1000&format=image/jpeg",
+        "retrievedAt": "2026-10-05T15:06:48.586315+00:00",
+        "status": 200,
+        "sha256": "4fb57ecd9697641e3a3b39cf50a0a59fd410935c69afb2bad7c2b70fdd11e75e",
+        "bytes": 262031,
+        "representation": "original-http-response-body",
+        "rights": "Source rights retained; private research only"
+      },
+      {
+        "path": "artifacts/landmarks/dageraad/references/bag-context-audit.json",
+        "url": "https://api.pdok.nl/kadaster/bag/ogc/v2/collections/pand/items?f=json&bbox=4.8987,52.3497,4.8993,52.35&limit=100",
+        "retrievedAt": "2026-10-05T15:07:31.050783+00:00",
+        "status": 200,
+        "sha256": "ef5abbfe4aed84b3e5767d807ec4c047194c7e3784a2cef5c3e8e1aff318276f",
+        "bytes": 11364,
+        "representation": "original-http-response-body",
+        "rights": "Source rights retained; private research only"
+      },
+      {
+        "path": "artifacts/landmarks/dageraad/references/user-reported-missing-windows-2026-10-05.png",
+        "origin": "User-provided current gallery screenshot via clipboard attachment",
+        "originalLocalPath": "/var/folders/tl/40rt5yw54v150s3k8shhw5y00000gn/T/codex-clipboard-Zfz5ib.png",
+        "retrievedAt": "2026-10-05T15:10:31.907466+00:00",
+        "sha256": "51fb5e1338ae03f37f56ba6cf2d6a335039b6e3f6539fb00dd1c359010363a83",
+        "bytes": 69388,
+        "representation": "original-user-screenshot-bytes",
+        "rights": "User task reference; private archive only",
+        "use": "Records reported missing-window appearance and preserved failure evidence."
+      }
+    ],
+    "decisiveReferences": [
+      "artifacts/landmarks/dageraad/references/operator-front.jpg",
+      "artifacts/landmarks/dageraad/references/platform-front.jpg",
+      "artifacts/landmarks/dageraad/references/aerial-window-audit.jpg"
+    ],
+    "parent": "0363100012076951",
+    "findings": [
+      "Blank wave-front tower is correct; no central tower window rows are supported by either front photograph.",
+      "Exact museum Pand also owns two short angled street flank edges, each about4.5m long, between its sculptural corner and the adjoining residential Pand. Previous assertion that all broad window groups belonged to neighbors was too broad.",
+      "Current BAG context ties the left party boundary to0363100012075169 and right party boundary to0363100012130351. Neither adjacent wing should be suppressed or absorbed into the museum asset. Earlier preserved neighbor0363100012117924 lies farther along the estate; it remains preserved.",
+      "The existing global front-plane clipping removed the exterior portions of the small own-parent flanks as well as the intended recessed central backing. Keep backing recessed only within u\u00b14.05m; retain source polygon outside this interval.",
+      "Operator front and platform front show broader white framed horizontal-rod windows immediately beyond the narrow round-edge slots. Add these only to own-parent street flank planes. Pane sizes/storey positions remain source-derived approximations, not survey-measured windows.",
+      "Rear/party faces are shared with adjacent parents and should not receive invented exterior windows. The operator-roof photo depicts a different larger estate portion and cannot justify adding its steep roof to this small corner. Current color aerial confirms flat corner roof/crown hierarchy."
+    ],
+    "ownWindowBearingFlanksUV": [
+      {
+        "side": "left",
+        "start": [
+          -3.85,
+          0.01
+        ],
+        "end": [
+          -7.73,
+          -2.24
+        ]
+      },
+      {
+        "side": "right",
+        "start": [
+          3.6,
+          0
+        ],
+        "end": [
+          7.48,
+          -2.27
+        ]
+      }
+    ],
+    "geometryChange": "Central roof backing remains recessed; two actual own-parent flank strips restored with three broader gridded window groups, small upper sash, and small lower clerestory openings per side. Exact ground footprint, central blank tower, rounded tier depth, surveyed heights, source identity and suppression remain unchanged.",
+    "remainingAcceptance": "New gallery all rotations and native game both sides; neighbor residency and exact contract rerun required. No new visual acceptance claimed.",
+    "privateSourceArchive": "Existing source commit remains historical. Newly cached raw responses/aerial/user screenshot require private source sync and commit before changed asset commit."
+  },
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "canonicalModelId": "dageraad",
+    "privatePath": "models/dageraad",
+    "commit": "aae9a040f371bf61f3df2a75f3870ed25cbd78a1"
   }
 }

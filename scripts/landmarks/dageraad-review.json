@@ -17,7 +17,7 @@
     "artifacts/landmarks/dageraad/references/operator-front.jpg",
     "artifacts/landmarks/dageraad/references/platform-front.jpg"
   ],
-  "status": "Independent repaired multi-angle gallery and actual game front/rear visually accepted; exact POI/neighbor contract passed",
+  "status": "CPU-checked own-parent flank window correction; prior acceptance withdrawn, gallery/live pending",
   "limitations": [
     "Only official museum corner parent is modeled; adjoining long estate wings are preserved.",
     "No tower name lettering: map label identifies POI.",
@@ -31,32 +31,26 @@
   ],
   "referenceComparison": {
     "reviewedOn": "2026-10-05",
-    "reviewer": "independent current-batch repair reviewer, follow-up after union-boundary wall repair",
-    "status": "accepted",
-    "renderEvidence": [
-      "artifacts/dageraad-review/gallery-angle-0.png",
-      "artifacts/dageraad-review/gallery-angle-1.png",
-      "artifacts/dageraad-review/gallery-angle-2.png",
-      "artifacts/dageraad-review/gallery-angle-3.png",
-      "artifacts/dageraad-review/neutral-front.png",
-      "artifacts/dageraad-review/live-rear.png"
-    ],
+    "reviewer": "source/CPU audit worker; no GPU",
+    "status": "pending new independent visual review",
     "sourceEvidence": [
       "artifacts/landmarks/dageraad/references/operator-front.jpg",
-      "artifacts/landmarks/dageraad/references/platform-front.jpg"
+      "artifacts/landmarks/dageraad/references/platform-front.jpg",
+      "artifacts/landmarks/dageraad/references/aerial-window-audit.jpg"
     ],
     "findings": [
-      "Previously failed angle2 lower rear/party wall now renders as a clean flat-color surface: dense checker/grid artifact is absent. Other refreshed angles show no patchy overlapping-wall pattern.",
-      "A faint single height-band boundary remains on the rear/party surfaces in angles0/3. It is a restrained shading/edge discontinuity rather than the former dense interference pattern; no material residual z-fighting is visible in these static views.",
-      "Front angle1 retains smooth wave facade shading, source-recognizable paired stepped rounded tiers and connected pale curved caps. Narrow gridded openings remain exposed and attached.",
-      "Fresh actual game front shows the stepped tier/cap rhythm at native scale; rear retains the adjoining estate wings and open courtyard. No unsupported cap, visible roof fragment or facade checker defect is apparent in these captures.",
-      "Exact small museum parent scope remains appropriate. Completed repaired-export runner confirms chosen destination, geographic pin, physical sourced card and resident drawable neighbors."
+      "Blank wave-front tower is correct; no central tower window rows are supported by either front photograph.",
+      "Exact museum Pand also owns two short angled street flank edges, each about4.5m long, between its sculptural corner and the adjoining residential Pand. Previous assertion that all broad window groups belonged to neighbors was too broad.",
+      "Current BAG context ties the left party boundary to0363100012075169 and right party boundary to0363100012130351. Neither adjacent wing should be suppressed or absorbed into the museum asset. Earlier preserved neighbor0363100012117924 lies farther along the estate; it remains preserved.",
+      "The existing global front-plane clipping removed the exterior portions of the small own-parent flanks as well as the intended recessed central backing. Keep backing recessed only within u\u00b14.05m; retain source polygon outside this interval.",
+      "Operator front and platform front show broader white framed horizontal-rod windows immediately beyond the narrow round-edge slots. Add these only to own-parent street flank planes. Pane sizes/storey positions remain source-derived approximations, not survey-measured windows.",
+      "Rear/party faces are shared with adjacent parents and should not receive invented exterior windows. The operator-roof photo depicts a different larger estate portion and cannot justify adding its steep roof to this small corner. Current color aerial confirms flat corner roof/crown hierarchy."
     ],
-    "limitations": [
-      "Faint height-band shading seam remains in standalone side/rear gallery views; inspected static captures cannot establish absence of temporal flicker across every possible camera movement.",
-      "Brick warmth, tier depth, ceramic crown and relief carving remain simplified source-derived approximations."
-    ],
-    "pending": []
+    "pending": [
+      "Coordinator export and refreshed four-angle gallery",
+      "Actual native game street flank views with exact source-parent suppression and adjacent residence retention",
+      "Independent source/render comparison before renewed acceptance"
+    ]
   },
   "actualGameContractEvidence": {
     "log": "/tmp/dageraad-surface-repair.log",
@@ -160,14 +154,42 @@
         "Refresh all-angle gallery evidence and independently re-review",
         "Inspect refreshed actual game front/rear and completed route/pin/card/neighbor evidence"
       ]
+    },
+    {
+      "reviewedOn": "2026-10-05",
+      "reviewer": "independent current-batch repair reviewer, follow-up after union-boundary wall repair",
+      "status": "accepted",
+      "renderEvidence": [
+        "artifacts/dageraad-review/gallery-angle-0.png",
+        "artifacts/dageraad-review/gallery-angle-1.png",
+        "artifacts/dageraad-review/gallery-angle-2.png",
+        "artifacts/dageraad-review/gallery-angle-3.png",
+        "artifacts/dageraad-review/neutral-front.png",
+        "artifacts/dageraad-review/live-rear.png"
+      ],
+      "sourceEvidence": [
+        "artifacts/landmarks/dageraad/references/operator-front.jpg",
+        "artifacts/landmarks/dageraad/references/platform-front.jpg"
+      ],
+      "findings": [
+        "Previously failed angle2 lower rear/party wall now renders as a clean flat-color surface: dense checker/grid artifact is absent. Other refreshed angles show no patchy overlapping-wall pattern.",
+        "A faint single height-band boundary remains on the rear/party surfaces in angles0/3. It is a restrained shading/edge discontinuity rather than the former dense interference pattern; no material residual z-fighting is visible in these static views.",
+        "Front angle1 retains smooth wave facade shading, source-recognizable paired stepped rounded tiers and connected pale curved caps. Narrow gridded openings remain exposed and attached.",
+        "Fresh actual game front shows the stepped tier/cap rhythm at native scale; rear retains the adjoining estate wings and open courtyard. No unsupported cap, visible roof fragment or facade checker defect is apparent in these captures.",
+        "Exact small museum parent scope remains appropriate. Completed repaired-export runner confirms chosen destination, geographic pin, physical sourced card and resident drawable neighbors."
+      ],
+      "limitations": [
+        "Faint height-band shading seam remains in standalone side/rear gallery views; inspected static captures cannot establish absence of temporal flicker across every possible camera movement.",
+        "Brick warmth, tier depth, ceramic crown and relief carving remain simplified source-derived approximations."
+      ],
+      "pending": []
     }
   ],
   "rootAcceptance": {
     "date": "2026-10-05",
-    "status": "accepted",
-    "evidence": "artifacts/dageraad-review/",
-    "checks": "Independent four-angle gallery and actual game front/rear inspection; completed route/pin/card/native exact-neighbor contract in /tmp/dageraad-surface-repair.log.",
-    "limitations": "Single faint height-band shading seam in side/rear gallery; source-derived geometric ornament simplified."
+    "status": "withdrawn pending own-parent window correction review",
+    "evidence": "artifacts/landmarks/dageraad/references/user-reported-missing-windows-2026-10-05.png",
+    "reason": "User missing-window report led to source scope re-audit; genuine short own-parent window-bearing flank edges were omitted. Changed geometry must receive new source/render and actual-game acceptance."
   },
   "acceptanceHistory": [
     {
@@ -181,6 +203,13 @@
       "date": "2026-10-05",
       "status": "withdrawn after user rejected weird texture/flat dark appearance",
       "evidence": "artifacts/landmarks/dageraad/references/user-rejected-flat-front-2026-10-05.png"
+    },
+    {
+      "date": "2026-10-05",
+      "status": "accepted",
+      "evidence": "artifacts/dageraad-review/",
+      "checks": "Independent four-angle gallery and actual game front/rear inspection; completed route/pin/card/native exact-neighbor contract in /tmp/dageraad-surface-repair.log.",
+      "limitations": "Single faint height-band shading seam in side/rear gallery; source-derived geometric ornament simplified."
     }
   ],
   "appearanceCorrection": {
@@ -205,6 +234,13 @@
       "status": "user-rejected-prior-acceptance",
       "finding": "Texture-like appearance and unresolved facade shading",
       "acceptanceEffect": "Earlier visual acceptance cannot establish acceptance of the repaired export."
+    },
+    {
+      "date": "2026-10-05",
+      "status": "user-reported-missing-windows",
+      "finding": "Front screenshot contains only six small narrow slots; genuine own-parent angled flank windows had been omitted. Blank central tower is source-supported.",
+      "evidence": "artifacts/landmarks/dageraad/references/user-reported-missing-windows-2026-10-05.png",
+      "acceptanceEffect": "Changed geometry acceptance withdrawn; preserve earlier failures/reviews as history."
     }
   ],
   "repairGameEvidence": {
@@ -237,5 +273,62 @@
     "checks": "4061triangles. Six height slices, X/Z scan rays at0.431m intervals require distinct masonry meshes not to share hit distance within1e-5m; first masonry normals face out. Previous first-hit windows/cap ownership/round retreat/tower wave/native bounds/open-space checks pass.",
     "pending": "Root refreshed angle2 rear checker region and angles0/3 curved seams plus actual affected game views. No visual acceptance.",
     "visualReview": "Independent refreshed all-angle gallery and actual game front/rear accepted; angle2 checker removed, faint single band seam recorded as limitation."
+  },
+  "windowScopeCorrection": {
+    "date": "2026-10-05",
+    "sourceRecord": "scripts/landmarks/dageraad-footprints.json#windowScopeAudit",
+    "function": "buildDageraad(_id, _w, _d, b)",
+    "triangles": 4725,
+    "cpu": "node --import tsx scripts/check-dageraad-geometry.ts passes; both restored flank window groups first-hit glass with parent masonry directly behind within0.3m, three blank-center tower rays, all existing native bounds/tier retreat/roof winding/single wall ownership/open-space/exact suppression checks.",
+    "visualStatus": "pending coordinator; no worker GPU launched",
+    "privateRawManifest": "artifacts/landmarks/dageraad/references/window-audit-raw-manifest.json"
+  },
+  "independentVisualReviewHistory": [
+    {
+      "reviewer": "review_landmark_batch static independent reviewer",
+      "reviewedAt": "2026-10-05",
+      "status": "visual-pass-current-window-repair",
+      "acceptance": true,
+      "scope": "Visual comparison only; coordinator owns integration and final acceptance",
+      "freshness": "Coordinator regeneration/bundle confirmation; gallery captured17:22 and native captured during current /tmp/landmark-five-native-review.log run",
+      "renderEvidence": [
+        "artifacts/dageraad-review/gallery.png",
+        "artifacts/dageraad-review/gallery-angle-0.png",
+        "artifacts/dageraad-review/gallery-angle-1.png",
+        "artifacts/dageraad-review/gallery-angle-2.png",
+        "artifacts/dageraad-review/gallery-angle-3.png",
+        "artifacts/dageraad-review/neutral-front.png",
+        "artifacts/dageraad-review/live-rear.png"
+      ],
+      "findings": [
+        "Broader white gridded own-parent flank windows, small upper sash and lower clerestories are now attached and visible on both sides in gallery angle1.",
+        "Blank central tower, narrow tier panes, stepped rounded flanks and pale crown/coping retain source recognition; no dense checker-grid or unsupported roof plate appears in four rotations.",
+        "Fresh native front shows broader flank window groups around tower; native opposite retains adjoining estate wings and open courtyard without visible roof overlap."
+      ],
+      "limitations": [
+        "Tier projection, crown, relief and mixed brick color are simplified; faint single rear height-band seam remains static shading limitation."
+      ],
+      "pending": []
+    }
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "canonicalModelId": "dageraad",
+    "privatePath": "models/dageraad",
+    "commit": "aae9a040f371bf61f3df2a75f3870ed25cbd78a1"
+  },
+  "visualAcceptance": true,
+  "state": "verified-gallery-and-native-game",
+  "coordinatorAcceptance": {
+    "date": "2026-10-05",
+    "status": "pass",
+    "evidenceDirectory": "artifacts/dageraad-review",
+    "checks": [
+      "Gallery and rotated source comparison",
+      "Native game front and opposite visual comparison",
+      "Exact masks and resident neighbor retention",
+      "Physical destination, pin/label and meaningful info card",
+      "Independent visual review"
+    ]
   }
 }

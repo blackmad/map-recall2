@@ -1,0 +1,203 @@
+{
+  "id": "oba-oosterdok",
+  "status": "accepted-gallery-and-native-game",
+  "previousModelFailures": [
+    "Generic stone grid and all-plot35.8m cap lost monumental portal and projecting limestone left pier.",
+    "Missing recessed heavy cedar frame bays and transparent raised entrance plinth.",
+    "No exposed east stacked terraces, roof setbacks or north service core.",
+    "Painted OBA lettering invented for recognition; removed."
+  ],
+  "cpuChecks": {
+    "command": "node --import tsx scripts/check-oba-oosterdok-geometry.ts",
+    "pass": true,
+    "triangles": 18376,
+    "bounds": {
+      "min": [
+        -29.9533,
+        0,
+        -47.9185
+      ],
+      "max": [
+        23.8547,
+        37.23,
+        38.4657
+      ]
+    },
+    "probes": [
+      "first-hit principal facade glass",
+      "upward bounded roof surfaces",
+      "31.4m thin canopy with open underside",
+      "37m north core versus34m restaurant",
+      "no model at Conservatorium neighbor point",
+      "no shared-parent suppression"
+    ]
+  },
+  "referencePhotos": [
+    "artifacts/landmarks/oba-oosterdok/references/07330-04.jpg",
+    "artifacts/landmarks/oba-oosterdok/references/oba_06.jpg"
+  ],
+  "gpuReview": {
+    "completed": false,
+    "required": [
+      "default higher gallery and four lower rotations against07330-04 portal/cedar/terrace proportions",
+      "live south entrance and both side facade views",
+      "visible Conservatoriumw779659696 and western collegew779659694",
+      "shared BAG0363100012164964 ordinary fallback overlap: exact OSM part masks may leave shared coarse envelope; inspect residency before judging",
+      "replacement disabled/unavailable restores fallback and neighbor roof layers retained",
+      "pointer POI card and genuine selected destination route/map pin"
+    ]
+  },
+  "acceptance": false,
+  "limitations": [
+    "Upper restaurant/theatre window arrangement inferred, not measured.",
+    "Canopy thickness photo approximation; OSM31.1m top is thin mapped surface and model includes visible parapet.",
+    "No actual game/GPU/performance evidence yet; CPU checks are not visual acceptance.",
+    "Shared BAG parent4964 includes college and cannot be blanket-suppressed; root must examine installed fallback overlap."
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "canonicalModelId": "oba-oosterdok",
+    "privatePath": "models/oba-oosterdok",
+    "commit": "aae9a040f371bf61f3df2a75f3870ed25cbd78a1"
+  },
+  "archiveSearch": {
+    "url": "https://archief.amsterdam/beeldbank/?q=Oosterdokskade%20143",
+    "state": "HTTP200 JSshell; results unavailable from raw page; bounded search complete; no archive photo used"
+  },
+  "specPath": "scripts/landmarks/oba-oosterdok-spec.json",
+  "neighbors": [
+    [
+      "w1487606314"
+    ],
+    [
+      "w1487606315"
+    ],
+    [
+      "w1487606316"
+    ],
+    [
+      "w1487606296"
+    ],
+    [
+      "w1487606297"
+    ]
+  ],
+  "zoom": 18.4,
+  "bearing": 0,
+  "independentVisualReview": {
+    "reviewer": "boomkerk_build independent CPU worker",
+    "date": "2026-10-05",
+    "nativeViewsAccepted": true,
+    "notes": "Native neutral front and rear preserve large portal, recessed glass/bronze grid, exposed right stair stack and stone pier from source07330-04; no overlay or filled recess visible.",
+    "renderEvidence": [
+      "artifacts/oba-oosterdok-review/neutral-front.png",
+      "artifacts/oba-oosterdok-review/live-rear.png"
+    ],
+    "referenceEvidence": [
+      "artifacts/landmarks/oba-oosterdok/references/07330-04.jpg"
+    ],
+    "scope": "Visual native comparison only; coordinator owns route/pin/pointer/suppression proofs and final acceptance",
+    "nativeReviewer": "boomkerk_build",
+    "nativeReviewedAt": "2026-10-05",
+    "nativeEvidence": [
+      "neutral-front.png",
+      "live-rear.png"
+    ],
+    "nativeResult": "pass",
+    "nativeObservations": "Readable stone portal, recessed bronze/glass bays, open stair stack; retained adjacent campus and rear context, no visible overlay caps.",
+    "acceptance": true
+  },
+  "independentVisualReviewHistory": [
+    {
+      "reviewer": "independent fresh-context visual reviewer",
+      "reviewedAt": "2026-10-05",
+      "method": "One bounded static reference/render comparison pass; no reviewer browser or GPU launched",
+      "galleryEvidence": [
+        "gallery.png",
+        "gallery-angle-0.png",
+        "gallery-angle-1.png",
+        "gallery-angle-2.png",
+        "gallery-angle-3.png"
+      ],
+      "liveGame": "pending: native front/rear/neutral and drawable-neighbor screenshots unavailable during initial static pass",
+      "acceptance": false,
+      "gallery": "failed-old-model-evidence; freshness requires coordinator confirmation/new capture",
+      "referenceImages": [
+        "artifacts/landmarks/oba-oosterdok/references/07330-04.jpg",
+        "artifacts/landmarks/oba-oosterdok/references/oba_06.jpg"
+      ],
+      "observations": [
+        "Available gallery renders plain beige rectangular grid with thin facade ribs, flat all-plot roof and painted OBA lettering. Monumental projecting limestone portal, recessed cedar square-window volume, open raised entrance and east terraces are absent. These correspond to recorded previous-model failures rather than source-ready rebuilt geometry.",
+        "Native runner aborted when retained neighbors were not resident/drawable; hidden:false does not establish visible context acceptance."
+      ],
+      "limitations": [
+        "Do not classify stale gallery against rebuilt model until current content fingerprint is captured.",
+        "Current installed replacement and shared-BAG college fallback overlap still require native visual inspection."
+      ],
+      "galleryDirectory": "artifacts/oba-oosterdok-review"
+    },
+    {
+      "reviewer": "review_landmark_batch static independent reviewer",
+      "reviewedAt": "2026-10-05",
+      "status": "visual-pass-current-unchanged-export",
+      "scope": "Static source/gallery/native visual comparison only; coordinator owns integration and final acceptance",
+      "freshness": "Coordinator explicitly confirmed unchanged current accepted gallery/native captures before inspection",
+      "renderEvidence": [
+        "artifacts/oba-oosterdok-review/gallery.png",
+        "artifacts/oba-oosterdok-review/gallery-angle-0.png",
+        "artifacts/oba-oosterdok-review/gallery-angle-1.png",
+        "artifacts/oba-oosterdok-review/gallery-angle-2.png",
+        "artifacts/oba-oosterdok-review/gallery-angle-3.png",
+        "artifacts/oba-oosterdok-review/neutral-front.png",
+        "artifacts/oba-oosterdok-review/live-rear.png"
+      ],
+      "sourceEvidence": [
+        "artifacts/landmarks/oba-oosterdok/references/07330-04.jpg"
+      ],
+      "findings": [
+        "Stone portal and projecting left pier enclose recessed bronze/cedar glass grid; exposed stair/terrace stack and raised glazed base remain recognizable against actual portal-front photo.",
+        "All four gallery rotations retain stepped roof hierarchy and north core without all-plot cap or painted-name identification.",
+        "Native neutral-front and rear show adjacent campus volumes retained, roof hierarchy exposed and no visible fallback overlay across replacement."
+      ],
+      "limitations": [
+        "Heavy square frame bays and entrance-column detail are simplified; no newly observed recognition failure."
+      ],
+      "pending": []
+    }
+  ],
+  "neighborIdentityResolution": {
+    "source": "artifacts/landmarks/oba-oosterdok/references/osm-context.json",
+    "reason": "Renderer installs building parts rather than enclosing parent outlines. Current OSM node/way geometry places6314\u20136316 within Conservatorium parent779659696;6296/6297 are unmodeled campus parts within shared parent779659694. Parent masks remain forbidden.",
+    "renderedParts": [
+      "w1487606314",
+      "w1487606315",
+      "w1487606316",
+      "w1487606296",
+      "w1487606297"
+    ],
+    "failedParentProbe": "artifacts/oba-oosterdok-review/resident-neighbor-diagnostic.json"
+  },
+  "sourceArchiveCommit": {
+    "repository": "blackmad/map-recall2-source-data",
+    "commit": "b362a893a31a576249a9ada5be7fa3adcce15d8d",
+    "path": "models/oba-oosterdok"
+  },
+  "visualAcceptance": true,
+  "coordinatorReview": {
+    "reviewedAt": "2026-10-05",
+    "checks": "Gallery rotations/reference and native neutral front/rear inspected; physical sourced card, true destination/pin, native scale, exact fallback suppression and resident/drawable neighbors passed."
+  },
+  "state": "verified-gallery-and-native-game",
+  "coordinatorAcceptance": {
+    "date": "2026-10-05",
+    "status": "pass",
+    "evidenceDirectory": "artifacts/oba-oosterdok-review",
+    "checks": [
+      "Gallery and rotated source comparison",
+      "Native game front and opposite visual comparison",
+      "Exact masks and resident neighbor retention",
+      "Physical destination, pin/label and meaningful info card",
+      "Independent visual review"
+    ]
+  }
+}

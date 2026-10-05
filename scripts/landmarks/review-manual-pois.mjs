@@ -31,7 +31,7 @@ try{
   }
  }
  for(const plan of targets){const s=plan.spec,out=`artifacts/${s.id}-review`;
-  await page.goto(`${base}/canal-drive/`);
+  await page.goto(`${base}/canal-drive/`, {waitUntil: 'domcontentloaded', timeout: 60000});
   await page.waitForFunction(()=>window.canalRecallGame?.routePois?.length,null,{timeout:180000});
   await page.getByRole('radiogroup',{name:'Travel',exact:true}).getByRole('button',{name:/Bike/}).click();
   await page.getByRole('radiogroup',{name:'View',exact:true}).getByRole('button',{name:/Chase/}).click();
@@ -40,11 +40,11 @@ try{
   await page.locator('#route-card').evaluate(form=>form.requestSubmit());
   await page.waitForFunction(()=>canalRecallGame.state===4&&canalRecallGame.camera.introOverview===0,null,{timeout:180000});
   assert.equal(await page.evaluate(()=>canalRecallGame._finishLandmark()?.id),s.landmarkId,'actual chosen route finish must not change');
-  await page.evaluate(({s,plan})=>{const v=canalRecallGame.vectorMap;v.sync=()=>{};v.map.jumpTo({center:s.surveyed.anchor,zoom:plan.zoom??18.2,pitch:55,bearing:plan.bearing??s.surveyed.northOffsetDegrees});v._completeCity.setSuspended(false);v._completeCity.followCamera();},{s,plan});
+  await page.evaluate(({s,plan})=>{const v=canalRecallGame.vectorMap;v.sync=()=>{};v.map.jumpTo({center:plan.cameraCenter??s.surveyed.anchor,zoom:plan.zoom??18.2,pitch:plan.pitch??55,bearing:plan.bearing??s.surveyed.northOffsetDegrees});v._completeCity.setSuspended(false);v._completeCity.followCamera();},{s,plan});
   await page.waitForFunction(id=>canalRecallGame.vectorMap._signatureLandmarks.shown.has(id),s.id,{timeout:180000});
   await page.waitForTimeout(8500);
   await page.waitForFunction(()=>{const b=canalRecallGame.vectorMap._threeBuildings;return b?.ready&&b.chunks.size&&!b.pending.length&&!b.inflight.size;},null,{timeout:180000});
-  await page.evaluate(({s,plan})=>{const v=canalRecallGame.vectorMap;v.map.jumpTo({center:s.surveyed.anchor,zoom:plan.zoom??18.2,pitch:55,bearing:plan.bearing??s.surveyed.northOffsetDegrees});v.map.triggerRepaint();},{s,plan});
+  await page.evaluate(({s,plan})=>{const v=canalRecallGame.vectorMap;v.map.jumpTo({center:plan.cameraCenter??s.surveyed.anchor,zoom:plan.zoom??18.2,pitch:plan.pitch??55,bearing:plan.bearing??s.surveyed.northOffsetDegrees});v.map.triggerRepaint();},{s,plan});
   await page.waitForFunction(id=>canalRecallGame.vectorMap._signatureLandmarks._entries.find(e=>e.spec.id===id)?.pickProjection,s.id,{timeout:30000});
   const proof=await page.evaluate(async({s,neighbors})=>{
    const g=canalRecallGame,v=g.vectorMap,b=v._threeBuildings,l=v._signatureLandmarks,T=CanalRecallThree.THREE;
@@ -55,6 +55,23 @@ try{
   },{s,neighbors:plan.neighbors});
   fs.writeFileSync(path.join(out,'placement-proof.json'),JSON.stringify(proof,null,2)+'\n');
   console.log('NATIVE POI PROOF',JSON.stringify(proof));
+  if (proof.neighbors.some(neighbor => !neighbor.resident || !neighbor.drawable)) {
+    const residentContext = await page.evaluate(anchor => {
+      const b = canalRecallGame.vectorMap._threeBuildings;
+      const nearby = [];
+      for (const feature of b.lastFeatures) {
+        const points = [];
+        const collect = value => { if (!Array.isArray(value)) return; if (typeof value[0] === 'number') points.push(value); else value.forEach(collect); };
+        collect(feature.geometry?.coordinates);
+        if (!points.some(point => Math.abs(point[0] - anchor[0]) < .003 && Math.abs(point[1] - anchor[1]) < .002)) continue;
+        const id = String(feature.properties.id);
+        nearby.push({ id, properties: feature.properties, geometry: feature.geometry, hidden: b.hidden.has(id), drawable: [...b.chunks.values()].some(chunk => chunk.mesh && chunk.ranges.has(id)) });
+      }
+      return nearby;
+    }, s.surveyed.anchor);
+    fs.writeFileSync(path.join(out, 'resident-neighbor-diagnostic.json'), JSON.stringify(residentContext, null, 2) + '\n');
+    await page.screenshot({path: path.join(out, 'failed-neighbor-view.png')});
+  }
   assert.equal(proof.scale,1);assert.equal(proof.bias,false);assert.equal(proof.broad,false);assert(proof.pin&&proof.destination&&proof.source&&proof.click);assert(proof.aliases.every(a=>a.hidden));assert.deepEqual(proof.oldPyramidIds,[]);
   for(const n of proof.neighbors){assert(n.resident&&n.drawable,'neighbor must actually be resident/drawable');assert.equal(n.hidden,false);}
   await page.mouse.click(proof.click.x,proof.click.y);await page.waitForTimeout(200);
@@ -63,7 +80,7 @@ try{
   fs.writeFileSync(path.join(out,'physical-card-proof.json'),JSON.stringify(card,null,2)+'\n');
   await page.screenshot({path:path.join(out,'live-front.png')});
   await page.evaluate(()=>canalRecallGame.vectorMap.setActiveLandmark(null));await page.waitForTimeout(200);await page.screenshot({path:path.join(out,'neutral-front.png')});
-  await page.evaluate(bearing=>{const v=canalRecallGame.vectorMap;v.map.jumpTo({bearing:(bearing+180)%360});v._completeCity.followCamera();},plan.bearing??s.surveyed.northOffsetDegrees);
+  await page.evaluate(({plan,s})=>{const v=canalRecallGame.vectorMap;v.map.jumpTo({center:plan.oppositeCameraCenter??plan.cameraCenter??s.surveyed.anchor,zoom:plan.oppositeZoom??plan.zoom??18.2,pitch:plan.oppositePitch??plan.pitch??55,bearing:plan.oppositeBearing??((plan.bearing??s.surveyed.northOffsetDegrees)+180)%360});v._completeCity.followCamera();},{plan,s});
   await page.waitForTimeout(8500);await page.waitForFunction(()=>{const b=canalRecallGame.vectorMap._threeBuildings;return b?.ready&&b.chunks.size&&!b.pending.length&&!b.inflight.size;},null,{timeout:180000});await page.screenshot({path:path.join(out,'live-rear.png')});
   console.log(`PASS ${s.id}: route, native placement, pin, physical sourced card, exact suppression and resident neighbors. Screenshots await visual acceptance.`);
  }

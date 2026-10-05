@@ -1,0 +1,38 @@
+{
+  "id": "petruskerk",
+  "name": "Petruskerk",
+  "landmarkId": "extract_landmarks_800494636",
+  "modelUrl": "./models/petruskerk.glb",
+  "suppressOsmIds": [
+    "w8891046",
+    "NL.IMBAG.Pand.0363100012163298"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.846546,
+      52.386716
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 29,
+    "widthMetres": 14.3
+  },
+  "surveyed": {
+    "anchor": [
+      4.846546,
+      52.386716
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG native shape; geometry baked east/south metres"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Petruskerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6775",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free geometry from native BAG footprint, operator facade photographs and roof survey. Separate houses, tomb parents and open churchyard preserved."
+  }
+}

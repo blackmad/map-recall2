@@ -1,0 +1,40 @@
+{
+  "id": "sint-agneskerk",
+  "name": "Sint-Agneskerk",
+  "landmarkId": "extract_landmarks_736359928",
+  "modelUrl": "./models/sint-agneskerk.glb",
+  "suppressOsmIds": [
+    "w57859521",
+    "w98672987",
+    "NL.IMBAG.Pand.0363100012166358",
+    "NL.IMBAG.Pand.0363100012197426"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8581,
+      52.35028
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 30.519442485800624,
+    "widthMetres": 61.76237319625609
+  },
+  "surveyed": {
+    "anchor": [
+      4.8581,
+      52.35028
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current PDOK BAG polygons; authoring aligned 66.1deg local-to-east/south rotation, geometry baked into east/south metres"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Sint-Agneskerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/505910",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original native-scale texture-free geometry using current BAG plan, researched neo-Romanesque basilica and detached open campanile. Pastorie and neighboring school preserved; no photo pixels or downloaded meshes."
+  }
+}

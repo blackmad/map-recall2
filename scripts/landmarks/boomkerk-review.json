@@ -1,0 +1,121 @@
+{
+  "modelId": "boomkerk",
+  "state": "verified-gallery-and-native-game",
+  "reviewedAt": "2026-10-05",
+  "cpuChecks": {
+    "command": "node --import tsx scripts/check-boomkerk-geometry.ts",
+    "passed": true,
+    "triangles": 16821,
+    "maxHeightMetres": 43.42,
+    "checks": [
+      "First-hit exposed wheel, portals and both side triplets",
+      "Upward roof normals, supported measured eave/ridge",
+      "Rear annex gap and neighboring churchyard space open",
+      "Exact single BAG/OSM identity replacement, presbytery and school retained"
+    ]
+  },
+  "visualAcceptance": true,
+  "references": "boomkerk-footprints.json",
+  "knownLimitations": [
+    "Tower divisions and decorative dimensions use photo ratios; survey maximum 42.3m above ground governs spire; cross adds 1.12m.",
+    "Statues simplified; no painted names, interior or mosaic pixels.",
+    "No municipal drawing inspected; archive viewer shell and403front original retained as explicit gaps.",
+    "Coordinator must generate asset, review default/four rotations and native game both sides, verify route/pin/physical card and archive source commit."
+  ],
+  "specPath": "scripts/landmarks/boomkerk-spec.json",
+  "neighbors": [
+    [
+      "w276234107",
+      "NL.IMBAG.Pand.0363100012235922"
+    ],
+    [
+      "w276234109",
+      "NL.IMBAG.Pand.0363100012085466"
+    ]
+  ],
+  "zoom": 18.9,
+  "bearing": 55,
+  "independentVisualReview": {
+    "reviewer": "review_landmark_batch static independent reviewer",
+    "reviewedAt": "2026-10-05",
+    "status": "visual-pass-current-new-model",
+    "acceptance": true,
+    "scope": "Visual comparison only; coordinator owns integration and final acceptance",
+    "freshness": "Current supplementary conventional55degree front and opposite in /tmp/solder-boom-final-native.log",
+    "renderEvidence": [
+      "artifacts/boomkerk-review/neutral-front.png",
+      "artifacts/boomkerk-review/live-rear.png"
+    ],
+    "sourceEvidence": [
+      "artifacts/landmarks/boomkerk/references/commons-context.jpg",
+      "artifacts/landmarks/boomkerk/references/roof-aerial.jpg"
+    ],
+    "findings": [
+      "Supplementary native front now clearly exposes large wheel window, three round-arch portals with coupled gables, left aisle gable and right clock/belfry tower; defining source frontage remains legible at native scene scale.",
+      "Opposite exposes high rounded apse, paired lower rounded chapels, cross/transverse roof families and open crossing turret. Retained school/presbytery/adjoining row context and open rear spaces remain visible without roof overlay.",
+      "Earlier current all-angle gallery findings retained; native main-front evidence gap resolved."
+    ],
+    "limitations": [
+      "Wheel tracery, portal/statue/mosaic ornament and fine clock/belfry details simplified."
+    ],
+    "pending": []
+  },
+  "cameraCenter": [
+    4.85072,
+    52.38316
+  ],
+  "oppositeBearing": 235,
+  "cameraReason": "Bounded conventional southwest-front framing after earlier side/rear views; actual screenshot recognition determines acceptance, not bearing label.",
+  "independentVisualReviewHistory": [
+    {
+      "reviewer": "review_landmark_batch static independent reviewer",
+      "reviewedAt": "2026-10-05",
+      "status": "gallery-pass-native-mainfront-evidence-pending",
+      "acceptance": false,
+      "scope": "Visual comparison only; coordinator owns integration and final acceptance",
+      "freshness": "Current regenerated17:22gallery and17:27native batch captures",
+      "sourceEvidence": [
+        "artifacts/landmarks/boomkerk/references/commons-context.jpg",
+        "artifacts/landmarks/boomkerk/references/roof-aerial.jpg"
+      ],
+      "renderEvidence": [
+        "artifacts/boomkerk-review/gallery.png",
+        "artifacts/boomkerk-review/gallery-angle-0.png",
+        "artifacts/boomkerk-review/gallery-angle-1.png",
+        "artifacts/boomkerk-review/gallery-angle-2.png",
+        "artifacts/boomkerk-review/gallery-angle-3.png",
+        "artifacts/boomkerk-review/neutral-front.png",
+        "artifacts/boomkerk-review/live-rear.png"
+      ],
+      "findings": [
+        "Gallery front angle3 retains corner tower/diamond clock fields, large wheel window and three round-headed portals under coupled gables; side/transverse grouped arched glazing, pitched grey roof families, octagonal crossing turret and rounded rear chapels retain source recognition.",
+        "Native current views expose side/rear massing and roof hierarchy, with school/presbytery drawn and rear/open gaps retained; no visible overlay roof or filled open space.",
+        "Native neutral-front is near-side profile: wheel is a narrow sliver and three defining entrance portals hidden. Native opposite is rear/side. Gallery cannot substitute for missing installed front recognition."
+      ],
+      "limitations": [
+        "Wheel tracery, belfry/clock ornament, statues and roof detail are simplified."
+      ],
+      "pending": [
+        "Conventional native main-front camera showing wheel and three entrance portals beside clock tower with retained context"
+      ]
+    }
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "canonicalModelId": "boomkerk",
+    "privatePath": "models/boomkerk",
+    "commit": "aae9a040f371bf61f3df2a75f3870ed25cbd78a1"
+  },
+  "coordinatorAcceptance": {
+    "date": "2026-10-05",
+    "status": "pass",
+    "evidenceDirectory": "artifacts/boomkerk-review",
+    "checks": [
+      "Gallery and rotated source comparison",
+      "Native game front and opposite visual comparison",
+      "Exact masks and resident neighbor retention",
+      "Physical destination, pin/label and meaningful info card",
+      "Independent visual review"
+    ]
+  }
+}

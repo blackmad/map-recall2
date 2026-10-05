@@ -1183,7 +1183,6 @@ Map source: ${osmUrl(places[i][0])}`);
       landmarkId: "extract_landmarks_751632752",
       modelUrl: "./models/oba-oosterdok.glb",
       suppressOsmIds: [
-        "w1487606301",
         "w1487606300",
         "w1487606301",
         "w1487606302",
@@ -1207,14 +1206,23 @@ Map source: ${osmUrl(places[i][0])}`);
         widthMetres: 38.70079461141226
       },
       groundAltitudeMetres: 0,
-      facingOffsetDegrees: 90,
+      facingOffsetDegrees: 0,
       attribution: {
         title: "OBA Oosterdok",
         author: "Map Recall",
         sourceUrl: "https://oba.nl/nl/locaties/oba-oosterdok",
         licence: "Original project asset",
         licenceUrl: "./LICENSE",
-        modifications: "Original flat-colour low-poly reconstruction using visual references and OpenStreetMap footprint alignment. Approximate architectural dimensions, no reference image textures or imported geometry."
+        modifications: "Original texture-free native surveyed model: pale limestone portal and thin cantilever canopy, recessed cedar square window bays, glass plinth and stairs, open side terraces, stepped restaurant/theatre roofs and separate north stair core. Current OSM footprint parts own scope; model scale1. Upper facade arrangements and roof thickness approximate from architect photographs; no imported mesh or photo pixels."
+      },
+      spatialSuppression: false,
+      surveyed: {
+        anchor: [
+          4.908303881212726,
+          52.37600837944057
+        ],
+        northOffsetDegrees: 0,
+        source: "Current OSM twelve exact building parts, native east/south; BAG envelope shared with college is intentionally not suppressed."
       }
     },
     {
@@ -6689,6 +6697,162 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free native current BAG house, restrained bell gable and cream timber pui after2022facade photos. Coherent main gable and lower rear extensions informed by AHN5survey; facade details and fine ornament approximate. No photo pixels or third-party mesh."
       }
+    },
+    {
+      id: "singelkerk",
+      name: "Singelkerk",
+      landmarkId: "extract_landmarks_760984505",
+      modelUrl: "./models/singelkerk.glb",
+      suppressOsmIds: [
+        "w267123307",
+        "NL.IMBAG.Pand.0363100012171741",
+        "w267123332",
+        "NL.IMBAG.Pand.0363100012177610"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8883,
+          52.367535
+        ],
+        headingDegrees: 49,
+        lengthMetres: 54,
+        widthMetres: 29
+      },
+      surveyed: {
+        anchor: [
+          4.8883,
+          52.367535
+        ],
+        northOffsetDegrees: 0,
+        source: "Current PDOK BAG church (1639) and service house Singel 452, exact parent identities; native east/south metres. Original surfaces reconstructed from AHN5 2023 semantic roof observations. Singel 454 is separate and retained."
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Singelkerk",
+        author: "Map Recall",
+        sourceUrl: "https://www.doopsgezindamsterdam.nl/historie/singelkerk-4/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free hidden church and domestic Singel 452 frontage, sourced straight cornices, round-head tracery, open forecourt, iron rail and surveyed intersecting hipped roofs. No imported render meshes or photo pixels. Tiny reliefs and roof details simplified; source pack archived privately."
+      }
+    },
+    {
+      id: "sint-agneskerk",
+      name: "Sint-Agneskerk",
+      landmarkId: "extract_landmarks_736359928",
+      modelUrl: "./models/sint-agneskerk.glb",
+      suppressOsmIds: [
+        "w57859521",
+        "w98672987",
+        "NL.IMBAG.Pand.0363100012166358",
+        "NL.IMBAG.Pand.0363100012197426"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8581,
+          52.35028
+        ],
+        headingDegrees: 90,
+        lengthMetres: 30.519442485800624,
+        widthMetres: 61.76237319625609
+      },
+      surveyed: {
+        anchor: [
+          4.8581,
+          52.35028
+        ],
+        northOffsetDegrees: 0,
+        source: "Current PDOK BAG polygons; authoring aligned 66.1deg local-to-east/south rotation, geometry baked into east/south metres"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Sint-Agneskerk",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/505910",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original native-scale texture-free geometry using current BAG plan, researched neo-Romanesque basilica and detached open campanile. Pastorie and neighboring school preserved; no photo pixels or downloaded meshes."
+      }
+    },
+    {
+      id: "petruskerk",
+      name: "Petruskerk",
+      landmarkId: "extract_landmarks_800494636",
+      modelUrl: "./models/petruskerk.glb",
+      suppressOsmIds: [
+        "w8891046",
+        "NL.IMBAG.Pand.0363100012163298"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.846546,
+          52.386716
+        ],
+        headingDegrees: 90,
+        lengthMetres: 29,
+        widthMetres: 14.3
+      },
+      surveyed: {
+        anchor: [
+          4.846546,
+          52.386716
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG native shape; geometry baked east/south metres"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Petruskerk",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/6775",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free geometry from native BAG footprint, operator facade photographs and roof survey. Separate houses, tomb parents and open churchyard preserved."
+      }
+    },
+    {
+      id: "boomkerk",
+      name: "Boomkerk",
+      landmarkId: "extract_landmarks_746878126",
+      modelUrl: "./models/boomkerk.glb",
+      suppressOsmIds: [
+        "w276234088",
+        "NL.IMBAG.Pand.0363100012119680"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.850806,
+          52.383285
+        ],
+        headingDegrees: 90,
+        lengthMetres: 52,
+        widthMetres: 29
+      },
+      surveyed: {
+        anchor: [
+          4.850806,
+          52.383285
+        ],
+        northOffsetDegrees: 0,
+        source: "Current BAG native shape; geometry baked east/south metres"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      attribution: {
+        title: "Boomkerk",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native BAG church reconstruction; separate presbytery and school retained. Roof heights from AHN5/3DBAG, architectural detail from RCE and reference photographs."
+      }
     }
   ];
 
@@ -9723,6 +9887,87 @@ Map source: ${osmUrl(places[i][0])}`);
       ],
       website: "https://www.multatuli-museum.nl/",
       identityNotes: "Keep existing genuine museum destination; both museum and residence belong to same Pand, no duplicate residential POI."
+    },
+    {
+      modelId: "singelkerk",
+      landmarkId: "extract_landmarks_760984505",
+      name: "Singelkerk",
+      description: "The Singelkerk is a Mennonite hidden church between the Singel and Herengracht. In 1639 a larger church replaced an earlier wooden meeting place on the back lot. Its domestic canal frontage conceals a hall with double galleries on Tuscan columns; the organ case dates from 1777. The Herengracht side was rebuilt around 1840, giving the church its pale facade and open forecourt behind an iron fence. The rebus stone on Singel 452 recalls the reunion of Mennonite congregations in 1801.",
+      sourceUrl: "https://www.doopsgezindamsterdam.nl/historie/singelkerk-4/",
+      additionalSources: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/5402",
+        "https://www.doopsgezindamsterdam.nl/locaties/"
+      ],
+      destinationOverride: {
+        center: [
+          52.36770787,
+          4.88862596
+        ],
+        reason: "Official BAG address point for actual Singel 452; old extract point incorrectly lies on neighboring Singel 454.",
+        sourceUrl: "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Singel%20452%20Amsterdam&fq=type:adres&rows=3"
+      }
+    },
+    {
+      landmarkId: "extract_landmarks_736359928",
+      name: "Sint-Agneskerk",
+      lat: 52.350116,
+      lng: 4.857814,
+      description: "Jan Stuyt designed this neo-Romanesque basilica as a free interpretation of Sant\u2019Agnese in Rome. Its nave and aisles opened in 1921; the transept, choir and separate Italian-style campanile followed in 1930\u20131932. The church contains an unusually rich collection of twentieth-century religious art, including Joep Nicolas\u2019s opaline glass mosaic in the apse.",
+      funFact: "The freestanding campanile and early-Christian basilica plan recall Italian churches. Inside, the apse mosaic uses opaline glass backed with a shining metal layer.",
+      sourceUrls: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/505910",
+        "https://agneskerk.nl/contact-route/"
+      ],
+      wikipediaUrl: "https://nl.wikipedia.org/wiki/Sint-Agneskerk_(Amsterdam)",
+      modelId: "sint-agneskerk",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/505910"
+    },
+    {
+      name: "Petruskerk",
+      description: "The old village church of Sloterdijk has a late-medieval tower inside a nave rebuilt in 1664. Its monumental tombs occupy the spaces between heavy outer buttresses, preserving the churchyard as a remarkable open-air extension of the church.",
+      funFact: "Vincent van Gogh\u2019s grandparents married here in 1811. The restored church now hosts weddings and community events among Sloterdijk\u2019s modern offices.",
+      sourceUrls: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/6775",
+        "https://www.oudsloterdijk.nl/"
+      ],
+      wikipediaUrl: "https://nl.wikipedia.org/wiki/Petruskerk_(Sloterdijk)",
+      landmarkId: "extract_landmarks_800494636",
+      lat: 52.386718,
+      lng: 4.846343,
+      modelId: "petruskerk",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/6775",
+      center: [
+        52.386718,
+        4.846343
+      ]
+    },
+    {
+      name: "Boomkerk",
+      landmarkId: "extract_landmarks_746878126",
+      description: "The neo-Romanesque Church of St Francis of Assisi was designed by P.J. Bekkers in 1910 and completed in 1911. Its Latin-cross basilica, wheel window and three arched portals lead to a tall corner tower beside Van Gentstraat.",
+      funFact: "De Boom replaced a concealed Catholic church in the Kalverstraat dating from 1730. Its two old facade stones, paintings, altars and 1774 Hilgers organ were carried into the new church.",
+      sourceUrls: [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085",
+        "https://www.rkamsterdamwest.nl/locaties/de-boom"
+      ],
+      wikipediaUrl: "https://nl.wikipedia.org/wiki/De_Boom_(Amsterdam)",
+      lat: 52.3830729,
+      lng: 4.8505888,
+      entranceSource: "RCE identifies SW three-portal entrance; point derived just outside surveyed front wall toward Admiraal de Ruijterweg",
+      modelId: "boomkerk",
+      sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085",
+      center: [
+        52.3830729,
+        4.8505888
+      ],
+      destinationOverride: {
+        center: [
+          52.3830729,
+          4.8505888
+        ],
+        reason: "RCE identifies SW three-portal entrance; point derived just outside surveyed front wall toward Admiraal de Ruijterweg",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/529085"
+      }
     }
   ];
 
@@ -9743,8 +9988,8 @@ Map source: ${osmUrl(places[i][0])}`);
           ...existing,
           id,
           name: existing?.name || fallback?.name || model.name,
-          // Large transport complexes can use a surveyed public entrance.
-          center: existing?.center ?? fallback?.center ?? [anchor[1], anchor[0]],
+          // Explicit sourced corrections fix mislabeled neighbors or use a public entrance.
+          center: fallback?.destinationOverride?.center ?? existing?.center ?? fallback?.center ?? [anchor[1], anchor[0]],
           type: existing?.type || "landmark",
           funFact: existing?.funFact || (!existing?.wikipediaExtract ? fallback?.description : void 0),
           sourceUrl: existing?.sourceUrl || fallback?.sourceUrl || model.attribution.sourceUrl,
