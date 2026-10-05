@@ -266,6 +266,7 @@ export class ThreeBuildings {
   private requestedLook: BuildingLook;
   private readonly materials = new Map<BuildingLook, any>();
   private sourceGroups = new Map<string, Feature[]>();
+  private contextGroups = new Map<string, Feature[]>();
   private textureSets = new Map<BuildingLook, Promise<{ colour: any; mask: any }>>();
   private lookToken = 0;
   private appearanceToken = 0;
@@ -276,7 +277,7 @@ export class ThreeBuildings {
   private worker: Worker | null | undefined;
   private readonly gens = new Map<string, number>();
   private readonly inflight = new Map<string, Feature[]>();
-  private readonly inflightOptions = new Map<string, { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; appearanceRevision: string }>();
+  private readonly inflightOptions = new Map<string, { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string }>();
   private boatTiles = new Map<string, Houseboat[]>();
   private boatIds: ReadonlySet<string> = new Set();
   private boats: readonly Houseboat[] = [];
@@ -316,7 +317,7 @@ export class ThreeBuildings {
         const installedLook = chunk.mesh.userData.installedLook as BuildingLook | undefined;
         if (!installedLook) continue;
         const rebuilt = key === KIT_KEY ? this.buildKits(chunk.source, installedLook)
-          : buildFeatureChunk(chunk.source, installedLook, chunkMode(key), chunk.mesh.userData.installedStreets, chunk.mesh.userData.installedProfiles ?? []);
+          : buildFeatureChunk(chunk.source, installedLook, chunkMode(key), chunk.mesh.userData.installedStreets, chunk.mesh.userData.installedProfiles ?? [], chunk.mesh.userData.installedContextFeatures ?? []);
         if (rebuilt.vertexCount !== chunk.mesh.geometry.getAttribute('position').count
           || rebuilt.ranges.length !== chunk.ranges.size
           || rebuilt.ranges.some(range => {
@@ -480,9 +481,12 @@ export class ThreeBuildings {
     this.sourceGroups = groups;
     const same = (a: readonly Feature[] | undefined, b: readonly Feature[]) => !!a && a.length === b.length && a.every((f, i) => f === b[i]);
     for (const key of [...this.chunks.keys(), ...this.inflight.keys()]) if (!groups.has(key)) { this.dropChunk(key); this.inflight.delete(key); this.inflightOptions.delete(key); this.gens.set(key, (this.gens.get(key) ?? 0) + 1); }
+    for(const key of this.contextGroups.keys()) if(!groups.has(key)) this.contextGroups.delete(key);
     for (const [key, list] of groups) {
+      const context=key===KIT_KEY||key.startsWith(BOAT_PREFIX)?[]:this.contextFor(list),previousContext=this.contextGroups.get(key);
+      this.contextGroups.set(key,context);
       const flying = this.inflight.get(key);
-      if (flying ? same(flying, list) : same(this.chunks.get(key)?.source, list)) continue;
+      if (same(previousContext,context) && (flying ? same(flying, list) : same(this.chunks.get(key)?.source, list))) continue;
       this.pending.push(() => this.rebuild(key, list));
     }
     this.pump();
@@ -658,6 +662,28 @@ export class ThreeBuildings {
     return !!latest && latest.length === source.length && latest.every((f, i) => f === source[i]);
   }
 
+  private readonly footprintBounds = new WeakMap<Feature, number[]>();
+  private boundsFor(f:Feature):number[]{
+    let box=this.footprintBounds.get(f);if(box)return box;
+    const points=asPolygons(f.geometry).flat(2);
+    box=[Infinity,Infinity,-Infinity,-Infinity];
+    for(const [x,y] of points){box[0]=Math.min(box[0],x);box[1]=Math.min(box[1],y);box[2]=Math.max(box[2],x);box[3]=Math.max(box[3],y);}
+    this.footprintBounds.set(f,box);return box;
+  }
+  // Include overlapping footprints in adjacent detail/tile batches as context,
+  // without drawing them twice. Picking retains the same installed context.
+  private contextFor(source:readonly Feature[]):Feature[]{
+    const ids=new Set(source.map(f=>String(f.properties.id))),boxes=source.map(f=>this.boundsFor(f));
+    const box=[Infinity,Infinity,-Infinity,-Infinity];
+    for(const b of boxes){box[0]=Math.min(box[0],b[0]);box[1]=Math.min(box[1],b[1]);box[2]=Math.max(box[2],b[2]);box[3]=Math.max(box[3],b[3]);}
+    const pad=.00000005;
+    return this.lastFeatures.filter(f=>{
+      const id=String(f.properties.id);if(ids.has(id)||KIT_HIDE_SET.has(id)||this.boatIds.has(id))return false;
+      const b=this.boundsFor(f);
+      if(b[2]<box[0]-pad||b[0]>box[2]+pad||b[3]<box[1]-pad||b[1]>box[3]+pad)return false;
+      return boxes.some(o=>b[2]>=o[0]-pad&&b[0]<=o[2]+pad&&b[3]>=o[1]-pad&&b[1]<=o[3]+pad);
+    });
+  }
   private rebuild(key: string, source: Feature[]): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     if (key.startsWith(BOAT_PREFIX)) {
@@ -671,14 +697,14 @@ export class ThreeBuildings {
     if (worker) {
       // Off the main thread; a reply for an older generation (the tile changed again, or the look) is dropped.
       this.inflight.set(key, source);
-      const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, appearanceRevision: this.appearanceRevision };
+      const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision };
       this.inflightOptions.set(key, options);
       worker.postMessage({ key, gen, ...options, features: source, mode: chunkMode(key) });
       return;
     }
     const t0 = performance.now();
-    const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, appearanceRevision: this.appearanceRevision };
-    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, options.look, chunkMode(key), options.streets, options.profiles);
+    const options = { look: this.look, streets: this.streetsFor(source), profiles: this.appearanceProfiles, contextFeatures: this.contextGroups.get(key) ?? this.contextFor(source), appearanceRevision: this.appearanceRevision };
+    const chunk = key === KIT_KEY ? this.buildKits(source) : buildFeatureChunk(source, options.look, chunkMode(key), options.streets, options.profiles, options.contextFeatures);
     this.install(key, source, chunk, performance.now() - t0, options);
   }
 
@@ -713,9 +739,11 @@ export class ThreeBuildings {
     return this.worker;
   }
 
-  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; appearanceRevision: string }): void {
+  private install(key: string, source: Feature[], chunk: Chunk, buildMs: number, options?: { look: BuildingLook; streets?: Float32Array; profiles: readonly StreetAppearanceProfile[]; contextFeatures?: readonly Feature[]; appearanceRevision: string }): void {
     if (!this.THREE || this.look !== this.requestedLook || !this.currentSource(key, source)) return;
     if (options && (options.look !== this.look || options.appearanceRevision !== this.appearanceRevision)) return;
+    const context=this.contextGroups.get(key);
+    if(options?.contextFeatures && context && (context.length!==options.contextFeatures.length || context.some((f,i)=>f!==options.contextFeatures![i]))) return;
     const t0 = performance.now() - buildMs;
     this.dropChunk(key);
     if (!chunk.vertexCount) { this.chunks.set(key, { source, mesh: null, info: infoOf(chunk), ranges: new Map() }); return; }
@@ -740,6 +768,7 @@ export class ThreeBuildings {
     mesh.userData ??= {};
     mesh.userData.installedLook = options?.look ?? this.look;
     mesh.userData.installedStreets = options?.streets;
+    mesh.userData.installedContextFeatures = options?.contextFeatures;
     mesh.userData.installedProfiles = options?.profiles;
     mesh.userData.appearanceRevision = options?.appearanceRevision;
     mesh.frustumCulled = false;

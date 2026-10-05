@@ -5,12 +5,12 @@ import { buildFeatureChunk, type BuildingLook, type Feature } from './threeBuild
 
 import type { StreetAppearanceProfile } from './streetAppearance.js';
 
-type Job = { key: string; gen: number; look: BuildingLook; features: Feature[]; mode?: 'walls' | 'extras' | 'coarse'; streets?: Float32Array; profiles?: StreetAppearanceProfile[]; appearanceRevision?: string };
+type Job = { key: string; gen: number; look: BuildingLook; features: Feature[]; contextFeatures?: Feature[]; mode?: 'walls' | 'extras' | 'coarse'; streets?: Float32Array; profiles?: StreetAppearanceProfile[]; appearanceRevision?: string };
 
 self.onmessage = (event: MessageEvent<Job>) => {
-  const { key, gen, look, features, mode, streets, profiles, appearanceRevision } = event.data;
+  const { key, gen, look, features, contextFeatures, mode, streets, profiles, appearanceRevision } = event.data;
   const t0 = performance.now();
-  const chunk = buildFeatureChunk(features, look, mode ?? 'walls', streets, profiles);
+  const chunk = buildFeatureChunk(features, look, mode ?? 'walls', streets, profiles, contextFeatures);
   const buffers = [chunk.positions, chunk.uvs, chunk.layers, chunk.tints, chunk.accents, chunk.indices].map(a => a.buffer as ArrayBuffer);
   (self as unknown as Worker).postMessage({ key, gen, appearanceRevision, chunk, ms: performance.now() - t0 }, buffers);
 };

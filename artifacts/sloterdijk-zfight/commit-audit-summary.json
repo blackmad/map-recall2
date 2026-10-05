@@ -1,0 +1,52 @@
+{
+  "scope": "Generated ordinary building meshes; excludes custom GLBs and separate kit meshes. Plane grouping may miss near-coplanar planes on quantization boundaries.",
+  "tiles": 295,
+  "conflicts": 1,
+  "remaining": [
+    {
+      "tile": "8408/5384.geojson.gz",
+      "ids": [
+        "w1391423890",
+        "w1391423890"
+      ],
+      "kind": "horizontal",
+      "areaM2": 0.011070817243307829,
+      "trianglePairs": 1
+    }
+  ],
+  "visualEvidence": [
+    {
+      "path": "artifacts/sloterdijk-zfight/after.png",
+      "sha256": "358c737d14acac136b2513b3e935f6c2dca493dbbd52a51c5ade3f5e0f4fee1a"
+    },
+    {
+      "path": "artifacts/sloterdijk-zfight/pan-desktop-105.png",
+      "sha256": "2c069c59d3877349ccfac1b3800af8d024a7bf5f636a2b64577a83c1b24225a4"
+    },
+    {
+      "path": "artifacts/sloterdijk-zfight/after-touch.png",
+      "sha256": "0c849d91a9e7a01927ac4e0fc02258fb51d5f90d0cd3e428f4be0c81702a134e"
+    },
+    {
+      "path": "artifacts/sloterdijk-zfight/pan-touch-105.png",
+      "sha256": "38bfd0a0049363667a8fb84e5592c47e858e4c787194ac1c76742a143b83921e"
+    },
+    {
+      "path": "artifacts/sloterdijk-zfight/centraal-after.png",
+      "sha256": "53121789b1565066b310ffbbd56753e44f199a324ef406ab42f93f53a22f452c"
+    },
+    {
+      "path": "artifacts/sloterdijk-zfight/centraal-pan-60.png",
+      "sha256": "70516217dd8a76f31bc1218c155c6de915b1a04f917741384e46c9688d8b434a"
+    },
+    {
+      "path": "artifacts/sloterdijk-zfight/kleur-co-after.png",
+      "sha256": "c75cd262027f92cf3cecf4e7da69814f1f78f00b76604a6c0d8f948a83fb4939"
+    },
+    {
+      "path": "artifacts/sloterdijk-zfight/kleur-co-pan-60.png",
+      "sha256": "a5153147c73a993e594dfbe0c9129410e20a9ed1e9d0cfda581d948d3aeb1d1a"
+    }
+  ],
+  "gamePageErrors": []
+}

@@ -125,7 +125,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
 
 /** A chunk for a group of streamed features in one look. */
 /** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
-export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = []): Chunk {
+export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = [], contextFeatures: readonly Feature[] = []): Chunk {
   const garden = features.filter(isAllotmentHouse);
   const chunk = buildChunk(features.filter(f => !isAllotmentHouse(f)).map(f => {
     const visualRoof = mode !== 'coarse' && profiles.length ? sourceVisualRoof(f, profiles) : undefined;
@@ -148,7 +148,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       building.streetAppearance = { profiles: localProfiles, look, sourceHeightM: Number(f.properties.height) || building.heightM, year: p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear), mappedWallHex, shopfront: shopfrontOf(p) };
     }
     return building;
-  }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets);
+  }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets, contextFeatures.map(f=>{const b=meshBuildingFor(f,look,mode==='coarse');if(b&&mode==='coarse'){b.heightM=Number(f.properties.height)||b.heightM;b.roof=undefined;}return b;}).filter((b):b is MeshBuilding=>!!b));
   if (!garden.length || mode === 'extras') return chunk;
   const flatLayer = (cellSetOf(look) === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT) + 3;
   return appendAllotmentHouses(chunk, garden, ORIGIN, flatLayer, mode === 'coarse');
