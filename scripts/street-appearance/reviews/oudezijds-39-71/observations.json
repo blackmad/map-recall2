@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "proposalId": "oudezijds-voorburgwal-east-39-71-discovery",
+  "sourceManifest": "artifacts/street-appearance/register-transition/next-canal-source/manifest.json",
+  "reviewer": "rhythm_register_evidence agent visual review",
+  "status": "primary source-only observations; no runtime recipes or visual acceptance",
+  "reviewScope": "Six newly acquired primary crops, central half and immediate primary neighbors only. Full original equirectangular panoramas were archived but not visually inspected. Heldout samples and content were neither requested nor inferred. No image-to-Pand registration.",
+  "cameraLimit": "Near-side perspective at110° FOV,pitch35° produces strong vertical perspective and bright sky. Ratios/colors are qualitative observations, not facade measurements.",
+  "criticalRhythms": [
+    {
+      "id": "narrow-window-groups",
+      "claim": "Closely packed narrow masonry fronts read as repeated two- and three-column groups of tall separate windows. Broad ground glazing does not turn the upper floors into ribbon glazing. Upper/attic openings tend to shorten while the ground floor can be markedly taller.",
+      "sources": [
+        {
+          "id": "cornice-upper",
+          "panoramaId": "recording_2025-06-30_05-16-46_01782",
+          "captureDate": "2025-06-30T06:09:23Z",
+          "cropSha256": "7d3cac2ee73745810b32e17896f71a20651bfc81c561426d697fe587c26f789d",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg"
+        },
+        {
+          "id": "neck-middle",
+          "panoramaId": "recording_2025-06-30_05-16-46_01774",
+          "captureDate": "2025-06-30T06:09:08Z",
+          "cropSha256": "eedb334f9ea370e51e36ce064d930b6ca0b0076f3d4e564fc38e39fb04009667",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg"
+        },
+        {
+          "id": "upper-unmatched",
+          "panoramaId": "recording_2025-06-30_05-16-46_01777",
+          "captureDate": "2025-06-30T06:09:13Z",
+          "cropSha256": "f25d7431ddc340685ee0dbae829aea531d4fdfb93eaf714179b7867bd6ba8526",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg"
+        },
+        {
+          "id": "late-year-neck",
+          "panoramaId": "recording_2025-06-30_05-16-46_01771",
+          "captureDate": "2025-06-30T06:09:02Z",
+          "cropSha256": "e99d6867cec84133026278237d03d32a087e1eb62ecb59e6ad3492a5d10d35cb",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg"
+        },
+        {
+          "id": "lower-unmatched",
+          "panoramaId": "recording_2025-06-30_05-16-46_01767",
+          "captureDate": "2025-06-30T06:08:55Z",
+          "cropSha256": "37fdabaac932ea4fceef484eb38817b74c0df422c94d20b854df98dccd332060",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/lower-unmatched.jpg"
+        }
+      ],
+      "confidence": 0.9,
+      "generatorImplication": "Preserve surveyed frontage widths and per-front two/three-bay cadence; ground and upper groups need distinct proportions."
+    },
+    {
+      "id": "dark-masonry-pale-trim",
+      "claim": "Dark brown/charcoal brick dominates these current samples, with bright cream/white window surrounds, cornices and ground door surrounds. Some side fronts use tan lintel/sill bands. One pale rendered front has dark frame surrounds, so white trim and dark masonry are a common combination rather than a universal palette.",
+      "sources": [
+        {
+          "id": "cornice-upper",
+          "panoramaId": "recording_2025-06-30_05-16-46_01782",
+          "captureDate": "2025-06-30T06:09:23Z",
+          "cropSha256": "7d3cac2ee73745810b32e17896f71a20651bfc81c561426d697fe587c26f789d",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg"
+        },
+        {
+          "id": "upper-unmatched",
+          "panoramaId": "recording_2025-06-30_05-16-46_01777",
+          "captureDate": "2025-06-30T06:09:13Z",
+          "cropSha256": "f25d7431ddc340685ee0dbae829aea531d4fdfb93eaf714179b7867bd6ba8526",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg"
+        },
+        {
+          "id": "late-year-neck",
+          "panoramaId": "recording_2025-06-30_05-16-46_01771",
+          "captureDate": "2025-06-30T06:09:02Z",
+          "cropSha256": "e99d6867cec84133026278237d03d32a087e1eb62ecb59e6ad3492a5d10d35cb",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg"
+        },
+        {
+          "id": "bell-lower",
+          "panoramaId": "recording_2025-06-30_05-16-46_01766",
+          "captureDate": "2025-06-30T06:08:54Z",
+          "cropSha256": "c20b6a189c200aa4f5fe68b6cb9c2be804a90accc345b5dbab7cfa09a415adb3",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg"
+        }
+      ],
+      "confidence": 0.88,
+      "generatorImplication": "Use joint material/trim combinations; preserve pale rendered exception and banded brick exceptions. Do not sample blue reflections as facade color."
+    },
+    {
+      "id": "crown-mixture-and-oculi",
+      "claim": "Flat projecting cornices coexist with narrow raised neck fronts and a shaped bell-like crest. Paired round/oval pale-trimmed crown openings are visibly present in bell-lower. Neck-middle and late-year-neck show narrowed upper silhouettes alongside plain cornices. White crown accents and hoisting beams contribute to the row silhouette.",
+      "sources": [
+        {
+          "id": "cornice-upper",
+          "panoramaId": "recording_2025-06-30_05-16-46_01782",
+          "captureDate": "2025-06-30T06:09:23Z",
+          "cropSha256": "7d3cac2ee73745810b32e17896f71a20651bfc81c561426d697fe587c26f789d",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg"
+        },
+        {
+          "id": "neck-middle",
+          "panoramaId": "recording_2025-06-30_05-16-46_01774",
+          "captureDate": "2025-06-30T06:09:08Z",
+          "cropSha256": "eedb334f9ea370e51e36ce064d930b6ca0b0076f3d4e564fc38e39fb04009667",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg"
+        },
+        {
+          "id": "late-year-neck",
+          "panoramaId": "recording_2025-06-30_05-16-46_01771",
+          "captureDate": "2025-06-30T06:09:02Z",
+          "cropSha256": "e99d6867cec84133026278237d03d32a087e1eb62ecb59e6ad3492a5d10d35cb",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg"
+        },
+        {
+          "id": "bell-lower",
+          "panoramaId": "recording_2025-06-30_05-16-46_01766",
+          "captureDate": "2025-06-30T06:08:54Z",
+          "cropSha256": "c20b6a189c200aa4f5fe68b6cb9c2be804a90accc345b5dbab7cfa09a415adb3",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg"
+        }
+      ],
+      "confidence": 0.92,
+      "registerConnection": "Explicit archived register assertions supply cornice/neck/bell and paired oeils-de-boeuf questions; these photographs corroborate those families somewhere in the sampled row without exact ID registration.",
+      "generatorImplication": "Generic attic windows cannot substitute for visibly paired oculi. Maintain crown family mixture instead of a homogeneous neck row."
+    },
+    {
+      "id": "ground-stoops-and-large-openings",
+      "claim": "Ground floors alternate between tall individual sash-like glazing with side entrances, pale door surrounds, raised stoops with iron handrails, and broader commercial glazing. These differ from the regular smaller upper rows and are visible contributors to canal frontage rhythm.",
+      "sources": [
+        {
+          "id": "neck-middle",
+          "panoramaId": "recording_2025-06-30_05-16-46_01774",
+          "captureDate": "2025-06-30T06:09:08Z",
+          "cropSha256": "eedb334f9ea370e51e36ce064d930b6ca0b0076f3d4e564fc38e39fb04009667",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg"
+        },
+        {
+          "id": "upper-unmatched",
+          "panoramaId": "recording_2025-06-30_05-16-46_01777",
+          "captureDate": "2025-06-30T06:09:13Z",
+          "cropSha256": "f25d7431ddc340685ee0dbae829aea531d4fdfb93eaf714179b7867bd6ba8526",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg"
+        },
+        {
+          "id": "late-year-neck",
+          "panoramaId": "recording_2025-06-30_05-16-46_01771",
+          "captureDate": "2025-06-30T06:09:02Z",
+          "cropSha256": "e99d6867cec84133026278237d03d32a087e1eb62ecb59e6ad3492a5d10d35cb",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg"
+        },
+        {
+          "id": "lower-unmatched",
+          "panoramaId": "recording_2025-06-30_05-16-46_01767",
+          "captureDate": "2025-06-30T06:08:55Z",
+          "cropSha256": "37fdabaac932ea4fceef484eb38817b74c0df422c94d20b854df98dccd332060",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/lower-unmatched.jpg"
+        },
+        {
+          "id": "bell-lower",
+          "panoramaId": "recording_2025-06-30_05-16-46_01766",
+          "captureDate": "2025-06-30T06:08:54Z",
+          "cropSha256": "c20b6a189c200aa4f5fe68b6cb9c2be804a90accc345b5dbab7cfa09a415adb3",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg"
+        }
+      ],
+      "confidence": 0.9,
+      "generatorImplication": "Keep ground doors and glazing plus plausible raised-entry assemblies; do not identify buildings with copied shop names."
+    },
+    {
+      "id": "low-balcony-frequency",
+      "claim": "These six sampled central fronts show window boxes, stoop railings and a projecting small ground canopy; no repeating open residential balcony stacks are evident. Window-box supports and entry railings should not be counted as stacked balconies.",
+      "sources": [
+        {
+          "id": "neck-middle",
+          "panoramaId": "recording_2025-06-30_05-16-46_01774",
+          "captureDate": "2025-06-30T06:09:08Z",
+          "cropSha256": "eedb334f9ea370e51e36ce064d930b6ca0b0076f3d4e564fc38e39fb04009667",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg"
+        },
+        {
+          "id": "late-year-neck",
+          "panoramaId": "recording_2025-06-30_05-16-46_01771",
+          "captureDate": "2025-06-30T06:09:02Z",
+          "cropSha256": "e99d6867cec84133026278237d03d32a087e1eb62ecb59e6ad3492a5d10d35cb",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg"
+        },
+        {
+          "id": "lower-unmatched",
+          "panoramaId": "recording_2025-06-30_05-16-46_01767",
+          "captureDate": "2025-06-30T06:08:55Z",
+          "cropSha256": "37fdabaac932ea4fceef484eb38817b74c0df422c94d20b854df98dccd332060",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/lower-unmatched.jpg"
+        },
+        {
+          "id": "bell-lower",
+          "panoramaId": "recording_2025-06-30_05-16-46_01766",
+          "captureDate": "2025-06-30T06:08:54Z",
+          "cropSha256": "c20b6a189c200aa4f5fe68b6cb9c2be804a90accc345b5dbab7cfa09a415adb3",
+          "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg"
+        }
+      ],
+      "confidence": 0.84,
+      "generatorImplication": "Do not transfer the Bethaniën stacked-balcony prior into this new canal row. Frequency remains a sampled-row observation, not a citywide estimate."
+    }
+  ],
+  "modernDateUncertainties": [
+    {
+      "nativeId": "NL.IMBAG.Pand.0363100012177968",
+      "nativeConstructionYear": 1960,
+      "registerQuestion": "Explicit municipal Pand bridge, historic raised carved cornice/crest description at45.",
+      "decision": "Preserve native year; current samples display historic-looking trim/crown cadence around the upper row. No direct photo-ID registration made and no modern visual class justified by year alone."
+    },
+    {
+      "nativeId": "NL.IMBAG.Pand.0363100012177967",
+      "nativeConstructionYear": 1994,
+      "registerQuestion": "Explicit Pand bridge, neck/festoon historical description at61.",
+      "decision": "late-year-neck shows current cornice/neck coexistence and rich pale trim, not a broad ribbon/curtain transition. Exact late-year building identity remains unresolved without registration; preserve native fact."
+    },
+    {
+      "nativeId": "NL.IMBAG.Pand.0363100012172011",
+      "nativeConstructionYear": 1988,
+      "registerQuestion": "No explicit matched source in scoped archive.",
+      "decision": "lower-unmatched shows a brick front with separate upper windows, paired pale ground band and broad ground glazing between historic-looking neighbors. It does not support applying a blanket modern punched/ribbon family from1988; no exact ID mapping or construction-period correction."
+    }
+  ],
+  "sampleVisibility": [
+    {
+      "id": "cornice-upper",
+      "quality": 0.8,
+      "status": "usable for whole-front cadence, trim, windows and crown",
+      "limits": "Strong upward perspective; some peripheral fronts/ground detail cut by frame. Infer only central primary portion; native IDs remain unregistered."
+    },
+    {
+      "id": "neck-middle",
+      "quality": 0.8,
+      "status": "usable for whole-front cadence, trim, windows and crown",
+      "limits": "Strong upward perspective; some peripheral fronts/ground detail cut by frame. Infer only central primary portion; native IDs remain unregistered."
+    },
+    {
+      "id": "bell-lower",
+      "quality": 0.8,
+      "status": "usable for whole-front cadence, trim, windows and crown",
+      "limits": "Strong upward perspective; some peripheral fronts/ground detail cut by frame. Infer only central primary portion; native IDs remain unregistered."
+    },
+    {
+      "id": "upper-unmatched",
+      "quality": 0.8,
+      "status": "usable for whole-front cadence, trim, windows and crown",
+      "limits": "Strong upward perspective; some peripheral fronts/ground detail cut by frame. Infer only central primary portion; native IDs remain unregistered."
+    },
+    {
+      "id": "late-year-neck",
+      "quality": 0.8,
+      "status": "usable for whole-front cadence, trim, windows and crown",
+      "limits": "Strong upward perspective; some peripheral fronts/ground detail cut by frame. Infer only central primary portion; native IDs remain unregistered."
+    },
+    {
+      "id": "lower-unmatched",
+      "quality": 0.8,
+      "status": "usable for whole-front cadence, trim, windows and crown",
+      "limits": "Strong upward perspective; some peripheral fronts/ground detail cut by frame. Infer only central primary portion; native IDs remain unregistered."
+    }
+  ],
+  "missingInventory": [
+    {
+      "item": "heldout photographs",
+      "state": "intentionally untouched; no acquisition or inference",
+      "nextAction": "Separate evaluation worker/root acquisition after candidate freeze; never tune on this content."
+    },
+    {
+      "item": "exact current ownership of late-year facade assertions",
+      "state": "unresolved by this bounded rhythm task",
+      "nextAction": "Keep explicit identities and years unchanged; broader rhythm may use reviewed source-visual appearance without exact photo matching."
+    },
+    {
+      "item": "all20 frontages individually visible",
+      "state": "six fixed crops support row rhythm, not an exhaustive20-building current-face inspection",
+      "nextAction": "Do not claim individual building appearance acceptance or full modern-boundary resolution."
+    },
+    {
+      "item": "game-scene/render/performance evidence",
+      "state": "not run for this unimplemented row",
+      "nextAction": "Required before scoped acceptance."
+    }
+  ],
+  "visualDecision": "Source-backed candidate row may proceed to capability design; no profile selected/implemented/accepted. Paired oculi and mixed ground entrances are explicit capability questions; no modern transfer justified from dates.",
+  "sourceInventory": {
+    "requestedPrimarySamples": 6,
+    "successfulPrimarySamples": 6,
+    "failureCount": 0,
+    "captureDates": [
+      "2025-06-30"
+    ],
+    "heldoutSamplesAcquired": 0,
+    "heldoutSamplesInspected": 0
+  }
+}

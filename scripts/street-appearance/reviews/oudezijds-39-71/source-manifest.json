@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 1,
+  "planFile": "artifacts/street-appearance/register-transition/next-canal-row.json",
+  "planSha256": "91cd6257b05c0a92acdb40df496c30248b49242f07a7b58d81922d29932819e0",
+  "proposalId": "oudezijds-voorburgwal-east-39-71-discovery",
+  "reproduction": "npx tsx scripts/street-appearance/observe-row.ts --row-plan=artifacts/street-appearance/register-transition/next-canal-row.json --output=artifacts/street-appearance/register-transition/next-canal-source",
+  "attribution": "Gemeente Amsterdam panorama CC BY 4.0",
+  "cameraConvention": "World aligned; heading clockwise from north; established perspectiveCrop convention.",
+  "purpose": "Fresh primary-row current-appearance check; register supplies architectural questions, photos establish current palette/opening/transition rhythm.",
+  "heldout": {
+    "role": "untouched; no heldout sample requested or inspected",
+    "id": "oudezijds-east-next-south"
+  },
+  "files": [
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/discovery-1.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.898419997839247,52.37373934901393,4.899696002160753,52.37472665098607&page_size=100",
+      "retrievedAt": "2026-10-05T08:32:03.024Z",
+      "httpStatus": 200,
+      "contentType": "application/hal+json",
+      "sha256": "901075eb3f4222046fc034db118a17eca406d44edff4c719ad40758526cc247a",
+      "kind": "original-panorama-discovery-response",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/discovery-2.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.898419997839247%2C52.37373934901393%2C4.899696002160753%2C52.37472665098607&page=2&page_size=100",
+      "retrievedAt": "2026-10-05T08:32:03.283Z",
+      "httpStatus": 200,
+      "contentType": "application/hal+json",
+      "sha256": "db43d54897524f44b162a1d1a368080ca21164c0f6f0fef49898959ebc7eaaa7",
+      "kind": "original-panorama-discovery-response",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/discovery-3.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.898419997839247%2C52.37373934901393%2C4.899696002160753%2C52.37472665098607&page=3&page_size=100",
+      "retrievedAt": "2026-10-05T08:32:03.481Z",
+      "httpStatus": 200,
+      "contentType": "application/hal+json",
+      "sha256": "938ef898987b4d208081724f0ed68b859f5535472bcfd607a817afd4f5f7e9bd",
+      "kind": "original-panorama-discovery-response",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/discovery-4.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.898419997839247%2C52.37373934901393%2C4.899696002160753%2C52.37472665098607&page=4&page_size=100",
+      "retrievedAt": "2026-10-05T08:32:03.619Z",
+      "httpStatus": 200,
+      "contentType": "application/hal+json",
+      "sha256": "170de7af0e27f70fa33af8623a531636589a041689ea6679038bec6dacb0625c",
+      "kind": "original-panorama-discovery-response",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/discovery-5.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.898419997839247%2C52.37373934901393%2C4.899696002160753%2C52.37472665098607&page=5&page_size=100",
+      "retrievedAt": "2026-10-05T08:32:03.789Z",
+      "httpStatus": 200,
+      "contentType": "application/hal+json",
+      "sha256": "d5fa6c68f0e78e9baf4a985718097715851bb63a236a8a3ece0af302e20565c8",
+      "kind": "original-panorama-discovery-response",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/discovery-6.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.898419997839247%2C52.37373934901393%2C4.899696002160753%2C52.37472665098607&page=6&page_size=100",
+      "retrievedAt": "2026-10-05T08:32:03.935Z",
+      "httpStatus": 200,
+      "contentType": "application/hal+json",
+      "sha256": "64a7311578268179e7775b657270e2cdd3040a5c8dfbf911a8b9a049264ccbb1",
+      "kind": "original-panorama-discovery-response",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/discovery-7.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.898419997839247%2C52.37373934901393%2C4.899696002160753%2C52.37472665098607&page=7&page_size=100",
+      "retrievedAt": "2026-10-05T08:32:04.191Z",
+      "httpStatus": 200,
+      "contentType": "application/hal+json",
+      "sha256": "2c456a6c53c316b048b7be916a6c4f248c4194f6271b274fa97d072e476d7e9a",
+      "kind": "original-panorama-discovery-response",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/discovery-8.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.898419997839247%2C52.37373934901393%2C4.899696002160753%2C52.37472665098607&page=8&page_size=100",
+      "retrievedAt": "2026-10-05T08:32:04.300Z",
+      "httpStatus": 200,
+      "contentType": "application/hal+json",
+      "sha256": "ba89a859c5268d40336ae863af16a3415123a942f824bad3be4ed6cc075bea26",
+      "kind": "original-panorama-discovery-response",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/discovery-9.json",
+      "url": "https://api.data.amsterdam.nl/panorama/panoramas/?bbox=4.898419997839247%2C52.37373934901393%2C4.899696002160753%2C52.37472665098607&page=9&page_size=100",
+      "retrievedAt": "2026-10-05T08:32:04.475Z",
+      "httpStatus": 200,
+      "contentType": "application/hal+json",
+      "sha256": "a90a532e2b0ec16bf1ecf1e3c9e61573537d9bcdc4d5e0662a7e1a0b4d4e2724",
+      "kind": "original-panorama-discovery-response",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01782.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01782/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-05T08:32:05.047Z",
+      "httpStatus": 200,
+      "contentType": "application/octet-stream",
+      "sha256": "075499cb42e4f73c0aa462c127e6103a6544238265f33e8a177af73eefd2ec3e",
+      "kind": "original-downloaded-panorama",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01774.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01774/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-05T08:32:07.492Z",
+      "httpStatus": 200,
+      "contentType": "application/octet-stream",
+      "sha256": "8ad2982b26ca5bb05295cc1b0912c8ef17a9f9fd751880ff3eb227a78a212f52",
+      "kind": "original-downloaded-panorama",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01766.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01766/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-05T08:32:10.048Z",
+      "httpStatus": 200,
+      "contentType": "application/octet-stream",
+      "sha256": "d34add17f8e33112af81e89ebefa6cd5ec8e4af508af96720897bcfdd17f70e4",
+      "kind": "original-downloaded-panorama",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01777.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01777/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-05T08:32:12.874Z",
+      "httpStatus": 200,
+      "contentType": "application/octet-stream",
+      "sha256": "13b93c37d81e4360dc7966aaa607e97f1d167d297a1b05d62a15df2508d3ee58",
+      "kind": "original-downloaded-panorama",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01771.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01771/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-05T08:32:15.663Z",
+      "httpStatus": 200,
+      "contentType": "application/octet-stream",
+      "sha256": "dd7f9675d2d45d20bf8eac49c1e3a86d47082b8ee195313fe559c9f0f73c0c66",
+      "kind": "original-downloaded-panorama",
+      "accessState": "successful original HTTP bytes"
+    },
+    {
+      "file": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01767.jpg",
+      "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01767/equirectangular/panorama_4000.jpg",
+      "retrievedAt": "2026-10-05T08:32:18.142Z",
+      "httpStatus": 200,
+      "contentType": "application/octet-stream",
+      "sha256": "d2452f4771791163ed0faf84214b0dc62df610a9b605f73133d200f4e4611a73",
+      "kind": "original-downloaded-panorama",
+      "accessState": "successful original HTTP bytes"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "cornice-upper",
+      "role": "training-representative",
+      "alongM": 3,
+      "purpose": "Native narrow cornice frontage/window grouping; source address39",
+      "target": [
+        4.899464119944229,
+        52.374578013934105
+      ],
+      "selection": {
+        "radiusM": 12,
+        "newestWithinNearestPlusM": 4,
+        "cameraDistanceM": 4.38373850915444
+      },
+      "panoramaId": "recording_2025-06-30_05-16-46_01782",
+      "captureDate": "2025-06-30T06:09:23Z",
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.899505611273052,
+          52.37460837846921,
+          0
+        ]
+      },
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01782/equirectangular/panorama_4000.jpg",
+      "sourceFile": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01782.jpg",
+      "sourceSha256": "075499cb42e4f73c0aa462c127e6103a6544238265f33e8a177af73eefd2ec3e",
+      "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/cornice-upper.jpg",
+      "cropSha256": "7d3cac2ee73745810b32e17896f71a20651bfc81c561426d697fe587c26f789d",
+      "perspective": {
+        "headingDeg": 125.89300311149361,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "observationState": "unreviewed; central-half row rhythm only; no exact building registration"
+    },
+    {
+      "id": "neck-middle",
+      "role": "training-representative",
+      "alongM": 40,
+      "purpose": "Source neck family plus adjacent source-unmatched fronts; address55",
+      "target": [
+        4.899144932589719,
+        52.374306852454694
+      ],
+      "selection": {
+        "radiusM": 12,
+        "newestWithinNearestPlusM": 4,
+        "cameraDistanceM": 1.2027224253895918
+      },
+      "panoramaId": "recording_2025-06-30_05-16-46_01774",
+      "captureDate": "2025-06-30T06:09:08Z",
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89916202518743,
+          52.37430403234517,
+          0
+        ]
+      },
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01774/equirectangular/panorama_4000.jpg",
+      "sourceFile": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01774.jpg",
+      "sourceSha256": "8ad2982b26ca5bb05295cc1b0912c8ef17a9f9fd751880ff3eb227a78a212f52",
+      "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/neck-middle.jpg",
+      "cropSha256": "eedb334f9ea370e51e36ce064d930b6ca0b0076f3d4e564fc38e39fb04009667",
+      "perspective": {
+        "headingDeg": 125.89300311149361,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "observationState": "unreviewed; central-half row rhythm only; no exact building registration"
+    },
+    {
+      "id": "bell-lower",
+      "role": "training-representative",
+      "alongM": 79,
+      "purpose": "Bell silhouette and two oculi claim; address67",
+      "target": [
+        4.8988084918646955,
+        52.37402103359802
+      ],
+      "selection": {
+        "radiusM": 12,
+        "newestWithinNearestPlusM": 4,
+        "cameraDistanceM": 0.7109498553941064
+      },
+      "panoramaId": "recording_2025-06-30_05-16-46_01766",
+      "captureDate": "2025-06-30T06:08:54Z",
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.898818875655005,
+          52.37402181471671,
+          0
+        ]
+      },
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01766/equirectangular/panorama_4000.jpg",
+      "sourceFile": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01766.jpg",
+      "sourceSha256": "d34add17f8e33112af81e89ebefa6cd5ec8e4af508af96720897bcfdd17f70e4",
+      "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/bell-lower.jpg",
+      "cropSha256": "c20b6a189c200aa4f5fe68b6cb9c2be804a90accc345b5dbab7cfa09a415adb3",
+      "perspective": {
+        "headingDeg": 125.89300311149361,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "observationState": "unreviewed; central-half row rhythm only; no exact building registration"
+    },
+    {
+      "id": "upper-unmatched",
+      "role": "training-transition",
+      "alongM": 27.5,
+      "purpose": "Keep native source-unmatched neighbors between listed fronts; photo-classify ordinary/modern exceptions before profile selection.",
+      "target": [
+        4.899252766155432,
+        52.374398461062604
+      ],
+      "selection": {
+        "radiusM": 12,
+        "newestWithinNearestPlusM": 4,
+        "cameraDistanceM": 3.6190223643125234
+      },
+      "panoramaId": "recording_2025-06-30_05-16-46_01777",
+      "captureDate": "2025-06-30T06:09:13Z",
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.899295002461694,
+          52.374418400612505,
+          0
+        ]
+      },
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01777/equirectangular/panorama_4000.jpg",
+      "sourceFile": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01777.jpg",
+      "sourceSha256": "13b93c37d81e4360dc7966aaa607e97f1d167d297a1b05d62a15df2508d3ee58",
+      "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/upper-unmatched.jpg",
+      "cropSha256": "f25d7431ddc340685ee0dbae829aea531d4fdfb93eaf714179b7867bd6ba8526",
+      "perspective": {
+        "headingDeg": 125.89300311149361,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "observationState": "unreviewed; central-half row rhythm only; no exact building registration"
+    },
+    {
+      "id": "late-year-neck",
+      "role": "training-transition",
+      "alongM": 56,
+      "purpose": "Address61 has native year1994 yet historic neck description: construction-year gate must not establish facade class. Source/geometry disagreement is a review question.",
+      "target": [
+        4.899006905625607,
+        52.37418959343657
+      ],
+      "selection": {
+        "radiusM": 12,
+        "newestWithinNearestPlusM": 4,
+        "cameraDistanceM": 2.64888521259193
+      },
+      "panoramaId": "recording_2025-06-30_05-16-46_01771",
+      "captureDate": "2025-06-30T06:09:02Z",
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.89904249604646,
+          52.37419936317126,
+          0
+        ]
+      },
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01771/equirectangular/panorama_4000.jpg",
+      "sourceFile": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01771.jpg",
+      "sourceSha256": "dd7f9675d2d45d20bf8eac49c1e3a86d47082b8ee195313fe559c9f0f73c0c66",
+      "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/late-year-neck.jpg",
+      "cropSha256": "e99d6867cec84133026278237d03d32a087e1eb62ecb59e6ad3492a5d10d35cb",
+      "perspective": {
+        "headingDeg": 125.89300311149361,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "observationState": "unreviewed; central-half row rhythm only; no exact building registration"
+    },
+    {
+      "id": "lower-unmatched",
+      "role": "training-transition",
+      "alongM": 75,
+      "purpose": "Native …72011 year1988 is source-unmatched beside bell67; test actual transition without guessing modern appearance.",
+      "target": [
+        4.898842998605724,
+        52.37405034835255
+      ],
+      "selection": {
+        "radiusM": 12,
+        "newestWithinNearestPlusM": 4,
+        "cameraDistanceM": 1.5513042193024114
+      },
+      "panoramaId": "recording_2025-06-30_05-16-46_01767",
+      "captureDate": "2025-06-30T06:08:55Z",
+      "camera": {
+        "type": "Point",
+        "coordinates": [
+          4.898863800747932,
+          52.374056126311764,
+          0
+        ]
+      },
+      "sourceUrl": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01767/equirectangular/panorama_4000.jpg",
+      "sourceFile": "artifacts/street-appearance/register-transition/next-canal-source/raw/recording_2025-06-30_05-16-46_01767.jpg",
+      "sourceSha256": "d2452f4771791163ed0faf84214b0dc62df610a9b605f73133d200f4e4611a73",
+      "cropFile": "artifacts/street-appearance/register-transition/next-canal-source/processed/lower-unmatched.jpg",
+      "cropSha256": "37fdabaac932ea4fceef484eb38817b74c0df422c94d20b854df98dccd332060",
+      "perspective": {
+        "headingDeg": 125.89300311149361,
+        "width": 1200,
+        "height": 900,
+        "fovDeg": 110,
+        "pitchDeg": 35
+      },
+      "observationState": "unreviewed; central-half row rhythm only; no exact building registration"
+    }
+  ],
+  "failures": []
+}

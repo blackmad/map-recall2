@@ -27,29 +27,35 @@ let allTargets=[
  {id:'de-wallen-holdout',center:[4.898569,52.37164],profileId:'bethanienstraat-holdout-1'},
 ];
 const sourceManifestPath=opt('source-manifest',null);
+const rowPlanPath=opt('row-plan',null),rowPlan=rowPlanPath?JSON.parse(await fs.readFile(rowPlanPath)):null;
 if(sourceManifestPath){
  const source=JSON.parse(await fs.readFile(sourceManifestPath));
- manifest={images:source.evidence.map(e=>({...e,id:e.id,profileId:'bethanienstraat-holdout-1',heading:e.perspective.headingDeg,file:e.cropFile,perspective:e.perspective}))};
- allTargets=manifest.images.map(e=>({id:e.id,inputId:'de-wallen-holdout',center:[4.898569,52.37164],profileId:e.profileId,referenceId:e.id,retreatM:0}));
+ if(rowPlan&&source.planSha256!==crypto.createHash('sha256').update(await fs.readFile(rowPlanPath)).digest('hex'))throw Error('Frozen row plan differs from source acquisition');
+ const profileId=rowPlan?.proposalId??'bethanienstraat-holdout-1';
+ const center=rowPlan?rowPlan.segment[0].map((v,i)=>(v+rowPlan.segment[1][i])/2):[4.898569,52.37164];
+ manifest={images:source.evidence.map(e=>({...e,id:e.id,profileId,heading:e.perspective.headingDeg,file:e.cropFile,perspective:e.perspective}))};
+ allTargets=manifest.images.map(e=>({id:e.id,inputId:rowPlan?.proposalId??'de-wallen-holdout',center,profileId:e.profileId,referenceId:e.id,retreatM:0}));
 }
 const selected=opt('targets','main');const targets=allTargets.filter(t=>selected==='all'||(selected==='main'?!t.id.includes('holdout')&&!t.reviewOnly:selected==='heldouts'?t.id.includes('holdout'):selected.split(',').includes(t.id)));
 const browser=await chromium.launch({headless:true,executablePath:process.env.PW_CHROME??'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
 const errors=[];const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});page.on('pageerror',e=>errors.push(e.message));
 try{
  if(process.argv.includes('--collect')){
-  for(const name of ['three-buildings.bundle.js','three-buildings-worker.bundle.js','vector-map.js'])await page.route(`**/canal-drive/js/${name}*`,route=>route.fulfill({status:200,contentType:'application/javascript',path:`artifacts/street-appearance/final/bundles/${name}`}));
+  for(const name of ['three-buildings.bundle.js','three-buildings-worker.bundle.js','vector-map.js'])await page.route(`**/canal-drive/js/${name}*`,route=>route.fulfill({status:200,contentType:'application/javascript',path:`${opt('collect-bundle-dir','public/canal-drive/js')}/${name}`}));
   await page.route('**/data/street-appearance/profiles.json*',route=>route.fulfill({status:200,contentType:'application/json',body:catalogBytes}));
   await page.goto(`${base}/canal-drive/`);await page.waitForFunction(()=>Boolean(window.canalRecallGame?.ctx));await page.locator('#route-card').waitFor({state:'visible'});
   await page.evaluate(()=>{const g=window.canalRecallGame;const nearest=(lng,lat)=>g.routePois.slice().sort((a,b)=>Math.hypot((a.lng-lng)*.61,a.lat-lat)-Math.hypot((b.lng-lng)*.61,b.lat-lat))[0];g._pickReviewRide=()=>({from:nearest(4.8687372,52.3608814),to:nearest(4.8979412,52.3713544),dueNear:[],alternatives:[]});});
   await page.locator('#route-card').evaluate(f=>f.requestSubmit());await page.waitForFunction(()=>window.canalRecallGame?.vectorMap?.ready,null,{timeout:120000});await page.evaluate(()=>window.canalRecallGame.vectorMap.sync=()=>{});
-  for(const target of targets){
+  for(const target of [...new Map(targets.map(t=>[t.inputId??t.id,t])).values()]){
    await page.evaluate(target=>{const v=window.canalRecallGame.vectorMap;v.map.jumpTo({center:target.center,zoom:19,bearing:0,pitch:50});v._threeBuildings.setDetailCentre(...target.center);v._completeCity.followCamera();},target);
    await page.waitForTimeout(2000);await page.waitForFunction(()=>{const v=window.canalRecallGame.vectorMap,t=v._threeBuildings;return !v._completeCity.status().inFlight&&!t.pending.length&&!t.inflight.size;},null,{timeout:120000});
    const input=await page.evaluate(target=>{const v=window.canalRecallGame.vectorMap,t=v._threeBuildings;
-    const features=v._tileFeatures.filter(f=>{const polys=f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates;return polys.some(p=>p[0].some(([lng,lat])=>Math.hypot((lng-target.center[0])*111320*.61,(lat-target.center[1])*110540)<160));});
+    const resident=[...new Map([...t.sourceGroups.values()].flat().map(f=>[String(f.properties.id),f])).values()];
+    const features=resident.filter(f=>{const polys=f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates;return polys.some(p=>p[0].some(([lng,lat])=>Math.hypot((lng-target.center[0])*111320*.61,(lat-target.center[1])*110540)<160));});
     return {target,features,streets:Array.from(t.streetsFor(features)??[]),profileRevision:t.appearanceRevision,limits:'All surveyed buildings intersecting160m radius retained; no footprint deleted for camera visibility. Curated landmark GLBs, trees and cars are outside this ordinary-building stage.'};
    },target);
-   await fs.writeFile(`${inputsRoot}/${target.id}.json`,JSON.stringify(input)+'\n');console.log(`collected ${target.id}: ${input.features.length} native footprints, ${input.streets.length/4} street segments`);
+   if(!input.features.length||!input.streets.length)throw Error('Collection has no local native footprints or streets; no baseline accepted');
+   await fs.writeFile(`${inputsRoot}/${target.inputId??target.id}.json`,JSON.stringify(input)+'\n');console.log(`collected ${target.inputId??target.id}: ${input.features.length} native footprints, ${input.streets.length/4} street segments`);
   }
   await page.unrouteAll();
  }
@@ -59,7 +65,7 @@ try{
  const built=bundlePath?{outputFiles:[{contents:await fs.readFile(bundlePath),get text(){return this.contents.toString();}}]}:await build({stdin:{contents:entry,resolveDir:process.cwd(),loader:'ts'},bundle:true,write:false,platform:'browser',format:'iife',globalName:'StreetStage'});
  const sourceSha256=crypto.createHash('sha256').update(built.outputFiles[0].contents).digest('hex');await fs.writeFile(`${output}/stage.bundle.js`,built.outputFiles[0].contents);
  const results=[];
- await page.goto(`${base}/canal-drive/`,{waitUntil:'domcontentloaded'});
+ if(!process.argv.includes('--collect'))await page.goto(`${base}/canal-drive/`,{waitUntil:'domcontentloaded'});
  await page.setContent(`<html><head><base href="${base}/canal-drive/"><style>html,body{margin:0;overflow:hidden;background:#b9d9e8}canvas{display:block}</style></head><body></body></html>`);
  await page.addScriptTag({content:built.outputFiles[0].text});
  for(const target of targets){
