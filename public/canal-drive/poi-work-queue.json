@@ -863,6 +863,17 @@
       "status": "queued",
       "requestedOn": "2026-10-05",
       "nextAction": "Resolve brewery building and terrace scope alongside De Gooyer; preserve separate windmill and brewery POI identities and meaningful sourced cards. Verify current operator history and visitor information."
+    },
+    {
+      "id": "centrale-markthal",
+      "task": "Centrale Markthal — Food Center Amsterdam",
+      "priority": "high",
+      "status": "queued",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Resolve the monumental market hall and associated annexes from official records/current surveys and reference photos; author house-style roof, large hall facade and distinctive openings. Preserve separate Food Center buildings, and integrate destination, geographic pin/label and meaningful sourced trivia.",
+      "researchLeads": [
+        "User previously linked jungle_jim Amsterdam Sketchfab collection including a market-hall reference; inspect matching model/rights rather than assuming a licence or copying its mesh."
+      ]
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
