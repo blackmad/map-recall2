@@ -1,0 +1,14 @@
+{
+  "houses": 376,
+  "patches": 3855,
+  "decorated": 2488,
+  "emptyHouseGardens": [
+    "w57865475",
+    "w57867114",
+    "w57867239",
+    "w1068482621"
+  ],
+  "source": "Cached Amsterdam OSM extract; review-data/allotment-houses/garden-obstacles.geojson",
+  "approximate": "Four-metre planting patches near mapped houses; nearest-house ownership is a placement constraint, not a surveyed plot boundary.",
+  "clearance": "Whole patch bounding circle clears mapped paths (1.6m half-width), roads (4m), ditches (2m), water banks (1m), and building walls (0.5m); all corners remain inside the exact park."
+}

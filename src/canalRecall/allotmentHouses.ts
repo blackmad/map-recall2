@@ -3,6 +3,7 @@
  * Geometry lives in the walls chunk at both LODs, so camera pans keep the windows.
  */
 import earcut from 'earcut';
+import { allotmentGardenTriangles } from './allotmentGardens.js';
 import { ExtraSink, hash01, type FlatTri, type V3, type WallFrame } from './facadeExtraCore.js';
 import { fitRect } from './roofMesh.js';
 import type { Chunk } from './threeBuildingMesh.js';
@@ -111,14 +112,20 @@ export function appendAllotmentHouses(chunk: Chunk, features: readonly Feature[]
   for (const f of features) {
     const tris = allotmentHouseTriangles(f, origin, coarse, counts); if (!tris.length) continue;
     const start = positions.length / 3;
-    for (const tri of tris) {
+    const append = (tri: FlatTri) => {
       const colour = rgb(tri.hex), shade = .78 + Math.max(0, tri.n[2]) * .2 + tri.n[0] * .05 - tri.n[1] * .04;
       for (const p of tri.p) {
         indices.push(positions.length / 3); positions.push(...p); uvs.push(0, 0); layers.push(flatLayer);
         tints.push(...colour, Math.round(Math.min(1, shade) * 255)); accents.push(255, 255, 255, 255);
       }
-    }
+    };
+    for (const tri of tris) append(tri);
     ranges.push({ id: String(f.properties.id), start, count: positions.length / 3 - start }); added++;
+    // Separate render ownership swaps gardens with their near/coarse meshes.
+    // No source feature has this internal id, so garden hits never pick a house.
+    const gardenStart = positions.length / 3;
+    for (const tri of allotmentGardenTriangles(String(f.properties.id), origin, coarse)) append(tri);
+    if (positions.length / 3 > gardenStart) ranges.push({ id: `allotment-garden:${String(f.properties.id)}`, start: gardenStart, count: positions.length / 3 - gardenStart });
   }
   return { ...chunk, positions: new Float32Array(positions), uvs: new Float32Array(uvs), layers: new Uint8Array(layers), tints: new Uint8Array(tints), accents: new Uint8Array(accents), indices: new Uint32Array(indices), ranges, vertexCount: positions.length / 3, buildingCount: chunk.buildingCount + added, wallCount: chunk.wallCount + counts.walls, quadCount: chunk.quadCount + counts.quads };
 }
