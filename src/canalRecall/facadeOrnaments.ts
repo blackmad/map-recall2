@@ -172,6 +172,23 @@ export function raisedPlainEntrance(c: ExtraContext, s: ExtraSink): void {
   s.commit();
 }
 
+/** A connected raised base and compact entry stair; all axes come from the painted group. */
+export function canalSideEntrance(c: ExtraContext, s: ExtraSink): void {
+  const d=doorSpan(c);
+  if(!d||c.shopfront||!isStreetWall(c)||c.recipe?.groundAssembly!=='tall-side-entry')return;
+  const a=d.x-d.hw-.08,b=d.x+d.hw+.08,threshold=d.z0;
+  if(a<.02||b>c.f.len-.02||threshold<=c.base+.1)return;
+  s.begin();
+  s.strip(c.f,0,c.f.len,.035,c.base,threshold,STONE);
+  for(let i=0;i<3;i++)s.box(c.f,a,b,.01,.84-i*.24,c.base+(threshold-c.base)*i/3,c.base+(threshold-c.base)*(i+1)/3,STONE);
+  for(const x of [a,b]){
+    const side={x0:c.f.x0+c.f.ux*x,y0:c.f.y0+c.f.uy*x,ux:c.f.nx,uy:c.f.ny,nx:c.f.ux,ny:c.f.uy,len:.84};
+    s.strip(side,.03,.82,.015,threshold+.68,threshold+.72,IRON,.03);
+    for(const out of [.08,.42,.78])s.strip(c.f,x-.015,x+.015,out,c.base+(threshold-c.base)*(1-out/.84),threshold+.70,IRON,.03);
+  }
+  s.commit();
+}
+
 export const ORNAMENT_COMPONENTS: readonly WallComponent[] = [
   { id: 'kroonlijst', styles: CANAL, p: { canal: 0.6, c19: 0.15 }, wide: true, street: true, group: 'crown', build: (c, s, r) => {
     // Deep moulded cornice in white: a bed moulding, the corona and a drip, on consoles at the piers.

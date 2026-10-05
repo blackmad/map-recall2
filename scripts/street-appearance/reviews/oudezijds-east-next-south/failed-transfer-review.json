@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent failure-seeking row_visual_review agent",
+  "catalogRevision": "652a570be3fb0c7c",
+  "scope": "Two untouched next-south source crops first inspected after facade recipe freeze; all eight native renders. Seven admitted frontages in ten-building inventory, without exact source-photo-to-Pand registration. Source-only crown flags/official crown table not transferred.",
+  "method": "Direct view_image inspection of both municipal source photographs and all source-row/front/block/opposite-oblique render views. Compared row relationships, with whole-scene roof defects recorded even where crown-family inference is excluded.",
+  "decision": "failed-heldout-scene; four facade relationships show bounded compatibility, but crown/roof attachment defects prevent transfer publication or broad acceptance",
+  "worstView": {
+    "image": "oudezijds-east-next-south-station-1-photo-source-row.png",
+    "reason": "Several enormous detached triangular crown/roof wings span bright sky; central crown floats with full sky gap above its wall. These destroy whole-row silhouette regardless of withheld crown-family inference."
+  },
+  "criteria": [
+    {
+      "id": "window-column-cadence-and-hierarchy",
+      "decision": "pass-bounded-admitted-fronts",
+      "reason": "Visible admitted narrow dark fronts form separate two/three-column tall window groups with shorter upper openings, rather than ribbon glazing or many skinny panes. Station2 central ordinary source building has a distinctive combined access/broad group not reproduced by stock four-column renderer; no exact photographed identity/admission is asserted and this prevents inventory-wide acceptance.",
+      "evidence": [
+        "oudezijds-east-next-south-station-1-photo-source-row.png",
+        "oudezijds-east-next-south-station-2-photo-block.png"
+      ]
+    },
+    {
+      "id": "joint-material-trim-and-exception",
+      "decision": "pass-bounded-dark-admitted-fronts; exception-transfer-unproven",
+      "reason": "Both source crops support predominantly dark brown/charcoal brick and pale frames. Admitted dark fronts preserve this relationship. Pale/tan ordinary context visible in block/oblique captures does not establish photographed pale exception in this heldout; primary exception should not be generalized from these two crops.",
+      "evidence": [
+        "oudezijds-east-next-south-station-1-photo-block.png",
+        "oudezijds-east-next-south-station-2-photo-opposite-oblique.png"
+      ]
+    },
+    {
+      "id": "ground-opening-and-raised-entry-rhythm",
+      "decision": "pass-bounded-general-relationship; inventory-specific-assemblies-withheld",
+      "reason": "Tall separately framed ground panes and side access leaves remain recognizable, with some connected stoops/rails. Station1 source shows commercial/transom ground groups; source crop does not show complete base, so no claim that every generated raised stoop is individually supported. Station2 distinctive grouped ground surround/central access remains stock ordinary renderer. Bounded generic row relation compatible, whole ten-building matching unaccepted.",
+      "evidence": [
+        "oudezijds-east-next-south-station-1-photo-block.png",
+        "oudezijds-east-next-south-station-1-photo-opposite-oblique.png",
+        "oudezijds-east-next-south-station-2-photo-block.png"
+      ]
+    },
+    {
+      "id": "low-balcony-frequency-and-supported-extras",
+      "decision": "pass-bounded-facade-balcony-frequency",
+      "reason": "Two source crops and admitted render fronts lack repeated residential balcony stacks. Restrained entry rails are compatible. This facade-field pass cannot excuse roof/crown floaters or claim every surrounding prop is supported.",
+      "evidence": [
+        "oudezijds-east-next-south-station-1-photo-block.png",
+        "oudezijds-east-next-south-station-2-photo-opposite-oblique.png"
+      ]
+    },
+    {
+      "id": "crown-family-mixture-and-roof-wall-attachment",
+      "decision": "crown-family-transfer-withheld; roof-wall-attachment-fail",
+      "reason": "Family/crown distribution was explicitly excluded from projected transfer and lacks source register authorization, so no recipe roof-family acceptance or inferred override is made. Independently, existing generated roofs/crowns have huge sky gaps, detached triangular plates and floating wings in station1 and station2 right context. Those are geometry/renderer defects, not allowable crown inference limits. Critical overall street-row silhouette fails.",
+      "evidence": [
+        "oudezijds-east-next-south-station-1-photo-source-row.png",
+        "oudezijds-east-next-south-station-1-photo-front.png",
+        "oudezijds-east-next-south-station-2-photo-source-row.png",
+        "oudezijds-east-next-south-station-2-photo-block.png"
+      ]
+    }
+  ],
+  "affectedTransfer": "No complete next-south transfer acceptance/publication. Four facade fields can retain bounded compatibility evidence without promoting profile status, until renderer attachment failures and full-scene review pass. Do not tune frozen facade fields on this heldout to erase its failure.",
+  "nextAction": "Preserve this failed evaluation. Trace/fix roof wall attachment through a shared generic renderer capability, then freeze a distinct corrected candidate and re-review this already-exposed case as regression, with a new untouched challenge for any further transfer. Crown-family admission still requires independent source/register evidence.",
+  "boundaries": [
+    "No game or performance evidence reviewed.",
+    "No exact source-photo-to-building identity join.",
+    "No whole-neighborhood acceptance.",
+    "Recipe freeze and authorization boundaries supplied by root; reviewer inspected actual images, not test/cycle counts."
+  ]
+}

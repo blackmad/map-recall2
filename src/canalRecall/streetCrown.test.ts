@@ -34,3 +34,26 @@ test('a narrowing step cannot intersect a window and short or incompatible roofs
   assert.equal(streetCrown([face],[front],10,false).length,1);
   assert.deepEqual(streetCrown([face],[],10,true),[face]);
 });
+
+test('paired oculi remain paired, pale framed, contained and front facing after rotation or frontage reversal',()=>{
+  const rectangle:RoofTri[]=[{...face,sourceCrownShape:'bell',p:[[0,0,10],[6,0,10],[6,0,12]]},{...face,sourceCrownShape:'bell',p:[[0,0,10],[6,0,12],[0,0,12]]}];
+  for(const angle of [0,.71,2.1])for(const reverse of [false,true]){
+    const rotate=([x,y,z]:[number,number,number]):[number,number,number]=>[x*Math.cos(angle)-y*Math.sin(angle),x*Math.sin(angle)+y*Math.cos(angle),z];
+    const normal=rotate([0,-1,0]),start=rotate(reverse?[6,0,0]:[0,0,0]),end=rotate(reverse?[0,0,0]:[6,0,0]);
+    const plates=rectangle.map(t=>({...t,p:t.p.map(rotate) as RoofTri['p'],n:normal}));
+    const f:StreetCrownFront={...front,start:[start[0],start[1]],end:[end[0],end[1]],normal:[normal[0],normal[1]],recipe:{...front.recipe,atticWindows:false,crownWindows:'paired-oculi'}};
+    const result=streetCrown(plates,[f],10,true),ovals=result.slice(2);
+    assert.equal(ovals.length,80);assert.equal(ovals.filter(t=>t.hex===front.frameHex).length,40);assert.equal(ovals.filter(t=>t.hex===front.glassHex).length,40);
+    for(const t of ovals){
+      const [a,b,c]=t.p,ab=b.map((v,i)=>v-a[i]),ac=c.map((v,i)=>v-a[i]);
+      const cross=[ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]];
+      assert.ok(cross[0]*normal[0]+cross[1]*normal[1]>0);
+      for(const [x,y,z]of t.p){const along=x*Math.cos(angle)+y*Math.sin(angle);assert.ok(along>.1&&along<5.9&&z>10&&z<12);}
+    }
+  }
+  const plain=streetCrown(rectangle.map(t=>({...t,sourceCrownShape:'cornice'})),[{...front,recipe:{...front.recipe,crownWindows:'paired-oculi'}}],10,true).slice(2);
+  assert.equal(plain.length,12,'other crowns retain two rectangular attic openings');
+  assert.ok(plain.every(t=>t.p.some((p,i)=>p[2]===t.p[(i+1)%3][2])),'all fallback triangles belong to rectangular glazing, never circular fans');
+  const taper={...face,sourceCrownShape:'bell' as const,p:[[0,0,10],[6,0,10],[3,0,11.2]] as RoofTri['p']};
+  assert.equal(streetCrown([taper],[{...front,recipe:{...front.recipe,crownWindows:'paired-oculi'}}],10,true).length,1,'withhold entire pair when shoulder containment fails');
+});

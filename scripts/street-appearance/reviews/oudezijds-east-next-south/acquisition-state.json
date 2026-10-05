@@ -1,0 +1,21 @@
+{
+  "sourceRole": "evaluation-heldout",
+  "accessState": "successful original HTTP source acquisition;2 fixed stations;0 failures",
+  "inspectionState": "No heldout image inspection or appearance inference performed",
+  "planSha256": "47ddcc57ff19e7ffaf4339e26b368ee0344924750bdb6861dc4d5bfc3e7eab90",
+  "manifestSha256": "187f5e22b2b00d27c4859444b3b4b09df01732425a787f2c5c3c237fe0f0d197",
+  "stageInputFile": "artifacts/street-appearance/stage-inputs/oudezijds-east-next-south.json",
+  "stageInputSha256": "3cb77a755a411162395c4f537ca7f4b6356fe9cda3e35596ace9885b3a4af1a1",
+  "freezeAttempt": {
+    "state": "refused-current-tile-drift",
+    "reason": "Original building tile public/data/extracts/amsterdam/building-tiles/14/8413/5383.geojson.gz checksum changed; hashes were not rebased"
+  },
+  "stageRecovery": "Root authorized clone of original430-feature frozen stage input; all10 heldout native identities/footprints/heights exactly matched; original snapshot-derived, not current tile or live scene",
+  "guardChecks": [
+    "Evaluation flag rejects primary plan",
+    "Evaluation plan rejects primary mode",
+    "Compiler rejects evaluation evidence"
+  ],
+  "parentPlanSha256": "91cd6257b05c0a92acdb40df496c30248b49242f07a7b58d81922d29932819e0",
+  "candidateCatalogSha256": "a19d56def4707c1bd79921e31124a6c45f406d5a4774717f827500ee37703c26"
+}

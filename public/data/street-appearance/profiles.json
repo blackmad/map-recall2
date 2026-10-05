@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "revision": "44fb4363499779ec",
+  "revision": "1fba4a85e826205b",
   "profiles": [
     {
       "id": "bethanienstraat-observed-historic-pair",
@@ -364,6 +364,960 @@
           "recipeIndex": 1
         }
       ]
+    },
+    {
+      "id": "oudezijds-voorburgwal-east-39-71-discovery",
+      "streetName": "Oudezijds Voorburgwal",
+      "revision": "675928e54be6217f",
+      "segment": [
+        [
+          4.89949,
+          52.3746
+        ],
+        [
+          4.898626,
+          52.373866
+        ]
+      ],
+      "side": 1,
+      "registerCrowns": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177982",
+          "shape": "cornice",
+          "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6036",
+          "sourceSnapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177981",
+          "shape": "cornice",
+          "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6037",
+          "sourceSnapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177980",
+          "shape": "neck",
+          "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6038",
+          "sourceSnapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177968",
+          "shape": "cornice",
+          "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6039",
+          "sourceSnapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177969",
+          "shape": "cornice",
+          "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6040",
+          "sourceSnapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177971",
+          "shape": "neck",
+          "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6041",
+          "sourceSnapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177967",
+          "shape": "neck",
+          "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6044",
+          "sourceSnapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177966",
+          "shape": "cornice",
+          "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6045",
+          "sourceSnapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012172010",
+          "shape": "bell",
+          "windows": "paired-oculi",
+          "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6046",
+          "sourceSnapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012171846",
+          "shape": "neck",
+          "windows": "paired-oculi",
+          "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/6047",
+          "sourceSnapshotSha256": "5b73fb7b464fa18349803be34e7a838f000ad293835073ff839bed25f1c0d22d"
+        }
+      ],
+      "reachM": 20,
+      "confidence": 0.9,
+      "assemblyM": 8,
+      "status": "reviewed",
+      "visualClass": {
+        "kind": "historic-frontage",
+        "constructionYearPolicy": "source-visual",
+        "sourceEvidenceIds": [
+          "cornice-upper",
+          "neck-middle",
+          "bell-lower",
+          "upper-unmatched",
+          "late-year-neck",
+          "lower-unmatched"
+        ]
+      },
+      "recipes": [
+        {
+          "weight": 3,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 2.5,
+          "frontageMax": 5.499999,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#3c3531",
+            "frameHex": "#e4dfce",
+            "groundWallHex": "#3c3531",
+            "openingGroup": "canal-two",
+            "groundAssembly": "tall-side-entry",
+            "crownShape": "cornice",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 3,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 2.5,
+          "frontageMax": 5.499999,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#554039",
+            "frameHex": "#e4dfce",
+            "groundWallHex": "#554039",
+            "openingGroup": "canal-two",
+            "groundAssembly": "tall-side-entry",
+            "crownShape": "neck",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 2,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 2.5,
+          "frontageMax": 5.499999,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#373638",
+            "frameHex": "#e2dfd2",
+            "groundWallHex": "#373638",
+            "openingGroup": "canal-two",
+            "groundAssembly": "tall-commercial",
+            "crownShape": "neck",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 2,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 2.5,
+          "frontageMax": 5.499999,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#59443a",
+            "frameHex": "#ddd5c4",
+            "groundWallHex": "#59443a",
+            "openingGroup": "canal-two",
+            "groundAssembly": "tall-commercial",
+            "crownShape": "cornice",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 1,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 2.5,
+          "frontageMax": 5.499999,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#dad5c5",
+            "frameHex": "#373734",
+            "groundWallHex": "#dad5c5",
+            "openingGroup": "canal-two",
+            "groundAssembly": "tall-side-entry",
+            "crownShape": "cornice",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 1,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 2.5,
+          "frontageMax": 5.499999,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#393738",
+            "frameHex": "#e4dfce",
+            "groundWallHex": "#393738",
+            "openingGroup": "canal-two",
+            "groundAssembly": "tall-side-entry",
+            "crownShape": "bell",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 3,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 5.5,
+          "frontageMax": 9,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#3c3531",
+            "frameHex": "#e4dfce",
+            "groundWallHex": "#3c3531",
+            "openingGroup": "canal-three",
+            "groundAssembly": "tall-side-entry",
+            "crownShape": "cornice",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 3,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 5.5,
+          "frontageMax": 9,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#554039",
+            "frameHex": "#e4dfce",
+            "groundWallHex": "#554039",
+            "openingGroup": "canal-three",
+            "groundAssembly": "tall-side-entry",
+            "crownShape": "neck",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 2,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 5.5,
+          "frontageMax": 9,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#373638",
+            "frameHex": "#e2dfd2",
+            "groundWallHex": "#373638",
+            "openingGroup": "canal-three",
+            "groundAssembly": "tall-commercial",
+            "crownShape": "neck",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 2,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 5.5,
+          "frontageMax": 9,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#59443a",
+            "frameHex": "#ddd5c4",
+            "groundWallHex": "#59443a",
+            "openingGroup": "canal-three",
+            "groundAssembly": "tall-commercial",
+            "crownShape": "cornice",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 1,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 5.5,
+          "frontageMax": 9,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#dad5c5",
+            "frameHex": "#373734",
+            "groundWallHex": "#dad5c5",
+            "openingGroup": "canal-three",
+            "groundAssembly": "tall-side-entry",
+            "crownShape": "cornice",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        },
+        {
+          "weight": 1,
+          "heightMin": 7,
+          "heightMax": 26,
+          "frontageMin": 5.5,
+          "frontageMax": 9,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#393738",
+            "frameHex": "#e4dfce",
+            "groundWallHex": "#393738",
+            "openingGroup": "canal-three",
+            "groundAssembly": "tall-side-entry",
+            "crownShape": "bell",
+            "crownWindows": "paired-oculi",
+            "crownTrim": true,
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "windowWidth": 0.62,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "none",
+            "paleAccents": false,
+            "sash": "paired-transom",
+            "trimDensity": "restrained",
+            "wallMaterial": "brick",
+            "atticWindows": true,
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1.2,
+            "trim": {
+              "frames": 0.75,
+              "lintels": 0.08,
+              "cornice": 0.8,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "confidence": 0.88
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "cornice-upper",
+          "kind": "municipal-panorama",
+          "captureDate": "2025-06-30T06:09:23Z",
+          "sha256": "7d3cac2ee73745810b32e17896f71a20651bfc81c561426d697fe587c26f789d",
+          "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01782/equirectangular/panorama_4000.jpg",
+          "panoramaId": "recording_2025-06-30_05-16-46_01782",
+          "inference": "agent-visual-review",
+          "quality": 0.9,
+          "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched."
+        },
+        {
+          "id": "neck-middle",
+          "kind": "municipal-panorama",
+          "captureDate": "2025-06-30T06:09:08Z",
+          "sha256": "eedb334f9ea370e51e36ce064d930b6ca0b0076f3d4e564fc38e39fb04009667",
+          "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01774/equirectangular/panorama_4000.jpg",
+          "panoramaId": "recording_2025-06-30_05-16-46_01774",
+          "inference": "agent-visual-review",
+          "quality": 0.9,
+          "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched."
+        },
+        {
+          "id": "bell-lower",
+          "kind": "municipal-panorama",
+          "captureDate": "2025-06-30T06:08:54Z",
+          "sha256": "c20b6a189c200aa4f5fe68b6cb9c2be804a90accc345b5dbab7cfa09a415adb3",
+          "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01766/equirectangular/panorama_4000.jpg",
+          "panoramaId": "recording_2025-06-30_05-16-46_01766",
+          "inference": "agent-visual-review",
+          "quality": 0.9,
+          "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched."
+        },
+        {
+          "id": "upper-unmatched",
+          "kind": "municipal-panorama",
+          "captureDate": "2025-06-30T06:09:13Z",
+          "sha256": "f25d7431ddc340685ee0dbae829aea531d4fdfb93eaf714179b7867bd6ba8526",
+          "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01777/equirectangular/panorama_4000.jpg",
+          "panoramaId": "recording_2025-06-30_05-16-46_01777",
+          "inference": "agent-visual-review",
+          "quality": 0.9,
+          "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched."
+        },
+        {
+          "id": "late-year-neck",
+          "kind": "municipal-panorama",
+          "captureDate": "2025-06-30T06:09:02Z",
+          "sha256": "e99d6867cec84133026278237d03d32a087e1eb62ecb59e6ad3492a5d10d35cb",
+          "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01771/equirectangular/panorama_4000.jpg",
+          "panoramaId": "recording_2025-06-30_05-16-46_01771",
+          "inference": "agent-visual-review",
+          "quality": 0.9,
+          "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched."
+        },
+        {
+          "id": "lower-unmatched",
+          "kind": "municipal-panorama",
+          "captureDate": "2025-06-30T06:08:55Z",
+          "sha256": "37fdabaac932ea4fceef484eb38817b74c0df422c94d20b854df98dccd332060",
+          "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-06-30_05-16-46_01767/equirectangular/panorama_4000.jpg",
+          "panoramaId": "recording_2025-06-30_05-16-46_01767",
+          "inference": "agent-visual-review",
+          "quality": 0.9,
+          "notes": "Current primary-row observation: narrow two/three-column glazing, dark masonry+pale surrounds with pale-front exception, cornice/neck/bell mixture, tall ground glazing/side entries, low balcony frequency. Qualitative joint priors, not measured per-building appearance. Sources archived1b32bd4; heldout untouched."
+        }
+      ],
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012171846",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.898788138963,
+              52.373951383101
+            ],
+            "end": [
+              4.898744861037,
+              52.373914616899
+            ],
+            "widthM": 5.01883
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012171849",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.898829805832,
+              52.37398197625
+            ],
+            "end": [
+              4.898792194168,
+              52.37395002375
+            ],
+            "widthM": 4.375435
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012172010",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.898868060281,
+              52.374010418109
+            ],
+            "end": [
+              4.898832939719,
+              52.373980581891
+            ],
+            "widthM": 4.074206
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012172011",
+          "recipeIndex": 8,
+          "frontage": {
+            "start": [
+              4.898947925644,
+              52.374072922943
+            ],
+            "end": [
+              4.898888074356,
+              52.374022077057
+            ],
+            "widthM": 6.946648
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177966",
+          "recipeIndex": 2,
+          "frontage": {
+            "start": [
+              4.89899096461,
+              52.374105460676
+            ],
+            "end": [
+              4.89895103539,
+              52.374071539324
+            ],
+            "widthM": 4.631829
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177967",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.899061484093,
+              52.374160229542
+            ],
+            "end": [
+              4.899031515907,
+              52.374134770458
+            ],
+            "widthM": 3.474972
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177968",
+          "recipeIndex": 3,
+          "frontage": {
+            "start": [
+              4.89941179666,
+              52.374452645542
+            ],
+            "end": [
+              4.89938320334,
+              52.374428354458
+            ],
+            "widthM": 3.317214
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177969",
+          "recipeIndex": 5,
+          "frontage": {
+            "start": [
+              4.899330892331,
+              52.374374602976
+            ],
+            "end": [
+              4.899307107669,
+              52.374354397024
+            ],
+            "widthM": 2.761165
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177971",
+          "recipeIndex": 3,
+          "frontage": {
+            "start": [
+              4.899233521646,
+              52.374289212834
+            ],
+            "end": [
+              4.899209478354,
+              52.374268787166
+            ],
+            "widthM": 2.788239
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177972",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.89925717793,
+              52.374308920834
+            ],
+            "end": [
+              4.89923382207,
+              52.374289079166
+            ],
+            "widthM": 2.707561
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177975",
+          "recipeIndex": 4,
+          "frontage": {
+            "start": [
+              4.89938631972,
+              52.374426412818
+            ],
+            "end": [
+              4.89934768028,
+              52.374393587182
+            ],
+            "widthM": 4.48453
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177976",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.89930893346,
+              52.374353584676
+            ],
+            "end": [
+              4.89927106654,
+              52.374321415324
+            ],
+            "widthM": 4.392303
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177980",
+          "recipeIndex": 2,
+          "frontage": {
+            "start": [
+              4.899462377838,
+              52.374500386959
+            ],
+            "end": [
+              4.899422622162,
+              52.374466613041
+            ],
+            "widthM": 4.614248
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177981",
+          "recipeIndex": 1,
+          "frontage": {
+            "start": [
+              4.899575822199,
+              52.374504264461
+            ],
+            "end": [
+              4.899533834053,
+              52.374468593975
+            ],
+            "widthM": 4.878185
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177982",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.899540107814,
+              52.374573507101
+            ],
+            "end": [
+              4.899498892186,
+              52.374538492899
+            ],
+            "widthM": 4.781304
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177989",
+          "recipeIndex": 7,
+          "frontage": {
+            "start": [
+              4.899136078019,
+              52.374218300076
+            ],
+            "end": [
+              4.899065921981,
+              52.374158699924
+            ],
+            "widthM": 8.147208
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012177990",
+          "recipeIndex": 6,
+          "frontage": {
+            "start": [
+              4.899193518819,
+              52.374260103951
+            ],
+            "end": [
+              4.899141481181,
+              52.374215896049
+            ],
+            "widthM": 6.046518
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012178397",
+          "recipeIndex": 2,
+          "frontage": {
+            "start": [
+              4.898744165931,
+              52.373914481243
+            ],
+            "end": [
+              4.898701834069,
+              52.373878518757
+            ],
+            "widthM": 4.910981
+          }
+        }
+      ]
     }
   ],
   "streetFrontPaths": [
@@ -409,6 +1363,194 @@
       "highway": "residential",
       "points": [
         [
+          4.899509,
+          52.374721
+        ],
+        [
+          4.899598,
+          52.374698
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898277,
+          52.373969
+        ],
+        [
+          4.898186,
+          52.373933
+        ],
+        [
+          4.898109,
+          52.373896
+        ],
+        [
+          4.897932,
+          52.373746
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.897619,
+          52.373084
+        ],
+        [
+          4.898186,
+          52.373522
+        ],
+        [
+          4.898596,
+          52.373841
+        ],
+        [
+          4.898636,
+          52.373878
+        ],
+        [
+          4.898671,
+          52.373912
+        ],
+        [
+          4.898885,
+          52.374076
+        ],
+        [
+          4.899022,
+          52.374183
+        ],
+        [
+          4.899176,
+          52.374314
+        ],
+        [
+          4.899598,
+          52.374698
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899287,
+          52.374773
+        ],
+        [
+          4.899206,
+          52.374795
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899206,
+          52.374795
+        ],
+        [
+          4.899072,
+          52.374663
+        ],
+        [
+          4.898968,
+          52.37456
+        ],
+        [
+          4.89894,
+          52.374532
+        ],
+        [
+          4.89888,
+          52.374473
+        ],
+        [
+          4.898849,
+          52.374441
+        ],
+        [
+          4.898826,
+          52.374407
+        ],
+        [
+          4.898766,
+          52.374341
+        ],
+        [
+          4.89863,
+          52.374217
+        ],
+        [
+          4.89856,
+          52.37416
+        ],
+        [
+          4.898423,
+          52.374062
+        ],
+        [
+          4.898349,
+          52.374013
+        ],
+        [
+          4.898277,
+          52.373969
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899479,
+          52.375076
+        ],
+        [
+          4.899206,
+          52.374795
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899598,
+          52.374698
+        ],
+        [
+          4.900164,
+          52.375237
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900072,
+          52.374533
+        ],
+        [
+          4.899175,
+          52.37373
+        ],
+        [
+          4.898763,
+          52.373362
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
           4.897716,
           52.372407
         ],
@@ -428,6 +1570,65 @@
         [
           4.897804,
           52.372237
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898957,
+          52.3733
+        ],
+        [
+          4.899405,
+          52.373669
+        ],
+        [
+          4.899977,
+          52.374204
+        ],
+        [
+          4.900117,
+          52.374358
+        ],
+        [
+          4.900245,
+          52.374484
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900449,
+          52.374878
+        ],
+        [
+          4.900072,
+          52.374533
+        ]
+      ]
+    },
+    {
+      "highway": "cycleway",
+      "points": [
+        [
+          4.899206,
+          52.374795
+        ],
+        [
+          4.899164,
+          52.37481
+        ],
+        [
+          4.899155,
+          52.374814
+        ],
+        [
+          4.898357,
+          52.375102
         ]
       ]
     },
@@ -496,6 +1697,167 @@
       ]
     },
     {
+      "highway": "residential",
+      "points": [
+        [
+          4.898636,
+          52.373878
+        ],
+        [
+          4.89856,
+          52.373887
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898636,
+          52.373878
+        ],
+        [
+          4.899175,
+          52.37373
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898636,
+          52.373878
+        ],
+        [
+          4.899175,
+          52.37373
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900072,
+          52.374533
+        ],
+        [
+          4.900115,
+          52.374521
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.89888,
+          52.374473
+        ],
+        [
+          4.898835,
+          52.374491
+        ],
+        [
+          4.898788,
+          52.374509
+        ],
+        [
+          4.898684,
+          52.374566
+        ],
+        [
+          4.89859,
+          52.374607
+        ],
+        [
+          4.898502,
+          52.374629
+        ],
+        [
+          4.898402,
+          52.374647
+        ],
+        [
+          4.898243,
+          52.374665
+        ],
+        [
+          4.89809,
+          52.374675
+        ],
+        [
+          4.897932,
+          52.374679
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898277,
+          52.373969
+        ],
+        [
+          4.898221,
+          52.373991
+        ],
+        [
+          4.898144,
+          52.374001
+        ],
+        [
+          4.898054,
+          52.374006
+        ],
+        [
+          4.897952,
+          52.374006
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.898343,
+          52.373949
+        ],
+        [
+          4.898277,
+          52.373969
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.900253,
+          52.374116
+        ],
+        [
+          4.899977,
+          52.374204
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.900158,
+          52.37348
+        ],
+        [
+          4.899405,
+          52.373669
+        ]
+      ]
+    },
+    {
       "highway": "pedestrian",
       "points": [
         [
@@ -505,6 +1867,312 @@
         [
           4.897804,
           52.372237
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899175,
+          52.37373
+        ],
+        [
+          4.899223,
+          52.373713
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.89934,
+          52.373682
+        ],
+        [
+          4.899405,
+          52.373669
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.899072,
+          52.374663
+        ],
+        [
+          4.899032,
+          52.374676
+        ],
+        [
+          4.898507,
+          52.374843
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899509,
+          52.374721
+        ],
+        [
+          4.899287,
+          52.374773
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.89856,
+          52.373887
+        ],
+        [
+          4.898343,
+          52.373949
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898306,
+          52.373925
+        ],
+        [
+          4.898343,
+          52.373949
+        ],
+        [
+          4.898383,
+          52.373973
+        ],
+        [
+          4.898596,
+          52.373917
+        ],
+        [
+          4.89856,
+          52.373887
+        ],
+        [
+          4.898524,
+          52.373862
+        ],
+        [
+          4.898306,
+          52.373925
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898306,
+          52.373925
+        ],
+        [
+          4.898524,
+          52.373862
+        ],
+        [
+          4.89856,
+          52.373887
+        ],
+        [
+          4.898596,
+          52.373917
+        ],
+        [
+          4.898383,
+          52.373973
+        ],
+        [
+          4.898343,
+          52.373949
+        ],
+        [
+          4.898306,
+          52.373925
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.898343,
+          52.373949
+        ],
+        [
+          4.898277,
+          52.373969
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899223,
+          52.373713
+        ],
+        [
+          4.89934,
+          52.373682
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899351,
+          52.3737
+        ],
+        [
+          4.899322,
+          52.373666
+        ],
+        [
+          4.899206,
+          52.373696
+        ],
+        [
+          4.899247,
+          52.373724
+        ],
+        [
+          4.899351,
+          52.3737
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899206,
+          52.373696
+        ],
+        [
+          4.899322,
+          52.373666
+        ],
+        [
+          4.899351,
+          52.3737
+        ],
+        [
+          4.899247,
+          52.373724
+        ],
+        [
+          4.899206,
+          52.373696
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900213,
+          52.374491
+        ],
+        [
+          4.900115,
+          52.374521
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900179,
+          52.374462
+        ],
+        [
+          4.900097,
+          52.37449
+        ],
+        [
+          4.900153,
+          52.374546
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900097,
+          52.37449
+        ],
+        [
+          4.900179,
+          52.374462
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.900153,
+          52.374546
+        ],
+        [
+          4.900097,
+          52.37449
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899598,
+          52.374698
+        ],
+        [
+          4.899719,
+          52.374656
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899747,
+          52.374647
+        ],
+        [
+          4.900072,
+          52.374533
+        ]
+      ]
+    },
+    {
+      "highway": "residential",
+      "points": [
+        [
+          4.899719,
+          52.374656
+        ],
+        [
+          4.899747,
+          52.374647
         ]
       ]
     },
@@ -544,6 +2212,19 @@
         [
           4.898349,
           52.371269
+        ]
+      ]
+    },
+    {
+      "highway": "pedestrian",
+      "points": [
+        [
+          4.900449,
+          52.374878
+        ],
+        [
+          4.900072,
+          52.374533
         ]
       ]
     }

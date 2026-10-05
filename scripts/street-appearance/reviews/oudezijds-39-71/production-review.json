@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "decision": "pass-scoped-primary-production",
+  "scope": "Observed100m/18fronts only; no south transfer",
+  "sourceArchiveCommits": [
+    "1b32bd4",
+    "a3d5c3c"
+  ],
+  "catalogRevision": "1fba4a85e826205b",
+  "immutableBundles": {
+    "three-buildings.bundle.js": "623762fedd03ffdeefe6c8e60a2751cc5576bc8d106efc66a8ff7bc3b2132ed2",
+    "three-buildings-worker.bundle.js": "210326a5e9a2fbefda3a41b9d6e953fd61317c088c0b09344bfd1b9908e6ef61",
+    "vector-map.js": "1a1b9343b8bdb493a00ba7e9292163aac38e8bc3b2a236762e7497f136754122",
+    "game-route.js": "4a61b7a7e4111176f9d9a0ec6ee4f47f0a961c2a88dd692771ca22a14660accf"
+  },
+  "desktop": {
+    "modes": [
+      {
+        "look": "photo",
+        "detail": true,
+        "mismatches": 0
+      },
+      {
+        "look": "storybook",
+        "detail": true,
+        "mismatches": 0
+      },
+      {
+        "look": "cartoon",
+        "detail": true,
+        "mismatches": 0
+      },
+      {
+        "look": "procedural",
+        "detail": true,
+        "mismatches": 0
+      }
+    ],
+    "coarseOwnershipUnchanged": true,
+    "errors": [],
+    "gpuSamples": [
+      {
+        "profilesOn": true,
+        "gpuMedianMs": 3.171958,
+        "gpuP95Ms": 5.385416,
+        "disjoint": false
+      },
+      {
+        "profilesOn": false,
+        "gpuMedianMs": 3.606458,
+        "gpuP95Ms": 5.911375,
+        "disjoint": false
+      },
+      {
+        "profilesOn": false,
+        "gpuMedianMs": 3.176208,
+        "gpuP95Ms": 5.637541,
+        "disjoint": false
+      },
+      {
+        "profilesOn": true,
+        "gpuMedianMs": 4.632624,
+        "gpuP95Ms": 5.6865,
+        "disjoint": false
+      },
+      {
+        "profilesOn": true,
+        "gpuMedianMs": 4.147416,
+        "gpuP95Ms": 6.207166,
+        "disjoint": false
+      },
+      {
+        "profilesOn": false,
+        "gpuMedianMs": 4.177541,
+        "gpuP95Ms": 6.320083,
+        "disjoint": false
+      }
+    ],
+    "ratio": 1.1499970331000666
+  },
+  "touch": {
+    "modes": [
+      {
+        "look": "photo",
+        "detail": true,
+        "mismatches": 0
+      },
+      {
+        "look": "storybook",
+        "detail": true,
+        "mismatches": 0
+      },
+      {
+        "look": "cartoon",
+        "detail": true,
+        "mismatches": 0
+      },
+      {
+        "look": "procedural",
+        "detail": true,
+        "mismatches": 0
+      }
+    ],
+    "coarseOwnershipUnchanged": true,
+    "errors": []
+  },
+  "rootVisualReview": [
+    "Three primary source/front/block views personally compared with municipal sources; independent reviewed all24.",
+    "Live row inspection shows coherent pale window groups and cornice/neck/bell silhouette mixture among ordinary neighbors.",
+    "Desktop and touch stationary-rider pans retain textured windows/doors."
+  ],
+  "performanceLimit": "HeadlessChrome AppleM4Pro fullsceneGPU medians3.17–4.63ms profileson; off3.18–4.18ms. Variable15% medianratio, no negligible-cost claim. Touch is emulated390x844, not physical phone performance.",
+  "testEvidence": "85 street-appearance tests and TypeScript checks pass in isolated rhythm source; unrelated workspace drafts excluded."
+}

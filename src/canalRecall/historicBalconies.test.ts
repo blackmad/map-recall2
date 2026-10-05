@@ -13,9 +13,10 @@ const context=():ExtraContext=>({id:'historic-stack',style:'c19',period:'c19',wa
  openings:recipeBayOpenings('historic-stack',recipe)});
 
 test('explicit historic access compiles one paired opening while mapped shops and generic families survive',()=>{
- assert.equal(BAY_LAYER_COUNT+64,256,'last four cells fit byte-indexed atlas exactly');
+ assert.ok(BAY_LAYER_COUNT+64<=256,'bounded cells fit byte-indexed atlas');
  for(const period of ['c19','canal'] as const)for(const look of ['photo','storybook','cartoon'] as const){
   const r={...recipe,period}, b=bayLookFor('historic',1880,19,look,'shopCafe',r), o=recipeBayOpenings('historic',r,look);
+  for(const layer of [...Object.values(b.layers),b.plain])assert.ok(Number.isInteger(layer)&&layer>=0&&layer+64<256,'actual dispatched layer fits procedural atlas');
   assert.equal(b.variant.facadeAssembly,'stacked-iron-balcony');assert.equal(b.variant.windows,1);
   assert.deepEqual(o.upper.axes,[.5]);assert.equal(o.upper.width,.32);assert.equal(b.variant.sash,'paired-transom');
   assert.equal(BAY_ENTRIES[b.layers.ground].kind,'shopCafe','genuine mapped cafe retains its shared shop cell');

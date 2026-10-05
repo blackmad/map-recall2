@@ -22,6 +22,7 @@
 // Convex nonrectangular footprints can slope inward from their actual perimeter
 // to a flat deck. Concave wings roof inscribed rectangles over a flat lid.
 
+import earcut from 'earcut';
 import { RoofSink, type V2, type V3 } from './roofSink.js';
 import { findChamfer, inscribedRects, insetRing, openRing, parapetRingOk, perimeterRoofInset, signedArea } from './roofFootprint.js';
 import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
@@ -38,6 +39,10 @@ export type RoofPlan = {
   gableEnds?: [boolean, boolean];
   /** Roof rise above the eaves, metres (for a gable plate, the roof's own rise; the plate stands higher). */
   riseM: number;
+  /** Source-admitted crown geometry must fit the native total-height envelope. */
+  nativeEnvelopeM?: number;
+  /** Admitted surveyed frontage in the same local footprint frame as pieces. */
+  sourceCrownFront?: {start: Vec2; end: Vec2; normal: Vec2; shape: GableShape; pairedOculi?: boolean};
   dormers: boolean;
   material: 'tile' | 'slate';
   /** 0..1, picks the roof colour from the look's palette. */
@@ -70,7 +75,7 @@ type Vec2 = [number, number];
 
 /** slope/plate/dormer: textured as before; trim: flat-coloured closed solid; decal: flat-coloured one-sided paint just proud of a surface. */
 export type RoofPart = 'slope' | 'plate' | 'dormerFace' | 'dormerSide' | 'trim' | 'decal';
-export type RoofTri = { p: [V3, V3, V3]; uv: [V2, V2, V2]; part: RoofPart; n: V3; /** Flat colour for trim and decals (or a tint override). */ hex?: string };
+export type RoofTri = { p: [V3, V3, V3]; uv: [V2, V2, V2]; part: RoofPart; n: V3; /** Flat colour for trim and decals (or a tint override). */ hex?: string; /** Shape of an explicitly admitted, exterior crown plate. */ sourceCrownShape?: GableShape; sourceCrownPairedOculi?: boolean };
 
 export const TRIM_WHITE = '#efebe2';
 const TRIM_CREAM = '#e6dcc5';
@@ -600,7 +605,7 @@ function buildTurret(s: RoofSink, tu: number, tv: number, r: number, R: number, 
 }
 
 /** Roof geometry for one rectangle, in the same metre frame as the rect. `h0` is the eaves height. */
-export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDims): RoofTri[] {
+function buildRoofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDims): RoofTri[] {
   const s = new RoofSink(rect, h0, dims);
   const { len: L, wid: W } = rect, R = plan.riseM, trim = plan.trimHex ?? TRIM_WHITE, accents = !!plan.accents;
   if (plan.kind === 'mansard') { buildMansard(s, plan, L, W, R); return s.out; }
@@ -657,6 +662,23 @@ export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: Roof
   return s.out;
 }
 
+/** Fit only an explicitly admitted crown to its native envelope, keeping its eaves connected.
+ * Normals follow the same vertical transform; ordinary city roof defaults are untouched. */
+export function roofTriangles(rect: Rect, plan: RoofPlan, h0: number, dims: RoofDims): RoofTri[] {
+  const triangles = buildRoofTriangles(rect, plan, h0, dims);
+  if (!plan.nativeEnvelopeM || !triangles.length) return triangles;
+  const top = Math.max(...triangles.flatMap(t => t.p.map(p => p[2] - h0)));
+  if (top <= 0) return triangles;
+  const scale = plan.nativeEnvelopeM / top;
+  return triangles.map(t => {
+    const nz = t.n[2] / scale, length = Math.hypot(t.n[0], t.n[1], nz);
+    const endDot = t.n[0]*rect.ux+t.n[1]*rect.uy;
+    const sourceCrownShape = plan.kind === 'gable' && t.part === 'plate' && Math.abs(endDot) > .9 && plan.gableEnds?.[endDot < 0 ? 0 : 1] !== false ? plan.gable : undefined;
+    return {...t, sourceCrownShape, p: t.p.map(([x,y,z]) => [x,y,h0+(z-h0)*scale]) as RoofTri['p'],
+      n: [t.n[0]/length,t.n[1]/length,nz/length] as RoofTri['n']};
+  });
+}
+
 /** A parapet round a footprint ring (mesh frame): outer and inner faces, a coping band and top. */
 export function parapetTriangles(ring: readonly Vec2[], h0: number, hp: number, dims: RoofDims, trimHex: string, t = 0.25): RoofTri[] {
   const pts = openRing(ring), inner = insetRing(pts, t);
@@ -676,6 +698,85 @@ export function parapetTriangles(ring: readonly Vec2[], h0: number, hp: number, 
     along += l;
   }
   return s.out;
+}
+
+/** Clip admitted generated slopes to the actual surveyed footprint.
+ * Approximate rectangular end closures can stick through a trapezoid's street wall;
+ * native boundary closures replace them, while the source frontage owns its crown. */
+function sourceRoofWithinOutline(triangles:RoofTri[],outline:Vec2[],h0:number,dims:RoofDims):RoofTri[] {
+  const ring=openRing(outline),indices=earcut(ring.flat()),result:RoofTri[]=[];
+  type Vertex={p:V3;uv:V2};
+  const cross=(a:Vec2,b:Vec2,p:V3)=>(b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]);
+  const ccw=signedArea(ring)>0;
+  for(const t of triangles.filter(t=>t.part==='slope'))for(let k=0;k<indices.length;k+=3){
+    const cut=[ring[indices[k]],ring[indices[k+1]],ring[indices[k+2]]];
+    const sign=cross(cut[0],cut[1],[...cut[2],0])>=0?1:-1;
+    let polygon:Vertex[]=t.p.map((p,i)=>({p,uv:t.uv[i]}));
+    for(let e=0;e<3&&polygon.length;e++){
+      const a=cut[e],b=cut[(e+1)%3],next:Vertex[]=[];
+      for(let i=0;i<polygon.length;i++){
+        const v=polygon[i],w=polygon[(i+1)%polygon.length],dv=cross(a,b,v.p)*sign,dw=cross(a,b,w.p)*sign;
+        if(dv>=-1e-8)next.push(v);
+        if((dv>=0)!==(dw>=0)){const f=dv/(dv-dw);next.push({p:v.p.map((x,j)=>x+(w.p[j]-x)*f) as V3,uv:v.uv.map((x,j)=>x+(w.uv[j]-x)*f) as V2});}
+      }
+      polygon=next;
+    }
+    if(polygon.length<3)continue;
+    for(let i=1;i<polygon.length-1;i++){
+      const p=[polygon[0].p,polygon[i].p,polygon[i+1].p] as RoofTri['p'];
+      if(Math.abs(cross([p[0][0],p[0][1]],[p[1][0],p[1][1]],p[2]))<1e-8)continue;
+      result.push({...t,p,uv:[polygon[0].uv,polygon[i].uv,polygon[i+1].uv]});
+    }
+    for(let i=0;i<polygon.length;i++){
+      const a=polygon[i].p,b=polygon[(i+1)%polygon.length].p,l=Math.hypot(b[0]-a[0],b[1]-a[1]);if(l<1e-5)continue;
+      const edge=ring.findIndex((v,j)=>Math.abs(cross(v,ring[(j+1)%ring.length],a))<1e-6&&Math.abs(cross(v,ring[(j+1)%ring.length],b))<1e-6);
+      if(edge<0||Math.max(a[2],b[2])<=h0+1e-6)continue;
+      const r0=ring[edge],r1=ring[(edge+1)%ring.length],dx=r1[0]-r0[0],dy=r1[1]-r0[1],el=Math.hypot(dx,dy),n:V3=ccw?[dy/el,-dx/el,0]:[-dy/el,dx/el,0];
+      const aTop:V3=[a[0],a[1],Math.max(h0,a[2])],bTop:V3=[b[0],b[1],Math.max(h0,b[2])];
+      let p:RoofTri['p']=[[a[0],a[1],h0],[b[0],b[1],h0],bTop],q:RoofTri['p']=[[a[0],a[1],h0],bTop,aTop];
+      const facing=(b[0]-a[0])*n[1]-(b[1]-a[1])*n[0];if(facing>0){p=[p[0],p[2],p[1]];q=[q[0],q[2],q[1]];}
+      for(const tri of [p,q]) {
+        const ab=tri[1].map((v,i)=>v-tri[0][i]),ac=tri[2].map((v,i)=>v-tri[0][i]);
+        if(Math.hypot(ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0])<1e-8)continue;
+        result.push({p:tri,uv:tri.map(v=>[Math.hypot(v[0]-a[0],v[1]-a[1])/dims.bayM,(v[2]-h0)/dims.storeyM]) as RoofTri['uv'],n,part:'plate'});
+      }
+    }
+  }
+  return result;
+}
+
+/** Gable end slabs must stand on the surveyed wall, not the fitted box.
+ * A small trapezoid error is visible as sky below the cornice in upward views.
+ * Warp the complete connected piece between its actual end edges; heights,
+ * trim, chimneys and roof material stay unchanged. */
+function gablePieceOnNativeWalls(triangles:RoofTri[],rect:Rect,outline:Vec2[],plan:RoofPlan):RoofTri[] {
+  const ring=openRing(outline),ccw=signedArea(ring)>0;
+  const corners=(e:number):[Vec2,Vec2]=>[-1,1].map(v=>[rect.cx+rect.ux*e*rect.len/2-rect.uy*v*rect.wid/2,rect.cy+rect.uy*e*rect.len/2+rect.ux*v*rect.wid/2] as Vec2) as [Vec2,Vec2];
+  const ends:[Vec2,Vec2][]=[corners(-1),corners(1)];let recovered=false;
+  for(const e of [-1,1]){
+    if(plan.gableEnds?.[e<0?0:1]===false)continue;
+    const cx=rect.cx+rect.ux*e*rect.len/2,cy=rect.cy+rect.uy*e*rect.len/2;let nearest=1.05;
+    for(let i=0;i<ring.length;i++){
+      const a=ring[i],b=ring[(i+1)%ring.length],dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy);
+      if(length<rect.wid*.6||length>rect.wid*1.5)continue;
+      const nx=(ccw?dy:-dy)/length,ny=(ccw?-dx:dx)/length;
+      if((nx*rect.ux+ny*rect.uy)*e<.9)continue;
+      const distance=Math.hypot((a[0]+b[0])/2-cx,(a[1]+b[1])/2-cy);
+      if(distance>=nearest)continue;nearest=distance;
+      const av=-a[0]*rect.uy+a[1]*rect.ux,bv=-b[0]*rect.uy+b[1]*rect.ux;
+      ends[e<0?0:1]=av<bv?[a,b]:[b,a];recovered=true;
+    }
+  }
+  if(!recovered)return triangles;
+  const at=([x,y,z]:V3):V3=>{
+    const dx=x-rect.cx,dy=y-rect.cy,u=(dx*rect.ux+dy*rect.uy)/rect.len+.5,v=(-dx*rect.uy+dy*rect.ux)/rect.wid+.5;
+    const a:Vec2=[ends[0][0][0]+(ends[0][1][0]-ends[0][0][0])*v,ends[0][0][1]+(ends[0][1][1]-ends[0][0][1])*v],b:Vec2=[ends[1][0][0]+(ends[1][1][0]-ends[1][0][0])*v,ends[1][0][1]+(ends[1][1][1]-ends[1][0][1])*v];
+    return [a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u,z];
+  };
+  return triangles.map(t=>{
+    const p=t.p.map(at) as RoofTri['p'],a=p[1].map((v,i)=>v-p[0][i]),b=p[2].map((v,i)=>v-p[0][i]),n:V3=[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],l=Math.hypot(...n);
+    return {...t,p,n:n.map(v=>v/l) as V3};
+  });
 }
 
 /**
@@ -709,7 +810,27 @@ export function roofTrianglesForOutline(outer: readonly number[][], origin: { ln
     return { ...r, cx, cy, ux: ax / al, uy: ay / al, len: r.len * al, wid: r.wid * bl };
   };
   const out: RoofTri[] = [];
-  for (const piece of plan.pieces) out.push(...roofTriangles(mapRect(piece.rect), piece.plan, h0, dims));
+  // The admitted exact frontage owns its street crown. Inscribed roof ends
+  // behind it are plain closures, never a second shaped crown in the sky.
+  for (const piece of plan.pieces) {
+    const innerPlan = plan.sourceCrownFront ? {...piece.plan, kind: piece.plan.kind === 'gable' ? 'pitched' as const : piece.plan.kind, accents:false, sourceCrownFront:undefined} : piece.plan;
+    const rect=mapRect(piece.rect),triangles=roofTriangles(rect,innerPlan,h0,dims);
+    out.push(...(!plan.sourceCrownFront&&['gable','pitched','halfHipped','mansard'].includes(piece.plan.kind)?gablePieceOnNativeWalls(triangles,rect,mesh,piece.plan):triangles));
+  }
+  if(plan.sourceCrownFront) {
+    const clipped=sourceRoofWithinOutline(out,mesh,h0,dims);out.length=0;out.push(...clipped);
+    const front=plan.sourceCrownFront,a=at(...front.start),b=at(...front.end),width=Math.hypot(b[0]-a[0],b[1]-a[1]);
+    const nx=front.normal[0]*sx,ny=front.normal[1],nl=Math.hypot(nx,ny),ux=nx/nl,uy=ny/nl;
+    const rect:Rect={cx:(a[0]+b[0])/2-ux*.16,cy:(a[1]+b[1])/2-uy*.16,ux,uy,len:.32,wid:width,coverage:1,maxDev:0};
+    const sink=new RoofSink(rect,h0,dims),prof=gableProfile(front.shape,width,plan.riseM),f=.16;
+    gableSlab(sink,prof,1,.32,plan.accents?'trim':'plate',plan.trimHex);
+    if(plan.accents)gableAccents(sink,{shape:front.shape,prof,f,e:1,W:width,R:plan.riseM,trimHex:plan.trimHex??TRIM_WHITE,shutterHex:'',shutters:false,claws:front.shape==='raisedNeck'?clawArcs(width,plan.riseM):undefined,crownBase:crownBaseOf(front.shape,width,plan.riseM)});
+    const top=Math.max(...sink.out.flatMap(t=>t.p.map(p=>p[2]-h0)));
+    // Cornices sit below the hidden rear ridge; raised silhouettes own the full envelope.
+    const envelope=front.shape==='cornice'?Math.min(plan.riseM,corniceHeight(plan.riseM)+.05):plan.riseM;
+    const scale=envelope/top;
+    out.push(...sink.out.map(t=>{const nz=t.n[2]/scale,l=Math.hypot(t.n[0],t.n[1],nz);return {...t,p:t.p.map(([x,y,z])=>[x,y,h0+(z-h0)*scale]) as RoofTri['p'],n:[t.n[0]/l,t.n[1]/l,nz/l] as V3,sourceCrownShape:front.shape,sourceCrownPairedOculi:front.pairedOculi};}));
+  }
   if (plan.turret) {
     const main = mapRect(plan.pieces[0].rect), [tx, ty] = at(plan.turret.x, plan.turret.y);
     const s = new RoofSink(main, h0, dims), du = tx - main.cx, dv = ty - main.cy;

@@ -13,8 +13,11 @@ import { FRONT_HIGHWAYS, streetSegments } from '../../src/canalRecall/streetFron
 import { compileStreetAppearanceAssignments, streetAppearanceFrontageRecords, validateStreetAppearanceCatalog, type StreetAppearanceFront, type StreetAppearanceStreetPath } from '../../src/canalRecall/streetAppearance.ts';
 import { sha256 } from './pipeline.ts';
 
-const catalogPath = 'public/data/street-appearance/profiles.json';
+const option=(name:string,fallback:string)=>process.argv.find(a=>a.startsWith(`--${name}=`))?.slice(name.length+3)??fallback;
+const catalogPath = option('catalog-path','public/data/street-appearance/profiles.json');
+const surveyPath = option('survey-path',catalogPath==='public/data/street-appearance/profiles.json'?'public/data/street-appearance/frontage-survey.json':catalogPath.replace(/[^/]+$/, 'frontage-survey.json'));
 const catalog = validateStreetAppearanceCatalog(JSON.parse(await fs.readFile(catalogPath, 'utf8')));
+catalog.profiles.sort((a,b)=>a.id.localeCompare(b.id));
 for (const profile of catalog.profiles) delete profile.frontages;
 const bounds = catalog.profiles.map(p => {
   const pad = p.reachM + 25;
@@ -85,8 +88,10 @@ await fs.writeFile(catalogPath,JSON.stringify(catalog,null,2)+'\n');
 const report={schemaVersion:1,revision:catalog.revision,origin:ORIGIN,sources,admissionInputs,streetFrontPathsSha256:sha256(JSON.stringify(streetPaths)),streetSegments:streets.length/4,neighborHaloM:25,features:features.size,exposedRuns:fronts.length,assignments:assignments.size,
   profiles:catalog.profiles.map(p=>({id:p.id,frontages:p.frontages,palette:p.frontages!.reduce((counts:Record<string,number>,f)=>{const hex=p.recipes[f.recipeIndex].recipe.wallHex??'default';counts[hex]=(counts[hex]??0)+1;return counts;},{})})),
   limits:'Approximate recipes allocated by genuine building identity across complete surveyed street-side cohorts; not per-building photo matching. Neighbor halo retains shared-wall suppression. Source colors and curated identities remain authoritative.'};
-await fs.writeFile('public/data/street-appearance/frontage-survey.json',JSON.stringify(report,null,2)+'\n');
-const manifestPath='public/data/street-appearance/evidence-manifest.json',manifest=JSON.parse(await fs.readFile(manifestPath,'utf8'));
-manifest.runtimeRevision=catalog.revision;manifest.frontageSurvey={url:'frontage-survey.json',sha256:sha256(JSON.stringify(report,null,2)+'\n'),assignments:assignments.size};
-await fs.writeFile(manifestPath,JSON.stringify(manifest,null,2)+'\n');
+await fs.writeFile(surveyPath,JSON.stringify(report,null,2)+'\n');
+if(catalogPath==='public/data/street-appearance/profiles.json'){
+ const manifestPath='public/data/street-appearance/evidence-manifest.json',manifest=JSON.parse(await fs.readFile(manifestPath,'utf8'));
+ manifest.runtimeRevision=catalog.revision;manifest.frontageSurvey={url:'frontage-survey.json',sha256:sha256(JSON.stringify(report,null,2)+'\n'),assignments:assignments.size};
+ await fs.writeFile(manifestPath,JSON.stringify(manifest,null,2)+'\n');
+}
 console.log(JSON.stringify({revision:catalog.revision,features:features.size,assignments:assignments.size,palette:report.profiles.map(({id,palette})=>({id,palette}))},null,2));

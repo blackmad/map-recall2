@@ -9,7 +9,7 @@
 // floor) for sills and heads, measured from the bottom.
 
 import { BAY_STYLES, bayLookFor, bayStyleForRecipe } from './bayLook.js';
-import { bayDoorGeometry, bayDoorWindowGeometry, bayWindowGeometry, type BayVariant, type Look } from './bayTextures.js';
+import { bayDoorGeometry, bayDoorWindowGeometry, bayWindowGeometry, canalGroundGeometry, type BayVariant, type Look } from './bayTextures.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import type { FacadeStyle } from './genericFacades.js';
 
@@ -52,6 +52,10 @@ export function bayVariantOpenings(v: BayVariant, look: Look = 'photo'): Opening
   const dw = bayDoorWindowGeometry(v, look), dg = bayDoorGeometry(v);
   const doorWindow = { ...rowPx(1, dw.y, dw.height, GROUND_H, dw.width), axes: [dw.axis] };
   const door = { axis: (dg.x + dg.width / 2) / BAY_W, width: dg.width / BAY_W, bottom: dg.bottom / GROUND_H, top: (dg.bottom + dg.height) / GROUND_H, fanlight: dg.fanlight };
+  if(v.groundAssembly){
+    const g=canalGroundGeometry(v), ground={axes:v.groundAssembly==='tall-side-entry'?g.axes.slice(0,-1):g.axes,width:g.width,sill:g.sill,head:g.head};
+    return {upper,ground,doorWindow:{...ground,axes:g.axes.slice(0,-1)},door};
+  }
   if(v.entranceAssembly==='raised-plain'){
     const ground={axes:[.20,.47,.80],width:dw.width/BAY_W,sill:(GROUND_H-dw.y-dw.height)/GROUND_H,head:(GROUND_H-dw.y)/GROUND_H};
     return {upper:{...upper,axes:[.20,.47,.80]},ground,doorWindow:{...ground,axes:[.20,.47]},door};

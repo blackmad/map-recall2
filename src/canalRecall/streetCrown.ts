@@ -35,10 +35,14 @@ function contained(triangles:Point[][],x0:number,x1:number,z0:number,z1:number):
   return heights.every(z=>spans(triangles,z).some(([a,b])=>x0>=a+.08&&x1<=b-.08));
 }
 function atticWindows(roof:readonly RoofTri[],front:StreetCrownFront,wallTop:number):RoofTri[] {
-  if(!front.recipe.atticWindows||!['canal','c19'].includes(front.recipe.period))return [];
-  const plates=roof.filter(t=>matches(t,front));if(!plates.length)return [];
+  if((!front.recipe.atticWindows&&front.recipe.crownWindows!=='paired-oculi')||!['canal','c19'].includes(front.recipe.period))return [];
+  const matching=roof.filter(t=>matches(t,front)),admitted=matching.filter(t=>t.sourceCrownShape);
+  const plates=admitted.length?admitted:matching;if(!plates.length)return [];
+  // The observed row supports paired eyes on bell crowns; other admitted
+  // crown families retain rectangular attic glazing instead of gaining circles.
+  const pairedOculi=front.recipe.crownWindows==='paired-oculi'&&plates.every(t=>t.sourceCrownShape==='bell'||t.sourceCrownPairedOculi===true);
   const p=projection(front),local=plates.map(t=>t.p.map(v=>[(v[0]-front.start[0])*p.ux+(v[1]-front.start[1])*p.uy,v[2]] as Point));
-  const maxZ=Math.max(...local.flat().map(v=>v[1]));if(maxZ-wallTop<1.65)return [];
+  const maxZ=Math.max(...local.flat().map(v=>v[1]));if(maxZ-wallTop<(pairedOculi?1.1:1.65))return [];
   const depths=plates.map(t=>t.p.reduce((s,v)=>s+(v[0]-front.start[0])*front.normal[0]+(v[1]-front.start[1])*front.normal[1],0)/3).sort((a,b)=>a-b);
   const depth=depths[Math.floor(depths.length/2)];
   const out:RoofTri[]=[],normal:[number,number,number]=[...front.normal,0];
@@ -53,6 +57,25 @@ function atticWindows(roof:readonly RoofTri[],front:StreetCrownFront,wallTop:num
     rectangle(x0+.045,x1-.045,z0+.045,z1-.045,front.glassHex,.023);
     const transom=z0+(z1-z0)*.72;rectangle(x0+.045,x1-.045,transom-.018,transom+.018,front.frameHex,.029);return true;
   };
+  if(pairedOculi) {
+    // The pair is one admitted assembly: never replace a missing half by generic panes.
+    // Conservative bounding rectangles also cover every point of the oval frame.
+    const radius=Math.min(.37,p.width*.065),rz=radius*.88;
+    const z=wallTop+Math.min(.82,(maxZ-wallTop)*.36),centers=[p.width*.3,p.width*.7];
+    if(!centers.every(x=>contained(local,x-radius,x+radius,z-rz,z+rz)))return [];
+    const oval=(x:number,rx:number,ry:number,hex:string,proud:number)=>{
+      const point=(dx:number,dz:number):[number,number,number]=>[front.start[0]+p.ux*(x+dx)+front.normal[0]*(depth+proud),front.start[1]+p.uy*(x+dx)+front.normal[1]*(depth+proud),z+dz];
+      for(let i=0;i<20;i++){
+        const a=i/20*Math.PI*2,b=(i+1)/20*Math.PI*2;
+        // Wind to the front normal, including reversed and rotated footprint rings.
+        let vertices:RoofTri['p']=[point(0,0),point(rx*Math.cos(a),ry*Math.sin(a)),point(rx*Math.cos(b),ry*Math.sin(b))];
+        if(p.uy*front.normal[0]-p.ux*front.normal[1]<0)vertices=[vertices[0],vertices[2],vertices[1]];
+        out.push({p:vertices,uv:[[0,0],[0,0],[0,0]],part:'decal',n:normal,hex});
+      }
+    };
+    for(const x of centers){oval(x,radius,rz,front.frameHex,.016);oval(x,radius-.09,rz-.09,front.glassHex,.026);}
+    return out;
+  }
   const z0=wallTop+.35,z1=Math.min(wallTop+1.52,maxZ-.24),width=Math.min(.92,p.width*.17);
   const centers=p.width>=5.5?[p.width*.35,p.width*.65]:[p.width*.5];
   let placed=0;for(const center of centers)if(window(center,z0,z1,width))placed++;
