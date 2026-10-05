@@ -231,6 +231,12 @@ def main():
         pending = load(path)
         if isinstance(pending, dict) and pending.get('id') and pending.get('modelUrl') and pending['id'] not in models:
             models[pending['id']] = {**pending, 'catalogueState': 'source-ready-or-planned-not-in-runtime-catalogue'}
+    # Archive research before a builder/spec exists (including deferred shared hosts).
+    # Folder identity describes the source pack, never a claimed runtime model.
+    for root in (repo / 'artifacts/landmarks').glob('*/references'):
+        mid = root.parent.name
+        if mid not in models and re.fullmatch(r'[a-z0-9-]+', mid):
+            models[mid] = {'id': mid, 'name': mid, 'catalogueState': 'unregistered-research-only'}
     keys = defaultdict(set)
     for mid, model in models.items():
         for key in [mid, model.get('landmarkId'), *model.get('relatedLandmarkIds', []), *model.get('suppressOsmIds', [])]:
