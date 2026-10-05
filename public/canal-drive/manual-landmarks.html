@@ -33,7 +33,7 @@
   <p><a href="landmark-queue.html">Building queue</a> &middot; <a href="park-landscape.html">Park views</a> &middot; <a href="tree-models.html">Tree models</a> &middot; <a href="model-reuse-review.html">Reusable model review</a></p>
   <p>Every curated one-off landmark the game places by hand, read live from <code>SIGNATURE_MODELS</code> — the surveyed 3D Warehouse batch and the original flat-colour reconstructions. Drag to orbit &middot; scroll to zoom. Screenshot contract: <code>window.review</code>.</p>
   <div class="sort-controls"><label for="model-sort">Sort models</label><select id="model-sort">
-    <option value="default">Catalogue order</option><option value="newest">Newest updated</option>
+    <option value="default">Catalogue order</option><option value="newest" selected>Newest updated</option>
     <option value="oldest">Oldest updated</option><option value="name">Name</option>
   </select><span id="date-status" role="status"></span></div>
 </header>
@@ -75,7 +75,7 @@ function sortModels() {
 }
 sortControl.addEventListener('change', () => {
   const url = new URL(location.href);
-  if (sortControl.value === 'default') url.searchParams.delete('sort');
+  if (sortControl.value === 'newest') url.searchParams.delete('sort');
   else url.searchParams.set('sort', sortControl.value);
   history.replaceState(null, '', url);
   sortModels();
