@@ -12,11 +12,82 @@
 import type { FacadeStyle } from './genericFacades.js';
 import type { WallLayout } from './facadeLayout.js';
 import { ExtraSink, chanceFor, hash01, type ExtraContext, type RoofComponent, type RoofContext, type WallComponent } from './facadeExtraCore.js';
-import { ORNAMENT_COMPONENTS, paleMasonryAccents, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
+import { ORNAMENT_COMPONENTS, paleMasonryAccents, raisedPilasterEntrance, raisedPlainEntrance, isStreetWall, openingsOf, windowSpans } from './facadeOrnaments.js';
 
 export { ExtraSink, hash01, chanceFor } from './facadeExtraCore.js';
 export type { V3, FlatTri, WallFrame, ExtraContext, RoofContext, WallComponent, RoofComponent, Chance } from './facadeExtraCore.js';
 export { ORNAMENT_COMPONENTS } from './facadeOrnaments.js';
+
+/** A compact balcony assembly repeats on one real opening axis, never an alternating wall fraction. */
+export function openBalconyStack(c: ExtraContext, s: ExtraSink, depth = .85): void {
+  if (!c.layout.storeys || c.recipe?.facadeAssembly && c.assemblyOwner === false) return;
+  const joint = c.recipe?.facadeAssembly === 'stacked-open-balcony';
+  const historic = c.recipe?.facadeAssembly === 'stacked-iron-balcony';
+  let candidates = windowSpans(c, 0).filter(w => w.x - Math.max(.6, w.hw + .08) >= .04 && w.x + Math.max(.6, w.hw + .08) <= c.f.len - .04);
+  if (!candidates.length) return;
+  let preferred = c.f.len / 2;
+  if (joint) {
+    const widest = Math.max(...candidates.map(w => w.hw)), narrowest = Math.min(...candidates.map(w => w.hw));
+    if (widest > narrowest * 1.05) {
+      // A joint facade's wider access leaf carries the stack; narrow side windows do not.
+      candidates = candidates.filter(w => Math.abs(w.hw - widest) < .001);
+    } else {
+      const row = openingsOf(c), axis = row.upper.axes.reduce((best, value) => Math.abs(value - row.door.axis) < Math.abs(best - row.door.axis) ? value : best, row.upper.axes[0]);
+      candidates = candidates.filter(w => Math.abs(w.x / c.layout.bayWidthM - Math.floor(w.x / c.layout.bayWidthM) - axis) < .001);
+    }
+    if (!candidates.length) return;
+    const doorBay = c.layout.doorBays.find(i => candidates.some(w => Math.floor(w.x / c.layout.bayWidthM) === i));
+    if (doorBay !== undefined) {
+      candidates = candidates.filter(w => Math.floor(w.x / c.layout.bayWidthM) === doorBay);
+      preferred = (doorBay + openingsOf(c).door.axis) * c.layout.bayWidthM;
+    }
+  }
+  // Generic balconies retain centre selection; joint access stacks follow the entrance module.
+  candidates.sort((a, b) => Math.abs(a.x - preferred) - Math.abs(b.x - preferred) || a.x - b.x);
+  const target = candidates[0];
+  const width = Math.min(2.6, c.layout.bayWidthM * .9, Math.max(1.2, target.hw * 2 + .16));
+  const a0 = target.x - width / 2, a1 = target.x + width / 2;
+  depth = Math.max(.4, Math.min(1.2, depth));
+  const divided = historic || c.recipe?.sash === 'paired-transom';
+  const railHex = joint ? c.recipe?.frameHex ?? WHITE : IRON;
+  const sideBands = joint && a0 >= .11 && a1 <= c.f.len - .11;
+  const levels = Math.min(historic ? 3 : 8, c.layout.storeys, Math.floor((s.room() - (sideBands ? 8 : 0)) / (divided ? 56 : 52)));
+  if (levels < 1) return;
+  if (sideBands) {
+    const bottom = c.base + c.layout.groundM, top = c.top - .04;
+    // Narrow continuous structural sides connect the separate floors into one vertical bay.
+    for (const x of [a0 - .055, a1 + .055]) s.strip(c.f, x - .045, x + .045, .035, bottom, top, railHex, .02);
+  }
+  for (let k = 0; k < levels; k++) {
+    const opening = windowSpans(c, k).find(w => Math.abs(w.x - target.x) < .001);
+    if (!opening) continue;
+    const deck = storeyZ(c, k) + .04, rail = deck + .9;
+    if (deck < c.base + c.layout.groundM || rail + .04 > c.top) continue;
+    s.begin();
+    s.box(c.f, a0, a1, 0, depth, deck - .08, deck, CONCRETE, true);
+    // Continue the selected pane down to the floor as a balcony access leaf. The original
+    // lower frame becomes its transom; the upper pane/head stay in their surveyed cell.
+    const glass = Math.min(opening.z0 + .008, opening.z1 - .04);
+    if (glass > deck + .05) {
+      const l = opening.x - opening.hw, right = opening.x + opening.hw, frame = c.recipe?.frameHex ?? WHITE;
+      s.strip(c.f, l + .015, right - .015, .012, deck + .035, glass, GLASS, .006);
+      s.strip(c.f, l - .015, l + .015, .018, deck + .025, glass, frame, .01);
+      s.strip(c.f, right - .015, right + .015, .018, deck + .025, glass, frame, .01);
+      if (divided) s.strip(c.f, opening.x - .015, opening.x + .015, .02, deck + .035, glass, frame, .01);
+    }
+    s.strip(c.f, a0, a1, depth - .02, rail, rail + .04, railHex, .025);
+    for (let i = 0; i < 8; i++) {
+      const x = a0 + .035 + (a1 - a0 - .07) * i / 7;
+      // A front-facing flat bar needs two triangles; eight fine bars cost the old four solids.
+      s.slope(c.f, x - .010, x + .010, depth - .02, depth - .02, rail + .02, deck, railHex);
+    }
+    for (const [x, sign] of [[a0, -1], [a1, 1]] as const) {
+      const side = { x0: c.f.x0 + c.f.ux * x, y0: c.f.y0 + c.f.uy * x, ux: c.f.nx, uy: c.f.ny, nx: c.f.ux * sign, ny: c.f.uy * sign, len: depth };
+      s.strip(side, .02, depth - .02, .015, rail, rail + .04, railHex, .025);
+    }
+    s.commit();
+  }
+}
 
 // --- Palettes -------------------------------------------------------------------
 const STONE = '#cfc6b4', IRON = '#26282b', WOOD = '#5a4030', WHITE = '#efece4', GREEN = '#3f7a3a', DARKGREEN = '#2c4f33', CONCRETE = '#b9b5ac', GLASS = '#5d6f7c';
@@ -137,19 +208,22 @@ const STREET_FURNITURE: readonly WallComponent[] = [
   { id: 'window-grilles', styles: ['school', 'c19'], p: 0.15, build: (c, s) => {
     const d = doorX(c); for (const x of windowXs(c).slice(0, 4)) { if (d != null && Math.abs(x - d) < 0.8) continue; for (let k = -2; k <= 2; k++) s.box(c.f, x + k * 0.22 - 0.02, x + k * 0.22 + 0.02, 0.04, 0.08, c.base + 0.8, c.base + 2.4, IRON); } } },
   // --- Postwar / modern ------------------------------------------------------------------
-  { id: 'balcony-slabs', styles: ['postwar'], p: 0.5, build: (c, s) => {
-    for (let k = 0; k < Math.min(6, c.layout.storeys); k++) for (let i = 0; i < c.layout.bays; i += 2) { const x = bayCentre(c.layout, i), z = storeyZ(c, k) + 0.02;
-      s.box(c.f, x - 1.4, x + 1.4, 0, 1.2, z, z + 0.15, CONCRETE, true); s.box(c.f, x - 1.4, x + 1.4, 1.15, 1.2, z + 0.15, z + 1.0, k % 2 ? '#d9d4c7' : '#c84b3c'); } } },
-  { id: 'gallery-walkway', styles: ['postwar'], p: 0.18, build: (c, s) => {
+  { id: 'balcony-slabs', styles: ['postwar'], p: 0.5, street: true, group: 'balcony', build: (c, s) => {
+    openBalconyStack(c, s, 1.1);
+  } },
+  { id: 'gallery-walkway', styles: ['postwar'], p: 0.18, group: 'balcony', build: (c, s) => {
     for (let k = 0; k < Math.min(8, c.layout.storeys); k++) { const z = storeyZ(c, k) + 0.02; s.box(c.f, 0, c.f.len, 0, 1.5, z, z + 0.18, CONCRETE, true); s.box(c.f, 0, c.f.len, 1.45, 1.5, z + 0.18, z + 1.05, '#e6e2d8'); } } },
   { id: 'satellite-dishes', styles: ['postwar'], p: 0.3, build: (c, s) => {
     for (let k = 0; k < 3; k++) { const x = hash01(`${c.wallKey}:sd${k}`) * c.f.len, z = storeyZ(c, Math.floor(hash01(`${c.wallKey}:sz${k}`) * Math.max(1, c.layout.storeys))) + 1.3;
       s.box(c.f, x - 0.3, x + 0.3, 0.9, 0.95, z - 0.3, z + 0.3, '#e9e7e2'); } } },
   { id: 'entrance-slab', styles: ['postwar', 'modern', 'tower'], p: 0.4, build: (c, s) => {
     const x = doorX(c); if (x == null) return; s.box(c.f, x - 1.3, x + 1.3, 0, 1.0, c.base + 2.6, c.base + 2.75, CONCRETE, true); } },
-  { id: 'glass-balconies', styles: ['modern', 'tower'], p: 0.45, build: (c, s) => {
-    for (let k = 0; k < Math.min(8, c.layout.storeys); k++) { const z = storeyZ(c, k) + 0.02, x = c.f.len * (0.25 + 0.5 * (k % 2));
-      s.box(c.f, x - 1.5, x + 1.5, 0, 0.9, z, z + 0.08, CONCRETE, true); s.box(c.f, x - 1.5, x + 1.5, 0.87, 0.9, z + 0.08, z + 1.0, '#c3d6de'); } } },
+  { id: 'historic-balcony-stack', styles: ['c19', 'canal'], p: 0, street: true, group: 'balcony', build: (c, s) => {
+    if (c.recipe?.facadeAssembly === 'stacked-iron-balcony') openBalconyStack(c, s, .5);
+  } },
+  { id: 'glass-balconies', styles: ['modern', 'tower'], p: 0.45, street: true, group: 'balcony', build: (c, s) => {
+    openBalconyStack(c, s, .85);
+  } },
   { id: 'vertical-fins', styles: ['modern', 'tower'], p: 0.25, build: (c, s) => {
     for (let x = 0.6; x < c.f.len - 0.3; x += 1.5) s.box(c.f, x - 0.05, x + 0.05, 0, 0.22, c.base + c.layout.groundM, c.top - 0.3, '#d6d2c8'); } },
   { id: 'garage-door', styles: ['postwar'], p: 0.12, build: (c, s) => { if (!c.groundLevel || c.f.len < 4) return; const x = c.f.len - 2; s.box(c.f, x - 1.25, x + 1.25, 0, 0.04, c.base, c.base + 2.3, '#9aa0a6'); } },
@@ -214,33 +288,84 @@ const RECIPE_TRIM_KEYS: Record<string, keyof NonNullable<NonNullable<ExtraContex
   };
 const DEFINING_TRIM = new Set(['white-window-frames', 'white-lintels', 'string-courses']);
 const PROFILE_COMPONENTS = [...WALL_COMPONENTS.filter(comp => comp.id === 'door-surround'), ...WALL_COMPONENTS.filter(comp => DEFINING_TRIM.has(comp.id)), ...WALL_COMPONENTS.filter(comp => comp.id !== 'door-surround' && !DEFINING_TRIM.has(comp.id))];
+// Supported entrance recipes do not imply unrelated bay-window boxes, vases or furniture.
+const RAISED_ENTRY_COMPONENTS = new Set(['window-sills', 'white-window-frames', 'white-lintels', 'stucco-hoods',
+  'kroonlijst', 'console-cornice', 'white-fascia', 'floor-cornices', 'string-courses']);
 const ATOMIC = new Set(ORNAMENT_COMPONENTS.map(c => c.id));
 // Building-wide choices of the original set (shutters, balcony slabs) use the building's roll so all its walls agree.
 const WIDE = new Set(['shutters-3d', 'balcony-slabs', 'gallery-walkway', 'glass-balconies', 'brick-bands', 'cornice-brackets', 'gutter', 'plinth', 'flower-boxes']);
 const streetDressed = new WeakSet<ExtraSink>();
 /** Tuning hook (scripts only): sees every wall's context and the components it got. */
-export const extraUsage: { record: null | ((c: ExtraContext, used: readonly string[]) => void) } = { record: null };
+export const extraUsage: { record: null | ((c: ExtraContext, used: readonly string[], triangles: number) => void) } = { record: null };
 
-/** Every wall extra this wall gets, in registry order, within the budget. */
+/** Only observed defining assemblies can exceed the ordinary building allowance. */
+export const DEFINING_BUILDING_CEILING = 540;
+type DressingState = { used: string[]; groups: Set<string>; spent: number };
+const definingWall = (c: ExtraContext) => isStreetWall(c) && !!(c.recipe?.facadeAssembly && c.assemblyOwner !== false || c.recipe?.entranceAssembly && !c.shopfront);
+
+/** Give every supported face its defining assembly before spending on optional trim. */
+export function buildingWallExtras(contexts: readonly ExtraContext[], sink: ExtraSink): void {
+  const original = sink.budget, baseline = Math.min(original, EXTRA_BUDGET.building);
+  const ordered = contexts.map((c, i) => ({ c, i, state: { used: [], groups: new Set<string>(), spent: 0 } as DressingState }))
+    .sort((a, b) => Number(definingWall(b.c)) - Number(definingWall(a.c)) || a.i - b.i);
+  const definingCount = ordered.filter(({ c }) => definingWall(c)).length;
+  // Small explicit caller budgets still mean small budgets. Extra capacity is for supported
+  // multi-face buildings, and is never available to their optional ornaments.
+  sink.budget = original >= EXTRA_BUDGET.building && definingCount > 1
+    ? Math.min(DEFINING_BUILDING_CEILING, Math.max(original, definingCount * EXTRA_BUDGET.wall)) : original;
+  for (const { c, state } of ordered) if (definingWall(c)) dressWall(c, sink, state, 'defining');
+  sink.budget = Math.max(sink.tris.length, baseline);
+  for (const { c, state } of ordered) dressWall(c, sink, state, 'optional');
+  sink.budget = original;
+  for (const { c, state } of ordered) extraUsage.record?.(c, state.used, state.spent);
+}
+
+/** Every wall extra this wall gets, in registry order, within the existing standalone budget. */
 export function wallExtras(c: ExtraContext, sink: ExtraSink): string[] {
-  const used: string[] = [], groups = new Set<string>();
+  const state: DressingState = { used: [], groups: new Set(), spent: 0 };
+  dressWall(c, sink, state, 'all');
+  extraUsage.record?.(c, state.used, state.spent);
+  return state.used;
+}
+
+function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase: 'all' | 'defining' | 'optional'): void {
+  const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
   const reserve = street || streetDressed.has(sink) ? 0 : EXTRA_BUDGET.streetReserve;
-  sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + (street ? EXTRA_BUDGET.wall : EXTRA_BUDGET.sideWall)));
-  if (street && c.recipe && hash01(`${c.id}:pale-masonry-accents`) < (c.recipe.trim?.quoins ?? 0)) {
+  const remaining = Math.max(0, (street ? EXTRA_BUDGET.wall : EXTRA_BUDGET.sideWall) - state.spent);
+  sink.budget = Math.max(sink.tris.length, Math.min(outer - reserve, sink.tris.length + remaining));
+  const raisedEntry = street && !!c.recipe?.entranceAssembly && !c.shopfront;
+  if (raisedEntry && phase !== 'optional') {
+    const before = sink.tris.length;
+    if (c.recipe?.entranceAssembly === 'raised-plain') raisedPlainEntrance(c, sink);
+    else raisedPilasterEntrance(c, sink);
+    if (sink.tris.length > before) { used.push(`${c.recipe!.entranceAssembly}-entrance`); groups.add('door-frame'); groups.add('stoop'); }
+  }
+  if (phase !== 'defining' && street && !raisedEntry && c.recipe?.facadeAssembly !== 'stacked-iron-balcony' && c.recipe && hash01(`${c.id}:pale-masonry-accents`) < (c.recipe.trim?.quoins ?? 0)) {
     const before = sink.tris.length; paleMasonryAccents(c, sink);
     if (sink.tris.length > before) used.push('pale-masonry-accents');
   }
   // Local assemblies spend their limited relief budget on their defining trim first.
-  const components = c.recipe?.trim ? PROFILE_COMPONENTS : WALL_COMPONENTS;
+  const assembly = c.recipe?.facadeAssembly === 'stacked-open-balcony';
+  const historicAssembly = c.recipe?.facadeAssembly === 'stacked-iron-balcony';
+  const defaultComponents = c.recipe?.trim ? PROFILE_COMPONENTS : WALL_COMPONENTS;
+  const components = assembly ? [WALL_COMPONENTS.find(comp => comp.id === 'glass-balconies')!, ...defaultComponents.filter(comp => !['glass-balconies', 'balcony-slabs', 'gallery-walkway', 'vertical-fins'].includes(comp.id))] : historicAssembly ? [WALL_COMPONENTS.find(comp => comp.id === 'historic-balcony-stack')!, ...defaultComponents.filter(comp => !['historic-balcony-stack','iron-balconies','glass-balconies','balcony-slabs','gallery-walkway'].includes(comp.id))] : defaultComponents;
   for (const comp of components) {
+    const definingComponent = assembly && comp.id === 'glass-balconies' || historicAssembly && comp.id === 'historic-balcony-stack';
+    if (c.recipe?.balconyPolicy === 'assembly-only' && !definingComponent && (comp.group === 'balcony' || ['glass-balconies','balcony-slabs','gallery-walkway','brick-balcony','juliet-balcony'].includes(comp.id))) continue;
+    if (c.recipe?.detailPolicy === 'architectural' && !definingComponent && !DEFINING_TRIM.has(comp.id) && !['door-surround','hoist-beam','wall-anchors'].includes(comp.id)) continue;
+    if (definingComponent && c.assemblyOwner === false) continue;
+    if (phase === 'defining' && !definingComponent || phase === 'optional' && definingComponent) continue;
     // Ornaments follow the building's period; street furniture (a stoop, a hoist beam) also its
     // layout style, so a 19th-century house laid out as a canal house keeps its stoop.
     const as = comp.styles.includes(period) ? period : !ATOMIC.has(comp.id) && comp.styles.includes(c.style) ? c.style : null;
+    if (raisedEntry && !(historicAssembly && comp.id === 'historic-balcony-stack') && !RAISED_ENTRY_COMPONENTS.has(comp.id)) continue;
+    if (raisedEntry && ['corner-pilasters','ground-flower-boxes','flower-boxes'].includes(comp.id)) continue;
+    if (raisedEntry && c.recipe?.entranceAssembly === 'raised-pilaster' && ['string-courses','floor-cornices','pale-masonry-accents'].includes(comp.id)) continue;
     if (!as || (comp.street && !street) || (comp.group && groups.has(comp.group))) continue;
     const roll = comp.wide || WIDE.has(comp.id) ? hash01(`${c.id}:${comp.id}`) : hash01(`${c.id}:${c.wallKey}:${comp.id}`);
     const localChance = RECIPE_TRIM_KEYS[comp.id] && c.recipe?.trim?.[RECIPE_TRIM_KEYS[comp.id]];
-    let chance = typeof localChance === 'number' ? localChance : chanceFor(comp.p, as);
+    let chance = (assembly && comp.id === 'glass-balconies' || historicAssembly && comp.id === 'historic-balcony-stack') ? 1 : typeof localChance === 'number' ? localChance : chanceFor(comp.p, as);
     if (comp.id === 'door-surround' && c.recipe?.period === 'c19' && c.recipe.trimDensity !== 'ornate') chance *= .85;
     if (comp.id === 'wall-anchors' && c.recipe && c.recipe.trimDensity !== 'ornate') chance *= .15;
     if (roll >= chance) continue;
@@ -252,8 +377,7 @@ export function wallExtras(c: ExtraContext, sink: ExtraSink): string[] {
   }
   sink.budget = outer;
   if (street) streetDressed.add(sink);
-  extraUsage.record?.(c, used);
-  return used;
+  state.spent += sink.tris.length - beforeWall;
 }
 
 export function roofExtras(c: RoofContext, sink: ExtraSink): string[] {

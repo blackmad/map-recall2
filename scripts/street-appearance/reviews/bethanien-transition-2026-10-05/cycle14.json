@@ -1,0 +1,126 @@
+{
+  "cycle": 14,
+  "reviewer": "independent failure-seeking agent",
+  "decision": "bounded-native-visual-pass",
+  "scope": "Only observed Bethanienstraat south-side pair and adjoining modern transition. No city, neighborhood or production completion.",
+  "priorFailure": {
+    "cycle": 12,
+    "decision": "fail",
+    "record": "../12/independent-review.json",
+    "reason": "Unsupported repeated black-rail projecting balconies on historical pair. Failure evidence preserved; repaired in cycle13.",
+    "repairedInCycle": 13
+  },
+  "method": "Direct tools.view_image inspection of all nine cycle14 source-row, block and opposite-oblique captures compared with three fixed original municipal crops and admitted source671/1508 inspected during preceding review.",
+  "sourceManifest": "../12/evaluation-source/manifest.json",
+  "renderEvidence": [
+    "artifacts/street-appearance/retry/14/challenge/TMX7316010203-000227_pano_0000_000676-photo-source-row.png",
+    "artifacts/street-appearance/retry/14/challenge/TMX7316010203-000227_pano_0000_000676-photo-block.png",
+    "artifacts/street-appearance/retry/14/challenge/TMX7316010203-000227_pano_0000_000676-photo-opposite-oblique.png",
+    "artifacts/street-appearance/retry/14/challenge/TMX7316010203-000709_pano_0000_001506-photo-source-row.png",
+    "artifacts/street-appearance/retry/14/challenge/TMX7316010203-000709_pano_0000_001506-photo-block.png",
+    "artifacts/street-appearance/retry/14/challenge/TMX7316010203-000709_pano_0000_001506-photo-opposite-oblique.png",
+    "artifacts/street-appearance/retry/14/challenge/TMX7316010203-001662_pano_0000_000196-photo-source-row.png",
+    "artifacts/street-appearance/retry/14/challenge/TMX7316010203-001662_pano_0000_000196-photo-block.png",
+    "artifacts/street-appearance/retry/14/challenge/TMX7316010203-001662_pano_0000_000196-photo-opposite-oblique.png"
+  ],
+  "criteria": [
+    {
+      "id": "historic-modern-frontage-boundary",
+      "decision": "pass-bounded",
+      "reason": "Two narrow brown fronts retain historical glazing and differentiated crowns between pale wider modern fronts. No brown material or historical crown migration onto broad protected neighbor is visible."
+    },
+    {
+      "id": "crown-differentiation",
+      "decision": "pass-bounded",
+      "reason": "Street-facing triangular and neck silhouettes remain distinct from pale modern flat/parapet neighbors. Attic glazing is contained; no obvious floaters or reversed front plates. Exact door/crown assignment is not required."
+    },
+    {
+      "id": "historical-glazing-hierarchy",
+      "decision": "pass-bounded",
+      "reason": "Black-rail balcony slabs on historical pair are removed. Tall pale subdivided windows differ visibly from modern access/flank grouping. Modern explicit pale balcony stack remains."
+    },
+    {
+      "id": "coherent-roof-wall-assembly",
+      "decision": "pass-bounded",
+      "reason": "Historical wall material continues into street-facing crowns with contained attic panes. Unsupported bracketed shelf removed. No obvious gap, duplicate lid, floating crown or pane outside plate in inspected street images. Native-height/courtyard invariants still require separate geometric evidence."
+    },
+    {
+      "id": "bounded-transfer",
+      "decision": "pass-bounded",
+      "reason": "Same historical/modern mixture survives three fixed stations and both candidate oblique directions; no new narrow historical exception visible in reviewed group. 2017 opposite-oblique does not include pair, so pair oblique evidence comes from2017block and2018/2020opposite-oblique."
+    }
+  ],
+  "secondaryDefects": [],
+  "limits": [
+    "Exact pane/bay counts and attic placement are approximate and intentionally not rejection grounds.",
+    "Camera retreat collision prevented requested2mshift; these are original-source camera views, with incomplete roof-back/courtyard visibility.",
+    "Challenge sources were fixed before cycle12; cycle13 is a failed-challenge replay after balcony correction, not a new blind holdout."
+  ],
+  "productionAcceptance": "bounded-desktop-game-and-hardware-performance-pass",
+  "nextAction": "Root may accept only the recorded historical pair/modern transition after combining this desktop production pass with geometric/source tests. Preserve cycle12failure and remaining scope limits; no neighborhood expansion or touch/citywide GPU claim.",
+  "resolvedSecondaryDefects": {
+    "previousRecord": "../13/independent-review.json",
+    "reason": "Cycle14 removes optional historical planters, ground shutters and deep bracketed cornice; masonry/window/crown relationship now reads cleanly. Broad modern neighbor explicit balcony stack retained."
+  },
+  "remainingSecondaryLimits": [
+    "Generic neck contour and individual crown assignments differ from photographs, but complementary silhouette families establish the required row mixture.",
+    "Two generated historical window columns versus three photographed columns is approximate bay-count variation; subdivided pale glazing still clearly differs from modern flank/access groups.",
+    "The east pale side wall includes legacy planters and ground styling outside the admitted historical front; no source-class geometry spreads onto it."
+  ],
+  "productionReview": {
+    "decision": "pass-bounded-desktop",
+    "method": "Direct tools.view_image inspection of four actual-game screenshots and stationary-rider coarse-pan screenshot; read same-version full-game report and all six GPU/CPU timing records.",
+    "catalogRevision": "f2e501bd53477d4e",
+    "evidence": [
+      "game/overtoom-bike-photo.png",
+      "game/overtoom-bike-storybook.png",
+      "game/overtoom-bike-cartoon.png",
+      "game/overtoom-bike-procedural.png",
+      "game/coarse-pan-revision.png",
+      "game/report.json"
+    ],
+    "visualFindings": [
+      "Running game contains brown historical fronts, pale modern neighbors and varied roofs; native reviewed pair remains installed within its neighboring scene without visible floating crown or extra slabs. At this overhead game camera the narrow fronts are small, so detailed historical assembly acceptance relies on the separately inspected native challenge images.",
+      "Photo, Storybook, Cartoon and Procedural screenshots preserve surrounding window/door facade identity and update material palettes consistently with their modes. No broad blank-wall regression apparent in these images.",
+      "Coarse-pan screenshot retains texture/window/door identity on distant ordinary buildings while report confirms stationary rider detail ownership. No obvious blank shell regression."
+    ],
+    "runtimeFindings": {
+      "allFourRequestedModesMatch": true,
+      "allFourRiderTileSelected": true,
+      "cacheMismatches": [
+        [],
+        [],
+        [],
+        []
+      ],
+      "errors": [],
+      "coarseOwnershipUnchanged": true
+    },
+    "performance": {
+      "device": "Apple M4 Pro / ANGLE Metal, local headless Chrome",
+      "method": "EXT_disjoint_timer_query_webgl2 full MapLibre render shared context; three profile-on/off pairs,30warm90measured frames each; supported and non-disjoint.",
+      "profileOnGpuMedianMs": [
+        2.129625,
+        3.092249,
+        2.405375
+      ],
+      "profileOffGpuMedianMs": [
+        1.720499,
+        2.751958,
+        1.881791
+      ],
+      "profileOnGpuP95MaxMs": 5.410666,
+      "profileOnCpuMedianMsApprox": 8.3,
+      "sceneTriangles": 1351690,
+      "allProfilesOnOffMedianRatio": 1.278237062458052,
+      "interpretation": "No concerning full-scene GPU budget exhaustion on tested desktop. On/off ratio compares all ten profiles against no profiles; it cannot isolate incremental historical-class cost. Round variation precludes a precise marginal-cost claim."
+    },
+    "limits": [
+      "Stationary rider was relocated for review; this does not prove route reachability or a complete ridden trajectory.",
+      "Screenshots have legacy overtoom-bike filenames but report reviewPosition and visible scene are DeWallen.",
+      "Desktop local hardware/browser only. Touch-camera visual pan and GPU/device coverage are not supplied; no citywide performance acceptance.",
+      "The camera is an overhead normal follow view; detailed street architecture evidence remains in challenge captures.",
+      "Out-of-scope Overtoom block composition and neighborhood expansion remain unaccepted."
+    ]
+  }
+}

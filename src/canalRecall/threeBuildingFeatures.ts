@@ -4,6 +4,7 @@
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
 import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
+import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
 import type { Look, ShopKind } from './bayTextures.js';
 import { buildChunk, lookVariant, wallTopHeightM, type Chunk, type MeshBuilding } from './threeBuildingMesh.js';
@@ -46,7 +47,7 @@ export const ROOF_TONES: Record<BuildingLook, { tile: string[]; slate: string[] 
 };
 const roofHexFor = (look: BuildingLook, plan: RoofPlan) => { const set = ROOF_TONES[look][plan.material]; return set[Math.min(set.length - 1, Math.floor(plan.tone * set.length))]; };
 
-export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = false): MeshBuilding | null {
+export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = false, sourceRoofPlan?: RoofPlan): MeshBuilding | null {
   const p = feature.properties;
   const polygons = asPolygons(feature.geometry);
   const minHeightM = Number(p.minHeight) || 0;
@@ -101,7 +102,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   }
   if (p.roofPlanned && !coarse) {
     // The decorator's own plan, recomputed from the same feature (pure), so the two agree.
-    const plan = roofPlanForFeature(feature);
+    const plan = sourceRoofPlan ?? roofPlanForFeature(feature);
     if (plan) {
       const dims = STYLE_DIMS[layout];
       building.roof = { plan, roofHex: roofHexFor(look, plan), dims: { bayM: dims.bay, storeyM: dims.storey, cellM: ROOF_CELL_M },
@@ -125,14 +126,16 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
 /** `streets`: flat street segments near the chunk, metres from ORIGIN (streetFronts.ts); doors then go only on the street side. */
 export function buildFeatureChunk(features: readonly Feature[], look: BuildingLook, mode: 'walls' | 'extras' | 'coarse' = 'walls', streets?: Float32Array, profiles: readonly StreetAppearanceProfile[] = []): Chunk {
   return buildChunk(features.map(f => {
-    const building = meshBuildingFor(f, look, mode === 'coarse');
+    const visualRoof = mode !== 'coarse' && profiles.length ? sourceVisualRoof(f, profiles) : undefined;
+    const building = meshBuildingFor(visualRoof?.feature ?? f, look, mode === 'coarse', visualRoof?.plan);
     if (building && mode === 'coarse') {
       // Keep textured windows and ground-floor doors at every distance. Simplify
       // roofs and omit relief; a plain shell made normal street views look empty.
       building.heightM = Number(f.properties.height) || building.heightM;
       building.roof = undefined;
       building.extras = false;
-      return building;
+      // Continue into local facade context below: coarse LOD drops relief and
+      // shaped roofs, while its existing cheap window cells keep the street rhythm.
     }
     if (building && profiles.length && look !== 'untextured' && !f.properties.kitWall && !f.properties.frontCarrier) {
       const localProfiles = profilesNearBuilding(profiles, building.polygons);
@@ -140,7 +143,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       const p = f.properties;
       const sourcedWall = [p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined].find(value => typeof value === 'string' && /^#[0-9a-f]{6}$/i.test(value));
       const mappedWallHex = look === 'photo' ? sourcedWall as string | undefined : undefined;
-      building.streetAppearance = { profiles: localProfiles, look, year: p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear), mappedWallHex, shopfront: shopfrontOf(p) };
+      building.streetAppearance = { profiles: localProfiles, look, sourceHeightM: Number(f.properties.height) || building.heightM, year: p.constructionYear == null || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear), mappedWallHex, shopfront: shopfrontOf(p) };
     }
     return building;
   }).filter((b): b is MeshBuilding => !!b), ORIGIN, mode === 'coarse' ? 'walls' : mode, streets);

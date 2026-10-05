@@ -1,0 +1,549 @@
+{
+  "overtoom-gerard-brandt-anna-vondel-right": {
+    "quality": 0.68,
+    "notes": "Inspected both 13m and 38m local world-aligned perspective crops. Nineteenth-century masonry fronts, pale surrounds and bands, tall individual windows. Right-side row has stronger alternating pale corner/opening accents; left has mixed brown/red faces and variable ornament. All four stations through 88m were inspected. Modern grey punched-window infill at the 63m station is retained as a supported post-1945 exception. Cycle 2 source re-review: thin surrounds and sparse sash divisions, restrained ground floors; opening-jamb block accents limited to the stronger nineteenth-century masonry recipe. Control blocks retain granular brick with individual punched openings. Cycle 3 source re-review: sparse attic openings are permitted only inside an existing compatible crown; roof geometry, source heights and measured colors remain authoritative. Retry7 training RIGHT13 independently reviewed: repeated raised access portals beside paired tall glazing; connected pale pilasters/head and open triangular pediment with joined floor course. Approximate joint assembly, not registered per-house reconstruction. Modern and low institutional exceptions retain distinct recipes; heldout images never tune this change.",
+    "recipes": [
+      {
+        "weight": 3,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "c19",
+          "wallHex": "#a46c56",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.615,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "dark",
+          "lintel": "arch",
+          "paleAccents": true,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.6,
+            "quoins": 0.65,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true,
+          "entranceAssembly": "raised-pilaster",
+          "bayScale": 1.4
+        }
+      },
+      {
+        "weight": 2,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "c19",
+          "wallHex": "#815c49",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.55,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "flat",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.35,
+            "quoins": 0.3,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true
+        }
+      },
+      {
+        "weight": 1,
+        "yearMin": 1946,
+        "recipe": {
+          "family": "punched",
+          "period": "modern",
+          "wallHex": "#7a7566",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.65,
+          "windowHeight": 0.52,
+          "windowProportions": "balanced",
+          "frameColor": "pale",
+          "lintel": "none",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.1,
+            "cornice": 0.1,
+            "courses": 0.05,
+            "quoins": 0,
+            "arches": 0.05
+          },
+          "confidence": 0.68,
+          "sash": "plain",
+          "trimDensity": "restrained",
+          "wallMaterial": "smooth",
+          "atticWindows": false
+        }
+      }
+    ]
+  },
+  "overtoom-gerard-brandt-anna-vondel-left": {
+    "quality": 0.68,
+    "notes": "Inspected both 13m and 38m local world-aligned perspective crops. Nineteenth-century masonry fronts, pale surrounds and bands, tall individual windows. Right-side row has stronger alternating pale corner/opening accents; left has mixed brown/red faces and variable ornament. All four stations inspected; pale painted masonry at later stations supplies a minority recipe. Cycle 2 source re-review: thin surrounds and sparse sash divisions, restrained ground floors; opening-jamb block accents limited to the stronger nineteenth-century masonry recipe. Control blocks retain granular brick with individual punched openings. Cycle 3 source re-review: sparse attic openings are permitted only inside an existing compatible crown; roof geometry, source heights and measured colors remain authoritative. Retry9 training LEFT38: observed three-column houses with quiet right-side raised entrance, paired left ground glazing above the landing and low basement lights. Dominant red/brown joint recipes get this bounded grammar; pale minority remains distinct. Approximate6.2m house module prevents doubling into six columns on ordinary narrow frontages; no exact individual matching. Retry10 positive observed tallhistoriccorner class: independently corroborated2016/2018/Jan2019 thin projecting floors, dark openiron rails, broad pale divided access glazing and three complete levels. Current cohort factual1906/17.08m member meets bound<=1918,15\u201322m; ordinary12.06m sameyear and taller1928/1939School counterexamples keep defaults. Height is native total, not roof-adjusted wall top. This is a scope-bound class, not a citywide rule; shorter two-level1904/13.42m example needs a separate observed subclass and remains withheld. Current corner seam/wrapped continuity and ornate roofsilhouette require separate review.",
+    "recipes": [
+      {
+        "weight": 3,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "c19",
+          "wallHex": "#a46c56",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.615,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "flat",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.6,
+            "quoins": 0.2,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true,
+          "entranceAssembly": "raised-plain",
+          "bayScale": 1.4
+        }
+      },
+      {
+        "weight": 2,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "c19",
+          "wallHex": "#815c49",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.615,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "flat",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.35,
+            "quoins": 0.3,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true,
+          "entranceAssembly": "raised-plain",
+          "bayScale": 1.4
+        }
+      },
+      {
+        "weight": 1,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "c19",
+          "wallHex": "#d4cbb6",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.55,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "flat",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.6,
+            "quoins": 0.1,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true
+        }
+      },
+      {
+        "weight": 1,
+        "priority": 1,
+        "yearMax": 1918,
+        "heightMin": 15,
+        "heightMax": 22,
+        "recipe": {
+          "family": "masonry",
+          "period": "c19",
+          "confidence": 0.74,
+          "wallHex": "#947768",
+          "frameHex": "#e6e1d4",
+          "frameColor": "pale",
+          "windowProportions": "tall",
+          "windowWidth": 0.5,
+          "windowHeight": 0.74,
+          "sash": "paired-transom",
+          "lintel": "flat",
+          "paleAccents": false,
+          "wallMaterial": "brick",
+          "trimDensity": "restrained",
+          "facadeAssembly": "stacked-iron-balcony",
+          "bayScale": 1.4,
+          "trim": {
+            "frames": 0.6,
+            "lintels": 0.4,
+            "cornice": 0.6,
+            "courses": 0.2,
+            "quoins": 0,
+            "arches": 0
+          }
+        },
+        "cornerOnly": true
+      }
+    ]
+  },
+  "bethaniendwarsstraat-right": {
+    "quality": 0.68,
+    "notes": "Inspected both 13m and 38m upper perspective crops. Narrow historic brick fronts, tall individually framed windows, modest pale lintels/cornice. Samrat side includes dark painted stepped-gable facade, neighboring red brick and pale plaster. Opposite is predominantly red/brown masonry. No inferred roof geometry or business details. Pale painted masonry is also visible; modern pale infill retains its separate punched-window family when construction year supports it. All three stations including the intersection-end context were inspected. Cycle 2 source re-review: thin surrounds and sparse sash divisions, restrained ground floors; opening-jamb block accents limited to the stronger nineteenth-century masonry recipe. Control blocks retain granular brick with individual punched openings. Cycle 3 source re-review: sparse attic openings are permitted only inside an existing compatible crown; roof geometry, source heights and measured colors remain authoritative. Retry capability review: training right-38 perspective crop (municipal 2016-06-09) directly shows thin balcony floors with open railings vertically stacked on aligned access glazing, narrow side windows and continuous vertical framing; right-63 (2020-04-21) supports the same modern infill assembly obliquely. Historical training fronts show paired glazing with a transom. Shared paired-transom and stacked-open-balcony capabilities encode these relationships as bounded street priors. Neighboring holdout crops remain excluded from compilation and recipe tuning; visible acceptance is pending independent retry review. Retry cycle 5 training-source capability correction: right-38 shows a slate-grey block-coursed ground wall and vertically grouped tall glazing with transoms and central access, distinct from pale upper walls. Modern joint assembly now carries groundWallHex #787b76; generic mapped shop semantics do not imply a full-width fascia. Genuine branded/cafe appearance remains authoritative. Visual admission remains pending. Retry cycle 6 module-density correction: training modern stack uses a broad central access pane with narrower flank panes, not repeated uniform triplets. Approximate street-level bayScale 1.10 represents a roughly 4.6m nominal module and groundScale .85 a roughly 3.2m ground level; values are procedural priors, not registered per-building measurements. Construction facts remain unchanged and historic/modern boundary ambiguity is recorded separately.",
+    "recipes": [
+      {
+        "weight": 3,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "canal",
+          "wallHex": "#744a3d",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.55,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "flat",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.1,
+            "quoins": 0.0,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "paired-transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true
+        }
+      },
+      {
+        "weight": 2,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "canal",
+          "wallHex": "#393b3e",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.55,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "flat",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.05,
+            "quoins": 0.0,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "paired-transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true
+        }
+      },
+      {
+        "weight": 1,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "canal",
+          "wallHex": "#d3c7ad",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.55,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "flat",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.1,
+            "quoins": 0.0,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "paired-transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true
+        }
+      },
+      {
+        "weight": 1,
+        "yearMin": 1946,
+        "recipe": {
+          "family": "punched",
+          "period": "modern",
+          "wallHex": "#c6baa3",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.57,
+          "windowHeight": 0.7,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "none",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.1,
+            "cornice": 0.1,
+            "courses": 0.05,
+            "quoins": 0,
+            "arches": 0.05
+          },
+          "confidence": 0.68,
+          "sash": "paired-transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "smooth",
+          "atticWindows": false,
+          "facadeAssembly": "stacked-open-balcony",
+          "bayScale": 1.1,
+          "groundWallHex": "#787b76",
+          "groundScale": 0.85
+        }
+      }
+    ]
+  },
+  "bethaniendwarsstraat-left": {
+    "quality": 0.68,
+    "notes": "Inspected both 13m and 38m upper perspective crops. Narrow historic brick fronts, tall individually framed windows, modest pale lintels/cornice. Samrat side includes dark painted stepped-gable facade, neighboring red brick and pale plaster. Opposite is predominantly red/brown masonry. No inferred roof geometry or business details. Pale painted masonry is also visible; modern pale infill retains its separate punched-window family when construction year supports it. All three stations including the intersection-end context were inspected. Cycle 2 source re-review: thin surrounds and sparse sash divisions, restrained ground floors; opening-jamb block accents limited to the stronger nineteenth-century masonry recipe. Control blocks retain granular brick with individual punched openings. Cycle 3 source re-review: sparse attic openings are permitted only inside an existing compatible crown; roof geometry, source heights and measured colors remain authoritative. Retry capability review: training right-38 perspective crop (municipal 2016-06-09) directly shows thin balcony floors with open railings vertically stacked on aligned access glazing, narrow side windows and continuous vertical framing; right-63 (2020-04-21) supports the same modern infill assembly obliquely. Historical training fronts show paired glazing with a transom. Shared paired-transom and stacked-open-balcony capabilities encode these relationships as bounded street priors. Neighboring holdout crops remain excluded from compilation and recipe tuning; visible acceptance is pending independent retry review. Retry cycle 5 training-source capability correction: right-38 shows a slate-grey block-coursed ground wall and vertically grouped tall glazing with transoms and central access, distinct from pale upper walls. Modern joint assembly now carries groundWallHex #787b76; generic mapped shop semantics do not imply a full-width fascia. Genuine branded/cafe appearance remains authoritative. Visual admission remains pending. Retry cycle 6 module-density correction: training modern stack uses a broad central access pane with narrower flank panes, not repeated uniform triplets. Approximate street-level bayScale 1.10 represents a roughly 4.6m nominal module and groundScale .85 a roughly 3.2m ground level; values are procedural priors, not registered per-building measurements. Construction facts remain unchanged and historic/modern boundary ambiguity is recorded separately.",
+    "recipes": [
+      {
+        "weight": 3,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "canal",
+          "wallHex": "#744a3d",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.55,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "flat",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.1,
+            "quoins": 0.0,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "paired-transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true
+        }
+      },
+      {
+        "weight": 2,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "canal",
+          "wallHex": "#8a5845",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.55,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "flat",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.05,
+            "quoins": 0.0,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "paired-transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true
+        }
+      },
+      {
+        "weight": 1,
+        "yearMax": 1945,
+        "recipe": {
+          "family": "masonry",
+          "period": "canal",
+          "wallHex": "#d3c7ad",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.55,
+          "windowHeight": 0.73,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "flat",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.7,
+            "cornice": 0.7,
+            "courses": 0.1,
+            "quoins": 0.0,
+            "arches": 0.25
+          },
+          "confidence": 0.68,
+          "sash": "paired-transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": true
+        }
+      },
+      {
+        "weight": 1,
+        "yearMin": 1946,
+        "recipe": {
+          "family": "punched",
+          "period": "modern",
+          "wallHex": "#c6baa3",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.57,
+          "windowHeight": 0.7,
+          "windowProportions": "tall",
+          "frameColor": "pale",
+          "lintel": "none",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.1,
+            "cornice": 0.1,
+            "courses": 0.05,
+            "quoins": 0,
+            "arches": 0.05
+          },
+          "confidence": 0.68,
+          "sash": "paired-transom",
+          "trimDensity": "restrained",
+          "wallMaterial": "smooth",
+          "atticWindows": false,
+          "facadeAssembly": "stacked-open-balcony",
+          "bayScale": 1.1,
+          "groundWallHex": "#787b76",
+          "groundScale": 0.85
+        }
+      }
+    ]
+  },
+  "control-marcantilaan-right": {
+    "quality": 0.68,
+    "notes": "All three station crops inspected: near-side solid muted grey-brown masonry apartment facade with individual rectangular windows and vertical pale stairwell glazing. Opposite side unavailable behind trees/road, withheld. Nearby courtyard views separately confirm pale balcony rails but this recipe does not infer exact balcony geometry. Continuous horizontal ribbon glazing is not supported. Cycle 2 source re-review: thin surrounds and sparse sash divisions, restrained ground floors; opening-jamb block accents limited to the stronger nineteenth-century masonry recipe. Control blocks retain granular brick with individual punched openings. Cycle 3 source re-review: sparse attic openings are permitted only inside an existing compatible crown; roof geometry, source heights and measured colors remain authoritative.",
+    "recipes": [
+      {
+        "weight": 3,
+        "yearMin": 1946,
+        "recipe": {
+          "family": "punched",
+          "period": "postwar",
+          "wallHex": "#81796a",
+          "frameHex": "#353a36",
+          "windowWidth": 0.65,
+          "windowHeight": 0.52,
+          "windowProportions": "balanced",
+          "frameColor": "dark",
+          "lintel": "none",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.1,
+            "cornice": 0.1,
+            "courses": 0.05,
+            "quoins": 0,
+            "arches": 0.05
+          },
+          "confidence": 0.68,
+          "sash": "plain",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": false
+        }
+      },
+      {
+        "weight": 2,
+        "yearMin": 1946,
+        "recipe": {
+          "family": "punched",
+          "period": "postwar",
+          "wallHex": "#958775",
+          "frameHex": "#e6e1d4",
+          "windowWidth": 0.65,
+          "windowHeight": 0.52,
+          "windowProportions": "balanced",
+          "frameColor": "pale",
+          "lintel": "none",
+          "paleAccents": false,
+          "trim": {
+            "frames": 0.8,
+            "lintels": 0.1,
+            "cornice": 0.1,
+            "courses": 0.05,
+            "quoins": 0,
+            "arches": 0.05
+          },
+          "confidence": 0.68,
+          "sash": "plain",
+          "trimDensity": "restrained",
+          "wallMaterial": "brick",
+          "atticWindows": false
+        }
+      }
+    ]
+  },
+  "control-marcantilaan-left": {
+    "quality": 0.1,
+    "notes": "No usable near-side building evidence; crops face trees, road and distant commercial premises. Attribute inference withheld. Cycle 2 source re-review: thin surrounds and sparse sash divisions, restrained ground floors; opening-jamb block accents limited to the stronger nineteenth-century masonry recipe. Control blocks retain granular brick with individual punched openings. Cycle 3 source re-review: sparse attic openings are permitted only inside an existing compatible crown; roof geometry, source heights and measured colors remain authoritative.",
+    "recipes": []
+  }
+}

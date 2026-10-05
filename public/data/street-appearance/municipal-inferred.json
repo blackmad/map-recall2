@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "revision": "201326bb135502eb",
+  "profiles": [
+    {
+      "id": "overtoom-gerard-brandt-anna-vondel-right",
+      "streetName": "Overtoom",
+      "revision": "7d9a9e56732205e7",
+      "segment": [
+        [
+          4.86795,
+          52.36083
+        ],
+        [
+          4.86939,
+          52.3612
+        ]
+      ],
+      "side": -1,
+      "reachM": 25,
+      "confidence": 0.8,
+      "assemblyM": 18,
+      "recipes": [
+        {
+          "weight": 5,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#8B4532",
+            "frameHex": "#000000",
+            "windowWidth": 0.6,
+            "windowHeight": 0.7,
+            "windowProportions": "tall",
+            "frameColor": "dark",
+            "lintel": "flat",
+            "paleAccents": true,
+            "trim": {
+              "frames": 1,
+              "lintels": 1,
+              "cornice": 1,
+              "courses": 1,
+              "quoins": 1,
+              "arches": 0
+            },
+            "confidence": 0.95
+          },
+          "yearMax": 1945
+        }
+      ],
+      "evidence": [
+        {
+          "id": "overtoom-gerard-brandt-anna-vondel-right-13",
+          "kind": "municipal-panorama",
+          "panoramaId": "recording_2025-07-31_06-59-14_01591",
+          "captureDate": "2025-07-31T07:44:02Z",
+          "sha256": "a59cb152e4f0aa5004f26c20bb65237f5aeeb01b3bf13ec20bcd41cd5d419d39",
+          "url": "https://t1.data.amsterdam.nl/panorama/2025/360geo/recording_2025-07-31_06-59-14_01591/equirectangular/panorama_4000.jpg",
+          "inference": "model",
+          "model": "qwen3.5:9b",
+          "quality": 0.8,
+          "notes": "Central half features a classic Dutch canal house facade with red brick and white quoins/trim. Rhythm is defined by repeating bays with tall windows, flat lintels, and decorative cornices. Perspective street-side crop. Central station interval supplies one vote; overlapping crops deduplicated in 5m frontage cells. No individual building registration."
+        }
+      ],
+      "status": "pilot"
+    }
+  ]
+}

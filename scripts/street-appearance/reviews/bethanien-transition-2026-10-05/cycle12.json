@@ -1,0 +1,28 @@
+{
+  "cycle": 12,
+  "reviewer": "independent failure-seeking agent",
+  "decision": "fail",
+  "scope": "Bounded Bethanienstraat south-side historical-looking pair and adjoining modern transition only; no neighborhood or production acceptance",
+  "method": "Direct tools.view_image inspection of all three municipal evaluation crops, their source-row candidate images, 2018 opposite oblique, 2017 and 2020 block views, and known failed replay source-front/block.",
+  "criticalFailure": {
+    "criterion": "historical glazing hierarchy and balcony frequency",
+    "reason": "Both narrow brown historical-looking fronts have unsupported projecting gray slab balconies with black rails repeated on upper levels. Sources 2018 station1506 and2020 station196 show contained historical glazing without these slabs. The assembly erases the required distinction from the pale modern balcony stack; this changes street composition, not exact opening registration.",
+    "sourceEvidence": [
+      "evaluation-source/TMX7316010203-000709_pano_0000_001506-side.jpg",
+      "evaluation-source/TMX7316010203-001662_pano_0000_000196-side.jpg"
+    ],
+    "renderEvidence": [
+      "challenge/TMX7316010203-000709_pano_0000_001506-photo-source-row.png",
+      "challenge/TMX7316010203-000709_pano_0000_001506-photo-opposite-oblique.png",
+      "challenge/TMX7316010203-000227_pano_0000_000676-photo-block.png",
+      "after/de-wallen-holdout-photo-block.png"
+    ]
+  },
+  "otherFindings": [
+    "Two brown fronts and crown families distinguish from wider pale modern neighbors; no obvious brown spread onto broad modern neighbor in inspected images.",
+    "Triangular and neck silhouettes appear on street-facing plates with contained attic glazing; no obvious floating crown visible. Height invariants and courtyard preservation cannot be proven from these street images alone.",
+    "Exact crown assignment, pane count, and differing bay counts are secondary, not reasons for rejection."
+  ],
+  "requiredNextStep": "Suppress incidental balconies for historical visual-class recipes while preserving explicit modern source-supported stack assembly; repeat native challenge and production evidence gates.",
+  "productionAcceptance": "withheld"
+}

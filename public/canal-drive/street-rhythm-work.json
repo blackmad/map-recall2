@@ -1,0 +1,669 @@
+{
+  "version": 1,
+  "updatedOn": "2026-10-05",
+  "purpose": "Persistent plans for autonomous street rhythm: recognizable block composition rather than individually exact facade reconstruction. Technical validity and visual acceptance are separate.",
+  "lessons": [
+    "Palette accuracy cannot compensate for a wrong facade assembly. Balcony stacks, vertical bays and subdivided windows carry identity.",
+    "Independent probabilities for details lose architectural relationships. Generate supported joint assemblies aligned to openings and floor axes.",
+    "Three improvement cycles are effort history, not an acceptance threshold. Continue when a defining feature remains missing.",
+    "Heldouts are attempts to falsify transfer. A visibly failed heldout prevents expanding that family; it cannot be excused by a successful training view.",
+    "A passing source audit, test suite or performance check does not establish architectural resemblance.",
+    "Acceptance requires evidence against prewritten source-derived criteria, including the worst reviewed view. Report failures as prominently as successes.",
+    "Do not chase exact facade registration. Compare relationships, proportions and street composition with comparable orientation and scale, documenting camera shifts.",
+    "Calibrate source-observed group counts against the actual chosen layout nominal bay width. A bayScale multiplier without that conversion can turn two visual modules into nine repeated panes; compare rendered group spacing, not preset names.",
+    "Construction year is a factual input, not reliable visual-period evidence for retained or rebuilt historic fronts. Independent station views can justify a locally observed frontage class; width alone cannot identify it.",
+    "Test actual native neighbor geometry and dispatch budgets: isolated assembly tests passed while another wall starved the defining facade.",
+    "A building-wide ornament cap is a safety limit, not a fidelity target. Prioritize architectural relationships and evaluate near-detail budgets with actual LOD ownership, visual contradictions and full-scene GPU measurements.",
+    "User steering2026-10-04: rhythm, not perfection. Prioritize distributions and relationships across a street row—frontage widths, white trim, window groups, roof families and balcony frequency. Exact corner wrapping or photo registration is secondary unless its absence changes the overall street character."
+  ],
+  "workflow": [
+    {
+      "stage": "scope",
+      "deliverables": [
+        "Neighborhood boundary and inventoried street-side segments",
+        "Explicit planned coverage, exclusions, uncertainty and known modern exceptions",
+        "Sampling list fixed before implementation: representative rows, transition streets and heldouts"
+      ],
+      "gate": "A neighborhood name is a discovery region, not a universal style label. Completion applies only to the recorded coverage."
+    },
+    {
+      "stage": "observe",
+      "deliverables": [
+        "Municipal source crops, camera/date/heading and hashes",
+        "Street-side character groups and change boundaries",
+        "Three to five defining traits per group, ranked critical or secondary, with source examples"
+      ],
+      "gate": "Critical traits must describe visible relationships, not only colors. Withhold ambiguous sources; do not force a district stereotype."
+    },
+    {
+      "stage": "capability-review",
+      "deliverables": [
+        "Each defining trait mapped to supported, inadequate or missing generator capability",
+        "Baseline images showing each gap",
+        "Separate source geometry, sampling, inference and renderer defects"
+      ],
+      "gate": "A missing critical assembly requires a shared generator change before recipe tuning or transfer admission."
+    },
+    {
+      "stage": "implement",
+      "deliverables": [
+        "Bounded joint facade recipes and supported assembly variants",
+        "Native identity/geometry preservation and compact frontage cohort bake",
+        "Reproducible source admission and meaningful regression checks"
+      ],
+      "gate": "No special-casing the showcased house to disguise an unsupported neighborhood grammar."
+    },
+    {
+      "stage": "challenge-and-improve",
+      "deliverables": [
+        "Frozen before/after versions with municipal references",
+        "Broad street row, oblique street view and near-facade details for representative and preselected heldout streets",
+        "Criterion-by-criterion pass/fail/uncertain with image links and reasons",
+        "Independent reviewer assigned to find contradictions; root personally inspects captures",
+        "Saved failed cases and next corrective cycle"
+      ],
+      "gate": "Every critical trait must be visibly demonstrated across its applicable reviewed group, not just named in code. Unsupported slab balconies, uniform blank panes, incorrect vertical grouping or failed transfer reject the corresponding family. Repeating three cycles does not waive this gate."
+    },
+    {
+      "stage": "production-review",
+      "deliverables": [
+        "Actual game scene at normal gameplay distance, all detailed modes and profile changes",
+        "Neighbor/source appearance preservation and streaming checks",
+        "Same-version profile-on/off CPU evidence and full-scene GPU budget review"
+      ],
+      "gate": "Isolated facade studies do not establish full-scene completion. Geometry counts and CPU timings cannot stand in for GPU measurements."
+    },
+    {
+      "stage": "complete-scoped-batch",
+      "deliverables": [
+        "Coverage inventory with accepted, withheld and failed segments",
+        "All critical visual criteria supported by reference/render evidence",
+        "Independent review decision and unresolved secondary limits",
+        "Next batch chosen from new municipal evidence"
+      ],
+      "gate": "Mark complete only for reviewed coverage after visual, source/runtime and production gates pass. Publish failures and uncertainty. Do not infer whole-neighborhood completion from a few streets."
+    }
+  ],
+  "planTemplate": {
+    "id": "required",
+    "scopeBoundary": "required coordinates or source polygon",
+    "status": "planned|observing|capability-gap|implementing|reviewing|needs-improvement|complete-scoped",
+    "segments": [],
+    "sampling": {
+      "representatives": [],
+      "transitions": [],
+      "heldouts": []
+    },
+    "traits": [
+      {
+        "id": "required",
+        "importance": "critical|secondary",
+        "sourceEvidence": [],
+        "relationship": "required visible architectural relationship",
+        "generatorCapability": "supported|inadequate|missing",
+        "implementation": null,
+        "renderEvidence": [],
+        "decision": "unreviewed|pass|fail|uncertain",
+        "reason": null
+      }
+    ],
+    "cycles": [],
+    "coverage": {
+      "accepted": [],
+      "withheld": [],
+      "failed": []
+    },
+    "productionEvidence": [],
+    "reviewerDecision": null,
+    "nextAction": "required"
+  },
+  "plans": [
+    {
+      "id": "pilot-repair-de-wallen-transfer",
+      "status": "bounded-transition-reviewed",
+      "scope": "Existing Bethaniendwarsstraat training sides and Bethanienstraat adjacent transfer; no city expansion acceptance",
+      "sampling": {
+        "failedReview": "artifacts/street-appearance/cycles/3/heldout-row/index.html",
+        "source": "Municipal reference paired with de-wallen-holdout-photo-front capture; user rejection on 2026-10-04"
+      },
+      "traits": [
+        {
+          "id": "balcony-stack",
+          "importance": "critical",
+          "relationship": "Thin projecting floors, visibly open railings, aligned access openings and repeated vertical stack on compatible modern infill",
+          "generatorCapability": "supported",
+          "decision": "pass-bounded",
+          "reason": "Defining assembly relationships visibly improved in heldout and training comparisons. Proportions and individual counts remain approximate.",
+          "renderEvidence": [
+            "artifacts/street-appearance/retry/6/after/de-wallen-holdout-photo-front.png",
+            "artifacts/street-appearance/retry/6/after/de-wallen-holdout-photo-block.png"
+          ]
+        },
+        {
+          "id": "window-and-bay-hierarchy",
+          "importance": "critical",
+          "relationship": "Subdivided glazing, narrow vertical bay groups and differing modern versus historic window treatment",
+          "generatorCapability": "supported",
+          "decision": "pass-bounded",
+          "reason": "Defining assembly relationships visibly improved in heldout and training comparisons. Proportions and individual counts remain approximate.",
+          "renderEvidence": [
+            "artifacts/street-appearance/retry/6/after/de-wallen-holdout-photo-front.png",
+            "artifacts/street-appearance/retry/6/after/de-wallen-holdout-photo-block.png"
+          ]
+        },
+        {
+          "id": "historic-modern-transition",
+          "importance": "critical",
+          "relationship": "Narrow historic frontage and crown remain distinct beside pale modern infill",
+          "generatorCapability": "supported-bounded",
+          "decision": "pass-bounded",
+          "reason": "Complete observed frontage class admits two narrow historic-looking 1992 fronts with brown masonry, pale subdivided glazing and differentiated crowns; broad pale modern fronts retain their assembly. Fixed evaluation stations pass; surveyed facts and height envelope retained."
+        }
+      ],
+      "nextAction": "Continue frozen Oudezijds Voorburgwal39–71 row using explicit register descriptions, native inventory and reusable recipes. No district-wide promotion.",
+      "cycles": [
+        {
+          "cycle": 4,
+          "catalogRevision": "52fcf569feb21317",
+          "sourceEvidence": [
+            ".cache/street-appearance/images/bethaniendwarsstraat-right-38-perspective-v2.jpg",
+            ".cache/street-appearance/images/bethaniendwarsstraat-right-63-perspective-v2.jpg"
+          ],
+          "changes": [
+            "Shared open balcony stack repeats thin floors, rails and access openings on one actual pane axis.",
+            "Bounded three-part tall infill glazing and paired transoms; defining assembly has priority over decorative extras.",
+            "Holdout transferred unchanged from training; random inferred shops suppressed for residential joint assembly."
+          ],
+          "technicalValidation": "17 glazing/assembly tests, 14 admission tests, TypeScript, mesh/extras and mode-transition checks passed.",
+          "visualDecision": "rejected: balcony/access correlation improved, but uniform panes and full-width generic ground display fail the hierarchy criterion",
+          "cameraAudit": "artifacts/street-appearance/retry/heldout-camera-audit.json",
+          "reviewCriteria": "artifacts/street-appearance/retry/review-criteria.json",
+          "renderEvidence": "artifacts/street-appearance/retry/4/index.html"
+        },
+        {
+          "cycle": 5,
+          "catalogRevision": "daa59df8681f45e4",
+          "changes": [
+            "Shared grouped ground glazing replaces generic fascia for mapped generic displays without discarding mapped business identity.",
+            "Centered access leaf and tall side panes share source-supported three-part layout, with a slate-gray block base.",
+            "Pale fine-bar balcony rails and continuous narrow structural sides; three complete levels fit existing 180-triangle wall limit."
+          ],
+          "technicalValidation": "43 complete street appearance tests and TypeScript pass. Source admission reproduces all95 assignments.",
+          "visualDecision": "rejected: ground and railing improvements visible, but equal-width repeated window cells still erase differentiated bay groups",
+          "knownUncertainty": "Modern BAG outlines may span source facade modules; historic-modern transition still requires source/native survey investigation. No standalone source date change or forced per-building match.",
+          "renderEvidence": "artifacts/street-appearance/retry/5/index.html"
+        },
+        {
+          "cycle": 6,
+          "catalogRevision": "2a55d3dfcaf8c84c",
+          "changes": [
+            "Wider source-supported approximate modules reduce nine repeated panes on a wide frontage.",
+            "Shared unequal opening widths distinguish broad access leaves from narrow flank glazing.",
+            "Balcony access slots and eligible ground entrance module share one layout; no independent decoration axes."
+          ],
+          "technicalValidation": "44 tests pass; TypeScript and complete cohort admission pass. Native identities, year facts, roof silhouette and source-supported appearance preserved.",
+          "visualDecision": "bounded pass for open balcony/access assembly and differentiated window groups, independently reviewed and personally inspected by root; historic-modern transition remains uncertain, so whole neighborhood/family is not accepted",
+          "renderEvidence": "artifacts/street-appearance/retry/6/index.html",
+          "productionEvidence": "artifacts/street-appearance/retry/6/game/report.json: all4 modes current revision,21 chunks, no browser or mode/revision errors. Roof-heavy game camera is a runtime regression view; architectural traits evaluated in native street views.",
+          "performance": {
+            "report": "artifacts/street-appearance/retry/6/compilation-benchmark.json",
+            "cpuCompilationOverallIncreasePercent": 1.86,
+            "wallIncreasePercent": 5.21,
+            "extrasIncreasePercent": 1.01,
+            "limits": "Same frozen current worker profile-on/off; excludes GPU frame, texture upload and transfer timing. One case10.18% with overlapping IQRs. No GPU performance acceptance."
+          }
+        },
+        {
+          "cycle": 12,
+          "visualDecision": "rejected: unsupported random balconies on the historic pair",
+          "renderEvidence": "artifacts/street-appearance/retry/12/independent-review.json"
+        },
+        {
+          "cycle": 13,
+          "visualDecision": "partial: balconies removed, unsupported planters/shutters/cornice exposed",
+          "renderEvidence": "artifacts/street-appearance/retry/13/independent-review.json"
+        },
+        {
+          "cycle": 14,
+          "visualDecision": "bounded native and desktop game pass; only reviewed transition published",
+          "catalogRevision": "44fb4363499779ec",
+          "renderEvidence": "artifacts/street-appearance/retry/14/release/",
+          "productionEvidence": "artifacts/street-appearance/retry/14/release-game/report.json",
+          "independentReview": "artifacts/street-appearance/retry/14/release-review.json"
+        }
+      ],
+      "reviewerDecision": "Bounded historic/modern transition passes three independent source stations and obliques; whole De Wallen remains incomplete.",
+      "independentSourceInvestigation": "artifacts/street-appearance/retry/7/source/findings.md",
+      "sourceCapabilityPlan": "artifacts/street-appearance/retry/12/source-plan.md",
+      "fixedChallengeEvidence": "artifacts/street-appearance/retry/12/evaluation-source/manifest.json",
+      "evaluationScope": "Three fixed originalmunicipal stations/crops2017/2018/2020 visibilitycheckedbefore candidateimplementation; no inference/tuning fromchallengeviews. Evaluate coherenthistoric-pair/moderncohortmix, notexactcrown-to-door assignment.",
+      "publication": {
+        "profileIds": [
+          "bethanienstraat-transition-context",
+          "bethanienstraat-observed-historic-pair"
+        ],
+        "contextLengthM": 57,
+        "sourceClassLengthM": 17,
+        "bakedExposedRuns": 7,
+        "exclusions": "All other unaccepted pilot profiles; whole Overtoom, whole De Wallen, mobile/city performance acceptance."
+      }
+    },
+    {
+      "id": "pilot-recheck-overtoom",
+      "status": "needs-improvement",
+      "scope": "Existing Overtoom sides and adjacent transfers",
+      "nextAction": "Finish bounded budget review, then improve broad heldout row family variation and block-level white trim/window/roof/balcony distributions. Historical corner wrap is a secondary limitation, not an exact matching gate. Source-preserved native geometry, safety and mode/streaming correctness remain required.",
+      "traits": [
+        {
+          "id": "connected-pale-trim",
+          "importance": "critical",
+          "relationship": "Joined pale portal pilasters, head, open pediment and floor course; avoid unrelated floating ticks.",
+          "decision": "fail-baseline",
+          "renderEvidence": [
+            "artifacts/street-appearance/overtoom-review/baseline/overtoom-photo-entrance-row.png"
+          ],
+          "sourceEvidence": [
+            "artifacts/street-appearance/source-evidence/overtoom-gerard-brandt-anna-vondel-right-13-perspective-v2.jpg"
+          ]
+        },
+        {
+          "id": "window-grouping",
+          "importance": "critical",
+          "relationship": "Paired tall residential glazing with distinct modern exceptions and different frontage groups.",
+          "decision": "fail-baseline",
+          "renderEvidence": [
+            "artifacts/street-appearance/overtoom-review/baseline/overtoom-photo-entrance-row.png"
+          ],
+          "sourceEvidence": [
+            "artifacts/street-appearance/source-evidence/overtoom-gerard-brandt-anna-vondel-right-13-perspective-v2.jpg"
+          ]
+        },
+        {
+          "id": "raised-entrance",
+          "importance": "critical",
+          "relationship": "Raised access leaf/transom with steps beside paired tall ground windows; quiet entrances remain a separate observed variant.",
+          "decision": "fail-baseline",
+          "renderEvidence": [
+            "artifacts/street-appearance/overtoom-review/baseline/overtoom-photo-entrance-row.png"
+          ],
+          "sourceEvidence": [
+            "artifacts/street-appearance/source-evidence/overtoom-gerard-brandt-anna-vondel-right-13-perspective-v2.jpg"
+          ]
+        },
+        {
+          "id": "block-composition",
+          "importance": "critical",
+          "relationship": "Source-supported palette and entrance/window families vary together through the row; preserve exceptions.",
+          "decision": "fail-baseline",
+          "renderEvidence": [
+            "artifacts/street-appearance/overtoom-review/baseline/overtoom-photo-entrance-row.png"
+          ],
+          "sourceEvidence": [
+            "artifacts/street-appearance/source-evidence/overtoom-gerard-brandt-anna-vondel-right-13-perspective-v2.jpg"
+          ]
+        }
+      ],
+      "cycles": [
+        {
+          "cycle": 7,
+          "status": "rejected",
+          "changes": [
+            "Source-supported joint raised portal and paired ground glazing on one training recipe.",
+            "Local cheap facade recipes retained outside rider detailed tiles while roof/relief stays simplified."
+          ],
+          "reviewCriteria": "artifacts/street-appearance/overtoom-review/review.json",
+          "visualDecision": "Portal/steps visibly exist, but adjacent glass reaches below landing; upper modules oversized and pale structural trim still fragmented. Whole group rejected.",
+          "sourceInventory": "artifacts/street-appearance/overtoom-review/training-assemblies.json",
+          "renderEvidence": "artifacts/street-appearance/retry/7/overtoom/index.html"
+        },
+        {
+          "cycle": 8,
+          "status": "bounded-capability-pass-street-rejected",
+          "changes": [
+            "Raised paired-window sill above entrance threshold; residential plinth relationship retained.",
+            "Three narrower upper openings aligned with entrance and paired ground axes.",
+            "Joined masonry courses behind opening cells replace detached tick accents."
+          ],
+          "visualDecision": "Strong raised portal, upper axes and raised paired sills visibly improved; unrelated full-height pilasters/planters and missing historical stack reject street completion.",
+          "renderEvidence": "artifacts/street-appearance/retry/8/overtoom/"
+        },
+        {
+          "cycle": 9,
+          "status": "bounded-capability-pass-street-rejected",
+          "changes": [
+            "Quiet raised entrance, two basement lights, three upper axes and source-scale module; restrict unrelated ornaments."
+          ],
+          "visualDecision": "Quiet and strong entrance capabilities bounded passes. Historic projecting stack and repetitive heldout composition fail. Four actual gameplay modes pass; GPU results apply only to one Photo scene/hardware.",
+          "renderEvidence": "artifacts/street-appearance/retry/9/overtoom/index.html"
+        },
+        {
+          "cycle": 10,
+          "status": "rejected",
+          "changes": [
+            "Independent source-supported historical iron balcony assembly; native total height/date and observed street-corner eligibility."
+          ],
+          "visualDecision": "Rejected: paired access glazing admitted but balconies absent. Earlier height-only classifier transferred to19/23 heldout fronts and was rejected before capture. Corner requirement restores ordinary mixtures. Actual native replay finds other walls consume202/230tri before defining facade.",
+          "renderEvidence": "artifacts/street-appearance/retry/10/overtoom/index.html"
+        },
+        {
+          "cycle": 11,
+          "status": "bounded-capability-pass-street-rejected",
+          "changes": [
+            "Defer wall extras and prioritize defining street assemblies before optional trim on other walls; preserve230/180 caps."
+          ],
+          "visualDecision": "Three open iron balcony levels now visibly aligned on actual native front. Root and independent review agree bounded single-face capability pass. Historical corner wrap and broader heldout family variation remain missing; street incomplete.",
+          "renderEvidence": "artifacts/street-appearance/retry/11/overtoom/index.html"
+        }
+      ],
+      "budgetReview": {
+        "status": "experiment-pending",
+        "baseline": {
+          "wallTriangles": 180,
+          "buildingTriangles": 230
+        },
+        "candidate": {
+          "wallTriangles": 360,
+          "buildingTriangles": 460
+        },
+        "productionChanged": false,
+        "evidence": "artifacts/street-appearance/budget-experiment/index.html",
+        "criticalRequirement": "Near defining architecture precedes optional ornaments; distance simplification must preserve texture/openings. Multiple defining faces need allocation review, not ring-order starvation.",
+        "lodAudit": {
+          "detailOwnership": "Nearest2x2 z16 tiles desktop/z17 touch, first footprintvertex tile; approximately747m/373m square atAmsterdam",
+          "limits": [
+            "No per-building distance or intermediate extras tier",
+            "No hysteresis at tile-selection boundaries",
+            "Installed meshes frustumCulled=false: resident near extras submit behindcamera",
+            "No separate extras screen-size threshold"
+          ],
+          "nextLodWork": [
+            "Measure finer extras distance/screen-size tiers and hysteresis",
+            "Validate chunkbounds and culling against customMapLibre projection before enabling",
+            "Keep near defining architecture complete; retain coarse window/door textures"
+          ]
+        },
+        "sourceCounterexample": "DeWallen2178208 has independently observed stacks on two streetfaces.230cap admitsfirst170tri and suppressessecond entirely. Raisingallcaps also admits speculative props, so candidate permits onlyexplicitdefiningassemblies beyond230 with boundedceiling540.",
+        "targetedCandidate": {
+          "definingOnlyCeiling": 540,
+          "ordinaryBuildingLimit": 230,
+          "streetWallLimit": 180,
+          "sideWallLimit": 30,
+          "status": "bounded-capability-reviewed",
+          "tests": "59 street-appearance regressions and TypeScript lint pass; native multi-face/rotation/subdivision regressions preserve complete source-supported stacks and bounded geometry."
+        },
+        "tessellationReview": "Quicknative midpointtestcaughtduplicate; smallone-owner-percontinuousfacadefix preservescount/cap andcontainment. Exactlocalpanealignment is secondary/deferred, avoidingregistrationdetour.",
+        "broadDoublingDecision": "Do not adopt globally: +61.6%near extras/+18.8%fulldesktopscene triangles and unsourcedornaments. GPUtimingsnoisy so no reliable marginalcostclaim.",
+        "targetedDecision": "Source-supported second balcony face restored for+122DeWallennear extras; Overtoomactualscene unchanged. Native subdivision guard1stackpercontinuousfacade; 12fixedstagePNGs byteidentical before/afterguard. Final4normalgame modes pass riderdetail/cache/revision/error checks. Rootinspectedfinalimage. Geometrypolicyacceptedforthisboundedpilotcapability; citywideperformance/familycoverage notaccepted.",
+        "finalEvidence": "artifacts/street-appearance/budget-experiment/targeted-final/"
+      },
+      "secondaryLimits": [
+        "Historical balcony corner wrap currentlysingleface; defer exactmatching while blockcompositionimproves."
+      ]
+    },
+    {
+      "id": "autonomous-next-neighborhood",
+      "status": "planned",
+      "scope": "Select from unprofiled Amsterdam municipal source coverage after pilot capability corrections",
+      "nextAction": "Choose neighborhood boundary and street inventory; record representative, transition and heldout sampling plus defining traits before implementation. User screenshots are optional evidence, not required input."
+    },
+    {
+      "id": "oudezijds-voorburgwal-east-39-71",
+      "status": "sources-inventoried",
+      "scope": "100.15m east-bank street-side row plus 48.38m adjacent heldout",
+      "inventory": "scripts/data/amsterdam-monument-register/rhythm-next-plan.json#nextCanalRow",
+      "nativeFrontages": 20,
+      "explicitMonumentLinks": 10,
+      "nextAction": "Observe fixed representative and transition stations, preserving heldout images unused; build joint source-backed cornice/neck/bell recipes and withhold unmatched visual assumptions. Review whole-row mixture and modern-date exceptions before publication.",
+      "completion": "No runtime coverage yet; historical descriptions alone are not current-facade measurements."
+    }
+  ],
+  "coverageInventory": [
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-right",
+      "streetName": "Overtoom",
+      "segment": [
+        [
+          4.86795,
+          52.36083
+        ],
+        [
+          4.86939,
+          52.3612
+        ]
+      ],
+      "side": -1,
+      "reachM": 25,
+      "lengthM": 106.1,
+      "heldout": false,
+      "learnedFrom": null,
+      "frontageAssignments": 13,
+      "status": "reviewing-pilot",
+      "completion": "not-accepted",
+      "evidenceIds": [
+        "overtoom-gerard-brandt-anna-vondel-right-13",
+        "overtoom-gerard-brandt-anna-vondel-right-38",
+        "overtoom-gerard-brandt-anna-vondel-right-63",
+        "overtoom-gerard-brandt-anna-vondel-right-88"
+      ]
+    },
+    {
+      "profileId": "overtoom-gerard-brandt-anna-vondel-left",
+      "streetName": "Overtoom",
+      "segment": [
+        [
+          4.86795,
+          52.36083
+        ],
+        [
+          4.86939,
+          52.3612
+        ]
+      ],
+      "side": 1,
+      "reachM": 25,
+      "lengthM": 106.1,
+      "heldout": false,
+      "learnedFrom": null,
+      "frontageAssignments": 14,
+      "status": "reviewing-pilot",
+      "completion": "not-accepted",
+      "evidenceIds": [
+        "overtoom-gerard-brandt-anna-vondel-left-13",
+        "overtoom-gerard-brandt-anna-vondel-left-38",
+        "overtoom-gerard-brandt-anna-vondel-left-63",
+        "overtoom-gerard-brandt-anna-vondel-left-88"
+      ]
+    },
+    {
+      "profileId": "bethaniendwarsstraat-right",
+      "streetName": "Bethaniëndwarsstraat",
+      "segment": [
+        [
+          4.897777,
+          52.371248
+        ],
+        [
+          4.89819,
+          52.371758
+        ]
+      ],
+      "side": -1,
+      "reachM": 12,
+      "lengthM": 63.0,
+      "heldout": false,
+      "learnedFrom": null,
+      "frontageAssignments": 7,
+      "status": "reviewing-pilot",
+      "completion": "not-accepted",
+      "evidenceIds": [
+        "bethaniendwarsstraat-right-13",
+        "bethaniendwarsstraat-right-38",
+        "bethaniendwarsstraat-right-63"
+      ]
+    },
+    {
+      "profileId": "bethaniendwarsstraat-left",
+      "streetName": "Bethaniëndwarsstraat",
+      "segment": [
+        [
+          4.897777,
+          52.371248
+        ],
+        [
+          4.89819,
+          52.371758
+        ]
+      ],
+      "side": 1,
+      "reachM": 12,
+      "lengthM": 63.0,
+      "heldout": false,
+      "learnedFrom": null,
+      "frontageAssignments": 9,
+      "status": "reviewing-pilot",
+      "completion": "not-accepted",
+      "evidenceIds": [
+        "bethaniendwarsstraat-left-13",
+        "bethaniendwarsstraat-left-38",
+        "bethaniendwarsstraat-left-63"
+      ]
+    },
+    {
+      "profileId": "control-marcantilaan-right",
+      "streetName": "Marcantilaan",
+      "segment": [
+        [
+          4.867824,
+          52.375489
+        ],
+        [
+          4.868943,
+          52.375409
+        ]
+      ],
+      "side": -1,
+      "reachM": 28,
+      "lengthM": 76.6,
+      "heldout": false,
+      "learnedFrom": null,
+      "frontageAssignments": 4,
+      "status": "reviewing-pilot",
+      "completion": "not-accepted",
+      "evidenceIds": [
+        "control-marcantilaan-right-13",
+        "control-marcantilaan-right-38",
+        "control-marcantilaan-right-63"
+      ]
+    },
+    {
+      "profileId": "overtoom-holdout-1",
+      "streetName": "overtoom-holdout",
+      "segment": [
+        [
+          4.86939,
+          52.3612
+        ],
+        [
+          4.87155,
+          52.36177
+        ]
+      ],
+      "side": -1,
+      "reachM": 25,
+      "lengthM": 159.8,
+      "heldout": true,
+      "learnedFrom": "overtoom-gerard-brandt-anna-vondel-right",
+      "frontageAssignments": 9,
+      "status": "reviewing-pilot",
+      "completion": "not-accepted",
+      "evidenceIds": [
+        "overtoom-gerard-brandt-anna-vondel-right-13",
+        "overtoom-gerard-brandt-anna-vondel-right-38",
+        "overtoom-gerard-brandt-anna-vondel-right-63",
+        "overtoom-gerard-brandt-anna-vondel-right-88"
+      ]
+    },
+    {
+      "profileId": "bethanienstraat-holdout-1",
+      "streetName": "bethanienstraat-holdout",
+      "segment": [
+        [
+          4.89819,
+          52.371758
+        ],
+        [
+          4.898948,
+          52.371522
+        ]
+      ],
+      "side": -1,
+      "reachM": 12,
+      "lengthM": 57.7,
+      "heldout": true,
+      "learnedFrom": "bethaniendwarsstraat-right",
+      "frontageAssignments": 7,
+      "status": "reviewing-pilot",
+      "completion": "not-accepted",
+      "evidenceIds": [
+        "bethaniendwarsstraat-right-13",
+        "bethaniendwarsstraat-right-38",
+        "bethaniendwarsstraat-right-63"
+      ]
+    },
+    {
+      "profileId": "overtoom-holdout1",
+      "streetName": "overtoom-holdout",
+      "segment": [
+        [
+          4.86939,
+          52.3612
+        ],
+        [
+          4.87155,
+          52.36177
+        ]
+      ],
+      "side": 1,
+      "reachM": 25,
+      "lengthM": 159.8,
+      "heldout": true,
+      "learnedFrom": "overtoom-gerard-brandt-anna-vondel-left",
+      "frontageAssignments": 23,
+      "status": "reviewing-pilot",
+      "completion": "not-accepted",
+      "evidenceIds": [
+        "overtoom-gerard-brandt-anna-vondel-left-13",
+        "overtoom-gerard-brandt-anna-vondel-left-38",
+        "overtoom-gerard-brandt-anna-vondel-left-63",
+        "overtoom-gerard-brandt-anna-vondel-left-88"
+      ]
+    },
+    {
+      "profileId": "bethanienstraat-holdout1",
+      "streetName": "bethanienstraat-holdout",
+      "segment": [
+        [
+          4.89819,
+          52.371758
+        ],
+        [
+          4.898948,
+          52.371522
+        ]
+      ],
+      "side": 1,
+      "reachM": 12,
+      "lengthM": 57.7,
+      "heldout": true,
+      "learnedFrom": "bethaniendwarsstraat-left",
+      "frontageAssignments": 9,
+      "status": "reviewing-pilot",
+      "completion": "not-accepted",
+      "evidenceIds": [
+        "bethaniendwarsstraat-left-13",
+        "bethaniendwarsstraat-left-38",
+        "bethaniendwarsstraat-left-63"
+      ]
+    }
+  ]
+}

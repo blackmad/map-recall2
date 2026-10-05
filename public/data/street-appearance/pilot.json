@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "revision": "user-reference-fixture-v1",
+  "profiles": [
+    {
+      "id": "overtoom-gerard-brandt-anna-vondel-left",
+      "streetName": "Overtoom",
+      "revision": "user-reference-pilot-v1",
+      "segment": [
+        [
+          4.86795,
+          52.36083
+        ],
+        [
+          4.86939,
+          52.3612
+        ]
+      ],
+      "side": 1,
+      "reachM": 25,
+      "confidence": 0.65,
+      "assemblyM": 18,
+      "recipes": [
+        {
+          "weight": 3,
+          "recipe": {
+            "family": "masonry",
+            "period": "c19",
+            "wallHex": "#a46c56",
+            "frameHex": "#e9e5d8",
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1,
+            "windowWidth": 0.55,
+            "windowHeight": 0.72,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": true,
+            "trim": {
+              "frames": 0.9,
+              "lintels": 0.65,
+              "cornice": 0.8,
+              "courses": 0.4,
+              "quoins": 0.35,
+              "arches": 0.25
+            },
+            "confidence": 0.65
+          },
+          "yearMax": 1945
+        },
+        {
+          "weight": 2,
+          "recipe": {
+            "family": "masonry",
+            "period": "c19",
+            "wallHex": "#8a5444",
+            "frameHex": "#e9e5d8",
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1,
+            "windowWidth": 0.55,
+            "windowHeight": 0.72,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": true,
+            "trim": {
+              "frames": 0.9,
+              "lintels": 0.65,
+              "cornice": 0.8,
+              "courses": 0.4,
+              "quoins": 0.2,
+              "arches": 0.45
+            },
+            "confidence": 0.65
+          },
+          "yearMax": 1945
+        }
+      ],
+      "evidence": [
+        {
+          "id": "user-reference-1",
+          "kind": "user-reference",
+          "captureDate": "2024-09",
+          "sha256": "e3322d4b8984b4dd3156bb256303236fbc1c215b7c9aeace237f5b3115dc8a50",
+          "inference": "agent-visual-review",
+          "quality": 0.65,
+          "notes": "Agent visual interpretation of user-provided Street View screenshot; approximate street prior, no per-building match, colour or metric measurement. Original screenshot pixels are not redistributed."
+        },
+        {
+          "id": "user-reference-2",
+          "kind": "user-reference",
+          "captureDate": "2024-09",
+          "sha256": "b776a999c8c2424c19e79b228cc5d6d38c6ee45af060076dbab1188869e126c4",
+          "inference": "agent-visual-review",
+          "quality": 0.65,
+          "notes": "Agent visual interpretation of user-provided Street View screenshot; approximate street prior, no per-building match, colour or metric measurement. Original screenshot pixels are not redistributed."
+        }
+      ],
+      "status": "pilot"
+    },
+    {
+      "id": "bethaniendwarsstraat-right",
+      "streetName": "Bethani\u00ebndwarsstraat",
+      "revision": "user-reference-pilot-v1",
+      "segment": [
+        [
+          4.897777,
+          52.371248
+        ],
+        [
+          4.89819,
+          52.371758
+        ]
+      ],
+      "side": -1,
+      "reachM": 12,
+      "confidence": 0.65,
+      "assemblyM": 18,
+      "recipes": [
+        {
+          "weight": 3,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#67433a",
+            "frameHex": "#e9e5d8",
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1,
+            "windowWidth": 0.55,
+            "windowHeight": 0.72,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": true,
+            "trim": {
+              "frames": 0.9,
+              "lintels": 0.65,
+              "cornice": 0.8,
+              "courses": 0.4,
+              "quoins": 0.05,
+              "arches": 0.1
+            },
+            "confidence": 0.65
+          },
+          "yearMax": 1945
+        },
+        {
+          "weight": 2,
+          "recipe": {
+            "family": "masonry",
+            "period": "canal",
+            "wallHex": "#393b3e",
+            "frameHex": "#e9e5d8",
+            "bayScale": 1,
+            "storeyScale": 1,
+            "groundScale": 1,
+            "windowWidth": 0.55,
+            "windowHeight": 0.72,
+            "windowProportions": "tall",
+            "frameColor": "pale",
+            "lintel": "flat",
+            "paleAccents": true,
+            "trim": {
+              "frames": 0.9,
+              "lintels": 0.65,
+              "cornice": 0.8,
+              "courses": 0.4,
+              "quoins": 0.0,
+              "arches": 0.05
+            },
+            "confidence": 0.65
+          },
+          "yearMax": 1945
+        }
+      ],
+      "evidence": [
+        {
+          "id": "user-reference-3",
+          "kind": "user-reference",
+          "captureDate": "2022-09",
+          "sha256": "13e06f7b1cc5b8cfede0115eff7f85fc604be81674f71a43c49088cdfb15914f",
+          "inference": "agent-visual-review",
+          "quality": 0.65,
+          "notes": "Agent visual interpretation of user-provided Street View screenshot; approximate street prior, no per-building match, colour or metric measurement. Original screenshot pixels are not redistributed."
+        }
+      ],
+      "status": "pilot"
+    }
+  ]
+}

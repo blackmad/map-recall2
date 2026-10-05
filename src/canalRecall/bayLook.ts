@@ -27,6 +27,7 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: true },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'tall', frameTone: 'dark', lintel: 'flat' },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'tall', paleAccents: true, lintel: 'flat' },
+    { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .55, openingHeight: .68, sash: 'paired-transom', trimDensity: 'restrained', lintel: 'none' },
   ],
   // 1860-1914: rectangular sashes under flat or segmental masonry heads.
   c19: [
@@ -40,6 +41,9 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'tall', paleAccents: true, lintel: 'arch' },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'balanced', paleAccents: true, lintel: 'flat' },
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', proportions: 'tall', frameTone: 'dark', lintel: 'flat' },
+    { windows: 3, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .615, openingHeight: .70, sash: 'transom', trimDensity: 'restrained', lintel: 'arch', paleAccents: true, frameTone: 'dark', entranceAssembly: 'raised-pilaster' },
+    { windows: 3, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .615, openingHeight: .70, sash: 'transom', trimDensity: 'restrained', lintel: 'flat', paleAccents: false, frameTone: 'dark', entranceAssembly: 'raised-plain' },
+    { windows: 1, shape: 'rect', shutters: false, paintedFrames: false, family: 'masonry', openingOccupancy: .32, openingHeight: .78, sash: 'paired-transom', trimDensity: 'restrained', lintel: 'flat', paleAccents: false, facadeAssembly: 'stacked-iron-balcony' },
   ],
   school: [
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false },
@@ -54,6 +58,7 @@ export const BAY_STYLES: Record<Archetype, readonly BayStyle[]> = {
     { windows: 2, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', proportions: 'wide', lintel: 'none', frameTone: 'dark' },
     { windows: 1, shape: 'rect', shutters: false, paintedFrames: false, family: 'ribbon' },
     { windows: 1, shape: 'rect', shutters: false, paintedFrames: false, family: 'curtain' },
+    { windows: 3, shape: 'rect', shutters: false, paintedFrames: false, family: 'punched', openingOccupancy: .57, openingHeight: .70, sash: 'paired-transom', trimDensity: 'restrained', lintel: 'none', wallMaterial: 'smooth', facadeAssembly: 'stacked-open-balcony' },
   ],
 };
 const ARCHETYPES = Object.keys(BAY_STYLES) as Archetype[];
@@ -146,10 +151,10 @@ export function bayStyleForRecipe(id: string, archetype: Archetype, recipe?: Arc
   const lintel = recipe.lintel ?? ((recipe.trim?.arches ?? 0) > 0.5 ? 'arch' : 'flat');
   const sash = recipe.sash ?? (recipe.family === 'punched' ? 'plain' : 'transom'), trim = recipe.trimDensity ?? 'restrained';
   const material = recipe.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick');
-  const key = `${archetype}|${material}|${recipe.family}|${proportion}|${dark}|${pale}|${lintel}|${sash}|${trim}`;
+  const key = `${archetype}|${recipe.facadeAssembly ?? 'none'}|${recipe.entranceAssembly ?? 'none'}|${material}|${recipe.family}|${proportion}|${dark}|${pale}|${lintel}|${sash}|${trim}`;
   const cached = recipeStyles.get(key);
   if (cached) return cached[(h >>> 4) % cached.length];
-  const scored = styles.map((v, i) => ({ i, score: ((v.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')) === material ? 25 : 0) + ((v.sash ?? 'six-over-six') === sash ? 50 : 0) + (v.trimDensity === trim ? 40 : 0) + ((v.family ?? 'masonry') === recipe.family ? 100 : 0) +
+  const scored = styles.map((v, i) => ({ i, score: ((v.entranceAssembly ?? 'none') === (recipe.entranceAssembly ?? 'none') ? 1000 : 0) + ((v.facadeAssembly ?? 'none') === (recipe.facadeAssembly ?? 'none') ? 1000 : 0) + ((v.wallMaterial ?? (archetype === 'modern' ? 'smooth' : 'brick')) === material ? 25 : 0) + ((v.sash ?? 'six-over-six') === sash ? 50 : 0) + (v.trimDensity === trim ? 40 : 0) + ((v.family ?? 'masonry') === recipe.family ? 100 : 0) +
     ((v.proportions ?? 'tall') === proportion ? 8 : 0) + (!!v.paleAccents === pale ? 12 : 0) +
     ((v.frameTone === 'dark') === dark ? 10 : 0) + ((v.lintel ?? 'flat') === lintel ? 6 : 0) }));
   const max = Math.max(...scored.map(v => v.score)), ties = scored.filter(v => v.score === max);
@@ -160,10 +165,10 @@ export function bayStyleForRecipe(id: string, archetype: Archetype, recipe?: Arc
 
 /** Everything the mesh builder needs from a feature for a bay look. */
 export function bayLookFor(id: string, year: number | null, heightM: number, look: Look, shopfront?: ShopKind | 'quiet', recipe?: ArchitecturalRecipe) {
-  const archetype: Archetype = recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern') : archetypeFor(id, year, heightM);
+  const archetype: Archetype = recipe?.facadeAssembly === 'stacked-iron-balcony' ? 'c19' : recipe ? (recipe.family === 'masonry' ? (recipe.period === 'c19' || recipe.period === 'school' ? recipe.period : 'canal') : 'modern') : archetypeFor(id, year, heightM);
   const h = hashSeed(id), style = bayStyleForRecipe(id, archetype, recipe);
   // Without the extract: a third of buildings, picking among the original four shopfronts.
-  const shop = shopfront ? shopfront !== 'quiet' : (h >>> 13) % 3 === 0;
+  const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly) && !shopfront ? false : shopfront ? shopfront !== 'quiet' : (h >>> 13) % 3 === 0;
   const shopKind = shopfront && shopfront !== 'quiet' ? shopfront : SHOP_KINDS[(h >>> 17) % 4];
   const palette = paletteFor(id, archetype, look);
   const walls = PERIOD_WALLS[look][archetype];
@@ -173,8 +178,8 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const paints = GROUND_PAINTS[look];
   return {
     archetype, style, variant: { archetype, ...BAY_STYLES[archetype][style] }, layout: ARCHETYPE_LAYOUT[archetype], wallHex: palette.wall, accentHex: palette.accent,
-    groundHex: shop ? paints[(h >>> 21) % paints.length] : undefined,
-    layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop ? shopKind : 'ground', !!recipe && recipe.trimDensity !== 'ornate'), door: bayLayer(archetype, style, 'groundDoor') },
+    groundHex: recipe?.groundWallHex ? lookHex(recipe.groundWallHex, look) : shop ? paints[(h >>> 21) % paints.length] : undefined,
+    layers: { upper: bayLayer(archetype, style, 'upper'), ground: bayLayer(archetype, style, shop && !(recipe?.facadeAssembly === 'stacked-open-balcony' && (shopKind === 'shopWindow' || shopKind === 'groundShop')) ? shopKind : 'ground', !!recipe && recipe.trimDensity !== 'ornate'), door: bayLayer(archetype, style, 'groundDoor') },
     plain: bayLayer(archetype, style, 'plain'),
   };
 }
