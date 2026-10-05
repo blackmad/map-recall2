@@ -25,7 +25,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SUFFIXES = ('-footprints', '-specs', '-spec', '-pois', '-poi', '-review', '-sources', '-research')
-SOURCE_SUFFIXES = {'.json', '.geojson', '.jpg', '.jpeg', '.png', '.webp', '.avif', '.pdf', '.html', '.txt', '.md', '.xml', '.skp', '.jp2', '.tif', '.tiff', '.zip'}
+SOURCE_SUFFIXES = {'.json', '.geojson', '.jpg', '.jpeg', '.png', '.webp', '.avif', '.pdf', '.html', '.txt', '.md', '.xml', '.skp', '.jp2', '.tif', '.tiff', '.zip', '.gz'}
 RENDER_NAMES = re.compile(r'(?:gallery|live[-_]|neutral|screenshot|placement-proof|review-proof|game[-_]|render)', re.I)
 TMP_TERMS = re.compile(r'(?:reference|ref[-_.]|source|photo|front\.(?:jpg|jpeg)|bag|osm|ahn|archive|directions|roof-summary|routing-near|vbo|register|monument|architect|operator)', re.I)
 ALIASES = {'our-lord-attic': 'ons-lieve-heer-op-solder', 'eye': 'eye-filmmuseum', 'ing': 'ing-house', 'bijenkorf': 'de-bijenkorf', 'canal-museum': 'canals-museum'}

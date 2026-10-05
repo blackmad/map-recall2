@@ -70,3 +70,8 @@ tmp/
 
 # Local renders and preview harnesses (render:large-letter-craft writes here)
 .tmp/
+
+# Local landmark/reference captures and generated review diagnostics.
+# Raw model sources are archived in the private map-recall2-source-data repo.
+# Keep existing tracked evidence; ignoring this directory does not untrack it.
+artifacts/
