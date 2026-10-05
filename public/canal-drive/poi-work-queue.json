@@ -23,6 +23,14 @@
   ],
   "tasks": [
     {
+      "id": "canal-house-reusable-recipe-pilot",
+      "task": "Trial source-backed canal-house recipes made from reusable components; use registry and Beeldbank evidence to improve street-row rhythm.",
+      "priority": "high",
+      "status": "planned",
+      "plan": "../../scripts/data/amsterdam-monument-register/rhythm-next-plan.json",
+      "nextAction": "Start with failed De Wallen transfer diagnosis and a bounded source-rich canal row; evaluate rhythm and authoring throughput before scaling to every canal house. Preserve ordinary and modern exceptions. Raw sources belong in the new private source archive under its forthcoming instructions."
+    },
+    {
       "id": "initial-overview-mobile-lod",
       "task": "Reduce startup city pop-in and mobile rendering cost",
       "priority": "urgent",

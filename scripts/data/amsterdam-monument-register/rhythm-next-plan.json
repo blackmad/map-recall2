@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "updatedOn": "2026-10-05",
+  "status": "planned",
+  "goal": "Recognizable canal-street rhythm from reusable building recipes, not exact reconstruction of every photographed facade.",
+  "sourceSnapshot": "records.json.gz",
+  "sourceArchiveRepo": "https://github.com/blackmad/map-recall2-source-data",
+  "sourceArchiveState": "Repository created; await and follow its ingestion instructions before transferring raw generations.",
+  "discoveryFindings": {
+    "scope": "RCE record-level literal mentions; overlapping categories, historical assertions and monument-biased sample, not district frequencies.",
+    "halsgevel": 1319,
+    "klokgevel": 631,
+    "trapgevel": 174,
+    "schilddak": 407,
+    "triglyf": 224,
+    "console": 903,
+    "balustrade": 183,
+    "balkon": 208
+  },
+  "nextBatch": {
+    "scope": "One contiguous canal street-side row, selected from source coverage; include ordinary and modern buildings.",
+    "selectionOrder": [
+      "Diagnose existing failed De Wallen historic/modern transfer with explicit register frontage descriptions and dated archive evidence.",
+      "Choose a source-rich canal row, freeze representative and transition segments plus unused heldouts before recipe tuning."
+    ],
+    "deliverables": [
+      "Inventory every native building in the row; record source-backed, uncertain and missing coverage separately.",
+      "Join direct BAG Pand links first; resolve VBO-to-Pand with official relationships; keep unresolved identities out of recipe assignment.",
+      "Retain assertions by source, building part, date and confidence; compare historical drawings against present-day facade evidence.",
+      "Compose each researched frontage from shared components: opening groups, trim, base/entrance, cornice, gable, roof and balcony assemblies.",
+      "Add a shared component only for a defining missing trait; favor bounded variants over bespoke geometry.",
+      "Review whole-row width, white-trim, window-group, cornice/gable mixture and balcony rhythm; keep exact registration secondary.",
+      "Require reference/render heldout comparison, independent failure review, live-game facade/LOD checks and scoped performance evidence."
+    ],
+    "acceptance": "Reviewed street-side coverage only; no whole-city or whole-district claim from monument-only samples."
+  },
+  "cityScaleHypothesis": "Source-backed per-building recipes can scale through reusable components, but trial throughput, source ambiguity and row quality before committing to hand-authoring every Amsterdam canal house.",
+  "addressCohortFindings": {
+    "method": "Municipal adressering begins with exact street name plus space; append RCE descriptions only when municipal status is Rijksmonument and national number agrees. Counts are record-level literal mentions, not distinct facade probabilities.",
+    "cohorts": [
+      {
+        "street": "Overtoom",
+        "listedRecords": 18,
+        "withText": 18,
+        "balkonMentions": 7,
+        "halsgevelMentions": 1,
+        "trapgevelMentions": 1
+      },
+      {
+        "street": "Bethaniënstraat",
+        "listedRecords": 13,
+        "withText": 13,
+        "halsgevelMentions": 5,
+        "klokgevelMentions": 2
+      },
+      {
+        "street": "Bethaniëndwarsstraat",
+        "listedRecords": 4,
+        "withText": 4,
+        "halsgevelMentions": 1,
+        "trapgevelMentions": 1
+      },
+      {
+        "street": "Oudezijds Voorburgwal",
+        "listedRecords": 150,
+        "withText": 149,
+        "halsgevelMentions": 25,
+        "klokgevelMentions": 28,
+        "trapgevelMentions": 3
+      },
+      {
+        "street": "Oudezijds Achterburgwal",
+        "listedRecords": 127,
+        "withText": 127,
+        "halsgevelMentions": 33,
+        "klokgevelMentions": 0,
+        "trapgevelMentions": 3
+      }
+    ],
+    "use": "Prioritize shared components and source sampling. Do not apply ratios to all buildings or interpret absent words as absent features."
+  }
+}
