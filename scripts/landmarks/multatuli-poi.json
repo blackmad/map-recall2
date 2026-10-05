@@ -1,0 +1,28 @@
+{
+  "modelId": "multatuli",
+  "landmarkId": "extract_landmarks_1273422573",
+  "name": "Multatuli Museum",
+  "center": [
+    52.3774872,
+    4.8911258
+  ],
+  "description": "This small house on Korsjespoortsteeg is the birthplace of Eduard Douwes Dekker, better known as Multatuli. His novel Max Havelaar challenged exploitation in the Dutch East Indies, where he had worked as a colonial civil servant. The museum preserves his workplace, furniture and books. The protected house has a bell gable and a memorial stone on its street facade.",
+  "funFact": "Multatuli also argued for women’s emancipation and voting rights, and for workers’ rights; his campaigns reached beyond the colonial abuses exposed by Max Havelaar.",
+  "sourceUrl": "https://www.multatuli-museum.nl/museum",
+  "sourceLinks": [
+    {
+      "title": "Museum and writer",
+      "url": "https://www.multatuli-museum.nl/museum"
+    },
+    {
+      "title": "National monument3133",
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3133"
+    },
+    {
+      "title": "Museum entrance at Korsjespoortsteeg20",
+      "url": "https://www.multatuli-museum.nl/bezoekersinformatie"
+    }
+  ],
+  "website": "https://www.multatuli-museum.nl/",
+  "identityNotes": "Keep existing genuine museum destination; both museum and residence belong to same Pand, no duplicate residential POI."
+}

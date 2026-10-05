@@ -5083,14 +5083,14 @@
       ],
       "bounds": {
         "min": [
-          -10.605344772338867,
+          -10.496114730834961,
           -1.9073486612342094e-7,
-          -12.040220260620117
+          -11.798534393310547
         ],
         "max": [
-          10.72342586517334,
+          10.509108543395996,
           19.850000381469727,
-          14.125265121459961
+          14.088265419006348
         ]
       },
       "placement": {
@@ -5104,13 +5104,13 @@
         "scale": 1
       },
       "extent": {
-        "widthMetres": 26.165485382080078,
+        "widthMetres": 25.886799812316895,
         "heightMetres": 19.850000572204593,
-        "depthMetres": 21.328770637512207,
-        "depthCoverage": 1.0113542509255389
+        "depthMetres": 21.005223274230957,
+        "depthCoverage": 0.9960124852517717
       },
-      "triangles": 11176,
-      "bytes": 164744,
+      "triangles": 5706,
+      "bytes": 86356,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "agnietenkapel": {
@@ -10034,7 +10034,7 @@
         ],
         "max": [
           21.915000915527344,
-          21.721500396728516,
+          21.719999313354492,
           16.625
         ]
       },
@@ -10050,12 +10050,12 @@
       },
       "extent": {
         "widthMetres": 44.239206314086914,
-        "heightMetres": 21.721500396728516,
+        "heightMetres": 21.719999313354492,
         "depthMetres": 34.0049991607666,
         "depthCoverage": 1.141107354388141
       },
-      "triangles": 17688,
-      "bytes": 178660,
+      "triangles": 17407,
+      "bytes": 176976,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "social-history": {
@@ -10166,7 +10166,7 @@
       "bounds": {
         "min": [
           -6.970600128173828,
-          -4.577636616431846e-7,
+          0,
           -6.641499996185303
         ],
         "max": [
@@ -10187,12 +10187,12 @@
       },
       "extent": {
         "widthMetres": 14.928999900817871,
-        "heightMetres": 21.900000076293935,
+        "heightMetres": 21.899999618530273,
         "depthMetres": 14.851000308990479,
         "depthCoverage": 1.0000000208060387
       },
-      "triangles": 4004,
-      "bytes": 57452,
+      "triangles": 4061,
+      "bytes": 54588,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     },
     "canals-museum": {
@@ -10328,6 +10328,74 @@
       },
       "triangles": 15056,
       "bytes": 161048,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "multatuli": {
+      "id": "multatuli",
+      "name": "Multatuli Museum — Korsjespoortsteeg20",
+      "landmarkId": "extract_landmarks_1273422573",
+      "modelUrl": "./models/multatuli.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012167937"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.891125589486711,
+          52.37749205605756
+        ],
+        "headingDegrees": 33.29545565140216,
+        "lengthMetres": 11.661932831321346,
+        "widthMetres": 4.646381856369287
+      },
+      "surveyed": {
+        "anchor": [
+          4.891125589486711,
+          52.37749205605756
+        ],
+        "northOffsetDegrees": 33.29545565140216,
+        "source": "PDOK exact VBO-to-Pand parent/current footprint, local facade basis"
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 180,
+      "attribution": {
+        "title": "Multatuli Museum",
+        "author": "Map Recall",
+        "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/3133",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free native current BAG house, restrained bell gable and cream timber pui after2022facade photos. Coherent main gable and lower rear extensions informed by AHN5survey; facade details and fine ornament approximate. No photo pixels or third-party mesh."
+      },
+      "bounds": {
+        "min": [
+          -2.470768928527832,
+          -1.9073486612342094e-7,
+          -6.119999885559082
+        ],
+        "max": [
+          2.7250380516052246,
+          14.181904792785645,
+          7.875769138336182
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.891125589486711,
+          52.37749205605756
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 123.29545565140216,
+        "facadeBearingDegrees": 213.2954556514021,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 13.995769023895264,
+        "heightMetres": 14.18190498352051,
+        "depthMetres": 5.195806980133057,
+        "depthCoverage": 1.1182479487798909
+      },
+      "triangles": 4524,
+      "bytes": 57912,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }

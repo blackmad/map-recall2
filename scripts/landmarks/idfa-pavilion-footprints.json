@@ -4315,9 +4315,9 @@
   ],
   "heightNotes": {
     "groundNap": -1.5140000581741333,
-    "main": "AHN5/3DBAG planar contours measured in2023; central roof ~21.9m maximum. Domes rebuilt as original faceted silhouette using surveyed bounds. No whole-building21.9m extrusion.",
+    "main": "AHN5 measured eave16.35m and crest21.72m inform bounded original central hip roof. Fitted dormer/equipment patch surfaces retained only as source evidence; no direct patch rendering.",
     "terrace": "Basement terrace3m elevation; RCEfive-metre terrace measurement describesdepth. Broadcentralstair from2014restoration demonstratedbycurrentIDFAfrontphoto.",
-    "roofUncertainty": "Measured main crest21.72m. Thin corner helm model19.8m follows referenced silhouette; AHN18.5m corner envelope excludes thin tip. Current IDFA mainpage photograph shows upper awnings retracted to narrow scalloped fringes."
+    "roofUncertainty": "Roof continuity repaired2026-10-05 using supported closed envelopes. Current IDFA front photo guides mainhip and four-sided domes; precise small dormers and ornamentalattic remain simplified. Rear exterior photograph unavailable; lowerrearroof profiles informed by survey, never claimed photographically verified."
   },
   "references": [
     {
@@ -4422,5 +4422,54 @@
     "Six eastside archedmainstorey windows follow physical current wall planes; geometrical first-hit glazing checks for allsix bays.",
     "Current enclosed loggias: exposed neararcadeplane infillglass atz6.14m; columns atz6.2m remain proud and separatelyfirst-hit.",
     "Broadred upper awnings omitted ascurrentoperatorphoto showsretractedfringes."
-  ]
+  ],
+  "roofRepair20261005": {
+    "trigger": "User screenshot of native gallery: central slate roof has jagged floating fins and visible gaps. Prior visual acceptance was insufficient; failed evidence retained.",
+    "cause": "All fitted AHN5 RoofSurface fragments were directly admitted, including tiny dormer/equipment/crest fits and disconnected subfaces. Individual rings tested planar to about1mm; nearest-vertex lifting alone is not established as root cause. The patch set was not a supported coherent architectural roof assembly.",
+    "treatment": "Replace every fitted visible roof patch with original bounded main truncated hip, shallow wing hips, rounded four-sided corner domes, and low rear roofs supported on existing shell cornices. Raw surveyed polygons retained as measurement evidence.",
+    "mainRoof": {
+      "eaveMetres": 16.35,
+      "crestMetres": 21.72,
+      "planBounds": [
+        -6.2,
+        -12.2,
+        5,
+        6.4
+      ],
+      "confidence": "High for silhouette/eave/crest; simplified closed hip geometry, not literal per-fragment reconstruction.",
+      "sources": [
+        "https://monumentenregister.cultureelerfgoed.nl/monumenten/504833",
+        "https://cdn2.assets-servd.host/idfa-cms/production/uploads/Institute-Vondelpark/KeyVisual-VondelCS-005.jpg",
+        "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012237216"
+      ]
+    },
+    "cornerDomes": {
+      "baseMetres": 15.2,
+      "domeTopMetres": 18.5,
+      "confidence": "High broad photographed four-sided curved dome silhouette, medium precise simplified curvature; thin existing helm remains separate."
+    },
+    "regressionEvidence": "CPU checks: every roof triangle nondegenerate/upward, only supported eave edges open, dense main-roof rays exactly one surface and bounded gradients,24azimuth sections at3heights cross each main/dome envelope twice. Root gallery/live review pending.",
+    "failedScreenshot": "User supplied codex-clipboard-YDr7Zh.png; root to persist shared screenshot in artifact inventory."
+  },
+  "historicalReferenceAccess": {
+    "boundedAddressSearch": {
+      "date": "2026-10-05",
+      "query": "site.archief.amsterdam \"Vondelpark 3\" paviljoen",
+      "result": "No directly indexed Beeldbank record from one bounded address query. Amsterdam op de kaart address page reports100related Stadsarchief images and an1879design drawing; individual archive sheets not yet accessed/downloaded.",
+      "addressPage": "https://amsterdamopdekaart.nl/1850-1940/Vondelpark/Vondelparkpaviljoen"
+    },
+    "monumentDescription": {
+      "url": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504833",
+      "readEarly": true,
+      "assertion": "Central3bay block slate hipped roof; corner towers slate domes; supported terrace/loggia assembly. Current IDFA/operator photos override altered staircase/glazing/upperbrick appearance."
+    },
+    "bouwdossiers": "Not accessed for this bounded roof regression; no email access request made. Precise attic/dormer restoration details remain unresolved and are not invented."
+  },
+  "privateSourceArchive": {
+    "repository": "https://github.com/blackmad/map-recall2-source-data",
+    "commit": "9c2317a",
+    "modelPath": "models/idfa-pavilion/",
+    "manifest": "models/idfa-pavilion/manifest.json",
+    "scope": "Available cached references and explicitly dated current captures; missing historical responses are not claimed recovered."
+  }
 }

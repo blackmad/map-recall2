@@ -1,0 +1,323 @@
+{
+  "id": "multatuli",
+  "status": "Independent source/gallery, close actual front and conventional rear-roof installation review accepted for scoped native model",
+  "builtOn": "2026-10-05",
+  "builderExport": "buildMultatuli(width, depth, BuildingTools)",
+  "ownedPaths": [
+    "scripts/landmarks/multatuli-builder.ts",
+    "scripts/landmarks/multatuli-spec.json",
+    "scripts/landmarks/multatuli-footprints.json",
+    "scripts/landmarks/multatuli-poi.json",
+    "scripts/landmarks/multatuli-review.json",
+    "scripts/check-multatuli-geometry.ts",
+    "docs/references/multatuli/"
+  ],
+  "cpuChecks": {
+    "command": "node --import tsx scripts/check-multatuli-geometry.ts",
+    "passed": true,
+    "triangles": 4524,
+    "exposedPanes": 15,
+    "roofPlanes": 4,
+    "bounds": [
+      -2.470768928527832,
+      0,
+      -6.119999885559082,
+      2.7250380516052246,
+      14.181904792785645,
+      7.875769138336182
+    ],
+    "verified": [
+      "Finite native geometry and triangle budget",
+      "All15pane samples first-hit exposed",
+      "Four coherent upward-facing roof surfaces",
+      "Current VBO-to-Pand identity links and exact single parent suppression",
+      "Neighbors excluded from suppression",
+      "Current source front perimeter vertices retained",
+      "Low rear roofs do not inherit main house height",
+      "Exterior space remains clear",
+      "Bell shoulder void and rounded crown silhouette probes"
+    ],
+    "typescript": "npx tsc --noEmit --pretty false passed"
+  },
+  "sourceReferences": [
+    "docs/references/multatuli/facade-2022-1.jpg",
+    "docs/references/multatuli/facade-2022-2.jpg",
+    "docs/references/multatuli/bag-addresses.json",
+    "docs/references/multatuli/bag-pand.json",
+    "docs/references/multatuli/3dbag.json",
+    "docs/references/next-batch-archive-research.json"
+  ],
+  "visualRecognitionChecklist": [
+    "Restrained weathered brown-gray brick bell gable, concave shoulders/plain round crown, no elaborate neighboring ornament",
+    "Paired tall9pane windows, paired4pane attic windows, small topopening; no generic rows across roof",
+    "Four-bay cream timber frontage, left paired doors and right display windows",
+    "Raised left stone platform, right descending stair flight and dark rail",
+    "Oval memorial stone centered above timber cornice; no invented painted building-name label",
+    "Continuous steep main roof, two low rear roof zones, exact neighbors and footprint placement"
+  ],
+  "rootReviewRequired": [
+    "Export and shared registration/content-fingerprint bundles",
+    "Native four-angle gallery compared to both2022source photos",
+    "Live southwest street and northeast rear roof views with actual local residency; exact suppression and all3specified neighbors retained",
+    "Actual route chosen to genuine existing Multatuli destination, geographic pin/label, pointer-click sourced card",
+    "Appropriate shared asset/POIcontract checks and route-start smoke before commit"
+  ],
+  "cameraNotes": {
+    "frontBearingDegrees": 213.29545565140216,
+    "surveyedLocalXBearingDegrees": 123.29545565140216,
+    "nativeScale": 1,
+    "frontZ": 5.773739524857755
+  },
+  "limitations": [
+    "Rear facade openings sparse informed inference without rear photograph; review from live backside needed",
+    "Fine lettering on memorial stone, display portraits and minute timber carvings intentionally abstracted; no imported photo pixels",
+    "Facade metrics/ornament counts approximate from2022photos; roof massing informed by AHN5 2023, current Pand year1749 kept separately from RCE probableC17core",
+    "Lower rear roof plane heights simplified to5.5/4.0m; no copied fragments or imported mesh",
+    "No2026photo inspected"
+  ],
+  "noSharedEdits": true,
+  "specPath": "scripts/landmarks/multatuli-spec.json",
+  "neighbors": [
+    [
+      "NL.IMBAG.Pand.0363100012167929"
+    ],
+    [
+      "NL.IMBAG.Pand.0363100012167938"
+    ]
+  ],
+  "bearing": 33.295,
+  "zoom": 19.5,
+  "referenceComparison": {
+    "reviewedOn": "2026-10-05",
+    "reviewer": "independent current-batch reviewer, follow-up close native front and rear roof installation review",
+    "status": "accepted",
+    "sourceEvidence": [
+      "docs/references/multatuli/facade-2022-1.jpg",
+      "docs/references/multatuli/facade-2022-2.jpg"
+    ],
+    "renderEvidence": [
+      "artifacts/multatuli-review/gallery-angle-0.png",
+      "artifacts/multatuli-review/gallery-angle-1.png",
+      "artifacts/multatuli-review/gallery-angle-2.png",
+      "artifacts/multatuli-review/gallery-angle-3.png",
+      "artifacts/multatuli-review/neutral-front.png",
+      "artifacts/multatuli-review/live-front.png",
+      "artifacts/multatuli-review/live-rear.png",
+      "artifacts/multatuli-review/street-front-pui.png",
+      "artifacts/multatuli-review/street-front-full.png",
+      "artifacts/multatuli-review/street-pui-ground-target.png",
+      "artifacts/multatuli-review/rear-roof-overhead.png",
+      "artifacts/multatuli-review/street-front-pui.png",
+      "artifacts/multatuli-review/street-front-full.png",
+      "artifacts/multatuli-review/street-pui-ground-target.png",
+      "artifacts/multatuli-review/rear-roof-overhead.png",
+      "artifacts/multatuli-review/conventional-overhead.png"
+    ],
+    "findings": [
+      "Gallery preserves the restrained brown-grey bell gable with concave shoulders, plain rounded crown and lifting beam, rather than adopting ornate neighboring gables.",
+      "Paired tall nine-pane windows, paired four-pane attic openings and single small upper opening match the source grouping; cream four-bay timber frontage, left paired dark doors, right display glass, raised platform and descending right stairs remain readable. Oval memorial stone is subordinate; no invented name lettering is used.",
+      "Four gallery angles show continuous steep main roof and independently low rear roof zones, attached glazing and blank party walls; no unsupported roof fragments, disconnected caps, window fins or dense surface-interference pattern found.",
+      "Close actual game street-front captures resolve the previous lower-front occlusion: four-bay cream timber frontage and upper clerestories, paired dark doors, display panes, oval memorial stone, raised platform, basement door, railing and right descending stair remain visibly attached beside retained neighboring facades. Combined with the earlier upper-front view, the entire principal composition has actual installation evidence.",
+      "Fresh-page conventional overhead at zoom19.7/pitch0 shows actual roof tops rather than undersides. The small flat slate rear envelope is visible immediately behind the narrow red main roof, with its source-shaped boundary and join to the main house exposed between retained neighbors. Combined with four-angle gallery evidence, this is sufficient for scoped installed low-roof review; no floating cap, fragment or neighbor-filling plate is apparent.",
+      "The earlier zoom21.5 image named rear-roof-overhead was unsuitable and its acceptance inference was withdrawn. Conventional-overhead-proof.json confirms native scale1, no depth bias, exact target parent suppression and all three resident drawable neighbors with no recorded errors."
+    ],
+    "limitations": [
+      "Fine timber carving, memorial lettering, display portraits, facade dimensions and brick weathering simplified in established flat-color style.",
+      "Rear window placement is sparse informed inference; references contain principal frontage only.",
+      "Only 2022 facade photographs inspected, not 2026 current photographs.",
+      "Rear facade remains inferred, with no rear source photograph or unobscured rear elevation comparison; accepted scoped evidence covers installed low rear roofs and neighboring geometry."
+    ],
+    "pending": []
+  },
+  "actualGameContractEvidence": {
+    "log": "/tmp/multatuli-native-review-2.log",
+    "status": "passed; close front and conventional overhead rear roof evidence independently reviewed",
+    "checked": [
+      "chosen genuine destination",
+      "geographic pin/label",
+      "physical sourced-card click",
+      "native scale/placement",
+      "exact BAG parent suppression",
+      "two specified resident drawable neighbors"
+    ]
+  },
+  "closeCameraEvidence": {
+    "reviewedOn": "2026-10-05",
+    "harness": "scripts/landmarks/review-multatuli-close.mjs",
+    "modelUnmodified": true,
+    "nativeScale": 1,
+    "depthBias": false,
+    "neighborCount": 3,
+    "errors": [],
+    "frontAcceptedByIndependentReviewer": true,
+    "usefulFront": [
+      "artifacts/multatuli-review/street-front-pui.png",
+      "artifacts/multatuli-review/street-front-full.png",
+      "artifacts/multatuli-review/street-pui-ground-target.png"
+    ],
+    "proofs": [
+      "artifacts/multatuli-review/close-camera-proof.json",
+      "artifacts/multatuli-review/street-camera-proof.json",
+      "artifacts/multatuli-review/ground-target-camera-proof.json",
+      "artifacts/multatuli-review/rear-roof-overhead-proof.json"
+    ],
+    "failedEvidence": [
+      "artifacts/multatuli-review/close-front.png",
+      "artifacts/multatuli-review/close-front-stoop.png",
+      "artifacts/multatuli-review/close-rear.png",
+      "artifacts/multatuli-review/close-rear-oblique.png",
+      "artifacts/multatuli-review/rear-low-roofs.png",
+      "artifacts/multatuli-review/rear-low-oblique.png",
+      "artifacts/multatuli-review/street-full-ground-target.png",
+      "artifacts/multatuli-review/rear-roofs-ground-target.png"
+    ],
+    "limitations": "Rear captures remain unusable for roof-top visual acceptance; extreme-FOV full-ground-target view also unusable. Native geometry, suppression, materials and neighbors untouched. No new photos/pages researched; private source archive pointer preserved in footprints.",
+    "rearRoofEvidence": "artifacts/multatuli-review/rear-roof-overhead.png",
+    "rearRoofReview": "Standard pitch0/zoom21.5 overhead roof-only capture completed; native model and scene unchanged. Awaiting independent review sufficiency. No rear street/photo facade acceptance."
+  },
+  "referenceComparisonHistory": [
+    {
+      "reviewedOn": "2026-10-05",
+      "reviewer": "independent current-batch reviewer",
+      "status": "gallery-and-live-front-passed-live-rear-pending",
+      "sourceEvidence": [
+        "docs/references/multatuli/facade-2022-1.jpg",
+        "docs/references/multatuli/facade-2022-2.jpg"
+      ],
+      "renderEvidence": [
+        "artifacts/multatuli-review/gallery-angle-0.png",
+        "artifacts/multatuli-review/gallery-angle-1.png",
+        "artifacts/multatuli-review/gallery-angle-2.png",
+        "artifacts/multatuli-review/gallery-angle-3.png",
+        "artifacts/multatuli-review/neutral-front.png",
+        "artifacts/multatuli-review/live-front.png",
+        "artifacts/multatuli-review/live-rear.png",
+        "artifacts/multatuli-review/street-front-pui.png",
+        "artifacts/multatuli-review/street-front-full.png",
+        "artifacts/multatuli-review/street-pui-ground-target.png",
+        "artifacts/multatuli-review/rear-roof-overhead.png"
+      ],
+      "findings": [
+        "Gallery preserves the restrained brown-grey bell gable with concave shoulders, plain rounded crown and lifting beam, rather than adopting ornate neighboring gables.",
+        "Paired tall nine-pane windows, paired four-pane attic openings and single small upper opening match the source grouping; cream four-bay timber frontage, left paired dark doors, right display glass, raised platform and descending right stairs remain readable. Oval memorial stone is subordinate; no invented name lettering is used.",
+        "Four gallery angles show continuous steep main roof and independently low rear roof zones, attached glazing and blank party walls; no unsupported roof fragments, disconnected caps, window fins or dense surface-interference pattern found.",
+        "Native actual game front shows recognizable upper bell-gable/windows and roof between retained adjacent buildings, but foreground roofs hide the entire lower cream frontage, platform and stair. Rear actual view similarly hides the low rear annexes. These captures do not yet verify the full installed frontage or low rear geometry visually.",
+        "Independent reviewer inspected street-front-pui/full: lower doors/display bays, raised platform, basement opening, rail and right descending stairs visibly attached at native game placement; no window fins/roof leakage observed. Upper crop is acceptable alongside previously clear upper facade view.",
+        "Closer ground-target front capture exposes four-bay cream timber frontage, lower paired doors/right displays, upper clerestories, oval memorial stone, stone platform and descending right stair; all three recorded neighbors remain resident, drawable and unsuppressed.",
+        "Multiple closer rear camera attempts are not usable roof-top evidence: they show occlusion/undersides or excessively tight framing. No rear visual acceptance claimed."
+      ],
+      "limitations": [
+        "Fine timber carving, memorial lettering, display portraits, facade dimensions and brick weathering simplified in established flat-color style.",
+        "Rear window placement is sparse informed inference; references contain principal frontage only.",
+        "Only 2022 facade photographs inspected, not 2026 current photographs."
+      ],
+      "pending": [
+        "Independently inspect final standard overhead rear-roof capture for two low roof zones and joins; no rear street-photo facade verification claimed"
+      ]
+    },
+    {
+      "reviewedOn": "2026-10-05",
+      "reviewer": "independent current-batch reviewer, follow-up close native front and rear roof installation review",
+      "status": "accepted",
+      "sourceEvidence": [
+        "docs/references/multatuli/facade-2022-1.jpg",
+        "docs/references/multatuli/facade-2022-2.jpg"
+      ],
+      "renderEvidence": [
+        "artifacts/multatuli-review/gallery-angle-0.png",
+        "artifacts/multatuli-review/gallery-angle-1.png",
+        "artifacts/multatuli-review/gallery-angle-2.png",
+        "artifacts/multatuli-review/gallery-angle-3.png",
+        "artifacts/multatuli-review/neutral-front.png",
+        "artifacts/multatuli-review/live-front.png",
+        "artifacts/multatuli-review/live-rear.png",
+        "artifacts/multatuli-review/street-front-pui.png",
+        "artifacts/multatuli-review/street-front-full.png",
+        "artifacts/multatuli-review/street-pui-ground-target.png",
+        "artifacts/multatuli-review/rear-roof-overhead.png",
+        "artifacts/multatuli-review/street-front-pui.png",
+        "artifacts/multatuli-review/street-front-full.png",
+        "artifacts/multatuli-review/street-pui-ground-target.png",
+        "artifacts/multatuli-review/rear-roof-overhead.png"
+      ],
+      "findings": [
+        "Gallery preserves the restrained brown-grey bell gable with concave shoulders, plain rounded crown and lifting beam, rather than adopting ornate neighboring gables.",
+        "Paired tall nine-pane windows, paired four-pane attic openings and single small upper opening match the source grouping; cream four-bay timber frontage, left paired dark doors, right display glass, raised platform and descending right stairs remain readable. Oval memorial stone is subordinate; no invented name lettering is used.",
+        "Four gallery angles show continuous steep main roof and independently low rear roof zones, attached glazing and blank party walls; no unsupported roof fragments, disconnected caps, window fins or dense surface-interference pattern found.",
+        "Close actual game street-front captures resolve the previous lower-front occlusion: four-bay cream timber frontage and upper clerestories, paired dark doors, display panes, oval memorial stone, raised platform, basement door, railing and right descending stair remain visibly attached beside retained neighboring facades. Combined with the earlier upper-front view, the entire principal composition has actual installation evidence.",
+        "Rear roof overhead capture exposes the low slate extension envelope behind the red main ridge and its supported step/join. No floating plate, fragmented spike or roof hole is visible; bounding ordinary neighboring buildings remain drawn. This establishes installed low-roof composition, not photo-verified rear facade detail.",
+        "Close-view proof confirms unmodified model at native scale1, no depth bias, exact target parent suppressed and all three recorded neighbors resident/unhidden/drawable. Initial distant front/rear views were inadequate and are preserved in review history rather than treated as acceptance evidence alone."
+      ],
+      "limitations": [
+        "Fine timber carving, memorial lettering, display portraits, facade dimensions and brick weathering simplified in established flat-color style.",
+        "Rear window placement is sparse informed inference; references contain principal frontage only.",
+        "Only 2022 facade photographs inspected, not 2026 current photographs.",
+        "Rear facade remains inferred, with no rear source photograph or unobscured rear elevation comparison; accepted scoped evidence covers installed low rear roofs and neighboring geometry."
+      ],
+      "pending": []
+    },
+    {
+      "reviewedOn": "2026-10-05",
+      "reviewer": "independent current-batch reviewer, follow-up close native front and rear roof installation review",
+      "status": "front-gallery-passed-rear-live-pending",
+      "sourceEvidence": [
+        "docs/references/multatuli/facade-2022-1.jpg",
+        "docs/references/multatuli/facade-2022-2.jpg"
+      ],
+      "renderEvidence": [
+        "artifacts/multatuli-review/gallery-angle-0.png",
+        "artifacts/multatuli-review/gallery-angle-1.png",
+        "artifacts/multatuli-review/gallery-angle-2.png",
+        "artifacts/multatuli-review/gallery-angle-3.png",
+        "artifacts/multatuli-review/neutral-front.png",
+        "artifacts/multatuli-review/live-front.png",
+        "artifacts/multatuli-review/live-rear.png",
+        "artifacts/multatuli-review/street-front-pui.png",
+        "artifacts/multatuli-review/street-front-full.png",
+        "artifacts/multatuli-review/street-pui-ground-target.png",
+        "artifacts/multatuli-review/rear-roof-overhead.png",
+        "artifacts/multatuli-review/street-front-pui.png",
+        "artifacts/multatuli-review/street-front-full.png",
+        "artifacts/multatuli-review/street-pui-ground-target.png",
+        "artifacts/multatuli-review/rear-roof-overhead.png"
+      ],
+      "findings": [
+        "Gallery preserves the restrained brown-grey bell gable with concave shoulders, plain rounded crown and lifting beam, rather than adopting ornate neighboring gables.",
+        "Paired tall nine-pane windows, paired four-pane attic openings and single small upper opening match the source grouping; cream four-bay timber frontage, left paired dark doors, right display glass, raised platform and descending right stairs remain readable. Oval memorial stone is subordinate; no invented name lettering is used.",
+        "Four gallery angles show continuous steep main roof and independently low rear roof zones, attached glazing and blank party walls; no unsupported roof fragments, disconnected caps, window fins or dense surface-interference pattern found.",
+        "Close actual game street-front captures resolve the previous lower-front occlusion: four-bay cream timber frontage and upper clerestories, paired dark doors, display panes, oval memorial stone, raised platform, basement door, railing and right descending stair remain visibly attached beside retained neighboring facades. Combined with the earlier upper-front view, the entire principal composition has actual installation evidence.",
+        "The file named rear-roof-overhead.png is not a reliable overhead comparison: neighboring wall/roof undersides dominate and the camera appears below surrounding real roof elevations. A central slate patch does not establish the full low-roof envelope or joins. Earlier independent closure based on this image was withdrawn after root identified the camera limitation."
+      ],
+      "limitations": [
+        "Fine timber carving, memorial lettering, display portraits, facade dimensions and brick weathering simplified in established flat-color style.",
+        "Rear window placement is sparse informed inference; references contain principal frontage only.",
+        "Only 2022 facade photographs inspected, not 2026 current photographs.",
+        "Rear facade remains inferred, with no rear source photograph or unobscured rear elevation comparison; accepted scoped evidence covers installed low rear roofs and neighboring geometry."
+      ],
+      "pending": [
+        "Inspect one conventional fresh-page actual game overhead rear capture at lower zoom to expose the low roof envelope without camera undersides/occlusion"
+      ]
+    }
+  ],
+  "closeInstallationEvidence": {
+    "proof": "artifacts/multatuli-review/conventional-overhead-proof.json",
+    "modelUnmodified": true,
+    "scale": 1,
+    "depthBias": false,
+    "exactParent": "NL.IMBAG.Pand.0363100012167937",
+    "residentDrawableNeighbors": [
+      "NL.IMBAG.Pand.0363100012167929",
+      "NL.IMBAG.Pand.0363100012167938",
+      "NL.IMBAG.Pand.0363100012179680"
+    ],
+    "errors": [],
+    "visualLimitation": "Rear roof envelope reviewed from conventional actual overhead; rear facade remains inferred without a source photograph or unobscured elevation comparison. Earlier high-zoom underside capture is not acceptance evidence."
+  },
+  "rootAcceptance": {
+    "date": "2026-10-05",
+    "status": "verified-scoped-model",
+    "evidence": "artifacts/multatuli-review/",
+    "checks": "Root inspected gallery, source2022photo, actual native front and fresh conventional rear roof view; independent review passed. Actual destination, pin, physical sourced card, native scale, exact suppression and resident drawable neighbors passed.",
+    "limitations": "Rear facade openings remain inferred without source photograph. Earlier underside/occluded captures were rejected and retained; accepted roof evidence uses fresh ordinary camera."
+  }
+}

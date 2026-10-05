@@ -21,9 +21,9 @@
     }
   ],
   "counts": {
-    "manual-model": 153,
+    "manual-model": 154,
     "procedural-kit": 15,
-    "pending": 159
+    "pending": 158
   },
   "destinations": [
     {
@@ -2174,7 +2174,8 @@
       "type": "museum",
       "queueRank": 170,
       "origin": "POI Destinations",
-      "status": "pending",
+      "status": "manual-model",
+      "modelId": "multatuli",
       "treatment": "building"
     },
     {

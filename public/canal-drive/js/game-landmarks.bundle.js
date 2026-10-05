@@ -6652,6 +6652,43 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original texture-free sandstone French neo-Renaissance double house. Exact BAG perimeter at scale1 with separately low middle/rear roof zones. Salm1888drawing resolves window groups, carriage entry, dormer assemblies;2016municipalphoto overrides obsolete standing ridge figures and small dormers. AHN5roof levels guide heights; carved reliefs and skylight are visual approximations. No imported mesh or reference-photo pixels."
       }
+    },
+    {
+      id: "multatuli",
+      name: "Multatuli Museum \u2014 Korsjespoortsteeg20",
+      landmarkId: "extract_landmarks_1273422573",
+      modelUrl: "./models/multatuli.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012167937"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.891125589486711,
+          52.37749205605756
+        ],
+        headingDegrees: 33.29545565140216,
+        lengthMetres: 11.661932831321346,
+        widthMetres: 4.646381856369287
+      },
+      surveyed: {
+        anchor: [
+          4.891125589486711,
+          52.37749205605756
+        ],
+        northOffsetDegrees: 33.29545565140216,
+        source: "PDOK exact VBO-to-Pand parent/current footprint, local facade basis"
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 180,
+      attribution: {
+        title: "Multatuli Museum",
+        author: "Map Recall",
+        sourceUrl: "https://monumentenregister.cultureelerfgoed.nl/monumenten/3133",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free native current BAG house, restrained bell gable and cream timber pui after2022facade photos. Coherent main gable and lower rear extensions informed by AHN5survey; facade details and fine ornament approximate. No photo pixels or third-party mesh."
+      }
     }
   ];
 
@@ -9658,6 +9695,34 @@ Map source: ${osmUrl(places[i][0])}`);
           url: "https://www.niod.nl/contact-en-bereikbaarheid/"
         }
       ]
+    },
+    {
+      modelId: "multatuli",
+      landmarkId: "extract_landmarks_1273422573",
+      name: "Multatuli Museum",
+      center: [
+        52.3774872,
+        4.8911258
+      ],
+      description: "This small house on Korsjespoortsteeg is the birthplace of Eduard Douwes Dekker, better known as Multatuli. His novel Max Havelaar challenged exploitation in the Dutch East Indies, where he had worked as a colonial civil servant. The museum preserves his workplace, furniture and books. The protected house has a bell gable and a memorial stone on its street facade.",
+      funFact: "Multatuli also argued for women\u2019s emancipation and voting rights, and for workers\u2019 rights; his campaigns reached beyond the colonial abuses exposed by Max Havelaar.",
+      sourceUrl: "https://www.multatuli-museum.nl/museum",
+      sourceLinks: [
+        {
+          title: "Museum and writer",
+          url: "https://www.multatuli-museum.nl/museum"
+        },
+        {
+          title: "National monument3133",
+          url: "https://monumentenregister.cultureelerfgoed.nl/monumenten/3133"
+        },
+        {
+          title: "Museum entrance at Korsjespoortsteeg20",
+          url: "https://www.multatuli-museum.nl/bezoekersinformatie"
+        }
+      ],
+      website: "https://www.multatuli-museum.nl/",
+      identityNotes: "Keep existing genuine museum destination; both museum and residence belong to same Pand, no duplicate residential POI."
     }
   ];
 

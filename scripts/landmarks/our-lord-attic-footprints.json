@@ -223,6 +223,53 @@
     "Historic house Oudezijds Voorburgwal 40 and the two incorporated rear alley houses share BAG0363100012178021; entrance38 is separate BAG0363100012178040.",
     "Heintje Hoekssteeg remains open above ground; connection is underground and is deliberately not drawn as an opaque street bridge.",
     "Native WGS84 surveys inherited from cached canal-museum-footprints source. Heights 19.8/17.6 are envelope guidance, not uniform wall heights. Eaves14/14.8 and facade bay dimensions are photograph-derived approximations.",
-    "Historic main facade four sash bays, white lower pui, basement and raised entry stairs, shoulder-scroll triangular gable with two lower attic windows and one upper; modern entrance three ungridded bays, recycled brick and red lintels, tile gable/dormer and rear roof lantern."
-  ]
+    "Historic main facade four sash bays, white lower pui, basement and raised entry stairs, shoulder-scroll triangular gable with two lower attic windows and one upper; modern entrance three ungridded bays, recycled brick and red lintels, tile gable/dormer and rear roof lantern.",
+    "2026-10-05 current-photo repair supersedes earlier tile-gable interpretation of modern entrance; straight front coping, set-back roof and glazing box are used instead."
+  ],
+  "windowRepairEvidence": {
+    "reviewedOn": "2026-10-05",
+    "cachedImages": [
+      {
+        "path": "/tmp/solder-front.jpg",
+        "source": "https://opsolder.nl/en/media-and-press/",
+        "buildingPart": "Historic canal facade and current modern entrance",
+        "assertions": [
+          "Historic main frontage has four sash bays and three gable openings; white sash frame and sill relief is shallow.",
+          "Present modern entrance ends with straight red coping and a glazed roof box behind it."
+        ],
+        "confidence": "high current-photo morphology; roof dimensions approximate"
+      },
+      {
+        "path": "/tmp/attic-reference-contractor.jpg",
+        "source": "https://www.nlbouwmeesters.nl/projecten/museum-ons-lieve-heer-op-solder/",
+        "buildingPart": "Current modern entrance facade and alley return",
+        "assertions": [
+          "Modern windows have thin dark flush frame and narrow shallow projecting sill; red brick lintels sit in facade plane.",
+          "Alley return has sparse openings, not a complete repetitive grid. Adjacent party wall is not an exposed street facade."
+        ],
+        "confidence": "high for facade relief/roof termination, medium for simplified alley distribution"
+      },
+      {
+        "path": "/tmp/attic-reference-mason.jpg",
+        "source": "https://vekemans.nl/2015/04/15/historische-gevel-opnieuw-opgebouwd/",
+        "buildingPart": "Earlier reconstructed modern front",
+        "assertions": [
+          "Earlier photographed front has triangular tile termination; differs from present contractor/front photographs and is not used as current roof-front authority."
+        ],
+        "confidence": "high photo discrepancy; precise alteration date unresolved"
+      }
+    ],
+    "repairDecision": "Use current straight-coping front with hipped roof set back behind it and glazed roof box; remove generic roof-band/front/party-wall rows and physically attach thin pane frames. Preserve historic bespoke three gable openings.",
+    "limitations": [
+      "Alley windows below eave retain bounded approximate spacing; no claim that photo establishes every opening.",
+      "Roof dimensions remain native-envelope/photo approximations; root multi-angle visual review pending."
+    ]
+  },
+  "privateSourceArchive": {
+    "repository": "https://github.com/blackmad/map-recall2-source-data",
+    "commit": "9c2317a",
+    "modelPath": "models/ons-lieve-heer-op-solder/",
+    "manifest": "models/ons-lieve-heer-op-solder/manifest.json",
+    "scope": "Available cached references and explicitly dated current captures; missing historical responses are not claimed recovered."
+  }
 }

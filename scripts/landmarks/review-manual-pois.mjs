@@ -20,6 +20,16 @@ try{
  await page.waitForFunction(()=>window.review?.done,null,{timeout:120000});
  assert.deepEqual(await page.evaluate(()=>review.errors),[]);
  for(const {spec:s} of targets){fs.mkdirSync(`artifacts/${s.id}-review`,{recursive:true});await page.locator('article').filter({has:page.getByRole('heading',{name:s.name,exact:true})}).screenshot({path:`artifacts/${s.id}-review/gallery.png`});}
+ // A single accepted angle missed roof fins and misplaced side windows. Keep
+ // four lower-angle views plus the original higher gallery view for each asset.
+ await page.evaluate(()=>{main.style.display='block';});
+ for(const {spec:s} of targets){
+  await page.evaluate(id=>{for(const e of entries){e.view.closest('article').style.display=e.spec.id===id?'block':'none';if(e.spec.id===id){e.view.style.width='1000px';e.view.style.height='650px';e.view.closest('article').style.width='1002px';}}},s.id);
+  for(let angle=0;angle<4;angle++){
+   await page.evaluate(({id,angle})=>{const e=entries.find(e=>e.spec.id===id);e.theta=.55+angle*Math.PI/2;e.phi=1.30;frame(e);},{id:s.id,angle});
+   await page.locator('article').filter({has:page.getByRole('heading',{name:s.name,exact:true})}).screenshot({path:`artifacts/${s.id}-review/gallery-angle-${angle}.png`});
+  }
+ }
  for(const plan of targets){const s=plan.spec,out=`artifacts/${s.id}-review`;
   await page.goto(`${base}/canal-drive/`);
   await page.waitForFunction(()=>window.canalRecallGame?.routePois?.length,null,{timeout:180000});
