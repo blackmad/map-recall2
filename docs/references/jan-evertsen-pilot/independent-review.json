@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-05",
+  "reviewer": "independent pilot_generator_review agent",
+  "decision": "bounded generator geometry accepted after corrective recheck; native drafts and neighborhood/production visual acceptance remain provisional",
+  "scope": [
+    "Source lower shop/canopy screenshot only",
+    "Two native Jan Evertsen GLB drafts, all eight front/oblique/rear CPU previews",
+    "Continuous shop canopy shared generator dispatch and budget",
+    "Houseboat classifier and three paired CPU examples"
+  ],
+  "standards": [
+    "public/canal-drive/street-rhythm-work.json",
+    "AGENTS.md: independent failure seeking; actual gameplay and performance evidence required; tests and CPU geometry do not establish visual acceptance"
+  ],
+  "failures": [
+    {
+      "id": "canopy-bend-open-joint",
+      "status": "historical failed evidence preserved; bounded reproduction fixed on corrective recheck",
+      "severity": "blocks bent-front transfer",
+      "source": "src/canalRecall/shopCanopies.ts continuousShopCanopy / src/canalRecall/threeBuildingMesh.ts wallRuns",
+      "reproduction": {
+        "turnDegrees": 24,
+        "projectionM": 0.85,
+        "firstNoseEnd": [
+          3,
+          -0.85
+        ],
+        "secondNoseStart": [
+          3.34572614661443,
+          -0.7765136389962107
+        ],
+        "openOuterEdgeDistanceM": 0.3534498743901906,
+        "triangles": 72
+      },
+      "finding": "Each facet closes with its own end cap. Offset outer edges leave a wedge at convex joins, despite wallRuns admitting this bend as one facade. The existing bend test checks count/normals but cannot establish continuity.",
+      "correction": "Join nose and fascia cross-sections at their supported bend, or withhold noncollinear continuous runs; verify actual closed outer boundary and native-view silhouette. Straight native drafts are unaffected."
+    },
+    {
+      "id": "canopy-mild-bends-budget-loss",
+      "status": "historical failed evidence preserved; bounded reproduction fixed on corrective recheck",
+      "severity": "blocks general curved-front transfer",
+      "reproduction": {
+        "facets": 6,
+        "lengthPerFacetM": 3,
+        "turnPerFacetRadians": 0.01,
+        "requiredTriangles": 216,
+        "outerSinkBudget": 1000,
+        "wallBudget": 180,
+        "emittedTriangles": 0
+      },
+      "finding": "Nearly straight surveyed facets are not merged when their normals differ. Six mild bends exhaust the hard wall cap and atomic rollback removes the defining canopy completely. This is a safe rollback but an unsupported architectural capability, not visual acceptance.",
+      "correction": "Bound the supported curved topology explicitly or retain defining continuous coverage within budget without changing the source footprint; test the real per-wall dispatcher, not just standalone high-budget assembly."
+    }
+  ],
+  "janDraftReview": {
+    "images": [
+      "artifacts/jan-evertsen-pilot/previews/jan-evertsen-native-0363100012118917-cpu-front.png",
+      "artifacts/jan-evertsen-pilot/previews/jan-evertsen-native-0363100012118917-cpu-front-left.png",
+      "artifacts/jan-evertsen-pilot/previews/jan-evertsen-native-0363100012118917-cpu-front-right.png",
+      "artifacts/jan-evertsen-pilot/previews/jan-evertsen-native-0363100012118917-cpu-rear.png",
+      "artifacts/jan-evertsen-pilot/previews/jan-evertsen-native-0363100012096187-cpu-front.png",
+      "artifacts/jan-evertsen-pilot/previews/jan-evertsen-native-0363100012096187-cpu-front-left.png",
+      "artifacts/jan-evertsen-pilot/previews/jan-evertsen-native-0363100012096187-cpu-front-right.png",
+      "artifacts/jan-evertsen-pilot/previews/jan-evertsen-native-0363100012096187-cpu-rear.png"
+    ],
+    "reference": "/var/folders/tl/40rt5yw54v150s3k8shhw5y00000gn/T/codex-clipboard-6v6RcK.png",
+    "boundedFindings": [
+      "Continuous projecting canopy, pale lower fascia and dark upper edge are recognizable in both oblique draft views. Tall pale-framed ground glazing and independent door remain exposed.",
+      "Native notched footprint is visibly retained in second draft; roof occupies its actual outline.",
+      "Side and rear blank masonry are visible. These are documented provisional omissions and cannot establish source resemblance or game-scene neighbor preservation.",
+      "The draft uses rectangular BuildingTools canopy boxes; the shared generator has a rounded dark nose. Its rounded capability is not visually demonstrated by these native draft previews.",
+      "Upper count/grouping and flat roof are unsupported provisional choices. Supplied screenshot crops these; no assessment of whole-building source resemblance is possible."
+    ],
+    "pending": [
+      "Official address/VBO/Pand relationship; no claim either model depicts Kwakman 94",
+      "Current full upper elevation and roof source; source-derived heldout samples",
+      "Actual gallery/live game placement, exact neighbor suppression, fallback, desktop/touch pans",
+      "Actual-scene CPU/GPU and streaming evidence; no production completion",
+      "Available-input source archive reportedly committed; confirm canonical model source path/commit linkage before promotion"
+    ]
+  },
+  "houseboatReview": {
+    "decision": "bounded CPU visual improvement supported; no actual photo fidelity or full-scene acceptance",
+    "images": [
+      "artifacts/landmark-offline-preview/boat-w57863486-before-cpu-side.png",
+      "artifacts/landmark-offline-preview/boat-w57863486-after-cpu-side.png",
+      "artifacts/landmark-offline-preview/boat-w96706553-before-cpu-side.png",
+      "artifacts/landmark-offline-preview/boat-w96706553-after-cpu-side.png",
+      "artifacts/landmark-offline-preview/boat-w174999382-before-cpu-side.png",
+      "artifacts/landmark-offline-preview/boat-w174999382-after-cpu-side.png"
+    ],
+    "findings": [
+      "w57863486 and w96706553 now read as residential rectangular houseboats with ordinary framed windows rather than tiny-window ship cabins. No visible buried-pane regression in these side views.",
+      "w174999382 retains the curved museum ship hull. Its cabin grows and windows become wider/taller; its hull class preservation does not mean surveyed cabin fidelity.",
+      "w96706553 loses its source-outline notch when it enters the existing rectangular ark branch. This is a visible treatment consequence requiring source/context review; classifier checks alone cannot certify footprint fidelity.",
+      "The whole-fixture check changes 207 hull classifications; three CPU pairs cannot establish all changed outlines are correctly classified.",
+      "Corrective recheck restores the previously lost w96706553 mapped pontoon/deck notch; retain prior finding as historical failure evidence."
+    ],
+    "pending": [
+      "Compare changed classifier cases to actual source/context, including unusual notched outlines",
+      "Actual game water placement, neighborhood composition, camera pan and performance evidence"
+    ]
+  },
+  "checks": [
+    {
+      "command": "node --import tsx --test src/canalRecall/shopCanopies.test.ts",
+      "result": "4 tests pass; insufficient to disprove the documented bend/budget failures"
+    },
+    {
+      "command": "node --import tsx scripts/check-houseboat-hull-classification.ts",
+      "result": "passed: ark 2123, barge 959, changedFromVertexRule 207; total classified 3082 rather than a blanket claim all 3083 outlines are geometrically classifiable"
+    },
+    {
+      "command": "node --import tsx scripts/jan-evertsen-pilot/check.ts",
+      "result": "passed: 1584 and 1300 triangles, finite native bounds, upward roofs, first-hit glazing, no textures, budgets"
+    }
+  ],
+  "correctiveRecheck": {
+    "reviewedOn": "2026-10-05",
+    "decision": "accepted bounded geometry correction; no full visual or production acceptance",
+    "canopy": [
+      "Miter intersections now align both slab and fascia cross-sections and omit internal end caps. Positive/negative 25 degree regression checks require each per-material triangle edge to have exactly two neighbors; inspected code and six passing tests support closure for these cases.",
+      "Six connected mild bends now emit 146 triangles through wallExtras within the unchanged 180 wall allowance. Original 216-triangle/zero-output failure is corrected without a budget increase.",
+      "This accepts the tested bounded geometry only; arbitrary high-facet/short-edge curves and neighborhood transfer are not certified."
+    ],
+    "houseboats": [
+      "Mapped ark pontoon now uses source-ring triangulation/walls. Exposed deck is clipped to that ring instead of restoring a rectangular notch fill.",
+      "w96706553 updated CPU side image inspected: left hull indentation survives beneath the residential cabin. Explicit real-notch fixture requires waterline vertices to match mapped source vertices.",
+      "Hull classification checks pass and now explicitly account for 3082 classified plus one skipped degenerate outline."
+    ],
+    "sourceArchive": {
+      "status": "root reports available-input private source pack committed and pushed from isolated clone; not independently re-fetched by reviewer",
+      "commit": "65cf81b476c757a363f59aec86a76db824b48598",
+      "remainingGaps": "Address ownership, current whole upper elevation, roof and access gaps remain; archival does not fill missing sources."
+    },
+    "proceduralExports": [
+      "Inspected procedural report: exact buildFeatureChunk/photo walls+extras geometry, original Pand identity and canopy ownership recorded. Runtime chunk sidecars retain UV/layers.",
+      "No atlas in GLB means ordinary painted windows/doors are omitted in this comparison artifact; exports cannot serve as full ordinary-facade visual acceptance.",
+      "Development comparison page can expose unaccepted drafts; it must not register an accepted neighborhood/profile or imply runtime-scene acceptance."
+    ],
+    "checks": [
+      {
+        "command": "node --import tsx --test src/canalRecall/shopCanopies.test.ts",
+        "result": "6 pass, including manifold \u00b125 degree closure and six mild-bend wall-budget retention"
+      },
+      {
+        "command": "node --import tsx scripts/check-houseboat-hull-classification.ts",
+        "result": "pass, including w96706553 actual notch waterline and explicit skippedDegenerate:1"
+      }
+    ],
+    "remainingAcceptanceGates": [
+      "Source-derived address/full-elevation/roof review",
+      "Independent actual generator visual comparison with normal textured facade, representative and heldout rows",
+      "Live gameplay placement, neighbors/suppression/fallback, desktop/touch camera pans and streaming",
+      "Actual-scene CPU/GPU performance"
+    ]
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "status": "unaccepted-geometry-inventory",
+  "sourcePath": "public/data/extracts/amsterdam/building-tiles/14/8412/5384.geojson.gz",
+  "sourceSHA256": "a99197c84e90cd689f5c38eaac5e4842b1964886708789f4af4f6b522da01d6d",
+  "bounds": [
+    4.85175,
+    52.3701,
+    4.85255,
+    52.3708
+  ],
+  "streetCenterApproximateSegment": [
+    [
+      4.851836,
+      52.37036
+    ],
+    [
+      4.852514,
+      52.37048
+    ]
+  ],
+  "streetSegmentStatus": "approximate from parallel footprint rows; not official road survey",
+  "candidates": [
+    {
+      "role": "heldout-east-native-candidate",
+      "id": "NL.IMBAG.Pand.0363100012072380",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012072380",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 16.54
+      },
+      "footprint": [
+        [
+          4.852206,
+          52.370637
+        ],
+        [
+          4.852122,
+          52.370622
+        ],
+        [
+          4.852175,
+          52.370506
+        ],
+        [
+          4.85226,
+          52.37052
+        ],
+        [
+          4.852206,
+          52.370637
+        ]
+      ],
+      "frontageVertices": [
+        [
+          4.852175,
+          52.370506
+        ],
+        [
+          4.85226,
+          52.37052
+        ]
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ],
+      "sourceAdmission": "native geometry only; facade inference prohibited until source review"
+    },
+    {
+      "role": "transition-west-native-candidate",
+      "id": "NL.IMBAG.Pand.0363100012088014",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012088014",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 16.53
+      },
+      "footprint": [
+        [
+          4.851938,
+          52.370623
+        ],
+        [
+          4.851853,
+          52.370609
+        ],
+        [
+          4.851921,
+          52.370462
+        ],
+        [
+          4.852006,
+          52.370476
+        ],
+        [
+          4.851938,
+          52.370623
+        ]
+      ],
+      "frontageVertices": [
+        [
+          4.851921,
+          52.370462
+        ],
+        [
+          4.852006,
+          52.370476
+        ]
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ],
+      "sourceAdmission": "native geometry only; facade inference prohibited until source review"
+    },
+    {
+      "role": "representative-native-draft",
+      "id": "NL.IMBAG.Pand.0363100012096187",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012096187",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 14.43
+      },
+      "footprint": [
+        [
+          4.852096,
+          52.370678
+        ],
+        [
+          4.852011,
+          52.370664
+        ],
+        [
+          4.852024,
+          52.370636
+        ],
+        [
+          4.852056,
+          52.370641
+        ],
+        [
+          4.852069,
+          52.370613
+        ],
+        [
+          4.852037,
+          52.370607
+        ],
+        [
+          4.85209,
+          52.370491
+        ],
+        [
+          4.852175,
+          52.370506
+        ],
+        [
+          4.852096,
+          52.370678
+        ]
+      ],
+      "frontageVertices": [
+        [
+          4.85209,
+          52.370491
+        ],
+        [
+          4.852175,
+          52.370506
+        ]
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ],
+      "sourceAdmission": "native geometry only; facade inference prohibited until source review"
+    },
+    {
+      "role": "heldout-opposite-native-candidate",
+      "id": "NL.IMBAG.Pand.0363100012096804",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012096804",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 16.51,
+        "roofShape": "flat"
+      },
+      "footprint": [
+        [
+          4.852383,
+          52.370261
+        ],
+        [
+          4.852298,
+          52.370247
+        ],
+        [
+          4.852352,
+          52.370128
+        ],
+        [
+          4.852437,
+          52.370143
+        ],
+        [
+          4.852383,
+          52.370261
+        ]
+      ],
+      "frontageVertices": [
+        [
+          4.852383,
+          52.370261
+        ],
+        [
+          4.852298,
+          52.370247
+        ]
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ],
+      "sourceAdmission": "native geometry only; facade inference prohibited until source review"
+    },
+    {
+      "role": "representative-native-draft",
+      "id": "NL.IMBAG.Pand.0363100012118917",
+      "properties": {
+        "id": "NL.IMBAG.Pand.0363100012118917",
+        "tier": 3,
+        "minHeight": 0,
+        "height": 16.5
+      },
+      "footprint": [
+        [
+          4.852014,
+          52.370658
+        ],
+        [
+          4.851929,
+          52.370643
+        ],
+        [
+          4.852006,
+          52.370476
+        ],
+        [
+          4.85209,
+          52.370491
+        ],
+        [
+          4.852014,
+          52.370658
+        ]
+      ],
+      "frontageVertices": [
+        [
+          4.852006,
+          52.370476
+        ],
+        [
+          4.85209,
+          52.370491
+        ]
+      ],
+      "referenceCamera": [
+        4.8520526,
+        52.3703986
+      ],
+      "sourceAdmission": "native geometry only; facade inference prohibited until source review"
+    }
+  ]
+}

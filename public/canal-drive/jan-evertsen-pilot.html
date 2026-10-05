@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jan Evertsenstraat draft comparison</title>
+<style>
+  :root{--bg:#ebe7dd;--ink:#303b43;--mut:#6d6a63;--line:#d4cfc3;--card:#f7f4ec;--link:#2f5d8a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+  header{padding:22px 32px 6px}
+  h1{font-size:24px;margin:0 0 6px}
+  header p{margin:0;color:var(--mut);max-width:76ch}
+  code{font-size:12.5px;background:rgba(0,0,0,.05);border-radius:4px;padding:1px 4px}
+  main{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr));gap:16px;padding:16px 32px 48px}
+  article{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+  h2{font-size:15px;line-height:1.35;margin:0;padding:12px 14px 6px}
+  .view{height:300px;background:var(--bg);position:relative}
+  .view canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
+  .view canvas:active{cursor:grabbing}
+  .view .error{position:absolute;inset:0;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;color:#9a4a3a;font-size:13px;text-align:center;padding:16px}
+  .view .error small{color:var(--mut);font-size:11px;word-break:break-all}
+  .meta{margin:0;padding:8px 14px;color:var(--mut);font-size:12px}
+  .links{margin:auto 0 0;padding:10px 14px 12px;border-top:1px solid var(--line);font-size:13px}
+  .sort-controls{display:flex;align-items:center;gap:8px;margin-top:12px}
+  select{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:5px;padding:5px 8px}
+  a{color:var(--link);text-underline-offset:3px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Jan Evertsenstraat draft comparison</h1>
+  <p><a href="landmark-queue.html">Building queue</a> &middot; <a href="park-landscape.html">Park views</a> &middot; <a href="tree-models.html">Tree models</a> &middot; <a href="model-reuse-review.html">Reusable model review</a></p>
+  <p>Two native-footprint house drafts alongside their procedural geometry previews. Upper facades, roof forms and photographed addresses remain provisional. Procedural previews omit the painted window/door atlas. Drag to orbit; scroll to zoom. These candidates are separate from the live city profiles.</p>
+  <div class="sort-controls"><label for="model-sort">Sort models</label><select id="model-sort">
+    <option value="default">Catalogue order</option><option value="newest" selected>Newest updated</option>
+    <option value="oldest">Oldest updated</option><option value="name">Name</option>
+  </select><span id="date-status" role="status"></span></div>
+</header>
+<main></main>
+<script src="./js/three.bundle.js"></script>
+<script src="./js/signature-placement.bundle.js"></script>
+<script>
+// One WebGL context for the whole page, blitted into a 2D canvas per model.
+// A renderer per model would exhaust the browser's context budget before the
+// sixteen listed here finished loading.
+const { THREE: T, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
+const selectedIds = new Set((new URLSearchParams(location.search).get('only') || '').split(',').filter(Boolean));
+const MODELS = [{"id": "jan-evertsen-native-0363100012118917", "name": "Native GLB draft · 0363100012118917", "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-native-0363100012118917.glb?asset=5cc3df3eea3f3079", "attribution": {"author": "Original project geometry", "licence": "Source and game review pending"}}, {"id": "jan-evertsen-native-0363100012096187", "name": "Native GLB draft · 0363100012096187", "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-native-0363100012096187.glb?asset=a2980a284da57718", "attribution": {"author": "Original project geometry", "licence": "Source and game review pending"}}, {"id": "jan-evertsen-procedural-0363100012118917", "name": "Procedural geometry preview · 0363100012118917", "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-procedural-0363100012118917.glb?asset=5cf327969489eeb9", "attribution": {"author": "Original project geometry", "licence": "Facade atlas omitted from this geometry preview"}}, {"id": "jan-evertsen-procedural-0363100012096187", "name": "Procedural geometry preview · 0363100012096187", "modelUrl": "./models/jan-evertsen-pilot/jan-evertsen-procedural-0363100012096187.glb?asset=171ba54746b6a457", "attribution": {"author": "Original project geometry", "licence": "Facade atlas omitted from this geometry preview"}}];
+const main = document.querySelector('main');
+
+window.review = { loaded: [], errors: [], total: MODELS.length, done: MODELS.length === 0 };
+
+const renderer = new T.WebGLRenderer({ antialias: true });
+const loader = new GLTFLoader();
+if (MeshoptDecoder) loader.setMeshoptDecoder(MeshoptDecoder);
+
+const entries = [];
+const sortControl = document.querySelector('#model-sort');
+const requestedSort = new URLSearchParams(location.search).get('sort');
+if (['default', 'newest', 'oldest', 'name'].includes(requestedSort)) sortControl.value = requestedSort;
+let modelDates = {};
+function sortModels() {
+  const mode = sortControl.value;
+  const ordered = [...entries].sort((a, b) => {
+    if (mode === 'name') return (a.spec.name || a.spec.id).localeCompare(b.spec.name || b.spec.id) || a.order - b.order;
+    if (mode === 'newest' || mode === 'oldest') {
+      const at = Date.parse(modelDates[a.spec.id]?.updatedAt), bt = Date.parse(modelDates[b.spec.id]?.updatedAt);
+      if (!Number.isFinite(at) || !Number.isFinite(bt)) return Number.isFinite(at) ? -1 : Number.isFinite(bt) ? 1 : a.order - b.order;
+      return (mode === 'newest' ? bt - at : at - bt) || a.order - b.order;
+    }
+    return a.order - b.order;
+  });
+  for (const entry of ordered) main.append(entry.article);
+}
+sortControl.addEventListener('change', () => {
+  const url = new URL(location.href);
+  if (sortControl.value === 'newest') url.searchParams.delete('sort');
+  else url.searchParams.set('sort', sortControl.value);
+  history.replaceState(null, '', url);
+  sortModels();
+});
+
+function frame(entry) {
+  if (!entry.ready) return;
+  const view = entry.view;
+  const w = Math.max(1, view.clientWidth), h = Math.max(1, view.clientHeight);
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const bw = Math.round(w * dpr), bh = Math.round(h * dpr);
+  if (entry.canvas.width !== bw || entry.canvas.height !== bh) {
+    entry.canvas.width = bw; entry.canvas.height = bh;
+  }
+  renderer.setPixelRatio(dpr);
+  renderer.setSize(w, h, false);
+  const camera = entry.camera;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  const { target, distance, theta, phi } = entry;
+  camera.position.set(
+    target.x + distance * Math.sin(phi) * Math.sin(theta),
+    target.y + distance * Math.cos(phi),
+    target.z + distance * Math.sin(phi) * Math.cos(theta),
+  );
+  camera.lookAt(target);
+  // Keep the inspected face lit as the model rotates; fixed model-space lighting
+  // hid curved facades whose principal front faced away from the original sun.
+  entry.sun.position.set(Math.sin(theta - .65) * 150, 200, Math.cos(theta - .65) * 150);
+  renderer.render(entry.scene, camera);
+  entry.ctx.setTransform(1, 0, 0, 1, 0, 0);
+  entry.ctx.clearRect(0, 0, entry.canvas.width, entry.canvas.height);
+  entry.ctx.drawImage(renderer.domElement, 0, 0, entry.canvas.width, entry.canvas.height);
+}
+
+function settle() {
+  if (window.review.loaded.length + window.review.errors.length >= window.review.total) window.review.done = true;
+}
+
+function build(spec) {
+  const article = document.createElement('article');
+  const heading = document.createElement('h2');
+  heading.textContent = spec.name || spec.id;
+  article.append(heading);
+
+  const view = document.createElement('div');
+  view.className = 'view';
+  const canvas = document.createElement('canvas');
+  view.append(canvas);
+  article.append(view);
+
+  const attribution = spec.attribution || {};
+  const meta = document.createElement('p');
+  meta.className = 'meta';
+  meta.textContent = [attribution.author, attribution.licence].filter(Boolean).join(' \u00b7 ') || spec.id;
+  if (attribution.title) meta.title = attribution.title;
+  article.append(meta);
+
+  const updated = document.createElement('p');
+  updated.className = 'meta model-updated';
+  article.append(updated);
+
+  main.append(article);
+
+  const scene = new T.Scene();
+  scene.background = new T.Color('#ebe7dd');
+  scene.add(new T.HemisphereLight(0xffffff, 0x88806e, 2));
+  const sun = new T.DirectionalLight(0xffefce, 2.2);
+  sun.position.set(-100, 200, 150);
+  scene.add(sun);
+
+  const entry = {
+    spec, article, updated, order: entries.length, view, canvas, ctx: canvas.getContext('2d'),
+    scene, sun, camera: new T.PerspectiveCamera(32, 1, 1, 20000),
+    target: new T.Vector3(), distance: 200, theta: 0.55, phi: 1.02, ready: false,
+  };
+  entries.push(entry);
+
+  let last = null;
+  canvas.addEventListener('pointerdown', (event) => {
+    last = [event.clientX, event.clientY];
+    canvas.setPointerCapture(event.pointerId);
+  });
+  canvas.addEventListener('pointerup', () => { last = null; });
+  canvas.addEventListener('pointercancel', () => { last = null; });
+  canvas.addEventListener('pointermove', (event) => {
+    if (!last) return;
+    entry.theta -= (event.clientX - last[0]) * 0.01;
+    entry.phi = Math.max(0.1, Math.min(1.5, entry.phi + (event.clientY - last[1]) * 0.01));
+    last = [event.clientX, event.clientY];
+    frame(entry);
+  });
+  canvas.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    entry.distance *= Math.exp(event.deltaY * 0.001);
+    frame(entry);
+  }, { passive: false });
+
+  const modelUrl = new URL(spec.modelUrl, location.href);
+  const version = window.CanalRecallSignatureLandmarks.MODEL_ASSET_VERSIONS?.[spec.id];
+  if (version) modelUrl.searchParams.set('asset', version);
+  loader.load(modelUrl.href, (gltf) => {
+    const model = gltf.scene;
+    scene.add(model);
+    const box = new T.Box3().setFromObject(model);
+    box.getCenter(entry.target);
+    const size = box.getSize(new T.Vector3());
+    // Fit the bounding sphere to the narrower field of view. Tall statues and
+    // towers must stay fully visible in the initial landscape or phone card.
+    const halfVerticalFov = entry.camera.fov * Math.PI / 360;
+    const aspect = Math.max(1, view.clientWidth) / Math.max(1, view.clientHeight);
+    const halfFov = Math.min(halfVerticalFov, Math.atan(Math.tan(halfVerticalFov) * aspect));
+    entry.distance = Math.max(size.length() * .5 / Math.sin(halfFov) * 1.05, 1);
+    entry.camera.near = Math.max(entry.distance / 1000, 0.05);
+    entry.camera.far = entry.distance * 50;
+    entry.camera.updateProjectionMatrix();
+    entry.ready = true;
+    frame(entry);
+    window.review.loaded.push(spec.id);
+    settle();
+  }, undefined, (error) => {
+    const box = document.createElement('div');
+    box.className = 'error';
+    box.innerHTML = `Model not available<br><small></small>`;
+    box.querySelector('small').textContent = spec.modelUrl;
+    view.append(box);
+    window.review.errors.push({ id: spec.id, error: String(error && error.message || error) });
+    settle();
+  });
+}
+
+for (const spec of MODELS) build(spec);
+sortModels();
+fetch('./models/model-dates.json').then(response => {
+  if (!response.ok) throw new Error('Date metadata unavailable');
+  return response.json();
+}).then(data => {
+  modelDates = data.models || {};
+  for (const entry of entries) {
+    const date = modelDates[entry.spec.id]?.updatedAt;
+    if (date && Number.isFinite(Date.parse(date))) {
+      const time = document.createElement('time');
+      time.dateTime = date;
+      time.textContent = new Date(date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      time.title = new Date(date).toLocaleString();
+      entry.updated.append('Model updated ', time);
+    } else entry.updated.textContent = 'Model update date unavailable';
+  }
+  sortModels();
+}).catch(() => { document.querySelector('#date-status').textContent = 'Update dates unavailable'; });
+
+let resizeTimer = 0;
+addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => { for (const entry of entries) frame(entry); }, 120);
+});
+</script>
+</body>
+</html>
