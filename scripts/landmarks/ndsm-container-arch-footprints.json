@@ -1,0 +1,108 @@
+{
+  "id": "ndsm-container-arch",
+  "preparedOn": "2026-10-06",
+  "status": "research-only; no builder or accepted asset",
+  "coordinateConvention": "Native GeoJSON longitude/latitude; anchor uses [longitude,latitude]. OSM raw node pairs parsed as [latitude,longitude]. Metre dimensions are derived from geographic map outline, not surveyed container specifications.",
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "modelPath": "models/ndsm-container-arch",
+    "sourceCommit": null,
+    "commitState": "pending root source-pack verification/commit/push"
+  },
+  "mappedStructure": {
+    "osmId": "w1304785589",
+    "osmWay": 1304785589,
+    "osmVersion": 1,
+    "osmTimestamp": "2024-07-31T08:02:05Z",
+    "tags": {
+      "area": "yes",
+      "artwork_type": "installation",
+      "building": "arch",
+      "layer": "1",
+      "name": "De Containerboog",
+      "tourism": "artwork",
+      "wikimedia_commons": "File:Arch_at_NDSM.jpg"
+    },
+    "geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            4.8946759,
+            52.4014849
+          ],
+          [
+            4.8947342,
+            52.4015309
+          ],
+          [
+            4.8945194,
+            52.4016324
+          ],
+          [
+            4.894461,
+            52.4015863
+          ],
+          [
+            4.8946759,
+            52.4014849
+          ]
+        ]
+      ]
+    },
+    "anchor": [
+      4.894597625,
+      52.401558625
+    ],
+    "mappedSpanMetres": 18.452,
+    "mappedDepthMetres": 6.48,
+    "spanBearingDegrees": 127.737,
+    "depthBearingDegrees": 37.707,
+    "confidence": "high for OSM identity and geographic shape; moderate for real surveyed dimensions",
+    "sourceUrl": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8941,52.4012,4.8951,52.4020",
+    "rawSource": "../map-recall2-source-data/models/ndsm-container-arch/files/references/osm-site.xml"
+  },
+  "bagIdentity": {
+    "status": "No BAG reference on installation OSM way; BAG Pand association not established. Do not infer an identity from the neighboring halls."
+  },
+  "suppression": {
+    "candidateExactIds": [
+      "w1304785589"
+    ],
+    "installedExtractStatus": "No container arch found in buildings-colored.geojson, landmarks.json, all.json or orientation-pois.json by bounded name/location inspection; runtime source layers still need audit. Suppress candidate only if actual ordinary geometry is installed.",
+    "spatialSuppression": false,
+    "retainedNeighbors": [
+      {
+        "name": "NDSM-loods",
+        "osmId": "w44824309",
+        "bagPand": "0363100012062886"
+      },
+      {
+        "name": "Lasloods / STRAAT hall",
+        "osmId": "w717827611",
+        "bagPand": "0363100012079735"
+      }
+    ]
+  },
+  "openSpaces": {
+    "passage": "Entire centre below polygonal arch must remain traversable and visually open from both sides. No footprint slab.",
+    "interBoxGaps": "Photographs show triangular wedge-shaped open gaps at rotated junctions, bridged by narrow metal spacers/connectors. Do not fill these with solid painted wedges."
+  },
+  "geometryEvidence": {
+    "containerCount": 9,
+    "countBasis": "Observed in frontal 2026 operator photograph: two base containers, three tilted above each base, one crown container.",
+    "countConfidence": "high visual count, no dimensional engineering drawing",
+    "individualSizeMetres": null,
+    "heightMetres": null,
+    "requiredBeforeBuilder": [
+      "Calibrate box end dimensions and total height to mapped span plus frontal photograph; mark inferred dimensions honestly.",
+      "Confirm whether standard 20-foot or nonstandard boxes from projected depth/current photos.",
+      "Determine native facade normal and photograph station; map outline gives axes but not which painted end faces southwest."
+    ]
+  },
+  "referenceImages": [
+    "../map-recall2-source-data/models/ndsm-container-arch/files/references/operator-2026-image-0.webp",
+    "../map-recall2-source-data/models/ndsm-container-arch/files/references/operator-2026-image-1.jpg",
+    "../map-recall2-source-data/models/ndsm-container-arch/files/references/operator-2026-image-2.webp"
+  ]
+}

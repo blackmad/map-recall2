@@ -1,0 +1,22 @@
+{
+  "modelId": "beest-het-lab",
+  "landmarkId": "requested-het-lab",
+  "name": "Beest Boulders Het Lab",
+  "center": [
+    52.392268,
+    4.8512397
+  ],
+  "sourceUrl": "https://beestboulders.com/boulderen/het-lab-amsterdam/",
+  "description": "Het Lab is a bouldering hall at Transformatorweg32 in a former industrial warehouse. Bouldering uses short climbing routes above landing mats, without ropes. The converted hall combines climbing walls, a training area and a cafe; its brick exterior, clerestory glazing and sawtooth factory roof retain the industrial character of Sloterdijk. Het Lab and the larger Beest Boulders Amsterdam are separate venues.",
+  "sourceLinks": [
+    {
+      "title": "Operator: Het Lab Amsterdam",
+      "url": "https://beestboulders.com/boulderen/het-lab-amsterdam/"
+    },
+    {
+      "title": "I amsterdam: Amsterdam bouldering venues",
+      "url": "https://www.iamsterdam.com/en/see-and-do/nature-and-active/climbing-and-bouldering-in-amsterdam"
+    }
+  ],
+  "identityNote": "No existing genuine extract feature found; use existing requested-het-lab identity. Beest Boulders Het Lab requested alias shares same venue; do not create duplicate route destinations."
+}

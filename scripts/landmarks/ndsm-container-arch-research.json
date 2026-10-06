@@ -1,0 +1,350 @@
+{
+  "id": "ndsm-container-arch",
+  "name": "De Containerboog",
+  "preparedOn": "2026-10-06",
+  "status": "bounded source and identity preparation complete; geometry authoring/integration/acceptance pending",
+  "primarySources": [
+    "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog",
+    "https://www.ndsm.nl/en/kunst/firestarter",
+    "https://www.ndsm.nl/en/kunst/the-only-way-is-up",
+    "https://www.ndsm.nl/magazine/interview-seeyousioe-over-hun-werk-empower"
+  ],
+  "sourceArchive": {
+    "repository": "blackmad/map-recall2-source-data",
+    "modelPath": "models/ndsm-container-arch",
+    "sourceCommit": null,
+    "commitState": "pending root source-pack verification/commit/push"
+  },
+  "sourceFiles": [
+    {
+      "path": "files/references/operator-history.html",
+      "url": "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog",
+      "retrievedAt": "2026-10-06T11:00:32.910278+00:00",
+      "httpStatus": 200,
+      "sha256": "129fcb6aafd92bc6c53bade0fb362f19d959e94ac235f925c4d07bbfbcc282d2",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2026.html",
+      "url": "https://www.ndsm.nl/en/kunst/firestarter",
+      "retrievedAt": "2026-10-06T11:00:33.040482+00:00",
+      "httpStatus": 200,
+      "sha256": "7dbfeb027bab5fda10fddd12fce87f5020c28f9798e4cd24ab18c665ee76f07f",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2025.html",
+      "url": "https://www.ndsm.nl/en/kunst/the-only-way-is-up",
+      "retrievedAt": "2026-10-06T11:00:33.910537+00:00",
+      "httpStatus": 200,
+      "sha256": "404f452b0f79844f96814bf45faf2b3a36171594917e03410e3b509da18c9b18",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2024-interview.html",
+      "url": "https://www.ndsm.nl/en/lees-kijk-x-luister/interview-seeyousioe-over-hun-werk-empower",
+      "retrievedAt": "2026-10-06T11:01:06.554482+00:00",
+      "accessState": "HTTP Error 404: Not Found",
+      "raw": false,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/beeldbank-search.html",
+      "url": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=NDSM%20containerboog",
+      "retrievedAt": "2026-10-06T11:01:09.672041+00:00",
+      "httpStatus": 200,
+      "sha256": "2c58f828ae2064223924ea0091b054f9491af3a922ebc52697104024f3ba5f04",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/osm-site.xml",
+      "url": "https://api.openstreetmap.org/api/0.6/map?bbox=4.8941,52.4012,4.8951,52.4020",
+      "retrievedAt": "2026-10-06T11:01:09.847971+00:00",
+      "httpStatus": 200,
+      "sha256": "19fd0c805358d77cf99cb45062cf9340bc10ae008e05e1ef88e271229dce53c0",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2026-image-0.webp",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/69e884888b940aef264c13ea_011.NDSM-WERF-CONTAINERBOOG%202026-PH.GJ.vanROOIJ%20(3).webp",
+      "retrievedAt": "2026-10-06T11:01:10.222806+00:00",
+      "httpStatus": 200,
+      "sha256": "014eff8c6a10930dafe2292f327774ab20a1941af06ddc9fb201006d1a40f12c",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2026-image-1.jpg",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/69e88444725542c76eb1c6d7_001.NDSM-WERF-CONTAINERBOOG%202026-PH.GJ.vanROOIJ%20(1)%20(1).jpg",
+      "retrievedAt": "2026-10-06T11:01:10.596869+00:00",
+      "httpStatus": 200,
+      "sha256": "dd26ce07ef2f4706bbda5543fb51afd185e43ff80c0819a8adf4e20f6bc94112",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2026-image-2.webp",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/69e884471890a1c334154ec9_013.NDSM-WERF-CONTAINERBOOG%202026-PH.GJ.vanROOIJ%20(1).webp",
+      "retrievedAt": "2026-10-06T11:01:10.941738+00:00",
+      "httpStatus": 200,
+      "sha256": "1b144c84567dd96d49c75f1923656f71415e0dc6c76b0ccde830ad579f57b1d2",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2026-image-3.jpeg",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/691db5236c38fe82adee7317_65d76af1e76f01197c1b9bb8_DSC07594-800x531.jpeg",
+      "retrievedAt": "2026-10-06T11:01:11.058196+00:00",
+      "httpStatus": 200,
+      "sha256": "4550d7305a77dd84862687cbaa2bc8bbf3f96fa98637a9fcad15091dae2e0134",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-history-image-0.jpeg",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/691db5236c38fe82adee7317_65d76af1e76f01197c1b9bb8_DSC07594-800x531.jpeg",
+      "retrievedAt": "2026-10-06T11:01:11.138035+00:00",
+      "httpStatus": 200,
+      "sha256": "4550d7305a77dd84862687cbaa2bc8bbf3f96fa98637a9fcad15091dae2e0134",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-history-image-1.jpeg",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/691db5226c38fe82adee72f8_66bc7da3f1a5353438a8876d_66019413962a1145869509cd_IMG_2471.jpeg",
+      "retrievedAt": "2026-10-06T11:01:11.711337+00:00",
+      "httpStatus": 200,
+      "sha256": "1da13458d8f1ff0288dbcc8f3a705a0a55ab50547a0295042078f54165c5491c",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-history-image-2.jpeg",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/691db5226c38fe82adee72fc_66bc7da3f1a5353438a8873d_660568098d091ec08fcc1d77_Photo%25252028-03-2024%25252C%25252012%25252031%25252029.jpeg",
+      "retrievedAt": "2026-10-06T11:01:12.286459+00:00",
+      "httpStatus": 200,
+      "sha256": "f939acf2de7a047a416a637fa0e4cdda91b90a29cf62f82ca8e39da6b05b5ce5",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2025-image-0.webp",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/691da17f292e189d5f884d7e_6823079fddf3ce84552e2798_IMG_9219%2520(1).webp",
+      "retrievedAt": "2026-10-06T11:01:12.713080+00:00",
+      "httpStatus": 200,
+      "sha256": "431aab629202955bd0598dc48025321dbff61ff4480241d294190c8abb83b9a4",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2025-image-1.webp",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/691da17f292e189d5f884d85_682307b28fea53c8feaf8408_IMG_4993.webp",
+      "retrievedAt": "2026-10-06T11:01:12.941682+00:00",
+      "httpStatus": 200,
+      "sha256": "dba7df7a1b9fda9cf548d80bc074ad2f9459bd9c740102c83a77cf7e79c84497",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2025-image-2.webp",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/691da17f292e189d5f884d76_682307b0d77b3093eafc4fbe_IMG_9177.webp",
+      "retrievedAt": "2026-10-06T11:01:13.149030+00:00",
+      "httpStatus": 200,
+      "sha256": "03f17d7fd7c15df190b62b22e86cfc219b451634f2d5252bc5a037429ed42c2d",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2024-interview-current.html",
+      "url": "https://www.ndsm.nl/magazine/interview-seeyousioe-over-hun-werk-empower",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-06T11:02:13.549730+00:00",
+      "sha256": "8c77ed1177baa7199db7ed38799da4b20171b18b2d95665efde7de9257a26598",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2024-interview-old-404.html",
+      "url": "https://www.ndsm.nl/lees-kijk-x-luister/interview-seeyousioe-over-hun-werk-empower",
+      "httpStatus": 404,
+      "retrievedAt": "2026-10-06T11:02:13.654984+00:00",
+      "sha256": "dea7f140852c9ae17c22f58ef21bd735d816a063b5c3bb9e432630394be31bde",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2024-interview-image-0.webp",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/69bbbaae002b56d1ac81d84e_soufopr.webp",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-06T11:02:59.507253+00:00",
+      "sha256": "30e9b723547aa9844e36ed1ed0684114e465a743dd37b8427cb0c2c85d3cd127",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2024-interview-image-1.webp",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/69c69fcdfe2b02de32226493_Interview-%20SEEYOUSIOE%20over%20hun%20werk%20EMPOWER.webp",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-06T11:03:00.472383+00:00",
+      "sha256": "c5a46c09d0d6bd256de9a7d4f6c885b6eca122b8e4801b4e2394bb51d5b9817e",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2024-interview-image-2.avif",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/69c69fdaa75d497b10ad4cd6_Interview-%20SEEYOUSIOE%20over%20hun%20werk%20EMPOWER1.avif",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-06T11:03:00.815005+00:00",
+      "sha256": "2c737132b703a4a21f20ccd1dc249152087ca4e821bf0eae933d70cd67fd3dd6",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    },
+    {
+      "path": "files/references/operator-2024-interview-image-3.avif",
+      "url": "https://cdn.prod.website-files.com/6909cf96cf3cd5be51dbc4c9/69c69feac447a731b3fe80b1_Interview-%20SEEYOUSIOE%20over%20hun%20werk%20EMPOWER.avif",
+      "httpStatus": 200,
+      "retrievedAt": "2026-10-06T11:03:01.324273+00:00",
+      "sha256": "959530c0012c2e861b0fe260dee22f3dbe9781d5079186a5098f7031ffeee4c8",
+      "raw": true,
+      "rights": "Private research reference only; copyright retained by original creator. No photo pixels or imported meshes permitted in game asset."
+    }
+  ],
+  "timeline": [
+    {
+      "year": 2018,
+      "artists": "Shipyard artists with DGTL",
+      "appearance": "Initially black with white DGTL lettering; festivals subsequently changed or covered it.",
+      "sourceUrl": "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog"
+    },
+    {
+      "year": 2021,
+      "artists": "Sue Doeksen and Jord Noorbeek",
+      "appearance": "Black, blue and white geometric Be kind design; abstract halo back, owl/jester sides.",
+      "sourceUrl": "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog"
+    },
+    {
+      "year": 2022,
+      "artists": "Karski & Beyond",
+      "appearance": "Bright multicolour repaint for first post-pandemic DGTL edition.",
+      "sourceUrl": "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog"
+    },
+    {
+      "year": 2024,
+      "artists": "Sioe Jeng Tsao / SEEYOUSIOE",
+      "artwork": "EMPOWER",
+      "meaning": "Love, strength, acceptance and solidarity within the LGBTQIA+ community.",
+      "sourceUrl": "https://www.ndsm.nl/magazine/interview-seeyousioe-over-hun-werk-empower",
+      "current": false
+    },
+    {
+      "year": 2025,
+      "artists": "VAAF — Lotte Masker and Jonna Bo Lammers",
+      "artwork": "The only way is up",
+      "exhibitionStart": "2025-04-17",
+      "exhibitionEnd": "2026-03-30",
+      "sourceUrl": "https://www.ndsm.nl/en/kunst/the-only-way-is-up",
+      "current": false
+    },
+    {
+      "year": 2026,
+      "artists": "Gabi Brunhoso",
+      "artwork": "FIRESTARTER",
+      "exhibitionStart": "2026-04-03",
+      "exhibitionEnd": "2027-04-03",
+      "sourceUrl": "https://www.ndsm.nl/en/kunst/firestarter",
+      "current": true,
+      "currentEvidence": "Operator current exhibition listing and three labelled 2026 original photographs; retrieved 2026-10-06. Not a claimed same-day on-site survey."
+    }
+  ],
+  "assertions": [
+    {
+      "assertion": "The arch originated at DGTL in 2018 and remained as a changing public installation.",
+      "sourceUrl": "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog",
+      "confidence": "high",
+      "buildingPart": "installation",
+      "sourceDate": "2026-10-06"
+    },
+    {
+      "assertion": "FIRESTARTER is the operator-listed current artwork from 03 Apr 2026 to 03 Apr 2027.",
+      "sourceUrl": "https://www.ndsm.nl/en/kunst/firestarter",
+      "confidence": "high",
+      "buildingPart": "installation",
+      "sourceDate": "2026-10-06"
+    },
+    {
+      "assertion": "Current repaint credited to Gabi Brunhoso; commissioned by Stichting NDSM-werf in cooperation with DGTL; photos by Gert Jan van Rooij.",
+      "sourceUrl": "https://www.ndsm.nl/en/kunst/firestarter",
+      "confidence": "high",
+      "buildingPart": "installation",
+      "sourceDate": "2026-10-06"
+    },
+    {
+      "assertion": "Current photographs show a purple structural frame and dark inward surfaces, turquoise broad side panels, bright magenta ribbon forms, yellow/orange accent shapes and dense coloured corrugation stripes.",
+      "sourceUrl": "https://www.ndsm.nl/en/kunst/firestarter",
+      "confidence": "high visual",
+      "buildingPart": "painted container surfaces",
+      "sourceDate": "2026-10-06"
+    },
+    {
+      "assertion": "Nine separate container volumes form the polygonal arch; open centre and visible wedge gaps must survive.",
+      "sourceUrl": "https://www.ndsm.nl/en/kunst/firestarter",
+      "confidence": "high visual",
+      "buildingPart": "container structure",
+      "sourceDate": "2026-10-06"
+    }
+  ],
+  "artworkPolicy": "Use original texture-free flat-colour geometric motifs derived from supported shape/color observations. Do not copy photo pixels or imported artwork assets. Do not add identification words. Any retained tiny creator signature needs actual wall/panel placement; omitting it is preferable to invented signage.",
+  "identityDecision": {
+    "existingExtractDestination": null,
+    "genuineMappedPlace": "OSM artwork way1304785589 De Containerboog",
+    "recommendedCanonicalIdentity": "Preserve OSM way identity in any requested destination record; root to choose canonical requested ID under existing manual POI conventions.",
+    "distinctFrom": [
+      "NDSM-loods extract_landmarks_1741957518 / w44824309",
+      "Lasloods / STRAAT w717827611"
+    ],
+    "reason": "Separately mapped, separately programmed outdoor installation in Docklands. Not an alias or mesh part of either hall.",
+    "allThreeSurfaces": "Pending: explicit genuine artwork route destination, pin at verified installed artwork/entrance, sourced trivia card. Root owns shared registration."
+  },
+  "archiveSearch": {
+    "beeldbank": {
+      "query": "NDSM containerboog",
+      "sourceUrl": "https://archief.amsterdam/beeldbank/?mode=gallery&view=horizontal&q=NDSM%20containerboog",
+      "httpStatus": 200,
+      "rawPath": "../map-recall2-source-data/models/ndsm-container-arch/files/references/beeldbank-search.html",
+      "accessState": "Viewer shell returned. No catalogue result/photo inspected; bounded search performed, not evidence of zero holdings."
+    },
+    "monumentRegister": {
+      "query": "site:monumentenregister.cultureelerfgoed.nl containerboog",
+      "accessState": "Bounded exact-name search produced no identified record. This is a contemporary art installation; no monument number or register description established. Neighboring monumental halls must not be assigned to it."
+    },
+    "bouwdossiers": {
+      "accessState": "Not requested: contemporary 2018 installation; no verified address/BAG parent or unresolved historic building details. Engineering drawing remains absent."
+    }
+  },
+  "gaps": [
+    "Exact container dimensions, height, structural connector measurements and native painted-face orientation need calibration.",
+    "Operator2026 map link is [52.401661,4.894609], about11.4m north of current OSM-centre; use verified geometry for model placement and check public pin on scene.",
+    "2024 old interview links return404 via liveHTTP despite search cache retaining text; current migrated magazine URL is successfully archived.",
+    "No BAG parent, engineering drawings or same-day onsite survey established.",
+    "Gallery/live-game/GPU/performance and all3POIsurface acceptance have not started."
+  ],
+  "handoff": {
+    "canStartBuilder": "Only after root clears current batch and source-pack is verified/committed/pushed.",
+    "ownedMainFiles": [
+      "scripts/landmarks/ndsm-container-arch-research.json",
+      "scripts/landmarks/ndsm-container-arch-footprints.json"
+    ],
+    "sourceCommitRequiredBeforeModelCommit": true,
+    "nextSteps": [
+      "Root verify/commit/push private model source pack and record commit.",
+      "Calibrate9rectangular container boxes plus open wedge spacers within native outline; do not extrude an opaque arch silhouette.",
+      "Register exact identities through root; retain both halls.",
+      "Full raised-structure recipe, meaningful checks, independent failure review, native gallery and actual game acceptance."
+    ]
+  }
+}

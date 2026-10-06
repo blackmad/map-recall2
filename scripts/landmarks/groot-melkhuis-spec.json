@@ -1,0 +1,38 @@
+{
+  "id": "groot-melkhuis",
+  "name": "Groot Melkhuis",
+  "landmarkId": "extract_landmarks_291097138",
+  "modelUrl": "./models/groot-melkhuis.glb",
+  "suppressOsmIds": [
+    "w57855717",
+    "NL.IMBAG.Pand.0363100012166911"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.868295,
+      52.3585254
+    ],
+    "headingDegrees": 90,
+    "lengthMetres": 26.5,
+    "widthMetres": 20.1
+  },
+  "surveyed": {
+    "anchor": [
+      4.868295,
+      52.3585254
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG/OSM outline and 2023 AHN5 height; native east X/south Z"
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 90,
+  "attribution": {
+    "title": "Groot Melkhuis",
+    "author": "Map Recall",
+    "sourceUrl": "https://grootmelkhuis.nl/historie/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free reconstruction with exact BAG ground footprint, photo-backed hipped upper house/veranda/awnings. Roof surface simplified from photo with survey envelope; no imported mesh or pixels."
+  }
+}

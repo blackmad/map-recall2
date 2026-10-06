@@ -1,0 +1,19 @@
+# Startup stalls and smooth overview fade
+
+Follow-up to caedf982, requested 2026-10-06. Focus: blocking setup work and the visibly stippled zoom-out transition.
+
+Landmark kits and houseboats now use the existing geometry worker. A keyed queue retains the newest inputs per chunk, and dispatch waits for each worker reply. Stale replies and worker failures release the queue; look/source revisions retain their existing checks. Geometry matches the original builder byte for byte for photo, cartoon, procedural and untextured looks (299,526 kit vertices and 54,999 houseboat vertices in the comparison fixture).
+
+POI placement uses an exact nearest-span index for the installed network, including unrestricted snaps and the original source-order tie break. Other segment arrays retain the full scan. Routing setup removes duplicate span checks/connectors and builds the graph in short batches with an 8 ms time budget between yields. The game prepares this graph before constructing the road network and checks its loading token throughout; cancelled builds cannot replace a newer track. Synchronous callers use the same generator.
+
+Real extract check: 72,330 road segments, 946 queries. Indexed snaps match full scans exactly (2,148 ms full scan versus 6.9 ms queries plus 411 ms one-time index build on Node). Graph node/edge topology matches the original; duplicate connectors fall from 418,177 to 81,543 with identical unique surface coverage. These are CPU fixture measurements, not gameplay timing claims.
+
+The screen-door fragment discard is replaced with smooth alpha blending. A depth-only pass prevents rear walls and roofs from bleeding through the front surface. The transition finishes at zoom 15.4, before the measured phone minimum of 15.51, so the ordinary desktop/phone wide views remain solid and use one pass. The farther diagnostic overview and intro transition use two passes. Render statistics include both; the profiling script records total GPU time per animation frame.
+
+Fixed Anne Frank–Rijksmuseum browser comparisons use Chrome / ANGLE Metal on Apple M4 Pro, desktop 1440×900 and emulated iPhone 13. Desktop largest startup long task fell from 1,614 ms to 470 ms; main-thread chunk-build maximum fell from 93 ms to 14 ms. Total desktop boot/ready time stayed around 6.6/8.7 seconds: this reduces blocking bursts rather than claiming faster overall startup. Remaining road/surface setup and tile arrivals can still produce shorter stalls.
+
+Root reviewed ordinary street, detached stationary-rider pan, zoom 16, actual minimum zoom, diagnostic zoom 14.8 and real mouse/touch drag. Windows, doors, roof families and open spaces are retained. Phone minimum and farther overview no longer have the stippled pattern. Shader/page errors are absent. GPU timings vary; the two-pass diagnostic fade costs more than the old discard shader, while user-accessible measured wide views use one pass. Physical phone frame times remain unmeasured.
+
+`npm run test:city-startup`, TypeScript, road graph/projection/surface checks, real building LOD, desktop route/shell ownership and restarted-loading regressions pass. The indexed-snap test includes limits, unlimited searches, exact ties, empty networks and long spans. Batched-graph tests compare topology/connectors and check yielding and cancellation. Existing look-transition tests preserve delayed/stale worker and texture behavior.
+
+Evidence: `artifacts/city-performance/2026-10-06/`. `stalls-reference` is the original comparison; `stalls-accepted` is the final implementation. Intermediate `stalls-smooth`/`stalls-final` captures retain the rejected fade extending through the phone minimum: that doubled rendering there and was corrected by ending the transition at 15.4. Raw startup CPU profiles and performance arrays are preserved. `stalls-validation` records exact road and special-geometry comparisons. Committed follow-up JSON contains condensed before/after results.

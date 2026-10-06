@@ -7,10 +7,13 @@ const label=process.argv[2]||'baseline',device=process.argv[3]||'desktop';
 const output=`artifacts/city-performance/${label}/${device}`;fs.mkdirSync(output,{recursive:true});
 const browser=await chromium.launch({headless:true,executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'});
 const page=await browser.newPage(device==='touch'?devices['iPhone 13']:{viewport:{width:1440,height:900}});
+const profiler=process.env.CITY_CPU_PROFILE?await page.context().newCDPSession(page):null;
+if(profiler){await profiler.send('Profiler.enable');await profiler.send('Profiler.start')}
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 await page.addInitScript(()=>{
  let seed=0x5eed1234;Math.random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
- const p=window.__cityPerf={longTasks:[],calls:{},posts:[],renders:[],gpu:[],stage:'startup'};
+ const p=window.__cityPerf={frame:0,longTasks:[],calls:{},posts:[],renders:[],gpu:[],stage:'startup'};
+ const frame=t=>{p.frame=t;requestAnimationFrame(frame)};requestAnimationFrame(frame);
  new PerformanceObserver(list=>{for(const e of list.getEntries())p.longTasks.push({at:e.startTime,ms:e.duration,stage:p.stage})}).observe({type:'longtask',buffered:true});
  const post=Worker.prototype.postMessage;Worker.prototype.postMessage=function(data,...args){const t=performance.now();const r=post.call(this,data,...args);if(data?.key)p.posts.push({key:data.key,ms:performance.now()-t,features:data.features?.length,stage:p.stage});return r};
  const timer=setInterval(()=>{
@@ -32,9 +35,10 @@ try{
  const bootMs=Date.now()-started;
  await page.waitForFunction(()=>{const t=canalRecallGame.vectorMap._threeBuildings;return t?.ready&&t.chunks.size&&!t.pending.length&&!t.inflight.size},null,{timeout:180000});
  const readyMs=Date.now()-started;
+ if(profiler){const {profile}=await profiler.send('Profiler.stop');fs.writeFileSync(`${output}/startup.cpuprofile`,JSON.stringify(profile));}
  const initial=await page.evaluate(()=>{const g=canalRecallGame,v=g.vectorMap,t=v._threeBuildings;g.input.keys={};g.input.justPressed={};const rider={...g.player};
   const render=t.renderer.render.bind(t.renderer),gl=t.renderer.getContext(),ext=gl.getExtension('EXT_disjoint_timer_query_webgl2'),pending=[];
-  t.renderer.render=(...args)=>{const p=__cityPerf;while(pending.length&&gl.getQueryParameter(pending[0].q,gl.QUERY_RESULT_AVAILABLE)){const held=pending.shift();if(!gl.getParameter(ext.GPU_DISJOINT_EXT))p.gpu.push({ms:gl.getQueryParameter(held.q,gl.QUERY_RESULT)/1e6,stage:held.stage});gl.deleteQuery(held.q)}const measure=ext&&pending.length<6&&!gl.getQuery(ext.TIME_ELAPSED_EXT,gl.CURRENT_QUERY),q=measure?gl.createQuery():null;if(q)gl.beginQuery(ext.TIME_ELAPSED_EXT,q);const time=performance.now();render(...args);p.renders.push({ms:performance.now()-time,stage:p.stage,calls:t.renderer.info.render.calls,triangles:t.renderer.info.render.triangles});if(q){gl.endQuery(ext.TIME_ELAPSED_EXT);pending.push({q,stage:p.stage})}};
+  t.renderer.render=(...args)=>{const p=__cityPerf;while(pending.length&&gl.getQueryParameter(pending[0].q,gl.QUERY_RESULT_AVAILABLE)){const held=pending.shift();if(!gl.getParameter(ext.GPU_DISJOINT_EXT))p.gpu.push({ms:gl.getQueryParameter(held.q,gl.QUERY_RESULT)/1e6,stage:held.stage,frame:held.frame});gl.deleteQuery(held.q)}const measure=ext&&pending.length<6&&!gl.getQuery(ext.TIME_ELAPSED_EXT,gl.CURRENT_QUERY),q=measure?gl.createQuery():null;if(q)gl.beginQuery(ext.TIME_ELAPSED_EXT,q);const time=performance.now();render(...args);p.renders.push({ms:performance.now()-time,stage:p.stage,frame:p.frame,calls:t.renderer.info.render.calls,triangles:t.renderer.info.render.triangles});if(q){gl.endQuery(ext.TIME_ELAPSED_EXT);pending.push({q,stage:p.stage,frame:p.frame})}};
   const dbg=gl.getExtension('WEBGL_debug_renderer_info');return {rider,mapZoom:v.map.getZoom(),cameraZoom:g.camera.zoom,minZoom:g.camera.minZoom,maxZoom:g.camera.maxZoom,stats:t.stats(),gpuTimer:!!ext,gpu:dbg?gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL):null,pixelRatio:v.map.getPixelRatio()};
  });
  const snapshots=[], cullingAB=[];
@@ -79,6 +83,7 @@ try{
  assert(snapshots.every(s=>Math.hypot(s.rider.x-initial.rider.x,s.rider.y-initial.rider.y)<.1),'camera pan retains stationary rider');
  const instrumentation=await page.evaluate(()=>__cityPerf);
  const percentile=(values,p)=>{const a=values.slice().sort((a,b)=>a-b);return a.length?a[Math.min(a.length-1,Math.floor(a.length*p))]:null};
- const summary={cullingAB:cullingAB.map(s=>({...s,gpuMedian:percentile(instrumentation.gpu.filter(r=>r.stage===s.stage).map(r=>r.ms),.5)})),label,device,bootMs,readyMs,initial,errors,stages:snapshots.map(s=>({...s,frames:undefined,chunks:undefined,frameMedian:percentile(s.frames,.5),frameP95:percentile(s.frames,.95),renderMedian:percentile(instrumentation.renders.filter(r=>r.stage===s.stage).map(r=>r.ms),.5),gpuMedian:percentile(instrumentation.gpu.filter(r=>r.stage===s.stage).map(r=>r.ms),.5)})),calls:Object.fromEntries(Object.entries(instrumentation.calls).map(([name,x])=>[name,{count:x.length,totalMs:x.reduce((n,e)=>n+e.ms,0),p95Ms:percentile(x.map(e=>e.ms),.95),maxMs:Math.max(...x.map(e=>e.ms))}])),workerPosts:instrumentation.posts.length,longTasks:instrumentation.longTasks.length};
+ const gpuFrames=stage=>{const totals=new Map();for(const g of instrumentation.gpu)if(g.stage===stage)totals.set(g.frame,(totals.get(g.frame)||0)+g.ms);return [...totals.values()]};
+ const summary={cullingAB:cullingAB.map(s=>({...s,gpuMedian:percentile(instrumentation.gpu.filter(r=>r.stage===s.stage).map(r=>r.ms),.5)})),label,device,bootMs,readyMs,initial,errors,stages:snapshots.map(s=>({...s,frames:undefined,chunks:undefined,gpuFrameMedian:percentile(gpuFrames(s.stage),.5),frameMedian:percentile(s.frames,.5),frameP95:percentile(s.frames,.95),renderMedian:percentile(instrumentation.renders.filter(r=>r.stage===s.stage).map(r=>r.ms),.5),gpuMedian:percentile(instrumentation.gpu.filter(r=>r.stage===s.stage).map(r=>r.ms),.5)})),calls:Object.fromEntries(Object.entries(instrumentation.calls).map(([name,x])=>[name,{count:x.length,totalMs:x.reduce((n,e)=>n+e.ms,0),p95Ms:percentile(x.map(e=>e.ms),.95),maxMs:Math.max(...x.map(e=>e.ms))}])),workerPosts:instrumentation.posts.length,longTasks:instrumentation.longTasks.length};
  fs.writeFileSync(`${output}/raw.json`,JSON.stringify({snapshots,instrumentation},null,2));fs.writeFileSync(`${output}/summary.json`,JSON.stringify(summary,null,2));console.log(JSON.stringify(summary));assert.deepEqual(errors,[]);
 }finally{await browser.close();}

@@ -1,0 +1,20 @@
+{
+  "id": "extract_landmarks_291097138",
+  "name": "Groot Melkhuis",
+  "center": [
+    52.3585441,
+    4.8684443
+  ],
+  "type": "landmark",
+  "cityId": "amsterdam",
+  "funFact": "This caf\u00e9 began as a farm in 1874, selling fresh milk from cows grazing where Festina\u2019s tennis courts now stand. Park maintenance was partly funded by its rent. The present house gained its surrounding ground-floor extensions in 1938.",
+  "description": "A white park caf\u00e9 with a shallow hipped roof, glazed veranda and waterside terrace, beside a playground.",
+  "website": "https://grootmelkhuis.nl/",
+  "sources": [
+    {
+      "title": "Groot Melkhuis history",
+      "url": "https://grootmelkhuis.nl/historie/"
+    }
+  ],
+  "sourceIdentity": "Existing click-poi-info n291097138, absent landmark extract; coordinator promote genuine node once."
+}

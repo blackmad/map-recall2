@@ -1,0 +1,38 @@
+{
+  "id": "nikolaas-myrakerk",
+  "name": "Heilige Nikolaas van Myrakerk",
+  "landmarkId": "extract_landmarks_2003244540",
+  "modelUrl": "./models/nikolaas-myrakerk.glb",
+  "suppressOsmIds": [
+    "w266555973",
+    "NL.IMBAG.Pand.0363100012169397"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.88047,
+      52.37908
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 42,
+    "widthMetres": 43
+  },
+  "surveyed": {
+    "anchor": [
+      4.88047,
+      52.37908
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Current BAG parent 0363100012169397 (1912), OSM w266555973. Native surveyed AHN5 roof observations, exact forecourt notch preserved."
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "attribution": {
+    "title": "Heilige Nikolaas van Myrakerk / Tichelkerk",
+    "author": "Map Recall",
+    "sourceUrl": "https://orthodox-amsterdam.nl/wie-wijzijn/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free surveyed church and former monastery, grouped round-headed windows, oculus, open slate bell lantern, courtyard and iron entrance. Photographic proportions approximate small details. No source mesh or photo pixels."
+  }
+}

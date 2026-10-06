@@ -6225,6 +6225,234 @@
     }
   },
   {
+    "id": "nikolaas-myrakerk",
+    "name": "Heilige Nikolaas van Myrakerk",
+    "landmarkId": "extract_landmarks_2003244540",
+    "modelUrl": "./models/nikolaas-myrakerk.glb",
+    "suppressOsmIds": [
+      "w266555973",
+      "NL.IMBAG.Pand.0363100012169397"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.88047,
+        52.37908
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 42,
+      "widthMetres": 43
+    },
+    "surveyed": {
+      "anchor": [
+        4.88047,
+        52.37908
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Current BAG parent 0363100012169397 (1912), OSM w266555973. Native surveyed AHN5 roof observations, exact forecourt notch preserved."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "Heilige Nikolaas van Myrakerk / Tichelkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://orthodox-amsterdam.nl/wie-wijzijn/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free surveyed church and former monastery, grouped round-headed windows, oculus, open slate bell lantern, courtyard and iron entrance. Photographic proportions approximate small details. No source mesh or photo pixels."
+    }
+  },
+  {
+    "id": "naco-house",
+    "name": "NACO-house",
+    "landmarkId": "extract_landmarks_1769455774",
+    "modelUrl": "./models/naco-house.glb",
+    "suppressOsmIds": [
+      "w1535749695",
+      "NL.IMBAG.Pand.0363100012570001"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.905443,
+        52.3786995
+      ],
+      "headingDegrees": 102.4663266966,
+      "lengthMetres": 7.5,
+      "widthMetres": 19.3
+    },
+    "surveyed": {
+      "anchor": [
+        4.905443,
+        52.3786995
+      ],
+      "northOffsetDegrees": 12.4663266966,
+      "source": "Current BAG 0363100012570001 and OSM w1535749695 moved location beside bridge2274. Native local metre reconstruction; 3DBAG AHN5 2023 roof heights; RCE518409 and Stadsherstel references. Dock and nearby bus shelter omitted."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "NACO-house",
+      "author": "Map Recall",
+      "sourceUrl": "https://stadsherstel.nl/monumenten/de-ruijterkade-naco-huisje/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free timber office on five concrete supports, open ground-floor passage, orange curved-gable/hip roof, white glazing and sawtooth trims. No third-party pixels/meshes."
+    }
+  },
+  {
+    "id": "jeruzalemkerk",
+    "name": "Jeruzalemkerk",
+    "landmarkId": "extract_landmarks_2017340658",
+    "modelUrl": "./models/jeruzalemkerk.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012120412",
+      "NL.IMBAG.Pand.0363100012133330",
+      "NL.IMBAG.Pand.0363100012144824"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.85196,
+        52.371445
+      ],
+      "headingDegrees": 15.18,
+      "lengthMetres": 43,
+      "widthMetres": 31
+    },
+    "surveyed": {
+      "anchor": [
+        4.85196,
+        52.371445
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Current BAG exact three parents: church and designed attached corner residences. Native east/south metres scale1; independent adjacent houses and opposite Jan Maijenschool retained."
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "attribution": {
+      "title": "Jeruzalemkerk",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/527155",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original flat-color native surveyed church and corner residences, stepped cubic masses, projecting brick window piers, stained glazing, three entrances and squat open bell tower. No imported meshes/photo pixels; lettering omitted."
+    }
+  },
+  {
+    "id": "blauwe-theehuis",
+    "name": "Blauwe Theehuis",
+    "landmarkId": "extract_landmarks_57862001",
+    "modelUrl": "./models/blauwe-theehuis.glb",
+    "suppressOsmIds": [
+      "w57862001",
+      "NL.IMBAG.Pand.0363100012093476"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.87258,
+        52.358848
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 20.5,
+      "widthMetres": 20.5
+    },
+    "surveyed": {
+      "anchor": [
+        4.87258,
+        52.358848
+      ],
+      "northOffsetDegrees": 0,
+      "source": "BAG core/OSM open terrace; native east X south Z"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Blauwe Theehuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://monumentenregister.cultureelerfgoed.nl/monumenten/504760",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free geometry. Exact BAG ground core and OSM terrace; upper dodecagon/window partitions/vertical tiers estimated from register/photo ratios under surveyed overall height."
+    }
+  },
+  {
+    "id": "groot-melkhuis",
+    "name": "Groot Melkhuis",
+    "landmarkId": "extract_landmarks_291097138",
+    "modelUrl": "./models/groot-melkhuis.glb",
+    "suppressOsmIds": [
+      "w57855717",
+      "NL.IMBAG.Pand.0363100012166911"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.868295,
+        52.3585254
+      ],
+      "headingDegrees": 90,
+      "lengthMetres": 26.5,
+      "widthMetres": 20.1
+    },
+    "surveyed": {
+      "anchor": [
+        4.868295,
+        52.3585254
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Current BAG/OSM outline and 2023 AHN5 height; native east X/south Z"
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 90,
+    "attribution": {
+      "title": "Groot Melkhuis",
+      "author": "Map Recall",
+      "sourceUrl": "https://grootmelkhuis.nl/historie/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free reconstruction with exact BAG ground footprint, photo-backed hipped upper house/veranda/awnings. Roof surface simplified from photo with survey envelope; no imported mesh or pixels."
+    }
+  },
+  {
+    "id": "beest-het-lab",
+    "name": "Beest Boulders Het Lab",
+    "landmarkId": "requested-het-lab",
+    "modelUrl": "./models/beest-het-lab.glb",
+    "suppressOsmIds": [
+      "NL.IMBAG.Pand.0363100012123591"
+    ],
+    "spatialSuppression": false,
+    "footprint": {
+      "centre": [
+        4.85133,
+        52.39261
+      ],
+      "headingDegrees": 0,
+      "lengthMetres": 74,
+      "widthMetres": 43
+    },
+    "groundAltitudeMetres": 0,
+    "facingOffsetDegrees": 0,
+    "surveyed": {
+      "anchor": [
+        4.85133,
+        52.39261
+      ],
+      "northOffsetDegrees": 0,
+      "source": "Current PDOK BAG0363100012123591 plus3DBAG roof planes and July2025 municipal panorama. Native metres."
+    },
+    "attribution": {
+      "title": "Beest Boulders Het Lab",
+      "author": "Map Recall",
+      "sourceUrl": "https://beestboulders.com/boulderen/het-lab-amsterdam/",
+      "licence": "Original project asset",
+      "licenceUrl": "./LICENSE",
+      "modifications": "Original texture-free geometry based on survey polygons and municipal panorama observations; exact source suppression preserves adjacent east warehouse."
+    }
+  },
+  {
     "id": "kesbeke",
     "name": "Kesbeke Fijne Tafelzuren",
     "landmarkId": "w276264363",
