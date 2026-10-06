@@ -1033,6 +1033,16 @@
         "rem-eiland"
       ],
       "nextAction": "Use archived current architect photos to replace historical bare helipad massing; verify deck/lift/shore access dimensions. Do not treat the stair/H repair as full current architecture acceptance."
+    },
+    {
+      "id": "midwest",
+      "task": "Midwest Amsterdam — source-informed original landmark",
+      "priority": "high",
+      "status": "visual-and-game-integration-verified-performance-followup",
+      "requestedOn": "2026-10-05",
+      "nextAction": "Publish reviewed scale-one MidWestasset. Preserved both initialsourcevisualfailures; generalhardwareperformance followup remains. Currentnative route/pin/physicalcard/masks andfourneighbors verified.",
+      "owner": "midwest_source_and_build",
+      "evidence": "../../scripts/landmarks/midwest-review.json"
     }
   ],
   "dominantBuildingInventory": "./dominant-building-backlog.json"
