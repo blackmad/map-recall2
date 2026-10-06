@@ -907,14 +907,26 @@
         ],
         "failed": []
       },
-      "productionEvidence": [],
+      "productionEvidence": [
+        "artifacts/jan-evertsen-pilot/game-control/report.json",
+        "artifacts/jan-evertsen-pilot/game-final/report.json"
+      ],
       "reviewerDecision": "Bounded geometry repairs pass independent recheck; no facade-source, heldout, runtime or performance acceptance.",
       "privateSourceArchive": {
         "commit": "65cf81b476c757a363f59aec86a76db824b48598",
         "path": "models/jan-evertsen-north-canopy-pilot/"
       },
       "preview": "./jan-evertsen-pilot.html",
-      "nextAction": "Acquire complete current facades and official address-parent links; compare textured procedural and native GLBs in real gallery/game, frozen heldouts and performance before live profile admission."
+      "nextAction": "Two exact representative identities now receive the runtime canopy pilot. Gather fuller current facades/address links before expanding to transition, heldouts or neighborhood.",
+      "runtimePilot": {
+        "status": "installed-bounded-pilot",
+        "buildingIds": [
+          "NL.IMBAG.Pand.0363100012118917",
+          "NL.IMBAG.Pand.0363100012096187"
+        ],
+        "independentReview": "docs/references/jan-evertsen-pilot/runtime-review.json",
+        "acceptedScope": "Canopy assembly presence and retained windows only; complete facade/neighborhood acceptance withheld."
+      }
     }
   ],
   "coverageInventory": [

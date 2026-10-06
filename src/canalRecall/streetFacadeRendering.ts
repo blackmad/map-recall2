@@ -69,7 +69,7 @@ export function recipeLayoutScale(recipe: ArchitecturalRecipe | undefined, fallb
   return recipe ? {
     bay: (recipe.bayScale ?? 1) * (.98 + (fallback.bay - .88) / .3 * .04),
     storey: (recipe.storeyScale ?? 1) * (.99 + (fallback.storey - .93) / .16 * .02),
-    ground: (recipe.groundScale ?? 1) * (.99 + (fallback.ground - .92) / .2 * .02),
+    ground: (recipe.groundScale ?? 1) * (recipe.shopCanopy ? 1 : .99 + (fallback.ground - .92) / .2 * .02),
   } : fallback;
 }
 

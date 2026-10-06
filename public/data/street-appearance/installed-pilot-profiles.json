@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "revision": "jan-evertsen-bounded-runtime-pilot-v1",
+  "profiles": [
+    {
+      "id": "jan-evertsen-canopy-candidate-native-pair",
+      "streetName": "Jan Evertsenstraat",
+      "revision": "unaccepted-runtime-canopy-pilot-v1",
+      "segment": [
+        [
+          4.851836,
+          52.37036
+        ],
+        [
+          4.852514,
+          52.37048
+        ]
+      ],
+      "side": 1,
+      "reachM": 15,
+      "confidence": 0.8,
+      "assemblyM": 6,
+      "status": "pilot",
+      "recipes": [
+        {
+          "weight": 1,
+          "priority": 0,
+          "yearMin": 1920,
+          "yearMax": 1940,
+          "heightMin": 10,
+          "heightMax": 20,
+          "frontageMin": 5,
+          "frontageMax": 7,
+          "recipe": {
+            "family": "masonry",
+            "period": "school",
+            "confidence": 0.8,
+            "wallHex": "#92775c",
+            "frameHex": "#e5e5d8",
+            "frameColor": "pale",
+            "wallMaterial": "brick",
+            "balconyPolicy": "assembly-only",
+            "detailPolicy": "architectural",
+            "trim": {
+              "frames": 0.5,
+              "lintels": 0,
+              "cornice": 0,
+              "courses": 0,
+              "quoins": 0,
+              "arches": 0
+            },
+            "shopCanopy": {
+              "kind": "continuous-rigid",
+              "projectionM": 0.85,
+              "fasciaHeightM": 0.24,
+              "fasciaHex": "#dedbd2",
+              "edgeHex": "#454b49"
+            }
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "user-streetview-shop-canopy",
+          "kind": "user-reference",
+          "sha256": "0bcad915f2d04fd581aee5a1685ef9edd58d29309c664d105b034af79c8f4ac4",
+          "inference": "agent-visual-review",
+          "quality": 0.8,
+          "notes": "User crop shows long rigid dark rounded canopy edge and pale fascia below masonry. Candidate identity/address unconfirmed; upper facade and roof cropped. No visual acceptance; approximate street axis."
+        }
+      ],
+      "frontages": [
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012096187",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.852090009565,
+              52.370490979569
+            ],
+            "end": [
+              4.852174990435,
+              52.370506020431
+            ],
+            "widthM": 6.010429
+          }
+        },
+        {
+          "buildingId": "NL.IMBAG.Pand.0363100012118917",
+          "recipeIndex": 0,
+          "frontage": {
+            "start": [
+              4.852005971305,
+              52.370476061293
+            ],
+            "end": [
+              4.852090028695,
+              52.370490938707
+            ],
+            "widthM": 5.945129
+          }
+        }
+      ],
+      "buildingIds": [
+        "NL.IMBAG.Pand.0363100012118917",
+        "NL.IMBAG.Pand.0363100012096187"
+      ]
+    }
+  ]
+}

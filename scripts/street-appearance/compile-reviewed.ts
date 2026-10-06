@@ -34,6 +34,11 @@ try {
  if(rows.profiles.some(p=>p.status!=='reviewed'||p.holdout||p.learnedFrom))throw Error('Unaccepted row publication');
  rowProfiles=rows.profiles;profiles.push(...rowProfiles);
 } catch(error) { if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error; }
+// Explicitly installed, identity-bounded pilots remain pilots on recompilation.
+// This list is separate from reviewed rows and never expands to neighboring houses.
+const installedPilots = validateStreetAppearanceCatalog(JSON.parse(await fs.readFile('public/data/street-appearance/installed-pilot-profiles.json','utf8'))).profiles;
+if(installedPilots.some(p=>p.status!=='pilot'||p.holdout||p.learnedFrom||!p.buildingIds?.length))throw Error('Unbounded installed pilot');
+profiles.push(...installedPilots);
 // Full pilot compilation is research-only and must be requested explicitly.
 // The routine command must not silently republish rejected transfer coverage.
 const scopeIds=process.argv.includes('--research-pilot')?undefined:
@@ -48,6 +53,7 @@ if(scopeIds?.includes('bethanienstraat-transition-context')){
  profiles.push({...context,id:'bethanienstraat-transition-context',streetName:'Bethaniënstraat',status:'reviewed',evidence:context.evidence.map(e=>({...e,notes:(e.notes??'')+' Bounded publication extent: Bethanienstraat transition, independently reviewed in retry14. Recipes transferred unchanged from '+learnedFrom+'; original holdout and failed reviews retained in research artifacts.'}))});
 }
 if(scopeIds){
+ scopeIds.push(...installedPilots.map(p=>p.id).filter(id=>!scopeIds.includes(id)));
  for(const id of scopeIds)if(!profiles.some(profile=>profile.id===id))throw Error(`Unknown reviewed scope ${id}`);
  profiles.splice(0,profiles.length,...profiles.filter(profile=>scopeIds.includes(profile.id)));
 }
