@@ -654,6 +654,9 @@ class VectorBasemap {
   // building (by id and by measured proximity), and hide coloured extrusions
   // under any signature model that has loaded.
   _refreshBuildingSuppression() {
+    // Streamed buildings still need their replacement mask refreshed when a
+    // signature model loads or becomes unavailable; only the basemap is skipped.
+    this._refreshColoredBuildingFilter();
     if (this._buildingsFromTiles) return;
     if (!this.map || !this.map.getStyle()) return;
     if (this.map.getLayer('building-3d') && window.CanalRecallBuildings) {
@@ -680,7 +683,6 @@ class VectorBasemap {
         }
       }
     }
-    this._refreshColoredBuildingFilter();
   }
 
   _queueBasemapDuplicateScan() {
