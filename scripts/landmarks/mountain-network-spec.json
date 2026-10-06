@@ -1,0 +1,37 @@
+{
+  "id": "mountain-network",
+  "name": "Climbing Center Amsterdam (Mountain Network)",
+  "landmarkId": "n2231887299",
+  "modelUrl": "./models/mountain-network.glb",
+  "suppressOsmIds": [
+    "NL.IMBAG.Pand.0363100012237533"
+  ],
+  "spatialSuppression": false,
+  "footprint": {
+    "centre": [
+      4.8417,
+      52.3743
+    ],
+    "headingDegrees": 0,
+    "lengthMetres": 208,
+    "widthMetres": 66
+  },
+  "groundAltitudeMetres": 0,
+  "facingOffsetDegrees": 0,
+  "surveyed": {
+    "anchor": [
+      4.8417,
+      52.3743
+    ],
+    "northOffsetDegrees": 0,
+    "source": "Official Erasmusgracht297 VBO0363010011157132 joins2011 Pand0363100012237533; full host reconstructed from current3DBAG survey rings with archived2025 panorama facade evidence."
+  },
+  "attribution": {
+    "title": "Mountain Network Amsterdam / De Tribune",
+    "author": "Map Recall",
+    "sourceUrl": "https://arcam.nl/architectuur-gids/de-tribune/",
+    "licence": "Original project asset",
+    "licenceUrl": "./LICENSE",
+    "modifications": "Original texture-free house-style reconstruction of surveyed full host; no source photo pixels or third-party artistic mesh."
+  }
+}

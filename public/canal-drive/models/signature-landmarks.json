@@ -11097,6 +11097,74 @@
       "triangles": 364,
       "bytes": 12980,
       "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
+    },
+    "mountain-network": {
+      "id": "mountain-network",
+      "name": "Climbing Center Amsterdam (Mountain Network)",
+      "landmarkId": "n2231887299",
+      "modelUrl": "./models/mountain-network.glb",
+      "suppressOsmIds": [
+        "NL.IMBAG.Pand.0363100012237533"
+      ],
+      "spatialSuppression": false,
+      "footprint": {
+        "centre": [
+          4.8417,
+          52.3743
+        ],
+        "headingDegrees": 0,
+        "lengthMetres": 208,
+        "widthMetres": 66
+      },
+      "groundAltitudeMetres": 0,
+      "facingOffsetDegrees": 0,
+      "surveyed": {
+        "anchor": [
+          4.8417,
+          52.3743
+        ],
+        "northOffsetDegrees": 0,
+        "source": "Official Erasmusgracht297 VBO0363010011157132 joins2011 Pand0363100012237533; full host reconstructed from current3DBAG survey rings with archived2025 panorama facade evidence."
+      },
+      "attribution": {
+        "title": "Mountain Network Amsterdam / De Tribune",
+        "author": "Map Recall",
+        "sourceUrl": "https://arcam.nl/architectuur-gids/de-tribune/",
+        "licence": "Original project asset",
+        "licenceUrl": "./LICENSE",
+        "modifications": "Original texture-free house-style reconstruction of surveyed full host; no source photo pixels or third-party artistic mesh."
+      },
+      "bounds": {
+        "min": [
+          -32.51707458496094,
+          0.0010000000474974513,
+          -90.77246856689453
+        ],
+        "max": [
+          33.4608154296875,
+          43.75,
+          116.709228515625
+        ]
+      },
+      "placement": {
+        "anchor": [
+          4.8417,
+          52.3743
+        ],
+        "altitudeMetres": 0,
+        "modelRotationDegrees": 90,
+        "facadeBearingDegrees": 0,
+        "scale": 1
+      },
+      "extent": {
+        "widthMetres": 207.48169708251953,
+        "heightMetres": 43.7489999999525,
+        "depthMetres": 65.97789001464844,
+        "depthCoverage": 0.999665000221946
+      },
+      "triangles": 9927,
+      "bytes": 104816,
+      "generatedBy": "scripts/landmarks/build-manual-landmarks.ts"
     }
   }
 }

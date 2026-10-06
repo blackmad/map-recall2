@@ -1,0 +1,94 @@
+{
+  "modelId": "mountain-network",
+  "reviewedOn": "2026-10-06",
+  "reviewer": "independent mountain_repair_review agent",
+  "status": "scoped-gallery-and-current-runtime-verified-publication-pending",
+  "reviewedGlb": {
+    "path": "public/canal-drive/models/mountain-network.glb",
+    "sha256": "e4671e7e7bf6604cf4d23a18c5883598b622199bb1a87b7f4616960fc284f7b8",
+    "bytes": 105448,
+    "runtimeVersion": "e4671e7e7bf6604c"
+  },
+  "priorIndependentReview": "../../artifacts/landmark-continuation-20261006/mountain-network-review/independent-review.json",
+  "method": "Read archived original panorama crops and side panorama; captured exact current GPU default/four-angle gallery, native-scale tower/balcony/portal close-ups and fresh live-game front/rear/detail views. Fresh harness started a real selected bike route, physically clicked the building and tested native placement, pin, exact suppression and retained drawable neighbors. Geometry tests were not used as visual acceptance. No builder/shared registration/source/Git mutations by reviewer.",
+  "referencesInspected": [
+    "../map-recall2-source-data/models/mountain-network/processed/entrance-tower-reference-crop.png",
+    "../map-recall2-source-data/models/mountain-network/processed/city-balcony-reference-crop.png",
+    "../map-recall2-source-data/models/mountain-network/files/side-panorama.jpg"
+  ],
+  "correctedPriorFailures": [
+    {
+      "id": "climbing-tower-front-glazing",
+      "finding": "Four pale broad glass-like groups and white grids are now legible; the west return remains opaque."
+    },
+    {
+      "id": "climbing-tower-cantilever",
+      "finding": "Projection beyond brick plinth and exposed underside are present; depth remains photo-guided approximate."
+    },
+    {
+      "id": "rounded-city-balcony-stacks",
+      "finding": "Continuous convex repeated bands now read clearly in gallery and live city views. Floor counts and subdivision remain approximate."
+    }
+  ],
+  "failures": [
+    {
+      "id": "city-climbing-hall-tall-glazing",
+      "severity": "high",
+      "source": "private processed/city-balcony-reference-crop.png and original files/side-panorama.jpg",
+      "renders": [
+        "balcony.png",
+        "balcony-oblique.png",
+        "live-balcony.png"
+      ],
+      "finding": "The source shows a conspicuous tall glazed climbing hall immediately to the right of the low masonry hall, below the apartment/balcony volume. The model replaces the upper part of this tall ground hall with opaque stone and supplies only a single low dark glass ribbon. This changes the defining hall/apartment composition even though curved apartment bands are repaired.",
+      "nativeScope": "Surface27 city corner edge approximately[3.971,-29.94]→[0.153,-16.055], then neighboring city frontage108. Current builder only gives surfaces27/108 glazing0.12–2.72m; source tall hall reaches the housing slab underside. Exact split should be calibrated to the archived photograph and surveyed corner, not extend blue panes across the adjacent low masonry hall.",
+      "requiredCorrection": "Reconstruct the bounded tall exposed climbing-hall glazing and visible structural/pane divisions on the photographed city corner; retain adjacent masonry hall and curved bands. Recompare close lower city source/gallery/live views."
+    }
+  ],
+  "openSpaceReview": {
+    "status": "two-front-portals-and-pier-visible-through-depth-needs-aligned-confirmation",
+    "finding": "Fresh live-portals.png and gallery show two front mouths and a substantial separating pier. portals-north.png oblique gallery shows a partial low slit/back wall occlusion at the left mouth, so this screenshot does not establish two unobstructed complete passage paths. Directly aligned views from source street and reciprocal passage ends remain useful; do not infer obstruction solely from the oblique shot."
+  },
+  "acceptance": {
+    "galleryVisual": false,
+    "liveGameVisual": false,
+    "routePinPhysicalCard": "passed-fresh-harness",
+    "suppressionAndNeighbors": "passed-exact-BAG-only-scale1-no-old-pyramids-two-resident-drawable-neighbors",
+    "performance": "not-measured-by-independent-reviewer"
+  },
+  "artifacts": "artifacts/landmark-continuation-20261006/mountain-network-repair-review",
+  "renderFingerprints": {
+    "balcony.png": "e9c4f89c500edd7d121c1c5b98a2abfac8bba75c40df9cec6eaf2eb1ae00f2dd",
+    "tower-oblique.png": "096c3878a456137e906157396b752b45348c1d35b1b91b8b5511b90c804789da",
+    "gallery.png": "a7c07a9c96ac1d474db32f59d4ddec8fe2317d8136aaec011b1f675078f926e7",
+    "live-portals.png": "c3bd3716a6e67f7a3de88bc399edd88022ee1aa7917c892499f210d1cb1349a6",
+    "before-pointer-check.png": "0131ec74b340f972f75bd1f7c6640876837a399ce9a84d4b6a5629c975c1ce21",
+    "tower-front.png": "3b76c9fb47db8420a1e38293dcbd76a03e3f839ed62adf8eefd592ab281ab2fc",
+    "balcony-oblique.png": "784a5442df2272fe8a96ea89815ce123e56cef9cc4a9bd834dceebab307a9583",
+    "portals.png": "8c9619bcdefe0b812d6bff43f19120e033c39d5ffda4a4b1e45e43623f1b087f",
+    "live-tower.png": "a3a4750fa0918f9d066b30a34d457e11ee0f44efd8538cb89ff0f26a9e9a32c2",
+    "portals-north.png": "72bee409d08b48f7e9de571fb36c209d8aad3a2170293af90deb19aa56974eb6",
+    "gallery-angle-3.png": "54000d68606ebbd1ad5f5de34032b250492d79f4df9782fa9df673e755f26eb4",
+    "gallery-angle-2.png": "130d11ac62d69103e3ba778650dd1bc20fc6d5bcf6611bcfdac40846d1ceca0f",
+    "live-balcony.png": "0a4746fdada3438028338a868880395a31019e4571f105b828a363c24ad0b85f",
+    "gallery-angle-0.png": "f80fe22ee44748f09c31b4405bfc644b2c84b8b85e49817978577266e0a308f4",
+    "gallery-angle-1.png": "7760229b182070d81bf3f461b1ab86c8d0499f0daed0af67dedc085ab5cd7799",
+    "live-rear.png": "59245de41134b6c3c1de10ac615439bfb9bd072e5ebc54086699091a14716dfc",
+    "neutral-front.png": "5b69252139ee759c1a57d0f27b8f8b73007e85b99225bf75da8838e8eb19a9ef",
+    "live-front.png": "8bdf1828abc4688c66c1f235327db0d92923be468cc467a963cfa9c3e2ac34ce"
+  },
+  "limits": [
+    "Source count/dimensions for balcony and tower subdivisions remain approximate.",
+    "Live camera screenshots provide contextual game evidence but do not establish measured performance.",
+    "Prior failed evidence remains intact in mountain-network-review."
+  ],
+  "currentGlb": {
+    "sha256": "e816e9aece23222cd0baa4a5767b69da00a352f39951d4d050b8043487c6010f",
+    "triangles": 9927,
+    "bytes": 104816
+  },
+  "independentCurrentReview": "../../artifacts/landmark-continuation-20261006/mountain-network-low-hall-review/independent-review.json",
+  "currentRuntimeEvidence": "private models/mountain-network/validation/low-hall-20261006/ @b189f00",
+  "currentAcceptance": "Root inspected exact current gallery/source and game views; independent current gallery recognition passes. Real selected destination/pin/physical sourced card/native scale/exact BAG mask/two drawn neighbors pass. Native two through mouths remain present; source-aligned axis and hall top proportions retained as bounded uncertainty.",
+  "performance": "Stationary headless model-visible153.6ms median/164.2p95; hidden147.4/177.1; repeat156.3/188.0. Hidden comparison keeps replacement masks. Whole scene30922buildings/1.69Mordinarytriangles remains slow; no general performance pass."
+}

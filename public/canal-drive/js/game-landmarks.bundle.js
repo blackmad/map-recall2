@@ -7079,6 +7079,43 @@ Map source: ${osmUrl(places[i][0])}`);
         licenceUrl: "./LICENSE",
         modifications: "Original house-style geometry; no photo textures or imported asset mesh. Only exact BAG host replaced."
       }
+    },
+    {
+      id: "mountain-network",
+      name: "Climbing Center Amsterdam (Mountain Network)",
+      landmarkId: "n2231887299",
+      modelUrl: "./models/mountain-network.glb",
+      suppressOsmIds: [
+        "NL.IMBAG.Pand.0363100012237533"
+      ],
+      spatialSuppression: false,
+      footprint: {
+        centre: [
+          4.8417,
+          52.3743
+        ],
+        headingDegrees: 0,
+        lengthMetres: 208,
+        widthMetres: 66
+      },
+      groundAltitudeMetres: 0,
+      facingOffsetDegrees: 0,
+      surveyed: {
+        anchor: [
+          4.8417,
+          52.3743
+        ],
+        northOffsetDegrees: 0,
+        source: "Official Erasmusgracht297 VBO0363010011157132 joins2011 Pand0363100012237533; full host reconstructed from current3DBAG survey rings with archived2025 panorama facade evidence."
+      },
+      attribution: {
+        title: "Mountain Network Amsterdam / De Tribune",
+        author: "Map Recall",
+        sourceUrl: "https://arcam.nl/architectuur-gids/de-tribune/",
+        licence: "Original project asset",
+        licenceUrl: "./LICENSE",
+        modifications: "Original texture-free house-style reconstruction of surveyed full host; no source photo pixels or third-party artistic mesh."
+      }
     }
   ];
 
@@ -10301,6 +10338,25 @@ Map source: ${osmUrl(places[i][0])}`);
         4.9115779
       ],
       preferDescription: true
+    },
+    {
+      modelId: "mountain-network",
+      name: "Climbing Center Amsterdam (Mountain Network)",
+      description: "Climbing Center Amsterdam, formerly Mountain Network Amsterdam, occupies the pale corner tower of De Tribune at Erasmusgracht 297. Its operator lists 15-metre climbing walls, 200 m\xB2 of bouldering space and an outdoor toprope wall. The 2011 complex by Claus en Kaan combines housing and sport facilities. Dark steel-and-glass ribbons on the motorway side form a sound screen for Laan van Spartaan; the city side has light brick, balconies, rounded corners and stepped heights.",
+      sourceUrl: "https://www.climbingnetwork.nl/indoor/locatie/climbingcenter-amsterdam",
+      center: [
+        52.375078,
+        4.842064
+      ],
+      preferDescription: true,
+      destinationOverride: {
+        center: [
+          52.375078,
+          4.842064
+        ],
+        sourceUrl: "https://www.climbingnetwork.nl/indoor/locatie/climbingcenter-amsterdam",
+        reason: "Source-supported northern public entrance outside surveyed tower boundary; genuine mapped node identity retained."
+      }
     }
   ];
 
