@@ -2,7 +2,7 @@
   "id": "ndsm-container-arch",
   "name": "De Containerboog",
   "preparedOn": "2026-10-06",
-  "status": "bounded source and identity preparation complete; geometry authoring/integration/acceptance pending",
+  "status": "native geometry authored; root export/integration/gallery/live-game acceptance pending",
   "primarySources": [
     "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog",
     "https://www.ndsm.nl/en/kunst/firestarter",
@@ -12,8 +12,8 @@
   "sourceArchive": {
     "repository": "blackmad/map-recall2-source-data",
     "modelPath": "models/ndsm-container-arch",
-    "sourceCommit": null,
-    "commitState": "pending root source-pack verification/commit/push"
+    "sourceCommit": "6921162",
+    "commitState": "verified, committed and pushed by root before authoring"
   },
   "sourceFiles": [
     {
@@ -243,7 +243,7 @@
     },
     {
       "year": 2025,
-      "artists": "VAAF — Lotte Masker and Jonna Bo Lammers",
+      "artists": "VAAF \u2014 Lotte Masker and Jonna Bo Lammers",
       "artwork": "The only way is up",
       "exhibitionStart": "2025-04-17",
       "exhibitionEnd": "2026-03-30",
@@ -327,24 +327,50 @@
     }
   },
   "gaps": [
-    "Exact container dimensions, height, structural connector measurements and native painted-face orientation need calibration.",
+    "Exact container dimensions and engineered structural connector measurements remain unavailable; native geometry is calibrated to OSM span and current frontal photo, with stated uncertainty.",
     "Operator2026 map link is [52.401661,4.894609], about11.4m north of current OSM-centre; use verified geometry for model placement and check public pin on scene.",
     "2024 old interview links return404 via liveHTTP despite search cache retaining text; current migrated magazine URL is successfully archived.",
     "No BAG parent, engineering drawings or same-day onsite survey established.",
     "Gallery/live-game/GPU/performance and all3POIsurface acceptance have not started."
   ],
   "handoff": {
-    "canStartBuilder": "Only after root clears current batch and source-pack is verified/committed/pushed.",
+    "canStartBuilder": "Cleared by root after private source pack6921162 verified/committed/pushed; native builder now ready for integration.",
     "ownedMainFiles": [
       "scripts/landmarks/ndsm-container-arch-research.json",
-      "scripts/landmarks/ndsm-container-arch-footprints.json"
+      "scripts/landmarks/ndsm-container-arch-footprints.json",
+      "scripts/landmarks/ndsm-container-arch-builder.ts",
+      "scripts/landmarks/ndsm-container-arch-spec.json",
+      "scripts/landmarks/ndsm-container-arch-poi.json",
+      "scripts/check-ndsm-container-arch-geometry.ts"
     ],
     "sourceCommitRequiredBeforeModelCommit": true,
     "nextSteps": [
-      "Root verify/commit/push private model source pack and record commit.",
-      "Calibrate9rectangular container boxes plus open wedge spacers within native outline; do not extrude an opaque arch silhouette.",
-      "Register exact identities through root; retain both halls.",
-      "Full raised-structure recipe, meaningful checks, independent failure review, native gallery and actual game acceptance."
+      "Root register/export and check shared POI contract",
+      "Independent failure-seeking reference/render review",
+      "Gallery/native live-game acceptance, both retained halls and actual route/pin/pointer-card/performance evidence"
+    ]
+  },
+  "geometryCalibration": {
+    "sourcePhoto": "models/ndsm-container-arch/files/references/operator-2026-image-1.jpg",
+    "method": "Near-frontal image: overall outer span approximately910px; end square approximately120px; outer top/pavement approximately520px. Fit nine equal square ends and 22.5-degree radial steps to mapped18.452m span; no ISO assumption.",
+    "boxEndSizeMetres": 2.44,
+    "boxDepthMetres": 6.48,
+    "radiusMetres": 8.006,
+    "groundToCrownMetres": 10.446,
+    "uncertainty": "End dimensions \u00b10.2m, height \u00b10.8m, depth \u00b10.4m photo/map-derived; exact survey absent. Equal square end faces simplify small individual deviations.",
+    "frontNormalBearingDegrees": 217.737,
+    "orientationBasis": "Principal striped-end image has NDSM-loods brick shed to left and Lasloods/STRAAT to right, consistent with a southwest viewing station; oblique images show turquoise long outer sides and reverse purple doors.",
+    "simplifications": [
+      "Artwork is original flat-color shape interpretation, not exact copyrighted mural reproduction.",
+      "Small lettering/creator signature omitted; no generic identification words.",
+      "Structural spacers approximated narrow open metal braces, not measured connection plates."
+    ],
+    "requiredNextChecks": [
+      "Root gallery four lower rotations/reference comparison",
+      "Independent failure-seeking review",
+      "Both relevant live-game sides and actual route/pin/pointer card",
+      "Exact suppression and retained two halls",
+      "Scene/performance evidence"
     ]
   }
 }

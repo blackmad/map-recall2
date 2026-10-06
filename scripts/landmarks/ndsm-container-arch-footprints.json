@@ -1,13 +1,13 @@
 {
   "id": "ndsm-container-arch",
   "preparedOn": "2026-10-06",
-  "status": "research-only; no builder or accepted asset",
+  "status": "native geometry authored; root export/integration/gallery/live-game acceptance pending",
   "coordinateConvention": "Native GeoJSON longitude/latitude; anchor uses [longitude,latitude]. OSM raw node pairs parsed as [latitude,longitude]. Metre dimensions are derived from geographic map outline, not surveyed container specifications.",
   "sourceArchive": {
     "repository": "blackmad/map-recall2-source-data",
     "modelPath": "models/ndsm-container-arch",
-    "sourceCommit": null,
-    "commitState": "pending root source-pack verification/commit/push"
+    "sourceCommit": "6921162",
+    "commitState": "verified, committed and pushed by root before authoring"
   },
   "mappedStructure": {
     "osmId": "w1304785589",
@@ -92,17 +92,50 @@
     "containerCount": 9,
     "countBasis": "Observed in frontal 2026 operator photograph: two base containers, three tilted above each base, one crown container.",
     "countConfidence": "high visual count, no dimensional engineering drawing",
-    "individualSizeMetres": null,
-    "heightMetres": null,
-    "requiredBeforeBuilder": [
-      "Calibrate box end dimensions and total height to mapped span plus frontal photograph; mark inferred dimensions honestly.",
-      "Confirm whether standard 20-foot or nonstandard boxes from projected depth/current photos.",
-      "Determine native facade normal and photograph station; map outline gives axes but not which painted end faces southwest."
-    ]
+    "individualSizeMetres": {
+      "endWidth": 2.44,
+      "endHeight": 2.44,
+      "depth": 6.48,
+      "status": "photo/map estimate, not surveyed"
+    },
+    "heightMetres": 10.446,
+    "requiredBeforeBuilder": []
   },
   "referenceImages": [
     "../map-recall2-source-data/models/ndsm-container-arch/files/references/operator-2026-image-0.webp",
     "../map-recall2-source-data/models/ndsm-container-arch/files/references/operator-2026-image-1.jpg",
     "../map-recall2-source-data/models/ndsm-container-arch/files/references/operator-2026-image-2.webp"
-  ]
+  ],
+  "geometryCalibration": {
+    "sourcePhoto": "models/ndsm-container-arch/files/references/operator-2026-image-1.jpg",
+    "method": "Near-frontal image: overall outer span approximately910px; end square approximately120px; outer top/pavement approximately520px. Fit nine equal square ends and 22.5-degree radial steps to mapped18.452m span; no ISO assumption.",
+    "boxEndSizeMetres": 2.44,
+    "boxDepthMetres": 6.48,
+    "radiusMetres": 8.006,
+    "groundToCrownMetres": 10.446,
+    "uncertainty": "End dimensions \u00b10.2m, height \u00b10.8m, depth \u00b10.4m photo/map-derived; exact survey absent. Equal square end faces simplify small individual deviations.",
+    "frontNormalBearingDegrees": 217.737,
+    "orientationBasis": "Principal striped-end image has NDSM-loods brick shed to left and Lasloods/STRAAT to right, consistent with a southwest viewing station; oblique images show turquoise long outer sides and reverse purple doors.",
+    "simplifications": [
+      "Artwork is original flat-color shape interpretation, not exact copyrighted mural reproduction.",
+      "Small lettering/creator signature omitted; no generic identification words.",
+      "Structural spacers approximated narrow open metal braces, not measured connection plates."
+    ],
+    "requiredNextChecks": [
+      "Root gallery four lower rotations/reference comparison",
+      "Independent failure-seeking review",
+      "Both relevant live-game sides and actual route/pin/pointer card",
+      "Exact suppression and retained two halls",
+      "Scene/performance evidence"
+    ]
+  },
+  "nativeOrientationRepair": {
+    "failedNorthOffsetDegrees": 37.737,
+    "failedPaintedNormalBearingDegrees": 37.737,
+    "correctNorthOffsetDegrees": 217.737,
+    "paintedNormalBearingDegrees": 217.737,
+    "basis": "Runtime translate/scale(u,-u,u)/rotateZ(90-bearing)/rotateX(pi/2) maps local +Z to bearing217.737 at old placement; source-painted local -Z was reversed. Rotate placement180; undirected source footprint unchanged.",
+    "evidence": "Native first front/rear screenshots show painted end at bearing217.737 camera before correction; preserve under first-orientation-failure.",
+    "status": "corrected-placement-awaiting-native-rereview"
+  }
 }

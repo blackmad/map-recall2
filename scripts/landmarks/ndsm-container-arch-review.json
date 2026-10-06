@@ -1,0 +1,228 @@
+{
+  "id": "ndsm-container-arch",
+  "date": "2026-10-06",
+  "state": "bounded source-based upper-panel artwork repair passes geometry; root repeat export/gallery/native review pending",
+  "sourceArchiveCommit": "6921162",
+  "sourceModelPath": "models/ndsm-container-arch",
+  "geometry": {
+    "command": "node --import tsx scripts/check-ndsm-container-arch-geometry.ts",
+    "result": "passed",
+    "triangles": 16596,
+    "containers": 9,
+    "clearWedgeSamples": 32,
+    "openPassageBothSides": true,
+    "boundsMetres": {
+      "min": [
+        -9.278,
+        -0.0425,
+        -3.326
+      ],
+      "max": [
+        9.278,
+        10.498,
+        3.3065
+      ]
+    }
+  },
+  "referenceInspection": {
+    "viewed": [
+      "operator-2026-image-0.webp",
+      "operator-2026-image-1.jpg",
+      "operator-2026-image-2.webp"
+    ],
+    "observations": [
+      "Nine squared container ends form a segmented arch with22.5-degree increments; current purple braces connect open wedge gaps.",
+      "Principal SW end stripes contrast with purple reverse NE doors and turquoise broad outer panels.",
+      "FIRESTARTER colours present; tiny creator lettering omitted; expressive figures intentionally simplified into original bounded geometric motifs."
+    ]
+  },
+  "pending": [
+    "root repeat GLB export and asset checks",
+    "repeat gallery reference comparison after artwork repair",
+    "repeat independent failure-seeking review",
+    "repeat native placement and live-game comparison",
+    "route/pin/physical pointer-card checks as required by root",
+    "scene/performance acceptance"
+  ],
+  "limitations": [
+    "Height and equal square2.44m ends are calibrated approximations, no surveyed engineering dimensions.",
+    "No same-day on-site source.",
+    "2026 source photos archived privately; no copied artwork pixels or downloaded meshes."
+  ],
+  "failedEvidence": [
+    {
+      "pass": "first native orientation",
+      "result": "FAILED",
+      "reason": "Initial northOffset37.737 made the principal local -Z painted end face NE in actual placement. Root corrected offset to217.737 before this artwork repair.",
+      "owner": "root; spec untouched by repair worker"
+    },
+    {
+      "pass": "first source-to-generic-motif comparison",
+      "result": "FAILED source fidelity",
+      "reason": "First builder repeated magenta outer-panel waves across all9 containers; current operator photo0 shows plain upper turquoise panels. Gallery recognition alone did not establish artwork support.",
+      "preservation": "Root retains first exported asset and first views; this record preserves the unsupported pattern finding."
+    }
+  ],
+  "artworkRepair": {
+    "sourceImages": [
+      "operator-2026-image-0.webp",
+      "operator-2026-image-2.webp"
+    ],
+    "change": "Removed all outer magenta waves on upper indices2..6. Lowest broad panels0/8 now carry bounded returning magenta loop bands; lower tier1/7 preserves ribbon and yellow/orange bounded figure panels. Principal-end flow and blue crown/yellow right/orange left geometric figures retained.",
+    "confidence": "High that visible upper broad turquoise surfaces are plain; moderate for lower motif arrangement; some far upper panels occluded, so retained plain instead of inventing repeats.",
+    "geometryCheck": "Passed with9 separate boxes,32 clear wedge samples and open passage on both sides. New source-fidelity check excludes artwork overlays on upper indices2..6.",
+    "triangleCount": 16596
+  },
+  "sourceArchive": {
+    "commit": "f9fb11f",
+    "path": "models/ndsm-container-arch",
+    "validationPath": "models/ndsm-container-arch/validation/final-release-export-20261006"
+  },
+  "acceptanceScope": "Exact release export e8333669 source, gallery and native integration passed. No general game performance acceptance.",
+  "status": "Source/gallery/native integration independently verified; photo/artwork approximations and general performance followup retained",
+  "export": {
+    "sha256": "e833366969413fe3c2d17faeba0e866c088956001f2923f38ca4acaf12f3b44f",
+    "triangles": 16596,
+    "bytes": 240320
+  },
+  "currentRuntime": {
+    "placement": {
+      "id": "ndsm-container-arch",
+      "actualCamera": {
+        "center": [
+          4.894597625,
+          52.401558625
+        ],
+        "zoom": 18.6,
+        "pitch": 55.00000000000001,
+        "bearing": 37.736999999999966,
+        "elevation": 0
+      },
+      "assetVersion": "e833366969413fe3",
+      "scale": 1,
+      "bias": false,
+      "broad": false,
+      "pin": true,
+      "destination": true,
+      "source": "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog",
+      "click": {
+        "x": 753.2501081238906,
+        "y": 418.7791216992299
+      },
+      "aliases": [
+        {
+          "id": "w1304785589",
+          "hidden": true
+        }
+      ],
+      "oldPyramidIds": [],
+      "neighbors": [
+        {
+          "replacement": {
+            "id": "ndsm-warehouse-complex",
+            "loaded": true,
+            "shown": true,
+            "visible": true,
+            "onScreenSamples": 69,
+            "version": "ebf02ab7f8d789da",
+            "ownedAlias": true,
+            "archDoesNotSuppressNeighbor": true
+          },
+          "ids": [
+            "w44824309",
+            "NL.IMBAG.Pand.0363100012062886"
+          ],
+          "resident": true,
+          "hidden": true,
+          "drawable": true
+        },
+        {
+          "replacement": null,
+          "ids": [
+            "w717827611",
+            "NL.IMBAG.Pand.0363100012079735"
+          ],
+          "resident": true,
+          "hidden": false,
+          "drawable": true
+        }
+      ],
+      "features": 19398,
+      "buildings": 20584
+    },
+    "card": {
+      "notice": "osm_w1304785589",
+      "source": "https://www.ndsm.nl/en/magazine/de-verschillende-jasjes-van-de-icoontainerboog",
+      "alpha": 1,
+      "drawn": true,
+      "active": "osm_w1304785589"
+    },
+    "performance": {
+      "id": "ndsm-container-arch",
+      "assetVersion": "e833366969413fe3",
+      "samples": [
+        {
+          "label": "model-visible",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 9
+        },
+        {
+          "label": "same-scene-model-hidden",
+          "visible": false,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 9.099999904632568
+        },
+        {
+          "label": "model-visible-repeat",
+          "visible": true,
+          "frames": 60,
+          "p50Ms": 8.300000190734863,
+          "p95Ms": 8.900000095367432
+        }
+      ],
+      "buildings": {
+        "kitVertices": 101685,
+        "chunks": 33,
+        "buildings": 20584,
+        "walls": 78924,
+        "quads": 326329,
+        "vertices": 1798761,
+        "geometryMB": 60.25461387634277,
+        "textureMB": 97.5,
+        "drawCalls": 7,
+        "triangles": 337160,
+        "buildMs": 0.5
+      },
+      "scope": "Headless Chromium same stationary scene; hidden model keeps existing replacement masks, isolating custom draw cost. No whole-game performance pass claimed."
+    }
+  },
+  "independentReview": "models/ndsm-container-arch/validation/final-release-export-20261006/independent-review.json",
+  "fallback": {
+    "disabled": {
+      "enabled": false,
+      "aliases": [
+        {
+          "id": "w1304785589",
+          "hidden": false,
+          "resident": true,
+          "drawable": true
+        }
+      ]
+    },
+    "restored": {
+      "enabled": true,
+      "aliases": [
+        {
+          "id": "w1304785589",
+          "hidden": true,
+          "resident": true,
+          "drawable": true
+        }
+      ]
+    },
+    "scope": "Existing ordinary representation is returned on disable; report absence when source tiles have no ordinary arch rather than manufacturing a fallback."
+  }
+}
